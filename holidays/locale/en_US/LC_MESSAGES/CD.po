@@ -55,13 +55,21 @@ msgstr "Day of the Struggle of Simon Kimbangu and African Consciousness"
 msgid "Fête du travail"
 msgstr "Labor Day"
 
-#. Armed Forces Day.
-msgid "Journée des Forces armées"
-msgstr "Armed Forces Day"
+#. Anniversary of the Popular Movement of the Revolution.
+msgid "Anniversaire du Mouvement populaire de la révolution"
+msgstr "Anniversary of the Popular Movement of the Revolution"
 
-#. Liberation Day.
-msgid "Jour de la Libération"
-msgstr "Liberation Day"
+#. Anniversary of the New Revolutionary Constitution.
+msgid "Anniversaire de la nouvelle Constitution révolutionnaire"
+msgstr "Anniversary of the New Revolutionary Constitution"
+
+#. Fish Day.
+msgid "Journée du Poisson"
+msgstr "Fish Day"
+
+#. Currency zaire.
+msgid "Du Zaïre monnaie"
+msgstr "Currency zaire"
 
 #. Independence Day.
 msgid "Journée de l’indépendance"
@@ -74,6 +82,26 @@ msgstr "Parents' Day"
 #. Congolese Genocide Memorial Day.
 msgid "Journée commémorative du génocide Congolais"
 msgstr "Congolese Genocide Memorial Day"
+
+#. Youth Day.
+msgid "Journée de la Jeunesse"
+msgstr "Youth Day"
+
+#. Anniversary of the Country's Name Change.
+msgid "Anniversaire du changement du nom de notre Pays"
+msgstr "Anniversary of the Country's Name Change"
+
+#. Armed Forces Day.
+msgid "Journée des Forces armées"
+msgstr "Armed Forces Day"
+
+#. Liberation Day.
+msgid "Jour de la Libération"
+msgstr "Liberation Day"
+
+#. Anniversary of the New Regime.
+msgid "Anniversaire du nouveau régime"
+msgstr "Anniversary of the New Regime"
 
 #. Christmas Day.
 msgid "Noël"

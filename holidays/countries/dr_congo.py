@@ -66,14 +66,25 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_labor_day(tr("Fête du travail"))
 
-        if self._year >= 1998:
-            self._add_holiday_may_17(
-                # Armed Forces Day.
-                tr("Journée des Forces armées")
-                if self._year >= 2019
-                # Liberation Day.
-                else tr("Jour de la Libération")
-            )
+        # Established on June 23rd, 1979 via ORDER 79-154.
+
+        # Anniversary of the Popular Movement of the Revolution.
+        self._add_holiday_may_20(tr("Anniversaire du Mouvement populaire de la révolution"))
+
+        # Established on June 23rd, 1979 via ORDER 79-154.
+
+        # Anniversary of the New Revolutionary Constitution.
+        self._add_holiday_jun_24(tr("Anniversaire de la nouvelle Constitution révolutionnaire"))
+
+        # Established on June 23rd, 1979 via ORDER 79-154.
+
+        # Fish Day.
+        self._add_holiday_jun_24(tr("Journée du Poisson"))
+
+        # Established on June 23rd, 1979 via ORDER 79-154.
+
+        # Currency zaire.
+        self._add_holiday_jun_24(tr("Du Zaïre monnaie"))
 
         # Independence Day.
         self._add_holiday_jun_30(tr("Journée de l’indépendance"))
@@ -84,6 +95,30 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 2024:
             # Congolese Genocide Memorial Day.
             self._add_holiday_aug_2(tr("Journée commémorative du génocide Congolais"))
+
+        # Established on June 23rd, 1979 via ORDER 79-154.
+
+        # Youth Day.
+        self._add_holiday_oct_14(tr("Journée de la Jeunesse"))
+
+        # Established on June 23rd, 1979 via ORDER 79-154.
+
+        # Anniversary of the Country's Name Change.
+        self._add_holiday_oct_27(tr("Anniversaire du changement du nom de notre Pays"))
+
+        if self._year >= 1998:
+            self._add_holiday_nov_17(
+                # Armed Forces Day.
+                tr("Journée des Forces armées")
+                if self._year >= 2019
+                # Liberation Day.
+                else tr("Jour de la Libération")
+            )
+
+        # Established on June 23rd, 1979 via ORDER 79-154.
+
+        # Anniversary of the New Regime.
+        self._add_holiday_nov_24(tr("Anniversaire du nouveau régime"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Noël"))
