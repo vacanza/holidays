@@ -23,13 +23,13 @@ from tests.common import CommonCountryTests
 class TestDRCongo(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(DRCongo, years=range(1960, 2050))
+        super().setUpClass(DRCongo, years=range(1980, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(DRCongo, CD, COD)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(DRCongo(years=1959))
+        self.assertNoHolidays(DRCongo(years=1979))
 
     def test_2006(self):
         self.assertHolidays(
