@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-from datetime import date
 
 from holidays.countries.pitcairn_islands import PitcairnIslands, PN, PCN
 from tests.common import CommonCountryTests
