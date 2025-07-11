@@ -19,9 +19,7 @@ from tests.common import CommonCountryTests
 class TestPitcairnIslands(CommonCountryTests, unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(
-            PitcairnIslands, years=range(2000, 2050)
-        )
+        super().setUpClass(PitcairnIslands, years=range(2000, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(PitcairnIslands, PN, PCN)
@@ -60,9 +58,7 @@ class TestPitcairnIslands(CommonCountryTests, unittest.TestCase):
 
     def test_bounty_day(self):
         """Test Bounty Day holiday."""
-        self.assertHolidayName(
-            "Bounty Day", (f"{year}-01-23" for year in range(2000, 2050))
-        )
+        self.assertHolidayName("Bounty Day", (f"{year}-01-23" for year in range(2000, 2050)))
 
     def test_good_friday(self):
         """Test Good Friday holiday."""
