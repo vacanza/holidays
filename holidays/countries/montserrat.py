@@ -144,7 +144,7 @@ class Montserrat(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
 
         # Festival Day.
         name = tr("Festival Day")
-        (self._add_new_years_eve(name),)
+        self._add_new_years_eve(name)
         self._add_observed(
             date(self._year - 1, DEC, 31),
             name,

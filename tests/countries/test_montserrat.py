@@ -16,7 +16,7 @@ from holidays.countries.montserrat import Montserrat, MS, MSR
 from tests.common import CommonCountryTests
 
 
-class TestMonsterrat(CommonCountryTests, TestCase):
+class TestMontserrat(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(2017, 2050)
