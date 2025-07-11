@@ -63,6 +63,10 @@ msgstr "Whit Monday"
 msgid "National Day of Prayer and Thanksgiving"
 msgstr "National Day of Prayer and Thanksgiving"
 
+#. Day of Prayer and Thanksgiving.
+msgid "Day of Prayer and Thanksgiving"
+msgstr "Day of Prayer and Thanksgiving"
+
 #. Emancipation Day.
 msgid "Emancipation Day"
 msgstr "Emancipation Day"
@@ -82,3 +86,11 @@ msgstr "Festival Day"
 #. Special Public Holiday.
 msgid "Special Public Holiday"
 msgstr "Special Public Holiday"
+
+#. National Day of Mourning.
+msgid "National Day of Mourning"
+msgstr "National Day of Mourning"
+
+#. Coronation of King Charles III.
+msgid "Coronation of King Charles III"
+msgstr "Coronation of King Charles III"

@@ -31,8 +31,18 @@ class TestMontserrat(CommonCountryTests, TestCase):
     def test_special_holidays(self):
         self.assertHoliday(
             "2018-09-14",
+            "2019-05-10",
             "2020-07-15",
-            "2022-06-03",
+            "2022-07-20",
+            "2023-04-12",
+        )
+        self.assertHolidayName(
+            "National Day of Mourning",
+            "2022-09-19",
+        )
+        self.assertHolidayName(
+            "Coronation of King Charles III",
+            "2023-05-06",
         )
 
     def test_new_years_day(self):
@@ -108,7 +118,7 @@ class TestMontserrat(CommonCountryTests, TestCase):
         name = "King's Birthday"
         dts = (
             "2023-06-19",
-            "2024-06-10",
+            "2024-06-17",
             "2025-06-16",
         )
         self.assertHolidayName(name, dts)
@@ -129,17 +139,23 @@ class TestMontserrat(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_day_of_prayer_and_thanksgiving(self):
-        name = "National Day of Prayer and Thanksgiving"
-        dts = (
+        first_name = "National Day of Prayer and Thanksgiving"
+        pre_2024_dts = (
             "2021-07-21",
             "2022-07-20",
             "2023-07-12",
+        )
+        self.assertHolidayName(first_name, pre_2024_dts)
+        self.assertHolidayName(first_name, range(2021, 2024))
+        self.assertNoHolidayName(first_name, range(2017, 2021))
+        second_name = "Day of Prayer and Thanksgiving"
+        post_2024_dts = (
             "2024-07-10",
             "2025-07-09",
         )
-        self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, range(2021, 2050))
-        self.assertNoHolidayName(name, range(2017, 2021))
+        self.assertHolidayName(second_name, post_2024_dts)
+        self.assertHolidayName(second_name, range(2024, 2050))
+        self.assertNoHolidayName(second_name, range(2017, 2024))
 
     def test_emancipation_day(self):
         name = "Emancipation Day"
@@ -192,8 +208,8 @@ class TestMontserrat(CommonCountryTests, TestCase):
             ("2024-04-01", "Easter Monday"),
             ("2024-05-06", "Labour Day"),
             ("2024-05-20", "Whit Monday"),
-            ("2024-06-10", "King's Birthday"),
-            ("2024-07-10", "National Day of Prayer and Thanksgiving"),
+            ("2024-06-17", "King's Birthday"),
+            ("2024-07-10", "Day of Prayer and Thanksgiving"),
             ("2024-08-05", "Emancipation Day"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
@@ -211,8 +227,8 @@ class TestMontserrat(CommonCountryTests, TestCase):
             ("2024-04-01", "Easter Monday"),
             ("2024-05-06", "Labor Day"),
             ("2024-05-20", "Whit Monday"),
-            ("2024-06-10", "King's Birthday"),
-            ("2024-07-10", "National Day of Prayer and Thanksgiving"),
+            ("2024-06-17", "King's Birthday"),
+            ("2024-07-10", "Day of Prayer and Thanksgiving"),
             ("2024-08-05", "Emancipation Day"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
