@@ -1,0 +1,112 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Cayman Islands holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.77\n"
+"POT-Creation-Date: 2025-07-08 16:24+0000\n"
+"PO-Revision-Date: 2025-07-08 16:24+0000\n"
+"Last-Translator: Abheelash Mishra <abheelashdev@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_GB\n"
+
+#. %s observed.
+#, c-format
+msgid "%s (observed)"
+msgstr ""
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. National Heroes Day.
+msgid "National Heroes Day"
+msgstr ""
+
+#. Ash Wednesday.
+msgid "Ash Wednesday"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr ""
+
+#. Emancipation Day.
+msgid "Emancipation Day"
+msgstr ""
+
+#. Discovery Day.
+msgid "Discovery Day"
+msgstr ""
+
+#. Queen's Birthday.
+msgid "Queen's Birthday"
+msgstr ""
+
+#. King's Birthday.
+msgid "King's Birthday"
+msgstr ""
+
+#. Constitution Day.
+msgid "Constitution Day"
+msgstr ""
+
+#. Remembrance Day.
+msgid "Remembrance Day"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr ""
+
+#. Referendum Day.
+msgid "Referendum Day"
+msgstr ""
+
+#. General Election Day.
+msgid "General Election Day"
+msgstr ""
+
+#. 2009 Cayman Islands Constitution Day.
+msgid "2009 Cayman Islands Constitution Day"
+msgstr ""
+
+#. UK Royal Wedding.
+msgid "UK Royal Wedding"
+msgstr ""
+
+#. Queen Elizabeth II's Diamond Jubilee.
+msgid "Queen Elizabeth II's Diamond Jubilee"
+msgstr ""
+
+#. Queen Elizabeth II's Funeral.
+msgid "Queen Elizabeth II's Funeral"
+msgstr ""
+
+#. King Charles III's Coronation.
+msgid "Coronation of His Majesty King Charles III"
+msgstr ""

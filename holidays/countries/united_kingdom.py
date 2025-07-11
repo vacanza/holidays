@@ -88,8 +88,8 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             }
             # Spring Bank Holiday.
             name = tr("Spring Bank Holiday")
-            if self._year in spring_bank_dates:
-                self._add_holiday(name, spring_bank_dates[self._year])
+            if dt := spring_bank_dates.get(self._year):
+                self._add_holiday(name, dt)
             else:
                 self._add_holiday_last_mon_of_may(name)
 

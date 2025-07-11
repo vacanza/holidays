@@ -126,8 +126,8 @@ class SolomonIslands(
             2022: (JUN, 3),
             2025: (JUN, 13),
         }
-        if self._year in sovereign_birthday_dates:
-            self._add_holiday(name, sovereign_birthday_dates[self._year])
+        if dt := sovereign_birthday_dates.get(self._year):
+            self._add_holiday(name, dt)
         elif self._year == 2024:
             self._add_observed(self._add_holiday_3rd_sat_of_jun(name))
         elif self._year >= 2023:
