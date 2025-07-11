@@ -21,7 +21,7 @@ class TestPitcairnIslands(CommonCountryTests, unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(
-            PitcairnIslands, years=range(2000, 2050), years_non_observed=range(2000, 2050)
+            PitcairnIslands, years=range(2000, 2050)
         )
 
     def test_country_aliases(self):
@@ -58,7 +58,7 @@ class TestPitcairnIslands(CommonCountryTests, unittest.TestCase):
         self.assertHolidayName("King's Birthday", "2024-06-08", "2025-06-14")
         # Test Queen's Birthday for earlier years
         self.assertHolidayName("Queen's Birthday", "2022-06-11")
-        
+
     def test_bounty_day(self):
         """Test Bounty Day holiday."""
         self.assertHolidayName(
@@ -74,7 +74,7 @@ class TestPitcairnIslands(CommonCountryTests, unittest.TestCase):
         self.assertHolidayName("Easter Monday", "2024-04-01", "2025-04-21")
 
     def test_monarch_birthday_naming(self):
-+        """Test that monarch's birthday uses correct title based on year."""
+        """Test that monarch's birthday uses correct title based on year."""
         # Test Queen's Birthday (before 2023) and King's Birthday (from 2023)
-+       self.assertHolidayName("Queen's Birthday", "2022-06-11")
+        self.assertHolidayName("Queen's Birthday", "2022-06-11")
         self.assertHolidayName("King's Birthday", "2023-06-10")
