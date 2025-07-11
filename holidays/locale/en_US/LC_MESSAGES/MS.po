@@ -31,6 +31,7 @@ msgstr ""
 msgid "New Year's Day"
 msgstr "New Year's Day"
 
+#. Saint Patrick's Day.
 msgid "Saint Patrick's Day"
 msgstr "Saint Patrick's Day"
 
@@ -46,13 +47,13 @@ msgstr "Easter Monday"
 msgid "Labour Day"
 msgstr "Labor Day"
 
-#. Queen's Birthday.
-msgid "Queen's Birthday"
-msgstr "Queen's Birthday"
-
 #. King's Birthday.
 msgid "King's Birthday"
 msgstr "King's Birthday"
+
+#. Queen's Birthday.
+msgid "Queen's Birthday"
+msgstr "Queen's Birthday"
 
 #. Whit Monday.
 msgid "Whit Monday"

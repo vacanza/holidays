@@ -37,10 +37,7 @@ class TestMontserrat(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        self.assertHolidayName(
-            name,
-            (f"{year}-01-01" for year in range(2017, 2050)),
-        )
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(2017, 2050)))
         obs_dt = (
             "2017-01-03",
             "2018-01-02",
@@ -48,55 +45,52 @@ class TestMontserrat(CommonCountryTests, TestCase):
             "2023-01-03",
             "2024-01-02",
         )
-        self.assertHolidayName(
-            f"{name} (observed)",
-            obs_dt,
-        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_saint_patricks_day(self):
         name = "Saint Patrick's Day"
-        self.assertHolidayName(
-            name,
-            (f"{year}-03-17" for year in range(2017, 2050)),
-        )
+        self.assertHolidayName(name, (f"{year}-03-17" for year in range(2017, 2050)))
         obs_dt = (
             "2018-03-19",
             "2019-03-18",
             "2024-03-18",
         )
-        self.assertHolidayName(
-            f"{name} (observed)",
-            obs_dt,
-        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_good_friday(self):
+        name = "Good Friday"
         dts = (
             "2022-04-15",
             "2023-04-07",
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName("Good Friday", dts)
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(2017, 2050))
 
     def test_easter_monday(self):
+        name = "Easter Monday"
         dts = (
             "2022-04-18",
             "2023-04-10",
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName("Easter Monday", dts)
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(2017, 2050))
 
     def test_labor_day(self):
+        name = "Labour Day"
         dts = (
             "2022-05-02",
             "2023-05-01",
             "2024-05-06",
             "2025-05-05",
         )
-        self.assertHolidayName("Labour Day", dts)
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(2017, 2050))
 
     def test_queens_birthday(self):
         name = "Queen's Birthday"
@@ -158,10 +152,7 @@ class TestMontserrat(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(
-            name,
-            (f"{year}-12-25" for year in range(2017, 2050)),
-        )
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(2017, 2050)))
         obs_dt = (
             "2021-12-27",
             "2022-12-27",
@@ -171,10 +162,7 @@ class TestMontserrat(CommonCountryTests, TestCase):
 
     def test_boxing_day(self):
         name = "Boxing Day"
-        self.assertHolidayName(
-            name,
-            (f"{year}-12-26" for year in range(2017, 2050)),
-        )
+        self.assertHolidayName(name, (f"{year}-12-26" for year in range(2017, 2050)))
         obs_dt = (
             "2020-12-28",
             "2021-12-28",
@@ -184,10 +172,7 @@ class TestMontserrat(CommonCountryTests, TestCase):
 
     def test_festival_day(self):
         name = "Festival Day"
-        self.assertHolidayName(
-            name,
-            (f"{year}-12-31" for year in range(2017, 2050)),
-        )
+        self.assertHolidayName(name, (f"{year}-12-31" for year in range(2017, 2050)))
         obs_dt = (
             "2017-01-02",
             "2023-01-02",

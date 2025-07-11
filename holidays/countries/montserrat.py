@@ -13,13 +13,7 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import (
-    SUN,
-    JUN,
-    JUL,
-    SEP,
-    DEC,
-)
+from holidays.calendars.gregorian import JUN, JUL, SEP, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -27,7 +21,6 @@ from holidays.observed_holiday_base import (
     SAT_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
-    SUN_TO_NEXT_TUE,
 )
 
 
@@ -50,30 +43,26 @@ class Montserrat(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
     default_language = "en_MS"
     # %s (observed).
     observed_label = "%s (observed)"
-    # First documentation available is the
     # Public holidays Act, 2017.
     start_year = 2017
     supported_languages = ("en_MS", "en_US")
-    weekend = {SUN}
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, MontserratStaticHolidays)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
         self._add_observed(
             # New Year's Day.
             self._add_new_years_day(tr("New Year's Day")),
-            rule=SAT_TO_NEXT_MON + MON_TO_NEXT_TUE + SUN_TO_NEXT_TUE,
+            rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE,
         )
 
         # Saint Patrick's Day.
-        self._add_observed(
-            self._add_holiday_mar_17(tr("Saint Patrick's Day")),
-            rule=SAT_SUN_TO_NEXT_MON,
-        )
+        self._add_observed(self._add_holiday_mar_17(tr("Saint Patrick's Day")))
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
@@ -84,36 +73,28 @@ class Montserrat(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         # Labor Day.
         self._add_holiday_1st_mon_of_may(tr("Labour Day"))
 
-        if self._year <= 2022:
-            queens_birthday_dts = {
-                2022: (JUN, 2),
-            }
-            # Queen's Birthday.
-            name = tr("Queen's Birthday")
-            if birthday_dt := queens_birthday_dts.get(self._year):
-                self._add_holiday(name, birthday_dt)
-            else:
-                birthday_dt = self._add_holiday_2_days_past_2nd_sat_of_jun(name)
-        else:
-            kings_birthday_dts = {
-                2023: (JUN, 19),
-            }
+        name = (
             # King's Birthday.
-            name = tr("King's Birthday")
-            if birthday_dt := kings_birthday_dts.get(self._year):
-                self._add_holiday(name, birthday_dt)
-            else:
-                birthday_dt = self._add_holiday_2_days_past_2nd_sat_of_jun(name)
+            tr("King's Birthday")
+            if self._year >= 2023
+            # Queen's Birthday.
+            else tr("Queen's Birthday")
+        )
+        sovereign_birthday_dts = {
+            2022: (JUN, 2),
+            2023: (JUN, 19),
+        }
+        birthday_dt = (
+            self._add_holiday(name, dt)
+            if (dt := sovereign_birthday_dts.get(self._year))
+            else self._add_holiday_2_days_past_2nd_sat_of_jun(name)
+        )
 
         # Whit Monday.
-        whit_monday_dt = self._add_whit_monday(tr("Whit Monday"))
-
-        if birthday_dt == whit_monday_dt:
-            self._add_observed(
-                birthday_dt,
-                name="Whit Monday",
-                rule=MON_TO_NEXT_TUE,
-            )
+        name = tr("Whit Monday")
+        whit_monday_dt = self._add_whit_monday(name)
+        if whit_monday_dt == birthday_dt:
+            self._add_observed(whit_monday_dt, name=name, rule=MON_TO_NEXT_TUE)
 
         if self._year >= 2021:
             day_of_prayer_dts = {
@@ -145,11 +126,7 @@ class Montserrat(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         # Festival Day.
         name = tr("Festival Day")
         self._add_new_years_eve(name)
-        self._add_observed(
-            date(self._year - 1, DEC, 31),
-            name,
-            rule=SAT_TO_NEXT_MON,
-        )
+        self._add_observed(date(self._year - 1, DEC, 31), name, rule=SAT_TO_NEXT_MON)
 
 
 class MS(Montserrat):
@@ -161,14 +138,16 @@ class MSR(Montserrat):
 
 
 class MontserratStaticHolidays(StaticHolidays):
-    """
-    Montserrat static holidays.
-    [September 14th, 2018](https://www.gov.ms/wp-content/uploads/2020/11/SRO.-No.-35-of-2018-Proclamation-Declaring-Friday-14-September-2018-as-a-public-holiday.pdf)
-    [July 15th, 2020](https://www.gov.ms/wp-content/uploads/2020/08/SRO.-No.-40-of-2020-Proclamation-Declaring-Wednesday-15-July-2020-as-a-Public-Holiday.pdf)
+    """Montserrat special holidays.
+
+    References:
+        * [September 14th, 2018](https://www.gov.ms/wp-content/uploads/2020/11/SRO.-No.-35-of-2018-Proclamation-Declaring-Friday-14-September-2018-as-a-public-holiday.pdf)
+        * [July 15th, 2020](https://www.gov.ms/wp-content/uploads/2020/08/SRO.-No.-40-of-2020-Proclamation-Declaring-Wednesday-15-July-2020-as-a-Public-Holiday.pdf)
     """
 
     # Special Public Holiday.
     name = tr("Special Public Holiday")
+
     special_public_holidays = {
         2018: (SEP, 14, name),
         2020: (JUL, 15, name),
