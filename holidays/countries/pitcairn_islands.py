@@ -24,10 +24,6 @@ class PitcairnIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "PN"
-    # Pitcairn uses British English.  Keep the pattern of
-    # <language>_<ISO-3166-2 alpha-2 code> seen in other small UK territories.
-    default_language = "en_GB"
-    supported_languages = ("en_GB", "en_US")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -54,14 +50,6 @@ class PitcairnIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
         """Add King's Birthday (2nd Saturday in June)."""
         date = _get_nth_weekday_of_month(2, 5, JUN, self._year)
         self._add_holiday(name, date)
-
-    def test_language_support(self):
-        holidays_gb = PitcairnIslands(years=2024)
-        self.assertEqual(holidays_gb.default_language, "en_GB")
-
-        holidays_us = PitcairnIslands(years=2024, language="en_US")
-
-        self.assertEqual(len(holidays_gb), len(holidays_us))
 
 
 class PN(PitcairnIslands):
