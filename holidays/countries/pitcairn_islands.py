@@ -31,30 +31,37 @@ class PitcairnIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year < 2000:
-            return
-
         self._add_new_years_day("New Year's Day")
         self._add_holiday_jan_23("Bounty Day")
         self._add_good_friday("Good Friday")
         self._add_easter_monday("Easter Monday")
-        self._add_kings_birthday("King's Birthday")
+
+        # Year-aware monarch naming (Queen until 2022, King from 2023)
+        name = "Queen's Birthday" if self._year < 2023 else "King's Birthday"
+        self._add_kings_birthday(name)
+
         self._add_christmas_day("Christmas Day")
-        self._add_holiday("Boxing Day", 12, 26)
+
+        # Boxing Day – use helper to retain weekend-shift rules.
+        self._add_christmas_day_two("Boxing Day")
 
     def _add_holiday_jan_23(self, name: str):
         """Add Bounty Day (January 23)."""
         self._add_holiday(name, JAN, 23)
 
     def _add_kings_birthday(self, name: str):
-        """Add King's Birthday (2nd Saturday in June)."""
+        """Add King's/Queen's Birthday (2nd Saturday in June)."""
         date = _get_nth_weekday_of_month(2, 5, JUN, self._year)
         self._add_holiday(name, date)
 
 
 class PN(PitcairnIslands):
+    """Alias for PitcairnIslands."""
+
     pass
 
 
 class PCN(PitcairnIslands):
+    """Alias for PitcairnIslands."""
+
     pass
