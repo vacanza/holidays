@@ -25,17 +25,17 @@ from holidays.observed_holiday_base import (
 
 
 class Montserrat(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    Montserrat holidays.
+    """Montserrat holidays.
+
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Montserrat>
-        * [Public holidays Act, 2017](http://agc.gov.ms/wp-content/uploads/2011/10/Act-No.-3-of-2017-Public-Holidays-Amendment-Act-20171.pdf)
-        * [Public holidays Act, 2019](https://parliament.ms/documents/laws/6-09-public-holidays-act/)
-        * [National Day of Prayer and Thanksgiving, 2021](https://www.gov.ms/2021/07/16/wednesday-july-21-2021-public-holiday-national-day-of-prayer-thanksgiving/)
-        * [National Day of Prayer and Thanksgiving, 2022](https://www.gov.ms/2022/07/19/public-holiday-for-national-day-of-prayer-and-thanksgiving-to-be-held-on-july-20-2022/)
-        * [National Day of Prayer and Thanksgiving](https://www.gov.ms/wp-content/uploads/2023/05/SRO-No.-15-of-2023-Public-Holidays-Amendment-of-Schedule-Order.pdf)
+        * [Public holidays Act, 2017](https://web.archive.org/web/20240619074948/http://agc.gov.ms/wp-content/uploads/2011/10/Act-No.-3-of-2017-Public-Holidays-Amendment-Act-20171.pdf)
+        * [Public holidays Act, 2019](https://web.archive.org/web/20250523105107/https://parliament.ms/documents/laws/6-09-public-holidays-act/)
+        * [National Day of Prayer and Thanksgiving, 2021](https://web.archive.org/web/20220809144840/https://www.gov.ms/2021/07/16/wednesday-july-21-2021-public-holiday-national-day-of-prayer-thanksgiving/)
+        * [National Day of Prayer and Thanksgiving, 2022](https://web.archive.org/web/20220816124619/https://www.gov.ms/2022/07/19/public-holiday-for-national-day-of-prayer-and-thanksgiving-to-be-held-on-july-20-2022/)
+        * [National Day of Prayer and Thanksgiving](https://web.archive.org/web/20240711221313/https://www.gov.ms/wp-content/uploads/2023/05/SRO-No.-15-of-2023-Public-Holidays-Amendment-of-Schedule-Order.pdf)
         * [Queen's Platinum Jubilee, 2022](https://www.gov.ms/tag/public-holidays/)
-        * [Montserrat Public holidays, 2024](https://www.gov.ms/wp-content/uploads/2023/12/Public-Holidays-Montserrat-2024.docx.pdf)
+        * [Montserrat Public holidays, 2024](https://web.archive.org/web/20240421112540/https://www.gov.ms/wp-content/uploads/2023/12/Public-Holidays-Montserrat-2024.docx.pdf)
         * [Montserrat Public holidays, 2025](https://www.gov.ms/wp-content/uploads/2025/01/2025-Public-Holidays-on-Montserrat.pdf)
     """
 
@@ -141,8 +141,8 @@ class MontserratStaticHolidays(StaticHolidays):
     """Montserrat special holidays.
 
     References:
-        * [September 14th, 2018](https://www.gov.ms/wp-content/uploads/2020/11/SRO.-No.-35-of-2018-Proclamation-Declaring-Friday-14-September-2018-as-a-public-holiday.pdf)
-        * [July 15th, 2020](https://www.gov.ms/wp-content/uploads/2020/08/SRO.-No.-40-of-2020-Proclamation-Declaring-Wednesday-15-July-2020-as-a-Public-Holiday.pdf)
+        * [September 14th, 2018](https://web.archive.org/web/20220810224300/https://www.gov.ms/wp-content/uploads/2020/11/SRO.-No.-35-of-2018-Proclamation-Declaring-Friday-14-September-2018-as-a-public-holiday.pdf)
+        * [July 15th, 2020](https://web.archive.org/web/20220810225456/https://www.gov.ms/wp-content/uploads/2020/08/SRO.-No.-40-of-2020-Proclamation-Declaring-Wednesday-15-July-2020-as-a-Public-Holiday.pdf)
     """
 
     # Special Public Holiday.
