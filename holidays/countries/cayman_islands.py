@@ -28,11 +28,8 @@ class CaymanIslands(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Cayman_Islands>
         * [Public Holidays Law (2007 Revision)](https://web.archive.org/web/20250227060525/https://legislation.gov.ky/cms/images/LEGISLATION/PRINCIPAL/1964/1964-0140/PublicHolidaysAct_2007%20Revision_g.pdf)
         * [Public Holidays Order, 2024](https://web.archive.org/web/20240518181823/https://legislation.gov.ky/cms/images/LEGISLATION/AMENDING/2024/2024-O004/PublicHolidaysOrder2024SL4of2024.pdf)
-        * [2006-2007](https://web.archive.org/web/20061005043512/http://www.gov.ky/portal/page?_pageid=1142,1592653&_dad=portal&_schema=PORTAL)
-        * [2008-2009](https://web.archive.org/web/20090114153804/http://www.gov.ky/portal/page?_pageid=1142,1592653&_dad=portal&_schema=PORTAL)
-        * [2010-2011](https://web.archive.org/web/20101130124121/http://www.gov.ky/portal/page?_pageid=1142,1592653&_dad=portal&_schema=PORTAL)
-        * [2012-2013](http://archive.today/2012.12.20-043003/http://www.gov.ky/portal/page?_pageid=1142,1592653&_dad=portal&_schema=PORTAL)
-        * [2014-2015](https://web.archive.org/web/20141108191601/http://www.gov.ky/portal/page?_pageid=1142,1592653&_dad=portal&_schema=PORTAL)
+        * [2006-2015](https://web.archive.org/web/20151014061601/http://www.gov.ky/portal/page?_pageid=1142,1592653&_dad=portal&_schema=PORTAL)
+        * [2016-2018](https://web.archive.org/web/20180330170202/http://www.gov.ky:80/portal/page/portal/cighome/cayman/islands/publicholidays)
         * [2021](http://archive.today/2025.07.09-033240/https://www.gov.ky/news/press-release-details/public-holidays-for-2021)
         * [2022](http://archive.today/2025.07.09-033515/https://www.gov.ky/news/press-release-details/public-holidays-2022)
         * [2024](http://archive.today/2025.01.06-110234/https://www.gov.ky/calendar/public-holidays)
