@@ -83,7 +83,7 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
 
     def test_general_prayer_day(self):
         name = "Journée de prière générale"
-        self.assertHolidayName(name, (f"{year}-06-30" for year in range(1959, 2050)))
+        self.assertHolidayName(name, (f"{year}-06-30" for year in range(2007, 2050)))
 
     def test_independence_day(self):
         name = "Jour de l'indépendance"
@@ -116,7 +116,7 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-30",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1959, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2007, 2050))
 
     def test_eid_al_adha(self):
         name = "Aïd al-Adha"
@@ -129,7 +129,7 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-07",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1959, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2007, 2050))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

@@ -27,6 +27,8 @@ class CentralAfricanRepublic(
         * [Public holidays in the Central African Republic](https://en.wikipedia.org/wiki/Public_holidays_in_the_Central_African_Republic)
         * [Holidays Today in Central African Republic](https://www.timeanddate.com/holidays/central-african-republic/)
         * [Central African Republic](https://holidayapi.com/countries/cf/2023)
+        * [Public Holidays and Bank Holidays for Central African Republic](https://web.archive.org/web/20071220234339/http://www.qppstudio.net/publicholidays2007/central_african_republic.htm)
+        * [PUBLIC HOLIDAYS](https://web.archive.org/web/20171215122602/http://www.ais-asecna.org/pdf/gen/gen-2-1/04gen2-1-01.pdf)
     """
 
     country = "CF"
@@ -72,8 +74,9 @@ class CentralAfricanRepublic(
         # Whit Monday.
         self._add_whit_monday(tr("Pentecôte"))
 
-        # General Prayer Day.
-        self._add_holiday_jun_30(tr("Journée de prière générale"))
+        if self._year >= 2007:
+            # General Prayer Day.
+            self._add_holiday_jun_30(tr("Journée de prière générale"))
 
         if self._year >= 1960:
             # Independence Day.
@@ -91,11 +94,12 @@ class CentralAfricanRepublic(
         # Christmas Day.
         self._add_christmas_day(tr("Jour de Noël"))
 
-        # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Aïd al-Fitr"))
+        if self._year >= 2007:
+            # Eid al-Fitr.
+            self._add_eid_al_fitr_day(tr("Aïd al-Fitr"))
 
-        # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Aïd al-Adha"))
+            # Eid al-Adha.
+            self._add_eid_al_adha_day(tr("Aïd al-Adha"))
 
 
 class CF(CentralAfricanRepublic):
