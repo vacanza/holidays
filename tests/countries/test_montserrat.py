@@ -145,7 +145,7 @@ class TestMontserrat(CommonCountryTests, TestCase):
             "2022-07-20",
             "2023-07-12",
         )
-        self.assertNoHolidayName(first_name, range(2017, 2021))
+        self.assertNoHolidayName(first_name, range(2017, 2021), range(2024, 2050))
         second_name = "Day of Prayer and Thanksgiving"
         self.assertHolidayName(
             second_name,
