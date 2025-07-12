@@ -69,7 +69,7 @@ class CentralAfricanRepublic(
         self._add_labor_day(tr("Fête du Travail"))
 
         # Ascension Day.
-        self._add_ascension_thursday(tr("Ascension Day"))
+        self._add_ascension_thursday(tr("Ascension"))
 
         # Whit Monday.
         self._add_whit_monday(tr("Pentecôte"))
