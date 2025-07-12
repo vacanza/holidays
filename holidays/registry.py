@@ -58,6 +58,7 @@ COUNTRIES: RegistryDict = {
     "cameroon": ("Cameroon", "CM", "CMR"),
     "canada": ("Canada", "CA", "CAN"),
     "cayman_islands": ("CaymanIslands", "KY", "CYM"),
+    "central_african_republic": ("CentralAfricanRepublic", "CF", "CAF"),
     "chad": ("Chad", "TD", "TCD"),
     "chile": ("Chile", "CL", "CHL"),
     "china": ("China", "CN", "CHN"),
