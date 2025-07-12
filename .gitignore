@@ -5,6 +5,7 @@
 .tox
 .venv
 .vscode/
+**/__pycache__/
 *.code-workspace
 *.csv
 *.DS_Store
@@ -16,12 +17,9 @@ coverage.lcov
 coverage.xml
 dist/
 docs/auto_gen_files/
-docs/build
-docs/source/_autosummary
 holidays/locale/pot/*.pot
 MANIFEST
 Pipfile
 sbom.json
 site/
 venv/
-**/__pycache__/
