@@ -18,25 +18,22 @@ from holidays.holiday_base import HolidayBase
 
 
 class FaroeIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    Faroe Islands holidays.
+    """Faroe Islands holidays.
 
     References:
-        - https://visitfaroeislands.com/en/plan-your-stay/before-you-arrive-in-the-faroe-islands/\
-            public-holidays
-        - https://guidetofaroeislands.fo/travel-information/faroe-islands-holiday/
-        - https://www.timeanddate.com/holidays/faroe-islands/2025
-        - https://www.framtak.com/info/holidays.html
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Iceland
-        - https://dictionary.cambridge.org/translate/
-        - https://en.wikipedia.org/wiki/Public_holidays_in_the_Faroe_Islands
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Faroe_Islands>
+        * [Decree no. 52 of 23 April 2003](https://web.archive.org/web/20241204233745/https://logir.fo/Kunngerd/52-fra-23-04-2003-um-flagging-fra-landsins-bygningum)
+        * [2007(https://web.archive.org/web/20250125193236/https://www.framtak.com/info/holidays.html))
+        * [2024](https://web.archive.org/web/20250615193008/https://visitfaroeislands.com/en/plan-your-stay/get-ready-for-your-trip/general-facts/public-holidays)
+        * [2025](https://web.archive.org/web/20250615193215/https://guidetofaroeislands.fo/travel-information/faroe-islands-holiday/)
     """
 
     country = "FO"
     default_language = "fo"
+    # Denmark granted home rule to the Faroe Islands on 30 March 1948.
+    start_year = 1949
     supported_categories = (HALF_DAY, PUBLIC)
     supported_languages = ("da", "en_US", "fo", "is", "no", "sv")
-    start_year = 1948  # Year of home rule
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -87,14 +84,14 @@ class FaroeIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_eve(tr("Nýggjársaftan"))
 
     def _populate_half_day_holidays(self):
+        # National Flag Day.
+        self._add_holiday_apr_25(tr("Flaggdagur"))
+
         # Constitution Day.
         self._add_holiday_jun_5(tr("Grundlógardagur"))
 
         # Saint Olaf's Eve.
         self._add_holiday_jul_28(tr("Ólavsøkuaftan"))
-
-        # National Flag Day.
-        self._add_holiday_apr_25(tr("Flaggdagur"))
 
 
 class FO(FaroeIslands):

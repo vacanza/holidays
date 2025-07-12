@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.77\n"
 "POT-Creation-Date: 2025-06-15 18:52+0530\n"
-"PO-Revision-Date: 2025-06-15 18:52+0530\n"
-"Last-Translator: Shreyas Smarth <smarth.shreyas@gmail.com>\n"
+"PO-Revision-Date: 2025-07-12 23:12+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fo\n"
 "MIME-Version: 1.0\n"
@@ -82,14 +82,14 @@ msgstr ""
 msgid "Nýggjársaftan"
 msgstr ""
 
+#. National Flag Day.
+msgid "Flaggdagur"
+msgstr ""
+
 #. Constitution Day.
 msgid "Grundlógardagur"
 msgstr ""
 
 #. Saint Olaf's Eve.
 msgid "Ólavsøkuaftan"
-msgstr ""
-
-#. National Flag Day.
-msgid "Flaggdagur"
 msgstr ""

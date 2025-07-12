@@ -588,18 +588,18 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>WORKDAY</td>
 </tr>
 <tr>
-  <td>Faroe Islands</td>
-  <td>FO</td>
-  <td></td>
-  <td>da, en_US, <strong>fo</strong>, is, no, sv</td>
-  <td>HALF_DAY</td>
-</tr>
-<tr>
 <td>Falkland Islands</td>
 <td>FK</td>
 <td></td>
 <td><strong>en_GB</strong>, en_US</td>
 <td>GOVERNMENT, WORKDAY</td>
+</tr>
+<tr>
+<td>Faroe Islands</td>
+<td>FO</td>
+<td></td>
+<td>da, en_US, <strong>fo</strong>, is, no, sv</td>
+<td>HALF_DAY</td>
 </tr>
 <tr>
 <td>Fiji</td>

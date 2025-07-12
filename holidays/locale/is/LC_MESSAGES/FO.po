@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.77\n"
 "POT-Creation-Date: 2025-06-15 18:52+0530\n"
-"PO-Revision-Date: 2025-06-15 18:52+0530\n"
-"Last-Translator: Shreyas Smarth <smarth.shreyas@gmail.com>\n"
+"PO-Revision-Date: 2025-07-12 23:12+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "Annar í páskum"
 
 #. Great Prayer Day.
 msgid "Dýri biðidagur"
-msgstr "Bænadagur"
+msgstr "Kóngsbænadagur"
 
 #. Ascension Day.
 msgid "Kristi himmalsferðardagur"
@@ -64,7 +64,7 @@ msgstr "Annar í hvítasunnu"
 
 #. Saint Olaf's Day.
 msgid "Ólavsøkudagur"
-msgstr "Ólafsvaka"
+msgstr "Ólafsdagur"
 
 #. Christmas Eve.
 msgid "Jólaaftan"
@@ -82,14 +82,14 @@ msgstr "Annar í jólum"
 msgid "Nýggjársaftan"
 msgstr "Gamlársdagur"
 
+#. National Flag Day.
+msgid "Flaggdagur"
+msgstr "Fánadagur"
+
 #. Constitution Day.
 msgid "Grundlógardagur"
 msgstr "Stjórnarskrárdagur"
 
 #. Saint Olaf's Eve.
 msgid "Ólavsøkuaftan"
-msgstr "Ólafsvöku aðfaranótt"
-
-#. National Flag Day.
-msgid "Flaggdagur"
-msgstr "Fánadagur"
+msgstr "Ólafsnótt"

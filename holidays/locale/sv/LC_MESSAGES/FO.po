@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.77\n"
 "POT-Creation-Date: 2025-06-15 18:52+0530\n"
-"PO-Revision-Date: 2025-06-15 18:52+0530\n"
-"Last-Translator: Shreyas Smarth <smarth.shreyas@gmail.com>\n"
+"PO-Revision-Date: 2025-07-12 23:12+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -32,11 +32,11 @@ msgstr "Nyårsdagen"
 
 #. Maundy Thursday.
 msgid "Skírhósdagur"
-msgstr "Skärtorsdag"
+msgstr "Skärtorsdagen"
 
 #. Good Friday.
 msgid "Langifríggjadagur"
-msgstr "Långfredag"
+msgstr "Långfredagen"
 
 #. Easter Sunday.
 msgid "Páskadagur"
@@ -48,7 +48,7 @@ msgstr "Annandag påsk"
 
 #. Great Prayer Day.
 msgid "Dýri biðidagur"
-msgstr "Bönedag"
+msgstr "Stora bönedagen"
 
 #. Ascension Day.
 msgid "Kristi himmalsferðardagur"
@@ -64,7 +64,7 @@ msgstr "Annandag pingst"
 
 #. Saint Olaf's Day.
 msgid "Ólavsøkudagur"
-msgstr "Olofsmässodagen"
+msgstr "Olafsdagen"
 
 #. Christmas Eve.
 msgid "Jólaaftan"
@@ -82,14 +82,14 @@ msgstr "Annandag jul"
 msgid "Nýggjársaftan"
 msgstr "Nyårsafton"
 
+#. National Flag Day.
+msgid "Flaggdagur"
+msgstr "Flaggdagen"
+
 #. Constitution Day.
 msgid "Grundlógardagur"
 msgstr "Grundlagsdag"
 
 #. Saint Olaf's Eve.
 msgid "Ólavsøkuaftan"
-msgstr "Olofsmässafton"
-
-#. National Flag Day.
-msgid "Flaggdagur"
-msgstr "Flaggdag"
+msgstr "Olafsafton"
