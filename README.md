@@ -1127,6 +1127,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Norfolk Island</td>
+<td>NF</td>
+<td></td>
+<td><strong>en_NF</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Northern Mariana Islands (the)</td>
 <td>MP</td>
 <td>Can also be loaded as country US, subdivision MP</td>
