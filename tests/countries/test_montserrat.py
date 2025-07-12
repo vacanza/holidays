@@ -36,18 +36,13 @@ class TestMontserrat(CommonCountryTests, TestCase):
             "2020-07-15",
             "2023-04-12",
         )
-        self.assertHolidayName(
-            "Platinum Jubilee of Elizabeth II",
-            "2022-06-03",
-        )
-        self.assertHolidayName(
-            "National Day of Mourning",
-            "2022-09-19",
-        )
-        self.assertHolidayName(
-            "Coronation of King Charles III",
-            "2023-05-06",
-        )
+
+        for dt, name in (
+            ("2022-06-03", "Platinum Jubilee of Elizabeth II"),
+            ("2022-09-19", "National Day of Mourning"),
+            ("2023-05-06", "Coronation of King Charles III"),
+        ):
+            self.assertHolidayName(name, dt)
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -144,20 +139,19 @@ class TestMontserrat(CommonCountryTests, TestCase):
 
     def test_day_of_prayer_and_thanksgiving(self):
         first_name = "National Day of Prayer and Thanksgiving"
-        pre_2024_dts = (
+        self.assertHolidayName(
+            first_name,
             "2021-07-21",
             "2022-07-20",
             "2023-07-12",
         )
-        self.assertHolidayName(first_name, pre_2024_dts)
-        self.assertHolidayName(first_name, range(2021, 2024))
         self.assertNoHolidayName(first_name, range(2017, 2021))
         second_name = "Day of Prayer and Thanksgiving"
-        post_2024_dts = (
+        self.assertHolidayName(
+            second_name,
             "2024-07-10",
             "2025-07-09",
         )
-        self.assertHolidayName(second_name, post_2024_dts)
         self.assertHolidayName(second_name, range(2024, 2050))
         self.assertNoHolidayName(second_name, range(2017, 2024))
 
