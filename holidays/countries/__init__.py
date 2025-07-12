@@ -76,6 +76,7 @@ from holidays.countries.estonia import Estonia, EE, EST
 from holidays.countries.eswatini import Eswatini, SZ, SZW, Swaziland
 from holidays.countries.ethiopia import Ethiopia, ET, ETH
 from holidays.countries.falkland_islands import FalklandIslands, FK, FLK
+from holidays.countries.faroe_islands import FaroeIslands, FO, FRO
 from holidays.countries.fiji import Fiji, FJ, FJI
 from holidays.countries.finland import Finland, FI, FIN
 from holidays.countries.france import France, FR, FRA
