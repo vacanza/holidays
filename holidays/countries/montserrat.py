@@ -153,7 +153,6 @@ class MontserratStaticHolidays(StaticHolidays):
         * [September 14th, 2018](https://web.archive.org/web/20220810224300/https://www.gov.ms/wp-content/uploads/2020/11/SRO.-No.-35-of-2018-Proclamation-Declaring-Friday-14-September-2018-as-a-public-holiday.pdf)
         * [May 10th, 2019](https://web.archive.org/web/20240626113529/https://parliament.ms/wp-content/uploads/2022/02/SRO-No-13-of-2019-Proclamation-Declaring-Friday-10-May-2019-as-a-publi._.pdf)
         * [July 15th, 2020](https://web.archive.org/web/20220810225456/https://www.gov.ms/wp-content/uploads/2020/08/SRO.-No.-40-of-2020-Proclamation-Declaring-Wednesday-15-July-2020-as-a-Public-Holiday.pdf)
-        * [20th July, 2022](https://web.archive.org/web/20221204191150/https://www.parliament.ms/wp-content/uploads/2022/08/SR6BA11.pdf)
         * [National Day of Mourning](https://web.archive.org/web/20240617072858/https://www.parliament.ms/wp-content/uploads/2022/09/SRO-No.43-of-2022-Proclamation-Appointing-Monday-19-September-2022-a-Public-Holiday.pdf)
         * [Coronation of King Charles III](https://web.archive.org/web/20241126232715/https://www.gov.ms/wp-content/uploads/2023/02/Public-Holidays-Montserrat-2023_page-0001.jpg)
     """
@@ -166,7 +165,8 @@ class MontserratStaticHolidays(StaticHolidays):
         2019: (MAY, 10, name),
         2020: (JUL, 15, name),
         2022: (
-            (JUL, 20, name),
+            # Platinum Jubilee of Elizabeth II.
+            (JUN, 3, tr("Platinum Jubilee of Elizabeth II")),
             # National Day of Mourning.
             (SEP, 19, tr("National Day of Mourning")),
         ),

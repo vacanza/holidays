@@ -86,6 +86,10 @@ msgstr ""
 msgid "Special Public Holiday"
 msgstr ""
 
+#. Platinum Jubilee of Elizabeth II.
+msgid "Platinum Jubilee of Elizabeth II"
+msgstr ""
+
 #. National Day of Mourning.
 msgid "National Day of Mourning"
 msgstr ""

@@ -29,12 +29,16 @@ class TestMontserrat(CommonCountryTests, TestCase):
         self.assertNoHolidays(Montserrat(years=2016))
 
     def test_special_holidays(self):
-        self.assertHoliday(
+        self.assertHolidayName(
+            "Special Public Holiday",
             "2018-09-14",
             "2019-05-10",
             "2020-07-15",
-            "2022-07-20",
             "2023-04-12",
+        )
+        self.assertHolidayName(
+            "Platinum Jubilee of Elizabeth II",
+            "2022-06-03",
         )
         self.assertHolidayName(
             "National Day of Mourning",
