@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC
@@ -88,7 +87,7 @@ class Montserrat(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
             2023: (JUN, 19),
             2024: (JUN, 17),
         }
-        birthday_dt = (
+        sovereign_birthday_dt = (
             self._add_holiday(name, dt)
             if (dt := sovereign_birthday_dts.get(self._year))
             else self._add_holiday_2_days_past_2nd_sat_of_jun(name)
@@ -97,7 +96,7 @@ class Montserrat(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         # Whit Monday.
         name = tr("Whit Monday")
         whit_monday_dt = self._add_whit_monday(name)
-        if whit_monday_dt == birthday_dt:
+        if whit_monday_dt == sovereign_birthday_dt:
             self._add_observed(whit_monday_dt, name=name, rule=MON_TO_NEXT_TUE)
 
         if self._year >= 2021:
@@ -135,7 +134,7 @@ class Montserrat(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         # Festival Day.
         name = tr("Festival Day")
         self._add_new_years_eve(name)
-        self._add_observed(date(self._year - 1, DEC, 31), name, rule=SAT_TO_NEXT_MON)
+        self._add_observed((self._year - 1, DEC, 31), name, rule=SAT_TO_NEXT_MON)
 
 
 class MS(Montserrat):
