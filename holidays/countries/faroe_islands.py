@@ -23,7 +23,7 @@ class FaroeIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Faroe_Islands>
         * [Decree no. 52 of 23 April 2003](https://web.archive.org/web/20241204233745/https://logir.fo/Kunngerd/52-fra-23-04-2003-um-flagging-fra-landsins-bygningum)
-        * [2007(https://web.archive.org/web/20250125193236/https://www.framtak.com/info/holidays.html))
+        * [2007](https://web.archive.org/web/20250125193236/https://www.framtak.com/info/holidays.html))
         * [2024](https://web.archive.org/web/20250615193008/https://visitfaroeislands.com/en/plan-your-stay/get-ready-for-your-trip/general-facts/public-holidays)
         * [2025](https://web.archive.org/web/20250615193215/https://guidetofaroeislands.fo/travel-information/faroe-islands-holiday/)
     """
