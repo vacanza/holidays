@@ -148,6 +148,7 @@ COUNTRIES: RegistryDict = {
     "monaco": ("Monaco", "MC", "MCO"),
     "mongolia": ("Mongolia", "MN", "MNG"),
     "montenegro": ("Montenegro", "ME", "MNE"),
+    "montserrat": ("Montserrat", "MS", "MSR"),
     "morocco": ("Morocco", "MA", "MOR"),
     "mozambique": ("Mozambique", "MZ", "MOZ"),
     "namibia": ("Namibia", "NA", "NAM"),

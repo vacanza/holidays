@@ -145,6 +145,7 @@ from holidays.countries.moldova import Moldova, MD, MDA
 from holidays.countries.monaco import Monaco, MC, MCO
 from holidays.countries.mongolia import Mongolia, MN, MNG
 from holidays.countries.montenegro import Montenegro, ME, MNE
+from holidays.countries.montserrat import Montserrat, MS, MSR
 from holidays.countries.morocco import Morocco, MA, MOR
 from holidays.countries.mozambique import Mozambique, MZ, MOZ
 from holidays.countries.namibia import Namibia, NA, NAM
