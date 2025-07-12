@@ -91,6 +91,3 @@ msgstr ""
 #. Eid al-Adha.
 msgid "Aïd al-Adha"
 msgstr ""
-
-#~ msgid "Ascension Day"
-#~ msgstr ""

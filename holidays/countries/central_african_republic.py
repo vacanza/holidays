@@ -14,7 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase
 
 
@@ -25,9 +25,6 @@ class CentralAfricanRepublic(
 
     References:
         * [Public holidays in the Central African Republic](https://en.wikipedia.org/wiki/Public_holidays_in_the_Central_African_Republic)
-        * [Holidays Today in Central African Republic](https://www.timeanddate.com/holidays/central-african-republic/)
-        * [Central African Republic](https://holidayapi.com/countries/cf/2023)
-        * [Public Holidays and Bank Holidays for Central African Republic](https://web.archive.org/web/20071220234339/http://www.qppstudio.net/publicholidays2007/central_african_republic.htm)
         * [PUBLIC HOLIDAYS](https://web.archive.org/web/20171215122602/http://www.ais-asecna.org/pdf/gen/gen-2-1/04gen2-1-01.pdf)
     """
 
@@ -38,7 +35,7 @@ class CentralAfricanRepublic(
     estimated_label = tr("%s (estimé)")
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (observé, estimé)")
-    # December 1, 1958: Autonomy within the French Community, celebrated as Republic Day.
+    # December 1, 1958: Autonomy within the French Community.
     start_year = 1959
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
