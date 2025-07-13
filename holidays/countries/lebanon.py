@@ -161,6 +161,17 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
             # Rafik Hariri Memorial Day.
             self._add_holiday_feb_14(tr("يوم ذكرى رفيق الحريري"))
 
+            self._add_easter_monday(
+                # Catholic Easter Monday.
+                tr("اثنين الفصح عند الطوائف الكاثوليكية")
+            )
+
+            self._add_easter_monday(
+                # Orthodox Easter Monday.
+                tr("اثنين الفصح عند الطوائف الأرثوذكسية"),
+                calendar=JULIAN_CALENDAR,
+            )
+
     def _populate_government_holidays(self):
         if self._year >= 2020:
             # Rafik Hariri Memorial Day.

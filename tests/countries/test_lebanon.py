@@ -116,7 +116,9 @@ class TestLebanon(CommonCountryTests, TestCase):
             "1990-04-16",
         )
         self.assertHolidayName(name, range(1986, 1995))
+        self.assertHolidayName(name, self.bank_holidays, range(2020, 2050))
         self.assertNoHolidayName(name, range(1978, 1986), range(1995, 2050))
+        self.assertNoHolidayName(name, self.bank_holidays, range(1978, 2019))
 
     def test_orthodox_easter_monday(self):
         name = "اثنين الفصح عند الطوائف الأرثوذكسية"
@@ -129,7 +131,9 @@ class TestLebanon(CommonCountryTests, TestCase):
             "1990-04-16",
         )
         self.assertHolidayName(name, range(1986, 1995))
+        self.assertHolidayName(name, self.bank_holidays, range(2020, 2050))
         self.assertNoHolidayName(name, range(1978, 1986), range(1995, 2050))
+        self.assertNoHolidayName(name, self.bank_holidays, range(1978, 2019))
 
     def test_orthodox_easter_tuesday(self):
         name = "ثلاثاء الفصح للطوائف الأرثوذكسية"
@@ -331,6 +335,10 @@ class TestLebanon(CommonCountryTests, TestCase):
                 "الجمعة العظيمة عند الطوائف الأرثوذكسية; الجمعة العظيمة عند الطوائف الكاثوليكية",
             ),
             ("2025-04-19", "سبت النور للطائفة الأرثوذكسية"),
+            (
+                "2025-04-21",
+                "اثنين الفصح عند الطوائف الأرثوذكسية; اثنين الفصح عند الطوائف الكاثوليكية",
+            ),
             ("2025-05-01", "عيد العمل"),
             ("2025-05-04", "عيد الشهداء"),
             ("2025-05-11", "عيد المقاومة والتحرير"),
@@ -357,6 +365,7 @@ class TestLebanon(CommonCountryTests, TestCase):
             ("2025-03-31", "Eid al-Fitr"),
             ("2025-04-18", "Catholic Good Friday; Orthodox Good Friday"),
             ("2025-04-19", "Orthodox Holy Saturday"),
+            ("2025-04-21", "Catholic Easter Monday; Orthodox Easter Monday"),
             ("2025-05-01", "Labor Day"),
             ("2025-05-04", "Martyrs' Day"),
             ("2025-05-11", "Resistance and Liberation Day"),
