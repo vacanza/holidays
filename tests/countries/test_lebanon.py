@@ -190,8 +190,8 @@ class TestLebanon(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name, self.government_holidays, (f"{year}-08-04" for year in range(2021, 2050))
         )
-        self.assertNoHolidayName(name, self.bank_holidays, range(1978, 2050))
-        self.assertNoHolidayName(name, self.government_holidays, range(1978, 2019))
+        self.assertNoHolidayName(name, self.government_holidays, range(1978, 2021))
+        self.assertNoHolidayName(name, self.bank_holidays)
 
     def test_assumption_day(self):
         self.assertHolidayName(
