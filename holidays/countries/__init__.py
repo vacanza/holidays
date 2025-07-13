@@ -91,6 +91,7 @@ from holidays.countries.gabon import Gabon, GA, GAB
 from holidays.countries.georgia import Georgia, GE, GEO
 from holidays.countries.germany import Germany, DE, DEU
 from holidays.countries.ghana import Ghana, GH, GHA
+from holidays.countries.gibraltar import Gibraltar, GI, GIB
 from holidays.countries.greece import Greece, GR, GRC
 from holidays.countries.greenland import Greenland, GL, GRL
 from holidays.countries.grenada import Grenada, GD, GRD
