@@ -212,8 +212,8 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
             2051: (JUN, 30),
             2052: (JUN, 21),
         }
-        if self._year in dates_obs:
-            self._add_holiday("Matariki", dates_obs[self._year])
+        if dt := dates_obs.get(self._year):
+            self._add_holiday("Matariki", dt)
 
         # Labour Day
         if self._year >= 1900:
