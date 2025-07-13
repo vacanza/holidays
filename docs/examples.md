@@ -352,9 +352,9 @@ We can use the `self._add_holiday_*` methods to specify holidays:
 >>> moving = MovingHolidays(years=2025)
 ```
 
-The supported patterns of `_add_holiday_*` method are: 
+The supported patterns of `_add_holiday_*` method are:
 
-- `_add_holiday_<month>_<day>` for fixed-date holidays 
+- `_add_holiday_<month>_<day>` for fixed-date holidays
 - `_add_holiday_<last/nth>_<weekday>_of_<month>` for holidays that occur on a specific weekday of a month
 - `_add_holiday_<n>_day(s)_<prior/past>_past_easter`
 - `_add_holiday_<n>_day(s)_<past/prior>_<last/nth>_<weekday>_of_<month>`
