@@ -135,6 +135,7 @@ from holidays.countries.madagascar import Madagascar, MG, MDG
 from holidays.countries.malawi import Malawi, MW, MWI
 from holidays.countries.malaysia import Malaysia, MY, MYS
 from holidays.countries.maldives import Maldives, MV, MDV
+from holidays.countries.mali import Mali, ML, MLI
 from holidays.countries.malta import Malta, MT, MLT
 from holidays.countries.marshall_islands import MarshallIslands, MH, MHL, HolidaysMH
 from holidays.countries.martinique import Martinique, MQ, MTQ, HolidaysMQ
