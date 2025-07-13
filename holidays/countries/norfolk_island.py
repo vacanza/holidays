@@ -29,9 +29,13 @@ class NorfolkIsland(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Norfolk_Island>
         * <https://web.archive.org/web/20250409233237/https://www.infrastructure.gov.au/territories-regions-cities/territories/norfolk-island/travel-information>
+        * [2020](https://web.archive.org/web/20220704121150/http://norfolkislander.com/images/2019_08_30_Gazette_No._38.pdf)
         * [2021](https://web.archive.org/web/20250710234146/http://www.norfolkislander.com/images/2020_07_31_Gazette_No._35.pdf)
         * [2022](https://web.archive.org/web/20250328071352/https://www.nirc.gov.au/files/assets/public/v/1/your-council/documents/nirc-gazettes/2021_07_09_gazette_no_29.pdf)
+        * [2023](https://web.archive.org/web/20250328071155/https://www.nirc.gov.au/files/assets/public/v/1/your-council/documents/nirc-gazettes/2022_07_21_gazette_no_29.pdf)
+        * [2024](https://web.archive.org/web/20250328070948/https://www.nirc.gov.au/files/assets/public/v/1/your-council/documents/nirc-gazettes/2023_07_13_gazette_no_40.pdf)
         * [2025](https://web.archive.org/web/20250711000525/https://www.nirc.gov.au/files/assets/public/v/1/your-council/documents/nirc-gazettes/2024_07_05_gazette_no_25.pdf)
+        * [2026](https://web.archive.org/web/20250713192750/https://www.nirc.gov.au/files/assets/public/v/1/your-council/documents/nirc-gazettes/2025/2025-07-11-gazette-no-26.pdf)
     """
 
     country = "NF"
@@ -68,8 +72,7 @@ class NorfolkIsland(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         self._add_anzac_day(tr("ANZAC Day"))
 
         # Bounty Day.
-        bounty_day = self._add_holiday_jun_8(tr("Bounty Day"))
-        self._add_observed(bounty_day)
+        self._add_observed(bounty_day := self._add_holiday_jun_8(tr("Bounty Day")))
 
         # Sovereign's Birthday.
         name = (
