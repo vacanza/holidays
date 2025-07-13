@@ -67,7 +67,6 @@ class TestNorfolkIsland(CommonCountryTests, TestCase):
         name = "Good Friday"
         self.assertHolidayName(
             name,
-            "2019-04-19",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
