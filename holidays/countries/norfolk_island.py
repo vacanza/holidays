@@ -10,20 +10,16 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import SEP, JUN
-from holidays.groups import (
-    ChristianHolidays,
-    InternationalHolidays,
-    StaticHolidays,
-)
+from holidays.calendars.gregorian import JUN, SEP, SAT, _timedelta, _get_nth_weekday_of_month
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
-    MON_TO_NEXT_TUE,
-    SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
+    SUN_TO_NEXT_MON,
 )
 
 
@@ -47,10 +43,6 @@ class NorfolkIsland(
     default_language = "en_NF"
     # %s (observed).
     observed_label = tr("%s (observed)")
-    # %s (estimated).
-    estimated_label = tr("%s (estimated)")
-    # %s (observed, estimated).
-    observed_estimated_label = tr("%s (observed, estimated)")
     supported_languages = ("en_NF", "en_US")
     start_year = 2016
 
@@ -78,27 +70,28 @@ class NorfolkIsland(
         self._add_easter_monday(tr("Easter Monday"))
 
         # ANZAC Day.
-        self._add_observed(self._add_anzac_day(tr("ANZAC Day")))
+        self._add_anzac_day(tr("ANZAC Day"))
 
         # Bounty Day.
-        self._add_observed(self._add_holiday_jun_8(tr("Bounty Day")), rule=SAT_SUN_TO_NEXT_MON)
+        bounty_day = self._add_holiday_jun_8(tr("Bounty Day"))
+        bounty_day_observed = self._add_observed(bounty_day)
 
-        sovereign_birthday_dates = {
-            2019: (JUN, 17),
-            2024: (JUN, 17),
-        }
         # Sovereign's Birthday.
-        if self._year >= 2023:
-            name = tr("King's Birthday")
-        else:
-            name = tr("Queen's Birthday")
-
-        if dt := sovereign_birthday_dates.get(self._year):
-            self._add_holiday(name, dt)
-        else:
-            self._add_observed(
-                self._add_holiday_2_days_past_2nd_sat_of_jun(name),
-            )
+        name = (
+            # King's Birthday.
+            tr("King's Birthday")
+            if self._year >= 2023
+            # Queen's Birthday.
+            else tr("Queen's Birthday")
+        )
+        second_saturday_of_june = _get_nth_weekday_of_month(2, SAT, JUN, self._year)
+        dt = _timedelta(second_saturday_of_june, 2)
+        self._add_holiday(
+            name,
+            # If Sovereign's Birthday falls on the same day as Bounty Day,
+            # it is moved to the next monday.
+            _timedelta(dt, +7) if dt in bounty_day_observed else dt,
+        )
 
         # Show Day.
         self._add_holiday_2nd_mon_of_oct(tr("Show Day"))
@@ -107,13 +100,16 @@ class NorfolkIsland(
         self._add_holiday_last_wed_of_nov(tr("Thanksgiving Day"))
 
         self._add_observed(
-            # Boxing Day.
-            self._add_christmas_day_two(tr("Boxing Day")),
-            rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE,
+            # Christmas Day.
+            self._add_christmas_day(tr("Christmas Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-        # Christmas Day.
-        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
+        self._add_observed(
+            # Boxing Day.
+            self._add_christmas_day_two(tr("Boxing Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
+        )
 
 
 class NF(NorfolkIsland):
