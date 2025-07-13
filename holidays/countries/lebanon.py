@@ -30,7 +30,7 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         * [Decree No. 15215 of 2005](https://web.archive.org/web/20250704170428/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=213954&LawID=211715&language=ar)
         * [Decree No. 16237 of 2006](https://web.archive.org/web/20250704170424/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=215180&LawID=212941&language=ar)
         * [Decree No. 3369 of 2010](https://web.archive.org/web/20250704170437/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=227216&LawID=224978&language=ar)
-        * https://web.archive.org/web/20200925173058/https://www.abl.org.lb/english/abl-and-banking-sector-news/official-holidays
+        * <https://web.archive.org/web/20200925173058/https://www.abl.org.lb/english/abl-and-banking-sector-news/official-holidays>
     """
 
     country = "LB"
