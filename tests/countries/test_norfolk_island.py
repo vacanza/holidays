@@ -99,6 +99,7 @@ class TestNorfolkIsland(CommonCountryTests, TestCase):
             "2025-06-09",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_sovereigns_birthday(self):
         name_king = "King's Birthday"
