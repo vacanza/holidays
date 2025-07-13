@@ -13,7 +13,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JUN, SEP, SAT, _timedelta, _get_nth_weekday_of_month
+from holidays.calendars.gregorian import SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -23,12 +23,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class NorfolkIsland(
-    ObservedHolidayBase,
-    ChristianHolidays,
-    InternationalHolidays,
-    StaticHolidays,
-):
+class NorfolkIsland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """Norfolk Island holidays.
 
     References:
@@ -74,7 +69,7 @@ class NorfolkIsland(
 
         # Bounty Day.
         bounty_day = self._add_holiday_jun_8(tr("Bounty Day"))
-        bounty_day_observed = self._add_observed(bounty_day)
+        self._add_observed(bounty_day)
 
         # Sovereign's Birthday.
         name = (
@@ -84,14 +79,12 @@ class NorfolkIsland(
             # Queen's Birthday.
             else tr("Queen's Birthday")
         )
-        second_saturday_of_june = _get_nth_weekday_of_month(2, SAT, JUN, self._year)
-        dt = _timedelta(second_saturday_of_june, 2)
-        self._add_holiday(
-            name,
-            # If Sovereign's Birthday falls on the same day as Bounty Day,
-            # it is moved to the next monday.
-            _timedelta(dt, +7) if dt in bounty_day_observed else dt,
-        )
+        # If Sovereign's Birthday falls on the same day as Bounty Day (observed),
+        # it is moved to the next Monday.
+        if self._is_saturday(bounty_day):
+            self._add_holiday_2_days_past_3rd_sat_of_jun(name)
+        else:
+            self._add_holiday_2_days_past_2nd_sat_of_jun(name)
 
         # Show Day.
         self._add_holiday_2nd_mon_of_oct(tr("Show Day"))
