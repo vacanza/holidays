@@ -102,7 +102,6 @@ class TestNorfolkIsland(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_sovereigns_birthday(self):
-        name_king = "King's Birthday"
         name_queen = "Queen's Birthday"
         self.assertHolidayName(
             name_queen,
@@ -115,6 +114,7 @@ class TestNorfolkIsland(CommonCountryTests, TestCase):
             "2022-06-13",
         )
         self.assertNoHolidayName(name_queen, range(2023, 2050))
+
         name_king = "King's Birthday"
         self.assertHolidayName(
             name_king,
