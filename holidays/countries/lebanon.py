@@ -26,9 +26,9 @@ from holidays.calendars.gregorian import (
     OCT,
     NOV,
     DEC,
-    SUN,
 )
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.constants import BANK, GOVERNMENT, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
@@ -43,6 +43,7 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         * [Decree No. 15215 of 2005](https://web.archive.org/web/20250704170428/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=213954&LawID=211715&language=ar)
         * [Decree No. 16237 of 2006](https://web.archive.org/web/20250704170424/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=215180&LawID=212941&language=ar)
         * [Decree No. 3369 of 2010](https://web.archive.org/web/20250704170437/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=227216&LawID=224978&language=ar)
+        * https://web.archive.org/web/20200925173058/https://www.abl.org.lb/english/abl-and-banking-sector-news/official-holidays
     """
 
     country = "LB"
@@ -54,8 +55,8 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (يُحتفل به، المقدرة)")
     start_year = 1978
+    supported_categories = (BANK, GOVERNMENT, PUBLIC)
     supported_languages = ("ar", "en_US")
-    weekend = {SUN}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -167,6 +168,20 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         self._add_eid_al_adha_day_two(name)
         if 1986 <= self._year <= 1993:
             self._add_eid_al_adha_day_three(name)
+
+    def _populate_bank_holidays(self):
+        if self._year >= 2020:
+            # Rafik Hariri Memorial Day.
+            self._add_holiday_feb_14(tr("يوم ذكرى رفيق الحريري"))
+
+    def _populate_government_holidays(self):
+        if self._year >= 2020:
+            # Rafik Hariri Memorial Day.
+            self._add_holiday_feb_14(tr("يوم ذكرى رفيق الحريري"))
+
+        if self._year >= 2021:
+            # Anniversary of the tragedy of Beirut port explosion.
+            self._add_holiday_aug_4(tr("ذكرى مأساة انفجار مرفأ بيروت"))
 
 
 class LB(Lebanon):

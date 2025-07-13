@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.77\n"
 "POT-Creation-Date: 2025-06-30 00:56+0530\n"
 "PO-Revision-Date: 2025-06-30 00:56+0530\n"
 "Last-Translator: Kriti Birda <workwithkritibirda@gmail.com>\n"
@@ -127,4 +127,12 @@ msgstr ""
 
 #. Eid al-Adha.
 msgid "عيد الأضحى"
+msgstr ""
+
+#. Rafik Hariri Memorial Day.
+msgid "يوم ذكرى رفيق الحريري"
+msgstr ""
+
+#. Anniversary of the tragedy of Beirut port explosion.
+msgid "ذكرى مأساة انفجار مرفأ بيروت"
 msgstr ""

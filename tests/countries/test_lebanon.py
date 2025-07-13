@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import BANK, GOVERNMENT
 from holidays.countries.lebanon import Lebanon, LB, LBN
 from tests.common import CommonCountryTests
 
@@ -21,10 +22,15 @@ class TestLebanon(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1978, 2050)
         super().setUpClass(Lebanon, years=years)
+        cls.bank_holidays = Lebanon(categories=BANK, years=years)
+        cls.government_holidays = Lebanon(categories=GOVERNMENT, years=years)
         cls.no_estimated_holidays = Lebanon(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(Lebanon, LB, LBN)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(Lebanon(years=1977))
 
     def test_new_years_day(self):
         self.assertHolidayName(
@@ -38,6 +44,18 @@ class TestLebanon(CommonCountryTests, TestCase):
 
     def test_saint_maron_day(self):
         self.assertHolidayName("عيد مار مارون", (f"{year}-02-09" for year in range(1978, 2050)))
+
+    def test_rafiki_memorial_day(self):
+        name = "يوم ذكرى رفيق الحريري"
+        self.assertHolidayName(
+            name, self.bank_holidays, (f"{year}-02-14" for year in range(2020, 2050))
+        )
+        self.assertHolidayName(
+            name, self.government_holidays, (f"{year}-02-14" for year in range(2020, 2050))
+        )
+        self.assertNoHolidayName(name, range(1978, 2050))
+        self.assertNoHolidayName(name, self.bank_holidays, range(1978, 2019))
+        self.assertNoHolidayName(name, self.government_holidays, range(1978, 2019))
 
     def test_feast_of_the_annunciation(self):
         name = "عيد بشارة السيدة مريم العذراء"
@@ -159,6 +177,15 @@ class TestLebanon(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(2006, 2050))
         self.assertNoHolidayName(name, range(1978, 2006))
+
+    def test_anniversary_of_the_tragedy_of_beirut_port_explosion(self):
+        name = "ذكرى مأساة انفجار مرفأ بيروت"
+        self.assertHolidayName(
+            name, self.government_holidays, (f"{year}-08-04" for year in range(2021, 2050))
+        )
+        self.assertNoHolidayName(name, range(1978, 2050))
+        self.assertNoHolidayName(name, self.bank_holidays, range(1978, 2050))
+        self.assertNoHolidayName(name, self.government_holidays, range(1978, 2019))
 
     def test_assumption_day(self):
         self.assertHolidayName(
@@ -293,6 +320,7 @@ class TestLebanon(CommonCountryTests, TestCase):
             ("2025-01-01", "رأس السنة الميلادية"),
             ("2025-01-06", "عيد الميلاد عند الطوائف الارمنية الارثوذكسية"),
             ("2025-02-09", "عيد مار مارون"),
+            ("2025-02-14", "يوم ذكرى رفيق الحريري"),
             ("2025-03-25", "عيد بشارة السيدة مريم العذراء"),
             ("2025-03-30", "عيد الفطر"),
             ("2025-03-31", "عيد الفطر"),
@@ -308,6 +336,7 @@ class TestLebanon(CommonCountryTests, TestCase):
             ("2025-06-07", "عيد الأضحى"),
             ("2025-06-26", "عيد رأس السنة الهجرية"),
             ("2025-07-05", "عاشوراء (المقدرة)"),
+            ("2025-08-04", "ذكرى مأساة انفجار مرفأ بيروت"),
             ("2025-08-15", "عيد انتقال العذراء"),
             ("2025-09-04", "ذكرى المولد النبوي الشريف (المقدرة)"),
             ("2025-11-22", "ذكرى الاستقلال"),
@@ -320,6 +349,7 @@ class TestLebanon(CommonCountryTests, TestCase):
             ("2025-01-01", "New Year's Day"),
             ("2025-01-06", "Armenian Orthodox Christmas Day"),
             ("2025-02-09", "Saint Maron's Day"),
+            ("2025-02-14", "Rafik Hariri Memorial Day"),
             ("2025-03-25", "Feast of the Annunciation"),
             ("2025-03-30", "Eid al-Fitr"),
             ("2025-03-31", "Eid al-Fitr"),
@@ -332,6 +362,7 @@ class TestLebanon(CommonCountryTests, TestCase):
             ("2025-06-07", "Eid al-Adha"),
             ("2025-06-26", "Islamic New Year"),
             ("2025-07-05", "Ashura (estimated)"),
+            ("2025-08-04", "Anniversary of the tragedy of Beirut port explosion"),
             ("2025-08-15", "Assumption Day"),
             ("2025-09-04", "Prophet's Birthday (estimated)"),
             ("2025-11-22", "Independence Day"),

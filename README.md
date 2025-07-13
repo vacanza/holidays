@@ -893,7 +893,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>LB</td>
 <td></td>
 <td><strong>ar</strong>, en_US</td>
-<td></td>
+<td>BANK, GOVERNMENT</td>
 </tr>
 <tr>
 <td>Lesotho</td>
