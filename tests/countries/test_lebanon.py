@@ -31,6 +31,8 @@ class TestLebanon(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Lebanon(years=1977))
+        self.assertNoHolidays(Lebanon(categories=BANK, years=2019))
+        self.assertNoHolidays(Lebanon(categories=GOVERNMENT, years=2019))
 
     def test_new_years_day(self):
         self.assertHolidayName(
@@ -47,13 +49,13 @@ class TestLebanon(CommonCountryTests, TestCase):
 
     def test_rafiki_memorial_day(self):
         name = "يوم ذكرى رفيق الحريري"
+        self.assertNoHolidayName(name)
         self.assertHolidayName(
             name, self.bank_holidays, (f"{year}-02-14" for year in range(2020, 2050))
         )
         self.assertHolidayName(
             name, self.government_holidays, (f"{year}-02-14" for year in range(2020, 2050))
         )
-        self.assertNoHolidayName(name, range(1978, 2050))
         self.assertNoHolidayName(name, self.bank_holidays, range(1978, 2019))
         self.assertNoHolidayName(name, self.government_holidays, range(1978, 2019))
 
@@ -180,10 +182,10 @@ class TestLebanon(CommonCountryTests, TestCase):
 
     def test_anniversary_of_the_tragedy_of_beirut_port_explosion(self):
         name = "ذكرى مأساة انفجار مرفأ بيروت"
+        self.assertNoHolidayName(name)
         self.assertHolidayName(
             name, self.government_holidays, (f"{year}-08-04" for year in range(2021, 2050))
         )
-        self.assertNoHolidayName(name, range(1978, 2050))
         self.assertNoHolidayName(name, self.bank_holidays, range(1978, 2050))
         self.assertNoHolidayName(name, self.government_holidays, range(1978, 2019))
 
