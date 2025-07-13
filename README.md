@@ -1043,6 +1043,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, WORKDAY</td>
 </tr>
 <tr>
+<td>Montserrat</td>
+<td>MS</td>
+<td></td>
+<td><strong>en_MS</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Morocco</td>
 <td>MA</td>
 <td></td>
