@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import BANK
 from holidays.countries.gibraltar import Gibraltar, GI, GIB
 from tests.common import CommonCountryTests
 
@@ -22,7 +21,6 @@ class TestGibraltar(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(2003, 2050)
         super().setUpClass(Gibraltar, years=years, years_non_observed=years)
-        cls.bank_holidays = Gibraltar(years=years, categories=BANK)
 
     def test_country_aliases(self):
         self.assertAliases(Gibraltar, GI, GIB)
@@ -36,14 +34,11 @@ class TestGibraltar(CommonCountryTests, TestCase):
             ("2012-06-05", "Queen's Diamond Jubilee"),
             ("2020-05-08", "75th Anniversary of VE Day"),
             ("2022-06-03", "Platinum Jubilee"),
-        ):
-            self.assertHolidayName(name, dt)
-        for dt, name in (
             ("2009-01-12", "Bank Holiday"),
             ("2015-09-07", "Evacuation Commemoration Day"),
             ("2023-05-08", "Special King's Coronation Bank Holiday"),
         ):
-            self.assertHolidayName(name, self.bank_holidays, dt)
+            self.assertHolidayName(name, dt)
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -56,6 +51,17 @@ class TestGibraltar(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_winter_bank_holiday(self):
+        name = "Winter Midterm Bank Holiday"
+        dts = (
+            "2023-02-20",
+            "2024-02-12",
+            "2025-02-17",
+        )
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(2023, 2050))
+        self.assertNoHolidayName(name, range(2003, 2023))
 
     def test_commonwealth_day(self):
         name = "Commonwealth Day"
@@ -110,10 +116,21 @@ class TestGibraltar(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
+    def test_spring_bank_holiday(self):
+        name = "Spring Bank Holiday"
+        dts = (
+            "2022-06-02",
+            "2023-05-29",
+            "2024-05-27",
+            "2025-05-26",
+        )
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(2003, 2050))
+
     def test_queens_birthday(self):
         name = "Queen's Birthday"
         dts = (
-            "2019--06-17",
+            "2019-06-17",
             "2020-06-15",
             "2021-06-14",
             "2022-06-13",
@@ -132,6 +149,27 @@ class TestGibraltar(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, range(2023, 2050))
         self.assertNoHolidayName(name, range(2003, 2023))
+
+    def test_summer_bank_holiday(self):
+        first_name = "Summer Bank Holiday"
+        dts = (
+            "2003-08-25",
+            "2004-08-30",
+            "2005-08-29",
+            "2006-08-28",
+            "2007-08-27",
+        )
+        self.assertHolidayName(first_name, dts)
+        second_name = "Late Summer Bank Holiday"
+        dts = (
+            "2022-08-29",
+            "2023-08-28",
+            "2024-08-26",
+            "2025-08-25",
+        )
+        self.assertHolidayName(second_name, dts)
+        self.assertHolidayName(second_name, range(2008, 2050))
+        self.assertNoHolidayName(second_name, range(2003, 2008))
 
     def test_national_day(self):
         name = "Gibraltar National Day"
@@ -173,49 +211,6 @@ class TestGibraltar(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-
-    def test_winter_bank_holiday(self):
-        name = "Winter Midterm Bank Holiday"
-        dts = (
-            "2023-02-20",
-            "2024-02-12",
-            "2025-02-17",
-        )
-        self.assertHolidayName(name, self.bank_holidays, dts)
-        self.assertHolidayName(name, self.bank_holidays, range(2023, 2050))
-        self.assertNoHolidayName(name, self.bank_holidays, range(2003, 2023))
-
-    def test_spring_bank_holiday(self):
-        name = "Spring Bank Holiday"
-        dts = (
-            "2022-06-02",
-            "2023-05-29",
-            "2024-05-27",
-            "2025-05-26",
-        )
-        self.assertHolidayName(name, self.bank_holidays, dts)
-        self.assertHolidayName(name, self.bank_holidays, range(2003, 2050))
-
-    def test_summer_bank_holiday(self):
-        first_name = "Summer Bank Holiday"
-        dts = (
-            "2003-08-25",
-            "2004-08-30",
-            "2005-08-29",
-            "2006-08-28",
-            "2007-08-27",
-        )
-        self.assertHolidayName(first_name, self.bank_holidays, dts)
-        second_name = "Late Summer Bank Holiday"
-        dts = (
-            "2022-08-29",
-            "2023-08-28",
-            "2024-08-26",
-            "2025-08-25",
-        )
-        self.assertHolidayName(second_name, self.bank_holidays, dts)
-        self.assertHolidayName(second_name, self.bank_holidays, range(2008, 2050))
-        self.assertNoHolidayName(second_name, self.bank_holidays, range(2003, 2008))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

@@ -669,7 +669,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GI</td>
 <td></td>
 <td><strong>en_GB</strong>, en_US</td>
-<td>BANK</td>
+<td></td>
 </tr>
 <tr>
 <td>Greece</td>

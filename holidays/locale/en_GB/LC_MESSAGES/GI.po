@@ -30,6 +30,10 @@ msgstr ""
 msgid "New Year's Day"
 msgstr ""
 
+#. Winter Midterm Bank Holiday.
+msgid "Winter Midterm Bank Holiday"
+msgstr ""
+
 #. Commonwealth Day.
 msgid "Commonwealth Day"
 msgstr ""
@@ -46,12 +50,24 @@ msgstr ""
 msgid "May Day"
 msgstr ""
 
+#. Spring Bank Holiday.
+msgid "Spring Bank Holiday"
+msgstr ""
+
 #. King's Birthday.
 msgid "King's Birthday"
 msgstr ""
 
 #. Queen's Birthday.
 msgid "Queen's Birthday"
+msgstr ""
+
+#. Summer Bank Holiday.
+msgid "Summer Bank Holiday"
+msgstr ""
+
+#. Late Summer Bank Holiday.
+msgid "Late Summer Bank Holiday"
 msgstr ""
 
 #. Gibraltar National Day.
@@ -66,36 +82,20 @@ msgstr ""
 msgid "Boxing Day"
 msgstr ""
 
-#. Winter Midterm Bank Holiday.
-msgid "Winter Midterm Bank Holiday"
-msgstr ""
-
-#. Spring Bank Holiday.
-msgid "Spring Bank Holiday"
-msgstr ""
-
-#. Summer Bank Holiday.
-msgid "Summer Bank Holiday"
-msgstr ""
-
-#. Late Summer Bank Holiday.
-msgid "Late Summer Bank Holiday"
-msgstr ""
-
-#. Evacuation Commemoration Day.
-msgid "Evacuation Commemoration Day"
-msgstr ""
-
-#. Special King’s Coronation Bank Holiday.
-msgid "Special King's Coronation Bank Holiday"
-msgstr ""
-
 #. Tercentenary Holiday.
 msgid "Tercentenary Holiday"
 msgstr ""
 
+#. Bank Holiday.
+msgid "Bank Holiday"
+msgstr ""
+
 #. Queen's Diamond Jubilee.
 msgid "Queen's Diamond Jubilee"
+msgstr ""
+
+#. Evacuation Commemoration Day.
+msgid "Evacuation Commemoration Day"
 msgstr ""
 
 #. 75th Anniversary of VE Day.
@@ -104,4 +104,8 @@ msgstr ""
 
 #. Platinum Jubilee.
 msgid "Platinum Jubilee"
+msgstr ""
+
+#. Special King’s Coronation Bank Holiday.
+msgid "Special King's Coronation Bank Holiday"
 msgstr ""

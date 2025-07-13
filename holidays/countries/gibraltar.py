@@ -13,7 +13,6 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, MAY, JUN, AUG, SEP
-from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -59,7 +58,6 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
     observed_label = "%s (observed)"
     # First holiday info available from 2003.
     start_year = 2003
-    supported_categories = (BANK, PUBLIC)
     supported_languages = ("en_GB", "en_US")
 
     def __init__(self, *args, **kwargs):
@@ -74,6 +72,15 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # New Year's Day.
             self._add_new_years_day(tr("New Year's Day")),
         )
+
+        if self._year >= 2023:
+            # Winter Midterm Bank Holiday.
+            name = tr("Winter Midterm Bank Holiday")
+            (
+                self._add_holiday_2nd_mon_of_feb(name)
+                if self._year == 2024
+                else self._add_holiday_3rd_mon_of_feb(name)
+            )
 
         if self._year <= 2022:
             # Commonwealth Day.
@@ -108,6 +115,17 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             else self._add_observed(self._add_labor_day(name))
         )
 
+        # Spring Bank Holiday.
+        name = tr("Spring Bank Holiday")
+        spring_bank_dts = {
+            2012: (JUN, 4),
+            2022: (JUN, 2),
+        }
+        if dt := spring_bank_dts.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_holiday_last_mon_of_may(name)
+
         name = (
             # King's Birthday.
             tr("King's Birthday")
@@ -129,6 +147,15 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             self._add_holiday_2_days_past_2nd_sat_of_jun(name)
         else:
             self._add_holiday_3rd_mon_of_jun(name)
+
+        name = (
+            # Summer Bank Holiday.
+            tr("Summer Bank Holiday")
+            if self._year <= 2007
+            # Late Summer Bank Holiday.
+            else tr("Late Summer Bank Holiday")
+        )
+        self._add_holiday_last_mon_of_aug(name)
 
         # Gibraltar National Day.
         name = tr("Gibraltar National Day")
@@ -153,36 +180,6 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-    def _populate_bank_holidays(self):
-        if self._year >= 2023:
-            # Winter Midterm Bank Holiday.
-            name = tr("Winter Midterm Bank Holiday")
-            (
-                self._add_holiday_2nd_mon_of_feb(name)
-                if self._year == 2024
-                else self._add_holiday_3rd_mon_of_feb(name)
-            )
-
-        # Spring Bank Holiday.
-        name = tr("Spring Bank Holiday")
-        spring_bank_dts = {
-            2012: (JUN, 4),
-            2022: (JUN, 2),
-        }
-        if dt := spring_bank_dts.get(self._year):
-            self._add_holiday(name, dt)
-        else:
-            self._add_holiday_last_mon_of_may(name)
-
-        name = (
-            # Summer Bank Holiday.
-            tr("Summer Bank Holiday")
-            if self._year <= 2007
-            # Late Summer Bank Holiday.
-            else tr("Late Summer Bank Holiday")
-        )
-        self._add_holiday_last_mon_of_aug(name)
-
 
 class GI(Gibraltar):
     pass
@@ -205,22 +202,19 @@ class GibraltarStaticHolidays(StaticHolidays):
         * [Special King's Coronation Bank Holiday, 2023](https://web.archive.org/web/20250508180948/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2022-6735/version/22-02-2023)
     """
 
-    special_bank_holidays = {
-        # Bank Holiday.
-        2009: (JAN, 12, "Bank Holiday"),
-        # Evacuation Commemoration Day.
-        2015: (SEP, 7, tr("Evacuation Commemoration Day")),
-        # Special King’s Coronation Bank Holiday.
-        2023: (MAY, 8, tr("Special King's Coronation Bank Holiday")),
-    }
-
     special_public_holidays = {
         # Tercentenary Holiday.
         2004: (AUG, 4, tr("Tercentenary Holiday")),
+        # Bank Holiday.
+        2009: (JAN, 12, tr("Bank Holiday")),
         # Queen's Diamond Jubilee.
         2012: (JUN, 5, tr("Queen's Diamond Jubilee")),
+        # Evacuation Commemoration Day.
+        2015: (SEP, 7, tr("Evacuation Commemoration Day")),
         # 75th Anniversary of VE Day.
         2020: (MAY, 8, tr("75th Anniversary of VE Day")),
         # Platinum Jubilee.
         2022: (JUN, 3, tr("Platinum Jubilee")),
+        # Special King’s Coronation Bank Holiday.
+        2023: (MAY, 8, tr("Special King's Coronation Bank Holiday")),
     }

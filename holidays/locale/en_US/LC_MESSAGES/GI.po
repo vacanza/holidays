@@ -31,6 +31,10 @@ msgstr ""
 msgid "New Year's Day"
 msgstr "New Year's Day"
 
+#. Winter Midterm Bank Holiday.
+msgid "Winter Midterm Bank Holiday"
+msgstr "Winter Midterm Bank Holiday"
+
 #. Commonwealth Day.
 msgid "Commonwealth Day"
 msgstr "Commonwealth Day"
@@ -47,6 +51,10 @@ msgstr "Easter Monday"
 msgid "May Day"
 msgstr "May Day"
 
+#. Spring Bank Holiday.
+msgid "Spring Bank Holiday"
+msgstr "Spring Bank Holiday"
+
 #. King's Birthday.
 msgid "King's Birthday"
 msgstr "King's Birthday"
@@ -54,6 +62,14 @@ msgstr "King's Birthday"
 #. Queen's Birthday.
 msgid "Queen's Birthday"
 msgstr "Queen's Birthday"
+
+#. Summer Bank Holiday.
+msgid "Summer Bank Holiday"
+msgstr "Summer Bank Holiday"
+
+#. Late Summer Bank Holiday.
+msgid "Late Summer Bank Holiday"
+msgstr "Late Summer Bank Holiday"
 
 #. Gibraltar National Day.
 msgid "Gibraltar National Day"
@@ -67,37 +83,21 @@ msgstr "Christmas Day"
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
-#. Winter Midterm Bank Holiday.
-msgid "Winter Midterm Bank Holiday"
-msgstr "Winter Midterm Bank Holiday"
-
-#. Spring Bank Holiday.
-msgid "Spring Bank Holiday"
-msgstr "Spring Bank Holiday"
-
-#. Summer Bank Holiday.
-msgid "Summer Bank Holiday"
-msgstr "Summer Bank Holiday"
-
-#. Late Summer Bank Holiday.
-msgid "Late Summer Bank Holiday"
-msgstr "Late Summer Bank Holiday"
-
-#. Evacuation Commemoration Day.
-msgid "Evacuation Commemoration Day"
-msgstr "Evacuation Commemoration Day"
-
-#. Special King’s Coronation Bank Holiday.
-msgid "Special King's Coronation Bank Holiday"
-msgstr "Special King's Coronation Bank Holiday"
-
 #. Tercentenary Holiday.
 msgid "Tercentenary Holiday"
 msgstr "Tercentenary Holiday"
 
+#. Bank Holiday.
+msgid "Bank Holiday"
+msgstr "Bank Holiday"
+
 #. Queen's Diamond Jubilee.
 msgid "Queen's Diamond Jubilee"
 msgstr "Queen's Diamond Jubilee"
+
+#. Evacuation Commemoration Day.
+msgid "Evacuation Commemoration Day"
+msgstr "Evacuation Commemoration Day"
 
 #. 75th Anniversary of VE Day.
 msgid "75th Anniversary of VE Day"
@@ -106,3 +106,7 @@ msgstr "75th Anniversary of VE Day"
 #. Platinum Jubilee.
 msgid "Platinum Jubilee"
 msgstr "Platinum Jubilee"
+
+#. Special King’s Coronation Bank Holiday.
+msgid "Special King's Coronation Bank Holiday"
+msgstr "Special King's Coronation Bank Holiday"
