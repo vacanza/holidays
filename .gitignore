@@ -1,3 +1,4 @@
+__pycache__
 .coverage
 .github_token
 .gitpod.yml
@@ -5,7 +6,6 @@
 .tox
 .venv
 .vscode/
-**/__pycache__/
 *.code-workspace
 *.csv
 *.DS_Store
