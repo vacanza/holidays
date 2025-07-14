@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.77\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2025-06-19 15:33+0700\n"
 "PO-Revision-Date: 2025-06-26 15:20+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
@@ -206,10 +206,6 @@ msgstr "วันเกิดโรเบิร์ต อี. ลี"
 #. State Holiday.
 msgid "State Holiday"
 msgstr "วันหยุดประจำรัฐ"
-
-#. Washington's Birthday.
-msgid "Washington's Birthday (observed)"
-msgstr ""
 
 #. Guam Discovery Day.
 msgid "Guam Discovery Day"

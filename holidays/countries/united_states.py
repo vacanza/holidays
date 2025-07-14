@@ -726,10 +726,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             )
 
         if self._year >= 1971:
-            self._add_holiday(
-                # Washington's Birthday.
-                tr("Washington's Birthday (observed)"),
-                self._get_observed_date(self._christmas_day, rule=GA_IN_WASHINGTON_BIRTHDAY),
+            # Washington's Birthday.
+            self._add_observed(
+                self._christmas_day,
+                rule=GA_IN_WASHINGTON_BIRTHDAY,
+                name=tr("Washington's Birthday"),
             )
 
     def _populate_subdiv_gu_public_holidays(self):
@@ -821,11 +822,12 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             # Lincoln's Birthday.
             self._add_holiday_1_day_past_4th_thu_of_nov(tr("Lincoln's Birthday"))
 
-        if self._year >= 1879:
-            self._add_holiday(
-                # Washington's Birthday.
-                tr("Washington's Birthday"),
-                self._get_observed_date(self._christmas_day, rule=GA_IN_WASHINGTON_BIRTHDAY),
+        if self._year >= 1971:
+            # Washington's Birthday.
+            self._add_observed(
+                self._christmas_day,
+                rule=GA_IN_WASHINGTON_BIRTHDAY,
+                name=tr("Washington's Birthday"),
             )
 
     def _populate_subdiv_ks_public_holidays(self):
