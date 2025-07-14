@@ -668,9 +668,6 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
-        # Before 1990: Uses federal Washington's Birthday
-        # 1990-2009: Has its own Presidents' Day
-        # 2010+: No Washington's Birthday or Presidents' Day
         if 1971 <= self._year < 1990:
             # Washington's Birthday.
             self._add_holiday_3rd_mon_of_feb(tr("Washington's Birthday"))
