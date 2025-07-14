@@ -603,12 +603,13 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             "2023-12-26",
             "2024-12-24",
         )
-        observed_name = "Washington's Birthday (observed)"
         for subdiv in ("GA", "IN"):
-            self.assertHolidayName(observed_name, self.subdiv_holidays[subdiv], dts)
-            self.assertHolidayName(observed_name, self.subdiv_holidays[subdiv], range(1971, 2050))
+            self.assertHolidayName(f"{name} (observed)", self.subdiv_holidays[subdiv], dts)
+            self.assertHolidayName(
+                f"{name} (observed)", self.subdiv_holidays[subdiv], range(1971, 2050)
+            )
             self.assertNoHolidayName(
-                observed_name, self.subdiv_holidays[subdiv], range(1865, 1879)
+                f"{name} (observed)", self.subdiv_holidays[subdiv], range(1865, 1879)
             )
 
     def test_columbus_day(self):
