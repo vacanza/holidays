@@ -1,3 +1,31 @@
+# Version 0.76
+
+Released July 7, 2025
+
+- Add Bonaire, Sint Eustatius and Saba holidays (#2651 by @Prateekshit73, @arkid15r)
+- Add Falkland Islands holidays (#2697 by @Abheelash-Mishra)
+- Add Libya holidays (#2671 by @kritibirda26)
+- Add Mauritius holidays (#2643 by @kritibirda26)
+- Add Mongolia holidays (#2601 by @ankushhKapoor, @arkid15r)
+- Add Sint Maarten holidays (#2631 by @psupra22, @arkid15r)
+- Add working day tests for countries with substituted holidays (#2695 by @KJhellico)
+- Fix iCal exporter tests (#2689 by @KJhellico)
+- Update Aruba, Curaçao, Netherlands holidays: general code refactor (#2677 by @PPsyrius)
+- Update Cocos Islands holidays: fix 2023 Eid al-Fitr date (#2683 by @KJhellico)
+- Update France holidays: refactors, add `th` l10n (#2642 by @PPsyrius)
+- Update San Marino holidays, add l10n support (#2684 by @KJhellico)
+- Update Svalbard and Jan Mayen holidays: remove l10n overrides (#2649 by @PPsyrius)
+- Update Taiwan holidays (#2653 by @KJhellico)
+- Update United States holidays: add `th` l10n (#2678 by @PPsyrius)
+- Update Uzbekistan holidays: add 2024-2025 exact dates (#2679 by @KJhellico)
+- Update l10n for RTL languages (#2676 by @KJhellico)
+- Update l10n helper script (#2699 by @KJhellico)
+- Update pytest configuration (#2640 by @KJhellico)
+- Archive a link for Turks and Caicos holidays (#2688 by @kritibirda26)
+- Reformat .po files (#2673 by @KJhellico)
+- Show test coverage details by default (#2686 by @arkid15r)
+- Simplify parent-based entity handling (#2685 by @arkid15r)
+
 # Version 0.75
 
 Released June 16, 2025
