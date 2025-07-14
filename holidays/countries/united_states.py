@@ -671,7 +671,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Before 1990: Uses federal Washington's Birthday
         # 1990-2009: Has its own Presidents' Day
         # 2010+: No Washington's Birthday or Presidents' Day
-        if self._year >= 1990 and self._year <= 2009:
+        if 1971 <= self._year < 1990:
+            # Washington's Birthday.
+            self._add_holiday_3rd_mon_of_feb(tr("Washington's Birthday"))
+        elif 1990 <= self._year <= 2009:
             self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
         if self._year >= 2008 and self._year % 2 == 0:
