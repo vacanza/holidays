@@ -470,44 +470,18 @@ class TestUnitedStates(CommonCountryTests, TestCase):
 
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv not in {
-                "AK",
-                "AL",
-                "AR",
-                "AZ",
-                "CA",
-                "CO",
                 "DE",
                 "FL",
                 "GA",
-                "HI",
-                "ID",
                 "IN",
-                "MD",
-                "MN",
-                "MT",
-                "NJ",
                 "NM",
-                "OH",
-                "OK",
-                "OR",
-                "PA",
-                "PR",
-                "SC",
-                "TN",
-                "TX",
-                "UT",
-                "VA",
                 "VI",
-                "VT",
-                "WA",
-                "WV",
-                "WY",
             }:
                 self.assertHolidayName(
                     name, holidays, (f"{year}-02-22" for year in range(1879, 1971))
                 )
-                self.assertHolidayName(name, holidays, dts)
-                self.assertHolidayName(name, holidays, range(1971, 2050))
+                self.assertNoHolidayName(name, holidays, dts)
+                self.assertNoHolidayName(name, holidays, range(1971, 2050))
                 self.assertNoHolidayName(name, holidays, range(1865, 1879))
 
     def test_washingtons_birthday_states(self):
