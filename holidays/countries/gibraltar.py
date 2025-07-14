@@ -77,20 +77,18 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2023:
             # Winter Midterm Bank Holiday.
             name = tr("Winter Midterm Bank Holiday")
-            (
+            if self._year == 2024:
                 self._add_holiday_2nd_mon_of_feb(name)
-                if self._year == 2024
-                else self._add_holiday_3rd_mon_of_feb(name)
-            )
+            else:
+                self._add_holiday_3rd_mon_of_feb(name)
 
         if self._year <= 2022:
             # Commonwealth Day.
             name = tr("Commonwealth Day")
-            (
+            if self._year >= 2021:
+                self._add_holiday_3rd_mon_of_feb(name)
+            else:
                 self._add_holiday_2nd_mon_of_mar(name)
-                if self._year <= 2020
-                else self._add_holiday_3rd_mon_of_feb(name)
-            )
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
@@ -110,13 +108,12 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             2016: (MAY, 2),
             2021: (MAY, 3),
         }
-        (
+        if dt := special_dts.get(self._year):
             self._add_holiday(name, dt)
-            if (dt := special_dts.get(self._year))
-            else self._add_observed(self._add_labor_day(name))
-        )
+        else:
+            self._add_observed(self._add_labor_day(name))
 
-        if self._year >= 2001:
+        if self._year >= 2000:
             # Spring Bank Holiday.
             name = tr("Spring Bank Holiday")
             spring_bank_dts = {
