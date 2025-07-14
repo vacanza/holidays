@@ -86,14 +86,3 @@ msgstr ""
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
 msgstr ""
-
-#~ msgid "Sovereign's Birthday"
-#~ msgstr ""
-
-#, c-format
-#~ msgid "%s (estimated)"
-#~ msgstr ""
-
-#, c-format
-#~ msgid "%s (observed, estimated)"
-#~ msgstr ""
