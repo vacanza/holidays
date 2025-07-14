@@ -132,6 +132,7 @@ msgstr "วันโคลัมบัส / วันภราดรภาพ"
 msgid "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays"
 msgstr "วันเกิด ดร. มาร์ติน ลูเทอร์ คิง จูเนียร์และโรเบิร์ต อี. ลี"
 
+#. George Washington's Birthday and Daisy Gatson Bates Day.
 msgid "George Washington's Birthday and Daisy Gatson Bates Day"
 msgstr "วันเกิดจอร์จ วอชิงตันและวันเดซี่ แกตสัน เบตส์"
 

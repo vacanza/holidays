@@ -570,8 +570,8 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             )
 
         if self._year >= 1971:
-            # George Washington's Birthday and Daisy Gatson Bates Day.
             self._add_holiday_3rd_mon_of_feb(
+                # George Washington's Birthday and Daisy Gatson Bates Day.
                 tr("George Washington's Birthday and Daisy Gatson Bates Day")
             )
 

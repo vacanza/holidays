@@ -132,6 +132,7 @@ msgstr ""
 msgid "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays"
 msgstr ""
 
+#. George Washington's Birthday and Daisy Gatson Bates Day.
 msgid "George Washington's Birthday and Daisy Gatson Bates Day"
 msgstr ""
 
