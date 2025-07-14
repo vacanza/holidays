@@ -44,7 +44,7 @@ from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC, DEFAULT_START_YEA
 from holidays.helpers import _normalize_arguments, _normalize_tuple
 
 CategoryArg = Union[str, Iterable[str]]
-DateArg = Union[date, tuple[int, int]]
+DateArg = Union[date, tuple[int, int], tuple[int, int, int]]
 DateLike = Union[date, datetime, str, float, int]
 SpecialHoliday = Union[tuple[int, int, str], tuple[tuple[int, int, str], ...]]
 SubstitutedHoliday = Union[

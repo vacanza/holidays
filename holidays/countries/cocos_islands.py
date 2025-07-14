@@ -101,8 +101,8 @@ class CocosIslands(
         }
         # Act of Self Determination Day.
         name = tr("Act of Self Determination Day")
-        if self._year in act_of_self_determination_dates:
-            self._add_holiday(name, act_of_self_determination_dates[self._year])
+        if dt := act_of_self_determination_dates.get(self._year):
+            self._add_holiday(name, dt)
         else:
             dt = self._add_holiday_apr_6(name)
             if self._year != 2019:
@@ -130,8 +130,8 @@ class CocosIslands(
             # Queen's Birthday.
             else tr("Queen's Birthday")
         )
-        if self._year in queens_kings_birthday_dates:
-            self._add_holiday(name, queens_kings_birthday_dates[self._year])
+        if dt := queens_kings_birthday_dates.get(self._year):
+            self._add_holiday(name, dt)
         else:
             self._add_holiday_2nd_mon_of_jun(name)
 

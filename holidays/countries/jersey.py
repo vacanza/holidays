@@ -106,8 +106,8 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
                 2022: (JUN, 2),
             }
             name = "Spring Bank Holiday"
-            if self._year in spring_bank_dates:
-                self._add_holiday(name, spring_bank_dates[self._year])
+            if dt := spring_bank_dates.get(self._year):
+                self._add_holiday(name, dt)
             else:
                 self._add_holiday_last_mon_of_may(name)
 
