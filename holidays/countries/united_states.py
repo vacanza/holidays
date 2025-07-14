@@ -290,8 +290,6 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 # Washington's Birthday.
                 name = tr("Washington's Birthday")
                 if self._year >= 1971:
-                    # Exclude states with their own subdiv-specific implementations
-                    # Also exclude DE during 1990-2009 when it has its own Presidents' Day
                     excluded_subdivs = {
                         "AK",
                         "AL",
@@ -299,6 +297,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                         "AZ",
                         "CA",
                         "CO",
+                        "DE",
                         "HI",
                         "ID",
                         "IN",
@@ -323,10 +322,6 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                         "WV",
                         "WY",
                     }
-                    # Delaware has Presidents' Day 1990-2009, then no Washington's Birthday
-                    # from 2009+
-                    if self.subdiv == "DE" and self._year >= 1990:
-                        excluded_subdivs.add("DE")
 
                     if self.subdiv not in excluded_subdivs:
                         self._add_holiday_3rd_mon_of_feb(name)
@@ -673,6 +668,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
+        # Before 1990: Uses federal Washington's Birthday
+        # 1990-2009: Has its own Presidents' Day
+        # 2010+: No Washington's Birthday or Presidents' Day
         if self._year >= 1990 and self._year <= 2009:
             self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
