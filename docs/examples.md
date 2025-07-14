@@ -338,9 +338,9 @@ for a country that is not supported yet:
 >>> hdays = NewCountryHolidays()
 ```
 
-We can use the `self._add_holiday_*` methods to specify holidays: 
+We can use the `self._add_holiday_*` methods to specify holidays:
 
-```python
+``` python
 >>> class MovingHolidays(holidays.HolidayBase):
 >>>     def _populate(self, year):
 >>>         # Sets _year attribute to the current year
@@ -356,23 +356,23 @@ The supported `_add_holiday_*` patterns are:
 
 - `_add_holiday_<month>_<day>` for fixed-date holidays
 - `_add_holiday_<last/nth>_<weekday>_of_<month>` for holidays that occur on a specific weekday of a month
-- `_add_holiday_<n>_day(s)_<prior/past>_easter`
 - `_add_holiday_<n>_day(s)_<past/prior>_<last/nth>_<weekday>_of_<month>`
 - `_add_holiday_<nth>_<weekday>_<before/from>_<month>_<day>`
+- `_add_holiday_<n>_day(s)_<prior/past>_easter` (requires inheritance from `ChristianHolidays` holidays group)
 
 Some examples of these methods would be:
 
 - `_add_holiday_jan_1`
 - `_add_holiday_last_mon_of_feb`
 - `_add_holiday_1st_thu_of_nov`
-- `_add_holiday_2_days_prior_easter`
-- `_add_holiday_1_day_past_easter`
 - `_add_holiday_2_days_prior_2nd_mon_of_jan`
 - `_add_holiday_1_day_past_last_fri_of_dec`
 - `_add_holiday_1st_tue_from_dec_25`
 - `_add_holiday_2nd_fri_before_jun_15`
+- `_add_holiday_2_days_prior_easter` (make sure to derive from `ChristianHolidays`)
+- `_add_holiday_1_day_past_easter` (make sure to derive from `ChristianHolidays`)
 
-Find the implementation [here](https://github.com/vacanza/holidays/blob/dcddd6b126df77587d2eea5c84cc81b3fbf645d7/holidays/holiday_base.py?plain=1#L471-L574).
+You can find the implementation details at `HolidayBase.__getattr__` method.
 
 We can also include holidays for a subdivision (e.g. prov/state) in our new class:
 
