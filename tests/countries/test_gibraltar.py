@@ -125,8 +125,7 @@ class TestGibraltar(CommonCountryTests, TestCase):
             "2025-05-26",
         )
         self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, range(2001, 2050))
-        self.assertNoHolidayName(name, 2000)
+        self.assertHolidayName(name, range(2000, 2050))
 
     def test_queens_birthday(self):
         name = "Queen's Birthday"

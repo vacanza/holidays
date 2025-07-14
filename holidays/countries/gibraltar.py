@@ -113,17 +113,16 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         else:
             self._add_observed(self._add_labor_day(name))
 
-        if self._year >= 2000:
-            # Spring Bank Holiday.
-            name = tr("Spring Bank Holiday")
-            spring_bank_dts = {
-                2012: (JUN, 4),
-                2022: (JUN, 2),
-            }
-            if dt := spring_bank_dts.get(self._year):
-                self._add_holiday(name, dt)
-            else:
-                self._add_holiday_last_mon_of_may(name)
+        # Spring Bank Holiday.
+        name = tr("Spring Bank Holiday")
+        spring_bank_dts = {
+            2012: (JUN, 4),
+            2022: (JUN, 2),
+        }
+        if dt := spring_bank_dts.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_holiday_last_mon_of_may(name)
 
         name = (
             # King's Birthday.
