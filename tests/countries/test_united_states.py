@@ -476,12 +476,12 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 "AZ",
                 "CA",
                 "CO",
-                "DE",  # Delaware has special handling
-                "FL",  # Florida has no February Washington's Birthday
-                "GA",  # Georgia has only December Washington's Birthday
+                "DE",
+                "FL",
+                "GA",
                 "HI",
                 "ID",
-                "IN",  # Indiana has only December Washington's Birthday
+                "IN",
                 "MD",
                 "MN",
                 "MT",
