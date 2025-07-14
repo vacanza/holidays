@@ -215,7 +215,7 @@ class TestCocosIslands(CommonCountryTests, TestCase):
             "2020-05-24",
             "2021-05-13",
             "2022-05-03",
-            "2023-04-22",
+            "2023-04-21",
             "2024-04-10",
             "2025-03-31",
         )
@@ -225,7 +225,6 @@ class TestCocosIslands(CommonCountryTests, TestCase):
             "2012-08-20",
             "2017-06-26",
             "2020-05-25",
-            "2023-04-24",
         )
         self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)

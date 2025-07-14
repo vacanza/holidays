@@ -1,0 +1,441 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# United States of America holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.76\n"
+"POT-Creation-Date: 2025-06-19 15:33+0700\n"
+"PO-Revision-Date: 2025-06-26 15:20+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.6\n"
+"X-Source-Language: en_US\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr ""
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. Birthday of Martin Luther King, Jr..
+msgid "Birthday of Martin Luther King, Jr."
+msgstr ""
+
+#. Washington's Birthday.
+msgid "Washington's Birthday"
+msgstr ""
+
+#. Memorial Day.
+msgid "Memorial Day"
+msgstr ""
+
+#. Juneteenth National Independence Day.
+msgid "Juneteenth National Independence Day"
+msgstr ""
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr ""
+
+#. Labor Day.
+msgid "Labor Day"
+msgstr ""
+
+#. Columbus Day.
+msgid "Columbus Day"
+msgstr ""
+
+#. Veterans Day.
+msgid "Veterans Day"
+msgstr ""
+
+#. Armistice Day.
+msgid "Armistice Day"
+msgstr ""
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr ""
+
+#. Martin Luther King Jr. Day.
+msgid "Martin Luther King Jr. Day"
+msgstr ""
+
+#. Presidents' Day.
+msgid "Presidents' Day"
+msgstr ""
+
+#. Seward's Day.
+msgid "Seward's Day"
+msgstr ""
+
+#. Indigenous Peoples' Day.
+msgid "Indigenous Peoples' Day"
+msgstr ""
+
+#. Alaska Day.
+msgid "Alaska Day"
+msgstr ""
+
+#. Martin Luther King, Jr & Robert E. Lee's Birthday.
+msgid "Martin Luther King, Jr & Robert E. Lee's Birthday"
+msgstr ""
+
+#. George Washington & Thomas Jefferson's Birthday.
+msgid "George Washington & Thomas Jefferson's Birthday"
+msgstr ""
+
+#. Confederate Memorial Day.
+msgid "Confederate Memorial Day"
+msgstr ""
+
+#. Jefferson Davis Birthday.
+msgid "Jefferson Davis Birthday"
+msgstr ""
+
+#. Columbus Day / American Indian Heritage Day / Fraternal Day.
+msgid "Columbus Day / American Indian Heritage Day / Fraternal Day"
+msgstr ""
+
+#. Columbus Day / Fraternal Day.
+msgid "Columbus Day / Fraternal Day"
+msgstr ""
+
+#. Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays.
+msgid "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays"
+msgstr ""
+
+#. George Washington's Birthday and Daisy Gatson Bates Day.
+msgid "George Washington's Birthday and Daisy Gatson Bates Day"
+msgstr ""
+
+#. American Samoa Flag Day.
+msgid "American Samoa Flag Day"
+msgstr ""
+
+#. Manu'a Islands Cession Day.
+msgid "Manu'a Islands Cession Day"
+msgstr ""
+
+#. White Sunday.
+msgid "White Sunday"
+msgstr ""
+
+#. Dr. Martin Luther King Jr. / Civil Rights Day.
+msgid "Dr. Martin Luther King Jr. / Civil Rights Day"
+msgstr ""
+
+#. Lincoln/Washington Presidents' Day.
+msgid "Lincoln/Washington Presidents' Day"
+msgstr ""
+
+#. Lincoln's Birthday.
+msgid "Lincoln's Birthday"
+msgstr ""
+
+#. Susan B. Anthony Day.
+msgid "Susan B. Anthony Day"
+msgstr ""
+
+#. Cesar Chavez Day.
+msgid "Cesar Chavez Day"
+msgstr ""
+
+#. Day After Thanksgiving.
+msgid "Day After Thanksgiving"
+msgstr ""
+
+#. Washington-Lincoln Day.
+msgid "Washington-Lincoln Day"
+msgstr ""
+
+#. Frances Xavier Cabrini Day.
+msgid "Frances Xavier Cabrini Day"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Inauguration Day.
+msgid "Inauguration Day"
+msgstr ""
+
+#. Emancipation Day.
+msgid "Emancipation Day"
+msgstr ""
+
+#. Election Day.
+msgid "Election Day"
+msgstr ""
+
+#. Friday After Thanksgiving.
+msgid "Friday After Thanksgiving"
+msgstr ""
+
+#. Robert E. Lee's Birthday.
+msgid "Robert E. Lee's Birthday"
+msgstr ""
+
+#. State Holiday.
+msgid "State Holiday"
+msgstr ""
+
+#. Guam Discovery Day.
+msgid "Guam Discovery Day"
+msgstr ""
+
+#. Liberation Day (Guam).
+msgid "Liberation Day (Guam)"
+msgstr ""
+
+#. All Souls' Day.
+msgid "All Souls' Day"
+msgstr ""
+
+#. Lady of Camarin Day.
+msgid "Lady of Camarin Day"
+msgstr ""
+
+#. Prince Jonah Kuhio Kalanianaole Day.
+msgid "Prince Jonah Kuhio Kalanianaole Day"
+msgstr ""
+
+#. Kamehameha Day.
+msgid "Kamehameha Day"
+msgstr ""
+
+#. Statehood Day.
+msgid "Statehood Day"
+msgstr ""
+
+#. Martin Luther King Jr. / Idaho Human Rights Day.
+msgid "Martin Luther King Jr. / Idaho Human Rights Day"
+msgstr ""
+
+#. Casimir Pulaski Day.
+msgid "Casimir Pulaski Day"
+msgstr ""
+
+#. Primary Election Day.
+msgid "Primary Election Day"
+msgstr ""
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr ""
+
+#. Mardi Gras.
+msgid "Mardi Gras"
+msgstr ""
+
+#. Evacuation Day.
+msgid "Evacuation Day"
+msgstr ""
+
+#. Patriots' Day.
+msgid "Patriots' Day"
+msgstr ""
+
+#. American Indian Heritage Day.
+msgid "American Indian Heritage Day"
+msgstr ""
+
+#. Washington's and Lincoln's Birthday.
+msgid "Washington's and Lincoln's Birthday"
+msgstr ""
+
+#. Truman Day.
+msgid "Truman Day"
+msgstr ""
+
+#. Commonwealth Covenant Day.
+msgid "Commonwealth Covenant Day"
+msgstr ""
+
+#. Commonwealth Cultural Day.
+msgid "Commonwealth Cultural Day"
+msgstr ""
+
+#. Citizenship Day.
+msgid "Citizenship Day"
+msgstr ""
+
+#. Constitution Day.
+msgid "Constitution Day"
+msgstr ""
+
+#. Lincoln's and Washington's Birthdays.
+msgid "Lincoln's and Washington's Birthdays"
+msgstr ""
+
+#. Day After Christmas.
+msgid "Day After Christmas"
+msgstr ""
+
+#. Arbor Day.
+msgid "Arbor Day"
+msgstr ""
+
+#. Presidents Day.
+msgid "Presidents Day"
+msgstr ""
+
+#. Nevada Day.
+msgid "Nevada Day"
+msgstr ""
+
+#. Family Day.
+msgid "Family Day"
+msgstr ""
+
+#. Epiphany.
+msgid "Epiphany"
+msgstr ""
+
+#. Discovery Day.
+msgid "Discovery Day"
+msgstr ""
+
+#. Victory Day.
+msgid "Victory Day"
+msgstr ""
+
+#. Indigenous Peoples' Day / Columbus Day.
+msgid "Indigenous Peoples' Day / Columbus Day"
+msgstr ""
+
+#. President's Day.
+msgid "President's Day"
+msgstr ""
+
+#. Native Americans' Day.
+msgid "Native Americans' Day"
+msgstr ""
+
+#. Texas Independence Day.
+msgid "Texas Independence Day"
+msgstr ""
+
+#. San Jacinto Day.
+msgid "San Jacinto Day"
+msgstr ""
+
+#. Emancipation Day In Texas.
+msgid "Emancipation Day In Texas"
+msgstr ""
+
+#. Lyndon Baines Johnson Day.
+msgid "Lyndon Baines Johnson Day"
+msgstr ""
+
+#. Washington and Lincoln Day.
+msgid "Washington and Lincoln Day"
+msgstr ""
+
+#. Pioneer Day.
+msgid "Pioneer Day"
+msgstr ""
+
+#. Lee Jackson Day.
+msgid "Lee Jackson Day"
+msgstr ""
+
+#. George Washington Day.
+msgid "George Washington Day"
+msgstr ""
+
+#. Three Kings Day.
+msgid "Three Kings Day"
+msgstr ""
+
+#. Transfer Day.
+msgid "Transfer Day"
+msgstr ""
+
+#. Holy Thursday.
+msgid "Holy Thursday"
+msgstr ""
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr ""
+
+#. Columbus Day and Puerto Rico Friendship Day.
+msgid "Columbus Day and Puerto Rico Friendship Day"
+msgstr ""
+
+#. Liberty Day.
+msgid "Liberty Day"
+msgstr ""
+
+#. Christmas Second Day.
+msgid "Christmas Second Day"
+msgstr ""
+
+#. Town Meeting Day.
+msgid "Town Meeting Day"
+msgstr ""
+
+#. Bennington Battle Day.
+msgid "Bennington Battle Day"
+msgstr ""
+
+#. West Virginia Day.
+msgid "West Virginia Day"
+msgstr ""
+
+#. Valentine's Day.
+msgid "Valentine's Day"
+msgstr ""
+
+#. Saint Patrick's Day.
+msgid "Saint Patrick's Day"
+msgstr ""
+
+#. Halloween.
+msgid "Halloween"
+msgstr ""
+
+#. Groundhog Day.
+msgid "Groundhog Day"
+msgstr ""
+
+#. Fasting and Humiliation Day.
+msgid "Fasting and Humiliation Day"
+msgstr ""
+
+#. Public Humiliation and Prayer Day.
+msgid "Public Humiliation and Prayer Day"
+msgstr ""
+
+#. Public Thanksgiving and Prayer Day.
+msgid "Public Thanksgiving and Prayer Day"
+msgstr ""

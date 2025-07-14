@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.66\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2025-02-03 10:17+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2025-06-26 17:55+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr ""
 
 #. %s (estimated).
 #, c-format
-msgid "(تقدير) %s"
+msgid "%s (المقدرة)"
 msgstr "%s (estimated)"
 
 #. New Year's Day.

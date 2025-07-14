@@ -10,11 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import GOVERNMENT, PUBLIC, UNOFFICIAL
-from holidays.countries.united_states import US
+from holidays.countries.united_states import UnitedStates
+from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysVI(US):
+class HolidaysVI(ChildEntity, UnitedStates):
     """United States Virgin Islands (the) holidays.
 
     Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
@@ -22,21 +22,13 @@ class HolidaysVI(US):
     """
 
     country = "VI"
-    supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
-    subdivisions = ()  # Override US subdivisions.
-    subdivisions_aliases = {}  # Override US subdivisions aliases.
+    parent_entity = UnitedStates
+    # Became a U.S. Territory since March 31st, 1917.
+    start_year = 1918
 
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "VI"
-        super()._populate_public_holidays()
 
-    def _populate_government_holidays(self) -> None:
-        self.subdiv = "VI"
-        super()._populate_government_holidays()
-
-    def _populate_unofficial_holidays(self) -> None:
-        self.subdiv = "VI"
-        super()._populate_unofficial_holidays()
+class UnitedStatesVirginIslands(HolidaysVI):
+    pass
 
 
 class VI(HolidaysVI):
@@ -44,8 +36,4 @@ class VI(HolidaysVI):
 
 
 class VIR(HolidaysVI):
-    pass
-
-
-class UnitedStatesVirginIslands(HolidaysVI):
     pass

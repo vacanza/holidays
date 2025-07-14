@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 205 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 215 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -178,7 +178,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>American Samoa</td>
 <td>AS</td>
 <td>Can also be loaded as country US, subdivision AS</td>
-<td></td>
+<td><strong>en_US</strong>, th</td>
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>
@@ -322,6 +322,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Bonaire, Sint Eustatius and Saba</td>
+<td>BQ</td>
+<td>Subdivisions: BON (Bonaire), SAB (Saba), STA (Sint Eustatius)</td>
+<td>en_BQ, en_US, <strong>nl</strong>, pap_BQ</td>
+<td></td>
+</tr>
+<tr>
 <td>Bosnia and Herzegovina</td>
 <td>BA</td>
 <td>Entities and district: BIH (Federacija Bosne i Hercegovine, FBiH), BRC (Brčko distrikt, BD), SRP (Republika Srpska, RS)</td>
@@ -399,6 +406,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GOVERNMENT, OPTIONAL</td>
 </tr>
 <tr>
+<td>Cayman Islands</td>
+<td>KY</td>
+<td></td>
+<td><strong>en_GB</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Chad</td>
 <td>TD</td>
 <td></td>
@@ -418,6 +432,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Christmas Island</td>
+<td>CX</td>
+<td></td>
+<td><strong>en_CX</strong>, en_US</td>
+<td></td>
 </tr>
 <tr>
 <td>Cocos Islands</td>
@@ -567,6 +588,20 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>WORKDAY</td>
 </tr>
 <tr>
+<td>Falkland Islands</td>
+<td>FK</td>
+<td></td>
+<td><strong>en_GB</strong>, en_US</td>
+<td>GOVERNMENT, WORKDAY</td>
+</tr>
+<tr>
+<td>Faroe Islands</td>
+<td>FO</td>
+<td></td>
+<td>da, en_US, <strong>fo</strong>, is, no, sv</td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>Fiji</td>
 <td>FJ</td>
 <td></td>
@@ -668,7 +703,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Guam</td>
 <td>GU</td>
 <td>Can also be loaded as country US, subdivision GU</td>
-<td></td>
+<td><strong>en_US</strong>, th</td>
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>
@@ -868,6 +903,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Libya</td>
+<td>LY</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td>WORKDAY</td>
+</tr>
+<tr>
 <td>Liechtenstein</td>
 <td>LI</td>
 <td></td>
@@ -1008,6 +1050,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, WORKDAY</td>
 </tr>
 <tr>
+<td>Montserrat</td>
+<td>MS</td>
+<td></td>
+<td><strong>en_MS</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Morocco</td>
 <td>MA</td>
 <td></td>
@@ -1085,10 +1134,17 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Norfolk Island</td>
+<td>NF</td>
+<td></td>
+<td><strong>en_NF</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Northern Mariana Islands (the)</td>
 <td>MP</td>
 <td>Can also be loaded as country US, subdivision MP</td>
-<td></td>
+<td><strong>en_US</strong>, th</td>
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>
@@ -1125,6 +1181,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td></td>
 <td>ARMED_FORCES, HALF_DAY</td>
+</tr>
+<tr>
+<td>Palestine</td>
+<td>PS</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td>CATHOLIC, ORTHODOX</td>
 </tr>
 <tr>
 <td>Panama</td>
@@ -1179,7 +1242,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Puerto Rico</td>
 <td>PR</td>
 <td>Can also be loaded as country US, subdivision PR</td>
-<td></td>
+<td><strong>en_US</strong>, th</td>
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>
@@ -1246,6 +1309,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Saint Vincent and the Grenadines</td>
+<td>VC</td>
+<td></td>
+<td>en_US, <strong>en_VC</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Samoa</td>
 <td>WS</td>
 <td></td>
@@ -1256,8 +1326,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>San Marino</td>
 <td>SM</td>
 <td></td>
-<td></td>
-<td></td>
+<td>en_US, <strong>it</strong>, uk</td>
+<td>BANK</td>
 </tr>
 <tr>
 <td>Sao Tome and Principe</td>
@@ -1494,14 +1564,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>United States Minor Outlying Islands</td>
 <td>UM</td>
 <td>Can also be loaded as country US, subdivision UM</td>
-<td></td>
+<td><strong>en_US</strong>, th</td>
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>
 <td>United States of America (the)</td>
 <td>US</td>
 <td>States and territories: AK (Alaska), AL (Alabama), AR (Arkansas), AS (American Samoa), AZ (Arizona), CA (California), CO (Colorado), CT (Connecticut), DC (District of Columbia), DE (Delaware), FL (Florida), GA (Georgia), GU (Guam), HI (Hawaii), IA (Iowa), ID (Idaho), IL (Illinois), IN (Indiana), KS (Kansas), KY (Kentucky), LA (Louisiana), MA (Massachusetts), MD (Maryland), ME (Maine), MI (Michigan), MN (Minnesota), MO (Missouri), MP (Northern Mariana Islands), MS (Mississippi), MT (Montana), NC (North Carolina), ND (North Dakota), NE (Nebraska), NH (New Hampshire), NJ (New Jersey), NM (New Mexico), NV (Nevada), NY (New York), OH (Ohio), OK (Oklahoma), OR (Oregon), PA (Pennsylvania), PR (Puerto Rico), RI (Rhode Island), SC (South Carolina), SD (South Dakota), TN (Tennessee), TX (Texas), UM (United States Minor Outlying Islands), UT (Utah), VA (Virginia), VI (Virgin Islands, U.S.), VT (Vermont), WA (Washington), WI (Wisconsin), WV (West Virginia), WY (Wyoming)</td>
-<td></td>
+<td><strong>en_US</strong>, th</td>
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>
@@ -1557,7 +1627,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Virgin Islands (U.S.)</td>
 <td>VI</td>
 <td>Can also be loaded as country US, subdivision VI</td>
-<td></td>
+<td><strong>en_US</strong>, th</td>
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>

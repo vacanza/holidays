@@ -55,6 +55,7 @@ class CocosIslands(
         * [2022](https://web.archive.org/web/20250429071240/https://www.infrastructure.gov.au/sites/default/files/documents/a33-2021-2022-public-holidays-cocos-keeling-islands.pdf)
         * [2022 Eid al-Fitr](https://web.archive.org/web/20220810061351/https://www.infrastructure.gov.au/sites/default/files/documents/Gazette-Change-to-CKI-Hari-Raya-Puasa-2022.pdf)
         * [2023](https://web.archive.org/web/20240711221156/https://www.infrastructure.gov.au/sites/default/files/documents/a19-2022-community-bulletin-2023-kings-birthday-cocos-keeling-islands.pdf)
+        * [2023 Eid al-Fitr](https://web.archive.org/web/20250627103728/https://www.infrastructure.gov.au/sites/default/files/documents/a02-2023-community-bulletin-change-of-public-holiday-date-for-hari-raya-puasa-2023-cocos-keeling-islands.pdf)
         * [2023 Eid al-Adha](https://web.archive.org/web/20240804112114/https://www.infrastructure.gov.au/sites/default/files/documents/a06-2023_community_bulletin_-_change_of_public_holiday_date_for_hari_raya_haji_2023.pdf)
         * [2024](https://web.archive.org/web/20250207203100/https://www.infrastructure.gov.au/sites/default/files/documents/a12-2023-2024-public-holidays-cocos-k-islands.pdf)
         * [2025](https://web.archive.org/web/20250413083314/https://www.infrastructure.gov.au/sites/default/files/documents/a21-2024-administrator-community-bulletin-cki-public-holidays-2025.pdf)
@@ -100,8 +101,8 @@ class CocosIslands(
         }
         # Act of Self Determination Day.
         name = tr("Act of Self Determination Day")
-        if self._year in act_of_self_determination_dates:
-            self._add_holiday(name, act_of_self_determination_dates[self._year])
+        if dt := act_of_self_determination_dates.get(self._year):
+            self._add_holiday(name, dt)
         else:
             dt = self._add_holiday_apr_6(name)
             if self._year != 2019:
@@ -114,7 +115,7 @@ class CocosIslands(
         self._add_easter_monday(tr("Easter Monday"))
 
         # ANZAC Day.
-        self._add_observed(self._add_holiday_apr_25(tr("ANZAC Day")))
+        self._add_observed(self._add_anzac_day(tr("ANZAC Day")))
 
         queens_kings_birthday_dates = {
             2021: (JUN, 7),
@@ -129,8 +130,8 @@ class CocosIslands(
             # Queen's Birthday.
             else tr("Queen's Birthday")
         )
-        if self._year in queens_kings_birthday_dates:
-            self._add_holiday(name, queens_kings_birthday_dates[self._year])
+        if dt := queens_kings_birthday_dates.get(self._year):
+            self._add_holiday(name, dt)
         else:
             self._add_holiday_2nd_mon_of_jun(name)
 
@@ -197,7 +198,7 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
         2020: (MAY, 24),
         2021: (MAY, 13),
         2022: (MAY, 3),
-        2023: (APR, 22),
+        2023: (APR, 21),
         2024: (APR, 10),
         2025: (MAR, 31),
     }
