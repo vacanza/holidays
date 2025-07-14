@@ -343,7 +343,6 @@ We can use the `self._add_holiday_*` methods to specify holidays:
 ``` python
 >>> class MovingHolidays(holidays.HolidayBase):
 >>>     def _populate(self, year):
->>>         # Sets _year attribute to the current year
 >>>         super()._populate(year)
 >>> 
 >>>         self._add_holiday_3rd_mon_of_jan("Martin Luther King Jr. Day")
