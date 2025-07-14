@@ -26,38 +26,39 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Gibraltar>
-        * [Public Holidays 2003](https://web.archive.org/web/20250508170633/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-7023/version/12-12-2002)
-        * [Public Holidays 2004](https://web.archive.org/web/20250417151549/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2003-208)
-        * [Public Holidays 2005](https://web.archive.org/web/20250508201034/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2004-681/version/29-07-2004)
-        * [Public Holidays 2006](https://web.archive.org/web/20250417152547/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2005-1141)
-        * [Public Holidays 2007](https://web.archive.org/web/20250508195007/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2006-1667/version/09-11-2006)
-        * [Public Holidays 2008](https://web.archive.org/web/20250417171642/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2007-2094)
-        * [Public Holidays 2009](https://web.archive.org/web/20250507113355/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2008-2215/version/25-09-2008)
-        * [Public Holidays 2010](https://web.archive.org/web/20250508191428/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2009-2359/version/17-09-2009)
-        * [Public Holidays 2011](https://web.archive.org/web/20250616034613/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2010-2577)
-        * [Public Holidays 2012](https://web.archive.org/web/20250513201915/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-no-2-order-2011-2988)
-        * [Public Holidays 2013](https://web.archive.org/web/20250713063848/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2012-3179/download)
-        * [Public Holidays 2014](https://web.archive.org/web/20250519052526/https://gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2013-3445)
-        * [Public Holidays 2015](https://web.archive.org/web/20250713063847/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2014-3748/download)
-        * [Public Holidays 2016](https://web.archive.org/web/20161114150646/https://www.gibraltar.gov.gi/new/sites/default/files/press/2016/Official%20Notices/Bank%20and%20Public%20Holidays%202016.pdf)
-        * [Public Holidays 2017](https://web.archive.org/web/20250417213423/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2016-3555)
-        * [Gibraltar National Day on 4th September, 2017](https://web.archive.org/web/20250417213423/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2016-3555)
-        * [Public Holidays 2018](https://web.archive.org/web/20240331045345/https://www.gibraltar.gov.gi/new/sites/default/files/press/2017/Official%20Notices/BANK%20HOLIDAYS%202018.pdf)
-        * [Public Holidays 2019](https://web.archive.org/web/20250508170408/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2018-4419/version/25-10-2018)
-        * [Public Holidays 2020](https://web.archive.org/web/20250426144346/https://www.gibraltar.gov.gi/press-releases/bank-and-public-holidays-2020-5363)
-        * [Public Holidays 2021](https://web.archive.org/web/20250417172202/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2020-5593)
-        * [Public Holidays 2022](https://web.archive.org/web/20250508175822/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2021-6286/version/21-10-2021)
-        * [Public Holidays 2023](https://web.archive.org/web/20250508180948/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2022-6735/version/22-02-2023)
-        * [Public Holidays 2024](https://web.archive.org/web/20250502091333/https://gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2023-7215/version/06-11-2023)
-        * [Public Holidays 2025](https://web.archive.org/web/20250402130104/https://www.gibraltar.gov.gi/press-releases/bank-and-public-holidays-2025-10243)
+        * [2000](https://web.archive.org/web/20250714134510/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/1999s073.pdf)
+        * [2001](https://web.archive.org/web/20250714134609/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2000s041.pdf)
+        * [2003](https://web.archive.org/web/20250713064759/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2002s094.pdf)
+        * [2004](https://web.archive.org/web/20250713065008/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2003s105.pdf)
+        * [2005](https://web.archive.org/web/20250713071914/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2004s069.pdf)
+        * [2006](https://web.archive.org/web/20250713072021/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2005s111.pdf)
+        * [2007](https://web.archive.org/web/20250713072021/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2006s122.pdf)
+        * [2008](https://web.archive.org/web/20250713072026/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2007s113.pdf)
+        * [2009](https://web.archive.org/web/20250713072221/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2008s073.pdf)
+        * [2010](https://web.archive.org/web/20250713072222/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2009s049.pdf)
+        * [2011](https://web.archive.org/web/20250713072228/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2010s149.pdf)
+        * [2012](https://web.archive.org/web/20250713073334/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2011s189.pdf)
+        * [2013](https://web.archive.org/web/20250713162959/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2012s146.pdf)
+        * [2014](https://web.archive.org/web/20250713103345/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2013s149.pdf)
+        * [2015](https://web.archive.org/web/20250713163521/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2014s203.pdf)
+        * [2016](https://web.archive.org/web/20250713164519/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2015s196.pdf)
+        * [2017](https://web.archive.org/web/20250713073752/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2016s217.pdf)
+        * [2018](https://web.archive.org/web/20250714135250/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2017s224.pdf)
+        * [2019](https://web.archive.org/web/20250713071343/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2018s229.pdf)
+        * [2020](https://web.archive.org/web/20250714135425/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2019s217.pdf)
+        * [2021](https://web.archive.org/web/20250421063152/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2020-5593/download)
+        * [2022](https://web.archive.org/web/20250414134257/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2021-6286/version/21-10-2021/download)
+        * [2023](https://web.archive.org/web/20240831014104/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2022-6735/version/22-02-2023/download)
+        * [2024](https://web.archive.org/web/20250502030403/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2023-7215/version/06-11-2023/download)
+        * [2025](https://web.archive.org/web/20250714135600/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2024-7456/download)
     """
 
     country = "GI"
     default_language = "en_GB"
     # %s (observed).
     observed_label = "%s (observed)"
-    # First holiday info available from 2003.
-    start_year = 2003
+    # First holiday info available from 2000.
+    start_year = 2000
     supported_languages = ("en_GB", "en_US")
 
     def __init__(self, *args, **kwargs):
@@ -115,16 +116,17 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             else self._add_observed(self._add_labor_day(name))
         )
 
-        # Spring Bank Holiday.
-        name = tr("Spring Bank Holiday")
-        spring_bank_dts = {
-            2012: (JUN, 4),
-            2022: (JUN, 2),
-        }
-        if dt := spring_bank_dts.get(self._year):
-            self._add_holiday(name, dt)
-        else:
-            self._add_holiday_last_mon_of_may(name)
+        if self._year >= 2001:
+            # Spring Bank Holiday.
+            name = tr("Spring Bank Holiday")
+            spring_bank_dts = {
+                2012: (JUN, 4),
+                2022: (JUN, 2),
+            }
+            if dt := spring_bank_dts.get(self._year):
+                self._add_holiday(name, dt)
+            else:
+                self._add_holiday_last_mon_of_may(name)
 
         name = (
             # King's Birthday.
@@ -134,6 +136,8 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             else tr("Queen's Birthday")
         )
         sovereign_birthday_dts = {
+            2000: (JUN, 19),
+            2001: (JUN, 18),
             2006: (JUN, 19),
             2007: (JUN, 18),
             2012: (JUN, 18),
@@ -151,7 +155,7 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         name = (
             # Summer Bank Holiday.
             tr("Summer Bank Holiday")
-            if self._year <= 2007
+            if 2002 <= self._year <= 2007
             # Late Summer Bank Holiday.
             else tr("Late Summer Bank Holiday")
         )
