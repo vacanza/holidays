@@ -476,9 +476,12 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 "AZ",
                 "CA",
                 "CO",
+                "DE",  # Delaware has special handling
+                "FL",  # Florida has no February Washington's Birthday
+                "GA",  # Georgia has only December Washington's Birthday
                 "HI",
                 "ID",
-                "IN",
+                "IN",  # Indiana has only December Washington's Birthday
                 "MD",
                 "MN",
                 "MT",
@@ -503,8 +506,8 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-02-22" for year in range(1879, 1971))
                 )
-                self.assertNoHolidayName(name, holidays, dts)
-                self.assertNoHolidayName(name, holidays, range(1971, 2050))
+                self.assertHolidayName(name, holidays, dts)
+                self.assertHolidayName(name, holidays, range(1971, 2050))
                 self.assertNoHolidayName(name, holidays, range(1865, 1879))
 
     def test_washingtons_birthday_states(self):
@@ -600,10 +603,28 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             "2023-12-26",
             "2024-12-24",
         )
-        for subdiv in ("GA", "IN"):
-            self.assertHolidayName(name, self.subdiv_holidays[subdiv], dts)
-            self.assertHolidayName(name, self.subdiv_holidays[subdiv], range(1971, 2050))
-            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv], range(1865, 1879))
+        # Georgia has "Washington's Birthday (observed)" in December
+        self.assertHolidayName("Washington's Birthday (observed)", self.subdiv_holidays["GA"], dts)
+        # Indiana has "Washington's Birthday" in December
+        self.assertHolidayName("Washington's Birthday", self.subdiv_holidays["IN"], dts)
+
+        # Both should have their respective holiday types in the range 1971-2050
+        # and none before 1879
+        # Georgia has "Washington's Birthday (observed)" in December
+        self.assertHolidayName(
+            "Washington's Birthday (observed)", self.subdiv_holidays["GA"], range(1971, 2050)
+        )
+        self.assertNoHolidayName(
+            "Washington's Birthday (observed)", self.subdiv_holidays["GA"], range(1865, 1879)
+        )
+
+        # Indiana has "Washington's Birthday" in December
+        self.assertHolidayName(
+            "Washington's Birthday", self.subdiv_holidays["IN"], range(1971, 2050)
+        )
+        self.assertNoHolidayName(
+            "Washington's Birthday", self.subdiv_holidays["IN"], range(1865, 1879)
+        )
 
     def test_columbus_day(self):
         name = "Columbus Day"
@@ -2229,7 +2250,13 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 ),
             ),
             ("2022-12-08", "Constitution Day; Lady of Camarin Day"),
-            ("2022-12-23", "Christmas Eve (observed); Washington's Birthday"),
+            (
+                "2022-12-23",
+                (
+                    "Christmas Eve (observed); Washington's Birthday; "
+                    "Washington's Birthday (observed)"
+                ),
+            ),
             ("2022-12-24", "Christmas Eve"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (observed); Christmas Second Day; Day After Christmas"),
@@ -2336,7 +2363,10 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 ),
             ),
             ("2022-12-08", "วันรัฐธรรมนูญ; วันแม่พระแห่งคามาริน"),
-            ("2022-12-23", "ชดเชยวันคริสต์มาสอีฟ; วันเกิดวอชิงตัน"),
+            (
+                "2022-12-23",
+                "Washington's Birthday (observed); ชดเชยวันคริสต์มาสอีฟ; วันเกิดวอชิงตัน",
+            ),
             ("2022-12-24", "วันคริสต์มาสอีฟ"),
             ("2022-12-25", "วันคริสต์มาส"),
             ("2022-12-26", "ชดเชยวันคริสต์มาส; วันคริสต์มาสวันที่สอง; วันหลังวันคริสต์มาส"),
