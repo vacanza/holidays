@@ -14,7 +14,12 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.constants import PUBLIC, WORKDAY
+from holidays.groups import (
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+)
 from holidays.observed_holiday_base import ObservedHolidayBase
 
 
@@ -24,8 +29,10 @@ class CentralAfricanRepublic(
     """Central African Republic holidays.
 
     References:
-        * [Public holidays in the Central African Republic](https://en.wikipedia.org/wiki/Public_holidays_in_the_Central_African_Republic)
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Central_African_Republic>
         * [PUBLIC HOLIDAYS](https://web.archive.org/web/20171215122602/http://www.ais-asecna.org/pdf/gen/gen-2-1/04gen2-1-01.pdf)
+        * <https://web.archive.org/web/20250122135347/https://corbeaunews-centrafrique.org/lindependance-et-la-fete-nationale-deux-dates-distinctes-pour-la-republique-centrafricaine/>
+        * <https://web.archive.org/web/20250715092147/https://www.rfi.fr/fr/afrique/20160912-rca-fete-tabaski-est-desormais-jour-ferie>
     """
 
     country = "CF"
@@ -37,6 +44,7 @@ class CentralAfricanRepublic(
     observed_estimated_label = tr("%s (observé, estimé)")
     # December 1, 1958: Autonomy within the French Community.
     start_year = 1959
+    supported_categories = (PUBLIC, WORKDAY)
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -56,8 +64,9 @@ class CentralAfricanRepublic(
         # New Year's Day.
         self._add_new_years_day(tr("Jour de l'an"))
 
-        # Barthélemy Boganda Day.
-        self._add_holiday_mar_29(tr("Journée Barthélemy Boganda"))
+        if self._year >= 1960:
+            # Barthélemy Boganda Day.
+            self._add_holiday_mar_29(tr("Journée Barthélemy Boganda"))
 
         # Easter Monday.
         self._add_easter_monday(tr("Lundi de Pâques"))
@@ -69,7 +78,7 @@ class CentralAfricanRepublic(
         self._add_ascension_thursday(tr("Ascension"))
 
         # Whit Monday.
-        self._add_whit_monday(tr("Pentecôte"))
+        self._add_whit_monday(tr("Lundi de Pentecôte"))
 
         if self._year >= 2007:
             # General Prayer Day.
@@ -86,12 +95,17 @@ class CentralAfricanRepublic(
         self._add_all_saints_day(tr("Toussaint"))
 
         # National Day.
-        self._add_holiday_dec_1(tr("Fête nationale"))
+        name = tr("Fête nationale")
+        if self._year in {1977, 1978}:
+            self._add_holiday_dec_4(name)
+        else:
+            self._add_holiday_dec_1(name)
 
         # Christmas Day.
         self._add_christmas_day(tr("Jour de Noël"))
 
-        if self._year >= 2007:
+    def _populate_workday_holidays(self):
+        if self._year >= 2016:
             # Eid al-Fitr.
             self._add_eid_al_fitr_day(tr("Aïd al-Fitr"))
 
