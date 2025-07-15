@@ -59,7 +59,6 @@ msgstr "Labor Day"
 msgid "Anniversaire du Mouvement populaire de la révolution"
 msgstr "Anniversary of the Popular Movement of the Revolution"
 
-#. Anniversary of the New Revolutionary Constitution.
 msgid "Anniversaire de la nouvelle Constitution révolutionnaire"
 msgstr "Anniversary of the New Revolutionary Constitution"
 
@@ -91,13 +90,13 @@ msgstr "Youth Day"
 msgid "Anniversaire du changement du nom de notre Pays"
 msgstr "Anniversary of the Country's Name Change"
 
-#. Armed Forces Day.
+#. Established on June 23rd, 1979 via ORDER 79-154. Feast of the Armed Forces.
 msgid "Journée des Forces armées"
-msgstr "Armed Forces Day"
+msgstr "Feast of the Armed Forces"
 
-#. Liberation Day.
-msgid "Jour de la Libération"
-msgstr "Liberation Day"
+#. Established on May 10th, 2014 via Ordonnance n° 14/010. Revolution and Armed Forces Day.
+msgid "Journée de la Révolution et des Forces Armées"
+msgstr "Revolution and Armed Forces Day"
 
 #. Anniversary of the New Regime.
 msgid "Anniversaire du nouveau régime"
