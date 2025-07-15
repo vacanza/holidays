@@ -903,6 +903,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Lebanon</td>
+<td>LB</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td>BANK, GOVERNMENT</td>
+</tr>
+<tr>
 <td>Lesotho</td>
 <td>LS</td>
 <td></td>
@@ -1138,6 +1145,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>NG</td>
 <td></td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td>Norfolk Island</td>
+<td>NF</td>
+<td></td>
+<td><strong>en_NF</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
