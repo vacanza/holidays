@@ -97,6 +97,26 @@ class TestGibraltar(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, range(2000, 2050))
 
+    def test_workers_memorial_day(self):
+        name = "Workers' Memorial Day"
+        dts = (
+            "2021-04-28",
+            "2022-04-28",
+            "2023-04-28",
+            "2024-04-28",
+            "2025-04-28",
+        )
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(2013, 2050))
+        self.assertNoHolidayName(name, range(2000, 2013))
+        obs_dt = (
+            "2018-04-30",
+            "2019-04-29",
+            "2024-04-29",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
     def test_may_day(self):
         name = "May Day"
         dts = (
@@ -219,6 +239,8 @@ class TestGibraltar(CommonCountryTests, TestCase):
             ("2024-02-12", "Winter Midterm Bank Holiday"),
             ("2024-03-29", "Good Friday"),
             ("2024-04-01", "Easter Monday"),
+            ("2024-04-28", "Workers' Memorial Day"),
+            ("2024-04-29", "Workers' Memorial Day (observed)"),
             ("2024-05-01", "May Day"),
             ("2024-05-27", "Spring Bank Holiday"),
             ("2024-06-17", "King's Birthday"),
@@ -235,6 +257,8 @@ class TestGibraltar(CommonCountryTests, TestCase):
             ("2024-02-12", "Winter Midterm Bank Holiday"),
             ("2024-03-29", "Good Friday"),
             ("2024-04-01", "Easter Monday"),
+            ("2024-04-28", "Workers' Memorial Day"),
+            ("2024-04-29", "Workers' Memorial Day (observed)"),
             ("2024-05-01", "May Day"),
             ("2024-05-27", "Spring Bank Holiday"),
             ("2024-06-17", "King's Birthday"),

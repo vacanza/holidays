@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, FEB, MAY, JUN, AUG, SEP
+from holidays.calendars.gregorian import JAN, FEB, APR, MAY, JUN, AUG, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -96,6 +96,18 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
+
+        if self._year >= 2013:
+            # Workers' Memorial Day.
+            name = tr("Workers' Memorial Day")
+            workers_memorial_dts = {
+                2013: (APR, 26),
+                2015: (APR, 27),
+            }
+            if dt := workers_memorial_dts.get(self._year):
+                self._add_holiday(name, dt)
+            else:
+                self._add_observed(self._add_holiday_apr_28(name))
 
         # May Day.
         name = tr("May Day")
@@ -201,7 +213,7 @@ class GibraltarStaticHolidays(StaticHolidays):
         2015: (SEP, 7, tr("Evacuation Commemoration Day")),
         # 75th Anniversary of VE Day.
         2020: (MAY, 8, tr("75th Anniversary of VE Day")),
-        # Platinum Jubilee.
+        # Queen's Platinum Jubilee.
         2022: (JUN, 3, tr("Platinum Jubilee")),
         # Special King’s Coronation Bank Holiday.
         2023: (MAY, 8, tr("Special King's Coronation Bank Holiday")),

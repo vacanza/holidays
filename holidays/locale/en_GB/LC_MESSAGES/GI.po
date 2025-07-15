@@ -51,6 +51,10 @@ msgstr ""
 msgid "Easter Monday"
 msgstr ""
 
+#. Workers' Memorial Day.
+msgid "Workers' Memorial Day"
+msgstr ""
+
 #. May Day.
 msgid "May Day"
 msgstr ""
@@ -107,7 +111,7 @@ msgstr ""
 msgid "75th Anniversary of VE Day"
 msgstr ""
 
-#. Platinum Jubilee.
+#. Queen's Platinum Jubilee.
 msgid "Platinum Jubilee"
 msgstr ""
 
