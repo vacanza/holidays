@@ -666,10 +666,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
-        if 1971 <= self._year < 1990:
+        if 1971 <= self._year <= 1989:
             # Washington's Birthday.
             self._add_holiday_3rd_mon_of_feb(tr("Washington's Birthday"))
         elif 1990 <= self._year <= 2009:
+            # Presidents' Day.
             self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
         if self._year >= 2008 and self._year % 2 == 0:
@@ -722,10 +723,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             )
 
         if self._year >= 1971:
-            # Washington's Birthday.
             self._add_observed(
                 self._christmas_day,
                 rule=GA_IN_WASHINGTON_BIRTHDAY,
+                # Washington's Birthday.
                 name=tr("Washington's Birthday"),
             )
 
@@ -819,10 +820,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             self._add_holiday_1_day_past_4th_thu_of_nov(tr("Lincoln's Birthday"))
 
         if self._year >= 1971:
-            # Washington's Birthday.
             self._add_observed(
                 self._christmas_day,
                 rule=GA_IN_WASHINGTON_BIRTHDAY,
+                # Washington's Birthday.
                 name=tr("Washington's Birthday"),
             )
 
