@@ -214,6 +214,7 @@ COUNTRIES: RegistryDict = {
     "thailand": ("Thailand", "TH", "THA"),
     "timor_leste": ("TimorLeste", "TL", "TLS"),
     "togo": ("Togo", "TG", "TGO"),
+    "tokelau": ("Tokelau", "TK", "TKL"),
     "tonga": ("Tonga", "TO", "TON"),
     "trinidad_and_tobago": ("TrinidadAndTobago", "TT", "TTO"),
     "tunisia": ("Tunisia", "TN", "TUN"),
