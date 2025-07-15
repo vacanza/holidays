@@ -198,6 +198,7 @@ class GIB(Gibraltar):
 
 class GibraltarStaticHolidays(StaticHolidays):
     """Gibraltar special holidays.
+
     References:
         * [Evacuation Commemoration Day, 2015](https://web.archive.org/web/20250714174537/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2015s112.pdf)
     """
