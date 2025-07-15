@@ -26,8 +26,8 @@ class Tokelau(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "TK"
-    default_language = "tk"
-    supported_languages = ("en_US", "tk")
+    default_language = "tkl"
+    supported_languages = ("en_US", "tkl")
     start_year = 2003
 
     def __init__(self, *args, **kwargs):
