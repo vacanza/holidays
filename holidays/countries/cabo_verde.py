@@ -154,7 +154,7 @@ class CaboVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_subdiv_ca_public_holidays(self):
         # Law # 93/82 of November 6th.
-        if self._year >= 1983:
+        if self._year >= 1982:
             # Santa Catarina de Santiago Municipality Day.
             self._add_holiday_nov_25(tr("Dia do Município de Santa Catarina de Santiago"))
 
@@ -228,7 +228,7 @@ class CaboVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_jan_31(tr("Dia do Município de Ribeira Grande de Santiago"))
 
     def _populate_subdiv_sd_public_holidays(self):
-        # Law # 96/IV/93 (1994)
+        # Law # 96/IV/93 of December 31st.
         if self._year >= 1994:
             # São Domingos Municipality Day.
             self._add_holiday_mar_13(tr("Dia do Município de São Domingos"))
@@ -279,7 +279,7 @@ class CaboVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_jan_15(tr("Dia do Município do Tarrafal de Santiago"))
 
     def _populate_subdiv_ts_public_holidays(self):
-        # Law # 67/VI/2005 of May 9.
+        # Law # 67/VI/2005 of May 9th.
         if self._year >= 2005:
             # Tarrafal de São Nicolau Municipality Day.
             self._add_holiday_aug_2(tr("Dia do Município do Tarrafal de São Nicolau"))
