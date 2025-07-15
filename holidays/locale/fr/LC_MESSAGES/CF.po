@@ -57,7 +57,7 @@ msgid "Ascension"
 msgstr ""
 
 #. Whit Monday.
-msgid "Pentecôte"
+msgid "Lundi de Pentecôte"
 msgstr ""
 
 #. General Prayer Day.
