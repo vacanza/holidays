@@ -533,9 +533,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
         if self._year >= 1971:
             # George Washington & Thomas Jefferson's Birthday.
-            name = tr("George Washington & Thomas Jefferson's Birthday")
-            if self._year >= 1971:
-                self._add_holiday_3rd_mon_of_feb(name)
+            self._add_holiday_3rd_mon_of_feb(tr("George Washington & Thomas Jefferson's Birthday"))
 
         if self._year >= 1866:
             # Confederate Memorial Day.
