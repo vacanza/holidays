@@ -104,7 +104,6 @@ class CentralAfricanRepublic(
         # Christmas Day.
         self._add_christmas_day(tr("Jour de Noël"))
 
-    def _populate_workday_holidays(self):
         if self._year >= 2016:
             # Eid al-Fitr.
             self._add_eid_al_fitr_day(tr("Aïd al-Fitr"))
