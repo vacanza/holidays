@@ -100,7 +100,7 @@ class TestGibraltar(CommonCountryTests, TestCase):
     def test_may_day(self):
         name = "May Day"
         dts = (
-            "2021-05-03",
+            "2021-05-01",
             "2022-05-01",
             "2023-05-01",
             "2024-05-01",
@@ -111,6 +111,7 @@ class TestGibraltar(CommonCountryTests, TestCase):
         obs_dt = (
             "2004-05-03",
             "2005-05-02",
+            "2021-05-03",
             "2022-05-02",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)

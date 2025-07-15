@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, MAY, JUN, AUG, SEP
+from holidays.calendars.gregorian import JAN, FEB, MAY, JUN, AUG, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -56,7 +56,7 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
     country = "GI"
     default_language = "en_GB"
     # %s (observed).
-    observed_label = "%s (observed)"
+    observed_label = tr("%s (observed)")
     # First holiday info available from 2000.
     start_year = 2000
     supported_languages = ("en_GB", "en_US")
@@ -69,16 +69,17 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        self._add_observed(
-            # New Year's Day.
-            self._add_new_years_day(tr("New Year's Day")),
-        )
+        # New Year's Day.
+        self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
         if self._year >= 2023:
             # Winter Midterm Bank Holiday.
             name = tr("Winter Midterm Bank Holiday")
-            if self._year == 2024:
-                self._add_holiday_2nd_mon_of_feb(name)
+            winter_midterm_dts = {
+                2024: (FEB, 12),
+            }
+            if dt := winter_midterm_dts.get(self._year):
+                self._add_holiday(name, dt)
             else:
                 self._add_holiday_3rd_mon_of_feb(name)
 
@@ -98,20 +99,15 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # May Day.
         name = tr("May Day")
-        special_dts = {
+        may_day_dts = {
             2007: (MAY, 7),
             2008: (MAY, 5),
             2009: (MAY, 4),
-            2010: (MAY, 3),
-            2011: (MAY, 2),
-            2013: (MAY, 6),
-            2016: (MAY, 2),
-            2021: (MAY, 3),
         }
-        if dt := special_dts.get(self._year):
+        if dt := may_day_dts.get(self._year):
             self._add_holiday(name, dt)
         else:
-            self._add_observed(self._add_labor_day(name))
+            self._add_observed(self._add_holiday_may_1(name))
 
         # Spring Bank Holiday.
         name = tr("Spring Bank Holiday")
@@ -140,22 +136,21 @@ class Gibraltar(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             2013: (JUN, 17),
             2017: (JUN, 19),
             2019: (JUN, 17),
+            2023: (JUN, 19),
+            2024: (JUN, 17),
         }
         if dt := sovereign_birthday_dts.get(self._year):
             self._add_holiday(name, dt)
-        elif self._year <= 2022:
-            self._add_holiday_2_days_past_2nd_sat_of_jun(name)
         else:
-            self._add_holiday_3rd_mon_of_jun(name)
+            self._add_holiday_2_days_past_2nd_sat_of_jun(name)
 
-        name = (
+        self._add_holiday_last_mon_of_aug(
             # Summer Bank Holiday.
             tr("Summer Bank Holiday")
             if 2002 <= self._year <= 2007
             # Late Summer Bank Holiday.
             else tr("Late Summer Bank Holiday")
         )
-        self._add_holiday_last_mon_of_aug(name)
 
         # Gibraltar National Day.
         name = tr("Gibraltar National Day")
@@ -190,16 +185,9 @@ class GIB(Gibraltar):
 
 
 class GibraltarStaticHolidays(StaticHolidays):
-    """Gibraltar Special Holidays.
-
+    """Gibraltar special holidays.
     References:
-        * [Tercentenary Holiday](https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2003-208)
-        * [12th January, 2009](https://web.archive.org/web/20250507113355/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2008-2215/version/25-09-2008)
-        * [Queen's Diamond Jubilee](https://web.archive.org/web/20250513201915/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-no-2-order-2011-2988)
-        * [Evacuation Commemoration Day, 2015](https://web.archive.org/web/20250713063810/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-no-2-order-2015-3921/download)
-        * [75th Anniversary of VE Day, 2020](https://web.archive.org/web/20250426144346/https://www.gibraltar.gov.gi/press-releases/bank-and-public-holidays-2020-5363)
-        * [Platinum Jubilee](https://web.archive.org/web/20250508175822/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2021-6286/version/21-10-2021)
-        * [Special King's Coronation Bank Holiday, 2023](https://web.archive.org/web/20250508180948/https://www.gibraltarlaws.gov.gi/legislations/bank-and-public-holidays-order-2022-6735/version/22-02-2023)
+        * [Evacuation Commemoration Day, 2015](https://web.archive.org/web/20250714174537/https://www.gibraltarlaws.gov.gi/uploads/legislations/banking-and-financial-dealings/B&P%20Holidays/2015s112.pdf)
     """
 
     special_public_holidays = {
