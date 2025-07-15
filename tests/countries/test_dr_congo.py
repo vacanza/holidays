@@ -10,18 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-#  holidays
-#  --------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-#
-#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
-#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2015-2017
-#  Website: https://github.com/vacanza/holidays
-#  License: MIT (see LICENSE file)
-
 from unittest import TestCase
 
 from holidays.countries.dr_congo import (
@@ -48,7 +36,7 @@ class TestDRCongo(CommonCountryTests, TestCase):
 
     def test_martyrs_of_independence(self):
         name = "Martyrs de l'indépendance"
-        self.assertHolidayName(name, (f"{year}-01-4" for year in range(2015, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-04" for year in range(2015, 2050)))
         self.assertNoHolidayName(name, range(1980, 2015))
 
     def test_national_hero_laurent_desire_kabila_day(self):
@@ -63,7 +51,7 @@ class TestDRCongo(CommonCountryTests, TestCase):
 
     def test_day_of_the_struggle_of_simon_kimbangu_and_african_consciousness(self):
         name = "Journée du combat de Simon Kimbangu et de la conscience africaine"
-        self.assertHolidayName(name, (f"{year}-04-6" for year in range(2023, 2050)))
+        self.assertHolidayName(name, (f"{year}-04-06" for year in range(2023, 2050)))
         self.assertNoHolidayName(name, range(1980, 2023))
 
     def test_labor_day(self):
@@ -95,11 +83,11 @@ class TestDRCongo(CommonCountryTests, TestCase):
 
     def test_parents_day(self):
         name = "Fête des parents"
-        self.assertHolidayName(name, (f"{year}-08-1" for year in range(1980, 2050)))
+        self.assertHolidayName(name, (f"{year}-08-01" for year in range(1980, 2050)))
 
     def test_congolese_genocide_memorial_day(self):
         name = "Journée commémorative du génocide Congolais"
-        self.assertHolidayName(name, (f"{year}-08-2" for year in range(2024, 2050)))
+        self.assertHolidayName(name, (f"{year}-08-02" for year in range(2024, 2050)))
         self.assertNoHolidayName(name, range(1980, 2024))
 
     def test_youth_day(self):

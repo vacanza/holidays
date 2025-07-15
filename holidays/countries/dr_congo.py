@@ -71,8 +71,8 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Anniversary of the Popular Movement of the Revolution.
             self._add_holiday_may_20(tr("Anniversaire du Mouvement populaire de la révolution"))
 
-            # Anniversary of the New Revolutionary Constitution.
             self._add_holiday_jun_24(
+                # Anniversary of the New Revolutionary Constitution.
                 tr("Anniversaire de la nouvelle Constitution révolutionnaire")
             )
 

@@ -59,6 +59,7 @@ msgstr "Labor Day"
 msgid "Anniversaire du Mouvement populaire de la révolution"
 msgstr "Anniversary of the Popular Movement of the Revolution"
 
+#. Anniversary of the New Revolutionary Constitution.
 msgid "Anniversaire de la nouvelle Constitution révolutionnaire"
 msgstr "Anniversary of the New Revolutionary Constitution"
 
