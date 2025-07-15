@@ -151,7 +151,9 @@ class ObservedHolidayBase(HolidayBase):
         if dt is None:
             return False, None
 
-        dt = dt if isinstance(dt, date) else date(self._year, *dt)
+        # Use as is if already a date.
+        # Convert to date: (m, d) → use self._year; (y, m, d) → use directly.
+        dt = dt if isinstance(dt, date) else date(self._year, *dt) if len(dt) == 2 else date(*dt)
 
         if not self.observed or not self._is_observed(dt):
             return False, dt
