@@ -26,7 +26,7 @@ class TestGibraltar(CommonCountryTests, TestCase):
         self.assertAliases(Gibraltar, GI, GIB)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Gibraltar(years=1999, categories=self.holidays.supported_categories))
+        self.assertNoHolidays(Gibraltar(years=1999))
 
     def test_special_holidays(self):
         for dt, name in (
@@ -54,59 +54,65 @@ class TestGibraltar(CommonCountryTests, TestCase):
 
     def test_winter_bank_holiday(self):
         name = "Winter Midterm Bank Holiday"
-        dts = (
+        self.assertHolidayName(
+            name,
             "2023-02-20",
             "2024-02-12",
             "2025-02-17",
         )
-        self.assertHolidayName(name, dts)
         self.assertHolidayName(name, range(2023, 2050))
         self.assertNoHolidayName(name, range(2000, 2023))
 
     def test_commonwealth_day(self):
         name = "Commonwealth Day"
-        dts = (
+        self.assertHolidayName(
+            name,
+            "2018-03-12",
             "2019-03-11",
             "2020-03-09",
             "2021-02-15",
             "2022-02-21",
         )
-        self.assertHolidayName(name, dts)
         self.assertHolidayName(name, range(2000, 2023))
         self.assertNoHolidayName(name, range(2023, 2050))
 
     def test_good_friday(self):
         name = "Good Friday"
-        dts = (
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
             "2022-04-15",
             "2023-04-07",
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, dts)
         self.assertHolidayName(name, range(2000, 2050))
 
     def test_easter_monday(self):
         name = "Easter Monday"
-        dts = (
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
             "2022-04-18",
             "2023-04-10",
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, dts)
         self.assertHolidayName(name, range(2000, 2050))
 
     def test_workers_memorial_day(self):
         name = "Workers' Memorial Day"
-        dts = (
+        self.assertHolidayName(
+            name,
+            "2020-04-28",
             "2021-04-28",
             "2022-04-28",
             "2023-04-28",
             "2024-04-28",
             "2025-04-28",
         )
-        self.assertHolidayName(name, dts)
         self.assertHolidayName(name, range(2013, 2050))
         self.assertNoHolidayName(name, range(2000, 2013))
         obs_dt = (
@@ -119,18 +125,18 @@ class TestGibraltar(CommonCountryTests, TestCase):
 
     def test_may_day(self):
         name = "May Day"
-        dts = (
-            "2021-05-01",
-            "2022-05-01",
-            "2023-05-01",
-            "2024-05-01",
-            "2025-05-01",
+        self.assertHolidayName(
+            name, (f"{year}-05-01" for year in (*range(2000, 2007), *range(2010, 2050)))
         )
-        self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, range(2000, 2050))
+        self.assertHolidayName(
+            name,
+            "2007-05-07",
+            "2008-05-05",
+            "2009-05-04",
+        )
         obs_dt = (
-            "2004-05-03",
-            "2005-05-02",
+            "2011-05-02",
+            "2016-05-02",
             "2021-05-03",
             "2022-05-02",
         )
@@ -139,68 +145,74 @@ class TestGibraltar(CommonCountryTests, TestCase):
 
     def test_spring_bank_holiday(self):
         name = "Spring Bank Holiday"
-        dts = (
+        self.assertHolidayName(
+            name,
+            "2020-05-25",
+            "2021-05-31",
             "2022-06-02",
             "2023-05-29",
             "2024-05-27",
             "2025-05-26",
         )
-        self.assertHolidayName(name, dts)
         self.assertHolidayName(name, range(2000, 2050))
 
     def test_queens_birthday(self):
         name = "Queen's Birthday"
-        dts = (
+        self.assertHolidayName(
+            name,
+            "2018-06-11",
             "2019-06-17",
             "2020-06-15",
             "2021-06-14",
             "2022-06-13",
         )
-        self.assertHolidayName(name, dts)
         self.assertHolidayName(name, range(2000, 2023))
         self.assertNoHolidayName(name, range(2023, 2050))
 
     def test_kings_birthday(self):
         name = "King's Birthday"
-        dts = (
+        self.assertHolidayName(
+            name,
             "2023-06-19",
             "2024-06-17",
             "2025-06-16",
         )
-        self.assertHolidayName(name, dts)
         self.assertHolidayName(name, range(2023, 2050))
         self.assertNoHolidayName(name, range(2000, 2023))
 
     def test_summer_bank_holiday(self):
         first_name = "Summer Bank Holiday"
-        dts = (
+        self.assertHolidayName(
+            first_name,
             "2003-08-25",
             "2004-08-30",
             "2005-08-29",
             "2006-08-28",
             "2007-08-27",
         )
-        self.assertHolidayName(first_name, dts)
         second_name = "Late Summer Bank Holiday"
-        dts = (
+        self.assertHolidayName(
+            second_name,
+            "2020-08-31",
+            "2021-08-30",
             "2022-08-29",
             "2023-08-28",
             "2024-08-26",
             "2025-08-25",
         )
-        self.assertHolidayName(second_name, dts)
         self.assertHolidayName(second_name, range(2000, 2002), range(2008, 2050))
-        self.assertNoHolidayName(second_name, range(2003, 2008))
+        self.assertNoHolidayName(second_name, range(2002, 2008))
 
     def test_national_day(self):
         name = "Gibraltar National Day"
-        self.assertHolidayName(name, (f"{year}-09-10" for year in range(2000, 2016)))
-        self.assertHolidayName(name, (f"{year}-09-10" for year in range(2018, 2050)))
-        special_dts = (
+        self.assertHolidayName(
+            name, (f"{year}-09-10" for year in (*range(2000, 2016), *range(2018, 2050)))
+        )
+        self.assertHolidayName(
+            name,
             "2016-09-05",
             "2017-09-04",
         )
-        self.assertHolidayName(name, special_dts)
         obs_dt = (
             "2011-09-12",
             "2022-09-12",
