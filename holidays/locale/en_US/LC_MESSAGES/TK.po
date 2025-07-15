@@ -27,25 +27,25 @@ msgstr ""
 "X-Source-Language: tkl\n"
 
 #. New Year's Day.
-msgid "Aho Tau Fou"
+msgid "New Year's Day"
 msgstr "New Year's Day"
 
 #. Good Friday.
-msgid "Ahofalaile Lelei"
+msgid "Good Friday"
 msgstr "Good Friday"
 
 #. Easter Monday.
-msgid "Ahogafua o te Eheta"
+msgid "Easter Monday"
 msgstr "Easter Monday"
 
 #. Tokehega Day.
-msgid "Aho o te Tokehega"
+msgid "Tokehega Day"
 msgstr "Tokehega Day"
 
 #. Christmas Day.
-msgid "Aho Kilihimahi"
+msgid "Christmas Day"
 msgstr "Christmas Day"
 
 #. Boxing Day
-msgid "Tua-aho Kilihimahi"
+msgid "Boxing Day"
 msgstr "Boxing Day"

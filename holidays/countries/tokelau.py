@@ -26,8 +26,8 @@ class Tokelau(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "TK"
-    default_language = "tkl"
-    supported_languages = ("en_US", "tkl")
+    default_language = "en_TK"
+    supported_languages = ("en_TK", "en_US", "tkl")
     start_year = 2003
 
     def __init__(self, *args, **kwargs):
@@ -37,22 +37,22 @@ class Tokelau(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("Aho Tau Fou"))
+        self._add_new_years_day(tr("New Year's Day"))
 
         # Good Friday.
-        self._add_good_friday(tr("Ahofalaile Lelei"))
+        self._add_good_friday(tr("Good Friday"))
 
         # Easter Monday.
-        self._add_easter_monday(tr("Ahogafua o te Eheta"))
+        self._add_easter_monday(tr("Easter Monday"))
 
         # Tokehega Day.
-        self._add_holiday_sep_3(tr("Aho o te Tokehega"))
+        self._add_holiday_sep_3(tr("Tokehega Day"))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Aho Kilihimahi"))
+        self._add_christmas_day(tr("Christmas Day"))
 
         # Boxing Day
-        self._add_christmas_day_two(tr("Tua-aho Kilihimahi"))
+        self._add_christmas_day_two(tr("Boxing Day"))
 
 
 class TK(Tokelau):
