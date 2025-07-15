@@ -32,6 +32,7 @@ msgid "%s (observed)"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #. %s (estimated).
 #, c-format
@@ -44,6 +45,8 @@ msgid "%s (observed, estimated)"
 msgstr ""
 
 >>>>>>> af207d1b (Add Norfolk Island holidays)
+=======
+>>>>>>> 01b3c5f7 (localization changes)
 #. New Year's Day.
 msgid "New Year's Day"
 msgstr ""
@@ -73,16 +76,22 @@ msgid "Bounty Day"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 01b3c5f7 (localization changes)
 #. King's Birthday.
 msgid "King's Birthday"
 msgstr ""
 
 #. Queen's Birthday.
+<<<<<<< HEAD
 =======
 msgid "King's Birthday"
 msgstr ""
 
 >>>>>>> af207d1b (Add Norfolk Island holidays)
+=======
+>>>>>>> 01b3c5f7 (localization changes)
 msgid "Queen's Birthday"
 msgstr ""
 
@@ -95,16 +104,23 @@ msgid "Thanksgiving Day"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 01b3c5f7 (localization changes)
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr ""
 
+<<<<<<< HEAD
 =======
 >>>>>>> af207d1b (Add Norfolk Island holidays)
+=======
+>>>>>>> 01b3c5f7 (localization changes)
 #. Boxing Day.
 msgid "Boxing Day"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #. Christmas Day.
@@ -112,6 +128,19 @@ msgid "Christmas Day"
 msgstr ""
 
 >>>>>>> af207d1b (Add Norfolk Island holidays)
+=======
+>>>>>>> 01b3c5f7 (localization changes)
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
 msgstr ""
+
+#~ msgid "Sovereign's Birthday"
+#~ msgstr ""
+
+#, c-format
+#~ msgid "%s (estimated)"
+#~ msgstr ""
+
+#, c-format
+#~ msgid "%s (observed, estimated)"
+#~ msgstr ""

@@ -25,16 +25,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 <<<<<<< HEAD
+<<<<<<< HEAD
 "X-Source-Language: en_US\n"
 =======
 "X-Source-Language: en_NF\n"
 >>>>>>> af207d1b (Add Norfolk Island holidays)
+=======
+"X-Source-Language: en_US\n"
+>>>>>>> 01b3c5f7 (localization changes)
 
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
 msgstr "%s (observed)"
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #. %s (estimated).
@@ -48,6 +53,8 @@ msgid "%s (observed, estimated)"
 msgstr "%s (observed, estimated)"
 
 >>>>>>> af207d1b (Add Norfolk Island holidays)
+=======
+>>>>>>> 01b3c5f7 (localization changes)
 #. New Year's Day.
 msgid "New Year's Day"
 msgstr "New Year's Day"
@@ -77,16 +84,22 @@ msgid "Bounty Day"
 msgstr "Bounty Day"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 01b3c5f7 (localization changes)
 #. King's Birthday.
 msgid "King's Birthday"
 msgstr "King's Birthday"
 
 #. Queen's Birthday.
+<<<<<<< HEAD
 =======
 msgid "King's Birthday"
 msgstr "King's Birthday"
 
 >>>>>>> af207d1b (Add Norfolk Island holidays)
+=======
+>>>>>>> 01b3c5f7 (localization changes)
 msgid "Queen's Birthday"
 msgstr "Queen's Birthday"
 
@@ -99,16 +112,23 @@ msgid "Thanksgiving Day"
 msgstr "Thanksgiving Day"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 01b3c5f7 (localization changes)
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
+<<<<<<< HEAD
 =======
 >>>>>>> af207d1b (Add Norfolk Island holidays)
+=======
+>>>>>>> 01b3c5f7 (localization changes)
 #. Boxing Day.
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #. Christmas Day.
@@ -116,6 +136,8 @@ msgid "Christmas Day"
 msgstr "Christmas Day"
 
 >>>>>>> af207d1b (Add Norfolk Island holidays)
+=======
+>>>>>>> 01b3c5f7 (localization changes)
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
 msgstr "National Day of Mourning for Queen Elizabeth II"
