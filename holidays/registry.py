@@ -96,6 +96,7 @@ COUNTRIES: RegistryDict = {
     "georgia": ("Georgia", "GE", "GEO"),
     "germany": ("Germany", "DE", "DEU"),
     "ghana": ("Ghana", "GH", "GHA"),
+    "gibraltar": ("Gibraltar", "GI", "GIB"),
     "greece": ("Greece", "GR", "GRC"),
     "greenland": ("Greenland", "GL", "GRL"),
     "grenada": ("Grenada", "GD", "GRD"),
