@@ -31,7 +31,6 @@ class TestTokelau(CommonCountryTests, TestCase):
         name = "Good Friday"
         self.assertHolidayName(
             name,
-            "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
@@ -45,12 +44,12 @@ class TestTokelau(CommonCountryTests, TestCase):
         name = "Easter Monday"
         self.assertHolidayName(
             name,
-            "2010-04-05",
-            "2018-04-02",
-            "2019-04-22",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
         )
         self.assertHolidayName(name, range(2003, 2050))
 
