@@ -29,7 +29,7 @@ class Tokelau(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "TK"
     default_language = "en_TK"
     supported_languages = ("en_TK", "en_US", "tkl")
-    # Interpretation Rule 2003.
+    # Interpretation Rules 2003.
     start_year = 2003
     weekend = {SUN}
 
