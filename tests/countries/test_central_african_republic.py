@@ -111,6 +111,34 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
     def test_christmas_day(self):
         self.assertHolidayName("Jour de Noël", (f"{year}-12-25" for year in range(1959, 2050)))
 
+    def test_eid_al_fitr(self):
+        name = "Aïd al-Fitr"
+        self.assertHolidayName(
+            name,
+            "2020-05-24",
+            "2021-05-13",
+            "2022-05-02",
+            "2023-04-21",
+            "2024-04-10",
+            "2025-03-30",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2015, 2050))
+        self.assertNoHolidayName(name, range(1959, 2015))
+
+    def test_eid_al_adha(self):
+        name = "Aïd al-Adha"
+        self.assertHolidayName(
+            name,
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-09",
+            "2023-06-28",
+            "2024-06-16",
+            "2025-06-07",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2015, 2050))
+        self.assertNoHolidayName(name, range(1959, 2015))
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2019-01-01", "Jour de l'an"),
