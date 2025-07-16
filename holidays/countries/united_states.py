@@ -666,12 +666,14 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
-        if 1971 <= self._year <= 1989:
-            # Washington's Birthday.
-            self._add_holiday_3rd_mon_of_feb(tr("Washington's Birthday"))
-        elif 1990 <= self._year <= 2009:
-            # Presidents' Day.
-            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
+        if 1971 <= self._year <= 2009:
+            self._add_holiday_3rd_mon_of_feb(
+                # Presidents' Day.
+                tr("Presidents' Day")
+                if self._year >= 1990
+                # Washington's Birthday.
+                else tr("Washington's Birthday")
+            )
 
         if self._year >= 2008 and self._year % 2 == 0:
             # Election Day.
