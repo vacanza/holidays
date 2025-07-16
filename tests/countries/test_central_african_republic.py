@@ -10,10 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from itertools import chain
 from unittest import TestCase
 
-from holidays.constants import WORKDAY
 from holidays.countries.central_african_republic import CentralAfricanRepublic, CF, CAF
 from tests.common import CommonCountryTests
 
@@ -23,9 +21,6 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1959, 2050)
         super().setUpClass(CentralAfricanRepublic, years=years, years_non_observed=years)
-        cls.workday_holidays = CentralAfricanRepublic(
-            years=years, categories=WORKDAY, islamic_show_estimated=False
-        )
         cls.no_estimated_holidays = CentralAfricanRepublic(
             years=years, islamic_show_estimated=False
         )
@@ -37,8 +32,7 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
         self.assertNoHolidays(CentralAfricanRepublic(years=1958))
 
     def test_new_years_day(self):
-        name = "Jour de l'an"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1959, 2050)))
+        self.assertHolidayName("Jour de l'an", (f"{year}-01-01" for year in range(1959, 2050)))
 
     def test_barthelemy_boganda_day(self):
         name = "Journée Barthélemy Boganda"
@@ -49,6 +43,7 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
         name = "Lundi de Pâques"
         self.assertHolidayName(
             name,
+            "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
@@ -58,14 +53,12 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(1959, 2050))
 
     def test_labour_day(self):
-        name = "Fête du Travail"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1959, 2050)))
+        self.assertHolidayName("Fête du Travail", (f"{year}-05-01" for year in range(1959, 2050)))
 
     def test_ascension_day(self):
         name = "Ascension"
         self.assertHolidayName(
             name,
-            "2019-05-30",
             "2020-05-21",
             "2021-05-13",
             "2022-05-26",
@@ -99,23 +92,24 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, 1959)
 
     def test_assumption_day(self):
-        name = "Assomption"
-        self.assertHolidayName(name, (f"{year}-08-15" for year in range(1959, 2050)))
+        self.assertHolidayName("Assomption", (f"{year}-08-15" for year in range(1959, 2050)))
 
     def test_all_saints_day(self):
-        name = "Toussaint"
-        self.assertHolidayName(name, (f"{year}-11-01" for year in range(1959, 2050)))
+        self.assertHolidayName("Toussaint", (f"{year}-11-01" for year in range(1959, 2050)))
 
     def test_national_day(self):
         name = "Fête nationale"
-        self.assertHolidayName(name, (f"{year}-12-04" for year in {1977, 1978}))
         self.assertHolidayName(
-            name, (f"{year}-12-01" for year in chain(range(1959, 1977), range(1979, 2050)))
+            name, (f"{year}-12-01" for year in (*range(1959, 1977), *range(1979, 2050)))
+        )
+        self.assertHolidayName(
+            name,
+            "1977-12-04",
+            "1978-12-04",
         )
 
     def test_christmas_day(self):
-        name = "Jour de Noël"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1959, 2050)))
+        self.assertHolidayName("Jour de Noël", (f"{year}-12-25" for year in range(1959, 2050)))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
