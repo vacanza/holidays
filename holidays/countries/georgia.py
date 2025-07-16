@@ -19,7 +19,7 @@ from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHoli
 from holidays.holiday_base import HolidayBase
 
 
-class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """Georgia holidays.
 
     References:
