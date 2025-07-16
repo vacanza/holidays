@@ -31,11 +31,6 @@ msgstr ""
 msgid "%s (estimé)"
 msgstr ""
 
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (observé, estimé)"
-msgstr ""
-
 #. New Year's Day.
 msgid "Jour de l'an"
 msgstr ""
