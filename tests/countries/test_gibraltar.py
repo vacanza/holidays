@@ -184,12 +184,14 @@ class TestGibraltar(CommonCountryTests, TestCase):
         first_name = "Summer Bank Holiday"
         self.assertHolidayName(
             first_name,
+            "2002-08-26",
             "2003-08-25",
             "2004-08-30",
             "2005-08-29",
             "2006-08-28",
             "2007-08-27",
         )
+        self.assertNoHolidayName(first_name, range(2000, 2002), range(2008, 2050))
         second_name = "Late Summer Bank Holiday"
         self.assertHolidayName(
             second_name,
