@@ -123,7 +123,7 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
             "2025-03-30",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(2015, 2050))
-        self.assertNoHolidayName(name, range(1959, 2015))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1959, 2015))
 
     def test_eid_al_adha(self):
         name = "Aïd al-Adha"
@@ -137,7 +137,7 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
             "2025-06-07",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(2015, 2050))
-        self.assertNoHolidayName(name, range(1959, 2015))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1959, 2015))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

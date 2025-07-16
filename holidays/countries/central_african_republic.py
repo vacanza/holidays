@@ -28,7 +28,7 @@ class CentralAfricanRepublic(
         * [PUBLIC HOLIDAYS](https://web.archive.org/web/20171215122602/http://www.ais-asecna.org/pdf/gen/gen-2-1/04gen2-1-01.pdf)
         * <https://web.archive.org/web/20250122135347/https://corbeaunews-centrafrique.org/lindependance-et-la-fete-nationale-deux-dates-distinctes-pour-la-republique-centrafricaine/>
         * <https://web.archive.org/web/20250715092147/https://www.rfi.fr/fr/afrique/20160912-rca-fete-tabaski-est-desormais-jour-ferie>
-        * <https://web.archive.org/web/20250715093233/https://www.aa.com.tr/fr/culture-et-arts/lofficialisation-des-f%C3%AAtes-musulmanes-en-rca-nouvelle-donne-pour-la-coh%C3%A9sion-sociale/45806>
+        * <https://web.archive.org/web/20250715093233/https://www.aa.com.tr/fr/culture-et-arts/lofficialisation-des-fêtes-musulmanes-en-rca-nouvelle-donne-pour-la-cohésion-sociale/45806>
     """
 
     country = "CF"
