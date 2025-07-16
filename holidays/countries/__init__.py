@@ -221,6 +221,7 @@ from holidays.countries.tanzania import Tanzania, TZ, TZA
 from holidays.countries.thailand import Thailand, TH, THA
 from holidays.countries.timor_leste import TimorLeste, TL, TLS
 from holidays.countries.togo import Togo, TG, TGO
+from holidays.countries.tokelau import Tokelau, TK, TKL
 from holidays.countries.tonga import Tonga, TO, TON
 from holidays.countries.trinidad_and_tobago import TrinidadAndTobago, TT, TTO
 from holidays.countries.tunisia import Tunisia, TN, TUN

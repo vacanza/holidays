@@ -1512,6 +1512,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>WORKDAY</td>
 </tr>
 <tr>
+<td>Tokelau</td>
+<td>TK</td>
+<td></td>
+<td><strong>en_TK</strong>, en_US, tkl</td>
+<td></td>
+</tr>
+<tr>
 <td>Tonga</td>
 <td>TO</td>
 <td></td>
