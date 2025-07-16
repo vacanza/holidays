@@ -13,13 +13,8 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import PUBLIC, WORKDAY
-from holidays.groups import (
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-)
+from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase
 
 
@@ -33,6 +28,7 @@ class CentralAfricanRepublic(
         * [PUBLIC HOLIDAYS](https://web.archive.org/web/20171215122602/http://www.ais-asecna.org/pdf/gen/gen-2-1/04gen2-1-01.pdf)
         * <https://web.archive.org/web/20250122135347/https://corbeaunews-centrafrique.org/lindependance-et-la-fete-nationale-deux-dates-distinctes-pour-la-republique-centrafricaine/>
         * <https://web.archive.org/web/20250715092147/https://www.rfi.fr/fr/afrique/20160912-rca-fete-tabaski-est-desormais-jour-ferie>
+        * <https://web.archive.org/web/20250715093233/https://www.aa.com.tr/fr/culture-et-arts/lofficialisation-des-f%C3%AAtes-musulmanes-en-rca-nouvelle-donne-pour-la-coh%C3%A9sion-sociale/45806>
     """
 
     country = "CF"
@@ -44,7 +40,6 @@ class CentralAfricanRepublic(
     observed_estimated_label = tr("%s (observé, estimé)")
     # December 1, 1958: Autonomy within the French Community.
     start_year = 1959
-    supported_categories = (PUBLIC, WORKDAY)
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -104,7 +99,7 @@ class CentralAfricanRepublic(
         # Christmas Day.
         self._add_christmas_day(tr("Jour de Noël"))
 
-        if self._year >= 2016:
+        if self._year >= 2015:
             # Eid al-Fitr.
             self._add_eid_al_fitr_day(tr("Aïd al-Fitr"))
 
@@ -122,20 +117,6 @@ class CAF(CentralAfricanRepublic):
 
 class CentralAfricanRepublicIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
-        2001: (MAR, 6),
-        2002: (FEB, 23),
-        2003: (FEB, 12),
-        2004: (FEB, 2),
-        2005: (JAN, 21),
-        2006: ((JAN, 10), (DEC, 31)),
-        2007: (DEC, 20),
-        2008: (DEC, 9),
-        2009: (NOV, 28),
-        2010: (NOV, 17),
-        2011: (NOV, 7),
-        2012: (OCT, 26),
-        2013: (OCT, 15),
-        2014: (OCT, 5),
         2015: (SEP, 24),
         2016: (SEP, 13),
         2017: (SEP, 2),
@@ -150,20 +131,6 @@ class CentralAfricanRepublicIslamicHolidays(_CustomIslamicHolidays):
     }
 
     EID_AL_FITR_DATES = {
-        2001: (DEC, 17),
-        2002: (DEC, 6),
-        2003: (NOV, 26),
-        2004: (NOV, 14),
-        2005: (NOV, 4),
-        2006: (OCT, 24),
-        2007: (OCT, 13),
-        2008: (OCT, 2),
-        2009: (SEP, 21),
-        2010: (SEP, 10),
-        2011: (AUG, 31),
-        2012: (AUG, 19),
-        2013: (AUG, 8),
-        2014: (JUL, 28),
         2015: (JUL, 18),
         2016: (JUL, 7),
         2017: (JUN, 26),
