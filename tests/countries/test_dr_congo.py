@@ -34,8 +34,8 @@ class TestDRCongo(CommonCountryTests, TestCase):
     def test_new_years_day(self):
         self.assertHolidayName("Nouvel an", (f"{year}-01-01" for year in range(1980, 2050)))
 
-    def test_martyrs_of_independence(self):
-        name = "Martyrs de l'indépendance"
+    def test_martyrs_day(self):
+        name = "Fête des Martyrs"
         self.assertHolidayName(name, (f"{year}-01-04" for year in range(2015, 2050)))
         self.assertNoHolidayName(name, range(1980, 2015))
 
@@ -67,18 +67,8 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-06-24" for year in range(1980, 2015)))
         self.assertNoHolidayName(name, range(2015, 2050))
 
-    def test_fish_day(self):
-        name = "Journée du Poisson"
-        self.assertHolidayName(name, (f"{year}-06-24" for year in range(1980, 2015)))
-        self.assertNoHolidayName(name, range(2015, 2050))
-
-    def test_currency_zaire(self):
-        name = "Du Zaïre monnaie"
-        self.assertHolidayName(name, (f"{year}-06-24" for year in range(1980, 2015)))
-        self.assertNoHolidayName(name, range(2015, 2050))
-
     def test_independence_day(self):
-        name = "Journée de l’indépendance"
+        name = "Journée de l'indépendance"
         self.assertHolidayName(name, (f"{year}-06-30" for year in range(1980, 2050)))
 
     def test_parents_day(self):
@@ -110,12 +100,8 @@ class TestDRCongo(CommonCountryTests, TestCase):
             ("2006-01-01", "Nouvel an"),
             ("2006-05-01", "Fête du travail"),
             ("2006-05-20", "Anniversaire du Mouvement populaire de la révolution"),
-            (
-                "2006-06-24",
-                "Anniversaire de la nouvelle Constitution révolutionnaire; "
-                "Du Zaïre monnaie; Journée du Poisson",
-            ),
-            ("2006-06-30", "Journée de l’indépendance"),
+            ("2006-06-24", "Anniversaire de la nouvelle Constitution révolutionnaire"),
+            ("2006-06-30", "Journée de l'indépendance"),
             ("2006-08-01", "Fête des parents"),
             ("2006-10-14", "Journée de la Jeunesse"),
             ("2006-10-27", "Anniversaire du changement du nom de notre Pays"),
@@ -130,12 +116,8 @@ class TestDRCongo(CommonCountryTests, TestCase):
             ("2010-01-01", "Nouvel an"),
             ("2010-05-01", "Fête du travail"),
             ("2010-05-20", "Anniversaire du Mouvement populaire de la révolution"),
-            (
-                "2010-06-24",
-                "Anniversaire de la nouvelle Constitution révolutionnaire; "
-                "Du Zaïre monnaie; Journée du Poisson",
-            ),
-            ("2010-06-30", "Journée de l’indépendance"),
+            ("2010-06-24", "Anniversaire de la nouvelle Constitution révolutionnaire"),
+            ("2010-06-30", "Journée de l'indépendance"),
             ("2010-08-01", "Fête des parents"),
             ("2010-10-14", "Journée de la Jeunesse"),
             ("2010-10-27", "Anniversaire du changement du nom de notre Pays"),
@@ -148,13 +130,13 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertHolidays(
             DRCongo(years=2015),
             ("2015-01-01", "Nouvel an"),
-            ("2015-01-04", "Martyrs de l'indépendance"),
+            ("2015-01-04", "Fête des Martyrs"),
             ("2015-01-16", "Journée du héros national Laurent Désiré Kabila"),
             ("2015-01-17", "Journée du héros national Patrice Emery Lumumba"),
             ("2015-05-01", "Fête du travail"),
-            ("2015-06-30", "Journée de l’indépendance"),
+            ("2015-06-30", "Journée de l'indépendance"),
             ("2015-08-01", "Fête des parents"),
-            ("2015-11-17", "Journée des Forces armées"),
+            ("2015-11-17", "Jour des forces armées"),
             ("2015-12-25", "Noël"),
         )
 
@@ -162,13 +144,13 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertHolidays(
             DRCongo(years=2016),
             ("2016-01-01", "Nouvel an"),
-            ("2016-01-04", "Martyrs de l'indépendance"),
+            ("2016-01-04", "Fête des Martyrs"),
             ("2016-01-16", "Journée du héros national Laurent Désiré Kabila"),
             ("2016-01-17", "Journée du héros national Patrice Emery Lumumba"),
             ("2016-05-01", "Fête du travail"),
-            ("2016-06-30", "Journée de l’indépendance"),
+            ("2016-06-30", "Journée de l'indépendance"),
             ("2016-08-01", "Fête des parents"),
-            ("2016-11-17", "Journée des Forces armées"),
+            ("2016-11-17", "Jour des forces armées"),
             ("2016-12-25", "Noël"),
         )
 
@@ -176,28 +158,28 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertHolidays(
             DRCongo(years=2017),
             ("2017-01-01", "Nouvel an"),
-            ("2017-01-04", "Martyrs de l'indépendance"),
+            ("2017-01-04", "Fête des Martyrs"),
             ("2017-01-16", "Journée du héros national Laurent Désiré Kabila"),
             ("2017-01-17", "Journée du héros national Patrice Emery Lumumba"),
             ("2017-05-01", "Fête du travail"),
-            ("2017-06-30", "Journée de l’indépendance"),
+            ("2017-06-30", "Journée de l'indépendance"),
             ("2017-08-01", "Fête des parents"),
-            ("2017-11-17", "Journée des Forces armées"),
+            ("2017-11-17", "Jour des forces armées"),
             ("2017-12-25", "Noël"),
         )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2024-01-01", "Nouvel an"),
-            ("2024-01-04", "Martyrs de l'indépendance"),
+            ("2024-01-04", "Fête des Martyrs"),
             ("2024-01-16", "Journée du héros national Laurent Désiré Kabila"),
             ("2024-01-17", "Journée du héros national Patrice Emery Lumumba"),
             ("2024-04-06", "Journée du combat de Simon Kimbangu et de la conscience africaine"),
             ("2024-05-01", "Fête du travail"),
-            ("2024-06-30", "Journée de l’indépendance"),
+            ("2024-06-30", "Journée de l'indépendance"),
             ("2024-08-01", "Fête des parents"),
             ("2024-08-02", "Journée commémorative du génocide Congolais"),
-            ("2024-11-17", "Journée des Forces armées"),
+            ("2024-11-17", "Jour des forces armées"),
             ("2024-12-25", "Noël"),
         )
 
@@ -205,7 +187,7 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2024-01-01", "New Year's Day"),
-            ("2024-01-04", "Martyrs of Independence"),
+            ("2024-01-04", "Martyrs' Day"),
             ("2024-01-16", "National Hero Laurent Désiré Kabila Day"),
             ("2024-01-17", "National Hero Patrice Emery Lumumba Day"),
             ("2024-04-06", "Day of the Struggle of Simon Kimbangu and African Consciousness"),
@@ -213,6 +195,6 @@ class TestDRCongo(CommonCountryTests, TestCase):
             ("2024-06-30", "Independence Day"),
             ("2024-08-01", "Parents' Day"),
             ("2024-08-02", "Congolese Genocide Memorial Day"),
-            ("2024-11-17", "Feast of the Armed Forces"),
+            ("2024-11-17", "Armed Forces Day"),
             ("2024-12-25", "Christmas Day"),
         )

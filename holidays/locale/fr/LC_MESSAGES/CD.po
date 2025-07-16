@@ -35,8 +35,8 @@ msgstr ""
 msgid "Nouvel an"
 msgstr ""
 
-#. Martyrs of Independence.
-msgid "Martyrs de l'indépendance"
+#. Martyrs' Day.
+msgid "Fête des Martyrs"
 msgstr ""
 
 #. National Hero Laurent Désiré Kabila Day.
@@ -63,16 +63,8 @@ msgstr ""
 msgid "Anniversaire de la nouvelle Constitution révolutionnaire"
 msgstr ""
 
-#. Fish Day.
-msgid "Journée du Poisson"
-msgstr ""
-
-#. Currency zaire.
-msgid "Du Zaïre monnaie"
-msgstr ""
-
 #. Independence Day.
-msgid "Journée de l’indépendance"
+msgid "Journée de l'indépendance"
 msgstr ""
 
 #. Parents' Day.
@@ -91,11 +83,11 @@ msgstr ""
 msgid "Anniversaire du changement du nom de notre Pays"
 msgstr ""
 
-#. Established on June 23rd, 1979 via ORDER 79-154. Feast of the Armed Forces.
-msgid "Journée des Forces armées"
+#. Armed Forces Day.
+msgid "Jour des forces armées"
 msgstr ""
 
-#. Established on May 10th, 2014 via Ordonnance n° 14/010. Revolution and Armed Forces Day.
+#. Revolution and Armed Forces Day.
 msgid "Journée de la Révolution et des Forces Armées"
 msgstr ""
 
