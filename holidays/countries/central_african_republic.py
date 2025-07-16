@@ -15,11 +15,11 @@ from gettext import gettext as tr
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase
+from holidays.holiday_base import HolidayBase
 
 
 class CentralAfricanRepublic(
-    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
+    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
 ):
     """Central African Republic holidays.
 
