@@ -49,8 +49,16 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_labor_day(tr("Día del Trabajo"))
 
+        if self._year >= 2025:
+            # Battle of Arica and National Flag Day
+            self._add_holiday_jun_7(tr("Batalla de Arica y Día de la Bandera"))
+
         # Saint Peter and Saint Paul's Day.
         self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo"))
+
+        if self._year >= 2023:
+            # Peruvian Air Force Day
+            self._add_holiday_jul_23(tr("Día de la Fuerza Aérea del Perú"))
 
         # Independence Day.
         self._add_holiday_jul_28(tr("Día de la Independencia"))
