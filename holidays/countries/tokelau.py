@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import SUN
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -22,13 +23,15 @@ class Tokelau(HolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Tokelau>
         * <https://web.archive.org/web/20250715060109/https://www.tokelau.org.nz/About+Us/Culture.html>
-        * <https://web.archive.org/web/20250715065528/https://paclii.org/tk/legis/consol_act_2016/ir2003240.pdf>
+        * [Interpretation Rules 2003](https://web.archive.org/web/20250715065528/https://paclii.org/tk/legis/consol_act_2016/ir2003240.pdf)
     """
 
     country = "TK"
     default_language = "en_TK"
     supported_languages = ("en_TK", "en_US", "tkl")
+    # Interpretation Rule 2003.
     start_year = 2003
+    weekend = {SUN}
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -51,7 +54,7 @@ class Tokelau(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Christmas Day"))
 
-        # Boxing Day
+        # Boxing Day.
         self._add_christmas_day_two(tr("Boxing Day"))
 
 

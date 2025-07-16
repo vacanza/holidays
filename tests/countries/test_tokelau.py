@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestTokelau(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(2003, 2050)
-        super().setUpClass(Tokelau, years=years)
+        super().setUpClass(Tokelau, years=range(2003, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(Tokelau, TK, TKL)
@@ -40,6 +39,7 @@ class TestTokelau(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
+        self.assertHolidayName(name, range(2003, 2050))
 
     def test_easter_monday(self):
         name = "Easter Monday"
@@ -52,6 +52,7 @@ class TestTokelau(CommonCountryTests, TestCase):
             "2021-04-05",
             "2022-04-18",
         )
+        self.assertHolidayName(name, range(2003, 2050))
 
     def test_tokehega_day(self):
         self.assertHolidayName("Tokehega Day", (f"{year}-09-03" for year in range(2003, 2050)))

@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: tkl\n"
+"X-Source-Language: en_TK\n"
 
 #. New Year's Day.
 msgid "New Year's Day"
@@ -46,6 +46,6 @@ msgstr "Aho o te Tokehega"
 msgid "Christmas Day"
 msgstr "Aho Kilihimahi"
 
-#. Boxing Day
+#. Boxing Day.
 msgid "Boxing Day"
 msgstr "Tua-aho Kilihimahi"
