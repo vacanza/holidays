@@ -43,73 +43,91 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("Nouvel an"))
+        self._add_observed(self._add_new_years_day(tr("Nouvel an")))
 
         # Established on May 10th, 2014 via Ordonnance n° 14/010.
         if self._year >= 2015:
             # Martyrs' Day.
-            self._add_holiday_jan_4(tr("Fête des Martyrs"))
+            self._add_observed(self._add_holiday_jan_4(tr("Martyrs de l'indépendance")))
 
-            # National Hero Laurent Désiré Kabila Day.
-            self._add_holiday_jan_16(tr("Journée du héros national Laurent Désiré Kabila"))
+            self._add_observed(
+                # National Hero Laurent Désiré Kabila Day.
+                self._add_holiday_jan_16(tr("Journée du héros national Laurent Désiré Kabila"))
+            )
 
-            # National Hero Patrice Emery Lumumba Day.
-            self._add_holiday_jan_17(tr("Journée du héros national Patrice Emery Lumumba"))
+            self._add_observed(
+                # National Hero Patrice Emery Lumumba Day.
+                self._add_holiday_jan_17(tr("Journée du héros national Patrice Emery Lumumba"))
+            )
 
         # Established on March 30th, 2023 via Ordonnance n° 23-042.
         if self._year >= 2023:
-            self._add_holiday_apr_6(
-                # Day of the Struggle of Simon Kimbangu and African Consciousness.
-                tr("Journée du combat de Simon Kimbangu et de la conscience africaine")
+            self._add_observed(
+                self._add_holiday_apr_6(
+                    # Day of the Struggle of Simon Kimbangu and African Consciousness.
+                    tr("Journée du combat de Simon Kimbangu et de la conscience africaine")
+                )
             )
 
         # Labor Day.
-        self._add_labor_day(tr("Fête du travail"))
+        self._add_observed(self._add_labor_day(tr("Fête du travail")))
 
         # Removed on May 10th, 2014 via Ordonnance n° 14/010.
         if self._year <= 2014:
-            # Anniversary of the Popular Movement of the Revolution.
-            self._add_holiday_may_20(tr("Anniversaire du Mouvement populaire de la révolution"))
-
-            self._add_holiday_jun_24(
-                # Anniversary of the New Revolutionary Constitution.
-                tr("Anniversaire de la nouvelle Constitution révolutionnaire")
+            self._add_observed(
+                self._add_holiday_may_20(
+                    # Anniversary of the Popular Movement of the Revolution.
+                    tr("Anniversaire du Mouvement populaire de la révolution")
+                )
             )
 
+            self._add_observed(
+                self._add_holiday_jun_24(
+                    # Anniversary of the New Revolutionary Constitution.
+                    tr("Anniversaire de la nouvelle Constitution révolutionnaire")
+                )
+            )
+
+        # Renamed on May 10th, 2014 via Ordonnance n° 14/010.
+        self._add_observed(
+            self._add_holiday_may_17(
+                # Armed Forces Day.
+                tr("Jour des forces armées")
+                if self._year >= 2015
+                # Revolution and Armed Forces Day.
+                else tr("Journée de la Révolution et des Forces Armées")
+            )
+        )
+
         # Independence Day.
-        self._add_holiday_jun_30(tr("Journée de l'indépendance"))
+        self._add_observed(self._add_holiday_jun_30(tr("Journée de l'indépendance")))
 
         # Parents' Day.
-        self._add_holiday_aug_1(tr("Fête des parents"))
+        self._add_observed(self._add_holiday_aug_1(tr("Fête des parents")))
 
         if self._year >= 2024:
-            # Congolese Genocide Memorial Day.
-            self._add_holiday_aug_2(tr("Journée commémorative du génocide Congolais"))
+            self._add_observed(
+                # Congolese Genocide Memorial Day.
+                self._add_holiday_aug_2(tr("Journée commémorative du génocide Congolais"))
+            )
 
         # Removed on May 10th, 2014 via Ordonnance n° 14/010.
         if self._year <= 2014:
             # Youth Day.
-            self._add_holiday_oct_14(tr("Journée de la Jeunesse"))
+            self._add_observed(self._add_holiday_oct_14(tr("Journée de la Jeunesse")))
 
-            # Anniversary of the Country's Name Change.
-            self._add_holiday_oct_27(tr("Anniversaire du changement du nom de notre Pays"))
-
-        # Renamed on May 10th, 2014 via Ordonnance n° 14/010.
-        self._add_holiday_nov_17(
-            # Armed Forces Day.
-            tr("Jour des forces armées")
-            if self._year >= 2015
-            # Revolution and Armed Forces Day.
-            else tr("Journée de la Révolution et des Forces Armées")
-        )
+            self._add_observed(
+                # Anniversary of the Country's Name Change.
+                self._add_holiday_oct_27(tr("Anniversaire du changement du nom de notre Pays"))
+            )
 
         # Removed on May 10th, 2014 via Ordonnance n° 14/010.
         if self._year <= 2014:
             # Anniversary of the New Regime.
-            self._add_holiday_nov_24(tr("Anniversaire du nouveau régime"))
+            self._add_observed(self._add_holiday_nov_24(tr("Anniversaire du nouveau régime")))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Noël"))
+        self._add_observed(self._add_christmas_day(tr("Noël")))
 
 
 class CD(DRCongo):

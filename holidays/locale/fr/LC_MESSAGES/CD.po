@@ -36,7 +36,7 @@ msgid "Nouvel an"
 msgstr ""
 
 #. Martyrs' Day.
-msgid "Fête des Martyrs"
+msgid "Martyrs de l'indépendance"
 msgstr ""
 
 #. National Hero Laurent Désiré Kabila Day.
@@ -63,6 +63,14 @@ msgstr ""
 msgid "Anniversaire de la nouvelle Constitution révolutionnaire"
 msgstr ""
 
+#. Armed Forces Day.
+msgid "Jour des forces armées"
+msgstr ""
+
+#. Revolution and Armed Forces Day.
+msgid "Journée de la Révolution et des Forces Armées"
+msgstr ""
+
 #. Independence Day.
 msgid "Journée de l'indépendance"
 msgstr ""
@@ -81,14 +89,6 @@ msgstr ""
 
 #. Anniversary of the Country's Name Change.
 msgid "Anniversaire du changement du nom de notre Pays"
-msgstr ""
-
-#. Armed Forces Day.
-msgid "Jour des forces armées"
-msgstr ""
-
-#. Revolution and Armed Forces Day.
-msgid "Journée de la Révolution et des Forces Armées"
 msgstr ""
 
 #. Anniversary of the New Regime.
