@@ -20,11 +20,11 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Democratic Republic of the Congo holidays.
 
     References:
-        * [Public holidays in the Democratic Republic of the Congo](https://en.wikipedia.org/wiki/Public_holidays_in_the_Democratic_Republic_of_the_Congo)
-        * [ORDONNANCE 79-154](https://web.archive.org/web/20220329181351/http://www.leganet.cd/Legislation/DroitSocial/O.79.154.23.06.1979.htm)
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Democratic_Republic_of_the_Congo>
+        * [Ordonnance n° 79-154](https://web.archive.org/web/20220329181351/http://www.leganet.cd/Legislation/DroitSocial/O.79.154.23.06.1979.htm)
         * [Ordonnance n° 14/010](https://web.archive.org/web/20230419184344/http://leganet.cd/Legislation/Divers/Ordonnance.14.10.14.mai.2014.htm)
         * [Ordonnance n° 23-042](https://web.archive.org/web/20250113230411/http://www.droitcongolais.info/files/143.03.23_Ordonnance-du-30-mars-2023_jours-feries.pdf)
-        * [LEGANET.CD](https://web.archive.org/web/20250104233847/https://www.leganet.cd/Legislation/Droit%20administratif/Urbanismevoiries/Div/L.009.05.08.2002.htm)
+        * [Loi n° 009-2002](https://web.archive.org/web/20250104233847/https://www.leganet.cd/Legislation/Droit%20administratif/Urbanismevoiries/Div/L.009.05.08.2002.htm)
     """
 
     country = "CD"
@@ -32,7 +32,7 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     # %s (observed).
     observed_label = tr("%s (observé)")
     supported_languages = ("en_US", "fr")
-    # ORDONNANCE 79-154.
+    # Ordonnance n° 79-154.
     start_year = 1980
 
     def __init__(self, *args, **kwargs) -> None:
@@ -47,8 +47,8 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Established on May 10th, 2014 via Ordonnance n° 14/010.
         if self._year >= 2015:
-            # Martyrs of Independence.
-            self._add_holiday_jan_4(tr("Martyrs de l'indépendance"))
+            # Martyrs' Day.
+            self._add_holiday_jan_4(tr("Fête des Martyrs"))
 
             # National Hero Laurent Désiré Kabila Day.
             self._add_holiday_jan_16(tr("Journée du héros national Laurent Désiré Kabila"))
@@ -66,7 +66,7 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_labor_day(tr("Fête du travail"))
 
-        # Established on June 23rd, 1979 via ORDER 79-154.
+        # Removed on May 10th, 2014 via Ordonnance n° 14/010.
         if self._year <= 2014:
             # Anniversary of the Popular Movement of the Revolution.
             self._add_holiday_may_20(tr("Anniversaire du Mouvement populaire de la révolution"))
@@ -76,14 +76,8 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
                 tr("Anniversaire de la nouvelle Constitution révolutionnaire")
             )
 
-            # Fish Day.
-            self._add_holiday_jun_24(tr("Journée du Poisson"))
-
-            # Currency zaire.
-            self._add_holiday_jun_24(tr("Du Zaïre monnaie"))
-
         # Independence Day.
-        self._add_holiday_jun_30(tr("Journée de l’indépendance"))
+        self._add_holiday_jun_30(tr("Journée de l'indépendance"))
 
         # Parents' Day.
         self._add_holiday_aug_1(tr("Fête des parents"))
@@ -92,7 +86,7 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Congolese Genocide Memorial Day.
             self._add_holiday_aug_2(tr("Journée commémorative du génocide Congolais"))
 
-        # Established on June 23rd, 1979 via ORDER 79-154.
+        # Removed on May 10th, 2014 via Ordonnance n° 14/010.
         if self._year <= 2014:
             # Youth Day.
             self._add_holiday_oct_14(tr("Journée de la Jeunesse"))
@@ -100,17 +94,16 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Anniversary of the Country's Name Change.
             self._add_holiday_oct_27(tr("Anniversaire du changement du nom de notre Pays"))
 
+        # Renamed on May 10th, 2014 via Ordonnance n° 14/010.
         self._add_holiday_nov_17(
-            # Established on June 23rd, 1979 via ORDER 79-154.
-            # Feast of the Armed Forces.
-            tr("Journée des Forces armées")
+            # Armed Forces Day.
+            tr("Jour des forces armées")
             if self._year >= 2015
-            # Established on May 10th, 2014 via Ordonnance n° 14/010.
             # Revolution and Armed Forces Day.
             else tr("Journée de la Révolution et des Forces Armées")
         )
 
-        # Established on June 23rd, 1979 via ORDER 79-154.
+        # Removed on May 10th, 2014 via Ordonnance n° 14/010.
         if self._year <= 2014:
             # Anniversary of the New Regime.
             self._add_holiday_nov_24(tr("Anniversaire du nouveau régime"))
