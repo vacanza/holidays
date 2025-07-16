@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Tokelau holidays.
+#  Tokelau holidays tkl localization.
 #
 msgid ""
 msgstr ""

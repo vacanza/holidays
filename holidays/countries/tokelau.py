@@ -18,7 +18,7 @@ from holidays.holiday_base import HolidayBase
 
 
 class Tokelau(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """Tokelau Holidays.
+    """Tokelau holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Tokelau>
