@@ -36,8 +36,6 @@ class CentralAfricanRepublic(
     supported_languages = ("en_US", "fr")
     # %s (estimated).
     estimated_label = tr("%s (estimé)")
-    # %s (observed, estimated).
-    observed_estimated_label = tr("%s (observé, estimé)")
     # December 1, 1958: Autonomy within the French Community.
     start_year = 1959
 
