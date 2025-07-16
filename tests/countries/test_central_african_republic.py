@@ -20,7 +20,7 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1959, 2050)
-        super().setUpClass(CentralAfricanRepublic, years=years, years_non_observed=years)
+        super().setUpClass(CentralAfricanRepublic, years=years)
         cls.no_estimated_holidays = CentralAfricanRepublic(
             years=years, islamic_show_estimated=False
         )
@@ -52,7 +52,7 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(1959, 2050))
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         self.assertHolidayName("Fête du Travail", (f"{year}-05-01" for year in range(1959, 2050)))
 
     def test_ascension_day(self):
