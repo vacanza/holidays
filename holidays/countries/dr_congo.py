@@ -89,15 +89,14 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             )
 
         # Renamed on May 10th, 2014 via Ordonnance n° 14/010.
-        self._add_observed(
-            self._add_holiday_may_17(
-                # Armed Forces Day.
-                tr("Jour des forces armées")
-                if self._year >= 2015
+        if self._year >= 2015:
+            self._add_observed(
                 # Revolution and Armed Forces Day.
-                else tr("Journée de la Révolution et des Forces Armées")
+                self._add_holiday_may_17(tr("Journée de la Révolution et des Forces Armées"))
             )
-        )
+        else:
+            # Zairian Armed Forces Day.
+            self._add_observed(self._add_holiday_nov_17(tr("Fête des Forces armées zaïroises")))
 
         # Independence Day.
         self._add_observed(self._add_holiday_jun_30(tr("Journée de l'indépendance")))
