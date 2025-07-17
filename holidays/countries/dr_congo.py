@@ -120,8 +120,8 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
                 self._add_holiday_oct_27(tr("Anniversaire du changement du nom de notre Pays"))
             )
 
-        # Anniversary of the New Regime.
-        self._add_observed(self._add_holiday_nov_24(tr("Anniversaire du nouveau régime")))
+            # Anniversary of the New Regime.
+            self._add_observed(self._add_holiday_nov_24(tr("Anniversaire du nouveau régime")))
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day(tr("Noël")))

@@ -12,11 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.dr_congo import (
-    DRCongo,
-    CD,
-    COD,
-)
+from holidays.countries.dr_congo import DRCongo, CD, COD
 from tests.common import CommonCountryTests
 
 
@@ -39,10 +35,18 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-01-04" for year in range(2015, 2050)))
         self.assertNoHolidayName(name, range(1980, 2015))
 
+        dt = ("2015-01-03",)
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
+
     def test_national_hero_laurent_desire_kabila_day(self):
         name = "Journée du héros national Laurent Désiré Kabila"
         self.assertHolidayName(name, (f"{year}-01-16" for year in range(2015, 2050)))
         self.assertNoHolidayName(name, range(1980, 2015))
+
+        dt = ("2022-01-15",)
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_national_hero_patrice_emery_lumumba_day(self):
         name = "Journée du héros national Patrice Emery Lumumba"
@@ -54,26 +58,111 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-04-06" for year in range(2023, 2050)))
         self.assertNoHolidayName(name, range(1980, 2023))
 
+        dt = ("2025-04-05",)
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_armed_forces_day(self):
+        self.assertHolidayName(
+            "Fête des Forces armées zaïroises", (f"{year}-11-17" for year in range(1980, 2014))
+        )
+        self.assertHolidayName(
+            "Journée de la Révolution et des Forces Armées",
+            (f"{year}-05-17" for year in range(2014, 2050)),
+        )
+
+        dt_before_2014 = (
+            "1985-11-16",
+            "1991-11-16",
+            "1996-11-16",
+            "2002-11-16",
+            "2013-11-16",
+        )
+        self.assertHoliday(dt_before_2014)
+        self.assertNoNonObservedHoliday(dt_before_2014)
+
+        dt_after_2014 = (
+            "2015-05-16",
+            "2020-05-16",
+        )
+        self.assertHoliday(dt_after_2014)
+        self.assertNoNonObservedHoliday(dt_after_2014)
+
     def test_labor_day(self):
         self.assertHolidayName("Fête du travail", (f"{year}-05-01" for year in range(1980, 2050)))
+
+        dt = (
+            "1983-04-30",
+            "1988-04-30",
+            "1994-04-30",
+            "2005-04-30",
+            "2011-04-30",
+            "2016-04-30",
+            "2022-04-30",
+        )
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_anniversary_of_the_popular_movement_of_the_revolution(self):
         name = "Anniversaire du Mouvement populaire de la révolution"
         self.assertHolidayName(name, (f"{year}-05-20" for year in range(1980, 2014)))
         self.assertNoHolidayName(name, range(2014, 2050))
 
+        dt = (
+            "1984-05-19",
+            "1990-05-19",
+            "2001-05-19",
+            "2007-05-19",
+            "2012-05-19",
+        )
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
+
     def test_anniversary_of_the_new_revolutionary_constitution(self):
         name = "Anniversaire de la nouvelle Constitution révolutionnaire"
         self.assertHolidayName(name, (f"{year}-06-24" for year in range(1980, 2014)))
         self.assertNoHolidayName(name, range(2014, 2050))
 
+        dt = (
+            "1984-06-23",
+            "1990-06-23",
+            "2001-06-23",
+            "2007-06-23",
+            "2012-06-23",
+        )
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
+
     def test_independence_day(self):
-        name = "Journée de l'indépendance"
-        self.assertHolidayName(name, (f"{year}-06-30" for year in range(1980, 2050)))
+        self.assertHolidayName(
+            "Journée de l'indépendance", (f"{year}-06-30" for year in range(1980, 2050))
+        )
+
+        dt = (
+            "1985-06-29",
+            "1991-06-29",
+            "1996-06-29",
+            "2002-06-29",
+            "2013-06-29",
+            "2019-06-29",
+            "2024-06-29",
+        )
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_parents_day(self):
-        name = "Fête des parents"
-        self.assertHolidayName(name, (f"{year}-08-01" for year in range(1980, 2050)))
+        self.assertHolidayName("Fête des parents", (f"{year}-08-01" for year in range(1980, 2050)))
+
+        dt = (
+            "1982-07-31",
+            "1993-07-31",
+            "1999-07-31",
+            "2004-07-31",
+            "2010-07-31",
+            "2021-07-31",
+        )
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_congolese_genocide_memorial_day(self):
         name = "Journée commémorative du génocide Congolais"
@@ -85,100 +174,45 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-10-14" for year in range(1980, 2014)))
         self.assertNoHolidayName(name, range(2014, 2050))
 
+        dt = (
+            "1984-10-13",
+            "1990-10-13",
+            "2001-10-13",
+            "2007-10-13",
+            "2012-10-13",
+        )
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
+
     def test_anniversary_of_the_new_regime(self):
         self.assertHolidayName(
-            "Anniversaire du nouveau régime", (f"{year}-11-24" for year in range(1980, 2050))
+            "Anniversaire du nouveau régime", (f"{year}-11-24" for year in range(1980, 2014))
         )
+
+        dt = (
+            "1985-11-23",
+            "1991-11-23",
+            "1996-11-23",
+            "2002-11-23",
+            "2013-11-23",
+        )
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_day(self):
-        name = "Noël"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1980, 2050)))
+        self.assertHolidayName("Noël", (f"{year}-12-25" for year in range(1980, 2050)))
 
-    def test_2006(self):
-        self.assertHolidays(
-            DRCongo(years=2006),
-            ("2006-01-01", "Nouvel an"),
-            ("2006-05-01", "Fête du travail"),
-            ("2006-05-20", "Anniversaire du Mouvement populaire de la révolution"),
-            ("2006-06-24", "Anniversaire de la nouvelle Constitution révolutionnaire"),
-            ("2006-06-30", "Journée de l'indépendance"),
-            ("2006-08-01", "Fête des parents"),
-            ("2006-10-14", "Journée de la Jeunesse"),
-            ("2006-10-27", "Anniversaire du changement du nom de notre Pays"),
-            ("2006-11-17", "Fête des Forces armées zaïroises"),
-            ("2006-11-24", "Anniversaire du nouveau régime"),
-            ("2006-12-25", "Noël"),
+        dt = (
+            "1983-12-24",
+            "1988-12-24",
+            "1994-12-24",
+            "2005-12-24",
+            "2011-12-24",
+            "2016-12-24",
+            "2022-12-24",
         )
-
-    def test_2010(self):
-        self.assertHolidays(
-            DRCongo(years=2010),
-            ("2010-01-01", "Nouvel an"),
-            ("2010-05-01", "Fête du travail"),
-            ("2010-05-20", "Anniversaire du Mouvement populaire de la révolution"),
-            ("2010-06-24", "Anniversaire de la nouvelle Constitution révolutionnaire"),
-            ("2010-06-30", "Journée de l'indépendance"),
-            ("2010-07-31", "Fête des parents (observé)"),
-            ("2010-08-01", "Fête des parents"),
-            ("2010-10-14", "Journée de la Jeunesse"),
-            ("2010-10-27", "Anniversaire du changement du nom de notre Pays"),
-            ("2010-11-17", "Fête des Forces armées zaïroises"),
-            ("2010-11-24", "Anniversaire du nouveau régime"),
-            ("2010-12-25", "Noël"),
-        )
-
-    def test_2015(self):
-        self.assertHolidays(
-            DRCongo(years=2015),
-            ("2015-01-01", "Nouvel an"),
-            ("2015-01-04", "Martyrs de l'indépendance"),
-            ("2015-01-03", "Martyrs de l'indépendance (observé)"),
-            ("2015-01-16", "Journée du héros national Laurent Désiré Kabila"),
-            ("2015-01-17", "Journée du héros national Patrice Emery Lumumba"),
-            ("2015-05-01", "Fête du travail"),
-            ("2015-05-17", "Journée de la Révolution et des Forces Armées"),
-            ("2015-05-16", "Journée de la Révolution et des Forces Armées (observé)"),
-            ("2015-06-30", "Journée de l'indépendance"),
-            ("2015-08-01", "Fête des parents"),
-            ("2015-11-24", "Anniversaire du nouveau régime"),
-            ("2015-12-25", "Noël"),
-        )
-
-    def test_2016(self):
-        self.assertHolidays(
-            DRCongo(years=2016),
-            ("2016-01-01", "Nouvel an"),
-            ("2016-01-04", "Martyrs de l'indépendance"),
-            (
-                "2016-01-16",
-                "Journée du héros national Laurent Désiré Kabila; "
-                "Journée du héros national Patrice Emery Lumumba (observé)",
-            ),
-            ("2016-01-17", "Journée du héros national Patrice Emery Lumumba"),
-            ("2016-04-30", "Fête du travail (observé)"),
-            ("2016-05-01", "Fête du travail"),
-            ("2016-05-17", "Journée de la Révolution et des Forces Armées"),
-            ("2016-06-30", "Journée de l'indépendance"),
-            ("2016-08-01", "Fête des parents"),
-            ("2016-11-24", "Anniversaire du nouveau régime"),
-            ("2016-12-24", "Noël (observé)"),
-            ("2016-12-25", "Noël"),
-        )
-
-    def test_2017(self):
-        self.assertHolidays(
-            DRCongo(years=2017),
-            ("2017-01-01", "Nouvel an"),
-            ("2017-01-04", "Martyrs de l'indépendance"),
-            ("2017-01-16", "Journée du héros national Laurent Désiré Kabila"),
-            ("2017-01-17", "Journée du héros national Patrice Emery Lumumba"),
-            ("2017-05-01", "Fête du travail"),
-            ("2017-05-17", "Journée de la Révolution et des Forces Armées"),
-            ("2017-06-30", "Journée de l'indépendance"),
-            ("2017-08-01", "Fête des parents"),
-            ("2017-11-24", "Anniversaire du nouveau régime"),
-            ("2017-12-25", "Noël"),
-        )
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -193,8 +227,6 @@ class TestDRCongo(CommonCountryTests, TestCase):
             ("2024-06-30", "Journée de l'indépendance"),
             ("2024-08-01", "Fête des parents"),
             ("2024-08-02", "Journée commémorative du génocide Congolais"),
-            ("2024-11-23", "Anniversaire du nouveau régime (observé)"),
-            ("2024-11-24", "Anniversaire du nouveau régime"),
             ("2024-12-25", "Noël"),
         )
 
@@ -212,7 +244,5 @@ class TestDRCongo(CommonCountryTests, TestCase):
             ("2024-06-30", "Independence Day"),
             ("2024-08-01", "Parents' Day"),
             ("2024-08-02", "Congolese Genocide Memorial Day"),
-            ("2024-11-23", "Anniversary of the New Regime (observed)"),
-            ("2024-11-24", "Anniversary of the New Regime"),
             ("2024-12-25", "Christmas Day"),
         )
