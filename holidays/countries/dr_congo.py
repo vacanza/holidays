@@ -72,8 +72,18 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_observed(self._add_labor_day(tr("Fête du travail")))
 
+        # Renamed on May 10th, 2014 via Ordonnance n° 14/010.
+        if self._year >= 2014:
+            self._add_observed(
+                # Revolution and Armed Forces Day.
+                self._add_holiday_may_17(tr("Journée de la Révolution et des Forces Armées"))
+            )
+        else:
+            # Armed Forces Day.
+            self._add_observed(self._add_holiday_nov_17(tr("Fête des Forces armées zaïroises")))
+
         # Removed on May 10th, 2014 via Ordonnance n° 14/010.
-        if self._year <= 2014:
+        if self._year <= 2013:
             self._add_observed(
                 self._add_holiday_may_20(
                     # Anniversary of the Popular Movement of the Revolution.
@@ -88,16 +98,6 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
                 )
             )
 
-        # Renamed on May 10th, 2014 via Ordonnance n° 14/010.
-        if self._year >= 2015:
-            self._add_observed(
-                # Revolution and Armed Forces Day.
-                self._add_holiday_may_17(tr("Journée de la Révolution et des Forces Armées"))
-            )
-        else:
-            # Zairian Armed Forces Day.
-            self._add_observed(self._add_holiday_nov_17(tr("Fête des Forces armées zaïroises")))
-
         # Independence Day.
         self._add_observed(self._add_holiday_jun_30(tr("Journée de l'indépendance")))
 
@@ -111,7 +111,7 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             )
 
         # Removed on May 10th, 2014 via Ordonnance n° 14/010.
-        if self._year <= 2014:
+        if self._year <= 2013:
             # Youth Day.
             self._add_observed(self._add_holiday_oct_14(tr("Journée de la Jeunesse")))
 
@@ -120,10 +120,8 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
                 self._add_holiday_oct_27(tr("Anniversaire du changement du nom de notre Pays"))
             )
 
-        # Removed on May 10th, 2014 via Ordonnance n° 14/010.
-        if self._year <= 2014:
-            # Anniversary of the New Regime.
-            self._add_observed(self._add_holiday_nov_24(tr("Anniversaire du nouveau régime")))
+        # Anniversary of the New Regime.
+        self._add_observed(self._add_holiday_nov_24(tr("Anniversaire du nouveau régime")))
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day(tr("Noël")))

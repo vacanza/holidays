@@ -55,20 +55,20 @@ msgstr ""
 msgid "Fête du travail"
 msgstr ""
 
+#. Revolution and Armed Forces Day.
+msgid "Journée de la Révolution et des Forces Armées"
+msgstr ""
+
+#. Armed Forces Day.
+msgid "Fête des Forces armées zaïroises"
+msgstr ""
+
 #. Anniversary of the Popular Movement of the Revolution.
 msgid "Anniversaire du Mouvement populaire de la révolution"
 msgstr ""
 
 #. Anniversary of the New Revolutionary Constitution.
 msgid "Anniversaire de la nouvelle Constitution révolutionnaire"
-msgstr ""
-
-#. Revolution and Armed Forces Day.
-msgid "Journée de la Révolution et des Forces Armées"
-msgstr ""
-
-#. Zairian Armed Forces Day.
-msgid "Fête des Forces armées zaïroises"
 msgstr ""
 
 #. Independence Day.

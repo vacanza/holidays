@@ -59,13 +59,13 @@ class TestDRCongo(CommonCountryTests, TestCase):
 
     def test_anniversary_of_the_popular_movement_of_the_revolution(self):
         name = "Anniversaire du Mouvement populaire de la révolution"
-        self.assertHolidayName(name, (f"{year}-05-20" for year in range(1980, 2015)))
-        self.assertNoHolidayName(name, range(2015, 2050))
+        self.assertHolidayName(name, (f"{year}-05-20" for year in range(1980, 2014)))
+        self.assertNoHolidayName(name, range(2014, 2050))
 
     def test_anniversary_of_the_new_revolutionary_constitution(self):
         name = "Anniversaire de la nouvelle Constitution révolutionnaire"
-        self.assertHolidayName(name, (f"{year}-06-24" for year in range(1980, 2015)))
-        self.assertNoHolidayName(name, range(2015, 2050))
+        self.assertHolidayName(name, (f"{year}-06-24" for year in range(1980, 2014)))
+        self.assertNoHolidayName(name, range(2014, 2050))
 
     def test_independence_day(self):
         name = "Journée de l'indépendance"
@@ -82,13 +82,13 @@ class TestDRCongo(CommonCountryTests, TestCase):
 
     def test_youth_day(self):
         name = "Journée de la Jeunesse"
-        self.assertHolidayName(name, (f"{year}-10-14" for year in range(1980, 2015)))
-        self.assertNoHolidayName(name, range(2015, 2050))
+        self.assertHolidayName(name, (f"{year}-10-14" for year in range(1980, 2014)))
+        self.assertNoHolidayName(name, range(2014, 2050))
 
     def test_anniversary_of_the_new_regime(self):
-        name = "Anniversaire du nouveau régime"
-        self.assertHolidayName(name, (f"{year}-11-24" for year in range(1980, 2015)))
-        self.assertNoHolidayName(name, range(2015, 2050))
+        self.assertHolidayName(
+            "Anniversaire du nouveau régime", (f"{year}-11-24" for year in range(1980, 2050))
+        )
 
     def test_christmas_day(self):
         name = "Noël"
@@ -140,6 +140,7 @@ class TestDRCongo(CommonCountryTests, TestCase):
             ("2015-05-16", "Journée de la Révolution et des Forces Armées (observé)"),
             ("2015-06-30", "Journée de l'indépendance"),
             ("2015-08-01", "Fête des parents"),
+            ("2015-11-24", "Anniversaire du nouveau régime"),
             ("2015-12-25", "Noël"),
         )
 
@@ -159,6 +160,7 @@ class TestDRCongo(CommonCountryTests, TestCase):
             ("2016-05-17", "Journée de la Révolution et des Forces Armées"),
             ("2016-06-30", "Journée de l'indépendance"),
             ("2016-08-01", "Fête des parents"),
+            ("2016-11-24", "Anniversaire du nouveau régime"),
             ("2016-12-24", "Noël (observé)"),
             ("2016-12-25", "Noël"),
         )
@@ -174,6 +176,7 @@ class TestDRCongo(CommonCountryTests, TestCase):
             ("2017-05-17", "Journée de la Révolution et des Forces Armées"),
             ("2017-06-30", "Journée de l'indépendance"),
             ("2017-08-01", "Fête des parents"),
+            ("2017-11-24", "Anniversaire du nouveau régime"),
             ("2017-12-25", "Noël"),
         )
 
@@ -190,6 +193,8 @@ class TestDRCongo(CommonCountryTests, TestCase):
             ("2024-06-30", "Journée de l'indépendance"),
             ("2024-08-01", "Fête des parents"),
             ("2024-08-02", "Journée commémorative du génocide Congolais"),
+            ("2024-11-23", "Anniversaire du nouveau régime (observé)"),
+            ("2024-11-24", "Anniversaire du nouveau régime"),
             ("2024-12-25", "Noël"),
         )
 
@@ -207,5 +212,7 @@ class TestDRCongo(CommonCountryTests, TestCase):
             ("2024-06-30", "Independence Day"),
             ("2024-08-01", "Parents' Day"),
             ("2024-08-02", "Congolese Genocide Memorial Day"),
+            ("2024-11-23", "Anniversary of the New Regime (observed)"),
+            ("2024-11-24", "Anniversary of the New Regime"),
             ("2024-12-25", "Christmas Day"),
         )
