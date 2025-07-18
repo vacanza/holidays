@@ -22,6 +22,8 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * <https://web.archive.org/web/20250414165243/https://www.gob.pe/feriados/>
         * <https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú>
+        * <https://web.archive.org/web/20250716164223/https://img.lpderecho.pe/wp-content/uploads/2023/06/Ley-31788-LPDerecho.pdf>
+        * <https://web.archive.org/web/20250716164455/https://img.lpderecho.pe/wp-content/uploads/2023/07/Ley-31822-LPDerecho.pdf>
     """
 
     country = "PE"
@@ -49,7 +51,7 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_labor_day(tr("Día del Trabajo"))
 
-        if self._year >= 2025:
+        if self._year >= 2024:
             # Battle of Arica and National Flag Day
             self._add_holiday_jun_7(tr("Batalla de Arica y Día de la Bandera"))
 
