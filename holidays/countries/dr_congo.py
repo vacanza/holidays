@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import SUN
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_PREV_SAT
 
@@ -34,6 +35,7 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     supported_languages = ("en_US", "fr")
     # Ordonnance n° 79-154.
     start_year = 1980
+    weekend = {SUN}
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
@@ -43,7 +45,9 @@ class DRCongo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_observed(self._add_new_years_day(tr("Nouvel an")))
+        name = tr("Nouvel an")
+        self._add_new_years_day(name)
+        self._add_observed(self._next_year_new_years_day, name=name)
 
         # Established on May 10th, 2014 via Ordonnance n° 14/010.
         if self._year >= 2015:
