@@ -96,7 +96,7 @@ class CaboVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Law # 95/V/99 of March 22nd.
         if self._year >= 2000:
             # Democracy and Freedom Day.
-            self._add_holiday_jan_13(tr("Dia da Liberdade e Democracia"))
+            self._add_holiday_jan_13(tr("Dia da Liberdade e da Democracia"))
 
         # National Heroes Day.
         self._add_holiday_jan_20(tr("Dia da Nacionalidade e dos Heróis Nacionais"))
@@ -128,7 +128,7 @@ class CaboVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_all_saints_day(tr("Dia de Todos os Santos"))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Natal"))
+        self._add_christmas_day(tr("Dia do Natal"))
 
     def _populate_optional_holidays(self):
         # Holy Thursday.

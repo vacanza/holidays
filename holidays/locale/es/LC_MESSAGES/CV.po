@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.77\n"
 "POT-Creation-Date: 2025-04-01 13:02-0400\n"
 "PO-Revision-Date: 2025-04-01 13:02-0400\n"
 "Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
@@ -31,7 +31,7 @@ msgid "Ano Novo"
 msgstr "Año Nuevo"
 
 #. Democracy and Freedom Day.
-msgid "Dia da Liberdade e Democracia"
+msgid "Dia da Liberdade e da Democracia"
 msgstr "Día de la Libertad y la Democracia"
 
 #. National Heroes Day.
@@ -71,7 +71,7 @@ msgid "Dia de Todos os Santos"
 msgstr "Día de Todos los Santos"
 
 #. Christmas Day.
-msgid "Natal"
+msgid "Dia do Natal"
 msgstr "Navidad"
 
 #. Holy Thursday.

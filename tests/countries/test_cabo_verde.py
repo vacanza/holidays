@@ -33,7 +33,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         self.assertNoHolidays(CaboVerde(categories=(OPTIONAL, PUBLIC), years=1975))
 
     def test_democracy_and_freedom_day(self):
-        name = "Dia da Liberdade e Democracia"
+        name = "Dia da Liberdade e da Democracia"
         self.assertHolidayName(name, (f"{year}-01-13" for year in range(2000, 2050)))
         self.assertNoHolidayName(name, range(1976, 2000))
 
@@ -104,14 +104,14 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-11-01" for year in range(1976, 2050)))
 
     def test_christmas_day(self):
-        name = "Natal"
+        name = "Dia do Natal"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1976, 2050)))
 
     def test_2024_public_holidays(self):
         self.assertHolidays(
             CaboVerde(categories=PUBLIC, years=2024),
             ("2024-01-01", "Ano Novo"),
-            ("2024-01-13", "Dia da Liberdade e Democracia"),
+            ("2024-01-13", "Dia da Liberdade e da Democracia"),
             ("2024-01-20", "Dia da Nacionalidade e dos Heróis Nacionais"),
             ("2024-02-14", "Quarta-feira de Cinzas"),
             ("2024-03-29", "Sexta-feira Santa"),
@@ -121,7 +121,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2024-07-05", "Dia da Independência Nacional"),
             ("2024-08-15", "Dia da Assunção"),
             ("2024-11-01", "Dia de Todos os Santos"),
-            ("2024-12-25", "Natal"),
+            ("2024-12-25", "Dia do Natal"),
         )
 
     def test_2024_optional_holidays(self):
@@ -136,7 +136,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         self.assertHolidays(
             CaboVerde(categories=PUBLIC, years=2025),
             ("2025-01-01", "Ano Novo"),
-            ("2025-01-13", "Dia da Liberdade e Democracia"),
+            ("2025-01-13", "Dia da Liberdade e da Democracia"),
             ("2025-01-20", "Dia da Nacionalidade e dos Heróis Nacionais"),
             ("2025-03-05", "Quarta-feira de Cinzas"),
             ("2025-04-18", "Sexta-feira Santa"),
@@ -146,13 +146,13 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-07-05", "Dia da Independência Nacional"),
             ("2025-08-15", "Dia da Assunção"),
             ("2025-11-01", "Dia de Todos os Santos"),
-            ("2025-12-25", "Natal"),
+            ("2025-12-25", "Dia do Natal"),
         )
 
     def test_default_l10n(self):
         self.assertLocalizedHolidays(
             ("2025-01-01", "Ano Novo"),
-            ("2025-01-13", "Dia da Liberdade e Democracia"),
+            ("2025-01-13", "Dia da Liberdade e da Democracia"),
             ("2025-01-15", "Dia do Município do Tarrafal de Santiago"),
             ("2025-01-17", "Dia da Ilha de Santo Antão"),
             ("2025-01-20", "Dia da Nacionalidade e dos Heróis Nacionais"),
@@ -196,7 +196,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 "Dia do Município de Santa Catarina do Fogo",
             ),
             ("2025-12-06", "Dia do Município de Ribeira Brava"),
-            ("2025-12-25", "Natal"),
+            ("2025-12-25", "Dia do Natal"),
         )
 
     def test_de_l10n(self):
