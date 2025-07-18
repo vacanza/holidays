@@ -604,9 +604,13 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             "2024-12-24",
         )
         for subdiv in ("GA", "IN"):
-            self.assertHolidayName(name, self.subdiv_holidays[subdiv], dts)
-            self.assertHolidayName(name, self.subdiv_holidays[subdiv], range(1971, 2050))
-            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv], range(1865, 1879))
+            self.assertHolidayName(f"{name} (observed)", self.subdiv_holidays[subdiv], dts)
+            self.assertHolidayName(
+                f"{name} (observed)", self.subdiv_holidays[subdiv], range(1971, 2050)
+            )
+            self.assertNoHolidayName(
+                f"{name} (observed)", self.subdiv_holidays[subdiv], range(1865, 1879)
+            )
 
     def test_columbus_day(self):
         name = "Columbus Day"
@@ -2232,7 +2236,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 ),
             ),
             ("2022-12-08", "Constitution Day; Lady of Camarin Day"),
-            ("2022-12-23", "Christmas Eve (observed); Washington's Birthday"),
+            ("2022-12-23", "Christmas Eve (observed); Washington's Birthday (observed)"),
             ("2022-12-24", "Christmas Eve"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (observed); Christmas Second Day; Day After Christmas"),
@@ -2339,7 +2343,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 ),
             ),
             ("2022-12-08", "วันรัฐธรรมนูญ; วันแม่พระแห่งคามาริน"),
-            ("2022-12-23", "ชดเชยวันคริสต์มาสอีฟ; วันเกิดวอชิงตัน"),
+            ("2022-12-23", "ชดเชยวันคริสต์มาสอีฟ; ชดเชยวันเกิดวอชิงตัน"),
             ("2022-12-24", "วันคริสต์มาสอีฟ"),
             ("2022-12-25", "วันคริสต์มาส"),
             ("2022-12-26", "ชดเชยวันคริสต์มาส; วันคริสต์มาสวันที่สอง; วันหลังวันคริสต์มาส"),
