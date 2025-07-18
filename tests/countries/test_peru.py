@@ -61,10 +61,8 @@ class TestPeru(CommonCountryTests, TestCase):
         )
 
     def test_battle_of_arica_and_narional_flag_day(self):
-        self.assertHolidayDates(
-            "2025-06-07",
-            "2025-07-23",
-        )
+        # Check newly added holidays
+        self.assertHoliday("2025-06-07", "2025-07-23")
         self.assertHolidayName("Batalla de Arica y Día de la Bandera", "2025-06-07")
         self.assertHolidayName("Día de la Fuerza Aérea del Perú", "2025-07-23")
 
