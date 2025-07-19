@@ -22,6 +22,7 @@ class Niue(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Static
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Niue>
+        * <https://en.wikipedia.org/wiki/Niue_Constitution_Act>
         * [Public Holidays Ordinance 1961](https://web.archive.org/web/20250102100637/http://www.paclii.org/nu/legis/num_act/nipho1961314.pdf)
         * <https://www.gov.nu/public-service-circulars>
         * <http://archive.today/2025.07.14-145535/https://www.wipo.int/wipolex/en/text/427817>
