@@ -64,11 +64,11 @@ msgstr "Fête de l'Indépendance Nationale"
 
 #. Assumption Day.
 msgid "Dia da Assunção"
-msgstr "Jour de l'Assomption"
+msgstr "Assomption de Notre-Dame"
 
 #. All Saints' Day.
 msgid "Dia de Todos os Santos"
-msgstr "La Toussaint"
+msgstr "Toussaint"
 
 #. Christmas Day.
 msgid "Dia do Natal"

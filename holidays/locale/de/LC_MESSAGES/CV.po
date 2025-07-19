@@ -48,7 +48,7 @@ msgstr "Karfreitag"
 
 #. Easter Sunday.
 msgid "Páscoa"
-msgstr "Ostern"
+msgstr "Ostersonntag"
 
 #. Worker's Day.
 msgid "Dia do Trabalhador"
@@ -60,7 +60,7 @@ msgstr "Weltkindertag"
 
 #. Independence Day.
 msgid "Dia da Independência Nacional"
-msgstr "Nationaler Unabhängigkeitstag"
+msgstr "Unabhängigkeitstag"
 
 #. Assumption Day.
 msgid "Dia da Assunção"
@@ -172,7 +172,7 @@ msgstr "Tag der Gemeinde São Vicente"
 
 #. Carnival Tuesday.
 msgid "Terça-feira de Carnaval"
-msgstr "Karnevalsdienstag"
+msgstr "Faschingsdienstag"
 
 #. Tarrafal de Santiago Municipality Day.
 msgid "Dia do Município do Tarrafal de Santiago"
