@@ -1,0 +1,100 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Democratic Republic of the Congo holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.77\n"
+"POT-Creation-Date: 2025-07-05 21:01+0530\n"
+"PO-Revision-Date: 2025-07-05 21:01+0530\n"
+"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: fr\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observé)"
+msgstr "%s (observed)"
+
+#. New Year's Day.
+msgid "Nouvel an"
+msgstr "New Year's Day"
+
+#. Martyrs' Day.
+msgid "Martyrs de l'indépendance"
+msgstr "Martyrs' Day"
+
+#. National Hero Laurent Désiré Kabila Day.
+msgid "Journée du héros national Laurent Désiré Kabila"
+msgstr "National Hero Laurent Désiré Kabila Day"
+
+#. National Hero Patrice Emery Lumumba Day.
+msgid "Journée du héros national Patrice Emery Lumumba"
+msgstr "National Hero Patrice Emery Lumumba Day"
+
+#. Day of the Struggle of Simon Kimbangu and African Consciousness.
+msgid "Journée du combat de Simon Kimbangu et de la conscience africaine"
+msgstr "Day of the Struggle of Simon Kimbangu and African Consciousness"
+
+#. Labor Day.
+msgid "Fête du travail"
+msgstr "Labor Day"
+
+#. Revolution and Armed Forces Day.
+msgid "Journée de la Révolution et des Forces Armées"
+msgstr "Revolution and Armed Forces Day"
+
+#. Armed Forces Day.
+msgid "Fête des Forces armées zaïroises"
+msgstr "Armed Forces Day"
+
+#. Anniversary of the Popular Movement of the Revolution.
+msgid "Anniversaire du Mouvement populaire de la révolution"
+msgstr "Anniversary of the Popular Movement of the Revolution"
+
+#. Anniversary of the New Revolutionary Constitution.
+msgid "Anniversaire de la nouvelle Constitution révolutionnaire"
+msgstr "Anniversary of the New Revolutionary Constitution"
+
+#. Independence Day.
+msgid "Journée de l'indépendance"
+msgstr "Independence Day"
+
+#. Parents' Day.
+msgid "Fête des parents"
+msgstr "Parents' Day"
+
+#. Congolese Genocide Memorial Day.
+msgid "Journée commémorative du génocide Congolais"
+msgstr "Congolese Genocide Memorial Day"
+
+#. Youth Day.
+msgid "Journée de la Jeunesse"
+msgstr "Youth Day"
+
+#. Anniversary of the Country's Name Change.
+msgid "Anniversaire du changement du nom de notre Pays"
+msgstr "Anniversary of the Country's Name Change"
+
+#. Anniversary of the New Regime.
+msgid "Anniversaire du nouveau régime"
+msgstr "Anniversary of the New Regime"
+
+#. Christmas Day.
+msgid "Noël"
+msgstr "Christmas Day"

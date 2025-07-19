@@ -77,6 +77,7 @@ COUNTRIES: RegistryDict = {
     "djibouti": ("Djibouti", "DJ", "DJI"),
     "dominica": ("Dominica", "DM", "DMA"),
     "dominican_republic": ("DominicanRepublic", "DO", "DOM"),
+    "dr_congo": ("DRCongo", "CD", "COD"),
     "ecuador": ("Ecuador", "EC", "ECU"),
     "egypt": ("Egypt", "EG", "EGY"),
     "jordan": ("Jordan", "JO", "JOR"),
