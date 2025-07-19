@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import OPTIONAL, PUBLIC
-from holidays.countries import CaboVerde, CV, CPV
+from holidays.countries.cabo_verde import CaboVerde, CV, CPV
 from tests.common import CommonCountryTests
 
 
@@ -25,6 +25,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         cls.subdiv_holidays = {
             subdiv: CaboVerde(subdiv=subdiv, years=years) for subdiv in CaboVerde.subdivisions
         }
+        cls.opt_holidays = CaboVerde(categories=OPTIONAL, years=years)
 
     def test_country_aliases(self):
         self.assertAliases(CaboVerde, CV, CPV)
@@ -32,25 +33,18 @@ class TestCapeVerde(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(CaboVerde(categories=(OPTIONAL, PUBLIC), years=1975))
 
+    def test_new_years_day(self):
+        self.assertHolidayName("Ano Novo", (f"{year}-01-01" for year in range(1976, 2050)))
+
     def test_democracy_and_freedom_day(self):
         name = "Dia da Liberdade e da Democracia"
         self.assertHolidayName(name, (f"{year}-01-13" for year in range(2000, 2050)))
         self.assertNoHolidayName(name, range(1976, 2000))
 
-    def test_independence_day(self):
-        self.assertHolidayName(
-            "Dia da Independência Nacional", (f"{year}-07-05" for year in range(1976, 2050))
-        )
-
     def test_heroes_day(self):
         self.assertHolidayName(
             "Dia da Nacionalidade e dos Heróis Nacionais",
             (f"{year}-01-20" for year in range(1976, 2050)),
-        )
-
-    def test_international_childrens_day(self):
-        self.assertHolidayName(
-            "Dia Mundial da Criança", (f"{year}-06-01" for year in range(2005, 2050))
         )
 
     def test_ash_wednesday(self):
@@ -95,17 +89,367 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(1976, 2050))
 
+    def test_workers_day(self):
+        self.assertHolidayName(
+            "Dia do Trabalhador", (f"{year}-05-01" for year in range(1976, 2050))
+        )
+
+    def test_international_childrens_day(self):
+        name = "Dia Mundial da Criança"
+        self.assertHolidayName(name, (f"{year}-06-01" for year in range(2005, 2050)))
+        self.assertNoHolidayName(name, range(1976, 2005))
+
+    def test_independence_day(self):
+        self.assertHolidayName(
+            "Dia da Independência Nacional", (f"{year}-07-05" for year in range(1976, 2050))
+        )
+
     def test_assumption_day(self):
-        name = "Dia da Assunção"
-        self.assertHolidayName(name, (f"{year}-08-15" for year in range(1976, 2050)))
+        self.assertHolidayName("Dia da Assunção", (f"{year}-08-15" for year in range(1976, 2050)))
 
     def test_all_saints_day(self):
-        name = "Dia de Todos os Santos"
-        self.assertHolidayName(name, (f"{year}-11-01" for year in range(1976, 2050)))
+        self.assertHolidayName(
+            "Dia de Todos os Santos", (f"{year}-11-01" for year in range(1976, 2050))
+        )
 
     def test_christmas_day(self):
-        name = "Dia do Natal"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1976, 2050)))
+        self.assertHolidayName("Dia do Natal", (f"{year}-12-25" for year in range(1976, 2050)))
+
+    def test_holy_thursday(self):
+        name = "Quinta-Feira Santa"
+        dt = (
+            "2021-04-01",
+            "2022-04-14",
+            "2023-04-06",
+            "2024-03-28",
+            "2025-04-17",
+        )
+        self.assertHolidayName(name, self.opt_holidays, dt)
+        self.assertHolidayName(name, self.opt_holidays, range(1976, 2050))
+        self.assertNoHolidayName(name)
+        self.assertNoHoliday(dt)
+
+    def test_mothers_day(self):
+        name = "Dia das Mães"
+        dt = (
+            "2021-05-09",
+            "2022-05-08",
+            "2023-05-14",
+            "2024-05-12",
+            "2025-05-11",
+        )
+        self.assertHolidayName(name, self.opt_holidays, dt)
+        self.assertHolidayName(name, self.opt_holidays, range(1976, 2050))
+        self.assertNoHolidayName(name)
+        self.assertNoHoliday(dt)
+
+    def test_fathers_day(self):
+        name = "Dia dos Pais"
+        dt = (
+            "2021-06-20",
+            "2022-06-19",
+            "2023-06-18",
+            "2024-06-16",
+            "2025-06-15",
+        )
+        self.assertHolidayName(name, self.opt_holidays, dt)
+        self.assertHolidayName(name, self.opt_holidays, range(1976, 2050))
+        self.assertNoHolidayName(name)
+        self.assertNoHoliday(dt)
+
+    def test_brava_municipality_day(self):
+        name = "Dia do Município da Brava"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "BR":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-06-24" for year in range(1983, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_boa_vista_municipality_day(self):
+        name = "Dia do Município da Boa Vista"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "BV":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-07-04" for year in range(1983, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_santa_catarina_de_santiago_municipality_day(self):
+        name = "Dia do Município de Santa Catarina de Santiago"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "CA":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-11-25" for year in range(1982, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1982))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_santa_catarina_do_fogo_municipality_day(self):
+        name = "Dia do Município de Santa Catarina do Fogo"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "CF":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-11-25" for year in range(2005, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 2005))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_santa_cruz_municipality_day(self):
+        name = "Dia do Município de Santa Cruz"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "CR":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-07-25" for year in range(1983, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_maio_municipality_day(self):
+        name = "Dia do Município do Maio"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "MA":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-09-08" for year in range(1983, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_mosteiros_municipality_day(self):
+        name = "Dia do Município dos Mosteiros"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "MO":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-08-15" for year in range(1992, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1992))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_santo_antão_island_day(self):
+        name = "Dia da Ilha de Santo Antão"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv in {"PA", "PN", "RG"}:
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-01-17" for year in range(1983, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_paúl_municipality_day(self):
+        name = "Dia do Município do Paúl"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "PA":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-06-13" for year in range(1983, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_porto_novo_municipality_day(self):
+        name = "Dia do Município do Porto Novo"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "PN":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-09-02" for year in range(1983, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_praia_municipality_day(self):
+        name = "Dia do Município da Praia"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "PR":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-05-19" for year in range(1983, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_ribeira_brava_municipality_day(self):
+        name = "Dia do Município de Ribeira Brava"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "RB":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-12-06" for year in range(2005, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 2005))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_ribeira_grande_municipality_day(self):
+        name = "Dia do Município de Ribeira Grande"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "RG":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-05-07" for year in range(1983, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_ribeira_grande_de_santiago_municipality_day(self):
+        name = "Dia do Município de Ribeira Grande de Santiago"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "RS":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-01-31" for year in range(2006, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 2006))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_sao_domingos_municipality_day(self):
+        name = "Dia do Município de São Domingos"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "SD":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-03-13" for year in range(1994, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1994))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_sao_filipe_municipality_day(self):
+        name = "Dia do Município de São Filipe"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "SF":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-05-01" for year in range(1992, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1992))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_sal_municipality_day(self):
+        name = "Dia do Município do Sal"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "SL":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-09-15" for year in range(1983, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_sao_miguel_municipality_day(self):
+        name = "Dia do Município de São Miguel"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "SM":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-09-29" for year in range(1997, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1997))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_sao_lourenco_dos_orgaos_municipality_day(self):
+        name = "Dia do Município de São Lourenço dos Órgãos"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "SO":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-05-09" for year in range(2005, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 2005))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_sao_salvador_do_mundo_municipality_day(self):
+        name = "Dia do Município de São Salvador do Mundo"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "SS":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-07-19" for year in range(2005, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 2005))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_sao_vicente_municipality_day(self):
+        name = "Dia do Município de São Vicente"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "SV":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-01-22" for year in range(1983, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_carnival_tuesday(self):
+        name = "Terça-feira de Carnaval"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "SV":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2021-02-16",
+                    "2022-03-01",
+                    "2023-02-21",
+                    "2024-02-13",
+                    "2025-03-04",
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_tarrafal_de_santiago_municipality_day(self):
+        name = "Dia do Município do Tarrafal de Santiago"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "TA":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-01-15" for year in range(1983, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_tarrafal_de_sao_nicolau_municipality_day(self):
+        name = "Dia do Município do Tarrafal de São Nicolau"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "TS":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-08-02" for year in range(2005, 2050))
+                )
+                self.assertNoHolidayName(name, holidays, range(1976, 2005))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_2024_public_holidays(self):
         self.assertHolidays(
@@ -132,24 +476,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2024-06-16", "Dia dos Pais"),
         )
 
-    def test_2025_public_holidays(self):
-        self.assertHolidays(
-            CaboVerde(categories=PUBLIC, years=2025),
-            ("2025-01-01", "Ano Novo"),
-            ("2025-01-13", "Dia da Liberdade e da Democracia"),
-            ("2025-01-20", "Dia da Nacionalidade e dos Heróis Nacionais"),
-            ("2025-03-05", "Quarta-feira de Cinzas"),
-            ("2025-04-18", "Sexta-feira Santa"),
-            ("2025-04-20", "Páscoa"),
-            ("2025-05-01", "Dia do Trabalhador"),
-            ("2025-06-01", "Dia Mundial da Criança"),
-            ("2025-07-05", "Dia da Independência Nacional"),
-            ("2025-08-15", "Dia da Assunção"),
-            ("2025-11-01", "Dia de Todos os Santos"),
-            ("2025-12-25", "Dia do Natal"),
-        )
-
-    def test_default_l10n(self):
+    def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2025-01-01", "Ano Novo"),
             ("2025-01-13", "Dia da Liberdade e da Democracia"),
@@ -199,7 +526,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-12-25", "Dia do Natal"),
         )
 
-    def test_de_l10n(self):
+    def test_l10n_de(self):
         self.assertLocalizedHolidays(
             "de",
             ("2025-01-01", "Neujahr"),
@@ -209,16 +536,13 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-01-20", "Tag der Nationalhelden"),
             ("2025-01-22", "Tag der Gemeinde São Vicente"),
             ("2025-01-31", "Tag der Gemeinde Ribeira Grande de Santiago"),
-            ("2025-03-04", "Karnevalsdienstag"),
+            ("2025-03-04", "Faschingsdienstag"),
             ("2025-03-05", "Aschermittwoch"),
             ("2025-03-13", "Tag der Gemeinde São Domingos"),
             ("2025-04-17", "Gründonnerstag"),
             ("2025-04-18", "Karfreitag"),
-            ("2025-04-20", "Ostern"),
-            (
-                "2025-05-01",
-                "Tag der Arbeit; Tag der Gemeinde São Filipe",
-            ),
+            ("2025-04-20", "Ostersonntag"),
+            ("2025-05-01", "Tag der Arbeit; Tag der Gemeinde São Filipe"),
             ("2025-05-07", "Tag der Gemeinde Ribeira Grande"),
             ("2025-05-09", "Tag der Gemeinde São Lourenço dos Órgãos"),
             ("2025-05-11", "Muttertag"),
@@ -228,14 +552,11 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-06-15", "Vatertag"),
             ("2025-06-24", "Tag der Gemeinde Brava"),
             ("2025-07-04", "Tag der Gemeinde Boa Vista"),
-            ("2025-07-05", "Nationaler Unabhängigkeitstag"),
+            ("2025-07-05", "Unabhängigkeitstag"),
             ("2025-07-19", "Tag der Gemeinde São Salvador do Mundo"),
             ("2025-07-25", "Tag der Gemeinde Santa Cruz"),
             ("2025-08-02", "Tag der Gemeinde Tarrafal de São Nicolau"),
-            (
-                "2025-08-15",
-                "Mariä Himmelfahrt; Tag der Gemeinde Mosteiros",
-            ),
+            ("2025-08-15", "Mariä Himmelfahrt; Tag der Gemeinde Mosteiros"),
             ("2025-09-02", "Tag der Gemeinde Porto Novo"),
             ("2025-09-08", "Tag der Gemeinde Maio"),
             ("2025-09-15", "Tag der Gemeinde Sal"),
@@ -250,7 +571,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-12-25", "Weihnachten"),
         )
 
-    def test_es_l10n(self):
+    def test_l10n_es(self):
         self.assertLocalizedHolidays(
             "es",
             ("2025-01-01", "Año Nuevo"),
@@ -266,15 +587,12 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-04-17", "Jueves Santo"),
             ("2025-04-18", "Viernes Santo"),
             ("2025-04-20", "Domingo de Pascua"),
-            (
-                "2025-05-01",
-                "Día del Municipio de São Filipe; Día del Trabajador",
-            ),
+            ("2025-05-01", "Día del Municipio de São Filipe; Día del Trabajador"),
             ("2025-05-07", "Día del Municipio de Ribeira Grande"),
             ("2025-05-09", "Día del Municipio de São Lourenço dos Órgãos"),
             ("2025-05-11", "Día de la Madre"),
             ("2025-05-19", "Día del Municipio de Praia"),
-            ("2025-06-01", "Día Mundial del Niño"),
+            ("2025-06-01", "Día Mundial de la Infancia"),
             ("2025-06-13", "Día del Municipio de Paúl"),
             ("2025-06-15", "Día del Padre"),
             ("2025-06-24", "Día del Municipio de Brava"),
@@ -283,10 +601,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-07-19", "Día del Municipio de São Salvador do Mundo"),
             ("2025-07-25", "Día del Municipio de Santa Cruz"),
             ("2025-08-02", "Día del Municipio de Tarrafal de São Nicolau"),
-            (
-                "2025-08-15",
-                "Día de la Asunción; Día del Municipio de Mosteiros",
-            ),
+            ("2025-08-15", "Asunción de Nuestra Señora; Día del Municipio de Mosteiros"),
             ("2025-09-02", "Día del Municipio de Porto Novo"),
             ("2025-09-08", "Día del Municipio de Maio"),
             ("2025-09-15", "Día del Municipio de Sal"),
@@ -301,7 +616,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-12-25", "Navidad"),
         )
 
-    def test_en_us_l10n(self):
+    def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
             ("2025-01-01", "New Year's Day"),
@@ -352,7 +667,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-12-25", "Christmas Day"),
         )
 
-    def test_fr_l10n(self):
+    def test_l10n_fr(self):
         self.assertLocalizedHolidays(
             "fr",
             ("2025-01-01", "Nouvel An"),
@@ -368,10 +683,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-04-17", "Jeudi Saint"),
             ("2025-04-18", "Vendredi Saint"),
             ("2025-04-20", "Dimanche de Pâques"),
-            (
-                "2025-05-01",
-                "Fête du travail; Journée de la municipalité de São Filipe",
-            ),
+            ("2025-05-01", "Fête du travail; Journée de la municipalité de São Filipe"),
             ("2025-05-07", "Journée de la municipalité de Ribeira Grande"),
             ("2025-05-09", "Journée de la municipalité de São Lourenço dos Órgãos"),
             ("2025-05-11", "Fête des Mères"),
@@ -385,15 +697,12 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-07-19", "Journée de la municipalité de São Salvador do Mundo"),
             ("2025-07-25", "Journée de la municipalité de Santa Cruz"),
             ("2025-08-02", "Journée de la municipalité de Tarrafal de São Nicolau"),
-            (
-                "2025-08-15",
-                "Jour de l'Assomption; Journée de la municipalité des Mosteiros",
-            ),
+            ("2025-08-15", "Assomption de Notre-Dame; Journée de la municipalité des Mosteiros"),
             ("2025-09-02", "Journée de la municipalité de Porto Novo"),
             ("2025-09-08", "Journée de la municipalité de Maio"),
             ("2025-09-15", "Journée de la municipalité de Sal"),
             ("2025-09-29", "Journée de la municipalité de São Miguel"),
-            ("2025-11-01", "La Toussaint"),
+            ("2025-11-01", "Toussaint"),
             (
                 "2025-11-25",
                 "Journée de la municipalité de Santa Catarina de Santiago; "
