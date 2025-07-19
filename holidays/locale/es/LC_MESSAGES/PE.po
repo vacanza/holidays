@@ -47,7 +47,7 @@ msgstr ""
 msgid "Día del Trabajo"
 msgstr ""
 
-#. Battle of Arica and National Flag Day
+#. Battle of Arica and Flag Day.
 msgid "Batalla de Arica y Día de la Bandera"
 msgstr ""
 
@@ -55,7 +55,7 @@ msgstr ""
 msgid "San Pedro y San Pablo"
 msgstr ""
 
-#. Peruvian Air Force Day
+#. Peruvian Air Force Day.
 msgid "Día de la Fuerza Aérea del Perú"
 msgstr ""
 
