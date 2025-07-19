@@ -33,7 +33,6 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1980, 2050)))
 
         obs_dt = (
-            "1994-12-31",
             "2005-12-31",
             "2011-12-31",
             "2016-12-31",
@@ -81,37 +80,30 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_armed_forces_day(self):
-        name = "Fête des Forces armées zaïroises"
-        self.assertHolidayName(name, (f"{year}-11-17" for year in range(1980, 2014)))
-        self.assertNoHolidayName(name, range(2014, 2050))
-
-        name = "Journée de la Révolution et des Forces Armées"
-        self.assertHolidayName(name, (f"{year}-05-17" for year in range(2014, 2050)))
-        self.assertNoHolidayName(name, range(1980, 2014))
-
-        obs_dt_before_2014 = (
-            "1985-11-16",
-            "1991-11-16",
-            "1996-11-16",
+        name_1 = "Fête des Forces armées zaïroises"
+        self.assertHolidayName(name_1, (f"{year}-11-17" for year in range(1980, 2014)))
+        self.assertNoHolidayName(name_1, range(2014, 2050))
+        obs_dt = (
             "2002-11-16",
             "2013-11-16",
         )
-        self.assertHoliday(obs_dt_before_2014)
-        self.assertNoNonObservedHoliday(obs_dt_before_2014)
-
-        obs_dt_after_2014 = (
+        self.assertHolidayName(f"{name_1} (observé)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+        name_2 = "Journée de la Révolution et des Forces Armées"
+        self.assertHolidayName(name_2, (f"{year}-05-17" for year in range(2014, 2050)))
+        self.assertNoHolidayName(name_2, range(1980, 2014))
+        obs_dt = (
             "2015-05-16",
             "2020-05-16",
         )
-        self.assertHoliday(obs_dt_after_2014)
-        self.assertNoNonObservedHoliday(obs_dt_after_2014)
+        self.assertHolidayName(f"{name_2} (observé)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_labor_day(self):
         name = "Fête du travail"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1980, 2050)))
 
         obs_dt = (
-            "1994-04-30",
             "2005-04-30",
             "2011-04-30",
             "2016-04-30",
@@ -126,8 +118,6 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(2014, 2050))
 
         obs_dt = (
-            "1984-05-19",
-            "1990-05-19",
             "2001-05-19",
             "2007-05-19",
             "2012-05-19",
@@ -141,8 +131,6 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(2014, 2050))
 
         obs_dt = (
-            "1984-06-23",
-            "1990-06-23",
             "2001-06-23",
             "2007-06-23",
             "2012-06-23",
@@ -155,7 +143,6 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-06-30" for year in range(1980, 2050)))
 
         obs_dt = (
-            "1996-06-29",
             "2002-06-29",
             "2013-06-29",
             "2019-06-29",
@@ -169,8 +156,6 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-08-01" for year in range(1980, 2050)))
 
         obs_dt = (
-            "1993-07-31",
-            "1999-07-31",
             "2004-07-31",
             "2010-07-31",
             "2021-07-31",
@@ -189,8 +174,6 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(2014, 2050))
 
         obs_dt = (
-            "1984-10-13",
-            "1990-10-13",
             "2001-10-13",
             "2007-10-13",
             "2012-10-13",
@@ -201,11 +184,9 @@ class TestDRCongo(CommonCountryTests, TestCase):
     def test_anniversary_of_the_new_regime(self):
         name = "Anniversaire du nouveau régime"
         self.assertHolidayName(name, (f"{year}-11-24" for year in range(1980, 2014)))
+        self.assertNoHolidayName(name, range(2014, 2050))
 
         obs_dt = (
-            "1985-11-23",
-            "1991-11-23",
-            "1996-11-23",
             "2002-11-23",
             "2013-11-23",
         )
@@ -217,7 +198,6 @@ class TestDRCongo(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1980, 2050)))
 
         obs_dt = (
-            "1994-12-24",
             "2005-12-24",
             "2011-12-24",
             "2016-12-24",
