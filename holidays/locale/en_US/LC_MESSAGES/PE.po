@@ -47,9 +47,17 @@ msgstr "Easter Sunday"
 msgid "Día del Trabajo"
 msgstr "Labor Day"
 
+#. Battle of Arica and Flag Day.
+msgid "Batalla de Arica y Día de la Bandera"
+msgstr "Battle of Arica and Flag Day"
+
 #. Saint Peter and Saint Paul's Day.
 msgid "San Pedro y San Pablo"
 msgstr "Saint Peter and Saint Paul's Day"
+
+#. Peruvian Air Force Day.
+msgid "Día de la Fuerza Aérea del Perú"
+msgstr "Peruvian Air Force Day"
 
 #. Independence Day.
 msgid "Día de la Independencia"
