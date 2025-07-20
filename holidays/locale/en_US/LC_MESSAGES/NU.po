@@ -51,13 +51,13 @@ msgstr "Easter Monday"
 msgid "ANZAC Day"
 msgstr "ANZAC Day"
 
-#. Queen's Birthday.
-msgid "Queen's Birthday"
-msgstr "Queen's Birthday"
-
 #. King's Birthday.
 msgid "King's Birthday"
 msgstr "King's Birthday"
+
+#. Queen's Birthday.
+msgid "Queen's Birthday"
+msgstr "Queen's Birthday"
 
 #. Constitution Day.
 msgid "Constitution Day"
