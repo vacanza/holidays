@@ -59,6 +59,9 @@ class Niue(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Static
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
+        # ANZAC Day.
+        self._add_observed(self._add_holiday_apr_25(tr("ANZAC Day")))
+
         self._add_holiday_1st_mon_of_jun(
             # King's Birthday.
             tr("King's Birthday")

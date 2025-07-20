@@ -47,6 +47,10 @@ msgstr "Good Friday"
 msgid "Easter Monday"
 msgstr "Easter Monday"
 
+#. ANZAC Day.
+msgid "ANZAC Day"
+msgstr "ANZAC Day"
+
 #. Queen's Birthday.
 msgid "Queen's Birthday"
 msgstr "Queen's Birthday"

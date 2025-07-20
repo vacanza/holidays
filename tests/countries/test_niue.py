@@ -83,6 +83,19 @@ class TestNiue(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(1962, 2050))
 
+    def test_anzac_day(self):
+        name = "ANZAC Day"
+        self.assertHolidayName(name, (f"{year}-04-25" for year in range(1962, 2050)))
+        obs_dt = (
+            "2009-04-27",
+            "2010-04-27",
+            "2015-04-27",
+            "2020-04-27",
+            "2021-04-27",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
     def test_queens_birthday(self):
         name = "Queen's Birthday"
         self.assertHolidayName(
@@ -190,6 +203,7 @@ class TestNiue(CommonCountryTests, TestCase):
             ("2025-01-02", "Takai Commission Holiday"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
+            ("2025-04-25", "ANZAC Day"),
             ("2025-06-02", "King's Birthday"),
             ("2025-10-19", "Constitution Day"),
             ("2025-10-20", "Constitution Day Holiday"),
@@ -206,6 +220,7 @@ class TestNiue(CommonCountryTests, TestCase):
             ("2025-01-02", "Takai Commission Holiday"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
+            ("2025-04-25", "ANZAC Day"),
             ("2025-06-02", "King's Birthday"),
             ("2025-10-19", "Constitution Day"),
             ("2025-10-20", "Constitution Day Holiday"),
