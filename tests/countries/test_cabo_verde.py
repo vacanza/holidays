@@ -51,7 +51,6 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         name = "Quarta-feira de Cinzas"
         self.assertHolidayName(
             name,
-            "2019-03-06",
             "2020-02-26",
             "2021-02-17",
             "2022-03-02",
@@ -65,7 +64,6 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         name = "Sexta-feira Santa"
         self.assertHolidayName(
             name,
-            "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
@@ -79,7 +77,6 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         name = "Páscoa"
         self.assertHolidayName(
             name,
-            "2019-04-21",
             "2020-04-12",
             "2021-04-04",
             "2022-04-17",
@@ -117,21 +114,23 @@ class TestCapeVerde(CommonCountryTests, TestCase):
 
     def test_holy_thursday(self):
         name = "Quinta-Feira Santa"
-        dt = (
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name,
+            self.opt_holidays,
+            "2020-04-09",
             "2021-04-01",
             "2022-04-14",
             "2023-04-06",
             "2024-03-28",
             "2025-04-17",
         )
-        self.assertHolidayName(name, self.opt_holidays, dt)
         self.assertHolidayName(name, self.opt_holidays, range(1976, 2050))
-        self.assertNoHolidayName(name)
-        self.assertNoHoliday(dt)
 
     def test_mothers_day(self):
         name = "Dia das Mães"
         dt = (
+            "2020-05-10",
             "2021-05-09",
             "2022-05-08",
             "2023-05-14",
@@ -146,6 +145,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
     def test_fathers_day(self):
         name = "Dia dos Pais"
         dt = (
+            "2020-06-21",
             "2021-06-20",
             "2022-06-19",
             "2023-06-18",
@@ -241,7 +241,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_santo_antão_island_day(self):
+    def test_santo_antao_island_day(self):
         name = "Dia da Ilha de Santo Antão"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
@@ -253,7 +253,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_paúl_municipality_day(self):
+    def test_paul_municipality_day(self):
         name = "Dia do Município do Paúl"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
@@ -417,12 +417,14 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
+                    "2020-02-25",
                     "2021-02-16",
                     "2022-03-01",
                     "2023-02-21",
                     "2024-02-13",
                     "2025-03-04",
                 )
+                self.assertHolidayName(name, holidays, range(1983, 2050))
                 self.assertNoHolidayName(name, holidays, range(1976, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -491,10 +493,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-04-17", "Quinta-Feira Santa"),
             ("2025-04-18", "Sexta-feira Santa"),
             ("2025-04-20", "Páscoa"),
-            (
-                "2025-05-01",
-                "Dia do Município de São Filipe; Dia do Trabalhador",
-            ),
+            ("2025-05-01", "Dia do Município de São Filipe; Dia do Trabalhador"),
             ("2025-05-07", "Dia do Município de Ribeira Grande"),
             ("2025-05-09", "Dia do Município de São Lourenço dos Órgãos"),
             ("2025-05-11", "Dia das Mães"),
@@ -508,10 +507,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-07-19", "Dia do Município de São Salvador do Mundo"),
             ("2025-07-25", "Dia do Município de Santa Cruz"),
             ("2025-08-02", "Dia do Município do Tarrafal de São Nicolau"),
-            (
-                "2025-08-15",
-                "Dia da Assunção; Dia do Município dos Mosteiros",
-            ),
+            ("2025-08-15", "Dia da Assunção; Dia do Município dos Mosteiros"),
             ("2025-09-02", "Dia do Município do Porto Novo"),
             ("2025-09-08", "Dia do Município do Maio"),
             ("2025-09-15", "Dia do Município do Sal"),
@@ -632,10 +628,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-04-17", "Holy Thursday"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-20", "Easter Sunday"),
-            (
-                "2025-05-01",
-                "São Filipe Municipality Day; Worker's Day",
-            ),
+            ("2025-05-01", "São Filipe Municipality Day; Worker's Day"),
             ("2025-05-07", "Ribeira Grande Municipality Day"),
             ("2025-05-09", "São Lourenço dos Órgãos Municipality Day"),
             ("2025-05-11", "Mother's Day"),
@@ -649,10 +642,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-07-19", "São Salvador do Mundo Municipality Day"),
             ("2025-07-25", "Santa Cruz Municipality Day"),
             ("2025-08-02", "Tarrafal de São Nicolau Municipality Day"),
-            (
-                "2025-08-15",
-                "Assumption Day; Mosteiros Municipality Day",
-            ),
+            ("2025-08-15", "Assumption Day; Mosteiros Municipality Day"),
             ("2025-09-02", "Porto Novo Municipality Day"),
             ("2025-09-08", "Maio Municipality Day"),
             ("2025-09-15", "Sal Municipality Day"),
