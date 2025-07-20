@@ -24,12 +24,11 @@ class Niue(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Static
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Niue>
         * <https://en.wikipedia.org/wiki/Niue_Constitution_Act>
         * [Public Holidays Ordinance 1961](https://web.archive.org/web/20250102100637/http://www.paclii.org/nu/legis/num_act/nipho1961314.pdf)
-        * <https://www.gov.nu/public-service-circulars>
-        * <http://archive.today/2025.07.14-145535/https://www.wipo.int/wipolex/en/text/427817>
         * <https://web.archive.org/web/20250223114854/https://niuepocketguide.com/public-holidays-in-niue-other-important-dates/>
-        * [Queen's Birthday](https://web.archive.org/web/20220928145826/https://publicholidays.asia/niue/queens-birthday/)
-        * [2018](https://web.archive.org/web/20230322165612/https://publicholidays.asia/niue/2018-dates/)
-        * [2025](https://web.archive.org/web/20241208034202/https://www.qppstudio.net/publicholidays2025/niue.htm)
+        * [2021/2022 Public Holidays](https://web.archive.org/web/20250509105501/https://www.gov.nu/media/pages/information/1018c58017-1725838374/4nov2021-circular.pdf)
+        * [2025 Good Friday & Easter Monday and Anzac Day](https://web.archive.org/web/20250719195126/https://www.gov.nu/media/pages/gazette/3e02b3aa84-1746400484/official-psc-circular-easter-anzac-holiday.pdf)
+        * [2025 King's Birthday](https://web.archive.org/web/20250719195301/https://www.gov.nu/media/pages/public-service-circulars/3b9f44b6a0-1748573974/king-s-birthday-public-holiday-2025-circular.pdf)
+        * <http://archive.today/2025.07.14-145535/https://www.wipo.int/wipolex/en/text/427817>
     """
 
     country = "NU"
@@ -61,11 +60,11 @@ class Niue(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Static
         self._add_easter_monday(tr("Easter Monday"))
 
         self._add_holiday_1st_mon_of_jun(
-            # Queen's Birthday.
-            tr("Queen's Birthday")
-            if self._year <= 2022
             # King's Birthday.
-            else tr("King's Birthday")
+            tr("King's Birthday")
+            if self._year >= 2023
+            # Queen's Birthday.
+            else tr("Queen's Birthday")
         )
 
         if self._year >= 1974:

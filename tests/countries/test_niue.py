@@ -51,7 +51,8 @@ class TestNiue(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-01-02" for year in range(1962, 2050)))
         obs_dt = (
             "2011-01-04",
-            "2022-01-04",
+            "2016-01-04",
+            "2021-01-04",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
@@ -73,7 +74,6 @@ class TestNiue(CommonCountryTests, TestCase):
         name = "Easter Monday"
         self.assertHolidayName(
             name,
-            "2019-04-22",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
@@ -93,7 +93,7 @@ class TestNiue(CommonCountryTests, TestCase):
             "2021-06-07",
             "2022-06-06",
         )
-        self.assertHolidayName(name, range(1962, 2022))
+        self.assertHolidayName(name, range(1962, 2023))
         self.assertNoHolidayName(name, range(2023, 2050))
 
     def test_kings_birthday(self):
@@ -103,8 +103,6 @@ class TestNiue(CommonCountryTests, TestCase):
             "2023-06-05",
             "2024-06-03",
             "2025-06-02",
-            "2026-06-01",
-            "2027-06-07",
         )
         self.assertHolidayName(name, range(2023, 2050))
         self.assertNoHolidayName(name, range(1962, 2023))
@@ -112,13 +110,14 @@ class TestNiue(CommonCountryTests, TestCase):
     def test_constitution_day(self):
         name = "Constitution Day"
         self.assertHolidayName(name, (f"{year}-10-19" for year in range(1974, 2050)))
+        self.assertNoHolidayName(name, range(1962, 1974))
         obs_dt = (
             "2013-10-21",
             "2014-10-21",
             "2019-10-21",
             "2024-10-21",
+            "2025-10-21",
         )
-        self.assertNoHolidayName(name, range(1962, 1974))
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
