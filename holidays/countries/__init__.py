@@ -70,6 +70,7 @@ from holidays.countries.denmark import Denmark, DK, DNK
 from holidays.countries.djibouti import Djibouti, DJ, DJI
 from holidays.countries.dominica import Dominica, DM, DMA
 from holidays.countries.dominican_republic import DominicanRepublic, DO, DOM
+from holidays.countries.dr_congo import DRCongo, CD, COD
 from holidays.countries.ecuador import Ecuador, EC, ECU
 from holidays.countries.egypt import Egypt, EG, EGY
 from holidays.countries.el_salvador import ElSalvador, SV, SLV
@@ -162,6 +163,7 @@ from holidays.countries.new_zealand import NewZealand, NZ, NZL
 from holidays.countries.nicaragua import Nicaragua, NI, NIC
 from holidays.countries.niger import Niger, NE, NER
 from holidays.countries.nigeria import Nigeria, NG, NGA
+from holidays.countries.niue import Niue, NU, NIU
 from holidays.countries.norfolk_island import NorfolkIsland, NF, NFK
 from holidays.countries.north_macedonia import NorthMacedonia, MK, MKD
 from holidays.countries.northern_mariana_islands import NorthernMarianaIslands, MP, MNP, HolidaysMP
