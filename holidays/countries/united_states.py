@@ -351,8 +351,8 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             }
             # Thanksgiving Day.
             name = tr("Thanksgiving Day")
-            if self._year in thanksgiving_day_dates:
-                self._add_holiday(name, thanksgiving_day_dates[self._year])
+            if dt := thanksgiving_day_dates.get(self._year):
+                self._add_holiday(name, dt)
             elif self._year >= 1942:
                 self._add_holiday_4th_thu_of_nov(name)
             else:
@@ -994,7 +994,6 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             # Lincoln's Birthday.
             self._add_observed(self._add_holiday_feb_12(tr("Lincoln's Birthday")))
 
-        if self._year >= 1971:
             # Presidents Day.
             self._add_holiday_3rd_mon_of_feb(tr("Presidents Day"))
 
@@ -1176,7 +1175,6 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             # Christmas Eve.
             self._add_christmas_eve_holiday()
 
-        if self._year >= 1981:
             # Day After Christmas.
             self._add_christmas_day_two(tr("Day After Christmas"))
 
@@ -1217,7 +1215,6 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             # George Washington Day.
             self._add_holiday_3rd_mon_of_feb(tr("George Washington Day"))
 
-        if self._year >= 1971:
             self._add_holiday_2nd_mon_of_oct(
                 # Indigenous Peoples' Day.
                 tr("Indigenous Peoples' Day")

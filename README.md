@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 208 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 220 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -413,6 +413,20 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GOVERNMENT, OPTIONAL</td>
 </tr>
 <tr>
+<td>Cayman Islands</td>
+<td>KY</td>
+<td></td>
+<td><strong>en_GB</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
+<td>Central African Republic</td>
+<td>CF</td>
+<td></td>
+<td>en_US, <strong>fr</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Chad</td>
 <td>TD</td>
 <td></td>
@@ -432,6 +446,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Christmas Island</td>
+<td>CX</td>
+<td></td>
+<td><strong>en_CX</strong>, en_US</td>
+<td></td>
 </tr>
 <tr>
 <td>Cocos Islands</td>
@@ -532,6 +553,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>DR Congo</td>
+<td>CD</td>
+<td></td>
+<td>en_US, <strong>fr</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Ecuador</td>
 <td>EC</td>
 <td></td>
@@ -579,6 +607,20 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td><strong>am</strong>, ar, en_ET, en_US</td>
 <td>WORKDAY</td>
+</tr>
+<tr>
+<td>Falkland Islands</td>
+<td>FK</td>
+<td></td>
+<td><strong>en_GB</strong>, en_US</td>
+<td>GOVERNMENT, WORKDAY</td>
+</tr>
+<tr>
+<td>Faroe Islands</td>
+<td>FO</td>
+<td></td>
+<td>da, en_US, <strong>fo</strong>, is, no, sv</td>
+<td>HALF_DAY</td>
 </tr>
 <tr>
 <td>Fiji</td>
@@ -648,6 +690,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GH</td>
 <td></td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td>Gibraltar</td>
+<td>GI</td>
+<td></td>
+<td><strong>en_GB</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -875,6 +924,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Lebanon</td>
+<td>LB</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td>BANK, GOVERNMENT</td>
+</tr>
+<tr>
 <td>Lesotho</td>
 <td>LS</td>
 <td></td>
@@ -1029,6 +1085,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, WORKDAY</td>
 </tr>
 <tr>
+<td>Montserrat</td>
+<td>MS</td>
+<td></td>
+<td><strong>en_MS</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Morocco</td>
 <td>MA</td>
 <td></td>
@@ -1106,6 +1169,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Norfolk Island</td>
+<td>NF</td>
+<td></td>
+<td><strong>en_NF</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Northern Mariana Islands (the)</td>
 <td>MP</td>
 <td>Can also be loaded as country US, subdivision MP</td>
@@ -1146,6 +1216,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td></td>
 <td>ARMED_FORCES, HALF_DAY</td>
+</tr>
+<tr>
+<td>Palestine</td>
+<td>PS</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td>CATHOLIC, ORTHODOX</td>
 </tr>
 <tr>
 <td>Panama</td>
@@ -1264,6 +1341,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>PM</td>
 <td>Can also be loaded as country FR, subdivision PM</td>
 <td>en_US, <strong>fr</strong>, th, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Saint Vincent and the Grenadines</td>
+<td>VC</td>
+<td></td>
+<td>en_US, <strong>en_VC</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -1447,6 +1531,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>fr</strong></td>
 <td>WORKDAY</td>
+</tr>
+<tr>
+<td>Tokelau</td>
+<td>TK</td>
+<td></td>
+<td><strong>en_TK</strong>, en_US, tkl</td>
+<td></td>
 </tr>
 <tr>
 <td>Tonga</td>

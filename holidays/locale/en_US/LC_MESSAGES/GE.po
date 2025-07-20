@@ -47,6 +47,10 @@ msgstr "Mother's Day"
 msgid "ქალთა საერთაშორისო დღე"
 msgstr "International Women's Day"
 
+#. National Unity Day.
+msgid "ეროვნული ერთიანობის დღე"
+msgstr "National Unity Day"
+
 #. Good Friday.
 msgid "წითელი პარასკევი"
 msgstr "Good Friday"
@@ -63,10 +67,6 @@ msgstr "Easter Sunday"
 msgid "შავი ორშაბათი"
 msgstr "Easter Monday"
 
-#. National Unity Day.
-msgid "ეროვნული ერთიანობის დღე"
-msgstr "National Unity Day"
-
 #. Day of Victory over Fascism.
 msgid "ფაშიზმზე გამარჯვების დღე"
 msgstr "Day of Victory over Fascism"
@@ -74,6 +74,10 @@ msgstr "Day of Victory over Fascism"
 #. Saint Andrew's Day.
 msgid "წმინდა ანდრია პირველწოდებულის დღე"
 msgstr "Saint Andrew's Day"
+
+#. Day of Family Sanctity and Respect for Parents.
+msgid "ოჯახის სიწმინდისა და მშობლების პატივისცემის დღე"
+msgstr "Day of Family Sanctity and Respect for Parents"
 
 #. Independence Day.
 msgid "დამოუკიდებლობის დღე"
@@ -90,7 +94,3 @@ msgstr "Holiday of Svetitskhovloba, Robe of Jesus"
 #. Saint George's Day.
 msgid "გიორგობა"
 msgstr "Saint George's Day"
-
-#. Day of Family Sanctity and Respect for Parents.
-msgid "ოჯახის სიწმინდისა და მშობლების პატივისცემის დღე"
-msgstr "Day of Family Sanctity and Respect for Parents"

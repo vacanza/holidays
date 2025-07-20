@@ -19,12 +19,13 @@ from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHoli
 from holidays.holiday_base import HolidayBase
 
 
-class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """Georgia holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Georgia_(country)>
-        * <https://web.archive.org/web/20250121212149/https://matsne.gov.ge/en/document/view/1155567?publication=24>
+        * [Labour Code of Georgia](https://web.archive.org/web/20250121212149/https://matsne.gov.ge/en/document/view/1155567?publication=24)
+        * [Organic Law 4455-XVIმს-Xმპ](https://web.archive.org/web/20250421162538/https://matsne.gov.ge/ka/document/view/6283937?publication=0)
     """
 
     country = "GE"
@@ -57,6 +58,9 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # International Women's Day.
         self._add_womens_day(tr("ქალთა საერთაშორისო დღე"))
 
+        # National Unity Day.
+        self._add_holiday_apr_9(tr("ეროვნული ერთიანობის დღე"))
+
         # Good Friday.
         self._add_good_friday(tr("წითელი პარასკევი"))
 
@@ -69,14 +73,16 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday(tr("შავი ორშაბათი"))
 
-        # National Unity Day.
-        self._add_holiday_apr_9(tr("ეროვნული ერთიანობის დღე"))
-
         # Day of Victory over Fascism.
         self._add_world_war_two_victory_day(tr("ფაშიზმზე გამარჯვების დღე"), is_western=False)
 
         # Saint Andrew's Day.
         self._add_holiday_may_12(tr("წმინდა ანდრია პირველწოდებულის დღე"))
+
+        # Established by Organic Law 4455-XVIმს-Xმპ.
+        if self._year >= 2025:
+            # Day of Family Sanctity and Respect for Parents.
+            self._add_holiday_may_17(tr("ოჯახის სიწმინდისა და მშობლების პატივისცემის დღე"))
 
         # Independence Day.
         self._add_holiday_may_26(tr("დამოუკიდებლობის დღე"))
