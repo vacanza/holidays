@@ -567,51 +567,6 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-12-25", "Weihnachten"),
         )
 
-    def test_l10n_es(self):
-        self.assertLocalizedHolidays(
-            "es",
-            ("2025-01-01", "Año Nuevo"),
-            ("2025-01-13", "Día de la Libertad y la Democracia"),
-            ("2025-01-15", "Día del Municipio de Tarrafal de Santiago"),
-            ("2025-01-17", "Día de la Isla de Santo Antão"),
-            ("2025-01-20", "Día de la Nacionalidad y de los Héroes Nacionales"),
-            ("2025-01-22", "Día del Municipio de São Vicente"),
-            ("2025-01-31", "Día del Municipio de Ribeira Grande de Santiago"),
-            ("2025-03-04", "Martes de Carnaval"),
-            ("2025-03-05", "Miércoles de Ceniza"),
-            ("2025-03-13", "Día del Municipio de São Domingos"),
-            ("2025-04-17", "Jueves Santo"),
-            ("2025-04-18", "Viernes Santo"),
-            ("2025-04-20", "Domingo de Pascua"),
-            ("2025-05-01", "Día del Municipio de São Filipe; Día del Trabajador"),
-            ("2025-05-07", "Día del Municipio de Ribeira Grande"),
-            ("2025-05-09", "Día del Municipio de São Lourenço dos Órgãos"),
-            ("2025-05-11", "Día de la Madre"),
-            ("2025-05-19", "Día del Municipio de Praia"),
-            ("2025-06-01", "Día Mundial de la Infancia"),
-            ("2025-06-13", "Día del Municipio de Paúl"),
-            ("2025-06-15", "Día del Padre"),
-            ("2025-06-24", "Día del Municipio de Brava"),
-            ("2025-07-04", "Día del Municipio de Boa Vista"),
-            ("2025-07-05", "Día de la Independencia Nacional"),
-            ("2025-07-19", "Día del Municipio de São Salvador do Mundo"),
-            ("2025-07-25", "Día del Municipio de Santa Cruz"),
-            ("2025-08-02", "Día del Municipio de Tarrafal de São Nicolau"),
-            ("2025-08-15", "Asunción de Nuestra Señora; Día del Municipio de Mosteiros"),
-            ("2025-09-02", "Día del Municipio de Porto Novo"),
-            ("2025-09-08", "Día del Municipio de Maio"),
-            ("2025-09-15", "Día del Municipio de Sal"),
-            ("2025-09-29", "Día del Municipio de São Miguel"),
-            ("2025-11-01", "Día de Todos los Santos"),
-            (
-                "2025-11-25",
-                "Día del Municipio de Santa Catarina de Santiago; "
-                "Día del Municipio de Santa Catarina do Fogo",
-            ),
-            ("2025-12-06", "Día del Municipio de Ribeira Brava"),
-            ("2025-12-25", "Navidad"),
-        )
-
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
@@ -655,6 +610,51 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ),
             ("2025-12-06", "Ribeira Brava Municipality Day"),
             ("2025-12-25", "Christmas Day"),
+        )
+
+    def test_l10n_es(self):
+        self.assertLocalizedHolidays(
+            "es",
+            ("2025-01-01", "Año Nuevo"),
+            ("2025-01-13", "Día de la Libertad y la Democracia"),
+            ("2025-01-15", "Día del Municipio de Tarrafal de Santiago"),
+            ("2025-01-17", "Día de la Isla de Santo Antão"),
+            ("2025-01-20", "Día de la Nacionalidad y de los Héroes Nacionales"),
+            ("2025-01-22", "Día del Municipio de São Vicente"),
+            ("2025-01-31", "Día del Municipio de Ribeira Grande de Santiago"),
+            ("2025-03-04", "Martes de Carnaval"),
+            ("2025-03-05", "Miércoles de Ceniza"),
+            ("2025-03-13", "Día del Municipio de São Domingos"),
+            ("2025-04-17", "Jueves Santo"),
+            ("2025-04-18", "Viernes Santo"),
+            ("2025-04-20", "Domingo de Pascua"),
+            ("2025-05-01", "Día del Municipio de São Filipe; Día del Trabajador"),
+            ("2025-05-07", "Día del Municipio de Ribeira Grande"),
+            ("2025-05-09", "Día del Municipio de São Lourenço dos Órgãos"),
+            ("2025-05-11", "Día de la Madre"),
+            ("2025-05-19", "Día del Municipio de Praia"),
+            ("2025-06-01", "Día Mundial de la Infancia"),
+            ("2025-06-13", "Día del Municipio de Paúl"),
+            ("2025-06-15", "Día del Padre"),
+            ("2025-06-24", "Día del Municipio de Brava"),
+            ("2025-07-04", "Día del Municipio de Boa Vista"),
+            ("2025-07-05", "Día de la Independencia Nacional"),
+            ("2025-07-19", "Día del Municipio de São Salvador do Mundo"),
+            ("2025-07-25", "Día del Municipio de Santa Cruz"),
+            ("2025-08-02", "Día del Municipio de Tarrafal de São Nicolau"),
+            ("2025-08-15", "Asunción de Nuestra Señora; Día del Municipio de Mosteiros"),
+            ("2025-09-02", "Día del Municipio de Porto Novo"),
+            ("2025-09-08", "Día del Municipio de Maio"),
+            ("2025-09-15", "Día del Municipio de Sal"),
+            ("2025-09-29", "Día del Municipio de São Miguel"),
+            ("2025-11-01", "Día de Todos los Santos"),
+            (
+                "2025-11-25",
+                "Día del Municipio de Santa Catarina de Santiago; "
+                "Día del Municipio de Santa Catarina do Fogo",
+            ),
+            ("2025-12-06", "Día del Municipio de Ribeira Brava"),
+            ("2025-12-25", "Navidad"),
         )
 
     def test_l10n_fr(self):
