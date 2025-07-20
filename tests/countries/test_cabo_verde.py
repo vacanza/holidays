@@ -129,7 +129,10 @@ class TestCapeVerde(CommonCountryTests, TestCase):
 
     def test_mothers_day(self):
         name = "Dia das Mães"
-        dt = (
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name,
+            self.opt_holidays,
             "2020-05-10",
             "2021-05-09",
             "2022-05-08",
@@ -137,14 +140,14 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             "2024-05-12",
             "2025-05-11",
         )
-        self.assertHolidayName(name, self.opt_holidays, dt)
         self.assertHolidayName(name, self.opt_holidays, range(1976, 2050))
-        self.assertNoHolidayName(name)
-        self.assertNoHoliday(dt)
 
     def test_fathers_day(self):
         name = "Dia dos Pais"
-        dt = (
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name,
+            self.opt_holidays,
             "2020-06-21",
             "2021-06-20",
             "2022-06-19",
@@ -152,10 +155,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-15",
         )
-        self.assertHolidayName(name, self.opt_holidays, dt)
         self.assertHolidayName(name, self.opt_holidays, range(1976, 2050))
-        self.assertNoHolidayName(name)
-        self.assertNoHoliday(dt)
 
     def test_brava_municipality_day(self):
         name = "Dia do Município da Brava"
