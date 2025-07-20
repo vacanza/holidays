@@ -360,6 +360,19 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.mawlid_dates(self._year), days_delta=+1
         )
 
+    def _add_prophet_baptism_day(self, name) -> set[date]:
+        """
+        Add Prophet's Baptism.
+
+        Celebrated one week after the Prophet Mohammed's Birthday, this
+        marks the traditional Islamic birth rites that take place seven
+        days after birth.
+        https://www.officeholidays.com/holidays/mali/prophets-baptism
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.mawlid_dates(self._year), days_delta=+7
+        )
+
     def _add_nuzul_al_quran_day(self, name) -> set[date]:
         """
         Add Nuzul Al Quran (17th day of 9th month).

@@ -32,23 +32,23 @@ msgid "%s (estimé)"
 msgstr "%s (estimated)"
 
 #. New Year's Day.
-msgid "Jour de l'an"
+msgid "Jour de l'An"
 msgstr "New Year's Day"
 
 #. Armed Forces Day.
 msgid "Journée de l'Armée"
 msgstr "Armed Forces Day"
 
-#. March 26 Day.
+#. Martyrs' Day.
 msgid "Journée du 26 mars"
-msgstr "March 26 Day"
+msgstr "Martyrs' Day"
 
 #. Easter Monday.
 msgid "Lundi de Pâques"
 msgstr "Easter Monday"
 
 #. Labor Day.
-msgid "Fête du travail"
+msgid "Fête du Travail"
 msgstr "Labor Day"
 
 #. Africa Day.
@@ -67,8 +67,12 @@ msgstr "Christmas Day"
 msgid "Journée du Mawloud"
 msgstr "Prophet's Birthday"
 
+#. Prophet's Baptism.
+msgid "Journée du Baptême"
+msgstr "Prophet's Baptism"
+
 #. Eid al-Fitr.
-msgid "Journée de la fête du Ramadan"
+msgid "Journée de la Fête du Ramadan"
 msgstr "Eid al-Fitr"
 
 #. Eid al-Adha.

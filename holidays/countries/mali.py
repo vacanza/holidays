@@ -58,7 +58,7 @@ class Mali(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
             self._add_holiday_jan_20(tr("Journée de l'Armée"))
 
         if self._year >= 1992:
-            # March 26 Day.
+            # Martyrs' Day.
             self._add_holiday_mar_26(tr("Journée du 26 mars"))
 
         if self._year >= 2006:
@@ -80,6 +80,10 @@ class Mali(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
 
         # Prophet's Birthday.
         self._add_mawlid_day(tr("Journée du Mawloud"))
+
+        if self._year >= 2006:
+            # Prophet's Baptism.
+            self._add_prophet_baptism_day(tr("Journée du Baptême"))
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("Journée de la Fête du Ramadan"))

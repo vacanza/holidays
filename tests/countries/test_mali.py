@@ -30,7 +30,7 @@ class TestMali(CommonCountryTests, TestCase):
         self.assertNoHolidays(Mali(years=1960))
 
     def test_new_years_day(self):
-        self.assertHolidayName("Jour de l'an", (f"{year}-01-01" for year in range(1961, 2050)))
+        self.assertHolidayName("Jour de l'An", (f"{year}-01-01" for year in range(1961, 2050)))
 
     def test_armed_forces_day(self):
         name = "Journée de l'Armée"
@@ -56,7 +56,7 @@ class TestMali(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1961, 2006))
 
     def test_labor_day(self):
-        self.assertHolidayName("Fête du travail", (f"{year}-05-01" for year in range(1961, 2050)))
+        self.assertHolidayName("Fête du Travail", (f"{year}-05-01" for year in range(1961, 2050)))
 
     def test_africa_day(self):
         name = "Journée de l'Afrique"
@@ -84,8 +84,20 @@ class TestMali(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1961, 2050))
 
+    def test_prophets_baptism(self):
+        name = "Journée du Baptême"
+        self.assertHolidayName(
+            name,
+            "2020-11-05",
+            "2021-10-26",
+            "2022-10-16",
+            "2023-10-05",
+            "2024-09-23",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2006, 2050))
+
     def test_eid_al_fitr(self):
-        name = "Journée de la fête du Ramadan"
+        name = "Journée de la Fête du Ramadan"
         self.assertHolidayName(
             name,
             "2021-05-12",
@@ -111,30 +123,32 @@ class TestMali(CommonCountryTests, TestCase):
     def test_2024(self):
         self.assertHolidays(
             Mali(years=2024),
-            ("2024-01-01", "Jour de l'an"),
+            ("2024-01-01", "Jour de l'An"),
             ("2024-01-20", "Journée de l'Armée"),
             ("2024-03-26", "Journée du 26 mars"),
             ("2024-04-01", "Lundi de Pâques"),
-            ("2024-04-09", "Journée de la fête du Ramadan"),
-            ("2024-05-01", "Fête du travail"),
+            ("2024-04-09", "Journée de la Fête du Ramadan"),
+            ("2024-05-01", "Fête du Travail"),
             ("2024-05-25", "Journée de l'Afrique"),
             ("2024-06-17", "Journée de la Tabaski"),
             ("2024-09-16", "Journée du Mawloud"),
+            ("2024-09-23", "Journée du Baptême"),
             ("2024-09-22", "Fête Nationale de la République du Mali"),
             ("2024-12-25", "Fête de Noël"),
         )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2025-01-01", "Jour de l'an"),
+            ("2025-01-01", "Jour de l'An"),
             ("2025-01-20", "Journée de l'Armée"),
             ("2025-03-26", "Journée du 26 mars"),
-            ("2025-03-30", "Journée de la fête du Ramadan"),
+            ("2025-03-30", "Journée de la Fête du Ramadan"),
             ("2025-04-21", "Lundi de Pâques"),
-            ("2025-05-01", "Fête du travail"),
+            ("2025-05-01", "Fête du Travail"),
             ("2025-05-25", "Journée de l'Afrique"),
             ("2025-06-07", "Journée de la Tabaski"),
             ("2025-09-04", "Journée du Mawloud (estimé)"),
+            ("2025-09-11", "Journée du Baptême (estimé)"),
             ("2025-09-22", "Fête Nationale de la République du Mali"),
             ("2025-12-25", "Fête de Noël"),
         )
@@ -144,13 +158,14 @@ class TestMali(CommonCountryTests, TestCase):
             "en_US",
             ("2025-01-01", "New Year's Day"),
             ("2025-01-20", "Armed Forces Day"),
-            ("2025-03-26", "March 26 Day"),
+            ("2025-03-26", "Martyrs' Day"),
             ("2025-03-30", "Eid al-Fitr"),
             ("2025-04-21", "Easter Monday"),
             ("2025-05-01", "Labor Day"),
             ("2025-05-25", "Africa Day"),
             ("2025-06-07", "Eid al-Adha"),
             ("2025-09-04", "Prophet's Birthday (estimated)"),
+            ("2025-09-11", "Prophet's Baptism (estimated)"),
             ("2025-09-22", "National Day of the Republic of Mali"),
             ("2025-12-25", "Christmas Day"),
         )
