@@ -89,10 +89,10 @@ class TestNiue(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-04-25" for year in range(1962, 2050)))
         obs_dt = (
             "2009-04-27",
-            "2010-04-27",
+            "2010-04-26",
             "2015-04-27",
             "2020-04-27",
-            "2021-04-27",
+            "2021-04-26",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)

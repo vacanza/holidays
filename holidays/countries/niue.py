@@ -12,9 +12,13 @@
 
 from gettext import gettext as tr
 
-from holidays import SEP
+from holidays.calendars.gregorian import SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_MON_TUE
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
+)
 
 
 class Niue(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
@@ -60,7 +64,7 @@ class Niue(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Static
         self._add_easter_monday(tr("Easter Monday"))
 
         # ANZAC Day.
-        self._add_observed(self._add_holiday_apr_25(tr("ANZAC Day")))
+        self._add_observed(self._add_anzac_day(tr("ANZAC Day")), rule=SAT_SUN_TO_NEXT_MON)
 
         self._add_holiday_1st_mon_of_jun(
             # King's Birthday.
