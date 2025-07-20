@@ -14,11 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.groups import (
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-)
+from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
 
@@ -55,7 +51,7 @@ class Mali(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("Jour de l'an"))
+        self._add_new_years_day(tr("Jour de l'An"))
 
         if self._year >= 1965:
             # Armed Forces Day.
@@ -70,11 +66,11 @@ class Mali(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
             self._add_easter_monday(tr("Lundi de Pâques"))
 
         # Labor Day.
-        self._add_labor_day(tr("Fête du travail"))
+        self._add_labor_day(tr("Fête du Travail"))
 
         if self._year >= 1965:
             # Africa Day.
-            self._add_holiday_may_25(tr("Journée de l'Afrique"))
+            self._add_africa_day(tr("Journée de l'Afrique"))
 
         # National Day of the Republic of Mali.
         self._add_holiday_sep_22(tr("Fête Nationale de la République du Mali"))
@@ -86,7 +82,7 @@ class Mali(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
         self._add_mawlid_day(tr("Journée du Mawloud"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Journée de la fête du Ramadan"))
+        self._add_eid_al_fitr_day(tr("Journée de la Fête du Ramadan"))
 
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Journée de la Tabaski"))
