@@ -83,15 +83,18 @@ class TestDRCongo(CommonCountryTests, TestCase):
         name_1 = "Fête des Forces armées zaïroises"
         self.assertHolidayName(name_1, (f"{year}-11-17" for year in range(1980, 2014)))
         self.assertNoHolidayName(name_1, range(2014, 2050))
+
         obs_dt = (
             "2002-11-16",
             "2013-11-16",
         )
         self.assertHolidayName(f"{name_1} (observé)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
+
         name_2 = "Journée de la Révolution et des Forces Armées"
         self.assertHolidayName(name_2, (f"{year}-05-17" for year in range(2014, 2050)))
         self.assertNoHolidayName(name_2, range(1980, 2014))
+
         obs_dt = (
             "2015-05-16",
             "2020-05-16",
@@ -167,6 +170,9 @@ class TestDRCongo(CommonCountryTests, TestCase):
         name = "Journée commémorative du génocide Congolais"
         self.assertHolidayName(name, (f"{year}-08-02" for year in range(2024, 2050)))
         self.assertNoHolidayName(name, range(1980, 2024))
+
+        obs_dt = ("2026-08-01",)
+        self.assertHolidayName(f"{name} (observé)", obs_dt)
 
     def test_youth_day(self):
         name = "Journée de la Jeunesse"
