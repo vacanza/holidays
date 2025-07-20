@@ -1169,6 +1169,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Niue</td>
+<td>NU</td>
+<td></td>
+<td><strong>en_NU</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Norfolk Island</td>
 <td>NF</td>
 <td></td>
