@@ -162,6 +162,7 @@ from holidays.countries.new_zealand import NewZealand, NZ, NZL
 from holidays.countries.nicaragua import Nicaragua, NI, NIC
 from holidays.countries.niger import Niger, NE, NER
 from holidays.countries.nigeria import Nigeria, NG, NGA
+from holidays.countries.niue import Niue, NU, NIU
 from holidays.countries.norfolk_island import NorfolkIsland, NF, NFK
 from holidays.countries.north_macedonia import NorthMacedonia, MK, MKD
 from holidays.countries.northern_mariana_islands import NorthernMarianaIslands, MP, MNP, HolidaysMP
