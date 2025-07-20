@@ -69,6 +69,7 @@ from holidays.countries.denmark import Denmark, DK, DNK
 from holidays.countries.djibouti import Djibouti, DJ, DJI
 from holidays.countries.dominica import Dominica, DM, DMA
 from holidays.countries.dominican_republic import DominicanRepublic, DO, DOM
+from holidays.countries.dr_congo import DRCongo, CD, COD
 from holidays.countries.ecuador import Ecuador, EC, ECU
 from holidays.countries.egypt import Egypt, EG, EGY
 from holidays.countries.el_salvador import ElSalvador, SV, SLV

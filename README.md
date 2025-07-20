@@ -546,6 +546,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>DR Congo</td>
+<td>CD</td>
+<td></td>
+<td>en_US, <strong>fr</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Ecuador</td>
 <td>EC</td>
 <td></td>
