@@ -73,19 +73,21 @@ class TestMali(CommonCountryTests, TestCase):
         self.assertHolidayName("Fête de Noël", (f"{year}-12-25" for year in range(1961, 2050)))
 
     def test_prophets_birthday(self):
-        name = "Journée du Mawloud"
+        name_1 = "Journée du Mawloud"
+        name_2 = "Journée du Maouloud (Naissance du Prophète)"
         self.assertHolidayName(
-            name,
+            name_2,
             "2020-10-29",
             "2021-10-19",
             "2022-10-09",
             "2023-09-28",
             "2024-09-16",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1961, 2050))
+        self.assertHolidayName(name_1, self.no_estimated_holidays, range(1961, 2005))
+        self.assertHolidayName(name_2, self.no_estimated_holidays, range(2006, 2050))
 
     def test_prophets_baptism(self):
-        name = "Journée du Baptême"
+        name = "Journée du Maouloud (Baptême du Prophète)"
         self.assertHolidayName(
             name,
             "2020-11-05",
@@ -131,8 +133,8 @@ class TestMali(CommonCountryTests, TestCase):
             ("2024-05-01", "Fête du Travail"),
             ("2024-05-25", "Journée de l'Afrique"),
             ("2024-06-17", "Journée de la Tabaski"),
-            ("2024-09-16", "Journée du Mawloud"),
-            ("2024-09-23", "Journée du Baptême"),
+            ("2024-09-16", "Journée du Maouloud (Naissance du Prophète)"),
+            ("2024-09-23", "Journée du Maouloud (Baptême du Prophète)"),
             ("2024-09-22", "Fête Nationale de la République du Mali"),
             ("2024-12-25", "Fête de Noël"),
         )
@@ -147,8 +149,8 @@ class TestMali(CommonCountryTests, TestCase):
             ("2025-05-01", "Fête du Travail"),
             ("2025-05-25", "Journée de l'Afrique"),
             ("2025-06-07", "Journée de la Tabaski"),
-            ("2025-09-04", "Journée du Mawloud (estimé)"),
-            ("2025-09-11", "Journée du Baptême (estimé)"),
+            ("2025-09-04", "Journée du Maouloud (Naissance du Prophète) (estimé)"),
+            ("2025-09-11", "Journée du Maouloud (Baptême du Prophète) (estimé)"),
             ("2025-09-22", "Fête Nationale de la République du Mali"),
             ("2025-12-25", "Fête de Noël"),
         )

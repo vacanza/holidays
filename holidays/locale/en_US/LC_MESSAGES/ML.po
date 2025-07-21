@@ -64,11 +64,15 @@ msgid "Fête de Noël"
 msgstr "Christmas Day"
 
 #. Prophet's Birthday.
+msgid "Journée du Maouloud (Naissance du Prophète)"
+msgstr "Prophet's Birthday"
+
+#. Prophet's Birthday.
 msgid "Journée du Mawloud"
 msgstr "Prophet's Birthday"
 
 #. Prophet's Baptism.
-msgid "Journée du Baptême"
+msgid "Journée du Maouloud (Baptême du Prophète)"
 msgstr "Prophet's Baptism"
 
 #. Eid al-Fitr.
