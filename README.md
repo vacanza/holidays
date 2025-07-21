@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 221 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 222 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -383,6 +383,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td></td>
 <td></td>
+</tr>
+<tr>
+<td>Cabo Verde</td>
+<td>CV</td>
+<td>Municipalities: BR (Brava), BV (Boa Vista), CA (Santa Catarina), CF (Santa Catarina do Fogo), CR (Santa Cruz), MA (Maio), MO (Mosteiros), PA (Paul), PN (Porto Novo), PR (Praia), RB (Ribeira Brava), RG (Ribeira Grande), RS (Ribeira Grande de Santiago), SD (São Domingos), SF (São Filipe), SL (Sal), SM (São Miguel), SO (São Lourenço dos Órgãos), SS (São Salvador do Mundo), SV (São Vicente), TA (Tarrafal), TS (Tarrafal de São Nicolau)</td>
+<td>de, en_US, es, fr, <strong>pt_CV</strong></td>
+<td>OPTIONAL</td>
 </tr>
 <tr>
 <td>Cambodia</td>
