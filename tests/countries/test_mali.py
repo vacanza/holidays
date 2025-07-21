@@ -98,7 +98,7 @@ class TestMali(CommonCountryTests, TestCase):
         self.assertHolidayName(name_2, self.no_estimated_holidays, range(2006, 2050))
         self.assertNoHolidayName(name_2, self.no_estimated_holidays, range(1961, 2006))
 
-    def test_prophets_baptism(self):
+    def test_prophet_baptism_day(self):
         name = "Journée du Maouloud (Baptême du Prophète)"
         self.assertHolidayName(
             name,
