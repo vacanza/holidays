@@ -74,6 +74,18 @@ class TestMali(CommonCountryTests, TestCase):
 
     def test_prophets_birthday(self):
         name_1 = "Journée du Mawloud"
+        self.assertHolidayName(
+            name_1,
+            self.no_estimated_holidays,
+            "2001-06-04",
+            "2002-05-24",
+            "2003-05-13",
+            "2004-05-01",
+            "2005-04-21",
+        )
+        self.assertHolidayName(name_1, self.no_estimated_holidays, range(1961, 2006))
+        self.assertNoHolidayName(name_1, self.no_estimated_holidays, range(2006, 2050))
+
         name_2 = "Journée du Maouloud (Naissance du Prophète)"
         self.assertHolidayName(
             name_2,
@@ -83,8 +95,8 @@ class TestMali(CommonCountryTests, TestCase):
             "2023-09-28",
             "2024-09-16",
         )
-        self.assertHolidayName(name_1, self.no_estimated_holidays, range(1961, 2005))
         self.assertHolidayName(name_2, self.no_estimated_holidays, range(2006, 2050))
+        self.assertNoHolidayName(name_2, self.no_estimated_holidays, range(1961, 2006))
 
     def test_prophets_baptism(self):
         name = "Journée du Maouloud (Baptême du Prophète)"

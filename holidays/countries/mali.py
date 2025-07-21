@@ -78,14 +78,13 @@ class Mali(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
         # Christmas Day.
         self._add_christmas_day(tr("Fête de Noël"))
 
-        name = (
+        self._add_mawlid_day(
             # Prophet's Birthday.
             tr("Journée du Maouloud (Naissance du Prophète)")
-            if self._year >= 2005
+            if self._year >= 2006
             # Prophet's Birthday.
             else tr("Journée du Mawloud")
         )
-        self._add_mawlid_day(name)
 
         if self._year >= 2006:
             # Prophet's Baptism.
