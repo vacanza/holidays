@@ -46,6 +46,7 @@ from holidays.countries.brunei import Brunei, BN, BRN
 from holidays.countries.bulgaria import Bulgaria, BG, BLG
 from holidays.countries.burkina_faso import BurkinaFaso, BF, BFA
 from holidays.countries.burundi import Burundi, BI, BDI
+from holidays.countries.cabo_verde import CaboVerde, CV, CPV
 from holidays.countries.cambodia import Cambodia, KH, KHM
 from holidays.countries.cameroon import Cameroon, CM, CMR
 from holidays.countries.canada import Canada, CA, CAN
@@ -162,6 +163,7 @@ from holidays.countries.new_zealand import NewZealand, NZ, NZL
 from holidays.countries.nicaragua import Nicaragua, NI, NIC
 from holidays.countries.niger import Niger, NE, NER
 from holidays.countries.nigeria import Nigeria, NG, NGA
+from holidays.countries.niue import Niue, NU, NIU
 from holidays.countries.norfolk_island import NorfolkIsland, NF, NFK
 from holidays.countries.north_macedonia import NorthMacedonia, MK, MKD
 from holidays.countries.northern_mariana_islands import NorthernMarianaIslands, MP, MNP, HolidaysMP
