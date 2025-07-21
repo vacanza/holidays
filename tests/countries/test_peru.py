@@ -60,11 +60,15 @@ class TestPeru(CommonCountryTests, TestCase):
             "2022-12-25",
         )
 
-    def test_battle_of_arica_and_narional_flag_day(self):
-        # Check newly added holidays
-        self.assertHoliday("2025-06-07", "2025-07-23")
-        self.assertHolidayName("Batalla de Arica y Día de la Bandera", "2025-06-07")
-        self.assertHolidayName("Día de la Fuerza Aérea del Perú", "2025-07-23")
+    def test_battle_of_arica_and_flag_day(self):
+        name = "Batalla de Arica y Día de la Bandera"
+        self.assertHolidayName(name, (f"{year}-06-07" for year in range(2024, 2050)))
+        self.assertNoHolidayName(name, range(1950, 2024))
+
+    def test_peruvian_air_force_day(self):
+        name = "Día de la Fuerza Aérea del Perú"
+        self.assertHolidayName(name, (f"{year}-07-23" for year in range(2023, 2050)))
+        self.assertNoHolidayName(name, range(1950, 2023))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
