@@ -1,0 +1,183 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Cabo Verde holidays de localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.77\n"
+"POT-Creation-Date: 2025-04-01 13:02-0400\n"
+"PO-Revision-Date: 2025-04-01 13:02-0400\n"
+"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Source-Language: pt_CV\n"
+
+#. New Year's Day.
+msgid "Ano Novo"
+msgstr "Neujahr"
+
+#. Democracy and Freedom Day.
+msgid "Dia da Liberdade e da Democracia"
+msgstr "Tag der Demokratie und Freiheit"
+
+#. National Heroes Day.
+msgid "Dia da Nacionalidade e dos Heróis Nacionais"
+msgstr "Tag der Nationalhelden"
+
+#. Ash Wednesday.
+msgid "Quarta-feira de Cinzas"
+msgstr "Aschermittwoch"
+
+#. Good Friday.
+msgid "Sexta-feira Santa"
+msgstr "Karfreitag"
+
+#. Easter Sunday.
+msgid "Páscoa"
+msgstr "Ostersonntag"
+
+#. Worker's Day.
+msgid "Dia do Trabalhador"
+msgstr "Tag der Arbeit"
+
+#. International Children's Day.
+msgid "Dia Mundial da Criança"
+msgstr "Weltkindertag"
+
+#. Independence Day.
+msgid "Dia da Independência Nacional"
+msgstr "Unabhängigkeitstag"
+
+#. Assumption Day.
+msgid "Dia da Assunção"
+msgstr "Mariä Himmelfahrt"
+
+#. All Saints' Day.
+msgid "Dia de Todos os Santos"
+msgstr "Allerheiligen"
+
+#. Christmas Day.
+msgid "Dia do Natal"
+msgstr "Weihnachten"
+
+#. Holy Thursday.
+msgid "Quinta-Feira Santa"
+msgstr "Gründonnerstag"
+
+#. Mother's Day.
+msgid "Dia das Mães"
+msgstr "Muttertag"
+
+#. Father's Day.
+msgid "Dia dos Pais"
+msgstr "Vatertag"
+
+#. Brava Municipality Day.
+msgid "Dia do Município da Brava"
+msgstr "Tag der Gemeinde Brava"
+
+#. Boa Vista Municipality Day.
+msgid "Dia do Município da Boa Vista"
+msgstr "Tag der Gemeinde Boa Vista"
+
+#. Santa Catarina de Santiago Municipality Day.
+msgid "Dia do Município de Santa Catarina de Santiago"
+msgstr "Tag der Gemeinde Santa Catarina de Santiago"
+
+#. Santa Catarina do Fogo Municipality Day.
+msgid "Dia do Município de Santa Catarina do Fogo"
+msgstr "Tag der Gemeinde Santa Catarina do Fogo"
+
+#. Santa Cruz Municipality Day.
+msgid "Dia do Município de Santa Cruz"
+msgstr "Tag der Gemeinde Santa Cruz"
+
+#. Maio Municipality Day.
+msgid "Dia do Município do Maio"
+msgstr "Tag der Gemeinde Maio"
+
+#. Mosteiros Municipality Day.
+msgid "Dia do Município dos Mosteiros"
+msgstr "Tag der Gemeinde Mosteiros"
+
+#. Santo Antão Island Day.
+msgid "Dia da Ilha de Santo Antão"
+msgstr "Tag der Insel Santo Antão"
+
+#. Paúl Municipality Day.
+msgid "Dia do Município do Paúl"
+msgstr "Tag der Gemeinde Paúl"
+
+#. Porto Novo Municipality Day.
+msgid "Dia do Município do Porto Novo"
+msgstr "Tag der Gemeinde Porto Novo"
+
+#. Praia Municipality Day.
+msgid "Dia do Município da Praia"
+msgstr "Tag der Gemeinde Praia"
+
+#. Ribeira Brava Municipality Day.
+msgid "Dia do Município de Ribeira Brava"
+msgstr "Tag der Gemeinde Ribeira Brava"
+
+#. Ribeira Grande Municipality Day.
+msgid "Dia do Município de Ribeira Grande"
+msgstr "Tag der Gemeinde Ribeira Grande"
+
+#. Ribeira Grande de Santiago Municipality Day.
+msgid "Dia do Município de Ribeira Grande de Santiago"
+msgstr "Tag der Gemeinde Ribeira Grande de Santiago"
+
+#. São Domingos Municipality Day.
+msgid "Dia do Município de São Domingos"
+msgstr "Tag der Gemeinde São Domingos"
+
+#. São Filipe Municipality Day.
+msgid "Dia do Município de São Filipe"
+msgstr "Tag der Gemeinde São Filipe"
+
+#. Sal Municipality Day.
+msgid "Dia do Município do Sal"
+msgstr "Tag der Gemeinde Sal"
+
+#. São Miguel Municipality Day.
+msgid "Dia do Município de São Miguel"
+msgstr "Tag der Gemeinde São Miguel"
+
+#. São Lourenço dos Órgãos Municipality Day.
+msgid "Dia do Município de São Lourenço dos Órgãos"
+msgstr "Tag der Gemeinde São Lourenço dos Órgãos"
+
+#. São Salvador do Mundo Municipality Day.
+msgid "Dia do Município de São Salvador do Mundo"
+msgstr "Tag der Gemeinde São Salvador do Mundo"
+
+#. São Vicente Municipality Day.
+msgid "Dia do Município de São Vicente"
+msgstr "Tag der Gemeinde São Vicente"
+
+#. Carnival Tuesday.
+msgid "Terça-feira de Carnaval"
+msgstr "Faschingsdienstag"
+
+#. Tarrafal de Santiago Municipality Day.
+msgid "Dia do Município do Tarrafal de Santiago"
+msgstr "Tag der Gemeinde Tarrafal de Santiago"
+
+#. Tarrafal de São Nicolau Municipality Day.
+msgid "Dia do Município do Tarrafal de São Nicolau"
+msgstr "Tag der Gemeinde Tarrafal de São Nicolau"
