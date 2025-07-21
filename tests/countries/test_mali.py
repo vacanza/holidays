@@ -109,6 +109,7 @@ class TestMali(CommonCountryTests, TestCase):
             "2024-09-23",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(2006, 2050))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1961, 2006))
 
     def test_eid_al_fitr(self):
         name = "Journée de la Fête du Ramadan"
