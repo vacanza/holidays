@@ -1008,6 +1008,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Mali</td>
+<td>ML</td>
+<td></td>
+<td>en_US, <strong>fr</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Malta</td>
 <td>MT</td>
 <td></td>
