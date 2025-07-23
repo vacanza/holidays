@@ -570,8 +570,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Egypt</td>
 <td>EG</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
-<td></td>
+<td><strong>ar_EG</strong>, en_US, fr</td>
+<td>GOVERNMENT, SCHOOL</td>
 </tr>
 <tr>
 <td>El Salvador</td>
