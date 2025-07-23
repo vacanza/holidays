@@ -12,20 +12,63 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import FRI, SAT
+from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars.gregorian import (
+    JAN,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    MON,
+    TUE,
+    WED,
+    FRI,
+    SAT,
+    SUN,
+)
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.constants import GOVERNMENT, PUBLIC, SCHOOL
+from holidays.groups import (
+    ChristianHolidays,
+    IslamicHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+)
+from holidays.observed_holiday_base import ObservedHolidayBase, ObservedRule
+
+EG_OBSERVED_RULE = ObservedRule({MON: +3, TUE: +2, WED: +1, SUN: +4})
 
 
-class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
-    """Egypt holidays."""
+class Egypt(
+    ObservedHolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays, StaticHolidays
+):
+    """Egypt holidays.
+
+    References:
+        * <https://ar.wikipedia.org/wiki/قائمة_العطل_الرسمية_في_مصر>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Egypt>
+        * [National Holidays (Arabic)](https://web.archive.org/web/20250614072551/https://www.presidency.eg/ar/مصر/العطلات-الرسمية/)
+        * [National Holidays (English)](https://web.archive.org/web/20250529043734/https://www.presidency.eg/en/مصر/العطلات-الرسمية/)
+        * [National Holidays (French)](https://web.archive.org/web/20250608173134/https://www.presidency.eg/fr/مصر/العطلات-الرسمية/)
+        * [Ministerial Decision 1193](https://web.archive.org/web/20250423073350/https://manshurat.org/node/44922)
+    """
 
     country = "EG"
-    default_language = "ar"
+    default_language = "ar_EG"
     # %s (estimated).
     estimated_label = tr("%s (المقدرة)")
-    supported_languages = ("ar", "en_US")
+    # %s (observed).
+    observed_label = tr("%s (ملاحظة)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (المقدرة، ملاحظة)")
+    # Republic of Egypt was declared on 18 June 1953.
+    start_year = 1954
+    supported_categories = (GOVERNMENT, PUBLIC, SCHOOL)
+    supported_languages = ("ar_EG", "en_US", "fr")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
@@ -37,67 +80,98 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
         """
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
+        IslamicHolidays.__init__(
+            self, cls=EgyptIslamicHolidays, show_estimated=islamic_show_estimated
+        )
+        StaticHolidays.__init__(self, cls=EgyptStaticHolidays)
+        kwargs.setdefault("observed_rule", EG_OBSERVED_RULE)
+        kwargs.setdefault("observed_since", 2020)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # New Year's Day.
-        self._add_new_years_day(tr("رأس السنة الميلادية"))
+        if self._year >= 2002 and self._year not in {2022, 2023}:
+            # Coptic Christmas Day.
+            self._add_christmas_day(tr("عيد الميلاد المجيد"))
 
-        # Coptic Christmas Day.
-        self._add_christmas_day(tr("عيد الميلاد المجيد (تقويم قبطي)"))
+        if self._year >= 2009:
+            self._move_holiday(
+                self._add_holiday_jan_25(
+                    # January 25th Revolution and National Police Day.
+                    tr("ثورة ٢٥ يناير وعيد الشرطة")
+                    if self._year >= 2012
+                    # National Police Day.
+                    else tr("عيد الشرطة")
+                )
+            )
 
-        if self._year >= 2012:
-            # January 25th Revolution.
-            self._add_holiday_jan_25(tr("عيد ثورة 25 يناير"))
-        elif self._year >= 2009:
-            # National Police Day.
-            self._add_holiday_jan_25(tr("عيد الشرطة"))
-
-        # Coptic Easter.
-        self._add_easter_sunday(tr("عيد الفصح القبطي"))
+        if self._year >= 1983:
+            # Sinai Liberation Day.
+            dt = self._add_holiday_apr_25(tr("عيد تحرير سيناء"))
+            if self._year != 2022:
+                self._move_holiday(dt)
 
         # Spring Festival.
-        self._add_easter_monday(tr("شم النسيم"))
-
-        if self._year > 1982:
-            # Sinai Liberation Day.
-            self._add_holiday_apr_25(tr("عيد تحرير سيناء"))
+        self._add_easter_monday(tr("عيد شم النسيم"))
 
         # Labor Day.
-        self._add_labor_day(tr("عيد العمال"))
-
-        # Armed Forces Day.
-        self._add_holiday_oct_6(tr("عيد القوات المسلحة"))
+        if self._year != 2024:
+            self._move_holiday(self._add_labor_day(tr("عيد العمال")))
 
         if self._year >= 2014:
             # June 30 Revolution Day.
-            self._add_holiday_jun_30(tr("عيد ثورة 30 يونيو"))
+            dt = self._add_holiday_jun_30(tr("عيد ثورة ٣٠ يونيو"))
+            if self._year != 2024:
+                self._move_holiday(dt)
 
-        if self._year > 1952:
-            # July 23 Revolution Day.
-            self._add_holiday_jul_23(tr("عيد ثورة 23 يوليو"))
+        # July 23 Revolution Day.
+        dt = self._add_holiday_jul_23(tr("عيد ثورة ٢٣ يوليو"))
+        if self._year != 2023:
+            self._move_holiday(dt)
 
-        # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("عيد الفطر"))
-        # Eid al-Fitr Holiday.
-        self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
-        self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
-
-        # Arafat Day.
-        self._add_arafah_day(tr("يوم عرفة"))
-
-        # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("عيد الأضحى"))
-        # Eid al-Adha Holiday.
-        self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
-        self._add_eid_al_adha_day_three(tr("عطلة عيد الأضحى"))
+        # Armed Forces Day.
+        dt = self._add_holiday_oct_6(tr("عيد القوات المسلحة"))
+        if self._year != 2024:
+            self._move_holiday(dt)
 
         # Islamic New Year.
-        self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
+        for dt in self._add_islamic_new_year_day(tr("رأس السنة الهجرية")):
+            self._move_holiday(dt)
 
         # Prophet's Birthday.
-        self._add_mawlid_day(tr("عيد المولد النبوي"))
+        self._add_mawlid_day(tr("المولد النبوي الشريف"))
+
+        # Eid al-Fitr.
+        name = tr("عيد الفطر المبارك")
+        self._add_eid_al_fitr_day(name)
+        self._add_eid_al_fitr_day_two(name)
+
+        # Arafat Day.
+        self._add_arafah_day(tr("وقفة عيد الأضحى المبارك"))
+
+        # Eid al-Adha.
+        name = tr("عيد الأضحى المبارك")
+        self._add_eid_al_adha_day(name)
+        self._add_eid_al_adha_day_two(name)
+        self._add_eid_al_adha_day_three(name)
+
+    def _populate_government_holidays(self):
+        if self._year >= 2019:
+            # Eid al-Fitr.
+            name = tr("عيد الفطر المبارك")
+            self._add_eid_al_fitr_eve(name)
+            self._add_eid_al_fitr_day_three(name)
+
+        if self._year >= 2018:
+            # Eid al-Adha.
+            self._add_eid_al_adha_day_four(tr("عيد الأضحى المبارك"))
+
+    def _populate_school_holidays(self):
+        if self._year >= 2019:
+            # Taba Liberation Day.
+            self._add_holiday_mar_19(tr("عيد تحرير طابا"))
+
+            # Evacuation Day.
+            self._add_holiday_jun_18(tr("عيد الجلاء"))
 
 
 class EG(Egypt):
@@ -106,3 +180,85 @@ class EG(Egypt):
 
 class EGY(Egypt):
     pass
+
+
+class EgyptIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES = {
+        2020: (JUL, 31),
+        2021: (JUL, 20),
+        2022: (JUL, 10),
+        2023: (JUN, 28),
+        2024: (JUN, 16),
+        2025: (JUN, 6),
+    }
+
+    EID_AL_FITR_DATES = {
+        2020: (MAY, 24),
+        2021: (MAY, 13),
+        2022: (MAY, 1),
+        2023: (APR, 21),
+        2024: (APR, 10),
+        2025: (MAR, 30),
+    }
+
+    HIJRI_NEW_YEAR_DATES = {
+        2020: (AUG, 20),
+        2021: (AUG, 11),
+        2022: (JUL, 30),
+        2023: (JUL, 19),
+        2024: (JUL, 7),
+        2025: (JUN, 26),
+    }
+
+    MAWLID_DATES = {
+        2020: (OCT, 29),
+        2021: (OCT, 18),
+        2022: (OCT, 8),
+        2023: (SEP, 28),
+        2024: (SEP, 15),
+        2025: (SEP, 4),
+    }
+
+
+class EgyptStaticHolidays:
+    """Egypt special holidays.
+
+    References:
+        * [2022 Coptic Christmas](https://web.archive.org/web/20240227004025/https://english.ahram.org.eg/NewsContent/1/2/454491/Egypt/Society/Thursday-paid-day-off-at-public-sector-in-Egypt-fo.aspx)
+    """
+
+    # Coptic Christmas Day.
+    coptic_christmas_day = tr("عيد الميلاد المجيد")
+
+    # Eid al-Adha.
+    eid_al_adha = tr("عيد الأضحى المبارك")
+
+    # Eid al-Fitr.
+    eid_al_fitr = tr("عيد الفطر المبارك")
+
+    special_public_holidays = {
+        2021: (
+            (JUL, 17, eid_al_adha),
+            (JUL, 18, eid_al_adha),
+        ),
+        2022: (
+            (JUL, 13, eid_al_adha),
+            (JUL, 14, eid_al_adha),
+        ),
+    }
+
+    special_public_holidays_observed = {
+        2022: (
+            (JAN, 6, coptic_christmas_day),
+            (MAY, 4, eid_al_fitr),
+        ),
+        2023: (
+            (JAN, 8, coptic_christmas_day),
+            (APR, 24, eid_al_fitr),
+            # June 30 Revolution Day.
+            (JUL, 2, tr("عيد ثورة ٣٠ يونيو")),
+            (JUL, 3, eid_al_adha),
+        ),
+        # Labor Day.
+        2024: (MAY, 5, tr("عيد العمال")),
+    }
