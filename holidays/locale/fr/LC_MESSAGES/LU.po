@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.28\n"
+"Project-Id-Version: Holidays 0.78\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2023-06-27 18:57+0300\n"
+"PO-Revision-Date: 2025-07-24 16:35+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
@@ -29,7 +29,7 @@ msgstr ""
 
 #. New Year's Day.
 msgid "Neijoerschdag"
-msgstr "Jour de l'an"
+msgstr "Jour de l'An"
 
 #. Easter Monday.
 msgid "Ouschterméindeg"
@@ -41,7 +41,7 @@ msgstr "Fête du Travail"
 
 #. Europe Day.
 msgid "Europadag"
-msgstr "Journée de l'Europe"
+msgstr "Jour de l'Europe"
 
 #. Ascension Day.
 msgid "Christi Himmelfaart"
@@ -70,3 +70,15 @@ msgstr "Noël"
 #. Saint Stephen's Day.
 msgid "Stiefesdag"
 msgstr "Saint Etienne"
+
+#. Good Friday.
+msgid "Karfreideg"
+msgstr "Vendredi Saint"
+
+#. Christmas Eve (afternoon).
+msgid "Hellegowend (nomëtteg)"
+msgstr "Veille de Noël (après-midi)"
+
+#. New Year's Eve.
+msgid "Silvester"
+msgstr "Saint Sylvestre"
