@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.28\n"
+"Project-Id-Version: Holidays 0.78\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2023-06-27 13:40+0300\n"
+"PO-Revision-Date: 2025-07-24 16:35+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: lb\n"
@@ -69,4 +69,16 @@ msgstr ""
 
 #. Saint Stephen's Day.
 msgid "Stiefesdag"
+msgstr ""
+
+#. Good Friday.
+msgid "Karfreideg"
+msgstr ""
+
+#. Christmas Eve (afternoon).
+msgid "Hellegowend (nomëtteg)"
+msgstr ""
+
+#. New Year's Eve.
+msgid "Silvester"
 msgstr ""
