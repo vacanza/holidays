@@ -1498,19 +1498,19 @@ class _TibetanLunisolar:
     def death_of_zhabdrung_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday("DEATH_OF_ZHABDRUNG", year)
 
-    def descending_day_of_lord_buddha_dates(self, year: int) -> tuple[Optional[date], bool]:
+    def descending_day_of_lord_buddha_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday("DESCENDING_DAY_OF_LORD_BUDDHA", year)
 
     def losar_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday("LOSAR", year)
 
-    def thimpu_drubchen_dates(self, year: int) -> tuple[Optional[date], bool]:
+    def thimpu_drubchen_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday("THIMPU_DRUBCHEN", year)
 
-    def thimphu_tsechu_dates(self, year: int) -> tuple[Optional[date], bool]:
+    def thimphu_tsechu_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday("THIMPHU_TSECHU", year)
 
-    def winter_solstice_dates(self, year: int) -> tuple[Optional[date], bool]:
+    def winter_solstice_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday("WINTER_SOLSTICE", year)
 
 
