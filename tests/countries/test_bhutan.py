@@ -95,13 +95,34 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2007, 2050))
 
     def test_thimphu_drubchoe(self):
-        self.assertHolidayName("Thimphu Drubchoe", (f"{year}-09-09" for year in range(2007, 2050)))
+        name = "Thimphu Drubchoe"
+        self.assertHolidayName(
+            name,
+            "2020-09-23",
+            "2021-09-13",
+            "2022-10-02",
+            "2023-09-22",
+            "2024-10-09",
+            "2025-09-29",
+        )
+        self.assertHolidayName(name, range(2007, 2050))
 
     def test_thimphu_tshechu(self):
         name = "Thimphu Tshechu"
-        self.assertHolidayName(name, (f"{year}-09-13" for year in range(2007, 2050)))
-        self.assertHolidayName(name, (f"{year}-09-14" for year in range(2007, 2050)))
-        self.assertHolidayName(name, (f"{year}-09-15" for year in range(2007, 2050)))
+        distinct_dates = [
+            "2020-09-26",
+            "2021-09-16",
+            "2022-10-05",
+            "2023-09-24",
+            "2024-10-12",
+            "2025-10-02",
+        ]
+        for start_date in distinct_dates:
+            year, month, day = map(int, start_date.split("-"))
+            for offset in range(3):
+                date_str = f"{year:04d}-{month:02d}-{day + offset:02d}"
+                self.assertHolidayName(name, date_str)
+        self.assertHolidayName(name, range(2007, 2050))
 
     def test_blessed_rainy_day(self):
         name = "Blessed Rainy Day"
@@ -141,19 +162,27 @@ class TestBhutan(CommonCountryTests, TestCase):
         )
 
     def test_descending_day_lord_buddha(self):
+        name = "Descending Day of Lord Buddha"
         self.assertHolidayName(
-            "Descending Day of Lord Buddha", (f"{year}-11-22" for year in range(2007, 2050))
+            name,
+            "2020-11-07",
+            "2021-10-27",
+            "2022-11-15",
+            "2023-11-04",
+            "2024-11-22",
+            "2025-11-11",
         )
+        self.assertHolidayName(name, range(2007, 2050))
 
     def test_national_day(self):
         self.assertHolidayName("National Day", (f"{year}-12-17" for year in range(2007, 2050)))
 
-    def test_2024(self):
-        self.assertHolidays(
-            Bhutan(years=2024),
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
             ("2024-01-02", "Winter Solstice"),
             ("2024-01-12", "Traditional Day of Offering"),
             ("2024-02-11", "Losar"),
+            ("2024-02-12", "Losar"),
             ("2024-02-21", "Birth Anniversary of His Majesty the King"),
             ("2024-02-22", "Birth Anniversary of His Majesty the King"),
             ("2024-02-23", "Birth Anniversary of His Majesty the King"),
@@ -162,12 +191,11 @@ class TestBhutan(CommonCountryTests, TestCase):
             ("2024-05-23", "Lord Buddha's Parinirvana"),
             ("2024-06-16", "Birth Anniversary of Guru Rinpoche"),
             ("2024-07-10", "First Sermon of Lord Buddha"),
-            ("2024-09-09", "Thimphu Drubchoe"),
-            ("2024-09-13", "Thimphu Tshechu"),
-            ("2024-09-14", "Thimphu Tshechu"),
-            ("2024-09-15", "Thimphu Tshechu"),
             ("2024-09-23", "Blessed Rainy Day"),
-            ("2024-10-12", "Dassain"),
+            ("2024-10-09", "Thimphu Drubchoe"),
+            ("2024-10-12", "Dassain; Thimphu Tshechu"),
+            ("2024-10-13", "Thimphu Tshechu"),
+            ("2024-10-14", "Thimphu Tshechu"),
             ("2024-11-01", "Coronation of His Majesty the King"),
             ("2024-11-11", "Birth Anniversary of the 4th Druk Gyalpo - Constitution Day"),
             ("2024-11-22", "Descending Day of Lord Buddha"),

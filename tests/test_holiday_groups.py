@@ -151,4 +151,8 @@ class TestTibetanCalendarHolidays(TestCase):
         test_holidays._add_death_of_zhabdrung("Death of Zhabdrung")
         test_holidays._add_blessed_rainy_day("Blessed Rainy Day")
         test_holidays._add_dashain("Dashain")
+        test_holidays._add_descending_day_of_lord_buddha("Descending Day Of Lord Buddha")
+        test_holidays._add_thimpu_drubchen_day("Thimpu Drubchen Day")
+        test_holidays._add_winter_solstice_day("Winter Solstice Day")
+        test_holidays._add_thimphu_tsechu_day("Thimphu Tsechu Day")
         self.assertEqual(0, len(test_holidays))

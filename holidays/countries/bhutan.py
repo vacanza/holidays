@@ -20,6 +20,8 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
     References:
         * [ROYAL GOVERNMENT OF BHUTAN](https://web.archive.org/web/20250407140158/https://www.moha.gov.bt/wp-content/uploads/2023/11/National-Holiday-List-for-2024-2-.pdf)
         * [PHPA-II HOLIDAY LIST 2025](https://phpa2.gov.bt/holiday-list/)
+        * [Public Holidays for the year 2007](https://web.archive.org/web/20070730055559/http://www.rcsc.gov.bt/tmpFolder/CalendarOfEvent/holiday.htm)
+        * [The Bhutanese calendar](http://www.kalacakra.org/calendar/bhutlist.htm)
     """
 
     country = "BT"
@@ -32,13 +34,15 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
 
     def _populate_public_holidays(self):
         # Winter Solstice.
-        self._add_holiday_jan_2("Winter Solstice")
+        self._add_winter_solstice_day("Winter Solstice")
 
         # Traditional Day of Offering.
         self._add_day_of_offering("Traditional Day of Offering")
 
         # Losar.
-        self._add_losar("Losar")
+        name = "Losar"
+        self._add_losar(name)
+        self._add_losar_day_two(name)
 
         name = "Birth Anniversary of His Majesty the King"
         # Birth Anniversary of His Majesty the King.
@@ -62,13 +66,13 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
         self._add_buddha_first_sermon("First Sermon of Lord Buddha")
 
         # Thimphu Drubchoe.
-        self._add_holiday_sep_9("Thimphu Drubchoe")
+        self._add_thimpu_drubchen_day("Thimphu Drubchoe")
 
         # Thimphu Tshechu.
         name = "Thimphu Tshechu"
-        self._add_holiday_sep_13(name)
-        self._add_holiday_sep_14(name)
-        self._add_holiday_sep_15(name)
+        self._add_thimphu_tsechu_day(name)
+        self._add_thimphu_tsechu_day_two(name)
+        self._add_thimphu_tsechu_day_three(name)
 
         # Blessed Rainy Day.
         self._add_blessed_rainy_day("Blessed Rainy Day")
@@ -86,7 +90,7 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
         self._add_holiday_nov_11("Birth Anniversary of the 4th Druk Gyalpo - Constitution Day")
 
         # Descending Day of Lord Buddha.
-        self._add_holiday_nov_22("Descending Day of Lord Buddha")
+        self._add_descending_day_of_lord_buddha("Descending Day of Lord Buddha")
 
 
 class BT(Bhutan):
