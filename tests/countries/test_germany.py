@@ -400,7 +400,7 @@ class TestGermany(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt_pre_1995)
         self.assertNoHolidayName(name, range(1995, 2050))
 
-    def test_chirstmas_day(self):
+    def test_christmas_day(self):
         self.assertHolidayName(
             "Erster Weihnachtstag", (f"{year}-12-25" for year in range(1990, 2050))
         )
