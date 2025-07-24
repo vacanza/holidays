@@ -54,12 +54,12 @@ msgstr ""
 msgid "عيد الشرطة"
 msgstr ""
 
-#. Spring Festival.
-msgid "عيد شم النسيم"
-msgstr ""
-
 #. Sinai Liberation Day.
 msgid "عيد تحرير سيناء"
+msgstr ""
+
+#. Spring Festival.
+msgid "عيد شم النسيم"
 msgstr ""
 
 #. Labor Day.
