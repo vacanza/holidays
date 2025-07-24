@@ -124,7 +124,7 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-06-23", "Nationalfeiertag"),
             ("2022-08-15", "Mariä Himmelfahrt"),
             ("2022-11-01", "Allerheiligen"),
-            ("2022-12-24", "Weihnachtsabend (nachmittag)"),
+            ("2022-12-24", "Heiligabend (Nachmittag)"),
             ("2022-12-25", "Weihnachten"),
             ("2022-12-26", "Zweiter Weihnachtsfeiertag"),
             ("2022-12-31", "Silvester"),

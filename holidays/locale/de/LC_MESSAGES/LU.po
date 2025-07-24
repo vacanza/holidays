@@ -77,7 +77,7 @@ msgstr "Karfreitag"
 
 #. Christmas Eve (afternoon).
 msgid "Hellegowend (nomëtteg)"
-msgstr "Weihnachtsabend (nachmittag)"
+msgstr "Heiligabend (Nachmittag)"
 
 #. New Year's Eve.
 msgid "Silvester"
