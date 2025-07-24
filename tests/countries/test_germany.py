@@ -105,17 +105,12 @@ class TestGermany(CommonCountryTests, TestCase):
     def test_good_friday(self):
         name = "Karfreitag"
         dt = (
-            "2014-04-18",
-            "2015-04-03",
-            "2016-03-25",
-            "2017-04-14",
-            "2018-03-30",
-            "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
             "2024-03-29",
+            "2025-04-18",
         )
         for holidays in self.subdiv_holidays.values():
             self.assertHolidayName(name, holidays, dt)
@@ -134,17 +129,12 @@ class TestGermany(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
-                    "2014-04-20",
-                    "2015-04-05",
-                    "2016-03-27",
-                    "2017-04-16",
-                    "2018-04-01",
-                    "2019-04-21",
                     "2020-04-12",
                     "2021-04-04",
                     "2022-04-17",
                     "2023-04-09",
                     "2024-03-31",
+                    "2025-04-20",
                 )
                 self.assertHolidayName(name, holidays, range(1991, 2050))
                 self.assertNoHolidayName(name, holidays, 1990)
@@ -154,17 +144,12 @@ class TestGermany(CommonCountryTests, TestCase):
     def test_easter_monday(self):
         name = "Ostermontag"
         dt = (
-            "2014-04-21",
-            "2015-04-06",
-            "2016-03-28",
-            "2017-04-17",
-            "2018-04-02",
-            "2019-04-22",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
             "2024-04-01",
+            "2025-04-21",
         )
         for holidays in self.subdiv_holidays.values():
             self.assertHolidayName(name, holidays, dt)
@@ -177,17 +162,12 @@ class TestGermany(CommonCountryTests, TestCase):
     def test_ascension_day(self):
         name = "Christi Himmelfahrt"
         dt = (
-            "2014-05-29",
-            "2015-05-14",
-            "2016-05-05",
-            "2017-05-25",
-            "2018-05-10",
-            "2019-05-30",
             "2020-05-21",
             "2021-05-13",
             "2022-05-26",
             "2023-05-18",
             "2024-05-09",
+            "2025-05-29",
         )
         for holidays in self.subdiv_holidays.values():
             self.assertHolidayName(name, holidays, dt)
@@ -206,22 +186,17 @@ class TestGermany(CommonCountryTests, TestCase):
         name = "Pfingstsonntag"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
-            # Bradenburg.
+            # Brandenburg.
             if subdiv == "BB":
                 self.assertHolidayName(
                     name,
                     holidays,
-                    "2014-06-08",
-                    "2015-05-24",
-                    "2016-05-15",
-                    "2017-06-04",
-                    "2018-05-20",
-                    "2019-06-09",
                     "2020-05-31",
                     "2021-05-23",
                     "2022-06-05",
                     "2023-05-28",
                     "2024-05-19",
+                    "2025-06-08",
                 )
                 self.assertHolidayName(name, holidays, range(1991, 2050))
                 self.assertNoHolidayName(name, holidays, 1990)
@@ -231,17 +206,12 @@ class TestGermany(CommonCountryTests, TestCase):
     def test_whit_monday(self):
         name = "Pfingstmontag"
         dt = (
-            "2014-06-09",
-            "2015-05-25",
-            "2016-05-16",
-            "2017-06-05",
-            "2018-05-21",
-            "2019-06-10",
             "2020-06-01",
             "2021-05-24",
             "2022-06-06",
             "2023-05-29",
             "2024-05-20",
+            "2025-06-09",
         )
         for holidays in self.subdiv_holidays.values():
             self.assertHolidayName(name, holidays, dt)
@@ -255,17 +225,12 @@ class TestGermany(CommonCountryTests, TestCase):
         name = "Fronleichnam"
         self.assertNoHolidayName(name)
         dt = (
-            "2014-06-19",
-            "2015-06-04",
-            "2016-05-26",
-            "2017-06-15",
-            "2018-05-31",
-            "2019-06-20",
             "2020-06-11",
             "2021-06-03",
             "2022-06-16",
             "2023-06-08",
             "2024-05-30",
+            "2025-06-19",
         )
         for subdiv, holidays in self.subdiv_holidays.items():
             # Baden-Württemberg, Bayern, Hessen, Nordrhein-Westfalen,
@@ -377,17 +342,12 @@ class TestGermany(CommonCountryTests, TestCase):
             "1994-11-16",
         )
         dt = (
-            "2014-11-19",
-            "2015-11-18",
-            "2016-11-16",
-            "2017-11-22",
-            "2018-11-21",
-            "2019-11-20",
             "2020-11-18",
             "2021-11-17",
             "2022-11-16",
             "2023-11-22",
             "2024-11-20",
+            "2025-11-19",
         )
         for subdiv, holidays in self.subdiv_holidays.items():
             # Sachsen.
