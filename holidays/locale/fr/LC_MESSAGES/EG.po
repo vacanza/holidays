@@ -54,13 +54,13 @@ msgstr "Révolution de 25 Janvier et la fête de la Police"
 msgid "عيد الشرطة"
 msgstr "Fête de la Police"
 
-#. Spring Festival.
-msgid "عيد شم النسيم"
-msgstr "Cham Al-Nessim"
-
 #. Sinai Liberation Day.
 msgid "عيد تحرير سيناء"
 msgstr "Fête de la Libération du Sinaï"
+
+#. Spring Festival.
+msgid "عيد شم النسيم"
+msgstr "Cham Al-Nessim"
 
 #. Labor Day.
 msgid "عيد العمال"
