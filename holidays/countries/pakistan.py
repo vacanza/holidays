@@ -32,7 +32,7 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     default_language = "en_PK"
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
-    # Achieved Independence on August 17th, 1947.
+    # Achieved Independence on August 14th, 1947.
     start_year = 1948
     supported_languages = ("en_PK", "en_US", "ur_PK")
 
