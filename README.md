@@ -963,7 +963,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>LU</td>
 <td></td>
 <td>de, en_US, fr, <strong>lb</strong>, uk</td>
-<td></td>
+<td>BANK</td>
 </tr>
 <tr>
 <td>Macau</td>
