@@ -137,6 +137,6 @@ class TestPitcairnIslands(CommonCountryTests, TestCase):
     def test_2022_workday(self):
         self.assertHolidays(
             PitcairnIslands(categories=WORKDAY, years=2022),
-            ("2022-04-26", "ANZAC Day"),
+            ("2022-04-25", "ANZAC Day"),
             ("2022-11-11", "Remembrance Day"),
         )
