@@ -89,7 +89,7 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
         self._add_eid_al_fitr_day_three(eid_al_fitr_name)
 
         for dt in eid_al_fitr_dates:
-            if self._is_long_ramadan(dt):
+            if self._islamic_calendar._is_long_ramadan(dt):
                 # Add 30 Ramadan.
                 self._add_holiday(eid_al_fitr_name, _timedelta(dt, -1))
                 self._add_islamic_observed(_timedelta(dt, +2))
