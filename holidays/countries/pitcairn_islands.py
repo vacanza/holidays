@@ -9,7 +9,6 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-from gettext import gettext as tr
 
 from holidays.constants import GOVERNMENT, PUBLIC, WORKDAY
 from holidays.groups import ChristianHolidays, InternationalHolidays
@@ -41,22 +40,29 @@ class PitcairnIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day("New Year's Day")
+
         # Bounty Day.
         self._add_holiday_jan_23("Bounty Day")
+
         # Good Friday.
         self._add_good_friday("Good Friday")
+
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
+
         if self._year >= 2023:
             # King's Birthday.
             self._add_holiday_1st_mon_of_jun("King's Birthday")
         else:
             # Queen's Birthday.
             self._add_holiday_2nd_sat_of_jun("Queen's Birthday")
+
         # Pitcairn Day.
         self._add_holiday_jul_2("Pitcairn Day")
+
         # Christmas Day.
         self._add_christmas_day("Christmas Day")
+
         # Boxing Day.
         self._add_christmas_day_two("Boxing Day")
 
@@ -66,7 +72,7 @@ class PitcairnIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_workday_holidays(self):
         # ANZAC Day.
-        self._add_anzac_day(tr("ANZAC Day"))
+        self._add_anzac_day("ANZAC Day")
 
         # Remembrance Day.
         self._add_remembrance_day("Remembrance Day")
