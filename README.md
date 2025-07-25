@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 215 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 223 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -385,6 +385,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Cabo Verde</td>
+<td>CV</td>
+<td>Municipalities: BR (Brava), BV (Boa Vista), CA (Santa Catarina), CF (Santa Catarina do Fogo), CR (Santa Cruz), MA (Maio), MO (Mosteiros), PA (Paul), PN (Porto Novo), PR (Praia), RB (Ribeira Brava), RG (Ribeira Grande), RS (Ribeira Grande de Santiago), SD (São Domingos), SF (São Filipe), SL (Sal), SM (São Miguel), SO (São Lourenço dos Órgãos), SS (São Salvador do Mundo), SV (São Vicente), TA (Tarrafal), TS (Tarrafal de São Nicolau)</td>
+<td>de, en_US, es, fr, <strong>pt_CV</strong></td>
+<td>OPTIONAL</td>
+</tr>
+<tr>
 <td>Cambodia</td>
 <td>KH</td>
 <td></td>
@@ -410,6 +417,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>KY</td>
 <td></td>
 <td><strong>en_GB</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
+<td>Central African Republic</td>
+<td>CF</td>
+<td></td>
+<td>en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -539,6 +553,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>DR Congo</td>
+<td>CD</td>
+<td></td>
+<td>en_US, <strong>fr</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Ecuador</td>
 <td>EC</td>
 <td></td>
@@ -549,8 +570,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Egypt</td>
 <td>EG</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
-<td></td>
+<td><strong>ar_EG</strong>, en_US, fr</td>
+<td>GOVERNMENT, SCHOOL</td>
 </tr>
 <tr>
 <td>El Salvador</td>
@@ -669,6 +690,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GH</td>
 <td></td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td>Gibraltar</td>
+<td>GI</td>
+<td></td>
+<td><strong>en_GB</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -896,6 +924,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Lebanon</td>
+<td>LB</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td>BANK, GOVERNMENT</td>
+</tr>
+<tr>
 <td>Lesotho</td>
 <td>LS</td>
 <td></td>
@@ -928,7 +963,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>LU</td>
 <td></td>
 <td>de, en_US, fr, <strong>lb</strong>, uk</td>
-<td></td>
+<td>BANK</td>
 </tr>
 <tr>
 <td>Macau</td>
@@ -963,6 +998,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>MV</td>
 <td></td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td>Mali</td>
+<td>ML</td>
+<td></td>
+<td>en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -1131,6 +1173,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>NG</td>
 <td></td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td>Niue</td>
+<td>NU</td>
+<td></td>
+<td><strong>en_NU</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -1496,6 +1545,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>fr</strong></td>
 <td>WORKDAY</td>
+</tr>
+<tr>
+<td>Tokelau</td>
+<td>TK</td>
+<td></td>
+<td><strong>en_TK</strong>, en_US, tkl</td>
+<td></td>
 </tr>
 <tr>
 <td>Tonga</td>

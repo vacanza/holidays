@@ -1,3 +1,30 @@
+# Version 0.77
+
+Released July 21, 2025
+
+- Refactor US holidays: consolidate duplicate `self._year` triggers (#2726 by @PPsyrius)
+- Add Cabo Verde holidays (#2654 by @Prateekshit73, @prateekshit-v, @sindhuraks)
+- Add Cayman Islands holidays (#2706 by @Abheelash-Mishra)
+- Add Central African Republic holidays (#2687 by @Prateekshit73, @arkid15r, @prateekshit-v)
+- Add Christmas Island holidays (#2623 by @anshonweb, @arkid15r)
+- Add Democratic Republic of the Congo holidays (#2702 by @Prateekshit73, @prateekshit-v)
+- Add Faroe Islands holidays (#2719 by @KJhellico, @arkid15r, @Shrot101)
+- Add Gibraltar holidays (#2720 by @Wasif-Shahzad, @arkid15r, @KJhellico)
+- Add Lebanon holidays (#2700 by @kritibirda26, @arkid15r)
+- Add Mali holidays (#2725 by @kritibirda26, @arkid15r)
+- Add Montserrat holidays (#2714 by @Wasif-Shahzad, @arkid15r, @KJhellico)
+- Add Niue holidays (#2737 by @Abheelash-Mishra, @arkid15r)
+- Add Norfolk Island holidays (#2716 by @anshonweb, @arkid15r)
+- Add Palestine holidays (#2701 by @Wasif-Shahzad)
+- Add Saint Vincent and the Grenadines holidays (#2608 by @waqar2403, @arkid15r, @PPsyrius)
+- Add Tokelau holidays (#2727 by @anshonweb, @arkid15r, @KJhellico)
+- Fix missing `StaticHolidays` in some countries (#2729 by @KJhellico)
+- Improve some variable naming (#2708 by @arkid15r)
+- Optimize dict in/get cases (#2707 by @arkid15r)
+- Update Georgia holidays (#2735 by @KJhellico)
+- Update Peru holidays: add 2023+ holidays (#2730 by @kplrm, @KJhellico)
+- Document `_add_holiday_*` pattern (#2721 by @williambdean, @arkid15r)
+
 # Version 0.76
 
 Released July 7, 2025

@@ -17,7 +17,7 @@ from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHoli
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """Seychelles holidays.
 
     References:

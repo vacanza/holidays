@@ -16,7 +16,7 @@ from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHoli
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
 
 
-class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """Palau holidays.
 
     References:
