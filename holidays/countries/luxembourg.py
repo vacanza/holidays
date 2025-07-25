@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -21,10 +22,12 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg>
+        * <https://web.archive.org/web/20250625132138/https://www.bcl.lu/en/About/Opening-days/index.html>
     """
 
     country = "LU"
     default_language = "lb"
+    supported_categories = (BANK, PUBLIC)
     supported_languages = ("de", "en_US", "fr", "lb", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -66,6 +69,16 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stiefesdag"))
+
+    def _populate_bank_holidays(self):
+        # Good Friday.
+        self._add_good_friday(tr("Karfreideg"))
+
+        # Christmas Eve (afternoon).
+        self._add_christmas_eve(tr("Hellegowend (nomëtteg)"))
+
+        # New Year's Eve.
+        self._add_new_years_eve(tr("Silvester"))
 
 
 class LU(Luxembourg):

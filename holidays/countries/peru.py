@@ -22,6 +22,8 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * <https://web.archive.org/web/20250414165243/https://www.gob.pe/feriados/>
         * <https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú>
+        * [Ley N° 31788](https://web.archive.org/web/20250716164223/https://img.lpderecho.pe/wp-content/uploads/2023/06/Ley-31788-LPDerecho.pdf)
+        * [Ley N° 31822](https://web.archive.org/web/20250716164455/https://img.lpderecho.pe/wp-content/uploads/2023/07/Ley-31822-LPDerecho.pdf)
     """
 
     country = "PE"
@@ -49,8 +51,18 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_labor_day(tr("Día del Trabajo"))
 
+        # Added via Ley N° 31788 on June 15th, 2023.
+        if self._year >= 2024:
+            # Battle of Arica and Flag Day.
+            self._add_holiday_jun_7(tr("Batalla de Arica y Día de la Bandera"))
+
         # Saint Peter and Saint Paul's Day.
         self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo"))
+
+        # Added via Ley N° 31822 on July 8th, 2023.
+        if self._year >= 2023:
+            # Peruvian Air Force Day.
+            self._add_holiday_jul_23(tr("Día de la Fuerza Aérea del Perú"))
 
         # Independence Day.
         self._add_holiday_jul_28(tr("Día de la Independencia"))

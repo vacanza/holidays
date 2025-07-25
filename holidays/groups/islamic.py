@@ -373,6 +373,23 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.nuzul_al_quran_dates(self._year)
         )
 
+    def _add_prophet_baptism_day(self, name) -> set[date]:
+        """
+        Add Prophet's Baptism.
+
+        Celebrated one week after the Prophet Mohammed's Birthday, this
+        marks the traditional Islamic birth rites that take place seven
+        days after birth. While it is not recognized in mainstream Islam,
+        Mali celebrates it as a cultural-religious public holiday that
+        reflects the local interpretation and honor of the Prophet Muhammad.
+        The term "baptism" is symbolic and not literal - there's no Islamic
+        ritual akin to Christian baptism.
+        https://www.officeholidays.com/holidays/mali/prophets-baptism
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.mawlid_dates(self._year), days_delta=+7
+        )
+
     def _add_prophet_death_day(self, name) -> set[date]:
         """
         Add death of Prophet Muhammad and Hasan ibn Ali day (28th day of 2nd month).
