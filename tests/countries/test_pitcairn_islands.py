@@ -29,7 +29,9 @@ class TestPitcairnIslands(CommonCountryTests, TestCase):
         self.assertAliases(PitcairnIslands, PN, PCN)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(PitcairnIslands(years=2015))
+        self.assertNoHolidays(
+            PitcairnIslands(categories=PitcairnIslands.supported_categories, years=2015)
+        )
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -131,7 +133,8 @@ class TestPitcairnIslands(CommonCountryTests, TestCase):
 
     def test_2022_government(self):
         self.assertHolidays(
-            PitcairnIslands(categories=GOVERNMENT, years=2022), ("2022-01-02", "New Year's Day")
+            PitcairnIslands(categories=GOVERNMENT, years=2022),
+            ("2022-01-02", "New Year's Day"),
         )
 
     def test_2022_workday(self):
