@@ -1,0 +1,92 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# South Georgia and the South Sandwich Islands holidays en_US Localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.78\n"
+"POT-Creation-Date: 2025-07-29 14:53+0530\n"
+"PO-Revision-Date: 2025-07-29 14:53+0530\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_GS\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (observed)"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "New Year's Day"
+
+#. Possession Day.
+msgid "Possession Day"
+msgstr "Possession Day"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Good Friday"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Easter Monday"
+
+#. The Queen's Birthday.
+msgid "The Queen's Birthday"
+msgstr "The Queen's Birthday"
+
+#. Liberation Day.
+msgid "Liberation Day"
+msgstr "Liberation Day"
+
+#. Shackleton Day.
+msgid "Shackleton Day"
+msgstr "Shackleton Day"
+
+#. Mid-winter Day.
+msgid "Mid-winter Day"
+msgstr "Midwinter Day"
+
+#. Toothfish Day.
+msgid "Toothfish Day"
+msgstr "Toothfish Day"
+
+#. Toothfish (end of season) Day.
+msgid "Toothfish (end of season) Day"
+msgstr "Toothfish (End of Season) Day"
+
+#. Environment Day.
+msgid "Environment Day"
+msgstr "Environmental Day"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "Boxing Day"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Christmas Day"
+
+#. Coronation of King Charles III.
+msgid "Coronation of King Charles III"
+msgstr "King Charles III's Coronation"
+
+#. King's Birthday.
+msgid "King's Birthday"
+msgstr "King's Birthday"
