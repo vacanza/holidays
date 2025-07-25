@@ -33,6 +33,7 @@ class TestPitcairnIslands(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "New Year's Day"
+        # Public Holidays.
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(2016, 2050)))
         # Government Holidays.
         self.assertHolidayName(
@@ -69,27 +70,25 @@ class TestPitcairnIslands(CommonCountryTests, TestCase):
 
     def test_queens_birthday(self):
         name = "Queen's Birthday"
-        # 2nd Saturday in June before 2023
         self.assertHolidayName(
             name,
-            "2016-06-11",  # 2nd Saturday in June 2016
-            "2017-06-10",  # 2nd Saturday in June 2017
-            "2018-06-09",  # 2nd Saturday in June 2018
-            "2019-06-08",  # 2nd Saturday in June 2019
-            "2020-06-13",  # 2nd Saturday in June 2020
-            "2021-06-12",  # 2nd Saturday in June 2021
-            "2022-06-11",  # 2nd Saturday in June 2022
+            "2016-06-11",
+            "2017-06-10",
+            "2018-06-09",
+            "2019-06-08",
+            "2020-06-13",
+            "2021-06-12",
+            "2022-06-11",
         )
         self.assertNoHolidayName(name, range(2023, 2050))
 
     def test_kings_birthday(self):
         name = "King's Birthday"
-        # 1st Monday in June from 2023 onwards
         self.assertHolidayName(
             name,
-            "2023-06-05",  # 1st Monday in June 2023
-            "2024-06-03",  # 1st Monday in June 2024
-            "2025-06-02",  # 1st Monday in June 2025
+            "2023-06-05",
+            "2024-06-03",
+            "2025-06-02",
         )
         self.assertHolidayName(name, range(2023, 2050))
         self.assertNoHolidayName(name, range(2016, 2023))
