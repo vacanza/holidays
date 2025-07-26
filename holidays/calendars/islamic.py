@@ -3987,11 +3987,12 @@ class _IslamicLunar:
         Returns:
             True if Ramadan lasted 30 days, False otherwise.
         """
-        year = eid_al_fitr.year
-        first_ramadan_dates = {
-            d[0] for y in (year - 1, year) for d in self.ramadan_beginning_dates(y)
+        eid_al_fitr_year = eid_al_fitr.year
+        return _timedelta(eid_al_fitr, -30) in {
+            dt
+            for year in (eid_al_fitr_year - 1, eid_al_fitr_year)
+            for (dt, _) in self.ramadan_beginning_dates(year)
         }
-        return _timedelta(eid_al_fitr, -30) in first_ramadan_dates
 
     def ali_al_rida_death_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(ALI_AL_RIDA_DEATH, year)
