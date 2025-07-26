@@ -428,7 +428,7 @@ def list_supported_financial(include_aliases: bool = True) -> dict[str, list[str
 
     Args:
         include_aliases:
-            Whether to include entity aliases (e.g. TAR for XECB, NYSE for XNYS).
+            Whether to include entity aliases (e.g. NYSE for XNYS, TAR for XECB).
 
     Returns:
         A dictionary where key is a market code and value is a list of supported
