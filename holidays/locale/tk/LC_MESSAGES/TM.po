@@ -1,0 +1,98 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
+# holidays
+# --------
+# A fast, efficient Python library for generating country, province and state
+# specific sets of holidays on the fly. It aims to make determining whether a
+# specific date is a holiday as fast and flexible as possible.
+#
+# Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#          dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#          ryanss <ryanssdev@icloud.com> (c) 2014-2017
+# Website: https://github.com/vacanza/holidays
+# License: MIT (see LICENSE file)
+#
+# Turkmenistan holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.77\n"
+"POT-Creation-Date: 2025-07-25 16:37+0500\n"
+"PO-Revision-Date: 2025-07-25 16:37+0500\n"
+"Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: tk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: tk\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (çak edilýär)"
+msgstr ""
+
+#. %s (observed).
+#, c-format
+msgid "%s (syn edildi)"
+msgstr ""
+
+#. %s (observed, estimated)
+#, c-format
+msgid "%s (syn edildi, çak edilýär)"
+msgstr ""
+
+#. New Year's Day.
+msgid "Täze ýyl"
+msgstr ""
+
+#. State Flag Day.
+msgid "Türkmenistanyň Döwlet baýdagynyň güni"
+msgstr ""
+
+#. Nationl Day of Spring and Women.
+msgid "Milli bahar baýramy"
+msgstr ""
+
+#. International Women's Day.
+msgid "Halkara zenanlar güni"
+msgstr ""
+
+#. Nowruz.
+msgid "Nowruz"
+msgstr ""
+
+#. State Flag and Constitution Day.
+msgid "Türkmenistanyň Konstitusiýasynyň we Döwlet baýdagynyň güni"
+msgstr ""
+
+#. Independence Day.
+msgid "Garaşsyzlyk baýramy"
+msgstr ""
+
+#. Remembrance Day.
+msgid "Hatyra güni"
+msgstr ""
+
+#. International Neutrality Day.
+msgid "Bitaraplyk baýramy"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Uraza Bayram"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Kurban Bayram"
+msgstr ""

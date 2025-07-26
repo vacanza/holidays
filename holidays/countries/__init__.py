@@ -227,6 +227,7 @@ from holidays.countries.tonga import Tonga, TO, TON
 from holidays.countries.trinidad_and_tobago import TrinidadAndTobago, TT, TTO
 from holidays.countries.tunisia import Tunisia, TN, TUN
 from holidays.countries.turkey import Turkey, TR, TUR
+from holidays.countries.turkmenistan import Turkmenistan, TM, TKM
 from holidays.countries.turks_and_caicos_islands import TurksAndCaicosIslands, TC, TCA
 from holidays.countries.tuvalu import Tuvalu, TV, TUV
 from holidays.countries.ukraine import Ukraine, UA, UKR

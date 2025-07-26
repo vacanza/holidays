@@ -1,0 +1,86 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Turkmenistan holidays ru localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.77\n"
+"POT-Creation-Date: 2025-07-25 16:55+0500\n"
+"PO-Revision-Date: 2025-07-25 16:55+0500\n"
+"Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: tk\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (çak edilýär)"
+msgstr "%s (оцененный)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (syn edildi)"
+msgstr "%s (наблюдал)"
+
+#. %s (observed, estimated)
+#, c-format
+msgid "%s (syn edildi, çak edilýär)"
+msgstr "%s (наблюдал, оцененный)"
+
+#. New Year's Day.
+msgid "Täze ýyl"
+msgstr "Новый год"
+
+#. State Flag Day.
+msgid "Türkmenistanyň Döwlet baýdagynyň güni"
+msgstr "День государственного флага"
+
+#. Nationl Day of Spring and Women.
+msgid "Milli bahar baýramy"
+msgstr "Национальный день весны и женщин"
+
+#. International Women's Day.
+msgid "Halkara zenanlar güni"
+msgstr "Международный женский день"
+
+#. Nowruz.
+msgid "Nowruz"
+msgstr "Навруз"
+
+#. State Flag and Constitution Day.
+msgid "Türkmenistanyň Konstitusiýasynyň we Döwlet baýdagynyň güni"
+msgstr "Государственный флаг и День Конституции"
+
+#. Independence Day.
+msgid "Garaşsyzlyk baýramy"
+msgstr "День независимости"
+
+#. Remembrance Day.
+msgid "Hatyra güni"
+msgstr "День памяти"
+
+#. International Neutrality Day.
+msgid "Bitaraplyk baýramy"
+msgstr "Международный день нейтралитета"
+
+#. Eid al-Fitr.
+msgid "Uraza Bayram"
+msgstr "Ид аль-Фитр"
+
+#. Eid al-Adha.
+msgid "Kurban Bayram"
+msgstr "Ид аль-Адха"
