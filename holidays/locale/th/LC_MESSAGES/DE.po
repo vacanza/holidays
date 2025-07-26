@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.60\n"
+"Project-Id-Version: Holidays 0.78\n"
 "POT-Creation-Date: 2024-09-05 23:21+0700\n"
-"PO-Revision-Date: 2024-10-30 02:14+0700\n"
+"PO-Revision-Date: 2025-07-24 17:58+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.3\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Source-Language: de\n"
 
 #. New Year's Day.
@@ -102,6 +102,10 @@ msgstr "วันสมโภชแม่พระรับเกียรติ
 #. World Children's Day.
 msgid "Weltkindertag"
 msgstr "วันเด็กสากล"
+
+#. Augsburg Peace Festival.
+msgid "Augsburger Hohes Friedensfest"
+msgstr "วันเทศกาลสันติภาพเอาก์สบวร์ก"
 
 #. 75th anniversary of the liberation from Nazism and the end of the Second World War in Europe.
 msgid ""
