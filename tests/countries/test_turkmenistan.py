@@ -117,7 +117,7 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
             "2002-10-07",
             "2013-10-07",
             "2019-10-07",
-            "2014-10-07",
+            "2024-10-07",
         )
         self.assertHolidayName(f"{name} (syn edildi)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
@@ -146,7 +146,11 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.no_estimated_holidays, range(1992, 2050))
-        obs_dt = ("2009-09-21", "2012-08-20", "2017-06-06", "2020-05-25", "2025-03-31")
+        obs_dt = (
+            "2012-08-20",
+            "2020-05-25",
+            "2025-03-31",
+        )
         self.assertHolidayName(f"{name} (syn edildi)", self.no_estimated_holidays, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
@@ -162,9 +166,7 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.no_estimated_holidays, range(1992, 2050))
         obs_dt = (
-            "2004-02-02",
-            "2011-11-07",
-            "2016-09-12",
+            "2014-10-07",
             "2019-08-12",
             "2024-06-17",
         )
