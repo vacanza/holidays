@@ -49,7 +49,7 @@ msgstr "Новый год"
 msgid "Türkmenistanyň Döwlet baýdagynyň güni"
 msgstr "День государственного флага"
 
-#. Nationl Day of Spring and Women.
+#. National Day of Spring and Women.
 msgid "Milli bahar baýramy"
 msgstr "Национальный день весны и женщин"
 

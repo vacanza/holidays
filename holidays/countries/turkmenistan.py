@@ -61,7 +61,7 @@ class Turkmenistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
             )
 
         if 2001 <= self._year <= 2007:
-            # Nationl Day of Spring and Women.
+            # National Day of Spring and Women.
             dts_observed.add(self._add_holiday_mar_20(tr("Milli bahar baýramy")))
         else:
             # International Women's Day.
@@ -144,6 +144,7 @@ class TurkmenistanIslamicHolidays(_CustomIslamicHolidays):
         2017: (SEP, 2),
         2018: (AUG, 22),
         2019: (AUG, 11),
+        2020: (JUL, 31),
         2021: (JUL, 20),
         2022: (JUL, 9),
         2023: (JUN, 28),
