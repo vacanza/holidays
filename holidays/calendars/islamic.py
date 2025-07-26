@@ -14,7 +14,21 @@ from collections.abc import Iterable
 from datetime import date
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    _timedelta,
+)
 from holidays.helpers import _normalize_tuple
 
 ALI_AL_RIDA_DEATH = "ALI_AL_RIDA_DEATH"
@@ -3962,6 +3976,23 @@ class _IslamicLunar:
         for year in (year - 1, year):
             for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
                 yield date(year, *dt), year not in exact_dates
+
+    def _is_long_ramadan(self, eid_al_fitr: date) -> bool:
+        """Check whether the Ramadan preceding the given Eid al-Fitr date lasted 30 days.
+
+        Args:
+            eid_al_fitr:
+                The date of Eid al-Fitr.
+
+        Returns:
+            True if Ramadan lasted 30 days, False otherwise.
+        """
+        eid_al_fitr_year = eid_al_fitr.year
+        return _timedelta(eid_al_fitr, -30) in {
+            dt
+            for year in (eid_al_fitr_year - 1, eid_al_fitr_year)
+            for (dt, _) in self.ramadan_beginning_dates(year)
+        }
 
     def ali_al_rida_death_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(ALI_AL_RIDA_DEATH, year)
