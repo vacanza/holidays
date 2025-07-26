@@ -374,7 +374,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         reflects the local interpretation and honor of the Prophet Muhammad.
         The term "baptism" is symbolic and not literal - there's no Islamic
         ritual akin to Christian baptism.
-        https://www.officeholidays.com/holidays/mali/prophets-baptism
+        https://web.archive.org/web/20240722052111/https://www.officeholidays.com/holidays/mali/prophets-baptism
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.mawlid_dates(self._year), days_delta=+7
