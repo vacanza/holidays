@@ -33,12 +33,9 @@ Your PR description goes here.
   Put an `x` in the boxes that apply. You can change them after PR is created.
 -->
 
-- [ ] I've followed the [contributing guidelines][contributing-guidelines]
-- [ ] I've successfully run `make check`, all checks and tests are green
+- [ ] I've read and followed the [contributing guidelines](https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.md).
+- [ ] I've run `make check` locally; all checks and tests passed.
 
 <!--
   Thanks again for your contribution!
 -->
-
-[contributing-guidelines]: https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.md
-[docs]: https://github.com/vacanza/holidays/tree/dev/docs/source

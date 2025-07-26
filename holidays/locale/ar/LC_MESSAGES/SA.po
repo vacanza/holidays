@@ -42,26 +42,26 @@ msgstr ""
 msgid "%s (المقدرة، ملاحظة)"
 msgstr ""
 
-#. Eid al-Fitr Holiday
+#. Eid al-Fitr Holiday.
 msgid "عطلة عيد الفطر"
 msgstr ""
 
-#. Arafat Day
+#. Arafat Day.
 msgid "يوم عرفة"
 msgstr ""
 
-#. Eid al-Adha Holiday
+#. Eid al-Adha Holiday.
 msgid "عطلة عيد الأضحى"
 msgstr ""
 
-#. National Day Holiday
-msgid "اليوم الوطني"
-msgstr ""
-
-#. Founding Day
+#. Founding Day.
 msgid "يوم التأسيسي"
 msgstr ""
 
-#. Celebrate the country's win against Argentina in the World Cup
+#. National Day.
+msgid "اليوم الوطني"
+msgstr ""
+
+#. Celebrate the country's win against Argentina in the World Cup.
 msgid "يوم وطني"
 msgstr ""

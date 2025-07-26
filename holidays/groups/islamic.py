@@ -182,16 +182,6 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+2
         )
 
-    def _add_eid_al_fitr_day_four(self, name) -> set[date]:
-        """
-        Add Eid al-Fitr Day Four.
-
-        https://en.wikipedia.org/wiki/Eid_al-Fitr
-        """
-        return self._add_islamic_calendar_holiday(
-            name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+3
-        )
-
     def _add_eid_al_fitr_eve(self, name) -> set[date]:
         """
         Add Eid al-Fitr Eve (last day of 9th month of Islamic calendar).
@@ -371,6 +361,23 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.nuzul_al_quran_dates(self._year)
+        )
+
+    def _add_prophet_baptism_day(self, name) -> set[date]:
+        """
+        Add Prophet's Baptism.
+
+        Celebrated one week after the Prophet Mohammed's Birthday, this
+        marks the traditional Islamic birth rites that take place seven
+        days after birth. While it is not recognized in mainstream Islam,
+        Mali celebrates it as a cultural-religious public holiday that
+        reflects the local interpretation and honor of the Prophet Muhammad.
+        The term "baptism" is symbolic and not literal - there's no Islamic
+        ritual akin to Christian baptism.
+        https://www.officeholidays.com/holidays/mali/prophets-baptism
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.mawlid_dates(self._year), days_delta=+7
         )
 
     def _add_prophet_death_day(self, name) -> set[date]:
