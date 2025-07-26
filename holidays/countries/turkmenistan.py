@@ -23,7 +23,7 @@ class Turkmenistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Turkmenistan>
-        * [Labor Code](https://www.tds.gov.tm/en/20-labor-code-of-turkmenistan)
+        * [Labor Code](https://web.archive.org/web/20250419204037/https://www.tds.gov.tm/en/20-labor-code-of-turkmenistan)
         * [State Flag and Constitution Day](https://en.wikipedia.org/wiki/State_Flag_and_Constitution_Day_(Turkmenistan))
         * [Independence Day](https://en.wikipedia.org/wiki/Independence_Day_(Turkmenistan))
         * [Detailed Research](https://archive.org/details/holiday-research-in-central-asia)
@@ -112,7 +112,7 @@ class TKM(Turkmenistan):
 
 
 class TurkmenistanIslamicHolidays(_CustomIslamicHolidays):
-    # https://www.timeanddate.com/holidays/turkmenistan/eid-al-fitr
+    # https://web.archive.org/web/20240908061230/https://www.timeanddate.com/holidays/turkmenistan/eid-al-fitr
     EID_AL_FITR_DATES = {
         2010: (SEP, 10),
         2011: (AUG, 31),
@@ -132,7 +132,7 @@ class TurkmenistanIslamicHolidays(_CustomIslamicHolidays):
         2025: (MAR, 30),
     }
 
-    # https://www.timeanddate.com/holidays/turkmenistan/eid-al-adha
+    # https://web.archive.org/web/20240912191844/https://www.timeanddate.com/holidays/turkmenistan/eid-al-adha
     EID_AL_ADHA_DATES = {
         2010: (NOV, 17),
         2011: (NOV, 7),
