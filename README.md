@@ -1281,6 +1281,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>WORKDAY</td>
 </tr>
 <tr>
+<td>Pitcairn Islands</td>
+<td>PN</td>
+<td></td>
+<td></td>
+<td>GOVERNMENT, WORKDAY</td>
+</tr>
+<tr>
 <td>Poland</td>
 <td>PL</td>
 <td></td>

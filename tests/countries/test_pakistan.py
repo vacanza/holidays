@@ -10,10 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import _timedelta
 from holidays.countries.pakistan import Pakistan, PK, PAK
 from tests.common import CommonCountryTests
 
@@ -21,8 +19,9 @@ from tests.common import CommonCountryTests
 class TestPakistan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Pakistan, years=range(1948, 2050))
-        cls.no_estimated_holidays = Pakistan(years=range(2000, 2024), islamic_show_estimated=False)
+        years = range(1948, 2050)
+        super().setUpClass(Pakistan, years=years)
+        cls.no_estimated_holidays = Pakistan(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(Pakistan, PK, PAK)
@@ -65,92 +64,84 @@ class TestPakistan(CommonCountryTests, TestCase):
 
     def test_eid_ul_fitr(self):
         name = "Eid-ul-Fitr"
-        for dt in (
-            date(2000, 1, 8),
-            date(2000, 12, 27),
-            date(2001, 12, 16),
-            date(2002, 12, 5),
-            date(2003, 11, 25),
-            date(2004, 11, 14),
-            date(2005, 11, 4),
-            date(2006, 10, 24),
-            date(2013, 8, 8),
-            date(2019, 6, 5),
-            date(2020, 5, 24),
-            date(2021, 5, 13),
-            date(2022, 5, 3),
-            date(2023, 4, 22),
-            date(2024, 4, 10),
-            date(2025, 3, 31),
-        ):
-            self.assertHolidayName(
-                name, self.no_estimated_holidays, dt, _timedelta(dt, +1), _timedelta(dt, +2)
-            )
+        self.assertHolidayName(
+            name,
+            "2020-05-24",
+            "2020-05-25",
+            "2020-05-26",
+            "2021-05-13",
+            "2021-05-14",
+            "2021-05-15",
+            "2022-05-03",
+            "2022-05-04",
+            "2022-05-05",
+            "2023-04-22",
+            "2023-04-23",
+            "2023-04-24",
+            "2024-04-10",
+            "2024-04-11",
+            "2024-04-12",
+            "2025-03-31",
+            "2025-04-01",
+            "2025-04-02",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
 
     def test_eid_ul_adha(self):
         name = "Eid-ul-Adha"
-        for dt in (
-            date(2000, 3, 16),
-            date(2001, 3, 5),
-            date(2002, 2, 22),
-            date(2003, 2, 11),
-            date(2004, 2, 1),
-            date(2005, 1, 21),
-            date(2006, 1, 10),
-            date(2006, 12, 31),
-            date(2013, 10, 15),
-            date(2019, 8, 12),
-            date(2020, 7, 31),
-            date(2021, 7, 21),
-            date(2022, 7, 10),
-            date(2023, 6, 29),
-            date(2024, 6, 17),
-        ):
-            self.assertHolidayName(
-                name, self.no_estimated_holidays, dt, _timedelta(dt, +1), _timedelta(dt, +2)
-            )
+        self.assertHolidayName(
+            name,
+            "2020-07-31",
+            "2020-08-01",
+            "2020-08-02",
+            "2021-07-21",
+            "2021-07-22",
+            "2021-07-23",
+            "2022-07-10",
+            "2022-07-11",
+            "2022-07-12",
+            "2023-06-29",
+            "2023-06-30",
+            "2023-07-01",
+            "2024-06-17",
+            "2024-06-18",
+            "2024-06-19",
+            "2025-06-07",
+            "2025-06-08",
+            "2025-06-09",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
 
     def test_eid_milad_un_nabi(self):
         name = "Eid Milad-un-Nabi"
-        for dt in (
-            date(2000, 6, 14),
-            date(2001, 6, 4),
-            date(2002, 5, 24),
-            date(2003, 5, 13),
-            date(2004, 5, 1),
-            date(2005, 4, 22),
-            date(2006, 4, 11),
-            date(2013, 1, 24),
-            date(2019, 11, 10),
-            date(2020, 10, 30),
-            date(2021, 10, 19),
-            date(2022, 10, 9),
-            date(2023, 9, 29),
-            date(2024, 9, 17),
-        ):
-            self.assertHolidayName(name, self.no_estimated_holidays, dt)
+        self.assertHolidayName(
+            name,
+            "2020-10-30",
+            "2021-10-19",
+            "2022-10-09",
+            "2023-09-29",
+            "2024-09-17",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
 
     def test_ashura(self):
         name = "Ashura"
-        for dt in (
-            date(2000, 4, 15),
-            date(2001, 4, 4),
-            date(2002, 3, 24),
-            date(2003, 3, 13),
-            date(2004, 3, 1),
-            date(2005, 2, 18),
-            date(2006, 2, 8),
-            date(2009, 1, 6),
-            date(2009, 12, 26),
-            date(2013, 11, 13),
-            date(2019, 9, 9),
-            date(2020, 8, 29),
-            date(2021, 8, 18),
-            date(2022, 8, 9),
-            date(2023, 7, 28),
-            date(2024, 7, 16),
-        ):
-            self.assertHolidayName(name, self.no_estimated_holidays, dt, _timedelta(dt, -1))
+        self.assertHolidayName(
+            name,
+            "2020-08-28",
+            "2020-08-29",
+            "2021-08-17",
+            "2021-08-18",
+            "2022-08-08",
+            "2022-08-09",
+            "2023-07-27",
+            "2023-07-28",
+            "2024-07-15",
+            "2024-07-16",
+            "2025-07-05",
+            "2025-07-06",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
 
     def test_2002(self):
         self.assertHolidays(

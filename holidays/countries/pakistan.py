@@ -32,6 +32,7 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     default_language = "en_PK"
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
+    # Achieved Independence on August 14th, 1947.
     start_year = 1948
     supported_languages = ("en_PK", "en_US", "ur_PK")
 
@@ -105,8 +106,7 @@ class PAK(Pakistan):
 
 
 class PakistanIslamicHolidays(_CustomIslamicHolidays):
-    # https://web.archive.org/web/20241123192805/https://www.timeanddate.com/holidays/pakistan/first-day-ashura
-
+    # https://web.archive.org/web/20250724060822/https://www.timeanddate.com/holidays/pakistan/ashura
     ASHURA_DATES = {
         2005: (FEB, 18),
         2006: (FEB, 8),
@@ -128,9 +128,10 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (AUG, 9),
         2023: (JUL, 28),
         2024: (JUL, 16),
+        2025: (JUL, 6),
     }
 
-    # https://web.archive.org/web/20250424085932/https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
+    # https://web.archive.org/web/20250724060629/https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
     EID_AL_ADHA_DATES = {
         2005: (JAN, 21),
         2006: ((JAN, 10), (DEC, 31)),
@@ -152,9 +153,10 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (JUL, 10),
         2023: (JUN, 29),
         2024: (JUN, 17),
+        2025: (JUN, 7),
     }
 
-    # https://web.archive.org/web/20250414111814/https://www.timeanddate.com/holidays/pakistan/eid-ul-fitr-1
+    # https://web.archive.org/web/20250724060834/https://www.timeanddate.com/holidays/pakistan/eid-ul-fitr-1
     EID_AL_FITR_DATES = {
         2005: (NOV, 4),
         2006: (OCT, 24),
@@ -179,7 +181,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2025: (MAR, 31),
     }
 
-    # https://web.archive.org/web/20240529050144/https://www.timeanddate.com/holidays/pakistan/eid-milad-un-nabi
+    # https://web.archive.org/web/20250724061027/https://www.timeanddate.com/holidays/pakistan/eid-milad-un-nabi
     MAWLID_DATES = {
         2005: (APR, 22),
         2006: (APR, 11),
