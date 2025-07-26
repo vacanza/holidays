@@ -15,9 +15,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.77\n"
-"POT-Creation-Date: 2025-07-25 16:37+0500\n"
-"PO-Revision-Date: 2025-07-25 16:37+0500\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2025-07-12 01:31+0530\n"
+"PO-Revision-Date: 2025-07-12 01:31+0530\n"
+"Last-Translator: Ansh Anand <ansh.a.3112@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: tkl\n"
 "MIME-Version: 1.0\n"
@@ -28,24 +28,24 @@ msgstr ""
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr ""
+msgstr "Aho Tauhaga Fou"
 
 #. Good Friday.
 msgid "Good Friday"
-msgstr ""
+msgstr "Ahofalaile Lelei"
 
 #. Easter Monday.
 msgid "Easter Monday"
-msgstr ""
+msgstr "Ahogafua o te Eheta"
 
 #. Tokehega Day.
 msgid "Tokehega Day"
-msgstr ""
+msgstr "Aho o te Tokehega"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr ""
+msgstr "Aho Kilihimahi"
 
 #. Boxing Day.
 msgid "Boxing Day"
-msgstr ""
+msgstr "Tua-aho Kilihimahi"
