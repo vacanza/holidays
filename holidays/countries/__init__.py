@@ -178,6 +178,7 @@ from holidays.countries.papua_new_guinea import PapuaNewGuinea, PG, PNG
 from holidays.countries.paraguay import Paraguay, PY, PRY
 from holidays.countries.peru import Peru, PE, PER
 from holidays.countries.philippines import Philippines, PH, PHL
+from holidays.countries.pitcairn_islands import PitcairnIslands, PN, PCN
 from holidays.countries.poland import Poland, PL, POL
 from holidays.countries.portugal import Portugal, PT, PRT
 from holidays.countries.puerto_rico import PuertoRico, PR, PRI, HolidaysPR
