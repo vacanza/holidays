@@ -60,7 +60,7 @@ def country_holidays(
             is requested.
 
         observed:
-            Whether to include the dates of when public holiday are observed
+            Whether to include the dates of when public holidays are observed
             (e.g. a holiday falling on a Sunday being observed the following
             Monday). `False` may not work for all countries.
 
@@ -256,7 +256,7 @@ def financial_holidays(
             is requested.
 
         observed:
-            Whether to include the dates of when public holiday are observed
+            Whether to include the dates of when public holidays are observed
             (e.g. a holiday falling on a Sunday being observed the following
             Monday). `False` may not work for all markets.
 
