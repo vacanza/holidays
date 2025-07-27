@@ -42,26 +42,26 @@ msgstr "%s (observed)"
 msgid "%s (المقدرة، ملاحظة)"
 msgstr "%s (observed, estimated)"
 
-#. Eid al-Fitr Holiday
+#. Eid al-Fitr Holiday.
 msgid "عطلة عيد الفطر"
 msgstr "Eid al-Fitr Holiday"
 
-#. Arafat Day
+#. Arafat Day.
 msgid "يوم عرفة"
 msgstr "Arafat Day"
 
-#. Eid al-Adha Holiday
+#. Eid al-Adha Holiday.
 msgid "عطلة عيد الأضحى"
 msgstr "Eid al-Adha Holiday"
 
-#. National Day Holiday
-msgid "اليوم الوطني"
-msgstr "National Day Holiday"
-
-#. Founding Day
+#. Founding Day.
 msgid "يوم التأسيسي"
 msgstr "Founding Day Holiday"
 
-#. Celebrate the country's win against Argentina in the World Cup
+#. National Day.
+msgid "اليوم الوطني"
+msgstr "National Day Holiday"
+
+#. Celebrate the country's win against Argentina in the World Cup.
 msgid "يوم وطني"
 msgstr "A National Day"
