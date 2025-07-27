@@ -34,9 +34,9 @@ class Turkmenistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
     # %s (estimated).
     estimated_label = tr("%s (çak edilýär)")
     # %s (observed).
-    observed_label = tr("%s (syn edildi)")
+    observed_label = tr("%s (dynç güni)")
     # %s (observed, estimated)
-    observed_estimated_label = tr("%s (syn edildi, çak edilýär)")
+    observed_estimated_label = tr("%s (dynç güni, çak edilýär)")
     start_year = 1992
     supported_languages = ("en_US", "ru", "tk")
 
@@ -54,51 +54,51 @@ class Turkmenistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
         # New Year's Day.
         dts_observed.add(self._add_new_years_day(tr("Täze ýyl")))
 
-        if self._year <= 2017:
+        if 1995 <= self._year <= 2017:
             dts_observed.add(
                 # State Flag Day.
                 self._add_holiday_feb_19(tr("Türkmenistanyň Döwlet baýdagynyň güni"))
             )
 
         if 2001 <= self._year <= 2007:
-            # National Day of Spring and Women.
+            # Spring Festival.
             dts_observed.add(self._add_holiday_mar_20(tr("Milli bahar baýramy")))
         else:
             # International Women's Day.
             dts_observed.add(self._add_womens_day(tr("Halkara zenanlar güni")))
 
-        # Nowruz.
-        name = tr("Nowruz")
+        # Spring Festival.
+        name = tr("Milli bahar baýramy")
         dts_observed.add(self._add_holiday_mar_21(name))
         dts_observed.add(self._add_holiday_mar_22(name))
 
         if self._year >= 2018:
             dts_observed.add(
                 self._add_holiday_may_18(
-                    # State Flag and Constitution Day.
+                    # Constitution and State Flag Day.
                     tr("Türkmenistanyň Konstitusiýasynyň we Döwlet baýdagynyň güni")
                 )
             )
 
         # Independence Day.
-        name = tr("Garaşsyzlyk baýramy")
+        name = tr("Türkmenistanyň Garaşsyzlyk güni")
         if self._year <= 2017:
             dts_observed.add(self._add_holiday_oct_27(name))
         else:
             dts_observed.add(self._add_holiday_sep_27(name))
 
         if self._year >= 1995:
-            # Remembrance Day.
+            # Memorial Day.
             dts_observed.add(self._add_holiday_oct_6(tr("Hatyra güni")))
 
             # International Neutrality Day.
-            dts_observed.add(self._add_holiday_dec_12(tr("Bitaraplyk baýramy")))
+            dts_observed.add(self._add_holiday_dec_12(tr("Halkara Bitaraplyk güni")))
 
         # Eid al-Fitr.
-        dts_observed.update(self._add_eid_al_fitr_day(tr("Uraza Bayram")))
+        dts_observed.update(self._add_eid_al_fitr_day(tr("Oraza baýramy")))
 
         # Eid al-Adha.
-        dts_observed.update(self._add_eid_al_adha_day(tr("Kurban Bayram")))
+        dts_observed.update(self._add_eid_al_adha_day(tr("Gurban baýramy")))
 
         self._populate_observed(dts_observed)
 

@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.77\n"
+"Project-Id-Version: Holidays 0.78\n"
 "POT-Creation-Date: 2025-07-25 16:55+0500\n"
 "PO-Revision-Date: 2025-07-25 16:55+0500\n"
 "Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
@@ -29,17 +29,17 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (çak edilýär)"
-msgstr "%s (оцененный)"
+msgstr "%s (приблизительная дата)"
 
 #. %s (observed).
 #, c-format
-msgid "%s (syn edildi)"
-msgstr "%s (наблюдал)"
+msgid "%s (dynç güni)"
+msgstr "%s (выходной)"
 
 #. %s (observed, estimated)
 #, c-format
-msgid "%s (syn edildi, çak edilýär)"
-msgstr "%s (наблюдал, оцененный)"
+msgid "%s (dynç güni, çak edilýär)"
+msgstr "%s (выходной, приблизительная дата)"
 
 #. New Year's Day.
 msgid "Täze ýyl"
@@ -49,38 +49,34 @@ msgstr "Новый год"
 msgid "Türkmenistanyň Döwlet baýdagynyň güni"
 msgstr "День государственного флага"
 
-#. National Day of Spring and Women.
+#. Spring Festival.
 msgid "Milli bahar baýramy"
-msgstr "Национальный день весны и женщин"
+msgstr "Национальный праздник весны"
 
 #. International Women's Day.
 msgid "Halkara zenanlar güni"
 msgstr "Международный женский день"
 
-#. Nowruz.
-msgid "Nowruz"
-msgstr "Навруз"
-
-#. State Flag and Constitution Day.
+#. Constitution and State Flag Day.
 msgid "Türkmenistanyň Konstitusiýasynyň we Döwlet baýdagynyň güni"
-msgstr "Государственный флаг и День Конституции"
+msgstr "День Конституции Туркменистана и Государственного флага Туркменистана"
 
 #. Independence Day.
-msgid "Garaşsyzlyk baýramy"
+msgid "Türkmenistanyň Garaşsyzlyk güni"
 msgstr "День независимости"
 
-#. Remembrance Day.
+#. Memorial Day.
 msgid "Hatyra güni"
-msgstr "День памяти"
+msgstr "День поминовения"
 
 #. International Neutrality Day.
-msgid "Bitaraplyk baýramy"
+msgid "Halkara Bitaraplyk güni"
 msgstr "Международный день нейтралитета"
 
 #. Eid al-Fitr.
-msgid "Uraza Bayram"
-msgstr "Ид аль-Фитр"
+msgid "Oraza baýramy"
+msgstr "Ораза байрам"
 
 #. Eid al-Adha.
-msgid "Kurban Bayram"
-msgstr "Ид аль-Адха"
+msgid "Gurban baýramy"
+msgstr "Курбан байрам"

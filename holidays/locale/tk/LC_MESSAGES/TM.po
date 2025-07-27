@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.77\n"
+"Project-Id-Version: Holidays 0.78\n"
 "POT-Creation-Date: 2025-07-25 16:37+0500\n"
 "PO-Revision-Date: 2025-07-25 16:37+0500\n"
 "Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
@@ -33,12 +33,12 @@ msgstr ""
 
 #. %s (observed).
 #, c-format
-msgid "%s (syn edildi)"
+msgid "%s (dynç güni)"
 msgstr ""
 
 #. %s (observed, estimated)
 #, c-format
-msgid "%s (syn edildi, çak edilýär)"
+msgid "%s (dynç güni, çak edilýär)"
 msgstr ""
 
 #. New Year's Day.
@@ -49,7 +49,7 @@ msgstr ""
 msgid "Türkmenistanyň Döwlet baýdagynyň güni"
 msgstr ""
 
-#. National Day of Spring and Women.
+#. Spring Festival.
 msgid "Milli bahar baýramy"
 msgstr ""
 
@@ -57,30 +57,26 @@ msgstr ""
 msgid "Halkara zenanlar güni"
 msgstr ""
 
-#. Nowruz.
-msgid "Nowruz"
-msgstr ""
-
-#. State Flag and Constitution Day.
+#. Constitution and State Flag Day.
 msgid "Türkmenistanyň Konstitusiýasynyň we Döwlet baýdagynyň güni"
 msgstr ""
 
 #. Independence Day.
-msgid "Garaşsyzlyk baýramy"
+msgid "Türkmenistanyň Garaşsyzlyk güni"
 msgstr ""
 
-#. Remembrance Day.
+#. Memorial Day.
 msgid "Hatyra güni"
 msgstr ""
 
 #. International Neutrality Day.
-msgid "Bitaraplyk baýramy"
+msgid "Halkara Bitaraplyk güni"
 msgstr ""
 
 #. Eid al-Fitr.
-msgid "Uraza Bayram"
+msgid "Oraza baýramy"
 msgstr ""
 
 #. Eid al-Adha.
-msgid "Kurban Bayram"
+msgid "Gurban baýramy"
 msgstr ""
