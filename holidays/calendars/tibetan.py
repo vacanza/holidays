@@ -1477,11 +1477,11 @@ class _TibetanLunisolar:
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
         return date(year, *dt) if dt else None, year not in exact_dates
 
-    def birth_of_guru_rinpoche_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday("BIRTH_OF_GURU_RINPOCHE", year)
-
     def blessed_rainy_day_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday("BLESSED_RAINY_DAY", year)
+
+    def birth_of_guru_rinpoche_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday("BIRTH_OF_GURU_RINPOCHE", year)
 
     def buddha_first_sermon_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday("BUDDHA_FIRST_SERMON", year)
@@ -1504,13 +1504,13 @@ class _TibetanLunisolar:
     def losar_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday("LOSAR", year)
 
-    def thimpu_drubchen_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday("THIMPU_DRUBCHEN", year)
-
     def thimphu_tsechu_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday("THIMPHU_TSECHU", year)
 
-    def winter_solstice_date(self, year: int) -> tuple[Optional[date], bool]:
+    def thimpu_drubchen_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday("THIMPU_DRUBCHEN", year)
+
+    def tibetan_winter_solstice_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday("WINTER_SOLSTICE", year)
 
 
