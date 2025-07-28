@@ -33,8 +33,26 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        name = "Birth Anniversary of His Majesty the King"
+        # Birth Anniversary of His Majesty the King.
+        self._add_holiday_feb_21(name)
+        self._add_holiday_feb_22(name)
+        self._add_holiday_feb_23(name)
+
+        # Birth Anniversary of the 3rd Druk Gyalpo.
+        self._add_holiday_may_2("Birth Anniversary of the 3rd Druk Gyalpo")
+
+        # National Day.
+        self._add_holiday_dec_17("National Day")
+
+        # Coronation of His Majesty the King.
+        self._add_holiday_nov_1("Coronation of His Majesty the King")
+
+        # Birth Anniversary of the 4th Druk Gyalpo - Constitution Day.
+        self._add_holiday_nov_11("Birth Anniversary of the 4th Druk Gyalpo - Constitution Day")
+
         # Winter Solstice.
-        self._add_winter_solstice_day("Winter Solstice")
+        self._add_tibetan_winter_solstice("Winter Solstice")
 
         # Traditional Day of Offering.
         self._add_day_of_offering("Traditional Day of Offering")
@@ -44,17 +62,8 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
         self._add_losar(name)
         self._add_losar_day_two(name)
 
-        name = "Birth Anniversary of His Majesty the King"
-        # Birth Anniversary of His Majesty the King.
-        self._add_holiday_feb_21(name)
-        self._add_holiday_feb_22(name)
-        self._add_holiday_feb_23(name)
-
         # Death Anniversary of Zhabdrung (Zhabdrung Kuchoe).
         self._add_death_of_zhabdrung("Death Anniversary of Zhabdrung (Zhabdrung Kuchoe)")
-
-        # Birth Anniversary of the 3rd Druk Gyalpo.
-        self._add_holiday_may_2("Birth Anniversary of the 3rd Druk Gyalpo")
 
         # Lord Buddha's Parinirvana.
         self._add_buddha_parinirvana("Lord Buddha's Parinirvana")
@@ -79,15 +88,6 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
 
         # Dassain.
         self._add_dashain("Dassain")
-
-        # National Day.
-        self._add_holiday_dec_17("National Day")
-
-        # Coronation of His Majesty the King.
-        self._add_holiday_nov_1("Coronation of His Majesty the King")
-
-        # Birth Anniversary of the 4th Druk Gyalpo - Constitution Day.
-        self._add_holiday_nov_11("Birth Anniversary of the 4th Druk Gyalpo - Constitution Day")
 
         # Descending Day of Lord Buddha.
         self._add_descending_day_of_lord_buddha("Descending Day of Lord Buddha")
