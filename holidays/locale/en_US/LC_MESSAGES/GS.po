@@ -61,7 +61,7 @@ msgstr "Shackleton Day"
 
 #. Mid-winter Day.
 msgid "Mid-winter Day"
-msgstr "Midwinter Day"
+msgstr "Mid-winter Day"
 
 #. Toothfish Day.
 msgid "Toothfish Day"
@@ -73,7 +73,7 @@ msgstr "Toothfish (End of Season) Day"
 
 #. Environment Day.
 msgid "Environment Day"
-msgstr "Environmental Day"
+msgstr "Environment Day"
 
 #. Boxing Day.
 msgid "Boxing Day"
