@@ -22,27 +22,26 @@ from holidays.observed_holiday_base import (
 )
 
 
-class SouthGeorgiaandtheSouthSandwichIslands(
+class SouthGeorgiaAndTheSouthSandwichIslands(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
 ):
-    """South Georgia and the South Sandwich Islands.
+    """South Georgia and the South Sandwich Islands holidays.
 
     References:
-        *[Wikipedia] <https://en.wikipedia.org/wiki/Public_holidays_in_South_Georgia_and_the_South_Sandwich_Islands>
-
-        *[2012-2013] <https://web.archive.org/web/20240810165616/https://laws.gov.gs/wp-content/uploads/2022/05/2012.pdf>
-        *[2014] <https://web.archive.org/web/20250726194445/https://laws.gov.gs/wp-content/uploads/2022/05/2013.pdf>
-        *[2015] <https://web.archive.org/web/20240810161237/https://laws.gov.gs/wp-content/uploads/2022/05/2014.pdf>
-        *[2016] <https://web.archive.org/web/20250726193915/https://laws.gov.gs/wp-content/uploads/2022/05/2015.pdf>
-        *[2017] <https://web.archive.org/web/20250726193700/https://laws.gov.gs/wp-content/uploads/2022/05/2016.pdf>
-        *[2018] <https://web.archive.org/web/20240810175520/https://laws.gov.gs/wp-content/uploads/2022/05/2017.pdf>
-        *[2019] <https://web.archive.org/web/20250726193031/https://laws.gov.gs/wp-content/uploads/2022/05/2018.pdf>
-        *[2020] <https://web.archive.org/web/20250726192724/https://laws.gov.gs/wp-content/uploads/2022/05/2019.pdf>
-        *[2021] <https://web.archive.org/web/20210911002738/https://www.gov.gs/docsarchive/Legislation/SGSSI%20Gazette%20No%202%20dated%2023%20December%202020.pdf>
-        *[2022] <https://web.archive.org/web/20250727082227/https://laws.gov.gs/wp-content/uploads/2022/05/2021.pdf>
-        *[2023] <https://web.archive.org/web/20240810165140/https://laws.gov.gs/wp-content/uploads/2024/03/Gazette2023.pdf>
-        *[2024] <https://web.archive.org/web/20240810163638/https://laws.gov.gs/wp-content/uploads/2024/02/SGSSI-Gazette-No-1-dated-27-February-2024.pdf>
-        *[2025] <https://web.archive.org/web/20250404025158/https://laws.gov.gs/wp-content/uploads/2025/01/SGSSI-Gazette-No-1-dated-30-January-2025.pdf>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_South_Georgia_and_the_South_Sandwich_Islands>
+        * [2012-2013](https://web.archive.org/web/20240810165616/https://laws.gov.gs/wp-content/uploads/2022/05/2012.pdf)
+        * [2014](https://web.archive.org/web/20250726194445/https://laws.gov.gs/wp-content/uploads/2022/05/2013.pdf)
+        * [2015](https://web.archive.org/web/20240810161237/https://laws.gov.gs/wp-content/uploads/2022/05/2014.pdf)
+        * [2016](https://web.archive.org/web/20250726193915/https://laws.gov.gs/wp-content/uploads/2022/05/2015.pdf)
+        * [2017](https://web.archive.org/web/20250726193700/https://laws.gov.gs/wp-content/uploads/2022/05/2016.pdf)
+        * [2018](https://web.archive.org/web/20240810175520/https://laws.gov.gs/wp-content/uploads/2022/05/2017.pdf)
+        * [2019](https://web.archive.org/web/20250726193031/https://laws.gov.gs/wp-content/uploads/2022/05/2018.pdf)
+        * [2020](https://web.archive.org/web/20250726192724/https://laws.gov.gs/wp-content/uploads/2022/05/2019.pdf)
+        * [2021](https://web.archive.org/web/20210911002738/https://www.gov.gs/docsarchive/Legislation/SGSSI%20Gazette%20No%202%20dated%2023%20December%202020.pdf)
+        * [2022](https://web.archive.org/web/20250727082227/https://laws.gov.gs/wp-content/uploads/2022/05/2021.pdf)
+        * [2023](https://web.archive.org/web/20240810165140/https://laws.gov.gs/wp-content/uploads/2024/03/Gazette2023.pdf)
+        * [2024](https://web.archive.org/web/20240810163638/https://laws.gov.gs/wp-content/uploads/2024/02/SGSSI-Gazette-No-1-dated-27-February-2024.pdf)
+        * [2025](https://web.archive.org/web/20250404025158/https://laws.gov.gs/wp-content/uploads/2025/01/SGSSI-Gazette-No-1-dated-30-January-2025.pdf)
     """
 
     country = "GS"
@@ -81,11 +80,11 @@ class SouthGeorgiaandtheSouthSandwichIslands(
 
         # Liberation Day.
         name = tr("Liberation Day")
-        if self._year >= 2016:
-            holiday_date = self._add_holiday_apr_25(name)
-        else:
-            holiday_date = self._add_holiday_apr_26(name)
-        self._add_observed(holiday_date)
+        self._add_observed(
+            self._add_holiday_apr_25(name)
+            if self._year >= 2016
+            else self._add_holiday_apr_26(name)
+        )
 
         if self._year >= 2015:
             # Shackleton Day.
@@ -130,19 +129,23 @@ class SGS(SouthGeorgiaandtheSouthSandwichIslands):
     pass
 
 
-class SouthGeorgiaandtheSouthSandwichIslandsStaticHolidays:
+class SouthGeorgiaAndTheSouthSandwichIslandsStaticHolidays:
+    """South Georgia and the South Sandwich Islands special holidays."""
+
+    queens_birthday = tr("The Queen's Birthday")
+
     special_public_holidays = {
-        2023: [
+        2023: (
             # Coronation of King Charles III.
             (MAY, 8, tr("Coronation of King Charles III")),
             # King's Birthday.
             (NOV, 14, tr("King's Birthday")),
-        ]
+        )
     }
 
     special_public_holidays_observed = {
-        2019: (APR, 23, tr("The Queen's Birthday")),
-        2020: (APR, 23, tr("The Queen's Birthday")),
+        2019: (APR, 23, queens_birthday),
+        2020: (APR, 23, queens_birthday),
         2021: (OCT, 29, tr("Environment Day")),
         2023: (MAY, 19, tr("Shackleton Day")),
         2025: (JUN, 20, tr("Mid-winter Day")),
