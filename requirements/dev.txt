@@ -8,7 +8,7 @@ lingva==5.0.6
 pre-commit==4.2.0
 pygithub==2.6.1
 requests==2.32.4
-ruff==0.12.4
+ruff==0.12.7
 tox==4.28.3
 urllib3>=2.2.2 # not directly required, pinned by Snyk to avoid a vulnerability
 zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
