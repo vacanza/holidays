@@ -117,6 +117,7 @@ COUNTRIES: RegistryDict = {
     "india": ("India", "IN", "IND"),
     "indonesia": ("Indonesia", "ID", "IDN"),
     "iran": ("Iran", "IR", "IRN"),
+    "iraq": ("Iraq", "IQ", "IRQ"),
     "ireland": ("Ireland", "IE", "IRL"),
     "isle_of_man": ("IsleOfMan", "IM", "IMN"),
     "israel": ("Israel", "IL", "ISR"),
