@@ -28,7 +28,19 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertNoHolidays(Bhutan(years=2006))
 
     def test_winter_solstice(self):
-        self.assertHolidayName("Winter Solstice", (f"{year}-01-02" for year in range(2007, 2050)))
+        name = "Winter Solstice"
+        self.assertHolidayName(
+            name,
+            (
+                f"{year}-01-02"
+                for year in (*range(2007, 2019), *range(2020, 2022), *range(2023, 2050))
+            ),
+        )
+        dt = {
+            "2019-01-03",
+            "2022-01-01",
+        }
+        self.assertHolidayName(name, dt)
 
     def test_losar(self):
         name = "Losar"
@@ -99,9 +111,9 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             "2020-09-23",
-            "2021-09-13",
-            "2022-10-02",
-            "2023-09-22",
+            "2021-09-12",
+            "2022-10-01",
+            "2023-09-21",
             "2024-10-09",
             "2025-09-29",
         )
@@ -111,8 +123,8 @@ class TestBhutan(CommonCountryTests, TestCase):
         name = "Thimphu Tshechu"
         distinct_dates = [
             "2020-09-26",
-            "2021-09-16",
-            "2022-10-05",
+            "2021-09-15",
+            "2022-10-04",
             "2023-09-24",
             "2024-10-12",
             "2025-10-02",
@@ -128,10 +140,10 @@ class TestBhutan(CommonCountryTests, TestCase):
         name = "Blessed Rainy Day"
         self.assertHolidayName(
             name,
-            "2020-09-22",
+            "2020-09-23",
             "2021-09-23",
             "2022-09-23",
-            "2023-09-23",
+            "2023-09-24",
             "2024-09-23",
             "2025-09-23",
         )
@@ -141,7 +153,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         name = "Dassain"
         self.assertHolidayName(
             name,
-            "2020-10-25",
+            "2020-10-26",
             "2021-10-15",
             "2022-10-05",
             "2023-10-24",
