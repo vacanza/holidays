@@ -56,7 +56,7 @@ repos:
           - types-requests
 
   - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: '1.5.0'
+    rev: '1.6.0'
     hooks:
       - id: tox-ini-fmt
 
