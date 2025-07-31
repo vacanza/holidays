@@ -3974,7 +3974,7 @@ class _IslamicLunar:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
         checked_range = getattr(
-            self, f"{holiday}_CONFIRMED_YEARS_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", None
+            self, f"{holiday}_DATES_CONFIRMED_YEARS_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", None
         )
         for year in (year - 1, year):
             for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):

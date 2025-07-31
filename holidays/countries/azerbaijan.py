@@ -206,7 +206,7 @@ class AZE(Azerbaijan):
 
 
 class AzerbaijanIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_CONFIRMED_YEARS = (2002, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2002, 2025)
     EID_AL_ADHA_DATES = {
         2002: (FEB, 21),
         2005: (JAN, 22),
@@ -217,7 +217,7 @@ class AzerbaijanIslamicHolidays(_CustomIslamicHolidays):
         2019: (AUG, 12),
     }
 
-    EID_AL_FITR_CONFIRMED_YEARS = (2002, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2002, 2025)
     EID_AL_FITR_DATES = {
         2002: (DEC, 4),
         2007: (OCT, 12),
