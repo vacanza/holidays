@@ -1116,7 +1116,7 @@ class HolidayBase(dict[date, str]):
         """Find the n-th working day from a given date.
 
         Moves forward if n is positive, or backward if n is negative.
-        If n is 0, will return today if a working day, else get next working day.
+        If n is 0, returns the given date if it is a working day; otherwise the next working day.
 
         Args:
             key:
@@ -1131,8 +1131,8 @@ class HolidayBase(dict[date, str]):
         """
         direction = +1 if n >= 0 else -1
         dt = self.__keytransform__(key)
-        for _ in range(abs(n) if n != 0 else 1):
-            if n != 0:
+        for _ in range(abs(n) or 1):
+            if n:
                 dt = _timedelta(dt, direction)
             while not self.is_working_day(dt):
                 dt = _timedelta(dt, direction)
