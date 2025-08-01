@@ -1131,12 +1131,10 @@ class HolidayBase(dict[date, str]):
         """
         direction = +1 if n >= 0 else -1
         dt = self.__keytransform__(key)
-        # Special case: n is 0 return today if working day, else get next working day.
         if n == 0:
             while not self.is_working_day(dt):
                 dt = _timedelta(dt, direction)
             return dt
-        # General case.
         for _ in range(abs(n)):
             dt = _timedelta(dt, direction)
             while not self.is_working_day(dt):
