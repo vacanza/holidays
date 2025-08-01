@@ -19,7 +19,11 @@ from tests.common import CommonCountryTests
 class TestBhutan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Bhutan, years=range(1970, 2050))
+        years = range(1970, 2050)
+        super().setUpClass(Bhutan, years=years)
+        cls.subdiv_holidays = {
+            subdiv: Bhutan(subdiv=subdiv, years=years) for subdiv in Bhutan.subdivisions
+        }
 
     def test_country_aliases(self):
         self.assertAliases(Bhutan, BT, BTN)
@@ -108,33 +112,44 @@ class TestBhutan(CommonCountryTests, TestCase):
 
     def test_thimphu_drubchoe(self):
         name = "Thimphu Drubchoe"
-        self.assertHolidayName(
-            name,
-            "2020-09-23",
-            "2021-09-12",
-            "2022-10-01",
-            "2023-09-21",
-            "2024-10-09",
-            "2025-09-29",
-        )
-        self.assertHolidayName(name, range(2007, 2050))
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "15":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2020-09-23",
+                    "2021-09-12",
+                    "2022-10-01",
+                    "2023-09-21",
+                    "2024-10-09",
+                    "2025-09-29",
+                )
+                self.assertHolidayName(name, holidays, range(2007, 2050))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_thimphu_tshechu(self):
         name = "Thimphu Tshechu"
-        distinct_dates = [
-            "2020-09-26",
-            "2021-09-15",
-            "2022-10-04",
-            "2023-09-24",
-            "2024-10-12",
-            "2025-10-02",
-        ]
-        for start_date in distinct_dates:
-            year, month, day = map(int, start_date.split("-"))
-            for offset in range(3):
-                date_str = f"{year:04d}-{month:02d}-{day + offset:02d}"
-                self.assertHolidayName(name, date_str)
-        self.assertHolidayName(name, range(2007, 2050))
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "15":
+                distinct_dates = [
+                    "2020-09-26",
+                    "2021-09-15",
+                    "2022-10-04",
+                    "2023-09-24",
+                    "2024-10-12",
+                    "2025-10-02",
+                ]
+                for start_date in distinct_dates:
+                    year, month, day = map(int, start_date.split("-"))
+                    for offset in range(3):
+                        date_str = f"{year:04d}-{month:02d}-{day + offset:02d}"
+                        self.assertHolidayName(name, holidays, date_str)
+                self.assertHolidayName(name, holidays, range(2007, 2050))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_blessed_rainy_day(self):
         name = "Blessed Rainy Day"
