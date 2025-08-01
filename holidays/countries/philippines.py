@@ -220,49 +220,34 @@ class PhilippinesChineseHolidays(_CustomChineseHolidays):
 
 
 class PhilippinesIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2010, 2025)
     EID_AL_ADHA_DATES = {
         2010: (NOV, 17),
         2011: (NOV, 7),
-        2012: (OCT, 26),
-        2013: (OCT, 15),
         2014: (OCT, 6),
         2015: (SEP, 25),
         2016: (SEP, 10),
         2017: (SEP, 2),
-        2018: (AUG, 21),
         2019: (AUG, 12),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
         2024: (JUN, 17),
-        2025: (JUN, 6),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2002, 2025)
     EID_AL_FITR_DATES = {
         2002: (DEC, 6),
         2003: (NOV, 26),
-        2004: (NOV, 14),
         2005: (NOV, 4),
         2006: (OCT, 24),
         2007: (OCT, 12),
-        2008: (OCT, 1),
         2009: (SEP, 21),
-        2010: (SEP, 10),
-        2011: (AUG, 30),
         2012: (AUG, 20),
         2013: (AUG, 9),
         2014: (JUL, 29),
-        2015: (JUL, 17),
         2016: (JUL, 7),
         2017: (JUN, 26),
-        2018: (JUN, 15),
         2019: (JUN, 5),
         2020: (MAY, 25),
-        2021: (MAY, 13),
         2022: (MAY, 3),
-        2023: (APR, 21),
-        2024: (APR, 10),
         2025: (APR, 1),
     }
 

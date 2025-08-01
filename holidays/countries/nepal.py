@@ -292,46 +292,12 @@ class Nepal(
         self._add_non_continuous_holidays(is_workday=True)
 
 
-class NepalIslamicHolidays(_CustomIslamicHolidays):
-    # Bakrid / Eid-al-Adha.
-    EID_AL_ADHA_DATES = {
-        2010: (NOV, 17),
-        2011: (NOV, 7),
-        2012: (OCT, 27),
-        2013: (OCT, 16),
-        2014: (OCT, 6),
-        2015: (SEP, 25),
-        2016: (SEP, 13),
-        2017: (SEP, 2),
-        2018: (AUG, 22),
-        2019: (AUG, 12),
-        2020: (AUG, 1),
-        2021: (JUL, 21),
-        2022: (JUL, 10),
-        2023: (JUN, 29),
-        2024: (JUN, 17),
-        2025: (JUN, 7),
-    }
+class NP(Nepal):
+    pass
 
-    # Id-ul-Fitr / Eid-al-Fitr.
-    EID_AL_FITR_DATES = {
-        2010: (SEP, 10),
-        2011: (AUG, 31),
-        2012: (AUG, 20),
-        2013: (AUG, 8),
-        2014: (JUL, 29),
-        2015: (JUL, 18),
-        2016: (JUL, 7),
-        2017: (JUN, 26),
-        2018: (JUN, 16),
-        2019: (JUN, 5),
-        2020: (MAY, 25),
-        2021: (MAY, 14),
-        2022: (MAY, 3),
-        2023: (APR, 22),
-        2024: (APR, 11),
-        2025: (MAR, 31),
-    }
+
+class NPL(Nepal):
+    pass
 
 
 class NepalHinduHolidays(_CustomHinduHolidays):
@@ -398,12 +364,44 @@ class NepalHinduHolidays(_CustomHinduHolidays):
     }
 
 
-class NP(Nepal):
-    pass
+class NepalIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2010, 2025)
+    EID_AL_ADHA_DATES = {
+        2010: (NOV, 17),
+        2011: (NOV, 7),
+        2012: (OCT, 27),
+        2013: (OCT, 16),
+        2014: (OCT, 6),
+        2015: (SEP, 25),
+        2016: (SEP, 13),
+        2017: (SEP, 2),
+        2018: (AUG, 22),
+        2019: (AUG, 12),
+        2020: (AUG, 1),
+        2021: (JUL, 21),
+        2022: (JUL, 10),
+        2023: (JUN, 29),
+        2024: (JUN, 17),
+        2025: (JUN, 7),
+    }
 
-
-class NPL(Nepal):
-    pass
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2010, 2025)
+    EID_AL_FITR_DATES = {
+        2011: (AUG, 31),
+        2012: (AUG, 20),
+        2014: (JUL, 29),
+        2015: (JUL, 18),
+        2016: (JUL, 7),
+        2017: (JUN, 26),
+        2018: (JUN, 16),
+        2019: (JUN, 5),
+        2020: (MAY, 25),
+        2021: (MAY, 14),
+        2022: (MAY, 3),
+        2023: (APR, 22),
+        2024: (APR, 11),
+        2025: (MAR, 31),
+    }
 
 
 class NepalStaticHolidays:

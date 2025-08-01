@@ -125,9 +125,12 @@ class SAU(SaudiArabia):
 
 
 class SaudiArabiaIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2025)
     EID_AL_ADHA_DATES = {
         2015: (SEP, 24),
     }
+
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2025)
 
 
 class SaudiArabiaStaticHolidays:

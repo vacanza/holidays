@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import MAR, MAY, JUN, AUG, SEP, OCT, NOV
 from holidays.groups import (
     ChristianHolidays,
     IslamicHolidays,
@@ -717,28 +717,21 @@ class ESP(Spain):
 
 
 class SpainIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2010, 2025)
     EID_AL_ADHA_DATES = {
         2010: (NOV, 17),
-        2011: (NOV, 6),
         2012: (OCT, 25),
-        2013: (OCT, 15),
-        2014: (OCT, 4),
         2015: (SEP, 25),
         2016: (SEP, 12),
-        2017: (SEP, 1),
         2018: (AUG, 22),
         2019: (AUG, 12),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
         2023: (JUN, 29),
         2024: (JUN, 17),
-        2025: (JUN, 6),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2022, 2025)
     EID_AL_FITR_DATES = {
         2022: (MAY, 3),
-        2023: (APR, 21),
         2025: (MAR, 31),
     }
 

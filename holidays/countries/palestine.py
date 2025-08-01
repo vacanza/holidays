@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import GREGORIAN_CALENDAR, SEP
+from holidays.calendars.gregorian import GREGORIAN_CALENDAR
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.constants import CATHOLIC, ORTHODOX, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
@@ -171,7 +171,4 @@ class PSE(Palestine):
 
 
 class PalestineIslamicHolidays(_CustomIslamicHolidays):
-    # All other dates follow Umm al-Qura calendar.
-    MAWLID_DATES = {
-        2023: (SEP, 27),
-    }
+    MAWLID_DATES_CONFIRMED_YEARS = (2020, 2024)
