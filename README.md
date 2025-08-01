@@ -317,7 +317,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Bhutan</td>
 <td>BT</td>
-<td></td>
+<td>Administrative Subdivision: 15 (Thimphu)</td>
 <td></td>
 <td></td>
 </tr>
