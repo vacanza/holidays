@@ -293,8 +293,60 @@ class TestIraq(CommonCountryTests, TestCase):
     def test_dehwa_hanina(self):
         pass
 
-    def test_yazidi_holidays(self):
-        pass
+    def test_yazidi_new_year(self):
+        name = "رأس السنة الإيزيدية"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name,
+            self.yazidi_holidays,
+            "2021-04-14",
+            "2022-04-20",
+            "2023-04-19",
+            "2024-04-17",
+            "2025-04-16",
+        )
+        self.assertHolidayName(name, self.yazidi_holidays, range(1964, 2050))
+
+    def test_yazidi_summer_festival(self):
+        name = "مهرجان الصيف اليزيدي"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name,
+            self.yazidi_holidays,
+            (f"{year}-07-31" for year in range(1964, 2024)),
+            (f"{year}-08-01" for year in range(1964, 2024)),
+            (f"{year}-08-02" for year in range(1964, 2050)),
+            (f"{year}-08-03" for year in range(1964, 2050)),
+        )
+
+    def test_feast_of_the_assembly(self):
+        name = "عيد الجمعية"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name,
+            self.yazidi_holidays,
+            (f"{year}-10-06" for year in range(1964, 2050)),
+            (f"{year}-10-07" for year in range(1964, 2050)),
+            (f"{year}-10-08" for year in range(1964, 2050)),
+            (f"{year}-10-09" for year in range(1964, 2050)),
+            (f"{year}-10-10" for year in range(1964, 2050)),
+            (f"{year}-10-11" for year in range(1964, 2050)),
+            (f"{year}-10-12" for year in range(1964, 2050)),
+            (f"{year}-10-13" for year in range(1964, 2050)),
+        )
+
+    def test_feast_of_ezi(self):
+        name = "عيد إيزي"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name,
+            self.yazidi_holidays,
+            "2021-12-17",
+            "2022-12-16",
+            "2023-12-15",
+            "2024-12-20",
+            "2025-12-19",
+        )
 
     def test_2024(self):
         self.assertHolidays(
@@ -328,6 +380,7 @@ class TestIraq(CommonCountryTests, TestCase):
             ("2025-04-02", "عيد الفطر"),
             ("2025-04-05", "يوما عيد البنجة"),
             ("2025-04-06", "يوما عيد البنجة"),
+            ("2025-04-16", "رأس السنة الإيزيدية"),
             ("2025-04-20", "أحد الفصح"),
             ("2025-04-21", "إثنين الفصح"),
             ("2025-05-01", "عيد العمال العالمي; ميلاد النبي يحيى"),
@@ -338,10 +391,21 @@ class TestIraq(CommonCountryTests, TestCase):
             ("2025-06-15", "عيد الغدير"),
             ("2025-06-26", "رأس السنة الهجرية"),
             ("2025-07-05", "عاشوراء"),
+            ("2025-08-02", "مهرجان الصيف اليزيدي"),
+            ("2025-08-03", "مهرجان الصيف اليزيدي"),
             ("2025-08-07", "يوما العيد الكبير"),
             ("2025-08-08", "يوما العيد الكبير"),
             ("2025-09-04", "المولد النبوي الشريف"),
+            ("2025-10-06", "عيد الجمعية"),
+            ("2025-10-07", "عيد الجمعية"),
+            ("2025-10-08", "عيد الجمعية"),
+            ("2025-10-09", "عيد الجمعية"),
+            ("2025-10-10", "عيد الجمعية"),
+            ("2025-10-11", "عيد الجمعية"),
+            ("2025-10-12", "عيد الجمعية"),
+            ("2025-10-13", "عيد الجمعية"),
             ("2025-11-23", "يوم العيد الصغير"),
+            ("2025-12-19", "عيد إيزي"),
             ("2025-12-25", "عيد الميلاد"),
         )
 
@@ -357,6 +421,7 @@ class TestIraq(CommonCountryTests, TestCase):
             ("2025-04-02", "Eid al-Fitr"),
             ("2025-04-05", "Benja Festival"),
             ("2025-04-06", "Benja Festival"),
+            ("2025-04-16", "Yazidi New Year"),
             ("2025-04-20", "Easter Sunday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-05-01", "Labor Day; Prophet Yahya's Birthday"),
@@ -367,9 +432,20 @@ class TestIraq(CommonCountryTests, TestCase):
             ("2025-06-15", "Eid al-Ghadir"),
             ("2025-06-26", "Islamic New Year"),
             ("2025-07-05", "Ashura"),
+            ("2025-08-02", "Yazidi Summer Festival"),
+            ("2025-08-03", "Yazidi Summer Festival"),
             ("2025-08-07", "Great Feast"),
             ("2025-08-08", "Great Feast"),
             ("2025-09-04", "Prophet's Birthday"),
+            ("2025-10-06", "Feast of the Assembly"),
+            ("2025-10-07", "Feast of the Assembly"),
+            ("2025-10-08", "Feast of the Assembly"),
+            ("2025-10-09", "Feast of the Assembly"),
+            ("2025-10-10", "Feast of the Assembly"),
+            ("2025-10-11", "Feast of the Assembly"),
+            ("2025-10-12", "Feast of the Assembly"),
+            ("2025-10-13", "Feast of the Assembly"),
             ("2025-11-23", "Little Feast"),
+            ("2025-12-19", "Feast of Êzî"),
             ("2025-12-25", "Christmas Day"),
         )

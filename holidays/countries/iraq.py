@@ -166,15 +166,30 @@ class Iraq(
         # todo: Dehwa Hanina. until 2024
 
     def _populate_yazidi_holidays(self):
-        # todo: Yazidi New Year. 1st Wednesday of April (Julian calendar)
+        # Yazidi New Year.
+        self._add_holiday_1st_wed_from_apr_14(tr("رأس السنة الإيزيدية"))
 
-        # todo: Summer Festival. 18-21 Jul until 2023 and 20-21 July 2024 onwards.
-        #  (Julian Calendar)
+        # Yazidi Summer Festival.
+        name = tr("مهرجان الصيف اليزيدي")
+        if self._year <= 2023:
+            self._add_holiday_jul_31(name)
+            self._add_holiday_aug_1(name)
+        self._add_holiday_aug_2(name)
+        self._add_holiday_aug_3(name)
 
-        # todo: Feast of the Assembly. 23-30 Sept (Julian calendar)
+        # Feast of the Assembly.
+        name = tr("عيد الجمعية")
+        self._add_holiday_oct_6(name)
+        self._add_holiday_oct_7(name)
+        self._add_holiday_oct_8(name)
+        self._add_holiday_oct_9(name)
+        self._add_holiday_oct_10(name)
+        self._add_holiday_oct_11(name)
+        self._add_holiday_oct_12(name)
+        self._add_holiday_oct_13(name)
 
-        # todo: Feast of Êzî. add First Friday of December (Julian Calendar)
-        pass
+        # Feast of Êzî.
+        self._add_holiday_1st_fri_from_dec_14(tr("عيد إيزي"))
 
 
 class IQ(Iraq):

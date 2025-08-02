@@ -130,3 +130,19 @@ msgstr "Great Feast"
 #. Little Feast.
 msgid "يوم العيد الصغير"
 msgstr "Little Feast"
+
+#. Yazidi New Year.
+msgid "رأس السنة الإيزيدية"
+msgstr "Yazidi New Year"
+
+#. Yazidi Summer Festival.
+msgid "مهرجان الصيف اليزيدي"
+msgstr "Yazidi Summer Festival"
+
+#. Feast of the Assembly.
+msgid "عيد الجمعية"
+msgstr "Feast of the Assembly"
+
+#. Feast of Êzî.
+msgid "عيد إيزي"
+msgstr "Feast of Êzî"
