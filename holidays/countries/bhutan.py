@@ -22,16 +22,66 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
         * [PHPA-II HOLIDAY LIST 2025](https://phpa2.gov.bt/holiday-list/)
         * [Public Holidays for the year 2007](https://web.archive.org/web/20070730055559/http://www.rcsc.gov.bt/tmpFolder/CalendarOfEvent/holiday.htm)
         * [The Bhutanese calendar](http://www.kalacakra.org/calendar/bhutlist.htm)
+        * [ROYAL GOVERNMENT OF BHUTAN 2014-15](https://web.archive.org/web/20141222122050/http://www.mohca.gov.bt/Publications/calander_2014-15.pdf)
+        * [ROYAL GOVERNMENT OF BHUTAN 2015-16](https://web.archive.org/web/20151004161522/http://www.mohca.gov.bt/Publications/calander_2015-16.pdf)
+        * [ROYAL GOVERNMENT OF BHUTAN 2016-17](https://web.archive.org/web/20170606131500/http://www.mohca.gov.bt/download/calander_2016-17.pdf)
+        * [ROYAL GOVERNMENT OF BHUTAN 2017-18](https://web.archive.org/web/20180107115733/http://www.mohca.gov.bt/wp-content/uploads/2017/11/calander_2017-18.pdf)
+        * [ROYAL GOVERNMENT OF BHUTAN 2017-2018](https://web.archive.org/web/20180906031327/http://www.mohca.gov.bt/wp-content/uploads/2017/11/scan0126.pdf)
+        * [ROYAL GOVERNMENT OF BHUTAN 2019-2020](https://web.archive.org/web/20191221201614/http://www.mohca.gov.bt/downloads/scan0004.pdf)
+        * [ROYAL GOVERNMENT OF BHUTAN 2020-2021](https://web.archive.org/web/20200720030220/http://www.mohca.gov.bt/wp-content/uploads/2019/12/2020-Holiday-List0001.pdf)
+        * [ROYAL GOVERNMENT OF BHUTAN 2021-2022](https://web.archive.org/web/20230511011459/http://www.mohca.gov.bt/downloads/Holidays2021.pdf)
+        * [ROYAL GOVERNMENT OF BHUTAN 2022-2023](https://web.archive.org/web/20220619061040/https://www.mohca.gov.bt/wp-content/uploads/2021/11/HolidayList.pdf)
+        * [ROYAL GOVERNMENT OF BHUTAN 2023](https://web.archive.org/web/20221210152039/https://www.mohca.gov.bt/wp-content/uploads/2022/11/Holidays-2023.pdf)
+        * [Ministry of Home and Cultural Affairs ](https://web.archive.org/web/20100127021618/http://www.mohca.gov.bt/?mode=READMORE&news_id=157)
     """
 
     country = "BT"
     # Jigme Khesar Namgyel Wangchuck ascended to the throne on December 9th, 2006.
     start_year = 2007
     subdivisions = (
-        "15",  # Thimphu.
+        "33",  # Bumthang
+        "12",  # Chhukha
+        "22",  # Dagana
+        "GA",  # Gasa
+        "13",  # Haa
+        "44",  # Lhuentse
+        "42",  # Monggar
+        "11",  # Paro
+        "43",  # Pemagatshel
+        "23",  # Punakha
+        "45",  # Samdrup Jongkhar
+        "14",  # Samtse
+        "31",  # Sarpang
+        "15",  # Thimphu
+        "41",  # Trashigang
+        "TY",  # Trashiyangtse
+        "32",  # Trongsa
+        "21",  # Tsirang
+        "24",  # Wangdue Phodrang
+        "34",  # Zhemgang
     )
+
     subdivisions_aliases = {
+        "Bumthang": "33",
+        "Chhukha": "12",
+        "Dagana": "22",
+        "Gasa": "GA",
+        "Haa": "13",
+        "Lhuentse": "44",
+        "Monggar": "42",
+        "Paro": "11",
+        "Pemagatshel": "43",
+        "Punakha": "23",
+        "Samdrup Jongkhar": "45",
+        "Samtse": "14",
+        "Sarpang": "31",
         "Thimphu": "15",
+        "Trashigang": "41",
+        "Trashiyangtse": "TY",
+        "Trongsa": "32",
+        "Tsirang": "21",
+        "Wangdue Phodrang": "24",
+        "Zhemgang": "34",
     }
 
     def __init__(self, *args, **kwargs):

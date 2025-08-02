@@ -317,7 +317,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Bhutan</td>
 <td>BT</td>
-<td>Administrative Subdivision: 15 (Thimphu)</td>
+<td>Administrative Subdivisions: 33 (Bumthang), 12 (Chhukha), 22 (Dagana), GA (Gasa), 13 (Haa), 44 (Lhuentse), 42 (Monggar), 11 (Paro), 43 (Pemagatshel), 23 (Punakha), 45 (Samdrup Jongkhar), 14 (Samtse), 31 (Sarpang), 15 (Thimphu), 41 (Trashigang), TY (Trashiyangtse), 32 (Trongsa), 21 (Tsirang), 24 (Wangdue Phodrang), 34 (Zhemgang)</td>
 <td></td>
 <td></td>
 </tr>
