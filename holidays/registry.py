@@ -133,6 +133,7 @@ COUNTRIES: RegistryDict = {
     "latvia": ("Latvia", "LV", "LVA"),
     "lebanon": ("Lebanon", "LB", "LBN"),
     "lesotho": ("Lesotho", "LS", "LSO"),
+    "liberia": ("Liberia", "LR", "LBR"),
     "libya": ("Libya", "LY", "LBY"),
     "liechtenstein": ("Liechtenstein", "LI", "LIE"),
     "lithuania": ("Lithuania", "LT", "LTU"),
