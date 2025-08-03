@@ -166,6 +166,7 @@ class TestBhutan(CommonCountryTests, TestCase):
 
     def test_dassain(self):
         name = "Dassain"
+        self.assertNoHolidayName(name, range(2012, 2014))
         self.assertHolidayName(
             name,
             "2020-10-26",
@@ -175,7 +176,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             "2024-10-12",
             "2025-10-02",
         )
-        self.assertHolidayName(name, range(2007, 2050))
+        self.assertHolidayName(name, (*range(2007, 2012), *range(2014, 2035)))
 
     def test_coronation_his_majesty(self):
         self.assertHolidayName(

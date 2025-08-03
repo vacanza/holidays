@@ -20,47 +20,50 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
     """Bhutan holidays.
 
     References:
-        * [ROYAL GOVERNMENT OF BHUTAN](https://web.archive.org/web/20250407140158/https://www.moha.gov.bt/wp-content/uploads/2023/11/National-Holiday-List-for-2024-2-.pdf)
-        * [PHPA-II HOLIDAY LIST 2025](https://phpa2.gov.bt/holiday-list/)
-        * [Public Holidays for the year 2007](https://web.archive.org/web/20070730055559/http://www.rcsc.gov.bt/tmpFolder/CalendarOfEvent/holiday.htm)
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Bhutan>
         * [The Bhutanese calendar](http://www.kalacakra.org/calendar/bhutlist.htm)
-        * [ROYAL GOVERNMENT OF BHUTAN 2014-15](https://web.archive.org/web/20141222122050/http://www.mohca.gov.bt/Publications/calander_2014-15.pdf)
-        * [ROYAL GOVERNMENT OF BHUTAN 2015-16](https://web.archive.org/web/20151004161522/http://www.mohca.gov.bt/Publications/calander_2015-16.pdf)
-        * [ROYAL GOVERNMENT OF BHUTAN 2016-17](https://web.archive.org/web/20170606131500/http://www.mohca.gov.bt/download/calander_2016-17.pdf)
-        * [ROYAL GOVERNMENT OF BHUTAN 2017-18](https://web.archive.org/web/20180107115733/http://www.mohca.gov.bt/wp-content/uploads/2017/11/calander_2017-18.pdf)
-        * [ROYAL GOVERNMENT OF BHUTAN 2017-2018](https://web.archive.org/web/20180906031327/http://www.mohca.gov.bt/wp-content/uploads/2017/11/scan0126.pdf)
-        * [ROYAL GOVERNMENT OF BHUTAN 2019-2020](https://web.archive.org/web/20191221201614/http://www.mohca.gov.bt/downloads/scan0004.pdf)
-        * [ROYAL GOVERNMENT OF BHUTAN 2020-2021](https://web.archive.org/web/20200720030220/http://www.mohca.gov.bt/wp-content/uploads/2019/12/2020-Holiday-List0001.pdf)
-        * [ROYAL GOVERNMENT OF BHUTAN 2021-2022](https://web.archive.org/web/20230511011459/http://www.mohca.gov.bt/downloads/Holidays2021.pdf)
-        * [ROYAL GOVERNMENT OF BHUTAN 2022-2023](https://web.archive.org/web/20220619061040/https://www.mohca.gov.bt/wp-content/uploads/2021/11/HolidayList.pdf)
-        * [ROYAL GOVERNMENT OF BHUTAN 2023](https://web.archive.org/web/20221210152039/https://www.mohca.gov.bt/wp-content/uploads/2022/11/Holidays-2023.pdf)
-        * [Ministry of Home and Cultural Affairs ](https://web.archive.org/web/20100127021618/http://www.mohca.gov.bt/?mode=READMORE&news_id=157)
+        * [2007-2011](https://web.archive.org/web/20070730055559/http://www.rcsc.gov.bt/tmpFolder/CalendarOfEvent/holiday.htm)
+        * [2010-2011](https://web.archive.org/web/20100127021618/http://www.mohca.gov.bt/?mode=READMORE&news_id=157)
+        * [2014](https://web.archive.org/web/20141222122050/http://www.mohca.gov.bt/Publications/calander_2014-15.pdf)
+        * [2015](https://web.archive.org/web/20151004161522/http://www.mohca.gov.bt/Publications/calander_2015-16.pdf)
+        * [2016](https://web.archive.org/web/20170606131500/http://www.mohca.gov.bt/download/calander_2016-17.pdf)
+        * [2017](https://web.archive.org/web/20180107115733/http://www.mohca.gov.bt/wp-content/uploads/2017/11/calander_2017-18.pdf)
+        * [2018](https://web.archive.org/web/20180906031327/http://www.mohca.gov.bt/wp-content/uploads/2017/11/scan0126.pdf)
+        * [2019](https://web.archive.org/web/20191221201614/http://www.mohca.gov.bt/downloads/scan0004.pdf)
+        * [2020](https://web.archive.org/web/20200720030220/http://www.mohca.gov.bt/wp-content/uploads/2019/12/2020-Holiday-List0001.pdf)
+        * [2021](https://web.archive.org/web/20230511011459/http://www.mohca.gov.bt/downloads/Holidays2021.pdf)
+        * [2022](https://web.archive.org/web/20220619061040/https://www.mohca.gov.bt/wp-content/uploads/2021/11/HolidayList.pdf)
+        * [2023](https://web.archive.org/web/20221210152039/https://www.mohca.gov.bt/wp-content/uploads/2022/11/Holidays-2023.pdf)
+        * [2024](https://web.archive.org/web/20250407140158/https://www.moha.gov.bt/wp-content/uploads/2023/11/National-Holiday-List-for-2024-2-.pdf)
+        * [2025](https://web.archive.org/web/20250703030226/https://www.moha.gov.bt/wp-content/uploads/2024/11/Calendar_2025.pdf)
     """
 
     country = "BT"
+    # %s (estimated).
+    estimated_label = "%s (estimated)"
     # Jigme Khesar Namgyel Wangchuck ascended to the throne on December 9th, 2006.
     start_year = 2007
     subdivisions = (
-        "11",  # Paro
-        "12",  # Chhukha
-        "13",  # Haa
-        "14",  # Samtse
-        "15",  # Thimphu
-        "21",  # Tsirang
-        "22",  # Dagana
-        "23",  # Punakha
-        "24",  # Wangdue Phodrang
-        "31",  # Sarpang
-        "32",  # Trongsa
-        "33",  # Bumthang
-        "34",  # Zhemgang
-        "41",  # Trashigang
-        "42",  # Monggar
-        "43",  # Pemagatshel
-        "44",  # Lhuentse
-        "45",  # Samdrup Jongkhar
-        "GA",  # Gasa
-        "TY",  # Trashiyangtse
+        "11",  # Paro.
+        "12",  # Chhukha.
+        "13",  # Haa.
+        "14",  # Samtse.
+        "15",  # Thimphu.
+        "21",  # Tsirang.
+        "22",  # Dagana.
+        "23",  # Punakha.
+        "24",  # Wangdue Phodrang.
+        "31",  # Sarpang.
+        "32",  # Trongsa.
+        "33",  # Bumthang.
+        "34",  # Zhemgang.
+        "41",  # Trashigang.
+        "42",  # Monggar.
+        "43",  # Pema Gatshel.
+        "44",  # Lhuentse.
+        "45",  # Samdrup Jongkhar.
+        "GA",  # Gasa.
+        "TY",  # Trashi Yangtse.
     )
 
     subdivisions_aliases = {
@@ -79,16 +82,16 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         "Zhemgang": "34",
         "Trashigang": "41",
         "Monggar": "42",
-        "Pemagatshel": "43",
+        "Pema Gatshel": "43",
         "Lhuentse": "44",
         "Samdrup Jongkhar": "45",
         "Gasa": "GA",
-        "Trashiyangtse": "TY",
+        "Trashi Yangtse": "TY",
     }
 
     def __init__(self, *args, **kwargs):
+        HinduCalendarHolidays.__init__(self, cls=BhutanHinduHolidays, show_estimated=True)
         TibetanCalendarHolidays.__init__(self)
-        HinduCalendarHolidays.__init__(self, cls=BhutanHinduHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -101,14 +104,14 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         # Birth Anniversary of the 3rd Druk Gyalpo.
         self._add_holiday_may_2("Birth Anniversary of the 3rd Druk Gyalpo")
 
-        # National Day.
-        self._add_holiday_dec_17("National Day")
-
         # Coronation of His Majesty the King.
         self._add_holiday_nov_1("Coronation of His Majesty the King")
 
         # Birth Anniversary of the 4th Druk Gyalpo - Constitution Day.
         self._add_holiday_nov_11("Birth Anniversary of the 4th Druk Gyalpo - Constitution Day")
+
+        # National Day.
+        self._add_holiday_dec_17("National Day")
 
         # Winter Solstice.
         self._add_tibetan_winter_solstice("Winter Solstice")
@@ -168,8 +171,6 @@ class BhutanHinduHolidays(_CustomHinduHolidays):
         2009: (SEP, 28),
         2010: (OCT, 17),
         2011: (OCT, 6),
-        2012: (OCT, 24),
-        2013: (OCT, 13),
         2014: (OCT, 3),
         2015: (OCT, 22),
         2016: (OCT, 11),
@@ -192,39 +193,4 @@ class BhutanHinduHolidays(_CustomHinduHolidays):
         2033: (OCT, 3),
         2034: (OCT, 22),
         2035: (OCT, 11),
-        2036: (SEP, 29),
-        2037: (OCT, 18),
-        2038: (OCT, 7),
-        2039: (OCT, 26),
-        2040: (OCT, 15),
-        2041: (OCT, 5),
-        2042: (OCT, 24),
-        2043: (OCT, 13),
-        2044: (OCT, 1),
-        2045: (OCT, 20),
-        2046: (OCT, 9),
-        2047: (SEP, 28),
-        2048: (OCT, 16),
-        2049: (OCT, 6),
-        2050: (OCT, 25),
-        2051: (OCT, 15),
-        2052: (OCT, 3),
-        2053: (OCT, 21),
-        2054: (OCT, 10),
-        2055: (SEP, 29),
-        2056: (OCT, 17),
-        2057: (OCT, 7),
-        2058: (OCT, 26),
-        2059: (OCT, 16),
-        2060: (OCT, 5),
-        2061: (OCT, 23),
-        2062: (OCT, 12),
-        2063: (OCT, 1),
-        2064: (OCT, 19),
-        2065: (OCT, 8),
-        2066: (SEP, 28),
-        2067: (OCT, 17),
-        2068: (OCT, 6),
-        2069: (OCT, 25),
-        2070: (OCT, 14),
     }
