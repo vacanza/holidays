@@ -87,7 +87,34 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (dynç güni)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
-    def test_state_flag_and_constitution_day(self):
+    def test_victory_day(self):
+        name = "1941-1945-nji ýyllaryň Beýik Watançylyk urşunda ýeňiş güni"
+        self.assertHolidayName(name, (f"{year}-05-09" for year in range(2008, 2050)))
+        self.assertNoHolidayName(name, range(1992, 2008))
+        obs_dt = (
+            "2010-05-10",
+            "2021-05-10",
+        )
+        self.assertHolidayName(f"{name} (dynç güni)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_unity_and_revival_day(self):
+        name = "Galkynyş, Agzybirlik we Magtymguly Pyragynyň şygryýet güni"
+        self.assertHolidayName(name, (f"{year}-05-18" for year in range(2008, 2014)))
+        self.assertNoHolidayName(name, range(1992, 2008), range(2015, 2050))
+        obs_dt = ("2008-05-19",)
+        self.assertHolidayName(f"{name} (dynç güni)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_state_flag_and_constitution_day_pre2018(self):
+        name = "Türkmenistanyň Konstitusiýasynyň we Makhtumkuli Pyragynyň şygryýet güni"
+        self.assertHolidayName(name, (f"{year}-05-18" for year in range(2014, 2018)))
+        self.assertNoHolidayName(name, range(1992, 2014), range(2018, 2050))
+        obs_dt = ("2014-05-19",)
+        self.assertHolidayName(f"{name} (dynç güni)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_state_flag_and_constitution_day_post2018(self):
         name = "Türkmenistanyň Konstitusiýasynyň we Döwlet baýdagynyň güni"
         self.assertHolidayName(name, (f"{year}-05-18" for year in range(2018, 2050)))
         self.assertNoHolidayName(name, range(1992, 2018))
@@ -98,29 +125,38 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
     def test_independence_day(self):
         name = "Türkmenistanyň Garaşsyzlyk güni"
         self.assertHolidayName(name, (f"{year}-10-27" for year in range(1992, 2018)))
+        self.assertHolidayName(name, (f"{year}-10-28" for year in range(2008, 2018)))
         self.assertHolidayName(name, (f"{year}-09-27" for year in range(2018, 2050)))
         obs_dt = (
             "1996-10-28",
             "2002-10-28",
-            "2013-10-28",
+            "2012-10-29",
+            "2013-10-29",
             "2020-09-28",
         )
         self.assertHolidayName(f"{name} (dynç güni)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
-    def test_remembrance_day(self):
+    def test_memorial_day(self):
         name = "Hatyra güni"
-        self.assertHolidayName(name, (f"{year}-10-06" for year in range(1995, 2050)))
+        self.assertHolidayName(
+            name, (f"{year}-10-06" for year in (*range(1995, 2008), *range(2014, 2050)))
+        )
+        self.assertHolidayName(name, (f"{year}-01-12" for year in range(2008, 2014)))
         self.assertNoHolidayName(name, range(1992, 1995))
         obs_dt = (
             "1996-10-07",
             "2002-10-07",
-            "2013-10-07",
             "2019-10-07",
             "2024-10-07",
         )
         self.assertHolidayName(f"{name} (dynç güni)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_national_memorial_day(self):
+        name = "Milli ýatlama güni"
+        self.assertHolidayName(name, (f"{year}-10-06" for year in range(2008, 2014)))
+        self.assertNoHolidayName(name, range(1992, 2008), range(2014, 2050))
 
     def test_neutrality_day(self):
         name = "Halkara Bitaraplyk güni"
@@ -180,6 +216,7 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
             ("2024-03-21", "Milli bahar baýramy"),
             ("2024-03-22", "Milli bahar baýramy"),
             ("2024-04-10", "Oraza baýramy"),
+            ("2024-05-09", "1941-1945-nji ýyllaryň Beýik Watançylyk urşunda ýeňiş güni"),
             ("2024-05-18", "Türkmenistanyň Konstitusiýasynyň we Döwlet baýdagynyň güni"),
             ("2024-06-16", "Gurban baýramy"),
             ("2024-06-17", "Gurban baýramy (dynç güni)"),
@@ -197,6 +234,7 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
             ("2024-03-21", "Spring Festival"),
             ("2024-03-22", "Spring Festival"),
             ("2024-04-10", "Eid al-Fitr"),
+            ("2024-05-09", "Victory Day"),
             ("2024-05-18", "Constitution and State Flag Day"),
             ("2024-06-16", "Eid al-Adha"),
             ("2024-06-17", "Eid al-Adha (observed)"),
@@ -214,6 +252,7 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
             ("2024-03-21", "Национальный праздник весны"),
             ("2024-03-22", "Национальный праздник весны"),
             ("2024-04-10", "Ораза байрам"),
+            ("2024-05-09", "День Победы в Великой Отечественной войне 1941-1945 годов"),
             (
                 "2024-05-18",
                 "День Конституции Туркменистана и Государственного флага Туркменистана",

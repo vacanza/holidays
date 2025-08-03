@@ -27,6 +27,8 @@ class Turkmenistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
         * [State Flag and Constitution Day](https://en.wikipedia.org/wiki/State_Flag_and_Constitution_Day_(Turkmenistan))
         * [Independence Day](https://en.wikipedia.org/wiki/Independence_Day_(Turkmenistan))
         * [Detailed Research](https://archive.org/details/holiday-research-in-central-asia)
+        * [2008 law (Russian)](https://web.archive.org/web/20250710021455/https://www.parahat.info/law/2008-08-16-zakon-turkmenistana-o-vnesenii-izmeneniya-v-kodeks-zakonov-o-trude-turkmenistana)
+        * [2014 law (Russian)](https://web.archive.org/web/20250615083107/https://www.parahat.info/law/2014-10-06-zakon-turkmenistana-o-vnesenii-izmeneniya-v-trudovoy-kodeks-turkmenistana)
     """
 
     country = "TM"
@@ -72,24 +74,45 @@ class Turkmenistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
         dts_observed.add(self._add_holiday_mar_21(name))
         dts_observed.add(self._add_holiday_mar_22(name))
 
-        if self._year >= 2018:
+        if self._year >= 2008:
             dts_observed.add(
-                self._add_holiday_may_18(
-                    # Constitution and State Flag Day.
-                    tr("Türkmenistanyň Konstitusiýasynyň we Döwlet baýdagynyň güni")
+                self._add_holiday_may_9(
+                    # Victory Day.
+                    tr("1941-1945-nji ýyllaryň Beýik Watançylyk urşunda ýeňiş güni")
                 )
             )
+
+            if self._year <= 2013:
+                # Day of Revival, Unity and Poetry of Magtymguly Pyragy.
+                name = tr("Galkynyş, Agzybirlik we Magtymguly Pyragynyň şygryýet güni")
+            elif self._year <= 2017:
+                # Day of the Constitution of Turkmenistan and Poetry of Magtymguly Pyragy.
+                name = tr(
+                    "Türkmenistanyň Konstitusiýasynyň we Makhtumkuli Pyragynyň şygryýet güni"
+                )
+            else:
+                # Constitution and State Flag Day.
+                name = tr("Türkmenistanyň Konstitusiýasynyň we Döwlet baýdagynyň güni")
+            dts_observed.add(self._add_holiday_may_18(name))
 
         # Independence Day.
         name = tr("Türkmenistanyň Garaşsyzlyk güni")
         if self._year <= 2017:
             dts_observed.add(self._add_holiday_oct_27(name))
+            if self._year >= 2008:
+                dts_observed.add(self._add_holiday_oct_28(name))
         else:
             dts_observed.add(self._add_holiday_sep_27(name))
 
         if self._year >= 1995:
             # Memorial Day.
-            dts_observed.add(self._add_holiday_oct_6(tr("Hatyra güni")))
+            name = tr("Hatyra güni")
+            if 2008 <= self._year <= 2013:
+                dts_observed.add(self._add_holiday_jan_12(name))
+                # National Memorial Day.
+                dts_observed.add(self._add_holiday_oct_6(tr("Milli ýatlama güni")))
+            else:
+                dts_observed.add(self._add_holiday_oct_6(name))
 
             # International Neutrality Day.
             dts_observed.add(self._add_holiday_dec_12(tr("Halkara Bitaraplyk güni")))

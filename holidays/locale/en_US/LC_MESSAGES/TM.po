@@ -58,6 +58,18 @@ msgstr "Spring Festival"
 msgid "Halkara zenanlar güni"
 msgstr "International Women's Day"
 
+#. Victory Day.
+msgid "1941-1945-nji ýyllaryň Beýik Watançylyk urşunda ýeňiş güni"
+msgstr "Victory Day"
+
+#. Day of Revival, Unity and Poetry of Magtymguly Pyragy.
+msgid "Galkynyş, Agzybirlik we Magtymguly Pyragynyň şygryýet güni"
+msgstr "Day of Revival, Unity and Poetry of Magtymguly Pyragy"
+
+#. Day of the Constitution of Turkmenistan and Poetry of Magtymguly Pyragy.
+msgid "Türkmenistanyň Konstitusiýasynyň we Makhtumkuli Pyragynyň şygryýet güni"
+msgstr "Day of the Constitution of Turkmenistan and Poetry of Magtymguly Pyragy"
+
 #. Constitution and State Flag Day.
 msgid "Türkmenistanyň Konstitusiýasynyň we Döwlet baýdagynyň güni"
 msgstr "Constitution and State Flag Day"
@@ -69,6 +81,10 @@ msgstr "Independence Day"
 #. Memorial Day.
 msgid "Hatyra güni"
 msgstr "Memorial Day"
+
+#. National Memorial Day.
+msgid "Milli ýatlama güni"
+msgstr "National Memorial Day"
 
 #. International Neutrality Day.
 msgid "Halkara Bitaraplyk güni"
