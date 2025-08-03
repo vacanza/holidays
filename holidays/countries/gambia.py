@@ -14,11 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.groups import (
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-)
+from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_MON,
@@ -26,18 +22,13 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Gambia(
-    ObservedHolidayBase,
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-):
+class Gambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """Gambia holidays.
 
     References:
-        - <https://web.archive.org/web/20230610113952/https://www.visitthegambia.gm/public-holidays/>
-        - <https://en.wikipedia.org/wiki/Public_holidays_in_the_Gambia>
-        - <https://web.archive.org/web/20250803084358/https://www.op.gov.gm/media-advisory-public-holidays>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Gambia>
+        * <https://web.archive.org/web/20230610113952/https://www.visitthegambia.gm/public-holidays/>
+        * <https://web.archive.org/web/20250803084358/https://www.op.gov.gm/media-advisory-public-holidays>
     """
 
     country = "GM"
