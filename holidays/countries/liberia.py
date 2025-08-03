@@ -10,20 +10,18 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.groups import (
-    ChristianHolidays,
-    InternationalHolidays,
-)
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
 class Liberia(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """Libera holidays.
+    """Liberia holidays.
 
     References:
         * [Patriotic and Cultural Observances Law 1956](http://www.liberlii.org/lr/legis/codes/pacolt25lcolr654/)
-        * Inauguration Day is celebrated on the first Monday of January in the year after the
-          Presidential elections.
+
+    Inauguration Day is celebrated on the first Monday of January in the year after the
+    Presidential elections.
     """
 
     country = "LR"

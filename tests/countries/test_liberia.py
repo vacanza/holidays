@@ -33,9 +33,7 @@ class TestLiberia(CommonCountryTests, TestCase):
 
     def test_inauguration_day(self):
         years_after_election = {1960, 1964, 1968, 1972, 1976, 1986, 1998, 2006, 2012, 2018, 2024}
-        years_not_after_election = {
-            year for year in range(1957, 2050) if year not in years_after_election
-        }
+        years_not_after_election = set(range(1957, 2050)) - years_after_election
         name = "Inauguration Day"
         self.assertHolidayName(
             name,
@@ -53,7 +51,12 @@ class TestLiberia(CommonCountryTests, TestCase):
     def test_decoration_day(self):
         name = "Decoration Day"
         self.assertHolidayName(
-            name, "2021-03-10", "2022-03-09", "2023-03-08", "2024-03-13", "2025-03-12"
+            name,
+            "2021-03-10",
+            "2022-03-09",
+            "2023-03-08",
+            "2024-03-13",
+            "2025-03-12",
         )
         self.assertHolidayName(name, range(1957, 2050))
 
@@ -66,7 +69,12 @@ class TestLiberia(CommonCountryTests, TestCase):
     def test_fasting_and_prayer_day(self):
         name = "Fasting and Prayer Day"
         self.assertHolidayName(
-            name, "2020-04-10", "2021-04-09", "2022-04-08", "2023-04-14", "2024-04-12"
+            name,
+            "2021-04-09",
+            "2022-04-08",
+            "2023-04-14",
+            "2024-04-12",
+            "2025-04-11",
         )
         self.assertHolidayName(name, range(1957, 2050))
 
@@ -87,7 +95,12 @@ class TestLiberia(CommonCountryTests, TestCase):
     def test_thanksgiving_day(self):
         name = "Thanksgiving Day"
         self.assertHolidayName(
-            name, "2020-11-05", "2021-11-04", "2022-11-03", "2023-11-02", "2024-11-07"
+            name,
+            "2021-11-04",
+            "2022-11-03",
+            "2023-11-02",
+            "2024-11-07",
+            "2025-11-06",
         )
         self.assertHolidayName(name, range(1957, 2050))
 
