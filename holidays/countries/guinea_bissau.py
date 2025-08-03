@@ -14,6 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
+from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -33,6 +34,7 @@ class GuineaBissau(HolidayBase, ChristianHolidays, InternationalHolidays, Islami
     observed_label = tr("%s (ponte)")
     # %s (estimated, observed).
     observed_estimated_label = tr("%s (prevista, ponte)")
+    supported_categories = (GOVERNMENT, PUBLIC)
     supported_languages = ("en_US", "pt_GW")
     start_year = 1975
 
@@ -57,20 +59,36 @@ class GuineaBissau(HolidayBase, ChristianHolidays, InternationalHolidays, Islami
         # National Heroes' Day.
         self._add_holiday_jan_20(tr("Dia dos Heróis Nacionais"))
 
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Páscoa"))
+
+        # Worker's Day.
+        self._add_labor_day(tr("Dia do Trabalhador"))
+
+        # Pidjiguiti Day.
+        self._add_holiday_aug_3(tr("Dia de Pidjiguiti"))
+
+        # Independence Day.
+        self._add_holiday_sep_24(tr("Dia da Independência"))
+
+        # Readjustment Movement Day.
+        self._add_holiday_nov_14(tr("Dia do Movimento de Reajustamento"))
+
+        # Christmas Day.
+        self._add_christmas_day(tr("Dia de Natal"))
+
+        # Eid al-Fitr.
+        self._add_eid_al_fitr_day(tr("Korité"))
+
+        # Eid al-Adha.
+        self._add_eid_al_adha_day(tr("Tabaski"))
+
+    def _populate_government_holidays(self):
         # International Women's Day.
         self._add_womens_day(tr("Dia Internacional da Mulher"))
 
         # Good Friday.
         self._add_good_friday(tr("Sexta-feira Santa"))
-
-        # Easter Sunday.
-        self._add_easter_sunday(tr("Páscoa"))
-
-        # Labor Day.
-        self._add_labor_day(tr("Dia do Trabalhador"))
-
-        # Independence Day.
-        self._add_holiday_sep_24(tr("Dia da Independência"))
 
         # All Souls' Day.
         self._add_all_souls_day(tr("Dia dos Finados"))
@@ -78,17 +96,8 @@ class GuineaBissau(HolidayBase, ChristianHolidays, InternationalHolidays, Islami
         # Christmas Eve.
         self._add_christmas_eve(tr("Véspera de Natal"))
 
-        # Christmas Day.
-        self._add_christmas_day(tr("Dia de Natal"))
-
         # New Year's Eve.
         self._add_new_years_eve(tr("Véspera de Ano Novo"))
-
-        # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Korité"))
-
-        # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Tabaski"))
 
 
 class GW(GuineaBissau):

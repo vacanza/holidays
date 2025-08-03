@@ -49,6 +49,38 @@ msgstr "New Year's Day"
 msgid "Dia dos Heróis Nacionais"
 msgstr "National Heroes' Day"
 
+#. Easter Sunday.
+msgid "Páscoa"
+msgstr "Easter Sunday"
+
+#. Worker's Day.
+msgid "Dia do Trabalhador"
+msgstr "Worker's Day"
+
+#. Pidjiguiti Day.
+msgid "Dia de Pidjiguiti"
+msgstr "Pidjiguiti Day"
+
+#. Independence Day.
+msgid "Dia da Independência"
+msgstr "Independence Day"
+
+#. Readjustment Movement Day.
+msgid "Dia do Movimento de Reajustamento"
+msgstr "Readjustment Movement Day"
+
+#. Christmas Day.
+msgid "Dia de Natal"
+msgstr "Christmas Day"
+
+#. Eid al-Fitr.
+msgid "Korité"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Tabaski"
+msgstr "Eid al-Adha"
+
 #. International Women's Day.
 msgid "Dia Internacional da Mulher"
 msgstr "International Women's Day"
@@ -56,18 +88,6 @@ msgstr "International Women's Day"
 #. Good Friday.
 msgid "Sexta-feira Santa"
 msgstr "Good Friday"
-
-#. Easter Sunday.
-msgid "Páscoa"
-msgstr "Easter Sunday"
-
-#. Labor Day.
-msgid "Dia do Trabalhador"
-msgstr "Labor Day"
-
-#. Independence Day.
-msgid "Dia da Independência"
-msgstr "Independence Day"
 
 #. All Souls' Day.
 msgid "Dia dos Finados"
@@ -77,18 +97,6 @@ msgstr "All Souls' Day"
 msgid "Véspera de Natal"
 msgstr "Christmas Eve"
 
-#. Christmas Day.
-msgid "Dia de Natal"
-msgstr "Christmas Day"
-
 #. New Year's Eve.
 msgid "Véspera de Ano Novo"
 msgstr "New Year's Eve"
-
-#. Eid al-Fitr.
-msgid "Korité"
-msgstr "Eid al-Fitr"
-
-#. Eid al-Adha.
-msgid "Tabaski"
-msgstr "Eid al-Adha"
