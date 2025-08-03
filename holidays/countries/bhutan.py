@@ -10,11 +10,13 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.groups import TibetanCalendarHolidays
+from holidays.calendars import _CustomHinduHolidays
+from holidays.calendars.gregorian import SEP, OCT
+from holidays.groups import HinduCalendarHolidays, TibetanCalendarHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Bhutan(HolidayBase, TibetanCalendarHolidays):
+class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
     """Bhutan holidays.
 
     References:
@@ -39,53 +41,54 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
     # Jigme Khesar Namgyel Wangchuck ascended to the throne on December 9th, 2006.
     start_year = 2007
     subdivisions = (
-        "33",  # Bumthang
-        "12",  # Chhukha
-        "22",  # Dagana
-        "GA",  # Gasa
-        "13",  # Haa
-        "44",  # Lhuentse
-        "42",  # Monggar
         "11",  # Paro
-        "43",  # Pemagatshel
-        "23",  # Punakha
-        "45",  # Samdrup Jongkhar
+        "12",  # Chhukha
+        "13",  # Haa
         "14",  # Samtse
-        "31",  # Sarpang
         "15",  # Thimphu
-        "41",  # Trashigang
-        "TY",  # Trashiyangtse
-        "32",  # Trongsa
         "21",  # Tsirang
+        "22",  # Dagana
+        "23",  # Punakha
         "24",  # Wangdue Phodrang
+        "31",  # Sarpang
+        "32",  # Trongsa
+        "33",  # Bumthang
         "34",  # Zhemgang
+        "41",  # Trashigang
+        "42",  # Monggar
+        "43",  # Pemagatshel
+        "44",  # Lhuentse
+        "45",  # Samdrup Jongkhar
+        "GA",  # Gasa
+        "TY",  # Trashiyangtse
     )
 
     subdivisions_aliases = {
-        "Bumthang": "33",
-        "Chhukha": "12",
-        "Dagana": "22",
-        "Gasa": "GA",
-        "Haa": "13",
-        "Lhuentse": "44",
-        "Monggar": "42",
         "Paro": "11",
-        "Pemagatshel": "43",
-        "Punakha": "23",
-        "Samdrup Jongkhar": "45",
+        "Chhukha": "12",
+        "Haa": "13",
         "Samtse": "14",
-        "Sarpang": "31",
         "Thimphu": "15",
-        "Trashigang": "41",
-        "Trashiyangtse": "TY",
-        "Trongsa": "32",
         "Tsirang": "21",
+        "Dagana": "22",
+        "Punakha": "23",
         "Wangdue Phodrang": "24",
+        "Sarpang": "31",
+        "Trongsa": "32",
+        "Bumthang": "33",
         "Zhemgang": "34",
+        "Trashigang": "41",
+        "Monggar": "42",
+        "Pemagatshel": "43",
+        "Lhuentse": "44",
+        "Samdrup Jongkhar": "45",
+        "Gasa": "GA",
+        "Trashiyangtse": "TY",
     }
 
     def __init__(self, *args, **kwargs):
         TibetanCalendarHolidays.__init__(self)
+        HinduCalendarHolidays.__init__(self, cls=BhutanHinduHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -134,7 +137,7 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
         self._add_blessed_rainy_day("Blessed Rainy Day")
 
         # Dassain.
-        self._add_dashain("Dassain")
+        self._add_dussehra("Dassain")
 
         # Descending Day of Lord Buddha.
         self._add_descending_day_of_lord_buddha("Descending Day of Lord Buddha")
@@ -156,3 +159,72 @@ class BT(Bhutan):
 
 class BTN(Bhutan):
     pass
+
+
+class BhutanHinduHolidays(_CustomHinduHolidays):
+    DUSSEHRA_DATES = {
+        2007: (OCT, 21),
+        2008: (OCT, 9),
+        2009: (SEP, 28),
+        2010: (OCT, 17),
+        2011: (OCT, 6),
+        2012: (OCT, 24),
+        2013: (OCT, 13),
+        2014: (OCT, 3),
+        2015: (OCT, 22),
+        2016: (OCT, 11),
+        2017: (SEP, 30),
+        2018: (OCT, 19),
+        2019: (OCT, 8),
+        2020: (OCT, 26),
+        2021: (OCT, 15),
+        2022: (OCT, 5),
+        2023: (OCT, 24),
+        2024: (OCT, 12),
+        2025: (OCT, 2),
+        2026: (OCT, 20),
+        2027: (OCT, 9),
+        2028: (SEP, 27),
+        2029: (OCT, 16),
+        2030: (OCT, 6),
+        2031: (OCT, 25),
+        2032: (OCT, 14),
+        2033: (OCT, 3),
+        2034: (OCT, 22),
+        2035: (OCT, 11),
+        2036: (SEP, 29),
+        2037: (OCT, 18),
+        2038: (OCT, 7),
+        2039: (OCT, 26),
+        2040: (OCT, 15),
+        2041: (OCT, 5),
+        2042: (OCT, 24),
+        2043: (OCT, 13),
+        2044: (OCT, 1),
+        2045: (OCT, 20),
+        2046: (OCT, 9),
+        2047: (SEP, 28),
+        2048: (OCT, 16),
+        2049: (OCT, 6),
+        2050: (OCT, 25),
+        2051: (OCT, 15),
+        2052: (OCT, 3),
+        2053: (OCT, 21),
+        2054: (OCT, 10),
+        2055: (SEP, 29),
+        2056: (OCT, 17),
+        2057: (OCT, 7),
+        2058: (OCT, 26),
+        2059: (OCT, 16),
+        2060: (OCT, 5),
+        2061: (OCT, 23),
+        2062: (OCT, 12),
+        2063: (OCT, 1),
+        2064: (OCT, 19),
+        2065: (OCT, 8),
+        2066: (SEP, 28),
+        2067: (OCT, 17),
+        2068: (OCT, 6),
+        2069: (OCT, 25),
+        2070: (OCT, 14),
+    }

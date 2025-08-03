@@ -20,10 +20,13 @@ BIRTH_OF_GURU_RINPOCHE = "BIRTH_OF_GURU_RINPOCHE"
 BLESSED_RAINY_DAY = "BLESSED_RAINY_DAY"
 BUDDHA_FIRST_SERMON = "BUDDHA_FIRST_SERMON"
 BUDDHA_PARINIRVANA = "BUDDHA_PARINIRVANA"
-DASHAIN = "DASHAIN"
 DAY_OF_OFFERING = "DAY_OF_OFFERING"
 DEATH_OF_ZHABDRUNG = "DEATH_OF_ZHABDRUNG"
+DESCENDING_DAY_OF_LORD_BUDDHA = "DESCENDING_DAY_OF_LORD_BUDDHA"
 LOSAR = "LOSAR"
+THIMPHU_TSECHU = "THIMPHU_TSECHU"
+THIMPU_DRUBCHEN = "THIMPU_DRUBCHEN"
+WINTER_SOLSTICE = "WINTER_SOLSTICE"
 
 
 class _TibetanLunisolar:
@@ -513,79 +516,6 @@ class _TibetanLunisolar:
         2097: (MAY, 26),
         2098: (JUN, 13),
         2099: (JUN, 3),
-    }
-
-    DASHAIN_DATES = {
-        2001: (OCT, 26),
-        2002: (OCT, 15),
-        2003: (OCT, 5),
-        2004: (OCT, 22),
-        2005: (OCT, 12),
-        2006: (OCT, 2),
-        2007: (OCT, 21),
-        2008: (OCT, 9),
-        2009: (SEP, 28),
-        2010: (OCT, 17),
-        2011: (OCT, 6),
-        2012: (OCT, 24),
-        2013: (OCT, 13),
-        2014: (OCT, 3),
-        2015: (OCT, 22),
-        2016: (OCT, 11),
-        2017: (SEP, 30),
-        2018: (OCT, 19),
-        2019: (OCT, 8),
-        2020: (OCT, 26),
-        2021: (OCT, 15),
-        2022: (OCT, 5),
-        2023: (OCT, 24),
-        2024: (OCT, 12),
-        2025: (OCT, 2),
-        2026: (OCT, 20),
-        2027: (OCT, 9),
-        2028: (SEP, 27),
-        2029: (OCT, 16),
-        2030: (OCT, 6),
-        2031: (OCT, 25),
-        2032: (OCT, 14),
-        2033: (OCT, 3),
-        2034: (OCT, 22),
-        2035: (OCT, 11),
-        2036: (SEP, 29),
-        2037: (OCT, 18),
-        2038: (OCT, 7),
-        2039: (OCT, 26),
-        2040: (OCT, 15),
-        2041: (OCT, 5),
-        2042: (OCT, 24),
-        2043: (OCT, 13),
-        2044: (OCT, 1),
-        2045: (OCT, 20),
-        2046: (OCT, 9),
-        2047: (SEP, 28),
-        2048: (OCT, 16),
-        2049: (OCT, 6),
-        2050: (OCT, 25),
-        2051: (OCT, 15),
-        2052: (OCT, 3),
-        2053: (OCT, 21),
-        2054: (OCT, 10),
-        2055: (SEP, 29),
-        2056: (OCT, 17),
-        2057: (OCT, 7),
-        2058: (OCT, 26),
-        2059: (OCT, 16),
-        2060: (OCT, 5),
-        2061: (OCT, 23),
-        2062: (OCT, 12),
-        2063: (OCT, 1),
-        2064: (OCT, 19),
-        2065: (OCT, 8),
-        2066: (SEP, 28),
-        2067: (OCT, 17),
-        2068: (OCT, 6),
-        2069: (OCT, 25),
-        2070: (OCT, 14),
     }
 
     DAY_OF_OFFERING_DATES = {
@@ -1480,40 +1410,37 @@ class _TibetanLunisolar:
         return date(year, *dt) if dt else None, year not in exact_dates
 
     def blessed_rainy_day_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday("BLESSED_RAINY_DAY", year)
+        return self._get_holiday(BLESSED_RAINY_DAY, year)
 
     def birth_of_guru_rinpoche_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday("BIRTH_OF_GURU_RINPOCHE", year)
+        return self._get_holiday(BIRTH_OF_GURU_RINPOCHE, year)
 
     def buddha_first_sermon_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday("BUDDHA_FIRST_SERMON", year)
+        return self._get_holiday(BUDDHA_FIRST_SERMON, year)
 
     def buddha_parinirvana_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday("BUDDHA_PARINIRVANA", year)
-
-    def dashain_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday("DASHAIN", year)
+        return self._get_holiday(BUDDHA_PARINIRVANA, year)
 
     def day_of_offering_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday("DAY_OF_OFFERING", year)
+        return self._get_holiday(DAY_OF_OFFERING, year)
 
     def death_of_zhabdrung_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday("DEATH_OF_ZHABDRUNG", year)
+        return self._get_holiday(DEATH_OF_ZHABDRUNG, year)
 
     def descending_day_of_lord_buddha_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday("DESCENDING_DAY_OF_LORD_BUDDHA", year)
+        return self._get_holiday(DESCENDING_DAY_OF_LORD_BUDDHA, year)
 
     def losar_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday("LOSAR", year)
+        return self._get_holiday(LOSAR, year)
 
     def thimphu_tsechu_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday("THIMPHU_TSECHU", year)
+        return self._get_holiday(THIMPHU_TSECHU, year)
 
     def thimpu_drubchen_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday("THIMPU_DRUBCHEN", year)
+        return self._get_holiday(THIMPU_DRUBCHEN, year)
 
     def tibetan_winter_solstice_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday("WINTER_SOLSTICE", year)
+        return self._get_holiday(WINTER_SOLSTICE, year)
 
 
 class _CustomTibetanHolidays(_CustomCalendar, _TibetanLunisolar):

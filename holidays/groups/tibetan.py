@@ -71,14 +71,6 @@ class TibetanCalendarHolidays(EasternCalendarHolidays):
             name, self._tibetan_calendar.buddha_parinirvana_date(self._year)
         )
 
-    def _add_dashain(self, name) -> Optional[date]:
-        """
-        Add Dashain.
-        """
-        return self._add_tibetan_calendar_holiday(
-            name, self._tibetan_calendar.dashain_date(self._year)
-        )
-
     def _add_day_of_offering(self, name) -> Optional[date]:
         """
         Add Day of Offering (1st day of the 12th lunar month).

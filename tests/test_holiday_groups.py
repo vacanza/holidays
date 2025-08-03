@@ -147,7 +147,6 @@ class TestTibetanCalendarHolidays(TestCase):
         test_holidays._add_birth_of_guru_rinpoche("Birth of Guru Rinpoche")
         test_holidays._add_buddha_first_sermon("Buddha First Sermon")
         test_holidays._add_buddha_parinirvana("Buddha Parinirvana")
-        test_holidays._add_dashain("Dashain")
         test_holidays._add_day_of_offering("Day of Offering")
         test_holidays._add_death_of_zhabdrung("Death of Zhabdrung")
         test_holidays._add_descending_day_of_lord_buddha("Descending Day Of Lord Buddha")
