@@ -46,7 +46,8 @@ class Liberia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_holiday_2nd_fri_of_apr("Fasting and Prayer Day")
 
-        self._add_holiday_may_14("National Unification and Integration Day")
+        if self._year >= 1960:
+            self._add_holiday_may_14("National Unification and Integration Day")
 
         self._add_holiday_jul_26("Independence Day")
 

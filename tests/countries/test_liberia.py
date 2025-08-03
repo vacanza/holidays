@@ -78,10 +78,9 @@ class TestLiberia(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(1957, 2050))
 
     def test_national_unification_and_integration_day(self):
-        self.assertHolidayName(
-            "National Unification and Integration Day",
-            (f"{year}-05-14" for year in range(1957, 2050)),
-        )
+        name = "National Unification and Integration Day"
+        self.assertHolidayName(name, (f"{year}-05-14" for year in range(1960, 2050)))
+        self.assertNoHolidayName(name, range(1957, 1960))
 
     def test_independence_day(self):
         self.assertHolidayName("Independence Day", (f"{year}-07-26" for year in range(1957, 2050)))
