@@ -124,6 +124,7 @@ from holidays.countries.jersey import Jersey, JE, JEY
 from holidays.countries.jordan import Jordan, JO, JOR
 from holidays.countries.kazakhstan import Kazakhstan, KZ, KAZ
 from holidays.countries.kenya import Kenya, KE, KEN
+from holidays.countries.kiribati import Kiribati, KI, KIR
 from holidays.countries.kuwait import Kuwait, KW, KWT
 from holidays.countries.kyrgyzstan import Kyrgyzstan, KG, KGZ
 from holidays.countries.laos import Laos, LA, LAO
