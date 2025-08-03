@@ -216,7 +216,7 @@ from holidays.countries.slovenia import Slovenia, SI, SVN
 from holidays.countries.solomon_islands import SolomonIslands, SB, SLB
 from holidays.countries.south_africa import SouthAfrica, ZA, ZAF
 from holidays.countries.south_georgia_and_the_south_sandwich_islands import (
-    SouthGeorgiaandtheSouthSandwichIslands,
+    SouthGeorgiaAndTheSouthSandwichIslands,
     GS,
     SGS,
 )

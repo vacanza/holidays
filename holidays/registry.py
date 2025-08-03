@@ -210,7 +210,7 @@ COUNTRIES: RegistryDict = {
     "solomon_islands": ("SolomonIslands", "SB", "SLB"),
     "south_africa": ("SouthAfrica", "ZA", "ZAF"),
     "south_georgia_and_the_south_sandwich_islands": (
-        "SouthGeorgiaandtheSouthSandwichIslands",
+        "SouthGeorgiaAndTheSouthSandwichIslands",
         "GS",
         "SGS",
     ),
