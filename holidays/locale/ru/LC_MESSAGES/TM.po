@@ -61,17 +61,17 @@ msgstr "Международный женский день"
 msgid "1941-1945-nji ýyllaryň Beýik Watançylyk urşunda ýeňiş güni"
 msgstr "День Победы в Великой Отечественной войне 1941-1945 годов"
 
-#. Day of Revival, Unity and Poetry of Magtymguly Pyragy.
-msgid "Galkynyş, Agzybirlik we Magtymguly Pyragynyň şygryýet güni"
-msgstr "День возрождения, единства и поэзии Махтумкули Фраги"
+#. Constitution and State Flag Day.
+msgid "Türkmenistanyň Konstitusiýasynyň we Döwlet baýdagynyň güni"
+msgstr "День Конституции Туркменистана и Государственного флага Туркменистана"
 
 #. Day of the Constitution of Turkmenistan and Poetry of Magtymguly Pyragy.
 msgid "Türkmenistanyň Konstitusiýasynyň we Makhtumkuli Pyragynyň şygryýet güni"
 msgstr "День Конституции Туркменистана и поэзии Махтумкули Фраги"
 
-#. Constitution and State Flag Day.
-msgid "Türkmenistanyň Konstitusiýasynyň we Döwlet baýdagynyň güni"
-msgstr "День Конституции Туркменистана и Государственного флага Туркменистана"
+#. Day of Revival, Unity and Poetry of Magtymguly Pyragy.
+msgid "Galkynyş, Agzybirlik we Magtymguly Pyragynyň şygryýet güni"
+msgstr "День возрождения, единства и поэзии Махтумкули Фраги"
 
 #. Independence Day.
 msgid "Türkmenistanyň Garaşsyzlyk güni"

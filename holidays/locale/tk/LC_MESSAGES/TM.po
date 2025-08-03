@@ -61,16 +61,16 @@ msgstr ""
 msgid "1941-1945-nji ýyllaryň Beýik Watançylyk urşunda ýeňiş güni"
 msgstr ""
 
-#. Day of Revival, Unity and Poetry of Magtymguly Pyragy.
-msgid "Galkynyş, Agzybirlik we Magtymguly Pyragynyň şygryýet güni"
+#. Constitution and State Flag Day.
+msgid "Türkmenistanyň Konstitusiýasynyň we Döwlet baýdagynyň güni"
 msgstr ""
 
 #. Day of the Constitution of Turkmenistan and Poetry of Magtymguly Pyragy.
 msgid "Türkmenistanyň Konstitusiýasynyň we Makhtumkuli Pyragynyň şygryýet güni"
 msgstr ""
 
-#. Constitution and State Flag Day.
-msgid "Türkmenistanyň Konstitusiýasynyň we Döwlet baýdagynyň güni"
+#. Day of Revival, Unity and Poetry of Magtymguly Pyragy.
+msgid "Galkynyş, Agzybirlik we Magtymguly Pyragynyň şygryýet güni"
 msgstr ""
 
 #. Independence Day.
