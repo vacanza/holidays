@@ -62,8 +62,7 @@ class TestLiberia(CommonCountryTests, TestCase):
 
     def test_jj_roberts_memorial_day(self):
         self.assertHolidayName(
-            "J. J. Roberts Memorial Birthday",
-            (f"{year}-03-15" for year in range(1957, 2050)),
+            "J. J. Roberts Memorial Birthday", (f"{year}-03-15" for year in range(1957, 2050))
         )
 
     def test_fasting_and_prayer_day(self):
