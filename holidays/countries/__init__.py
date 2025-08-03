@@ -92,6 +92,7 @@ from holidays.countries.french_southern_territories import (
     HolidaysTF,
 )
 from holidays.countries.gabon import Gabon, GA, GAB
+from holidays.countries.gambia import Gambia, GM, GMB
 from holidays.countries.georgia import Georgia, GE, GEO
 from holidays.countries.germany import Germany, DE, DEU
 from holidays.countries.ghana import Ghana, GH, GHA

@@ -1,0 +1,100 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Gambia holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.78\n"
+"POT-Creation-Date: 2025-08-03 02:45+0530\n"
+"PO-Revision-Date: 2025-08-03 02:45+0530\n"
+"Last-Translator: Kriti Birda <workwithkritibirda@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_GM\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (estimated)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (observed)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
+msgstr "%s (observed, estimated)"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "New Year's Day"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "Independence Day"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Good Friday"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Easter Monday"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "Labor Day"
+
+#. Africa Liberation Day.
+msgid "Africa Liberation Day"
+msgstr "Africa Liberation Day"
+
+#. July 22 Revolution Day.
+msgid "July 22 Revolution Day"
+msgstr "July 22 Revolution Day"
+
+#. Assumption Day.
+msgid "Feast of the Assumption"
+msgstr "Assumption Day"
+
+msgid "Christmas Day"
+msgstr "Christmas Day"
+
+msgid "Boxing Day"
+msgstr "Boxing Day"
+
+#. Ashura.
+msgid "Yawmul Ashura"
+msgstr "Ashura"
+
+#. Prophet's Birthday.
+msgid "Mawlid Nabi"
+msgstr "Prophet's Birthday"
+
+#. Laylat al-Qadr.
+msgid "Lialat-Ul-Qadr"
+msgstr "Laylat al-Qadr"
+
+#. Eid al-Fitr.
+msgid "Koriteh"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Tobaski"
+msgstr "Eid al-Adha"
