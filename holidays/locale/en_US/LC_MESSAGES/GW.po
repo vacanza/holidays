@@ -5,7 +5,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
-#           dr-prodigy <dr.prodigy.github.com> (c) 2017-2023
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: pt_GW\n"
+
 #. %s (estimated).
 #, c-format
 msgid "%s (prevista)"
