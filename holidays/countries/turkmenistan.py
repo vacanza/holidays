@@ -49,6 +49,7 @@ class Turkmenistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
             self, cls=TurkmenistanIslamicHolidays, show_estimated=islamic_show_estimated
         )
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
+        kwargs.setdefault("observed_since", 2010)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):

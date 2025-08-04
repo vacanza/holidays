@@ -33,8 +33,6 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
         name = "Täze ýyl"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1992, 2050)))
         obs_dt = (
-            "1995-01-02",
-            "2006-01-02",
             "2012-01-02",
             "2017-01-02",
             "2023-01-02",
@@ -47,8 +45,6 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-02-19" for year in range(1995, 2018)))
         self.assertNoHolidayName(name, range(1992, 1995), range(2019, 2050))
         obs_dt = (
-            "1995-02-20",
-            "2006-02-20",
             "2012-02-20",
             "2017-02-20",
         )
@@ -62,9 +58,6 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, range(2001, 2008))
         obs_dt = (
-            "1992-03-09",
-            "1998-03-09",
-            "2009-03-09",
             "2015-03-09",
             "2020-03-09",
         )
@@ -77,8 +70,6 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-03-21" for year in range(1992, 2050)))
         self.assertHolidayName(name, (f"{year}-03-22" for year in range(1992, 2050)))
         obs_dt = (
-            "2005-03-23",
-            "2009-03-23",
             "2010-03-23",
             "2015-03-23",
             "2020-03-23",
@@ -91,9 +82,6 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
         name = "1941-1945-nji ýyllaryň Beýik Watançylyk urşunda ýeňiş güni"
         self.assertHolidayName(name, (f"{year}-05-09" for year in range(1992, 2018)))
         self.assertNoHolidayName(name, range(2018, 2050))
-        obs_dt = ("2010-05-10",)
-        self.assertHolidayName(f"{name} (dynç güni)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_unity_and_revival_day(self):
         name = "Galkynyş, Agzybirlik we Magtymguly Pyragynyň şygryýet güni"
@@ -119,8 +107,6 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-10-28" for year in range(2008, 2018)))
         self.assertHolidayName(name, (f"{year}-09-27" for year in range(2018, 2050)))
         obs_dt = (
-            "1996-10-28",
-            "2002-10-28",
             "2012-10-29",
             "2013-10-29",
             "2020-09-28",
@@ -136,8 +122,6 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-01-12" for year in range(2009, 2015)))
         self.assertNoHolidayName(name, range(1992, 1995))
         obs_dt = (
-            "1996-10-07",
-            "2002-10-07",
             "2019-10-07",
             "2024-10-07",
         )
@@ -154,8 +138,6 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-12-12" for year in range(1995, 2050)))
         self.assertNoHolidayName(name, range(1992, 1995))
         obs_dt = (
-            "1999-12-13",
-            "2004-12-13",
             "2010-12-13",
             "2021-12-13",
         )
