@@ -1262,6 +1262,10 @@ class TestWorkdays(unittest.TestCase):
         self.assertEqual(self.hb.get_nth_working_day("2024-05-10", -7), date(2024, 4, 29))
         self.assertEqual(self.hb.get_nth_working_day("2024-05-10", -5), date(2024, 5, 3))
 
+        self.assertEqual(self.hb.get_nth_working_day("2024-07-27", 0), date(2024, 7, 29))
+        self.assertEqual(self.hb.get_nth_working_day("2024-07-27", 1), date(2024, 7, 29))
+        self.assertEqual(self.hb.get_nth_working_day("2024-07-29", 0), date(2024, 7, 29))
+
     def test_get_working_days_count(self):
         self.assertEqual(self.hb.get_working_days_count("2024-01-03", "2024-01-23"), 15)
         self.assertEqual(self.hb.get_working_days_count("2024-01-23", "2024-01-03"), 15)

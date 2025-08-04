@@ -638,6 +638,7 @@ class IndonesiaStaticHolidays:
         * <https://web.archive.org/web/20250413193243/https://setkab.go.id/presiden-tandatangani-keppres-perubahan-cuti-bersama-bagi-asn/>
         * <https://web.archive.org/web/20250413193243/https://setkab.go.id/inilah-keppres-7-2024-tentang-cuti-bersama-asn-tahun-2024/>
         * <https://web.archive.org/web/20250413193349/https://setkab.go.id/pemerintah-tetapkan-hari-libur-nasional-dan-cuti-bersama-tahun-2025/>
+        * <https://web.archive.org/web/20250802143125/https://news.detik.com/berita/d-8039857/pemerintah-tetapkan-senin-18-agustus-hari-libur>
     """
 
     # General Election Day.
@@ -669,6 +670,8 @@ class IndonesiaStaticHolidays:
     vesak_joint_holiday = tr("Cuti Bersama Hari Raya Waisak")
     # New Year's Joint Holiday.
     new_years_joint_holiday = tr("Cuti Bersama Tahun Baru Masehi")
+    # Independence Day Joint Holiday.
+    independence_day_joint_holiday = tr("Cuti Bersama Hari Kemerdekaan Republik Indonesia")
 
     special_public_holidays = {
         1999: (JUN, 7, legislative_election_day),
@@ -728,8 +731,7 @@ class IndonesiaStaticHolidays:
         2006: (
             (MAR, 31, day_of_silence_joint_holiday),
             (MAY, 26, ascension_joint_holiday),
-            # Independence Day Joint Holiday.
-            (AUG, 18, tr("Cuti Bersama Hari Kemerdekaan Republik Indonesia")),
+            (AUG, 18, independence_day_joint_holiday),
             (OCT, 23, eid_al_fitr_joint_holiday),
             (OCT, 26, eid_al_fitr_joint_holiday),
             (OCT, 27, eid_al_fitr_joint_holiday),
@@ -877,6 +879,7 @@ class IndonesiaStaticHolidays:
             (MAY, 13, vesak_joint_holiday),
             (MAY, 30, ascension_joint_holiday),
             (JUN, 9, eid_al_adha_joint_holiday),
+            (AUG, 18, independence_day_joint_holiday),
             (DEC, 26, christmas_joint_holiday),
         ),
     }
