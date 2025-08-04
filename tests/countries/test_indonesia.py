@@ -186,6 +186,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2025-05-13",
             "2025-05-30",
             "2025-06-09",
+            "2025-08-18",
             "2025-12-26",
         )
         dt_observed = ("2020-12-31",)
