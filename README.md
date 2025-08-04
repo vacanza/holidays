@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 223 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 224 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -570,8 +570,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Egypt</td>
 <td>EG</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
-<td></td>
+<td><strong>ar_EG</strong>, en_US, fr</td>
+<td>GOVERNMENT, SCHOOL</td>
 </tr>
 <tr>
 <td>El Salvador</td>
@@ -681,7 +681,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Germany</td>
 <td>DE</td>
-<td>Lands: BB (Brandenburg), BE (Berlin), BW (Baden-Württemberg), BY (Bayern), HB (Bremen), HE (Hessen), HH (Hamburg), MV (Mecklenburg-Vorpommern), NI (Niedersachsen), NW (Nordrhein-Westfalen), RP (Rheinland-Pfalz), SH (Schleswig-Holstein), SL (Saarland), SN (Sachsen), ST (Sachsen-Anhalt), TH (Thüringen)</td>
+<td>States: BB (Brandenburg), BE (Berlin), BW (Baden-Württemberg), BY (Bayern), HB (Bremen), HE (Hessen), HH (Hamburg), MV (Mecklenburg-Vorpommern), NI (Niedersachsen), NW (Nordrhein-Westfalen), RP (Rheinland-Pfalz), SH (Schleswig-Holstein), SL (Saarland), SN (Sachsen), ST (Sachsen-Anhalt), TH (Thüringen); cities: Augsburg</td>
 <td><strong>de</strong>, en_US, th, uk</td>
 <td>CATHOLIC</td>
 </tr>
@@ -963,7 +963,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>LU</td>
 <td></td>
 <td>de, en_US, fr, <strong>lb</strong>, uk</td>
-<td></td>
+<td>BANK</td>
 </tr>
 <tr>
 <td>Macau</td>
@@ -1272,6 +1272,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td><strong>en_PH</strong>, en_US, fil, th</td>
 <td>WORKDAY</td>
+</tr>
+<tr>
+<td>Pitcairn Islands</td>
+<td>PN</td>
+<td></td>
+<td></td>
+<td>GOVERNMENT, WORKDAY</td>
 </tr>
 <tr>
 <td>Poland</td>

@@ -1,3 +1,19 @@
+# Version 0.78
+
+Released August 4, 2025
+
+- Add Pitcairn Islands holidays (#2704 by @Harshil-Gupta, @arkid15r, @KJhellico, @PPsyrius)
+- Update Egypt holidays (#2742 by @KJhellico)
+- Update Egypt holidays: update remaining .po files changes (#2748 by @PPsyrius)
+- Update Germany holidays: add Augsburg Peace Festival for Augsburg (#2750 by @PPsyrius)
+- Update Indonesia holidays: add August 18, 2025 holiday (#2773 by @KJhellico)
+- Update Luxembourg holidays: add bank holidays (#2751 by @KJhellico)
+- Update Pakistan holidays: 2025 Ashura and Eid al-Adha dates (#2746 by @PPsyrius)
+- Update Saudi Arabia holidays (#2753 by @KJhellico, @arkid15r)
+- Update docstrings of public classes and methods (#2754 by @KJhellico)
+- Add Python 3.14 (beta) to CI/CD (#2650 by @PPsyrius, @arkid15r)
+- Input handling improvements for `get_nth_working_day` (#2770 by @PPsyrius)
+
 # Version 0.77
 
 Released July 21, 2025
