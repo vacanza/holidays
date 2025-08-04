@@ -43,7 +43,7 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
     def test_state_flag_day(self):
         name = "Türkmenistanyň Döwlet baýdagynyň güni"
         self.assertHolidayName(name, (f"{year}-02-19" for year in range(1995, 2018)))
-        self.assertNoHolidayName(name, range(1992, 1995), range(2019, 2050))
+        self.assertNoHolidayName(name, range(1992, 1995), range(2018, 2050))
         obs_dt = (
             "2012-02-20",
             "2017-02-20",
@@ -82,11 +82,17 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
         name = "1941-1945-nji ýyllaryň Beýik Watançylyk urşunda ýeňiş güni"
         self.assertHolidayName(name, (f"{year}-05-09" for year in range(1992, 2018)))
         self.assertNoHolidayName(name, range(2018, 2050))
+        obs_dt = ("2010-05-10",)
+        self.assertHolidayName(f"{name} (dynç güni)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_unity_and_revival_day(self):
         name = "Galkynyş, Agzybirlik we Magtymguly Pyragynyň şygryýet güni"
-        self.assertHolidayName(name, (f"{year}-05-18" for year in range(2009, 2014)))
+        self.assertHolidayName(name, (f"{year}-05-18" for year in range(2009, 2015)))
         self.assertNoHolidayName(name, range(1992, 2009), range(2015, 2050))
+        obs_dt = ("2014-05-19",)
+        self.assertHolidayName(f"{name} (dynç güni)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_state_flag_and_constitution_day_pre2018(self):
         name = "Türkmenistanyň Konstitusiýasynyň we Makhtumkuli Pyragynyň şygryýet güni"
@@ -122,6 +128,7 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-01-12" for year in range(2009, 2015)))
         self.assertNoHolidayName(name, range(1992, 1995))
         obs_dt = (
+            "2014-01-13",
             "2019-10-07",
             "2024-10-07",
         )
@@ -132,6 +139,9 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
         name = "Milli ýatlama güni"
         self.assertHolidayName(name, (f"{year}-10-06" for year in range(2009, 2015)))
         self.assertNoHolidayName(name, range(1992, 2009), range(2015, 2050))
+        obs_dt = ("2013-10-07",)
+        self.assertHolidayName(f"{name} (dynç güni)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_neutrality_day(self):
         name = "Halkara Bitaraplyk güni"
