@@ -40,9 +40,9 @@ def country_holidays(
     language: Optional[str] = None,
     categories: Optional[CategoryArg] = None,
 ) -> HolidayBase:
-    """
-    Returns a new dictionary-like `HolidayBase` object for the public
-    holidays of the country matching **country** and other keyword arguments.
+    """Return a new dictionary-like [HolidayBase][holidays.holiday_base.HolidayBase] object.
+
+    Include public holidays for the country matching `country` and other keyword arguments.
 
     Args:
         country:
@@ -60,9 +60,9 @@ def country_holidays(
             is requested.
 
         observed:
-            Whether to include the dates of when public holiday are observed
+            Whether to include the dates of when public holidays are observed
             (e.g. a holiday falling on a Sunday being observed the following
-            Monday). False may not work for all countries.
+            Monday). `False` may not work for all countries.
 
         prov:
             *deprecated* use `subdiv` instead.
@@ -106,12 +106,12 @@ def country_holidays(
             Requested holiday categories.
 
     Returns:
-        A `HolidayBase` object matching the **country**.
+        A `HolidayBase` object matching the `country`.
 
     The key of the `dict`-like `HolidayBase` object is the
     `date` of the holiday, and the value is the name of the holiday itself.
     Dates where a key is not present are not public holidays (or, if
-    **observed** is False, days when a public holiday is observed).
+    `observed` is `False`, days when a public holiday is observed).
 
     When passing the `date` as a key, the `date` can be expressed in one of the
     following types:
@@ -125,12 +125,12 @@ def country_holidays(
 
     To maximize speed, the list of public holidays is built on the fly as
     needed, one calendar year at a time. When the object is instantiated
-    without a **years** parameter, it is empty, but, unless **expand** is set
-    to False, as soon as a key is accessed the class will calculate that entire
+    without a `years` parameter, it is empty, but, unless `expand` is set
+    to `False`, as soon as a key is accessed the class will calculate that entire
     year's list of holidays and set the keys with them.
 
     If you need to list the holidays as opposed to querying individual dates,
-    instantiate the class with the **years** parameter.
+    instantiate the class with the `years` parameter.
 
     Example usage:
 
@@ -236,14 +236,14 @@ def financial_holidays(
     observed: bool = True,
     language: Optional[str] = None,
 ) -> HolidayBase:
-    """
-    Returns a new dictionary-like :py:class:`HolidayBase` object for the public
-    holidays of the financial market matching **market** and other keyword
+    """Return a new dictionary-like [HolidayBase][holidays.holiday_base.HolidayBase] object.
+
+    Include public holidays for the financial market matching `market` and other keyword
     arguments.
 
     Args:
         market:
-            An ISO 3166-1 Alpha-2 market code.
+            An ISO 10383 MIC code.
 
         subdiv:
             Currently not implemented for markets (see documentation).
@@ -256,9 +256,9 @@ def financial_holidays(
             is requested.
 
         observed:
-            Whether to include the dates of when public holiday are observed
+            Whether to include the dates of when public holidays are observed
             (e.g. a holiday falling on a Sunday being observed the following
-            Monday). False may not work for all countries.
+            Monday). `False` may not work for all markets.
 
         language:
             Specifies the language in which holiday names are returned.
@@ -293,7 +293,7 @@ def financial_holidays(
             This behavior will be updated and formalized in v1.
 
     Returns:
-        A `HolidayBase` object matching the **market**.
+        A `HolidayBase` object matching the `market`.
 
     Example usage:
 
@@ -428,7 +428,7 @@ def list_supported_financial(include_aliases: bool = True) -> dict[str, list[str
 
     Args:
         include_aliases:
-            Whether to include entity aliases (e.g. TAR for ECB, XNYS for NYSE).
+            Whether to include entity aliases (e.g. NYSE for XNYS, TAR for XECB).
 
     Returns:
         A dictionary where key is a market code and value is a list of supported
