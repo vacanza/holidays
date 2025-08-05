@@ -89,8 +89,16 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         "Trashi Yangtse": "TY",
     }
 
-    def __init__(self, *args, **kwargs):
-        HinduCalendarHolidays.__init__(self, cls=BhutanHinduHolidays, show_estimated=True)
+    def __init__(self, *args, hindu_show_estimated: bool = True, **kwargs):
+        """
+        Args:
+            hindu_show_estimated:
+                Whether to add "estimated" label to Hindu holidays name
+                if holiday date is estimated.
+        """
+        HinduCalendarHolidays.__init__(
+            self, cls=BhutanHinduHolidays, show_estimated=hindu_show_estimated
+        )
         TibetanCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
@@ -124,8 +132,8 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         self._add_losar(name)
         self._add_losar_day_two(name)
 
-        # Death Anniversary of Zhabdrung (Zhabdrung Kuchoe).
-        self._add_death_of_zhabdrung("Death Anniversary of Zhabdrung (Zhabdrung Kuchoe)")
+        # Death Anniversary of Zhabdrung.
+        self._add_death_of_zhabdrung("Death Anniversary of Zhabdrung")
 
         # Lord Buddha's Parinirvana.
         self._add_buddha_parinirvana("Lord Buddha's Parinirvana")
@@ -147,13 +155,13 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
 
     def _populate_subdiv_15_public_holidays(self):
         # Thimphu Drubchoe.
-        self._add_thimpu_drubchen_day("Thimphu Drubchoe")
+        self._add_thimphu_drubchen_day("Thimphu Drubchoe")
 
         # Thimphu Tshechu.
         name = "Thimphu Tshechu"
-        self._add_thimphu_tsechu_day(name)
-        self._add_thimphu_tsechu_day_two(name)
-        self._add_thimphu_tsechu_day_three(name)
+        self._add_thimphu_tshechu_day(name)
+        self._add_thimphu_tshechu_day_two(name)
+        self._add_thimphu_tshechu_day_three(name)
 
 
 class BT(Bhutan):

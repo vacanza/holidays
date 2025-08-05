@@ -89,7 +89,7 @@ class TibetanCalendarHolidays(EasternCalendarHolidays):
 
     def _add_descending_day_of_lord_buddha(self, name) -> Optional[date]:
         """
-        Add Descending Day Of Lord Buddha.
+        Add Descending Day Of Lord Buddha (22nd day of the 9th lunar month).
         """
         return self._add_tibetan_calendar_holiday(
             name, self._tibetan_calendar.descending_day_of_lord_buddha_date(self._year)
@@ -112,36 +112,36 @@ class TibetanCalendarHolidays(EasternCalendarHolidays):
         )
         return {dt} if dt is not None else set()
 
-    def _add_thimphu_tsechu_day(self, name) -> Optional[date]:
+    def _add_thimphu_drubchen_day(self, name) -> Optional[date]:
         """
-        Add Thimphu Tsechu Day.
+        Add Thimphu Drubchen (6th day of the 8th lunar month).
         """
         return self._add_tibetan_calendar_holiday(
-            name, self._tibetan_calendar.thimphu_tsechu_date(self._year)
+            name, self._tibetan_calendar.thimphu_drubchen_date(self._year), days_delta=+1
         )
 
-    def _add_thimphu_tsechu_day_two(self, name) -> Optional[date]:
+    def _add_thimphu_tshechu_day(self, name) -> Optional[date]:
         """
-        Add Thimphu Tsechu Day.
+        Add Thimphu Tshechu (10th day of the 8th lunar month).
         """
         return self._add_tibetan_calendar_holiday(
-            name, self._tibetan_calendar.thimphu_tsechu_date(self._year), days_delta=+1
+            name, self._tibetan_calendar.thimphu_tshechu_date(self._year)
         )
 
-    def _add_thimphu_tsechu_day_three(self, name) -> Optional[date]:
+    def _add_thimphu_tshechu_day_two(self, name) -> Optional[date]:
         """
-        Add Thimphu Tsechu Day.
+        Add Thimphu Tshechu Day 2.
         """
         return self._add_tibetan_calendar_holiday(
-            name, self._tibetan_calendar.thimphu_tsechu_date(self._year), days_delta=+2
+            name, self._tibetan_calendar.thimphu_tshechu_date(self._year), days_delta=+1
         )
 
-    def _add_thimpu_drubchen_day(self, name) -> Optional[date]:
+    def _add_thimphu_tshechu_day_three(self, name) -> Optional[date]:
         """
-        Add Thimpu Drubchen Day.
+        Add Thimphu Tshechu Day 3.
         """
         return self._add_tibetan_calendar_holiday(
-            name, self._tibetan_calendar.thimpu_drubchen_date(self._year), days_delta=+1
+            name, self._tibetan_calendar.thimphu_tshechu_date(self._year), days_delta=+2
         )
 
     def _add_tibetan_winter_solstice(self, name) -> Optional[date]:
