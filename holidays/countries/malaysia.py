@@ -609,33 +609,7 @@ class MalaysiaBuddhistHolidays(_CustomBuddhistHolidays):
 
 
 class MalaysiaChineseHolidays(_CustomChineseHolidays):
-    LUNAR_NEW_YEAR_DATES = {
-        2001: (JAN, 24),
-        2002: (FEB, 12),
-        2003: (FEB, 1),
-        2004: (JAN, 22),
-        2005: (FEB, 9),
-        2006: (JAN, 29),
-        2007: (FEB, 18),
-        2008: (FEB, 7),
-        2009: (JAN, 26),
-        2010: (FEB, 14),
-        2011: (FEB, 3),
-        2012: (JAN, 23),
-        2013: (FEB, 10),
-        2014: (JAN, 31),
-        2015: (FEB, 19),
-        2016: (FEB, 8),
-        2017: (JAN, 28),
-        2018: (FEB, 16),
-        2019: (FEB, 5),
-        2020: (JAN, 25),
-        2021: (FEB, 12),
-        2022: (FEB, 1),
-        2023: (JAN, 22),
-        2024: (FEB, 10),
-        2025: (JAN, 29),
-    }
+    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2025)
 
 
 class MalaysiaHinduHolidays(_CustomHinduHolidays):

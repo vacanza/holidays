@@ -133,6 +133,7 @@ class ChristmasIsland(
 
 
 class ChristmasIslandChineseHolidays(_CustomChineseHolidays):
+    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2007, 2023)
     LUNAR_NEW_YEAR_DATES = {
         2007: (FEB, 19),
         2009: (JAN, 27),

@@ -201,22 +201,7 @@ class PHL(Philippines):
 
 
 class PhilippinesChineseHolidays(_CustomChineseHolidays):
-    LUNAR_NEW_YEAR_DATES = {
-        2012: (JAN, 23),
-        2013: (FEB, 10),
-        2014: (JAN, 31),
-        2015: (FEB, 19),
-        2016: (FEB, 8),
-        2017: (JAN, 28),
-        2018: (FEB, 16),
-        2019: (FEB, 5),
-        2020: (JAN, 25),
-        2021: (FEB, 12),
-        2022: (FEB, 1),
-        2023: (JAN, 22),
-        2024: (FEB, 10),
-        2025: (JAN, 29),
-    }
+    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2012, 2025)
 
 
 class PhilippinesIslamicHolidays(_CustomIslamicHolidays):

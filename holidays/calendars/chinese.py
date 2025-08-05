@@ -1325,11 +1325,21 @@ class _ChineseLunisolar:
     def _get_holiday(self, holiday: str, year: int, calendar=None) -> tuple[Optional[date], bool]:
         calendar = calendar or self.__calendar
         self.__verify_calendar(calendar)
-        custom_calendar_dates = getattr(self, f"{calendar}_{holiday}_DATES", {})
+        confirmed_dates = getattr(
+            self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {}
+        )
+        confirmed_years = getattr(
+            self, f"{holiday}_DATES_CONFIRMED_YEARS_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", (0, 0)
+        )
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
-        exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
-        dt = exact_dates.get(year, custom_calendar_dates.get(year, estimated_dates.get(year, ())))
-        return date(year, *dt) if dt else None, year not in exact_dates
+        custom_calendar_dates = getattr(self, f"{calendar}_{holiday}_DATES", {})
+        dt = confirmed_dates.get(
+            year, custom_calendar_dates.get(year, estimated_dates.get(year, ()))
+        )
+        is_confirmed = year in confirmed_dates or (
+            confirmed_years[0] <= year <= confirmed_years[1]
+        )
+        return date(year, *dt) if dt else None, not is_confirmed
 
     def buddha_birthday_date(self, year: int, calendar=None) -> tuple[Optional[date], bool]:
         return self._get_holiday(BUDDHA_BIRTHDAY, year, calendar)
