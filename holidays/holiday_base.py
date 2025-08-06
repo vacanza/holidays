@@ -1135,6 +1135,20 @@ class HolidayBase(dict[date, str]):
         days = (dt2 - dt1).days + 1
         return sum(self.is_working_day(_timedelta(dt1, n)) for n in range(days))
 
+    def is_weekend(self, key: DateLike) -> bool:
+        """Check if the given date's week day is a weekend day.
+
+        Args:
+            key:
+                The date to check.
+
+        Returns:
+            True if the date's week day is a weekend day, False otherwise.
+        """
+        # To prioritize performance we avoid reusing the internal
+        # `HolidayBase._is_weekend` method and perform the check directly instead.
+        return self.__keytransform__(key).weekday() in self.weekend
+
     def is_working_day(self, key: DateLike) -> bool:
         """Check if the given date is considered a working day.
 

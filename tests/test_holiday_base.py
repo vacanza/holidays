@@ -696,6 +696,29 @@ class TestInheritance(unittest.TestCase):
         self.assertIn("2020-07-13", hb)
 
 
+class TestIsWeekend(unittest.TestCase):
+    def setUp(self):
+        self.hb = CountryStub1()
+
+    def test_is_weekend(self):
+        self.hb._populate(2022)
+
+        self.hb.weekend = {MON, TUE}
+        for dt in (date(2022, 10, 3), date(2022, 10, 4), "2022-10-03", "2022-10-04"):
+            self.assertTrue(self.hb.is_weekend(dt))
+
+        self.hb.weekend = set()
+        for dt in (date(2022, 10, 3), date(2022, 10, 4), "2022-10-03", "2022-10-04"):
+            self.assertFalse(self.hb.is_weekend(dt))
+
+        self.hb.weekend = {SAT, SUN}
+        for dt in (date(2022, 10, 1), date(2022, 10, 2), "2022-10-01", "2022-10-02"):
+            self.assertTrue(self.hb.is_weekend(dt))
+
+        for dt in (date(2022, 10, 3), date(2022, 10, 4), "2022-10-03", "2022-10-04"):
+            self.assertFalse(self.hb.is_weekend(dt))
+
+
 class TestKeyTransforms(unittest.TestCase):
     def setUp(self):
         self.hb = CountryStub1()
