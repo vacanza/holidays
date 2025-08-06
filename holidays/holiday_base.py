@@ -1145,8 +1145,9 @@ class HolidayBase(dict[date, str]):
         Returns:
             True if the date's week day is a weekend day, False otherwise.
         """
-        dt = self.__keytransform__(key)
-        return dt.weekday() in self.weekend
+        # To prioritize performance we avoid reusing the internal
+        # `HolidayBase._is_weekend` method and perform the check directly instead.
+        return self.__keytransform__(key).weekday() in self.weekend
 
     def is_working_day(self, key: DateLike) -> bool:
         """Check if the given date is considered a working day.
