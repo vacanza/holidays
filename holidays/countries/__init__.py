@@ -46,10 +46,12 @@ from holidays.countries.brunei import Brunei, BN, BRN
 from holidays.countries.bulgaria import Bulgaria, BG, BLG
 from holidays.countries.burkina_faso import BurkinaFaso, BF, BFA
 from holidays.countries.burundi import Burundi, BI, BDI
+from holidays.countries.cabo_verde import CaboVerde, CV, CPV
 from holidays.countries.cambodia import Cambodia, KH, KHM
 from holidays.countries.cameroon import Cameroon, CM, CMR
 from holidays.countries.canada import Canada, CA, CAN
 from holidays.countries.cayman_islands import CaymanIslands, KY, CYM
+from holidays.countries.central_african_republic import CentralAfricanRepublic, CF, CAF
 from holidays.countries.chad import Chad, TD, TCD
 from holidays.countries.chile import Chile, CL, CHL
 from holidays.countries.china import China, CN, CHN
@@ -68,6 +70,7 @@ from holidays.countries.denmark import Denmark, DK, DNK
 from holidays.countries.djibouti import Djibouti, DJ, DJI
 from holidays.countries.dominica import Dominica, DM, DMA
 from holidays.countries.dominican_republic import DominicanRepublic, DO, DOM
+from holidays.countries.dr_congo import DRCongo, CD, COD
 from holidays.countries.ecuador import Ecuador, EC, ECU
 from holidays.countries.egypt import Egypt, EG, EGY
 from holidays.countries.el_salvador import ElSalvador, SV, SLV
@@ -92,6 +95,7 @@ from holidays.countries.gabon import Gabon, GA, GAB
 from holidays.countries.georgia import Georgia, GE, GEO
 from holidays.countries.germany import Germany, DE, DEU
 from holidays.countries.ghana import Ghana, GH, GHA
+from holidays.countries.gibraltar import Gibraltar, GI, GIB
 from holidays.countries.greece import Greece, GR, GRC
 from holidays.countries.greenland import Greenland, GL, GRL
 from holidays.countries.grenada import Grenada, GD, GRD
@@ -135,6 +139,7 @@ from holidays.countries.madagascar import Madagascar, MG, MDG
 from holidays.countries.malawi import Malawi, MW, MWI
 from holidays.countries.malaysia import Malaysia, MY, MYS
 from holidays.countries.maldives import Maldives, MV, MDV
+from holidays.countries.mali import Mali, ML, MLI
 from holidays.countries.malta import Malta, MT, MLT
 from holidays.countries.marshall_islands import MarshallIslands, MH, MHL, HolidaysMH
 from holidays.countries.martinique import Martinique, MQ, MTQ, HolidaysMQ
@@ -159,6 +164,7 @@ from holidays.countries.new_zealand import NewZealand, NZ, NZL
 from holidays.countries.nicaragua import Nicaragua, NI, NIC
 from holidays.countries.niger import Niger, NE, NER
 from holidays.countries.nigeria import Nigeria, NG, NGA
+from holidays.countries.niue import Niue, NU, NIU
 from holidays.countries.norfolk_island import NorfolkIsland, NF, NFK
 from holidays.countries.north_macedonia import NorthMacedonia, MK, MKD
 from holidays.countries.northern_mariana_islands import NorthernMarianaIslands, MP, MNP, HolidaysMP
@@ -172,6 +178,7 @@ from holidays.countries.papua_new_guinea import PapuaNewGuinea, PG, PNG
 from holidays.countries.paraguay import Paraguay, PY, PRY
 from holidays.countries.peru import Peru, PE, PER
 from holidays.countries.philippines import Philippines, PH, PHL
+from holidays.countries.pitcairn_islands import PitcairnIslands, PN, PCN
 from holidays.countries.poland import Poland, PL, POL
 from holidays.countries.portugal import Portugal, PT, PRT
 from holidays.countries.puerto_rico import PuertoRico, PR, PRI, HolidaysPR
@@ -220,10 +227,12 @@ from holidays.countries.tanzania import Tanzania, TZ, TZA
 from holidays.countries.thailand import Thailand, TH, THA
 from holidays.countries.timor_leste import TimorLeste, TL, TLS
 from holidays.countries.togo import Togo, TG, TGO
+from holidays.countries.tokelau import Tokelau, TK, TKL
 from holidays.countries.tonga import Tonga, TO, TON
 from holidays.countries.trinidad_and_tobago import TrinidadAndTobago, TT, TTO
 from holidays.countries.tunisia import Tunisia, TN, TUN
 from holidays.countries.turkey import Turkey, TR, TUR
+from holidays.countries.turkmenistan import Turkmenistan, TM, TKM
 from holidays.countries.turks_and_caicos_islands import TurksAndCaicosIslands, TC, TCA
 from holidays.countries.tuvalu import Tuvalu, TV, TUV
 from holidays.countries.ukraine import Ukraine, UA, UKR

@@ -55,57 +55,32 @@ YearArg = Union[int, Iterable[int]]
 
 
 class HolidayBase(dict[date, str]):
-    """
-    A `dict`-like object containing the holidays for a specific country (and
-    province or state if so initiated); inherits the `dict` class (so behaves
-    similarly to a `dict`). Dates without a key in the Holiday object are not
-    holidays.
+    """Represent a dictionary-like collection of holidays for a specific country or region.
 
-    The key of the object is the date of the holiday and the value is the name
-    of the holiday itself. When passing the date as a key, the date can be
-    expressed as one of the following formats:
+    This class inherits from `dict` and maps holiday dates to their names. It supports
+    customization by country and, optionally, by province or state (subdivision). A date
+    not present as a key is not considered a holiday (or, if `observed` is `False`, not
+    considered an observed holiday).
 
-    * `datetime.datetime` type;
-    * `datetime.date` types;
-    * a `float` representing a Unix timestamp;
-    * or a string of any format (recognized by `dateutil.parser.parse()`).
+    Keys are holiday dates, and values are corresponding holiday names. When accessing or
+    assigning holidays by date, the following input formats are accepted:
 
-    The key is always returned as a `datetime.date` object.
+    * `datetime.date`
+    * `datetime.datetime`
+    * `float` or `int` (Unix timestamp)
+    * `str` of any format recognized by `dateutil.parser.parse()`
 
-    To maximize speed, the list of holidays is built as needed on the fly, one
-    calendar year at a time. When you instantiate the object, it is empty, but
-    the moment a key is accessed it will build that entire year's list of
-    holidays. To pre-populate holidays, instantiate the class with the years
-    argument:
+    Keys are always returned as `datetime.date` objects.
+
+    To maximize performance, the holiday list is lazily populated one year at a time.
+    On instantiation, the object is empty. Once a date is accessed, the full calendar
+    year for that date is generated, unless `expand` is set to `False`. To pre-populate
+    holidays, instantiate the class with the `years` argument:
 
         us_holidays = holidays.US(years=2020)
 
-    It is generally instantiated using the
-    [country_holidays()][holidays.utils.country_holidays] function.
-
-    The key of the `dict`-like `HolidayBase` object is the
-    `date` of the holiday, and the value is the name of the holiday itself.
-    Dates where a key is not present are not public holidays (or, if
-    **observed** is False, days when a public holiday is observed).
-
-    When passing the `date` as a key, the `date` can be expressed in one of the
-    following types:
-
-    * `datetime.date`,
-    * `datetime.datetime`,
-    * a `str` of any format recognized by `dateutil.parser.parse()`,
-    * or a `float` or `int` representing a POSIX timestamp.
-
-    The key is always returned as a `datetime.date` object.
-
-    To maximize speed, the list of public holidays is built on the fly as
-    needed, one calendar year at a time. When the object is instantiated
-    without a **years** parameter, it is empty, but, unless **expand** is set
-    to False, as soon as a key is accessed the class will calculate that entire
-    year's list of holidays and set the keys with them.
-
-    If you need to list the holidays as opposed to querying individual dates,
-    instantiate the class with the **years** parameter.
+    It is recommended to use the
+    [country_holidays()][holidays.utils.country_holidays] function for instantiation.
 
     Example usage:
 
@@ -163,14 +138,13 @@ class HolidayBase(dict[date, str]):
         >>> assert '2018-01-06' not in us_holidays
         >>> assert '2018-01-06' in us_pr_holidays
 
-    Append custom holiday dates by passing one of:
+    Append custom holiday dates by passing one of the following:
 
-    * a `dict` with date/name key/value pairs (e.g.
-      `{'2010-07-10': 'My birthday!'}`),
-    * a list of dates (as a `datetime.date`, `datetime.datetime`,
-      `str`, `int`, or `float`); `'Holiday'` will be used as a description,
-    * or a single date item (of one of the types above); `'Holiday'` will be
-      used as a description:
+    * A dict mapping date values to holiday names (e.g. `{'2010-07-10': 'My birthday!'}`).
+    * A list of date values (`datetime.date`, `datetime.datetime`, `str`, `int`, or `float`);
+      each will be added with 'Holiday' as the default name.
+    * A single date value of any of the supported types above; 'Holiday' will be used as
+      the default name.
 
     ```python
     >>> custom_holidays = country_holidays('US', years=2015)
@@ -325,7 +299,7 @@ class HolidayBase(dict[date, str]):
                 Requested holiday categories.
 
         Returns:
-            A `HolidayBase` object matching the **country** or **market**.
+            A `HolidayBase` object matching the `country` or `market`.
         """
         super().__init__()
 
@@ -436,10 +410,10 @@ class HolidayBase(dict[date, str]):
 
         The method supports the following input types:
 
-        * `datetime.date`,
-        * `datetime.datetime`,
-        * a `str` of any format recognized by `dateutil.parser.parse()`,
-        * or a `float` or `int` representing a POSIX timestamp.
+        * `datetime.date`
+        * `datetime.datetime`
+        * `float` or `int` (Unix timestamp)
+        * `str` of any format recognized by `dateutil.parser.parse()`
 
         Args:
             key:
@@ -617,10 +591,11 @@ class HolidayBase(dict[date, str]):
         """Convert various date-like formats to `datetime.date`.
 
         The method supports the following input types:
-        * `datetime.date`,
-        * `datetime.datetime`,
-        * a `str` of any format recognized by `dateutil.parser.parse()`,
-        * or a `float` or `int` representing a POSIX timestamp
+
+        * `datetime.date`
+        * `datetime.datetime`
+        * `float` or `int` (Unix timestamp)
+        * `str` of any format recognized by `dateutil.parser.parse()`
 
         Args:
             key:
@@ -816,9 +791,7 @@ class HolidayBase(dict[date, str]):
             self.tr = gettext
 
     def _is_leap_year(self) -> bool:
-        """
-        Returns True if the year is leap. Returns False otherwise.
-        """
+        """Returns True if the year is leap. Returns False otherwise."""
         return isleap(self._year)
 
     def _add_holiday(self, name: str, *args) -> Optional[date]:
@@ -899,12 +872,13 @@ class HolidayBase(dict[date, str]):
         return dt.weekday() in self.weekend
 
     def _populate(self, year: int) -> None:
-        """This is a private class that populates (generates and adds) holidays
+        """This is a private method that populates (generates and adds) holidays
         for a given year. To keep things fast, it assumes that no holidays for
         the year have already been populated. It is required to be called
-        internally by any country populate() method, while should not be called
+        internally by any country `populate()` method, while should not be called
         directly from outside.
-        To add holidays to an object, use the update() method.
+        To add holidays to an object, use the [update()][holidays.holiday_base.HolidayBase.update]
+        method.
 
         Args:
             year: The year to populate with holidays.
@@ -980,10 +954,10 @@ class HolidayBase(dict[date, str]):
             key:
                 The date expressed in one of the following types:
 
-                * `datetime.date`,
-                * `datetime.datetime`,
-                * a `str` of any format recognized by `dateutil.parser.parse()`,
-                * or a `float` or `int` representing a POSIX timestamp.
+                * `datetime.date`
+                * `datetime.datetime`
+                * `float` or `int` (Unix timestamp)
+                * `str` of any format recognized by `dateutil.parser.parse()`
 
             default:
                 The default value to return if no value is found.
@@ -1001,10 +975,10 @@ class HolidayBase(dict[date, str]):
             key:
                 The date expressed in one of the following types:
 
-                * `datetime.date`,
-                * `datetime.datetime`,
-                * a `str` of any format recognized by `dateutil.parser.parse()`,
-                * or a `float` or `int` representing a POSIX timestamp.
+                * `datetime.date`
+                * `datetime.datetime`
+                * `float` or `int` (Unix timestamp)
+                * `str` of any format recognized by `dateutil.parser.parse()`
 
         Returns:
             A list of holiday names if the date is a holiday, otherwise an empty list.
@@ -1116,6 +1090,7 @@ class HolidayBase(dict[date, str]):
         """Find the n-th working day from a given date.
 
         Moves forward if n is positive, or backward if n is negative.
+        If n is 0, returns the given date if it is a working day; otherwise the next working day.
 
         Args:
             key:
@@ -1128,10 +1103,11 @@ class HolidayBase(dict[date, str]):
         Returns:
             The calculated working day after shifting by n working days.
         """
-        direction = +1 if n > 0 else -1
+        direction = +1 if n >= 0 else -1
         dt = self.__keytransform__(key)
-        for _ in range(abs(n)):
-            dt = _timedelta(dt, direction)
+        for _ in range(abs(n) or 1):
+            if n:
+                dt = _timedelta(dt, direction)
             while not self.is_working_day(dt):
                 dt = _timedelta(dt, direction)
         return dt
@@ -1183,10 +1159,10 @@ class HolidayBase(dict[date, str]):
             key:
                 The date expressed in one of the following types:
 
-                * `datetime.date`,
-                * `datetime.datetime`,
-                * a `str` of any format recognized by `dateutil.parser.parse()`,
-                * or a `float` or `int` representing a POSIX timestamp.
+                * `datetime.date`
+                * `datetime.datetime`
+                * `float` or `int` (Unix timestamp)
+                * `str` of any format recognized by `dateutil.parser.parse()`
 
             default:
                 The default value to return if no match is found.
@@ -1290,10 +1266,10 @@ class HolidayBase(dict[date, str]):
 
                 Dates can be expressed in one or more of the following types:
 
-                * `datetime.date`,
-                * `datetime.datetime`,
-                * a `str` of any format recognized by `dateutil.parser.parse()`,
-                * or a `float` or `int` representing a POSIX timestamp.
+                * `datetime.date`
+                * `datetime.datetime`
+                * `float` or `int` (Unix timestamp)
+                * `str` of any format recognized by `dateutil.parser.parse()`
         """
         for arg in args:
             if isinstance(arg, dict):
@@ -1308,12 +1284,17 @@ class HolidayBase(dict[date, str]):
 
 class HolidaySum(HolidayBase):
     """
-    Returns a `dict`-like object resulting from the addition of two or
-    more individual dictionaries of public holidays. The original dictionaries
-    are available as a `list` in the attribute `holidays,` and
-    `country` and `subdiv` attributes are added
-    together and could become `list` s. Holiday names, when different,
-    are merged. All years are calculated (expanded) for all operands.
+    Combine multiple holiday collections into a single dictionary-like object.
+
+    This class represents the sum of two or more `HolidayBase` instances.
+    The resulting object behaves like a dictionary mapping dates to holiday
+    names, with the following behaviors:
+
+    * The `holidays` attribute stores the original holiday collections as a list.
+    * The `country` and `subdiv` attributes are combined from all operands and
+      may become lists.
+    * If multiple holidays fall on the same date, their names are merged.
+    * Holidays are generated (expanded) for all years included in the operands.
     """
 
     country: Union[str, list[str]]  # type: ignore[assignment]

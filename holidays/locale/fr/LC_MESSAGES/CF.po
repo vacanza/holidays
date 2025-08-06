@@ -1,0 +1,88 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Central African Republic holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.77\n"
+"POT-Creation-Date: 2025-06-22 19:09+0530\n"
+"PO-Revision-Date: 2025-06-22 19:09+0530\n"
+"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: fr\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimé)"
+msgstr ""
+
+#. New Year's Day.
+msgid "Jour de l'an"
+msgstr ""
+
+#. Barthélemy Boganda Day.
+msgid "Journée Barthélemy Boganda"
+msgstr ""
+
+#. Easter Monday.
+msgid "Lundi de Pâques"
+msgstr ""
+
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr ""
+
+#. Ascension Day.
+msgid "Ascension"
+msgstr ""
+
+#. Whit Monday.
+msgid "Lundi de Pentecôte"
+msgstr ""
+
+#. General Prayer Day.
+msgid "Journée de prière générale"
+msgstr ""
+
+#. Independence Day.
+msgid "Jour de l'indépendance"
+msgstr ""
+
+#. Assumption Day.
+msgid "Assomption"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Toussaint"
+msgstr ""
+
+#. National Day.
+msgid "Fête nationale"
+msgstr ""
+
+#. Christmas Day.
+msgid "Jour de Noël"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Aïd al-Fitr"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Aïd al-Adha"
+msgstr ""

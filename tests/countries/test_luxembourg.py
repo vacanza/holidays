@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import BANK
 from holidays.countries.luxembourg import Luxembourg, LU, LUX
 from tests.common import CommonCountryTests
 
@@ -38,6 +39,14 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2018-12-26", "Stiefesdag"),
         )
 
+    def test_2018_bank(self):
+        self.assertHolidays(
+            Luxembourg(categories=BANK, years=2018),
+            ("2018-03-30", "Karfreideg"),
+            ("2018-12-24", "Hellegowend (nomëtteg)"),
+            ("2018-12-31", "Silvester"),
+        )
+
     def test_2019(self):
         self.assertHolidays(
             ("2019-01-01", "Neijoerschdag"),
@@ -51,6 +60,14 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2019-11-01", "Allerhellgen"),
             ("2019-12-25", "Chrëschtdag"),
             ("2019-12-26", "Stiefesdag"),
+        )
+
+    def test_2019_bank(self):
+        self.assertHolidays(
+            Luxembourg(categories=BANK, years=2019),
+            ("2019-04-19", "Karfreideg"),
+            ("2019-12-24", "Hellegowend (nomëtteg)"),
+            ("2019-12-31", "Silvester"),
         )
 
     def test_2020(self):
@@ -68,9 +85,18 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2020-12-26", "Stiefesdag"),
         )
 
+    def test_2020_bank(self):
+        self.assertHolidays(
+            Luxembourg(categories=BANK, years=2020),
+            ("2020-04-10", "Karfreideg"),
+            ("2020-12-24", "Hellegowend (nomëtteg)"),
+            ("2020-12-31", "Silvester"),
+        )
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Neijoerschdag"),
+            ("2022-04-15", "Karfreideg"),
             ("2022-04-18", "Ouschterméindeg"),
             ("2022-05-01", "Dag vun der Aarbecht"),
             ("2022-05-09", "Europadag"),
@@ -79,14 +105,17 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-06-23", "Nationalfeierdag"),
             ("2022-08-15", "Léiffrawëschdag"),
             ("2022-11-01", "Allerhellgen"),
+            ("2022-12-24", "Hellegowend (nomëtteg)"),
             ("2022-12-25", "Chrëschtdag"),
             ("2022-12-26", "Stiefesdag"),
+            ("2022-12-31", "Silvester"),
         )
 
     def test_l10n_de(self):
         self.assertLocalizedHolidays(
             "de",
             ("2022-01-01", "Neujahr"),
+            ("2022-04-15", "Karfreitag"),
             ("2022-04-18", "Ostermontag"),
             ("2022-05-01", "Tag der Arbeit"),
             ("2022-05-09", "Europatag"),
@@ -95,14 +124,17 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-06-23", "Nationalfeiertag"),
             ("2022-08-15", "Mariä Himmelfahrt"),
             ("2022-11-01", "Allerheiligen"),
+            ("2022-12-24", "Heiligabend (Nachmittag)"),
             ("2022-12-25", "Weihnachten"),
             ("2022-12-26", "Zweiter Weihnachtsfeiertag"),
+            ("2022-12-31", "Silvester"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),
+            ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labor Day"),
             ("2022-05-09", "Europe Day"),
@@ -111,30 +143,36 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-06-23", "National Day"),
             ("2022-08-15", "Assumption Day"),
             ("2022-11-01", "All Saints' Day"),
+            ("2022-12-24", "Christmas Eve (afternoon)"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Saint Stephen's Day"),
+            ("2022-12-31", "New Year's Eve"),
         )
 
     def test_l10n_fr(self):
         self.assertLocalizedHolidays(
             "fr",
-            ("2022-01-01", "Jour de l'an"),
+            ("2022-01-01", "Jour de l'An"),
+            ("2022-04-15", "Vendredi Saint"),
             ("2022-04-18", "Lundi de Pâques"),
             ("2022-05-01", "Fête du Travail"),
-            ("2022-05-09", "Journée de l'Europe"),
+            ("2022-05-09", "Jour de l'Europe"),
             ("2022-05-26", "Ascension"),
             ("2022-06-06", "Lundi de Pentecôte"),
             ("2022-06-23", "Fête nationale"),
             ("2022-08-15", "Assomption"),
             ("2022-11-01", "Toussaint"),
+            ("2022-12-24", "Veille de Noël (après-midi)"),
             ("2022-12-25", "Noël"),
             ("2022-12-26", "Saint Etienne"),
+            ("2022-12-31", "Saint Sylvestre"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
             "uk",
             ("2022-01-01", "Новий рік"),
+            ("2022-04-15", "Страсна пʼятниця"),
             ("2022-04-18", "Великодній понеділок"),
             ("2022-05-01", "День праці"),
             ("2022-05-09", "День Європи"),
@@ -143,6 +181,8 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-06-23", "Національне свято"),
             ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
             ("2022-11-01", "День усіх святих"),
+            ("2022-12-24", "Святий вечір (друга половина дня)"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "День Святого Стефана"),
+            ("2022-12-31", "Переддень Нового року"),
         )

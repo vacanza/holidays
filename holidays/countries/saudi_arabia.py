@@ -13,7 +13,8 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, FEB, SEP, NOV, THU, FRI, SAT, _timedelta
+from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars.gregorian import SEP, NOV, THU, FRI, SAT, _timedelta
 from holidays.groups import IslamicHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -30,9 +31,10 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
     """Saudi Arabia holidays.
 
     References:
-        * <https://laboreducation.hrsd.gov.sa/en/gallery/274>
+        * <https://ar.wikipedia.org/wiki/قائمة_العطل_الرسمية_في_السعودية>
         * <https://web.archive.org/web/20240610223551/http://laboreducation.hrsd.gov.sa/en/labor-education/322>
         * <https://web.archive.org/web/20250329052253/https://english.alarabiya.net/News/gulf/2022/01/27/Saudi-Arabia-to-commemorate-Founding-Day-on-Feb-22-annually-Royal-order>
+        * [2015 (1436 AH) Dhu al-Hijjah begin on September 15](https://web.archive.org/web/20250430191246/https://qna.org.qa/en/news/news-details?id=saudi-arabia-eid-aladha-to-start-on-september-24&date=14/09/2015)
     """
 
     country = "SA"
@@ -45,26 +47,29 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
     observed_estimated_label = tr("%s (المقدرة، ملاحظة)")
     supported_languages = ("ar", "en_US")
 
-    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
-        """
+    def __init__(self, *args, islamic_show_estimated: bool = False, **kwargs):
+        """Saudi Arabia has traditionally used the Umm al-Qura calendar
+            for administrative purposes.
+
         Args:
             islamic_show_estimated:
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
         """
-        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
+        IslamicHolidays.__init__(
+            self, cls=SaudiArabiaIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, SaudiArabiaStaticHolidays)
         kwargs.setdefault("observed_rule", FRI_TO_PREV_THU + SAT_TO_NEXT_SUN)
         super().__init__(*args, **kwargs)
 
-    def _add_islamic_observed(self, dts: set[date]) -> None:
+    def _add_islamic_observed(self, dt: date) -> None:
         # Observed days are added to make up for any days falling on a weekend.
         if not self.observed:
             return None
         observed_rule = THU_FRI_TO_NEXT_WORKDAY if self._year <= 2012 else FRI_SAT_TO_NEXT_WORKDAY
-        for dt in dts:
-            for i in range(4):
-                self._add_observed(_timedelta(dt, -i), name=self[dt], rule=observed_rule)
+        for i in range(4):
+            self._add_observed(_timedelta(dt, -i), name=self[dt], rule=observed_rule)
 
     def _populate_public_holidays(self):
         # Weekend used to be THU, FRI before June 28th, 2013.
@@ -77,36 +82,38 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
         )
         self.weekend = {THU, FRI} if self._year <= 2012 else {FRI, SAT}
 
-        # Eid al-Fitr Holiday
+        # Eid al-Fitr Holiday.
         eid_al_fitr_name = tr("عطلة عيد الفطر")
-        self._add_eid_al_fitr_day(eid_al_fitr_name)
+        eid_al_fitr_dates = self._add_eid_al_fitr_day(eid_al_fitr_name)
         self._add_eid_al_fitr_day_two(eid_al_fitr_name)
         self._add_eid_al_fitr_day_three(eid_al_fitr_name)
-        self._add_islamic_observed(self._add_eid_al_fitr_day_four(eid_al_fitr_name))
 
-        # Arafat Day
+        for dt in eid_al_fitr_dates:
+            if self._islamic_calendar._is_long_ramadan(dt):
+                # Add 30 Ramadan.
+                self._add_holiday(eid_al_fitr_name, _timedelta(dt, -1))
+                self._add_islamic_observed(_timedelta(dt, +2))
+            else:
+                # Add 4 Shawwal.
+                self._add_islamic_observed(self._add_holiday(eid_al_fitr_name, _timedelta(dt, +3)))
+
+        # Arafat Day.
         self._add_arafah_day(tr("يوم عرفة"))
-        # Eid al-Adha Holiday
+
+        # Eid al-Adha Holiday.
         name = tr("عطلة عيد الأضحى")
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
-        self._add_islamic_observed(self._add_eid_al_adha_day_three(name))
+        for dt in self._add_eid_al_adha_day_three(name):
+            self._add_islamic_observed(dt)
 
-        # If National Day happens within the Eid al-Fitr Holiday or
-        # Eid al-Adha Holiday, there is no extra holidays given for it.
-        if self._year >= 2005:
-            dt = date(self._year, SEP, 23)
-            if dt not in self:
-                # National Day Holiday
-                self._add_observed(self._add_holiday(tr("اليوم الوطني"), dt))
-
-        # If Founding Day happens within the Eid al-Fitr Holiday or
-        # Eid al-Adha Holiday, there is no extra holidays given for it.
         if self._year >= 2022:
-            dt = date(self._year, FEB, 22)
-            if dt not in self:
-                # Founding Day
-                self._add_observed(self._add_holiday(tr("يوم التأسيسي"), dt))
+            # Founding Day.
+            self._add_observed(self._add_holiday_feb_22(tr("يوم التأسيسي")))
+
+        if self._year >= 2005:
+            # National Day.
+            self._add_observed(self._add_holiday_sep_23(tr("اليوم الوطني")))
 
 
 class SA(SaudiArabia):
@@ -117,13 +124,14 @@ class SAU(SaudiArabia):
     pass
 
 
-class SaudiArabiaStaticHolidays:
-    special_public_holidays = {
-        # Celebrate the country's win against Argentina in the World Cup
-        2022: (NOV, 23, tr("يوم وطني")),
+class SaudiArabiaIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES = {
+        2015: (SEP, 24),
     }
 
-    special_public_holidays_observed = {
-        # Eid al-Fitr Holiday
-        2001: (JAN, 1, tr("عطلة عيد الفطر")),
+
+class SaudiArabiaStaticHolidays:
+    special_public_holidays = {
+        # Celebrate the country's win against Argentina in the World Cup.
+        2022: (NOV, 23, tr("يوم وطني")),
     }

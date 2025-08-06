@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.78\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
 "PO-Revision-Date: 2025-06-26 17:55+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -25,81 +25,83 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.5\n"
-"X-Source-Language: ar\n"
+"X-Source-Language: ar_EG\n"
 
 #. %s (estimated).
 #, c-format
 msgid "%s (المقدرة)"
 msgstr "%s (estimated)"
 
-#. New Year's Day.
-msgid "رأس السنة الميلادية"
-msgstr "New Year's Day"
+#. %s (observed).
+#, c-format
+msgid "%s (ملاحظة)"
+msgstr "%s (observed)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (المقدرة، ملاحظة)"
+msgstr "%s (observed, estimated)"
 
 #. Coptic Christmas Day.
-msgid "عيد الميلاد المجيد (تقويم قبطي)"
+msgid "عيد الميلاد المجيد"
 msgstr "Coptic Christmas Day"
 
-#. January 25th Revolution.
-msgid "عيد ثورة 25 يناير"
-msgstr "January 25th Revolution Day"
+#. January 25th Revolution and National Police Day.
+msgid "ثورة ٢٥ يناير وعيد الشرطة"
+msgstr "January 25th Revolution and National Police Day"
 
 #. National Police Day.
 msgid "عيد الشرطة"
 msgstr "Police Day"
 
-#. Coptic Easter.
-msgid "عيد الفصح القبطي"
-msgstr "Coptic Easter"
-
-#. Spring Festival.
-msgid "شم النسيم"
-msgstr "Sham El Nessim"
-
 #. Sinai Liberation Day.
 msgid "عيد تحرير سيناء"
 msgstr "Sinai Liberation Day"
+
+#. Spring Festival.
+msgid "عيد شم النسيم"
+msgstr "Spring Festival"
 
 #. Labor Day.
 msgid "عيد العمال"
 msgstr "Labor Day"
 
-#. Armed Forces Day.
-msgid "عيد القوات المسلحة"
-msgstr "Armed Forces Day"
-
 #. June 30 Revolution Day.
-msgid "عيد ثورة 30 يونيو"
+msgid "عيد ثورة ٣٠ يونيو"
 msgstr "June 30 Revolution Day"
 
 #. July 23 Revolution Day.
-msgid "عيد ثورة 23 يوليو"
+msgid "عيد ثورة ٢٣ يوليو"
 msgstr "July 23 Revolution Day"
 
-#. Eid al-Fitr.
-msgid "عيد الفطر"
-msgstr "Eid al-Fitr"
-
-#. Eid al-Fitr Holiday.
-msgid "عطلة عيد الفطر"
-msgstr "Eid al-Fitr Holiday"
-
-#. Arafat Day.
-msgid "يوم عرفة"
-msgstr "Arafat Day"
-
-#. Eid al-Adha.
-msgid "عيد الأضحى"
-msgstr "Eid al-Adha"
-
-#. Eid al-Adha Holiday.
-msgid "عطلة عيد الأضحى"
-msgstr "Eid al-Adha Holiday"
+#. Armed Forces Day.
+msgid "عيد القوات المسلحة"
+msgstr "Armed Forces Day"
 
 #. Islamic New Year.
 msgid "رأس السنة الهجرية"
 msgstr "Islamic New Year"
 
 #. Prophet's Birthday.
-msgid "عيد المولد النبوي"
+msgid "المولد النبوي الشريف"
 msgstr "Prophet's Birthday"
+
+#. Eid al-Fitr.
+msgid "عيد الفطر المبارك"
+msgstr "Eid al-Fitr"
+
+#. Arafat Day.
+msgid "وقفة عيد الأضحى المبارك"
+msgstr "Arafat Day"
+
+#. Eid al-Adha.
+msgid "عيد الأضحى المبارك"
+msgstr "Eid al-Adha"
+
+#. Taba Liberation Day.
+msgid "عيد تحرير طابا"
+msgstr "Taba Liberation Day"
+
+#. Evacuation Day.
+msgid "عيد الجلاء"
+msgstr "Evacuation Day"

@@ -1,0 +1,99 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Turkmenistan holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.79\n"
+"POT-Creation-Date: 2025-07-25 16:50+0500\n"
+"PO-Revision-Date: 2025-07-25 16:54+0500\n"
+"Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.6\n"
+"X-Source-Language: tk\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (çak edilýär)"
+msgstr "%s (estimated)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (dynç güni)"
+msgstr "%s (observed)"
+
+#. %s (observed, estimated)
+#, c-format
+msgid "%s (dynç güni, çak edilýär)"
+msgstr "%s (observed, estimated)"
+
+#. New Year's Day.
+msgid "Täze ýyl"
+msgstr "New Year's Day"
+
+#. State Flag Day.
+msgid "Türkmenistanyň Döwlet baýdagynyň güni"
+msgstr "State Flag Day"
+
+#. Spring Festival.
+msgid "Milli bahar baýramy"
+msgstr "Spring Festival"
+
+#. International Women's Day.
+msgid "Halkara zenanlar güni"
+msgstr "International Women's Day"
+
+#. Victory Day.
+msgid "1941-1945-nji ýyllaryň Beýik Watançylyk urşunda ýeňiş güni"
+msgstr "Victory Day"
+
+#. Constitution and State Flag Day.
+msgid "Türkmenistanyň Konstitusiýasynyň we Döwlet baýdagynyň güni"
+msgstr "Constitution and State Flag Day"
+
+#. Day of the Constitution of Turkmenistan and Poetry of Magtymguly Pyragy.
+msgid "Türkmenistanyň Konstitusiýasynyň we Makhtumkuli Pyragynyň şygryýet güni"
+msgstr "Day of the Constitution of Turkmenistan and Poetry of Magtymguly Pyragy"
+
+#. Day of Revival, Unity and Poetry of Magtymguly Pyragy.
+msgid "Galkynyş, Agzybirlik we Magtymguly Pyragynyň şygryýet güni"
+msgstr "Day of Revival, Unity and Poetry of Magtymguly Pyragy"
+
+#. Independence Day.
+msgid "Türkmenistanyň Garaşsyzlyk güni"
+msgstr "Independence Day"
+
+#. Memorial Day.
+msgid "Hatyra güni"
+msgstr "Memorial Day"
+
+#. National Memorial Day.
+msgid "Milli ýatlama güni"
+msgstr "National Memorial Day"
+
+#. International Neutrality Day.
+msgid "Halkara Bitaraplyk güni"
+msgstr "International Neutrality Day"
+
+#. Eid al-Fitr.
+msgid "Oraza baýramy"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Gurban baýramy"
+msgstr "Eid al-Adha"
