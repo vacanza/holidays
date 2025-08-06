@@ -1596,6 +1596,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>HALF_DAY</td>
 </tr>
 <tr>
+<td>Turkmenistan</td>
+<td>TM</td>
+<td></td>
+<td>en_US, ru, <strong>tk</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Turks and Caicos Islands</td>
 <td>TC</td>
 <td></td>
