@@ -31,12 +31,17 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     "Mariä Himmelfahrt" is only a holiday in Bavaria (BY) and "Fronleichnam"
     in Saxony (SN) and Thuringia (TH) if municipality is mostly catholic which
     in term depends on census data. It's listed in "CATHOLIC" category for these provinces.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Germany>
+        * [Bavaria's Feiertagsgesetz](https://web.archive.org/web/20250724092008/https://www.gesetze-bayern.de/Content/Document/BayFTG-1)
     """
 
     country = "DE"
     default_language = "de"
     start_year = 1990
     subdivisions = (
+        # States.
         "BB",  # Brandenburg.
         "BE",  # Berlin.
         "BW",  # Baden-Württemberg.
@@ -53,6 +58,8 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         "SN",  # Sachsen.
         "ST",  # Sachsen-Anhalt.
         "TH",  # Thüringen.
+        # Cities.
+        "Augsburg",
     )
     subdivisions_aliases = {
         "Brandenburg": "BB",
@@ -147,9 +154,13 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
     def _populate_subdiv_by_public_holidays(self):
         if self._year >= 1991:
+            # Epiphany.
             self._add_epiphany_day(tr("Heilige Drei Könige"))
+
+            # Corpus Christi.
             self._add_corpus_christi_day(tr("Fronleichnam"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
     def _populate_subdiv_by_catholic_holidays(self):
@@ -159,63 +170,83 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
     def _populate_subdiv_hb_public_holidays(self):
         if self._year >= 2018:
+            # Reformation Day.
             self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _populate_subdiv_he_public_holidays(self):
         if self._year >= 1991:
+            # Corpus Christi.
             self._add_corpus_christi_day(tr("Fronleichnam"))
 
     def _populate_subdiv_hh_public_holidays(self):
         if self._year >= 2018:
+            # Reformation Day.
             self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _populate_subdiv_mv_public_holidays(self):
         if self._year >= 2023:
+            # International Women's Day.
             self._add_womens_day(tr("Internationaler Frauentag"))
 
+        # Reformation Day.
         self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _populate_subdiv_ni_public_holidays(self):
         if self._year >= 2018:
+            # Reformation Day.
             self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _populate_subdiv_nw_public_holidays(self):
         if self._year >= 1991:
+            # Corpus Christi.
             self._add_corpus_christi_day(tr("Fronleichnam"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
     def _populate_subdiv_rp_public_holidays(self):
         if self._year >= 1991:
+            # Corpus Christi.
             self._add_corpus_christi_day(tr("Fronleichnam"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
     def _populate_subdiv_sh_public_holidays(self):
         if self._year >= 2018:
+            # Reformation Day.
             self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _populate_subdiv_sl_public_holidays(self):
         if self._year >= 1991:
+            # Corpus Christi.
             self._add_corpus_christi_day(tr("Fronleichnam"))
+
+            # Assumption Day.
             self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
     def _populate_subdiv_sn_public_holidays(self):
+        # Reformation Day.
         self._add_holiday_oct_31(tr("Reformationstag"))
 
         if self._year >= 1995:
+            # Repentance and Prayer Day.
             self._add_holiday_1st_wed_before_nov_22(tr("Buß- und Bettag"))
 
     def _populate_subdiv_sn_catholic_holidays(self):
         if self._year >= 1991:
+            # Corpus Christi.
             self._add_corpus_christi_day(tr("Fronleichnam"))
 
     def _populate_subdiv_st_public_holidays(self):
         if self._year >= 1991:
+            # Epiphany.
             self._add_epiphany_day(tr("Heilige Drei Könige"))
 
+        # Reformation Day.
         self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _populate_subdiv_th_public_holidays(self):
@@ -223,11 +254,20 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             # World Children's Day.
             self._add_holiday_sep_20(tr("Weltkindertag"))
 
+        # Reformation Day.
         self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _populate_subdiv_th_catholic_holidays(self):
         if self._year >= 1991:
+            # Corpus Christi.
             self._add_corpus_christi_day(tr("Fronleichnam"))
+
+    def _populate_subdiv_augsburg_public_holidays(self):
+        self._populate_subdiv_by_public_holidays()
+
+        if self._year >= 1991:
+            # Augsburg Peace Festival.
+            self._add_holiday_aug_8(tr("Augsburger Hohes Friedensfest"))
 
 
 class DE(Germany):
@@ -248,6 +288,7 @@ class GermanyStaticHolidays:
     """
 
     special_public_holidays = {
+        # Reformation Day.
         2017: (OCT, 31, tr("Reformationstag")),
     }
 
