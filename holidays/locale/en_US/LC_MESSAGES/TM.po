@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.78\n"
+"Project-Id-Version: Holidays 0.79\n"
 "POT-Creation-Date: 2025-07-25 16:50+0500\n"
 "PO-Revision-Date: 2025-07-25 16:54+0500\n"
 "Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
