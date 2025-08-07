@@ -254,79 +254,88 @@ class TestIraq(CommonCountryTests, TestCase):
     def test_great_feast(self):
         name = "يوما عيد البنجة"
         self.assertNoHolidayName(name)
-        # Test first two days which are always present
         self.assertHolidayName(
             name,
             self.sabian_holidays,
-            *(
-                f"{year}-08-{day:02d}"
-                for year in range(1964, 2050)
-                for day in range(7, 9)  # August 7-8
-            ),
+            "1973-08-03",
+            "1973-08-04",
+            "2024-07-21",
+            "2024-07-22",
+            "2024-07-23",
+            "2024-07-24",
         )
-        # Test additional days for years 2024+
-        if self._year >= 2024:
-            self.assertHolidayName(
-                name,
-                self.sabian_holidays,
-                *(
-                    f"{year}-08-{day:02d}"
-                    for year in range(2024, 2050)
-                    for day in range(9, 11)  # August 9-10
-                ),
-            )
+        self.assertHolidayName(name, self.sabian_holidays, range(1974, 2050))
+        self.assertNoHolidayName(name, self.sabian_holidays, range(1964, 1973))
+        self.assertNoHolidayName(
+            name,
+            self.sabian_holidays,
+            "1973-08-05",
+            "1973-08-06",
+            "2023-07-24",
+            "2023-07-25",
+        )
 
     def test_parwanaya(self):
         name = "عيد الخليقة"
         self.assertNoHolidayName(name)
-        # Test first two days which are always present
         self.assertHolidayName(
             name,
             self.sabian_holidays,
-            *(
-                f"{year}-04-{day:02d}"
-                for year in range(1964, 2050)
-                for day in range(5, 7)  # April 5-6
-            ),
+            "1973-03-31",
+            "1973-04-01",
+            "2024-03-18",
+            "2024-03-19",
+            "2024-03-20",
+            "2024-03-21",
+            "2024-03-22",
         )
-        # Test additional days for years 2024+
-        if self._year >= 2024:
-            self.assertHolidayName(
-                name,
-                self.sabian_holidays,
-                *(
-                    f"{year}-04-{day:02d}"
-                    for year in range(2024, 2050)
-                    for day in range(7, 10)  # April 7-9
-                ),
-            )
+        self.assertHolidayName(name, self.sabian_holidays, range(1974, 2050))
+        self.assertNoHolidayName(name, self.sabian_holidays, range(1964, 1973))
+        self.assertNoHolidayName(
+            name,
+            self.sabian_holidays,
+            "1973-04-02",
+            "1973-04-03",
+            "1973-04-04",
+            "2023-03-20",
+            "2023-03-21",
+            "2023-03-22",
+        )
 
     def test_little_feast(self):
         name = "عيد الصغير"
         self.assertNoHolidayName(name)
-        # Test first day which is always present
         self.assertHolidayName(
             name,
             self.sabian_holidays,
-            *(f"{year}-11-23" for year in range(1964, 2050)),
+            "1973-04-22",
+            "1974-04-22",
+            "2023-04-09",
+            "2024-04-09",
+            "2024-04-10",
+            "2025-04-09",
+            "2025-04-10",
         )
-        # Test second day for years 2024+
-        if self._year >= 2024:
-            self.assertHolidayName(
-                name,
-                self.sabian_holidays,
-                *(f"{year}-11-24" for year in range(2024, 2050)),
-            )
+        self.assertHolidayName(name, self.sabian_holidays, range(1974, 2050))
+        self.assertNoHolidayName(name, self.sabian_holidays, range(1964, 1973))
+        self.assertNoHolidayName(
+            name, self.sabian_holidays, "1973-04-23", "1974-04-23", "2023-04-10"
+        )
 
     def test_prophet_yahyas_birthday(self):
         name = "مولد النبي يحيى عليه السلام"
         self.assertNoHolidayName(name)
-        # Test the single day holiday
         self.assertHolidayName(
             name,
             self.sabian_holidays,
-            *(f"{year}-05-01" for year in range(1964, 2050)),
+            "2021-05-18",
+            "2022-05-18",
+            "2023-05-17",
+            "2024-05-17",
+            "2025-05-17",
         )
+        self.assertHolidayName(name, self.sabian_holidays, range(1974, 2050))
+        self.assertNoHolidayName(name, self.sabian_holidays, range(1964, 1973))
 
     def test_yazidi_new_year(self):
         name = "رأس السنة الإيزيدية"
@@ -409,16 +418,21 @@ class TestIraq(CommonCountryTests, TestCase):
             ("2025-01-01", "رأس السنة الميلادية"),
             ("2025-01-06", "عيد الجيش"),
             ("2025-03-16", "ذكرى جرائم البعث والأنفال والهجوم على حلبجة"),
-            ("2025-03-21", "عيد نوروز"),
+            ("2025-03-18", "عيد الخليقة"),
+            ("2025-03-19", "عيد الخليقة"),
+            ("2025-03-20", "عيد الخليقة"),
+            ("2025-03-21", "عيد الخليقة; عيد نوروز"),
+            ("2025-03-22", "عيد الخليقة"),
             ("2025-03-31", "عيد الفطر"),
             ("2025-04-01", "عيد الفطر"),
             ("2025-04-02", "عيد الفطر"),
-            ("2025-04-05", "يوما عيد البنجة"),
-            ("2025-04-06", "يوما عيد البنجة"),
+            ("2025-04-09", "عيد الصغير"),
+            ("2025-04-10", "عيد الصغير"),
             ("2025-04-16", "رأس السنة الإيزيدية"),
             ("2025-04-20", "أحد الفصح"),
             ("2025-04-21", "إثنين الفصح"),
-            ("2025-05-01", "عيد العمال العالمي; ميلاد النبي يحيى"),
+            ("2025-05-01", "عيد العمال العالمي"),
+            ("2025-05-17", "مولد النبي يحيى عليه السلام"),
             ("2025-06-05", "يوم عرفة"),
             ("2025-06-06", "عيد الأضحى"),
             ("2025-06-07", "عيد الأضحى"),
@@ -426,10 +440,12 @@ class TestIraq(CommonCountryTests, TestCase):
             ("2025-06-15", "عيد الغدير"),
             ("2025-06-26", "رأس السنة الهجرية"),
             ("2025-07-05", "عاشوراء"),
+            ("2025-07-21", "يوما عيد البنجة"),
+            ("2025-07-22", "يوما عيد البنجة"),
+            ("2025-07-23", "يوما عيد البنجة"),
+            ("2025-07-24", "يوما عيد البنجة"),
             ("2025-08-02", "مهرجان الصيف اليزيدي"),
             ("2025-08-03", "مهرجان الصيف اليزيدي"),
-            ("2025-08-07", "يوما العيد الكبير"),
-            ("2025-08-08", "يوما العيد الكبير"),
             ("2025-09-04", "المولد النبوي الشريف"),
             ("2025-10-06", "عيد الجمعية"),
             ("2025-10-07", "عيد الجمعية"),
@@ -439,7 +455,6 @@ class TestIraq(CommonCountryTests, TestCase):
             ("2025-10-11", "عيد الجمعية"),
             ("2025-10-12", "عيد الجمعية"),
             ("2025-10-13", "عيد الجمعية"),
-            ("2025-11-23", "يوم العيد الصغير"),
             ("2025-12-19", "عيد إيزي"),
             ("2025-12-25", "عيد الميلاد"),
         )
@@ -450,16 +465,21 @@ class TestIraq(CommonCountryTests, TestCase):
             ("2025-01-01", "New Year's Day"),
             ("2025-01-06", "Army Day"),
             ("2025-03-16", "Commemoration of the Saddam Baath crimes against the Iraqi people"),
-            ("2025-03-21", "Nowruz"),
+            ("2025-03-18", "Feast of Creation"),
+            ("2025-03-19", "Feast of Creation"),
+            ("2025-03-20", "Feast of Creation"),
+            ("2025-03-21", "Feast of Creation; Nowruz"),
+            ("2025-03-22", "Feast of Creation"),
             ("2025-03-31", "Eid al-Fitr"),
             ("2025-04-01", "Eid al-Fitr"),
             ("2025-04-02", "Eid al-Fitr"),
-            ("2025-04-05", "Benja Festival"),
-            ("2025-04-06", "Benja Festival"),
+            ("2025-04-09", "Little Feast"),
+            ("2025-04-10", "Little Feast"),
             ("2025-04-16", "Yazidi New Year"),
             ("2025-04-20", "Easter Sunday"),
             ("2025-04-21", "Easter Monday"),
-            ("2025-05-01", "Labor Day; Prophet Yahya's Birthday"),
+            ("2025-05-01", "Labor Day"),
+            ("2025-05-17", "Prophet Yahya's Birthday"),
             ("2025-06-05", "Day of Arafah"),
             ("2025-06-06", "Eid al-Adha"),
             ("2025-06-07", "Eid al-Adha"),
@@ -467,10 +487,12 @@ class TestIraq(CommonCountryTests, TestCase):
             ("2025-06-15", "Eid al-Ghadir"),
             ("2025-06-26", "Islamic New Year"),
             ("2025-07-05", "Ashura"),
+            ("2025-07-21", "Great Feast"),
+            ("2025-07-22", "Great Feast"),
+            ("2025-07-23", "Great Feast"),
+            ("2025-07-24", "Great Feast"),
             ("2025-08-02", "Yazidi Summer Festival"),
             ("2025-08-03", "Yazidi Summer Festival"),
-            ("2025-08-07", "Great Feast"),
-            ("2025-08-08", "Great Feast"),
             ("2025-09-04", "Prophet's Birthday"),
             ("2025-10-06", "Feast of the Assembly"),
             ("2025-10-07", "Feast of the Assembly"),
@@ -480,7 +502,6 @@ class TestIraq(CommonCountryTests, TestCase):
             ("2025-10-11", "Feast of the Assembly"),
             ("2025-10-12", "Feast of the Assembly"),
             ("2025-10-13", "Feast of the Assembly"),
-            ("2025-11-23", "Little Feast"),
             ("2025-12-19", "Feast of Êzî"),
             ("2025-12-25", "Christmas Day"),
         )

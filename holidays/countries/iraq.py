@@ -167,6 +167,9 @@ class Iraq(
             self._add_sukkot(tr("عيد المظلة"), range(2))
 
     def _populate_sabian_holidays(self):
+        if self._year <= 1972:
+            return
+
         # Great Feast.
         name = tr("يوما عيد البنجة")
         self._add_great_feast_day(name)
