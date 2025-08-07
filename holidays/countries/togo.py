@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
@@ -129,54 +129,29 @@ class TGO(Togo):
 
 
 class TogoIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2010, 2025)
     EID_AL_ADHA_DATES = {
         2010: (NOV, 17),
         2011: (NOV, 7),
-        2012: (OCT, 26),
-        2013: (OCT, 15),
         2014: (OCT, 5),
         2015: (SEP, 24),
         2016: (SEP, 13),
         2017: (SEP, 2),
         2018: (AUG, 22),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
         2025: (JUN, 7),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2010, 2025)
     EID_AL_FITR_DATES = {
-        2010: (SEP, 10),
         2011: (AUG, 31),
-        2012: (AUG, 19),
-        2013: (AUG, 8),
         2014: (JUL, 29),
         2015: (JUL, 18),
         2016: (JUL, 7),
         2017: (JUN, 26),
-        2018: (JUN, 15),
         2019: (JUN, 5),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
-        2025: (MAR, 30),
     }
 
+    RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2015, 2025)
     RAMADAN_BEGINNING_DATES = {
-        2015: (JUN, 18),
-        2016: (JUN, 6),
-        2017: (MAY, 27),
         2018: (MAY, 17),
-        2019: (MAY, 6),
-        2020: (APR, 24),
-        2021: (APR, 13),
-        2022: (APR, 2),
-        2023: (MAR, 23),
-        2024: (MAR, 11),
-        2025: (MAR, 1),
     }

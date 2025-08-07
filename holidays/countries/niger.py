@@ -156,37 +156,37 @@ class Niger(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         self._add_observed(self._add_all_saints_day(tr("Toussaint")))
 
 
+class NE(Niger):
+    pass
+
+
+class NER(Niger):
+    pass
+
+
 class NigerIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1998, 2025)
     EID_AL_ADHA_DATES = {
         1998: (APR, 8),
         1999: (MAR, 28),
-        2000: (MAR, 16),
         2001: (MAR, 6),
         2002: (FEB, 23),
         2003: (FEB, 12),
         2004: (FEB, 2),
-        2005: (JAN, 21),
-        2006: ((JAN, 10), (DEC, 31)),
-        2007: (DEC, 20),
         2008: (DEC, 9),
         2009: (NOV, 28),
         2010: (NOV, 17),
         2011: (NOV, 7),
-        2012: (OCT, 26),
-        2013: (OCT, 15),
         2014: (OCT, 5),
+        2015: (SEP, 24),
         2016: (SEP, 13),
         2017: (SEP, 2),
         2018: (AUG, 22),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
         2022: (JUL, 10),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
         2025: (JUN, 7),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (1998, 2025)
     EID_AL_FITR_DATES = {
         1998: (JAN, 30),
         1999: (JAN, 19),
@@ -194,127 +194,67 @@ class NigerIslamicHolidays(_CustomIslamicHolidays):
         2001: (DEC, 17),
         2002: (DEC, 6),
         2003: (NOV, 26),
-        2004: (NOV, 14),
         2005: (NOV, 4),
         2006: (OCT, 24),
-        2007: (OCT, 13),
         2008: (OCT, 2),
         2009: (SEP, 21),
-        2010: (SEP, 10),
         2011: (AUG, 31),
-        2012: (AUG, 19),
-        2013: (AUG, 8),
         2014: (JUL, 29),
         2015: (JUL, 18),
         2016: (JUL, 7),
         2017: (JUN, 26),
-        2018: (JUN, 15),
-        2019: (JUN, 4),
         2020: (MAY, 23),
         2021: (MAY, 12),
         2022: (MAY, 1),
-        2023: (APR, 21),
         2024: (APR, 9),
-        2025: (MAR, 30),
     }
 
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (1998, 2025)
     HIJRI_NEW_YEAR_DATES = {
         1998: (APR, 28),
-        1999: (APR, 17),
-        2000: (APR, 6),
-        2001: (MAR, 26),
-        2002: (MAR, 15),
         2003: (MAR, 5),
         2004: (FEB, 22),
-        2005: (FEB, 10),
-        2006: (JAN, 31),
-        2007: (JAN, 20),
-        2008: ((JAN, 10), (DEC, 29)),
-        2009: (DEC, 18),
         2010: (DEC, 8),
         2011: (NOV, 27),
-        2012: (NOV, 15),
         2013: (NOV, 5),
-        2014: (OCT, 25),
         2015: (OCT, 15),
         2016: (OCT, 3),
         2017: (SEP, 22),
         2018: (SEP, 12),
-        2019: (AUG, 31),
         2020: (AUG, 21),
         2021: (AUG, 10),
-        2022: (JUL, 30),
-        2023: (JUL, 19),
         2024: (JUL, 6),
         2025: (JUN, 27),
     }
 
+    LAYLAT_AL_QADR_DATES_CONFIRMED_YEARS = (1998, 2025)
     LAYLAT_AL_QADR_DATES = {
         1998: (JAN, 26),
         1999: (JAN, 15),
         2000: ((JAN, 4), (DEC, 24)),
         2001: (DEC, 13),
-        2002: (DEC, 2),
         2003: (NOV, 22),
         2004: (NOV, 11),
         2005: (OCT, 31),
-        2006: (OCT, 20),
-        2007: (OCT, 9),
         2008: (SEP, 28),
-        2009: (SEP, 17),
-        2010: (SEP, 6),
-        2011: (AUG, 27),
-        2012: (AUG, 15),
-        2013: (AUG, 4),
         2014: (JUL, 25),
-        2015: (JUL, 14),
-        2016: (JUL, 2),
-        2017: (JUN, 22),
-        2018: (JUN, 11),
-        2019: (JUN, 1),
-        2020: (MAY, 20),
-        2021: (MAY, 9),
-        2022: (APR, 28),
-        2023: (APR, 18),
-        2024: (APR, 6),
-        2025: (MAR, 27),
     }
 
+    MAWLID_DATES_CONFIRMED_YEARS = (1998, 2025)
     MAWLID_DATES = {
         1998: (JUL, 7),
-        1999: (JUN, 26),
         2000: (JUN, 15),
-        2001: (JUN, 4),
-        2002: (MAY, 24),
         2003: (MAY, 14),
         2004: (MAY, 2),
-        2005: (APR, 21),
         2006: (APR, 11),
-        2007: (MAR, 31),
-        2008: (MAR, 20),
-        2009: (MAR, 9),
-        2010: (FEB, 26),
         2011: (FEB, 16),
         2012: (FEB, 5),
-        2013: (JAN, 24),
         2014: (JAN, 14),
         2015: ((JAN, 3), (DEC, 24)),
         2016: (DEC, 12),
         2017: (DEC, 1),
         2018: (NOV, 21),
         2019: (NOV, 10),
-        2020: (OCT, 29),
-        2021: (OCT, 18),
-        2022: (OCT, 8),
-        2023: (SEP, 27),
         2024: (SEP, 16),
         2025: (SEP, 5),
     }
-
-
-class NE(Niger):
-    pass
-
-
-class NER(Niger):
-    pass
