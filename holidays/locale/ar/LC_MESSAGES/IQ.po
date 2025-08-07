@@ -115,20 +115,20 @@ msgstr ""
 msgid "عيد المظلة"
 msgstr ""
 
-#. Benja Festival.
+#. Great Feast.
 msgid "يوما عيد البنجة"
 msgstr ""
 
-#. Prophet Yahya's Birthday.
-msgid "ميلاد النبي يحيى"
-msgstr ""
-
-#. Great Feast.
-msgid "يوما العيد الكبير"
+#. Feast of Creation.
+msgid "عيد الخليقة"
 msgstr ""
 
 #. Little Feast.
-msgid "يوم العيد الصغير"
+msgid "عيد الصغير"
+msgstr ""
+
+#. Prophet Yahya's Birthday.
+msgid "مولد النبي يحيى عليه السلام"
 msgstr ""
 
 #. Yazidi New Year.

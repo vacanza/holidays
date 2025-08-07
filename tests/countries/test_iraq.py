@@ -251,47 +251,82 @@ class TestIraq(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.hebrew_holidays, range(1964, 2023))
         self.assertNoHolidayName(name, self.hebrew_holidays, range(2024, 2050))
 
-    def test_benja_festival(self):
+    def test_great_feast(self):
         name = "يوما عيد البنجة"
         self.assertNoHolidayName(name)
+        # Test first two days which are always present
         self.assertHolidayName(
             name,
             self.sabian_holidays,
-            (
-                *(f"{year}-04-05" for year in range(1964, 2050)),
-                *(f"{year}-04-06" for year in range(1964, 2050)),
+            *(
+                f"{year}-08-{day:02d}"
+                for year in range(1964, 2050)
+                for day in range(7, 9)  # August 7-8
             ),
         )
+        # Test additional days for years 2024+
+        if self._year >= 2024:
+            self.assertHolidayName(
+                name,
+                self.sabian_holidays,
+                *(
+                    f"{year}-08-{day:02d}"
+                    for year in range(2024, 2050)
+                    for day in range(9, 11)  # August 9-10
+                ),
+            )
 
-    def test_prophet_yahyas_birthday(self):
-        name = "ميلاد النبي يحيى"
+    def test_parwanaya(self):
+        name = "عيد الخليقة"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.sabian_holidays, (f"{year}-05-01" for year in range(2025, 2050))
-        )
-        self.assertNoHolidayName(name, self.sabian_holidays, range(1964, 2025))
-
-    def test_great_feast(self):
-        name = "يوما العيد الكبير"
-        self.assertNoHolidayName(name)
+        # Test first two days which are always present
         self.assertHolidayName(
             name,
             self.sabian_holidays,
-            (
-                *(f"{year}-08-07" for year in range(1964, 2050)),
-                *(f"{year}-08-08" for year in range(1964, 2050)),
+            *(
+                f"{year}-04-{day:02d}"
+                for year in range(1964, 2050)
+                for day in range(5, 7)  # April 5-6
             ),
         )
+        # Test additional days for years 2024+
+        if self._year >= 2024:
+            self.assertHolidayName(
+                name,
+                self.sabian_holidays,
+                *(
+                    f"{year}-04-{day:02d}"
+                    for year in range(2024, 2050)
+                    for day in range(7, 10)  # April 7-9
+                ),
+            )
 
     def test_little_feast(self):
-        name = "يوم العيد الصغير"
+        name = "عيد الصغير"
         self.assertNoHolidayName(name)
+        # Test first day which is always present
         self.assertHolidayName(
-            name, self.sabian_holidays, (f"{year}-11-23" for year in range(1964, 2050))
+            name,
+            self.sabian_holidays,
+            *(f"{year}-11-23" for year in range(1964, 2050)),
         )
+        # Test second day for years 2024+
+        if self._year >= 2024:
+            self.assertHolidayName(
+                name,
+                self.sabian_holidays,
+                *(f"{year}-11-24" for year in range(2024, 2050)),
+            )
 
-    def test_dehwa_hanina(self):
-        pass
+    def test_prophet_yahyas_birthday(self):
+        name = "مولد النبي يحيى عليه السلام"
+        self.assertNoHolidayName(name)
+        # Test the single day holiday
+        self.assertHolidayName(
+            name,
+            self.sabian_holidays,
+            *(f"{year}-05-01" for year in range(1964, 2050)),
+        )
 
     def test_yazidi_new_year(self):
         name = "رأس السنة الإيزيدية"

@@ -31,15 +31,21 @@ from holidays.calendars.gregorian import (
 from holidays.constants import CHRISTIAN, HEBREW, PUBLIC, SABIAN, YAZIDI
 from holidays.groups import (
     ChristianHolidays,
+    HebrewCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
-    HebrewCalendarHolidays,
+    MandaeanHolidays,
 )
 from holidays.holiday_base import HolidayBase
 
 
 class Iraq(
-    HolidayBase, ChristianHolidays, HebrewCalendarHolidays, InternationalHolidays, IslamicHolidays
+    HolidayBase,
+    ChristianHolidays,
+    HebrewCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    MandaeanHolidays,
 ):
     """Iraq holidays.
 
@@ -73,6 +79,7 @@ class Iraq(
         IslamicHolidays.__init__(
             self, cls=IraqIslamicHolidays, show_estimated=islamic_show_estimated
         )
+        MandaeanHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -159,27 +166,32 @@ class Iraq(
             # Sukkot.
             self._add_sukkot(tr("عيد المظلة"), range(2))
 
-    # 2024 law updates.
-
     def _populate_sabian_holidays(self):
-        # Benja Festival.
-        name = tr("يوما عيد البنجة")
-        self._add_holiday_apr_5(name)
-        self._add_holiday_apr_6(name)
-
-        if self._year >= 2025:
-            # Prophet Yahya's Birthday.
-            self._add_holiday_may_1(tr("ميلاد النبي يحيى"))
-
         # Great Feast.
-        name = tr("يوما العيد الكبير")
-        self._add_holiday_aug_7(name)
-        self._add_holiday_aug_8(name)
+        name = tr("يوما عيد البنجة")
+        self._add_great_feast_day(name)
+        self._add_great_feast_day_two(name)
+        if self._year >= 2024:
+            self._add_great_feast_day_three(name)
+            self._add_great_feast_day_four(name)
+
+        # Feast of Creation.
+        name = tr("عيد الخليقة")
+        self._add_parwanaya_day(name)
+        self._add_parwanaya_day_two(name)
+        if self._year >= 2024:
+            self._add_parwanaya_day_three(name)
+            self._add_parwanaya_day_four(name)
+            self._add_parwanaya_day_five(name)
 
         # Little Feast.
-        self._add_holiday_nov_23(tr("يوم العيد الصغير"))
+        name = tr("عيد الصغير")
+        self._add_dehwa_hanina_day(name)
+        if self._year >= 2024:
+            self._add_dehwa_hanina_day_two(name)
 
-        # todo: Dehwa Hanina. until 2024
+        # Prophet Yahya's Birthday.
+        self._add_dehwa_daimana_day(tr("مولد النبي يحيى عليه السلام"))
 
     def _populate_yazidi_holidays(self):
         # Yazidi New Year.
