@@ -26,11 +26,11 @@ class TestEritrea(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(Eritrea, ER, ERI)
 
-    def test_new_years_day(self):
-        self.assertHolidayName("New Year", (f"{year}-01-01" for year in range(1994, 2050)))
-
     def test_no_holidays(self):
         self.assertNoHolidays(Eritrea(years=1993))
+
+    def test_new_years_day(self):
+        self.assertHolidayName("New Year", (f"{year}-01-01" for year in range(1994, 2050)))
 
     def test_leddet(self):
         self.assertHolidayName("Leddet", (f"{year}-01-07" for year in range(1994, 2050)))
@@ -70,9 +70,9 @@ class TestEritrea(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1994, 2050))
 
     def test_mariam_debre_sina(self):
-        self.assertHolidayName(
-            "Mariam Debre Sina", (f"{year}-06-28" for year in range(2007, 2050))
-        )
+        name = "Mariam Debre Sina"
+        self.assertHolidayName(name, (f"{year}-06-28" for year in range(2011, 2050)))
+        self.assertNoHolidayName(name, range(1994, 2011))
 
     def test_eid_al_adha(self):
         name = "Eid al-Adha"
@@ -89,8 +89,8 @@ class TestEritrea(CommonCountryTests, TestCase):
 
     def test_debre_bizen_abune_libanos(self):
         name = "Debre Bizen Abune Libanos"
-        self.assertHolidayName(name, (f"{year}-08-11" for year in range(2007, 2050)))
-        self.assertNoHolidayName(name, range(1994, 2007))
+        self.assertHolidayName(name, (f"{year}-08-11" for year in range(2011, 2050)))
+        self.assertNoHolidayName(name, range(1994, 2011))
 
     def test_keddus_yohannes(self):
         self.assertHolidayName("Keddus Yohannes", (f"{year}-09-11" for year in range(1994, 2050)))
@@ -100,7 +100,9 @@ class TestEritrea(CommonCountryTests, TestCase):
 
     def test_muharram(self):
         name = "Muharram"
-        dt = (
+        self.assertHolidayName(
+            name,
+            self.no_estimated_holidays,
             "2020-08-20",
             "2021-08-09",
             "2022-07-30",
@@ -108,10 +110,7 @@ class TestEritrea(CommonCountryTests, TestCase):
             "2024-07-07",
             "2025-06-26",
         )
-        self.assertHolidayName(f"{name} (estimated)", self.no_estimated_holidays, dt)
-        self.assertHolidayName(
-            f"{name} (estimated)", self.no_estimated_holidays, range(1994, 2050)
-        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1994, 2020))
 
     def test_mawlid_an_nabi(self):
         name = "Mawlid an-Nabi"
