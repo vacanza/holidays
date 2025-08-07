@@ -27,3 +27,4 @@ from holidays.groups.mongolian import MongolianCalendarHolidays
 from holidays.groups.persian import PersianCalendarHolidays
 from holidays.groups.sinhala import SinhalaCalendarHolidays
 from holidays.groups.thai import ThaiCalendarHolidays
+from holidays.groups.tibetan import TibetanCalendarHolidays

@@ -696,6 +696,29 @@ class TestInheritance(unittest.TestCase):
         self.assertIn("2020-07-13", hb)
 
 
+class TestIsWeekend(unittest.TestCase):
+    def setUp(self):
+        self.hb = CountryStub1()
+
+    def test_is_weekend(self):
+        self.hb._populate(2022)
+
+        self.hb.weekend = {MON, TUE}
+        for dt in (date(2022, 10, 3), date(2022, 10, 4), "2022-10-03", "2022-10-04"):
+            self.assertTrue(self.hb.is_weekend(dt))
+
+        self.hb.weekend = set()
+        for dt in (date(2022, 10, 3), date(2022, 10, 4), "2022-10-03", "2022-10-04"):
+            self.assertFalse(self.hb.is_weekend(dt))
+
+        self.hb.weekend = {SAT, SUN}
+        for dt in (date(2022, 10, 1), date(2022, 10, 2), "2022-10-01", "2022-10-02"):
+            self.assertTrue(self.hb.is_weekend(dt))
+
+        for dt in (date(2022, 10, 3), date(2022, 10, 4), "2022-10-03", "2022-10-04"):
+            self.assertFalse(self.hb.is_weekend(dt))
+
+
 class TestKeyTransforms(unittest.TestCase):
     def setUp(self):
         self.hb = CountryStub1()
@@ -1261,6 +1284,10 @@ class TestWorkdays(unittest.TestCase):
         self.assertEqual(self.hb.get_nth_working_day("2024-05-10", -10), date(2024, 4, 24))
         self.assertEqual(self.hb.get_nth_working_day("2024-05-10", -7), date(2024, 4, 29))
         self.assertEqual(self.hb.get_nth_working_day("2024-05-10", -5), date(2024, 5, 3))
+
+        self.assertEqual(self.hb.get_nth_working_day("2024-07-27", 0), date(2024, 7, 29))
+        self.assertEqual(self.hb.get_nth_working_day("2024-07-27", 1), date(2024, 7, 29))
+        self.assertEqual(self.hb.get_nth_working_day("2024-07-29", 0), date(2024, 7, 29))
 
     def test_get_working_days_count(self):
         self.assertEqual(self.hb.get_working_days_count("2024-01-03", "2024-01-23"), 15)

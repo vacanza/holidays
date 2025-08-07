@@ -19,6 +19,7 @@ from holidays.groups import (
     InternationalHolidays,
     PersianCalendarHolidays,
     ThaiCalendarHolidays,
+    TibetanCalendarHolidays,
 )
 from holidays.holiday_base import HolidayBase
 
@@ -128,4 +129,29 @@ class TestThaiCalendarHolidays(TestCase):
         test_holidays._add_preah_neangkoal("Royal Ploughing Ceremony (Cambodia)")
         test_holidays._add_visakha_bucha("Visakha Bucha")
         test_holidays._add_visakha_bucha("Visaka Bochea", KHMER_CALENDAR)
+        self.assertEqual(0, len(test_holidays))
+
+
+class TestTibetanCalendarHolidays(TestCase):
+    def test_add_tibetan_calendar_holiday(self):
+        # Check for out-of-range dates.
+        class TestHolidays(HolidayBase, TibetanCalendarHolidays):
+            def __init__(self, *args, **kwargs):
+                TibetanCalendarHolidays.__init__(self)
+                super().__init__(*args, **kwargs)
+
+        test_holidays = TestHolidays()
+
+        test_holidays._populate(2100)
+        test_holidays._add_blessed_rainy_day("Blessed Rainy Day")
+        test_holidays._add_birth_of_guru_rinpoche("Birth of Guru Rinpoche")
+        test_holidays._add_buddha_first_sermon("Buddha First Sermon")
+        test_holidays._add_buddha_parinirvana("Buddha Parinirvana")
+        test_holidays._add_day_of_offering("Day of Offering")
+        test_holidays._add_death_of_zhabdrung("Death of Zhabdrung")
+        test_holidays._add_descending_day_of_lord_buddha("Descending Day Of Lord Buddha")
+        test_holidays._add_losar("Losar")
+        test_holidays._add_thimphu_drubchen_day("Thimpu Drubchoe")
+        test_holidays._add_thimphu_tshechu_day("Thimphu Tshechu")
+        test_holidays._add_tibetan_winter_solstice("Winter Solstice Day")
         self.assertEqual(0, len(test_holidays))
