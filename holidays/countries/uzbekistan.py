@@ -14,7 +14,7 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, DEC
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
@@ -113,50 +113,22 @@ class UZB(Uzbekistan):
 
 
 class UzbekistanIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2006, 2025)
     EID_AL_ADHA_DATES = {
         2006: ((JAN, 10), (DEC, 30)),
         2007: (DEC, 19),
-        2008: (DEC, 8),
-        2009: (NOV, 27),
-        2010: (NOV, 16),
-        2011: (NOV, 6),
-        2012: (OCT, 26),
-        2013: (OCT, 15),
-        2014: (OCT, 4),
         2015: (SEP, 24),
         2016: (SEP, 12),
-        2017: (SEP, 1),
-        2018: (AUG, 21),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
-        2025: (JUN, 6),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2006, 2025)
     EID_AL_FITR_DATES = {
-        2006: (OCT, 23),
-        2007: (OCT, 13),
-        2008: (OCT, 1),
         2009: (SEP, 21),
-        2010: (SEP, 10),
         2011: (AUG, 31),
-        2012: (AUG, 19),
         2013: (AUG, 9),
-        2014: (JUL, 28),
         2015: (JUL, 18),
-        2016: (JUL, 6),
         2017: (JUN, 26),
-        2018: (JUN, 15),
         2019: (JUN, 5),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
-        2025: (MAR, 30),
     }
 
 

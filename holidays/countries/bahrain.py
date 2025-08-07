@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import FRI, SAT, MAY, JUL, AUG, OCT
+from holidays.calendars.gregorian import FRI, SAT
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -92,22 +92,7 @@ class BAH(Bahrain):
 
 
 class BahrainIslamicHolidays(_CustomIslamicHolidays):
-    ASHURA_DATES = {
-        2022: (AUG, 8),
-    }
-
-    EID_AL_ADHA = {
-        2022: (JUL, 9),
-    }
-
-    EID_AL_FITR_DATES = {
-        2022: (MAY, 2),
-    }
-
-    HIJRI_NEW_YEAR_DATES = {
-        2022: (JUL, 30),
-    }
-
-    MAWLID_DATES = {
-        2022: (OCT, 8),
-    }
+    ASHURA_DATES_CONFIRMED_YEARS = (2022, 2022)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2022, 2022)
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2022, 2022)
+    MAWLID_DATES_CONFIRMED_YEARS = (2022, 2022)
