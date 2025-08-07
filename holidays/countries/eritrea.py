@@ -21,8 +21,10 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
     """Eritrea holidays.
 
     References:
-        * https://en.wikipedia.org/wiki/Public_holidays_in_Eritrea
-        * http://www.eritrea.be/old/eritrea-religions.htm
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Eritrea>
+        * <https://web.archive.org/web/20250609235122/http://www.eritrea.be/old/eritrea-religions.htm>
+        * <https://web.archive.org/web/20110903130335/http://www.eritrea.be/old/eritrea-religions.htm>
+        * <https://web.archive.org/web/20081010180144/http://www.eritrea.be/old/eritrea-religions.htm>
     """
 
     country = "ER"
@@ -53,10 +55,17 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         # Festival of Mariam Dearit.
         self._add_holiday_may_29("Festival of Mariam Dearit")
 
-        if self._year >= 2007:
+        # Eid al-Fitr.
+        self._add_eid_al_fitr_day("Eid al-Fitr")
+
+        if self._year >= 2011:
             # Mariam Debre Sina.
             self._add_holiday_jun_28("Mariam Debre Sina")
 
+        # Eid al-Adha.
+        self._add_eid_al_adha_day("Eid al-Adha")
+
+        if self._year >= 2011:
             # Debre Bizen Abune Libanos.
             self._add_holiday_aug_11("Debre Bizen Abune Libanos")
 
@@ -65,12 +74,6 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
 
         # Meskel.
         self._add_holiday_sep_27("Meskel")
-
-        # Eid al-Fitr.
-        self._add_eid_al_fitr_day("Eid al-Fitr")
-
-        # Eid al-Adha.
-        self._add_eid_al_adha_day("Eid al-Adha")
 
         # Muharram.
         self._add_islamic_new_year_day("Muharram")
