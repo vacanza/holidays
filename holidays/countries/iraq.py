@@ -9,10 +9,25 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
+
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    FRI,
+    SAT,
+)
 from holidays.constants import CHRISTIAN, HEBREW, PUBLIC, SABIAN, YAZIDI
 from holidays.groups import (
     ChristianHolidays,
@@ -32,7 +47,7 @@ class Iraq(
         - [Law No. 10 of 1963](https://web.archive.org/web/20200220135833/http://wiki.dorar-aliraq.net:80/iraqilaws/law/1447.html)
         - [1968 Amendment to Law No. 10 of 1963](https://web.archive.org/web/20250730075454/https://wiki.dorar-aliraq.net/iraqilaws/law/18741.html)
         - [Law No. 110 of 1972](https://web.archive.org/web/20240820010527/https://wiki.dorar-aliraq.net/iraqilaws/law/5663.html)
-        - [1973 Amendment to Law No. 110 of 1973](https://web.archive.org/web/20250730080337/https://wiki.dorar-aliraq.net/iraqilaws/law/6165.html)
+        - [1973 Amendment to Law No. 110 of 1972](https://web.archive.org/web/20250730080337/https://wiki.dorar-aliraq.net/iraqilaws/law/6165.html)
         - [Official Holiday Law 2024](https://web.archive.org/web/20250629123214/https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/116577/قانون%20العطل%20الرسمية%20-%20Copy%20-%20Copy_396.pdf)
     """
 
@@ -43,6 +58,7 @@ class Iraq(
     start_year = 1964
     supported_categories = (CHRISTIAN, HEBREW, PUBLIC, SABIAN, YAZIDI)
     supported_languages = ("ar", "en_US")
+    weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -71,7 +87,7 @@ class Iraq(
             # February 8 Revolution.
             self._add_holiday_feb_8(tr("ثورة 8 شباط"))
 
-        if self._year > 2024:
+        if self._year >= 2025:
             # Commemoration of the Saddam Baath crimes against the Iraqi people.
             self._add_holiday_mar_16(tr("ذكرى جرائم البعث والأنفال والهجوم على حلبجة"))
 
