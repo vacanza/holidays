@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestLiberia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1957, 2050)
-        super().setUpClass(Liberia, years=years, years_non_observed=years)
+        super().setUpClass(Liberia, years=range(1957, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(Liberia, LR, LBR)
