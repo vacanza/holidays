@@ -28,7 +28,10 @@ class TestKiribati(CommonCountryTests, TestCase):
     def test_new_years(self):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1980, 2050)))
-        dt = ("2017-01-02", "2023-01-02")
+        dt = (
+            "2017-01-02",
+            "2023-01-02",
+        )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 

@@ -38,6 +38,7 @@ class Kiribati(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        # New Year's Day.
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
         if self._year >= 2003:
@@ -74,24 +75,18 @@ class Kiribati(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year <= 1992:
             self._add_observed(self._add_holiday_nov_10("Public Holiday"))
 
-        name = "Human Rights and Peace Day"
-        dt = None
-        if self._year >= 2003:
-            dt = self._add_holiday_dec_9(name)
-        elif self._year >= 1993:
-            dt = self._add_holiday_dec_10(name)
-        if dt is not None:
-            self._add_observed(dt)
+        if self._year >= 1993:
+            # Human Rights and Peace Day.
+            name = "Human Rights and Peace Day"
+            self._add_observed(
+                self._add_holiday_dec_9(name)
+                if self._year >= 2003
+                else self._add_holiday_dec_10(name)
+            )
 
-        self._add_observed(
-            self._add_christmas_day("Christmas Day"),
-            rule=SAT_SUN_TO_NEXT_MON_TUE,
-        )
+        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
-        self._add_observed(
-            self._add_christmas_day_two("Boxing Day"),
-            rule=SAT_SUN_TO_NEXT_MON_TUE,
-        )
+        self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
 
 class KI(Kiribati):
