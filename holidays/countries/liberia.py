@@ -33,30 +33,42 @@ class Liberia(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        # New Year's Day.
         self._add_new_years_day("New Year's Day")
 
         if self._year in {1960, 1964, 1968, 1972, 1976, 1986, 1998, 2006, 2012, 2018, 2024}:
+            # Inauguration Day.
             self._add_holiday_1st_mon_of_jan("Inauguration Day")
 
+        # Armed Forces Day.
         self._add_holiday_feb_11("Armed Forces Day")
 
+        # Decoration Day.
         self._add_holiday_2nd_wed_of_mar("Decoration Day")
 
+        # J. J. Roberts Memorial Birthday.
         self._add_holiday_mar_15("J. J. Roberts Memorial Birthday")
 
+        # Fasting and Prayer Day.
         self._add_holiday_2nd_fri_of_apr("Fasting and Prayer Day")
 
         if self._year >= 1960:
+            # National Unification and Integration Day.
             self._add_holiday_may_14("National Unification and Integration Day")
 
+        # Independence Day.
         self._add_holiday_jul_26("Independence Day")
 
+        # National Flag Day.
         self._add_holiday_aug_24("National Flag Day")
 
+        # Thanksgiving Day.
         self._add_holiday_1st_thu_of_nov("Thanksgiving Day")
 
+        # Tubman Administration Goodwill Day.
         self._add_holiday_nov_29("Tubman Administration Goodwill Day")
 
+        # Christmas Day.
         self._add_christmas_day("Christmas Day")
 
 
