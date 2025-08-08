@@ -129,7 +129,7 @@ class Iraq(
 
     def _populate_christian_holidays(self):
         if self._year <= 1972:
-            # New Year’s Day.
+            # New Year's Day.
             self._add_new_years_day(tr("رأس السنة الميلادية"))
 
         # Easter Sunday.
@@ -154,7 +154,7 @@ class Iraq(
 
     def _populate_sabian_holidays(self):
         if self._year <= 1972:
-            return
+            return None
 
         # Great Feast.
         name = tr("يوما عيد البنجة")
