@@ -73,9 +73,11 @@ msgstr ""
 msgid "Feast of the Assumption"
 msgstr ""
 
+#. Christmas Day.
 msgid "Christmas Day"
 msgstr ""
 
+#. Boxing Day.
 msgid "Boxing Day"
 msgstr ""
 

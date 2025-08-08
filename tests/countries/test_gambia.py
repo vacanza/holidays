@@ -93,11 +93,7 @@ class TestGambia(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_day(self):
-        name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1966, 2050)))
-        dt = ("2022-12-27",)
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1966, 2050)))
 
     def test_boxing_day(self):
         self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in range(2021, 2050)))
@@ -141,9 +137,8 @@ class TestGambia(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_kotireh(self):
-        name = "Koriteh"
         self.assertHolidayName(
-            name,
+            "Koriteh",
             "2021-05-13",
             "2022-05-02",
             "2023-04-21",
@@ -153,9 +148,6 @@ class TestGambia(CommonCountryTests, TestCase):
             "2025-03-30",
             "2025-03-31",
         )
-        dt = ("2025-04-01",)
-        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_tobaski(self):
         name = "Tobaski"
@@ -189,7 +181,6 @@ class TestGambia(CommonCountryTests, TestCase):
             ("2024-05-27", "Africa Liberation Day (observed)"),
             ("2024-06-16", "Tobaski"),
             ("2024-06-17", "Tobaski"),
-            ("2024-06-18", "Tobaski (observed)"),
             ("2024-07-16", "Yawmul Ashura"),
             ("2024-07-22", "July 22 Revolution Day"),
             ("2024-08-15", "Feast of the Assumption"),
@@ -205,7 +196,6 @@ class TestGambia(CommonCountryTests, TestCase):
             ("2025-03-27", "Lialat-Ul-Qadr"),
             ("2025-03-30", "Koriteh"),
             ("2025-03-31", "Koriteh"),
-            ("2025-04-01", "Koriteh (observed)"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-05-01", "Labour Day"),
@@ -231,7 +221,6 @@ class TestGambia(CommonCountryTests, TestCase):
             ("2025-03-27", "Laylat al-Qadr"),
             ("2025-03-30", "Eid al-Fitr"),
             ("2025-03-31", "Eid al-Fitr"),
-            ("2025-04-01", "Eid al-Fitr (observed)"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-05-01", "Labor Day"),

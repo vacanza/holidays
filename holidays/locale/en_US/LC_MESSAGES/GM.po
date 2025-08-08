@@ -73,9 +73,11 @@ msgstr "July 22 Revolution Day"
 msgid "Feast of the Assumption"
 msgstr "Assumption Day"
 
+#. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
+#. Boxing Day.
 msgid "Boxing Day"
 msgstr "Boxing Day"
 

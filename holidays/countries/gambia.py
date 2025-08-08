@@ -15,11 +15,7 @@ from gettext import gettext as tr
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
-from holidays.observed_holiday_base import (
-    ObservedHolidayBase,
-    SAT_SUN_TO_NEXT_MON,
-    SAT_SUN_TO_NEXT_MON_TUE,
-)
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_MON
 
 
 class Gambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
@@ -84,14 +80,10 @@ class Gambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
         self._add_observed(self._add_assumption_of_mary_day(tr("Feast of the Assumption")))
 
         # Christmas Day.
-        self._add_observed(
-            self._add_christmas_day(tr("Christmas Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
-        )
+        self._add_christmas_day(tr("Christmas Day"))
 
         # Boxing Day.
-        self._add_observed(
-            self._add_christmas_day_two(tr("Boxing Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
-        )
+        self._add_observed(self._add_christmas_day_two(tr("Boxing Day")))
 
         # Ashura.
         for dt in self._add_ashura_day(tr("Yawmul Ashura")):
@@ -106,18 +98,18 @@ class Gambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
             self._add_observed(dt)
 
         # Eid al-Fitr.
-        for dt in self._add_eid_al_fitr_day(tr("Koriteh")):
-            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
+        name = tr("Koriteh")
+        self._add_eid_al_fitr_day(name)
         if self._year >= 2021:
-            for dt in self._add_eid_al_fitr_day_two(tr("Koriteh")):
-                self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
+            for dt in self._add_eid_al_fitr_day_two(name):
+                self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON)
 
         # Eid al-Adha.
-        for dt in self._add_eid_al_adha_day(tr("Tobaski")):
-            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
+        name = tr("Tobaski")
+        self._add_eid_al_adha_day(name)
         if self._year >= 2021:
             for dt in self._add_eid_al_adha_day_two(tr("Tobaski")):
-                self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
+                self._add_observed(dt)
 
 
 class GM(Gambia):
