@@ -32,7 +32,6 @@ msgid "%s (المقدرة)"
 msgstr "%s (estimated)"
 
 #. New Year's Day.
-#. New Year’s Day.
 msgid "رأس السنة الميلادية"
 msgstr "New Year's Day"
 
