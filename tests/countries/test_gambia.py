@@ -96,7 +96,7 @@ class TestGambia(CommonCountryTests, TestCase):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1966, 2050)))
 
     def test_boxing_day(self):
-        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in range(2021, 2050)))
+        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in range(1966, 2050)))
 
     def test_yawmul_ashura_day(self):
         name = "Yawmul Ashura"
