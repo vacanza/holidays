@@ -136,7 +136,7 @@ class TestGambia(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
         self.assertNoNonObservedHoliday(dt)
 
-    def test_kotireh(self):
+    def test_koriteh(self):
         self.assertHolidayName(
             "Koriteh",
             "2021-05-13",

@@ -102,13 +102,13 @@ class Gambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
         self._add_eid_al_fitr_day(name)
         if self._year >= 2021:
             for dt in self._add_eid_al_fitr_day_two(name):
-                self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON)
+                self._add_observed(dt)
 
         # Eid al-Adha.
         name = tr("Tobaski")
         self._add_eid_al_adha_day(name)
         if self._year >= 2021:
-            for dt in self._add_eid_al_adha_day_two(tr("Tobaski")):
+            for dt in self._add_eid_al_adha_day_two(name):
                 self._add_observed(dt)
 
 
