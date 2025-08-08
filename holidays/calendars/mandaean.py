@@ -56,7 +56,7 @@ class _Mandaean:
         if month < 9:
             delta = 30 * (month - 1)
         elif month == 13:
-            delta = 30 * 8 + 5
+            delta = 30 * 8
         else:
             delta = 30 * (month - 1) + 5
         return _timedelta(start_date, delta + day - 1)
