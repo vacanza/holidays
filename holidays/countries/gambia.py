@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_MON
 
@@ -149,6 +149,13 @@ class GambiaIslamicHolidays(_CustomIslamicHolidays):
         2020: (MAY, 23),
     }
 
+    # https://web.archive.org/web/20241209070551/https://www.timeanddate.com/holidays/gambia/laylat-al-qadr
+    LAYLAT_AL_QADR_DATES_CONFIRMED_YEARS = (2015, 2025)
+    LAYLAT_AL_QADR_DATES = {
+        2016: (JUL, 3),
+        2022: (APR, 29),
+    }
+
     # https://web.archive.org/web/20240909111449/https://www.timeanddate.com/holidays/gambia/prophet-birthday
     MAWLID_DATES_CONFIRMED_YEARS = (2016, 2024)
     MAWLID_DATES = {
@@ -158,11 +165,4 @@ class GambiaIslamicHolidays(_CustomIslamicHolidays):
         2021: (OCT, 19),
         2023: (SEP, 28),
         2024: (SEP, 16),
-    }
-
-    # https://web.archive.org/web/20241209070551/https://www.timeanddate.com/holidays/gambia/laylat-al-qadr
-    LAYLAT_AL_QADR_DATES_CONFIRMED_YEARS = (2015, 2025)
-    LAYLAT_AL_QADR_DATES = {
-        2016: (JUL, 3),
-        2022: (APR, 29),
     }
