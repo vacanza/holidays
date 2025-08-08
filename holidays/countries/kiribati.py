@@ -42,37 +42,49 @@ class Kiribati(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
         if self._year >= 2003:
+            # International Women's Day.
             self._add_observed(self._add_womens_day("International Women's Day"))
 
+        # Good Friday.
         self._add_good_friday("Good Friday")
 
         if self._year <= 2002:
+            # Holy Saturday.
             self._add_holy_saturday("Holy Saturday")
 
+        # Easter Monday.
         self._add_easter_monday("Easter Monday")
 
         if self._year >= 2003:
+            # National Health Day.
             self._add_observed(self._add_holiday_apr_19("National Health Day"))
 
         if 1993 <= self._year <= 2002:
+            # Public Holiday.
             self._add_observed(self._add_holiday_may_9("Public Holiday"))
 
         if self._year >= 2002:
+            # Gospel Day.
             self._add_observed(self._add_holiday_jul_11("Gospel Day"))
 
         if self._year >= 1993:
+            # National Day.
             self._add_observed(self._add_holiday_jul_12("National Day - Independence Anniversary"))
 
         if self._year >= 2002:
+            # National Day.
             self._add_observed(self._add_holiday_jul_15("National Day (in honor of Unimwane)"))
             self._add_observed(self._add_holiday_jul_16("National Day (in honor of Unaine)"))
 
         if self._year <= 2002:
+            # Public Holiday.
             self._add_holiday_1st_mon_of_aug("Public Holiday")
         else:
+            # Youth Day.
             self._add_observed(self._add_holiday_aug_5("Youth Day"))
 
         if self._year <= 1992:
+            # Public Holiday.
             self._add_observed(self._add_holiday_nov_10("Public Holiday"))
 
         if self._year >= 1993:
@@ -84,8 +96,10 @@ class Kiribati(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
                 else self._add_holiday_dec_10(name)
             )
 
+        # Christmas Day.
         self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
+        # Boxing Day.
         self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
 
