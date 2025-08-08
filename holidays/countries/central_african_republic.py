@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.calendars.gregorian import JUN, JUL, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -114,30 +114,17 @@ class CAF(CentralAfricanRepublic):
 
 
 class CentralAfricanRepublicIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2015, 2025)
     EID_AL_ADHA_DATES = {
         2015: (SEP, 24),
         2016: (SEP, 13),
         2017: (SEP, 2),
-        2018: (AUG, 21),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
         2025: (JUN, 7),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2015, 2025)
     EID_AL_FITR_DATES = {
         2015: (JUL, 18),
         2016: (JUL, 7),
         2017: (JUN, 26),
-        2018: (JUN, 15),
-        2019: (JUN, 4),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
-        2025: (MAR, 30),
     }

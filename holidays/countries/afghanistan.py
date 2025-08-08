@@ -13,21 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import (
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    FRI,
-    SAT,
-)
+from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, FRI, SAT
 from holidays.groups import InternationalHolidays, IslamicHolidays, PersianCalendarHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -134,8 +120,8 @@ class AFG(Afghanistan):
 
 
 class AfghanistanIslamicHolidays(_CustomIslamicHolidays):
+    ASHURA_DATES_CONFIRMED_YEARS = (2014, 2021)
     ASHURA_DATES = {
-        2014: (NOV, 3),
         2015: (OCT, 24),
         2016: (OCT, 12),
         2017: (OCT, 1),
@@ -145,34 +131,26 @@ class AfghanistanIslamicHolidays(_CustomIslamicHolidays):
         2021: (AUG, 19),
     }
 
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2014, 2024)
     EID_AL_ADHA_DATES = {
         2014: (OCT, 5),
-        2015: (SEP, 23),
         2016: (SEP, 13),
         2017: (SEP, 2),
         2018: (AUG, 22),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
         2024: (JUN, 17),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2014, 2024)
     EID_AL_FITR_DATES = {
         2014: (JUL, 29),
         2015: (JUL, 18),
         2016: (JUL, 7),
         2017: (JUN, 26),
-        2018: (JUN, 15),
-        2019: (JUN, 4),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
         2022: (MAY, 1),
         2023: (APR, 22),
-        2024: (APR, 10),
     }
 
+    MAWLID_DATES_CONFIRMED_YEARS = (2014, 2024)
     MAWLID_DATES = {
         2014: (JAN, 14),
         2015: ((JAN, 3), (DEC, 24)),
@@ -180,23 +158,12 @@ class AfghanistanIslamicHolidays(_CustomIslamicHolidays):
         2017: (DEC, 1),
         2018: (NOV, 21),
         2019: (NOV, 10),
-        2020: (OCT, 29),
         2021: (OCT, 19),
-        2022: (OCT, 8),
-        2023: (SEP, 27),
         2024: (SEP, 16),
     }
 
+    RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2014, 2024)
     RAMADAN_BEGINNING_DATES = {
         2014: (JUN, 29),
-        2015: (JUN, 18),
         2016: (JUN, 7),
-        2017: (MAY, 27),
-        2018: (MAY, 16),
-        2019: (MAY, 6),
-        2020: (APR, 24),
-        2021: (APR, 13),
-        2022: (APR, 2),
-        2023: (MAR, 23),
-        2024: (MAR, 11),
     }

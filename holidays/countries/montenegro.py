@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import GREGORIAN_CALENDAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.constants import CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, PUBLIC, WORKDAY
 from holidays.groups import (
@@ -164,36 +164,21 @@ class MNE(Montenegro):
 
 
 class MontenegroIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2012, 2024)
     EID_AL_ADHA_DATES = {
-        2012: (OCT, 26),
-        2013: (OCT, 15),
         2014: (OCT, 5),
         2015: (SEP, 24),
         2016: (SEP, 13),
         2017: (SEP, 2),
         2018: (AUG, 22),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2012, 2024)
     EID_AL_FITR_DATES = {
-        2012: (AUG, 19),
-        2013: (AUG, 8),
         2014: (JUL, 29),
         2015: (JUL, 18),
         2016: (JUL, 7),
         2017: (JUN, 26),
-        2018: (JUN, 15),
-        2019: (JUN, 4),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
     }
 
 

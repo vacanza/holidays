@@ -289,10 +289,9 @@ class SriLankaHinduHolidays(_CustomHinduHolidays):
 
 
 class SriLankaIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2003, 2025)
     EID_AL_ADHA_DATES = {
         2003: (FEB, 12),
-        2004: (FEB, 1),
-        2005: (JAN, 21),
         2006: ((JAN, 11), (DEC, 31)),
         2007: (DEC, 21),
         2008: (DEC, 9),
@@ -306,7 +305,6 @@ class SriLankaIslamicHolidays(_CustomIslamicHolidays):
         2014: (OCT, 5),
         2015: (SEP, 24),
         2016: (SEP, 12),
-        2017: (SEP, 1),
         2018: (AUG, 22),
         2019: (AUG, 12),
         2020: (AUG, 1),
@@ -317,23 +315,17 @@ class SriLankaIslamicHolidays(_CustomIslamicHolidays):
         2025: (JUN, 7),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2003, 2025)
     EID_AL_FITR_DATES = {
         2003: (NOV, 26),
-        2004: (NOV, 14),
         2005: (NOV, 4),
         2006: (OCT, 24),
-        2007: (OCT, 13),
-        2008: (OCT, 1),
         2009: (SEP, 21),
-        2010: (SEP, 10),
         2011: (AUG, 31),
-        2012: (AUG, 19),
         2013: (AUG, 9),
         2014: (JUL, 29),
         2015: (JUL, 18),
-        2016: (JUL, 6),
         2017: (JUN, 26),
-        2018: (JUN, 15),
         2019: (JUN, 5),
         2020: (MAY, 25),
         2021: (MAY, 14),
@@ -343,25 +335,22 @@ class SriLankaIslamicHolidays(_CustomIslamicHolidays):
         2025: (MAR, 31),
     }
 
+    MAWLID_DATES_CONFIRMED_YEARS = (2003, 2025)
     MAWLID_DATES = {
         2003: (MAY, 14),
         2004: (MAY, 2),
         2005: (APR, 22),
         2006: (APR, 11),
         2007: (APR, 1),
-        2008: (MAR, 20),
         2009: (MAR, 10),
         2010: (FEB, 27),
         2011: (FEB, 16),
         2012: (FEB, 5),
         2013: (JAN, 25),
         2014: (JAN, 14),
-        # Technically 2015 has both JAN 5 and DEC 24
-        # but this is only observed for JAN 4.
         2015: (JAN, 4),
         2016: (DEC, 12),
         2017: (DEC, 1),
-        2018: (NOV, 20),
         2019: (NOV, 10),
         2020: (OCT, 30),
         2021: (OCT, 19),

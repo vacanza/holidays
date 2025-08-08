@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 225 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 227 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -312,6 +312,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>BM</td>
 <td></td>
 <td><strong>en_BM</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
+<td>Bhutan</td>
+<td>BT</td>
+<td>Administrative Subdivisions: 11 (Paro), 12 (Chhukha), 13 (Haa), 14 (Samtse), 15 (Thimphu), 21 (Tsirang), 22 (Dagana), 23 (Punakha), 24 (Wangdue Phodrang), 31 (Sarpang), 32 (Trongsa), 33 (Bumthang), 34 (Zhemgang), 41 (Trashigang), 42 (Monggar), 43 (Pema Gatshel), 44 (Lhuentse), 45 (Samdrup Jongkhar), GA (Gasa), TY (Trashi Yangtse)</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -688,7 +695,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Germany</td>
 <td>DE</td>
-<td>Lands: BB (Brandenburg), BE (Berlin), BW (Baden-Württemberg), BY (Bayern), HB (Bremen), HE (Hessen), HH (Hamburg), MV (Mecklenburg-Vorpommern), NI (Niedersachsen), NW (Nordrhein-Westfalen), RP (Rheinland-Pfalz), SH (Schleswig-Holstein), SL (Saarland), SN (Sachsen), ST (Sachsen-Anhalt), TH (Thüringen)</td>
+<td>States: BB (Brandenburg), BE (Berlin), BW (Baden-Württemberg), BY (Bayern), HB (Bremen), HE (Hessen), HH (Hamburg), MV (Mecklenburg-Vorpommern), NI (Niedersachsen), NW (Nordrhein-Westfalen), RP (Rheinland-Pfalz), SH (Schleswig-Holstein), SL (Saarland), SN (Sachsen), ST (Sachsen-Anhalt), TH (Thüringen); cities: Augsburg</td>
 <td><strong>de</strong>, en_US, th, uk</td>
 <td>CATHOLIC</td>
 </tr>
@@ -1594,6 +1601,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>tr</strong>, uk</td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Turkmenistan</td>
+<td>TM</td>
+<td></td>
+<td>en_US, ru, <strong>tk</strong></td>
+<td></td>
 </tr>
 <tr>
 <td>Turks and Caicos Islands</td>

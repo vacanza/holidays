@@ -208,56 +208,41 @@ class GuyanaHinduHolidays(_CustomHinduHolidays):
 
 class GuyanaIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20250424074512/https://www.timeanddate.com/holidays/guyana/eid-al-adha
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2025)
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),
         2003: (FEB, 12),
         2004: (FEB, 2),
-        2005: (JAN, 21),
-        2006: ((JAN, 10), (DEC, 31)),
-        2007: (DEC, 20),
         2008: (DEC, 9),
         2009: (NOV, 28),
         2010: (NOV, 17),
         2011: (NOV, 7),
-        2012: (OCT, 26),
-        2013: (OCT, 15),
         2014: (OCT, 5),
         2015: (SEP, 24),
         2016: (SEP, 13),
         2017: (SEP, 2),
         2018: (AUG, 22),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
         2021: (JUL, 21),
-        2022: (JUL, 9),
         2023: (JUN, 29),
         2024: (JUN, 17),
         2025: (JUN, 7),
     }
 
     # https://web.archive.org/web/20241006104125/https://www.timeanddate.com/holidays/guyana/prophet-birthday
+    MAWLID_DATES_CONFIRMED_YEARS = (2001, 2025)
     MAWLID_DATES = {
-        2001: (JUN, 4),
-        2002: (MAY, 24),
         2003: (MAY, 14),
         2004: (MAY, 2),
-        2005: (APR, 21),
         2006: (APR, 11),
-        2007: (MAR, 31),
-        2008: (MAR, 20),
-        2009: (MAR, 9),
-        2010: (FEB, 26),
         2011: (FEB, 16),
         2012: (FEB, 5),
-        2013: (JAN, 24),
         2014: (JAN, 14),
         2015: ((JAN, 3), (DEC, 24)),
         2016: (DEC, 12),
         2017: (DEC, 1),
         2018: (NOV, 21),
         2019: (NOV, 10),
-        2020: (OCT, 29),
         2021: (OCT, 19),
         2022: (OCT, 9),
         2023: (SEP, 28),
