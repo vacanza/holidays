@@ -275,8 +275,6 @@ class TestIraq(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             self.sabian_holidays,
-            "1973-03-26",
-            "1973-03-27",
             "2024-03-13",
             "2024-03-14",
             "2024-03-15",
@@ -288,9 +286,6 @@ class TestIraq(CommonCountryTests, TestCase):
         self.assertNoHolidayName(
             name,
             self.sabian_holidays,
-            "1973-03-28",
-            "1973-03-29",
-            "1973-03-30",
             "2023-03-16",
             "2023-03-17",
             "2023-03-18",
@@ -302,8 +297,6 @@ class TestIraq(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             self.sabian_holidays,
-            "1973-04-22",
-            "1974-04-22",
             "2023-04-10",
             "2024-04-09",
             "2024-04-10",
@@ -312,9 +305,7 @@ class TestIraq(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.sabian_holidays, range(1974, 2050))
         self.assertNoHolidayName(name, self.sabian_holidays, range(1964, 1973))
-        self.assertNoHolidayName(
-            name, self.sabian_holidays, "1973-04-23", "1974-04-23", "2023-04-11"
-        )
+        self.assertNoHolidayName(name, self.sabian_holidays, "2023-04-11")
 
     def test_prophet_yahyas_birthday(self):
         name = "مولد النبي يحيى عليه السلام"

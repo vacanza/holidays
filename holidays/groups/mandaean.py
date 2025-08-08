@@ -25,18 +25,6 @@ class MandaeanHolidays:
     def __init__(self) -> None:
         self._mandaean = _Mandaean()
 
-    def _add_mandaean_holiday(self, name: str, dt: Optional[date]) -> Optional[date]:
-        """
-        Add a Mandaean holiday.
-        """
-        if dt is None:
-            return None
-        return self._add_holiday(name, dt)
-
-    @property
-    def _parwanaya(self):
-        return self._mandaean.mandaean_to_gregorian(self._year - 1, 13, 1)
-
     @property
     def _dehwa_hanina(self):
         return self._mandaean.mandaean_to_gregorian(self._year - 1, 9, 23)
@@ -44,6 +32,18 @@ class MandaeanHolidays:
     @property
     def _great_feast(self):
         return self._mandaean.mandaean_to_gregorian(self._year, 1, 6)
+
+    @property
+    def _parwanaya(self):
+        return self._mandaean.mandaean_to_gregorian(self._year - 1, 13, 1)
+
+    def _add_mandaean_holiday(self, name: str, dt: Optional[date]) -> Optional[date]:
+        """
+        Add a Mandaean holiday.
+        """
+        if dt is None:
+            return None
+        return self._add_holiday(name, dt)
 
     def _add_parwanaya_day(self, name) -> Optional[date]:
         """
