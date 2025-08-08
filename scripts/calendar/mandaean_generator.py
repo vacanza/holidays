@@ -16,7 +16,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 """
-This file generates Gregorian dates for Mongolian lunisolar calendar based holidays.
+This file generates Gregorian dates for Mandaean lunisolar calendar based holidays.
 
 See the Wikipedia article: https://en.wikipedia.org/wiki/Mandaean_calendar
 """
