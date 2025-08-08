@@ -14,17 +14,14 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
-    JAN,
     FEB,
     MAR,
     APR,
-    MAY,
     JUN,
     JUL,
     AUG,
     SEP,
     OCT,
-    NOV,
     THU,
     FRI,
     SAT,
@@ -123,63 +120,44 @@ class OMN(Oman):
 
 class OmanIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20240911084650/https://www.timeanddate.com/holidays/oman/muharram-new-year
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2018, 2024)
     HIJRI_NEW_YEAR_DATES = {
-        2018: (SEP, 11),
         2019: (SEP, 1),
         2020: (AUG, 21),
         2021: (AUG, 10),
-        2022: (JUL, 30),
         2023: (JUL, 20),
-        2024: (JUL, 7),
     }
 
     # https://web.archive.org/web/20240810230306/https://www.timeanddate.com/holidays/oman/prophet-birthday
+    MAWLID_DATES_CONFIRMED_YEARS = (2018, 2024)
     MAWLID_DATES = {
-        2018: (NOV, 20),
-        2019: (NOV, 9),
-        2020: (OCT, 29),
         2021: (OCT, 19),
         2022: (OCT, 9),
         2023: (SEP, 28),
-        2024: (SEP, 15),
     }
 
     # https://web.archive.org/web/20241231191036/https://www.timeanddate.com/holidays/oman/isra-miraj
+    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (2018, 2025)
     ISRA_AND_MIRAJ_DATES = {
-        2018: (APR, 13),
-        2019: (APR, 3),
-        2020: (MAR, 22),
-        2021: (MAR, 11),
         2022: (MAR, 1),
         2023: (FEB, 19),
-        2024: (FEB, 8),
-        2025: (JAN, 27),
     }
 
     # https://web.archive.org/web/20240913230603/https://www.timeanddate.com/holidays/oman/eid-al-adha
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2019, 2024)
     EID_AL_ADHA_DATES = {
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
         2024: (JUN, 17),
     }
 
     # https://web.archive.org/web/20241231191036/https://www.timeanddate.com/holidays/oman/eid-al-fitr
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2019, 2025)
     EID_AL_FITR_DATES = {
-        2019: (JUN, 4),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
         2023: (APR, 22),
-        2024: (APR, 10),
         2025: (MAR, 31),
     }
 
     # https://web.archive.org/web/20240814104839/https://www.timeanddate.com/holidays/oman/ramadan-begins
+    RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2023, 2025)
     RAMADAN_BEGINNING_DATES = {
-        2023: (MAR, 23),
         2024: (MAR, 12),
-        2025: (MAR, 1),
     }

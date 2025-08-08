@@ -239,44 +239,38 @@ class TZA(Tanzania):
 
 
 class TanzaniaIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2013, 2023)
     EID_AL_ADHA_DATES = {
-        2013: (OCT, 15),
         2014: (OCT, 5),
-        2015: (SEP, 23),
         2016: (SEP, 16),
         2017: (SEP, 2),
         2018: (AUG, 22),
         2019: (AUG, 13),
-        2020: (JUL, 31),
         2021: (JUL, 21),
         2022: (JUL, 10),
         2023: (JUN, 29),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2013, 2024)
     EID_AL_FITR_DATES = {
-        2013: (AUG, 8),
         2014: (JUL, 29),
         2015: (JUL, 18),
         2016: (JUL, 7),
         2017: (JUN, 26),
-        2018: (JUN, 15),
         2019: (JUN, 5),
-        2020: (MAY, 24),
         2021: (MAY, 14),
         2022: (MAY, 3),
         2023: (APR, 22),
-        2024: (APR, 10),
     }
 
+    MAWLID_DATES_CONFIRMED_YEARS = (2013, 2023)
     MAWLID_DATES = {
-        2013: (JAN, 24),
         2014: (JAN, 14),
         2015: ((JAN, 3), (DEC, 24)),
         2016: (DEC, 12),
         2017: (DEC, 1),
         2018: (NOV, 21),
         2019: (NOV, 10),
-        2020: (OCT, 29),
         2021: (OCT, 19),
         2022: (OCT, 9),
         2023: (SEP, 28),

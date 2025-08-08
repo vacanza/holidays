@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomChineseHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -133,6 +133,7 @@ class ChristmasIsland(
 
 
 class ChristmasIslandChineseHolidays(_CustomChineseHolidays):
+    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2007, 2023)
     LUNAR_NEW_YEAR_DATES = {
         2007: (FEB, 19),
         2009: (JAN, 27),
@@ -142,39 +143,27 @@ class ChristmasIslandChineseHolidays(_CustomChineseHolidays):
 
 
 class ChristmasIslandIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = ((2007, 2010), (2019, 2025))
     EID_AL_ADHA_DATES = {
-        2007: (DEC, 20),
-        2008: (DEC, 8),
         2009: (NOV, 30),
-        2010: (NOV, 16),
         2013: (OCT, 15),
         2014: (OCT, 5),
         2016: (SEP, 13),
         2017: (SEP, 1),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
         2024: (JUN, 17),
         2025: (JUN, 7),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = ((2007, 2010), (2019, 2025))
     EID_AL_FITR_DATES = {
         2007: (OCT, 15),
-        2008: (OCT, 1),
         2009: (SEP, 21),
-        2010: (SEP, 10),
         2013: (AUG, 8),
         2014: (JUL, 28),
         2016: (JUL, 6),
         2017: (JUN, 24),
         2019: (JUN, 5),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
         2023: (APR, 22),
-        2024: (APR, 10),
         2025: (MAR, 31),
     }
 

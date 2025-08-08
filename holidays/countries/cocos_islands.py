@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import (
     ChristianHolidays,
     InternationalHolidays,
@@ -167,47 +167,34 @@ class CocosIslands(
 
 
 class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = ((2007, 2010), (2019, 2025))
     EID_AL_ADHA_DATES = {
-        2007: (DEC, 20),
-        2008: (DEC, 8),
         2009: (NOV, 30),
-        2010: (NOV, 16),
         2013: (OCT, 15),
         2014: (OCT, 4),
         2016: (SEP, 13),
         2017: (SEP, 1),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
         2024: (JUN, 17),
         2025: (JUN, 7),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = ((2007, 2010), (2019, 2025))
     EID_AL_FITR_DATES = {
         2007: (OCT, 15),
-        2008: (OCT, 1),
         2009: (SEP, 21),
-        2010: (SEP, 10),
         2013: (AUG, 8),
         2014: (JUL, 28),
         2016: (JUL, 6),
         2017: (JUN, 24),
         2019: (JUN, 5),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
         2022: (MAY, 3),
-        2023: (APR, 21),
-        2024: (APR, 10),
         2025: (MAR, 31),
     }
 
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2007, 2010)
     HIJRI_NEW_YEAR_DATES = {
         2007: (JAN, 22),
         2008: (JAN, 10),
-        2009: (DEC, 18),
-        2010: (DEC, 7),
         2013: (NOV, 4),
         2014: (OCT, 25),
         2016: (OCT, 3),
@@ -215,20 +202,14 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
         2019: (SEP, 1),
     }
 
+    MAWLID_DATES_CONFIRMED_YEARS = ((2007, 2010), (2019, 2025))
     MAWLID_DATES = {
         2007: (APR, 2),
-        2008: (MAR, 20),
-        2009: (MAR, 9),
-        2010: (FEB, 26),
         2013: (JAN, 24),
         2014: (JAN, 13),
         2016: (DEC, 12),
         2017: (DEC, 1),
-        2019: (NOV, 9),
-        2020: (OCT, 29),
         2021: (OCT, 19),
-        2022: (OCT, 8),
-        2023: (SEP, 27),
         2024: (SEP, 16),
         2025: (SEP, 5),
     }
