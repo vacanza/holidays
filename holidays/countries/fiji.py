@@ -169,13 +169,12 @@ class FijiHinduHolidays(_CustomHinduHolidays):
 
 
 class FijiIslamicHolidays(_CustomIslamicHolidays):
+    MAWLID_DATES_CONFIRMED_YEARS = (2016, 2025)
     MAWLID_DATES = {
         2016: (DEC, 12),
         2017: (DEC, 2),
         2018: (NOV, 19),
-        2019: (NOV, 9),
         2020: (OCT, 31),
-        2021: (OCT, 18),
         2022: (OCT, 7),  # looks like observed on FRI
         2023: (SEP, 30),
         2024: (SEP, 16),

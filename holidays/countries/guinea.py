@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import MAR, APR, JUN, JUL, AUG, SEP, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
@@ -125,58 +125,36 @@ class GIN(Guinea):
 
 
 class GuineaIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2015, 2025)
     EID_AL_ADHA_DATES = {
         2015: (SEP, 24),
         2016: (SEP, 13),
         2017: (SEP, 2),
         2018: (AUG, 22),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
         2022: (JUL, 10),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
         2025: (JUN, 7),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2015, 2025)
     EID_AL_FITR_DATES = {
         2015: (JUL, 18),
         2016: (JUL, 7),
         2017: (JUN, 26),
-        2018: (JUN, 15),
-        2019: (JUN, 4),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
         2025: (MAR, 31),
     }
 
+    MAWLID_DATES_CONFIRMED_YEARS = (2015, 2025)
     MAWLID_DATES = {
         2015: (DEC, 24),
         2016: (DEC, 12),
         2017: (DEC, 1),
-        2018: (NOV, 20),
         2019: (NOV, 10),
-        2020: (OCT, 29),
-        2021: (OCT, 18),
-        2022: (OCT, 8),
-        2023: (SEP, 27),
-        2024: (SEP, 15),
         2025: (SEP, 5),
     }
 
+    LAYLAT_AL_QADR_DATES_CONFIRMED_YEARS = (2015, 2025)
     LAYLAT_AL_QADR_DATES = {
-        2015: (JUL, 14),
         2016: (JUL, 3),
-        2017: (JUN, 22),
         2018: (JUN, 12),
-        2019: (JUN, 1),
-        2020: (MAY, 20),
-        2021: (MAY, 9),
         2022: (APR, 29),
-        2023: (APR, 18),
-        2024: (APR, 6),
-        2025: (MAR, 27),
     }

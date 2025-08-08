@@ -14,7 +14,7 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, OCT, NOV
+from holidays.calendars.gregorian import MAR, APR, JUN, JUL, OCT, NOV
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import (
     ChristianHolidays,
@@ -179,19 +179,12 @@ class TrinidadAndTobagoHinduHolidays(_CustomHinduHolidays):
 
 
 class TrinidadAndTobagoIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2012, 2025)
     EID_AL_FITR_DATES = {
-        2012: (AUG, 19),
-        2013: (AUG, 8),
         2014: (JUL, 29),
         2015: (JUL, 18),
-        2016: (JUL, 6),
         2017: (JUN, 26),
-        2018: (JUN, 15),
         2019: (JUN, 5),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
         2023: (APR, 22),
-        2024: (APR, 10),
         2025: (MAR, 31),
     }
