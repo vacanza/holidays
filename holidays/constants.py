@@ -56,6 +56,8 @@ HEBREW = "hebrew"
 HINDU = "hindu"
 ISLAMIC = "islamic"
 ORTHODOX = "orthodox"
+SABIAN = "sabian"
+YAZIDI = "yazidi"
 
 ALBANIAN = "albanian"
 ARMENIAN = "armenian"
@@ -64,9 +66,6 @@ ROMA = "roma"
 SERBIAN = "serbian"
 TURKISH = "turkish"
 VLACH = "vlach"
-
-SABIAN = "sabian"
-YAZIDI = "yazidi"
 
 DEFAULT_START_YEAR = 1901
 DEFAULT_END_YEAR = 2100
