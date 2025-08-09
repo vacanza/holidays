@@ -27,14 +27,15 @@ class Kiribati(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         * [Public Holidays Act Consolidated](https://web.archive.org/web/20250404213705/https://www.paclii.org/ki/legis/consol_act/pho216.pdf)
 
     Note:
-        The 2025 holidays list for Kiribati (http://web.archive.org/web/20250808191339/https://www.pso.gov.ki/kiribati-national-public-holidays-2025/))
-        mentions of the following holidays even though they don't appear in the law -
-        National Culture and Senior Citizens Day, National Police Day, World Teachers' Day.
+        The 2025 holidays list for Kiribati
+        (http://web.archive.org/web/20250808191339/https://www.pso.gov.ki/kiribati-national-public-holidays-2025/)
+        mentions the following holidays even though they do not appear in the law:
+        National Culture and Senior Citizens Day, National Police Day, and World Teachers' Day.
 
-        Additionally, the list shows that traditional holidays International Women's Day, Labor
-        Day, Gospel Day and Human Rights Day were celebrated on different dates than usual. It
-        seems that holidays falling on Thursdays or Saturdays are shifted to the adjacent
-        Friday. However, there is no legal provision cited for this adjustment.
+        Additionally, the list shows that traditional holidays (International Women's Day,
+        Labor Day, Gospel Day, and Human Rights and Peace Day) were celebrated on different
+        dates than usual, seemingly shifting Thursday/Saturday holidays to the adjacent Friday.
+        No legal provision or start year was cited for this adjustment.
     """
 
     country = "KI"
