@@ -275,13 +275,15 @@ class TestIraq(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             self.sabian_holidays,
+            "2023-03-14",
+            "2023-03-15",
             "2024-03-13",
             "2024-03-14",
             "2024-03-15",
             "2024-03-16",
             "2024-03-17",
         )
-        self.assertHolidayName(name, self.sabian_holidays, range(1974, 2050))
+        self.assertHolidayName(name, self.sabian_holidays, range(1973, 2050))
         self.assertNoHolidayName(name, self.sabian_holidays, range(1964, 1973))
         self.assertNoHolidayName(
             name,
@@ -303,7 +305,7 @@ class TestIraq(CommonCountryTests, TestCase):
             "2025-04-09",
             "2025-04-10",
         )
-        self.assertHolidayName(name, self.sabian_holidays, range(1974, 2050))
+        self.assertHolidayName(name, self.sabian_holidays, range(1973, 2050))
         self.assertNoHolidayName(name, self.sabian_holidays, range(1964, 1973))
         self.assertNoHolidayName(name, self.sabian_holidays, "2023-04-11")
 
@@ -319,7 +321,7 @@ class TestIraq(CommonCountryTests, TestCase):
             "2024-05-17",
             "2025-05-17",
         )
-        self.assertHolidayName(name, self.sabian_holidays, range(1974, 2050))
+        self.assertHolidayName(name, self.sabian_holidays, range(1973, 2050))
         self.assertNoHolidayName(name, self.sabian_holidays, range(1964, 1973))
 
     def test_yazidi_new_year(self):
