@@ -83,6 +83,10 @@ msgstr "Boxing Day"
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
+#. The Queen's Platinum Jubilee.
+msgid "The Queen's Platinum Jubilee"
+msgstr "The Queen's Platinum Jubilee"
+
 #. Coronation of King Charles III.
 msgid "Coronation of King Charles III"
 msgstr "King Charles III's Coronation"
