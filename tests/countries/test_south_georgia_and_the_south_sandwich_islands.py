@@ -145,8 +145,8 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
             "2016-09-05",
             "2021-09-06",
         )
-        self.assertHolidayName(f"{name_1} (observed)", obs_dt[:2])
-        self.assertHolidayName(f"{name_2} (observed)", obs_dt[2:])
+        self.assertHolidayName(f"{name_1} (observed)", "2014-09-15")
+        self.assertHolidayName(f"{name_2} (observed)", "2016-09-05", "2021-09-06")
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_environment_day(self):
