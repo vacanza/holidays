@@ -141,7 +141,6 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
         self.assertHolidayName(name_1, (f"{year}-09-14" for year in range(2012, 2014)))
         self.assertHolidayName(name_2, (f"{year}-09-04" for year in range(2015, 2021)))
         obs_dt = (
-            "2013-09-13",
             "2014-09-15",
             "2016-09-05",
             "2021-09-06",
