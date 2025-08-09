@@ -115,6 +115,7 @@ from holidays.countries.iceland import Iceland, IS, ISL
 from holidays.countries.india import India, IN, IND
 from holidays.countries.indonesia import Indonesia, ID, IDN
 from holidays.countries.iran import Iran, IR, IRN
+from holidays.countries.iraq import Iraq, IQ, IRQ
 from holidays.countries.ireland import Ireland, IE, IRL
 from holidays.countries.isle_of_man import IsleOfMan, IM, IMN
 from holidays.countries.israel import Israel, IL, ISR
