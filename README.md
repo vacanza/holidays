@@ -952,6 +952,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Liberia</td>
+<td>LR</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Libya</td>
 <td>LY</td>
 <td></td>
