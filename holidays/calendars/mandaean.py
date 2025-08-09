@@ -46,11 +46,7 @@ class _Mandaean:
         if not start_date:
             return None
 
-        if (
-            (month < 1 or month > 13)
-            or (day < 1 or day > 30)
-            or (month == 13 and (day < 1 or day > 5))
-        ):
+        if not (1 <= month <= 13) or not (1 <= day <= 30) or (month == 13 and not (1 <= day <= 5)):
             return None
 
         if month < 9:
@@ -59,4 +55,5 @@ class _Mandaean:
             delta = 30 * 8
         else:
             delta = 30 * (month - 1) + 5
+
         return _timedelta(start_date, delta + day - 1)
