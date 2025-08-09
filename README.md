@@ -903,6 +903,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>HINDU, ISLAMIC</td>
 </tr>
 <tr>
+<td>Kiribati</td>
+<td>KI</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Kuwait</td>
 <td>KW</td>
 <td></td>
