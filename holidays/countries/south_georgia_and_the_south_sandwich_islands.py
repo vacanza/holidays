@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, MAY, JUN, OCT, NOV
+from holidays.calendars.gregorian import APR, MAY, JUN, OCT, SEP, NOV
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -97,13 +97,15 @@ class SouthGeorgiaAndTheSouthSandwichIslands(
         if self._year != 2025:
             self._add_observed(dt)
 
-        if self._year <= 2022:
+        if self._year <= 2021:
             if self._year >= 2015:
                 # Toothfish Day.
                 self._add_observed(self._add_holiday_sep_4(tr("Toothfish Day")))
             else:
                 # Toothfish (end of season) Day.
-                self._add_observed(self._add_holiday_sep_14(tr("Toothfish (end of season) Day")))
+                dt = self._add_holiday_sep_14(tr("Toothfish (end of season) Day"))
+                if self._year != 2013:
+                    self._add_observed(dt)
 
         if self._year >= 2020:
             # Environment Day.
@@ -111,6 +113,7 @@ class SouthGeorgiaAndTheSouthSandwichIslands(
             if self._year != 2021:
                 self._add_observed(dt)
 
+        # Placed before Christmas Day for proper observed calculation.
         self._add_observed(
             # Boxing Day.
             self._add_christmas_day_two(tr("Boxing Day")),
@@ -132,20 +135,25 @@ class SGS(SouthGeorgiaAndTheSouthSandwichIslands):
 class SouthGeorgiaAndTheSouthSandwichIslandsStaticHolidays:
     """South Georgia and the South Sandwich Islands special holidays."""
 
-    queens_birthday = tr("The Queen's Birthday")
+    # The Queen's Platinum Jubilee.
+    queens_platinum_jubilee = tr("The Queen's Platinum Jubilee")
 
     special_public_holidays = {
+        2022: (
+            (JUN, 2, queens_platinum_jubilee),
+            (JUN, 3, queens_platinum_jubilee),
+        ),
         2023: (
             # Coronation of King Charles III.
             (MAY, 8, tr("Coronation of King Charles III")),
             # King's Birthday.
             (NOV, 14, tr("King's Birthday")),
-        )
+        ),
     }
 
     special_public_holidays_observed = {
-        2019: (APR, 23, queens_birthday),
-        2020: (APR, 23, queens_birthday),
+        2013: (SEP, 13, tr("Toothfish (end of season) Day")),
+        2019: (APR, 23, tr("The Queen's Birthday")),
         2021: (OCT, 29, tr("Environment Day")),
         2023: (MAY, 19, tr("Shackleton Day")),
         2025: (JUN, 20, tr("Mid-winter Day")),
