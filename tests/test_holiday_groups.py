@@ -17,8 +17,10 @@ from holidays.groups import (
     BalineseSakaCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
+    MandaeanHolidays,
     PersianCalendarHolidays,
     ThaiCalendarHolidays,
+    TibetanCalendarHolidays,
 )
 from holidays.holiday_base import HolidayBase
 
@@ -128,4 +130,54 @@ class TestThaiCalendarHolidays(TestCase):
         test_holidays._add_preah_neangkoal("Royal Ploughing Ceremony (Cambodia)")
         test_holidays._add_visakha_bucha("Visakha Bucha")
         test_holidays._add_visakha_bucha("Visaka Bochea", KHMER_CALENDAR)
+        self.assertEqual(0, len(test_holidays))
+
+
+class TestTibetanCalendarHolidays(TestCase):
+    def test_add_tibetan_calendar_holiday(self):
+        # Check for out-of-range dates.
+        class TestHolidays(HolidayBase, TibetanCalendarHolidays):
+            def __init__(self, *args, **kwargs):
+                TibetanCalendarHolidays.__init__(self)
+                super().__init__(*args, **kwargs)
+
+        test_holidays = TestHolidays()
+
+        test_holidays._populate(2100)
+        test_holidays._add_blessed_rainy_day("Blessed Rainy Day")
+        test_holidays._add_birth_of_guru_rinpoche("Birth of Guru Rinpoche")
+        test_holidays._add_buddha_first_sermon("Buddha First Sermon")
+        test_holidays._add_buddha_parinirvana("Buddha Parinirvana")
+        test_holidays._add_day_of_offering("Day of Offering")
+        test_holidays._add_death_of_zhabdrung("Death of Zhabdrung")
+        test_holidays._add_descending_day_of_lord_buddha("Descending Day Of Lord Buddha")
+        test_holidays._add_losar("Losar")
+        test_holidays._add_thimphu_drubchen_day("Thimpu Drubchoe")
+        test_holidays._add_thimphu_tshechu_day("Thimphu Tshechu")
+        test_holidays._add_tibetan_winter_solstice("Winter Solstice Day")
+        self.assertEqual(0, len(test_holidays))
+
+
+class TestMandaeanCalendarHolidays(TestCase):
+    def test_add_mandaean_calendar_holiday(self):
+        # Check for out-of-range dates.
+        class TestHolidays(HolidayBase, MandaeanHolidays):
+            end_year = 2150
+
+            def __init__(self, *args, **kwargs):
+                MandaeanHolidays.__init__(self)
+                super().__init__(*args, **kwargs)
+
+        test_holidays = TestHolidays()
+        test_holidays._populate(2110)
+        test_holidays._add_dehwa_daimana_day("Dehwa Daimana Day")
+        test_holidays._add_parwanaya_day("Parwanaya Day")
+        test_holidays._add_great_feast_day("Great Feast Day")
+        test_holidays._add_dehwa_hanina_day("Dehwa Hanina Day")
+        self.assertEqual(0, len(test_holidays))
+
+        test_holidays._populate(2050)
+        test_holidays._add_mandaean_holiday(
+            "Invalid Mandaean Day", test_holidays._mandaean.mandaean_to_gregorian(2049, 13, 10)
+        )
         self.assertEqual(0, len(test_holidays))

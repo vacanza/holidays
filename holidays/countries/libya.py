@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
@@ -142,75 +142,43 @@ class LBY(Libya):
 class LibyaIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20240908234803/https://www.timeanddate.com/holidays/libya/eid-al-adha
     # https://web.archive.org/web/20250629084537/https://lawsociety.ly/legislation/قرار-رقم-773-لسنة-2017-م-بشأن-تحديد-عطلة-عيد-ال/
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2012, 2025)
     EID_AL_ADHA_DATES = {
-        2012: (OCT, 26),
-        2013: (OCT, 15),
         2014: (OCT, 5),
-        2015: (SEP, 23),
-        2016: (SEP, 11),
-        2017: (SEP, 1),
         2018: (AUG, 22),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
-        2025: (JUN, 6),
     }
 
     # https://web.archive.org/web/20241012125707/https://www.timeanddate.com/holidays/libya/eid-al-fitr
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2012, 2025)
     EID_AL_FITR_DATES = {
-        2012: (AUG, 19),
-        2013: (AUG, 8),
         2014: (JUL, 29),
         2015: (JUL, 18),
         2016: (JUL, 7),
         2017: (JUN, 26),
-        2018: (JUN, 15),
-        2019: (JUN, 4),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
         2025: (MAR, 31),
     }
 
     # https://web.archive.org/web/20250418094505/https://www.timeanddate.com/holidays/libya/muharram-new-year
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2012, 2025)
     HIJRI_NEW_YEAR_DATES = {
-        2012: (NOV, 15),
         2013: (NOV, 5),
-        2014: (OCT, 25),
         2015: (OCT, 15),
         2016: (OCT, 3),
         2017: (SEP, 22),
         2018: (SEP, 12),
-        2019: (AUG, 31),
-        2020: (AUG, 20),
         2021: (AUG, 10),
-        2022: (JUL, 30),
-        2023: (JUL, 19),
-        2024: (JUL, 7),
-        2025: (JUN, 26),
     }
 
     # https://web.archive.org/web/20241213175353/https://www.timeanddate.com/holidays/libya/prophet-birthday
     # https://web.archive.org/web/20250629084607/https://lawsociety.ly/legislation/قرار-رقم-1299-لسنة-2019-م-بشأن-عطلة-ذكرى-المولد/
+    MAWLID_DATES_CONFIRMED_YEARS = (2012, 2024)
     MAWLID_DATES = {
         2012: (FEB, 5),
-        2013: (JAN, 24),
         2014: (JAN, 14),
-        2015: ((JAN, 3), (DEC, 23)),
         2016: (DEC, 12),
         2017: (DEC, 1),
         2018: (NOV, 21),
-        2019: (NOV, 9),
-        2020: (OCT, 29),
         2021: (OCT, 19),
-        2022: (OCT, 8),
-        2023: (SEP, 27),
-        2024: (SEP, 15),
     }
 
 

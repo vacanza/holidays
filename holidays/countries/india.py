@@ -501,17 +501,20 @@ class India(
         self._add_holiday_may_9(tr("Rabindra Jayanti"))
 
 
+class IN(India):
+    pass
+
+
+class IND(India):
+    pass
+
+
 class IndiaIslamicHolidays(_CustomIslamicHolidays):
-    # Muharram / Day of Ashura.
+    ASHURA_DATES_CONFIRMED_YEARS = (2001, 2025)
     ASHURA_DATES = {
-        2001: (APR, 4),
-        2002: (MAR, 24),
         2003: (MAR, 14),
         2004: (MAR, 2),
-        2005: (FEB, 19),
-        2006: (FEB, 9),
         2007: (JAN, 30),
-        2008: (JAN, 19),
         2009: ((JAN, 7), (DEC, 28)),
         2010: (DEC, 17),
         2011: (DEC, 6),
@@ -531,15 +534,13 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
         2025: (JUL, 6),
     }
 
-    # Bakrid / Eid-al-Adha.
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2025)
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),
         2003: (FEB, 12),
         2004: (FEB, 2),
-        2005: (JAN, 21),
         2006: ((JAN, 11), (DEC, 31)),
-        2007: (DEC, 20),
         2008: (DEC, 9),
         2009: (NOV, 28),
         2010: (NOV, 17),
@@ -560,21 +561,16 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
         2025: (JUN, 7),
     }
 
-    # Id-ul-Fitr / Eid-al-Fitr.
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2025)
     EID_AL_FITR_DATES = {
         2001: (DEC, 17),
         2002: (DEC, 6),
         2003: (NOV, 26),
-        2004: (NOV, 14),
-        2005: (NOV, 3),
         2006: (OCT, 24),
-        2007: (OCT, 13),
         2008: (OCT, 2),
         2009: (SEP, 21),
-        2010: (SEP, 10),
         2011: (AUG, 31),
         2012: (AUG, 20),
-        2013: (AUG, 8),
         2014: (JUL, 29),
         2015: (JUL, 18),
         2016: (JUL, 7),
@@ -589,7 +585,7 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
         2025: (MAR, 31),
     }
 
-    # Milad-un-Nabi / Mawlid.
+    MAWLID_DATES_CONFIRMED_YEARS = (2001, 2025)
     MAWLID_DATES = {
         2001: (JUN, 5),
         2002: (MAY, 25),
@@ -599,7 +595,6 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
         2006: (APR, 11),
         2007: (APR, 1),
         2008: (MAR, 21),
-        2009: (MAR, 9),
         2010: (FEB, 27),
         2011: (FEB, 16),
         2012: (FEB, 5),
@@ -617,11 +612,3 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
         2024: (SEP, 16),
         2025: (SEP, 5),
     }
-
-
-class IN(India):
-    pass
-
-
-class IND(India):
-    pass

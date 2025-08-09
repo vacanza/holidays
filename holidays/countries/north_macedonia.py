@@ -13,18 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import (
-    GREGORIAN_CALENDAR,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-)
+from holidays.calendars.gregorian import GREGORIAN_CALENDAR, APR, MAY, JUL, SEP, OCT
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.constants import (
     ALBANIAN,
@@ -262,42 +251,17 @@ class MKD(NorthMacedonia):
 
 
 class NorthMacedoniaIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2010, 2025)
     EID_AL_ADHA_DATES = {
-        2010: (NOV, 16),
-        2011: (NOV, 6),
         2012: (OCT, 25),
-        2013: (OCT, 15),
-        2014: (OCT, 4),
         2015: (SEP, 24),
         2016: (SEP, 12),
-        2017: (SEP, 1),
-        2018: (AUG, 21),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
-        2025: (JUN, 6),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2010, 2025)
     EID_AL_FITR_DATES = {
         2010: (SEP, 9),
-        2011: (AUG, 30),
-        2012: (AUG, 19),
-        2013: (AUG, 8),
-        2014: (JUL, 28),
-        2015: (JUL, 17),
         2016: (JUL, 5),
-        2017: (JUN, 25),
-        2018: (JUN, 15),
-        2019: (JUN, 4),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
-        2025: (MAR, 30),
     }
 
 

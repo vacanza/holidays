@@ -315,6 +315,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Bhutan</td>
+<td>BT</td>
+<td>Administrative Subdivisions: 11 (Paro), 12 (Chhukha), 13 (Haa), 14 (Samtse), 15 (Thimphu), 21 (Tsirang), 22 (Dagana), 23 (Punakha), 24 (Wangdue Phodrang), 31 (Sarpang), 32 (Trongsa), 33 (Bumthang), 34 (Zhemgang), 41 (Trashigang), 42 (Monggar), 43 (Pema Gatshel), 44 (Lhuentse), 45 (Samdrup Jongkhar), GA (Gasa), TY (Trashi Yangtse)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Bolivia</td>
 <td>BO</td>
 <td>Departments: B (El Beni), C (Cochabamba), H (Chuquisaca), L (La Paz), N (Pando), O (Oruro), P (Potosí), S (Santa Cruz), T (Tarija)</td>
@@ -672,6 +679,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Gambia</td>
+<td>GM</td>
+<td></td>
+<td><strong>en_GM</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Georgia</td>
 <td>GE</td>
 <td></td>
@@ -681,7 +695,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Germany</td>
 <td>DE</td>
-<td>Lands: BB (Brandenburg), BE (Berlin), BW (Baden-Württemberg), BY (Bayern), HB (Bremen), HE (Hessen), HH (Hamburg), MV (Mecklenburg-Vorpommern), NI (Niedersachsen), NW (Nordrhein-Westfalen), RP (Rheinland-Pfalz), SH (Schleswig-Holstein), SL (Saarland), SN (Sachsen), ST (Sachsen-Anhalt), TH (Thüringen)</td>
+<td>States: BB (Brandenburg), BE (Berlin), BW (Baden-Württemberg), BY (Bayern), HB (Bremen), HE (Hessen), HH (Hamburg), MV (Mecklenburg-Vorpommern), NI (Niedersachsen), NW (Nordrhein-Westfalen), RP (Rheinland-Pfalz), SH (Schleswig-Holstein), SL (Saarland), SN (Sachsen), ST (Sachsen-Anhalt), TH (Thüringen); cities: Augsburg</td>
 <td><strong>de</strong>, en_US, th, uk</td>
 <td>CATHOLIC</td>
 </tr>
@@ -819,6 +833,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Iraq</td>
+<td>IQ</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td>CHRISTIAN, HEBREW, SABIAN, YAZIDI</td>
+</tr>
+<tr>
 <td>Ireland</td>
 <td>IE</td>
 <td></td>
@@ -933,6 +954,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Lesotho</td>
 <td>LS</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Liberia</td>
+<td>LR</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1594,6 +1622,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>tr</strong>, uk</td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Turkmenistan</td>
+<td>TM</td>
+<td></td>
+<td>en_US, ru, <strong>tk</strong></td>
+<td></td>
 </tr>
 <tr>
 <td>Turks and Caicos Islands</td>
