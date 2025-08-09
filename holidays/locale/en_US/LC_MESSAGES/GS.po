@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# South Georgia and the South Sandwich Islands holidays en_US Localization.
+# South Georgia and the South Sandwich Islands holidays en_US localization.
 #
 msgid ""
 msgstr ""
