@@ -97,6 +97,7 @@ COUNTRIES: RegistryDict = {
     "french_polynesia": ("FrenchPolynesia", "PF", "PYF", "HolidaysPF"),
     "french_southern_territories": ("FrenchSouthernTerritories", "TF", "ATF", "HolidaysTF"),
     "gabon": ("Gabon", "GA", "GAB"),
+    "gambia": ("Gambia", "GM", "GMB"),
     "georgia": ("Georgia", "GE", "GEO"),
     "germany": ("Germany", "DE", "DEU"),
     "ghana": ("Ghana", "GH", "GHA"),
