@@ -22,6 +22,8 @@ class TestKiribati(CommonCountryTests, TestCase):
         years = range(1980, 2050)
         super().setUpClass(Kiribati, years=years)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(Kiribati(years=1979))
     def test_country_aliases(self):
         self.assertAliases(Kiribati, KI, KIR)
 
