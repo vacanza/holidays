@@ -43,9 +43,9 @@ msgstr "Fenkil Day"
 msgid "Women's Day"
 msgstr "Women's Day"
 
-#. Orthdox Christmas.
+#. Orthodox Christmas.
 msgid "Leddet"
-msgstr "Orthdox Christmas"
+msgstr "Orthodox Christmas"
 
 #. Epiphany.
 msgid "Timket"

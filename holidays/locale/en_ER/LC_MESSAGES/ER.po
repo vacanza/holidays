@@ -43,7 +43,7 @@ msgstr ""
 msgid "Women's Day"
 msgstr ""
 
-#. Orthdox Christmas.
+#. Orthodox Christmas.
 msgid "Leddet"
 msgstr ""
 

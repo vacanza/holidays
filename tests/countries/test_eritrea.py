@@ -154,7 +154,7 @@ class TestEritrea(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),
-            ("2022-01-07", "Orthdox Christmas"),
+            ("2022-01-07", "Orthodox Christmas"),
             ("2022-01-19", "Epiphany"),
             ("2022-02-10", "Fenkil Day"),
             ("2022-03-08", "Women's Day"),
