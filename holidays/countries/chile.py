@@ -30,8 +30,8 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
     """Chile holidays.
 
     References:
-        * <https://web.archive.org/web/20250418020620/https://www.feriados.cl/>
-        * [Excellent history of Chile holidays](https://web.archive.org/web/20250124223839/https://www.feriadoschilenos.cl/)
+        * <https://web.archive.org/web/20250718012109/https://www.feriados.cl/>
+        * [Excellent history of Chile holidays](https://web.archive.org/web/20250712031422/https://www.feriadoschilenos.cl/)
         * <https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_Chile>
         * Law 2.977 (established official Chile holidays in its current form)
         * Law 20.983 (Day after New Year's Day, if it's a Sunday)
@@ -237,7 +237,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         if 1957 <= self._year <= 1975:
             self._add_holiday_jun_30(name)
 
-        if self._year >= 1956 and self._year != 1997:
+        if (1956 <= self._year <= 2024) and (self._year != 1997):
             self._add_holiday_dec_31(name)
 
     @property
