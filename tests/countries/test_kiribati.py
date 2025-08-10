@@ -31,15 +31,15 @@ class TestKiribati(CommonCountryTests, TestCase):
     def test_new_years_day(self):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1980, 2050)))
-        obs_dt = (
+        dt = (
             "2011-01-03",
             "2012-01-02",
             "2017-01-02",
             "2022-01-03",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_womens_day(self):
         name = "International Women's Day"
