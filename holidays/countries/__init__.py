@@ -94,6 +94,7 @@ from holidays.countries.french_southern_territories import (
     HolidaysTF,
 )
 from holidays.countries.gabon import Gabon, GA, GAB
+from holidays.countries.gambia import Gambia, GM, GMB
 from holidays.countries.georgia import Georgia, GE, GEO
 from holidays.countries.germany import Germany, DE, DEU
 from holidays.countries.ghana import Ghana, GH, GHA
@@ -115,6 +116,7 @@ from holidays.countries.iceland import Iceland, IS, ISL
 from holidays.countries.india import India, IN, IND
 from holidays.countries.indonesia import Indonesia, ID, IDN
 from holidays.countries.iran import Iran, IR, IRN
+from holidays.countries.iraq import Iraq, IQ, IRQ
 from holidays.countries.ireland import Ireland, IE, IRL
 from holidays.countries.isle_of_man import IsleOfMan, IM, IMN
 from holidays.countries.israel import Israel, IL, ISR
@@ -132,6 +134,7 @@ from holidays.countries.laos import Laos, LA, LAO
 from holidays.countries.latvia import Latvia, LV, LVA
 from holidays.countries.lebanon import Lebanon, LB, LBN
 from holidays.countries.lesotho import Lesotho, LS, LSO
+from holidays.countries.liberia import Liberia, LR, LBR
 from holidays.countries.libya import Libya, LY, LBY
 from holidays.countries.liechtenstein import Liechtenstein, LI, LIE
 from holidays.countries.lithuania import Lithuania, LT, LTU
