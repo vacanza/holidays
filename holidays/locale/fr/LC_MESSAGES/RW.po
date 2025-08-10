@@ -1,0 +1,92 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Rwanda holidays fr localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.78\n"
+"POT-Creation-Date: 2025-08-07 14:18+0530\n"
+"PO-Revision-Date: 2025-08-07 14:18+0530\n"
+"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: rw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: rw\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (observed)"
+
+#. New Year's Day.
+msgid "Ubunani"
+msgstr "Nouvel An"
+
+#. Day after New Year's Day.
+msgid "Umunsi ukurikira Ubunani"
+msgstr "Le lendemain du Nouvel An"
+
+#. National Heroes' Day.
+msgid "Umunsi w'Intwari"
+msgstr "Journée Nationale des Héros"
+
+#. Genocide perpetrated against the Tutsi Memorial Day.
+msgid "Umunsi wo Kwibuka Jenoside yakorewe Abatutsi"
+msgstr "Journée commémorative du Génocide perpétré contre les Tutsi"
+
+#. Good Friday.
+msgid "Umunsi wa Gatanu Mutagatifu"
+msgstr "Vendredi Saint"
+
+#. Easter Monday.
+msgid "Ku wa mbere wa Pasika"
+msgstr "Lundi de Pâques"
+
+#. Labour Day.
+msgid "Umunsi Mukuru w'Umurimo"
+msgstr "Journée du Travail"
+
+#. EID EL FITR.
+msgid "EID EL FITR"
+msgstr "EID EL FITR"
+
+#. EID AL-ADHA.
+msgid "EID AL-ADHA"
+msgstr "EID AL-ADHA"
+
+#. Independence Day.
+msgid "Umunsi w'Ubwigenge"
+msgstr "Journée de l’Indépendance"
+
+#. Liberation Day.
+msgid "Umunsi wo Kwibohora"
+msgstr "Journée de la Libération"
+
+#. Umuganura Day.
+msgid "Umunsi w'Umuganura"
+msgstr "Journée d’Umuganura"
+
+#. Assumption Day.
+msgid "Ijyanwa mu Ijuru rya Bikiramariya"
+msgstr "Assomption"
+
+#. Christmas Day.
+msgid "Noheli"
+msgstr "Noël"
+
+#. Boxing Day.
+msgid "Umunsi ukurikira Noheli"
+msgstr "Le lendemain de Noël"
