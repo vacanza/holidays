@@ -38,7 +38,7 @@ class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self, cls=EritreaIslamicHolidays, show_estimated=islamic_show_estimated
+            self, cls=RwandaIslamicHolidays, show_estimated=islamic_show_estimated
         )
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
@@ -62,7 +62,7 @@ class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
         # Easter Monday.
         self._add_easter_monday(tr("Ku wa mbere wa Pasika"))
 
-        # Labour Day.
+        # . Labor Day
         self._add_labor_day(tr("Umunsi Mukuru w'Umurimo"))
 
         # EID EL FITR.
@@ -98,7 +98,7 @@ class RWA(Rwanda):
     pass
 
 
-class EritreaIslamicHolidays(_CustomIslamicHolidays):
+class RwandaIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2018, 2025)
     EID_AL_ADHA_DATES = {
         2018: (AUG, 22),

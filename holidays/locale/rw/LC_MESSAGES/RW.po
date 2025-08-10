@@ -55,7 +55,7 @@ msgstr ""
 msgid "Ku wa mbere wa Pasika"
 msgstr ""
 
-#. Labour Day.
+#. . Labor Day
 msgid "Umunsi Mukuru w'Umurimo"
 msgstr ""
 
@@ -90,9 +90,3 @@ msgstr ""
 #. Boxing Day.
 msgid "Umunsi ukurikira Noheli"
 msgstr ""
-
-#~ msgid "ku wa mbere wa Pasika"
-#~ msgstr ""
-
-#~ msgid "umunsi wa Gatanu Mutagatifu"
-#~ msgstr ""

@@ -19,7 +19,7 @@ msgstr ""
 "PO-Revision-Date: 2025-08-07 14:18+0530\n"
 "Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: rw\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +29,7 @@ msgstr ""
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
-msgstr "%s (observed)"
+msgstr "%s (observé"
 
 #. New Year's Day.
 msgid "Ubunani"
@@ -55,7 +55,7 @@ msgstr "Vendredi Saint"
 msgid "Ku wa mbere wa Pasika"
 msgstr "Lundi de Pâques"
 
-#. Labour Day.
+#. . Labor Day
 msgid "Umunsi Mukuru w'Umurimo"
 msgstr "Journée du Travail"
 
