@@ -20,22 +20,26 @@ class TestKiribati(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1980, 2050)
-        super().setUpClass(Kiribati, years=years)
+        super().setUpClass(Kiribati, years=years, years_non_observed=years)
 
-    def test_no_holidays(self):
-        self.assertNoHolidays(Kiribati(years=1979))
     def test_country_aliases(self):
         self.assertAliases(Kiribati, KI, KIR)
 
-    def test_new_years(self):
+    def test_no_holidays(self):
+        self.assertNoHolidays(Kiribati(years=1979))
+
+    def test_new_years_day(self):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1980, 2050)))
-        dt = (
+        obs_dt = (
+            "2011-01-03",
+            "2012-01-02",
             "2017-01-02",
+            "2022-01-03",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_womens_day(self):
         name = "International Women's Day"
@@ -49,17 +53,23 @@ class TestKiribati(CommonCountryTests, TestCase):
         name = "Good Friday"
         self.assertHolidayName(
             name,
-            "2019-04-19",
-            "2020-04-10",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
         )
         self.assertHolidayName(name, range(1980, 2050))
 
     def test_holy_saturday(self):
         name = "Holy Saturday"
-        self.assertHolidayName(name, "1999-04-03", "2000-04-22", "2001-04-14", "2002-03-30")
+        self.assertHolidayName(
+            name,
+            "1999-04-03",
+            "2000-04-22",
+            "2001-04-14",
+            "2002-03-30",
+        )
         self.assertHolidayName(name, range(1980, 2003))
         self.assertNoHolidayName(name, range(2003, 2050))
 
@@ -67,11 +77,11 @@ class TestKiribati(CommonCountryTests, TestCase):
         name = "Easter Monday"
         self.assertHolidayName(
             name,
-            "2019-04-22",
-            "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
         )
         self.assertHolidayName(name, range(1980, 2050))
 
@@ -86,10 +96,13 @@ class TestKiribati(CommonCountryTests, TestCase):
     def test_public_holiday_may_9(self):
         name = "Public Holiday"
         self.assertHolidayName(name, (f"{year}-05-09" for year in range(1993, 2003)))
+        # Observed when falling on weekend.
+        dt = ("1993-05-10", "1999-05-10")
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(
             name, (f"{year}-05-09" for year in (*range(1980, 1993), *range(2003, 2050)))
         )
-
     def test_gospel_day(self):
         name = "Gospel Day"
         self.assertHolidayName(name, (f"{year}-07-11" for year in range(2002, 2050)))
@@ -141,8 +154,11 @@ class TestKiribati(CommonCountryTests, TestCase):
     def test_public_holiday_nov_10(self):
         name = "Public Holiday"
         self.assertHolidayName(name, (f"{year}-11-10" for year in range(1980, 1993)))
+        # Observed when falling on weekend.
+        dt = ("1991-11-11",)
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name, (f"{year}-11-10" for year in range(1993, 2050)))
-
     def test_human_rights_peace_day(self):
         name = "Human Rights and Peace Day"
         self.assertHolidayName(name, (f"{year}-12-10" for year in range(1993, 2003)))
