@@ -30,7 +30,8 @@ class Kiribati(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         The 2025 holidays list for Kiribati
         (http://web.archive.org/web/20250808191339/https://www.pso.gov.ki/kiribati-national-public-holidays-2025/)
         mentions the following holidays even though they do not appear in the law:
-        National Culture and Senior Citizens Day, National Police Day, and World Teachers' Day.
+        Labor Day, National Culture and Senior Citizens Day, National Police Day, and World
+        Teachers' Day.
 
         Additionally, the list shows that traditional holidays (International Women's Day,
         Labor Day, Gospel Day, and Human Rights and Peace Day) were celebrated on different

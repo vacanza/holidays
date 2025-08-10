@@ -96,13 +96,13 @@ class TestKiribati(CommonCountryTests, TestCase):
     def test_public_holiday_may_9(self):
         name = "Public Holiday"
         self.assertHolidayName(name, (f"{year}-05-09" for year in range(1993, 2003)))
-        # Observed when falling on weekend.
         dt = ("1993-05-10", "1999-05-10")
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(
             name, (f"{year}-05-09" for year in (*range(1980, 1993), *range(2003, 2050)))
         )
+
     def test_gospel_day(self):
         name = "Gospel Day"
         self.assertHolidayName(name, (f"{year}-07-11" for year in range(2002, 2050)))
@@ -154,11 +154,11 @@ class TestKiribati(CommonCountryTests, TestCase):
     def test_public_holiday_nov_10(self):
         name = "Public Holiday"
         self.assertHolidayName(name, (f"{year}-11-10" for year in range(1980, 1993)))
-        # Observed when falling on weekend.
         dt = ("1991-11-11",)
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name, (f"{year}-11-10" for year in range(1993, 2050)))
+
     def test_human_rights_peace_day(self):
         name = "Human Rights and Peace Day"
         self.assertHolidayName(name, (f"{year}-12-10" for year in range(1993, 2003)))
