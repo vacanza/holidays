@@ -108,8 +108,8 @@ class TestKiribati(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-07-11" for year in range(2002, 2050)))
         dt = ("2021-07-12", "2027-07-12")
         self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name, range(1980, 2002))
+
     def test_national_day_anniversary(self):
         name = "National Day - Independence Anniversary"
         self.assertHolidayName(name, (f"{year}-07-12" for year in range(1993, 2050)))
@@ -126,8 +126,8 @@ class TestKiribati(CommonCountryTests, TestCase):
             "2029-07-16",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name, range(1980, 2002))
+
     def test_national_day_unaine(self):
         name = "National Day (in honor of Unaine)"
         self.assertHolidayName(name, (f"{year}-07-16" for year in range(2002, 2050)))
@@ -135,6 +135,7 @@ class TestKiribati(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name, range(1980, 2002))
+
     def test_public_holiday_1st_mon_of_aug(self):
         name = "Public Holiday"
         self.assertHolidayName(
@@ -146,14 +147,15 @@ class TestKiribati(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(1980, 2003))
         self.assertNoHolidayName(name, range(2003, 2050))
+
     def test_youth_day(self):
         name = "Youth Day"
         self.assertHolidayName(name, (f"{year}-08-05" for year in range(2003, 2050)))
         self.assertNoHolidayName(name, range(1980, 2003))
-        # Observed when falling on weekend.
         dt = ("2012-08-06", "2018-08-06")
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
+
     def test_public_holiday_nov_10(self):
         name = "Public Holiday"
         self.assertHolidayName(name, (f"{year}-11-10" for year in range(1980, 1993)))
