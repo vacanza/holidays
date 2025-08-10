@@ -17,6 +17,7 @@ from holidays.groups import (
     BalineseSakaCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
+    MandaeanHolidays,
     PersianCalendarHolidays,
     ThaiCalendarHolidays,
     TibetanCalendarHolidays,
@@ -154,4 +155,29 @@ class TestTibetanCalendarHolidays(TestCase):
         test_holidays._add_thimphu_drubchen_day("Thimpu Drubchoe")
         test_holidays._add_thimphu_tshechu_day("Thimphu Tshechu")
         test_holidays._add_tibetan_winter_solstice("Winter Solstice Day")
+        self.assertEqual(0, len(test_holidays))
+
+
+class TestMandaeanCalendarHolidays(TestCase):
+    def test_add_mandaean_calendar_holiday(self):
+        # Check for out-of-range dates.
+        class TestHolidays(HolidayBase, MandaeanHolidays):
+            end_year = 2150
+
+            def __init__(self, *args, **kwargs):
+                MandaeanHolidays.__init__(self)
+                super().__init__(*args, **kwargs)
+
+        test_holidays = TestHolidays()
+        test_holidays._populate(2110)
+        test_holidays._add_dehwa_daimana_day("Dehwa Daimana Day")
+        test_holidays._add_parwanaya_day("Parwanaya Day")
+        test_holidays._add_great_feast_day("Great Feast Day")
+        test_holidays._add_dehwa_hanina_day("Dehwa Hanina Day")
+        self.assertEqual(0, len(test_holidays))
+
+        test_holidays._populate(2050)
+        test_holidays._add_mandaean_holiday(
+            "Invalid Mandaean Day", test_holidays._mandaean.mandaean_to_gregorian(2049, 13, 10)
+        )
         self.assertEqual(0, len(test_holidays))
