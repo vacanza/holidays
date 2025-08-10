@@ -62,7 +62,7 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         # Women's Day.
         self._add_holiday_mar_8(tr("Women's Day"))
 
-        # Orthdox Christmas.
+        # Orthodox Christmas.
         self._add_christmas_day(tr("Leddet"))
 
         # Epiphany.
