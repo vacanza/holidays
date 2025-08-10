@@ -57,7 +57,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         * [Law 19.528 (eliminate Dec 31)](https://web.archive.org/web/20241227191452/https://www.bcn.cl/leychile/navegar?idNorma=76630&idVersion=1997-11-04)
         * [Law 19.559 (restore Dec 31)](https://web.archive.org/web/20241227195811/https://www.bcn.cl/leychile/navegar?idNorma=97758&idVersion=1998-04-16)
         * [Law 21.521 (eliminate Dec 31 again, after the CMF publishes a specific regulation)](https://web.archive.org/web/20240214154900/https://www.bcn.cl/leychile/navegar?idNorma=1187323&idVersion=2023-02-03)
-        * [Normativa de Carácter General 543 de la Comisión para el Mercado Financieron (the regulation required by the law 21.521 to make the Dec 31 elimination come into vigour)](https://www.cmfchile.cl/normativa/ncg_543_2025.pdf)
+        * [Normativa de Carácter General 543 de la CMF](https://www.cmfchile.cl/normativa/ncg_543_2025.pdf)
     """
 
     country = "CL"
