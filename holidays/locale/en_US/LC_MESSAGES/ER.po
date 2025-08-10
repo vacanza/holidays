@@ -1,0 +1,112 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Eritrea holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.79\n"
+"POT-Creation-Date: 2025-08-08 11:57+0530\n"
+"PO-Revision-Date: 2025-08-08 11:57+0530\n"
+"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_ER\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_ER\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (estimated)"
+
+#. New Year's Day.
+msgid "New Year"
+msgstr "New Year's Day"
+
+#. Fenkil Day.
+msgid "Fenkil Day"
+msgstr "Fenkil Day"
+
+#. Women's Day.
+msgid "Women's Day"
+msgstr "Women's Day"
+
+#. Orthdox Christmas.
+msgid "Leddet"
+msgstr "Orthdox Christmas"
+
+#. Epiphany.
+msgid "Timket"
+msgstr "Epiphany"
+
+#. Orthodox Easter.
+msgid "Tensae"
+msgstr "Orthodox Easter"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Good Friday"
+
+#. International Workers' Day.
+msgid "International Workers' Day"
+msgstr "International Workers' Day"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "Independence Day"
+
+#. Festival of Mariam Dearit.
+msgid "Festival of Mariam Dearit"
+msgstr "Festival of Mariam Dearit"
+
+#. Martyrs' Day.
+msgid "Martyrs' Day"
+msgstr "Martyrs' Day"
+
+#. Mariam Debre Sina.
+msgid "Mariam Debre Sina"
+msgstr "Mariam Debre Sina"
+
+#. Debre Bizen Abune Libanos.
+msgid "Debre Bizen Abune Libanos"
+msgstr "Debre Bizen Abune Libanos"
+
+#. Revolution Day.
+msgid "Revolution Day"
+msgstr "Revolution Day"
+
+#. Orthodox New Year.
+msgid "Keddus Yohannes"
+msgstr "Orthodox New Year"
+
+#. Finding of the True Cross.
+msgid "Meskel"
+msgstr "Finding of the True Cross"
+
+#. Eid al-Fitr.
+msgid "Eid al-Fitr"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Eid al-Adha"
+msgstr "Eid al-Adha"
+
+#. Muharram.
+msgid "Muharram"
+msgstr "Muharram"
+
+#. Mawlid an-Nabi.
+msgid "Mawlid an-Nabi"
+msgstr "Mawlid an-Nabi"
