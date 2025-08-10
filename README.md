@@ -833,6 +833,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Iraq</td>
+<td>IQ</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td>CHRISTIAN, HEBREW, SABIAN, YAZIDI</td>
+</tr>
+<tr>
 <td>Ireland</td>
 <td>IE</td>
 <td></td>
