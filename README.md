@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 228 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 229 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -1538,6 +1538,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Cantons: AG (Aargau), AI (Appenzell Innerrhoden), AR (Appenzell Ausserrhoden), BE (Bern, Berne), BL (Basel-Landschaft), BS (Basel-Stadt), FR (Freiburg, Fribourg), GE (Genève), GL (Glarus), GR (Graubünden, Grigioni, Grischun), JU (Jura), LU (Luzern), NE (Neuchâtel), NW (Nidwalden), OW (Obwalden), SG (Sankt Gallen), SH (Schaffhausen), SO (Solothurn), SZ (Schwyz), TG (Thurgau), TI (Ticino), UR (Uri), VD (Vaud), VS (Valais, Wallis), ZG (Zug), ZH (Zürich)</td>
 <td><strong>de</strong>, en_US, fr, it, uk</td>
 <td>HALF_DAY, OPTIONAL</td>
+</tr>
+<tr>
+<td>Syrian Arab Republic</td>
+<td>SY</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td></td>
 </tr>
 <tr>
 <td>Taiwan</td>
