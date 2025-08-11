@@ -13,17 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import (
-    GREGORIAN_CALENDAR,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-)
+from holidays.calendars.gregorian import GREGORIAN_CALENDAR, MAR, OCT
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
@@ -122,45 +112,18 @@ class SYR(SyrianArabRepublic):
 
 
 class SyriaIslamicHolidays(_CustomIslamicHolidays):
-    # https://web.archive.org/web/20250120140034/https://www.timeanddate.com/holidays/syria/muharram-new-year
     HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2020, 2025)
-    HIJRI_NEW_YEAR_DATES = {
-        2020: (AUG, 20),
-        2021: (AUG, 9),
-        2022: (JUL, 30),
-        2023: (JUL, 19),
-        2024: (JUL, 7),
-        2025: (JUN, 26),
-    }
 
     # https://web.archive.org/web/20240808150300/https://www.timeanddate.com/holidays/syria/prophet-birthday
     MAWLID_DATES_CONFIRMED_YEARS = (2020, 2024)
     MAWLID_DATES = {
-        2020: (OCT, 29),
         2021: (OCT, 19),
-        2022: (OCT, 8),
-        2023: (SEP, 27),
-        2024: (SEP, 15),
     }
 
     # https://web.archive.org/web/20250404011133/https://www.timeanddate.com/holidays/syria/eid-al-fitr
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2020, 2025)
     EID_AL_FITR_DATES = {
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
         2025: (MAR, 31),
     }
 
-    # https://web.archive.org/web/20250126132002/https://www.timeanddate.com/holidays/syria/eid-al-adha
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2020, 2025)
-    EID_AL_ADHA_DATES = {
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
-        2025: (JUN, 6),
-    }
