@@ -774,7 +774,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GW</td>
 <td></td>
 <td>en_US, <strong>pt_GW</strong></td>
-<td>GOVERNMENT</td>
+<td></td>
 </tr>
 <tr>
 <td>Guyana</td>

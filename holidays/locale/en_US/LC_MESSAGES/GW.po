@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.78\n"
+"Project-Id-Version: Holidays 0.79\n"
 "POT-Creation-Date: 2025-08-03 15:53+0530\n"
 "PO-Revision-Date: 2025-08-03 15:53+0530\n"
 "Last-Translator: Kriti Birda <workwithkritibirda@gmail.com>\n"
@@ -49,6 +49,14 @@ msgstr "New Year's Day"
 msgid "Dia dos Heróis Nacionais"
 msgstr "National Heroes' Day"
 
+#. Day of the Beginning of the Armed Struggle.
+msgid "Dia do Início da Luta Armada"
+msgstr "Day of the Beginning of the Armed Struggle"
+
+#. International Women's Day.
+msgid "Dia Internacional da Mulher"
+msgstr "International Women's Day"
+
 #. Easter Sunday.
 msgid "Páscoa"
 msgstr "Easter Sunday"
@@ -65,10 +73,6 @@ msgstr "Pidjiguiti Day"
 msgid "Dia da Independência"
 msgstr "Independence Day"
 
-#. Readjustment Movement Day.
-msgid "Dia do Movimento de Reajustamento"
-msgstr "Readjustment Movement Day"
-
 #. Christmas Day.
 msgid "Dia de Natal"
 msgstr "Christmas Day"
@@ -80,23 +84,3 @@ msgstr "Eid al-Fitr"
 #. Eid al-Adha.
 msgid "Tabaski"
 msgstr "Eid al-Adha"
-
-#. International Women's Day.
-msgid "Dia Internacional da Mulher"
-msgstr "International Women's Day"
-
-#. Good Friday.
-msgid "Sexta-feira Santa"
-msgstr "Good Friday"
-
-#. All Souls' Day.
-msgid "Dia dos Finados"
-msgstr "All Souls' Day"
-
-#. Christmas Eve.
-msgid "Véspera de Natal"
-msgstr "Christmas Eve"
-
-#. New Year's Eve.
-msgid "Véspera de Ano Novo"
-msgstr "New Year's Eve"

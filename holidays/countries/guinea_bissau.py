@@ -13,8 +13,6 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
-from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -23,7 +21,7 @@ class GuineaBissau(HolidayBase, ChristianHolidays, InternationalHolidays, Islami
     """Guinea-Bissau holidays.
 
     References:
-        * <https://en.wikipedia.org/wiki/Public_holidays_in_Guinea-Bissau>
+        * [Ley núm. 7/2022, de 18 de julio, que aprueba el Código del Trabajo](https://archive.org/details/742984686-co-digo-de-trabalho-lei-no-7-2022)
     """
 
     country = "GW"
@@ -34,9 +32,8 @@ class GuineaBissau(HolidayBase, ChristianHolidays, InternationalHolidays, Islami
     observed_label = tr("%s (ponte)")
     # %s (estimated, observed).
     observed_estimated_label = tr("%s (prevista, ponte)")
-    supported_categories = (GOVERNMENT, PUBLIC)
     supported_languages = ("en_US", "pt_GW")
-    start_year = 1975
+    start_year = 2023
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -59,6 +56,12 @@ class GuineaBissau(HolidayBase, ChristianHolidays, InternationalHolidays, Islami
         # National Heroes' Day.
         self._add_holiday_jan_20(tr("Dia dos Heróis Nacionais"))
 
+        # Day of the Beginning of the Armed Struggle.
+        self._add_holiday_jan_23(tr("Dia do Início da Luta Armada"))
+
+        # International Women's Day.
+        self._add_womens_day(tr("Dia Internacional da Mulher"))
+
         # Easter Sunday.
         self._add_easter_sunday(tr("Páscoa"))
 
@@ -71,9 +74,6 @@ class GuineaBissau(HolidayBase, ChristianHolidays, InternationalHolidays, Islami
         # Independence Day.
         self._add_holiday_sep_24(tr("Dia da Independência"))
 
-        # Readjustment Movement Day.
-        self._add_holiday_nov_14(tr("Dia do Movimento de Reajustamento"))
-
         # Christmas Day.
         self._add_christmas_day(tr("Dia de Natal"))
 
@@ -82,22 +82,6 @@ class GuineaBissau(HolidayBase, ChristianHolidays, InternationalHolidays, Islami
 
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Tabaski"))
-
-    def _populate_government_holidays(self):
-        # International Women's Day.
-        self._add_womens_day(tr("Dia Internacional da Mulher"))
-
-        # Good Friday.
-        self._add_good_friday(tr("Sexta-feira Santa"))
-
-        # All Souls' Day.
-        self._add_all_souls_day(tr("Dia dos Finados"))
-
-        # Christmas Eve.
-        self._add_christmas_eve(tr("Véspera de Natal"))
-
-        # New Year's Eve.
-        self._add_new_years_eve(tr("Véspera de Ano Novo"))
 
 
 class GW(GuineaBissau):
@@ -109,34 +93,8 @@ class GNB(GuineaBissau):
 
 
 class GuineaIslamicHolidays(_CustomIslamicHolidays):
-    # https://www.timeanddate.com/holidays/guinea-bissau/eid-al-adha
-    EID_AL_ADHA_DATES = {
-        2014: (OCT, 5),
-        2015: (SEP, 24),
-        2016: (SEP, 13),
-        2017: (SEP, 2),
-        2018: (AUG, 22),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 21),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
-        2025: (JUN, 6),
-    }
+    # http://web.archive.org/web/20250811201914/https://www.timeanddate.com/holidays/guinea-bissau/eid-al-adha
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2023, 2025)
 
-    # https://www.timeanddate.com/holidays/guinea-bissau/eid-al-fitr
-    EID_AL_FITR_DATES = {
-        2014: (JUL, 29),
-        2015: (JUL, 18),
-        2016: (JUL, 7),
-        2017: (JUN, 26),
-        2018: (JUN, 15),
-        2019: (JUN, 4),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 3),
-        2023: (APR, 21),
-        2024: (APR, 10),
-        2025: (MAR, 30),
-    }
+    # http://web.archive.org/web/20250811202225/https://www.timeanddate.com/holidays/guinea-bissau/eid-al-fitr
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2023, 2025)

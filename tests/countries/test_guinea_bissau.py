@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.countries import GuineaBissau, GW, GNB
 from tests.common import CommonCountryTests
 
@@ -20,169 +19,111 @@ from tests.common import CommonCountryTests
 class TestGuineaBissau(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1975, 2050)
-        super().setUpClass(GuineaBissau, years=years, years_non_observed=years)
-        cls.government_holidays = GuineaBissau(years=years, categories=GOVERNMENT)
+        years = range(2023, 2050)
+        super().setUpClass(GuineaBissau, years=years)
         cls.no_estimated_holidays = GuineaBissau(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(GuineaBissau, GW, GNB)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(GuineaBissau(years=1974))
+        self.assertNoHolidays(GuineaBissau(years=2022))
 
     def test_new_years_day(self):
-        self.assertHolidayName("Ano Novo", (f"{year}-01-01" for year in range(1975, 2050)))
+        self.assertHolidayName("Ano Novo", (f"{year}-01-01" for year in range(2023, 2050)))
 
     def test_national_heroes_day(self):
         self.assertHolidayName(
-            "Dia dos Heróis Nacionais", (f"{year}-01-20" for year in range(1975, 2050))
+            "Dia dos Heróis Nacionais", (f"{year}-01-20" for year in range(2023, 2050))
+        )
+
+    def test_day_of_the_beginning_of_the_armed_struggle(self):
+        self.assertHolidayName(
+            "Dia do Início da Luta Armada", (f"{year}-01-23" for year in range(2023, 2050))
+        )
+
+    def test_womens_day(self):
+        self.assertHolidayName(
+            "Dia Internacional da Mulher", (f"{year}-03-08" for year in range(2023, 2050))
         )
 
     def test_easter_sunday(self):
         name = "Páscoa"
         self.assertHolidayName(
             name,
-            "2019-04-21",
-            "2020-04-12",
-            "2021-04-04",
-            "2022-04-17",
             "2023-04-09",
             "2024-03-31",
             "2025-04-20",
         )
-        self.assertHolidayName(name, range(1975, 2050))
+        self.assertHolidayName(name, range(2023, 2050))
 
     def test_workers_day(self):
         self.assertHolidayName(
-            "Dia do Trabalhador", (f"{year}-05-01" for year in range(1975, 2050))
+            "Dia do Trabalhador", (f"{year}-05-01" for year in range(2023, 2050))
         )
 
     def test_pidjiguiti_day(self):
         self.assertHolidayName(
-            "Dia de Pidjiguiti", (f"{year}-08-03" for year in range(1975, 2050))
+            "Dia de Pidjiguiti", (f"{year}-08-03" for year in range(2023, 2050))
         )
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "Dia da Independência", (f"{year}-09-24" for year in range(1975, 2050))
-        )
-
-    def test_readjustment_movement_day(self):
-        self.assertHolidayName(
-            "Dia do Movimento de Reajustamento", (f"{year}-11-14" for year in range(1975, 2050))
+            "Dia da Independência", (f"{year}-09-24" for year in range(2023, 2050))
         )
 
     def test_christmas_day(self):
-        self.assertHolidayName("Dia de Natal", (f"{year}-12-25" for year in range(1975, 2050)))
+        self.assertHolidayName("Dia de Natal", (f"{year}-12-25" for year in range(2023, 2050)))
 
     def test_korite(self):
         name = "Korité"
         self.assertHolidayName(
             name,
-            "2020-05-24",
-            "2021-05-13",
-            "2022-05-03",
             "2023-04-21",
             "2024-04-10",
             "2025-03-30",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1975, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2023, 2050))
 
     def test_tabaski(self):
         name = "Tabaski"
         self.assertHolidayName(
             name,
-            "2020-07-31",
-            "2021-07-21",
-            "2022-07-09",
             "2023-06-28",
             "2024-06-16",
             "2025-06-06",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1975, 2050))
-
-    def test_international_womens_day(self):
-        name = "Dia Internacional da Mulher"
-        self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-03-08" for year in range(1975, 2050))
-        )
-
-    def test_good_friday(self):
-        name = "Sexta-feira Santa"
-        self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name,
-            self.government_holidays,
-            "2019-04-19",
-            "2020-04-10",
-            "2021-04-02",
-            "2022-04-15",
-            "2023-04-07",
-            "2024-03-29",
-            "2025-04-18",
-        )
-        self.assertHolidayName(name, self.government_holidays, range(1975, 2050))
-
-    def test_all_souls_day(self):
-        name = "Dia dos Finados"
-        self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-11-02" for year in range(1975, 2050))
-        )
-
-    def test_christmas_eve(self):
-        name = "Véspera de Natal"
-        self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-12-24" for year in range(1975, 2050))
-        )
-
-    def test_new_years_eve(self):
-        name = "Véspera de Ano Novo"
-        self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-12-31" for year in range(1975, 2050))
-        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2023, 2050))
 
     def test_2024(self):
         self.assertHolidays(
-            GuineaBissau(years=2024, categories=(GOVERNMENT, PUBLIC)),
+            GuineaBissau(years=2024),
             ("2024-01-01", "Ano Novo"),
             ("2024-01-20", "Dia dos Heróis Nacionais"),
+            ("2024-01-23", "Dia do Início da Luta Armada"),
             ("2024-03-08", "Dia Internacional da Mulher"),
-            ("2024-03-29", "Sexta-feira Santa"),
             ("2024-03-31", "Páscoa"),
             ("2024-04-10", "Korité"),
             ("2024-05-01", "Dia do Trabalhador"),
             ("2024-06-16", "Tabaski"),
             ("2024-08-03", "Dia de Pidjiguiti"),
             ("2024-09-24", "Dia da Independência"),
-            ("2024-11-02", "Dia dos Finados"),
-            ("2024-11-14", "Dia do Movimento de Reajustamento"),
-            ("2024-12-24", "Véspera de Natal"),
             ("2024-12-25", "Dia de Natal"),
-            ("2024-12-31", "Véspera de Ano Novo"),
         )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2025-01-01", "Ano Novo"),
             ("2025-01-20", "Dia dos Heróis Nacionais"),
+            ("2025-01-23", "Dia do Início da Luta Armada"),
             ("2025-03-08", "Dia Internacional da Mulher"),
             ("2025-03-30", "Korité"),
-            ("2025-04-18", "Sexta-feira Santa"),
             ("2025-04-20", "Páscoa"),
             ("2025-05-01", "Dia do Trabalhador"),
             ("2025-06-06", "Tabaski"),
             ("2025-08-03", "Dia de Pidjiguiti"),
             ("2025-09-24", "Dia da Independência"),
-            ("2025-11-02", "Dia dos Finados"),
-            ("2025-11-14", "Dia do Movimento de Reajustamento"),
-            ("2025-12-24", "Véspera de Natal"),
             ("2025-12-25", "Dia de Natal"),
-            ("2025-12-31", "Véspera de Ano Novo"),
         )
 
     def test_l10n_en_us(self):
@@ -190,17 +131,13 @@ class TestGuineaBissau(CommonCountryTests, TestCase):
             "en_US",
             ("2025-01-01", "New Year's Day"),
             ("2025-01-20", "National Heroes' Day"),
+            ("2025-01-23", "Day of the Beginning of the Armed Struggle"),
             ("2025-03-08", "International Women's Day"),
             ("2025-03-30", "Eid al-Fitr"),
-            ("2025-04-18", "Good Friday"),
             ("2025-04-20", "Easter Sunday"),
             ("2025-05-01", "Worker's Day"),
             ("2025-06-06", "Eid al-Adha"),
             ("2025-08-03", "Pidjiguiti Day"),
             ("2025-09-24", "Independence Day"),
-            ("2025-11-02", "All Souls' Day"),
-            ("2025-11-14", "Readjustment Movement Day"),
-            ("2025-12-24", "Christmas Eve"),
             ("2025-12-25", "Christmas Day"),
-            ("2025-12-31", "New Year's Eve"),
         )
