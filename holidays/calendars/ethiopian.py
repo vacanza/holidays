@@ -10,23 +10,32 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from calendar import isleap
-
 ETHIOPIAN_CALENDAR = "ETHIOPIAN_CALENDAR"
 
 
 def is_ethiopian_leap_year(year: int) -> bool:
-    """Determine if the Ethiopian calendar year is a leap year.
+    """Determine if Ethiopian year starting in the given Gregorian year is a leap year.
 
-    Ethiopian leap years generally align with Gregorian leap years until
-    February 2100. However, the Ethiopian calendar starts earlier (on September 11),
-    which affects holidays between September 11 and January 1.
-
-    To account for this shift, the method checks whether next year is a leap year
-    in the Gregorian calendar.
+    Ethiopian leap years follow the Coptic/Julian rule:
+        * Every 4 years without exception (no century rule).
+        * The Ethiopian year starts on September 11 (or 12 in an Ethiopian leap year).
 
     Returns:
-        `True` if the Ethiopian year is a leap year, `False` otherwise.
+        `True` if the Ethiopian leap year begins in the given Gregorian year, `False` otherwise.
     """
 
-    return isleap(year + 1)
+    return (year + 1) % 4 == 0
+
+
+def is_previous_year_ethiopian_leap_year(year: int) -> bool:
+    """Determine if the Ethiopian year ending in the given Gregorian year is a leap year.
+
+    Ethiopian leap years follow the Coptic/Julian rule:
+        * Every 4 years without exception (no century rule).
+        * The Ethiopian year starts on September 11 (or 12 in an Ethiopian leap year).
+
+    Returns:
+        `True` if the Ethiopian leap year begins in the previous Gregorian year, `False` otherwise.
+    """
+
+    return year % 4 == 0

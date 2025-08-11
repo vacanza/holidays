@@ -10,12 +10,15 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from calendar import isleap
 from datetime import date
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 
-from holidays.calendars.ethiopian import ETHIOPIAN_CALENDAR, is_ethiopian_leap_year
+from holidays.calendars.ethiopian import (
+    ETHIOPIAN_CALENDAR,
+    is_ethiopian_leap_year,
+    is_previous_year_ethiopian_leap_year,
+)
 from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, DEC, _timedelta
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
@@ -319,27 +322,11 @@ class ChristianHolidays:
         elif self.__is_ethiopian_calendar(calendar):
             return (
                 self._add_holiday_jan_20(name)
-                if isleap(self._year)
+                if is_previous_year_ethiopian_leap_year(self._year)
                 else self._add_holiday_jan_19(name)
             )
         else:
             return self._add_holiday_jan_6(name)
-
-    def _add_ethiopian_new_year(self, name) -> date:
-        """
-        Add Ethiopian New Year.
-
-        Ethiopian New Year, also known as Enkutatash, is a public holiday in coincidence of
-        New Year in Ethiopia and Eritrea. It occurs on Meskerem 1 on the Ethiopian calendar,
-        which is 11 September (or, during a leap year, 12 September) according to the
-        Gregorian calendar.
-        https://en.wikipedia.org/wiki/Enkutatash
-        """
-        return (
-            self._add_holiday_sep_12(name)
-            if is_ethiopian_leap_year(self._year)
-            else self._add_holiday_sep_11(name)
-        )
 
     def _add_finding_of_true_cross(self, name) -> date:
         """
