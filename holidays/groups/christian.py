@@ -10,10 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from calendar import isleap
 from datetime import date
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 
+from holidays.calendars.ethiopian import ETHIOPIAN_CALENDAR, is_ethiopian_leap_year
 from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, DEC, _timedelta
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
@@ -37,7 +39,7 @@ class ChristianHolidays:
 
         return (
             date(self._year, JAN, 7)
-            if self.__is_julian_calendar(calendar)
+            if self.__is_julian_calendar(calendar) or self.__is_ethiopian_calendar(calendar)
             else date(self._year, DEC, 25)
         )
 
@@ -52,6 +54,14 @@ class ChristianHolidays:
             self._year,
             method=EASTER_WESTERN if self.__is_gregorian_calendar(calendar) else EASTER_ORTHODOX,
         )
+
+    @staticmethod
+    def __is_ethiopian_calendar(calendar):
+        """
+        Return True if `calendar` is Ethiopian calendar.
+        Return False otherwise.
+        """
+        return calendar == ETHIOPIAN_CALENDAR
 
     @staticmethod
     def __is_gregorian_calendar(calendar):
@@ -74,10 +84,15 @@ class ChristianHolidays:
         """
         Verify calendar type.
         """
-        if calendar not in {GREGORIAN_CALENDAR, JULIAN_CALENDAR, JULIAN_REVISED_CALENDAR}:
+        if calendar not in {
+            ETHIOPIAN_CALENDAR,
+            GREGORIAN_CALENDAR,
+            JULIAN_CALENDAR,
+            JULIAN_REVISED_CALENDAR,
+        }:
             raise ValueError(
-                f"Unknown calendar name: {calendar}. "
-                f"Use `{GREGORIAN_CALENDAR}`, `{JULIAN_CALENDAR}` or `{JULIAN_REVISED_CALENDAR}`."
+                f"Unknown calendar name: {calendar}. Use `{ETHIOPIAN_CALENDAR}`, "
+                f"`{GREGORIAN_CALENDAR}`, `{JULIAN_CALENDAR}` or `{JULIAN_REVISED_CALENDAR}`."
             )
 
     @property
@@ -299,10 +314,46 @@ class ChristianHolidays:
         calendar = calendar or self.__calendar
         self.__verify_calendar(calendar)
 
+        if self.__is_julian_calendar(calendar):
+            return self._add_holiday_jan_19(name)
+        elif self.__is_ethiopian_calendar(calendar):
+            return (
+                self._add_holiday_jan_20(name)
+                if isleap(self._year)
+                else self._add_holiday_jan_19(name)
+            )
+        else:
+            return self._add_holiday_jan_6(name)
+
+    def _add_ethiopian_new_year(self, name) -> date:
+        """
+        Add Ethiopian New Year.
+
+        Ethiopian New Year, also known as Enkutatash, is a public holiday in coincidence of
+        New Year in Ethiopia and Eritrea. It occurs on Meskerem 1 on the Ethiopian calendar,
+        which is 11 September (or, during a leap year, 12 September) according to the
+        Gregorian calendar.
+        https://en.wikipedia.org/wiki/Enkutatash
+        """
         return (
-            self._add_holiday_jan_19(name)
-            if self.__is_julian_calendar(calendar)
-            else self._add_holiday_jan_6(name)
+            self._add_holiday_sep_12(name)
+            if is_ethiopian_leap_year(self._year)
+            else self._add_holiday_sep_11(name)
+        )
+
+    def _add_finding_of_true_cross(self, name) -> date:
+        """
+        Add Finding of True Cross.
+
+        Finding of True Cross, also known as Meskel, is an Ethiopian and Eritrean Orthodox
+        Tewahedo Church holiday that commemorates the discovery of the True Cross by the
+        Roman Empress Saint Helena of Constantinople in the fourth century.
+        https://en.wikipedia.org/wiki/Meskel
+        """
+        return (
+            self._add_holiday_sep_28(name)
+            if is_ethiopian_leap_year(self._year)
+            else self._add_holiday_sep_27(name)
         )
 
     def _add_good_friday(self, name, calendar=None) -> date:
