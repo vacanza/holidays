@@ -114,6 +114,7 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
         obs_dt = (
             "2014-04-28",
             "2015-04-27",
+            "2020-04-27",
             "2021-04-26",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
