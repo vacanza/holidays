@@ -57,8 +57,8 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         * [Law 19.528 (eliminate Dec 31)](https://web.archive.org/web/20241227191452/https://www.bcn.cl/leychile/navegar?idNorma=76630&idVersion=1997-11-04)
         * [Law 19.559 (restore Dec 31)](https://web.archive.org/web/20241227195811/https://www.bcn.cl/leychile/navegar?idNorma=97758&idVersion=1998-04-16)
         * [Law 21.521 (eliminate Dec 31 again, after the CMF publishes a specific regulation)](https://web.archive.org/web/20240214154900/https://www.bcn.cl/leychile/navegar?idNorma=1187323&idVersion=2023-02-03)
-        * [Norma de Carácter General N° 543 de la CMF](https://www.cmfchile.cl/normativa/ncg_543_2025.pdf)
-        * [Resolución Exenta N° 7.671 (CMF, 2025-08-01)](https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=ba5ad42feea3531a678a9db5253a9477VFdwQmVVNVVRVFJOUkZWNlRucEpORTVCUFQwPQ==&secuencia=-1&t=1754086087)
+        * [Norma de Carácter General N° 543 de la CMF](https://web.archive.org/web/20250811111649/https://www.cmfchile.cl/normativa/ncg_543_2025.pdf)
+        * [Resolución Exenta N° 7.671 (CMF, 2025-08-01)](https://web.archive.org/web/20250811123908/https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=ba5ad42feea3531a678a9db5253a9477VFdwQmVVNVVRVFJOUkZWNlRucEpORTVCUFQwPQ==&secuencia=-1&t=1754086087)
     """
 
     country = "CL"
