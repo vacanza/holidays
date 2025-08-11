@@ -77,15 +77,16 @@ class Kiribati(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 2002:
             # Gospel Day.
-            self._add_observed(self._add_holiday_jul_11("Gospel Day"))
+            self._add_holiday_jul_11("Gospel Day")
 
         if self._year >= 1993:
-            # National Day.
+            # National Day - Independence Anniversary.
             self._add_observed(self._add_holiday_jul_12("National Day - Independence Anniversary"))
 
         if self._year >= 2002:
-            # National Day.
-            self._add_observed(self._add_holiday_jul_15("National Day (in honor of Unimwane)"))
+            # National Day (in honor of Unimwane).
+            self._add_holiday_jul_15("National Day (in honor of Unimwane)")
+            # National Day (in honor of Unaine).
             self._add_observed(self._add_holiday_jul_16("National Day (in honor of Unaine)"))
 
         if self._year <= 2002:

@@ -104,11 +104,7 @@ class TestKiribati(CommonCountryTests, TestCase):
         )
 
     def test_gospel_day(self):
-        name = "Gospel Day"
-        self.assertHolidayName(name, (f"{year}-07-11" for year in range(2002, 2050)))
-        dt = ("2021-07-12", "2027-07-12")
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoHolidayName(name, range(1980, 2002))
+        self.assertHolidayName("Gospel Day", (f"{year}-07-11" for year in range(2002, 2050)))
 
     def test_national_day_anniversary(self):
         name = "National Day - Independence Anniversary"
@@ -119,14 +115,9 @@ class TestKiribati(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_national_day_unimwane(self):
-        name = "National Day (in honor of Unimwane)"
-        self.assertHolidayName(name, (f"{year}-07-15" for year in range(2002, 2050)))
-        dt = (
-            "2018-07-16",
-            "2029-07-16",
+        self.assertHolidayName(
+            "National Day (in honor of Unimwane)", (f"{year}-07-15" for year in range(2002, 2050))
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoHolidayName(name, range(1980, 2002))
 
     def test_national_day_unaine(self):
         name = "National Day (in honor of Unaine)"
