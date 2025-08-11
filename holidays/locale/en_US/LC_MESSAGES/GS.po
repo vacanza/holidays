@@ -67,7 +67,7 @@ msgstr "Mid-winter Day"
 msgid "Toothfish Day"
 msgstr "Toothfish Day"
 
-#. Toothfish (end of season) Day.
+#. Toothfish (End of Season) Day.
 msgid "Toothfish (end of season) Day"
 msgstr "Toothfish (End of Season) Day"
 
@@ -87,7 +87,7 @@ msgstr "Christmas Day"
 msgid "The Queen's Platinum Jubilee"
 msgstr "The Queen's Platinum Jubilee"
 
-#. Coronation of King Charles III.
+#. King Charles III's Coronation.
 msgid "Coronation of King Charles III"
 msgstr "King Charles III's Coronation"
 
