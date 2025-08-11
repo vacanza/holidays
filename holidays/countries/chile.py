@@ -239,7 +239,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         if 1957 <= self._year <= 1975:
             self._add_holiday_jun_30(name)
 
-        if (1956 <= self._year <= 2024) and (self._year != 1997):
+        if 1956 <= self._year <= 2024 and self._year != 1997:
             self._add_holiday_dec_31(name)
 
     @property
