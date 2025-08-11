@@ -165,12 +165,11 @@ class MauritiusHinduHolidays(_CustomHinduHolidays):
 
 class MauritiusIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20250420201326/https://www.timeanddate.com/holidays/mauritius/eid-al-fitr
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2016, 2025)
     EID_AL_FITR_DATES = {
-        2016: (JUL, 6),
         2017: (JUN, 26),
         2018: (JUN, 16),
         2019: (JUN, 5),
-        2020: (MAY, 24),
         2021: (MAY, 14),
         2022: (MAY, 3),
         2023: (APR, 22),

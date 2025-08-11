@@ -3971,11 +3971,23 @@ class _IslamicLunar:
     }
 
     def _get_holiday(self, holiday: str, year: int) -> Iterable[tuple[date, bool]]:
+        confirmed_dates = getattr(
+            self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {}
+        )
+        confirmed_years = getattr(
+            self, f"{holiday}_DATES_CONFIRMED_YEARS_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", ()
+        )
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
-        exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
-        for year in (year - 1, year):
-            for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
-                yield date(year, *dt), year not in exact_dates
+
+        for check_year in (year - 1, year):
+            for dt in _normalize_tuple(
+                confirmed_dates.get(check_year, estimated_dates.get(check_year, ()))
+            ):
+                is_confirmed = check_year in confirmed_dates or any(
+                    year_from <= check_year <= year_to
+                    for year_from, year_to in _normalize_tuple(confirmed_years)
+                )
+                yield date(check_year, *dt), not is_confirmed
 
     def _is_long_ramadan(self, eid_al_fitr: date) -> bool:
         """Check whether the Ramadan preceding the given Eid al-Fitr date lasted 30 days.
