@@ -166,6 +166,7 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
     def test_environment_day(self):
         name = "Environment Day"
         self.assertHolidayName(name, (f"{year}-10-30" for year in range(2020, 2050)))
+        self.assertNoHolidayName(name, range(2012, 2020))
         obs_dt = (
             "2021-10-29",
             "2022-10-31",
