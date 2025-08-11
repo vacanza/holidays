@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, MAY, JUN, OCT, SEP, NOV
+from holidays.calendars.gregorian import APR, MAY, JUN, SEP, OCT, NOV
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -102,7 +102,7 @@ class SouthGeorgiaAndTheSouthSandwichIslands(
                 # Toothfish Day.
                 self._add_observed(self._add_holiday_sep_4(tr("Toothfish Day")))
             else:
-                # Toothfish (end of season) Day.
+                # Toothfish (End of Season) Day.
                 dt = self._add_holiday_sep_14(tr("Toothfish (end of season) Day"))
                 if self._year != 2013:
                     self._add_observed(dt)
@@ -144,7 +144,7 @@ class SouthGeorgiaAndTheSouthSandwichIslandsStaticHolidays:
             (JUN, 3, queens_platinum_jubilee),
         ),
         2023: (
-            # Coronation of King Charles III.
+            # King Charles III's Coronation.
             (MAY, 8, tr("Coronation of King Charles III")),
             # King's Birthday.
             (NOV, 14, tr("King's Birthday")),

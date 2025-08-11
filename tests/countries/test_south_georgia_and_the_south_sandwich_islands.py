@@ -91,20 +91,26 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
             "2018-04-02",
             "2019-04-22",
         )
-        self.assertHolidayName(name, range(2012, 2019))
         self.assertNoHolidayName(name, range(2020, 2050))
 
     def test_queens_birthday(self):
         name = "The Queen's Birthday"
-        self.assertHolidayName(name, (f"{year}-04-21" for year in range(2018, 2022)))
-        obs_dt = ("2019-04-23",)
+        self.assertHolidayName(name, (f"{year}-04-21" for year in range(2018, 2023)))
+        self.assertNoHolidayName(name, range(2012, 2018), range(2023, 2050))
+        obs_dt = (
+            "2018-04-23",
+            "2019-04-23",
+        )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_liberation_day(self):
         name = "Liberation Day"
-        self.assertHolidayName(name, (f"{year}-04-26" for year in range(2012, 2016)))
-        self.assertHolidayName(name, (f"{year}-04-25" for year in range(2016, 2050)))
+        self.assertHolidayName(
+            name,
+            (f"{year}-04-26" for year in range(2012, 2016)),
+            (f"{year}-04-25" for year in range(2016, 2050)),
+        )
         obs_dt = (
             "2014-04-28",
             "2015-04-27",
@@ -116,6 +122,7 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
     def test_shackleton_day(self):
         name = "Shackleton Day"
         self.assertHolidayName(name, (f"{year}-05-20" for year in range(2015, 2050)))
+        self.assertNoHolidayName(name, range(2012, 2015))
         obs_dt = (
             "2017-05-22",
             "2018-05-21",
@@ -130,6 +137,7 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
         obs_dt = (
             "2014-06-23",
             "2015-06-22",
+            "2020-06-22",
             "2025-06-20",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
@@ -138,16 +146,21 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
     def test_toothfish_day(self):
         name_1 = "Toothfish (end of season) Day"
         name_2 = "Toothfish Day"
-        self.assertHolidayName(name_1, (f"{year}-09-14" for year in range(2012, 2014)))
-        self.assertHolidayName(name_2, (f"{year}-09-04" for year in range(2015, 2021)))
-        obs_dt = (
+        self.assertHolidayName(name_1, (f"{year}-09-14" for year in range(2012, 2015)))
+        self.assertHolidayName(name_2, (f"{year}-09-04" for year in range(2015, 2022)))
+        self.assertNoHolidayName(name_1, range(2015, 2050))
+        self.assertNoHolidayName(name_2, range(2012, 2015), range(2022, 2050))
+        obs_dt_1 = (
+            "2013-09-13",
             "2014-09-15",
+        )
+        obs_dt_2 = (
             "2016-09-05",
             "2021-09-06",
         )
-        self.assertHolidayName(f"{name_1} (observed)", "2014-09-15")
-        self.assertHolidayName(f"{name_2} (observed)", "2016-09-05", "2021-09-06")
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name_1} (observed)", obs_dt_1)
+        self.assertHolidayName(f"{name_2} (observed)", obs_dt_2)
+        self.assertNoNonObservedHoliday(obs_dt_1, obs_dt_2)
 
     def test_environment_day(self):
         name = "Environment Day"
