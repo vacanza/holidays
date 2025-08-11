@@ -31,7 +31,8 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
 
     References:
         * <https://web.archive.org/web/20250718012109/https://www.feriados.cl/>
-        * [Excellent history of Chile holidays](https://web.archive.org/web/20250712031422/https://www.feriadoschilenos.cl/)
+        * Excellent history of Chile holidays
+          URL: https://web.archive.org/web/20250712031422/https://www.feriadoschilenos.cl/
         * <https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_Chile>
         * Law 2.977 (established official Chile holidays in its current form)
         * Law 20.983 (Day after New Year's Day, if it's a Sunday)
