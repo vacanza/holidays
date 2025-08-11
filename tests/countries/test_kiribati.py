@@ -43,10 +43,10 @@ class TestKiribati(CommonCountryTests, TestCase):
 
     def test_womens_day(self):
         name = "International Women's Day"
-        self.assertNoHolidayName(name, range(1980, 2003))
         self.assertHolidayName(name, (f"{year}-03-08" for year in range(2003, 2050)))
         dt = ("2015-03-09", "2020-03-09")
         self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoHolidayName(name, range(1980, 2003))
         self.assertNoNonObservedHoliday(dt)
 
     def test_good_friday(self):
@@ -142,9 +142,9 @@ class TestKiribati(CommonCountryTests, TestCase):
     def test_youth_day(self):
         name = "Youth Day"
         self.assertHolidayName(name, (f"{year}-08-05" for year in range(2003, 2050)))
-        self.assertNoHolidayName(name, range(1980, 2003))
         dt = ("2012-08-06", "2018-08-06")
         self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoHolidayName(name, range(1980, 2003))
         self.assertNoNonObservedHoliday(dt)
 
     def test_public_holiday_nov_10(self):
