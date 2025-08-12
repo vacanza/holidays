@@ -45,7 +45,7 @@ class GuineaBissau(HolidayBase, ChristianHolidays, InternationalHolidays, Islami
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self, cls=GuineaIslamicHolidays, show_estimated=islamic_show_estimated
+            self, cls=GuineaBissauIslamicHolidays, show_estimated=islamic_show_estimated
         )
         super().__init__(*args, **kwargs)
 
@@ -92,7 +92,7 @@ class GNB(GuineaBissau):
     pass
 
 
-class GuineaIslamicHolidays(_CustomIslamicHolidays):
+class GuineaBissauIslamicHolidays(_CustomIslamicHolidays):
     # http://web.archive.org/web/20250811201914/https://www.timeanddate.com/holidays/guinea-bissau/eid-al-adha
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2023, 2025)
 

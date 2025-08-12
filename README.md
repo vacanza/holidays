@@ -770,7 +770,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Guinea Bissau</td>
+<td>Guinea-Bissau</td>
 <td>GW</td>
 <td></td>
 <td>en_US, <strong>pt_GW</strong></td>
