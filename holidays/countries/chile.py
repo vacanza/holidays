@@ -268,7 +268,7 @@ class ChileStaticHolidays:
     # National Holiday.
     national_holiday = tr("Feriado nacional")
 
-    # Censuses.
+    # National Population and Housing Census.
     national_census = tr("Censo Nacional de Población y Vivienda")
 
     special_public_holidays = {
