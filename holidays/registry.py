@@ -213,6 +213,11 @@ COUNTRIES: RegistryDict = {
     "slovenia": ("Slovenia", "SI", "SVN"),
     "solomon_islands": ("SolomonIslands", "SB", "SLB"),
     "south_africa": ("SouthAfrica", "ZA", "ZAF"),
+    "south_georgia_and_the_south_sandwich_islands": (
+        "SouthGeorgiaAndTheSouthSandwichIslands",
+        "GS",
+        "SGS",
+    ),
     "south_korea": ("SouthKorea", "KR", "KOR", "Korea"),
     "spain": ("Spain", "ES", "ESP"),
     "sri_lanka": ("SriLanka", "LK", "LKA"),
