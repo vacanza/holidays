@@ -10,13 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.ethiopian import ETHIOPIAN_CALENDAR, is_ethiopian_leap_year
-from holidays.calendars.gregorian import AUG, SEP, NOV, _timedelta
-from holidays.calendars.julian import julian_calendar_drift
+from holidays.calendars.gregorian import AUG, SEP, NOV
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
@@ -91,13 +89,12 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         self._add_finding_of_true_cross(tr("የመስቀል በዓል"))
 
         if self._year <= 1990:
+            # Julian Date Drift shouldn't affect this one.
             self._add_holiday(
                 # Popular Revolution Commemoration Day.
                 tr("የአብዮት ቀን"),
-                _timedelta(
-                    date(self._year, SEP, 13 if is_ethiopian_leap_year(self._year) else 12),
-                    julian_calendar_drift(self._year),
-                ),
+                SEP,
+                13 if is_ethiopian_leap_year(self._year) else 12,
             )
 
             # October Revolution Day.
