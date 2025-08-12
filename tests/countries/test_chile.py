@@ -28,6 +28,11 @@ class TestChile(CommonCountryTests, TestCase):
     def test_special_holidays(self):
         self.assertHoliday(
             "1999-12-31",
+            "2002-04-24",
+            "2004-09-17",
+            "2010-09-17",
+            "2010-09-20",
+            "2017-04-19",
             "2022-09-16",
         )
 
