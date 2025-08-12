@@ -134,3 +134,7 @@ msgstr "Nativity of Bernardo O'Higgins (Chillán and Chillán Viejo communes)"
 #. Bank Holiday.
 msgid "Feriado bancario"
 msgstr "Bank Holiday"
+
+#
+msgid "Censo Nacional de Población y Vivienda"
+msgstr "National Population and Housing Census"
