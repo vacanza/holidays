@@ -91,10 +91,9 @@ class InternationalHolidays:
         """
         Add Ethiopian New Year.
 
-        Ethiopian New Year, also known as Enkutatash, is a public holiday in coincidence of
-        New Year in Ethiopia and Eritrea. It occurs on Meskerem 1 on the Ethiopian calendar,
-        which is 11 September (or, during an Ethiopian leap year, 12 September) according
-        to theGregorian calendar.
+        Ethiopian New Year, also known as Enkutatash, is a public holiday celebrated
+        on Meskerem 1 in the Ethiopian calendar, marking the start of the year in
+        Ethiopia and Eritrea.
         https://en.wikipedia.org/wiki/Enkutatash
         """
         return self._add_holiday(
