@@ -317,11 +317,12 @@ class ChristianHolidays:
 
         if self.__is_julian_calendar(calendar) or self.__is_ethiopian_calendar(calendar):
             dt = _timedelta(date(self._year, JAN, 19), julian_calendar_drift(self._year - 1))
-            return (
+            return self._add_holiday(
+                name,
                 _timedelta(dt, +1)
                 if self.__is_ethiopian_calendar(calendar)
                 and is_ethiopian_leap_year(self._year - 1)
-                else dt
+                else dt,
             )
         else:
             return self._add_holiday_jan_6(name)
@@ -336,7 +337,9 @@ class ChristianHolidays:
         https://en.wikipedia.org/wiki/Meskel
         """
         dt = _timedelta(date(self._year, SEP, 27), julian_calendar_drift(self._year))
-        return _timedelta(dt, +1) if is_ethiopian_leap_year(self._year) else dt
+        return self._add_holiday(
+            name, _timedelta(dt, +1) if is_ethiopian_leap_year(self._year) else dt
+        )
 
     def _add_good_friday(self, name, calendar=None) -> date:
         """

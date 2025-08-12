@@ -96,12 +96,9 @@ class InternationalHolidays:
         Ethiopia and Eritrea.
         https://en.wikipedia.org/wiki/Enkutatash
         """
+        dt = _timedelta(date(self._year, SEP, 11), julian_calendar_drift(self._year))
         return self._add_holiday(
-            name,
-            _timedelta(
-                date(self._year, SEP, 12 if is_ethiopian_leap_year(self._year) else 11),
-                julian_calendar_drift(self._year),
-            ),
+            name, _timedelta(dt, +1) if is_ethiopian_leap_year(self._year) else dt
         )
 
     def _add_europe_day(self, name):
