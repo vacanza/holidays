@@ -323,7 +323,7 @@ class ChristianHolidays:
             return self._add_holiday(
                 name,
                 _timedelta(date(self._year, JAN, 20), julian_calendar_drift(self._year - 1))
-                if is_ethiopian_leap_year(self._year, is_previous=True)
+                if is_ethiopian_leap_year(self._year - 1)
                 else _timedelta(date(self._year, JAN, 19), julian_calendar_drift(self._year - 1)),
             )
         else:

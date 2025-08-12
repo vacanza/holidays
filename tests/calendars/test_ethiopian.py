@@ -35,26 +35,3 @@ class TestEthiopianCalendar(unittest.TestCase):
         }
         for year in known_ethiopian_leap_years:
             self.assertEqual(known_ethiopian_leap_years[year], is_ethiopian_leap_year(year))
-
-    def test_is_previous_year_ethiopian_leap_year(self):
-        known_previous_year_ethiopian_leap_years = {
-            # Known Cases.
-            2022: False,
-            2023: False,
-            2024: True,
-            2025: False,
-            # Future Cases.
-            2098: False,
-            2099: False,
-            2100: True,
-            2101: False,
-            2198: False,
-            2199: False,
-            2200: True,
-            2201: False,
-        }
-        for year in known_previous_year_ethiopian_leap_years:
-            self.assertEqual(
-                known_previous_year_ethiopian_leap_years[year],
-                is_ethiopian_leap_year(year, is_previous=True),
-            )

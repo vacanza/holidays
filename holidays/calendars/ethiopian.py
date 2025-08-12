@@ -13,7 +13,7 @@
 ETHIOPIAN_CALENDAR = "ETHIOPIAN_CALENDAR"
 
 
-def is_ethiopian_leap_year(year: int, is_previous: bool = False) -> bool:
+def is_ethiopian_leap_year(year: int) -> bool:
     """Determine if Ethiopian year starting in the given Gregorian year is a leap year.
 
     Ethiopian leap years follow the Coptic/Julian rule:
@@ -24,12 +24,8 @@ def is_ethiopian_leap_year(year: int, is_previous: bool = False) -> bool:
         year:
             Gregorian year to check.
 
-        is_previous:
-            If `True`, check the Ethiopian year that ended in this Gregorian year.
-            If `False`, check the Ethiopian year that started in this Gregorian year.
-
     Returns:
-        `True` if the Ethiopian year is a leap year, `False` otherwise.
+        `True` if Ethiopian leap year start in the given Gregorian year, `False` otherwise.
     """
 
-    return ((year if is_previous else year + 1) % 4) == 0
+    return (year + 1) % 4 == 0
