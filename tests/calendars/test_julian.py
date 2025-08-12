@@ -21,6 +21,7 @@ class TestJulianCalendar(unittest.TestCase):
             1400: -13,
             1500: -13,
             1581: -13,
+            1582: -13,
             1583: -3,
             1600: -3,
             1700: -2,
