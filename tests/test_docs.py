@@ -88,7 +88,7 @@ class TestReadme(TestCase):
 
         for row in table_content:
             # Country: 1st column.
-            name = re.sub(r"[,\-\s]", "", row[0]).lower()
+            name = re.sub(r"[-,\s]", "", row[0]).lower()
             country_names.append(name)
 
             # Code: 2nd column.
