@@ -131,6 +131,7 @@ COUNTRIES: RegistryDict = {
     "jersey": ("Jersey", "JE", "JEY"),
     "kazakhstan": ("Kazakhstan", "KZ", "KAZ"),
     "kenya": ("Kenya", "KE", "KEN"),
+    "kiribati": ("Kiribati", "KI", "KIR"),
     "kuwait": ("Kuwait", "KW", "KWT"),
     "kyrgyzstan": ("Kyrgyzstan", "KG", "KGZ"),
     "laos": ("Laos", "LA", "LAO"),
