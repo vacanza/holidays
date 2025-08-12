@@ -1505,6 +1505,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>South Georgia and the South Sandwich Islands</td>
+<td>GS</td>
+<td></td>
+<td><strong>en_GS</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>South Korea</td>
 <td>KR</td>
 <td></td>
