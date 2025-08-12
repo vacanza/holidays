@@ -11,3 +11,17 @@
 #  License: MIT (see LICENSE file)
 
 JULIAN_CALENDAR = "JULIAN_CALENDAR"
+
+
+def julian_calendar_drift(year: int) -> int:
+    """Return corrected drift between Julian and Gregorian calendars outside 1900–2099.
+
+    Args:
+        year:
+            Gregorian year to check.
+
+    Returns:
+        Number of days to adds/subtracts from the 1900-2099 baseline.
+    """
+
+    return -13 if year <= 1582 else (year // 100) - (year // 400) - 15

@@ -12,10 +12,7 @@
 
 import unittest
 
-from holidays.calendars.ethiopian import (
-    is_ethiopian_leap_year,
-    is_previous_year_ethiopian_leap_year,
-)
+from holidays.calendars.ethiopian import is_ethiopian_leap_year
 
 
 class TestEthiopianCalendar(unittest.TestCase):
@@ -59,5 +56,5 @@ class TestEthiopianCalendar(unittest.TestCase):
         for year in known_previous_year_ethiopian_leap_years:
             self.assertEqual(
                 known_previous_year_ethiopian_leap_years[year],
-                is_previous_year_ethiopian_leap_year(year),
+                is_ethiopian_leap_year(year, is_previous=True),
             )

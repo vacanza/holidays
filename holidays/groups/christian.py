@@ -14,13 +14,9 @@ from datetime import date
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 
-from holidays.calendars.ethiopian import (
-    ETHIOPIAN_CALENDAR,
-    is_ethiopian_leap_year,
-    is_previous_year_ethiopian_leap_year,
-)
-from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, DEC, _timedelta
-from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.calendars.ethiopian import ETHIOPIAN_CALENDAR, is_ethiopian_leap_year
+from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, AUG, SEP, DEC, _timedelta
+from holidays.calendars.julian import JULIAN_CALENDAR, julian_calendar_drift
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 
 
@@ -41,7 +37,7 @@ class ChristianHolidays:
         self.__verify_calendar(calendar)
 
         return (
-            date(self._year, JAN, 7)
+            _timedelta(date(self._year, JAN, 7), julian_calendar_drift(self._year))
             if self.__is_julian_calendar(calendar) or self.__is_ethiopian_calendar(calendar)
             else date(self._year, DEC, 25)
         )
@@ -176,7 +172,9 @@ class ChristianHolidays:
         self.__verify_calendar(calendar)
 
         return (
-            self._add_holiday_aug_28(name)
+            self._add_holiday(
+                name, _timedelta(date(self._year, AUG, 28), julian_calendar_drift(self._year))
+            )
             if self.__is_julian_calendar(calendar)
             else self._add_holiday_aug_15(name)
         )
@@ -318,12 +316,15 @@ class ChristianHolidays:
         self.__verify_calendar(calendar)
 
         if self.__is_julian_calendar(calendar):
-            return self._add_holiday_jan_19(name)
+            return self._add_holiday(
+                name, _timedelta(date(self._year, JAN, 19), julian_calendar_drift(self._year))
+            )
         elif self.__is_ethiopian_calendar(calendar):
-            return (
-                self._add_holiday_jan_20(name)
-                if is_previous_year_ethiopian_leap_year(self._year)
-                else self._add_holiday_jan_19(name)
+            return self._add_holiday(
+                name,
+                _timedelta(date(self._year, JAN, 20), julian_calendar_drift(self._year))
+                if is_ethiopian_leap_year(self._year, is_previous=True)
+                else _timedelta(date(self._year, JAN, 19), julian_calendar_drift(self._year)),
             )
         else:
             return self._add_holiday_jan_6(name)
@@ -337,10 +338,11 @@ class ChristianHolidays:
         Roman Empress Saint Helena of Constantinople in the fourth century.
         https://en.wikipedia.org/wiki/Meskel
         """
-        return (
-            self._add_holiday_sep_28(name)
+        return self._add_holiday(
+            name,
+            _timedelta(date(self._year, SEP, 28), julian_calendar_drift(self._year))
             if is_ethiopian_leap_year(self._year)
-            else self._add_holiday_sep_27(name)
+            else _timedelta(date(self._year, SEP, 27), julian_calendar_drift(self._year)),
         )
 
     def _add_good_friday(self, name, calendar=None) -> date:

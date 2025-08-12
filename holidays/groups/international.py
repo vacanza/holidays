@@ -13,7 +13,8 @@
 from datetime import date
 
 from holidays.calendars.ethiopian import is_ethiopian_leap_year
-from holidays.calendars.gregorian import JAN
+from holidays.calendars.gregorian import JAN, SEP, _timedelta
+from holidays.calendars.julian import julian_calendar_drift
 
 
 class InternationalHolidays:
@@ -96,10 +97,12 @@ class InternationalHolidays:
         Gregorian calendar.
         https://en.wikipedia.org/wiki/Enkutatash
         """
-        return (
-            self._add_holiday_sep_12(name)
-            if is_ethiopian_leap_year(self._year)
-            else self._add_holiday_sep_11(name)
+        return self._add_holiday(
+            name,
+            _timedelta(
+                date(self._year, SEP, 12 if is_ethiopian_leap_year(self._year) else 11),
+                julian_calendar_drift(self._year),
+            ),
         )
 
     def _add_europe_day(self, name):
