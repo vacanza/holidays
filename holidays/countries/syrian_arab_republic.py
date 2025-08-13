@@ -24,6 +24,7 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Syria>
+        * [Central Bank of Syria - Public Holidays 2024](https://web.archive.org/web/20250813035705/https://cb.gov.sy/index.php?lang=1&dir=html&ex=1&page=holidays&act=598-)
         * [Christmas and Boxing Day](https://web.archive.org/web/20250414224148/https://en.royanews.tv/news/56308)
     """
 
@@ -31,6 +32,7 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
     default_language = "ar"
     # %s (estimated).
     estimated_label = tr("%s (المقدرة)")
+    # Earliest reliable record dates back to 2004.
     start_year = 2004
     supported_languages = ("ar", "en_US")
 
@@ -50,19 +52,19 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("عيد راس السنة الميلادية"))
+        self._add_new_years_day(tr("ليلة رأس السنة الميلادية"))
 
         # Mother's Day.
         self._add_holiday_mar_21(tr("عيد الأم"))
 
         # Gregorian Easter Sunday.
-        self._add_easter_sunday(tr("عيد الفصح غريغوري"), calendar=GREGORIAN_CALENDAR)
+        self._add_easter_sunday(tr("عيد الفصح حسب التقويم الغربي"), calendar=GREGORIAN_CALENDAR)
 
         # Julian Easter Sunday.
-        self._add_easter_sunday(tr("عيد الفصح اليوليوسي"))
+        self._add_easter_sunday(tr("عيد الفصح حسب التقويم الشرقي"))
 
         # Independence Day.
-        self._add_holiday_apr_17(tr("عيد الجلاء"))
+        self._add_holiday_apr_17(tr("عيد الاستقلال"))
 
         # Labor Day.
         self._add_labor_day(tr("عيد العمال"))
@@ -71,23 +73,23 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
         self._add_holiday_may_6(tr("عيد الشهداء"))
 
         # Tishreen Liberation War Day.
-        self._add_holiday_oct_6(tr("حرب تشرين التحريرية"))
+        self._add_holiday_oct_6(tr("ذكرى حرب تشرين التحريرية"))
 
         # Revolution Day.
         self._add_holiday_dec_8(tr("الثورة السورية"))
 
         if self._year >= 2024:
             # Christmas Day.
-            self._add_christmas_day(tr("عيد الميلاد المجيد"), calendar=GREGORIAN_CALENDAR)
+            self._add_christmas_day(tr("عيد الميلاد"), calendar=GREGORIAN_CALENDAR)
 
             # Boxing Day.
             self._add_christmas_day_two(tr("يوم الصناديق"), calendar=GREGORIAN_CALENDAR)
 
         # Hijri New Year.
-        self._add_islamic_new_year_day(tr("عيد راس السنة الهجرية"))
+        self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
 
         # Prophet's Birthday.
-        self._add_mawlid_day(tr("المولد النبوي"))
+        self._add_mawlid_day(tr("عيد المولد النبوي الشريف"))
 
         # Eid al-Fitr.
         name = tr("عيد الفطر")

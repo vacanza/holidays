@@ -30,7 +30,7 @@ class TestSyria(CommonCountryTests, TestCase):
         self.assertNoHolidays(SyrianArabRepublic(years=2003))
 
     def test_new_years_day(self):
-        name = "عيد راس السنة الميلادية"
+        name = "ليلة رأس السنة الميلادية"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(2004, 2050)))
 
     def test_mothers_day(self):
@@ -38,7 +38,7 @@ class TestSyria(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-03-21" for year in range(2004, 2050)))
 
     def test_gregorian_easter_sunday(self):
-        name = "عيد الفصح غريغوري"
+        name = "عيد الفصح حسب التقويم الغربي"
         self.assertHolidayName(
             name,
             "2020-04-12",
@@ -51,7 +51,7 @@ class TestSyria(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2004, 2050))
 
     def test_julian_easter_sunday(self):
-        name = "عيد الفصح اليوليوسي"
+        name = "عيد الفصح حسب التقويم الشرقي"
         self.assertHolidayName(
             name,
             "2020-04-19",
@@ -64,7 +64,7 @@ class TestSyria(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2004, 2050))
 
     def test_independence_day(self):
-        name = "عيد الجلاء"
+        name = "عيد الاستقلال"
         self.assertHolidayName(name, (f"{year}-04-17" for year in range(2004, 2050)))
 
     def test_labor_day(self):
@@ -76,7 +76,7 @@ class TestSyria(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-05-06" for year in range(2004, 2050)))
 
     def test_tishreen_liberation_war_day(self):
-        name = "حرب تشرين التحريرية"
+        name = "ذكرى حرب تشرين التحريرية"
         self.assertHolidayName(name, (f"{year}-10-06" for year in range(2004, 2050)))
 
     def test_revolution_day(self):
@@ -84,7 +84,7 @@ class TestSyria(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-12-08" for year in range(2004, 2050)))
 
     def test_christmas_day(self):
-        name = "عيد الميلاد المجيد"
+        name = "عيد الميلاد"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(2024, 2050)))
         self.assertNoHolidayName(name, range(2004, 2024))
 
@@ -94,7 +94,7 @@ class TestSyria(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(2004, 2024))
 
     def test_hijri_new_year(self):
-        name = "عيد راس السنة الهجرية"
+        name = "رأس السنة الهجرية"
         self.assertHolidayName(
             name,
             "2020-08-20",
@@ -107,7 +107,7 @@ class TestSyria(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(2004, 2050))
 
     def test_mawlid(self):
-        name = "المولد النبوي"
+        name = "عيد المولد النبوي الشريف"
         self.assertHolidayName(
             name,
             "2020-10-29",
@@ -176,25 +176,25 @@ class TestSyria(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2024-01-01", "عيد راس السنة الميلادية"),
+            ("2024-01-01", "ليلة رأس السنة الميلادية"),
             ("2024-03-21", "عيد الأم"),
-            ("2024-03-31", "عيد الفصح غريغوري"),
+            ("2024-03-31", "عيد الفصح حسب التقويم الغربي"),
             ("2024-04-10", "عيد الفطر"),
             ("2024-04-11", "عيد الفطر"),
             ("2024-04-12", "عيد الفطر"),
-            ("2024-04-17", "عيد الجلاء"),
+            ("2024-04-17", "عيد الاستقلال"),
             ("2024-05-01", "عيد العمال"),
-            ("2024-05-05", "عيد الفصح اليوليوسي"),
+            ("2024-05-05", "عيد الفصح حسب التقويم الشرقي"),
             ("2024-05-06", "عيد الشهداء"),
             ("2024-06-15", "عيد الأضحى"),
             ("2024-06-16", "عيد الأضحى"),
             ("2024-06-17", "عيد الأضحى"),
             ("2024-06-18", "عيد الأضحى"),
-            ("2024-07-07", "عيد راس السنة الهجرية"),
-            ("2024-09-15", "المولد النبوي"),
-            ("2024-10-06", "حرب تشرين التحريرية"),
+            ("2024-07-07", "رأس السنة الهجرية"),
+            ("2024-09-15", "عيد المولد النبوي الشريف"),
+            ("2024-10-06", "ذكرى حرب تشرين التحريرية"),
             ("2024-12-08", "الثورة السورية"),
-            ("2024-12-25", "عيد الميلاد المجيد"),
+            ("2024-12-25", "عيد الميلاد"),
             ("2024-12-26", "يوم الصناديق"),
         )
 
