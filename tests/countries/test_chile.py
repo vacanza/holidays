@@ -28,6 +28,11 @@ class TestChile(CommonCountryTests, TestCase):
     def test_special_holidays(self):
         self.assertHoliday(
             "1999-12-31",
+            "2002-04-24",
+            "2004-09-17",
+            "2010-09-17",
+            "2010-09-20",
+            "2017-04-19",
             "2022-09-16",
         )
 
@@ -279,12 +284,13 @@ class TestChile(CommonCountryTests, TestCase):
         holidays = Chile(categories=BANK, years=range(1915, 2050))
         self.assertHolidayName(name, holidays, (f"{year}-06-30" for year in range(1957, 1976)))
         self.assertHolidayName(name, holidays, (f"{year}-12-31" for year in range(1956, 1997)))
-        self.assertHolidayName(name, holidays, (f"{year}-12-31" for year in range(1998, 2050)))
+        self.assertHolidayName(name, holidays, (f"{year}-12-31" for year in range(1998, 2025)))
         self.assertNoHoliday(holidays, (f"{year}-06-30" for year in range(1915, 1957)))
         self.assertNoHoliday(holidays, (f"{year}-06-30" for year in range(1976, 2050)))
         self.assertNoHoliday(
             holidays, (f"{year}-12-31" for year in range(1915, 1956)), "1997-12-31"
         )
+        self.assertNoHoliday(holidays, (f"{year}-12-31" for year in range(2025, 2050)))
         self.assertNoHolidayName(name, holidays, range(1915, 1956))
 
     def test_2019(self):

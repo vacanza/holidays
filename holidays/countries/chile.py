@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JUN, SEP, DEC
+from holidays.calendars.gregorian import APR, JUN, SEP, DEC
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
@@ -30,8 +30,8 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
     """Chile holidays.
 
     References:
-        * <https://web.archive.org/web/20250418020620/https://www.feriados.cl/>
-        * [Excellent history of Chile holidays](https://web.archive.org/web/20250124223839/https://www.feriadoschilenos.cl/)
+        * <https://web.archive.org/web/20250718012109/https://www.feriados.cl/>
+        * [Excellent history of Chile holidays](https://web.archive.org/web/20250712031422/https://www.feriadoschilenos.cl/)
         * <https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_Chile>
         * Law 2.977 (established official Chile holidays in its current form)
         * Law 20.983 (Day after New Year's Day, if it's a Sunday)
@@ -51,11 +51,17 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         * Law 20.299 (National Day of the Evangelical and Protestant Churches)
         * Law 20.663 (Región de Arica y Parinacota)
         * Law 20.678 (Región de Ñuble)
+        * [Law 17.374 (holiday on census days)](https://web.archive.org/web/20250812022623/https://www.bcn.cl/leychile/navegar?idNorma=28960&idVersion=2002-02-01)
         * [Law 19.656 (Dec 31, 1999 holiday)](https://web.archive.org/web/20241228005823/https://www.bcn.cl/leychile/navegar?idNorma=149328&idVersion=1999-12-15)
         * [Law 12.051 (bank holidays Jun 30 and Dec 31)](https://web.archive.org/web/20241227190026/https://www.bcn.cl/leychile/navegar?idNorma=27013&idVersion=1956-07-12)
         * [Decree-law 1.171 (eliminate Jun 30)](https://web.archive.org/web/20241227191010/https://www.bcn.cl/leychile/navegar?idNorma=6507&idVersion=1975-09-05)
         * [Law 19.528 (eliminate Dec 31)](https://web.archive.org/web/20241227191452/https://www.bcn.cl/leychile/navegar?idNorma=76630&idVersion=1997-11-04)
         * [Law 19.559 (restore Dec 31)](https://web.archive.org/web/20241227195811/https://www.bcn.cl/leychile/navegar?idNorma=97758&idVersion=1998-04-16)
+        * [Law 19.973 (Sep 17, 2004 holiday)](https://web.archive.org/web/20250812023003/https://www.bcn.cl/leychile/navegar?idLey=19973)
+        * [Law 20.450 (Sep 17, 2010 and Sep 20, 2010 holidays)](https://web.archive.org/web/20250812023308/https://www.bcn.cl/leychile/navegar?idLey=20450)
+        * [Law 21.521 (eliminate Dec 31 again, after the CMF publishes a specific regulation)](https://web.archive.org/web/20240214154900/https://www.bcn.cl/leychile/navegar?idNorma=1187323&idVersion=2023-02-03)
+        * [Norma de Carácter General N° 543 de la CMF](https://web.archive.org/web/20250811111649/https://www.cmfchile.cl/normativa/ncg_543_2025.pdf)
+        * [Resolución Exenta N° 7.671 (CMF, 2025-08-01)](https://web.archive.org/web/20250811123908/https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=ba5ad42feea3531a678a9db5253a9477VFdwQmVVNVVRVFJOUkZWNlRucEpORTVCUFQwPQ==&secuencia=-1&t=1754086087)
     """
 
     country = "CL"
@@ -237,7 +243,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         if 1957 <= self._year <= 1975:
             self._add_holiday_jun_30(name)
 
-        if self._year >= 1956 and self._year != 1997:
+        if 1956 <= self._year <= 2024 and self._year != 1997:
             self._add_holiday_dec_31(name)
 
     @property
@@ -262,7 +268,17 @@ class ChileStaticHolidays:
     # National Holiday.
     national_holiday = tr("Feriado nacional")
 
+    # National Population and Housing Census.
+    national_census = tr("Censo Nacional de Población y Vivienda")
+
     special_public_holidays = {
         1999: (DEC, 31, national_holiday),
+        2002: (APR, 24, national_census),
+        2004: (SEP, 17, national_holiday),
+        2010: (
+            (SEP, 17, national_holiday),
+            (SEP, 20, national_holiday),
+        ),
+        2017: (APR, 19, national_census),
         2022: (SEP, 16, national_holiday),
     }
