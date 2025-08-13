@@ -213,7 +213,7 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
             ("2024-06-16", "Eid al-Adha"),
             ("2024-06-17", "Eid al-Adha"),
             ("2024-06-18", "Eid al-Adha"),
-            ("2024-07-07", "Hijri New Year"),
+            ("2024-07-07", "Islamic New Year"),
             ("2024-09-15", "Prophet's Birthday"),
             ("2024-10-06", "Tishreen Liberation War Day"),
             ("2024-12-25", "Christmas Day"),

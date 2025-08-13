@@ -77,7 +77,7 @@ msgstr "Boxing Day"
 
 #. Islamic New Year.
 msgid "رأس السنة الهجرية"
-msgstr "Hijri New Year"
+msgstr "Islamic New Year"
 
 #. Prophet's Birthday.
 msgid "عيد المولد النبوي الشريف"
