@@ -32,7 +32,7 @@ msgid "%s (المقدرة)"
 msgstr "%s (estimated)"
 
 #. New Year's Day.
-msgid "ليلة رأس السنة الميلادية"
+msgid "عيد رأس السنة الميلادية"
 msgstr "New Year's Day"
 
 #. Mother's Day.

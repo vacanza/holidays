@@ -52,7 +52,7 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("ليلة رأس السنة الميلادية"))
+        self._add_new_years_day(tr("عيد رأس السنة الميلادية"))
 
         # Mother's Day.
         self._add_holiday_mar_21(tr("عيد الأم"))

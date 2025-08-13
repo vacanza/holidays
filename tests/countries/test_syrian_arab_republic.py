@@ -30,7 +30,7 @@ class TestSyria(CommonCountryTests, TestCase):
         self.assertNoHolidays(SyrianArabRepublic(years=2003))
 
     def test_new_years_day(self):
-        name = "ليلة رأس السنة الميلادية"
+        name = "عيد رأس السنة الميلادية"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(2004, 2050)))
 
     def test_mothers_day(self):
@@ -176,7 +176,7 @@ class TestSyria(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2024-01-01", "ليلة رأس السنة الميلادية"),
+            ("2024-01-01", "عيد رأس السنة الميلادية"),
             ("2024-03-21", "عيد الأم"),
             ("2024-03-31", "عيد الفصح حسب التقويم الغربي"),
             ("2024-04-10", "عيد الفطر"),
