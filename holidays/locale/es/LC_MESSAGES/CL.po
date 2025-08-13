@@ -134,3 +134,7 @@ msgstr ""
 #. Bank Holiday.
 msgid "Feriado bancario"
 msgstr ""
+
+#. National Population and Housing Census.
+msgid "Censo Nacional de Población y Vivienda"
+msgstr ""
