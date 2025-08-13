@@ -89,7 +89,7 @@ class TibetanCalendarHolidays(EasternCalendarHolidays):
 
     def _add_descending_day_of_lord_buddha(self, name) -> Optional[date]:
         """
-        Add Descending Day Of Lord Buddha (22nd day of the 9th lunar month).
+        Add Descending Day of Lord Buddha (22nd day of the 9th lunar month).
         """
         return self._add_tibetan_calendar_holiday(
             name, self._tibetan_calendar.descending_day_of_lord_buddha_date(self._year)
