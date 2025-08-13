@@ -34,6 +34,9 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
             "عيد رأس السنة الميلادية", (f"{year}-01-01" for year in range(2004, 2050))
         )
 
+    def test_revolution_day(self):
+        self.assertHolidayName("الثورة السورية", (f"{year}-03-08" for year in range(2004, 2050)))
+
     def test_mothers_day(self):
         self.assertHolidayName("عيد الأم", (f"{year}-03-21" for year in range(2004, 2050)))
 
@@ -76,9 +79,6 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
         self.assertHolidayName(
             "ذكرى حرب تشرين التحريرية", (f"{year}-10-06" for year in range(2004, 2050))
         )
-
-    def test_revolution_day(self):
-        self.assertHolidayName("الثورة السورية", (f"{year}-12-08" for year in range(2004, 2050)))
 
     def test_christmas_day(self):
         name = "عيد الميلاد"
@@ -174,6 +174,7 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2024-01-01", "عيد رأس السنة الميلادية"),
+            ("2024-03-08", "الثورة السورية"),
             ("2024-03-21", "عيد الأم"),
             ("2024-03-31", "عيد الفصح حسب التقويم الغربي"),
             ("2024-04-10", "عيد الفطر"),
@@ -190,7 +191,6 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
             ("2024-07-07", "رأس السنة الهجرية"),
             ("2024-09-15", "عيد المولد النبوي الشريف"),
             ("2024-10-06", "ذكرى حرب تشرين التحريرية"),
-            ("2024-12-08", "الثورة السورية"),
             ("2024-12-25", "عيد الميلاد"),
             ("2024-12-26", "يوم الصناديق"),
         )
@@ -199,6 +199,7 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2024-01-01", "New Year's Day"),
+            ("2024-03-08", "Revolution Day"),
             ("2024-03-21", "Mother's Day"),
             ("2024-03-31", "Gregorian Easter Sunday"),
             ("2024-04-10", "Eid al-Fitr"),
@@ -215,7 +216,6 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
             ("2024-07-07", "Hijri New Year"),
             ("2024-09-15", "Prophet's Birthday"),
             ("2024-10-06", "Tishreen Liberation War Day"),
-            ("2024-12-08", "Revolution Day"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
         )

@@ -54,6 +54,9 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
         # New Year's Day.
         self._add_new_years_day(tr("عيد رأس السنة الميلادية"))
 
+        # Revolution Day.
+        self._add_holiday_mar_8(tr("الثورة السورية"))
+
         # Mother's Day.
         self._add_holiday_mar_21(tr("عيد الأم"))
 
@@ -74,9 +77,6 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
 
         # Tishreen Liberation War Day.
         self._add_holiday_oct_6(tr("ذكرى حرب تشرين التحريرية"))
-
-        # Revolution Day.
-        self._add_holiday_dec_8(tr("الثورة السورية"))
 
         if self._year >= 2024:
             # Christmas Day.

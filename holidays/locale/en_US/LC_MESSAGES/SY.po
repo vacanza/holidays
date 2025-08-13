@@ -35,6 +35,10 @@ msgstr "%s (estimated)"
 msgid "عيد رأس السنة الميلادية"
 msgstr "New Year's Day"
 
+#. Revolution Day.
+msgid "الثورة السورية"
+msgstr "Revolution Day"
+
 #. Mother's Day.
 msgid "عيد الأم"
 msgstr "Mother's Day"
@@ -62,10 +66,6 @@ msgstr "Martyrs' Day"
 #. Tishreen Liberation War Day.
 msgid "ذكرى حرب تشرين التحريرية"
 msgstr "Tishreen Liberation War Day"
-
-#. Revolution Day.
-msgid "الثورة السورية"
-msgstr "Revolution Day"
 
 #. Christmas Day.
 msgid "عيد الميلاد"
