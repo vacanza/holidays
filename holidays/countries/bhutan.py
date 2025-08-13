@@ -21,7 +21,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Bhutan>
-        * [The Bhutanese calendar](https://web.archive.org/web/20250707105447/http://www.kalacakra.org/calendar/bhutlist.htm)
+        * [The Bhutanese calendar](http://www.kalacakra.org/calendar/bhutlist.htm)
         * [2007-2011](https://web.archive.org/web/20070730055559/http://www.rcsc.gov.bt/tmpFolder/CalendarOfEvent/holiday.htm)
         * [2010-2011](https://web.archive.org/web/20100127021618/http://www.mohca.gov.bt/?mode=READMORE&news_id=157)
         * [2014](https://web.archive.org/web/20141222122050/http://www.mohca.gov.bt/Publications/calander_2014-15.pdf)
