@@ -75,7 +75,7 @@ msgstr ""
 msgid "يوم الصناديق"
 msgstr ""
 
-#. Hijri New Year.
+#. Islamic New Year.
 msgid "رأس السنة الهجرية"
 msgstr ""
 

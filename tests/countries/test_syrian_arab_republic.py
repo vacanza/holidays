@@ -16,10 +16,10 @@ from holidays.countries.syrian_arab_republic import SyrianArabRepublic, SY, SYR
 from tests.common import CommonCountryTests
 
 
-class TestSyria(CommonCountryTests, TestCase):
+class TestSyrianArabRepublic(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(2000, 2050)
+        years = range(2004, 2050)
         super().setUpClass(SyrianArabRepublic, years=years)
         cls.no_estimated_holidays = SyrianArabRepublic(years=years, islamic_show_estimated=False)
 
@@ -30,12 +30,12 @@ class TestSyria(CommonCountryTests, TestCase):
         self.assertNoHolidays(SyrianArabRepublic(years=2003))
 
     def test_new_years_day(self):
-        name = "عيد رأس السنة الميلادية"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(2004, 2050)))
+        self.assertHolidayName(
+            "عيد رأس السنة الميلادية", (f"{year}-01-01" for year in range(2004, 2050))
+        )
 
     def test_mothers_day(self):
-        name = "عيد الأم"
-        self.assertHolidayName(name, (f"{year}-03-21" for year in range(2004, 2050)))
+        self.assertHolidayName("عيد الأم", (f"{year}-03-21" for year in range(2004, 2050)))
 
     def test_gregorian_easter_sunday(self):
         name = "عيد الفصح حسب التقويم الغربي"
@@ -64,24 +64,21 @@ class TestSyria(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2004, 2050))
 
     def test_independence_day(self):
-        name = "عيد الاستقلال"
-        self.assertHolidayName(name, (f"{year}-04-17" for year in range(2004, 2050)))
+        self.assertHolidayName("عيد الاستقلال", (f"{year}-04-17" for year in range(2004, 2050)))
 
     def test_labor_day(self):
-        name = "عيد العمال"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(2004, 2050)))
+        self.assertHolidayName("عيد العمال", (f"{year}-05-01" for year in range(2004, 2050)))
 
     def test_martyrs_day(self):
-        name = "عيد الشهداء"
-        self.assertHolidayName(name, (f"{year}-05-06" for year in range(2004, 2050)))
+        self.assertHolidayName("عيد الشهداء", (f"{year}-05-06" for year in range(2004, 2050)))
 
     def test_tishreen_liberation_war_day(self):
-        name = "ذكرى حرب تشرين التحريرية"
-        self.assertHolidayName(name, (f"{year}-10-06" for year in range(2004, 2050)))
+        self.assertHolidayName(
+            "ذكرى حرب تشرين التحريرية", (f"{year}-10-06" for year in range(2004, 2050))
+        )
 
     def test_revolution_day(self):
-        name = "الثورة السورية"
-        self.assertHolidayName(name, (f"{year}-12-08" for year in range(2004, 2050)))
+        self.assertHolidayName("الثورة السورية", (f"{year}-12-08" for year in range(2004, 2050)))
 
     def test_christmas_day(self):
         name = "عيد الميلاد"

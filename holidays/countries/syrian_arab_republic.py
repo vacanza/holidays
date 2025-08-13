@@ -85,7 +85,7 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
             # Boxing Day.
             self._add_christmas_day_two(tr("يوم الصناديق"), calendar=GREGORIAN_CALENDAR)
 
-        # Hijri New Year.
+        # Islamic New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
 
         # Prophet's Birthday.
@@ -114,6 +114,7 @@ class SYR(SyrianArabRepublic):
 
 
 class SyriaIslamicHolidays(_CustomIslamicHolidays):
+    # https://web.archive.org/web/20250120140034/https://www.timeanddate.com/holidays/syria/muharram-new-year
     HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2020, 2025)
 
     # https://web.archive.org/web/20240808150300/https://www.timeanddate.com/holidays/syria/prophet-birthday
@@ -128,4 +129,5 @@ class SyriaIslamicHolidays(_CustomIslamicHolidays):
         2025: (MAR, 31),
     }
 
+    # https://web.archive.org/web/20250126132002/https://www.timeanddate.com/holidays/syria/eid-al-adha
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2020, 2025)
