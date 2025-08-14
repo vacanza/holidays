@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import GREGORIAN_CALENDAR, MAR, OCT
+from holidays.calendars.gregorian import GREGORIAN_CALENDAR, MAR, OCT, FRI, SAT
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
@@ -35,6 +35,7 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
     # Earliest reliable record dates back to 2004.
     start_year = 2004
     supported_languages = ("ar", "en_US")
+    weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
