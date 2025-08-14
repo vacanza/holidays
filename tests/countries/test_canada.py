@@ -774,10 +774,10 @@ class TestCanada(CommonCountryTests, TestCase):
         name = "National Aboriginal Day"
         nt_holidays = self.subdiv_holidays["NT"]
         yt_holidays = self.subdiv_holidays["YT"]
-        self.assertHolidayName(name, nt_holidays, (f"{year}-06-21" for year in range(1996, 2050)))
-        self.assertNoHolidayName(nt_holidays, range(1867, 1996))
+        self.assertHolidayName(name, nt_holidays, (f"{year}-06-21" for year in range(2001, 2050)))
+        self.assertNoHolidayName(name, nt_holidays, range(1867, 2001))
         self.assertHolidayName(name, yt_holidays, (f"{year}-06-21" for year in range(2017, 2050)))
-        self.assertNoHolidayName(yt_holidays, range(1867, 2017))
+        self.assertNoHolidayName(name, yt_holidays, range(1867, 2017))
         self.assertNoHoliday(f"{year}-06-21" for year in range(1996, 2050))
         self.assertNoHolidayName(name)
 
