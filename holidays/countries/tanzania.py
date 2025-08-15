@@ -113,8 +113,8 @@ class Tanzania(
     def _populate_observed(self, dts: set[date], multiple: bool = False) -> None:
         """
         Applies `SAT_SUN_TO_NEXT_MON_TUE` instead of `SAT_SUN_TO_NEXT_MON`
-        observed_rule for Christmas Day amd the 1st day of Eid al-Fitr holidays
-        based on section 4 of the Ordinance.
+        observed_rule for Christmas Day and the first day of Eid al-Fitr
+        holidays, based on section 4 of the Ordinance.
 
         Added via Act No. 10 of 1994 on July 29th, 1994.
         Removed via G.N. No. 486 of 2022 on July 15th, 2022.
@@ -249,9 +249,9 @@ class Tanzania(
 
         # Islamic Holidays.
 
-        # While 1975 official calendar only includes 1 Eid al-Fitr instead of 2 as in other
-        # contemporary sources (i.e. 1970, 1982) - I can't find any legal changes for this
-        # so I'll assume this was a clerical error.
+        # The 1975 official calendar lists only one Eid al-Fitr, unlike other contemporary sources
+        # (e.g., 1970, 1982). No legal changes have been found to explain this, so it is assumed
+        # to be a clerical error.
 
         # Eid al-Fitr.
         name = tr("Eid El-Fitri")
@@ -406,7 +406,7 @@ class TanzaniaStaticHolidays:
     phc_census_day = tr("Siku ya Sensa ya Kitaifa ya Watu na Makazi")
 
     # John Pombe Magufuli's Funeral.
-    john_magufuli_funeral = tr("Mazishi cha John Pombe Magufuli")
+    john_magufuli_funeral = tr("Mazishi ya John Pombe Magufuli")
 
     special_public_holidays = {
         # Inauguration of East African Economic Community.

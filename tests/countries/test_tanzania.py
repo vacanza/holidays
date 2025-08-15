@@ -70,11 +70,11 @@ class TestTanzania(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_party_founding_day(self):
-        name_afp = "Kuzaliwa kwa ASP"
+        name_asp = "Kuzaliwa kwa ASP"
         name_ccm = "Kuzaliwa kwa Chama cha Mapinduzi"
-        self.assertHolidayName(name_afp, (f"{year}-02-05" for year in range(1973, 1977)))
+        self.assertHolidayName(name_asp, (f"{year}-02-05" for year in range(1973, 1977)))
         self.assertHolidayName(name_ccm, (f"{year}-02-05" for year in range(1977, 1994)))
-        self.assertNoHolidayName(name_afp, range(1965, 1973), range(1977, 2050))
+        self.assertNoHolidayName(name_asp, range(1965, 1973), range(1977, 2050))
         self.assertNoHolidayName(name_ccm, range(1965, 1977), range(1994, 2050))
 
     def test_sheikh_abeid_amani_karume_day(self):
@@ -229,6 +229,7 @@ class TestTanzania(CommonCountryTests, TestCase):
         name = "Kuzaliwa Kristo"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1965, 2050)))
         obs_dt = (
+            "1994-12-27",
             "2005-12-27",
             "2010-12-27",
             "2011-12-27",

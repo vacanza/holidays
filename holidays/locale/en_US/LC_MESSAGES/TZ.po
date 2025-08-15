@@ -136,7 +136,7 @@ msgid "Siku ya Sensa ya Kitaifa ya Watu na Makazi"
 msgstr "National Population and Housing Census Day"
 
 #. John Pombe Magufuli's Funeral.
-msgid "Mazishi cha John Pombe Magufuli"
+msgid "Mazishi ya John Pombe Magufuli"
 msgstr "John Pombe Magufuli's Funeral"
 
 #. Inauguration of East African Economic Community.
