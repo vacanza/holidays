@@ -258,6 +258,8 @@ class TestTanzania(CommonCountryTests, TestCase):
         name = "Eid El-Fitri"
         self.assertHolidayName(
             name,
+            "1965-02-03",
+            "1965-02-04",
             "2020-05-24",
             "2020-05-25",
             "2021-05-14",
@@ -284,6 +286,8 @@ class TestTanzania(CommonCountryTests, TestCase):
         name = "Eid El Hajj"
         self.assertHolidayName(
             name,
+            "1965-04-13",
+            "1965-04-14",
             "2020-07-31",
             "2021-07-21",
             "2022-07-10",
@@ -304,6 +308,7 @@ class TestTanzania(CommonCountryTests, TestCase):
         name = "Maulidi"
         self.assertHolidayName(
             name,
+            "1965-07-12",
             "2020-10-29",
             "2021-10-19",
             "2022-10-09",
