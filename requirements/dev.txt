@@ -5,10 +5,10 @@ convertdate==2.4.0
 gitpython==3.1.45
 hijridate==2.5.0
 lingva==5.0.6
-pre-commit==4.2.0
-pygithub==2.6.1
+pre-commit==4.3.0
+pygithub==2.7.0
 requests==2.32.4
-ruff==0.12.7
-tox==4.28.3
+ruff==0.12.8
+tox==4.28.4
 urllib3>=2.2.2 # not directly required, pinned by Snyk to avoid a vulnerability
 zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability

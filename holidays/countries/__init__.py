@@ -234,6 +234,7 @@ from holidays.countries.suriname import Suriname, SR, SUR
 from holidays.countries.svalbard_and_jan_mayen import SvalbardAndJanMayen, SJ, SJM, HolidaysSJ
 from holidays.countries.sweden import Sweden, SE, SWE
 from holidays.countries.switzerland import Switzerland, CH, CHE
+from holidays.countries.syrian_arab_republic import SyrianArabRepublic, SY, SYR
 from holidays.countries.taiwan import Taiwan, TW, TWN
 from holidays.countries.tanzania import Tanzania, TZ, TZA
 from holidays.countries.thailand import Thailand, TH, THA

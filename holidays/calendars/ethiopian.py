@@ -10,18 +10,22 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-JULIAN_CALENDAR = "JULIAN_CALENDAR"
+ETHIOPIAN_CALENDAR = "ETHIOPIAN_CALENDAR"
 
 
-def julian_calendar_drift(year: int) -> int:
-    """Return the Julian–Gregorian date drift relative to the 1899–2099 baseline.
+def is_ethiopian_leap_year(year: int) -> bool:
+    """Determine if the Ethiopian year that starts in the given Gregorian year is a leap year.
+
+    Ethiopian leap years follow the Coptic/Julian rule:
+        * Every 4 years without exception (no century rule).
+        * The Ethiopian year starts on September 11 (or 12 in an Ethiopian leap year).
 
     Args:
         year:
-            Gregorian year to check.
+            Gregorian year to evaluate.
 
     Returns:
-        Number of days to add/subtract relative to the 1899–2099 baseline.
+        `True` if an Ethiopian leap year starts in the given Gregorian year, `False` otherwise.
     """
 
-    return -13 if year <= 1582 else (year // 100) - (year // 400) - 15
+    return (year + 1) % 4 == 0
