@@ -1,92 +1,86 @@
 [project]
 name = "holidays"
 description = "Open World Holidays Framework"
-license = "MIT"
-license-files = ["CONTRIBUTORS", "LICENSE"]
 readme = "README.md"
-requires-python = ">=3.9"
-dynamic = ["version"]
-
-authors = [{ name = "Vacanza Team" }]
-dependencies = ["python-dateutil"]
-classifiers = [
-    "Development Status :: 4 - Beta",
-    "Intended Audience :: Developers",
-    "Intended Audience :: Education",
-    "Intended Audience :: End Users/Desktop",
-    "Intended Audience :: Financial and Insurance Industry",
-    "Intended Audience :: Information Technology",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: Implementation :: CPython",
-    "Topic :: File Formats :: JSON",
-    "Topic :: Office/Business :: Financial :: Accounting",
-    "Topic :: Office/Business :: Financial :: Investment",
-    "Topic :: Office/Business :: Scheduling",
-    "Topic :: Software Development :: Libraries :: Python Modules",
-]
-keywords = ["holidays", "calendar", "l10n", "worldwide", "vacation"]
+keywords = [ "calendar", "holidays", "l10n", "vacation", "worldwide" ]
+license = "MIT"
+license-files = [ "CONTRIBUTORS", "LICENSE" ]
 maintainers = [
-    { name = "Arkadii Yakovets" },
-    { name = "Panpakorn Siripanich" },
-    { name = "Serhii Murza" },
+  { name = "Arkadii Yakovets" },
+  { name = "Panpakorn Siripanich" },
+  { name = "Serhii Murza" },
 ]
 
-[project.urls]
-Documentation = "https://holidays.readthedocs.io/en/latest/"
-Repository = "https://github.com/vacanza/holidays/"
-Changelog = "https://github.com/vacanza/holidays/releases/"
-
-[tool.coverage.run]
-branch = true
-omit = ["scripts/*", "setup.py", "tests/*"]
-
-[tool.isort]
-known_first_party = ["holidays", "tests"]
-line_length = 99
-multi_line_output = 3
-no_inline_sort = true
-profile = "black"
-skip = ["docs"]
-
-[[tool.mypy.overrides]]
-module = "holidays.countries.*"
-disable_error_code = ["override"]
-
-[[tool.mypy.overrides]]
-module = "holidays.groups.*"
-disable_error_code = ["attr-defined"]
-
-[tool.ruff]
-line-length = 99
-target-version = "py39"
-
-[tool.ruff.lint]
-select = ["E4", "E5", "E7", "E9", "F", "N", "PLE", "S", "T", "TC", "UP", "W"]
-
-[tool.ruff.lint.per-file-ignores]
-"scripts/generate_release_notes.py" = ["T201"]
-"tests/test_holiday_base.py" = ["S301"]
-
-[tool.ruff.lint.flake8-errmsg]
-max-string-length = 99
-
-[tool.pytest.ini_options]
-addopts = [
-    "--cov-fail-under=100",
+authors = [ { name = "Vacanza Team" } ]
+requires-python = ">=3.9"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Education",
+  "Intended Audience :: End Users/Desktop",
+  "Intended Audience :: Financial and Insurance Industry",
+  "Intended Audience :: Information Technology",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Topic :: File Formats :: JSON",
+  "Topic :: Office/Business :: Financial :: Accounting",
+  "Topic :: Office/Business :: Financial :: Investment",
+  "Topic :: Office/Business :: Scheduling",
+  "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-filterwarnings = [
-    "ignore::DeprecationWarning:holidays.deprecations.v1_incompatibility",
-]
-testpaths = ["tests"]
+dynamic = [ "version" ]
+
+dependencies = [ "python-dateutil" ]
+urls.Changelog = "https://github.com/vacanza/holidays/releases/"
+urls.Documentation = "https://holidays.readthedocs.io/en/latest/"
+urls.Repository = "https://github.com/vacanza/holidays/"
 
 [tool.setuptools.dynamic]
 version = { attr = "holidays.version.__version__" }
 
 [tool.setuptools.packages.find]
-include = ["holidays*"]
+include = [ "holidays*" ]
+
+[tool.ruff]
+target-version = "py39"
+
+line-length = 99
+lint.select = [ "E4", "E5", "E7", "E9", "F", "N", "PLE", "S", "T", "TC", "UP", "W" ]
+lint.per-file-ignores."scripts/generate_release_notes.py" = [ "T201" ]
+lint.per-file-ignores."tests/test_holiday_base.py" = [ "S301" ]
+lint.flake8-errmsg.max-string-length = 99
+
+[tool.isort]
+known_first_party = [ "holidays", "tests" ]
+line_length = 99
+multi_line_output = 3
+no_inline_sort = true
+profile = "black"
+skip = [ "docs" ]
+
+[tool.pytest.ini_options]
+addopts = [
+  "--cov-fail-under=100",
+]
+filterwarnings = [
+  "ignore::DeprecationWarning:holidays.deprecations.v1_incompatibility",
+]
+testpaths = [ "tests" ]
+
+[tool.coverage.run]
+branch = true
+omit = [ "scripts/*", "setup.py", "tests/*" ]
+
+[[tool.mypy.overrides]]
+module = "holidays.countries.*"
+disable_error_code = [ "override" ]
+
+[[tool.mypy.overrides]]
+module = "holidays.groups.*"
+disable_error_code = [ "attr-defined" ]
