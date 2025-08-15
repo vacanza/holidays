@@ -14,23 +14,41 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.57\n"
+"Project-Id-Version: Holidays 0.79\n"
 "POT-Creation-Date: 2023-10-07 15:05+0700\n"
-"PO-Revision-Date: 2024-09-07 17:41+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-08-15 12:17+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 "X-Source-Language: sw\n"
 
 #. %s (estimated).
 #, c-format
 msgid "%s (makisio)"
 msgstr "%s (estimated)"
+
+#. %s (observed).
+#, c-format
+msgid "Badala ya %s"
+msgstr "%s (observed)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "Badala ya %s (makisio)"
+msgstr "%s (observed, estimated)"
+
+#. Christmas Day.
+msgid "Kuzaliwa Kristo"
+msgstr "Christmas Day"
+
+#. Eid al-Fitr.
+msgid "Eid El-Fitri"
+msgstr "Eid al-Fitr"
 
 #. Easter Sunday.
 msgid "Sikukuu ya Pasaka"
@@ -44,42 +62,18 @@ msgstr "New Year's Day"
 msgid "Mapinduzi ya Zanzibar"
 msgstr "Zanzibar Revolution Day"
 
+#. CCM Party Founding Day.
+msgid "Kuzaliwa kwa Chama cha Mapinduzi"
+msgstr "CCM Party Founding Day"
+
+#. Afro-Shirazi Party Founding Day.
+msgid "Kuzaliwa kwa ASP"
+msgstr "Afro-Shirazi Party Founding Day"
+
 #. The Sheikh Abeid Amani Karume Day.
 msgid ""
 "Siku ya kumbukumbu ya Rais wa Kwanza wa Serikali ya Mapinduzi Zanzibar Sheikh Abeid Amani Karume"
 msgstr "The Sheikh Abeid Amani Karume Day"
-
-#. Union Celebrations.
-msgid "Muungano wa Tanganyika na Zanzibar"
-msgstr "Union Celebrations"
-
-#. Worker's Day.
-msgid "Sikukuu ya Wafanyakazi"
-msgstr "Worker's Day"
-
-#. International Trade Fair.
-msgid "Sabasaba"
-msgstr "International Trade Fair"
-
-#. Peasants Day.
-msgid "Siku ya Wakulima"
-msgstr "Peasants Day"
-
-#. The Mwalimu Nyerere Day.
-msgid "Kumbukumbu ya Mwalimu Nyerere"
-msgstr "The Mwalimu Nyerere Day"
-
-#. Independence and Republic Day.
-msgid "Uhuru na Jamhuri"
-msgstr "Independence and Republic Day"
-
-#. Christmas Day.
-msgid "Kuzaliwa Kristo"
-msgstr "Christmas Day"
-
-#. Boxing Day.
-msgid "Siku ya Kupeana Zawadi"
-msgstr "Boxing Day"
 
 #. Good Friday.
 msgid "Ijumaa Kuu"
@@ -89,21 +83,49 @@ msgstr "Good Friday"
 msgid "Jumatatu ya Pasaka"
 msgstr "Easter Monday"
 
-#. Eid al-Fitr.
-msgid "Eid El-Fitry"
-msgstr "Eid al-Fitr"
+#. Union Celebrations.
+msgid "Muungano wa Tanzania"
+msgstr "Union Celebrations"
+
+#. Union Day.
+msgid "Sikukuu ya Muungano"
+msgstr "Union Day"
+
+#. International Workers' Day.
+msgid "Sikukuu ya Wafanyakazi Ulimwenguni"
+msgstr "International Workers' Day"
+
+#. International Trade Fair.
+msgid "Sabasaba"
+msgstr "International Trade Fair"
+
+#. Peasants' Day.
+msgid "Sikukuu ya Wakulima"
+msgstr "Peasants' Day"
+
+#. Saba Saba Day.
+msgid "Saba Saba"
+msgstr "Saba Saba Day"
+
+#. The Mwalimu Nyerere Day and Climax of the Uhuru Torch Race.
+msgid "Kumbukumbu ya Mwalimu Nyerere na Kilele cha mbio za Mwenge"
+msgstr "The Mwalimu Nyerere Day and Climax of the Uhuru Torch Race"
+
+#. Independence and Republic Day.
+msgid "Uhuru na Jamhuri"
+msgstr "Independence and Republic Day"
+
+#. Boxing Day.
+msgid "Siku ya Kupeana Zawadi"
+msgstr "Boxing Day"
 
 #. Eid al-Adha.
-msgid "Eid El-Hajj"
+msgid "Eid El Hajj"
 msgstr "Eid al-Adha"
 
 #. Prophet's Birthday.
 msgid "Maulidi"
 msgstr "Prophet's Birthday"
-
-#. John Pombe Magufuli Inauguration Day.
-msgid "Sikukuu ya Kuapishwa kwa John Pombe Magufuli"
-msgstr "John Pombe Magufuli Inauguration Day"
 
 #. Tanzania General Election Day.
 msgid "Sikukuu ya Uchaguzi Mkuu wa Tanzania"
@@ -116,3 +138,11 @@ msgstr "National Population and Housing Census Day"
 #. John Pombe Magufuli's Funeral.
 msgid "Mazishi cha John Pombe Magufuli"
 msgstr "John Pombe Magufuli's Funeral"
+
+#. Inauguration of East African Economic Community.
+msgid "Uzinduzi wa Jumuiya ya Kiuchumi ya Afrika Mashariki"
+msgstr "Inauguration of East African Economic Community"
+
+#. John Pombe Magufuli Inauguration Day.
+msgid "Sikukuu ya Kuapishwa kwa John Pombe Magufuli"
+msgstr "John Pombe Magufuli Inauguration Day"
