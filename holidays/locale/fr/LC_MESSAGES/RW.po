@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.78\n"
+"Project-Id-Version: Holidays 0.79\n"
 "POT-Creation-Date: 2025-08-07 14:18+0530\n"
 "PO-Revision-Date: 2025-08-07 14:18+0530\n"
 "Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
@@ -26,10 +26,20 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: rw\n"
 
+#. %s (estimated).
+#, c-format
+msgid "%s (yagereranijwe)"
+msgstr "%s (estimé)"
+
 #. %s (observed).
 #, c-format
-msgid "%s (observed)"
-msgstr "%s (observé"
+msgid "%s (yizihijwe)"
+msgstr "%s (observé)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (yizihijwe, yagereranijwe)"
+msgstr "%s (observé, estimé)"
 
 #. New Year's Day.
 msgid "Ubunani"
@@ -55,21 +65,13 @@ msgstr "Vendredi Saint"
 msgid "Ku wa mbere wa Pasika"
 msgstr "Lundi de Pâques"
 
-#. . Labor Day
+#. Labor Day.
 msgid "Umunsi Mukuru w'Umurimo"
 msgstr "Journée du Travail"
 
-#. EID EL FITR.
-msgid "EID EL FITR"
-msgstr "EID EL FITR"
-
-#. EID AL-ADHA.
-msgid "EID AL-ADHA"
-msgstr "EID AL-ADHA"
-
 #. Independence Day.
 msgid "Umunsi w'Ubwigenge"
-msgstr "Journée de l’Indépendance"
+msgstr "Journée de l'Indépendance"
 
 #. Liberation Day.
 msgid "Umunsi wo Kwibohora"
@@ -77,7 +79,7 @@ msgstr "Journée de la Libération"
 
 #. Umuganura Day.
 msgid "Umunsi w'Umuganura"
-msgstr "Journée d’Umuganura"
+msgstr "Journée d'Umuganura"
 
 #. Assumption Day.
 msgid "Ijyanwa mu Ijuru rya Bikiramariya"
@@ -90,3 +92,11 @@ msgstr "Noël"
 #. Boxing Day.
 msgid "Umunsi ukurikira Noheli"
 msgstr "Le lendemain de Noël"
+
+#. Eid al-Fitr.
+msgid "Eid El Fitr"
+msgstr "Aïd el-Fitr"
+
+#. Eid al-Adha.
+msgid "Eid al-Adha"
+msgstr "Aïd al-Adha"

@@ -26,9 +26,19 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: rw\n"
 
+#. %s (estimated).
+#, c-format
+msgid "%s (yagereranijwe)"
+msgstr ""
+
 #. %s (observed).
 #, c-format
-msgid "%s (observed)"
+msgid "%s (yizihijwe)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (yizihijwe, yagereranijwe)"
 msgstr ""
 
 #. New Year's Day.
@@ -55,16 +65,8 @@ msgstr ""
 msgid "Ku wa mbere wa Pasika"
 msgstr ""
 
-#. . Labor Day
+#. Labor Day.
 msgid "Umunsi Mukuru w'Umurimo"
-msgstr ""
-
-#. EID EL FITR.
-msgid "EID EL FITR"
-msgstr ""
-
-#. EID AL-ADHA.
-msgid "EID AL-ADHA"
 msgstr ""
 
 #. Independence Day.
@@ -89,4 +91,12 @@ msgstr ""
 
 #. Boxing Day.
 msgid "Umunsi ukurikira Noheli"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Eid El Fitr"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Eid al-Adha"
 msgstr ""

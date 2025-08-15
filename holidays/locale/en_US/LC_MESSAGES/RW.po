@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.78\n"
+"Project-Id-Version: Holidays 0.79\n"
 "POT-Creation-Date: 2025-08-07 14:18+0530\n"
 "PO-Revision-Date: 2025-08-07 14:18+0530\n"
 "Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
@@ -26,10 +26,20 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: rw\n"
 
+#. %s (estimated).
+#, c-format
+msgid "%s (yagereranijwe)"
+msgstr "%s (estimated)"
+
 #. %s (observed).
 #, c-format
-msgid "%s (observed)"
+msgid "%s (yizihijwe)"
 msgstr "%s (observed)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (yizihijwe, yagereranijwe)"
+msgstr "%s (observed, estimated)"
 
 #. New Year's Day.
 msgid "Ubunani"
@@ -55,17 +65,9 @@ msgstr "Good Friday"
 msgid "Ku wa mbere wa Pasika"
 msgstr "Easter Monday"
 
-#. . Labor Day
+#. Labor Day.
 msgid "Umunsi Mukuru w'Umurimo"
-msgstr "Labor Day"
-
-#. EID EL FITR.
-msgid "EID EL FITR"
-msgstr "EID EL FITR"
-
-#. EID AL-ADHA.
-msgid "EID AL-ADHA"
-msgstr "EID AL-ADHA"
+msgstr "Labour Day"
 
 #. Independence Day.
 msgid "Umunsi w'Ubwigenge"
@@ -90,3 +92,11 @@ msgstr "Christmas Day"
 #. Boxing Day.
 msgid "Umunsi ukurikira Noheli"
 msgstr "Boxing Day"
+
+#. Eid al-Fitr.
+msgid "Eid El Fitr"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Eid al-Adha"
+msgstr "Eid al-Adha"
