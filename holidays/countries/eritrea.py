@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.calendars.ethiopian import ETHIOPIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -41,7 +41,7 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
         """
-        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        ChristianHolidays.__init__(self, ETHIOPIAN_CALENDAR)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         super().__init__(*args, **kwargs)
@@ -81,10 +81,10 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         self._add_holiday_sep_1(tr("Revolution Day"))
 
         # Orthodox New Year.
-        self._add_holiday_sep_11(tr("Keddus Yohannes"))
+        self._add_ethiopian_new_year(tr("Keddus Yohannes"))
 
         # Finding of the True Cross.
-        self._add_holiday_sep_27(tr("Meskel"))
+        self._add_finding_of_true_cross(tr("Meskel"))
 
         # Islamic New Year.
         self._add_islamic_new_year_day(tr("Muharram"))

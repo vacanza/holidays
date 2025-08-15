@@ -36,7 +36,11 @@ class TestEritrea(CommonCountryTests, TestCase):
         self.assertHolidayName("Leddet", (f"{year}-01-07" for year in range(1994, 2050)))
 
     def test_timket(self):
-        self.assertHolidayName("Timket", (f"{year}-01-19" for year in range(1994, 2050)))
+        self.assertHolidayName(
+            "Timket",
+            (f"{year}-01-19" for year in range(1994, 2050) if year % 4 != 0),
+            (f"{year}-01-20" for year in range(1994, 2050) if year % 4 == 0),
+        )
 
     def test_tensae(self):
         name = "Tensae"
@@ -52,10 +56,18 @@ class TestEritrea(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1994, 2050))
 
     def test_keddus_yohannes(self):
-        self.assertHolidayName("Keddus Yohannes", (f"{year}-09-11" for year in range(1994, 2050)))
+        self.assertHolidayName(
+            "Keddus Yohannes",
+            (f"{year}-09-11" for year in range(1994, 2050) if year % 4 != 3),
+            (f"{year}-09-12" for year in range(1994, 2050) if year % 4 == 3),
+        )
 
     def test_meskel(self):
-        self.assertHolidayName("Meskel", (f"{year}-09-27" for year in range(1994, 2050)))
+        self.assertHolidayName(
+            "Meskel",
+            (f"{year}-09-27" for year in range(1994, 2050) if year % 4 != 3),
+            (f"{year}-09-28" for year in range(1994, 2050) if year % 4 == 3),
+        )
 
     def test_fenkil_day(self):
         self.assertHolidayName("Fenkil Day", (f"{year}-02-10" for year in range(1994, 2050)))
@@ -125,7 +137,7 @@ class TestEritrea(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             ("2020-01-01", "New Year"),
             ("2020-01-07", "Leddet"),
-            ("2020-01-19", "Timket"),
+            ("2020-01-20", "Timket"),
             ("2020-02-10", "Fenkil Day"),
             ("2020-03-08", "Women's Day"),
             ("2020-04-17", "Good Friday"),
