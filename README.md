@@ -9,7 +9,7 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>PyPI</td>
     <td>
-      <a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/dm/holidays?color=41B5BE&style=flat" alt="PyPI downloads"></a>&nbsp;<a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat" alt="PyPI version"></a>&nbsp;<a href="https://github.com/vacanza/holidays/releases"><img src="https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat" alt="PyPI release date"></a>
+      <a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pepy/dt/holidays?style=flat&color=41B5BE" alt="Pepy Total Downloads"></a>&nbsp;<a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat" alt="PyPI version"></a>&nbsp;<a href="https://github.com/vacanza/holidays/releases"><img src="https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat" alt="PyPI release date"></a>
     </td>
   </tr>
   <tr>
@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 230 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 233 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -770,6 +770,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Guinea-Bissau</td>
+<td>GW</td>
+<td></td>
+<td>en_US, <strong>pt_GW</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Guyana</td>
 <td>GY</td>
 <td></td>
@@ -915,6 +922,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td><strong>en_KE</strong>, en_US, sw</td>
 <td>HINDU, ISLAMIC</td>
+</tr>
+<tr>
+<td>Kiribati</td>
+<td>KI</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>Kuwait</td>
@@ -1505,6 +1519,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>South Georgia and the South Sandwich Islands</td>
+<td>GS</td>
+<td></td>
+<td><strong>en_GS</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>South Korea</td>
 <td>KR</td>
 <td></td>
@@ -1552,6 +1573,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Cantons: AG (Aargau), AI (Appenzell Innerrhoden), AR (Appenzell Ausserrhoden), BE (Bern, Berne), BL (Basel-Landschaft), BS (Basel-Stadt), FR (Freiburg, Fribourg), GE (Genève), GL (Glarus), GR (Graubünden, Grigioni, Grischun), JU (Jura), LU (Luzern), NE (Neuchâtel), NW (Nidwalden), OW (Obwalden), SG (Sankt Gallen), SH (Schaffhausen), SO (Solothurn), SZ (Schwyz), TG (Thurgau), TI (Ticino), UR (Uri), VD (Vaud), VS (Valais, Wallis), ZG (Zug), ZH (Zürich)</td>
 <td><strong>de</strong>, en_US, fr, it, uk</td>
 <td>HALF_DAY, OPTIONAL</td>
+</tr>
+<tr>
+<td>Syrian Arab Republic</td>
+<td>SY</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td></td>
 </tr>
 <tr>
 <td>Taiwan</td>
