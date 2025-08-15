@@ -227,6 +227,7 @@ COUNTRIES: RegistryDict = {
     "svalbard_and_jan_mayen": ("SvalbardAndJanMayen", "SJ", "SJM", "HolidaysSJ"),
     "sweden": ("Sweden", "SE", "SWE"),
     "switzerland": ("Switzerland", "CH", "CHE"),
+    "syrian_arab_republic": ("SyrianArabRepublic", "SY", "SYR"),
     "taiwan": ("Taiwan", "TW", "TWN"),
     "tanzania": ("Tanzania", "TZ", "TZA"),
     "thailand": ("Thailand", "TH", "THA"),

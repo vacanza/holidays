@@ -14,8 +14,9 @@ from datetime import date
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 
-from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, DEC, _timedelta
-from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.calendars.ethiopian import ETHIOPIAN_CALENDAR, is_ethiopian_leap_year
+from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, AUG, SEP, DEC, _timedelta
+from holidays.calendars.julian import JULIAN_CALENDAR, julian_calendar_drift
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 
 
@@ -36,8 +37,8 @@ class ChristianHolidays:
         self.__verify_calendar(calendar)
 
         return (
-            date(self._year, JAN, 7)
-            if self.__is_julian_calendar(calendar)
+            _timedelta(date(self._year, JAN, 7), julian_calendar_drift(self._year - 1))
+            if self.__is_julian_calendar(calendar) or self.__is_ethiopian_calendar(calendar)
             else date(self._year, DEC, 25)
         )
 
@@ -52,6 +53,14 @@ class ChristianHolidays:
             self._year,
             method=EASTER_WESTERN if self.__is_gregorian_calendar(calendar) else EASTER_ORTHODOX,
         )
+
+    @staticmethod
+    def __is_ethiopian_calendar(calendar):
+        """
+        Return True if `calendar` is Ethiopian calendar.
+        Return False otherwise.
+        """
+        return calendar == ETHIOPIAN_CALENDAR
 
     @staticmethod
     def __is_gregorian_calendar(calendar):
@@ -74,10 +83,15 @@ class ChristianHolidays:
         """
         Verify calendar type.
         """
-        if calendar not in {GREGORIAN_CALENDAR, JULIAN_CALENDAR, JULIAN_REVISED_CALENDAR}:
+        if calendar not in {
+            ETHIOPIAN_CALENDAR,
+            GREGORIAN_CALENDAR,
+            JULIAN_CALENDAR,
+            JULIAN_REVISED_CALENDAR,
+        }:
             raise ValueError(
-                f"Unknown calendar name: {calendar}. "
-                f"Use `{GREGORIAN_CALENDAR}`, `{JULIAN_CALENDAR}` or `{JULIAN_REVISED_CALENDAR}`."
+                f"Unknown calendar name: {calendar}. Use `{ETHIOPIAN_CALENDAR}`, "
+                f"`{GREGORIAN_CALENDAR}`, `{JULIAN_CALENDAR}` or `{JULIAN_REVISED_CALENDAR}`."
             )
 
     @property
@@ -158,7 +172,9 @@ class ChristianHolidays:
         self.__verify_calendar(calendar)
 
         return (
-            self._add_holiday_aug_28(name)
+            self._add_holiday(
+                name, _timedelta(date(self._year, AUG, 28), julian_calendar_drift(self._year))
+            )
             if self.__is_julian_calendar(calendar)
             else self._add_holiday_aug_15(name)
         )
@@ -299,10 +315,30 @@ class ChristianHolidays:
         calendar = calendar or self.__calendar
         self.__verify_calendar(calendar)
 
-        return (
-            self._add_holiday_jan_19(name)
-            if self.__is_julian_calendar(calendar)
-            else self._add_holiday_jan_6(name)
+        if self.__is_julian_calendar(calendar) or self.__is_ethiopian_calendar(calendar):
+            dt = _timedelta(date(self._year, JAN, 19), julian_calendar_drift(self._year - 1))
+            return self._add_holiday(
+                name,
+                _timedelta(dt, +1)
+                if self.__is_ethiopian_calendar(calendar)
+                and is_ethiopian_leap_year(self._year - 1)
+                else dt,
+            )
+        else:
+            return self._add_holiday_jan_6(name)
+
+    def _add_finding_of_true_cross(self, name) -> date:
+        """
+        Add Finding of True Cross.
+
+        Finding of True Cross, also known as Meskel, is an Ethiopian and Eritrean Orthodox
+        Tewahedo Church holiday that commemorates the discovery of the True Cross by the
+        Roman Empress Saint Helena of Constantinople in the fourth century.
+        https://en.wikipedia.org/wiki/Meskel
+        """
+        dt = _timedelta(date(self._year, SEP, 27), julian_calendar_drift(self._year))
+        return self._add_holiday(
+            name, _timedelta(dt, +1) if is_ethiopian_leap_year(self._year) else dt
         )
 
     def _add_good_friday(self, name, calendar=None) -> date:
