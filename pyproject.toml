@@ -1,3 +1,7 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [ "setuptools>=61", "wheel" ]
+
 [project]
 name = "holidays"
 description = "Open World Holidays Framework"
@@ -75,7 +79,7 @@ testpaths = [ "tests" ]
 
 [tool.coverage.run]
 branch = true
-omit = [ "scripts/*", "setup.py", "tests/*" ]
+omit = [ "scripts/*", "tests/*" ]
 
 [[tool.mypy.overrides]]
 module = "holidays.countries.*"
