@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.ethiopian import ETHIOPIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
@@ -30,7 +28,7 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
 
     country = "ER"
     # %s (estimated).
-    estimated_label = tr("%s (estimated)")
+    estimated_label = "%s (estimated)"
     # On 28 May 1993, Eritrea was admitted into the United Nations as the 182nd member state.
     start_year = 1994
 
@@ -48,55 +46,55 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("New Year"))
+        self._add_new_years_day("New Year")
 
         # Orthodox Christmas.
-        self._add_christmas_day(tr("Leddet"))
+        self._add_christmas_day("Leddet")
 
         # Epiphany.
-        self._add_epiphany_day(tr("Timket"))
+        self._add_epiphany_day("Timket")
 
         # Fenkil Day.
-        self._add_holiday_feb_10(tr("Fenkil Day"))
+        self._add_holiday_feb_10("Fenkil Day")
 
         # Women's Day.
-        self._add_womens_day(tr("Women's Day"))
+        self._add_womens_day("Women's Day")
 
         # Good Friday.
-        self._add_good_friday(tr("Good Friday"))
+        self._add_good_friday("Good Friday")
 
         # Orthodox Easter.
-        self._add_easter_sunday(tr("Tensae"))
+        self._add_easter_sunday("Tensae")
 
         # International Workers' Day.
-        self._add_labor_day(tr("International Workers' Day"))
+        self._add_labor_day("International Workers' Day")
 
         # Independence Day.
-        self._add_holiday_may_24(tr("Independence Day"))
+        self._add_holiday_may_24("Independence Day")
 
         # Martyrs' Day.
-        self._add_holiday_jun_20(tr("Martyrs' Day"))
+        self._add_holiday_jun_20("Martyrs' Day")
 
         # Revolution Day.
-        self._add_holiday_sep_1(tr("Revolution Day"))
+        self._add_holiday_sep_1("Revolution Day")
 
-        # Orthodox New Year.
-        self._add_ethiopian_new_year(tr("Keddus Yohannes"))
+        # Ethiopian New Year.
+        self._add_ethiopian_new_year("Keddus Yohannes")
 
         # Finding of the True Cross.
-        self._add_finding_of_true_cross(tr("Meskel"))
+        self._add_finding_of_true_cross("Meskel")
 
         # Islamic New Year.
-        self._add_islamic_new_year_day(tr("Muharram"))
+        self._add_islamic_new_year_day("Muharram")
 
         # Prophet's Birthday.
-        self._add_mawlid_day(tr("Mawlid an-Nabi"))
+        self._add_mawlid_day("Mawlid an-Nabi")
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Eid al-Fitr"))
+        self._add_eid_al_fitr_day("Eid al-Fitr")
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Eid al-Adha"))
+        self._add_eid_al_adha_day("Eid al-Adha")
 
 
 class ER(Eritrea):
