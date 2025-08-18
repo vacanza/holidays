@@ -12,7 +12,9 @@
 
 from datetime import date
 
-from holidays.calendars.gregorian import JAN
+from holidays.calendars.ethiopian import is_ethiopian_leap_year
+from holidays.calendars.gregorian import JAN, SEP, _timedelta
+from holidays.calendars.julian import julian_calendar_drift
 
 
 class InternationalHolidays:
@@ -84,6 +86,20 @@ class InternationalHolidays:
         https://en.wikipedia.org/wiki/Columbus_Day
         """
         return self._add_holiday_oct_12(name)
+
+    def _add_ethiopian_new_year(self, name) -> date:
+        """
+        Add Ethiopian New Year.
+
+        Ethiopian New Year, also known as Enkutatash, is a public holiday celebrated
+        on Meskerem 1 in the Ethiopian calendar, marking the start of the year in
+        Ethiopia and Eritrea.
+        https://en.wikipedia.org/wiki/Enkutatash
+        """
+        dt = _timedelta(date(self._year, SEP, 11), julian_calendar_drift(self._year))
+        return self._add_holiday(
+            name, _timedelta(dt, +1) if is_ethiopian_leap_year(self._year) else dt
+        )
 
     def _add_europe_day(self, name):
         """

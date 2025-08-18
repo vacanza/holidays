@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.79\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2025-06-26 17:55+0300\n"
+"PO-Revision-Date: 2025-08-07 18:13+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -40,38 +40,26 @@ msgstr "New Year's Day"
 msgid "عيد العمال"
 msgstr "Labor Day"
 
-#. Eid al-Fitr.
-msgid "عيد الفطر"
-msgstr "Eid al-Fitr"
-
-#. Eid al-Fitr Holiday.
-msgid "عطلة عيد الفطر"
-msgstr "Eid al-Fitr Holiday"
-
-#. Eid al-Adha.
-msgid "عيد الأضحى"
-msgstr "Eid al-Adha"
-
-#. Eid al-Adha Holiday.
-msgid "عطلة عيد الأضحى"
-msgstr "Eid al-Adha Holiday"
+#. National Day.
+msgid "العيد الوطني"
+msgstr "National Day"
 
 #. Islamic New Year.
 msgid "رأس السنة الهجرية"
 msgstr "Islamic New Year"
 
-#. Ashura Eve.
-msgid "ليلة عاشورة"
-msgstr "Ashura Eve"
-
 #. Ashura.
-msgid "عاشورة"
+msgid "عاشوراء"
 msgstr "Ashura"
 
 #. Prophet's Birthday.
-msgid "عيد المولد النبوي"
+msgid "المولد النبوي الشريف"
 msgstr "Prophet's Birthday"
 
-#. National Day.
-msgid "اليوم الوطني"
-msgstr "National Day"
+#. Eid al-Fitr.
+msgid "عيد الفطر"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "عيد الأضحى"
+msgstr "Eid al-Adha"

@@ -11,3 +11,17 @@
 #  License: MIT (see LICENSE file)
 
 JULIAN_CALENDAR = "JULIAN_CALENDAR"
+
+
+def julian_calendar_drift(year: int) -> int:
+    """Return the Julian–Gregorian date drift relative to the 1899–2099 baseline.
+
+    Args:
+        year:
+            Gregorian year to check.
+
+    Returns:
+        Number of days to add/subtract relative to the 1899–2099 baseline.
+    """
+
+    return -13 if year <= 1582 else (year // 100) - (year // 400) - 15

@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -107,43 +107,38 @@ class MLI(Mali):
 
 class MaliIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20250619042440/https://www.timeanddate.com/holidays/mali/eid-al-adha
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2015, 2025)
     EID_AL_ADHA_DATES = {
         2015: (SEP, 24),
         2016: (SEP, 13),
         2017: (SEP, 2),
         2018: (AUG, 22),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
         2021: (JUL, 21),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
         2024: (JUN, 17),
         2025: (JUN, 7),
     }
 
     # https://web.archive.org/web/20250318001443/https://www.timeanddate.com/holidays/mali/eid-al-fitr
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2015, 2025)
     EID_AL_FITR_DATES = {
         2015: (JUL, 18),
         2016: (JUL, 7),
         2017: (JUN, 26),
-        2018: (JUN, 15),
         2019: (JUN, 3),
         2020: (MAY, 23),
         2021: (MAY, 12),
         2022: (MAY, 1),
-        2023: (APR, 21),
         2024: (APR, 9),
-        2025: (MAR, 30),
     }
 
     # https://web.archive.org/web/20240424165412/https://www.timeanddate.com/holidays/mali/prophet-birthday
+    MAWLID_DATES_CONFIRMED_YEARS = (2015, 2024)
     MAWLID_DATES = {
         2015: ((JAN, 3), (DEC, 24)),
         2016: (DEC, 12),
         2017: (DEC, 1),
         2018: (NOV, 21),
         2019: (NOV, 10),
-        2020: (OCT, 29),
         2021: (OCT, 19),
         2022: (OCT, 9),
         2023: (SEP, 28),

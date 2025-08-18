@@ -164,15 +164,15 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
         if self.observed and self._year >= 2006:
             self._populate_observed(dts_observed.union(dts_bairami))
 
-            bayrami_names = {self.tr("Ramazan bayrami"), self.tr("Qurban bayrami")}
+            bayrami_names = (self.tr("Qurban bayrami"), self.tr("Ramazan bayrami"))
             # 6. If the holidays of Qurban and Ramadan coincide with another holiday
             # that is not considered a working day, the next working day is considered a rest day.
             for dt_observed in sorted(dts_bairami.difference(dts_non_observed)):
                 if len(dt_holidays := self.get_list(dt_observed)) == 1:
                     continue
-                for name in dt_holidays:
-                    if name in bayrami_names:
-                        self._add_observed(dt_observed, name, WORKDAY_TO_NEXT_WORKDAY)
+                for holiday_name in dt_holidays:
+                    if any(bayrami_name in holiday_name for bayrami_name in bayrami_names):
+                        self._add_observed(dt_observed, holiday_name, WORKDAY_TO_NEXT_WORKDAY)
 
     def _populate_workday_holidays(self):
         if self._year >= 2021:
@@ -206,58 +206,25 @@ class AZE(Azerbaijan):
 
 
 class AzerbaijanIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2002, 2025)
     EID_AL_ADHA_DATES = {
         2002: (FEB, 21),
-        2003: (FEB, 11),
-        2004: (FEB, 1),
         2005: (JAN, 22),
-        2006: ((JAN, 10), (DEC, 31)),
-        2007: (DEC, 20),
-        2008: (DEC, 8),
-        2009: (NOV, 27),
-        2010: (NOV, 16),
-        2011: (NOV, 6),
         2012: (OCT, 25),
-        2013: (OCT, 15),
-        2014: (OCT, 4),
         2015: (SEP, 24),
         2016: (SEP, 12),
-        2017: (SEP, 1),
         2018: (AUG, 22),
         2019: (AUG, 12),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
-        2025: (JUN, 6),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2002, 2025)
     EID_AL_FITR_DATES = {
         2002: (DEC, 4),
-        2003: (NOV, 25),
-        2004: (NOV, 14),
-        2005: (NOV, 3),
-        2006: (OCT, 23),
         2007: (OCT, 12),
         2008: (SEP, 30),
-        2009: (SEP, 20),
         2010: (SEP, 9),
-        2011: (AUG, 30),
-        2012: (AUG, 19),
-        2013: (AUG, 8),
-        2014: (JUL, 28),
-        2015: (JUL, 17),
-        2016: (JUL, 6),
         2017: (JUN, 26),
-        2018: (JUN, 15),
         2019: (JUN, 5),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
-        2025: (MAR, 30),
     }
 
 

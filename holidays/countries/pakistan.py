@@ -107,48 +107,32 @@ class PAK(Pakistan):
 
 class PakistanIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20250724060822/https://www.timeanddate.com/holidays/pakistan/ashura
+    ASHURA_DATES_CONFIRMED_YEARS = (2005, 2025)
     ASHURA_DATES = {
         2005: (FEB, 18),
         2006: (FEB, 8),
         2007: (JAN, 28),
         2008: (JAN, 18),
         2009: ((JAN, 6), (DEC, 26)),
-        2010: (DEC, 16),
-        2011: (DEC, 5),
         2012: (NOV, 23),
-        2013: (NOV, 13),
-        2014: (NOV, 3),
-        2015: (OCT, 23),
-        2016: (OCT, 11),
-        2017: (SEP, 30),
         2018: (SEP, 21),
-        2019: (SEP, 9),
-        2020: (AUG, 29),
-        2021: (AUG, 18),
         2022: (AUG, 9),
-        2023: (JUL, 28),
-        2024: (JUL, 16),
         2025: (JUL, 6),
     }
 
     # https://web.archive.org/web/20250724060629/https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2005, 2025)
     EID_AL_ADHA_DATES = {
-        2005: (JAN, 21),
-        2006: ((JAN, 10), (DEC, 31)),
-        2007: (DEC, 20),
         2008: (DEC, 9),
         2009: (NOV, 28),
         2010: (NOV, 17),
         2011: (NOV, 7),
-        2012: (OCT, 26),
-        2013: (OCT, 15),
         2014: (OCT, 6),
         2015: (SEP, 24),
         2016: (SEP, 12),
         2017: (SEP, 2),
         2018: (AUG, 22),
         2019: (AUG, 12),
-        2020: (JUL, 31),
         2021: (JUL, 21),
         2022: (JUL, 10),
         2023: (JUN, 29),
@@ -157,41 +141,32 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
     }
 
     # https://web.archive.org/web/20250724060834/https://www.timeanddate.com/holidays/pakistan/eid-ul-fitr-1
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2005, 2025)
     EID_AL_FITR_DATES = {
         2005: (NOV, 4),
         2006: (OCT, 24),
-        2007: (OCT, 13),
         2008: (OCT, 2),
         2009: (SEP, 21),
-        2010: (SEP, 10),
         2011: (AUG, 31),
-        2012: (AUG, 19),
-        2013: (AUG, 8),
         2014: (JUL, 29),
-        2015: (JUL, 17),
-        2016: (JUL, 6),
         2017: (JUN, 26),
         2018: (JUN, 16),
         2019: (JUN, 5),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
         2022: (MAY, 3),
         2023: (APR, 22),
-        2024: (APR, 10),
         2025: (MAR, 31),
     }
 
     # https://web.archive.org/web/20250724061027/https://www.timeanddate.com/holidays/pakistan/eid-milad-un-nabi
+
+    MAWLID_DATES_CONFIRMED_YEARS = (2005, 2024)
     MAWLID_DATES = {
         2005: (APR, 22),
         2006: (APR, 11),
-        2007: (MAR, 31),
         2008: (MAR, 21),
-        2009: (MAR, 9),
         2010: (MAR, 1),
         2011: (FEB, 17),
         2012: (FEB, 5),
-        2013: (JAN, 24),
         2014: (JAN, 14),
         2015: (JAN, 4),
         2016: (DEC, 12),

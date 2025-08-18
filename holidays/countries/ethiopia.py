@@ -10,12 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from calendar import isleap
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
-from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.calendars.ethiopian import ETHIOPIAN_CALENDAR, is_ethiopian_leap_year
+from holidays.calendars.gregorian import AUG, SEP, NOV
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
@@ -30,7 +29,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         * <https://web.archive.org/web/20250427173714/https://www.edarabia.com/ethiopia/public-holidays/>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Ethiopia>
         * <https://en.wikipedia.org/wiki/Nations,_Nationalities_and_Peoples'_Day>
-        * <https://web.archive.org/web/20250408213218/https://www.timeanddate.com/holidays/ethiopia/>
+        * <https://web.archive.org/web/20250811041201/https://www.timeanddate.com/holidays/ethiopia/2025>
     """
 
     country = "ET"
@@ -42,22 +41,6 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
     supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("am", "ar", "en_ET", "en_US")
 
-    def _is_leap_year(self) -> bool:
-        """Determine if the Ethiopian calendar year is a leap year.
-
-        Ethiopian leap years generally align with Gregorian leap years until
-        February 2100. However, the Ethiopian calendar starts earlier (on September 11),
-        which affects holidays between September 11 and January 1.
-
-        To account for this shift, the method checks whether next year is a leap year
-        in the Gregorian calendar.
-
-        Returns:
-            `True` if the Ethiopian year is a leap year, `False` otherwise.
-        """
-
-        return isleap(self._year + 1)
-
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
@@ -65,7 +48,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
         """
-        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        ChristianHolidays.__init__(self, ETHIOPIAN_CALENDAR)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
             self, cls=EthiopiaIslamicHolidays, show_estimated=islamic_show_estimated
@@ -77,7 +60,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         self._add_christmas_day(tr("የገና ወይም የልደት በዓል"))
 
         # Epiphany.
-        self._add_holiday(tr("የጥምቀት በዓል"), JAN, 20 if super()._is_leap_year() else 19)
+        self._add_epiphany_day(tr("የጥምቀት በዓል"))
 
         if self._year >= 1996:
             # Adwa Victory Day.
@@ -100,14 +83,19 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
             self._add_holiday_may_28(tr("ደርግ የወደቀበት ቀን"))
 
         # Ethiopian New Year.
-        self._add_holiday(tr("የዘመን መለወጫ (እንቁጣጣሽ) በዓል"), SEP, 12 if self._is_leap_year() else 11)
+        self._add_ethiopian_new_year(tr("የዘመን መለወጫ (እንቁጣጣሽ) በዓል"))
 
         # Finding of True Cross.
-        self._add_holiday(tr("የመስቀል በዓል"), SEP, 28 if self._is_leap_year() else 27)
+        self._add_finding_of_true_cross(tr("የመስቀል በዓል"))
 
         if self._year <= 1990:
-            # Popular Revolution Commemoration Day.
-            self._add_holiday(tr("የአብዮት ቀን"), SEP, 13 if self._is_leap_year() else 12)
+            # Julian Date Drift shouldn't affect this one.
+            self._add_holiday(
+                # Popular Revolution Commemoration Day.
+                tr("የአብዮት ቀን"),
+                SEP,
+                13 if is_ethiopian_leap_year(self._year) else 12,
+            )
 
             # October Revolution Day.
             self._add_holiday_nov_7(tr("የጥቅምት አብዮት ቀን"))
@@ -139,33 +127,16 @@ class ETH(Ethiopia):
 
 
 class EthiopiaIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2018, 2025)
     EID_AL_ADHA_DATES = {
         2018: (AUG, 22),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
     }
 
-    EID_AL_FITR_DATES = {
-        2018: (JUN, 15),
-        2019: (JUN, 4),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
-        2025: (MAR, 30),
-    }
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2018, 2025)
 
+    MAWLID_DATES_CONFIRMED_YEARS = (2018, 2025)
     MAWLID_DATES = {
         2018: (NOV, 21),
         2019: (NOV, 10),
-        2020: (OCT, 29),
-        2021: (OCT, 18),
-        2022: (OCT, 8),
-        2023: (SEP, 27),
-        2024: (SEP, 15),
+        2025: (SEP, 5),
     }

@@ -174,32 +174,26 @@ class KenyaHinduHolidays(_CustomHinduHolidays):
 
 
 class KenyaIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2014, 2024)
     EID_AL_ADHA_DATES = {
         2014: (OCT, 6),
         2015: (SEP, 24),
         2016: (SEP, 12),
-        2017: (SEP, 1),
-        2018: (AUG, 21),
         2019: (AUG, 12),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
         2022: (JUL, 11),
-        2023: (JUN, 28),
         2024: (JUN, 17),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2014, 2024)
     EID_AL_FITR_DATES = {
         2014: (JUL, 29),
         2015: (JUL, 18),
         2016: (JUL, 7),
         2017: (JUN, 26),
-        2018: (JUN, 15),
         2019: (JUN, 5),
         2020: (MAY, 25),
         2021: (MAY, 14),
         2022: (MAY, 3),
-        2023: (APR, 21),
-        2024: (APR, 10),
     }
 
 
