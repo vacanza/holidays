@@ -55,6 +55,11 @@ repos:
           - types-python-dateutil
           - types-requests
 
+  - repo: https://github.com/tox-dev/pyproject-fmt
+    rev: v2.6.0
+    hooks:
+      - id: pyproject-fmt
+
   - repo: https://github.com/tox-dev/tox-ini-fmt
     rev: '1.6.0'
     hooks:
