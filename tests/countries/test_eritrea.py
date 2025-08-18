@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import GOVERNMENT
 from holidays.countries.eritrea import Eritrea, ER, ERI
 from tests.common import CommonCountryTests
 
@@ -21,6 +22,7 @@ class TestEritrea(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1994, 2050)
         super().setUpClass(Eritrea, years=years)
+        cls.government_holidays = Eritrea(categories=GOVERNMENT, years=years)
         cls.no_estimated_holidays = Eritrea(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
@@ -70,7 +72,11 @@ class TestEritrea(CommonCountryTests, TestCase):
         )
 
     def test_fenkil_day(self):
-        self.assertHolidayName("Fenkil Day", (f"{year}-02-10" for year in range(1994, 2050)))
+        name = "Fenkil Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.government_holidays, (f"{year}-02-10" for year in range(1994, 2050))
+        )
 
     def test_womens_day(self):
         self.assertHolidayName("Women's Day", (f"{year}-03-08" for year in range(1994, 2050)))

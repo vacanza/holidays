@@ -599,7 +599,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>ER</td>
 <td></td>
 <td></td>
-<td></td>
+<td>GOVERNMENT</td>
 </tr>
 <tr>
 <td>Estonia</td>
