@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.ethiopian import ETHIOPIAN_CALENDAR
+from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -31,6 +32,7 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
     estimated_label = "%s (estimated)"
     # On 28 May 1993, Eritrea was admitted into the United Nations as the 182nd member state.
     start_year = 1994
+    supported_categories = (GOVERNMENT, PUBLIC)
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -53,9 +55,6 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
 
         # Epiphany.
         self._add_epiphany_day("Timket")
-
-        # Fenkil Day.
-        self._add_holiday_feb_10("Fenkil Day")
 
         # Women's Day.
         self._add_womens_day("Women's Day")
@@ -92,6 +91,10 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
 
         # Eid al-Adha.
         self._add_eid_al_adha_day("Eid al-Adha")
+
+    def _populate_government_holidays(self):
+        # Fenkil Day.
+        self._add_holiday_feb_10("Fenkil Day")
 
 
 class ER(Eritrea):
