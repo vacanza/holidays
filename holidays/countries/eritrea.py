@@ -84,9 +84,6 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         # Finding of the True Cross.
         self._add_finding_of_true_cross("Meskel")
 
-        # Islamic New Year.
-        self._add_islamic_new_year_day("Muharram")
-
         # Prophet's Birthday.
         self._add_mawlid_day("Mawlid an-Nabi")
 
