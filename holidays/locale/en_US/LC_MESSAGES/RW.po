@@ -53,9 +53,9 @@ msgstr "Day after New Year's Day"
 msgid "Umunsi w'Intwari"
 msgstr "National Heroes' Day"
 
-#. Genocide perpetrated against the Tutsi Memorial Day.
-msgid "Umunsi wo Kwibuka Jenoside yakorewe Abatutsi"
-msgstr "Genocide perpetrated against the Tutsi Memorial Day"
+#. Memorial Day of Genocide perpetrated against the Tutsi in 1994.
+msgid "Umunsi wo Kwibuka Jenoside yakorewe Abatutsi mu 1994"
+msgstr "Memorial Day of Genocide perpetrated against the Tutsi in 1994"
 
 #. Good Friday.
 msgid "Umunsi wa Gatanu Mutagatifu"

@@ -44,12 +44,6 @@ class TestRwanda(CommonCountryTests, TestCase):
         name = "Umunsi ukurikira Ubunani"
         self.assertHolidayName(name, (f"{year}-01-02" for year in range(2016, 2050)))
         self.assertNoHolidayName(name, range(2012, 2016))
-        dt = (
-            "2021-01-04",
-            "2022-01-04",
-        )
-        self.assertHolidayName(f"{name} (yizihijwe)", dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_national_heroes_day(self):
         name = "Umunsi w'Intwari"
@@ -63,7 +57,7 @@ class TestRwanda(CommonCountryTests, TestCase):
 
     def test_genocide_memorial_day(self):
         self.assertHolidayName(
-            "Umunsi wo Kwibuka Jenoside yakorewe Abatutsi",
+            "Umunsi wo Kwibuka Jenoside yakorewe Abatutsi mu 1994",
             (f"{year}-04-07" for year in range(2012, 2050)),
         )
 
@@ -111,27 +105,24 @@ class TestRwanda(CommonCountryTests, TestCase):
             "2022-05-02",
             "2023-04-21",
             "2024-04-10",
-            "2025-03-30",
+            "2025-03-31",
         )
-        self.assertHolidayName(f"{name} (yagereranijwe)", dt)
-        self.assertHolidayName(
-            name, Rwanda(years=range(2012, 2050), islamic_show_estimated=False), range(2012, 2050)
-        )
+        self.assertHolidayName(f"{name}", dt)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
 
     def test_eid_al_adha(self):
         name = "Eid al-Adha"
         dt = (
             "2020-07-31",
             "2021-07-20",
-            "2022-07-09",
+            "2022-07-11",
             "2023-06-28",
             "2024-06-16",
             "2025-06-06",
         )
-        self.assertHolidayName(f"{name} (yagereranijwe)", dt)
-        self.assertHolidayName(
-            name, Rwanda(years=range(2015, 2050), islamic_show_estimated=False), range(2015, 2050)
-        )
+        self.assertHolidayName(f"{name}", dt)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2015, 2050))
+
         self.assertNoHolidayName(name, range(2012, 2015))
 
     def test_independence_day(self):
@@ -188,12 +179,6 @@ class TestRwanda(CommonCountryTests, TestCase):
     def test_boxing_day(self):
         name = "Umunsi ukurikira Noheli"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(2012, 2050)))
-        dt = (
-            "2020-12-28",
-            "2021-12-28",
-        )
-        self.assertHolidayName(f"{name} (yizihijwe)", dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -202,11 +187,11 @@ class TestRwanda(CommonCountryTests, TestCase):
             ("2024-02-01", "Umunsi w'Intwari"),
             ("2024-03-29", "Umunsi wa Gatanu Mutagatifu"),
             ("2024-04-01", "Ku wa mbere wa Pasika"),
-            ("2024-04-07", "Umunsi wo Kwibuka Jenoside yakorewe Abatutsi"),
-            ("2024-04-10", "Eid El Fitr (yagereranijwe)"),
+            ("2024-04-07", "Umunsi wo Kwibuka Jenoside yakorewe Abatutsi mu 1994"),
+            ("2024-04-10", "Eid El Fitr"),
             ("2024-05-01", "Umunsi Mukuru w'Umurimo"),
-            ("2024-06-16", "Eid al-Adha (yagereranijwe)"),
-            ("2024-06-17", "Eid al-Adha (yizihijwe, yagereranijwe)"),
+            ("2024-06-16", "Eid al-Adha"),
+            ("2024-06-17", "Eid al-Adha (yizihijwe)"),
             ("2024-07-01", "Umunsi w'Ubwigenge"),
             ("2024-07-04", "Umunsi wo Kwibohora"),
             ("2024-08-02", "Umunsi w'Umuganura"),
@@ -223,11 +208,11 @@ class TestRwanda(CommonCountryTests, TestCase):
             ("2024-02-01", "National Heroes' Day"),
             ("2024-03-29", "Good Friday"),
             ("2024-04-01", "Easter Monday"),
-            ("2024-04-07", "Genocide perpetrated against the Tutsi Memorial Day"),
-            ("2024-04-10", "Eid al-Fitr (estimated)"),
+            ("2024-04-07", "Memorial Day of Genocide perpetrated against the Tutsi in 1994"),
+            ("2024-04-10", "Eid al-Fitr"),
             ("2024-05-01", "Labour Day"),
-            ("2024-06-16", "Eid al-Adha (estimated)"),
-            ("2024-06-17", "Eid al-Adha (observed, estimated)"),
+            ("2024-06-16", "Eid al-Adha"),
+            ("2024-06-17", "Eid al-Adha (observed)"),
             ("2024-07-01", "Independence Day"),
             ("2024-07-04", "Liberation Day"),
             ("2024-08-02", "Umuganura Day"),
@@ -244,11 +229,11 @@ class TestRwanda(CommonCountryTests, TestCase):
             ("2024-02-01", "Journée Nationale des Héros"),
             ("2024-03-29", "Vendredi Saint"),
             ("2024-04-01", "Lundi de Pâques"),
-            ("2024-04-07", "Journée commémorative du Génocide perpétré contre les Tutsi"),
-            ("2024-04-10", "Aïd el-Fitr (estimé)"),
+            ("2024-04-07", "Journée commémorative du Génocide perpétré contre les Tutsi en 1994"),
+            ("2024-04-10", "Aïd el-Fitr"),
             ("2024-05-01", "Journée du Travail"),
-            ("2024-06-16", "Aïd al-Adha (estimé)"),
-            ("2024-06-17", "Aïd al-Adha (observé, estimé)"),
+            ("2024-06-16", "Aïd al-Adha"),
+            ("2024-06-17", "Aïd al-Adha (observé)"),
             ("2024-07-01", "Journée de l'Indépendance"),
             ("2024-07-04", "Journée de la Libération"),
             ("2024-08-02", "Journée d'Umuganura"),

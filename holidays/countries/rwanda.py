@@ -12,19 +12,21 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
 class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """Rwanda holidays.
+
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Rwanda>
         * [Presidential Order N° 06/01 of 16/02/2011](https://web.archive.org/web/20250601161219/https://archive.gazettes.africa/archive/rw/2011/rw-government-gazette-dated-2011-03-07-no-10.pdf)
         * [Presidential Order N° 42/03 of 30/06/2015](https://web.archive.org/web/20180417062635/http://www.igihe.com/IMG/pdf/iteka_rya_perezida_rigena_iminsi_y_ikiruhuko_rusange.pdf)
         * [Presidential Order N° 54/01 of 24/02/2017](https://web.archive.org/web/20220626143357/https://www.ngoma.gov.rw/index.php?eID=dumpFile&t=f&f=44336&token=fc82c76109af7950f8895d40ddd3e15bd8c57e8c)
         * [Presidential Order N° 62/01 of 19/10/2022](https://web.archive.org/web/20250815032533/https://mifotra.prod.risa.rw/index.php?eID=dumpFile&t=f&f=85230&token=bcf0bf166638c11f4bf3d2f8c629052db26d38b6)
-        * <https://web.archive.org/web/20250815031138/https://www.timeanddate.com/holidays/rwanda/2025>
     """
 
     country = "RW"
@@ -42,7 +44,9 @@ class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
+        IslamicHolidays.__init__(
+            self, cls=RwandaIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         kwargs.setdefault("observed_since", 2017)
         super().__init__(*args, **kwargs)
@@ -58,16 +62,13 @@ class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
         # Added via Presidential Order N° 42/03 of 30/06/2015.
         if self._year >= 2016:
             # Day after New Year's Day.
-            dt = self._add_holiday_jan_2(tr("Umunsi ukurikira Ubunani"))
-
-            if self._year >= 2018:
-                dts_observed.add(dt)
+            self._add_new_years_day_two(tr("Umunsi ukurikira Ubunani"))
 
         # National Heroes' Day.
         dts_observed.add(self._add_holiday_feb_1(tr("Umunsi w'Intwari")))
 
-        # Genocide perpetrated against the Tutsi Memorial Day.
-        self._add_holiday_apr_7(tr("Umunsi wo Kwibuka Jenoside yakorewe Abatutsi"))
+        # Memorial Day of Genocide perpetrated against the Tutsi in 1994.
+        self._add_holiday_apr_7(tr("Umunsi wo Kwibuka Jenoside yakorewe Abatutsi mu 1994"))
 
         # Good Friday.
         self._add_good_friday(tr("Umunsi wa Gatanu Mutagatifu"))
@@ -98,7 +99,7 @@ class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
         dts_observed.add(self._add_christmas_day(tr("Noheli")))
 
         # Boxing Day.
-        dts_observed.add(self._add_christmas_day_two(tr("Umunsi ukurikira Noheli")))
+        self._add_christmas_day_two(tr("Umunsi ukurikira Noheli"))
 
         # Eid al-Fitr.
         dts_observed.update(self._add_eid_al_fitr_day(tr("Eid El Fitr")))
@@ -118,3 +119,35 @@ class RW(Rwanda):
 
 class RWA(Rwanda):
     pass
+
+
+class RwandaIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2018, 2025)
+    EID_AL_ADHA_DATES = {
+        2018: (AUG, 22),
+        2019: (AUG, 12),
+        2020: (JUL, 31),
+        2021: (JUL, 20),
+        2022: (JUL, 11),
+        2023: (JUN, 28),
+        2024: (JUN, 16),
+        2025: (JUN, 6),
+    }
+
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2012, 2025)
+    EID_AL_FITR_DATES = {
+        2012: (AUG, 19),
+        2013: (AUG, 8),
+        2014: (JUL, 29),
+        2015: (JUL, 18),
+        2016: (JUL, 7),
+        2017: (JUN, 26),
+        2018: (JUN, 15),
+        2019: (JUN, 4),
+        2020: (MAY, 24),
+        2021: (MAY, 13),
+        2022: (MAY, 2),
+        2023: (APR, 21),
+        2024: (APR, 10),
+        2025: (MAR, 31),
+    }
