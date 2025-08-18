@@ -242,6 +242,7 @@ from holidays.countries.south_georgia_and_the_south_sandwich_islands import (
 from holidays.countries.south_korea import SouthKorea, KR, KOR, Korea
 from holidays.countries.spain import Spain, ES, ESP
 from holidays.countries.sri_lanka import SriLanka, LK, LKA
+from holidays.countries.sudan import Sudan, SD, SDN
 from holidays.countries.suriname import Suriname, SR, SUR
 from holidays.countries.svalbard_and_jan_mayen import SvalbardAndJanMayen, SJ, SJM, HolidaysSJ
 from holidays.countries.sweden import Sweden, SE, SWE
