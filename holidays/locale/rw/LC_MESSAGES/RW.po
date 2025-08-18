@@ -53,8 +53,8 @@ msgstr ""
 msgid "Umunsi w'Intwari"
 msgstr ""
 
-#. Genocide perpetrated against the Tutsi Memorial Day.
-msgid "Umunsi wo Kwibuka Jenoside yakorewe Abatutsi"
+#. Memorial Day of Genocide perpetrated against the Tutsi in 1994.
+msgid "Umunsi wo Kwibuka Jenoside yakorewe Abatutsi mu 1994"
 msgstr ""
 
 #. Good Friday.
