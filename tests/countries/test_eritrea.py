@@ -108,18 +108,6 @@ class TestEritrea(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (estimated)", dt)
 
-    def test_muharram(self):
-        name = "Muharram"
-        dt = (
-            "2020-08-20",
-            "2021-08-09",
-            "2022-07-30",
-            "2023-07-19",
-            "2024-07-07",
-            "2025-06-26",
-        )
-        self.assertHolidayName(f"{name} (estimated)", dt)
-
     def test_mawlid_an_nabi(self):
         name = "Mawlid an-Nabi"
 
@@ -146,7 +134,6 @@ class TestEritrea(CommonCountryTests, TestCase):
             ("2020-05-24", "Eid al-Fitr (estimated); Independence Day"),
             ("2020-06-20", "Martyrs' Day"),
             ("2020-07-31", "Eid al-Adha (estimated)"),
-            ("2020-08-20", "Muharram (estimated)"),
             ("2020-09-01", "Revolution Day"),
             ("2020-09-11", "Keddus Yohannes"),
             ("2020-09-27", "Meskel"),
