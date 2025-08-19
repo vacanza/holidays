@@ -46,6 +46,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         * <https://web.archive.org/web/20250428154427/https://recherche-collection-search.bac-lac.gc.ca/eng/home/record?idnumber=9326&app=diawlmking&ecopy=80003QJW>
         * <https://web.archive.org/web/20240915001506/https://www.britannica.com/topic/Victoria-Day>
         * [NT National Aboriginal Day](https://web.archive.org/web/20160623071755/http://www.daair.gov.nt.ca/_live/pages/wpPages/National_Aboriginal_Day.aspx)
+        * [MB National Day for Truth and Reconciliation](https://web.archive.org/web/20240714223654/https://web2.gov.mb.ca/bills/43-1/b004e.php)
     """
 
     country = "CA"
@@ -276,6 +277,10 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             self._add_holiday_3rd_mon_of_feb(tr("Louis Riel Day"))
 
         self._add_victoria_day()
+
+        if self._year >= 2024:
+            # National Day for Truth and Reconciliation.
+            self._add_holiday_sep_30(tr("National Day for Truth and Reconciliation"))
 
         self._add_thanksgiving_day()
 

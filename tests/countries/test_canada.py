@@ -270,29 +270,29 @@ class TestCanada(CommonCountryTests, TestCase):
         self.assertHolidayName(name_observed, self.government_holidays, dts)
         self.assertNoNonObservedHoliday(self.government_holidays_non_observed, dts)
 
-        start_years = {
-            "AB": 2021,
+        subdiv_start_years = {
             "BC": 2023,
+            "MB": 2024,
             "NT": 2022,
             "NU": 2022,
             "PE": 2022,
             "YT": 2023,
         }
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv in {"BC", "NT", "NU", "PE", "YT"}:
+            if start_year := subdiv_start_years.get(subdiv):
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-09-30" for year in range(start_years[subdiv], 2050))
+                    name, holidays, (f"{year}-09-30" for year in range(start_year, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1867, start_years[subdiv]))
+                self.assertNoHolidayName(name, holidays, range(1867, start_year))
             else:
                 self.assertNoHolidayName(name, holidays)
             self.assertNoNonObservedHoliday(self.subdiv_holidays_non_observed[subdiv], dts)
 
+        ab_optional_holidays = self.subdiv_optional_holidays["AB"]
         self.assertHolidayName(
-            name,
-            self.subdiv_optional_holidays["AB"],
-            (f"{year}-09-30" for year in range(2021, 2050)),
+            name, ab_optional_holidays, (f"{year}-09-30" for year in range(2021, 2050))
         )
+        self.assertNoHolidayName(name, ab_optional_holidays, range(1867, 2021))
 
     def test_thanksgiving_day(self):
         name_1921 = "Armistice Day"
