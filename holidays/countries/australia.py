@@ -508,7 +508,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             self._add_holiday_1st_wed_from_aug_10(name)
 
         # Boxing Day.
-        # 1984-1910: SUN - to MON, MON - to TUE.
+        # 1984-2010: SUN - to MON, MON - to TUE.
         # from 2011: SAT - add MON, SUN - add TUE.
         # (Placed before Christmas Day for proper observed calculation).
 
