@@ -314,7 +314,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # ANZAC Day.
             dt = self._add_anzac_day(tr("ANZAC Day"))
             if self._year <= 2010:
-                self._add_observed(dt)
+                self._add_observed(dt, rule=SUN_TO_NEXT_MON)
 
         # Labor Day.
         self._add_holiday_1st_mon_of_oct(tr("Labour Day"))
@@ -556,7 +556,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         if self._year >= 1935:
             # Australia Day.
-            dt = self._add_holiday_jan_26(tr("Australia Day"))
+            dt = self._add_holiday_jan_26(self.australia_day)
             if 1994 <= self._year <= 2003 or self._year >= 2024:
                 self._move_holiday(dt, show_observed_label=False)
             elif self._year >= 2004:
