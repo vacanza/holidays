@@ -279,8 +279,10 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         self._add_victoria_day()
 
         if self._year >= 2024:
-            # National Day for Truth and Reconciliation.
-            self._add_holiday_sep_30(tr("National Day for Truth and Reconciliation"))
+            self._add_observed(
+                # National Day for Truth and Reconciliation.
+                self._add_holiday_sep_30(tr("National Day for Truth and Reconciliation"))
+            )
 
         self._add_thanksgiving_day()
 
