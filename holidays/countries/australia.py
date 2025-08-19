@@ -18,10 +18,12 @@ from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHoli
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_TO_NEXT_TUE,
+    SAT_TO_NEXT_MON,
     SUN_TO_NEXT_MON,
     SUN_TO_NEXT_TUE,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
+    ALL_TO_NEXT_MON,
 )
 
 
@@ -151,17 +153,15 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # from 2015: SAT, SUN - add MON.
 
         # New Year's Day.
-        name = tr("New Year's Day")
+        dt = self._add_new_years_day(tr("New Year's Day"))
         if self._year >= 2015:
-            self._add_observed(self._add_new_years_day(name))
+            self._add_observed(dt)
         elif self._year >= 1959:
-            jan_1 = (JAN, 1)
-            if self._is_sunday(jan_1) or (self._year >= 1993 and self._is_saturday(jan_1)):
-                self._add_holiday_1st_mon_from_jan_1(name)
-            else:
-                self._add_new_years_day(name)
-        else:
-            self._add_new_years_day(name)
+            self._move_holiday(
+                dt,
+                rule=SAT_SUN_TO_NEXT_MON if self._year >= 1993 else SUN_TO_NEXT_MON,
+                show_observed_label=False,
+            )
 
         # Australia Day.
         # 1959-1989: not MON - move to MON.
@@ -169,10 +169,13 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Australia Day.
         if self._year >= 1888:
-            if 1959 <= self._year <= 1989 or (self._year >= 1990 and self._is_weekend(JAN, 26)):
-                self._add_holiday_1st_mon_from_jan_26(self.australia_day)
-            else:
-                self._add_holiday_jan_26(self.australia_day)
+            dt = self._add_holiday_jan_26(self.australia_day)
+            if self._year >= 1959:
+                self._move_holiday(
+                    dt,
+                    rule=SAT_SUN_TO_NEXT_MON if self._year >= 1990 else ALL_TO_NEXT_MON,
+                    show_observed_label=False,
+                )
 
         if self._year >= 1913:
             # Canberra Day.
@@ -184,23 +187,21 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             else:
                 self._add_holiday_2nd_mon_of_mar(name)
 
+        # ANZAC Day.
+        # from 1959: SUN - move to MON.
+
+        if self._year >= 1921:
+            # ANZAC Day.
+            dt = self._add_anzac_day(tr("ANZAC Day"))
+            if self._year >= 1959:
+                self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
+
         # Easter Saturday.
         self._add_holy_saturday(tr("Easter Saturday"))
 
         if self._year >= 2016:
             # Easter Sunday.
             self._add_easter_sunday(tr("Easter Sunday"))
-
-        # ANZAC Day.
-        # from 1959: SUN - move to MON.
-
-        if self._year >= 1921:
-            # ANZAC Day.
-            name = tr("ANZAC Day")
-            if self._year >= 1959 and self._is_sunday(APR, 25):
-                self._add_holiday_1st_mon_from_apr_25(name)
-            else:
-                self._add_anzac_day(name)
 
         if self._year >= 2018:
             # Reconciliation Day.
@@ -231,51 +232,40 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # Labor Day.
         self._add_holiday_1st_mon_of_oct(tr("Labour Day"))
 
+        # Boxing Day.
+        # 1958-1991: SUN - to MON, MON - to TUE.
+        # 1992-2013: SAT - to MON, SUN - to TUE, MON - to TUE.
+        # from 2014: SAT - add MON, SUN - add TUE.
+        # (Placed before Christmas Day for proper observed calculation).
+
+        # Boxing Day.
+        dt = self._add_christmas_day_two(tr("Boxing Day"))
+        if self._year >= 2014:
+            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
+        elif self._year >= 1958:
+            self._move_holiday(
+                dt,
+                rule=(SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE)
+                if self._year >= 1992
+                else (SUN_TO_NEXT_MON + MON_TO_NEXT_TUE),
+                show_observed_label=False,
+            )
+
         # Christmas Day.
         # 1958-1991: SUN - to MON.
         # 1992-2013: SAT, SUN - to MON.
         # from 2014: SAT - add MON, SUN - add TUE.
 
         # Christmas Day.
-        name = tr("Christmas Day")
+        dt = self._add_christmas_day(tr("Christmas Day"))
         if self._year >= 2014:
-            self._add_observed(self._add_christmas_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
+            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
         elif self._year >= 1958:
-            dec_25 = (DEC, 25)
-            if self._is_sunday(dec_25) or (self._year >= 1992 and self._is_saturday(dec_25)):
-                self._add_holiday_1st_mon_from_dec_25(name)
-            else:
-                self._add_christmas_day(name)
-        else:
-            self._add_christmas_day(name)
-
-        # Boxing Day.
-        # 1958-1991: SUN - to MON, MON - to TUE.
-        # 1992-2013: SAT - to MON, SUN - to TUE, MON - to TUE.
-        # from 2014: SAT - add MON, SUN - add TUE.
-
-        # Boxing Day.
-        name = tr("Boxing Day")
-        if self._year >= 2014:
-            self._add_observed(self._add_christmas_day_two(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
-        elif self._year >= 1958:
-            dec_26 = (DEC, 26)
-            if self._year >= 1992:
-                if self._is_saturday(dec_26):
-                    self._add_holiday_1st_mon_from_dec_26(name)
-                elif self._is_sunday(dec_26) or self._is_monday(dec_26):
-                    self._add_holiday_1st_tue_from_dec_26(name)
-                else:
-                    self._add_christmas_day_two(name)
-            else:
-                if self._is_sunday(dec_26):
-                    self._add_holiday_1st_mon_from_dec_26(name)
-                elif self._is_monday(dec_26):
-                    self._add_holiday_1st_tue_from_dec_26(name)
-                else:
-                    self._add_christmas_day_two(name)
-        else:
-            self._add_christmas_day_two(name)
+            self._move_holiday(
+                dt,
+                rule=SAT_SUN_TO_NEXT_MON if self._year >= 1992 else SUN_TO_NEXT_MON,
+                show_observed_label=False,
+            )
 
     def _populate_subdiv_act_bank_holidays(self):
         # Bank Holiday.
@@ -297,7 +287,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # from 2011: SAT, SUN - to MON.
 
         if self._year >= 1888:
-            name = (
+            dt = self._add_holiday_jan_26(
                 # Australia Day.
                 tr("Australia Day")
                 if self._year >= 1946
@@ -305,12 +295,9 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
                 else tr("Anniversary Day")
             )
             if self._year >= 2011:
-                if self._is_weekend(JAN, 26):
-                    self._add_holiday_1st_mon_from_jan_26(name)
-                else:
-                    self._add_holiday_jan_26(name)
+                self._move_holiday(dt, show_observed_label=False)
             else:
-                self._add_observed(self._add_holiday_jan_26(name), rule=SUN_TO_NEXT_MON)
+                self._add_observed(dt, rule=SUN_TO_NEXT_MON)
 
         # Easter Saturday.
         self._add_holy_saturday(tr("Easter Saturday"))
@@ -325,9 +312,9 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         if self._year >= 1921:
             # ANZAC Day.
-            apr_25 = self._add_anzac_day(tr("ANZAC Day"))
+            dt = self._add_anzac_day(tr("ANZAC Day"))
             if self._year <= 2010:
-                self._add_observed(apr_25)
+                self._add_observed(dt, rule=SUN_TO_NEXT_MON)
 
         # Labor Day.
         self._add_holiday_1st_mon_of_oct(tr("Labour Day"))
@@ -371,23 +358,29 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # from 2017: SAT, SUN - add MON.
 
         # New Year's Day.
-        name = tr("New Year's Day")
+        dt = self._add_new_years_day(tr("New Year's Day"))
         if self._year >= 2017:
-            self._add_observed(self._add_new_years_day(name))
-        elif self._year >= 1982 and self._is_weekend(JAN, 1):
-            self._add_holiday_1st_mon_from_jan_1(name)
-        else:
-            self._add_new_years_day(name)
+            self._add_observed(dt)
+        elif self._year >= 1982:
+            self._move_holiday(dt, show_observed_label=False)
 
         # Australia Day.
         # from 1982: SAT, SUN - move to MON.
 
         # Australia Day.
         if self._year >= 1888:
-            if self._year >= 1982 and self._is_weekend(JAN, 26):
-                self._add_holiday_1st_mon_from_jan_26(self.australia_day)
-            else:
-                self._add_holiday_jan_26(self.australia_day)
+            dt = self._add_holiday_jan_26(self.australia_day)
+            if self._year >= 1982:
+                self._move_holiday(dt, show_observed_label=False)
+
+        # ANZAC Day.
+        # from 1982: SUN - to MON.
+
+        if self._year >= 1921:
+            # ANZAC Day.
+            dt = self._add_anzac_day(tr("ANZAC Day"))
+            if self._year >= 1982:
+                self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
 
         # Easter Saturday.
         self._add_holy_saturday(tr("Easter Saturday"))
@@ -395,17 +388,6 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2024:
             # Easter Sunday.
             self._add_easter_sunday(tr("Easter Sunday"))
-
-        # ANZAC Day.
-        # from 1982: SUN - to MON.
-
-        if self._year >= 1921:
-            # ANZAC Day.
-            name = tr("ANZAC Day")
-            if self._year >= 1982 and self._is_sunday(APR, 25):
-                self._add_holiday_1st_mon_from_apr_25(name)
-            else:
-                self._add_anzac_day(name)
 
         # May Day.
         self._add_holiday_1st_mon_of_may(tr("May Day"))
@@ -417,39 +399,30 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # Picnic Day.
         self._add_holiday_1st_mon_of_aug(tr("Picnic Day"))
 
+        # Boxing Day.
+        # 1981-2022: SAT - to MON, SUN - to TUE, MON - to TUE.
+        # from 2023: SAT - add MON, SUN - add TUE, MON - add TUE.
+        # (Placed before Christmas Day for proper observed calculation).
+
+        # Boxing Day.
+        dt = self._add_christmas_day_two(tr("Boxing Day"))
+        if self._year >= 2023:
+            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE)
+        elif self._year >= 1981:
+            self._move_holiday(
+                dt, rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE, show_observed_label=False
+            )
+
         # Christmas Day.
         # 1981-2015: SAT, SUN - to MON.
         # from 2016: SAT, SUN - add MON.
 
         # Christmas Day.
-        name = tr("Christmas Day")
+        dt = self._add_christmas_day(tr("Christmas Day"))
         if self._year >= 2016:
-            self._add_observed(self._add_christmas_day(name))
-        elif self._year >= 1981 and self._is_weekend(DEC, 25):
-            self._add_holiday_1st_mon_from_dec_25(name)
-        else:
-            self._add_christmas_day(name)
-
-        # Boxing Day.
-        # 1981-2022: SAT - to MON, SUN - to TUE, MON - to TUE.
-        # from 2023: SAT - add MON, SUN - add TUE, MON - add TUE.
-
-        # Boxing Day.
-        name = tr("Boxing Day")
-        if self._year >= 2023:
-            self._add_observed(
-                self._add_christmas_day_two(name), rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE
-            )
+            self._add_observed(dt)
         elif self._year >= 1981:
-            dec_26 = (DEC, 26)
-            if self._is_saturday(dec_26):
-                self._add_holiday_1st_mon_from_dec_26(name)
-            elif self._is_sunday(dec_26) or self._is_monday(dec_26):
-                self._add_holiday_1st_tue_from_dec_26(name)
-            else:
-                self._add_christmas_day_two(name)
-        else:
-            self._add_christmas_day_two(name)
+            self._move_holiday(dt, show_observed_label=False)
 
     def _populate_subdiv_nt_half_day_holidays(self):
         if self._year >= 2016:
@@ -468,13 +441,11 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # from 2012: SAT, SUN - add MON.
 
         # New Year's Day.
-        name = tr("New Year's Day")
+        dt = self._add_new_years_day(tr("New Year's Day"))
         if self._year >= 2012:
-            self._add_observed(self._add_new_years_day(name))
-        elif self._year >= 1984 and self._is_sunday(JAN, 1):
-            self._add_holiday_1st_mon_from_jan_1(name)
-        else:
-            self._add_new_years_day(name)
+            self._add_observed(dt)
+        elif self._year >= 1984:
+            self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
 
         # Australia Day.
         # 1984-1995: not MON - move to MON.
@@ -482,10 +453,22 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Australia Day.
         if self._year >= 1888:
-            if 1984 <= self._year <= 1995 or (self._year >= 1996 and self._is_weekend(JAN, 26)):
-                self._add_holiday_1st_mon_from_jan_26(self.australia_day)
-            else:
-                self._add_holiday_jan_26(self.australia_day)
+            dt = self._add_holiday_jan_26(self.australia_day)
+            if self._year >= 1984:
+                self._move_holiday(
+                    dt,
+                    rule=SAT_SUN_TO_NEXT_MON if self._year >= 1996 else ALL_TO_NEXT_MON,
+                    show_observed_label=False,
+                )
+
+        # ANZAC Day.
+        # from 1984: SUN - move to MON.
+
+        if self._year >= 1921:
+            # ANZAC Day.
+            dt = self._add_anzac_day(tr("ANZAC Day"))
+            if self._year >= 1984:
+                self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
 
         # Easter Saturday.
         self._add_holy_saturday(tr("Easter Saturday"))
@@ -493,17 +476,6 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2017:
             # Easter Sunday.
             self._add_easter_sunday(tr("Easter Sunday"))
-
-        # ANZAC Day.
-        # from 1984: SUN - move to MON.
-
-        if self._year >= 1921:
-            # ANZAC Day.
-            name = tr("ANZAC Day")
-            if self._year >= 1984 and self._is_sunday(APR, 25):
-                self._add_holiday_1st_mon_from_apr_25(name)
-            else:
-                self._add_anzac_day(name)
 
         # Labor Day.
         name = tr("Labour Day")
@@ -535,37 +507,30 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # [1st FRI after Aug 5] + 5 days = [1st WED after Aug 10]
             self._add_holiday_1st_wed_from_aug_10(name)
 
+        # Boxing Day.
+        # 1984-2010: SUN - to MON, MON - to TUE.
+        # from 2011: SAT - add MON, SUN - add TUE.
+        # (Placed before Christmas Day for proper observed calculation).
+
+        # Boxing Day.
+        dt = self._add_christmas_day_two(tr("Boxing Day"))
+        if self._year >= 2011:
+            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
+        elif self._year >= 1984:
+            self._move_holiday(
+                dt, rule=SUN_TO_NEXT_MON + MON_TO_NEXT_TUE, show_observed_label=False
+            )
+
         # Christmas Day.
         # 1984-2010: SUN - to MON.
         # from 2011: SAT - add MON, SUN - add TUE.
 
         # Christmas Day.
-        name = tr("Christmas Day")
+        dt = self._add_christmas_day(tr("Christmas Day"))
         if self._year >= 2011:
-            self._add_observed(self._add_christmas_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
-        elif self._year >= 1984 and self._is_sunday(DEC, 25):
-            self._add_holiday_1st_mon_from_dec_25(name)
-        else:
-            self._add_christmas_day(name)
-
-        # Boxing Day.
-        # 1984-1910: SUN - to MON, MON - to TUE.
-        # from 2011: SAT - add MON, SUN - add TUE.
-
-        # Boxing Day.
-        name = tr("Boxing Day")
-        if self._year >= 2011:
-            self._add_observed(self._add_christmas_day_two(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
+            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
         elif self._year >= 1984:
-            dec_26 = (DEC, 26)
-            if self._is_sunday(dec_26):
-                self._add_holiday_1st_mon_from_dec_26(name)
-            elif self._is_monday(dec_26):
-                self._add_holiday_1st_tue_from_dec_26(name)
-            else:
-                self._add_christmas_day_two(name)
-        else:
-            self._add_christmas_day_two(name)
+            self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
 
     def _populate_subdiv_sa_public_holidays(self):
         # New Year's Day.
@@ -574,19 +539,14 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # from 2024: SAT, SUN - add MON.
 
         # New Year's Day.
-        name = tr("New Year's Day")
-        jan_1 = (JAN, 1)
+        dt = self._add_new_years_day(tr("New Year's Day"))
         if self._year >= 2024:
-            self._add_observed(self._add_new_years_day(name))
+            self._add_observed(dt)
         elif self._year >= 2004:
-            if self._is_saturday(jan_1):
-                self._add_holiday_1st_mon_from_jan_1(name)
-            else:
-                self._add_observed(self._add_new_years_day(name), rule=SUN_TO_NEXT_MON)
-        elif self._year >= 1984 and self._is_weekend(jan_1):
-            self._add_holiday_1st_mon_from_jan_1(name)
-        else:
-            self._add_new_years_day(name)
+            self._add_observed(dt, rule=SUN_TO_NEXT_MON)
+            self._move_holiday(dt, rule=SAT_TO_NEXT_MON, show_observed_label=False)
+        elif self._year >= 1984:
+            self._move_holiday(dt, show_observed_label=False)
 
         # Australia Day.
         # 1984-1993: not MON - move to MON.
@@ -596,22 +556,14 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         if self._year >= 1935:
             # Australia Day.
-            name = tr("Australia Day")
-            jan_26 = (JAN, 26)
+            dt = self._add_holiday_jan_26(self.australia_day)
             if 1994 <= self._year <= 2003 or self._year >= 2024:
-                if self._is_weekend(jan_26):
-                    self._add_holiday_1st_mon_from_jan_26(name)
-                else:
-                    self._add_holiday_jan_26(name)
+                self._move_holiday(dt, show_observed_label=False)
             elif self._year >= 2004:
-                if self._is_saturday(jan_26):
-                    self._add_holiday_1st_mon_from_jan_26(name)
-                else:
-                    self._add_observed(self._add_holiday_jan_26(name), rule=SUN_TO_NEXT_MON)
+                self._add_observed(dt, rule=SUN_TO_NEXT_MON)
+                self._move_holiday(dt, rule=SAT_TO_NEXT_MON, show_observed_label=False)
             elif self._year >= 1984:
-                self._add_holiday_1st_mon_from_jan_26(name)
-            else:
-                self._add_holiday_jan_26(name)
+                self._move_holiday(dt, rule=ALL_TO_NEXT_MON, show_observed_label=False)
 
         # Adelaide Cup Day.
         # First observed as Public Holidays in 1973: https://racingsa.com.au/blog/2020/03/06/2380/a-little-adelaide-cup-history
@@ -635,9 +587,9 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         if self._year >= 1921:
             # ANZAC Day.
-            apr_25 = self._add_anzac_day(tr("ANZAC Day"))
+            dt = self._add_anzac_day(tr("ANZAC Day"))
             if self._year <= 2023:
-                self._add_observed(apr_25, rule=SUN_TO_NEXT_MON)
+                self._add_observed(dt, rule=SUN_TO_NEXT_MON)
 
         # Sovereign's Birthday.
         if self._year >= 1936:
@@ -654,30 +606,18 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # (Placed before Christmas Day for proper observed calculation).
 
         # Proclamation Day.
-        name = tr("Proclamation Day")
-        dec_26 = (DEC, 26)
+        dt = self._add_christmas_day_two(tr("Proclamation Day"))
         if self._year >= 2024:
-            self._add_observed(
-                self._add_christmas_day_two(name), rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE
-            )
+            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE)
         elif self._year >= 2003:
-            if self._is_saturday(dec_26):
-                self._add_holiday_1st_mon_from_dec_26(name)
-            else:
-                self._add_observed(
-                    self._add_christmas_day_two(name), rule=SUN_TO_NEXT_TUE + MON_TO_NEXT_TUE
-                )
+            self._add_observed(dt, rule=SUN_TO_NEXT_TUE + MON_TO_NEXT_TUE)
+            self._move_holiday(dt, rule=SAT_TO_NEXT_MON, show_observed_label=False)
         elif self._year >= 1993:
-            if self._is_saturday(dec_26):
-                self._add_holiday_1st_mon_from_dec_26(name)
-            elif self._is_sunday(dec_26) or self._is_monday(dec_26):
-                self._add_holiday_1st_tue_from_dec_26(name)
-            else:
-                self._add_christmas_day_two(name)
-        elif self._year >= 1984 and self._is_weekend(dec_26):
-            self._add_holiday_1st_mon_from_dec_26(name)
-        else:
-            self._add_christmas_day_two(name)
+            self._move_holiday(
+                dt, rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE, show_observed_label=False
+            )
+        elif self._year >= 1984:
+            self._move_holiday(dt, show_observed_label=False)
 
         # Christmas Day.
         # 1984-2002: SAT, SUN - move to MON.
@@ -685,19 +625,14 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # from 2024: SAT, SUN - add MON.
 
         # Christmas Day.
-        name = tr("Christmas Day")
-        dec_25 = (DEC, 25)
+        dt = self._add_christmas_day(tr("Christmas Day"))
         if self._year >= 2024:
-            self._add_observed(self._add_christmas_day(name))
+            self._add_observed(dt)
         elif self._year >= 2003:
-            if self._is_saturday(dec_25):
-                self._add_holiday_1st_mon_from_dec_25(name)
-            else:
-                self._add_observed(self._add_christmas_day(name), rule=SUN_TO_NEXT_MON)
-        elif self._year >= 1984 and self._is_weekend(dec_25):
-            self._add_holiday_1st_mon_from_dec_25(name)
-        else:
-            self._add_christmas_day(name)
+            self._add_observed(dt, rule=SUN_TO_NEXT_MON)
+            self._move_holiday(dt, rule=SAT_TO_NEXT_MON, show_observed_label=False)
+        elif self._year >= 1984:
+            self._move_holiday(dt, show_observed_label=False)
 
     def _populate_subdiv_sa_half_day_holidays(self):
         if self._year >= 2012:
@@ -715,21 +650,18 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # from 2001: SAT, SUN - move to MON.
 
         # New Year's Day.
-        name = tr("New Year's Day")
-        if self._year >= 2001 and self._is_weekend(JAN, 1):
-            self._add_holiday_1st_mon_from_jan_1(name)
-        else:
-            self._add_new_years_day(name)
+        dt = self._add_new_years_day(tr("New Year's Day"))
+        if self._year >= 2001:
+            self._move_holiday(dt, show_observed_label=False)
 
         # Australia Day.
         # from 2001: SAT, SUN - move to MON.
 
         # Australia Day.
         if self._year >= 1888:
-            if self._year >= 2001 and self._is_weekend(JAN, 26):
-                self._add_holiday_1st_mon_from_jan_26(self.australia_day)
-            else:
-                self._add_holiday_jan_26(self.australia_day)
+            dt = self._add_holiday_jan_26(self.australia_day)
+            if self._year >= 2001:
+                self._move_holiday(dt, show_observed_label=False)
 
         # Eight Hours Day.
         self._add_holiday_2nd_mon_of_mar(tr("Eight Hours Day"))
@@ -751,35 +683,19 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # from 2010: SAT - add MON, SUN - add TUE.
 
         # Christmas Day.
-        name = tr("Christmas Day")
+        dt = self._add_christmas_day(tr("Christmas Day"))
         if self._year >= 2010:
-            self._add_observed(self._add_christmas_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
+            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
         elif self._year >= 2000:
-            dec_25 = (DEC, 25)
-            if self._is_saturday(dec_25):
-                self._add_holiday_1st_mon_from_dec_25(name)
-            elif self._is_sunday(dec_25):
-                self._add_holiday_1st_tue_from_dec_25(name)
-            else:
-                self._add_christmas_day(name)
-        else:
-            self._add_christmas_day(name)
+            self._move_holiday(dt, rule=SAT_SUN_TO_NEXT_MON_TUE, show_observed_label=False)
 
         # Boxing Day.
         # from 2000: SAT - to MON, SUN - to TUE.
 
         # Boxing Day.
-        name = tr("Boxing Day")
+        dt = self._add_christmas_day_two(tr("Boxing Day"))
         if self._year >= 2000:
-            dec_26 = (DEC, 26)
-            if self._is_saturday(dec_26):
-                self._add_holiday_1st_mon_from_dec_26(name)
-            elif self._is_sunday(dec_26):
-                self._add_holiday_1st_tue_from_dec_26(name)
-            else:
-                self._add_christmas_day_two(name)
-        else:
-            self._add_christmas_day_two(name)
+            self._move_holiday(dt, rule=SAT_SUN_TO_NEXT_MON_TUE, show_observed_label=False)
 
     def _populate_subdiv_vic_public_holidays(self):
         # New Year's Day.
@@ -788,28 +704,22 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # from 2009: SAT, SUN - add MON.
 
         # New Year's Day.
-        name = tr("New Year's Day")
+        dt = self._add_new_years_day(tr("New Year's Day"))
         if self._year >= 2009:
-            self._add_observed(self._add_new_years_day(name))
+            self._add_observed(dt)
         elif self._year >= 1998:
-            if self._is_sunday(JAN, 1):
-                self._add_holiday_1st_mon_from_jan_1(name)
-            else:
-                self._add_new_years_day(name)
+            self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
         elif self._year >= 1994:
-            self._add_observed(self._add_new_years_day(name), rule=SUN_TO_NEXT_MON)
-        else:
-            self._add_new_years_day(name)
+            self._add_observed(dt, rule=SUN_TO_NEXT_MON)
 
         # Australia Day.
         # from 2009: SAT, SUN - move to MON.
 
         # Australia Day.
         if self._year >= 1888:
-            if self._year >= 2009 and self._is_weekend(JAN, 26):
-                self._add_holiday_1st_mon_from_jan_26(self.australia_day)
-            else:
-                self._add_holiday_jan_26(self.australia_day)
+            dt = self._add_holiday_jan_26(self.australia_day)
+            if self._year >= 2009:
+                self._move_holiday(dt, show_observed_label=False)
 
         # Labor Day.
         self._add_holiday_2nd_mon_of_mar(tr("Labour Day"))
@@ -853,41 +763,31 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # from 2019: SAT - add MON, SUN - add TUE.
 
         # Christmas Day.
-        name = tr("Christmas Day")
+        dt = self._add_christmas_day(tr("Christmas Day"))
         if self._year >= 2019:
-            self._add_observed(self._add_christmas_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
-        elif self._year >= 2000:
-            dec_25 = (DEC, 25)
-            if self._is_saturday(dec_25):
-                self._add_holiday_1st_mon_from_dec_25(name)
-            elif self._is_sunday(dec_25):
-                self._add_holiday_1st_tue_from_dec_25(name)
-            else:
-                self._add_christmas_day(name)
-        else:
-            self._add_christmas_day(name)
+            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
+        elif self._year >= 2008:
+            self._move_holiday(dt, rule=SAT_SUN_TO_NEXT_MON_TUE, show_observed_label=False)
 
         # Boxing Day.
-        # 1994-2008: SUN - to MON.
-        # from 2009: SAT - add MON, SUN - add TUE.
+        # 1994-2007: SUN - to MON.
+        # from 2008: SAT - add MON, SUN - add TUE.
 
         # Boxing Day.
-        name = tr("Boxing Day")
-        if self._year >= 2009:
-            self._add_observed(self._add_christmas_day_two(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
-        elif self._year >= 1994 and self._is_sunday(DEC, 26):
-            self._add_holiday_1st_tue_from_dec_26(name)
-        else:
-            self._add_christmas_day_two(name)
+        dt = self._add_christmas_day_two(tr("Boxing Day"))
+        if self._year >= 2008:
+            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
+        elif self._year >= 1994:
+            self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
 
     def _populate_subdiv_wa_public_holidays(self):
         # New Year's Day.
         # from 1973: SAT, SUN - add MON.
 
         # New Year's Day.
-        jan_1 = self._add_new_years_day(tr("New Year's Day"))
+        dt = self._add_new_years_day(tr("New Year's Day"))
         if self._year >= 1973:
-            self._add_observed(jan_1)
+            self._add_observed(dt)
 
         # Australia Day.
         # 1973-1993: not MON - move to MON.
@@ -895,15 +795,11 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Australia Day.
         if self._year >= 1888:
+            dt = self._add_holiday_jan_26(self.australia_day)
             if self._year >= 1994:
-                if self._is_weekend(JAN, 26):
-                    self._add_holiday_1st_mon_from_jan_26(self.australia_day)
-                else:
-                    self._add_holiday_jan_26(self.australia_day)
+                self._move_holiday(dt, show_observed_label=False)
             elif self._year >= 1973:
-                self._add_holiday_1st_mon_from_jan_26(self.australia_day)
-            else:
-                self._add_holiday_jan_26(self.australia_day)
+                self._move_holiday(dt, rule=ALL_TO_NEXT_MON, show_observed_label=False)
 
         # Labor Day.
         self._add_holiday_1st_mon_of_mar(tr("Labour Day"))
@@ -914,9 +810,9 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         if self._year >= 1921:
             # ANZAC Day.
-            apr_25 = self._add_anzac_day(tr("ANZAC Day"))
+            dt = self._add_anzac_day(tr("ANZAC Day"))
             if self._year >= 1973:
-                self._add_observed(apr_25)
+                self._add_observed(dt)
 
         if self._year >= 1833:
             self._add_holiday_1st_mon_of_jun(
@@ -950,10 +846,10 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # (Placed before Christmas Day for proper observed calculation).
 
         # Boxing Day.
-        dec_26 = self._add_christmas_day_two(tr("Boxing Day"))
+        dt = self._add_christmas_day_two(tr("Boxing Day"))
         if self._year >= 1972:
             self._add_observed(
-                dec_26,
+                dt,
                 rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE
                 if self._year >= 1976
                 else SAT_SUN_TO_NEXT_MON_TUE,
@@ -963,9 +859,9 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # from 1972: SAT, SUN - add MON.
 
         # Christmas Day.
-        dec_25 = self._add_christmas_day(tr("Christmas Day"))
+        dt = self._add_christmas_day(tr("Christmas Day"))
         if self._year >= 1972:
-            self._add_observed(dec_25)
+            self._add_observed(dt)
 
 
 class AU(Australia):
