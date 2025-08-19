@@ -9,3 +9,54 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
+msgid ""
+msgstr "Project-Id-Version: Holidays 0.78\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (المقدرة)"
+msgstr ""
+
+#. %s (observed).
+#, c-format
+msgid "%s (ملاحظة)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (المقدرة، ملاحظة)"
+msgstr ""
+
+#. Independence Day.
+msgid "عيد الإستقلال"
+msgstr ""
+
+msgid "عيد الميلاد المجيد"
+msgstr ""
+
+#. Orthodox Christmas.
+msgid "عيد الميلاد الأرثوذكسي"
+msgstr ""
+
+msgid "عيد القيامة المجيد"
+msgstr ""
+
+#. Islamic New Year.
+msgid "رأس السنة الهجرية"
+msgstr ""
+
+#. Prophet's Birthday.
+msgid "المولد النبوي الشريف"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "عيد الفطر المبارك"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "عيد الأضحى المبارك"
+msgstr ""
+
+#. Christmas Day.
+msgid "يوم عيد الميلاد"
+msgstr ""

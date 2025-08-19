@@ -79,9 +79,6 @@ class Sudan(
             self._add_easter_sunday(tr("عيد القيامة المجيد"), calendar=JULIAN_CALENDAR)
         )
 
-        # Christmas Day.
-        dts_observed.add(self._add_christmas_day(tr("يوم عيد الميلاد")))
-
         # Islamic New Year.
         dts_observed.update(self._add_islamic_new_year_day(tr("رأس السنة الهجرية")))
 
@@ -93,6 +90,9 @@ class Sudan(
 
         # Eid al-Adha.
         dts_observed.update(self._add_eid_al_adha_day(tr("عيد الأضحى المبارك")))
+
+        # Christmas Day.
+        dts_observed.add(self._add_christmas_day(tr("يوم عيد الميلاد")))
 
         if self.observed:
             self._populate_observed(dts_observed)

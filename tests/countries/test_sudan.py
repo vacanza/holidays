@@ -19,8 +19,9 @@ from tests.common import CommonCountryTests
 class TestSudan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Sudan, years=range(1985, 2050))
-        cls.no_estimated_holidays = Sudan(years=range(1985, 2050), islamic_show_estimated=False)
+        years = range(1985, 2050)
+        super().setUpClass(Sudan, years=years, years_non_observed=years)
+        cls.no_estimated_holidays = Sudan(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(Sudan, SD, SDN)
@@ -93,7 +94,27 @@ class TestSudan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1985, 2050))
 
     def test_christmas_day(self):
-        self.assertHolidayName("يوم عيد الميلاد", (f"{year}-12-25" for year in range(1985, 2050)))
+        name = "يوم عيد الميلاد"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1985, 2050)))
+        obs_dt = ("2022-12-26",)
+        self.assertHolidayName(f"{name} (ملاحظة)", obs_dt)
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-01", "عيد الإستقلال"),
+            ("2022-01-07", "عيد الميلاد المجيد"),
+            ("2022-01-25", "عيد الميلاد الأرثوذكسي"),
+            ("2022-04-24", "عيد القيامة المجيد"),
+            ("2022-04-25", "عيد القيامة المجيد (ملاحظة)"),
+            ("2022-05-01", "عيد الفطر المبارك"),
+            ("2022-05-02", "عيد الفطر المبارك (ملاحظة)"),
+            ("2022-07-10", "عيد الأضحى المبارك"),
+            ("2022-07-11", "عيد الأضحى المبارك (ملاحظة)"),
+            ("2022-07-30", "رأس السنة الهجرية"),
+            ("2022-10-08", "المولد النبوي الشريف"),
+            ("2022-12-25", "يوم عيد الميلاد"),
+            ("2022-12-26", "يوم عيد الميلاد (ملاحظة)"),
+        )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
@@ -111,21 +132,4 @@ class TestSudan(CommonCountryTests, TestCase):
             ("2022-10-08", "Prophet's Birthday"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (observed)"),
-        )
-
-    def test_l10n_default(self):
-        self.assertLocalizedHolidays(
-            ("2022-01-01", "عيد الإستقلال"),
-            ("2022-01-07", "عيد الميلاد المجيد"),
-            ("2022-01-25", "عيد الميلاد الأرثوذكسي"),
-            ("2022-04-24", "عيد القيامة المجيد"),
-            ("2022-04-25", "عيد القيامة المجيد (ملاحظة)"),
-            ("2022-05-01", "عيد الفطر المبارك"),
-            ("2022-05-02", "عيد الفطر المبارك (ملاحظة)"),
-            ("2022-07-10", "عيد الأضحى المبارك"),
-            ("2022-07-11", "عيد الأضحى المبارك (ملاحظة)"),
-            ("2022-07-30", "رأس السنة الهجرية"),
-            ("2022-10-08", "المولد النبوي الشريف"),
-            ("2022-12-25", "يوم عيد الميلاد"),
-            ("2022-12-26", "يوم عيد الميلاد (ملاحظة)"),
         )
