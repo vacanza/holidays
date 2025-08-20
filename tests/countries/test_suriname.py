@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries import Suriname, SR, SUR
+from holidays.countries.suriname import Suriname, SR, SUR
 from tests.common import CommonCountryTests
 
 
