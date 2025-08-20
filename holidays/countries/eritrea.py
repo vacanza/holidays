@@ -23,7 +23,6 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Eritrea>
         * <https://web.archive.org/web/20230313234629/https://explore-eritrea.com/working-hours-and-holidays/>
         * <https://web.archive.org/web/20110903130335/http://www.eritrea.be/old/eritrea-religions.htm>
-        * <https://web.archive.org/web/20250807083700/https://www.timeanddate.com/calendar/?year=2025&country=168>
         * <https://www.mintageworld.com/media/detail/11411-fenkil-day-in-eritrea/>
     """
 
@@ -48,13 +47,13 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day("New Year")
+        self._add_new_years_day("New Year's Day")
 
         # Orthodox Christmas.
-        self._add_christmas_day("Leddet")
+        self._add_christmas_day("Orthodox Christmas")
 
         # Epiphany.
-        self._add_epiphany_day("Timket")
+        self._add_epiphany_day("Epiphany")
 
         # Women's Day.
         self._add_womens_day("Women's Day")
@@ -63,7 +62,7 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         self._add_good_friday("Good Friday")
 
         # Orthodox Easter.
-        self._add_easter_sunday("Tensae")
+        self._add_easter_sunday("Orthodox Easter")
 
         # International Workers' Day.
         self._add_labor_day("International Workers' Day")
@@ -78,13 +77,13 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         self._add_holiday_sep_1("Revolution Day")
 
         # Ethiopian New Year.
-        self._add_ethiopian_new_year("Keddus Yohannes")
+        self._add_ethiopian_new_year("Ethiopian New Year")
 
         # Finding of the True Cross.
-        self._add_finding_of_true_cross("Meskel")
+        self._add_finding_of_true_cross("Finding of the True Cross")
 
         # Prophet's Birthday.
-        self._add_mawlid_day("Mawlid an-Nabi")
+        self._add_mawlid_day("Prophet's Birthday")
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day("Eid al-Fitr")
