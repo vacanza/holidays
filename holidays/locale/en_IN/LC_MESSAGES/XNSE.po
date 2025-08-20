@@ -1,0 +1,95 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
+# XNSE Holiday Translations - Indian English
+msgid ""
+msgstr ""
+"Project-Id-Version: holidays\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-19\n"
+"PO-Revision-Date: 2024-03-19\n"
+"Last-Translator: Vacanza Team\n"
+"Language-Team: Vacanza Team\n"
+"Language: en_IN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Republic Day"
+msgstr "Republic Day"
+
+msgid "Holi"
+msgstr "Holi"
+
+msgid "Ram Navami"
+msgstr "Ram Navami"
+
+msgid "Mahavir Jayanti"
+msgstr "Mahavir Jayanti"
+
+msgid "Good Friday"
+msgstr "Good Friday"
+
+msgid "Dr. Baba Saheb Ambedkar Jayanti"
+msgstr "Dr. Baba Saheb Ambedkar Jayanti"
+
+msgid "Maharashtra Day"
+msgstr "Maharashtra Day"
+
+msgid "Bakri Id"
+msgstr "Bakri Id"
+
+msgid "Muharram"
+msgstr "Muharram"
+
+msgid "Independence Day"
+msgstr "Independence Day"
+
+msgid "Ganesh Chaturthi"
+msgstr "Ganesh Chaturthi"
+
+msgid "Mahatma Gandhi Jayanti"
+msgstr "Mahatma Gandhi Jayanti"
+
+msgid "Dussehra"
+msgstr "Dussehra"
+
+msgid "Diwali-Balipratipada"
+msgstr "Diwali-Balipratipada"
+
+msgid "Gurunanak Jayanti"
+msgstr "Gurunanak Jayanti"
+
+msgid "Christmas"
+msgstr "Christmas"
+
+msgid "Mahashivratri"
+msgstr "Mahashivratri"
+
+msgid "Id-Ul-Fitr (Ramadan Eid)"
+msgstr "Id-Ul-Fitr (Ramadan Eid)"
+
+msgid "Diwali Laxmi Pujan"
+msgstr "Diwali Laxmi Pujan"
+
+msgid "Shri Ram Navmi"
+msgstr "Shri Ram Navmi"
+
+msgid "Shri Mahavir Jayanti"
+msgstr "Shri Mahavir Jayanti"
+
+msgid "Mahatma Gandhi Jayanti/Dussehra"
+msgstr "Mahatma Gandhi Jayanti/Dussehra"
+
+msgid "Prakash Gurpurb Sri Guru Nanak Dev"
+msgstr "Prakash Gurpurb Sri Guru Nanak Dev"

@@ -1,0 +1,95 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
+# XNSE Holiday Translations - Hindi
+msgid ""
+msgstr ""
+"Project-Id-Version: holidays\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-19\n"
+"PO-Revision-Date: 2024-03-19\n"
+"Last-Translator: Vacanza Team\n"
+"Language-Team: Vacanza Team\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Republic Day"
+msgstr "गणतंत्र दिवस"
+
+msgid "Holi"
+msgstr "होली"
+
+msgid "Ram Navami"
+msgstr "राम नवमी"
+
+msgid "Mahavir Jayanti"
+msgstr "महावीर जयंती"
+
+msgid "Good Friday"
+msgstr "गुड फ्राइडे"
+
+msgid "Dr. Baba Saheb Ambedkar Jayanti"
+msgstr "डॉ. बाबा साहेब अम्बेडकर जयंती"
+
+msgid "Maharashtra Day"
+msgstr "महाराष्ट्र दिवस"
+
+msgid "Bakri Id"
+msgstr "बकरी ईद"
+
+msgid "Muharram"
+msgstr "मुहर्रम"
+
+msgid "Independence Day"
+msgstr "स्वतंत्रता दिवस"
+
+msgid "Ganesh Chaturthi"
+msgstr "गणेश चतुर्थी"
+
+msgid "Mahatma Gandhi Jayanti"
+msgstr "महात्मा गांधी जयंती"
+
+msgid "Dussehra"
+msgstr "दशहरा"
+
+msgid "Diwali-Balipratipada"
+msgstr "दिवाली-बलिप्रतिपदा"
+
+msgid "Gurunanak Jayanti"
+msgstr "गुरुनानक जयंती"
+
+msgid "Christmas"
+msgstr "क्रिसमस"
+
+msgid "Mahashivratri"
+msgstr "महाशिवरात्रि"
+
+msgid "Id-Ul-Fitr (Ramadan Eid)"
+msgstr "ईद-उल-फितर (रमजान ईद)"
+
+msgid "Diwali Laxmi Pujan"
+msgstr "दिवाली लक्ष्मी पूजन"
+
+msgid "Shri Ram Navmi"
+msgstr "श्री राम नवमी"
+
+msgid "Shri Mahavir Jayanti"
+msgstr "श्री महावीर जयंती"
+
+msgid "Mahatma Gandhi Jayanti/Dussehra"
+msgstr "महात्मा गांधी जयंती/दशहरा"
+
+msgid "Prakash Gurpurb Sri Guru Nanak Dev"
+msgstr "प्रकाश गुरपुरब श्री गुरु नानक देव"
