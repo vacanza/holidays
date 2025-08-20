@@ -9,7 +9,6 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
 # SOME DESCRIPTIVE TITLE
 # This file is distributed under the same license as the Holidays package.
 # FIRST AUTHOR saheelsapovadia23@gmail.com, 2025.
@@ -28,6 +27,8 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_IN\n"
 
+#. https://archives.nseindia.com/content/circulars/CMTR54757.pdf
+#. https://nsearchives.nseindia.com/content/circulars/CMTR59722.pdf
 msgid "Republic Day"
 msgstr "Republic Day"
 
@@ -67,6 +68,7 @@ msgstr "Mahatma Gandhi Jayanti"
 msgid "Dussehra"
 msgstr "Dussehra"
 
+#. muhurat trading was conducted
 msgid "Diwali-Balipratipada"
 msgstr "Diwali-Balipratipada"
 
@@ -76,14 +78,12 @@ msgstr "Guru Nanak's Birthday"
 msgid "Christmas"
 msgstr "Christmas"
 
+#. https://nsearchives.nseindia.com/content/circulars/CMTR65587.pdf
 msgid "Mahashivratri"
 msgstr "Maha Shivaratri"
 
 msgid "Id-Ul-Fitr (Ramadan Eid)"
 msgstr "Eid al-Fitr"
-
-msgid "Diwali Laxmi Pujan"
-msgstr "Diwali - Lakshmi Puja"
 
 msgid "Shri Ram Navmi"
 msgstr "Shri Ram Navami"
@@ -94,5 +94,15 @@ msgstr "Shri Mahavir Jayanti"
 msgid "Mahatma Gandhi Jayanti/Dussehra"
 msgstr "Gandhi Jayanti/Dussehra"
 
+#. muhurat trading was conducted
+msgid "Diwali Laxmi Pujan"
+msgstr "Diwali - Lakshmi Puja"
+
+msgid "Diwali Balipratipada"
+msgstr "Diwali Balipratipada"
+
 msgid "Prakash Gurpurb Sri Guru Nanak Dev"
 msgstr "Guru Nanak Gurpurab"
+
+msgid "Christmas Day"
+msgstr "Christmas Day"
