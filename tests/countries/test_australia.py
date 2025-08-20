@@ -28,15 +28,12 @@ class TestAustralia(CommonCountryTests, TestCase):
             subdiv: Australia(subdiv=subdiv, years=years) for subdiv in Australia.subdivisions
         }
 
-    def _assertVariableDays(self, year: int, subdiv_holidays: dict):  # noqa: N802
-        observed_subdiv_holidays = {
-            subdiv: Australia(subdiv=subdiv, years=year) for subdiv in Australia.subdivisions
-        }
-        for dt, subdivisions in subdiv_holidays.items():
+    def _assertVariableDays(self, year: int, subdiv_holidays_mapping: dict):  # noqa: N802
+        for dt, subdivisions in subdiv_holidays_mapping.items():
             dt = date(year, *dt)
-            for subdiv, subdiv_holidays in observed_subdiv_holidays.items():
+            for subdiv, holidays in self.subdiv_holidays.items():  # type: ignore[attr-defined]
                 self.assertEqual(
-                    dt in subdiv_holidays,
+                    dt in holidays,
                     subdiv in subdivisions,
                     f"Failed date `{dt:%Y-%m-%d}`, subdiv `{subdiv}`: {', '.join(subdivisions)}",
                 )
