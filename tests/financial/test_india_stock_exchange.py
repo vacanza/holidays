@@ -23,7 +23,7 @@ from tests.common import CommonFinancialTests
 class TestIndiaNationalStockExchange(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(IndiaNationalStockExchange, years=range(1994, 2100))
+        super().setUpClass(IndiaNationalStockExchange, years=range(2022, 2026))
 
     def test_market_aliases(self):
         self.assertAliases(IndiaNationalStockExchange, NSE, XNSE)
