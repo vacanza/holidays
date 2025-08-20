@@ -9,7 +9,7 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>PyPI</td>
     <td>
-      <a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pepy/dt/holidays?style=flat&color=41B5BE" alt="Pepy Total Downloads"></a>&nbsp;<a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat" alt="PyPI version"></a>&nbsp;<a href="https://github.com/vacanza/holidays/releases"><img src="https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat" alt="PyPI release date"></a>
+      <a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvacanza%2Faux%2Frefs%2Fheads%2Fmain%2Fbadges%2Fdownloads%2Fpepy.tech.yaml&query=%24.monthly_downloads_human&suffix=%2Fmonth&style=flat&label=downloads&color=41B5BE&cacheSeconds=86400" alt="PyPI monthly downloads"></a>&nbsp;<a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat" alt="PyPI version"></a>&nbsp;<a href="https://github.com/vacanza/holidays/releases"><img src="https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat" alt="Latest release date"></a>
     </td>
   </tr>
   <tr>
