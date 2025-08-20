@@ -247,6 +247,7 @@ from holidays.countries.turkey import Turkey, TR, TUR
 from holidays.countries.turkmenistan import Turkmenistan, TM, TKM
 from holidays.countries.turks_and_caicos_islands import TurksAndCaicosIslands, TC, TCA
 from holidays.countries.tuvalu import Tuvalu, TV, TUV
+from holidays.countries.uganda import Uganda, UG, UGA
 from holidays.countries.ukraine import Ukraine, UA, UKR
 from holidays.countries.united_arab_emirates import UnitedArabEmirates, AE, ARE
 from holidays.countries.united_kingdom import UnitedKingdom, GB, GBR, UK

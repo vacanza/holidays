@@ -241,6 +241,7 @@ COUNTRIES: RegistryDict = {
     "turkmenistan": ("Turkmenistan", "TM", "TKM"),
     "turks_and_caicos_islands": ("TurksAndCaicosIslands", "TC", "TCA"),
     "tuvalu": ("Tuvalu", "TV", "TUV"),
+    "uganda": ("Uganda", "UG", "UGA"),
     "ukraine": ("Ukraine", "UA", "UKR"),
     "united_arab_emirates": ("UnitedArabEmirates", "AE", "ARE"),
     "united_kingdom": ("UnitedKingdom", "GB", "GBR", "UK"),
