@@ -97,38 +97,14 @@ class TestRwanda(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (yizihijwe)", dt)
 
-    def test_eid_al_fitr(self):
-        name = "Eid El Fitr"
-        dt = (
-            "2020-05-24",
-            "2021-05-13",
-            "2022-05-02",
-            "2023-04-21",
-            "2024-04-10",
-            "2025-03-31",
-        )
-        self.assertHolidayName(f"{name}", dt)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
-
-    def test_eid_al_adha(self):
-        name = "Eid al-Adha"
-        dt = (
-            "2020-07-31",
-            "2021-07-20",
-            "2022-07-11",
-            "2023-06-28",
-            "2024-06-16",
-            "2025-06-06",
-        )
-        self.assertHolidayName(f"{name}", dt)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2015, 2050))
-
-        self.assertNoHolidayName(name, range(2012, 2015))
-
     def test_independence_day(self):
         name = "Umunsi w'Ubwigenge"
         self.assertHolidayName(name, (f"{year}-07-01" for year in range(2012, 2050)))
-        dt = ("2023-07-03",)
+        dt = (
+            "2017-07-03",
+            "2018-07-02",
+            "2023-07-03",
+        )
         self.assertHolidayName(f"{name} (yizihijwe)", dt)
         self.assertNoNonObservedHoliday(dt)
 
@@ -180,6 +156,33 @@ class TestRwanda(CommonCountryTests, TestCase):
         name = "Umunsi ukurikira Noheli"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(2012, 2050)))
 
+    def test_eid_al_fitr(self):
+        name = "Eid El Fitr"
+        self.assertHolidayName(
+            name,
+            "2020-05-24",
+            "2021-05-13",
+            "2022-05-02",
+            "2023-04-21",
+            "2024-04-10",
+            "2025-03-31",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
+
+    def test_eid_al_adha(self):
+        name = "Eid al-Adha"
+        self.assertHolidayName(
+            name,
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-11",
+            "2023-06-28",
+            "2024-06-16",
+            "2025-06-06",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2015, 2050))
+        self.assertNoHolidayName(name, range(2012, 2015))
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2024-01-01", "Ubunani"),
@@ -210,7 +213,7 @@ class TestRwanda(CommonCountryTests, TestCase):
             ("2024-04-01", "Easter Monday"),
             ("2024-04-07", "Memorial Day of Genocide perpetrated against the Tutsi in 1994"),
             ("2024-04-10", "Eid al-Fitr"),
-            ("2024-05-01", "Labour Day"),
+            ("2024-05-01", "Labor Day"),
             ("2024-06-16", "Eid al-Adha"),
             ("2024-06-17", "Eid al-Adha (observed)"),
             ("2024-07-01", "Independence Day"),
