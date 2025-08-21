@@ -12,7 +12,6 @@
 # SOME DESCRIPTIVE TITLE
 # This file is distributed under the same license as the Holidays package.
 # FIRST AUTHOR saheelsapovadia23@gmail.com, 2025.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.79\n"
@@ -27,8 +26,6 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_IN\n"
 
-#. https://archives.nseindia.com/content/circulars/CMTR54757.pdf
-#. https://nsearchives.nseindia.com/content/circulars/CMTR59722.pdf
 msgid "Republic Day"
 msgstr "Republic Day"
 
@@ -68,17 +65,15 @@ msgstr "Mahatma Gandhi Jayanti"
 msgid "Dussehra"
 msgstr "Dussehra"
 
-#. muhurat trading was conducted
 msgid "Diwali-Balipratipada"
 msgstr "Diwali-Balipratipada"
 
 msgid "Gurunanak Jayanti"
 msgstr "Gurunanak Jayanti"
 
-msgid "Christmas"
-msgstr "Christmas"
+msgid "Christmas Day"
+msgstr "Christmas Day"
 
-#. https://nsearchives.nseindia.com/content/circulars/CMTR65587.pdf
 msgid "Mahashivratri"
 msgstr "Mahashivratri"
 
@@ -88,25 +83,15 @@ msgstr "Id-Ul-Fitr (Ramadan Eid)"
 msgid "Shri Ram Navmi"
 msgstr "Shri Ram Navmi"
 
+#. muhurat trading was conducted
+msgid "Diwali Laxmi Pujan"
+msgstr "Diwali Laxmi Pujan"
+
 msgid "Shri Mahavir Jayanti"
 msgstr "Shri Mahavir Jayanti"
 
 msgid "Mahatma Gandhi Jayanti/Dussehra"
 msgstr "Mahatma Gandhi Jayanti/Dussehra"
 
-#. muhurat trading was conducted
-msgid "Diwali Laxmi Pujan"
-msgstr "Diwali Laxmi Pujan"
-
-msgid "Diwali Balipratipada"
-msgstr "Diwali Balipratipada"
-
 msgid "Prakash Gurpurb Sri Guru Nanak Dev"
 msgstr "Prakash Gurpurb Sri Guru Nanak Dev"
-
-msgid "Christmas Day"
-msgstr "Christmas Day"
-
-#, c-format
-#~ msgid "%s (estimated)"
-#~ msgstr "%s (अनुमानित)"

@@ -1828,11 +1828,10 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
-<td>India National Stock Exchange</td>
+<td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>XNSE market holidays</td>
 <td><strong>en_IN</strong>, en_US, hi</td>
-<td></td>
 </tr>
 <tr>
 <td>New York Stock Exchange</td>
