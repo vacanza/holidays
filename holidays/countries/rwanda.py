@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG
+from holidays.calendars.gregorian import MAR, JUN, JUL, AUG
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
@@ -31,15 +31,15 @@ class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
 
     country = "RW"
     default_language = "rw"
-    supported_languages = ("en_US", "fr", "rw")
-    # Presidential Order N° 06/01 of 16/02/2011.
-    start_year = 2012
     # %s (estimated).
     estimated_label = tr("%s (yagereranijwe)")
     # %s (observed).
     observed_label = tr("%s (yizihijwe)")
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (yizihijwe, yagereranijwe)")
+    supported_languages = ("en_US", "fr", "rw")
+    # Presidential Order N° 06/01 of 16/02/2011.
+    start_year = 2012
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         ChristianHolidays.__init__(self)
@@ -53,6 +53,7 @@ class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
 
     def _populate_public_holidays(self):
         dts_observed = set()
+
         # New Year's Day.
         dt = self._add_new_years_day(tr("Ubunani"))
 
@@ -126,28 +127,14 @@ class RwandaIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2018: (AUG, 22),
         2019: (AUG, 12),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
         2022: (JUL, 11),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
-        2025: (JUN, 6),
     }
 
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2012, 2025)
     EID_AL_FITR_DATES = {
-        2012: (AUG, 19),
-        2013: (AUG, 8),
         2014: (JUL, 29),
         2015: (JUL, 18),
         2016: (JUL, 7),
         2017: (JUN, 26),
-        2018: (JUN, 15),
-        2019: (JUN, 4),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
         2025: (MAR, 31),
     }

@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.79\n"
+"Project-Id-Version: Holidays 0.80\n"
 "POT-Creation-Date: 2025-08-07 14:18+0530\n"
 "PO-Revision-Date: 2025-08-07 14:18+0530\n"
 "Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
@@ -67,7 +67,7 @@ msgstr "Easter Monday"
 
 #. Labor Day.
 msgid "Umunsi Mukuru w'Umurimo"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. Independence Day.
 msgid "Umunsi w'Ubwigenge"
