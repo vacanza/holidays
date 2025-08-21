@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import ISLAMIC, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase
 
@@ -30,6 +31,7 @@ class SouthSudan(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
     # %s (observed, estimated).
     observed_estimated_label = "%s (observed, estimated)"
     # South Sudan became independent on 9 July 2011.
+    supported_categories = (ISLAMIC, PUBLIC)
     start_year = 2011
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
@@ -86,6 +88,15 @@ class SouthSudan(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
 
         # Eid al-Adha.
         self._add_eid_al_adha_day("Eid al-Adha")
+
+    def _populate_islamic_holidays(self):
+        """Additional Islamic holidays."""
+
+        # Eid al-Fitr Holiday.
+        self._add_eid_al_fitr_day_two("Eid al-Fitr Holiday")
+
+        # Eid al-Adha Holiday.
+        self._add_eid_al_adha_day_two("Eid al-Adha Holiday")
 
 
 class SS(SouthSudan):
