@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: hi\n"
+"X-Source-Language: en_IN\n"
 
 #. %s (observed).
 #, c-format
@@ -84,7 +84,7 @@ msgstr "महाराष्ट्र दिवस"
 
 #. Maha Shivaratri
 msgid "Maha Shivaratri"
-msgstr "महा शिवरात्रि"
+msgstr "महाशिवरात्रि"
 
 #. Mahatma Gandhi Jayanti
 msgid "Mahatma Gandhi Jayanti"

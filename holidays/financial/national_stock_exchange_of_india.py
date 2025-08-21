@@ -243,7 +243,7 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
     def _get_holiday(self, name, holiday: str, year: int) -> Optional[date]:
         exact_date = getattr(self, f"{holiday}_DATES", {})
         dt = exact_date.get(year)
-        return self._add_holiday(tr(name), date(year, *dt)) if dt else None
+        return self._add_holiday(name, date(year, *dt)) if dt else None
 
 
 class NSE(NationalStockExchangeOfIndia):

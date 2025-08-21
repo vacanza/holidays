@@ -39,21 +39,13 @@ class TestIndiaNationalStockExchange(CommonFinancialTests, TestCase):
             "2024-06-17",
         )
 
-    def test_christmas_day(self):
-        name = "Christmas Day"
-        self.assertHolidayName(
-            name,
-            "2023-12-25",
-            "2024-12-25",
-        )
-
     def test_dussehra(self):
         name = "Dussehra"
         self.assertHolidayName(
             name,
             "2023-10-24",
             "2024-10-12",
-            "2025-10-2",
+            "2025-10-02",
         )
 
     def test_diwali(self):

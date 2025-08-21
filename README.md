@@ -1830,7 +1830,7 @@ code when available. The following financial markets are available:
 <tr>
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
-<td>XNSE market holidays</td>
+<td>National Stock Exchange of India market holidays</td>
 <td><strong>en_IN</strong>, en_US, hi</td>
 </tr>
 <tr>
