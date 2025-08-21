@@ -9,14 +9,15 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-# SOME DESCRIPTIVE TITLE
-# This file is distributed under the same license as the Holidays package.
-# FIRST AUTHOR saheelsapovadia23@gmail.com, 2025.
+
+#
+# National Stock Exchange of India holidays en_US localization.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.79\n"
-"POT-Creation-Date: 2025-08-20 20:21+0000\n"
-"PO-Revision-Date: 2025-08-20 20:21+0000\n"
+"Project-Id-Version: Holidays 0.80\n"
+"POT-Creation-Date: 2025-08-21 16:22+0000\n"
+"PO-Revision-Date: 2025-08-21 16:22+0000\n"
 "Last-Translator: Saheel Sapovadia saheelsapovadia23@gmail.com\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -24,74 +25,80 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: en_IN\n"
+"X-Source-Language: en_US\n"
 
-msgid "Republic Day"
-msgstr "Republic Day"
-
-msgid "Holi"
-msgstr "Holi"
-
-msgid "Ram Navami"
-msgstr "Ram Navami"
-
-msgid "Mahavir Jayanti"
-msgstr "Mahavir Jayanti"
-
-msgid "Good Friday"
-msgstr "Good Friday"
-
-msgid "Dr. Baba Saheb Ambedkar Jayanti"
-msgstr "Dr. Baba Saheb Ambedkar Jayanti"
-
-msgid "Maharashtra Day"
-msgstr "Maharashtra Day"
-
+#. Bakri Id
 msgid "Bakri Id"
 msgstr "Bakri Id"
 
-msgid "Muharram"
-msgstr "Muharram"
-
-msgid "Independence Day"
-msgstr "Independence Day"
-
-msgid "Ganesh Chaturthi"
-msgstr "Ganesh Chaturthi"
-
-msgid "Mahatma Gandhi Jayanti"
-msgstr "Mahatma Gandhi Jayanti"
-
-msgid "Dussehra"
-msgstr "Dussehra"
-
-msgid "Diwali-Balipratipada"
-msgstr "Diwali-Balipratipada"
-
-msgid "Gurunanak Jayanti"
-msgstr "Guru Nanak's Birthday"
-
+#. Christmas Day
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
-msgid "Mahashivratri"
+#. Diwali Balipratipada
+msgid "Diwali Balipratipada"
+msgstr "Diwali Balipratipada"
+
+#. Diwali Laxmi Pujan
+msgid "Diwali Laxmi Pujan"
+msgstr "Diwali Laxmi Pujan"
+
+#. Dussehra
+msgid "Dussehra"
+msgstr "Dussehra"
+
+#. Dr. Baba Saheb Ambedkar Jayanti
+msgid "Dr. Baba Saheb Ambedkar Jayanti"
+msgstr "Dr. Baba Saheb Ambedkar Jayanti"
+
+#. Ganesh Chaturthi
+msgid "Ganesh Chaturthi"
+msgstr "Ganesh Chaturthi"
+
+#. Good Friday
+msgid "Good Friday"
+msgstr "Good Friday"
+
+#. Guru Nanak Jayanti
+msgid "Guru Nanak Jayanti"
+msgstr "Guru Nanak Jayanti"
+
+#. Holi
+msgid "Holi"
+msgstr "Holi"
+
+#. Id Ul Fitr (Ramadan Eid)
+msgid "Id-Ul-Fitr (Ramadan Eid)"
+msgstr "Id-Ul-Fitr (Ramadan Eid)"
+
+#. Independence Day
+msgid "Independence Day"
+msgstr "Independence Day"
+
+#. Maharashtra Day
+msgid "Maharashtra Day"
+msgstr "Maharashtra Day"
+
+#. Maha Shivaratri
+msgid "Maha Shivaratri"
 msgstr "Maha Shivaratri"
 
-msgid "Id-Ul-Fitr (Ramadan Eid)"
-msgstr "Eid al-Fitr"
+#. Mahatma Gandhi Jayanti
+msgid "Mahatma Gandhi Jayanti"
+msgstr "Mahatma Gandhi Jayanti"
 
-msgid "Shri Ram Navmi"
-msgstr "Shri Ram Navami"
+#. Mahavir Jayanti
+msgid "Mahavir Jayanti"
+msgstr "Mahavir Jayanti"
 
-#. muhurat trading was conducted
-msgid "Diwali Laxmi Pujan"
-msgstr "Diwali - Lakshmi Puja"
+#. Muharram
+msgid "Muharram"
+msgstr "Muharram"
 
-msgid "Shri Mahavir Jayanti"
-msgstr "Shri Mahavir Jayanti"
+#. Ram Navami
+msgid "Ram Navami"
+msgstr "Ram Navami"
 
-msgid "Mahatma Gandhi Jayanti/Dussehra"
-msgstr "Gandhi Jayanti/Dussehra"
-
-msgid "Prakash Gurpurb Sri Guru Nanak Dev"
-msgstr "Guru Nanak Gurpurab"
+#. Republic Day
+msgid "Republic Day"
+msgstr "Republic Day"
