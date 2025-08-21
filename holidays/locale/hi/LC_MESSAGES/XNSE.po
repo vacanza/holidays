@@ -9,7 +9,6 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
 #
 # National Stock Exchange of India holidays hi localization.
 #
@@ -26,6 +25,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: hi\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (अनुमानित)"
 
 #. Bakri Id
 msgid "Bakri Id"
@@ -47,7 +51,6 @@ msgstr "दिवाली लक्ष्मी पूजन"
 msgid "Dussehra"
 msgstr "दशहरा"
 
-#. Dr. Baba Saheb Ambedkar Jayanti
 msgid "Dr. Baba Saheb Ambedkar Jayanti"
 msgstr "डॉ. बाबा साहेब अम्बेडकर जयंती"
 
