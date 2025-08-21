@@ -29,7 +29,7 @@ class TestEritrea(CommonCountryTests, TestCase):
         self.assertAliases(Eritrea, ER, ERI)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Eritrea(years=1993))
+        self.assertNoHolidays(Eritrea(categories=Eritrea.supported_categories, years=1993))
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1994, 2050)))
@@ -46,9 +46,26 @@ class TestEritrea(CommonCountryTests, TestCase):
             (f"{year}-01-20" for year in range(1994, 2050) if year % 4 == 0),
         )
 
+    def test_womens_day(self):
+        self.assertHolidayName("Women's Day", (f"{year}-03-08" for year in range(1994, 2050)))
+
+    def test_good_friday(self):
+        name = "Good Friday"
+        self.assertHolidayName(
+            name,
+            "2020-04-17",
+            "2021-04-30",
+            "2022-04-22",
+            "2023-04-14",
+            "2024-05-03",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, range(1994, 2050))
+
     def test_orthodox_easter(self):
         name = "Orthodox Easter"
-        dt = (
+        self.assertHolidayName(
+            name,
             "2020-04-19",
             "2021-05-02",
             "2022-04-24",
@@ -56,8 +73,21 @@ class TestEritrea(CommonCountryTests, TestCase):
             "2024-05-05",
             "2025-04-20",
         )
-        self.assertHolidayName(name, dt)
         self.assertHolidayName(name, self.no_estimated_holidays, range(1994, 2050))
+
+    def test_international_workers_day(self):
+        self.assertHolidayName(
+            "International Workers' Day", (f"{year}-05-01" for year in range(1994, 2050))
+        )
+
+    def test_independence_day(self):
+        self.assertHolidayName("Independence Day", (f"{year}-05-24" for year in range(1994, 2050)))
+
+    def test_martyrs_day(self):
+        self.assertHolidayName("Martyrs' Day", (f"{year}-06-20" for year in range(1994, 2050)))
+
+    def test_revolution_day(self):
+        self.assertHolidayName("Revolution Day", (f"{year}-09-01" for year in range(1994, 2050)))
 
     def test_ethiopian_new_year(self):
         self.assertHolidayName(
@@ -73,53 +103,12 @@ class TestEritrea(CommonCountryTests, TestCase):
             (f"{year}-09-28" for year in range(1994, 2050) if year % 4 == 3),
         )
 
-    def test_fenkil_day(self):
-        name = "Fenkil Day"
-        self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-02-10" for year in range(1994, 2050))
-        )
-
-    def test_womens_day(self):
-        self.assertHolidayName("Women's Day", (f"{year}-03-08" for year in range(1994, 2050)))
-
-    def test_independence_day(self):
-        self.assertHolidayName("Independence Day", (f"{year}-05-24" for year in range(1994, 2050)))
-
-    def test_martyrs_day(self):
-        self.assertHolidayName("Martyrs' Day", (f"{year}-06-20" for year in range(1994, 2050)))
-
-    def test_revolution_day(self):
-        self.assertHolidayName("Revolution Day", (f"{year}-09-01" for year in range(1994, 2050)))
-
-    def test_eid_al_fitr(self):
-        name = "Eid al-Fitr"
-        dt = (
-            "2020-05-24",
-            "2021-05-13",
-            "2022-05-02",
-            "2023-04-21",
-            "2024-04-10",
-            "2025-03-30",
-        )
-        self.assertHolidayName(f"{name} (estimated)", dt)
-
-    def test_eid_al_adha(self):
-        name = "Eid al-Adha"
-        dt = (
-            "2020-07-31",
-            "2021-07-20",
-            "2022-07-09",
-            "2023-06-28",
-            "2024-06-16",
-            "2025-06-06",
-        )
-        self.assertHolidayName(f"{name} (estimated)", dt)
-
     def test_prophets_birthday(self):
         name = "Prophet's Birthday"
 
-        dt = (
+        self.assertHolidayName(
+            name,
+            self.no_estimated_holidays,
             "2020-10-29",
             "2021-10-18",
             "2022-10-08",
@@ -127,14 +116,49 @@ class TestEritrea(CommonCountryTests, TestCase):
             "2024-09-15",
             "2025-09-04",
         )
-        self.assertHolidayName(f"{name} (estimated)", dt)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1994, 2050))
 
-    def test_l10n_default(self):
-        self.assertLocalizedHolidays(
+    def test_eid_al_fitr(self):
+        name = "Eid al-Fitr"
+        self.assertHolidayName(
+            name,
+            self.no_estimated_holidays,
+            "2020-05-24",
+            "2021-05-13",
+            "2022-05-02",
+            "2023-04-21",
+            "2024-04-10",
+            "2025-03-30",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1994, 2050))
+
+    def test_eid_al_adha(self):
+        name = "Eid al-Adha"
+        self.assertHolidayName(
+            name,
+            self.no_estimated_holidays,
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-09",
+            "2023-06-28",
+            "2024-06-16",
+            "2025-06-06",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1994, 2050))
+
+    def test_fenkil_day(self):
+        name = "Fenkil Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.government_holidays, (f"{year}-02-10" for year in range(1994, 2050))
+        )
+
+    def test_2020(self):
+        self.assertHolidays(
+            Eritrea(years=2020),
             ("2020-01-01", "New Year's Day"),
             ("2020-01-07", "Orthodox Christmas"),
             ("2020-01-20", "Epiphany"),
-            ("2020-02-10", "Fenkil Day"),
             ("2020-03-08", "Women's Day"),
             ("2020-04-17", "Good Friday"),
             ("2020-04-19", "Orthodox Easter"),
@@ -146,4 +170,10 @@ class TestEritrea(CommonCountryTests, TestCase):
             ("2020-09-11", "Ethiopian New Year"),
             ("2020-09-27", "Finding of the True Cross"),
             ("2020-10-29", "Prophet's Birthday (estimated)"),
+        )
+
+    def test_2020_government(self):
+        self.assertHolidays(
+            Eritrea(years=2020, categories=GOVERNMENT),
+            ("2020-02-10", "Fenkil Day"),
         )

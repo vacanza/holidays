@@ -23,7 +23,7 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Eritrea>
         * <https://web.archive.org/web/20230313234629/https://explore-eritrea.com/working-hours-and-holidays/>
         * <https://web.archive.org/web/20110903130335/http://www.eritrea.be/old/eritrea-religions.htm>
-        * <https://www.mintageworld.com/media/detail/11411-fenkil-day-in-eritrea/>
+        * <https://web.archive.org/web/20250820085307/https://www.mintageworld.com/media/detail/11411-fenkil-day-in-eritrea/>
     """
 
     country = "ER"
