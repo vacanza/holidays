@@ -26,9 +26,9 @@ class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         * [Republic of Burundi's Ministry of Foreign Affairs Public Holidays List](https://web.archive.org/web/20250820080112/https://www.mae.gov.bi/en/official-holidays/)
         * <https://web.archive.org/web/20250820095115/https://www.timeanddate.com/holidays/burundi/2025>
 
-    Note that holidays falling on a sunday maybe observed on the following Monday.
-    This depends on formal announcements by the government, which only happens close
-    to the date of the holiday.
+    When it appears inappropriate for a public holiday listed in Article 1 to be observed because
+    it coincides with a Sunday, it shall be postponed to the following working day, which shall
+    accordingly be considered a public holiday and observed as such.
     """
 
     country = "BI"
