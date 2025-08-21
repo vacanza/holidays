@@ -28,6 +28,10 @@ class TestSouthSudan(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(SouthSudan, SS, SSD)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(SouthSudan(years=2010))
+        self.assertNoHolidays(SouthSudan(categories=ISLAMIC, years=2010))
+
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(2011, 2050)))
 
