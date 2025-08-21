@@ -1530,7 +1530,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>SS</td>
 <td></td>
 <td></td>
-<td></td>
+<td>ISLAMIC</td>
 </tr>
 <tr>
 <td>Spain</td>
