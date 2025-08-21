@@ -73,7 +73,7 @@ class TestEritrea(CommonCountryTests, TestCase):
             "2024-05-05",
             "2025-04-20",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1994, 2050))
+        self.assertHolidayName(name, range(1994, 2050))
 
     def test_international_workers_day(self):
         self.assertHolidayName(
