@@ -86,7 +86,7 @@ class TestBurundi(CommonCountryTests, TestCase):
             "2024-05-09",
             "2025-05-29",
         )
-        self.assertHolidayName(name, range(1962, 2025))
+        self.assertHolidayName(name, range(1962, 2050))
 
     def test_commemoration_of_the_death_of_president_pierre_nkurunziza(self):
         name = (
@@ -137,7 +137,7 @@ class TestBurundi(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_commemoration_of_the_assassination_of_president_melchior_ndadaye(self):
-        name = "Commémoration de l'Assassinat du Président Melchior Ndadáye"
+        name = "Commémoration de l'Assassinat du Président Melchior Ndadaye"
         self.assertHolidayName(name, (f"{year}-10-21" for year in range(1994, 2050)))
         self.assertNoHolidayName(name, range(1962, 1994))
         obs_dt = (
@@ -241,7 +241,7 @@ class TestBurundi(CommonCountryTests, TestCase):
                     "le Prince Louis Rwagasore (observé)"
                 ),
             ),
-            ("2024-10-21", "Commémoration de l'Assassinat du Président Melchior Ndadáye"),
+            ("2024-10-21", "Commémoration de l'Assassinat du Président Melchior Ndadaye"),
             ("2024-11-01", "Toussaint"),
             ("2024-12-25", "Noël"),
         )
@@ -280,7 +280,7 @@ class TestBurundi(CommonCountryTests, TestCase):
                 "2025-10-13",
                 "Commémoration de l'Assassinat du Héros National, le Prince Louis Rwagasore",
             ),
-            ("2025-10-21", "Commémoration de l'Assassinat du Président Melchior Ndadáye"),
+            ("2025-10-21", "Commémoration de l'Assassinat du Président Melchior Ndadaye"),
             ("2025-11-01", "Toussaint"),
             ("2025-12-25", "Noël"),
         )

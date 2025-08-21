@@ -109,7 +109,7 @@ class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
             dts_observed.add(
                 self._add_holiday_oct_21(
                     # Commemoration of the Assassination of President Melchior Ndadaye.
-                    tr("Commémoration de l'Assassinat du Président Melchior Ndadáye")
+                    tr("Commémoration de l'Assassinat du Président Melchior Ndadaye")
                 )
             )
 
