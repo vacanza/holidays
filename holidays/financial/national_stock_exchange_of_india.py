@@ -76,7 +76,7 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
         super().__init__(*args, **kwargs)
 
     BAKRI_ID_DATES = {
-        2023: (JUN, 29),
+        2023: (JUN, 28),
         2024: (JUN, 17),
     }
 
@@ -98,7 +98,6 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
 
     DUSSEHRA_DATES = {
         2023: (OCT, 24),
-        2024: (OCT, 12),
         2025: (OCT, 2),
     }
 
@@ -125,7 +124,7 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
     }
 
     HOLI_DATES = {
-        2023: (MAR, 8),
+        2023: (MAR, 7),
         2024: (MAR, 25),
         2025: (MAR, 14),
     }
@@ -164,7 +163,7 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
     }
 
     MUHARRAM_DATES = {
-        2023: (JUL, 29),
+        2024: (JUL, 17),
     }
 
     RAM_NAVAMI_DATES = {
@@ -175,7 +174,6 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
     REPUBLIC_DAY_DATES = {
         2023: (JAN, 26),
         2024: (JAN, 26),
-        2025: (JAN, 26),
     }
 
     def _populate_public_holidays(self):

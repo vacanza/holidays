@@ -20,7 +20,7 @@ from holidays.financial.national_stock_exchange_of_india import (
 from tests.common import CommonFinancialTests
 
 
-class TestIndiaNationalStockExchange(CommonFinancialTests, TestCase):
+class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(NationalStockExchangeOfIndia, years=range(2022, 2026))
@@ -35,47 +35,40 @@ class TestIndiaNationalStockExchange(CommonFinancialTests, TestCase):
         name = "Bakri Id"
         self.assertHolidayName(
             name,
-            "2023-06-29",
+            "2023-06-28",
             "2024-06-17",
         )
+
+    def test_christmas(self):
+        name = "Christmas Day"
+        self.assertHolidayName(name, "2023-12-25", "2024-12-25", "2025-12-25")
+
+    def test_diwali(self):
+        self.assertHolidayName("Diwali Balipratipada", "2023-11-14", "2025-10-22")
+        self.assertHolidayName("Diwali Laxmi Pujan", "2024-11-01", "2025-10-21")
 
     def test_dussehra(self):
         name = "Dussehra"
         self.assertHolidayName(
             name,
             "2023-10-24",
-            "2024-10-12",
             "2025-10-02",
         )
 
-    def test_diwali(self):
-        self.assertHolidayName("Diwali Balipratipada", "2023-11-14", "2025-10-22")
-        self.assertHolidayName("Diwali Laxmi Pujan", "2024-11-01", "2025-10-21")
-
-    def test_republic_day(self):
-        name = "Republic Day"
+    def test_dr_baba_saheb_ambedkar_jayanti(self):
+        name = "Dr. Baba Saheb Ambedkar Jayanti"
         self.assertHolidayName(
             name,
-            "2023-01-26",
-            "2024-01-26",
-            "2025-01-26",
+            "2023-04-14",
+            "2025-04-14",
         )
 
-    def test_mahashivratri(self):
-        name = "Maha Shivaratri"
+    def test_ganesh_chaturthi(self):
+        name = "Ganesh Chaturthi"
         self.assertHolidayName(
             name,
-            "2024-03-08",
-            "2025-02-26",
-        )
-
-    def test_holi(self):
-        name = "Holi"
-        self.assertHolidayName(
-            name,
-            "2023-03-08",
-            "2024-03-25",
-            "2025-03-14",
+            "2023-09-19",
+            "2025-08-27",
         )
 
     def test_good_friday(self):
@@ -87,13 +80,30 @@ class TestIndiaNationalStockExchange(CommonFinancialTests, TestCase):
             "2025-04-18",
         )
 
-    def test_maharashtra_day(self):
-        name = "Maharashtra Day"
+    def test_guru_nanak_jayanti(self):
+        name = "Guru Nanak Jayanti"
         self.assertHolidayName(
             name,
-            "2023-05-01",
-            "2024-05-01",
-            "2025-05-01",
+            "2023-11-27",
+            "2024-11-15",
+            "2025-11-05",
+        )
+
+    def test_holi(self):
+        name = "Holi"
+        self.assertHolidayName(
+            name,
+            "2023-03-07",
+            "2024-03-25",
+            "2025-03-14",
+        )
+
+    def test_id_ul_fitr(self):
+        name = "Id-Ul-Fitr (Ramadan Eid)"
+        self.assertHolidayName(
+            name,
+            "2024-04-11",
+            "2025-03-31",
         )
 
     def test_independence_day(self):
@@ -105,7 +115,24 @@ class TestIndiaNationalStockExchange(CommonFinancialTests, TestCase):
             "2025-08-15",
         )
 
-    def test_gandhi_jayanti(self):
+    def test_maharashtra_day(self):
+        name = "Maharashtra Day"
+        self.assertHolidayName(
+            name,
+            "2023-05-01",
+            "2024-05-01",
+            "2025-05-01",
+        )
+
+    def test_mahashivratri(self):
+        name = "Maha Shivaratri"
+        self.assertHolidayName(
+            name,
+            "2024-03-08",
+            "2025-02-26",
+        )
+
+    def test_mahatma_gandhi_jayanti(self):
         name = "Mahatma Gandhi Jayanti"
         self.assertHolidayName(
             name,
@@ -113,22 +140,48 @@ class TestIndiaNationalStockExchange(CommonFinancialTests, TestCase):
             "2024-10-02",
         )
 
-    def test_christmas(self):
-        name = "Christmas Day"
-        self.assertHolidayName(name, "2023-12-25", "2024-12-25", "2025-12-25")
+    def test_mahavir_jayanti(self):
+        name = "Mahavir Jayanti"
+        self.assertHolidayName(
+            name,
+            "2023-04-04",
+            "2025-04-10",
+        )
+
+    def test_muharram(self):
+        name = "Muharram"
+        self.assertHolidayName(
+            name,
+            "2024-07-17",
+        )
+
+    def test_ram_navami(self):
+        name = "Ram Navami"
+        self.assertHolidayName(
+            name,
+            "2023-03-30",
+            "2024-04-17",
+        )
+
+    def test_republic_day(self):
+        name = "Republic Day"
+        self.assertHolidayName(
+            name,
+            "2023-01-26",
+            "2024-01-26",
+        )
 
     def test_2023(self):
         self.assertHolidays(
             NationalStockExchangeOfIndia(years=2023),
             ("2023-01-26", "Republic Day"),
-            ("2023-03-08", "Holi"),
+            ("2023-03-07", "Holi"),
             ("2023-03-30", "Ram Navami"),
             ("2023-04-04", "Mahavir Jayanti"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-14", "Dr. Baba Saheb Ambedkar Jayanti"),
             ("2023-05-01", "Maharashtra Day"),
-            ("2023-06-29", "Bakri Id"),
-            ("2023-07-29", "Muharram"),
+            ("2023-06-28", "Bakri Id"),
             ("2023-08-15", "Independence Day"),
             ("2023-09-19", "Ganesh Chaturthi"),
             ("2023-10-02", "Mahatma Gandhi Jayanti"),
@@ -149,9 +202,9 @@ class TestIndiaNationalStockExchange(CommonFinancialTests, TestCase):
             ("2024-04-17", "Ram Navami"),
             ("2024-05-01", "Maharashtra Day"),
             ("2024-06-17", "Bakri Id"),
+            ("2024-07-17", "Muharram"),
             ("2024-08-15", "Independence Day"),
             ("2024-10-02", "Mahatma Gandhi Jayanti"),
-            ("2024-10-12", "Dussehra"),
             ("2024-11-01", "Diwali Laxmi Pujan"),
             ("2024-11-15", "Guru Nanak Jayanti"),
             ("2024-12-25", "Christmas Day"),
@@ -170,7 +223,6 @@ class TestIndiaNationalStockExchange(CommonFinancialTests, TestCase):
             ("2025-08-15", "Independence Day"),
             ("2025-08-27", "Ganesh Chaturthi"),
             ("2025-10-02", "Dussehra; Mahatma Gandhi Jayanti"),
-            ("2025-10-02", "Dussehra; Mahatma Gandhi Jayanti"),
             ("2025-10-21", "Diwali Laxmi Pujan"),
             ("2025-10-22", "Diwali Balipratipada"),
             ("2025-11-05", "Guru Nanak Jayanti"),
@@ -180,14 +232,13 @@ class TestIndiaNationalStockExchange(CommonFinancialTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2023-01-26", "Republic Day"),
-            ("2023-03-08", "Holi"),
+            ("2023-03-07", "Holi"),
             ("2023-03-30", "Ram Navami"),
             ("2023-04-04", "Mahavir Jayanti"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-14", "Dr. Baba Saheb Ambedkar Jayanti"),
             ("2023-05-01", "Maharashtra Day"),
-            ("2023-06-29", "Bakri Id"),
-            ("2023-07-29", "Muharram"),
+            ("2023-06-28", "Bakri Id"),
             ("2023-08-15", "Independence Day"),
             ("2023-09-19", "Ganesh Chaturthi"),
             ("2023-10-02", "Mahatma Gandhi Jayanti"),
@@ -201,14 +252,13 @@ class TestIndiaNationalStockExchange(CommonFinancialTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2023-01-26", "Republic Day"),
-            ("2023-03-08", "Holi"),
+            ("2023-03-07", "Holi"),
             ("2023-03-30", "Ram Navami"),
             ("2023-04-04", "Mahavir Jayanti"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-14", "Dr. Baba Saheb Ambedkar Jayanti"),
             ("2023-05-01", "Maharashtra Day"),
-            ("2023-06-29", "Bakri Id"),
-            ("2023-07-29", "Muharram"),
+            ("2023-06-28", "Bakri Id"),
             ("2023-08-15", "Independence Day"),
             ("2023-09-19", "Ganesh Chaturthi"),
             ("2023-10-02", "Mahatma Gandhi Jayanti"),
@@ -222,14 +272,13 @@ class TestIndiaNationalStockExchange(CommonFinancialTests, TestCase):
         self.assertLocalizedHolidays(
             "hi",
             ("2023-01-26", "गणतंत्र दिवस"),
-            ("2023-03-08", "होली"),
+            ("2023-03-07", "होली"),
             ("2023-03-30", "राम नवमी"),
             ("2023-04-04", "महावीर जयंती"),
             ("2023-04-07", "गुड फ्राइडे"),
             ("2023-04-14", "डॉ. बाबा साहेब अम्बेडकर जयंती"),
             ("2023-05-01", "महाराष्ट्र दिवस"),
-            ("2023-06-29", "बकरी ईद"),
-            ("2023-07-29", "मुहर्रम"),
+            ("2023-06-28", "बकरी ईद"),
             ("2023-08-15", "स्वतंत्रता दिवस"),
             ("2023-09-19", "गणेश चतुर्थी"),
             ("2023-10-02", "महात्मा गांधी जयंती"),
