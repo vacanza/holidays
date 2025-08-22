@@ -171,7 +171,8 @@ You can specify multiple categories to get a combined set of holidays:
 
 ``` python
 >>> # Get both public and bank holidays for Belgium
->>> for dt, name in sorted(holidays.BE(years=2023, language="en_US", categories=('bank', 'public')).items()):
+>>> from holidays.constants import BANK, PUBLIC
+>>> for dt, name in sorted(holidays.BE(years=2023, language="en_US", categories=(BANK, PUBLIC)).items()):
 >>>     print(dt, name)
 2023-01-01 New Year's Day
 2023-04-07 Good Friday

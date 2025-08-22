@@ -170,9 +170,10 @@ Get only public holidays:
 
 ```python
 import holidays
+from holidays.constants import PUBLIC
 
 # Get only public holidays for the United States
-us_public = holidays.UnitedStates(categories='public', years=2024)
+us_public = holidays.UnitedStates(categories=PUBLIC, years=2024)
 print(f"US public holidays in 2024: {len(us_public)}")
 ```
 
@@ -182,9 +183,10 @@ Get holidays from multiple categories:
 
 ```python
 import holidays
+from holidays.constants import PUBLIC, BANK
 
 # Get both public and bank holidays for Belgium
-belgium_holidays = holidays.Belgium(categories=('public', 'bank'), years=2024)
+belgium_holidays = holidays.Belgium(categories=(PUBLIC, BANK), years=2024)
 for date, name in sorted(belgium_holidays.items()):
     print(f"{date}: {name}")
 ```
@@ -193,9 +195,10 @@ for date, name in sorted(belgium_holidays.items()):
 
 ```python
 import holidays
+from holidays.constants import CATHOLIC
 
 # Get only Catholic holidays in Germany
-germany_catholic = holidays.Germany(categories='catholic', years=2024)
+germany_catholic = holidays.Germany(categories=CATHOLIC, years=2024)
 for date, name in sorted(germany_catholic.items()):
     print(f"{date}: {name}")
 ```
@@ -204,9 +207,10 @@ for date, name in sorted(germany_catholic.items()):
 
 ```python
 import holidays
+from holidays.constants import UNOFFICIAL
 
 # Get unofficial holidays in the United States
-us_unofficial = holidays.UnitedStates(categories='unofficial', years=2024)
+us_unofficial = holidays.UnitedStates(categories=UNOFFICIAL, years=2024)
 for date, name in sorted(us_unofficial.items()):
     print(f"{date}: {name}")
 # Output: Valentine's Day, Saint Patrick's Day, Halloween, etc.
