@@ -56,7 +56,6 @@ class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
 
         # New Year's Day.
         dt = self._add_new_years_day(tr("Ubunani"))
-
         if self._year >= 2018:
             dts_observed.add(dt)
 
