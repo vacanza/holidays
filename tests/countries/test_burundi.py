@@ -174,7 +174,6 @@ class TestBurundi(CommonCountryTests, TestCase):
         name = "Aid-El-Fithr"
         self.assertHolidayName(
             name,
-            self.no_estimated_holidays,
             "2020-05-24",
             "2021-05-13",
             "2022-05-02",
@@ -194,7 +193,6 @@ class TestBurundi(CommonCountryTests, TestCase):
         name = "Aid-El-Adha"
         self.assertHolidayName(
             name,
-            self.no_estimated_holidays,
             "2020-07-31",
             "2021-07-20",
             "2022-07-09",
