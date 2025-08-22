@@ -12,27 +12,24 @@
 
 from holidays.constants import ISLAMIC, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase
+from holidays.holiday_base import HolidayBase
 
 
-class SouthSudan(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class SouthSudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """South Sudan holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_South_Sudan>
+        * <https://web.archive.org/web/20250716011243/https://mogei.gov.ss/super/assets/documents/calendar/2024_MoGEI_Academic%20calendar%20and%20implemention%20guidelines_%20South%20Sudan_A5_final_Approved%20and%20signed%20-%203.pdf>
         * <https://web.archive.org/web/20241211222746/http://www.doitinafrica.com/south-sudan/events/public-holidays.htm>
-        * <https://web.archive.org/web/20250709010051/https://www.qppstudio.net/public-holidays/south_sudan.htm>
-        * <https://mogei.gov.ss/super/assets/documents/calendar/2024_MoGEI_Academic%20calendar%20and%20implemention%20guidelines_%20South%20Sudan_A5_final_Approved%20and%20signed%20-%203.pdf>
     """
 
     country = "SS"
     # %s (estimated).
     estimated_label = "%s (estimated)"
-    # %s (observed, estimated).
-    observed_estimated_label = "%s (observed, estimated)"
     # South Sudan became independent on 9 July 2011.
+    start_year = 2012
     supported_categories = (ISLAMIC, PUBLIC)
-    start_year = 2011
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -90,8 +87,6 @@ class SouthSudan(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         self._add_eid_al_adha_day("Eid al-Adha")
 
     def _populate_islamic_holidays(self):
-        """Additional Islamic holidays."""
-
         # Eid al-Fitr Holiday.
         self._add_eid_al_fitr_day_two("Eid al-Fitr Holiday")
 
