@@ -147,6 +147,8 @@ The holidays library supports various categories to classify different types of 
 
 ### Basic Category Usage
 
+Categories accept a single string (e.g., 'public') or an iterable of strings; matching is case-sensitive.
+
 To get holidays from specific categories:
 
 ``` python

@@ -33,7 +33,7 @@ Examples:
 - Memorial days that are observed but not as public holidays
 
 **UNOFFICIAL**
-Commonly celebrated cultural holidays with no official government recognition or mandated time off.
+Commonly celebrated cultural holidays with no official government recognition or mandated time off. These are widely observed cultural celebrations, but exclude novelty, internet, or marketing "national days."
 
 Examples:
 - Valentine's Day
@@ -136,31 +136,58 @@ Examples:
 **SABIAN**
 Holidays specific to the Sabian religious tradition.
 
+Examples:
+- Used in Iraq for Sabian community holidays
+
 **YAZIDI**
 Holidays specific to the Yazidi religious tradition.
+
+Examples:  
+- Used in Iraq for Yazidi community holidays
 
 ### Ethnic and Cultural Categories
 
 **ARMENIAN**
 Holidays specific to Armenian culture and traditions.
 
+Examples:
+- Used in Argentina for Armenian community holidays
+
 **ALBANIAN**
 Holidays specific to Albanian culture and traditions.
+
+Examples:
+- Used in North Macedonia for Albanian community holidays
 
 **BOSNIAN**
 Holidays specific to Bosnian culture and traditions.
 
+Examples:
+- Used in Bosnia and Herzegovina for Bosnian community holidays
+
 **SERBIAN**
 Holidays specific to Serbian culture and traditions.
+
+Examples:
+- Used in Montenegro and Bosnia for Serbian community holidays
 
 **TURKISH**
 Holidays specific to Turkish culture and traditions.
 
+Examples:
+- Used in North Macedonia for Turkish community holidays
+
 **ROMA**
 Holidays specific to Roma culture and traditions.
 
+Examples:
+- Used in various European countries for Roma community holidays
+
 **VLACH**
 Holidays specific to Vlach culture and traditions.
+
+Examples:
+- Used in Romania and other Balkan countries for Vlach community holidays
 
 ## Usage Examples
 
@@ -233,6 +260,8 @@ print(f"US supported categories: {us.supported_categories}")
 de = holidays.Germany()
 print(f"Germany supported categories: {de.supported_categories}")
 # Output: ('catholic', 'public')
+
+# Note: The category tuples shown are examples and may change as countries update their holiday frameworks.
 ```
 
 ### Examples by Country
