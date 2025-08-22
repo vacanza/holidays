@@ -44,6 +44,12 @@ class Turkmenistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
     supported_languages = ("en_US", "ru", "tk")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
             self, cls=TurkmenistanIslamicHolidays, show_estimated=islamic_show_estimated
