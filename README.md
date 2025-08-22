@@ -388,7 +388,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Burundi</td>
 <td>BI</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>fr_BI</strong></td>
 <td></td>
 </tr>
 <tr>
