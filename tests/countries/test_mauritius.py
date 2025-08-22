@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-
 from unittest import TestCase
 
-from holidays.countries import Mauritius, MU, MUS
+from holidays.countries.mauritius import Mauritius, MU, MUS
 from tests.common import CommonCountryTests
 
 
