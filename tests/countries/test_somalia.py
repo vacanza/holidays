@@ -52,6 +52,7 @@ class TestSomalia(CommonCountryTests, TestCase):
         name = "Eid al-Fitr"
         self.assertHolidayName(
             name,
+            self.no_estimated_holidays,
             "2020-05-24",
             "2021-05-13",
             "2022-05-02",
@@ -65,6 +66,7 @@ class TestSomalia(CommonCountryTests, TestCase):
         name = "Eid al-Adha"
         self.assertHolidayName(
             name,
+            self.no_estimated_holidays,
             "2020-07-31",
             "2021-07-20",
             "2022-07-09",
@@ -78,6 +80,7 @@ class TestSomalia(CommonCountryTests, TestCase):
         name = "Birthday of Muhammad"
         self.assertHolidayName(
             name,
+            self.no_estimated_holidays,
             "2020-10-29",
             "2021-10-18",
             "2022-10-08",
@@ -91,6 +94,7 @@ class TestSomalia(CommonCountryTests, TestCase):
         name = "Muhammad's Ascension to Heaven"
         self.assertHolidayName(
             name,
+            self.no_estimated_holidays,
             "2020-03-22",
             "2021-03-11",
             "2022-02-28",
@@ -101,9 +105,10 @@ class TestSomalia(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1960, 2050))
 
     def test_islamic_new_year(self):
-        name = "Islamic New Year (estimated)"
+        name = "Islamic New Year"
         self.assertHolidayName(
             name,
+            self.no_estimated_holidays,
             "2020-08-20",
             "2021-08-09",
             "2022-07-30",
@@ -111,12 +116,13 @@ class TestSomalia(CommonCountryTests, TestCase):
             "2024-07-07",
             "2025-06-26",
         )
-        self.assertHolidayName(name, range(1960, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1960, 2050))
 
     def test_ashura(self):
         name = "Ashura"
         self.assertHolidayName(
             name,
+            self.no_estimated_holidays,
             "2020-08-29",
             "2021-08-18",
             "2022-08-08",
@@ -138,7 +144,7 @@ class TestSomalia(CommonCountryTests, TestCase):
             ("2018-06-26", "Independence Day"),
             ("2018-07-01", "Republic Day"),
             ("2018-08-21", "Eid al-Adha"),
-            ("2018-09-11", "Islamic New Year (estimated)"),
+            ("2018-09-11", "Islamic New Year"),
             ("2018-09-20", "Ashura"),
             ("2018-11-20", "Birthday of Muhammad"),
         )
