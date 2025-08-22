@@ -44,7 +44,9 @@ class TestComoros(CommonCountryTests, TestCase):
         self.assertHolidayName("National Day", (f"{year}-07-06" for year in range(1976, 2050)))
 
     def test_maore_day(self):
-        self.assertHolidayName("Maore Day", (f"{year}-11-12" for year in range(1976, 2050)))
+        name = "Maore Day"
+        self.assertNoHolidayName(name, range(1976, 2006))
+        self.assertHolidayName(name, (f"{year}-11-12" for year in range(2006, 2050)))
 
     def test_christmas_day(self):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1976, 2050)))
@@ -93,12 +95,12 @@ class TestComoros(CommonCountryTests, TestCase):
         self.assertHolidayName(
             f"{name} (estimated)",
             "2020-10-29",
-            "2021-10-18",
             "2022-10-08",
             "2023-09-27",
             "2024-09-15",
             "2025-09-04",
         )
+        self.assertHolidayName(name, "2021-10-19")
         self.assertHolidayName(name, self.no_estimated_holidays, range(1976, 2050))
 
     def test_the_prophets_ascension_day(self):
@@ -114,6 +116,16 @@ class TestComoros(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1976, 2050))
 
+    def test_special_public_holidays(self):
+        self.assertHolidayName(
+            "National Holiday",
+            "2024-04-13",
+        )
+        self.assertHolidayName(
+            "Election Partial Day Holiday",
+            "2025-01-30",
+        )
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "New Year's Day"),
@@ -121,8 +133,11 @@ class TestComoros(CommonCountryTests, TestCase):
             ("2022-03-18", "Cheikh al Maarouf"),
             ("2022-05-01", "Labour Day"),
             ("2022-05-02", "Eid al-Fitr (estimated)"),
+            ("2022-05-03", "Eid al-Fitr (estimated)"),
+            ("2022-05-04", "Eid al-Fitr (estimated)"),
             ("2022-07-06", "National Day"),
             ("2022-07-09", "Eid al-Adha (estimated)"),
+            ("2022-07-10", "Eid al-Adha (estimated)"),
             ("2022-07-30", "Islamic New Year (estimated)"),
             ("2022-10-08", "The Prophet's Birthday (estimated)"),
             ("2022-11-12", "Maore Day"),
