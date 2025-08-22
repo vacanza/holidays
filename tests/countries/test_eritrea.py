@@ -105,7 +105,6 @@ class TestEritrea(CommonCountryTests, TestCase):
 
     def test_prophets_birthday(self):
         name = "Prophet's Birthday"
-
         self.assertHolidayName(
             name,
             self.no_estimated_holidays,
@@ -174,6 +173,6 @@ class TestEritrea(CommonCountryTests, TestCase):
 
     def test_2020_government(self):
         self.assertHolidays(
-            Eritrea(years=2020, categories=GOVERNMENT),
+            Eritrea(categories=GOVERNMENT, years=2020),
             ("2020-02-10", "Fenkil Day"),
         )
