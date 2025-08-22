@@ -287,3 +287,10 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             ("2023-11-27", "गुरु नानक जयंती"),
             ("2023-12-25", "क्रिसमस डे"),
         )
+
+    def test_not_observed(self):
+        self.assertNoHoliday(
+            "2022-05-01",
+            "2024-04-14",
+            "2022-10-02",
+        )

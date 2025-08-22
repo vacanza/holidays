@@ -15,20 +15,17 @@ from gettext import gettext as tr
 from typing import Optional
 
 from holidays.calendars.gregorian import (
-    JAN,
     FEB,
     MAR,
     APR,
-    MAY,
     JUN,
     JUL,
     AUG,
     SEP,
     OCT,
     NOV,
-    DEC,
 )
-from holidays.observed_holiday_base import ObservedHolidayBase
+from holidays.observed_holiday_base import SAT_TO_NONE, SUN_TO_NONE, ObservedHolidayBase
 
 BAKRI_ID = "BAKRI_ID"
 CHRISTMAS_DAY = "CHRISTMAS_DAY"
@@ -67,23 +64,16 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
     market = "XNSE"
     default_language = "en_IN"
     supported_languages = ("en_IN", "en_US", "hi")
-    # %s (observed).
-    observed_label = tr("%s (observed)")
     # NSE launched its services in 1994.
     start_year = 1995
 
     def __init__(self, *args, **kwargs):
+        kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
         super().__init__(*args, **kwargs)
 
     BAKRI_ID_DATES = {
         2023: (JUN, 28),
         2024: (JUN, 17),
-    }
-
-    CHRISTMAS_DAY_DATES = {
-        2023: (DEC, 25),
-        2024: (DEC, 25),
-        2025: (DEC, 25),
     }
 
     DIWALI_BALIPRATIPADA_DATES = {
@@ -99,11 +89,6 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
     DUSSEHRA_DATES = {
         2023: (OCT, 24),
         2025: (OCT, 2),
-    }
-
-    DR_BABA_SAHEB_AMBEDKAR_JAYANTI_DATES = {
-        2023: (APR, 14),
-        2025: (APR, 14),
     }
 
     GANESH_CHATURTHI_DATES = {
@@ -134,27 +119,9 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
         2025: (MAR, 31),
     }
 
-    INDEPENDENCE_DAY_DATES = {
-        2023: (AUG, 15),
-        2024: (AUG, 15),
-        2025: (AUG, 15),
-    }
-
-    MAHARASHTRA_DAY_DATES = {
-        2023: (MAY, 1),
-        2024: (MAY, 1),
-        2025: (MAY, 1),
-    }
-
     MAHA_SHIVARATRI_DATES = {
         2024: (MAR, 8),
         2025: (FEB, 26),
-    }
-
-    MAHATMA_GANDHI_JAYANTI_DATES = {
-        2023: (OCT, 2),
-        2024: (OCT, 2),
-        2025: (OCT, 2),
     }
 
     MAHAVIR_JAYANTI_DATES = {
@@ -171,19 +138,29 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
         2024: (APR, 17),
     }
 
-    REPUBLIC_DAY_DATES = {
-        2023: (JAN, 26),
-        2024: (JAN, 26),
-    }
-
     def _populate_public_holidays(self):
         # No fixed annual closures that apply every year on the same date.
 
+        # Republic Day.
+        self._move_holiday(self._add_holiday_jan_26(tr("Republic Day")))
+
+        # Dr. Baba Saheb Ambedkar Jayanti.
+        self._move_holiday(self._add_holiday_apr_14(tr("Dr. Baba Saheb Ambedkar Jayanti")))
+
+        # Maharashtra Day.
+        self._move_holiday(self._add_holiday_may_1(tr("Maharashtra Day")))
+
+        # Independence Day.
+        self._move_holiday(self._add_holiday_aug_15(tr("Independence Day")))
+
+        # Mahatma Gandhi Jayanti.
+        self._move_holiday(self._add_holiday_oct_2(tr("Mahatma Gandhi Jayanti")))
+
+        # Christmas Day.
+        self._move_holiday(self._add_holiday_dec_25(tr("Christmas Day")))
+
         # Bakri Id
         self._get_holiday(tr("Bakri Id"), BAKRI_ID, self._year)
-
-        # Christmas Day
-        self._get_holiday(tr("Christmas Day"), CHRISTMAS_DAY, self._year)
 
         # Diwali Balipratipada
         self._get_holiday(tr("Diwali Balipratipada"), DIWALI_BALIPRATIPADA, self._year)
@@ -193,11 +170,6 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
 
         # Dussehra
         self._get_holiday(tr("Dussehra"), DUSSEHRA, self._year)
-
-        # Dr. Baba Saheb Ambedkar Jayanti
-        self._get_holiday(
-            tr("Dr. Baba Saheb Ambedkar Jayanti"), DR_BABA_SAHEB_AMBEDKAR_JAYANTI, self._year
-        )
 
         # Ganesh Chaturthi
         self._get_holiday(tr("Ganesh Chaturthi"), GANESH_CHATURTHI, self._year)
@@ -214,17 +186,8 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
         # Id Ul Fitr (Ramadan Eid)
         self._get_holiday(tr("Id-Ul-Fitr (Ramadan Eid)"), ID_UL_FITR, self._year)
 
-        # Independence Day
-        self._get_holiday(tr("Independence Day"), INDEPENDENCE_DAY, self._year)
-
-        # Maharashtra Day
-        self._get_holiday(tr("Maharashtra Day"), MAHARASHTRA_DAY, self._year)
-
         # Maha Shivaratri
         self._get_holiday(tr("Maha Shivaratri"), MAHA_SHIVARATRI, self._year)
-
-        # Mahatma Gandhi Jayanti
-        self._get_holiday(tr("Mahatma Gandhi Jayanti"), MAHATMA_GANDHI_JAYANTI, self._year)
 
         # Mahavir Jayanti
         self._get_holiday(tr("Mahavir Jayanti"), MAHAVIR_JAYANTI, self._year)
@@ -234,9 +197,6 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
 
         # Ram Navami
         self._get_holiday(tr("Ram Navami"), RAM_NAVAMI, self._year)
-
-        # Republic Day
-        self._get_holiday(tr("Republic Day"), REPUBLIC_DAY, self._year)
 
     def _get_holiday(self, name, holiday: str, year: int) -> Optional[date]:
         exact_date = getattr(self, f"{holiday}_DATES", {})

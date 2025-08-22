@@ -26,18 +26,33 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_IN\n"
 
-#. %s (observed).
-#, c-format
-msgid "%s (observed)"
-msgstr "%s (observed)"
+#. Republic Day.
+msgid "Republic Day"
+msgstr "Republic Day"
+
+#. Dr. Baba Saheb Ambedkar Jayanti.
+msgid "Dr. Baba Saheb Ambedkar Jayanti"
+msgstr "Dr. Baba Saheb Ambedkar Jayanti"
+
+#. Maharashtra Day.
+msgid "Maharashtra Day"
+msgstr "Maharashtra Day"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "Independence Day"
+
+#. Mahatma Gandhi Jayanti.
+msgid "Mahatma Gandhi Jayanti"
+msgstr "Mahatma Gandhi Jayanti"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Christmas Day"
 
 #. Bakri Id
 msgid "Bakri Id"
 msgstr "Bakri Id"
-
-#. Christmas Day
-msgid "Christmas Day"
-msgstr "Christmas Day"
 
 #. Diwali Balipratipada
 msgid "Diwali Balipratipada"
@@ -50,9 +65,6 @@ msgstr "Diwali Laxmi Pujan"
 #. Dussehra
 msgid "Dussehra"
 msgstr "Dussehra"
-
-msgid "Dr. Baba Saheb Ambedkar Jayanti"
-msgstr "Dr. Baba Saheb Ambedkar Jayanti"
 
 #. Ganesh Chaturthi
 msgid "Ganesh Chaturthi"
@@ -74,21 +86,9 @@ msgstr "Holi"
 msgid "Id-Ul-Fitr (Ramadan Eid)"
 msgstr "Id-Ul-Fitr (Ramadan Eid)"
 
-#. Independence Day
-msgid "Independence Day"
-msgstr "Independence Day"
-
-#. Maharashtra Day
-msgid "Maharashtra Day"
-msgstr "Maharashtra Day"
-
 #. Maha Shivaratri
 msgid "Maha Shivaratri"
 msgstr "Maha Shivaratri"
-
-#. Mahatma Gandhi Jayanti
-msgid "Mahatma Gandhi Jayanti"
-msgstr "Mahatma Gandhi Jayanti"
 
 #. Mahavir Jayanti
 msgid "Mahavir Jayanti"
@@ -101,7 +101,3 @@ msgstr "Muharram"
 #. Ram Navami
 msgid "Ram Navami"
 msgstr "Ram Navami"
-
-#. Republic Day
-msgid "Republic Day"
-msgstr "Republic Day"
