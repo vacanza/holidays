@@ -214,6 +214,7 @@ COUNTRIES: RegistryDict = {
     "slovakia": ("Slovakia", "SK", "SVK"),
     "slovenia": ("Slovenia", "SI", "SVN"),
     "solomon_islands": ("SolomonIslands", "SB", "SLB"),
+    "somalia": ("Somalia", "SO", "SOM"),
     "south_africa": ("SouthAfrica", "ZA", "ZAF"),
     "south_georgia_and_the_south_sandwich_islands": (
         "SouthGeorgiaAndTheSouthSandwichIslands",
