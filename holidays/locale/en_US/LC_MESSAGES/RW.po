@@ -41,13 +41,17 @@ msgstr "%s (observed)"
 msgid "%s (yizihijwe, yagereranijwe)"
 msgstr "%s (observed, estimated)"
 
-#. New Year's Day.
-msgid "Ubunani"
-msgstr "New Year's Day"
-
 #. Day after New Year's Day.
 msgid "Umunsi ukurikira Ubunani"
 msgstr "Day after New Year's Day"
+
+#. Boxing Day.
+msgid "Umunsi ukurikira Noheli"
+msgstr "Boxing Day"
+
+#. New Year's Day.
+msgid "Ubunani"
+msgstr "New Year's Day"
 
 #. National Heroes' Day.
 msgid "Umunsi w'Intwari"
@@ -88,10 +92,6 @@ msgstr "Assumption Day"
 #. Christmas Day.
 msgid "Noheli"
 msgstr "Christmas Day"
-
-#. Boxing Day.
-msgid "Umunsi ukurikira Noheli"
-msgstr "Boxing Day"
 
 #. Eid al-Fitr.
 msgid "Eid El Fitr"
