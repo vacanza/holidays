@@ -52,7 +52,6 @@ class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
         IslamicHolidays.__init__(
             self, cls=RwandaIslamicHolidays, show_estimated=islamic_show_estimated
         )
-        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         kwargs.setdefault("observed_since", 2017)
         super().__init__(*args, **kwargs)
 
