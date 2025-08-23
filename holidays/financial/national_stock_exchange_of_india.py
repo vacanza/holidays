@@ -16,14 +16,13 @@ from typing import Optional
 
 from holidays.calendars.gregorian import (
     MAR,
-    APR,
-    JUN,
     JUL,
     OCT,
     NOV,
 )
 from holidays.groups.christian import ChristianHolidays
 from holidays.groups.hindu import HinduCalendarHolidays
+from holidays.groups.islamic import IslamicHolidays
 from holidays.observed_holiday_base import SAT_TO_NONE, SUN_TO_NONE, ObservedHolidayBase
 
 BAKRI_ID = "BAKRI_ID"
@@ -47,7 +46,9 @@ RAM_NAVAMI = "RAM_NAVAMI"
 REPUBLIC_DAY = "REPUBLIC_DAY"
 
 
-class NationalStockExchangeOfIndia(ObservedHolidayBase, HinduCalendarHolidays, ChristianHolidays):
+class NationalStockExchangeOfIndia(
+    ObservedHolidayBase, HinduCalendarHolidays, ChristianHolidays, IslamicHolidays
+):
     """National Stock Exchange of India (NSE) holidays.
 
     References:
@@ -63,6 +64,7 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase, HinduCalendarHolidays, C
     market = "XNSE"
     default_language = "en_IN"
     supported_languages = ("en_IN", "en_US", "hi")
+    estimated_label = tr("%s")
     # NSE launched its services in 1994.
     start_year = 1995
 
@@ -70,12 +72,8 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase, HinduCalendarHolidays, C
         kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
         HinduCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
         super().__init__(*args, **kwargs)
-
-    BAKRI_ID_DATES = {
-        2023: (JUN, 28),
-        2024: (JUN, 17),
-    }
 
     DIWALI_BALIPRATIPADA_DATES = {
         2023: (NOV, 14),
@@ -91,11 +89,6 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase, HinduCalendarHolidays, C
         2023: (MAR, 7),
         2024: (MAR, 25),
         2025: (MAR, 14),
-    }
-
-    ID_UL_FITR_DATES = {
-        2024: (APR, 11),
-        2025: (MAR, 31),
     }
 
     MUHARRAM_DATES = {
@@ -124,7 +117,10 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase, HinduCalendarHolidays, C
         self._move_holiday(self._add_christmas_day(tr("Christmas Day")))
 
         # Bakri Id
-        self._get_holiday(tr("Bakri Id"), BAKRI_ID, self._year)
+        if self._year == 2023:
+            self._traverse_set(self._add_eid_al_adha_day(tr("Bakri Id")))
+        else:
+            self._traverse_set(self._add_eid_al_adha_day_two(tr("Bakri Id")))
 
         # Diwali Balipratipada
         self._get_holiday(tr("Diwali Balipratipada"), DIWALI_BALIPRATIPADA, self._year)
@@ -151,7 +147,7 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase, HinduCalendarHolidays, C
             self._move_holiday(self._add_holi(tr("Holi")))
 
         # Id Ul Fitr (Ramadan Eid)
-        self._get_holiday(tr("Id-Ul-Fitr (Ramadan Eid)"), ID_UL_FITR, self._year)
+        self._traverse_set(self._add_eid_al_fitr_day_two(tr("Id-Ul-Fitr (Ramadan Eid)")))
 
         # Maha Shivaratri
         self._move_holiday(self._add_maha_shivaratri(tr("Maha Shivaratri")))
@@ -169,6 +165,11 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase, HinduCalendarHolidays, C
         exact_date = getattr(self, f"{holiday}_DATES", {})
         dt = exact_date.get(year)
         return self._add_holiday(name, date(year, *dt)) if dt else None
+
+    def _traverse_set(self, dts: set[date]) -> set[date]:
+        for dt in dts:
+            self._move_holiday(dt)
+        return dts
 
 
 class NSE(NationalStockExchangeOfIndia):

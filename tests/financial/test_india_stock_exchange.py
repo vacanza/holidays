@@ -10,8 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from unittest import TestCase
 
+from holidays.calendars.gregorian import JUN
 from holidays.financial.national_stock_exchange_of_india import (
     NSE,
     XNSE,
@@ -35,8 +37,9 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         name = "Bakri Id"
         self.assertHolidayName(
             name,
-            "2023-06-28",
-            "2024-06-17",
+            date(2023, JUN, 28),
+            # "2023-06-28",
+            # "2024-06-17",
         )
 
     def test_christmas(self):

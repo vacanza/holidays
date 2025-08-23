@@ -26,6 +26,10 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_IN\n"
 
+#, c-format
+msgid "%s"
+msgstr "%s"
+
 #. Republic Day.
 msgid "Republic Day"
 msgstr "गणतंत्र दिवस"
@@ -50,7 +54,6 @@ msgstr "महात्मा गांधी जयंती"
 msgid "Christmas Day"
 msgstr "क्रिसमस डे"
 
-#. Bakri Id
 msgid "Bakri Id"
 msgstr "बकरी ईद"
 

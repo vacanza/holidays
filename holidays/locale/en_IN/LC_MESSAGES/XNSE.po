@@ -26,6 +26,10 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_IN\n"
 
+#, c-format
+msgid "%s"
+msgstr ""
+
 #. Republic Day.
 msgid "Republic Day"
 msgstr ""
@@ -50,7 +54,6 @@ msgstr ""
 msgid "Christmas Day"
 msgstr ""
 
-#. Bakri Id
 msgid "Bakri Id"
 msgstr ""
 
