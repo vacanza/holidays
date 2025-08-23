@@ -41,12 +41,16 @@ msgstr ""
 msgid "%s (yizihijwe, yagereranijwe)"
 msgstr ""
 
-#. New Year's Day.
-msgid "Ubunani"
-msgstr ""
-
 #. Day after New Year's Day.
 msgid "Umunsi ukurikira Ubunani"
+msgstr ""
+
+#. Boxing Day.
+msgid "Umunsi ukurikira Noheli"
+msgstr ""
+
+#. New Year's Day.
+msgid "Ubunani"
 msgstr ""
 
 #. National Heroes' Day.
@@ -87,10 +91,6 @@ msgstr ""
 
 #. Christmas Day.
 msgid "Noheli"
-msgstr ""
-
-#. Boxing Day.
-msgid "Umunsi ukurikira Noheli"
 msgstr ""
 
 #. Eid al-Fitr.

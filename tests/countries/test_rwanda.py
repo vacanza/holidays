@@ -44,6 +44,12 @@ class TestRwanda(CommonCountryTests, TestCase):
         name = "Umunsi ukurikira Ubunani"
         self.assertHolidayName(name, (f"{year}-01-02" for year in range(2016, 2050)))
         self.assertNoHolidayName(name, range(2012, 2016))
+        dt = (
+            "2021-01-04",
+            "2027-01-04",
+        )
+        self.assertHolidayName(f"{name} (yizihijwe)", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_national_heroes_day(self):
         name = "Umunsi w'Intwari"
@@ -153,9 +159,14 @@ class TestRwanda(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_boxing_day(self):
-        self.assertHolidayName(
-            "Umunsi ukurikira Noheli", (f"{year}-12-26" for year in range(2012, 2050))
+        name = "Umunsi ukurikira Noheli"
+        self.assertHolidayName(name, (f"{year}-12-26" for year in range(2012, 2050)))
+        dt = (
+            "2020-12-28",
+            "2026-12-28",
         )
+        self.assertHolidayName(f"{name} (yizihijwe)", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_eid_al_fitr(self):
         name = "Eid El Fitr"

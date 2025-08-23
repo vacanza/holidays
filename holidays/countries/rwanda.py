@@ -10,12 +10,17 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, JUN, JUL, AUG
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_TO_NEXT_WORKDAY,
+    SAT_SUN_TO_NEXT_WORKDAY,
+)
 
 
 class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
@@ -51,6 +56,25 @@ class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
         kwargs.setdefault("observed_since", 2017)
         super().__init__(*args, **kwargs)
 
+    def _populate_observed(self, dts: set[date], multiple: bool = False) -> None:
+        """
+        Applies `SAT_TO_NEXT_WORKDAY` instead of `SAT_SUN_TO_NEXT_WORKDAY`
+        observed_rule for Day after New Year's Day and Boxing Day.
+        """
+        special_cases = {
+            # Day after New Year's Day.
+            self.tr("Umunsi ukurikira Ubunani"),
+            # Boxing Day.
+            self.tr("Umunsi ukurikira Noheli"),
+        }
+        for dt in sorted(dts):
+            for name in self.get_list(dt):
+                self._add_observed(
+                    dt,
+                    name,
+                    SAT_TO_NEXT_WORKDAY if name in special_cases else SAT_SUN_TO_NEXT_WORKDAY,
+                )
+
     def _populate_public_holidays(self):
         dts_observed = set()
 
@@ -62,7 +86,7 @@ class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
         # Added via Presidential Order N° 42/03 of 30/06/2015.
         if self._year >= 2016:
             # Day after New Year's Day.
-            self._add_new_years_day_two(tr("Umunsi ukurikira Ubunani"))
+            dts_observed.add(self._add_new_years_day_two(tr("Umunsi ukurikira Ubunani")))
 
         # National Heroes' Day.
         dts_observed.add(self._add_holiday_feb_1(tr("Umunsi w'Intwari")))
@@ -99,7 +123,7 @@ class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
         dts_observed.add(self._add_christmas_day(tr("Noheli")))
 
         # Boxing Day.
-        self._add_christmas_day_two(tr("Umunsi ukurikira Noheli"))
+        dts_observed.add(self._add_christmas_day_two(tr("Umunsi ukurikira Noheli")))
 
         # Eid al-Fitr.
         dts_observed.update(self._add_eid_al_fitr_day(tr("Eid El Fitr")))
