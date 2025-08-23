@@ -388,7 +388,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Burundi</td>
 <td>BI</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>fr_BI</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -593,6 +593,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Provinces: AN (Annobón, Annobon), BN (Bioko Norte, North Bioko), BS (Bioko Sur, South Bioko), CS (Centro Sur, South Center), DJ (Djibloho), KN (Kié-Ntem, Kie-Ntem), LI (Litoral, Coast), WN (Wele-Nzas)</td>
 <td>en_US, <strong>es</strong></td>
 <td></td>
+</tr>
+<tr>
+<td>Eritrea</td>
+<td>ER</td>
+<td></td>
+<td></td>
+<td>GOVERNMENT</td>
 </tr>
 <tr>
 <td>Estonia</td>

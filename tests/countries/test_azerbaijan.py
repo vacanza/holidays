@@ -20,7 +20,9 @@ from tests.common import CommonCountryTests, WorkingDayTests
 class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Azerbaijan, years=range(1990, 2050))
+        years = range(1990, 2050)
+        super().setUpClass(Azerbaijan, years=years)
+        cls.no_estimated_holidays = Azerbaijan(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(Azerbaijan, AZ, AZE)
@@ -246,7 +248,7 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
             "2023-04-22",
         )
         self.assertNoHolidayName(name, "2004-11-15", "2005-11-04")
-        self.assertNoHolidayName(name, range(1990, 1993))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1990, 1993))
 
     def test_eid_al_adha(self):
         name = "Qurban bayrami"
@@ -264,7 +266,7 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
             "2023-06-29",
         )
         self.assertNoHolidayName(name, "2004-02-02", "2005-01-23", "2006-01-11")
-        self.assertNoHolidayName(name, range(1990, 1993))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1990, 1993))
 
     def test_observed_days(self):
         observed_holidays = (

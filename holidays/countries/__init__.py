@@ -76,6 +76,7 @@ from holidays.countries.ecuador import Ecuador, EC, ECU
 from holidays.countries.egypt import Egypt, EG, EGY
 from holidays.countries.el_salvador import ElSalvador, SV, SLV
 from holidays.countries.equatorial_guinea import EquatorialGuinea, GQ, GNQ
+from holidays.countries.eritrea import Eritrea, ER, ERI
 from holidays.countries.estonia import Estonia, EE, EST
 from holidays.countries.eswatini import Eswatini, SZ, SZW, Swaziland
 from holidays.countries.ethiopia import Ethiopia, ET, ETH
