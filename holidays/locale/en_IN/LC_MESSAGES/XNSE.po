@@ -78,7 +78,6 @@ msgstr ""
 msgid "Guru Nanak Jayanti"
 msgstr ""
 
-#. Holi
 msgid "Holi"
 msgstr ""
 

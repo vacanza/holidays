@@ -15,16 +15,15 @@ from gettext import gettext as tr
 from typing import Optional
 
 from holidays.calendars.gregorian import (
-    FEB,
     MAR,
     APR,
     JUN,
     JUL,
-    AUG,
-    SEP,
     OCT,
     NOV,
 )
+from holidays.groups.christian import ChristianHolidays
+from holidays.groups.hindu import HinduCalendarHolidays
 from holidays.observed_holiday_base import SAT_TO_NONE, SUN_TO_NONE, ObservedHolidayBase
 
 BAKRI_ID = "BAKRI_ID"
@@ -48,7 +47,7 @@ RAM_NAVAMI = "RAM_NAVAMI"
 REPUBLIC_DAY = "REPUBLIC_DAY"
 
 
-class NationalStockExchangeOfIndia(ObservedHolidayBase):
+class NationalStockExchangeOfIndia(ObservedHolidayBase, HinduCalendarHolidays, ChristianHolidays):
     """National Stock Exchange of India (NSE) holidays.
 
     References:
@@ -69,6 +68,8 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
 
     def __init__(self, *args, **kwargs):
         kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
+        HinduCalendarHolidays.__init__(self)
+        ChristianHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     BAKRI_ID_DATES = {
@@ -86,28 +87,6 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
         2025: (OCT, 21),
     }
 
-    DUSSEHRA_DATES = {
-        2023: (OCT, 24),
-        2025: (OCT, 2),
-    }
-
-    GANESH_CHATURTHI_DATES = {
-        2023: (SEP, 19),
-        2025: (AUG, 27),
-    }
-
-    GOOD_FRIDAY_DATES = {
-        2023: (APR, 7),
-        2024: (MAR, 29),
-        2025: (APR, 18),
-    }
-
-    GURU_NANAK_JAYANTI_DATES = {
-        2023: (NOV, 27),
-        2024: (NOV, 15),
-        2025: (NOV, 5),
-    }
-
     HOLI_DATES = {
         2023: (MAR, 7),
         2024: (MAR, 25),
@@ -119,23 +98,8 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
         2025: (MAR, 31),
     }
 
-    MAHA_SHIVARATRI_DATES = {
-        2024: (MAR, 8),
-        2025: (FEB, 26),
-    }
-
-    MAHAVIR_JAYANTI_DATES = {
-        2023: (APR, 4),
-        2025: (APR, 10),
-    }
-
     MUHARRAM_DATES = {
         2024: (JUL, 17),
-    }
-
-    RAM_NAVAMI_DATES = {
-        2023: (MAR, 30),
-        2024: (APR, 17),
     }
 
     def _populate_public_holidays(self):
@@ -157,7 +121,7 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
         self._move_holiday(self._add_holiday_oct_2(tr("Mahatma Gandhi Jayanti")))
 
         # Christmas Day.
-        self._move_holiday(self._add_holiday_dec_25(tr("Christmas Day")))
+        self._move_holiday(self._add_christmas_day(tr("Christmas Day")))
 
         # Bakri Id
         self._get_holiday(tr("Bakri Id"), BAKRI_ID, self._year)
@@ -169,34 +133,37 @@ class NationalStockExchangeOfIndia(ObservedHolidayBase):
         self._get_holiday(tr("Diwali Laxmi Pujan"), DIWALI_LAXMI_PUJAN, self._year)
 
         # Dussehra
-        self._get_holiday(tr("Dussehra"), DUSSEHRA, self._year)
+        self._move_holiday(self._add_dussehra(tr("Dussehra")))
 
         # Ganesh Chaturthi
-        self._get_holiday(tr("Ganesh Chaturthi"), GANESH_CHATURTHI, self._year)
+        self._move_holiday(self._add_ganesh_chaturthi(tr("Ganesh Chaturthi")))
 
         # Good Friday
-        self._get_holiday(tr("Good Friday"), GOOD_FRIDAY, self._year)
+        self._move_holiday(self._add_good_friday(tr("Good Friday")))
 
         # Guru Nanak Jayanti
-        self._get_holiday(tr("Guru Nanak Jayanti"), GURU_NANAK_JAYANTI, self._year)
+        self._move_holiday(self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti")))
 
         # Holi
-        self._get_holiday(tr("Holi"), HOLI, self._year)
+        if self._year == 2023:
+            self._move_holiday(self._add_nepal_holi(tr("Holi")))
+        else:
+            self._move_holiday(self._add_holi(tr("Holi")))
 
         # Id Ul Fitr (Ramadan Eid)
         self._get_holiday(tr("Id-Ul-Fitr (Ramadan Eid)"), ID_UL_FITR, self._year)
 
         # Maha Shivaratri
-        self._get_holiday(tr("Maha Shivaratri"), MAHA_SHIVARATRI, self._year)
+        self._move_holiday(self._add_maha_shivaratri(tr("Maha Shivaratri")))
 
         # Mahavir Jayanti
-        self._get_holiday(tr("Mahavir Jayanti"), MAHAVIR_JAYANTI, self._year)
+        self._move_holiday(self._add_mahavir_jayanti(tr("Mahavir Jayanti")))
 
         # Muharram
         self._get_holiday(tr("Muharram"), MUHARRAM, self._year)
 
         # Ram Navami
-        self._get_holiday(tr("Ram Navami"), RAM_NAVAMI, self._year)
+        self._move_holiday(self._add_ram_navami(tr("Ram Navami")))
 
     def _get_holiday(self, name, holiday: str, year: int) -> Optional[date]:
         exact_date = getattr(self, f"{holiday}_DATES", {})
