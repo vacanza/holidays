@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 233 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 234 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -388,7 +388,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Burundi</td>
 <td>BI</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>fr_BI</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -593,6 +593,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Provinces: AN (Annobón, Annobon), BN (Bioko Norte, North Bioko), BS (Bioko Sur, South Bioko), CS (Centro Sur, South Center), DJ (Djibloho), KN (Kié-Ntem, Kie-Ntem), LI (Litoral, Coast), WN (Wele-Nzas)</td>
 <td>en_US, <strong>es</strong></td>
 <td></td>
+</tr>
+<tr>
+<td>Eritrea</td>
+<td>ER</td>
+<td></td>
+<td></td>
+<td>GOVERNMENT</td>
 </tr>
 <tr>
 <td>Estonia</td>
