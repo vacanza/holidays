@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries import GuineaBissau, GW, GNB
+from holidays.countries.guinea_bissau import GuineaBissau, GW, GNB
 from tests.common import CommonCountryTests
 
 
