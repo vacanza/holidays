@@ -48,7 +48,7 @@ msgid "Рӯзи байналхалқии якдилии меҳнаткашон"
 msgstr ""
 
 #. Victory Day.
-msgid "Рўзи Ғалаба дар Ҷанги Бузурги Ватанӣ"
+msgid "Рӯзи Ғалаба дар Ҷанги Бузурги Ватанӣ"
 msgstr ""
 
 #. Day of National Unity.
@@ -64,9 +64,9 @@ msgid "Рӯзи Конститутсияи Ҷумҳурии Тоҷикистон
 msgstr ""
 
 #. Eid al-Fitr.
-msgid "Рўзи иди Рамазон"
+msgid "Рӯзи иди Рамазон"
 msgstr ""
 
 #. Eid al-Adha.
-msgid "Рўзи иди Қурбон"
+msgid "Рӯзи иди Қурбон"
 msgstr ""

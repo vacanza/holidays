@@ -75,7 +75,7 @@ class Tajikistan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         self._add_world_war_two_victory_day(
             # Victory Day.
-            tr("Рўзи Ғалаба дар Ҷанги Бузурги Ватанӣ"),
+            tr("Рӯзи Ғалаба дар Ҷанги Бузурги Ватанӣ"),
             is_western=False,
         )
 
@@ -92,10 +92,10 @@ class Tajikistan(HolidayBase, InternationalHolidays, IslamicHolidays):
             self._add_holiday_nov_6(tr("Рӯзи Конститутсияи Ҷумҳурии Тоҷикистон"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Рўзи иди Рамазон"))
+        self._add_eid_al_fitr_day(tr("Рӯзи иди Рамазон"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Рўзи иди Қурбон"))
+        self._add_eid_al_adha_day(tr("Рӯзи иди Қурбон"))
 
 
 class TJ(Tajikistan):

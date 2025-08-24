@@ -49,7 +49,7 @@ class TestTajikistan(CommonCountryTests, TestCase):
 
     def test_victory_day(self):
         self.assertHolidayName(
-            "Рўзи Ғалаба дар Ҷанги Бузурги Ватанӣ", (f"{year}-05-09" for year in range(1992, 2050))
+            "Рӯзи Ғалаба дар Ҷанги Бузурги Ватанӣ", (f"{year}-05-09" for year in range(1992, 2050))
         )
 
     def test_unity_day(self):
@@ -69,7 +69,7 @@ class TestTajikistan(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1992, 1994))
 
     def test_eid_al_fitr(self):
-        name = "Рўзи иди Рамазон"
+        name = "Рӯзи иди Рамазон"
         self.assertHolidayName(
             name,
             "2020-05-24",
@@ -82,7 +82,7 @@ class TestTajikistan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1992, 2050))
 
     def test_eid_al_adha(self):
-        name = "Рўзи иди Қурбон"
+        name = "Рӯзи иди Қурбон"
         self.assertHolidayName(
             name,
             "2020-07-31",
@@ -102,9 +102,9 @@ class TestTajikistan(CommonCountryTests, TestCase):
             ("2024-03-22", "Иди байналмилалии Наврӯз"),
             ("2024-03-23", "Иди байналмилалии Наврӯз"),
             ("2024-03-24", "Иди байналмилалии Наврӯз"),
-            ("2024-04-10", "Рўзи иди Рамазон"),
-            ("2024-05-09", "Рўзи Ғалаба дар Ҷанги Бузурги Ватанӣ"),
-            ("2024-06-16", "Рўзи иди Қурбон"),
+            ("2024-04-10", "Рӯзи иди Рамазон"),
+            ("2024-05-09", "Рӯзи Ғалаба дар Ҷанги Бузурги Ватанӣ"),
+            ("2024-06-16", "Рӯзи иди Қурбон"),
             ("2024-06-27", "Рӯзи Ваҳдати миллӣ"),
             ("2024-09-09", "Рӯзи Истиқлолияти давлатии Ҷумҳурии Тоҷикистон"),
             ("2024-11-06", "Рӯзи Конститутсияи Ҷумҳурии Тоҷикистон"),
