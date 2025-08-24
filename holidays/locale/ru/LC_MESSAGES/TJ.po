@@ -27,6 +27,11 @@ msgstr ""
 "X-Generator: Poedit 3.7\n"
 "X-Source-Language: tg\n"
 
+#. %s (estimated).
+#, c-format
+msgid "%s (таҳминан)"
+msgstr "%s (приблизительная дата)"
+
 #. New Year's Day.
 msgid "Соли Нав"
 msgstr "Новый год"
@@ -35,13 +40,17 @@ msgstr "Новый год"
 msgid "Рӯзи Модар"
 msgstr "День Матери"
 
-#. Spring Festival.
+#. International Nowruz Day.
 msgid "Иди байналмилалии Наврӯз"
-msgstr "Национальный праздник весны"
+msgstr "Международный праздник Навруз"
+
+#. International Workers' Solidarity Day.
+msgid "Рӯзи байналхалқии якдилии меҳнаткашон"
+msgstr "Международный день солидарности трудящихся"
 
 #. Victory Day.
-msgid "Рӯзи Ғалаба"
-msgstr "День Победы в Великой Отечественной войне 1941-1945 годов"
+msgid "Рўзи Ғалаба дар Ҷанги Бузурги Ватанӣ"
+msgstr "День Победы в Великой Отечественной войне"
 
 #. Day of National Unity.
 msgid "Рӯзи Ваҳдати миллӣ"
@@ -49,16 +58,16 @@ msgstr "День Национального единства"
 
 #. Independence Day.
 msgid "Рӯзи Истиқлолияти давлатии Ҷумҳурии Тоҷикистон"
-msgstr "День независимости"
+msgstr "День Государственной независимости Республики Таджикистан"
 
 #. Constitution Day.
 msgid "Рӯзи Конститутсияи Ҷумҳурии Тоҷикистон"
 msgstr "День Конституции Республики Таджикистан"
 
 #. Eid al-Fitr.
-msgid "Иди Рамазон"
-msgstr "Ораза байрам"
+msgid "Рўзи иди Рамазон"
+msgstr "Ураза-байрам"
 
 #. Eid al-Adha.
-msgid "Иди Қурбон"
-msgstr "Курбан байрам"
+msgid "Рўзи иди Қурбон"
+msgstr "Курбан-байрам"

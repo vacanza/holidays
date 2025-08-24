@@ -26,6 +26,11 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: tg\n"
 
+#. %s (estimated).
+#, c-format
+msgid "%s (таҳминан)"
+msgstr ""
+
 #. New Year's Day.
 msgid "Соли Нав"
 msgstr ""
@@ -34,12 +39,16 @@ msgstr ""
 msgid "Рӯзи Модар"
 msgstr ""
 
-#. Spring Festival.
+#. International Nowruz Day.
 msgid "Иди байналмилалии Наврӯз"
 msgstr ""
 
+#. International Workers' Solidarity Day.
+msgid "Рӯзи байналхалқии якдилии меҳнаткашон"
+msgstr ""
+
 #. Victory Day.
-msgid "Рӯзи Ғалаба"
+msgid "Рўзи Ғалаба дар Ҷанги Бузурги Ватанӣ"
 msgstr ""
 
 #. Day of National Unity.
@@ -55,9 +64,9 @@ msgid "Рӯзи Конститутсияи Ҷумҳурии Тоҷикистон
 msgstr ""
 
 #. Eid al-Fitr.
-msgid "Иди Рамазон"
+msgid "Рўзи иди Рамазон"
 msgstr ""
 
 #. Eid al-Adha.
-msgid "Иди Қурбон"
+msgid "Рўзи иди Қурбон"
 msgstr ""

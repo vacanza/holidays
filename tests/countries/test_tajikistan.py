@@ -35,15 +35,22 @@ class TestTajikistan(CommonCountryTests, TestCase):
     def test_mothers_day(self):
         self.assertHolidayName("Рӯзи Модар", (f"{year}-03-08" for year in range(1992, 2050)))
 
-    def test_spring_festival(self):
+    def test_nowruz(self):
         name = "Иди байналмилалии Наврӯз"
         self.assertHolidayName(name, (f"{year}-03-21" for year in range(1992, 2050)))
         self.assertHolidayName(name, (f"{year}-03-22" for year in range(1992, 2050)))
-        self.assertHolidayName(name, (f"{year}-03-23" for year in range(1992, 2050)))
-        self.assertHolidayName(name, (f"{year}-03-24" for year in range(1992, 2050)))
+        self.assertHolidayName(name, (f"{year}-03-23" for year in range(2003, 2050)))
+        self.assertHolidayName(name, (f"{year}-03-24" for year in range(2006, 2050)))
+
+    def test_workers_day(self):
+        name = "Рӯзи байналхалқии якдилии меҳнаткашон"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1992, 2017)))
+        self.assertNoHolidayName(name, range(2017, 2050))
 
     def test_victory_day(self):
-        self.assertHolidayName("Рӯзи Ғалаба", (f"{year}-05-09" for year in range(1992, 2050)))
+        self.assertHolidayName(
+            "Рўзи Ғалаба дар Ҷанги Бузурги Ватанӣ", (f"{year}-05-09" for year in range(1992, 2050))
+        )
 
     def test_unity_day(self):
         name = "Рӯзи Ваҳдати миллӣ"
@@ -62,7 +69,7 @@ class TestTajikistan(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1992, 1994))
 
     def test_eid_al_fitr(self):
-        name = "Иди Рамазон"
+        name = "Рўзи иди Рамазон"
         self.assertHolidayName(
             name,
             "2020-05-24",
@@ -75,7 +82,7 @@ class TestTajikistan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1992, 2050))
 
     def test_eid_al_adha(self):
-        name = "Иди Қурбон"
+        name = "Рўзи иди Қурбон"
         self.assertHolidayName(
             name,
             "2020-07-31",
@@ -95,9 +102,9 @@ class TestTajikistan(CommonCountryTests, TestCase):
             ("2024-03-22", "Иди байналмилалии Наврӯз"),
             ("2024-03-23", "Иди байналмилалии Наврӯз"),
             ("2024-03-24", "Иди байналмилалии Наврӯз"),
-            ("2024-04-10", "Иди Рамазон"),
-            ("2024-05-09", "Рӯзи Ғалаба"),
-            ("2024-06-16", "Иди Қурбон"),
+            ("2024-04-10", "Рўзи иди Рамазон"),
+            ("2024-05-09", "Рўзи Ғалаба дар Ҷанги Бузурги Ватанӣ"),
+            ("2024-06-16", "Рўзи иди Қурбон"),
             ("2024-06-27", "Рӯзи Ваҳдати миллӣ"),
             ("2024-09-09", "Рӯзи Истиқлолияти давлатии Ҷумҳурии Тоҷикистон"),
             ("2024-11-06", "Рӯзи Конститутсияи Ҷумҳурии Тоҷикистон"),
@@ -125,14 +132,14 @@ class TestTajikistan(CommonCountryTests, TestCase):
             "ru",
             ("2024-01-01", "Новый год"),
             ("2024-03-08", "День Матери"),
-            ("2024-03-21", "Национальный праздник весны"),
-            ("2024-03-22", "Национальный праздник весны"),
-            ("2024-03-23", "Национальный праздник весны"),
-            ("2024-03-24", "Национальный праздник весны"),
-            ("2024-04-10", "Ораза байрам"),
-            ("2024-05-09", "День Победы в Великой Отечественной войне 1941-1945 годов"),
-            ("2024-06-16", "Курбан байрам"),
+            ("2024-03-21", "Международный праздник Навруз"),
+            ("2024-03-22", "Международный праздник Навруз"),
+            ("2024-03-23", "Международный праздник Навруз"),
+            ("2024-03-24", "Международный праздник Навруз"),
+            ("2024-04-10", "Ураза-байрам"),
+            ("2024-05-09", "День Победы в Великой Отечественной войне"),
+            ("2024-06-16", "Курбан-байрам"),
             ("2024-06-27", "День Национального единства"),
-            ("2024-09-09", "День независимости"),
+            ("2024-09-09", "День Государственной независимости Республики Таджикистан"),
             ("2024-11-06", "День Конституции Республики Таджикистан"),
         )

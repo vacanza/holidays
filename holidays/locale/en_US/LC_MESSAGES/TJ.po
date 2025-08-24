@@ -27,6 +27,11 @@ msgstr ""
 "X-Generator: Poedit 3.7\n"
 "X-Source-Language: tg\n"
 
+#. %s (estimated).
+#, c-format
+msgid "%s (таҳминан)"
+msgstr "%s (estimated)"
+
 #. New Year's Day.
 msgid "Соли Нав"
 msgstr "New Year's Day"
@@ -35,12 +40,16 @@ msgstr "New Year's Day"
 msgid "Рӯзи Модар"
 msgstr "Mother's Day"
 
-#. Spring Festival.
+#. International Nowruz Day.
 msgid "Иди байналмилалии Наврӯз"
 msgstr "Spring Festival"
 
+#. International Workers' Solidarity Day.
+msgid "Рӯзи байналхалқии якдилии меҳнаткашон"
+msgstr "International Workers' Solidarity Day"
+
 #. Victory Day.
-msgid "Рӯзи Ғалаба"
+msgid "Рўзи Ғалаба дар Ҷанги Бузурги Ватанӣ"
 msgstr "Victory Day"
 
 #. Day of National Unity.
@@ -56,9 +65,9 @@ msgid "Рӯзи Конститутсияи Ҷумҳурии Тоҷикистон
 msgstr "Constitution Day"
 
 #. Eid al-Fitr.
-msgid "Иди Рамазон"
+msgid "Рўзи иди Рамазон"
 msgstr "Eid al-Fitr"
 
 #. Eid al-Adha.
-msgid "Иди Қурбон"
+msgid "Рўзи иди Қурбон"
 msgstr "Eid al-Adha"

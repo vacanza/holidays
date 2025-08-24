@@ -10,18 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# holidays
-# --------
-# A fast, efficient Python library for generating country, province and state
-# specific sets of holidays on the fly. It aims to make determining whether a
-# specific date is a holiday as fast and flexible as possible.
-#
-# Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
-#          dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#          ryanss <ryanssdev@icloud.com> (c) 2014-2017
-# Website: https://github.com/vacanza/holidays
-# License: MIT (see LICENSE file)
-
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
@@ -35,15 +23,15 @@ class Tajikistan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Tajikistan>
-        * [Independence Day](https://tnu.tj/index.php/en/9-september-independence-day-of-the-republic-of-tajikistan/#:~:text=This%20joyful%20event%20took%20place,holiday%20for%20the%20Tajik%20nation.)
-        * [Constitution Day](https://www.tajmedun.tj/en/news/university/the-day-of-the-constitution-of-the-republic-of-tajikistan/#:~:text=Presentation%20was%20prepared%20by%20students,ensuring%20peace%20on%20Tajik%20soil.)
-        * [2011 Law](http://www.portali-huquqi.tj/publicadliya/view_qonunhoview.php?showdetail=&asosi_id=155#:~:text=%E2%84%96%20716)%3B,%D0%B4%D0%B5%D0%BD%D1%8C%20%D0%B5%D0%B6%D0%B5%D0%B3%D0%BE%D0%B4%D0%BD%D0%BE%20%D0%B2%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%D0%BE%D0%B2%D0%BF%D0%B0%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%3B)
+        * [Law #3 from Nov 3, 1995](https://web.archive.org/web/20250823162418/http://www.portali-huquqi.tj/publicadliya/view_qonunhoview.php?showdetail=&asosi_id=155&language=tj)
+        * [Law #753 from Aug 2, 2011](https://web.archive.org/web/20250823162543/http://www.portali-huquqi.tj/publicadliya/view_qonunhoview.php?showdetail=&asosi_id=12997&language=tj)
+        * [Independence Day](https://web.archive.org/web/20250324203223/https://tnu.tj/index.php/en/9-september-independence-day-of-the-republic-of-tajikistan/)
     """
 
     country = "TJ"
     default_language = "tg"
     # %s (estimated).
-    estimated_label = "%s (таҳминан)"
+    estimated_label = tr("%s (таҳминан)")
     start_year = 1992
     supported_languages = ("en_US", "ru", "tg")
 
@@ -67,16 +55,28 @@ class Tajikistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Mother's Day.
         self._add_holiday_mar_8(tr("Рӯзи Модар"))
 
-        # Spring Festival.
+        # International Nowruz Day.
         name = tr("Иди байналмилалии Наврӯз")
         self._add_holiday_mar_21(name)
         self._add_holiday_mar_22(name)
-        self._add_holiday_mar_23(name)
-        self._add_holiday_mar_24(name)
 
-        # Victory Day.
-        self._add_holiday_may_9(tr("Рӯзи Ғалаба"))
+        # Established by Law #13 from May 3, 2002.
+        if self._year >= 2003:
+            self._add_holiday_mar_23(name)
+        # Established by Law #146 from Dec 28, 2005.
+        if self._year >= 2006:
+            self._add_holiday_mar_24(name)
+        # Abolished by Law #1390 from Feb 24, 2017.
+        if self._year <= 2016:
+            # International Workers' Solidarity Day.
+            self._add_labor_day(tr("Рӯзи байналхалқии якдилии меҳнаткашон"))
+        self._add_world_war_two_victory_day(
+            # Victory Day.
+            tr("Рўзи Ғалаба дар Ҷанги Бузурги Ватанӣ"),
+            is_western=False,
+        )
 
+        # Established by Law #628 from May 22, 1998.
         if self._year >= 1998:
             # Day of National Unity.
             self._add_holiday_jun_27(tr("Рӯзи Ваҳдати миллӣ"))
@@ -89,10 +89,10 @@ class Tajikistan(HolidayBase, InternationalHolidays, IslamicHolidays):
             self._add_holiday_nov_6(tr("Рӯзи Конститутсияи Ҷумҳурии Тоҷикистон"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Иди Рамазон"))
+        self._add_eid_al_fitr_day(tr("Рўзи иди Рамазон"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Иди Қурбон"))
+        self._add_eid_al_adha_day(tr("Рўзи иди Қурбон"))
 
 
 class TJ(Tajikistan):
