@@ -41,6 +41,8 @@ class TestTajikistan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-03-22" for year in range(1992, 2050)))
         self.assertHolidayName(name, (f"{year}-03-23" for year in range(2003, 2050)))
         self.assertHolidayName(name, (f"{year}-03-24" for year in range(2006, 2050)))
+        self.assertNoHolidayName(name, (f"{year}-03-23" for year in range(1992, 2003)))
+        self.assertNoHolidayName(name, (f"{year}-03-24" for year in range(1992, 2006)))
 
     def test_workers_day(self):
         name = "Рӯзи байналхалқии якдилии меҳнаткашон"
