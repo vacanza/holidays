@@ -130,7 +130,7 @@ class NationalStockExchangeOfIndia(
         self._move_holiday(self._add_ganesh_chaturthi(tr("Ganesh Chaturthi")))
 
         # Good Friday
-        self._move_holiday(self._add_good_friday(tr("Good Friday")))
+        self._add_good_friday(tr("Good Friday"))
 
         # Guru Nanak Jayanti
         self._move_holiday(self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti")))
