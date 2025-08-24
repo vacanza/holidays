@@ -81,6 +81,7 @@ msgstr "Good Friday"
 msgid "Guru Nanak Jayanti"
 msgstr "Guru Nanak Jayanti"
 
+#. Holi
 msgid "Holi"
 msgstr "Holi"
 

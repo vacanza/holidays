@@ -14,6 +14,7 @@ from datetime import date
 from gettext import gettext as tr
 from typing import Optional
 
+from holidays.calendars import _CustomHinduHolidays
 from holidays.calendars.gregorian import (
     MAR,
     JUL,
@@ -70,7 +71,7 @@ class NationalStockExchangeOfIndia(
 
     def __init__(self, *args, **kwargs):
         kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
-        HinduCalendarHolidays.__init__(self)
+        HinduCalendarHolidays.__init__(self, cls=NationalStockExchangeOfIndiaHinduHolidays)
         ChristianHolidays.__init__(self)
         IslamicHolidays.__init__(self)
         super().__init__(*args, **kwargs)
@@ -83,12 +84,6 @@ class NationalStockExchangeOfIndia(
     DIWALI_LAXMI_PUJAN_DATES = {
         2024: (NOV, 1),
         2025: (OCT, 21),
-    }
-
-    HOLI_DATES = {
-        2023: (MAR, 7),
-        2024: (MAR, 25),
-        2025: (MAR, 14),
     }
 
     MUHARRAM_DATES = {
@@ -141,10 +136,7 @@ class NationalStockExchangeOfIndia(
         self._move_holiday(self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti")))
 
         # Holi
-        if self._year == 2023:
-            self._move_holiday(self._add_nepal_holi(tr("Holi")))
-        else:
-            self._move_holiday(self._add_holi(tr("Holi")))
+        self._move_holiday(self._add_holi(tr("Holi")))
 
         # Id Ul Fitr (Ramadan Eid)
         self._traverse_set(self._add_eid_al_fitr_day_two(tr("Id-Ul-Fitr (Ramadan Eid)")))
@@ -182,3 +174,9 @@ class XNSE(NationalStockExchangeOfIndia):
     """Alias of NationalStockExchangeOfIndia"""
 
     pass
+
+
+class NationalStockExchangeOfIndiaHinduHolidays(_CustomHinduHolidays):
+    HOLI_DATES = {
+        2023: (MAR, 7),
+    }

@@ -81,6 +81,7 @@ msgstr "गुड फ्राइडे"
 msgid "Guru Nanak Jayanti"
 msgstr "गुरु नानक जयंती"
 
+#. Holi
 msgid "Holi"
 msgstr "होली"
 
