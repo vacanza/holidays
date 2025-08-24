@@ -23,7 +23,8 @@ class Uganda(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         * [Uganda Public Holidays 2020](https://web.archive.org/web/20230515221809/https://publicholidays.africa/uganda/2020-dates/)
         * [National Heroes Day](https://web.archive.org/web/20230622162351/https://publicholidays.africa/uganda/national-heroes-day/)
         * [UGANDA PUBLIC HOLIDAYS 2025](https://web.archive.org/web/20250710193157/https://publicholidays.co.ug/)
-        * (https://web.archive.org/web/20250604101328/https://www.education.go.ug/wp-content/uploads/2025/01/SCHOOL-CALENDER-2025.pdf)
+        * [Uganda School Calendar 2025](https://web.archive.org/web/20250604101328/https://www.education.go.ug/wp-content/uploads/2025/01/SCHOOL-CALENDER-2025.pdf)
+        * (https://web.archive.org/web/20250621140041/https://ulii.org/akn/ug/act/1965/23/eng@2000-12-31)
     """
 
     country = "UG"
@@ -39,7 +40,7 @@ class Uganda(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
+        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -67,8 +68,9 @@ class Uganda(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         # Uganda Martyrs' Day.
         self._add_holiday_jun_3("Uganda Martyrs' Day")
 
-        # National Heroes' Day.
-        self._add_holiday_jun_9("National Heroes' Day")
+        if self._year >= 2001:
+            # National Heroes' Day.
+            self._add_holiday_jun_9("National Heroes' Day")
 
         # Independence Day.
         self._add_holiday_oct_9("Independence Day")

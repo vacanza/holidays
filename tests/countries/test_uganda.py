@@ -77,9 +77,9 @@ class TestUganda(CommonCountryTests, TestCase):
         )
 
     def test_national_heroes_day(self):
-        self.assertHolidayName(
-            "National Heroes' Day", (f"{year}-06-09" for year in range(1963, 2050))
-        )
+        name = "National Heroes' Day"
+        self.assertHolidayName(name, (f"{year}-06-09" for year in range(2001, 2050)))
+        self.assertNoHolidayName(name, range(1963, 2001))
 
     def test_independence_day(self):
         self.assertHolidayName("Independence Day", (f"{year}-10-09" for year in range(1963, 2050)))
@@ -91,9 +91,10 @@ class TestUganda(CommonCountryTests, TestCase):
         self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in range(1963, 2050)))
 
     def test_eid_al_fitr(self):
-        name = "Eid al-Fitr (estimated)"
+        name = "Eid al-Fitr"
         self.assertHolidayName(
             name,
+            self.no_estimated_holidays,
             "2020-05-24",
             "2021-05-13",
             "2022-05-02",
@@ -104,9 +105,10 @@ class TestUganda(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1963, 2050))
 
     def test_eid_al_adha(self):
-        name = "Eid al-Adha (estimated)"
+        name = "Eid al-Adha"
         self.assertHolidayName(
             name,
+            self.no_estimated_holidays,
             "2020-07-31",
             "2021-07-20",
             "2022-07-09",
