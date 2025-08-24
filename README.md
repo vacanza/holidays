@@ -1379,6 +1379,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Rwanda</td>
+<td>RW</td>
+<td></td>
+<td>en_US, fr, <strong>rw</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Saint Barthélemy</td>
 <td>BL</td>
 <td>Can also be loaded as country FR, subdivision BL</td>

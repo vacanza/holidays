@@ -196,6 +196,7 @@ COUNTRIES: RegistryDict = {
     "reunion": ("Reunion", "RE", "REU", "HolidaysRE"),
     "romania": ("Romania", "RO", "ROU"),
     "russia": ("Russia", "RU", "RUS"),
+    "rwanda": ("Rwanda", "RW", "RWA"),
     "saint_barthelemy": ("SaintBarthelemy", "BL", "BLM", "HolidaysBL"),
     "saint_kitts_and_nevis": ("SaintKittsAndNevis", "KN", "KNA"),
     "saint_lucia": ("SaintLucia", "LC", "LCA"),
