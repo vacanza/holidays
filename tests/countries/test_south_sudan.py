@@ -21,19 +21,25 @@ class TestSouthSudan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(2012, 2050)
-        super().setUpClass(SouthSudan, years=years, years_non_observed=years)
+        super().setUpClass(SouthSudan, years=years)
         cls.no_estimated_holidays = SouthSudan(years=years, islamic_show_estimated=False)
-        cls.islamic_holidays = SouthSudan(categories=ISLAMIC, years=years)
+        cls.islamic_holidays = SouthSudan(
+            categories=ISLAMIC, years=years, islamic_show_estimated=False
+        )
 
     def test_country_aliases(self):
         self.assertAliases(SouthSudan, SS, SSD)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(SouthSudan(years=2010))
-        self.assertNoHolidays(SouthSudan(categories=ISLAMIC, years=2010))
+        self.assertNoHolidays(SouthSudan(categories=SouthSudan.supported_categories, years=2011))
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(2012, 2050)))
+
+    def test_peace_agreement_day(self):
+        self.assertHolidayName(
+            "Peace Agreement Day", (f"{year}-01-09" for year in range(2012, 2050))
+        )
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -45,19 +51,6 @@ class TestSouthSudan(CommonCountryTests, TestCase):
             "2023-04-07",
             "2024-03-29",
             "2025-04-18",
-        )
-        self.assertHolidayName(name, range(2012, 2050))
-
-    def test_holy_saturday(self):
-        name = "Holy Saturday"
-        self.assertHolidayName(
-            name,
-            "2020-04-11",
-            "2021-04-03",
-            "2022-04-16",
-            "2023-04-08",
-            "2024-03-30",
-            "2025-04-19",
         )
         self.assertHolidayName(name, range(2012, 2050))
 
@@ -87,8 +80,10 @@ class TestSouthSudan(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(2012, 2050))
 
-    def test_labor_day(self):
-        self.assertHolidayName("Labour Day", (f"{year}-05-01" for year in range(2012, 2050)))
+    def test_international_labor_day(self):
+        self.assertHolidayName(
+            "International Labour Day", (f"{year}-05-01" for year in range(2012, 2050))
+        )
 
     def test_spla_day(self):
         self.assertHolidayName("SPLA Day", (f"{year}-05-16" for year in range(2012, 2050)))
@@ -139,7 +134,8 @@ class TestSouthSudan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
 
     def test_eid_al_fitr_holiday(self):
-        name = "Eid al-Fitr Holiday (estimated)"
+        name = "Eid al-Fitr Holiday"
+        self.assertNoHolidayName(name)
         self.assertHolidayName(
             name,
             self.islamic_holidays,
@@ -153,7 +149,8 @@ class TestSouthSudan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.islamic_holidays, range(2012, 2050))
 
     def test_eid_al_adha_holiday(self):
-        name = "Eid al-Adha Holiday (estimated)"
+        name = "Eid al-Adha Holiday"
+        self.assertNoHolidayName(name)
         self.assertHolidayName(
             name,
             self.islamic_holidays,
@@ -170,11 +167,11 @@ class TestSouthSudan(CommonCountryTests, TestCase):
         self.assertHolidays(
             SouthSudan(years=2020),
             ("2020-01-01", "New Year's Day"),
+            ("2020-01-09", "Peace Agreement Day"),
             ("2020-04-10", "Good Friday"),
-            ("2020-04-11", "Holy Saturday"),
             ("2020-04-12", "Easter Sunday"),
             ("2020-04-13", "Easter Monday"),
-            ("2020-05-01", "Labour Day"),
+            ("2020-05-01", "International Labour Day"),
             ("2020-05-16", "SPLA Day"),
             ("2020-05-24", "Eid al-Fitr (estimated)"),
             ("2020-07-09", "Independence Day"),

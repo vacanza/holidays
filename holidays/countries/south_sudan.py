@@ -20,8 +20,9 @@ class SouthSudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_South_Sudan>
-        * <https://web.archive.org/web/20250716011243/https://mogei.gov.ss/super/assets/documents/calendar/2024_MoGEI_Academic%20calendar%20and%20implemention%20guidelines_%20South%20Sudan_A5_final_Approved%20and%20signed%20-%203.pdf>
+        * [Guildlines for Opening Schools in South Sudan for the Academic Year, 2024](https://web.archive.org/web/20250716011243/https://mogei.gov.ss/super/assets/documents/calendar/2024_MoGEI_Academic%20calendar%20and%20implemention%20guidelines_%20South%20Sudan_A5_final_Approved%20and%20signed%20-%203.pdf)
         * <https://web.archive.org/web/20241211222746/http://www.doitinafrica.com/south-sudan/events/public-holidays.htm>
+        * <https://docs.southsudanngoforum.org/sites/default/files/2022-03/HRPublic%20Holidays%202022HR.pdf>
     """
 
     country = "SS"
@@ -47,11 +48,11 @@ class SouthSudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         # New Year's Day.
         self._add_new_years_day("New Year's Day")
 
+        # Peace Agreement Day.
+        self._add_holiday_jan_9("Peace Agreement Day")
+
         # Good Friday.
         self._add_good_friday("Good Friday")
-
-        # Holy Saturday.
-        self._add_holy_saturday("Holy Saturday")
 
         # Easter Sunday.
         self._add_easter_sunday("Easter Sunday")
@@ -59,8 +60,8 @@ class SouthSudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
 
-        # Labour Day.
-        self._add_labor_day("Labour Day")
+        # International Labour Day.
+        self._add_labor_day("International Labour Day")
 
         # SPLA Day.
         self._add_holiday_may_16("SPLA Day")
