@@ -70,7 +70,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
     def test_soviet_victory_day(self):
         name = "روز پیروزی شوروی"
         self.assertHolidayName(name, (f"{year}-05-09" for year in range(1978, 1989)))
-        self.assertNoHolidayName(name, range(1919, 1978), (1989, 2050))
+        self.assertNoHolidayName(name, range(1919, 1978), range(1989, 2050))
 
     def test_islamic_emirat_victory_day(self):
         name = "روز پیروزی امارت اسلامی"
@@ -96,7 +96,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
     def test_martyrs_day(self):
         name = "روز شهیدان"
         self.assertHolidayName(name, (f"{year}-09-09" for year in range(2012, 2021)))
-        self.assertNoHolidayName(name, range(1919, 2012), (2021, 2050))
+        self.assertNoHolidayName(name, range(1919, 2012), range(2021, 2050))
 
     def test_ashura(self):
         name = "عاشورا"

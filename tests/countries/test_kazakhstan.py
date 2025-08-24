@@ -19,7 +19,9 @@ from tests.common import CommonCountryTests, WorkingDayTests
 class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Kazakhstan, years=range(1991, 2050))
+        years = range(1991, 2050)
+        super().setUpClass(Kazakhstan, years=years, years_non_observed=years)
+        cls.no_estimated_holidays = Kazakhstan(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(Kazakhstan, KZ, KAZ)
@@ -168,9 +170,7 @@ class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
             self.assertHolidayName(name, f"{year}-03-21", f"{year}-03-22", f"{year}-03-23")
         self.assertNoHolidayName(name, range(1991, 2002))
         for year in set(range(2002, 2010)) - {2005, 2007}:
-            self.assertNoNonObservedHoliday(
-                Kazakhstan(observed=False, years=year), f"{year}-03-21", f"{year}-03-23"
-            )
+            self.assertNoNonObservedHoliday(f"{year}-03-21", f"{year}-03-23")
 
     def test_solidarity_day(self):
         self.assertHolidayName(
@@ -218,10 +218,7 @@ class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidayName(name, (f"{year}-12-16" for year in range(1991, 2050)))
         self.assertHolidayName(name, (f"{year}-12-17" for year in range(2002, 2022)))
         self.assertNoHoliday(f"{year}-12-17" for year in range(1991, 2002))
-        self.assertNoNonObservedHoliday(
-            Kazakhstan(observed=False, years=range(2022, 2050)),
-            (f"{year}-12-17" for year in range(2022, 2050)),
-        )
+        self.assertNoNonObservedHoliday(f"{year}-12-17" for year in range(2022, 2050))
 
     def test_kurban_ait(self):
         name = "Құрбан айт"
@@ -248,6 +245,7 @@ class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-06-16",
             "2025-06-06",
         )
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1991, 2006))
 
     def test_observed(self):
         observed_holidays = (

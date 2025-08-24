@@ -1,0 +1,99 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Burundi holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.80\n"
+"POT-Creation-Date: 2025-08-20 16:45+0700\n"
+"PO-Revision-Date: 2025-08-21 12:13+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.7\n"
+"X-Source-Language: fr_BI\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimé)"
+msgstr "%s (estimated)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observé, estimé)"
+msgstr "%s (observed, estimated)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observé)"
+msgstr "%s (observed)"
+
+#. New Year's Day.
+msgid "Jour de l'an"
+msgstr "New Year's Day"
+
+#. Unity Day.
+msgid "Fête de l'Unité"
+msgstr "Unity Day"
+
+#. Commemoration of the Assassination of President Cyprien Ntaryamira.
+msgid "Commémoration de l'Assassinat du Président Cyprien Ntaryamira"
+msgstr "Commemoration of the Assassination of President Cyprien Ntaryamira"
+
+#. International Labor Day.
+msgid "Fête Internationale du Travail"
+msgstr "International Labor Day"
+
+#. Ascension Day.
+msgid "Jour de l'Ascension"
+msgstr "Ascension Day"
+
+#. National Day of Patriotism and Commemoration of the Death of President Pierre Nkurunziza.
+msgid "Journée Nationale du Patriotisme et Commémoration de la Mort du Président Pierre Nkurunziza"
+msgstr "National Day of Patriotism and Commemoration of the Death of President Pierre Nkurunziza"
+
+#. Independence Day.
+msgid "Anniversaire de l'Indépendance"
+msgstr "Independence Day"
+
+#. Assumption Day.
+msgid "Assomption"
+msgstr "Assumption Day"
+
+#. Commemoration of the Assassination of National Hero, Prince Louis Rwagasore.
+msgid "Commémoration de l'Assassinat du Héros National, le Prince Louis Rwagasore"
+msgstr "Commemoration of the Assassination of National Hero, Prince Louis Rwagasore"
+
+#. Commemoration of the Assassination of President Melchior Ndadaye.
+msgid "Commémoration de l'Assassinat du Président Melchior Ndadaye"
+msgstr "Commemoration of the Assassination of President Melchior Ndadaye"
+
+#. All Saints' Day.
+msgid "Toussaint"
+msgstr "All Saints' Day"
+
+#. Christmas Day.
+msgid "Noël"
+msgstr "Christmas Day"
+
+#. Eid al-Fitr.
+msgid "Aid-El-Fithr"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Aid-El-Adha"
+msgstr "Eid al-Adha"

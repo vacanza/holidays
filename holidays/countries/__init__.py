@@ -76,6 +76,7 @@ from holidays.countries.ecuador import Ecuador, EC, ECU
 from holidays.countries.egypt import Egypt, EG, EGY
 from holidays.countries.el_salvador import ElSalvador, SV, SLV
 from holidays.countries.equatorial_guinea import EquatorialGuinea, GQ, GNQ
+from holidays.countries.eritrea import Eritrea, ER, ERI
 from holidays.countries.estonia import Estonia, EE, EST
 from holidays.countries.eswatini import Eswatini, SZ, SZW, Swaziland
 from holidays.countries.ethiopia import Ethiopia, ET, ETH
@@ -192,6 +193,7 @@ from holidays.countries.qatar import Qatar, QA, QAT
 from holidays.countries.reunion import Reunion, RE, REU, HolidaysRE
 from holidays.countries.romania import Romania, RO, ROU
 from holidays.countries.russia import Russia, RU, RUS
+from holidays.countries.rwanda import Rwanda, RW, RWA
 from holidays.countries.saint_barthelemy import SaintBarthelemy, BL, BLM, HolidaysBL
 from holidays.countries.saint_kitts_and_nevis import SaintKittsAndNevis, KN, KNA
 from holidays.countries.saint_lucia import SaintLucia, LC, LCA
