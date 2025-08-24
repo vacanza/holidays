@@ -31,8 +31,15 @@ class TestPackage(TestCase):
             "summary": "Open World Holidays Framework",
             "version": holidays.__version__,
         }.items():
-            self.assertIn(attr_name, ph_metadata)
-            self.assertEqual(ph_metadata[attr_name], attr_value, attr_name)
+            with self.subTest(attr=attr_name):
+                self.assertIn(attr_name, ph_metadata)
+                self.assertEqual(
+                    ph_metadata[attr_name],
+                    attr_value,
+                    msg="You may need to run `make package` to update the metadata."
+                    if attr_name == "version"
+                    else None,
+                )
 
         for attr_name in (
             "classifier",

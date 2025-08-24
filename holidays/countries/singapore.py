@@ -60,7 +60,11 @@ class Singapore(
     """
 
     country = "SG"
+    # %s (estimated).
+    estimated_label = tr("%s (estimated)")
     default_language = "en_SG"
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (observed, estimated)")
     # %s (observed).
     observed_label = tr("%s (observed)")
     supported_languages = ("en_SG", "en_US", "th")
