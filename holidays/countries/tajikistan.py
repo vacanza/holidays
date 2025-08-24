@@ -63,13 +63,16 @@ class Tajikistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Established by Law #13 from May 3, 2002.
         if self._year >= 2003:
             self._add_holiday_mar_23(name)
+
         # Established by Law #146 from Dec 28, 2005.
         if self._year >= 2006:
             self._add_holiday_mar_24(name)
+
         # Abolished by Law #1390 from Feb 24, 2017.
         if self._year <= 2016:
             # International Workers' Solidarity Day.
             self._add_labor_day(tr("Рӯзи байналхалқии якдилии меҳнаткашон"))
+
         self._add_world_war_two_victory_day(
             # Victory Day.
             tr("Рўзи Ғалаба дар Ҷанги Бузурги Ватанӣ"),

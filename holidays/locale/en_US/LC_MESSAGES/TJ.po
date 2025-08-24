@@ -42,7 +42,7 @@ msgstr "Mother's Day"
 
 #. International Nowruz Day.
 msgid "Иди байналмилалии Наврӯз"
-msgstr "Spring Festival"
+msgstr "International Nowruz Day"
 
 #. International Workers' Solidarity Day.
 msgid "Рӯзи байналхалқии якдилии меҳнаткашон"
