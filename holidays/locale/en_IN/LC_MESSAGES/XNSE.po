@@ -54,6 +54,7 @@ msgstr ""
 msgid "Christmas Day"
 msgstr ""
 
+#. Bakri Id
 msgid "Bakri Id"
 msgstr ""
 

@@ -54,6 +54,7 @@ msgstr "महात्मा गांधी जयंती"
 msgid "Christmas Day"
 msgstr "क्रिसमस डे"
 
+#. Bakri Id
 msgid "Bakri Id"
 msgstr "बकरी ईद"
 

@@ -14,8 +14,9 @@ from datetime import date
 from gettext import gettext as tr
 from typing import Optional
 
-from holidays.calendars import _CustomHinduHolidays
+from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
+    JUN,
     MAR,
     JUL,
     OCT,
@@ -73,13 +74,8 @@ class NationalStockExchangeOfIndia(
         kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
         HinduCalendarHolidays.__init__(self, cls=NationalStockExchangeOfIndiaHinduHolidays)
         ChristianHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
+        IslamicHolidays.__init__(self, cls=NationalStockExchangeOfIndiaIslamicHolidays)
         super().__init__(*args, **kwargs)
-
-    DIWALI_BALIPRATIPADA_DATES = {
-        2023: (NOV, 14),
-        2025: (OCT, 22),
-    }
 
     DIWALI_LAXMI_PUJAN_DATES = {
         2024: (NOV, 1),
@@ -112,13 +108,10 @@ class NationalStockExchangeOfIndia(
         self._move_holiday(self._add_christmas_day(tr("Christmas Day")))
 
         # Bakri Id
-        if self._year == 2023:
-            self._traverse_set(self._add_eid_al_adha_day(tr("Bakri Id")))
-        else:
-            self._traverse_set(self._add_eid_al_adha_day_two(tr("Bakri Id")))
+        self._traverse_set(self._add_eid_al_adha_day_two(tr("Bakri Id")))
 
         # Diwali Balipratipada
-        self._get_holiday(tr("Diwali Balipratipada"), DIWALI_BALIPRATIPADA, self._year)
+        self._move_holiday(self._add_govardhan_puja(tr("Diwali Balipratipada")))
 
         # Diwali Laxmi Pujan
         self._get_holiday(tr("Diwali Laxmi Pujan"), DIWALI_LAXMI_PUJAN, self._year)
@@ -179,4 +172,16 @@ class XNSE(NationalStockExchangeOfIndia):
 class NationalStockExchangeOfIndiaHinduHolidays(_CustomHinduHolidays):
     HOLI_DATES = {
         2023: (MAR, 7),
+    }
+
+    GOVARDHAN_PUJA_DATES = {
+        2020: (NOV, 16),
+        2022: (OCT, 26),
+        2023: (NOV, 14),
+    }
+
+
+class NationalStockExchangeOfIndiaIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES = {
+        2023: (JUN, 27),
     }
