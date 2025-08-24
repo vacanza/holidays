@@ -29,7 +29,6 @@ class Comoros(
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Comoros>
         * [Prophet's Birthday 2021](https://web.archive.org/web/20250712053206/https://scontent-del1-2.xx.fbcdn.net/v/t39.30808-6/471586197_1113861707132176_3696210890184034016_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=3hfvuVNGVbMQ7kNvwHvrgbW&_nc_oc=AdnuDzvtcvdBJMoN-qSW7Pnx2fnzj2TFgwMSRklpM_Na-5AaB9y8D0U5BINcxL-vVL0&_nc_zt=23&_nc_ht=scontent-del1-2.xx&_nc_gid=HWC_59SRsyDfwGxku5bqXw&oh=00_AfSk0LCPS7PARPjdX5-vfM_lr7WxZnrkA9jRyrdUFhoyMQ&oe=68736290)
-
     """
 
     country = "KM"
@@ -109,7 +108,7 @@ class ComorosIslamicHolidays(_CustomIslamicHolidays):
 
 
 class ComorosStaticHolidays:
-    """Comoros Public Holiday.
+    """Comoros special holidays.
 
     References:
         * [Décret N°24-056PR](https://web.archive.org/web/20250717033820/https://munganyo.km/decrees/225)
