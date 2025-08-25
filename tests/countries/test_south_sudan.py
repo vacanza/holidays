@@ -54,6 +54,19 @@ class TestSouthSudan(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(2012, 2050))
 
+    def test_holy_saturday(self):
+        name = "Holy Saturday"
+        self.assertHolidayName(
+            name,
+            "2020-04-11",
+            "2021-04-03",
+            "2022-04-16",
+            "2023-04-08",
+            "2024-03-30",
+            "2025-04-19",
+        )
+        self.assertHolidayName(name, range(2012, 2050))
+
     def test_easter_sunday(self):
         name = "Easter Sunday"
         self.assertHolidayName(
@@ -169,6 +182,7 @@ class TestSouthSudan(CommonCountryTests, TestCase):
             ("2020-01-01", "New Year's Day"),
             ("2020-01-09", "Peace Agreement Day"),
             ("2020-04-10", "Good Friday"),
+            ("2020-04-11", "Holy Saturday"),
             ("2020-04-12", "Easter Sunday"),
             ("2020-04-13", "Easter Monday"),
             ("2020-05-01", "International Labour Day"),

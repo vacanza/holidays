@@ -20,8 +20,12 @@ class SouthSudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_South_Sudan>
-        * [Guildlines for Opening Schools in South Sudan for the Academic Year, 2024](https://web.archive.org/web/20250716011243/https://mogei.gov.ss/super/assets/documents/calendar/2024_MoGEI_Academic%20calendar%20and%20implemention%20guidelines_%20South%20Sudan_A5_final_Approved%20and%20signed%20-%203.pdf)
+        * [Guidelines for Opening Schools in South Sudan for the Academic Year, 2024](https://web.archive.org/web/20250716011243/https://mogei.gov.ss/super/assets/documents/calendar/2024_MoGEI_Academic%20calendar%20and%20implemention%20guidelines_%20South%20Sudan_A5_final_Approved%20and%20signed%20-%203.pdf)
         * <https://web.archive.org/web/20241211222746/http://www.doitinafrica.com/south-sudan/events/public-holidays.htm>
+        * <https://docs.southsudanngoforum.org/sites/default/files/2016-11/2016%20ANNUAL%20HOLIDAYS%20CALENDAR%20.pdf>
+        * <https://docs.southsudanngoforum.org/sites/default/files/2018-01/Annual%20Holidays%20for%202018.pdf>
+        * <https://docs.southsudanngoforum.org/sites/default/files/2020-01/South_Sudan_Annual_Holidays_for_2020.pdf>
+        * <https://docs.southsudanngoforum.org/sites/default/files/2021-02/Public%20Holidays%20Calendar%202021.pdf>
         * <https://docs.southsudanngoforum.org/sites/default/files/2022-03/HRPublic%20Holidays%202022HR.pdf>
     """
 
@@ -53,6 +57,9 @@ class SouthSudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
 
         # Good Friday.
         self._add_good_friday("Good Friday")
+
+        # Holy Saturday.
+        self._add_holy_saturday("Holy Saturday")
 
         # Easter Sunday.
         self._add_easter_sunday("Easter Sunday")
