@@ -15,4 +15,9 @@
 from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao, BVMF, B3
 from holidays.financial.european_central_bank import EuropeanCentralBank, XECB, ECB, TAR
 from holidays.financial.ice_futures_europe import ICEFuturesEurope, IFEU
+from holidays.financial.national_stock_exchange_of_india import (
+    NationalStockExchangeOfIndia,
+    XNSE,
+    NSE,
+)
 from holidays.financial.ny_stock_exchange import NewYorkStockExchange, XNYS, NYSE
