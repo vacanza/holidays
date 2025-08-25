@@ -1526,7 +1526,6 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<tr>
 <td>South Africa</td>
 <td>ZA</td>
 <td></td>

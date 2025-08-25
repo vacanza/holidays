@@ -18,15 +18,13 @@ class Somalia(HolidayBase, InternationalHolidays, IslamicHolidays):
     """Somalia holidays.
 
     References:
-        * <https://usa.mfa.gov.so/about-somalia/>
-        * <https://web.archive.org/web/20220607190753/https://aip.scaa.gov.so/eAIP/HC-GEN-2.1-en-GB.html>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Somalia>
+        * <https://web.archive.org/web/20250522034818/https://usa.mfa.gov.so/about-somalia/>
     """
 
     country = "SO"
-    # July 1, 1960, the State of Somaliland united with the Trust Territory of Somaliland
-    # (formerly Italian Somaliland) to form the Somali Republic
-    start_year = 1960
+    # Unification of Somaliland and Italian Somaliland into the Somali Republic on July 1st, 1960.
+    start_year = 1961
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -55,20 +53,20 @@ class Somalia(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Ashura.
         self._add_ashura_day("Ashura")
 
-        # Eid al-Adha.
-        self._add_eid_al_adha_day("Eid al-Adha")
+        # Islamic New Year.
+        self._add_islamic_new_year_day("Islamic New Year")
+
+        # Prophet's Birthday.
+        self._add_mawlid_day("Prophet's Birthday")
+
+        # Isra' and Mi'raj.
+        self._add_isra_and_miraj_day("Isra' and Mi'raj")
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day("Eid al-Fitr")
 
-        # Islamic New Year.
-        self._add_islamic_new_year_day("Islamic New Year")
-
-        # Muhammad's Ascension to Heaven.
-        self._add_isra_and_miraj_day("Muhammad's Ascension to Heaven")
-
-        # Birthday of Muhammad.
-        self._add_mawlid_day("Birthday of Muhammad")
+        # Eid al-Adha.
+        self._add_eid_al_adha_day("Eid al-Adha")
 
 
 class SO(Somalia):
