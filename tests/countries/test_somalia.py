@@ -27,7 +27,7 @@ class TestSomalia(CommonCountryTests, TestCase):
         self.assertAliases(Somalia, SO, SOM)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Somalia(years=1959))
+        self.assertNoHolidays(Somalia(years=1960))
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1961, 2050)))
