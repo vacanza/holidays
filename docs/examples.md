@@ -147,19 +147,20 @@ The holidays library supports various categories to classify different types of 
 
 ### Basic Category Usage
 
-Categories accept a single string (e.g., 'public') or an iterable of strings; matching is case-sensitive.
+Categories accept a single string (e.g., 'public') or an iterable of strings, but it's recommended to use constants from `holidays.constants` for better maintainability; matching is case-sensitive.
 
 To get holidays from specific categories:
 
 ``` python
 >>> import holidays
+>>> from holidays.constants import PUBLIC, UNOFFICIAL
 >>> # Get only public holidays
->>> us_public = holidays.UnitedStates(categories='public', years=2024)
+>>> us_public = holidays.UnitedStates(categories=PUBLIC, years=2024)
 >>> len(us_public)
 11
 
 >>> # Get only unofficial holidays (cultural celebrations)
->>> us_unofficial = holidays.UnitedStates(categories='unofficial', years=2024)
+>>> us_unofficial = holidays.UnitedStates(categories=UNOFFICIAL, years=2024)
 >>> for date, name in sorted(us_unofficial.items()):
 >>>     print(date, name)
 2024-02-14 Valentine's Day
@@ -198,8 +199,9 @@ You can specify multiple categories to get a combined set of holidays:
 Many countries support religious categories for holidays specific to certain communities:
 
 ``` python
->>> # Get Catholic holidays in Germany
->>> de_catholic = holidays.Germany(categories='catholic', years=2024)
+>>> from holidays.constants import CATHOLIC
+>>> # Get Catholic holidays in Germany (Saxony subdivision)
+>>> de_catholic = holidays.Germany(subdiv='SN', categories=CATHOLIC, years=2024)
 >>> for date, name in sorted(de_catholic.items()):
 >>>     print(date, name)
 2024-08-15 Mariä Himmelfahrt

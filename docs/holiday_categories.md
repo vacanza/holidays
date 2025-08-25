@@ -163,13 +163,13 @@ Examples:
 Holidays specific to Bosnian culture and traditions.
 
 Examples:
-- Used in Bosnia and Herzegovina for Bosnian community holidays
+- Used in North Macedonia for Bosnian community holidays
 
 **SERBIAN**
 Holidays specific to Serbian culture and traditions.
 
 Examples:
-- Used in Montenegro and Bosnia for Serbian community holidays
+- Used in North Macedonia for Serbian community holidays
 
 **TURKISH**
 Holidays specific to Turkish culture and traditions.
@@ -181,13 +181,13 @@ Examples:
 Holidays specific to Roma culture and traditions.
 
 Examples:
-- Used in various European countries for Roma community holidays
+- Used in North Macedonia for Roma community holidays
 
 **VLACH**
 Holidays specific to Vlach culture and traditions.
 
 Examples:
-- Used in Romania and other Balkan countries for Vlach community holidays
+- Used in North Macedonia for Vlach community holidays
 
 ## Usage Examples
 
@@ -224,8 +224,8 @@ for date, name in sorted(belgium_holidays.items()):
 import holidays
 from holidays.constants import CATHOLIC
 
-# Get only Catholic holidays in Germany
-germany_catholic = holidays.Germany(categories=CATHOLIC, years=2024)
+# Get only Catholic holidays in Germany (Saxony subdivision)
+germany_catholic = holidays.Germany(subdiv='SN', categories=CATHOLIC, years=2024)
 for date, name in sorted(germany_catholic.items()):
     print(f"{date}: {name}")
 ```
@@ -304,10 +304,11 @@ When no categories are specified, most countries default to returning PUBLIC hol
 
 ```python
 import holidays
+from holidays.constants import PUBLIC
 
 # These are equivalent for most countries
 us_default = holidays.UnitedStates(years=2024)
-us_public = holidays.UnitedStates(categories='public', years=2024)
+us_public = holidays.UnitedStates(categories=PUBLIC, years=2024)
 ```
 
 ## Contributing
