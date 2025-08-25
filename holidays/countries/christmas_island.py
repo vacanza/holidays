@@ -72,6 +72,12 @@ class ChristmasIsland(
     start_year = 2007
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         ChineseCalendarHolidays.__init__(self, cls=ChristmasIslandChineseHolidays)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
