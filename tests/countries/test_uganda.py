@@ -30,14 +30,14 @@ class TestUganda(CommonCountryTests, TestCase):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1963, 2050)))
 
     def test_nrm_liberation_day(self):
-        self.assertHolidayName(
-            "NRM Liberation Day", (f"{year}-01-26" for year in range(1963, 2050))
-        )
+        name = "NRM Liberation Day"
+        self.assertHolidayName(name, (f"{year}-01-26" for year in range(1987, 2050)))
+        self.assertNoHolidayName(name, range(1963, 1987))
 
     def test_archbishop_janani_luwum_day(self):
-        self.assertHolidayName(
-            "Archbishop Janani Luwum Day", (f"{year}-02-16" for year in range(1963, 2050))
-        )
+        name = "Archbishop Janani Luwum Day"
+        self.assertHolidayName(name, (f"{year}-02-16" for year in range(2016, 2050)))
+        self.assertNoHolidayName(name, range(1963, 2016))
 
     def test_womens_day(self):
         self.assertHolidayName("Women's Day", (f"{year}-03-08" for year in range(1963, 2050)))

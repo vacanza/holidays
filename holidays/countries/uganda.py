@@ -47,11 +47,13 @@ class Uganda(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         # New Year's Day.
         self._add_new_years_day("New Year's Day")
 
-        # NRM Liberation Day.
-        self._add_holiday_jan_26("NRM Liberation Day")
+        if self._year >= 1987:
+            # NRM Liberation Day.
+            self._add_holiday_jan_26("NRM Liberation Day")
 
-        # Archbishop Janani Luwum Day.
-        self._add_holiday_feb_16("Archbishop Janani Luwum Day")
+        if self._year >= 2016:
+            # Archbishop Janani Luwum Day.
+            self._add_holiday_feb_16("Archbishop Janani Luwum Day")
 
         # Women's Day.
         self._add_womens_day("Women's Day")
