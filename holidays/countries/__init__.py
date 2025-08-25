@@ -59,6 +59,7 @@ from holidays.countries.china import China, CN, CHN
 from holidays.countries.christmas_island import ChristmasIsland, CX, CXR
 from holidays.countries.cocos_islands import CocosIslands, CC, CCK
 from holidays.countries.colombia import Colombia, CO, COL
+from holidays.countries.comoros import Comoros, KM, COM
 from holidays.countries.congo import Congo, CG, COG
 from holidays.countries.cook_islands import CookIslands, CK, COK
 from holidays.countries.costa_rica import CostaRica, CR, CRI
