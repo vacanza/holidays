@@ -26,6 +26,9 @@ class TestUganda(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(Uganda, UG, UGA)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(Uganda(years=1962))
+
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1963, 2050)))
 
