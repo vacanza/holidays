@@ -24,11 +24,11 @@ class Uganda(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         * [National Heroes Day](https://web.archive.org/web/20230622162351/https://publicholidays.africa/uganda/national-heroes-day/)
         * [UGANDA PUBLIC HOLIDAYS 2025](https://web.archive.org/web/20250710193157/https://publicholidays.co.ug/)
         * [Uganda School Calendar 2025](https://web.archive.org/web/20250604101328/https://www.education.go.ug/wp-content/uploads/2025/01/SCHOOL-CALENDER-2025.pdf)
-        * (https://web.archive.org/web/20250621140041/https://ulii.org/akn/ug/act/1965/23/eng@2000-12-31)
+        * [Public Holidays Act, Cap. 255](https://web.archive.org/web/20250621140041/https://ulii.org/akn/ug/act/1965/23/eng@2000-12-31)
     """
 
     country = "UG"
-    # Uganda gained independence from the United Kingdom on October 9, 1962
+    # Uganda gained independence from the United Kingdom on October 9, 1962.
     start_year = 1963
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
