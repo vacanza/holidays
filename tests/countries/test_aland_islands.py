@@ -25,7 +25,7 @@ class TestAland(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(HolidaysAX, AlandIslands, AX, ALA)
 
-    def test_no_holiday(self):
+    def test_no_holidays(self):
         self.assertNoHolidays(HolidaysAX(years=1920, categories=(PUBLIC, WORKDAY)))
         self.assertNoHolidays(HolidaysAX(years=1949, categories=UNOFFICIAL))
 
