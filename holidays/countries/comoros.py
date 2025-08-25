@@ -72,10 +72,14 @@ class Comoros(
         # Christmas Day.
         self._add_christmas_day("Christmas Day")
 
-        # Eid al-Adha.
-        name = "Eid al-Adha"
-        self._add_eid_al_adha_day(name)
-        self._add_eid_al_adha_day_two(name)
+        # Islamic New Year.
+        self._add_islamic_new_year_day("Islamic New Year")
+
+        # Prophet's Birthday.
+        self._add_mawlid_day("Prophet's Birthday")
+
+        # Isra' and Mi'raj.
+        self._add_isra_and_miraj_day("Isra' and Mi'raj")
 
         # Eid al-Fitr.
         name = "Eid al-Fitr"
@@ -83,14 +87,10 @@ class Comoros(
         self._add_eid_al_fitr_day_two(name)
         self._add_eid_al_fitr_day_three(name)
 
-        # Islamic New Year.
-        self._add_islamic_new_year_day("Islamic New Year")
-
-        # Isra' and Mi'raj.
-        self._add_isra_and_miraj_day("Isra' and Mi'raj")
-
-        # Prophet's Birthday.
-        self._add_mawlid_day("Prophet's Birthday")
+        # Eid al-Adha.
+        name = "Eid al-Adha"
+        self._add_eid_al_adha_day(name)
+        self._add_eid_al_adha_day_two(name)
 
 
 class KM(Comoros):

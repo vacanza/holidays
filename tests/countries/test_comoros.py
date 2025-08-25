@@ -51,17 +51,45 @@ class TestComoros(CommonCountryTests, TestCase):
     def test_christmas_day(self):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1976, 2050)))
 
-    def test_eid_al_adha(self):
-        name = "Eid al-Adha"
+    def test_islamic_new_year(self):
+        name = "Islamic New Year"
         self.assertHolidayName(
             name,
             self.no_estimated_holidays,
-            "2020-07-31",
-            "2021-07-20",
-            "2022-07-09",
-            "2023-06-28",
-            "2024-06-16",
-            "2025-06-06",
+            "2020-08-20",
+            "2021-08-09",
+            "2022-07-30",
+            "2023-07-19",
+            "2024-07-07",
+            "2025-06-26",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1976, 2050))
+
+    def test_prophets_birthday(self):
+        name = "Prophet's Birthday"
+        self.assertHolidayName(
+            name,
+            self.no_estimated_holidays,
+            "2020-10-29",
+            "2022-10-08",
+            "2023-09-27",
+            "2024-09-15",
+            "2025-09-04",
+        )
+        self.assertHolidayName(name, "2021-10-19")
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1976, 2050))
+
+    def test_isra_and_miraj(self):
+        name = "Isra' and Mi'raj"
+        self.assertHolidayName(
+            name,
+            self.no_estimated_holidays,
+            "2020-03-22",
+            "2021-03-11",
+            "2022-02-28",
+            "2023-02-18",
+            "2024-02-08",
+            "2025-01-27",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1976, 2050))
 
@@ -79,46 +107,18 @@ class TestComoros(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1976, 2050))
 
-    def test_islamic_new_year(self):
-        name = "Islamic New Year"
+    def test_eid_al_adha(self):
+        name = "Eid al-Adha"
         self.assertHolidayName(
             name,
             self.no_estimated_holidays,
-            "2020-08-20",
-            "2021-08-09",
-            "2022-07-30",
-            "2023-07-19",
-            "2024-07-07",
-            "2025-06-26",
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-09",
+            "2023-06-28",
+            "2024-06-16",
+            "2025-06-06",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1976, 2050))
-
-    def test_isra_and_miraj(self):
-        name = "Isra' and Mi'raj"
-        self.assertHolidayName(
-            name,
-            self.no_estimated_holidays,
-            "2020-03-22",
-            "2021-03-11",
-            "2022-02-28",
-            "2023-02-18",
-            "2024-02-08",
-            "2025-01-27",
-        )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1976, 2050))
-
-    def test_prophets_birthday(self):
-        name = "Prophet's Birthday"
-        self.assertHolidayName(
-            name,
-            self.no_estimated_holidays,
-            "2020-10-29",
-            "2022-10-08",
-            "2023-09-27",
-            "2024-09-15",
-            "2025-09-04",
-        )
-        self.assertHolidayName(name, "2021-10-19")
         self.assertHolidayName(name, self.no_estimated_holidays, range(1976, 2050))
 
     def test_special_public_holidays(self):
