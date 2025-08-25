@@ -9,7 +9,7 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>PyPI</td>
     <td>
-      <a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pepy/dt/holidays?style=flat&color=41B5BE" alt="Pepy Total Downloads"></a>&nbsp;<a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat" alt="PyPI version"></a>&nbsp;<a href="https://github.com/vacanza/holidays/releases"><img src="https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat" alt="PyPI release date"></a>
+      <a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvacanza%2Faux%2Frefs%2Fheads%2Fmain%2Fbadges%2Fdownloads%2Fpepy.tech.yaml&query=%24.monthly_downloads_human&suffix=%2Fmonth&style=flat&label=downloads&color=41B5BE&cacheSeconds=86400" alt="PyPI monthly downloads"></a>&nbsp;<a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat" alt="PyPI version"></a>&nbsp;<a href="https://github.com/vacanza/holidays/releases"><img src="https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat" alt="Latest release date"></a>
     </td>
   </tr>
   <tr>
@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 233 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 235 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -388,7 +388,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Burundi</td>
 <td>BI</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>fr_BI</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -593,6 +593,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Provinces: AN (Annobón, Annobon), BN (Bioko Norte, North Bioko), BS (Bioko Sur, South Bioko), CS (Centro Sur, South Center), DJ (Djibloho), KN (Kié-Ntem, Kie-Ntem), LI (Litoral, Coast), WN (Wele-Nzas)</td>
 <td>en_US, <strong>es</strong></td>
 <td></td>
+</tr>
+<tr>
+<td>Eritrea</td>
+<td>ER</td>
+<td></td>
+<td></td>
+<td>GOVERNMENT</td>
 </tr>
 <tr>
 <td>Estonia</td>
@@ -1369,6 +1376,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>RU</td>
 <td></td>
 <td>en_US, <strong>ru</strong>, th</td>
+<td></td>
+</tr>
+<tr>
+<td>Rwanda</td>
+<td>RW</td>
+<td></td>
+<td>en_US, fr, <strong>rw</strong></td>
 <td></td>
 </tr>
 <tr>

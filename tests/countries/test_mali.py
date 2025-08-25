@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries import Mali, ML, MLI
+from holidays.countries.mali import Mali, ML, MLI
 from tests.common import CommonCountryTests
 
 
