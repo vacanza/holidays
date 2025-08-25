@@ -29,6 +29,10 @@ class TestComoros(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(Comoros(years=1975))
 
+    def test_special_holidays(self):
+        self.assertHolidayName("National Holiday", "2024-04-13")
+        self.assertHolidayName("Election Partial Day Holiday", "2025-01-30")
+
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1976, 2050)))
 
@@ -71,12 +75,12 @@ class TestComoros(CommonCountryTests, TestCase):
             name,
             self.no_estimated_holidays,
             "2020-10-29",
+            "2021-10-19",
             "2022-10-08",
             "2023-09-27",
             "2024-09-15",
             "2025-09-04",
         )
-        self.assertHolidayName(name, "2021-10-19")
         self.assertHolidayName(name, self.no_estimated_holidays, range(1976, 2050))
 
     def test_isra_and_miraj(self):
@@ -120,16 +124,6 @@ class TestComoros(CommonCountryTests, TestCase):
             "2025-06-06",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1976, 2050))
-
-    def test_special_public_holidays(self):
-        self.assertHolidayName(
-            "National Holiday",
-            "2024-04-13",
-        )
-        self.assertHolidayName(
-            "Election Partial Day Holiday",
-            "2025-01-30",
-        )
 
     def test_2022(self):
         self.assertHolidays(
