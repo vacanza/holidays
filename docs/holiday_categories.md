@@ -11,6 +11,7 @@ Holiday categories enable you to filter holidays based on their nature and offic
 ### Official Status Categories
 
 **PUBLIC**
+
 Official holidays recognized by the government that typically provide time off from work and school for the general population.
 
 Examples:

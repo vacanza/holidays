@@ -154,12 +154,12 @@ To get holidays from specific categories:
 ``` python
 >>> import holidays
 >>> from holidays.constants import PUBLIC, UNOFFICIAL
->>> # Get only public holidays
+>>> # Get only public holidays.
 >>> us_public = holidays.UnitedStates(categories=PUBLIC, years=2024)
 >>> len(us_public)
 11
 
->>> # Get only unofficial holidays (cultural celebrations)
+>>> # Get only unofficial holidays (cultural celebrations).
 >>> us_unofficial = holidays.UnitedStates(categories=UNOFFICIAL, years=2024)
 >>> for date, name in sorted(us_unofficial.items()):
 >>>     print(date, name)
@@ -173,7 +173,7 @@ To get holidays from specific categories:
 You can specify multiple categories to get a combined set of holidays:
 
 ``` python
->>> # Get both public and bank holidays for Belgium
+>>> # Get both public and bank holidays for Belgium.
 >>> from holidays.constants import BANK, PUBLIC
 >>> for dt, name in sorted(holidays.BE(years=2023, language="en_US", categories=(BANK, PUBLIC)).items()):
 >>>     print(dt, name)
@@ -200,7 +200,7 @@ Many countries support religious categories for holidays specific to certain com
 
 ``` python
 >>> from holidays.constants import CATHOLIC
->>> # Get Catholic holidays in Germany (Saxony subdivision)
+>>> # Get Catholic holidays in Germany (Saxony subdivision).
 >>> de_catholic = holidays.Germany(subdiv='SN', categories=CATHOLIC, years=2024)
 >>> for date, name in sorted(de_catholic.items()):
 >>>     print(date, name)
