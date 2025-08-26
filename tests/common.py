@@ -20,6 +20,7 @@ from dateutil.parser import parse
 
 from holidays import HolidayBase
 from holidays.calendars.gregorian import SUN
+from holidays.observed_holiday_base import ObservedHolidayBase
 
 PYTHON_LATEST_SUPPORTED_VERSION = "3.13"
 PYTHON_VERSION = f"{sys.version_info.major}.{sys.version_info.minor}"
@@ -372,6 +373,17 @@ class CommonCountryTests(CommonTests):
                 "both 'observed_label' and 'estimated_label'.",
             )
             self.assertIn(estimated_label.strip("%s ()"), observed_estimated_label)
+
+    def test_observed_label(self):
+        if getattr(self.holidays, "observed_label", None):
+            self.assertTrue(
+                isinstance(
+                    self.holidays,
+                    ObservedHolidayBase,
+                ),
+                "The `observed_label` is not required as this entity doesn't handle "
+                "observed holidays.",
+            )
 
 
 class CommonFinancialTests(CommonTests):
