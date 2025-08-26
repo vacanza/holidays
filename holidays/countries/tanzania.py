@@ -146,7 +146,7 @@ class Tanzania(
         eid_al_fitr = self.tr("Eid El-Fitri")
         eid_al_fitr_count = 0
 
-        # If an holiday falls on Holy Saturday.
+        # If a holiday falls on Holy Saturday.
         holy_saturday = _timedelta(self._easter_sunday, -1)
 
         for dt in sorted(dts):
