@@ -54,7 +54,8 @@ class TestBulgaria(CommonCountryTests, TestCase):
             "2024-05-03",
             "2025-04-18",
         )
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(name, range(2010, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2010))
 
     def test_easter_saturday(self):
         name = "Велика събота"
@@ -67,7 +68,8 @@ class TestBulgaria(CommonCountryTests, TestCase):
             "2024-05-04",
             "2025-04-19",
         )
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(name, range(2010, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2010))
 
     def test_easter(self):
         name = "Великден"
@@ -100,7 +102,8 @@ class TestBulgaria(CommonCountryTests, TestCase):
 
     def test_saint_georges_day(self):
         name = "Гергьовден, Ден на храбростта и Българската армия"
-        self.assertHolidayName(name, (f"{year}-05-06" for year in self.full_range))
+        self.assertHolidayName(name, (f"{year}-05-06" for year in range(1999, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1999))
         obs_dts = (
             "2017-05-08",
             "2018-05-07",
@@ -109,22 +112,27 @@ class TestBulgaria(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_twenty_fourth_of_may(self):
-        name = (
+    def test_bulgarian_culture_day(self):
+        name_1991 = "Ден на българската просвета и култура и на славянската писменост"
+        name_2021 = (
             "Ден на светите братя Кирил и Методий, на българската азбука, "
             "просвета и култура и на славянската книжовност"
         )
-        self.assertHolidayName(name, (f"{year}-05-24" for year in self.full_range))
-        obs_dts = (
-            "2020-05-25",
-            "2025-05-26",
+        self.assertHolidayName(
+            name_1991, (f"{year}-05-24" for year in range(self.start_year, 2021))
         )
-        self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
+        self.assertHolidayName(name_2021, (f"{year}-05-24" for year in range(2021, self.end_year)))
+        self.assertNoHolidayName(name_1991, range(2021, self.end_year))
+        self.assertNoHolidayName(name_2021, range(self.start_year, 2021))
+        obs_dts = ("2025-05-26",)
+        self.assertHolidayName(f"{name_1991} (почивен ден)", "2020-05-25")
+        self.assertHolidayName(f"{name_2021} (почивен ден)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_unification_day(self):
         name = "Ден на Съединението"
-        self.assertHolidayName(name, (f"{year}-09-06" for year in self.full_range))
+        self.assertHolidayName(name, (f"{year}-09-06" for year in range(1998, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1998))
         obs_dts = (
             "2020-09-07",
             "2025-09-08",
@@ -132,9 +140,15 @@ class TestBulgaria(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
+    def test_freedom_day(self):
+        name = "Ден на свободата"
+        self.assertHolidayName(name, "1991-09-09")
+        self.assertNoHolidayName(name, range(1992, self.end_year))
+
     def test_independence_day(self):
         name = "Ден на Независимостта на България"
-        self.assertHolidayName(name, (f"{year}-09-22" for year in self.full_range))
+        self.assertHolidayName(name, (f"{year}-09-22" for year in range(1998, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1998))
         obs_dts = (
             "2018-09-24",
             "2019-09-23",
@@ -146,11 +160,15 @@ class TestBulgaria(CommonCountryTests, TestCase):
     def test_national_awakening_day(self):
         name = "Ден на народните будители"
         self.assertNoHolidayName(name)
-        self.assertSchoolHolidayName(name, (f"{year}-11-01" for year in self.full_range))
+        self.assertSchoolHolidayName(
+            name, (f"{year}-11-01" for year in range(1992, self.end_year))
+        )
+        self.assertNoSchoolHolidayName(name, 1991)
 
     def test_christmas_eve(self):
         name = "Бъдни вечер"
-        self.assertHolidayName(name, (f"{year}-12-24" for year in self.full_range))
+        self.assertHolidayName(name, (f"{year}-12-24" for year in range(1996, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1996))
         obs_dts = (
             "2017-12-27",
             "2022-12-27",
@@ -159,10 +177,19 @@ class TestBulgaria(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
+        half_day_name = f"{name} (след 14 ч.)"
+        self.assertHalfDayHolidayName(
+            half_day_name, (f"{year}-12-24" for year in range(self.start_year, 1996))
+        )
+        self.assertNoHalfDayHolidayName(half_day_name, range(1996, self.end_year))
+
     def test_christmas_day(self):
         name = "Рождество Христово"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
-        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
+        self.assertHolidayName(
+            name,
+            (f"{year}-12-25" for year in self.full_range),
+            (f"{year}-12-26" for year in self.full_range),
+        )
         obs_dts = (
             "2020-12-28",
             "2021-12-27",
@@ -214,7 +241,7 @@ class TestBulgaria(CommonCountryTests, TestCase):
             ("2022-04-25", "Easter"),
             ("2022-05-01", "Labor Day and International Workers' Solidarity Day"),
             ("2022-05-02", "Labor Day and International Workers' Solidarity Day (observed)"),
-            ("2022-05-06", "Saint George's Day (Day of the Bulgarian Army)"),
+            ("2022-05-06", "Saint George's Day, Day of the Bulgarian Army"),
             ("2022-05-24", "Day of Slavonic Alphabet, Bulgarian Enlightenment and Culture"),
             ("2022-09-06", "Unification Day"),
             ("2022-09-22", "Independence Day"),
