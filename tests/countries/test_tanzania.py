@@ -85,6 +85,7 @@ class TestTanzania(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-04-07" for year in range(2006, 2050)))
         self.assertNoHolidayName(name, range(1965, 2006))
         obs_dt = (
+            "2012-04-10",
             "2013-04-08",
             "2018-04-09",
             "2019-04-08",

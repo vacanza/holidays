@@ -14,7 +14,21 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    _timedelta,
+)
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import (
     ChristianHolidays,
@@ -24,6 +38,7 @@ from holidays.groups import (
 )
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
+    SAT_TO_NEXT_TUE,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
 )
@@ -131,18 +146,21 @@ class Tanzania(
         eid_al_fitr = self.tr("Eid El-Fitri")
         eid_al_fitr_count = 0
 
+        # If an holiday falls on Holy Saturday.
+        holy_saturday = _timedelta(self._easter_sunday, -1)
+
         for dt in sorted(dts):
             names = self.get_list(dt)
             for name in names:
                 if eid_al_fitr in name:
                     eid_al_fitr_count += 1
-                self._add_observed(
-                    dt,
-                    name,
-                    SAT_SUN_TO_NEXT_MON_TUE
-                    if name == christmas_day or eid_al_fitr_count == 1
-                    else SAT_SUN_TO_NEXT_MON,
-                )
+                if name == christmas_day or eid_al_fitr_count == 1:
+                    rule = SAT_SUN_TO_NEXT_MON_TUE
+                elif dt == holy_saturday:
+                    rule = SAT_TO_NEXT_TUE
+                else:
+                    rule = SAT_SUN_TO_NEXT_MON
+                self._add_observed(dt, name, rule)
 
     def _populate_bank_holidays(self):
         # Sikukuu ya Pasaka.
