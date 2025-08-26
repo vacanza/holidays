@@ -223,6 +223,7 @@ from holidays.countries.sint_maarten import SintMaarten, SX, SXM
 from holidays.countries.slovakia import Slovakia, SK, SVK
 from holidays.countries.slovenia import Slovenia, SI, SVN
 from holidays.countries.solomon_islands import SolomonIslands, SB, SLB
+from holidays.countries.somalia import Somalia, SO, SOM
 from holidays.countries.south_africa import SouthAfrica, ZA, ZAF
 from holidays.countries.south_georgia_and_the_south_sandwich_islands import (
     SouthGeorgiaAndTheSouthSandwichIslands,
