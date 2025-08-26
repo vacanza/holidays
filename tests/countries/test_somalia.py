@@ -41,20 +41,6 @@ class TestSomalia(CommonCountryTests, TestCase):
     def test_republic_day(self):
         self.assertHolidayName("Republic Day", (f"{year}-07-01" for year in range(1961, 2050)))
 
-    def test_ashura(self):
-        name = "Ashura"
-        self.assertHolidayName(
-            name,
-            self.no_estimated_holidays,
-            "2020-08-29",
-            "2021-08-18",
-            "2022-08-08",
-            "2023-07-28",
-            "2024-07-16",
-            "2025-07-05",
-        )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1961, 2050))
-
     def test_islamic_new_year(self):
         name = "Islamic New Year"
         self.assertHolidayName(
@@ -66,6 +52,20 @@ class TestSomalia(CommonCountryTests, TestCase):
             "2023-07-19",
             "2024-07-07",
             "2025-06-26",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1961, 2050))
+
+    def test_ashura(self):
+        name = "Ashura"
+        self.assertHolidayName(
+            name,
+            self.no_estimated_holidays,
+            "2020-08-29",
+            "2021-08-18",
+            "2022-08-08",
+            "2023-07-28",
+            "2024-07-16",
+            "2025-07-05",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1961, 2050))
 

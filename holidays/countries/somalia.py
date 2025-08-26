@@ -50,11 +50,11 @@ class Somalia(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Republic Day.
         self._add_holiday_jul_1("Republic Day")
 
-        # Ashura.
-        self._add_ashura_day("Ashura")
-
         # Islamic New Year.
         self._add_islamic_new_year_day("Islamic New Year")
+
+        # Ashura.
+        self._add_ashura_day("Ashura")
 
         # Prophet's Birthday.
         self._add_mawlid_day("Prophet's Birthday")
