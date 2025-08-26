@@ -315,3 +315,31 @@ msgstr "पोहेला बोइशाख"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "रवींद्र जयंती"
+
+
+#.Guru purnima.
+msgid "Guru purnima"
+msgstr "गुरु पूर्णिमा"
+
+
+#.Ekadashi
+msgid "Ekadashi"
+msgstr "एकादशी"
+
+
+#.Ugadhi
+msgid "Ugadhi"
+msgstr "उगादी"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "नव वर्ष दिवस"
+
+#. Teacher's Day.
+msgid "Teacher's Day"
+msgstr "शिक्षक दिवस"
+
+#.Bonalu
+msgid "Bonalu"
+msgstr "बोनालु"
+
