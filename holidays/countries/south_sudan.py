@@ -22,11 +22,12 @@ class SouthSudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         * <https://en.wikipedia.org/wiki/Public_holidays_in_South_Sudan>
         * [Guidelines for Opening Schools in South Sudan for the Academic Year, 2024](https://web.archive.org/web/20250716011243/https://mogei.gov.ss/super/assets/documents/calendar/2024_MoGEI_Academic%20calendar%20and%20implemention%20guidelines_%20South%20Sudan_A5_final_Approved%20and%20signed%20-%203.pdf)
         * <https://web.archive.org/web/20241211222746/http://www.doitinafrica.com/south-sudan/events/public-holidays.htm>
-        * <https://docs.southsudanngoforum.org/sites/default/files/2016-11/2016%20ANNUAL%20HOLIDAYS%20CALENDAR%20.pdf>
-        * <https://docs.southsudanngoforum.org/sites/default/files/2018-01/Annual%20Holidays%20for%202018.pdf>
-        * <https://docs.southsudanngoforum.org/sites/default/files/2020-01/South_Sudan_Annual_Holidays_for_2020.pdf>
-        * <https://docs.southsudanngoforum.org/sites/default/files/2021-02/Public%20Holidays%20Calendar%202021.pdf>
-        * <https://docs.southsudanngoforum.org/sites/default/files/2022-03/HRPublic%20Holidays%202022HR.pdf>
+        * [2016](https://web.archive.org/web/20250825141310/https://docs.southsudanngoforum.org/sites/default/files/2016-11/2016%20ANNUAL%20HOLIDAYS%20CALENDAR%20.pdf)
+        * [2018](https://web.archive.org/web/20250825141312/https://docs.southsudanngoforum.org/sites/default/files/2018-01/Annual%20Holidays%20for%202018.pdf)
+        * [2020](https://web.archive.org/web/20250825141316/https://docs.southsudanngoforum.org/sites/default/files/2020-01/South_Sudan_Annual_Holidays_for_2020.pdf)
+        * [2021](https://web.archive.org/web/20250514045013/https://docs.southsudanngoforum.org/sites/default/files/2021-02/Public%20Holidays%20Calendar%202021.pdf)
+        * [2022](https://web.archive.org/web/20250430165748/https://docs.southsudanngoforum.org/sites/default/files/2022-03/HRPublic%20Holidays%202022HR.pdf)
+        * [The Netherlands and South Sudan](https://web.archive.org/web/20250426232710/https://www.netherlandsandyou.nl/web/south-sudan/about-us/closing-days)
     """
 
     country = "SS"
