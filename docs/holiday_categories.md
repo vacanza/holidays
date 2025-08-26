@@ -15,6 +15,7 @@ Holiday categories enable you to filter holidays based on their nature and offic
 Official holidays recognized by the government that typically provide time off from work and school for the general population.
 
 Examples:
+
 - New Year's Day in most countries
 - Independence Day in the United States
 - Christmas Day in Christian-majority countries
@@ -23,6 +24,7 @@ Examples:
 Holidays observed by government institutions but may not provide general time off for all workers.
 
 Examples:
+
 - Flag Day in some jurisdictions
 - Government-specific commemorative days
 
@@ -30,6 +32,7 @@ Examples:
 Holidays that are officially recognized but do not provide time off from work. Often ceremonial or commemorative in nature.
 
 Examples:
+
 - Constitution Day in some countries
 - Memorial days that are observed but not as public holidays
 
@@ -37,8 +40,9 @@ Examples:
 Commonly celebrated cultural holidays with no official government recognition or mandated time off. These are widely observed cultural celebrations, but exclude novelty, internet, or marketing "national days."
 
 Examples:
+
 - Valentine's Day
-- Saint Patrick's Day  
+- Saint Patrick's Day
 - Halloween
 
 ### Institutional Categories
@@ -47,6 +51,7 @@ Examples:
 Holidays specifically observed by banking institutions, which may differ from general public holidays.
 
 Examples:
+
 - Good Friday (in some countries)
 - Additional banking-specific closures
 
@@ -54,6 +59,7 @@ Examples:
 Holidays specific to educational institutions.
 
 Examples:
+
 - Teacher's Day
 - Education-specific observances
 
@@ -61,6 +67,7 @@ Examples:
 Holidays specific to military personnel and institutions.
 
 Examples:
+
 - Armed Forces Day
 - Military commemoration days
 
@@ -70,6 +77,7 @@ Examples:
 Holidays that individuals or organizations may choose to observe, often with flexibility in implementation.
 
 Examples:
+
 - Religious holidays for minority populations
 - Cultural observances with optional recognition
 
@@ -80,6 +88,7 @@ Holidays that must be observed by law in specific contexts. Currently only used 
 Holidays that are observed for only part of the day.
 
 Examples:
+
 - Christmas Eve (afternoon only)
 - New Year's Eve (afternoon only)
 
@@ -89,6 +98,7 @@ Examples:
 Holidays specific to the Catholic Christian tradition.
 
 Examples:
+
 - Feast of the Immaculate Conception
 - Corpus Christi
 
@@ -96,6 +106,7 @@ Examples:
 General Christian holidays observed across denominations.
 
 Examples:
+
 - Easter Sunday
 - Christmas Day
 
@@ -103,6 +114,7 @@ Examples:
 Holidays specific to Orthodox Christian traditions.
 
 Examples:
+
 - Orthodox Easter
 - Orthodox Christmas
 
@@ -110,6 +122,7 @@ Examples:
 Holidays from the Islamic tradition.
 
 Examples:
+
 - Eid al-Fitr
 - Eid al-Adha
 
@@ -117,6 +130,7 @@ Examples:
 Holidays from the Hindu tradition.
 
 Examples:
+
 - Diwali
 - Holi
 
@@ -124,6 +138,7 @@ Examples:
 Holidays from the Jewish tradition.
 
 Examples:
+
 - Yom Kippur
 - Passover
 
@@ -131,6 +146,7 @@ Examples:
 Holidays from Chinese cultural and religious traditions.
 
 Examples:
+
 - Chinese New Year
 - Mid-Autumn Festival
 
@@ -138,12 +154,14 @@ Examples:
 Holidays specific to the Sabian religious tradition.
 
 Examples:
+
 - Used in Iraq for Sabian community holidays
 
 **YAZIDI**
 Holidays specific to the Yazidi religious tradition.
 
-Examples:  
+Examples:
+
 - Used in Iraq for Yazidi community holidays
 
 ### Ethnic and Cultural Categories
@@ -152,42 +170,49 @@ Examples:
 Holidays specific to Armenian culture and traditions.
 
 Examples:
+
 - Used in Argentina for Armenian community holidays
 
 **ALBANIAN**
 Holidays specific to Albanian culture and traditions.
 
 Examples:
+
 - Used in North Macedonia for Albanian community holidays
 
 **BOSNIAN**
 Holidays specific to Bosnian culture and traditions.
 
 Examples:
+
 - Used in North Macedonia for Bosnian community holidays
 
 **SERBIAN**
 Holidays specific to Serbian culture and traditions.
 
 Examples:
+
 - Used in North Macedonia for Serbian community holidays
 
 **TURKISH**
 Holidays specific to Turkish culture and traditions.
 
 Examples:
+
 - Used in North Macedonia for Turkish community holidays
 
 **ROMA**
 Holidays specific to Roma culture and traditions.
 
 Examples:
+
 - Used in North Macedonia for Roma community holidays
 
 **VLACH**
 Holidays specific to Vlach culture and traditions.
 
 Examples:
+
 - Used in North Macedonia for Vlach community holidays
 
 ## Usage Examples
