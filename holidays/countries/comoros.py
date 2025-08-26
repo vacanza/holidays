@@ -59,7 +59,7 @@ class Comoros(
         # Cheikh al Maarouf Day.
         self._add_holiday_mar_18("Cheikh al Maarouf Day")
 
-        # Labour Day.
+        # Labor Day.
         self._add_labor_day("Labour Day")
 
         # National Day.
