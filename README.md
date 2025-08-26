@@ -1701,6 +1701,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Uganda</td>
+<td>UG</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Ukraine</td>
 <td>UA</td>
 <td></td>
