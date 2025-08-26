@@ -29,6 +29,7 @@ class Uganda(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
     """
 
     country = "UG"
+    estimated_label = "%s (estimated)"
     # Uganda gained independence from the United Kingdom on October 9, 1962.
     start_year = 1963
 

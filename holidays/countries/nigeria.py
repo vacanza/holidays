@@ -30,6 +30,8 @@ class Nigeria(
     """
 
     country = "NG"
+    estimated_label = "%s (estimated)"
+    observed_estimated_label = "%s (observed, estimated)"
     observed_label = "%s (observed)"
     start_year = 1979
 

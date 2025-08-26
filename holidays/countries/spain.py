@@ -52,6 +52,10 @@ class Spain(
 
     country = "ES"
     default_language = "es"
+    # %s (estimated).
+    estimated_label = tr("%s (estimado)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("Lunes siguiente a %s (estimado)")
     # Monday following %s.
     observed_label = tr("Lunes siguiente a %s")
     subdivisions = (

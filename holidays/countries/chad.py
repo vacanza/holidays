@@ -32,6 +32,8 @@ class Chad(
     """
 
     country = "TD"
+    estimated_label = "%s (estimated)"
+    observed_estimated_label = "%s (observed, estimated)"
     observed_label = "%s (observed)"
     # On 11 August 1960, Chad gained independence from France.
     start_year = 1961
