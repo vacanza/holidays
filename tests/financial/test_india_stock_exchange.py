@@ -260,7 +260,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             ("2023-04-07", "Good Friday"),
             ("2023-04-14", "Dr. Baba Saheb Ambedkar Jayanti"),
             ("2023-05-01", "Maharashtra Day"),
-            ("2023-06-28", "Bakri Id"),
+            ("2023-06-28", "Eid al-Adha"),
             ("2023-08-15", "Independence Day"),
             ("2023-09-19", "Ganesh Chaturthi"),
             ("2023-10-02", "Mahatma Gandhi Jayanti"),

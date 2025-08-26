@@ -96,12 +96,12 @@ msgstr "Guru Nanak Jayanti"
 
 #. Islamic Calendar Holidays. Ashura.
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "Ashura"
 
 #. Eid al-Fitr.
 msgid "Id-Ul-Fitr (Ramadan Eid)"
-msgstr "Id-Ul-Fitr (Ramadan Eid)"
+msgstr "Eid al-Fitr"
 
 #. Eid al-Adha.
 msgid "Bakri Id"
-msgstr "Bakri Id"
+msgstr "Eid al-Adha"
