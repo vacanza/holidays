@@ -10,42 +10,14 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
-from typing import Optional
 
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import (
-    JUN,
-    MAR,
-    JUL,
-    OCT,
-    NOV,
-)
+from holidays.calendars.gregorian import APR, AUG, JUN, MAR, JUL, MAY
 from holidays.groups.christian import ChristianHolidays
 from holidays.groups.hindu import HinduCalendarHolidays
 from holidays.groups.islamic import IslamicHolidays
 from holidays.observed_holiday_base import SAT_TO_NONE, SUN_TO_NONE, ObservedHolidayBase
-
-BAKRI_ID = "BAKRI_ID"
-CHRISTMAS_DAY = "CHRISTMAS_DAY"
-DIWALI_BALIPRATIPADA = "DIWALI_BALIPRATIPADA"
-DIWALI_LAXMI_PUJAN = "DIWALI_LAXMI_PUJAN"
-DUSSEHRA = "DUSSEHRA"
-DR_BABA_SAHEB_AMBEDKAR_JAYANTI = "DR_BABA_SAHEB_AMBEDKAR_JAYANTI"
-GANESH_CHATURTHI = "GANESH_CHATURTHI"
-GOOD_FRIDAY = "GOOD_FRIDAY"
-GURU_NANAK_JAYANTI = "GURU_NANAK_JAYANTI"
-HOLI = "HOLI"
-ID_UL_FITR = "ID_UL_FITR"
-INDEPENDENCE_DAY = "INDEPENDENCE_DAY"
-MAHARASHTRA_DAY = "MAHARASHTRA_DAY"
-MAHA_SHIVARATRI = "MAHA_SHIVARATRI"
-MAHATMA_GANDHI_JAYANTI = "MAHATMA_GANDHI_JAYANTI"
-MAHAVIR_JAYANTI = "MAHAVIR_JAYANTI"
-MUHARRAM = "MUHARRAM"
-RAM_NAVAMI = "RAM_NAVAMI"
-REPUBLIC_DAY = "REPUBLIC_DAY"
 
 
 class NationalStockExchangeOfIndia(
@@ -77,20 +49,16 @@ class NationalStockExchangeOfIndia(
         IslamicHolidays.__init__(self, cls=NationalStockExchangeOfIndiaIslamicHolidays)
         super().__init__(*args, **kwargs)
 
-    DIWALI_LAXMI_PUJAN_DATES = {
-        2024: (NOV, 1),
-        2025: (OCT, 21),
-    }
-
     MUHARRAM_DATES = {
         2024: (JUL, 17),
     }
 
     def _populate_public_holidays(self):
-        # No fixed annual closures that apply every year on the same date.
-
         # Republic Day.
         self._move_holiday(self._add_holiday_jan_26(tr("Republic Day")))
+
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
         # Dr. Baba Saheb Ambedkar Jayanti.
         self._move_holiday(self._add_holiday_apr_14(tr("Dr. Baba Saheb Ambedkar Jayanti")))
@@ -107,54 +75,53 @@ class NationalStockExchangeOfIndia(
         # Christmas Day.
         self._move_holiday(self._add_christmas_day(tr("Christmas Day")))
 
-        # Bakri Id
-        self._traverse_set(self._add_eid_al_adha_day_two(tr("Bakri Id")))
-
-        # Diwali Balipratipada
-        self._move_holiday(self._add_govardhan_puja(tr("Diwali Balipratipada")))
-
-        # Diwali Laxmi Pujan
-        self._get_holiday(tr("Diwali Laxmi Pujan"), DIWALI_LAXMI_PUJAN, self._year)
-
-        # Dussehra
-        self._move_holiday(self._add_dussehra(tr("Dussehra")))
-
-        # Ganesh Chaturthi
-        self._move_holiday(self._add_ganesh_chaturthi(tr("Ganesh Chaturthi")))
-
-        # Good Friday
-        self._add_good_friday(tr("Good Friday"))
-
-        # Guru Nanak Jayanti
-        self._move_holiday(self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti")))
-
-        # Holi
-        self._move_holiday(self._add_holi(tr("Holi")))
-
-        # Id Ul Fitr (Ramadan Eid)
-        self._traverse_set(self._add_eid_al_fitr_day_two(tr("Id-Ul-Fitr (Ramadan Eid)")))
-
-        # Maha Shivaratri
+        # Hindu Calendar Holidays.
+        # Maha Shivaratri.
         self._move_holiday(self._add_maha_shivaratri(tr("Maha Shivaratri")))
 
-        # Mahavir Jayanti
+        # Holi.
+        self._move_holiday(self._add_holi(tr("Holi")))
+
+        # Mahavir Jayanti.
         self._move_holiday(self._add_mahavir_jayanti(tr("Mahavir Jayanti")))
 
-        # Muharram
-        self._get_holiday(tr("Muharram"), MUHARRAM, self._year)
-
-        # Ram Navami
+        # Ram Navami.
         self._move_holiday(self._add_ram_navami(tr("Ram Navami")))
 
-    def _get_holiday(self, name, holiday: str, year: int) -> Optional[date]:
-        exact_date = getattr(self, f"{holiday}_DATES", {})
-        dt = exact_date.get(year)
-        return self._add_holiday(name, date(year, *dt)) if dt else None
+        # Ganesh Chaturthi.
+        self._move_holiday(self._add_ganesh_chaturthi(tr("Ganesh Chaturthi")))
 
-    def _traverse_set(self, dts: set[date]) -> set[date]:
-        for dt in dts:
+        # Dussehra.
+        self._move_holiday(self._add_dussehra(tr("Dussehra")))
+
+        # Diwali Laxmi Pujan.
+        self._move_holiday(self._add_gau_krida(tr("Diwali Laxmi Pujan")))
+
+        # Diwali Balipratipada.
+        name = tr("Diwali Balipratipada")
+        # NSE's calendar add an extra day gap for 2022-2023
+        # between Diwali Laxmi Pujan and Diwali Balipratipada.
+        self._move_holiday(
+            self._add_bhai_dooj(name)
+            if self._year in {2022, 2023}
+            else self._add_govardhan_puja(name)
+        )
+
+        # Guru Nanak Jayanti.
+        self._move_holiday(self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti")))
+
+        # Islamic Calendar Holidays.
+        # Ashura.
+        for dt in self._add_ashura_day(tr("Muharram")):
             self._move_holiday(dt)
-        return dts
+
+        # Eid al-Fitr.
+        for dt in self._add_eid_al_fitr_day(tr("Id-Ul-Fitr (Ramadan Eid)")):
+            self._move_holiday(dt)
+
+        # Eid al-Adha.
+        for dt in self._add_eid_al_adha_day(tr("Bakri Id")):
+            self._move_holiday(dt)
 
 
 class NSE(NationalStockExchangeOfIndia):
@@ -174,14 +141,25 @@ class NationalStockExchangeOfIndiaHinduHolidays(_CustomHinduHolidays):
         2023: (MAR, 7),
     }
 
-    GOVARDHAN_PUJA_DATES = {
-        2020: (NOV, 16),
-        2022: (OCT, 26),
-        2023: (NOV, 14),
-    }
-
 
 class NationalStockExchangeOfIndiaIslamicHolidays(_CustomIslamicHolidays):
+    ASHURA_DATES_CONFIRMED_YEARS = (2022, 2025)
+    ASHURA_DATES = {
+        2022: (AUG, 9),
+        2023: (JUL, 29),
+        2024: (JUL, 17),
+        2025: (JUL, 6),
+    }
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2022, 2025)
     EID_AL_ADHA_DATES = {
-        2023: (JUN, 27),
+        2022: (JUL, 10),
+        2024: (JUN, 17),
+        2025: (JUN, 7),
+    }
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2022, 2025)
+    EID_AL_FITR_DATES = {
+        2022: (MAY, 3),
+        2023: (APR, 22),
+        2024: (APR, 11),
+        2025: (MAR, 31),
     }

@@ -10,10 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import JUN
 from holidays.financial.national_stock_exchange_of_india import (
     NSE,
     XNSE,
@@ -33,146 +31,147 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(NationalStockExchangeOfIndia(years=1993))
 
-    def test_bakri_id(self):
-        name = "Bakri Id"
-        self.assertHolidayName(
-            name,
-            date(2023, JUN, 28),
-            # "2023-06-28",
-            # "2024-06-17",
+    def test_republic_day(self):
+        name = "Republic Day"
+        dt = (
+            "2022-01-26",
+            "2023-01-26",
+            "2024-01-26",
+            "2026-01-26",
         )
-
-    def test_christmas(self):
-        name = "Christmas Day"
-        self.assertHolidayName(name, "2023-12-25", "2024-12-25", "2025-12-25")
-
-    def test_diwali(self):
-        self.assertHolidayName("Diwali Balipratipada", "2023-11-14", "2025-10-22")
-        self.assertHolidayName("Diwali Laxmi Pujan", "2024-11-01", "2025-10-21")
-
-    def test_dussehra(self):
-        name = "Dussehra"
-        self.assertHolidayName(
-            name,
-            "2023-10-24",
-            "2025-10-02",
-        )
-
-    def test_dr_baba_saheb_ambedkar_jayanti(self):
-        name = "Dr. Baba Saheb Ambedkar Jayanti"
-        self.assertHolidayName(
-            name,
-            "2023-04-14",
-            "2025-04-14",
-        )
-
-    def test_ganesh_chaturthi(self):
-        name = "Ganesh Chaturthi"
-        self.assertHolidayName(
-            name,
-            "2023-09-19",
-            "2025-08-27",
-        )
+        self.assertHolidayName(name, dt)
+        no_dt = ("2025-01-26",)
+        self.assertNoHoliday(no_dt)
 
     def test_good_friday(self):
         name = "Good Friday"
-        self.assertHolidayName(
-            name,
-            "2023-04-07",
-            "2024-03-29",
-            "2025-04-18",
-        )
+        dt = ("2022-04-15", "2023-04-07", "2024-03-29", "2025-04-18")
+        self.assertHolidayName(name, dt)
 
-    def test_guru_nanak_jayanti(self):
-        name = "Guru Nanak Jayanti"
-        self.assertHolidayName(
-            name,
-            "2023-11-27",
-            "2024-11-15",
-            "2025-11-05",
+    def test_dr_baba_saheb_ambedkar_jayanti(self):
+        name = "Dr. Baba Saheb Ambedkar Jayanti"
+        dt = (
+            "2022-04-14",
+            "2023-04-14",
+            "2025-04-14",
+            "2026-04-14",
         )
+        self.assertHolidayName(name, dt)
+        no_dt = ("2024-04-14",)
+        self.assertNoHoliday(no_dt)
+
+    def test_maharashtra_day(self):
+        name = "Maharashtra Day"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(2023, 2026)))
+        dt = ("2022-05-01",)
+        self.assertNoHoliday(dt)
+
+    def test_independence_day(self):
+        name = "Independence Day"
+        self.assertHolidayName(name, (f"{year}-08-15" for year in range(2022, 2026)))
+
+    def test_mahatma_gandhi_jayanti(self):
+        name = "Mahatma Gandhi Jayanti"
+        self.assertHolidayName(name, (f"{year}-10-02" for year in range(2023, 2026)))
+        dt = ("2022-10-02",)
+        self.assertNoHoliday(dt)
+
+    def test_christmas_day(self):
+        name = "Christmas Day"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(2023, 2026)))
+        dt = ("2022-12-25",)
+        self.assertNoHoliday(dt)
+
+    def test_mahashivratri(self):
+        name = "Maha Shivaratri"
+        dt = (
+            "2022-03-01",
+            "2024-03-08",
+            "2025-02-26",
+        )
+        self.assertHolidayName(name, dt)
+        no_dt = ("2023-02-18",)
+        self.assertNoHoliday(no_dt)
 
     def test_holi(self):
         name = "Holi"
-        self.assertHolidayName(
-            name,
+        dt = (
+            "2022-03-18",
             "2023-03-07",
             "2024-03-25",
             "2025-03-14",
         )
-
-    def test_id_ul_fitr(self):
-        name = "Id-Ul-Fitr (Ramadan Eid)"
-        self.assertHolidayName(
-            name,
-            "2024-04-11",
-            "2025-03-31",
-        )
-
-    def test_independence_day(self):
-        name = "Independence Day"
-        self.assertHolidayName(
-            name,
-            "2023-08-15",
-            "2024-08-15",
-            "2025-08-15",
-        )
-
-    def test_maharashtra_day(self):
-        name = "Maharashtra Day"
-        self.assertHolidayName(
-            name,
-            "2023-05-01",
-            "2024-05-01",
-            "2025-05-01",
-        )
-
-    def test_mahashivratri(self):
-        name = "Maha Shivaratri"
-        self.assertHolidayName(
-            name,
-            "2024-03-08",
-            "2025-02-26",
-        )
-
-    def test_mahatma_gandhi_jayanti(self):
-        name = "Mahatma Gandhi Jayanti"
-        self.assertHolidayName(
-            name,
-            "2023-10-02",
-            "2024-10-02",
-        )
+        self.assertHolidayName(f"{name}", dt)
 
     def test_mahavir_jayanti(self):
         name = "Mahavir Jayanti"
-        self.assertHolidayName(
-            name,
+        dt = (
+            "2022-04-14",
             "2023-04-04",
             "2025-04-10",
         )
-
-    def test_muharram(self):
-        name = "Muharram"
-        self.assertHolidayName(
-            name,
-            "2024-07-17",
-        )
+        self.assertHolidayName(name, dt)
+        no_dt = ("2024-04-21",)
+        self.assertNoHoliday(no_dt)
 
     def test_ram_navami(self):
         name = "Ram Navami"
-        self.assertHolidayName(
-            name,
+        dt = (
             "2023-03-30",
             "2024-04-17",
         )
-
-    def test_republic_day(self):
-        name = "Republic Day"
-        self.assertHolidayName(
-            name,
-            "2023-01-26",
-            "2024-01-26",
+        self.assertHolidayName(name, dt)
+        no_dt = (
+            "2022-04-10",
+            "2025-04-06",
         )
+        self.assertNoHoliday(no_dt)
+
+    def test_bhai_dooj_and_govardhan_puja(self):
+        name = "Diwali Balipratipada"
+        bhai_dooj_dt = (
+            "2022-10-26",
+            "2023-11-14",
+        )
+        self.assertHolidayName(name, bhai_dooj_dt)
+        govardhan_puja_dt = ("2025-10-22",)
+        self.assertHolidayName(name, govardhan_puja_dt)
+
+    def test_diwali_laxmi_pujan(self):
+        name = "Diwali Laxmi Pujan"
+        dt = (
+            "2022-10-24",
+            "2024-11-01",
+            "2025-10-21",
+        )
+        self.assertHolidayName(name, dt)
+
+    def test_dussehra(self):
+        name = "Dussehra"
+        dt = (
+            "2022-10-05",
+            "2023-10-24",
+            "2025-10-02",
+        )
+        self.assertHolidayName(name, dt)
+
+    def test_ganesh_chaturthi(self):
+        name = "Ganesh Chaturthi"
+        dt = (
+            "2023-09-19",
+            "2025-08-27",
+        )
+        self.assertHolidayName(name, dt)
+
+    def test_guru_nanak_jayanti(self):
+        name = "Guru Nanak Jayanti"
+        dt = (
+            "2022-11-08",
+            "2023-11-27",
+            "2024-11-15",
+            "2025-11-05",
+        )
+        self.assertHolidayName(name, dt)
 
     def test_2023(self):
         self.assertHolidays(

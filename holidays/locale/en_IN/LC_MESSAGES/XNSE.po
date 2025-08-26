@@ -34,6 +34,10 @@ msgstr ""
 msgid "Republic Day"
 msgstr ""
 
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
 #. Dr. Baba Saheb Ambedkar Jayanti.
 msgid "Dr. Baba Saheb Ambedkar Jayanti"
 msgstr ""
@@ -54,54 +58,50 @@ msgstr ""
 msgid "Christmas Day"
 msgstr ""
 
-#. Bakri Id
-msgid "Bakri Id"
-msgstr ""
-
-#. Diwali Balipratipada
-msgid "Diwali Balipratipada"
-msgstr ""
-
-#. Diwali Laxmi Pujan
-msgid "Diwali Laxmi Pujan"
-msgstr ""
-
-#. Dussehra
-msgid "Dussehra"
-msgstr ""
-
-#. Ganesh Chaturthi
-msgid "Ganesh Chaturthi"
-msgstr ""
-
-#. Good Friday
-msgid "Good Friday"
-msgstr ""
-
-#. Guru Nanak Jayanti
-msgid "Guru Nanak Jayanti"
-msgstr ""
-
-#. Holi
-msgid "Holi"
-msgstr ""
-
-#. Id Ul Fitr (Ramadan Eid)
-msgid "Id-Ul-Fitr (Ramadan Eid)"
-msgstr ""
-
-#. Maha Shivaratri
+#. Hindu Calendar Holidays. Maha Shivaratri.
 msgid "Maha Shivaratri"
 msgstr ""
 
-#. Mahavir Jayanti
+#. Holi.
+msgid "Holi"
+msgstr ""
+
+#. Mahavir Jayanti.
 msgid "Mahavir Jayanti"
 msgstr ""
 
-#. Muharram
+#. Ram Navami.
+msgid "Ram Navami"
+msgstr ""
+
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr ""
+
+#. Dussehra.
+msgid "Dussehra"
+msgstr ""
+
+#. Diwali Laxmi Pujan.
+msgid "Diwali Laxmi Pujan"
+msgstr ""
+
+#. Diwali Balipratipada.
+msgid "Diwali Balipratipada"
+msgstr ""
+
+#. Guru Nanak Jayanti.
+msgid "Guru Nanak Jayanti"
+msgstr ""
+
+#. Islamic Calendar Holidays. Ashura.
 msgid "Muharram"
 msgstr ""
 
-#. Ram Navami
-msgid "Ram Navami"
+#. Eid al-Fitr.
+msgid "Id-Ul-Fitr (Ramadan Eid)"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Bakri Id"
 msgstr ""
