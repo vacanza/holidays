@@ -41,7 +41,7 @@ class Somalia(HolidayBase, InternationalHolidays, IslamicHolidays):
         # New Year's Day.
         self._add_new_years_day("New Year's Day")
 
-        # Labour Day.
+        # Labor Day.
         self._add_labor_day("Labour Day")
 
         # Independence Day.
