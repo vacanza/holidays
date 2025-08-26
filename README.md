@@ -1526,6 +1526,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Somalia</td>
+<td>SO</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>South Africa</td>
 <td>ZA</td>
 <td></td>
