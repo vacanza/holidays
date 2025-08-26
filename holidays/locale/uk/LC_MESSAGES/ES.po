@@ -32,7 +32,7 @@ msgstr ""
 msgid "%s (estimado)"
 msgstr "%s (приблизна дата)"
 
-#. %s (observed, estimated).
+#. Monday following %s (estimated).
 #, c-format
 msgid "Lunes siguiente a %s (estimado)"
 msgstr "Понеділок після %s (приблизна дата)"

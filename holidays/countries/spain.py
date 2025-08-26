@@ -54,7 +54,7 @@ class Spain(
     default_language = "es"
     # %s (estimated).
     estimated_label = tr("%s (estimado)")
-    # %s (observed, estimated).
+    # Monday following %s (estimated).
     observed_estimated_label = tr("Lunes siguiente a %s (estimado)")
     # Monday following %s.
     observed_label = tr("Lunes siguiente a %s")
