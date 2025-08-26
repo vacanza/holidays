@@ -65,7 +65,7 @@ class Uganda(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
 
-        # Labour Day.
+        # Labor Day.
         self._add_labor_day("Labour Day")
 
         # Uganda Martyrs' Day.
