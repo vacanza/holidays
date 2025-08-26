@@ -1603,6 +1603,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GOVERNMENT, OPTIONAL, SCHOOL, WORKDAY</td>
 </tr>
 <tr>
+<td>Tajikistan</td>
+<td>TJ</td>
+<td></td>
+<td>en_US, ru, <strong>tg</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Tanzania</td>
 <td>TZ</td>
 <td></td>

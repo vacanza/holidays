@@ -232,6 +232,7 @@ COUNTRIES: RegistryDict = {
     "switzerland": ("Switzerland", "CH", "CHE"),
     "syrian_arab_republic": ("SyrianArabRepublic", "SY", "SYR"),
     "taiwan": ("Taiwan", "TW", "TWN"),
+    "tajikistan": ("Tajikistan", "TJ", "TJK"),
     "tanzania": ("Tanzania", "TZ", "TZA"),
     "thailand": ("Thailand", "TH", "THA"),
     "timor_leste": ("TimorLeste", "TL", "TLS"),
