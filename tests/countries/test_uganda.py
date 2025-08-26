@@ -20,7 +20,7 @@ class TestUganda(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1963, 2050)
-        super().setUpClass(Uganda, years=years, years_non_observed=years)
+        super().setUpClass(Uganda, years=years)
         cls.no_estimated_holidays = Uganda(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
@@ -124,18 +124,18 @@ class TestUganda(CommonCountryTests, TestCase):
     def test_2020(self):
         self.assertHolidays(
             Uganda(years=2020),
-            ("2020-06-09", "National Heroes' Day"),
-            ("2020-05-01", "Labour Day"),
-            ("2020-06-03", "Uganda Martyrs' Day"),
-            ("2020-03-08", "Women's Day"),
-            ("2020-12-26", "Boxing Day"),
-            ("2020-07-31", "Eid al-Adha (estimated)"),
             ("2020-01-01", "New Year's Day"),
-            ("2020-04-10", "Good Friday"),
-            ("2020-05-24", "Eid al-Fitr (estimated)"),
-            ("2020-04-13", "Easter Monday"),
-            ("2020-10-09", "Independence Day"),
-            ("2020-02-16", "Archbishop Janani Luwum Day"),
             ("2020-01-26", "NRM Liberation Day"),
+            ("2020-02-16", "Archbishop Janani Luwum Day"),
+            ("2020-03-08", "Women's Day"),
+            ("2020-04-10", "Good Friday"),
+            ("2020-04-13", "Easter Monday"),
+            ("2020-05-01", "Labour Day"),
+            ("2020-05-24", "Eid al-Fitr (estimated)"),
+            ("2020-06-03", "Uganda Martyrs' Day"),
+            ("2020-06-09", "National Heroes' Day"),
+            ("2020-07-31", "Eid al-Adha (estimated)"),
+            ("2020-10-09", "Independence Day"),
             ("2020-12-25", "Christmas Day"),
+            ("2020-12-26", "Boxing Day"),
         )

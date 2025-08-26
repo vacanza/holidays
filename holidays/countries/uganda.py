@@ -18,13 +18,14 @@ class Uganda(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
     """Uganda holidays.
 
     References:
-        * [Public holidays in Uganda](https://en.wikipedia.org/wiki/Public_holidays_in_Uganda)
-        * [Office of the Vice President of Uganda](https://web.archive.org/web/20250618053410/https://www.vicepresident.go.ug/national-events-and-calender/)
-        * [Uganda Public Holidays 2020](https://web.archive.org/web/20230515221809/https://publicholidays.africa/uganda/2020-dates/)
-        * [National Heroes Day](https://web.archive.org/web/20230622162351/https://publicholidays.africa/uganda/national-heroes-day/)
-        * [UGANDA PUBLIC HOLIDAYS 2025](https://web.archive.org/web/20250710193157/https://publicholidays.co.ug/)
-        * [Uganda School Calendar 2025](https://web.archive.org/web/20250604101328/https://www.education.go.ug/wp-content/uploads/2025/01/SCHOOL-CALENDER-2025.pdf)
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Uganda>
         * [Public Holidays Act, Cap. 255](https://web.archive.org/web/20250621140041/https://ulii.org/akn/ug/act/1965/23/eng@2000-12-31)
+        * [National Events and Calendar](https://web.archive.org/web/20250618053410/https://www.vicepresident.go.ug/national-events-and-calender/)
+        * [National Heroes Day](https://web.archive.org/web/20230622162351/https://publicholidays.africa/uganda/national-heroes-day/)
+        * [NRM Liberation Day](https://web.archive.org/web/20240124064853/https://thenilewires.com/38th-nrm-a-liberation-day-celebrations-minister-outlines-nrm-achievements/)
+        * [Archbishop Janani Luwum Day](https://web.archive.org/web/20200805133919/https://www.newvision.co.ug/news/1417242/uganda-declared-february-archbishop-janani-luwum-public-holiday)
+        * [School Calendar 2024](https://web.archive.org/web/20240519021615/https://www.education.go.ug/wp-content/uploads/2023/11/SCHOOL-CALENDAR.pdf)
+        * [Public Holidays 2025](https://web.archive.org/web/20250710193157/https://publicholidays.co.ug/)
     """
 
     country = "UG"
