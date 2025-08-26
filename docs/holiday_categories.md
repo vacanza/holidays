@@ -73,8 +73,8 @@ Examples:
 - Religious holidays for minority populations
 - Cultural observances with optional recognition
 
-**MANDATORY**
-Holidays that must be observed by law in specific contexts.
+**MANDATORY** *(Planned for deprecation)*
+Holidays that must be observed by law in specific contexts. Currently only used by Macau. This category may be phased out in favor of OPTIONAL to improve clarity and consistency.
 
 **HALF_DAY**
 Holidays that are observed for only part of the day.
