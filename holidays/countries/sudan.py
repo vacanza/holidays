@@ -25,7 +25,7 @@ class Sudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Sudan>
         * <https://web.archive.org/web/20250820070831/https://www.sudanembassy.org.uk/public-holidays/>
-        * [Christian Holidays 2012-2018] <https://web.archive.org/web/20250827141133/https://sdnrlf.com/sudan-declares-christmas-a-public-holiday-for-first-time-in-a-decade/>
+        * [Christian Holidays 2011-2018] <https://web.archive.org/web/20250827155208/https://evangelicalfocus.com/world/5014/christmas-celebrations-mark-progress-of-religious-freedom-in-sudan>
     """
 
     country = "SD"
@@ -48,6 +48,7 @@ class Sudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         # Independence Day.
         self._add_new_years_day(tr("عيد الإستقلال"))
 
+        # Christian public holidays were suspended 2011–2018 and reinstated in 2019.
         if self._year <= 2010 or self._year >= 2019:
             # Coptic Christmas.
             self._add_christmas_day(tr("عيد الميلاد المجيد"), calendar=JULIAN_CALENDAR)
