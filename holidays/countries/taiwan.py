@@ -72,8 +72,12 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
     """
 
     country = "TW"
+    # %s (estimated).
+    estimated_label = tr("%s（推定）")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s（補假，推定）")
     # %s (observed).
-    observed_label = tr("%s（慶祝）")
+    observed_label = tr("%s（補假）")
     default_language = "zh_TW"
     supported_categories = (GOVERNMENT, OPTIONAL, PUBLIC, SCHOOL, WORKDAY)
     supported_languages = ("en_US", "th", "zh_CN", "zh_TW")

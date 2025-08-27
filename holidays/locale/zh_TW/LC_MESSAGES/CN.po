@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.42\n"
+"Project-Id-Version: Holidays 0.81\n"
 "POT-Creation-Date: 2023-09-28 19:23+0700\n"
-"PO-Revision-Date: 2024-01-18 11:43+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2025-09-07 14:05+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,16 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4.2\n"
 "X-Source-Language: zh_CN\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s（推定）"
+msgstr "%s（推定）"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s（观察日，推定）"
+msgstr "%s（補假，推定）"
 
 #. %s (observed).
 #, c-format
