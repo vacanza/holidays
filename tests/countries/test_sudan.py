@@ -33,7 +33,7 @@ class TestSudan(CommonCountryTests, TestCase):
         self.assertHolidayName("عيد الإستقلال", (f"{year}-01-01" for year in range(1985, 2050)))
 
     def test_coptic_christmas(self):
-        name = "عيد الميلاد المجيد"
+        name = "عيد الميلاد القبطي"
         self.assertHolidayName(
             name,
             "2019-01-07",
@@ -51,7 +51,7 @@ class TestSudan(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(2011, 2019))
 
     def test_coptic_easter(self):
-        name = "عيد القيامة المجيد"
+        name = "عيد الفصح القبطي"
         self.assertHolidayName(
             name,
             "2019-04-28",
@@ -114,8 +114,8 @@ class TestSudan(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "عيد الإستقلال"),
-            ("2022-01-07", "عيد الميلاد المجيد"),
-            ("2022-04-24", "عيد القيامة المجيد"),
+            ("2022-01-07", "عيد الميلاد القبطي"),
+            ("2022-04-24", "عيد الفصح القبطي"),
             ("2022-05-01", "عيد الفطر المبارك"),
             ("2022-07-10", "عيد الأضحى المبارك"),
             ("2022-07-30", "رأس السنة الهجرية"),

@@ -13,19 +13,19 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, FRI, SAT
+from holidays.calendars.gregorian import MAY, JUL, AUG, SEP, FRI, SAT
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.groups import ChristianHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Sudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Sudan(HolidayBase, ChristianHolidays, IslamicHolidays):
     """Sudan holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Sudan>
         * <https://web.archive.org/web/20250820070831/https://www.sudanembassy.org.uk/public-holidays/>
-        * [Christian Holidays 2011-2018] <https://web.archive.org/web/20250827155208/https://evangelicalfocus.com/world/5014/christmas-celebrations-mark-progress-of-religious-freedom-in-sudan>
+        * [Christian Holidays 2011-2018](https://web.archive.org/web/20250827155208/https://evangelicalfocus.com/world/5014/christmas-celebrations-mark-progress-of-religious-freedom-in-sudan)
     """
 
     country = "SD"
@@ -38,7 +38,6 @@ class Sudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         ChristianHolidays.__init__(self)
-        InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
             self, cls=SudanIslamicHolidays, show_estimated=islamic_show_estimated
         )
@@ -46,15 +45,18 @@ class Sudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     def _populate_public_holidays(self):
         # Independence Day.
-        self._add_new_years_day(tr("عيد الإستقلال"))
+        self._add_holiday_jan_1(tr("عيد الإستقلال"))
 
         # Christian public holidays were suspended 2011–2018 and reinstated in 2019.
         if self._year <= 2010 or self._year >= 2019:
             # Coptic Christmas.
-            self._add_christmas_day(tr("عيد الميلاد المجيد"), calendar=JULIAN_CALENDAR)
+            self._add_christmas_day(tr("عيد الميلاد القبطي"), calendar=JULIAN_CALENDAR)
 
             # Coptic Easter.
-            self._add_easter_sunday(tr("عيد القيامة المجيد"), calendar=JULIAN_CALENDAR)
+            self._add_easter_sunday(tr("عيد الفصح القبطي"), calendar=JULIAN_CALENDAR)
+
+            # Christmas Day.
+            self._add_christmas_day(tr("يوم عيد الميلاد"))
 
         # Islamic New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
@@ -68,10 +70,6 @@ class Sudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("عيد الأضحى المبارك"))
 
-        if self._year <= 2010 or self._year >= 2019:
-            # Christmas Day.
-            self._add_christmas_day(tr("يوم عيد الميلاد"))
-
 
 class SD(Sudan):
     pass
@@ -84,40 +82,17 @@ class SDN(Sudan):
 class SudanIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2020, 2025)
     EID_AL_ADHA_DATES = {
-        2020: (JUL, 31),
-        2021: (JUL, 20),
         2022: (JUL, 10),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
-        2025: (JUN, 6),
     }
-
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2020, 2025)
     EID_AL_FITR_DATES = {
-        2020: (MAY, 24),
-        2021: (MAY, 13),
         2022: (MAY, 1),
-        2023: (APR, 21),
-        2024: (APR, 10),
-        2025: (MAR, 30),
     }
-
     HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2020, 2025)
     HIJRI_NEW_YEAR_DATES = {
-        2020: (AUG, 20),
         2021: (AUG, 11),
-        2022: (JUL, 30),
-        2023: (JUL, 19),
-        2024: (JUL, 7),
-        2025: (JUN, 26),
     }
-
     MAWLID_DATES_CONFIRMED_YEARS = (2020, 2025)
     MAWLID_DATES = {
-        2020: (OCT, 29),
-        2021: (OCT, 18),
-        2022: (OCT, 8),
         2023: (SEP, 28),
-        2024: (SEP, 15),
-        2025: (SEP, 4),
     }
