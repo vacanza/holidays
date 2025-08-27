@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries import Gambia, GM, GMB
+from holidays.countries.gambia import Gambia, GM, GMB
 from tests.common import CommonCountryTests
 
 

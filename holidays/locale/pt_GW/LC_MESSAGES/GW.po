@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.79\n"
+"Project-Id-Version: Holidays 0.80\n"
 "POT-Creation-Date: 2025-08-03 15:53+0530\n"
-"PO-Revision-Date: 2025-08-03 15:53+0530\n"
-"Last-Translator: Kriti Birda <workwithkritibirda@gmail.com>\n"
+"PO-Revision-Date: 2025-08-26 17:59+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pt_GW\n"
 "MIME-Version: 1.0\n"
@@ -29,16 +29,6 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (prevista)"
-msgstr ""
-
-#. %s (observed).
-#, c-format
-msgid "%s (ponte)"
-msgstr ""
-
-#. %s (estimated, observed).
-#, c-format
-msgid "%s (prevista, ponte)"
 msgstr ""
 
 #. New Year's Day.
