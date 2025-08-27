@@ -27,8 +27,8 @@ msgstr ""
 "X-Source-Language: en_IN\n"
 
 #, c-format
-msgid "%s"
-msgstr "%s"
+msgid "%s (estimated)"
+msgstr "%s (estimated)"
 
 #. Republic Day.
 msgid "Republic Day"

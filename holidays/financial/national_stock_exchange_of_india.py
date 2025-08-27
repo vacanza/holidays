@@ -13,11 +13,9 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import APR, AUG, JUN, MAR, JUL, MAY
-from holidays.groups.christian import ChristianHolidays
-from holidays.groups.hindu import HinduCalendarHolidays
-from holidays.groups.islamic import IslamicHolidays
-from holidays.observed_holiday_base import SAT_TO_NONE, SUN_TO_NONE, ObservedHolidayBase
+from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG
+from holidays.groups import ChristianHolidays, HinduCalendarHolidays, IslamicHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_NONE, SUN_TO_NONE
 
 
 class NationalStockExchangeOfIndia(
@@ -37,16 +35,20 @@ class NationalStockExchangeOfIndia(
 
     market = "XNSE"
     default_language = "en_IN"
+    estimated_label = tr("%s (estimated)")
     supported_languages = ("en_IN", "en_US", "hi")
-    estimated_label = tr("%s")
     # NSE launched its services in 1994.
     start_year = 1995
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
         HinduCalendarHolidays.__init__(self, cls=NationalStockExchangeOfIndiaHinduHolidays)
         ChristianHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=NationalStockExchangeOfIndiaIslamicHolidays)
+        IslamicHolidays.__init__(
+            self,
+            cls=NationalStockExchangeOfIndiaIslamicHolidays,
+            show_estimated=islamic_show_estimated,
+        )
         super().__init__(*args, **kwargs)
 
     MUHARRAM_DATES = {
@@ -125,14 +127,10 @@ class NationalStockExchangeOfIndia(
 
 
 class NSE(NationalStockExchangeOfIndia):
-    """Alias of NationalStockExchangeOfIndia"""
-
     pass
 
 
 class XNSE(NationalStockExchangeOfIndia):
-    """Alias of NationalStockExchangeOfIndia"""
-
     pass
 
 
