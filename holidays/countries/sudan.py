@@ -13,86 +13,63 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
+from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, FRI, SAT
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import (
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-)
-from holidays.observed_holiday_base import (
-    ObservedHolidayBase,
-    SUN_TO_NEXT_MON,
-)
+from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.holiday_base import HolidayBase
 
 
-class Sudan(
-    ObservedHolidayBase,
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-):
+class Sudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """Sudan holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Sudan>
         * <https://web.archive.org/web/20250820070831/https://www.sudanembassy.org.uk/public-holidays/>
+        * [Christian Holidays 2012-2018] <https://web.archive.org/web/20250827141133/https://sdnrlf.com/sudan-declares-christmas-a-public-holiday-for-first-time-in-a-decade/>
     """
 
     country = "SD"
     default_language = "ar_SD"
     # %s (estimated).
     estimated_label = tr("%s (المقدرة)")
-    # %s (observed).
-    observed_label = tr("%s (ملاحظة)")
-    # %s (observed, estimated).
-    observed_estimated_label = tr("%s (المقدرة، ملاحظة)")
     supported_languages = ("ar_SD", "en_US")
     start_year = 1985
+    weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
         IslamicHolidays.__init__(
             self, cls=SudanIslamicHolidays, show_estimated=islamic_show_estimated
         )
-        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        dts_observed = set()
-
         # Independence Day.
-        dts_observed.add(self._add_new_years_day(tr("عيد الإستقلال")))
+        self._add_new_years_day(tr("عيد الإستقلال"))
 
-        # Coptic Christmas.
-        dts_observed.add(
+        if self._year <= 2011 or self._year >= 2019:
+            # Coptic Christmas.
             self._add_christmas_day(tr("عيد الميلاد المجيد"), calendar=JULIAN_CALENDAR)
-        )
 
-        # Coptic Easter.
-        dts_observed.add(
+            # Coptic Easter.
             self._add_easter_sunday(tr("عيد القيامة المجيد"), calendar=JULIAN_CALENDAR)
-        )
 
         # Islamic New Year.
-        dts_observed.update(self._add_islamic_new_year_day(tr("رأس السنة الهجرية")))
+        self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
 
         # Prophet's Birthday.
-        dts_observed.update(self._add_mawlid_day(tr("المولد النبوي الشريف")))
+        self._add_mawlid_day(tr("المولد النبوي الشريف"))
 
         # Eid al-Fitr.
-        dts_observed.update(self._add_eid_al_fitr_day(tr("عيد الفطر المبارك")))
+        self._add_eid_al_fitr_day(tr("عيد الفطر المبارك"))
 
         # Eid al-Adha.
-        dts_observed.update(self._add_eid_al_adha_day(tr("عيد الأضحى المبارك")))
+        self._add_eid_al_adha_day(tr("عيد الأضحى المبارك"))
 
-        # Christmas Day.
-        dts_observed.add(self._add_christmas_day(tr("يوم عيد الميلاد")))
-
-        if self.observed:
-            self._populate_observed(dts_observed)
+        if self._year <= 2011 or self._year >= 2019:
+            # Christmas Day.
+            self._add_christmas_day(tr("يوم عيد الميلاد"))
 
 
 class SD(Sudan):

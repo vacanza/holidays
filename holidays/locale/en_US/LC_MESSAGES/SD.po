@@ -14,7 +14,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.80POT-Creation-Date: 2025-07-12 01:31+0530\n"
+"Project-Id-Version: Holidays 0.80\n"
+"POT-Creation-Date: 2025-07-12 01:31+0530\n"
 "PO-Revision-Date: 2025-07-12 01:31+0530\n"
 "Last-Translator: Ansh Anand <ansh.a.3112@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
@@ -30,23 +31,15 @@ msgstr ""
 msgid "%s (المقدرة)"
 msgstr "%s (estimated)"
 
-#. %s (observed).
-#, c-format
-msgid "%s (ملاحظة)"
-msgstr "%s (observed)"
-
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (المقدرة، ملاحظة)"
-msgstr "%s (estimated, observed)"
-
 #. Independence Day.
 msgid "عيد الإستقلال"
 msgstr "Independence Day"
 
+#. Coptic Christmas.
 msgid "عيد الميلاد المجيد"
 msgstr "Coptic Christmas"
 
+#. Coptic Easter.
 msgid "عيد القيامة المجيد"
 msgstr "Coptic Easter"
 

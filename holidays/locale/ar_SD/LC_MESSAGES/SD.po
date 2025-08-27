@@ -31,23 +31,15 @@ msgstr ""
 msgid "%s (المقدرة)"
 msgstr ""
 
-#. %s (observed).
-#, c-format
-msgid "%s (ملاحظة)"
-msgstr ""
-
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (المقدرة، ملاحظة)"
-msgstr ""
-
 #. Independence Day.
 msgid "عيد الإستقلال"
 msgstr ""
 
+#. Coptic Christmas.
 msgid "عيد الميلاد المجيد"
 msgstr ""
 
+#. Coptic Easter.
 msgid "عيد القيامة المجيد"
 msgstr ""
 
