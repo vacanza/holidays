@@ -223,6 +223,7 @@ from holidays.countries.sint_maarten import SintMaarten, SX, SXM
 from holidays.countries.slovakia import Slovakia, SK, SVK
 from holidays.countries.slovenia import Slovenia, SI, SVN
 from holidays.countries.solomon_islands import SolomonIslands, SB, SLB
+from holidays.countries.somalia import Somalia, SO, SOM
 from holidays.countries.south_africa import SouthAfrica, ZA, ZAF
 from holidays.countries.south_georgia_and_the_south_sandwich_islands import (
     SouthGeorgiaAndTheSouthSandwichIslands,
@@ -251,6 +252,7 @@ from holidays.countries.turkey import Turkey, TR, TUR
 from holidays.countries.turkmenistan import Turkmenistan, TM, TKM
 from holidays.countries.turks_and_caicos_islands import TurksAndCaicosIslands, TC, TCA
 from holidays.countries.tuvalu import Tuvalu, TV, TUV
+from holidays.countries.uganda import Uganda, UG, UGA
 from holidays.countries.ukraine import Ukraine, UA, UKR
 from holidays.countries.united_arab_emirates import UnitedArabEmirates, AE, ARE
 from holidays.countries.united_kingdom import UnitedKingdom, GB, GBR, UK
