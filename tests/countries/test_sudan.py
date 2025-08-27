@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries import Sudan, SD, SDN
+from holidays.countries.sudan import Sudan, SD, SDN
 from tests.common import CommonCountryTests
 
 
