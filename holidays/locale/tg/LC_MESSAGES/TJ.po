@@ -10,67 +10,63 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Guinea-Bissau holidays.
+# Tajikistan holidays.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.80\n"
-"POT-Creation-Date: 2025-08-03 15:53+0530\n"
-"PO-Revision-Date: 2025-08-26 17:59+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"POT-Creation-Date: 2025-08-23 06:13+0500\n"
+"PO-Revision-Date: 2025-08-23 06:13+0500\n"
+"Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: pt_GW\n"
+"Language: tg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: pt_GW\n"
+"X-Source-Language: tg\n"
 
 #. %s (estimated).
 #, c-format
-msgid "%s (prevista)"
+msgid "%s (таҳминан)"
 msgstr ""
 
 #. New Year's Day.
-msgid "Ano Novo"
+msgid "Соли Нав"
 msgstr ""
 
-#. National Heroes' Day.
-msgid "Dia dos Heróis Nacionais"
+#. Mother's Day.
+msgid "Рӯзи Модар"
 msgstr ""
 
-#. Day of the Beginning of the Armed Struggle.
-msgid "Dia do Início da Luta Armada"
+#. International Nowruz Day.
+msgid "Иди байналмилалии Наврӯз"
 msgstr ""
 
-#. International Women's Day.
-msgid "Dia Internacional da Mulher"
+#. International Workers' Solidarity Day.
+msgid "Рӯзи байналхалқии якдилии меҳнаткашон"
 msgstr ""
 
-#. Easter Sunday.
-msgid "Páscoa"
+#. Victory Day.
+msgid "Рӯзи Ғалаба дар Ҷанги Бузурги Ватанӣ"
 msgstr ""
 
-#. Worker's Day.
-msgid "Dia do Trabalhador"
-msgstr ""
-
-#. Pidjiguiti Day.
-msgid "Dia de Pidjiguiti"
+#. Day of National Unity.
+msgid "Рӯзи Ваҳдати миллӣ"
 msgstr ""
 
 #. Independence Day.
-msgid "Dia da Independência"
+msgid "Рӯзи Истиқлолияти давлатии Ҷумҳурии Тоҷикистон"
 msgstr ""
 
-#. Christmas Day.
-msgid "Dia de Natal"
+#. Constitution Day.
+msgid "Рӯзи Конститутсияи Ҷумҳурии Тоҷикистон"
 msgstr ""
 
 #. Eid al-Fitr.
-msgid "Korité"
+msgid "Рӯзи иди Рамазон"
 msgstr ""
 
 #. Eid al-Adha.
-msgid "Tabaski"
+msgid "Рӯзи иди Қурбон"
 msgstr ""

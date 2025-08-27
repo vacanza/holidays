@@ -9,7 +9,7 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>PyPI</td>
     <td>
-      <a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvacanza%2Faux%2Frefs%2Fheads%2Fmain%2Fbadges%2Fdownloads%2Fpepy.tech.yaml&query=%24.monthly_downloads_human&suffix=%2Fmonth&style=flat&label=downloads&color=41B5BE&cacheSeconds=86400" alt="PyPI monthly downloads"></a>&nbsp;<a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat" alt="PyPI version"></a>&nbsp;<a href="https://github.com/vacanza/holidays/releases"><img src="https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat" alt="Latest release date"></a>
+      <a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvacanza%2Faux%2Frefs%2Fheads%2Fmain%2Fbadges%2Fdownloads%2Fpepy.tech.yaml&query=%24.previous_month_downloads_human&suffix=%2Fmonth&style=flat&label=downloads&color=41B5BE&cacheSeconds=86400" alt="PyPI monthly downloads"></a>&nbsp;<a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat" alt="PyPI version"></a>&nbsp;<a href="https://github.com/vacanza/holidays/releases"><img src="https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat" alt="Latest release date"></a>
     </td>
   </tr>
   <tr>
@@ -105,7 +105,11 @@ and detailed information.
 
 ## Available Countries
 
+<<<<<<< HEAD
 We currently support 236 country codes. The standard way to refer to a country is by using its [ISO
+=======
+We currently support 239 country codes. The standard way to refer to a country is by using its [ISO
+>>>>>>> upstream/dev
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -473,6 +477,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>CO</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Comoros</td>
+<td>KM</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -1519,6 +1530,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Somalia</td>
+<td>SO</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>South Africa</td>
 <td>ZA</td>
 <td></td>
@@ -1603,6 +1621,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GOVERNMENT, OPTIONAL, SCHOOL, WORKDAY</td>
 </tr>
 <tr>
+<td>Tajikistan</td>
+<td>TJ</td>
+<td></td>
+<td>en_US, ru, <strong>tg</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Tanzania</td>
 <td>TZ</td>
 <td></td>
@@ -1684,6 +1709,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>TV</td>
 <td>Town/Island Councils: FUN (Funafuti), NIT (Niutao), NKF (Nukufetau), NKL (Nukulaelae), NMA (Nanumea), NMG (Nanumaga, Nanumanga), NUI (Nui), VAI (Vaitupu)</td>
 <td>en_GB, en_US, <strong>tvl</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Uganda</td>
+<td>UG</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
