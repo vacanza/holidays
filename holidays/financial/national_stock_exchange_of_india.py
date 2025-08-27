@@ -45,7 +45,7 @@ class NationalStockExchangeOfIndia(
         """
         Args:
             islamic_show_estimated:
-                Whether to add 'estimated' label to Islamic holidays name
+                Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
@@ -88,11 +88,11 @@ class NationalStockExchangeOfIndia(
         # Holi.
         self._move_holiday(self._add_holi(tr("Holi")))
 
-        # Mahavir Jayanti.
-        self._move_holiday(self._add_mahavir_jayanti(tr("Mahavir Jayanti")))
-
         # Ram Navami.
         self._move_holiday(self._add_ram_navami(tr("Ram Navami")))
+
+        # Mahavir Jayanti.
+        self._move_holiday(self._add_mahavir_jayanti(tr("Mahavir Jayanti")))
 
         # Ganesh Chaturthi.
         self._move_holiday(self._add_ganesh_chaturthi(tr("Ganesh Chaturthi")))
@@ -131,11 +131,11 @@ class NationalStockExchangeOfIndia(
             self._move_holiday(dt)
 
 
-class NSE(NationalStockExchangeOfIndia):
+class XNSE(NationalStockExchangeOfIndia):
     pass
 
 
-class XNSE(NationalStockExchangeOfIndia):
+class NSE(NationalStockExchangeOfIndia):
     pass
 
 
@@ -153,12 +153,14 @@ class NationalStockExchangeOfIndiaIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUL, 17),
         2025: (JUL, 6),
     }
+
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2022, 2025)
     EID_AL_ADHA_DATES = {
         2022: (JUL, 10),
         2024: (JUN, 17),
         2025: (JUN, 7),
     }
+
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2022, 2025)
     EID_AL_FITR_DATES = {
         2022: (MAY, 3),

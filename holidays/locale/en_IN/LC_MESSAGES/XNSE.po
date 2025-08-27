@@ -67,12 +67,12 @@ msgstr ""
 msgid "Holi"
 msgstr ""
 
-#. Mahavir Jayanti.
-msgid "Mahavir Jayanti"
-msgstr ""
-
 #. Ram Navami.
 msgid "Ram Navami"
+msgstr ""
+
+#. Mahavir Jayanti.
+msgid "Mahavir Jayanti"
 msgstr ""
 
 #. Ganesh Chaturthi.
