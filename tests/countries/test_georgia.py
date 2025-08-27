@@ -28,6 +28,13 @@ class TestGeorgia(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(Georgia(years=1990))
 
+    def test_special_government_holidays(self):
+        self.assertHoliday(
+            Georgia(categories=GOVERNMENT),
+            "2024-05-17",
+            "2025-08-29",
+        )
+
     def test_new_years_day(self):
         self.assertHolidayName(
             "ახალი წელი",
@@ -121,11 +128,6 @@ class TestGeorgia(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-05-17" for year in range(2025, 2050)))
         self.assertNoHolidayName(name, range(1991, 2025))
 
-        self.assertHolidays(
-            Georgia(categories=GOVERNMENT, years=2024),
-            ("2024-05-17", name),
-        )
-
     def test_independence_day(self):
         self.assertHolidayName(
             "დამოუკიდებლობის დღე", (f"{year}-05-26" for year in range(1991, 2050))
@@ -158,6 +160,7 @@ class TestGeorgia(CommonCountryTests, TestCase):
             ("2025-05-17", "ოჯახის სიწმინდისა და მშობლების პატივისცემის დღე"),
             ("2025-05-26", "დამოუკიდებლობის დღე"),
             ("2025-08-28", "მარიამობა"),
+            ("2025-08-29", "უქმე დღე"),
             ("2025-10-14", "მცხეთობის"),
             ("2025-11-23", "გიორგობა"),
         )
@@ -181,6 +184,7 @@ class TestGeorgia(CommonCountryTests, TestCase):
             ("2025-05-17", "Day of Family Sanctity and Respect for Parents"),
             ("2025-05-26", "Independence Day"),
             ("2025-08-28", "Dormition of the Mother of God"),
+            ("2025-08-29", "Public Holiday"),
             ("2025-10-14", "Holiday of Svetitskhovloba, Robe of Jesus"),
             ("2025-11-23", "Saint George's Day"),
         )
@@ -204,6 +208,7 @@ class TestGeorgia(CommonCountryTests, TestCase):
             ("2025-05-17", "День святості родини та поваги до батьків"),
             ("2025-05-26", "День незалежності"),
             ("2025-08-28", "Успіння Пресвятої Богородиці"),
+            ("2025-08-29", "Вихідний день"),
             ("2025-10-14", "Свято Светіцховлоба, Ризи Господньої"),
             ("2025-11-23", "День Святого Георгія"),
         )
