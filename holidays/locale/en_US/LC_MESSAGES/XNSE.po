@@ -26,6 +26,7 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_IN\n"
 
+#. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
 msgstr "%s (estimated)"
@@ -58,7 +59,7 @@ msgstr "Mahatma Gandhi Jayanti"
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
-#. Hindu Calendar Holidays. Maha Shivaratri.
+#. Maha Shivaratri.
 msgid "Maha Shivaratri"
 msgstr "Maha Shivaratri"
 
@@ -84,7 +85,7 @@ msgstr "Dussehra"
 
 #. Diwali Laxmi Pujan.
 msgid "Diwali Laxmi Pujan"
-msgstr "Diwali Laxmi Pujan"
+msgstr "Diwali Lakshmi Puja"
 
 #. Diwali Balipratipada.
 msgid "Diwali Balipratipada"
@@ -94,7 +95,7 @@ msgstr "Diwali Balipratipada"
 msgid "Guru Nanak Jayanti"
 msgstr "Guru Nanak Jayanti"
 
-#. Islamic Calendar Holidays. Ashura.
+#. Ashura.
 msgid "Muharram"
 msgstr "Ashura"
 

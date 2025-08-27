@@ -35,10 +35,11 @@ class NationalStockExchangeOfIndia(
 
     market = "XNSE"
     default_language = "en_IN"
+    # %s (estimated).
     estimated_label = tr("%s (estimated)")
     supported_languages = ("en_IN", "en_US", "hi")
     # NSE launched its services in 1994.
-    start_year = 1995
+    start_year = 1994
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -47,19 +48,15 @@ class NationalStockExchangeOfIndia(
                 Whether to add 'estimated' label to Islamic holidays name
                 if holiday date is estimated.
         """
-        kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
-        HinduCalendarHolidays.__init__(self, cls=NationalStockExchangeOfIndiaHinduHolidays)
         ChristianHolidays.__init__(self)
+        HinduCalendarHolidays.__init__(self, cls=NationalStockExchangeOfIndiaHinduHolidays)
         IslamicHolidays.__init__(
             self,
             cls=NationalStockExchangeOfIndiaIslamicHolidays,
             show_estimated=islamic_show_estimated,
         )
+        kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
         super().__init__(*args, **kwargs)
-
-    MUHARRAM_DATES = {
-        2024: (JUL, 17),
-    }
 
     def _populate_public_holidays(self):
         # Republic Day.
@@ -84,6 +81,7 @@ class NationalStockExchangeOfIndia(
         self._move_holiday(self._add_christmas_day(tr("Christmas Day")))
 
         # Hindu Calendar Holidays.
+
         # Maha Shivaratri.
         self._move_holiday(self._add_maha_shivaratri(tr("Maha Shivaratri")))
 
@@ -107,7 +105,7 @@ class NationalStockExchangeOfIndia(
 
         # Diwali Balipratipada.
         name = tr("Diwali Balipratipada")
-        # NSE's calendar add an extra day gap for 2022-2023
+        # NSE's calendar adds an extra-day gap in 2022–2023
         # between Diwali Laxmi Pujan and Diwali Balipratipada.
         self._move_holiday(
             self._add_bhai_dooj(name)
@@ -119,6 +117,7 @@ class NationalStockExchangeOfIndia(
         self._move_holiday(self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti")))
 
         # Islamic Calendar Holidays.
+
         # Ashura.
         for dt in self._add_ashura_day(tr("Muharram")):
             self._move_holiday(dt)

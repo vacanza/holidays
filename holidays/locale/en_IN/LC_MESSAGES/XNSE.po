@@ -26,6 +26,7 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_IN\n"
 
+#. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
 msgstr ""
@@ -58,7 +59,7 @@ msgstr ""
 msgid "Christmas Day"
 msgstr ""
 
-#. Hindu Calendar Holidays. Maha Shivaratri.
+#. Maha Shivaratri.
 msgid "Maha Shivaratri"
 msgstr ""
 
@@ -94,7 +95,7 @@ msgstr ""
 msgid "Guru Nanak Jayanti"
 msgstr ""
 
-#. Islamic Calendar Holidays. Ashura.
+#. Ashura.
 msgid "Muharram"
 msgstr ""
 

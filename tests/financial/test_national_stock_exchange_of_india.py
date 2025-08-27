@@ -23,29 +23,29 @@ from tests.common import CommonFinancialTests
 class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(NationalStockExchangeOfIndia, years=range(2022, 2026))
+        years = range(1994, 2026)
+        super().setUpClass(NationalStockExchangeOfIndia, years=years)
+        cls.nonobs_no_estimated_holidays = NationalStockExchangeOfIndia(
+            observed=False, years=years, islamic_show_estimated=False
+        )
 
     def test_market_aliases(self):
         self.assertAliases(NationalStockExchangeOfIndia, NSE, XNSE)
 
-    def test_no_holidays(self):
-        self.assertNoHolidays(NationalStockExchangeOfIndia(years=1993))
-
     def test_republic_day(self):
         name = "Republic Day"
-        dt = (
-            "2022-01-26",
-            "2023-01-26",
-            "2024-01-26",
-            "2026-01-26",
-        )
-        self.assertHolidayName(name, dt)
+        self.assertNonObservedHolidayName(name, (f"{year}-01-26" for year in range(1994, 2050)))
         no_dt = ("2025-01-26",)
-        self.assertNoHoliday(no_dt)
+        self.assertNoHolidayName(name, no_dt)
 
     def test_good_friday(self):
         name = "Good Friday"
-        dt = ("2022-04-15", "2023-04-07", "2024-03-29", "2025-04-18")
+        dt = (
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
         self.assertHolidayName(name, dt)
 
     def test_dr_baba_saheb_ambedkar_jayanti(self):
@@ -62,23 +62,23 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
 
     def test_maharashtra_day(self):
         name = "Maharashtra Day"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(2023, 2026)))
+        self.assertNonObservedHolidayName(name, (f"{year}-05-01" for year in range(1994, 2050)))
         dt = ("2022-05-01",)
         self.assertNoHoliday(dt)
 
     def test_independence_day(self):
         name = "Independence Day"
-        self.assertHolidayName(name, (f"{year}-08-15" for year in range(2022, 2026)))
+        self.assertNonObservedHolidayName(name, (f"{year}-08-15" for year in range(1994, 2050)))
 
     def test_mahatma_gandhi_jayanti(self):
         name = "Mahatma Gandhi Jayanti"
-        self.assertHolidayName(name, (f"{year}-10-02" for year in range(2023, 2026)))
+        self.assertNonObservedHolidayName(name, (f"{year}-10-02" for year in range(1994, 2050)))
         dt = ("2022-10-02",)
         self.assertNoHoliday(dt)
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(2023, 2026)))
+        self.assertNonObservedHolidayName(name, (f"{year}-12-25" for year in range(1994, 2050)))
         dt = ("2022-12-25",)
         self.assertNoHoliday(dt)
 
@@ -86,12 +86,13 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         name = "Maha Shivaratri"
         dt = (
             "2022-03-01",
+            "2023-02-18",
             "2024-03-08",
             "2025-02-26",
         )
-        self.assertHolidayName(name, dt)
+        self.assertNonObservedHolidayName(name, dt)
         no_dt = ("2023-02-18",)
-        self.assertNoHoliday(no_dt)
+        self.assertNoHolidayName(name, no_dt)
 
     def test_holi(self):
         name = "Holi"
@@ -101,16 +102,17 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2024-03-25",
             "2025-03-14",
         )
-        self.assertHolidayName(f"{name}", dt)
+        self.assertHolidayName(name, dt)
 
     def test_mahavir_jayanti(self):
         name = "Mahavir Jayanti"
         dt = (
             "2022-04-14",
             "2023-04-04",
+            "2024-04-21",
             "2025-04-10",
         )
-        self.assertHolidayName(name, dt)
+        self.assertNonObservedHolidayName(name, dt)
         no_dt = ("2024-04-21",)
         self.assertNoHoliday(no_dt)
 
@@ -288,11 +290,4 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             ("2023-11-14", "दिवाली बलिप्रतिपदा"),
             ("2023-11-27", "गुरु नानक जयंती"),
             ("2023-12-25", "क्रिसमस डे"),
-        )
-
-    def test_not_observed(self):
-        self.assertNoHoliday(
-            "2022-05-01",
-            "2024-04-14",
-            "2022-10-02",
         )
