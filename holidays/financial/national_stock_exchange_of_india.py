@@ -41,6 +41,12 @@ class NationalStockExchangeOfIndia(
     start_year = 1995
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add 'estimated' label to Islamic holidays name
+                if holiday date is estimated.
+        """
         kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
         HinduCalendarHolidays.__init__(self, cls=NationalStockExchangeOfIndiaHinduHolidays)
         ChristianHolidays.__init__(self)

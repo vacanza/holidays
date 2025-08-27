@@ -28,7 +28,7 @@ msgstr ""
 
 #, c-format
 msgid "%s (estimated)"
-msgstr "%s (estimated)"
+msgstr "%s (अनुमानित)"
 
 #. Republic Day.
 msgid "Republic Day"
