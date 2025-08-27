@@ -55,8 +55,12 @@ class BosniaAndHerzegovina(
 
     country = "BA"
     default_language = "bs"
+    # %s (estimated).
+    estimated_label = tr("%s (procijenjeno)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (slobodan dan, procijenjeno)")
     # %s (observed).
-    observed_label = tr("%s (preneseno)")
+    observed_label = tr("%s (slobodan dan)")
     subdivisions = (
         "BIH",  # Federacija Bosne i Hercegovine.
         "BRC",  # Brčko distrikt.
