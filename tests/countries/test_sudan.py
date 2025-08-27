@@ -36,32 +36,29 @@ class TestSudan(CommonCountryTests, TestCase):
         name = "عيد الميلاد المجيد"
         self.assertHolidayName(
             name,
-            "2011-01-07",
             "2019-01-07",
             "2022-01-07",
         )
-        self.assertNoHolidayName(name, range(2012, 2018))
+        self.assertNoHolidayName(name, range(2011, 2018))
 
     def test_christmas_day(self):
         name = "يوم عيد الميلاد"
         self.assertHolidayName(
             name,
-            "2011-12-25",
             "2019-12-25",
             "2022-12-25",
         )
-        self.assertNoHolidayName(name, range(2012, 2018))
+        self.assertNoHolidayName(name, range(2011, 2018))
 
     def test_coptic_easter(self):
         name = "عيد القيامة المجيد"
         self.assertHolidayName(
             name,
-            "2011-04-24",
             "2019-04-28",
             "2022-04-24",
             "2024-05-05",
         )
-        self.assertNoHolidayName(name, range(2012, 2019))
+        self.assertNoHolidayName(name, range(2011, 2018))
 
     def test_islamic_new_year(self):
         name = "رأس السنة الهجرية"
@@ -82,6 +79,8 @@ class TestSudan(CommonCountryTests, TestCase):
             "2020-10-29",
             "2021-10-18",
             "2022-10-08",
+            "2023-09-28",
+            "2024-09-15",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1985, 2050))
 

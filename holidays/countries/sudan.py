@@ -48,7 +48,7 @@ class Sudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         # Independence Day.
         self._add_new_years_day(tr("عيد الإستقلال"))
 
-        if self._year <= 2011 or self._year >= 2019:
+        if self._year <= 2010 or self._year >= 2019:
             # Coptic Christmas.
             self._add_christmas_day(tr("عيد الميلاد المجيد"), calendar=JULIAN_CALENDAR)
 
@@ -67,7 +67,7 @@ class Sudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("عيد الأضحى المبارك"))
 
-        if self._year <= 2011 or self._year >= 2019:
+        if self._year <= 2010 or self._year >= 2019:
             # Christmas Day.
             self._add_christmas_day(tr("يوم عيد الميلاد"))
 
