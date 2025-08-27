@@ -125,7 +125,7 @@ class Tanzania(
         StaticHolidays.__init__(self, TanzaniaStaticHolidays)
         super().__init__(*args, **kwargs)
 
-    def _populate_observed(self, dts: set[date], multiple: bool = False) -> None:
+    def _populate_observed(self, dts: set[date], dts_special: set[date]) -> None:
         """
         Applies `SAT_SUN_TO_NEXT_MON_TUE` instead of `SAT_SUN_TO_NEXT_MON`
         observed_rule for Christmas Day and the first day of Eid al-Fitr
@@ -139,27 +139,17 @@ class Tanzania(
         if self._year <= 1994 or self._year >= 2022:
             return
 
-        # Christmas Day.
-        christmas_day = self.tr("Kuzaliwa Kristo")
-
-        # Eid al-Fitr.
-        eid_al_fitr = self.tr("Eid El-Fitri")
-        eid_al_fitr_count = 0
-
         # If a holiday falls on Holy Saturday.
         holy_saturday = _timedelta(self._easter_sunday, -1)
 
         for dt in sorted(dts):
-            names = self.get_list(dt)
-            for name in names:
-                if eid_al_fitr in name:
-                    eid_al_fitr_count += 1
-                if name == christmas_day or eid_al_fitr_count == 1:
-                    rule = SAT_SUN_TO_NEXT_MON_TUE
-                elif dt == holy_saturday:
-                    rule = SAT_TO_NEXT_TUE
-                else:
-                    rule = SAT_SUN_TO_NEXT_MON
+            if dt in dts_special:
+                rule = SAT_SUN_TO_NEXT_MON_TUE
+            elif dt == holy_saturday:
+                rule = SAT_TO_NEXT_TUE
+            else:
+                rule = SAT_SUN_TO_NEXT_MON
+            for name in self.get_list(dt):
                 self._add_observed(dt, name, rule)
 
     def _populate_bank_holidays(self):
@@ -172,6 +162,7 @@ class Tanzania(
 
     def _populate_public_holidays(self):
         dts_observed = set()
+        dts_special = set()
 
         # Removed via Act No. 28 of 1966 on August 4th, 1966.
         # Readded in 1987.
@@ -257,7 +248,9 @@ class Tanzania(
         dts_observed.add(self._add_holiday_dec_9(tr("Uhuru na Jamhuri")))
 
         # Christmas Day.
-        dts_observed.add(self._add_christmas_day(tr("Kuzaliwa Kristo")))
+        dt = self._add_christmas_day(tr("Kuzaliwa Kristo"))
+        dts_observed.add(dt)
+        dts_special.add(dt)
 
         # Removed via Act No. 28 of 1966 on August 4th, 1966
         # Readded via Act No. 1 of 1993 on February 19th, 1993.
@@ -273,7 +266,9 @@ class Tanzania(
 
         # Eid al-Fitr.
         name = tr("Eid El-Fitri")
-        dts_observed.update(self._add_eid_al_fitr_day(name))
+        dts = self._add_eid_al_fitr_day(name)
+        dts_observed.update(dts)
+        dts_special.update(dts)
         dts_observed.update(self._add_eid_al_fitr_day_two(name))
 
         # Eid al-Adha.
@@ -287,7 +282,7 @@ class Tanzania(
         dts_observed.update(self._add_mawlid_day(tr("Maulidi")))
 
         if self.observed:
-            self._populate_observed(dts_observed)
+            self._populate_observed(dts_observed, dts_special)
 
 
 class TZ(Tanzania):

@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.79\n"
+"Project-Id-Version: Holidays 0.80\n"
 "POT-Creation-Date: 2023-10-07 15:05+0700\n"
-"PO-Revision-Date: 2025-08-15 12:17+0700\n"
+"PO-Revision-Date: 2025-08-27 14:29+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: sw\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Source-Language: sw\n"
 
 #. %s (estimated).
@@ -40,14 +40,6 @@ msgstr ""
 #. %s (observed, estimated).
 #, c-format
 msgid "Badala ya %s (makisio)"
-msgstr ""
-
-#. Christmas Day.
-msgid "Kuzaliwa Kristo"
-msgstr ""
-
-#. Eid al-Fitr.
-msgid "Eid El-Fitri"
 msgstr ""
 
 #. Easter Sunday.
@@ -115,8 +107,16 @@ msgstr ""
 msgid "Uhuru na Jamhuri"
 msgstr ""
 
+#. Christmas Day.
+msgid "Kuzaliwa Kristo"
+msgstr ""
+
 #. Boxing Day.
 msgid "Siku ya Kupeana Zawadi"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Eid El-Fitri"
 msgstr ""
 
 #. Eid al-Adha.
