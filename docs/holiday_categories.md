@@ -88,9 +88,9 @@ Examples:
 - Religious holidays for minority populations
 - Cultural observances with optional recognition
 
-#### MANDATORY *(Planned for deprecation)*
+#### MANDATORY *(deprecated)*
 
-Holidays that must be observed by law in specific contexts. Currently only used by Macau. This category may be phased out in favor of OPTIONAL to improve clarity and consistency.
+Holidays that were legally required to be observed in specific contexts. Previously used in Macau, where "Mandatory (Statutory) Holidays" have since been reclassified under the `PUBLIC` category, and "General Holidays" are now included in the `OPTIONAL` category - following the same approach as in Hong Kong.
 
 #### HALF_DAY
 
