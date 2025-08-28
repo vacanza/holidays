@@ -116,7 +116,6 @@ class SSD(SouthSudan):
 
 
 class SouthSudanIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2018, 2025)
     EID_AL_ADHA_DATES = {
         2018: (AUG, 21),
         2020: (JUL, 31),
@@ -125,7 +124,6 @@ class SouthSudanIslamicHolidays(_CustomIslamicHolidays):
         2025: (JUN, 6),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2018, 2025)
     EID_AL_FITR_DATES = {
         2018: (JUN, 14),
         2020: (MAY, 22),
