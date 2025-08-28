@@ -27,6 +27,8 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     """
 
     country = "GA"
+    # %s (estimated).
+    estimated_label = "%s (estimated)"
     # On 17 August 1960, Gabon gained independence from France.
     start_year = 1961
 
