@@ -1026,7 +1026,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>MO</td>
 <td>Historical municipalities: I (Concelho das Ilhas, 海島市, 海岛市), M (Concelho de Macau, 澳門市, 澳门市)</td>
 <td>en_MO, en_US, pt_MO, th, zh_CN, <strong>zh_MO</strong></td>
-<td>GOVERNMENT, MANDATORY</td>
+<td>GOVERNMENT, OPTIONAL</td>
 </tr>
 <tr>
 <td>Madagascar</td>
