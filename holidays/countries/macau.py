@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import FEB, SEP, OCT, DEC
-from holidays.constants import GOVERNMENT, MANDATORY, PUBLIC
+from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC
 from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -77,7 +77,7 @@ class Macau(
         "澳門市": "M",
         "澳门市": "M",
     }
-    supported_categories = (GOVERNMENT, MANDATORY, PUBLIC)
+    supported_categories = (GOVERNMENT, OPTIONAL, PUBLIC)
     supported_languages = ("en_MO", "en_US", "pt_MO", "th", "zh_CN", "zh_MO")
 
     def __init__(self, *args, **kwargs):
@@ -91,6 +91,63 @@ class Macau(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        """Macau Mandatory (Statutory) Holidays.
+
+        Decreto-Lei n.º 101/84/M - Earliest Available Version Online.
+        Decreto-Lei n.º 24/89/M - Added Ching Ming Festival.
+        Lei n.º 8/2000 - Removed Day of Portugal
+                       - Added Macao S.A.R. Establishment Day.
+                       - Moved Mid-Autumn to Day following Mid-Autumn to match Public Holidays.
+        Lei n.º 7/2008 - Consolidated with other laws, reaffirming 2000 Amendment list.
+        """
+        if self._year <= 1984:
+            return None
+
+        # New Year's Day.
+        self._add_new_years_day(tr("元旦"))
+
+        # Chinese New Year's Day.
+        self._add_chinese_new_years_day(tr("農曆正月初一"))
+
+        # The second day of Chinese New Year.
+        self._add_chinese_new_years_day_two(tr("農曆正月初二"))
+
+        # The third day of Chinese New Year.
+        self._add_chinese_new_years_day_three(tr("農曆正月初三"))
+
+        # Labor Day.
+        self._add_labor_day(tr("勞動節"))
+
+        # Double Ninth Festival.
+        self._add_double_ninth_festival(tr("重陽節"))
+
+        # National Day of the People's Republic of China.
+        self._add_holiday_oct_1(tr("中華人民共和國國慶日"))
+
+        # Decreto-Lei n.º 24/89/M - Adds Ching Ming as a Mandatory Holiday.
+        if self._year >= 1989:
+            # Tomb-Sweeping Day.
+            self._add_qingming_festival(tr("清明節"))
+
+        # Lei n.º 8/2000 - Removed Day of Portugal as a Mandatory Holiday.
+        #                - Changed observance from Mid-Autumn to the following day.
+        #                - Adds Macao S.A.R. Establishment Day as a Mandatory Holiday.
+        if self._year <= 1999:
+            # Day of Portugal, Camões, and the Portuguese Communities.
+            self._add_holiday_jun_10(tr("葡國日、賈梅士日暨葡僑日"))
+
+            # Mid-Autumn Festival.
+            self._add_mid_autumn_festival(tr("中秋節"))
+
+        else:
+            # The Day following Mid-Autumn Festival.
+            self._add_mid_autumn_festival_day_two(tr("中秋節翌日"))
+
+            # Macao S.A.R. Establishment Day.
+            self._add_holiday_dec_20(tr("澳門特別行政區成立紀念日"))
+
+    def _populate_optional_holidays(self):
+        """Macau General Holidays."""
         # New Year's Day.
         self._add_new_years_day(tr("元旦"))
 
@@ -223,61 +280,6 @@ class Macau(
             # Macao S.A.R. Establishment Day.
             self._add_holiday_dec_20(tr("澳門特別行政區成立紀念日"))
 
-    def _populate_mandatory_holidays(self):
-        """
-        Decreto-Lei n.º 101/84/M - Earliest Available Version Online.
-        Decreto-Lei n.º 24/89/M - Added Ching Ming Festival.
-        Lei n.º 8/2000 - Removed Day of Portugal
-                       - Added Macao S.A.R. Establishment Day.
-                       - Moved Mid-Autumn to Day following Mid-Autumn to match Public Holidays.
-        Lei n.º 7/2008 - Consolidated with other laws, reaffirming 2000 Amendment list.
-        """
-        if self._year <= 1984:
-            return None
-
-        # New Year's Day.
-        self._add_new_years_day(tr("元旦"))
-
-        # Chinese New Year's Day.
-        self._add_chinese_new_years_day(tr("農曆正月初一"))
-
-        # The second day of Chinese New Year.
-        self._add_chinese_new_years_day_two(tr("農曆正月初二"))
-
-        # The third day of Chinese New Year.
-        self._add_chinese_new_years_day_three(tr("農曆正月初三"))
-
-        # Labor Day.
-        self._add_labor_day(tr("勞動節"))
-
-        # Double Ninth Festival.
-        self._add_double_ninth_festival(tr("重陽節"))
-
-        # National Day of the People's Republic of China.
-        self._add_holiday_oct_1(tr("中華人民共和國國慶日"))
-
-        # Decreto-Lei n.º 24/89/M - Adds Ching Ming as a Mandatory Holiday.
-        if self._year >= 1989:
-            # Tomb-Sweeping Day.
-            self._add_qingming_festival(tr("清明節"))
-
-        # Lei n.º 8/2000 - Removed Day of Portugal as a Mandatory Holiday.
-        #                - Changed observance from Mid-Autumn to the following day.
-        #                - Adds Macao S.A.R. Establishment Day as a Mandatory Holiday.
-        if self._year <= 1999:
-            # Day of Portugal, Camões, and the Portuguese Communities.
-            self._add_holiday_jun_10(tr("葡國日、賈梅士日暨葡僑日"))
-
-            # Mid-Autumn Festival.
-            self._add_mid_autumn_festival(tr("中秋節"))
-
-        else:
-            # The Day following Mid-Autumn Festival.
-            self._add_mid_autumn_festival_day_two(tr("中秋節翌日"))
-
-            # Macao S.A.R. Establishment Day.
-            self._add_holiday_dec_20(tr("澳門特別行政區成立紀念日"))
-
     def _populate_government_holidays(self):
         # While Cross-Checking References are available for from 2005-2025,
         # SUN in-lieus starts in 2011; SAT-SUN in-lieus starts in 2012.
@@ -378,7 +380,7 @@ class Macau(
             )
             self._populate_observed(dts_observed, multiple=True)
 
-    def _populate_subdiv_i_public_holidays(self):
+    def _populate_subdiv_i_optional_holidays(self):
         # Decreto-Lei n.º 15/93/M - Moved Day of the Municipality of Ilhas from JUL 13 to NOV 30.
         # Regulamento Administrativo n.º 4/1999 - Removed as a Public Holiday.
         if self._year <= 1999:
@@ -389,7 +391,7 @@ class Macau(
             else:
                 self._add_holiday_jul_13(name)
 
-    def _populate_subdiv_m_public_holidays(self):
+    def _populate_subdiv_m_optional_holidays(self):
         # Regulamento Administrativo n.º 4/1999 - Removed Macau City Day as a Public Holiday.
         if self._year <= 1999:
             # Macau City Day.
@@ -407,10 +409,10 @@ class MAC(Macau):
 class MacauStaticHolidays:
     """Macau special holidays.
 
-    Special Public and Government Holidays:
+    Special General and Government Holidays:
         * <https://web.archive.org/web/20240421052702/https://www.io.gov.mo/pt/legis/rec/111020>
 
-    Special Mandatory Holidays:
+    Special Mandatory (Statutory) Holidays:
         * <https://web.archive.org/web/20250421090753/https://www.dsal.gov.mo/pt/standard/holiday_table.html>
 
     Cross-Checking:
@@ -457,10 +459,10 @@ class MacauStaticHolidays:
         2014: (OCT, 3, name_double_ninth_festival_national_day_2_overlap),
         2020: (OCT, 5, name_mid_autumn_festival_day_2_national_day_2_overlap),
     }
-    special_mandatory_holidays = {
+    special_public_holidays = {
         2015: (SEP, 3, name_70th_war_of_resistance),
     }
-    special_public_holidays = {
+    special_optional_holidays = {
         1998: (
             (DEC, 23, name_fullday),
             (DEC, 31, name_halfday),

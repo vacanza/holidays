@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.80\n"
 "POT-Creation-Date: 2023-06-26 18:31+0300\n"
-"PO-Revision-Date: 2025-08-26 18:49+0300\n"
+"PO-Revision-Date: 2025-08-27 18:24+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: sr\n"
@@ -34,13 +34,13 @@ msgstr "%s (процењено)"
 
 #. %s (observed, estimated).
 #, c-format
-msgid "%s (preneseno, procijenjeno)"
-msgstr "%s (пренешено, процењено)"
+msgid "%s (slobodan dan, procijenjeno)"
+msgstr "%s (слободан дан, процењено)"
 
 #. %s (observed).
 #, c-format
-msgid "%s (preneseno)"
-msgstr "%s (пренешено)"
+msgid "%s (slobodan dan)"
+msgstr "%s (слободан дан)"
 
 #. Orthodox Good Friday.
 msgid "Veliki petak (Pravoslavni)"
