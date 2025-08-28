@@ -123,12 +123,12 @@ class TestSouthSudan(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             self.no_estimated_holidays,
-            "2020-05-24",
+            "2020-05-22",
             "2021-05-13",
-            "2022-05-02",
+            "2022-05-03",
             "2023-04-21",
             "2024-04-10",
-            "2025-03-30",
+            "2025-03-31",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
 
@@ -138,7 +138,7 @@ class TestSouthSudan(CommonCountryTests, TestCase):
             name,
             self.no_estimated_holidays,
             "2020-07-31",
-            "2021-07-20",
+            "2021-07-18",
             "2022-07-09",
             "2023-06-28",
             "2024-06-16",
@@ -152,12 +152,12 @@ class TestSouthSudan(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             self.islamic_holidays,
-            "2020-05-25",
+            "2020-05-23",
             "2021-05-14",
-            "2022-05-03",
+            "2022-05-04",
             "2023-04-22",
             "2024-04-11",
-            "2025-03-31",
+            "2025-04-01",
         )
         self.assertHolidayName(name, self.islamic_holidays, range(2012, 2050))
 
@@ -168,7 +168,7 @@ class TestSouthSudan(CommonCountryTests, TestCase):
             name,
             self.islamic_holidays,
             "2020-08-01",
-            "2021-07-21",
+            "2021-07-19",
             "2022-07-10",
             "2023-06-29",
             "2024-06-17",
@@ -187,10 +187,10 @@ class TestSouthSudan(CommonCountryTests, TestCase):
             ("2020-04-13", "Easter Monday"),
             ("2020-05-01", "International Labour Day"),
             ("2020-05-16", "SPLA Day"),
-            ("2020-05-24", "Eid al-Fitr (estimated)"),
+            ("2020-05-22", "Eid al-Fitr"),
             ("2020-07-09", "Independence Day"),
             ("2020-07-30", "Martyrs' Day"),
-            ("2020-07-31", "Eid al-Adha (estimated)"),
+            ("2020-07-31", "Eid al-Adha"),
             ("2020-12-24", "Christmas Eve"),
             ("2020-12-25", "Christmas Day"),
             ("2020-12-26", "Second Day of Christmas"),

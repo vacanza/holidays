@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars.gregorian import MAR, MAY, JUN, JUL, AUG
 from holidays.constants import ISLAMIC, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
@@ -46,7 +48,9 @@ class SouthSudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
+        IslamicHolidays.__init__(
+            self, cls=SouthSudanIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -109,3 +113,23 @@ class SS(SouthSudan):
 
 class SSD(SouthSudan):
     pass
+
+
+class SouthSudanIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2018, 2025)
+    EID_AL_ADHA_DATES = {
+        2018: (AUG, 21),
+        2020: (JUL, 31),
+        2021: (JUL, 18),
+        2022: (JUL, 9),
+        2025: (JUN, 6),
+    }
+
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2018, 2025)
+    EID_AL_FITR_DATES = {
+        2018: (JUN, 14),
+        2020: (MAY, 22),
+        2021: (MAY, 13),
+        2022: (MAY, 3),
+        2025: (MAR, 31),
+    }
