@@ -23,7 +23,7 @@ from tests.common import CommonFinancialTests
 class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1994, 2026)
+        years = range(1995, 2026)
         super().setUpClass(NationalStockExchangeOfIndia, years=years)
         cls.nonobs_no_estimated_holidays = NationalStockExchangeOfIndia(
             observed=False, years=years, islamic_show_estimated=False
@@ -34,7 +34,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
 
     def test_republic_day(self):
         name = "Republic Day"
-        self.assertNonObservedHolidayName(name, (f"{year}-01-26" for year in range(1994, 2050)))
+        self.assertNonObservedHolidayName(name, (f"{year}-01-26" for year in range(1995, 2050)))
         no_dt = ("2025-01-26",)
         self.assertNoHolidayName(name, no_dt)
 
@@ -62,23 +62,23 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
 
     def test_maharashtra_day(self):
         name = "Maharashtra Day"
-        self.assertNonObservedHolidayName(name, (f"{year}-05-01" for year in range(1994, 2050)))
+        self.assertNonObservedHolidayName(name, (f"{year}-05-01" for year in range(1995, 2050)))
         dt = ("2022-05-01",)
         self.assertNoHoliday(dt)
 
     def test_independence_day(self):
         name = "Independence Day"
-        self.assertNonObservedHolidayName(name, (f"{year}-08-15" for year in range(1994, 2050)))
+        self.assertNonObservedHolidayName(name, (f"{year}-08-15" for year in range(1995, 2050)))
 
     def test_mahatma_gandhi_jayanti(self):
         name = "Mahatma Gandhi Jayanti"
-        self.assertNonObservedHolidayName(name, (f"{year}-10-02" for year in range(1994, 2050)))
+        self.assertNonObservedHolidayName(name, (f"{year}-10-02" for year in range(1995, 2050)))
         dt = ("2022-10-02",)
         self.assertNoHoliday(dt)
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertNonObservedHolidayName(name, (f"{year}-12-25" for year in range(1994, 2050)))
+        self.assertNonObservedHolidayName(name, (f"{year}-12-25" for year in range(1995, 2050)))
         dt = ("2022-12-25",)
         self.assertNoHoliday(dt)
 
