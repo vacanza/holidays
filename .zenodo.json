@@ -14,6 +14,21 @@
       "name": "Serhii Murza"
     }
   ],
+  "custom": {
+    "code:codeRepository": "https://github.com/vacanza/holidays/",
+    "code:developmentStatus": [
+      {
+        "id": "active",
+        "title": { "en": "Active" }
+      }
+    ],
+    "code:programmingLanguage": [
+      {
+        "id": "python",
+        "title": { "en": "Python" }
+      }
+    ]
+  },
   "keywords": [
     "balinese saka",
     "buddhist",
@@ -44,12 +59,5 @@
   ],
   "language": "eng",
   "notes": "Open World Holidays Framework (OWHF)",
-  "related_identifiers": [
-    {
-      "identifier": "https://github.com/vacanza/holidays",
-      "relation": "isSupplementTo",
-      "scheme": "url"
-    }
-  ],
   "upload_type": "software"
 }
