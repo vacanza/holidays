@@ -32,6 +32,9 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
     def test_market_aliases(self):
         self.assertAliases(NationalStockExchangeOfIndia, NSE, XNSE)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(NationalStockExchangeOfIndia(years=1993))
+
     def test_republic_day(self):
         name = "Republic Day"
         self.assertNonObservedHolidayName(name, (f"{year}-01-26" for year in range(1995, 2050)))
