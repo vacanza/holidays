@@ -201,8 +201,8 @@ Many countries support religious categories for holidays specific to certain com
 ``` python
 >>> from holidays.constants import CATHOLIC
 >>> # Get Catholic holidays in Germany (Saxony subdivision).
->>> de_catholic = holidays.Germany(subdiv='SN', categories=CATHOLIC, years=2024)
->>> for date, name in sorted(de_catholic.items()):
+>>> de_sn_catholic = holidays.Germany(subdiv='SN', categories=CATHOLIC, years=2024)
+>>> for date, name in sorted(de_sn_catholic.items()):
 >>>     print(date, name)
 2024-08-15 Mariä Himmelfahrt
 ```
