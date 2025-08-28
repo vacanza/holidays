@@ -24,6 +24,7 @@ class Mauritania(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
 
     country = "MR"
+    # %s (estimated).
     estimated_label = "%s (estimated)"
     weekend = {FRI, SAT}
 
