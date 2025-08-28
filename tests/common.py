@@ -20,6 +20,7 @@ from dateutil.parser import parse
 
 from holidays import HolidayBase
 from holidays.calendars.gregorian import SUN
+from holidays.groups import IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase
 
 PYTHON_LATEST_SUPPORTED_VERSION = "3.13"
@@ -361,6 +362,14 @@ class CommonCountryTests(CommonTests):
         self.assertTrue(hasattr(self.holidays, "country"))
         self.assertFalse(hasattr(self.holidays, "market"))
 
+    def test_estimated_label(self):
+        if isinstance(self.holidays, IslamicHolidays):
+            self.assertTrue(
+                getattr(self.holidays, "estimated_label", None),
+                "The `estimated_label` attribute is required for entities inherited from "
+                "`IslamicHolidays`.",
+            )
+
     def test_observed_estimated_label(self):
         estimated_label = getattr(self.holidays, "estimated_label", None)
         observed_label = getattr(self.holidays, "observed_label", None)
@@ -369,19 +378,16 @@ class CommonCountryTests(CommonTests):
         if estimated_label and observed_label:
             self.assertTrue(
                 observed_estimated_label,
-                "The 'observed_estimated_label' attribute must be set for entities containing "
-                "both 'observed_label' and 'estimated_label'.",
+                "The `observed_estimated_label` attribute is required for entities containing "
+                "both `observed_label` and `estimated_label`.",
             )
             self.assertIn(estimated_label.strip("%s ()"), observed_estimated_label)
 
     def test_observed_label(self):
         if getattr(self.holidays, "observed_label", None):
             self.assertTrue(
-                isinstance(
-                    self.holidays,
-                    ObservedHolidayBase,
-                ),
-                "The `observed_label` is not required as this entity doesn't handle "
+                isinstance(self.holidays, ObservedHolidayBase),
+                "The `observed_label` attribute is not required as this entity doesn't handle "
                 "observed holidays.",
             )
 

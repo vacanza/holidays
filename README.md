@@ -704,7 +704,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GE</td>
 <td></td>
 <td>en_US, <strong>ka</strong>, uk</td>
-<td>GOVERNMENT</td>
+<td></td>
 </tr>
 <tr>
 <td>Germany</td>
