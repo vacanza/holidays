@@ -14,7 +14,6 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAY, AUG
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -29,7 +28,6 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     """
 
     country = "GE"
-    supported_categories = (GOVERNMENT, PUBLIC)
     default_language = "ka"
     supported_languages = ("en_US", "ka", "uk")
     start_year = 1991
@@ -109,14 +107,14 @@ class GeorgiaStaticHolidays:
     """Georgia special holidays.
 
     References:
-        * [Decree 167 of 15/05/2024](https://web.archive.org/web/20240704104728/https://matsne.gov.ge/ka/document/view/6173967)
-        * [Decree 381 of 25/08/2025](https://web.archive.org/web/20250827214807/https://matsne.gov.ge/ka/document/view/6612161)
+        * [Decree 167 of 15/05/2024](https://web.archive.org/web/20240620045954/https://www.matsne.gov.ge/ka/document/view/6173967?publication=0)
+        * [Decree 381 of 25/08/2025](https://archive.org/details/matsne-6612161-0)
     """
 
     # Public Holiday.
     public_holiday = tr("უქმე დღე")
 
-    special_government_holidays = {
+    special_public_holidays = {
         2024: (MAY, 17, public_holiday),
         2025: (AUG, 29, public_holiday),
     }

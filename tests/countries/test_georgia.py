@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT
 from holidays.countries.georgia import Georgia, GE, GEO
 from tests.common import CommonCountryTests
 
@@ -28,9 +27,8 @@ class TestGeorgia(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(Georgia(years=1990))
 
-    def test_special_government_holidays(self):
+    def test_special_holidays(self):
         self.assertHoliday(
-            Georgia(categories=GOVERNMENT),
             "2024-05-17",
             "2025-08-29",
         )
