@@ -1,0 +1,63 @@
+{
+  "copyright": "(c) Vacanza Team and individual contributors (see CONTRIBUTORS file)",
+  "creators": [
+    {
+      "affiliation": "Open World Holidays Framework",
+      "name": "Murza, Serhii"
+    },
+    {
+      "affiliation": "Open World Holidays Framework",
+      "name": "Siripanich, Panpakorn"
+    },
+    {
+      "affiliation": "Open World Holidays Framework",
+      "name": "Yakovets, Arkadii"
+    }
+  ],
+  "custom": {
+    "code:codeRepository": "https://github.com/vacanza/holidays/",
+    "code:developmentStatus": [
+      {
+        "id": "active",
+        "title": { "en": "Active" }
+      }
+    ],
+    "code:programmingLanguage": [
+      {
+        "id": "python",
+        "title": { "en": "Python" }
+      }
+    ]
+  },
+  "keywords": [
+    "balinese saka",
+    "buddhist",
+    "calendar",
+    "chinese",
+    "christian",
+    "eastern",
+    "hebrew",
+    "hindu",
+    "holidays",
+    "international",
+    "islamic",
+    "ISO 3166-1",
+    "ISO 3166-2",
+    "mandean",
+    "mongolian",
+    "open source",
+    "open world holidays framework",
+    "persian",
+    "public holidays",
+    "python",
+    "sinhala",
+    "thai",
+    "tibetan",
+    "vacanza",
+    "weekend",
+    "workday"
+  ],
+  "language": "eng",
+  "notes": "Open World Holidays Framework (OWHF)",
+  "upload_type": "software"
+}
