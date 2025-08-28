@@ -3,22 +3,19 @@
   "creators": [
     {
       "affiliation": "Open World Holidays Framework",
-      "name": "Arkadii Yakovets",
-      "type": "ProjectLeader"
+      "name": "Arkadii Yakovets"
     },
     {
       "affiliation": "Open World Holidays Framework",
-      "name": "Panpakorn Siripanich",
-      "type": "ProjectLeader"
+      "name": "Panpakorn Siripanich"
     },
     {
       "affiliation": "Open World Holidays Framework",
-      "name": "Serhii Murza",
-      "type": "ProjectLeader"
+      "name": "Serhii Murza"
     }
   ],
   "keywords": [
-    "balinese_saka",
+    "balinese saka",
     "buddhist",
     "calendar",
     "chinese",
@@ -45,5 +42,14 @@
     "weekend",
     "workday"
   ],
-  "language": "eng"
+  "language": "eng",
+  "notes": "Open World Holidays Framework (OWHF)",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/vacanza/holidays",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "upload_type": "software"
 }
