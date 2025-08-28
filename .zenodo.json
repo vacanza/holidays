@@ -1,0 +1,49 @@
+{
+  "copyright": "(c) Vacanza Team and individual contributors (see CONTRIBUTORS file)",
+  "creators": [
+    {
+      "affiliation": "Open World Holidays Framework",
+      "name": "Arkadii Yakovets",
+      "type": "ProjectLeader"
+    },
+    {
+      "affiliation": "Open World Holidays Framework",
+      "name": "Panpakorn Siripanich",
+      "type": "ProjectLeader"
+    },
+    {
+      "affiliation": "Open World Holidays Framework",
+      "name": "Serhii Murza",
+      "type": "ProjectLeader"
+    }
+  ],
+  "keywords": [
+    "balinese_saka",
+    "buddhist",
+    "calendar",
+    "chinese",
+    "christian",
+    "eastern",
+    "hebrew",
+    "hindu",
+    "holidays",
+    "international",
+    "islamic",
+    "ISO 3166-1",
+    "ISO 3166-2",
+    "mandean",
+    "mongolian",
+    "open source",
+    "open world holidays framework",
+    "persian",
+    "public holidays",
+    "python",
+    "sinhala",
+    "thai",
+    "tibetan",
+    "vacanza",
+    "weekend",
+    "workday"
+  ],
+  "language": "eng"
+}
