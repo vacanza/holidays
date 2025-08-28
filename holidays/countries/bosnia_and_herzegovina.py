@@ -55,6 +55,10 @@ class BosniaAndHerzegovina(
 
     country = "BA"
     default_language = "bs"
+    # %s (estimated).
+    estimated_label = tr("%s (procijenjeno)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (preneseno, procijenjeno)")
     # %s (observed).
     observed_label = tr("%s (preneseno)")
     subdivisions = (
