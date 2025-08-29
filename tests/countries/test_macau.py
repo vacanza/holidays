@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC
+from holidays.constants import GOVERNMENT, OPTIONAL
 from holidays.countries.macau import Macau
 from tests.common import CommonCountryTests
 
@@ -20,16 +20,12 @@ from tests.common import CommonCountryTests
 class TestMacau(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Macau, years=range(1985, 2050))
-        cls.government_holidays = Macau(categories=GOVERNMENT, years=range(2005, 2050))
-        cls.optional_holidays = Macau(categories=OPTIONAL, years=range(1982, 2050))
+        super().setUpClass(Macau, with_subdiv_categories=True)
 
     def test_no_holidays(self):
-        super().test_no_holidays()
-
+        self.assertNoHolidays(Macau(years=1984))
         self.assertNoHolidays(Macau(categories=GOVERNMENT, years=2004))
         self.assertNoHolidays(Macau(categories=OPTIONAL, years=1981))
-        self.assertNoHolidays(Macau(categories=PUBLIC, years=1984))
 
     def test_special_holidays(self):
         dt_optional_full = (
@@ -61,45 +57,46 @@ class TestMacau(CommonCountryTests, TestCase):
             "2015-09-03"
         )
         self.assertHoliday(dt_mandatory)
-        self.assertHoliday(Macau(categories=GOVERNMENT), dt_government_full)
-        self.assertHoliday(Macau(categories=OPTIONAL), dt_optional_full, dt_optional_half)
+        self.assertGovernmentHoliday(dt_government_full)
+        self.assertOptionalHoliday(dt_optional_full, dt_optional_half)
 
     def test_new_years_day(self):
         name = "元旦"
 
         # Government Holidays.
-        self.assertHolidayName(
-            f"{name}後首個工作日", self.government_holidays, "2012-01-02", "2017-01-02"
+        self.assertGovernmentHolidayName(
+            name, (f"{year}-01-01" for year in range(2005, self.end_year))
         )
-        self.assertHolidayName(
-            f"{name}的補假",
-            self.government_holidays,
+        obs_dts_1 = (
+            "2012-01-02",
+            "2017-01-02",
+        )
+        obs_dts_2 = (
             "2022-01-03",
             "2023-01-02",
             "2028-01-03",
-            "2033-01-03",
-            "2034-01-02",
-            "2039-01-03",
-            "2040-01-02",
-            "2045-01-02",
         )
+        self.assertGovernmentHolidayName(f"{name}後首個工作日", obs_dts_1)
+        self.assertGovernmentHolidayName(f"{name}的補假", obs_dts_2)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts_1, obs_dts_2)
 
         # Optional Holidays.
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-01-01" for year in range(1982, 2050))
-        )
+        self.assertOptionalHolidayName(name, (f"{year}-01-01" for year in self.full_range))
 
         # Public Holidays.
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1985, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1985, self.end_year)))
 
     def test_freedom_day(self):
         name = "自由日"
 
+        # Government Holidays.
+        self.assertNoGovernmentHolidayName(name)
+
         # Optional Holidays.
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-04-25" for year in range(1982, 1999))
+        self.assertOptionalHolidayName(
+            name, (f"{year}-04-25" for year in range(self.start_year, 2000))
         )
-        self.assertNoHolidayName(name, self.optional_holidays, range(2000, 2050))
+        self.assertNoOptionalHolidayName(name, range(2000, self.end_year))
 
         # Public Holidays.
         self.assertNoHolidayName(name)
@@ -108,52 +105,55 @@ class TestMacau(CommonCountryTests, TestCase):
         name = "勞動節"
 
         # Government Holidays.
-        self.assertHolidayName(
-            f"{name}後首個工作日", self.government_holidays, "2011-05-02", "2016-05-02"
+        self.assertGovernmentHolidayName(
+            name, (f"{year}-05-01" for year in range(2005, self.end_year))
         )
-        self.assertHolidayName(
-            f"{name}的補假",
-            self.government_holidays,
+        obs_dts_1 = (
+            "2011-05-02",
+            "2016-05-02",
+        )
+        obs_dts_2 = (
             "2021-05-03",
             "2022-05-02",
             "2027-05-03",
-            "2032-05-03",
-            "2033-05-02",
-            "2038-05-03",
-            "2039-05-03",
-            "2044-05-02",
-            "2049-05-03",
         )
+        self.assertGovernmentHolidayName(f"{name}後首個工作日", obs_dts_1)
+        self.assertGovernmentHolidayName(f"{name}的補假", obs_dts_2)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts_1, obs_dts_2)
 
-        # Optional Holidays
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-05-01" for year in range(1982, 2050))
-        )
+        # Optional Holidays.
+        self.assertOptionalHolidayName(name, (f"{year}-05-01" for year in self.full_range))
 
         # Public Holidays.
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1985, 2050)))
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1985, self.end_year)))
 
     def test_day_of_portugal_camoes_and_the_portuguese_communities(self):
         name = "葡國日、賈梅士日暨葡僑日"
 
+        # Government Holidays.
+        self.assertNoGovernmentHolidayName(name)
+
         # Optional Holidays.
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-06-10" for year in range(1982, 2000))
+        self.assertOptionalHolidayName(
+            name, (f"{year}-06-10" for year in range(self.start_year, 2000))
         )
-        self.assertNoHolidayName(name, self.optional_holidays, range(2000, 2050))
+        self.assertNoOptionalHolidayName(name, range(2000, self.end_year))
 
         # Public Holidays.
         self.assertHolidayName(name, (f"{year}-06-10" for year in range(1985, 2000)))
-        self.assertNoHolidayName(name, range(2000, 2050))
+        self.assertNoHolidayName(name, range(2000, self.end_year))
 
     def test_assumption_day(self):
         name = "聖母升天"
 
+        # Government Holidays.
+        self.assertNoGovernmentHolidayName(name)
+
         # Optional Holidays.
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-08-15" for year in range(1982, 1987))
+        self.assertOptionalHolidayName(
+            name, (f"{year}-08-15" for year in range(self.start_year, 1987))
         )
-        self.assertNoHolidayName(name, self.optional_holidays, range(1987, 2050))
+        self.assertNoOptionalHolidayName(name, range(1987, self.end_year))
 
         # Public Holidays.
         self.assertNoHolidayName(name)
@@ -163,39 +163,54 @@ class TestMacau(CommonCountryTests, TestCase):
         name_following = f"{name}翌日"
 
         # Government Holidays.
-        self.assertHolidayName(
-            f"{name}後首個工作日", self.government_holidays, "2016-10-03", "2017-10-03"
+        self.assertGovernmentHolidayName(
+            name, (f"{year}-10-01" for year in range(2005, self.end_year))
         )
-        self.assertHolidayName(
-            f"{name}的補假", self.government_holidays, "2022-10-03", "2023-10-04"
+        obs_dts_1 = (
+            "2016-10-03",
+            "2017-10-03",
         )
-        self.assertHolidayName(
-            f"{name_following}後首個工作日", self.government_holidays, "2011-10-03", "2016-10-04"
+        obs_dts_2 = (
+            "2022-10-03",
+            "2023-10-04",
         )
-        self.assertHolidayName(
-            f"{name_following}的補假", self.government_holidays, "2021-10-04", "2022-10-05"
+        obs_dts_following_1 = (
+            "2011-10-03",
+            "2016-10-04",
+        )
+        obs_dts_following_2 = (
+            "2021-10-04",
+            "2022-10-05",
+        )
+        self.assertGovernmentHolidayName(f"{name}後首個工作日", obs_dts_1)
+        self.assertGovernmentHolidayName(f"{name}的補假", obs_dts_2)
+        self.assertGovernmentHolidayName(f"{name_following}後首個工作日", obs_dts_following_1)
+        self.assertGovernmentHolidayName(f"{name_following}的補假", obs_dts_following_2)
+        self.assertNoGovernmentNonObservedHoliday(
+            obs_dts_1, obs_dts_2, obs_dts_following_1, obs_dts_following_2
         )
 
         # Optional Holidays.
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-10-01" for year in range(1982, 2050))
+        self.assertOptionalHolidayName(name, (f"{year}-10-01" for year in self.full_range))
+        self.assertOptionalHolidayName(
+            name_following, (f"{year}-10-02" for year in range(2000, self.end_year))
         )
-        self.assertHolidayName(
-            name_following, self.optional_holidays, (f"{year}-10-02" for year in range(2000, 2050))
-        )
-        self.assertNoHolidayName(name_following, self.optional_holidays, range(1982, 2000))
+        self.assertNoOptionalHolidayName(name_following, range(self.start_year, 2000))
 
         # Public Holidays.
-        self.assertHolidayName(name, (f"{year}-10-01" for year in range(1985, 2050)))
+        self.assertHolidayName(name, (f"{year}-10-01" for year in range(1985, self.end_year)))
 
     def test_republic_day(self):
         name = "葡萄牙共和國國慶日"
 
+        # Government Holidays.
+        self.assertNoGovernmentHolidayName(name)
+
         # Optional Holidays.
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-10-05" for year in range(1982, 2000))
+        self.assertOptionalHolidayName(
+            name, (f"{year}-10-05" for year in range(self.start_year, 2000))
         )
-        self.assertNoHolidayName(name, self.optional_holidays, range(2000, 2050))
+        self.assertNoOptionalHolidayName(name, range(2000, self.end_year))
 
         # Public Holidays.
         self.assertNoHolidayName(name)
@@ -203,11 +218,14 @@ class TestMacau(CommonCountryTests, TestCase):
     def test_all_saints_day(self):
         name = "諸聖節"
 
+        # Government Holidays.
+        self.assertNoGovernmentHolidayName(name)
+
         # Optional Holidays.
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-11-01" for year in range(1982, 1987))
+        self.assertOptionalHolidayName(
+            name, (f"{year}-11-01" for year in range(self.start_year, 1987))
         )
-        self.assertNoHolidayName(name, self.optional_holidays, range(1987, 2050))
+        self.assertNoOptionalHolidayName(name, range(1987, self.end_year))
 
         # Public Holidays.
         self.assertNoHolidayName(name)
@@ -216,17 +234,23 @@ class TestMacau(CommonCountryTests, TestCase):
         name = "追思節"
 
         # Government Holidays.
-        self.assertHolidayName(
-            f"{name}後首個工作日", self.government_holidays, "2014-11-03", "2019-11-04"
+        self.assertGovernmentHolidayName(
+            name, (f"{year}-11-02" for year in range(2005, self.end_year))
         )
-        self.assertHolidayName(
-            f"{name}的補假", self.government_holidays, "2024-11-04", "2025-11-03"
+        obs_dts_1 = (
+            "2014-11-03",
+            "2019-11-04",
         )
+        obs_dts_2 = (
+            "2024-11-04",
+            "2025-11-03",
+        )
+        self.assertGovernmentHolidayName(f"{name}後首個工作日", obs_dts_1)
+        self.assertGovernmentHolidayName(f"{name}的補假", obs_dts_2)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts_1, obs_dts_2)
 
         # Optional Holidays.
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-11-02" for year in range(1982, 2050))
-        )
+        self.assertOptionalHolidayName(name, (f"{year}-11-02" for year in self.full_range))
 
         # Public Holidays.
         self.assertNoHolidayName(name)
@@ -234,11 +258,14 @@ class TestMacau(CommonCountryTests, TestCase):
     def test_restoration_of_independence_day(self):
         name = "恢復獨立紀念日"
 
+        # Government Holidays.
+        self.assertNoGovernmentHolidayName(name)
+
         # Optional Holidays.
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-12-01" for year in range(1982, 2000))
+        self.assertOptionalHolidayName(
+            name, (f"{year}-12-01" for year in range(self.start_year, 2000))
         )
-        self.assertNoHolidayName(name, self.optional_holidays, range(2000, 2050))
+        self.assertNoOptionalHolidayName(name, range(2000, self.end_year))
 
         # Public Holidays.
         self.assertNoHolidayName(name)
@@ -247,20 +274,22 @@ class TestMacau(CommonCountryTests, TestCase):
         name = "聖母無原罪瞻禮"
 
         # Government Holidays.
-        self.assertHolidayName(
-            f"{name}後首個工作日",
-            self.government_holidays,
+        self.assertGovernmentHolidayName(
+            name, (f"{year}-12-08" for year in range(2005, self.end_year))
+        )
+        obs_dts_1 = (
             "2012-12-10",
             "2013-12-09",
             "2018-12-10",
             "2019-12-09",
         )
-        self.assertHolidayName(f"{name}的補假", self.government_holidays, "2024-12-09")
+        obs_dts_2 = ("2024-12-09",)
+        self.assertGovernmentHolidayName(f"{name}後首個工作日", obs_dts_1)
+        self.assertGovernmentHolidayName(f"{name}的補假", obs_dts_2)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts_1, obs_dts_2)
 
         # Optional Holidays.
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-12-08" for year in range(1982, 2050))
-        )
+        self.assertOptionalHolidayName(name, (f"{year}-12-08" for year in self.full_range))
 
         # Public Holidays.
         self.assertNoHolidayName(name)
@@ -269,60 +298,34 @@ class TestMacau(CommonCountryTests, TestCase):
         name = "澳門特別行政區成立紀念日"
 
         # Government Holidays.
-        self.assertHolidayName(
-            f"{name}後首個工作日", self.government_holidays, "2014-12-23", "2015-12-21"
+        self.assertGovernmentHolidayName(
+            name, (f"{year}-12-20" for year in range(2005, self.end_year))
         )
-        self.assertHolidayName(
-            f"{name}的補假", self.government_holidays, "2020-12-22", "2025-12-22"
+        obs_dts_1 = (
+            "2014-12-23",
+            "2015-12-21",
         )
+        obs_dts_2 = (
+            "2020-12-22",
+            "2025-12-22",
+        )
+        self.assertGovernmentHolidayName(f"{name}後首個工作日", obs_dts_1)
+        self.assertGovernmentHolidayName(f"{name}的補假", obs_dts_2)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts_1, obs_dts_2)
 
-        # Optional Holidays
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-12-20" for year in range(2000, 2050))
+        # Optional Holidays.
+        self.assertOptionalHolidayName(
+            name, (f"{year}-12-20" for year in range(2000, self.end_year))
         )
-        self.assertNoHolidayName(name, self.optional_holidays, range(1982, 2000))
+        self.assertNoOptionalHolidayName(name, range(self.start_year, 2000))
 
         # Public Holidays.
-        self.assertHolidayName(name, (f"{year}-12-20" for year in range(2000, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-20" for year in range(2000, self.end_year)))
         self.assertNoHolidayName(name, range(1985, 2000))
 
     def test_winter_solstice(self):
         name = "冬至"
-
-        # Government Holidays.
-        self.assertHolidayName(
-            f"{name}後首個工作日",
-            self.government_holidays,
-            "2013-12-23",
-            "2018-12-26",
-            "2019-12-23",
-        )
-        self.assertHolidayName(
-            f"{name}的補假", self.government_holidays, "2024-12-23", "2025-12-23"
-        )
-
-        # Optional Holidays.
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-12-22" for year in range(1982, 2000))
-        )
-        self.assertHolidayName(
-            name,
-            self.optional_holidays,
-            # Regulamento Administrativo n.º 4/1999.
-            "2000-12-21",
-            # Ordem Executiva n.º 60/2000.
-            "2006-12-22",
-            "2007-12-22",
-            "2008-12-21",
-            "2009-12-22",
-            "2010-12-22",
-            "2011-12-22",
-            "2012-12-21",
-            "2013-12-22",
-            "2014-12-22",
-            "2015-12-22",
-            "2016-12-21",
-            "2017-12-22",
+        dts = (
             "2018-12-22",
             "2019-12-22",
             "2020-12-21",
@@ -332,7 +335,35 @@ class TestMacau(CommonCountryTests, TestCase):
             "2024-12-21",
             "2025-12-21",
         )
-        self.assertHolidayName(name, self.optional_holidays, range(2000, 2050))
+
+        # Government Holidays.
+        self.assertGovernmentHolidayName(name, dts)
+        self.assertGovernmentHolidayName(name, range(2005, self.end_year))
+        obs_dts_1 = (
+            "2013-12-23",
+            "2018-12-26",
+            "2019-12-23",
+        )
+        obs_dts_2 = (
+            "2024-12-23",
+            "2025-12-23",
+        )
+        self.assertGovernmentHolidayName(f"{name}後首個工作日", obs_dts_1)
+        self.assertGovernmentHolidayName(f"{name}的補假", obs_dts_2)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts_1, obs_dts_2)
+
+        # Optional Holidays.
+        self.assertOptionalHolidayName(
+            name, (f"{year}-12-22" for year in range(self.start_year, 2000))
+        )
+        self.assertOptionalHolidayName(
+            name,
+            # Regulamento Administrativo n.º 4/1999.
+            "2000-12-21",
+            # Ordem Executiva n.º 60/2000.
+            dts,
+        )
+        self.assertOptionalHolidayName(name, range(2000, self.end_year))
 
         # Public Holidays.
         self.assertNoHolidayName(name)
@@ -343,26 +374,34 @@ class TestMacau(CommonCountryTests, TestCase):
         name_2000 = "聖誕節前日"
 
         # Government Holidays.
-        self.assertHolidayName(
-            f"{name_2000}後首個工作日", self.government_holidays, "2016-12-26", "2017-12-26"
+        self.assertGovernmentHolidayName(
+            name_2000, (f"{year}-12-24" for year in range(2005, self.end_year))
         )
-        self.assertHolidayName(
-            f"{name_2000}的補假", self.government_holidays, "2022-12-26", "2023-12-26"
+        obs_dts_1 = (
+            "2016-12-26",
+            "2017-12-26",
         )
+        obs_dts_2 = (
+            "2022-12-26",
+            "2023-12-26",
+        )
+        self.assertGovernmentHolidayName(f"{name_2000}後首個工作日", obs_dts_1)
+        self.assertGovernmentHolidayName(f"{name_2000}的補假", obs_dts_2)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts_1, obs_dts_2)
 
         # Optional Holidays.
-        self.assertHolidayName(
-            name_1982, self.optional_holidays, (f"{year}-12-24" for year in range(1982, 1999))
+        self.assertOptionalHolidayName(
+            name_1982, (f"{year}-12-24" for year in range(self.start_year, 1999))
         )
-        self.assertHolidayName(name_1999, self.optional_holidays, "1999-12-24")
-        self.assertHolidayName(
-            name_2000, self.optional_holidays, (f"{year}-12-24" for year in range(2000, 2050))
+        self.assertOptionalHolidayName(name_1999, "1999-12-24")
+        self.assertOptionalHolidayName(
+            name_2000, (f"{year}-12-24" for year in range(2000, self.end_year))
         )
-        self.assertNoHolidayName(name_1982, self.optional_holidays, range(1999, 2050))
-        self.assertNoHolidayName(
-            name_1999, self.optional_holidays, range(1982, 1999), range(2000, 2050)
+        self.assertNoOptionalHolidayName(name_1982, range(1999, self.end_year))
+        self.assertNoOptionalHolidayName(
+            name_1999, range(self.start_year, 1999), range(2000, self.end_year)
         )
-        self.assertNoHolidayName(name_2000, self.optional_holidays, range(1982, 2000))
+        self.assertNoOptionalHolidayName(name_2000, range(self.start_year, 2000))
 
         # Public Holidays.
         self.assertNoHolidayName(name_1982)
@@ -374,22 +413,30 @@ class TestMacau(CommonCountryTests, TestCase):
         name_1999 = "聖誕節"
 
         # Government Holidays.
-        self.assertHolidayName(
-            f"{name_1999}後首個工作日", self.government_holidays, "2011-12-26", "2016-12-27"
+        self.assertGovernmentHolidayName(
+            name_1999, (f"{year}-12-25" for year in range(2005, self.end_year))
         )
-        self.assertHolidayName(
-            f"{name_1999}的補假", self.government_holidays, "2021-12-27", "2022-12-27"
+        obs_dts_1 = (
+            "2011-12-26",
+            "2016-12-27",
         )
+        obs_dts_2 = (
+            "2021-12-27",
+            "2022-12-27",
+        )
+        self.assertGovernmentHolidayName(f"{name_1999}後首個工作日", obs_dts_1)
+        self.assertGovernmentHolidayName(f"{name_1999}的補假", obs_dts_2)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts_1, obs_dts_2)
 
         # Optional Holidays.
-        self.assertHolidayName(
-            name_1982, self.optional_holidays, (f"{year}-12-25" for year in range(1982, 1999))
+        self.assertOptionalHolidayName(
+            name_1982, (f"{year}-12-25" for year in range(self.start_year, 1999))
         )
-        self.assertHolidayName(
-            name_1999, self.optional_holidays, (f"{year}-12-25" for year in range(1999, 2050))
+        self.assertOptionalHolidayName(
+            name_1999, (f"{year}-12-25" for year in range(1999, self.end_year))
         )
-        self.assertNoHolidayName(name_1982, self.optional_holidays, range(1999, 2050))
-        self.assertNoHolidayName(name_1999, self.optional_holidays, range(1982, 1999))
+        self.assertNoOptionalHolidayName(name_1982, range(1999, self.end_year))
+        self.assertNoOptionalHolidayName(name_1999, range(self.start_year, 1999))
 
         # Public Holidays.
         self.assertNoHolidayName(name_1982)
@@ -406,10 +453,17 @@ class TestMacau(CommonCountryTests, TestCase):
         name_d2_obs = f"{name_d2}的補假"
         name_d3_obs = f"{name_d3}的補假"
 
+        dts = (
+            "2020-01-25",
+            "2021-02-12",
+            "2022-02-01",
+            "2024-02-10",
+            "2025-01-29",
+        )
+
         # Government Holidays.
-        self.assertHolidayName(
+        self.assertGovernmentHolidayName(
             name_eve_afternoon,
-            self.government_holidays,
             "2005-02-08",
             "2008-02-06",
             "2011-02-02",
@@ -424,24 +478,20 @@ class TestMacau(CommonCountryTests, TestCase):
             "2024-02-09",
             "2025-01-28",
         )
-        self.assertHolidayName(name_eve_afternoon, self.government_holidays, range(2024, 2050))
-        self.assertNoHolidayName(
-            name_eve_afternoon,
-            self.government_holidays,
-            2006,
-            2007,
-            2009,
-            2010,
-            2012,
-            2013,
-            2016,
-            2023,
+        self.assertNoGovernmentHolidayName(
+            name_eve_afternoon, 2006, 2007, 2009, 2010, 2012, 2013, 2016, 2023
         )
-        self.assertNoHolidayName(name_eve_afternoon)
 
-        self.assertHolidayName(
+        self.assertGovernmentHolidayName(name_d1, dts)
+        self.assertGovernmentHolidayName(name_d1, range(2019, self.end_year))
+        self.assertGovernmentHolidayName(name_d2, range(2019, self.end_year))
+        self.assertGovernmentHolidayName(name_d3, range(2019, self.end_year))
+        self.assertNoGovernmentHolidayName(name_d1, range(self.start_year, 2019))
+        self.assertNoGovernmentHolidayName(name_d2, range(self.start_year, 2019))
+        self.assertNoGovernmentHolidayName(name_d3, range(self.start_year, 2019))
+
+        self.assertGovernmentHolidayName(
             name_d4,
-            self.government_holidays,
             "2006-02-01",
             "2007-02-21",
             "2010-02-17",
@@ -450,9 +500,8 @@ class TestMacau(CommonCountryTests, TestCase):
             "2017-01-31",
             "2018-02-19",
         )
-        self.assertNoHolidayName(
+        self.assertNoGovernmentHolidayName(
             name_d4,
-            self.government_holidays,
             2005,
             2008,
             2009,
@@ -460,89 +509,54 @@ class TestMacau(CommonCountryTests, TestCase):
             2012,
             2015,
             2016,
-            range(2019, 2050),
+            range(2019, self.end_year),
         )
-        self.assertNoHolidayName(name_d4)
 
-        self.assertHolidayName(
+        self.assertGovernmentHolidayName(
             name_d5,
-            self.government_holidays,
             "2014-02-04",
             "2015-02-23",
             "2017-02-01",
             "2018-02-20",
         )
-        self.assertNoHolidayName(
-            name_d5, self.government_holidays, range(2005, 2014), 2016, range(2019, 2050)
+        self.assertNoGovernmentHolidayName(
+            name_d5, range(2005, 2014), 2016, range(2019, self.end_year)
         )
-        self.assertNoHolidayName(name_d5)
 
-        self.assertHolidayName(
-            name_d1_obs,
-            self.government_holidays,
+        obs_dts_1 = (
             "2020-01-28",
             "2023-01-25",
             "2024-02-13",
         )
-        self.assertNoHolidayName(name_d1_obs)
-
-        self.assertHolidayName(
-            name_d2_obs,
-            self.government_holidays,
+        obs_dts_2 = (
             "2020-01-29",
             "2021-02-15",
             "2024-02-14",
         )
-        self.assertNoHolidayName(name_d2_obs)
-
-        self.assertHolidayName(
-            name_d3_obs,
-            self.government_holidays,
-            "2021-02-16",
-        )
-        self.assertNoHolidayName(name_d3_obs)
+        obs_dts_3 = ("2021-02-16",)
+        self.assertGovernmentHolidayName(name_d1_obs, obs_dts_1)
+        self.assertGovernmentHolidayName(name_d2_obs, obs_dts_2)
+        self.assertGovernmentHolidayName(name_d3_obs, obs_dts_3)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts_1, obs_dts_2, obs_dts_3)
 
         # Optional Holidays.
-        dt = (
-            "2009-01-26",
-            "2010-02-14",
-            "2011-02-03",
-            "2012-01-23",
-            "2014-01-31",
-            "2015-02-19",
-            "2016-02-08",
-            "2017-01-28",
-            "2018-02-16",
-            "2019-02-05",
-            "2020-01-25",
-            "2021-02-12",
-            "2022-02-01",
-            "2024-02-10",
-            "2025-01-29",
-        )
-        self.assertHolidayName(name_d1, self.optional_holidays, dt)
-        self.assertHolidayName(name_d1, self.optional_holidays, range(1982, 2050))
-        self.assertHolidayName(name_d2, self.optional_holidays, range(1982, 2050))
-        self.assertHolidayName(name_d3, self.optional_holidays, range(1982, 2050))
+        self.assertOptionalHolidayName(name_d1, dts)
+        self.assertOptionalHolidayName(name_d1, self.full_range)
+        self.assertOptionalHolidayName(name_d2, self.full_range)
+        self.assertOptionalHolidayName(name_d3, self.full_range)
 
         # Public Holidays.
-        self.assertHolidayName(name_d1, dt)
-        self.assertHolidayName(name_d1, range(1985, 2050))
-        self.assertHolidayName(name_d2, range(1985, 2050))
-        self.assertHolidayName(name_d3, range(1985, 2050))
+        self.assertHolidayName(name_d1, dts)
+        self.assertHolidayName(name_d1, range(1985, self.end_year))
+        self.assertHolidayName(name_d2, range(1985, self.end_year))
+        self.assertHolidayName(name_d3, range(1985, self.end_year))
+        self.assertNoHolidayName(name_eve_afternoon)
+        self.assertNoHolidayName(name_d4)
+        self.assertNoHolidayName(name_d5)
 
     def test_tomb_sweeping_day(self):
         name = "清明節"
-        dt = (
-            "2009-04-04",
-            "2011-04-05",
-            "2012-04-04",
-            "2013-04-04",
-            "2014-04-05",
-            "2016-04-04",
-            "2017-04-04",
-            "2018-04-05",
-            "2019-04-05",
+        dts = (
             "2020-04-04",
             "2022-04-05",
             "2023-04-05",
@@ -551,41 +565,40 @@ class TestMacau(CommonCountryTests, TestCase):
         )
 
         # Government Holidays.
-        self.assertHolidayName(
-            f"{name}後首個工作日", self.government_holidays, "2014-04-07", "2015-04-07"
+        self.assertGovernmentHolidayName(name, dts)
+        self.assertGovernmentHolidayName(name, range(2005, self.end_year))
+        obs_dts_1 = (
+            "2014-04-07",
+            "2015-04-07",
         )
-        self.assertHolidayName(
-            f"{name}的補假", self.government_holidays, "2020-04-06", "2021-04-06"
+        obs_dts_2 = (
+            "2020-04-06",
+            "2021-04-06",
         )
+        self.assertGovernmentHolidayName(f"{name}後首個工作日", obs_dts_1)
+        self.assertGovernmentHolidayName(f"{name}的補假", obs_dts_2)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts_1, obs_dts_2)
 
         # Optional Holidays.
-        self.assertHolidayName(name, self.optional_holidays, dt)
-        self.assertHolidayName(name, self.optional_holidays, range(1982, 2050))
+        self.assertOptionalHolidayName(name, dts)
+        self.assertOptionalHolidayName(name, self.full_range)
 
         # Public Holidays.
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(1989, 2050))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(1989, self.end_year))
         self.assertNoHolidayName(name, range(1985, 1989))
 
     def test_good_friday(self):
         name_1982 = "聖周星期五"
         name_2000 = "耶穌受難日"
 
+        # Government Holidays.
+        self.assertNoGovernmentHolidayName(name_1982)
+        self.assertNoGovernmentHolidayName(name_2000)
+
         # Optional Holidays.
-        self.assertHolidayName(
+        self.assertOptionalHolidayName(
             name_2000,
-            self.optional_holidays,
-            "2009-04-10",
-            "2010-04-02",
-            "2011-04-22",
-            "2012-04-06",
-            "2013-03-29",
-            "2014-04-18",
-            "2015-04-03",
-            "2016-03-25",
-            "2017-04-14",
-            "2018-03-30",
-            "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
@@ -593,10 +606,10 @@ class TestMacau(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name_1982, self.optional_holidays, range(1982, 2000))
-        self.assertHolidayName(name_2000, self.optional_holidays, range(2000, 2050))
-        self.assertNoHolidayName(name_1982, self.optional_holidays, range(2000, 2050))
-        self.assertNoHolidayName(name_2000, self.optional_holidays, range(1982, 2000))
+        self.assertOptionalHolidayName(name_1982, range(self.start_year, 2000))
+        self.assertOptionalHolidayName(name_2000, range(2000, self.end_year))
+        self.assertNoOptionalHolidayName(name_1982, range(2000, self.end_year))
+        self.assertNoOptionalHolidayName(name_2000, range(self.start_year, 2000))
 
         # Public Holidays.
         self.assertNoHolidayName(name_1982)
@@ -605,58 +618,7 @@ class TestMacau(CommonCountryTests, TestCase):
     def test_the_day_before_easter(self):
         name_1982 = "聖周星期六"
         name_2000 = "復活節前日"
-
-        # Government Holiday.
-        name_2000_obs_2005 = f"{name_2000}後首個工作日"
-        name_2000_obs_2020 = f"{name_2000}的補假"
-        self.assertHolidayName(
-            name_2000_obs_2005,
-            self.government_holidays,
-            "2012-04-09",
-            "2013-04-01",
-            "2014-04-21",
-            "2015-04-06",
-            "2016-03-28",
-            "2017-04-17",
-            "2018-04-02",
-            "2019-04-22",
-        )
-        self.assertHolidayName(
-            name_2000_obs_2020,
-            self.government_holidays,
-            "2020-04-13",
-            "2021-04-05",
-            "2022-04-18",
-            "2023-04-10",
-            "2024-04-01",
-            "2025-04-21",
-        )
-        self.assertHolidayName(name_2000_obs_2020, self.government_holidays, range(2020, 2050))
-        self.assertNoHolidayName(
-            name_2000_obs_2005,
-            self.government_holidays,
-            range(2005, 2012),
-            range(2020, 2050),
-        )
-        self.assertNoHolidayName(name_2000_obs_2020, self.government_holidays, range(1982, 2020))
-        self.assertNoHolidayName(name_2000_obs_2005)
-        self.assertNoHolidayName(name_2000_obs_2020)
-
-        # Optional Holidays.
-        self.assertHolidayName(
-            name_2000,
-            self.optional_holidays,
-            "2009-04-11",
-            "2010-04-03",
-            "2011-04-23",
-            "2012-04-07",
-            "2013-03-30",
-            "2014-04-19",
-            "2015-04-04",
-            "2016-03-26",
-            "2017-04-15",
-            "2018-03-31",
-            "2019-04-20",
+        dts = (
             "2020-04-11",
             "2021-04-03",
             "2022-04-16",
@@ -664,10 +626,43 @@ class TestMacau(CommonCountryTests, TestCase):
             "2024-03-30",
             "2025-04-19",
         )
-        self.assertHolidayName(name_1982, self.optional_holidays, range(1982, 2000))
-        self.assertHolidayName(name_2000, self.optional_holidays, range(2000, 2050))
-        self.assertNoHolidayName(name_1982, self.optional_holidays, range(2000, 2050))
-        self.assertNoHolidayName(name_2000, self.optional_holidays, range(1982, 2000))
+
+        # Government Holidays.
+        name_2000_obs_2005 = f"{name_2000}後首個工作日"
+        name_2000_obs_2020 = f"{name_2000}的補假"
+        self.assertGovernmentHolidayName(name_2000, dts)
+        self.assertGovernmentHolidayName(name_2000, range(2005, self.end_year))
+        obs_dts_1 = (
+            "2015-04-06",
+            "2016-03-28",
+            "2017-04-17",
+            "2018-04-02",
+            "2019-04-22",
+        )
+        obs_dts_2 = (
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertGovernmentHolidayName(name_2000_obs_2005, obs_dts_1)
+        self.assertGovernmentHolidayName(name_2000_obs_2005, range(2012, 2020))
+        self.assertGovernmentHolidayName(name_2000_obs_2020, obs_dts_2)
+        self.assertGovernmentHolidayName(name_2000_obs_2020, range(2020, self.end_year))
+        self.assertNoGovernmentHolidayName(
+            name_2000_obs_2005, range(2005, 2012), range(2020, self.end_year)
+        )
+        self.assertNoGovernmentHolidayName(name_2000_obs_2020, range(self.start_year, 2020))
+        self.assertNoGovernmentNonObservedHoliday(obs_dts_1, obs_dts_2)
+
+        # Optional Holidays.
+        self.assertOptionalHolidayName(name_2000, dts)
+        self.assertOptionalHolidayName(name_1982, range(self.start_year, 2000))
+        self.assertOptionalHolidayName(name_2000, range(2000, self.end_year))
+        self.assertNoOptionalHolidayName(name_1982, range(2000, self.end_year))
+        self.assertNoOptionalHolidayName(name_2000, range(self.start_year, 2000))
 
         # Public Holidays.
         self.assertNoHolidayName(name_1982)
@@ -675,38 +670,32 @@ class TestMacau(CommonCountryTests, TestCase):
 
     def test_the_buddhas_birthday(self):
         name = "佛誕節"
-
-        # Government Holidays.
-        self.assertHolidayName(
-            f"{name}後首個工作日",
-            self.government_holidays,
-            "2012-04-30",
-            "2016-05-16",
-            "2019-05-13",
-        )
-        self.assertHolidayName(f"{name}的補假", self.government_holidays, "2022-05-09")
-
-        # Optional Holidays.
-        self.assertHolidayName(
-            name,
-            self.optional_holidays,
+        dts = (
+            "2020-04-30",
+            "2021-05-19",
             "2022-05-08",
             "2023-05-26",
             "2024-05-15",
             "2025-05-05",
-            "2026-05-24",
-            "2027-05-13",
-            "2028-05-02",
-            "2029-05-20",
-            "2030-05-09",
-            "2031-05-28",
-            "2032-05-16",
-            "2033-05-06",
-            "2034-05-25",
-            "2035-05-15",
         )
-        self.assertHolidayName(name, self.optional_holidays, range(2000, 2050))
-        self.assertNoHolidayName(name, self.optional_holidays, range(1982, 2000))
+
+        # Government Holidays.
+        self.assertGovernmentHolidayName(name, dts)
+        self.assertGovernmentHolidayName(name, range(2005, self.end_year))
+        obs_dts_1 = (
+            "2012-04-30",
+            "2016-05-16",
+            "2019-05-13",
+        )
+        obs_dts_2 = ("2022-05-09",)
+        self.assertGovernmentHolidayName(f"{name}後首個工作日", obs_dts_1)
+        self.assertGovernmentHolidayName(f"{name}的補假", obs_dts_2)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts_1, obs_dts_2)
+
+        # Optional Holidays.
+        self.assertOptionalHolidayName(name, dts)
+        self.assertOptionalHolidayName(name, range(2000, self.end_year))
+        self.assertNoOptionalHolidayName(name, range(self.start_year, 2000))
 
         # Public Holidays.
         self.assertNoHolidayName(name)
@@ -714,10 +703,12 @@ class TestMacau(CommonCountryTests, TestCase):
     def test_corpus_christi(self):
         name = "基督聖體聖血節"
 
+        # Government Holidays.
+        self.assertNoGovernmentHolidayName(name)
+
         # Optional Holidays.
-        self.assertHolidayName(
+        self.assertOptionalHolidayName(
             name,
-            self.optional_holidays,
             "1982-06-10",
             "1983-06-02",
             "1984-06-21",
@@ -725,35 +716,14 @@ class TestMacau(CommonCountryTests, TestCase):
             "1986-05-29",
             "1987-06-18",
         )
-        self.assertNoHolidayName(name, self.optional_holidays, range(1988, 2050))
+        self.assertNoOptionalHolidayName(name, range(1988, self.end_year))
 
         # Public Holidays.
         self.assertNoHolidayName(name)
 
     def test_dragon_boat_festival(self):
         name = "端午節"
-
-        # Government Holidays.
-        self.assertHolidayName(
-            f"{name}後首個工作日", self.government_holidays, "2012-06-25", "2015-06-22"
-        )
-        self.assertHolidayName(f"{name}的補假", self.government_holidays, "2025-06-02")
-
-        # Optional Holidays.
-        self.assertHolidayName(
-            name,
-            self.optional_holidays,
-            "2009-05-28",
-            "2010-06-16",
-            "2011-06-06",
-            "2012-06-23",
-            "2013-06-12",
-            "2014-06-02",
-            "2015-06-20",
-            "2016-06-09",
-            "2017-05-30",
-            "2018-06-18",
-            "2019-06-07",
+        dts = (
             "2020-06-25",
             "2021-06-14",
             "2022-06-03",
@@ -761,25 +731,29 @@ class TestMacau(CommonCountryTests, TestCase):
             "2024-06-10",
             "2025-05-31",
         )
-        self.assertHolidayName(name, self.optional_holidays, range(1982, 2050))
+
+        # Government Holidays.
+        self.assertGovernmentHolidayName(name, dts)
+        self.assertGovernmentHolidayName(name, range(2005, self.end_year))
+        obs_dts_1 = (
+            "2012-06-25",
+            "2015-06-22",
+        )
+        obs_dts_2 = ("2025-06-02",)
+        self.assertGovernmentHolidayName(f"{name}後首個工作日", obs_dts_1)
+        self.assertGovernmentHolidayName(f"{name}的補假", obs_dts_2)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts_1, obs_dts_2)
+
+        # Optional Holidays.
+        self.assertOptionalHolidayName(name, dts)
+        self.assertOptionalHolidayName(name, self.full_range)
 
         # Public Holidays.
         self.assertNoHolidayName(name)
 
     def test_double_ninth_festival(self):
         name = "重陽節"
-        dt = (
-            "2009-10-26",
-            "2010-10-16",
-            "2011-10-05",
-            "2012-10-23",
-            "2013-10-13",
-            "2014-10-02",
-            "2015-10-21",
-            "2016-10-09",
-            "2017-10-28",
-            "2018-10-17",
-            "2019-10-07",
+        dts = (
             "2020-10-25",
             "2021-10-14",
             "2022-10-04",
@@ -789,25 +763,34 @@ class TestMacau(CommonCountryTests, TestCase):
         )
 
         # Government Holidays.
-        self.assertHolidayName(
-            f"{name}後首個工作日",
-            self.government_holidays,
+        self.assertGovernmentHolidayName(name, dts)
+        self.assertGovernmentHolidayName(name, range(2005, self.end_year))
+        obs_dts_1 = (
             "2013-10-14",
             "2016-10-10",
             "2017-10-30",
         )
-        self.assertHolidayName(f"{name}的補假", self.government_holidays, "2020-10-26")
+        obs_dts_2 = ("2020-10-26",)
+        self.assertGovernmentHolidayName(f"{name}後首個工作日", obs_dts_1)
+        self.assertGovernmentHolidayName(f"{name}的補假", obs_dts_2)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts_1, obs_dts_2)
 
         # Optional Holidays.
-        self.assertHolidayName(name, self.optional_holidays, dt)
-        self.assertHolidayName(name, self.optional_holidays, range(1982, 2050))
+        self.assertOptionalHolidayName(name, dts)
+        self.assertOptionalHolidayName(name, self.full_range)
 
         # Public Holidays.
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(1985, 2050))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(1985, self.end_year))
 
     def test_mid_autumn_festival(self):
         name = "中秋節"
+
+        # Government Holidays.
+        self.assertNoGovernmentHolidayName(name)
+
+        # Optional Holidays.
+        self.assertNoOptionalHolidayName(name)
 
         # Public Holidays.
         self.assertHolidayName(
@@ -828,22 +811,11 @@ class TestMacau(CommonCountryTests, TestCase):
             "1998-10-05",
             "1999-09-24",
         )
-        self.assertNoHolidayName(name, range(2000, 2050))
+        self.assertNoHolidayName(name, range(2000, self.end_year))
 
     def test_the_day_following_mid_autumn_festival(self):
         name = "中秋節翌日"
-        dt = (
-            "2009-10-04",
-            "2010-09-23",
-            "2011-09-13",
-            "2012-10-01",
-            "2013-09-20",
-            "2014-09-09",
-            "2015-09-28",
-            "2016-09-16",
-            "2017-10-05",
-            "2018-09-25",
-            "2019-09-14",
+        dts = (
             "2020-10-02",
             "2021-09-22",
             "2023-09-30",
@@ -852,18 +824,24 @@ class TestMacau(CommonCountryTests, TestCase):
         )
 
         # Government Holidays.
-        self.assertHolidayName(f"{name}後首個工作日", self.government_holidays, "2019-09-16")
-        self.assertHolidayName(
-            f"{name}的補假", self.government_holidays, "2022-09-12", "2023-10-03"
+        self.assertGovernmentHolidayName(name, dts)
+        self.assertGovernmentHolidayName(name, range(2005, self.end_year))
+        obs_dts_1 = ("2019-09-16",)
+        obs_dts_2 = (
+            "2022-09-12",
+            "2023-10-03",
         )
+        self.assertGovernmentHolidayName(f"{name}後首個工作日", obs_dts_1)
+        self.assertGovernmentHolidayName(f"{name}的補假", obs_dts_2)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts_1, obs_dts_2)
 
         # Optional Holidays.
-        self.assertHolidayName(name, self.optional_holidays, dt)
-        self.assertHolidayName(name, self.optional_holidays, range(1982, 2050))
+        self.assertOptionalHolidayName(name, dts)
+        self.assertOptionalHolidayName(name, self.full_range)
 
         # Public Holidays.
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2000, 2050))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(2000, self.end_year))
         self.assertNoHolidayName(name, range(1985, 2000))
 
     def test_new_years_eve(self):
@@ -871,60 +849,65 @@ class TestMacau(CommonCountryTests, TestCase):
         name_afternoon = f"{name}（下午）"
 
         # Government Holidays.
-        self.assertHolidayName(name, self.government_holidays, "2012-12-31")
-        self.assertNoHolidayName(name)
-
-        self.assertHolidayName(
+        self.assertGovernmentHolidayName(name, "2012-12-31")
+        self.assertGovernmentHolidayName(
             name_afternoon,
-            self.government_holidays,
             (
                 f"{year}-12-31"
                 for year in (
                     *range(2007, 2011),
                     *range(2013, 2016),
                     *range(2018, 2022),
-                    *range(2024, 2050),
+                    *range(2024, 2026),
                 )
             ),
         )
-        self.assertNoHolidayName(
-            name_afternoon, self.government_holidays, 2011, 2012, 2016, 2017, 2022, 2023
-        )
+        self.assertNoGovernmentHolidayName(name_afternoon, 2011, 2012, 2016, 2017, 2022, 2023)
+
+        # Optional Holidays.
+        self.assertNoOptionalHolidayName(name)
+        self.assertNoOptionalHolidayName(name_afternoon)
+
+        self.assertNoHolidayName(name)
         self.assertNoHolidayName(name_afternoon)
 
     def test_macau_city_day(self):
         name = "澳門市日"
-
-        # Optional Holidays.
-        m_optional_holidays = Macau(categories=OPTIONAL, subdiv="M", years=range(1982, 2023))
-        self.assertHolidayName(
-            name, m_optional_holidays, (f"{year}-06-24" for year in range(1982, 2000))
-        )
-        self.assertNoHolidayName(name, m_optional_holidays, range(2000, 2050))
         self.assertNoHolidayName(name)
+        self.assertNoGovernmentHolidayName(name)
+        self.assertNoOptionalHolidayName(name)
+
+        # M Optional Holidays.
+        self.assertSubdivMOptionalHolidayName(
+            name, (f"{year}-06-24" for year in range(self.start_year, 2000))
+        )
+        self.assertNoSubdivMOptionalHolidayName(name, range(2000, self.end_year))
+        self.assertNoSubdivIOptionalHolidayName(name)
 
     def test_day_of_the_municipality_of_ilhas(self):
         name = "海島市日"
-
-        # Optional Holidays.
-        i_optional_holidays = Macau(categories=OPTIONAL, subdiv="I", years=range(1982, 2023))
-        self.assertHolidayName(
-            name, i_optional_holidays, (f"{year}-11-30" for year in range(1982, 1993))
-        )
-        self.assertHolidayName(
-            name, i_optional_holidays, (f"{year}-07-13" for year in range(1993, 2000))
-        )
-        self.assertNoHolidayName(name, i_optional_holidays, range(2000, 2050))
         self.assertNoHolidayName(name)
+        self.assertNoGovernmentHolidayName(name)
+        self.assertNoOptionalHolidayName(name)
+
+        # I Optional Holidays.
+        self.assertSubdivIOptionalHolidayName(
+            name, (f"{year}-11-30" for year in range(self.start_year, 1993))
+        )
+        self.assertSubdivIOptionalHolidayName(
+            name, (f"{year}-07-13" for year in range(1993, 2000))
+        )
+        self.assertNoSubdivIOptionalHolidayName(name, range(2000, self.end_year))
+        self.assertNoSubdivMOptionalHolidayName(name)
 
     def test_2024_government(self):
         # https://www.gov.mo/en/public-holidays/year-2024/
-        dt = (
+        dts = (
             # Exemption from work granted to public employees by the Chief Executive.
             "2024-02-09",
             "2024-12-31",
         )
-        dt_observed = (
+        obs_dts = (
             # Compensatory rest days for public employees set forth in
             # No. 4 of Article 79 of the ETAPM.
             "2024-02-13",
@@ -934,10 +917,8 @@ class TestMacau(CommonCountryTests, TestCase):
             "2024-12-09",
             "2024-12-23",
         )
-        self.assertHoliday(Macau(categories=GOVERNMENT, years=2024), dt, dt_observed)
-        self.assertNoNonObservedHoliday(
-            Macau(categories=GOVERNMENT, years=2024, observed=False), dt_observed
-        )
+        self.assertGovernmentHoliday(dts, obs_dts)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts)
 
     def test_2024_public(self):
         # https://www.dsal.gov.mo/en/text/holiday_table.html
