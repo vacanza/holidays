@@ -29,7 +29,7 @@ class SouthSudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         * [2020](https://web.archive.org/web/20250825141316/https://docs.southsudanngoforum.org/sites/default/files/2020-01/South_Sudan_Annual_Holidays_for_2020.pdf)
         * [2021](https://web.archive.org/web/20250514045013/https://docs.southsudanngoforum.org/sites/default/files/2021-02/Public%20Holidays%20Calendar%202021.pdf)
         * [2022](https://web.archive.org/web/20250430165748/https://docs.southsudanngoforum.org/sites/default/files/2022-03/HRPublic%20Holidays%202022HR.pdf)
-        * [The Netherlands and South Sudan](https://web.archive.org/web/20250426232710/https://www.netherlandsandyou.nl/web/south-sudan/about-us/closing-days)
+        * [2025](https://web.archive.org/web/20250426232710/https://www.netherlandsandyou.nl/web/south-sudan/about-us/closing-days)
     """
 
     country = "SS"
