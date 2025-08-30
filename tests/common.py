@@ -356,7 +356,16 @@ class CommonTests(TestCase):
         observed_label = getattr(self.holidays, "observed_label", None)
         observed_estimated_label = getattr(self.holidays, "observed_estimated_label", None)
 
-        if estimated_label and observed_label:
+        if (
+            estimated_label
+            and observed_label
+            # In certain entities, the observed rule applies only to holiday suppression,
+            # e.g., XNSE with `SAT_TO_NONE`` or `SUN_TO_NONE``. In these cases, the
+            # `observed_estimated_label` is not required.
+            and any(
+                rule is not None for rule in getattr(self.holidays, "observed_rule", {}).values()
+            )
+        ):
             self.assertTrue(
                 observed_estimated_label,
                 "The `observed_estimated_label` attribute is required for entities containing "
