@@ -236,7 +236,7 @@ class TestCase:
         """Assert non-observed holidays exactly match expected holidays."""
         self._assertHolidays("holidays_non_observed", *args)
 
-    def _assertHolidayCountPerYear(self, name, count, instance_name, *args):  # noqa: N802
+    def _assertHolidayNameCount(self, name, count, instance_name, *args):  # noqa: N802
         """Helper: assert number of holidays with a specific name in every year matches
         expected.
         """
@@ -255,15 +255,15 @@ class TestCase:
                 f"`{name}` occurs {holiday_count} times in year {year}, should be {count}",
             )
 
-    def assertHolidayCountPerYear(self, name, count, *args):  # noqa: N802
+    def assertHolidayNameCount(self, name, count, *args):  # noqa: N802
         """Assert number of holidays with a specific name in every year matches expected."""
-        self._assertHolidayCountPerYear(name, count, "holidays", *args)
+        self._assertHolidayNameCount(name, count, "holidays", *args)
 
-    def assertNonObservedHolidayCountPerYear(self, name, count, *args):  # noqa: N802
+    def assertNonObservedHolidayNameCount(self, name, count, *args):  # noqa: N802
         """Assert number of non-observed holidays with a specific name in every year
         matches expected.
         """
-        self._assertHolidayCountPerYear(name, count, "holidays_non_observed", *args)
+        self._assertHolidayNameCount(name, count, "holidays_non_observed", *args)
 
     # No holiday.
     def _assertNoHoliday(self, instance_name, *args):  # noqa: N802

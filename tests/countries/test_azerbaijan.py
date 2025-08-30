@@ -249,10 +249,10 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1993, 2050))
         self.assertNoHolidayName(name, self.no_estimated_holidays, range(1990, 1993))
-        self.assertHolidayCountPerYear(
+        self.assertHolidayNameCount(
             name, 1, self.no_estimated_holidays, set(range(1993, 2006)) - {2000}
         )
-        self.assertHolidayCountPerYear(
+        self.assertHolidayNameCount(
             name, 2, self.no_estimated_holidays, set(range(2006, 2050)) - {2033}
         )
 
@@ -273,8 +273,8 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1993, 2050))
         self.assertNoHolidayName(name, self.no_estimated_holidays, range(1990, 1993))
-        self.assertHolidayCountPerYear(name, 1, self.no_estimated_holidays, range(1993, 2006))
-        self.assertHolidayCountPerYear(
+        self.assertHolidayNameCount(name, 1, self.no_estimated_holidays, range(1993, 2006))
+        self.assertHolidayNameCount(
             name, 2, self.no_estimated_holidays, set(range(2006, 2050)) - {2007, 2039}
         )
 

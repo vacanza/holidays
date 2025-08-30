@@ -270,9 +270,9 @@ class TestLebanon(CommonCountryTests, TestCase):
             "2025-03-31",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1978, 2050))
-        self.assertHolidayCountPerYear(name, 1, self.no_estimated_holidays, range(1978, 1986))
-        self.assertHolidayCountPerYear(name, 3, self.no_estimated_holidays, range(1986, 1995))
-        self.assertHolidayCountPerYear(
+        self.assertHolidayNameCount(name, 1, self.no_estimated_holidays, range(1978, 1986))
+        self.assertHolidayNameCount(name, 3, self.no_estimated_holidays, range(1986, 1995))
+        self.assertHolidayNameCount(
             name, 2, self.no_estimated_holidays, set(range(1995, 2050)) - {2000, 2033}
         )
 
@@ -301,14 +301,14 @@ class TestLebanon(CommonCountryTests, TestCase):
             "2025-06-07",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1978, 2050))
-        self.assertHolidayCountPerYear(
+        self.assertHolidayNameCount(
             name,
             2,
             self.no_estimated_holidays,
             range(1978, 1986),
             set(range(1994, 2050)) - {2006, 2007, 2039},
         )
-        self.assertHolidayCountPerYear(name, 3, self.no_estimated_holidays, range(1986, 1994))
+        self.assertHolidayNameCount(name, 3, self.no_estimated_holidays, range(1986, 1994))
 
     def test_2024(self):
         self.assertHolidays(
