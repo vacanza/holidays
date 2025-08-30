@@ -198,8 +198,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2024-11-15",
             "2025-11-05",
         )
-        self.assertNonObservedHolidayName(name, range(2001, 2026))
-        self.assertNonObservedHolidayName(name, range(2027, 2036))
+        self.assertNonObservedHolidayName(name, range(2001, 2036))
 
     def test_muharram(self):
         name = "Muharram"
