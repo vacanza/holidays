@@ -148,7 +148,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2025-04-06",
         )
 
-    def test_bhai_dooj_and_govardhan_puja(self):
+    def test_diwali_balipratipada(self):
         name = "Diwali Balipratipada"
         self.assertNonObservedHolidayName(
             name,
