@@ -272,11 +272,11 @@ COUNTRIES: RegistryDict = {
 }
 
 FINANCIAL: RegistryDict = {
+    "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
     "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),
     "ice_futures_europe": ("ICEFuturesEurope", "IFEU"),
-    "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
-    "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
     "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),
+    "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
 }
 
 # A re-entrant lock. Once a thread has acquired a re-entrant lock,
