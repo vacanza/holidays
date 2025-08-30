@@ -87,10 +87,13 @@ class Nigeria(
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
+        # Added via Public Holidays (Amendment) Decree 1984 on August 28th, 1984.
         if self._year >= 1985:
             # Workers' Day.
             dts_observed.add(self._add_labor_day(tr("Workers' Day")))
 
+        # Added via Public Holidays (Amendment) Decree 2000.
+        # Changed to June 12th for 2019 onwards on July 6th, 2018.
         if self._year >= 2000:
             # Democracy Day.
             name = tr("Democracy Day")

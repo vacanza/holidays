@@ -15,6 +15,7 @@ import sys
 import warnings
 from collections.abc import Generator
 from datetime import date
+from inspect import signature
 
 from dateutil.parser import parse
 
@@ -31,7 +32,9 @@ class TestCase:
     """Base class for holidays test cases."""
 
     @classmethod
-    def setUpClass(cls, test_class=None, years=None, years_non_observed=None):
+    def setUpClass(
+        cls, test_class=None, years=None, years_islamic_no_estimated=None, years_non_observed=None
+    ):
         super().setUpClass()
 
         if test_class is None:
@@ -50,10 +53,18 @@ class TestCase:
             cls.set_language(test_class, test_class.default_language)
 
         # Default `years_[insert]` to `years` to prevent redundant initialization.
+        years_islamic_no_estimated = years_islamic_no_estimated or years
         years_non_observed = years_non_observed or years
 
         if years:
             cls.holidays = test_class(years=years)
+        if (
+            years_islamic_no_estimated
+            and "islamic_show_estimated" in signature(test_class.__init__).parameters
+        ):
+            cls.holidays_islamic_no_estimated = test_class(
+                islamic_show_estimated=False, years=years_islamic_no_estimated
+            )
         if years_non_observed:
             cls.holidays_non_observed = test_class(observed=False, years=years_non_observed)
 
@@ -65,6 +76,12 @@ class TestCase:
 
         if not hasattr(self, "holidays"):
             self.holidays = self.test_class()
+
+        if (
+            not hasattr(self, "holidays_islamic_no_estimated")
+            and "islamic_show_estimated" in signature(self.test_class.__init__).parameters
+        ):
+            self.holidays_islamic_no_estimated = self.test_class(islamic_show_estimated=False)
 
         if not hasattr(self, "holidays_non_observed"):
             self.holidays_non_observed = self.test_class(observed=False)
@@ -107,10 +124,10 @@ class TestCase:
         else:
             items.extend(item_args)
 
-        if instance_name == "holidays":
-            self.assertTrue(instance.observed)
-        else:
+        if instance_name.endswith("_non_observed"):
             self.assertFalse(instance.observed)
+        else:
+            self.assertTrue(instance.observed)
 
         if raise_on_empty and not items:
             raise ValueError("The test argument sequence is empty")
@@ -156,6 +173,10 @@ class TestCase:
         """Assert each date is a holiday."""
         self._assertHoliday("holidays", *args)
 
+    def assertIslamicNoEstimatedHoliday(self, *args):  # noqa: N802
+        """Assert each date is an Islamic no-estimated holiday."""
+        self._assertHoliday("holidays_islamic_no_estimated", *args)
+
     def assertNonObservedHoliday(self, *args):  # noqa: N802
         """Assert each date is a non-observed holiday."""
         self._assertHoliday("holidays_non_observed", *args)
@@ -175,6 +196,10 @@ class TestCase:
     def assertHolidayDates(self, *args):  # noqa: N802
         """Assert holiday dates exactly match expected dates."""
         self._assertHolidayDates("holidays", *args)
+
+    def assertIslamicNoEstimatedHolidayDates(self, *args):  # noqa: N802
+        """Assert holiday dates exactly match expected dates."""
+        self._assertHolidayDates("holidays_islamic_no_estimated", *args)
 
     def assertNonObservedHolidayDates(self, *args):  # noqa: N802
         """Assert holiday dates exactly match expected dates."""
@@ -202,6 +227,12 @@ class TestCase:
         each holiday name matches an expected one.
         """
         self._assertHolidayName(name, "holidays", *args)
+
+    def assertIslamicNoEstimatedHolidayName(self, name, *args):  # noqa: N802
+        """Assert either an Islamic no-estimated holiday with a specific name exists or
+        each Islamic no-estimated holiday name matches an expected one.
+        """
+        self._assertHolidayName(name, "holidays_islamic_no_estimated", *args)
 
     def assertNonObservedHolidayName(self, name, *args):  # noqa: N802
         """Assert either a non-observed holiday with a specific name exists or
@@ -234,6 +265,10 @@ class TestCase:
         """Assert holidays exactly match expected holidays."""
         self._assertHolidays("holidays", *args)
 
+    def assertIslamicNoEstimatedHolidays(self, *args):  # noqa: N802
+        """Assert Islamic no-estimated holidays exactly match expected holidays."""
+        self._assertHolidays("holidays_islamic_no_estimated", *args)
+
     def assertNonObservedHolidays(self, *args):  # noqa: N802
         """Assert non-observed holidays exactly match expected holidays."""
         self._assertHolidays("holidays_non_observed", *args)
@@ -249,6 +284,10 @@ class TestCase:
     def assertNoHoliday(self, *args):  # noqa: N802
         """Assert each date is not a holiday."""
         self._assertNoHoliday("holidays", *args)
+
+    def assertNoIslamicNoEstimatedHoliday(self, *args):  # noqa: N802
+        """Assert each date is not an Islamic no-estimated holiday."""
+        self._assertNoHoliday("holidays_islamic_no_estimated", *args)
 
     def assertNoNonObservedHoliday(self, *args):  # noqa: N802
         """Assert each date is not a non-observed holiday."""
@@ -279,6 +318,10 @@ class TestCase:
         """Assert a holiday with a specific name doesn't exist."""
         self._assertNoHolidayName(name, "holidays", *args)
 
+    def assertNoIslamicNoEstimatedHolidayName(self, name, *args):  # noqa: N802
+        """Assert an Islamic no-estimated holiday with a specific name doesn't exist."""
+        self._assertNoHolidayName(name, "holidays_islamic_no_estimated", *args)
+
     def assertNoNonObservedHolidayName(self, name, *args):  # noqa: N802
         """Assert a non-observed holiday with a specific name doesn't exist."""
         self._assertNoHolidayName(name, "holidays_non_observed", *args)
@@ -297,6 +340,10 @@ class TestCase:
     def assertNoHolidays(self, *args):  # noqa: N802
         """Assert holidays dict is empty."""
         self._assertNoHolidays("holidays", *args)
+
+    def assertNoIslamicNoEstimatedHolidays(self, *args):  # noqa: N802
+        """Assert Islamic no-estimated holidays dict is empty."""
+        self._assertNoHolidays("holidays_islamic_no_estimated", *args)
 
     def assertNoNonObservedHolidays(self, *args):  # noqa: N802
         """Assert non-observed holidays dict is empty."""
