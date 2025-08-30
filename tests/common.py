@@ -13,6 +13,7 @@
 import os
 import sys
 import warnings
+from collections import defaultdict
 from collections.abc import Generator
 from datetime import date
 
@@ -239,9 +240,12 @@ class TestCase:
         """Helper: assert number of holidays with a specific name in every year match expected."""
         holidays, items = self._parse_arguments(args, instance_name=instance_name)
 
-        holiday_dates = holidays.get_named(name, lookup="exact")
+        holiday_counts = defaultdict(int)
+        for dt in holidays.get_named(name, lookup="exact"):
+            holiday_counts[dt.year] += 1
+
         for year in items:
-            holiday_count = sum(1 for dt in holiday_dates if dt.year == year)
+            holiday_count = holiday_counts.get(year, 0)
             self.assertEqual(
                 count,
                 holiday_count,
