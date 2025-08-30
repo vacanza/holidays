@@ -25,6 +25,8 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
 
     country = "MV"
+    # %s (estimated).
+    estimated_label = "%s (estimated)"
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):

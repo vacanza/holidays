@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.28\n"
+"Project-Id-Version: Holidays 0.80\n"
 "POT-Creation-Date: 2023-06-26 18:31+0300\n"
-"PO-Revision-Date: 2023-06-26 18:59+0300\n"
+"PO-Revision-Date: 2025-08-27 18:24+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -27,9 +27,19 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 "X-Source-Language: bs\n"
 
+#. %s (estimated).
+#, c-format
+msgid "%s (procijenjeno)"
+msgstr "%s (приблизна дата)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (slobodan dan, procijenjeno)"
+msgstr "%s (вихідний, приблизна дата)"
+
 #. %s (observed).
 #, c-format
-msgid "%s (preneseno)"
+msgid "%s (slobodan dan)"
 msgstr "%s (вихідний)"
 
 #. Orthodox Good Friday.

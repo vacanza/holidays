@@ -225,6 +225,7 @@ COUNTRIES: RegistryDict = {
         "SGS",
     ),
     "south_korea": ("SouthKorea", "KR", "KOR", "Korea"),
+    "south_sudan": ("SouthSudan", "SS", "SSD"),
     "spain": ("Spain", "ES", "ESP"),
     "sri_lanka": ("SriLanka", "LK", "LKA"),
     "suriname": ("Suriname", "SR", "SUR"),
