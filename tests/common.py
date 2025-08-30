@@ -13,6 +13,7 @@
 import os
 import sys
 import warnings
+from collections import defaultdict
 from collections.abc import Generator
 from datetime import date
 
@@ -235,6 +236,35 @@ class TestCase:
         """Assert non-observed holidays exactly match expected holidays."""
         self._assertHolidays("holidays_non_observed", *args)
 
+    def _assertHolidayNameCount(self, name, count, instance_name, *args):  # noqa: N802
+        """Helper: assert number of holidays with a specific name in every year matches
+        expected.
+        """
+        holidays, items = self._parse_arguments(args, instance_name=instance_name)
+        self._verify_type(holidays)
+
+        holiday_counts = defaultdict(int)
+        for dt in holidays.get_named(name, lookup="exact"):
+            holiday_counts[dt.year] += 1
+
+        for year in items:
+            holiday_count = holiday_counts.get(year, 0)
+            self.assertEqual(
+                count,
+                holiday_count,
+                f"`{name}` occurs {holiday_count} times in year {year}, should be {count}",
+            )
+
+    def assertHolidayNameCount(self, name, count, *args):  # noqa: N802
+        """Assert number of holidays with a specific name in every year matches expected."""
+        self._assertHolidayNameCount(name, count, "holidays", *args)
+
+    def assertNonObservedHolidayNameCount(self, name, count, *args):  # noqa: N802
+        """Assert number of non-observed holidays with a specific name in every year
+        matches expected.
+        """
+        self._assertHolidayNameCount(name, count, "holidays_non_observed", *args)
+
     # No holiday.
     def _assertNoHoliday(self, instance_name, *args):  # noqa: N802
         """Helper: assert each date is not a holiday."""
@@ -327,7 +357,7 @@ class TestCase:
         )
 
     def assertLocalizedHolidays(self, *args):  # noqa: N802
-        """Helper: assert localized holidays match expected names."""
+        """Assert localized holidays match expected names."""
         arg = args[0]
         is_string = isinstance(arg, str)
 
