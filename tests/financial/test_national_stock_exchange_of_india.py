@@ -232,6 +232,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         )
         self.assertNoHoliday(
             "2023-07-29",
+            "2025-07-06",
         )
 
     def test_id_ul_fitr(self):
