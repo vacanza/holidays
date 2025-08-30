@@ -32,15 +32,14 @@ class TestCase:
     """Base class for holidays test cases."""
 
     @classmethod
-    def setUpClass(
-        cls, test_class=None, years=None, years_islamic_no_estimated=None, years_non_observed=None
-    ):
+    def setUpClass(cls, test_class=None, years=None, **year_variants):
         super().setUpClass()
 
         if test_class is None:
             return None
 
         cls.test_class = test_class
+        test_class_param = signature(test_class.__init__).parameters
 
         if (
             getattr(test_class, "default_language") is not None
@@ -53,20 +52,46 @@ class TestCase:
             cls.set_language(test_class, test_class.default_language)
 
         # Default `years_[insert]` to `years` to prevent redundant initialization.
-        years_islamic_no_estimated = years_islamic_no_estimated or years
-        years_non_observed = years_non_observed or years
-
-        if years:
-            cls.holidays = test_class(years=years)
         if (
-            years_islamic_no_estimated
-            and "islamic_show_estimated" in signature(test_class.__init__).parameters
+            "islamic_show_estimated" in test_class_param
+            and "years_islamic_no_estimated" not in year_variants
         ):
-            cls.holidays_islamic_no_estimated = test_class(
-                islamic_show_estimated=False, years=years_islamic_no_estimated
-            )
-        if years_non_observed:
-            cls.holidays_non_observed = test_class(observed=False, years=years_non_observed)
+            year_variants["years_islamic_no_estimated"] = years
+        if (
+            issubclass(test_class, ObservedHolidayBase)
+            and "years_non_observed" not in year_variants
+        ):
+            year_variants["years_non_observed"] = years
+        if (
+            "islamic_show_estimated" in test_class_param
+            and issubclass(test_class, ObservedHolidayBase)
+            and "years_islamic_no_estimated_non_observed" not in year_variants
+        ):
+            year_variants["years_islamic_no_estimated_non_observed"] = years
+
+        variants = {"": years}
+        variants.update(year_variants)
+
+        for suffix, ylist in variants.items():
+            if ylist is None:
+                continue
+
+            attr_name = "holidays" + (f"_{suffix.replace('years_', '')}" if suffix else "")
+            init_kwargs = {"years": ylist}
+
+            # Step 1: Subdiv.
+            # Step 2: Categories.
+            # Step 3: Special flags i.e. `islamic_show_estimated`.
+            if (
+                "islamic_show_estimated" in test_class_param
+                and "islamic_no_estimated" in attr_name
+            ):
+                init_kwargs["islamic_show_estimated"] = False
+            # Step 4: _non_observed suffix.
+            if "non_observed" in attr_name:
+                init_kwargs["observed"] = False
+
+            setattr(cls, attr_name, test_class(**init_kwargs))
 
     def setUp(self):
         super().setUp()
@@ -76,12 +101,6 @@ class TestCase:
 
         if not hasattr(self, "holidays"):
             self.holidays = self.test_class()
-
-        if (
-            not hasattr(self, "holidays_islamic_no_estimated")
-            and "islamic_show_estimated" in signature(self.test_class.__init__).parameters
-        ):
-            self.holidays_islamic_no_estimated = self.test_class(islamic_show_estimated=False)
 
         if not hasattr(self, "holidays_non_observed"):
             self.holidays_non_observed = self.test_class(observed=False)
@@ -239,6 +258,12 @@ class TestCase:
         each non-observed holiday name matches an expected one.
         """
         self._assertHolidayName(name, "holidays_non_observed", *args)
+
+    def assertIslamicNoEstimatedNonObservedHolidayName(self, name, *args):  # noqa: N802
+        """Assert either an Islamic no-estimated non-observed holiday with a specific name exists
+        or each Islamic no-estimated non-observed holiday name matches an expected one.
+        """
+        self._assertHolidayName(name, "holidays_islamic_no_estimated_non_observed", *args)
 
     # Holidays.
     def _assertHolidays(self, instance_name, *args):  # noqa: N802
