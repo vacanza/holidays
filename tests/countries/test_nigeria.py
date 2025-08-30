@@ -20,7 +20,7 @@ class TestNigeria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(1979, 2050)
-        super().setUpClass(Nigeria, years=cls.full_range, years_non_observed=cls.full_range)
+        super().setUpClass(Nigeria, years=cls.full_range)
         cls.no_estimated_holidays = Nigeria(years=cls.full_range, islamic_show_estimated=False)
 
     def test_country_aliases(self):

@@ -49,6 +49,9 @@ class TestCase:
         if getattr(test_class, "default_language") is not None:
             cls.set_language(test_class, test_class.default_language)
 
+        # Default `years_[insert]` to `years` to prevent redundant initialization.
+        years_non_observed = years_non_observed or years
+
         if years:
             cls.holidays = test_class(years=years)
         if years_non_observed:
