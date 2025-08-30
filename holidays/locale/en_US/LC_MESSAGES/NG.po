@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.80\n"
 "POT-Creation-Date: 2025-08-29 16:49+0700\n"
-"PO-Revision-Date: 2025-08-30 21:46+0700\n"
+"PO-Revision-Date: 2025-08-30 22:51+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -26,6 +26,21 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Generator: Poedit 3.7\n"
 "X-Source-Language: en_NG\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (estimated)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
+msgstr "%s (observed, estimated)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (observed)"
 
 #. New Year's Day.
 msgid "New Year's Day"
@@ -63,6 +78,10 @@ msgstr "Christmas Day"
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
+#. Prophet's Birthday.
+msgid "Id el Maulud"
+msgstr "Prophet's Birthday"
+
 #. Eid al-Fitr.
 msgid "Id el Fitr"
 msgstr "Eid al-Fitr"
@@ -78,10 +97,6 @@ msgstr "Eid al-Adha"
 #. Eid al-Adha Holiday.
 msgid "Id el Kabir Holiday"
 msgstr "Eid al-Adha Holiday"
-
-#. Prophet's Birthday.
-msgid "Id el Maulud"
-msgstr "Prophet's Birthday"
 
 #. Public Holiday for Elections.
 msgid "Public Holiday for Elections"

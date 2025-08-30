@@ -19,10 +19,9 @@ from tests.common import CommonCountryTests
 class TestNigeria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1979, 2050)
-        super().setUpClass(Nigeria, years=years, years_non_observed=years)
-        cls.full_range = years
-        cls.no_estimated_holidays = Nigeria(years=years, islamic_show_estimated=False)
+        cls.full_range = range(1979, 2050)
+        super().setUpClass(Nigeria, years=cls.full_range, years_non_observed=cls.full_range)
+        cls.no_estimated_holidays = Nigeria(years=cls.full_range, islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(Nigeria, NG, NGA)
@@ -150,6 +149,25 @@ class TestNigeria(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
+    def test_prophets_birthday(self):
+        name = "Id el Maulud"
+        self.assertHolidayName(
+            name,
+            "2020-10-29",
+            "2021-10-19",
+            "2022-10-08",
+            "2023-09-27",
+            "2024-09-16",
+            "2025-09-05",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, self.full_range)
+        obs_dt = (
+            "2019-11-11",
+            "2022-10-10",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
     def test_eid_al_fitr(self):
         name = "Id el Fitr"
         name_holiday = f"{name} Holiday"
@@ -168,8 +186,13 @@ class TestNigeria(CommonCountryTests, TestCase):
             "2020-05-26",
             "2025-04-01",
         )
+        obs_holiday_dt = (
+            "2018-06-18",
+            "2023-04-24",
+        )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name_holiday} (observed)", obs_holiday_dt)
+        self.assertNoNonObservedHoliday(obs_dt, obs_holiday_dt)
 
     def test_eid_al_adha(self):
         name = "Id el Kabir"
@@ -190,27 +213,14 @@ class TestNigeria(CommonCountryTests, TestCase):
             "2022-07-11",
             "2024-06-18",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
-
-    def test_prophets_birthday(self):
-        name = "Id el Maulud"
-        self.assertHolidayName(
-            name,
-            "2020-10-29",
-            "2021-10-19",
-            "2022-10-08",
-            "2023-09-27",
-            "2024-09-16",
-            "2025-09-05",
-        )
-        self.assertHolidayName(name, self.no_estimated_holidays, self.full_range)
-        obs_dt = (
-            "2019-11-11",
-            "2022-10-10",
+        obs_holiday_dt = (
+            "2020-08-03",
+            "2022-07-12",
+            "2025-06-09",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name_holiday} (observed)", obs_holiday_dt)
+        self.assertNoNonObservedHoliday(obs_dt, obs_holiday_dt)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

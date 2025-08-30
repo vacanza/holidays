@@ -41,16 +41,19 @@ class Nigeria(
         * <https://web.archive.org/web/20250829060151/https://statehouse.gov.ng/news/president-buhari-declares-june-12-the-new-democracy-day/>
         * <https://web.archive.org/web/20250829085227/https://www.nairaland.com/4548139/may-29-remains-inauguration-day>
         * <https://web.archive.org/web/20250829030023/https://www.timeanddate.com/holidays/nigeria/2025?hol=9>
+
+    In-lieu holidays has been given out since at least 2010:
+        * <http://archive.today/2025.08.30-142719/https://www.vanguardngr.com/2010/05/fg-declares-may-31-public-holiday-for-democracy/>
     """
 
     country = "NG"
     default_language = "en_NG"
     # %s (estimated).
-    estimated_label = "%s (estimated)"
+    estimated_label = tr("%s (estimated)")
     # %s (observed, estimated).
-    observed_estimated_label = "%s (observed, estimated)"
+    observed_estimated_label = tr("%s (observed, estimated)")
     # %s (observed).
-    observed_label = "%s (observed)"
+    observed_label = tr("%s (observed)")
     # Public Holidays Decree 1979, in effect from January 1st, 1979.
     start_year = 1979
     supported_languages = ("en_NG", "en_US")
@@ -69,8 +72,6 @@ class Nigeria(
         )
         StaticHolidays.__init__(self, NigeriaStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
-        # In-lieu holidays has been given out since at least 2010.
-        # http://archive.today/2025.08.30-142719/https://www.vanguardngr.com/2010/05/fg-declares-may-31-public-holiday-for-democracy/
         kwargs.setdefault("observed_since", 2010)
         super().__init__(*args, **kwargs)
 
@@ -112,6 +113,9 @@ class Nigeria(
         # Boxing Day.
         dts_observed.add(self._add_christmas_day_two(tr("Boxing Day")))
 
+        # Prophet's Birthday.
+        dts_observed.update(self._add_mawlid_day(tr("Id el Maulud")))
+
         # Eid al-Fitr.
         dts_observed.update(self._add_eid_al_fitr_day(tr("Id el Fitr")))
 
@@ -123,9 +127,6 @@ class Nigeria(
 
         # Eid al-Adha Holiday.
         dts_observed.update(self._add_eid_al_adha_day_two(tr("Id el Kabir Holiday")))
-
-        # Prophet's Birthday.
-        dts_observed.update(self._add_mawlid_day(tr("Id el Maulud")))
 
         if self.observed:
             self._populate_observed(dts_observed)
