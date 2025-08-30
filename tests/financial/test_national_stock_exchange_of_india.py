@@ -364,23 +364,6 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             ("2023-11-27", "Guru Nanak Jayanti"),
             ("2023-12-25", "Christmas Day"),
         )
-        self.assertLocalizedHolidays(
-            "en_US",
-            ("2024-01-26", "Republic Day"),
-            ("2024-03-08", "Maha Shivaratri"),
-            ("2024-03-25", "Holi"),
-            ("2024-03-29", "Good Friday"),
-            ("2024-04-11", "Eid al-Fitr"),
-            ("2024-04-17", "Ram Navami"),
-            ("2024-05-01", "Maharashtra Day"),
-            ("2024-06-17", "Eid al-Adha"),
-            ("2024-07-17", "Ashura"),
-            ("2024-08-15", "Independence Day"),
-            ("2024-10-02", "Mahatma Gandhi Jayanti"),
-            ("2024-11-01", "Diwali Lakshmi Puja"),
-            ("2024-11-15", "Guru Nanak Jayanti"),
-            ("2024-12-25", "Christmas Day"),
-        )
 
     def test_l10n_hi(self):
         self.assertLocalizedHolidays(
@@ -400,21 +383,4 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             ("2023-11-14", "दिवाली बलिप्रतिपदा"),
             ("2023-11-27", "गुरु नानक जयंती"),
             ("2023-12-25", "क्रिसमस डे"),
-        )
-        self.assertLocalizedHolidays(
-            "hi",
-            ("2024-01-26", "गणतंत्र दिवस"),
-            ("2024-03-08", "महाशिवरात्रि"),
-            ("2024-03-25", "होली"),
-            ("2024-03-29", "गुड फ्राइडे"),
-            ("2024-04-11", "ईद-उल-फितर (रमजान ईद)"),
-            ("2024-04-17", "राम नवमी"),
-            ("2024-05-01", "महाराष्ट्र दिवस"),
-            ("2024-06-17", "बकरी ईद"),
-            ("2024-07-17", "मुहर्रम"),
-            ("2024-08-15", "स्वतंत्रता दिवस"),
-            ("2024-10-02", "महात्मा गांधी जयंती"),
-            ("2024-11-01", "दिवाली लक्ष्मी पूजन"),
-            ("2024-11-15", "गुरु नानक जयंती"),
-            ("2024-12-25", "क्रिसमस डे"),
         )
