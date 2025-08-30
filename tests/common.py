@@ -237,8 +237,11 @@ class TestCase:
         self._assertHolidays("holidays_non_observed", *args)
 
     def _assertHolidayCountPerYear(self, name, count, instance_name, *args):  # noqa: N802
-        """Helper: assert number of holidays with a specific name in every year match expected."""
+        """Helper: assert number of holidays with a specific name in every year matches
+        expected.
+        """
         holidays, items = self._parse_arguments(args, instance_name=instance_name)
+        self._verify_type(holidays)
 
         holiday_counts = defaultdict(int)
         for dt in holidays.get_named(name, lookup="exact"):
@@ -253,12 +256,13 @@ class TestCase:
             )
 
     def assertHolidayCountPerYear(self, name, count, *args):  # noqa: N802
-        """Assert number of holidays with a specific name in every year match expected."""
+        """Assert number of holidays with a specific name in every year matches expected."""
         self._assertHolidayCountPerYear(name, count, "holidays", *args)
 
     def assertNonObservedHolidayCountPerYear(self, name, count, *args):  # noqa: N802
         """Assert number of non-observed holidays with a specific name in every year
-        match expected."""
+        matches expected.
+        """
         self._assertHolidayCountPerYear(name, count, "holidays_non_observed", *args)
 
     # No holiday.
