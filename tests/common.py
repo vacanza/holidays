@@ -343,25 +343,6 @@ class TestCase:
 class CommonTests(TestCase):
     """Common test cases for all entities."""
 
-    def test_subdivisions_aliases(self):
-        """Validate entity subdivisions aliases."""
-        if self.holidays.subdivisions_aliases:
-            subdivisions = set(self.holidays.subdivisions)
-            for alias, subdiv in self.holidays.subdivisions_aliases.items():
-                self.assertIn(
-                    subdiv,
-                    subdivisions,
-                    f"Invalid subdivision alias {alias}: subdivision {subdiv} does not exist.",
-                )
-
-
-class CommonCountryTests(CommonTests):
-    """Common test cases for country entities."""
-
-    def test_code(self):
-        self.assertTrue(hasattr(self.holidays, "country"))
-        self.assertFalse(hasattr(self.holidays, "market"))
-
     def test_estimated_label(self):
         if isinstance(self.holidays, IslamicHolidays):
             self.assertTrue(
@@ -390,6 +371,25 @@ class CommonCountryTests(CommonTests):
                 "The `observed_label` attribute is not required as this entity doesn't handle "
                 "observed holidays.",
             )
+
+    def test_subdivisions_aliases(self):
+        """Validate entity subdivisions aliases."""
+        if self.holidays.subdivisions_aliases:
+            subdivisions = set(self.holidays.subdivisions)
+            for alias, subdiv in self.holidays.subdivisions_aliases.items():
+                self.assertIn(
+                    subdiv,
+                    subdivisions,
+                    f"Invalid subdivision alias {alias}: subdivision {subdiv} does not exist.",
+                )
+
+
+class CommonCountryTests(CommonTests):
+    """Common test cases for country entities."""
+
+    def test_code(self):
+        self.assertTrue(hasattr(self.holidays, "country"))
+        self.assertFalse(hasattr(self.holidays, "market"))
 
 
 class CommonFinancialTests(CommonTests):
