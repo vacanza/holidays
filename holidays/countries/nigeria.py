@@ -42,7 +42,7 @@ class Nigeria(
         * <https://web.archive.org/web/20250829085227/https://www.nairaland.com/4548139/may-29-remains-inauguration-day>
         * <https://web.archive.org/web/20250829030023/https://www.timeanddate.com/holidays/nigeria/2025?hol=9>
 
-    In-lieu holidays have been in effect since at least 2010::
+    In-lieu holidays have been in effect since at least 2010:
         * <http://archive.today/2025.08.30-142719/https://www.vanguardngr.com/2010/05/fg-declares-may-31-public-holiday-for-democracy/>
     """
 
