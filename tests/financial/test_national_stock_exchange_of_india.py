@@ -91,7 +91,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2022-12-25",
         )
 
-    def test_mahashivratri(self):
+    def test_maha_shivratri(self):
         name = "Maha Shivaratri"
         self.assertNonObservedHolidayName(
             name,
@@ -155,6 +155,9 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2025-10-22",
         )
         self.assertNonObservedHolidayName(name, range(2001, 2036))
+        self.assertNoHoliday(
+            "2024-11-02",
+        )
 
     def test_diwali_laxmi_pujan(self):
         name = "Diwali Laxmi Pujan"
@@ -166,6 +169,9 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2025-10-21",
         )
         self.assertNonObservedHolidayName(name, range(2001, 2036))
+        self.assertNoHoliday(
+            "2023-11-12",
+        )
 
     def test_dussehra(self):
         name = "Dussehra"
@@ -177,6 +183,9 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2025-10-02",
         )
         self.assertNonObservedHolidayName(name, range(2001, 2036))
+        self.assertNoHoliday(
+            "2024-10-12",
+        )
 
     def test_ganesh_chaturthi(self):
         name = "Ganesh Chaturthi"
@@ -188,6 +197,9 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2025-08-27",
         )
         self.assertNonObservedHolidayName(name, range(2001, 2036))
+        self.assertNoHoliday(
+            "2024-09-07",
+        )
 
     def test_guru_nanak_jayanti(self):
         name = "Guru Nanak Jayanti"
@@ -199,6 +211,9 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2025-11-05",
         )
         self.assertNonObservedHolidayName(name, range(2001, 2036))
+        self.assertNoHoliday(
+            "2017-11-04",
+        )
 
     def test_muharram(self):
         name = "Muharram"
@@ -211,6 +226,9 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         )
         self.assertNonObservedHolidayName(
             name, self.nonobs_no_estimated_holidays, range(2001, 2050)
+        )
+        self.assertNoHoliday(
+            "2023-07-29",
         )
 
     def test_id_ul_fitr(self):
@@ -225,6 +243,9 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         self.assertNonObservedHolidayName(
             name, self.nonobs_no_estimated_holidays, range(2001, 2050)
         )
+        self.assertNoHoliday(
+            "2023-04-22",
+        )
 
     def test_bakri_id(self):
         name = "Bakri Id"
@@ -236,6 +257,9 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         )
         self.assertNonObservedHolidayName(
             name, self.nonobs_no_estimated_holidays, range(2001, 2050)
+        )
+        self.assertNoHoliday(
+            "2025-06-07",
         )
 
     def test_2023(self):
