@@ -256,6 +256,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         self.assertNonObservedHolidayName(
             name,
             "2022-07-10",
+            "2023-06-28",
             "2024-06-17",
             "2025-06-07",
         )
@@ -264,6 +265,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         )
         self.assertNoHoliday(
             "2022-07-10",
+            "2025-06-07",
         )
 
     def test_2023(self):
