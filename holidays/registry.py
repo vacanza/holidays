@@ -340,10 +340,13 @@ class EntityLoader:
     def _get_entity_codes(
         container: RegistryDict,
         include_aliases: bool = True,
+        max_code_length: int = 3,
+        min_code_length: int = 2,
     ) -> Iterable[str]:
         for entities in container.values():
             for entity in entities[1:]:
-                yield entity
+                if min_code_length <= len(entity) <= max_code_length:
+                    yield entity
 
                 # Assuming that the alpha-2 code goes first.
                 if not include_aliases:
@@ -357,7 +360,10 @@ class EntityLoader:
             Whether to include entity aliases (e.g. GBR and UK for GB,
             UKR for UA, USA for US, etc).
         """
-        return EntityLoader._get_entity_codes(COUNTRIES, include_aliases)
+        return EntityLoader._get_entity_codes(
+            COUNTRIES,
+            include_aliases=include_aliases,
+        )
 
     @staticmethod
     def get_financial_codes(include_aliases: bool = True) -> Iterable[str]:
@@ -365,9 +371,13 @@ class EntityLoader:
 
         :param include_aliases:
             Whether to include entity aliases (e.g. B3 for BVMF,
-            TAR for ECB, XNYS for NYSE, etc).
+            TAR for ECB, NYSE for XNYS, etc).
         """
-        return EntityLoader._get_entity_codes(FINANCIAL, include_aliases)
+        return EntityLoader._get_entity_codes(
+            FINANCIAL,
+            include_aliases=include_aliases,
+            max_code_length=4,
+        )
 
     @staticmethod
     def load(prefix: str, scope: dict) -> None:

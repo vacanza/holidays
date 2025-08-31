@@ -121,7 +121,10 @@ class TestEntityLoader(TestCase):
         for entity_classes in registry.COUNTRIES.values():
             self.assertNotIn(entity_classes[0], country_codes)
             for code in entity_classes[1:]:
-                self.assertIn(code, country_codes)
+                if code.isupper():
+                    self.assertIn(code, country_codes)
+                else:
+                    self.assertNotIn(code, country_codes)
 
     def test_get_financial_codes(self):
         financial_codes = set(registry.EntityLoader.get_financial_codes(include_aliases=False))
@@ -136,7 +139,10 @@ class TestEntityLoader(TestCase):
         for entity_classes in registry.FINANCIAL.values():
             self.assertNotIn(entity_classes[0], financial_codes)
             for code in entity_classes[1:]:
-                self.assertIn(code, financial_codes)
+                if code.isupper():
+                    self.assertIn(code, financial_codes)
+                else:
+                    self.assertNotIn(code, financial_codes)
 
     def test_inheritance(self):
         def create_instance(parent):
