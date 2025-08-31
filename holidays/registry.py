@@ -344,10 +344,11 @@ class EntityLoader:
         min_code_length: int = 2,
     ) -> Iterable[str]:
         for entities in container.values():
-            for entity in entities[1:]:
-                if min_code_length <= len(entity) <= max_code_length:
-                    yield entity
+            for code in entities[1:]:
+                if min_code_length <= len(code) <= max_code_length:
+                    yield code
 
+                # Stop after the first matching code if aliases are not requested.
                 # Assuming that the alpha-2 code goes first.
                 if not include_aliases:
                     break
