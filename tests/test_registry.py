@@ -108,6 +108,36 @@ class TestEntityLoader(TestCase):
             "'holidays.financial.ny_stock_exchange.NYSE' class directly.",
         )
 
+    def test_get_country_codes(self):
+        country_codes = set(registry.EntityLoader.get_country_codes(include_aliases=False))
+        for entity_classes in registry.COUNTRIES.values():
+            self.assertNotIn(entity_classes[0], country_codes)
+            self.assertIn(entity_classes[1], country_codes)
+            for code in entity_classes[2:]:
+                self.assertNotIn(code, country_codes)
+
+    def test_get_country_codes_aliases(self):
+        country_codes = set(registry.EntityLoader.get_country_codes(include_aliases=True))
+        for entity_classes in registry.COUNTRIES.values():
+            self.assertNotIn(entity_classes[0], country_codes)
+            for code in entity_classes[1:]:
+                self.assertIn(code, country_codes)
+
+    def test_get_financial_codes(self):
+        financial_codes = set(registry.EntityLoader.get_financial_codes(include_aliases=False))
+        for entity_classes in registry.FINANCIAL.values():
+            self.assertNotIn(entity_classes[0], financial_codes)
+            self.assertIn(entity_classes[1], financial_codes)
+            for code in entity_classes[2:]:
+                self.assertNotIn(code, financial_codes)
+
+    def test_get_financial_codes_aliases(self):
+        financial_codes = set(registry.EntityLoader.get_financial_codes(include_aliases=True))
+        for entity_classes in registry.FINANCIAL.values():
+            self.assertNotIn(entity_classes[0], financial_codes)
+            for code in entity_classes[1:]:
+                self.assertIn(code, financial_codes)
+
     def test_inheritance(self):
         def create_instance(parent):
             class SubClass(parent):
