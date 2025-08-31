@@ -343,6 +343,44 @@ class TestCase:
 class CommonTests(TestCase):
     """Common test cases for all entities."""
 
+    def test_estimated_label(self):
+        if isinstance(self.holidays, IslamicHolidays):
+            self.assertTrue(
+                getattr(self.holidays, "estimated_label", None),
+                "The `estimated_label` attribute is required for entities inherited from "
+                "`IslamicHolidays`.",
+            )
+
+    def test_observed_estimated_label(self):
+        estimated_label = getattr(self.holidays, "estimated_label", None)
+        observed_label = getattr(self.holidays, "observed_label", None)
+        observed_estimated_label = getattr(self.holidays, "observed_estimated_label", None)
+
+        if (
+            estimated_label
+            and observed_label
+            # In certain entities, the observed rule applies only to holiday suppression,
+            # e.g., XNSE with `SAT_TO_NONE`` or `SUN_TO_NONE``. In these cases, the
+            # `observed_estimated_label` is not required.
+            and any(
+                rule is not None for rule in getattr(self.holidays, "observed_rule", {}).values()
+            )
+        ):
+            self.assertTrue(
+                observed_estimated_label,
+                "The `observed_estimated_label` attribute is required for entities containing "
+                "both `observed_label` and `estimated_label`.",
+            )
+            self.assertIn(estimated_label.strip("%s ()"), observed_estimated_label)
+
+    def test_observed_label(self):
+        if getattr(self.holidays, "observed_label", None):
+            self.assertTrue(
+                isinstance(self.holidays, ObservedHolidayBase),
+                "The `observed_label` attribute is not required as this entity doesn't handle "
+                "observed holidays.",
+            )
+
     def test_subdivisions_aliases(self):
         """Validate entity subdivisions aliases."""
         if self.holidays.subdivisions_aliases:
@@ -361,35 +399,6 @@ class CommonCountryTests(CommonTests):
     def test_code(self):
         self.assertTrue(hasattr(self.holidays, "country"))
         self.assertFalse(hasattr(self.holidays, "market"))
-
-    def test_estimated_label(self):
-        if isinstance(self.holidays, IslamicHolidays):
-            self.assertTrue(
-                getattr(self.holidays, "estimated_label", None),
-                "The `estimated_label` attribute is required for entities inherited from "
-                "`IslamicHolidays`.",
-            )
-
-    def test_observed_estimated_label(self):
-        estimated_label = getattr(self.holidays, "estimated_label", None)
-        observed_label = getattr(self.holidays, "observed_label", None)
-        observed_estimated_label = getattr(self.holidays, "observed_estimated_label", None)
-
-        if estimated_label and observed_label:
-            self.assertTrue(
-                observed_estimated_label,
-                "The `observed_estimated_label` attribute is required for entities containing "
-                "both `observed_label` and `estimated_label`.",
-            )
-            self.assertIn(estimated_label.strip("%s ()"), observed_estimated_label)
-
-    def test_observed_label(self):
-        if getattr(self.holidays, "observed_label", None):
-            self.assertTrue(
-                isinstance(self.holidays, ObservedHolidayBase),
-                "The `observed_label` attribute is not required as this entity doesn't handle "
-                "observed holidays.",
-            )
 
 
 class CommonFinancialTests(CommonTests):
