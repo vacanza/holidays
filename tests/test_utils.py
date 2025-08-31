@@ -114,7 +114,7 @@ class TestAllInSameYear(unittest.TestCase):
                 for dt in country_holidays(country, years=year):
                     self.assertEqual(dt.year, year)
                     self.assertEqual(type(dt), date)
-        self.assertEqual(self.years, country_holidays(country, years=self.years).years)
+            self.assertEqual(self.years, country_holidays(country, years=self.years).years)
 
     @pytest.mark.skipif(
         PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
@@ -137,7 +137,7 @@ class TestAllInSameYear(unittest.TestCase):
                 for dt in financial_holidays(market, years=year):
                     self.assertEqual(dt.year, year)
                     self.assertEqual(type(dt), date)
-        self.assertEqual(self.years, financial_holidays(market, years=self.years).years)
+            self.assertEqual(self.years, financial_holidays(market, years=self.years).years)
 
 
 class TestListLocalizedEntities(unittest.TestCase):

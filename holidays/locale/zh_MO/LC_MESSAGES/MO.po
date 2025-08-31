@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.69\n"
+"Project-Id-Version: Holidays 0.80\n"
 "POT-Creation-Date: 2025-02-06 15:34+0700\n"
 "PO-Revision-Date: 2025-03-05 19:40+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
@@ -43,8 +43,36 @@ msgstr ""
 msgid "農曆正月初三"
 msgstr ""
 
+#. Labor Day.
+msgid "勞動節"
+msgstr ""
+
+#. Double Ninth Festival.
+msgid "重陽節"
+msgstr ""
+
+#. National Day of the People's Republic of China.
+msgid "中華人民共和國國慶日"
+msgstr ""
+
 #. Tomb-Sweeping Day.
 msgid "清明節"
+msgstr ""
+
+#. Day of Portugal, Camões, and the Portuguese Communities.
+msgid "葡國日、賈梅士日暨葡僑日"
+msgstr ""
+
+#. Mid-Autumn Festival.
+msgid "中秋節"
+msgstr ""
+
+#. The Day following Mid-Autumn Festival.
+msgid "中秋節翌日"
+msgstr ""
+
+#. Macao S.A.R. Establishment Day.
+msgid "澳門特別行政區成立紀念日"
 msgstr ""
 
 #. Good Friday.
@@ -63,24 +91,8 @@ msgstr ""
 msgid "聖周星期六"
 msgstr ""
 
-#. Labor Day.
-msgid "勞動節"
-msgstr ""
-
 #. Dragon Boat Festival.
 msgid "端午節"
-msgstr ""
-
-#. Double Ninth Festival.
-msgid "重陽節"
-msgstr ""
-
-#. The Day following Mid-Autumn Festival.
-msgid "中秋節翌日"
-msgstr ""
-
-#. National Day of the People's Republic of China.
-msgid "中華人民共和國國慶日"
 msgstr ""
 
 #. All Soul's Day.
@@ -131,10 +143,6 @@ msgstr ""
 msgid "自由日"
 msgstr ""
 
-#. Day of Portugal, Camões, and the Portuguese Communities.
-msgid "葡國日、賈梅士日暨葡僑日"
-msgstr ""
-
 #. Republic Day.
 msgid "葡萄牙共和國國慶日"
 msgstr ""
@@ -149,14 +157,6 @@ msgstr ""
 
 #. The day following National Day of the People's Republic of China.
 msgid "中華人民共和國國慶日翌日"
-msgstr ""
-
-#. Macao S.A.R. Establishment Day.
-msgid "澳門特別行政區成立紀念日"
-msgstr ""
-
-#. Mid-Autumn Festival.
-msgid "中秋節"
 msgstr ""
 
 #. %s (Afternoon).

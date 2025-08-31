@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.35\n"
+"Project-Id-Version: Holidays 0.80\n"
 "POT-Creation-Date: 2023-10-07 15:05+0700\n"
-"PO-Revision-Date: 2023-10-07 15:16+0700\n"
+"PO-Revision-Date: 2025-08-27 14:29+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: sw\n"
@@ -24,12 +24,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.7\n"
 "X-Source-Language: sw\n"
 
 #. %s (estimated).
 #, c-format
 msgid "%s (makisio)"
+msgstr ""
+
+#. %s (observed).
+#, c-format
+msgid "Badala ya %s"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "Badala ya %s (makisio)"
 msgstr ""
 
 #. Easter Sunday.
@@ -44,29 +54,53 @@ msgstr ""
 msgid "Mapinduzi ya Zanzibar"
 msgstr ""
 
+#. CCM Party Founding Day.
+msgid "Kuzaliwa kwa Chama cha Mapinduzi"
+msgstr ""
+
+#. Afro-Shirazi Party Founding Day.
+msgid "Kuzaliwa kwa ASP"
+msgstr ""
+
 #. The Sheikh Abeid Amani Karume Day.
 msgid ""
 "Siku ya kumbukumbu ya Rais wa Kwanza wa Serikali ya Mapinduzi Zanzibar Sheikh Abeid Amani Karume"
 msgstr ""
 
-#. Union Celebrations.
-msgid "Muungano wa Tanganyika na Zanzibar"
+#. Good Friday.
+msgid "Ijumaa Kuu"
 msgstr ""
 
-#. Worker's Day.
-msgid "Sikukuu ya Wafanyakazi"
+#. Easter Monday.
+msgid "Jumatatu ya Pasaka"
+msgstr ""
+
+#. Union Celebrations.
+msgid "Muungano wa Tanzania"
+msgstr ""
+
+#. Union Day.
+msgid "Sikukuu ya Muungano"
+msgstr ""
+
+#. International Workers' Day.
+msgid "Sikukuu ya Wafanyakazi Ulimwenguni"
 msgstr ""
 
 #. International Trade Fair.
 msgid "Sabasaba"
 msgstr ""
 
-#. Peasants Day.
-msgid "Siku ya Wakulima"
+#. Peasants' Day.
+msgid "Sikukuu ya Wakulima"
 msgstr ""
 
-#. The Mwalimu Nyerere Day.
-msgid "Kumbukumbu ya Mwalimu Nyerere"
+#. Saba Saba Day.
+msgid "Saba Saba"
+msgstr ""
+
+#. The Mwalimu Nyerere Day and Climax of the Uhuru Torch Race.
+msgid "Kumbukumbu ya Mwalimu Nyerere na Kilele cha mbio za Mwenge"
 msgstr ""
 
 #. Independence and Republic Day.
@@ -81,28 +115,16 @@ msgstr ""
 msgid "Siku ya Kupeana Zawadi"
 msgstr ""
 
-#. Good Friday.
-msgid "Ijumaa Kuu"
-msgstr ""
-
-#. Easter Monday.
-msgid "Jumatatu ya Pasaka"
-msgstr ""
-
 #. Eid al-Fitr.
-msgid "Eid El-Fitry"
+msgid "Eid El-Fitri"
 msgstr ""
 
 #. Eid al-Adha.
-msgid "Eid El-Hajj"
+msgid "Eid El Hajj"
 msgstr ""
 
 #. Prophet's Birthday.
 msgid "Maulidi"
-msgstr ""
-
-#. John Pombe Magufuli Inauguration Day.
-msgid "Sikukuu ya Kuapishwa kwa John Pombe Magufuli"
 msgstr ""
 
 #. Tanzania General Election Day.
@@ -114,5 +136,13 @@ msgid "Siku ya Sensa ya Kitaifa ya Watu na Makazi"
 msgstr ""
 
 #. John Pombe Magufuli's Funeral.
-msgid "Mazishi cha John Pombe Magufuli"
+msgid "Mazishi ya John Pombe Magufuli"
+msgstr ""
+
+#. Inauguration of East African Economic Community.
+msgid "Uzinduzi wa Jumuiya ya Kiuchumi ya Afrika Mashariki"
+msgstr ""
+
+#. John Pombe Magufuli Inauguration Day.
+msgid "Sikukuu ya Kuapishwa kwa John Pombe Magufuli"
 msgstr ""

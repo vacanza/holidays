@@ -225,6 +225,7 @@ COUNTRIES: RegistryDict = {
         "SGS",
     ),
     "south_korea": ("SouthKorea", "KR", "KOR", "Korea"),
+    "south_sudan": ("SouthSudan", "SS", "SSD"),
     "spain": ("Spain", "ES", "ESP"),
     "sri_lanka": ("SriLanka", "LK", "LKA"),
     "suriname": ("Suriname", "SR", "SUR"),
@@ -271,10 +272,11 @@ COUNTRIES: RegistryDict = {
 }
 
 FINANCIAL: RegistryDict = {
+    "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
     "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),
     "ice_futures_europe": ("ICEFuturesEurope", "IFEU"),
+    "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
-    "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
 }
 
 # A re-entrant lock. Once a thread has acquired a re-entrant lock,
