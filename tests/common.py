@@ -21,6 +21,7 @@ from dateutil.parser import parse
 
 from holidays import HolidayBase
 from holidays.calendars.gregorian import SUN
+from holidays.constants import PUBLIC
 from holidays.groups import IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase
 
@@ -57,17 +58,31 @@ class TestCase:
             and "years_islamic_no_estimated" not in year_variants
         ):
             year_variants["years_islamic_no_estimated"] = years
+
         if (
             issubclass(test_class, ObservedHolidayBase)
             and "years_non_observed" not in year_variants
         ):
             year_variants["years_non_observed"] = years
+
         if (
             "islamic_show_estimated" in test_class_param
             and issubclass(test_class, ObservedHolidayBase)
             and "years_islamic_no_estimated_non_observed" not in year_variants
         ):
             year_variants["years_islamic_no_estimated_non_observed"] = years
+
+        if getattr(test_class, "supported_categories", None):
+            for cat in test_class.supported_categories:
+                if cat == PUBLIC:
+                    continue
+                suffix = cat.lower()
+                if f"years_{suffix}" not in year_variants:
+                    year_variants[f"years_{suffix}"] = years
+                if issubclass(test_class, ObservedHolidayBase):
+                    non_obs_key = f"years_{suffix}_non_observed"
+                    if non_obs_key not in year_variants:
+                        year_variants[non_obs_key] = years
 
         variants = {"": years}
         variants.update(year_variants)
@@ -79,15 +94,27 @@ class TestCase:
             attr_name = "holidays" + (f"_{suffix.replace('years_', '')}" if suffix else "")
             init_kwargs = {"years": ylist}
 
-            # Step 1: Subdiv.
-            # Step 2: Categories.
-            # Step 3: Special flags i.e. `islamic_show_estimated`.
+            # Step 1: Categories.
+            if hasattr(test_class, "supported_categories"):
+                matching_cat = next(
+                    (
+                        cat
+                        for cat in test_class.supported_categories
+                        if cat != PUBLIC and cat.lower() in attr_name
+                    ),
+                    None,
+                )
+                if matching_cat:
+                    init_kwargs["categories"] = matching_cat
+
+            # Step 2: Special flags i.e. `islamic_show_estimated`.
             if (
                 "islamic_show_estimated" in test_class_param
                 and "islamic_no_estimated" in attr_name
             ):
                 init_kwargs["islamic_show_estimated"] = False
-            # Step 4: _non_observed suffix.
+
+            # Step 3: _non_observed suffix.
             if "non_observed" in attr_name:
                 init_kwargs["observed"] = False
 
@@ -247,6 +274,30 @@ class TestCase:
         """
         self._assertHolidayName(name, "holidays", *args)
 
+    def assertGovernmentHolidayName(self, name, *args):  # noqa: N802
+        """Assert either a Government holiday with a specific name exists or
+        each Government holiday name matches an expected one.
+        """
+        self._assertHolidayName(name, "holidays_government", *args)
+
+    def assertOptionalHolidayName(self, name, *args):  # noqa: N802
+        """Assert either an Optional holiday with a specific name exists or
+        each Optional holiday name matches an expected one.
+        """
+        self._assertHolidayName(name, "holidays_optional", *args)
+
+    def assertSchoolHolidayName(self, name, *args):  # noqa: N802
+        """Assert either a School holiday with a specific name exists or
+        each School holiday name matches an expected one.
+        """
+        self._assertHolidayName(name, "holidays_school", *args)
+
+    def assertWorkdayHolidayName(self, name, *args):  # noqa: N802
+        """Assert either a Workday holiday with a specific name exists or
+        each Workday holiday name matches an expected one.
+        """
+        self._assertHolidayName(name, "holidays_workday", *args)
+
     def assertIslamicNoEstimatedHolidayName(self, name, *args):  # noqa: N802
         """Assert either an Islamic no-estimated holiday with a specific name exists or
         each Islamic no-estimated holiday name matches an expected one.
@@ -314,6 +365,10 @@ class TestCase:
         """Assert each date is not an Islamic no-estimated holiday."""
         self._assertNoHoliday("holidays_islamic_no_estimated", *args)
 
+    def assertNoOptionalNonObservedHoliday(self, *args):  # noqa: N802
+        """Assert each date is not an Optional non-observed holiday."""
+        self._assertNoHoliday("holidays_optional_non_observed", *args)
+
     def assertNoNonObservedHoliday(self, *args):  # noqa: N802
         """Assert each date is not a non-observed holiday."""
         self._assertNoHoliday("holidays_non_observed", *args)
@@ -342,6 +397,22 @@ class TestCase:
     def assertNoHolidayName(self, name, *args):  # noqa: N802
         """Assert a holiday with a specific name doesn't exist."""
         self._assertNoHolidayName(name, "holidays", *args)
+
+    def assertNoGovernmentHolidayName(self, name, *args):  # noqa: N802
+        """Assert a Government holiday with a specific name doesn't exist."""
+        self._assertNoHolidayName(name, "holidays_government", *args)
+
+    def assertNoOptionalHolidayName(self, name, *args):  # noqa: N802
+        """Assert an Optional holiday with a specific name doesn't exist."""
+        self._assertNoHolidayName(name, "holidays_optional", *args)
+
+    def assertNoSchoolHolidayName(self, name, *args):  # noqa: N802
+        """Assert a School holiday with a specific name doesn't exist."""
+        self._assertNoHolidayName(name, "holidays_school", *args)
+
+    def assertNoWorkdayHolidayName(self, name, *args):  # noqa: N802
+        """Assert a Workday holiday with a specific name doesn't exist."""
+        self._assertNoHolidayName(name, "holidays_workday", *args)
 
     def assertNoIslamicNoEstimatedHolidayName(self, name, *args):  # noqa: N802
         """Assert an Islamic no-estimated holiday with a specific name doesn't exist."""
