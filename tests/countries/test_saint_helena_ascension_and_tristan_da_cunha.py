@@ -39,13 +39,11 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
         self.assertNoHolidays(SaintHelenaAscensionAndTristanDaCunha(years=2014))
 
     def test_special_holidays(self):
-        self.assertHoliday(
-            "2018-02-09",
-            "2022-06-03",
-            "2022-09-19",
-            "2023-01-24",
-            "2023-05-08",
-        )
+        self.assertHolidayName("Final Departure of R.M.S. St Helena", "2018-02-09")
+        self.assertHolidayName("Queen Elizabeth II's Platinum Jubilee", "2022-06-03")
+        self.assertHolidayName("Queen Elizabeth II's State Funeral", "2022-09-19")
+        self.assertHolidayName("The Duke of Edinburgh's Visit", "2023-01-24")
+        self.assertHolidayName("Coronation of His Majesty King Charles III", "2023-05-08")
 
     def test_new_years_day(self):
         name = "New Year's Day"

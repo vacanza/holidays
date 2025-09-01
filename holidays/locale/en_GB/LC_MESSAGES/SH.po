@@ -49,7 +49,7 @@ msgstr ""
 
 #. King's Birthday.
 msgid "King's Birthday"
-msgstr "King's Birthday"
+msgstr ""
 
 #. Christmas Day.
 msgid "Christmas Day"
