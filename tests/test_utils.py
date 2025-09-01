@@ -112,8 +112,8 @@ class TestAllInSameYear(unittest.TestCase):
         for country in list_supported_countries():
             for year in self.years:
                 for dt in country_holidays(country, years=year):
+                    self.assertTrue(isinstance(dt, date))
                     self.assertEqual(dt.year, year)
-                    self.assertEqual(type(dt), date)
             self.assertEqual(self.years, country_holidays(country, years=self.years).years)
 
     @pytest.mark.skipif(
@@ -135,8 +135,8 @@ class TestAllInSameYear(unittest.TestCase):
         for market in list_supported_financial():
             for year in self.years:
                 for dt in financial_holidays(market, years=year):
+                    self.assertTrue(isinstance(dt, date))
                     self.assertEqual(dt.year, year)
-                    self.assertEqual(type(dt), date)
             self.assertEqual(self.years, financial_holidays(market, years=self.years).years)
 
 
