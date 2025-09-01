@@ -27,7 +27,7 @@ from holidays.observed_holiday_base import (
 class SaintHelenaAscensionAndTristanDaCunha(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
 ):
-    """Saint Helena, Ascension And Tristan da Cunha holidays.
+    """Saint Helena, Ascension and Tristan da Cunha holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Saint_Helena,_Ascension_and_Tristan_da_Cunha>
