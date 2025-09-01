@@ -13,15 +13,14 @@
 import os
 import sys
 import warnings
+from collections import defaultdict
 from collections.abc import Generator
 from datetime import date
-from inspect import signature
 
 from dateutil.parser import parse
 
 from holidays import HolidayBase
 from holidays.calendars.gregorian import SUN
-from holidays.constants import PUBLIC
 from holidays.groups import IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase
 
@@ -33,14 +32,13 @@ class TestCase:
     """Base class for holidays test cases."""
 
     @classmethod
-    def setUpClass(cls, test_class=None, years=None, **year_variants):
+    def setUpClass(cls, test_class=None, years=None, years_non_observed=None):
         super().setUpClass()
 
         if test_class is None:
             return None
 
         cls.test_class = test_class
-        test_class_param = signature(test_class.__init__).parameters
 
         if (
             getattr(test_class, "default_language") is not None
@@ -52,73 +50,10 @@ class TestCase:
         if getattr(test_class, "default_language") is not None:
             cls.set_language(test_class, test_class.default_language)
 
-        # Default `years_[insert]` to `years` to prevent redundant initialization.
-        if (
-            "islamic_show_estimated" in test_class_param
-            and "years_islamic_no_estimated" not in year_variants
-        ):
-            year_variants["years_islamic_no_estimated"] = years
-
-        if (
-            issubclass(test_class, ObservedHolidayBase)
-            and "years_non_observed" not in year_variants
-        ):
-            year_variants["years_non_observed"] = years
-
-        if (
-            "islamic_show_estimated" in test_class_param
-            and issubclass(test_class, ObservedHolidayBase)
-            and "years_islamic_no_estimated_non_observed" not in year_variants
-        ):
-            year_variants["years_islamic_no_estimated_non_observed"] = years
-
-        if getattr(test_class, "supported_categories", None):
-            for cat in test_class.supported_categories:
-                if cat == PUBLIC:
-                    continue
-                suffix = cat.lower()
-                if f"years_{suffix}" not in year_variants:
-                    year_variants[f"years_{suffix}"] = years
-                if issubclass(test_class, ObservedHolidayBase):
-                    non_obs_key = f"years_{suffix}_non_observed"
-                    if non_obs_key not in year_variants:
-                        year_variants[non_obs_key] = years
-
-        variants = {"": years}
-        variants.update(year_variants)
-
-        for suffix, ylist in variants.items():
-            if ylist is None:
-                continue
-
-            attr_name = "holidays" + (f"_{suffix.replace('years_', '')}" if suffix else "")
-            init_kwargs = {"years": ylist}
-
-            # Step 1: Categories.
-            if hasattr(test_class, "supported_categories"):
-                matching_cat = next(
-                    (
-                        cat
-                        for cat in test_class.supported_categories
-                        if cat != PUBLIC and cat.lower() in attr_name
-                    ),
-                    None,
-                )
-                if matching_cat:
-                    init_kwargs["categories"] = matching_cat
-
-            # Step 2: Special flags i.e. `islamic_show_estimated`.
-            if (
-                "islamic_show_estimated" in test_class_param
-                and "islamic_no_estimated" in attr_name
-            ):
-                init_kwargs["islamic_show_estimated"] = False
-
-            # Step 3: _non_observed suffix.
-            if "non_observed" in attr_name:
-                init_kwargs["observed"] = False
-
-            setattr(cls, attr_name, test_class(**init_kwargs))
+        if years:
+            cls.holidays = test_class(years=years)
+        if years_non_observed:
+            cls.holidays_non_observed = test_class(observed=False, years=years_non_observed)
 
     def setUp(self):
         super().setUp()
@@ -170,10 +105,10 @@ class TestCase:
         else:
             items.extend(item_args)
 
-        if instance_name.endswith("_non_observed"):
-            self.assertFalse(instance.observed)
-        else:
+        if instance_name == "holidays":
             self.assertTrue(instance.observed)
+        else:
+            self.assertFalse(instance.observed)
 
         if raise_on_empty and not items:
             raise ValueError("The test argument sequence is empty")
@@ -219,10 +154,6 @@ class TestCase:
         """Assert each date is a holiday."""
         self._assertHoliday("holidays", *args)
 
-    def assertIslamicNoEstimatedHoliday(self, *args):  # noqa: N802
-        """Assert each date is an Islamic no-estimated holiday."""
-        self._assertHoliday("holidays_islamic_no_estimated", *args)
-
     def assertNonObservedHoliday(self, *args):  # noqa: N802
         """Assert each date is a non-observed holiday."""
         self._assertHoliday("holidays_non_observed", *args)
@@ -242,10 +173,6 @@ class TestCase:
     def assertHolidayDates(self, *args):  # noqa: N802
         """Assert holiday dates exactly match expected dates."""
         self._assertHolidayDates("holidays", *args)
-
-    def assertIslamicNoEstimatedHolidayDates(self, *args):  # noqa: N802
-        """Assert holiday dates exactly match expected dates."""
-        self._assertHolidayDates("holidays_islamic_no_estimated", *args)
 
     def assertNonObservedHolidayDates(self, *args):  # noqa: N802
         """Assert holiday dates exactly match expected dates."""
@@ -274,47 +201,11 @@ class TestCase:
         """
         self._assertHolidayName(name, "holidays", *args)
 
-    def assertGovernmentHolidayName(self, name, *args):  # noqa: N802
-        """Assert either a Government holiday with a specific name exists or
-        each Government holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "holidays_government", *args)
-
-    def assertOptionalHolidayName(self, name, *args):  # noqa: N802
-        """Assert either an Optional holiday with a specific name exists or
-        each Optional holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "holidays_optional", *args)
-
-    def assertSchoolHolidayName(self, name, *args):  # noqa: N802
-        """Assert either a School holiday with a specific name exists or
-        each School holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "holidays_school", *args)
-
-    def assertWorkdayHolidayName(self, name, *args):  # noqa: N802
-        """Assert either a Workday holiday with a specific name exists or
-        each Workday holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "holidays_workday", *args)
-
-    def assertIslamicNoEstimatedHolidayName(self, name, *args):  # noqa: N802
-        """Assert either an Islamic no-estimated holiday with a specific name exists or
-        each Islamic no-estimated holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "holidays_islamic_no_estimated", *args)
-
     def assertNonObservedHolidayName(self, name, *args):  # noqa: N802
         """Assert either a non-observed holiday with a specific name exists or
         each non-observed holiday name matches an expected one.
         """
         self._assertHolidayName(name, "holidays_non_observed", *args)
-
-    def assertIslamicNoEstimatedNonObservedHolidayName(self, name, *args):  # noqa: N802
-        """Assert either an Islamic no-estimated non-observed holiday with a specific name exists
-        or each Islamic no-estimated non-observed holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "holidays_islamic_no_estimated_non_observed", *args)
 
     # Holidays.
     def _assertHolidays(self, instance_name, *args):  # noqa: N802
@@ -341,13 +232,38 @@ class TestCase:
         """Assert holidays exactly match expected holidays."""
         self._assertHolidays("holidays", *args)
 
-    def assertIslamicNoEstimatedHolidays(self, *args):  # noqa: N802
-        """Assert Islamic no-estimated holidays exactly match expected holidays."""
-        self._assertHolidays("holidays_islamic_no_estimated", *args)
-
     def assertNonObservedHolidays(self, *args):  # noqa: N802
         """Assert non-observed holidays exactly match expected holidays."""
         self._assertHolidays("holidays_non_observed", *args)
+
+    def _assertHolidayNameCount(self, name, count, instance_name, *args):  # noqa: N802
+        """Helper: assert number of holidays with a specific name in every year matches
+        expected.
+        """
+        holidays, items = self._parse_arguments(args, instance_name=instance_name)
+        self._verify_type(holidays)
+
+        holiday_counts = defaultdict(int)
+        for dt in holidays.get_named(name, lookup="exact"):
+            holiday_counts[dt.year] += 1
+
+        for year in items:
+            holiday_count = holiday_counts.get(year, 0)
+            self.assertEqual(
+                count,
+                holiday_count,
+                f"`{name}` occurs {holiday_count} times in year {year}, should be {count}",
+            )
+
+    def assertHolidayNameCount(self, name, count, *args):  # noqa: N802
+        """Assert number of holidays with a specific name in every year matches expected."""
+        self._assertHolidayNameCount(name, count, "holidays", *args)
+
+    def assertNonObservedHolidayNameCount(self, name, count, *args):  # noqa: N802
+        """Assert number of non-observed holidays with a specific name in every year
+        matches expected.
+        """
+        self._assertHolidayNameCount(name, count, "holidays_non_observed", *args)
 
     # No holiday.
     def _assertNoHoliday(self, instance_name, *args):  # noqa: N802
@@ -360,14 +276,6 @@ class TestCase:
     def assertNoHoliday(self, *args):  # noqa: N802
         """Assert each date is not a holiday."""
         self._assertNoHoliday("holidays", *args)
-
-    def assertNoIslamicNoEstimatedHoliday(self, *args):  # noqa: N802
-        """Assert each date is not an Islamic no-estimated holiday."""
-        self._assertNoHoliday("holidays_islamic_no_estimated", *args)
-
-    def assertNoOptionalNonObservedHoliday(self, *args):  # noqa: N802
-        """Assert each date is not an Optional non-observed holiday."""
-        self._assertNoHoliday("holidays_optional_non_observed", *args)
 
     def assertNoNonObservedHoliday(self, *args):  # noqa: N802
         """Assert each date is not a non-observed holiday."""
@@ -398,26 +306,6 @@ class TestCase:
         """Assert a holiday with a specific name doesn't exist."""
         self._assertNoHolidayName(name, "holidays", *args)
 
-    def assertNoGovernmentHolidayName(self, name, *args):  # noqa: N802
-        """Assert a Government holiday with a specific name doesn't exist."""
-        self._assertNoHolidayName(name, "holidays_government", *args)
-
-    def assertNoOptionalHolidayName(self, name, *args):  # noqa: N802
-        """Assert an Optional holiday with a specific name doesn't exist."""
-        self._assertNoHolidayName(name, "holidays_optional", *args)
-
-    def assertNoSchoolHolidayName(self, name, *args):  # noqa: N802
-        """Assert a School holiday with a specific name doesn't exist."""
-        self._assertNoHolidayName(name, "holidays_school", *args)
-
-    def assertNoWorkdayHolidayName(self, name, *args):  # noqa: N802
-        """Assert a Workday holiday with a specific name doesn't exist."""
-        self._assertNoHolidayName(name, "holidays_workday", *args)
-
-    def assertNoIslamicNoEstimatedHolidayName(self, name, *args):  # noqa: N802
-        """Assert an Islamic no-estimated holiday with a specific name doesn't exist."""
-        self._assertNoHolidayName(name, "holidays_islamic_no_estimated", *args)
-
     def assertNoNonObservedHolidayName(self, name, *args):  # noqa: N802
         """Assert a non-observed holiday with a specific name doesn't exist."""
         self._assertNoHolidayName(name, "holidays_non_observed", *args)
@@ -436,10 +324,6 @@ class TestCase:
     def assertNoHolidays(self, *args):  # noqa: N802
         """Assert holidays dict is empty."""
         self._assertNoHolidays("holidays", *args)
-
-    def assertNoIslamicNoEstimatedHolidays(self, *args):  # noqa: N802
-        """Assert Islamic no-estimated holidays dict is empty."""
-        self._assertNoHolidays("holidays_islamic_no_estimated", *args)
 
     def assertNoNonObservedHolidays(self, *args):  # noqa: N802
         """Assert non-observed holidays dict is empty."""
@@ -473,7 +357,7 @@ class TestCase:
         )
 
     def assertLocalizedHolidays(self, *args):  # noqa: N802
-        """Helper: assert localized holidays match expected names."""
+        """Assert localized holidays match expected names."""
         arg = args[0]
         is_string = isinstance(arg, str)
 
@@ -488,6 +372,44 @@ class TestCase:
 
 class CommonTests(TestCase):
     """Common test cases for all entities."""
+
+    def test_estimated_label(self):
+        if isinstance(self.holidays, IslamicHolidays):
+            self.assertTrue(
+                getattr(self.holidays, "estimated_label", None),
+                "The `estimated_label` attribute is required for entities inherited from "
+                "`IslamicHolidays`.",
+            )
+
+    def test_observed_estimated_label(self):
+        estimated_label = getattr(self.holidays, "estimated_label", None)
+        observed_label = getattr(self.holidays, "observed_label", None)
+        observed_estimated_label = getattr(self.holidays, "observed_estimated_label", None)
+
+        if (
+            estimated_label
+            and observed_label
+            # In certain entities, the observed rule applies only to holiday suppression,
+            # e.g., XNSE with `SAT_TO_NONE`` or `SUN_TO_NONE``. In these cases, the
+            # `observed_estimated_label` is not required.
+            and any(
+                rule is not None for rule in getattr(self.holidays, "observed_rule", {}).values()
+            )
+        ):
+            self.assertTrue(
+                observed_estimated_label,
+                "The `observed_estimated_label` attribute is required for entities containing "
+                "both `observed_label` and `estimated_label`.",
+            )
+            self.assertIn(estimated_label.strip("%s ()"), observed_estimated_label)
+
+    def test_observed_label(self):
+        if getattr(self.holidays, "observed_label", None):
+            self.assertTrue(
+                isinstance(self.holidays, ObservedHolidayBase),
+                "The `observed_label` attribute is not required as this entity doesn't handle "
+                "observed holidays.",
+            )
 
     def test_subdivisions_aliases(self):
         """Validate entity subdivisions aliases."""
@@ -507,35 +429,6 @@ class CommonCountryTests(CommonTests):
     def test_code(self):
         self.assertTrue(hasattr(self.holidays, "country"))
         self.assertFalse(hasattr(self.holidays, "market"))
-
-    def test_estimated_label(self):
-        if isinstance(self.holidays, IslamicHolidays):
-            self.assertTrue(
-                getattr(self.holidays, "estimated_label", None),
-                "The `estimated_label` attribute is required for entities inherited from "
-                "`IslamicHolidays`.",
-            )
-
-    def test_observed_estimated_label(self):
-        estimated_label = getattr(self.holidays, "estimated_label", None)
-        observed_label = getattr(self.holidays, "observed_label", None)
-        observed_estimated_label = getattr(self.holidays, "observed_estimated_label", None)
-
-        if estimated_label and observed_label:
-            self.assertTrue(
-                observed_estimated_label,
-                "The `observed_estimated_label` attribute is required for entities containing "
-                "both `observed_label` and `estimated_label`.",
-            )
-            self.assertIn(estimated_label.strip("%s ()"), observed_estimated_label)
-
-    def test_observed_label(self):
-        if getattr(self.holidays, "observed_label", None):
-            self.assertTrue(
-                isinstance(self.holidays, ObservedHolidayBase),
-                "The `observed_label` attribute is not required as this entity doesn't handle "
-                "observed holidays.",
-            )
 
 
 class CommonFinancialTests(CommonTests):
