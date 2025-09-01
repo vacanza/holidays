@@ -28,6 +28,7 @@ class TestDenmark(CommonCountryTests, TestCase):
     def test_2016(self):
         # http://www.officeholidays.com/countries/denmark/2016.php
         self.assertHolidays(
+            Denmark(years=2016),
             ("2016-01-01", "Nytårsdag"),
             ("2016-03-24", "Skærtorsdag"),
             ("2016-03-25", "Langfredag"),
@@ -43,6 +44,7 @@ class TestDenmark(CommonCountryTests, TestCase):
 
     def test_2022(self):
         self.assertHolidays(
+            Denmark(years=2022),
             ("2022-01-01", "Nytårsdag"),
             ("2022-04-14", "Skærtorsdag"),
             ("2022-04-15", "Langfredag"),

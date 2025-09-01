@@ -460,6 +460,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
 
     def test_all_modern_holidays_present(self):
         self.assertHolidays(
+            NewYorkStockExchange(years=2023),
             ("2023-01-02", "New Year's Day (observed)"),
             ("2023-01-16", "Martin Luther King Jr. Day"),
             ("2023-02-20", "Washington's Birthday"),

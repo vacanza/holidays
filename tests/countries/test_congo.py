@@ -40,6 +40,7 @@ class TestCongo(CommonCountryTests, TestCase):
     def test_2006(self):
         # http://mokili.free.fr/jours_feries.php
         self.assertHolidays(
+            Congo(years=2006),
             ("2006-01-01", "Jour de l'An"),
             ("2006-04-17", "Lundi de Pâques"),
             ("2006-05-01", "Fête du Travail"),
@@ -54,6 +55,7 @@ class TestCongo(CommonCountryTests, TestCase):
     def test_2010(self):
         # http://mokili.free.fr/jours_feries.php
         self.assertHolidays(
+            Congo(years=2010),
             ("2010-01-01", "Jour de l'An"),
             ("2010-04-05", "Lundi de Pâques"),
             ("2010-05-01", "Fête du Travail"),
@@ -69,6 +71,7 @@ class TestCongo(CommonCountryTests, TestCase):
     def test_2015(self):
         # http://mokili.free.fr/jours_feries.php
         self.assertHolidays(
+            Congo(years=2015),
             ("2015-01-01", "Jour de l'An"),
             ("2015-04-06", "Lundi de Pâques"),
             ("2015-05-01", "Fête du Travail"),
@@ -84,6 +87,7 @@ class TestCongo(CommonCountryTests, TestCase):
     def test_2016(self):
         # http://mokili.free.fr/jours_feries.php
         self.assertHolidays(
+            Congo(years=2016),
             ("2016-01-01", "Jour de l'An"),
             ("2016-03-28", "Lundi de Pâques"),
             ("2016-05-01", "Fête du Travail"),
@@ -99,6 +103,7 @@ class TestCongo(CommonCountryTests, TestCase):
     def test_2017(self):
         # http://mokili.free.fr/jours_feries.php
         self.assertHolidays(
+            Congo(years=2017),
             ("2017-01-01", "Jour de l'An"),
             ("2017-04-17", "Lundi de Pâques"),
             ("2017-05-01", "Fête du Travail"),

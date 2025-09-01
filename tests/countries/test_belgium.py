@@ -27,6 +27,7 @@ class TestBelgium(CommonCountryTests, TestCase):
 
     def test_2020(self):
         self.assertHolidays(
+            Belgium(years=2020),
             ("2020-01-01", "Nieuwjaar"),
             ("2020-04-12", "Pasen"),
             ("2020-04-13", "Paasmaandag"),
@@ -43,6 +44,7 @@ class TestBelgium(CommonCountryTests, TestCase):
 
     def test_2021(self):
         self.assertHolidays(
+            Belgium(years=2021),
             ("2021-01-01", "Nieuwjaar"),
             ("2021-04-04", "Pasen"),
             ("2021-04-05", "Paasmaandag"),
@@ -59,6 +61,7 @@ class TestBelgium(CommonCountryTests, TestCase):
 
     def test_2022(self):
         self.assertHolidays(
+            Belgium(years=2022),
             ("2022-01-01", "Nieuwjaar"),
             ("2022-04-17", "Pasen"),
             ("2022-04-18", "Paasmaandag"),

@@ -198,18 +198,18 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
     ):
         for subdiv, holidays in self.subdiv_holidays.items():  # type: ignore[attr-defined]
             if subdiv == province_code:
-                self.assertHolidayName(
+                self.assertHolidayName(  # type: ignore[attr-defined]
                     holiday_name, holidays, (f"{year}-{month}-{day}" for year in range(1979, 2050))
                 )
                 observed_name = f"{holiday_name} (observed)"
-                self.assertHolidayName(observed_name, holidays, observed_dts)
-                self.assertNoNonObservedHolidayName(
+                self.assertHolidayName(observed_name, holidays, observed_dts)  # type: ignore[attr-defined]
+                self.assertNoNonObservedHolidayName(  # type: ignore[attr-defined]
                     observed_name,
                     self.subdiv_holidays_non_observed[subdiv],  # type: ignore[attr-defined]
                     observed_dts,
                 )
             else:
-                self.assertNoHolidayName(holiday_name, holidays, range(1979, 2050))
+                self.assertNoHolidayName(holiday_name, holidays, range(1979, 2050))  # type: ignore[attr-defined]
 
     def test_central_province_day(self):
         observed_dts = (

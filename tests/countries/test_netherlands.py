@@ -142,6 +142,7 @@ class TestNetherlands(CommonCountryTests, TestCase):
 
     def test_2017(self):
         self.assertHolidays(
+            Netherlands(years=2017),
             ("2017-01-01", "Nieuwjaarsdag"),
             ("2017-04-16", "Eerste paasdag"),
             ("2017-04-17", "Tweede paasdag"),
@@ -155,6 +156,7 @@ class TestNetherlands(CommonCountryTests, TestCase):
 
     def test_2020(self):
         self.assertHolidays(
+            Netherlands(years=2020),
             ("2020-01-01", "Nieuwjaarsdag"),
             ("2020-04-12", "Eerste paasdag"),
             ("2020-04-13", "Tweede paasdag"),
