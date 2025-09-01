@@ -228,7 +228,7 @@ class TestCase:
         """Assert each date is a non-observed holiday."""
         self._assertHoliday("holidays_non_observed", *args)
 
-    # Holiday dates.
+    # HolidayDates.
     def _assertHolidayDates(self, instance_name, *args):  # noqa: N802
         """Helper: assert holiday dates exactly match expected dates."""
         holidays, dates = self._parse_arguments(args, instance_name=instance_name)
@@ -252,7 +252,7 @@ class TestCase:
         """Assert holiday dates exactly match expected dates."""
         self._assertHolidayDates("holidays_non_observed", *args)
 
-    # Holiday name.
+    # HolidayName.
     def _assertHolidayName(self, name, instance_name, *args):  # noqa: N802
         """Helper: assert either a holiday with a specific name exists or
         each holiday name matches an expected one depending on the args nature.
@@ -317,6 +317,36 @@ class TestCase:
         """
         self._assertHolidayName(name, "holidays_islamic_no_estimated_non_observed", *args)
 
+    # HolidayNameCount.
+    def _assertHolidayNameCount(self, name, count, instance_name, *args):  # noqa: N802
+        """Helper: assert number of holidays with a specific name in every year matches
+        expected.
+        """
+        holidays, items = self._parse_arguments(args, instance_name=instance_name)
+        self._verify_type(holidays)
+
+        holiday_counts = defaultdict(int)
+        for dt in holidays.get_named(name, lookup="exact"):
+            holiday_counts[dt.year] += 1
+
+        for year in items:
+            holiday_count = holiday_counts.get(year, 0)
+            self.assertEqual(
+                count,
+                holiday_count,
+                f"`{name}` occurs {holiday_count} times in year {year}, should be {count}",
+            )
+
+    def assertHolidayNameCount(self, name, count, *args):  # noqa: N802
+        """Assert number of holidays with a specific name in every year matches expected."""
+        self._assertHolidayNameCount(name, count, "holidays", *args)
+
+    def assertNonObservedHolidayNameCount(self, name, count, *args):  # noqa: N802
+        """Assert number of non-observed holidays with a specific name in every year
+        matches expected.
+        """
+        self._assertHolidayNameCount(name, count, "holidays_non_observed", *args)
+
     # Holidays.
     def _assertHolidays(self, instance_name, *args):  # noqa: N802
         """Helper: assert holidays exactly match expected holidays."""
@@ -350,37 +380,7 @@ class TestCase:
         """Assert non-observed holidays exactly match expected holidays."""
         self._assertHolidays("holidays_non_observed", *args)
 
-    # HolidayNameCount.
-    def _assertHolidayNameCount(self, name, count, instance_name, *args):  # noqa: N802
-        """Helper: assert number of holidays with a specific name in every year matches
-        expected.
-        """
-        holidays, items = self._parse_arguments(args, instance_name=instance_name)
-        self._verify_type(holidays)
-
-        holiday_counts = defaultdict(int)
-        for dt in holidays.get_named(name, lookup="exact"):
-            holiday_counts[dt.year] += 1
-
-        for year in items:
-            holiday_count = holiday_counts.get(year, 0)
-            self.assertEqual(
-                count,
-                holiday_count,
-                f"`{name}` occurs {holiday_count} times in year {year}, should be {count}",
-            )
-
-    def assertHolidayNameCount(self, name, count, *args):  # noqa: N802
-        """Assert number of holidays with a specific name in every year matches expected."""
-        self._assertHolidayNameCount(name, count, "holidays", *args)
-
-    def assertNonObservedHolidayNameCount(self, name, count, *args):  # noqa: N802
-        """Assert number of non-observed holidays with a specific name in every year
-        matches expected.
-        """
-        self._assertHolidayNameCount(name, count, "holidays_non_observed", *args)
-
-    # No holiday.
+    # No Holiday.
     def _assertNoHoliday(self, instance_name, *args):  # noqa: N802
         """Helper: assert each date is not a holiday."""
         holidays, dates = self._parse_arguments(args, instance_name=instance_name)
@@ -404,7 +404,7 @@ class TestCase:
         """Assert each date is not a non-observed holiday."""
         self._assertNoHoliday("holidays_non_observed", *args)
 
-    # No holiday name.
+    # No HolidayName.
     def _assertNoHolidayName(self, name, instance_name, *args):  # noqa: N802
         """Helper: assert a holiday with a specific name doesn't exist."""
         holidays, items = self._parse_arguments(
@@ -453,7 +453,7 @@ class TestCase:
         """Assert a non-observed holiday with a specific name doesn't exist."""
         self._assertNoHolidayName(name, "holidays_non_observed", *args)
 
-    # No holidays.
+    # No Holidays.
     def _assertNoHolidays(self, instance_name, *args):  # noqa: N802
         """Helper: assert holidays dict is empty."""
         holidays, _ = self._parse_arguments(
@@ -476,6 +476,7 @@ class TestCase:
         """Assert non-observed holidays dict is empty."""
         self._assertNoHolidays("holidays_non_observed", *args)
 
+    # LocalizedHolidays.
     def _assertLocalizedHolidays(self, localized_holidays, language=None):  # noqa: N802
         """Helper: assert localized holidays match expected names."""
         instance = self.test_class(
