@@ -147,6 +147,10 @@ class Argentina(
 
     country = "AR"
     default_language = "es"
+    # %s (estimated).
+    estimated_label = tr("%s (estimado)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (observado, estimado)")
     # %s (observed).
     observed_label = tr("%s (observado)")
     # Decree-Law 2446.

@@ -12,8 +12,8 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JUN, AUG, NOV
-from holidays.calendars.islamic import _CustomIslamicHolidays
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 

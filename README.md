@@ -9,7 +9,7 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>PyPI</td>
     <td>
-      <a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pepy/dt/holidays?style=flat&color=41B5BE" alt="Pepy Total Downloads"></a>&nbsp;<a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat" alt="PyPI version"></a>&nbsp;<a href="https://github.com/vacanza/holidays/releases"><img src="https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat" alt="PyPI release date"></a>
+      <a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvacanza%2Faux%2Frefs%2Fheads%2Fmain%2Fbadges%2Fdownloads%2Fpepy.tech.yaml&query=%24.previous_month_downloads_human&suffix=%2Fmonth&style=flat&label=downloads&color=41B5BE&cacheSeconds=86400" alt="PyPI monthly downloads"></a>&nbsp;<a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat" alt="PyPI version"></a>&nbsp;<a href="https://github.com/vacanza/holidays/releases"><img src="https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat" alt="Latest release date"></a>
     </td>
   </tr>
   <tr>
@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 233 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 240 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -388,7 +388,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Burundi</td>
 <td>BI</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>fr_BI</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -473,6 +473,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>CO</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Comoros</td>
+<td>KM</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -595,6 +602,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Eritrea</td>
+<td>ER</td>
+<td></td>
+<td></td>
+<td>GOVERNMENT</td>
+</tr>
+<tr>
 <td>Estonia</td>
 <td>EE</td>
 <td></td>
@@ -690,7 +704,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GE</td>
 <td></td>
 <td>en_US, <strong>ka</strong>, uk</td>
-<td>GOVERNMENT</td>
+<td></td>
 </tr>
 <tr>
 <td>Germany</td>
@@ -1012,7 +1026,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>MO</td>
 <td>Historical municipalities: I (Concelho das Ilhas, 海島市, 海岛市), M (Concelho de Macau, 澳門市, 澳门市)</td>
 <td>en_MO, en_US, pt_MO, th, zh_CN, <strong>zh_MO</strong></td>
-<td>GOVERNMENT, MANDATORY</td>
+<td>GOVERNMENT, OPTIONAL</td>
 </tr>
 <tr>
 <td>Madagascar</td>
@@ -1214,7 +1228,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Nigeria</td>
 <td>NG</td>
 <td></td>
-<td></td>
+<td><strong>en_NG</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -1372,6 +1386,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Rwanda</td>
+<td>RW</td>
+<td></td>
+<td>en_US, fr, <strong>rw</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Saint Barthélemy</td>
 <td>BL</td>
 <td>Can also be loaded as country FR, subdivision BL</td>
@@ -1505,6 +1526,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Somalia</td>
+<td>SO</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>South Africa</td>
 <td>ZA</td>
 <td></td>
@@ -1524,6 +1552,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>ko</strong>, th</td>
 <td>BANK</td>
+</tr>
+<tr>
+<td>South Sudan</td>
+<td>SS</td>
+<td></td>
+<td></td>
+<td>ISLAMIC</td>
 </tr>
 <tr>
 <td>Spain</td>
@@ -1580,6 +1615,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, th, zh_CN, <strong>zh_TW</strong></td>
 <td>GOVERNMENT, OPTIONAL, SCHOOL, WORKDAY</td>
+</tr>
+<tr>
+<td>Tajikistan</td>
+<td>TJ</td>
+<td></td>
+<td>en_US, ru, <strong>tg</strong></td>
+<td></td>
 </tr>
 <tr>
 <td>Tanzania</td>
@@ -1663,6 +1705,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>TV</td>
 <td>Town/Island Councils: FUN (Funafuti), NIT (Niutao), NKF (Nukufetau), NKL (Nukulaelae), NMA (Nanumea), NMG (Nanumaga, Nanumanga), NUI (Nui), VAI (Vaitupu)</td>
 <td>en_GB, en_US, <strong>tvl</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Uganda</td>
+<td>UG</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -1826,6 +1875,12 @@ code when available. The following financial markets are available:
 <td>IFEU</td>
 <td>A London-based Investment Exchange holidays</td>
 <td></td>
+</tr>
+<tr>
+<td>National Stock Exchange of India</td>
+<td>XNSE</td>
+<td>National Stock Exchange of India market holidays</td>
+<td><strong>en_IN</strong>, en_US, hi</td>
 </tr>
 <tr>
 <td>New York Stock Exchange</td>

@@ -28,10 +28,6 @@ class GuineaBissau(HolidayBase, ChristianHolidays, InternationalHolidays, Islami
     default_language = "pt_GW"
     # %s (estimated).
     estimated_label = tr("%s (prevista)")
-    # %s (observed).
-    observed_label = tr("%s (ponte)")
-    # %s (estimated, observed).
-    observed_estimated_label = tr("%s (prevista, ponte)")
     supported_languages = ("en_US", "pt_GW")
     start_year = 2023
 

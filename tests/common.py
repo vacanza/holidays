@@ -13,6 +13,7 @@
 import os
 import sys
 import warnings
+from collections import defaultdict
 from collections.abc import Generator
 from datetime import date
 
@@ -20,6 +21,8 @@ from dateutil.parser import parse
 
 from holidays import HolidayBase
 from holidays.calendars.gregorian import SUN
+from holidays.groups import IslamicHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase
 
 PYTHON_LATEST_SUPPORTED_VERSION = "3.13"
 PYTHON_VERSION = f"{sys.version_info.major}.{sys.version_info.minor}"
@@ -233,6 +236,35 @@ class TestCase:
         """Assert non-observed holidays exactly match expected holidays."""
         self._assertHolidays("holidays_non_observed", *args)
 
+    def _assertHolidayNameCount(self, name, count, instance_name, *args):  # noqa: N802
+        """Helper: assert number of holidays with a specific name in every year matches
+        expected.
+        """
+        holidays, items = self._parse_arguments(args, instance_name=instance_name)
+        self._verify_type(holidays)
+
+        holiday_counts = defaultdict(int)
+        for dt in holidays.get_named(name, lookup="exact"):
+            holiday_counts[dt.year] += 1
+
+        for year in items:
+            holiday_count = holiday_counts.get(year, 0)
+            self.assertEqual(
+                count,
+                holiday_count,
+                f"`{name}` occurs {holiday_count} times in year {year}, should be {count}",
+            )
+
+    def assertHolidayNameCount(self, name, count, *args):  # noqa: N802
+        """Assert number of holidays with a specific name in every year matches expected."""
+        self._assertHolidayNameCount(name, count, "holidays", *args)
+
+    def assertNonObservedHolidayNameCount(self, name, count, *args):  # noqa: N802
+        """Assert number of non-observed holidays with a specific name in every year
+        matches expected.
+        """
+        self._assertHolidayNameCount(name, count, "holidays_non_observed", *args)
+
     # No holiday.
     def _assertNoHoliday(self, instance_name, *args):  # noqa: N802
         """Helper: assert each date is not a holiday."""
@@ -325,7 +357,7 @@ class TestCase:
         )
 
     def assertLocalizedHolidays(self, *args):  # noqa: N802
-        """Helper: assert localized holidays match expected names."""
+        """Assert localized holidays match expected names."""
         arg = args[0]
         is_string = isinstance(arg, str)
 
@@ -340,6 +372,44 @@ class TestCase:
 
 class CommonTests(TestCase):
     """Common test cases for all entities."""
+
+    def test_estimated_label(self):
+        if isinstance(self.holidays, IslamicHolidays):
+            self.assertTrue(
+                getattr(self.holidays, "estimated_label", None),
+                "The `estimated_label` attribute is required for entities inherited from "
+                "`IslamicHolidays`.",
+            )
+
+    def test_observed_estimated_label(self):
+        estimated_label = getattr(self.holidays, "estimated_label", None)
+        observed_label = getattr(self.holidays, "observed_label", None)
+        observed_estimated_label = getattr(self.holidays, "observed_estimated_label", None)
+
+        if (
+            estimated_label
+            and observed_label
+            # In certain entities, the observed rule applies only to holiday suppression,
+            # e.g., XNSE with `SAT_TO_NONE`` or `SUN_TO_NONE``. In these cases, the
+            # `observed_estimated_label` is not required.
+            and any(
+                rule is not None for rule in getattr(self.holidays, "observed_rule", {}).values()
+            )
+        ):
+            self.assertTrue(
+                observed_estimated_label,
+                "The `observed_estimated_label` attribute is required for entities containing "
+                "both `observed_label` and `estimated_label`.",
+            )
+            self.assertIn(estimated_label.strip("%s ()"), observed_estimated_label)
+
+    def test_observed_label(self):
+        if getattr(self.holidays, "observed_label", None):
+            self.assertTrue(
+                isinstance(self.holidays, ObservedHolidayBase),
+                "The `observed_label` attribute is not required as this entity doesn't handle "
+                "observed holidays.",
+            )
 
     def test_subdivisions_aliases(self):
         """Validate entity subdivisions aliases."""
@@ -359,19 +429,6 @@ class CommonCountryTests(CommonTests):
     def test_code(self):
         self.assertTrue(hasattr(self.holidays, "country"))
         self.assertFalse(hasattr(self.holidays, "market"))
-
-    def test_observed_estimated_label(self):
-        estimated_label = getattr(self.holidays, "estimated_label", None)
-        observed_label = getattr(self.holidays, "observed_label", None)
-        observed_estimated_label = getattr(self.holidays, "observed_estimated_label", None)
-
-        if estimated_label and observed_label:
-            self.assertTrue(
-                observed_estimated_label,
-                "The 'observed_estimated_label' attribute must be set for entities containing "
-                "both 'observed_label' and 'estimated_label'.",
-            )
-            self.assertIn(estimated_label.strip("%s ()"), observed_estimated_label)
 
 
 class CommonFinancialTests(CommonTests):

@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.40\n"
+"Project-Id-Version: Holidays 0.80\n"
 "POT-Creation-Date: 2023-12-26 19:23+0200\n"
-"PO-Revision-Date: 2023-12-26 19:58+0200\n"
+"PO-Revision-Date: 2025-08-26 18:43+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -26,6 +26,16 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
 "X-Source-Language: es\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimado)"
+msgstr "%s (приблизна дата)"
+
+#. Monday following %s (estimated).
+#, c-format
+msgid "Lunes siguiente a %s (estimado)"
+msgstr "Понеділок після %s (приблизна дата)"
 
 #. Monday following %s.
 #, c-format
