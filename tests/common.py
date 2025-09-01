@@ -99,15 +99,12 @@ class TestCase:
         cls.test_class = test_class
         test_class_param = signature(test_class.__init__).parameters
 
-        if (
-            getattr(test_class, "default_language") is not None
+        default_lang = getattr(test_class, "default_language", None)
+        if default_lang is not None:
             # Normally 2-6 letters (e.g., en, pap, en_US, pap_AW).
-            and 2 > len(test_class.default_language) > 6
-        ):
-            raise ValueError(f"`{test_class.__name__}.default_language` value is invalid.")
-
-        if getattr(test_class, "default_language") is not None:
-            cls.set_language(test_class, test_class.default_language)
+            if not (2 <= len(default_lang) <= 6):
+                raise ValueError(f"`{test_class.__name__}.default_language` value is invalid.")
+            cls.set_language(test_class, default_lang)
 
         if years is None:
             years = range(1950, 2050)
