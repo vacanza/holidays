@@ -13,6 +13,7 @@
 import os
 import sys
 import warnings
+from collections import defaultdict
 from collections.abc import Generator
 from datetime import date
 from inspect import signature
