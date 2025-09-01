@@ -31,7 +31,7 @@ class SaintHelenaAscensionAndTristanDaCunha(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Saint_Helena,_Ascension_and_Tristan_da_Cunha>
-        * [Ratting Day](https://web.archive.org/web/20250826151056/https://www.tristandc.com/newsratting.php)
+
     Saint Helena:
         * <https://web.archive.org/web/20250810194916/https://sainthelenaisland.info/holidays.htm>
         * [Public Holidays Ordinance](https://web.archive.org/web/20231129081100/https://www.sainthelena.gov.sh/wp-content/uploads/2013/01/Public-Holidays-Ordinance.pdf)
@@ -43,8 +43,12 @@ class SaintHelenaAscensionAndTristanDaCunha(
         * [2024](https://web.archive.org/web/20250614201000/https://www.sainthelena.gov.sh/2023/news/public-and-government-holidays-2024/)
         * [2025](https://web.archive.org/web/20241005191212/https://www.sainthelena.gov.sh/wp-content/uploads/2024/08/Public-Notice-Public-Holidays-2025.pdf)
         * [2026](https://web.archive.org/web/20250831200128/https://www.sainthelena.gov.sh/wp-content/uploads/2025/08/Public-Notice-Public-Holidays-2026.pdf)
+
     Ascension:
         * [Public Holidays Ordinance](https://web.archive.org/web/20240610184146/https://www.sainthelena.gov.sh/wp-content/uploads/2017/12/Public-Holidays-Asc-Ordinance.pdf)
+
+    Tristan da Cunha:
+        * [Ratting Day](https://web.archive.org/web/20250826151056/https://www.tristandc.com/newsratting.php)
     """
 
     country = "SH"
@@ -74,9 +78,6 @@ class SaintHelenaAscensionAndTristanDaCunha(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # New Year's Day.
-        self._add_observed(self._add_new_years_day(tr("New Year's Day")))
-
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
