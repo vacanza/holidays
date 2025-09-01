@@ -257,7 +257,7 @@ class NigeriaIslamicHolidays(_CustomIslamicHolidays):
 
 
 class NigeriaStaticHolidays:
-    """Nigeria Special Holidays
+    """Nigeria special holidays.
 
     References:
         * <https://web.archive.org/web/20250829090324/https://www.pambazuka.org/governance/nigeria-holiday-blow-presidential-hopeful>
