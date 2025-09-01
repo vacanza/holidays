@@ -203,7 +203,7 @@ class TestCase:
         item_args = args
         instance = None
 
-        if args and issubclass(args[0].__class__, HolidayBase):
+        if args and isinstance(args[0], HolidayBase):
             instance = args[0]
             item_args = args[1:]
         else:
