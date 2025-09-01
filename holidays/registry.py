@@ -203,7 +203,6 @@ COUNTRIES: RegistryDict = {
         "SaintHelenaAscensionAndTristanDaCunha",
         "SH",
         "SHN",
-        "HolidaysSH",
     ),
     "saint_kitts_and_nevis": ("SaintKittsAndNevis", "KN", "KNA"),
     "saint_lucia": ("SaintLucia", "LC", "LCA"),
