@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Saint Helena, Ascension And Tristan da Cunha holidays.
+# Saint Helena, Ascension and Tristan da Cunha holidays.
 #
 msgid ""
 msgstr ""
@@ -47,13 +47,15 @@ msgstr ""
 msgid "Queen's Birthday"
 msgstr ""
 
-#. His Majesty King Charles III Birthday.
-msgid "His Majesty King Charles III Birthday"
-msgstr ""
+#. King's Birthday.
+msgid "King's Birthday"
+msgstr "King's Birthday"
 
+#. Christmas Day.
 msgid "Christmas Day"
 msgstr ""
 
+#. Boxing Day.
 msgid "Boxing Day"
 msgstr ""
 
@@ -73,7 +75,7 @@ msgstr ""
 msgid "Anniversary Day"
 msgstr ""
 
-#. Whit Monday
+#. Whit Monday.
 msgid "Whit Monday"
 msgstr ""
 
@@ -89,11 +91,11 @@ msgstr ""
 msgid "Queen Elizabeth II's Platinum Jubilee"
 msgstr ""
 
-#. Queen Elizabeth II's Funeral.
-msgid "Queen Elizabeth II's Funeral"
+#. Queen Elizabeth II's State Funeral.
+msgid "Queen Elizabeth II's State Funeral"
 msgstr ""
 
-#. The Duke of Edinburgh Visit.
+#. The Duke of Edinburgh's Visit.
 msgid "The Duke of Edinburgh's Visit"
 msgstr ""
 

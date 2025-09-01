@@ -98,7 +98,7 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(2023, 2050))
 
     def test_kings_birthday(self):
-        name = "His Majesty King Charles III Birthday"
+        name = "King's Birthday"
         self.assertHolidayName(
             name,
             "2023-06-19",
@@ -163,6 +163,12 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     "Saint Helena Day", holidays, (f"{year}-05-21" for year in range(2015, 2050))
                 )
+                self.assertHolidayName(
+                    "Saint Helena Day (observed)",
+                    holidays,
+                    "2017-05-22",
+                    "2023-05-22",
+                )
             elif subdiv == "TA":
                 self.assertHolidayName(
                     "Ascension Day",
@@ -198,7 +204,7 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
             holidays = SaintHelenaAscensionAndTristanDaCunha(
                 subdiv=subdiv, categories=GOVERNMENT, years=range(2015, 2050)
             )
-            if subdiv == "AC" or subdiv == "HL":
+            if subdiv in ("AC", "HL"):
                 self.assertHolidayName(
                     "August Bank Holiday",
                     holidays,
@@ -221,7 +227,7 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
             ("2025-06-09", "Whit Monday"),
             ("2025-08-14", "Anniversary Day"),
             ("2025-08-25", "August Bank Holiday"),
-            ("2025-11-14", "His Majesty King Charles III Birthday"),
+            ("2025-11-14", "King's Birthday"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Boxing Day"),
         )
@@ -238,7 +244,7 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
             ("2025-06-09", "Whit Monday"),
             ("2025-08-14", "Anniversary Day"),
             ("2025-08-25", "August Bank Holiday"),
-            ("2025-11-14", "His Majesty King Charles III Birthday"),
+            ("2025-11-14", "King's Birthday"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Boxing Day"),
         )

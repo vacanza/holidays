@@ -1400,7 +1400,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Saint Helena, Ascension And Tristan da Cunha</td>
+<td>Saint Helena, Ascension and Tristan da Cunha</td>
 <td>SH</td>
 <td>Subdivisions: AC (Ascension), HL (Saint Helena), TA (Tristan da Cunha)</td>
 <td><strong>en_GB</strong>, en_US</td>
