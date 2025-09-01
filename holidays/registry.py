@@ -13,7 +13,7 @@
 import importlib
 from collections.abc import Iterable
 from threading import RLock
-from typing import Any, Optional, Union
+from typing import Any, Optional
 
 from holidays.holiday_base import HolidayBase
 
@@ -345,35 +345,46 @@ class EntityLoader:
     @staticmethod
     def _get_entity_codes(
         container: RegistryDict,
-        entity_length: Union[int, Iterable[int]],
         include_aliases: bool = True,
+        max_code_length: int = 3,
+        min_code_length: int = 2,
     ) -> Iterable[str]:
-        entity_length = {entity_length} if isinstance(entity_length, int) else set(entity_length)
         for entities in container.values():
-            for entity in entities:
-                if len(entity) in entity_length:
-                    yield entity
-                    # Assuming that the alpha-2 code goes first.
-                    if not include_aliases:
-                        break
+            for code in entities[1:]:
+                if min_code_length <= len(code) <= max_code_length:
+                    yield code
+
+                # Stop after the first matching code if aliases are not requested.
+                # Assuming that the alpha-2 code goes first.
+                if not include_aliases:
+                    break
 
     @staticmethod
     def get_country_codes(include_aliases: bool = True) -> Iterable[str]:
         """Get supported country codes.
 
         :param include_aliases:
-            Whether to include entity aliases (e.g. UK for GB).
+            Whether to include entity aliases (e.g. GBR and UK for GB,
+            UKR for UA, USA for US, etc).
         """
-        return EntityLoader._get_entity_codes(COUNTRIES, 2, include_aliases)
+        return EntityLoader._get_entity_codes(
+            COUNTRIES,
+            include_aliases=include_aliases,
+        )
 
     @staticmethod
     def get_financial_codes(include_aliases: bool = True) -> Iterable[str]:
         """Get supported financial codes.
 
         :param include_aliases:
-            Whether to include entity aliases(e.g. TAR for ECB, XNYS for NYSE).
+            Whether to include entity aliases (e.g. B3 for BVMF,
+            TAR for ECB, NYSE for XNYS, etc).
         """
-        return EntityLoader._get_entity_codes(FINANCIAL, (3, 4), include_aliases)
+        return EntityLoader._get_entity_codes(
+            FINANCIAL,
+            include_aliases=include_aliases,
+            max_code_length=4,
+        )
 
     @staticmethod
     def load(prefix: str, scope: dict) -> None:
