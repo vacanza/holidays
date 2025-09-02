@@ -169,6 +169,7 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
         to the result to fix the known off-by-one error for Iran's calendar.
         This correction is inherently applied only to dates that require estimation.
         """
+        print("salam")
         # Get the original estimated date(s) from the parent class.
         estimated_dates = super()._get_estimated_date(month, day, year)
 
