@@ -11,9 +11,10 @@
 #  License: MIT (see LICENSE file)
 from datetime import date, timedelta
 from gettext import gettext as tr
-
 from typing import List
+
 from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars.islamic import EstimatedDate
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
@@ -30,8 +31,7 @@ from holidays.calendars.gregorian import (
     FRI,
 )
 from holidays.groups import IslamicHolidays, PersianCalendarHolidays
-
-from holidays.holiday_base import HolidayBase, EstimatedDate
+from holidays.holiday_base import HolidayBase
 
 
 class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
