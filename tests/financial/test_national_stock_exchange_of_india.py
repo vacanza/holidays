@@ -64,7 +64,17 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
 
     def test_maharashtra_day(self):
         self.assertNonObservedHolidayName(
-            "Maharashtra Day", (f"{year}-05-01" for year in range(2001, 2050))
+            "Maharashtra Day",
+            (f"{year}-05-01" for year in range(2001, 2009)),
+            (f"{year}-05-01" for year in range(2015, 2050)),
+        )
+        self.assertNoHoliday(
+            "2022-05-01",
+        )
+
+    def test_may_day(self):
+        self.assertNonObservedHolidayName(
+            "May Day", (f"{year}-05-01" for year in range(2010, 2015))
         )
         self.assertNoHoliday(
             "2022-05-01",
