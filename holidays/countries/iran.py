@@ -12,6 +12,7 @@
 from datetime import date, timedelta
 from gettext import gettext as tr
 
+from typing import List
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
     JAN,
@@ -29,7 +30,8 @@ from holidays.calendars.gregorian import (
     FRI,
 )
 from holidays.groups import IslamicHolidays, PersianCalendarHolidays
-from holidays.holiday_base import HolidayBase
+
+from holidays.holiday_base import HolidayBase, EstimatedDate
 
 
 class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
@@ -161,22 +163,35 @@ class IRN(Iran):
     pass
 
 class IranIslamicHolidays(_CustomIslamicHolidays):
-    # Overriding the estimation method to apply a one-day correction.
-    def _get_estimated_date(self, month: int, day: int, year: int) -> list[date]:
+    def _get_gregorian_date(self, hijri_date: tuple[int, int, int]) -> List[EstimatedDate]:
         """
-        Overrides the base estimation method.
-        It calls the original estimation logic and then applies a one-day correction
-        to the result to fix the known off-by-one error for Iran's calendar.
-        This correction is inherently applied only to dates that require estimation.
+        Overrides the Hijri to Gregorian conversion method.
+        This is the core place where future dates are calculated.
+        It calls the original logic and then applies a one-day correction
+        to fix the known off-by-one error for Iran's calendar estimations.
         """
-        print("salam")
         # Get the original estimated date(s) from the parent class.
-        estimated_dates = super()._get_estimated_date(month, day, year)
-
+        # The result is a list of EstimatedDate objects.
+        estimated_dates = super()._get_gregorian_date(hijri_date)
+        
         # Apply the one-day correction to each date in the list.
-        # This handles cases where a holiday might occur twice in a Gregorian year.
         if estimated_dates:
-            return [dt + timedelta(days=1) for dt in estimated_dates]
+            corrected_dates = []
+            for dt in estimated_dates:
+                # Create a standard date object from the EstimatedDate
+                gregorian_dt = date(dt.year, dt.month, dt.day)
+                # Add one day
+                corrected_gregorian_dt = gregorian_dt + timedelta(days=1)
+                # Re-wrap in EstimatedDate to maintain the type for downstream logic
+                # that adds the "(تخمینی)" label.
+                corrected_dates.append(
+                    EstimatedDate(
+                        corrected_gregorian_dt.year,
+                        corrected_gregorian_dt.month,
+                        corrected_gregorian_dt.day,
+                    )
+                )
+            return corrected_dates
 
         return estimated_dates
 
