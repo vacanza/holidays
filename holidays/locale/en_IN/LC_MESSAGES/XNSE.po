@@ -31,6 +31,9 @@ msgstr ""
 msgid "%s (estimated)"
 msgstr ""
 
+msgid "New Year"
+msgstr ""
+
 #. Republic Day.
 msgid "Republic Day"
 msgstr ""
@@ -43,7 +46,9 @@ msgstr ""
 msgid "Dr. Baba Saheb Ambedkar Jayanti"
 msgstr ""
 
-#. Maharashtra Day.
+msgid "May Day"
+msgstr ""
+
 msgid "Maharashtra Day"
 msgstr ""
 
@@ -95,6 +100,12 @@ msgstr ""
 msgid "Guru Nanak Jayanti"
 msgstr ""
 
+msgid "Bhai bhij"
+msgstr ""
+
+msgid "Buddha Purnima"
+msgstr ""
+
 #. Ashura.
 msgid "Muharram"
 msgstr ""
@@ -105,4 +116,7 @@ msgstr ""
 
 #. Eid al-Adha.
 msgid "Bakri Id"
+msgstr ""
+
+msgid "Id-E-Milad-Un-Nabi"
 msgstr ""
