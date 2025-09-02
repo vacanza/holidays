@@ -152,6 +152,18 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
         # Eid al-Ghadeer.
         self._add_eid_al_ghadir_day(tr("عید سعید غدیر خم"))
 
+    
+            return dates
+class IR(Iran):
+    pass
+
+
+class IRN(Iran):
+    pass
+
+
+class IranIslamicHolidays(_CustomIslamicHolidays):
+    
     def _get_dates(self, holiday_name: str, year: int):
     
             """
@@ -225,17 +237,6 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
                 return [dt + timedelta(days=1) for dt in dates]
     
     
-    
-            return dates
-class IR(Iran):
-    pass
-
-
-class IRN(Iran):
-    pass
-
-
-class IranIslamicHolidays(_CustomIslamicHolidays):
     ALI_AL_RIDA_DEATH_DATES_CONFIRMED_YEARS = (2001, 2025)
     ALI_AL_RIDA_DEATH_DATES = {
         2001: (MAY, 24),
