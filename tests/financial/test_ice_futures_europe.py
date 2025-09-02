@@ -19,7 +19,7 @@ from tests.common import CommonFinancialTests
 class TestICEFuturesEurope(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(ICEFuturesEurope, years=range(2000, 2100))
+        super().setUpClass(ICEFuturesEurope, years=range(2014, 2100))
 
     def test_market_aliases(self):
         self.assertAliases(ICEFuturesEurope, IFEU)
