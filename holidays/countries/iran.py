@@ -161,29 +161,23 @@ class IRN(Iran):
     pass
 
 class IranIslamicHolidays(_CustomIslamicHolidays):
-    # The maximum year for which manually confirmed dates are available.
-    # Any year after this is considered an estimate and needs correction.
-    _MAX_CONFIRMED_YEAR = 2025
-
-    def _get_dates(self, holiday_name: str, year: int):
+    # Overriding the estimation method to apply a one-day correction.
+    def _get_estimated_date(self, month: int, day: int, year: int) -> list[date]:
         """
-        Overrides the base method.
-        If the requested year is beyond our confirmed data (`_MAX_CONFIRMED_YEAR`),
-        it's considered an estimate. We apply a one-day correction to all these
-        estimated dates to fix the known off-by-one error in the Hijri-to-Gregorian
-        estimation for Iran's calendar.
+        Overrides the base estimation method.
+        It calls the original estimation logic and then applies a one-day correction
+        to the result to fix the known off-by-one error for Iran's calendar.
+        This correction is inherently applied only to dates that require estimation.
         """
-        # Get the date(s) from the original logic (either from dict or estimation).
-        dates = super()._get_dates(holiday_name, year)
+        # Get the original estimated date(s) from the parent class.
+        estimated_dates = super()._get_estimated_date(month, day, year)
 
-        # If the year is greater than our max confirmed year, it's an estimate.
-        if year > self._MAX_CONFIRMED_YEAR and dates:
-            # Apply the one-day correction.
-            # `dates` is a list, so we correct each date in it.
-            return [dt + timedelta(days=1) for dt in dates]
+        # Apply the one-day correction to each date in the list.
+        # This handles cases where a holiday might occur twice in a Gregorian year.
+        if estimated_dates:
+            return [dt + timedelta(days=1) for dt in estimated_dates]
 
-        # For confirmed years (<= _MAX_CONFIRMED_YEAR), return the date as is.
-        return dates
+        return estimated_dates
 
     
     ALI_AL_RIDA_DEATH_DATES_CONFIRMED_YEARS = (2001, 2025)
