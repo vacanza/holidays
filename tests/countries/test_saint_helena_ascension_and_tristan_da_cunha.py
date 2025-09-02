@@ -173,7 +173,9 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     "Saint Helena Day (observed)",
                     holidays,
+                    "2016-05-20",
                     "2017-05-22",
+                    "2022-05-20",
                     "2023-05-22",
                 )
             elif subdiv == "TA":
