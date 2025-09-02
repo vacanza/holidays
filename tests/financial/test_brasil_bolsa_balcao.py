@@ -19,14 +19,14 @@ from tests.common import CommonFinancialTests
 class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(1890, 2100)
+        cls.full_range = range(BVMF.start_year, 2100)
         super().setUpClass(BrasilBolsaBalcao, years=cls.full_range)
 
     def test_market_aliases(self):
         self.assertAliases(BrasilBolsaBalcao, BVMF, B3)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(BrasilBolsaBalcao(years=1889))
+        self.assertNoHolidays(BrasilBolsaBalcao(years=BVMF.start_year - 1))
 
     def test_universal_fraternization_day(self):
         name = "Confraternização Universal"
@@ -60,7 +60,7 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             "1998-04-09",
             "1999-04-01",
         )
-        self.assertHolidayName(name, range(1890, 2000))
+        self.assertHolidayName(name, range(BVMF.start_year, 2000))
         self.assertNoHolidayName(name, range(2000, 2100))
 
     def test_good_friday(self):
@@ -85,7 +85,7 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
     def test_workers_day(self):
         name = "Dia do Trabalhador"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1925, 2100)))
-        self.assertNoHolidayName(name, range(1890, 1925))
+        self.assertNoHolidayName(name, range(BVMF.start_year, 1925))
 
     def test_corpus_christi_day(self):
         name = "Corpus Christi"
@@ -106,7 +106,7 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
     def test_our_lady_of_aparecida(self):
         name = "Nossa Senhora Aparecida"
         self.assertHolidayName(name, (f"{year}-10-12" for year in range(1980, 2100)))
-        self.assertNoHolidayName(name, range(1890, 1980))
+        self.assertNoHolidayName(name, range(BVMF.start_year, 1980))
 
     def test_all_souls_day(self):
         name = "Finados"
@@ -119,12 +119,12 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
     def test_national_day_of_zumbi_and_black_awareness(self):
         name = "Dia Nacional de Zumbi e da Consciência Negra"
         self.assertHolidayName(name, (f"{year}-11-20" for year in range(2024, 2100)))
-        self.assertNoHolidayName(name, range(1890, 2024))
+        self.assertNoHolidayName(name, range(BVMF.start_year, 2024))
 
     def test_christmas_day(self):
         name = "Natal"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1922, 2100)))
-        self.assertNoHolidayName(name, range(1890, 1922))
+        self.assertNoHolidayName(name, range(BVMF.start_year, 1922))
 
     def test_2022(self):
         self.assertHolidays(

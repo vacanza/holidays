@@ -19,13 +19,13 @@ from tests.common import CommonFinancialTests
 class TestICEFuturesEurope(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(ICEFuturesEurope, years=range(2014, 2100))
+        super().setUpClass(ICEFuturesEurope, years=range(IFEU.start_year, 2100))
 
     def test_market_aliases(self):
         self.assertAliases(ICEFuturesEurope, IFEU)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(ICEFuturesEurope(years=2013))
+        self.assertNoHolidays(ICEFuturesEurope(years=IFEU.start_year - 1))
 
     def test_2021(self):
         self.assertHolidays(
