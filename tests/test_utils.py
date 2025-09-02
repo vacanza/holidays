@@ -141,7 +141,7 @@ class TestAllInSameYear(unittest.TestCase):
 
 
 class TestListLocalizedEntities(unittest.TestCase):
-    def assertLocalizedEntities(self, localized_entities, supported_entities):
+    def assertLocalizedEntities(self, localized_entities, supported_entities):  # noqa: N802
         tests_dir = Path(__file__).parent
         locale_dir = tests_dir.parent / "holidays" / "locale"
 
