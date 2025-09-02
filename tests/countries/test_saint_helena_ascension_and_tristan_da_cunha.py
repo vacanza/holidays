@@ -32,7 +32,7 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
             categories=GOVERNMENT, years=years
         )
         cls.subdiv_holidays = {
-            subdiv: SaintHelenaAscensionAndTristanDaCunha(subdiv=subdiv, years=(range(1950, 2050)))
+            subdiv: SaintHelenaAscensionAndTristanDaCunha(subdiv=subdiv, years=years)
             for subdiv in SaintHelenaAscensionAndTristanDaCunha.subdivisions
         }
 
