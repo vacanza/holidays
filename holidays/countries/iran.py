@@ -166,75 +166,75 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
     
     def _get_dates(self, holiday_name: str, year: int):
     
-            """
+        """
     
-            Overrides the base method to intercept date retrieval.
+        Overrides the base method to intercept date retrieval.
     
-            It calls the parent logic first, then applies a one-day correction
+        It calls the parent logic first, then applies a one-day correction
     
-            for dates that are not from the confirmed list (i.e., estimated).
+        for dates that are not from the confirmed list (i.e., estimated).
     
-            This fixes the off-by-one error for future Iranian lunar holidays.
+        This fixes the off-by-one error for future Iranian lunar holidays.
     
-            """
+        """
     
-            # Call the original logic from the parent class (_CustomIslamicHolidays)
+        # Call the original logic from the parent class (_CustomIslamicHolidays)
     
-            # This will either get a date from the dictionaries or calculate an estimate.
+        # This will either get a date from the dictionaries or calculate an estimate.
     
-            dates = super()._get_dates(holiday_name, year)
-    
-    
-    
-            # Check if the year is in the confirmed list for this specific holiday.
-    
-            # The list of confirmed years is stored in a variable like "TASUA_DATES_CONFIRMED_YEARS".
-    
-            confirmed_years_tuple = getattr(
-    
-                self, f"{holiday_name.upper()}_DATES_CONFIRMED_YEARS", ()
-    
-            )
+        dates = super()._get_dates(holiday_name, year)
     
     
     
-            is_confirmed = False
+        # Check if the year is in the confirmed list for this specific holiday.
     
-            if confirmed_years_tuple:
+        # The list of confirmed years is stored in a variable like "TASUA_DATES_CONFIRMED_YEARS".
     
-                # Handle range tuple (start_year, end_year)
+        confirmed_years_tuple = getattr(
     
-                if (
+            self, f"{holiday_name.upper()}_DATES_CONFIRMED_YEARS", ()
     
-                    len(confirmed_years_tuple) == 2
+        )
     
-                    and isinstance(confirmed_years_tuple[0], int)
     
-                    and isinstance(confirmed_years_tuple[1], int)
     
-                ):
+        is_confirmed = False
     
-                    if confirmed_years_tuple[0] <= year <= confirmed_years_tuple[1]:
+        if confirmed_years_tuple:
     
-                        is_confirmed = True
+            # Handle range tuple (start_year, end_year)
     
-                # Handle iterable tuple of years
+            if (
     
-                elif year in confirmed_years_tuple:
+                len(confirmed_years_tuple) == 2
+    
+                and isinstance(confirmed_years_tuple[0], int)
+    
+                and isinstance(confirmed_years_tuple[1], int)
+    
+            ):
+    
+                if confirmed_years_tuple[0] <= year <= confirmed_years_tuple[1]:
     
                     is_confirmed = True
     
+            # Handle iterable tuple of years
+    
+            elif year in confirmed_years_tuple:
+    
+                is_confirmed = True
     
     
-            # If the year was *not* in the confirmed range, it's an estimated date.
     
-            if not is_confirmed and dates:
+        # If the year was *not* in the confirmed range, it's an estimated date.
     
-                # Apply the one-day correction.
+        if not is_confirmed and dates:
     
-                # `dates` is a list, so we correct each date in it.
+            # Apply the one-day correction.
     
-                return [dt + timedelta(days=1) for dt in dates]
+            # `dates` is a list, so we correct each date in it.
+    
+            return [dt + timedelta(days=1) for dt in dates]
     
     
     ALI_AL_RIDA_DEATH_DATES_CONFIRMED_YEARS = (2001, 2025)
