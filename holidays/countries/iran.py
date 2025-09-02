@@ -153,7 +153,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
         self._add_eid_al_ghadir_day(tr("عید سعید غدیر خم"))
 
     
-            return dates
+        return dates
 class IR(Iran):
     pass
 
