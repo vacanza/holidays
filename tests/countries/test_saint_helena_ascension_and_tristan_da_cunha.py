@@ -166,6 +166,7 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
                     "2024-05-09",
                     "2025-05-29",
                 )
+                self.assertHolidayName("Ascension Day", holidays, range(2015, 2050))
             elif subdiv == "HL":
                 self.assertHolidayName(
                     "Saint Helena Day", holidays, (f"{year}-05-21" for year in range(2015, 2050))
@@ -173,6 +174,13 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     "Saint Helena Day (observed)",
                     holidays,
+                    "2016-05-20",
+                    "2017-05-22",
+                    "2022-05-20",
+                    "2023-05-22",
+                )
+                self.assertNoNonObservedHoliday(
+                    self.holidays_non_observed,
                     "2016-05-20",
                     "2017-05-22",
                     "2022-05-20",
@@ -189,6 +197,7 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
                     "2024-05-09",
                     "2025-05-29",
                 )
+                self.assertHolidayName("Ascension Day", holidays, range(2015, 2050))
 
                 self.assertHolidayName(
                     "Ratting Day",
@@ -224,6 +233,9 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
                     "2024-08-26",
                     "2025-08-25",
                 )
+                self.assertHolidayName("August Bank Holiday", holidays, range(2015, 2050))
+            else:
+                self.assertNoHolidayName("August Bank Holiday", holidays)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
