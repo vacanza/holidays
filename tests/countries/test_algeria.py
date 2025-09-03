@@ -26,7 +26,9 @@ class TestAlgeria(CommonCountryTests, TestCase):
         self.assertAliases(Algeria, DZ, DZA)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Algeria(years=DZ.start_year - 1))
+        self.assertNoHolidays(
+            Algeria(categories=Algeria.supported_categories, years=DZ.start_year - 1)
+        )
 
     def test_new_years_day(self):
         self.assertHolidayName(
@@ -42,7 +44,12 @@ class TestAlgeria(CommonCountryTests, TestCase):
         self.assertHolidayName("عيد العمال", (f"{year}-05-01" for year in self.full_range))
 
     def test_independence_day(self):
-        self.assertHolidayName("عيد الإستقلال", (f"{year}-07-05" for year in self.full_range))
+        name_1964 = "عيد الاستقلال وجبهة التحرير الوطني"
+        name_2005 = "عيد الإستقلال"
+        self.assertHolidayName(name_1964, (f"{year}-07-05" for year in range(DZ.start_year, 2005)))
+        self.assertHolidayName(name_2005, (f"{year}-07-05" for year in range(2005, 2050)))
+        self.assertNoHolidayName(name_1964, range(2005, 2050))
+        self.assertNoHolidayName(name_2005, range(DZ.start_year, 2005))
 
     def test_revolution_day(self):
         self.assertHolidayName("عيد الثورة", (f"{year}-11-01" for year in self.full_range))
@@ -124,6 +131,7 @@ class TestAlgeria(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-06",
         )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         self.assertIslamicNoEstimatedHolidayName(
             name_holiday,
             "2020-08-01",
@@ -136,23 +144,125 @@ class TestAlgeria(CommonCountryTests, TestCase):
             "2025-06-07",
             "2025-06-08",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
-        self.assertIslamicNoEstimatedHolidayName(name_holiday, self.full_range)
+        self.assertIslamicNoEstimatedHolidayName(name_holiday, range(1969, 2050))
+        self.assertNoIslamicNoEstimatedHolidayName(name_holiday, range(DZ.start_year, 1969))
+
+    def test_easter_monday(self):
+        name = "إثنين الفصح"
+        self.assertChristianHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertChristianHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name, self.full_range)
+
+    def test_ascension_day(self):
+        name = "عيد الصعود"
+        self.assertChristianHolidayName(
+            name,
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
+        )
+        self.assertChristianHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name, self.full_range)
+
+    def test_whit_monday(self):
+        name = "إثنين العنصرة"
+        self.assertChristianHolidayName(
+            name,
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
+        )
+        self.assertChristianHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name, self.full_range)
+
+    def test_assumption_day(self):
+        name = "عيد انتقال السيدة العذراء"
+        self.assertChristianHolidayName(name, (f"{year}-08-15" for year in self.full_range))
+        self.assertNoHolidayName(name, self.full_range)
+
+    def test_christmas_day(self):
+        name = "عيد الميلاد"
+        self.assertChristianHolidayName(name, (f"{year}-12-25" for year in self.full_range))
+        self.assertNoHolidayName(name, self.full_range)
+
+    def test_rosh_hashanah(self):
+        name = "رأس السنة العبرية"
+        self.assertHebrewHolidayName(
+            name,
+            "2020-09-19",
+            "2021-09-07",
+            "2022-09-26",
+            "2023-09-16",
+            "2024-10-03",
+            "2025-09-23",
+        )
+        self.assertHebrewHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name, self.full_range)
+
+    def test_yom_kippur(self):
+        name = "يوم الغفران"
+        self.assertHebrewHolidayName(
+            name,
+            "2020-09-28",
+            "2021-09-16",
+            "2022-10-05",
+            "2023-09-25",
+            "2024-10-12",
+            "2025-10-02",
+        )
+        self.assertHebrewHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name, self.full_range)
+
+    def test_pesach(self):
+        name = "عيد الفصح اليهودي"
+        self.assertHebrewHolidayName(
+            name,
+            "2020-04-09",
+            "2021-03-28",
+            "2022-04-16",
+            "2023-04-06",
+            "2024-04-23",
+            "2025-04-13",
+        )
+        self.assertHebrewHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name, self.full_range)
 
     def test_l10_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "رأس السنة الميلادية"),
             ("2022-01-12", "رأس السنة الأمازيغية"),
+            ("2022-04-16", "عيد الفصح اليهودي"),
+            ("2022-04-18", "إثنين الفصح"),
             ("2022-05-01", "عيد العمال"),
             ("2022-05-02", "عيد الفطر (المقدرة)"),
             ("2022-05-03", "عطلة عيد الفطر (المقدرة)"),
+            ("2022-05-26", "عيد الصعود"),
+            ("2022-06-06", "إثنين العنصرة"),
             ("2022-07-05", "عيد الإستقلال"),
             ("2022-07-09", "عيد الأضحى (المقدرة)"),
             ("2022-07-10", "عطلة عيد الأضحى (المقدرة)"),
             ("2022-07-30", "رأس السنة الهجرية (المقدرة)"),
             ("2022-08-08", "عاشورة (المقدرة)"),
+            ("2022-08-15", "عيد انتقال السيدة العذراء"),
+            ("2022-09-26", "رأس السنة العبرية"),
+            ("2022-10-05", "يوم الغفران"),
             ("2022-10-08", "عيد المولد النبوي (المقدرة)"),
             ("2022-11-01", "عيد الثورة"),
+            ("2022-12-25", "عيد الميلاد"),
         )
 
     def test_l10n_en_us(self):
@@ -160,31 +270,47 @@ class TestAlgeria(CommonCountryTests, TestCase):
             "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-01-12", "Amazigh New Year"),
+            ("2022-04-16", "Pesach"),
+            ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labor Day"),
             ("2022-05-02", "Eid al-Fitr (estimated)"),
             ("2022-05-03", "Eid al-Fitr Holiday (estimated)"),
+            ("2022-05-26", "Ascension Day"),
+            ("2022-06-06", "Whit Monday"),
             ("2022-07-05", "Independence Day"),
             ("2022-07-09", "Eid al-Adha (estimated)"),
             ("2022-07-10", "Eid al-Adha Holiday (estimated)"),
             ("2022-07-30", "Islamic New Year (estimated)"),
             ("2022-08-08", "Ashura (estimated)"),
+            ("2022-08-15", "Assumption Day"),
+            ("2022-09-26", "Rosh Hashanah"),
+            ("2022-10-05", "Yom Kippur"),
             ("2022-10-08", "Prophet's Birthday (estimated)"),
             ("2022-11-01", "Revolution Day"),
+            ("2022-12-25", "Christmas Day"),
         )
 
     def test_l10n_fr(self):
         self.assertLocalizedHolidays(
             "fr",
-            ("2022-01-01", "Nouvel an"),
-            ("2022-01-12", "Nouvel an Amazigh"),
+            ("2022-01-01", "Jour de l'An Grégorien"),
+            ("2022-01-12", "Jour de l'An Amazigh"),
+            ("2022-04-16", "Pisah"),
+            ("2022-04-18", "Lundi de Pâques"),
             ("2022-05-01", "Fête du Travail"),
-            ("2022-05-02", "Fête de la rupture du jeûne (estimé)"),
-            ("2022-05-03", "Congé de fête de la rupture du jeûne (estimé)"),
-            ("2022-07-05", "Fête de l'indépendance"),
-            ("2022-07-09", "Fête du sacrifice (estimé)"),
-            ("2022-07-10", "Congé de fête du sacrifice (estimé)"),
-            ("2022-07-30", "Nouvel an musulman (estimé)"),
+            ("2022-05-02", "Aïd el-Fitr (estimé)"),
+            ("2022-05-03", "Congé de Aïd el-Fitr (estimé)"),
+            ("2022-05-26", "Ascension"),
+            ("2022-06-06", "Lundi de Pentecôte"),
+            ("2022-07-05", "Fête de l'Indépendance"),
+            ("2022-07-09", "Aïd el-Adha (estimé)"),
+            ("2022-07-10", "Congé de Aïd el-Adha (estimé)"),
+            ("2022-07-30", "Awal Moharram (estimé)"),
             ("2022-08-08", "Achoura (estimé)"),
-            ("2022-10-08", "Anniversaire du prophète (estimé)"),
+            ("2022-08-15", "Assomption"),
+            ("2022-09-26", "Roch Achana"),
+            ("2022-10-05", "Youm Kippour"),
+            ("2022-10-08", "El-Mawlid Ennabawi Echarif (estimé)"),
             ("2022-11-01", "Fête de la Révolution"),
+            ("2022-12-25", "Noël"),
         )
