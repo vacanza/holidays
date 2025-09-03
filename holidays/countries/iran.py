@@ -31,126 +31,237 @@ from holidays.calendars.gregorian import (
 from holidays.groups import IslamicHolidays, PersianCalendarHolidays
 from holidays.holiday_base import HolidayBase
 
+from datetime import timedelta
+from gettext import gettext as _
+from gettext import pgettext
+
+from holidays.constants import (
+    HIJRI_DHU_AL_HIJJAH,
+    HIJRI_JUMADA_II,
+    HIJRI_MUHARRAM,
+    HIJRI_RABI_I,
+    HIJRI_RAJAB,
+    HIJRI_RAMADAN,
+    HIJRI_SAFAR,
+    HIJRI_SHABAN,
+    HIJRI_SHAWWAL,
+)
+from holidays.groups import IslamicHolidays, PersianCalendarHolidays
+from holidays.holiday_base import HolidayBase
+
 
 class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
-    """Iran holidays.
-
-    References:
-        * <https://en.wikipedia.org/wiki/Public_holidays_in_Iran>
-        * <https://fa.wikipedia.org/wiki/تعطیلات_عمومی_در_ایران>
-        * <https://web.archive.org/web/20250426102648/https://www.time.ir/>
-        * <https://web.archive.org/web/20170222200759/http://www.hvm.ir/LawDetailNews.aspx?id=9017>
-        * <https://en.wikipedia.org/wiki/Workweek_and_weekend>
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Iran
     """
 
     country = "IR"
     default_language = "fa_IR"
-    # %s (estimated).
-    estimated_label = tr("%s (تخمینی)")
+    # Special subdivision for Tehran.
+    subdivisions = ("TEH",)
+    # Supported languages.
     supported_languages = ("en_US", "fa_IR")
-    start_year = 1980
-    weekend = {FRI}
 
-    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
-        """
-        Args:
-            islamic_show_estimated:
-                Whether to add "estimated" label to Islamic holidays name
-                if holiday date is estimated.
-        """
-        IslamicHolidays.__init__(
-            self, cls=IranIslamicHolidays, show_estimated=islamic_show_estimated
-        )
+    def __init__(self, *args, **kwargs):
+        """Initializes an Iran holiday object."""
+        IslamicHolidays.__init__(self)
         PersianCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self):
-        # Persian calendar holidays.
+    def _add_islamic_holiday(self, name: str, month: int, day: int) -> None:
+        """
+        Adds Islamic holiday with a one-day offset for Iran.
+        """
+        day_offset = getattr(self.cal, "day_offset", 0)
+        iran_correction_offset = 1
+        total_offset = day_offset + iran_correction_offset
 
-        # Islamic Revolution Day.
-        self._add_islamic_revolution_day(tr("پیروزی انقلاب اسلامی"))
+        for dt in self.cal.islamic_to_gregorian(self.year - 1, month, day):
+            if dt.year == self.year - 1:
+                continue
+            self._add_holiday(name, dt + timedelta(days=total_offset))
 
-        # Iranian Oil Industry Nationalization Day.
-        self._add_oil_nationalization_day(tr("روز ملی شدن صنعت نفت ایران"))
+        for dt in self.cal.islamic_to_gregorian(self.year, month, day):
+            self._add_holiday(name, dt + timedelta(days=total_offset))
 
-        # Last Day of Year.
-        self._add_last_day_of_year(tr("آخرین روز سال"))
+        for dt in self.cal.islamic_to_gregorian(self.year + 1, month, day):
+            if dt.year == self.year + 1:
+                self._add_holiday(name, dt + timedelta(days=total_offset))
 
-        # Nowruz.
-        self._add_nowruz_day(tr("جشن نوروز"))
+    def _populate(self, year):
+        if year <= 1978:
+            return None
 
-        # Nowruz Holiday.
-        name = tr("عیدنوروز")
-        self._add_nowruz_day_two(name)
-        self._add_nowruz_day_three(name)
-        self._add_nowruz_day_four(name)
+        super()._populate(year)
 
-        # Islamic Republic Day.
-        self._add_islamic_republic_day(tr("روز جمهوری اسلامی"))
-
-        # Nature's Day.
-        self._add_natures_day(tr("روز طبیعت"))
-
-        # Death of Imam Khomeini.
-        self._add_death_of_khomeini_day(tr("رحلت حضرت امام خمینی"))
-
-        # 15 Khordad Uprising.
-        self._add_khordad_uprising_day(tr("قیام 15 خرداد"))
-
-        # Islamic holidays.
-
-        # Tasua.
-        self._add_tasua_day(tr("تاسوعای حسینی"))
-
-        # Ashura.
-        self._add_ashura_day(tr("عاشورای حسینی"))
-
-        # Arbaeen.
-        self._add_arbaeen_day(tr("اربعین حسینی"))
-
-        # Death of Prophet Muhammad and Martyrdom of Hasan ibn Ali.
-        self._add_prophet_death_day(tr("رحلت رسول اکرم؛شهادت امام حسن مجتبی علیه السلام"))
-
-        # Martyrdom of Ali al-Rida.
-        self._add_ali_al_rida_death_day(tr("شهادت امام رضا علیه السلام"))
-
-        # Martyrdom of Hasan al-Askari.
-        self._add_hasan_al_askari_death_day(tr("شهادت امام حسن عسکری علیه السلام"))
-
-        # Birthday of Muhammad and Imam Ja'far al-Sadiq.
-        self._add_sadiq_birthday_day(tr("میلاد رسول اکرم و امام جعفر صادق علیه السلام"))
-
-        # Martyrdom of Fatima.
-        self._add_fatima_death_day(tr("شهادت حضرت فاطمه زهرا سلام الله علیها"))
-
-        # Birthday of Imam Ali.
-        self._add_ali_birthday_day(tr("ولادت امام علی علیه السلام و روز پدر"))
-
-        # Isra' and Mi'raj.
-        self._add_isra_and_miraj_day(tr("مبعث رسول اکرم (ص)"))
-
-        self._add_imam_mahdi_birthday_day(
-            # Birthday of Mahdi.
-            tr("ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان")
+        # Persian Calendar Holidays (using PersianCalendarHolidays methods)
+        self._add_nowruz_day_one(_("Nowruz"))
+        self._add_nowruz_day_two(_("Nowruz Holiday"))
+        self._add_nowruz_day_three(_("Nowruz Holiday"))
+        self._add_nowruz_day_four(_("Nowruz Holiday"))
+        self._add_islamic_republic_day(_("Islamic Republic Day"))
+        self._add_sizdah_bedar_day(_("Sizdah Bedar"))
+        self._add_death_of_khomeini_day(_("Death of Ruhollah Khomeini"))
+        self._add_khordad_uprising_day(_("Khordad National Uprising"))
+        self._add_revolution_day(_("Anniversary of the Islamic Revolution"))
+        self._add_oil_nationalization_day(
+            pgettext("Shamsi", "Oil Nationalization Day")
         )
 
-        # Martyrdom of Imam Ali.
-        self._add_ali_death_day(tr("شهادت حضرت علی علیه السلام"))
+        # Islamic Calendar Holidays (with +1 day correction)
+        self._add_islamic_holiday(pgettext("Hijri", "Tasua"), HIJRI_MUHARRAM, 9)
+        self._add_islamic_holiday(pgettext("Hijri", "Ashura"), HIJRI_MUHARRAM, 10)
+        self._add_islamic_holiday(pgettext("Hijri", "Arbaeen"), HIJRI_SAFAR, 20)
+        self._add_islamic_holiday(_("Death of Prophet and Hasan"), HIJRI_SAFAR, 28)
+        self._add_islamic_holiday(
+            _("Martyrdom of Ali al-Rida"), HIJRI_SAFAR, 29,
+        )
+        self._add_islamic_holiday(
+            _("Martyrdom of Hasan al-Askari"), HIJRI_RABI_I, 8
+        )
+        self._add_islamic_holiday(
+            _("Birthday of Prophet and Sadeq"), HIJRI_RABI_I, 17
+        )
+        self._add_islamic_holiday(_("Fatimah martyr"), HIJRI_JUMADA_II, 3)
+        self._add_islamic_holiday(_("Birthday of Ali"), HIJRI_RAJAB, 13)
+        self._add_islamic_holiday(_("Prophet's Ascension"), HIJRI_RAJAB, 27)
+        self._add_islamic_holiday(_("Birthday of Mahdi"), HIJRI_SHABAN, 15)
+        self._add_islamic_holiday(_("Martyrdom of Ali"), HIJRI_RAMADAN, 21)
+        self._add_islamic_holiday(
+            _("Martyrdom of Ja'far al-Sadiq"), HIJRI_SHAWWAL, 25
+        )
+        self._add_islamic_holiday(
+            pgettext("Hijri", "Eid al-Fitr"), HIJRI_SHAWWAL, 1
+        )
+        self._add_islamic_holiday(
+            pgettext("Hijri", "Eid al-Fitr Holiday"), HIJRI_SHAWWAL, 2
+        )
+        self._add_islamic_holiday(
+            pgettext("Hijri", "Eid al-Adha"), HIJRI_DHU_AL_HIJJAH, 10
+        )
+        self._add_islamic_holiday(
+            pgettext("Hijri", "Eid al-Ghadir"), HIJRI_DHU_AL_HIJJAH, 18
+        )
 
-        # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("عید سعید فطر"))
+# class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
+#     """Iran holidays.
 
-        # Eid al-Fitr Holiday.
-        self._add_eid_al_fitr_day_two(tr("تعطیل به مناسبت عید سعید فطر"))
+#     References:
+#         * <https://en.wikipedia.org/wiki/Public_holidays_in_Iran>
+#         * <https://fa.wikipedia.org/wiki/تعطیلات_عمومی_در_ایران>
+#         * <https://web.archive.org/web/20250426102648/https://www.time.ir/>
+#         * <https://web.archive.org/web/20170222200759/http://www.hvm.ir/LawDetailNews.aspx?id=9017>
+#         * <https://en.wikipedia.org/wiki/Workweek_and_weekend>
+#     """
 
-        # Martyrdom of Imam Ja'far al-Sadiq.
-        self._add_sadiq_death_day(tr("شهادت امام جعفر صادق علیه السلام"))
+#     country = "IR"
+#     default_language = "fa_IR"
+#     # %s (estimated).
+#     estimated_label = tr("%s (تخمینی)")
+#     supported_languages = ("en_US", "fa_IR")
+#     start_year = 1980
+#     weekend = {FRI}
 
-        # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("عید سعید قربان"))
+#     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
+#         """
+#         Args:
+#             islamic_show_estimated:
+#                 Whether to add "estimated" label to Islamic holidays name
+#                 if holiday date is estimated.
+#         """
+#         IslamicHolidays.__init__(
+#             self, cls=IranIslamicHolidays, show_estimated=islamic_show_estimated
+#         )
+#         PersianCalendarHolidays.__init__(self)
+#         super().__init__(*args, **kwargs)
 
-        # Eid al-Ghadeer.
-        self._add_eid_al_ghadir_day(tr("عید سعید غدیر خم"))
+#     def _populate_public_holidays(self):
+#         # Persian calendar holidays.
+
+#         # Islamic Revolution Day.
+#         self._add_islamic_revolution_day(tr("پیروزی انقلاب اسلامی"))
+
+#         # Iranian Oil Industry Nationalization Day.
+#         self._add_oil_nationalization_day(tr("روز ملی شدن صنعت نفت ایران"))
+
+#         # Last Day of Year.
+#         self._add_last_day_of_year(tr("آخرین روز سال"))
+
+#         # Nowruz.
+#         self._add_nowruz_day(tr("جشن نوروز"))
+
+#         # Nowruz Holiday.
+#         name = tr("عیدنوروز")
+#         self._add_nowruz_day_two(name)
+#         self._add_nowruz_day_three(name)
+#         self._add_nowruz_day_four(name)
+
+#         # Islamic Republic Day.
+#         self._add_islamic_republic_day(tr("روز جمهوری اسلامی"))
+
+#         # Nature's Day.
+#         self._add_natures_day(tr("روز طبیعت"))
+
+#         # Death of Imam Khomeini.
+#         self._add_death_of_khomeini_day(tr("رحلت حضرت امام خمینی"))
+
+#         # 15 Khordad Uprising.
+#         self._add_khordad_uprising_day(tr("قیام 15 خرداد"))
+
+#         # Islamic holidays.
+
+#         # Tasua.
+#         self._add_tasua_day(tr("تاسوعای حسینی"))
+
+#         # Ashura.
+#         self._add_ashura_day(tr("عاشورای حسینی"))
+
+#         # Arbaeen.
+#         self._add_arbaeen_day(tr("اربعین حسینی"))
+
+#         # Death of Prophet Muhammad and Martyrdom of Hasan ibn Ali.
+#         self._add_prophet_death_day(tr("رحلت رسول اکرم؛شهادت امام حسن مجتبی علیه السلام"))
+
+#         # Martyrdom of Ali al-Rida.
+#         self._add_ali_al_rida_death_day(tr("شهادت امام رضا علیه السلام"))
+
+#         # Martyrdom of Hasan al-Askari.
+#         self._add_hasan_al_askari_death_day(tr("شهادت امام حسن عسکری علیه السلام"))
+
+#         # Birthday of Muhammad and Imam Ja'far al-Sadiq.
+#         self._add_sadiq_birthday_day(tr("میلاد رسول اکرم و امام جعفر صادق علیه السلام"))
+
+#         # Martyrdom of Fatima.
+#         self._add_fatima_death_day(tr("شهادت حضرت فاطمه زهرا سلام الله علیها"))
+
+#         # Birthday of Imam Ali.
+#         self._add_ali_birthday_day(tr("ولادت امام علی علیه السلام و روز پدر"))
+
+#         # Isra' and Mi'raj.
+#         self._add_isra_and_miraj_day(tr("مبعث رسول اکرم (ص)"))
+
+#         self._add_imam_mahdi_birthday_day(
+#             # Birthday of Mahdi.
+#             tr("ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان")
+#         )
+
+#         # Martyrdom of Imam Ali.
+#         self._add_ali_death_day(tr("شهادت حضرت علی علیه السلام"))
+
+#         # Eid al-Fitr.
+#         self._add_eid_al_fitr_day(tr("عید سعید فطر"))
+
+#         # Eid al-Fitr Holiday.
+#         self._add_eid_al_fitr_day_two(tr("تعطیل به مناسبت عید سعید فطر"))
+
+#         # Martyrdom of Imam Ja'far al-Sadiq.
+#         self._add_sadiq_death_day(tr("شهادت امام جعفر صادق علیه السلام"))
+
+#         # Eid al-Adha.
+#         self._add_eid_al_adha_day(tr("عید سعید قربان"))
+
+#         # Eid al-Ghadeer.
+#         self._add_eid_al_ghadir_day(tr("عید سعید غدیر خم"))
 
 
 class IR(Iran):
