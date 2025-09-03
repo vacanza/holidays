@@ -9,10 +9,11 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
 from gettext import gettext as tr
+from datetime import date, timedelta
+from collections.abc import Iterable
 
-from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars.custom import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
@@ -31,117 +32,148 @@ from holidays.calendars.gregorian import (
 from holidays.groups import IslamicHolidays, PersianCalendarHolidays
 from holidays.holiday_base import HolidayBase
 
-from datetime import timedelta
-from gettext import gettext as _
-from gettext import pgettext
-
-from holidays.constants import (
-    HIJRI_DHU_AL_HIJJAH,
-    HIJRI_JUMADA_II,
-    HIJRI_MUHARRAM,
-    HIJRI_RABI_I,
-    HIJRI_RAJAB,
-    HIJRI_RAMADAN,
-    HIJRI_SAFAR,
-    HIJRI_SHABAN,
-    HIJRI_SHAWWAL,
-)
-from holidays.groups import IslamicHolidays, PersianCalendarHolidays
-from holidays.holiday_base import HolidayBase
-
 
 class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
-    """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Iran
+    """Iran holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Iran>
+        * <https://fa.wikipedia.org/wiki/تعطیلات_عمومی_در_ایران>
+        * <https://web.archive.org/web/20250426102648/https://www.time.ir/>
+        * <https://web.archive.org/web/20170222200759/http://www.hvm.ir/LawDetailNews.aspx?id=9017>
+        * <https://en.wikipedia.org/wiki/Workweek_and_weekend>
     """
 
     country = "IR"
     default_language = "fa_IR"
-    # Special subdivision for Tehran.
-    subdivisions = ("TEH",)
-    # Supported languages.
+    # %s (estimated).
+    estimated_label = tr("%s (تخمینی)")
     supported_languages = ("en_US", "fa_IR")
+    start_year = 1980
+    weekend = {FRI}
 
     def __init__(self, *args, **kwargs):
-        """Initializes an Iran holiday object."""
-        IslamicHolidays.__init__(self)
+        """
+        Initializes the Iran holidays class.
+        The `islamic_show_estimated` parameter is removed and forced to False
+        to handle date corrections internally.
+        """
+        # Remove islamic_show_estimated from kwargs if present to avoid errors.
+        if 'islamic_show_estimated' in kwargs:
+            del kwargs['islamic_show_estimated']
+
+        # Initialize IslamicHolidays with show_estimated=False.
+        IslamicHolidays.__init__(
+            self, cls=IranIslamicHolidays, show_estimated=False
+        )
         PersianCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_islamic_holiday(self, name: str, month: int, day: int) -> None:
+    def _add_islamic_calendar_holiday(
+        self, name: str, dates: Iterable[tuple[date, bool]], days_delta: int = 0
+    ) -> set[date]:
         """
-        Adds Islamic holiday with a one-day offset for Iran.
+        Overrides the parent method to apply a one-day correction to estimated
+        Islamic holidays, based on the logic from the provided fix script.
         """
-        day_offset = getattr(self.cal, "day_offset", 0)
-        iran_correction_offset = 1
-        total_offset = day_offset + iran_correction_offset
+        corrected_dates = []
+        for dt, is_estimated in dates:
+            if is_estimated:
+                # Add one day to estimated dates to correct them.
+                corrected_dates.append((dt + timedelta(days=1), is_estimated))
+            else:
+                corrected_dates.append((dt, is_estimated))
 
-        for dt in self.cal.islamic_to_gregorian(self.year - 1, month, day):
-            if dt.year == self.year - 1:
-                continue
-            self._add_holiday(name, dt + timedelta(days=total_offset))
+        # Call the parent method with the corrected dates.
+        return super()._add_islamic_calendar_holiday(name, corrected_dates, days_delta)
 
-        for dt in self.cal.islamic_to_gregorian(self.year, month, day):
-            self._add_holiday(name, dt + timedelta(days=total_offset))
+    def _populate_public_holidays(self):
+        # Persian calendar holidays.
 
-        for dt in self.cal.islamic_to_gregorian(self.year + 1, month, day):
-            if dt.year == self.year + 1:
-                self._add_holiday(name, dt + timedelta(days=total_offset))
+        # Islamic Revolution Day.
+        self._add_islamic_revolution_day(tr("پیروزی انقلاب اسلامی"))
 
-    def _populate(self, year):
-        if year <= 1978:
-            return None
+        # Iranian Oil Industry Nationalization Day.
+        self._add_oil_nationalization_day(tr("روز ملی شدن صنعت نفت ایران"))
 
-        super()._populate(year)
+        # Last Day of Year.
+        self._add_last_day_of_year(tr("آخرین روز سال"))
 
-        # Persian Calendar Holidays (using PersianCalendarHolidays methods)
-        self._add_nowruz_day_one(_("Nowruz"))
-        self._add_nowruz_day_two(_("Nowruz Holiday"))
-        self._add_nowruz_day_three(_("Nowruz Holiday"))
-        self._add_nowruz_day_four(_("Nowruz Holiday"))
-        self._add_islamic_republic_day(_("Islamic Republic Day"))
-        self._add_sizdah_bedar_day(_("Sizdah Bedar"))
-        self._add_death_of_khomeini_day(_("Death of Ruhollah Khomeini"))
-        self._add_khordad_uprising_day(_("Khordad National Uprising"))
-        self._add_revolution_day(_("Anniversary of the Islamic Revolution"))
-        self._add_oil_nationalization_day(
-            pgettext("Shamsi", "Oil Nationalization Day")
+        # Nowruz.
+        self._add_nowruz_day(tr("جشن نوروز"))
+
+        # Nowruz Holiday.
+        name = tr("عیدنوروز")
+        self._add_nowruz_day_two(name)
+        self._add_nowruz_day_three(name)
+        self._add_nowruz_day_four(name)
+
+        # Islamic Republic Day.
+        self._add_islamic_republic_day(tr("روز جمهوری اسلامی"))
+
+        # Nature's Day.
+        self._add_natures_day(tr("روز طبیعت"))
+
+        # Death of Imam Khomeini.
+        self._add_death_of_khomeini_day(tr("رحلت حضرت امام خمینی"))
+
+        # 15 Khordad Uprising.
+        self._add_khordad_uprising_day(tr("قیام 15 خرداد"))
+
+        # Islamic holidays.
+
+        # Tasua.
+        self._add_tasua_day(tr("تاسوعای حسینی"))
+
+        # Ashura.
+        self._add_ashura_day(tr("عاشورای حسینی"))
+
+        # Arbaeen.
+        self._add_arbaeen_day(tr("اربعین حسینی"))
+
+        # Death of Prophet Muhammad and Martyrdom of Hasan ibn Ali.
+        self._add_prophet_death_day(tr("رحلت رسول اکرم؛شهادت امام حسن مجتبی علیه السلام"))
+
+        # Martyrdom of Ali al-Rida.
+        self._add_ali_al_rida_death_day(tr("شهادت امام رضا علیه السلام"))
+
+        # Martyrdom of Hasan al-Askari.
+        self._add_hasan_al_askari_death_day(tr("شهادت امام حسن عسکری علیه السلام"))
+
+        # Birthday of Muhammad and Imam Ja'far al-Sadiq.
+        self._add_sadiq_birthday_day(tr("میلاد رسول اکرم و امام جعفر صادق علیه السلام"))
+
+        # Martyrdom of Fatima.
+        self._add_fatima_death_day(tr("شهادت حضرت فاطمه زهرا سلام الله علیها"))
+
+        # Birthday of Imam Ali.
+        self._add_ali_birthday_day(tr("ولادت امام علی علیه السلام و روز پدر"))
+
+        # Isra' and Mi'raj.
+        self._add_isra_and_miraj_day(tr("مبعث رسول اکرم (ص)"))
+
+        self._add_imam_mahdi_birthday_day(
+            # Birthday of Mahdi.
+            tr("ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان")
         )
 
-        # Islamic Calendar Holidays (with +1 day correction)
-        self._add_islamic_holiday(pgettext("Hijri", "Tasua"), HIJRI_MUHARRAM, 9)
-        self._add_islamic_holiday(pgettext("Hijri", "Ashura"), HIJRI_MUHARRAM, 10)
-        self._add_islamic_holiday(pgettext("Hijri", "Arbaeen"), HIJRI_SAFAR, 20)
-        self._add_islamic_holiday(_("Death of Prophet and Hasan"), HIJRI_SAFAR, 28)
-        self._add_islamic_holiday(
-            _("Martyrdom of Ali al-Rida"), HIJRI_SAFAR, 29,
-        )
-        self._add_islamic_holiday(
-            _("Martyrdom of Hasan al-Askari"), HIJRI_RABI_I, 8
-        )
-        self._add_islamic_holiday(
-            _("Birthday of Prophet and Sadeq"), HIJRI_RABI_I, 17
-        )
-        self._add_islamic_holiday(_("Fatimah martyr"), HIJRI_JUMADA_II, 3)
-        self._add_islamic_holiday(_("Birthday of Ali"), HIJRI_RAJAB, 13)
-        self._add_islamic_holiday(_("Prophet's Ascension"), HIJRI_RAJAB, 27)
-        self._add_islamic_holiday(_("Birthday of Mahdi"), HIJRI_SHABAN, 15)
-        self._add_islamic_holiday(_("Martyrdom of Ali"), HIJRI_RAMADAN, 21)
-        self._add_islamic_holiday(
-            _("Martyrdom of Ja'far al-Sadiq"), HIJRI_SHAWWAL, 25
-        )
-        self._add_islamic_holiday(
-            pgettext("Hijri", "Eid al-Fitr"), HIJRI_SHAWWAL, 1
-        )
-        self._add_islamic_holiday(
-            pgettext("Hijri", "Eid al-Fitr Holiday"), HIJRI_SHAWWAL, 2
-        )
-        self._add_islamic_holiday(
-            pgettext("Hijri", "Eid al-Adha"), HIJRI_DHU_AL_HIJJAH, 10
-        )
-        self._add_islamic_holiday(
-            pgettext("Hijri", "Eid al-Ghadir"), HIJRI_DHU_AL_HIJJAH, 18
-        )
+        # Martyrdom of Imam Ali.
+        self._add_ali_death_day(tr("شهادت حضرت علی علیه السلام"))
+
+        # Eid al-Fitr.
+        self._add_eid_al_fitr_day(tr("عید سعید فطر"))
+
+        # Eid al-Fitr Holiday.
+        self._add_eid_al_fitr_day_two(tr("تعطیل به مناسبت عید سعید فطر"))
+
+        # Martyrdom of Imam Ja'far al-Sadiq.
+        self._add_sadiq_death_day(tr("شهادت امام جعفر صادق علیه السلام"))
+
+        # Eid al-Adha.
+        self._add_eid_al_adha_day(tr("عید سعید قربان"))
+
+        # Eid al-Ghadeer.
+        self._add_eid_al_ghadir_day(tr("عید سعید غدیر خم"))
 
 # class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
 #     """Iran holidays.
