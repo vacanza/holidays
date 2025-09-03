@@ -30,7 +30,7 @@ class Algeria(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Algeria>
-        * [Loi n° 63-278 du 26 juliet 1963](https://web.archive.org/web/20250903142053/https://drive.google.com/file/d/1rWkxBEjs9aNkbiTTRXBET3Qo_3HQOJR9/view)
+        * [Loi n° 63-278 du 26 juillet 1963](https://web.archive.org/web/20250903142053/https://drive.google.com/file/d/1rWkxBEjs9aNkbiTTRXBET3Qo_3HQOJR9/view)
         * [Ordonnance n° 68-419 du 26 juin 1968](https://web.archive.org/web/20250903142828/https://drive.google.com/file/d/1fMGyGVnunGkACWhm0tICANEZqao2pOV3/view)
         * [Loi n° 05-06 du 17 Rabie El Aoeul 1426](https://web.archive.org/web/20250903143453/https://drive.google.com/file/d/1AXISrPGJzgDO8G3uB1TyICdtnOYW6ewm/view)
         * [Loi n° 18-12 du 18 Chaoual 1439](https://web.archive.org/web/20250903141752/https://drive.google.com/file/d/1qxcrF3J-SUXmLdGZLVF0gdrN0aQWwykb/view)
@@ -43,7 +43,7 @@ class Algeria(
     default_language = "ar"
     # %s (estimated).
     estimated_label = tr("%s (المقدرة)")
-    # Loi n° 63-278 du 26 juliet 1963.
+    # Loi n° 63-278 du 26 juillet 1963.
     start_year = 1964
     supported_categories = (CHRISTIAN, HEBREW, PUBLIC)
     supported_languages = ("ar", "en_US", "fr")
@@ -127,7 +127,7 @@ class Algeria(
                 self._add_eid_al_adha_day_three(name)
 
     def _populate_christian_holidays(self):
-        # As outlined in Loi n° 63-278 du 26 juliet 1963.
+        # As outlined in Loi n° 63-278 du 26 juillet 1963.
 
         # Easter Monday.
         self._add_easter_monday(tr("إثنين الفصح"))
@@ -145,7 +145,7 @@ class Algeria(
         self._add_christmas_day(tr("عيد الميلاد"))
 
     def _populate_hebrew_holidays(self):
-        # As outlined in Loi n° 63-278 du 26 juliet 1963.
+        # As outlined in Loi n° 63-278 du 26 juillet 1963.
 
         # Rosh Hashanah.
         self._add_rosh_hashanah(tr("رأس السنة العبرية"))

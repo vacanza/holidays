@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.81\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2025-09-03 22:33+0700\n"
+"PO-Revision-Date: 2025-09-04 00:14+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
@@ -74,7 +74,7 @@ msgstr "Aïd el-Fitr"
 
 #. Eid al-Fitr Holiday.
 msgid "عطلة عيد الفطر"
-msgstr "Congé de Aïd el-Fitr"
+msgstr "Congé de l'Aïd el-Fitr"
 
 #. Eid al-Adha.
 msgid "عيد الأضحى"
@@ -82,7 +82,7 @@ msgstr "Aïd el-Adha"
 
 #. Eid al-Adha Holiday.
 msgid "عطلة عيد الأضحى"
-msgstr "Congé de Aïd el-Adha"
+msgstr "Congé de l'Aïd el-Adha"
 
 #. Easter Monday.
 msgid "إثنين الفصح"

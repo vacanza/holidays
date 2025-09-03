@@ -47,7 +47,7 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             "2024-02-12",
             "2024-02-13",
         )
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayNameCount(name, 2, self.full_range)
 
     def test_holy_thursday(self):
         name = "Quinta-feira Santa"
