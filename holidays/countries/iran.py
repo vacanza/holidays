@@ -13,7 +13,7 @@ from gettext import gettext as tr
 from datetime import date, timedelta
 from collections.abc import Iterable
 
-from holidays.calendars.custom import _CustomIslamicHolidays
+from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
