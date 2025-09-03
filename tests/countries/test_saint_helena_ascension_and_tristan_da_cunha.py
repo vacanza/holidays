@@ -38,7 +38,7 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
             subdiv: SaintHelenaAscensionAndTristanDaCunha(subdiv=subdiv, years=years)
             for subdiv in SaintHelenaAscensionAndTristanDaCunha.subdivisions
         }
-        cls.subdiv_govt_holidays = {
+        cls.subdiv_government_holidays = {
             subdiv: SaintHelenaAscensionAndTristanDaCunha(
                 subdiv=subdiv, categories=GOVERNMENT, years=years
             )
@@ -219,7 +219,7 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
 
     def test_subdivision_government_holidays(self):
         self.assertNoHolidayName("August Bank Holiday", range(2015, 2050))
-        for subdiv, holidays in self.subdiv_govt_holidays.items():
+        for subdiv, holidays in self.subdiv_government_holidays.items():
             if subdiv in ("AC", "HL"):
                 self.assertHolidayName(
                     "August Bank Holiday",
