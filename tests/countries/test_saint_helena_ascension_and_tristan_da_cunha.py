@@ -164,20 +164,19 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
 
     def test_ascension_day(self):
         name = "Ascension Day"
-        dates = (
-            "2020-05-21",
-            "2021-05-13",
-            "2022-05-26",
-            "2023-05-18",
-            "2024-05-09",
-            "2025-05-29",
-        )
-        holidays_ac = self.subdiv_holidays["AC"]
-        self.assertHolidayName(name, holidays_ac, dates)
-        self.assertHolidayName(name, holidays_ac, range(2015, 2050))
-        holidays_ta = self.subdiv_holidays["TA"]
-        self.assertHolidayName(name, holidays_ta, dates)
-        self.assertHolidayName(name, holidays_ta, range(2015, 2050))
+        for subdiv in ("AC", "TA"):
+            holidays_subdiv = self.subdiv_holidays[subdiv]
+            self.assertHolidayName(
+                name,
+                holidays_subdiv,
+                "2020-05-21",
+                "2021-05-13",
+                "2022-05-26",
+                "2023-05-18",
+                "2024-05-09",
+                "2025-05-29",
+            )
+            self.assertHolidayName(name, holidays_subdiv, range(2015, 2050))
         self.assertNoHolidayName(name, range(2015, 2050))
 
     def test_saint_helena_day(self):
