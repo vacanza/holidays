@@ -35,6 +35,12 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(NationalStockExchangeOfIndia(years=2000))
 
+    def test_new_year(self):
+        self.assertNonObservedHolidayName("New Year", (f"{year}-01-01" for year in {2010}))
+        self.assertNoHoliday(
+            "2025-01-01",
+        )
+
     def test_republic_day(self):
         self.assertNonObservedHolidayName(
             "Republic Day", (f"{year}-01-26" for year in range(2001, 2050))
@@ -147,6 +153,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         name = "Ram Navami"
         self.assertNonObservedHolidayName(
             name,
+            "2007-03-27",
             "2022-04-10",
             "2023-03-30",
             "2024-04-17",
@@ -162,6 +169,8 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         name = "Diwali Balipratipada"
         self.assertNonObservedHolidayName(
             name,
+            "2001-11-16",
+            "2002-11-06",
             "2022-10-26",
             "2023-11-14",
             "2024-11-02",
@@ -228,10 +237,47 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2017-11-04",
         )
 
+    def test_bhai_bhij(self):
+        name = "Bhai bhij"
+        self.assertNonObservedHolidayName(
+            name,
+            "2003-10-27",
+            "2005-11-03",
+            "2006-10-24",
+            "2008-10-30",
+            "2009-10-19",
+        )
+        self.assertNonObservedHolidayName(name, range(2003, 2010))
+        self.assertNoHoliday(
+            "2010-10-06",
+            "2002-11-05",
+        )
+
+    def test_buddha_purnima(self):
+        name = "Buddha Purnima"
+        self.assertNonObservedHolidayName(
+            name,
+            "2007-05-02",
+            "2008-05-19",
+        )
+
     def test_muharram(self):
         name = "Muharram"
         self.assertNonObservedHolidayName(
             name,
+            "2001-04-05",
+            "2002-03-25",
+            "2004-03-02",
+            "2007-01-30",
+            "2009-01-08",
+            "2009-12-28",
+            "2010-12-17",
+            "2011-12-06",
+            "2013-11-14",
+            "2014-11-04",
+            "2016-10-12",
+            "2019-09-10",
+            "2021-08-19",
             "2022-08-09",
             "2023-07-29",
             "2024-07-17",
@@ -249,6 +295,20 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         name = "Id-Ul-Fitr (Ramadan Eid)"
         self.assertNonObservedHolidayName(
             name,
+            "2001-12-17",
+            "2003-11-26",
+            "2004-11-15",
+            "2005-11-05",
+            "2006-10-25",
+            "2008-10-02",
+            "2009-09-21",
+            "2011-08-31",
+            "2012-08-20",
+            "2013-08-09",
+            "2014-07-29",
+            "2017-06-26",
+            "2019-06-05",
+            "2020-05-25",
             "2022-05-03",
             "2023-04-22",
             "2024-04-11",
@@ -265,8 +325,23 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         name = "Bakri Id"
         self.assertNonObservedHolidayName(
             name,
+            "2001-03-06",
+            "2003-02-13",
+            "2004-02-02",
+            "2006-01-11",
+            "2007-01-01",
+            "2007-12-21",
+            "2008-12-09",
+            "2010-11-17",
+            "2011-11-07",
+            "2013-10-16",
+            "2014-10-06",
+            "2015-09-25",
+            "2016-09-13",
+            "2018-08-22",
+            "2019-08-12",
+            "2021-07-21",
             "2022-07-10",
-            "2023-06-28",
             "2024-06-17",
             "2025-06-07",
         )
@@ -276,6 +351,18 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         self.assertNoHoliday(
             "2022-07-10",
             "2025-06-07",
+        )
+
+    def test_id_e_milad_un_nabi(self):
+        name = "Id-E-Milad-Un-Nabi"
+        self.assertNonObservedHolidayName(
+            name,
+            # "2006-04-11",
+            "2009-03-10",
+        )
+
+        self.assertNoHoliday(
+            "2005-04-21",
         )
 
     def test_2023(self):
