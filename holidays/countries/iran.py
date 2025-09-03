@@ -38,8 +38,8 @@ from holidays.holiday_base import HolidayBase
 # This class intercepts the calls to get holiday dates, and if the date is
 # an estimation (i.e., not in the confirmed dates list), it adds one day to it.
 class _AdjustedIranIslamicHolidays:
-    def __init__(self, iran_islamic_holidays_instance):
-        self._holidays = iran_islamic_holidays_instance
+    def __init__(self, iran_islamic_calendar_instance):
+        self._holidays = iran_islamic_calendar_instance
 
     def __getattr__(self, name):
         attr = getattr(self._holidays, name)
@@ -91,7 +91,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
         IslamicHolidays.__init__(
             self, cls=IranIslamicHolidays, show_estimated=islamic_show_estimated
         )
-        self._islamic_holidays = _AdjustedIranIslamicHolidays(self._islamic_holidays)
+        self._islamic_calendar = _AdjustedIranIslamicHolidays(self._islamic_calendar)
         PersianCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
