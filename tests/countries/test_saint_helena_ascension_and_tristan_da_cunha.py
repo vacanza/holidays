@@ -164,7 +164,6 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
 
     def test_ascension_day(self):
         name = "Ascension Day"
-        holidays_ac = self.subdiv_holidays["AC"]
         dates = (
             "2020-05-21",
             "2021-05-13",
@@ -173,6 +172,7 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
             "2024-05-09",
             "2025-05-29",
         )
+        holidays_ac = self.subdiv_holidays["AC"]
         self.assertHolidayName(name, holidays_ac, dates)
         self.assertHolidayName(name, holidays_ac, range(2015, 2050))
         holidays_ta = self.subdiv_holidays["TA"]
