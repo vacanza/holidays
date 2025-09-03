@@ -19,14 +19,14 @@ from tests.common import CommonCountryTests
 class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1955, 2050)
-        super().setUpClass(AntiguaAndBarbuda, years=years, years_non_observed=years)
+        cls.full_range = range(AG.start_year, 2050)
+        super().setUpClass(AntiguaAndBarbuda, years=cls.full_range)
 
     def test_country_aliases(self):
         self.assertAliases(AntiguaAndBarbuda, AG, ATG)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(AntiguaAndBarbuda(years=1954))
+        self.assertNoHolidays(AntiguaAndBarbuda(years=AG.start_year - 1))
 
     def test_special_holidays(self):
         name_day_after_general_election = "Day after the General Election"
@@ -41,7 +41,7 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1955, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         dt = (
             "1995-01-02",
             "2006-01-02",
@@ -62,7 +62,7 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(1955, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "Easter Monday"
@@ -74,7 +74,7 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(1955, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_labour_day(self):
         name = "Labour Day"
@@ -86,7 +86,7 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
             "2024-05-06",
             "2025-05-05",
         )
-        self.assertHolidayName(name, range(1955, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_whit_monday(self):
         name = "Whit Monday"
@@ -98,7 +98,7 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
             "2024-05-20",
             "2025-06-09",
         )
-        self.assertHolidayName(name, range(1955, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_caribbean_community_day(self):
         name = "Caribbean Community (Caricom) Day"
@@ -109,7 +109,7 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
             "2004-07-05",
             "2005-07-04",
         )
-        self.assertHolidayName(name, range(1955, 2006))
+        self.assertHolidayName(name, range(AG.start_year, 2006))
         self.assertNoHolidayName(name, range(2006, 2050))
 
     def test_carnival_monday(self):
@@ -122,7 +122,7 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
             "2024-08-05",
             "2025-08-04",
         )
-        self.assertHolidayName(name, range(1955, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_carnival_tuesday(self):
         name = "Carnival Tuesday"
@@ -135,11 +135,11 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
             "2025-08-05",
         )
         self.assertHolidayName(name, range(2006, 2050))
-        self.assertNoHolidayName(name, range(1955, 2006))
+        self.assertNoHolidayName(name, range(AG.start_year, 2006))
 
     def test_independence_day(self):
         name = "Independence Day"
-        self.assertHolidayName(name, (f"{year}-11-01" for year in range(1955, 2050)))
+        self.assertHolidayName(name, (f"{year}-11-01" for year in self.full_range))
         dt = (
             "2008-11-03",
             "2009-11-02",
@@ -167,9 +167,9 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
             "2013-12-09",
         )
         self.assertHolidayName(name_2, (f"{year}-12-09" for year in range(2014, 2050)))
-        self.assertNoHoliday(f"{year}-12-09" for year in range(1955, 2005))
-        self.assertNoHolidayName(name_1, range(1955, 2005), range(2014, 2050))
-        self.assertNoHolidayName(name_2, range(1955, 2014))
+        self.assertNoHoliday(f"{year}-12-09" for year in range(AG.start_year, 2005))
+        self.assertNoHolidayName(name_1, range(AG.start_year, 2005), range(2014, 2050))
+        self.assertNoHolidayName(name_2, range(AG.start_year, 2014))
 
         dt = ("2023-12-11",)
         self.assertHolidayName(f"{name_2} (observed)", dt)
@@ -177,7 +177,7 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1955, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
         dt = (
             "2004-12-27",
             "2005-12-27",
@@ -191,7 +191,7 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
 
     def test_boxing_day(self):
         name = "Boxing Day"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1955, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
         dt = (
             "2004-12-28",
             "2010-12-28",

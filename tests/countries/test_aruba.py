@@ -19,13 +19,14 @@ from tests.common import CommonCountryTests
 class TestAruba(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Aruba, years=range(1955, 2050))
+        cls.full_range = range(AW.start_year, 2050)
+        super().setUpClass(Aruba, years=cls.full_range)
 
     def test_country_aliases(self):
         self.assertAliases(Aruba, AW, ABW)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Aruba(years=1954))
+        self.assertNoHolidays(Aruba(years=AW.start_year - 1))
 
     def test_2017(self):
         self.assertHolidays(
@@ -44,12 +45,12 @@ class TestAruba(CommonCountryTests, TestCase):
         )
 
     def test_new_years_day(self):
-        self.assertHolidayName("Aña Nobo", (f"{year}-01-01" for year in range(1955, 2050)))
+        self.assertHolidayName("Aña Nobo", (f"{year}-01-01" for year in self.full_range))
 
     def test_betico_day(self):
         name = "Dia di Betico"
         self.assertHolidayName(name, (f"{year}-01-25" for year in range(1989, 2050)))
-        self.assertNoHolidayName(name, range(1955, 1989))
+        self.assertNoHolidayName(name, range(AW.start_year, 1989))
 
     def test_carnival_monday(self):
         name_carnival = "Dialuna despues di Carnaval Grandi"
@@ -73,13 +74,13 @@ class TestAruba(CommonCountryTests, TestCase):
             "2025-03-03",
         )
         self.assertHolidayName(name_mon_ash, range(2023, 2050))
-        self.assertNoHolidayName(name_carnival, 1955, range(2023, 2050))
-        self.assertNoHolidayName(name_mon_ash, range(1955, 2023))
+        self.assertNoHolidayName(name_carnival, AW.start_year, range(2023, 2050))
+        self.assertNoHolidayName(name_mon_ash, range(AW.start_year, 2023))
 
     def test_national_anthem_and_flag_day(self):
         name = "Dia di Himno y Bandera"
         self.assertHolidayName(name, (f"{year}-03-18" for year in range(1976, 2050)))
-        self.assertNoHolidayName(name, range(1955, 1976))
+        self.assertNoHolidayName(name, range(AW.start_year, 1976))
 
     def test_good_friday(self):
         name = "Bierna Santo"
@@ -92,7 +93,7 @@ class TestAruba(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(1955, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "Di dos dia di Pasco di Resureccion"
@@ -105,7 +106,7 @@ class TestAruba(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(1955, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_queens_day(self):
         name = "Aña di La Reina"
@@ -122,7 +123,7 @@ class TestAruba(CommonCountryTests, TestCase):
             "2006-04-29",
             "2013-04-30",
         )
-        self.assertHolidayName(name, range(1955, 2014))
+        self.assertHolidayName(name, range(AW.start_year, 2014))
         self.assertNoHolidayName(
             name,
             "1961-04-30",
@@ -166,8 +167,8 @@ class TestAruba(CommonCountryTests, TestCase):
             "2031-04-27",
             "2036-04-27",
         )
-        self.assertNoHolidayName(name_ana, range(1955, 2014), range(2021, 2050))
-        self.assertNoHolidayName(name_dia, range(1955, 2021))
+        self.assertNoHolidayName(name_ana, range(AW.start_year, 2014), range(2021, 2050))
+        self.assertNoHolidayName(name_dia, range(AW.start_year, 2021))
 
     def test_labor_day(self):
         name = "Dia di Obrero"
@@ -182,7 +183,7 @@ class TestAruba(CommonCountryTests, TestCase):
             "2022-05-02",
             "2023-05-01",
         )
-        self.assertHolidayName(name, range(1955, 2050))
+        self.assertHolidayName(name, self.full_range)
         self.assertNoHolidayName(
             "2011-05-01",
             "2016-05-01",
@@ -200,14 +201,12 @@ class TestAruba(CommonCountryTests, TestCase):
             "2024-05-09",
             "2025-05-29",
         )
-        self.assertHolidayName(name, range(1955, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_christmas(self):
+        self.assertHolidayName("Pasco di Nacemento", (f"{year}-12-25" for year in self.full_range))
         self.assertHolidayName(
-            "Pasco di Nacemento", (f"{year}-12-25" for year in range(1955, 2050))
-        )
-        self.assertHolidayName(
-            "Di dos dia di Pasco di Nacemento", (f"{year}-12-26" for year in range(1955, 2050))
+            "Di dos dia di Pasco di Nacemento", (f"{year}-12-26" for year in self.full_range)
         )
 
     def test_l10n_default(self):

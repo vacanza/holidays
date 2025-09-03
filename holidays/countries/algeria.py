@@ -30,6 +30,8 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
     default_language = "ar"
     # %s (estimated).
     estimated_label = tr("%s (المقدرة)")
+    # Achieved Independence on July 5th, 1962.
+    start_year = 1963
     supported_languages = ("ar", "en_US", "fr")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
@@ -64,13 +66,11 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Labor Day.
         self._add_labor_day(tr("عيد العمال"))
 
-        if self._year >= 1962:
-            # Independence Day.
-            self._add_holiday_jul_5(tr("عيد الإستقلال"))
+        # Independence Day.
+        self._add_holiday_jul_5(tr("عيد الإستقلال"))
 
-        if self._year >= 1963:
-            # Revolution Day.
-            self._add_holiday_nov_1(tr("عيد الثورة"))
+        # Revolution Day.
+        self._add_holiday_nov_1(tr("عيد الثورة"))
 
         # Islamic New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
@@ -83,17 +83,21 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("عيد الفطر"))
+
         # Eid al-Fitr Holiday.
-        self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
+        name = tr("عطلة عيد الفطر")
+        self._add_eid_al_fitr_day_two(name)
         if self._year >= 2024:
-            self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
+            self._add_eid_al_fitr_day_three(name)
 
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("عيد الأضحى"))
+
         # Eid al-Adha Holiday.
-        self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
+        name = tr("عطلة عيد الأضحى")
+        self._add_eid_al_adha_day_two(name)
         if self._year >= 2023:
-            self._add_eid_al_adha_day_three(tr("عطلة عيد الأضحى"))
+            self._add_eid_al_adha_day_three(name)
 
 
 class DZ(Algeria):

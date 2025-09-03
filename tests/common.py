@@ -140,6 +140,10 @@ class TestCase:
                     non_obs_key = f"years_{suffix}_non_observed"
                     if non_obs_key not in year_variants:
                         year_variants[non_obs_key] = years
+                if "islamic_show_estimated" in test_class_param:
+                    islamic_no_estimated_key = f"years_{suffix}_islamic_no_estimated"
+                    if islamic_no_estimated_key not in year_variants:
+                        year_variants[islamic_no_estimated_key] = years
 
         variants = {"": years}
         variants.update(year_variants)

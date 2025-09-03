@@ -19,16 +19,17 @@ from tests.common import CommonCountryTests
 class TestArmenia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Armenia, years=range(1991, 2050))
+        cls.full_range = range(AM.start_year, 2050)
+        super().setUpClass(Armenia, years=cls.full_range)
 
     def test_country_aliases(self):
         self.assertAliases(Armenia, AM, ARM)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Armenia(years=1990))
+        self.assertNoHolidays(Armenia(years=AM.start_year - 1))
 
     def test_new_year_christmas(self):
-        for year in range(1991, 2050):
+        for year in self.full_range:
             self.assertHoliday(
                 f"{year}-01-01",
                 f"{year}-01-02",
@@ -42,7 +43,7 @@ class TestArmenia(CommonCountryTests, TestCase):
                 f"{year}-01-05",
                 f"{year}-01-07",
             )
-        for year in range(1991, 2010):
+        for year in range(AM.start_year, 2010):
             self.assertNoHoliday(
                 f"{year}-01-03",
                 f"{year}-01-04",
@@ -59,40 +60,40 @@ class TestArmenia(CommonCountryTests, TestCase):
 
     def test_army_day(self):
         self.assertHoliday(f"{year}-01-28" for year in range(2003, 2050))
-        self.assertNoHoliday(f"{year}-01-28" for year in range(1991, 2003))
+        self.assertNoHoliday(f"{year}-01-28" for year in range(AM.start_year, 2003))
 
     def test_women_day(self):
-        self.assertHoliday(f"{year}-03-08" for year in range(1991, 2050))
+        self.assertHoliday(f"{year}-03-08" for year in self.full_range)
 
     def test_motherhood_and_beauty_day(self):
         self.assertHoliday(f"{year}-04-07" for year in range(1994, 2002))
-        self.assertNoHoliday(f"{year}-04-07" for year in range(1991, 1994))
+        self.assertNoHoliday(f"{year}-04-07" for year in range(AM.start_year, 1994))
         self.assertNoHoliday(f"{year}-04-07" for year in range(2002, 2050))
 
     def test_genocide_remembrance_day(self):
-        self.assertHoliday(f"{year}-04-24" for year in range(1991, 2050))
+        self.assertHoliday(f"{year}-04-24" for year in self.full_range)
 
     def test_labour_day(self):
         self.assertHoliday(f"{year}-05-01" for year in range(2001, 2050))
-        self.assertNoHoliday(f"{year}-05-01" for year in range(1991, 2001))
+        self.assertNoHoliday(f"{year}-05-01" for year in range(AM.start_year, 2001))
         may1_old_name = "Աշխատավորների համերաշխության միջազգային օր"
         self.assertHolidayName(may1_old_name, "2001-05-01")
         self.assertNoHolidayName(may1_old_name, 2002)
 
     def test_victory_day(self):
         self.assertHoliday(f"{year}-05-09" for year in range(1995, 2050))
-        self.assertNoHoliday(f"{year}-05-09" for year in range(1991, 1995))
+        self.assertNoHoliday(f"{year}-05-09" for year in range(AM.start_year, 1995))
 
     def test_republic_day(self):
-        self.assertHoliday(f"{year}-05-28" for year in range(1991, 2050))
+        self.assertHoliday(f"{year}-05-28" for year in self.full_range)
 
     def test_constitution_day(self):
         self.assertHoliday(f"{year}-07-05" for year in range(1996, 2050))
-        self.assertNoHoliday(f"{year}-07-05" for year in range(1991, 1996))
+        self.assertNoHoliday(f"{year}-07-05" for year in range(AM.start_year, 1996))
 
     def test_independence_day(self):
         self.assertHoliday(f"{year}-09-21" for year in range(1992, 2050))
-        self.assertNoHoliday(f"{year}-09-21" for year in range(1991, 1992))
+        self.assertNoHoliday(f"{year}-09-21" for year in range(AM.start_year, 1992))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

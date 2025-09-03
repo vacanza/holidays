@@ -19,107 +19,125 @@ from tests.common import CommonCountryTests
 class TestAlgeria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Algeria)
+        cls.full_range = range(DZ.start_year, 2050)
+        super().setUpClass(Algeria, years=cls.full_range)
 
     def test_country_aliases(self):
         self.assertAliases(Algeria, DZ, DZA)
 
-    def test_2022(self):
-        self.assertHoliday(
-            "2022-01-01",
-            "2022-01-12",
-            "2022-05-01",
-            "2022-05-02",
-            "2022-05-03",
-            "2022-07-05",
-            "2022-07-09",
-            "2022-07-10",
-            "2022-11-01",
-        )
+    def test_no_holidays(self):
+        self.assertNoHolidays(Algeria(years=DZ.start_year - 1))
 
-    def test_new_year_day(self):
-        self.assertHoliday(
-            "2022-01-01",
-            "2023-01-01",
+    def test_new_years_day(self):
+        self.assertHolidayName(
+            "رأس السنة الميلادية", (f"{year}-01-01" for year in self.full_range)
         )
-
-    def test_independence_day(self):
-        self.assertNoHoliday(
-            "1961-07-05",
-            "1962-07-04",
-        )
-        self.assertHoliday(
-            "1962-07-05",
-            "1963-07-05",
-        )
-
-    def test_revolution_day(self):
-        self.assertNoHoliday("1962-11-01")
-        self.assertHoliday("1963-11-01")
 
     def test_amazigh_new_year(self):
-        self.assertNoHoliday("2017-01-12")
-        self.assertHoliday(
-            "2018-01-12",
-            "2023-01-12",
-        )
+        name = "رأس السنة الأمازيغية"
+        self.assertHolidayName(name, (f"{year}-01-12" for year in range(2018, 2050)))
+        self.assertNoHolidayName(name, range(DZ.start_year, 2018))
 
-    def test_labour_day(self):
-        self.assertNoHoliday(
-            "2021-05-02",
-            "2022-05-04",
-            "2023-05-02",
-        )
-        self.assertHoliday(
-            "2021-05-01",
-            "2022-05-01",
-            "2023-05-01",
-        )
+    def test_labor_day(self):
+        self.assertHolidayName("عيد العمال", (f"{year}-05-01" for year in self.full_range))
 
-    def test_islamic_holidays(self):
-        # Eid al-Fitr - Feast Festive
-        self.assertNoHoliday("2023-04-20")
-        self.assertHoliday(
+    def test_independence_day(self):
+        self.assertHolidayName("عيد الإستقلال", (f"{year}-07-05" for year in self.full_range))
+
+    def test_revolution_day(self):
+        self.assertHolidayName("عيد الثورة", (f"{year}-11-01" for year in self.full_range))
+
+    def test_islamic_new_year(self):
+        name = "رأس السنة الهجرية"
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
+            "2020-08-20",
+            "2021-08-09",
+            "2022-07-30",
+            "2023-07-19",
+            "2024-07-07",
+            "2025-06-26",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_ashura(self):
+        name = "عاشورة"
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
+            "2020-08-29",
+            "2021-08-18",
+            "2022-08-08",
+            "2023-07-28",
+            "2024-07-16",
+            "2025-07-05",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_prophets_birthday(self):
+        name = "عيد المولد النبوي"
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
+            "2020-10-29",
+            "2021-10-18",
+            "2022-10-08",
+            "2023-09-27",
+            "2024-09-15",
+            "2025-09-04",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_eid_al_fitr(self):
+        name = "عيد الفطر"
+        name_holiday = f"عطلة {name}"
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
+            "2020-05-24",
+            "2021-05-13",
+            "2022-05-02",
             "2023-04-21",
+            "2024-04-10",
+            "2025-03-30",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        self.assertIslamicNoEstimatedHolidayName(
+            name_holiday,
+            "2020-05-25",
+            "2021-05-14",
+            "2022-05-03",
             "2023-04-22",
+            "2024-04-11",
+            "2024-04-12",
+            "2025-03-31",
+            "2025-04-01",
         )
+        self.assertIslamicNoEstimatedHolidayName(name_holiday, self.full_range)
 
-        # Eid al-Adha - Scarfice Festive
-        self.assertNoHoliday(
-            "2023-06-27",
-            "2023-07-02",
-            "2024-07-15",
-            "2024-07-19",
-        )
-        self.assertHoliday(
+    def test_eid_al_adha(self):
+        name = "عيد الأضحى"
+        name_holiday = f"عطلة {name}"
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-09",
             "2023-06-28",
+            "2024-06-16",
+            "2025-06-06",
+        )
+        self.assertIslamicNoEstimatedHolidayName(
+            name_holiday,
+            "2020-08-01",
+            "2021-07-21",
+            "2022-07-10",
             "2023-06-29",
             "2023-06-30",
-            "2024-06-16",
             "2024-06-17",
             "2024-06-18",
+            "2025-06-07",
+            "2025-06-08",
         )
-
-        # Islamic New Year
-        self.assertHoliday(
-            "2008-01-10",
-            "2008-12-29",
-            "2020-08-20",
-        )
-
-        # Ashura
-        self.assertNoHoliday("2023-07-29")
-        self.assertHoliday("2023-07-28")
-
-        # Mawlid / Prophet's Birthday
-        self.assertNoHoliday(
-            "2021-10-19",
-            "2023-09-28",
-        )
-        self.assertHoliday(
-            "2021-10-18",
-            "2023-09-27",
-        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        self.assertIslamicNoEstimatedHolidayName(name_holiday, self.full_range)
 
     def test_l10_default(self):
         self.assertLocalizedHolidays(

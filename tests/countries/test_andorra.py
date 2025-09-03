@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT, PUBLIC
+from holidays.constants import GOVERNMENT
 from holidays.countries.andorra import Andorra, AD, AND
 from tests.common import CommonCountryTests
 
@@ -20,24 +20,25 @@ from tests.common import CommonCountryTests
 class TestAndorra(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1934, 2050)
-        super().setUpClass(Andorra, years=years)
-        cls.government_holidays = Andorra(categories=GOVERNMENT, years=years)
+        cls.full_range = range(AD.start_year, 2050)
+        super().setUpClass(Andorra, years=cls.full_range)
         cls.subdiv_holidays = {
-            subdiv: Andorra(subdiv=subdiv, years=years) for subdiv in Andorra.subdivisions
+            subdiv: Andorra(subdiv=subdiv, years=cls.full_range) for subdiv in Andorra.subdivisions
         }
 
     def test_country_aliases(self):
         self.assertAliases(Andorra, AD, AND)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Andorra(categories=(GOVERNMENT, PUBLIC), years=1933))
+        self.assertNoHolidays(
+            Andorra(categories=Andorra.supported_categories, years=AD.start_year - 1)
+        )
 
     def test_new_years_day(self):
-        self.assertHolidayName("Cap d'Any", (f"{year}-01-01" for year in range(1934, 2050)))
+        self.assertHolidayName("Cap d'Any", (f"{year}-01-01" for year in self.full_range))
 
     def test_epiphany(self):
-        self.assertHolidayName("Reis", (f"{year}-01-06" for year in range(1934, 2050)))
+        self.assertHolidayName("Reis", (f"{year}-01-06" for year in self.full_range))
 
     def test_carnival(self):
         name = "Carnaval"
@@ -50,12 +51,12 @@ class TestAndorra(CommonCountryTests, TestCase):
             "2024-02-12",
             "2025-03-03",
         )
-        self.assertHolidayName(name, range(1934, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_constitution_day(self):
         name = "Dia de la Constitució"
         self.assertHolidayName(name, (f"{year}-03-14" for year in range(1994, 2050)))
-        self.assertNoHolidayName(name, range(1934, 1994))
+        self.assertNoHolidayName(name, range(AD.start_year, 1994))
 
     def test_good_friday(self):
         name = "Divendres Sant"
@@ -68,7 +69,7 @@ class TestAndorra(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(1934, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "Dilluns de Pasqua"
@@ -81,12 +82,10 @@ class TestAndorra(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(1934, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_labor_day(self):
-        self.assertHolidayName(
-            "Festa del treball", (f"{year}-05-01" for year in range(1934, 2050))
-        )
+        self.assertHolidayName("Festa del treball", (f"{year}-05-01" for year in self.full_range))
 
     def test_whit_monday(self):
         name = "Dilluns de Pentecosta"
@@ -99,29 +98,29 @@ class TestAndorra(CommonCountryTests, TestCase):
             "2024-05-20",
             "2025-06-09",
         )
-        self.assertHolidayName(name, range(1934, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_assumption_day(self):
-        self.assertHolidayName("Assumpció", (f"{year}-08-15" for year in range(1934, 2050)))
+        self.assertHolidayName("Assumpció", (f"{year}-08-15" for year in self.full_range))
 
     def test_our_lady_of_meritxell(self):
         self.assertHolidayName(
-            "Nostra Senyora de Meritxell", (f"{year}-09-08" for year in range(1934, 2050))
+            "Nostra Senyora de Meritxell", (f"{year}-09-08" for year in self.full_range)
         )
 
     def test_all_saints_day(self):
-        self.assertHolidayName("Tots Sants", (f"{year}-11-01" for year in range(1934, 2050)))
+        self.assertHolidayName("Tots Sants", (f"{year}-11-01" for year in self.full_range))
 
     def test_immaculate_conception(self):
         self.assertHolidayName(
-            "Immaculada Concepció", (f"{year}-12-08" for year in range(1934, 2050))
+            "Immaculada Concepció", (f"{year}-12-08" for year in self.full_range)
         )
 
     def test_christmas_day(self):
-        self.assertHolidayName("Nadal", (f"{year}-12-25" for year in range(1934, 2050)))
+        self.assertHolidayName("Nadal", (f"{year}-12-25" for year in self.full_range))
 
     def test_saint_stephens_day(self):
-        self.assertHolidayName("Sant Esteve", (f"{year}-12-26" for year in range(1934, 2050)))
+        self.assertHolidayName("Sant Esteve", (f"{year}-12-26" for year in self.full_range))
 
     def test_saint_rochs_day(self):
         name = "Sant Roc"
@@ -129,7 +128,7 @@ class TestAndorra(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "02":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-08-16" for year in range(1934, 2050))
+                    name, holidays, (f"{year}-08-16" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -140,7 +139,7 @@ class TestAndorra(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "04":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-01-17" for year in range(1934, 2050))
+                    name, holidays, (f"{year}-01-17" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -151,7 +150,7 @@ class TestAndorra(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "05":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-06-29" for year in range(1934, 2050))
+                    name, holidays, (f"{year}-06-29" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -162,7 +161,7 @@ class TestAndorra(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "06":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-01-07" for year in range(1934, 2050))
+                    name, holidays, (f"{year}-01-07" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -182,7 +181,7 @@ class TestAndorra(CommonCountryTests, TestCase):
                     "2024-05-25",
                     "2025-05-31",
                 )
-                self.assertHolidayName(name, holidays, range(1934, 2050))
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -207,7 +206,7 @@ class TestAndorra(CommonCountryTests, TestCase):
                     "2025-07-28",
                     "2025-07-29",
                 )
-                self.assertHolidayName(name, holidays, range(1934, 2050))
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -238,7 +237,7 @@ class TestAndorra(CommonCountryTests, TestCase):
                     "2025-08-03",
                     "2025-08-04",
                 )
-                self.assertHolidayName(name, holidays, range(1934, 2050))
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -250,7 +249,7 @@ class TestAndorra(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-05-07" for year in range(1979, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1934, 1979))
+                self.assertNoHolidayName(name, holidays, range(AD.start_year, 1979))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -277,7 +276,7 @@ class TestAndorra(CommonCountryTests, TestCase):
                     "2025-06-15",
                 )
                 self.assertHolidayName(name, holidays, range(1979, 2050))
-                self.assertNoHolidayName(name, holidays, range(1934, 1979))
+                self.assertNoHolidayName(name, holidays, range(AD.start_year, 1979))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -303,23 +302,20 @@ class TestAndorra(CommonCountryTests, TestCase):
                     "2025-07-26",
                 )
                 self.assertHolidayName(name, holidays, range(1979, 2050))
-                self.assertNoHolidayName(name, holidays, range(1934, 1979))
+                self.assertNoHolidayName(name, holidays, range(AD.start_year, 1979))
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_epiphany_eve(self):
         name = "Vigília de Reis (a partir de les 13h)"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-01-05" for year in range(1934, 2050))
-        )
+        self.assertGovernmentHolidayName(name, (f"{year}-01-05" for year in self.full_range))
 
     def test_maundy_thursday(self):
         name = "Dijous Sant (a partir de les 13h)"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
+        self.assertGovernmentHolidayName(
             name,
-            self.government_holidays,
             "2020-04-09",
             "2021-04-01",
             "2022-04-14",
@@ -327,21 +323,17 @@ class TestAndorra(CommonCountryTests, TestCase):
             "2024-03-28",
             "2025-04-17",
         )
-        self.assertHolidayName(name, self.government_holidays, range(1934, 2050))
+        self.assertGovernmentHolidayName(name, self.full_range)
 
     def test_christmas_eve(self):
         name = "Vigília de Nadal (a partir de les 13h)"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-12-24" for year in range(1934, 2050))
-        )
+        self.assertGovernmentHolidayName(name, (f"{year}-12-24" for year in self.full_range))
 
     def test_new_years_eve(self):
         name = "Vigília de Cap d'Any (a partir de les 13h)"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-12-31" for year in range(1934, 2050))
-        )
+        self.assertGovernmentHolidayName(name, (f"{year}-12-31" for year in self.full_range))
 
     def test_2023(self):
         self.assertHolidays(
