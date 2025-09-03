@@ -126,6 +126,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2022-10-08",
             "2023-09-27",
             "2024-09-16",
+            "2025-09-05",
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(1924, 2050))
 
@@ -144,6 +145,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2022-04-02",
             "2023-03-23",
             "2024-03-11",
+            "2025-03-01",
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(1925, 2050))
 
@@ -184,6 +186,9 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2024-04-10",
             "2024-04-11",
             "2024-04-12",
+            "2025-03-30",
+            "2025-03-31",
+            "2025-04-01",
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(1925, 2050))
 
@@ -202,6 +207,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2022-07-08",
             "2023-06-27",
             "2024-06-16",
+            "2025-06-06",
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(1925, 2050))
 
@@ -242,6 +248,9 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2024-06-17",
             "2024-06-18",
             "2024-06-19",
+            "2025-06-07",
+            "2025-06-08",
+            "2025-06-09",
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(1925, 2050))
 
