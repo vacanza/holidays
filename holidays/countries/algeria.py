@@ -86,7 +86,7 @@ class Algeria(
         # Name changed in Loi n° 05-06 du 17 Rabie El Aoeul 1426.
         self._add_holiday_jul_5(
             # Independence Day.
-            tr("عيد الإستقلال")
+            tr("عيد الاستقلال")
             if self._year >= 2005
             # Independence and National Liberation Front Day.
             else tr("عيد الاستقلال وجبهة التحرير الوطني")

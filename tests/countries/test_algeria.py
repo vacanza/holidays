@@ -45,7 +45,7 @@ class TestAlgeria(CommonCountryTests, TestCase):
 
     def test_independence_day(self):
         name_1964 = "عيد الاستقلال وجبهة التحرير الوطني"
-        name_2005 = "عيد الإستقلال"
+        name_2005 = "عيد الاستقلال"
         self.assertHolidayName(name_1964, (f"{year}-07-05" for year in range(DZ.start_year, 2005)))
         self.assertHolidayName(name_2005, (f"{year}-07-05" for year in range(2005, 2050)))
         self.assertNoHolidayName(name_1964, range(2005, 2050))
@@ -252,7 +252,7 @@ class TestAlgeria(CommonCountryTests, TestCase):
             ("2022-05-03", "عطلة عيد الفطر (المقدرة)"),
             ("2022-05-26", "عيد الصعود"),
             ("2022-06-06", "إثنين العنصرة"),
-            ("2022-07-05", "عيد الإستقلال"),
+            ("2022-07-05", "عيد الاستقلال"),
             ("2022-07-09", "عيد الأضحى (المقدرة)"),
             ("2022-07-10", "عطلة عيد الأضحى (المقدرة)"),
             ("2022-07-30", "رأس السنة الهجرية (المقدرة)"),

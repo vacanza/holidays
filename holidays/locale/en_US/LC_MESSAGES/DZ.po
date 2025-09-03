@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.81\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2025-09-03 22:33+0700\n"
+"PO-Revision-Date: 2025-09-04 01:02+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -45,7 +45,7 @@ msgid "عيد العمال"
 msgstr "Labor Day"
 
 #. Independence Day.
-msgid "عيد الإستقلال"
+msgid "عيد الاستقلال"
 msgstr "Independence Day"
 
 #. Independence and National Liberation Front Day.
