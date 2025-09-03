@@ -47,6 +47,24 @@ class Spain(
         * [2024](https://web.archive.org/web/20240401192304/https://www.boe.es/buscar/doc.php?id=BOE-A-2023-22014)
         * [2025](https://web.archive.org/web/20241226214918/https://www.boe.es/buscar/doc.php?id=BOE-A-2024-21316)
 
+    Subdivisions Holidays References:
+        * Navarra:
+            * [2010](https://web.archive.org/web/20250903095706/https://www.lexnavarra.navarra.es/detalle.asp?r=8402)
+            * [2011](https://web.archive.org/web/20250903095217/https://www.lexnavarra.navarra.es/detalle.asp?r=8403)
+            * [2012](https://web.archive.org/web/20250903095133/https://www.lexnavarra.navarra.es/detalle.asp?r=12993)
+            * [2013](https://web.archive.org/web/20250903095136/https://www.lexnavarra.navarra.es/detalle.asp?r=26226)
+            * [2014](https://web.archive.org/web/20250903095123/https://www.lexnavarra.navarra.es/detalle.asp?r=32382)
+            * [2015](https://web.archive.org/web/20250903095257/https://www.lexnavarra.navarra.es/detalle.asp?r=34276)
+            * [2016](https://web.archive.org/web/20250903095302/https://www.lexnavarra.navarra.es/detalle.asp?r=36141)
+            * [2017](https://web.archive.org/web/20250903095306/https://www.lexnavarra.navarra.es/detalle.asp?r=37665)
+            * [2018](https://web.archive.org/web/20170728130845/https://www.lexnavarra.navarra.es/detalle.asp?r=38904)
+            * [2019](https://web.archive.org/web/20250903095819/https://www.lexnavarra.navarra.es/detalle.asp?r=50305)
+            * [2020](https://web.archive.org/web/20250623005808/https://www.lexnavarra.navarra.es/detalle.asp?r=52229)
+            * [2021](https://web.archive.org/web/20250623010750/https://www.lexnavarra.navarra.es/detalle.asp?r=52748)
+            * [2022](https://web.archive.org/web/20250623000851/https://www.lexnavarra.navarra.es/detalle.asp?r=53763)
+            * [2024](https://web.archive.org/web/20250623001355/https://www.lexnavarra.navarra.es/detalle.asp?r=56116)
+            * [2025](https://web.archive.org/web/20250622235218/https://www.lexnavarra.navarra.es/detalle.asp?r=57122)
+
     Holidays checked with official sources for 2010-2025 only.
     """
 
@@ -640,6 +658,9 @@ class Spain(
 
         if self._year in {2011, 2013, 2015, 2016, 2017} or self._year >= 2022:
             self._add_saint_james_day(tr("Santiago Apóstol"))
+
+        # Saint Francis Xavier's Day.
+        self._move_holiday(self._add_holiday_dec_3(tr("San Francisco Javier")))
 
         if self._year == 2020:
             self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
