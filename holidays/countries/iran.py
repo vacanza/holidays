@@ -9,12 +9,11 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-from datetime import date, timedelta
+
 from gettext import gettext as tr
-from typing import List
+from datetime import timedelta
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.islamic import EstimatedDate
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
@@ -32,6 +31,35 @@ from holidays.calendars.gregorian import (
 )
 from holidays.groups import IslamicHolidays, PersianCalendarHolidays
 from holidays.holiday_base import HolidayBase
+
+
+# A wrapper for the IranIslamicHolidays class to adjust estimated holiday dates.
+# The library's estimation for Iranian holidays can be off by one day.
+# This class intercepts the calls to get holiday dates, and if the date is
+# an estimation (i.e., not in the confirmed dates list), it adds one day to it.
+class _AdjustedIranIslamicHolidays:
+    def __init__(self, iran_islamic_holidays_instance):
+        self._holidays = iran_islamic_holidays_instance
+
+    def __getattr__(self, name):
+        attr = getattr(self._holidays, name)
+        if callable(attr) and name.startswith("get_") and name.endswith("_days"):
+
+            def wrapper(year):
+                dates = attr(year)
+
+                holiday_const_name = name.replace("get_", "").replace("_days", "").upper()
+                confirmed_years_attr = f"{holiday_const_name}_DATES_CONFIRMED_YEARS"
+
+                if hasattr(self._holidays, confirmed_years_attr):
+                    confirmed_years = getattr(self._holidays, confirmed_years_attr)
+                    if year not in confirmed_years:
+                        return [d + timedelta(days=1) for d in dates]
+
+                return dates
+            return wrapper
+
+        return attr
 
 
 class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
@@ -63,6 +91,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
         IslamicHolidays.__init__(
             self, cls=IranIslamicHolidays, show_estimated=islamic_show_estimated
         )
+        self._islamic_holidays = _AdjustedIranIslamicHolidays(self._islamic_holidays)
         PersianCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
@@ -154,7 +183,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
         # Eid al-Ghadeer.
         self._add_eid_al_ghadir_day(tr("عید سعید غدیر خم"))
 
-    
+
 class IR(Iran):
     pass
 
@@ -162,40 +191,8 @@ class IR(Iran):
 class IRN(Iran):
     pass
 
+
 class IranIslamicHolidays(_CustomIslamicHolidays):
-    def _get_gregorian_date(self, hijri_date: tuple[int, int, int]) -> List[EstimatedDate]:
-        """
-        Overrides the Hijri to Gregorian conversion method.
-        This is the core place where future dates are calculated.
-        It calls the original logic and then applies a one-day correction
-        to fix the known off-by-one error for Iran's calendar estimations.
-        """
-        # Get the original estimated date(s) from the parent class.
-        # The result is a list of EstimatedDate objects.
-        estimated_dates = super()._get_gregorian_date(hijri_date)
-        
-        # Apply the one-day correction to each date in the list.
-        if estimated_dates:
-            corrected_dates = []
-            for dt in estimated_dates:
-                # Create a standard date object from the EstimatedDate
-                gregorian_dt = date(dt.year, dt.month, dt.day)
-                # Add one day
-                corrected_gregorian_dt = gregorian_dt + timedelta(days=1)
-                # Re-wrap in EstimatedDate to maintain the type for downstream logic
-                # that adds the "(تخمینی)" label.
-                corrected_dates.append(
-                    EstimatedDate(
-                        corrected_gregorian_dt.year,
-                        corrected_gregorian_dt.month,
-                        corrected_gregorian_dt.day,
-                    )
-                )
-            return corrected_dates
-
-        return estimated_dates
-
-    
     ALI_AL_RIDA_DEATH_DATES_CONFIRMED_YEARS = (2001, 2025)
     ALI_AL_RIDA_DEATH_DATES = {
         2001: (MAY, 24),
