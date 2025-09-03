@@ -249,7 +249,7 @@ class TestCase:
             "`holidays` object must be a subclass of `HolidayBase`",
         )
 
-    def assertAliases(self, cls, *aliases):  # noqa: N802
+    def assertAliases(self, cls, *aliases):
         """Assert aliases match."""
         self.assertTrue(
             issubclass(cls, HolidayBase), "The entity object must be a subclass of `HolidayBase`"
@@ -260,7 +260,7 @@ class TestCase:
             self.assertIsNotNone(alias, type_error_message)
             self.assertTrue(issubclass(alias, cls), type_error_message)
 
-    def assertDeprecatedSubdivisions(self, message):  # noqa: N802
+    def assertDeprecatedSubdivisions(self, message):
         warnings.simplefilter("always", category=DeprecationWarning)
         for subdiv in self.test_class._deprecated_subdivisions:
             with warnings.catch_warnings(record=True) as ctx:
@@ -270,7 +270,7 @@ class TestCase:
                 self.assertIn(message, str(warning.message))
 
     # Holiday.
-    def _assertHoliday(self, instance_name, *args):  # noqa: N802
+    def _assertHoliday(self, instance_name, *args):
         """Helper: assert each date is a holiday."""
         holidays, dates = self._parse_arguments(args, instance_name=instance_name)
         self._verify_type(holidays)
@@ -279,7 +279,7 @@ class TestCase:
             self.assertIn(dt, holidays, dt)
 
     # HolidayDates.
-    def _assertHolidayDates(self, instance_name, *args):  # noqa: N802
+    def _assertHolidayDates(self, instance_name, *args):
         """Helper: assert holiday dates exactly match expected dates."""
         holidays, dates = self._parse_arguments(args, instance_name=instance_name)
         self._verify_type(holidays)
@@ -291,7 +291,7 @@ class TestCase:
         self.assertEqual(len(dates), len(holidays.keys()), set(dates).difference(holidays.keys()))
 
     # HolidayName.
-    def _assertHolidayName(self, name, instance_name, *args):  # noqa: N802
+    def _assertHolidayName(self, name, instance_name, *args):
         """Helper: assert either a holiday with a specific name exists or
         each holiday name matches an expected one depending on the args nature.
         """
@@ -308,7 +308,7 @@ class TestCase:
             raise ValueError(f"The {arg} wasn't caught by `assertHolidayName()`")
 
     # HolidayNameCount.
-    def _assertHolidayNameCount(self, name, count, instance_name, *args):  # noqa: N802
+    def _assertHolidayNameCount(self, name, count, instance_name, *args):
         """Helper: assert number of holidays with a specific name in every year matches
         expected.
         """
@@ -328,7 +328,7 @@ class TestCase:
             )
 
     # Holidays.
-    def _assertHolidays(self, instance_name, *args):  # noqa: N802
+    def _assertHolidays(self, instance_name, *args):
         """Helper: assert holidays exactly match expected holidays."""
         holidays, expected_holidays = self._parse_arguments(
             args, expand_items=False, instance_name=instance_name
@@ -349,7 +349,7 @@ class TestCase:
         )
 
     # No Holiday.
-    def _assertNoHoliday(self, instance_name, *args):  # noqa: N802
+    def _assertNoHoliday(self, instance_name, *args):
         """Helper: assert each date is not a holiday."""
         holidays, dates = self._parse_arguments(args, instance_name=instance_name)
 
@@ -357,7 +357,7 @@ class TestCase:
             self.assertNotIn(dt, holidays, dt)
 
     # No HolidayName.
-    def _assertNoHolidayName(self, name, instance_name, *args):  # noqa: N802
+    def _assertNoHolidayName(self, name, instance_name, *args):
         """Helper: assert a holiday with a specific name doesn't exist."""
         holidays, items = self._parse_arguments(
             args, instance_name=instance_name, raise_on_empty=False
@@ -378,7 +378,7 @@ class TestCase:
             raise ValueError(f"The {arg} wasn't caught by `assertNoHolidayName()`")
 
     # No Holidays.
-    def _assertNoHolidays(self, instance_name, *args):  # noqa: N802
+    def _assertNoHolidays(self, instance_name, *args):
         """Helper: assert holidays dict is empty."""
         holidays, _ = self._parse_arguments(
             args, instance_name=instance_name, raise_on_empty=False
@@ -389,7 +389,7 @@ class TestCase:
         self.assertEqual(0, len(holidays))
 
     # LocalizedHolidays.
-    def _assertLocalizedHolidays(self, localized_holidays, language=None):  # noqa: N802
+    def _assertLocalizedHolidays(self, localized_holidays, language=None):
         """Helper: assert localized holidays match expected names."""
         instance = self.test_class(
             years=localized_holidays[0][0].split("-")[0],
@@ -416,7 +416,7 @@ class TestCase:
             f"Please make sure all holiday names are localized: {actual_holidays}",
         )
 
-    def assertLocalizedHolidays(self, *args):  # noqa: N802
+    def assertLocalizedHolidays(self, *args):
         """Assert localized holidays match expected names."""
         arg = args[0]
         is_string = isinstance(arg, str)
@@ -502,7 +502,7 @@ class CommonFinancialTests(CommonTests):
 class SundayHolidays(TestCase):
     """Common class to test countries with Sundays as a holidays."""
 
-    def assertSundays(self, cls):  # noqa: N802
+    def assertSundays(self, cls):
         holidays = cls(years=1989, include_sundays=True)
         self.assertHoliday(holidays, "1989-12-31")
         self.assertEqual(53, len([s for s in holidays if s.weekday() == SUN]))
@@ -541,7 +541,7 @@ class WorkingDayTests(TestCase):
     """Common class for testing entity holidays substituted from non-working days."""
 
     # Workday.
-    def _assertWorkingDay(self, instance_name, *args):  # noqa: N802
+    def _assertWorkingDay(self, instance_name, *args):
         """Helper: assert each date is a working day."""
         holidays, dates = self._parse_arguments(args, instance_name=instance_name)
         self._verify_type(holidays)
@@ -550,10 +550,10 @@ class WorkingDayTests(TestCase):
             self.assertTrue(holidays._is_weekend(parse(dt)))
             self.assertTrue(holidays.is_working_day(dt))
 
-    def assertWorkingDay(self, *args):  # noqa: N802
+    def assertWorkingDay(self, *args):
         """Assert each date is a working day."""
         self._assertWorkingDay("holidays", *args)
 
-    def assertNonObservedWorkingDay(self, *args):  # noqa: N802
+    def assertNonObservedWorkingDay(self, *args):
         """Assert each date is a non-observed working day."""
         self._assertWorkingDay("holidays_non_observed", *args)
