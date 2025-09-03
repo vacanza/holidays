@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from gettext import gettext as tr
-from datetime import timedelta
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
@@ -31,35 +30,6 @@ from holidays.calendars.gregorian import (
 )
 from holidays.groups import IslamicHolidays, PersianCalendarHolidays
 from holidays.holiday_base import HolidayBase
-
-
-# A wrapper for the IranIslamicHolidays class to adjust estimated holiday dates.
-# The library's estimation for Iranian holidays can be off by one day.
-# This class intercepts the calls to get holiday dates, and if the date is
-# an estimation (i.e., not in the confirmed dates list), it adds one day to it.
-class _AdjustedIranIslamicHolidays:
-    def __init__(self, iran_islamic_calendar_instance):
-        self._holidays = iran_islamic_calendar_instance
-
-    def __getattr__(self, name):
-        attr = getattr(self._holidays, name)
-        if callable(attr) and name.startswith("get_") and name.endswith("_days"):
-
-            def wrapper(year):
-                dates = attr(year)
-
-                holiday_const_name = name.replace("get_", "").replace("_days", "").upper()
-                confirmed_years_attr = f"{holiday_const_name}_DATES_CONFIRMED_YEARS"
-
-                if hasattr(self._holidays, confirmed_years_attr):
-                    confirmed_years = getattr(self._holidays, confirmed_years_attr)
-                    if year not in confirmed_years:
-                        return [d + timedelta(days=1) for d in dates]
-
-                return dates
-            return wrapper
-
-        return attr
 
 
 class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
@@ -91,7 +61,6 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
         IslamicHolidays.__init__(
             self, cls=IranIslamicHolidays, show_estimated=islamic_show_estimated
         )
-        self._islamic_calendar = _AdjustedIranIslamicHolidays(self._islamic_calendar)
         PersianCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
