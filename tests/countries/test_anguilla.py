@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestAnguilla(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(AI.start_year, 2050)
-        super().setUpClass(Anguilla, years=cls.full_range)
+        super().setUpClass(Anguilla)
 
     def test_country_aliases(self):
         self.assertAliases(Anguilla, AI, AIA)

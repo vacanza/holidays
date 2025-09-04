@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestBelize(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(BZ.start_year, 2050)
-        super().setUpClass(Belize, years=cls.full_range)
+        super().setUpClass(Belize)
 
     def test_country_aliases(self):
         self.assertAliases(Belize, BZ, BLZ)

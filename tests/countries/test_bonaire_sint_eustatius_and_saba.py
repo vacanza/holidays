@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(BQ.start_year, 2050)
-        super().setUpClass(BonaireSintEustatiusAndSaba, years=cls.full_range)
+        super().setUpClass(BonaireSintEustatiusAndSaba)
 
     def test_country_aliases(self):
         self.assertAliases(BonaireSintEustatiusAndSaba, BQ, BES)

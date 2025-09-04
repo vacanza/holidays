@@ -20,8 +20,7 @@ from tests.common import CommonCountryTests
 class TestBenin(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(BJ.start_year, 2050)
-        super().setUpClass(Benin, years=cls.full_range, years_workday=range(1990, 2050))
+        super().setUpClass(Benin, years_workday=range(1990, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(Benin, BJ, BEN)

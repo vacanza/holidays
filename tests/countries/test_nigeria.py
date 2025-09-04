@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestNigeria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(NG.start_year, 2050)
-        super().setUpClass(Nigeria, years=cls.full_range)
+        super().setUpClass(Nigeria)
 
     def test_country_aliases(self):
         self.assertAliases(Nigeria, NG, NGA)

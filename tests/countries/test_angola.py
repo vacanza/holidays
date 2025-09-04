@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestAngola(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(AO.start_year, 2050)
-        super().setUpClass(Angola, years=cls.full_range, years_non_observed=range(2000, 2030))
+        super().setUpClass(Angola, years_non_observed=range(2000, 2030))
 
     def test_country_aliases(self):
         self.assertAliases(Angola, AO, AGO)

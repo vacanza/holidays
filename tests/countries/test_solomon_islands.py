@@ -20,8 +20,7 @@ from tests.common import CommonCountryTests
 class TestSolomonIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(SB.start_year, 2050)
-        super().setUpClass(SolomonIslands, years=cls.full_range)
+        super().setUpClass(SolomonIslands)
 
     def test_country_aliases(self):
         self.assertAliases(SolomonIslands, SB, SLB)

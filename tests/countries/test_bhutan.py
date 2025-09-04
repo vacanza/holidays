@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestBhutan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(BT.start_year, 2050)
-        super().setUpClass(Bhutan, years=cls.full_range)
+        super().setUpClass(Bhutan)
 
     def test_country_aliases(self):
         self.assertAliases(Bhutan, BT, BTN)

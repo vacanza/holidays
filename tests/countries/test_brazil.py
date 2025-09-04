@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestBrazil(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(BR.start_year, 2050)
-        super().setUpClass(Brazil, years=cls.full_range, year_all_subdivs=range(1995, 2050))
+        super().setUpClass(Brazil, year_all_subdivs=range(1995, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(Brazil, BR, BRA)

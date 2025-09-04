@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestBermuda(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(BM.start_year, 2050)
-        super().setUpClass(Bermuda, years=cls.full_range)
+        super().setUpClass(Bermuda)
 
     def test_country_aliases(self):
         self.assertAliases(Bermuda, BM, BMU)

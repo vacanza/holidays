@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestBurkinaFaso(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(BurkinaFaso, years=range(BF.start_year, 2050))
+        super().setUpClass(BurkinaFaso)
 
     def test_country_aliases(self):
         self.assertAliases(BurkinaFaso, BF, BFA)

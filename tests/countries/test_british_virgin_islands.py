@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestBritishVirginIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(VG.start_year, 2050)
-        super().setUpClass(BritishVirginIslands, years=cls.full_range)
+        super().setUpClass(BritishVirginIslands)
 
     def test_country_aliases(self):
         self.assertAliases(BritishVirginIslands, VG, VGB)

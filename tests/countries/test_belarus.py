@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests, WorkingDayTests
 class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(BY.start_year, 2050)
-        super().setUpClass(Belarus, years=cls.full_range)
+        super().setUpClass(Belarus)
 
     def test_country_aliases(self):
         self.assertAliases(Belarus, BY, BLR)

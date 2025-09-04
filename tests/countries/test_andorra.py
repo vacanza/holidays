@@ -20,8 +20,7 @@ from tests.common import CommonCountryTests
 class TestAndorra(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(AD.start_year, 2050)
-        super().setUpClass(Andorra, years=cls.full_range)
+        super().setUpClass(Andorra)
 
     def test_country_aliases(self):
         self.assertAliases(Andorra, AD, AND)

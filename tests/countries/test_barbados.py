@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestBarbados(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(BB.start_year, 2050)
-        super().setUpClass(Barbados, years=cls.full_range, years_non_observed=range(2000, 2024))
+        super().setUpClass(Barbados, years_non_observed=range(2000, 2024))
 
     def test_country_aliases(self):
         self.assertAliases(Barbados, BB, BRB)

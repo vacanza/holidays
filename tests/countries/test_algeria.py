@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestAlgeria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(DZ.start_year, 2050)
-        super().setUpClass(Algeria, years=cls.full_range)
+        super().setUpClass(Algeria)
 
     def test_country_aliases(self):
         self.assertAliases(Algeria, DZ, DZA)

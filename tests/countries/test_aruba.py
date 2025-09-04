@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestAruba(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(AW.start_year, 2050)
-        super().setUpClass(Aruba, years=cls.full_range)
+        super().setUpClass(Aruba)
 
     def test_country_aliases(self):
         self.assertAliases(Aruba, AW, ABW)

@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestAfghanistan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(AF.start_year, 2050)
-        super().setUpClass(Afghanistan, years=cls.full_range)
+        super().setUpClass(Afghanistan)
 
     def test_country_aliases(self):
         self.assertAliases(Afghanistan, AF, AFG)

@@ -22,8 +22,7 @@ from tests.common import CommonCountryTests
 class TestAustralia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(AU.start_year, 2050)
-        super().setUpClass(Australia, years=cls.full_range)
+        super().setUpClass(Australia)
 
     def _assertVariableDays(self, year: int, subdiv_holidays_mapping: dict):  # noqa: N802
         for dt, subdivisions in subdiv_holidays_mapping.items():

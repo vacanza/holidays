@@ -107,7 +107,12 @@ class TestCase:
             cls.set_language(test_class, default_lang)
 
         if years is None:
-            years = range(1950, 2050)
+            start_year = getattr(test_class, "start_year", 1950)
+            # end_year is fixed at 2050 for now due to IslamicHolidays support ending in 2077.
+            years = range(start_year, 2050)
+
+        # Default `self.full_range`.
+        cls.full_range = years
 
         # Default `years_[insert]` to `years` to prevent redundant initialization.
         if (

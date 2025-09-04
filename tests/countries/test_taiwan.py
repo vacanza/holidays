@@ -20,8 +20,7 @@ from tests.common import CommonCountryTests, WorkingDayTests
 class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(TW.start_year, 2050)
-        super().setUpClass(Taiwan, years=cls.full_range)
+        super().setUpClass(Taiwan)
 
     def test_country_aliases(self):
         self.assertAliases(Taiwan, TW, TWN)

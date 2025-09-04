@@ -20,10 +20,8 @@ from tests.common import CommonCountryTests
 class TestArgentina(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(AR.start_year, 2050)
         super().setUpClass(
             Argentina,
-            years=cls.full_range,
             years_armenian=range(2007, 2050),
             years_bank=range(1975, 2050),
             years_government=range(2014, 2050),

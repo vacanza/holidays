@@ -20,8 +20,7 @@ from tests.common import CommonCountryTests, WorkingDayTests
 class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(AZ.start_year, 2050)
-        super().setUpClass(Azerbaijan, years=cls.full_range)
+        super().setUpClass(Azerbaijan)
 
     def test_country_aliases(self):
         self.assertAliases(Azerbaijan, AZ, AZE)

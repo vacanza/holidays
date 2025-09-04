@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestBahamas(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Bahamas, years=range(BS.start_year, 2050))
+        super().setUpClass(Bahamas)
 
     def test_country_aliases(self):
         self.assertAliases(Bahamas, BS, BHS)

@@ -23,8 +23,7 @@ from tests.common import CommonFinancialTests
 class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(XNSE.start_year, 2050)
-        super().setUpClass(NationalStockExchangeOfIndia, years=cls.full_range)
+        super().setUpClass(NationalStockExchangeOfIndia)
 
     def test_market_aliases(self):
         self.assertAliases(NationalStockExchangeOfIndia, XNSE, NSE)
