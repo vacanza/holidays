@@ -19,13 +19,14 @@ from tests.common import CommonCountryTests
 class TestBrunei(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Brunei, years=range(1984, 2077), years_non_observed=range(1984, 2077))
+        cls.full_range = range(BN.start_year, 2077)
+        super().setUpClass(Brunei, years=cls.full_range)
 
     def test_country_aliases(self):
         self.assertAliases(Brunei, BN, BRN)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Brunei(years=1983))
+        self.assertNoHolidays(Brunei(years=BN.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -129,9 +130,9 @@ class TestBrunei(CommonCountryTests, TestCase):
         )
 
     def test_national_day(self):
-        self.assertHoliday(f"{year}-02-23" for year in range(1984, 2077))
-
-        self.assertNoNonObservedHoliday(
+        name = "Hari Kebangsaan"
+        self.assertHolidayName(name, (f"{year}-02-23" for year in self.full_range))
+        dt = (
             "2001-02-24",
             "2003-02-24",
             "2007-02-24",
@@ -141,11 +142,13 @@ class TestBrunei(CommonCountryTests, TestCase):
             "2024-02-24",
             "2025-02-24",
         )
+        self.assertHolidayName(f"{name} (diperhatikan)", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_armed_forces_day(self):
-        self.assertHoliday(f"{year}-05-31" for year in range(1984, 2077))
-
-        self.assertNoNonObservedHoliday(
+        name = "Hari Angkatan Bersenjata Diraja Brunei"
+        self.assertHolidayName(name, (f"{year}-05-31" for year in self.full_range))
+        dt = (
             "2002-06-01",
             "2009-06-01",
             "2013-06-01",
@@ -154,11 +157,13 @@ class TestBrunei(CommonCountryTests, TestCase):
             "2020-06-01",
             "2024-06-01",
         )
+        self.assertHolidayName(f"{name} (diperhatikan)", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_sultan_hassanal_bolkiah_birthday(self):
-        self.assertHoliday(f"{year}-07-15" for year in range(1984, 2077))
-
-        self.assertNoNonObservedHoliday(
+        name = "Hari Keputeraan KDYMM Sultan Brunei"
+        self.assertHolidayName(name, (f"{year}-07-15" for year in self.full_range))
+        dt = (
             "2001-07-16",
             "2005-07-16",
             "2007-07-16",
@@ -168,6 +173,8 @@ class TestBrunei(CommonCountryTests, TestCase):
             "2018-07-16",
             "2022-07-16",
         )
+        self.assertHolidayName(f"{name} (diperhatikan)", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

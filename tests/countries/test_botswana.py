@@ -19,19 +19,20 @@ from tests.common import CommonCountryTests
 class TestBotswana(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Botswana, years=range(1966, 2050), years_non_observed=range(2010, 2024))
+        cls.full_range = range(BW.start_year, 2050)
+        super().setUpClass(Botswana, years=cls.full_range, years_non_observed=range(2010, 2024))
 
     def test_country_aliases(self):
         self.assertAliases(Botswana, BW, BWA)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Botswana(years=1965))
+        self.assertNoHolidays(Botswana(years=BW.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday("2019-07-02")
 
     def test_new_years(self):
-        for year in range(1966, 2050):
+        for year in self.full_range:
             self.assertHoliday(f"{year}-01-01", f"{year}-01-02")
 
         dt = (
@@ -59,7 +60,7 @@ class TestBotswana(CommonCountryTests, TestCase):
         self.assertNonObservedHoliday(dt)
 
     def test_labour_day(self):
-        self.assertHoliday(f"{year}-05-01" for year in range(1966, 2050))
+        self.assertHoliday(f"{year}-05-01" for year in self.full_range)
         dt = ("2011-05-02", "2016-05-02", "2022-05-02")
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
@@ -81,7 +82,7 @@ class TestBotswana(CommonCountryTests, TestCase):
         )
 
     def test_botswana_day(self):
-        for year in range(1966, 2050):
+        for year in self.full_range:
             self.assertHoliday(f"{year}-09-30", f"{year}-10-01")
 
         dt = (
@@ -94,7 +95,7 @@ class TestBotswana(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_day(self):
-        for year in range(1966, 2050):
+        for year in self.full_range:
             self.assertHoliday(f"{year}-12-25", f"{year}-12-26")
 
         dt = (

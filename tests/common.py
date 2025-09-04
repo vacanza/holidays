@@ -145,15 +145,21 @@ class TestCase:
                     if islamic_no_estimated_key not in year_variants:
                         year_variants[islamic_no_estimated_key] = years
 
+        # For subdivisions, `years_all_subdivs` can be use for mass-assignments.
         if getattr(test_class, "subdivisions", None):
+            years_all_subdivs = year_variants.get("years_all_subdivs", years)
+            years_all_subdivs_non_observed = year_variants.get(
+                "years_all_subdivs_non_observed"
+            ) or year_variants.get("years_non_observed", years)
+
             for subdiv in test_class.subdivisions:
                 suffix = subdiv.lower()
                 if f"years_subdiv_{suffix}" not in year_variants:
-                    year_variants[f"years_subdiv_{suffix}"] = years
+                    year_variants[f"years_subdiv_{suffix}"] = years_all_subdivs
                 if issubclass(test_class, ObservedHolidayBase):
                     non_obs_key = f"years_subdiv_{suffix}_non_observed"
                     if non_obs_key not in year_variants:
-                        year_variants[non_obs_key] = years
+                        year_variants[non_obs_key] = years_all_subdivs_non_observed
 
             cls.subdiv_holidays = {}
             cls.subdiv_holidays_non_observed = {}

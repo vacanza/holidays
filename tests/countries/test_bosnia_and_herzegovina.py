@@ -19,16 +19,8 @@ from tests.common import CommonCountryTests
 class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(2000, 2050)
-        super().setUpClass(BosniaAndHerzegovina, years=years)
-        cls.subdiv_holidays = {
-            subdiv: BosniaAndHerzegovina(subdiv=subdiv, years=years)
-            for subdiv in BosniaAndHerzegovina.subdivisions
-        }
-        cls.subdiv_holidays_non_observed = {
-            subdiv: BosniaAndHerzegovina(subdiv=subdiv, years=years, observed=False)
-            for subdiv in BosniaAndHerzegovina.subdivisions
-        }
+        cls.full_range = range(2000, 2050)
+        super().setUpClass(BosniaAndHerzegovina, years=cls.full_range)
 
     def test_country_aliases(self):
         self.assertAliases(BosniaAndHerzegovina, BA, BIH)
@@ -38,8 +30,8 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         name_observed = f"{name} (slobodan dan)"
         self.assertHolidayName(
             name,
-            (f"{year}-01-01" for year in range(2000, 2050)),
-            (f"{year}-01-02" for year in range(2000, 2050)),
+            (f"{year}-01-01" for year in self.full_range),
+            (f"{year}-01-02" for year in self.full_range),
         )
 
         obs_dates = {
@@ -78,14 +70,14 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv != "BRC":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-01-06" for year in range(2000, 2050))
+                    name, holidays, (f"{year}-01-06" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_orthodox_christmas(self):
         name = "Božić (Pravoslavni)"
-        self.assertHolidayName(name, (f"{year}-01-07" for year in range(2000, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-07" for year in self.full_range))
 
         name_observed = f"{name} (slobodan dan)"
         obs_dt = (
@@ -107,7 +99,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "SRP":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-01-14" for year in range(2000, 2050))
+                    name, holidays, (f"{year}-01-14" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -118,7 +110,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "BIH":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-03-01" for year in range(2000, 2050))
+                    name, holidays, (f"{year}-03-01" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -129,7 +121,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "BRC":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-03-08" for year in range(2000, 2050))
+                    name, holidays, (f"{year}-03-08" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -233,8 +225,8 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         name_observed = f"{name} (slobodan dan)"
         self.assertHolidayName(
             name,
-            (f"{year}-05-01" for year in range(2000, 2050)),
-            (f"{year}-05-02" for year in range(2000, 2050)),
+            (f"{year}-05-01" for year in self.full_range),
+            (f"{year}-05-02" for year in self.full_range),
         )
 
         obs_dates = {
@@ -266,7 +258,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv != "BRC":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-05-09" for year in range(2000, 2050))
+                    name, holidays, (f"{year}-05-09" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -328,7 +320,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "SRP":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-11-21" for year in range(2000, 2050))
+                    name, holidays, (f"{year}-11-21" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -339,7 +331,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "BIH":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-11-25" for year in range(2000, 2050))
+                    name, holidays, (f"{year}-11-25" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -350,7 +342,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv != "BRC":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-12-24" for year in range(2000, 2050))
+                    name, holidays, (f"{year}-12-24" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -358,7 +350,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
     def test_catholic_christmas(self):
         name = "Božić (Katolički)"
         name_observed = f"{name} (slobodan dan)"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(2000, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
 
         obs_dt = (
             "2005-12-26",

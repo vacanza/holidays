@@ -19,13 +19,13 @@ from tests.common import CommonCountryTests
 class TestBahamas(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Bahamas, years=range(1974, 2050), years_non_observed=range(1974, 2050))
+        super().setUpClass(Bahamas, years=range(BS.start_year, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(Bahamas, BS, BHS)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Bahamas(years=1973))
+        self.assertNoHolidays(Bahamas(years=BS.start_year - 1))
 
     def test_special_public_holidays(self):
         self.assertHoliday("2022-09-19")

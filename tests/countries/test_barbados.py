@@ -19,13 +19,14 @@ from tests.common import CommonCountryTests
 class TestBarbados(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Barbados, years=range(1969, 2050), years_non_observed=range(2000, 2024))
+        cls.full_range = range(BB.start_year, 2050)
+        super().setUpClass(Barbados, years=cls.full_range, years_non_observed=range(2000, 2024))
 
     def test_country_aliases(self):
         self.assertAliases(Barbados, BB, BRB)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Barbados(years=1968))
+        self.assertNoHolidays(Barbados(years=BB.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -36,7 +37,7 @@ class TestBarbados(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         dt = (
             "2006-01-02",
             "2012-01-02",
@@ -49,8 +50,8 @@ class TestBarbados(CommonCountryTests, TestCase):
     def test_errol_barrow_day(self):
         name = "Errol Barrow Day"
         self.assertHolidayName(name, (f"{year}-01-21" for year in range(1989, 2050)))
-        self.assertNoHoliday(f"{year}-01-21" for year in range(1969, 1989))
-        self.assertNoHolidayName(name, range(1969, 1989))
+        self.assertNoHoliday(f"{year}-01-21" for year in range(BB.start_year, 1989))
+        self.assertNoHolidayName(name, range(BB.start_year, 1989))
         dt = (
             "2001-01-22",
             "2007-01-22",
@@ -70,7 +71,7 @@ class TestBarbados(CommonCountryTests, TestCase):
             "2022-04-15",
             "2023-04-07",
         )
-        self.assertHolidayName(name, range(1969, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "Easter Monday"
@@ -83,13 +84,13 @@ class TestBarbados(CommonCountryTests, TestCase):
             "2022-04-18",
             "2023-04-10",
         )
-        self.assertHolidayName(name, range(1969, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_national_heroes_day(self):
         name = "National Heroes Day"
         self.assertHolidayName(name, (f"{year}-04-28" for year in range(1998, 2050)))
-        self.assertNoHoliday(f"{year}-04-28" for year in range(1969, 1998))
-        self.assertNoHolidayName(name, range(1969, 1998))
+        self.assertNoHoliday(f"{year}-04-28" for year in range(BB.start_year, 1998))
+        self.assertNoHolidayName(name, range(BB.start_year, 1998))
         dt = (
             "2002-04-29",
             "2013-04-29",
@@ -100,7 +101,7 @@ class TestBarbados(CommonCountryTests, TestCase):
 
     def test_may_day(self):
         name = "May Day"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
         dt = (
             "2005-05-02",
             "2011-05-02",
@@ -121,11 +122,11 @@ class TestBarbados(CommonCountryTests, TestCase):
             "2022-06-06",
             "2023-05-29",
         )
-        self.assertHolidayName(name, range(1969, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_emancipation_day(self):
         name = "Emancipation Day"
-        self.assertHolidayName(name, (f"{year}-08-01" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-08-01" for year in self.full_range))
         dt = (
             "2004-08-03",
             "2005-08-02",
@@ -149,11 +150,11 @@ class TestBarbados(CommonCountryTests, TestCase):
             "2022-08-01",
             "2023-08-07",
         )
-        self.assertHolidayName(name, range(1969, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_independence_day(self):
         name = "Independence Day"
-        self.assertHolidayName(name, (f"{year}-11-30" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-11-30" for year in self.full_range))
         dt = (
             "2003-12-01",
             "2008-12-01",
@@ -164,7 +165,7 @@ class TestBarbados(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
         dt = (
             "2005-12-27",
             "2011-12-27",
@@ -176,7 +177,7 @@ class TestBarbados(CommonCountryTests, TestCase):
 
     def test_boxing_day(self):
         name = "Boxing Day"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
         dt = (
             "2004-12-27",
             "2010-12-27",
