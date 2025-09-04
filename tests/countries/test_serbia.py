@@ -19,14 +19,14 @@ from tests.common import CommonCountryTests
 class TestSerbia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(2007, 2050)
+        cls.full_range = range(RS.start_year, 2050)
         super().setUpClass(Serbia, years=cls.full_range)
 
     def test_country_aliases(self):
         self.assertAliases(Serbia, RS, SRB)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Serbia(years=2006))
+        self.assertNoHolidays(Serbia(years=RS.start_year - 1))
 
     def test_new_years_day(self):
         name = "Нова година"

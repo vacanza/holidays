@@ -25,8 +25,7 @@ class TestIran(CommonCountryTests, TestCase):
         self.assertAliases(Iran, IR, IRN)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Iran(years=1979))
-        self.assertNoHolidays(Iran(years=2102))
+        self.assertNoHolidays(Iran(years=(IR.start_year - 1, 2102)))
 
     def test_2021(self):
         self.assertHolidays(

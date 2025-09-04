@@ -19,14 +19,14 @@ from tests.common import CommonCountryTests
 class TestNigeria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(1979, 2050)
+        cls.full_range = range(NG.start_year, 2050)
         super().setUpClass(Nigeria, years=cls.full_range)
 
     def test_country_aliases(self):
         self.assertAliases(Nigeria, NG, NGA)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Nigeria(years=1978))
+        self.assertNoHolidays(Nigeria(years=NG.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -77,7 +77,7 @@ class TestNigeria(CommonCountryTests, TestCase):
     def test_workers_day(self):
         name = "Workers' Day"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1985, 2050)))
-        self.assertNoHolidayName(name, range(1979, 1985))
+        self.assertNoHolidayName(name, range(NG.start_year, 1985))
         obs_dt = (
             "2016-05-02",
             "2021-05-03",
@@ -93,7 +93,7 @@ class TestNigeria(CommonCountryTests, TestCase):
             (f"{year}-05-29" for year in range(2000, 2019)),
             (f"{year}-06-12" for year in range(2019, 2050)),
         )
-        self.assertNoHolidayName(name, range(1979, 2000))
+        self.assertNoHolidayName(name, range(NG.start_year, 2000))
         obs_dt = (
             "2016-05-30",
             "2021-06-14",
@@ -114,7 +114,7 @@ class TestNigeria(CommonCountryTests, TestCase):
             "2019-05-29",
             "2023-05-29",
         )
-        self.assertNoHolidayName(name, range(1979, 1999))
+        self.assertNoHolidayName(name, range(NG.start_year, 1999))
 
     def test_national_day(self):
         name = "National Day"

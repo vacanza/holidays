@@ -20,22 +20,14 @@ from tests.common import CommonCountryTests
 class TestSolomonIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1979, 2050)
-        super().setUpClass(SolomonIslands, years=years, years_non_observed=years)
-        cls.subdiv_holidays = {
-            subdiv: SolomonIslands(subdiv=subdiv, years=years)
-            for subdiv in SolomonIslands.subdivisions
-        }
-        cls.subdiv_holidays_non_observed = {
-            subdiv: SolomonIslands(subdiv=subdiv, years=years, observed=False)
-            for subdiv in SolomonIslands.subdivisions
-        }
+        cls.full_range = range(SB.start_year, 2050)
+        super().setUpClass(SolomonIslands, years=cls.full_range)
 
     def test_country_aliases(self):
         self.assertAliases(SolomonIslands, SB, SLB)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(SolomonIslands(years=1978))
+        self.assertNoHolidays(SolomonIslands(years=SB.start_year - 1))
 
     def test_special_holidays(self):
         name = "Public Holiday"
@@ -54,7 +46,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1979, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         dt = (
             "2010-12-31",
             "2012-01-02",
@@ -77,7 +69,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(1979, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_holy_saturday(self):
         name = "Holy Saturday"
@@ -91,7 +83,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
             "2024-03-30",
             "2025-04-19",
         )
-        self.assertHolidayName(name, range(1979, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "Easter Monday"
@@ -105,7 +97,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(1979, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_whit_monday(self):
         name = "Whit Monday"
@@ -119,11 +111,11 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
             "2024-05-20",
             "2025-06-09",
         )
-        self.assertHolidayName(name, range(1979, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_queen_king_birthday(self):
         name_1 = "Queen's Birthday"
-        self.assertHolidayName(name_1, range(1979, 2023))
+        self.assertHolidayName(name_1, range(SB.start_year, 2023))
         self.assertHolidayName(
             name_1,
             "2019-06-08",
@@ -153,7 +145,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
 
     def test_independence_day(self):
         name = "Independence Day"
-        self.assertHolidayName(name, (f"{year}-07-07" for year in range(1979, 2050)))
+        self.assertHolidayName(name, (f"{year}-07-07" for year in self.full_range))
         dt = (
             "2013-07-08",
             "2019-07-08",
@@ -164,7 +156,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1979, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
         dt = (
             "2010-12-27",
             "2011-12-27",
@@ -177,7 +169,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
 
     def test_national_day_of_thanksgiving(self):
         name = "National Day of Thanksgiving"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1979, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
         dt = (
             "2009-12-28",
             "2010-12-28",
@@ -199,7 +191,9 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():  # type: ignore[attr-defined]
             if subdiv == province_code:
                 self.assertHolidayName(  # type: ignore[attr-defined]
-                    holiday_name, holidays, (f"{year}-{month}-{day}" for year in range(1979, 2050))
+                    holiday_name,
+                    holidays,
+                    (f"{year}-{month}-{day}" for year in self.full_range),  # type: ignore[attr-defined]
                 )
                 observed_name = f"{holiday_name} (observed)"
                 self.assertHolidayName(observed_name, holidays, observed_dts)  # type: ignore[attr-defined]
@@ -209,7 +203,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
                     observed_dts,
                 )
             else:
-                self.assertNoHolidayName(holiday_name, holidays, range(1979, 2050))  # type: ignore[attr-defined]
+                self.assertNoHolidayName(holiday_name, holidays, self.full_range)  # type: ignore[attr-defined]
 
     def test_central_province_day(self):
         observed_dts = (
