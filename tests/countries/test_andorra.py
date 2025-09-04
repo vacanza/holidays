@@ -202,7 +202,7 @@ class TestAndorra(CommonCountryTests, TestCase):
                     "2025-07-28",
                     "2025-07-29",
                 )
-                self.assertHolidayName(name, holidays, self.full_range)
+                self.assertHolidayNameCount(name, 2, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -233,7 +233,7 @@ class TestAndorra(CommonCountryTests, TestCase):
                     "2025-08-03",
                     "2025-08-04",
                 )
-                self.assertHolidayName(name, holidays, self.full_range)
+                self.assertHolidayNameCount(name, 3, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
