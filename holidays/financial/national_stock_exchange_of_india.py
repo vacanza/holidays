@@ -13,13 +13,18 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import DEC, FEB, JAN, MAR, APR, MAY, JUN, JUL, AUG, NOV, OCT, SEP
-from holidays.groups import ChristianHolidays, HinduCalendarHolidays, IslamicHolidays
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.groups import (
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_NONE, SUN_TO_NONE
 
 
 class NationalStockExchangeOfIndia(
-    ObservedHolidayBase, HinduCalendarHolidays, ChristianHolidays, IslamicHolidays
+    ObservedHolidayBase, HinduCalendarHolidays, ChristianHolidays, IslamicHolidays, StaticHolidays
 ):
     """National Stock Exchange of India (NSE) holidays.
 
@@ -75,14 +80,11 @@ class NationalStockExchangeOfIndia(
             cls=NationalStockExchangeOfIndiaIslamicHolidays,
             show_estimated=islamic_show_estimated,
         )
+        StaticHolidays.__init__(self, cls=NationalStockExchangeOfIndiaStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # New Year.
-        if self._year in {2010}:
-            self._move_holiday(self._add_holiday_jan_1(tr("New Year")))
-
         # Republic Day.
         self._move_holiday(self._add_holiday_jan_26(tr("Republic Day")))
 
@@ -92,11 +94,15 @@ class NationalStockExchangeOfIndia(
         # Dr. Baba Saheb Ambedkar Jayanti.
         self._move_holiday(self._add_holiday_apr_14(tr("Dr. Baba Saheb Ambedkar Jayanti")))
 
-        # Maharashtra Day or May Day.
-        if self._year > 2009 and self._year < 2015:
-            self._move_holiday(self._add_holiday_may_1(tr("May Day")))
-        else:
-            self._move_holiday(self._add_holiday_may_1(tr("Maharashtra Day")))
+        self._move_holiday(
+            self._add_holiday_may_1(
+                # May Day.
+                tr("May Day")
+                if 2010 <= self._year <= 2014
+                # Maharashtra Day.
+                else tr("Maharashtra Day")
+            )
+        )
 
         # Independence Day.
         self._move_holiday(self._add_holiday_aug_15(tr("Independence Day")))
@@ -274,4 +280,11 @@ class NationalStockExchangeOfIndiaIslamicHolidays(_CustomIslamicHolidays):
     MAWLID_DATES = {
         2006: (APR, 11),
         2009: (MAR, 10),
+    }
+
+
+class NationalStockExchangeOfIndiaStaticHolidays:
+    special_public_holidays = {
+        # New Year.
+        2010: (JAN, 1, tr("New Year")),
     }

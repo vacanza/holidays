@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.80\n"
+"Project-Id-Version: Holidays 0.81\n"
 "POT-Creation-Date: 2025-08-21 16:22+0000\n"
 "PO-Revision-Date: 2025-08-21 16:22+0000\n"
 "Last-Translator: Saheel Sapovadia saheelsapovadia23@gmail.com\n"
@@ -31,9 +31,6 @@ msgstr ""
 msgid "%s (estimated)"
 msgstr ""
 
-msgid "New Year"
-msgstr ""
-
 #. Republic Day.
 msgid "Republic Day"
 msgstr ""
@@ -46,9 +43,11 @@ msgstr ""
 msgid "Dr. Baba Saheb Ambedkar Jayanti"
 msgstr ""
 
+#. May Day.
 msgid "May Day"
 msgstr ""
 
+#. Maharashtra Day.
 msgid "Maharashtra Day"
 msgstr ""
 
@@ -119,4 +118,8 @@ msgid "Bakri Id"
 msgstr ""
 
 msgid "Id-E-Milad-Un-Nabi"
+msgstr ""
+
+#. New Year.
+msgid "New Year"
 msgstr ""
