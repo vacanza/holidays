@@ -22,9 +22,6 @@ class TestAndorra(CommonCountryTests, TestCase):
     def setUpClass(cls):
         cls.full_range = range(AD.start_year, 2050)
         super().setUpClass(Andorra, years=cls.full_range)
-        cls.subdiv_holidays = {
-            subdiv: Andorra(subdiv=subdiv, years=cls.full_range) for subdiv in Andorra.subdivisions
-        }
 
     def test_country_aliases(self):
         self.assertAliases(Andorra, AD, AND)

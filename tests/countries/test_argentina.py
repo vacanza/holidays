@@ -30,10 +30,6 @@ class TestArgentina(CommonCountryTests, TestCase):
             years_hebrew=range(1996, 2050),
             years_islamic=range(1997, 2050),
         )
-        cls.subdiv_holidays = {
-            subdiv: Argentina(subdiv=subdiv, years=cls.full_range)
-            for subdiv in Argentina.subdivisions
-        }
 
     def test_country_aliases(self):
         self.assertAliases(Argentina, AR, ARG)

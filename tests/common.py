@@ -145,6 +145,19 @@ class TestCase:
                     if islamic_no_estimated_key not in year_variants:
                         year_variants[islamic_no_estimated_key] = years
 
+        if getattr(test_class, "subdivisions", None):
+            for subdiv in test_class.subdivisions:
+                suffix = subdiv.lower()
+                if f"years_subdiv_{suffix}" not in year_variants:
+                    year_variants[f"years_subdiv_{suffix}"] = years
+                if issubclass(test_class, ObservedHolidayBase):
+                    non_obs_key = f"years_subdiv_{suffix}_non_observed"
+                    if non_obs_key not in year_variants:
+                        year_variants[non_obs_key] = years
+
+            cls.subdiv_holidays = {}
+            cls.subdiv_holidays_non_observed = {}
+
         variants = {"": years}
         variants.update(year_variants)
 
@@ -155,7 +168,20 @@ class TestCase:
             attr_name = "holidays" + (f"_{suffix.replace('years_', '')}" if suffix else "")
             init_kwargs = {"years": ylist}
 
-            # Step 1: Categories.
+            # Step 1: Subdivisions.
+            if hasattr(test_class, "subdivisions"):
+                matching_subdiv = next(
+                    (
+                        subdiv
+                        for subdiv in test_class.subdivisions
+                        if f"subdiv_{subdiv.lower()}" in attr_name
+                    ),
+                    None,
+                )
+                if matching_subdiv:
+                    init_kwargs["subdiv"] = matching_subdiv
+
+            # Step 2: Categories.
             if hasattr(test_class, "supported_categories"):
                 matching_cat = next(
                     (
@@ -168,18 +194,31 @@ class TestCase:
                 if matching_cat:
                     init_kwargs["categories"] = matching_cat
 
-            # Step 2: Special flags i.e. `islamic_show_estimated`.
+            # Step 3: Special flags i.e. `islamic_show_estimated`.
             if (
                 "islamic_show_estimated" in test_class_param
                 and "islamic_no_estimated" in attr_name
             ):
                 init_kwargs["islamic_show_estimated"] = False
 
-            # Step 3: _non_observed suffix.
+            # Step 4: `_non_observed` suffix.
             if "non_observed" in attr_name:
                 init_kwargs["observed"] = False
 
             setattr(cls, attr_name, test_class(**init_kwargs))
+
+            # Legacy `cls.subdiv_holidays` / `cls.subdiv_holidays_non_observed` behavior.
+            if hasattr(test_class, "subdivisions"):
+                for subdiv in test_class.subdivisions:
+                    key_subdiv = f"holidays_subdiv_{subdiv.lower()}"
+                    key_subdiv_non_obs = f"{key_subdiv}_non_observed"
+
+                    if issubclass(test_class, ObservedHolidayBase) and hasattr(
+                        cls, key_subdiv_non_obs
+                    ):
+                        cls.subdiv_holidays_non_observed[subdiv] = getattr(cls, key_subdiv_non_obs)
+                    elif hasattr(cls, key_subdiv):
+                        cls.subdiv_holidays[subdiv] = getattr(cls, key_subdiv)
 
         cls._generate_assert_methods()
 
