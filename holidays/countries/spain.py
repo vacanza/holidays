@@ -62,6 +62,7 @@ class Spain(
             * [2020](https://web.archive.org/web/20250623005808/https://www.lexnavarra.navarra.es/detalle.asp?r=52229)
             * [2021](https://web.archive.org/web/20250623010750/https://www.lexnavarra.navarra.es/detalle.asp?r=52748)
             * [2022](https://web.archive.org/web/20250623000851/https://www.lexnavarra.navarra.es/detalle.asp?r=53763)
+            * [2023](https://web.archive.org/web/20250623010106/https://www.lexnavarra.navarra.es/detalle.asp?r=55481)
             * [2024](https://web.archive.org/web/20250623001355/https://www.lexnavarra.navarra.es/detalle.asp?r=56116)
             * [2025](https://web.archive.org/web/20250622235218/https://www.lexnavarra.navarra.es/detalle.asp?r=57122)
 
