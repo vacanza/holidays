@@ -1575,6 +1575,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>BANK, GOVERNMENT, WORKDAY</td>
 </tr>
 <tr>
+<td>Sudan</td>
+<td>SD</td>
+<td></td>
+<td><strong>ar_SD</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Suriname</td>
 <td>SR</td>
 <td></td>
