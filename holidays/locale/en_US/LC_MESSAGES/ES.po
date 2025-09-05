@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.80\n"
+"Project-Id-Version: Holidays 0.81\n"
 "POT-Creation-Date: 2023-12-26 19:23+0200\n"
-"PO-Revision-Date: 2025-08-26 18:42+0300\n"
+"PO-Revision-Date: 2025-09-04 12:50+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -201,6 +201,10 @@ msgstr "Eid al-Fitr"
 #. Eid al-Adha.
 msgid "Fiesta del Sacrificio-Aid Al Adha"
 msgstr "Eid al-Adha"
+
+#. Saint Francis Xavier's Day.
+msgid "San Francisco Javier"
+msgstr "Saint Francis Xavier's Day"
 
 #. País Vasco Day.
 msgid "Día del País Vasco"

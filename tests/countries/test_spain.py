@@ -288,6 +288,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 15): {"CB"},
             (OCT, 9): {"VC"},
             (NOV, 17): {"CE", "ML"},
+            (DEC, 3): {"NC"},
         }
         self._assertVariableDays(2010, province_days)
 
@@ -332,6 +333,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 15): {"CB"},
             (OCT, 25): {"PV"},
             (NOV, 7): {"CE", "ML"},
+            (DEC, 3): {"NC"},
             (DEC, 26): {"AN", "AR", "AS", "CE", "CL", "CN", "CT", "EX", "IB", "ML", "NC"},
         }
         self._assertVariableDays(2011, province_days)
@@ -377,6 +379,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (OCT, 25): {"PV"},
             (OCT, 26): {"ML"},
             (OCT, 27): {"CE"},
+            (DEC, 3): {"NC"},
             (DEC, 26): {"CT"},
         }
         self._assertVariableDays(2012, province_days)
@@ -435,6 +438,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (OCT, 9): {"VC"},
             (OCT, 15): {"CE", "ML"},
             (OCT, 25): {"PV"},
+            (DEC, 3): {"NC"},
             (DEC, 9): {"AN", "AR", "AS", "CE", "CL", "EX", "MC", "RI"},
             (DEC, 26): {"CT", "IB"},
         }
@@ -481,6 +485,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (OCT, 9): {"VC"},
             (OCT, 13): {"AN", "AR", "AS", "CE", "CL", "EX"},
             (OCT, 25): {"PV"},
+            (DEC, 3): {"NC"},
             (DEC, 26): {"CT", "IB"},
         }
         self._assertVariableDays(2014, province_days)
@@ -523,6 +528,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 25): {"CE", "ML"},
             (OCT, 9): {"VC"},
             (NOV, 2): {"AN", "AR", "AS", "CB", "CE", "CL", "CN", "EX", "GA", "IB"},
+            (DEC, 3): {"NC"},
             (DEC, 7): {"AN", "AR", "AS", "CE", "CL", "CM", "EX", "IB", "MC", "ML", "RI", "VC"},
             (DEC, 26): {"CT"},
         }
@@ -570,6 +576,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 12): {"CE", "ML"},
             (SEP, 15): {"CB"},
             (OCT, 7): {"PV"},
+            (DEC, 3): {"NC"},
             (DEC, 26): {
                 "AN",
                 "AR",
@@ -633,6 +640,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 11): {"CT"},
             (SEP, 15): {"CB"},
             (OCT, 9): {"VC"},
+            (DEC, 4): {"NC"},
             (DEC, 26): {"CT"},
         }
         self._assertVariableDays(2017, province_days)
@@ -674,6 +682,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 11): {"CT"},
             (SEP, 15): {"CB"},
             (OCT, 9): {"VC"},
+            (DEC, 3): {"NC"},
             (DEC, 26): {"CT"},
         }
         self._assertVariableDays(2018, province_days)
@@ -718,6 +727,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 9): {"AS", "EX"},
             (SEP, 11): {"CT"},
             (OCT, 9): {"VC"},
+            (DEC, 3): {"NC"},
             (DEC, 9): {"AN", "AR", "AS", "CB", "CL", "EX", "MD", "ML", "RI"},
             (DEC, 26): {"CT", "IB"},
         }
@@ -763,6 +773,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 15): {"CB"},
             (OCT, 9): {"VC"},
             (NOV, 2): {"AN", "AR", "AS", "CL", "EX", "MD"},
+            (DEC, 3): {"NC"},
             (DEC, 7): {
                 "AN",
                 "AR",
@@ -823,6 +834,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 11): {"CT"},
             (SEP, 15): {"CB"},
             (OCT, 9): {"VC"},
+            (DEC, 3): {"NC"},
         }
         self._assertVariableDays(2021, province_days)
 
@@ -871,6 +883,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 6): {"PV"},
             (SEP, 8): {"AS", "EX"},
             (SEP, 15): {"CB"},
+            (DEC, 3): {"NC"},
             (DEC, 26): {
                 "AN",
                 "AR",
@@ -935,6 +948,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 11): {"CT"},
             (SEP, 15): {"CB"},
             (OCT, 9): {"VC"},
+            (DEC, 4): {"NC"},
             (DEC, 26): {"CT"},
         }
         self._assertVariableDays(2023, province_days)
@@ -978,6 +992,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 9): {"AS"},
             (SEP, 11): {"CT"},
             (OCT, 9): {"VC"},
+            (DEC, 3): {"NC"},
             (DEC, 9): {"AN", "AR", "AS", "CL", "EX", "MC", "ML"},
             (DEC, 26): {"CT"},
         }
@@ -1026,6 +1041,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 15): {"CB"},
             (OCT, 9): {"VC"},
             (OCT, 13): {"AN", "AR", "AS", "CL", "EX"},
+            (DEC, 3): {"NC"},
             (DEC, 26): {"CT", "IB"},
         }
         self._assertVariableDays(2025, province_days)
@@ -1063,6 +1079,7 @@ class TestSpain(CommonCountryTests, TestCase):
             ("2023-10-09", "Día de la Comunidad Valenciana"),
             ("2023-10-12", "Fiesta Nacional de España"),
             ("2023-11-01", "Todos los Santos"),
+            ("2023-12-04", "Lunes siguiente a San Francisco Javier"),
             ("2023-12-06", "Día de la Constitución Española"),
             ("2023-12-08", "Inmaculada Concepción"),
             ("2023-12-25", "Natividad del Señor"),
@@ -1103,6 +1120,7 @@ class TestSpain(CommonCountryTests, TestCase):
             ("2023-10-09", "Valencian Community Day"),
             ("2023-10-12", "National Day"),
             ("2023-11-01", "All Saints' Day"),
+            ("2023-12-04", "Monday following Saint Francis Xavier's Day"),
             ("2023-12-06", "Constitution Day"),
             ("2023-12-08", "Immaculate Conception"),
             ("2023-12-25", "Christmas Day"),
@@ -1143,6 +1161,7 @@ class TestSpain(CommonCountryTests, TestCase):
             ("2023-10-09", "День Валенсії"),
             ("2023-10-12", "Національний день Іспанії"),
             ("2023-11-01", "День усіх святих"),
+            ("2023-12-04", "Понеділок після День Святого Франциска Ксаверія"),
             ("2023-12-06", "День Конституції Іспанії"),
             ("2023-12-08", "Непорочне зачаття Діви Марії"),
             ("2023-12-25", "Різдво Христове"),
