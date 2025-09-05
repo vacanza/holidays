@@ -171,19 +171,17 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
     def test_ascension_day(self):
         name = "Ascension Day"
         self.assertNoHolidayName(name)
+        dt = (
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
+        )
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv in {"AC", "TA"}:
-                self.assertHolidayName(
-                    name,
-                    holidays,
-                    "2020-05-21",
-                    "2021-05-13",
-                    "2022-05-26",
-                    "2023-05-18",
-                    "2024-05-09",
-                    "2025-05-29",
-                )
-                self.assertHolidayName(name, holidays, range(2015, 2050))
+                self.assertHolidayName(name, holidays, dt)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -237,21 +235,20 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_subdivision_government_holidays(self):
+    def test_august_bank_holiday(self):
         name = "August Bank Holiday"
         self.assertNoHolidayName(name)
+        dt = (
+            "2020-08-31",
+            "2021-08-30",
+            "2022-08-29",
+            "2023-08-28",
+            "2024-08-26",
+            "2025-08-25",
+        )
         for subdiv, holidays in self.subdiv_government_holidays.items():
             if subdiv in {"AC", "HL"}:
-                self.assertHolidayName(
-                    name,
-                    holidays,
-                    "2020-08-31",
-                    "2021-08-30",
-                    "2022-08-29",
-                    "2023-08-28",
-                    "2024-08-26",
-                    "2025-08-25",
-                )
+                self.assertHolidayName(name, holidays, dt)
                 self.assertHolidayName(name, holidays, range(2015, 2050))
             else:
                 self.assertNoHolidayName(name, holidays)
