@@ -1,0 +1,12 @@
+{
+  "name": "cspell-check",
+  "version": "1.0.0",
+  "description": "Spell checking for holidays project",
+  "main": "index.js",
+  "scripts": {
+    "spellcheck": "cspell"
+  },
+  "dependencies": {
+    "cspell": "^8.0.0"
+  }
+}
