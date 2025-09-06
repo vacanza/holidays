@@ -87,7 +87,7 @@ msgstr ""
 msgid "Dussehra"
 msgstr ""
 
-#. Diwali Laxmi Pujan.
+#. Diwali Lakshmi Puja.
 msgid "Diwali Laxmi Pujan"
 msgstr ""
 
@@ -99,9 +99,11 @@ msgstr ""
 msgid "Guru Nanak Jayanti"
 msgstr ""
 
-msgid "Bhai bhij"
+#. Bhai Dooj.
+msgid "Bhai Bij"
 msgstr ""
 
+#. Buddha Purnima.
 msgid "Buddha Purnima"
 msgstr ""
 
@@ -117,9 +119,10 @@ msgstr ""
 msgid "Bakri Id"
 msgstr ""
 
+#. Prophet's Birthday.
 msgid "Id-E-Milad-Un-Nabi"
 msgstr ""
 
-#. New Year.
+#. New Year's Day.
 msgid "New Year"
 msgstr ""

@@ -41,7 +41,7 @@ msgstr "Good Friday"
 
 #. Dr. Baba Saheb Ambedkar Jayanti.
 msgid "Dr. Baba Saheb Ambedkar Jayanti"
-msgstr "Dr. Baba Saheb Ambedkar Jayanti"
+msgstr "Dr. B. R. Ambedkar's Jayanti"
 
 #. May Day.
 msgid "May Day"
@@ -57,7 +57,7 @@ msgstr "Independence Day"
 
 #. Mahatma Gandhi Jayanti.
 msgid "Mahatma Gandhi Jayanti"
-msgstr "Mahatma Gandhi Jayanti"
+msgstr "Gandhi Jayanti"
 
 #. Christmas Day.
 msgid "Christmas Day"
@@ -87,21 +87,23 @@ msgstr "Ganesh Chaturthi"
 msgid "Dussehra"
 msgstr "Dussehra"
 
-#. Diwali Laxmi Pujan.
+#. Diwali Lakshmi Puja.
 msgid "Diwali Laxmi Pujan"
 msgstr "Diwali Lakshmi Puja"
 
 #. Diwali Balipratipada.
 msgid "Diwali Balipratipada"
-msgstr "Diwali Balipratipada"
+msgstr "Diwali"
 
 #. Guru Nanak Jayanti.
 msgid "Guru Nanak Jayanti"
 msgstr "Guru Nanak Jayanti"
 
-msgid "Bhai bhij"
-msgstr "Bhai bhij"
+#. Bhai Dooj.
+msgid "Bhai Bij"
+msgstr "Bhai Bij"
 
+#. Buddha Purnima.
 msgid "Buddha Purnima"
 msgstr "Buddha Purnima"
 
@@ -117,9 +119,10 @@ msgstr "Eid al-Fitr"
 msgid "Bakri Id"
 msgstr "Eid al-Adha"
 
+#. Prophet's Birthday.
 msgid "Id-E-Milad-Un-Nabi"
 msgstr "Prophet's Birthday"
 
-#. New Year.
+#. New Year's Day.
 msgid "New Year"
 msgstr "New Year"

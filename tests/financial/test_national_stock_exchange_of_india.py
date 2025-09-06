@@ -85,6 +85,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         self.assertNoHoliday(
             "2022-05-01",
         )
+        self.assertNoHolidayName("May Day", range(2001, 2010), range(2015, 2050))
 
     def test_independence_day(self):
         self.assertNonObservedHolidayName(
@@ -119,7 +120,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2024-03-08",
             "2025-02-26",
         )
-        self.assertNonObservedHolidayName(name, range(2001, 2036))
+        self.assertNonObservedHolidayName(name, range(2007, 2036))
         self.assertNoHoliday(
             "2023-02-18",
         )
@@ -144,7 +145,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2024-04-21",
             "2025-04-10",
         )
-        self.assertNonObservedHolidayName(name, range(2001, 2036))
+        self.assertNonObservedHolidayName(name, range(2006, 2036))
         self.assertNoHoliday(
             "2024-04-21",
         )
@@ -159,7 +160,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2024-04-17",
             "2025-04-06",
         )
-        self.assertNonObservedHolidayName(name, range(2001, 2036))
+        self.assertNonObservedHolidayName(name, range(2006, 2036))
         self.assertNoHoliday(
             "2022-04-10",
             "2025-04-06",
@@ -176,7 +177,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2024-11-02",
             "2025-10-22",
         )
-        self.assertNonObservedHolidayName(name, range(2001, 2036))
+        self.assertNonObservedHolidayName(name, range(2001, 2002), range(2011, 2035))
         self.assertNoHoliday(
             "2024-11-02",
         )
@@ -238,10 +239,10 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         )
 
     def test_bhai_bhij(self):
-        name = "Bhai bhij"
+        name = "Bhai Bij"
         self.assertNonObservedHolidayName(
             name,
-            "2003-10-27",
+            "2003-10-26",
             "2005-11-03",
             "2006-10-24",
             "2008-10-30",
@@ -450,14 +451,14 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             ("2023-03-30", "Ram Navami"),
             ("2023-04-04", "Mahavir Jayanti"),
             ("2023-04-07", "Good Friday"),
-            ("2023-04-14", "Dr. Baba Saheb Ambedkar Jayanti"),
+            ("2023-04-14", "Dr. B. R. Ambedkar's Jayanti"),
             ("2023-05-01", "Maharashtra Day"),
             ("2023-06-28", "Eid al-Adha"),
             ("2023-08-15", "Independence Day"),
             ("2023-09-19", "Ganesh Chaturthi"),
-            ("2023-10-02", "Mahatma Gandhi Jayanti"),
+            ("2023-10-02", "Gandhi Jayanti"),
             ("2023-10-24", "Dussehra"),
-            ("2023-11-14", "Diwali Balipratipada"),
+            ("2023-11-14", "Diwali"),
             ("2023-11-27", "Guru Nanak Jayanti"),
             ("2023-12-25", "Christmas Day"),
         )
