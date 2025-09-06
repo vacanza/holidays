@@ -1,3 +1,7 @@
+-include cspell/Makefile
+
+.PHONY: spellcheck
+
 help:
 	@echo "Usage: make <target>"
 	@echo "    check         run pre-commit and tests"
@@ -7,6 +11,7 @@ help:
 	@echo "    package       build package distribution"
 	@echo "    pre-commit    run pre-commit against all files"
 	@echo "    setup         setup development environment"
+	@echo "    spellcheck    run spell check on localization and documentation files"
 	@echo "    test          run tests (in parallel)"
 	@echo "    tox           run tox (in parallel)"
 
@@ -14,7 +19,11 @@ check:
 	make l10n
 	make pre-commit
 	make doc
+	make spellcheck
 	make test
+
+spellcheck:
+	$(MAKE) cspell-check
 
 clean:
 	@for ext in mo pot pyc; do \
