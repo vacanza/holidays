@@ -17,10 +17,10 @@ from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
-    SAT_SUN_TO_NEXT_MON,
-    SAT_SUN_TO_NEXT_MON_TUE,
     SAT_TO_PREV_FRI,
     SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
 )
 
 

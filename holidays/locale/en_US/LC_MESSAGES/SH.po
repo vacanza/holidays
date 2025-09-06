@@ -31,10 +31,6 @@ msgstr ""
 msgid "%s (observed)"
 msgstr "%s (observed)"
 
-#. New Year's Day.
-msgid "New Year's Day"
-msgstr "New Year's Day"
-
 #. Good Friday.
 msgid "Good Friday"
 msgstr "Good Friday"
@@ -74,6 +70,10 @@ msgstr "Ratting Day"
 #. Anniversary Day.
 msgid "Anniversary Day"
 msgstr "Anniversary Day"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "New Year's Day"
 
 #. Whit Monday.
 msgid "Whit Monday"
