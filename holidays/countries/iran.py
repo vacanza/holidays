@@ -9,8 +9,9 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
 from gettext import gettext as tr
+from datetime import date, timedelta
+from collections.abc import Iterable
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
@@ -51,18 +52,40 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
     start_year = 1980
     weekend = {FRI}
 
-    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
+    def __init__(self, *args, **kwargs):
         """
-        Args:
-            islamic_show_estimated:
-                Whether to add "estimated" label to Islamic holidays name
-                if holiday date is estimated.
+        Initializes the Iran holidays class.
+        The `islamic_show_estimated` parameter is removed and forced to False
+        to handle date corrections internally.
         """
+        # Remove islamic_show_estimated from kwargs if present to avoid errors.
+        if 'islamic_show_estimated' in kwargs:
+            del kwargs['islamic_show_estimated']
+
+        # Initialize IslamicHolidays with show_estimated=False.
         IslamicHolidays.__init__(
-            self, cls=IranIslamicHolidays, show_estimated=islamic_show_estimated
+            self, cls=IranIslamicHolidays, show_estimated=False
         )
         PersianCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
+
+    def _add_islamic_calendar_holiday(
+        self, name: str, dates: Iterable[tuple[date, bool]], days_delta: int = 0
+    ) -> set[date]:
+        """
+        Overrides the parent method to apply a one-day correction to estimated
+        Islamic holidays, based on the logic from the provided fix script.
+        """
+        corrected_dates = []
+        for dt, is_estimated in dates:
+            if is_estimated:
+                # Add one day to estimated dates to correct them.
+                corrected_dates.append((dt + timedelta(days=1), is_estimated))
+            else:
+                corrected_dates.append((dt, is_estimated))
+
+        # Call the parent method with the corrected dates.
+        return super()._add_islamic_calendar_holiday(name, corrected_dates, days_delta)
 
     def _populate_public_holidays(self):
         # Persian calendar holidays.
