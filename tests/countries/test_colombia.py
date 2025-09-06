@@ -27,6 +27,7 @@ class TestColombia(CommonCountryTests, TestCase):
     def test_2016(self):
         # https://www.officeholidays.com/countries/colombia/2016
         self.assertHolidayDates(
+            Colombia(years=2016),
             "2016-01-01",
             "2016-01-11",
             "2016-03-21",
@@ -50,6 +51,7 @@ class TestColombia(CommonCountryTests, TestCase):
     def test_2017(self):
         # https://www.officeholidays.com/countries/colombia/2017
         self.assertHolidayDates(
+            Colombia(years=2017),
             "2017-01-01",
             "2017-01-09",
             "2017-03-20",
@@ -73,6 +75,7 @@ class TestColombia(CommonCountryTests, TestCase):
     def test_2018(self):
         # https://publicholidays.co/2018-dates/
         self.assertHolidayDates(
+            Colombia(years=2018),
             "2018-01-01",
             "2018-01-08",
             "2018-03-19",
@@ -96,6 +99,7 @@ class TestColombia(CommonCountryTests, TestCase):
     def test_2019(self):
         # https://www.officeholidays.com/countries/colombia/2019
         self.assertHolidayDates(
+            Colombia(years=2019),
             "2019-01-01",
             "2019-01-07",
             "2019-03-25",
@@ -118,6 +122,7 @@ class TestColombia(CommonCountryTests, TestCase):
     def test_2020(self):
         # https://www.officeholidays.com/countries/colombia/2020
         self.assertHolidayDates(
+            Colombia(years=2020),
             "2020-01-01",
             "2020-01-06",
             "2020-03-23",
@@ -141,6 +146,7 @@ class TestColombia(CommonCountryTests, TestCase):
     def test_2021(self):
         # https://www.officeholidays.com/countries/colombia/2021
         self.assertHolidayDates(
+            Colombia(years=2021),
             "2021-01-01",
             "2021-01-11",
             "2021-03-22",
@@ -164,6 +170,7 @@ class TestColombia(CommonCountryTests, TestCase):
     def test_2022(self):
         # https://www.officeholidays.com/countries/colombia/2022
         self.assertHolidayDates(
+            Colombia(years=2022),
             "2022-01-01",
             "2022-01-10",
             "2022-03-21",
@@ -187,6 +194,7 @@ class TestColombia(CommonCountryTests, TestCase):
     def test_2023(self):
         # https://publicholidays.co/2023-dates/
         self.assertHolidayDates(
+            Colombia(years=2023),
             "2023-01-01",
             "2023-01-09",
             "2023-03-20",
@@ -209,6 +217,7 @@ class TestColombia(CommonCountryTests, TestCase):
 
     def test_1984(self):
         self.assertHolidayDates(
+            Colombia(years=1984),
             "1984-01-01",
             "1984-01-09",
             "1984-03-19",
@@ -230,6 +239,7 @@ class TestColombia(CommonCountryTests, TestCase):
 
     def test_1983(self):
         self.assertHolidayDates(
+            Colombia(years=1983),
             "1983-01-01",
             "1983-01-06",
             "1983-03-19",
@@ -251,6 +261,7 @@ class TestColombia(CommonCountryTests, TestCase):
 
     def test_1951(self):
         self.assertHolidayDates(
+            Colombia(years=1951),
             "1951-01-01",
             "1951-01-06",
             "1951-03-19",
@@ -272,6 +283,7 @@ class TestColombia(CommonCountryTests, TestCase):
 
     def test_1950(self):
         self.assertHolidayDates(
+            Colombia(years=1950),
             "1950-01-01",
             "1950-05-01",
             "1950-07-20",

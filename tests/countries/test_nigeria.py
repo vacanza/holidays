@@ -19,15 +19,13 @@ from tests.common import CommonCountryTests
 class TestNigeria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(1979, 2050)
-        super().setUpClass(Nigeria, years=cls.full_range, years_non_observed=cls.full_range)
-        cls.no_estimated_holidays = Nigeria(years=cls.full_range, islamic_show_estimated=False)
+        super().setUpClass(Nigeria)
 
     def test_country_aliases(self):
         self.assertAliases(Nigeria, NG, NGA)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Nigeria(years=1978))
+        self.assertNoHolidays(Nigeria(years=NG.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -78,7 +76,7 @@ class TestNigeria(CommonCountryTests, TestCase):
     def test_workers_day(self):
         name = "Workers' Day"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1985, 2050)))
-        self.assertNoHolidayName(name, range(1979, 1985))
+        self.assertNoHolidayName(name, range(NG.start_year, 1985))
         obs_dt = (
             "2016-05-02",
             "2021-05-03",
@@ -94,7 +92,7 @@ class TestNigeria(CommonCountryTests, TestCase):
             (f"{year}-05-29" for year in range(2000, 2019)),
             (f"{year}-06-12" for year in range(2019, 2050)),
         )
-        self.assertNoHolidayName(name, range(1979, 2000))
+        self.assertNoHolidayName(name, range(NG.start_year, 2000))
         obs_dt = (
             "2016-05-30",
             "2021-06-14",
@@ -115,7 +113,7 @@ class TestNigeria(CommonCountryTests, TestCase):
             "2019-05-29",
             "2023-05-29",
         )
-        self.assertNoHolidayName(name, range(1979, 1999))
+        self.assertNoHolidayName(name, range(NG.start_year, 1999))
 
     def test_national_day(self):
         name = "National Day"
@@ -160,7 +158,7 @@ class TestNigeria(CommonCountryTests, TestCase):
             "2024-09-16",
             "2025-09-05",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, self.full_range)
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         obs_dt = (
             "2019-11-11",
             "2022-10-10",
@@ -180,8 +178,8 @@ class TestNigeria(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-30",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, self.full_range)
-        self.assertHolidayName(name_holiday, self.no_estimated_holidays, self.full_range)
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        self.assertIslamicNoEstimatedHolidayName(name_holiday, self.full_range)
         obs_dt = (
             "2020-05-26",
             "2025-04-01",
@@ -206,8 +204,8 @@ class TestNigeria(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-06",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, self.full_range)
-        self.assertHolidayName(name_holiday, self.no_estimated_holidays, self.full_range)
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        self.assertIslamicNoEstimatedHolidayName(name_holiday, self.full_range)
         obs_dt = (
             "2017-09-04",
             "2022-07-11",

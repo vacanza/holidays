@@ -29,6 +29,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
 
     def test_2020(self):
         self.assertHolidays(
+            DominicanRepublic(years=2020),
             ("2020-01-01", "Año Nuevo"),
             ("2020-01-06", "Día de los Santos Reyes"),
             ("2020-01-21", "Día de la Altagracia"),
@@ -45,6 +46,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
 
     def test_2021(self):
         self.assertHolidays(
+            DominicanRepublic(years=2021),
             ("2021-01-01", "Año Nuevo"),
             ("2021-01-04", "Día de los Santos Reyes"),
             ("2021-01-21", "Día de la Altagracia"),
@@ -61,6 +63,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
 
     def test_2022(self):
         self.assertHolidays(
+            DominicanRepublic(years=2022),
             ("2022-01-01", "Año Nuevo"),
             ("2022-01-10", "Día de los Santos Reyes"),
             ("2022-01-21", "Día de la Altagracia"),
@@ -77,6 +80,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
 
     def test_2023(self):
         self.assertHolidays(
+            DominicanRepublic(years=2023),
             ("2023-01-01", "Año Nuevo"),
             ("2023-01-09", "Día de los Santos Reyes"),
             ("2023-01-21", "Día de la Altagracia"),
@@ -93,6 +97,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
 
     def test_2024(self):
         self.assertHolidays(
+            DominicanRepublic(years=2024),
             ("2024-01-01", "Año Nuevo"),
             ("2024-01-06", "Día de los Santos Reyes"),
             ("2024-01-21", "Día de la Altagracia"),

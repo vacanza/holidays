@@ -16,11 +16,13 @@ import warnings
 from collections import defaultdict
 from collections.abc import Generator
 from datetime import date
+from inspect import signature
 
 from dateutil.parser import parse
 
 from holidays import HolidayBase
 from holidays.calendars.gregorian import SUN
+from holidays.constants import PUBLIC
 from holidays.groups import IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase
 
@@ -32,28 +34,204 @@ class TestCase:
     """Base class for holidays test cases."""
 
     @classmethod
-    def setUpClass(cls, test_class=None, years=None, years_non_observed=None):
+    def _generate_assert_methods(cls):
+        """Dynamically generate assertion methods for all holiday variants."""
+
+        method_specs = {
+            "_assertHoliday": "assert{variant}Holiday",
+            "_assertHolidayDates": "assert{variant}HolidayDates",
+            "_assertHolidayName": "assert{variant}HolidayName",
+            "_assertHolidayNameCount": "assert{variant}HolidayNameCount",
+            "_assertHolidays": "assert{variant}Holidays",
+            "_assertNoHoliday": "assertNo{variant}Holiday",
+            "_assertNoHolidayName": "assertNo{variant}HolidayName",
+            "_assertNoHolidays": "assertNo{variant}Holidays",
+        }
+
+        for attr_name in dir(cls):
+            if not attr_name.startswith("holidays"):
+                continue
+
+            variant = attr_name.replace("holidays", "")
+            pretty_variant = "".join(part.capitalize() for part in variant.strip("_").split("_"))
+
+            for helper_name, template in method_specs.items():
+                if not hasattr(cls, helper_name):
+                    continue
+
+                method_name = template.format(variant=pretty_variant)
+                if hasattr(cls, method_name):
+                    continue
+
+                helper = getattr(cls, helper_name)
+
+                if helper_name == "_assertHolidayNameCount":
+
+                    def make_assert(helper_func, instance_name):
+                        def _method(self, name, count, *args, **kwargs):
+                            return helper_func(self, name, count, instance_name, *args, **kwargs)
+
+                        return _method
+                elif helper_name in {"_assertHolidayName", "_assertNoHolidayName"}:
+
+                    def make_assert(helper_func, instance_name):
+                        def _method(self, name, *args, **kwargs):
+                            return helper_func(self, name, instance_name, *args, **kwargs)
+
+                        return _method
+                else:
+
+                    def make_assert(helper_func, instance_name):
+                        def _method(self, *args, **kwargs):
+                            return helper_func(self, instance_name, *args, **kwargs)
+
+                        return _method
+
+                setattr(cls, method_name, make_assert(helper, attr_name))
+
+    @classmethod
+    def setUpClass(cls, test_class=None, years=None, **year_variants):
         super().setUpClass()
 
         if test_class is None:
             return None
 
         cls.test_class = test_class
+        test_class_param = signature(test_class.__init__).parameters
+
+        default_lang = getattr(test_class, "default_language", None)
+        if default_lang is not None:
+            # Normally 2-6 letters (e.g., en, pap, en_US, pap_AW).
+            if not (2 <= len(default_lang) <= 6):
+                raise ValueError(f"`{test_class.__name__}.default_language` value is invalid.")
+            cls.set_language(test_class, default_lang)
+
+        if years is None:
+            start_year = getattr(test_class, "start_year", 1950)
+            # end_year is fixed at 2050 for now due to IslamicHolidays support ending in 2077.
+            years = range(start_year, 2050)
+
+        # Default `self.full_range`.
+        cls.full_range = years
+
+        # Default `years_[insert]` to `years` to prevent redundant initialization.
+        if (
+            "islamic_show_estimated" in test_class_param
+            and "years_islamic_no_estimated" not in year_variants
+        ):
+            year_variants["years_islamic_no_estimated"] = years
 
         if (
-            getattr(test_class, "default_language") is not None
-            # Normally 2-6 letters (e.g., en, pap, en_US, pap_AW).
-            and 2 > len(test_class.default_language) > 6
+            issubclass(test_class, ObservedHolidayBase)
+            and "years_non_observed" not in year_variants
         ):
-            raise ValueError(f"`{test_class.__name__}.default_language` value is invalid.")
+            year_variants["years_non_observed"] = years
 
-        if getattr(test_class, "default_language") is not None:
-            cls.set_language(test_class, test_class.default_language)
+        if (
+            "islamic_show_estimated" in test_class_param
+            and issubclass(test_class, ObservedHolidayBase)
+            and "years_islamic_no_estimated_non_observed" not in year_variants
+        ):
+            year_variants["years_islamic_no_estimated_non_observed"] = years
 
-        if years:
-            cls.holidays = test_class(years=years)
-        if years_non_observed:
-            cls.holidays_non_observed = test_class(observed=False, years=years_non_observed)
+        if getattr(test_class, "supported_categories", None):
+            for cat in test_class.supported_categories:
+                if cat == PUBLIC:
+                    continue
+                suffix = cat.lower()
+                if f"years_{suffix}" not in year_variants:
+                    year_variants[f"years_{suffix}"] = years
+                if issubclass(test_class, ObservedHolidayBase):
+                    non_obs_key = f"years_{suffix}_non_observed"
+                    if non_obs_key not in year_variants:
+                        year_variants[non_obs_key] = years
+                if "islamic_show_estimated" in test_class_param:
+                    islamic_no_estimated_key = f"years_{suffix}_islamic_no_estimated"
+                    if islamic_no_estimated_key not in year_variants:
+                        year_variants[islamic_no_estimated_key] = years
+
+        # For subdivisions, `years_all_subdivs` can be use for mass-assignments.
+        if getattr(test_class, "subdivisions", None):
+            years_all_subdivs = year_variants.get("years_all_subdivs", years)
+            years_all_subdivs_non_observed = year_variants.get(
+                "years_all_subdivs_non_observed"
+            ) or year_variants.get("years_non_observed", years)
+
+            for subdiv in test_class.subdivisions:
+                suffix = subdiv.lower()
+                if f"years_subdiv_{suffix}" not in year_variants:
+                    year_variants[f"years_subdiv_{suffix}"] = years_all_subdivs
+                if issubclass(test_class, ObservedHolidayBase):
+                    non_obs_key = f"years_subdiv_{suffix}_non_observed"
+                    if non_obs_key not in year_variants:
+                        year_variants[non_obs_key] = years_all_subdivs_non_observed
+
+            cls.subdiv_holidays = {}
+            cls.subdiv_holidays_non_observed = {}
+
+        variants = {"": years}
+        variants.update(year_variants)
+
+        for suffix, ylist in variants.items():
+            if ylist is None:
+                continue
+
+            attr_name = "holidays" + (f"_{suffix.replace('years_', '')}" if suffix else "")
+            init_kwargs = {"years": ylist}
+
+            # Step 1: Subdivisions.
+            if hasattr(test_class, "subdivisions"):
+                matching_subdiv = next(
+                    (
+                        subdiv
+                        for subdiv in test_class.subdivisions
+                        if f"subdiv_{subdiv.lower()}" in attr_name
+                    ),
+                    None,
+                )
+                if matching_subdiv:
+                    init_kwargs["subdiv"] = matching_subdiv
+
+            # Step 2: Categories.
+            if hasattr(test_class, "supported_categories"):
+                matching_cat = next(
+                    (
+                        cat
+                        for cat in test_class.supported_categories
+                        if cat != PUBLIC and cat.lower() in attr_name
+                    ),
+                    None,
+                )
+                if matching_cat:
+                    init_kwargs["categories"] = matching_cat
+
+            # Step 3: Special flags i.e. `islamic_show_estimated`.
+            if (
+                "islamic_show_estimated" in test_class_param
+                and "islamic_no_estimated" in attr_name
+            ):
+                init_kwargs["islamic_show_estimated"] = False
+
+            # Step 4: `_non_observed` suffix.
+            if "non_observed" in attr_name:
+                init_kwargs["observed"] = False
+
+            setattr(cls, attr_name, test_class(**init_kwargs))
+
+            # Legacy `cls.subdiv_holidays` / `cls.subdiv_holidays_non_observed` behavior.
+            if hasattr(test_class, "subdivisions"):
+                for subdiv in test_class.subdivisions:
+                    key_subdiv = f"holidays_subdiv_{subdiv.lower()}"
+                    key_subdiv_non_obs = f"{key_subdiv}_non_observed"
+
+                    if issubclass(test_class, ObservedHolidayBase) and hasattr(
+                        cls, key_subdiv_non_obs
+                    ):
+                        cls.subdiv_holidays_non_observed[subdiv] = getattr(cls, key_subdiv_non_obs)
+                    elif hasattr(cls, key_subdiv):
+                        cls.subdiv_holidays[subdiv] = getattr(cls, key_subdiv)
+
+        cls._generate_assert_methods()
 
     def setUp(self):
         super().setUp()
@@ -76,7 +254,7 @@ class TestCase:
         item_args = args
         instance = None
 
-        if args and issubclass(args[0].__class__, HolidayBase):
+        if args and isinstance(args[0], HolidayBase):
             instance = args[0]
             item_args = args[1:]
         else:
@@ -105,10 +283,10 @@ class TestCase:
         else:
             items.extend(item_args)
 
-        if instance_name == "holidays":
-            self.assertTrue(instance.observed)
-        else:
+        if instance_name.endswith("_non_observed"):
             self.assertFalse(instance.observed)
+        else:
+            self.assertTrue(instance.observed)
 
         if raise_on_empty and not items:
             raise ValueError("The test argument sequence is empty")
@@ -150,15 +328,7 @@ class TestCase:
         for dt in dates:
             self.assertIn(dt, holidays, dt)
 
-    def assertHoliday(self, *args):
-        """Assert each date is a holiday."""
-        self._assertHoliday("holidays", *args)
-
-    def assertNonObservedHoliday(self, *args):
-        """Assert each date is a non-observed holiday."""
-        self._assertHoliday("holidays_non_observed", *args)
-
-    # Holiday dates.
+    # HolidayDates.
     def _assertHolidayDates(self, instance_name, *args):
         """Helper: assert holiday dates exactly match expected dates."""
         holidays, dates = self._parse_arguments(args, instance_name=instance_name)
@@ -170,15 +340,7 @@ class TestCase:
 
         self.assertEqual(len(dates), len(holidays.keys()), set(dates).difference(holidays.keys()))
 
-    def assertHolidayDates(self, *args):
-        """Assert holiday dates exactly match expected dates."""
-        self._assertHolidayDates("holidays", *args)
-
-    def assertNonObservedHolidayDates(self, *args):
-        """Assert holiday dates exactly match expected dates."""
-        self._assertHolidayDates("holidays_non_observed", *args)
-
-    # Holiday name.
+    # HolidayName.
     def _assertHolidayName(self, name, instance_name, *args):
         """Helper: assert either a holiday with a specific name exists or
         each holiday name matches an expected one depending on the args nature.
@@ -195,17 +357,25 @@ class TestCase:
         else:
             raise ValueError(f"The {arg} wasn't caught by `assertHolidayName()`")
 
-    def assertHolidayName(self, name, *args):
-        """Assert either a holiday with a specific name exists or
-        each holiday name matches an expected one.
+    # HolidayNameCount.
+    def _assertHolidayNameCount(self, name, count, instance_name, *args):
+        """Helper: assert number of holidays with a specific name in every year matches
+        expected.
         """
-        self._assertHolidayName(name, "holidays", *args)
+        holidays, items = self._parse_arguments(args, instance_name=instance_name)
+        self._verify_type(holidays)
 
-    def assertNonObservedHolidayName(self, name, *args):
-        """Assert either a non-observed holiday with a specific name exists or
-        each non-observed holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "holidays_non_observed", *args)
+        holiday_counts = defaultdict(int)
+        for dt in holidays.get_named(name, lookup="exact"):
+            holiday_counts[dt.year] += 1
+
+        for year in items:
+            holiday_count = holiday_counts.get(year, 0)
+            self.assertEqual(
+                count,
+                holiday_count,
+                f"`{name}` occurs {holiday_count} times in year {year}, should be {count}",
+            )
 
     # Holidays.
     def _assertHolidays(self, instance_name, *args):
@@ -228,44 +398,7 @@ class TestCase:
             ),
         )
 
-    def assertHolidays(self, *args):
-        """Assert holidays exactly match expected holidays."""
-        self._assertHolidays("holidays", *args)
-
-    def assertNonObservedHolidays(self, *args):
-        """Assert non-observed holidays exactly match expected holidays."""
-        self._assertHolidays("holidays_non_observed", *args)
-
-    def _assertHolidayNameCount(self, name, count, instance_name, *args):
-        """Helper: assert number of holidays with a specific name in every year matches
-        expected.
-        """
-        holidays, items = self._parse_arguments(args, instance_name=instance_name)
-        self._verify_type(holidays)
-
-        holiday_counts = defaultdict(int)
-        for dt in holidays.get_named(name, lookup="exact"):
-            holiday_counts[dt.year] += 1
-
-        for year in items:
-            holiday_count = holiday_counts.get(year, 0)
-            self.assertEqual(
-                count,
-                holiday_count,
-                f"`{name}` occurs {holiday_count} times in year {year}, should be {count}",
-            )
-
-    def assertHolidayNameCount(self, name, count, *args):
-        """Assert number of holidays with a specific name in every year matches expected."""
-        self._assertHolidayNameCount(name, count, "holidays", *args)
-
-    def assertNonObservedHolidayNameCount(self, name, count, *args):
-        """Assert number of non-observed holidays with a specific name in every year
-        matches expected.
-        """
-        self._assertHolidayNameCount(name, count, "holidays_non_observed", *args)
-
-    # No holiday.
+    # No Holiday.
     def _assertNoHoliday(self, instance_name, *args):
         """Helper: assert each date is not a holiday."""
         holidays, dates = self._parse_arguments(args, instance_name=instance_name)
@@ -273,15 +406,7 @@ class TestCase:
         for dt in dates:
             self.assertNotIn(dt, holidays, dt)
 
-    def assertNoHoliday(self, *args):
-        """Assert each date is not a holiday."""
-        self._assertNoHoliday("holidays", *args)
-
-    def assertNoNonObservedHoliday(self, *args):
-        """Assert each date is not a non-observed holiday."""
-        self._assertNoHoliday("holidays_non_observed", *args)
-
-    # No holiday name.
+    # No HolidayName.
     def _assertNoHolidayName(self, name, instance_name, *args):
         """Helper: assert a holiday with a specific name doesn't exist."""
         holidays, items = self._parse_arguments(
@@ -302,15 +427,7 @@ class TestCase:
         else:
             raise ValueError(f"The {arg} wasn't caught by `assertNoHolidayName()`")
 
-    def assertNoHolidayName(self, name, *args):
-        """Assert a holiday with a specific name doesn't exist."""
-        self._assertNoHolidayName(name, "holidays", *args)
-
-    def assertNoNonObservedHolidayName(self, name, *args):
-        """Assert a non-observed holiday with a specific name doesn't exist."""
-        self._assertNoHolidayName(name, "holidays_non_observed", *args)
-
-    # No holidays.
+    # No Holidays.
     def _assertNoHolidays(self, instance_name, *args):
         """Helper: assert holidays dict is empty."""
         holidays, _ = self._parse_arguments(
@@ -321,14 +438,7 @@ class TestCase:
         self.assertFalse(holidays)
         self.assertEqual(0, len(holidays))
 
-    def assertNoHolidays(self, *args):
-        """Assert holidays dict is empty."""
-        self._assertNoHolidays("holidays", *args)
-
-    def assertNoNonObservedHolidays(self, *args):
-        """Assert non-observed holidays dict is empty."""
-        self._assertNoHolidays("holidays_non_observed", *args)
-
+    # LocalizedHolidays.
     def _assertLocalizedHolidays(self, localized_holidays, language=None):
         """Helper: assert localized holidays match expected names."""
         instance = self.test_class(

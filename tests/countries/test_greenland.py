@@ -30,6 +30,7 @@ class TestGreenland(CommonCountryTests, TestCase):
 
     def test_1982(self):
         self.assertHolidays(
+            Greenland(years=1982),
             ("1982-01-01", "Ukiortaaq"),
             ("1982-04-08", "Sisamanngortoq illernartoq"),
             ("1982-04-09", "Tallimanngorneq tannaartoq"),
@@ -54,6 +55,7 @@ class TestGreenland(CommonCountryTests, TestCase):
 
     def test_2022(self):
         self.assertHolidays(
+            Greenland(years=2022),
             ("2022-01-01", "Ukiortaaq"),
             ("2022-04-14", "Sisamanngortoq illernartoq"),
             ("2022-04-15", "Tallimanngorneq tannaartoq"),

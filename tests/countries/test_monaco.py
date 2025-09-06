@@ -58,6 +58,7 @@ class TestMonaco(CommonCountryTests, TestCase):
 
     def test_2020(self):
         self.assertHolidayDates(
+            Monaco(years=2020),
             "2020-01-01",
             "2020-01-27",
             "2020-04-13",
@@ -75,6 +76,7 @@ class TestMonaco(CommonCountryTests, TestCase):
 
     def test_2021(self):
         self.assertHolidayDates(
+            Monaco(years=2021),
             "2021-01-01",
             "2021-01-27",
             "2021-04-05",
@@ -92,6 +94,7 @@ class TestMonaco(CommonCountryTests, TestCase):
 
     def test_2022(self):
         self.assertHolidayDates(
+            Monaco(years=2022),
             "2022-01-01",
             "2022-01-27",
             "2022-04-18",
@@ -110,6 +113,7 @@ class TestMonaco(CommonCountryTests, TestCase):
 
     def test_2023(self):
         self.assertHolidayDates(
+            Monaco(years=2023),
             "2023-01-01",
             "2023-01-02",
             "2023-01-27",

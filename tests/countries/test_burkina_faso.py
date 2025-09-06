@@ -25,19 +25,17 @@ class TestBurkinaFaso(CommonCountryTests, TestCase):
         self.assertAliases(BurkinaFaso, BF, BFA)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(BurkinaFaso(years=1960))
+        self.assertNoHolidays(BurkinaFaso(years=BF.start_year - 1))
 
     def test_revolution_day(self):
         name = "Revolution Day"
         self.assertHolidayName(name, (f"{year}-01-03" for year in range(1967, 2050)))
-        self.assertNoHolidayName(name, BurkinaFaso(years=range(1961, 1967)))
-        self.assertNoHoliday(f"{year}-01-03" for year in range(1961, 1967))
+        self.assertNoHolidayName(name, range(BF.start_year, 1967))
 
     def test_martyrs_day(self):
         name = "Martyrs' Day"
         self.assertHolidayName(name, (f"{year}-10-31" for year in range(2016, 2050)))
-        self.assertNoHolidayName(name, BurkinaFaso(years=range(1961, 2016)))
-        self.assertNoHoliday(f"{year}-10-31" for year in set(range(1961, 2016)).difference({1979}))
+        self.assertNoHolidayName(name, range(BF.start_year, 2016))
 
     def test_observed(self):
         dt = (
@@ -77,6 +75,7 @@ class TestBurkinaFaso(CommonCountryTests, TestCase):
 
     def test_2022(self):
         self.assertHolidays(
+            BurkinaFaso(years=2022),
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "Revolution Day"),
             ("2022-03-08", "International Women's Day"),
