@@ -238,8 +238,8 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2017-11-04",
         )
 
-    def test_bhai_bhij(self):
-        name = "Bhai Bij"
+    def test_bhai_bij(self):
+        name = "Bhau Bhij"
         self.assertNonObservedHolidayName(
             name,
             "2003-10-26",
@@ -260,6 +260,10 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             name,
             "2007-05-02",
             "2008-05-19",
+        )
+        self.assertNonObservedHolidayName(name, range(2006, 2010))
+        self.assertNoHoliday(
+            "2025-05-19",
         )
 
     def test_muharram(self):
@@ -358,7 +362,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         name = "Id-E-Milad-Un-Nabi"
         self.assertNonObservedHolidayName(
             name,
-            # "2006-04-11",
+            "2006-04-11",
             "2009-03-10",
         )
 
@@ -458,7 +462,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             ("2023-09-19", "Ganesh Chaturthi"),
             ("2023-10-02", "Gandhi Jayanti"),
             ("2023-10-24", "Dussehra"),
-            ("2023-11-14", "Diwali"),
+            ("2023-11-14", "Diwali Balipratipada"),
             ("2023-11-27", "Guru Nanak Jayanti"),
             ("2023-12-25", "Christmas Day"),
         )

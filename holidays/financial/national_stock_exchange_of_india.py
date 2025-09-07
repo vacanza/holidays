@@ -139,15 +139,15 @@ class NationalStockExchangeOfIndia(
         self._move_holiday(self._add_diwali_india(tr("Diwali Laxmi Pujan")))
 
         if self._year <= 2002 or self._year >= 2011:
-            # Diwali.
+            # Diwali Balipratipada.
             self._move_holiday(self._add_govardhan_puja(tr("Diwali Balipratipada")))
 
         # Guru Nanak Jayanti.
         self._move_holiday(self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti")))
 
         if 2003 <= self._year <= 2010:
-            # Bhai Dooj.
-            self._move_holiday(self._add_bhai_dooj(tr("Bhai Bij")))
+            # Bhai Bhij.
+            self._move_holiday(self._add_bhai_dooj(tr("Bhau Bhij")))
 
         if 2006 <= self._year <= 2009:
             # Buddha Purnima.

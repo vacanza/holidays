@@ -91,7 +91,7 @@ msgstr ""
 msgid "Diwali Laxmi Pujan"
 msgstr ""
 
-#. Diwali.
+#. Diwali Balipratipada.
 msgid "Diwali Balipratipada"
 msgstr ""
 
@@ -99,8 +99,8 @@ msgstr ""
 msgid "Guru Nanak Jayanti"
 msgstr ""
 
-#. Bhai Dooj.
-msgid "Bhai Bij"
+#. Bhai Bhij.
+msgid "Bhau Bhij"
 msgstr ""
 
 #. Buddha Purnima.
