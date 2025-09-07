@@ -35,7 +35,7 @@ jobs:
 
       - name: Check holiday updates
         id: check-updates
-        uses: vacanza/aux/.github/actions/check-holiday-updates@main
+        uses: vacanza/aux/.github/actions/check-holiday-updates@46f7899c8ed2178d1f5f019d9c88a4b1db503060
         with:
           dry_run: ${{ inputs.dry_run || false }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
