@@ -91,7 +91,7 @@ class NationalStockExchangeOfIndia(
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
-        # Dr. Baba Saheb Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar Jayanti.
         self._move_holiday(self._add_holiday_apr_14(tr("Dr. Baba Saheb Ambedkar Jayanti")))
 
         self._move_holiday(
@@ -107,7 +107,7 @@ class NationalStockExchangeOfIndia(
         # Independence Day.
         self._move_holiday(self._add_holiday_aug_15(tr("Independence Day")))
 
-        # Mahatma Gandhi Jayanti.
+        # Gandhi Jayanti.
         self._move_holiday(self._add_holiday_oct_2(tr("Mahatma Gandhi Jayanti")))
 
         # Christmas Day.
@@ -126,7 +126,6 @@ class NationalStockExchangeOfIndia(
             # Ram Navami.
             self._move_holiday(self._add_ram_navami(tr("Ram Navami")))
 
-        if self._year >= 2006:
             # Mahavir Jayanti.
             self._move_holiday(self._add_mahavir_jayanti(tr("Mahavir Jayanti")))
 
@@ -140,7 +139,7 @@ class NationalStockExchangeOfIndia(
         self._move_holiday(self._add_diwali_india(tr("Diwali Laxmi Pujan")))
 
         if self._year <= 2002 or self._year >= 2011:
-            # Diwali Balipratipada.
+            # Diwali.
             self._move_holiday(self._add_govardhan_puja(tr("Diwali Balipratipada")))
 
         # Guru Nanak Jayanti.
@@ -299,7 +298,7 @@ class NationalStockExchangeOfIndiaIslamicHolidays(_CustomIslamicHolidays):
         2025: (MAR, 31),
     }
 
-    MAWLID_DATES_CONFIRMED_YEARS = (2001, 2025)
+    MAWLID_DATES_CONFIRMED_YEARS = (2006, 2009)
     MAWLID_DATES = {
         2006: (APR, 11),
         2007: (APR, 1),

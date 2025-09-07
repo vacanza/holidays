@@ -451,7 +451,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             ("2023-03-30", "Ram Navami"),
             ("2023-04-04", "Mahavir Jayanti"),
             ("2023-04-07", "Good Friday"),
-            ("2023-04-14", "Dr. B. R. Ambedkar's Jayanti"),
+            ("2023-04-14", "Dr. B. R. Ambedkar Jayanti"),
             ("2023-05-01", "Maharashtra Day"),
             ("2023-06-28", "Eid al-Adha"),
             ("2023-08-15", "Independence Day"),

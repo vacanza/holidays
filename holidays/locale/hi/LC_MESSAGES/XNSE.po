@@ -39,7 +39,7 @@ msgstr "गणतंत्र दिवस"
 msgid "Good Friday"
 msgstr "गुड फ्राइडे"
 
-#. Dr. Baba Saheb Ambedkar Jayanti.
+#. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. Baba Saheb Ambedkar Jayanti"
 msgstr "डॉ. बाबा साहेब अम्बेडकर जयंती"
 
@@ -55,7 +55,7 @@ msgstr "महाराष्ट्र दिवस"
 msgid "Independence Day"
 msgstr "स्वतंत्रता दिवस"
 
-#. Mahatma Gandhi Jayanti.
+#. Gandhi Jayanti.
 msgid "Mahatma Gandhi Jayanti"
 msgstr "महात्मा गांधी जयंती"
 
@@ -91,7 +91,7 @@ msgstr "दशहरा"
 msgid "Diwali Laxmi Pujan"
 msgstr "दिवाली लक्ष्मी पूजन"
 
-#. Diwali Balipratipada.
+#. Diwali.
 msgid "Diwali Balipratipada"
 msgstr "दिवाली बलिप्रतिपदा"
 
