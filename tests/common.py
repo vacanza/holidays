@@ -109,6 +109,12 @@ class TestCase:
             code = subdiv.lower().replace(" ", "_")
             cls._subdiv_lookup[code] = subdiv
 
+        cls._non_public_supported_categories_lookup = []
+        for cat in test_class.supported_categories:
+            if cat == PUBLIC:
+                continue
+            cls._non_public_supported_categories_lookup.append(cat.lower())
+
         if years is None:
             start_year = getattr(test_class, "start_year", 1950)
             # end_year is fixed at 2050 for now due to IslamicHolidays support ending in 2077.
@@ -125,10 +131,7 @@ class TestCase:
         if issubclass(test_class, IslamicHolidays) and issubclass(test_class, ObservedHolidayBase):
             year_variants.setdefault("years_islamic_no_estimated_non_observed", years)
 
-        for cat in test_class.supported_categories:
-            if cat == PUBLIC:
-                continue
-            category = cat.lower()
+        for category in cls._non_public_supported_categories_lookup:
             year_variants.setdefault(f"years_{category}", years)
             if issubclass(test_class, ObservedHolidayBase):
                 year_variants.setdefault(
@@ -155,10 +158,7 @@ class TestCase:
                         f"years_subdiv_{subdivision}_non_observed", years_all_subdivs_non_observed
                     )
 
-                for cat in test_class.supported_categories:
-                    if cat == PUBLIC:
-                        continue
-                    category = cat.lower()
+                for category in cls._non_public_supported_categories_lookup:
                     year_variants.setdefault(
                         f"years_subdiv_{subdivision}_{category}", years_all_subdivs
                     )
@@ -243,10 +243,7 @@ class TestCase:
                     elif hasattr(cls, key_subdiv):
                         cls.subdiv_holidays[subdiv] = getattr(cls, key_subdiv)
 
-                    for cat in test_class.supported_categories:
-                        if cat == PUBLIC:
-                            continue
-                        category = cat.lower()
+                    for category in cls._non_public_supported_categories_lookup:
                         dict_attr = getattr(cls, f"subdiv_{category}_holidays")
                         dict_attr_non_observed = getattr(
                             cls, f"subdiv_{category}_holidays_non_observed", None
@@ -257,8 +254,7 @@ class TestCase:
 
                         if hasattr(cls, key_cat):
                             dict_attr[subdiv] = getattr(cls, key_cat)
-
-                        if dict_attr_non_observed and hasattr(cls, key_cat_non_obs):
+                        if hasattr(cls, key_cat_non_obs):
                             dict_attr_non_observed[subdiv] = getattr(cls, key_cat_non_obs)
 
         cls._generate_assert_methods()
