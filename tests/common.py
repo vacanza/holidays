@@ -104,6 +104,11 @@ class TestCase:
                 raise ValueError(f"`{test_class.__name__}.default_language` value is invalid.")
             cls.set_language(test_class, default_lang)
 
+        cls._subdiv_lookup = {}
+        for subdiv in sorted(test_class.subdivisions, key=lambda x: len(x), reverse=True):
+            code = subdiv.lower().replace(" ", "_")
+            cls._subdiv_lookup[code] = subdiv
+
         if years is None:
             start_year = getattr(test_class, "start_year", 1950)
             # end_year is fixed at 2050 for now due to IslamicHolidays support ending in 2077.
@@ -123,14 +128,18 @@ class TestCase:
         for cat in test_class.supported_categories:
             if cat == PUBLIC:
                 continue
-            suffix = cat.lower()
-            year_variants.setdefault(f"years_{suffix}", years)
+            category = cat.lower()
+            year_variants.setdefault(f"years_{category}", years)
             if issubclass(test_class, ObservedHolidayBase):
                 year_variants.setdefault(
-                    f"years_{suffix}_non_observed", year_variants.get("years_non_observed", years)
+                    f"years_{category}_non_observed",
+                    year_variants.get("years_non_observed", years),
                 )
             if issubclass(test_class, IslamicHolidays):
-                year_variants.setdefault(f"years_{suffix}_islamic_no_estimated", years)
+                year_variants.setdefault(
+                    f"years_{category}_islamic_no_estimated",
+                    year_variants.get("years_islamic_no_estimated", years),
+                )
 
         # For subdivisions, `years_all_subdivs` can be use for mass-assignments.
         if test_class.subdivisions:
@@ -139,15 +148,35 @@ class TestCase:
                 "years_all_subdivs_non_observed", year_variants.get("years_non_observed", years)
             )
             for subdiv in test_class.subdivisions:
-                suffix = subdiv.lower()
-                year_variants.setdefault(f"years_subdiv_{suffix}", years_all_subdivs)
+                subdivision = subdiv.lower()
+                year_variants.setdefault(f"years_subdiv_{subdivision}", years_all_subdivs)
                 if issubclass(test_class, ObservedHolidayBase):
                     year_variants.setdefault(
-                        f"years_subdiv_{suffix}_non_observed", years_all_subdivs_non_observed
+                        f"years_subdiv_{subdivision}_non_observed", years_all_subdivs_non_observed
                     )
+
+                for cat in test_class.supported_categories:
+                    if cat == PUBLIC:
+                        continue
+                    category = cat.lower()
+                    year_variants.setdefault(
+                        f"years_subdiv_{subdivision}_{category}", years_all_subdivs
+                    )
+                    if issubclass(test_class, ObservedHolidayBase):
+                        year_variants.setdefault(
+                            f"years_subdiv_{subdivision}_{category}_non_observed",
+                            years_all_subdivs_non_observed,
+                        )
 
             cls.subdiv_holidays = {}
             cls.subdiv_holidays_non_observed = {}
+            for cat in test_class.supported_categories:
+                if cat == PUBLIC:
+                    continue
+                category = cat.lower()
+                setattr(cls, f"subdiv_{category}_holidays", {})
+                if issubclass(test_class, ObservedHolidayBase):
+                    setattr(cls, f"subdiv_{category}_holidays_non_observed", {})
 
         variants = {"": years}
         variants.update(year_variants)
@@ -179,8 +208,7 @@ class TestCase:
                 category = None
 
                 # Match the longest subdivision code first.
-                for subdiv in sorted(test_class.subdivisions, key=len, reverse=True):
-                    code = subdiv.lower().replace(" ", "_")
+                for code, subdiv in cls._subdiv_lookup.items():
                     if rest.startswith(code):
                         matching_subdiv = subdiv
                         category = rest[len(code) :].lstrip("_") or None
@@ -214,6 +242,24 @@ class TestCase:
                         cls.subdiv_holidays_non_observed[subdiv] = getattr(cls, key_subdiv_non_obs)
                     elif hasattr(cls, key_subdiv):
                         cls.subdiv_holidays[subdiv] = getattr(cls, key_subdiv)
+
+                    for cat in test_class.supported_categories:
+                        if cat == PUBLIC:
+                            continue
+                        category = cat.lower()
+                        dict_attr = getattr(cls, f"subdiv_{category}_holidays")
+                        dict_attr_non_observed = getattr(
+                            cls, f"subdiv_{category}_holidays_non_observed", None
+                        )
+
+                        key_cat = f"{key_subdiv}_{category}"
+                        key_cat_non_obs = f"{key_cat}_non_observed"
+
+                        if hasattr(cls, key_cat):
+                            dict_attr[subdiv] = getattr(cls, key_cat)
+
+                        if dict_attr_non_observed and hasattr(cls, key_cat_non_obs):
+                            dict_attr_non_observed[subdiv] = getattr(cls, key_cat_non_obs)
 
         cls._generate_assert_methods()
 

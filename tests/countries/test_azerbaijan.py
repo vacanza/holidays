@@ -169,14 +169,9 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_memorial_day(self):
         name = "Anım Günü"
-        workday_holidays = Azerbaijan(categories=WORKDAY, years=self.full_range)
-        self.assertHolidayName(
-            name, workday_holidays, (f"{year}-09-27" for year in range(2021, 2050))
-        )
-        self.assertNoHoliday(
-            workday_holidays, (f"{year}-09-27" for year in range(AZ.start_year, 2021))
-        )
-        self.assertNoHolidayName(name, workday_holidays, range(AZ.start_year, 2021))
+        self.assertWorkdayHolidayName(name, (f"{year}-09-27" for year in range(2021, 2050)))
+        self.assertNoWorkdayHoliday(f"{year}-09-27" for year in range(AZ.start_year, 2021))
+        self.assertNoWorkdayHolidayName(name, range(AZ.start_year, 2021))
         self.assertNoHolidayName(name)
 
     def test_independence_day(self):
@@ -186,15 +181,10 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertNoHoliday(f"{year}-10-18" for year in range(2006, 2050))
         self.assertNoHolidayName(name_1, range(2006, 2050))
 
-        workday_holidays = Azerbaijan(categories=WORKDAY, years=self.full_range)
-        self.assertHolidayName(
-            name_1, workday_holidays, (f"{year}-10-18" for year in range(2006, 2021))
-        )
-        self.assertHolidayName(
-            name_2, workday_holidays, (f"{year}-10-18" for year in range(2021, 2050))
-        )
-        self.assertNoHolidayName(name_1, workday_holidays, range(2021, 2050))
-        self.assertNoHolidayName(name_2, workday_holidays, range(AZ.start_year, 2021))
+        self.assertWorkdayHolidayName(name_1, (f"{year}-10-18" for year in range(2006, 2021)))
+        self.assertWorkdayHolidayName(name_2, (f"{year}-10-18" for year in range(2021, 2050)))
+        self.assertNoWorkdayHolidayName(name_1, range(2021, 2050))
+        self.assertNoWorkdayHolidayName(name_2, range(AZ.start_year, 2021))
 
     def test_victory_day(self):
         name = "Zəfər Günü"

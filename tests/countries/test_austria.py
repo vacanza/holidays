@@ -235,39 +235,30 @@ class TestAustria(CommonCountryTests, TestCase):
         )
 
     def test_subdiv_1_bank_holidays(self):
-        subdiv_1_bank_holidays = Austria(subdiv="1", categories=BANK)
-        self.assertHolidayName("Hl. Martin", subdiv_1_bank_holidays, "2024-11-11")
+        self.assertSubdiv1BankHolidayName("Hl. Martin", "2024-11-11")
 
     def test_subdiv_2_bank_holidays(self):
-        subdiv_2_bank_holidays = Austria(subdiv="2", categories=BANK)
-        self.assertHolidayName("Hl. Josef", subdiv_2_bank_holidays, "2024-03-19")
-        self.assertHolidayName("Tag der Volksabstimmung", subdiv_2_bank_holidays, "2024-10-10")
+        self.assertSubdiv2BankHolidayName("Hl. Josef", "2024-03-19")
+        self.assertSubdiv2BankHolidayName("Tag der Volksabstimmung", "2024-10-10")
 
     def test_subdiv_3_bank_holidays(self):
-        subdiv_3_bank_holidays = Austria(subdiv="3", categories=BANK)
-        self.assertHolidayName("Hl. Leopold", subdiv_3_bank_holidays, "2024-11-15")
+        self.assertSubdiv3BankHolidayName("Hl. Leopold", "2024-11-15")
 
     def test_subdiv_4_bank_holidays(self):
-        subdiv_4_bank_holidays = Austria(subdiv="4", categories=BANK)
-        self.assertHolidayName("Hl. Florian", subdiv_4_bank_holidays, "2024-05-04")
-        self.assertNoHoliday(subdiv_4_bank_holidays, "2003-05-04")
+        self.assertSubdiv4BankHolidayName("Hl. Florian", "2024-05-04")
+        self.assertNoSubdiv4BankHoliday("2003-05-04")
 
     def test_subdiv_5_bank_holidays(self):
-        subdiv_5_bank_holidays = Austria(subdiv="5", categories=BANK)
-        self.assertHolidayName("Hl. Rupert", subdiv_5_bank_holidays, "2024-09-24")
+        self.assertSubdiv5BankHolidayName("Hl. Rupert", "2024-09-24")
 
     def test_subdiv_6_bank_holidays(self):
-        subdiv_6_bank_holidays = Austria(subdiv="6", categories=BANK)
-        self.assertHolidayName("Hl. Josef", subdiv_6_bank_holidays, "2024-03-19")
+        self.assertSubdiv6BankHolidayName("Hl. Josef", "2024-03-19")
 
     def test_subdiv_7_bank_holidays(self):
-        subdiv_7_bank_holidays = Austria(subdiv="7", categories=BANK)
-        self.assertHolidayName("Hl. Josef", subdiv_7_bank_holidays, "2024-03-19")
+        self.assertSubdiv7BankHolidayName("Hl. Josef", "2024-03-19")
 
     def test_subdiv_8_bank_holidays(self):
-        subdiv_8_bank_holidays = Austria(subdiv="8", categories=BANK)
-        self.assertHolidayName("Hl. Josef", subdiv_8_bank_holidays, "2024-03-19")
+        self.assertSubdiv8BankHolidayName("Hl. Josef", "2024-03-19")
 
     def test_subdiv_9_bank_holidays(self):
-        subdiv_9_bank_holidays = Austria(subdiv="9", categories=BANK)
-        self.assertHolidayName("Hl. Leopold", subdiv_9_bank_holidays, "2024-11-15")
+        self.assertSubdiv9BankHolidayName("Hl. Leopold", "2024-11-15")

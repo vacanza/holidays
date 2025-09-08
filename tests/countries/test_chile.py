@@ -374,20 +374,16 @@ class TestChile(CommonCountryTests, TestCase):
         )
 
     def test_provinces(self):
-        ap_holidays = Chile(subdiv="AP")
-        nb_holidays = Chile(subdiv="NB")
-        self.assertHoliday(
-            ap_holidays,
+        self.assertSubdivApHoliday(
             "2020-06-07",
             "2021-06-07",
         )
-        self.assertNoHoliday(ap_holidays, "2012-06-07")
-        self.assertHoliday(
-            nb_holidays,
+        self.assertNoSubdivApHoliday("2012-06-07")
+        self.assertSubdivNbHoliday(
             "2020-08-20",
             "2021-08-20",
         )
-        self.assertNoHoliday(nb_holidays, "2013-08-20")
+        self.assertNoSubdivNbHoliday("2013-08-20")
 
     def test_summer_solstice(self):
         self.assertHoliday("2050-06-20", "2079-06-20")

@@ -14,7 +14,6 @@ from datetime import date
 from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import BANK
 from holidays.countries.australia import Australia, AU, AUS
 from tests.common import CommonCountryTests
 
@@ -63,7 +62,7 @@ class TestAustralia(CommonCountryTests, TestCase):
                     name_1, holidays, range(AU.start_year, 1888), range(1946, 2050)
                 )
                 self.assertNoHolidayName(name_2, holidays, range(AU.start_year, 1946))
-                self.assertNoHolidayName(name_1, Australia(subdiv="NSW", years=1887))
+                self.assertNoSubdivNswHolidayName(name_1, 1887)
             elif subdiv == "SA":
                 self.assertHolidayName(name_2, holidays, range(1935, 2050))
                 self.assertNoHolidayName(name_2, holidays, range(AU.start_year, 1935))
@@ -294,7 +293,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             "2023-08-07",
             "2024-08-05",
         )
-        self.assertHolidayName(name, Australia(subdiv="NSW", categories=BANK), dt_bank)
+        self.assertSubdivNswBankHolidayName(name, dt_bank)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "NSW":
                 self.assertHolidayName(name, holidays, dt)
@@ -453,7 +452,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name_1, holidays)
                 self.assertNoHolidayName(name_2, holidays)
-        self.assertNoHolidayName(name_1, Australia(subdiv="WA", years=1832))
+        self.assertNoSubdivWaHolidayName(name_1, 1832)
 
     def test_national_day_of_mourning_for_queen_elizabeth_ii(self):
         name = "National Day of Mourning for Queen Elizabeth II"
