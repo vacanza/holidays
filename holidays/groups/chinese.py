@@ -195,6 +195,16 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+4
         )
 
+    def _add_daeboreum_day(self, name) -> Optional[date]:
+        """
+        Add Daeboreum Day (15th of 1st lunar month).
+
+        https://en.wikipedia.org/wiki/Daeboreum
+        """
+        return self._add_chinese_calendar_holiday(
+            name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+14
+        )
+
     def _add_dongzhi_festival(self, name) -> Optional[date]:
         """
         Add Dongzhi Festival (Chinese Winter Solstice).

@@ -1,0 +1,99 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# North Korea holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.81\n"
+"POT-Creation-Date: 2025-09-07 18:20+0500\n"
+"PO-Revision-Date: 2025-09-07 18:20+0500\n"
+"Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: ko\n"
+
+#. New Year's Day.
+msgid "양력설"
+msgstr ""
+
+#. Lunar New Year.
+msgid "설명절"
+msgstr ""
+
+#. Daeboreum.
+msgid "대보름"
+msgstr ""
+
+#. Army Day.
+msgid "조선인민군"
+msgstr ""
+
+#. Day of the Shining Star.
+msgid "광명성절"
+msgstr ""
+
+#. International Women's Day.
+msgid "국제부녀절"
+msgstr ""
+
+#. Day of the Sun.
+msgid "태양절"
+msgstr ""
+
+#. Labor Day.
+msgid "전세계근로자들의 국제적명절"
+msgstr ""
+
+#. Korean Children's Union Day.
+msgid "조선소년단 창립절"
+msgstr ""
+
+#. Fatherland Liberation War Victory Day.
+msgid "조국해방전쟁승리기념일"
+msgstr ""
+
+#. Liberation Day.
+msgid "조국해방절"
+msgstr ""
+
+#. Chuseok.
+msgid "추석"
+msgstr ""
+
+#. Day of Songun.
+msgid "선군절"
+msgstr ""
+
+#. Youth Day.
+msgid "청년절"
+msgstr ""
+
+#. DPRK Foundation Day.
+msgid "조선민주주의인민공화국창건일"
+msgstr ""
+
+#. Party Foundation Day.
+msgid "조선로동당창건일"
+msgstr ""
+
+#. Mother's Day.
+msgid "어머니날"
+msgstr ""
+
+#. Socialist Constitution Day.
+msgid "사회주의헌법절"
+msgstr ""
