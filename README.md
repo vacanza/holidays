@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 240 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 241 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -1398,6 +1398,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Can also be loaded as country FR, subdivision BL</td>
 <td>en_US, <strong>fr</strong>, th, uk</td>
 <td></td>
+</tr>
+<tr>
+<td>Saint Helena, Ascension and Tristan da Cunha</td>
+<td>SH</td>
+<td>Subdivisions: AC (Ascension), HL (Saint Helena), TA (Tristan da Cunha)</td>
+<td><strong>en_GB</strong>, en_US</td>
+<td>GOVERNMENT</td>
 </tr>
 <tr>
 <td>Saint Kitts and Nevis</td>
