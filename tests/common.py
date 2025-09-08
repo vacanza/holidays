@@ -115,56 +115,38 @@ class TestCase:
         cls.full_range = years
 
         # Default `years_[insert]` to `years` to prevent redundant initialization.
-        if (
-            "islamic_show_estimated" in test_class_param
-            and "years_islamic_no_estimated" not in year_variants
-        ):
-            year_variants["years_islamic_no_estimated"] = years
+        if issubclass(test_class, IslamicHolidays):
+            year_variants.setdefault("years_islamic_no_estimated", years)
+        if issubclass(test_class, ObservedHolidayBase):
+            year_variants.setdefault("years_non_observed", years)
+        if issubclass(test_class, IslamicHolidays) and issubclass(test_class, ObservedHolidayBase):
+            year_variants.setdefault("years_islamic_no_estimated_non_observed", years)
 
-        if (
-            issubclass(test_class, ObservedHolidayBase)
-            and "years_non_observed" not in year_variants
-        ):
-            year_variants["years_non_observed"] = years
-
-        if (
-            "islamic_show_estimated" in test_class_param
-            and issubclass(test_class, ObservedHolidayBase)
-            and "years_islamic_no_estimated_non_observed" not in year_variants
-        ):
-            year_variants["years_islamic_no_estimated_non_observed"] = years
-
-        if getattr(test_class, "supported_categories", None):
-            for cat in test_class.supported_categories:
-                if cat == PUBLIC:
-                    continue
-                suffix = cat.lower()
-                if f"years_{suffix}" not in year_variants:
-                    year_variants[f"years_{suffix}"] = years
-                if issubclass(test_class, ObservedHolidayBase):
-                    non_obs_key = f"years_{suffix}_non_observed"
-                    if non_obs_key not in year_variants:
-                        year_variants[non_obs_key] = year_variants.get("years_non_observed", years)
-                if "islamic_show_estimated" in test_class_param:
-                    islamic_no_estimated_key = f"years_{suffix}_islamic_no_estimated"
-                    if islamic_no_estimated_key not in year_variants:
-                        year_variants[islamic_no_estimated_key] = years
+        for cat in test_class.supported_categories:
+            if cat == PUBLIC:
+                continue
+            suffix = cat.lower()
+            year_variants.setdefault(f"years_{suffix}", years)
+            if issubclass(test_class, ObservedHolidayBase):
+                year_variants.setdefault(
+                    f"years_{suffix}_non_observed", year_variants.get("years_non_observed", years)
+                )
+            if issubclass(test_class, IslamicHolidays):
+                year_variants.setdefault(f"years_{suffix}_islamic_no_estimated", years)
 
         # For subdivisions, `years_all_subdivs` can be use for mass-assignments.
-        if getattr(test_class, "subdivisions", None):
+        if test_class.subdivisions:
             years_all_subdivs = year_variants.get("years_all_subdivs", years)
             years_all_subdivs_non_observed = year_variants.get(
-                "years_all_subdivs_non_observed"
-            ) or year_variants.get("years_non_observed", years)
-
+                "years_all_subdivs_non_observed", year_variants.get("years_non_observed", years)
+            )
             for subdiv in test_class.subdivisions:
                 suffix = subdiv.lower()
-                if f"years_subdiv_{suffix}" not in year_variants:
-                    year_variants[f"years_subdiv_{suffix}"] = years_all_subdivs
+                year_variants.setdefault(f"years_subdiv_{suffix}", years_all_subdivs)
                 if issubclass(test_class, ObservedHolidayBase):
-                    non_obs_key = f"years_subdiv_{suffix}_non_observed"
-                    if non_obs_key not in year_variants:
-                        year_variants[non_obs_key] = years_all_subdivs_non_observed
+                    year_variants.setdefault(
+                        f"years_subdiv_{suffix}_non_observed", years_all_subdivs_non_observed
+                    )
 
             cls.subdiv_holidays = {}
             cls.subdiv_holidays_non_observed = {}
