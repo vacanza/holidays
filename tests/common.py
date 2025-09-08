@@ -153,10 +153,8 @@ class TestCase:
         variants.update(year_variants)
 
         for suffix, ylist in variants.items():
-            if ylist is None:
-                continue
-            # Exclude mass-assignment helpers.
-            elif suffix.startswith("years_all_subdivs"):
+            # Exclude invalid cases & mass-assignment helpers.
+            if ylist is None or suffix.startswith("years_all_subdivs"):
                 continue
 
             attr_name_suffix = ""
@@ -224,12 +222,6 @@ class TestCase:
 
         if getattr(self.test_class, "default_language") is not None:
             self.set_language(self.test_class.default_language)
-
-        if not hasattr(self, "holidays"):
-            self.holidays = self.test_class()
-
-        if not hasattr(self, "holidays_non_observed"):
-            self.holidays_non_observed = self.test_class(observed=False)
 
     def set_language(self, language):
         os.environ["LANGUAGE"] = language
