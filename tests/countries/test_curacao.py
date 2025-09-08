@@ -20,7 +20,7 @@ from tests.common import CommonCountryTests
 class TestCuracao(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Curacao, years_halfday=range(2010, 2050))
+        super().setUpClass(Curacao, years_half_day=range(2010, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(Curacao, CW, CUW)

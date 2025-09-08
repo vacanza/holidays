@@ -16,7 +16,6 @@ import warnings
 from collections import defaultdict
 from collections.abc import Generator
 from datetime import date
-from inspect import signature
 
 from dateutil.parser import parse
 
@@ -97,7 +96,6 @@ class TestCase:
             return None
 
         cls.test_class = test_class
-        test_class_param = signature(test_class.__init__).parameters
 
         default_lang = getattr(test_class, "default_language", None)
         if default_lang is not None:
@@ -157,47 +155,53 @@ class TestCase:
         for suffix, ylist in variants.items():
             if ylist is None:
                 continue
+            # Exclude mass-assignment helpers.
+            elif suffix.startswith("years_all_subdivs"):
+                continue
 
-            attr_name = "holidays" + (f"_{suffix.replace('years_', '')}" if suffix else "")
+            attr_name_suffix = ""
             init_kwargs = {"years": ylist}
 
-            # Step 1: Subdivisions.
-            if hasattr(test_class, "subdivisions"):
-                matching_subdiv = next(
-                    (
-                        subdiv
-                        for subdiv in test_class.subdivisions
-                        if f"subdiv_{subdiv.lower()}" in attr_name
-                    ),
-                    None,
-                )
-                if matching_subdiv:
-                    init_kwargs["subdiv"] = matching_subdiv
-
-            # Step 2: Categories.
-            if hasattr(test_class, "supported_categories"):
-                matching_cat = next(
-                    (
-                        cat
-                        for cat in test_class.supported_categories
-                        if cat != PUBLIC and cat.lower() in attr_name
-                    ),
-                    None,
-                )
-                if matching_cat:
-                    init_kwargs["categories"] = matching_cat
-
-            # Step 3: Special flags i.e. `islamic_show_estimated`.
-            if (
-                "islamic_show_estimated" in test_class_param
-                and "islamic_no_estimated" in attr_name
-            ):
-                init_kwargs["islamic_show_estimated"] = False
-
-            # Step 4: `_non_observed` suffix.
-            if "non_observed" in attr_name:
+            # Step 1: `_non_observed` suffix.
+            if "non_observed" in suffix:
+                suffix = suffix.removesuffix("_non_observed")
+                attr_name_suffix = "_non_observed"
                 init_kwargs["observed"] = False
 
+            # Step 2: Special flags i.e. `islamic_show_estimated`.
+            if "islamic_no_estimated" in suffix:
+                suffix = suffix.removesuffix("_islamic_no_estimated")
+                init_kwargs["islamic_show_estimated"] = False
+                attr_name_suffix = f"_islamic_no_estimated{attr_name_suffix}"
+
+            # Step 3: Subdivisions (and optional category)
+            if suffix.startswith("years_subdiv_"):
+                rest = suffix.removeprefix("years_subdiv_")
+                matching_subdiv = None
+                category = None
+
+                # Match the longest subdivision code first.
+                for subdiv in sorted(test_class.subdivisions, key=len, reverse=True):
+                    code = subdiv.lower().replace(" ", "_")
+                    if rest.startswith(code):
+                        matching_subdiv = subdiv
+                        category = rest[len(code) :].lstrip("_") or None
+                        break
+
+                if matching_subdiv:
+                    init_kwargs["subdiv"] = matching_subdiv
+                    if category:
+                        init_kwargs["categories"] = [category]
+                        attr_name_suffix = f"_{category}{attr_name_suffix}"
+                    attr_name_suffix = f"_subdiv_{code}{attr_name_suffix}"
+
+            # Step 4: Categories
+            elif suffix.startswith("years_"):
+                category = suffix.removeprefix("years_")
+                init_kwargs["categories"] = [category]
+                attr_name_suffix = f"_{category}{attr_name_suffix}"
+
+            attr_name = "holidays" + attr_name_suffix
             setattr(cls, attr_name, test_class(**init_kwargs))
 
             # Legacy `cls.subdiv_holidays` / `cls.subdiv_holidays_non_observed` behavior.
