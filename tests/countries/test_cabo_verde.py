@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import OPTIONAL, PUBLIC
+from holidays.constants import OPTIONAL
 from holidays.countries.cabo_verde import CaboVerde, CV, CPV
 from tests.common import CommonCountryTests
 
@@ -20,31 +20,28 @@ from tests.common import CommonCountryTests
 class TestCapeVerde(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1976, 2050)
-        super().setUpClass(CaboVerde, years=years)
-        cls.subdiv_holidays = {
-            subdiv: CaboVerde(subdiv=subdiv, years=years) for subdiv in CaboVerde.subdivisions
-        }
-        cls.opt_holidays = CaboVerde(categories=OPTIONAL, years=years)
+        super().setUpClass(CaboVerde)
 
     def test_country_aliases(self):
         self.assertAliases(CaboVerde, CV, CPV)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(CaboVerde(categories=(OPTIONAL, PUBLIC), years=1975))
+        self.assertNoHolidays(
+            CaboVerde(categories=CaboVerde.supported_categories, years=CV.start_year - 1)
+        )
 
     def test_new_years_day(self):
-        self.assertHolidayName("Ano Novo", (f"{year}-01-01" for year in range(1976, 2050)))
+        self.assertHolidayName("Ano Novo", (f"{year}-01-01" for year in self.full_range))
 
     def test_democracy_and_freedom_day(self):
         name = "Dia da Liberdade e da Democracia"
         self.assertHolidayName(name, (f"{year}-01-13" for year in range(2000, 2050)))
-        self.assertNoHolidayName(name, range(1976, 2000))
+        self.assertNoHolidayName(name, range(CV.start_year, 2000))
 
     def test_heroes_day(self):
         self.assertHolidayName(
             "Dia da Nacionalidade e dos Heróis Nacionais",
-            (f"{year}-01-20" for year in range(1976, 2050)),
+            (f"{year}-01-20" for year in self.full_range),
         )
 
     def test_ash_wednesday(self):
@@ -58,7 +55,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             "2024-02-14",
             "2025-03-05",
         )
-        self.assertHolidayName(name, range(1976, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_good_friday(self):
         name = "Sexta-feira Santa"
@@ -71,7 +68,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(1976, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_sunday(self):
         name = "Páscoa"
@@ -84,40 +81,37 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             "2024-03-31",
             "2025-04-20",
         )
-        self.assertHolidayName(name, range(1976, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_workers_day(self):
-        self.assertHolidayName(
-            "Dia do Trabalhador", (f"{year}-05-01" for year in range(1976, 2050))
-        )
+        self.assertHolidayName("Dia do Trabalhador", (f"{year}-05-01" for year in self.full_range))
 
     def test_international_childrens_day(self):
         name = "Dia Mundial da Criança"
         self.assertHolidayName(name, (f"{year}-06-01" for year in range(2005, 2050)))
-        self.assertNoHolidayName(name, range(1976, 2005))
+        self.assertNoHolidayName(name, range(CV.start_year, 2005))
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "Dia da Independência Nacional", (f"{year}-07-05" for year in range(1976, 2050))
+            "Dia da Independência Nacional", (f"{year}-07-05" for year in self.full_range)
         )
 
     def test_assumption_day(self):
-        self.assertHolidayName("Dia da Assunção", (f"{year}-08-15" for year in range(1976, 2050)))
+        self.assertHolidayName("Dia da Assunção", (f"{year}-08-15" for year in self.full_range))
 
     def test_all_saints_day(self):
         self.assertHolidayName(
-            "Dia de Todos os Santos", (f"{year}-11-01" for year in range(1976, 2050))
+            "Dia de Todos os Santos", (f"{year}-11-01" for year in self.full_range)
         )
 
     def test_christmas_day(self):
-        self.assertHolidayName("Dia do Natal", (f"{year}-12-25" for year in range(1976, 2050)))
+        self.assertHolidayName("Dia do Natal", (f"{year}-12-25" for year in self.full_range))
 
     def test_holy_thursday(self):
         name = "Quinta-Feira Santa"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
+        self.assertOptionalHolidayName(
             name,
-            self.opt_holidays,
             "2020-04-09",
             "2021-04-01",
             "2022-04-14",
@@ -125,14 +119,13 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             "2024-03-28",
             "2025-04-17",
         )
-        self.assertHolidayName(name, self.opt_holidays, range(1976, 2050))
+        self.assertOptionalHolidayName(name, self.full_range)
 
     def test_mothers_day(self):
         name = "Dia das Mães"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
+        self.assertOptionalHolidayName(
             name,
-            self.opt_holidays,
             "2020-05-10",
             "2021-05-09",
             "2022-05-08",
@@ -140,14 +133,13 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             "2024-05-12",
             "2025-05-11",
         )
-        self.assertHolidayName(name, self.opt_holidays, range(1976, 2050))
+        self.assertOptionalHolidayName(name, self.full_range)
 
     def test_fathers_day(self):
         name = "Dia dos Pais"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
+        self.assertOptionalHolidayName(
             name,
-            self.opt_holidays,
             "2020-06-21",
             "2021-06-20",
             "2022-06-19",
@@ -155,7 +147,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-15",
         )
-        self.assertHolidayName(name, self.opt_holidays, range(1976, 2050))
+        self.assertOptionalHolidayName(name, self.full_range)
 
     def test_brava_municipality_day(self):
         name = "Dia do Município da Brava"
@@ -165,7 +157,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-06-24" for year in range(1983, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -177,7 +169,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-07-04" for year in range(1983, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -189,7 +181,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-11-25" for year in range(1982, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1982))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1982))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -201,7 +193,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-11-25" for year in range(2005, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 2005))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 2005))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -213,7 +205,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-07-25" for year in range(1983, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -225,7 +217,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-09-08" for year in range(1983, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -237,7 +229,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-08-15" for year in range(1992, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1992))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1992))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -249,7 +241,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-01-17" for year in range(1983, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -261,7 +253,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-06-13" for year in range(1983, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -273,7 +265,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-09-02" for year in range(1983, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -285,7 +277,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-05-19" for year in range(1983, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -297,7 +289,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-12-06" for year in range(2005, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 2005))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 2005))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -309,7 +301,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-05-07" for year in range(1983, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -321,7 +313,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-01-31" for year in range(2006, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 2006))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 2006))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -333,7 +325,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-03-13" for year in range(1994, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1994))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1994))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -345,7 +337,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-05-01" for year in range(1992, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1992))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1992))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -357,7 +349,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-09-15" for year in range(1983, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -369,7 +361,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-09-29" for year in range(1997, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1997))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1997))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -381,7 +373,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-05-09" for year in range(2005, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 2005))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 2005))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -393,7 +385,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-07-19" for year in range(2005, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 2005))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 2005))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -405,7 +397,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-01-22" for year in range(1983, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -425,7 +417,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                     "2025-03-04",
                 )
                 self.assertHolidayName(name, holidays, range(1983, 2050))
-                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -437,7 +429,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-01-15" for year in range(1983, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 1983))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -449,13 +441,13 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-08-02" for year in range(2005, 2050))
                 )
-                self.assertNoHolidayName(name, holidays, range(1976, 2005))
+                self.assertNoHolidayName(name, holidays, range(CV.start_year, 2005))
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_2024_public_holidays(self):
         self.assertHolidays(
-            CaboVerde(categories=PUBLIC, years=2024),
+            CaboVerde(years=2024),
             ("2024-01-01", "Ano Novo"),
             ("2024-01-13", "Dia da Liberdade e da Democracia"),
             ("2024-01-20", "Dia da Nacionalidade e dos Heróis Nacionais"),

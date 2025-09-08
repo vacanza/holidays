@@ -20,13 +20,14 @@ from tests.common import CommonCountryTests
 class TestCostaRica(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(CostaRica, years=range(1980, 2050))
+        cls.full_range = range(1980, 2050)
+        super().setUpClass(CostaRica, years=cls.full_range)
 
     def test_country_aliases(self):
         self.assertAliases(CostaRica, CR, CRI)
 
     def test_new_year_day(self):
-        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(1980, 2050)))
+        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))
 
     def test_maundy_thursday(self):
         name = "Jueves Santo"
@@ -41,7 +42,7 @@ class TestCostaRica(CommonCountryTests, TestCase):
             "2022-04-14",
             "2023-04-06",
         )
-        self.assertHolidayName(name, range(1980, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_good_friday(self):
         name = "Viernes Santo"
@@ -56,12 +57,12 @@ class TestCostaRica(CommonCountryTests, TestCase):
             "2022-04-15",
             "2023-04-07",
         )
-        self.assertHolidayName(name, range(1980, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_juan_santamaria_day(self):
         name = "Día de Juan Santamaría"
         years_with_obs = {2006, 2007, 2008, 2023, 2024}
-        years = set(range(1980, 2050)).difference(years_with_obs)
+        years = set(self.full_range).difference(years_with_obs)
         self.assertHolidayName(name, (f"{year}-04-11" for year in years))
 
         dt = (
@@ -78,7 +79,7 @@ class TestCostaRica(CommonCountryTests, TestCase):
     def test_labor_day(self):
         name = "Día Internacional del Trabajo"
         years_with_obs = {2021}
-        years = set(range(1980, 2050)).difference(years_with_obs)
+        years = set(self.full_range).difference(years_with_obs)
         self.assertHolidayName(name, (f"{year}-05-01" for year in years))
 
         dt = "2021-05-03"
@@ -89,7 +90,7 @@ class TestCostaRica(CommonCountryTests, TestCase):
     def test_annexation(self):
         name = "Anexión del Partido de Nicoya a Costa Rica"
         years_with_obs = {2006, 2007, 2008, 2020, 2021, 2023, 2024}
-        years = set(range(1980, 2050)).difference(years_with_obs)
+        years = set(self.full_range).difference(years_with_obs)
         self.assertHolidayName(name, (f"{year}-07-25" for year in years))
 
         dt = (
@@ -107,17 +108,13 @@ class TestCostaRica(CommonCountryTests, TestCase):
 
     def test_feast_our_lady_of_angels(self):
         name = "Fiesta de Nuestra Señora de los Ángeles"
-        self.assertHolidayName(
-            name,
-            CostaRica(categories=OPTIONAL, years=range(1980, 2050)),
-            (f"{year}-08-02" for year in range(1980, 2050)),
-        )
+        self.assertOptionalHolidayName(name, (f"{year}-08-02" for year in self.full_range))
         self.assertNoHolidayName(name)
 
     def test_mothers_day(self):
         name = "Día de la Madre"
         years_with_obs = {2006, 2007, 2020, 2023, 2024}
-        years = set(range(1980, 2050)).difference(years_with_obs)
+        years = set(self.full_range).difference(years_with_obs)
         self.assertHolidayName(name, (f"{year}-08-15" for year in years))
 
         dt = (
@@ -133,30 +130,29 @@ class TestCostaRica(CommonCountryTests, TestCase):
 
     def test_black_person_day(self):
         name = "Día de la Persona Negra y la Cultura Afrocostarricense"
-        opt_holidays = CostaRica(categories=OPTIONAL, years=range(1980, 2050))
-        opt_holidays_non_obs = CostaRica(
-            categories=OPTIONAL, years=range(2021, 2024), observed=False
-        )
         self.assertNoHolidayName(name)
-        self.assertHolidayName(name, opt_holidays, (f"{year}-08-31" for year in range(2024, 2050)))
-        self.assertNoHoliday(opt_holidays, (f"{year}-08-31" for year in range(1980, 2021)))
-        self.assertNoHolidayName(name, opt_holidays, range(1980, 2021))
+        self.assertOptionalHolidayName(name, (f"{year}-08-31" for year in range(2024, 2050)))
+        self.assertNoOptionalHoliday(f"{year}-08-31" for year in range(1980, 2021))
+        self.assertNoOptionalHolidayName(name, range(1980, 2021))
 
         dt = (
             "2021-09-05",
             "2022-09-04",
             "2023-09-03",
         )
-        self.assertHoliday(opt_holidays, dt)
-        self.assertNoNonObservedHoliday(opt_holidays_non_obs, dt)
-        self.assertNonObservedHolidayName(
-            name, opt_holidays_non_obs, "2021-08-31", "2022-08-31", "2023-08-31"
+        self.assertOptionalHoliday(dt)
+        self.assertNoOptionalNonObservedHoliday(dt)
+        self.assertOptionalNonObservedHolidayName(
+            name,
+            "2021-08-31",
+            "2022-08-31",
+            "2023-08-31",
         )
 
     def test_independence_day(self):
         name = "Día de la Independencia"
         years_with_obs = {2020, 2021, 2022}
-        years = set(range(1980, 2050)).difference(years_with_obs)
+        years = set(self.full_range).difference(years_with_obs)
         self.assertHolidayName(name, (f"{year}-09-15" for year in years))
 
         dt = (
@@ -204,28 +200,27 @@ class TestCostaRica(CommonCountryTests, TestCase):
 
     def test_army_abolition_day(self):
         name = "Día de la Abolición del Ejército"
-        opt_holidays = CostaRica(categories=OPTIONAL, years=range(1980, 2050))
-        opt_holidays_non_obs = CostaRica(
-            categories=OPTIONAL, years=range(2021, 2024), observed=False
-        )
         self.assertNoHolidayName(name)
-        self.assertHolidayName(name, opt_holidays, (f"{year}-12-01" for year in range(2023, 2050)))
-        self.assertNoHoliday(opt_holidays, "2019-12-01")
-        self.assertNoHolidayName(name, opt_holidays, range(1980, 2020))
+        self.assertOptionalHolidayName(name, (f"{year}-12-01" for year in range(2023, 2050)))
+        self.assertNoOptionalHoliday("2019-12-01")
+        self.assertNoOptionalHolidayName(name, range(1980, 2020))
 
         dt = (
             "2020-11-30",
             "2021-11-29",
             "2022-12-05",
         )
-        self.assertHoliday(opt_holidays, dt)
-        self.assertNoNonObservedHoliday(opt_holidays_non_obs, dt)
-        self.assertNonObservedHolidayName(
-            name, opt_holidays_non_obs, "2020-12-01", "2021-12-01", "2022-12-01"
+        self.assertOptionalHoliday(dt)
+        self.assertNoOptionalNonObservedHoliday(dt)
+        self.assertOptionalNonObservedHolidayName(
+            name,
+            "2020-12-01",
+            "2021-12-01",
+            "2022-12-01",
         )
 
     def test_christmas_day(self):
-        self.assertHolidayName("Navidad", (f"{year}-12-25" for year in range(1980, 2050)))
+        self.assertHolidayName("Navidad", (f"{year}-12-25" for year in self.full_range))
 
     def test_2022(self):
         self.assertHolidays(

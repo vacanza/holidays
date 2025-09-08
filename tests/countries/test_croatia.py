@@ -19,23 +19,22 @@ from tests.common import CommonCountryTests
 class TestCroatia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Croatia, years=range(1992, 2050))
+        super().setUpClass(Croatia)
 
     def test_country_aliases(self):
         self.assertAliases(Croatia, HR, HRV)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Croatia(years=1991))
+        self.assertNoHolidays(Croatia(years=HR.start_year - 1))
 
     def test_new_years_day(self):
-        self.assertHolidayName("Nova godina", (f"{year}-01-01" for year in range(1992, 2050)))
+        self.assertHolidayName("Nova godina", (f"{year}-01-01" for year in self.full_range))
 
     def test_epiphany(self):
         name = "Bogojavljenje ili Sveta tri kralja"
         self.assertHolidayName(
-            name, (f"{year}-01-06" for year in set(range(1992, 2050)).difference({2002}))
+            name, (f"{year}-01-06" for year in set(self.full_range).difference({2002}))
         )
-        self.assertNoHoliday("2002-01-06")
         self.assertNoHolidayName(name, 2002)
 
     def test_easter(self):
@@ -49,17 +48,19 @@ class TestCroatia(CommonCountryTests, TestCase):
             "2022-04-17",
             "2023-04-09",
         )
-        self.assertNoHolidayName(name, range(1992, 2009))
+        self.assertNoHolidayName(name, range(HR.start_year, 2009))
 
     def test_easter_monday(self):
+        name = "Uskrsni ponedjeljak"
         self.assertHolidayName(
-            "Uskrsni ponedjeljak",
+            name,
             "2019-04-22",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_corpus_cristi(self):
         name = "Tijelovo"
@@ -72,55 +73,56 @@ class TestCroatia(CommonCountryTests, TestCase):
             "2022-06-16",
             "2023-06-08",
         )
-        self.assertNoHolidayName(name, range(1992, 2002))
+        self.assertHolidayName(name, range(2002, 2050))
+        self.assertNoHolidayName(name, range(HR.start_year, 2002))
 
     def test_labor_day(self):
-        self.assertHolidayName("Praznik rada", (f"{year}-05-01" for year in range(1992, 2050)))
+        self.assertHolidayName("Praznik rada", (f"{year}-05-01" for year in self.full_range))
 
     def test_statehood_day(self):
         name = "Dan državnosti"
         self.assertHolidayName(name, (f"{year}-05-30" for year in range(1996, 2002)))
         self.assertHolidayName(name, (f"{year}-06-25" for year in range(2002, 2020)))
         self.assertHolidayName(name, (f"{year}-05-30" for year in range(2020, 2050)))
-        self.assertNoHolidayName(name, range(1992, 1996))
+        self.assertNoHolidayName(name, range(HR.start_year, 1996))
 
     def test_antifascist_struggle_day(self):
         self.assertHolidayName(
-            "Dan antifašističke borbe", (f"{year}-06-22" for year in range(1992, 2050))
+            "Dan antifašističke borbe", (f"{year}-06-22" for year in self.full_range)
         )
 
     def test_victory_and_homeland_thanksgiving_day(self):
         name_1 = "Dan pobjede i domovinske zahvalnosti"
         name_2 = "Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja"
-        self.assertHolidayName(name_1, (f"{year}-08-05" for year in range(1992, 2008)))
+        self.assertHolidayName(name_1, (f"{year}-08-05" for year in range(HR.start_year, 2008)))
         self.assertHolidayName(name_2, (f"{year}-08-05" for year in range(2008, 2050)))
         self.assertNoHolidayName(name_1, range(2008, 2050))
-        self.assertNoHolidayName(name_2, range(1992, 2008))
+        self.assertNoHolidayName(name_2, range(HR.start_year, 2008))
 
     def test_assumption_of_mary_day(self):
-        self.assertHolidayName("Velika Gospa", (f"{year}-08-15" for year in range(1992, 2050)))
+        self.assertHolidayName("Velika Gospa", (f"{year}-08-15" for year in self.full_range))
 
     def test_independence_day(self):
         name = "Dan neovisnosti"
         self.assertHolidayName(name, (f"{year}-10-08" for year in range(2002, 2020)))
-        self.assertNoHoliday(f"{year}-10-08" for year in range(1992, 2002))
+        self.assertNoHoliday(f"{year}-10-08" for year in range(HR.start_year, 2002))
         self.assertNoHoliday(f"{year}-10-08" for year in range(2020, 2050))
-        self.assertNoHolidayName(name, range(1992, 2002), range(2020, 2050))
+        self.assertNoHolidayName(name, range(HR.start_year, 2002), range(2020, 2050))
 
     def test_all_saints_day(self):
-        self.assertHolidayName("Svi sveti", (f"{year}-11-01" for year in range(1992, 2050)))
+        self.assertHolidayName("Svi sveti", (f"{year}-11-01" for year in self.full_range))
 
     def test_remembrance_day(self):
         name = "Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje"
         self.assertHolidayName(name, (f"{year}-11-18" for year in range(2020, 2050)))
-        self.assertNoHoliday(f"{year}-11-18" for year in range(1992, 2020))
-        self.assertNoHolidayName(name, range(1992, 2020))
+        self.assertNoHoliday(f"{year}-11-18" for year in range(HR.start_year, 2020))
+        self.assertNoHolidayName(name, range(HR.start_year, 2020))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Božić", (f"{year}-12-25" for year in range(1992, 2050)))
+        self.assertHolidayName("Božić", (f"{year}-12-25" for year in self.full_range))
 
     def test_st_stephens_day(self):
-        self.assertHolidayName("Sveti Stjepan", (f"{year}-12-26" for year in range(1992, 2050)))
+        self.assertHolidayName("Sveti Stjepan", (f"{year}-12-26" for year in self.full_range))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

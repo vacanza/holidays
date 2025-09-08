@@ -19,13 +19,13 @@ from tests.common import CommonCountryTests
 class TestCameroon(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Cameroon, years=range(1960, 2050))
+        super().setUpClass(Cameroon)
 
     def test_country_aliases(self):
         self.assertAliases(Cameroon, CM, CMR)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Cameroon(years=1959))
+        self.assertNoHolidays(Cameroon(years=CM.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday("2021-05-14", "2021-07-19")
@@ -33,14 +33,16 @@ class TestCameroon(CommonCountryTests, TestCase):
     def test_youth_day(self):
         name = "Youth Day"
         self.assertHolidayName(name, (f"{year}-02-11" for year in range(1966, 2050)))
-        self.assertNoHolidayName(name, range(1960, 1966))
-        self.assertNoHoliday(f"{year}-02-11" for year in range(1960, 1966))
+        self.assertNoHolidayName(name, range(CM.start_year, 1966))
+        self.assertNoHoliday(f"{year}-02-11" for year in range(CM.start_year, 1966))
 
     def test_national_day(self):
         name = "National Day"
         self.assertHolidayName(name, (f"{year}-05-20" for year in range(1972, 2050)))
-        self.assertNoHolidayName(name, range(1960, 1972))
-        self.assertNoHoliday(f"{year}-05-20" for year in set(range(1960, 1972)).difference({1971}))
+        self.assertNoHolidayName(name, range(CM.start_year, 1972))
+        self.assertNoHoliday(
+            f"{year}-05-20" for year in set(range(CM.start_year, 1972)).difference({1971})
+        )
 
     def test_observed(self):
         dt = (

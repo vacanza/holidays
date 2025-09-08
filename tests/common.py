@@ -144,7 +144,7 @@ class TestCase:
                 if issubclass(test_class, ObservedHolidayBase):
                     non_obs_key = f"years_{suffix}_non_observed"
                     if non_obs_key not in year_variants:
-                        year_variants[non_obs_key] = years
+                        year_variants[non_obs_key] = year_variants.get("years_non_observed", years)
                 if "islamic_show_estimated" in test_class_param:
                     islamic_no_estimated_key = f"years_{suffix}_islamic_no_estimated"
                     if islamic_no_estimated_key not in year_variants:

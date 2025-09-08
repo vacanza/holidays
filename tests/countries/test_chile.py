@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import BANK, PUBLIC
 from holidays.countries.chile import Chile, CL, CHL
 from tests.common import CommonCountryTests
 
@@ -20,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestChile(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Chile, years=range(1915, 2050))
+        super().setUpClass(Chile)
 
     def test_country_aliases(self):
         self.assertAliases(Chile, CL, CHL)
@@ -37,11 +36,12 @@ class TestChile(CommonCountryTests, TestCase):
         )
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Chile(categories=(BANK, PUBLIC), years=1914))
+        self.assertNoHolidays(Chile(categories=CL.supported_categories, years=CL.start_year - 1))
 
-    def test_new_year(self):
-        self.assertHoliday(f"{year}-01-01" for year in range(1915, 2050))
-        self.assertHoliday(
+    def test_new_years_day(self):
+        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))
+        self.assertHolidayName(
+            "Feriado nacional",
             "2017-01-02",
             "2023-01-02",
         )
@@ -51,37 +51,48 @@ class TestChile(CommonCountryTests, TestCase):
             "2012-01-02",
         )
 
-    def test_holy_week(self):
-        self.assertHoliday(
-            "1915-04-02",
-            "1940-03-22",
-            "1960-04-15",
-            "1980-04-04",
-            "2000-04-21",
-            "2015-04-03",
+    def test_good_friday(self):
+        name = "Viernes Santo"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
             "2022-04-15",
-            "1915-04-03",
-            "1940-03-23",
-            "1960-04-16",
-            "1980-04-05",
-            "2000-04-22",
-            "2015-04-04",
-            "2022-04-16",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
         )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_holy_saturday(self):
+        name = "Sábado Santo"
+        self.assertHolidayName(
+            name,
+            "2020-04-11",
+            "2021-04-03",
+            "2022-04-16",
+            "2023-04-08",
+            "2024-03-30",
+            "2025-04-19",
+        )
+        self.assertHolidayName(name, self.full_range)
 
     def test_ascension(self):
-        self.assertHoliday(
+        name = "Ascensión del Señor"
+        self.assertHolidayName(
+            name,
             "1915-05-13",
             "1930-05-29",
             "1950-05-18",
             "1967-05-04",
         )
-        name = "Ascensión del Señor"
-        self.assertHolidayName(name, range(1915, 1968))
+        self.assertHolidayName(name, range(CL.start_year, 1968))
         self.assertNoHolidayName(name, range(1968, 2050))
 
     def test_corpus_christi(self):
-        self.assertHoliday(
+        name = "Corpus Christi"
+        self.assertHolidayName(
+            name,
             "1915-06-03",
             "1940-05-23",
             "1950-06-08",
@@ -91,20 +102,23 @@ class TestChile(CommonCountryTests, TestCase):
             "2000-06-19",
             "2006-06-12",
         )
-        name = "Corpus Christi"
-        self.assertHolidayName(name, range(1915, 1968))
-        self.assertNoHolidayName(name, range(1968, 1987))
-        self.assertHolidayName(name, range(1987, 2006))
+        self.assertHolidayName(name, range(CL.start_year, 1968), range(1987, 2007))
+        self.assertNoHolidayName(name, range(1968, 1987), range(2007, 2050))
 
-    def test_labour_day(self):
-        self.assertHoliday(f"{year}-05-01" for year in range(1932, 2050))
-        self.assertNoHoliday(f"{year}-05-01" for year in range(1915, 1932))
+    def test_labor_day(self):
+        name = "Día Nacional del Trabajo"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1932, 2050)))
+        self.assertNoHolidayName(name, range(CL.start_year, 1932))
 
-    def test_navy_day(self):
-        self.assertHoliday(f"{year}-05-21" for year in range(1915, 2050))
+    def test_naval_glories_day(self):
+        self.assertHolidayName(
+            "Día de las Glorias Navales", (f"{year}-05-21" for year in self.full_range)
+        )
 
     def test_indigenous_peoples_day(self):
-        self.assertHoliday(
+        name = "Día Nacional de los Pueblos Indígenas"
+        self.assertHolidayName(
+            name,
             "2021-06-21",
             "2022-06-21",
             "2023-06-21",
@@ -141,12 +155,17 @@ class TestChile(CommonCountryTests, TestCase):
             "2078-06-20",
             "2079-06-20",
         )
-        self.assertNoHolidayName("Día Nacional de los Pueblos Indígenas", range(1915, 2021))
+        self.assertNoHolidayName(name, range(CL.start_year, 2021))
 
     def test_saint_peter_and_paul(self):
-        self.assertHoliday(f"{year}-06-29" for year in range(1915, 1967))
-        self.assertHoliday(f"{year}-06-29" for year in range(1986, 2000))
-        self.assertHoliday(
+        name = "San Pedro y San Pablo"
+        self.assertNonObservedHolidayName(
+            name,
+            (f"{year}-06-29" for year in range(CL.start_year, 1968)),
+            (f"{year}-06-29" for year in range(1986, 2050)),
+        )
+        self.assertHolidayName(
+            name,
             "2000-06-26",
             "2001-07-02",
             "2002-06-29",
@@ -173,25 +192,22 @@ class TestChile(CommonCountryTests, TestCase):
             "2023-06-26",
             "2024-06-29",
         )
-
-        self.assertNoHolidayName("San Pedro y San Pablo", range(1968, 1986))
+        self.assertNoHolidayName(name, range(1968, 1986))
 
     def test_virgin_of_carmen(self):
-        self.assertHoliday(f"{year}-07-16" for year in range(2007, 2050))
-        self.assertNoHoliday(f"{year}-07-16" for year in range(1915, 2007))
+        name = "Virgen del Carmen"
+        self.assertHolidayName(name, (f"{year}-07-16" for year in range(2007, 2050)))
+        self.assertNoHolidayName(name, range(CL.start_year, 2007))
 
     def test_assumption_of_mary(self):
-        self.assertHoliday(f"{year}-08-15" for year in range(1915, 2050))
+        self.assertHolidayName(
+            "Asunción de la Virgen", (f"{year}-08-15" for year in self.full_range)
+        )
 
     def test_national_liberation(self):
-        self.assertHoliday(f"{year}-09-11" for year in range(1981, 1999))
-        self.assertNoHoliday(
-            "1980-09-11",
-            "1999-09-11",
-        )
         name = "Día de la Liberación Nacional"
-        self.assertNoHolidayName(name, range(1915, 1981))
-        self.assertNoHolidayName(name, range(1999, 2050))
+        self.assertHolidayName(name, (f"{year}-09-11" for year in range(1981, 1999)))
+        self.assertNoHolidayName(name, range(CL.start_year, 1981), range(1999, 2050))
 
     def test_national_unity(self):
         self.assertHoliday(
@@ -205,12 +221,12 @@ class TestChile(CommonCountryTests, TestCase):
         )
 
         self.assertNoHolidayName(
-            "Día de la Unidad Nacional", set(range(1915, 2050)).difference({1999, 2000, 2001})
+            "Día de la Unidad Nacional", set(self.full_range).difference({1999, 2000, 2001})
         )
 
     def test_independence_holidays(self):
-        self.assertHoliday(f"{year}-09-18" for year in range(1915, 2050))
-        self.assertHoliday(f"{year}-09-19" for year in range(1915, 2050))
+        self.assertHoliday(f"{year}-09-18" for year in self.full_range)
+        self.assertHoliday(f"{year}-09-19" for year in self.full_range)
         self.assertHoliday(
             "2007-09-17",
             "2012-09-17",
@@ -264,34 +280,33 @@ class TestChile(CommonCountryTests, TestCase):
             "2023-10-27",
         )
         self.assertNoHolidayName(
-            "Día Nacional de las Iglesias Evangélicas y Protestantes", range(1915, 2008)
+            "Día Nacional de las Iglesias Evangélicas y Protestantes", range(CL.start_year, 2008)
         )
 
     def test_all_saints(self):
-        self.assertHoliday(f"{year}-11-01" for year in range(1915, 2050))
+        self.assertHoliday(f"{year}-11-01" for year in self.full_range)
 
     def test_immaculate_conception(self):
-        self.assertHoliday(f"{year}-12-08" for year in range(1915, 2050))
+        self.assertHoliday(f"{year}-12-08" for year in self.full_range)
 
     def test_christmas(self):
-        self.assertHoliday(f"{year}-12-25" for year in range(1915, 2050))
+        self.assertHoliday(f"{year}-12-25" for year in self.full_range)
         self.assertHoliday(f"{year}-12-24" for year in range(1944, 1989))
-        self.assertNoHoliday(f"{year}-12-24" for year in range(1915, 1944))
+        self.assertNoHoliday(f"{year}-12-24" for year in range(CL.start_year, 1944))
         self.assertNoHoliday(f"{year}-12-24" for year in range(1989, 2050))
 
     def test_bank_holidays(self):
         name = "Feriado bancario"
-        holidays = Chile(categories=BANK, years=range(1915, 2050))
-        self.assertHolidayName(name, holidays, (f"{year}-06-30" for year in range(1957, 1976)))
-        self.assertHolidayName(name, holidays, (f"{year}-12-31" for year in range(1956, 1997)))
-        self.assertHolidayName(name, holidays, (f"{year}-12-31" for year in range(1998, 2025)))
-        self.assertNoHoliday(holidays, (f"{year}-06-30" for year in range(1915, 1957)))
-        self.assertNoHoliday(holidays, (f"{year}-06-30" for year in range(1976, 2050)))
-        self.assertNoHoliday(
-            holidays, (f"{year}-12-31" for year in range(1915, 1956)), "1997-12-31"
+        self.assertBankHolidayName(name, (f"{year}-06-30" for year in range(1957, 1976)))
+        self.assertBankHolidayName(name, (f"{year}-12-31" for year in range(1956, 1997)))
+        self.assertBankHolidayName(name, (f"{year}-12-31" for year in range(1998, 2025)))
+        self.assertNoBankHoliday(f"{year}-06-30" for year in range(CL.start_year, 1957))
+        self.assertNoBankHoliday(f"{year}-06-30" for year in range(1976, 2050))
+        self.assertNoBankHoliday(
+            (f"{year}-12-31" for year in range(CL.start_year, 1956)), "1997-12-31"
         )
-        self.assertNoHoliday(holidays, (f"{year}-12-31" for year in range(2025, 2050)))
-        self.assertNoHolidayName(name, holidays, range(1915, 1956))
+        self.assertNoBankHoliday(f"{year}-12-31" for year in range(2025, 2050))
+        self.assertNoBankHolidayName(name, range(CL.start_year, 1956))
 
     def test_2019(self):
         self.assertHolidayDates(

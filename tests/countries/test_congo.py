@@ -25,17 +25,71 @@ class TestCongo(CommonCountryTests, TestCase):
         self.assertAliases(Congo, CG, COG)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Congo(years=1993))
+        self.assertNoHolidays(Congo(years=CG.start_year - 1))
+
+    def test_new_years_day(self):
+        self.assertHolidayName("Jour de l'An", (f"{year}-01-01" for year in self.full_range))
+
+    def test_easter_monday(self):
+        name = "Lundi de Pâques"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_labor_day(self):
+        self.assertHolidayName("Fête du Travail", (f"{year}-05-01" for year in self.full_range))
+
+    def test_ascension_day(self):
+        name = "Ascension"
+        self.assertHolidayName(
+            name,
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_whit_monday(self):
+        name = "Lundi de Pentecôte"
+        self.assertHolidayName(
+            name,
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_reconciliation_day(self):
+        self.assertHolidayName(
+            "Fête de la Réconciliation", (f"{year}-06-10" for year in self.full_range)
+        )
+
+    def test_national_day(self):
+        self.assertHolidayName("Fête Nationale", (f"{year}-08-15" for year in self.full_range))
+
+    def test_all_saints_day(self):
+        self.assertHolidayName("Toussaint", (f"{year}-11-01" for year in self.full_range))
 
     def test_republic_day(self):
-        self.assertHoliday(
-            "2010-11-28",
-            "2015-11-28",
-            "2016-11-28",
-            "2017-11-28",
-            "2024-11-28",
-        )
-        self.assertNoHolidayName("Jour de la République", 2009)
+        name = "Jour de la République"
+        self.assertHolidayName(name, (f"{year}-11-28" for year in range(2010, 2050)))
+        self.assertNoHolidayName(name, range(CG.start_year, 2010))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Noël", (f"{year}-12-25" for year in self.full_range))
 
     def test_2006(self):
         # http://mokili.free.fr/jours_feries.php

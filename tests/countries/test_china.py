@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import HALF_DAY, PUBLIC
+from holidays.constants import HALF_DAY
 from holidays.countries.china import China, CN, CHN
 from tests.common import CommonCountryTests, WorkingDayTests
 
@@ -20,14 +20,15 @@ from tests.common import CommonCountryTests, WorkingDayTests
 class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(China, years=range(1950, 2050), years_non_observed=range(2001, 2025))
+        super().setUpClass(China, years_non_observed=range(2001, 2025))
 
     def test_country_aliases(self):
         self.assertAliases(China, CN, CHN)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(China(years=1949))
-        self.assertNoHolidays(China(years=1949, categories=HALF_DAY))
+        self.assertNoHolidays(
+            China(categories=China.supported_categories, years=CN.start_year - 1)
+        )
 
     def test_substituted_holidays(self):
         self.assertHoliday(
@@ -405,7 +406,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             self.assertWorkingDay(China(years=year), dts)
 
     def test_new_years_day(self):
-        self.assertHolidayName("元旦", (f"{year}-01-01" for year in range(1950, 2050)))
+        self.assertHolidayName("元旦", (f"{year}-01-01" for year in self.full_range))
 
         self.assertNoNonObservedHoliday(
             "2005-01-03",
@@ -429,7 +430,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2013-02-09",
         )
         self.assertHolidayName(name, range(2025, 2050))
-        self.assertNoHolidayName(name, range(1950, 2008), range(2014, 2025))
+        self.assertNoHolidayName(name, range(CN.start_year, 2008), range(2014, 2025))
 
         self.assertNoNonObservedHoliday(
             "2009-01-28",
@@ -440,7 +441,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_chinese_new_year(self):
         name = "春节"
-        self.assertHolidayName(name, range(1950, 2050))
+        self.assertHolidayName(name, self.full_range)
         self.assertHolidayName(
             name,
             "2021-02-12",
@@ -478,12 +479,12 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-02-13",
             "2024-02-14",
         )
-        self.assertHolidayNameCount(name, 3, range(1950, 2008), range(2014, 2050))
+        self.assertHolidayNameCount(name, 3, range(CN.start_year, 2008), range(2014, 2050))
         self.assertHolidayNameCount(name, 2, range(2008, 2014))
 
     def test_labor_day(self):
         name = "劳动节"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1950, 2050)))
+        self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
         self.assertHolidayName(
             name, (f"{year}-05-02" for year in (*range(2000, 2008), *range(2025, 2050)))
         )
@@ -503,7 +504,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_national_day(self):
         name = "国庆节"
-        for year in range(1950, 1999):
+        for year in range(CN.start_year, 1999):
             self.assertHolidayName(name, (f"{year}-10-01", f"{year}-10-02"))
         for year in range(1999, 2050):
             self.assertHolidayName(name, (f"{year}-10-01", f"{year}-10-02", f"{year}-10-03"))
@@ -534,7 +535,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_qingming_festival(self):
         name = "清明节"
         self.assertHolidayName(name, range(2008, 2050))
-        self.assertNoHolidayName(name, range(1950, 2008))
+        self.assertNoHolidayName(name, range(CN.start_year, 2008))
 
         self.assertHolidayName(
             name,
@@ -559,7 +560,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_dragon_boat_festival(self):
         name = "端午节"
         self.assertHolidayName(name, range(2008, 2050))
-        self.assertNoHolidayName(name, range(1950, 2008))
+        self.assertNoHolidayName(name, range(CN.start_year, 2008))
 
         self.assertHolidayName(
             name,
@@ -582,7 +583,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_mid_autumn_festival(self):
         name = "中秋节"
         self.assertHolidayName(name, range(2008, 2050))
-        self.assertNoHolidayName(name, range(1950, 2008))
+        self.assertNoHolidayName(name, range(CN.start_year, 2008))
 
         self.assertHolidayName(
             name,
@@ -607,7 +608,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_1950_public_holiday(self):
         self.assertHolidays(
-            China(categories=PUBLIC, years=1950),
+            China(years=1950),
             ("1950-01-01", "元旦"),
             ("1950-02-17", "春节"),
             ("1950-02-18", "春节"),
@@ -619,7 +620,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_1999_public_holiday(self):
         self.assertHolidays(
-            China(categories=PUBLIC, years=1999),
+            China(years=1999),
             ("1999-01-01", "元旦"),
             ("1999-02-16", "春节"),
             ("1999-02-17", "春节"),
@@ -633,7 +634,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2001_public_holiday(self):
         # https://zh.wikisource.org/wiki/国务院办公厅关于2001年春节、“五一”、“十一”放假安排的通知
         self.assertHolidays(
-            China(categories=PUBLIC, years=2001),
+            China(years=2001),
             # New Year is not listed, but should be there according to 1999 revision.
             ("2001-01-01", "元旦"),
             ("2001-01-24", "春节"),
@@ -656,7 +657,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2002_public_holiday(self):
         # https://zh.wikisource.org/wiki/国务院办公厅关于2002年部分节假日休息安排的通知
         self.assertHolidays(
-            China(categories=PUBLIC, years=2002),
+            China(years=2002),
             ("2002-01-01", "元旦"),
             ("2002-01-02", "休息日（2001-12-29日起取代）"),
             ("2002-01-03", "休息日（2001-12-30日起取代）"),
@@ -680,7 +681,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2003_public_holiday(self):
         # https://zh.wikisource.org/wiki/国务院办公厅关于2003年部分节假日休息安排的通知
         self.assertHolidays(
-            China(categories=PUBLIC, years=2003),
+            China(years=2003),
             ("2003-01-01", "元旦"),
             ("2003-02-01", "春节"),
             ("2003-02-02", "春节"),
@@ -705,7 +706,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2004_public_holiday(self):
         # https://zh.wikisource.org/wiki/国务院办公厅关于2004年部分节假日安排的通知
         self.assertHolidays(
-            China(categories=PUBLIC, years=2004),
+            China(years=2004),
             ("2004-01-01", "元旦"),
             ("2004-01-22", "春节"),
             ("2004-01-23", "春节"),
@@ -732,7 +733,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2005_public_holiday(self):
         # https://zh.wikisource.org/wiki/国务院办公厅关于2005年部分节假日安排的通知
         self.assertHolidays(
-            China(categories=PUBLIC, years=2005),
+            China(years=2005),
             ("2005-01-01", "元旦"),
             ("2005-01-03", "元旦（观察日）"),
             ("2005-02-09", "春节"),
@@ -758,7 +759,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2006_public_holiday(self):
         # https://zh.wikisource.org/wiki/国务院办公厅关于2006年部分节假日安排的通知
         self.assertHolidays(
-            China(categories=PUBLIC, years=2006),
+            China(years=2006),
             ("2006-01-01", "元旦"),
             ("2006-01-02", "元旦（观察日）"),
             ("2006-01-03", "休息日（2005-12-31日起取代）"),
@@ -784,7 +785,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2007_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2007/content_503397.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2007),
+            China(years=2007),
             ("2007-01-01", "元旦"),
             ("2007-01-02", "休息日（2006-12-30日起取代）"),
             ("2007-01-03", "休息日（2006-12-31日起取代）"),
@@ -810,7 +811,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2008_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2008/content_859870.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2008),
+            China(years=2008),
             ("2008-01-01", "元旦"),
             ("2008-02-06", "农历除夕"),
             ("2008-02-07", "春节"),
@@ -834,7 +835,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2009_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2008/content_1175823.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2009),
+            China(years=2009),
             ("2009-01-01", "元旦"),
             ("2009-01-02", "休息日（2009-01-04日起取代）"),
             ("2009-01-25", "农历除夕"),
@@ -860,7 +861,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2010_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2009/content_1487011.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2010),
+            China(years=2010),
             ("2010-01-01", "元旦"),
             ("2010-02-13", "农历除夕"),
             ("2010-02-14", "春节"),
@@ -890,7 +891,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2011_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2010/content_1765282.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2011),
+            China(years=2011),
             ("2011-01-01", "元旦"),
             ("2011-01-03", "元旦（观察日）"),
             ("2011-02-02", "农历除夕"),
@@ -916,7 +917,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2012_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2011/content_2020918.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2012),
+            China(years=2012),
             ("2012-01-01", "元旦"),
             ("2012-01-02", "元旦（观察日）"),
             ("2012-01-03", "休息日（2011-12-31日起取代）"),
@@ -944,7 +945,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2013_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2012/content_2292057.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2013),
+            China(years=2013),
             ("2013-01-01", "元旦"),
             ("2013-01-02", "休息日（2013-01-05日起取代）"),
             ("2013-01-03", "休息日（2013-01-06日起取代）"),
@@ -975,7 +976,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2014_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2014/content_2561299.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2014),
+            China(years=2014),
             ("2014-01-01", "元旦"),
             ("2014-01-31", "春节"),
             ("2014-02-01", "春节"),
@@ -1000,7 +1001,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2015_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2015/content_2799019.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2015),
+            China(years=2015),
             ("2015-01-01", "元旦"),
             ("2015-01-02", "休息日（2015-01-04日起取代）"),
             ("2015-02-18", "休息日（2015-02-15日起取代）"),
@@ -1028,7 +1029,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2016_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2016/content_2979719.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2016),
+            China(years=2016),
             ("2016-01-01", "元旦"),
             ("2016-02-08", "春节"),
             ("2016-02-09", "春节"),
@@ -1054,7 +1055,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2017_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2016/content_5148793.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2017),
+            China(years=2017),
             ("2017-01-01", "元旦"),
             ("2017-01-02", "元旦（观察日）"),
             ("2017-01-27", "休息日（2017-01-22日起取代）"),
@@ -1080,7 +1081,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2018_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2017/content_5248221.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2018),
+            China(years=2018),
             ("2018-01-01", "元旦"),
             ("2018-02-15", "休息日（2018-02-11日起取代）"),
             ("2018-02-16", "春节"),
@@ -1106,7 +1107,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2019_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2018/content_5350046.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2019),
+            China(years=2019),
             ("2019-01-01", "元旦"),
             ("2019-02-04", "休息日（2019-02-02日起取代）"),
             ("2019-02-05", "春节"),
@@ -1128,7 +1129,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
         # https://www.gov.cn/gongbao/content/2019/content_5459138.htm
         # https://www.gov.cn/zhengce/zhengceku/2020-01/27/content_5472352.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2020),
+            China(years=2020),
             ("2020-01-01", "元旦"),
             ("2020-01-24", "休息日（2020-01-19日起取代）"),
             ("2020-01-25", "春节"),
@@ -1159,7 +1160,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2021_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2020/content_5567750.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2021),
+            China(years=2021),
             ("2021-01-01", "元旦"),
             ("2021-02-11", "休息日（2021-02-07日起取代）"),
             ("2021-02-12", "春节"),
@@ -1189,7 +1190,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2022_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2021/content_5651728.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2022),
+            China(years=2022),
             ("2022-01-01", "元旦"),
             ("2022-01-03", "元旦（观察日）"),
             ("2022-01-31", "休息日（2022-01-29日起取代）"),
@@ -1218,7 +1219,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2023_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2023/content_5736714.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2023),
+            China(years=2023),
             ("2023-01-01", "元旦"),
             ("2023-01-02", "元旦（观察日）"),
             ("2023-01-22", "春节"),
@@ -1245,7 +1246,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2024_public_holiday(self):
         # https://www.gov.cn/zhengce/content/202310/content_6911527.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2024),
+            China(years=2024),
             ("2024-01-01", "元旦"),
             ("2024-02-10", "春节"),
             ("2024-02-11", "春节"),
@@ -1272,7 +1273,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     def test_2025_public_holiday(self):
         # https://www.gov.cn/zhengce/content/202411/content_6986382.htm
         self.assertHolidays(
-            China(categories=PUBLIC, years=2025),
+            China(years=2025),
             ("2025-01-01", "元旦"),
             ("2025-01-28", "农历除夕"),
             ("2025-01-29", "春节"),
