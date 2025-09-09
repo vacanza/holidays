@@ -231,6 +231,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-02-12",
         )
         self.assertHolidayName(name, range(1998, 2050))
+        self.assertHolidayNameCount(name, 3, range(1998, 2050))
+
         obs_eve_dt = (
             "2006-02-01",
             "2007-02-21",

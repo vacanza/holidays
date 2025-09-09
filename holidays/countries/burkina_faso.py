@@ -24,6 +24,11 @@ class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
     """
 
     country = "BF"
+    # %s (estimated).
+    estimated_label = "%s (estimated)"
+    # %s (observed, estimated).
+    observed_estimated_label = "%s (observed, estimated)"
+    # %s (observed).
     observed_label = "%s (observed)"
     # On 5 August 1960, Burkina Faso (Republic of Upper Volta at that time)
     # gained independence from France.

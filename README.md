@@ -704,7 +704,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GE</td>
 <td></td>
 <td>en_US, <strong>ka</strong>, uk</td>
-<td>GOVERNMENT</td>
+<td></td>
 </tr>
 <tr>
 <td>Germany</td>
@@ -1026,7 +1026,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>MO</td>
 <td>Historical municipalities: I (Concelho das Ilhas, 海島市, 海岛市), M (Concelho de Macau, 澳門市, 澳门市)</td>
 <td>en_MO, en_US, pt_MO, th, zh_CN, <strong>zh_MO</strong></td>
-<td>GOVERNMENT, MANDATORY</td>
+<td>GOVERNMENT, OPTIONAL</td>
 </tr>
 <tr>
 <td>Madagascar</td>
@@ -1228,7 +1228,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Nigeria</td>
 <td>NG</td>
 <td></td>
-<td></td>
+<td><strong>en_NG</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -1554,6 +1554,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>BANK</td>
 </tr>
 <tr>
+<td>South Sudan</td>
+<td>SS</td>
+<td></td>
+<td></td>
+<td>ISLAMIC</td>
+</tr>
+<tr>
 <td>Spain</td>
 <td>ES</td>
 <td>Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla-La Mancha), CN (Canarias), CT (Cataluña, Catalunya), EX (Extremadura), GA (Galicia), IB (Islas Baleares, Illes Balears), MC (Murcia), MD (Madrid), ML (Melilla), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Valenciana)</td>
@@ -1875,6 +1882,12 @@ code when available. The following financial markets are available:
 <td>IFEU</td>
 <td>A London-based Investment Exchange holidays</td>
 <td></td>
+</tr>
+<tr>
+<td>National Stock Exchange of India</td>
+<td>XNSE</td>
+<td>National Stock Exchange of India market holidays</td>
+<td><strong>en_IN</strong>, en_US, hi</td>
 </tr>
 <tr>
 <td>New York Stock Exchange</td>

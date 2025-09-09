@@ -23,6 +23,8 @@ class Kyrgyzstan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
     """
 
     country = "KG"
+    # %s (estimated).
+    estimated_label = "%s (estimated)"
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
