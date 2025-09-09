@@ -16,6 +16,7 @@ import warnings
 from collections import defaultdict
 from collections.abc import Generator
 from datetime import date
+from functools import cache
 
 from dateutil.parser import parse
 
@@ -31,6 +32,27 @@ PYTHON_VERSION = f"{sys.version_info.major}.{sys.version_info.minor}"
 
 class TestCase:
     """Base class for holidays test cases."""
+
+    @classmethod
+    @cache
+    def _get_or_create_lookup(cls, test_class):
+        """Build and cache categories and subdivision lookup tables for a holiday test class."""
+
+        non_public_supported_categories = [
+            category.lower()
+            for category in getattr(test_class, "supported_categories", [])
+            if category != PUBLIC
+        ]
+
+        subdiv_base = {}
+        subdiv_category = {}
+        for subdiv in getattr(test_class, "subdivisions", []):
+            subdiv_code = subdiv.lower().replace(" ", "_")
+            subdiv_base[subdiv_code] = (subdiv, None, subdiv_code)
+            for category in non_public_supported_categories:
+                subdiv_category[f"{subdiv_code}_{category}"] = (subdiv, category, subdiv_code)
+
+        return subdiv_base, subdiv_category, non_public_supported_categories
 
     @classmethod
     def _generate_assert_methods(cls):
@@ -104,16 +126,13 @@ class TestCase:
                 raise ValueError(f"`{test_class.__name__}.default_language` value is invalid.")
             cls.set_language(test_class, default_lang)
 
-        cls._subdiv_lookup = {}
-        for subdiv in sorted(test_class.subdivisions, key=lambda x: len(x), reverse=True):
-            code = subdiv.lower().replace(" ", "_")
-            cls._subdiv_lookup[code] = subdiv
-
-        cls._non_public_supported_categories_lookup = []
-        for cat in test_class.supported_categories:
-            if cat == PUBLIC:
-                continue
-            cls._non_public_supported_categories_lookup.append(cat.lower())
+        # Use cached lookup instead of rebuilding each time.
+        (
+            cls._subdiv_base_lookup,
+            cls._subdiv_category_lookup,
+            cls._non_public_supported_categories_lookup,
+        ) = cls._get_or_create_lookup(cls.test_class)
+        cls._subdiv_lookup = {**cls._subdiv_base_lookup, **cls._subdiv_category_lookup}
 
         if years is None:
             start_year = getattr(test_class, "start_year", 1950)
@@ -145,38 +164,17 @@ class TestCase:
                 )
 
         # For subdivisions, `years_all_subdivs` can be use for mass-assignments.
-        if test_class.subdivisions:
-            years_all_subdivs = year_variants.get("years_all_subdivs", years)
-            years_all_subdivs_non_observed = year_variants.get(
-                "years_all_subdivs_non_observed", year_variants.get("years_non_observed", years)
-            )
-            for subdiv in test_class.subdivisions:
-                subdivision = subdiv.lower()
-                year_variants.setdefault(f"years_subdiv_{subdivision}", years_all_subdivs)
-                if issubclass(test_class, ObservedHolidayBase):
-                    year_variants.setdefault(
-                        f"years_subdiv_{subdivision}_non_observed", years_all_subdivs_non_observed
-                    )
+        years_all_subdivs = year_variants.get("years_all_subdivs", years)
+        years_all_subdivs_non_observed = year_variants.get(
+            "years_all_subdivs_non_observed", year_variants.get("years_non_observed", years)
+        )
 
-                for category in cls._non_public_supported_categories_lookup:
-                    year_variants.setdefault(
-                        f"years_subdiv_{subdivision}_{category}", years_all_subdivs
-                    )
-                    if issubclass(test_class, ObservedHolidayBase):
-                        year_variants.setdefault(
-                            f"years_subdiv_{subdivision}_{category}_non_observed",
-                            years_all_subdivs_non_observed,
-                        )
-
-            cls.subdiv_holidays = {}
-            cls.subdiv_holidays_non_observed = {}
-            for cat in test_class.supported_categories:
-                if cat == PUBLIC:
-                    continue
-                category = cat.lower()
-                setattr(cls, f"subdiv_{category}_holidays", {})
-                if issubclass(test_class, ObservedHolidayBase):
-                    setattr(cls, f"subdiv_{category}_holidays_non_observed", {})
+        for key in cls._subdiv_lookup:
+            year_variants.setdefault(f"years_subdiv_{key}", years_all_subdivs)
+            if issubclass(test_class, ObservedHolidayBase):
+                year_variants.setdefault(
+                    f"years_subdiv_{key}_non_observed", years_all_subdivs_non_observed
+                )
 
         variants = {"": years}
         variants.update(year_variants)
@@ -190,36 +188,27 @@ class TestCase:
             init_kwargs = {"years": ylist}
 
             # Step 1: `_non_observed` suffix.
-            if "non_observed" in suffix:
+            if suffix.endswith("_non_observed"):
                 suffix = suffix.removesuffix("_non_observed")
                 attr_name_suffix = "_non_observed"
                 init_kwargs["observed"] = False
 
             # Step 2: Special flags i.e. `islamic_show_estimated`.
-            if "islamic_no_estimated" in suffix:
+            if suffix.endswith("_islamic_no_estimated"):
                 suffix = suffix.removesuffix("_islamic_no_estimated")
                 init_kwargs["islamic_show_estimated"] = False
                 attr_name_suffix = f"_islamic_no_estimated{attr_name_suffix}"
 
-            # Step 3: Subdivisions (and optional category)
+            # Step 3: Subdivisions
             if suffix.startswith("years_subdiv_"):
                 rest = suffix.removeprefix("years_subdiv_")
-                matching_subdiv = None
-                category = None
-
-                # Match the longest subdivision code first.
-                for code, subdiv in cls._subdiv_lookup.items():
-                    if rest.startswith(code):
-                        matching_subdiv = subdiv
-                        category = rest[len(code) :].lstrip("_") or None
-                        break
-
-                if matching_subdiv:
-                    init_kwargs["subdiv"] = matching_subdiv
+                if rest in cls._subdiv_lookup:
+                    subdiv, category, subdiv_code = cls._subdiv_lookup[rest]
+                    init_kwargs["subdiv"] = subdiv
                     if category:
                         init_kwargs["categories"] = [category]
                         attr_name_suffix = f"_{category}{attr_name_suffix}"
-                    attr_name_suffix = f"_subdiv_{code}{attr_name_suffix}"
+                    attr_name_suffix = f"_subdiv_{subdiv_code}{attr_name_suffix}"
 
             # Step 4: Categories
             elif suffix.startswith("years_"):
@@ -230,32 +219,43 @@ class TestCase:
             attr_name = "holidays" + attr_name_suffix
             setattr(cls, attr_name, test_class(**init_kwargs))
 
-            # Legacy `cls.subdiv_holidays` / `cls.subdiv_holidays_non_observed` behavior.
-            if hasattr(test_class, "subdivisions"):
-                for subdiv in test_class.subdivisions:
-                    key_subdiv = f"holidays_subdiv_{subdiv.lower()}"
-                    key_subdiv_non_obs = f"{key_subdiv}_non_observed"
+        # Legacy `cls.subdiv_holidays` / `cls.subdiv_holidays_non_observed` behavior.
+        cls.subdiv_holidays = {}
+        cls.subdiv_holidays_non_observed = {}
+        for subdiv_code, (subdiv, _, _) in cls._subdiv_base_lookup.items():
+            key_subdiv = f"holidays_subdiv_{subdiv_code}"
+            key_subdiv_non_obs = f"{key_subdiv}_non_observed"
 
-                    if issubclass(test_class, ObservedHolidayBase) and hasattr(
-                        cls, key_subdiv_non_obs
-                    ):
-                        cls.subdiv_holidays_non_observed[subdiv] = getattr(cls, key_subdiv_non_obs)
-                    elif hasattr(cls, key_subdiv):
-                        cls.subdiv_holidays[subdiv] = getattr(cls, key_subdiv)
+            if hasattr(cls, key_subdiv):
+                cls.subdiv_holidays[subdiv] = getattr(cls, key_subdiv)
+            if issubclass(cls.test_class, ObservedHolidayBase) and hasattr(
+                cls, key_subdiv_non_obs
+            ):
+                cls.subdiv_holidays_non_observed[subdiv] = getattr(cls, key_subdiv_non_obs)
 
-                    for category in cls._non_public_supported_categories_lookup:
-                        dict_attr = getattr(cls, f"subdiv_{category}_holidays")
-                        dict_attr_non_observed = getattr(
-                            cls, f"subdiv_{category}_holidays_non_observed", None
-                        )
+        dict_subdiv_cat = {}
+        dict_subdiv_cat_non_obs = {}
+        for category in cls._non_public_supported_categories_lookup:
+            dict_subdiv_cat[category] = {}
+            setattr(cls, f"subdiv_{category}_holidays", dict_subdiv_cat[category])
 
-                        key_cat = f"{key_subdiv}_{category}"
-                        key_cat_non_obs = f"{key_cat}_non_observed"
+            if issubclass(cls.test_class, ObservedHolidayBase):
+                dict_subdiv_cat_non_obs[category] = {}
+                setattr(
+                    cls,
+                    f"subdiv_{category}_holidays_non_observed",
+                    dict_subdiv_cat_non_obs[category],
+                )
 
-                        if hasattr(cls, key_cat):
-                            dict_attr[subdiv] = getattr(cls, key_cat)
-                        if hasattr(cls, key_cat_non_obs):
-                            dict_attr_non_observed[subdiv] = getattr(cls, key_cat_non_obs)
+        for key, (subdiv, category, subdiv_code) in cls._subdiv_category_lookup.items():
+            key_subdiv_cat = f"holidays_subdiv_{subdiv_code}_{category}"
+            dict_subdiv_cat[category][subdiv] = getattr(cls, key_subdiv_cat, {})
+
+            if issubclass(cls.test_class, ObservedHolidayBase):
+                key_subdiv_cat_non_obs = f"{key_subdiv_cat}_non_observed"
+                dict_subdiv_cat_non_obs[category][subdiv] = getattr(
+                    cls, key_subdiv_cat_non_obs, {}
+                )
 
         cls._generate_assert_methods()
 
