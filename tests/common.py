@@ -201,9 +201,9 @@ class TestCase:
 
             # Step 3: Subdivisions
             if suffix.startswith("years_subdiv_"):
-                rest = suffix.removeprefix("years_subdiv_")
-                if rest in cls._subdiv_lookup:
-                    subdiv, category, subdiv_code = cls._subdiv_lookup[rest]
+                key = suffix.removeprefix("years_subdiv_")
+                if key in cls._subdiv_lookup:
+                    subdiv, category, subdiv_code = cls._subdiv_lookup[key]
                     init_kwargs["subdiv"] = subdiv
                     if category:
                         init_kwargs["categories"] = [category]
