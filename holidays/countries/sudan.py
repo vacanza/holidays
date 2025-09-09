@@ -65,10 +65,25 @@ class Sudan(HolidayBase, ChristianHolidays, IslamicHolidays):
         self._add_mawlid_day(tr("المولد النبوي الشريف"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("عيد الفطر المبارك"))
+        name = tr("عيد الفطر المبارك")
+        self._add_eid_al_fitr_day(name)
+        self._add_eid_al_fitr_day_two(name)
+        self._add_eid_al_fitr_day_three(name)
+
+        if self._year >= 2020:
+            self._add_islamic_calendar_holiday(
+                name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+3
+            )
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("عيد الأضحى المبارك"))
+        name = tr("عيد الأضحى المبارك")
+        self._add_eid_al_adha_day(name)
+        self._add_eid_al_adha_day_two(name)
+        self._add_eid_al_adha_day_three(name)
+        self._add_eid_al_adha_day_four(name)
+        self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.eid_al_adha_dates(self._year), days_delta=+4
+        )
 
 
 class SD(Sudan):
