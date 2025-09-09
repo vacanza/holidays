@@ -68,7 +68,7 @@ class TestNorthKorea(CommonCountryTests, TestCase):
     def test_womens_day(self):
         self.assertHolidayName("국제부녀절", (f"{year}-03-08" for year in range(1948, 2050)))
 
-    def test_day_of_sum(self):
+    def test_day_of_sun(self):
         self.assertHolidayName("태양절", (f"{year}-04-15" for year in range(1948, 2050)))
 
     def test_labor_day(self):

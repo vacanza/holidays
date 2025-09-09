@@ -18,14 +18,13 @@ from holidays.holiday_base import HolidayBase
 
 
 class NorthKorea(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
-    """North Korea holidays
+    """North Korea holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_North_Korea>
-        * <https://namu.wiki/w/%EA%B3%B5%ED%9C%B4%EC%9D%BC/%EB%B6%81%ED%95%9C>
-        * [2025 Holidays](https://namu.wiki/w/%EA%B3%B5%ED%9C%B4%EC%9D%BC/%EB%B6%81%ED%95%9C)
-        * [Aug 25 holiday](https://www.nocutnews.co.kr/news/1091995#:~:text=%EB%B6%81%ED%95%9C%EC%9D%B4%20%EA%B9%80%EC%A0%95%EC%9D%BC%20%EC%9C%84%EC%9B%90%EC%9E%A5%EC%9D%98%20%EB%B6%81%ED%95%9C%EA%B5%B0%20%EC%A0%9C105%ED%83%B1%ED%81%AC%EC%82%AC%EB%8B%A8,%EC%A7%80%EC%A0%95%ED%95%9C%20%EC%84%A0%EA%B5%B0%EC%A0%88%EC%9D%84%20%EA%B5%AD%EA%B0%80%EC%A0%81%20%EB%AA%85%EC%A0%88%EB%A1%9C%20%EC%A7%80%EC%A0%95%ED%96%88%EB%8B%A4)
-        * [200 Holidays](https://unikorea.go.kr/nkhr/current/life/living/daily/?boardId=bbs_0000000000000078&mode=view&cntId=51400&category=&pageIdx=#:~:text=%EB%AA%85%EC%B9%AD%20%EB%82%A0%EC%A7%9C%282022%EB%85%84%20%EA%B8%B0%EC%A4%80%29%20%EC%96%91%EB%A0%A5%EC%84%A4%201,15)
+        * [2025 Holidays](https://namu.wiki/w/공휴일/북한)
+        * [Aug 25 holiday](https://www.nocutnews.co.kr/news/1091995)
+        * [Holidays and Anniversaries](https://unikorea.go.kr/nkhr/current/life/living/daily/?boardId=bbs_0000000000000078&mode=view&cntId=51400)
     """
 
     country = "KP"
