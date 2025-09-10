@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestBrunei(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(BN.start_year, 2077)
-        super().setUpClass(Brunei, years=cls.full_range)
+        super().setUpClass(Brunei)
 
     def test_country_aliases(self):
         self.assertAliases(Brunei, BN, BRN)

@@ -150,7 +150,7 @@ class TestCyprus(CommonCountryTests, TestCase):
 
     def test_cyprus_independence_day(self):
         name = "Ημέρα της Κυπριακής Ανεξαρτησίας"
-        self.assertHolidayName(name, (f"{year}-10-01" for year in range(1979, 2025)))
+        self.assertHolidayName(name, (f"{year}-10-01" for year in range(1979, 2050)))
         self.assertNoHolidayName(name, range(CY.start_year, 1979))
 
     def test_ochi_day(self):

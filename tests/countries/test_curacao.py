@@ -177,6 +177,7 @@ class TestCuracao(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
         self.assertNoHolidayName(
+            name,
             "2011-05-01",
             "2016-05-01",
             "2022-05-01",

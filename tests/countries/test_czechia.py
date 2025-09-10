@@ -32,7 +32,7 @@ class TestCzechia(CommonCountryTests, TestCase):
             "Nový rok", (f"{year}-01-01" for year in range(CZ.start_year, 2000))
         )
 
-    def test_independent_chech_state_day(self):
+    def test_independent_czech_state_day(self):
         name = "Den obnovy samostatného českého státu"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(2000, 2050)))
         self.assertNoHolidayName(name, range(CZ.start_year, 2000))

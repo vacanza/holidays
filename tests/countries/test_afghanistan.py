@@ -271,7 +271,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             ("2021-10-19", "میلاد پیامبر"),
         )
 
-    def test_l10_default(self):
+    def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-02-15", "روز آزادی"),
             ("2022-04-02", "اول رمضان"),

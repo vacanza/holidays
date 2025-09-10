@@ -243,7 +243,6 @@ class TestCocosIslands(CommonCountryTests, TestCase):
             "2014-10-06",
             "2019-08-12",
             "2022-07-11",
-            "2025-06-06",
         )
         self.assertIslamicNoEstimatedHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
