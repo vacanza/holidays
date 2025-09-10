@@ -196,6 +196,11 @@ from holidays.countries.romania import Romania, RO, ROU
 from holidays.countries.russia import Russia, RU, RUS
 from holidays.countries.rwanda import Rwanda, RW, RWA
 from holidays.countries.saint_barthelemy import SaintBarthelemy, BL, BLM, HolidaysBL
+from holidays.countries.saint_helena_ascension_and_tristan_da_cunha import (
+    SaintHelenaAscensionAndTristanDaCunha,
+    SH,
+    SHN,
+)
 from holidays.countries.saint_kitts_and_nevis import SaintKittsAndNevis, KN, KNA
 from holidays.countries.saint_lucia import SaintLucia, LC, LCA
 from holidays.countries.saint_martin import SaintMartin, MF, MAF, HolidaysMF

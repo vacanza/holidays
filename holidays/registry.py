@@ -199,6 +199,11 @@ COUNTRIES: RegistryDict = {
     "russia": ("Russia", "RU", "RUS"),
     "rwanda": ("Rwanda", "RW", "RWA"),
     "saint_barthelemy": ("SaintBarthelemy", "BL", "BLM", "HolidaysBL"),
+    "saint_helena_ascension_and_tristan_da_cunha": (
+        "SaintHelenaAscensionAndTristanDaCunha",
+        "SH",
+        "SHN",
+    ),
     "saint_kitts_and_nevis": ("SaintKittsAndNevis", "KN", "KNA"),
     "saint_lucia": ("SaintLucia", "LC", "LCA"),
     "saint_martin": ("SaintMartin", "MF", "MAF", "HolidaysMF"),
