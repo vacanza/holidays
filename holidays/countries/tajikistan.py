@@ -107,7 +107,7 @@ class TJK(Tajikistan):
 
 
 class TajikistanIslamicHolidays(_CustomIslamicHolidays):
-    # https://www.timeanddate.com/holidays/tajikistan/eid-al-fitr
+    # https://web.archive.org/web/20240911001624/https://www.timeanddate.com/holidays/tajikistan/eid-al-fitr
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (1992, 2025)
     EID_AL_FITR_DATES = {
         2023: (APR, 22),
