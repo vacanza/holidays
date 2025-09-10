@@ -143,13 +143,6 @@ class TestCase:
             years = cls.full_range
 
         # Default `years_[insert]` to `years` to prevent redundant initialization.
-        if issubclass(test_class, IslamicHolidays):
-            year_variants.setdefault("years_islamic_no_estimated", years)
-        if issubclass(test_class, ObservedHolidayBase):
-            year_variants.setdefault("years_non_observed", years)
-        if issubclass(test_class, IslamicHolidays) and issubclass(test_class, ObservedHolidayBase):
-            year_variants.setdefault("years_islamic_no_estimated_non_observed", years)
-
         for category in cls._non_public_supported_categories_lookup:
             year_variants.setdefault(f"years_{category}", years)
             if issubclass(test_class, ObservedHolidayBase):
@@ -166,7 +159,8 @@ class TestCase:
         # For subdivisions, `years_all_subdivs` can be use for mass-assignments.
         years_all_subdivs = year_variants.get("years_all_subdivs", years)
         years_all_subdivs_non_observed = year_variants.get(
-            "years_all_subdivs_non_observed", year_variants.get("years_non_observed", years)
+            "years_all_subdivs_non_observed",
+            year_variants.get("years_non_observed", year_variants.get("years_all_subdivs", years)),
         )
 
         for key in cls._subdiv_lookup:
@@ -175,6 +169,13 @@ class TestCase:
                 year_variants.setdefault(
                     f"years_subdiv_{key}_non_observed", years_all_subdivs_non_observed
                 )
+
+        if issubclass(test_class, IslamicHolidays):
+            year_variants.setdefault("years_islamic_no_estimated", years)
+        if issubclass(test_class, ObservedHolidayBase):
+            year_variants.setdefault("years_non_observed", years)
+        if issubclass(test_class, IslamicHolidays) and issubclass(test_class, ObservedHolidayBase):
+            year_variants.setdefault("years_islamic_no_estimated_non_observed", years)
 
         variants = {"": years}
         variants.update(year_variants)
