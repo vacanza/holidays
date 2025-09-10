@@ -135,12 +135,12 @@ class TestCase:
         cls._subdiv_lookup = {**cls._subdiv_base_lookup, **cls._subdiv_category_lookup}
 
         if years is None:
-            start_year = getattr(test_class, "start_year", 1950)
-            # end_year is fixed at 2050 for now due to IslamicHolidays support ending in 2077.
-            years = range(start_year, 2050)
-
-        # Default `self.full_range`.
-        cls.full_range = years
+            # Default `self.full_range`
+            if not hasattr(cls, "full_range"):
+                start_year = getattr(test_class, "start_year", 1950)
+                # end_year is fixed at 2050 for now due to IslamicHolidays support ending in 2077.
+                cls.full_range = range(start_year, 2050)
+            years = cls.full_range
 
         # Default `years_[insert]` to `years` to prevent redundant initialization.
         if issubclass(test_class, IslamicHolidays):

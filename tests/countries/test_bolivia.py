@@ -20,7 +20,7 @@ class TestBolivia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(1980, 2050)
-        super().setUpClass(Bolivia, years=cls.full_range, years_non_observed=range(2000, 2024))
+        super().setUpClass(Bolivia, years_non_observed=range(2000, 2024))
 
     def test_country_aliases(self):
         self.assertAliases(Bolivia, BO, BOL)

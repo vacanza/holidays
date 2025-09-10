@@ -22,7 +22,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(XNYS.start_year, 2100)
-        super().setUpClass(NewYorkStockExchange, years=cls.full_range)
+        super().setUpClass(NewYorkStockExchange)
 
     def test_market_aliases(self):
         self.assertAliases(NewYorkStockExchange, XNYS, NYSE)

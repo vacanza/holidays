@@ -20,7 +20,7 @@ class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(XECB.start_year, 2100)
-        super().setUpClass(EuropeanCentralBank, years=cls.full_range)
+        super().setUpClass(EuropeanCentralBank)
 
     def test_market_aliases(self):
         self.assertAliases(EuropeanCentralBank, XECB, ECB, TAR)

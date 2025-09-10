@@ -35,7 +35,7 @@ class TestBrazil(CommonCountryTests, TestCase):
         )
 
     def test_republic_constitution_day(self):
-        name = "Constituição da Republica"
+        name = "Constituição da República"
         self.assertHolidayName(name, (f"{year}-02-24" for year in range(1892, 1931)))
         self.assertNoHolidayName(name, range(BR.start_year, 1892), range(1931, 2050))
 

@@ -20,7 +20,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(2000, 2050)
-        super().setUpClass(BosniaAndHerzegovina, years=cls.full_range)
+        super().setUpClass(BosniaAndHerzegovina)
 
     def test_country_aliases(self):
         self.assertAliases(BosniaAndHerzegovina, BA, BIH)

@@ -21,7 +21,7 @@ class TestCostaRica(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(1980, 2050)
-        super().setUpClass(CostaRica, years=cls.full_range)
+        super().setUpClass(CostaRica)
 
     def test_country_aliases(self):
         self.assertAliases(CostaRica, CR, CRI)

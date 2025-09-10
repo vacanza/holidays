@@ -20,7 +20,7 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(BVMF.start_year, 2100)
-        super().setUpClass(BrasilBolsaBalcao, years=cls.full_range)
+        super().setUpClass(BrasilBolsaBalcao)
 
     def test_market_aliases(self):
         self.assertAliases(BrasilBolsaBalcao, BVMF, B3)
