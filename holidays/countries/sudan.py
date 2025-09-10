@@ -78,11 +78,11 @@ class Sudan(HolidayBase, ChristianHolidays, IslamicHolidays):
 
         # Eid al-Adha.
         name = tr("عيد الأضحى المبارك")
+        self._add_arafah_day(name)
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
         self._add_eid_al_adha_day_three(name)
         self._add_eid_al_adha_day_four(name)
-        self._add_eid_al_adha_day_five(name)
 
 
 class SD(Sudan):
@@ -98,14 +98,17 @@ class SudanIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2022: (JUL, 10),
     }
+
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2020, 2025)
     EID_AL_FITR_DATES = {
         2022: (MAY, 1),
     }
+
     HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2020, 2025)
     HIJRI_NEW_YEAR_DATES = {
         2021: (AUG, 11),
     }
+
     MAWLID_DATES_CONFIRMED_YEARS = (2020, 2025)
     MAWLID_DATES = {
         2023: (SEP, 28),
