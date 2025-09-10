@@ -35,8 +35,8 @@ msgstr "%s (estimated)"
 msgid "عيد الإستقلال"
 msgstr "Independence Day"
 
-#. Coptic Christmas.
-msgid "عيد الميلاد القبطي"
+#. Coptic Christmas Day.
+msgid "عيد الميلاد المجيد"
 msgstr "Coptic Christmas"
 
 #. Coptic Easter.
@@ -44,7 +44,7 @@ msgid "عيد الفصح القبطي"
 msgstr "Coptic Easter"
 
 #. Christmas Day.
-msgid "يوم عيد الميلاد"
+msgid "عيد الميلاد"
 msgstr "Christmas Day"
 
 #. Islamic New Year.

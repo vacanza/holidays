@@ -149,6 +149,16 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.eid_al_adha_dates(self._year), days_delta=+3
         )
 
+    def _add_eid_al_adha_day_five(self, name) -> set[date]:
+        """
+        Add Eid al-Adha Day Five.
+
+        https://en.wikipedia.org/wiki/Eid_al-Adha
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.eid_al_adha_dates(self._year), days_delta=+4
+        )
+
     def _add_eid_al_fitr_day(self, name) -> set[date]:
         """
         Add Eid al-Fitr Day (1st day of 10th month of Islamic calendar).
@@ -180,6 +190,16 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+2
+        )
+
+    def _add_eid_al_fitr_day_four(self, name) -> set[date]:
+        """
+        Add Eid al-Fitr Day Four.
+
+        https://en.wikipedia.org/wiki/Eid_al-Fitr
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+3
         )
 
     def _add_eid_al_fitr_eve(self, name) -> set[date]:

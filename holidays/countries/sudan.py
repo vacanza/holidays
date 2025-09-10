@@ -34,7 +34,6 @@ class Sudan(HolidayBase, ChristianHolidays, IslamicHolidays):
     estimated_label = tr("%s (المقدرة)")
     supported_languages = ("ar_SD", "en_US")
     start_year = 1985
-    weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         ChristianHolidays.__init__(self)
@@ -44,19 +43,23 @@ class Sudan(HolidayBase, ChristianHolidays, IslamicHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        # The resting days are Friday and Saturday since January 26th, 2008.
+        # https://sudantribune.com/article25544/
+        self.weekend = {FRI, SAT} if self._year >= 2008 else {FRI}
+
         # Independence Day.
         self._add_holiday_jan_1(tr("عيد الإستقلال"))
 
         # Christian public holidays were suspended 2011–2018 and reinstated in 2019.
         if self._year <= 2010 or self._year >= 2019:
-            # Coptic Christmas.
-            self._add_christmas_day(tr("عيد الميلاد القبطي"), calendar=JULIAN_CALENDAR)
+            # Coptic Christmas Day.
+            self._add_christmas_day(tr("عيد الميلاد المجيد"), calendar=JULIAN_CALENDAR)
 
             # Coptic Easter.
             self._add_easter_sunday(tr("عيد الفصح القبطي"), calendar=JULIAN_CALENDAR)
 
             # Christmas Day.
-            self._add_christmas_day(tr("يوم عيد الميلاد"))
+            self._add_christmas_day(tr("عيد الميلاد"))
 
         # Islamic New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
@@ -71,9 +74,7 @@ class Sudan(HolidayBase, ChristianHolidays, IslamicHolidays):
         self._add_eid_al_fitr_day_three(name)
 
         if self._year >= 2020:
-            self._add_islamic_calendar_holiday(
-                name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+3
-            )
+            self._add_eid_al_fitr_day_four(name)
 
         # Eid al-Adha.
         name = tr("عيد الأضحى المبارك")
@@ -81,9 +82,7 @@ class Sudan(HolidayBase, ChristianHolidays, IslamicHolidays):
         self._add_eid_al_adha_day_two(name)
         self._add_eid_al_adha_day_three(name)
         self._add_eid_al_adha_day_four(name)
-        self._add_islamic_calendar_holiday(
-            name, self._islamic_calendar.eid_al_adha_dates(self._year), days_delta=+4
-        )
+        self._add_eid_al_adha_day_five(name)
 
 
 class SD(Sudan):
