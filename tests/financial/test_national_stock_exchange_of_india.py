@@ -59,6 +59,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         self.assertHolidayName(
             name,
             "2003-04-18",
+            "2004-04-09",
             "2022-04-15",
             "2023-04-07",
             "2024-03-29",
@@ -85,6 +86,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         self.assertNoNonObservedHolidayName(name_1, range(2010, 2015))
         self.assertNoNonObservedHolidayName(name_2, range(2001, 2010), range(2015, 2050))
         self.assertNoHoliday(
+            "2004-05-01",
             "2010-05-01",
             "2011-05-01",
             "2016-05-01",
@@ -97,6 +99,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "Independence Day", (f"{year}-08-15" for year in range(2001, 2050))
         )
         self.assertNoHoliday(
+            "2004-08-15",
             "2021-08-15",
         )
 
@@ -105,6 +108,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "Mahatma Gandhi Jayanti", (f"{year}-10-02" for year in range(2001, 2050))
         )
         self.assertNoHoliday(
+            "2004-10-02",
             "2022-10-02",
         )
 
@@ -113,6 +117,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "Christmas Day", (f"{year}-12-25" for year in range(2001, 2050))
         )
         self.assertNoHoliday(
+            "2004-12-25",
             "2022-12-25",
         )
 
@@ -143,6 +148,11 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2025-03-14",
         )
         self.assertNonObservedHolidayName(name, range(2001, 2036))
+        self.assertNoHoliday(
+            "2004-03-07",
+            "2005-03-26",
+            "2007-03-04",
+        )
 
     def test_mahavir_jayanti(self):
         name = "Mahavir Jayanti"
@@ -157,6 +167,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         self.assertNoNonObservedHolidayName(name, range(2001, 2006))
         self.assertNoHoliday(
             "2024-04-21",
+            "2007-03-31",
         )
 
     def test_ram_navami(self):
@@ -197,6 +208,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         name = "Diwali Laxmi Pujan"
         self.assertNonObservedHolidayName(
             name,
+            "2004-11-12",
             "2022-10-24",
             "2023-11-12",
             "2024-11-01",
@@ -208,12 +220,14 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         )
         self.assertNoHoliday(
             "2003-10-25",
+            "2006-10-21",
         )
 
     def test_dussehra(self):
         name = "Dussehra"
         self.assertNonObservedHolidayName(
             name,
+            "2004-10-22",
             "2022-10-05",
             "2023-10-24",
             "2024-10-12",
@@ -237,6 +251,8 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         self.assertNonObservedHolidayName(name, range(2001, 2036))
         self.assertNoHoliday(
             "2003-08-31",
+            "2004-09-18",
+            "2006-08-27",
             "2024-09-07",
         )
 
@@ -244,6 +260,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         name = "Guru Nanak Jayanti"
         self.assertNonObservedHolidayName(
             name,
+            "2004-11-26",
             "2022-11-08",
             "2023-11-27",
             "2024-11-15",
@@ -252,6 +269,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         self.assertNonObservedHolidayName(name, range(2001, 2036))
         self.assertNoHoliday(
             "2003-11-08",
+            "2006-11-05",
             "2017-11-04",
         )
 
@@ -289,9 +307,6 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2006-05-13",
         )
         self.assertNoNonObservedHolidayName(name, range(2001, 2006), range(2010, 2050))
-        self.assertNoHoliday(
-            "2006-05-13",
-        )
 
     def test_ashura(self):
         name = "Muharram"
@@ -304,6 +319,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         )
         self.assertNoHoliday(
             "2003-03-15",
+            "2005-02-20",
             "2023-07-29",
             "2025-07-06",
         )
@@ -335,6 +351,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             name, self.nonobs_no_estimated_holidays, range(2001, 2050)
         )
         self.assertNoHoliday(
+            "2005-11-05",
             "2023-04-22",
         )
 
