@@ -308,6 +308,22 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2025-07-06",
         )
 
+    def test_prophets_birthday(self):
+        name = "Id-E-Milad-Un-Nabi"
+        self.assertNonObservedHolidayName(
+            name,
+            "2006-04-11",
+            "2007-04-01",
+            "2008-03-20",
+            "2009-03-10",
+        )
+        self.assertNoNonObservedHolidayName(
+            name, self.nonobs_no_estimated_holidays, range(2001, 2006), range(2010, 2050)
+        )
+        self.assertNoHoliday(
+            "2007-04-01",
+        )
+
     def test_id_ul_fitr(self):
         name = "Id-Ul-Fitr (Ramadan Eid)"
         self.assertNonObservedHolidayName(
@@ -337,22 +353,6 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         self.assertNoHoliday(
             "2022-07-10",
             "2025-06-07",
-        )
-
-    def test_prophets_birthday(self):
-        name = "Id-E-Milad-Un-Nabi"
-        self.assertNonObservedHolidayName(
-            name,
-            "2006-04-11",
-            "2007-04-01",
-            "2008-03-20",
-            "2009-03-10",
-        )
-        self.assertNoNonObservedHolidayName(
-            name, self.nonobs_no_estimated_holidays, range(2001, 2006), range(2010, 2050)
-        )
-        self.assertNoHoliday(
-            "2007-04-01",
         )
 
     def test_2023(self):
