@@ -40,7 +40,7 @@ msgstr "%s（補假，推定）"
 #. %s (observed).
 #, c-format
 msgid "%s（观察日）"
-msgstr "%s（觀察日）"
+msgstr "%s（補假）"
 
 #. New Year's Day.
 msgid "元旦"
