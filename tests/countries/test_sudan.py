@@ -100,7 +100,7 @@ class TestSudan(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1985, 2050))
         self.assertHolidayNameCount(
-            name, 3, self.no_estimated_holidays, set(range(1985, 2019)) - {2000}
+            name, 3, self.no_estimated_holidays, set(range(1985, 2020)) - {2000}
         )
         self.assertHolidayNameCount(
             name, 4, self.no_estimated_holidays, set(range(2020, 2050)) - {2033}
