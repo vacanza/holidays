@@ -82,7 +82,7 @@ class SouthKorea(
     supported_categories = (BANK, PUBLIC)
     default_language = "ko"
     # %s (estimated).
-    estimated_label = tr("%s (예상)")
+    estimated_label = tr("%s (추정)")
     # Alternative holiday for %s (estimated).
     observed_estimated_label = tr("%s 대체 휴일 (추정)")
     # Alternative holiday for %s.

@@ -29,7 +29,7 @@ msgstr ""
 
 #. %s (estimated).
 #, c-format
-msgid "%s (예상)"
+msgid "%s (추정)"
 msgstr "%s (estimated)"
 
 #. Alternative holiday for %s (estimated).
