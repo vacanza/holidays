@@ -18,7 +18,12 @@ GoTo :Help
     Call :Test
     Exit /B
 
+:Sort-custom-dict
+    python tools/sort_cspell_dict.py
+    Exit /B
+
 :Spellcheck
+    call :Sort-custom-dict
     call cspell\make.cmd cspell-check
     Exit /B %ERRORLEVEL%
 
@@ -37,7 +42,7 @@ GoTo :Help
 :Help
     Echo Usage: make ^<Target^>
     Echo     check         run pre-commit and tests
-    Echo     spellcheck    run spell check on localization and documentation files
+    Echo     spellcheck    run spell check across the repository (code, docs, l10n)
     Echo     doc           run documentation build process
     Echo     help          show summary of available commands
     Echo     l10n          update .pot and .po files

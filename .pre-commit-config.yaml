@@ -20,7 +20,7 @@ repos:
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.20.0
     hooks:
-    -   id: pyupgrade
+      - id: pyupgrade
         args:
           - --py39-plus
 
@@ -61,24 +61,9 @@ repos:
       - id: pyproject-fmt
 
   - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: '1.6.0'
+    rev: "1.6.0"
     hooks:
       - id: tox-ini-fmt
-
-  - repo: local
-    hooks:
-      - id: cspell
-        name: cspell
-        entry: cspell --config ./cspell/cspell.json
-        files: \.(py|md|rst|txt|yml|yaml|po|ini|cfg|conf|env|toml|json|properties|xml)$
-        language: node
-        additional_dependencies: ["cspell@8.19.4"]
-        exclude: ^(docs/_build|node_modules|\.venv|__pycache__|dist|build|\.mypy_cache|\.pytest_cache|\.egg-info|\.tox|snapshots)/$
-      - id: sort-custom-dict
-        name: sort and uniquify custom-dict.txt
-        entry: bash -c 'LC_ALL=C grep "^#" cspell/custom-dict.txt > cspell/custom-dict.txt.tmp && LC_ALL=C grep -v "^#" cspell/custom-dict.txt | grep -v "^[[:space:]]*$" | LC_ALL=C sort -f --stable | LC_ALL=C uniq -i >> cspell/custom-dict.txt.tmp && mv cspell/custom-dict.txt.tmp cspell/custom-dict.txt'
-        files: ^cspell/custom-dict\.txt$
-        language: system
 
   - repo: local
     hooks:

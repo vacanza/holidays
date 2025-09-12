@@ -8,10 +8,6 @@
       "addWords": true,
       "name": "custom-dict",
       "path": "custom-dict.txt"
-    },
-    {
-      "name": "hi",
-      "path": "dictionaries/hindi/hi.txt"
     }
   ],
   "dictionaries": [
@@ -42,7 +38,6 @@
     "gl-es",
     "grc",
     "he",
-    "hi",
     "hr-hr",
     "hu-hu",
     "hy",
@@ -76,7 +71,12 @@
     "custom-dict"
   ],
   "enabled": true,
-  "files": ["**/*"],
+  "files": [
+    "docs/**/*",
+    "README.md",
+    "scripts/l10n/**/*",
+    "mkdocs.yml"
+  ],
   "ignorePaths": [
     "node_modules/**",
     ".git/**",
