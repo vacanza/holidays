@@ -119,8 +119,9 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "Christmas Day", (f"{year}-12-25" for year in range(2001, 2050))
         )
         self.assertNoHoliday(
-            "2004-12-25",
-            "2022-12-25",
+            "2011-12-25",
+            "2016-12-25",
+            "2021-12-25",
         )
 
     def test_maha_shivratri(self):
