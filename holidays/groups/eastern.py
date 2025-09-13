@@ -33,15 +33,13 @@ class EasternCalendarHolidays:
 
         Adds customizable estimation label to holiday name if holiday date is an estimation.
         """
-        estimated_label = getattr(self, "estimated_label", "%s")
         dt, is_estimated = dt_estimated
-
         if days_delta and dt:
             dt = _timedelta(dt, days_delta)
 
         return (
             self._add_holiday(
-                self.tr(estimated_label) % self.tr(name)
+                self.tr(self.estimated_label) % self.tr(name)
                 if is_estimated and show_estimated
                 else name,
                 dt,

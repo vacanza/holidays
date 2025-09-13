@@ -54,6 +54,10 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
     """
 
     country = "VN"
+    # %s (estimated).
+    estimated_label = tr("%s (dự kiến)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (nghỉ bù, dự kiến)")
     # %s (observed).
     observed_label = tr("%s (nghỉ bù)")
     default_language = "vi"
