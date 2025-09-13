@@ -146,7 +146,7 @@ msgstr "Presidential Inauguration Day"
 
 #. National Conference for Unification Election Day.
 msgid "통일주체국민회의 선거일"
-msgstr "National Conference for Unification Election Day."
+msgstr "National Conference for Unification Election Day"
 
 #. Yushin Constitution Referendum Day.
 msgid "유신헌법 국민투표일"
