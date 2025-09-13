@@ -148,12 +148,16 @@ class TestCase:
             if issubclass(test_class, ObservedHolidayBase):
                 year_variants.setdefault(
                     f"years_{category}_non_observed",
-                    year_variants.get("years_non_observed", years),
+                    year_variants.get(
+                        "years_non_observed", year_variants.get(f"years_{category}", years)
+                    ),
                 )
             if issubclass(test_class, IslamicHolidays):
                 year_variants.setdefault(
                     f"years_{category}_islamic_no_estimated",
-                    year_variants.get("years_islamic_no_estimated", years),
+                    year_variants.get(
+                        "years_islamic_no_estimated", year_variants.get(f"years_{category}", years)
+                    ),
                 )
 
         # For subdivisions, `years_all_subdivs` can be use for mass-assignments.

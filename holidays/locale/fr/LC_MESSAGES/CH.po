@@ -67,6 +67,7 @@ msgid "Fronleichnam"
 msgstr "Fête-Dieu"
 
 #. Assumption Day.
+#. Assumption Day.# Assumption Day.
 msgid "Mariä Himmelfahrt"
 msgstr "Assomption"
 

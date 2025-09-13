@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.countries.paraguay import Paraguay, PY, PRY
 from tests.common import CommonCountryTests
 
@@ -20,110 +19,120 @@ from tests.common import CommonCountryTests
 class TestParaguay(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Paraguay, years=range(1991, 2050))
+        super().setUpClass(Paraguay, years_government=range(2010, 2023))
 
     def test_country_aliases(self):
         self.assertAliases(Paraguay, PY, PRY)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Paraguay(categories=(GOVERNMENT, PUBLIC), years=1990))
+        self.assertNoHolidays(
+            Paraguay(categories=Paraguay.supported_categories, years=PY.start_year - 1)
+        )
 
     def test_new_years_day(self):
-        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(1991, 2050)))
+        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))
 
     def test_patriots_day(self):
-        name = "Día de los Héroes de la Patria"
-        years_excluded = {2013, 2016, 2018, 2019, 2022, 2023}
         self.assertHolidayName(
-            name, (f"{year}-03-01" for year in set(range(1991, 2050)).difference(years_excluded))
-        )
-        self.assertNoHoliday(f"{year}-03-01" for year in years_excluded)
-        self.assertHolidayName(
-            name,
+            "Día de los Héroes de la Patria",
+            (
+                f"{year}-03-01"
+                for year in self.full_range
+                if year not in {2013, 2016, 2017, 2018, 2019, 2022, 2023, 2025}
+            ),
             "2013-03-04",
             "2016-02-29",
+            "2017-02-27",
             "2018-02-26",
             "2019-03-04",
             "2022-02-28",
             "2023-02-27",
+            "2025-03-03",
         )
 
-    def test_easter(self):
+    def test_maundy_thursday(self):
+        name = "Jueves Santo"
         self.assertHolidayName(
-            "Jueves Santo",
+            name,
             "2019-04-18",
             "2020-04-09",
             "2021-04-01",
             "2022-04-14",
             "2023-04-06",
         )
+        self.assertHolidayName(name, self.full_range)
 
+    def test_good_friday(self):
+        name = "Viernes Santo"
         self.assertHolidayName(
-            "Viernes Santo",
+            name,
             "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
         )
+        self.assertHolidayName(name, self.full_range)
 
+    def test_easter_sunday(self):
+        name = "Domingo de Resurrección"
         self.assertHolidayName(
-            "Domingo de Resurrección",
+            name,
             "2019-04-21",
             "2020-04-12",
             "2021-04-04",
             "2022-04-17",
             "2023-04-09",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_labor_day(self):
         self.assertHolidayName(
-            "Día de los Trabajadores", (f"{year}-05-01" for year in range(1991, 2050))
+            "Día de los Trabajadores", (f"{year}-05-01" for year in self.full_range)
         )
 
     def test_national_holiday(self):
         name = "Feriado Nacional"
         self.assertHolidayName(name, (f"{year}-05-14" for year in range(2012, 2050)))
-        # 2011 - special holiday
-        self.assertNoHoliday(f"{year}-05-14" for year in range(1991, 2011))
-        self.assertNoHolidayName(name, range(1991, 2012))
+        self.assertNoHolidayName(name, range(PY.start_year, 2012))
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "Día de la Independencia Nacional", (f"{year}-05-15" for year in range(1991, 2050))
+            "Día de la Independencia Nacional", (f"{year}-05-15" for year in self.full_range)
         )
 
     def test_chaco_armistice_day(self):
-        name = "Día de la Paz del Chaco"
-        years_excluded = {2014, 2018, 2019, 2024}
         self.assertHolidayName(
-            name, (f"{year}-06-12" for year in set(range(1991, 2050)).difference(years_excluded))
-        )
-        self.assertNoHoliday(f"{year}-06-12" for year in years_excluded)
-        self.assertHolidayName(
-            name,
+            "Día de la Paz del Chaco",
+            (
+                f"{year}-06-12"
+                for year in self.full_range
+                if year not in {2013, 2014, 2018, 2019, 2024, 2025}
+            ),
+            "2013-06-10",
             "2014-06-16",
             "2018-06-11",
             "2019-06-17",
             "2024-06-10",
+            "2025-06-16",
         )
 
     def test_asuncion_foundations_day(self):
         self.assertHolidayName(
-            "Día de la Fundación de Asunción", (f"{year}-08-15" for year in range(1991, 2050))
+            "Día de la Fundación de Asunción",
+            (f"{year}-08-15" for year in (*range(PY.start_year, 2017), *range(2018, 2050))),
+            "2017-08-14",
         )
 
     def test_boqueron_battle_day(self):
         name = "Día de la Batalla de Boquerón"
-        years_excluded = {2015, 2016, 2017, 2021, 2022, 2024}
-        self.assertHolidayName(
-            name, (f"{year}-09-29" for year in set(range(1995, 2050)).difference(years_excluded))
-        )
-        self.assertNoHoliday(f"{year}-09-29" for year in years_excluded)
-        self.assertNoHoliday(f"{year}-09-29" for year in range(1991, 1995))
-        self.assertNoHolidayName(name, range(1991, 1995))
         self.assertHolidayName(
             name,
+            (
+                f"{year}-09-29"
+                for year in range(1995, 2050)
+                if year not in {2015, 2016, 2017, 2021, 2022, 2024}
+            ),
             "2015-09-28",
             "2016-10-03",
             "2017-10-02",
@@ -131,10 +140,11 @@ class TestParaguay(CommonCountryTests, TestCase):
             "2022-10-03",
             "2024-09-30",
         )
+        self.assertNoHolidayName(name, range(PY.start_year, 1995))
 
     def test_caacupe_virgin_day(self):
         self.assertHolidayName(
-            "Día de la Virgen de Caacupé", (f"{year}-12-08" for year in range(1991, 2050))
+            "Día de la Virgen de Caacupé", (f"{year}-12-08" for year in self.full_range)
         )
 
     def test_special_public_holidays(self):
@@ -150,8 +160,7 @@ class TestParaguay(CommonCountryTests, TestCase):
         )
 
     def test_special_government_holidays(self):
-        self.assertHoliday(
-            Paraguay(categories=GOVERNMENT, years=range(2010, 2023)),
+        self.assertGovernmentHoliday(
             "2010-12-24",
             "2010-12-31",
             "2011-04-20",

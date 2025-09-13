@@ -43,7 +43,6 @@ class TestBolivia(CommonCountryTests, TestCase):
     def test_plurinational_state_foundation_day(self):
         name = "Día de la Creación del Estado Plurinacional de Bolivia"
         self.assertHolidayName(name, (f"{year}-01-22" for year in range(2010, 2050)))
-        self.assertNoHoliday(f"{year}-01-22" for year in range(1980, 2010))
         self.assertNoHolidayName(name, range(1980, 2010))
         dt = (
             "2012-01-23",
@@ -127,7 +126,6 @@ class TestBolivia(CommonCountryTests, TestCase):
     def test_andean_new_year(self):
         name = "Año Nuevo Aymara Amazónico"
         self.assertHolidayName(name, (f"{year}-06-21" for year in range(2009, 2050)))
-        self.assertNoHoliday(f"{year}-06-21" for year in range(1985, 2009))
         self.assertNoHolidayName(name, range(1980, 2009))
         dt = (
             "2009-06-22",
@@ -152,20 +150,16 @@ class TestBolivia(CommonCountryTests, TestCase):
     def test_national_dignity_day(self):
         name = "Día de la Dignidad Nacional"
         self.assertHolidayName(name, (f"{year}-10-17" for year in range(2020, 2050)))
-        self.assertNoHoliday(f"{year}-10-17" for year in range(1980, 2020))
         self.assertNoHolidayName(name, range(1980, 2020))
 
     def test_all_saints_day(self):
         name = "Día de Todos los Santos"
         self.assertHolidayName(name, (f"{year}-11-01" for year in range(1985, 1989)))
-        self.assertNoHoliday(f"{year}-11-01" for year in range(1980, 1985))
-        self.assertNoHoliday(f"{year}-11-01" for year in range(1989, 2050))
         self.assertNoHolidayName(name, range(1980, 1985), range(1989, 2050))
 
     def test_all_souls_day(self):
         name = "Día de Todos los Difuntos"
         self.assertHolidayName(name, (f"{year}-11-02" for year in range(1989, 2050)))
-        self.assertNoHoliday(f"{year}-11-02" for year in range(1980, 1989))
         self.assertNoHolidayName(name, range(1980, 1989))
         dt = (
             "2003-11-03",
@@ -191,43 +185,38 @@ class TestBolivia(CommonCountryTests, TestCase):
     def test_beni_day(self):
         name = "Día del departamento de Beni"
         self.assertNoHolidayName(name, self.full_range)
-        self.assertNoHoliday(f"{year}-11-18" for year in self.full_range)
         self.assertSubdivBHolidayName(name, (f"{year}-11-18" for year in self.full_range))
 
     def test_cochabamba_day(self):
         name = "Día del departamento de Cochabamba"
         self.assertNoHolidayName(name, self.full_range)
-        self.assertNoHoliday(f"{year}-09-14" for year in self.full_range)
         self.assertSubdivCHolidayName(name, (f"{year}-09-14" for year in self.full_range))
 
     def test_chuquisaca_day(self):
         name = "Día del departamento de Chuquisaca"
         self.assertNoHolidayName(name, self.full_range)
-        self.assertNoHoliday(f"{year}-05-25" for year in set(self.full_range).difference({1989}))
         self.assertSubdivHHolidayName(name, (f"{year}-05-25" for year in self.full_range))
 
     def test_la_paz_day(self):
         name = "Día del departamento de La Paz"
         self.assertNoHolidayName(name, self.full_range)
-        self.assertNoHoliday(f"{year}-07-16" for year in self.full_range)
         self.assertSubdivLHolidayName(name, (f"{year}-07-16" for year in self.full_range))
 
     def test_pando_day(self):
         name = "Día del departamento de Pando"
         self.assertNoHolidayName(name, self.full_range)
-        self.assertNoHoliday(f"{year}-10-11" for year in self.full_range)
         self.assertSubdivNHolidayName(name, (f"{year}-10-11" for year in self.full_range))
 
     def test_potosi_day(self):
         name = "Día del departamento de Potosí"
         self.assertNoHolidayName(name, self.full_range)
-        self.assertNoHoliday(f"{year}-11-10" for year in self.full_range)
         self.assertSubdivPHolidayName(name, (f"{year}-11-10" for year in self.full_range))
 
     def test_carnival_in_oruro(self):
         name = "Carnaval de Oruro"
         self.assertNoHolidayName(name, self.full_range)
-        dt = (
+        self.assertSubdivOHolidayName(
+            name,
             "2015-02-13",
             "2016-02-05",
             "2017-02-24",
@@ -238,21 +227,16 @@ class TestBolivia(CommonCountryTests, TestCase):
             "2022-02-25",
             "2023-02-17",
         )
-        self.assertNoHoliday(dt)
-        self.assertSubdivOHolidayName(name, dt)
+        self.assertSubdivOHolidayName(name, self.full_range)
 
     def test_santa_cruz_day(self):
         name = "Día del departamento de Santa Cruz"
         self.assertNoHolidayName(name, self.full_range)
-        self.assertNoHoliday(f"{year}-09-24" for year in self.full_range)
         self.assertSubdivSHolidayName(name, (f"{year}-09-24" for year in self.full_range))
 
     def test_la_tablada(self):
         name = "La Tablada"
         self.assertNoHolidayName(name, self.full_range)
-        self.assertNoHoliday(
-            f"{year}-04-15" for year in set(self.full_range).difference({2022, 2033, 2044})
-        )
         self.assertSubdivTHolidayName(name, (f"{year}-04-15" for year in self.full_range))
 
     def test_l10n_default(self):

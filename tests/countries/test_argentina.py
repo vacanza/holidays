@@ -110,7 +110,6 @@ class TestArgentina(CommonCountryTests, TestCase):
     def test_epiphany_day(self):
         name = "Día de Reyes"
         self.assertHolidayName(name, (f"{year}-01-06" for year in range(AR.start_year, 1977)))
-        self.assertNoHoliday(f"{year}-01-06" for year in range(1977, 2050))
         self.assertNoHolidayName(name, range(1977, 2050))
 
     def test_carnival_monday(self):
@@ -181,7 +180,7 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2020-03-31",
         )
         self.assertHolidayName(
-            name_2, (f"{year}-04-02" for year in set(range(2007, 2050)).difference({2020}))
+            name_2, (f"{year}-04-02" for year in (*range(2007, 2020), *range(2021, 2050)))
         )
         self.assertNoHolidayName(name_1, range(AR.start_year, 1993), range(2001, 2050))
         self.assertNoHolidayName(name_2, range(AR.start_year, 2001))

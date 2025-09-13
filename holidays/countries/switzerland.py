@@ -144,85 +144,122 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_ar_public_holidays(self):
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
         self._add_observed(
-            self._add_christmas_day_two(tr("Stephanstag")), rule=TUE_TO_NONE + SAT_TO_NONE
+            # Saint Stephen's Day.
+            self._add_christmas_day_two(tr("Stephanstag")),
+            rule=TUE_TO_NONE + SAT_TO_NONE,
         )
 
     def _populate_subdiv_ai_public_holidays(self):
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
+        # Immaculate Conception.
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
         self._add_observed(
-            self._add_christmas_day_two(tr("Stephanstag")), rule=TUE_TO_NONE + SAT_TO_NONE
+            # Saint Stephen's Day.
+            self._add_christmas_day_two(tr("Stephanstag")),
+            rule=TUE_TO_NONE + SAT_TO_NONE,
         )
 
     def _populate_subdiv_bl_public_holidays(self):
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_bs_public_holidays(self):
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_be_public_holidays(self):
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_fr_public_holidays(self):
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
     def _populate_subdiv_fr_optional_holidays(self):
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_ge_public_holidays(self):
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
         # Genevan Fast.
@@ -241,70 +278,98 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
                 _timedelta(dt, +7) if dt == _timedelta(self._easter_sunday, -3) else dt,
             )
 
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_gl_optional_holidays(self):
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
     def _populate_subdiv_gr_public_holidays(self):
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_gr_optional_holidays(self):
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
     def _populate_subdiv_ju_public_holidays(self):
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
         # Independence Day.
         self._add_holiday_jun_23(tr("Fest der Unabhängigkeit"))
 
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
     def _populate_subdiv_lu_public_holidays(self):
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
+        # Immaculate Conception.
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_ne_public_holidays(self):
         self._add_observed(
+            # Saint Berchtold's Day.
             self._add_new_years_day_two(tr("Berchtoldstag")),
             rule=MON_ONLY,  # Jan 2 is public holiday only when it falls on Monday.
         )
@@ -312,242 +377,343 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Republic Day.
         self._add_holiday_mar_1(tr("Jahrestag der Ausrufung der Republik"))
 
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
+        # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
+        # Saint Stephen's Day.
         self._add_observed(self._add_christmas_day_two(tr("Stephanstag")), rule=MON_ONLY)
 
     def _populate_subdiv_nw_public_holidays(self):
         # Saint Joseph's Day.
         self._add_saint_josephs_day(tr("Josefstag"))
 
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
+        # Immaculate Conception.
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
     def _populate_subdiv_nw_optional_holidays(self):
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_ow_public_holidays(self):
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
         # Saint Nicholas of Flüe.
         self._add_holiday_sep_25(tr("Bruder Klaus"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
+        # Immaculate Conception.
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
     def _populate_subdiv_ow_optional_holidays(self):
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_sg_public_holidays(self):
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_sg_optional_holidays(self):
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
     def _populate_subdiv_sh_public_holidays(self):
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_sh_optional_holidays(self):
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
     def _populate_subdiv_sz_public_holidays(self):
         # Epiphany.
         self._add_epiphany_day(tr("Heilige Drei Könige"))
 
+        # Saint Joseph's Day.
         self._add_saint_josephs_day(tr("Josefstag"))
 
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
+        # Assumption Day.# Assumption Day.
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
+        # Immaculate Conception.
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_so_public_holidays(self):
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
     def _populate_subdiv_so_half_day_holidays(self):
+        # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
     def _populate_subdiv_so_optional_holidays(self):
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
     def _populate_subdiv_tg_public_holidays(self):
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
+        # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_ti_public_holidays(self):
+        # Epiphany.
         self._add_epiphany_day(tr("Heilige Drei Könige"))
 
+        # Saint Joseph's Day.
         self._add_saint_josephs_day(tr("Josefstag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
         # Saints Peter and Paul.
         self._add_saints_peter_and_paul_day(tr("Peter und Paul"))
 
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
+        # Immaculate Conception.
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_ur_public_holidays(self):
+        # Epiphany.
         self._add_epiphany_day(tr("Heilige Drei Könige"))
 
+        # Saint Joseph's Day.
         self._add_saint_josephs_day(tr("Josefstag"))
 
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
+        # Immaculate Conception.
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
         self._add_observed(
-            self._add_christmas_day_two(tr("Stephanstag")), rule=TUE_TO_NONE + SAT_TO_NONE
+            # Saint Stephen's Day.
+            self._add_christmas_day_two(tr("Stephanstag")),
+            rule=TUE_TO_NONE + SAT_TO_NONE,
         )
 
     def _populate_subdiv_vd_public_holidays(self):
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
         # Prayer Monday.
         self._add_holiday_1_day_past_3rd_sun_of_sep(tr("Bettagsmontag"))
 
     def _populate_subdiv_vs_public_holidays(self):
+        # Saint Joseph's Day.
         self._add_saint_josephs_day(tr("Josefstag"))
 
+        # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
+        # Immaculate Conception.
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
     def _populate_subdiv_vs_optional_holidays(self):
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_zg_public_holidays(self):
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
+        # Immaculate Conception.
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
     def _populate_subdiv_zg_optional_holidays(self):
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_zh_public_holidays(self):
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
+        # Good Friday.
         self._add_good_friday(tr("Karfreitag"))
 
+        # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
+        # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
+        # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
 

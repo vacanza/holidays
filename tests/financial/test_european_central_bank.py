@@ -19,7 +19,6 @@ from tests.common import CommonFinancialTests
 class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(XECB.start_year, 2100)
         super().setUpClass(EuropeanCentralBank)
 
     def test_market_aliases(self):

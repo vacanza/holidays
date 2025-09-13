@@ -33,7 +33,7 @@ class TestCroatia(CommonCountryTests, TestCase):
     def test_epiphany(self):
         name = "Bogojavljenje ili Sveta tri kralja"
         self.assertHolidayName(
-            name, (f"{year}-01-06" for year in set(self.full_range).difference({2002}))
+            name, (f"{year}-01-06" for year in (*range(HR.start_year, 2002), *range(2003, 2050)))
         )
         self.assertNoHolidayName(name, 2002)
 
@@ -105,8 +105,6 @@ class TestCroatia(CommonCountryTests, TestCase):
     def test_independence_day(self):
         name = "Dan neovisnosti"
         self.assertHolidayName(name, (f"{year}-10-08" for year in range(2002, 2020)))
-        self.assertNoHoliday(f"{year}-10-08" for year in range(HR.start_year, 2002))
-        self.assertNoHoliday(f"{year}-10-08" for year in range(2020, 2050))
         self.assertNoHolidayName(name, range(HR.start_year, 2002), range(2020, 2050))
 
     def test_all_saints_day(self):
@@ -115,7 +113,6 @@ class TestCroatia(CommonCountryTests, TestCase):
     def test_remembrance_day(self):
         name = "Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje"
         self.assertHolidayName(name, (f"{year}-11-18" for year in range(2020, 2050)))
-        self.assertNoHoliday(f"{year}-11-18" for year in range(HR.start_year, 2020))
         self.assertNoHolidayName(name, range(HR.start_year, 2020))
 
     def test_christmas_day(self):

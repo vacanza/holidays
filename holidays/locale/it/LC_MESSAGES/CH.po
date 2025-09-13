@@ -67,6 +67,7 @@ msgid "Fronleichnam"
 msgstr "Corpus Domini"
 
 #. Assumption Day.
+#. Assumption Day.# Assumption Day.
 msgid "Mariä Himmelfahrt"
 msgstr "Assunzione di Maria"
 

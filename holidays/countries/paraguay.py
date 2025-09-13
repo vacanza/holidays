@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC, SUN
 from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
@@ -28,7 +28,7 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         * [Ley 1.723/2001](https://web.archive.org/web/20250427173914/https://www.bacn.gov.py/leyes-paraguayas/634/ley-n-1723--autoriza-al-poder-ejecutivo-a-trasladar-los-feriados-nacionales-al-dia-lunes)
         * [Ley 4.531/2011](https://web.archive.org/web/20250420210317/https://www.bacn.gov.py/leyes-paraguayas/3831/ley-n-4531-restablece-el-dia-14-de-mayo-de-cada-ano-como-feriado-nacional)
         * <https://es.wikipedia.org/wiki/Anexo:Días_festivos_en_Paraguay>
-        * <https://web.archive.org/web/20250427131220/https://www.calendarioparaguay.com/>
+        * <https://web.archive.org/web/20250913135012/https://foco.lanacion.com.py/2025/01/01/feriados-2025-paraguay-tendra-6-fines-de-semana-largos/>
     """
 
     country = "PY"
@@ -37,6 +37,7 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
     supported_languages = ("en_US", "es", "uk")
     # Ley 8/1990.
     start_year = 1991
+    weekend = {SUN}
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -51,10 +52,12 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         dates_obs = {
             2013: (MAR, 4),
             2016: (FEB, 29),
+            2017: (FEB, 27),
             2018: (FEB, 26),
             2019: (MAR, 4),
             2022: (FEB, 28),
             2023: (FEB, 27),
+            2025: (MAR, 3),
         }
         self._add_holiday(
             # Patriots Day.
@@ -82,16 +85,23 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         self._add_holiday_may_15(tr("Día de la Independencia Nacional"))
 
         dates_obs = {
+            2013: (JUN, 10),
             2014: (JUN, 16),
             2018: (JUN, 11),
             2019: (JUN, 17),
             2024: (JUN, 10),
+            2025: (JUN, 16),
         }
         # Chaco Armistice Day.
         self._add_holiday(tr("Día de la Paz del Chaco"), dates_obs.get(self._year, (JUN, 12)))
 
         # Asuncion Foundation's Day.
-        self._add_holiday_aug_15(tr("Día de la Fundación de Asunción"))
+        name = tr("Día de la Fundación de Asunción")
+        # Decreto N° 6292.
+        if self._year == 2017:
+            self._add_holiday_aug_14(name)
+        else:
+            self._add_holiday_aug_15(name)
 
         # Ley 715/1995, 1.601/2000.
         if self._year >= 1995:

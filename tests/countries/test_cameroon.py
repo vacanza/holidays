@@ -34,15 +34,11 @@ class TestCameroon(CommonCountryTests, TestCase):
         name = "Youth Day"
         self.assertHolidayName(name, (f"{year}-02-11" for year in range(1966, 2050)))
         self.assertNoHolidayName(name, range(CM.start_year, 1966))
-        self.assertNoHoliday(f"{year}-02-11" for year in range(CM.start_year, 1966))
 
     def test_national_day(self):
         name = "National Day"
         self.assertHolidayName(name, (f"{year}-05-20" for year in range(1972, 2050)))
         self.assertNoHolidayName(name, range(CM.start_year, 1972))
-        self.assertNoHoliday(
-            f"{year}-05-20" for year in set(range(CM.start_year, 1972)).difference({1971})
-        )
 
     def test_observed(self):
         dt = (

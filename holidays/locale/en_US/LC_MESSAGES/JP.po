@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.30\n"
+"Project-Id-Version: Holidays 0.81\n"
 "POT-Creation-Date: 2023-07-23 15:45+0300\n"
 "PO-Revision-Date: 2023-07-23 15:47+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -55,10 +55,6 @@ msgstr "Emperor's Birthday"
 msgid "春分の日"
 msgstr "Vernal Equinox Day"
 
-#. Greenery Day.
-msgid "みどりの日"
-msgstr "Greenery Day"
-
 #. Showa Day.
 msgid "昭和の日"
 msgstr "Showa Day"
@@ -66,6 +62,10 @@ msgstr "Showa Day"
 #. Constitution Day.
 msgid "憲法記念日"
 msgstr "Constitution Day"
+
+#. Greenery Day.
+msgid "みどりの日"
+msgstr "Greenery Day"
 
 #. Children's Day.
 msgid "こどもの日"

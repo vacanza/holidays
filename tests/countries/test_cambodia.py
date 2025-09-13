@@ -124,7 +124,8 @@ class TestCambodia(CommonCountryTests, TestCase):
             "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍", (f"{year}-01-07" for year in self.full_range)
         )
 
-    def test_sangkranta(self):
+    def test_khmer_new_year(self):
+        name = "ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
         years_sangkranta_apr14 = {
             2017,
             2018,
@@ -138,18 +139,40 @@ class TestCambodia(CommonCountryTests, TestCase):
             2030,
             2031,
         }
-        for year in set(self.full_range).difference({2020}):
-            if year in years_sangkranta_apr14:
-                self.assertHoliday(f"{year}-04-14", f"{year}-04-15", f"{year}-04-16")
-            else:
-                self.assertHoliday(f"{year}-04-13", f"{year}-04-14", f"{year}-04-15")
+        self.assertHolidayNameCount(
+            name, 3, range(KH.start_year, 2020), range(2021, 2024), range(2025, 2050)
+        )
+        self.assertHolidayNameCount(name, 4, 2024)
+        self.assertHolidayName(name, (f"{year}-04-14" for year in years_sangkranta_apr14))
+        self.assertHolidayName(
+            name,
+            (
+                f"{year}-04-13"
+                for year in self.full_range
+                if year not in years_sangkranta_apr14 and year != 2020
+            ),
+        )
+        self.assertNoHolidayName(name, 2020)
+        self.assertNoHolidayName(name, (f"{year}-04-13" for year in years_sangkranta_apr14))
+        self.assertNoHolidayName(
+            name,
+            (
+                f"{year}-04-16"
+                for year in self.full_range
+                if year not in years_sangkranta_apr14 and year not in {2020, 2024}
+            ),
+        )
 
     def test_king_sihamoni_birthday(self):
         name = "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី"
-        self.assertHolidayName(name, (f"{year}-05-13" for year in range(2005, 2020)))
-        self.assertHolidayName(name, (f"{year}-05-14" for year in range(2005, 2050)))
-        self.assertHolidayName(name, (f"{year}-05-15" for year in range(2005, 2020)))
+        self.assertHolidayName(
+            name,
+            (f"{year}-05-13" for year in range(2005, 2020)),
+            (f"{year}-05-14" for year in range(2005, 2050)),
+            (f"{year}-05-15" for year in range(2005, 2020)),
+        )
         self.assertNoHolidayName(name, range(KH.start_year, 2005))
+        self.assertHolidayNameCount(name, 1, range(2020, 2050))
 
     def test_national_day_of_remembrance(self):
         name = "ទិវាជាតិនៃការចងចាំ"

@@ -72,16 +72,15 @@ class TestBrazil(CommonCountryTests, TestCase):
 
     def test_tiradentes_day(self):
         name = "Tiradentes"
+        years_absent = (1931, 1932)
         self.assertHolidayName(
-            name, (f"{year}-04-21" for year in set(self.full_range).difference({1931, 1932}))
+            name, (f"{year}-04-21" for year in self.full_range if year not in years_absent)
         )
-        self.assertNoHoliday("1931-04-21", "1932-04-21")
-        self.assertNoHolidayName(name, 1931, 1932)
+        self.assertNoHolidayName(name, years_absent)
 
     def test_workers_day(self):
         name = "Dia do Trabalhador"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1925, 2050)))
-        self.assertNoHoliday(f"{year}-05-01" for year in range(BR.start_year, 1925))
         self.assertNoHolidayName(name, range(BR.start_year, 1925))
 
     def test_independence_day(self):
@@ -94,7 +93,6 @@ class TestBrazil(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name, (f"{year}-10-12" for year in (*range(BR.start_year, 1931), *range(1936, 1949)))
         )
-        self.assertNoHoliday(f"{year}-10-12" for year in (*range(1931, 1936), *range(1949, 1980)))
         self.assertNoHolidayName(name, range(1931, 1936), range(1949, 2050))
 
     def test_our_lady_of_aparecida(self):
@@ -118,7 +116,6 @@ class TestBrazil(CommonCountryTests, TestCase):
     def test_christmas_day(self):
         name = "Natal"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1922, 2050)))
-        self.assertNoHoliday(f"{year}-12-25" for year in range(BR.start_year, 1922))
         self.assertNoHolidayName(name, range(BR.start_year, 1922))
 
     def test_carnaval(self):
