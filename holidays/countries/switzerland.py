@@ -512,7 +512,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
-        # Assumption Day.# Assumption Day.
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
         # All Saints' Day.

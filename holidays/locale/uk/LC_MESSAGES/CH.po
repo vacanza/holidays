@@ -67,7 +67,6 @@ msgid "Fronleichnam"
 msgstr "Свято Тіла і Крові Христових"
 
 #. Assumption Day.
-#. Assumption Day.# Assumption Day.
 msgid "Mariä Himmelfahrt"
 msgstr "Внебовзяття Пресвятої Діви Марії"
 
