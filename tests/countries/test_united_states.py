@@ -1811,7 +1811,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             if subdiv in {"AS", "GU", "MP", "PR", "UM", "VI"}:
                 self.assertNoHolidayName(name, holidays)
             else:
-                self.assertHolidayName(name, holidays, range(1848, 2050, 4))
+                self.assertHolidayName(name, holidays, dt)
                 self.assertNoHolidayName(name, holidays, range(US.start_year, 1848))
 
     def test_valentines_day(self):
