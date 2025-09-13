@@ -81,6 +81,10 @@ class SouthKorea(
     country = "KR"
     supported_categories = (BANK, PUBLIC)
     default_language = "ko"
+    # %s (estimated).
+    estimated_label = tr("%s (추정)")
+    # Alternative holiday for %s (estimated).
+    observed_estimated_label = tr("%s 대체 휴일 (추정)")
     # Alternative holiday for %s.
     observed_label = tr("%s 대체 휴일")
     supported_languages = ("en_US", "ko", "th")

@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.59\n"
+"Project-Id-Version: Holidays 0.81\n"
 "POT-Creation-Date: 2024-09-27 15:50+0700\n"
-"PO-Revision-Date: 2024-10-09 20:57+0300\n"
+"PO-Revision-Date: 2025-09-07 14:05+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -26,6 +26,16 @@ msgstr ""
 "Generated-By: Lingva 5.0.4\n"
 "X-Generator: Poedit 3.5\n"
 "X-Source-Language: vi\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (dự kiến)"
+msgstr "%s (estimated)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (nghỉ bù, dự kiến)"
+msgstr "%s (observed, estimated)"
 
 #. %s (observed).
 #, c-format

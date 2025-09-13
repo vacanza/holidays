@@ -53,7 +53,7 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "一月一日"
-        name_observed = f"{name}（慶祝）"
+        name_observed = f"{name}（補假）"
         name_following = f"{name}翌日"
 
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1977, 2050)))
@@ -363,7 +363,7 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_tomb_sweeping_day(self):
         name = "清明節"
-        name_observed = f"{name}（慶祝）"
+        name_observed = f"{name}（補假）"
         name_following = f"{name}翌日"
 
         self.assertHolidayName(
@@ -454,7 +454,7 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_the_buddhas_birthday(self):
         name = "佛誕"
-        name_observed = f"{name}（慶祝）"
+        name_observed = f"{name}（補假）"
         name_following = f"{name}翌日"
 
         self.assertHolidayName(
@@ -515,7 +515,7 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_labor_day(self):
         name = "勞動節"
-        name_observed = f"{name}（慶祝）"
+        name_observed = f"{name}（補假）"
         name_following = f"{name}翌日"
 
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1999, 2050)))
@@ -538,7 +538,7 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_dragon_boat_festival(self):
         name = "端午節"
-        name_observed = f"{name}（慶祝）"
+        name_observed = f"{name}（補假）"
         name_following = f"{name}翌日"
 
         self.assertHolidayName(
@@ -606,7 +606,7 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_hong_kong_sar_day(self):
         name = "香港特別行政區成立紀念日"
-        name_observed = f"{name}（慶祝）"
+        name_observed = f"{name}（補假）"
         name_following = f"{name}翌日"
 
         self.assertHolidayName(name, (f"{year}-07-01" for year in range(1997, 2050)))
@@ -702,7 +702,7 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_double_ninth_festival(self):
         name = "重陽節"
-        name_observed = f"{name}（慶祝）"
+        name_observed = f"{name}（補假）"
         name_following = f"{name}翌日"
 
         self.assertHolidayName(
@@ -797,7 +797,7 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_national_day(self):
         name = "國慶日"
-        name_observed = f"{name}（慶祝）"
+        name_observed = f"{name}（補假）"
         name_following = f"{name}翌日"
 
         self.assertHolidayName(name, (f"{year}-10-01" for year in range(1997, 2050)))
@@ -834,7 +834,7 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_winter_solstice(self):
         name = "冬節"
-        name_observed = f"{name}（慶祝）"
+        name_observed = f"{name}（補假）"
 
         holidays_with_winter_solstice = HongKong(
             preferred_discretionary_holidays=(WINTER_SOLSTICE,), years=self.full_range
@@ -885,9 +885,9 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "聖誕節"
-        name_observed = f"{name}（慶祝）"
+        name_observed = f"{name}（補假）"
         name_first = "聖誕節後第一個周日"
-        name_first_observed = f"{name_first}（慶祝）"
+        name_first_observed = f"{name_first}（補假）"
         name_second = "聖誕節後第二個周日"
 
         self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
@@ -1110,7 +1110,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             ("2020-10-01", "國慶日"),
             ("2020-10-02", "中秋節翌日"),
             ("2020-10-25", "重陽節"),
-            ("2020-10-26", "重陽節（慶祝）"),
+            ("2020-10-26", "重陽節（補假）"),
             ("2020-12-21", "冬節"),
             ("2020-12-25", "聖誕節"),
         )
@@ -1124,7 +1124,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             ("2021-02-13", "農曆年初二"),
             ("2021-02-15", "農曆年初四"),
             ("2021-04-04", "清明節"),
-            ("2021-04-05", "清明節（慶祝）"),
+            ("2021-04-05", "清明節（補假）"),
             ("2021-05-01", "勞動節"),
             ("2021-06-14", "端午節"),
             ("2021-07-01", "香港特別行政區成立紀念日"),
@@ -1145,9 +1145,9 @@ class TestHongKong(CommonCountryTests, TestCase):
             ("2022-02-03", "農曆年初三"),
             ("2022-04-05", "清明節"),
             ("2022-05-01", "勞動節"),
-            ("2022-05-02", "勞動節（慶祝）"),
+            ("2022-05-02", "勞動節（補假）"),
             ("2022-05-08", "佛誕"),
-            ("2022-05-09", "佛誕（慶祝）"),
+            ("2022-05-09", "佛誕（補假）"),
             ("2022-06-03", "端午節"),
             ("2022-07-01", "香港特別行政區成立紀念日"),
             ("2022-09-12", "中秋節後第二日"),
@@ -1155,7 +1155,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             ("2022-10-04", "重陽節"),
             ("2022-12-22", "冬節"),
             ("2022-12-25", "聖誕節"),
-            ("2022-12-26", "聖誕節（慶祝）"),
+            ("2022-12-26", "聖誕節（補假）"),
         )
 
     def test_2023(self):
@@ -1163,7 +1163,7 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertHolidays(
             HongKong(years=2023, preferred_discretionary_holidays=(CHRISTMAS, WINTER_SOLSTICE)),
             ("2023-01-01", "一月一日"),
-            ("2023-01-02", "一月一日（慶祝）"),
+            ("2023-01-02", "一月一日（補假）"),
             ("2023-01-23", "農曆年初二"),
             ("2023-01-24", "農曆年初三"),
             ("2023-01-25", "農曆年初四"),
@@ -1174,7 +1174,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             ("2023-07-01", "香港特別行政區成立紀念日"),
             ("2023-09-30", "中秋節翌日"),
             ("2023-10-01", "國慶日"),
-            ("2023-10-02", "國慶日（慶祝）"),
+            ("2023-10-02", "國慶日（補假）"),
             ("2023-10-23", "重陽節"),
             ("2023-12-22", "冬節"),
             ("2023-12-25", "聖誕節"),
@@ -1218,7 +1218,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             ("2025-10-07", "中秋節翌日"),
             ("2025-10-29", "重陽節"),
             ("2025-12-21", "冬節"),
-            ("2025-12-22", "冬節（慶祝）"),
+            ("2025-12-22", "冬節（補假）"),
             ("2025-12-25", "聖誕節"),
             ("2025-12-26", "聖誕節後第一個周日"),
         )

@@ -23,7 +23,7 @@ from dateutil.parser import parse
 from holidays import HolidayBase
 from holidays.calendars.gregorian import SUN
 from holidays.constants import PUBLIC
-from holidays.groups import IslamicHolidays
+from holidays.groups import EasternCalendarHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase
 
 PYTHON_LATEST_SUPPORTED_VERSION = "3.13"
@@ -509,11 +509,11 @@ class CommonTests(TestCase):
     """Common test cases for all entities."""
 
     def test_estimated_label(self):
-        if isinstance(self.holidays, IslamicHolidays):
+        if isinstance(self.holidays, EasternCalendarHolidays):
             self.assertTrue(
                 getattr(self.holidays, "estimated_label", None),
                 "The `estimated_label` attribute is required for entities inherited from "
-                "`IslamicHolidays`.",
+                "`EasternCalendarHolidays`.",
             )
 
     def test_observed_estimated_label(self):

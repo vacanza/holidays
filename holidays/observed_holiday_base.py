@@ -177,7 +177,7 @@ class ObservedHolidayBase(HolidayBase):
                 )
             )
 
-            estimated_label_text = estimated_label.strip("%s ()")
+            estimated_label_text = estimated_label.strip("%s ()（）")
             # Use observed_estimated_label instead of observed_label for estimated dates.
             for name in (name,) if name else self.get_list(dt):
                 holiday_name = self.tr(name)
