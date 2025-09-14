@@ -17,7 +17,7 @@ from holidays.calendars.chinese import _ChineseLunisolar, KOREAN_CALENDAR, VIETN
 
 class TestChineseLunisolarCalendar(unittest.TestCase):
     def setUp(self) -> None:
-        super().setUpClass()
+        super().setUp()
         self.calendar = _ChineseLunisolar()
 
     def test_check_calendar(self):
