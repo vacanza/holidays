@@ -126,7 +126,9 @@ class TestSwitzerland(CommonCountryTests, TestCase):
         # When holiday present in NE.
         ne_years = {1978, 1984, 1989, 1995, 2006, 2012, 2017, 2023, 2034, 2040, 2045}
         self.assertSubdivNeHolidayName(name, (f"{year}-01-02" for year in ne_years))
-        self.assertNoSubdivNeHoliday(f"{year}-01-02" for year in set(self.full_range) - ne_years)
+        self.assertNoSubdivNeHoliday(
+            f"{year}-01-02" for year in self.full_range if year not in ne_years
+        )
 
     def test_epiphany(self):
         name = "Heilige Drei Könige"
@@ -591,7 +593,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
         ne_years_have = {1977, 1983, 1988, 1994, 2005, 2011, 2016, 2022, 2033, 2039, 2044}
         self.assertSubdivNeHolidayName(name, (f"{year}-12-26" for year in ne_years_have))
         self.assertNoSubdivNeHoliday(
-            f"{year}-12-26" for year in set(self.full_range) - ne_years_have
+            f"{year}-12-26" for year in self.full_range if year not in ne_years_have
         )
 
         # When holiday not present in AI, AR, UR.
@@ -624,7 +626,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             self.assertHolidayName(
                 name,
                 self.subdiv_holidays[subdiv],
-                set(self.full_range) - ai_ar_ur_years_dont,
+                (year for year in self.full_range if year not in ai_ar_ur_years_dont),
             )
             self.assertNoHoliday(
                 self.subdiv_holidays[subdiv], (f"{year}-12-26" for year in ai_ar_ur_years_dont)
