@@ -1307,20 +1307,20 @@ class _ChineseLunisolar:
         2053: (FEB, 18),
     }
 
-    WINTER_SOLSTICE_THRESHOLDS = {
+    WINTER_SOLSTICE_THRESHOLDS: dict[str, dict[str, dict[int, int]]] = {
         # UTC+7.
         VIETNAMESE_CALENDAR: {
-            "dec23_thresholds": (3, 1943),
+            "dec23_thresholds": {3: 1943},
             "dec21_thresholds": {0: 1980, 1: 2017, 2: 2050, 3: 2083},
         },
         # UTC+8.
         CHINESE_CALENDAR: {
-            "dec23_thresholds": (3, 1947),
+            "dec23_thresholds": {3: 1947},
             "dec21_thresholds": {0: 1988, 1: 2021, 2: 2058, 3: 2091},
         },
         # UTC+9.
         KOREAN_CALENDAR: {
-            "dec23_thresholds": (3, 1955),
+            "dec23_thresholds": {3: 1955},
             "dec21_thresholds": {0: 1992, 1: 2029, 2: 2062, 3: 2099},
         },
     }
@@ -1387,17 +1387,15 @@ class _ChineseLunisolar:
         self.__verify_calendar(calendar)
 
         thresholds = self.WINTER_SOLSTICE_THRESHOLDS[calendar]
-        dec23_thresholds = thresholds["dec23_thresholds"]
-        dec21_thresholds = thresholds["dec21_thresholds"]
         year_mod = year % 4
-        if year_mod == dec23_thresholds[0] and year <= dec23_thresholds[1]:  # type: ignore[index]
+        if year <= thresholds["dec23_thresholds"].get(year_mod, 0):
             day = 23
-        elif year >= dec21_thresholds[year_mod]:  # type: ignore[index]
+        elif year >= thresholds["dec21_thresholds"][year_mod]:
             day = 21
         else:
             day = 22
 
-        return date(year, DEC, day), False
+        return date(year, DEC, day), not (1941 <= year <= 2099)
 
 
 class _CustomChineseHolidays(_CustomCalendar, _ChineseLunisolar):
