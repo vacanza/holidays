@@ -58,7 +58,7 @@ class TestBotswana(CommonCountryTests, TestCase):
         self.assertHoliday(dt)
         self.assertNonObservedHoliday(dt)
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         self.assertHoliday(f"{year}-05-01" for year in self.full_range)
         dt = ("2011-05-02", "2016-05-02", "2022-05-02")
         self.assertHoliday(dt)

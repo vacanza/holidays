@@ -29,7 +29,12 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
         self.assertAliases(SaintHelenaAscensionAndTristanDaCunha, SH, SHN)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(SaintHelenaAscensionAndTristanDaCunha(years=self.start_year - 1))
+        self.assertNoHolidays(
+            SaintHelenaAscensionAndTristanDaCunha(
+                categories=SaintHelenaAscensionAndTristanDaCunha.supported_categories,
+                years=self.start_year - 1,
+            )
+        )
 
     def test_special_holidays(self):
         for dt, name in (

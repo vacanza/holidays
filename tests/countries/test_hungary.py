@@ -286,7 +286,7 @@ class TestHungary(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidayName(name, range(self.start_year, 1953), range(1992, self.end_year))
         self.assertNoHolidayName(name, range(1953, 1992))
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         name = "A Munka ünnepe"
         self.assertHolidayName(
             name,

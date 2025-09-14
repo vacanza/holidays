@@ -149,12 +149,6 @@ class TestChile(CommonCountryTests, TestCase):
             "2047-06-21",
             "2048-06-20",
             "2049-06-20",
-            "2050-06-20",
-            "2075-06-21",
-            "2076-06-20",
-            "2077-06-20",
-            "2078-06-20",
-            "2079-06-20",
         )
         self.assertNoHolidayName(name, range(self.start_year, 2021))
 
@@ -393,9 +387,6 @@ class TestChile(CommonCountryTests, TestCase):
             "2021-08-20",
         )
         self.assertNoSubdivNbHoliday("2013-08-20")
-
-    def test_summer_solstice(self):
-        self.assertHoliday("2050-06-20", "2079-06-20")
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

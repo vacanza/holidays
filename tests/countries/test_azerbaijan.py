@@ -243,9 +243,11 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(1993, self.end_year))
         self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1993))
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 1, set(range(1993, 2006)) - {2000})
         self.assertIslamicNoEstimatedHolidayNameCount(
-            name, 2, set(range(2006, self.end_year)) - {2033}
+            name, 1, range(1993, 2000), range(2001, 2006)
+        )
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 2, range(2006, 2033), range(2034, self.end_year)
         )
 
     def test_eid_al_adha(self):
@@ -267,7 +269,7 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1993))
         self.assertIslamicNoEstimatedHolidayNameCount(name, 1, range(1993, 2006))
         self.assertIslamicNoEstimatedHolidayNameCount(
-            name, 2, set(range(2006, self.end_year)) - {2007, 2039}
+            name, 2, 2006, range(2008, 2039), range(2040, self.end_year)
         )
 
     def test_observed_days(self):

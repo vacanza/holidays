@@ -26,7 +26,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(
-            Indonesia(categories=ID.supported_categories, years=self.start_year - 1)
+            Indonesia(categories=Indonesia.supported_categories, years=self.start_year - 1)
         )
 
     def test_special(self):

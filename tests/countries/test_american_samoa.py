@@ -25,7 +25,9 @@ class TestAS(CommonCountryTests, TestCase):
         self.assertAliases(HolidaysAS, AmericanSamoa, AS, ASM)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(HolidaysAS(years=self.start_year - 1))
+        self.assertNoHolidays(
+            HolidaysAS(categories=HolidaysAS.supported_categories, years=self.start_year - 1)
+        )
 
     def test_as_only(self):
         """Check for a holiday that is not returned by US unless the subdivision is specified."""
