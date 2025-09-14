@@ -1307,6 +1307,24 @@ class _ChineseLunisolar:
         2053: (FEB, 18),
     }
 
+    WINTER_SOLSTICE_THRESHOLDS = {
+        # UTC+7.
+        VIETNAMESE_CALENDAR: {
+            "dec23_thresholds": (3, 1943),
+            "dec21_thresholds": {0: 1980, 1: 2017, 2: 2050, 3: 2083},
+        },
+        # UTC+8.
+        CHINESE_CALENDAR: {
+            "dec23_thresholds": (3, 1947),
+            "dec21_thresholds": {0: 1988, 1: 2021, 2: 2058, 3: 2091},
+        },
+        # UTC+9.
+        KOREAN_CALENDAR: {
+            "dec23_thresholds": (3, 1955),
+            "dec21_thresholds": {0: 1992, 1: 2029, 2: 2062, 3: 2099},
+        },
+    }
+
     def __init__(self, calendar: str = CHINESE_CALENDAR) -> None:
         self.__verify_calendar(calendar)
         self.__calendar = calendar
@@ -1368,25 +1386,7 @@ class _ChineseLunisolar:
         calendar = calendar or self.__calendar
         self.__verify_calendar(calendar)
 
-        calendar_thresholds = {
-            # UTC+7.
-            VIETNAMESE_CALENDAR: {
-                "dec23_thresholds": (3, 1943),
-                "dec21_thresholds": {0: 1980, 1: 2017, 2: 2050, 3: 2083},
-            },
-            # UTC+8.
-            CHINESE_CALENDAR: {
-                "dec23_thresholds": (3, 1947),
-                "dec21_thresholds": {0: 1988, 1: 2021, 2: 2058, 3: 2091},
-            },
-            # UTC+9.
-            KOREAN_CALENDAR: {
-                "dec23_thresholds": (3, 1955),
-                "dec21_thresholds": {0: 1992, 1: 2029, 2: 2062, 3: 2099},
-            },
-        }
-
-        thresholds = calendar_thresholds[calendar]
+        thresholds = self.WINTER_SOLSTICE_THRESHOLDS[calendar]
         dec23_thresholds = thresholds["dec23_thresholds"]
         dec21_thresholds = thresholds["dec21_thresholds"]
         year_mod = year % 4
