@@ -1310,18 +1310,18 @@ class _ChineseLunisolar:
     WINTER_SOLSTICE_THRESHOLDS: dict[str, dict[str, dict[int, int]]] = {
         # UTC+7.
         VIETNAMESE_CALENDAR: {
-            "dec23_thresholds": {3: 1943},
-            "dec21_thresholds": {0: 1980, 1: 2017, 2: 2050, 3: 2083},
+            "dec21": {0: 1980, 1: 2017, 2: 2050, 3: 2083},
+            "dec23": {3: 1943},
         },
         # UTC+8.
         CHINESE_CALENDAR: {
-            "dec23_thresholds": {3: 1947},
-            "dec21_thresholds": {0: 1988, 1: 2021, 2: 2058, 3: 2091},
+            "dec21": {0: 1988, 1: 2021, 2: 2058, 3: 2091},
+            "dec23": {3: 1947},
         },
         # UTC+9.
         KOREAN_CALENDAR: {
-            "dec23_thresholds": {3: 1955},
-            "dec21_thresholds": {0: 1992, 1: 2029, 2: 2062, 3: 2099},
+            "dec21": {0: 1992, 1: 2029, 2: 2062, 3: 2099},
+            "dec23": {3: 1955},
         },
     }
 
@@ -1388,10 +1388,10 @@ class _ChineseLunisolar:
 
         thresholds = self.WINTER_SOLSTICE_THRESHOLDS[calendar]
         year_mod = year % 4
-        if year <= thresholds["dec23_thresholds"].get(year_mod, 0):
-            day = 23
-        elif year >= thresholds["dec21_thresholds"][year_mod]:
+        if year >= thresholds["dec21"][year_mod]:
             day = 21
+        elif year <= thresholds["dec23"].get(year_mod, 0):
+            day = 23
         else:
             day = 22
 
