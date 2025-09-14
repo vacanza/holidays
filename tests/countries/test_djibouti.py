@@ -25,7 +25,7 @@ class TestDjibouti(CommonCountryTests, TestCase):
         self.assertAliases(Djibouti, DJ, DJI)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Djibouti(years=1977))
+        self.assertNoHolidays(Djibouti(years=self.start_year - 1))
 
     def test_2019(self):
         self.assertHolidays(

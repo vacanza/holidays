@@ -111,10 +111,12 @@ class TestAustria(CommonCountryTests, TestCase):
         self.assertHolidayName(
             "Nationalfeiertag",
             (f"{year}-11-12" for year in range(1919, 1935)),
-            (f"{year}-10-26" for year in range(1967, 2050)),
+            (f"{year}-10-26" for year in range(1967, self.end_year)),
         )
         self.assertNoHoliday("1918-11-12", "1935-11-12", "1966-10-26")
-        self.assertNoHolidayName("Nationalfeiertag", range(AT.start_year, 1919), range(1935, 1967))
+        self.assertNoHolidayName(
+            "Nationalfeiertag", range(self.start_year, 1919), range(1935, 1967)
+        )
 
     def test_all_saints_day(self):
         self.assertHolidayName("Allerheiligen", (f"{year}-11-01" for year in self.full_range))

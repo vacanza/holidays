@@ -25,7 +25,7 @@ class TestBelize(CommonCountryTests, TestCase):
         self.assertAliases(Belize, BZ, BLZ)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Belize(years=BZ.start_year - 1))
+        self.assertNoHolidays(Belize(years=self.start_year - 1))
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -39,10 +39,11 @@ class TestBelize(CommonCountryTests, TestCase):
         name = "George Price Day"
         years_observed = {2023, 2034, 2040, 2045}
         self.assertHolidayName(
-            name, (f"{year}-01-15" for year in range(2021, 2050) if year not in years_observed)
+            name,
+            (f"{year}-01-15" for year in range(2021, self.end_year) if year not in years_observed),
         )
         self.assertHolidayName(f"{name} (observed)", (f"{year}-01-16" for year in years_observed))
-        self.assertNoHolidayName(name, range(BZ.start_year, 2021))
+        self.assertNoHolidayName(name, range(self.start_year, 2021))
 
     def test_national_heroes_and_benefactors_day(self):
         name = "National Heroes and Benefactors Day"
@@ -111,9 +112,9 @@ class TestBelize(CommonCountryTests, TestCase):
             "2020-05-25",
         )
         self.assertNonObservedHolidayName(
-            name, (f"{year}-05-24" for year in range(BZ.start_year, 2022))
+            name, (f"{year}-05-24" for year in range(self.start_year, 2022))
         )
-        self.assertNoHolidayName(name, range(2022, 2050))
+        self.assertNoHolidayName(name, range(2022, self.end_year))
 
     def test_emancipation_day(self):
         name = "Emancipation Day"
@@ -124,8 +125,10 @@ class TestBelize(CommonCountryTests, TestCase):
             "2024-07-29",
             "2025-08-04",
         )
-        self.assertNonObservedHolidayName(name, (f"{year}-08-01" for year in range(2021, 2050)))
-        self.assertNoHolidayName(name, range(BZ.start_year, 2021))
+        self.assertNonObservedHolidayName(
+            name, (f"{year}-08-01" for year in range(2021, self.end_year))
+        )
+        self.assertNoHolidayName(name, range(self.start_year, 2021))
 
     def test_saint_georges_caye_day(self):
         name = "Saint George's Caye Day"
@@ -164,11 +167,13 @@ class TestBelize(CommonCountryTests, TestCase):
             "2027-10-11",
         )
         self.assertNonObservedHolidayName(
-            name1, (f"{year}-10-12" for year in range(BZ.start_year, 2021))
+            name1, (f"{year}-10-12" for year in range(self.start_year, 2021))
         )
-        self.assertNonObservedHolidayName(name2, (f"{year}-10-12" for year in range(2021, 2050)))
-        self.assertNoHolidayName(name1, range(2021, 2050))
-        self.assertNoHolidayName(name2, range(BZ.start_year, 2021))
+        self.assertNonObservedHolidayName(
+            name2, (f"{year}-10-12" for year in range(2021, self.end_year))
+        )
+        self.assertNoHolidayName(name1, range(2021, self.end_year))
+        self.assertNoHolidayName(name2, range(self.start_year, 2021))
 
     def test_garifuna_settlement_day(self):
         name = "Garifuna Settlement Day"

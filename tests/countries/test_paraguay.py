@@ -26,7 +26,7 @@ class TestParaguay(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(
-            Paraguay(categories=Paraguay.supported_categories, years=PY.start_year - 1)
+            Paraguay(categories=Paraguay.supported_categories, years=self.start_year - 1)
         )
 
     def test_new_years_day(self):
@@ -93,8 +93,8 @@ class TestParaguay(CommonCountryTests, TestCase):
 
     def test_national_holiday(self):
         name = "Feriado Nacional"
-        self.assertHolidayName(name, (f"{year}-05-14" for year in range(2012, 2050)))
-        self.assertNoHolidayName(name, range(PY.start_year, 2012))
+        self.assertHolidayName(name, (f"{year}-05-14" for year in range(2012, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2012))
 
     def test_independence_day(self):
         self.assertHolidayName(
@@ -120,7 +120,10 @@ class TestParaguay(CommonCountryTests, TestCase):
     def test_asuncion_foundations_day(self):
         self.assertHolidayName(
             "Día de la Fundación de Asunción",
-            (f"{year}-08-15" for year in (*range(PY.start_year, 2017), *range(2018, 2050))),
+            (
+                f"{year}-08-15"
+                for year in (*range(self.start_year, 2017), *range(2018, self.end_year))
+            ),
             "2017-08-14",
         )
 
@@ -130,7 +133,7 @@ class TestParaguay(CommonCountryTests, TestCase):
             name,
             (
                 f"{year}-09-29"
-                for year in range(1995, 2050)
+                for year in range(1995, self.end_year)
                 if year not in {2015, 2016, 2017, 2021, 2022, 2024}
             ),
             "2015-09-28",
@@ -140,7 +143,7 @@ class TestParaguay(CommonCountryTests, TestCase):
             "2022-10-03",
             "2024-09-30",
         )
-        self.assertNoHolidayName(name, range(PY.start_year, 1995))
+        self.assertNoHolidayName(name, range(self.start_year, 1995))
 
     def test_caacupe_virgin_day(self):
         self.assertHolidayName(

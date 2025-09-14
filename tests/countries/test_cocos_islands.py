@@ -25,7 +25,7 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         self.assertAliases(CocosIslands, CC, CCK)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(CocosIslands(years=CC.start_year - 1))
+        self.assertNoHolidays(CocosIslands(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -63,7 +63,10 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             "2007-04-05",
-            (f"{year}-04-06" for year in (*range(CC.start_year, 2007), *range(2008, 2050))),
+            (
+                f"{year}-04-06"
+                for year in (*range(self.start_year, 2007), *range(2008, self.end_year))
+            ),
         )
         obs_dt = (
             "2013-04-08",
@@ -131,10 +134,10 @@ class TestCocosIslands(CommonCountryTests, TestCase):
             "2024-06-06",
             "2025-06-09",
         )
-        self.assertHolidayName(name_1, range(CC.start_year, 2023))
-        self.assertHolidayName(name_2, range(2023, 2050))
-        self.assertNoHolidayName(name_1, range(2023, 2050))
-        self.assertNoHolidayName(name_2, range(CC.start_year, 2023))
+        self.assertHolidayName(name_1, range(self.start_year, 2023))
+        self.assertHolidayName(name_2, range(2023, self.end_year))
+        self.assertNoHolidayName(name_1, range(2023, self.end_year))
+        self.assertNoHolidayName(name_2, range(self.start_year, 2023))
 
     def test_boxing_day(self):
         name = "Boxing Day"
@@ -171,8 +174,8 @@ class TestCocosIslands(CommonCountryTests, TestCase):
             "2018-09-11",
             "2019-09-01",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, range(CC.start_year, 2020))
-        self.assertNoIslamicNoEstimatedHolidayName(name, range(2020, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, range(self.start_year, 2020))
+        self.assertNoIslamicNoEstimatedHolidayName(name, range(2020, self.end_year))
         obs_dt = (
             "1999-04-19",
             "2004-02-23",

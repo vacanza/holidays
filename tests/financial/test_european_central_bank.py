@@ -25,7 +25,7 @@ class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
         self.assertAliases(EuropeanCentralBank, XECB, ECB, TAR)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(EuropeanCentralBank(years=XECB.start_year - 1))
+        self.assertNoHolidays(EuropeanCentralBank(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday("2000-12-31")

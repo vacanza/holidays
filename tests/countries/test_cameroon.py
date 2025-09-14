@@ -25,20 +25,20 @@ class TestCameroon(CommonCountryTests, TestCase):
         self.assertAliases(Cameroon, CM, CMR)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Cameroon(years=CM.start_year - 1))
+        self.assertNoHolidays(Cameroon(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday("2021-05-14", "2021-07-19")
 
     def test_youth_day(self):
         name = "Youth Day"
-        self.assertHolidayName(name, (f"{year}-02-11" for year in range(1966, 2050)))
-        self.assertNoHolidayName(name, range(CM.start_year, 1966))
+        self.assertHolidayName(name, (f"{year}-02-11" for year in range(1966, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1966))
 
     def test_national_day(self):
         name = "National Day"
-        self.assertHolidayName(name, (f"{year}-05-20" for year in range(1972, 2050)))
-        self.assertNoHolidayName(name, range(CM.start_year, 1972))
+        self.assertHolidayName(name, (f"{year}-05-20" for year in range(1972, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1972))
 
     def test_observed(self):
         dt = (

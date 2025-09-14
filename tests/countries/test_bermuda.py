@@ -25,7 +25,7 @@ class TestBermuda(CommonCountryTests, TestCase):
         self.assertAliases(Bermuda, BM, BMU)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Bermuda(years=BM.start_year - 1))
+        self.assertNoHolidays(Bermuda(years=self.start_year - 1))
 
     def test_special_holidays(self):
         for dt, name in (
@@ -63,7 +63,7 @@ class TestBermuda(CommonCountryTests, TestCase):
 
     def test_bermuda_day(self):
         name = "Bermuda Day"
-        self.assertHolidayName(name, (f"{year}-05-24" for year in range(BM.start_year, 2018)))
+        self.assertHolidayName(name, (f"{year}-05-24" for year in range(self.start_year, 2018)))
         self.assertHolidayName(
             name,
             "2018-05-25",
@@ -75,7 +75,7 @@ class TestBermuda(CommonCountryTests, TestCase):
             "2024-05-24",
             "2025-05-23",
         )
-        self.assertHolidayName(name, range(2018, 2050))
+        self.assertHolidayName(name, range(2018, self.end_year))
 
         dt = (
             "2008-05-26",
@@ -99,8 +99,8 @@ class TestBermuda(CommonCountryTests, TestCase):
             "2007-06-11",
             "2008-06-16",
         )
-        self.assertHolidayName(name, range(BM.start_year, 2009))
-        self.assertNoHolidayName(name, range(2009, 2050))
+        self.assertHolidayName(name, range(self.start_year, 2009))
+        self.assertNoHolidayName(name, range(2009, self.end_year))
 
     def test_national_heroes_day(self):
         name = "National Heroes Day"
@@ -116,8 +116,8 @@ class TestBermuda(CommonCountryTests, TestCase):
             "2024-06-17",
             "2025-06-16",
         )
-        self.assertHolidayName(name, range(2008, 2050))
-        self.assertNoHolidayName(name, range(BM.start_year, 2008))
+        self.assertHolidayName(name, range(2008, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2008))
 
     def test_cup_match_and_emancipation_day(self):
         name_1 = "Cup Match Day"
@@ -129,8 +129,8 @@ class TestBermuda(CommonCountryTests, TestCase):
             "1998-07-30",
             "1999-07-29",
         )
-        self.assertHolidayName(name_1, range(BM.start_year, 2000))
-        self.assertNoHolidayName(name_1, range(2000, 2050))
+        self.assertHolidayName(name_1, range(self.start_year, 2000))
+        self.assertNoHolidayName(name_1, range(2000, self.end_year))
 
         name_2 = "Emancipation Day"
         self.assertHolidayName(
@@ -141,8 +141,8 @@ class TestBermuda(CommonCountryTests, TestCase):
             "2024-08-01",
             "2025-07-31",
         )
-        self.assertHolidayName(name_2, range(2000, 2050))
-        self.assertNoHolidayName(name_2, range(BM.start_year, 2000))
+        self.assertHolidayName(name_2, range(2000, self.end_year))
+        self.assertNoHolidayName(name_2, range(self.start_year, 2000))
 
     def test_somers_and_mary_prince_day(self):
         name_1 = "Somers Day"
@@ -153,8 +153,8 @@ class TestBermuda(CommonCountryTests, TestCase):
             "2018-08-03",
             "2019-08-02",
         )
-        self.assertHolidayName(name_1, range(BM.start_year, 2020))
-        self.assertNoHolidayName(name_1, range(2020, 2050))
+        self.assertHolidayName(name_1, range(self.start_year, 2020))
+        self.assertNoHolidayName(name_1, range(2020, self.end_year))
 
         name_2 = "Mary Prince Day"
         self.assertHolidayName(
@@ -166,8 +166,8 @@ class TestBermuda(CommonCountryTests, TestCase):
             "2024-08-02",
             "2025-08-01",
         )
-        self.assertHolidayName(name_2, range(2020, 2050))
-        self.assertNoHolidayName(name_2, range(BM.start_year, 2020))
+        self.assertHolidayName(name_2, range(2020, self.end_year))
+        self.assertNoHolidayName(name_2, range(self.start_year, 2020))
 
     def test_labour_day(self):
         name = "Labour Day"

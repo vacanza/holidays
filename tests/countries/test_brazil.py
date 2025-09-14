@@ -26,7 +26,7 @@ class TestBrazil(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(
-            Brazil(categories=Brazil.supported_categories, years=BR.start_year - 1)
+            Brazil(categories=Brazil.supported_categories, years=self.start_year - 1)
         )
 
     def test_new_years_day(self):
@@ -37,24 +37,24 @@ class TestBrazil(CommonCountryTests, TestCase):
     def test_republic_constitution_day(self):
         name = "Constituição da República"
         self.assertHolidayName(name, (f"{year}-02-24" for year in range(1892, 1931)))
-        self.assertNoHolidayName(name, range(BR.start_year, 1892), range(1931, 2050))
+        self.assertNoHolidayName(name, range(self.start_year, 1892), range(1931, self.end_year))
 
     def test_discovery_of_brazil(self):
         name = "Descobrimento do Brasil"
         self.assertHolidayName(
-            name, (f"{year}-05-03" for year in (*range(BR.start_year, 1931), *range(1936, 1949)))
+            name, (f"{year}-05-03" for year in (*range(self.start_year, 1931), *range(1936, 1949)))
         )
-        self.assertNoHolidayName(name, range(1931, 1936), range(1949, 2050))
+        self.assertNoHolidayName(name, range(1931, 1936), range(1949, self.end_year))
 
     def test_abolition_of_slavery_in_brazil(self):
         name = "Abolição da escravidão no Brasil"
-        self.assertHolidayName(name, (f"{year}-05-13" for year in range(BR.start_year, 1931)))
-        self.assertNoHolidayName(name, range(1931, 2050))
+        self.assertHolidayName(name, (f"{year}-05-13" for year in range(self.start_year, 1931)))
+        self.assertNoHolidayName(name, range(1931, self.end_year))
 
     def test_freedom_and_independence_of_american_peoples(self):
         name = "Liberdade e Independência dos Povos Americanos"
-        self.assertHolidayName(name, (f"{year}-07-14" for year in range(BR.start_year, 1931)))
-        self.assertNoHolidayName(name, range(1931, 2050))
+        self.assertHolidayName(name, (f"{year}-07-14" for year in range(self.start_year, 1931)))
+        self.assertNoHolidayName(name, range(1931, self.end_year))
 
     def test_good_friday(self):
         name = "Sexta-feira Santa"
@@ -80,8 +80,8 @@ class TestBrazil(CommonCountryTests, TestCase):
 
     def test_workers_day(self):
         name = "Dia do Trabalhador"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1925, 2050)))
-        self.assertNoHolidayName(name, range(BR.start_year, 1925))
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1925, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1925))
 
     def test_independence_day(self):
         self.assertHolidayName(
@@ -91,14 +91,14 @@ class TestBrazil(CommonCountryTests, TestCase):
     def test_discovery_of_america(self):
         name = "Descobrimento da América"
         self.assertHolidayName(
-            name, (f"{year}-10-12" for year in (*range(BR.start_year, 1931), *range(1936, 1949)))
+            name, (f"{year}-10-12" for year in (*range(self.start_year, 1931), *range(1936, 1949)))
         )
-        self.assertNoHolidayName(name, range(1931, 1936), range(1949, 2050))
+        self.assertNoHolidayName(name, range(1931, 1936), range(1949, self.end_year))
 
     def test_our_lady_of_aparecida(self):
         name = "Nossa Senhora Aparecida"
-        self.assertHolidayName(name, (f"{year}-10-12" for year in range(1980, 2050)))
-        self.assertNoHolidayName(name, range(BR.start_year, 1980))
+        self.assertHolidayName(name, (f"{year}-10-12" for year in range(1980, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1980))
 
     def test_all_souls_day(self):
         self.assertHolidayName("Finados", (f"{year}-11-02" for year in self.full_range))
@@ -110,13 +110,13 @@ class TestBrazil(CommonCountryTests, TestCase):
 
     def test_black_awareness_day(self):
         name = "Dia Nacional de Zumbi e da Consciência Negra"
-        self.assertHolidayName(name, (f"{year}-11-20" for year in range(2024, 2050)))
-        self.assertNoHolidayName(name, range(BR.start_year, 2024))
+        self.assertHolidayName(name, (f"{year}-11-20" for year in range(2024, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2024))
 
     def test_christmas_day(self):
         name = "Natal"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1922, 2050)))
-        self.assertNoHolidayName(name, range(BR.start_year, 1922))
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1922, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1922))
 
     def test_carnaval(self):
         name = "Carnaval"
@@ -215,7 +215,9 @@ class TestBrazil(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
 
         name = "Aniversário do Acre"
-        self.assertSubdivAcHolidayName(name, (f"{year}-06-15" for year in range(1996, 2050)))
+        self.assertSubdivAcHolidayName(
+            name, (f"{year}-06-15" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivAcHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
@@ -254,86 +256,110 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("São Pedro", "06-29"),
             ("Emancipação Política de Alagoas", "09-16"),
         ):
-            self.assertSubdivAlHolidayName(name, (f"{year}-{dt}" for year in range(1996, 2050)))
+            self.assertSubdivAlHolidayName(
+                name, (f"{year}-{dt}" for year in range(1996, self.end_year))
+            )
             self.assertNoSubdivAlHolidayName(name, 1995)
             self.assertNoHolidayName(name)
 
         name = "Consciência Negra"
         self.assertSubdivAlHolidayName(name, (f"{year}-11-20" for year in range(1996, 2024)))
-        self.assertNoSubdivAlHolidayName(name, 1995, range(2024, 2050))
+        self.assertNoSubdivAlHolidayName(name, 1995, range(2024, self.end_year))
         self.assertNoHolidayName(name)
 
         name = "Dia do Evangélico"
-        self.assertSubdivAlHolidayName(name, (f"{year}-11-30" for year in range(2013, 2050)))
+        self.assertSubdivAlHolidayName(
+            name, (f"{year}-11-30" for year in range(2013, self.end_year))
+        )
         self.assertNoSubdivAlHolidayName(name, range(1995, 2013))
         self.assertNoHolidayName(name)
 
     def test_am_holidays(self):
         name = "Elevação do Amazonas à categoria de província"
-        self.assertSubdivAmHolidayName(name, (f"{year}-09-05" for year in range(1996, 2050)))
+        self.assertSubdivAmHolidayName(
+            name, (f"{year}-09-05" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivAmHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
         name = "Consciência Negra"
         self.assertSubdivAmHolidayName(name, (f"{year}-11-20" for year in range(2010, 2024)))
-        self.assertNoSubdivAmHolidayName(name, range(1995, 2010), range(2024, 2050))
+        self.assertNoSubdivAmHolidayName(name, range(1995, 2010), range(2024, self.end_year))
         self.assertNoHolidayName(name)
 
     def test_ap_holidays(self):
         name = "São José"
-        self.assertSubdivApHolidayName(name, (f"{year}-03-19" for year in range(2003, 2050)))
+        self.assertSubdivApHolidayName(
+            name, (f"{year}-03-19" for year in range(2003, self.end_year))
+        )
         self.assertNoSubdivApHoliday(f"{year}-03-19" for year in range(1996, 2003))
         self.assertNoSubdivApHolidayName(name, range(1995, 2003))
         self.assertNoHolidayName(name)
 
         name = "São Tiago"
-        self.assertSubdivApHolidayName(name, (f"{year}-07-25" for year in range(2012, 2050)))
+        self.assertSubdivApHolidayName(
+            name, (f"{year}-07-25" for year in range(2012, self.end_year))
+        )
         self.assertNoSubdivApHoliday(f"{year}-07-25" for year in range(1996, 2012))
         self.assertNoSubdivApHolidayName(name, range(1995, 2012))
         self.assertNoHolidayName(name)
 
         name = "Criação do Território Federal"
-        self.assertSubdivApHolidayName(name, (f"{year}-09-13" for year in range(1996, 2050)))
+        self.assertSubdivApHolidayName(
+            name, (f"{year}-09-13" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivApHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
         name = "Consciência Negra"
         self.assertSubdivApHolidayName(name, (f"{year}-11-20" for year in range(2008, 2024)))
         self.assertNoSubdivApHoliday(f"{year}-11-20" for year in range(1996, 2008))
-        self.assertNoSubdivApHolidayName(name, range(1995, 2008), range(2024, 2050))
+        self.assertNoSubdivApHolidayName(name, range(1995, 2008), range(2024, self.end_year))
         self.assertNoHolidayName(name)
 
     def test_ba_holidays(self):
         name = "Independência da Bahia"
-        self.assertSubdivBaHolidayName(name, (f"{year}-07-02" for year in range(1996, 2050)))
+        self.assertSubdivBaHolidayName(
+            name, (f"{year}-07-02" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivBaHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
     def test_ce_holidays(self):
         name = "São José"
-        self.assertSubdivCeHolidayName(name, (f"{year}-03-19" for year in range(1996, 2050)))
+        self.assertSubdivCeHolidayName(
+            name, (f"{year}-03-19" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivCeHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
         name = "Abolição da escravidão no Ceará"
-        self.assertSubdivCeHolidayName(name, (f"{year}-03-25" for year in range(1996, 2050)))
+        self.assertSubdivCeHolidayName(
+            name, (f"{year}-03-25" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivCeHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
         name = "Nossa Senhora da Assunção"
-        self.assertSubdivCeHolidayName(name, (f"{year}-08-15" for year in range(2004, 2050)))
+        self.assertSubdivCeHolidayName(
+            name, (f"{year}-08-15" for year in range(2004, self.end_year))
+        )
         self.assertNoSubdivCeHoliday(f"{year}-08-15" for year in range(1996, 2004))
         self.assertNoSubdivCeHolidayName(name, range(1995, 2004))
         self.assertNoHolidayName(name)
 
     def test_df_holidays(self):
         name = "Fundação de Brasília"
-        self.assertSubdivDfHolidayName(name, (f"{year}-04-21" for year in range(1996, 2050)))
+        self.assertSubdivDfHolidayName(
+            name, (f"{year}-04-21" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivDfHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
         name = "Dia do Evangélico"
-        self.assertSubdivDfHolidayName(name, (f"{year}-11-30" for year in range(1996, 2050)))
+        self.assertSubdivDfHolidayName(
+            name, (f"{year}-11-30" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivDfHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
@@ -352,30 +378,40 @@ class TestBrazil(CommonCountryTests, TestCase):
 
     def test_go_holidays(self):
         name = "Fundação da cidade de Goiás"
-        self.assertSubdivGoHolidayName(name, (f"{year}-07-26" for year in range(1996, 2050)))
+        self.assertSubdivGoHolidayName(
+            name, (f"{year}-07-26" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivGoHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
         name = "Pedra fundamental de Goiânia"
-        self.assertSubdivGoHolidayName(name, (f"{year}-10-24" for year in range(1996, 2050)))
+        self.assertSubdivGoHolidayName(
+            name, (f"{year}-10-24" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivGoHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
     def test_ma_holidays(self):
         name = "Adesão do Maranhão à independência do Brasil"
-        self.assertSubdivMaHolidayName(name, (f"{year}-07-28" for year in range(1996, 2050)))
+        self.assertSubdivMaHolidayName(
+            name, (f"{year}-07-28" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivMaHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
     def test_mg_holidays(self):
         name = "Execução de Tiradentes"
-        self.assertSubdivMgHolidayName(name, (f"{year}-04-21" for year in range(1996, 2050)))
+        self.assertSubdivMgHolidayName(
+            name, (f"{year}-04-21" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivMgHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
     def test_ms_holidays(self):
         name = "Criação do Estado"
-        self.assertSubdivMsHolidayName(name, (f"{year}-10-11" for year in range(1996, 2050)))
+        self.assertSubdivMsHolidayName(
+            name, (f"{year}-10-11" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivMsHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
@@ -383,18 +419,22 @@ class TestBrazil(CommonCountryTests, TestCase):
         name = "Consciência Negra"
         self.assertSubdivMtHolidayName(name, (f"{year}-11-20" for year in range(2003, 2024)))
         self.assertNoSubdivMtHoliday(f"{year}-11-20" for year in range(1996, 2003))
-        self.assertNoSubdivMtHolidayName(name, range(1995, 2003), range(2024, 2050))
+        self.assertNoSubdivMtHolidayName(name, range(1995, 2003), range(2024, self.end_year))
         self.assertNoHolidayName(name)
 
     def test_pa_holidays(self):
         name = "Adesão do Grão-Pará à independência do Brasil"
-        self.assertSubdivPaHolidayName(name, (f"{year}-08-15" for year in range(1996, 2050)))
+        self.assertSubdivPaHolidayName(
+            name, (f"{year}-08-15" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivPaHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
     def test_pb_holidays(self):
         name = "Fundação do Estado"
-        self.assertSubdivPbHolidayName(name, (f"{year}-08-05" for year in range(1996, 2050)))
+        self.assertSubdivPbHolidayName(
+            name, (f"{year}-08-05" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivPbHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
@@ -417,19 +457,25 @@ class TestBrazil(CommonCountryTests, TestCase):
 
     def test_pi_holidays(self):
         name = "Dia do Piauí"
-        self.assertSubdivPiHolidayName(name, (f"{year}-10-19" for year in range(1996, 2050)))
+        self.assertSubdivPiHolidayName(
+            name, (f"{year}-10-19" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivPiHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
     def test_pr_holidays(self):
         name = "Emancipação do Paraná"
-        self.assertSubdivPrHolidayName(name, (f"{year}-12-19" for year in range(1996, 2050)))
+        self.assertSubdivPrHolidayName(
+            name, (f"{year}-12-19" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivPrHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
     def test_rj_holidays(self):
         name = "São Jorge"
-        self.assertSubdivRjHolidayName(name, (f"{year}-04-23" for year in range(2008, 2050)))
+        self.assertSubdivRjHolidayName(
+            name, (f"{year}-04-23" for year in range(2008, self.end_year))
+        )
         self.assertNoSubdivRjHoliday(f"{year}-04-23" for year in range(1996, 2008))
         self.assertNoSubdivRjHolidayName(name, range(1995, 2008))
         self.assertNoHolidayName(name)
@@ -437,43 +483,55 @@ class TestBrazil(CommonCountryTests, TestCase):
         name = "Consciência Negra"
         self.assertSubdivRjHolidayName(name, (f"{year}-11-20" for year in range(2002, 2024)))
         self.assertNoSubdivRjHoliday(f"{year}-11-20" for year in range(1996, 2002))
-        self.assertNoSubdivRjHolidayName(name, range(1995, 2002), range(2024, 2050))
+        self.assertNoSubdivRjHolidayName(name, range(1995, 2002), range(2024, self.end_year))
         self.assertNoHolidayName(name)
 
     def test_rn_holidays(self):
         name = "Dia do Rio Grande do Norte"
-        self.assertSubdivRnHolidayName(name, (f"{year}-08-07" for year in range(2000, 2050)))
+        self.assertSubdivRnHolidayName(
+            name, (f"{year}-08-07" for year in range(2000, self.end_year))
+        )
         self.assertNoSubdivRnHoliday(f"{year}-08-07" for year in range(1996, 2000))
         self.assertNoSubdivRnHolidayName(name, range(1995, 2000))
         self.assertNoHolidayName(name)
 
         name = "Mártires de Cunhaú e Uruaçu"
-        self.assertSubdivRnHolidayName(name, (f"{year}-10-03" for year in range(2007, 2050)))
+        self.assertSubdivRnHolidayName(
+            name, (f"{year}-10-03" for year in range(2007, self.end_year))
+        )
         self.assertNoSubdivRnHoliday(f"{year}-10-03" for year in range(1996, 2007))
         self.assertNoSubdivRnHolidayName(name, range(1995, 2007))
         self.assertNoHolidayName(name)
 
     def test_ro_holidays(self):
         name = "Criação do Estado"
-        self.assertSubdivRoHolidayName(name, (f"{year}-01-04" for year in range(1996, 2050)))
+        self.assertSubdivRoHolidayName(
+            name, (f"{year}-01-04" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivRoHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
         name = "Dia do Evangélico"
-        self.assertSubdivRoHolidayName(name, (f"{year}-06-18" for year in range(2002, 2050)))
+        self.assertSubdivRoHolidayName(
+            name, (f"{year}-06-18" for year in range(2002, self.end_year))
+        )
         self.assertNoSubdivRoHoliday(f"{year}-06-18" for year in range(1996, 2002))
         self.assertNoSubdivRoHolidayName(name, range(1995, 2002))
         self.assertNoHolidayName(name)
 
     def test_rr_holidays(self):
         name = "Criação do Estado"
-        self.assertSubdivRrHolidayName(name, (f"{year}-10-05" for year in range(1996, 2050)))
+        self.assertSubdivRrHolidayName(
+            name, (f"{year}-10-05" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivRrHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
     def test_rs_holidays(self):
         name = "Dia do Gaúcho"
-        self.assertSubdivRsHolidayName(name, (f"{year}-09-20" for year in range(1996, 2050)))
+        self.assertSubdivRsHolidayName(
+            name, (f"{year}-09-20" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivRsHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
@@ -493,7 +551,7 @@ class TestBrazil(CommonCountryTests, TestCase):
             "2023-08-13",
             "2024-08-11",
         )
-        self.assertSubdivScHolidayName(name, range(2004, 2050))
+        self.assertSubdivScHolidayName(name, range(2004, self.end_year))
         self.assertNoSubdivScHolidayName(name, range(1995, 2004))
         self.assertNoHolidayName(name)
 
@@ -514,36 +572,46 @@ class TestBrazil(CommonCountryTests, TestCase):
             "2023-11-26",
             "2024-12-01",
         )
-        self.assertSubdivScHolidayName(name, range(1996, 2050))
+        self.assertSubdivScHolidayName(name, range(1996, self.end_year))
         self.assertNoSubdivScHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
     def test_se_holidays(self):
         name = "Emancipação política de Sergipe"
-        self.assertSubdivSeHolidayName(name, (f"{year}-07-08" for year in range(1996, 2050)))
+        self.assertSubdivSeHolidayName(
+            name, (f"{year}-07-08" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivSeHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
     def test_sp_holidays(self):
         name = "Revolução Constitucionalista"
-        self.assertSubdivSpHolidayName(name, (f"{year}-07-09" for year in range(1997, 2050)))
+        self.assertSubdivSpHolidayName(
+            name, (f"{year}-07-09" for year in range(1997, self.end_year))
+        )
         self.assertNoSubdivSpHolidayName(name, 1995, 1996)
         self.assertNoHolidayName(name)
 
     def test_to_holidays(self):
         name = "Dia da Autonomia"
-        self.assertSubdivToHolidayName(name, (f"{year}-03-18" for year in range(1998, 2050)))
+        self.assertSubdivToHolidayName(
+            name, (f"{year}-03-18" for year in range(1998, self.end_year))
+        )
         self.assertNoSubdivToHoliday(f"{year}-03-18" for year in range(1996, 1998))
         self.assertNoSubdivToHolidayName(name, range(1995, 1998))
         self.assertNoHolidayName(name)
 
         name = "Nossa Senhora da Natividade"
-        self.assertSubdivToHolidayName(name, (f"{year}-09-08" for year in range(1996, 2050)))
+        self.assertSubdivToHolidayName(
+            name, (f"{year}-09-08" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivToHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 
         name = "Criação do Estado"
-        self.assertSubdivToHolidayName(name, (f"{year}-10-05" for year in range(1996, 2050)))
+        self.assertSubdivToHolidayName(
+            name, (f"{year}-10-05" for year in range(1996, self.end_year))
+        )
         self.assertNoSubdivToHolidayName(name, 1995)
         self.assertNoHolidayName(name)
 

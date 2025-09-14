@@ -26,7 +26,7 @@ class TestBulgaria(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(
-            Bulgaria(categories=Bulgaria.supported_categories, years=BG.start_year - 1)
+            Bulgaria(categories=Bulgaria.supported_categories, years=self.start_year - 1)
         )
 
     def test_new_years_day(self):

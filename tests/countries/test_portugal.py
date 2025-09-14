@@ -125,7 +125,7 @@ class TestPortugal(CommonCountryTests, TestCase):
             "2022-06-06",
             "2023-05-29",
         )
-        self.assertSubdiv20HolidayName(name, range(1981, 2050))
+        self.assertSubdiv20HolidayName(name, range(1981, self.end_year))
         self.assertNoSubdiv20HolidayName(name, range(1910, 1981))
         self.assertNoHolidayName(name)
 
@@ -133,16 +133,20 @@ class TestPortugal(CommonCountryTests, TestCase):
         name_1979 = "Dia da Região Autónoma da Madeira"
         name_1989 = "Dia da Região Autónoma da Madeira e das Comunidades Madeirenses"
         self.assertSubdiv30HolidayName(name_1979, (f"{year}-07-01" for year in range(1979, 1989)))
-        self.assertSubdiv30HolidayName(name_1989, (f"{year}-07-01" for year in range(1989, 2050)))
-        self.assertNoSubdiv30HolidayName(name_1979, range(1910, 1979), range(1989, 2050))
+        self.assertSubdiv30HolidayName(
+            name_1989, (f"{year}-07-01" for year in range(1989, self.end_year))
+        )
+        self.assertNoSubdiv30HolidayName(name_1979, range(1910, 1979), range(1989, self.end_year))
         self.assertNoSubdiv30HolidayName(name_1989, range(1910, 1989))
         self.assertNoHolidayName(name_1979)
         self.assertNoHolidayName(name_1989)
 
     def test_primeira_oitava(self):
         name = "Primeira Oitava"
-        self.assertSubdiv30HolidayName(name, (f"{year}-12-26" for year in range(2002, 2050)))
-        self.assertNoSubdiv30HolidayName(name, range(PT.start_year, 2002))
+        self.assertSubdiv30HolidayName(
+            name, (f"{year}-12-26" for year in range(2002, self.end_year))
+        )
+        self.assertNoSubdiv30HolidayName(name, range(self.start_year, 2002))
         self.assertNoHolidayName(name)
 
     def test_optional_holidays(self):
@@ -183,39 +187,43 @@ class TestPortugal(CommonCountryTests, TestCase):
             "2022-06-16",
             "2023-06-08",
         )
-        self.assertHolidayName(name, range(PT.start_year, 2013), range(2016, 2050))
+        self.assertHolidayName(name, range(self.start_year, 2013), range(2016, self.end_year))
         self.assertNoHolidayName(name, range(2013, 2016))
 
     def test_republic_day(self):
         name = "Implantação da República"
         self.assertHolidayName(
-            name, (f"{year}-10-05" for year in (*range(1910, 2013), *range(2016, 2050)))
+            name, (f"{year}-10-05" for year in (*range(1910, 2013), *range(2016, self.end_year)))
         )
-        self.assertNoHolidayName(name, range(PT.start_year, 1910), range(2013, 2016))
+        self.assertNoHolidayName(name, range(self.start_year, 1910), range(2013, 2016))
 
     def test_all_saints_day(self):
         name = "Dia de Todos os Santos"
         self.assertHolidayName(
-            name, (f"{year}-11-01" for year in (*range(PT.start_year, 2013), *range(2016, 2050)))
+            name,
+            (
+                f"{year}-11-01"
+                for year in (*range(self.start_year, 2013), *range(2016, self.end_year))
+            ),
         )
         self.assertNoHolidayName(name, range(2013, 2016))
 
     def test_restoration_of_independence_day(self):
         name = "Restauração da Independência"
         self.assertHolidayName(
-            name, (f"{year}-12-01" for year in (*range(1823, 2013), *range(2016, 2050)))
+            name, (f"{year}-12-01" for year in (*range(1823, 2013), *range(2016, self.end_year)))
         )
-        self.assertNoHolidayName(name, range(PT.start_year, 1823), range(2013, 2016))
+        self.assertNoHolidayName(name, range(self.start_year, 1823), range(2013, 2016))
 
     def test_freedom_day(self):
         name = "Dia da Liberdade"
-        self.assertHolidayName(name, (f"{year}-04-25" for year in range(1974, 2050)))
-        self.assertNoHolidayName(name, range(PT.start_year, 1974))
+        self.assertHolidayName(name, (f"{year}-04-25" for year in range(1974, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1974))
 
     def test_labor_day(self):
         name = "Dia do Trabalhador"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1974, 2050)))
-        self.assertNoHolidayName(name, range(PT.start_year, 1974))
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1974, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1974))
 
     def test_portugal_day(self):
         name_1911 = "Dia de Portugal"
@@ -225,12 +233,14 @@ class TestPortugal(CommonCountryTests, TestCase):
             name_1911, (f"{year}-06-10" for year in (*range(1911, 1933), *range(1974, 1978)))
         )
         self.assertHolidayName(name_1933, (f"{year}-06-10" for year in range(1933, 1974)))
-        self.assertHolidayName(name_1978, (f"{year}-06-10" for year in range(1978, 2050)))
+        self.assertHolidayName(name_1978, (f"{year}-06-10" for year in range(1978, self.end_year)))
         self.assertNoHolidayName(
-            name_1911, range(PT.start_year, 1911), range(1933, 1974), range(1978, 2050)
+            name_1911, range(self.start_year, 1911), range(1933, 1974), range(1978, self.end_year)
         )
-        self.assertNoHolidayName(name_1933, range(PT.start_year, 1933), range(1974, 2050))
-        self.assertNoHolidayName(name_1978, range(PT.start_year, 1978))
+        self.assertNoHolidayName(
+            name_1933, range(self.start_year, 1933), range(1974, self.end_year)
+        )
+        self.assertNoHolidayName(name_1978, range(self.start_year, 1978))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

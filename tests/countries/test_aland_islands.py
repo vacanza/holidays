@@ -26,13 +26,13 @@ class TestAland(CommonCountryTests, TestCase):
         self.assertAliases(HolidaysAX, AlandIslands, AX, ALA)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(HolidaysAX(categories=(PUBLIC, WORKDAY), years=AX.start_year - 1))
+        self.assertNoHolidays(HolidaysAX(categories=(PUBLIC, WORKDAY), years=self.start_year - 1))
         self.assertNoHolidays(HolidaysAX(categories=UNOFFICIAL, years=1949))
 
     def test_alands_autonomy_day(self):
         name = "Ahvenanmaan itsehallintopäivä"
-        self.assertHolidayName(name, (f"{year}-06-09" for year in range(1993, 2050)))
-        self.assertNoHolidayName(name, range(AX.start_year, 1993))
+        self.assertHolidayName(name, (f"{year}-06-09" for year in range(1993, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1993))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

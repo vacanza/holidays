@@ -25,7 +25,7 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
         self.assertAliases(ChristmasIsland, CX, CXR)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(ChristmasIsland(years=CX.start_year - 1))
+        self.assertNoHolidays(ChristmasIsland(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday("2022-09-22")
@@ -58,7 +58,7 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
             "2025-01-29",
             "2025-01-30",
         )
-        self.assertHolidayName(name, range(CX.start_year, 2020), range(2021, 2050))
+        self.assertHolidayName(name, range(self.start_year, 2020), range(2021, self.end_year))
         obs_dt = (
             "2018-02-19",
             "2020-01-28",

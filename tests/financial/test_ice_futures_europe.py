@@ -25,7 +25,7 @@ class TestICEFuturesEurope(CommonFinancialTests, TestCase):
         self.assertAliases(ICEFuturesEurope, IFEU)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(ICEFuturesEurope(years=IFEU.start_year - 1))
+        self.assertNoHolidays(ICEFuturesEurope(years=self.start_year - 1))
 
     def test_2021(self):
         self.assertHolidays(

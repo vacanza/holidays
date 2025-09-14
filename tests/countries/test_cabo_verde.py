@@ -27,7 +27,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(
-            CaboVerde(categories=CaboVerde.supported_categories, years=CV.start_year - 1)
+            CaboVerde(categories=CaboVerde.supported_categories, years=self.start_year - 1)
         )
 
     def test_new_years_day(self):
@@ -35,8 +35,8 @@ class TestCapeVerde(CommonCountryTests, TestCase):
 
     def test_democracy_and_freedom_day(self):
         name = "Dia da Liberdade e da Democracia"
-        self.assertHolidayName(name, (f"{year}-01-13" for year in range(2000, 2050)))
-        self.assertNoHolidayName(name, range(CV.start_year, 2000))
+        self.assertHolidayName(name, (f"{year}-01-13" for year in range(2000, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2000))
 
     def test_heroes_day(self):
         self.assertHolidayName(
@@ -88,8 +88,8 @@ class TestCapeVerde(CommonCountryTests, TestCase):
 
     def test_international_childrens_day(self):
         name = "Dia Mundial da Criança"
-        self.assertHolidayName(name, (f"{year}-06-01" for year in range(2005, 2050)))
-        self.assertNoHolidayName(name, range(CV.start_year, 2005))
+        self.assertHolidayName(name, (f"{year}-06-01" for year in range(2005, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2005))
 
     def test_independence_day(self):
         self.assertHolidayName(
@@ -155,9 +155,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "BR":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-06-24" for year in range(1983, 2050))
+                    name, holidays, (f"{year}-06-24" for year in range(1983, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -167,9 +167,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "BV":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-07-04" for year in range(1983, 2050))
+                    name, holidays, (f"{year}-07-04" for year in range(1983, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -179,9 +179,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "CA":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-11-25" for year in range(1982, 2050))
+                    name, holidays, (f"{year}-11-25" for year in range(1982, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1982))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1982))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -191,9 +191,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "CF":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-11-25" for year in range(2005, 2050))
+                    name, holidays, (f"{year}-11-25" for year in range(2005, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 2005))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2005))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -203,9 +203,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "CR":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-07-25" for year in range(1983, 2050))
+                    name, holidays, (f"{year}-07-25" for year in range(1983, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -215,9 +215,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "MA":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-09-08" for year in range(1983, 2050))
+                    name, holidays, (f"{year}-09-08" for year in range(1983, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -227,9 +227,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "MO":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-08-15" for year in range(1992, 2050))
+                    name, holidays, (f"{year}-08-15" for year in range(1992, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1992))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1992))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -239,9 +239,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv in {"PA", "PN", "RG"}:
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-01-17" for year in range(1983, 2050))
+                    name, holidays, (f"{year}-01-17" for year in range(1983, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -251,9 +251,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "PA":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-06-13" for year in range(1983, 2050))
+                    name, holidays, (f"{year}-06-13" for year in range(1983, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -263,9 +263,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "PN":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-09-02" for year in range(1983, 2050))
+                    name, holidays, (f"{year}-09-02" for year in range(1983, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -275,9 +275,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "PR":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-05-19" for year in range(1983, 2050))
+                    name, holidays, (f"{year}-05-19" for year in range(1983, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -287,9 +287,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "RB":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-12-06" for year in range(2005, 2050))
+                    name, holidays, (f"{year}-12-06" for year in range(2005, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 2005))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2005))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -299,9 +299,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "RG":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-05-07" for year in range(1983, 2050))
+                    name, holidays, (f"{year}-05-07" for year in range(1983, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -311,9 +311,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "RS":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-01-31" for year in range(2006, 2050))
+                    name, holidays, (f"{year}-01-31" for year in range(2006, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 2006))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2006))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -323,9 +323,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "SD":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-03-13" for year in range(1994, 2050))
+                    name, holidays, (f"{year}-03-13" for year in range(1994, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1994))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1994))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -335,9 +335,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "SF":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-05-01" for year in range(1992, 2050))
+                    name, holidays, (f"{year}-05-01" for year in range(1992, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1992))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1992))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -347,9 +347,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "SL":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-09-15" for year in range(1983, 2050))
+                    name, holidays, (f"{year}-09-15" for year in range(1983, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -359,9 +359,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "SM":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-09-29" for year in range(1997, 2050))
+                    name, holidays, (f"{year}-09-29" for year in range(1997, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1997))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1997))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -371,9 +371,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "SO":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-05-09" for year in range(2005, 2050))
+                    name, holidays, (f"{year}-05-09" for year in range(2005, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 2005))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2005))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -383,9 +383,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "SS":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-07-19" for year in range(2005, 2050))
+                    name, holidays, (f"{year}-07-19" for year in range(2005, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 2005))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2005))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -395,9 +395,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "SV":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-01-22" for year in range(1983, 2050))
+                    name, holidays, (f"{year}-01-22" for year in range(1983, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -416,8 +416,8 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                     "2024-02-13",
                     "2025-03-04",
                 )
-                self.assertHolidayName(name, holidays, range(1983, 2050))
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
+                self.assertHolidayName(name, holidays, range(1983, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -427,9 +427,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "TA":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-01-15" for year in range(1983, 2050))
+                    name, holidays, (f"{year}-01-15" for year in range(1983, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 1983))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1983))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -439,9 +439,9 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "TS":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-08-02" for year in range(2005, 2050))
+                    name, holidays, (f"{year}-08-02" for year in range(2005, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(CV.start_year, 2005))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2005))
             else:
                 self.assertNoHolidayName(name, holidays)
 

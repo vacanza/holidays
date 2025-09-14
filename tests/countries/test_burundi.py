@@ -25,7 +25,7 @@ class TestBurundi(CommonCountryTests, TestCase):
         self.assertAliases(Burundi, BI, BDI)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Burundi(years=BI.start_year - 1))
+        self.assertNoHolidays(Burundi(years=self.start_year - 1))
 
     def test_new_year_day(self):
         name = "Jour de l'an"
@@ -40,8 +40,8 @@ class TestBurundi(CommonCountryTests, TestCase):
 
     def test_unity_day(self):
         name = "Fête de l'Unité"
-        self.assertHolidayName(name, (f"{year}-02-05" for year in range(1992, 2050)))
-        self.assertNoHolidayName(name, range(BI.start_year, 1992))
+        self.assertHolidayName(name, (f"{year}-02-05" for year in range(1992, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1992))
         obs_dt = (
             "2012-02-06",
             "2017-02-06",
@@ -52,8 +52,8 @@ class TestBurundi(CommonCountryTests, TestCase):
 
     def test_commemoration_of_the_assassination_of_president_cyprien_ntaryamira(self):
         name = "Commémoration de l'Assassinat du Président Cyprien Ntaryamira"
-        self.assertHolidayName(name, (f"{year}-04-06" for year in range(1995, 2050)))
-        self.assertNoHolidayName(name, range(BI.start_year, 1995))
+        self.assertHolidayName(name, (f"{year}-04-06" for year in range(1995, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1995))
         obs_dt = (
             "2008-04-07",
             "2014-04-07",
@@ -91,8 +91,8 @@ class TestBurundi(CommonCountryTests, TestCase):
             "Journée Nationale du Patriotisme et Commémoration de la Mort "
             "du Président Pierre Nkurunziza"
         )
-        self.assertHolidayName(name, (f"{year}-06-08" for year in range(2022, 2050)))
-        self.assertNoHolidayName(name, range(BI.start_year, 2022))
+        self.assertHolidayName(name, (f"{year}-06-08" for year in range(2022, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2022))
         obs_dt = (
             "2025-06-09",
             "2031-06-09",
@@ -136,8 +136,8 @@ class TestBurundi(CommonCountryTests, TestCase):
 
     def test_commemoration_of_the_assassination_of_president_melchior_ndadaye(self):
         name = "Commémoration de l'Assassinat du Président Melchior Ndadaye"
-        self.assertHolidayName(name, (f"{year}-10-21" for year in range(1994, 2050)))
-        self.assertNoHolidayName(name, range(BI.start_year, 1994))
+        self.assertHolidayName(name, (f"{year}-10-21" for year in range(1994, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1994))
         obs_dt = (
             "2012-10-22",
             "2018-10-22",

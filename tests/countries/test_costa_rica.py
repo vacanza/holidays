@@ -135,7 +135,9 @@ class TestCostaRica(CommonCountryTests, TestCase):
     def test_black_person_day(self):
         name = "Día de la Persona Negra y la Cultura Afrocostarricense"
         self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(name, (f"{year}-08-31" for year in range(2024, 2050)))
+        self.assertOptionalHolidayName(
+            name, (f"{year}-08-31" for year in range(2024, self.end_year))
+        )
         self.assertNoOptionalHoliday(f"{year}-08-31" for year in range(1980, 2021))
         self.assertNoOptionalHolidayName(name, range(1980, 2021))
 
@@ -180,7 +182,7 @@ class TestCostaRica(CommonCountryTests, TestCase):
             "2015-10-12",
             "2019-10-12",
         )
-        self.assertNoHolidayName(name, range(2020, 2050))
+        self.assertNoHolidayName(name, range(2020, self.end_year))
 
         dt = (
             "2010-10-18",
@@ -205,7 +207,9 @@ class TestCostaRica(CommonCountryTests, TestCase):
     def test_army_abolition_day(self):
         name = "Día de la Abolición del Ejército"
         self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(name, (f"{year}-12-01" for year in range(2023, 2050)))
+        self.assertOptionalHolidayName(
+            name, (f"{year}-12-01" for year in range(2023, self.end_year))
+        )
         self.assertNoOptionalHoliday("2019-12-01")
         self.assertNoOptionalHolidayName(name, range(1980, 2020))
 

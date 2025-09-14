@@ -25,7 +25,7 @@ class TestBrunei(CommonCountryTests, TestCase):
         self.assertAliases(Brunei, BN, BRN)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Brunei(years=BN.start_year - 1))
+        self.assertNoHolidays(Brunei(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(

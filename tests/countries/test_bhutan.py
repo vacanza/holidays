@@ -25,7 +25,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertAliases(Bhutan, BT, BTN)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Bhutan(years=BT.start_year - 1))
+        self.assertNoHolidays(Bhutan(years=self.start_year - 1))
 
     def test_birthday_anniversary_of_his_majesty_the_king(self):
         name = "Birth Anniversary of His Majesty the King"
@@ -62,7 +62,11 @@ class TestBhutan(CommonCountryTests, TestCase):
             name,
             (
                 f"{year}-01-02"
-                for year in (*range(BT.start_year, 2019), *range(2020, 2022), *range(2023, 2050))
+                for year in (
+                    *range(self.start_year, 2019),
+                    *range(2020, 2022),
+                    *range(2023, self.end_year),
+                )
             ),
             "2019-01-03",
             "2022-01-01",
@@ -130,7 +134,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-07-05",
         )
-        self.assertHolidayName(name, range(BT.start_year, 2027), range(2028, 2050))
+        self.assertHolidayName(name, range(self.start_year, 2027), range(2028, self.end_year))
 
     def test_first_sermon_lord_buddha(self):
         name = "First Sermon of Lord Buddha"
@@ -169,7 +173,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             "2024-10-12",
             "2025-10-02",
         )
-        self.assertHolidayName(name, (*range(BT.start_year, 2012), *range(2014, 2025)))
+        self.assertHolidayName(name, (*range(self.start_year, 2012), *range(2014, 2025)))
 
     def test_descending_day_lord_buddha(self):
         name = "Descending Day of Lord Buddha"

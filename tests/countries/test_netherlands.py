@@ -136,9 +136,10 @@ class TestNetherlands(CommonCountryTests, TestCase):
             "1991-05-05",
         )
 
-        opt_holidays = Netherlands(categories=OPTIONAL, years=range(1980, 2050))
-        self.assertHolidayName(name, opt_holidays, (f"{year}-05-05" for year in range(1990, 2050)))
-        self.assertNoHolidayName(name, Netherlands(categories=OPTIONAL, years=(1949, 1971, 1989)))
+        self.assertOptionalHolidayName(
+            name, (f"{year}-05-05" for year in range(1990, self.end_year))
+        )
+        self.assertNoOptionalHolidayName(name, 1949, 1971, 1989)
 
     def test_2017(self):
         self.assertHolidays(

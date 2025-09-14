@@ -25,7 +25,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         self.assertAliases(BonaireSintEustatiusAndSaba, BQ, BES)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(BonaireSintEustatiusAndSaba(years=BQ.start_year - 1))
+        self.assertNoHolidays(BonaireSintEustatiusAndSaba(years=self.start_year - 1))
 
     def test_new_years_day(self):
         self.assertHolidayName("Nieuwjaarsdag", (f"{year}-01-01" for year in self.full_range))
@@ -73,9 +73,9 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         name_queen = "Koninginnedag"
         name_king = "Koningsdag"
         self.assertHolidayName(
-            name_queen, (f"{year}-04-30" for year in range(BQ.start_year, 2014))
+            name_queen, (f"{year}-04-30" for year in range(self.start_year, 2014))
         )
-        self.assertNoHolidayName(name_queen, range(2014, 2050))
+        self.assertNoHolidayName(name_queen, range(2014, self.end_year))
         self.assertHolidayName(
             name_king,
             "2014-04-26",
@@ -91,8 +91,8 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             "2014-04-27",
             "2025-04-27",
         )
-        self.assertHolidayName(name_king, range(2014, 2050))
-        self.assertNoHolidayName(name_king, range(BQ.start_year, 2014))
+        self.assertHolidayName(name_king, range(2014, self.end_year))
+        self.assertNoHolidayName(name_king, range(self.start_year, 2014))
 
     def test_labor_day(self):
         self.assertHolidayName("Dag van de Arbeid", (f"{year}-05-01" for year in self.full_range))
@@ -136,9 +136,9 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "BON":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-04-30" for year in range(2020, 2050))
+                    name, holidays, (f"{year}-04-30" for year in range(2020, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(BQ.start_year, 2020))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2020))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -201,7 +201,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "STA":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-07-01" for year in range(2022, 2050))
+                    name, holidays, (f"{year}-07-01" for year in range(2022, self.end_year))
                 )
             else:
                 self.assertNoHolidayName(name, holidays)

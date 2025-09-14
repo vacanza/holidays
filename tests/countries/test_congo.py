@@ -25,7 +25,7 @@ class TestCongo(CommonCountryTests, TestCase):
         self.assertAliases(Congo, CG, COG)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Congo(years=CG.start_year - 1))
+        self.assertNoHolidays(Congo(years=self.start_year - 1))
 
     def test_new_years_day(self):
         self.assertHolidayName("Jour de l'An", (f"{year}-01-01" for year in self.full_range))
@@ -85,8 +85,8 @@ class TestCongo(CommonCountryTests, TestCase):
 
     def test_republic_day(self):
         name = "Jour de la République"
-        self.assertHolidayName(name, (f"{year}-11-28" for year in range(2010, 2050)))
-        self.assertNoHolidayName(name, range(CG.start_year, 2010))
+        self.assertHolidayName(name, (f"{year}-11-28" for year in range(2010, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2010))
 
     def test_christmas_day(self):
         self.assertHolidayName("Noël", (f"{year}-12-25" for year in self.full_range))

@@ -25,7 +25,7 @@ class TestBotswana(CommonCountryTests, TestCase):
         self.assertAliases(Botswana, BW, BWA)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Botswana(years=BW.start_year - 1))
+        self.assertNoHolidays(Botswana(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday("2019-07-02")

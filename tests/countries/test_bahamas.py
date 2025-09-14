@@ -25,7 +25,7 @@ class TestBahamas(CommonCountryTests, TestCase):
         self.assertAliases(Bahamas, BS, BHS)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Bahamas(years=BS.start_year - 1))
+        self.assertNoHolidays(Bahamas(years=self.start_year - 1))
 
     def test_special_public_holidays(self):
         self.assertHoliday("2022-09-19")

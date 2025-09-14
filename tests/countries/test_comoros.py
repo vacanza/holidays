@@ -25,7 +25,7 @@ class TestComoros(CommonCountryTests, TestCase):
         self.assertAliases(Comoros, KM, COM)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Comoros(years=KM.start_year - 1))
+        self.assertNoHolidays(Comoros(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHolidayName("National Holiday", "2024-04-13")
@@ -47,8 +47,8 @@ class TestComoros(CommonCountryTests, TestCase):
 
     def test_maore_day(self):
         name = "Maore Day"
-        self.assertNoHolidayName(name, range(KM.start_year, 2006))
-        self.assertHolidayName(name, (f"{year}-11-12" for year in range(2006, 2050)))
+        self.assertNoHolidayName(name, range(self.start_year, 2006))
+        self.assertHolidayName(name, (f"{year}-11-12" for year in range(2006, self.end_year)))
 
     def test_christmas_day(self):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in self.full_range))

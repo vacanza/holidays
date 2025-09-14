@@ -25,7 +25,7 @@ class TestCuba(CommonCountryTests, TestCase):
         self.assertAliases(Cuba, CU, CUB)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Cuba(years=CU.start_year - 1))
+        self.assertNoHolidays(Cuba(years=self.start_year - 1))
 
     def test_liberation_day(self):
         name = "Triunfo de la Revolución"
@@ -37,13 +37,13 @@ class TestCuba(CommonCountryTests, TestCase):
             "2006-01-02",
         )
         self.assertHolidayName(name_observed, dt)
-        self.assertNoHolidayName(name_observed, range(2014, 2050))
+        self.assertNoHolidayName(name_observed, range(2014, self.end_year))
         self.assertNoNonObservedHoliday(dt)
 
     def test_victory_day(self):
         name = "Día de la Victoria"
-        self.assertHolidayName(name, (f"{year}-01-02" for year in range(2008, 2050)))
-        self.assertNoHolidayName(name, range(CU.start_year, 2008))
+        self.assertHolidayName(name, (f"{year}-01-02" for year in range(2008, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2008))
 
     def test_good_friday(self):
         name = "Viernes Santo"
@@ -56,20 +56,24 @@ class TestCuba(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(2012, 2050))
-        self.assertNoHolidayName(name, range(CU.start_year, 2012))
+        self.assertHolidayName(name, range(2012, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2012))
 
     def test_christmas_day(self):
         name = "Día de Navidad"
         self.assertHolidayName(
-            name, (f"{year}-12-25" for year in (*range(CU.start_year, 1969), *range(1997, 2050)))
+            name,
+            (
+                f"{year}-12-25"
+                for year in (*range(self.start_year, 1969), *range(1997, self.end_year))
+            ),
         )
         self.assertNoHolidayName(name, range(1969, 1997))
 
     def test_new_years_eve(self):
         name = "Fiesta de Fin de Año"
-        self.assertHolidayName(name, (f"{year}-12-31" for year in range(2007, 2050)))
-        self.assertNoHolidayName(name, range(CU.start_year, 2007))
+        self.assertHolidayName(name, (f"{year}-12-31" for year in range(2007, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2007))
 
     def test_international_workers_day(self):
         name = "Día Internacional de los Trabajadores"

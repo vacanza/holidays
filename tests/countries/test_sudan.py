@@ -25,24 +25,32 @@ class TestSudan(CommonCountryTests, TestCase):
         self.assertAliases(Sudan, SD, SDN)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Sudan(years=SD.start_year - 1))
+        self.assertNoHolidays(Sudan(years=self.start_year - 1))
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "عيد الإستقلال", (f"{year}-01-01" for year in range(SD.start_year, 2050))
+            "عيد الإستقلال", (f"{year}-01-01" for year in range(self.start_year, self.end_year))
         )
 
     def test_coptic_christmas(self):
         name = "عيد الميلاد المجيد"
         self.assertHolidayName(
-            name, (f"{year}-01-07" for year in (*range(SD.start_year, 2011), *range(2019, 2050)))
+            name,
+            (
+                f"{year}-01-07"
+                for year in (*range(self.start_year, 2011), *range(2019, self.end_year))
+            ),
         )
         self.assertNoHolidayName(name, range(2011, 2019))
 
     def test_christmas_day(self):
         name = "عيد الميلاد"
         self.assertHolidayName(
-            name, (f"{year}-12-25" for year in (*range(SD.start_year, 2011), *range(2019, 2050)))
+            name,
+            (
+                f"{year}-12-25"
+                for year in (*range(self.start_year, 2011), *range(2019, self.end_year))
+            ),
         )
         self.assertNoHolidayName(name, range(2011, 2019))
 
@@ -58,7 +66,7 @@ class TestSudan(CommonCountryTests, TestCase):
             "2024-05-05",
             "2025-04-20",
         )
-        self.assertHolidayName(name, range(SD.start_year, 2011), range(2019, 2050))
+        self.assertHolidayName(name, range(self.start_year, 2011), range(2019, self.end_year))
         self.assertNoHolidayName(name, range(2011, 2019))
 
     def test_islamic_new_year(self):
@@ -72,7 +80,7 @@ class TestSudan(CommonCountryTests, TestCase):
             "2024-07-07",
             "2025-06-26",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, range(SD.start_year, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, range(self.start_year, self.end_year))
 
     def test_prophets_birthday(self):
         name = "المولد النبوي الشريف"
@@ -85,7 +93,7 @@ class TestSudan(CommonCountryTests, TestCase):
             "2024-09-15",
             "2025-09-04",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, range(SD.start_year, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, range(self.start_year, self.end_year))
 
     def test_eid_al_fitr(self):
         name = "عيد الفطر المبارك"
@@ -98,11 +106,13 @@ class TestSudan(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-30",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, range(SD.start_year, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, range(self.start_year, self.end_year))
         self.assertIslamicNoEstimatedHolidayNameCount(
-            name, 3, set(range(SD.start_year, 2020)) - {2000}
+            name, 3, set(range(self.start_year, 2020)) - {2000}
         )
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 4, set(range(2020, 2050)) - {2033})
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 4, set(range(2020, self.end_year)) - {2033}
+        )
 
     def test_eid_al_adha(self):
         name = "عيد الأضحى المبارك"
@@ -115,11 +125,11 @@ class TestSudan(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-06",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, range(SD.start_year, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, range(self.start_year, self.end_year))
         self.assertIslamicNoEstimatedHolidayNameCount(
             name,
             5,
-            set(range(SD.start_year, 2050)) - {2006, 2007, 2039},
+            set(range(self.start_year, self.end_year)) - {2006, 2007, 2039},
         )
 
     def test_l10n_default(self):

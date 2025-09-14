@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT
 from holidays.countries.saint_helena_ascension_and_tristan_da_cunha import (
     SaintHelenaAscensionAndTristanDaCunha,
     SH,
@@ -25,18 +24,12 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(SaintHelenaAscensionAndTristanDaCunha)
-        cls.subdiv_government_holidays = {
-            subdiv: SaintHelenaAscensionAndTristanDaCunha(
-                subdiv=subdiv, categories=GOVERNMENT, years=cls.full_range
-            )
-            for subdiv in SaintHelenaAscensionAndTristanDaCunha.subdivisions
-        }
 
     def test_country_aliases(self):
         self.assertAliases(SaintHelenaAscensionAndTristanDaCunha, SH, SHN)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(SaintHelenaAscensionAndTristanDaCunha(years=SH.start_year - 1))
+        self.assertNoHolidays(SaintHelenaAscensionAndTristanDaCunha(years=self.start_year - 1))
 
     def test_special_holidays(self):
         for dt, name in (
@@ -96,8 +89,8 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
             "2021-06-14",
             "2022-06-13",
         )
-        self.assertHolidayName(name, range(SH.start_year, 2023))
-        self.assertNoHolidayName(name, range(2023, 2050))
+        self.assertHolidayName(name, range(self.start_year, 2023))
+        self.assertNoHolidayName(name, range(2023, self.end_year))
 
     def test_kings_birthday(self):
         name = "King's Birthday"
@@ -107,8 +100,8 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
             "2024-11-15",
             "2025-11-14",
         )
-        self.assertHolidayName(name, range(2023, 2050))
-        self.assertNoHolidayName(name, range(SH.start_year, 2023))
+        self.assertHolidayName(name, range(2023, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2023))
 
     def test_christmas_day(self):
         name = "Christmas Day"

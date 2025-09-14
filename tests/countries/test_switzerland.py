@@ -27,8 +27,12 @@ class TestSwitzerland(CommonCountryTests, TestCase):
 
     def test_all_holidays_present(self):
         y_2018 = set()
-        for p in CH.subdivisions:
-            y_2018.update(CH(categories=CH.supported_categories, years=2018, subdiv=p).values())
+        for p in Switzerland.subdivisions:
+            y_2018.update(
+                Switzerland(
+                    categories=Switzerland.supported_categories, years=2018, subdiv=p
+                ).values()
+            )
         all_h = {  # Holidays names in their chronological order.
             "Neujahrstag",
             "Berchtoldstag",
@@ -206,7 +210,8 @@ class TestSwitzerland(CommonCountryTests, TestCase):
                 self.assertNoHoliday(holidays, known_good)
                 self.assertNoHolidayName(name, holidays)
 
-        self.assertNoHolidayName(name, CH(subdiv="GL", years=1834))
+        # TODO: Change to `self.assertNoSubdivGlHolidayName` later when full range is adopted.
+        self.assertNoHolidayName(name, Switzerland(subdiv="GL", years=1834))
 
     def test_good_friday(self):
         name = "Karfreitag"
@@ -232,7 +237,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
         )
         subdivs_that_dont = {"TI", "VS"}
         subdivs_optional = {"GR"}
-        subdivs_that_have = set(CH.subdivisions) - subdivs_that_dont - subdivs_optional
+        subdivs_that_have = set(Switzerland.subdivisions) - subdivs_that_dont - subdivs_optional
 
         self.assertNoHolidayName(name)
 
@@ -274,7 +279,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
         )
         subdivs_that_dont = {"NE", "SO"}
         subdivs_optional = {"FR", "NW", "OW", "VS", "ZG"}
-        subdivs_that_have = set(CH.subdivisions) - subdivs_that_dont - subdivs_optional
+        subdivs_that_have = set(Switzerland.subdivisions) - subdivs_that_dont - subdivs_optional
 
         self.assertNoHolidayName(name)
 
@@ -336,7 +341,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
 
         subdivs_that_dont = {"NE", "SO"}
         subdivs_optional = {"FR", "NW", "OW", "VS", "ZG"}
-        subdivs_that_have = set(CH.subdivisions) - subdivs_that_dont - subdivs_optional
+        subdivs_that_have = set(Switzerland.subdivisions) - subdivs_that_dont - subdivs_optional
 
         self.assertNoHolidayName(name)
 
@@ -566,7 +571,10 @@ class TestSwitzerland(CommonCountryTests, TestCase):
         }
         subdivs_optional = {"FR", "NW", "OW", "VS", "ZG"}
         subdivs_that_dont = (
-            set(CH.subdivisions) - subdivs_that_have - subdivs_optional - {"AI", "AR", "NE", "UR"}
+            set(Switzerland.subdivisions)
+            - subdivs_that_have
+            - subdivs_optional
+            - {"AI", "AR", "NE", "UR"}
         )
 
         self.assertNoHolidayName(name)

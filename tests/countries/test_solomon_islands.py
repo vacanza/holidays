@@ -26,7 +26,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         self.assertAliases(SolomonIslands, SB, SLB)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(SolomonIslands(years=SB.start_year - 1))
+        self.assertNoHolidays(SolomonIslands(years=self.start_year - 1))
 
     def test_special_holidays(self):
         name = "Public Holiday"
@@ -114,7 +114,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
 
     def test_queen_king_birthday(self):
         name_1 = "Queen's Birthday"
-        self.assertHolidayName(name_1, range(SB.start_year, 2023))
+        self.assertHolidayName(name_1, range(self.start_year, 2023))
         self.assertHolidayName(
             name_1,
             "2019-06-08",
@@ -131,7 +131,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
         name_2 = "King's Birthday"
-        self.assertHolidayName(name_2, range(2023, 2050))
+        self.assertHolidayName(name_2, range(2023, self.end_year))
         self.assertHolidayName(
             name_2,
             "2023-06-16",

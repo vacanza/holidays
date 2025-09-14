@@ -25,15 +25,15 @@ class TestChad(CommonCountryTests, TestCase):
         self.assertAliases(Chad, TD, TCD)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Chad(years=TD.start_year - 1))
+        self.assertNoHolidays(Chad(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday("2021-04-23")
 
     def test_freedom_and_democracy_day(self):
         name = "Freedom and Democracy Day"
-        self.assertHolidayName(name, (f"{year}-12-01" for year in range(1991, 2050)))
-        self.assertNoHolidayName(name, range(1961, 1991))
+        self.assertHolidayName(name, (f"{year}-12-01" for year in range(1991, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1991))
 
     def test_observed(self):
         dt = (

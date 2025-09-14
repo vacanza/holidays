@@ -27,7 +27,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
         self.assertAliases(NewYorkStockExchange, XNYS, NYSE)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(NewYorkStockExchange(years=XNYS.start_year - 1))
+        self.assertNoHolidays(NewYorkStockExchange(years=self.start_year - 1))
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -63,8 +63,8 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             "2024-01-15",
             "2025-01-20",
         )
-        self.assertHolidayName(name, range(1998, 2050))
-        self.assertNoHolidayName(name, range(XNYS.start_year, 1998))
+        self.assertHolidayName(name, range(1998, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1998))
 
     def test_lincolns_birthday(self):
         name = "Lincoln's Birthday"
@@ -74,7 +74,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             "1968-02-12",
         )
         self.assertNoHolidayName(
-            name, range(XNYS.start_year, 1896), range(1954, 1968), range(1969, 2050)
+            name, range(self.start_year, 1896), range(1954, 1968), range(1969, self.end_year)
         )
         obs_dt = (
             "1944-02-11",
@@ -87,7 +87,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
     def test_washingtons_birthday(self):
         name = "Washington's Birthday"
         self.assertNonObservedHolidayName(
-            name, (f"{year}-02-22" for year in range(XNYS.start_year, 1971))
+            name, (f"{year}-02-22" for year in range(self.start_year, 1971))
         )
         self.assertHolidayName(
             name,
@@ -98,7 +98,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             "2024-02-19",
             "2025-02-17",
         )
-        self.assertHolidayName(name, range(1971, 2050))
+        self.assertHolidayName(name, range(1971, self.end_year))
         obs_dt = (
             "1964-02-21",
             "1969-02-21",
@@ -136,8 +136,8 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             "2024-05-27",
             "2025-05-26",
         )
-        self.assertHolidayName(name, range(1971, 2050))
-        self.assertNoHolidayName(name, range(XNYS.start_year, 1873))
+        self.assertHolidayName(name, range(1971, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1873))
         obs_dt = (
             "1964-05-29",
             "1965-05-31",
@@ -149,7 +149,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
     def test_flag_day(self):
         name = "Flag Day"
         self.assertNonObservedHolidayName(name, (f"{year}-06-14" for year in range(1916, 1954)))
-        self.assertNoHolidayName(name, range(XNYS.start_year, 1916), range(1954, 2050))
+        self.assertNoHolidayName(name, range(self.start_year, 1916), range(1954, self.end_year))
         obs_dt = (
             "1947-06-13",
             "1952-06-13",
@@ -160,8 +160,10 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
 
     def test_juneteenth_national_independence_day(self):
         name = "Juneteenth National Independence Day"
-        self.assertNonObservedHolidayName(name, (f"{year}-06-19" for year in range(2022, 2050)))
-        self.assertNoHolidayName(name, range(XNYS.start_year, 2022))
+        self.assertNonObservedHolidayName(
+            name, (f"{year}-06-19" for year in range(2022, self.end_year))
+        )
+        self.assertNoHolidayName(name, range(self.start_year, 2022))
         obs_dt = (
             "2022-06-20",
             "2027-06-18",
@@ -192,13 +194,13 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             "2024-09-02",
             "2025-09-01",
         )
-        self.assertHolidayName(name, range(1887, 2050))
-        self.assertNoHolidayName(name, range(XNYS.start_year, 1887))
+        self.assertHolidayName(name, range(1887, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1887))
 
     def test_columbus_day(self):
         name = "Columbus Day"
         self.assertNonObservedHolidayName(name, (f"{year}-10-12" for year in range(1909, 1954)))
-        self.assertNoHolidayName(name, range(XNYS.start_year, 1909), range(1954, 2050))
+        self.assertNoHolidayName(name, range(self.start_year, 1909), range(1954, self.end_year))
         obs_dt = (
             "1946-10-11",
             "1947-10-13",
@@ -250,10 +252,10 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
         )
         self.assertNoHolidayName(
             name,
-            range(XNYS.start_year, 1918),
+            range(self.start_year, 1918),
             range(1919, 1921),
             range(1922, 1934),
-            range(1954, 2050),
+            range(1954, self.end_year),
         )
         obs_dt = (
             "1945-11-12",

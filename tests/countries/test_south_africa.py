@@ -25,7 +25,7 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         self.assertAliases(SouthAfrica, ZA, ZAF)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(SouthAfrica(years=ZA.start_year - 1))
+        self.assertNoHolidays(SouthAfrica(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -81,8 +81,8 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
 
     def test_human_rights_day(self):
         name = "Human Rights Day"
-        self.assertHolidayName(name, (f"{year}-03-21" for year in range(1995, 2050)))
-        self.assertNoHolidayName(name, range(ZA.start_year, 1995))
+        self.assertHolidayName(name, (f"{year}-03-21" for year in range(1995, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1995))
         dt = (
             "2010-03-22",
             "2021-03-22",
@@ -95,8 +95,12 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         name_1980 = "Founder's Day"
         self.assertHolidayName(name_1952, (f"{year}-04-06" for year in range(1952, 1974)))
         self.assertHolidayName(name_1980, (f"{year}-04-06" for year in range(1980, 1995)))
-        self.assertNoHolidayName(name_1952, range(ZA.start_year, 1952), range(1975, 2050))
-        self.assertNoHolidayName(name_1980, range(ZA.start_year, 1980), range(1995, 2050))
+        self.assertNoHolidayName(
+            name_1952, range(self.start_year, 1952), range(1975, self.end_year)
+        )
+        self.assertNoHolidayName(
+            name_1980, range(self.start_year, 1980), range(1995, self.end_year)
+        )
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -120,8 +124,8 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
             "1978-03-27",
             "1979-04-16",
         )
-        self.assertHolidayName(name, range(ZA.start_year, 1980))
-        self.assertNoHolidayName(name, range(1980, 2050))
+        self.assertHolidayName(name, range(self.start_year, 1980))
+        self.assertNoHolidayName(name, range(1980, self.end_year))
 
     def test_family_day(self):
         name = "Family Day"
@@ -134,13 +138,13 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
             "2021-04-05",
             "2022-04-18",
         )
-        self.assertHolidayName(name, range(1980, 2050))
-        self.assertNoHolidayName(name, range(ZA.start_year, 1961), range(1974, 1980))
+        self.assertHolidayName(name, range(1980, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1961), range(1974, 1980))
 
     def test_freedom_day(self):
         name = "Freedom Day"
-        self.assertHolidayName(name, (f"{year}-04-27" for year in range(1995, 2050)))
-        self.assertNoHolidayName(name, range(ZA.start_year, 1995))
+        self.assertHolidayName(name, (f"{year}-04-27" for year in range(1995, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1995))
         dt = (
             "2008-04-28",
             "2014-04-28",
@@ -152,12 +156,12 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         name = "Workers' Day"
         self.assertHolidayName(
             name,
-            (f"{year}-05-01" for year in range(1995, 2050)),
+            (f"{year}-05-01" for year in range(1995, self.end_year)),
             "1987-05-01",
             "1988-05-06",
             "1989-05-05",
         )
-        self.assertNoHolidayName(name, range(ZA.start_year, 1987), range(1990, 1995))
+        self.assertNoHolidayName(name, range(self.start_year, 1987), range(1990, 1995))
         dt = (
             "2005-05-02",
             "2011-05-02",
@@ -169,8 +173,8 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
 
     def test_youth_day(self):
         name = "Youth Day"
-        self.assertHolidayName(name, (f"{year}-06-16" for year in range(1995, 2050)))
-        self.assertNoHolidayName(name, range(ZA.start_year, 1995))
+        self.assertHolidayName(name, (f"{year}-06-16" for year in range(1995, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1995))
         dt = (
             "2013-06-17",
             "2019-06-17",
@@ -180,8 +184,8 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
 
     def test_national_womens_day(self):
         name = "National Women's Day"
-        self.assertHolidayName(name, (f"{year}-08-09" for year in range(1995, 2050)))
-        self.assertNoHolidayName(name, range(ZA.start_year, 1995))
+        self.assertHolidayName(name, (f"{year}-08-09" for year in range(1995, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1995))
         dt = (
             "2009-08-10",
             "2015-08-10",
@@ -192,8 +196,8 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
 
     def test_heritage_day(self):
         name = "Heritage Day"
-        self.assertHolidayName(name, (f"{year}-09-24" for year in range(1995, 2050)))
-        self.assertNoHolidayName(name, range(ZA.start_year, 1995))
+        self.assertHolidayName(name, (f"{year}-09-24" for year in range(1995, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1995))
         dt = (
             "2006-09-25",
             "2017-09-25",
@@ -205,10 +209,14 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
     def test_republic_day(self):
         name_1910 = "Union Day"
         name_1961 = "Republic Day"
-        self.assertHolidayName(name_1910, (f"{year}-05-31" for year in range(ZA.start_year, 1961)))
+        self.assertHolidayName(
+            name_1910, (f"{year}-05-31" for year in range(self.start_year, 1961))
+        )
         self.assertHolidayName(name_1961, (f"{year}-05-31" for year in range(1961, 1994)))
-        self.assertNoHolidayName(name_1910, range(1961, 2050))
-        self.assertNoHolidayName(name_1961, range(ZA.start_year, 1961), range(1994, 2050))
+        self.assertNoHolidayName(name_1910, range(1961, self.end_year))
+        self.assertNoHolidayName(
+            name_1961, range(self.start_year, 1961), range(1994, self.end_year)
+        )
 
     def test_ascension_day(self):
         name = "Ascension Day"
@@ -222,13 +230,13 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
             "1990-05-24",
             "1993-05-20",
         )
-        self.assertHolidayName(name, range(ZA.start_year, 1994))
-        self.assertNoHolidayName(name, range(1994, 2050))
+        self.assertHolidayName(name, range(self.start_year, 1994))
+        self.assertNoHolidayName(name, range(1994, self.end_year))
 
     def test_kruger_day(self):
         name = "Kruger Day"
         self.assertHolidayName(name, (f"{year}-10-10" for year in range(1952, 1994)))
-        self.assertNoHolidayName(name, range(ZA.start_year, 1952), range(1994, 2050))
+        self.assertNoHolidayName(name, range(self.start_year, 1952), range(1994, self.end_year))
 
     def test_queens_birthday(self):
         name = "Queen's Birthday"
@@ -244,7 +252,7 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
             "1959-07-13",
             "1960-07-11",
         )
-        self.assertNoHolidayName(name, range(ZA.start_year, 1952), range(1961, 2050))
+        self.assertNoHolidayName(name, range(self.start_year, 1952), range(1961, self.end_year))
 
     def test_settlers_birthday(self):
         name = "Settlers' Day"
@@ -256,12 +264,12 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
             "1979-09-03",
         )
         self.assertHolidayName(name, range(1952, 1980))
-        self.assertNoHolidayName(name, range(ZA.start_year, 1952), range(1980, 2050))
+        self.assertNoHolidayName(name, range(self.start_year, 1952), range(1980, self.end_year))
 
     def test_empire_day(self):
         name = "Empire Day"
-        self.assertHolidayName(name, (f"{year}-05-24" for year in range(ZA.start_year, 1952)))
-        self.assertNoHolidayName(name, range(1952, 2050))
+        self.assertHolidayName(name, (f"{year}-05-24" for year in range(self.start_year, 1952)))
+        self.assertNoHolidayName(name, range(1952, self.end_year))
 
     def test_kings_birthday(self):
         name = "King's Birthday"
@@ -280,22 +288,28 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
             "1950-08-07",
             "1951-08-06",
         )
-        self.assertHolidayName(name, range(ZA.start_year, 1952))
-        self.assertNoHolidayName(name, range(1952, 2050))
+        self.assertHolidayName(name, range(self.start_year, 1952))
+        self.assertNoHolidayName(name, range(1952, self.end_year))
 
     def test_day_of_reconciliation(self):
         name_1910 = "Dingaan's Day"
         name_1952 = "Day of the Covenant"
         name_1980 = "Day of the Vow"
         name_1995 = "Day of Reconciliation"
-        self.assertHolidayName(name_1910, (f"{year}-12-16" for year in range(ZA.start_year, 1952)))
+        self.assertHolidayName(
+            name_1910, (f"{year}-12-16" for year in range(self.start_year, 1952))
+        )
         self.assertHolidayName(name_1952, (f"{year}-12-16" for year in range(1952, 1980)))
         self.assertHolidayName(name_1980, (f"{year}-12-16" for year in range(1980, 1995)))
-        self.assertHolidayName(name_1995, (f"{year}-12-16" for year in range(1995, 2050)))
-        self.assertNoHolidayName(name_1910, range(1952, 2050))
-        self.assertNoHolidayName(name_1952, range(ZA.start_year, 1952), range(1980, 2050))
-        self.assertNoHolidayName(name_1980, range(ZA.start_year, 1980), range(1995, 2050))
-        self.assertNoHolidayName(name_1995, range(ZA.start_year, 1995))
+        self.assertHolidayName(name_1995, (f"{year}-12-16" for year in range(1995, self.end_year)))
+        self.assertNoHolidayName(name_1910, range(1952, self.end_year))
+        self.assertNoHolidayName(
+            name_1952, range(self.start_year, 1952), range(1980, self.end_year)
+        )
+        self.assertNoHolidayName(
+            name_1980, range(self.start_year, 1980), range(1995, self.end_year)
+        )
+        self.assertNoHolidayName(name_1995, range(self.start_year, 1995))
         dt = (
             "2007-12-17",
             "2012-12-17",
@@ -310,10 +324,12 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
     def test_day_of_goodwill(self):
         name_1910 = "Boxing Day"
         name_1980 = "Day of Goodwill"
-        self.assertHolidayName(name_1910, (f"{year}-12-26" for year in range(ZA.start_year, 1980)))
-        self.assertHolidayName(name_1980, (f"{year}-12-26" for year in range(1980, 2050)))
-        self.assertNoHolidayName(name_1910, range(1980, 2050))
-        self.assertNoHolidayName(name_1980, range(ZA.start_year, 1980))
+        self.assertHolidayName(
+            name_1910, (f"{year}-12-26" for year in range(self.start_year, 1980))
+        )
+        self.assertHolidayName(name_1980, (f"{year}-12-26" for year in range(1980, self.end_year)))
+        self.assertNoHolidayName(name_1910, range(1980, self.end_year))
+        self.assertNoHolidayName(name_1980, range(self.start_year, 1980))
         dt = (
             "2010-12-27",
             "2021-12-27",

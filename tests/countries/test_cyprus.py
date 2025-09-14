@@ -26,7 +26,7 @@ class TestCyprus(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(
-            Cyprus(categories=Cyprus.supported_categories, years=CY.start_year - 1)
+            Cyprus(categories=Cyprus.supported_categories, years=self.start_year - 1)
         )
 
     def test_new_years_day(self):
@@ -150,8 +150,8 @@ class TestCyprus(CommonCountryTests, TestCase):
 
     def test_cyprus_independence_day(self):
         name = "Ημέρα της Κυπριακής Ανεξαρτησίας"
-        self.assertHolidayName(name, (f"{year}-10-01" for year in range(1979, 2050)))
-        self.assertNoHolidayName(name, range(CY.start_year, 1979))
+        self.assertHolidayName(name, (f"{year}-10-01" for year in range(1979, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1979))
 
     def test_ochi_day(self):
         self.assertHolidayName("Ημέρα του Όχι", (f"{year}-10-28" for year in self.full_range))

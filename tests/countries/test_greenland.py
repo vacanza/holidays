@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import OPTIONAL, PUBLIC
+from holidays.constants import OPTIONAL
 from holidays.countries.greenland import Greenland, GL, GRL
 from tests.common import CommonCountryTests
 
@@ -26,7 +26,9 @@ class TestGreenland(CommonCountryTests, TestCase):
         self.assertAliases(Greenland, GL, GRL)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Greenland(categories=(OPTIONAL, PUBLIC), years=1978))
+        self.assertNoHolidays(
+            Greenland(categories=Greenland.supported_categories, years=self.start_year - 1)
+        )
 
     def test_1982(self):
         self.assertHolidays(

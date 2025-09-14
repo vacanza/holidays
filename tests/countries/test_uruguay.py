@@ -26,7 +26,7 @@ class TestUruguay(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(
-            Uruguay(categories=Uruguay.supported_categories, years=UY.start_year - 1)
+            Uruguay(categories=Uruguay.supported_categories, years=self.start_year - 1)
         )
 
     def test_special_holidays(self):
@@ -46,36 +46,39 @@ class TestUruguay(CommonCountryTests, TestCase):
 
     def test_cry_of_asencio(self):
         name = "Grito de Asencio"
-        self.assertHolidayName(name, (f"{year}-02-28" for year in range(UY.start_year, 1934)))
-        self.assertNoHolidayName(name, range(1934, 2050))
+        self.assertHolidayName(name, (f"{year}-02-28" for year in range(self.start_year, 1934)))
+        self.assertNoHolidayName(name, range(1934, self.end_year))
 
     def test_labor_day(self):
         self.assertHolidayName(
             "Día de los Trabajadores",
-            (f"{year}-05-01" for year in (*range(UY.start_year, 1980), *range(1982, 2050))),
+            (
+                f"{year}-05-01"
+                for year in (*range(self.start_year, 1980), *range(1982, self.end_year))
+            ),
             "1980-05-05",
             "1981-05-04",
         )
 
     def test_spain_day(self):
         name = "Día de España"
-        self.assertHolidayName(name, (f"{year}-05-02" for year in range(UY.start_year, 1933)))
-        self.assertNoHolidayName(name, range(1933, 2050))
+        self.assertHolidayName(name, (f"{year}-05-02" for year in range(self.start_year, 1933)))
+        self.assertNoHolidayName(name, range(1933, self.end_year))
 
     def test_america_day(self):
         name = "Día de América"
-        self.assertHolidayName(name, (f"{year}-05-25" for year in range(UY.start_year, 1933)))
-        self.assertNoHolidayName(name, range(1933, 2050))
+        self.assertHolidayName(name, (f"{year}-05-25" for year in range(self.start_year, 1933)))
+        self.assertNoHolidayName(name, range(1933, self.end_year))
 
     def test_democracy_day(self):
         name = "Día de la Democracia"
-        self.assertHolidayName(name, (f"{year}-07-04" for year in range(UY.start_year, 1933)))
-        self.assertNoHolidayName(name, range(1933, 2050))
+        self.assertHolidayName(name, (f"{year}-07-04" for year in range(self.start_year, 1933)))
+        self.assertNoHolidayName(name, range(1933, self.end_year))
 
     def test_humanity_day(self):
         name = "Día de la Humanidad"
-        self.assertHolidayName(name, (f"{year}-07-14" for year in range(UY.start_year, 1933)))
-        self.assertNoHolidayName(name, range(1933, 2050))
+        self.assertHolidayName(name, (f"{year}-07-14" for year in range(self.start_year, 1933)))
+        self.assertNoHolidayName(name, range(1933, self.end_year))
 
     def test_constitution_day(self):
         self.assertHolidayName(
@@ -89,20 +92,20 @@ class TestUruguay(CommonCountryTests, TestCase):
 
     def test_italy_day(self):
         name = "Día de Italia"
-        self.assertHolidayName(name, (f"{year}-09-20" for year in range(UY.start_year, 1933)))
-        self.assertNoHolidayName(name, range(1933, 2050))
+        self.assertHolidayName(name, (f"{year}-09-20" for year in range(self.start_year, 1933)))
+        self.assertNoHolidayName(name, range(1933, self.end_year))
 
     def test_open_town_hall(self):
         name = "Cabildo Abierto"
-        self.assertHolidayName(name, (f"{year}-09-21" for year in range(UY.start_year, 1933)))
-        self.assertNoHolidayName(name, range(1933, 2050))
+        self.assertHolidayName(name, (f"{year}-09-21" for year in range(self.start_year, 1933)))
+        self.assertNoHolidayName(name, range(1933, self.end_year))
 
     def test_beaches_day(self):
         name = "Día de las Playas"
         self.assertHolidayName(
-            name, (f"{year}-12-08" for year in (*range(UY.start_year, 1933), *range(1936, 1980)))
+            name, (f"{year}-12-08" for year in (*range(self.start_year, 1933), *range(1936, 1980)))
         )
-        self.assertNoHolidayName(name, range(1933, 1936), range(1980, 2050))
+        self.assertNoHolidayName(name, range(1933, 1936), range(1980, self.end_year))
 
     def test_christmas(self):
         self.assertHolidayName("Día de la Familia", (f"{year}-12-25" for year in self.full_range))
@@ -138,7 +141,7 @@ class TestUruguay(CommonCountryTests, TestCase):
             name,
             (
                 f"{year}-04-19"
-                for year in (*range(UY.start_year, 1933), *range(1949, 1983), *range(1984, 1997))
+                for year in (*range(self.start_year, 1933), *range(1949, 1983), *range(1984, 1997))
             ),
         )
         self.assertBankHolidayName(
@@ -152,7 +155,7 @@ class TestUruguay(CommonCountryTests, TestCase):
             "2022-04-18",
             "2023-04-17",
         )
-        self.assertBankHolidayName(name, range(1949, 2050))
+        self.assertBankHolidayName(name, range(1949, self.end_year))
         self.assertNoBankHolidayName(name, range(1934, 1949))
         self.assertNoHolidayName(name)
 
@@ -185,7 +188,7 @@ class TestUruguay(CommonCountryTests, TestCase):
             name,
             (
                 f"{year}-05-18"
-                for year in (*range(UY.start_year, 1933), *range(1942, 1982), *range(1984, 1997))
+                for year in (*range(self.start_year, 1933), *range(1942, 1982), *range(1984, 1997))
             ),
         )
         self.assertBankHolidayName(
@@ -200,7 +203,7 @@ class TestUruguay(CommonCountryTests, TestCase):
             "2022-05-16",
             "2023-05-22",
         )
-        self.assertBankHolidayName(name, range(1942, 2050))
+        self.assertBankHolidayName(name, range(1942, self.end_year))
         self.assertNoBankHolidayName(name, range(1933, 1942))
         self.assertNoHolidayName(name)
 
@@ -211,11 +214,11 @@ class TestUruguay(CommonCountryTests, TestCase):
             (
                 f"{year}-06-19"
                 for year in (
-                    *range(UY.start_year, 1933),
+                    *range(self.start_year, 1933),
                     *range(1940, 1980),
                     *range(1982, 1997),
                     *range(1999, 2001),
-                    *range(2002, 2050),
+                    *range(2002, self.end_year),
                 )
             ),
         )
@@ -227,7 +230,7 @@ class TestUruguay(CommonCountryTests, TestCase):
             "1998-06-22",
             "2001-06-18",
         )
-        self.assertBankHolidayName(name, range(1940, 2050))
+        self.assertBankHolidayName(name, range(1940, self.end_year))
         self.assertNoBankHolidayName(name, range(1933, 1940))
         self.assertNoHolidayName(name)
 
@@ -238,7 +241,7 @@ class TestUruguay(CommonCountryTests, TestCase):
             name_1,
             (
                 f"{year}-10-12"
-                for year in (*range(UY.start_year, 1933), *range(1937, 1982), *range(1984, 1997))
+                for year in (*range(self.start_year, 1933), *range(1937, 1982), *range(1984, 1997))
             ),
         )
         self.assertBankHolidayName(
@@ -249,7 +252,7 @@ class TestUruguay(CommonCountryTests, TestCase):
             "2013-10-12",
         )
         self.assertBankHolidayName(name_1, range(1937, 2014))
-        self.assertNoBankHolidayName(name_1, range(1933, 1937), range(2014, 2050))
+        self.assertNoBankHolidayName(name_1, range(1933, 1937), range(2014, self.end_year))
         self.assertNoHolidayName(name_1)
 
         self.assertBankHolidayName(
@@ -262,8 +265,8 @@ class TestUruguay(CommonCountryTests, TestCase):
             "2022-10-10",
             "2023-10-16",
         )
-        self.assertBankHolidayName(name_2, range(2014, 2050))
-        self.assertNoBankHolidayName(name_2, range(UY.start_year, 2014))
+        self.assertBankHolidayName(name_2, range(2014, self.end_year))
+        self.assertNoBankHolidayName(name_2, range(self.start_year, 2014))
         self.assertNoHolidayName(name_2)
 
     def test_all_souls_day(self):
@@ -273,10 +276,10 @@ class TestUruguay(CommonCountryTests, TestCase):
             (
                 f"{year}-11-02"
                 for year in (
-                    *range(UY.start_year, 1933),
+                    *range(self.start_year, 1933),
                     *range(1938, 1982),
                     *range(1984, 1999),
-                    *range(2002, 2050),
+                    *range(2002, self.end_year),
                 )
             ),
         )
@@ -288,7 +291,7 @@ class TestUruguay(CommonCountryTests, TestCase):
             "2000-11-06",
             "2001-11-05",
         )
-        self.assertBankHolidayName(name, range(1938, 2050))
+        self.assertBankHolidayName(name, range(1938, self.end_year))
         self.assertNoBankHolidayName(name, range(1933, 1938))
         self.assertNoHolidayName(name)
 

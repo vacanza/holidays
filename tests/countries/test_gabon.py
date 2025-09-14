@@ -25,12 +25,12 @@ class TestGabon(CommonCountryTests, TestCase):
         self.assertAliases(Gabon, GA, GAB)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Gabon(years=GA.start_year - 1))
+        self.assertNoHolidays(Gabon(years=self.start_year - 1))
 
     def test_womens_rights_day(self):
         name = "Women's Rights Day"
-        self.assertHolidayName(name, (f"{year}-04-17" for year in range(2015, 2050)))
-        self.assertNoHolidayName(name, range(GA.start_year, 2015))
+        self.assertHolidayName(name, (f"{year}-04-17" for year in range(2015, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2015))
 
     def test_2022(self):
         self.assertHolidays(

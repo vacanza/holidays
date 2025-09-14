@@ -137,9 +137,14 @@ class TestCase:
         if years is None:
             # Default `self.full_range`
             if not hasattr(cls, "full_range"):
-                start_year = getattr(test_class, "start_year", 1950)
-                # end_year is fixed at 2050 for now due to IslamicHolidays support ending in 2077.
-                cls.full_range = range(start_year, 2050)
+                # `start_year` and `end_year` are used only if they're included directly in
+                # country/market entities, not inherited from `HolidayBase`.
+                cls.start_year = test_class.__dict__.get("start_year", 1950)
+                cls.end_year = test_class.__dict__.get("end_year", 2050)
+                cls.full_range = range(cls.start_year, cls.end_year)
+            else:
+                cls.start_year = cls.full_range.start
+                cls.end_year = cls.full_range.stop
             years = cls.full_range
 
         # Default `years_[insert]` to `years` to prevent redundant initialization.

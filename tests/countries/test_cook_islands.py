@@ -25,7 +25,7 @@ class TestCookIslands(CommonCountryTests, TestCase):
         self.assertAliases(CookIslands, CK, COK)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(CookIslands(years=CK.start_year - 1))
+        self.assertNoHolidays(CookIslands(years=self.start_year - 1))
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -109,8 +109,8 @@ class TestCookIslands(CommonCountryTests, TestCase):
             "2024-07-05",
             "2025-07-04",
         )
-        self.assertHolidayName(name, range(2012, 2050))
-        self.assertNoHolidayName(name, range(CK.start_year, 2012))
+        self.assertHolidayName(name, range(2012, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2012))
 
     def test_constitution_day(self):
         name = "Constitution Day"
@@ -166,8 +166,8 @@ class TestCookIslands(CommonCountryTests, TestCase):
 
     def test_penrhyn_gospel_day(self):
         name = "Penrhyn Gospel Day"
-        self.assertHolidayName(name, (f"{year}-03-13" for year in range(CK.start_year, 2012)))
-        self.assertNoHolidayName(name, range(2012, 2050))
+        self.assertHolidayName(name, (f"{year}-03-13" for year in range(self.start_year, 2012)))
+        self.assertNoHolidayName(name, range(2012, self.end_year))
         obs_dt = (
             "2004-03-15",
             "2005-03-14",
@@ -177,12 +177,12 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name_observed = f"{name} (observed)"
         self.assertHolidayName(name_observed, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-        self.assertNoHolidayName(name_observed, range(2012, 2050))
+        self.assertNoHolidayName(name_observed, range(2012, self.end_year))
 
     def test_palmerston_gospel_day(self):
         name = "Palmerston Gospel Day"
-        self.assertHolidayName(name, (f"{year}-05-25" for year in range(CK.start_year, 2012)))
-        self.assertNoHolidayName(name, range(2012, 2050))
+        self.assertHolidayName(name, (f"{year}-05-25" for year in range(self.start_year, 2012)))
+        self.assertNoHolidayName(name, range(2012, self.end_year))
         obs_dt = (
             "2002-05-27",
             "2003-05-26",
@@ -191,12 +191,12 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name_observed = f"{name} (observed)"
         self.assertHolidayName(name_observed, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-        self.assertNoHolidayName(name_observed, range(2012, 2050))
+        self.assertNoHolidayName(name_observed, range(2012, self.end_year))
 
     def test_mangaia_gospel_day(self):
         name = "Mangaia Gospel Day"
-        self.assertHolidayName(name, (f"{year}-06-15" for year in range(CK.start_year, 2012)))
-        self.assertNoHolidayName(name, range(2012, 2050))
+        self.assertHolidayName(name, (f"{year}-06-15" for year in range(self.start_year, 2012)))
+        self.assertNoHolidayName(name, range(2012, self.end_year))
         obs_dt = (
             "2002-06-17",
             "2003-06-16",
@@ -205,12 +205,12 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name_observed = f"{name} (observed)"
         self.assertHolidayName(name_observed, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-        self.assertNoHolidayName(name_observed, range(2012, 2050))
+        self.assertNoHolidayName(name_observed, range(2012, self.end_year))
 
     def test_atiu_gospel_day(self):
         name = "Atiu Gospel Day"
-        self.assertHolidayName(name, (f"{year}-07-20" for year in range(CK.start_year, 2012)))
-        self.assertNoHolidayName(name, range(2012, 2050))
+        self.assertHolidayName(name, (f"{year}-07-20" for year in range(self.start_year, 2012)))
+        self.assertNoHolidayName(name, range(2012, self.end_year))
         obs_dt = (
             "2002-07-22",
             "2003-07-21",
@@ -219,12 +219,12 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name_observed = f"{name} (observed)"
         self.assertHolidayName(name_observed, obs_dt)
         self.assertNoNonObservedHolidayName(name_observed, obs_dt)
-        self.assertNoHolidayName(name_observed, range(2012, 2050))
+        self.assertNoHolidayName(name_observed, range(2012, self.end_year))
 
     def test_mitiaro_gospel_day(self):
         name = "Mitiaro Gospel Day"
-        self.assertHolidayName(name, (f"{year}-07-21" for year in range(CK.start_year, 2012)))
-        self.assertNoHolidayName(name, range(2012, 2050))
+        self.assertHolidayName(name, (f"{year}-07-21" for year in range(self.start_year, 2012)))
+        self.assertNoHolidayName(name, range(2012, self.end_year))
         obs_dt = (
             "2001-07-23",
             "2002-07-22",
@@ -233,12 +233,12 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name_observed = f"{name} (observed)"
         self.assertHolidayName(name_observed, obs_dt)
         self.assertNoNonObservedHolidayName(name_observed, obs_dt)
-        self.assertNoHolidayName(name_observed, range(2012, 2050))
+        self.assertNoHolidayName(name_observed, range(2012, self.end_year))
 
     def test_mauke_gospel_day(self):
         name = "Mauke Gospel Day"
-        self.assertHolidayName(name, (f"{year}-07-23" for year in range(CK.start_year, 2012)))
-        self.assertNoHolidayName(name, range(2012, 2050))
+        self.assertHolidayName(name, (f"{year}-07-23" for year in range(self.start_year, 2012)))
+        self.assertNoHolidayName(name, range(2012, self.end_year))
         obs_dt = (
             "2000-07-24",
             "2005-07-26",
@@ -247,12 +247,12 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name_observed = f"{name} (observed)"
         self.assertHolidayName(name_observed, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-        self.assertNoHolidayName(name_observed, range(2012, 2050))
+        self.assertNoHolidayName(name_observed, range(2012, self.end_year))
 
     def test_rarotonga_gospel_day(self):
         name = "Rarotonga Gospel Day"
-        self.assertHolidayName(name, (f"{year}-07-25" for year in range(CK.start_year, 2012)))
-        self.assertNoHolidayName(name, range(2012, 2050))
+        self.assertHolidayName(name, (f"{year}-07-25" for year in range(self.start_year, 2012)))
+        self.assertNoHolidayName(name, range(2012, self.end_year))
         obs_dt = (
             "2004-07-26",
             "2009-07-27",
@@ -261,12 +261,12 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name_observed = f"{name} (observed)"
         self.assertHolidayName(name_observed, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-        self.assertNoHolidayName(name_observed, range(2012, 2050))
+        self.assertNoHolidayName(name_observed, range(2012, self.end_year))
 
     def test_manihiki_gospel_day(self):
         name = "Manihiki Gospel Day"
-        self.assertHolidayName(name, (f"{year}-08-08" for year in range(CK.start_year, 2012)))
-        self.assertNoHolidayName(name, range(2012, 2050))
+        self.assertHolidayName(name, (f"{year}-08-08" for year in range(self.start_year, 2012)))
+        self.assertNoHolidayName(name, range(2012, self.end_year))
         obs_dt = (
             "2004-08-09",
             "2009-08-10",
@@ -275,12 +275,12 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name_observed = f"{name} (observed)"
         self.assertHolidayName(name_observed, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-        self.assertNoHolidayName(name_observed, range(2012, 2050))
+        self.assertNoHolidayName(name_observed, range(2012, self.end_year))
 
     def test_rakahanga_gospel_day(self):
         name = "Rakahanga Gospel Day"
-        self.assertHolidayName(name, (f"{year}-08-15" for year in range(CK.start_year, 2012)))
-        self.assertNoHolidayName(name, range(2012, 2050))
+        self.assertHolidayName(name, (f"{year}-08-15" for year in range(self.start_year, 2012)))
+        self.assertNoHolidayName(name, range(2012, self.end_year))
         obs_dt = (
             "2004-08-16",
             "2009-08-17",
@@ -289,12 +289,12 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name_observed = f"{name} (observed)"
         self.assertHolidayName(name_observed, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-        self.assertNoHolidayName(name_observed, range(2012, 2050))
+        self.assertNoHolidayName(name_observed, range(2012, self.end_year))
 
     def test_aitutaki_gospel_day(self):
         name = "Aitutaki Gospel Day"
-        self.assertHolidayName(name, (f"{year}-10-27" for year in range(CK.start_year, 2012)))
-        self.assertNoHolidayName(name, range(2012, 2050))
+        self.assertHolidayName(name, (f"{year}-10-27" for year in range(self.start_year, 2012)))
+        self.assertNoHolidayName(name, range(2012, self.end_year))
         obs_dt = (
             "2001-10-29",
             "2002-10-28",
@@ -303,12 +303,12 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name_observed = f"{name} (observed)"
         self.assertHolidayName(name_observed, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-        self.assertNoHolidayName(name_observed, range(2012, 2050))
+        self.assertNoHolidayName(name_observed, range(2012, self.end_year))
 
     def test_pukapuka_gospel_day(self):
         name = "Pukapuka Gospel Day"
-        self.assertHolidayName(name, (f"{year}-12-08" for year in range(CK.start_year, 2012)))
-        self.assertNoHolidayName(name, range(2012, 2050))
+        self.assertHolidayName(name, (f"{year}-12-08" for year in range(self.start_year, 2012)))
+        self.assertNoHolidayName(name, range(2012, self.end_year))
         obs_dt = (
             "2001-12-10",
             "2002-12-09",
@@ -317,7 +317,7 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name_observed = f"{name} (observed)"
         self.assertHolidayName(name_observed, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-        self.assertNoHolidayName(name_observed, range(2012, 2050))
+        self.assertNoHolidayName(name_observed, range(2012, self.end_year))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

@@ -25,7 +25,7 @@ class TestSerbia(CommonCountryTests, TestCase):
         self.assertAliases(Serbia, RS, SRB)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Serbia(years=RS.start_year - 1))
+        self.assertNoHolidays(Serbia(years=self.start_year - 1))
 
     def test_new_years_day(self):
         name = "Нова година"

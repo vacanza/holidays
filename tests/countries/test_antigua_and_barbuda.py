@@ -25,7 +25,7 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
         self.assertAliases(AntiguaAndBarbuda, AG, ATG)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(AntiguaAndBarbuda(years=AG.start_year - 1))
+        self.assertNoHolidays(AntiguaAndBarbuda(years=self.start_year - 1))
 
     def test_special_holidays(self):
         name_day_after_general_election = "Day after the General Election"
@@ -108,8 +108,8 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
             "2004-07-05",
             "2005-07-04",
         )
-        self.assertHolidayName(name, range(AG.start_year, 2006))
-        self.assertNoHolidayName(name, range(2006, 2050))
+        self.assertHolidayName(name, range(self.start_year, 2006))
+        self.assertNoHolidayName(name, range(2006, self.end_year))
 
     def test_carnival_monday(self):
         name = "Carnival Monday"
@@ -133,8 +133,8 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
             "2024-08-06",
             "2025-08-05",
         )
-        self.assertHolidayName(name, range(2006, 2050))
-        self.assertNoHolidayName(name, range(AG.start_year, 2006))
+        self.assertHolidayName(name, range(2006, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2006))
 
     def test_independence_day(self):
         name = "Independence Day"
@@ -165,10 +165,10 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
             "2012-12-10",
             "2013-12-09",
         )
-        self.assertHolidayName(name_2, (f"{year}-12-09" for year in range(2014, 2050)))
-        self.assertNoHoliday(f"{year}-12-09" for year in range(AG.start_year, 2005))
-        self.assertNoHolidayName(name_1, range(AG.start_year, 2005), range(2014, 2050))
-        self.assertNoHolidayName(name_2, range(AG.start_year, 2014))
+        self.assertHolidayName(name_2, (f"{year}-12-09" for year in range(2014, self.end_year)))
+        self.assertNoHoliday(f"{year}-12-09" for year in range(self.start_year, 2005))
+        self.assertNoHolidayName(name_1, range(self.start_year, 2005), range(2014, self.end_year))
+        self.assertNoHolidayName(name_2, range(self.start_year, 2014))
 
         dt = ("2023-12-11",)
         self.assertHolidayName(f"{name_2} (observed)", dt)

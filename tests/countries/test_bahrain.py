@@ -25,7 +25,7 @@ class TestBahrain(CommonCountryTests, TestCase):
         self.assertAliases(Bahrain, BH, BAH)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Bahrain(years=BH.start_year - 1))
+        self.assertNoHolidays(Bahrain(years=self.start_year - 1))
 
     def test_new_years_day(self):
         name = "رأس السنة الميلادية"

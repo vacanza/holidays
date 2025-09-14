@@ -25,7 +25,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
         self.assertAliases(DominicanRepublic, DO, DOM)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(DominicanRepublic(years=1997))
+        self.assertNoHolidays(DominicanRepublic(years=self.start_year - 1))
 
     def test_2020(self):
         self.assertHolidays(
