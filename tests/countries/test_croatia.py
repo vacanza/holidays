@@ -48,6 +48,7 @@ class TestCroatia(CommonCountryTests, TestCase):
             "2022-04-17",
             "2023-04-09",
         )
+        self.assertHolidayName(name, range(2009, 2050))
         self.assertNoHolidayName(name, range(HR.start_year, 2009))
 
     def test_easter_monday(self):
@@ -62,7 +63,7 @@ class TestCroatia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
 
-    def test_corpus_cristi(self):
+    def test_corpus_christi(self):
         name = "Tijelovo"
         self.assertHolidayName(
             name,

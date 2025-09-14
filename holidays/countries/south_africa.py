@@ -20,6 +20,8 @@ class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
 
     References:
         * <https://web.archive.org/web/20250424073852/https://www.gov.za/about-sa/public-holidays>
+        * [Act No. 36, 1994](https://web.archive.org/web/20250914045710/https://www.gov.za/sites/default/files/gcis_document/201409/act36of1994.pdf)
+        * <https://web.archive.org/web/20250914050022/https://www.ancestors.co.za/origins-of-public-holidays-in-south-africa/>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_South_Africa>
         * <https://web.archive.org/web/20240715110800/https://www.gov.za/speeches/president-cyril-ramaphosa-progress-economic-recovery-30-oct-2023-0000>
         * <https://web.archive.org/web/20250427184315/https://www.gov.za/documents/notices/public-holidays-act-declaration-29-may-2024-public-holiday-23-feb-2024>
@@ -28,8 +30,8 @@ class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
     country = "ZA"
     # %s (observed).
     observed_label = "%s (observed)"
-    # Observed since 1910, with a few name changes.
-    start_year = 1910
+    # Public Holidays Act (No. 3 of 1910) came in effect on January 1st, 1911.
+    start_year = 1911
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -111,6 +113,10 @@ class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
                 # Settlers' Day.
                 self._add_holiday_1st_mon_of_sep("Settlers' Day")
         else:
+            # According to our sources, Act No. 3 of 1910 supposedly uses the term "Victoria Day"
+            # but as we can't find the original document and that Empire Day was supposed
+            # instituted empire-wide circa 1904 - we'll stick with its latter name for now.
+
             # Empire Day.
             self._add_holiday_may_24("Empire Day")
 

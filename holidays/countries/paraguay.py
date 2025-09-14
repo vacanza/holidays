@@ -136,7 +136,7 @@ class PRY(Paraguay):
 
 class ParaguayStaticHolidays:
     # Public holiday.
-    public_holiday = tr("Asueto adicionale")
+    public_holiday = tr("Asueto adicional")
     # Public sector holiday.
     public_sector_holiday = tr("Asueto de la Administración Pública")
 

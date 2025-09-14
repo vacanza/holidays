@@ -85,7 +85,7 @@ msgstr "Respect for the Aged Day"
 
 #. Autumnal Equinox Day.
 msgid "秋分の日"
-msgstr "Autumnal Equinox"
+msgstr "Autumnal Equinox Day"
 
 #. Sports Day.
 msgid "スポーツの日"

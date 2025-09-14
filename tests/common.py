@@ -33,9 +33,9 @@ PYTHON_VERSION = f"{sys.version_info.major}.{sys.version_info.minor}"
 class TestCase:
     """Base class for holidays test cases."""
 
-    @classmethod
+    @staticmethod
     @cache
-    def _get_or_create_lookup(cls, test_class):
+    def _get_or_create_lookup(test_class):
         """Build and cache categories and subdivision lookup tables for a holiday test class."""
 
         non_public_supported_categories = [
@@ -395,6 +395,7 @@ class TestCase:
             holiday_counts[dt.year] += 1
 
         for year in items:
+            self.assertIsInstance(year, int, "Year arguments must be integers")
             holiday_count = holiday_counts.get(year, 0)
             self.assertEqual(
                 count,
@@ -467,7 +468,7 @@ class TestCase:
     def _assertLocalizedHolidays(self, localized_holidays, language=None):
         """Helper: assert localized holidays match expected names."""
         instance = self.test_class(
-            years=localized_holidays[0][0].split("-")[0],
+            years=int(localized_holidays[0][0].split("-")[0]),
             language=language,
             categories=self.test_class.supported_categories,
         )

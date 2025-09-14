@@ -631,7 +631,7 @@ class TestJapan(CommonCountryTests, TestCase):
             ("2022-07-18", "Marine Day"),
             ("2022-08-11", "Mountain Day"),
             ("2022-09-19", "Respect for the Aged Day"),
-            ("2022-09-23", "Autumnal Equinox"),
+            ("2022-09-23", "Autumnal Equinox Day"),
             ("2022-10-10", "Sports Day"),
             ("2022-11-03", "Culture Day"),
             ("2022-11-23", "Labor Thanksgiving Day"),

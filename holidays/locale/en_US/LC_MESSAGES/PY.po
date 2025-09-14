@@ -80,7 +80,7 @@ msgid "Día de la Navidad"
 msgstr "Christmas Day"
 
 #. Public holiday.
-msgid "Asueto adicionale"
+msgid "Asueto adicional"
 msgstr "Public holiday"
 
 #. Public sector holiday.

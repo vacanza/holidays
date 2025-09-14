@@ -726,7 +726,7 @@ class TestArgentina(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_immaculate_conception_day_catamarka(self):
+    def test_immaculate_conception_day_catamarca(self):
         name = "Inmaculada Concepción de María"
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "K":
