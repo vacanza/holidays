@@ -287,10 +287,14 @@ class TestChile(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(self.start_year, 2008))
 
     def test_all_saints_day(self):
-        self.assertHoliday(f"{year}-11-01" for year in self.full_range)
+        self.assertHolidayName(
+            "Día de Todos los Santos", (f"{year}-11-01" for year in self.full_range)
+        )
 
     def test_immaculate_conception(self):
-        self.assertHoliday(f"{year}-12-08" for year in self.full_range)
+        self.assertHolidayName(
+            "La Inmaculada Concepción", (f"{year}-12-08" for year in self.full_range)
+        )
 
     def test_christmas_eve(self):
         name = "Víspera de Navidad"
