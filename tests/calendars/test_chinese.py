@@ -86,3 +86,5 @@ class TestChineseLunisolarCalendar(unittest.TestCase):
     def test_winter_solstice_estimated(self):
         for year in (1940, 2100):
             self.assertTrue(self.calendar.winter_solstice_date(year)[1])
+        for year in (1941, 2099):
+            self.assertFalse(self.calendar.winter_solstice_date(year)[1])
