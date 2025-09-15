@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.81\n"
 "POT-Creation-Date: 2023-11-24 16:16+0700\n"
-"PO-Revision-Date: 2025-06-21 17:09+0300\n"
+"PO-Revision-Date: 2025-09-07 14:05+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: zh_CN\n"
@@ -27,10 +27,20 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 "X-Source-Language: zh_TW\n"
 
+#. %s (estimated).
+#, c-format
+msgid "%s（推定）"
+msgstr "%s（推定）"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s（補假，推定）"
+msgstr "%s（观察日，推定）"
+
 #. %s (observed).
 #, c-format
-msgid "%s（慶祝）"
-msgstr "%s（庆祝）"
+msgid "%s（補假）"
+msgstr "%s（观察日）"
 
 #. Children's Day.
 msgid "兒童節"

@@ -196,6 +196,11 @@ from holidays.countries.romania import Romania, RO, ROU
 from holidays.countries.russia import Russia, RU, RUS
 from holidays.countries.rwanda import Rwanda, RW, RWA
 from holidays.countries.saint_barthelemy import SaintBarthelemy, BL, BLM, HolidaysBL
+from holidays.countries.saint_helena_ascension_and_tristan_da_cunha import (
+    SaintHelenaAscensionAndTristanDaCunha,
+    SH,
+    SHN,
+)
 from holidays.countries.saint_kitts_and_nevis import SaintKittsAndNevis, KN, KNA
 from holidays.countries.saint_lucia import SaintLucia, LC, LCA
 from holidays.countries.saint_martin import SaintMartin, MF, MAF, HolidaysMF
@@ -234,6 +239,7 @@ from holidays.countries.south_korea import SouthKorea, KR, KOR, Korea
 from holidays.countries.south_sudan import SouthSudan, SS, SSD
 from holidays.countries.spain import Spain, ES, ESP
 from holidays.countries.sri_lanka import SriLanka, LK, LKA
+from holidays.countries.sudan import Sudan, SD, SDN
 from holidays.countries.suriname import Suriname, SR, SUR
 from holidays.countries.svalbard_and_jan_mayen import SvalbardAndJanMayen, SJ, SJM, HolidaysSJ
 from holidays.countries.sweden import Sweden, SE, SWE

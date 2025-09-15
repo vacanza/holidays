@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.81\n"
 "POT-Creation-Date: 2025-06-04 01:56+0530\n"
-"PO-Revision-Date: 2025-06-04 21:39+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2025-09-07 13:47+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: mn\n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,11 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Generator: Poedit 3.4.2\n"
 "X-Source-Language: mn\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (урьдчилсан)"
+msgstr ""
 
 #. New Year's Day.
 msgid "Шинэ жил"
