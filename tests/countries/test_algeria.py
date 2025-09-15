@@ -160,7 +160,7 @@ class TestAlgeria(CommonCountryTests, TestCase):
             "2025-04-21",
         )
         self.assertChristianHolidayName(name, self.full_range)
-        self.assertNoHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name)
 
     def test_ascension_day(self):
         name = "عيد الصعود"
@@ -174,7 +174,7 @@ class TestAlgeria(CommonCountryTests, TestCase):
             "2025-05-29",
         )
         self.assertChristianHolidayName(name, self.full_range)
-        self.assertNoHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name)
 
     def test_whit_monday(self):
         name = "إثنين العنصرة"
@@ -188,17 +188,17 @@ class TestAlgeria(CommonCountryTests, TestCase):
             "2025-06-09",
         )
         self.assertChristianHolidayName(name, self.full_range)
-        self.assertNoHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name)
 
     def test_assumption_day(self):
         name = "عيد انتقال السيدة العذراء"
         self.assertChristianHolidayName(name, (f"{year}-08-15" for year in self.full_range))
-        self.assertNoHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name)
 
     def test_christmas_day(self):
         name = "عيد الميلاد"
         self.assertChristianHolidayName(name, (f"{year}-12-25" for year in self.full_range))
-        self.assertNoHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name)
 
     def test_rosh_hashanah(self):
         name = "رأس السنة العبرية"
@@ -212,7 +212,7 @@ class TestAlgeria(CommonCountryTests, TestCase):
             "2025-09-23",
         )
         self.assertHebrewHolidayName(name, self.full_range)
-        self.assertNoHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name)
 
     def test_yom_kippur(self):
         name = "يوم الغفران"
@@ -226,7 +226,7 @@ class TestAlgeria(CommonCountryTests, TestCase):
             "2025-10-02",
         )
         self.assertHebrewHolidayName(name, self.full_range)
-        self.assertNoHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name)
 
     def test_pesach(self):
         name = "عيد الفصح اليهودي"
@@ -240,7 +240,7 @@ class TestAlgeria(CommonCountryTests, TestCase):
             "2025-04-13",
         )
         self.assertHebrewHolidayName(name, self.full_range)
-        self.assertNoHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name)
 
     def test_l10_default(self):
         self.assertLocalizedHolidays(
