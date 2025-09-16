@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.37\n"
 "POT-Creation-Date: 2023-06-12 19:06+0300\n"
 "PO-Revision-Date: 2023-11-10 22:16+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -30,6 +30,10 @@ msgstr ""
 #. New Year's Day.
 msgid "Újév"
 msgstr "Новий рік"
+
+#. National Day.
+msgid "Nemzeti ünnep"
+msgstr "Національне свято"
 
 #. Good Friday.
 msgid "Nagypéntek"
@@ -62,10 +66,6 @@ msgstr "День хліба"
 #. State Foundation Day.
 msgid "Az államalapítás ünnepe"
 msgstr "День заснування держави"
-
-#. National Day.
-msgid "Nemzeti ünnep"
-msgstr "Національне свято"
 
 #. All Saints' Day.
 msgid "Mindenszentek"
