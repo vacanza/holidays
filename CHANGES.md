@@ -1,3 +1,16 @@
+# Version 0.81
+
+Released September 15, 2025
+
+- Add Saint Helena, Ascension and Tristan da Cunha holidays (#2820 by @Abheelash-Mishra, @arkid15r)
+- Add Sudan holidays (#2854 by @anshonweb)
+- Update Chinese Lunisolar calendar: extend Winter Solstice support (#2927 by @KJhellico)
+- Update Philippines holidays: add 2026 holidays (#2912 by @KJhellico)
+- Update Spain holidays: add Dec 3 holiday in Navarre (#2895 by @KJhellico)
+- Update countries with Eastern holidays: add estimated holidays labels (#2924 by @KJhellico, @arkid15r)
+- Update release notes generator (#2929 by @KJhellico)
+- Simplify N802 suppression for `common.py` (#2880 by @arkid15r)
+
 # Version 0.80
 
 Released September 1, 2025
