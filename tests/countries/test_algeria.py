@@ -100,61 +100,78 @@ class TestAlgeria(CommonCountryTests, TestCase):
 
     def test_eid_al_fitr(self):
         name = "عيد الفطر"
-        name_holiday = f"عطلة {name}"
         self.assertHolidayName(
             name,
             self.no_estimated_holidays,
             "2020-05-24",
-            "2021-05-13",
-            "2022-05-02",
-            "2023-04-21",
-            "2024-04-10",
-            "2025-03-30",
-        )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1964, 2050))
-        self.assertHolidayName(
-            name_holiday,
-            self.no_estimated_holidays,
             "2020-05-25",
+            "2021-05-13",
             "2021-05-14",
+            "2022-05-02",
             "2022-05-03",
+            "2023-04-21",
             "2023-04-22",
+            "2024-04-10",
             "2024-04-11",
             "2024-04-12",
+            "2025-03-30",
             "2025-03-31",
             "2025-04-01",
         )
-        self.assertHolidayName(name_holiday, self.no_estimated_holidays, range(1964, 2050))
+        self.assertHolidayNameCount(
+            name,
+            2,
+            self.no_estimated_holidays,
+            range(1964, 1968),
+            range(1969, 2000),
+            range(2001, 2024),
+        )
+        self.assertHolidayNameCount(
+            name, 3, self.no_estimated_holidays, range(2024, 2033), range(2034, 2050)
+        )
+        self.assertHolidayNameCount(name, 4, self.no_estimated_holidays, 1968, 2000)
+        self.assertHolidayNameCount(name, 6, self.no_estimated_holidays, 2033)
 
     def test_eid_al_adha(self):
         name = "عيد الأضحى"
-        name_holiday = f"عطلة {name}"
         self.assertHolidayName(
             name,
             self.no_estimated_holidays,
             "2020-07-31",
-            "2021-07-20",
-            "2022-07-09",
-            "2023-06-28",
-            "2024-06-16",
-            "2025-06-06",
-        )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1964, 2050))
-        self.assertHolidayName(
-            name_holiday,
-            self.no_estimated_holidays,
             "2020-08-01",
+            "2021-07-20",
             "2021-07-21",
+            "2022-07-09",
             "2022-07-10",
+            "2023-06-28",
             "2023-06-29",
             "2023-06-30",
+            "2024-06-16",
             "2024-06-17",
             "2024-06-18",
+            "2025-06-06",
             "2025-06-07",
             "2025-06-08",
         )
-        self.assertHolidayName(name_holiday, self.no_estimated_holidays, range(1969, 2050))
-        self.assertNoHolidayName(name_holiday, self.no_estimated_holidays, range(1964, 1969))
+        self.assertHolidayNameCount(name, 1, self.no_estimated_holidays, range(1964, 1969))
+        self.assertHolidayNameCount(
+            name,
+            2,
+            self.no_estimated_holidays,
+            range(1969, 1974),
+            range(1975, 2006),
+            range(2009, 2023),
+        )
+        self.assertHolidayNameCount(
+            name,
+            3,
+            self.no_estimated_holidays,
+            range(2006, 2008),
+            range(2023, 2039),
+            range(2040, 2050),
+        )
+        self.assertHolidayNameCount(name, 4, self.no_estimated_holidays, 1974)
+        self.assertHolidayNameCount(name, 6, self.no_estimated_holidays, 2039)
 
     def test_easter_monday(self):
         name = "إثنين الفصح"
@@ -268,12 +285,12 @@ class TestAlgeria(CommonCountryTests, TestCase):
             ("2022-04-18", "إثنين الفصح"),
             ("2022-05-01", "عيد العمال"),
             ("2022-05-02", "عيد الفطر (المقدرة)"),
-            ("2022-05-03", "عطلة عيد الفطر (المقدرة)"),
+            ("2022-05-03", "عيد الفطر (المقدرة)"),
             ("2022-05-26", "عيد الصعود"),
             ("2022-06-06", "إثنين العنصرة"),
             ("2022-07-05", "عيد الاستقلال"),
             ("2022-07-09", "عيد الأضحى (المقدرة)"),
-            ("2022-07-10", "عطلة عيد الأضحى (المقدرة)"),
+            ("2022-07-10", "عيد الأضحى (المقدرة)"),
             ("2022-07-30", "رأس السنة الهجرية (المقدرة)"),
             ("2022-08-08", "عاشورة (المقدرة)"),
             ("2022-08-15", "عيد انتقال السيدة العذراء"),
@@ -293,12 +310,12 @@ class TestAlgeria(CommonCountryTests, TestCase):
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labor Day"),
             ("2022-05-02", "Eid al-Fitr (estimated)"),
-            ("2022-05-03", "Eid al-Fitr Holiday (estimated)"),
+            ("2022-05-03", "Eid al-Fitr (estimated)"),
             ("2022-05-26", "Ascension Day"),
             ("2022-06-06", "Whit Monday"),
             ("2022-07-05", "Independence Day"),
             ("2022-07-09", "Eid al-Adha (estimated)"),
-            ("2022-07-10", "Eid al-Adha Holiday (estimated)"),
+            ("2022-07-10", "Eid al-Adha (estimated)"),
             ("2022-07-30", "Islamic New Year (estimated)"),
             ("2022-08-08", "Ashura (estimated)"),
             ("2022-08-15", "Assumption Day"),
@@ -318,12 +335,12 @@ class TestAlgeria(CommonCountryTests, TestCase):
             ("2022-04-18", "Lundi de Pâques"),
             ("2022-05-01", "Fête du Travail"),
             ("2022-05-02", "Aïd el-Fitr (estimé)"),
-            ("2022-05-03", "Congé de l'Aïd el-Fitr (estimé)"),
+            ("2022-05-03", "Aïd el-Fitr (estimé)"),
             ("2022-05-26", "Ascension"),
             ("2022-06-06", "Lundi de Pentecôte"),
             ("2022-07-05", "Fête de l'Indépendance"),
             ("2022-07-09", "Aïd el-Adha (estimé)"),
-            ("2022-07-10", "Congé de l'Aïd el-Adha (estimé)"),
+            ("2022-07-10", "Aïd el-Adha (estimé)"),
             ("2022-07-30", "Awal Moharram (estimé)"),
             ("2022-08-08", "Achoura (estimé)"),
             ("2022-08-15", "Assomption"),
