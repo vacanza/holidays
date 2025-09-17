@@ -304,7 +304,7 @@ class TestAlgeria(CommonCountryTests, TestCase):
             ("2022-04-18", "Lundi de Pâques"),
             ("2022-05-01", "Fête du Travail"),
             ("2022-05-02", "Aïd el-Fitr (estimé)"),
-            ("2022-05-03", "Aïd el-Fitr (estimé)",
+            ("2022-05-03", "Aïd el-Fitr (estimé)"),
             ("2022-05-26", "Ascension"),
             ("2022-06-06", "Lundi de Pentecôte"),
             ("2022-07-05", "Fête de l'Indépendance"),

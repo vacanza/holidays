@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.82\n"
 "POT-Creation-Date: 2023-09-11 10:20+0700\n"
-"PO-Revision-Date: 2023-11-10 11:20+0700\n"
+"PO-Revision-Date: 2025-09-17 10:42+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.7\n"
 "X-Source-Language: ja\n"
 
 #. Substitute Holiday.
