@@ -229,7 +229,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
             ("2024-12-25", "නත්තල් උත්සව දිනය"),
         )
 
-    def test_l10_default(self):
+    def test_l10n_default(self):
         # https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2025
         self.assertLocalizedHolidays(
             ("2022-01-14", "දෙමළ තෛපොංැලල් දිනය"),
