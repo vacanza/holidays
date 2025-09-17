@@ -13,10 +13,10 @@
 from unittest import TestCase
 
 from holidays.countries.myanmar import Myanmar, MM, MMR
-from tests.common import CommonCountryTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestMyanmar(CommonCountryTests, TestCase):
+class TestMyanmar(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1948, 2050)
@@ -28,6 +28,35 @@ class TestMyanmar(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Myanmar(years=1947))
+
+    def test_substituted_holidays(self):
+        self.assertHoliday(
+            "2024-12-31",
+            "2025-03-12",
+            "2025-03-14",
+            "2025-11-03",
+            "2025-12-26",
+        )
+
+    def test_workdays(self):
+        self.assertWorkingDay(
+            "2025-01-11",
+            "2025-03-22",
+            "2025-03-29",
+            "2025-11-08",
+            "2026-01-03",
+        )
+
+        for year, dts in {
+            2025: (
+                "2025-01-11",
+                "2025-03-22",
+                "2025-03-29",
+                "2025-11-08",
+            ),
+            2026: ("2026-01-03",),
+        }.items():
+            self.assertWorkingDay(Myanmar(years=year), dts)
 
     def test_new_years_day(self):
         name = "နိုင်ငံတကာနှစ်သစ်ကူးနေ့"
