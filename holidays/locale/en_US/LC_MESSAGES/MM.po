@@ -91,9 +91,9 @@ msgstr "Full Moon Day of Kason"
 msgid "ဝါဆိုလပြည့်နေ့"
 msgstr "Full Moon Day of Waso"
 
-#. Thadingyut Holiday.
-msgid "သီတင်းကျွတ်လပြည့်နေ့"
-msgstr "Thadingyut Holiday"
+#. Thadingyut Holidays.
+msgid "သီတင်းကျွတ်ပိတ်ရက်များ"
+msgstr "Thadingyut Holidays"
 
 #. Diwali.
 msgid "ဒီပါဝလီနေ့"

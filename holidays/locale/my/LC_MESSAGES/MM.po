@@ -91,8 +91,8 @@ msgstr ""
 msgid "ဝါဆိုလပြည့်နေ့"
 msgstr ""
 
-#. Thadingyut Holiday.
-msgid "သီတင်းကျွတ်လပြည့်နေ့"
+#. Thadingyut Holidays.
+msgid "သီတင်းကျွတ်ပိတ်ရက်များ"
 msgstr ""
 
 #. Diwali.

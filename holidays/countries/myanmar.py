@@ -129,8 +129,8 @@ class Myanmar(
         # Full Moon Day of Waso.
         self._add_waso_full_moon_day(tr("ဝါဆိုလပြည့်နေ့"))
 
-        # Thadingyut Holiday.
-        name = tr("သီတင်းကျွတ်လပြည့်နေ့")
+        # Thadingyut Holidays.
+        name = tr("သီတင်းကျွတ်ပိတ်ရက်များ")
         self._add_thadingyut_full_moon_eve(name)
         self._add_thadingyut_full_moon_day(name)
         self._add_thadingyut_full_moon_day_two(name)

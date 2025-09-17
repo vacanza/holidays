@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from functools import lru_cache
+from functools import cache
 from typing import Optional
 
 from holidays.calendars.gregorian import _timedelta
@@ -122,7 +122,7 @@ class _BurmeseLunisolar:
             y += 1
         return date(y, m, d)
 
-    @lru_cache
+    @cache
     def _get_start_date(self, year: int) -> Optional[date]:
         if year < self.START_YEAR or year > self.END_YEAR:
             return None
