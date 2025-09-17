@@ -80,13 +80,12 @@ class Cuba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_labor_day(tr("Día Internacional de los Trabajadores")))
 
         # Commemoration of the Assault of the Moncada garrison.
-        self._add_holiday_jul_25(tr("Conmemoración del asalto a Moncada"))
+        name = tr("Conmemoración del asalto a Moncada")
+        self._add_holiday_jul_25(name)
+        self._add_holiday_jul_27(name)
 
         # Day of the National Rebellion.
         self._add_holiday_jul_26(tr("Día de la Rebeldía Nacional"))
-
-        # Commemoration of the Assault of the Moncada garrison.
-        self._add_holiday_jul_27(tr("Conmemoración del asalto a Moncada"))
 
         # Independence Day.
         self._add_observed(self._add_holiday_oct_10(tr("Inicio de las Guerras de Independencia")))
