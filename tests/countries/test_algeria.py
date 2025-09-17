@@ -144,7 +144,7 @@ class TestAlgeria(CommonCountryTests, TestCase):
         )
         self.assertIslamicNoEstimatedHolidayNameCount(name, 1, range(1964, 1969))
         self.assertIslamicNoEstimatedHolidayNameCount(
-            name, 2, range(1969, 1974), range(1975, 2006), range(2009, 2023)
+            name, 2, range(1969, 1974), range(1975, 2006), range(2008, 2023)
         )
         self.assertIslamicNoEstimatedHolidayNameCount(
             name, 3, range(2006, 2008), range(2023, 2039), range(2040, 2050)
@@ -246,7 +246,7 @@ class TestAlgeria(CommonCountryTests, TestCase):
         )
         self.assertHebrewHolidayName(name, self.full_range)
 
-    def test_l10_default(self):
+    def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "رأس السنة الميلادية"),
             ("2022-01-12", "رأس السنة الأمازيغية"),
