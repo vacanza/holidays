@@ -148,7 +148,7 @@ class BurmeseCalendarHolidays:
         if akya is None or atat is None:
             return set()
 
-        # Delault length is from Thingyan Akyo (akya - 1) to New Year Day (atat + 1).
+        # Default length is from Thingyan Akyo (akya - 1) to New Year Day (atat + 1).
         # Optional additional days:
         # pre-Akya days (1 day in 2007-2016, 4 days in 2022-2023),
         # post-Atat days (3 or 4 days).

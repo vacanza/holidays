@@ -44,7 +44,12 @@ class TestMyanmar(CommonCountryTests, TestCase):
         self.assertHolidayName("တောင်သူလယ်သမားနေ့", (f"{year}-03-02" for year in range(1948, 2050)))
 
     def test_armed_forces_day(self):
-        self.assertHolidayName("တော်လှန်ရေးနေ့", (f"{year}-03-27" for year in range(1948, 2050)))
+        name_1 = "တော်လှန်ရေးနေ့"
+        name_2 = "တပ်မတော်နေ့"
+        self.assertHolidayName(name_1, (f"{year}-03-27" for year in range(1948, 1955)))
+        self.assertHolidayName(name_2, (f"{year}-03-27" for year in range(1955, 2050)))
+        self.assertNoHolidayName(name_1, range(1955, 2050))
+        self.assertNoHolidayName(name_2, range(1948, 1955))
 
     def test_may_day(self):
         self.assertHolidayName("မေဒေးနေ့", (f"{year}-05-01" for year in range(1948, 2050)))
@@ -122,7 +127,7 @@ class TestMyanmar(CommonCountryTests, TestCase):
         )
 
         self.assertHolidayNameCount(
-            name, 4, range(2011, 2004), range(2005, 2007), range(2017, 2020), 2021
+            name, 4, range(2001, 2004), range(2005, 2007), range(2017, 2020), 2021
         )
         self.assertHolidayNameCount(name, 5, 2004, 2020)
         self.assertHolidayNameCount(name, 10, range(2007, 2017))
@@ -156,7 +161,7 @@ class TestMyanmar(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(1948, 2050))
 
     def test_full_moon_day_of_waso(self):
-        name = "ဝါတွင်းသုံးလ စတင်ခြင်း"
+        name = "ဝါဆိုလပြည့်နေ့"
         self.assertHolidayName(
             name,
             "2020-08-03",
@@ -191,7 +196,6 @@ class TestMyanmar(CommonCountryTests, TestCase):
             "2025-10-06",
             "2025-10-07",
         )
-        self.assertHolidayName(name, range(1948, 2050))
         self.assertHolidayNameCount(name, 3, range(1948, 2050))
 
     def test_diwali(self):
@@ -208,7 +212,7 @@ class TestMyanmar(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(1948, 2050))
 
     def test_full_moon_day_of_tazaungmon(self):
-        name = "တန်ဆောင်တိုင်ပိတ်ရက်များ"
+        name = "တန်ဆောင်တိုင်လပြည့်နေ့"
         self.assertHolidayName(
             name,
             "2020-11-29",
@@ -255,7 +259,7 @@ class TestMyanmar(CommonCountryTests, TestCase):
             ("2024-02-12", "ပြည်ထောင်စုနေ့"),
             ("2024-03-02", "တောင်သူလယ်သမားနေ့"),
             ("2024-03-24", "တပေါင်းလပြည့်နေ့"),
-            ("2024-03-27", "တော်လှန်ရေးနေ့"),
+            ("2024-03-27", "တပ်မတော်နေ့"),
             ("2024-04-13", "မြန်မာနှစ်သစ်ကူး ရုံးပိတ်ရက်များ"),
             ("2024-04-14", "မြန်မာနှစ်သစ်ကူး ရုံးပိတ်ရက်များ"),
             ("2024-04-15", "မြန်မာနှစ်သစ်ကူး ရုံးပိတ်ရက်များ"),
@@ -269,12 +273,12 @@ class TestMyanmar(CommonCountryTests, TestCase):
             ("2024-05-22", "ကဆုန်လပြည့်နေ့"),
             ("2024-06-17", "အီဒုလ်အဿွဟာနေ့"),
             ("2024-07-19", "အာဇာနည်နေ့"),
-            ("2024-07-20", "ဝါတွင်းသုံးလ စတင်ခြင်း"),
+            ("2024-07-20", "ဝါဆိုလပြည့်နေ့"),
             ("2024-10-16", "သီတင်းကျွတ်လပြည့်နေ့"),
             ("2024-10-17", "သီတင်းကျွတ်လပြည့်နေ့"),
             ("2024-10-18", "သီတင်းကျွတ်လပြည့်နေ့"),
             ("2024-11-01", "ဒီပါဝလီနေ့"),
-            ("2024-11-15", "တန်ဆောင်တိုင်ပိတ်ရက်များ"),
+            ("2024-11-15", "တန်ဆောင်တိုင်လပြည့်နေ့"),
             ("2024-11-25", "အမျိုးသားနေ့"),
             ("2024-12-25", "ခရစ္စမတ်နေ့"),
             ("2024-12-30", "ကရင်နှစ်သစ်ကူးနေ့"),
@@ -291,7 +295,7 @@ class TestMyanmar(CommonCountryTests, TestCase):
             ("2025-03-12", "အလုပ်ပိတ်ရက် (22-03-2025 မှ ပြန်လဲထားသည်)"),
             ("2025-03-13", "တပေါင်းလပြည့်နေ့"),
             ("2025-03-14", "အလုပ်ပိတ်ရက် (29-03-2025 မှ ပြန်လဲထားသည်)"),
-            ("2025-03-27", "တော်လှန်ရေးနေ့"),
+            ("2025-03-27", "တပ်မတော်နေ့"),
             ("2025-04-13", "မြန်မာနှစ်သစ်ကူး ရုံးပိတ်ရက်များ"),
             ("2025-04-14", "မြန်မာနှစ်သစ်ကူး ရုံးပိတ်ရက်များ"),
             ("2025-04-15", "မြန်မာနှစ်သစ်ကူး ရုံးပိတ်ရက်များ"),
@@ -304,14 +308,14 @@ class TestMyanmar(CommonCountryTests, TestCase):
             ("2025-05-01", "မေဒေးနေ့"),
             ("2025-05-11", "ကဆုန်လပြည့်နေ့"),
             ("2025-06-07", "အီဒုလ်အဿွဟာနေ့"),
-            ("2025-07-09", "ဝါတွင်းသုံးလ စတင်ခြင်း"),
+            ("2025-07-09", "ဝါဆိုလပြည့်နေ့"),
             ("2025-07-19", "အာဇာနည်နေ့"),
             ("2025-10-05", "သီတင်းကျွတ်လပြည့်နေ့"),
             ("2025-10-06", "သီတင်းကျွတ်လပြည့်နေ့"),
             ("2025-10-07", "သီတင်းကျွတ်လပြည့်နေ့"),
             ("2025-10-21", "ဒီပါဝလီနေ့"),
             ("2025-11-03", "အလုပ်ပိတ်ရက် (08-11-2025 မှ ပြန်လဲထားသည်)"),
-            ("2025-11-04", "တန်ဆောင်တိုင်ပိတ်ရက်များ"),
+            ("2025-11-04", "တန်ဆောင်တိုင်လပြည့်နေ့"),
             ("2025-11-14", "အမျိုးသားနေ့"),
             ("2025-12-19", "ကရင်နှစ်သစ်ကူးနေ့"),
             ("2025-12-25", "ခရစ္စမတ်နေ့"),

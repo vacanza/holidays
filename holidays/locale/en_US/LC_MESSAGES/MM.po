@@ -48,8 +48,12 @@ msgid "တောင်သူလယ်သမားနေ့"
 msgstr "Peasants' Day"
 
 #. Armed Forces Day.
-msgid "တော်လှန်ရေးနေ့"
+msgid "တပ်မတော်နေ့"
 msgstr "Armed Forces Day"
+
+#. Revolution Day.
+msgid "တော်လှန်ရေးနေ့"
+msgstr "Revolution Day"
 
 #. May Day.
 msgid "မေဒေးနေ့"
@@ -84,7 +88,7 @@ msgid "ကဆုန်လပြည့်နေ့"
 msgstr "Full Moon Day of Kason"
 
 #. Full Moon Day of Waso.
-msgid "ဝါတွင်းသုံးလ စတင်ခြင်း"
+msgid "ဝါဆိုလပြည့်နေ့"
 msgstr "Full Moon Day of Waso"
 
 #. Thadingyut Holiday.
@@ -96,7 +100,7 @@ msgid "ဒီပါဝလီနေ့"
 msgstr "Diwali"
 
 #. Full Moon Day of Tazaungmon.
-msgid "တန်ဆောင်တိုင်ပိတ်ရက်များ"
+msgid "တန်ဆောင်တိုင်လပြည့်နေ့"
 msgstr "Full Moon Day of Tazaungmon"
 
 #. National Day.

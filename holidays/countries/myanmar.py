@@ -41,6 +41,7 @@ class Myanmar(
         * <https://my.wikipedia.org/wiki/မြန်မာနိုင်ငံရှိ_အားလပ်ရက်များ>
         * [Algorithm, Program and Calculation of Myanmar Calendar](https://web.archive.org/web/20250510011425/http://cool-emerald.blogspot.com/2013/06/algorithm-program-and-calculation-of.html)
         * [2025 International and Chinese New Year](https://web.archive.org/web/20240709104600/https://www.moi.gov.mm/news/58594)
+        * [Armed Forces Day](https://web.archive.org/web/20250522010622/https://burma.irrawaddy.com/on-this-day/2019/03/27/187691.html)
         * [2021-2024](https://web.archive.org/web/20241112125406/https://evisa.moip.gov.mm/home/publicholiday)
         * [2013-2025 (Webarchive)](https://web.archive.org/web/20250711015428/http://www.myanmarembassy.sg/contact-us/holidays/)
     """
@@ -84,8 +85,13 @@ class Myanmar(
         # Peasants' Day.
         self._add_holiday_mar_2(tr("တောင်သူလယ်သမားနေ့"))
 
-        # Armed Forces Day.
-        self._add_holiday_mar_27(tr("တော်လှန်ရေးနေ့"))
+        self._add_holiday_mar_27(
+            # Armed Forces Day.
+            tr("တပ်မတော်နေ့")
+            if self._year >= 1955
+            # Revolution Day.
+            else tr("တော်လှန်ရေးနေ့")
+        )
 
         # May Day.
         self._add_labor_day(tr("မေဒေးနေ့"))
@@ -121,7 +127,7 @@ class Myanmar(
         self._add_kason_full_moon_day(tr("ကဆုန်လပြည့်နေ့"))
 
         # Full Moon Day of Waso.
-        self._add_waso_full_moon_day(tr("ဝါတွင်းသုံးလ စတင်ခြင်း"))
+        self._add_waso_full_moon_day(tr("ဝါဆိုလပြည့်နေ့"))
 
         # Thadingyut Holiday.
         name = tr("သီတင်းကျွတ်လပြည့်နေ့")
@@ -133,7 +139,7 @@ class Myanmar(
         self._add_diwali_myanmar(tr("ဒီပါဝလီနေ့"))
 
         # Full Moon Day of Tazaungmon.
-        self._add_tazaungmon_full_moon_day(tr("တန်ဆောင်တိုင်ပိတ်ရက်များ"))
+        self._add_tazaungmon_full_moon_day(tr("တန်ဆောင်တိုင်လပြည့်နေ့"))
 
         # National Day.
         self._add_myanmar_national_day(tr("အမျိုးသားနေ့"))

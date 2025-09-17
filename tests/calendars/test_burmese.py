@@ -18,7 +18,7 @@ from holidays.calendars.burmese import _BurmeseLunisolar
 
 class TestBurmeseCalendar(unittest.TestCase):
     def setUp(self):
-        super().setUpClass()
+        super().setUp()
         self.calendar = _BurmeseLunisolar()
 
     def test_year_bounds(self):
