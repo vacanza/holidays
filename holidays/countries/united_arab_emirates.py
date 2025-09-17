@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
@@ -79,11 +80,12 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
         StaticHolidays.__init__(self, UnitedArabEmiratesStaticHolidays)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self):
+    def _get_weekend(self, dt: date) -> set[int]:
         # The resting days are Saturday and Sunday since Jan 1, 2022.
         # https://web.archive.org/web/20250216144205/https://time.com/6126260/uae-working-days-weekend/
-        self.weekend = {FRI, SAT} if self._year <= 2021 else {SAT, SUN}
+        return {SAT, SUN} if dt.year >= 2022 else {FRI, SAT}
 
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 

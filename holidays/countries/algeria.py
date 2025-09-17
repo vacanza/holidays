@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import THU, FRI, SAT, SUN
@@ -47,6 +48,7 @@ class Algeria(
     start_year = 1964
     supported_categories = (CHRISTIAN, HEBREW, PUBLIC)
     supported_languages = ("ar", "en_US", "fr")
+    weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -61,16 +63,17 @@ class Algeria(
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self):
+    def _get_weekend(self, dt: date) -> set[int]:
         # The resting days are Friday and Saturday since 2009.
         # Previously, these were on Thursday and Friday as implemented in 1976.
-        if self._year >= 2009:
-            self.weekend = {FRI, SAT}
-        elif self._year >= 1976:
-            self.weekend = {THU, FRI}
+        if dt.year >= 2009:
+            return {FRI, SAT}
+        elif dt.year >= 1976:
+            return {THU, FRI}
         else:
-            self.weekend = {SAT, SUN}
+            return {SAT, SUN}
 
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 

@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import (
@@ -163,6 +164,14 @@ class Malaysia(
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
+    def _get_weekend(self, dt: date) -> set[int]:
+        if (
+            self.subdiv == "01" and (dt.year <= 1994 or 2014 <= dt.year <= 2024)
+        ) or self.subdiv in {"02", "03", "11"}:
+            return {FRI, SAT}
+        else:
+            return {SAT, SUN}
+
     def _populate_public_holidays(self):
         self.dts_observed = set()
 
@@ -229,13 +238,10 @@ class Malaysia(
             self.subdiv == "01" and (self._year <= 1994 or 2014 <= self._year <= 2024)
         ) or self.subdiv == "02":
             self._observed_rule = FRI_TO_NEXT_WORKDAY
-            self.weekend = {FRI, SAT}
         elif self.subdiv in {"03", "11"}:
             self._observed_rule = SAT_TO_NEXT_WORKDAY
-            self.weekend = {FRI, SAT}
         else:
             self._observed_rule = SUN_TO_NEXT_WORKDAY
-            self.weekend = {SAT, SUN}
 
         if self.observed:
             self._populate_observed(self.dts_observed)

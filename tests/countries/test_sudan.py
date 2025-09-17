@@ -125,6 +125,25 @@ class TestSudan(CommonCountryTests, TestCase):
             set(range(1985, 2050)) - {2006, 2007, 2039},
         )
 
+    def test_weekend(self):
+        for dt in (
+            "2008-01-18",  # FRI.
+            "2008-01-25",  # FRI.
+            "2008-01-26",  # SAT.
+            "2008-02-01",  # FRI.
+            "2008-02-01",  # SAT.
+        ):
+            self.assertTrue(self.holidays.is_weekend(dt))
+
+        for dt in (
+            "2008-01-17",  # THU.
+            "2008-01-19",  # SAT.
+            "2008-01-20",  # SUN.
+            "2008-01-24",  # THU.
+            "2008-01-27",  # SUN.
+        ):
+            self.assertFalse(self.holidays.is_weekend(dt))
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "عيد الإستقلال"),
