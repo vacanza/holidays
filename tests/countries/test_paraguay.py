@@ -160,7 +160,7 @@ class TestParaguay(CommonCountryTests, TestCase):
     def test_special_government_holidays(self):
         self.assertHolidayName(
             "Asueto de la Administración Pública",
-            Paraguay(categories=GOVERNMENT, years=range(2010, 2023)),
+            Paraguay(categories=GOVERNMENT, years=range(2010, 2026)),
             "2010-12-24",
             "2010-12-31",
             "2011-04-20",
