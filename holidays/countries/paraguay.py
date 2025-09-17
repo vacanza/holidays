@@ -137,6 +137,18 @@ class PRY(Paraguay):
 
 
 class ParaguayStaticHolidays:
+    """Paraguay special holidays.
+
+    References:
+        * <https://web.archive.org/web/20250917075450/https://www.pgr.gov.py/wp-content/uploads/2013/12/DECRETO-991-ASUETO-EL-24-Y-EL-31-DE-DICIEMBRE.pdf>
+        * <https://web.archive.org/web/20250917074759/https://www.ultimahora.com/ejecutivo-declara-asueto-el-23-y-30-diciembre-sector-publico-n3040041>
+        * <https://web.archive.org/web/20231003173505/https://www.lanacion.com.py/politica/2023/03/24/decretan-asueto-de-funcionarios-publicos-el-miercoles-5-de-abril-por-semana-santa/>
+        * <https://web.archive.org/web/20250917042124/https://informacionpublica.paraguay.gov.py/public/1046579-RESPUESTAAIPN79397pdf-RESPUESTAAIPN79397.pdf>
+        * <https://web.archive.org/web/20250416092842/https://www.radionacional.gov.py/2024/03/22/ejecutivo-declara-asueto-el-miercoles-27-de-marzo-para-funcionarios-publicos/>
+        * <https://web.archive.org/web/20241225185947/https://www.abc.com.py/politica/2024/12/20/declaran-asueto-para-funcionarios-publicos-el-24-y-31-de-diciembre/>
+        * <https://web.archive.org/web/20250917075032/https://portal.ips.gov.py/sistemas/ipsportal/archivos/archivos/1744391513.pdf>
+    """
+
     # Public holiday.
     public_holiday = tr("Asueto adicional")
     # Public sector holiday.
@@ -188,8 +200,13 @@ class ParaguayStaticHolidays:
             (DEC, 24, public_sector_holiday),
             (DEC, 31, public_sector_holiday),
         ),
-        # public sector holiday to let civil servants begin their Holy Week earlier.
-        2013: (MAR, 27, public_sector_holiday),
+        2013: (
+            # public sector holiday to let civil servants begin their Holy Week earlier.
+            (MAR, 27, public_sector_holiday),
+            # 2 year-end public sector holidays.
+            (DEC, 24, public_sector_holiday),
+            (DEC, 31, public_sector_holiday),
+        ),
         2014: (
             # public sector holiday to let civil servants begin their Holy Week earlier.
             (APR, 16, public_sector_holiday),
@@ -232,6 +249,9 @@ class ParaguayStaticHolidays:
             (APR, 13, public_sector_holiday),
             # public sector holiday due to the annual May 1st public holiday falling on a Sunday.
             (MAY, 2, public_sector_holiday),
+            # 2 year-end public sector holidays.
+            (DEC, 23, public_sector_holiday),
+            (DEC, 30, public_sector_holiday),
         ),
         2023: (
             # public sector holiday to let civil servants begin their Holy Week earlier.

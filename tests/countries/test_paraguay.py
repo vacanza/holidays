@@ -145,7 +145,8 @@ class TestParaguay(CommonCountryTests, TestCase):
         )
 
     def test_special_public_holidays(self):
-        self.assertHoliday(
+        self.assertHolidayName(
+            "Asueto adicional",
             "2007-01-29",
             "2009-09-10",
             "2010-06-14",
@@ -157,7 +158,8 @@ class TestParaguay(CommonCountryTests, TestCase):
         )
 
     def test_special_government_holidays(self):
-        self.assertHoliday(
+        self.assertHolidayName(
+            "Asueto de la Administración Pública",
             Paraguay(categories=GOVERNMENT, years=range(2010, 2023)),
             "2010-12-24",
             "2010-12-31",
@@ -168,6 +170,8 @@ class TestParaguay(CommonCountryTests, TestCase):
             "2012-12-24",
             "2012-12-31",
             "2013-03-27",
+            "2013-12-24",
+            "2013-12-31",
             "2014-04-16",
             "2014-12-24",
             "2014-12-31",
@@ -186,6 +190,8 @@ class TestParaguay(CommonCountryTests, TestCase):
             "2021-12-31",
             "2022-04-13",
             "2022-05-02",
+            "2022-12-23",
+            "2022-12-30",
             "2023-04-05",
             "2023-12-07",
             "2024-03-27",
@@ -210,7 +216,9 @@ class TestParaguay(CommonCountryTests, TestCase):
             ("2022-08-15", "Día de la Fundación de Asunción"),
             ("2022-10-03", "Día de la Batalla de Boquerón"),
             ("2022-12-08", "Día de la Virgen de Caacupé"),
+            ("2022-12-23", "Asueto de la Administración Pública"),
             ("2022-12-25", "Día de la Navidad"),
+            ("2022-12-30", "Asueto de la Administración Pública"),
         )
 
     def test_l10n_en_us(self):
@@ -230,7 +238,9 @@ class TestParaguay(CommonCountryTests, TestCase):
             ("2022-08-15", "Asuncion Foundation's Day"),
             ("2022-10-03", "Boqueron Battle Day"),
             ("2022-12-08", "Caacupe Virgin Day"),
+            ("2022-12-23", "Public sector holiday"),
             ("2022-12-25", "Christmas Day"),
+            ("2022-12-30", "Public sector holiday"),
         )
 
     def test_l10n_uk(self):
@@ -250,5 +260,7 @@ class TestParaguay(CommonCountryTests, TestCase):
             ("2022-08-15", "День заснування Асунсьйона"),
             ("2022-10-03", "День битви за Бокерон"),
             ("2022-12-08", "День Богоматері Каакупе"),
+            ("2022-12-23", "Вихідний державних установ"),
             ("2022-12-25", "Різдво Христове"),
+            ("2022-12-30", "Вихідний державних установ"),
         )
