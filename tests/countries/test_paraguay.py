@@ -33,7 +33,7 @@ class TestParaguay(CommonCountryTests, TestCase):
 
     def test_patriots_day(self):
         name = "Día de los Héroes de la Patria"
-        years_excluded = {2013, 2016, 2018, 2019, 2022, 2023}
+        years_excluded = {2013, 2016, 2017, 2018, 2019, 2022, 2023, 2025}
         self.assertHolidayName(
             name, (f"{year}-03-01" for year in set(range(1991, 2050)).difference(years_excluded))
         )
@@ -42,10 +42,12 @@ class TestParaguay(CommonCountryTests, TestCase):
             name,
             "2013-03-04",
             "2016-02-29",
+            "2017-02-27",
             "2018-02-26",
             "2019-03-04",
             "2022-02-28",
             "2023-02-27",
+            "2025-03-03",
         )
 
     def test_easter(self):
@@ -95,22 +97,27 @@ class TestParaguay(CommonCountryTests, TestCase):
 
     def test_chaco_armistice_day(self):
         name = "Día de la Paz del Chaco"
-        years_excluded = {2014, 2018, 2019, 2024}
+        years_excluded = {2013, 2014, 2018, 2019, 2024, 2025}
         self.assertHolidayName(
             name, (f"{year}-06-12" for year in set(range(1991, 2050)).difference(years_excluded))
         )
         self.assertNoHoliday(f"{year}-06-12" for year in years_excluded)
         self.assertHolidayName(
             name,
+            "2013-06-10",
             "2014-06-16",
             "2018-06-11",
             "2019-06-17",
             "2024-06-10",
+            "2025-06-16",
         )
 
     def test_asuncion_foundations_day(self):
+        name = "Día de la Fundación de Asunción"
         self.assertHolidayName(
-            "Día de la Fundación de Asunción", (f"{year}-08-15" for year in range(1991, 2050))
+            name,
+            (f"{year}-08-15" for year in (*range(1991, 2017), *range(2018, 2050))),
+            "2017-08-14",
         )
 
     def test_boqueron_battle_day(self):
@@ -179,6 +186,12 @@ class TestParaguay(CommonCountryTests, TestCase):
             "2021-12-31",
             "2022-04-13",
             "2022-05-02",
+            "2023-04-05",
+            "2023-12-07",
+            "2024-03-27",
+            "2024-12-24",
+            "2024-12-31",
+            "2025-04-16",
         )
 
     def test_l10n_default(self):
