@@ -105,22 +105,18 @@ class Algeria(
         self._add_mawlid_day(tr("عيد المولد النبوي"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("عيد الفطر"))
-
-        # Eid al-Fitr Holiday.
-        name = tr("عطلة عيد الفطر")
+        name = tr("عيد الفطر")
+        self._add_eid_al_fitr_day(name)
         self._add_eid_al_fitr_day_two(name)
         # Added via Loi n° 23-10 du 8 Dhou El Hidja 1444.
         if self._year >= 2024:
             self._add_eid_al_fitr_day_three(name)
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("عيد الأضحى"))
-
+        name = tr("عيد الأضحى")
+        self._add_eid_al_adha_day(name)
         # Added via Ordonnance n° 68-419 du 26 juin 1968.
         if self._year >= 1969:
-            # Eid al-Adha Holiday.
-            name = tr("عطلة عيد الأضحى")
             self._add_eid_al_adha_day_two(name)
             # Added via Loi n° 23-10 du 8 Dhou El Hidja 1444.
             if self._year >= 2023:
