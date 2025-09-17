@@ -113,8 +113,12 @@ class TestAlgeria(CommonCountryTests, TestCase):
             "2025-03-31",
             "2025-04-01",
         )
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 2, range(1964, 1968), range(1969, 2000), range(2001, 2024))
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 3, range(2024, 2033), range(2034, 2050))
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 2, range(1964, 1968), range(1969, 2000), range(2001, 2024)
+        )
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 3, range(2024, 2033), range(2034, 2050)
+        )
         self.assertIslamicNoEstimatedHolidayNameCount(name, 4, 1968, 2000)
         self.assertIslamicNoEstimatedHolidayNameCount(name, 6, 2033)
 
@@ -139,8 +143,12 @@ class TestAlgeria(CommonCountryTests, TestCase):
             "2025-06-08",
         )
         self.assertIslamicNoEstimatedHolidayNameCount(name, 1, range(1964, 1969))
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 2, range(1969, 1974), range(1975, 2006), range(2009, 2023))
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 3, range(2006, 2008), range(2023, 2039), range(2040, 2050))
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 2, range(1969, 1974), range(1975, 2006), range(2009, 2023)
+        )
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 3, range(2006, 2008), range(2023, 2039), range(2040, 2050)
+        )
         self.assertIslamicNoEstimatedHolidayNameCount(name, 4, 1974)
         self.assertIslamicNoEstimatedHolidayNameCount(name, 6, 2039)
 
