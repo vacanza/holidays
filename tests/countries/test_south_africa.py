@@ -25,7 +25,7 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         self.assertAliases(SouthAfrica, ZA, ZAF)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(SouthAfrica(years=1909))
+        self.assertNoHolidays(SouthAfrica(years=1910))
 
     def test_special_holidays(self):
         self.assertHoliday(
