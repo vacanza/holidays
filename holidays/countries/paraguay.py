@@ -155,25 +155,25 @@ class ParaguayStaticHolidays:
     public_sector_holiday = tr("Asueto de la Administración Pública")
 
     special_public_holidays = {
-        # public holiday for business purposes, in view of the recently increased risk
+        # Public holiday for business purposes, in view of the recently increased risk
         # of Dengue fever.
         2007: (JAN, 29, public_holiday),
-        # public sector holiday to celebrate Paraguay's football team's qualification
+        # Public sector holiday to celebrate Paraguay's football team's qualification
         # for the 2010 World Cup.
         2009: (SEP, 10, public_holiday),
-        # public holiday to coincide with the Paraguay-Italy game of the current World Cup.
+        # Public holiday to coincide with the Paraguay-Italy game of the current World Cup.
         2010: (JUN, 14, public_holiday),
         2011: (
-            # public holiday to coincide with the current anti-Dengue drive.
+            # Public holiday to coincide with the current anti-Dengue drive.
             (APR, 19, public_holiday),
-            # public holidays to commemorate the Bicentennial of Paraguay's independence.
+            # Public holidays to commemorate the Bicentennial of Paraguay's independence.
             (MAY, 14, public_holiday),
             (MAY, 16, public_holiday),
         ),
-        # date of the inauguration of President-elect Horacio Cartes.
+        # Date of the inauguration of President-elect Horacio Cartes.
         2013: (AUG, 14, public_holiday),
         2015: (
-            # public holidays in Paraguay on account of the upcoming visit of Pope Francis
+            # Public holidays in Paraguay on account of the upcoming visit of Pope Francis
             # in Paraguay.
             (JUL, 10, public_holiday),
             (JUL, 11, public_holiday),
@@ -187,43 +187,43 @@ class ParaguayStaticHolidays:
             (DEC, 31, public_sector_holiday),
         ),
         2011: (
-            # public sector holiday to let civil servants begin their Holy Week earlier.
+            # Public sector holiday to let civil servants begin their Holy Week earlier.
             (APR, 20, public_sector_holiday),
             # 2 year-end public sector holidays.
             (DEC, 23, public_sector_holiday),
             (DEC, 30, public_sector_holiday),
         ),
         2012: (
-            # public sector holiday to let civil servants begin their Holy Week earlier.
+            # Public sector holiday to let civil servants begin their Holy Week earlier.
             (APR, 4, public_sector_holiday),
             # 2 year-end public sector holidays.
             (DEC, 24, public_sector_holiday),
             (DEC, 31, public_sector_holiday),
         ),
         2013: (
-            # public sector holiday to let civil servants begin their Holy Week earlier.
+            # Public sector holiday to let civil servants begin their Holy Week earlier.
             (MAR, 27, public_sector_holiday),
             # 2 year-end public sector holidays.
             (DEC, 24, public_sector_holiday),
             (DEC, 31, public_sector_holiday),
         ),
         2014: (
-            # public sector holiday to let civil servants begin their Holy Week earlier.
+            # Public sector holiday to let civil servants begin their Holy Week earlier.
             (APR, 16, public_sector_holiday),
             # 2 year-end public sector holidays.
             (DEC, 24, public_sector_holiday),
             (DEC, 31, public_sector_holiday),
         ),
         2015: (
-            # public sector holiday to let civil servants begin their Holy Week earlier.
+            # Public sector holiday to let civil servants begin their Holy Week earlier.
             (APR, 1, public_sector_holiday),
             # 2 year-end public sector holidays.
             (DEC, 24, public_sector_holiday),
             (DEC, 31, public_sector_holiday),
         ),
-        # public sector holiday to let civil servants begin their Holy Week earlier.
+        # Public sector holiday to let civil servants begin their Holy Week earlier.
         2016: (MAR, 23, public_sector_holiday),
-        # public sector holiday to let civil servants begin their Holy Week earlier.
+        # Public sector holiday to let civil servants begin their Holy Week earlier.
         2017: (MAR, 28, public_sector_holiday),
         2018: (
             # 2 year-end public sector holidays.
@@ -231,13 +231,13 @@ class ParaguayStaticHolidays:
             (DEC, 31, public_sector_holiday),
         ),
         2019: (
-            # public sector holiday to let civil servants begin their Holy Week earlier.
+            # Public sector holiday to let civil servants begin their Holy Week earlier.
             (APR, 17, public_sector_holiday),
             # 2 year-end public sector holidays.
             (DEC, 24, public_sector_holiday),
             (DEC, 31, public_sector_holiday),
         ),
-        # public sector holiday to let civil servants begin their Holy Week earlier.
+        # Public sector holiday to let civil servants begin their Holy Week earlier.
         2020: (APR, 8, public_sector_holiday),
         2021: (
             # 2 year-end public sector holidays.
@@ -245,27 +245,27 @@ class ParaguayStaticHolidays:
             (DEC, 31, public_sector_holiday),
         ),
         2022: (
-            # public sector holiday to let civil servants begin their Holy Week earlier.
+            # Public sector holiday to let civil servants begin their Holy Week earlier.
             (APR, 13, public_sector_holiday),
-            # public sector holiday due to the annual May 1st public holiday falling on a Sunday.
+            # Public sector holiday due to the annual May 1st public holiday falling on a Sunday.
             (MAY, 2, public_sector_holiday),
             # 2 year-end public sector holidays.
             (DEC, 23, public_sector_holiday),
             (DEC, 30, public_sector_holiday),
         ),
         2023: (
-            # public sector holiday to let civil servants begin their Holy Week earlier.
+            # Public sector holiday to let civil servants begin their Holy Week earlier.
             (APR, 5, public_sector_holiday),
-            # public sector holiday from resolution no. 1045.
+            # Public sector holiday from resolution no. 1045.
             (DEC, 7, public_sector_holiday),
         ),
         2024: (
-            # public sector holiday to let civil servants begin their Holy Week earlier.
+            # Public sector holiday to let civil servants begin their Holy Week earlier.
             (MAR, 27, public_sector_holiday),
             # 2 year-end public sector holidays.
             (DEC, 24, public_sector_holiday),
             (DEC, 31, public_sector_holiday),
         ),
-        # public sector holiday to let civil servants begin their Holy Week earlier.
+        # Public sector holiday to let civil servants begin their Holy Week earlier.
         2025: (APR, 16, public_sector_holiday),
     }
