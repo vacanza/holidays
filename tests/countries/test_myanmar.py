@@ -70,7 +70,13 @@ class TestMyanmar(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidayName("ပြည်ထောင်စုနေ့", (f"{year}-02-12" for year in range(1948, 2050)))
 
     def test_peasants_day(self):
-        self.assertHolidayName("တောင်သူလယ်သမားနေ့", (f"{year}-03-02" for year in range(1948, 2050)))
+        name = "တောင်သူလယ်သမားနေ့"
+        self.assertHolidayName(
+            name,
+            (f"{year}-01-01" for year in range(1963, 1965)),
+            (f"{year}-03-02" for year in range(1965, 2050)),
+        )
+        self.assertNoHolidayName(name, range(1948, 1963))
 
     def test_armed_forces_day(self):
         name_1 = "တော်လှန်ရေးနေ့"

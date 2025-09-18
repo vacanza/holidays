@@ -83,7 +83,11 @@ class Myanmar(
         self._add_holiday_feb_12(tr("ပြည်ထောင်စုနေ့"))
 
         # Peasants' Day.
-        self._add_holiday_mar_2(tr("တောင်သူလယ်သမားနေ့"))
+        name = tr("တောင်သူလယ်သမားနေ့")
+        if self._year >= 1965:
+            self._add_holiday_mar_2(name)
+        elif self._year >= 1963:
+            self._add_holiday_jan_1(name)
 
         self._add_holiday_mar_27(
             # Armed Forces Day.
