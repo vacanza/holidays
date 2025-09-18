@@ -172,7 +172,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>DZ</td>
 <td></td>
 <td><strong>ar</strong>, en_US, fr</td>
-<td></td>
+<td>CHRISTIAN, HEBREW</td>
 </tr>
 <tr>
 <td>American Samoa</td>
