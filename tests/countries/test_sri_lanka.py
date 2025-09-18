@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import BANK, GOVERNMENT, PUBLIC, WORKDAY
+from holidays.constants import BANK, GOVERNMENT, WORKDAY
 from holidays.countries.sri_lanka import SriLanka, LK, LKA
 from tests.common import CommonCountryTests
 
@@ -27,7 +27,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(
-            SriLanka(years=(1971, 2026), categories=(BANK, GOVERNMENT, PUBLIC, WORKDAY))
+            SriLanka(categories=SriLanka.supported_categories, years=(1971, 2026))
         )
 
     def test_special(self):
@@ -164,9 +164,9 @@ class TestSriLanka(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, 2002)
 
     def test_2023_all(self):
-        # https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2023
+        # https://web.archive.org/web/20250218215654/https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2023
         self.assertHolidays(
-            SriLanka(categories=(BANK, GOVERNMENT, PUBLIC, WORKDAY), years=2023),
+            SriLanka(categories=SriLanka.supported_categories, years=2023),
             ("2023-01-06", "දුරුතු පුර පසළොස්වක පෝය දිනය"),
             ("2023-01-15", "දෙමළ තෛපොංැලල් දිනය"),
             ("2023-01-16", "විශේෂ බැංකු නිවාඩු දිනය"),
@@ -197,9 +197,9 @@ class TestSriLanka(CommonCountryTests, TestCase):
         )
 
     def test_2024_all(self):
-        # https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2024
+        # https://web.archive.org/web/20250524162115/https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2024
         self.assertHolidays(
-            SriLanka(categories=(BANK, GOVERNMENT, PUBLIC, WORKDAY), years=2024),
+            SriLanka(categories=SriLanka.supported_categories, years=2024),
             ("2024-01-15", "දෙමළ තෛපොංැලල් දිනය"),
             ("2024-01-25", "දුරුතු පුර පසළොස්වක පෝය දිනය"),
             ("2024-02-04", "නිදහස් සමරු දිනය"),
@@ -229,8 +229,8 @@ class TestSriLanka(CommonCountryTests, TestCase):
             ("2024-12-25", "නත්තල් උත්සව දිනය"),
         )
 
-    def test_l10_default(self):
-        # https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2025
+    def test_l10n_default(self):
+        # https://web.archive.org/web/20221203195604/https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2022
         self.assertLocalizedHolidays(
             ("2022-01-14", "දෙමළ තෛපොංැලල් දිනය"),
             ("2022-01-17", "දුරුතු පුර පසළොස්වක පෝය දිනය"),
