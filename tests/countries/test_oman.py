@@ -165,8 +165,8 @@ class TestOman(CommonCountryTests, TestCase):
         for dt in (
             "2013-04-25",  # THU.
             "2013-04-26",  # FRI.
-            "2013-05-03",  # SAT.
-            "2013-05-04",  # FRI.
+            "2013-05-03",  # FRI.
+            "2013-05-04",  # SAT.
         ):
             self.assertTrue(self.holidays.is_weekend(dt))
 

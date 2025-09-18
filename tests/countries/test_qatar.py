@@ -165,8 +165,8 @@ class TestQatar(CommonCountryTests, TestCase):
             "2003-07-24",  # THU.
             "2003-07-25",  # FRI.
             "2003-07-31",  # THU.
-            "2003-08-01",  # SAT.
-            "2003-08-02",  # FRI.
+            "2003-08-01",  # FRI.
+            "2003-08-02",  # SAT.
         ):
             self.assertTrue(self.holidays.is_weekend(dt))
 

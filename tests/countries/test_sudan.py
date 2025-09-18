@@ -131,7 +131,7 @@ class TestSudan(CommonCountryTests, TestCase):
             "2008-01-25",  # FRI.
             "2008-01-26",  # SAT.
             "2008-02-01",  # FRI.
-            "2008-02-01",  # SAT.
+            "2008-02-02",  # SAT.
         ):
             self.assertTrue(self.holidays.is_weekend(dt))
 
