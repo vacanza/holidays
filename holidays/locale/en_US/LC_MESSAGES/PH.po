@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.60\n"
+"Project-Id-Version: Holidays 0.81\n"
 "POT-Creation-Date: 2024-10-30 02:45+0700\n"
-"PO-Revision-Date: 2024-11-02 01:48+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2025-09-09 23:22+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -120,10 +120,14 @@ msgstr "Additional special (non-working) day"
 msgid "Elections special (non-working) day"
 msgstr "Elections special (non-working) day"
 
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "Christmas Eve"
+
 #. All Saints' Day Eve.
 msgid "All Saints' Day Eve"
 msgstr "All Saints' Day Eve"
 
-#. Christmas Eve.
-msgid "Christmas Eve"
-msgstr "Christmas Eve"
+#. All Souls' Day.
+msgid "All Souls' Day"
+msgstr "All Souls' Day"

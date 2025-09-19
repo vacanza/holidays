@@ -28,6 +28,8 @@ class Serbia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "sr"
     # %s (observed).
     observed_label = tr("%s (слободан дан)")
+    # Independence Restored on June 5th, 2006.
+    start_year = 2007
     supported_languages = ("en_US", "sr")
 
     def __init__(self, *args, **kwargs):
@@ -64,10 +66,13 @@ class Serbia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Good Friday.
         self._add_good_friday(tr("Велики петак"))
+
         # Holy Saturday.
         self._add_holy_saturday(tr("Велика субота"))
+
         # Easter Sunday.
         self._add_easter_sunday(tr("Васкрс"))
+
         # Easter Monday.
         self._add_easter_monday(tr("Други дан Васкрса"))
 

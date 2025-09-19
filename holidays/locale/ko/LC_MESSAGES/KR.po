@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.37\n"
+"Project-Id-Version: Holidays 0.81\n"
 "POT-Creation-Date: 2023-10-26 23:49+0700\n"
-"PO-Revision-Date: 2023-10-26 23:54+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2025-09-07 14:05+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,16 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
 "X-Source-Language: ko\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (추정)"
+msgstr ""
+
+#. Alternative holiday for %s (estimated).
+#, c-format
+msgid "%s 대체 휴일 (추정)"
+msgstr ""
 
 #. Alternative holiday for %s.
 #, c-format

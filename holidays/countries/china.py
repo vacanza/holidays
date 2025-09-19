@@ -65,6 +65,10 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
     """
 
     country = "CN"
+    # %s (estimated).
+    estimated_label = tr("%s（推定）")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s（观察日，推定）")
     # %s (observed).
     observed_label = tr("%s（观察日）")
     supported_categories = (PUBLIC, HALF_DAY)

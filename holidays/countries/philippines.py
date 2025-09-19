@@ -53,6 +53,7 @@ class Philippines(
         * [Proclamation No. 839/2025](https://archive.org/details/20250320-proc-839-frm_202506)
         * [Proclamation No. 878/2025](https://archive.org/details/20250506-proc-878-frm_202506)
         * [Proclamation No. 911/2025](https://archive.org/details/20250521-proc-911-frm_20250606_1800)
+        * [Proclamation No. 1006/2025](https://archive.org/details/20250903-proc-1006-frm)
     """
 
     country = "PH"
@@ -240,8 +241,12 @@ class PhilippinesIslamicHolidays(_CustomIslamicHolidays):
 class PhilippinesStaticHolidays:
     # Additional special (non-working) day.
     additional_special = tr("Additional special (non-working) day")
+
     # Elections special (non-working) day.
     election_special = tr("Elections special (non-working) day")
+
+    # Christmas Eve.
+    christmas_eve = tr("Christmas Eve")
 
     special_public_holidays = {
         2008: (
@@ -309,7 +314,11 @@ class PhilippinesStaticHolidays:
             (JUL, 27, additional_special),
             # All Saints' Day Eve.
             (OCT, 31, tr("All Saints' Day Eve")),
-            # Christmas Eve.
-            (DEC, 24, tr("Christmas Eve")),
+            (DEC, 24, christmas_eve),
+        ),
+        2026: (
+            # All Souls' Day.
+            (NOV, 2, tr("All Souls' Day")),
+            (DEC, 24, christmas_eve),
         ),
     }

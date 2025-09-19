@@ -20,7 +20,7 @@ from datetime import date
 from pathlib import Path
 
 from git import Repo
-from github import Github
+from github import Auth, Github
 from github.GithubException import UnknownObjectException
 
 sys.path.append(f"{Path.cwd()}")
@@ -79,7 +79,7 @@ class ReleaseNotesGenerator:
         self.args = arg_parser.parse_args()
 
         self.local_repo = Repo(Path.cwd())
-        self.remote_repo = Github(self.github_token).get_repo(REPOSITORY_NAME)
+        self.remote_repo = Github(auth=Auth.Token(self.github_token)).get_repo(REPOSITORY_NAME)
 
         self.previous_commits: set[str] = set()
         self.pull_requests: dict[int, tuple[str, str]] = {}

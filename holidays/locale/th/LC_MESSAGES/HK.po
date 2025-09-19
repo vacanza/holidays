@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.69\n"
+"Project-Id-Version: Holidays 0.81\n"
 "POT-Creation-Date: 2025-02-04 14:03+0700\n"
-"PO-Revision-Date: 2025-03-05 09:48+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2025-09-07 14:05+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -27,9 +27,19 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 "X-Source-Language: zh_HK\n"
 
+#. %s (estimated).
+#, c-format
+msgid "%s（推定）"
+msgstr "%s (โดยประมาณ)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s（補假，推定）"
+msgstr "ชดเชย%s (โดยประมาณ)"
+
 #. %s (observed).
 #, c-format
-msgid "%s（慶祝）"
+msgid "%s（補假）"
 msgstr "ชดเชย%s"
 
 #. The Day following Mid-Autumn Festival.

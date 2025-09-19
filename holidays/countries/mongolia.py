@@ -32,6 +32,8 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
 
     country = "MN"
     default_language = "mn"
+    # %s (estimated).
+    estimated_label = tr("%s (урьдчилсан)")
     start_year = 2004
     supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("en_US", "mn")

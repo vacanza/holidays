@@ -172,7 +172,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>DZ</td>
 <td></td>
 <td><strong>ar</strong>, en_US, fr</td>
-<td></td>
+<td>CHRISTIAN, HEBREW</td>
 </tr>
 <tr>
 <td>American Samoa</td>
@@ -1587,6 +1587,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>si_LK</strong>, ta_LK</td>
 <td>BANK, GOVERNMENT, WORKDAY</td>
+</tr>
+<tr>
+<td>Sudan</td>
+<td>SD</td>
+<td></td>
+<td><strong>ar_SD</strong>, en_US</td>
+<td></td>
 </tr>
 <tr>
 <td>Suriname</td>
