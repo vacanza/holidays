@@ -156,10 +156,10 @@ class TestArgentina(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(self.start_year, 2006))
 
     def test_malvinas_war_day(self):
-        name_1 = "Día del Veterano de Guerra"
-        name_2 = "Día del Veterano y de los Caidos en la Guerra de Malvinas"
+        name_1993 = "Día del Veterano de Guerra"
+        name_2001 = "Día del Veterano y de los Caidos en la Guerra de Malvinas"
         self.assertHolidayName(
-            name_1,
+            name_1993,
             "1993-04-05",
             "1994-04-02",
             "1995-04-02",
@@ -170,7 +170,7 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2000-04-02",
         )
         self.assertHolidayName(
-            name_2,
+            name_2001,
             "2001-04-02",
             "2002-04-01",
             "2003-03-31",
@@ -180,10 +180,13 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2020-03-31",
         )
         self.assertHolidayName(
-            name_2, (f"{year}-04-02" for year in (*range(2007, 2020), *range(2021, self.end_year)))
+            name_2001,
+            (f"{year}-04-02" for year in (*range(2007, 2020), *range(2021, self.end_year))),
         )
-        self.assertNoHolidayName(name_1, range(self.start_year, 1993), range(2001, self.end_year))
-        self.assertNoHolidayName(name_2, range(self.start_year, 2001))
+        self.assertNoHolidayName(
+            name_1993, range(self.start_year, 1993), range(2001, self.end_year)
+        )
+        self.assertNoHolidayName(name_2001, range(self.start_year, 2001))
 
     def test_maundy_thursday(self):
         name = "Jueves Santo"
@@ -377,14 +380,14 @@ class TestArgentina(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1976, self.end_year))
 
     def test_cultural_diversity_day(self):
-        name_1 = "Día de la Raza"
-        name_2 = "Día del Respeto a la Diversidad Cultural"
+        name_1917 = "Día de la Raza"
+        name_2010 = "Día del Respeto a la Diversidad Cultural"
         self.assertHolidayName(
-            name_1,
+            name_1917,
             (f"{year}-10-12" for year in (*range(self.start_year, 1976), *range(1982, 1988))),
         )
         self.assertHolidayName(
-            name_1,
+            name_1917,
             "1988-10-10",
             "1989-10-16",
             "1990-10-15",
@@ -409,7 +412,7 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2009-10-12",
         )
         self.assertHolidayName(
-            name_2,
+            name_2010,
             "2010-10-11",
             "2011-10-10",
             "2012-10-08",
@@ -427,9 +430,9 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2024-10-12",
             "2025-10-12",
         )
-        self.assertHolidayName(name_2, range(2010, self.end_year))
-        self.assertNoHolidayName(name_1, range(1976, 1982), range(2010, self.end_year))
-        self.assertNoHolidayName(name_2, range(self.start_year, 2010))
+        self.assertHolidayName(name_2010, range(2010, self.end_year))
+        self.assertNoHolidayName(name_1917, range(1976, 1982), range(2010, self.end_year))
+        self.assertNoHolidayName(name_2010, range(self.start_year, 2010))
 
     def test_all_saints_day(self):
         name = "Todos Los Santos"
@@ -1026,7 +1029,7 @@ class TestArgentina(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_armenian_holidays(self):
+    def test_day_of_action_for_tolerance_and_respect_among_peoples(self):
         name = "Día de acción por la tolerancia y el respeto entre los pueblos"
         self.assertNoHolidayName(name)
         self.assertArmenianHolidayName(
@@ -1034,13 +1037,13 @@ class TestArgentina(CommonCountryTests, TestCase):
         )
         self.assertNoArmenianHolidayName(name, range(self.start_year, 2007))
 
-    def test_bank_holidays(self):
+    def test_bankers_day(self):
         name = "Día del Bancario"
         self.assertNoHolidayName(name)
         self.assertBankHolidayName(name, (f"{year}-11-06" for year in range(1975, self.end_year)))
         self.assertNoBankHolidayName(name, range(self.start_year, 1975))
 
-    def test_government_holidays(self):
+    def test_state_workers_day(self):
         name = "Día del Trabajador del Estado"
         self.assertNoHolidayName(name)
         self.assertGovernmentHolidayName(
@@ -1048,7 +1051,7 @@ class TestArgentina(CommonCountryTests, TestCase):
         )
         self.assertNoGovernmentHolidayName(name, range(self.start_year, 2014))
 
-    def test_hebrew_holidays(self):
+    def test_rosh_hashanah(self):
         name = "Año Nuevo Judío (Rosh Hashana)"
         self.assertNoHolidayName(name)
         self.assertHebrewHolidayName(
@@ -1074,9 +1077,10 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2025-09-23",
             "2025-09-24",
         )
-        self.assertHebrewHolidayName(name, range(1996, self.end_year))
+        self.assertHebrewHolidayNameCount(name, 2, range(1996, self.end_year))
         self.assertNoHebrewHolidayName(name, range(self.start_year, 1996))
 
+    def test_yom_kippur(self):
         name = "Día del Perdón (Iom Kipur)"
         self.assertNoHolidayName(name)
         self.assertHebrewHolidayName(
@@ -1095,6 +1099,7 @@ class TestArgentina(CommonCountryTests, TestCase):
         self.assertHebrewHolidayName(name, range(1996, self.end_year))
         self.assertNoHebrewHolidayName(name, range(self.start_year, 1996))
 
+    def test_pesach(self):
         name = "Pascua Judía (Pésaj)"
         self.assertNoHolidayName(name)
         self.assertHebrewHolidayName(
@@ -1140,10 +1145,10 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2025-04-19",
             "2025-04-20",
         )
-        self.assertHebrewHolidayName(name, range(2007, self.end_year))
+        self.assertHebrewHolidayNameCount(name, 4, range(2007, self.end_year))
         self.assertNoHebrewHolidayName(name, range(self.start_year, 2007))
 
-    def test_islamic_holidays(self):
+    def test_islamic_new_year(self):
         name = "Año Nuevo Musulmán (Hégira)"
         self.assertNoHolidayName(name)
         self.assertIslamicIslamicNoEstimatedHolidayName(
@@ -1159,6 +1164,7 @@ class TestArgentina(CommonCountryTests, TestCase):
         self.assertIslamicIslamicNoEstimatedHolidayName(name, range(1997, self.end_year))
         self.assertNoIslamicIslamicNoEstimatedHolidayName(name, range(self.start_year, 1997))
 
+    def test_eid_al_fitr(self):
         name = "Día posterior a la culminación del ayuno (Id Al-Fitr)"
         self.assertNoHolidayName(name)
         self.assertIslamicIslamicNoEstimatedHolidayName(
@@ -1174,6 +1180,7 @@ class TestArgentina(CommonCountryTests, TestCase):
         self.assertIslamicIslamicNoEstimatedHolidayName(name, range(1997, self.end_year))
         self.assertNoIslamicIslamicNoEstimatedHolidayName(name, range(self.start_year, 1997))
 
+    def test_eid_al_adha(self):
         name = "Día de la Fiesta del Sacrificio (Id Al-Adha)"
         self.assertNoHolidayName(name)
         self.assertIslamicIslamicNoEstimatedHolidayName(

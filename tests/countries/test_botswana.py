@@ -30,7 +30,7 @@ class TestBotswana(CommonCountryTests, TestCase):
     def test_special_holidays(self):
         self.assertHoliday("2019-07-02")
 
-    def test_new_years(self):
+    def test_new_years_day(self):
         for year in self.full_range:
             self.assertHoliday(f"{year}-01-01", f"{year}-01-02")
 

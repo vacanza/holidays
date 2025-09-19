@@ -48,33 +48,33 @@ class TestAustralia(CommonCountryTests, TestCase):
             self.assertHolidayName(name, holidays, self.full_range)
 
     def test_australia_day(self):
-        name_1 = "Anniversary Day"
-        name_2 = "Australia Day"
-        self.assertHolidayName(name_2, (f"{year}-01-26" for year in range(1935, self.end_year)))
-        self.assertNoHolidayName(name_2, range(self.start_year, 1935))
+        name_1801 = "Anniversary Day"
+        name_1935 = "Australia Day"
+        self.assertHolidayName(name_1935, (f"{year}-01-26" for year in range(1935, self.end_year)))
+        self.assertNoHolidayName(name_1935, range(self.start_year, 1935))
         self.assertNoHoliday(f"{year}-01-26" for year in range(self.start_year, 1935))
 
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "NSW":
-                self.assertHolidayName(name_1, holidays, range(1888, 1946))
-                self.assertHolidayName(name_2, holidays, range(1946, self.end_year))
+                self.assertHolidayName(name_1801, holidays, range(1888, 1946))
+                self.assertHolidayName(name_1935, holidays, range(1946, self.end_year))
                 self.assertNoHolidayName(
-                    name_1, holidays, range(self.start_year, 1888), range(1946, self.end_year)
+                    name_1801, holidays, range(self.start_year, 1888), range(1946, self.end_year)
                 )
-                self.assertNoHolidayName(name_2, holidays, range(self.start_year, 1946))
-                self.assertNoSubdivNswHolidayName(name_1, 1887)
+                self.assertNoHolidayName(name_1935, holidays, range(self.start_year, 1946))
+                self.assertNoSubdivNswHolidayName(name_1801, 1887)
             elif subdiv == "SA":
-                self.assertHolidayName(name_2, holidays, range(1935, self.end_year))
-                self.assertNoHolidayName(name_2, holidays, range(self.start_year, 1935))
-                self.assertNoHolidayName(name_1, holidays)
+                self.assertHolidayName(name_1935, holidays, range(1935, self.end_year))
+                self.assertNoHolidayName(name_1935, holidays, range(self.start_year, 1935))
+                self.assertNoHolidayName(name_1801, holidays)
             else:
-                self.assertHolidayName(name_1, holidays, range(1888, 1935))
-                self.assertHolidayName(name_2, holidays, range(1935, self.end_year))
+                self.assertHolidayName(name_1801, holidays, range(1888, 1935))
+                self.assertHolidayName(name_1935, holidays, range(1935, self.end_year))
                 self.assertNoHolidayName(
-                    name_1, holidays, range(self.start_year, 1888), range(1935, self.end_year)
+                    name_1801, holidays, range(self.start_year, 1888), range(1935, self.end_year)
                 )
-                self.assertNoHolidayName(name_2, holidays, range(self.start_year, 1935))
-                self.assertNoHolidayName(name_1, Australia(subdiv=subdiv, years=1887))
+                self.assertNoHolidayName(name_1935, holidays, range(self.start_year, 1935))
+                self.assertNoHolidayName(name_1801, Australia(subdiv=subdiv, years=1887))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -419,10 +419,10 @@ class TestAustralia(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_western_australia_day(self):
-        name_1 = "Foundation Day"
-        name_2 = "Western Australia Day"
-        self.assertNoHolidayName(name_1)
-        self.assertNoHolidayName(name_2)
+        name_1833 = "Foundation Day"
+        name_2012 = "Western Australia Day"
+        self.assertNoHolidayName(name_1833)
+        self.assertNoHolidayName(name_2012)
 
         dt_1 = (
             "2000-06-05",
@@ -445,14 +445,14 @@ class TestAustralia(CommonCountryTests, TestCase):
         )
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "WA":
-                self.assertHolidayName(name_1, holidays, dt_1)
-                self.assertHolidayName(name_2, holidays, dt_2)
-                self.assertNoHolidayName(name_1, holidays, range(2012, self.end_year))
-                self.assertNoHolidayName(name_2, holidays, range(self.start_year, 2012))
+                self.assertHolidayName(name_1833, holidays, dt_1)
+                self.assertHolidayName(name_2012, holidays, dt_2)
+                self.assertNoHolidayName(name_1833, holidays, range(2012, self.end_year))
+                self.assertNoHolidayName(name_2012, holidays, range(self.start_year, 2012))
             else:
-                self.assertNoHolidayName(name_1, holidays)
-                self.assertNoHolidayName(name_2, holidays)
-        self.assertNoSubdivWaHolidayName(name_1, 1832)
+                self.assertNoHolidayName(name_1833, holidays)
+                self.assertNoHolidayName(name_2012, holidays)
+        self.assertNoSubdivWaHolidayName(name_1833, 1832)
 
     def test_national_day_of_mourning_for_queen_elizabeth_ii(self):
         name = "National Day of Mourning for Queen Elizabeth II"

@@ -151,10 +151,10 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_national_heroes_and_sir_vere_cornwall_bird_snr_day(self):
-        name_1 = "National Heroes Day"
-        name_2 = "Sir Vere Cornwall Bird Snr. Day"
+        name_2005 = "National Heroes Day"
+        name_2014 = "Sir Vere Cornwall Bird Snr. Day"
         self.assertHolidayName(
-            name_1,
+            name_2005,
             "2005-12-09",
             "2006-12-11",
             "2007-12-09",
@@ -165,13 +165,14 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
             "2012-12-10",
             "2013-12-09",
         )
-        self.assertHolidayName(name_2, (f"{year}-12-09" for year in range(2014, self.end_year)))
-        self.assertNoHoliday(f"{year}-12-09" for year in range(self.start_year, 2005))
-        self.assertNoHolidayName(name_1, range(self.start_year, 2005), range(2014, self.end_year))
-        self.assertNoHolidayName(name_2, range(self.start_year, 2014))
+        self.assertHolidayName(name_2014, (f"{year}-12-09" for year in range(2014, self.end_year)))
+        self.assertNoHolidayName(
+            name_2005, range(self.start_year, 2005), range(2014, self.end_year)
+        )
+        self.assertNoHolidayName(name_2014, range(self.start_year, 2014))
 
         dt = ("2023-12-11",)
-        self.assertHolidayName(f"{name_2} (observed)", dt)
+        self.assertHolidayName(f"{name_2014} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_day(self):

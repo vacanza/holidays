@@ -157,8 +157,8 @@ class TestBulgaria(CommonCountryTests, TestCase):
 
     def test_national_awakening_day(self):
         name = "Ден на народните будители"
-        self.assertSchoolHolidayName(name, (f"{year}-11-01" for year in self.full_range))
         self.assertNoHolidayName(name)
+        self.assertSchoolHolidayName(name, (f"{year}-11-01" for year in self.full_range))
 
     def test_christmas_eve(self):
         name = "Бъдни вечер"

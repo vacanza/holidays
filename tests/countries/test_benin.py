@@ -198,24 +198,24 @@ class TestBenin(CommonCountryTests, TestCase):
 
     def test_remembrance_day(self):
         name = "Journée de Souvenir"
+        self.assertNoHolidayName(name)
         self.assertWorkdayHolidayName(
             name, (f"{year}-01-16" for year in range(1990, self.end_year))
         )
-        self.assertNoHolidayName(name)
 
     def test_peoples_sovereignty_day(self):
         name = "Journée de la Souveraineté de Peuple"
+        self.assertNoHolidayName(name)
         self.assertWorkdayHolidayName(
             name, (f"{year}-02-28" for year in range(1990, self.end_year))
         )
-        self.assertNoHolidayName(name)
 
     def test_womens_day(self):
         name = "Journée de la Femme"
+        self.assertNoHolidayName(name)
         self.assertWorkdayHolidayName(
             name, (f"{year}-03-08" for year in range(1990, self.end_year))
         )
-        self.assertNoHolidayName(name)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

@@ -25,6 +25,114 @@ class TestBelgium(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(Belgium, BE, BEL)
 
+    def test_new_years_day(self):
+        self.assertHolidayName("Nieuwjaar", (f"{year}-01-01" for year in self.full_range))
+
+    def test_good_friday(self):
+        name = "Goede Vrijdag"
+        self.assertNoHolidayName(name)
+        self.assertBankHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertBankHolidayName(name, self.full_range)
+
+    def test_easter_sunday(self):
+        name = "Pasen"
+        self.assertHolidayName(
+            name,
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
+            "2024-03-31",
+            "2025-04-20",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_easter_monday(self):
+        name = "Paasmaandag"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_labor_day(self):
+        self.assertHolidayName("Dag van de Arbeid", (f"{year}-05-01" for year in self.full_range))
+
+    def test_ascension_day(self):
+        name = "O. L. H. Hemelvaart"
+        self.assertHolidayName(
+            name,
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_friday_after_ascension_day(self):
+        name = "Vrijdag na O. L. H. Hemelvaart"
+        self.assertNoHolidayName(name)
+        self.assertBankHolidayName(
+            name,
+            "2020-05-22",
+            "2021-05-14",
+            "2022-05-27",
+            "2023-05-19",
+            "2024-05-10",
+            "2025-05-30",
+        )
+        self.assertBankHolidayName(name, self.full_range)
+
+    def test_whit_sunday(self):
+        name = "Pinksteren"
+        self.assertHolidayName(
+            name,
+            "2020-05-31",
+            "2021-05-23",
+            "2022-06-05",
+            "2023-05-28",
+            "2024-05-19",
+            "2025-06-08",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_national_day(self):
+        self.assertHolidayName("Nationale feestdag", (f"{year}-07-21" for year in self.full_range))
+
+    def test_assumption_day(self):
+        self.assertHolidayName(
+            "O. L. V. Hemelvaart", (f"{year}-08-15" for year in self.full_range)
+        )
+
+    def test_all_saints_day(self):
+        self.assertHolidayName("Allerheiligen", (f"{year}-11-01" for year in self.full_range))
+
+    def test_armistice_day(self):
+        self.assertHolidayName("Wapenstilstand", (f"{year}-11-11" for year in self.full_range))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Kerstmis", (f"{year}-12-25" for year in self.full_range))
+
+    def test_bank_holiday(self):
+        name = "Banksluitingsdag"
+        self.assertNoHolidayName(name)
+        self.assertBankHolidayName(name, (f"{year}-12-26" for year in self.full_range))
+
     def test_2020(self):
         self.assertHolidays(
             Belgium(years=2020),
@@ -59,7 +167,7 @@ class TestBelgium(CommonCountryTests, TestCase):
             ("2021-12-25", "Kerstmis"),
         )
 
-    def test_2022(self):
+    def test_2022_public(self):
         self.assertHolidays(
             Belgium(years=2022),
             ("2022-01-01", "Nieuwjaar"),
@@ -76,7 +184,7 @@ class TestBelgium(CommonCountryTests, TestCase):
             ("2022-12-25", "Kerstmis"),
         )
 
-    def test_bank_2022(self):
+    def test_2022_bank(self):
         self.assertHolidays(
             Belgium(categories=BANK, years=2022),
             ("2022-04-15", "Goede Vrijdag"),

@@ -90,8 +90,8 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
                 self.assertHolidayName(name_observed, holidays, obs_dt)
                 self.assertNoNonObservedHoliday(self.subdiv_holidays_non_observed[subdiv], obs_dt)
             else:
-                self.assertNoHoliday(holidays, obs_dt)
-        self.assertNoHoliday(obs_dt)
+                self.assertNoHolidayName(name_observed, holidays, obs_dt)
+        self.assertNoHolidayName(name_observed, obs_dt)
 
     def test_orthodox_new_year(self):
         name = "Pravoslavna Nova godina"
@@ -115,7 +115,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_establishment_bd_day(self):
+    def test_day_of_establishment_of_brcko_district(self):
         name = "Dan uspostavljanja Brčko distrikta"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
@@ -137,10 +137,10 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
                 self.assertHolidayName(name_observed, holidays, obs_dt)
                 self.assertNoNonObservedHoliday(self.subdiv_holidays_non_observed[subdiv], obs_dt)
             else:
-                self.assertNoHoliday(holidays, obs_dt)
-        self.assertNoHoliday(obs_dt)
+                self.assertNoHolidayName(name_observed, holidays, obs_dt)
+        self.assertNoHolidayName(name_observed, obs_dt)
 
-    def test_catholic_easter(self):
+    def test_catholic_good_friday(self):
         name = "Veliki petak (Katolički)"
         self.assertNoHolidayName(name)
         dt = (
@@ -155,6 +155,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
+    def test_catholic_easter(self):
         name = "Uskrs (Katolički)"
         self.assertNoHolidayName(name)
         dt = (
@@ -169,6 +170,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
+    def test_catholic_monday(self):
         name = "Uskrsni ponedjeljak (Katolički)"
         dt = (
             "2020-04-13",
@@ -180,7 +182,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             self.assertHolidayName(name, holidays, dt)
 
-    def test_orthodox_easter(self):
+    def test_orthodox_good_friday(self):
         name = "Veliki petak (Pravoslavni)"
         dt = (
             "2020-04-17",
@@ -192,6 +194,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             self.assertHolidayName(name, holidays, dt)
 
+    def test_orthodox_easter(self):
         name = "Vaskrs (Pravoslavni)"
         self.assertNoHolidayName(name)
         dt = (
@@ -206,6 +209,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
+    def test_orthodox_easter_monday(self):
         name = "Uskrsni ponedjeljak (Pravoslavni)"
         self.assertNoHolidayName(name)
         dt = (

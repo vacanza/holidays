@@ -24,6 +24,36 @@ class TestBangladesh(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(Bangladesh, BD, BGD)
 
+    def test_international_mothers_language_day(self):
+        self.assertHolidayName(
+            "International Mother's language Day", (f"{year}-02-21" for year in self.full_range)
+        )
+
+    def test_sheikh_mujibur_rahmans_birthday_and_childrens_day(self):
+        self.assertHolidayName(
+            "Sheikh Mujibur Rahman's Birthday and Children's Day",
+            (f"{year}-03-17" for year in self.full_range),
+        )
+
+    def test_independence_day(self):
+        self.assertHolidayName("Independence Day", (f"{year}-03-26" for year in self.full_range))
+
+    def test_bengali_new_years_day(self):
+        self.assertHolidayName(
+            "Bengali New Year's Day", (f"{year}-04-14" for year in self.full_range)
+        )
+
+    def test_may_day(self):
+        self.assertHolidayName("May Day", (f"{year}-05-01" for year in self.full_range))
+
+    def test_national_mourning_day(self):
+        self.assertHolidayName(
+            "National Mourning Day", (f"{year}-08-15" for year in self.full_range)
+        )
+
+    def test_victory_day(self):
+        self.assertHolidayName("Victory Day", (f"{year}-12-16" for year in self.full_range))
+
     def test_2022(self):
         self.assertHolidays(
             Bangladesh(years=2022),

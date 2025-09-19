@@ -169,12 +169,12 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_memorial_day(self):
         name = "Anım Günü"
+        self.assertNoHolidayName(name)
         self.assertWorkdayHolidayName(
             name, (f"{year}-09-27" for year in range(2021, self.end_year))
         )
         self.assertNoWorkdayHoliday(f"{year}-09-27" for year in range(self.start_year, 2021))
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 2021))
-        self.assertNoHolidayName(name)
 
     def test_independence_day(self):
         name_1 = "Milli Müstəqillik Günü"
@@ -203,21 +203,21 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_constitution_day(self):
         name = "Konstitusiya Günü"
+        self.assertNoHolidayName(name)
         self.assertWorkdayHolidayName(
             name, (f"{year}-11-12" for year in range(1996, self.end_year))
         )
         self.assertNoWorkdayHoliday(f"{year}-11-12" for year in range(self.start_year, 1996))
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 1996))
-        self.assertNoHolidayName(name)
 
     def test_revival_day(self):
         name = "Milli Dirçəliş Günü"
+        self.assertNoHolidayName(name)
         self.assertWorkdayHolidayName(
             name, (f"{year}-11-17" for year in range(1992, self.end_year))
         )
         self.assertNoWorkdayHoliday(f"{year}-11-17" for year in range(self.start_year, 1992))
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 1992))
-        self.assertNoHolidayName(name)
 
     def test_int_solidarity_day(self):
         name = "Dünya azərbaycanlılarının həmrəyliyi günü"

@@ -28,7 +28,7 @@ class TestBolivia(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(Bolivia(years=BO.start_year - 1))
 
-    def test_new_years(self):
+    def test_new_years_day(self):
         name = "Año Nuevo"
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         dt = (

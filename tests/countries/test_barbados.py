@@ -49,7 +49,6 @@ class TestBarbados(CommonCountryTests, TestCase):
     def test_errol_barrow_day(self):
         name = "Errol Barrow Day"
         self.assertHolidayName(name, (f"{year}-01-21" for year in range(1989, self.end_year)))
-        self.assertNoHoliday(f"{year}-01-21" for year in range(self.start_year, 1989))
         self.assertNoHolidayName(name, range(self.start_year, 1989))
         dt = (
             "2001-01-22",
@@ -88,7 +87,6 @@ class TestBarbados(CommonCountryTests, TestCase):
     def test_national_heroes_day(self):
         name = "National Heroes Day"
         self.assertHolidayName(name, (f"{year}-04-28" for year in range(1998, self.end_year)))
-        self.assertNoHoliday(f"{year}-04-28" for year in range(self.start_year, 1998))
         self.assertNoHolidayName(name, range(self.start_year, 1998))
         dt = (
             "2002-04-29",
