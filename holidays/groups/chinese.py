@@ -216,6 +216,13 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_holiday(name, self._dongzhi_festival)
 
+    def _add_cold_food_festival(self, name) -> Optional[date]:
+        """
+        Add Cold Food Festival (105 days after Winter Solstice).
+
+        https://en.wikipedia.org/wiki/Cold_Food_Festival
+        """
+
     def _add_qingming_festival(self, name) -> date:
         """
         Add Qingming Festival (15th day after the Spring Equinox).

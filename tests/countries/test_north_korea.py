@@ -31,9 +31,10 @@ class TestNorthKorea(CommonCountryTests, TestCase):
     def test_new_years_day(self):
         self.assertHolidayName("양력설", (f"{year}-01-01" for year in range(1948, 2050)))
 
-    def test_lunar_new_years_day(self):
+    def test_korean_new_years_day(self):
+        name = "설명절"
         self.assertHolidayName(
-            "설명절",
+            name,
             "2020-01-25",
             "2021-02-12",
             "2022-02-01",
@@ -41,10 +42,12 @@ class TestNorthKorea(CommonCountryTests, TestCase):
             "2024-02-10",
             "2025-01-29",
         )
+        self.assertNoHolidayName(name, range(1968, 1989))
 
     def test_daeboreum_day(self):
+        name = "대보름"
         self.assertHolidayName(
-            "대보름",
+            name,
             "2020-02-08",
             "2021-02-26",
             "2022-02-15",
@@ -52,29 +55,86 @@ class TestNorthKorea(CommonCountryTests, TestCase):
             "2024-02-24",
             "2025-02-12",
         )
+        self.assertNoHolidayName(name, range(1948, 2003))
 
-    def test_army_day(self):
-        name = "조선인민군"
+    def test_founding_day_of_peoples_army(self):
+        name = "조선인민군창건일"
         self.assertHolidayName(
-            name,
-            (f"{year}-02-08" for year in range(1948, 1979)),
-            (f"{year}-04-25" for year in range(2015, 2050)),
+            name, (f"{year}-02-08" for year in (*range(1948, 1977), *range(2018, 2050)))
         )
-        self.assertNoHolidayName(name, range(1979, 2015))
+        self.assertNoHolidayName(name, range(1978, 2018))
 
     def test_day_of_shining_star(self):
-        self.assertHolidayName("광명성절", (f"{year}-02-16" for year in range(1948, 2050)))
+        name1 = "김정일의 생일"
+        self.assertHolidayName(
+            name1,
+            (f"{year}-02-16" for year in range(1975, 2012)),
+            (f"{year}-02-17" for year in range(1986, 2012)),
+        )
+        self.assertNoHolidayName(name1, range(1948, 1975), range(2012, 2050))
+        name2 = "광명성절"
+        self.assertHolidayName(
+            name2,
+            (f"{year}-02-16" for year in range(2012, 2050)),
+            (f"{year}-02-17" for year in range(2012, 2050)),
+        )
+        self.assertNoHolidayName(name2, range(1948, 2012))
 
     def test_womens_day(self):
         self.assertHolidayName("국제부녀절", (f"{year}-03-08" for year in range(1948, 2050)))
 
-    def test_day_of_sun(self):
-        self.assertHolidayName("태양절", (f"{year}-04-15" for year in range(1948, 2050)))
+    def test_cheongmyeong_festival(self):
+        name = "청명"
+        self.assertHolidayName(
+            name,
+            "2020-04-04",
+            "2021-04-04",
+            "2022-04-05",
+            "2023-04-05",
+            "2024-04-04",
+            "2025-04-04",
+        )
+        self.assertNoHolidayName(name, range(1948, 2012))
 
-    def test_labor_day(self):
+    def test_day_of_sun(self):
+        name1 = "김일성의 생일"
+        self.assertHolidayName(
+            name1, "1962-04-15", (f"{year}-04-15" for year in range(1968, 1998))
+        )
+        self.assertNoHolidayName(name1, range(1948, 1962), range(1963, 1968), range(1998, 2050))
+        name2 = "태양절"
+        self.assertHolidayName(
+            name2,
+            (f"{year}-04-15" for year in range(1998, 2050)),
+            (f"{year}-04-16" for year in range(1998, 2050)),
+        )
+        self.assertNoHolidayName(name2, range(1948, 1998))
+
+    def test_army_day(self):
+        name1 = "건군절"
+        self.assertHolidayName(name1, (f"{year}-04-25" for year in range(1978, 2018)))
+        self.assertNoHolidayName(name1, range(1948, 1978), range(2018, 2050))
+        name2 = "조선인민혁명군 창건일"
+        self.assertHolidayName(name2, (f"{year}-04-25" for year in range(2018, 2050)))
+        self.assertNoHolidayName(name2, range(1948, 2018))
+
+    def test_workers_day(self):
         self.assertHolidayName(
             "전세계근로자들의 국제적명절", (f"{year}-05-01" for year in range(1948, 2050))
         )
+
+    def test_dano_festival(self):
+        name = "단오"
+        self.assertHolidayName(
+            name,
+            "2020-06-25",
+            "2021-06-14",
+            "2022-06-03",
+            "2023-06-22",
+            "2024-06-10",
+            "2025-05-31",
+        )
+        self.assertNoHolidayName(name, range(1968, 1989))
 
     def test_childrens_union_day(self):
         self.assertHolidayName(
@@ -83,15 +143,16 @@ class TestNorthKorea(CommonCountryTests, TestCase):
 
     def test_victory_day(self):
         name = "조국해방전쟁승리기념일"
-        self.assertHolidayName(name, (f"{year}-07-27" for year in range(1953, 2050)))
-        self.assertNoHolidayName(name, range(1948, 1953))
+        self.assertHolidayName(name, (f"{year}-07-27" for year in range(1996, 2050)))
+        self.assertNoHolidayName(name, range(1948, 1996))
 
     def test_liberation_day(self):
         self.assertHolidayName("조국해방절", (f"{year}-08-15" for year in range(1948, 2050)))
 
     def test_chuseok(self):
+        name = "추석"
         self.assertHolidayName(
-            "추석",
+            name,
             "2020-10-01",
             "2021-09-21",
             "2022-09-10",
@@ -99,9 +160,12 @@ class TestNorthKorea(CommonCountryTests, TestCase):
             "2024-09-17",
             "2025-10-06",
         )
+        self.assertNoHolidayName(name, range(1967, 1989))
 
     def test_day_of_songun(self):
-        self.assertHolidayName("선군절", (f"{year}-08-25" for year in range(1948, 2050)))
+        name = "선군절"
+        self.assertHolidayName(name, (f"{year}-08-25" for year in range(2013, 2050)))
+        self.assertNoHolidayName(name, range(1948, 2013))
 
     def test_youth_day(self):
         self.assertHolidayName("청년절", (f"{year}-08-28" for year in range(1948, 2050)))
@@ -115,22 +179,31 @@ class TestNorthKorea(CommonCountryTests, TestCase):
         self.assertHolidayName("조선로동당창건일", (f"{year}-10-10" for year in range(1948, 2050)))
 
     def test_mothers_day(self):
-        self.assertHolidayName("어머니날", (f"{year}-11-16" for year in range(1948, 2050)))
+        name = "어머니날"
+        self.assertHolidayName(name, (f"{year}-11-16" for year in range(2012, 2050)))
+        self.assertNoHolidayName(name, range(1948, 2012))
 
     def test_constitution_day(self):
-        self.assertHolidayName("사회주의헌법절", (f"{year}-12-27" for year in range(1948, 2050)))
+        name = "사회주의헌법절"
+        self.assertHolidayName(name, (f"{year}-12-27" for year in range(1972, 2050)))
+        self.assertNoHolidayName(name, range(1948, 1972))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2024-01-01", "양력설"),
+            ("2024-02-08", "조선인민군창건일"),
             ("2024-02-10", "설명절"),
             ("2024-02-16", "광명성절"),
+            ("2024-02-17", "광명성절"),
             ("2024-02-24", "대보름"),
             ("2024-03-08", "국제부녀절"),
+            ("2024-04-04", "청명"),
             ("2024-04-15", "태양절"),
-            ("2024-04-25", "조선인민군"),
+            ("2024-04-16", "태양절"),
+            ("2024-04-25", "조선인민혁명군 창건일"),
             ("2024-05-01", "전세계근로자들의 국제적명절"),
             ("2024-06-06", "조선소년단 창립절"),
+            ("2024-06-10", "단오"),
             ("2024-07-27", "조국해방전쟁승리기념일"),
             ("2024-08-15", "조국해방절"),
             ("2024-08-25", "선군절"),
@@ -146,21 +219,26 @@ class TestNorthKorea(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2024-01-01", "New Year's Day"),
-            ("2024-02-10", "Lunar New Year"),
+            ("2024-02-08", "Founding Day of the Korean People's Army"),
+            ("2024-02-10", "Korean New Year"),
             ("2024-02-16", "Day of the Shining Star"),
+            ("2024-02-17", "Day of the Shining Star"),
             ("2024-02-24", "Daeboreum"),
             ("2024-03-08", "International Women's Day"),
+            ("2024-04-04", "Cheongmyeong Festival"),
             ("2024-04-15", "Day of the Sun"),
-            ("2024-04-25", "Army Day"),
-            ("2024-05-01", "Labor Day"),
-            ("2024-06-06", "Korean Children's Union Day"),
-            ("2024-07-27", "Fatherland Liberation War Victory Day"),
+            ("2024-04-16", "Day of the Sun"),
+            ("2024-04-25", "Founding Day of the Korean People's Revolutionary Army"),
+            ("2024-05-01", "International Workers' Day"),
+            ("2024-06-06", "Foundation Day of the Korean Children's Union"),
+            ("2024-06-10", "Dano"),
+            ("2024-07-27", "Day of Victory in the Great Fatherland Liberation War"),
             ("2024-08-15", "Liberation Day"),
             ("2024-08-25", "Day of Songun"),
             ("2024-08-28", "Youth Day"),
-            ("2024-09-09", "DPRK Foundation Day"),
+            ("2024-09-09", "Founding Day of the DPRK"),
             ("2024-09-17", "Chuseok"),
-            ("2024-10-10", "Party Foundation Day"),
+            ("2024-10-10", "Foundation Day of the Workers' Party of Korea"),
             ("2024-11-16", "Mother's Day"),
             ("2024-12-27", "Socialist Constitution Day"),
         )

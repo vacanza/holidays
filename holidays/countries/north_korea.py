@@ -41,61 +41,100 @@ class NorthKorea(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("양력설"))
 
-        # Lunar New Year.
-        self._add_chinese_new_years_day(tr("설명절"))
+        if self._year <= 1967 or self._year >= 1989:
+            # Korean New Year.
+            self._add_chinese_new_years_day(tr("설명절"))
 
-        # Daeboreum.
-        self._add_daeboreum_day(tr("대보름"))
+        if self._year >= 2003:
+            # Daeboreum.
+            self._add_daeboreum_day(tr("대보름"))
 
-        # Army Day.
-        name = tr("조선인민군")
-        if self._year <= 1978:
-            self._add_holiday_feb_8(name)
-        elif self._year >= 2015:
-            self._add_holiday_apr_25(name)
+        if self._year <= 1977 or self._year >= 2018:
+            # Founding Day of the Korean People's Army.
+            self._add_holiday_feb_8(tr("조선인민군창건일"))
 
-        # Day of the Shining Star.
-        self._add_holiday_feb_16(tr("광명성절"))
+        if self._year >= 1975:
+            name = (
+                # Day of the Shining Star.
+                tr("광명성절")
+                if self._year >= 2012
+                # Kim Jong Il's Birthday.
+                else tr("김정일의 생일")
+            )
+            self._add_holiday_feb_16(name)
+            if self._year >= 1986:
+                self._add_holiday_feb_17(name)
 
         # International Women's Day.
         self._add_womens_day(tr("국제부녀절"))
 
-        # Day of the Sun.
-        self._add_holiday_apr_15(tr("태양절"))
+        if self._year >= 2012:
+            # Cheongmyeong Festival.
+            self._add_qingming_festival(tr("청명"))
 
-        # Labor Day.
+        if self._year == 1962 or self._year >= 1968:
+            name = (
+                # Day of the Sun.
+                tr("태양절")
+                if self._year >= 1998
+                # Kim Il-Sung's Birthday.
+                else tr("김일성의 생일")
+            )
+            self._add_holiday_apr_15(name)
+            if self._year >= 1998:
+                self._add_holiday_apr_16(name)
+
+        if self._year >= 1978:
+            name = (
+                # Founding Day of the Korean People's Revolutionary Army.
+                tr("조선인민혁명군 창건일")
+                if self._year >= 2018
+                # Armed Forces Day.
+                else tr("건군절")
+            )
+            self._add_holiday_apr_25(name)
+
+        # International Workers' Day.
         self._add_labor_day(tr("전세계근로자들의 국제적명절"))
 
-        # Korean Children's Union Day.
+        if self._year <= 1967 or self._year >= 1989:
+            # Dano.
+            self._add_dragon_boat_festival(tr("단오"))
+
+        # Foundation Day of the Korean Children's Union.
         self._add_holiday_jun_6(tr("조선소년단 창립절"))
 
-        if self._year >= 1953:
-            # Fatherland Liberation War Victory Day.
+        if self._year >= 1996:
+            # Day of Victory in the Great Fatherland Liberation War.
             self._add_holiday_jul_27(tr("조국해방전쟁승리기념일"))
 
         # Liberation Day.
         self._add_holiday_aug_15(tr("조국해방절"))
 
-        # Chuseok.
-        self._add_mid_autumn_festival(tr("추석"))
+        if self._year <= 1966 or self._year >= 1989:
+            # Chuseok.
+            self._add_mid_autumn_festival(tr("추석"))
 
-        # Day of Songun.
-        self._add_holiday_aug_25(tr("선군절"))
+        if self._year >= 2013:
+            # Day of Songun.
+            self._add_holiday_aug_25(tr("선군절"))
 
         # Youth Day.
         self._add_holiday_aug_28(tr("청년절"))
 
-        # DPRK Foundation Day.
+        # Founding Day of the DPRK.
         self._add_holiday_sep_9(tr("조선민주주의인민공화국창건일"))
 
-        # Party Foundation Day.
+        # Foundation Day of the Workers' Party of Korea.
         self._add_holiday_oct_10(tr("조선로동당창건일"))
 
-        # Mother's Day.
-        self._add_holiday_nov_16(tr("어머니날"))
+        if self._year >= 2012:
+            # Mother's Day.
+            self._add_holiday_nov_16(tr("어머니날"))
 
-        # Socialist Constitution Day.
-        self._add_holiday_dec_27(tr("사회주의헌법절"))
+        if self._year >= 1972:
+            # Socialist Constitution Day.
+            self._add_holiday_dec_27(tr("사회주의헌법절"))
 
 
 class KP(NorthKorea):

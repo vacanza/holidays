@@ -30,7 +30,7 @@ msgstr ""
 msgid "양력설"
 msgstr ""
 
-#. Lunar New Year.
+#. Korean New Year.
 msgid "설명절"
 msgstr ""
 
@@ -38,31 +38,55 @@ msgstr ""
 msgid "대보름"
 msgstr ""
 
-#. Army Day.
-msgid "조선인민군"
+#. Founding Day of the Korean People's Army.
+msgid "조선인민군창건일"
 msgstr ""
 
 #. Day of the Shining Star.
 msgid "광명성절"
 msgstr ""
 
+#. Kim Jong Il's Birthday.
+msgid "김정일의 생일"
+msgstr ""
+
 #. International Women's Day.
 msgid "국제부녀절"
+msgstr ""
+
+#. Cheongmyeong Festival.
+msgid "청명"
 msgstr ""
 
 #. Day of the Sun.
 msgid "태양절"
 msgstr ""
 
-#. Labor Day.
+#. Kim Il-Sung's Birthday.
+msgid "김일성의 생일"
+msgstr ""
+
+#. Founding Day of the Korean People's Revolutionary Army.
+msgid "조선인민혁명군 창건일"
+msgstr ""
+
+#. Armed Forces Day.
+msgid "건군절"
+msgstr ""
+
+#. International Workers' Day.
 msgid "전세계근로자들의 국제적명절"
 msgstr ""
 
-#. Korean Children's Union Day.
+#. Dano.
+msgid "단오"
+msgstr ""
+
+#. Foundation Day of the Korean Children's Union.
 msgid "조선소년단 창립절"
 msgstr ""
 
-#. Fatherland Liberation War Victory Day.
+#. Day of Victory in the Great Fatherland Liberation War.
 msgid "조국해방전쟁승리기념일"
 msgstr ""
 
@@ -82,11 +106,11 @@ msgstr ""
 msgid "청년절"
 msgstr ""
 
-#. DPRK Foundation Day.
+#. Founding Day of the DPRK.
 msgid "조선민주주의인민공화국창건일"
 msgstr ""
 
-#. Party Foundation Day.
+#. Foundation Day of the Workers' Party of Korea.
 msgid "조선로동당창건일"
 msgstr ""
 

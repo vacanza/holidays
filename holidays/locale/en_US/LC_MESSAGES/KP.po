@@ -30,41 +30,65 @@ msgstr ""
 msgid "양력설"
 msgstr "New Year's Day"
 
-#. Lunar New Year.
+#. Korean New Year.
 msgid "설명절"
-msgstr "Lunar New Year"
+msgstr "Korean New Year"
 
 #. Daeboreum.
 msgid "대보름"
 msgstr "Daeboreum"
 
-#. Army Day.
-msgid "조선인민군"
-msgstr "Army Day"
+#. Founding Day of the Korean People's Army.
+msgid "조선인민군창건일"
+msgstr "Founding Day of the Korean People's Army"
 
 #. Day of the Shining Star.
 msgid "광명성절"
 msgstr "Day of the Shining Star"
 
+#. Kim Jong Il's Birthday.
+msgid "김정일의 생일"
+msgstr "Kim Jong Il's Birthday"
+
 #. International Women's Day.
 msgid "국제부녀절"
 msgstr "International Women's Day"
+
+#. Cheongmyeong Festival.
+msgid "청명"
+msgstr "Cheongmyeong Festival"
 
 #. Day of the Sun.
 msgid "태양절"
 msgstr "Day of the Sun"
 
-#. Labor Day.
+#. Kim Il-Sung's Birthday.
+msgid "김일성의 생일"
+msgstr "Kim Il-Sung's Birthday"
+
+#. Founding Day of the Korean People's Revolutionary Army.
+msgid "조선인민혁명군 창건일"
+msgstr "Founding Day of the Korean People's Revolutionary Army"
+
+#. Armed Forces Day.
+msgid "건군절"
+msgstr "Armed Forces Day"
+
+#. International Workers' Day.
 msgid "전세계근로자들의 국제적명절"
-msgstr "Labor Day"
+msgstr "International Workers' Day"
 
-#. Korean Children's Union Day.
+#. Dano.
+msgid "단오"
+msgstr "Dano"
+
+#. Foundation Day of the Korean Children's Union.
 msgid "조선소년단 창립절"
-msgstr "Korean Children's Union Day"
+msgstr "Foundation Day of the Korean Children's Union"
 
-#. Fatherland Liberation War Victory Day.
+#. Day of Victory in the Great Fatherland Liberation War.
 msgid "조국해방전쟁승리기념일"
-msgstr "Fatherland Liberation War Victory Day"
+msgstr "Day of Victory in the Great Fatherland Liberation War"
 
 #. Liberation Day.
 msgid "조국해방절"
@@ -82,13 +106,13 @@ msgstr "Day of Songun"
 msgid "청년절"
 msgstr "Youth Day"
 
-#. DPRK Foundation Day.
+#. Founding Day of the DPRK.
 msgid "조선민주주의인민공화국창건일"
-msgstr "DPRK Foundation Day"
+msgstr "Founding Day of the DPRK"
 
-#. Party Foundation Day.
+#. Foundation Day of the Workers' Party of Korea.
 msgid "조선로동당창건일"
-msgstr "Party Foundation Day"
+msgstr "Foundation Day of the Workers' Party of Korea"
 
 #. Mother's Day.
 msgid "어머니날"
