@@ -34,8 +34,9 @@ class TestBurmeseCalendarHolidays(TestCase):
         test_holidays._add_kason_full_moon_day("Full Moon Day of Kason")
         test_holidays._add_waso_full_moon_day("Full Moon Day of Waso")
         test_holidays._add_thadingyut_full_moon_day("Thadingyut Holiday")
-        test_holidays._add_diwali_myanmar("Diwali")
+        test_holidays._add_myanmar_diwali("Diwali")
         test_holidays._add_tazaungmon_full_moon_day("Full Moon Day of Tazaungmon")
         test_holidays._add_myanmar_national_day("National Day")
         test_holidays._add_karen_new_year("Karen New Year")
+
         self.assertEqual(0, len(test_holidays))

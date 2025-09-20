@@ -41,9 +41,13 @@ class StaticHolidays:
         self.weekend_workdays = set()
         for special_public_holidays in getattr(self, "special_public_holidays", {}).values():
             for special_public_holiday in _normalize_tuple(special_public_holidays):
-                if len(special_public_holiday) < 4:
+                # Normally, special holiday is a 3 item tuple: (month, day, name).
+                if len(special_public_holiday) < 4:  # Skip non-substituted holidays.
                     continue
-                self.has_substituted_holidays = True
+
+                # Handle cross-year substituted holidays.
                 if len(special_public_holiday) == 5:  # The fifth element is the year.
                     _, _, from_month, from_day, from_year = special_public_holiday
                     self.weekend_workdays.add(date(from_year, from_month, from_day))
+
+                self.has_substituted_holidays = True

@@ -51,7 +51,7 @@ class Myanmar(
     # %s (estimated).
     estimated_label = tr("%s (ခန့်မှန်း)")
     supported_languages = ("en_US", "my")
-    # On 4 January 1948, Myanmar gained independence from British rule.
+    # Myanmar gained its independence from British rule on January 4, 1948.
     start_year = 1948
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
@@ -116,11 +116,11 @@ class Myanmar(
         # Myanmar New Year.
         name = tr("မြန်မာနှစ်သစ်ကူး ရုံးပိတ်ရက်များ")
         if self._year >= 2024:
-            self._add_myanmar_new_year(name, extra_days_after=True)
+            self._add_myanmar_new_year(name, extra_days_after=8)
         elif self._year >= 2022:
             self._add_myanmar_new_year(name, extra_days_before=4)
         elif 2007 <= self._year <= 2016:
-            self._add_myanmar_new_year(name, extra_days_before=1, extra_days_after=True)
+            self._add_myanmar_new_year(name, extra_days_before=1, extra_days_after=8)
         else:
             self._add_myanmar_new_year(name)
 
@@ -140,7 +140,7 @@ class Myanmar(
         self._add_thadingyut_full_moon_day_two(name)
 
         # Diwali.
-        self._add_diwali_myanmar(tr("ဒီပါဝလီနေ့"))
+        self._add_myanmar_diwali(tr("ဒီပါဝလီနေ့"))
 
         # Full Moon Day of Tazaungmon.
         self._add_tazaungmon_full_moon_day(tr("တန်ဆောင်တိုင်လပြည့်နေ့"))

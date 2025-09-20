@@ -30,28 +30,11 @@ class BurmeseCalendarHolidays:
 
         if dt is None:
             return None
+
         if days_delta:
             dt = _timedelta(dt, days_delta)
+
         return self._add_holiday(name, dt)
-
-    def _add_diwali_myanmar(self, name: str) -> Optional[date]:
-        """Add Diwali holiday.
-
-        Diwali (Deepavali, Festival of Lights) is one of the most important festivals
-        in Indian religions. In Myanmar, it is celebrated on first day of Tazaungmon,
-        the eighth month of the Burmese calendar.
-        https://en.wikipedia.org/wiki/Diwali
-
-        Args:
-            name:
-                Holiday name.
-
-        Returns:
-            Date of added holiday, `None` if there is no holiday date for the current year.
-        """
-        return self._add_burmese_calendar_holiday(
-            name, self._burmese_calendar.tazaungmon_waxing_moon_date(self._year)
-        )
 
     def _add_karen_new_year(self, name: str) -> set[date]:
         """Add Karen New Year holiday.
@@ -96,6 +79,25 @@ class BurmeseCalendarHolidays:
             name, self._burmese_calendar.kason_full_moon_date(self._year)
         )
 
+    def _add_myanmar_diwali(self, name: str) -> Optional[date]:
+        """Add Myanmar Diwali holiday.
+
+        Diwali (Deepavali, Festival of Lights) is one of the most important festivals
+        in Indian religions. In Myanmar, it is celebrated on first day of Tazaungmon,
+        the eighth month of the Burmese calendar.
+        https://en.wikipedia.org/wiki/Diwali
+
+        Args:
+            name:
+                Holiday name.
+
+        Returns:
+            Date of added holiday, `None` if there is no holiday date for the current year.
+        """
+        return self._add_burmese_calendar_holiday(
+            name, self._burmese_calendar.tazaungmon_waxing_moon_date(self._year)
+        )
+
     def _add_myanmar_national_day(self, name: str) -> Optional[date]:
         """Add Myanmar National Day holiday.
 
@@ -120,7 +122,7 @@ class BurmeseCalendarHolidays:
         self,
         name: str,
         extra_days_before: int = 0,
-        extra_days_after: bool = False,
+        extra_days_after: int = 0,
     ) -> set[date]:
         """Add Myanmar New Year (Thingyan, Water Festival).
 
@@ -153,7 +155,7 @@ class BurmeseCalendarHolidays:
         # pre-Akya days (1 day in 2007-2016, 4 days in 2022-2023),
         # post-Atat days (3 or 4 days).
         begin = -1 - extra_days_before
-        end = 8 if extra_days_after else (atat - akya).days + 1
+        end = extra_days_after or (atat - akya).days + 1
 
         return {
             dt

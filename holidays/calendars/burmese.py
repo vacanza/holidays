@@ -16,8 +16,8 @@ from typing import Optional
 
 from holidays.calendars.gregorian import _timedelta
 
-SY = 1577917828.0 / 4320000.0  # solar year (365.2587565 days).
-MO = 1954168.050623  # beginning of 0 ME for MMT.
+MO = 1954168.050623  # Beginning of 0 ME for MMT.
+SY = 1577917828.0 / 4320000.0  # Solar year (365.2587565 days).
 
 
 class _BurmeseLunisolar:
@@ -120,6 +120,7 @@ class _BurmeseLunisolar:
         else:
             m -= 9
             y += 1
+
         return date(y, m, d)
 
     @cache
@@ -152,7 +153,8 @@ class _BurmeseLunisolar:
             return None, None
 
         ja = SY * (year - 638) + MO
-        jk = ja - 2.169918982 if year >= 1950 else ja - 2.1675
+        jk = (ja - 2.169918982) if year >= 1950 else (ja - 2.1675)
+
         return self.jdn_to_gregorian(round(jk)), self.jdn_to_gregorian(round(ja))
 
     def kason_full_moon_date(self, year: int) -> Optional[date]:
