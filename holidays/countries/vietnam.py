@@ -10,8 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from __future__ import annotations
+
 from gettext import gettext as tr
+from typing import TYPE_CHECKING
 
 from holidays.calendars.chinese import VIETNAMESE_CALENDAR
 from holidays.calendars.gregorian import (
@@ -38,6 +40,9 @@ from holidays.observed_holiday_base import (
     SUN_TO_NEXT_WORKDAY,
     SAT_SUN_TO_NEXT_WORKDAY,
 )
+
+if TYPE_CHECKING:
+    from datetime import date
 
 NATIONAL_DAY_RULE = ObservedRule({MON: +1, TUE: -1, WED: -1, THU: +1, FRI: -1, SAT: -1, SUN: +1})
 

@@ -23,6 +23,7 @@ repos:
     -   id: pyupgrade
         args:
           - --py39-plus
+          - --keep-runtime-typing
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.13.1
