@@ -321,7 +321,7 @@ class _ThaiLunisolar:
         return _timedelta(_ThaiLunisolar.START_DATE, delta_days)
 
     @cache
-    def buddhist_sabbath_dates(self, year: int, calendar=None) -> list[date]:
+    def buddhist_sabbath_dates(self, year: int, calendar=None) -> tuple[date, ...]:
         """Return all Buddhist Sabbath (Uposatha) days in a given Gregorian year.
 
         Args:
@@ -340,7 +340,7 @@ class _ThaiLunisolar:
 
         start_date = self._get_start_date(year)
         if not start_date:
-            return []
+            return ()
 
         months = [29, 30] * 6
         if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN and not self.__is_khmer_calendar(
@@ -353,7 +353,7 @@ class _ThaiLunisolar:
         # in the Gregorian year are captured.
         months.extend([29, 30])
 
-        buddhist_sabbaths = []
+        buddhist_sabbaths: list[date] = []
         day_cursor = start_date
         for month_days in months:
             if day_cursor.year > year:
@@ -367,7 +367,7 @@ class _ThaiLunisolar:
                     break
             day_cursor = _timedelta(day_cursor, month_days)
 
-        return buddhist_sabbaths
+        return tuple(buddhist_sabbaths)
 
     def makha_bucha_date(self, year: int, calendar=None) -> Optional[date]:
         """Calculate the estimated Gregorian date of Makha Bucha.

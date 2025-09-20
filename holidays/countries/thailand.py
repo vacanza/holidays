@@ -208,8 +208,8 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         elif date(1956, OCT, 1) <= dt <= date(1957, OCT, 6):
             # Buddhist Sabbath Days and Sun (Full Day).
             weekend = {SUN}
-            buddhist_sabbaths = self._thai_calendar.buddhist_sabbath_dates(dt.year)
-            if dt in buddhist_sabbaths:
+            buddhist_sabbath_dates = self._thai_calendar.buddhist_sabbath_dates(dt.year)
+            if dt in set(buddhist_sabbath_dates):
                 weekend.add(dt.weekday())
             return weekend
         elif dt >= date(1939, FEB, 28):

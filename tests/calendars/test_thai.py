@@ -153,9 +153,62 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
 
     def test_buddhist_sabbath_days(self):
         expected_buddhist_sabbath_dates = {
-            self.calendar.START_YEAR - 1: [],
-            self.calendar.END_YEAR + 1: [],
-            2024: [
+            self.calendar.START_YEAR - 1: (),
+            self.calendar.END_YEAR + 1: (),
+            # Athikamat (Extra-Month Year).
+            2023: (
+                date(2023, JAN, 6),  # 15 Waxing. (Month 2 Started in Previous Gregorian Year).
+                date(2023, JAN, 14),  # 8 Waning.
+                date(2023, JAN, 21),  # 15 Waning.
+                date(2023, JAN, 29),  # 8 Waxing (Month 3).
+                date(2023, FEB, 5),  # 15 Waxing.
+                date(2023, FEB, 13),  # 8 Waning.
+                date(2023, FEB, 19),  # 14 Waning.
+                date(2023, FEB, 27),  # 8 Waxing (Month 4).
+                date(2023, MAR, 6),  # 15 Waxing.
+                date(2023, MAR, 14),  # 8 Waning.
+                date(2023, MAR, 21),  # 15 Waning.
+                date(2023, MAR, 29),  # 8 Waxing (Month 5).
+                date(2023, APR, 5),  # 15 Waxing.
+                date(2023, APR, 13),  # 8 Waning.
+                date(2023, APR, 19),  # 14 Waning.
+                date(2023, APR, 27),  # 8 Waxing (Month 6).
+                date(2023, MAY, 4),  # 15 Waxing.
+                date(2023, MAY, 12),  # 8 Waning.
+                date(2023, MAY, 19),  # 15 Waning.
+                date(2023, MAY, 27),  # 8 Waxing (Month 7).
+                date(2023, JUN, 3),  # 15 Waxing.
+                date(2023, JUN, 11),  # 8 Waning.
+                date(2023, JUN, 17),  # 14 Waning.
+                date(2023, JUN, 25),  # 8 Waxing (Month 8).
+                date(2023, JUL, 2),  # 15 Waxing.
+                date(2023, JUL, 10),  # 8 Waning.
+                date(2023, JUL, 17),  # 14 Waning.
+                date(2023, JUL, 25),  # 8 Waxing (Month 88).
+                date(2023, AUG, 1),  # 15 Waxing.
+                date(2023, AUG, 9),  # 8 Waning.
+                date(2023, AUG, 16),  # 15 Waning.
+                date(2023, AUG, 24),  # 8 Waxing (Month 9).
+                date(2023, AUG, 31),  # 15 Waxing.
+                date(2023, SEP, 8),  # 8 Waning.
+                date(2023, SEP, 14),  # 14 Waning.
+                date(2023, SEP, 22),  # 8 Waxing (Month 10).
+                date(2023, SEP, 29),  # 15 Waxing.
+                date(2023, OCT, 7),  # 8 Waning.
+                date(2023, OCT, 14),  # 15 Waning.
+                date(2023, OCT, 22),  # 8 Waxing (Month 11).
+                date(2023, OCT, 29),  # 15 Waxing.
+                date(2023, NOV, 6),  # 8 Waning.
+                date(2023, NOV, 12),  # 14 Waning.
+                date(2023, NOV, 20),  # 8 Waxing (Month 12).
+                date(2023, NOV, 27),  # 15 Waxing.
+                date(2023, DEC, 5),  # 8 Waning.
+                date(2023, DEC, 12),  # 15 Waning.
+                date(2023, DEC, 20),  # 8 Waxing. (Month 1 Next Year).
+                date(2023, DEC, 27),  # 15 Waxing.
+            ),
+            # Pakatimat (Normal Year).
+            2024: (
                 date(2024, JAN, 4),  # 8 Waning (Month 1 Started in Previous Gregorian Year).
                 date(2024, JAN, 10),  # 14 Waning.
                 date(2024, JAN, 18),  # 8 Waxing (Month 2).
@@ -206,7 +259,59 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
                 date(2024, DEC, 15),  # 15 Waxing.
                 date(2024, DEC, 23),  # 8 Waning.
                 date(2024, DEC, 29),  # 14 Waning.
-            ],
+            ),
+            # Athikawan (Extra-Day Year).
+            2025: (
+                date(2025, JAN, 6),  # 8 Waxing (Month 2).
+                date(2025, JAN, 13),  # 15 Waxing.
+                date(2025, JAN, 21),  # 8 Waning.
+                date(2025, JAN, 28),  # 15 Waning.
+                date(2025, FEB, 5),  # 8 Waxing (Month 3).
+                date(2025, FEB, 12),  # 15 Waxing.
+                date(2025, FEB, 20),  # 8 Waning.
+                date(2025, FEB, 26),  # 14 Waning.
+                date(2025, MAR, 6),  # 8 Waxing (Month 4).
+                date(2025, MAR, 13),  # 15 Waxing.
+                date(2025, MAR, 21),  # 8 Waning.
+                date(2025, MAR, 28),  # 15 Waning.
+                date(2025, APR, 5),  # 8 Waxing (Month 5).
+                date(2025, APR, 12),  # 15 Waxing.
+                date(2025, APR, 20),  # 8 Waning.
+                date(2025, APR, 26),  # 14 Waning.
+                date(2025, MAY, 4),  # 8 Waxing (Month 6).
+                date(2025, MAY, 11),  # 15 Waxing.
+                date(2025, MAY, 19),  # 8 Waning.
+                date(2025, MAY, 26),  # 15 Waning.
+                date(2025, JUN, 3),  # 8 Waxing (Month 7).
+                date(2025, JUN, 10),  # 15 Waxing.
+                date(2025, JUN, 18),  # 8 Waning.
+                date(2025, JUN, 25),  # 15 Waning.
+                date(2025, JUL, 3),  # 8 Waxing (Month 8).
+                date(2025, JUL, 10),  # 15 Waxing.
+                date(2025, JUL, 18),  # 8 Waning.
+                date(2025, JUL, 25),  # 15 Waning.
+                date(2025, AUG, 2),  # 8 Waxing (Month 9).
+                date(2025, AUG, 9),  # 15 Waxing.
+                date(2025, AUG, 17),  # 8 Waning.
+                date(2025, AUG, 23),  # 14 Waning.
+                date(2025, AUG, 31),  # 8 Waxing (Month 10).
+                date(2025, SEP, 7),  # 15 Waxing.
+                date(2025, SEP, 15),  # 8 Waning.
+                date(2025, SEP, 22),  # 15 Waning.
+                date(2025, SEP, 30),  # 8 Waxing (Month 11).
+                date(2025, OCT, 7),  # 15 Waxing.
+                date(2025, OCT, 15),  # 8 Waning.
+                date(2025, OCT, 21),  # 15 Waning.
+                date(2025, OCT, 29),  # 8 Waxing (Month 12).
+                date(2025, NOV, 5),  # 15 Waxing.
+                date(2025, NOV, 13),  # 8 Waning.
+                date(2025, NOV, 20),  # 15 Waning.
+                date(2025, NOV, 28),  # 8 Waxing (Month 1 Next Year).
+                date(2025, DEC, 5),  # 15 Waxing.
+                date(2025, DEC, 13),  # 8 Waning.
+                date(2025, DEC, 19),  # 14 Waning.
+                date(2025, DEC, 27),  # 8 Waxing (Month 2 Next Year).
+            ),
         }
         for year, expected_dates in expected_buddhist_sabbath_dates.items():
             result = self.calendar.buddhist_sabbath_dates(year)
