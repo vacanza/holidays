@@ -142,6 +142,22 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1972, 2019))
         self.assertNoHolidayName(name, self.no_estimated_holidays, range(2019, 2050))
 
+    def test_weekend(self):
+        for dt in (
+            "2021-12-24",  # FRI.
+            "2021-12-25",  # SAT.
+            "2021-12-31",  # FRI.
+            "2022-01-01",  # SAT.
+            "2022-01-02",  # SUN.
+        ):
+            self.assertTrue(self.holidays.is_weekend(dt))
+
+        for dt in (
+            "2021-12-26",  # SUN.
+            "2022-01-07",  # FRI.
+        ):
+            self.assertFalse(self.holidays.is_weekend(dt))
+
     def test_2020(self):
         # https://gulfbusiness.com/revealed-uae-private-sector-holidays-for-eid-al-fitr-2020/
         # https://www.timeanddate.com/holidays/united-arab-emirates/2020?hol=134217729
