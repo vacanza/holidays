@@ -841,6 +841,9 @@ class HolidayBase(dict[date, str]):
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
         return dt.weekday() == weekday
 
+    def _get_weekend(self, dt: date) -> set[int]:
+        return self.weekend
+
     def _is_monday(self, *args) -> bool:
         return self._check_weekday(MON, *args)
 
@@ -869,7 +872,7 @@ class HolidayBase(dict[date, str]):
         """
         dt = args if len(args) > 1 else args[0]
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
-        return dt.weekday() in self.weekend
+        return dt.weekday() in self._get_weekend(dt)
 
     def _populate(self, year: int) -> None:
         """This is a private method that populates (generates and adds) holidays
@@ -1145,9 +1148,7 @@ class HolidayBase(dict[date, str]):
         Returns:
             True if the date's week day is a weekend day, False otherwise.
         """
-        # To prioritize performance we avoid reusing the internal
-        # `HolidayBase._is_weekend` method and perform the check directly instead.
-        return self.__keytransform__(key).weekday() in self.weekend
+        return self._is_weekend(self.__keytransform__(key))
 
     def is_working_day(self, key: DateLike) -> bool:
         """Check if the given date is considered a working day.

@@ -78,6 +78,11 @@ filterwarnings = [
 ]
 testpaths = [ "tests" ]
 
+[tool.coverage.report]
+exclude_lines = [
+  "^if TYPE_CHECKING:",
+]
+
 [tool.coverage.run]
 branch = true
 omit = [ "scripts/*", "tests/*" ]

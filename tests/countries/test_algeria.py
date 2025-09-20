@@ -277,6 +277,31 @@ class TestAlgeria(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.hebrew_holidays, range(1964, 2050))
 
+    def test_weekend(self):
+        for dt in (
+            "1975-01-04",  # SAT.
+            "1975-01-05",  # SUN.
+            "1976-01-01",  # THU.
+            "1976-01-02",  # FRI.
+            "2008-01-03",  # THU.
+            "2008-01-04",  # FRI.
+            "2009-01-02",  # FRI.
+            "2009-01-03",  # SAT.
+        ):
+            self.assertTrue(self.holidays.is_weekend(dt))
+
+        for dt in (
+            "1975-01-02",  # THU.
+            "1975-01-03",  # FRI.
+            "1976-01-03",  # SAT.
+            "1976-01-04",  # SUN.
+            "2008-01-05",  # SAT.
+            "2008-01-06",  # SUN.
+            "2009-01-01",  # THU.
+            "2009-01-04",  # SUN.
+        ):
+            self.assertFalse(self.holidays.is_weekend(dt))
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "رأس السنة الميلادية"),

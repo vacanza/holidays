@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
@@ -17,6 +18,7 @@ from holidays.calendars.gregorian import (
     FEB,
     MAR,
     APR,
+    MAY,
     JUN,
     JUL,
     AUG,
@@ -49,6 +51,7 @@ class Oman(HolidayBase, IslamicHolidays):
     estimated_label = tr("%s (المقدرة)")
     start_year = 1970
     supported_languages = ("ar", "en_US")
+    weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -62,10 +65,11 @@ class Oman(HolidayBase, IslamicHolidays):
         )
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self):
+    def _get_weekend(self, dt: date) -> set[int]:
         # Oman switches from THU-FRI to FRI-SAT on May 1, 2013.
-        self.weekend = {THU, FRI} if self._year <= 2013 else {FRI, SAT}
+        return {FRI, SAT} if dt >= date(2013, MAY, 1) else {THU, FRI}
 
+    def _populate_public_holidays(self):
         if self._year >= 2020:
             # Sultan's Accession Day.
             self._add_holiday_jan_11(tr("اليوم الوطني لتولي السلطان"))
