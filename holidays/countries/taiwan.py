@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from calendar import monthcalendar
 from datetime import date
 from gettext import gettext as tr
 from typing import Optional
@@ -32,6 +31,7 @@ from holidays.calendars.gregorian import (
     FRI,
     SAT,
     SUN,
+    _get_nth_weekday_of_month,
 )
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
