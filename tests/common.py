@@ -487,7 +487,7 @@ class WorkingDayTests(TestCase):
         self._verify_type(holidays)
 
         for dt in dates:
-            self.assertTrue(holidays._is_weekend(parse(dt)))
+            self.assertTrue(holidays.is_weekend(dt))
             self.assertTrue(holidays.is_working_day(dt))
 
     def assertWorkingDay(self, *args):
