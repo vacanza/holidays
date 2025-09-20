@@ -184,7 +184,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
                 date(2023, JUL, 2),  # 15 Waxing.
                 date(2023, JUL, 10),  # 8 Waning.
                 date(2023, JUL, 17),  # 14 Waning.
-                date(2023, JUL, 25),  # 8 Waxing (Month 88).
+                date(2023, JUL, 25),  # 8 Waxing (Month 8.8).
                 date(2023, AUG, 1),  # 15 Waxing.
                 date(2023, AUG, 9),  # 8 Waning.
                 date(2023, AUG, 16),  # 15 Waning.
