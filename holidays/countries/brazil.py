@@ -106,7 +106,7 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         if 1892 <= self._year <= 1930:
             # Republic Constitution Day.
-            self._add_holiday_feb_24(tr("Constituição da Republica"))
+            self._add_holiday_feb_24(tr("Constituição da República"))
 
         # Good Friday.
         self._add_good_friday(tr("Sexta-feira Santa"))

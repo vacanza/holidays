@@ -42,6 +42,24 @@ class TestKuwait(CommonCountryTests, TestCase):
             ("2022-10-08", "عيد المولد النبوي (المقدرة)"),
         )
 
+    def test_weekend(self):
+        for dt in (
+            "2007-08-30",  # THU.
+            "2007-08-31",  # FRI.
+            "2007-09-01",  # SAT.
+            "2007-09-07",  # FRI.
+            "2007-09-08",  # SAT.
+        ):
+            self.assertTrue(self.holidays.is_weekend(dt))
+
+        for dt in (
+            "2007-08-25",  # SAT.
+            "2007-08-26",  # SUN.
+            "2007-09-02",  # SUN.
+            "2007-09-06",  # THU.
+        ):
+            self.assertFalse(self.holidays.is_weekend(dt))
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2023-01-01", "رأس السنة الميلادية"),

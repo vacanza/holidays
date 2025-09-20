@@ -161,6 +161,23 @@ class TestOman(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.no_estimated_holidays, range(1970, 2050))
 
+    def test_weekend(self):
+        for dt in (
+            "2013-04-25",  # THU.
+            "2013-04-26",  # FRI.
+            "2013-05-03",  # FRI.
+            "2013-05-04",  # SAT.
+        ):
+            self.assertTrue(self.holidays.is_weekend(dt))
+
+        for dt in (
+            "2013-04-27",  # SAT.
+            "2013-04-28",  # SUN.
+            "2013-05-02",  # THU.
+            "2013-05-05",  # SUN.
+        ):
+            self.assertFalse(self.holidays.is_weekend(dt))
+
     def test_2019(self):
         self.assertHolidays(
             Oman(years=2019),
