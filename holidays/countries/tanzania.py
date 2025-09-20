@@ -10,8 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from __future__ import annotations
+
 from gettext import gettext as tr
+from typing import TYPE_CHECKING
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
@@ -42,6 +44,9 @@ from holidays.observed_holiday_base import (
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
 )
+
+if TYPE_CHECKING:
+    from datetime import date
 
 
 class Tanzania(
