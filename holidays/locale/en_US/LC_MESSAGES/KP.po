@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.82\n"
 "POT-Creation-Date: 2025-09-07 18:20+0500\n"
 "PO-Revision-Date: 2025-09-07 18:20+0500\n"
 "Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
@@ -25,6 +25,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: ko\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (추정된)"
+msgstr "%s (estimated)"
 
 #. New Year's Day.
 msgid "양력설"
@@ -57,6 +62,10 @@ msgstr "International Women's Day"
 #. Cheongmyeong Festival.
 msgid "청명"
 msgstr "Cheongmyeong Festival"
+
+#. Hanshi Festival.
+msgid "寒食节"
+msgstr "Hanshi Festival."
 
 #. Day of the Sun.
 msgid "태양절"

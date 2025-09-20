@@ -29,6 +29,8 @@ class NorthKorea(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
 
     country = "KP"
     default_language = "ko"
+    # %s (estimated).
+    estimated_label = tr("%s (추정된)")
     start_year = 1948
     supported_languages = ("en_US", "ko")
 
@@ -71,6 +73,9 @@ class NorthKorea(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         if self._year >= 2012:
             # Cheongmyeong Festival.
             self._add_qingming_festival(tr("청명"))
+
+        # Hanshi Festival.
+        self._add_hanshi_festival(tr("寒食节"))
 
         if self._year == 1962 or self._year >= 1968:
             name = (
