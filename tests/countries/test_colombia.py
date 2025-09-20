@@ -99,7 +99,7 @@ class TestColombia(CommonCountryTests, TestCase):
             "2025-05-29",
         )
         self.assertNonObservedHolidayName(name, range(1951, self.end_year))
-        self.assertNoNonObservedHolidayName(name, range(self.start_year, 1951))
+        self.assertNoHolidayName(name, range(self.start_year, 1951))
         obs_dt = (
             "2020-05-25",
             "2021-05-17",
@@ -123,7 +123,7 @@ class TestColombia(CommonCountryTests, TestCase):
             "2025-06-19",
         )
         self.assertNonObservedHolidayName(name, range(1951, self.end_year))
-        self.assertNoNonObservedHolidayName(name, range(self.start_year, 1951))
+        self.assertNoHolidayName(name, range(self.start_year, 1951))
         obs_dt = (
             "2020-06-15",
             "2021-06-07",
