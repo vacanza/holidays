@@ -19,279 +19,222 @@ from tests.common import CommonCountryTests
 class TestColombia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Colombia)
+        super().setUpClass(Colombia, years_non_observed=range(1984, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(Colombia, CO, COL)
 
-    def test_2016(self):
-        # https://www.officeholidays.com/countries/colombia/2016
-        self.assertHolidayDates(
-            Colombia(years=2016),
-            "2016-01-01",
-            "2016-01-11",
-            "2016-03-21",
-            "2016-03-24",
-            "2016-03-25",
-            "2016-05-01",
-            "2016-05-09",
-            "2016-05-30",
-            "2016-06-06",
-            "2016-07-04",
-            "2016-07-20",
-            "2016-08-07",
-            "2016-08-15",
-            "2016-10-17",
-            "2016-11-07",
-            "2016-11-14",
-            "2016-12-08",
-            "2016-12-25",
-        )
+    def test_new_years_day(self):
+        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))
 
-    def test_2017(self):
-        # https://www.officeholidays.com/countries/colombia/2017
-        self.assertHolidayDates(
-            Colombia(years=2017),
-            "2017-01-01",
-            "2017-01-09",
-            "2017-03-20",
-            "2017-04-13",
-            "2017-04-14",
-            "2017-05-01",
-            "2017-05-29",
-            "2017-06-19",
-            "2017-06-26",
-            "2017-07-03",
-            "2017-07-20",
-            "2017-08-07",
-            "2017-08-21",
-            "2017-10-16",
-            "2017-11-06",
-            "2017-11-13",
-            "2017-12-08",
-            "2017-12-25",
+    def test_epiphany_day(self):
+        name = "Día de los Reyes Magos"
+        self.assertNonObservedHolidayName(
+            name, (f"{year}-01-06" for year in range(1951, self.end_year))
         )
-
-    def test_2018(self):
-        # https://publicholidays.co/2018-dates/
-        self.assertHolidayDates(
-            Colombia(years=2018),
-            "2018-01-01",
-            "2018-01-08",
-            "2018-03-19",
-            "2018-03-29",
-            "2018-03-30",
-            "2018-05-01",
-            "2018-05-14",
-            "2018-06-04",
-            "2018-06-11",
-            "2018-07-02",
-            "2018-07-20",
-            "2018-08-07",
-            "2018-08-20",
-            "2018-10-15",
-            "2018-11-05",
-            "2018-11-12",
-            "2018-12-08",
-            "2018-12-25",
-        )
-
-    def test_2019(self):
-        # https://www.officeholidays.com/countries/colombia/2019
-        self.assertHolidayDates(
-            Colombia(years=2019),
-            "2019-01-01",
-            "2019-01-07",
-            "2019-03-25",
-            "2019-04-18",
-            "2019-04-19",
-            "2019-05-01",
-            "2019-06-03",
-            "2019-06-24",
-            "2019-07-01",
-            "2019-07-20",
-            "2019-08-07",
-            "2019-08-19",
-            "2019-10-14",
-            "2019-11-04",
-            "2019-11-11",
-            "2019-12-08",
-            "2019-12-25",
-        )
-
-    def test_2020(self):
-        # https://www.officeholidays.com/countries/colombia/2020
-        self.assertHolidayDates(
-            Colombia(years=2020),
-            "2020-01-01",
-            "2020-01-06",
-            "2020-03-23",
-            "2020-04-09",
-            "2020-04-10",
-            "2020-05-01",
-            "2020-05-25",
-            "2020-06-15",
-            "2020-06-22",
-            "2020-06-29",
-            "2020-07-20",
-            "2020-08-07",
-            "2020-08-17",
-            "2020-10-12",
-            "2020-11-02",
-            "2020-11-16",
-            "2020-12-08",
-            "2020-12-25",
-        )
-
-    def test_2021(self):
-        # https://www.officeholidays.com/countries/colombia/2021
-        self.assertHolidayDates(
-            Colombia(years=2021),
-            "2021-01-01",
+        self.assertNoHolidayName(name, range(self.start_year, 1951))
+        obs_dt = (
             "2021-01-11",
-            "2021-03-22",
-            "2021-04-01",
-            "2021-04-02",
-            "2021-05-01",
-            "2021-05-17",
-            "2021-06-07",
-            "2021-06-14",
-            "2021-07-05",
-            "2021-07-20",
-            "2021-08-07",
-            "2021-08-16",
-            "2021-10-18",
-            "2021-11-01",
-            "2021-11-15",
-            "2021-12-08",
-            "2021-12-25",
-        )
-
-    def test_2022(self):
-        # https://www.officeholidays.com/countries/colombia/2022
-        self.assertHolidayDates(
-            Colombia(years=2022),
-            "2022-01-01",
             "2022-01-10",
-            "2022-03-21",
-            "2022-04-14",
-            "2022-04-15",
-            "2022-05-01",
-            "2022-05-30",
-            "2022-06-20",
-            "2022-06-27",
-            "2022-07-04",
-            "2022-07-20",
-            "2022-08-07",
-            "2022-08-15",
-            "2022-10-17",
-            "2022-11-07",
-            "2022-11-14",
-            "2022-12-08",
-            "2022-12-25",
-        )
-
-    def test_2023(self):
-        # https://publicholidays.co/2023-dates/
-        self.assertHolidayDates(
-            Colombia(years=2023),
-            "2023-01-01",
             "2023-01-09",
+            "2024-01-08",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_saint_josephs_day(self):
+        name = "Día de San José"
+        self.assertNonObservedHolidayName(
+            name, (f"{year}-03-19" for year in range(1951, self.end_year))
+        )
+        self.assertNoHolidayName(name, range(self.start_year, 1951))
+        obs_dt = (
+            "2020-03-23",
+            "2021-03-22",
+            "2022-03-21",
             "2023-03-20",
+            "2024-03-25",
+            "2025-03-24",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_maundy_thursday(self):
+        name = "Jueves Santo"
+        self.assertHolidayName(
+            name,
+            "2020-04-09",
+            "2021-04-01",
+            "2022-04-14",
             "2023-04-06",
+            "2024-03-28",
+            "2025-04-17",
+        )
+        self.assertHolidayName(name, range(1951, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1951))
+
+    def test_good_friday(self):
+        name = "Viernes Santo"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
             "2023-04-07",
-            "2023-05-01",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, range(1951, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1951))
+
+    def test_ascension_day(self):
+        name = "Ascensión del señor"
+        self.assertNonObservedHolidayName(
+            name,
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
+        )
+        self.assertNonObservedHolidayName(name, range(1951, self.end_year))
+        self.assertNoNonObservedHolidayName(name, range(self.start_year, 1951))
+        obs_dt = (
+            "2020-05-25",
+            "2021-05-17",
+            "2022-05-30",
             "2023-05-22",
+            "2024-05-13",
+            "2025-06-02",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_corpus_christi(self):
+        name = "Corpus Christi"
+        self.assertNonObservedHolidayName(
+            name,
+            "2020-06-11",
+            "2021-06-03",
+            "2022-06-16",
+            "2023-06-08",
+            "2024-05-30",
+            "2025-06-19",
+        )
+        self.assertNonObservedHolidayName(name, range(1951, self.end_year))
+        self.assertNoNonObservedHolidayName(name, range(self.start_year, 1951))
+        obs_dt = (
+            "2020-06-15",
+            "2021-06-07",
+            "2022-06-20",
             "2023-06-12",
+            "2024-06-03",
+            "2025-06-23",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_labor_day(self):
+        self.assertHolidayName("Día del Trabajo", (f"{year}-05-01" for year in self.full_range))
+
+    def test_sacred_heart(self):
+        name = "Sagrado Corazón"
+        self.assertNonObservedHolidayName(
+            name,
+            "2020-06-19",
+            "2021-06-11",
+            "2022-06-24",
+            "2023-06-16",
+            "2024-06-07",
+            "2025-06-27",
+        )
+        self.assertNonObservedHolidayName(name, range(1984, self.end_year))
+        self.assertNoNonObservedHolidayName(name, range(self.start_year, 1984))
+        obs_dt = (
+            "2020-06-22",
+            "2021-06-14",
+            "2022-06-27",
             "2023-06-19",
+            "2024-06-10",
+            "2025-06-30",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_saints_peter_and_paul_day(self):
+        name = "San Pedro y San Pablo"
+        self.assertNonObservedHolidayName(
+            name, (f"{year}-06-29" for year in range(1951, self.end_year))
+        )
+        self.assertNoHolidayName(name, range(self.start_year, 1951))
+        obs_dt = (
+            "2021-07-05",
+            "2022-07-04",
             "2023-07-03",
-            "2023-07-20",
-            "2023-08-07",
-            "2023-08-21",
+            "2024-07-01",
+            "2025-06-30",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_independence_day(self):
+        self.assertHolidayName(
+            "Día de la Independencia", (f"{year}-07-20" for year in self.full_range)
+        )
+
+    def test_battle_of_boyaca(self):
+        self.assertHolidayName("Batalla de Boyacá", (f"{year}-08-07" for year in self.full_range))
+
+    def test_columbus_day(self):
+        name = "Día de la Raza"
+        self.assertNonObservedHolidayName(name, (f"{year}-10-12" for year in self.full_range))
+        obs_dt = (
+            "2021-10-18",
+            "2022-10-17",
             "2023-10-16",
+            "2024-10-14",
+            "2025-10-13",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_all_saints_day(self):
+        name = "Día de Todos los Santos"
+        self.assertNonObservedHolidayName(
+            name, (f"{year}-11-01" for year in range(1951, self.end_year))
+        )
+        self.assertNoHolidayName(name, range(self.start_year, 1951))
+        obs_dt = (
+            "2020-11-02",
+            "2022-11-07",
             "2023-11-06",
+            "2024-11-04",
+            "2025-11-03",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_independence_of_cartagena(self):
+        name = "Independencia de Cartagena"
+        self.assertNonObservedHolidayName(name, (f"{year}-11-11" for year in self.full_range))
+        obs_dt = (
+            "2020-11-16",
+            "2021-11-15",
+            "2022-11-14",
             "2023-11-13",
-            "2023-12-08",
-            "2023-12-25",
+            "2025-11-17",
         )
+        self.assertHolidayName(f"{name} (observado)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
-    def test_1984(self):
-        self.assertHolidayDates(
-            Colombia(years=1984),
-            "1984-01-01",
-            "1984-01-09",
-            "1984-03-19",
-            "1984-04-19",
-            "1984-04-20",
-            "1984-05-01",
-            "1984-06-04",
-            "1984-06-25",
-            "1984-07-02",
-            "1984-07-20",
-            "1984-08-07",
-            "1984-08-20",
-            "1984-10-15",
-            "1984-11-05",
-            "1984-11-12",
-            "1984-12-08",
-            "1984-12-25",
-        )
+    def test_immaculate_conception(self):
+        name = "La Inmaculada Concepción"
+        self.assertHolidayName(name, (f"{year}-12-08" for year in range(1951, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1951))
 
-    def test_1983(self):
-        self.assertHolidayDates(
-            Colombia(years=1983),
-            "1983-01-01",
-            "1983-01-06",
-            "1983-03-19",
-            "1983-03-31",
-            "1983-04-01",
-            "1983-05-01",
-            "1983-05-12",
-            "1983-06-02",
-            "1983-06-29",
-            "1983-07-20",
-            "1983-08-07",
-            "1983-08-15",
-            "1983-10-12",
-            "1983-11-01",
-            "1983-11-11",
-            "1983-12-08",
-            "1983-12-25",
-        )
-
-    def test_1951(self):
-        self.assertHolidayDates(
-            Colombia(years=1951),
-            "1951-01-01",
-            "1951-01-06",
-            "1951-03-19",
-            "1951-03-22",
-            "1951-03-23",
-            "1951-05-01",
-            "1951-05-03",
-            "1951-05-24",
-            "1951-06-29",
-            "1951-07-20",
-            "1951-08-07",
-            "1951-08-15",
-            "1951-10-12",
-            "1951-11-01",
-            "1951-11-11",
-            "1951-12-08",
-            "1951-12-25",
-        )
-
-    def test_1950(self):
-        self.assertHolidayDates(
-            Colombia(years=1950),
-            "1950-01-01",
-            "1950-05-01",
-            "1950-07-20",
-            "1950-08-07",
-            "1950-10-12",
-            "1950-11-11",
-            "1950-12-25",
-        )
+    def test_christmas_day(self):
+        self.assertHolidayName("Navidad", (f"{year}-12-25" for year in self.full_range))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

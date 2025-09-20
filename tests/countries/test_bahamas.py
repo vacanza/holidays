@@ -30,20 +30,141 @@ class TestBahamas(CommonCountryTests, TestCase):
     def test_special_public_holidays(self):
         self.assertHoliday("2022-09-19")
 
-    def test_special_observance_2012_and_prior(self):
-        self.assertNoNonObservedHoliday(
-            # Cases of New Year's Day observance overflow into prev year
+    def test_new_years_day(self):
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        obs_dt = (
+            # Pre-2012 Rule Changed & Underflow to Previous Year Cases.
             "1979-12-31",
             "1984-12-31",
             "1990-12-31",
             "2001-12-31",
-            "2007-12-31",
-            # New Year's Day
             "2003-01-03",
             "2004-01-02",
+            "2007-12-31",
             "2009-01-02",
             "2011-01-03",
-            # Discovery Day
+            # 2012 onwards.
+            "2012-01-02",
+            "2017-01-02",
+            "2023-01-02",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_majority_rule_day(self):
+        name = "Majority Rule Day"
+        self.assertHolidayName(name, (f"{year}-01-10" for year in range(2014, self.end_year)))
+        obs_dt = (
+            "2015-01-12",
+            "2016-01-11",
+            "2021-01-11",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_good_friday(self):
+        name = "Good Friday"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_easter_monday(self):
+        name = "Easter Monday"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_whit_monday(self):
+        name = "Whit Monday"
+        self.assertHolidayName(
+            name,
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_randol_fawkes_labour_day(self):
+        name_1974 = "Labour Day"
+        name_2013 = "Randol Fawkes Labour Day"
+
+        self.assertHolidayName(
+            name_1974,
+            "2007-06-01",
+            "2008-06-06",
+            "2009-06-05",
+            "2010-06-04",
+            "2011-06-03",
+            "2012-06-01",
+        )
+        self.assertHolidayName(name_1974, range(self.start_year, 2013))
+        self.assertNoHolidayName(name_1974, range(2013, self.end_year))
+
+        self.assertHolidayName(
+            name_2013,
+            "2020-06-05",
+            "2021-06-04",
+            "2022-06-03",
+            "2023-06-02",
+            "2024-06-07",
+            "2025-06-06",
+        )
+        self.assertHolidayName(name_2013, range(2013, self.end_year))
+        self.assertNoHolidayName(name_2013, range(self.start_year, 2013))
+
+    def test_independence_day(self):
+        name = "Independence Day"
+        self.assertHolidayName(name, (f"{year}-07-10" for year in self.full_range))
+        obs_dt = (
+            "2011-07-11",
+            "2016-07-11",
+            "2021-07-12",
+            "2022-07-11",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_emancipation_day(self):
+        name = "Emancipation Day"
+        self.assertHolidayName(
+            name,
+            "2020-08-03",
+            "2021-08-02",
+            "2022-08-01",
+            "2023-08-07",
+            "2024-08-05",
+            "2025-08-04",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_national_heroes_day(self):
+        name_1974 = "Discovery Day"
+        name_2013 = "National Heroes Day"
+
+        self.assertHolidayName(
+            name_1974, (f"{year}-10-12" for year in range(self.start_year, 2013))
+        )
+        self.assertNoHolidayName(name_1974, range(2013, self.end_year))
+
+        obs_dt = (
             "2000-10-13",
             "2004-10-11",
             "2005-10-14",
@@ -51,108 +172,42 @@ class TestBahamas(CommonCountryTests, TestCase):
             "2010-10-11",
             "2011-10-14",
         )
+        self.assertHolidayName(f"{name_1974} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
-    def test_2012(self):
-        self.assertHolidays(
-            Bahamas(years=2012),
-            ("2012-01-01", "New Year's Day"),
-            ("2012-01-02", "New Year's Day (observed)"),
-            ("2012-04-06", "Good Friday"),
-            ("2012-04-09", "Easter Monday"),
-            ("2012-05-28", "Whit Monday"),
-            ("2012-06-01", "Labour Day"),
-            ("2012-07-10", "Independence Day"),
-            ("2012-08-06", "Emancipation Day"),
-            ("2012-10-12", "Discovery Day"),
-            ("2012-12-25", "Christmas Day"),
-            ("2012-12-26", "Boxing Day"),
+        self.assertHolidayName(
+            name_2013,
+            "2020-10-12",
+            "2021-10-11",
+            "2022-10-10",
+            "2023-10-09",
+            "2024-10-14",
+            "2025-10-13",
         )
+        self.assertHolidayName(name_2013, range(2013, self.end_year))
+        self.assertNoHolidayName(name_2013, range(self.start_year, 2013))
 
-    def test_2013(self):
-        self.assertHolidays(
-            Bahamas(years=2013),
-            ("2013-01-01", "New Year's Day"),
-            ("2013-03-29", "Good Friday"),
-            ("2013-04-01", "Easter Monday"),
-            ("2013-05-20", "Whit Monday"),
-            ("2013-06-07", "Randol Fawkes Labour Day"),
-            ("2013-07-10", "Independence Day"),
-            ("2013-08-05", "Emancipation Day"),
-            ("2013-10-14", "National Heroes Day"),
-            ("2013-12-25", "Christmas Day"),
-            ("2013-12-26", "Boxing Day"),
+    def test_christmas_day(self):
+        name = "Christmas Day"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
+        obs_dt = (
+            "2011-12-27",
+            "2016-12-27",
+            "2022-12-27",
         )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
-    def test_2014(self):
-        self.assertHolidays(
-            Bahamas(years=2014),
-            ("2014-01-01", "New Year's Day"),
-            ("2014-01-10", "Majority Rule Day"),
-            ("2014-04-18", "Good Friday"),
-            ("2014-04-21", "Easter Monday"),
-            ("2014-06-06", "Randol Fawkes Labour Day"),
-            ("2014-06-09", "Whit Monday"),
-            ("2014-07-10", "Independence Day"),
-            ("2014-08-04", "Emancipation Day"),
-            ("2014-10-13", "National Heroes Day"),
-            ("2014-12-25", "Christmas Day"),
-            ("2014-12-26", "Boxing Day"),
+    def test_boxing_day(self):
+        name = "Boxing Day"
+        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
+        obs_dt = (
+            "2015-12-28",
+            "2020-12-28",
+            "2021-12-27",
         )
-
-    def test_2020(self):
-        self.assertHolidays(
-            Bahamas(years=2020),
-            ("2020-01-01", "New Year's Day"),
-            ("2020-01-10", "Majority Rule Day"),
-            ("2020-04-10", "Good Friday"),
-            ("2020-04-13", "Easter Monday"),
-            ("2020-06-01", "Whit Monday"),
-            ("2020-06-05", "Randol Fawkes Labour Day"),
-            ("2020-07-10", "Independence Day"),
-            ("2020-08-03", "Emancipation Day"),
-            ("2020-10-12", "National Heroes Day"),
-            ("2020-12-25", "Christmas Day"),
-            ("2020-12-26", "Boxing Day"),
-            ("2020-12-28", "Boxing Day (observed)"),
-        )
-
-    def test_2021(self):
-        self.assertHolidays(
-            Bahamas(years=2021),
-            ("2021-01-01", "New Year's Day"),
-            ("2021-01-10", "Majority Rule Day"),
-            ("2021-01-11", "Majority Rule Day (observed)"),
-            ("2021-04-02", "Good Friday"),
-            ("2021-04-05", "Easter Monday"),
-            ("2021-05-24", "Whit Monday"),
-            ("2021-06-04", "Randol Fawkes Labour Day"),
-            ("2021-07-10", "Independence Day"),
-            ("2021-07-12", "Independence Day (observed)"),
-            ("2021-08-02", "Emancipation Day"),
-            ("2021-10-11", "National Heroes Day"),
-            ("2021-12-25", "Christmas Day"),
-            ("2021-12-26", "Boxing Day"),
-            ("2021-12-27", "Boxing Day (observed)"),
-        )
-
-    def test_2022(self):
-        self.assertHolidays(
-            Bahamas(years=2022),
-            ("2022-01-01", "New Year's Day"),
-            ("2022-01-10", "Majority Rule Day"),
-            ("2022-04-15", "Good Friday"),
-            ("2022-04-18", "Easter Monday"),
-            ("2022-06-03", "Randol Fawkes Labour Day"),
-            ("2022-06-06", "Whit Monday"),
-            ("2022-07-10", "Independence Day"),
-            ("2022-07-11", "Independence Day (observed)"),
-            ("2022-08-01", "Emancipation Day"),
-            ("2022-09-19", "State Funeral of Queen Elizabeth II"),
-            ("2022-10-10", "National Heroes Day"),
-            ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Boxing Day"),
-            ("2022-12-27", "Christmas Day (observed)"),
-        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_2023(self):
         self.assertHolidays(

@@ -119,10 +119,16 @@ class TestCambodia(CommonCountryTests, TestCase):
             ("2023-11-28", "ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក"),
         )
 
+    def test_new_years_day(self):
+        self.assertHolidayName("ទិវាចូលឆ្នាំសាកល", (f"{year}-01-01" for year in self.full_range))
+
     def test_day_of_victory_over_genocidal_regime(self):
         self.assertHolidayName(
             "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍", (f"{year}-01-07" for year in self.full_range)
         )
+
+    def test_international_womens_day(self):
+        self.assertHolidayName("ទិវាអន្តរជាតិនារី", (f"{year}-03-08" for year in self.full_range))
 
     def test_khmer_new_year(self):
         name = "ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
@@ -162,6 +168,9 @@ class TestCambodia(CommonCountryTests, TestCase):
                 if year not in years_sangkranta_apr14 and year not in {2020, 2024}
             ),
         )
+
+    def test_international_labor_day(self):
+        self.assertHolidayName("ទិវាពលកម្មអន្តរជាតិ", (f"{year}-05-01" for year in self.full_range))
 
     def test_king_sihamoni_birthday(self):
         name = "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី"
@@ -227,6 +236,46 @@ class TestCambodia(CommonCountryTests, TestCase):
         name = "ទិវាសន្តិភាពនៅកម្ពុជា"
         self.assertHolidayName(name, (f"{year}-12-29" for year in range(2024, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2024))
+
+    def test_meak_bochea(self):
+        name = "ពិធីបុណ្យមាឃបូជា"
+        self.assertHolidayName(
+            name,
+            "2014-02-14",
+            "2015-02-03",
+            "2016-02-22",
+            "2017-02-11",
+            "2018-01-31",
+            "2019-02-19",
+        )
+        self.assertHolidayName(name, range(self.start_year, 2020))
+        self.assertNoHolidayName(name, range(2020, self.end_year))
+
+    def test_visaka_bochea(self):
+        name = "ពិធីបុណ្យវិសាខបូជា"
+        self.assertHolidayName(
+            name,
+            "2020-05-06",
+            "2021-04-26",
+            "2022-05-15",
+            "2023-05-04",
+            "2024-05-22",
+            "2025-05-11",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_royal_ploughing_ceremony(self):
+        name = "ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល"
+        self.assertHolidayName(
+            name,
+            "2020-05-10",
+            "2021-04-30",
+            "2022-05-19",
+            "2023-05-08",
+            "2024-05-26",
+            "2025-05-15",
+        )
+        self.assertHolidayName(name, self.full_range)
 
     def test_pchum_ben(self):
         name = "ពិធីបុណ្យភ្ផុំបិណ្ឌ"

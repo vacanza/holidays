@@ -75,6 +75,7 @@ class TestCyprus(CommonCountryTests, TestCase):
 
     def test_holy_saturday(self):
         name = "Μεγάλο Σάββατο"
+        self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(
             name,
             "2020-04-18",
@@ -85,7 +86,6 @@ class TestCyprus(CommonCountryTests, TestCase):
             "2025-04-19",
         )
         self.assertOptionalHolidayName(name, self.full_range)
-        self.assertNoHolidayName(name)
 
     def test_easter_sunday(self):
         name = "Κυριακή του Πάσχα"
@@ -115,6 +115,7 @@ class TestCyprus(CommonCountryTests, TestCase):
 
     def test_easter_tuesday(self):
         name = "Τρίτη της Διακαινησίμου"
+        self.assertNoHolidayName(name)
         self.assertBankHolidayName(
             name,
             "2020-04-21",
@@ -125,7 +126,6 @@ class TestCyprus(CommonCountryTests, TestCase):
             "2025-04-22",
         )
         self.assertBankHolidayName(name, self.full_range)
-        self.assertNoHolidayName(name)
 
     def test_labor_day(self):
         self.assertHolidayName("Πρωτομαγιά", (f"{year}-05-01" for year in self.full_range))
@@ -158,8 +158,8 @@ class TestCyprus(CommonCountryTests, TestCase):
 
     def test_christmas_eve(self):
         name = "Παραμονή Χριστουγέννων"
-        self.assertOptionalHolidayName(name, (f"{year}-12-24" for year in self.full_range))
         self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(name, (f"{year}-12-24" for year in self.full_range))
 
     def test_christmas_day(self):
         self.assertHolidayName("Χριστούγεννα", (f"{year}-12-25" for year in self.full_range))

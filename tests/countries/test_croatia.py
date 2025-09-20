@@ -97,12 +97,14 @@ class TestCroatia(CommonCountryTests, TestCase):
         )
 
     def test_victory_and_homeland_thanksgiving_day(self):
-        name_1 = "Dan pobjede i domovinske zahvalnosti"
-        name_2 = "Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja"
-        self.assertHolidayName(name_1, (f"{year}-08-05" for year in range(self.start_year, 2008)))
-        self.assertHolidayName(name_2, (f"{year}-08-05" for year in range(2008, self.end_year)))
-        self.assertNoHolidayName(name_1, range(2008, self.end_year))
-        self.assertNoHolidayName(name_2, range(self.start_year, 2008))
+        name_1992 = "Dan pobjede i domovinske zahvalnosti"
+        name_2008 = "Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja"
+        self.assertHolidayName(
+            name_1992, (f"{year}-08-05" for year in range(self.start_year, 2008))
+        )
+        self.assertHolidayName(name_2008, (f"{year}-08-05" for year in range(2008, self.end_year)))
+        self.assertNoHolidayName(name_1992, range(2008, self.end_year))
+        self.assertNoHolidayName(name_2008, range(self.start_year, 2008))
 
     def test_assumption_of_mary_day(self):
         self.assertHolidayName("Velika Gospa", (f"{year}-08-15" for year in self.full_range))
@@ -123,7 +125,7 @@ class TestCroatia(CommonCountryTests, TestCase):
     def test_christmas_day(self):
         self.assertHolidayName("Božić", (f"{year}-12-25" for year in self.full_range))
 
-    def test_st_stephens_day(self):
+    def test_saint_stephens_day(self):
         self.assertHolidayName("Sveti Stjepan", (f"{year}-12-26" for year in self.full_range))
 
     def test_l10n_default(self):

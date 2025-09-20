@@ -118,10 +118,10 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_sovereigns_birthday(self):
-        name_1 = "Queen's Birthday"
-        name_2 = "King's Birthday"
+        name_queen = "Queen's Birthday"
+        name_king = "King's Birthday"
         self.assertHolidayName(
-            name_1,
+            name_queen,
             "2018-06-11",
             "2019-06-10",
             "2020-06-08",
@@ -129,15 +129,15 @@ class TestCocosIslands(CommonCountryTests, TestCase):
             "2022-06-06",
         )
         self.assertHolidayName(
-            name_2,
+            name_king,
             "2023-06-06",
             "2024-06-06",
             "2025-06-09",
         )
-        self.assertHolidayName(name_1, range(self.start_year, 2023))
-        self.assertHolidayName(name_2, range(2023, self.end_year))
-        self.assertNoHolidayName(name_1, range(2023, self.end_year))
-        self.assertNoHolidayName(name_2, range(self.start_year, 2023))
+        self.assertHolidayName(name_queen, range(self.start_year, 2023))
+        self.assertHolidayName(name_king, range(2023, self.end_year))
+        self.assertNoHolidayName(name_queen, range(2023, self.end_year))
+        self.assertNoHolidayName(name_king, range(self.start_year, 2023))
 
     def test_boxing_day(self):
         name = "Boxing Day"
