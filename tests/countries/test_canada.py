@@ -77,12 +77,14 @@ class TestCanada(CommonCountryTests, TestCase):
             self.assertHolidayName(name, holidays, self.full_range)
 
     def test_canada_day(self):
-        name_1 = "Dominion Day"
-        name_2 = "Canada Day"
-        self.assertHolidayName(name_1, (f"{year}-07-01" for year in range(1879, 1983)))
-        self.assertHolidayName(name_2, (f"{year}-07-01" for year in range(1983, self.end_year)))
-        self.assertNoHolidayName(name_1, range(self.start_year, 1879), range(1983, self.end_year))
-        self.assertNoHolidayName(name_2, range(self.start_year, 1983))
+        name_1879 = "Dominion Day"
+        name_1893 = "Canada Day"
+        self.assertHolidayName(name_1879, (f"{year}-07-01" for year in range(1879, 1983)))
+        self.assertHolidayName(name_1893, (f"{year}-07-01" for year in range(1983, self.end_year)))
+        self.assertNoHolidayName(
+            name_1879, range(self.start_year, 1879), range(1983, self.end_year)
+        )
+        self.assertNoHolidayName(name_1893, range(self.start_year, 1983))
         self.assertNoHoliday(f"{year}-07-01" for year in range(self.start_year, 1879))
 
         dts_sat = (
@@ -97,7 +99,7 @@ class TestCanada(CommonCountryTests, TestCase):
             "2012-07-02",
             "2018-07-02",
         )
-        name_observed = f"{name_2} (observed)"
+        name_observed = f"{name_1893} (observed)"
         self.assertNoHoliday(dts_sat, dts_sun)
         self.assertGovernmentHolidayName(name_observed, dts_sat, dts_sun)
         self.assertNoGovernmentNonObservedHoliday(dts_sat, dts_sun)

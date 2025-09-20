@@ -43,7 +43,7 @@ class TestBolivia(CommonCountryTests, TestCase):
     def test_plurinational_state_foundation_day(self):
         name = "Día de la Creación del Estado Plurinacional de Bolivia"
         self.assertHolidayName(name, (f"{year}-01-22" for year in range(2010, self.end_year)))
-        self.assertNoHolidayName(name, range(1980, 2010))
+        self.assertNoHolidayName(name, range(self.start_year, 2010))
         dt = (
             "2012-01-23",
             "2017-01-23",
@@ -126,7 +126,7 @@ class TestBolivia(CommonCountryTests, TestCase):
     def test_andean_new_year(self):
         name = "Año Nuevo Aymara Amazónico"
         self.assertHolidayName(name, (f"{year}-06-21" for year in range(2009, self.end_year)))
-        self.assertNoHolidayName(name, range(1980, 2009))
+        self.assertNoHolidayName(name, range(self.start_year, 2009))
         dt = (
             "2009-06-22",
             "2015-06-22",
@@ -150,17 +150,17 @@ class TestBolivia(CommonCountryTests, TestCase):
     def test_national_dignity_day(self):
         name = "Día de la Dignidad Nacional"
         self.assertHolidayName(name, (f"{year}-10-17" for year in range(2020, self.end_year)))
-        self.assertNoHolidayName(name, range(1980, 2020))
+        self.assertNoHolidayName(name, range(self.start_year, 2020))
 
     def test_all_saints_day(self):
         name = "Día de Todos los Santos"
         self.assertHolidayName(name, (f"{year}-11-01" for year in range(1985, 1989)))
-        self.assertNoHolidayName(name, range(1980, 1985), range(1989, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1985), range(1989, self.end_year))
 
     def test_all_souls_day(self):
         name = "Día de Todos los Difuntos"
         self.assertHolidayName(name, (f"{year}-11-02" for year in range(1989, self.end_year)))
-        self.assertNoHolidayName(name, range(1980, 1989))
+        self.assertNoHolidayName(name, range(self.start_year, 1989))
         dt = (
             "2003-11-03",
             "2008-11-03",

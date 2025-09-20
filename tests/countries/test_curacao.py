@@ -227,11 +227,11 @@ class TestCuracao(CommonCountryTests, TestCase):
 
     def test_new_years_eve(self):
         name = "Vispu di Aña Nobo"
+        self.assertNoHolidayName(name)
         self.assertHalfDayHolidayName(
             name, (f"{year}-12-31" for year in range(2010, self.end_year))
         )
         self.assertNoHalfDayHolidayName(name, range(self.start_year, 2010))
-        self.assertNoHolidayName(name)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

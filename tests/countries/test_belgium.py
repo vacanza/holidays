@@ -111,6 +111,19 @@ class TestBelgium(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
 
+    def test_whit_monday(self):
+        name = "Pinkstermaandag"
+        self.assertHolidayName(
+            name,
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
+        )
+        self.assertHolidayName(name, self.full_range)
+
     def test_national_day(self):
         self.assertHolidayName("Nationale feestdag", (f"{year}-07-21" for year in self.full_range))
 

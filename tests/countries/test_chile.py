@@ -306,6 +306,7 @@ class TestChile(CommonCountryTests, TestCase):
 
     def test_bank_holidays(self):
         name = "Feriado bancario"
+        self.assertNoHolidayName(name)
         self.assertBankHolidayName(name, (f"{year}-06-30" for year in range(1957, 1976)))
         self.assertBankHolidayName(
             name, (f"{year}-12-31" for year in (*range(1956, 1997), *range(1998, 2025)))
@@ -313,7 +314,6 @@ class TestChile(CommonCountryTests, TestCase):
         self.assertNoBankHolidayName(
             name, range(self.start_year, 1956), 1997, range(2025, self.end_year)
         )
-        self.assertNoHolidayName(name)
 
     def test_2019(self):
         self.assertHolidayDates(

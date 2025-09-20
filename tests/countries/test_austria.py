@@ -258,7 +258,7 @@ class TestAustria(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_1920_carinthian_plesbicite_anniversary(self):
+    def test_1920_carinthian_plebiscite_anniversary(self):
         name = "Tag der Volksabstimmung"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_bank_holidays.items():
