@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestColombia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Colombia, years_non_observed=range(1984, 2050))
+        super().setUpClass(Colombia)
 
     def test_country_aliases(self):
         self.assertAliases(Colombia, CO, COL)
