@@ -99,10 +99,9 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
             # 1998–2000: Sundays as well as the 2nd & 4th Saturdays of each Month.
             weekend = {SUN}
             if dt.weekday() == SAT:
-                saturdays = [
-                    week[SAT] for week in monthcalendar(dt.year, dt.month) if week[SAT] != 0
-                ]
-                if dt.day in (saturdays[1], saturdays[3]):
+                second_sat = _get_nth_weekday_of_month(2, SAT, dt.month, dt.year)
+                fourth_sat = _get_nth_weekday_of_month(4, SAT, dt.month, dt.year)
+                if dt in {second_sat, fourth_sat}:
                     weekend.add(SAT)
             return weekend
 
