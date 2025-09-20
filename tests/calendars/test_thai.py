@@ -14,7 +14,7 @@ import unittest
 from datetime import date
 
 from holidays import calendars
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.calendars.thai import KHMER_CALENDAR
 
 
@@ -150,6 +150,67 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             self.assertEqual(
                 boun_suang_heua_year_date[year], self.calendar.boun_suang_heua_date(year)
             )
+
+    def test_buddhist_sabbath_days(self):
+        expected_buddhist_sabbath_dates = {
+            self.calendar.START_YEAR - 1: [],
+            self.calendar.END_YEAR + 1: [],
+            2024: [
+                date(2024, JAN, 4),  # 8 Waning (Month 1 Started in Previous Gregorian Year).
+                date(2024, JAN, 10),  # 14 Waning.
+                date(2024, JAN, 18),  # 8 Waxing (Month 2).
+                date(2024, JAN, 25),  # 15 Waxing.
+                date(2024, FEB, 2),  # 8 Waning.
+                date(2024, FEB, 9),  # 15 Waning.
+                date(2024, FEB, 17),  # 8 Waxing (Month 3).
+                date(2024, FEB, 24),  # 15 Waxing.
+                date(2024, MAR, 3),  # 8 Waning.
+                date(2024, MAR, 9),  # 14 Waning.
+                date(2024, MAR, 17),  # 8 Waxing (Month 4).
+                date(2024, MAR, 24),  # 15 Waxing.
+                date(2024, APR, 1),  # 8 Waning.
+                date(2024, APR, 8),  # 15 Waning.
+                date(2024, APR, 16),  # 8 Waxing (Month 5).
+                date(2024, APR, 23),  # 15 Waxing.
+                date(2024, MAY, 1),  # 8 Waning.
+                date(2024, MAY, 7),  # 14 Waning.
+                date(2024, MAY, 15),  # 8 Waxing (Month 6).
+                date(2024, MAY, 22),  # 15 Waxing.
+                date(2024, MAY, 30),  # 8 Waning.
+                date(2024, JUN, 6),  # 15 Waning.
+                date(2024, JUN, 14),  # 8 Waxing (Month 7).
+                date(2024, JUN, 21),  # 15 Waxing.
+                date(2024, JUN, 29),  # 8 Waning.
+                date(2024, JUL, 5),  # 14 Waning.
+                date(2024, JUL, 13),  # 8 Waxing (Month 8).
+                date(2024, JUL, 20),  # 15 Waxing.
+                date(2024, JUL, 28),  # 8 Waning.
+                date(2024, AUG, 4),  # 15 Waning.
+                date(2024, AUG, 12),  # 8 Waxing (Month 9).
+                date(2024, AUG, 19),  # 15 Waxing.
+                date(2024, AUG, 27),  # 8 Waning.
+                date(2024, SEP, 2),  # 14 Waning.
+                date(2024, SEP, 10),  # 8 Waxing (Month 10).
+                date(2024, SEP, 17),  # 15 Waxing.
+                date(2024, SEP, 25),  # 8 Waning.
+                date(2024, OCT, 2),  # 15 Waning.
+                date(2024, OCT, 10),  # 8 Waxing (Month 11).
+                date(2024, OCT, 17),  # 15 Waxing.
+                date(2024, OCT, 25),  # 8 Waning.
+                date(2024, OCT, 31),  # 15 Waning.
+                date(2024, NOV, 8),  # 8 Waxing (Month 12).
+                date(2024, NOV, 15),  # 15 Waxing.
+                date(2024, NOV, 23),  # 8 Waning.
+                date(2024, NOV, 30),  # 15 Waning.
+                date(2024, DEC, 8),  # 8 Waxing (Month 1 Next Year).
+                date(2024, DEC, 15),  # 15 Waxing.
+                date(2024, DEC, 23),  # 8 Waning.
+                date(2024, DEC, 29),  # 14 Waning.
+            ],
+        }
+        for year, expected_dates in expected_buddhist_sabbath_dates.items():
+            result = self.calendar.buddhist_sabbath_dates(year)
+            self.assertEqual(result, expected_dates)
 
     def test_khao_phansa_date(self):
         # THAI_CALENDAR

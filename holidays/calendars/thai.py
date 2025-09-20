@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from functools import lru_cache
+from functools import cache
 from typing import Optional
 
 from holidays.calendars.gregorian import _timedelta
@@ -293,7 +293,7 @@ class _ThaiLunisolar:
                 f"Unknown calendar name: {calendar}. Use `KHMER_CALENDAR` or `THAI_CALENDAR`."
             )
 
-    @lru_cache
+    @cache
     def _get_start_date(self, year: int) -> Optional[date]:
         """Calculate the start date of that particular Thai Lunar Calendar Year.
 
@@ -319,6 +319,55 @@ class _ThaiLunisolar:
                 delta_days += 1
 
         return _timedelta(_ThaiLunisolar.START_DATE, delta_days)
+
+    @cache
+    def buddhist_sabbath_dates(self, year: int, calendar=None) -> list[date]:
+        """Return all Buddhist Sabbath (Uposatha) days in a given Gregorian year.
+
+        Args:
+            year:
+                The Gregorian year.
+
+            calendar:
+                Calendar type, this defaults to THAI_CALENDAR.
+
+        Returns:
+            A list of `date` objects representing all Buddhist Sabbath days in the specified
+            Gregorian year. Returns an empty list if the year is outside the supported range.
+        """
+        calendar = calendar or self.__calendar
+        self.__verify_calendar(calendar)
+
+        start_date = self._get_start_date(year)
+        if not start_date:
+            return []
+
+        months = [29, 30] * 6
+        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN and not self.__is_khmer_calendar(
+            calendar
+        ):
+            months.insert(7, 30)
+        elif year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
+            months[6] += 1
+        # Includes first two months of the next Thai lunar year to ensure all Buddhist Sabbaths
+        # in the Gregorian year are captured.
+        months.extend([29, 30])
+
+        buddhist_sabbaths = []
+        day_cursor = start_date
+        for month_days in months:
+            if day_cursor.year > year:
+                break
+            # Buddhist Sabbaths: 8 Waxing, 15 Waxing, 8 Waning, 14/15 Waning.
+            for offset in (7, 14, 22, month_days - 1):
+                buddhist_sabbath = _timedelta(day_cursor, offset)
+                if buddhist_sabbath.year == year:
+                    buddhist_sabbaths.append(buddhist_sabbath)
+                elif buddhist_sabbath.year > year:
+                    break
+            day_cursor = _timedelta(day_cursor, month_days)
+
+        return buddhist_sabbaths
 
     def makha_bucha_date(self, year: int, calendar=None) -> Optional[date]:
         """Calculate the estimated Gregorian date of Makha Bucha.
