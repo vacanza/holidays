@@ -250,6 +250,23 @@ class TestYemen(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, self.workday_holidays, range(1991, 2000))
 
+    def test_weekend(self):
+        for dt in (
+            "2013-08-08",  # THU.
+            "2013-08-09",  # FRI.
+            "2013-08-16",  # FRI.
+            "2013-08-17",  # SAT.
+        ):
+            self.assertTrue(self.holidays.is_weekend(dt))
+
+        for dt in (
+            "2013-08-10",  # SAT.
+            "2013-08-11",  # SUN.
+            "2013-08-15",  # THU.
+            "2013-08-18",  # SUN.
+        ):
+            self.assertFalse(self.holidays.is_weekend(dt))
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2023-02-18", "ذكرى الإسراء والمعراج"),
