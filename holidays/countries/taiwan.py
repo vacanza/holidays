@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from calendar import monthcalendar
 from datetime import date
 from gettext import gettext as tr
 from typing import Optional
@@ -90,6 +91,20 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         StaticHolidays.__init__(self, TaiwanStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_TO_PREV_WORKDAY + SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
+
+    def _get_weekend(self, dt: date) -> set[int]:
+        if dt.year >= 2001:
+            return {SAT, SUN}
+        else:
+            # 1998–2000: Sundays as well as the 2nd & 4th Saturdays of each Month.
+            weekend = {SUN}
+            if dt.weekday() == SAT:
+                saturdays = [
+                    week[SAT] for week in monthcalendar(dt.year, dt.month) if week[SAT] != 0
+                ]
+                if dt.day in (saturdays[1], saturdays[3]):
+                    weekend.add(SAT)
+            return weekend
 
     def _populate_observed(
         self, dts: set[date], rule: Optional[ObservedRule] = None, since: int = 2015

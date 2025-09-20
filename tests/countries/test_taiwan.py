@@ -1280,6 +1280,31 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2025-12-25", "行憲紀念日"),
         )
 
+    def test_weekend(self):
+        for dt in (
+            "1998-02-01",  # SUN
+            "1998-02-08",  # SUN
+            "1998-02-14",  # 2nd SAT.
+            "1998-02-15",  # SUN
+            "1998-02-22",  # SUN
+            "1998-02-28",  # 4th SAT.
+            "2001-02-03",  # SAT
+            "2001-02-04",  # SUN
+            "2001-02-10",  # SAT
+            "2001-02-11",  # SUN
+            "2001-02-17",  # SAT
+            "2001-02-18",  # SUN
+            "2001-02-24",  # SAT
+            "2001-02-25",  # SUN
+        ):
+            self.assertTrue(self.holidays.is_weekend(dt))
+
+        for dt in (
+            "1998-02-07",  # 1st SAT.
+            "1998-02-21",  # 3rd SAT.
+        ):
+            self.assertFalse(self.holidays.is_weekend(dt))
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "中華民國開國紀念日"),
