@@ -65,7 +65,7 @@ msgstr "Cheongmyeong Festival"
 
 #. Hanshi Festival.
 msgid "寒食节"
-msgstr "Hanshi Festival."
+msgstr "Hanshi Festival"
 
 #. Day of the Sun.
 msgid "태양절"

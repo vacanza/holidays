@@ -74,8 +74,9 @@ class NorthKorea(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
             # Cheongmyeong Festival.
             self._add_qingming_festival(tr("청명"))
 
-        # Hanshi Festival.
-        self._add_hanshi_festival(tr("寒食节"))
+        if self._year <= 1967:
+            # Hanshi Festival.
+            self._add_hanshi_festival(tr("寒食节"))
 
         if self._year == 1962 or self._year >= 1968:
             name = (
@@ -102,7 +103,7 @@ class NorthKorea(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         # International Workers' Day.
         self._add_labor_day(tr("전세계근로자들의 국제적명절"))
 
-        if self._year <= 1967 or self._year >= 1989:
+        if self._year <= 1967:
             # Dano.
             self._add_dragon_boat_festival(tr("단오"))
 

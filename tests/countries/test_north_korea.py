@@ -96,6 +96,18 @@ class TestNorthKorea(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, range(1948, 2012))
 
+    def test_hanshi_festival(self):
+        name = "寒食节"
+        self.assertHolidayName(
+            name,
+            "1963-04-06",
+            "1964-04-05",
+            "1965-04-06",
+            "1966-04-06",
+            "1967-04-06",
+        )
+        self.assertNoHolidayName(name, range(1968, 2050))
+
     def test_day_of_sun(self):
         name1 = "김일성의 생일"
         self.assertHolidayName(
@@ -127,14 +139,13 @@ class TestNorthKorea(CommonCountryTests, TestCase):
         name = "단오"
         self.assertHolidayName(
             name,
-            "2020-06-25",
-            "2021-06-14",
-            "2022-06-03",
-            "2023-06-22",
-            "2024-06-10",
-            "2025-05-31",
+            "1963-06-25",
+            "1964-06-14",
+            "1965-06-04",
+            "1966-06-23",
+            "1967-06-12",
         )
-        self.assertNoHolidayName(name, range(1968, 1989))
+        self.assertNoHolidayName(name, range(1968, 2050))
 
     def test_childrens_union_day(self):
         self.assertHolidayName(
@@ -203,7 +214,6 @@ class TestNorthKorea(CommonCountryTests, TestCase):
             ("2024-04-25", "조선인민혁명군 창건일"),
             ("2024-05-01", "전세계근로자들의 국제적명절"),
             ("2024-06-06", "조선소년단 창립절"),
-            ("2024-06-10", "단오"),
             ("2024-07-27", "조국해방전쟁승리기념일"),
             ("2024-08-15", "조국해방절"),
             ("2024-08-25", "선군절"),
@@ -231,7 +241,6 @@ class TestNorthKorea(CommonCountryTests, TestCase):
             ("2024-04-25", "Founding Day of the Korean People's Revolutionary Army"),
             ("2024-05-01", "International Workers' Day"),
             ("2024-06-06", "Foundation Day of the Korean Children's Union"),
-            ("2024-06-10", "Dano"),
             ("2024-07-27", "Day of Victory in the Great Fatherland Liberation War"),
             ("2024-08-15", "Liberation Day"),
             ("2024-08-25", "Day of Songun"),
