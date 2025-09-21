@@ -45,11 +45,13 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         "32",  # Akershus.
         "33",  # Buskerud.
         "34",  # Innlandet.
-        "38",  # Vestfold og Telemark.
+        "39",  # Vestfold.
+        "40",  # Telemark.
         "42",  # Agder.
         "46",  # Vestland.
         "50",  # Trøndelag (Trööndelage).
-        "54",  # Troms og Finnmark (Romssa ja Finnmárkku, Tromssan ja Finmarkun).
+        "55",  # Troms (Romssa, Tromssan).
+        "56",  # Finnmark (Finnmárkku, Finmarkun).
     )
     subdivisions_aliases = {
         "Oslo": "03",
@@ -62,14 +64,18 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Akershus": "32",
         "Buskerud": "33",
         "Innlandet": "34",
-        "Vestfold og Telemark": "38",
+        "Vestfold": "39",
+        "Telemark": "40",
         "Agder": "42",
         "Vestland": "46",
         "Trööndelage": "50",
         "Trøndelag": "50",
-        "Romssa ja Finnmárkku": "54",
-        "Troms og Finnmark": "54",
-        "Tromssan ja Finmarkun": "54",
+        "Romssa": "55",
+        "Troms": "55",
+        "Tromssan": "55",
+        "Finnmárkku": "56",
+        "Finnmark": "56",
+        "Finmarkun": "56",
     }
     supported_languages = ("en_US", "no", "th", "uk")
 
