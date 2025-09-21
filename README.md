@@ -1169,6 +1169,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Myanmar</td>
+<td>MM</td>
+<td></td>
+<td>en_US, <strong>my</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Namibia</td>
 <td>NA</td>
 <td></td>

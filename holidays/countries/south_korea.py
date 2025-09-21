@@ -10,9 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from __future__ import annotations
+
 import warnings
-from datetime import date
 from gettext import gettext as tr
+from typing import TYPE_CHECKING
 
 from holidays.calendars.chinese import KOREAN_CALENDAR
 from holidays.calendars.gregorian import (
@@ -42,6 +44,9 @@ from holidays.observed_holiday_base import (
     SAT_SUN_TO_NEXT_WORKDAY,
     SUN_TO_NEXT_WORKDAY,
 )
+
+if TYPE_CHECKING:
+    from datetime import date
 
 
 class SouthKorea(
