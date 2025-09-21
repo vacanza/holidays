@@ -41,7 +41,9 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         "18",  # Nordland.
         "21",  # Svalbard.
         "22",  # Jan Mayen.
-        "30",  # Viken.
+        "31",  # Østfold.
+        "32",  # Akershus.
+        "33",  # Buskerud.
         "34",  # Innlandet.
         "38",  # Vestfold og Telemark.
         "42",  # Agder.
@@ -56,7 +58,9 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Nordland": "18",
         "Svalbard": "21",
         "Jan Mayen": "22",
-        "Viken": "30",
+        "Østfold": "31",
+        "Akershus": "32",
+        "Buskerud": "33",
         "Innlandet": "34",
         "Vestfold og Telemark": "38",
         "Agder": "42",
