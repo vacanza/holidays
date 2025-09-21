@@ -78,7 +78,12 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Finmarkun": "56",
     }
     supported_languages = ("en_US", "no", "th", "uk")
-
+    _deprecated_subdivisions = (
+        "30",
+        "38",
+        "54",
+    )
+    
     def __init__(self, include_sundays: bool = False, *args, **kwargs):
         """
         Args:
