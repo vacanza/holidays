@@ -21,6 +21,13 @@ class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
     def setUpClass(cls):
         super().setUpClass(Norway)
 
+    def setUp(self):
+        super().setUp()
+        warnings.simplefilter("ignore", category=DeprecationWarning)
+
+    def test_subdiv_deprecation(self):
+        self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
+
     def test_country_aliases(self):
         self.assertAliases(Norway, NO, NOR)
 
