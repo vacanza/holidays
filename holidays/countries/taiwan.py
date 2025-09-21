@@ -10,9 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from __future__ import annotations
+
 from gettext import gettext as tr
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 
 from holidays.calendars.gregorian import (
     JAN,
@@ -42,6 +43,9 @@ from holidays.observed_holiday_base import (
     SUN_TO_NEXT_WORKDAY,
     SAT_SUN_TO_NEXT_WORKDAY,
 )
+
+if TYPE_CHECKING:
+    from datetime import date
 
 CHILDRENS_DAY_RULE = ObservedRule({MON: +1, TUE: -1, WED: -1, THU: +1, FRI: -1, SAT: -1, SUN: -2})
 
@@ -106,7 +110,10 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
             return weekend
 
     def _populate_observed(
-        self, dts: set[date], rule: Optional[ObservedRule] = None, since: int = 2015
+        self,
+        dts: set[date],
+        rule: Optional[ObservedRule] = None,  # noqa:UP045
+        since: int = 2015,
     ) -> None:
         """
         Taiwan's General Observance Rule first started in 2015 as per
