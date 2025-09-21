@@ -22,9 +22,20 @@ class NorthKorea(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_North_Korea>
+        * <https://en.wikipedia.org/wiki/Day_of_Songun>
+        * <https://en.wikipedia.org/wiki/Dano_(festival)>
+        * <https://en.wikipedia.org/wiki/Cold_Food_Festival>
+        * <https://ko.wikipedia.org/wiki/조국해방전쟁_승리_기념일>
         * [2025 Holidays](https://namu.wiki/w/공휴일/북한)
-        * [Aug 25 holiday](https://www.nocutnews.co.kr/news/1091995)
-        * [Holidays and Anniversaries](https://unikorea.go.kr/nkhr/current/life/living/daily/?boardId=bbs_0000000000000078&mode=view&cntId=51400)
+        * [Korean People's Army](https://web.archive.org/web/20250824194534/https://namu.wiki/w/조선인민군)
+        * [Founding Day of the Korean People's Revolutionary Army](https://web.archive.org/web/20250909074255/https://www.nocutnews.co.kr/news/1091995)
+        * [Holidays and Anniversaries](http://archive.today/2025.09.21-064344/https://unikorea.go.kr/nkhr/current/life/living/daily/?boardId=bbs_0000000000000078&mode=view&cntId=51400)
+        * [Day of Songun](http://archive.today/2025.09.21-063344/https://namu.wiki/w/선군절)
+        * [2013 North Korea Calendar](https://web.archive.org/web/20250921062305/https://nk.chosun.com/news/articleView.html?idxno=151905)
+        * [Daeboreum in North Korea](https://web.archive.org/web/20230210091341/https://www.newsis.com/view/?id=NISX20200207_0000911479)
+        * [Day of the Shining Star](https://web.archive.org/web/20250921063234/https://www.munhwa.com/article/11412228)
+        * [Day of the Sun](http://archive.today/2025.09.21-063705/https://namu.wiki/w/태양절)
+        * [Cheongmyeong Festival](https://web.archive.org/web/20250324201145/https://namu.wiki/w/청명)
     """
 
     country = "KP"
