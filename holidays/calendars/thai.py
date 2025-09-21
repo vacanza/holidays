@@ -100,6 +100,8 @@ class _ThaiLunisolar:
     References:
         * <https://web.archive.org/web/20241016080156/https://www.ninenik.com/แนวทางฟังก์ชั่น_php_อย่างง่ายกับการหาวันข้างขึ้นข้างแรม-1021.html>
         * <https://web.archive.org/web/20250119171416/https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2560.aspx>
+        * <https://web.archive.org/web/20250302100842/https://calendar.kunthet.com/#/>
+        * [2025 Khmer Lunar Calendar] (https://web.archive.org/web/20250921045847/https://static1.squarespace.com/static/67722f65f2908e531b5f326d/t/678a87776503cc3f8bc538ac/1737131904673/2025Calendar-compressed.pdf)
 
     Example:
 
@@ -321,31 +323,27 @@ class _ThaiLunisolar:
         return _timedelta(_ThaiLunisolar.START_DATE, delta_days)
 
     @cache
-    def buddhist_sabbath_dates(self, year: int, calendar=None) -> tuple[date, ...]:
+    def buddhist_sabbath_dates(self, year: int) -> tuple[date, ...]:
         """Return all Buddhist Sabbath (Uposatha) days in a given Gregorian year.
+
+        This function works independently of the calendar system in use,
+        whether `THAI_CALENDAR` or `KHMER_CALENDAR`.
 
         Args:
             year:
                 The Gregorian year.
 
-            calendar:
-                Calendar type, this defaults to THAI_CALENDAR.
-
         Returns:
             A list of `date` objects representing all Buddhist Sabbath days in the specified
             Gregorian year. Returns an empty list if the year is outside the supported range.
         """
-        calendar = calendar or self.__calendar
-        self.__verify_calendar(calendar)
-
         start_date = self._get_start_date(year)
         if not start_date:
             return ()
 
+        # Initializes Thai lunar month lengths.
         months = [29, 30] * 6
-        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN and not self.__is_khmer_calendar(
-            calendar
-        ):
+        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN:
             months.insert(7, 30)
         elif year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
             months[6] += 1

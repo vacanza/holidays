@@ -151,13 +151,13 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
                 boun_suang_heua_year_date[year], self.calendar.boun_suang_heua_date(year)
             )
 
-    def test_buddhist_sabbath_days(self):
+    def test_buddhist_sabbath_dates(self):
         expected_buddhist_sabbath_dates = {
             self.calendar.START_YEAR - 1: (),
             self.calendar.END_YEAR + 1: (),
             # Athikamat (Extra-Month Year).
             2023: (
-                date(2023, JAN, 6),  # 15 Waxing. (Month 2 Started in Previous Gregorian Year).
+                date(2023, JAN, 6),  # 15 Waxing (Month 2 Started in Previous Gregorian Year).
                 date(2023, JAN, 14),  # 8 Waning.
                 date(2023, JAN, 21),  # 15 Waning.
                 date(2023, JAN, 29),  # 8 Waxing (Month 3).
@@ -204,7 +204,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
                 date(2023, NOV, 27),  # 15 Waxing.
                 date(2023, DEC, 5),  # 8 Waning.
                 date(2023, DEC, 12),  # 15 Waning.
-                date(2023, DEC, 20),  # 8 Waxing. (Month 1 Next Year).
+                date(2023, DEC, 20),  # 8 Waxing (Month 1 Next Year).
                 date(2023, DEC, 27),  # 15 Waxing.
             ),
             # Pakatimat (Normal Year).
