@@ -10,8 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from __future__ import annotations
+
 from gettext import gettext as tr
+from typing import TYPE_CHECKING
 
 from holidays.calendars.gregorian import SEP, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
@@ -21,6 +23,9 @@ from holidays.observed_holiday_base import (
     MON_TO_NEXT_TUE,
     SUN_TO_NEXT_MON,
 )
+
+if TYPE_CHECKING:
+    from datetime import date
 
 
 class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
