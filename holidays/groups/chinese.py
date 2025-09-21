@@ -14,7 +14,7 @@ from datetime import date
 from typing import Optional
 
 from holidays.calendars.chinese import _ChineseLunisolar, CHINESE_CALENDAR
-from holidays.calendars.gregorian import APR, DEC
+from holidays.calendars.gregorian import APR
 from holidays.groups.eastern import EasternCalendarHolidays
 
 
@@ -79,20 +79,8 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
     def _dongzhi_festival(self):
         """
         Return Dongzhi Festival (Chinese Winter Solstice) date.
-
-        This approximation is reliable for 1952-2099 years.
         """
-        #
-        if (
-            (self._year % 4 == 0 and self._year >= 1988)
-            or (self._year % 4 == 1 and self._year >= 2021)
-            or (self._year % 4 == 2 and self._year >= 2058)
-            or (self._year % 4 == 3 and self._year >= 2091)
-        ):
-            day = 21
-        else:
-            day = 22
-        return date(self._year, DEC, day)
+        return self._chinese_calendar.winter_solstice_date(self._year)[0]
 
     def _add_chinese_calendar_holiday(
         self, name: str, dt_estimated: tuple[Optional[date], bool], days_delta: int = 0

@@ -14,7 +14,7 @@ from datetime import date
 from typing import Optional
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, NOV
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, NOV, DEC
 
 CHINESE_CALENDAR = "CHINESE_CALENDAR"
 KOREAN_CALENDAR = "KOREAN_CALENDAR"
@@ -1307,6 +1307,24 @@ class _ChineseLunisolar:
         2053: (FEB, 18),
     }
 
+    WINTER_SOLSTICE_THRESHOLDS: dict[str, dict[str, dict[int, int]]] = {
+        # UTC+7.
+        VIETNAMESE_CALENDAR: {
+            "dec_21": {0: 1980, 1: 2017, 2: 2050, 3: 2083},
+            "dec_23": {3: 1943},
+        },
+        # UTC+8.
+        CHINESE_CALENDAR: {
+            "dec_21": {0: 1988, 1: 2021, 2: 2058, 3: 2091},
+            "dec_23": {3: 1947},
+        },
+        # UTC+9.
+        KOREAN_CALENDAR: {
+            "dec_21": {0: 1992, 1: 2029, 2: 2062, 3: 2099},
+            "dec_23": {3: 1955},
+        },
+    }
+
     def __init__(self, calendar: str = CHINESE_CALENDAR) -> None:
         self.__verify_calendar(calendar)
         self.__calendar = calendar
@@ -1358,6 +1376,26 @@ class _ChineseLunisolar:
 
     def mid_autumn_date(self, year: int, calendar=None) -> tuple[Optional[date], bool]:
         return self._get_holiday(MID_AUTUMN, year, calendar)
+
+    def winter_solstice_date(self, year: int, calendar=None) -> tuple[Optional[date], bool]:
+        """Return Winter Solstice (22nd solar term in Chinese Lunisolar calendar) date.
+
+        !!! note "Note"
+            This approximation is reliable for 1941-2099 years.
+        """
+        calendar = calendar or self.__calendar
+        self.__verify_calendar(calendar)
+
+        thresholds = self.WINTER_SOLSTICE_THRESHOLDS[calendar]
+        year_mod = year % 4
+        if year >= thresholds["dec_21"][year_mod]:
+            day = 21
+        elif year <= thresholds["dec_23"].get(year_mod, 0):
+            day = 23
+        else:
+            day = 22
+
+        return date(year, DEC, day), not (1941 <= year <= 2099)
 
 
 class _CustomChineseHolidays(_CustomCalendar, _ChineseLunisolar):

@@ -14,6 +14,7 @@
 
 from holidays.groups.balinese_saka import BalineseSakaCalendarHolidays
 from holidays.groups.buddhist import BuddhistCalendarHolidays
+from holidays.groups.burmese import BurmeseCalendarHolidays
 from holidays.groups.chinese import ChineseCalendarHolidays
 from holidays.groups.christian import ChristianHolidays
 from holidays.groups.custom import StaticHolidays

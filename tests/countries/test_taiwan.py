@@ -153,7 +153,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2021-12-31",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
+        self.assertHolidayName(f"{name}（補假）", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
         # School Holidays
@@ -231,6 +231,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-02-12",
         )
         self.assertHolidayName(name, range(1998, 2050))
+        self.assertHolidayNameCount(name, 3, range(1998, 2050))
+
         obs_eve_dt = (
             "2006-02-01",
             "2007-02-21",
@@ -267,8 +269,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2023-01-26",
             "2024-02-13",
         )
-        self.assertHolidayName(f"{name_eve}（慶祝）", obs_eve_dt)
-        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
+        self.assertHolidayName(f"{name_eve}（補假）", obs_eve_dt)
+        self.assertHolidayName(f"{name}（補假）", obs_dt)
         self.assertNoNonObservedHoliday(obs_eve_dt, obs_dt)
 
     def test_taoism_day(self):
@@ -303,7 +305,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2016-02-29",
             "2021-03-01",
         )
-        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
+        self.assertHolidayName(f"{name}（補假）", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_arbor_day(self):
@@ -368,7 +370,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "1999-04-04",
             "2000-04-03",
         )
-        self.assertHolidayName(f"{name}（慶祝）", self.optional_holidays, obs_dt)
+        self.assertHolidayName(f"{name}（補假）", self.optional_holidays, obs_dt)
         self.assertNoNonObservedHoliday(self.optional_holidays_non_observed, obs_dt)
 
         # Public Holidays.
@@ -384,7 +386,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-04-05",
             "2025-04-03",
         )
-        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
+        self.assertHolidayName(f"{name}（補假）", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
         # Workdays.
@@ -402,7 +404,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "1999-04-04",
             "2000-04-03",
         )
-        self.assertHolidayName(f"{name}（慶祝）", self.optional_holidays, obs_dt)
+        self.assertHolidayName(f"{name}（補假）", self.optional_holidays, obs_dt)
         self.assertNoNonObservedHoliday(self.optional_holidays_non_observed, obs_dt)
         self.assertNoHolidayName(name)
 
@@ -438,7 +440,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2020-04-02",
             "2021-04-05",
         )
-        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
+        self.assertHolidayName(f"{name}（補假）", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_late_president_chiang_kai_sheks_memorial_day(self):
@@ -480,7 +482,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         # Public Holidays.
         self.assertNoHolidayName(name)
         obs_dt = ("2000-05-14",)
-        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
+        self.assertHolidayName(f"{name}（補假）", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
         # Workdays.
@@ -529,7 +531,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2015-06-19",
             "2025-05-30",
         )
-        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
+        self.assertHolidayName(f"{name}（補假）", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_commemoration_day_of_the_lifting_of_martial_law(self):
@@ -550,7 +552,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             name, self.optional_holidays, (f"{year}-09-03" for year in range(1998, 2050))
         )
         obs_dt = ("2000-09-04",)
-        self.assertHolidayName(f"{name}（慶祝）", self.optional_holidays, obs_dt)
+        self.assertHolidayName(f"{name}（補假）", self.optional_holidays, obs_dt)
         self.assertNoNonObservedHoliday(self.optional_holidays_non_observed, obs_dt)
         self.assertNoHolidayName(name)
 
@@ -578,7 +580,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2015-09-28",
             "2022-09-09",
         )
-        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
+        self.assertHolidayName(f"{name}（補假）", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_national_day(self):
@@ -591,7 +593,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2020-10-09",
             "2021-10-11",
         )
-        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
+        self.assertHolidayName(f"{name}（補假）", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_confucius_birthday(self):
@@ -753,10 +755,10 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("1998-01-28", "春節"),
             ("1998-01-29", "春節"),
             ("1998-01-30", "春節"),
-            ("1998-01-31", "春節（慶祝）"),
+            ("1998-01-31", "春節（補假）"),
             ("1998-02-28", "和平紀念日"),
             ("1998-04-05", "民族掃墓節"),
-            ("1998-04-06", "民族掃墓節（慶祝）"),
+            ("1998-04-06", "民族掃墓節（補假）"),
             ("1998-05-30", "端午節"),
             ("1998-10-05", "中秋節"),
             ("1998-10-10", "國慶日"),
@@ -766,7 +768,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidays(
             Taiwan(years=1999),
             ("1999-01-01", "中華民國開國紀念日"),
-            ("1999-01-02", "中華民國開國紀念日（慶祝）"),
+            ("1999-01-02", "中華民國開國紀念日（補假）"),
             ("1999-02-15", "農曆除夕"),
             ("1999-02-16", "春節"),
             ("1999-02-17", "春節"),
@@ -774,7 +776,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("1999-02-28", "和平紀念日"),
             ("1999-04-05", "民族掃墓節"),
             ("1999-06-18", "端午節"),
-            ("1999-06-19", "端午節（慶祝）"),
+            ("1999-06-19", "端午節（補假）"),
             ("1999-09-24", "中秋節"),
             ("1999-10-10", "國慶日"),
         )
@@ -790,7 +792,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2000-02-28", "和平紀念日"),
             ("2000-04-03", "休息日（2000-04-08日起取代）"),
             ("2000-04-04", "民族掃墓節"),
-            ("2000-05-14", "佛陀誕辰紀念日（慶祝）"),
+            ("2000-05-14", "佛陀誕辰紀念日（補假）"),
             ("2000-06-06", "端午節"),
             ("2000-09-12", "中秋節"),
             ("2000-10-10", "國慶日"),
@@ -835,8 +837,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2003-02-01", "春節"),
             ("2003-02-02", "春節"),
             ("2003-02-03", "春節"),
-            ("2003-02-04", "春節（慶祝）"),
-            ("2003-02-05", "春節（慶祝）"),
+            ("2003-02-04", "春節（補假）"),
+            ("2003-02-05", "春節（補假）"),
             ("2003-02-28", "和平紀念日"),
             ("2003-04-05", "民族掃墓節"),
             ("2003-06-04", "端午節"),
@@ -852,7 +854,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2004-01-22", "春節"),
             ("2004-01-23", "春節"),
             ("2004-01-24", "春節"),
-            ("2004-01-26", "春節（慶祝）"),
+            ("2004-01-26", "春節（補假）"),
             ("2004-02-28", "和平紀念日"),
             ("2004-04-04", "民族掃墓節"),
             ("2004-06-22", "端午節"),
@@ -884,8 +886,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2006-01-29", "春節"),
             ("2006-01-30", "春節"),
             ("2006-01-31", "春節"),
-            ("2006-02-01", "農曆除夕（慶祝）"),
-            ("2006-02-02", "春節（慶祝）"),
+            ("2006-02-01", "農曆除夕（補假）"),
+            ("2006-02-02", "春節（補假）"),
             ("2006-02-28", "和平紀念日"),
             ("2006-04-05", "民族掃墓節"),
             ("2006-05-31", "端午節"),
@@ -902,8 +904,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2007-02-18", "春節"),
             ("2007-02-19", "春節"),
             ("2007-02-20", "春節"),
-            ("2007-02-21", "農曆除夕（慶祝）"),
-            ("2007-02-22", "春節（慶祝）"),
+            ("2007-02-21", "農曆除夕（補假）"),
+            ("2007-02-22", "春節（補假）"),
             ("2007-02-23", "休息日（2007-03-03日起取代）"),
             ("2007-02-28", "和平紀念日"),
             ("2007-04-05", "民族掃墓節"),
@@ -923,7 +925,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2008-02-07", "春節"),
             ("2008-02-08", "春節"),
             ("2008-02-09", "春節"),
-            ("2008-02-11", "春節（慶祝）"),
+            ("2008-02-11", "春節（補假）"),
             ("2008-02-28", "和平紀念日"),
             ("2008-04-04", "民族掃墓節"),
             ("2008-06-08", "端午節"),
@@ -940,7 +942,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2009-01-26", "春節"),
             ("2009-01-27", "春節"),
             ("2009-01-28", "春節"),
-            ("2009-01-29", "農曆除夕（慶祝）"),
+            ("2009-01-29", "農曆除夕（補假）"),
             ("2009-01-30", "休息日（2009-01-17日起取代）"),
             ("2009-02-28", "和平紀念日"),
             ("2009-04-04", "民族掃墓節"),
@@ -958,8 +960,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2010-02-14", "春節"),
             ("2010-02-15", "春節"),
             ("2010-02-16", "春節"),
-            ("2010-02-17", "農曆除夕（慶祝）"),
-            ("2010-02-18", "春節（慶祝）"),
+            ("2010-02-17", "農曆除夕（補假）"),
+            ("2010-02-18", "春節（補假）"),
             ("2010-02-19", "休息日（2010-02-06日起取代）"),
             ("2010-02-28", "和平紀念日"),
             ("2010-04-05", "民族掃墓節"),
@@ -976,7 +978,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2011-02-03", "春節"),
             ("2011-02-04", "春節"),
             ("2011-02-05", "春節"),
-            ("2011-02-07", "春節（慶祝）"),
+            ("2011-02-07", "春節（補假）"),
             ("2011-02-28", "和平紀念日"),
             ("2011-04-04", "兒童節"),
             ("2011-04-05", "民族掃墓節"),
@@ -993,7 +995,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2012-01-23", "春節"),
             ("2012-01-24", "春節"),
             ("2012-01-25", "春節"),
-            ("2012-01-26", "農曆除夕（慶祝）"),
+            ("2012-01-26", "農曆除夕（補假）"),
             ("2012-01-27", "休息日（2012-02-04日起取代）"),
             ("2012-02-27", "休息日（2012-03-03日起取代）"),
             ("2012-02-28", "和平紀念日"),
@@ -1012,12 +1014,12 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2013-02-10", "春節"),
             ("2013-02-11", "春節"),
             ("2013-02-12", "春節"),
-            ("2013-02-13", "農曆除夕（慶祝）"),
-            ("2013-02-14", "春節（慶祝）"),
+            ("2013-02-13", "農曆除夕（補假）"),
+            ("2013-02-14", "春節（補假）"),
             ("2013-02-15", "休息日（2013-02-23日起取代）"),
             ("2013-02-28", "和平紀念日"),
             ("2013-04-04", "兒童節; 民族掃墓節"),
-            ("2013-04-05", "兒童節（慶祝）"),
+            ("2013-04-05", "兒童節（補假）"),
             ("2013-06-12", "端午節"),
             ("2013-09-19", "中秋節"),
             ("2013-09-20", "休息日（2013-09-14日起取代）"),
@@ -1032,8 +1034,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2014-01-31", "春節"),
             ("2014-02-01", "春節"),
             ("2014-02-02", "春節"),
-            ("2014-02-03", "春節（慶祝）"),
-            ("2014-02-04", "春節（慶祝）"),
+            ("2014-02-03", "春節（補假）"),
+            ("2014-02-04", "春節（補假）"),
             ("2014-02-28", "和平紀念日"),
             ("2014-04-04", "兒童節"),
             ("2014-04-05", "民族掃墓節"),
@@ -1051,18 +1053,18 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2015-02-19", "春節"),
             ("2015-02-20", "春節"),
             ("2015-02-21", "春節"),
-            ("2015-02-23", "春節（慶祝）"),
-            ("2015-02-27", "和平紀念日（慶祝）"),
+            ("2015-02-23", "春節（補假）"),
+            ("2015-02-27", "和平紀念日（補假）"),
             ("2015-02-28", "和平紀念日"),
-            ("2015-04-03", "兒童節（慶祝）"),
+            ("2015-04-03", "兒童節（補假）"),
             ("2015-04-04", "兒童節"),
             ("2015-04-05", "民族掃墓節"),
-            ("2015-04-06", "民族掃墓節（慶祝）"),
-            ("2015-06-19", "端午節（慶祝）"),
+            ("2015-04-06", "民族掃墓節（補假）"),
+            ("2015-06-19", "端午節（補假）"),
             ("2015-06-20", "端午節"),
             ("2015-09-27", "中秋節"),
-            ("2015-09-28", "中秋節（慶祝）"),
-            ("2015-10-09", "國慶日（慶祝）"),
+            ("2015-09-28", "中秋節（補假）"),
+            ("2015-10-09", "國慶日（補假）"),
             ("2015-10-10", "國慶日"),
         )
 
@@ -1074,12 +1076,12 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2016-02-08", "春節"),
             ("2016-02-09", "春節"),
             ("2016-02-10", "春節"),
-            ("2016-02-11", "農曆除夕（慶祝）"),
+            ("2016-02-11", "農曆除夕（補假）"),
             ("2016-02-12", "休息日（2016-01-30日起取代）"),
             ("2016-02-28", "和平紀念日"),
-            ("2016-02-29", "和平紀念日（慶祝）"),
+            ("2016-02-29", "和平紀念日（補假）"),
             ("2016-04-04", "兒童節; 民族掃墓節"),
-            ("2016-04-05", "兒童節（慶祝）"),
+            ("2016-04-05", "兒童節（補假）"),
             ("2016-06-09", "端午節"),
             ("2016-06-10", "休息日（2016-06-04日起取代）"),
             ("2016-09-15", "中秋節"),
@@ -1091,16 +1093,16 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidays(
             Taiwan(years=2017),
             ("2017-01-01", "中華民國開國紀念日"),
-            ("2017-01-02", "中華民國開國紀念日（慶祝）"),
+            ("2017-01-02", "中華民國開國紀念日（補假）"),
             ("2017-01-27", "農曆除夕"),
             ("2017-01-28", "春節"),
             ("2017-01-29", "春節"),
             ("2017-01-30", "春節"),
-            ("2017-01-31", "春節（慶祝）"),
-            ("2017-02-01", "春節（慶祝）"),
+            ("2017-01-31", "春節（補假）"),
+            ("2017-02-01", "春節（補假）"),
             ("2017-02-27", "休息日（2017-02-18日起取代）"),
             ("2017-02-28", "和平紀念日"),
-            ("2017-04-03", "兒童節（慶祝）"),
+            ("2017-04-03", "兒童節（補假）"),
             ("2017-04-04", "兒童節; 民族掃墓節"),
             ("2017-05-29", "休息日（2017-06-03日起取代）"),
             ("2017-05-30", "端午節"),
@@ -1117,8 +1119,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2018-02-16", "春節"),
             ("2018-02-17", "春節"),
             ("2018-02-18", "春節"),
-            ("2018-02-19", "春節（慶祝）"),
-            ("2018-02-20", "春節（慶祝）"),
+            ("2018-02-19", "春節（補假）"),
+            ("2018-02-20", "春節（補假）"),
             ("2018-02-28", "和平紀念日"),
             ("2018-04-04", "兒童節"),
             ("2018-04-05", "民族掃墓節"),
@@ -1157,17 +1159,17 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2020-01-25", "春節"),
             ("2020-01-26", "春節"),
             ("2020-01-27", "春節"),
-            ("2020-01-28", "春節（慶祝）"),
-            ("2020-01-29", "春節（慶祝）"),
+            ("2020-01-28", "春節（補假）"),
+            ("2020-01-29", "春節（補假）"),
             ("2020-02-28", "和平紀念日"),
-            ("2020-04-02", "民族掃墓節（慶祝）"),
-            ("2020-04-03", "兒童節（慶祝）"),
+            ("2020-04-02", "民族掃墓節（補假）"),
+            ("2020-04-03", "兒童節（補假）"),
             ("2020-04-04", "兒童節; 民族掃墓節"),
             ("2020-06-25", "端午節"),
             ("2020-06-26", "休息日（2020-06-20日起取代）"),
             ("2020-10-01", "中秋節"),
             ("2020-10-02", "休息日（2020-09-26日起取代）"),
-            ("2020-10-09", "國慶日（慶祝）"),
+            ("2020-10-09", "國慶日（補假）"),
             ("2020-10-10", "國慶日"),
         )
 
@@ -1180,19 +1182,19 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2021-02-12", "春節"),
             ("2021-02-13", "春節"),
             ("2021-02-14", "春節"),
-            ("2021-02-15", "春節（慶祝）"),
-            ("2021-02-16", "春節（慶祝）"),
+            ("2021-02-15", "春節（補假）"),
+            ("2021-02-16", "春節（補假）"),
             ("2021-02-28", "和平紀念日"),
-            ("2021-03-01", "和平紀念日（慶祝）"),
-            ("2021-04-02", "兒童節（慶祝）"),
+            ("2021-03-01", "和平紀念日（補假）"),
+            ("2021-04-02", "兒童節（補假）"),
             ("2021-04-04", "兒童節; 民族掃墓節"),
-            ("2021-04-05", "民族掃墓節（慶祝）"),
+            ("2021-04-05", "民族掃墓節（補假）"),
             ("2021-06-14", "端午節"),
             ("2021-09-20", "休息日（2021-09-11日起取代）"),
             ("2021-09-21", "中秋節"),
             ("2021-10-10", "國慶日"),
-            ("2021-10-11", "國慶日（慶祝）"),
-            ("2021-12-31", "中華民國開國紀念日（慶祝）"),
+            ("2021-10-11", "國慶日（補假）"),
+            ("2021-12-31", "中華民國開國紀念日（補假）"),
         )
 
     def test_2022(self):
@@ -1208,7 +1210,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-04-04", "兒童節"),
             ("2022-04-05", "民族掃墓節"),
             ("2022-06-03", "端午節"),
-            ("2022-09-09", "中秋節（慶祝）"),
+            ("2022-09-09", "中秋節（補假）"),
             ("2022-09-10", "中秋節"),
             ("2022-10-10", "國慶日"),
         )
@@ -1217,14 +1219,14 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidays(
             Taiwan(years=2023),
             ("2023-01-01", "中華民國開國紀念日"),
-            ("2023-01-02", "中華民國開國紀念日（慶祝）"),
+            ("2023-01-02", "中華民國開國紀念日（補假）"),
             ("2023-01-20", "休息日（2023-01-07日起取代）"),
             ("2023-01-21", "農曆除夕"),
             ("2023-01-22", "春節"),
             ("2023-01-23", "春節"),
             ("2023-01-24", "春節"),
-            ("2023-01-25", "農曆除夕（慶祝）"),
-            ("2023-01-26", "春節（慶祝）"),
+            ("2023-01-25", "農曆除夕（補假）"),
+            ("2023-01-26", "春節（補假）"),
             ("2023-01-27", "休息日（2023-02-04日起取代）"),
             ("2023-02-27", "休息日（2023-02-18日起取代）"),
             ("2023-02-28", "和平紀念日"),
@@ -1247,11 +1249,11 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2024-02-10", "春節"),
             ("2024-02-11", "春節"),
             ("2024-02-12", "春節"),
-            ("2024-02-13", "春節（慶祝）"),
-            ("2024-02-14", "春節（慶祝）"),
+            ("2024-02-13", "春節（補假）"),
+            ("2024-02-14", "春節（補假）"),
             ("2024-02-28", "和平紀念日"),
             ("2024-04-04", "兒童節; 民族掃墓節"),
-            ("2024-04-05", "兒童節（慶祝）"),
+            ("2024-04-05", "兒童節（補假）"),
             ("2024-06-10", "端午節"),
             ("2024-09-17", "中秋節"),
             ("2024-10-10", "國慶日"),
@@ -1267,9 +1269,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2025-01-30", "春節"),
             ("2025-01-31", "春節"),
             ("2025-02-28", "和平紀念日"),
-            ("2025-04-03", "兒童節（慶祝）"),
+            ("2025-04-03", "兒童節（補假）"),
             ("2025-04-04", "兒童節; 民族掃墓節"),
-            ("2025-05-30", "端午節（慶祝）"),
+            ("2025-05-30", "端午節（補假）"),
             ("2025-05-31", "端午節"),
             ("2025-09-28", "孔子誕辰紀念日"),
             ("2025-10-06", "中秋節"),
@@ -1298,7 +1300,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-06-03", "端午節"),
             ("2022-07-15", "解嚴紀念日"),
             ("2022-09-03", "軍人節"),
-            ("2022-09-09", "中秋節（慶祝）"),
+            ("2022-09-09", "中秋節（補假）"),
             ("2022-09-10", "中秋節"),
             ("2022-09-28", "孔子誕辰紀念日; 教師節"),
             ("2022-10-10", "國慶日"),
@@ -1391,7 +1393,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-06-03", "端午节"),
             ("2022-07-15", "解严纪念日"),
             ("2022-09-03", "军人节"),
-            ("2022-09-09", "中秋节（庆祝）"),
+            ("2022-09-09", "中秋节（观察日）"),
             ("2022-09-10", "中秋节"),
             ("2022-09-28", "孔子诞辰纪念日; 教师节"),
             ("2022-10-10", "国庆日"),
