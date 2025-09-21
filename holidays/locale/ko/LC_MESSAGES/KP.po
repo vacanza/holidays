@@ -64,7 +64,7 @@ msgid "청명"
 msgstr ""
 
 #. Hanshi Festival.
-msgid "寒食节"
+msgid "한식"
 msgstr ""
 
 #. Day of the Sun.
@@ -130,6 +130,3 @@ msgstr ""
 #. Socialist Constitution Day.
 msgid "사회주의헌법절"
 msgstr ""
-
-#~ msgid "추정된"
-#~ msgstr ""

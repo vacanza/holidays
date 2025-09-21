@@ -97,7 +97,7 @@ class TestNorthKorea(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1948, 2012))
 
     def test_hanshi_festival(self):
-        name = "寒食节"
+        name = "한식"
         self.assertHolidayName(
             name,
             "1963-04-06",

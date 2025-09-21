@@ -76,7 +76,7 @@ class NorthKorea(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
 
         if self._year <= 1967:
             # Hanshi Festival.
-            self._add_hanshi_festival(tr("寒食节"))
+            self._add_hanshi_festival(tr("한식"))
 
         if self._year == 1962 or self._year >= 1968:
             name = (
