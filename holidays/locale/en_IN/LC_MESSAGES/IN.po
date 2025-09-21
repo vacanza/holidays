@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.72\n"
+"Project-Id-Version: Holidays 0.80\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
 "PO-Revision-Date: 2025-03-01 15:11+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
@@ -150,6 +150,11 @@ msgstr ""
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
+msgstr ""
+
+#. Ugadi
+#. Ugadi.
+msgid "Ugadi"
 msgstr ""
 
 #. Magh Bihu.

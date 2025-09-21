@@ -479,3 +479,14 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.vaisakhi_date(self._year)
         )
+
+    def _add_ugadi(self, name) -> Optional[date]:
+        """
+        Add Ugadi.
+
+        Ugadi is the Telugu and Kannada New Year festival.
+        It falls on the first day of Chaitra (March-April) according to
+        the Hindu lunisolar calendar.
+        Reference: https://en.wikipedia.org/wiki/Ugadi
+        """
+        return self._add_hindu_calendar_holiday(name, self._hindu_calendar.ugadi_date(self._year))

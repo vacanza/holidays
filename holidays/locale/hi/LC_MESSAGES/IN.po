@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.72\n"
+"Project-Id-Version: Holidays 0.80\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
 "PO-Revision-Date: 2025-03-01 15:11+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
@@ -151,6 +151,11 @@ msgstr "डॉ. बी.आर. आम्बेडकर जयंती"
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
 msgstr "आंध्र प्रदेश स्थापना दिवस"
+
+#. Ugadi
+#. Ugadi.
+msgid "Ugadi"
+msgstr "उगादि"
 
 #. Magh Bihu.
 msgid "Magh Bihu"
