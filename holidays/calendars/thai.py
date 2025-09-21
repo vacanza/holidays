@@ -334,8 +334,8 @@ class _ThaiLunisolar:
                 The Gregorian year.
 
         Returns:
-            A list of `date` objects representing all Buddhist Sabbath days in the specified
-            Gregorian year. Returns an empty list if the year is outside the supported range.
+            A tuple of `date` objects representing all Buddhist Sabbath days in the specified
+            Gregorian year. Returns an empty tuple if the year is outside the supported range.
         """
         start_date = self._get_start_date(year)
         if not start_date:

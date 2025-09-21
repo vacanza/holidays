@@ -20,7 +20,7 @@ from holidays.calendars.thai import KHMER_CALENDAR
 
 class TestThaiLunisolarCalendar(unittest.TestCase):
     def setUp(self) -> None:
-        super().setUpClass()
+        super().setUp()
         self.calendar = calendars._ThaiLunisolar()
 
     def test_check_calendar(self):
