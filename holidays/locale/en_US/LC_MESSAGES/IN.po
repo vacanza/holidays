@@ -152,7 +152,6 @@ msgstr "Dr. B. R. Ambedkar's Jayanti"
 msgid "Andhra Pradesh Foundation Day"
 msgstr "Andhra Pradesh Foundation Day"
 
-#. Ugadi
 #. Ugadi.
 msgid "Ugadi"
 msgstr "Ugadi"

@@ -279,8 +279,8 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Andhra Pradesh Foundation Day.
         self._add_holiday_nov_1(tr("Andhra Pradesh Foundation Day"))
-        # Ugadi
-        self._add_ugadi(tr("Ugadi"))
+        # Ugadi.
+        self._add_gudi_padwa(tr("Ugadi"))
 
     # Assam.
     def _populate_subdiv_as_public_holidays(self):
@@ -368,7 +368,7 @@ class India(
         # Karnataka Rajyotsav.
         self._add_holiday_nov_1(tr("Karnataka Rajyotsava"))
         # Ugadi.
-        self._add_ugadi(tr("Ugadi"))
+        self._add_gudi_padwa(tr("Ugadi"))
 
     # Kerala.
     def _populate_subdiv_kl_public_holidays(self):
@@ -480,8 +480,8 @@ class India(
         self._add_holiday_jun_2(tr("Telangana Formation Day"))
         # Bathukamma Festival.
         self._add_holiday_oct_6(tr("Bathukamma Festival"))
-        # Ugadi
-        self._add_ugadi(tr("Ugadi"))
+        # Ugadi.
+        self._add_gudi_padwa(tr("Ugadi"))
 
     # Uttarakhand.
     def _populate_subdiv_uk_public_holidays(self):

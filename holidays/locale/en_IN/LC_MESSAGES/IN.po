@@ -152,7 +152,6 @@ msgstr ""
 msgid "Andhra Pradesh Foundation Day"
 msgstr ""
 
-#. Ugadi
 #. Ugadi.
 msgid "Ugadi"
 msgstr ""

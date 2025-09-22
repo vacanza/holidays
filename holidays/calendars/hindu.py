@@ -45,7 +45,6 @@ SONAM_LOSAR = "SONAM_LOSAR"
 TAMU_LOSAR = "TAMU_LOSAR"
 THAIPUSAM = "THAIPUSAM"
 VAISAKHI = "VAISAKHI"
-UGADI = "UGADI"
 
 
 class _HinduLunisolar:
@@ -1490,9 +1489,6 @@ class _HinduLunisolar:
 
     def vaisakhi_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(VAISAKHI, year)
-
-    def ugadi_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday(UGADI, year)
 
 
 class _CustomHinduHolidays(_CustomCalendar, _HinduLunisolar):
