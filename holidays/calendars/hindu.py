@@ -1397,45 +1397,6 @@ class _HinduLunisolar:
         2035: (APR, 14),
     }
 
-    # https://www.timeanddate.com/holidays/india/ugadi
-    UGADI_DATES = {
-        2001: (MAR, 26),
-        2002: (APR, 13),
-        2003: (APR, 2),
-        2004: (MAR, 21),
-        2005: (APR, 9),
-        2006: (MAR, 30),
-        2007: (MAR, 19),
-        2008: (APR, 6),
-        2009: (MAR, 27),
-        2010: (MAR, 16),
-        2011: (APR, 4),
-        2012: (MAR, 23),
-        2013: (APR, 11),
-        2014: (MAR, 31),
-        2015: (MAR, 21),
-        2016: (APR, 8),
-        2017: (MAR, 28),
-        2018: (MAR, 18),
-        2019: (APR, 6),
-        2020: (MAR, 25),
-        2021: (APR, 13),
-        2022: (APR, 2),
-        2023: (MAR, 22),
-        2024: (APR, 9),
-        2025: (MAR, 30),
-        2026: (MAR, 19),
-        2027: (APR, 7),
-        2028: (MAR, 27),
-        2029: (APR, 14),
-        2030: (APR, 3),
-        2031: (MAR, 23),
-        2032: (APR, 11),
-        2033: (MAR, 29),
-        2034: (MAR, 21),
-        2035: (APR, 9),
-    }
-
     def _get_holiday(self, holiday: str, year: int) -> tuple[Optional[date], bool]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})

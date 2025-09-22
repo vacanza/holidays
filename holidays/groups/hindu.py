@@ -489,4 +489,6 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         the Hindu lunisolar calendar.
         Reference: https://en.wikipedia.org/wiki/Ugadi
         """
-        return self._add_hindu_calendar_holiday(name, self._hindu_calendar.ugadi_date(self._year))
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.gudi_padwa_date(self._year)
+        )
