@@ -323,7 +323,7 @@ class _ThaiLunisolar:
         return _timedelta(_ThaiLunisolar.START_DATE, delta_days)
 
     @cache
-    def buddhist_sabbath_dates(self, year: int) -> tuple[date, ...]:
+    def buddhist_sabbath_dates(self, year: int) -> set[date]:
         """Return all Buddhist Sabbath (Uposatha) days in a given Gregorian year.
 
         This function works independently of the calendar system in use,
@@ -334,12 +334,12 @@ class _ThaiLunisolar:
                 The Gregorian year.
 
         Returns:
-            A tuple of `date` objects representing all Buddhist Sabbath days in the specified
-            Gregorian year. Returns an empty tuple if the year is outside the supported range.
+            A set of `date` objects representing all Buddhist Sabbath days in the specified
+            Gregorian year. Returns an empty set if the year is outside the supported range.
         """
         start_date = self._get_start_date(year)
         if not start_date:
-            return ()
+            return set()
 
         # Initializes Thai lunar month lengths.
         months = [29, 30] * 6
@@ -351,7 +351,7 @@ class _ThaiLunisolar:
         # in the Gregorian year are captured.
         months.extend([29, 30])
 
-        buddhist_sabbaths: list[date] = []
+        buddhist_sabbaths: set[date] = set()
         day_cursor = start_date
         for month_days in months:
             if day_cursor.year > year:
@@ -360,12 +360,12 @@ class _ThaiLunisolar:
             for offset in (7, 14, 22, month_days - 1):
                 buddhist_sabbath = _timedelta(day_cursor, offset)
                 if buddhist_sabbath.year == year:
-                    buddhist_sabbaths.append(buddhist_sabbath)
+                    buddhist_sabbaths.add(buddhist_sabbath)
                 elif buddhist_sabbath.year > year:
                     break
             day_cursor = _timedelta(day_cursor, month_days)
 
-        return tuple(buddhist_sabbaths)
+        return buddhist_sabbaths
 
     def makha_bucha_date(self, year: int, calendar=None) -> Optional[date]:
         """Calculate the estimated Gregorian date of Makha Bucha.

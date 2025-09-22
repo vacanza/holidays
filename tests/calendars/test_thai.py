@@ -153,10 +153,10 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
 
     def test_buddhist_sabbath_dates(self):
         expected_buddhist_sabbath_dates = {
-            self.calendar.START_YEAR - 1: (),
-            self.calendar.END_YEAR + 1: (),
+            self.calendar.START_YEAR - 1: set(),
+            self.calendar.END_YEAR + 1: set(),
             # Athikamat (Extra-Month Year).
-            2023: (
+            2023: {
                 date(2023, JAN, 6),  # 15 Waxing (Month 2 Started in Previous Gregorian Year).
                 date(2023, JAN, 14),  # 8 Waning.
                 date(2023, JAN, 21),  # 15 Waning.
@@ -206,9 +206,9 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
                 date(2023, DEC, 12),  # 15 Waning.
                 date(2023, DEC, 20),  # 8 Waxing (Month 1 Next Year).
                 date(2023, DEC, 27),  # 15 Waxing.
-            ),
+            },
             # Pakatimat (Normal Year).
-            2024: (
+            2024: {
                 date(2024, JAN, 4),  # 8 Waning (Month 1 Started in Previous Gregorian Year).
                 date(2024, JAN, 10),  # 14 Waning.
                 date(2024, JAN, 18),  # 8 Waxing (Month 2).
@@ -259,9 +259,9 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
                 date(2024, DEC, 15),  # 15 Waxing.
                 date(2024, DEC, 23),  # 8 Waning.
                 date(2024, DEC, 29),  # 14 Waning.
-            ),
+            },
             # Athikawan (Extra-Day Year).
-            2025: (
+            2025: {
                 date(2025, JAN, 6),  # 8 Waxing (Month 2).
                 date(2025, JAN, 13),  # 15 Waxing.
                 date(2025, JAN, 21),  # 8 Waning.
@@ -311,7 +311,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
                 date(2025, DEC, 13),  # 8 Waning.
                 date(2025, DEC, 19),  # 14 Waning.
                 date(2025, DEC, 27),  # 8 Waxing (Month 2 Next Year).
-            ),
+            },
         }
         for year, expected_dates in expected_buddhist_sabbath_dates.items():
             result = self.calendar.buddhist_sabbath_dates(year)
