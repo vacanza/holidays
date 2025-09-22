@@ -39,11 +39,11 @@ class NorthKorea(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
     """
 
     country = "KP"
-    default_language = "ko"
+    default_language = "ko_KP"
     # %s (estimated).
     estimated_label = tr("%s (추정된)")
     start_year = 1948
-    supported_languages = ("en_US", "ko")
+    supported_languages = ("en_US", "ko_KP")
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self, calendar=KOREAN_CALENDAR)
@@ -102,14 +102,13 @@ class NorthKorea(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
                 self._add_holiday_apr_16(name)
 
         if self._year >= 1978:
-            name = (
+            self._add_holiday_apr_25(
                 # Founding Day of the Korean People's Revolutionary Army.
                 tr("조선인민혁명군 창건일")
                 if self._year >= 2018
                 # Armed Forces Day.
                 else tr("건군절")
             )
-            self._add_holiday_apr_25(name)
 
         # International Workers' Day.
         self._add_labor_day(tr("전세계근로자들의 국제적명절"))

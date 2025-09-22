@@ -1263,7 +1263,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>North Korea</td>
 <td>KP</td>
 <td></td>
-<td>en_US, <strong>ko</strong></td>
+<td>en_US, <strong>ko_KP</strong></td>
 <td></td>
 </tr>
 <tr>
