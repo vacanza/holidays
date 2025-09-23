@@ -38,11 +38,11 @@ class TestCase:
     def _get_or_create_lookup(test_class):
         """Build and cache categories and subdivision lookup tables for a holiday test class."""
 
-        non_public_supported_categories = [
-            category.lower()
+        non_public_supported_categories = tuple(
+            category
             for category in getattr(test_class, "supported_categories", [])
             if category != PUBLIC
-        ]
+        )
 
         subdiv_base = {}
         subdiv_category = {}
