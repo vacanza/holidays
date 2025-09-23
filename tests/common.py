@@ -287,8 +287,9 @@ class TestCase:
         else:
             try:
                 instance = getattr(self, instance_name)
-                self.assertTrue(
-                    issubclass(instance.__class__, HolidayBase),
+                self.assertIsInstance(
+                    instance,
+                    HolidayBase,
                     f"The `self.{instance_name}` must be a `HolidayBase` subclass.",
                 )
             except AttributeError:
