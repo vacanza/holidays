@@ -77,9 +77,6 @@ class TestCase:
             pretty_variant = "".join(part.capitalize() for part in variant.strip("_").split("_"))
 
             for helper_name, template in method_specs.items():
-                if not hasattr(cls, helper_name):
-                    continue
-
                 method_name = template.format(variant=pretty_variant)
                 if hasattr(cls, method_name):
                     continue
@@ -140,7 +137,7 @@ class TestCase:
                 # `start_year` and `end_year` are used only if they're included directly in
                 # country/market entities, not inherited from `HolidayBase`.
                 cls.start_year = test_class.__dict__.get("start_year", 1950)
-                cls.end_year = test_class.__dict__.get("end_year", 2050)
+                cls.end_year = test_class.__dict__.get("end_year", 2049) + 1
                 cls.full_range = range(cls.start_year, cls.end_year)
             else:
                 cls.start_year = cls.full_range.start
@@ -216,17 +213,17 @@ class TestCase:
                     subdiv, category, subdiv_code = cls._subdiv_lookup[key]
                     init_kwargs["subdiv"] = subdiv
                     if category:
-                        init_kwargs["categories"] = [category]
+                        init_kwargs["categories"] = (category,)
                         attr_name_suffix = f"_{category}{attr_name_suffix}"
                     attr_name_suffix = f"_subdiv_{subdiv_code}{attr_name_suffix}"
 
             # Step 4: Categories
             elif suffix.startswith("years_"):
                 category = suffix.removeprefix("years_")
-                init_kwargs["categories"] = [category]
+                init_kwargs["categories"] = (category,)
                 attr_name_suffix = f"_{category}{attr_name_suffix}"
 
-            attr_name = "holidays" + attr_name_suffix
+            attr_name = f"holidays{attr_name_suffix}"
             setattr(cls, attr_name, test_class(**init_kwargs))
 
         # Legacy `cls.subdiv_holidays` / `cls.subdiv_holidays_non_observed` behavior.
