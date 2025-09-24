@@ -178,6 +178,7 @@ COUNTRIES: RegistryDict = {
     "nigeria": ("Nigeria", "NG", "NGA"),
     "niue": ("Niue", "NU", "NIU"),
     "norfolk_island": ("NorfolkIsland", "NF", "NFK"),
+    "north_korea": ("NorthKorea", "KP", "PRK"),
     "north_macedonia": ("NorthMacedonia", "MK", "MKD"),
     "northern_mariana_islands": ("NorthernMarianaIslands", "MP", "MNP", "HolidaysMP"),
     "norway": ("Norway", "NO", "NOR"),

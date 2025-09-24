@@ -1,0 +1,132 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# North Korea holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.82\n"
+"POT-Creation-Date: 2025-09-07 18:20+0500\n"
+"PO-Revision-Date: 2025-09-07 18:20+0500\n"
+"Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: ko_KP\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (추정된)"
+msgstr "%s (estimated)"
+
+#. New Year's Day.
+msgid "양력설"
+msgstr "New Year's Day"
+
+#. Korean New Year.
+msgid "설명절"
+msgstr "Korean New Year"
+
+#. Daeboreum.
+msgid "대보름"
+msgstr "Daeboreum"
+
+#. Founding Day of the Korean People's Army.
+msgid "조선인민군창건일"
+msgstr "Founding Day of the Korean People's Army"
+
+#. Day of the Shining Star.
+msgid "광명성절"
+msgstr "Day of the Shining Star"
+
+#. Kim Jong Il's Birthday.
+msgid "김정일의 생일"
+msgstr "Kim Jong Il's Birthday"
+
+#. International Women's Day.
+msgid "국제부녀절"
+msgstr "International Women's Day"
+
+#. Cheongmyeong Festival.
+msgid "청명"
+msgstr "Cheongmyeong Festival"
+
+#. Hanshi Festival.
+msgid "한식"
+msgstr "Hanshi Festival"
+
+#. Day of the Sun.
+msgid "태양절"
+msgstr "Day of the Sun"
+
+#. Kim Il-Sung's Birthday.
+msgid "김일성의 생일"
+msgstr "Kim Il-Sung's Birthday"
+
+#. Founding Day of the Korean People's Revolutionary Army.
+msgid "조선인민혁명군 창건일"
+msgstr "Founding Day of the Korean People's Revolutionary Army"
+
+#. Armed Forces Day.
+msgid "건군절"
+msgstr "Armed Forces Day"
+
+#. International Workers' Day.
+msgid "전세계근로자들의 국제적명절"
+msgstr "International Workers' Day"
+
+#. Dano.
+msgid "단오"
+msgstr "Dano"
+
+#. Foundation Day of the Korean Children's Union.
+msgid "조선소년단 창립절"
+msgstr "Foundation Day of the Korean Children's Union"
+
+#. Day of Victory in the Great Fatherland Liberation War.
+msgid "조국해방전쟁승리기념일"
+msgstr "Day of Victory in the Great Fatherland Liberation War"
+
+#. Liberation Day.
+msgid "조국해방절"
+msgstr "Liberation Day"
+
+#. Chuseok.
+msgid "추석"
+msgstr "Chuseok"
+
+#. Day of Songun.
+msgid "선군절"
+msgstr "Day of Songun"
+
+#. Youth Day.
+msgid "청년절"
+msgstr "Youth Day"
+
+#. Founding Day of the DPRK.
+msgid "조선민주주의인민공화국창건일"
+msgstr "Founding Day of the DPRK"
+
+#. Foundation Day of the Workers' Party of Korea.
+msgid "조선로동당창건일"
+msgstr "Foundation Day of the Workers' Party of Korea"
+
+#. Mother's Day.
+msgid "어머니날"
+msgstr "Mother's Day"
+
+#. Socialist Constitution Day.
+msgid "사회주의헌법절"
+msgstr "Socialist Constitution Day"
