@@ -61,13 +61,9 @@ class TestCase:
         def make_assert(helper_func, instance_name, method_type):
             def _method(self, *args, **kwargs):
                 if method_type == "name_count":
-                    if len(args) < 2:
-                        raise TypeError("Expected (name, count, ...) arguments")
                     name, count, *rest = args
                     return helper_func(self, name, count, instance_name, *rest, **kwargs)
                 elif method_type == "name":
-                    if not args:
-                        raise TypeError("Expected (name, ...) arguments")
                     name, *rest = args
                     return helper_func(self, name, instance_name, *rest, **kwargs)
                 else:
