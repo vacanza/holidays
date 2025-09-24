@@ -58,6 +58,22 @@ class TestCase:
     def _generate_assert_methods(cls):
         """Dynamically generate assertion methods for all holiday variants."""
 
+        def make_assert(helper_func, instance_name, method_type):
+            if method_type == "name_count":
+
+                def _method(self, name, count, *args, **kwargs):
+                    return helper_func(self, name, count, instance_name, *args, **kwargs)
+            elif method_type == "name":
+
+                def _method(self, name, *args, **kwargs):
+                    return helper_func(self, name, instance_name, *args, **kwargs)
+            else:
+
+                def _method(self, *args, **kwargs):
+                    return helper_func(self, instance_name, *args, **kwargs)
+
+            return _method
+
         method_specs = {
             "_assertHoliday": "assert{variant}Holiday",
             "_assertHolidayDates": "assert{variant}HolidayDates",
@@ -67,6 +83,12 @@ class TestCase:
             "_assertNoHoliday": "assertNo{variant}Holiday",
             "_assertNoHolidayName": "assertNo{variant}HolidayName",
             "_assertNoHolidays": "assertNo{variant}Holidays",
+        }
+
+        method_types = {
+            "_assertHolidayNameCount": "name_count",
+            "_assertHolidayName": "name",
+            "_assertNoHolidayName": "name",
         }
 
         for attr_name in dir(cls):
@@ -82,30 +104,8 @@ class TestCase:
                     continue
 
                 helper = getattr(cls, helper_name)
-
-                if helper_name == "_assertHolidayNameCount":
-
-                    def make_assert(helper_func, instance_name):
-                        def _method(self, name, count, *args, **kwargs):
-                            return helper_func(self, name, count, instance_name, *args, **kwargs)
-
-                        return _method
-                elif helper_name in {"_assertHolidayName", "_assertNoHolidayName"}:
-
-                    def make_assert(helper_func, instance_name):
-                        def _method(self, name, *args, **kwargs):
-                            return helper_func(self, name, instance_name, *args, **kwargs)
-
-                        return _method
-                else:
-
-                    def make_assert(helper_func, instance_name):
-                        def _method(self, *args, **kwargs):
-                            return helper_func(self, instance_name, *args, **kwargs)
-
-                        return _method
-
-                setattr(cls, method_name, make_assert(helper, attr_name))
+                method_type = method_types.get(helper_name, "default")
+                setattr(cls, method_name, make_assert(helper, attr_name, method_type))
 
     @classmethod
     def setUpClass(cls, test_class=None, years=None, **year_variants):
