@@ -32,6 +32,7 @@ from holidays.calendars.gregorian import (
     FRI,
     SAT,
     SUN,
+    _get_nth_weekday_of_month,
 )
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
@@ -94,6 +95,21 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         StaticHolidays.__init__(self, TaiwanStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_TO_PREV_WORKDAY + SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
+
+    def _get_weekend(self, dt: date) -> set[int]:
+        # 1998–2000: Sundays as well as the 2nd & 4th Saturday of each month.
+        if dt.year <= 2000:
+            weekend = {SUN}
+            if dt.weekday() == SAT:
+                if dt in {
+                    _get_nth_weekday_of_month(2, SAT, dt.month, dt.year),  # 2nd Saturday.
+                    _get_nth_weekday_of_month(4, SAT, dt.month, dt.year),  # 4th Saturday.
+                }:
+                    weekend.add(SAT)
+        else:
+            weekend = {SAT, SUN}
+
+        return weekend
 
     def _populate_observed(
         self,
