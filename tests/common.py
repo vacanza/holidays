@@ -59,17 +59,18 @@ class TestCase:
         """Dynamically generate assertion methods for all holiday variants."""
 
         def make_assert(helper_func, instance_name, method_type):
-            if method_type == "name_count":
-
-                def _method(self, name, count, *args, **kwargs):
-                    return helper_func(self, name, count, instance_name, *args, **kwargs)
-            elif method_type == "name":
-
-                def _method(self, name, *args, **kwargs):
-                    return helper_func(self, name, instance_name, *args, **kwargs)
-            else:
-
-                def _method(self, *args, **kwargs):
+            def _method(self, *args, **kwargs):
+                if method_type == "name_count":
+                    if len(args) < 2:
+                        raise TypeError("Expected (name, count, ...) arguments")
+                    name, count, *rest = args
+                    return helper_func(self, name, count, instance_name, *rest, **kwargs)
+                elif method_type == "name":
+                    if not args:
+                        raise TypeError("Expected (name, ...) arguments")
+                    name, *rest = args
+                    return helper_func(self, name, instance_name, *rest, **kwargs)
+                else:
                     return helper_func(self, instance_name, *args, **kwargs)
 
             return _method
