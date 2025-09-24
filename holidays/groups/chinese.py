@@ -183,6 +183,18 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+4
         )
 
+    def _add_daeboreum_day(self, name) -> Optional[date]:
+        """
+        Add Daeboreum Day (15th day of 1st lunar month).
+
+        Daeboreum is a Korean holiday that celebrates the first full moon
+        of the new year of the lunar Korean calendar.
+        https://en.wikipedia.org/wiki/Daeboreum
+        """
+        return self._add_chinese_calendar_holiday(
+            name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+14
+        )
+
     def _add_dongzhi_festival(self, name) -> Optional[date]:
         """
         Add Dongzhi Festival (Chinese Winter Solstice).
@@ -193,6 +205,19 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Dongzhi_Festival
         """
         return self._add_holiday(name, self._dongzhi_festival)
+
+    def _add_hanshi_festival(self, name) -> Optional[date]:
+        """
+        Add Hanshi Festival (105 days after Winter Solstice).
+
+        The Cold Food or Hanshi Festival is a traditional Chinese holiday. Its name
+        derives from the tradition of avoiding the lighting of any kind of fire,
+        even for the preparation of food.
+        https://en.wikipedia.org/wiki/Cold_Food_Festival
+        """
+        return self._add_chinese_calendar_holiday(
+            name, self._chinese_calendar.winter_solstice_date(self._year - 1), days_delta=+105
+        )
 
     def _add_qingming_festival(self, name) -> date:
         """
