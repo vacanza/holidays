@@ -113,12 +113,12 @@ class TestCase:
 
         cls.test_class = test_class
 
-        default_lang = getattr(test_class, "default_language", None)
+        default_lang = getattr(cls.test_class, "default_language", None)
         if default_lang is not None:
             # Normally 2-6 letters (e.g., en, pap, en_US, pap_AW).
             if not (2 <= len(default_lang) <= 6):
-                raise ValueError(f"`{test_class.__name__}.default_language` value is invalid.")
-            cls.set_language(test_class, default_lang)
+                raise ValueError(f"`{cls.test_class.__name__}.default_language` value is invalid.")
+            cls.set_language(cls.test_class, default_lang)
 
         # Use cached lookup instead of rebuilding each time.
         (
@@ -133,8 +133,8 @@ class TestCase:
             if not hasattr(cls, "full_range"):
                 # `start_year` and `end_year` are used only if they're included directly in
                 # country/market entities, not inherited from `HolidayBase`.
-                cls.start_year = test_class.__dict__.get("start_year", 1950)
-                cls.end_year = test_class.__dict__.get("end_year", 2049) + 1
+                cls.start_year = cls.test_class.__dict__.get("start_year", 1950)
+                cls.end_year = cls.test_class.__dict__.get("end_year", 2049) + 1
                 cls.full_range = range(cls.start_year, cls.end_year)
             else:
                 cls.start_year = cls.full_range.start
@@ -142,8 +142,8 @@ class TestCase:
             years = cls.full_range
 
         # Default `years_[insert]` to `years` to prevent redundant initialization.
-        is_observed_subclass = issubclass(test_class, ObservedHolidayBase)
-        is_islamic_subclass = issubclass(test_class, IslamicHolidays)
+        is_observed_subclass = issubclass(cls.test_class, ObservedHolidayBase)
+        is_islamic_subclass = issubclass(cls.test_class, IslamicHolidays)
         for category in cls._non_public_supported_categories_lookup:
             year_variants.setdefault(f"years_{category}", years)
             if is_observed_subclass:
@@ -223,7 +223,7 @@ class TestCase:
                 attr_name_suffix = f"_{category}{attr_name_suffix}"
 
             attr_name = f"holidays{attr_name_suffix}"
-            setattr(cls, attr_name, test_class(**init_kwargs))
+            setattr(cls, attr_name, cls.test_class(**init_kwargs))
 
         # Legacy `cls.subdiv_holidays` / `cls.subdiv_holidays_non_observed` behavior.
         cls.subdiv_holidays = {}
@@ -234,9 +234,7 @@ class TestCase:
 
             if hasattr(cls, key_subdiv):
                 cls.subdiv_holidays[subdiv] = getattr(cls, key_subdiv)
-            if issubclass(cls.test_class, ObservedHolidayBase) and hasattr(
-                cls, key_subdiv_non_obs
-            ):
+            if is_observed_subclass and hasattr(cls, key_subdiv_non_obs):
                 cls.subdiv_holidays_non_observed[subdiv] = getattr(cls, key_subdiv_non_obs)
 
         dict_subdiv_cat = defaultdict(dict)
@@ -244,7 +242,7 @@ class TestCase:
         for category in cls._non_public_supported_categories_lookup:
             setattr(cls, f"subdiv_{category}_holidays", dict_subdiv_cat[category])
 
-            if issubclass(cls.test_class, ObservedHolidayBase):
+            if is_observed_subclass:
                 setattr(
                     cls,
                     f"subdiv_{category}_holidays_non_observed",
@@ -255,7 +253,7 @@ class TestCase:
             key_subdiv_cat = f"holidays_subdiv_{subdiv_code}_{category}"
             dict_subdiv_cat[category][subdiv] = getattr(cls, key_subdiv_cat, {})
 
-            if issubclass(cls.test_class, ObservedHolidayBase):
+            if is_observed_subclass:
                 key_subdiv_cat_non_obs = f"{key_subdiv_cat}_non_observed"
                 dict_subdiv_cat_non_obs[category][subdiv] = getattr(
                     cls, key_subdiv_cat_non_obs, {}
