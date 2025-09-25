@@ -142,16 +142,18 @@ class TestCase:
             years = cls.full_range
 
         # Default `years_[insert]` to `years` to prevent redundant initialization.
+        is_observed_subclass = issubclass(test_class, ObservedHolidayBase)
+        is_islamic_subclass = issubclass(test_class, IslamicHolidays)
         for category in cls._non_public_supported_categories_lookup:
             year_variants.setdefault(f"years_{category}", years)
-            if issubclass(test_class, ObservedHolidayBase):
+            if is_observed_subclass:
                 year_variants.setdefault(
                     f"years_{category}_non_observed",
                     year_variants.get(
                         "years_non_observed", year_variants.get(f"years_{category}", years)
                     ),
                 )
-            if issubclass(test_class, IslamicHolidays):
+            if is_islamic_subclass:
                 year_variants.setdefault(
                     f"years_{category}_islamic_no_estimated",
                     year_variants.get(
@@ -168,16 +170,16 @@ class TestCase:
 
         for key in cls._subdiv_lookup:
             year_variants.setdefault(f"years_subdiv_{key}", years_all_subdivs)
-            if issubclass(test_class, ObservedHolidayBase):
+            if is_observed_subclass:
                 year_variants.setdefault(
                     f"years_subdiv_{key}_non_observed", years_all_subdivs_non_observed
                 )
 
-        if issubclass(test_class, IslamicHolidays):
+        if is_islamic_subclass:
             year_variants.setdefault("years_islamic_no_estimated", years)
-        if issubclass(test_class, ObservedHolidayBase):
+        if is_observed_subclass:
             year_variants.setdefault("years_non_observed", years)
-        if issubclass(test_class, IslamicHolidays) and issubclass(test_class, ObservedHolidayBase):
+        if is_islamic_subclass and is_observed_subclass:
             year_variants.setdefault("years_islamic_no_estimated_non_observed", years)
 
         variants = {"": years}
@@ -237,21 +239,19 @@ class TestCase:
             ):
                 cls.subdiv_holidays_non_observed[subdiv] = getattr(cls, key_subdiv_non_obs)
 
-        dict_subdiv_cat = {}
-        dict_subdiv_cat_non_obs = {}
+        dict_subdiv_cat = defaultdict(dict)
+        dict_subdiv_cat_non_obs = defaultdict(dict)
         for category in cls._non_public_supported_categories_lookup:
-            dict_subdiv_cat[category] = {}
             setattr(cls, f"subdiv_{category}_holidays", dict_subdiv_cat[category])
 
             if issubclass(cls.test_class, ObservedHolidayBase):
-                dict_subdiv_cat_non_obs[category] = {}
                 setattr(
                     cls,
                     f"subdiv_{category}_holidays_non_observed",
                     dict_subdiv_cat_non_obs[category],
                 )
 
-        for key, (subdiv, category, subdiv_code) in cls._subdiv_category_lookup.items():
+        for subdiv, category, subdiv_code in cls._subdiv_category_lookup.values():
             key_subdiv_cat = f"holidays_subdiv_{subdiv_code}_{category}"
             dict_subdiv_cat[category][subdiv] = getattr(cls, key_subdiv_cat, {})
 
