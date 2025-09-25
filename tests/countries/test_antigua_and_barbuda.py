@@ -75,7 +75,7 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         name = "Labour Day"
         self.assertHolidayName(
             name,

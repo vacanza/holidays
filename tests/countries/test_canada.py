@@ -115,7 +115,7 @@ class TestCanada(CommonCountryTests, TestCase):
                 self.subdiv_holidays_non_observed[subdiv], dts_sat, dts_sun
             )
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         name = "Labour Day"
         self.assertNoHolidayName(name, range(self.start_year, 1894))
         self.assertHolidayName(name, range(1894, self.end_year))

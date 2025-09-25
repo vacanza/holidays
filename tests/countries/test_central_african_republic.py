@@ -33,7 +33,7 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
     def test_barthelemy_boganda_day(self):
         name = "Journée Barthélemy Boganda"
         self.assertHolidayName(name, (f"{year}-03-29" for year in range(1960, self.end_year)))
-        self.assertNoHolidayName(name, self.start_year)
+        self.assertNoHolidayName(name, 1959)
 
     def test_easter_monday(self):
         name = "Lundi de Pâques"

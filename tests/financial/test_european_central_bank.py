@@ -65,7 +65,7 @@ class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         self.assertHolidayName("Labour Day", (f"{year}-05-01" for year in self.full_range))
 
     def test_christmas_day(self):

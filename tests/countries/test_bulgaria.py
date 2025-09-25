@@ -94,7 +94,7 @@ class TestBulgaria(CommonCountryTests, TestCase):
         )
         self.assertHolidayNameCount(name, 2, self.full_range)
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         name = "Ден на труда и на международната работническа солидарност"
         self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
         dt = (

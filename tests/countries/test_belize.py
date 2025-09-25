@@ -62,35 +62,46 @@ class TestBelize(CommonCountryTests, TestCase):
         )
         self.assertNonObservedHolidayName(name, (f"{year}-03-09" for year in self.full_range))
 
-    def test_easter_holidays(self):
+    def test_good_friday(self):
+        name = "Good Friday"
         self.assertHolidayName(
-            "Good Friday",
-            "2019-04-19",
+            name,
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
         )
+        self.assertHolidayName(name, self.full_range)
 
+    def test_holy_saturday(self):
+        name = "Holy Saturday"
         self.assertHolidayName(
-            "Holy Saturday",
-            "2019-04-20",
+            name,
             "2020-04-11",
             "2021-04-03",
             "2022-04-16",
             "2023-04-08",
+            "2024-03-30",
+            "2025-04-19",
         )
+        self.assertHolidayName(name, self.full_range)
 
+    def test_easter_monday(self):
+        name = "Easter Monday"
         self.assertHolidayName(
-            "Easter Monday",
-            "2019-04-22",
+            name,
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
         )
+        self.assertHolidayName(name, self.full_range)
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         name = "Labour Day"
         years_observed = {1983, 1988, 1994, 2005, 2011, 2016, 2022, 2033, 2039, 2044}
         self.assertHolidayName(

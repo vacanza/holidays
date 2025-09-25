@@ -29,13 +29,43 @@ class TestAS(CommonCountryTests, TestCase):
             HolidaysAS(categories=HolidaysAS.supported_categories, years=self.start_year - 1)
         )
 
-    def test_as_only(self):
-        """Check for a holiday that is not returned by US unless the subdivision is specified."""
-        self.assertHolidayName("American Samoa Flag Day", "2016-04-17")
-        self.assertHolidayName("American Samoa Flag Day (observed)", "2016-04-18")
-        self.assertHolidayName("Manu'a Islands Cession Day (observed)", "2016-07-15")
-        self.assertHolidayName("Manu'a Islands Cession Day", "2016-07-16")
-        self.assertHolidayName("White Sunday", "2016-10-09")
+    def test_american_samoa_flag_day(self):
+        name = "American Samoa Flag Day"
+        self.assertHolidayName(name, (f"{year}-04-17" for year in self.full_range))
+        dt = (
+            "2011-04-18",
+            "2016-04-18",
+            "2021-04-16",
+            "2022-04-18",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_manuaa_islands_cession_day(self):
+        name = "Manu'a Islands Cession Day"
+        self.assertHolidayName(name, (f"{year}-07-16" for year in range(1983, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1983))
+        dt = (
+            "2016-07-15",
+            "2017-07-17",
+            "2022-07-15",
+            "2023-07-17",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_white_sunday(self):
+        name = "White Sunday"
+        self.assertHolidayName(
+            name,
+            "2020-10-11",
+            "2021-10-10",
+            "2022-10-09",
+            "2023-10-08",
+            "2024-10-13",
+            "2025-10-12",
+        )
+        self.assertHolidayName(name, self.full_range)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

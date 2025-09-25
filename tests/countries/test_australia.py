@@ -158,7 +158,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             self.assertHolidayName(name, holidays, range(1921, self.end_year))
             self.assertNoHolidayName(name, holidays, range(self.start_year, 1921))
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         name = "Labour Day"
         self.assertNoHolidayName(name)
 

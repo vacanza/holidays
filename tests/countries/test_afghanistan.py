@@ -107,7 +107,9 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2021-08-19",
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(1924, 2022))
-        self.assertNoIslamicNoEstimatedHolidayName(name, range(2022, self.end_year))
+        self.assertNoIslamicNoEstimatedHolidayName(
+            name, range(self.start_year, 1924), range(2022, self.end_year)
+        )
 
     def test_prophets_birthday(self):
         name = "میلاد پیامبر"
@@ -128,6 +130,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2025-09-05",
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(1924, self.end_year))
+        self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1924))
 
     def test_first_day_of_ramadan(self):
         name = "اول رمضان"
@@ -147,6 +150,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2025-03-01",
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(1925, self.end_year))
+        self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1925))
 
     def test_eid_al_fitr(self):
         name = "عید فطر"
@@ -189,7 +193,11 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2025-03-31",
             "2025-04-01",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, range(1925, self.end_year))
+        years_eid_al_fitr_twice_all = {1935, 1968, 2000, 2033}
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 3, set(range(1925, self.end_year)) - years_eid_al_fitr_twice_all
+        )
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, years_eid_al_fitr_twice_all)
 
     def test_arafah_day(self):
         name = "روز عرفه"
@@ -208,7 +216,9 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-06",
         )
+        self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1925))
         self.assertIslamicNoEstimatedHolidayName(name, range(1925, self.end_year))
+        self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1925))
 
     def test_eid_al_adha(self):
         name = "عید قربانی"
@@ -251,7 +261,14 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2025-06-08",
             "2025-06-09",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, range(1925, self.end_year))
+        years_eid_al_adha_twice_all = {1941, 1974, 2039}
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 3, set(range(1925, self.end_year)) - years_eid_al_adha_twice_all - {2006, 2007}
+        )
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 4, 2006)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 5, 2007)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, years_eid_al_adha_twice_all)
+        self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1925))
 
     def test_2021(self):
         self.assertHolidays(

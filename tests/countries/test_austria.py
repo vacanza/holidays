@@ -50,7 +50,7 @@ class TestAustria(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         self.assertHolidayName("Staatsfeiertag", (f"{year}-05-01" for year in self.full_range))
 
     def test_ascension_day(self):
@@ -129,6 +129,73 @@ class TestAustria(CommonCountryTests, TestCase):
 
     def test_st_stephens_day(self):
         self.assertHolidayName("Stefanitag", (f"{year}-12-26" for year in self.full_range))
+
+    def test_saint_martins_day(self):
+        name = "Hl. Martin"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_bank_holidays.items():
+            if subdiv == "1":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-11-11" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_saint_josephs_day(self):
+        name = "Hl. Josef"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_bank_holidays.items():
+            if subdiv in {"2", "6", "7", "8"}:
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-03-19" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_1920_carinthian_plebiscite_anniversary(self):
+        name = "Tag der Volksabstimmung"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_bank_holidays.items():
+            if subdiv == "2":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-10-10" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_saint_leopolds_day(self):
+        name = "Hl. Leopold"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_bank_holidays.items():
+            if subdiv in {"3", "9"}:
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-11-15" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_saint_florians_day(self):
+        name = "Hl. Florian"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_bank_holidays.items():
+            if subdiv == "4":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-05-04" for year in range(2004, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2004))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_saint_ruperts_day(self):
+        name = "Hl. Rupert"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_bank_holidays.items():
+            if subdiv == "5":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-09-24" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_2022(self):
         self.assertHolidays(
@@ -235,70 +302,3 @@ class TestAustria(CommonCountryTests, TestCase):
             ("2022-12-26", "День Святого Стефана"),
             ("2022-12-31", "Переддень Нового року"),
         )
-
-    def test_saint_martins_day(self):
-        name = "Hl. Martin"
-        self.assertNoHolidayName(name)
-        for subdiv, holidays in self.subdiv_bank_holidays.items():
-            if subdiv == "1":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-11-11" for year in self.full_range)
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
-
-    def test_saint_josephs_day(self):
-        name = "Hl. Josef"
-        self.assertNoHolidayName(name)
-        for subdiv, holidays in self.subdiv_bank_holidays.items():
-            if subdiv in {"2", "6", "7", "8"}:
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-03-19" for year in self.full_range)
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
-
-    def test_1920_carinthian_plebiscite_anniversary(self):
-        name = "Tag der Volksabstimmung"
-        self.assertNoHolidayName(name)
-        for subdiv, holidays in self.subdiv_bank_holidays.items():
-            if subdiv == "2":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-10-10" for year in self.full_range)
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
-
-    def test_saint_leopolds_day(self):
-        name = "Hl. Leopold"
-        self.assertNoHolidayName(name)
-        for subdiv, holidays in self.subdiv_bank_holidays.items():
-            if subdiv in {"3", "9"}:
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-11-15" for year in self.full_range)
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
-
-    def test_saint_florians_day(self):
-        name = "Hl. Florian"
-        self.assertNoHolidayName(name)
-        for subdiv, holidays in self.subdiv_bank_holidays.items():
-            if subdiv == "4":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-05-04" for year in range(2004, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 2004))
-            else:
-                self.assertNoHolidayName(name, holidays)
-
-    def test_saint_ruperts_day(self):
-        name = "Hl. Rupert"
-        self.assertNoHolidayName(name)
-        for subdiv, holidays in self.subdiv_bank_holidays.items():
-            if subdiv == "5":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-09-24" for year in self.full_range)
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)

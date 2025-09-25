@@ -39,7 +39,7 @@ class TestComoros(CommonCountryTests, TestCase):
             "Cheikh al Maarouf Day", (f"{year}-03-18" for year in self.full_range)
         )
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         self.assertHolidayName("Labour Day", (f"{year}-05-01" for year in self.full_range))
 
     def test_national_day(self):

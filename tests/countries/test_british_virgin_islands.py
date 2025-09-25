@@ -128,98 +128,102 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_territory_day(self):
-        name_1 = "Colony Day"
-        name_2 = "Territory Day"
-        name_3 = "Virgin Islands Day"
-        self.assertHolidayName(name_1, (f"{year}-07-01" for year in range(self.start_year, 1978)))
+        name_1967 = "Colony Day"
+        name_1978 = "Territory Day"
+        name_2021 = "Virgin Islands Day"
         self.assertHolidayName(
-            name_2,
+            name_1967, (f"{year}-07-01" for year in range(self.start_year, 1978))
+        )
+        self.assertHolidayName(
+            name_1978,
             (f"{year}-07-01" for year in (*range(1978, 2015), *range(2016, 2020))),
             "2015-06-29",
             "2020-06-29",
         )
         self.assertHolidayName(
-            name_3,
+            name_2021,
             "2021-07-05",
             "2022-07-04",
             "2023-07-03",
             "2024-07-01",
             "2025-07-07",
         )
-        self.assertNoHolidayName(name_1, range(1978, self.end_year))
-        self.assertNoHolidayName(name_2, range(self.start_year, 1978), range(2021, self.end_year))
-        self.assertNoHolidayName(name_3, range(self.start_year, 2021))
+        self.assertNoHolidayName(name_1967, range(1978, self.end_year))
+        self.assertNoHolidayName(
+            name_1978, range(self.start_year, 1978), range(2021, self.end_year)
+        )
+        self.assertNoHolidayName(name_2021, range(self.start_year, 2021))
         obs_dt = (
             "2007-07-02",
             "2012-07-02",
             "2017-06-30",
             "2018-07-02",
         )
-        self.assertHolidayName(f"{name_2} (observed)", obs_dt)
+        self.assertHolidayName(f"{name_1978} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_emancipation_monday(self):
-        name_1 = "Festival Monday"
-        name_2 = "Emancipation Monday"
+        name_1967 = "Festival Monday"
+        name_2021 = "Emancipation Monday"
         self.assertHolidayName(
-            name_1,
+            name_1967,
             "2018-08-06",
             "2019-08-05",
             "2020-08-03",
         )
         self.assertHolidayName(
-            name_2,
+            name_2021,
             "2021-08-02",
             "2022-08-01",
             "2023-08-07",
             "2024-08-05",
         )
-        self.assertHolidayName(name_1, range(self.start_year, 2021))
-        self.assertHolidayName(name_2, range(2021, self.end_year))
-        self.assertNoHolidayName(name_1, range(2021, self.end_year))
-        self.assertNoHolidayName(name_2, range(self.start_year, 2021))
+        self.assertHolidayName(name_1967, range(self.start_year, 2021))
+        self.assertHolidayName(name_2021, range(2021, self.end_year))
+        self.assertNoHolidayName(name_1967, range(2021, self.end_year))
+        self.assertNoHolidayName(name_2021, range(self.start_year, 2021))
 
     def test_emancipation_tuesday(self):
-        name_1 = "Festival Tuesday"
-        name_2 = "Emancipation Tuesday"
+        name_1967 = "Festival Tuesday"
+        name_2021 = "Emancipation Tuesday"
         self.assertHolidayName(
-            name_1,
+            name_1967,
             "2018-08-07",
             "2019-08-06",
             "2020-08-04",
         )
         self.assertHolidayName(
-            name_2,
+            name_2021,
             "2021-08-03",
             "2022-08-02",
             "2023-08-08",
             "2024-08-06",
         )
-        self.assertHolidayName(name_1, range(self.start_year, 2021))
-        self.assertHolidayName(name_2, range(2021, self.end_year))
-        self.assertNoHolidayName(name_1, range(2021, self.end_year))
-        self.assertNoHolidayName(name_2, range(self.start_year, 2021))
+        self.assertHolidayName(name_1967, range(self.start_year, 2021))
+        self.assertHolidayName(name_2021, range(2021, self.end_year))
+        self.assertNoHolidayName(name_1967, range(2021, self.end_year))
+        self.assertNoHolidayName(name_2021, range(self.start_year, 2021))
 
     def test_emancipation_wednesday(self):
-        name_1 = "Festival Wednesday"
-        name_2 = "Emancipation Wednesday"
+        name_1967 = "Festival Wednesday"
+        name_2021 = "Emancipation Wednesday"
         self.assertHolidayName(
-            name_1,
+            name_1967,
             "2018-08-08",
             "2019-08-07",
             "2020-08-05",
         )
         self.assertHolidayName(
-            name_2,
+            name_2021,
             "2021-08-04",
             "2022-08-03",
             "2023-08-09",
             "2024-08-07",
         )
-        self.assertHolidayName(name_1, range(self.start_year, 2021))
-        self.assertHolidayName(name_2, range(2021, self.end_year))
-        self.assertNoHolidayName(name_1, range(2021, self.end_year))
-        self.assertNoHolidayName(name_2, range(self.start_year, 2021))
+        self.assertHolidayName(name_1967, range(self.start_year, 2021))
+        self.assertHolidayName(name_2021, range(2021, self.end_year))
+        self.assertNoHolidayName(name_1967, range(2021, self.end_year))
+        self.assertNoHolidayName(name_2021, range(self.start_year, 2021))
 
     def test_saint_ursulas_day(self):
         name = "Saint Ursula's Day"
