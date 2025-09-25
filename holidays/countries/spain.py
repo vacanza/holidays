@@ -121,7 +121,7 @@ class Spain(
         "La Rioja": "RI",
         "Valenciana": "VC",
     }
-    supported_languages = ("en_US", "es", "uk")
+    supported_languages = ("ca", "en_US", "es", "uk")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """

@@ -1127,6 +1127,47 @@ class TestSpain(CommonCountryTests, TestCase):
             ("2023-12-26", "Saint Stephen's Day"),
         )
 
+    def test_l10n_ca(self):
+        self.assertLocalizedHolidays(
+            "ca",
+            ("2023-01-02", "Dilluns següent a Cap d'Any"),
+            ("2023-01-06", "Reis"),
+            ("2023-02-21", "Dimarts de Carnaval"),
+            ("2023-02-28", "Dia d'Andalusia"),
+            ("2023-03-01", "Dia de les Illes Balears"),
+            ("2023-03-20", "Dilluns següent a Sant Josep"),
+            ("2023-04-06", "Dijous Sant"),
+            ("2023-04-07", "Divendres Sant"),
+            ("2023-04-10", "Dilluns de Pasqua"),
+            ("2023-04-21", "Festa de l'Eid Fitr"),
+            ("2023-04-24", "Dilluns següent a Dia de Sant Jordi"),
+            ("2023-05-01", "Festa del Treball"),
+            ("2023-05-02", "Festa de la Comunitat de Madrid"),
+            ("2023-05-17", "Dia de les Lletres Gallegues"),
+            ("2023-05-30", "Dia de les Canàries"),
+            ("2023-05-31", "Dia de Castella-la Manxa"),
+            ("2023-06-08", "Corpus Christi"),
+            ("2023-06-09", "Dia de La Rioja; Dia de la Regió de Múrcia"),
+            ("2023-06-24", "Sant Joan"),
+            ("2023-06-29", "Festa del Sacrifici-Aid Al Adha; Festa del Sacrifici-Eidul Adha"),
+            ("2023-07-25", "Dia Nacional de Galícia; Sant Jaume Apòstol"),
+            ("2023-07-28", "Dia de les Institucions de Cantàbria"),
+            ("2023-08-05", "Nostra Senyora d'Àfrica"),
+            ("2023-08-15", "Assumpció de la Verge"),
+            ("2023-09-02", "Dia de Ceuta"),
+            ("2023-09-08", "Dia d'Astúries; Dia d'Extremadura"),
+            ("2023-09-11", "Diada Nacional de Catalunya"),
+            ("2023-09-15", "La Bien Aparecida"),
+            ("2023-10-09", "Dia de la Comunitat Valenciana"),
+            ("2023-10-12", "Festa Nacional d'Espanya"),
+            ("2023-11-01", "Tots Sants"),
+            ("2023-12-04", "Dilluns següent a Sant Francesc Xavier"),
+            ("2023-12-06", "Dia de la Constitució Espanyola"),
+            ("2023-12-08", "Immaculada Concepció"),
+            ("2023-12-25", "Nativitat del Senyor"),
+            ("2023-12-26", "Sant Esteve"),
+        )
+
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
             "uk",
