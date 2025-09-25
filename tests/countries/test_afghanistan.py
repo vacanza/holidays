@@ -216,7 +216,6 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-06",
         )
-        self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1925))
         self.assertIslamicNoEstimatedHolidayName(name, range(1925, self.end_year))
         self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1925))
 
