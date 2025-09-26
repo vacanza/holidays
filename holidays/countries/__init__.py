@@ -20,6 +20,7 @@ from holidays.countries.american_samoa import AmericanSamoa, AS, ASM, HolidaysAS
 from holidays.countries.andorra import Andorra, AD, AND
 from holidays.countries.angola import Angola, AO, AGO
 from holidays.countries.anguilla import Anguilla, AI, AIA
+from holidays.countries.antarctica import Antarctica, AQ, ATA
 from holidays.countries.antigua_and_barbuda import AntiguaAndBarbuda, AG, ATG
 from holidays.countries.argentina import Argentina, AR, ARG
 from holidays.countries.armenia import Armenia, AM, ARM
