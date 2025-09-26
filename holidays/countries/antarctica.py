@@ -10,9 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
-from holidays.constants import PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -21,16 +18,13 @@ class Antarctica(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Antarctica holidays.
 
     References:
-        * https://en.wikipedia.org/wiki/Antarctica_Day
-        * https://en.wikipedia.org/wiki/Midwinter_Day
-        * https://en.wikipedia.org/wiki/New_Year%27s_Day
-        * https://en.wikipedia.org/wiki/Christmas_Day
+        * <https://en.wikipedia.org/wiki/Antarctica_Day>
+        * <https://en.wikipedia.org/wiki/Midwinter_Day>
+        * <https://en.wikipedia.org/wiki/New_Year%27s_Day>
+        * <https://en.wikipedia.org/wiki/Christmas_Day>
     """
 
     country = "AQ"
-    default_language = "en_US"
-    supported_categories = (PUBLIC,)
-    supported_languages = ("en_US",)
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -38,21 +32,21 @@ class Antarctica(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # New Year's Day.
-        self._add_new_years_day(tr("New Year's Day"))
+        # New Year's Day
+        self._add_new_years_day("New Year's Day")
 
-        # Christmas Day.
-        self._add_christmas_day(tr("Christmas Day"))
+        # Christmas Day
+        self._add_christmas_day("Christmas Day")
 
-        # Antarctica Day (fixed).
-        self._add_holiday_dec_1(tr("Antarctica Day"))
+        # Antarctica Day
+        self._add_holiday_dec_1("Antarctica Day")
 
-        # Midwinter Day.
-        # June 20 in leap years, otherwise June 21.
-        if (self._year % 4 == 0 and self._year % 100 != 0) or (self._year % 400 == 0):
-            self._add_holiday_jun_20(tr("Midwinter Day"))
+        # Midwinter Day
+        # June 20 in leap years, otherwise June 21
+        if self._is_leap_year():
+            self._add_holiday_jun_20("Midwinter Day")
         else:
-            self._add_holiday_jun_21(tr("Midwinter Day"))
+            self._add_holiday_jun_21("Midwinter Day")
 
 
 class AQ(Antarctica):
