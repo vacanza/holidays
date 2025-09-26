@@ -113,10 +113,9 @@ msgstr "Dia de les Institucions de Cantàbria"
 msgid "La Bien Aparecida"
 msgstr "La Bien Aparecida"
 
-#. Santa Maria of Africa.
+#. Our Lady of Africa.
 msgid "Nuestra Señora de África"
 msgstr "Nostra Senyora d'Àfrica"
-
 #. Ceuta Day.
 msgid "Día de Ceuta"
 msgstr "Dia de Ceuta"
