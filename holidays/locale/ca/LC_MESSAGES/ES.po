@@ -94,9 +94,10 @@ msgstr "Dijous Sant"
 msgid "Día de San Jorge"
 msgstr "Dia de Sant Jordi"
 
-#. Asturias Day.
+#. Asturia Day.
 msgid "Día de Asturias"
 msgstr "Dia d'Astúries"
+
 #. Easter Monday.
 msgid "Lunes de Pascua"
 msgstr "Dilluns de Pasqua"
@@ -113,9 +114,10 @@ msgstr "Dia de les Institucions de Cantàbria"
 msgid "La Bien Aparecida"
 msgstr "La Bien Aparecida"
 
-#. Our Lady of Africa.
+#. Santa Maria of Africa.
 msgid "Nuestra Señora de África"
 msgstr "Nostra Senyora d'Àfrica"
+
 #. Ceuta Day.
 msgid "Día de Ceuta"
 msgstr "Dia de Ceuta"
@@ -204,9 +206,10 @@ msgstr "Festa del Sacrifici-Aid Al Adha"
 msgid "San Francisco Javier"
 msgstr "Sant Francesc Xavier"
 
-#. Basque Country Day.
+#. País Vasco Day.
 msgid "Día del País Vasco"
 msgstr "Dia del País Basc"
+
 #. La Rioja Day.
 msgid "Día de La Rioja"
 msgstr "Dia de La Rioja"
