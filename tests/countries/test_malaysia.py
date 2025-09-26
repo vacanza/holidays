@@ -955,6 +955,91 @@ class TestMalaysia(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
+    def test_weekend(self):
+        for dt in (
+            "1994-12-31",  # SAT.
+            "1995-01-01",  # SUN.
+            "1995-01-07",  # SAT.
+            "1995-01-08",  # SUN.
+            "2013-12-28",  # SAT.
+            "2013-12-29",  # SUN.
+            "2014-01-04",  # SAT.
+            "2014-01-05",  # SUN.
+            "2024-12-28",  # SAT.
+            "2024-12-29",  # SUN.
+            "2025-01-04",  # SAT.
+            "2025-01-05",  # SUN.
+        ):
+            self.assertTrue(self.holidays.is_weekend(dt))
+
+        for dt in (
+            "1994-12-30",  # FRI.
+            "1995-01-06",  # FRI.
+            "2013-12-27",  # FRI.
+            "2014-01-03",  # FRI.
+            "2024-12-27",  # FRI.
+            "2025-01-03",  # FRI.
+        ):
+            self.assertFalse(self.holidays.is_weekend(dt))
+
+        for subdiv in ("02", "03", "11"):
+            subdiv_holidays = self.subdiv_holidays[subdiv]
+
+            for dt in (
+                "1994-12-30",  # FRI.
+                "1994-12-31",  # SAT.
+                "1995-01-06",  # FRI.
+                "1995-01-07",  # SAT.
+                "2013-12-27",  # FRI.
+                "2013-12-28",  # SAT.
+                "2014-01-03",  # FRI.
+                "2014-01-04",  # SAT.
+                "2024-12-27",  # FRI.
+                "2024-12-28",  # SAT.
+                "2025-01-03",  # FRI.
+                "2025-01-04",  # SAT.
+            ):
+                self.assertTrue(subdiv_holidays.is_weekend(dt))
+
+            for dt in (
+                "1994-12-25",  # SUN.
+                "1995-01-01",  # SUN.
+                "2013-12-29",  # SUN.
+                "2014-01-05",  # SUN.
+                "2024-12-29",  # SUN.
+                "2025-01-05",  # SUN.
+            ):
+                self.assertFalse(subdiv_holidays.is_weekend(dt))
+
+        subdiv_01_holidays = self.subdiv_holidays["01"]
+
+        for dt in (
+            "1994-12-30",  # FRI.
+            "1994-12-31",  # SAT.
+            "1995-01-01",  # SUN.
+            "1995-01-07",  # SAT.
+            "1995-01-08",  # SUN.
+            "2013-12-28",  # SAT.
+            "2013-12-29",  # SUN.
+            "2014-01-03",  # FRI.
+            "2014-01-04",  # SAT.
+            "2024-12-27",  # FRI.
+            "2024-12-27",  # SAT.
+            "2025-01-04",  # SAT.
+            "2025-01-05",  # SUN.
+        ):
+            self.assertTrue(subdiv_01_holidays.is_weekend(dt))
+
+        for dt in (
+            "1994-12-25",  # SUN.
+            "1995-01-06",  # FRI.
+            "2013-12-27",  # FRI.
+            "2014-01-05",  # SUN.
+            "2024-12-29",  # SUN.
+            "2025-01-03",  # FRI.
+        ):
+            self.assertFalse(subdiv_01_holidays.is_weekend(dt))
+
     def test_2024(self):
         self.assertHolidays(
             Malaysia(years=2024),

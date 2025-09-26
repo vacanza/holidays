@@ -164,6 +164,7 @@ from holidays.countries.montenegro import Montenegro, ME, MNE
 from holidays.countries.montserrat import Montserrat, MS, MSR
 from holidays.countries.morocco import Morocco, MA, MOR
 from holidays.countries.mozambique import Mozambique, MZ, MOZ
+from holidays.countries.myanmar import Myanmar, MM, MMR
 from holidays.countries.namibia import Namibia, NA, NAM
 from holidays.countries.nauru import Nauru, NR, NRU
 from holidays.countries.nepal import Nepal, NP, NPL
@@ -175,6 +176,7 @@ from holidays.countries.niger import Niger, NE, NER
 from holidays.countries.nigeria import Nigeria, NG, NGA
 from holidays.countries.niue import Niue, NU, NIU
 from holidays.countries.norfolk_island import NorfolkIsland, NF, NFK
+from holidays.countries.north_korea import NorthKorea, KP, PRK
 from holidays.countries.north_macedonia import NorthMacedonia, MK, MKD
 from holidays.countries.northern_mariana_islands import NorthernMarianaIslands, MP, MNP, HolidaysMP
 from holidays.countries.norway import Norway, NO, NOR
@@ -197,6 +199,11 @@ from holidays.countries.romania import Romania, RO, ROU
 from holidays.countries.russia import Russia, RU, RUS
 from holidays.countries.rwanda import Rwanda, RW, RWA
 from holidays.countries.saint_barthelemy import SaintBarthelemy, BL, BLM, HolidaysBL
+from holidays.countries.saint_helena_ascension_and_tristan_da_cunha import (
+    SaintHelenaAscensionAndTristanDaCunha,
+    SH,
+    SHN,
+)
 from holidays.countries.saint_kitts_and_nevis import SaintKittsAndNevis, KN, KNA
 from holidays.countries.saint_lucia import SaintLucia, LC, LCA
 from holidays.countries.saint_martin import SaintMartin, MF, MAF, HolidaysMF
@@ -235,6 +242,7 @@ from holidays.countries.south_korea import SouthKorea, KR, KOR, Korea
 from holidays.countries.south_sudan import SouthSudan, SS, SSD
 from holidays.countries.spain import Spain, ES, ESP
 from holidays.countries.sri_lanka import SriLanka, LK, LKA
+from holidays.countries.sudan import Sudan, SD, SDN
 from holidays.countries.suriname import Suriname, SR, SUR
 from holidays.countries.svalbard_and_jan_mayen import SvalbardAndJanMayen, SJ, SJM, HolidaysSJ
 from holidays.countries.sweden import Sweden, SE, SWE

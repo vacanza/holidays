@@ -1,0 +1,121 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Myanmar holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.82\n"
+"POT-Creation-Date: 2025-05-03 17:48+0300\n"
+"PO-Revision-Date: 2025-09-17 13:27+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: my\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (ခန့်မှန်း)"
+msgstr "%s (estimated)"
+
+#. New Year's Day.
+msgid "နိုင်ငံတကာနှစ်သစ်ကူးနေ့"
+msgstr "New Year's Day"
+
+#. Independence Day.
+msgid "လွတ်လပ်ရေးနေ့"
+msgstr "Independence Day"
+
+#. Union Day.
+msgid "ပြည်ထောင်စုနေ့"
+msgstr "Union Day"
+
+#. Peasants' Day.
+msgid "တောင်သူလယ်သမားနေ့"
+msgstr "Peasants' Day"
+
+#. Armed Forces Day.
+msgid "တပ်မတော်နေ့"
+msgstr "Armed Forces Day"
+
+#. Revolution Day.
+msgid "တော်လှန်ရေးနေ့"
+msgstr "Revolution Day"
+
+#. May Day.
+msgid "မေဒေးနေ့"
+msgstr "May Day"
+
+#. Martyrs' Day.
+msgid "အာဇာနည်နေ့"
+msgstr "Martyrs' Day"
+
+#. Christmas Day.
+msgid "ခရစ္စမတ်နေ့"
+msgstr "Christmas Day"
+
+#. Eid al-Adha.
+msgid "အီဒုလ်အဿွဟာနေ့"
+msgstr "Eid al-Adha"
+
+#. Chinese New Year.
+msgid "တရုတ်နှစ်သစ်ကူးနေ့"
+msgstr "Chinese New Year"
+
+#. Myanmar New Year.
+msgid "မြန်မာနှစ်သစ်ကူး ရုံးပိတ်ရက်များ"
+msgstr "Myanmar New Year"
+
+#. Full Moon Day of Tabaung.
+msgid "တပေါင်းလပြည့်နေ့"
+msgstr "Full Moon Day of Tabaung"
+
+#. Full Moon Day of Kason.
+msgid "ကဆုန်လပြည့်နေ့"
+msgstr "Full Moon Day of Kason"
+
+#. Full Moon Day of Waso.
+msgid "ဝါဆိုလပြည့်နေ့"
+msgstr "Full Moon Day of Waso"
+
+#. Thadingyut Holidays.
+msgid "သီတင်းကျွတ်ပိတ်ရက်များ"
+msgstr "Thadingyut Holidays"
+
+#. Diwali.
+msgid "ဒီပါဝလီနေ့"
+msgstr "Diwali"
+
+#. Full Moon Day of Tazaungmon.
+msgid "တန်ဆောင်တိုင်လပြည့်နေ့"
+msgstr "Full Moon Day of Tazaungmon"
+
+#. National Day.
+msgid "အမျိုးသားနေ့"
+msgstr "National Day"
+
+#. Karen New Year.
+msgid "ကရင်နှစ်သစ်ကူးနေ့"
+msgstr "Karen New Year"
+
+#. Substituted date format.
+msgid "%d-%m-%Y"
+msgstr "%m/%d/%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "အလုပ်ပိတ်ရက် (%s မှ ပြန်လဲထားသည်)"
+msgstr "Day off (substituted from %s)"

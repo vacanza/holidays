@@ -10,8 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from __future__ import annotations
+
 from gettext import gettext as tr
+from typing import TYPE_CHECKING
 
 from holidays.calendars.chinese import VIETNAMESE_CALENDAR
 from holidays.calendars.gregorian import (
@@ -39,6 +41,9 @@ from holidays.observed_holiday_base import (
     SAT_SUN_TO_NEXT_WORKDAY,
 )
 
+if TYPE_CHECKING:
+    from datetime import date
+
 NATIONAL_DAY_RULE = ObservedRule({MON: +1, TUE: -1, WED: -1, THU: +1, FRI: -1, SAT: -1, SUN: +1})
 
 
@@ -54,6 +59,10 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
     """
 
     country = "VN"
+    # %s (estimated).
+    estimated_label = tr("%s (dự kiến)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (nghỉ bù, dự kiến)")
     # %s (observed).
     observed_label = tr("%s (nghỉ bù)")
     default_language = "vi"

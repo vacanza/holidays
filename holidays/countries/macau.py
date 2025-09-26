@@ -62,6 +62,8 @@ class Macau(
 
     country = "MO"
     default_language = "zh_MO"
+    # %s (estimated).
+    estimated_label = tr("%s（推定）")
     # Decreto-Lei n.º 4/82/M.
     start_year = 1982
     subdivisions = (
@@ -373,6 +375,13 @@ class Macau(
                 if self._year >= 2020
                 # The first working day after %s.
                 else self.tr("%s後首個工作日")
+            )
+            self.observed_estimated_label = (
+                # Compensatory rest day for %s (estimated).
+                self.tr("%s的補假（推定）")
+                if self._year >= 2020
+                # The first working day after %s (estimated).
+                else self.tr("%s後首個工作日（推定）")
             )
             # Prior to 2012, in-lieus are only given for holidays which falls on Sunday.
             self._observed_rule = (

@@ -1,3 +1,52 @@
+# Version 0.81
+
+Released September 15, 2025
+
+- Add Saint Helena, Ascension and Tristan da Cunha holidays (#2820 by @Abheelash-Mishra, @arkid15r)
+- Add Sudan holidays (#2854 by @anshonweb)
+- Update Chinese Lunisolar calendar: extend Winter Solstice support (#2927 by @KJhellico)
+- Update Philippines holidays: add 2026 holidays (#2912 by @KJhellico)
+- Update Spain holidays: add Dec 3 holiday in Navarre (#2895 by @KJhellico)
+- Update countries with Eastern holidays: add estimated holidays labels (#2924 by @KJhellico, @arkid15r)
+- Update release notes generator (#2929 by @KJhellico)
+- Simplify N802 suppression for `common.py` (#2880 by @arkid15r)
+
+# Version 0.80
+
+Released September 1, 2025
+
+- Refactor Australia holidays (#2828 by @KJhellico)
+- Refactor Macau holidays: holiday categories standardization (#2868 by @PPsyrius)
+- Add Comoros holidays (#2827 by @Prateekshit73, @arkid15r, @prateekshit-v)
+- Add Eritrea holidays (#2783 by @Prateekshit73, @prateekshit-v)
+- Add National Stock Exchange of India (NSE) holidays (#2834 by @saheelsapovadia, @arkid15r)
+- Add Rwanda holidays (#2792 by @Prateekshit73, @prateekshit-v)
+- Add Somalia holidays (#2848 by @Prateekshit73, @arkid15r, @prateekshit-v)
+- Add South Sudan holidays (#2831 by @Prateekshit73, @arkid15r, @prateekshit-v)
+- Add Tajikistan holidays (#2852 by @Wasif-Shahzad)
+- Add Uganda holidays (#2833 by @Prateekshit73, @arkid15r, @prateekshit-v)
+- Add `estimated_label` to all countries with Islamic holidays (#2860 by @KJhellico, @arkid15r)
+- Fix Hindu Lunisolar calendar (#2871 by @KJhellico)
+- Fix Islamic holidays tests (#2849 by @KJhellico)
+- Fix `TestAllInSameYear` methods (#2877 by @KJhellico)
+- Update Bosnia and Herzegovina holidays (#2869 by @KJhellico)
+- Update Burundi holidays, add l10n support (#2843 by @PPsyrius)
+- Update Canada holidays: add National Day for Truth and Reconciliation in MB (#2829 by @KJhellico)
+- Update Georgia holidays: add August 29, 2025 special holiday (#2863 by @KJhellico)
+- Update Guinea-Bissau holidays (#2859 by @KJhellico, @arkid15r)
+- Update Nigeria holidays, add l10n support (#2874 by @PPsyrius)
+- Update Singapore holidays: remove duplicate holidays label assignment (#2844 by @PPsyrius)
+- Update Tanzania holidays: extend holidays support to 1965 (#2821 by @PPsyrius)
+- Update `common::CommonTests`: expand label tests to financial entities (#2876 by @arkid15r)
+- Add .zenodo.json (#2870 by @arkid15r)
+- Add `common::TestCase::assertHolidayNameCount` method (#2873 by @KJhellico)
+- Add metadata package version mismatch hint (#2846 by @arkid15r)
+- Add missing docstring for `__init__` method (#2850 by @KJhellico)
+- Expose entity additional codes (#2879 by @arkid15r)
+- Test Case Name Standardization (#2853 by @PPsyrius)
+- Unify imports (#2845 by @KJhellico)
+- Use aux repository data for downloads badge (#2832 by @arkid15r)
+
 # Version 0.79
 
 Released August 18, 2025

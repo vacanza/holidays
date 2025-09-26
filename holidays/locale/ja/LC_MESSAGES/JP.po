@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.30\n"
+"Project-Id-Version: Holidays 0.82\n"
 "POT-Creation-Date: 2023-07-23 15:45+0300\n"
-"PO-Revision-Date: 2023-07-23 15:47+0300\n"
+"PO-Revision-Date: 2025-09-17 10:42+0700\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ja\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.7\n"
 "X-Source-Language: ja\n"
 
 #. Substitute Holiday.
@@ -55,16 +55,16 @@ msgstr ""
 msgid "春分の日"
 msgstr ""
 
-#. Greenery Day.
-msgid "みどりの日"
-msgstr ""
-
 #. Showa Day.
 msgid "昭和の日"
 msgstr ""
 
 #. Constitution Day.
 msgid "憲法記念日"
+msgstr ""
+
+#. Greenery Day.
+msgid "みどりの日"
 msgstr ""
 
 #. Children's Day.

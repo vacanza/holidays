@@ -14,7 +14,7 @@ from datetime import date
 from typing import Optional
 
 from holidays.calendars.chinese import _ChineseLunisolar, CHINESE_CALENDAR
-from holidays.calendars.gregorian import APR, DEC
+from holidays.calendars.gregorian import APR
 from holidays.groups.eastern import EasternCalendarHolidays
 
 
@@ -79,20 +79,8 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
     def _dongzhi_festival(self):
         """
         Return Dongzhi Festival (Chinese Winter Solstice) date.
-
-        This approximation is reliable for 1952-2099 years.
         """
-        #
-        if (
-            (self._year % 4 == 0 and self._year >= 1988)
-            or (self._year % 4 == 1 and self._year >= 2021)
-            or (self._year % 4 == 2 and self._year >= 2058)
-            or (self._year % 4 == 3 and self._year >= 2091)
-        ):
-            day = 21
-        else:
-            day = 22
-        return date(self._year, DEC, day)
+        return self._chinese_calendar.winter_solstice_date(self._year)[0]
 
     def _add_chinese_calendar_holiday(
         self, name: str, dt_estimated: tuple[Optional[date], bool], days_delta: int = 0
@@ -195,6 +183,18 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+4
         )
 
+    def _add_daeboreum_day(self, name) -> Optional[date]:
+        """
+        Add Daeboreum Day (15th day of 1st lunar month).
+
+        Daeboreum is a Korean holiday that celebrates the first full moon
+        of the new year of the lunar Korean calendar.
+        https://en.wikipedia.org/wiki/Daeboreum
+        """
+        return self._add_chinese_calendar_holiday(
+            name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+14
+        )
+
     def _add_dongzhi_festival(self, name) -> Optional[date]:
         """
         Add Dongzhi Festival (Chinese Winter Solstice).
@@ -205,6 +205,19 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Dongzhi_Festival
         """
         return self._add_holiday(name, self._dongzhi_festival)
+
+    def _add_hanshi_festival(self, name) -> Optional[date]:
+        """
+        Add Hanshi Festival (105 days after Winter Solstice).
+
+        The Cold Food or Hanshi Festival is a traditional Chinese holiday. Its name
+        derives from the tradition of avoiding the lighting of any kind of fire,
+        even for the preparation of food.
+        https://en.wikipedia.org/wiki/Cold_Food_Festival
+        """
+        return self._add_chinese_calendar_holiday(
+            name, self._chinese_calendar.winter_solstice_date(self._year - 1), days_delta=+105
+        )
 
     def _add_qingming_festival(self, name) -> date:
         """
