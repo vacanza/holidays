@@ -204,10 +204,9 @@ msgstr "Festa del Sacrifici-Aid Al Adha"
 msgid "San Francisco Javier"
 msgstr "Sant Francesc Xavier"
 
-#. País Vasco Day.
+#. Basque Country Day.
 msgid "Día del País Vasco"
 msgstr "Dia del País Basc"
-
 #. La Rioja Day.
 msgid "Día de La Rioja"
 msgstr "Dia de La Rioja"
