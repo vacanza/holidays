@@ -146,7 +146,7 @@ msgstr "Dia de les Canàries"
 
 #. Whit Monday.
 msgid "Día de la Pascua Granada"
-msgstr "Dia de la Pasqua Granada"
+msgstr "Dilluns de Pasqua Granada"
 
 #. Saint John the Baptist.
 msgid "San Juan"
