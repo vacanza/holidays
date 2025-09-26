@@ -30,14 +30,13 @@ msgstr ""
 msgid "New Year's Day"
 msgstr "New Year's Day"
 
-#. Midwinter Day.
-msgid "Midwinter Day"
-msgstr "Midwinter Day"
-
-#. Antarctica Day.
-msgid "Antarctica Day"
-msgstr "Antarctica Day"
-
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
+
+#. Antarctica Day (fixed).
+msgid "Antarctica Day"
+msgstr "Antarctica Day"
+
+msgid "Midwinter Day"
+msgstr "Midwinter Day"
