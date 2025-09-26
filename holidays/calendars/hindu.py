@@ -18,6 +18,8 @@ from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, AUG, SEP, OCT, NOV, DEC
 from holidays.helpers import _normalize_tuple
 
+import holidays
+
 BUDDHA_PURNIMA = "BUDDHA_PURNIMA"
 CHHATH_PUJA = "CHHATH_PUJA"
 DIWALI = "DIWALI"
@@ -46,6 +48,36 @@ TAMU_LOSAR = "TAMU_LOSAR"
 THAIPUSAM = "THAIPUSAM"
 VAISAKHI = "VAISAKHI"
 
+# Descriptions of all listed festivals
+FESTIVAL_DESCRIPTIONS = {
+    "BUDDHA_PURNIMA": "Buddha Purnima marks the birth, enlightenment and death of Lord Buddha.",
+    "CHHATH_PUJA": "Chhath Puja is dedicated to the Sun God and Chhathi Maiya for health and prosperity.",
+    "DIWALI": "Diwali, the festival of lights, celebrates the victory of good over evil and light over darkness.",
+    "DIWALI_INDIA": "Diwali as celebrated in India, symbolizing prosperity and light.",
+    "DUSSEHRA": "Dussehra celebrates the victory of Lord Rama over the demon king Ravana.",
+    "GANESH_CHATURTHI": "Ganesh Chaturthi celebrates the birth of Lord Ganesha.",
+    "GOVARDHAN_PUJA": "Govardhan Puja marks the day Lord Krishna lifted the Govardhan Hill to protect villagers.",
+    "GUDI_PADWA": "Gudi Padwa is the Maharashtrian New Year festival marking the arrival of spring.",
+    "GURU_GOBIND_SINGH_JAYANTI": "Birth anniversary of Guru Gobind Singh Ji, the 10th Sikh Guru.",
+    "GURU_NANAK_JAYANTI": "Birth anniversary of Guru Nanak Dev Ji, founder of Sikhism.",
+    "GYALPO_LOSAR": "Gyalpo Losar is the Tibetan New Year festival celebrated by Sherpa and Tibetan communities.",
+    "HOLI": "Holi, the festival of colours, celebrates the arrival of spring and the triumph of good over evil.",
+    "JANMASHTAMI": "Janmashtami marks the birth of Lord Krishna.",
+    "MAHA_ASHTAMI": "Maha Ashtami is the eighth day of Navratri dedicated to Goddess Durga.",
+    "MAHA_NAVAMI": "Maha Navami is the ninth day of Navratri, honouring Goddess Durga.",
+    "MAHA_SHIVARATRI": "Maha Shivaratri is dedicated to Lord Shiva.",
+    "MAHAVIR_JAYANTI": "Mahavir Jayanti marks the birth of Lord Mahavira, the 24th Tirthankara of Jainism.",
+    "MAKAR_SANKRANTI": "Makar Sankranti marks the sun’s transit into Capricorn, celebrated with kite flying.",
+    "ONAM": "Onam is Kerala’s harvest festival celebrating the homecoming of King Mahabali.",
+    "PONGAL": "Pongal is Tamil Nadu’s harvest festival dedicated to the Sun God.",
+    "RAKSHA_BANDHAN": "Raksha Bandhan celebrates the bond between brothers and sisters.",
+    "RAM_NAVAMI": "Ram Navami marks the birth of Lord Rama.",
+    "SHARAD_NAVRATRI": "Sharad Navratri is the nine-day festival dedicated to Goddess Durga.",
+    "SONAM_LOSAR": "Sonam Losar is the Tibetan New Year celebrated by Tamang and Tibetan communities.",
+    "TAMU_LOSAR": "Tamu Losar is the New Year festival of the Gurung community.",
+    "THAIPUSAM": "Thaipusam is a Tamil festival dedicated to Lord Murugan.",
+    "VAISAKHI": "Vaisakhi marks the Sikh New Year and the harvest festival of Punjab.",
+}
 
 class _HinduLunisolar:
     # https://web.archive.org/web/20240804044401/https://www.timeanddate.com/holidays/india/buddha-purnima
@@ -1489,7 +1521,16 @@ class _HinduLunisolar:
 
     def vaisakhi_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(VAISAKHI, year)
+    # function to find out the description of the festival and it's upcoming date in that year
+    def get_festival_info(festival_name: str, year: int):
+     cal = holidays.India(years=year)
+    # Many holiday classes return 'Diwali' as 'Diwali' not 'DIWALI', so compare case-insensitively:
+     for dt, name in cal.items():
+        if name.lower() == festival_name.lower():
+            desc = FESTIVAL_DESCRIPTIONS.get(festival_name.upper(), "No description available.")
+            return dt, desc
 
-
+     return None  # festival not found for that year
+        
 class _CustomHinduHolidays(_CustomCalendar, _HinduLunisolar):
     pass
