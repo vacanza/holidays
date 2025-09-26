@@ -1051,7 +1051,7 @@ class TestSpain(CommonCountryTests, TestCase):
             ("2023-01-02", "Lunes siguiente a Año Nuevo"),
             ("2023-01-06", "Epifanía del Señor"),
             ("2023-02-21", "Martes de Carnaval"),
-            ("2023-02-28", "Día de Andalucia"),
+            ("2023-02-28", "Día de Andalucía"),
             ("2023-03-01", "Día de las Islas Baleares"),
             ("2023-03-20", "Lunes siguiente a San José"),
             ("2023-04-06", "Jueves Santo"),
