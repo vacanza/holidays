@@ -94,10 +94,9 @@ msgstr "Dijous Sant"
 msgid "Día de San Jorge"
 msgstr "Dia de Sant Jordi"
 
-#. Asturia Day.
+#. Asturias Day.
 msgid "Día de Asturias"
 msgstr "Dia d'Astúries"
-
 #. Easter Monday.
 msgid "Lunes de Pascua"
 msgstr "Dilluns de Pasqua"
