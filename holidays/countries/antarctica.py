@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.constants import PUBLIC, OPTIONAL
+from holidays.constants import PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -29,7 +29,7 @@ class Antarctica(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "AQ"
     default_language = "en_US"
-    supported_categories = (PUBLIC, OPTIONAL)
+    supported_categories = (PUBLIC,)
     supported_languages = ("en_US",)
 
     def __init__(self, *args, **kwargs):

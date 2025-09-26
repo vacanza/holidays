@@ -208,7 +208,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>AQ</td>
 <td></td>
 <td><strong>en_US</strong></td>
-<td>OPTIONAL</td>
+<td></td>
 </tr>
 <tr>
 <td>Antigua and Barbuda</td>

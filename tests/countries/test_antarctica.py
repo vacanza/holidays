@@ -13,7 +13,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.antarctica import Antarctica, AQ
+from holidays.countries.antarctica import Antarctica, AQ, ATA
 from tests.common import CommonCountryTests
 
 
@@ -23,7 +23,7 @@ class TestAntarctica(CommonCountryTests, TestCase):
         super().setUpClass(Antarctica)
 
     def test_country_aliases(self):
-        self.assertAliases(Antarctica, AQ)
+        self.assertAliases(Antarctica, AQ, ATA)
 
     def test_fixed_holidays(self):
         # Standard fixed holidays
@@ -36,13 +36,13 @@ class TestAntarctica(CommonCountryTests, TestCase):
 
     def test_midwinter_day_leap_years(self):
         # Midwinter Day shifts: leap years → June 20
-        for year in [2012, 2016, 2020, 2024, 2028, 2032]:
+        for year in [2000, 2012, 2016, 2020, 2024, 2028, 2032]:
             self.assertHolidayName("Midwinter Day", f"{year}-06-20")
             self.assertNoHoliday(f"{year}-06-21")
 
     def test_midwinter_day_non_leap_years(self):
         # Non-leap years → June 21
-        for year in [2013, 2015, 2017, 2021, 2025, 2029]:
+        for year in [2013, 2015, 2017, 2021, 2025, 2029, 2100]:
             self.assertHolidayName("Midwinter Day", f"{year}-06-21")
             self.assertNoHoliday(f"{year}-06-20")
 
@@ -53,6 +53,7 @@ class TestAntarctica(CommonCountryTests, TestCase):
         self.assertIn("2025-06-21", holidays)
         self.assertIn("2025-12-01", holidays)
         self.assertIn("2025-12-25", holidays)
+        self.assertEqual(len(holidays), 4)
 
     def test_l10n_default(self):
         # Localization test (default language)
