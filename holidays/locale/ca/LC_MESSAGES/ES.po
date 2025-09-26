@@ -221,6 +221,7 @@ msgstr "Dia de la Comunitat Valenciana"
 #. Day following Saint Joseph's Day.
 msgid "Día siguiente a San José"
 msgstr "Dia següent a Sant Josep"
+
 #. Saint Joseph's Day Transfer.
 msgid "Traslado de San José"
 msgstr "Trasllat de Sant Josep"
