@@ -20,8 +20,6 @@ class Antarctica(HolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Antarctica_Day>
         * <https://en.wikipedia.org/wiki/Midwinter_Day>
-        * <https://en.wikipedia.org/wiki/New_Year%27s_Day>
-        * <https://en.wikipedia.org/wiki/Christmas_Day>
     """
 
     country = "AQ"
@@ -32,21 +30,21 @@ class Antarctica(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # New Year's Day
+        # New Year's Day.
         self._add_new_years_day("New Year's Day")
 
-        # Christmas Day
-        self._add_christmas_day("Christmas Day")
+        # Midwinter Day.
+        name = "Midwinter Day"
+        if self._is_leap_year():
+            self._add_holiday_jun_20(name)
+        else:
+            self._add_holiday_jun_21(name)
 
-        # Antarctica Day
+        # Antarctica Day.
         self._add_holiday_dec_1("Antarctica Day")
 
-        # Midwinter Day
-        # June 20 in leap years, otherwise June 21
-        if self._is_leap_year():
-            self._add_holiday_jun_20("Midwinter Day")
-        else:
-            self._add_holiday_jun_21("Midwinter Day")
+        # Christmas Day.
+        self._add_christmas_day("Christmas Day")
 
 
 class AQ(Antarctica):
