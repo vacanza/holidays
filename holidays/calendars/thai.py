@@ -322,7 +322,7 @@ class _ThaiLunisolar:
 
         return _timedelta(_ThaiLunisolar.START_DATE, delta_days)
 
-    @lru_cache
+    @cache
     def buddhist_sabbath_dates(self, year: int) -> set[date]:
         """Return all Buddhist Sabbath (Uposatha) days in a given Gregorian year.
 
