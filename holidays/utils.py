@@ -22,7 +22,7 @@ __all__ = (
 
 import warnings
 from collections.abc import Iterable
-from functools import lru_cache
+from functools import cache
 from typing import Optional, Union
 
 from holidays.holiday_base import CategoryArg, HolidayBase
@@ -357,7 +357,7 @@ def _list_localized_entities(entity_codes: Iterable[str]) -> dict[str, list[str]
     return localized_countries
 
 
-@lru_cache
+@cache
 def list_localized_countries(include_aliases: bool = True) -> dict[str, list[str]]:
     """Get all localized countries and languages they support.
 
@@ -373,7 +373,7 @@ def list_localized_countries(include_aliases: bool = True) -> dict[str, list[str
     return _list_localized_entities(EntityLoader.get_country_codes(include_aliases))
 
 
-@lru_cache
+@cache
 def list_localized_financial(include_aliases: bool = True) -> dict[str, list[str]]:
     """Get all localized financial markets and languages they support.
 
@@ -407,7 +407,7 @@ def _list_supported_entities(entity_codes: Iterable[str]) -> dict[str, list[str]
     }
 
 
-@lru_cache
+@cache
 def list_supported_countries(include_aliases: bool = True) -> dict[str, list[str]]:
     """Get all supported countries and their subdivisions.
 
@@ -422,7 +422,7 @@ def list_supported_countries(include_aliases: bool = True) -> dict[str, list[str
     return _list_supported_entities(EntityLoader.get_country_codes(include_aliases))
 
 
-@lru_cache
+@cache
 def list_supported_financial(include_aliases: bool = True) -> dict[str, list[str]]:
     """Get all supported financial markets and their subdivisions.
 

@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from functools import lru_cache
+from functools import cache
 from typing import Optional
 
 from holidays.calendars.gregorian import _timedelta
@@ -293,7 +293,7 @@ class _ThaiLunisolar:
                 f"Unknown calendar name: {calendar}. Use `KHMER_CALENDAR` or `THAI_CALENDAR`."
             )
 
-    @lru_cache
+    @cache
     def _get_start_date(self, year: int) -> Optional[date]:
         """Calculate the start date of that particular Thai Lunar Calendar Year.
 
