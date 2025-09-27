@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from functools import cache
+from functools import lru_cache
 from typing import Optional
 
 from holidays.calendars.gregorian import _timedelta
@@ -295,7 +295,7 @@ class _ThaiLunisolar:
                 f"Unknown calendar name: {calendar}. Use `KHMER_CALENDAR` or `THAI_CALENDAR`."
             )
 
-    @cache
+    @lru_cache
     def _get_start_date(self, year: int) -> Optional[date]:
         """Calculate the start date of that particular Thai Lunar Calendar Year.
 
@@ -322,7 +322,7 @@ class _ThaiLunisolar:
 
         return _timedelta(_ThaiLunisolar.START_DATE, delta_days)
 
-    @cache
+    @lru_cache
     def buddhist_sabbath_dates(self, year: int) -> set[date]:
         """Return all Buddhist Sabbath (Uposatha) days in a given Gregorian year.
 

@@ -787,7 +787,7 @@ class TestThailand(CommonCountryTests, TestCase):
             ("2017-11-03", "วันลอยกระทง"),
         )
 
-    def test_weekend(self):
+    def test_weekends(self):
         for dt in (
             "1940-01-07",  # SUN.
             "1940-01-14",  # SUN.

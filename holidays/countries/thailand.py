@@ -204,20 +204,21 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
     def _get_weekend(self, dt: date) -> set[int]:
         if dt >= date(1959, MAR, 1):
             # SAT & SUN (Full Day).
-            return {SAT, SUN}
+            weekend = {SAT, SUN}
         elif date(1956, OCT, 1) <= dt <= date(1957, OCT, 6):
             # Buddhist Sabbath Days and Sun (Full Day).
             weekend = {SUN}
             buddhist_sabbath_dates = self._thai_calendar.buddhist_sabbath_dates(dt.year)
             if dt in buddhist_sabbath_dates:
                 weekend.add(dt.weekday())
-            return weekend
         elif dt >= date(1939, FEB, 28):
             # SAT from 12:00 onwards and SUN (Full Day).
-            return {SUN}
+            weekend = {SUN}
         else:
             # Prior to this, there was no concept of weekend.
-            return set()
+            weekend = set()
+
+        return weekend
 
     def _populate_public_holidays(self):
         # Fixed Date Holidays
