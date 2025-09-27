@@ -18,8 +18,6 @@ from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, AUG, SEP, OCT, NOV, DEC
 from holidays.helpers import _normalize_tuple
 
-import holidays
-
 BUDDHA_PURNIMA = "BUDDHA_PURNIMA"
 CHHATH_PUJA = "CHHATH_PUJA"
 DIWALI = "DIWALI"
@@ -1522,15 +1520,26 @@ class _HinduLunisolar:
     def vaisakhi_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(VAISAKHI, year)
     # function to find out the description of the festival and it's upcoming date in that year
-    def get_festival_info(festival_name: str, year: int):
-     cal = holidays.India(years=year)
-    # Many holiday classes return 'Diwali' as 'Diwali' not 'DIWALI', so compare case-insensitively:
-     for dt, name in cal.items():
-        if name.lower() == festival_name.lower():
-            desc = FESTIVAL_DESCRIPTIONS.get(festival_name.upper(), "No description available.")
-            return dt, desc
+    # function to find out the description of the festival and its upcoming date in that year
+    def get_festival_info(self, festival_name: str, year: int):
+        """
+        Returns the date and description of the festival for the given year.
 
-     return None  # festival not found for that year
+        Args:
+            festival_name (str): Name of the festival.
+            year (int): Year to look up.
+
+        Returns:
+            tuple: (date, description) if found, else None.
+        """
+        import holidays  # Local import for this method only
+        cal = holidays.India(years=year)
+        # Many holiday classes return 'Diwali' as 'Diwali' not 'DIWALI', so compare case-insensitively:
+        for dt, name in cal.items():
+            if name.lower() == festival_name.lower():
+                desc = FESTIVAL_DESCRIPTIONS.get(festival_name.upper(), "No description available.")
+                return dt, desc
+        return None  # festival not found for that year
         
 class _CustomHinduHolidays(_CustomCalendar, _HinduLunisolar):
     pass
