@@ -1172,7 +1172,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Myanmar</td>
 <td>MM</td>
 <td></td>
-<td>en_US, <strong>my</strong></td>
+<td>en_US, <strong>my</strong>, th</td>
 <td></td>
 </tr>
 <tr>
