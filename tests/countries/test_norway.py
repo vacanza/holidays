@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import warnings
 from unittest import TestCase
 
 from holidays.countries.norway import Norway, NO, NOR
