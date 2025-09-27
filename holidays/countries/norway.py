@@ -83,7 +83,6 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         "38",
         "54",
     )
-    
     def __init__(self, include_sundays: bool = False, *args, **kwargs):
         """
         Args:
