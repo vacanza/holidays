@@ -23,7 +23,8 @@ class Antarctica(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "AQ"
-    start_year = 1902
+    # The Antarctica Treaty System became active on June 23rd, 1961.
+    start_year = 1962
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
