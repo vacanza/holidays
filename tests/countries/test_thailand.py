@@ -787,6 +787,106 @@ class TestThailand(CommonCountryTests, TestCase):
             ("2017-11-03", "วันลอยกระทง"),
         )
 
+    def test_weekends(self):
+        for dt in (
+            "1940-01-07",  # SUN.
+            "1940-01-14",  # SUN.
+            "1940-01-21",  # SUN.
+            "1940-01-28",  # SUN.
+            "1956-09-02",  # SUN.
+            "1956-09-09",  # SUN.
+            "1956-09-16",  # SUN.
+            "1956-09-23",  # SUN.
+            "1956-09-30",  # SUN.
+            "1956-10-04",  # THU (Buddhist Sabbath Day).
+            "1956-10-07",  # SUN.
+            "1956-10-12",  # FRI (Buddhist Sabbath Day).
+            "1956-10-14",  # SUN.
+            "1956-10-19",  # FRI (Buddhist Sabbath Day).
+            "1956-10-21",  # SUN.
+            "1956-10-27",  # SAT (Buddhist Sabbath Day).
+            "1956-10-28",  # SUN.
+            "1957-01-06",  # SUN.
+            "1957-01-08",  # TUE (Buddhist Sabbath Day).
+            "1957-01-13",  # SUN.
+            "1957-01-15",  # TUE (Buddhist Sabbath Day).
+            "1957-01-20",  # SUN.
+            "1957-01-23",  # WED (Buddhist Sabbath Day).
+            "1957-01-27",  # SUN.
+            "1957-01-30",  # WED (Buddhist Sabbath Day).
+            "1957-09-01",  # SUN.
+            "1957-09-02",  # MON (Buddhist Sabbath Day).
+            "1957-09-08",  # SUN.
+            "1957-09-09",  # MON (Buddhist Sabbath Day).
+            "1957-09-15",  # SUN.
+            "1957-09-17",  # TUE (Buddhist Sabbath Day).
+            "1957-09-22",  # SUN.
+            "1957-09-24",  # TUE (Buddhist Sabbath Day).
+            "1957-09-29",  # SUN.
+            "1957-10-02",  # WED (Buddhist Sabbath Day).
+            "1957-10-06",  # SUN.
+            "1957-10-13",  # SUN.
+            "1957-10-20",  # SUN.
+            "1957-10-27",  # SUN.
+            "1958-01-05",  # SUN.
+            "1958-01-12",  # SUN.
+            "1958-01-19",  # SUN.
+            "1958-01-26",  # SUN.
+            "1960-01-02",  # SAT.
+            "1960-01-03",  # SUN.
+            "1960-01-09",  # SAT.
+            "1960-01-10",  # SUN.
+            "1960-01-16",  # SAT.
+            "1960-01-17",  # SUN.
+            "1960-01-23",  # SAT.
+            "1960-01-24",  # SUN.
+            "1960-01-30",  # SAT.
+            "1960-01-31",  # SUN.
+        ):
+            self.assertTrue(self.holidays.is_weekend(dt))
+
+        for dt in (
+            "1938-01-01",  # SAT.
+            "1938-01-02",  # SUN.
+            "1938-01-08",  # SAT.
+            "1938-01-09",  # SUN.
+            "1938-01-15",  # SAT.
+            "1938-01-16",  # SUN.
+            "1938-01-22",  # SAT.
+            "1938-01-23",  # SUN.
+            "1938-01-29",  # SAT.
+            "1938-01-30",  # SUN.
+            "1940-01-06",  # SAT (Half Day).
+            "1940-01-13",  # SAT (Half Day).
+            "1940-01-20",  # SAT (Half Day).
+            "1940-01-27",  # SAT (Half Day).
+            "1956-09-01",  # SAT (Half Day).
+            "1956-09-08",  # SAT (Half Day).
+            "1956-09-15",  # SAT (Half Day).
+            "1956-09-22",  # SAT (Half Day).
+            "1956-09-29",  # SAT (Half Day).
+            "1956-10-06",  # SAT.
+            "1956-10-13",  # SAT.
+            "1956-10-20",  # SAT.
+            "1957-01-05",  # SAT.
+            "1957-01-12",  # SAT.
+            "1957-01-19",  # SAT.
+            "1957-01-26",  # SAT.
+            "1957-09-07",  # SAT.
+            "1957-09-14",  # SAT.
+            "1957-09-21",  # SAT.
+            "1957-09-28",  # SAT.
+            "1957-10-05",  # SAT.
+            "1957-10-12",  # SAT (Half Day).
+            "1957-10-19",  # SAT (Half Day).
+            "1957-10-26",  # SAT (Half Day).
+            "1958-01-04",  # SAT (Half Day).
+            "1958-01-11",  # SAT (Half Day).
+            "1958-01-18",  # SAT (Half Day).
+            "1958-01-25",  # SAT (Half Day).
+        ):
+            self.assertFalse(self.holidays.is_weekend(dt))
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "วันขึ้นปีใหม่"),
