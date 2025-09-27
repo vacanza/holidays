@@ -41,7 +41,8 @@ class Antarctica(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_jun_21(name)
 
         # Antarctica Day.
-        self._add_holiday_dec_1("Antarctica Day")
+        if self.year >= 2010:
+            self._add_holiday_dec_1("Antarctica Day")
 
         # Christmas Day.
         self._add_christmas_day("Christmas Day")
