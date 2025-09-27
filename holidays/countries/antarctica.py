@@ -23,6 +23,7 @@ class Antarctica(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "AQ"
+    start_year = 1902
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
