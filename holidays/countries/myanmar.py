@@ -50,7 +50,7 @@ class Myanmar(
     default_language = "my"
     # %s (estimated).
     estimated_label = tr("%s (ခန့်မှန်း)")
-    supported_languages = ("en_US", "my")
+    supported_languages = ("en_US", "my", "th")
     # Myanmar gained its independence from British rule on January 4, 1948.
     start_year = 1948
 

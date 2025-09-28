@@ -162,11 +162,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
 
     def _add_gudi_padwa(self, name) -> Optional[date]:
         """
-        Add Gudi Padwa.
+        Add Gudi Padwa / Ugadi.
 
-        Gudi Padwa is the traditional New Year festival for Maharashtrians.
-        It falls on the first day of Chaitra (March-April).
-        https://en.wikipedia.org/wiki/Gudi_Padwa
+        Gudi Padwa is the traditional New Year festival celebrated in
+        Maharashtra. On the same day, the festival is also observed as
+        Ugadi in Karnataka, Telangana, and Andhra Pradesh.
+
+        It falls on the first day of Chaitra (March–April) according to
+        the Hindu lunisolar calendar.
+
+        References:
+            * https://en.wikipedia.org/wiki/Gudi_Padwa
+            * https://en.wikipedia.org/wiki/Ugadi
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.gudi_padwa_date(self._year)
