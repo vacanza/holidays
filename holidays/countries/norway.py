@@ -73,9 +73,9 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Romssa": "55",
         "Troms": "55",
         "Tromssan": "55",
-        "Finnmárkku": "56",
-        "Finnmark": "56",
         "Finmarkun": "56",
+        "Finnmark": "56",
+        "Finnmárkku": "56",
     }
     supported_languages = ("en_US", "no", "th", "uk")
     _deprecated_subdivisions = (
