@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# from holidays.helpers import _normalize_arguments
 from holidays.holiday_base import HolidayBase
 
 
