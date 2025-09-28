@@ -14,8 +14,8 @@ from collections.abc import Iterable
 from datetime import date
 from typing import Optional, Union
 
-from holidays.calendars import _HebrewLunisolar
 from holidays.calendars.gregorian import _timedelta
+from holidays.calendars.hebrew import _HebrewLunisolar
 
 
 class HebrewCalendarHolidays:
@@ -29,11 +29,11 @@ class HebrewCalendarHolidays:
     def _add_hebrew_calendar_holiday(
         self, name: str, holiday_date: date, days_delta: Union[int, Iterable[int]] = 0
     ) -> set[date]:
-        added_dates = set()
-        for delta in (days_delta,) if isinstance(days_delta, int) else days_delta:
-            if dt := self._add_holiday(name, _timedelta(holiday_date, delta)):
-                added_dates.add(dt)
-        return added_dates
+        return {
+            dt
+            for delta in ((days_delta,) if isinstance(days_delta, int) else days_delta)
+            if (dt := self._add_holiday(name, _timedelta(holiday_date, delta)))
+        }
 
     def _add_hanukkah(
         self, name: str, days_delta: Union[int, Iterable[int]] = 0
