@@ -279,6 +279,7 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
             "2022-12-27",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_boxing_day(self):
         name = "Boxing Day"

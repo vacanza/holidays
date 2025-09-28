@@ -138,8 +138,8 @@ class TestCostaRica(CommonCountryTests, TestCase):
         self.assertOptionalHolidayName(
             name, (f"{year}-08-31" for year in range(2024, self.end_year))
         )
-        self.assertNoOptionalHoliday(f"{year}-08-31" for year in range(1980, 2021))
-        self.assertNoOptionalHolidayName(name, range(1980, 2021))
+        self.assertNoOptionalHoliday(f"{year}-08-31" for year in range(self.start_year, 2021))
+        self.assertNoOptionalHolidayName(name, range(self.start_year, 2021))
 
         obs_dts = (
             "2021-09-05",
@@ -211,7 +211,7 @@ class TestCostaRica(CommonCountryTests, TestCase):
             name, (f"{year}-12-01" for year in range(2023, self.end_year))
         )
         self.assertNoOptionalHoliday("2019-12-01")
-        self.assertNoOptionalHolidayName(name, range(1980, 2020))
+        self.assertNoOptionalHolidayName(name, range(self.start_year, 2020))
 
         obs_dts = (
             "2020-11-30",

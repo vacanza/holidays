@@ -59,6 +59,7 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
             "2025-01-30",
         )
         self.assertHolidayName(name, range(self.start_year, 2020), range(2021, self.end_year))
+        self.assertNoHolidayName(name, 2020)
         obs_dts = (
             "2018-02-19",
             "2020-01-28",
