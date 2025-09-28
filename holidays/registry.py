@@ -28,6 +28,7 @@ COUNTRIES: RegistryDict = {
     "andorra": ("Andorra", "AD", "AND"),
     "angola": ("Angola", "AO", "AGO"),
     "anguilla": ("Anguilla", "AI", "AIA"),
+    "antarctica": ("Antarctica", "AQ", "ATA"),
     "antigua_and_barbuda": ("AntiguaAndBarbuda", "AG", "ATG"),
     "argentina": ("Argentina", "AR", "ARG"),
     "armenia": ("Armenia", "AM", "ARM"),
