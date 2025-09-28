@@ -66,15 +66,15 @@ class TestCostaRica(CommonCountryTests, TestCase):
             name, (f"{year}-04-11" for year in self.full_range if year not in years_observed)
         )
 
-        dt = (
+        obs_dts = (
             "2006-04-17",
             "2007-04-16",
             "2008-04-14",
             "2023-04-10",
             "2024-04-15",
         )
-        self.assertHolidayName(f"{name} (observado)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
         self.assertNonObservedHolidayName(name, (f"{year}-04-11" for year in years_observed))
 
     def test_labor_day(self):
@@ -84,9 +84,9 @@ class TestCostaRica(CommonCountryTests, TestCase):
             name, (f"{year}-05-01" for year in self.full_range if year not in years_observed)
         )
 
-        dt = "2021-05-03"
-        self.assertHolidayName(f"{name} (observado)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        obs_dts = "2021-05-03"
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
         self.assertNonObservedHolidayName(name, "2021-05-01")
 
     def test_annexation(self):
@@ -96,7 +96,7 @@ class TestCostaRica(CommonCountryTests, TestCase):
             name, (f"{year}-07-25" for year in self.full_range if year not in years_observed)
         )
 
-        dt = (
+        obs_dts = (
             "2006-07-31",
             "2007-07-30",
             "2008-07-28",
@@ -105,8 +105,8 @@ class TestCostaRica(CommonCountryTests, TestCase):
             "2023-07-24",
             "2024-07-29",
         )
-        self.assertHolidayName(f"{name} (observado)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
         self.assertNonObservedHolidayName(name, (f"{year}-07-25" for year in years_observed))
 
     def test_feast_our_lady_of_angels(self):
@@ -121,15 +121,15 @@ class TestCostaRica(CommonCountryTests, TestCase):
             name, (f"{year}-08-15" for year in self.full_range if year not in years_observed)
         )
 
-        dt = (
+        obs_dts = (
             "2006-08-21",
             "2007-08-20",
             "2020-08-17",
             "2023-08-14",
             "2024-08-19",
         )
-        self.assertHolidayName(f"{name} (observado)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
         self.assertNonObservedHolidayName(name, (f"{year}-08-15" for year in years_observed))
 
     def test_black_person_day(self):
@@ -141,13 +141,13 @@ class TestCostaRica(CommonCountryTests, TestCase):
         self.assertNoOptionalHoliday(f"{year}-08-31" for year in range(1980, 2021))
         self.assertNoOptionalHolidayName(name, range(1980, 2021))
 
-        dt = (
+        obs_dts = (
             "2021-09-05",
             "2022-09-04",
             "2023-09-03",
         )
-        self.assertOptionalHolidayName(f"{name} (observado)", dt)
-        self.assertNoOptionalNonObservedHoliday(dt)
+        self.assertOptionalHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoOptionalNonObservedHoliday(obs_dts)
         self.assertOptionalNonObservedHolidayName(
             name,
             "2021-08-31",
@@ -162,13 +162,13 @@ class TestCostaRica(CommonCountryTests, TestCase):
             name, (f"{year}-09-15" for year in self.full_range if year not in years_observed)
         )
 
-        dt = (
+        obs_dts = (
             "2020-09-14",
             "2021-09-13",
             "2022-09-19",
         )
-        self.assertHolidayName(f"{name} (observado)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
         self.assertNonObservedHolidayName(name, (f"{year}-09-15" for year in years_observed))
 
     def test_cultures_day(self):
@@ -184,7 +184,7 @@ class TestCostaRica(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, range(2020, self.end_year))
 
-        dt = (
+        obs_dts = (
             "2010-10-18",
             "2011-10-17",
             "2012-10-15",
@@ -192,8 +192,8 @@ class TestCostaRica(CommonCountryTests, TestCase):
             "2017-10-16",
             "2018-10-15",
         )
-        self.assertHolidayName(f"{name} (observado)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
         self.assertNonObservedHolidayName(
             name,
             "2010-10-12",
@@ -213,13 +213,13 @@ class TestCostaRica(CommonCountryTests, TestCase):
         self.assertNoOptionalHoliday("2019-12-01")
         self.assertNoOptionalHolidayName(name, range(1980, 2020))
 
-        dt = (
+        obs_dts = (
             "2020-11-30",
             "2021-11-29",
             "2022-12-05",
         )
-        self.assertOptionalHolidayName(f"{name} (observado)", dt)
-        self.assertNoOptionalNonObservedHoliday(dt)
+        self.assertOptionalHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoOptionalNonObservedHoliday(obs_dts)
         self.assertOptionalNonObservedHolidayName(
             name,
             "2020-12-01",

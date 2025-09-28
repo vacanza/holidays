@@ -448,7 +448,7 @@ class TestJapan(CommonCountryTests, TestCase):
 
     def test_observed_holidays(self):
         name = "振替休日"
-        dt = (
+        dts = (
             "1973-04-30",
             "1973-09-24",
             "1974-05-06",
@@ -582,8 +582,8 @@ class TestJapan(CommonCountryTests, TestCase):
             "2048-05-06",
             "2050-03-21",
         )
-        self.assertHolidayName(name, dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(name, dts)
+        self.assertNoNonObservedHoliday(dts)
 
     def test_bank_holidays(self):
         self.assertBankHolidayName(

@@ -33,7 +33,7 @@ class TestBahamas(CommonCountryTests, TestCase):
     def test_new_years_day(self):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             # Pre-2012 Rule Changed & Underflow to Previous Year Cases.
             "1979-12-31",
             "1984-12-31",
@@ -49,19 +49,19 @@ class TestBahamas(CommonCountryTests, TestCase):
             "2017-01-02",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_majority_rule_day(self):
         name = "Majority Rule Day"
         self.assertHolidayName(name, (f"{year}-01-10" for year in range(2014, self.end_year)))
-        obs_dt = (
+        obs_dts = (
             "2015-01-12",
             "2016-01-11",
             "2021-01-11",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -133,14 +133,14 @@ class TestBahamas(CommonCountryTests, TestCase):
     def test_independence_day(self):
         name = "Independence Day"
         self.assertHolidayName(name, (f"{year}-07-10" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2011-07-11",
             "2016-07-11",
             "2021-07-12",
             "2022-07-11",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_emancipation_day(self):
         name = "Emancipation Day"
@@ -164,7 +164,7 @@ class TestBahamas(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name_1974, range(2013, self.end_year))
 
-        obs_dt = (
+        obs_dts = (
             "2000-10-13",
             "2004-10-11",
             "2005-10-14",
@@ -172,8 +172,8 @@ class TestBahamas(CommonCountryTests, TestCase):
             "2010-10-11",
             "2011-10-14",
         )
-        self.assertHolidayName(f"{name_1974} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name_1974} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
         self.assertHolidayName(
             name_2013,
@@ -190,24 +190,24 @@ class TestBahamas(CommonCountryTests, TestCase):
     def test_christmas_day(self):
         name = "Christmas Day"
         self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2011-12-27",
             "2016-12-27",
             "2022-12-27",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_boxing_day(self):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2015-12-28",
             "2020-12-28",
             "2021-12-27",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2023(self):
         self.assertHolidays(

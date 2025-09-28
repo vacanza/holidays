@@ -37,14 +37,14 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
     def test_new_years_day(self):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2012-01-02",
             "2017-01-02",
             "2022-01-03",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_lavity_stoutts_birthday(self):
         name = "The Anniversary of the Birth of Hamilton Lavity Stoutt"
@@ -153,14 +153,14 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
             name_1978, range(self.start_year, 1978), range(2021, self.end_year)
         )
         self.assertNoHolidayName(name_2021, range(self.start_year, 2021))
-        obs_dt = (
+        obs_dts = (
             "2007-07-02",
             "2012-07-02",
             "2017-06-30",
             "2018-07-02",
         )
-        self.assertHolidayName(f"{name_1978} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name_1978} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_emancipation_monday(self):
         name_1967 = "Festival Monday"
@@ -234,14 +234,14 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
             "2020-10-23",
         )
         self.assertNoHolidayName(name, range(2021, self.end_year))
-        obs_dt = (
+        obs_dts = (
             "2007-10-22",
             "2012-10-22",
             "2017-10-20",
             "2018-10-22",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_heroes_and_foreparents_day(self):
         name = "Heroes and Foreparents Day"
@@ -272,25 +272,25 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
     def test_christmas_day(self):
         name = "Christmas Day"
         self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2010-12-27",
             "2011-12-27",
             "2021-12-27",
             "2022-12-27",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
 
     def test_boxing_day(self):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2010-12-28",
             "2015-12-28",
             "2020-12-28",
             "2021-12-28",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

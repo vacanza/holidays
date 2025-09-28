@@ -235,28 +235,30 @@ class TestUruguay(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
 
     def test_cultural_diversity_day(self):
-        name_1 = "Día de la Raza"
-        name_2 = "Día de la Diversidad Cultural"
+        name_1920 = "Día de la Raza"
+        name_2014 = "Día de la Diversidad Cultural"
+
+        self.assertNoHolidayName(name_1920)
         self.assertBankHolidayName(
-            name_1,
+            name_1920,
             (
                 f"{year}-10-12"
                 for year in (*range(self.start_year, 1933), *range(1937, 1982), *range(1984, 1997))
             ),
         )
         self.assertBankHolidayName(
-            name_1,
+            name_1920,
             "1982-10-11",
             "1983-10-10",
             "1999-10-11",
             "2013-10-12",
         )
-        self.assertBankHolidayName(name_1, range(1937, 2014))
-        self.assertNoBankHolidayName(name_1, range(1933, 1937), range(2014, self.end_year))
-        self.assertNoHolidayName(name_1)
+        self.assertBankHolidayName(name_1920, range(1937, 2014))
+        self.assertNoBankHolidayName(name_1920, range(1933, 1937), range(2014, self.end_year))
 
+        self.assertNoHolidayName(name_2014)
         self.assertBankHolidayName(
-            name_2,
+            name_2014,
             "2014-10-12",
             "2018-10-15",
             "2019-10-12",
@@ -265,9 +267,8 @@ class TestUruguay(CommonCountryTests, TestCase):
             "2022-10-10",
             "2023-10-16",
         )
-        self.assertBankHolidayName(name_2, range(2014, self.end_year))
-        self.assertNoBankHolidayName(name_2, range(self.start_year, 2014))
-        self.assertNoHolidayName(name_2)
+        self.assertBankHolidayName(name_2014, range(2014, self.end_year))
+        self.assertNoBankHolidayName(name_2014, range(self.start_year, 2014))
 
     def test_all_souls_day(self):
         name = "Día de los Difuntos"

@@ -34,13 +34,13 @@ class TestSerbia(CommonCountryTests, TestCase):
             (f"{year}-01-01" for year in self.full_range),
             (f"{year}-01-02" for year in self.full_range),
         )
-        obs_dt = (
+        obs_dts = (
             "2017-01-03",
             "2022-01-03",
             "2023-01-03",
         )
-        self.assertHolidayName(f"{name} (слободан дан)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (слободан дан)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_orthodox_christmas(self):
         self.assertHolidayName("Божић", (f"{year}-01-07" for year in self.full_range))
@@ -52,13 +52,13 @@ class TestSerbia(CommonCountryTests, TestCase):
             (f"{year}-02-15" for year in self.full_range),
             (f"{year}-02-16" for year in self.full_range),
         )
-        obs_dt = (
+        obs_dts = (
             "2015-02-17",
             "2020-02-17",
             "2025-02-17",
         )
-        self.assertHolidayName(f"{name} (слободан дан)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (слободан дан)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_orthodox_good_friday(self):
         name = "Велики петак"
@@ -119,23 +119,23 @@ class TestSerbia(CommonCountryTests, TestCase):
             (f"{year}-05-01" for year in self.full_range),
             (f"{year}-05-02" for year in self.full_range),
         )
-        obs_dt = (
+        obs_dts = (
             "2016-05-03",
             "2021-05-04",
             "2022-05-03",
         )
-        self.assertHolidayName(f"{name} (слободан дан)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (слободан дан)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_armistice_day(self):
         name = "Дан примирја у Првом светском рату"
         self.assertHolidayName(name, (f"{year}-11-11" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2012-11-12",
             "2018-11-12",
         )
-        self.assertHolidayName(f"{name} (слободан дан)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (слободан дан)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

@@ -31,14 +31,14 @@ class TestCuba(CommonCountryTests, TestCase):
         name = "Triunfo de la Revolución"
         name_observed = f"{name} (observado)"
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
-        dt = (
+        obs_dts = (
             "1989-01-02",
             "1995-01-02",
             "2006-01-02",
         )
-        self.assertHolidayName(name_observed, dt)
+        self.assertHolidayName(name_observed, obs_dts)
         self.assertNoHolidayName(name_observed, range(2014, self.end_year))
-        self.assertNoNonObservedHoliday(dt)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_victory_day(self):
         name = "Día de la Victoria"
@@ -78,13 +78,13 @@ class TestCuba(CommonCountryTests, TestCase):
     def test_international_workers_day(self):
         name = "Día Internacional de los Trabajadores"
         self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
-        dt = (
+        obs_dts = (
             "2011-05-02",
             "2016-05-02",
             "2022-05-02",
         )
-        self.assertHolidayName(f"{name} (observado)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_assault_moncada_day(self):
         self.assertHolidayName(
@@ -101,13 +101,13 @@ class TestCuba(CommonCountryTests, TestCase):
     def test_independence_day(self):
         name = "Inicio de las Guerras de Independencia"
         self.assertHolidayName(name, (f"{year}-10-10" for year in self.full_range))
-        dt = (
+        obs_dts = (
             "2004-10-11",
             "2010-10-11",
             "2021-10-11",
         )
-        self.assertHolidayName(f"{name} (observado)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2018(self):
         # https://www.officeholidays.com/countries/cuba/2018

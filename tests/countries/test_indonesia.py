@@ -30,7 +30,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
         )
 
     def test_special(self):
-        dt = (
+        dts = (
             # All Election Types.
             "1999-06-07",
             "2004-04-05",
@@ -48,12 +48,12 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2024-02-14",
             "2024-11-27",
         )
-        dt_observed = ("2004-11-16",)
-        self.assertHoliday(dt, dt_observed)
-        self.assertNoNonObservedHoliday(dt_observed)
+        obs_dts = ("2004-11-16",)
+        self.assertHoliday(dts, obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_special_government(self):
-        dt = (
+        dts = (
             # Joint Holidays (Cuti Bersama)
             "2002-12-05",
             "2002-12-09",
@@ -187,9 +187,9 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2025-08-18",
             "2025-12-26",
         )
-        dt_observed = ("2020-12-31",)
-        self.assertGovernmentHoliday(dt, dt_observed)
-        self.assertNoGovernmentNonObservedHoliday(dt_observed)
+        obs_dts = ("2020-12-31",)
+        self.assertGovernmentHoliday(dts, obs_dts)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts)
 
     def test_new_years_day(self):
         self.assertHolidayName("Tahun Baru Masehi", (f"{year}-01-01" for year in self.full_range))

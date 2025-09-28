@@ -72,7 +72,7 @@ class TestBrazil(CommonCountryTests, TestCase):
 
     def test_tiradentes_day(self):
         name = "Tiradentes"
-        years_absent = (1931, 1932)
+        years_absent = {1931, 1932}
         self.assertHolidayName(
             name, (f"{year}-04-21" for year in self.full_range if year not in years_absent)
         )
@@ -137,7 +137,7 @@ class TestBrazil(CommonCountryTests, TestCase):
             "2024-02-12",
             "2024-02-13",
         )
-        self.assertOptionalHolidayName(name, self.full_range)
+        self.assertOptionalHolidayNameCount(name, 2, self.full_range)
         self.assertNoHolidayName(name)
 
     def test_ash_wednesday(self):

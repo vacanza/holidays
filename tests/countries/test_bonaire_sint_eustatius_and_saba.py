@@ -220,12 +220,11 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
 
     def test_special_holiday(self):
         name = "Brugdag"
-        dt_bon_only = ("2025-05-02",)
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "BON":
-                self.assertHolidayName(name, holidays, dt_bon_only)
+                self.assertHolidayName(name, holidays, "2025-05-02")
             else:
                 self.assertNoHolidayName(name, holidays)
 

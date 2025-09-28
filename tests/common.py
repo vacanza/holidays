@@ -39,14 +39,12 @@ class TestCase:
         """Build and cache categories and subdivision lookup tables for a holiday test class."""
 
         non_public_supported_categories = tuple(
-            category
-            for category in getattr(test_class, "supported_categories", [])
-            if category != PUBLIC
+            category for category in test_class.supported_categories if category != PUBLIC
         )
 
         subdiv_base = {}
         subdiv_category = {}
-        for subdiv in getattr(test_class, "subdivisions", []):
+        for subdiv in test_class.subdivisions:
             subdiv_code = subdiv.lower().replace(" ", "_")
             subdiv_base[subdiv_code] = (subdiv, None, subdiv_code)
             for category in non_public_supported_categories:
@@ -92,7 +90,7 @@ class TestCase:
             if not attr_name.startswith("holidays"):
                 continue
 
-            variant = attr_name.replace("holidays", "")
+            variant = attr_name.removeprefix("holidays")
             pretty_variant = "".join(part.capitalize() for part in variant.strip("_").split("_"))
 
             for helper_name, template in method_specs.items():

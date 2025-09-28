@@ -34,7 +34,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             (f"{year}-01-02" for year in self.full_range),
         )
 
-        obs_dates = {
+        obs_dts = {
             "BIH": (
                 "2006-01-03",
                 "2012-01-03",
@@ -59,9 +59,9 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             ),
         }
         for subdiv, holidays in self.subdiv_holidays.items():
-            self.assertHolidayName(name_observed, holidays, obs_dates[subdiv])
+            self.assertHolidayName(name_observed, holidays, obs_dts[subdiv])
             self.assertNoNonObservedHoliday(
-                self.subdiv_holidays_non_observed[subdiv], obs_dates[subdiv]
+                self.subdiv_holidays_non_observed[subdiv], obs_dts[subdiv]
             )
 
     def test_orthodox_christmas_eve(self):
@@ -80,18 +80,18 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-01-07" for year in self.full_range))
 
         name_observed = f"{name} (slobodan dan)"
-        obs_dt = (
+        obs_dts = (
             "2001-01-08",
             "2007-01-08",
             "2018-01-08",
         )
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "BRC":
-                self.assertHolidayName(name_observed, holidays, obs_dt)
-                self.assertNoNonObservedHoliday(self.subdiv_holidays_non_observed[subdiv], obs_dt)
+                self.assertHolidayName(name_observed, holidays, obs_dts)
+                self.assertNoNonObservedHoliday(self.subdiv_holidays_non_observed[subdiv], obs_dts)
             else:
-                self.assertNoHolidayName(name_observed, holidays, obs_dt)
-        self.assertNoHolidayName(name_observed, obs_dt)
+                self.assertNoHolidayName(name_observed, holidays, obs_dts)
+        self.assertNoHolidayName(name_observed, obs_dts)
 
     def test_orthodox_new_year(self):
         name = "Pravoslavna Nova godina"
@@ -127,100 +127,113 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
         name_observed = f"{name} (slobodan dan)"
-        obs_dt = (
+        obs_dts = (
             "2009-03-09",
             "2015-03-09",
             "2020-03-09",
         )
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "BRC":
-                self.assertHolidayName(name_observed, holidays, obs_dt)
-                self.assertNoNonObservedHoliday(self.subdiv_holidays_non_observed[subdiv], obs_dt)
+                self.assertHolidayName(name_observed, holidays, obs_dts)
+                self.assertNoNonObservedHoliday(self.subdiv_holidays_non_observed[subdiv], obs_dts)
             else:
-                self.assertNoHolidayName(name_observed, holidays, obs_dt)
-        self.assertNoHolidayName(name_observed, obs_dt)
+                self.assertNoHolidayName(name_observed, holidays, obs_dts)
+        self.assertNoHolidayName(name_observed, obs_dts)
 
     def test_catholic_good_friday(self):
         name = "Veliki petak (Katolički)"
         self.assertNoHolidayName(name)
-        dt = (
-            "2020-04-10",
-            "2021-04-02",
-            "2022-04-15",
-            "2023-04-07",
-        )
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv != "BRC":
-                self.assertHolidayName(name, holidays, dt)
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2020-04-10",
+                    "2021-04-02",
+                    "2022-04-15",
+                    "2023-04-07",
+                )
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_catholic_easter(self):
         name = "Uskrs (Katolički)"
         self.assertNoHolidayName(name)
-        dt = (
-            "2020-04-12",
-            "2021-04-04",
-            "2022-04-17",
-            "2023-04-09",
-        )
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv != "BRC":
-                self.assertHolidayName(name, holidays, dt)
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2020-04-12",
+                    "2021-04-04",
+                    "2022-04-17",
+                    "2023-04-09",
+                )
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_catholic_monday(self):
         name = "Uskrsni ponedjeljak (Katolički)"
-        dt = (
+        dts = (
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
         )
-        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, self.full_range)
         for subdiv, holidays in self.subdiv_holidays.items():
-            self.assertHolidayName(name, holidays, dt)
+            self.assertHolidayName(name, holidays, dts)
+            self.assertHolidayName(name, holidays, self.full_range)
 
     def test_orthodox_good_friday(self):
         name = "Veliki petak (Pravoslavni)"
-        dt = (
+        dts = (
             "2020-04-17",
             "2021-04-30",
             "2022-04-22",
             "2023-04-14",
         )
-        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, self.full_range)
         for subdiv, holidays in self.subdiv_holidays.items():
-            self.assertHolidayName(name, holidays, dt)
+            self.assertHolidayName(name, holidays, dts)
+            self.assertHolidayName(name, holidays, self.full_range)
 
     def test_orthodox_easter(self):
         name = "Vaskrs (Pravoslavni)"
         self.assertNoHolidayName(name)
-        dt = (
-            "2020-04-19",
-            "2021-05-02",
-            "2022-04-24",
-            "2023-04-16",
-        )
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv != "BRC":
-                self.assertHolidayName(name, holidays, dt)
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2020-04-19",
+                    "2021-05-02",
+                    "2022-04-24",
+                    "2023-04-16",
+                )
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_orthodox_easter_monday(self):
         name = "Uskrsni ponedjeljak (Pravoslavni)"
         self.assertNoHolidayName(name)
-        dt = (
-            "2020-04-20",
-            "2021-05-03",
-            "2022-04-25",
-            "2023-04-17",
-        )
+
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv != "BRC":
-                self.assertHolidayName(name, holidays, dt)
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2020-04-20",
+                    "2021-05-03",
+                    "2022-04-25",
+                    "2023-04-17",
+                )
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -233,7 +246,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             (f"{year}-05-02" for year in self.full_range),
         )
 
-        obs_dates = {
+        obs_dts = {
             "BIH": (
                 "2011-05-03",
                 "2022-05-03",
@@ -254,7 +267,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             ),
         }
         for subdiv, holidays in self.subdiv_holidays.items():
-            self.assertHolidayName(name_observed, holidays, obs_dates[subdiv])
+            self.assertHolidayName(name_observed, holidays, obs_dts[subdiv])
 
     def test_victory_day(self):
         name = "Dan pobjede nad fašizmom"
@@ -269,31 +282,31 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
 
     def test_eid_al_fitr(self):
         name = "Ramazanski Bajram"
-        dt_1 = (
+        dts_1 = (
             "2020-05-24",
             "2021-05-13",
             "2022-05-02",
             "2023-04-21",
         )
-        dt_2 = (
+        dts_2 = (
             "2020-05-25",
             "2021-05-14",
             "2022-05-03",
             "2023-04-22",
         )
-        self.assertHolidayName(name, dt_1)
-        self.assertNoHolidayName(name, dt_2)
+        self.assertHolidayName(name, dts_1)
+        self.assertNoHolidayName(name, dts_2)
 
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv != "BRC":
-                self.assertHolidayName(name, holidays, dt_1, dt_2)
+                self.assertHolidayName(name, holidays, dts_1, dts_2)
             else:
-                self.assertHolidayName(name, holidays, dt_1)
-                self.assertNoHolidayName(name, holidays, dt_2)
+                self.assertHolidayName(name, holidays, dts_1)
+                self.assertNoHolidayName(name, holidays, dts_2)
 
     def test_eid_al_adha(self):
         name = "Kurban Bajram"
-        dt_1 = (
+        dts_1 = (
             "2006-01-10",
             "2006-12-31",
             "2020-07-31",
@@ -301,22 +314,22 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             "2022-07-09",
             "2023-06-28",
         )
-        dt_2 = (
+        dts_2 = (
             "2007-01-01",
             "2020-08-01",
             "2021-07-21",
             "2022-07-10",
             "2023-06-29",
         )
-        self.assertHolidayName(name, dt_1)
-        self.assertNoHolidayName(name, dt_2)
+        self.assertHolidayName(name, dts_1)
+        self.assertNoHolidayName(name, dts_2)
 
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv != "BRC":
-                self.assertHolidayName(name, holidays, dt_1, dt_2)
+                self.assertHolidayName(name, holidays, dts_1, dts_2)
             else:
-                self.assertHolidayName(name, holidays, dt_1)
-                self.assertNoHolidayName(name, holidays, dt_2)
+                self.assertHolidayName(name, holidays, dts_1)
+                self.assertNoHolidayName(name, holidays, dts_2)
 
     def test_dayton_agreement_day(self):
         name = "Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini"
@@ -356,18 +369,18 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         name_observed = f"{name} (slobodan dan)"
         self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
 
-        obs_dt = (
+        obs_dts = (
             "2005-12-26",
             "2011-12-26",
             "2016-12-26",
         )
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "BRC":
-                self.assertHolidayName(name_observed, holidays, obs_dt)
-                self.assertNoNonObservedHoliday(self.subdiv_holidays_non_observed[subdiv], obs_dt)
+                self.assertHolidayName(name_observed, holidays, obs_dts)
+                self.assertNoNonObservedHoliday(self.subdiv_holidays_non_observed[subdiv], obs_dts)
             else:
-                self.assertNoHoliday(holidays, obs_dt)
-        self.assertNoHoliday(obs_dt)
+                self.assertNoHoliday(holidays, obs_dts)
+        self.assertNoHoliday(obs_dts)
 
     def test_2021(self):
         self.assertHolidays(

@@ -65,7 +65,11 @@ class TestBahrain(CommonCountryTests, TestCase):
             "2025-07-04",
             "2025-07-05",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        years_ashura_twice_all = {1976, 2009, 2042}
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 2, set(self.full_range) - years_ashura_twice_all
+        )
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 4, years_ashura_twice_all)
 
     def test_prophets_birthday(self):
         name = "المولد النبوي الشريف"
@@ -103,7 +107,11 @@ class TestBahrain(CommonCountryTests, TestCase):
             "2025-03-31",
             "2025-04-01",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        years_eid_al_fitr_twice_all = {2000, 2033}
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 3, set(self.full_range) - years_eid_al_fitr_twice_all
+        )
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, years_eid_al_fitr_twice_all)
 
     def test_eid_al_adha(self):
         name = "عيد الأضحى"
@@ -128,7 +136,13 @@ class TestBahrain(CommonCountryTests, TestCase):
             "2025-06-07",
             "2025-06-08",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        years_eid_al_adha_twice_all = {1974, 2039}
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 3, set(self.full_range) - years_eid_al_adha_twice_all - {2006, 2007}
+        )
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 4, 2006)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 5, 2007)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, years_eid_al_adha_twice_all)
 
     def test_2022(self):
         self.assertHolidays(

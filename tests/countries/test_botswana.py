@@ -36,19 +36,19 @@ class TestBotswana(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         self.assertHolidayName(name_holiday, (f"{year}-01-02" for year in self.full_range))
 
-        dt = (
+        obs_dts = (
             "2012-01-03",
             "2017-01-03",
             "2023-01-03",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        dt_holiday = (
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        dts_holiday = (
             "2005-01-03",
             "2011-01-03",
             "2022-01-03",
         )
-        self.assertHolidayName(f"{name_holiday} (observed)", dt_holiday)
-        self.assertNoNonObservedHoliday(dt, dt_holiday)
+        self.assertHolidayName(f"{name_holiday} (observed)", dts_holiday)
+        self.assertNoNonObservedHoliday(obs_dts, dts_holiday)
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -93,19 +93,19 @@ class TestBotswana(CommonCountryTests, TestCase):
         name = "Labour Day"
         self.assertHoliday(f"{year}-05-01" for year in self.full_range)
 
-        dt = (
+        obs_dts = (
             "2011-05-02",
             "2016-05-02",
             "2022-05-02",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        dt_sat = (
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        dts_sat = (
             "2021-05-03",
             "2027-05-03",
             "2032-05-03",
         )
-        self.assertHolidayName(f"{name} Holiday", dt_sat)
-        self.assertNoNonObservedHoliday(dt, dt_sat)
+        self.assertHolidayName(f"{name} Holiday", dts_sat)
+        self.assertNoNonObservedHoliday(obs_dts, dts_sat)
 
     def test_presidents_day(self):
         name = "President's Day"
@@ -137,49 +137,49 @@ class TestBotswana(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-09-30" for year in self.full_range))
         self.assertHolidayName(name_holiday, (f"{year}-10-01" for year in self.full_range))
 
-        dt = (
+        obs_dts = (
             "2007-10-02",
             "2012-10-02",
             "2018-10-02",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        dt_holiday = (
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        dts_holiday = (
             "2006-10-02",
             "2017-10-02",
             "2023-10-02",
         )
-        self.assertHolidayName(f"{name_holiday} (observed)", dt_holiday)
-        self.assertNoNonObservedHoliday(dt, dt_holiday)
+        self.assertHolidayName(f"{name_holiday} (observed)", dts_holiday)
+        self.assertNoNonObservedHoliday(obs_dts, dts_holiday)
 
     def test_christmas_day(self):
         name = "Christmas Day"
         self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
 
-        dt = (
+        obs_dts = (
             "2011-12-27",
             "2016-12-27",
             "2022-12-27",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_boxing_day(self):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
 
-        dt = (
+        obs_dts = (
             "2004-12-27",
             "2010-12-27",
             "2021-12-27",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        dt_holiday = (
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        dts_holiday = (
             "2020-12-28",
             "2026-12-28",
             "2037-12-28",
         )
-        self.assertHolidayName(f"{name} Holiday", dt_holiday)
-        self.assertNoNonObservedHoliday(dt, dt_holiday)
+        self.assertHolidayName(f"{name} Holiday", dts_holiday)
+        self.assertNoNonObservedHoliday(obs_dts, dts_holiday)
 
     def test_2021(self):
         self.assertHolidayDates(

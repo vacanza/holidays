@@ -32,27 +32,27 @@ class TestAS(CommonCountryTests, TestCase):
     def test_american_samoa_flag_day(self):
         name = "American Samoa Flag Day"
         self.assertHolidayName(name, (f"{year}-04-17" for year in self.full_range))
-        dt = (
+        obs_dts = (
             "2011-04-18",
             "2016-04-18",
             "2021-04-16",
             "2022-04-18",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_manuaa_islands_cession_day(self):
         name = "Manu'a Islands Cession Day"
         self.assertHolidayName(name, (f"{year}-07-16" for year in range(1983, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1983))
-        dt = (
+        obs_dts = (
             "2016-07-15",
             "2017-07-17",
             "2022-07-15",
             "2023-07-17",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_white_sunday(self):
         name = "White Sunday"

@@ -50,13 +50,13 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
         name = "New Year's Day"
         self.assertNoHolidayName(name)
         self.assertGovernmentHolidayName(name, (f"{year}-01-01" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2017-01-02",
             "2022-01-03",
             "2023-01-02",
         )
-        self.assertGovernmentHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoGovernmentNonObservedHoliday(obs_dt)
+        self.assertGovernmentHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoGovernmentNonObservedHoliday(obs_dts)
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -111,24 +111,24 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
     def test_christmas_day(self):
         name = "Christmas Day"
         self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2016-12-27",
             "2021-12-27",
             "2022-12-27",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_boxing_day(self):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2015-12-28",
             "2020-12-28",
             "2021-12-28",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_whit_monday(self):
         name = "Whit Monday"
@@ -147,24 +147,25 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
     def test_ascension_day(self):
         name = "Ascension Day"
         self.assertNoHolidayName(name)
-        dt = (
-            "2020-05-21",
-            "2021-05-13",
-            "2022-05-26",
-            "2023-05-18",
-            "2024-05-09",
-            "2025-05-29",
-        )
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv in {"AC", "TA"}:
-                self.assertHolidayName(name, holidays, dt)
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2020-05-21",
+                    "2021-05-13",
+                    "2022-05-26",
+                    "2023-05-18",
+                    "2024-05-09",
+                    "2025-05-29",
+                )
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_saint_helena_day(self):
         name = "Saint Helena Day"
         self.assertNoHolidayName(name)
-        obs_dt = (
+        obs_dts = (
             "2016-05-20",
             "2017-05-22",
             "2022-05-20",
@@ -175,28 +176,29 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-05-21" for year in self.full_range)
                 )
-                self.assertHolidayName(f"{name} (observed)", holidays, obs_dt)
-                self.assertNoNonObservedHoliday(self.subdiv_holidays_non_observed[subdiv], obs_dt)
+                self.assertHolidayName(f"{name} (observed)", holidays, obs_dts)
+                self.assertNoNonObservedHoliday(self.subdiv_holidays_non_observed[subdiv], obs_dts)
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_ratting_day(self):
         name = "Ratting Day"
         self.assertNoHolidayName(name)
-        dt = (
-            "2015-05-16",
-            "2016-04-30",
-            "2017-05-26",
-            "2018-06-02",
-            "2019-05-24",
-            "2020-04-25",
-            "2021-04-09",
-            "2023-06-02",
-            "2025-05-30",
-        )
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "TA":
-                self.assertHolidayName(name, holidays, dt)
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2015-05-16",
+                    "2016-04-30",
+                    "2017-05-26",
+                    "2018-06-02",
+                    "2019-05-24",
+                    "2020-04-25",
+                    "2021-04-09",
+                    "2023-06-02",
+                    "2025-05-30",
+                )
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -214,17 +216,18 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
     def test_august_bank_holiday(self):
         name = "August Bank Holiday"
         self.assertNoHolidayName(name)
-        dt = (
-            "2020-08-31",
-            "2021-08-30",
-            "2022-08-29",
-            "2023-08-28",
-            "2024-08-26",
-            "2025-08-25",
-        )
         for subdiv, holidays in self.subdiv_government_holidays.items():
             if subdiv in {"AC", "HL"}:
-                self.assertHolidayName(name, holidays, dt)
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2020-08-31",
+                    "2021-08-30",
+                    "2022-08-29",
+                    "2023-08-28",
+                    "2024-08-26",
+                    "2025-08-25",
+                )
                 self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)

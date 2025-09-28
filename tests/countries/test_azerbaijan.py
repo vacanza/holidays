@@ -122,14 +122,14 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         self.assertHolidayName(name, (f"{year}-01-02" for year in range(2006, self.end_year)))
         self.assertNoHolidayName(name, (f"{year}-01-02" for year in range(self.start_year, 2006)))
-        dt = (
+        obs_dts = (
             "2021-01-04",
             "2022-01-03",
             "2022-01-04",
             "2023-01-04",
         )
-        self.assertHolidayName(f"{name} (müşahidə olunur)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (müşahidə olunur)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_martyrs_day(self):
         name = "Ümumxalq hüzn günü"
@@ -139,14 +139,14 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
     def test_womens_day(self):
         name = "Qadınlar günü"
         self.assertHolidayName(name, (f"{year}-03-08" for year in self.full_range))
-        dt = (
+        obs_dts = (
             "2014-03-10",
             "2015-03-09",
             "2020-03-09",
             "2025-03-27",
         )
-        self.assertHolidayName(f"{name} (müşahidə olunur)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (müşahidə olunur)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_spring_festival(self):
         name = "Novruz bayramı"
@@ -155,26 +155,26 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidayName(name, (f"{year}-03-22" for year in range(2007, self.end_year)))
         self.assertHolidayName(name, (f"{year}-03-23" for year in range(2007, self.end_year)))
         self.assertHolidayName(name, (f"{year}-03-24" for year in range(2007, self.end_year)))
-        dt = (
+        obs_dts = (
             "2024-03-25",
             "2024-03-26",
             "2025-03-25",
             "2025-03-26",
         )
-        self.assertHolidayName(f"{name} (müşahidə olunur)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (müşahidə olunur)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_victory_over_fascism_day(self):
         name = "Faşizm üzərində qələbə günü"
         self.assertHolidayName(name, (f"{year}-05-09" for year in self.full_range))
-        dt = (
+        obs_dts = (
             "2010-05-10",
             "2015-05-11",
             "2020-05-11",
             "2021-05-10",
         )
-        self.assertHolidayName(f"{name} (müşahidə olunur)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (müşahidə olunur)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_republic_day(self):
         name_1992 = "Respublika Günü"
@@ -185,46 +185,46 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
             name_1992, range(self.start_year, 1992), range(2021, self.end_year)
         )
         self.assertNoHolidayName(name_2021, range(self.start_year, 2021))
-        dt_1992 = (
+        obs_dts_1992 = (
             "2006-05-29",
             "2011-05-30",
             "2016-05-30",
             "2017-05-29",
         )
-        self.assertHolidayName(f"{name_1992} (müşahidə olunur)", dt_1992)
-        dt_2021 = (
+        self.assertHolidayName(f"{name_1992} (müşahidə olunur)", obs_dts_1992)
+        obs_dts_2021 = (
             "2022-05-30",
             "2023-05-29",
         )
-        self.assertHolidayName(f"{name_2021} (müşahidə olunur)", dt_2021)
-        self.assertNoNonObservedHoliday(dt_1992, dt_2021)
+        self.assertHolidayName(f"{name_2021} (müşahidə olunur)", obs_dts_2021)
+        self.assertNoNonObservedHoliday(obs_dts_1992, obs_dts_2021)
 
     def test_national_liberation_day(self):
         name = "Azərbaycan xalqının milli qurtuluş günü"
         self.assertHolidayName(name, (f"{year}-06-15" for year in range(1997, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1997))
-        dt = (
+        obs_dts = (
             "2013-06-17",
             "2014-06-16",
             "2019-06-17",
             "2024-06-18",
         )
-        self.assertHolidayName(f"{name} (müşahidə olunur)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (müşahidə olunur)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_armed_forces_day(self):
         name = "Azərbaycan Respublikasının Silahlı Qüvvələri günü"
         self.assertHolidayName(name, (f"{year}-10-09" for year in range(1992, 1998)))
         self.assertHolidayName(name, (f"{year}-06-26" for year in range(1998, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1992))
-        dt = (
+        obs_dts = (
             "2011-06-27",
             "2016-06-27",
             "2021-06-28",
             "2022-06-27",
         )
-        self.assertHolidayName(f"{name} (müşahidə olunur)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (müşahidə olunur)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_memorial_day(self):
         name = "Anım Günü"
@@ -253,22 +253,22 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         name = "Zəfər Günü"
         self.assertHolidayName(name, (f"{year}-11-08" for year in range(2021, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2021))
-        dt = ("2025-11-10",)
-        self.assertHolidayName(f"{name} (müşahidə olunur)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        obs_dts = ("2025-11-10",)
+        self.assertHolidayName(f"{name} (müşahidə olunur)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_national_flag_day(self):
         name = "Azərbaycan Respublikasının Dövlət bayrağı günü"
         self.assertHolidayName(name, (f"{year}-11-09" for year in range(2010, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2010))
-        dt = (
+        obs_dts = (
             "2014-11-10",
             "2019-11-11",
             "2024-11-11",
             "2025-11-11",
         )
-        self.assertHolidayName(f"{name} (müşahidə olunur)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (müşahidə olunur)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_constitution_day(self):
         name = "Konstitusiya Günü"
@@ -290,14 +290,14 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         name = "Dünya azərbaycanlılarının həmrəyliyi günü"
         self.assertHolidayName(name, (f"{year}-12-31" for year in range(1993, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1993))
-        dt = (
+        obs_dts = (
             "2017-01-03",
             "2018-01-03",
             "2023-01-03",
             "2024-01-03",
         )
-        self.assertHolidayName(f"{name} (müşahidə olunur)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (müşahidə olunur)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_eid_al_fitr(self):
         name = "Ramazan bayrami"
@@ -323,15 +323,15 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         )
         self.assertIslamicNoEstimatedHolidayNameCount(name, 4, 2033, 2065)
         self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1993))
-        dt = (
+        obs_dts = (
             "2018-06-18",
             "2018-06-19",
             "2020-05-26",
             "2023-04-24",
             "2025-03-28",
         )
-        self.assertHolidayName(f"{name} (müşahidə olunur)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (müşahidə olunur)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_eid_al_adha(self):
         name = "Qurban bayrami"
@@ -355,7 +355,7 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertIslamicNoEstimatedHolidayNameCount(name, 3, 2007, range(2071, self.end_year))
         self.assertIslamicNoEstimatedHolidayNameCount(name, 4, 2039)
         self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1993))
-        dt = (
+        obs_dts = (
             "2022-07-11",
             "2022-07-12",
             "2024-06-19",
@@ -364,8 +364,8 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
             "2007-01-03",
             "2072-01-05",
         )
-        self.assertIslamicNoEstimatedHolidayName(f"{name} (müşahidə olunur)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertIslamicNoEstimatedHolidayName(f"{name} (müşahidə olunur)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2021(self):
         self.assertHolidayDates(

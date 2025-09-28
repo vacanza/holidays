@@ -50,7 +50,6 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
 
     def test_holy_thursday(self):
         name = "Quinta-feira Santa"
-
         self.assertHolidayName(
             name,
             "1995-04-13",
@@ -76,7 +75,7 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
 
     def test_tiradentes_day(self):
         name = "Tiradentes"
-        years_absent = (1931, 1932)
+        years_absent = {1931, 1932}
         self.assertHolidayName(
             name, (f"{year}-04-21" for year in self.full_range if year not in years_absent)
         )

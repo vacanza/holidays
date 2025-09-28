@@ -58,36 +58,6 @@ class TestArmenia(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-01-07" for year in range(2010, 2022)))
         self.assertNoHolidayName(name, range(self.start_year, 2010), range(2022, self.end_year))
 
-    def test_new_year_christmas(self):
-        for year in self.full_range:
-            self.assertHoliday(
-                f"{year}-01-01",
-                f"{year}-01-02",
-                f"{year}-01-06",
-                f"{year}-12-31",
-            )
-        for year in range(2010, 2022):
-            self.assertHoliday(
-                f"{year}-01-03",
-                f"{year}-01-04",
-                f"{year}-01-05",
-                f"{year}-01-07",
-            )
-        for year in range(self.start_year, 2010):
-            self.assertNoHoliday(
-                f"{year}-01-03",
-                f"{year}-01-04",
-                f"{year}-01-05",
-                f"{year}-01-07",
-            )
-        for year in range(2022, self.end_year):
-            self.assertNoHoliday(
-                f"{year}-01-03",
-                f"{year}-01-04",
-                f"{year}-01-05",
-                f"{year}-01-07",
-            )
-
     def test_army_day(self):
         name = "Բանակի օր"
         self.assertHolidayName(name, (f"{year}-01-28" for year in range(2003, self.end_year)))

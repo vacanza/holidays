@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestBulgaria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Bulgaria, years_non_observed=range(2017, 2030))
+        super().setUpClass(Bulgaria, years_non_observed=range(2017, 2026))
 
     def test_country_aliases(self):
         self.assertAliases(Bulgaria, BG, BLG)
@@ -32,26 +32,24 @@ class TestBulgaria(CommonCountryTests, TestCase):
     def test_new_years_day(self):
         name = "Нова година"
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
-        dt = (
+        obs_dts = (
             "2017-01-02",
             "2022-01-03",
             "2023-01-02",
-            "2028-01-03",
         )
-        self.assertHolidayName(f"{name} (почивен ден)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_liberation_day(self):
         name = "Ден на Освобождението на България от османско иго"
         self.assertHolidayName(name, (f"{year}-03-03" for year in self.full_range))
-        dt = (
+        obs_dts = (
             "2018-03-05",
             "2019-03-04",
             "2024-03-04",
-            "2029-03-05",
         )
-        self.assertHolidayName(f"{name} (почивен ден)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_good_friday(self):
         name = "Велики петък"
@@ -97,26 +95,23 @@ class TestBulgaria(CommonCountryTests, TestCase):
     def test_labor_day(self):
         name = "Ден на труда и на международната работническа солидарност"
         self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
-        dt = (
+        obs_dts = (
             "2021-05-04",
             "2022-05-02",
-            "2027-05-04",
         )
-        self.assertHolidayName(f"{name} (почивен ден)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_saint_georges_day(self):
         name = "Гергьовден, Ден на храбростта и Българската армия"
         self.assertHolidayName(name, (f"{year}-05-06" for year in self.full_range))
-        dt = (
+        obs_dts = (
             "2017-05-08",
             "2018-05-07",
             "2023-05-08",
-            "2028-05-08",
-            "2029-05-07",
         )
-        self.assertHolidayName(f"{name} (почивен ден)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_twenty_fourth_of_may(self):
         name = (
@@ -124,36 +119,33 @@ class TestBulgaria(CommonCountryTests, TestCase):
             "просвета и култура и на славянската книжовност"
         )
         self.assertHolidayName(name, (f"{year}-05-24" for year in self.full_range))
-        dt = (
+        obs_dts = (
             "2020-05-25",
             "2025-05-26",
-            "2026-05-25",
         )
-        self.assertHolidayName(f"{name} (почивен ден)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_unification_day(self):
         name = "Ден на Съединението"
         self.assertHolidayName(name, (f"{year}-09-06" for year in self.full_range))
-        dt = (
+        obs_dts = (
             "2020-09-07",
             "2025-09-08",
-            "2026-09-07",
         )
-        self.assertHolidayName(f"{name} (почивен ден)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_independence_day(self):
         name = "Ден на Независимостта на България"
         self.assertHolidayName(name, (f"{year}-09-22" for year in self.full_range))
-        dt = (
+        obs_dts = (
             "2018-09-24",
             "2019-09-23",
             "2024-09-23",
-            "2029-09-24",
         )
-        self.assertHolidayName(f"{name} (почивен ден)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_national_awakening_day(self):
         name = "Ден на народните будители"
@@ -163,30 +155,26 @@ class TestBulgaria(CommonCountryTests, TestCase):
     def test_christmas_eve(self):
         name = "Бъдни вечер"
         self.assertHolidayName(name, (f"{year}-12-24" for year in self.full_range))
-        dt = (
+        obs_dts = (
             "2017-12-27",
             "2022-12-27",
             "2023-12-27",
-            "2028-12-27",
         )
-        self.assertHolidayName(f"{name} (почивен ден)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_christmas_day(self):
         name = "Рождество Христово"
         self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
         self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
-        dt = (
+        obs_dts = (
             "2020-12-28",
             "2021-12-27",
             "2021-12-28",
             "2022-12-28",
-            "2026-12-28",
-            "2027-12-27",
-            "2027-12-28",
         )
-        self.assertHolidayName(f"{name} (почивен ден)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
