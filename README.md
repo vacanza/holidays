@@ -1304,7 +1304,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Norway</td>
 <td>NO</td>
-<td>Counties and Arctic Regions: 03 (Oslo), 11 (Rogaland), 15 (Møre og Romsdal), 18 (Nordland), 21 (Svalbard), 22 (Jan Mayen), 30 (Viken), 34 (Innlandet), 38 (Vestfold og Telemark), 42 (Agder), 46 (Vestland), 50 (Trööndelage, Trøndelag), 54 (Romssa ja Finnmárkku, Troms og Finnmark, Tromssan ja Finmarkun)</td>
+<td>Counties and Arctic Regions: 03 (Oslo), 11 (Rogaland), 15 (Møre og Romsdal), 18 (Nordland), 21 (Svalbard), 22 (Jan Mayen), 31 (Østfold), 32 (Akershus), 33 (Buskerud), 34 (Innlandet), 39 (Vestfold), 40 (Telemark), 42 (Agder), 46 (Vestland), 50 (Trööndelage, Trøndelag), 55 (Romssa, Troms, Tromssan), 56 (Finmarkun, Finnmark, Finnmárkku)</td>
 <td>en_US, <strong>no</strong>, th, uk</td>
 <td></td>
 </tr>
