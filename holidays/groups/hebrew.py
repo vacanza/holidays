@@ -12,7 +12,7 @@
 
 from collections.abc import Iterable
 from datetime import date
-from typing import Optional, Union
+from typing import Union
 
 from holidays.calendars.gregorian import _timedelta
 from holidays.calendars.hebrew import _HebrewLunisolar
@@ -29,15 +29,16 @@ class HebrewCalendarHolidays:
     def _add_hebrew_calendar_holiday(
         self, name: str, holiday_date: date, days_delta: Union[int, Iterable[int]] = 0
     ) -> set[date]:
+        """
+        Add Hebrew calendar holiday.
+        """
         return {
             dt
             for delta in ((days_delta,) if isinstance(days_delta, int) else days_delta)
             if (dt := self._add_holiday(name, _timedelta(holiday_date, delta)))
         }
 
-    def _add_hanukkah(
-        self, name: str, days_delta: Union[int, Iterable[int]] = 0
-    ) -> set[Optional[date]]:
+    def _add_hanukkah(self, name: str, days_delta: Union[int, Iterable[int]] = 0) -> set[date]:
         """
         Add Hanukkah.
         In some Gregorian years, there may be two Hanukkah dates.
@@ -46,10 +47,11 @@ class HebrewCalendarHolidays:
         and subsequent rededication of the Second Temple.
         https://en.wikipedia.org/wiki/Hanukkah
         """
-        dts = self._hebrew_calendar.hanukkah_date(self._year)
-        for dt in dts:
-            self._add_hebrew_calendar_holiday(name, dt, days_delta)  # type: ignore[arg-type]
-        return dts
+        return {
+            dt
+            for hanukkah_dt in self._hebrew_calendar.hanukkah_date(self._year)
+            for dt in self._add_hebrew_calendar_holiday(name, hanukkah_dt, days_delta)
+        }
 
     def _add_lag_baomer(self, name: str, days_delta: Union[int, Iterable[int]] = 0) -> set[date]:
         """
