@@ -154,6 +154,8 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         name = "Holi"
         self.assertNonObservedHolidayName(
             name,
+            "2020-03-10",
+            "2021-03-29",
             "2022-03-18",
             "2023-03-07",
             "2024-03-25",
@@ -171,7 +173,8 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         name = "Ram Navami"
         self.assertNonObservedHolidayName(
             name,
-            "2007-03-27",
+            "2020-04-02",
+            "2021-04-21",
             "2022-04-10",
             "2023-03-30",
             "2024-04-17",
@@ -192,6 +195,8 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         name = "Mahavir Jayanti"
         self.assertNonObservedHolidayName(
             name,
+            "2020-04-06",
+            "2021-04-25",
             "2022-04-14",
             "2023-04-04",
             "2024-04-21",
@@ -212,6 +217,8 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         name = "Ganesh Chaturthi"
         self.assertNonObservedHolidayName(
             name,
+            "2020-08-22",
+            "2021-09-10",
             "2022-08-31",
             "2023-09-19",
             "2024-09-07",
@@ -337,6 +344,11 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         self.assertNonObservedHolidayName(
             name,
             "2020-08-30",
+            "2021-08-19",
+            "2022-08-09",
+            "2023-07-29",
+            "2024-07-17",
+            "2025-07-06",
         )
         self.assertNonObservedHolidayName(
             name, self.nonobs_no_estimated_holidays, range(2001, 2050)
@@ -372,6 +384,10 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             name,
             "2020-05-25",
             "2021-05-13",
+            "2022-05-03",
+            "2023-04-22",
+            "2024-04-11",
+            "2025-03-31",
         )
         self.assertNonObservedHolidayName(
             name, self.nonobs_no_estimated_holidays, range(2001, 2050)
@@ -390,6 +406,8 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2021-07-21",
             "2022-07-10",
             "2023-06-28",
+            "2024-06-17",
+            "2025-06-07",
         )
         self.assertNonObservedHolidayName(
             name, self.nonobs_no_estimated_holidays, range(2001, 2050)
