@@ -13,7 +13,7 @@
 from datetime import date
 from typing import Optional
 
-from holidays.calendars import _BalineseSakaLunar
+from holidays.calendars.balinese_saka import _BalineseSakaLunar
 
 
 class BalineseSakaCalendarHolidays:

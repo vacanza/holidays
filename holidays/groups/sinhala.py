@@ -14,7 +14,7 @@ from collections.abc import Iterable
 from datetime import date
 from typing import Optional
 
-from holidays.calendars import _SinhalaLunar
+from holidays.calendars.sinhala import _SinhalaLunar
 from holidays.groups.eastern import EasternCalendarHolidays
 
 
@@ -58,14 +58,9 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         Adds customizable estimation label to holiday name if holiday date
         is an estimation.
         """
-        added_dates = set()
-        for dt_estimated in dts_estimated:
-            if dt := self._add_eastern_calendar_holiday(
-                name, dt_estimated, self._sinhala_calendar_show_estimated, days_delta=days_delta
-            ):
-                added_dates.add(dt)
-
-        return added_dates
+        return self._add_eastern_calendar_holiday_set(
+            name, dts_estimated, self._sinhala_calendar_show_estimated, days_delta
+        )
 
     def _add_bak_poya(self, name) -> Optional[date]:
         """
