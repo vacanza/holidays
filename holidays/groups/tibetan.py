@@ -13,7 +13,7 @@
 from datetime import date
 from typing import Optional
 
-from holidays.calendars import _TibetanLunisolar
+from holidays.calendars.tibetan import _TibetanLunisolar
 from holidays.groups.eastern import EasternCalendarHolidays
 
 
@@ -103,14 +103,13 @@ class TibetanCalendarHolidays(EasternCalendarHolidays):
             name, self._tibetan_calendar.losar_date(self._year)
         )
 
-    def _add_losar_day_two(self, name) -> set[date]:
+    def _add_losar_day_two(self, name) -> Optional[date]:
         """
         Add Losar Day Two.
         """
-        dt = self._add_tibetan_calendar_holiday(
+        return self._add_tibetan_calendar_holiday(
             name, self._tibetan_calendar.losar_date(self._year), days_delta=+1
         )
-        return {dt} if dt is not None else set()
 
     def _add_thimphu_drubchen_day(self, name) -> Optional[date]:
         """
