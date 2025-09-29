@@ -15,7 +15,7 @@
 
 from datetime import date
 from datetime import timedelta as td
-from functools import lru_cache
+from functools import cache
 from pathlib import Path
 
 
@@ -252,7 +252,7 @@ class _Lunisolar:
         self.LUNAR_END_DATE = (2100, 12, 29)
         self.SOLAR_END_DATE = date(2101, 1, 28)
 
-    @lru_cache
+    @cache
     def _get_leap_month(self, lunar_year: int) -> int:
         """
         Return the number of the leap month if one exists in the year,
@@ -277,7 +277,7 @@ class _Lunisolar:
             days += day
         return days
 
-    @lru_cache
+    @cache
     def _span_days(self, year: int) -> int:
         """
         Return the number of days elapsed since self.SOLAR_START_DATE to the
