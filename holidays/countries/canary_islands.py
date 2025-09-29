@@ -1,5 +1,18 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
 from holidays.countries.spain import Spain
 from holidays.mixins.child_entity import ChildEntity
+
 
 class HolidaysIC(ChildEntity, Spain):
     """Canary Islands holidays.
@@ -15,10 +28,13 @@ class HolidaysIC(ChildEntity, Spain):
     country = "IC"
     parent_entity = Spain
     parent_entity_subdivision_code = "CN"
+    default_language = "es"
     start_year = 1983
+
 
 class CanaryIslands(HolidaysIC):
     pass
+
 
 class IC(CanaryIslands):
     pass
