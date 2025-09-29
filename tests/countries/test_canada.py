@@ -20,7 +20,7 @@ from tests.common import CommonCountryTests
 class TestCanada(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Canada)
+        super().setUpClass(Canada, with_subdiv_categories=True)
 
     def test_country_aliases(self):
         self.assertAliases(Canada, CA, CAN)

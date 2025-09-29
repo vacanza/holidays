@@ -35,7 +35,7 @@ class TestCase:
 
     @staticmethod
     @cache
-    def _get_or_create_lookup(test_class):
+    def _get_or_create_lookup(test_class, with_subdiv_categories=False):
         """Build and cache categories and subdivision lookup tables for a holiday test class."""
 
         non_public_supported_categories = tuple(
@@ -47,8 +47,10 @@ class TestCase:
         for subdiv in test_class.subdivisions:
             subdiv_code = subdiv.lower().replace(" ", "_")
             subdiv_base[subdiv_code] = (subdiv, None, subdiv_code)
-            for category in non_public_supported_categories:
-                subdiv_category[f"{subdiv_code}_{category}"] = (subdiv, category, subdiv_code)
+
+            if with_subdiv_categories:
+                for category in non_public_supported_categories:
+                    subdiv_category[f"{subdiv_code}_{category}"] = (subdiv, category, subdiv_code)
 
         return subdiv_base, subdiv_category, non_public_supported_categories
 
@@ -103,7 +105,9 @@ class TestCase:
                 setattr(cls, method_name, make_assert(helper, attr_name, method_type))
 
     @classmethod
-    def setUpClass(cls, test_class=None, years=None, **year_variants):
+    def setUpClass(
+        cls, test_class=None, with_subdiv_categories=False, years=None, **year_variants
+    ):
         super().setUpClass()
 
         if test_class is None:
@@ -123,7 +127,9 @@ class TestCase:
             cls._subdiv_base_lookup,
             cls._subdiv_category_lookup,
             cls._non_public_supported_categories_lookup,
-        ) = cls._get_or_create_lookup(cls.test_class)
+        ) = cls._get_or_create_lookup(
+            cls.test_class, with_subdiv_categories=with_subdiv_categories
+        )
         cls._subdiv_lookup = {**cls._subdiv_base_lookup, **cls._subdiv_category_lookup}
 
         if years is None:

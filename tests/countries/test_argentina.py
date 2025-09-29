@@ -22,6 +22,7 @@ class TestArgentina(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(
             Argentina,
+            with_subdiv_categories=True,
             years_armenian=range(2007, 2050),
             years_bank=range(1975, 2050),
             years_government=range(2014, 2050),

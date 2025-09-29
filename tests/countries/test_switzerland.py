@@ -20,7 +20,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(1970, 2050)
-        super().setUpClass(Switzerland)
+        super().setUpClass(Switzerland, with_subdiv_categories=True)
 
     def test_country_aliases(self):
         self.assertAliases(Switzerland, CH, CHE)
