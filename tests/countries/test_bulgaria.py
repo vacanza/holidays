@@ -55,11 +55,12 @@ class TestBulgaria(CommonCountryTests, TestCase):
         name = "Велики петък"
         self.assertHolidayName(
             name,
-            "2019-04-26",
             "2020-04-17",
             "2021-04-30",
             "2022-04-22",
             "2023-04-14",
+            "2024-05-03",
+            "2025-04-18",
         )
         self.assertHolidayName(name, self.full_range)
 
@@ -67,11 +68,12 @@ class TestBulgaria(CommonCountryTests, TestCase):
         name = "Велика събота"
         self.assertHolidayName(
             name,
-            "2019-04-27",
             "2020-04-18",
             "2021-05-01",
             "2022-04-23",
             "2023-04-15",
+            "2024-05-04",
+            "2025-04-19",
         )
         self.assertHolidayName(name, self.full_range)
 
@@ -79,8 +81,6 @@ class TestBulgaria(CommonCountryTests, TestCase):
         name = "Великден"
         self.assertHolidayName(
             name,
-            "2019-04-28",
-            "2019-04-29",
             "2020-04-19",
             "2020-04-20",
             "2021-05-02",
@@ -89,6 +89,10 @@ class TestBulgaria(CommonCountryTests, TestCase):
             "2022-04-25",
             "2023-04-16",
             "2023-04-17",
+            "2024-05-05",
+            "2024-05-06",
+            "2025-04-20",
+            "2025-04-21",
         )
         self.assertHolidayNameCount(name, 2, self.full_range)
 

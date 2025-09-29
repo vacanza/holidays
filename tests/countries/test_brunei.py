@@ -309,7 +309,6 @@ class TestBrunei(CommonCountryTests, TestCase):
             "2025-04-01",
             "2025-04-02",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         self.assertIslamicNoEstimatedHolidayNameCount(name, 2, range(self.start_year, 2012))
         self.assertIslamicNoEstimatedHolidayNameCount(
             name, 3, range(2012, 2033), range(2034, self.end_year)

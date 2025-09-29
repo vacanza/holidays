@@ -284,20 +284,9 @@ class TestAndorra(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
-                    "2020-07-25",
-                    "2020-07-26",
-                    "2021-07-25",
-                    "2021-07-26",
-                    "2022-07-25",
-                    "2022-07-26",
-                    "2023-07-25",
-                    "2023-07-26",
-                    "2024-07-25",
-                    "2024-07-26",
-                    "2025-07-25",
-                    "2025-07-26",
+                    (f"{year}-07-25" for year in range(1979, self.end_year)),
+                    (f"{year}-07-26" for year in range(1979, self.end_year)),
                 )
-                self.assertHolidayName(name, holidays, range(1979, self.end_year))
                 self.assertNoHolidayName(name, holidays, range(self.start_year, 1979))
             else:
                 self.assertNoHolidayName(name, holidays)

@@ -104,25 +104,12 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
         # https://calendar.by/content.php?id=19
         self.assertHolidayName(
             name,
-            "2012-04-08",
-            "2013-03-31",
-            "2014-04-20",
-            "2015-04-05",
-            "2016-03-27",
-            "2017-04-16",
-            "2018-04-01",
-            "2019-04-21",
             "2020-04-12",
             "2021-04-04",
             "2022-04-17",
             "2023-04-09",
             "2024-03-31",
             "2025-04-20",
-            "2026-04-05",
-            "2027-03-28",
-            "2028-04-16",
-            "2029-04-01",
-            "2030-04-21",
         )
         self.assertHolidayName(name, range(1992, self.end_year))
         self.assertNoHolidayName(name, 1991)
@@ -133,25 +120,12 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
         # https://calendar.by/content.php?id=19
         self.assertHolidayName(
             name,
-            "2012-04-15",
-            "2013-05-05",
-            "2014-04-20",
-            "2015-04-12",
-            "2016-05-01",
-            "2017-04-16",
-            "2018-04-08",
-            "2019-04-28",
             "2020-04-19",
             "2021-05-02",
             "2022-04-24",
             "2023-04-16",
             "2024-05-05",
             "2025-04-20",
-            "2026-04-12",
-            "2027-05-02",
-            "2028-04-16",
-            "2029-04-08",
-            "2030-04-28",
         )
         self.assertHolidayName(name, range(1992, self.end_year))
         self.assertNoHolidayName(name, 1991)
@@ -162,25 +136,12 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertWorkdayHolidayName(
             name,
-            "2012-05-13",
-            "2013-05-12",
-            "2014-05-11",
-            "2015-05-10",
-            "2016-05-08",
-            "2017-05-14",
-            "2018-05-13",
-            "2019-05-12",
             "2020-05-10",
             "2021-05-09",
             "2022-05-08",
             "2023-05-14",
             "2024-05-12",
             "2025-05-11",
-            "2026-05-10",
-            "2027-05-09",
-            "2028-05-14",
-            "2029-05-13",
-            "2030-05-12",
         )
         self.assertWorkdayHolidayName(name, range(1998, self.end_year))
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 1998))
@@ -214,25 +175,12 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
         # https://calendar.by/content.php?id=20
         self.assertHolidayName(
             name,
-            "2012-04-24",
-            "2013-05-14",
-            "2014-04-29",
-            "2015-04-21",
-            "2016-05-10",
-            "2017-04-25",
-            "2018-04-17",
-            "2019-05-07",
             "2020-04-28",
             "2021-05-11",
             "2022-05-03",
             "2023-04-25",
             "2024-05-14",
             "2025-04-29",
-            "2026-04-21",
-            "2027-05-11",
-            "2028-04-25",
-            "2029-04-17",
-            "2030-05-07",
         )
         self.assertHolidayName(name, self.full_range)
 
