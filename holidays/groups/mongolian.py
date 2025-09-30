@@ -13,7 +13,7 @@
 from datetime import date
 from typing import Optional
 
-from holidays.calendars import _MongolianLunisolar
+from holidays.calendars.mongolian import _MongolianLunisolar
 from holidays.groups.eastern import EasternCalendarHolidays
 
 
