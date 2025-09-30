@@ -28,8 +28,9 @@ class HolidaysIC(ChildEntity, Spain):
     country = "IC"
     parent_entity = Spain
     parent_entity_subdivision_code = "CN"
-    default_language = "es"
     start_year = 1983
+    default_language = "es"
+    supported_languages = ("en_US", "es", "uk")
 
 
 class CanaryIslands(HolidaysIC):
