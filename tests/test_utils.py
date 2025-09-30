@@ -201,10 +201,10 @@ class TestListSupportedEntities(unittest.TestCase):
         self.assertIn("CA", us_subdivisions)
         self.assertIsInstance(us_subdivisions, list)
 
-        countries_files = [
-            path for path in Path("holidays/countries").glob("*.py") if path.stem != "__init__"
-        ]
-        self.assertEqual(len(countries_files), len(supported_countries))
+        countries_count = sum(
+            1 for path in Path("holidays/countries").glob("*.py") if path.stem != "__init__"
+        )
+        self.assertEqual(countries_count, len(supported_countries))
 
     def test_list_supported_financial(self):
         supported_financial = list_supported_financial(include_aliases=False)
@@ -215,7 +215,7 @@ class TestListSupportedEntities(unittest.TestCase):
         xnys_subdivisions = supported_financial.get("XNYS", [])
         self.assertIsInstance(xnys_subdivisions, list)
 
-        financial_files = [
-            path for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
-        ]
-        self.assertEqual(len(financial_files), len(supported_financial))
+        financial_count = sum(
+            1 for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
+        )
+        self.assertEqual(financial_count, len(supported_financial))
