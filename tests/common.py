@@ -241,27 +241,28 @@ class TestCase:
             if is_observed_subclass and hasattr(cls, key_subdiv_non_obs):
                 cls.subdiv_holidays_non_observed[subdiv] = getattr(cls, key_subdiv_non_obs)
 
-        dict_subdiv_cat = defaultdict(dict)
-        dict_subdiv_cat_non_obs = defaultdict(dict)
-        for category in cls._non_public_supported_categories_lookup:
-            setattr(cls, f"subdiv_{category}_holidays", dict_subdiv_cat[category])
+        if with_subdiv_categories:
+            dict_subdiv_cat = defaultdict(dict)
+            dict_subdiv_cat_non_obs = defaultdict(dict)
+            for category in cls._non_public_supported_categories_lookup:
+                setattr(cls, f"subdiv_{category}_holidays", dict_subdiv_cat[category])
 
-            if is_observed_subclass:
-                setattr(
-                    cls,
-                    f"subdiv_{category}_holidays_non_observed",
-                    dict_subdiv_cat_non_obs[category],
-                )
+                if is_observed_subclass:
+                    setattr(
+                        cls,
+                        f"subdiv_{category}_holidays_non_observed",
+                        dict_subdiv_cat_non_obs[category],
+                    )
 
-        for subdiv, category, subdiv_code in cls._subdiv_category_lookup.values():
-            key_subdiv_cat = f"holidays_subdiv_{subdiv_code}_{category}"
-            dict_subdiv_cat[category][subdiv] = getattr(cls, key_subdiv_cat, {})
+            for subdiv, category, subdiv_code in cls._subdiv_category_lookup.values():
+                key_subdiv_cat = f"holidays_subdiv_{subdiv_code}_{category}"
+                dict_subdiv_cat[category][subdiv] = getattr(cls, key_subdiv_cat, {})
 
-            if is_observed_subclass:
-                key_subdiv_cat_non_obs = f"{key_subdiv_cat}_non_observed"
-                dict_subdiv_cat_non_obs[category][subdiv] = getattr(
-                    cls, key_subdiv_cat_non_obs, {}
-                )
+                if is_observed_subclass:
+                    key_subdiv_cat_non_obs = f"{key_subdiv_cat}_non_observed"
+                    dict_subdiv_cat_non_obs[category][subdiv] = getattr(
+                        cls, key_subdiv_cat_non_obs, {}
+                    )
 
         cls._generate_assert_methods()
 

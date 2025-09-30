@@ -23,7 +23,7 @@ from tests.common import CommonCountryTests
 class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(SaintHelenaAscensionAndTristanDaCunha)
+        super().setUpClass(SaintHelenaAscensionAndTristanDaCunha, with_subdiv_categories=True)
 
     def test_country_aliases(self):
         self.assertAliases(SaintHelenaAscensionAndTristanDaCunha, SH, SHN)
