@@ -427,6 +427,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GOVERNMENT, OPTIONAL</td>
 </tr>
 <tr>
+<td>Canary Islands</td>
+<td>IC</td>
+<td>Can also be loaded as country ES, subdivision CN</td>
+<td>en_US, <strong>es</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>Cayman Islands</td>
 <td>KY</td>
 <td></td>

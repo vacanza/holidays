@@ -75,3 +75,37 @@ class TestCanaryIslands(CommonCountryTests, TestCase):
             ("1983-12-08", "Inmaculada Concepción"),
             ("1983-12-25", "Natividad del Señor"),
         )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("1983-01-01", "New Year's Day"),
+            ("1983-01-06", "Epiphany"),
+            ("1983-03-31", "Maundy Thursday"),
+            ("1983-04-01", "Good Friday"),
+            ("1983-05-01", "Labor Day"),
+            ("1983-05-30", "Day of the Canary Islands"),
+            ("1983-08-15", "Assumption Day"),
+            ("1983-10-12", "National Day"),
+            ("1983-11-01", "All Saints' Day"),
+            ("1983-12-06", "Constitution Day"),
+            ("1983-12-08", "Immaculate Conception"),
+            ("1983-12-25", "Christmas Day"),
+        )
+
+    def test_l10n_uk(self):
+        self.assertLocalizedHolidays(
+            "uk",
+            ("1983-01-01", "Новий рік"),
+            ("1983-01-06", "Богоявлення"),
+            ("1983-03-31", "Великий четвер"),
+            ("1983-04-01", "Страсна пʼятниця"),
+            ("1983-05-01", "День праці"),
+            ("1983-05-30", "День Канарських островів"),
+            ("1983-08-15", "Внебовзяття Пресвятої Діви Марії"),
+            ("1983-10-12", "Національний день Іспанії"),
+            ("1983-11-01", "День усіх святих"),
+            ("1983-12-06", "День Конституції Іспанії"),
+            ("1983-12-08", "Непорочне зачаття Діви Марії"),
+            ("1983-12-25", "Різдво Христове"),
+        )
