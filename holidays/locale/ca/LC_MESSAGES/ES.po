@@ -94,7 +94,7 @@ msgstr "Dijous Sant"
 msgid "Día de San Jorge"
 msgstr "Dia de Sant Jordi"
 
-#. Asturia Day.
+#. Asturias Day.
 msgid "Día de Asturias"
 msgstr "Dia d'Astúries"
 
@@ -110,7 +110,7 @@ msgstr "Sant Jaume Apòstol"
 msgid "Día de las Instituciones de Cantabria"
 msgstr "Dia de les Institucions de Cantàbria"
 
-#. Our Lady of the Bien Aparecida.
+#. Our Lady of Bien Aparecida.
 msgid "La Bien Aparecida"
 msgstr "La Bien Aparecida"
 
@@ -148,7 +148,7 @@ msgstr "Dia de les Canàries"
 
 #. Whit Monday.
 msgid "Día de la Pascua Granada"
-msgstr "Dilluns de Pasqua Granada"
+msgstr "Dia de la Pasqua Granada"
 
 #. Saint John the Baptist.
 msgid "San Juan"

@@ -260,7 +260,7 @@ class Spain(
         if self._year in {2010, 2021}:
             self._move_holiday(self._add_assumption_of_mary_day(tr("Asunción de la Virgen")))
 
-        # Asturia Day.
+        # Asturias Day.
         self._move_holiday(self._add_holiday_sep_8(tr("Día de Asturias")))
 
         if self._year in {2014, 2025}:
@@ -301,7 +301,7 @@ class Spain(
             self._add_holiday_jul_28(tr("Día de las Instituciones de Cantabria"))
 
         if self._year not in {2013, 2019, 2024}:
-            # Our Lady of the Bien Aparecida.
+            # Our Lady of Bien Aparecida.
             self._add_holiday_sep_15(tr("La Bien Aparecida"))
 
         if self._year == 2015:
