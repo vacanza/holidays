@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.82\n"
 "POT-Creation-Date: 2023-12-26 19:23+0200\n"
 "PO-Revision-Date: 2025-09-04 12:50+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -83,7 +83,7 @@ msgid "Natividad del Señor"
 msgstr "Різдво Христове"
 
 #. Andalusia Day.
-msgid "Día de Andalucia"
+msgid "Día de Andalucía"
 msgstr "День Андалусії"
 
 #. Maundy Thursday.

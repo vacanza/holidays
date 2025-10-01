@@ -186,7 +186,7 @@ class Spain(
             self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
 
         # Andalusia Day.
-        self._move_holiday(self._add_holiday_feb_28(tr("Día de Andalucia")))
+        self._move_holiday(self._add_holiday_feb_28(tr("Día de Andalucía")))
 
         # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))

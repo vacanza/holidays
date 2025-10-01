@@ -83,7 +83,7 @@ msgid "Natividad del Señor"
 msgstr "Nativitat del Senyor"
 
 #. Andalusia Day.
-msgid "Día de Andalucia"
+msgid "Día de Andalucía"
 msgstr "Dia d'Andalusia"
 
 #. Maundy Thursday.
@@ -237,6 +237,3 @@ msgstr "V Centenari de la Volta al Món"
 #. The Fallas.
 msgid "Lunes de Fallas"
 msgstr "Dilluns de les Falles"
-
-#~ msgid "Día de Andalucía"
-#~ msgstr "Dia d'Andalusia"
