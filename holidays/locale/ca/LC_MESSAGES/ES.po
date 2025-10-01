@@ -110,9 +110,10 @@ msgstr "Sant Jaume Apòstol"
 msgid "Día de las Instituciones de Cantabria"
 msgstr "Dia de les Institucions de Cantàbria"
 
-#. Our Lady of Bien Aparecida.
+#. Our Lady of the Bien Aparecida.
 msgid "La Bien Aparecida"
 msgstr "La Bien Aparecida"
+
 #. Santa Maria of Africa.
 msgid "Nuestra Señora de África"
 msgstr "Nostra Senyora d'Àfrica"
