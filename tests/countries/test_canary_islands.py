@@ -12,20 +12,20 @@
 
 from unittest import TestCase
 
-from holidays.countries.canary_islands import HolidaysIC, IC, CanaryIslands
+from holidays.countries.canary_islands import HolidaysIC, CanaryIslands, IC
 from tests.common import CommonCountryTests
 
 
 class TestCanaryIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(CanaryIslands)
+        super().setUpClass(HolidaysIC)
 
     def test_country_aliases(self):
-        self.assertAliases(HolidaysIC, IC, CanaryIslands)
+        self.assertAliases(HolidaysIC, CanaryIslands, IC)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(CanaryIslands(years=1982))
+        self.assertNoHolidays(HolidaysIC(years=1982))
 
     def test_1983(self):
         self.assertHolidays(

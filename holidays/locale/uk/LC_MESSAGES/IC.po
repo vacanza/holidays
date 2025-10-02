@@ -9,10 +9,9 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-# Canary Island Holidays
-# This file is distributed under the same license as the Holidays package.
-# FIRST AUTHOR <aryacomets@gmail.com>, 2025.
-#, fuzzy
+#
+# Canary Islands holidays uk localization.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.82\n"
