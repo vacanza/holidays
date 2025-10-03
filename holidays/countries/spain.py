@@ -77,7 +77,7 @@ class Spain(
     observed_estimated_label = tr("Lunes siguiente a %s (estimado)")
     # Monday following %s.
     observed_label = tr("Lunes siguiente a %s")
-    subdivisions = (
+    subdivisions: tuple[str, ...] = (
         "AN",  # Andalucía.
         "AR",  # Aragón.
         "AS",  # Asturias.
