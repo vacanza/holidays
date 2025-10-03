@@ -52,7 +52,6 @@ from holidays.countries.cabo_verde import CaboVerde, CV, CPV
 from holidays.countries.cambodia import Cambodia, KH, KHM
 from holidays.countries.cameroon import Cameroon, CM, CMR
 from holidays.countries.canada import Canada, CA, CAN
-from holidays.countries.canary_islands import CanaryIslands, IC, HolidaysIC
 from holidays.countries.cayman_islands import CaymanIslands, KY, CYM
 from holidays.countries.central_african_republic import CentralAfricanRepublic, CF, CAF
 from holidays.countries.chad import Chad, TD, TCD
