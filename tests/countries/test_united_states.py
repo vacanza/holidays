@@ -1889,6 +1889,38 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             name, (f"{year}-03-17" for year in range(self.start_year, self.end_year))
         )
 
+    def test_mothers_day(self):
+        name = "Mother's Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name,
+            self.unofficial_holidays,
+            "2020-05-10",
+            "2021-05-09",
+            "2022-05-08",
+            "2023-05-14",
+            "2024-05-12",
+            "2025-05-11",
+        )
+        self.assertHolidayName(name, self.unofficial_holidays, range(1914, 2050))
+        self.assertNoHolidayName(name, self.unofficial_holidays, range(1777, 1914))
+
+    def test_fathers_day(self):
+        name = "Father's Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name,
+            self.unofficial_holidays,
+            "2020-06-21",
+            "2021-06-20",
+            "2022-06-19",
+            "2023-06-18",
+            "2024-06-16",
+            "2025-06-15",
+        )
+        self.assertHolidayName(name, self.unofficial_holidays, range(1972, 2050))
+        self.assertNoHolidayName(name, self.unofficial_holidays, range(1777, 1972))
+
     def test_halloween(self):
         name = "Halloween"
         self.assertNoHolidayName(name)
@@ -2194,13 +2226,16 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             ("2022-04-25", "Confederate Memorial Day; State Holiday"),
             ("2022-04-29", "Arbor Day"),
             ("2022-05-03", "Primary Election Day"),
-            ("2022-05-08", "Truman Day"),
-            ("2022-05-09", "Truman Day (observed)"),
+            ("2022-05-08", "Mother's Day; Truman Day"),
+            ("2022-05-09", "Mother's Day (observed); Truman Day (observed)"),
             ("2022-05-30", "Memorial Day"),
             ("2022-06-06", "Jefferson Davis Birthday"),
             ("2022-06-10", "Kamehameha Day (observed)"),
             ("2022-06-11", "Kamehameha Day"),
-            ("2022-06-19", "Emancipation Day In Texas; Juneteenth National Independence Day"),
+            (
+                "2022-06-19",
+                "Emancipation Day In Texas; Father's Day; Juneteenth National Independence Day",
+            ),
             ("2022-06-20", "Juneteenth National Independence Day (observed); West Virginia Day"),
             ("2022-07-03", "Emancipation Day"),
             ("2022-07-04", "Independence Day"),
@@ -2300,13 +2335,13 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             ("2022-04-25", "วันรำลึกถึงฝ่ายสมาพันธรัฐ; วันหยุดประจำรัฐ"),
             ("2022-04-29", "วันปลูกต้นไม้"),
             ("2022-05-03", "วันเลือกตั้งขั้นต้น"),
-            ("2022-05-08", "วันทรูแมน"),
-            ("2022-05-09", "ชดเชยวันทรูแมน"),
+            ("2022-05-08", "วันทรูแมน; วันแม่"),
+            ("2022-05-09", "ชดเชยวันทรูแมน; ชดเชยวันแม่"),
             ("2022-05-30", "วันรำลึก"),
             ("2022-06-06", "วันเกิดเจฟเฟอร์สัน เดวิส"),
             ("2022-06-10", "ชดเชยวันคาเมฮาเมฮา"),
             ("2022-06-11", "วันคาเมฮาเมฮา"),
-            ("2022-06-19", "วันประกาศอิสรภาพแห่งชาติจูนทีนท์; วันเลิกทาสในเท็กซัส"),
+            ("2022-06-19", "วันประกาศอิสรภาพแห่งชาติจูนทีนท์; วันพ่อ; วันเลิกทาสในเท็กซัส"),
             ("2022-06-20", "ชดเชยวันประกาศอิสรภาพแห่งชาติจูนทีนท์; วันเวสต์เวอร์จิเนีย"),
             ("2022-07-03", "วันเลิกทาส"),
             ("2022-07-04", "วันประกาศอิสรภาพ"),
