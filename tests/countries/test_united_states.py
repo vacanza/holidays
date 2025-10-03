@@ -1892,9 +1892,8 @@ class TestUnitedStates(CommonCountryTests, TestCase):
     def test_mothers_day(self):
         name = "Mother's Day"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
+        self.assertUnofficialHolidayName(
             name,
-            self.unofficial_holidays,
             "2020-05-10",
             "2021-05-09",
             "2022-05-08",
@@ -1902,15 +1901,14 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             "2024-05-12",
             "2025-05-11",
         )
-        self.assertHolidayName(name, self.unofficial_holidays, range(1914, 2050))
-        self.assertNoHolidayName(name, self.unofficial_holidays, range(1777, 1914))
+        self.assertUnofficialHolidayName(name, range(1914, 2050))
+        self.assertNoUnofficialHolidayName(name, range(1777, 1914))
 
     def test_fathers_day(self):
         name = "Father's Day"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
+        self.assertUnofficialHolidayName(
             name,
-            self.unofficial_holidays,
             "2020-06-21",
             "2021-06-20",
             "2022-06-19",
@@ -1918,8 +1916,8 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-15",
         )
-        self.assertHolidayName(name, self.unofficial_holidays, range(1972, 2050))
-        self.assertNoHolidayName(name, self.unofficial_holidays, range(1777, 1972))
+        self.assertUnofficialHolidayName(name, range(1972, 2050))
+        self.assertNoUnofficialHolidayName(name, range(1777, 1972))
 
     def test_halloween(self):
         name = "Halloween"

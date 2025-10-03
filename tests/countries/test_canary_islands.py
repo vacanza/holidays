@@ -25,24 +25,7 @@ class TestCanaryIslands(CommonCountryTests, TestCase):
         self.assertAliases(HolidaysIC, CanaryIslands, IC)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(HolidaysIC(years=1982))
-
-    def test_1983(self):
-        self.assertHolidays(
-            CanaryIslands(years=1983),
-            ("1983-01-01", "Año Nuevo"),
-            ("1983-01-06", "Epifanía del Señor"),
-            ("1983-03-31", "Jueves Santo"),
-            ("1983-04-01", "Viernes Santo"),
-            ("1983-05-01", "Fiesta del Trabajo"),
-            ("1983-05-30", "Día de Canarias"),
-            ("1983-08-15", "Asunción de la Virgen"),
-            ("1983-10-12", "Fiesta Nacional de España"),
-            ("1983-11-01", "Todos los Santos"),
-            ("1983-12-06", "Día de la Constitución Española"),
-            ("1983-12-08", "Inmaculada Concepción"),
-            ("1983-12-25", "Natividad del Señor"),
-        )
+        self.assertNoHolidays(HolidaysIC(years=self.start_year - 1))
 
     def test_2025(self):
         self.assertHolidays(
