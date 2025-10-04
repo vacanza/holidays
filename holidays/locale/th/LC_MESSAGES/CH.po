@@ -1,0 +1,132 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Switzerland holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.82\n"
+"POT-Creation-Date: 2025-10-02 15:36+0700\n"
+"PO-Revision-Date: 2025-10-04 11:31+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.7\n"
+"X-Source-Language: de\n"
+
+#. New Year's Day.
+msgid "Neujahrstag"
+msgstr "วันขึ้นปีใหม่"
+
+#. Ascension Day.
+msgid "Auffahrt"
+msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
+
+#. National Day.
+msgid "Nationalfeiertag"
+msgstr "วันชาติสวิตเซอร์แลนด์"
+
+#. Christmas Day.
+msgid "Weihnachten"
+msgstr "วันคริสต์มาส"
+
+#. Saint Berchtold's Day.
+msgid "Berchtoldstag"
+msgstr "วันสมโภชนักบุญแบร์กโทลด์"
+
+#. Good Friday.
+msgid "Karfreitag"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. Easter Monday.
+msgid "Ostermontag"
+msgstr "วันจันทร์อีสเตอร์"
+
+#. Labor Day.
+msgid "Tag der Arbeit"
+msgstr "วันแรงงาน"
+
+#. Whit Monday.
+msgid "Pfingstmontag"
+msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
+
+#. Corpus Christi.
+msgid "Fronleichnam"
+msgstr "วันสมโภชพระคริสตวรกาย"
+
+#. Assumption Day.
+msgid "Mariä Himmelfahrt"
+msgstr "วันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์"
+
+#. All Saints' Day.
+msgid "Allerheiligen"
+msgstr "วันสมโภชนักบุญทั้งหลาย"
+
+#. Immaculate Conception.
+msgid "Mariä Empfängnis"
+msgstr "วันสมโภชแม่พระผู้ปฏิสนธินิรมล"
+
+#. Saint Stephen's Day.
+msgid "Stephanstag"
+msgstr "วันสมโภชนักบุญสเตเฟน"
+
+#. Genevan Fast.
+msgid "Genfer Bettag"
+msgstr "วันถือศีลอดเจนีวา"
+
+#. Restoration Day.
+msgid "Wiederherstellung der Republik"
+msgstr "วันกอบกู้เอกราชสาธารณรัฐเจนีวา"
+
+#. Battle of Naefels Victory Day.
+msgid "Näfelser Fahrt"
+msgstr "วันรำลึกชัยชนะยุทธการเนเฟลส์"
+
+#. Independence Day.
+msgid "Fest der Unabhängigkeit"
+msgstr "วันประกาศเอกราชจูรา"
+
+#. Republic Day.
+msgid "Jahrestag der Ausrufung der Republik"
+msgstr "วันครบรอบการสถาปนาสาธารณรัฐนอยชาแตล"
+
+#. Saint Joseph's Day.
+msgid "Josefstag"
+msgstr "วันสมโภชนักบุญโยเซฟ"
+
+#. Saint Nicholas of Flüe.
+msgid "Bruder Klaus"
+msgstr "วันสมโภชนักบุญนิโคลัสแห่งฟลือเออ"
+
+#. Epiphany.
+msgid "Heilige Drei Könige"
+msgstr "วันสมโภชพระคริสต์แสดงองค์"
+
+#. Saints Peter and Paul.
+msgid "Peter und Paul"
+msgstr "วันสมโภชนักบุญเปโตรและเปาโล"
+
+#. Prayer Monday.
+msgid "Bettagsmontag"
+msgstr "วันจันทร์แห่งการอธิษฐาน"
+
+#. Knabenschiessen.
+msgid "Knabenschiessen"
+msgstr "คนาเบนชิสเซน"
+
+#. Sechseläuten.
+msgid "Sechseläuten"
+msgstr "เซ็กเซ่ะเล๊าเท่น"

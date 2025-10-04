@@ -12,10 +12,16 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, THU, _timedelta, _get_nth_weekday_of_month
+from holidays.calendars.gregorian import MAR, APR, MON, THU, _timedelta, _get_nth_weekday_of_month
 from holidays.constants import HALF_DAY, OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, MON_ONLY, TUE_TO_NONE, SAT_TO_NONE
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    MON_ONLY,
+    TUE_TO_NONE,
+    SAT_TO_NONE,
+    ALL_TO_NEXT_MON,
+)
 
 
 class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
@@ -23,6 +29,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
 
     References:
         * <https://web.archive.org/web/20250201054902/https://www.bj.admin.ch/dam/bj/de/data/publiservice/service/zivilprozessrecht/kant-feiertage.pdf>
+        * <https://web.archive.org/web/20251002085718/https://www.zuerich.com/en/inform-plan/useful-information-and-services/opening-hours-and-public-holidays/feiertage>
+        * <https://web.archive.org/web/20251003094601/https://www.timeanddate.com/calendar/seasons.html?year=1900&n=268>
         * <https://de.wikipedia.org/wiki/Feiertage_in_der_Schweiz>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Switzerland>
     """
@@ -92,7 +100,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         "Zürich": "ZH",
     }
     supported_categories = (HALF_DAY, OPTIONAL, PUBLIC)
-    supported_languages = ("de", "en_US", "fr", "it", "uk")
+    supported_languages = ("de", "en_US", "fr", "it", "th", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -713,8 +721,44 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        if self._year >= 1899:
+            # Knabenschiessen.
+            name = tr("Knabenschiessen")
+            self._add_holiday_2nd_sun_of_sep(name)
+            self._add_holiday_1_day_prior_2nd_sun_of_sep(name)
+
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
+
+    def _populate_subdiv_zh_half_day_holidays(self):
+        if self._year >= 1902:
+            # Sechseläuten.
+            name = tr("Sechseläuten")
+            # Third Monday in April but not in Holy Week.
+            if self._year >= 1952:
+                dt = _get_nth_weekday_of_month(3, MON, APR, self._year)
+                self._add_holiday(
+                    name, _timedelta(dt, +7) if dt == _timedelta(self._easter_sunday, +1) else dt
+                )
+            # From 1902-1951 this was the First Monday following the Vernal Equinox.
+            else:
+                self._move_holiday(
+                    self._add_holiday(name, self._vernal_equinox_date),
+                    rule=ALL_TO_NEXT_MON,
+                    show_observed_label=False,
+                )
+
+        if self._year >= 1899:
+            # Knabenschiessen.
+            self._add_holiday_1_day_past_2nd_sun_of_sep(tr("Knabenschiessen"))
+
+    @property
+    def _vernal_equinox_date(self) -> tuple[int, int]:
+        """Return the Vernal Equinox date for Zurich (1902–1951)."""
+        day = 21
+        if (self._year >= 1916 and self._year % 4 == 0) or self._year == 1949:
+            day = 20
+        return MAR, day
 
 
 class CH(Switzerland):
