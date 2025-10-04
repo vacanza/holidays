@@ -745,7 +745,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
         subdiv_zh_half_day_holidays = Switzerland(
-            categories=HALF_DAY, subdiv="ZH", years=range(1901, 1952)
+            categories=HALF_DAY, subdiv="ZH", years=range(1901, 1970)
         )
 
         self.assertHolidayName(
@@ -757,8 +757,9 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             "1949-03-21",
             "1950-03-27",
             "1951-03-26",
+            "1952-04-21",
         )
-        self.assertHolidayName(name, subdiv_zh_half_day_holidays, range(1902, 1952))
+        self.assertHolidayName(name, subdiv_zh_half_day_holidays, range(1902, 1970))
         self.assertNoHolidayName(name, subdiv_zh_half_day_holidays, 1901)
 
     def test_l10n_default(self):
