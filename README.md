@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 246 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 245 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -425,13 +425,6 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Provinces and territories: AB (Alberta), BC (British Columbia, Colombie-Britannique), MB (Manitoba), NB (New Brunswick, Nouveau-Brunswick), NL (Newfoundland and Labrador, Terre-Neuve-et-Labrador), NS (Nova Scotia, Nouvelle-Écosse), NT (Northwest Territories, Territoires du Nord-Ouest), NU (Nunavut), ON (Ontario), PE (Prince Edward Island, Île-du-Prince-Édouard), QC (Quebec, Québec), SK (Saskatchewan), YT (Yukon)</td>
 <td>ar, <strong>en_CA</strong>, en_US, fr, th</td>
 <td>GOVERNMENT, OPTIONAL</td>
-</tr>
-<tr>
-<td>Canary Islands</td>
-<td>IC</td>
-<td>Can also be loaded as country ES, subdivision CN</td>
-<td>ca, en_US, <strong>es</strong>, uk</td>
-<td></td>
 </tr>
 <tr>
 <td>Cayman Islands</td>
