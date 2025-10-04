@@ -722,6 +722,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
         self.assertNoHolidayName(name, Switzerland(subdiv="ZH", years=1898))
+        self.assertNoHolidayName(name, Switzerland(categories=HALF_DAY, subdiv="ZH", years=1898))
 
     def test_sechselauten(self):
         name = "Sechseläuten"
