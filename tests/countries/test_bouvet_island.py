@@ -19,11 +19,11 @@ from tests.common import CommonCountryTests
 class TestBouvetIsland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.years = range(1900, 2050)
-        super().setUpClass(BouvetIsland, years=cls.years)
+        cls.full_range = range(1900, 2050)
+        super().setUpClass(BouvetIsland, years=cls.full_range)
 
     def test_country_aliases(self):
         self.assertAliases(BouvetIsland, BV, BVT)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(BouvetIsland(years=self.years))
+        self.assertNoHolidays(BouvetIsland(years=self.full_range))

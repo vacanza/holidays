@@ -14,7 +14,7 @@ from holidays.no_holiday_base import NoHolidayBase
 
 
 class BritishIndianOceanTerritory(NoHolidayBase):
-    """British Indian Ocean Territory.
+    """British Indian Ocean Territory holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/British_Indian_Ocean_Territory>

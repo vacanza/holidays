@@ -14,7 +14,7 @@ from holidays.no_holiday_base import NoHolidayBase
 
 
 class BouvetIsland(NoHolidayBase):
-    """Bouvet Island.
+    """Bouvet Island holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Bouvet_Island>

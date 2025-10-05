@@ -14,7 +14,7 @@ from holidays.no_holiday_base import NoHolidayBase
 
 
 class HeardIslandAndMcDonaldIslands(NoHolidayBase):
-    """Heard Island and McDonald Islands.
+    """Heard Island and McDonald Islands holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands>
