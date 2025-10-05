@@ -1613,7 +1613,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Spain</td>
 <td>ES</td>
 <td>Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla-La Mancha), CN (Canarias), CT (Cataluña, Catalunya), EX (Extremadura), GA (Galicia), IB (Islas Baleares, Illes Balears), MC (Murcia), MD (Madrid), ML (Melilla), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Valenciana)</td>
-<td>en_US, <strong>es</strong>, uk</td>
+<td>ca, en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
 <tr>
