@@ -334,7 +334,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         if self._year >= 1900:
             self._move_holiday_forced(
                 # Saint Patrick's Day.
-                self._add_holiday_mar_17(tr("Saint Patrick's Day")),
+                self._add_saint_patricks_day(tr("Saint Patrick's Day")),
                 rule=ALL_TO_NEAREST_MON,
             )
 
