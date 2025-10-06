@@ -10,10 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAY, JUL, AUG, SEP, FRI, SAT
+from holidays.calendars.gregorian import JAN, MAY, JUL, AUG, SEP, FRI, SAT
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
@@ -34,6 +35,7 @@ class Sudan(HolidayBase, ChristianHolidays, IslamicHolidays):
     estimated_label = tr("%s (المقدرة)")
     supported_languages = ("ar_SD", "en_US")
     start_year = 1985
+    weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         ChristianHolidays.__init__(self)
@@ -42,11 +44,12 @@ class Sudan(HolidayBase, ChristianHolidays, IslamicHolidays):
         )
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self):
+    def _get_weekend(self, dt: date) -> set[int]:
         # The resting days are Friday and Saturday since January 26th, 2008.
         # https://sudantribune.com/article25544/
-        self.weekend = {FRI, SAT} if self._year >= 2008 else {FRI}
+        return {FRI, SAT} if dt >= date(2008, JAN, 26) else {FRI}
 
+    def _populate_public_holidays(self):
         # Independence Day.
         self._add_holiday_jan_1(tr("عيد الإستقلال"))
 

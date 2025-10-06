@@ -60,6 +60,7 @@ lint.per-file-ignores."scripts/generate_release_notes.py" = [ "T201" ]
 lint.per-file-ignores."tests/common.py" = [ "N802" ]
 lint.per-file-ignores."tests/test_holiday_base.py" = [ "S301" ]
 lint.flake8-errmsg.max-string-length = 99
+lint.pyupgrade.keep-runtime-typing = true
 
 [tool.isort]
 known_first_party = [ "holidays", "tests" ]
@@ -77,6 +78,11 @@ filterwarnings = [
   "ignore::DeprecationWarning:holidays.deprecations.v1_incompatibility",
 ]
 testpaths = [ "tests" ]
+
+[tool.coverage.report]
+exclude_lines = [
+  "^if TYPE_CHECKING:",
+]
 
 [tool.coverage.run]
 branch = true

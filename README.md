@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 242 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 248 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -172,7 +172,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>DZ</td>
 <td></td>
 <td><strong>ar</strong>, en_US, fr</td>
-<td></td>
+<td>CHRISTIAN, HEBREW</td>
 </tr>
 <tr>
 <td>American Samoa</td>
@@ -200,6 +200,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>AI</td>
 <td></td>
 <td><strong>en_AI</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
+<td>Antarctica</td>
+<td>AQ</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -350,11 +357,25 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Bouvet Island</td>
+<td>BV</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Brazil</td>
 <td>BR</td>
 <td>States: AC (Acre), AL (Alagoas), AM (Amazonas), AP (Amapá), BA (Bahia), CE (Ceará), DF (Distrito Federal), ES (Espírito Santo), GO (Goiás), MA (Maranhão), MG (Minas Gerais), MS (Mato Grosso do Sul), MT (Mato Grosso), PA (Pará), PB (Paraíba), PE (Pernambuco), PI (Piauí), PR (Paraná), RJ (Rio de Janeiro), RN (Rio Grande do Norte), RO (Rondônia), RR (Roraima), RS (Rio Grande do Sul), SC (Santa Catarina), SE (Sergipe), SP (São Paulo), TO (Tocantins)</td>
 <td>en_US, <strong>pt_BR</strong>, uk</td>
 <td>OPTIONAL</td>
+</tr>
+<tr>
+<td>British Indian Ocean Territory</td>
+<td>IO</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>British Virgin Islands</td>
@@ -805,6 +826,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>OPTIONAL</td>
 </tr>
 <tr>
+<td>Heard Island and McDonald Islands</td>
+<td>HM</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Honduras</td>
 <td>HN</td>
 <td></td>
@@ -1169,6 +1197,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Myanmar</td>
+<td>MM</td>
+<td></td>
+<td>en_US, <strong>my</strong>, th</td>
+<td></td>
+</tr>
+<tr>
 <td>Namibia</td>
 <td>NA</td>
 <td></td>
@@ -1253,6 +1288,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>
+<td>North Korea</td>
+<td>KP</td>
+<td></td>
+<td>en_US, <strong>ko_KP</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>North Macedonia</td>
 <td>MK</td>
 <td></td>
@@ -1262,7 +1304,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Norway</td>
 <td>NO</td>
-<td>Counties and Arctic Regions: 03 (Oslo), 11 (Rogaland), 15 (Møre og Romsdal), 18 (Nordland), 21 (Svalbard), 22 (Jan Mayen), 30 (Viken), 34 (Innlandet), 38 (Vestfold og Telemark), 42 (Agder), 46 (Vestland), 50 (Trööndelage, Trøndelag), 54 (Romssa ja Finnmárkku, Troms og Finnmark, Tromssan ja Finmarkun)</td>
+<td>Counties and Arctic Regions: 03 (Oslo), 11 (Rogaland), 15 (Møre og Romsdal), 18 (Nordland), 21 (Svalbard), 22 (Jan Mayen), 31 (Østfold), 32 (Akershus), 33 (Buskerud), 34 (Innlandet), 39 (Vestfold), 40 (Telemark), 42 (Agder), 46 (Vestland), 50 (Trööndelage, Trøndelag), 55 (Romssa, Troms, Tromssan), 56 (Finmarkun, Finnmark, Finnmárkku)</td>
 <td>en_US, <strong>no</strong>, th, uk</td>
 <td></td>
 </tr>
@@ -1571,7 +1613,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Spain</td>
 <td>ES</td>
 <td>Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla-La Mancha), CN (Canarias), CT (Cataluña, Catalunya), EX (Extremadura), GA (Galicia), IB (Islas Baleares, Illes Balears), MC (Murcia), MD (Madrid), ML (Melilla), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Valenciana)</td>
-<td>en_US, <strong>es</strong>, uk</td>
+<td>ca, en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
 <tr>

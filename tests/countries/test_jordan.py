@@ -43,6 +43,23 @@ class TestJordan(CommonCountryTests, TestCase):
             ("2024-12-25", "عيد الميلاد المجيد"),
         )
 
+    def test_weekend(self):
+        for dt in (
+            "1999-12-30",  # THU.
+            "1999-12-31",  # FRI.
+            "2000-01-07",  # FRI.
+            "2000-01-08",  # SAT.
+        ):
+            self.assertTrue(self.holidays.is_weekend(dt))
+
+        for dt in (
+            "2000-01-01",  # SAT.
+            "2000-01-02",  # SUN.
+            "2000-01-06",  # THU.
+            "2000-01-09",  # SUN.
+        ):
+            self.assertFalse(self.holidays.is_weekend(dt))
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2024-01-01", "رأس السنة الميلادية"),

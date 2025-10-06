@@ -1602,8 +1602,8 @@ class _HebrewLunisolar:
         dt = getattr(self, f"{holiday}_DATES", {}).get(year, ())
         return date(year, *dt) if dt else None
 
-    def hanukkah_date(self, year: int) -> set[Optional[date]]:
-        return {self._get_holiday(HANUKKAH, y) for y in (year - 1, year)}
+    def hanukkah_date(self, year: int) -> set[date]:
+        return {dt for y in (year - 1, year) if (dt := self._get_holiday(HANUKKAH, y)) is not None}
 
     def israel_independence_date(self, year: int) -> Optional[date]:
         return self._get_holiday(INDEPENDENCE_DAY, year)
