@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.82\n"
 "POT-Creation-Date: 2023-12-26 19:23+0200\n"
 "PO-Revision-Date: 2025-09-04 12:50+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -83,7 +83,7 @@ msgid "Natividad del Señor"
 msgstr "Різдво Христове"
 
 #. Andalusia Day.
-msgid "Día de Andalucia"
+msgid "Día de Andalucía"
 msgstr "День Андалусії"
 
 #. Maundy Thursday.
@@ -94,7 +94,7 @@ msgstr "Великий четвер"
 msgid "Día de San Jorge"
 msgstr "День Святого Георгія"
 
-#. Asturia Day.
+#. Asturias Day.
 msgid "Día de Asturias"
 msgstr "День Астурії"
 
@@ -110,7 +110,7 @@ msgstr "День Святого Якова"
 msgid "Día de las Instituciones de Cantabria"
 msgstr "День Інституцій Кантабрії"
 
-#. Our Lady of the Bien Aparecida.
+#. Our Lady of Bien Aparecida.
 msgid "La Bien Aparecida"
 msgstr "День Богоматері Обʼявлення"
 
