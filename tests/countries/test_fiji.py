@@ -20,10 +20,10 @@ from tests.common import CommonCountryTests
 class TestFiji(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(2016, 2050)
-        super().setUpClass(Fiji, years=years)
-        cls.no_estimated_holidays = Fiji(years=years, islamic_show_estimated=False)
-        cls.workday_holidays = Fiji(categories=WORKDAY, years=years)
+        cls.full_range = range(2016, 2050)
+        super().setUpClass(Fiji, years=cls.full_range)
+        cls.no_estimated_holidays = Fiji(years=cls.full_range, islamic_show_estimated=False)
+        cls.workday_holidays = Fiji(categories=WORKDAY, years=cls.full_range)
 
     def test_country_aliases(self):
         self.assertAliases(Fiji, FJ, FJI)
@@ -34,7 +34,7 @@ class TestFiji(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(2016, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
 
         dt_obs = (
             "2017-01-02",
@@ -55,7 +55,7 @@ class TestFiji(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(2016, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_saturday(self):
         name = "Easter Saturday"
@@ -68,7 +68,7 @@ class TestFiji(CommonCountryTests, TestCase):
             "2024-03-30",
             "2025-04-19",
         )
-        self.assertHolidayName(name, range(2016, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "Easter Monday"
@@ -81,7 +81,7 @@ class TestFiji(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(2016, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_girmit_day(self):
         name = "Girmit Day"
@@ -133,7 +133,7 @@ class TestFiji(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(2016, 2023))
 
     def test_fiji_day(self):
-        self.assertHolidayName("Fiji Day", (f"{year}-10-10" for year in range(2016, 2050)))
+        self.assertHolidayName("Fiji Day", (f"{year}-10-10" for year in self.full_range))
 
     def test_diwali(self):
         name = "Diwali"
@@ -157,7 +157,7 @@ class TestFiji(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(2016, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
 
         dt_obs = (
             "2016-12-27",
@@ -169,7 +169,7 @@ class TestFiji(CommonCountryTests, TestCase):
 
     def test_boxing_day(self):
         name = "Boxing Day"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(2016, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
 
         dt_obs = (
             "2020-12-28",
@@ -192,7 +192,7 @@ class TestFiji(CommonCountryTests, TestCase):
             "2024-09-16",
             "2025-09-06",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2016, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, self.full_range)
 
         dt_obs = (
             "2019-11-11",

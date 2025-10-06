@@ -204,7 +204,7 @@ class ObservedHolidayBase(HolidayBase):
         show_observed_label: bool = True,
     ) -> tuple[bool, Optional[date]]:
         is_observed, dt_observed = self._add_observed(
-            dt, rule=rule, show_observed_label=show_observed_label, force_observed=force_observed
+            dt, rule=rule, force_observed=force_observed, show_observed_label=show_observed_label
         )
         if is_observed:
             self.pop(dt)
