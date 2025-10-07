@@ -22,7 +22,7 @@ class MongolianCalendarHolidays(EasternCalendarHolidays):
     Mongolian lunisolar calendar holidays.
     """
 
-    def __init__(self, cls=None, show_estimated=False) -> None:
+    def __init__(self, cls=None, *, show_estimated=False) -> None:
         self._mongolian_calendar = cls() if cls else _MongolianLunisolar()
         self._mongolian_calendar_show_estimated = show_estimated
 
@@ -37,7 +37,10 @@ class MongolianCalendarHolidays(EasternCalendarHolidays):
         """
 
         return self._add_eastern_calendar_holiday(
-            name, dt_estimated, self._mongolian_calendar_show_estimated, days_delta
+            name,
+            dt_estimated,
+            show_estimated=self._mongolian_calendar_show_estimated,
+            days_delta=days_delta,
         )
 
     def _add_buddha_day(self, name) -> Optional[date]:

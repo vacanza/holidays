@@ -808,7 +808,7 @@ class HolidayBase(dict[date, str]):
         self[dt] = self.tr(name)
         return dt
 
-    def _add_special_holidays(self, mapping_names, observed=False):
+    def _add_special_holidays(self, mapping_names, *, observed=False):
         """Add special holidays."""
         for mapping_name in mapping_names:
             for data in _normalize_tuple(getattr(self, mapping_name, {}).get(self._year, ())):

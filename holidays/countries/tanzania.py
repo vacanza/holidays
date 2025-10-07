@@ -161,7 +161,7 @@ class Tanzania(
             else:
                 rule = SAT_SUN_TO_NEXT_MON
             for name in self.get_list(dt):
-                self._add_observed(dt, name, rule)
+                self._add_observed(dt, name, rule=rule)
 
     def _populate_bank_holidays(self):
         # Sikukuu ya Pasaka.

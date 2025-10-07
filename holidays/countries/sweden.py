@@ -39,7 +39,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "sv"
     supported_languages = ("en_US", "sv", "th", "uk")
 
-    def __init__(self, include_sundays: bool = True, *args, **kwargs):
+    def __init__(self, *args, include_sundays: bool = True, **kwargs):
         """
         Args:
             include_sundays:

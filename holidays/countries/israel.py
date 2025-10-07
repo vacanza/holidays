@@ -50,7 +50,7 @@ class Israel(ObservedHolidayBase, HebrewCalendarHolidays):
         super().__init__(*args, **kwargs)
 
     def _add_observed(self, dt, name, rule):
-        is_observed, _ = super()._add_observed(dt, name, rule)
+        is_observed, _ = super()._add_observed(dt, name, rule=rule)
         if not is_observed:
             self._add_holiday(name, dt)
 
