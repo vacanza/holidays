@@ -156,7 +156,7 @@ class ObservedHolidayBase(HolidayBase):
         # Convert to date: (m, d) → use self._year; (y, m, d) → use directly.
         dt = dt if isinstance(dt, date) else date(self._year, *dt) if len(dt) == 2 else date(*dt)
 
-        if not force_observed and (not self.observed or not self._is_observed(dt)):
+        if not (force_observed or (self.observed and self._is_observed(dt))):
             return False, dt
 
         dt_observed = self._get_observed_date(dt, rule or self._observed_rule)
