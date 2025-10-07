@@ -15,7 +15,7 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>CI/CD</td>
     <td>
-      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41BE4A&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41BE4A&style=flat" alt="Documentation status"></a>
+      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41B5BE&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41B5BE&style=flat" alt="Documentation status"></a>&nbsp;<a href="https://snyk.io/advisor/python/holidays/"><img alt="Open World Holidays Package Health Score" src="https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fsnyk.io%2Fadvisor%2Fpython%2Fholidays%2Fbadge.svg&search=%5Cd%7B1%2C3%7D%2F%5Cd%7B1%2C3%7D&style=flat&label=snyk&color=41B5BE"></a>
     </td>
   </tr>
   <tr>
@@ -27,19 +27,13 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>GitHub</td>
     <td>
-      <a href="https://github.com/vacanza/holidays/stargazers"><img src="https://img.shields.io/github/stars/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub stars"></a>&nbsp;<a href="https://github.com/vacanza/holidays/forks"><img src="https://img.shields.io/github/forks/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub forks"></a>&nbsp;<a href="https://github.com/vacanza/holidays/graphs/contributors"><img src="https://img.shields.io/github/contributors/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub contributors"></a>&nbsp;<a href="https://github.com/vacanza/holidays/commits/dev"><img src="https://img.shields.io/github/last-commit/vacanza/holidays/dev?color=41BE4A&style=flat" alt="GitHub last commit"></a>
+      <a href="https://github.com/vacanza/holidays/stargazers"><img src="https://img.shields.io/github/stars/vacanza/holidays?color=41B5BE&style=flat" alt="GitHub stars"></a>&nbsp;<a href="https://github.com/vacanza/holidays/forks"><img src="https://img.shields.io/github/forks/vacanza/holidays?color=41B5BE&style=flat" alt="GitHub forks"></a>&nbsp;<a href="https://github.com/vacanza/holidays/graphs/contributors"><img src="https://img.shields.io/github/contributors/vacanza/holidays?color=41B5BE&style=flat" alt="GitHub contributors"></a>&nbsp;<a href="https://github.com/vacanza/holidays/commits/dev"><img src="https://img.shields.io/github/last-commit/vacanza/holidays/dev?color=41B5BE&style=flat" alt="GitHub last commit"></a>
     </td>
   </tr>
   <tr>
     <td>Citation</td>
     <td>
       <a href="https://doi.org/10.5281/zenodo.14884702"><img src="https://img.shields.io/badge/DOI-10.5281/zenodo.14884702-41B5BE?style=flat" alt="Open World Holidays Framework DOI"></a>
-    </td>
-  </tr>
-  <tr>
-    <td>Snyk</td>
-    <td>
-      <a href="https://snyk.io/advisor/python/holidays/"><img src="https://snyk.io/advisor/python/holidays/badge.svg" alt="Open World Holidays Package Health Score"></a>
     </td>
   </tr>
 </table>
