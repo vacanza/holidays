@@ -10,4 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-__version__ = "0.83"
+from holidays.holiday_base import HolidayBase
+
+
+class NoHolidayBase(HolidayBase):
+    """A dummy holiday class that does not contain any holidays."""
+
+    def _populate(self, year: int) -> None:
+        """No holidays."""
+        return None
