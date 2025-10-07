@@ -42,7 +42,9 @@ from holidays.countries.bolivia import Bolivia, BO, BOL
 from holidays.countries.bonaire_sint_eustatius_and_saba import BonaireSintEustatiusAndSaba, BQ, BES
 from holidays.countries.bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
 from holidays.countries.botswana import Botswana, BW, BWA
+from holidays.countries.bouvet_island import BouvetIsland, BV, BVT
 from holidays.countries.brazil import Brazil, BR, BRA
+from holidays.countries.british_indian_ocean_territory import BritishIndianOceanTerritory, IO, IOT
 from holidays.countries.british_virgin_islands import BritishVirginIslands, VG, VGB
 from holidays.countries.brunei import Brunei, BN, BRN
 from holidays.countries.bulgaria import Bulgaria, BG, BLG
@@ -112,6 +114,11 @@ from holidays.countries.guinea import Guinea, GN, GIN
 from holidays.countries.guinea_bissau import GuineaBissau, GW, GNB
 from holidays.countries.guyana import Guyana, GY, GUY
 from holidays.countries.haiti import Haiti, HT, HTI
+from holidays.countries.heard_island_and_mcdonald_islands import (
+    HeardIslandAndMcDonaldIslands,
+    HM,
+    HMD,
+)
 from holidays.countries.honduras import Honduras, HN, HND
 from holidays.countries.hongkong import HongKong, HK, HKG
 from holidays.countries.hungary import Hungary, HU, HUN
