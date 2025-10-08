@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.83\n"
 "POT-Creation-Date: 2025-10-02 15:36+0700\n"
-"PO-Revision-Date: 2025-10-04 11:31+0700\n"
+"PO-Revision-Date: 2025-10-08 13:09+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -127,6 +127,30 @@ msgstr "วันจันทร์แห่งการอธิษฐาน"
 msgid "Knabenschiessen"
 msgstr "คนาเบนชิสเซน"
 
+#. Day before Good Friday.
+msgid "Vortag vor Karfreitag"
+msgstr "วันก่อนวันศุกร์ประเสริฐ"
+
 #. Sechseläuten.
 msgid "Sechseläuten"
 msgstr "เซ็กเซ่ะเล๊าเท่น"
+
+#. Christmas Eve.
+msgid "Heiligabend"
+msgstr "วันคริสต์มาสอีฟ"
+
+#. New Year's Eve.
+msgid "Vortag vor Neujahr"
+msgstr "วันสิ้นปี"
+
+#. Day before Ascension Day.
+msgid "Vortag vor Auffahrt"
+msgstr "วันก่อนวันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
+
+#. Bridge Holiday for Ascension Day.
+msgid "Brückentag nach Auffahrt"
+msgstr "วันหยุดเพิ่มเติมสำหรับวันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
+
+#. Bridge Holiday.
+msgid "Brückentag"
+msgstr "วันหยุดเพิ่มเติม"

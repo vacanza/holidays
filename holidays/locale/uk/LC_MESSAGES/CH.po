@@ -11,11 +11,12 @@
 #  License: MIT (see LICENSE file)
 #
 # Switzerland holidays uk localization.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.83\n"
 "POT-Creation-Date: 2023-04-10 15:41+0300\n"
-"PO-Revision-Date: 2025-10-04 11:31+0700\n"
+"PO-Revision-Date: 2025-10-08 13:09+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -126,6 +127,30 @@ msgstr "Молитовний понеділок"
 msgid "Knabenschiessen"
 msgstr "Кнабеншісен"
 
+#. Day before Good Friday.
+msgid "Vortag vor Karfreitag"
+msgstr "Переддень Страсної п’ятниці"
+
 #. Sechseläuten.
 msgid "Sechseläuten"
 msgstr "Зексельйотен"
+
+#. Christmas Eve.
+msgid "Heiligabend"
+msgstr "Святий вечір"
+
+#. New Year's Eve.
+msgid "Vortag vor Neujahr"
+msgstr "Переддень Нового року"
+
+#. Day before Ascension Day.
+msgid "Vortag vor Auffahrt"
+msgstr "Переддень Вознесіння Господнього"
+
+#. Bridge Holiday for Ascension Day.
+msgid "Brückentag nach Auffahrt"
+msgstr "День-понт після Вознесіння Господа"
+
+#. Bridge Holiday.
+msgid "Brückentag"
+msgstr "Проміжний вихідний"

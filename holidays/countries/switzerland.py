@@ -20,6 +20,7 @@ from holidays.observed_holiday_base import (
     MON_ONLY,
     TUE_TO_NONE,
     SAT_TO_NONE,
+    SUN_TO_NONE,
     ALL_TO_NEXT_MON,
 )
 
@@ -30,6 +31,9 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
     References:
         * <https://web.archive.org/web/20250201054902/https://www.bj.admin.ch/dam/bj/de/data/publiservice/service/zivilprozessrecht/kant-feiertage.pdf>
         * <https://web.archive.org/web/20251002085718/https://www.zuerich.com/en/inform-plan/useful-information-and-services/opening-hours-and-public-holidays/feiertage>
+        * <https://web.archive.org/web/20251008032850/https://www.stadt-zuerich.ch/de/politik-und-verwaltung/arbeiten-bei-der-stadt/gut-zu-wissen/ferien-urlaub/feiertage-betriebsferientage-bft.html>
+        * <https://web.archive.org/web/20230423124030/https://zuercher-bankenverband.ch/zbv/assets/uploads/2021/09/2022-Feiertagsuebersicht.pdf>
+        * <https://web.archive.org/web/20251008045946/https://zuercher-bankenverband.ch/zbv/assets/uploads/2022/09/2023-Feiertagsuebersicht.pdf>
         * <https://web.archive.org/web/20251003094601/https://www.timeanddate.com/calendar/seasons.html?year=1900&n=268>
         * <https://de.wikipedia.org/wiki/Feiertage_in_der_Schweiz>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Switzerland>
@@ -730,7 +734,11 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
-    def _populate_subdiv_zh_half_day_holidays(self):
+    def _populate_subdiv_zh_common_holidays(self):
+        """Populate list of holidays observed by both `HALF_DAY` and `OPTIONAL` categories."""
+        # Day before Good Friday.
+        self._add_holy_thursday(tr("Vortag vor Karfreitag"))
+
         if self._year >= 1902:
             # Sechseläuten.
             name = tr("Sechseläuten")
@@ -748,9 +756,47 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
                     show_observed_label=False,
                 )
 
+        # Christmas Eve.
+        self._add_christmas_eve(tr("Heiligabend"))
+
+        # New Year's Eve.
+        self._add_new_years_eve(tr("Vortag vor Neujahr"))
+
+    def _populate_subdiv_zh_half_day_holidays(self):
+        self._populate_subdiv_zh_common_holidays()
+
         if self._year >= 1899:
             # Knabenschiessen.
             self._add_holiday_1_day_past_2nd_sun_of_sep(tr("Knabenschiessen"))
+
+        # Day before Ascension Day.
+        self._add_holiday_38_days_past_easter(tr("Vortag vor Auffahrt"))
+
+    def _populate_subdiv_zh_optional_holidays(self):
+        self._populate_subdiv_zh_common_holidays()
+
+        # This is only granted if end-year bridge holidays <= 2.
+        if (
+            self._is_tuesday(self._christmas_day)
+            or self._is_wednesday(self._christmas_day)
+            or self._is_thursday(self._christmas_day)
+        ):
+            # Bridge Holiday for Ascension Day.
+            self._add_holiday_40_days_past_easter(tr("Brückentag nach Auffahrt"))
+
+        # This is only granted if end-year bridge holidays <= 3.
+        if self._year >= 1899 and not (
+            self._is_saturday(self._christmas_day) or self._is_sunday(self._christmas_day)
+        ):
+            # Knabenschiessen.
+            self._add_holiday_1_day_past_2nd_sun_of_sep(tr("Knabenschiessen"))
+
+        # Bridge Holiday.
+        name = tr("Brückentag")
+        self._add_observed(self._add_holiday_dec_27(name), rule=SAT_TO_NONE + SUN_TO_NONE)
+        self._add_observed(self._add_holiday_dec_28(name), rule=SAT_TO_NONE + SUN_TO_NONE)
+        self._add_observed(self._add_holiday_dec_29(name), rule=SAT_TO_NONE + SUN_TO_NONE)
+        self._add_observed(self._add_holiday_dec_30(name), rule=SAT_TO_NONE + SUN_TO_NONE)
 
     @property
     def _vernal_equinox_date(self) -> tuple[int, int]:

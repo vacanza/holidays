@@ -11,11 +11,12 @@
 #  License: MIT (see LICENSE file)
 #
 # Switzerland holidays.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.83\n"
 "POT-Creation-Date: 2023-04-10 15:41+0300\n"
-"PO-Revision-Date: 2025-10-04 11:30+0700\n"
+"PO-Revision-Date: 2025-10-08 13:09+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: de\n"
@@ -126,6 +127,30 @@ msgstr ""
 msgid "Knabenschiessen"
 msgstr ""
 
+#. Day before Good Friday.
+msgid "Vortag vor Karfreitag"
+msgstr ""
+
 #. Sechseläuten.
 msgid "Sechseläuten"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Heiligabend"
+msgstr ""
+
+#. New Year's Eve.
+msgid "Vortag vor Neujahr"
+msgstr ""
+
+#. Day before Ascension Day.
+msgid "Vortag vor Auffahrt"
+msgstr ""
+
+#. Bridge Holiday for Ascension Day.
+msgid "Brückentag nach Auffahrt"
+msgstr ""
+
+#. Bridge Holiday.
+msgid "Brückentag"
 msgstr ""
