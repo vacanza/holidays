@@ -1,6 +1,8 @@
-name: Check holiday updates
+name: Check financial holiday updates
 
 on:
+  schedule:
+    - cron: '0 0 2 11 *' # Run yearly on Nov 2nd at 00:00 UTC
   workflow_dispatch:
     inputs:
       dry_run:
@@ -16,39 +18,40 @@ on:
       threshold_days:
         description: 'Age threshold for files in days'
         required: false
-        default: '120'
+        default: '300'
         type: string
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
-  check-updates:
+  check-financial-updates:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      issues: write
     steps:
       - name: Checkout holidays repository
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
         with:
-          fetch-depth: 0  # Get full commit history to accurately determine when each file was last modified
+          fetch-depth: 0 # Get full commit history to accurately determine when each file was last modified
           repository: vacanza/holidays
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check holiday updates
-        id: check-updates
+      - name: Check financial holiday updates
+        id: check-financial-updates
         uses: vacanza/aux/.github/actions/check-holiday-updates@46f7899c8ed2178d1f5f019d9c88a4b1db503060
         with:
           dry_run: ${{ inputs.dry_run || false }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          paths: ${{ inputs.paths || 'holidays/countries/*.py' }}
-          threshold_days: ${{ inputs.threshold_days || '120' }}
+          paths: ${{ inputs.paths || 'holidays/financial/*.py' }}
+          threshold_days: ${{ inputs.threshold_days || '300' }}
 
       - name: Display results
         run: |
-          echo "📊 Check Holiday Updates Results:"
-          echo "  • Outdated files found: ${{ steps.check-updates.outputs.outdated_files_count }}"
-          echo "  • Issues created: ${{ steps.check-updates.outputs.issues_created_count }}"
+          echo "📊 Check Financial Holiday Updates Results:"
+          echo "  • Outdated files found: ${{ steps.check-financial-updates.outputs.outdated_files_count }}"
+          echo "  • Issues created: ${{ steps.check-financial-updates.outputs.issues_created_count }}"
 
-          if [ "${{ steps.check-updates.outputs.outdated_files_count }}" -gt "0" ]; then
+          if [ "${{ steps.check-financial-updates.outputs.outdated_files_count }}" -gt "0" ]; then
             echo "⚠️  Some holiday files may need updating!"
           else
             echo "✅ All holiday files are up to date!"
