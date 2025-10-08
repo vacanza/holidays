@@ -15,7 +15,7 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>CI/CD</td>
     <td>
-      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41BE4A&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41BE4A&style=flat" alt="Documentation status"></a>
+      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41B5BE&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41B5BE&style=flat" alt="Documentation status"></a>&nbsp;<a href="https://snyk.io/advisor/python/holidays/"><img alt="Open World Holidays Package Health Score" src="https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fsnyk.io%2Fadvisor%2Fpython%2Fholidays%2Fbadge.svg&search=%5Cd%7B1%2C3%7D%2F%5Cd%7B1%2C3%7D&style=flat&label=snyk&color=41B5BE"></a>
     </td>
   </tr>
   <tr>
@@ -27,19 +27,13 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>GitHub</td>
     <td>
-      <a href="https://github.com/vacanza/holidays/stargazers"><img src="https://img.shields.io/github/stars/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub stars"></a>&nbsp;<a href="https://github.com/vacanza/holidays/forks"><img src="https://img.shields.io/github/forks/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub forks"></a>&nbsp;<a href="https://github.com/vacanza/holidays/graphs/contributors"><img src="https://img.shields.io/github/contributors/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub contributors"></a>&nbsp;<a href="https://github.com/vacanza/holidays/commits/dev"><img src="https://img.shields.io/github/last-commit/vacanza/holidays/dev?color=41BE4A&style=flat" alt="GitHub last commit"></a>
+      <a href="https://github.com/vacanza/holidays/stargazers"><img src="https://img.shields.io/github/stars/vacanza/holidays?color=41B5BE&style=flat" alt="GitHub stars"></a>&nbsp;<a href="https://github.com/vacanza/holidays/forks"><img src="https://img.shields.io/github/forks/vacanza/holidays?color=41B5BE&style=flat" alt="GitHub forks"></a>&nbsp;<a href="https://github.com/vacanza/holidays/graphs/contributors"><img src="https://img.shields.io/github/contributors/vacanza/holidays?color=41B5BE&style=flat" alt="GitHub contributors"></a>&nbsp;<a href="https://github.com/vacanza/holidays/commits/dev"><img src="https://img.shields.io/github/last-commit/vacanza/holidays/dev?color=41B5BE&style=flat" alt="GitHub last commit"></a>
     </td>
   </tr>
   <tr>
     <td>Citation</td>
     <td>
       <a href="https://doi.org/10.5281/zenodo.14884702"><img src="https://img.shields.io/badge/DOI-10.5281/zenodo.14884702-41B5BE?style=flat" alt="Open World Holidays Framework DOI"></a>
-    </td>
-  </tr>
-  <tr>
-    <td>Snyk</td>
-    <td>
-      <a href="https://snyk.io/advisor/python/holidays/"><img src="https://snyk.io/advisor/python/holidays/badge.svg" alt="Open World Holidays Package Health Score"></a>
     </td>
   </tr>
 </table>
@@ -105,7 +99,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 245 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 248 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -357,11 +351,25 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Bouvet Island</td>
+<td>BV</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Brazil</td>
 <td>BR</td>
 <td>States: AC (Acre), AL (Alagoas), AM (Amazonas), AP (Amapá), BA (Bahia), CE (Ceará), DF (Distrito Federal), ES (Espírito Santo), GO (Goiás), MA (Maranhão), MG (Minas Gerais), MS (Mato Grosso do Sul), MT (Mato Grosso), PA (Pará), PB (Paraíba), PE (Pernambuco), PI (Piauí), PR (Paraná), RJ (Rio de Janeiro), RN (Rio Grande do Norte), RO (Rondônia), RR (Roraima), RS (Rio Grande do Sul), SC (Santa Catarina), SE (Sergipe), SP (São Paulo), TO (Tocantins)</td>
 <td>en_US, <strong>pt_BR</strong>, uk</td>
 <td>OPTIONAL</td>
+</tr>
+<tr>
+<td>British Indian Ocean Territory</td>
+<td>IO</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>British Virgin Islands</td>
@@ -810,6 +818,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, es, <strong>fr_HT</strong>, ht</td>
 <td>OPTIONAL</td>
+</tr>
+<tr>
+<td>Heard Island and McDonald Islands</td>
+<td>HM</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>Honduras</td>

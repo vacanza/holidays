@@ -10,4 +10,22 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-__version__ = "0.83"
+from holidays.no_holiday_base import NoHolidayBase
+
+
+class BouvetIsland(NoHolidayBase):
+    """Bouvet Island holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Bouvet_Island>
+    """
+
+    country = "BV"
+
+
+class BV(BouvetIsland):
+    pass
+
+
+class BVT(BouvetIsland):
+    pass

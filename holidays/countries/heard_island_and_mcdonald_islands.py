@@ -10,4 +10,22 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-__version__ = "0.83"
+from holidays.no_holiday_base import NoHolidayBase
+
+
+class HeardIslandAndMcDonaldIslands(NoHolidayBase):
+    """Heard Island and McDonald Islands holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands>
+    """
+
+    country = "HM"
+
+
+class HM(HeardIslandAndMcDonaldIslands):
+    pass
+
+
+class HMD(HeardIslandAndMcDonaldIslands):
+    pass
