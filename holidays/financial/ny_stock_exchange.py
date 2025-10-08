@@ -29,6 +29,7 @@ from holidays.calendars.gregorian import (
 )
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
+from holidays.constants import HALF_DAY
 
 
 class NewYorkStockExchange(
@@ -122,6 +123,8 @@ class NewYorkStockExchange(
         # XMAS DAY: Dec 25th - every year
         self._move_holiday(self._add_christmas_day("Christmas Day"))
 
+        self._populate_half_day_holidays()
+
         # Special holidays.
         if self._year == 1914:
             # Beginning of WWI.
@@ -137,6 +140,25 @@ class NewYorkStockExchange(
             # Wednesday special holiday.
             for dt in (_timedelta(begin, n) for n in range(0, (end - begin).days + 1, 7)):
                 self._add_holiday("Paper Crisis", dt)
+
+def _populate_half_day_holidays(self):
+        # Half-day holidays (market closes at 13:00).
+        # Source: https://www.nyse.com/markets/hours-calendars
+        name_half_day = " ({})".format(HALF_DAY)
+
+        # Day before Independence Day (July 3rd).
+        if self._is_weekday(JUL, 4):
+            self._add_holiday_jul_3("Day before Independence Day" + name_half_day)
+
+        # Day after Thanksgiving (aka Black Friday).
+        self._add_holiday_1_day_past_4th_thu_of_nov(
+            "Day after Thanksgiving" + name_half_day
+        )
+
+        # Christmas Eve.
+        # If Christmas Day is on a weekday, Christmas Eve is a half-day.
+        if self._is_weekday(DEC, 25):
+            self._add_holiday_dec_24("Christmas Eve" + name_half_day)
 
 
 class XNYS(NewYorkStockExchange):
@@ -184,6 +206,8 @@ class NewYorkStockExchangeStaticHolidays:
 
     # Hurricane Sandy.
     name_hurricane_sandy = "Hurricane Sandy"
+
+    
 
     special_public_holidays = {
         1888: (
@@ -285,3 +309,4 @@ class NewYorkStockExchangeStaticHolidays:
         2018: (DEC, 5, "National Day of Mourning for former President George H. W. Bush"),
         2025: (JAN, 9, "National Day of Mourning for former President Jimmy Carter"),
     }
+    
