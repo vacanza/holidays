@@ -128,7 +128,7 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
     def _populate_subdiv_nir_public_holidays(self):
         if self._year >= 1903:
             # Saint Patrick's Day.
-            self._add_observed(self._add_holiday_mar_17(tr("Saint Patrick's Day")))
+            self._add_observed(self._add_saint_patricks_day(tr("Saint Patrick's Day")))
 
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
