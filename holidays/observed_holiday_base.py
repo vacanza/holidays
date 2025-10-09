@@ -11,13 +11,12 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN, _timedelta
 from holidays.holiday_base import DateArg, HolidayBase
 
 
-class ObservedRule(dict[int, Optional[int]]):
+class ObservedRule(dict[int, int | None]):
     __slots__ = ()
 
     def __add__(self, other):
@@ -106,8 +105,8 @@ class ObservedHolidayBase(HolidayBase):
 
     def __init__(
         self,
-        observed_rule: Optional[ObservedRule] = None,
-        observed_since: Optional[int] = None,
+        observed_rule: ObservedRule | None = None,
+        observed_since: int | None = None,
         *args,
         **kwargs,
     ):
@@ -127,7 +126,7 @@ class ObservedHolidayBase(HolidayBase):
                 return dt_work
         return dt
 
-    def _get_observed_date(self, dt: date, rule: ObservedRule) -> Optional[date]:
+    def _get_observed_date(self, dt: date, rule: ObservedRule) -> date | None:
         delta = rule.get(dt.weekday(), 0)
         if delta:
             return (
@@ -143,11 +142,11 @@ class ObservedHolidayBase(HolidayBase):
 
     def _add_observed(
         self,
-        dt: Optional[DateArg] = None,
-        name: Optional[str] = None,
-        rule: Optional[ObservedRule] = None,
+        dt: DateArg | None = None,
+        name: str | None = None,
+        rule: ObservedRule | None = None,
         show_observed_label: bool = True,
-    ) -> tuple[bool, Optional[date]]:
+    ) -> tuple[bool, date | None]:
         if dt is None:
             return False, None
 
@@ -196,8 +195,8 @@ class ObservedHolidayBase(HolidayBase):
         return True, dt_observed
 
     def _move_holiday(
-        self, dt: date, rule: Optional[ObservedRule] = None, show_observed_label: bool = True
-    ) -> tuple[bool, Optional[date]]:
+        self, dt: date, rule: ObservedRule | None = None, show_observed_label: bool = True
+    ) -> tuple[bool, date | None]:
         is_observed, dt_observed = self._add_observed(
             dt, rule=rule, show_observed_label=show_observed_label
         )

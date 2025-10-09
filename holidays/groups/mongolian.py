@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.mongolian import _MongolianLunisolar
 from holidays.groups.eastern import EasternCalendarHolidays
@@ -27,8 +26,8 @@ class MongolianCalendarHolidays(EasternCalendarHolidays):
         self._mongolian_calendar_show_estimated = show_estimated
 
     def _add_mongolian_calendar_holiday(
-        self, name: str, dt_estimated: tuple[Optional[date], bool], days_delta: int = 0
-    ) -> Optional[date]:
+        self, name: str, dt_estimated: tuple[date | None, bool], days_delta: int = 0
+    ) -> date | None:
         """
         Add Mongolian calendar holiday.
 
@@ -40,7 +39,7 @@ class MongolianCalendarHolidays(EasternCalendarHolidays):
             name, dt_estimated, self._mongolian_calendar_show_estimated, days_delta
         )
 
-    def _add_buddha_day(self, name) -> Optional[date]:
+    def _add_buddha_day(self, name) -> date | None:
         """
         Add Buddha Day.
 
@@ -53,7 +52,7 @@ class MongolianCalendarHolidays(EasternCalendarHolidays):
             name, self._mongolian_calendar.buddha_day_date(self._year)
         )
 
-    def _add_genghis_khan_day(self, name) -> Optional[date]:
+    def _add_genghis_khan_day(self, name) -> date | None:
         """
         Add Genghis Khan's Birthday.
 
@@ -66,7 +65,7 @@ class MongolianCalendarHolidays(EasternCalendarHolidays):
             name, self._mongolian_calendar.genghis_khan_day_date(self._year)
         )
 
-    def _add_tsagaan_sar(self, name) -> Optional[date]:
+    def _add_tsagaan_sar(self, name) -> date | None:
         """
         Add Tsagaan Sar (Mongolian Lunar New Year).
 
@@ -78,7 +77,7 @@ class MongolianCalendarHolidays(EasternCalendarHolidays):
             name, self._mongolian_calendar.tsagaan_sar_date(self._year)
         )
 
-    def _add_tsagaan_sar_day_2(self, name) -> Optional[date]:
+    def _add_tsagaan_sar_day_2(self, name) -> date | None:
         """
         Add Tsagaan Sar Day 2 (Mongolian Lunar New Year).
 
@@ -90,7 +89,7 @@ class MongolianCalendarHolidays(EasternCalendarHolidays):
             name, self._mongolian_calendar.tsagaan_sar_date(self._year), days_delta=+1
         )
 
-    def _add_tsagaan_sar_day_3(self, name) -> Optional[date]:
+    def _add_tsagaan_sar_day_3(self, name) -> date | None:
         """
         Add Tsagaan Sar Day 3 (Mongolian Lunar New Year).
 

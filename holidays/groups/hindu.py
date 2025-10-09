@@ -12,7 +12,6 @@
 
 from collections.abc import Iterable
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.hindu import _HinduLunisolar
 from holidays.groups.eastern import EasternCalendarHolidays
@@ -28,8 +27,8 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         self._hindu_calendar_show_estimated = show_estimated
 
     def _add_hindu_calendar_holiday(
-        self, name: str, dt_estimated: tuple[Optional[date], bool], days_delta: int = 0
-    ) -> Optional[date]:
+        self, name: str, dt_estimated: tuple[date | None, bool], days_delta: int = 0
+    ) -> date | None:
         """
         Add Hindu calendar holiday.
 
@@ -54,7 +53,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, dts_estimated, self._hindu_calendar_show_estimated, days_delta
         )
 
-    def _add_bhai_dooj(self, name) -> Optional[date]:
+    def _add_bhai_dooj(self, name) -> date | None:
         """
         Add Bhai Dooj.
 
@@ -66,7 +65,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.govardhan_puja_date(self._year), days_delta=+1
         )
 
-    def _add_buddha_purnima(self, name) -> Optional[date]:
+    def _add_buddha_purnima(self, name) -> date | None:
         """
         Add Buddha Purnima.
 
@@ -79,7 +78,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.buddha_purnima_date(self._year)
         )
 
-    def _add_chhath_puja(self, name) -> Optional[date]:
+    def _add_chhath_puja(self, name) -> date | None:
         """
         Add Chhath Puja.
 
@@ -91,7 +90,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.chhath_puja_date(self._year)
         )
 
-    def _add_diwali(self, name) -> Optional[date]:
+    def _add_diwali(self, name) -> date | None:
         """
         Add Diwali Festival.
 
@@ -103,12 +102,12 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.diwali_date(self._year))
 
-    def _add_diwali_india(self, name) -> Optional[date]:
+    def _add_diwali_india(self, name) -> date | None:
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.diwali_india_date(self._year)
         )
 
-    def _add_dussehra(self, name) -> Optional[date]:
+    def _add_dussehra(self, name) -> date | None:
         """
         Add Dussehra Festival.
 
@@ -121,7 +120,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.dussehra_date(self._year)
         )
 
-    def _add_ganesh_chaturthi(self, name) -> Optional[date]:
+    def _add_ganesh_chaturthi(self, name) -> date | None:
         """
         Add Ganesh Chaturthi.
 
@@ -133,7 +132,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.ganesh_chaturthi_date(self._year)
         )
 
-    def _add_gau_krida(self, name) -> Optional[date]:
+    def _add_gau_krida(self, name) -> date | None:
         """
         Add Gau Krida.
 
@@ -143,7 +142,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.govardhan_puja_date(self._year), days_delta=-1
         )
 
-    def _add_govardhan_puja(self, name) -> Optional[date]:
+    def _add_govardhan_puja(self, name) -> date | None:
         """
         Add Govardhan Puja.
 
@@ -155,7 +154,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.govardhan_puja_date(self._year)
         )
 
-    def _add_gudi_padwa(self, name) -> Optional[date]:
+    def _add_gudi_padwa(self, name) -> date | None:
         """
         Add Gudi Padwa / Ugadi.
 
@@ -186,7 +185,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.guru_gobind_singh_jayanti_date(self._year)
         )
 
-    def _add_guru_nanak_jayanti(self, name) -> Optional[date]:
+    def _add_guru_nanak_jayanti(self, name) -> date | None:
         """
         Add Guru Nanak Jayanti.
 
@@ -199,7 +198,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.guru_nanak_jayanti_date(self._year)
         )
 
-    def _add_gyalpo_losar(self, name) -> Optional[date]:
+    def _add_gyalpo_losar(self, name) -> date | None:
         """
         Add Gyalpo Losar.
 
@@ -212,7 +211,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.gyalpo_losar_date(self._year)
         )
 
-    def _add_nepal_holi(self, name) -> Optional[date]:
+    def _add_nepal_holi(self, name) -> date | None:
         """
         Add Holi Festival for Nepal (Mountain & Hilly).
 
@@ -225,7 +224,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.holi_date(self._year), days_delta=-1
         )
 
-    def _add_holi(self, name) -> Optional[date]:
+    def _add_holi(self, name) -> date | None:
         """
         Add Holi Festival.
 
@@ -236,7 +235,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.holi_date(self._year))
 
-    def _add_janmashtami(self, name) -> Optional[date]:
+    def _add_janmashtami(self, name) -> date | None:
         """
         Add Janmashtami.
 
@@ -248,7 +247,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.janmashtami_date(self._year)
         )
 
-    def _add_maha_saptami(self, name) -> Optional[date]:
+    def _add_maha_saptami(self, name) -> date | None:
         """
         Add Maha Saptami.
 
@@ -260,7 +259,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.maha_ashtami_date(self._year), days_delta=-1
         )
 
-    def _add_maha_ashtami(self, name) -> Optional[date]:
+    def _add_maha_ashtami(self, name) -> date | None:
         """
         Add Maha Ashtami.
 
@@ -272,7 +271,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.maha_ashtami_date(self._year)
         )
 
-    def _add_maha_navami(self, name) -> Optional[date]:
+    def _add_maha_navami(self, name) -> date | None:
         """
         Add Maha Navami.
 
@@ -284,7 +283,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.maha_navami_date(self._year)
         )
 
-    def _add_maha_shivaratri(self, name) -> Optional[date]:
+    def _add_maha_shivaratri(self, name) -> date | None:
         """
         Add Maha Shivaratri.
 
@@ -296,7 +295,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.maha_shivaratri_date(self._year)
         )
 
-    def _add_mahavir_jayanti(self, name) -> Optional[date]:
+    def _add_mahavir_jayanti(self, name) -> date | None:
         """
         Add Mahavir Jayanti.
 
@@ -308,7 +307,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.mahavir_jayanti_date(self._year)
         )
 
-    def _add_makar_sankranti(self, name) -> Optional[date]:
+    def _add_makar_sankranti(self, name) -> date | None:
         """
         Add Makar Sankranti.
 
@@ -320,7 +319,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.makar_sankranti_date(self._year)
         )
 
-    def _add_onam(self, name) -> Optional[date]:
+    def _add_onam(self, name) -> date | None:
         """
         Add Onam.
 
@@ -330,7 +329,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.onam_date(self._year))
 
-    def _add_papankusha_ekadashi(self, name) -> Optional[date]:
+    def _add_papankusha_ekadashi(self, name) -> date | None:
         """
         Add Papankusha Ekadashi.
 
@@ -342,7 +341,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.dussehra_date(self._year), days_delta=+1
         )
 
-    def _add_papankusha_duwadashi(self, name) -> Optional[date]:
+    def _add_papankusha_duwadashi(self, name) -> date | None:
         """
         Add Papankusha Duwadashi.
 
@@ -353,7 +352,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.dussehra_date(self._year), days_delta=+2
         )
 
-    def _add_pongal(self, name) -> Optional[date]:
+    def _add_pongal(self, name) -> date | None:
         """
         Add Pongal.
 
@@ -365,7 +364,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.pongal_date(self._year))
 
-    def _add_raksha_bandhan(self, name) -> Optional[date]:
+    def _add_raksha_bandhan(self, name) -> date | None:
         """
         Add Raksha Bandhan.
 
@@ -378,7 +377,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.raksha_bandhan_date(self._year)
         )
 
-    def _add_ram_navami(self, name) -> Optional[date]:
+    def _add_ram_navami(self, name) -> date | None:
         """
         Add Ram Navami.
 
@@ -390,7 +389,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.ram_navami_date(self._year)
         )
 
-    def _add_sharad_navratri(self, name) -> Optional[date]:
+    def _add_sharad_navratri(self, name) -> date | None:
         """
         Add Navratri / Sharad Navratri.
 
@@ -403,7 +402,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.sharad_navratri_date(self._year)
         )
 
-    def _add_sonam_losar(self, name) -> Optional[date]:
+    def _add_sonam_losar(self, name) -> date | None:
         """
         Add Sonam Losar.
 
@@ -416,7 +415,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.sonam_losar_date(self._year)
         )
 
-    def _add_tamu_losar(self, name) -> Optional[date]:
+    def _add_tamu_losar(self, name) -> date | None:
         """
         Add Tamu Losar.
 
@@ -428,7 +427,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.tamu_losar_date(self._year)
         )
 
-    def _add_thaipusam(self, name) -> Optional[date]:
+    def _add_thaipusam(self, name) -> date | None:
         """
         Add Thaipusam.
 
@@ -440,7 +439,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.thaipusam_date(self._year)
         )
 
-    def _add_thiruvalluvar_day(self, name) -> Optional[date]:
+    def _add_thiruvalluvar_day(self, name) -> date | None:
         """
         Add Thiruvalluvar Day and Mattu Pongal.
 
@@ -456,7 +455,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.pongal_date(self._year), days_delta=+1
         )
 
-    def _add_uzhavar_thirunal(self, name) -> Optional[date]:
+    def _add_uzhavar_thirunal(self, name) -> date | None:
         """
         Add Uzhavar Thirunal.
 
@@ -470,7 +469,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.pongal_date(self._year), days_delta=+2
         )
 
-    def _add_vaisakhi(self, name) -> Optional[date]:
+    def _add_vaisakhi(self, name) -> date | None:
         """
         Add Vaisakhi.
 

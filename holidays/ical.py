@@ -13,7 +13,6 @@
 import re
 import uuid
 from datetime import date, datetime, timezone
-from typing import Union
 
 from holidays.calendars.gregorian import _timedelta
 from holidays.holiday_base import HolidayBase
@@ -166,7 +165,7 @@ class ICalExporter:
             "END:VEVENT",
         ]
 
-    def generate(self, return_bytes: bool = False) -> Union[str, bytes]:
+    def generate(self, return_bytes: bool = False) -> str | bytes:
         """Generate iCalendar data.
 
         Args:
