@@ -1,3 +1,7 @@
+-include cspell/Makefile
+
+.PHONY: spellcheck
+
 help:
 	@echo "Usage: make <target>"
 	@echo "    check         run pre-commit and tests"
@@ -7,6 +11,7 @@ help:
 	@echo "    package       build package distribution"
 	@echo "    pre-commit    run pre-commit against all files"
 	@echo "    setup         setup development environment"
+	@echo "    spellcheck    run spell check across the repository (code, docs, l10n)"
 	@echo "    test          run tests (in parallel)"
 	@echo "    tox           run tox (in parallel)"
 
@@ -14,7 +19,15 @@ check:
 	make l10n
 	make pre-commit
 	make doc
+	make spellcheck
 	make test
+
+sort-custom-dict:
+	python tools/sort_cspell_dict.py
+
+spellcheck: sort-custom-dict
+	@command -v docker >/dev/null 2>&1 || { echo "ERROR: docker not found. Install Docker or skip spellcheck."; exit 127; }
+	$(MAKE) cspell-check
 
 clean:
 	@for ext in mo pot pyc; do \
