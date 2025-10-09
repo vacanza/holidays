@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.83\n"
 "POT-Creation-Date: 2023-04-10 15:41+0300\n"
-"PO-Revision-Date: 2025-10-08 13:09+0700\n"
+"PO-Revision-Date: 2025-10-09 10:44+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -129,7 +129,7 @@ msgstr "Кнабеншісен"
 
 #. Day before Good Friday.
 msgid "Vortag vor Karfreitag"
-msgstr "Переддень Страсної п’ятниці"
+msgstr "Переддень Страсної пʼятниці"
 
 #. Sechseläuten.
 msgid "Sechseläuten"
@@ -149,7 +149,7 @@ msgstr "Переддень Вознесіння Господнього"
 
 #. Bridge Holiday for Ascension Day.
 msgid "Brückentag nach Auffahrt"
-msgstr "День-понт після Вознесіння Господа"
+msgstr "Проміжний вихідний після Вознесіння Господнього"
 
 #. Bridge Holiday.
 msgid "Brückentag"

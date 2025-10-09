@@ -785,9 +785,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             self._add_holiday_40_days_past_easter(tr("Brückentag nach Auffahrt"))
 
         # This is only granted if end-year bridge holidays <= 3.
-        if self._year >= 1899 and not (
-            self._is_saturday(self._christmas_day) or self._is_sunday(self._christmas_day)
-        ):
+        if self._year >= 1899 and not self._is_weekend(self._christmas_day):
             # Knabenschiessen.
             self._add_holiday_1_day_past_2nd_sun_of_sep(tr("Knabenschiessen"))
 

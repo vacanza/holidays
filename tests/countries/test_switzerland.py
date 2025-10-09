@@ -871,6 +871,8 @@ class TestSwitzerland(CommonCountryTests, TestCase):
     def test_bridge_holiday_for_ascension_day(self):
         name = "Brückentag nach Auffahrt"
 
+        self.assertNoHolidayName(name)
+
         for subdiv, holidays in self.subdiv_optional_holidays.items():
             if subdiv == "ZH":
                 self.assertHolidayName(
@@ -1143,7 +1145,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-01-06", "Богоявлення"),
             ("2023-03-01", "Річниця проголошення Республіки"),
             ("2023-03-19", "День Святого Йосипа"),
-            ("2023-04-06", "Переддень Страсної п’ятниці"),
+            ("2023-04-06", "Переддень Страсної пʼятниці"),
             ("2023-04-07", "Страсна пʼятниця"),
             ("2023-04-10", "Великодній понеділок"),
             ("2023-04-13", "Свято перемоги під Нефельсом"),
