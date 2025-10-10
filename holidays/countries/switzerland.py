@@ -734,7 +734,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
-    def _populate_subdiv_zh_common_holidays(self):
+    def _populate_subdiv_zh_common(self):
         """Populate list of holidays observed by both `HALF_DAY` and `OPTIONAL` categories."""
         # Day before Good Friday.
         self._add_holy_thursday(tr("Vortag vor Karfreitag"))
@@ -761,7 +761,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         self._add_new_years_eve(tr("Vortag vor Neujahr"))
 
     def _populate_subdiv_zh_half_day_holidays(self):
-        self._populate_subdiv_zh_common_holidays()
+        self._populate_subdiv_zh_common()
 
         if self._year >= 1899:
             # Knabenschiessen.
@@ -771,19 +771,17 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         self._add_holiday_38_days_past_easter(tr("Vortag vor Auffahrt"))
 
     def _populate_subdiv_zh_optional_holidays(self):
-        self._populate_subdiv_zh_common_holidays()
+        self._populate_subdiv_zh_common()
+
+        dec_25 = self._christmas_day
 
         # This is only granted if end-year bridge holidays <= 2.
-        if (
-            self._is_tuesday(self._christmas_day)
-            or self._is_wednesday(self._christmas_day)
-            or self._is_thursday(self._christmas_day)
-        ):
+        if self._is_tuesday(dec_25) or self._is_wednesday(dec_25) or self._is_thursday(dec_25):
             # Bridge Holiday for Ascension Day.
             self._add_holiday_40_days_past_easter(tr("Brückentag nach Auffahrt"))
 
         # This is only granted if end-year bridge holidays <= 3.
-        if self._year >= 1899 and not self._is_weekend(self._christmas_day):
+        if self._year >= 1899 and not self._is_weekend(dec_25):
             # Knabenschiessen.
             self._add_holiday_1_day_past_2nd_sun_of_sep(tr("Knabenschiessen"))
 
@@ -796,7 +794,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
 
     @property
     def _vernal_equinox_date(self) -> tuple[int, int]:
-        """Return the Vernal Equinox date for Zurich (1902–1951)."""
+        """Return the Vernal Equinox date for Zurich (1902-1951)."""
         day = 21
         if (self._year >= 1916 and self._year % 4 == 0) or self._year == 1949:
             day = 20
