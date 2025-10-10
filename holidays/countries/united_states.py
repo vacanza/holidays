@@ -1338,7 +1338,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Started in Boston in 1737 for the US.
 
         # Saint Patrick's Day.
-        self._add_holiday_mar_17(tr("Saint Patrick's Day"))
+        self._add_saint_patricks_day(tr("Saint Patrick's Day"))
 
         # Mother's Day.
         # Starts to be observed by most US states by 1911.

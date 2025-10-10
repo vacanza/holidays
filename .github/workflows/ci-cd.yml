@@ -41,7 +41,7 @@ jobs:
         uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c
         with:
           check-latest: true
-          python-version: '3.13'
+          python-version: '3.14'
 
       - name: Run pre-commit
         uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd
@@ -129,7 +129,7 @@ jobs:
           cache-dependency-path: |
             requirements/build.txt
           check-latest: true
-          python-version: '3.13'
+          python-version: '3.14'
 
       - name: Install dependencies
         run: |
@@ -185,7 +185,7 @@ jobs:
             requirements/runtime.txt
             requirements/tests.txt
           check-latest: true
-          python-version: '3.13'
+          python-version: '3.14'
 
       - name: Get package artifacts
         uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0
@@ -217,7 +217,7 @@ jobs:
         with:
           cache: pip
           cache-dependency-path: requirements/docs.txt
-          python-version: '3.13'
+          python-version: '3.14'
 
       - name: Install dependencies
         run: |
