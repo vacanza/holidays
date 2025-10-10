@@ -62,7 +62,10 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
         the corresponding dates in the Umm al-Qura calendar.
         """
         IslamicHolidays.__init__(
-            self, cls=IranIslamicHolidays, show_estimated=islamic_show_estimated, calendar_shift=+1
+            self,
+            cls=IranIslamicHolidays,
+            show_estimated=islamic_show_estimated,
+            calendar_delta_days=+1,
         )
         PersianCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)

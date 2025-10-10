@@ -3970,8 +3970,15 @@ class _IslamicLunar:
         2076: (DEC, 5),
     }
 
-    def __init__(self, calendar_shift: int = 0) -> None:
-        self.__calendar_shift = calendar_shift
+    def __init__(self, calendar_delta_days: int = 0) -> None:
+        """
+        Args:
+            calendar_delta_days:
+                Number of days to shift all calculated holiday dates.
+                Positive values move holidays forward, negative values move them backward.
+                Defaults to 0 (no shift).
+        """
+        self.__calendar_delta_days = calendar_delta_days
 
     def _get_holiday(self, holiday: str, year: int) -> Iterable[tuple[date, bool]]:
         confirmed_dates = getattr(
@@ -3983,22 +3990,22 @@ class _IslamicLunar:
             )
         )
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
-        calendar_shift = self.__calendar_shift
+        calendar_delta_days = self.__calendar_delta_days
 
         for check_year in (year - 1, year):
-            is_checked_year = check_year in confirmed_dates
+            is_confirmed_year = check_year in confirmed_dates
             for dt in _normalize_tuple(
                 confirmed_dates.get(check_year, estimated_dates.get(check_year, ()))
             ):
-                is_confirmed = is_checked_year or any(
+                is_confirmed = is_confirmed_year or any(
                     year_from <= check_year <= year_to for year_from, year_to in confirmed_years
                 )
 
-                hol_date = date(check_year, *dt)
+                holiday_date = date(check_year, *dt)
                 yield (
-                    _timedelta(hol_date, calendar_shift)
-                    if calendar_shift and not is_checked_year
-                    else hol_date,
+                    _timedelta(holiday_date, calendar_delta_days)
+                    if calendar_delta_days and not is_confirmed_year
+                    else holiday_date,
                     not is_confirmed,
                 )
 

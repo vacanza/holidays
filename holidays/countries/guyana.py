@@ -93,7 +93,7 @@ class Guyana(
             self,
             cls=GuyanaIslamicHolidays,
             show_estimated=islamic_show_estimated,
-            calendar_shift=+1,
+            calendar_delta_days=+1,
         )
         StaticHolidays.__init__(self, cls=GuyanaStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)

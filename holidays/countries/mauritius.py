@@ -77,7 +77,7 @@ class Mauritius(
             self,
             cls=MauritiusIslamicHolidays,
             show_estimated=islamic_show_estimated,
-            calendar_shift=+1,
+            calendar_delta_days=+1,
         )
         StaticHolidays.__init__(self, cls=MauritiusStaticHolidays)
         super().__init__(*args, **kwargs)

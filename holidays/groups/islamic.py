@@ -25,11 +25,11 @@ class IslamicHolidays(EasternCalendarHolidays):
     calendar consisting of 12 lunar months in a year of 354 or 355 days.
     """
 
-    def __init__(self, cls=None, show_estimated=True, calendar_shift=0) -> None:
+    def __init__(self, cls=None, show_estimated=True, calendar_delta_days=0) -> None:
         self._islamic_calendar = (
-            cls(calendar_shift=calendar_shift)
+            cls(calendar_delta_days=calendar_delta_days)
             if cls
-            else _IslamicLunar(calendar_shift=calendar_shift)
+            else _IslamicLunar(calendar_delta_days=calendar_delta_days)
         )
         self._islamic_calendar_show_estimated = show_estimated
 

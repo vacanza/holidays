@@ -105,7 +105,7 @@ class SriLanka(
             self,
             cls=SriLankaIslamicHolidays,
             show_estimated=islamic_show_estimated,
-            calendar_shift=+1,
+            calendar_delta_days=+1,
         )
         SinhalaCalendarHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=SriLankaStaticHolidays)
