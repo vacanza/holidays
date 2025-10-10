@@ -750,10 +750,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
                 )
             # From 1902-1951 this was the First Monday following the Vernal Equinox.
             else:
-                self._move_holiday(
-                    self._add_holiday(name, self._vernal_equinox_date),
-                    rule=ALL_TO_NEXT_MON,
-                    show_observed_label=False,
+                self._move_holiday_forced(
+                    self._add_holiday(name, self._vernal_equinox_date), rule=ALL_TO_NEXT_MON
                 )
 
         # Christmas Eve.
