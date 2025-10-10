@@ -210,8 +210,8 @@ class ObservedHolidayBase(HolidayBase):
         return is_observed, dt_observed if is_observed else dt
 
     def _move_holiday_forced(
-        self, dt: date, rule: Optional[ObservedRule] = None
-    ) -> tuple[bool, Optional[date]]:
+        self, dt: date, rule: ObservedRule | None = None
+    ) -> tuple[bool, date | None]:
         return self._move_holiday(dt, rule=rule, force_observed=True, show_observed_label=False)
 
     def _populate_observed(self, dts: set[date], multiple: bool = False) -> None:
