@@ -20,10 +20,10 @@ class TestBouvetIsland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(1900, 2050)
-        super().setUpClass(BouvetIsland, years=cls.full_range)
+        super().setUpClass(BouvetIsland)
 
     def test_country_aliases(self):
         self.assertAliases(BouvetIsland, BV, BVT)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(BouvetIsland(years=self.full_range))
+        self.assertNoHolidays(BouvetIsland)

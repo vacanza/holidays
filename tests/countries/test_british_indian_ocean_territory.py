@@ -20,10 +20,10 @@ class TestBritishIndianOceanTerritory(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(1900, 2050)
-        super().setUpClass(BritishIndianOceanTerritory, years=cls.full_range)
+        super().setUpClass(BritishIndianOceanTerritory)
 
     def test_country_aliases(self):
         self.assertAliases(BritishIndianOceanTerritory, IO, IOT)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(BritishIndianOceanTerritory(years=self.full_range))
+        self.assertNoHolidays(BritishIndianOceanTerritory)
