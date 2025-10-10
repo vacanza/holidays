@@ -26,7 +26,7 @@ from holidays.constants import PUBLIC
 from holidays.groups import EasternCalendarHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase
 
-PYTHON_LATEST_SUPPORTED_VERSION = "3.13"
+PYTHON_LATEST_SUPPORTED_VERSION = "3.14"
 PYTHON_VERSION = f"{sys.version_info.major}.{sys.version_info.minor}"
 
 
