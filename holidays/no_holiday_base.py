@@ -9,19 +9,13 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-#
-# Canary Islands holidays.
-#
-msgid ""
-msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
-"POT-Creation-Date: 2025-09-30 17:35+0000\n"
-"PO-Revision-Date: 2025-09-30 17:35+0000\n"
-"Last-Translator: AryaPhansalkar <aryacomets@gmail.com>\n"
-"Language-Team: Holidays Localization Team\n"
-"Language: es\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: es\n"
+
+from holidays.holiday_base import HolidayBase
+
+
+class NoHolidayBase(HolidayBase):
+    """A dummy holiday class that does not contain any holidays."""
+
+    def _populate(self, year: int) -> None:
+        """No holidays."""
+        return None

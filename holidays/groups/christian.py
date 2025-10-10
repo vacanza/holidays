@@ -455,6 +455,16 @@ class ChristianHolidays:
         """
         return self._add_holiday_mar_19(name)
 
+    def _add_saint_patricks_day(self, name) -> date:
+        """
+        Add Saint Patrick's Day (March 17th).
+
+        Saint Patrick's Day is a religious and cultural holiday held on 17 March,
+        the traditional death date of Saint Patrick, the foremost patron saint of Ireland.
+        https://en.wikipedia.org/wiki/Saint_Patrick's_Day
+        """
+        return self._add_holiday_mar_17(name)
+
     def _add_saints_peter_and_paul_day(self, name) -> date:
         """
         Add Feast of Saints Peter and Paul (June 29th).

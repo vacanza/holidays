@@ -24,7 +24,7 @@ from holidays.calendars.gregorian import SUN
 from holidays.groups import EasternCalendarHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase
 
-PYTHON_LATEST_SUPPORTED_VERSION = "3.13"
+PYTHON_LATEST_SUPPORTED_VERSION = "3.14"
 PYTHON_VERSION = f"{sys.version_info.major}.{sys.version_info.minor}"
 
 
