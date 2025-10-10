@@ -448,8 +448,6 @@ def list_long_weekends(
         holidays_obj = country_holidays(country, subdiv=subdiv, years=year)
     except NotImplementedError:
         return []
-    except Exception:
-        return []
 
     checked = set()
     long_weekends = []
@@ -465,9 +463,6 @@ def list_long_weekends(
 
         start = prev_work + timedelta(days=1)
         end = next_work - timedelta(days=1)
-
-        if start > end:
-            continue
 
         length = (end - start).days + 1
 
