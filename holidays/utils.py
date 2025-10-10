@@ -18,10 +18,12 @@ __all__ = (
     "list_localized_financial",
     "list_supported_countries",
     "list_supported_financial",
+    "list_long_weekends",
 )
 
 import warnings
 from collections.abc import Iterable
+from datetime import timedelta
 from functools import cache
 from typing import Optional, Union
 
@@ -435,3 +437,56 @@ def list_supported_financial(include_aliases: bool = True) -> dict[str, list[str
         subdivision codes.
     """
     return _list_supported_entities(EntityLoader.get_financial_codes(include_aliases))
+
+
+def list_long_weekends(
+    country: str,
+    year: int,
+    subdiv: Optional[str] = None,
+) -> list:
+    try:
+        holidays_obj = country_holidays(country, subdiv=subdiv, years=year)
+    except NotImplementedError:
+        return []
+    except Exception:
+        return []
+
+    checked = set()
+    long_weekends = []
+
+    holidays_in_year = set(holidays_obj.keys())
+
+    for hol in sorted(holidays_in_year):
+        if hol in checked:
+            continue
+
+        prev_work = holidays_obj.get_nth_working_day(hol, -1)
+        next_work = holidays_obj.get_nth_working_day(hol, +1)
+
+        start = prev_work + timedelta(days=1)
+        end = next_work - timedelta(days=1)
+
+        if start > end:
+            continue
+
+        length = (end - start).days + 1
+
+        has_weekend = any(
+            (d.weekday() in getattr(holidays_obj, "weekend", {5, 6}))
+            for d in (start + timedelta(days=i) for i in range(length))
+        )
+
+        if length >= 3 and has_weekend:
+            long_weekends.append(
+                {
+                    "start": start,
+                    "end": end,
+                    "length": length,
+                }
+            )
+
+            for d in holidays_in_year:
+                if start <= d <= end:
+                    checked.add(d)
+
+    return long_weekends

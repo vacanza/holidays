@@ -28,6 +28,7 @@ from holidays.utils import (
     list_localized_financial,
     list_supported_countries,
     list_supported_financial,
+    list_long_weekends,
 )
 from tests.common import PYTHON_LATEST_SUPPORTED_VERSION, PYTHON_VERSION
 
@@ -219,3 +220,33 @@ class TestListSupportedEntities(unittest.TestCase):
             1 for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
         )
         self.assertEqual(financial_count, len(supported_financial))
+        financial_files = [
+            path for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
+        ]
+        self.assertEqual(len(financial_files), len(supported_financial))
+
+
+class TestListLongWeekends(unittest.TestCase):
+    def test_valid_country_usa(self):
+        results = list_long_weekends("US", 2024)
+        self.assertIsInstance(results, list)
+        self.assertTrue(any(r["length"] >= 3 for r in results))
+
+    def test_invalid_country_code(self):
+        results = list_long_weekends("JA", 2024)
+        self.assertEqual(results, [], "Expected empty list for invalid country code")
+
+    def test_subdivision(self):
+        results = list_long_weekends("US", 2024, subdiv="CA")
+        self.assertIsInstance(results, list)
+
+    def test_long_weekend_structure(self):
+        results = list_long_weekends("IN", 2024)
+        for w in results:
+            self.assertIsInstance(w["start"], date)
+            self.assertIsInstance(w["end"], date)
+            self.assertIsInstance(w["length"], int)
+
+    def test_empty_year(self):
+        results = list_long_weekends("US", 2500)
+        self.assertIsInstance(results, list)
