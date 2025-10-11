@@ -380,17 +380,29 @@ class TestChile(CommonCountryTests, TestCase):
             "2021-12-25",
         )
 
-    def test_provinces(self):
-        self.assertSubdivApHoliday(
-            "2020-06-07",
-            "2021-06-07",
-        )
-        self.assertNoSubdivApHoliday("2012-06-07")
-        self.assertSubdivNbHoliday(
-            "2020-08-20",
-            "2021-08-20",
-        )
-        self.assertNoSubdivNbHoliday("2013-08-20")
+    def test_assault_and_capture_of_cape_arica(self):
+        name = "Asalto y Toma del Morro de Arica"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AP":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-06-07" for year in range(2013, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2013))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_nativity_of_bernado_o_higgins_chillan_and_chillan_viejo_commune(self):
+        name = "Nacimiento del Prócer de la Independencia (Chillán y Chillán Viejo)"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "NB":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-08-20" for year in range(2014, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2014))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

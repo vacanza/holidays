@@ -109,9 +109,30 @@ class TestBrazil(CommonCountryTests, TestCase):
         )
 
     def test_black_awareness_day(self):
-        name = "Dia Nacional de Zumbi e da Consciência Negra"
-        self.assertHolidayName(name, (f"{year}-11-20" for year in range(2024, self.end_year)))
-        self.assertNoHolidayName(name, range(self.start_year, 2024))
+        name_black = "Consciência Negra"
+        name_zumbi = "Dia Nacional de Zumbi e da Consciência Negra"
+        self.assertHolidayName(
+            name_zumbi, (f"{year}-11-20" for year in range(2024, self.end_year))
+        )
+        self.assertNoHolidayName(name_zumbi, range(self.start_year, 2024))
+
+        subdiv_start_years = {
+            "AL": 1996,
+            "AM": 2010,
+            "AP": 2008,
+            "MT": 2003,
+            "RJ": 2002,
+        }
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if start_year := subdiv_start_years.get(subdiv):
+                self.assertHolidayName(
+                    name_black, holidays, (f"{year}-11-20" for year in range(start_year, 2024))
+                )
+                self.assertNoHolidayName(
+                    name_black, holidays, range(1996, start_year), range(2024, self.end_year)
+                )
+            else:
+                self.assertNoHolidayName(name_black, holidays)
 
     def test_christmas_day(self):
         name = "Natal"
@@ -120,6 +141,7 @@ class TestBrazil(CommonCountryTests, TestCase):
 
     def test_carnaval(self):
         name = "Carnaval"
+        self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(
             name,
             "2018-02-12",
@@ -138,10 +160,10 @@ class TestBrazil(CommonCountryTests, TestCase):
             "2024-02-13",
         )
         self.assertOptionalHolidayNameCount(name, 2, self.full_range)
-        self.assertNoHolidayName(name)
 
     def test_ash_wednesday(self):
         name = "Início da Quaresma"
+        self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(
             name,
             "2018-02-14",
@@ -153,10 +175,10 @@ class TestBrazil(CommonCountryTests, TestCase):
             "2024-02-14",
         )
         self.assertOptionalHolidayName(name, self.full_range)
-        self.assertNoHolidayName(name)
 
     def test_corpus_christi(self):
         name = "Corpus Christi"
+        self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(
             name,
             "2018-05-31",
@@ -168,452 +190,552 @@ class TestBrazil(CommonCountryTests, TestCase):
             "2024-05-30",
         )
         self.assertOptionalHolidayName(name, self.full_range)
-        self.assertNoHolidayName(name)
 
     def test_public_servants_day(self):
         name = "Dia do Servidor Público"
-        self.assertOptionalHolidayName(name, (f"{year}-10-28" for year in self.full_range))
         self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(name, (f"{year}-10-28" for year in self.full_range))
 
     def test_christmas_eve(self):
         name = "Véspera de Natal"
-        self.assertOptionalHolidayName(name, (f"{year}-12-24" for year in self.full_range))
         self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(name, (f"{year}-12-24" for year in self.full_range))
 
     def test_new_years_eve(self):
         name = "Véspera de Ano-Novo"
+        self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(name, (f"{year}-12-31" for year in self.full_range))
-        self.assertNoHolidayName(name)
 
-    def test_ac_holidays(self):
+    def test_evangelical_day(self):
         name = "Dia do Evangélico"
-        self.assertSubdivAcHolidayName(
-            name,
-            (f"{year}-01-23" for year in range(2005, 2009)),
-            "2013-01-25",
-            "2014-01-24",
-            "2018-01-26",
-            "2019-01-25",
-            "2020-01-24",
-        )
-        self.assertNoSubdivAcHolidayName(name, range(1995, 2005))
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AC":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    (f"{year}-01-23" for year in range(2005, 2009)),
+                    "2013-01-25",
+                    "2014-01-24",
+                    "2018-01-26",
+                    "2019-01-25",
+                    "2020-01-24",
+                )
+                self.assertHolidayName(name, holidays, range(2009, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(1996, 2005))
+            elif subdiv == "AL":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-11-30" for year in range(2013, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(1996, 2013))
+            elif subdiv == "DF":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-11-30" for year in range(1996, self.end_year))
+                )
+            elif subdiv == "RO":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-06-18" for year in range(2002, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(1996, 2002))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
+    def test_international_womens_day(self):
         name = "Dia Internacional da Mulher"
-        self.assertSubdivAcHolidayName(
-            name,
-            (f"{year}-03-08" for year in range(2002, 2009)),
-            "2011-03-11",
-            "2012-03-09",
-            "2016-03-11",
-            "2017-03-10",
-            "2018-03-09",
-            "2022-03-11",
-            "2023-03-10",
-        )
-        self.assertNoSubdivAcHolidayName(name, range(1996, 2002))
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AC":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    (f"{year}-03-08" for year in range(2002, 2009)),
+                    "2011-03-11",
+                    "2012-03-09",
+                    "2016-03-11",
+                    "2017-03-10",
+                    "2018-03-09",
+                    "2022-03-11",
+                    "2023-03-10",
+                )
+                self.assertHolidayName(name, holidays, range(2009, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(1996, 2002))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
+    def test_founding_of_acre(self):
         name = "Aniversário do Acre"
-        self.assertSubdivAcHolidayName(
-            name, (f"{year}-06-15" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivAcHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AC":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-06-15" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
+    def test_amazonia_day(self):
         name = "Dia da Amazônia"
-        self.assertSubdivAcHolidayName(
-            name,
-            (f"{year}-09-05" for year in range(2004, 2009)),
-            "2012-09-07",
-            "2013-09-06",
-            "2017-09-08",
-            "2018-09-07",
-            "2019-09-06",
-        )
-        self.assertNoSubdivAcHolidayName(name, range(1996, 2004))
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AC":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    (f"{year}-09-05" for year in range(2004, 2009)),
+                    "2012-09-07",
+                    "2013-09-06",
+                    "2017-09-08",
+                    "2018-09-07",
+                    "2019-09-06",
+                )
+                self.assertHolidayName(name, holidays, range(2009, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(1996, 2004))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
+    def test_signing_of_the_petropolis_treaty(self):
         name = "Assinatura do Tratado de Petrópolis"
-        self.assertSubdivAcHolidayName(
-            name,
-            (f"{year}-11-17" for year in range(1996, 2009)),
-            "2009-11-20",
-            "2010-11-19",
-            "2011-11-18",
-            "2015-11-20",
-            "2016-11-18",
-            "2020-11-20",
-            "2021-11-19",
-            "2022-11-18",
-        )
-        self.assertNoSubdivAcHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AC":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    (f"{year}-11-17" for year in range(1996, 2009)),
+                    "2009-11-20",
+                    "2010-11-19",
+                    "2011-11-18",
+                    "2015-11-20",
+                    "2016-11-18",
+                    "2020-11-20",
+                    "2021-11-19",
+                    "2022-11-18",
+                )
+                self.assertHolidayName(name, holidays, range(2009, self.end_year))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_al_holidays(self):
-        for name, dt in (
-            ("São João", "06-24"),
-            ("São Pedro", "06-29"),
-            ("Emancipação Política de Alagoas", "09-16"),
-        ):
-            self.assertSubdivAlHolidayName(
-                name, (f"{year}-{dt}" for year in range(1996, self.end_year))
-            )
-            self.assertNoSubdivAlHolidayName(name, 1995)
-            self.assertNoHolidayName(name)
-
-        name = "Consciência Negra"
-        self.assertSubdivAlHolidayName(name, (f"{year}-11-20" for year in range(1996, 2024)))
-        self.assertNoSubdivAlHolidayName(name, 1995, range(2024, self.end_year))
+    def test_saint_johns_day(self):
+        name = "São João"
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AL":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-06-24" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-        name = "Dia do Evangélico"
-        self.assertSubdivAlHolidayName(
-            name, (f"{year}-11-30" for year in range(2013, self.end_year))
-        )
-        self.assertNoSubdivAlHolidayName(name, range(1995, 2013))
+    def test_saint_peters_day(self):
+        name = "São Pedro"
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AL":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-06-29" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_am_holidays(self):
+    def test_political_emancipation_of_algoas(self):
+        name = "Emancipação Política de Alagoas"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AL":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-09-16" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_elevation_of_amazonas_to_province(self):
         name = "Elevação do Amazonas à categoria de província"
-        self.assertSubdivAmHolidayName(
-            name, (f"{year}-09-05" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivAmHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AM":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-09-05" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-        name = "Consciência Negra"
-        self.assertSubdivAmHolidayName(name, (f"{year}-11-20" for year in range(2010, 2024)))
-        self.assertNoSubdivAmHolidayName(name, range(1995, 2010), range(2024, self.end_year))
-        self.assertNoHolidayName(name)
-
-    def test_ap_holidays(self):
+    def test_saint_josephs_day(self):
         name = "São José"
-        self.assertSubdivApHolidayName(
-            name, (f"{year}-03-19" for year in range(2003, self.end_year))
-        )
-        self.assertNoSubdivApHoliday(f"{year}-03-19" for year in range(1996, 2003))
-        self.assertNoSubdivApHolidayName(name, range(1995, 2003))
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AP":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-03-19" for year in range(2003, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(1996, 2003))
+            elif subdiv == "CE":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-03-19" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
+    def test_saint_james_day(self):
         name = "São Tiago"
-        self.assertSubdivApHolidayName(
-            name, (f"{year}-07-25" for year in range(2012, self.end_year))
-        )
-        self.assertNoSubdivApHoliday(f"{year}-07-25" for year in range(1996, 2012))
-        self.assertNoSubdivApHolidayName(name, range(1995, 2012))
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AP":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-07-25" for year in range(2012, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(1996, 2012))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
+    def test_creation_of_the_federal_territory(self):
         name = "Criação do Território Federal"
-        self.assertSubdivApHolidayName(
-            name, (f"{year}-09-13" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivApHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AP":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-09-13" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-        name = "Consciência Negra"
-        self.assertSubdivApHolidayName(name, (f"{year}-11-20" for year in range(2008, 2024)))
-        self.assertNoSubdivApHoliday(f"{year}-11-20" for year in range(1996, 2008))
-        self.assertNoSubdivApHolidayName(name, range(1995, 2008), range(2024, self.end_year))
-        self.assertNoHolidayName(name)
-
-    def test_ba_holidays(self):
+    def test_bahia_independence_day(self):
         name = "Independência da Bahia"
-        self.assertSubdivBaHolidayName(
-            name, (f"{year}-07-02" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivBaHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "BA":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-07-02" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_ce_holidays(self):
-        name = "São José"
-        self.assertSubdivCeHolidayName(
-            name, (f"{year}-03-19" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivCeHolidayName(name, 1995)
-        self.assertNoHolidayName(name)
-
+    def test_abolition_of_slavery_in_ceara(self):
         name = "Abolição da escravidão no Ceará"
-        self.assertSubdivCeHolidayName(
-            name, (f"{year}-03-25" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivCeHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "CE":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-03-25" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
+    def test_our_lady_of_assumption(self):
         name = "Nossa Senhora da Assunção"
-        self.assertSubdivCeHolidayName(
-            name, (f"{year}-08-15" for year in range(2004, self.end_year))
-        )
-        self.assertNoSubdivCeHoliday(f"{year}-08-15" for year in range(1996, 2004))
-        self.assertNoSubdivCeHolidayName(name, range(1995, 2004))
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "CE":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-08-15" for year in range(2004, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(1996, 2004))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_df_holidays(self):
+    def test_foundation_of_brasilia(self):
         name = "Fundação de Brasília"
-        self.assertSubdivDfHolidayName(
-            name, (f"{year}-04-21" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivDfHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "DF":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-04-21" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-        name = "Dia do Evangélico"
-        self.assertSubdivDfHolidayName(
-            name, (f"{year}-11-30" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivDfHolidayName(name, 1995)
-        self.assertNoHolidayName(name)
-
-    def test_es_holidays(self):
+    def test_our_lady_of_penha(self):
         name = "Nossa Senhora da Penha"
-        self.assertSubdivEsHolidayName(
-            name,
-            "2020-04-20",
-            "2021-04-12",
-            "2022-04-25",
-            "2023-04-17",
-            "2024-04-08",
-        )
-        self.assertNoSubdivEsHolidayName(name, range(1995, 2020))
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "ES":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2020-04-20",
+                    "2021-04-12",
+                    "2022-04-25",
+                    "2023-04-17",
+                    "2024-04-08",
+                )
+                self.assertHolidayName(name, holidays, range(2020, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(1996, 2020))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_go_holidays(self):
+    def test_foundation_of_goias_city(self):
         name = "Fundação da cidade de Goiás"
-        self.assertSubdivGoHolidayName(
-            name, (f"{year}-07-26" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivGoHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "GO":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-07-26" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
+    def test_foundation_of_goiania(self):
         name = "Pedra fundamental de Goiânia"
-        self.assertSubdivGoHolidayName(
-            name, (f"{year}-10-24" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivGoHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "GO":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-10-24" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_ma_holidays(self):
+    def test_maranhao_joining_to_independence_of_brazil(self):
         name = "Adesão do Maranhão à independência do Brasil"
-        self.assertSubdivMaHolidayName(
-            name, (f"{year}-07-28" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivMaHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "MA":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-07-28" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_mg_holidays(self):
+    def test_tiradentes_execution(self):
         name = "Execução de Tiradentes"
-        self.assertSubdivMgHolidayName(
-            name, (f"{year}-04-21" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivMgHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "MG":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-04-21" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_ms_holidays(self):
+    def test_state_creation_day(self):
         name = "Criação do Estado"
-        self.assertSubdivMsHolidayName(
-            name, (f"{year}-10-11" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivMsHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "MS":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-10-11" for year in range(1996, self.end_year))
+                )
+            elif subdiv == "RO":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-01-04" for year in range(1996, self.end_year))
+                )
+            elif subdiv in {"RR", "TO"}:
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-10-05" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_mt_holidays(self):
-        name = "Consciência Negra"
-        self.assertSubdivMtHolidayName(name, (f"{year}-11-20" for year in range(2003, 2024)))
-        self.assertNoSubdivMtHoliday(f"{year}-11-20" for year in range(1996, 2003))
-        self.assertNoSubdivMtHolidayName(name, range(1995, 2003), range(2024, self.end_year))
-        self.assertNoHolidayName(name)
-
-    def test_pa_holidays(self):
+    def test_grao_para_joining_to_independence_of_brazil(self):
         name = "Adesão do Grão-Pará à independência do Brasil"
-        self.assertSubdivPaHolidayName(
-            name, (f"{year}-08-15" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivPaHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "PA":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-08-15" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_pb_holidays(self):
+    def test_state_founding_day(self):
         name = "Fundação do Estado"
-        self.assertSubdivPbHolidayName(
-            name, (f"{year}-08-05" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivPbHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "PB":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-08-05" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_pe_holidays(self):
+    def test_pernambuco_revolution(self):
         name = "Revolução Pernambucana"
-        self.assertSubdivPeHolidayName(
-            name,
-            "2008-03-02",
-            "2009-03-01",
-            "2018-03-04",
-            "2019-03-03",
-            "2020-03-01",
-            "2021-03-07",
-            "2022-03-06",
-            "2023-03-05",
-            "2024-03-03",
-        )
-        self.assertNoSubdivPeHolidayName(name, range(1995, 2008))
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "PE":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2008-03-02",
+                    "2009-03-01",
+                    "2018-03-04",
+                    "2019-03-03",
+                    "2020-03-01",
+                    "2021-03-07",
+                    "2022-03-06",
+                    "2023-03-05",
+                    "2024-03-03",
+                )
+                self.assertHolidayName(name, holidays, range(2008, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(1996, 2008))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_pi_holidays(self):
+    def test_piaui_day(self):
         name = "Dia do Piauí"
-        self.assertSubdivPiHolidayName(
-            name, (f"{year}-10-19" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivPiHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "PI":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-10-19" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_pr_holidays(self):
+    def test_political_emancipation_of_parana(self):
         name = "Emancipação do Paraná"
-        self.assertSubdivPrHolidayName(
-            name, (f"{year}-12-19" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivPrHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "PR":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-12-19" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_rj_holidays(self):
+    def test_saint_georges_day(self):
         name = "São Jorge"
-        self.assertSubdivRjHolidayName(
-            name, (f"{year}-04-23" for year in range(2008, self.end_year))
-        )
-        self.assertNoSubdivRjHoliday(f"{year}-04-23" for year in range(1996, 2008))
-        self.assertNoSubdivRjHolidayName(name, range(1995, 2008))
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "RJ":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-04-23" for year in range(2008, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(1996, 2008))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-        name = "Consciência Negra"
-        self.assertSubdivRjHolidayName(name, (f"{year}-11-20" for year in range(2002, 2024)))
-        self.assertNoSubdivRjHoliday(f"{year}-11-20" for year in range(1996, 2002))
-        self.assertNoSubdivRjHolidayName(name, range(1995, 2002), range(2024, self.end_year))
-        self.assertNoHolidayName(name)
-
-    def test_rn_holidays(self):
+    def test_rio_grande_de_norte_day(self):
         name = "Dia do Rio Grande do Norte"
-        self.assertSubdivRnHolidayName(
-            name, (f"{year}-08-07" for year in range(2000, self.end_year))
-        )
-        self.assertNoSubdivRnHoliday(f"{year}-08-07" for year in range(1996, 2000))
-        self.assertNoSubdivRnHolidayName(name, range(1995, 2000))
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "RN":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-08-07" for year in range(2000, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(1996, 2000))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
+    def test_uruacu_and_cunhua_martyrs_day(self):
         name = "Mártires de Cunhaú e Uruaçu"
-        self.assertSubdivRnHolidayName(
-            name, (f"{year}-10-03" for year in range(2007, self.end_year))
-        )
-        self.assertNoSubdivRnHoliday(f"{year}-10-03" for year in range(1996, 2007))
-        self.assertNoSubdivRnHolidayName(name, range(1995, 2007))
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "RN":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-10-03" for year in range(2007, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(1996, 2007))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_ro_holidays(self):
-        name = "Criação do Estado"
-        self.assertSubdivRoHolidayName(
-            name, (f"{year}-01-04" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivRoHolidayName(name, 1995)
-        self.assertNoHolidayName(name)
-
-        name = "Dia do Evangélico"
-        self.assertSubdivRoHolidayName(
-            name, (f"{year}-06-18" for year in range(2002, self.end_year))
-        )
-        self.assertNoSubdivRoHoliday(f"{year}-06-18" for year in range(1996, 2002))
-        self.assertNoSubdivRoHolidayName(name, range(1995, 2002))
-        self.assertNoHolidayName(name)
-
-    def test_rr_holidays(self):
-        name = "Criação do Estado"
-        self.assertSubdivRrHolidayName(
-            name, (f"{year}-10-05" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivRrHolidayName(name, 1995)
-        self.assertNoHolidayName(name)
-
-    def test_rs_holidays(self):
+    def test_gaucho_day(self):
         name = "Dia do Gaúcho"
-        self.assertSubdivRsHolidayName(
-            name, (f"{year}-09-20" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivRsHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "RS":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-09-20" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_sc_holidays(self):
+    def test_santa_catarina_state_day(self):
         name = "Dia do Estado de Santa Catarina"
-        self.assertSubdivScHolidayName(
-            name,
-            "2004-08-11",
-            "2005-08-14",
-            "2006-08-13",
-            "2007-08-12",
-            "2018-08-12",
-            "2019-08-11",
-            "2020-08-16",
-            "2021-08-15",
-            "2022-08-14",
-            "2023-08-13",
-            "2024-08-11",
-        )
-        self.assertSubdivScHolidayName(name, range(2004, self.end_year))
-        self.assertNoSubdivScHolidayName(name, range(1995, 2004))
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "SC":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2004-08-11",
+                    "2005-08-14",
+                    "2006-08-13",
+                    "2007-08-12",
+                    "2018-08-12",
+                    "2019-08-11",
+                    "2020-08-16",
+                    "2021-08-15",
+                    "2022-08-14",
+                    "2023-08-13",
+                    "2024-08-11",
+                )
+                self.assertHolidayName(name, holidays, range(2004, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(1996, 2004))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
+    def test_saint_catherine_of_alexandria_day(self):
         name = "Dia de Santa Catarina de Alexandria"
-        self.assertSubdivScHoliday(
-            "1996-11-25",
-            "1997-11-25",
-            "1998-11-25",
-            "1999-11-28",
-            "2000-11-26",
-            "2004-11-25",
-            "2005-11-27",
-            "2018-11-25",
-            "2019-12-01",
-            "2020-11-29",
-            "2021-11-28",
-            "2022-11-27",
-            "2023-11-26",
-            "2024-12-01",
-        )
-        self.assertSubdivScHolidayName(name, range(1996, self.end_year))
-        self.assertNoSubdivScHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "SC":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "1996-11-25",
+                    "1997-11-25",
+                    "1998-11-25",
+                    "1999-11-28",
+                    "2000-11-26",
+                    "2004-11-25",
+                    "2005-11-27",
+                    "2018-11-25",
+                    "2019-12-01",
+                    "2020-11-29",
+                    "2021-11-28",
+                    "2022-11-27",
+                    "2023-11-26",
+                    "2024-12-01",
+                )
+                self.assertHolidayName(name, holidays, range(1996, self.end_year))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_se_holidays(self):
+    def test_political_emancipation_of_sergipe(self):
         name = "Emancipação política de Sergipe"
-        self.assertSubdivSeHolidayName(
-            name, (f"{year}-07-08" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivSeHolidayName(name, 1995)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "SE":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-07-08" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_sp_holidays(self):
+    def test_constitutionalist_revolution(self):
         name = "Revolução Constitucionalista"
-        self.assertSubdivSpHolidayName(
-            name, (f"{year}-07-09" for year in range(1997, self.end_year))
-        )
-        self.assertNoSubdivSpHolidayName(name, 1995, 1996)
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "SP":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-07-09" for year in range(1997, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, 1996)
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_to_holidays(self):
+    def test_autonomy_day(self):
         name = "Dia da Autonomia"
-        self.assertSubdivToHolidayName(
-            name, (f"{year}-03-18" for year in range(1998, self.end_year))
-        )
-        self.assertNoSubdivToHoliday(f"{year}-03-18" for year in range(1996, 1998))
-        self.assertNoSubdivToHolidayName(name, range(1995, 1998))
         self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "TO":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-03-18" for year in range(1998, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(1996, 1998))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
+    def test_our_lady_of_nativity(self):
         name = "Nossa Senhora da Natividade"
-        self.assertSubdivToHolidayName(
-            name, (f"{year}-09-08" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivToHolidayName(name, 1995)
         self.assertNoHolidayName(name)
-
-        name = "Criação do Estado"
-        self.assertSubdivToHolidayName(
-            name, (f"{year}-10-05" for year in range(1996, self.end_year))
-        )
-        self.assertNoSubdivToHolidayName(name, 1995)
-        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "TO":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-09-08" for year in range(1996, self.end_year))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

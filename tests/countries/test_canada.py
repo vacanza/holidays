@@ -265,8 +265,12 @@ class TestCanada(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
             self.assertNoNonObservedHoliday(self.subdiv_holidays_non_observed[subdiv], obs_dts)
 
-        self.assertSubdivMbHolidayName(name_observed, "2028-10-02", "2029-10-01")
-        self.assertNoSubdivMbNonObservedHoliday("2028-10-02", "2029-10-01")
+        obs_dts = (
+            "2028-10-02",
+            "2029-10-01",
+        )
+        self.assertSubdivMbHolidayName(name_observed, obs_dts)
+        self.assertNoSubdivMbNonObservedHoliday(obs_dts)
 
         self.assertSubdivAbOptionalHolidayName(
             name, (f"{year}-09-30" for year in range(2021, self.end_year))
