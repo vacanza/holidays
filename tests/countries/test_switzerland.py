@@ -20,7 +20,15 @@ class TestSwitzerland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(1970, 2050)
-        super().setUpClass(Switzerland, with_subdiv_categories=True)
+        years_subdiv_zh = range(1898, 2050)
+        super().setUpClass(
+            Switzerland,
+            with_subdiv_categories=True,
+            years_subdiv_gl=range(1834, 2050),
+            years_subdiv_zh=years_subdiv_zh,
+            years_subdiv_zh_half_day=years_subdiv_zh,
+            years_subdiv_zh_optional=years_subdiv_zh,
+        )
 
     def test_country_aliases(self):
         self.assertAliases(Switzerland, CH, CHE)
@@ -40,23 +48,31 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             "Jahrestag der Ausrufung der Republik",
             "Josefstag",
             "Näfelser Fahrt",
+            "Vortag vor Karfreitag",
             "Karfreitag",
             "Ostermontag",
+            "Sechseläuten",
             "Tag der Arbeit",
+            "Vortag vor Auffahrt",
             "Auffahrt",
+            "Brückentag nach Auffahrt",
             "Pfingstmontag",
             "Fronleichnam",
             "Fest der Unabhängigkeit",
             "Peter und Paul",
             "Nationalfeiertag",
             "Mariä Himmelfahrt",
+            "Knabenschiessen",
             "Bettagsmontag",
             "Bruder Klaus",
             "Allerheiligen",
             "Mariä Empfängnis",
             "Genfer Bettag",
+            "Heiligabend",
             "Weihnachten",
             "Stephanstag",
+            "Brückentag",
+            "Vortag vor Neujahr",
             "Wiederherstellung der Republik",
         }
 
@@ -180,38 +196,25 @@ class TestSwitzerland(CommonCountryTests, TestCase):
 
     def test_nafels_ride(self):
         name = "Näfelser Fahrt"
-        known_good = (
-            "2018-04-05",
-            "2019-04-04",
-            "2020-04-02",
-            "2021-04-08",
-            "2022-04-07",
-            "2023-04-13",
-            "2024-04-04",
-            "2025-04-03",
-            "2026-04-09",
-            "2027-04-01",
-            "2028-04-06",
-            "2029-04-05",
-            "2030-04-04",
-            "2031-04-03",
-            "2032-04-01",
-            "2033-04-07",
-            "2034-04-13",
-            "2035-04-05",
-        )
 
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "GL":
-                self.assertHolidayName(name, holidays, known_good)
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2020-04-02",
+                    "2021-04-08",
+                    "2022-04-07",
+                    "2023-04-13",
+                    "2024-04-04",
+                    "2025-04-03",
+                )
+                self.assertHolidayName(name, holidays, range(1835, self.end_year))
+                self.assertNoHolidayName(name, holidays, 1834)
             else:
-                self.assertNoHoliday(holidays, known_good)
                 self.assertNoHolidayName(name, holidays)
-
-        # TODO: Change to `self.assertNoSubdivGlHolidayName` later when full range is adopted.
-        self.assertNoHolidayName(name, Switzerland(subdiv="GL", years=1834))
 
     def test_good_friday(self):
         name = "Karfreitag"
@@ -314,7 +317,16 @@ class TestSwitzerland(CommonCountryTests, TestCase):
                 )
                 self.assertNoHolidayName(name, holidays)
 
-        self.assertSubdivSoHalfDayHolidayName(name, (f"{year}-05-01" for year in self.full_range))
+        for subdiv, holidays in self.subdiv_half_day_holidays.items():
+            if subdiv == "SO":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-05-01" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(
+                    name, holidays, (f"{year}-05-01" for year in self.full_range)
+                )
+                self.assertNoHolidayName(name, holidays)
 
     def test_whit_monday(self):
         name = "Pfingstmontag"
@@ -651,7 +663,228 @@ class TestSwitzerland(CommonCountryTests, TestCase):
                     name, holidays, (f"{year}-12-31" for year in self.full_range)
                 )
             else:
-                self.assertNoHoliday(holidays, (f"{year}-12-31" for year in self.full_range))
+                self.assertNoHolidayName(name, holidays)
+
+    def test_knabenschiessen(self):
+        name = "Knabenschiessen"
+
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "ZH":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2020-09-12",
+                    "2020-09-13",
+                    "2021-09-11",
+                    "2021-09-12",
+                    "2022-09-10",
+                    "2022-09-11",
+                    "2023-09-09",
+                    "2023-09-10",
+                    "2024-09-07",
+                    "2024-09-08",
+                    "2025-09-13",
+                    "2025-09-14",
+                )
+                self.assertHolidayNameCount(name, 2, holidays, range(1899, self.end_year))
+                self.assertNoHolidayName(name, holidays, 1898)
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+        for subdiv, holidays in self.subdiv_half_day_holidays.items():
+            if subdiv == "ZH":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2020-09-14",
+                    "2021-09-13",
+                    "2022-09-12",
+                    "2023-09-11",
+                    "2024-09-09",
+                    "2025-09-15",
+                )
+                self.assertHolidayName(name, holidays, range(1899, self.end_year))
+                self.assertNoHolidayName(name, holidays, 1898)
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+        for subdiv, holidays in self.subdiv_optional_holidays.items():
+            if subdiv == "ZH":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2020-09-14",
+                    "2023-09-11",
+                    "2024-09-09",
+                    "2025-09-15",
+                )
+                self.assertNoHolidayName(
+                    name,
+                    holidays,
+                    # Not in years where 4 bridge holidays are given out for Christmas-New Year.
+                    "2016-09-12",
+                    "2021-09-13",
+                    "2022-09-12",
+                    "2027-09-13",
+                )
+                self.assertNoHolidayName(name, holidays, 1898)
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_day_before_good_friday(self):
+        name = "Vortag vor Karfreitag"
+
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in {
+            **self.subdiv_half_day_holidays,
+            **self.subdiv_optional_holidays,
+        }.items():
+            if subdiv == "ZH":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2020-04-09",
+                    "2021-04-01",
+                    "2022-04-14",
+                    "2023-04-06",
+                    "2024-03-28",
+                    "2025-04-17",
+                )
+                self.assertHolidayName(name, holidays, self.full_range)
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_sechselauten(self):
+        name = "Sechseläuten"
+
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in {
+            **self.subdiv_half_day_holidays,
+            **self.subdiv_optional_holidays,
+        }.items():
+            if subdiv == "ZH":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    # 1st Mon after Vernal Equinox.
+                    "1902-03-24",
+                    "1903-03-23",
+                    "1904-03-21",
+                    "1949-03-21",
+                    "1950-03-27",
+                    "1951-03-26",
+                    # 3rd Mon of April, 4th if Holy week.
+                    "1952-04-21",
+                    "2020-04-20",
+                    "2021-04-19",
+                    "2022-04-25",
+                    "2023-04-17",
+                    "2024-04-15",
+                    "2025-04-28",
+                )
+                self.assertHolidayName(name, holidays, range(1902, self.end_year))
+                self.assertNoHolidayName(name, holidays, 1901)
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_day_before_ascension_day(self):
+        name = "Vortag vor Auffahrt"
+
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_half_day_holidays.items():
+            if subdiv == "ZH":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2020-05-20",
+                    "2021-05-12",
+                    "2022-05-25",
+                    "2023-05-17",
+                    "2024-05-08",
+                    "2025-05-28",
+                )
+                self.assertHolidayName(name, holidays, self.full_range)
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_bridge_holiday_for_ascension_day(self):
+        name = "Brückentag nach Auffahrt"
+
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_optional_holidays.items():
+            if subdiv == "ZH":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2018-05-11",
+                    "2019-05-31",
+                    "2024-05-10",
+                    "2025-05-30",
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_christmas_eve(self):
+        name = "Heiligabend"
+
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in {
+            **self.subdiv_half_day_holidays,
+            **self.subdiv_optional_holidays,
+        }.items():
+            if subdiv == "ZH":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-12-24" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_bridge_holidays(self):
+        name = "Brückentag"
+
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_optional_holidays_non_observed.items():
+            if subdiv == "ZH":
+                self.assertNonObservedHolidayName(
+                    name,
+                    holidays,
+                    (f"{year}-12-27" for year in self.full_range),
+                    (f"{year}-12-28" for year in self.full_range),
+                    (f"{year}-12-29" for year in self.full_range),
+                    (f"{year}-12-30" for year in self.full_range),
+                )
+            else:
+                self.assertNoNonObservedHolidayName(name, holidays)
+
+        self.assertNoHoliday(
+            self.subdiv_optional_holidays["ZH"],
+            "2025-12-27",
+            "2025-12-28",
+            "2026-12-27",
+        )
+
+    def test_new_years_eve(self):
+        name = "Vortag vor Neujahr"
+
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in {
+            **self.subdiv_half_day_holidays,
+            **self.subdiv_optional_holidays,
+        }.items():
+            if subdiv == "ZH":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-12-31" for year in self.full_range)
+                )
+            else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_l10n_default(self):
@@ -661,10 +894,13 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-01-06", "Heilige Drei Könige"),
             ("2023-03-01", "Jahrestag der Ausrufung der Republik"),
             ("2023-03-19", "Josefstag"),
+            ("2023-04-06", "Vortag vor Karfreitag"),
             ("2023-04-07", "Karfreitag"),
             ("2023-04-10", "Ostermontag"),
             ("2023-04-13", "Näfelser Fahrt"),
+            ("2023-04-17", "Sechseläuten"),
             ("2023-05-01", "Tag der Arbeit"),
+            ("2023-05-17", "Vortag vor Auffahrt"),
             ("2023-05-18", "Auffahrt"),
             ("2023-05-29", "Pfingstmontag"),
             ("2023-06-08", "Fronleichnam"),
@@ -673,13 +909,20 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-08-01", "Nationalfeiertag"),
             ("2023-08-15", "Mariä Himmelfahrt"),
             ("2023-09-07", "Genfer Bettag"),
+            ("2023-09-09", "Knabenschiessen"),
+            ("2023-09-10", "Knabenschiessen"),
+            ("2023-09-11", "Knabenschiessen"),
             ("2023-09-18", "Bettagsmontag"),
             ("2023-09-25", "Bruder Klaus"),
             ("2023-11-01", "Allerheiligen"),
             ("2023-12-08", "Mariä Empfängnis"),
+            ("2023-12-24", "Heiligabend"),
             ("2023-12-25", "Weihnachten"),
             ("2023-12-26", "Stephanstag"),
-            ("2023-12-31", "Wiederherstellung der Republik"),
+            ("2023-12-27", "Brückentag"),
+            ("2023-12-28", "Brückentag"),
+            ("2023-12-29", "Brückentag"),
+            ("2023-12-31", "Vortag vor Neujahr; Wiederherstellung der Republik"),
         )
 
     def test_l10n_en_us(self):
@@ -690,10 +933,13 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-01-06", "Epiphany"),
             ("2023-03-01", "Republic Day"),
             ("2023-03-19", "Saint Joseph's Day"),
+            ("2023-04-06", "Day before Good Friday"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-10", "Easter Monday"),
             ("2023-04-13", "Battle of Naefels Victory Day"),
+            ("2023-04-17", "Sechseläuten"),
             ("2023-05-01", "Labor Day"),
+            ("2023-05-17", "Day before Ascension Day"),
             ("2023-05-18", "Ascension Day"),
             ("2023-05-29", "Whit Monday"),
             ("2023-06-08", "Corpus Christi"),
@@ -702,13 +948,20 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-08-01", "National Day"),
             ("2023-08-15", "Assumption Day"),
             ("2023-09-07", "Genevan Fast"),
+            ("2023-09-09", "Knabenschiessen"),
+            ("2023-09-10", "Knabenschiessen"),
+            ("2023-09-11", "Knabenschiessen"),
             ("2023-09-18", "Prayer Monday"),
             ("2023-09-25", "Saint Nicholas of Flüe"),
             ("2023-11-01", "All Saints' Day"),
             ("2023-12-08", "Immaculate Conception"),
+            ("2023-12-24", "Christmas Eve"),
             ("2023-12-25", "Christmas Day"),
             ("2023-12-26", "Saint Stephen's Day"),
-            ("2023-12-31", "Restoration Day"),
+            ("2023-12-27", "Bridge Holiday"),
+            ("2023-12-28", "Bridge Holiday"),
+            ("2023-12-29", "Bridge Holiday"),
+            ("2023-12-31", "New Year's Eve; Restoration Day"),
         )
 
     def test_l10n_fr(self):
@@ -719,10 +972,13 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-01-06", "Épiphanie"),
             ("2023-03-01", "Instauration de la République"),
             ("2023-03-19", "Saint-Joseph"),
+            ("2023-04-06", "Veille du Vendredi saint"),
             ("2023-04-07", "Vendredi saint"),
             ("2023-04-10", "Lundi de Pâques"),
             ("2023-04-13", "Fahrtsfest"),
+            ("2023-04-17", "Sechseläuten"),
             ("2023-05-01", "Fête du Travail"),
+            ("2023-05-17", "Veille de l'Ascension"),
             ("2023-05-18", "Ascension"),
             ("2023-05-29", "Lundi de Pentecôte"),
             ("2023-06-08", "Fête-Dieu"),
@@ -731,13 +987,20 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-08-01", "Fête nationale"),
             ("2023-08-15", "Assomption"),
             ("2023-09-07", "Jeûne genevois"),
+            ("2023-09-09", "Knabenschiessen"),
+            ("2023-09-10", "Knabenschiessen"),
+            ("2023-09-11", "Knabenschiessen"),
             ("2023-09-18", "Lundi du Jeûne fédéral"),
             ("2023-09-25", "Fête de Saint-Nicolas-de-Flüe"),
             ("2023-11-01", "Toussaint"),
             ("2023-12-08", "Immaculée Conception"),
+            ("2023-12-24", "Veille de Noël"),
             ("2023-12-25", "Noël"),
             ("2023-12-26", "Saint-Étienne"),
-            ("2023-12-31", "Restauration de la République"),
+            ("2023-12-27", "Jour pont"),
+            ("2023-12-28", "Jour pont"),
+            ("2023-12-29", "Jour pont"),
+            ("2023-12-31", "Restauration de la République; Réveillon du Nouvel An"),
         )
 
     def test_l10n_it(self):
@@ -748,10 +1011,13 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-01-06", "Epifania"),
             ("2023-03-01", "Giorno della Repubblica"),
             ("2023-03-19", "San Giuseppe"),
+            ("2023-04-06", "Vigilia del Venerdì Santo"),
             ("2023-04-07", "Venerdì Santo"),
             ("2023-04-10", "Lunedì dell'Angelo"),
             ("2023-04-13", "Battaglia di Näfels"),
+            ("2023-04-17", "Sechseläuten"),
             ("2023-05-01", "Festa del lavoro"),
+            ("2023-05-17", "Vigilia dell'Ascensione di Gesù"),
             ("2023-05-18", "Ascensione di Gesù"),
             ("2023-05-29", "Lunedì di Pentecoste"),
             ("2023-06-08", "Corpus Domini"),
@@ -759,14 +1025,60 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-06-29", "Santi Pietro e Paolo"),
             ("2023-08-01", "Festa nazionale"),
             ("2023-08-15", "Assunzione di Maria"),
-            ("2023-09-07", "Jeûne genevois"),
-            ("2023-09-18", "Digiuno Ginevrino"),
-            ("2023-09-25", "Nicolao della Flüe"),
+            ("2023-09-07", "Digiuno ginevrino"),
+            ("2023-09-09", "Knabenschiessen"),
+            ("2023-09-10", "Knabenschiessen"),
+            ("2023-09-11", "Knabenschiessen"),
+            ("2023-09-18", "Lunedì del digiuno federal"),
+            ("2023-09-25", "San Nicolao della Flue"),
             ("2023-11-01", "Ognissanti"),
             ("2023-12-08", "Immacolata Concezione"),
+            ("2023-12-24", "Vigilia di Natale"),
             ("2023-12-25", "Natale"),
             ("2023-12-26", "Giorno di Santo Stefano"),
-            ("2023-12-31", "Restauration genevoise"),
+            ("2023-12-27", "Giorno ponte"),
+            ("2023-12-28", "Giorno ponte"),
+            ("2023-12-29", "Giorno ponte"),
+            ("2023-12-31", "Restaurazione della Repubblica; Vigilia di Capodanno"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2023-01-01", "วันขึ้นปีใหม่"),
+            ("2023-01-02", "วันสมโภชนักบุญแบร์กโทลด์"),
+            ("2023-01-06", "วันสมโภชพระคริสต์แสดงองค์"),
+            ("2023-03-01", "วันครบรอบการสถาปนาสาธารณรัฐนอยชาแตล"),
+            ("2023-03-19", "วันสมโภชนักบุญโยเซฟ"),
+            ("2023-04-06", "วันก่อนวันศุกร์ประเสริฐ"),
+            ("2023-04-07", "วันศุกร์ประเสริฐ"),
+            ("2023-04-10", "วันจันทร์อีสเตอร์"),
+            ("2023-04-13", "วันรำลึกชัยชนะยุทธการเนเฟลส์"),
+            ("2023-04-17", "เซ็กเซ่ะเล๊าเท่น"),
+            ("2023-05-01", "วันแรงงาน"),
+            ("2023-05-17", "วันก่อนวันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"),
+            ("2023-05-18", "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"),
+            ("2023-05-29", "วันจันทร์หลังวันสมโภชพระจิตเจ้า"),
+            ("2023-06-08", "วันสมโภชพระคริสตวรกาย"),
+            ("2023-06-23", "วันประกาศเอกราชจูรา"),
+            ("2023-06-29", "วันสมโภชนักบุญเปโตรและเปาโล"),
+            ("2023-08-01", "วันชาติสวิตเซอร์แลนด์"),
+            ("2023-08-15", "วันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์"),
+            ("2023-09-07", "วันถือศีลอดเจนีวา"),
+            ("2023-09-09", "คนาเบนชิสเซน"),
+            ("2023-09-10", "คนาเบนชิสเซน"),
+            ("2023-09-11", "คนาเบนชิสเซน"),
+            ("2023-09-18", "วันจันทร์แห่งการอธิษฐาน"),
+            ("2023-09-25", "วันสมโภชนักบุญนิโคลัสแห่งฟลือเออ"),
+            ("2023-11-01", "วันสมโภชนักบุญทั้งหลาย"),
+            ("2023-12-08", "วันสมโภชแม่พระผู้ปฏิสนธินิรมล"),
+            ("2023-12-24", "วันคริสต์มาสอีฟ"),
+            ("2023-12-25", "วันคริสต์มาส"),
+            ("2023-12-26", "วันสมโภชนักบุญสเตเฟน"),
+            ("2023-12-27", "วันหยุดเพิ่มเติม"),
+            ("2023-12-28", "วันหยุดเพิ่มเติม"),
+            ("2023-12-29", "วันหยุดเพิ่มเติม"),
+            ("2023-12-31", "วันกอบกู้เอกราชสาธารณรัฐเจนีวา; วันสิ้นปี"),
         )
 
     def test_l10n_uk(self):
@@ -777,10 +1089,13 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-01-06", "Богоявлення"),
             ("2023-03-01", "Річниця проголошення Республіки"),
             ("2023-03-19", "День Святого Йосипа"),
+            ("2023-04-06", "Переддень Страсної пʼятниці"),
             ("2023-04-07", "Страсна пʼятниця"),
             ("2023-04-10", "Великодній понеділок"),
             ("2023-04-13", "Свято перемоги під Нефельсом"),
+            ("2023-04-17", "Зексельйотен"),
             ("2023-05-01", "День праці"),
+            ("2023-05-17", "Переддень Вознесіння Господнього"),
             ("2023-05-18", "Вознесіння Господнє"),
             ("2023-05-29", "День Святого Духа"),
             ("2023-06-08", "Свято Тіла і Крові Христових"),
@@ -789,11 +1104,18 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-08-01", "Національне свято"),
             ("2023-08-15", "Внебовзяття Пресвятої Діви Марії"),
             ("2023-09-07", "Женевський піст"),
+            ("2023-09-09", "Кнабеншісен"),
+            ("2023-09-10", "Кнабеншісен"),
+            ("2023-09-11", "Кнабеншісен"),
             ("2023-09-18", "Молитовний понеділок"),
             ("2023-09-25", "День Святого Ніклауса з Флюе"),
             ("2023-11-01", "День усіх святих"),
             ("2023-12-08", "Непорочне зачаття Діви Марії"),
+            ("2023-12-24", "Святий вечір"),
             ("2023-12-25", "Різдво Христове"),
             ("2023-12-26", "День Святого Стефана"),
-            ("2023-12-31", "День відновлення республіки"),
+            ("2023-12-27", "Проміжний вихідний"),
+            ("2023-12-28", "Проміжний вихідний"),
+            ("2023-12-29", "Проміжний вихідний"),
+            ("2023-12-31", "День відновлення республіки; Переддень Нового року"),
         )
