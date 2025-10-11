@@ -94,12 +94,18 @@ class SriLanka(
             islamic_show_estimated:
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
+
+        In Sri Lanka, the dates of the Islamic calendar usually fall a day later than
+        the corresponding dates in the Umm al-Qura calendar.
         """
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, SriLankaHinduHolidays)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self, cls=SriLankaIslamicHolidays, show_estimated=islamic_show_estimated
+            self,
+            cls=SriLankaIslamicHolidays,
+            show_estimated=islamic_show_estimated,
+            calendar_delta_days=+1,
         )
         SinhalaCalendarHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=SriLankaStaticHolidays)
@@ -289,75 +295,32 @@ class SriLankaHinduHolidays(_CustomHinduHolidays):
 
 
 class SriLankaIslamicHolidays(_CustomIslamicHolidays):
+    # https://web.archive.org/web/20111103102902/http://www.adaderana.lk:80/news.php?nid=15606
+    # https://web.archive.org/web/20121029024049/http://www.adaderana.lk:80/news.php?nid=20136
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2003, 2025)
     EID_AL_ADHA_DATES = {
-        2003: (FEB, 12),
+        2004: (FEB, 1),
+        2005: (JAN, 21),
         2006: ((JAN, 11), (DEC, 31)),
-        2007: (DEC, 21),
-        2008: (DEC, 9),
-        2009: (NOV, 28),
-        2010: (NOV, 17),
-        # https://web.archive.org/web/20111103102902/http://www.adaderana.lk:80/news.php?nid=15606
-        2011: (NOV, 7),
-        # https://web.archive.org/web/20121029024049/http://www.adaderana.lk:80/news.php?nid=20136
-        2012: (OCT, 27),
-        2013: (OCT, 16),
-        2014: (OCT, 5),
-        2015: (SEP, 24),
-        2016: (SEP, 12),
-        2018: (AUG, 22),
-        2019: (AUG, 12),
-        2020: (AUG, 1),
-        2021: (JUL, 21),
-        2022: (JUL, 10),
-        2023: (JUN, 29),
-        2024: (JUN, 17),
-        2025: (JUN, 7),
+        2017: (SEP, 1),
     }
 
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2003, 2025)
     EID_AL_FITR_DATES = {
-        2003: (NOV, 26),
-        2005: (NOV, 4),
-        2006: (OCT, 24),
-        2009: (SEP, 21),
-        2011: (AUG, 31),
-        2013: (AUG, 9),
-        2014: (JUL, 29),
-        2015: (JUL, 18),
-        2017: (JUN, 26),
-        2019: (JUN, 5),
-        2020: (MAY, 25),
-        2021: (MAY, 14),
-        2022: (MAY, 3),
-        2023: (APR, 22),
-        2024: (APR, 11),
-        2025: (MAR, 31),
+        2004: (NOV, 14),
+        2007: (OCT, 13),
+        2008: (OCT, 1),
+        2010: (SEP, 10),
+        2012: (AUG, 19),
+        2016: (JUL, 6),
+        2018: (JUN, 15),
     }
 
     MAWLID_DATES_CONFIRMED_YEARS = (2003, 2025)
     MAWLID_DATES = {
-        2003: (MAY, 14),
-        2004: (MAY, 2),
-        2005: (APR, 22),
-        2006: (APR, 11),
-        2007: (APR, 1),
-        2009: (MAR, 10),
-        2010: (FEB, 27),
-        2011: (FEB, 16),
-        2012: (FEB, 5),
-        2013: (JAN, 25),
-        2014: (JAN, 14),
+        2008: (MAR, 20),
         2015: (JAN, 4),
-        2016: (DEC, 12),
-        2017: (DEC, 1),
-        2019: (NOV, 10),
-        2020: (OCT, 30),
-        2021: (OCT, 19),
-        2022: (OCT, 9),
-        2023: (SEP, 28),
-        2024: (SEP, 16),
-        2025: (SEP, 5),
+        2018: (NOV, 20),
     }
 
 
