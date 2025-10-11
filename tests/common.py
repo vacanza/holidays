@@ -172,11 +172,17 @@ class TestCase:
             year_variants.get("years_non_observed", year_variants.get("years_all_subdivs", years)),
         )
 
-        for key in cls._subdiv_lookup:
-            year_variants.setdefault(f"years_subdiv_{key}", years_all_subdivs)
+        for key, (_, _, subdiv_code) in cls._subdiv_lookup.items():
+            year_variants.setdefault(
+                f"years_subdiv_{key}",
+                year_variants.get(f"years_subdiv_{subdiv_code}", years_all_subdivs),
+            )
             if is_observed_subclass:
                 year_variants.setdefault(
-                    f"years_subdiv_{key}_non_observed", years_all_subdivs_non_observed
+                    f"years_subdiv_{key}_non_observed",
+                    year_variants.get(
+                        f"years_subdiv_{subdiv_code}_non_observed", years_all_subdivs_non_observed
+                    ),
                 )
 
         if is_islamic_subclass:
@@ -232,7 +238,7 @@ class TestCase:
         # Legacy `cls.subdiv_holidays` / `cls.subdiv_holidays_non_observed` behavior.
         cls.subdiv_holidays = {}
         cls.subdiv_holidays_non_observed = {}
-        for subdiv_code, (subdiv, _, _) in cls._subdiv_base_lookup.items():
+        for subdiv, _, subdiv_code in cls._subdiv_base_lookup.values():
             key_subdiv = f"holidays_subdiv_{subdiv_code}"
             key_subdiv_non_obs = f"{key_subdiv}_non_observed"
 
