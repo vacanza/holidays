@@ -11,19 +11,20 @@
 #  License: MIT (see LICENSE file)
 #
 # Switzerland holidays.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.42\n"
+"Project-Id-Version: Holidays 0.83\n"
 "POT-Creation-Date: 2023-04-10 15:41+0300\n"
-"PO-Revision-Date: 2024-01-21 14:46+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-10-08 13:09+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.7\n"
 "X-Source-Language: de\n"
 
 #. New Year's Day.
@@ -120,4 +121,36 @@ msgstr ""
 
 #. Prayer Monday.
 msgid "Bettagsmontag"
+msgstr ""
+
+#. Knabenschiessen.
+msgid "Knabenschiessen"
+msgstr ""
+
+#. Day before Good Friday.
+msgid "Vortag vor Karfreitag"
+msgstr ""
+
+#. Sechseläuten.
+msgid "Sechseläuten"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Heiligabend"
+msgstr ""
+
+#. New Year's Eve.
+msgid "Vortag vor Neujahr"
+msgstr ""
+
+#. Day before Ascension Day.
+msgid "Vortag vor Auffahrt"
+msgstr ""
+
+#. Bridge Holiday for Ascension Day.
+msgid "Brückentag nach Auffahrt"
+msgstr ""
+
+#. Bridge Holiday.
+msgid "Brückentag"
 msgstr ""

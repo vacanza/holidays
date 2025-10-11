@@ -866,7 +866,14 @@ class HolidayBase(dict[date, str]):
     def _is_sunday(self, *args) -> bool:
         return self._check_weekday(SUN, *args)
 
-    def _is_weekend(self, *args):
+    def _is_weekday(self, *args) -> bool:
+        """
+        Returns True if date's week day is not a weekend day.
+        Returns False otherwise.
+        """
+        return not self._is_weekend(*args)
+
+    def _is_weekend(self, *args) -> bool:
         """
         Returns True if date's week day is a weekend day.
         Returns False otherwise.

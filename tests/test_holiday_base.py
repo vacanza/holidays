@@ -567,23 +567,31 @@ class TestHelperMethods(unittest.TestCase):
         self.hb.weekend = {MON, TUE}
         for dt in dts:
             self.assertTrue(self.hb._is_weekend(dt))
+            self.assertFalse(self.hb._is_weekday(dt))
 
         self.hb.weekend = {}
         for dt in dts:
             self.assertFalse(self.hb._is_weekend(dt))
+            self.assertTrue(self.hb._is_weekday(dt))
 
         self.hb.weekend = {SAT, SUN}
         for dt in (date(2022, 10, 1), date(2022, 10, 2)):
             self.assertTrue(self.hb._is_weekend(dt))
+            self.assertFalse(self.hb._is_weekday(dt))
         for dt in ((OCT, 1), (OCT, 2)):
             self.assertTrue(self.hb._is_weekend(dt))
             self.assertTrue(self.hb._is_weekend(*dt))
+            self.assertFalse(self.hb._is_weekday(dt))
+            self.assertFalse(self.hb._is_weekday(*dt))
 
         for dt in (date(2022, 10, 3), date(2022, 10, 4)):
             self.assertFalse(self.hb._is_weekend(dt))
+            self.assertTrue(self.hb._is_weekday(dt))
         for dt in ((OCT, 3), (OCT, 4)):
             self.assertFalse(self.hb._is_weekend(dt))
             self.assertFalse(self.hb._is_weekend(*dt))
+            self.assertTrue(self.hb._is_weekday(dt))
+            self.assertTrue(self.hb._is_weekday(*dt))
 
 
 class TestHolidaySum(unittest.TestCase):
