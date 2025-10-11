@@ -795,10 +795,9 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
     @property
     def _vernal_equinox_date(self) -> tuple[int, int]:
         """Return the Vernal Equinox date for Zurich (1902-1951)."""
-        day = 21
-        if (self._year >= 1916 and self._year % 4 == 0) or self._year == 1949:
-            day = 20
-        return MAR, day
+        return MAR, 20 if (
+            (self._year >= 1916 and self._year % 4 == 0) or self._year == 1949
+        ) else 21
 
 
 class CH(Switzerland):
