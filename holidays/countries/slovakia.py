@@ -25,6 +25,7 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Slovakia>
         * <https://sk.wikipedia.org/wiki/Zoznam_sviatkov_na_Slovensku>
         * <https://web.archive.org/web/20250413192257/https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/>
+        * <https://web.archive.org/web/20251007065052/https://spectator.sme.sk/business/c/slovakia-ends-november-17-public-holiday-amid-fiscal-pressures>
     """
 
     country = "SK"
@@ -78,7 +79,7 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         # All Saints' Day.
         self._add_all_saints_day(tr("Sviatok Všetkých svätých"))
 
-        if self._year >= 2001:
+        if 2001 <= self._year <= 2024:
             # Struggle for Freedom and Democracy Day.
             self._add_holiday_nov_17(tr("Deň boja za slobodu a demokraciu"))
 
@@ -101,6 +102,10 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         if self._year >= 2021:
             # Day of the Establishment of the Independent Czech-Slovak State.
             self._add_holiday_oct_28(tr("Deň vzniku samostatného česko-slovenského štátu"))
+
+        if self._year >= 2025:
+            # Struggle for Freedom and Democracy Day.
+            self._add_holiday_nov_17(tr("Deň boja za slobodu a demokraciu"))
 
 
 class SK(Slovakia):
