@@ -57,7 +57,7 @@ version upgrades.
 
 ## Documentation
 
-The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io/).
+The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io).
 
 ## Quick Start
 
