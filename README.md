@@ -99,9 +99,9 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 249 country codes. The standard way to refer to a country is by using its [ISO
-3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
-for domain names, and for a subdivision its [ISO 3166-2
+We currently support 249 country codes and are fully compatible with [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html).
+The standard way to refer to a country is by using its [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes),
+the same used for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
 abbreviations as aliases for their subdivisions. These are defined in the (optional)
 `subdivisions_aliases` attribute. Some of the countries support more than one language for holiday
