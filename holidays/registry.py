@@ -278,6 +278,7 @@ COUNTRIES: RegistryDict = {
     "venezuela": ("Venezuela", "VE", "VEN"),
     "vietnam": ("Vietnam", "VN", "VNM"),
     "wallis_and_futuna": ("WallisAndFutuna", "WF", "WLF", "HolidaysWF"),
+    "western_sahara": ("WesternSahara", "EH", "ESH"),
     "yemen": ("Yemen", "YE", "YEM"),
     "zambia": ("Zambia", "ZM", "ZMB"),
     "zimbabwe": ("Zimbabwe", "ZW", "ZWE"),
