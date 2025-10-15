@@ -10,67 +10,67 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Netherlands holidays uk localization.
+# Netherlands holidays th localization.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.83\n"
-"POT-Creation-Date: 2023-04-09 18:11+0300\n"
-"PO-Revision-Date: 2023-04-09 18:19+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"POT-Creation-Date: 2025-10-15 13:18+0700\n"
+"PO-Revision-Date: 2025-10-15 15:17+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: uk\n"
+"Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Source-Language: nl\n"
 
 #. New Year's Day.
 msgid "Nieuwjaarsdag"
-msgstr "Новий рік"
+msgstr "วันขึ้นปีใหม่"
 
 #. Good Friday.
 msgid "Goede Vrijdag"
-msgstr "Страсна пʼятниця"
+msgstr "วันศุกร์ประเสริฐ"
 
 #. Easter Sunday.
 msgid "Eerste paasdag"
-msgstr "Великдень"
+msgstr "วันอาทิตย์อีสเตอร์"
 
 #. Easter Monday.
 msgid "Tweede paasdag"
-msgstr "Великодній понеділок"
+msgstr "วันจันทร์อีสเตอร์"
 
 #. King's Day.
 msgid "Koningsdag"
-msgstr "День короля"
+msgstr "วันเฉลิมพระชนมพรรษาสมเด็จพระราชาธิบดี"
 
 #. Queen's Day.
 msgid "Koninginnedag"
-msgstr "День королеви"
+msgstr "วันเฉลิมพระชนมพรรษาสมเด็จพระราชินีนาถ"
 
 #. Liberation Day.
 msgid "Bevrijdingsdag"
-msgstr "День визволення"
+msgstr "วันประกาศอิสรภาพ"
 
 #. Ascension Day.
 msgid "Hemelvaartsdag"
-msgstr "Вознесіння Господнє"
+msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
 
 #. Whit Sunday.
 msgid "Eerste Pinksterdag"
-msgstr "Трійця"
+msgstr "วันสมโภชพระจิตเจ้า"
 
 #. Whit Monday.
 msgid "Tweede Pinksterdag"
-msgstr "День Святого Духа"
+msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
 
 #. Christmas Day.
 msgid "Eerste Kerstdag"
-msgstr "Різдво Христове"
+msgstr "วันคริสต์มาสวันแรก"
 
 #. Second Day of Christmas.
 msgid "Tweede Kerstdag"
-msgstr "Другий день Різдва"
+msgstr "วันคริสต์มาสวันที่สอง"
