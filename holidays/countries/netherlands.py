@@ -29,7 +29,7 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         * <https://nl.wikipedia.org/wiki/Algemene_termijnenwet>
         * <https://web.archive.org/web/20251015082530/https://business.gov.nl/regulation/holiday-entitlement/>
         * <https://web.archive.org/save/https://wetten.overheid.nl/BWBR0002448/2010-10-10>
-        * <https://web.archive.org/web/20250000000000*/https://repository.overheid.nl/frbr/sgd/19811982/0000151909/1/pdf/SGD_19811982_0002862.pdf>
+        * <https://web.archive.org/web/20250123145153/https://repository.overheid.nl/frbr/sgd/19811982/0000151909/1/pdf/SGD_19811982_0002862.pdf>
         * <https://web.archive.org/web/20251015082056/https://www.facebook.com/photo.php?fbid=5357926707591435&id=190259871024837&set=a.342400825810740>
     """
 
@@ -38,7 +38,7 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
     supported_categories = (OPTIONAL, PUBLIC)
     supported_languages = ("en_US", "fy", "nl", "th", "uk")
     # Algemene termijnenwet (Atw) entered into force on April 1st, 1965.
-    start_year = 1965
+    start_year = 1966
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -47,10 +47,8 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Algemene termijnenwet (Atw) entered into force on April 1st, 1965.
-        if self._year >= 1966:
-            # New Year's Day.
-            self._add_new_years_day(tr("Nieuwjaarsdag"))
+        # New Year's Day.
+        self._add_new_years_day(tr("Nieuwjaarsdag"))
 
         # Good Friday.
         self._add_good_friday(tr("Goede Vrijdag"))

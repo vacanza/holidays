@@ -20,7 +20,7 @@ from tests.common import CommonCountryTests
 class TestNetherlands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(1965, 2050)
+        cls.full_range = range(1966, 2050)
         super().setUpClass(Netherlands, years=cls.full_range)
         cls.optional_holidays = Netherlands(categories=OPTIONAL, years=cls.full_range)
 
@@ -31,9 +31,7 @@ class TestNetherlands(CommonCountryTests, TestCase):
         self.assertNoHolidays(Netherlands(categories=Netherlands.supported_categories, years=1964))
 
     def test_new_years_day(self):
-        name = "Nieuwjaarsdag"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1966, 2050)))
-        self.assertNoHolidayName(name, 1965)
+        self.assertHolidayName("Nieuwjaarsdag", (f"{year}-01-01" for year in self.full_range))
 
     def test_good_friday(self):
         name = "Goede Vrijdag"
@@ -78,7 +76,6 @@ class TestNetherlands(CommonCountryTests, TestCase):
         name = "Koninginnedag"
         self.assertHolidayName(
             name,
-            "1965-04-30",
             "1967-05-01",
             "1972-05-01",
             "1978-05-01",
@@ -88,7 +85,7 @@ class TestNetherlands(CommonCountryTests, TestCase):
             "2006-04-29",
             "2013-04-30",
         )
-        self.assertHolidayName(name, range(1965, 2014))
+        self.assertHolidayName(name, range(1966, 2014))
         self.assertNoHolidayName(
             name,
             "1967-04-30",
@@ -126,22 +123,22 @@ class TestNetherlands(CommonCountryTests, TestCase):
             "2031-04-27",
             "2036-04-27",
         )
-        self.assertNoHolidayName(name, range(1965, 2014))
+        self.assertNoHolidayName(name, range(1966, 2014))
 
     def test_liberation_day(self):
         name = "Bevrijdingsdag"
         # PUBLIC.
         self.assertHolidayName(
-            name, (f"{year}-05-05" for year in range(1966, 2050) if year % 5 == 0)
+            name, (f"{year}-05-05" for year in self.full_range if year % 5 == 0)
         )
         self.assertNoHolidayName(
-            name, (f"{year}-05-05" for year in range(1966, 2050) if year % 5 != 0)
+            name, (f"{year}-05-05" for year in self.full_range if year % 5 != 0)
         )
         # OPTIONAL.
         self.assertHolidayName(
             name, self.optional_holidays, (f"{year}-05-05" for year in range(1982, 2050))
         )
-        self.assertNoHolidayName(name, self.optional_holidays, range(1965, 1982))
+        self.assertNoHolidayName(name, self.optional_holidays, range(1966, 1982))
 
     def test_ascension_day(self):
         name = "Hemelvaartsdag"
