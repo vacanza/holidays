@@ -78,8 +78,12 @@ class TestSlovakia(CommonCountryTests, TestCase):
 
     def test_day_of_victory_over_fascizm(self):
         name = "Deň víťazstva nad fašizmom"
-        self.assertHolidayName(name, (f"{year}-05-08" for year in range(1997, 2050)))
-        self.assertNoHolidayName(name, range(1993, 1997))
+        self.assertHolidayName(
+            name, (f"{year}-05-08" for year in (*range(1997, 2026), *range(2027, 2050)))
+        )
+        self.assertNoHolidayName(name, range(1993, 1997), 2026)
+        self.assertHolidayName(name, self.workday_holidays, "2026-05-08")
+        self.assertNoHolidayName(name, self.workday_holidays, range(1993, 2026), range(2027, 2050))
 
     def test_cyril_and_methodius_day(self):
         self.assertHolidayName(
@@ -105,9 +109,13 @@ class TestSlovakia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.workday_holidays, range(1993, 2024))
 
     def test_day_of_our_lady_of_the_seven_sorrows(self):
+        name = "Sedembolestná Panna Mária"
         self.assertHolidayName(
-            "Sedembolestná Panna Mária", (f"{year}-09-15" for year in self.full_range)
+            name, (f"{year}-09-15" for year in (*range(1993, 2026), *range(2027, 2050)))
         )
+        self.assertNoHolidayName(name, 2026)
+        self.assertHolidayName(name, self.workday_holidays, "2026-09-15")
+        self.assertNoHolidayName(name, self.workday_holidays, range(1993, 2026), range(2027, 2050))
 
     def test_day_of_the_establishment_of_the_czech_slovak_state(self):
         name = "Deň vzniku samostatného česko-slovenského štátu"
