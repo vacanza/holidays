@@ -13,7 +13,19 @@
 from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import JAN, FEB, APR, MAY, JUN, JUL, SEP, OCT, NOV, DEC, _timedelta
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    _timedelta,
+)
 from holidays.financial.us_government_securities import (
     USGovernmentSecurities,
     USGS,
