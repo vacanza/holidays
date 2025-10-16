@@ -22,7 +22,7 @@ class BuddhistCalendarHolidays(EasternCalendarHolidays):
     Buddhist lunisolar calendar holidays.
     """
 
-    def __init__(self, cls=None, show_estimated=False) -> None:
+    def __init__(self, cls=None, *, show_estimated=False) -> None:
         self._buddhist_calendar = cls() if cls else _BuddhistLunisolar()
         self._buddhist_calendar_show_estimated = show_estimated
 
@@ -36,7 +36,7 @@ class BuddhistCalendarHolidays(EasternCalendarHolidays):
         is an estimation.
         """
         return self._add_eastern_calendar_holiday(
-            name, dt_estimated, self._buddhist_calendar_show_estimated
+            name, dt_estimated, show_estimated=self._buddhist_calendar_show_estimated
         )
 
     def _add_vesak(self, name) -> Optional[date]:

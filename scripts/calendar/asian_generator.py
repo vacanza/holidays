@@ -285,7 +285,7 @@ class _Lunisolar:
         """
         return sum(self._lunar_year_days(y) for y in range(self.START_YEAR, year))
 
-    def lunar_to_gre(self, year: int, month: int, day: int, leap: bool = True) -> date:
+    def lunar_to_gre(self, year: int, month: int, day: int, *, leap: bool = True) -> date:
         """
         Return the Gregorian date of a Chinese lunar day and month in a
         given Gregorian year.

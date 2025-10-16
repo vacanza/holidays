@@ -352,6 +352,7 @@ class EntityLoader:
     @staticmethod
     def _get_entity_codes(
         container: RegistryDict,
+        *,
         include_aliases: bool = True,
         max_code_length: int = 3,
         min_code_length: int = 2,
