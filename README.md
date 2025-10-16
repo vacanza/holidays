@@ -1945,6 +1945,18 @@ code when available. The following financial markets are available:
 <td>NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)</td>
 <td></td>
 </tr>
+<tr>
+<td>US Government Securities</td>
+<td>USGS</td>
+<td>US bond market holidays following SIFMA recommendations</td>
+<td></td>
+</tr>
+<tr>
+<td>US New York</td>
+<td>USNY</td>
+<td>US New York financial market holidays following SIFMA recommendations</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 
