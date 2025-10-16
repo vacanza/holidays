@@ -290,6 +290,8 @@ FINANCIAL: RegistryDict = {
     "ice_futures_europe": ("ICEFuturesEurope", "IFEU"),
     "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
+    "us_government_securities": ("USGovernmentSecurities", "USGS", "USBondMarket"),
+    "us_new_york": ("USNewYork", "USNY", "USNewYorkFinancial"),
 }
 
 # A re-entrant lock. Once a thread has acquired a re-entrant lock,
