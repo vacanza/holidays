@@ -26,6 +26,7 @@ class EasternCalendarHolidays:
         self,
         name: str,
         dt_estimated: tuple[Optional[date], bool],
+        *,
         show_estimated: bool = True,
         days_delta: int = 0,
     ) -> Optional[date]:
@@ -53,6 +54,7 @@ class EasternCalendarHolidays:
         self,
         name: str,
         dts_estimated: Iterable[tuple[date, bool]],
+        *,
         show_estimated: bool = True,
         days_delta: int = 0,
     ) -> set[date]:
@@ -67,7 +69,7 @@ class EasternCalendarHolidays:
             for dt_estimated in dts_estimated
             if (
                 dt := self._add_eastern_calendar_holiday(
-                    name, dt_estimated, show_estimated, days_delta
+                    name, dt_estimated, show_estimated=show_estimated, days_delta=days_delta
                 )
             )
         }

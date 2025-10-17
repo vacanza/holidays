@@ -40,7 +40,7 @@ class EntityStubStaticHolidays:
 
 
 class EntityStub(HolidayBase):
-    def _add_observed(self, dt: date, before: bool = True, after: bool = True) -> None:
+    def _add_observed(self, dt: date, *, before: bool = True, after: bool = True) -> None:
         if not self.observed:
             return None
 

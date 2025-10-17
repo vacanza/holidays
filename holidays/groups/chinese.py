@@ -23,7 +23,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
     Chinese lunisolar calendar holidays.
     """
 
-    def __init__(self, cls=None, show_estimated=False, calendar=CHINESE_CALENDAR) -> None:
+    def __init__(self, cls=None, *, show_estimated=False, calendar=CHINESE_CALENDAR) -> None:
         self._chinese_calendar = (
             cls(calendar=calendar) if cls else _ChineseLunisolar(calendar=calendar)
         )
@@ -92,7 +92,10 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         is an estimation.
         """
         return self._add_eastern_calendar_holiday(
-            name, dt_estimated, self._chinese_calendar_show_estimated, days_delta
+            name,
+            dt_estimated,
+            show_estimated=self._chinese_calendar_show_estimated,
+            days_delta=days_delta,
         )
 
     def _add_chinese_birthday_of_buddha(self, name) -> Optional[date]:

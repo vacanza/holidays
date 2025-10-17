@@ -1222,7 +1222,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Netherlands</td>
 <td>NL</td>
 <td></td>
-<td>en_US, fy, <strong>nl</strong>, uk</td>
+<td>en_US, fy, <strong>nl</strong>, th, uk</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
