@@ -57,7 +57,7 @@ version upgrades.
 
 ## Documentation
 
-The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io/).
+The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io).
 
 ## Quick Start
 
@@ -99,9 +99,9 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 248 country codes. The standard way to refer to a country is by using its [ISO
-3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
-for domain names, and for a subdivision its [ISO 3166-2
+We currently support 249 country codes and are fully compatible with [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html).
+The standard way to refer to a country is by using its [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes),
+the same used for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
 abbreviations as aliases for their subdivisions. These are defined in the (optional)
 `subdivisions_aliases` attribute. Some of the countries support more than one language for holiday
@@ -1222,7 +1222,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Netherlands</td>
 <td>NL</td>
 <td></td>
-<td>en_US, fy, <strong>nl</strong>, uk</td>
+<td>en_US, fy, <strong>nl</strong>, th, uk</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -1649,7 +1649,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Switzerland</td>
 <td>CH</td>
 <td>Cantons: AG (Aargau), AI (Appenzell Innerrhoden), AR (Appenzell Ausserrhoden), BE (Bern, Berne), BL (Basel-Landschaft), BS (Basel-Stadt), FR (Freiburg, Fribourg), GE (Genève), GL (Glarus), GR (Graubünden, Grigioni, Grischun), JU (Jura), LU (Luzern), NE (Neuchâtel), NW (Nidwalden), OW (Obwalden), SG (Sankt Gallen), SH (Schaffhausen), SO (Solothurn), SZ (Schwyz), TG (Thurgau), TI (Ticino), UR (Uri), VD (Vaud), VS (Valais, Wallis), ZG (Zug), ZH (Zürich)</td>
-<td><strong>de</strong>, en_US, fr, it, uk</td>
+<td><strong>de</strong>, en_US, fr, it, th, uk</td>
 <td>HALF_DAY, OPTIONAL</td>
 </tr>
 <tr>
@@ -1860,6 +1860,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>WF</td>
 <td>Can also be loaded as country FR, subdivision WF</td>
 <td>en_US, <strong>fr</strong>, th, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Western Sahara</td>
+<td>EH</td>
+<td></td>
+<td><strong>ar</strong>, en_US, es, fr</td>
 <td></td>
 </tr>
 <tr>

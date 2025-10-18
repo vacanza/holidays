@@ -60,7 +60,7 @@ class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
         kwargs.setdefault("observed_since", 2017)
         super().__init__(*args, **kwargs)
 
-    def _populate_observed(self, dts: set[date], multiple: bool = False) -> None:
+    def _populate_observed(self, dts: set[date], *, multiple: bool = False) -> None:
         """
         Applies `SAT_TO_NEXT_WORKDAY` instead of `SAT_SUN_TO_NEXT_WORKDAY`
         observed_rule for Day after New Year's Day and Boxing Day.
@@ -76,7 +76,7 @@ class Rwanda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
                 self._add_observed(
                     dt,
                     name,
-                    SAT_TO_NEXT_WORKDAY if name in special_cases else SAT_SUN_TO_NEXT_WORKDAY,
+                    rule=SAT_TO_NEXT_WORKDAY if name in special_cases else SAT_SUN_TO_NEXT_WORKDAY,
                 )
 
     def _populate_public_holidays(self):

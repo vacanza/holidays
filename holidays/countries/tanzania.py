@@ -121,11 +121,17 @@ class Tanzania(
             islamic_show_estimated:
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
+
+        In Tanzania, the dates of the Islamic calendar usually fall a day later than
+        the corresponding dates in the Umm al-Qura calendar.
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self, cls=TanzaniaIslamicHolidays, show_estimated=islamic_show_estimated
+            self,
+            cls=TanzaniaIslamicHolidays,
+            show_estimated=islamic_show_estimated,
+            calendar_delta_days=+1,
         )
         StaticHolidays.__init__(self, TanzaniaStaticHolidays)
         super().__init__(*args, **kwargs)
@@ -155,7 +161,7 @@ class Tanzania(
             else:
                 rule = SAT_SUN_TO_NEXT_MON
             for name in self.get_list(dt):
-                self._add_observed(dt, name, rule)
+                self._add_observed(dt, name, rule=rule)
 
     def _populate_bank_holidays(self):
         # Sikukuu ya Pasaka.
@@ -324,16 +330,11 @@ class TanzaniaIslamicHolidays(_CustomIslamicHolidays):
         2004: (FEB, 2),
         2006: (JAN, 9),
         2007: (JAN, 1),
-        2014: (OCT, 5),
-        2016: (SEP, 16),
-        2017: (SEP, 2),
-        2018: (AUG, 22),
+        2013: (OCT, 15),
+        2015: (SEP, 23),
+        2016: (SEP, 13),
         2019: (AUG, 13),
-        2021: (JUL, 21),
-        2022: (JUL, 10),
-        2023: (JUN, 29),
-        2024: (JUN, 17),
-        2025: (JUN, 7),
+        2020: (JUL, 31),
     }
 
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2013, 2025)
@@ -360,15 +361,10 @@ class TanzaniaIslamicHolidays(_CustomIslamicHolidays):
         2004: (OCT, 18),
         2006: (OCT, 29),
         2007: (OCT, 13),
-        2014: (JUL, 29),
-        2015: (JUL, 18),
-        2016: (JUL, 7),
-        2017: (JUN, 26),
-        2019: (JUN, 5),
-        2021: (MAY, 14),
-        2022: (MAY, 3),
-        2023: (APR, 22),
-        2025: (MAR, 31),
+        2013: (AUG, 8),
+        2018: (JUN, 15),
+        2020: (MAY, 24),
+        2024: (APR, 10),
     }
 
     MAWLID_DATES_CONFIRMED_YEARS = (2013, 2025)
@@ -395,16 +391,10 @@ class TanzaniaIslamicHolidays(_CustomIslamicHolidays):
         2004: (MAY, 2),
         2006: (APR, 10),
         2007: (MAR, 31),
-        2014: (JAN, 14),
+        2013: (JAN, 24),
         2015: ((JAN, 3), (DEC, 24)),
-        2016: (DEC, 12),
-        2017: (DEC, 1),
-        2018: (NOV, 21),
-        2019: (NOV, 10),
-        2021: (OCT, 19),
-        2022: (OCT, 9),
-        2023: (SEP, 28),
-        2024: (SEP, 16),
+        2020: (OCT, 29),
+        2025: (SEP, 4),
     }
 
 

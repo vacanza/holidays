@@ -23,7 +23,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
     Hindu lunisolar calendar holidays.
     """
 
-    def __init__(self, cls=None, show_estimated=False) -> None:
+    def __init__(self, cls=None, *, show_estimated=False) -> None:
         self._hindu_calendar = cls() if cls else _HinduLunisolar()
         self._hindu_calendar_show_estimated = show_estimated
 
@@ -38,7 +38,10 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
 
         return self._add_eastern_calendar_holiday(
-            name, dt_estimated, self._hindu_calendar_show_estimated, days_delta
+            name,
+            dt_estimated,
+            show_estimated=self._hindu_calendar_show_estimated,
+            days_delta=days_delta,
         )
 
     def _add_hindu_calendar_holiday_set(
@@ -51,7 +54,10 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         is an estimation.
         """
         return self._add_eastern_calendar_holiday_set(
-            name, dts_estimated, self._hindu_calendar_show_estimated, days_delta
+            name,
+            dts_estimated,
+            show_estimated=self._hindu_calendar_show_estimated,
+            days_delta=days_delta,
         )
 
     def _add_bhai_dooj(self, name) -> Optional[date]:

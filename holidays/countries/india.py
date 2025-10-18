@@ -14,7 +14,7 @@ import warnings
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import (
     ChristianHolidays,
@@ -156,11 +156,17 @@ class India(
             islamic_show_estimated:
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
+
+        In India, the dates of the Islamic calendar usually fall a day later than
+        the corresponding dates in the Umm al-Qura calendar.
         """
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self, cls=IndiaIslamicHolidays, show_estimated=islamic_show_estimated
+            self,
+            cls=IndiaIslamicHolidays,
+            show_estimated=islamic_show_estimated,
+            calendar_delta_days=+1,
         )
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
@@ -518,103 +524,40 @@ class IND(India):
 class IndiaIslamicHolidays(_CustomIslamicHolidays):
     ASHURA_DATES_CONFIRMED_YEARS = (2001, 2025)
     ASHURA_DATES = {
-        2003: (MAR, 14),
-        2004: (MAR, 2),
-        2007: (JAN, 30),
+        2001: (APR, 4),
+        2002: (MAR, 24),
+        2005: (FEB, 19),
+        2006: (FEB, 9),
+        2008: (JAN, 19),
         2009: ((JAN, 7), (DEC, 28)),
-        2010: (DEC, 17),
-        2011: (DEC, 6),
-        2012: (NOV, 25),
-        2013: (NOV, 14),
-        2014: (NOV, 4),
-        2015: (OCT, 24),
-        2016: (OCT, 12),
-        2017: (OCT, 1),
-        2018: (SEP, 21),
-        2019: (SEP, 10),
-        2020: (AUG, 30),
         2021: (AUG, 20),
-        2022: (AUG, 9),
-        2023: (JUL, 29),
-        2024: (JUL, 17),
-        2025: (JUL, 6),
     }
 
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2025)
     EID_AL_ADHA_DATES = {
-        2001: (MAR, 6),
-        2002: (FEB, 23),
-        2003: (FEB, 12),
-        2004: (FEB, 2),
+        2005: (JAN, 21),
         2006: ((JAN, 11), (DEC, 31)),
-        2008: (DEC, 9),
-        2009: (NOV, 28),
-        2010: (NOV, 17),
-        2011: (NOV, 7),
-        2012: (OCT, 27),
-        2013: (OCT, 16),
+        2007: (DEC, 20),
         2014: (OCT, 6),
         2015: (SEP, 25),
         2016: (SEP, 13),
-        2017: (SEP, 2),
-        2018: (AUG, 22),
-        2019: (AUG, 12),
-        2020: (AUG, 1),
-        2021: (JUL, 21),
-        2022: (JUL, 10),
-        2023: (JUN, 29),
-        2024: (JUN, 17),
-        2025: (JUN, 7),
     }
 
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2025)
     EID_AL_FITR_DATES = {
-        2001: (DEC, 17),
-        2002: (DEC, 6),
-        2003: (NOV, 26),
-        2006: (OCT, 24),
-        2008: (OCT, 2),
-        2009: (SEP, 21),
-        2011: (AUG, 31),
-        2012: (AUG, 20),
-        2014: (JUL, 29),
-        2015: (JUL, 18),
-        2016: (JUL, 7),
-        2017: (JUN, 26),
-        2018: (JUN, 16),
-        2019: (JUN, 5),
-        2020: (MAY, 25),
-        2021: (MAY, 14),
-        2022: (MAY, 3),
-        2023: (APR, 22),
-        2024: (APR, 11),
-        2025: (MAR, 31),
+        2004: (NOV, 14),
+        2005: (NOV, 3),
+        2007: (OCT, 13),
+        2010: (SEP, 10),
+        2013: (AUG, 8),
     }
 
     MAWLID_DATES_CONFIRMED_YEARS = (2001, 2025)
     MAWLID_DATES = {
-        2001: (JUN, 5),
-        2002: (MAY, 25),
         2003: (MAY, 15),
         2004: (MAY, 3),
-        2005: (APR, 22),
-        2006: (APR, 11),
-        2007: (APR, 1),
-        2008: (MAR, 21),
-        2010: (FEB, 27),
-        2011: (FEB, 16),
-        2012: (FEB, 5),
-        2013: (JAN, 25),
-        2014: (JAN, 14),
+        2009: (MAR, 9),
         2015: ((JAN, 4), (DEC, 25)),
         2016: (DEC, 13),
         2017: (DEC, 2),
-        2018: (NOV, 21),
-        2019: (NOV, 10),
-        2020: (OCT, 30),
-        2021: (OCT, 19),
-        2022: (OCT, 9),
-        2023: (SEP, 28),
-        2024: (SEP, 16),
-        2025: (SEP, 5),
     }
