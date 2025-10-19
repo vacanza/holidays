@@ -289,41 +289,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 # Washington's Birthday.
                 name = tr("Washington's Birthday")
                 if self._year >= 1971:
-                    excluded_subdivs = {
-                        "AK",
-                        "AL",
-                        "AR",
-                        "AZ",
-                        "CA",
-                        "CO",
-                        "DE",
-                        "HI",
-                        "ID",
-                        "IN",
-                        "MD",
-                        "MN",
-                        "MT",
-                        "NJ",
-                        "NM",
-                        "OH",
-                        "OK",
-                        "OR",
-                        "PA",
-                        "PR",
-                        "SC",
-                        "TN",
-                        "TX",
-                        "UT",
-                        "VA",
-                        "VI",
-                        "VT",
-                        "WA",
-                        "WV",
-                        "WY",
-                    }
-
-                    if self.subdiv not in excluded_subdivs:
-                        self._add_holiday_3rd_mon_of_feb(name)
+                    self._add_holiday_3rd_mon_of_feb(name)
                 else:
                     dt = self._add_holiday_feb_22(name)
                     # B-112525 February 27th, 1953 32 COMP. GEN. 378.
