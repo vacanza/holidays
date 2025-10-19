@@ -1370,9 +1370,9 @@ class HolidaySum(HolidayBase):
 
         # Join years, expand and observed.
         kwargs: dict[str, Any] = {
-            "years": h1.years | h2.years,
             "expand": h1.expand or h2.expand,
             "observed": h1.observed or h2.observed,
+            "years": h1.years | h2.years,
         }
         # Join country and subdivisions data.
         # TODO: this way makes no sense: joining Italy Catania (IT, CA) with
