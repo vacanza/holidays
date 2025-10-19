@@ -20,6 +20,7 @@ from unittest import mock
 import pytest
 
 import holidays
+from holidays.holiday_base import HolidayBase
 from holidays.utils import (
     CountryHoliday,
     country_holidays,
@@ -226,27 +227,56 @@ class TestListSupportedEntities(unittest.TestCase):
         self.assertEqual(len(financial_files), len(supported_financial))
 
 
+class MockHolidayBase(HolidayBase):
+    def __init__(self, holidays, weekend={5, 6}):
+        super().__init__()
+        self._holidays = set(holidays)
+        self.weekend = weekend
+
+    def keys(self):
+        return self._holidays
+
+    def __contains__(self, d):
+        return d in self._holidays
+
+
 class TestListLongWeekends(unittest.TestCase):
-    def test_valid_country_usa(self):
-        results = list_long_weekends("US", 2024)
-        self.assertIsInstance(results, list)
-        self.assertTrue(any(r["length"] >= 3 for r in results))
+    def test_simple_long_weekend(self):
+        holidays = [date(2025, 7, 4)]
+        instance = MockHolidayBase(holidays)
+        result = list_long_weekends(instance)
+        self.assertEqual(result, [[date(2025, 7, 4), date(2025, 7, 6)]])
 
-    def test_invalid_country_code(self):
-        results = list_long_weekends("JA", 2024)
-        self.assertEqual(results, [], "Expected empty list for invalid country code")
+    def test_multiple_holidays(self):
+        holidays = [date(2025, 7, 4), date(2025, 12, 26)]
+        instance = MockHolidayBase(holidays)
+        result = list_long_weekends(instance)
+        expected = [
+            [date(2025, 7, 4), date(2025, 7, 6)],
+            [date(2025, 12, 26), date(2025, 12, 28)],
+        ]
+        self.assertEqual(result, expected)
 
-    def test_subdivision(self):
-        results = list_long_weekends("US", 2024, subdiv="CA")
-        self.assertIsInstance(results, list)
+    def test_three_holidays_no_weekend(self):
+        holidays = [date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)]
+        instance = MockHolidayBase(holidays)
+        result = list_long_weekends(instance)
+        self.assertEqual(result, [])
 
-    def test_long_weekend_structure(self):
-        results = list_long_weekends("IN", 2024)
-        for w in results:
-            self.assertIsInstance(w["start"], date)
-            self.assertIsInstance(w["end"], date)
-            self.assertIsInstance(w["length"], int)
+    def test_three_holidays_included_with_flag(self):
+        holidays = [date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)]
+        instance = MockHolidayBase(holidays)
+        result = list_long_weekends(instance, include_non_long_weekends=True)
+        self.assertEqual(result, [[date(2025, 3, 4), date(2025, 3, 6)]])
 
-    def test_empty_year(self):
-        results = list_long_weekends("US", 2500)
-        self.assertIsInstance(results, list)
+    def test_custom_weekend(self):
+        holidays = [date(2025, 4, 10)]
+        instance = MockHolidayBase(holidays, weekend={4, 5})
+        result = list_long_weekends(instance)
+        self.assertTrue(any(d[0] <= date(2025, 4, 10) <= d[1] for d in result))
+        self.assertTrue(any(d[0] <= date(2025, 4, 12) <= d[1] for d in result))
+
+    def test_no_holidays(self):
+        instance = MockHolidayBase([])
+        result = list_long_weekends(instance)
+        self.assertEqual(result, [])
