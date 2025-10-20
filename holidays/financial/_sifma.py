@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.calendars.gregorian import _timedelta
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
 
@@ -35,6 +37,7 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
     """
 
     observed_label = "%s (observed)"
+    supported_categories = (HALF_DAY, PUBLIC)
     start_year = 1950
 
     def __init__(self, *args, **kwargs):
@@ -87,3 +90,35 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
         # Christmas Day (December 25).
         self._move_holiday(self._add_christmas_day("Christmas Day"))
+
+    def _populate_half_day_holidays(self):
+        # Early close days at 2:00 PM Eastern Time as recommended by SIFMA.
+        # Markets close at 2:00 PM ET (%s).
+        early_close_label = "Markets close at 2:00 PM ET (%s)"
+
+        # Helper to add early close day relative to a holiday.
+        def add_early_close(holiday_name, delta_days):
+            dates = self.get_named(holiday_name, lookup="istartswith")
+            if dates:
+                dt = _timedelta(dates[0], delta_days)
+                # Only add if it's a weekday and not already a holiday.
+                if dt.year == self._year and self._is_weekday(dt) and dt not in self:
+                    self._add_holiday(early_close_label % holiday_name, dt)
+
+        # Day before New Year's Day (if the resulting day is a weekday).
+        add_early_close("New Year's Day", -1)
+
+        # Day before Good Friday (Thursday before Easter).
+        add_early_close("Good Friday", -1)
+
+        # Day before Memorial Day (Friday before last Monday of May).
+        add_early_close("Memorial Day", -1)
+
+        # Day before Independence Day (if the resulting day is a weekday).
+        add_early_close("Independence Day", -1)
+
+        # Day after Thanksgiving (Black Friday).
+        add_early_close("Thanksgiving Day", +1)
+
+        # Day before Christmas Day (if the resulting day is a weekday).
+        add_early_close("Christmas Day", -1)
