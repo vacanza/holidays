@@ -144,6 +144,7 @@ class ObservedHolidayBase(HolidayBase):
         self,
         dt: DateArg | None = None,
         name: str | None = None,
+        *,
         rule: ObservedRule | None = None,
         force_observed: bool = False,
         show_observed_label: bool = True,
@@ -198,6 +199,7 @@ class ObservedHolidayBase(HolidayBase):
     def _move_holiday(
         self,
         dt: date,
+        *,
         rule: ObservedRule | None = None,
         force_observed: bool = False,
         show_observed_label: bool = True,
@@ -214,7 +216,7 @@ class ObservedHolidayBase(HolidayBase):
     ) -> tuple[bool, date | None]:
         return self._move_holiday(dt, rule=rule, force_observed=True, show_observed_label=False)
 
-    def _populate_observed(self, dts: set[date], multiple: bool = False) -> None:
+    def _populate_observed(self, dts: set[date], *, multiple: bool = False) -> None:
         """
         When multiple is True, each holiday from a given date has its own observed date.
         """

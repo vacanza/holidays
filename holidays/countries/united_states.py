@@ -248,7 +248,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         kwargs.setdefault("observed_since", 1953)
         super().__init__(*args, **kwargs)
 
-    def _populate_common(self, include_federal: bool = False):
+    def _populate_common(self, *, include_federal: bool = False):
         """
         Populates common US holidays.
 

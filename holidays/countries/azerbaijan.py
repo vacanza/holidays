@@ -172,7 +172,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
                     continue
                 for holiday_name in dt_holidays:
                     if any(bayrami_name in holiday_name for bayrami_name in bayrami_names):
-                        self._add_observed(dt_observed, holiday_name, WORKDAY_TO_NEXT_WORKDAY)
+                        self._add_observed(dt_observed, holiday_name, rule=WORKDAY_TO_NEXT_WORKDAY)
 
     def _populate_workday_holidays(self):
         if self._year >= 2021:

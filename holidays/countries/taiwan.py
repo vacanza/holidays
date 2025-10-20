@@ -134,7 +134,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
                     dt,
                     name,
                     # Children's Day falls on the same day as Tomb-Sweeping Day.
-                    CHILDRENS_DAY_RULE if name == childrens_day and len(names) > 1 else rule,
+                    rule=CHILDRENS_DAY_RULE if name == childrens_day and len(names) > 1 else rule,
                 )
 
     def _populate_public_holidays(self):

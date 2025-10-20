@@ -31,7 +31,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
     Adhi month dates are instead hardcoded in Sri Lanka country implementation.
     """
 
-    def __init__(self, cls=None, show_estimated=False) -> None:
+    def __init__(self, cls=None, *, show_estimated=False) -> None:
         self._sinhala_calendar = cls() if cls else _SinhalaLunar()
         self._sinhala_calendar_show_estimated = show_estimated
 
@@ -45,7 +45,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         is an estimation.
         """
         return self._add_eastern_calendar_holiday(
-            name, dt_estimated, self._sinhala_calendar_show_estimated
+            name, dt_estimated, show_estimated=self._sinhala_calendar_show_estimated
         )
 
     def _add_sinhala_calendar_holiday_set(
@@ -58,7 +58,10 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         is an estimation.
         """
         return self._add_eastern_calendar_holiday_set(
-            name, dts_estimated, self._sinhala_calendar_show_estimated, days_delta
+            name,
+            dts_estimated,
+            show_estimated=self._sinhala_calendar_show_estimated,
+            days_delta=days_delta,
         )
 
     def _add_bak_poya(self, name) -> date | None:

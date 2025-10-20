@@ -71,7 +71,7 @@ class TestCase:
         os.environ["LANGUAGE"] = language
 
     def _parse_arguments(
-        self, args, expand_items=True, instance_name="holidays", raise_on_empty=True
+        self, args, *, expand_items=True, instance_name="holidays", raise_on_empty=True
     ):
         item_args = args
         instance = None

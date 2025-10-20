@@ -74,7 +74,7 @@ class Nepal(
         StaticHolidays.__init__(self, cls=NepalStaticHolidays)
         super().__init__(*args, **kwargs)
 
-    def _add_non_continuous_holidays(self, is_workday: bool = False):
+    def _add_non_continuous_holidays(self, *, is_workday: bool = False):
         """Holidays removed by MoHA between 2019-2020."""
         if (2019 <= self._year <= 2020) == is_workday:
             martyrs_day_dates = {

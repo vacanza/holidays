@@ -20,17 +20,25 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_PREV_SAT,
 class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Netherlands holidays.
 
+    Easter Sunday and Whit Sunday are always on Sunday and are therefore not mentioned separately
+    in the Algemene termijnenwet (Atw).
+
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Netherlands>
         * <https://nl.wikipedia.org/wiki/Feestdagen_in_Nederland>
-        * <https://web.archive.org/web/20250427131819/https://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays>
+        * <https://nl.wikipedia.org/wiki/Algemene_termijnenwet>
+        * <https://web.archive.org/web/20251015082530/https://business.gov.nl/regulation/holiday-entitlement/>
+        * <https://web.archive.org/save/https://wetten.overheid.nl/BWBR0002448/2010-10-10>
+        * <https://web.archive.org/web/20250123145153/https://repository.overheid.nl/frbr/sgd/19811982/0000151909/1/pdf/SGD_19811982_0002862.pdf>
+        * <https://web.archive.org/web/20251015082056/https://www.facebook.com/photo.php?fbid=5357926707591435&id=190259871024837&set=a.342400825810740>
     """
 
     country = "NL"
     default_language = "nl"
     supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = ("en_US", "fy", "nl", "uk")
-    start_year = 1801
+    supported_languages = ("en_US", "fy", "nl", "th", "uk")
+    # Algemene termijnenwet (Atw) entered into force on April 1st, 1965.
+    start_year = 1966
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -42,29 +50,28 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # New Year's Day.
         self._add_new_years_day(tr("Nieuwjaarsdag"))
 
+        # Good Friday.
+        self._add_good_friday(tr("Goede Vrijdag"))
+
         # Easter Sunday.
         self._add_easter_sunday(tr("Eerste paasdag"))
 
         # Easter Monday.
         self._add_easter_monday(tr("Tweede paasdag"))
 
-        if self._year >= 1891:
-            name = (
-                # King's Day.
-                tr("Koningsdag")
-                if self._year >= 2014
-                # Queen's Day.
-                else tr("Koninginnedag")
-            )
-            if self._year >= 2014:
-                dt = self._add_holiday_apr_27(name)
-            elif self._year >= 1949:
-                dt = self._add_holiday_apr_30(name)
-            else:
-                dt = self._add_holiday_aug_31(name)
-            self._move_holiday(dt, rule=SUN_TO_PREV_SAT if self._year >= 1980 else SUN_TO_NEXT_MON)
+        self._move_holiday(
+            # King's Day.
+            self._add_holiday_apr_27(tr("Koningsdag"))
+            if self._year >= 2014
+            # Queen's Day.
+            else self._add_holiday_apr_30(tr("Koninginnedag")),
+            rule=SUN_TO_PREV_SAT if self._year >= 1980 else SUN_TO_NEXT_MON,
+        )
 
-        if self._year >= 1950 and self._year % 5 == 0:
+        # Officially adopted as an annual national holiday in the Atw on January 5th, 1982.
+        # In practice, many collective labor agreements (CAOs) stipulate that May 5th is
+        # a day off only once every five years (e.g., 2030, 2035, etc.).
+        if self._year % 5 == 0:
             # Liberation Day.
             self._add_holiday_may_5(tr("Bevrijdingsdag"))
 
@@ -84,10 +91,7 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         self._add_christmas_day_two(tr("Tweede Kerstdag"))
 
     def _populate_optional_holidays(self):
-        # Good Friday.
-        self._add_good_friday(tr("Goede Vrijdag"))
-
-        if self._year >= 1990:
+        if self._year >= 1982:
             # Liberation Day.
             self._add_holiday_may_5(tr("Bevrijdingsdag"))
 

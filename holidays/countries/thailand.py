@@ -681,14 +681,15 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # **For pre-1941 data, Buddhist Era year starts on APR 1st.
 
         if 1915 <= self._year <= 1925 or self._year >= 1938:
-            name = (
-                # Makha Bucha.
-                tr("วันมาฆบูชา")
-                if self._year >= 1938
-                # Makha Bucha, the Fourfold Assembly Day.
-                else tr("มาฆบูชา จาตุรงฅ์สันนิบาต")
+            self._add_observed(
+                self._add_makha_bucha(
+                    # Makha Bucha.
+                    tr("วันมาฆบูชา")
+                    if self._year >= 1938
+                    # Makha Bucha, the Fourfold Assembly Day.
+                    else tr("มาฆบูชา จาตุรงฅ์สันนิบาต")
+                )
             )
-            self._add_observed(self._add_makha_bucha(name))
 
         # วันวิสาขบูชา
         # Status: In-Use.
