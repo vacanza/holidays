@@ -245,15 +245,15 @@ class TestListLongWeekends(unittest.TestCase):
         holidays = [date(2025, 7, 4)]
         instance = MockHolidayBase(holidays)
         result = list_long_weekends(instance)
-        self.assertEqual(result, [[date(2025, 7, 4), date(2025, 7, 6)]])
+        self.assertEqual(result, [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]])
 
     def test_multiple_holidays(self):
         holidays = [date(2025, 7, 4), date(2025, 12, 26)]
         instance = MockHolidayBase(holidays)
         result = list_long_weekends(instance)
         expected = [
-            [date(2025, 7, 4), date(2025, 7, 6)],
-            [date(2025, 12, 26), date(2025, 12, 28)],
+            [date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)],
+            [date(2025, 12, 26), date(2025, 12, 27), date(2025, 12, 28)],
         ]
         self.assertEqual(result, expected)
 
@@ -267,14 +267,13 @@ class TestListLongWeekends(unittest.TestCase):
         holidays = [date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)]
         instance = MockHolidayBase(holidays)
         result = list_long_weekends(instance, include_non_long_weekends=True)
-        self.assertEqual(result, [[date(2025, 3, 4), date(2025, 3, 6)]])
+        self.assertEqual(result, [[date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)]])
 
     def test_custom_weekend(self):
         holidays = [date(2025, 4, 10)]
         instance = MockHolidayBase(holidays, weekend={4, 5})
         result = list_long_weekends(instance)
-        self.assertTrue(any(d[0] <= date(2025, 4, 10) <= d[1] for d in result))
-        self.assertTrue(any(d[0] <= date(2025, 4, 12) <= d[1] for d in result))
+        self.assertEqual(result, [[date(2025, 4, 10), date(2025, 4, 11), date(2025, 4, 12)]])
 
     def test_no_holidays(self):
         instance = MockHolidayBase([])

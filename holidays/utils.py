@@ -452,6 +452,8 @@ def list_long_weekends(
         if hol in checked:
             continue
 
+        weekend_contents = []
+
         prev_work = instance.get_nth_working_day(hol, -1)
         next_work = instance.get_nth_working_day(hol, +1)
 
@@ -463,12 +465,13 @@ def list_long_weekends(
         has_weekend = True
         if not include_non_long_weekends:
             has_weekend = any(
-                (d.weekday() in getattr(instance, "weekend", {5, 6}))
-                for d in (start + timedelta(days=i) for i in range(length))
+                instance.is_weekend(d) for d in (start + timedelta(days=i) for i in range(length))
             )
 
         if length >= 3 and has_weekend:
-            long_weekends.append([start, end])
+            for d in (start + timedelta(days=i) for i in range(length)):
+                weekend_contents.append(d)
+            long_weekends.append(weekend_contents)
 
         for d in holidays_in_year:
             if start <= d <= end:
