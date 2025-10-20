@@ -25,7 +25,7 @@ class IslamicHolidays(EasternCalendarHolidays):
     calendar consisting of 12 lunar months in a year of 354 or 355 days.
     """
 
-    def __init__(self, cls=None, show_estimated=True, calendar_delta_days=0) -> None:
+    def __init__(self, cls=None, *, show_estimated=True, calendar_delta_days=0) -> None:
         self._islamic_calendar = (
             cls(calendar_delta_days=calendar_delta_days)
             if cls
@@ -286,7 +286,10 @@ class IslamicHolidays(EasternCalendarHolidays):
         holiday date is an estimation.
         """
         return self._add_eastern_calendar_holiday_set(
-            name, dts_estimated, self._islamic_calendar_show_estimated, days_delta
+            name,
+            dts_estimated,
+            show_estimated=self._islamic_calendar_show_estimated,
+            days_delta=days_delta,
         )
 
     def _add_islamic_new_year_day(self, name) -> set[date]:

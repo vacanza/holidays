@@ -355,7 +355,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             "2025-01-09",  # National Day of Mourning for former President Jimmy Carter
         ]
 
-        def _make_special_holiday_list(begin, end, days=None, weekends=False):
+        def _make_special_holiday_list(begin, end, *, days=None, weekends=False):
             return [
                 day
                 for day in (_timedelta(begin, n) for n in range((end - begin).days + 1))

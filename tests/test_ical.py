@@ -374,7 +374,7 @@ class TestIcalExporter(TestCase):
     def test_crlf_line_endings(self):
         output = self.th_exporter.generate()
 
-        lines = output.splitlines(True)
+        lines = output.splitlines(keepends=True)
         for line in lines:
             self.assertTrue(
                 line.endswith(CONTENT_LINE_DELIMITER), f"Line did not end with CRLF: {repr(line)}"

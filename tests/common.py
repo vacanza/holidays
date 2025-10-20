@@ -35,7 +35,7 @@ class TestCase:
 
     @staticmethod
     @cache
-    def _get_or_create_lookup(test_class, with_subdiv_categories=False):
+    def _get_or_create_lookup(test_class, *, with_subdiv_categories=False):
         """Build and cache categories and subdivision lookup tables for a holiday test class."""
 
         non_public_supported_categories = tuple(
@@ -106,7 +106,7 @@ class TestCase:
 
     @classmethod
     def setUpClass(
-        cls, test_class=None, with_subdiv_categories=False, years=None, **year_variants
+        cls, test_class=None, *, with_subdiv_categories=False, years=None, **year_variants
     ):
         super().setUpClass()
 
@@ -282,7 +282,7 @@ class TestCase:
         os.environ["LANGUAGE"] = language
 
     def _parse_arguments(
-        self, args, expand_items=True, instance_name="holidays", raise_on_empty=True
+        self, args, *, expand_items=True, instance_name="holidays", raise_on_empty=True
     ):
         item_args = args
         instance = None
