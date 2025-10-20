@@ -144,14 +144,13 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         )
 
         if self._year >= 1974:
-            name = (
+            feb_6 = self._add_holiday_feb_6(
                 # Waitangi Day.
                 "Waitangi Day"
                 if self._year >= 1977
                 # New Zealand Day.
                 else "New Zealand Day"
             )
-            feb_6 = self._add_holiday_feb_6(name)
             if self._year >= 2014:
                 self._add_observed(feb_6)
 
