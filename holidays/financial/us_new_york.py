@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.financial.sifma import SIFMAHolidays
+from holidays.financial._sifma import SIFMAHolidays
 
 
 class USNewYork(SIFMAHolidays):
