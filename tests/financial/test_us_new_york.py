@@ -13,7 +13,7 @@
 from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import JAN, FEB, MAY, JUN, JUL, SEP, NOV, DEC, _timedelta
+from holidays.calendars.gregorian import JAN, FEB, MAY, JUN, JUL, SEP, OCT, NOV, DEC, _timedelta
 from holidays.financial.us_new_york import USNewYork, USNY, USNewYorkFinancial
 from tests.common import CommonFinancialTests
 
@@ -143,16 +143,34 @@ class TestUSNewYork(CommonFinancialTests, TestCase):
             self.assertNoHoliday(_timedelta(dt, +1) if dt.day in {24, 26} else _timedelta(dt, -1))
 
     def test_no_good_friday(self):
-        # USNY does not observe Good Friday as a full closure.
+        # USNY does not observe Good Friday (unlike NYSE and USGS which do).
         self.assertNoHoliday("2023-04-07", "2024-03-29", "2025-04-18")
 
-    def test_no_columbus_day(self):
-        # USNY does not observe Columbus Day.
-        self.assertNoHoliday("2023-10-09", "2024-10-14", "2025-10-13")
+    def test_columbus_day(self):
+        # USNY observes Columbus Day (unlike NYSE which doesn't in modern times).
+        for dt in (
+            date(1950, OCT, 9),
+            date(2000, OCT, 9),
+            date(2010, OCT, 11),
+            date(2022, OCT, 10),
+            date(2023, OCT, 9),
+        ):
+            self.assertHoliday(dt)
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +1))
 
-    def test_no_veterans_day(self):
-        # USNY does not observe Veterans Day.
-        self.assertNoHoliday("2023-11-10", "2024-11-11", "2025-11-11")
+    def test_veterans_day(self):
+        # USNY observes Veterans Day (unlike NYSE which doesn't in modern times).
+        for dt in (
+            date(1950, NOV, 10),
+            date(2000, NOV, 10),
+            date(2010, NOV, 11),
+            date(2022, NOV, 11),
+            date(2023, NOV, 10),
+        ):
+            self.assertHoliday(dt)
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +1))
 
     def test_2023(self):
         self.assertHolidays(
@@ -163,6 +181,8 @@ class TestUSNewYork(CommonFinancialTests, TestCase):
             ("2023-06-19", "Juneteenth National Independence Day"),
             ("2023-07-04", "Independence Day"),
             ("2023-09-04", "Labor Day"),
+            ("2023-10-09", "Columbus Day"),
+            ("2023-11-10", "Veterans Day (observed)"),
             ("2023-11-23", "Thanksgiving Day"),
             ("2023-12-25", "Christmas Day"),
         )
@@ -176,6 +196,8 @@ class TestUSNewYork(CommonFinancialTests, TestCase):
             ("2024-06-19", "Juneteenth National Independence Day"),
             ("2024-07-04", "Independence Day"),
             ("2024-09-02", "Labor Day"),
+            ("2024-10-14", "Columbus Day"),
+            ("2024-11-11", "Veterans Day"),
             ("2024-11-28", "Thanksgiving Day"),
             ("2024-12-25", "Christmas Day"),
         )
@@ -189,6 +211,8 @@ class TestUSNewYork(CommonFinancialTests, TestCase):
             ("2025-06-19", "Juneteenth National Independence Day"),
             ("2025-07-04", "Independence Day"),
             ("2025-09-01", "Labor Day"),
+            ("2025-10-13", "Columbus Day"),
+            ("2025-11-11", "Veterans Day"),
             ("2025-11-27", "Thanksgiving Day"),
             ("2025-12-25", "Christmas Day"),
         )
