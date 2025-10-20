@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, MAR, JUN, JUL, AUG, NOV, DEC
+from holidays.calendars.gregorian import JAN, MAR, NOV, DEC
 from holidays.groups import (
     BurmeseCalendarHolidays,
     ChineseCalendarHolidays,
@@ -60,13 +60,19 @@ class Myanmar(
             islamic_show_estimated:
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
+
+        In Myanmar, the dates of the Islamic calendar usually fall a day later than
+        the corresponding dates in the Umm al-Qura calendar.
         """
         BurmeseCalendarHolidays.__init__(self)
         ChineseCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self, cls=MyanmarIslamicHolidays, show_estimated=islamic_show_estimated
+            self,
+            cls=MyanmarIslamicHolidays,
+            show_estimated=islamic_show_estimated,
+            calendar_delta_days=+1,
         )
         StaticHolidays.__init__(self, cls=MyanmarStaticHolidays)
         super().__init__(*args, **kwargs)
@@ -161,14 +167,7 @@ class MMR(Myanmar):
 
 
 class MyanmarIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES = {
-        2020: (AUG, 1),
-        2021: (JUL, 21),
-        2022: (JUL, 10),
-        2023: (JUN, 29),
-        2024: (JUN, 17),
-        2025: (JUN, 7),
-    }
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2020, 2025)
 
 
 class MyanmarStaticHolidays:

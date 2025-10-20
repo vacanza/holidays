@@ -11,9 +11,8 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
-from holidays.calendars.gregorian import JAN, FEB, MAR, JUN, JUL, SEP, NOV, DEC, _timedelta
+from holidays.calendars.gregorian import MAR, JUN, JUL, SEP, _timedelta
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -27,6 +26,7 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
     """New Zealand holidays."""
 
     country = "NZ"
+    # %s (observed).
     observed_label = "%s (observed)"
     start_year = 1894
     subdivisions = (
@@ -123,9 +123,6 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _get_nearest_monday(self, *args) -> Optional[date]:
-        return self._get_observed_date(date(self._year, *args), rule=ALL_TO_NEAREST_MON)
-
     def _populate_public_holidays(self):
         # Bank Holidays Act 1873
         # The Employment of Females Act 1873
@@ -138,32 +135,46 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         # Sovereign's Birthday Observance Act 1937, 1952
         # Holidays Act 1981, 2003
 
-        # New Year's Day
+        # New Year's Day.
         self._add_observed(self._add_new_years_day("New Year's Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
         self._add_observed(
-            self._add_new_years_day_two("Day after New Year's Day"), rule=SAT_SUN_TO_NEXT_MON_TUE
+            # Day after New Year's Day.
+            self._add_new_years_day_two("Day after New Year's Day"),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-        # Waitangi Day
         if self._year >= 1974:
-            name = "Waitangi Day" if self._year >= 1977 else "New Zealand Day"
-            feb_6 = self._add_holiday_feb_6(name)
+            feb_6 = self._add_holiday_feb_6(
+                # Waitangi Day.
+                "Waitangi Day"
+                if self._year >= 1977
+                # New Zealand Day.
+                else "New Zealand Day"
+            )
             if self._year >= 2014:
                 self._add_observed(feb_6)
 
-        # Anzac Day
         if self._year >= 1921:
+            # Anzac Day.
             apr_25 = self._add_anzac_day("Anzac Day")
             if self._year >= 2014:
                 self._add_observed(apr_25)
 
-        # Easter
+        # Good Friday.
         self._add_good_friday("Good Friday")
+
+        # Easter Monday.
         self._add_easter_monday("Easter Monday")
 
         # Sovereign's Birthday
         if self._year >= 1902:
-            name = "Queen's Birthday" if 1952 <= self._year <= 2022 else "King's Birthday"
+            name = (
+                # Queen's Birthday.
+                "Queen's Birthday"
+                if 1952 <= self._year <= 2022
+                # King's Birthday.
+                else "King's Birthday"
+            )
             if self._year == 1952:
                 self._add_holiday_jun_2(name)  # Elizabeth II
             elif self._year >= 1938:
@@ -213,20 +224,21 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
             2052: (JUN, 21),
         }
         if dt := dates_obs.get(self._year):
+            # Matariki.
             self._add_holiday("Matariki", dt)
 
-        # Labour Day
         if self._year >= 1900:
+            # Labour Day.
             name = "Labour Day"
             if self._year >= 1910:
                 self._add_holiday_4th_mon_of_oct(name)
             else:
                 self._add_holiday_2nd_wed_of_oct(name)
 
-        # Christmas Day
+        # Christmas Day.
         self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
-        # Boxing Day
+        # Boxing Day.
         self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
         if self.subdiv == "New Plymouth":
@@ -237,59 +249,90 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
             self._populate_subdiv_wtc_public_holidays()
 
     def _populate_subdiv_auk_public_holidays(self):
-        self._add_holiday("Auckland Anniversary Day", self._get_nearest_monday(JAN, 29))
+        self._move_holiday_forced(
+            # Auckland Anniversary Day.
+            self._add_holiday_jan_29("Auckland Anniversary Day"),
+            rule=ALL_TO_NEAREST_MON,
+        )
 
     def _populate_subdiv_can_public_holidays(self):
+        # Canterbury Anniversary Day.
         self._add_holiday_10_days_past_1st_tue_of_nov("Canterbury Anniversary Day")
 
     def _populate_subdiv_cit_public_holidays(self):
-        self._add_holiday("Chatham Islands Anniversary Day", self._get_nearest_monday(NOV, 30))
+        self._move_holiday_forced(
+            # Chatham Islands Anniversary Day.
+            self._add_holiday_nov_30("Chatham Islands Anniversary Day"),
+            rule=ALL_TO_NEAREST_MON,
+        )
 
     def _populate_subdiv_hkb_public_holidays(self):
+        # Hawke's Bay Anniversary Day.
         self._add_holiday_3_days_prior_4th_mon_of_oct("Hawke's Bay Anniversary Day")
 
     def _populate_subdiv_mbh_public_holidays(self):
+        # Marlborough Anniversary Day.
         self._add_holiday_7_days_past_4th_mon_of_oct("Marlborough Anniversary Day")
 
     def _populate_subdiv_nsn_public_holidays(self):
-        self._add_holiday("Nelson Anniversary Day", self._get_nearest_monday(FEB, 1))
+        self._move_holiday_forced(
+            # Nelson Anniversary Day.
+            self._add_holiday_feb_1("Nelson Anniversary Day"),
+            rule=ALL_TO_NEAREST_MON,
+        )
 
     def _populate_subdiv_ntl_public_holidays(self):
         if 1964 <= self._year <= 1973:
-            self._add_holiday("Waitangi Day", self._get_nearest_monday(FEB, 6))
+            self._move_holiday_forced(
+                # Waitangi Day.
+                self._add_holiday_feb_6("Waitangi Day"),
+                rule=ALL_TO_NEAREST_MON,
+            )
         else:
-            self._add_holiday("Auckland Anniversary Day", self._get_nearest_monday(JAN, 29))
+            self._move_holiday_forced(
+                # Auckland Anniversary Day.
+                self._add_holiday_jan_29("Auckland Anniversary Day"),
+                rule=ALL_TO_NEAREST_MON,
+            )
 
     def _populate_subdiv_ota_public_holidays(self):
         # there is no easily determined single day of local observance?!?!
-        dt = self._get_nearest_monday(MAR, 23)
-        if dt == _timedelta(self._easter_sunday, +1):  # Avoid Easter Monday
+        # If Easter Monday, observed on Easter Tuesday instead.
+        dt = self._get_observed_date(date(self._year, MAR, 23), rule=ALL_TO_NEAREST_MON)
+        if dt == _timedelta(self._easter_sunday, +1):
             dt = _timedelta(dt, +1)
+        # Otago Anniversary Day.
         self._add_holiday("Otago Anniversary Day", dt)
 
     def _populate_subdiv_stc_public_holidays(self):
         self._add_holiday_4th_mon_of_sep("South Canterbury Anniversary Day")
 
     def _populate_subdiv_stl_public_holidays(self):
+        # Southland Anniversary Day.
         name = "Southland Anniversary Day"
         if self._year >= 2012:
             self._add_easter_tuesday(name)
         else:
-            self._add_holiday(name, self._get_nearest_monday(JAN, 17))
+            self._move_holiday_forced(self._add_holiday_jan_17(name), rule=ALL_TO_NEAREST_MON)
 
     def _populate_subdiv_tki_public_holidays(self):
+        # Taranaki Anniversary Day.
         self._add_holiday_2nd_mon_of_mar("Taranaki Anniversary Day")
 
     def _populate_subdiv_wgn_public_holidays(self):
-        self._add_holiday("Wellington Anniversary Day", self._get_nearest_monday(JAN, 22))
+        self._move_holiday_forced(
+            # Wellington Anniversary Day.
+            self._add_holiday_jan_22("Wellington Anniversary Day"),
+            rule=ALL_TO_NEAREST_MON,
+        )
 
     def _populate_subdiv_wtc_public_holidays(self):
-        dt = (
-            date(self._year, DEC, 5)
-            if self._year == 2005  # special case?!?!
-            else self._get_nearest_monday(DEC, 1)
-        )
-        self._add_holiday("West Coast Anniversary Day", dt)
+        # West Coast Anniversary Day.
+        name = "West Coast Anniversary Day"
+        if self._year == 2005:
+            self._add_holiday_dec_5(name)
+        else:
+            self._move_holiday_forced(self._add_holiday_dec_1(name), rule=ALL_TO_NEAREST_MON)
 
 
 class NZ(NewZealand):
@@ -302,5 +345,6 @@ class NZL(NewZealand):
 
 class NewZelandStaticHolidays:
     special_public_holidays = {
+        # Queen Elizabeth II Memorial Day.
         2022: (SEP, 26, "Queen Elizabeth II Memorial Day"),
     }

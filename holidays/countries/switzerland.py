@@ -12,10 +12,17 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, THU, _timedelta, _get_nth_weekday_of_month
+from holidays.calendars.gregorian import MAR, APR, MON, THU, _timedelta, _get_nth_weekday_of_month
 from holidays.constants import HALF_DAY, OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, MON_ONLY, TUE_TO_NONE, SAT_TO_NONE
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    MON_ONLY,
+    TUE_TO_NONE,
+    SAT_TO_NONE,
+    SUN_TO_NONE,
+    ALL_TO_NEXT_MON,
+)
 
 
 class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
@@ -23,6 +30,11 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
 
     References:
         * <https://web.archive.org/web/20250201054902/https://www.bj.admin.ch/dam/bj/de/data/publiservice/service/zivilprozessrecht/kant-feiertage.pdf>
+        * <https://web.archive.org/web/20251002085718/https://www.zuerich.com/en/inform-plan/useful-information-and-services/opening-hours-and-public-holidays/feiertage>
+        * <https://web.archive.org/web/20251008032850/https://www.stadt-zuerich.ch/de/politik-und-verwaltung/arbeiten-bei-der-stadt/gut-zu-wissen/ferien-urlaub/feiertage-betriebsferientage-bft.html>
+        * <https://web.archive.org/web/20230423124030/https://zuercher-bankenverband.ch/zbv/assets/uploads/2021/09/2022-Feiertagsuebersicht.pdf>
+        * <https://web.archive.org/web/20251008045946/https://zuercher-bankenverband.ch/zbv/assets/uploads/2022/09/2023-Feiertagsuebersicht.pdf>
+        * <https://web.archive.org/web/20251003094601/https://www.timeanddate.com/calendar/seasons.html?year=1900&n=268>
         * <https://de.wikipedia.org/wiki/Feiertage_in_der_Schweiz>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Switzerland>
     """
@@ -92,7 +104,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         "Zürich": "ZH",
     }
     supported_categories = (HALF_DAY, OPTIONAL, PUBLIC)
-    supported_languages = ("de", "en_US", "fr", "it", "uk")
+    supported_languages = ("de", "en_US", "fr", "it", "th", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -713,8 +725,79 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        if self._year >= 1899:
+            # Knabenschiessen.
+            name = tr("Knabenschiessen")
+            self._add_holiday_2nd_sun_of_sep(name)
+            self._add_holiday_1_day_prior_2nd_sun_of_sep(name)
+
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
+
+    def _populate_subdiv_zh_common(self):
+        """Populate list of holidays observed by both `HALF_DAY` and `OPTIONAL` categories."""
+        # Day before Good Friday.
+        self._add_holy_thursday(tr("Vortag vor Karfreitag"))
+
+        if self._year >= 1902:
+            # Sechseläuten.
+            name = tr("Sechseläuten")
+            # Third Monday in April but not in Holy Week.
+            if self._year >= 1952:
+                dt = _get_nth_weekday_of_month(3, MON, APR, self._year)
+                self._add_holiday(
+                    name, _timedelta(dt, +7) if dt == _timedelta(self._easter_sunday, +1) else dt
+                )
+            # From 1902-1951 this was the First Monday following the Vernal Equinox.
+            else:
+                self._move_holiday_forced(
+                    self._add_holiday(name, self._vernal_equinox_date), rule=ALL_TO_NEXT_MON
+                )
+
+        # Christmas Eve.
+        self._add_christmas_eve(tr("Heiligabend"))
+
+        # New Year's Eve.
+        self._add_new_years_eve(tr("Vortag vor Neujahr"))
+
+    def _populate_subdiv_zh_half_day_holidays(self):
+        self._populate_subdiv_zh_common()
+
+        if self._year >= 1899:
+            # Knabenschiessen.
+            self._add_holiday_1_day_past_2nd_sun_of_sep(tr("Knabenschiessen"))
+
+        # Day before Ascension Day.
+        self._add_holiday_38_days_past_easter(tr("Vortag vor Auffahrt"))
+
+    def _populate_subdiv_zh_optional_holidays(self):
+        self._populate_subdiv_zh_common()
+
+        dec_25 = self._christmas_day
+
+        # This is only granted if end-year bridge holidays <= 2.
+        if self._is_tuesday(dec_25) or self._is_wednesday(dec_25) or self._is_thursday(dec_25):
+            # Bridge Holiday for Ascension Day.
+            self._add_holiday_40_days_past_easter(tr("Brückentag nach Auffahrt"))
+
+        # This is only granted if end-year bridge holidays <= 3.
+        if self._year >= 1899 and not self._is_weekend(dec_25):
+            # Knabenschiessen.
+            self._add_holiday_1_day_past_2nd_sun_of_sep(tr("Knabenschiessen"))
+
+        # Bridge Holiday.
+        name = tr("Brückentag")
+        self._add_observed(self._add_holiday_dec_27(name), rule=SAT_TO_NONE + SUN_TO_NONE)
+        self._add_observed(self._add_holiday_dec_28(name), rule=SAT_TO_NONE + SUN_TO_NONE)
+        self._add_observed(self._add_holiday_dec_29(name), rule=SAT_TO_NONE + SUN_TO_NONE)
+        self._add_observed(self._add_holiday_dec_30(name), rule=SAT_TO_NONE + SUN_TO_NONE)
+
+    @property
+    def _vernal_equinox_date(self) -> tuple[int, int]:
+        """Return the Vernal Equinox date for Zurich (1902-1951)."""
+        return MAR, 20 if (
+            (self._year >= 1916 and self._year % 4 == 0) or self._year == 1949
+        ) else 21
 
 
 class CH(Switzerland):

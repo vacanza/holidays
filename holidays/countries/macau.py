@@ -166,24 +166,22 @@ class Macau(
         self._add_qingming_festival(tr("清明節"))
 
         # Regulamento Administrativo n.º 4/1999 - Name changed in Chinese for Good Friday.
-        name = (
+        self._add_good_friday(
             # Good Friday.
             tr("耶穌受難日")
             if self._year >= 2000
             # Good Friday.
             else tr("聖周星期五")
         )
-        self._add_good_friday(name)
 
         # Regulamento Administrativo n.º 4/1999 - Name changed to The Day before Easter.
-        name = (
+        self._add_holy_saturday(
             # The Day before Easter.
             tr("復活節前日")
             if self._year >= 2000
             # Holy Saturday.
             else tr("聖周星期六")
         )
-        self._add_holy_saturday(name)
 
         # Labor Day.
         self._add_labor_day(tr("勞動節"))
@@ -232,14 +230,13 @@ class Macau(
         self._add_christmas_eve(name)
 
         # Portaria n.º 242/98/M - Name changed in Chinese for Christmas Day.
-        name = (
+        self._add_christmas_day(
             # Christmas Day.
             tr("聖誕節")
             if self._year >= 1999
             # Christmas Day.
             else tr("聖誕")
         )
-        self._add_christmas_day(name)
 
         # Decreto-Lei n.º 38/87/M - Removed Assumption Day and All Saints' Day as Public Holiday.
         if self._year <= 1986:
@@ -371,10 +368,10 @@ class Macau(
         if self.observed:
             self.observed_label = (
                 # Compensatory rest day for %s.
-                self.tr("%s的補假")
+                tr("%s的補假")
                 if self._year >= 2020
                 # The first working day after %s.
-                else self.tr("%s後首個工作日")
+                else tr("%s後首個工作日")
             )
             self.observed_estimated_label = (
                 # Compensatory rest day for %s (estimated).

@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.calendars.gregorian import JAN, FEB, APR, MAY, JUL, AUG, SEP
 from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -65,13 +65,19 @@ class Mauritius(
             islamic_show_estimated:
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
+
+        In Mauritius, the dates of the Islamic calendar usually fall a day later than
+        the corresponding dates in the Umm al-Qura calendar.
         """
         ChineseCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, cls=MauritiusHinduHolidays)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self, cls=MauritiusIslamicHolidays, show_estimated=islamic_show_estimated
+            self,
+            cls=MauritiusIslamicHolidays,
+            show_estimated=islamic_show_estimated,
+            calendar_delta_days=+1,
         )
         StaticHolidays.__init__(self, cls=MauritiusStaticHolidays)
         super().__init__(*args, **kwargs)
@@ -167,13 +173,8 @@ class MauritiusIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20250420201326/https://www.timeanddate.com/holidays/mauritius/eid-al-fitr
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2016, 2025)
     EID_AL_FITR_DATES = {
-        2017: (JUN, 26),
-        2018: (JUN, 16),
-        2019: (JUN, 5),
-        2021: (MAY, 14),
-        2022: (MAY, 3),
-        2023: (APR, 22),
-        2024: (APR, 11),
+        2016: (JUL, 6),
+        2020: (MAY, 24),
         2025: (APR, 1),
     }
 

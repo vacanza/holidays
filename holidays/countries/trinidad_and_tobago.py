@@ -87,7 +87,7 @@ class TrinidadAndTobago(
         )
         super().__init__(*args, **kwargs)
 
-    def _populate_observed(self, dts: set[date], multiple: bool = False) -> None:
+    def _populate_observed(self, dts: set[date], *, multiple: bool = False) -> None:
         for dt in sorted(dts):
             self._add_observed(
                 dt,

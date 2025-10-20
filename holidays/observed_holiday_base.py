@@ -145,7 +145,9 @@ class ObservedHolidayBase(HolidayBase):
         self,
         dt: Optional[DateArg] = None,
         name: Optional[str] = None,
+        *,
         rule: Optional[ObservedRule] = None,
+        force_observed: bool = False,
         show_observed_label: bool = True,
     ) -> tuple[bool, Optional[date]]:
         if dt is None:
@@ -155,7 +157,7 @@ class ObservedHolidayBase(HolidayBase):
         # Convert to date: (m, d) → use self._year; (y, m, d) → use directly.
         dt = dt if isinstance(dt, date) else date(self._year, *dt) if len(dt) == 2 else date(*dt)
 
-        if not self.observed or not self._is_observed(dt):
+        if not (force_observed or (self.observed and self._is_observed(dt))):
             return False, dt
 
         dt_observed = self._get_observed_date(dt, rule or self._observed_rule)
@@ -196,16 +198,26 @@ class ObservedHolidayBase(HolidayBase):
         return True, dt_observed
 
     def _move_holiday(
-        self, dt: date, rule: Optional[ObservedRule] = None, show_observed_label: bool = True
+        self,
+        dt: date,
+        *,
+        rule: Optional[ObservedRule] = None,
+        force_observed: bool = False,
+        show_observed_label: bool = True,
     ) -> tuple[bool, Optional[date]]:
         is_observed, dt_observed = self._add_observed(
-            dt, rule=rule, show_observed_label=show_observed_label
+            dt, rule=rule, force_observed=force_observed, show_observed_label=show_observed_label
         )
         if is_observed:
             self.pop(dt)
         return is_observed, dt_observed if is_observed else dt
 
-    def _populate_observed(self, dts: set[date], multiple: bool = False) -> None:
+    def _move_holiday_forced(
+        self, dt: date, rule: Optional[ObservedRule] = None
+    ) -> tuple[bool, Optional[date]]:
+        return self._move_holiday(dt, rule=rule, force_observed=True, show_observed_label=False)
+
+    def _populate_observed(self, dts: set[date], *, multiple: bool = False) -> None:
         """
         When multiple is True, each holiday from a given date has its own observed date.
         """

@@ -293,6 +293,7 @@ from holidays.countries.vatican_city import VaticanCity, VA, VAT
 from holidays.countries.venezuela import Venezuela, VE, VEN
 from holidays.countries.vietnam import Vietnam, VN, VNM
 from holidays.countries.wallis_and_futuna import WallisAndFutuna, WF, WLF, HolidaysWF
+from holidays.countries.western_sahara import WesternSahara, EH, ESH
 from holidays.countries.yemen import Yemen, YE, YEM
 from holidays.countries.zambia import Zambia, ZM, ZMB
 from holidays.countries.zimbabwe import Zimbabwe, ZW, ZWE
