@@ -20,11 +20,8 @@ from tests.common import CommonCountryTests
 class TestMH(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysMH)
-
-    def setUp(self):
-        super().setUp()
         warnings.simplefilter("ignore")
+        super().setUpClass(HolidaysMH)
 
     def test_country_aliases(self):
         self.assertAliases(HolidaysMH, MH, MHL)

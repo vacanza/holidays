@@ -21,6 +21,7 @@ from tests.common import CommonCountryTests
 class TestIndia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
+        warnings.simplefilter("ignore")
         super().setUpClass(India)
 
     def setUp(self):
