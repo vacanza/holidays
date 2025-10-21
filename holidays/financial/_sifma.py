@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import FRI, MON, SAT, SUN, THU, TUE, WED, date
+from holidays.calendars.gregorian import DEC, FRI, JUL, MON, SAT, SUN, THU, TUE, WED, date
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
@@ -137,7 +137,7 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
         # Day before Independence Day (if observed Independence Day is Tue-Fri).
         # Uses custom observed rule to calculate early close based on observed date.
-        jul_4 = date(self._year, 7, 4)
+        jul_4 = date(self._year, JUL, 4)
         observed_jul_4 = self._get_observed_date(jul_4, rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
         early_close_jul_4 = self._get_observed_date(observed_jul_4, rule=SIFMA_EARLY_CLOSE)
         if early_close_jul_4 != observed_jul_4:  # Check if early close applies
@@ -150,7 +150,7 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
         # Day before Christmas (if observed Christmas is Tue-Fri).
         # Uses custom observed rule to calculate early close based on observed date.
-        dec_25 = date(self._year, 12, 25)
+        dec_25 = date(self._year, DEC, 25)
         observed_christmas = self._get_observed_date(dec_25, rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
         early_close_christmas = self._get_observed_date(observed_christmas, rule=SIFMA_EARLY_CLOSE)
         if early_close_christmas != observed_christmas:  # Check if early close applies
