@@ -243,7 +243,6 @@ class TestUSGovernmentSecurities(CommonFinancialTests, TestCase):
         )
 
     def test_half_day_holidays_2025(self):
-        # Test early close days with both PUBLIC and HALF_DAY categories
         self.assertHolidays(
             USGovernmentSecurities(years=2025, categories=(HALF_DAY, PUBLIC)),
             # Full closures (PUBLIC)
@@ -261,13 +260,13 @@ class TestUSGovernmentSecurities(CommonFinancialTests, TestCase):
             ("2025-12-25", "Christmas Day"),
             # Early closes (HALF_DAY)
             ("2025-04-17", "Markets close at 2:00 PM ET (Good Friday)"),
+            ("2025-05-23", "Markets close at 2:00 PM ET (Memorial Day)"),
             ("2025-07-03", "Markets close at 2:00 PM ET (Independence Day)"),
             ("2025-11-28", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
             ("2025-12-24", "Markets close at 2:00 PM ET (Christmas Day)"),
         )
 
     def test_half_day_holidays_2023(self):
-        # Test early close days - only when day before holiday is a weekday
         self.assertHolidays(
             USGovernmentSecurities(years=2023, categories=(HALF_DAY, PUBLIC)),
             # Full closures (PUBLIC)
@@ -284,16 +283,13 @@ class TestUSGovernmentSecurities(CommonFinancialTests, TestCase):
             ("2023-11-23", "Thanksgiving Day"),
             ("2023-12-25", "Christmas Day"),
             # Early closes (HALF_DAY)
-            # New Year's Day (Jan 1) is Sunday, observed Mon Jan 2, so Dec 31 2022 is Sat - no early close
-            # Memorial Day (May 29) is Monday, so May 28 is Sunday - no early close
             ("2023-04-06", "Markets close at 2:00 PM ET (Good Friday)"),
+            ("2023-05-26", "Markets close at 2:00 PM ET (Memorial Day)"),
             ("2023-07-03", "Markets close at 2:00 PM ET (Independence Day)"),
             ("2023-11-24", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
-            # Christmas (Dec 25) is Monday, so Dec 24 is Sunday - no early close
         )
 
     def test_half_day_holidays_2024(self):
-        # Test early close days with various edge cases
         self.assertHolidays(
             USGovernmentSecurities(years=2024, categories=(HALF_DAY, PUBLIC)),
             # Full closures (PUBLIC)
@@ -311,6 +307,7 @@ class TestUSGovernmentSecurities(CommonFinancialTests, TestCase):
             ("2024-12-25", "Christmas Day"),
             # Early closes (HALF_DAY)
             ("2024-03-28", "Markets close at 2:00 PM ET (Good Friday)"),
+            ("2024-05-24", "Markets close at 2:00 PM ET (Memorial Day)"),
             ("2024-07-03", "Markets close at 2:00 PM ET (Independence Day)"),
             ("2024-11-29", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
             ("2024-12-24", "Markets close at 2:00 PM ET (Christmas Day)"),

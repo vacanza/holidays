@@ -10,7 +10,19 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import _timedelta
+from holidays.calendars.gregorian import (
+    JAN,
+    JUL,
+    MAY,
+    MON,
+    NOV,
+    THU,
+    TUE,
+    FRI,
+    _get_nth_weekday_of_month,
+    _timedelta,
+    date,
+)
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
@@ -96,61 +108,29 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         self._move_holiday(self._add_christmas_day("Christmas Day"))
 
     def _populate_half_day_holidays(self):
-        # Early close days at 2:00 PM Eastern Time as recommended by SIFMA.
-        # HALF_DAY holidays must be independently calculated and cannot rely on PUBLIC holidays.
+        # Day before Good Friday (Maundy Thursday).
+        self._add_holy_thursday("Markets close at 2:00 PM ET (Good Friday)")
 
-        from holidays.calendars.gregorian import (
-            JAN,
-            JUL,
-            MAY,
-            MON,
-            NOV,
-            THU,
-            _get_nth_weekday_of_month,
-            date,
+        # Friday before Memorial Day (3 days prior to last Monday of May).
+        self._add_holiday_3_days_prior_last_mon_of_may(
+            "Markets close at 2:00 PM ET (Memorial Day)"
         )
 
-        # Calculate dates without adding them to the dictionary.
-        # Use property methods and date calculations to avoid duplicating holidays.
-
-        # Day before New Year's Day (if it's a weekday).
-        new_years = date(self._year, JAN, 1)
-        if self._is_weekday(new_years):
-            dt = _timedelta(new_years, -1)
-            if self._is_weekday(dt):
-                self._add_holiday("Markets close at 2:00 PM ET (New Year's Day)", dt)
-
-        # Day before Good Friday (Thursday before Easter).
-        # Good Friday is 2 days before Easter Sunday.
-        good_friday = _timedelta(self._easter_sunday, -2)
-        dt = _timedelta(good_friday, -1)
-        if self._is_weekday(dt):
-            self._add_holiday("Markets close at 2:00 PM ET (Good Friday)", dt)
-
-        # Day before Memorial Day (Friday before last Monday of May).
-        # Memorial Day is the last Monday of May.
-        memorial_day = _get_nth_weekday_of_month(-1, MON, MAY, self._year)
-        dt = _timedelta(memorial_day, -1)
-        if self._is_weekday(dt):
-            self._add_holiday("Markets close at 2:00 PM ET (Memorial Day)", dt)
-
-        # Day before Independence Day (if it's a weekday).
-        independence_day = date(self._year, JUL, 4)
-        if self._is_weekday(independence_day):
-            dt = _timedelta(independence_day, -1)
-            if self._is_weekday(dt):
-                self._add_holiday("Markets close at 2:00 PM ET (Independence Day)", dt)
+        # Day before Independence Day (if Independence Day is Tue-Fri).
+        jul_4 = date(self._year, JUL, 4)
+        if self._is_tuesday(jul_4) or self._is_wednesday(jul_4) or self._is_thursday(jul_4) or self._is_friday(jul_4):
+            self._add_holiday_jul_3("Markets close at 2:00 PM ET (Independence Day)")
 
         # Day after Thanksgiving (Black Friday).
-        # Thanksgiving is the 4th Thursday of November.
-        thanksgiving = _get_nth_weekday_of_month(4, THU, NOV, self._year)
-        dt = _timedelta(thanksgiving, +1)
-        if self._is_weekday(dt):
-            self._add_holiday("Markets close at 2:00 PM ET (Thanksgiving Day)", dt)
+        self._add_holiday_1_day_past_4th_thu_of_nov(
+            "Markets close at 2:00 PM ET (Thanksgiving Day)"
+        )
 
-        # Day before Christmas Day (if it's a weekday).
-        christmas = self._christmas_day
-        if self._is_weekday(christmas):
-            dt = _timedelta(christmas, -1)
-            if self._is_weekday(dt):
-                self._add_holiday("Markets close at 2:00 PM ET (Christmas Day)", dt)
+        # Day before Christmas (if Christmas is Tue-Fri).
+        if (
+            self._is_tuesday(self._christmas_day)
+            or self._is_wednesday(self._christmas_day)
+            or self._is_thursday(self._christmas_day)
+            or self._is_friday(self._christmas_day)
+        ):
+            self._add_holiday_dec_24("Markets close at 2:00 PM ET (Christmas Day)")
