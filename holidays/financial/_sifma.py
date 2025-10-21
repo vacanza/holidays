@@ -21,9 +21,12 @@ from holidays.observed_holiday_base import (
 )
 
 # Custom observed rule for early close dates.
-# Early close occurs on the day before an observed holiday if that observed date falls Tue-Fri.
-# If observed date is Monday, there is no early close.
-SIFMA_EARLY_CLOSE = ObservedRule({MON: 0, TUE: -1, WED: -1, THU: -1, FRI: -1, SAT: 0, SUN: 0})
+# Early close occurs on the day before the observed holiday.
+# MON: no early close (holiday observed on Monday)
+# TUE-FRI: early close the day before (-1)
+# SAT: early close on Friday, 2 days before (-2, since Saturday observed on Friday)
+# SUN: no early close (holiday observed on Monday)
+SIFMA_EARLY_CLOSE = ObservedRule({MON: 0, TUE: -1, WED: -1, THU: -1, FRI: -1, SAT: -2, SUN: 0})
 
 
 class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
@@ -129,30 +132,24 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         self._add_holy_thursday("Markets close at 2:00 PM ET (Good Friday)")
 
         # Friday before Memorial Day.
-        # Pre-1971: Memorial Day was May 30, so calculate early close from observed May 30.
+        # Pre-1971: Memorial Day was May 30, so calculate early close from May 30.
         # 1971+: Memorial Day is last Monday of May, so 3 days prior.
         if self._year >= 1971:
             self._add_holiday_3_days_prior_last_mon_of_may(
                 "Markets close at 2:00 PM ET (Memorial Day)"
             )
         else:
-            # Calculate early close based on observed May 30
+            # Calculate early close based on May 30
             may_30 = date(self._year, MAY, 30)
-            observed_may_30 = self._get_observed_date(
-                may_30, rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_MON
-            )
-            early_close_memorial = self._get_observed_date(
-                observed_may_30, rule=SIFMA_EARLY_CLOSE
-            )
-            if early_close_memorial != observed_may_30:
+            early_close_memorial = self._get_observed_date(may_30, rule=SIFMA_EARLY_CLOSE)
+            if early_close_memorial != may_30:
                 self._add_holiday("Markets close at 2:00 PM ET (Memorial Day)", early_close_memorial)
 
-        # Day before Independence Day (if observed Independence Day is Tue-Fri).
-        # Uses custom observed rule to calculate early close based on observed date.
+        # Day before Independence Day.
+        # Uses custom observed rule to calculate early close based on holiday date.
         jul_4 = date(self._year, JUL, 4)
-        observed_jul_4 = self._get_observed_date(jul_4, rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
-        early_close_jul_4 = self._get_observed_date(observed_jul_4, rule=SIFMA_EARLY_CLOSE)
-        if early_close_jul_4 != observed_jul_4:  # Check if early close applies
+        early_close_jul_4 = self._get_observed_date(jul_4, rule=SIFMA_EARLY_CLOSE)
+        if early_close_jul_4 != jul_4:
             self._add_holiday("Markets close at 2:00 PM ET (Independence Day)", early_close_jul_4)
 
         # Day after Thanksgiving (Black Friday).
@@ -160,12 +157,9 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             "Markets close at 2:00 PM ET (Thanksgiving Day)"
         )
 
-        # Day before Christmas (if observed Christmas is Tue-Fri).
-        # Uses custom observed rule to calculate early close based on observed date.
+        # Day before Christmas.
+        # Uses custom observed rule to calculate early close based on holiday date.
         dec_25 = date(self._year, DEC, 25)
-        observed_christmas = self._get_observed_date(
-            dec_25, rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_MON
-        )
-        early_close_christmas = self._get_observed_date(observed_christmas, rule=SIFMA_EARLY_CLOSE)
-        if early_close_christmas != observed_christmas:  # Check if early close applies
+        early_close_christmas = self._get_observed_date(dec_25, rule=SIFMA_EARLY_CLOSE)
+        if early_close_christmas != dec_25:
             self._add_holiday("Markets close at 2:00 PM ET (Christmas Day)", early_close_christmas)
