@@ -129,11 +129,9 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         self._add_holy_thursday("Markets close at 2:00 PM ET (Good Friday)")
 
         # Friday before Memorial Day (3 days prior to last Monday of May).
-        # Only applies from 1971 onwards when Memorial Day moved to last Monday of May.
-        if self._year >= 1971:
-            self._add_holiday_3_days_prior_last_mon_of_may(
-                "Markets close at 2:00 PM ET (Memorial Day)"
-            )
+        self._add_holiday_3_days_prior_last_mon_of_may(
+            "Markets close at 2:00 PM ET (Memorial Day)"
+        )
 
         # Day before Independence Day (if observed Independence Day is Tue-Fri).
         # Uses custom observed rule to calculate early close based on observed date.
@@ -151,7 +149,9 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Day before Christmas (if observed Christmas is Tue-Fri).
         # Uses custom observed rule to calculate early close based on observed date.
         dec_25 = date(self._year, DEC, 25)
-        observed_christmas = self._get_observed_date(dec_25, rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
+        observed_christmas = self._get_observed_date(
+            dec_25, rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_MON
+        )
         early_close_christmas = self._get_observed_date(observed_christmas, rule=SIFMA_EARLY_CLOSE)
         if early_close_christmas != observed_christmas:  # Check if early close applies
             self._add_holiday("Markets close at 2:00 PM ET (Christmas Day)", early_close_christmas)
