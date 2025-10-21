@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import DEC, FRI, JUL, MON, SAT, SUN, THU, TUE, WED, date
+from holidays.calendars.gregorian import DEC, FRI, JUL, MAY, MON, SAT, SUN, THU, TUE, WED, date
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
@@ -128,10 +128,24 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Day before Good Friday (Maundy Thursday).
         self._add_holy_thursday("Markets close at 2:00 PM ET (Good Friday)")
 
-        # Friday before Memorial Day (3 days prior to last Monday of May).
-        self._add_holiday_3_days_prior_last_mon_of_may(
-            "Markets close at 2:00 PM ET (Memorial Day)"
-        )
+        # Friday before Memorial Day.
+        # Pre-1971: Memorial Day was May 30, so calculate early close from observed May 30.
+        # 1971+: Memorial Day is last Monday of May, so 3 days prior.
+        if self._year >= 1971:
+            self._add_holiday_3_days_prior_last_mon_of_may(
+                "Markets close at 2:00 PM ET (Memorial Day)"
+            )
+        else:
+            # Calculate early close based on observed May 30
+            may_30 = date(self._year, MAY, 30)
+            observed_may_30 = self._get_observed_date(
+                may_30, rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_MON
+            )
+            early_close_memorial = self._get_observed_date(
+                observed_may_30, rule=SIFMA_EARLY_CLOSE
+            )
+            if early_close_memorial != observed_may_30:
+                self._add_holiday("Markets close at 2:00 PM ET (Memorial Day)", early_close_memorial)
 
         # Day before Independence Day (if observed Independence Day is Tue-Fri).
         # Uses custom observed rule to calculate early close based on observed date.
