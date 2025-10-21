@@ -10,20 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import (
-    FRI,
-    JAN,
-    JUL,
-    MAY,
-    MON,
-    NOV,
-    THU,
-    TUE,
-    WED,
-    _get_nth_weekday_of_month,
-    _timedelta,
-    date,
-)
+from holidays.calendars.gregorian import FRI, JUL, THU, TUE, WED, date
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
