@@ -59,8 +59,11 @@ class TestUSNewYork(CommonFinancialTests, TestCase):
             self.assertNoHoliday(_timedelta(dt, +1))
 
     def test_washingtons_birthday(self):
+        # Pre-1971: February 22 (with weekend observance)
+        self.assertHoliday(date(1950, FEB, 22))
+
+        # Post-1971: 3rd Monday of February
         for dt in (
-            date(1950, FEB, 20),
             date(2000, FEB, 21),
             date(2010, FEB, 15),
             date(2022, FEB, 21),
@@ -71,8 +74,11 @@ class TestUSNewYork(CommonFinancialTests, TestCase):
             self.assertNoHoliday(_timedelta(dt, +1))
 
     def test_memorial_day(self):
+        # Pre-1971: May 30 (with weekend observance)
+        self.assertHoliday(date(1950, MAY, 30))
+
+        # Post-1971: Last Monday of May
         for dt in (
-            date(1950, MAY, 29),
             date(2000, MAY, 29),
             date(2010, MAY, 31),
             date(2022, MAY, 30),
@@ -149,8 +155,11 @@ class TestUSNewYork(CommonFinancialTests, TestCase):
 
     def test_columbus_day(self):
         # USNY observes Columbus Day (unlike NYSE which doesn't in modern times).
+        # Pre-1971: October 12 (with weekend observance)
+        self.assertHoliday(date(1950, OCT, 12))
+
+        # Post-1971: 2nd Monday of October
         for dt in (
-            date(1950, OCT, 9),
             date(2000, OCT, 9),
             date(2010, OCT, 11),
             date(2022, OCT, 10),
