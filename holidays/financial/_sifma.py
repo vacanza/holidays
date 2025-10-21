@@ -22,7 +22,7 @@ from holidays.observed_holiday_base import (
 
 # Custom observed rule for early close dates.
 # Early close occurs on the day before an observed holiday if that observed date falls Tue-Fri.
-# If observed date is Mon, Sat, or Sun, there is no early close.
+# If observed date is Monday, there is no early close.
 SIFMA_EARLY_CLOSE = ObservedRule({MON: 0, TUE: -1, WED: -1, THU: -1, FRI: -1, SAT: 0, SUN: 0})
 
 
@@ -68,10 +68,11 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Washington's Birthday (Presidents Day).
         # Observed on February 22 until 1970, then moved to 3rd Monday of February
         # starting in 1971 by the Uniform Monday Holiday Act.
+        name = "Washington's Birthday"
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Washington's Birthday")
+            self._add_holiday_3rd_mon_of_feb(name)
         else:
-            self._move_holiday(self._add_holiday_feb_22("Washington's Birthday"))
+            self._move_holiday(self._add_holiday_feb_22(name))
 
         # Good Friday.
         # Bond markets close on Good Friday, though it is not a federal holiday.
@@ -81,10 +82,11 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Memorial Day.
         # Observed on May 30 until 1970, then moved to last Monday of May
         # starting in 1971 by the Uniform Monday Holiday Act.
+        name = "Memorial Day"
         if self._year >= 1971:
-            self._add_holiday_last_mon_of_may("Memorial Day")
+            self._add_holiday_last_mon_of_may(name)
         else:
-            self._move_holiday(self._add_holiday_may_30("Memorial Day"))
+            self._move_holiday(self._add_holiday_may_30(name))
 
         # Juneteenth National Independence Day.
         # Established as federal holiday in 2021, bond markets observed since 2021.
@@ -100,19 +102,21 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Columbus Day.
         # Observed on October 12 until 1970, then moved to 2nd Monday of October
         # starting in 1971 by the Uniform Monday Holiday Act.
+        name = "Columbus Day"
         if self._year >= 1971:
-            self._add_holiday_2nd_mon_of_oct("Columbus Day")
+            self._add_holiday_2nd_mon_of_oct(name)
         else:
-            self._move_holiday(self._add_holiday_oct_12("Columbus Day"))
+            self._move_holiday(self._add_holiday_oct_12(name))
 
         # Veterans Day.
         # Observed on November 11, except from 1971-1977 when it was moved to
         # 4th Monday of October by the Uniform Monday Holiday Act, then returned
         # to November 11 in 1978.
+        name = "Veterans Day"
         if 1971 <= self._year <= 1977:
-            self._add_holiday_4th_mon_of_oct("Veterans Day")
+            self._add_holiday_4th_mon_of_oct(name)
         else:
-            self._move_holiday(self._add_remembrance_day("Veterans Day"))
+            self._move_holiday(self._add_remembrance_day(name))
 
         # Thanksgiving Day (4th Thursday of November).
         self._add_holiday_4th_thu_of_nov("Thanksgiving Day")
@@ -125,9 +129,11 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         self._add_holy_thursday("Markets close at 2:00 PM ET (Good Friday)")
 
         # Friday before Memorial Day (3 days prior to last Monday of May).
-        self._add_holiday_3_days_prior_last_mon_of_may(
-            "Markets close at 2:00 PM ET (Memorial Day)"
-        )
+        # Only applies from 1971 onwards when Memorial Day moved to last Monday of May.
+        if self._year >= 1971:
+            self._add_holiday_3_days_prior_last_mon_of_may(
+                "Markets close at 2:00 PM ET (Memorial Day)"
+            )
 
         # Day before Independence Day (if observed Independence Day is Tue-Fri).
         # Uses custom observed rule to calculate early close based on observed date.
