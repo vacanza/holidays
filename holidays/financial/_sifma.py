@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import (
+    FRI,
     JAN,
     JUL,
     MAY,
@@ -18,7 +19,7 @@ from holidays.calendars.gregorian import (
     NOV,
     THU,
     TUE,
-    FRI,
+    WED,
     _get_nth_weekday_of_month,
     _timedelta,
     date,
@@ -118,7 +119,7 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
         # Day before Independence Day (if Independence Day is Tue-Fri).
         jul_4 = date(self._year, JUL, 4)
-        if self._is_tuesday(jul_4) or self._is_wednesday(jul_4) or self._is_thursday(jul_4) or self._is_friday(jul_4):
+        if jul_4.weekday() in (TUE, WED, THU, FRI):
             self._add_holiday_jul_3("Markets close at 2:00 PM ET (Independence Day)")
 
         # Day after Thanksgiving (Black Friday).
@@ -127,10 +128,5 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         )
 
         # Day before Christmas (if Christmas is Tue-Fri).
-        if (
-            self._is_tuesday(self._christmas_day)
-            or self._is_wednesday(self._christmas_day)
-            or self._is_thursday(self._christmas_day)
-            or self._is_friday(self._christmas_day)
-        ):
+        if self._christmas_day.weekday() in (TUE, WED, THU, FRI):
             self._add_holiday_dec_24("Markets close at 2:00 PM ET (Christmas Day)")
