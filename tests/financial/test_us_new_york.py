@@ -14,6 +14,7 @@ from datetime import date
 from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, FEB, MAY, JUN, JUL, SEP, OCT, NOV, DEC, _timedelta
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.financial.us_new_york import USNewYork, USNY, USNewYorkFinancial
 from tests.common import CommonFinancialTests
 
@@ -215,4 +216,52 @@ class TestUSNewYork(CommonFinancialTests, TestCase):
             ("2025-11-11", "Veterans Day"),
             ("2025-11-27", "Thanksgiving Day"),
             ("2025-12-25", "Christmas Day"),
+        )
+
+    def test_half_day_holidays_2025(self):
+        # Test early close days with both PUBLIC and HALF_DAY categories
+        # USNY does NOT have Good Friday as a full closure, so no early close before it
+        self.assertHolidays(
+            USNewYork(years=2025, categories=(HALF_DAY, PUBLIC)),
+            # Full closures (PUBLIC)
+            ("2025-01-01", "New Year's Day"),
+            ("2025-01-20", "Martin Luther King Jr. Day"),
+            ("2025-02-17", "Washington's Birthday"),
+            ("2025-05-26", "Memorial Day"),
+            ("2025-06-19", "Juneteenth National Independence Day"),
+            ("2025-07-04", "Independence Day"),
+            ("2025-09-01", "Labor Day"),
+            ("2025-10-13", "Columbus Day"),
+            ("2025-11-11", "Veterans Day"),
+            ("2025-11-27", "Thanksgiving Day"),
+            ("2025-12-25", "Christmas Day"),
+            # Early closes (HALF_DAY)
+            ("2025-07-03", "Markets close at 2:00 PM ET (Independence Day)"),
+            ("2025-11-28", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
+            ("2025-12-24", "Markets close at 2:00 PM ET (Christmas Day)"),
+        )
+
+    def test_half_day_holidays_2023(self):
+        # Test early close days - only when day before holiday is a weekday
+        # USNY does NOT have Good Friday as a full closure, so no early close before it either
+        self.assertHolidays(
+            USNewYork(years=2023, categories=(HALF_DAY, PUBLIC)),
+            # Full closures (PUBLIC)
+            ("2023-01-02", "New Year's Day (observed)"),
+            ("2023-01-16", "Martin Luther King Jr. Day"),
+            ("2023-02-20", "Washington's Birthday"),
+            ("2023-05-29", "Memorial Day"),
+            ("2023-06-19", "Juneteenth National Independence Day"),
+            ("2023-07-04", "Independence Day"),
+            ("2023-09-04", "Labor Day"),
+            ("2023-10-09", "Columbus Day"),
+            ("2023-11-10", "Veterans Day (observed)"),
+            ("2023-11-23", "Thanksgiving Day"),
+            ("2023-12-25", "Christmas Day"),
+            # Early closes (HALF_DAY)
+            # New Year's Day (Jan 1) is Sunday, observed Mon Jan 2, so Dec 31 2022 is Sat - no early close
+            # Memorial Day (May 29) is Monday, so May 28 is Sunday - no early close
+            ("2023-07-03", "Markets close at 2:00 PM ET (Independence Day)"),
+            ("2023-11-24", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
+            # Christmas (Dec 25) is Monday, so Dec 24 is Sunday - no early close
         )

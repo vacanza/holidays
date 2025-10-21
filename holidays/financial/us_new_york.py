@@ -55,6 +55,13 @@ class USNewYork(SIFMAHolidays):
         # This follows the OpenGamma Strata implementation for general New York business days.
         self._remove_holiday_by_name("Good Friday")
 
+    def _populate_half_day_holidays(self):
+        # Call parent to get all SIFMA early close days
+        super()._populate_half_day_holidays()
+
+        # Remove early close before Good Friday since USNY does not observe Good Friday.
+        self._remove_holiday_by_name("Markets close at 2:00 PM ET (Good Friday)")
+
     def _remove_holiday_by_name(self, name):
         """Remove all holidays with the given name."""
         dates_to_remove = [dt for dt, holiday_name in self.items() if holiday_name == name]
