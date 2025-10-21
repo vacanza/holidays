@@ -289,6 +289,32 @@ class TestUSGovernmentSecurities(CommonFinancialTests, TestCase):
             ("2023-11-24", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
         )
 
+    def test_half_day_holidays_2022(self):
+        # 2022: July 4 is Monday, Dec 25 is Sunday (observed Monday Dec 26).
+        # No early close for Independence Day (not Tue-Fri).
+        # No early close for Christmas (observed date is Monday).
+        self.assertHolidays(
+            USGovernmentSecurities(years=2022, categories=(HALF_DAY, PUBLIC)),
+            # Full closures (PUBLIC)
+            ("2022-01-17", "Martin Luther King Jr. Day"),
+            ("2022-02-21", "Washington's Birthday"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-05-30", "Memorial Day"),
+            ("2022-06-20", "Juneteenth National Independence Day (observed)"),
+            ("2022-07-04", "Independence Day"),
+            ("2022-09-05", "Labor Day"),
+            ("2022-10-10", "Columbus Day"),
+            ("2022-11-11", "Veterans Day"),
+            ("2022-11-24", "Thanksgiving Day"),
+            ("2022-12-26", "Christmas Day (observed)"),
+            # Early closes (HALF_DAY)
+            ("2022-04-14", "Markets close at 2:00 PM ET (Good Friday)"),
+            ("2022-05-27", "Markets close at 2:00 PM ET (Memorial Day)"),
+            # NO July 3 early close (July 4 is Monday)
+            ("2022-11-25", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
+            # NO Dec 24 early close (Dec 25 observed on Monday)
+        )
+
     def test_half_day_holidays_2024(self):
         self.assertHolidays(
             USGovernmentSecurities(years=2024, categories=(HALF_DAY, PUBLIC)),
