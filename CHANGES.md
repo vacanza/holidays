@@ -1,3 +1,22 @@
+# Version 0.83
+
+Released October 20, 2025
+
+- Add `_add_observed`/`_move_holiday`'s `force_observed` support (#2986 by @PPsyrius)
+- Introduce `HolidayBase::_is_weekday` method (#2999 by @PPsyrius, @arkid15r)
+- Refactor `HolidaySum::__init__` (#3013 by @KJhellico, @arkid15r)
+- Add Western Sahara holidays (#3003 by @PPsyrius, @arkid15r)
+- Update Denmark holidays: add `th` l10n support, refactor test cases (#3011 by @PPsyrius)
+- Update Islamic holidays calculation (#2981 by @KJhellico)
+- Update Netherlands holidays: add `th` l10n, refactor test cases (#3006 by @PPsyrius)
+- Update Slovakia holidays: additional holidays moved to `WORKDAY` for 2026 (#3005 by @KJhellico)
+- Update Slovakia holidays: move "Struggle for Freedom and Democracy Day" to `WORKDAY` category for 2025 onwards (#3004 by @PPsyrius)
+- Update Switzerland holidays: add Zurich's `HALF_DAY`, `OPTIONAL` holidays, `th` l10n support (#2984 by @PPsyrius, @arkid15r)
+- Update badges (#2990 by @arkid15r)
+- Update ruff configuration: add `flake8-boolean-trap` (FBT) errors check (#3007 by @KJhellico)
+- Inline single-use variables, update .py files formatting (#3014 by @KJhellico)
+- Switch to Python 3.14 (#2997 by @arkid15r)
+
 # Version 0.82
 
 Released October 6, 2025
