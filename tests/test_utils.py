@@ -266,7 +266,7 @@ class TestListLongWeekends(unittest.TestCase):
     def test_three_holidays_included_with_flag(self):
         holidays = [date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)]
         instance = MockHolidayBase(holidays)
-        result = list_long_weekends(instance, include_non_long_weekends=True)
+        result = list_long_weekends(instance, require_weekend_overlap=False)
         self.assertEqual(result, [[date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)]])
 
     def test_custom_weekend(self):
