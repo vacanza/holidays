@@ -251,8 +251,8 @@ class TestUSNewYork(CommonFinancialTests, TestCase):
 
     def test_half_day_holidays_2022(self):
         # 2022: July 4 is Monday, Dec 25 is Sunday (observed Monday Dec 26).
-        # No early close for Independence Day (not Tue-Fri).
-        # No early close for Christmas (observed date is Monday).
+        # Early close Friday July 1 for Independence Day (Monday holiday).
+        # Early close Friday Dec 23 for Christmas (Sunday holiday).
         self.assertHolidays(
             USNewYork(years=2022, categories=(HALF_DAY, PUBLIC)),
             # Full closures (PUBLIC)
@@ -268,12 +268,14 @@ class TestUSNewYork(CommonFinancialTests, TestCase):
             ("2022-12-26", "Christmas Day (observed)"),
             # Early closes (HALF_DAY)
             ("2022-05-27", "Markets close at 2:00 PM ET (Memorial Day)"),
-            # NO July 3 early close (July 4 is Monday)
+            ("2022-07-01", "Markets close at 2:00 PM ET (Independence Day)"),
             ("2022-11-25", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
-            # NO Dec 24 early close (Dec 25 observed on Monday)
+            ("2022-12-23", "Markets close at 2:00 PM ET (Christmas Day)"),
         )
 
     def test_half_day_holidays_2023(self):
+        # 2023: Dec 25 is Monday.
+        # Early close Friday Dec 22 for Christmas (Monday holiday).
         self.assertHolidays(
             USNewYork(years=2023, categories=(HALF_DAY, PUBLIC)),
             # Full closures (PUBLIC)
@@ -292,4 +294,5 @@ class TestUSNewYork(CommonFinancialTests, TestCase):
             ("2023-05-26", "Markets close at 2:00 PM ET (Memorial Day)"),
             ("2023-07-03", "Markets close at 2:00 PM ET (Independence Day)"),
             ("2023-11-24", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
+            ("2023-12-22", "Markets close at 2:00 PM ET (Christmas Day)"),
         )

@@ -22,11 +22,11 @@ from holidays.observed_holiday_base import (
 
 # Custom observed rule for early close dates.
 # Applied directly to the actual holiday date to determine if there's an early close.
-# MON: holiday on Monday → no early close
+# MON: holiday on Monday → early close on Friday (-3)
 # TUE-FRI: holiday on Tue-Fri → early close the day before (-1)
 # SAT: holiday on Saturday → early close on Friday (-2)
-# SUN: holiday on Sunday → no early close
-SIFMA_EARLY_CLOSE = ObservedRule({MON: 0, TUE: -1, WED: -1, THU: -1, FRI: -1, SAT: -2, SUN: 0})
+# SUN: holiday on Sunday → early close on Friday (-2)
+SIFMA_EARLY_CLOSE = ObservedRule({MON: -3, TUE: -1, WED: -1, THU: -1, FRI: -1, SAT: -2, SUN: -2})
 
 
 class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
@@ -143,7 +143,9 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             may_30 = date(self._year, MAY, 30)
             early_close_memorial = self._get_observed_date(may_30, rule=SIFMA_EARLY_CLOSE)
             if early_close_memorial != may_30:
-                self._add_holiday("Markets close at 2:00 PM ET (Memorial Day)", early_close_memorial)
+                self._add_holiday(
+                    "Markets close at 2:00 PM ET (Memorial Day)", early_close_memorial
+                )
 
         # Day before Independence Day.
         # Uses custom observed rule to calculate early close based on holiday date.
