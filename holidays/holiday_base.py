@@ -41,6 +41,7 @@ from holidays.calendars.gregorian import (
     WEEKDAYS,
 )
 from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC, DEFAULT_START_YEAR, DEFAULT_END_YEAR
+from holidays.exceptions import InvalidSubdivisionError
 from holidays.helpers import _normalize_arguments, _normalize_tuple
 
 CategoryArg = Union[str, Iterable[str]]
@@ -332,9 +333,7 @@ class HolidayBase(dict[date, str]):
 
             # Unsupported subdivisions.
             if not isinstance(self, HolidaySum) and subdiv not in supported_subdivisions:
-                raise NotImplementedError(
-                    f"Entity `{self._entity_code}` does not have subdivision {subdiv}"
-                )
+                raise InvalidSubdivisionError(self._entity_code, subdiv)
 
             # Deprecated arguments.
             if prov_state := prov or state:

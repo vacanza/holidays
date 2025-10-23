@@ -20,6 +20,11 @@ from unittest import mock
 import pytest
 
 import holidays
+from holidays.exceptions import (
+    InvalidCountryError,
+    InvalidFinancialMarketError,
+    InvalidSubdivisionError,
+)
 from holidays.utils import (
     CountryHoliday,
     country_holidays,
@@ -55,12 +60,12 @@ class TestCountryHolidays(unittest.TestCase):
         test_holidays = country_holidays("US", subdiv="NY")
         self.assertEqual(test_holidays.subdiv, "NY")
 
-    def test_invalid_country_raises_not_implemented(self):
-        with self.assertRaises(NotImplementedError):
+    def test_invalid_country_raises_invalid_country_exception(self):
+        with self.assertRaises(InvalidCountryError):
             country_holidays("XXXX")
 
-    def test_invalid_country_subdivision_raises_not_implemented(self):
-        with self.assertRaises(NotImplementedError):
+    def test_invalid_country_raises_invalid_subdivision_exception(self):
+        with self.assertRaises(InvalidSubdivisionError):
             country_holidays("US", subdiv="XXXX")
 
     def test_country_holiday_class_deprecation(self):
@@ -88,12 +93,12 @@ class TestFinancialHolidays(unittest.TestCase):
         test_holidays = financial_holidays("XNYS", years=range(2010, 2015))
         self.assertEqual(test_holidays.years, set(range(2010, 2015)))
 
-    def test_invalid_market_raises_not_implemented(self):
-        with self.assertRaises(NotImplementedError):
+    def test_invalid_market_raises_invalid_financial_market_exception(self):
+        with self.assertRaises(InvalidFinancialMarketError):
             financial_holidays("XXXX")
 
-    def test_invalid_market_subdivision_raises_not_implemented(self):
-        with self.assertRaises(NotImplementedError):
+    def test_invalid_market_subdivision_raises_invalid_subdivision_exception(self):
+        with self.assertRaises(InvalidSubdivisionError):
             financial_holidays("XNYS", subdiv="XXXX")
 
 

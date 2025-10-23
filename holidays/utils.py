@@ -25,6 +25,7 @@ from collections.abc import Iterable
 from functools import cache
 from typing import Optional, Union
 
+from holidays.exceptions import InvalidFinancialMarketError, InvalidCountryError
 from holidays.holiday_base import CategoryArg, HolidayBase
 from holidays.registry import EntityLoader
 
@@ -225,7 +226,7 @@ def country_holidays(
             categories=categories,
         )
     except AttributeError:
-        raise NotImplementedError(f"Country {country} not available")
+        raise InvalidCountryError(country)
 
 
 def financial_holidays(
@@ -310,7 +311,7 @@ def financial_holidays(
             years=years, subdiv=subdiv, expand=expand, observed=observed, language=language
         )
     except AttributeError:
-        raise NotImplementedError(f"Financial market {market} not available")
+        raise InvalidFinancialMarketError(market)
 
 
 def CountryHoliday(  # noqa: N802
