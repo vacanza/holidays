@@ -142,10 +142,9 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             # Calculate early close based on May 30
             may_30 = date(self._year, MAY, 30)
             early_close_memorial = self._get_observed_date(may_30, rule=SIFMA_EARLY_CLOSE)
-            if early_close_memorial != may_30:
-                self._add_holiday(
-                    "Markets close at 2:00 PM ET (Memorial Day)", early_close_memorial
-                )
+            self._add_holiday(
+                "Markets close at 2:00 PM ET (Memorial Day)", early_close_memorial
+            )
 
         # Day before Independence Day.
         # Uses custom observed rule to calculate early close based on holiday date.
