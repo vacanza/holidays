@@ -151,8 +151,7 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Uses custom observed rule to calculate early close based on holiday date.
         jul_4 = date(self._year, JUL, 4)
         early_close_jul_4 = self._get_observed_date(jul_4, rule=SIFMA_EARLY_CLOSE)
-        if early_close_jul_4 != jul_4:
-            self._add_holiday("Markets close at 2:00 PM ET (Independence Day)", early_close_jul_4)
+        self._add_holiday("Markets close at 2:00 PM ET (Independence Day)", early_close_jul_4)
 
         # Day after Thanksgiving (Black Friday).
         self._add_holiday_1_day_past_4th_thu_of_nov(
@@ -163,5 +162,4 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Uses custom observed rule to calculate early close based on holiday date.
         dec_25 = date(self._year, DEC, 25)
         early_close_christmas = self._get_observed_date(dec_25, rule=SIFMA_EARLY_CLOSE)
-        if early_close_christmas != dec_25:
-            self._add_holiday("Markets close at 2:00 PM ET (Christmas Day)", early_close_christmas)
+        self._add_holiday("Markets close at 2:00 PM ET (Christmas Day)", early_close_christmas)

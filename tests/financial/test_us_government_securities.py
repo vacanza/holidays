@@ -350,3 +350,50 @@ class TestUSGovernmentSecurities(CommonFinancialTests, TestCase):
             ("2024-11-29", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
             ("2024-12-24", "Markets close at 2:00 PM ET (Christmas Day)"),
         )
+
+    def test_1975_veterans_day_1971_1977(self):
+        # Test Veterans Day during 1971-1977 period (4th Monday of October).
+        # 1975: Oct 27 is 4th Monday of October.
+        self.assertHolidays(
+            USGovernmentSecurities(years=1975, categories=(HALF_DAY, PUBLIC)),
+            ("1975-01-01", "New Year's Day"),
+            ("1975-02-17", "Washington's Birthday"),
+            ("1975-03-28", "Good Friday"),
+            ("1975-05-26", "Memorial Day"),
+            ("1975-07-04", "Independence Day"),
+            ("1975-09-01", "Labor Day"),
+            ("1975-10-13", "Columbus Day"),
+            ("1975-10-27", "Veterans Day"),
+            ("1975-11-27", "Thanksgiving Day"),
+            ("1975-12-25", "Christmas Day"),
+            # Early closes (HALF_DAY)
+            ("1975-03-27", "Markets close at 2:00 PM ET (Good Friday)"),
+            ("1975-05-23", "Markets close at 2:00 PM ET (Memorial Day)"),
+            ("1975-07-03", "Markets close at 2:00 PM ET (Independence Day)"),
+            ("1975-11-28", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
+            ("1975-12-24", "Markets close at 2:00 PM ET (Christmas Day)"),
+        )
+
+    def test_1970_pre_1971_memorial_day(self):
+        # Test pre-1971 Memorial Day (May 30) and early close logic.
+        # 1970: Feb 22 is Sunday (observed Mon 23), May 30 is Sat (observed Fri 29),
+        # July 4 is Sat (observed Fri July 3).
+        self.assertHolidays(
+            USGovernmentSecurities(years=1970, categories=(HALF_DAY, PUBLIC)),
+            ("1970-01-01", "New Year's Day"),
+            ("1970-02-23", "Washington's Birthday (observed)"),
+            ("1970-03-27", "Good Friday"),
+            ("1970-05-29", "Memorial Day (observed)"),
+            ("1970-07-03", "Independence Day (observed)"),
+            ("1970-09-07", "Labor Day"),
+            ("1970-10-12", "Columbus Day"),
+            ("1970-11-11", "Veterans Day"),
+            ("1970-11-26", "Thanksgiving Day"),
+            ("1970-12-25", "Christmas Day"),
+            # Early closes (HALF_DAY)
+            ("1970-03-26", "Markets close at 2:00 PM ET (Good Friday)"),
+            ("1970-05-28", "Markets close at 2:00 PM ET (Memorial Day)"),
+            ("1970-07-02", "Markets close at 2:00 PM ET (Independence Day)"),
+            ("1970-11-27", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
+            ("1970-12-24", "Markets close at 2:00 PM ET (Christmas Day)"),
+        )
