@@ -13,13 +13,18 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG
-from holidays.groups import ChristianHolidays, HinduCalendarHolidays, IslamicHolidays
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.groups import (
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_NONE, SUN_TO_NONE
 
 
 class NationalStockExchangeOfIndia(
-    ObservedHolidayBase, HinduCalendarHolidays, ChristianHolidays, IslamicHolidays
+    ObservedHolidayBase, HinduCalendarHolidays, ChristianHolidays, IslamicHolidays, StaticHolidays
 ):
     """National Stock Exchange of India (NSE) holidays.
 
@@ -27,6 +32,27 @@ class NationalStockExchangeOfIndia(
         * <https://web.archive.org/web/20250821175252/https://www.nseindia.com/resources/exchange-communication-circulars>
 
     Historical data:
+        * [2001](https://archive.org/details/nsearchives.nseindia.comcontentcircularscmtr2189.wri)
+        * [2002](https://archive.org/details/cmtr3058)
+        * [2003](https://web.archive.org/web/20250904042405/https://nsearchives.nseindia.com/content/circulars/cmtr3809.htm)
+        * [2004](https://archive.org/details/nsearchives.nseindia.comcontentcircularscmtr4645.htm)
+        * [2005](https://web.archive.org/web/20250904043234/https://nsearchives.nseindia.com/content/circulars/cmtr5633.htm)
+        * [2006](https://archive.org/details/nsearchives.nseindia.comcontentcircularscmtr6946.htm)
+        * [2007](https://archive.org/details/nsearchives.nseindia.comcontentcircularscmtr8182.pdf)
+        * [2008](https://archive.org/details/nsearchives.nseindia.comcontentcircularscmtr9908.htm)
+        * [2009](https://archive.org/details/nsearchives.nseindia.comcontentcircularscmtr11733.htm)
+        * [2010](https://archive.org/details/nsearchives.nseindia.comcontentcircularscmtr13713.pdf)
+        * [2011](https://archive.org/details/nsearchives.nseindia.comcontentcircularscmtr16348.pdf)
+        * [2012](https://archive.org/details/nsearchives.nseindia.comcontentcircularscmtr19539.pdf)
+        * [2013](https://archive.org/details/nsearchives.nseindia.comcontentcircularscmtr22317.pdf)
+        * [2014](https://archive.org/details/nsearchives.nseindia.comcontentcircularscmtr25326.pdf)
+        * [2015](https://archive.org/details/nsearchives.nseindia.comcontentcircularscmtr28337.pdf)
+        * [2016](https://web.archive.org/web/20250903152854/https://nsearchives.nseindia.com/content/circulars/CMTR31297.pdf)
+        * [2017](https://web.archive.org/web/20250903152829/https://nsearchives.nseindia.com/content/circulars/CMTR33746.pdf)
+        * [2018](https://web.archive.org/web/20250903152307/https://nsearchives.nseindia.com/content/circulars/CMTR36475.pdf)
+        * [2019](https://archive.org/details/nsearchives.nseindia.comcontentcircularscmtr39612.pdf)
+        * [2020](https://web.archive.org/web/20250903152140/https://nsearchives.nseindia.com/content/circulars/CMTR42877.pdf)
+        * [2021](https://web.archive.org/web/20250903152041/https://nsearchives.nseindia.com/content/circulars/CMTR46623.pdf)
         * [2022](https://web.archive.org/web/20250821071611/https://nsearchives.nseindia.com/content/circulars/CMTR50560.pdf)
         * [2023](https://web.archive.org/web/20250821071635/https://nsearchives.nseindia.com/content/circulars/CMTR54757.pdf)
         * [2024](https://web.archive.org/web/20250821071650/https://nsearchives.nseindia.com/content/circulars/CMTR59722.pdf)
@@ -54,6 +80,7 @@ class NationalStockExchangeOfIndia(
             cls=NationalStockExchangeOfIndiaIslamicHolidays,
             show_estimated=islamic_show_estimated,
         )
+        StaticHolidays.__init__(self, cls=NationalStockExchangeOfIndiaStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
         super().__init__(*args, **kwargs)
 
@@ -64,16 +91,23 @@ class NationalStockExchangeOfIndia(
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
-        # Dr. Baba Saheb Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar Jayanti.
         self._move_holiday(self._add_holiday_apr_14(tr("Dr. Baba Saheb Ambedkar Jayanti")))
 
-        # Maharashtra Day.
-        self._move_holiday(self._add_holiday_may_1(tr("Maharashtra Day")))
+        self._move_holiday(
+            self._add_holiday_may_1(
+                # May Day.
+                tr("May Day")
+                if 2010 <= self._year <= 2014
+                # Maharashtra Day.
+                else tr("Maharashtra Day")
+            )
+        )
 
         # Independence Day.
         self._move_holiday(self._add_holiday_aug_15(tr("Independence Day")))
 
-        # Mahatma Gandhi Jayanti.
+        # Gandhi Jayanti.
         self._move_holiday(self._add_holiday_oct_2(tr("Mahatma Gandhi Jayanti")))
 
         # Christmas Day.
@@ -81,17 +115,19 @@ class NationalStockExchangeOfIndia(
 
         # Hindu Calendar Holidays.
 
-        # Maha Shivaratri.
-        self._move_holiday(self._add_maha_shivaratri(tr("Maha Shivaratri")))
+        if self._year >= 2007:
+            # Maha Shivaratri.
+            self._move_holiday(self._add_maha_shivaratri(tr("Maha Shivaratri")))
 
         # Holi.
         self._move_holiday(self._add_holi(tr("Holi")))
 
-        # Ram Navami.
-        self._move_holiday(self._add_ram_navami(tr("Ram Navami")))
+        if self._year >= 2006:
+            # Ram Navami.
+            self._move_holiday(self._add_ram_navami(tr("Ram Navami")))
 
-        # Mahavir Jayanti.
-        self._move_holiday(self._add_mahavir_jayanti(tr("Mahavir Jayanti")))
+            # Mahavir Jayanti.
+            self._move_holiday(self._add_mahavir_jayanti(tr("Mahavir Jayanti")))
 
         # Ganesh Chaturthi.
         self._move_holiday(self._add_ganesh_chaturthi(tr("Ganesh Chaturthi")))
@@ -99,21 +135,23 @@ class NationalStockExchangeOfIndia(
         # Dussehra.
         self._move_holiday(self._add_dussehra(tr("Dussehra")))
 
-        # Diwali Laxmi Pujan.
-        self._move_holiday(self._add_gau_krida(tr("Diwali Laxmi Pujan")))
+        # Diwali Lakshmi Puja.
+        self._move_holiday(self._add_diwali_india(tr("Diwali Laxmi Pujan")))
 
-        # Diwali Balipratipada.
-        name = tr("Diwali Balipratipada")
-        # NSE's calendar adds an extra-day gap in 2022–2023
-        # between Diwali Laxmi Pujan and Diwali Balipratipada.
-        self._move_holiday(
-            self._add_bhai_dooj(name)
-            if self._year in {2022, 2023}
-            else self._add_govardhan_puja(name)
-        )
+        if self._year <= 2002 or self._year >= 2011:
+            # Diwali Balipratipada.
+            self._move_holiday(self._add_govardhan_puja(tr("Diwali Balipratipada")))
 
         # Guru Nanak Jayanti.
         self._move_holiday(self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti")))
+
+        if 2003 <= self._year <= 2010:
+            # Bhai Bhij.
+            self._move_holiday(self._add_bhai_dooj(tr("Bhau Bhij")))
+
+        if 2006 <= self._year <= 2009:
+            # Buddha Purnima.
+            self._move_holiday(self._add_buddha_purnima(tr("Buddha Purnima")))
 
         # Islamic Calendar Holidays.
 
@@ -129,6 +167,11 @@ class NationalStockExchangeOfIndia(
         for dt in self._add_eid_al_adha_day(tr("Bakri Id")):
             self._move_holiday(dt)
 
+        if 2006 <= self._year <= 2009:
+            # Prophet's Birthday.
+            for dt in self._add_mawlid_day(tr("Id-E-Milad-Un-Nabi")):
+                self._move_holiday(dt)
+
 
 class XNSE(NationalStockExchangeOfIndia):
     pass
@@ -139,31 +182,134 @@ class NSE(NationalStockExchangeOfIndia):
 
 
 class NationalStockExchangeOfIndiaHinduHolidays(_CustomHinduHolidays):
+    BUDDHA_PURNIMA_DATES = {
+        2008: (MAY, 19),
+    }
+
+    DIWALI_INDIA_DATES = {
+        2024: (NOV, 1),
+        2025: (OCT, 21),
+    }
+
+    DUSSEHRA_DATES = {
+        2003: (OCT, 4),
+        2018: (OCT, 18),
+    }
+
+    GOVARDHAN_PUJA_DATES = {
+        2001: (NOV, 16),
+        2002: (NOV, 6),
+        2003: (OCT, 25),
+        2006: (OCT, 23),
+        2020: (NOV, 16),
+        2022: (OCT, 26),
+        2023: (NOV, 14),
+    }
+
     HOLI_DATES = {
         2023: (MAR, 7),
     }
 
+    MAHAVIR_JAYANTI_DATES = {
+        2010: (MAR, 28),
+        2016: (APR, 19),
+    }
+
+    RAM_NAVAMI_DATES = {
+        2007: (MAR, 27),
+    }
+
 
 class NationalStockExchangeOfIndiaIslamicHolidays(_CustomIslamicHolidays):
-    ASHURA_DATES_CONFIRMED_YEARS = (2022, 2025)
+    ASHURA_DATES_CONFIRMED_YEARS = (2001, 2025)
     ASHURA_DATES = {
+        2001: (APR, 5),
+        2002: (MAR, 25),
+        2003: (MAR, 15),
+        2004: (MAR, 2),
+        2005: (FEB, 20),
+        2007: (JAN, 30),
+        2009: ((JAN, 8), (DEC, 28)),
+        2010: (DEC, 17),
+        2011: (DEC, 6),
+        2012: (NOV, 25),
+        2013: (NOV, 14),
+        2014: (NOV, 4),
+        2016: (OCT, 12),
+        2017: (OCT, 1),
+        2019: (SEP, 10),
+        2020: (AUG, 30),
+        2021: (AUG, 19),
         2022: (AUG, 9),
         2023: (JUL, 29),
         2024: (JUL, 17),
         2025: (JUL, 6),
     }
 
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2022, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2025)
     EID_AL_ADHA_DATES = {
+        2001: (MAR, 6),
+        2002: (FEB, 23),
+        2003: (FEB, 13),
+        2004: (FEB, 2),
+        2006: (JAN, 11),
+        2007: ((JAN, 1), (DEC, 21)),
+        2008: (DEC, 9),
+        2010: (NOV, 17),
+        2011: (NOV, 7),
+        2012: (OCT, 27),
+        2013: (OCT, 16),
+        2014: (OCT, 6),
+        2015: (SEP, 25),
+        2016: (SEP, 13),
+        2017: (SEP, 2),
+        2018: (AUG, 22),
+        2019: (AUG, 12),
+        2020: (AUG, 1),
+        2021: (JUL, 21),
         2022: (JUL, 10),
         2024: (JUN, 17),
         2025: (JUN, 7),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2022, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2025)
     EID_AL_FITR_DATES = {
+        2001: (DEC, 17),
+        2002: (DEC, 7),
+        2003: (NOV, 26),
+        2004: (NOV, 15),
+        2005: (NOV, 5),
+        2006: (OCT, 25),
+        2007: (OCT, 14),
+        2008: (OCT, 2),
+        2009: (SEP, 21),
+        2011: (AUG, 31),
+        2012: (AUG, 20),
+        2013: (AUG, 9),
+        2014: (JUL, 29),
+        2015: (JUL, 18),
+        2017: (JUN, 26),
+        2018: (JUN, 16),
+        2019: (JUN, 5),
+        2020: (MAY, 25),
         2022: (MAY, 3),
         2023: (APR, 22),
         2024: (APR, 11),
         2025: (MAR, 31),
+    }
+
+    MAWLID_DATES_CONFIRMED_YEARS = (2006, 2009)
+    MAWLID_DATES = {
+        2006: (APR, 11),
+        2007: (APR, 1),
+        2009: (MAR, 10),
+    }
+
+
+class NationalStockExchangeOfIndiaStaticHolidays:
+    """National Stock Exchange of India (NSE) special holidays."""
+
+    special_public_holidays = {
+        # New Year's Day.
+        2010: (JAN, 1, tr("New Year")),
     }
