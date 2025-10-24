@@ -24,10 +24,10 @@ class TestHeardIslandAndMcDonaldIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(1900, 2050)
-        super().setUpClass(HeardIslandAndMcDonaldIslands, years=cls.full_range)
+        super().setUpClass(HeardIslandAndMcDonaldIslands)
 
     def test_country_aliases(self):
         self.assertAliases(HeardIslandAndMcDonaldIslands, HM, HMD)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(HeardIslandAndMcDonaldIslands(years=self.full_range))
+        self.assertNoHolidays(HeardIslandAndMcDonaldIslands)

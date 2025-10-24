@@ -26,25 +26,25 @@ class TestAntarctica(CommonCountryTests, TestCase):
         self.assertAliases(Antarctica, AQ, ATA)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Antarctica(years=1961))
+        self.assertNoHolidays(Antarctica(years=self.start_year - 1))
 
     def test_new_years_day(self):
-        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1962, 2050)))
+        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))
 
     def test_midwinter_day(self):
         self.assertHolidayName(
             "Midwinter Day",
-            (f"{year}-06-20" for year in range(1962, 2050) if isleap(year)),
-            (f"{year}-06-21" for year in range(1962, 2050) if not isleap(year)),
+            (f"{year}-06-20" for year in self.full_range if isleap(year)),
+            (f"{year}-06-21" for year in self.full_range if not isleap(year)),
         )
 
     def test_antarctica_day(self):
         name = "Antarctica Day"
-        self.assertHolidayName(name, (f"{year}-12-01" for year in range(2010, 2050)))
-        self.assertNoHolidayName(name, range(1962, 2010))
+        self.assertHolidayName(name, (f"{year}-12-01" for year in range(2010, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2010))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1962, 2050)))
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in self.full_range))
 
     def test_2025(self):
         self.assertHolidays(

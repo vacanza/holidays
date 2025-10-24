@@ -25,10 +25,11 @@ class TestDjibouti(CommonCountryTests, TestCase):
         self.assertAliases(Djibouti, DJ, DJI)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Djibouti(years=1977))
+        self.assertNoHolidays(Djibouti(years=self.start_year - 1))
 
     def test_2019(self):
         self.assertHolidays(
+            Djibouti(years=2019),
             ("2019-01-01", "Nouvel an"),
             ("2019-04-03", "Al Isra et Al Mirague (estimé)"),
             ("2019-05-01", "Fête du travail"),

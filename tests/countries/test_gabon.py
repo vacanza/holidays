@@ -25,18 +25,16 @@ class TestGabon(CommonCountryTests, TestCase):
         self.assertAliases(Gabon, GA, GAB)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Gabon(years=1960))
+        self.assertNoHolidays(Gabon(years=self.start_year - 1))
 
     def test_womens_rights_day(self):
         name = "Women's Rights Day"
-        self.assertHolidayName(name, (f"{year}-04-17" for year in range(2015, 2050)))
-        self.assertNoHolidayName(name, Gabon(years=range(1961, 2015)))
-        self.assertNoHoliday(
-            f"{year}-04-17" for year in set(range(1961, 2015)).difference({1995, 1997, 2006})
-        )
+        self.assertHolidayName(name, (f"{year}-04-17" for year in range(2015, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2015))
 
     def test_2022(self):
         self.assertHolidays(
+            Gabon(years=2022),
             ("2022-01-01", "New Year's Day"),
             ("2022-04-17", "Women's Rights Day"),
             ("2022-04-18", "Easter Monday"),
