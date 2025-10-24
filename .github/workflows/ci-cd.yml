@@ -58,12 +58,12 @@ jobs:
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@f443b600d91635bebf5b0d9ebc620189c0d6fba5
+        uses: github/codeql-action/init@16140ae1a102900babc80a33c44059580f687047
         with:
           languages: python
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@f443b600d91635bebf5b0d9ebc620189c0d6fba5
+        uses: github/codeql-action/analyze@16140ae1a102900babc80a33c44059580f687047
         with:
           category: '/language:python'
 
@@ -274,7 +274,7 @@ jobs:
           done
 
       - name: Sign the files using Sigstore
-        uses: sigstore/gh-action-sigstore-python@f7ad0af51a5648d09a20d00370f0a91c3bdf8f84
+        uses: sigstore/gh-action-sigstore-python@f832326173235dcb00dd5d92cd3f353de3188e6c
         with:
           inputs: |
             ./dist/*.tar.gz
