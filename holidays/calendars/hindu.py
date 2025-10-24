@@ -12,7 +12,6 @@
 
 from collections.abc import Iterable
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, AUG, SEP, OCT, NOV, DEC
@@ -1396,7 +1395,7 @@ class _HinduLunisolar:
         2035: (APR, 14),
     }
 
-    def _get_holiday(self, holiday: str, year: int) -> tuple[Optional[date], bool]:
+    def _get_holiday(self, holiday: str, year: int) -> tuple[date | None, bool]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
@@ -1409,85 +1408,85 @@ class _HinduLunisolar:
             for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
                 yield date(year, *dt), year not in exact_dates
 
-    def buddha_purnima_date(self, year: int) -> tuple[Optional[date], bool]:
+    def buddha_purnima_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BUDDHA_PURNIMA, year)
 
-    def chhath_puja_date(self, year: int) -> tuple[Optional[date], bool]:
+    def chhath_puja_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(CHHATH_PUJA, year)
 
-    def diwali_date(self, year: int) -> tuple[Optional[date], bool]:
+    def diwali_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(DIWALI, year)
 
-    def diwali_india_date(self, year: int) -> tuple[Optional[date], bool]:
+    def diwali_india_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(DIWALI_INDIA, year)
 
-    def dussehra_date(self, year: int) -> tuple[Optional[date], bool]:
+    def dussehra_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(DUSSEHRA, year)
 
-    def ganesh_chaturthi_date(self, year: int) -> tuple[Optional[date], bool]:
+    def ganesh_chaturthi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(GANESH_CHATURTHI, year)
 
-    def govardhan_puja_date(self, year: int) -> tuple[Optional[date], bool]:
+    def govardhan_puja_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(GOVARDHAN_PUJA, year)
 
-    def gudi_padwa_date(self, year: int) -> tuple[Optional[date], bool]:
+    def gudi_padwa_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(GUDI_PADWA, year)
 
     def guru_gobind_singh_jayanti_date(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday_set(GURU_GOBIND_SINGH_JAYANTI, year)
 
-    def guru_nanak_jayanti_date(self, year: int) -> tuple[Optional[date], bool]:
+    def guru_nanak_jayanti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(GURU_NANAK_JAYANTI, year)
 
-    def gyalpo_losar_date(self, year: int) -> tuple[Optional[date], bool]:
+    def gyalpo_losar_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(GYALPO_LOSAR, year)
 
-    def holi_date(self, year: int) -> tuple[Optional[date], bool]:
+    def holi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(HOLI, year)
 
-    def pongal_date(self, year: int) -> tuple[Optional[date], bool]:
+    def pongal_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(PONGAL, year)
 
-    def janmashtami_date(self, year: int) -> tuple[Optional[date], bool]:
+    def janmashtami_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(JANMASHTAMI, year)
 
-    def maha_ashtami_date(self, year: int) -> tuple[Optional[date], bool]:
+    def maha_ashtami_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHA_ASHTAMI, year)
 
-    def maha_navami_date(self, year: int) -> tuple[Optional[date], bool]:
+    def maha_navami_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHA_NAVAMI, year)
 
-    def maha_shivaratri_date(self, year: int) -> tuple[Optional[date], bool]:
+    def maha_shivaratri_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHA_SHIVARATRI, year)
 
-    def mahavir_jayanti_date(self, year: int) -> tuple[Optional[date], bool]:
+    def mahavir_jayanti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHAVIR_JAYANTI, year)
 
-    def makar_sankranti_date(self, year: int) -> tuple[Optional[date], bool]:
+    def makar_sankranti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAKAR_SANKRANTI, year)
 
-    def onam_date(self, year: int) -> tuple[Optional[date], bool]:
+    def onam_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(ONAM, year)
 
-    def raksha_bandhan_date(self, year: int) -> tuple[Optional[date], bool]:
+    def raksha_bandhan_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(RAKSHA_BANDHAN, year)
 
-    def ram_navami_date(self, year: int) -> tuple[Optional[date], bool]:
+    def ram_navami_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(RAM_NAVAMI, year)
 
-    def sharad_navratri_date(self, year: int) -> tuple[Optional[date], bool]:
+    def sharad_navratri_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(SHARAD_NAVRATRI, year)
 
-    def sonam_losar_date(self, year: int) -> tuple[Optional[date], bool]:
+    def sonam_losar_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(SONAM_LOSAR, year)
 
-    def tamu_losar_date(self, year: int) -> tuple[Optional[date], bool]:
+    def tamu_losar_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(TAMU_LOSAR, year)
 
-    def thaipusam_date(self, year: int) -> tuple[Optional[date], bool]:
+    def thaipusam_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(THAIPUSAM, year)
 
-    def vaisakhi_date(self, year: int) -> tuple[Optional[date], bool]:
+    def vaisakhi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VAISAKHI, year)
 
 

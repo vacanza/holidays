@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from gettext import gettext as tr
-from typing import Union
 
 from holidays.calendars.gregorian import (
     FEB,
@@ -115,7 +114,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     supported_languages = ("en_US", "th")
     # Independence Declared on July 4th, 1776.
     start_year = 1777
-    subdivisions: Union[tuple[()], tuple[str, ...]] = (
+    subdivisions: tuple[()] | tuple[str, ...] = (
         "AK",  # Alaska.
         "AL",  # Alabama.
         "AR",  # Arkansas.

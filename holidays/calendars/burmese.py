@@ -12,7 +12,6 @@
 
 from datetime import date
 from functools import cache
-from typing import Optional
 
 from holidays.calendars.gregorian import _timedelta
 
@@ -124,7 +123,7 @@ class _BurmeseLunisolar:
         return date(y, m, d)
 
     @cache
-    def _get_start_date(self, year: int) -> Optional[date]:
+    def _get_start_date(self, year: int) -> date | None:
         if year < self.START_YEAR or year > self.END_YEAR:
             return None
 
@@ -137,7 +136,7 @@ class _BurmeseLunisolar:
 
         return _timedelta(self.START_DATE, delta_days)
 
-    def thingyan_dates(self, year: int) -> tuple[Optional[date], Optional[date]]:
+    def thingyan_dates(self, year: int) -> tuple[date | None, date | None]:
         """Calculate key dates of Thingyan (Myanmar New Year festival) - Akya day
             and Atat day.
 
@@ -157,7 +156,7 @@ class _BurmeseLunisolar:
 
         return self.jdn_to_gregorian(round(jk)), self.jdn_to_gregorian(round(ja))
 
-    def kason_full_moon_date(self, year: int) -> Optional[date]:
+    def kason_full_moon_date(self, year: int) -> date | None:
         """Calculate the Gregorian date of Full Moon Day of Kason.
 
         15th day of 2nd month (Kason).
@@ -180,7 +179,7 @@ class _BurmeseLunisolar:
 
         return _timedelta(start_date, +43)
 
-    def waso_full_moon_date(self, year: int) -> Optional[date]:
+    def waso_full_moon_date(self, year: int) -> date | None:
         """Calculate the Gregorian date of Full Moon Day of Waso.
 
         15th day of 4th month (Waso).
@@ -203,7 +202,7 @@ class _BurmeseLunisolar:
 
         return _timedelta(next_year_start_date, -252)
 
-    def thadingyut_full_moon_date(self, year: int) -> Optional[date]:
+    def thadingyut_full_moon_date(self, year: int) -> date | None:
         """Calculate the Gregorian date of Full Moon Day of Thadingyut.
 
         15th day of 7th month (Thadingyut).
@@ -226,7 +225,7 @@ class _BurmeseLunisolar:
 
         return _timedelta(next_year_start_date, -163)
 
-    def tazaungmon_waxing_moon_date(self, year: int) -> Optional[date]:
+    def tazaungmon_waxing_moon_date(self, year: int) -> date | None:
         """Calculate the Gregorian date of 1st Waxing Day of Tazaungmon.
 
         1st day of 8th month (Tazaungmon).
@@ -249,7 +248,7 @@ class _BurmeseLunisolar:
 
         return _timedelta(next_year_start_date, -148)
 
-    def tazaungmon_full_moon_date(self, year: int) -> Optional[date]:
+    def tazaungmon_full_moon_date(self, year: int) -> date | None:
         """Calculate the Gregorian date of Full Moon Day of Tazaungmon.
 
         15th day of 8th month (Tazaungmon).
@@ -272,7 +271,7 @@ class _BurmeseLunisolar:
 
         return _timedelta(next_year_start_date, -134)
 
-    def pyatho_waxing_moon_date(self, year: int) -> Optional[date]:
+    def pyatho_waxing_moon_date(self, year: int) -> date | None:
         """Calculate the Gregorian date of 1st Waxing Day of Pyatho.
 
         1st day of 10th month (Pyatho).
@@ -295,7 +294,7 @@ class _BurmeseLunisolar:
 
         return _timedelta(next_year_start_date, -89)
 
-    def tabaung_full_moon_date(self, year: int) -> Optional[date]:
+    def tabaung_full_moon_date(self, year: int) -> date | None:
         """Calculate the Gregorian date of Full Moon Day of Tabaung.
 
         15th day of 12th month (Tabaung).

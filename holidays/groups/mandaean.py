@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.gregorian import _timedelta
 from holidays.calendars.mandaean import _Mandaean
@@ -37,7 +36,7 @@ class MandaeanHolidays:
     def _parwanaya(self):
         return self._mandaean.mandaean_to_gregorian(self._year - 1, 13, 1)
 
-    def _add_mandaean_holiday(self, name: str, dt: Optional[date]) -> Optional[date]:
+    def _add_mandaean_holiday(self, name: str, dt: date | None) -> date | None:
         """
         Add a Mandaean holiday.
         """
@@ -45,7 +44,7 @@ class MandaeanHolidays:
             return None
         return self._add_holiday(name, dt)
 
-    def _add_parwanaya_day(self, name) -> Optional[date]:
+    def _add_parwanaya_day(self, name) -> date | None:
         """
         Add Parwanaya (Feast of Creation).
         A major Mandaean holiday celebrated over five days after the 8th month.
@@ -55,19 +54,19 @@ class MandaeanHolidays:
         """
         return self._add_mandaean_holiday(name, self._parwanaya)
 
-    def _add_parwanaya_day_two(self, name) -> Optional[date]:
+    def _add_parwanaya_day_two(self, name) -> date | None:
         return self._add_mandaean_holiday(name, _timedelta(self._parwanaya, +1))
 
-    def _add_parwanaya_day_three(self, name) -> Optional[date]:
+    def _add_parwanaya_day_three(self, name) -> date | None:
         return self._add_mandaean_holiday(name, _timedelta(self._parwanaya, +2))
 
-    def _add_parwanaya_day_four(self, name) -> Optional[date]:
+    def _add_parwanaya_day_four(self, name) -> date | None:
         return self._add_mandaean_holiday(name, _timedelta(self._parwanaya, +3))
 
-    def _add_parwanaya_day_five(self, name) -> Optional[date]:
+    def _add_parwanaya_day_five(self, name) -> date | None:
         return self._add_mandaean_holiday(name, _timedelta(self._parwanaya, +4))
 
-    def _add_dehwa_daimana_day(self, name) -> Optional[date]:
+    def _add_dehwa_daimana_day(self, name) -> date | None:
         """
         Add Dehwa Daimana (Birthday of Prophet Yahya).
         Celebrated on 1st day of Mandaean 11th month.
@@ -77,7 +76,7 @@ class MandaeanHolidays:
             name, self._mandaean.mandaean_to_gregorian(self._year - 1, 11, 1)
         )
 
-    def _add_dehwa_hanina_day(self, name) -> Optional[date]:
+    def _add_dehwa_hanina_day(self, name) -> date | None:
         """
         Add Dehwa Hanina (Little Feast / Day of Victory).
         Commemorates spiritual triumph and deliverance.
@@ -86,10 +85,10 @@ class MandaeanHolidays:
         """
         return self._add_mandaean_holiday(name, self._dehwa_hanina)
 
-    def _add_dehwa_hanina_day_two(self, name) -> Optional[date]:
+    def _add_dehwa_hanina_day_two(self, name) -> date | None:
         return self._add_mandaean_holiday(name, _timedelta(self._dehwa_hanina, +1))
 
-    def _add_great_feast_day(self, name) -> Optional[date]:
+    def _add_great_feast_day(self, name) -> date | None:
         """
         Add Great Feast (Feast of the Great Shishlam).
         Celebrated on the 6th day of the first month of the Mandaean calendar.
@@ -97,11 +96,11 @@ class MandaeanHolidays:
         """
         return self._add_mandaean_holiday(name, self._great_feast)
 
-    def _add_great_feast_day_two(self, name) -> Optional[date]:
+    def _add_great_feast_day_two(self, name) -> date | None:
         return self._add_mandaean_holiday(name, _timedelta(self._great_feast, +1))
 
-    def _add_great_feast_day_three(self, name) -> Optional[date]:
+    def _add_great_feast_day_three(self, name) -> date | None:
         return self._add_mandaean_holiday(name, _timedelta(self._great_feast, +2))
 
-    def _add_great_feast_day_four(self, name) -> Optional[date]:
+    def _add_great_feast_day_four(self, name) -> date | None:
         return self._add_mandaean_holiday(name, _timedelta(self._great_feast, +3))

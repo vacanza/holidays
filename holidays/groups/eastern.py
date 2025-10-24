@@ -12,7 +12,6 @@
 
 from collections.abc import Iterable
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.gregorian import _timedelta
 
@@ -25,11 +24,11 @@ class EasternCalendarHolidays:
     def _add_eastern_calendar_holiday(
         self,
         name: str,
-        dt_estimated: tuple[Optional[date], bool],
+        dt_estimated: tuple[date | None, bool],
         *,
         show_estimated: bool = True,
         days_delta: int = 0,
-    ) -> Optional[date]:
+    ) -> date | None:
         """
         Add Eastern (Buddhist, Chinese, Hindu, Islamic, Mongolian) calendar holiday.
 

@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, NOV, DEC
@@ -1340,7 +1339,7 @@ class _ChineseLunisolar:
                 f"Supported calendars: {', '.join(sorted(supported_calendars))}"
             )
 
-    def _get_holiday(self, holiday: str, year: int, calendar=None) -> tuple[Optional[date], bool]:
+    def _get_holiday(self, holiday: str, year: int, calendar=None) -> tuple[date | None, bool]:
         calendar = calendar or self.__calendar
         self.__verify_calendar(calendar)
         confirmed_dates = getattr(
@@ -1359,25 +1358,25 @@ class _ChineseLunisolar:
         )
         return date(year, *dt) if dt else None, not is_confirmed
 
-    def buddha_birthday_date(self, year: int, calendar=None) -> tuple[Optional[date], bool]:
+    def buddha_birthday_date(self, year: int, calendar=None) -> tuple[date | None, bool]:
         return self._get_holiday(BUDDHA_BIRTHDAY, year, calendar)
 
-    def double_ninth_date(self, year: int) -> tuple[Optional[date], bool]:
+    def double_ninth_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(DOUBLE_NINTH, year)
 
-    def dragon_boat_date(self, year: int) -> tuple[Optional[date], bool]:
+    def dragon_boat_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(DRAGON_BOAT, year)
 
-    def hung_kings_date(self, year: int, calendar=None) -> tuple[Optional[date], bool]:
+    def hung_kings_date(self, year: int, calendar=None) -> tuple[date | None, bool]:
         return self._get_holiday(HUNG_KINGS, year, calendar)
 
-    def lunar_new_year_date(self, year: int, calendar=None) -> tuple[Optional[date], bool]:
+    def lunar_new_year_date(self, year: int, calendar=None) -> tuple[date | None, bool]:
         return self._get_holiday(LUNAR_NEW_YEAR, year, calendar)
 
-    def mid_autumn_date(self, year: int, calendar=None) -> tuple[Optional[date], bool]:
+    def mid_autumn_date(self, year: int, calendar=None) -> tuple[date | None, bool]:
         return self._get_holiday(MID_AUTUMN, year, calendar)
 
-    def winter_solstice_date(self, year: int, calendar=None) -> tuple[Optional[date], bool]:
+    def winter_solstice_date(self, year: int, calendar=None) -> tuple[date | None, bool]:
         """Return Winter Solstice (22nd solar term in Chinese Lunisolar calendar) date.
 
         !!! note "Note"

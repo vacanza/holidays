@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.balinese_saka import _BalineseSakaLunar
 
@@ -24,7 +23,7 @@ class BalineseSakaCalendarHolidays:
     def __init__(self) -> None:
         self._balinese_saka_calendar = _BalineseSakaLunar()
 
-    def _add_balinese_saka_calendar_holiday(self, name: str, dt: Optional[date]) -> Optional[date]:
+    def _add_balinese_saka_calendar_holiday(self, name: str, dt: date | None) -> date | None:
         """
         Add Balinese Saka calendar holiday.
         """
@@ -32,7 +31,7 @@ class BalineseSakaCalendarHolidays:
             return None
         return self._add_holiday(name, dt)
 
-    def _add_nyepi(self, name) -> Optional[date]:
+    def _add_nyepi(self, name) -> date | None:
         """
         Add Nyepi (Day following the 9th of Dark Moon (Tilem)).
 

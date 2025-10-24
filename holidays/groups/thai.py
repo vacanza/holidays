@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.thai import THAI_CALENDAR, _ThaiLunisolar
 
@@ -28,7 +27,7 @@ class ThaiCalendarHolidays:
         self.__calendar = calendar
         self._thai_calendar = _ThaiLunisolar(calendar)
 
-    def _add_asarnha_bucha(self, name) -> Optional[date]:
+    def _add_asarnha_bucha(self, name) -> date | None:
         """
         Add Asarnha Bucha.
 
@@ -42,7 +41,7 @@ class ThaiCalendarHolidays:
             name, self._thai_calendar.asarnha_bucha_date(self._year)
         )
 
-    def _add_boun_haw_khao_padapdin(self, name) -> Optional[date]:
+    def _add_boun_haw_khao_padapdin(self, name) -> date | None:
         """
         Add Boun Haw Khao Padapdin.
 
@@ -56,7 +55,7 @@ class ThaiCalendarHolidays:
             name, self._thai_calendar.boun_haw_khao_padapdin_date(self._year)
         )
 
-    def _add_boun_haw_khao_salark(self, name) -> Optional[date]:
+    def _add_boun_haw_khao_salark(self, name) -> date | None:
         """
         Add Boun Haw Khao Salark.
 
@@ -70,7 +69,7 @@ class ThaiCalendarHolidays:
             name, self._thai_calendar.boun_haw_khao_salark_date(self._year)
         )
 
-    def _add_boun_suang_heua(self, name) -> Optional[date]:
+    def _add_boun_suang_heua(self, name) -> date | None:
         """
         Add Boun Suang Huea.
 
@@ -84,7 +83,7 @@ class ThaiCalendarHolidays:
             name, self._thai_calendar.boun_suang_heua_date(self._year)
         )
 
-    def _add_khao_phansa(self, name) -> Optional[date]:
+    def _add_khao_phansa(self, name) -> date | None:
         """
         Add Khao Phansa.
 
@@ -98,7 +97,7 @@ class ThaiCalendarHolidays:
             name, self._thai_calendar.khao_phansa_date(self._year)
         )
 
-    def _add_loy_krathong(self, name) -> Optional[date]:
+    def _add_loy_krathong(self, name) -> date | None:
         """
         Add Loy Krathong.
 
@@ -114,7 +113,7 @@ class ThaiCalendarHolidays:
             name, self._thai_calendar.loy_krathong_date(self._year)
         )
 
-    def _add_makha_bucha(self, name, calendar=None) -> Optional[date]:
+    def _add_makha_bucha(self, name, calendar=None) -> date | None:
         """
         Add Makha Bucha.
 
@@ -132,7 +131,7 @@ class ThaiCalendarHolidays:
             name, self._thai_calendar.makha_bucha_date(self._year, calendar)
         )
 
-    def _add_ok_phansa(self, name) -> Optional[date]:
+    def _add_ok_phansa(self, name) -> date | None:
         """
         Add Ok Phansa.
 
@@ -146,7 +145,7 @@ class ThaiCalendarHolidays:
             name, self._thai_calendar.ok_phansa_date(self._year)
         )
 
-    def _add_pchum_ben(self, name) -> Optional[date]:
+    def _add_pchum_ben(self, name) -> date | None:
         """
         Add Pchum Ben.
 
@@ -161,7 +160,7 @@ class ThaiCalendarHolidays:
             name, self._thai_calendar.pchum_ben_date(self._year)
         )
 
-    def _add_preah_neangkoal(self, name) -> Optional[date]:
+    def _add_preah_neangkoal(self, name) -> date | None:
         """
         Add Preah Reach Pithi Chrat Preah Neangkoal.
 
@@ -175,7 +174,7 @@ class ThaiCalendarHolidays:
             name, self._thai_calendar.preah_neangkoal_date(self._year)
         )
 
-    def _add_thai_calendar_holiday(self, name, dt) -> Optional[date]:
+    def _add_thai_calendar_holiday(self, name, dt) -> date | None:
         """
         Add Thai calendar holiday.
 
@@ -186,7 +185,7 @@ class ThaiCalendarHolidays:
 
         return self._add_holiday(name, dt)
 
-    def _add_visakha_bucha(self, name, calendar=None) -> Optional[date]:
+    def _add_visakha_bucha(self, name, calendar=None) -> date | None:
         """
         Add Visakha Bucha.
 

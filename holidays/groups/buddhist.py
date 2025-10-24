@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.buddhist import _BuddhistLunisolar
 from holidays.groups.eastern import EasternCalendarHolidays
@@ -27,8 +26,8 @@ class BuddhistCalendarHolidays(EasternCalendarHolidays):
         self._buddhist_calendar_show_estimated = show_estimated
 
     def _add_buddhist_calendar_holiday(
-        self, name: str, dt_estimated: tuple[Optional[date], bool]
-    ) -> Optional[date]:
+        self, name: str, dt_estimated: tuple[date | None, bool]
+    ) -> date | None:
         """
         Add Buddhist calendar holiday.
 
@@ -39,7 +38,7 @@ class BuddhistCalendarHolidays(EasternCalendarHolidays):
             name, dt_estimated, show_estimated=self._buddhist_calendar_show_estimated
         )
 
-    def _add_vesak(self, name) -> Optional[date]:
+    def _add_vesak(self, name) -> date | None:
         """
         Add Vesak (15th day of the 4th lunar month).
 
@@ -50,7 +49,7 @@ class BuddhistCalendarHolidays(EasternCalendarHolidays):
             name, self._buddhist_calendar.vesak_date(self._year)
         )
 
-    def _add_vesak_may(self, name) -> Optional[date]:
+    def _add_vesak_may(self, name) -> date | None:
         """
         Add Vesak (on the day of the first full moon in May
         in the Gregorian calendar).
