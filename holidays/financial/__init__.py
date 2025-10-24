@@ -21,3 +21,9 @@ from holidays.financial.national_stock_exchange_of_india import (
     NSE,
 )
 from holidays.financial.ny_stock_exchange import NewYorkStockExchange, XNYS, NYSE
+from holidays.financial.us_government_securities import (
+    USGovernmentSecurities,
+    USGS,
+    USBondMarket,
+)
+from holidays.financial.us_new_york import USNewYork, USNY, USNewYorkFinancial

@@ -216,6 +216,8 @@ class TestListSupportedEntities(unittest.TestCase):
         self.assertIsInstance(xnys_subdivisions, list)
 
         financial_count = sum(
-            1 for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
+            1
+            for path in Path("holidays/financial").glob("*.py")
+            if path.stem != "__init__" and not path.stem.startswith("_")
         )
         self.assertEqual(financial_count, len(supported_financial))
