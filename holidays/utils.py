@@ -18,10 +18,12 @@ __all__ = (
     "list_localized_financial",
     "list_supported_countries",
     "list_supported_financial",
+    "list_long_weekends",
 )
 
 import warnings
 from collections.abc import Iterable
+from datetime import timedelta
 from functools import cache
 from typing import Optional, Union
 
@@ -435,3 +437,64 @@ def list_supported_financial(include_aliases: bool = True) -> dict[str, list[str
         subdivision codes.
     """
     return _list_supported_entities(EntityLoader.get_financial_codes(include_aliases))
+
+
+def list_long_weekends(
+    instance: HolidayBase,
+    minimum_holiday_length: int = 3,
+    require_weekend_overlap: Optional[bool] = True,
+) -> list:
+    """Get all long consecutive holidays.
+
+    Args:
+        instance:
+            `HolidaysBase` object containing holiday data.
+
+        minimum_holiday_length:
+            The minimum number of consecutive days required for a holiday period
+            to be considered a long weekend. Defaults to 3.
+
+        require_weekend_overlap:
+            Whether to include consecutive holidays that do not contain any weekend days.
+            Defaults to True.
+
+    Returns:
+        A list of long consecutive holiday periods longer than or equal
+        to the specified minimum length.
+    """
+    checked = set()
+    long_weekends = []
+
+    holidays_in_year = set(instance.keys())
+
+    for holiday in sorted(holidays_in_year):
+        if holiday in checked:
+            continue
+
+        weekend_contents = []
+
+        prev_work = instance.get_nth_working_day(holiday, -1)
+        next_work = instance.get_nth_working_day(holiday, +1)
+
+        start = prev_work + timedelta(days=1)
+        end = next_work - timedelta(days=1)
+
+        length = (end - start).days + 1
+
+        has_weekend = True
+        if require_weekend_overlap:
+            has_weekend = any(
+                instance.is_weekend(day)
+                for day in (start + timedelta(days=offset) for offset in range(length))
+            )
+
+        if length >= minimum_holiday_length and has_weekend:
+            for day in (start + timedelta(days=day_offset) for day_offset in range(length)):
+                weekend_contents.append(day)
+            long_weekends.append(weekend_contents)
+
+        for day in holidays_in_year:
+            if start <= day <= end:
+                checked.add(day)
+
+    return long_weekends
