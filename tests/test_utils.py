@@ -279,3 +279,15 @@ class TestListLongWeekends(unittest.TestCase):
         instance = MockHolidayBase([])
         result = list_long_weekends(instance)
         self.assertEqual(result, [])
+
+    def test_no_weekend_overlap(self):
+        holidays = [date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)]
+        instance = MockHolidayBase(holidays)
+        result = list_long_weekends(instance, require_weekend_overlap=False)
+        self.assertEqual(result, [[date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)]])
+
+    def test_holidays_less_than_three_days(self):
+        holidays = [date(2025, 5, 3)]
+        instance = MockHolidayBase(holidays)
+        result = list_long_weekends(instance)
+        self.assertEqual(result, [])
