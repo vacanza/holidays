@@ -23,10 +23,10 @@ __all__ = (
 
 import warnings
 from collections.abc import Iterable
-from datetime import timedelta
 from functools import cache
 from typing import Optional, Union
 
+from holidays.calendars.gregorian import _timedelta
 from holidays.holiday_base import CategoryArg, HolidayBase
 from holidays.registry import EntityLoader
 
@@ -465,36 +465,27 @@ def list_long_weekends(
     checked = set()
     long_weekends = []
 
-    holidays_in_year = set(instance.keys())
-
-    for holiday in sorted(holidays_in_year):
+    for holiday in sorted(instance.keys()):
         if holiday in checked:
             continue
 
-        weekend_contents = []
-
         prev_work = instance.get_nth_working_day(holiday, -1)
         next_work = instance.get_nth_working_day(holiday, +1)
+        length = (next_work - prev_work).days - 1
 
-        start = prev_work + timedelta(days=1)
-        end = next_work - timedelta(days=1)
+        if length < minimum_holiday_length:
+            continue
 
-        length = (end - start).days + 1
+        holiday_dates = []
+        is_needed = not require_weekend_overlap
+        for day_offset in range(1, length + 1):
+            current_date = _timedelta(prev_work, day_offset)
+            if not is_needed and instance._is_weekend(current_date):
+                is_needed = True
+            holiday_dates.append(current_date)
+            checked.add(current_date)
 
-        has_weekend = True
-        if require_weekend_overlap:
-            has_weekend = any(
-                instance.is_weekend(day)
-                for day in (start + timedelta(days=offset) for offset in range(length))
-            )
-
-        if length >= minimum_holiday_length and has_weekend:
-            for day in (start + timedelta(days=day_offset) for day_offset in range(length)):
-                weekend_contents.append(day)
-            long_weekends.append(weekend_contents)
-
-        for day in holidays_in_year:
-            if start <= day <= end:
-                checked.add(day)
+        if is_needed:
+            long_weekends.append(holiday_dates)
 
     return long_weekends
