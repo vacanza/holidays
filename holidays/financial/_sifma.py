@@ -20,12 +20,6 @@ from holidays.observed_holiday_base import (
     SUN_TO_NEXT_MON,
 )
 
-# Custom observed rule for early close dates.
-# Applied directly to the actual holiday date to determine if there's an early close.
-# MON: holiday on Monday → early close on Friday (-3)
-# TUE-FRI: holiday on Tue-Fri → early close the day before (-1)
-# SAT: holiday on Saturday → early close on Friday (-2)
-# SUN: holiday on Sunday → early close on Friday (-2)
 SIFMA_EARLY_CLOSE = ObservedRule({MON: -3, TUE: -1, WED: -1, THU: -1, FRI: -1, SAT: -2, SUN: -2})
 
 
