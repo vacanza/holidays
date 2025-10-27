@@ -120,6 +120,13 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         self._move_holiday(self._add_christmas_day("Christmas Day"))
 
     def _populate_half_day_holidays(self):
+        # Day before New Year's Day.
+        # Apply SIFMA_EARLY_CLOSE rule to next year's January 1.
+        jan_1_next = date(self._year + 1, 1, 1)
+        early_close_nye = self._get_observed_date(jan_1_next, rule=SIFMA_EARLY_CLOSE)
+        if early_close_nye and early_close_nye.year == self._year:
+            self._add_holiday("Markets close at 2:00 PM ET (New Year's Day)", early_close_nye)
+
         # Day before Good Friday (Maundy Thursday).
         self._add_holy_thursday("Markets close at 2:00 PM ET (Good Friday)")
 

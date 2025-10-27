@@ -247,12 +247,14 @@ class TestUSNewYork(CommonFinancialTests, TestCase):
             ("2025-07-03", "Markets close at 2:00 PM ET (Independence Day)"),
             ("2025-11-28", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
             ("2025-12-24", "Markets close at 2:00 PM ET (Christmas Day)"),
+            ("2025-12-31", "Markets close at 2:00 PM ET (New Year's Day)"),
         )
 
     def test_half_day_holidays_2022(self):
-        # 2022: July 4 is Monday, Dec 25 is Sunday (observed Monday Dec 26).
+        # 2022: July 4 is Monday, Dec 25 is Sunday (observed Monday Dec 26), Jan 1 2023 is Sunday.
         # Early close Friday July 1 for Independence Day (Monday holiday).
         # Early close Friday Dec 23 for Christmas (Sunday holiday).
+        # Early close Friday Dec 30 for New Year's Day 2023 (Sunday holiday).
         self.assertHolidays(
             USNewYork(years=2022, categories=(HALF_DAY, PUBLIC)),
             # Full closures (PUBLIC)
@@ -271,11 +273,13 @@ class TestUSNewYork(CommonFinancialTests, TestCase):
             ("2022-07-01", "Markets close at 2:00 PM ET (Independence Day)"),
             ("2022-11-25", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
             ("2022-12-23", "Markets close at 2:00 PM ET (Christmas Day)"),
+            ("2022-12-30", "Markets close at 2:00 PM ET (New Year's Day)"),
         )
 
     def test_half_day_holidays_2023(self):
-        # 2023: Dec 25 is Monday.
+        # 2023: Dec 25 is Monday, Jan 1 2024 is Monday.
         # Early close Friday Dec 22 for Christmas (Monday holiday).
+        # Early close Friday Dec 29 for New Year's Day 2024 (Monday holiday).
         self.assertHolidays(
             USNewYork(years=2023, categories=(HALF_DAY, PUBLIC)),
             # Full closures (PUBLIC)
@@ -295,4 +299,5 @@ class TestUSNewYork(CommonFinancialTests, TestCase):
             ("2023-07-03", "Markets close at 2:00 PM ET (Independence Day)"),
             ("2023-11-24", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
             ("2023-12-22", "Markets close at 2:00 PM ET (Christmas Day)"),
+            ("2023-12-29", "Markets close at 2:00 PM ET (New Year's Day)"),
         )

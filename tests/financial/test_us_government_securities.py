@@ -273,11 +273,13 @@ class TestUSGovernmentSecurities(CommonFinancialTests, TestCase):
             ("2025-07-03", "Markets close at 2:00 PM ET (Independence Day)"),
             ("2025-11-28", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
             ("2025-12-24", "Markets close at 2:00 PM ET (Christmas Day)"),
+            ("2025-12-31", "Markets close at 2:00 PM ET (New Year's Day)"),
         )
 
     def test_half_day_holidays_2023(self):
-        # 2023: Dec 25 is Monday.
+        # 2023: Dec 25 is Monday, Jan 1 2024 is Monday.
         # Early close Friday Dec 22 for Christmas (Monday holiday).
+        # Early close Friday Dec 29 for New Year's Day 2024 (Monday holiday).
         self.assertHolidays(
             USGovernmentSecurities(years=2023, categories=(HALF_DAY, PUBLIC)),
             # Full closures (PUBLIC)
@@ -299,12 +301,14 @@ class TestUSGovernmentSecurities(CommonFinancialTests, TestCase):
             ("2023-07-03", "Markets close at 2:00 PM ET (Independence Day)"),
             ("2023-11-24", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
             ("2023-12-22", "Markets close at 2:00 PM ET (Christmas Day)"),
+            ("2023-12-29", "Markets close at 2:00 PM ET (New Year's Day)"),
         )
 
     def test_half_day_holidays_2022(self):
-        # 2022: July 4 is Monday, Dec 25 is Sunday (observed Monday Dec 26).
+        # 2022: July 4 is Monday, Dec 25 is Sunday (observed Monday Dec 26), Jan 1 2023 is Sunday.
         # Early close Friday July 1 for Independence Day (Monday holiday).
         # Early close Friday Dec 23 for Christmas (Sunday holiday).
+        # Early close Friday Dec 30 for New Year's Day 2023 (Sunday holiday).
         self.assertHolidays(
             USGovernmentSecurities(years=2022, categories=(HALF_DAY, PUBLIC)),
             # Full closures (PUBLIC)
@@ -325,9 +329,12 @@ class TestUSGovernmentSecurities(CommonFinancialTests, TestCase):
             ("2022-07-01", "Markets close at 2:00 PM ET (Independence Day)"),
             ("2022-11-25", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
             ("2022-12-23", "Markets close at 2:00 PM ET (Christmas Day)"),
+            ("2022-12-30", "Markets close at 2:00 PM ET (New Year's Day)"),
         )
 
     def test_half_day_holidays_2024(self):
+        # 2024: Jan 1 2025 is Wednesday.
+        # Early close Tuesday Dec 31 for New Year's Day 2025 (Wednesday holiday).
         self.assertHolidays(
             USGovernmentSecurities(years=2024, categories=(HALF_DAY, PUBLIC)),
             # Full closures (PUBLIC)
@@ -349,11 +356,13 @@ class TestUSGovernmentSecurities(CommonFinancialTests, TestCase):
             ("2024-07-03", "Markets close at 2:00 PM ET (Independence Day)"),
             ("2024-11-29", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
             ("2024-12-24", "Markets close at 2:00 PM ET (Christmas Day)"),
+            ("2024-12-31", "Markets close at 2:00 PM ET (New Year's Day)"),
         )
 
     def test_1975_veterans_day_1971_1977(self):
         # Test Veterans Day during 1971-1977 period (4th Monday of October).
-        # 1975: Oct 27 is 4th Monday of October.
+        # 1975: Oct 27 is 4th Monday of October, Jan 1 1976 is Thursday.
+        # Early close Wednesday Dec 31 for New Year's Day 1976 (Thursday holiday).
         self.assertHolidays(
             USGovernmentSecurities(years=1975, categories=(HALF_DAY, PUBLIC)),
             ("1975-01-01", "New Year's Day"),
@@ -372,12 +381,14 @@ class TestUSGovernmentSecurities(CommonFinancialTests, TestCase):
             ("1975-07-03", "Markets close at 2:00 PM ET (Independence Day)"),
             ("1975-11-28", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
             ("1975-12-24", "Markets close at 2:00 PM ET (Christmas Day)"),
+            ("1975-12-31", "Markets close at 2:00 PM ET (New Year's Day)"),
         )
 
     def test_1970_pre_1971_memorial_day(self):
         # Test pre-1971 Memorial Day (May 30) and early close logic.
         # 1970: Feb 22 is Sunday (observed Mon 23), May 30 is Sat (observed Fri 29),
-        # July 4 is Sat (observed Fri July 3).
+        # July 4 is Sat (observed Fri July 3), Jan 1 1971 is Friday.
+        # Early close Thursday Dec 31 for New Year's Day 1971 (Friday holiday).
         self.assertHolidays(
             USGovernmentSecurities(years=1970, categories=(HALF_DAY, PUBLIC)),
             ("1970-01-01", "New Year's Day"),
@@ -396,4 +407,5 @@ class TestUSGovernmentSecurities(CommonFinancialTests, TestCase):
             ("1970-07-02", "Markets close at 2:00 PM ET (Independence Day)"),
             ("1970-11-27", "Markets close at 2:00 PM ET (Thanksgiving Day)"),
             ("1970-12-24", "Markets close at 2:00 PM ET (Christmas Day)"),
+            ("1970-12-31", "Markets close at 2:00 PM ET (New Year's Day)"),
         )
