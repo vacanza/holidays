@@ -119,7 +119,7 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             self._get_observed_date(self._next_year_new_years_day, rule=SIFMA_EARLY_CLOSE),
         )
 
-        # Day before Good Friday (Maundy Thursday).
+        # Day before Good Friday.
         self._add_holy_thursday(begin_time_label % "Good Friday")
 
         # Friday before Memorial Day.
