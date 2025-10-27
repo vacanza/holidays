@@ -68,9 +68,9 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         else:
             self._move_holiday(self._add_holiday_feb_22(name))
 
-        # Good Friday.
-        # Bond markets close on Good Friday, though it is not a federal holiday.
         # Note: Some SIFMA markets may treat this as an early close instead of full closure.
+
+        # Good Friday.
         self._add_good_friday("Good Friday")
 
         # Memorial Day.
