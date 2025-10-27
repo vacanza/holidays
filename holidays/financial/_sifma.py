@@ -84,7 +84,7 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         if self._year >= 2021:
             self._move_holiday(self._add_holiday_jun_19("Juneteenth National Independence Day"))
 
-        # Independence Day (July 4).
+        # Independence Day.
         self._move_holiday(self._add_holiday_jul_4("Independence Day"))
 
         # Labor Day (1st Monday of September).
