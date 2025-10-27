@@ -55,14 +55,11 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # New Year's Day.
         self._move_holiday(self._add_new_years_day("New Year's Day"))
 
-        # Martin Luther King Jr. Day (3rd Monday of January).
-        # Established as federal holiday in 1986, bond markets observed since 1998.
+        # Martin Luther King Jr. Day.
         if self._year >= 1998:
             self._add_holiday_3rd_mon_of_jan("Martin Luther King Jr. Day")
 
-        # Washington's Birthday (Presidents Day).
-        # Observed on February 22 until 1970, then moved to 3rd Monday of February
-        # starting in 1971 by the Uniform Monday Holiday Act.
+        # Washington's Birthday.
         name = "Washington's Birthday"
         if self._year >= 1971:
             self._add_holiday_3rd_mon_of_feb(name)
@@ -75,8 +72,6 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         self._add_good_friday("Good Friday")
 
         # Memorial Day.
-        # Observed on May 30 until 1970, then moved to last Monday of May
-        # starting in 1971 by the Uniform Monday Holiday Act.
         name = "Memorial Day"
         if self._year >= 1971:
             self._add_holiday_last_mon_of_may(name)
@@ -84,7 +79,6 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             self._move_holiday(self._add_holiday_may_30(name))
 
         # Juneteenth National Independence Day.
-        # Established as federal holiday in 2021, bond markets observed since 2021.
         if self._year >= 2021:
             self._move_holiday(self._add_holiday_jun_19("Juneteenth National Independence Day"))
 
@@ -95,8 +89,6 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         self._add_holiday_1st_mon_of_sep("Labor Day")
 
         # Columbus Day.
-        # Observed on October 12 until 1970, then moved to 2nd Monday of October
-        # starting in 1971 by the Uniform Monday Holiday Act.
         name = "Columbus Day"
         if self._year >= 1971:
             self._add_holiday_2nd_mon_of_oct(name)
@@ -104,9 +96,6 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             self._move_holiday(self._add_holiday_oct_12(name))
 
         # Veterans Day.
-        # Observed on November 11, except from 1971-1977 when it was moved to
-        # 4th Monday of October by the Uniform Monday Holiday Act, then returned
-        # to November 11 in 1978.
         name = "Veterans Day"
         if 1971 <= self._year <= 1977:
             self._add_holiday_4th_mon_of_oct(name)
@@ -120,44 +109,40 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         self._move_holiday(self._add_christmas_day("Christmas Day"))
 
     def _populate_half_day_holidays(self):
+        begin_time_label = "Markets close at 2:00 PM ET (%s)"
+
         # Day before New Year's Day.
         # Apply SIFMA_EARLY_CLOSE rule to next year's January 1.
         jan_1_next = date(self._year + 1, 1, 1)
         early_close_nye = self._get_observed_date(jan_1_next, rule=SIFMA_EARLY_CLOSE)
         if early_close_nye and early_close_nye.year == self._year:
-            self._add_holiday("Markets close at 2:00 PM ET (New Year's Day)", early_close_nye)
+            self._add_holiday(begin_time_label % "New Year's Day", early_close_nye)
 
         # Day before Good Friday (Maundy Thursday).
-        self._add_holy_thursday("Markets close at 2:00 PM ET (Good Friday)")
+        self._add_holy_thursday(begin_time_label % "Good Friday")
 
         # Friday before Memorial Day.
         # Pre-1971: Memorial Day was May 30, so calculate early close from May 30.
         # 1971+: Memorial Day is last Monday of May, so 3 days prior.
         if self._year >= 1971:
-            self._add_holiday_3_days_prior_last_mon_of_may(
-                "Markets close at 2:00 PM ET (Memorial Day)"
-            )
+            self._add_holiday_3_days_prior_last_mon_of_may(begin_time_label % "Memorial Day")
         else:
             # Calculate early close based on May 30
             may_30 = date(self._year, MAY, 30)
             early_close_memorial = self._get_observed_date(may_30, rule=SIFMA_EARLY_CLOSE)
-            self._add_holiday(
-                "Markets close at 2:00 PM ET (Memorial Day)", early_close_memorial
-            )
+            self._add_holiday(begin_time_label % "Memorial Day", early_close_memorial)
 
         # Day before Independence Day.
         # Uses custom observed rule to calculate early close based on holiday date.
         jul_4 = date(self._year, JUL, 4)
         early_close_jul_4 = self._get_observed_date(jul_4, rule=SIFMA_EARLY_CLOSE)
-        self._add_holiday("Markets close at 2:00 PM ET (Independence Day)", early_close_jul_4)
+        self._add_holiday(begin_time_label % "Independence Day", early_close_jul_4)
 
         # Day after Thanksgiving (Black Friday).
-        self._add_holiday_1_day_past_4th_thu_of_nov(
-            "Markets close at 2:00 PM ET (Thanksgiving Day)"
-        )
+        self._add_holiday_1_day_past_4th_thu_of_nov(begin_time_label % "Thanksgiving Day")
 
         # Day before Christmas.
         # Uses custom observed rule to calculate early close based on holiday date.
         dec_25 = date(self._year, DEC, 25)
         early_close_christmas = self._get_observed_date(dec_25, rule=SIFMA_EARLY_CLOSE)
-        self._add_holiday("Markets close at 2:00 PM ET (Christmas Day)", early_close_christmas)
+        self._add_holiday(begin_time_label % "Christmas Day", early_close_christmas)
