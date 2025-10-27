@@ -141,8 +141,8 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Day after Thanksgiving Day.
         self._add_holiday_1_day_past_4th_thu_of_nov(begin_time_label % "Thanksgiving Day")
 
-        # Day before Christmas.
-        # Uses custom observed rule to calculate early close based on holiday date.
-        dec_25 = date(self._year, DEC, 25)
-        early_close_christmas = self._get_observed_date(dec_25, rule=SIFMA_EARLY_CLOSE)
-        self._add_holiday(begin_time_label % "Christmas Day", early_close_christmas)
+        # Day before Christmas Day.
+        self._add_holiday(
+            begin_time_label % "Christmas Day",
+            self._get_observed_date(self._christmas_day, rule=SIFMA_EARLY_CLOSE),
+        )
