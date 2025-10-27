@@ -138,7 +138,7 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             self._get_observed_date(date(self._year, JUL, 4), rule=SIFMA_EARLY_CLOSE),
         )
 
-        # Day after Thanksgiving (Black Friday).
+        # Day after Thanksgiving Day.
         self._add_holiday_1_day_past_4th_thu_of_nov(begin_time_label % "Thanksgiving Day")
 
         # Day before Christmas.
