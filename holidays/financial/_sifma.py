@@ -115,7 +115,7 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Apply SIFMA_EARLY_CLOSE rule to next year's January 1.
         jan_1_next = date(self._year + 1, 1, 1)
         early_close_nye = self._get_observed_date(jan_1_next, rule=SIFMA_EARLY_CLOSE)
-        if early_close_nye and early_close_nye.year == self._year:
+        if early_close_nye:
             self._add_holiday(begin_time_label % "New Year's Day", early_close_nye)
 
         # Day before Good Friday (Maundy Thursday).
