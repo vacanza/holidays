@@ -122,16 +122,15 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Day before Good Friday.
         self._add_holy_thursday(begin_time_label % "Good Friday")
 
-        # Friday before Memorial Day.
-        # Pre-1971: Memorial Day was May 30, so calculate early close from May 30.
-        # 1971+: Memorial Day is last Monday of May, so 3 days prior.
+        # Day before Memorial Day.
+        name = begin_time_label % "Memorial Day"
         if self._year >= 1971:
-            self._add_holiday_3_days_prior_last_mon_of_may(begin_time_label % "Memorial Day")
+            self._add_holiday_3_days_prior_last_mon_of_may(name)
         else:
-            # Calculate early close based on May 30
-            may_30 = date(self._year, MAY, 30)
-            early_close_memorial = self._get_observed_date(may_30, rule=SIFMA_EARLY_CLOSE)
-            self._add_holiday(begin_time_label % "Memorial Day", early_close_memorial)
+            self._add_holiday(
+                name,
+                self._get_observed_date(date(self._year, MAY, 30), rule=SIFMA_EARLY_CLOSE),
+            )
 
         # Day before Independence Day.
         # Uses custom observed rule to calculate early close based on holiday date.
