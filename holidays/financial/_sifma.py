@@ -55,7 +55,9 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._move_holiday(self._add_new_years_day("New Year's Day"))
+        name = "New Year's Day"
+        self._move_holiday(self._add_new_years_day(name))
+        self._add_observed(self._next_year_new_years_day, name=name, show_observed_label=False)
 
         # Martin Luther King Jr. Day.
         if self._year >= 1998:
