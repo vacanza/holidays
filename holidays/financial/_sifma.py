@@ -95,7 +95,7 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         if self._year >= 1971:
             self._add_holiday_2nd_mon_of_oct(name)
         else:
-            self._move_holiday(self._add_holiday_oct_12(name))
+            self._move_holiday(self._add_columbus_day(name))
 
         # Veterans Day.
         name = "Veterans Day"
