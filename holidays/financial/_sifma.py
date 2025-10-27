@@ -133,10 +133,10 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             )
 
         # Day before Independence Day.
-        # Uses custom observed rule to calculate early close based on holiday date.
-        jul_4 = date(self._year, JUL, 4)
-        early_close_jul_4 = self._get_observed_date(jul_4, rule=SIFMA_EARLY_CLOSE)
-        self._add_holiday(begin_time_label % "Independence Day", early_close_jul_4)
+        self._add_holiday(
+            begin_time_label % "Independence Day",
+            self._get_observed_date(date(self._year, JUL, 4), rule=SIFMA_EARLY_CLOSE),
+        )
 
         # Day after Thanksgiving (Black Friday).
         self._add_holiday_1_day_past_4th_thu_of_nov(begin_time_label % "Thanksgiving Day")
