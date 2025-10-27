@@ -36,11 +36,9 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
     (HALF_DAY category).
 
     References:
-        * <https://www.sifma.org/resources/general/holiday-schedule/>
         * <https://web.archive.org/web/20250210040000/https://www.sifma.org/resources/general/holiday-schedule/>
-
-    Historical references:
-        * <https://web.archive.org/web/20250210040000/https://www.sifma.org/resources/general/us-holiday-archive/>
+        * [2015-2024](https://web.archive.org/web/20250210040000/https://www.sifma.org/resources/general/us-holiday-archive/)
+        * [1996-2017](https://web.archive.org/web/20221206175502/https://www.sifma.org/wp-content/uploads/2017/06/misc-us-historical-holiday-market-recommendations-sifma.pdf)
     """
 
     observed_label = "%s (observed)"
