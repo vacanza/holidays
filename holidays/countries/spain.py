@@ -68,7 +68,7 @@ class Spain(
             * [2025](https://web.archive.org/web/20250622235218/https://www.lexnavarra.navarra.es/detalle.asp?r=57122)
             * [2026](https://web.archive.org/web/20251028120003/https://www.lexnavarra.navarra.es/detalle.asp?r=57937)
 
-    Holidays checked with official sources for 2010-2025 only.
+    Holidays checked with official sources for 2010-2026 only.
     """
 
     country = "ES"
