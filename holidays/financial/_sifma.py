@@ -109,7 +109,7 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Thanksgiving Day.
         self._add_holiday_4th_thu_of_nov("Thanksgiving Day")
 
-        # Christmas Day (December 25).
+        # Christmas Day.
         self._move_holiday(self._add_christmas_day("Christmas Day"))
 
     def _populate_half_day_holidays(self):
