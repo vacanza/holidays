@@ -106,7 +106,7 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         else:
             self._move_holiday(self._add_remembrance_day(name))
 
-        # Thanksgiving Day (4th Thursday of November).
+        # Thanksgiving Day.
         self._add_holiday_4th_thu_of_nov("Thanksgiving Day")
 
         # Christmas Day (December 25).
