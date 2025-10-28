@@ -10,10 +10,22 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.financial._sifma import SIFMAHolidays
+from datetime import date
+
+from holidays.calendars.gregorian import MAY, JUL, MON, TUE, WED, THU, FRI, SAT, SUN
+from holidays.constants import HALF_DAY, PUBLIC
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    ObservedRule,
+    SAT_TO_PREV_FRI,
+    SUN_TO_NEXT_MON,
+)
+
+SIFMA_EARLY_CLOSE = ObservedRule({MON: -3, TUE: -1, WED: -1, THU: -1, FRI: -1, SAT: -2, SUN: -2})
 
 
-class USNewYork(SIFMAHolidays):
+class USNewYork(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """US New York (USNY) financial market holidays.
 
     The USNY calendar represents general "New York business days" used in financial contracts
@@ -36,37 +48,110 @@ class USNewYork(SIFMAHolidays):
     References:
         * <https://www.sifma.org/resources/general/holiday-schedule/>
         * <https://web.archive.org/web/20250210040000/https://www.sifma.org/resources/general/holiday-schedule/>
+        * [2015-2024](https://web.archive.org/web/20250210040000/https://www.sifma.org/resources/general/us-holiday-archive/)
+        * [1996-2017](https://web.archive.org/web/20221206175502/https://www.sifma.org/wp-content/uploads/2017/06/misc-us-historical-holiday-market-recommendations-sifma.pdf)
         * <https://strata.opengamma.io/apidocs/com/opengamma/strata/basics/date/HolidayCalendarIds.html>
         * <https://github.com/OpenGamma/Strata/blob/main/modules/basics/src/main/java/com/opengamma/strata/basics/date/GlobalHolidayCalendars.java>
-
-    Historical references:
-        * <https://web.archive.org/web/20250210040000/https://www.sifma.org/resources/general/us-holiday-archive/>
     """
 
     market = "USNY"
+    observed_label = "%s (observed)"
+    supported_categories = (HALF_DAY, PUBLIC)
+    start_year = 1950
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Call parent to get all SIFMA holidays
-        super()._populate_public_holidays()
+        # New Year's Day.
+        name = "New Year's Day"
+        self._move_holiday(self._add_new_years_day(name))
+        self._add_observed(self._next_year_new_years_day, name=name, show_observed_label=False)
 
-        # Remove Good Friday from USNY calendar.
-        # USNY includes Columbus Day and Veterans Day (unlike NYSE which doesn't observe these
-        # in modern times), but does NOT include Good Friday (unlike both NYSE and USGS which do).
-        # This follows the OpenGamma Strata implementation for general New York business days.
-        self._remove_holiday_by_name("Good Friday")
+        # Martin Luther King Jr. Day.
+        if self._year >= 1998:
+            self._add_holiday_3rd_mon_of_jan("Martin Luther King Jr. Day")
+
+        # Washington's Birthday.
+        name = "Washington's Birthday"
+        if self._year >= 1971:
+            self._add_holiday_3rd_mon_of_feb(name)
+        else:
+            self._move_holiday(self._add_holiday_feb_22(name))
+
+        # Memorial Day.
+        name = "Memorial Day"
+        if self._year >= 1971:
+            self._add_holiday_last_mon_of_may(name)
+        else:
+            self._move_holiday(self._add_holiday_may_30(name))
+
+        # Juneteenth National Independence Day.
+        if self._year >= 2021:
+            self._move_holiday(self._add_holiday_jun_19("Juneteenth National Independence Day"))
+
+        # Independence Day (July 4).
+        self._move_holiday(self._add_holiday_jul_4("Independence Day"))
+
+        # Labor Day (1st Monday of September).
+        self._add_holiday_1st_mon_of_sep("Labor Day")
+
+        # Columbus Day.
+        name = "Columbus Day"
+        if self._year >= 1971:
+            self._add_holiday_2nd_mon_of_oct(name)
+        else:
+            self._move_holiday(self._add_columbus_day(name))
+
+        # Veterans Day.
+        name = "Veterans Day"
+        if 1971 <= self._year <= 1977:
+            self._add_holiday_4th_mon_of_oct(name)
+        else:
+            self._move_holiday(self._add_remembrance_day(name))
+
+        # Thanksgiving Day (4th Thursday of November).
+        self._add_holiday_4th_thu_of_nov("Thanksgiving Day")
+
+        # Christmas Day (December 25).
+        self._move_holiday(self._add_christmas_day("Christmas Day"))
 
     def _populate_half_day_holidays(self):
-        # Call parent to get all SIFMA early close days
-        super()._populate_half_day_holidays()
+        begin_time_label = "Markets close at 2:00 PM ET (%s)"
 
-        # Remove early close before Good Friday since USNY does not observe Good Friday.
-        self._remove_holiday_by_name("Markets close at 2:00 PM ET (Good Friday)")
+        # Day before New Year's Day.
+        self._add_holiday(
+            begin_time_label % "New Year's Day",
+            self._get_observed_date(self._next_year_new_years_day, rule=SIFMA_EARLY_CLOSE),
+        )
 
-    def _remove_holiday_by_name(self, name):
-        """Remove all holidays with the given name."""
-        dates_to_remove = [dt for dt, holiday_name in self.items() if holiday_name == name]
-        for dt in dates_to_remove:
-            self.pop(dt)
+        # Day before Memorial Day.
+        name = begin_time_label % "Memorial Day"
+        if self._year >= 1971:
+            self._add_holiday_3_days_prior_last_mon_of_may(name)
+        else:
+            self._add_holiday(
+                name,
+                self._get_observed_date(date(self._year, MAY, 30), rule=SIFMA_EARLY_CLOSE),
+            )
+
+        # Day before Independence Day.
+        self._add_holiday(
+            begin_time_label % "Independence Day",
+            self._get_observed_date(date(self._year, JUL, 4), rule=SIFMA_EARLY_CLOSE),
+        )
+
+        # Day after Thanksgiving Day.
+        self._add_holiday_1_day_past_4th_thu_of_nov(begin_time_label % "Thanksgiving Day")
+
+        # Day before Christmas Day.
+        self._add_holiday(
+            begin_time_label % "Christmas Day",
+            self._get_observed_date(self._christmas_day, rule=SIFMA_EARLY_CLOSE),
+        )
 
 
 class USNY(USNewYork):
