@@ -96,7 +96,7 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             self._add_holiday_2nd_mon_of_oct(tr("Dag van de Constitutie"))
 
         # Sint Maarten Day.
-        self._add_holiday_nov_11(tr("Sint-Maartensdag"))
+        self._add_saint_martins_day(tr("Sint-Maartensdag"))
 
         # Replaced by Constitution Day on October 2nd, 2015.
         if self._year <= 2014:
