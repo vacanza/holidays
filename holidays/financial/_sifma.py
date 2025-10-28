@@ -89,7 +89,7 @@ class SIFMAHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Independence Day.
         self._move_holiday(self._add_holiday_jul_4("Independence Day"))
 
-        # Labor Day (1st Monday of September).
+        # Labor Day.
         self._add_holiday_1st_mon_of_sep("Labor Day")
 
         # Columbus Day.
