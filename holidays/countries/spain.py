@@ -20,7 +20,7 @@ from holidays.groups import (
     InternationalHolidays,
     StaticHolidays,
 )
-from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NONE
 
 
 class Spain(
@@ -29,7 +29,7 @@ class Spain(
     """Spain holidays.
 
     References:
-        * <https://web.archive.org/web/20250407130530/https://administracion.gob.es/pag_Home/atencionCiudadana/calendarios.html>
+        * <https://web.archive.org/web/20230307043804/https://administracion.gob.es/pag_Home/atencionCiudadana/calendarios.html>
         * [2010](https://web.archive.org/web/20250427181827/https://www.boe.es/buscar/doc.php?id=BOE-A-2009-18477)
         * [2011](https://web.archive.org/web/20231121065830/https://www.boe.es/buscar/doc.php?id=BOE-A-2010-15722)
         * [2012](https://web.archive.org/web/20250427181838/https://www.boe.es/buscar/doc.php?id=BOE-A-2011-16116)
@@ -79,6 +79,8 @@ class Spain(
     observed_estimated_label = tr("Lunes siguiente a %s (estimado)")
     # Monday following %s.
     observed_label = tr("Lunes siguiente a %s")
+    # Earliest available online sources for all of Spain's subdivisions.
+    start_year = 2010
     subdivisions = (
         "AN",  # Andalucía.
         "AR",  # Aragón.
@@ -142,178 +144,162 @@ class Spain(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year not in {2012, 2017, 2023}:
-            # New Year's Day.
-            self._add_new_years_day(tr("Año Nuevo"))
+        # New Year's Day.
+        self._add_observed(self._add_new_years_day(tr("Año Nuevo")), rule=SUN_TO_NONE)
 
-        if self._year not in {2013, 2019}:
-            # Epiphany.
-            self._add_epiphany_day(tr("Epifanía del Señor"))
+        # Epiphany.
+        self._add_observed(self._add_epiphany_day(tr("Epifanía del Señor")), rule=SUN_TO_NONE)
 
         # Good Friday.
         self._add_good_friday(tr("Viernes Santo"))
 
-        if self._year not in {2011, 2016, 2022}:
-            # Labor Day.
-            self._add_labor_day(tr("Fiesta del Trabajo"))
+        # Labor Day.
+        self._add_observed(self._add_labor_day(tr("Fiesta del Trabajo")), rule=SUN_TO_NONE)
 
-        if self._year not in {2010, 2021}:
+        self._add_observed(
             # Assumption Day.
-            self._add_assumption_of_mary_day(tr("Asunción de la Virgen"))
+            self._add_assumption_of_mary_day(tr("Asunción de la Virgen")),
+            rule=SUN_TO_NONE,
+        )
 
-        if self._year not in {2014, 2025}:
+        self._add_observed(
             # National Day.
-            self._add_holiday_oct_12(tr("Fiesta Nacional de España"))
+            self._add_holiday_oct_12(tr("Fiesta Nacional de España")),
+            rule=SUN_TO_NONE,
+        )
 
-        if self._year not in {2015, 2020, 2026}:
-            # All Saints' Day.
-            self._add_all_saints_day(tr("Todos los Santos"))
+        # All Saints' Day.
+        self._add_observed(self._add_all_saints_day(tr("Todos los Santos")), rule=SUN_TO_NONE)
 
+        self._add_observed(
             # Constitution Day.
-            self._add_holiday_dec_6(tr("Día de la Constitución Española"))
+            self._add_holiday_dec_6(tr("Día de la Constitución Española")),
+            rule=SUN_TO_NONE,
+        )
 
-        if self._year not in {2013, 2019, 2024}:
+        self._add_observed(
             # Immaculate Conception.
-            self._add_immaculate_conception_day(tr("Inmaculada Concepción"))
+            self._add_immaculate_conception_day(tr("Inmaculada Concepción")),
+            rule=SUN_TO_NONE,
+        )
 
-        if self._year not in {2011, 2016, 2022}:
-            # Christmas Day.
-            self._add_christmas_day(tr("Natividad del Señor"))
+        # Christmas Day.
+        self._add_observed(self._add_christmas_day(tr("Natividad del Señor")), rule=SUN_TO_NONE)
 
-    def _populate_subdiv_an_public_holidays(self):
-        if self._year in {2012, 2017, 2023}:
+    def _populate_subdiv_holidays(self):
+        # 2012, 2017, 2023.
+        if (
+            (self.subdiv in {"CE", "EX"} and self._year == 2012)
+            or (self.subdiv == "ML" and self._year == 2017)
+            or (self.subdiv in {"CL", "MC"} and self._year >= 2017)
+            or (self.subdiv in {"AN", "AR", "AS"})
+        ):
             # New Year's Day.
             self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
 
-        if self._year in {2013, 2019}:
+        # 2013, 2019.
+        if (self.subdiv in {"CB", "CM"} and self._year == 2013) or (
+            self.subdiv in {"AN", "AR", "AS", "CE", "CL", "CN", "EX", "MC", "MD", "ML", "NC"}
+        ):
             # Epiphany.
             self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
 
+        # 2011, 2016, 2022.
+        if (
+            (self.subdiv in {"CB", "CE", "VC"} and self._year == 2011)
+            or (self.subdiv == "CN" and self._year == 2016)
+            or (self.subdiv == "CL" and self._year >= 2016)
+            or (self.subdiv == "MC" and (self._year <= 2011 or self._year >= 2022))
+            or (self.subdiv in {"AN", "AR", "AS", "EX"})
+        ):
+            # Labor Day.
+            self._move_holiday(self._add_labor_day(tr("Fiesta del Trabajo")))
+
+        # 2010, 2021.
+        if (self.subdiv in {"CL", "CN"} and self._year >= 2021) or (
+            self.subdiv in {"AN", "AR", "AS"}
+        ):
+            # Assumption Day.
+            self._move_holiday(self._add_assumption_of_mary_day(tr("Asunción de la Virgen")))
+
+        # 2014, 2025.
+        if (self.subdiv == "CE" and self._year == 2014) or (
+            self.subdiv in {"AN", "AR", "AS", "CL", "EX"}
+        ):
+            # National Day.
+            self._move_holiday(self._add_holiday_oct_12(tr("Fiesta Nacional de España")))
+
+        # 2015, 2020, 2026.
+        if (
+            (self.subdiv in {"CB", "CE", "GA", "IB"} and self._year == 2015)
+            or (self.subdiv == "MD" and self._year >= 2020)
+            or (self.subdiv in {"CM", "NC"} and self._year >= 2026)
+            or (self.subdiv == "CN" and (self._year <= 2015 or self._year >= 2026))
+            or (self.subdiv in {"AN", "AR", "AS", "CL", "EX"})
+        ):
+            # All Saints' Day.
+            self._move_holiday(self._add_all_saints_day(tr("Todos los Santos")))
+
+        # 2015, 2020, 2026.
+        if (
+            (self.subdiv in {"CM", "VC"} and self._year == 2015)
+            or (self.subdiv in {"CN", "NC"} and self._year == 2020)
+            or (self.subdiv in {"CE", "IB"} and self._year <= 2020)
+            or (self.subdiv == "MD" and self._year >= 2020)
+            or (self.subdiv == "CB" and self._year >= 2026)
+            or (self.subdiv in {"AN", "AR", "AS", "CL", "EX", "MC", "ML", "RI"})
+        ):
+            # Constitution Day.
+            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
+
+        # 2013, 2019, 2024.
+        if (
+            (self.subdiv == "CE" and self._year == 2013)
+            or (self.subdiv in {"CB", "MD"} and self._year == 2019)
+            or (self.subdiv == "RI" and self._year <= 2019)
+            or (self.subdiv == "ML" and self._year >= 2019)
+            or (self.subdiv == "MC" and (self._year <= 2013 or self._year >= 2024))
+            or (self.subdiv in {"AN", "AR", "AS", "CL", "EX"})
+        ):
+            # Immaculate Conception.
+            self._move_holiday(self._add_immaculate_conception_day(tr("Inmaculada Concepción")))
+
+        # 2011, 2016, 2022.
+        if (
+            (self.subdiv == "VC" and self._year == 2016)
+            or (self.subdiv == "CE" and self._year <= 2016)
+            or (self.subdiv in {"CB", "CM", "MC", "MD"} and self._year >= 2016)
+            or (self.subdiv == "RI" and self._year >= 2022)
+            or (self.subdiv == "CN" and (self._year <= 2011 or self._year >= 2022))
+            or (self.subdiv in {"AN", "AR", "AS", "CL", "EX", "IB", "ML", "NC"})
+        ):
+            # Christmas Day.
+            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
+
+        super()._populate_subdiv_holidays()
+
+    def _populate_subdiv_an_public_holidays(self):
         # Andalusia Day.
         self._move_holiday(self._add_holiday_feb_28(tr("Día de Andalucía")))
 
         # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))
 
-        if self._year in {2011, 2016, 2022}:
-            # Labor Day.
-            self._move_holiday(self._add_labor_day(tr("Fiesta del Trabajo")))
-
-        if self._year in {2010, 2021}:
-            # Assumption Day.
-            self._move_holiday(self._add_assumption_of_mary_day(tr("Asunción de la Virgen")))
-
-        if self._year in {2014, 2025}:
-            # National Day.
-            self._move_holiday(self._add_holiday_oct_12(tr("Fiesta Nacional de España")))
-
-        if self._year in {2015, 2020, 2026}:
-            # All Saints' Day.
-            self._move_holiday(self._add_all_saints_day(tr("Todos los Santos")))
-
-        if self._year in {2015, 2020, 2026}:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year in {2013, 2019, 2024}:
-            # Immaculate Conception.
-            self._move_holiday(self._add_immaculate_conception_day(tr("Inmaculada Concepción")))
-
-        if self._year in {2011, 2016, 2022}:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
-
     def _populate_subdiv_ar_public_holidays(self):
-        if self._year in {2012, 2017, 2023}:
-            # New Year's Day.
-            self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
-
-        if self._year in {2013, 2019}:
-            # Epiphany.
-            self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
-
         # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))
 
         # Saint George's Day.
         self._move_holiday(self._add_saint_georges_day(tr("Día de San Jorge")))
 
-        if self._year in {2011, 2016, 2022}:
-            # Labor Day.
-            self._move_holiday(self._add_labor_day(tr("Fiesta del Trabajo")))
-
-        if self._year in {2010, 2021}:
-            # Assumption Day.
-            self._move_holiday(self._add_assumption_of_mary_day(tr("Asunción de la Virgen")))
-
-        if self._year in {2014, 2025}:
-            # National Day.
-            self._move_holiday(self._add_holiday_oct_12(tr("Fiesta Nacional de España")))
-
-        if self._year in {2015, 2020, 2026}:
-            # All Saints' Day.
-            self._move_holiday(self._add_all_saints_day(tr("Todos los Santos")))
-
-        if self._year in {2015, 2020, 2026}:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year in {2013, 2019, 2024}:
-            # Immaculate Conception.
-            self._move_holiday(self._add_immaculate_conception_day(tr("Inmaculada Concepción")))
-
-        if self._year in {2011, 2016, 2022}:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
-
     def _populate_subdiv_as_public_holidays(self):
-        if self._year in {2012, 2017, 2023}:
-            # New Year's Day.
-            self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
-
-        if self._year in {2013, 2019}:
-            # Epiphany.
-            self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
-
         # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))
-
-        if self._year in {2011, 2016, 2022}:
-            # Labor Day.
-            self._move_holiday(self._add_labor_day(tr("Fiesta del Trabajo")))
-
-        if self._year in {2010, 2021}:
-            # Assumption Day.
-            self._move_holiday(self._add_assumption_of_mary_day(tr("Asunción de la Virgen")))
 
         # Asturias Day.
         self._move_holiday(self._add_holiday_sep_8(tr("Día de Asturias")))
 
-        if self._year in {2014, 2025}:
-            # National Day.
-            self._move_holiday(self._add_holiday_oct_12(tr("Fiesta Nacional de España")))
-
-        if self._year in {2015, 2020, 2026}:
-            # All Saints' Day.
-            self._move_holiday(self._add_all_saints_day(tr("Todos los Santos")))
-
-        if self._year in {2015, 2020, 2026}:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year in {2013, 2019, 2024}:
-            # Immaculate Conception.
-            self._move_holiday(self._add_immaculate_conception_day(tr("Inmaculada Concepción")))
-
-        if self._year in {2011, 2016, 2022}:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
-
     def _populate_subdiv_cb_public_holidays(self):
-        if self._year == 2013:
-            # Epiphany.
-            self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
-
         if self._year != 2018:
             # Maundy Thursday.
             self._add_holy_thursday(tr("Jueves Santo"))
@@ -321,10 +307,6 @@ class Spain(
         if self._year in {2013, 2015, 2019, 2020, 2024}:
             # Easter Monday.
             self._add_easter_monday(tr("Lunes de Pascua"))
-
-        if self._year == 2011:
-            # Labor Day.
-            self._move_holiday(self._add_labor_day(tr("Fiesta del Trabajo")))
 
         if self._year in {2012, 2013, 2014, 2019, 2024}:
             # Saint James' Day.
@@ -338,37 +320,9 @@ class Spain(
             # Our Lady of Bien Aparecida.
             self._add_holiday_sep_15(tr("La Bien Aparecida"))
 
-        if self._year == 2015:
-            # All Saints' Day.
-            self._move_holiday(self._add_all_saints_day(tr("Todos los Santos")))
-
-        if self._year == 2026:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year == 2019:
-            # Immaculate Conception.
-            self._move_holiday(self._add_immaculate_conception_day(tr("Inmaculada Concepción")))
-
-        if self._year in {2016, 2022}:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
-
     def _populate_subdiv_ce_public_holidays(self):
-        if self._year == 2012:
-            # New Year's Day.
-            self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
-
-        if self._year in {2013, 2019}:
-            # Epiphany.
-            self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
-
         # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))
-
-        if self._year == 2011:
-            # Labor Day.
-            self._move_holiday(self._add_labor_day(tr("Fiesta del Trabajo")))
 
         if self._year >= 2022:
             # Santa Maria of Africa.
@@ -378,44 +332,16 @@ class Spain(
             # Ceuta Day.
             self._add_holiday_sep_2(tr("Día de Ceuta"))
 
-        if self._year == 2014:
-            # National Day.
-            self._move_holiday(self._add_holiday_oct_12(tr("Fiesta Nacional de España")))
-
-        if self._year == 2015:
-            # All Saints' Day.
-            self._move_holiday(self._add_all_saints_day(tr("Todos los Santos")))
-
-        if self._year in {2015, 2020}:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year == 2013:
-            # Immaculate Conception.
-            self._move_holiday(self._add_immaculate_conception_day(tr("Inmaculada Concepción")))
-
-        if self._year in {2011, 2016}:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
-
         # Eid al-Adha.
         name = tr("Fiesta del Sacrificio-Eidul Adha")
         if self._year == 2011:
             self._add_eid_al_adha_day_two(name)
         elif self._year in {2012, 2014}:
             self._add_eid_al_adha_day_three(name)
-        elif self._year >= 2010:
+        else:
             self._add_eid_al_adha_day(name)
 
     def _populate_subdiv_cl_public_holidays(self):
-        if self._year in {2017, 2023}:
-            # New Year's Day.
-            self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
-
-        if self._year in {2013, 2019}:
-            # Epiphany.
-            self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
-
         if self._year in {2010, 2012}:
             # Saint Joseph's Day.
             self._add_saint_josephs_day(tr("San José"))
@@ -427,43 +353,11 @@ class Spain(
             # Castile and León Day.
             self._move_holiday(self._add_holiday_apr_23(tr("Fiesta de Castilla y León")))
 
-        if self._year in {2016, 2022}:
-            # Labor Day.
-            self._move_holiday(self._add_labor_day(tr("Fiesta del Trabajo")))
-
         if self._year in {2011, 2023}:
             # Saint James' Day.
             self._add_saint_james_day(tr("Santiago Apóstol"))
 
-        if self._year == 2021:
-            # Assumption Day.
-            self._move_holiday(self._add_assumption_of_mary_day(tr("Asunción de la Virgen")))
-
-        if self._year in {2014, 2025}:
-            # National Day.
-            self._move_holiday(self._add_holiday_oct_12(tr("Fiesta Nacional de España")))
-
-        if self._year in {2015, 2020, 2026}:
-            # All Saints' Day.
-            self._move_holiday(self._add_all_saints_day(tr("Todos los Santos")))
-
-        if self._year in {2015, 2020, 2026}:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year in {2013, 2019, 2024}:
-            # Immaculate Conception.
-            self._move_holiday(self._add_immaculate_conception_day(tr("Inmaculada Concepción")))
-
-        if self._year in {2011, 2016, 2022}:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
-
     def _populate_subdiv_cm_public_holidays(self):
-        if self._year == 2013:
-            # Epiphany.
-            self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
-
         if self._year in {2010, 2011, 2020}:
             # Saint Joseph's Day.
             self._add_saint_josephs_day(tr("San José"))
@@ -483,49 +377,13 @@ class Spain(
             # Castilla-La Mancha Day.
             self._add_holiday_may_31(tr("Día de Castilla-La Mancha"))
 
-        if self._year == 2026:
-            # All Saints' Day.
-            self._move_holiday(self._add_all_saints_day(tr("Todos los Santos")))
-
-        if self._year == 2015:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year in {2016, 2022}:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
-
     def _populate_subdiv_cn_public_holidays(self):
-        if self._year in {2013, 2019}:
-            # Epiphany.
-            self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
-
         # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))
-
-        if self._year == 2016:
-            # Labor Day.
-            self._move_holiday(self._add_labor_day(tr("Fiesta del Trabajo")))
 
         if self._year != 2021:
             # Day of the Canary Islands.
             self._move_holiday(self._add_holiday_may_30(tr("Día de Canarias")))
-
-        if self._year == 2021:
-            # Assumption Day.
-            self._move_holiday(self._add_assumption_of_mary_day(tr("Asunción de la Virgen")))
-
-        if self._year in {2015, 2026}:
-            # All Saints' Day.
-            self._move_holiday(self._add_all_saints_day(tr("Todos los Santos")))
-
-        if self._year == 2020:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year in {2011, 2022}:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
 
     def _populate_subdiv_ct_public_holidays(self):
         # Easter Monday.
@@ -548,14 +406,6 @@ class Spain(
             self._add_christmas_day_two(tr("San Esteban"))
 
     def _populate_subdiv_ex_public_holidays(self):
-        if self._year == 2012:
-            # New Year's Day.
-            self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
-
-        if self._year in {2013, 2019}:
-            # Epiphany.
-            self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
-
         if self._year in {2023, 2024}:
             # Shrove Tuesday.
             self._add_carnival_tuesday(tr("Martes de Carnaval"))
@@ -567,33 +417,9 @@ class Spain(
         # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))
 
-        if self._year in {2011, 2016, 2022}:
-            # Labor Day.
-            self._move_holiday(self._add_labor_day(tr("Fiesta del Trabajo")))
-
         if self._year != 2024:
             # Extremadura Day.
             self._move_holiday(self._add_holiday_sep_8(tr("Día de Extremadura")))
-
-        if self._year in {2014, 2025}:
-            # National Day.
-            self._move_holiday(self._add_holiday_oct_12(tr("Fiesta Nacional de España")))
-
-        if self._year in {2015, 2020, 2026}:
-            # All Saints' Day.
-            self._move_holiday(self._add_all_saints_day(tr("Todos los Santos")))
-
-        if self._year in {2015, 2020, 2026}:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year in {2013, 2019, 2024}:
-            # Immaculate Conception.
-            self._move_holiday(self._add_immaculate_conception_day(tr("Inmaculada Concepción")))
-
-        if self._year in {2011, 2016, 2022}:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
 
     def _populate_subdiv_ga_public_holidays(self):
         if self._year in {2010, 2011, 2026} or 2019 <= self._year <= 2021:
@@ -615,10 +441,6 @@ class Spain(
             # Galician National Day.
             self._add_holiday_jul_25(tr("Día Nacional de Galicia"))
 
-        if self._year == 2015:
-            # All Saints' Day.
-            self._move_holiday(self._add_all_saints_day(tr("Todos los Santos")))
-
     def _populate_subdiv_ib_public_holidays(self):
         if self._year not in {2015, 2020}:
             # Day of the Balearic Islands.
@@ -633,31 +455,11 @@ class Spain(
             # Easter Monday.
             self._add_easter_monday(tr("Lunes de Pascua"))
 
-        if self._year == 2015:
-            # All Saints' Day.
-            self._move_holiday(self._add_all_saints_day(tr("Todos los Santos")))
-
-        if self._year in {2015, 2020}:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year in {2011, 2016, 2022}:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
-
         if self._year in {2013, 2014, 2019, 2020, 2025, 2026}:
             # Saint Stephen's Day.
             self._add_christmas_day_two(tr("San Esteban"))
 
     def _populate_subdiv_mc_public_holidays(self):
-        if self._year in {2017, 2023}:
-            # New Year's Day.
-            self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
-
-        if self._year in {2013, 2019}:
-            # Epiphany.
-            self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
-
         if self._year not in {2017, 2022, 2023}:
             # Saint Joseph's Day.
             self._move_holiday(self._add_saint_josephs_day(tr("San José")))
@@ -665,31 +467,11 @@ class Spain(
         # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))
 
-        if self._year in {2011, 2022}:
-            # Labor Day.
-            self._move_holiday(self._add_labor_day(tr("Fiesta del Trabajo")))
-
         if self._year not in {2013, 2024}:
             # Murcia Day.
             self._move_holiday(self._add_holiday_jun_9(tr("Día de la Región de Murcia")))
 
-        if self._year in {2015, 2020, 2026}:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year in {2013, 2024}:
-            # Immaculate Conception.
-            self._move_holiday(self._add_immaculate_conception_day(tr("Inmaculada Concepción")))
-
-        if self._year in {2016, 2022}:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
-
     def _populate_subdiv_md_public_holidays(self):
-        if self._year in {2013, 2019}:
-            # Epiphany.
-            self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
-
         if self._year in {2010, 2012, 2015, 2017, 2021, 2023}:
             # Saint Joseph's Day.
             self._move_holiday(self._add_saint_josephs_day(tr("San José")))
@@ -709,31 +491,7 @@ class Spain(
             # Saint James' Day.
             self._add_saint_james_day(tr("Santiago Apóstol"))
 
-        if self._year in {2020, 2026}:
-            # All Saints' Day.
-            self._move_holiday(self._add_all_saints_day(tr("Todos los Santos")))
-
-        if self._year in {2020, 2026}:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year == 2019:
-            # Immaculate Conception.
-            self._move_holiday(self._add_immaculate_conception_day(tr("Inmaculada Concepción")))
-
-        if self._year in {2016, 2022}:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
-
     def _populate_subdiv_ml_public_holidays(self):
-        if self._year == 2017:
-            # New Year's Day.
-            self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
-
-        if self._year in {2013, 2019}:
-            # Epiphany.
-            self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
-
         if self._year in {2020, 2021}:
             # Statute of Autonomy of Melilla Day.
             self._add_holiday_mar_13(tr("Estatuto de Autonomía de la Ciudad de Melilla"))
@@ -745,18 +503,6 @@ class Spain(
         # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))
 
-        if self._year in {2015, 2020, 2026}:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year in {2019, 2024}:
-            # Immaculate Conception.
-            self._move_holiday(self._add_immaculate_conception_day(tr("Inmaculada Concepción")))
-
-        if self._year in {2011, 2016, 2022}:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
-
         if self._year in {2022, 2023, 2025, 2026}:
             # Eid al-Fitr.
             self._add_eid_al_fitr_day(tr("Fiesta del Eid Fitr"))
@@ -767,14 +513,10 @@ class Spain(
             self._add_eid_al_adha_day_two(name)
         elif self._year == 2022:
             self._add_eid_al_adha_day_three(name)
-        elif self._year >= 2010:
+        else:
             self._add_eid_al_adha_day(name)
 
     def _populate_subdiv_nc_public_holidays(self):
-        if self._year in {2013, 2019}:
-            # Epiphany.
-            self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
-
         if self._year in {2010, 2012, 2014, 2015, 2019, 2020, 2021, 2026}:
             # Saint Joseph's Day.
             self._add_saint_josephs_day(tr("San José"))
@@ -789,20 +531,8 @@ class Spain(
             # Saint James' Day.
             self._add_saint_james_day(tr("Santiago Apóstol"))
 
-        if self._year == 2026:
-            # All Saints' Day.
-            self._move_holiday(self._add_all_saints_day(tr("Todos los Santos")))
-
         # Saint Francis Xavier's Day.
         self._move_holiday(self._add_holiday_dec_3(tr("San Francisco Javier")))
-
-        if self._year == 2020:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year in {2011, 2016, 2022}:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
 
     def _populate_subdiv_pv_public_holidays(self):
         if self._year in {2010, 2015, 2019, 2020, 2021, 2026}:
@@ -842,18 +572,6 @@ class Spain(
             # Saint James' Day.
             self._add_saint_james_day(tr("Santiago Apóstol"))
 
-        if self._year in {2015, 2020, 2026}:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year in {2013, 2019}:
-            # Immaculate Conception.
-            self._move_holiday(self._add_immaculate_conception_day(tr("Inmaculada Concepción")))
-
-        if self._year == 2022:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
-
     def _populate_subdiv_vc_public_holidays(self):
         if self._year not in {2017, 2023}:
             # Saint Joseph's Day.
@@ -866,10 +584,6 @@ class Spain(
         # Easter Monday.
         self._add_easter_monday(tr("Lunes de Pascua"))
 
-        if self._year == 2011:
-            # Labor Day.
-            self._move_holiday(self._add_labor_day(tr("Fiesta del Trabajo")))
-
         if self._year >= 2019:
             # Saint John the Baptist.
             self._add_saint_johns_day(tr("San Juan"))
@@ -877,14 +591,6 @@ class Spain(
         if self._year not in {2011, 2016, 2022}:
             # Valencian Community Day.
             self._add_holiday_oct_9(tr("Día de la Comunidad Valenciana"))
-
-        if self._year == 2015:
-            # Constitution Day.
-            self._move_holiday(self._add_holiday_dec_6(tr("Día de la Constitución Española")))
-
-        if self._year == 2016:
-            # Christmas Day.
-            self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
 
 
 class ES(Spain):

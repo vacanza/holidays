@@ -40,6 +40,9 @@ class TestSpain(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(Spain, ES, ESP)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(Spain(years=2009))
+
     def test_fixed_holidays_2010(self):
         self.assertNonObservedHoliday(
             "2010-01-01",
