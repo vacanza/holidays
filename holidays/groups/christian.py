@@ -455,6 +455,16 @@ class ChristianHolidays:
         """
         return self._add_holiday_mar_19(name)
 
+    def _add_saint_martins_day(self, name) -> date:
+        """
+        Add Saint Martin of Tours Day (November 11th).
+
+        Saint Martin of Tours is the patron saint of many communities and organizations
+        across Europe, including France's Third Republic.
+        https://en.wikipedia.org/wiki/Martin_of_Tours
+        """
+        return self._add_holiday_nov_11(name)
+
     def _add_saint_patricks_day(self, name) -> date:
         """
         Add Saint Patrick's Day (March 17th).
