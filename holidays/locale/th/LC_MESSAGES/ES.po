@@ -1,0 +1,251 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Spain holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.84\n"
+"POT-Creation-Date: 2025-10-29 21:10+0700\n"
+"PO-Revision-Date: 2025-10-29 22:21+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.8\n"
+"X-Source-Language: es\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimado)"
+msgstr "%s (โดยประมาณ)"
+
+#. Monday following %s (estimated).
+#, c-format
+msgid "Lunes siguiente a %s (estimado)"
+msgstr "วันจันทร์หลัง%s (โดยประมาณ)"
+
+#. Monday following %s.
+#, c-format
+msgid "Lunes siguiente a %s"
+msgstr "วันจันทร์หลัง%s"
+
+#. New Year's Day.
+msgid "Año Nuevo"
+msgstr "วันขึ้นปีใหม่"
+
+#. Epiphany.
+msgid "Epifanía del Señor"
+msgstr "วันสมโภชพระคริสต์แสดงองค์"
+
+#. Good Friday.
+msgid "Viernes Santo"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. Labor Day.
+msgid "Fiesta del Trabajo"
+msgstr "วันแรงงาน"
+
+#. Assumption Day.
+msgid "Asunción de la Virgen"
+msgstr "วันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์"
+
+#. National Day.
+msgid "Fiesta Nacional de España"
+msgstr "วันชาติสเปน"
+
+#. All Saints' Day.
+msgid "Todos los Santos"
+msgstr "วันสมโภชนักบุญทั้งหลาย"
+
+#. Constitution Day.
+msgid "Día de la Constitución Española"
+msgstr "วันรัฐธรรมนูญสเปน"
+
+#. Immaculate Conception.
+msgid "Inmaculada Concepción"
+msgstr "วันสมโภชแม่พระผู้ปฏิสนธินิรมล"
+
+#. Christmas Day.
+msgid "Natividad del Señor"
+msgstr "วันคริสต์มาส"
+
+#. Andalusia Day.
+msgid "Día de Andalucía"
+msgstr "วันอันดาลูเซีย"
+
+#. Maundy Thursday.
+msgid "Jueves Santo"
+msgstr "วันพฤหัสศักดิสิทธิ์"
+
+#. Saint George's Day.
+msgid "Día de San Jorge"
+msgstr "วันสมโภชนักบุญจอร์จ"
+
+#. Asturias Day.
+msgid "Día de Asturias"
+msgstr "วันอัสตูเรียส"
+
+#. Easter Monday.
+msgid "Lunes de Pascua"
+msgstr "วันจันทร์อีสเตอร์"
+
+#. Saint James' Day.
+msgid "Santiago Apóstol"
+msgstr "วันสมโภชนักบุญยากอบ อัครสาวก"
+
+#. Cantabria Institutions Day.
+msgid "Día de las Instituciones de Cantabria"
+msgstr "วันสถาบันแห่งกันตาเบรีย"
+
+#. Our Lady of Bien Aparecida.
+msgid "La Bien Aparecida"
+msgstr "วันแม่พระแห่งอาปาเรซิดา"
+
+#. Saint Anthony's Day.
+msgid "San Antonio"
+msgstr "วันสมโภชนักบุญอันตน"
+
+#. Santa Maria of Africa.
+msgid "Nuestra Señora de África"
+msgstr "วันแม่พระแห่งแอฟริกา"
+
+#. Ceuta Day.
+msgid "Día de Ceuta"
+msgstr "วันเซวตา"
+
+#. Eid al-Adha.
+msgid "Fiesta del Sacrificio-Eidul Adha"
+msgstr "วันอีดิ้ลอัฎฮา"
+
+#. Saint Joseph's Day.
+msgid "San José"
+msgstr "วันสมโภชนักบุญโยเซฟ"
+
+#. Castile and León Day.
+msgid "Fiesta de Castilla y León"
+msgstr "วันกัสติยาและเลออน"
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr "วันสมโภชพระคริสตวรกาย"
+
+#. Castilla-La Mancha Day.
+msgid "Día de Castilla-La Mancha"
+msgstr "วันกัสติยา-ลามันชา"
+
+#. Day of the Canary Islands.
+msgid "Día de Canarias"
+msgstr "วันหมู่เกาะคานารี"
+
+#. Whit Monday.
+msgid "Día de la Pascua Granada"
+msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
+
+#. Saint John the Baptist.
+msgid "San Juan"
+msgstr "วันสมโภชนักบุญยอห์น แบปติสต์บังเกิด"
+
+#. National Day of Catalonia.
+msgid "Fiesta Nacional de Cataluña"
+msgstr "วันชาติคาตาลูญญา"
+
+#. Saint Stephen's Day.
+msgid "San Esteban"
+msgstr "วันสมโภชนักบุญสเตเฟน"
+
+#. Shrove Tuesday.
+msgid "Martes de Carnaval"
+msgstr "วันอังคารคาร์นิวัล"
+
+#. Extremadura Day.
+msgid "Día de Extremadura"
+msgstr "วันเอกซ์เตรมาดูรา"
+
+#. Galician Literature Day.
+msgid "Día de las Letras Gallegas"
+msgstr "วันวรรณกรรมกาลิเซีย"
+
+#. Galician National Day.
+msgid "Día Nacional de Galicia"
+msgstr "วันชาติกาลิเซีย"
+
+#. Day of the Balearic Islands.
+msgid "Día de las Islas Baleares"
+msgstr "วันหมู่เกาะบาเลอาริก"
+
+#. Murcia Day.
+msgid "Día de la Región de Murcia"
+msgstr "วันมูร์เซีย"
+
+#. Madrid Day.
+msgid "Fiesta de la Comunidad de Madrid"
+msgstr "วันมาดริด"
+
+#. Statute of Autonomy of Melilla Day.
+msgid "Estatuto de Autonomía de la Ciudad de Melilla"
+msgstr "วันกฎธรรมนูญปกครองตนเองแห่งเมืองเมลียา"
+
+#. Day of Our Lady of Victory.
+msgid "Día de Nuestra Señora la Virgen de la Victoria"
+msgstr "วันแม่พระแห่งชัยชนะ"
+
+#. Melilla Day.
+msgid "Día de Melilla"
+msgstr "วันเมลียา"
+
+#. Eid al-Fitr.
+msgid "Fiesta del Eid Fitr"
+msgstr "วันอีฎิ้ลฟิตริ"
+
+#. Eid al-Adha.
+msgid "Fiesta del Sacrificio-Aid Al Adha"
+msgstr "วันอีดิ้ลอัฎฮา"
+
+#. Saint Francis Xavier's Day.
+msgid "San Francisco Javier"
+msgstr "วันสมโภชนักบุญฟรังซิสเซเวียร์"
+
+#. País Vasco Day.
+msgid "Día del País Vasco"
+msgstr "วันแคว้นบาสก์"
+
+#. La Rioja Day.
+msgid "Día de La Rioja"
+msgstr "วันลารีโอฆา"
+
+#. Valencian Community Day.
+msgid "Día de la Comunidad Valenciana"
+msgstr "วันแคว้นบาเลนเซีย"
+
+#. Day following Saint Joseph's Day.
+msgid "Día siguiente a San José"
+msgstr "วันหลังวันสมโภชนักบุญโยเซฟ"
+
+#. Saint Joseph's Day Transfer.
+msgid "Traslado de San José"
+msgstr "ชดเชยวันสมโภชนักบุญโยเซฟ"
+
+#. 80th Anniversary of the first Basque Government.
+msgid "80 Aniversario del primer Gobierno Vasco"
+msgstr "วันครบรอบ 80 ปี การก่อตั้งรัฐบาลแคว้นบาสก์ชุดแรก"
+
+#. V Centennial of the Circumnavigation of the World.
+msgid "V Centenario Vuelta al Mundo"
+msgstr "วันครบรอบ 500 ปี การเดินเรือรอบโลก"
+
+#. The Fallas.
+msgid "Lunes de Fallas"
+msgstr "วันจันทร์เทศกาลเผาหุ่นฟายัส"

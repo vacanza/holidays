@@ -61,9 +61,9 @@ class Spain(
             * [2024](https://web.archive.org/web/20240419004114/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2024)
             * [2025](https://web.archive.org/web/20250315132943/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2025)
         * Melilla:
-            * [2017](https://web.archive.org/web/20251029025925/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=23611&nivel=1400&tipo=2&codMenu=291&evento=1)
-            * [2018](https://web.archive.org/web/20251029025538/https://www.melilla.es/melillaPortal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=25713&nivel=1400&tipo=2&codMenu=291&evento=1)
-            * [2019](https://web.archive.org/web/20251028181517/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=27481&nivel=1400&tipo=2&codMenu=291&evento=1)
+            * [2017](https://web.archive.org/web/20251029145828/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=23611&nivel=1400&tipo=2)
+            * [2018](https://web.archive.org/web/20251029144310/https://www.melilla.es/melillaPortal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=25713&nivel=1400&tipo=2)
+            * [2019](https://web.archive.org/web/20251029132642/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=27481&nivel=1400&tipo=2)
             * [2020](https://web.archive.org/web/20251028181240/https://www.melilla.es/melillaPortal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=29323&nivel=1400&tipo=2)
             * [2021](https://web.archive.org/web/20251028181807/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=30529&nivel=1400&tipo=2)
             * [2022](https://web.archive.org/web/20251029030735/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=32051&nivel=1400&tipo=2)
@@ -149,7 +149,7 @@ class Spain(
         "La Rioja": "RI",
         "Valenciana": "VC",
     }
-    supported_languages = ("ca", "en_US", "es", "uk")
+    supported_languages = ("ca", "en_US", "es", "th", "uk")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
