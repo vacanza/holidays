@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, SEP, OCT, NOV, DEC
 from holidays.groups import (
     ChristianHolidays,
     HinduCalendarHolidays,
@@ -72,6 +72,9 @@ class NationalStockExchangeOfIndia(
             islamic_show_estimated:
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
+
+        In India, the dates of the Islamic calendar usually fall a day later than
+        the corresponding dates in the Umm al-Qura calendar.
         """
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, cls=NationalStockExchangeOfIndiaHinduHolidays)
@@ -79,6 +82,7 @@ class NationalStockExchangeOfIndia(
             self,
             cls=NationalStockExchangeOfIndiaIslamicHolidays,
             show_estimated=islamic_show_estimated,
+            calendar_delta_days=+1,
         )
         StaticHolidays.__init__(self, cls=NationalStockExchangeOfIndiaStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
@@ -146,7 +150,7 @@ class NationalStockExchangeOfIndia(
         self._move_holiday(self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti")))
 
         if 2003 <= self._year <= 2010:
-            # Bhai Bhij.
+            # Bhai Dooj.
             self._move_holiday(self._add_bhai_dooj(tr("Bhau Bhij")))
 
         if 2006 <= self._year <= 2009:
@@ -159,6 +163,11 @@ class NationalStockExchangeOfIndia(
         for dt in self._add_ashura_day(tr("Muharram")):
             self._move_holiday(dt)
 
+        if 2006 <= self._year <= 2009:
+            # Prophet's Birthday.
+            for dt in self._add_mawlid_day(tr("Id-E-Milad-Un-Nabi")):
+                self._move_holiday(dt)
+
         # Eid al-Fitr.
         for dt in self._add_eid_al_fitr_day(tr("Id-Ul-Fitr (Ramadan Eid)")):
             self._move_holiday(dt)
@@ -166,11 +175,6 @@ class NationalStockExchangeOfIndia(
         # Eid al-Adha.
         for dt in self._add_eid_al_adha_day(tr("Bakri Id")):
             self._move_holiday(dt)
-
-        if 2006 <= self._year <= 2009:
-            # Prophet's Birthday.
-            for dt in self._add_mawlid_day(tr("Id-E-Milad-Un-Nabi")):
-                self._move_holiday(dt)
 
 
 class XNSE(NationalStockExchangeOfIndia):
@@ -223,86 +227,39 @@ class NationalStockExchangeOfIndiaHinduHolidays(_CustomHinduHolidays):
 class NationalStockExchangeOfIndiaIslamicHolidays(_CustomIslamicHolidays):
     ASHURA_DATES_CONFIRMED_YEARS = (2001, 2025)
     ASHURA_DATES = {
-        2001: (APR, 5),
-        2002: (MAR, 25),
         2003: (MAR, 15),
-        2004: (MAR, 2),
-        2005: (FEB, 20),
-        2007: (JAN, 30),
-        2009: ((JAN, 8), (DEC, 28)),
-        2010: (DEC, 17),
-        2011: (DEC, 6),
-        2012: (NOV, 25),
-        2013: (NOV, 14),
-        2014: (NOV, 4),
-        2016: (OCT, 12),
-        2017: (OCT, 1),
-        2019: (SEP, 10),
-        2020: (AUG, 30),
-        2021: (AUG, 19),
-        2022: (AUG, 9),
-        2023: (JUL, 29),
-        2024: (JUL, 17),
-        2025: (JUL, 6),
+        2006: (FEB, 9),
+        2008: (JAN, 19),
+        2015: (OCT, 23),
+        2018: (SEP, 20),
     }
 
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2025)
     EID_AL_ADHA_DATES = {
-        2001: (MAR, 6),
-        2002: (FEB, 23),
         2003: (FEB, 13),
-        2004: (FEB, 2),
+        2005: (JAN, 21),
         2006: (JAN, 11),
         2007: ((JAN, 1), (DEC, 21)),
-        2008: (DEC, 9),
-        2010: (NOV, 17),
-        2011: (NOV, 7),
-        2012: (OCT, 27),
-        2013: (OCT, 16),
+        2009: (NOV, 27),
         2014: (OCT, 6),
         2015: (SEP, 25),
         2016: (SEP, 13),
-        2017: (SEP, 2),
-        2018: (AUG, 22),
-        2019: (AUG, 12),
-        2020: (AUG, 1),
-        2021: (JUL, 21),
-        2022: (JUL, 10),
-        2024: (JUN, 17),
-        2025: (JUN, 7),
+        2023: (JUN, 28),
     }
 
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2025)
     EID_AL_FITR_DATES = {
-        2001: (DEC, 17),
         2002: (DEC, 7),
-        2003: (NOV, 26),
-        2004: (NOV, 15),
         2005: (NOV, 5),
         2006: (OCT, 25),
-        2007: (OCT, 14),
-        2008: (OCT, 2),
-        2009: (SEP, 21),
-        2011: (AUG, 31),
-        2012: (AUG, 20),
-        2013: (AUG, 9),
-        2014: (JUL, 29),
-        2015: (JUL, 18),
-        2017: (JUN, 26),
-        2018: (JUN, 16),
-        2019: (JUN, 5),
-        2020: (MAY, 25),
-        2022: (MAY, 3),
-        2023: (APR, 22),
-        2024: (APR, 11),
-        2025: (MAR, 31),
+        2010: (SEP, 10),
+        2016: (JUL, 6),
+        2021: (MAY, 13),
     }
 
     MAWLID_DATES_CONFIRMED_YEARS = (2006, 2009)
     MAWLID_DATES = {
-        2006: (APR, 11),
-        2007: (APR, 1),
-        2009: (MAR, 10),
+        2008: (MAR, 20),
     }
 
 

@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.84\n"
 "POT-Creation-Date: 2025-08-21 16:22+0000\n"
 "PO-Revision-Date: 2025-08-21 16:22+0000\n"
 "Last-Translator: Saheel Sapovadia saheelsapovadia23@gmail.com\n"
@@ -99,7 +99,7 @@ msgstr "दिवाली बलिप्रतिपदा"
 msgid "Guru Nanak Jayanti"
 msgstr "गुरु नानक जयंती"
 
-#. Bhai Bhij.
+#. Bhai Dooj.
 msgid "Bhau Bhij"
 msgstr "भाऊ बीज"
 
@@ -111,6 +111,10 @@ msgstr "बुद्ध पूर्णिमा"
 msgid "Muharram"
 msgstr "मुहर्रम"
 
+#. Prophet's Birthday.
+msgid "Id-E-Milad-Un-Nabi"
+msgstr "मिलाद-उन-नबी"
+
 #. Eid al-Fitr.
 msgid "Id-Ul-Fitr (Ramadan Eid)"
 msgstr "ईद-उल-फितर (रमजान ईद)"
@@ -119,10 +123,6 @@ msgstr "ईद-उल-फितर (रमजान ईद)"
 msgid "Bakri Id"
 msgstr "बकरी ईद"
 
-#. Prophet's Birthday.
-msgid "Id-E-Milad-Un-Nabi"
-msgstr "मिलाद-उन-नबी"
-
 #. New Year's Day.
 msgid "New Year"
-msgstr "नया वर्ष"
+msgstr "नया वर"
