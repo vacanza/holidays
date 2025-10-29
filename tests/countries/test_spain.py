@@ -41,7 +41,19 @@ class TestSpain(CommonCountryTests, TestCase):
         self.assertAliases(Spain, ES, ESP)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Spain(years=2009))
+        self.assertNoHolidays(Spain(years=2008))
+
+    def test_fixed_holidays_2009(self):
+        self.assertNonObservedHoliday(
+            "2009-01-01",
+            "2009-01-06",
+            "2009-04-10",
+            "2009-05-01",
+            "2009-08-15",
+            "2009-10-12",
+            "2009-12-08",
+            "2009-12-25",
+        )
 
     def test_fixed_holidays_2010(self):
         self.assertNonObservedHoliday(
@@ -264,6 +276,67 @@ class TestSpain(CommonCountryTests, TestCase):
         self.assertNoHolidayName(
             "Fiesta del Sacrificio-Aid Al Adha", Spain(subdiv="ML", years=2009)
         )
+
+    def test_variable_holidays_2009(self):
+        province_days = {
+            (FEB, 28): {"AN"},
+            (MAR, 19): {"CL", "CM", "GA", "MC", "MD", "ML", "NC", "PV", "RI", "VC"},
+            (APR, 9): {
+                "AN",
+                "AR",
+                "AS",
+                "CB",
+                "CE",
+                "CL",
+                "CM",
+                "CN",
+                "EX",
+                "GA",
+                "IB",
+                "MC",
+                "MD",
+                "ML",
+                "NC",
+                "PV",
+                "RI",
+                "VC",
+            },
+            (APR, 13): {"CT", "IB", "NC", "PV", "VC"},
+            (APR, 23): {"AR", "CL"},
+            (MAY, 2): {"MD"},
+            (MAY, 30): {"CN"},
+            (JUN, 1): {"CM"},
+            (JUN, 9): {"MC", "RI"},
+            (JUN, 11): {"MD"},
+            (JUN, 24): {"CT"},
+            (JUL, 25): {"GA", "NC", "PV"},
+            (JUL, 28): {"CB"},
+            (SEP, 2): {"CE"},
+            (SEP, 8): {"AS", "EX", "ML"},
+            (SEP, 11): {"CT"},
+            (SEP, 15): {"CB"},
+            (SEP, 17): {"ML"},
+            (OCT, 9): {"VC"},
+            (NOV, 2): {"AN", "AR", "AS", "CE", "CL", "EX", "ML"},
+            (DEC, 3): {"NC"},
+            (DEC, 7): {
+                "AN",
+                "AR",
+                "AS",
+                "CB",
+                "CE",
+                "CM",
+                "CN",
+                "EX",
+                "GA",
+                "IB",
+                "MC",
+                "ML",
+                "RI",
+            },
+            (DEC, 26): {"IB", "CT"},
+        }
+        self._assertVariableDays(2009, province_days)
 
     def test_variable_holidays_2010(self):
         province_days = {
