@@ -51,6 +51,15 @@ class Spain(
         * [2026](https://web.archive.org/web/20251028115438/https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-21667)
 
     Subdivisions Holidays References:
+        * Ceuta:
+            * [2018](https://web.archive.org/web/20251029132255/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2018)
+            * [2019](https://web.archive.org/web/20210506145356/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2019)
+            * [2020](https://web.archive.org/web/20210413221634/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2020)
+            * [2021](https://web.archive.org/web/20251029131434/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2021)
+            * [2022](https://web.archive.org/web/20250115161923/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2022)
+            * [2023](https://web.archive.org/web/20241211133010/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2023)
+            * [2024](https://web.archive.org/web/20240419004114/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2024)
+            * [2025](https://web.archive.org/web/20250315132943/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2025)
         * Melilla:
             * [2017](https://web.archive.org/web/20251029025925/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=23611&nivel=1400&tipo=2&codMenu=291&evento=1)
             * [2018](https://web.archive.org/web/20251029025538/https://www.melilla.es/melillaPortal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=25713&nivel=1400&tipo=2&codMenu=291&evento=1)
@@ -366,6 +375,9 @@ class Spain(
         if self._year == 2011:
             # Labor Day.
             self._move_holiday(self._add_labor_day(tr("Fiesta del Trabajo")))
+
+        # Saint Anthony's Day.
+        self._move_holiday(self._add_saint_anthonys_day(tr("San Antonio")))
 
         if self._year >= 2022:
             # Santa Maria of Africa.
