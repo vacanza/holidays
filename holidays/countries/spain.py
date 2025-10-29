@@ -49,6 +49,17 @@ class Spain(
         * [2026](https://web.archive.org/web/20251028115438/https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-21667)
 
     Subdivisions Holidays References:
+        * Melilla:
+            * [2017](https://web.archive.org/web/20251029025925/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=23611&nivel=1400&tipo=2&codMenu=291&evento=1)
+            * [2018](https://web.archive.org/web/20251029025538/https://www.melilla.es/melillaPortal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=25713&nivel=1400&tipo=2&codMenu=291&evento=1)
+            * [2019](https://web.archive.org/web/20251028181517/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=27481&nivel=1400&tipo=2&codMenu=291&evento=1)
+            * [2020](https://web.archive.org/web/20251028181240/https://www.melilla.es/melillaPortal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=29323&nivel=1400&tipo=2)
+            * [2021](https://web.archive.org/web/20251028181807/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=30529&nivel=1400&tipo=2)
+            * [2022](https://web.archive.org/web/20251029030735/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=32051&nivel=1400&tipo=2)
+            * [2023](https://web.archive.org/web/20251029030355/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=33685&nivel=1400&tipo=2)
+            * [2024](https://web.archive.org/web/20241208104853/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=34997&nivel=1400&tipo=2)
+            * [2025](https://web.archive.org/web/20250113015447/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=37491&nivel=1400&tipo=2)
+            * [2026](https://web.archive.org/web/20251029045506/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=41767&nivel=1400&tipo=2)
         * Navarra:
             * [2010](https://web.archive.org/web/20250903095706/https://www.lexnavarra.navarra.es/detalle.asp?r=8402)
             * [2011](https://web.archive.org/web/20250903095217/https://www.lexnavarra.navarra.es/detalle.asp?r=8403)
@@ -209,7 +220,7 @@ class Spain(
             (self.subdiv in {"CB", "CE", "VC"} and self._year == 2011)
             or (self.subdiv == "CN" and self._year == 2016)
             or (self.subdiv == "CL" and self._year >= 2016)
-            or (self.subdiv == "MC" and (self._year <= 2011 or self._year >= 2022))
+            or (self.subdiv == "MC" and (self._year == 2011 or self._year >= 2022))
             or (self.subdiv in {"AN", "AR", "AS", "EX"})
         ):
             # Labor Day.
@@ -234,7 +245,7 @@ class Spain(
             (self.subdiv in {"CB", "CE", "GA", "IB"} and self._year == 2015)
             or (self.subdiv == "MD" and self._year >= 2020)
             or (self.subdiv in {"CM", "NC"} and self._year >= 2026)
-            or (self.subdiv == "CN" and (self._year <= 2015 or self._year >= 2026))
+            or (self.subdiv == "CN" and (self._year == 2015 or self._year >= 2026))
             or (self.subdiv in {"AN", "AR", "AS", "CL", "EX"})
         ):
             # All Saints' Day.
@@ -258,7 +269,7 @@ class Spain(
             or (self.subdiv in {"CB", "MD"} and self._year == 2019)
             or (self.subdiv == "RI" and self._year <= 2019)
             or (self.subdiv == "ML" and self._year >= 2019)
-            or (self.subdiv == "MC" and (self._year <= 2013 or self._year >= 2024))
+            or (self.subdiv == "MC" and (self._year == 2013 or self._year >= 2024))
             or (self.subdiv in {"AN", "AR", "AS", "CL", "EX"})
         ):
             # Immaculate Conception.
@@ -270,7 +281,7 @@ class Spain(
             or (self.subdiv == "CE" and self._year <= 2016)
             or (self.subdiv in {"CB", "CM", "MC", "MD"} and self._year >= 2016)
             or (self.subdiv == "RI" and self._year >= 2022)
-            or (self.subdiv == "CN" and (self._year <= 2011 or self._year >= 2022))
+            or (self.subdiv == "CN" and (self._year == 2011 or self._year >= 2022))
             or (self.subdiv in {"AN", "AR", "AS", "CL", "EX", "IB", "ML", "NC"})
         ):
             # Christmas Day.
@@ -492,7 +503,7 @@ class Spain(
             self._add_saint_james_day(tr("Santiago Apóstol"))
 
     def _populate_subdiv_ml_public_holidays(self):
-        if self._year in {2020, 2021}:
+        if self._year in {2020, 2021, 2023}:
             # Statute of Autonomy of Melilla Day.
             self._add_holiday_mar_13(tr("Estatuto de Autonomía de la Ciudad de Melilla"))
 
@@ -503,7 +514,17 @@ class Spain(
         # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))
 
-        if self._year in {2022, 2023, 2025, 2026}:
+        if self._year != 2024:
+            self._move_holiday(
+                # Day of Our Lady of Victory.
+                self._add_holiday_sep_8(tr("Día de Nuestra Señora la Virgen de la Victoria"))
+            )
+
+        if self._year != 2023:
+            # Melilla Day.
+            self._move_holiday(self._add_holiday_sep_17(tr("Día de Melilla")))
+
+        if self._year >= 2022:
             # Eid al-Fitr.
             self._add_eid_al_fitr_day(tr("Fiesta del Eid Fitr"))
 
