@@ -14,17 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.84\n"
 "POT-Creation-Date: 2023-10-26 23:49+0700\n"
-"PO-Revision-Date: 2025-09-07 14:05+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-10-29 22:34+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.8\n"
 "X-Source-Language: ko\n"
 
 #. %s (estimated).
@@ -170,7 +170,7 @@ msgstr "เฉลิมฉลองการยอมรับของรัฐ
 
 #. Anniversary of the 1st National Assembly Election.
 msgid "5.10 제헌의회선거 1주년 기념일"
-msgstr "ครบรอบ 1 ปีการเลือกตั้งสมัชชาแห่งชาติ"
+msgstr "วันครบรอบ 1 ปีการเลือกตั้งสมัชชาแห่งชาติ"
 
 #. Baekbeom Kim Ku's Funeral Ceremony.
 msgid "백범 김구 선생 국민장 영결식"
