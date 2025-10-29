@@ -10,8 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from __future__ import annotations
+
 from gettext import gettext as tr
+from typing import TYPE_CHECKING
 
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, APR, JUN, JUL, OCT, NOV
@@ -28,6 +30,9 @@ from holidays.observed_holiday_base import (
     SAT_SUN_TO_NEXT_WORKDAY,
     WORKDAY_TO_NEXT_WORKDAY,
 )
+
+if TYPE_CHECKING:
+    from datetime import date
 
 
 class TrinidadAndTobago(
@@ -82,7 +87,7 @@ class TrinidadAndTobago(
         )
         super().__init__(*args, **kwargs)
 
-    def _populate_observed(self, dts: set[date], multiple: bool = False) -> None:
+    def _populate_observed(self, dts: set[date], *, multiple: bool = False) -> None:
         for dt in sorted(dts):
             self._add_observed(
                 dt,

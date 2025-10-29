@@ -108,11 +108,10 @@ class Fiji(
             self._add_observed(self._add_holiday_sep_7("Constitution Day"))
 
         if self._year >= 2023:
-            # Girmit Day.
-            self._move_holiday(
+            self._move_holiday_forced(
+                # Girmit Day.
                 self._add_holiday_may_14("Girmit Day"),
                 rule=ALL_TO_NEAREST_MON,
-                show_observed_label=False,
             )
 
         # Ratu Sir Lala Sukuna Day.

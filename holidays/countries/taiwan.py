@@ -10,9 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from __future__ import annotations
+
 from gettext import gettext as tr
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 
 from holidays.calendars.gregorian import (
     JAN,
@@ -31,6 +32,7 @@ from holidays.calendars.gregorian import (
     FRI,
     SAT,
     SUN,
+    _get_nth_weekday_of_month,
 )
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
@@ -41,6 +43,9 @@ from holidays.observed_holiday_base import (
     SUN_TO_NEXT_WORKDAY,
     SAT_SUN_TO_NEXT_WORKDAY,
 )
+
+if TYPE_CHECKING:
+    from datetime import date
 
 CHILDRENS_DAY_RULE = ObservedRule({MON: +1, TUE: -1, WED: -1, THU: +1, FRI: -1, SAT: -1, SUN: -2})
 
@@ -72,8 +77,12 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
     """
 
     country = "TW"
+    # %s (estimated).
+    estimated_label = tr("%s（推定）")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s（補假，推定）")
     # %s (observed).
-    observed_label = tr("%s（慶祝）")
+    observed_label = tr("%s（補假）")
     default_language = "zh_TW"
     supported_categories = (GOVERNMENT, OPTIONAL, PUBLIC, SCHOOL, WORKDAY)
     supported_languages = ("en_US", "th", "zh_CN", "zh_TW")
@@ -86,6 +95,21 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         StaticHolidays.__init__(self, TaiwanStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_TO_PREV_WORKDAY + SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
+
+    def _get_weekend(self, dt: date) -> set[int]:
+        # 1998–2000: Sundays as well as the 2nd & 4th Saturday of each month.
+        if dt.year <= 2000:
+            weekend = {SUN}
+            if dt.weekday() == SAT:
+                if dt in {
+                    _get_nth_weekday_of_month(2, SAT, dt.month, dt.year),  # 2nd Saturday.
+                    _get_nth_weekday_of_month(4, SAT, dt.month, dt.year),  # 4th Saturday.
+                }:
+                    weekend.add(SAT)
+        else:
+            weekend = {SAT, SUN}
+
+        return weekend
 
     def _populate_observed(
         self, dts: set[date], rule: Optional[ObservedRule] = None, since: int = 2015
@@ -110,7 +134,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
                     dt,
                     name,
                     # Children's Day falls on the same day as Tomb-Sweeping Day.
-                    CHILDRENS_DAY_RULE if name == childrens_day and len(names) > 1 else rule,
+                    rule=CHILDRENS_DAY_RULE if name == childrens_day and len(names) > 1 else rule,
                 )
 
     def _populate_public_holidays(self):

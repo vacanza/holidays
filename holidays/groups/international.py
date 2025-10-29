@@ -212,7 +212,7 @@ class InternationalHolidays:
         """
         return self._add_holiday_mar_8(name)
 
-    def _add_world_war_two_victory_day(self, name, is_western=True):
+    def _add_world_war_two_victory_day(self, name, *, is_western=True):
         """
         Add Day of Victory in World War II in Europe (May 8).
         https://en.wikipedia.org/wiki/Victory_in_Europe_Day

@@ -14,7 +14,7 @@ from collections.abc import Iterable
 from datetime import date
 from typing import Optional
 
-from holidays.calendars import _SinhalaLunar
+from holidays.calendars.sinhala import _SinhalaLunar
 from holidays.groups.eastern import EasternCalendarHolidays
 
 
@@ -32,7 +32,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
     Adhi month dates are instead hardcoded in Sri Lanka country implementation.
     """
 
-    def __init__(self, cls=None, show_estimated=False) -> None:
+    def __init__(self, cls=None, *, show_estimated=False) -> None:
         self._sinhala_calendar = cls() if cls else _SinhalaLunar()
         self._sinhala_calendar_show_estimated = show_estimated
 
@@ -46,7 +46,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         is an estimation.
         """
         return self._add_eastern_calendar_holiday(
-            name, dt_estimated, self._sinhala_calendar_show_estimated
+            name, dt_estimated, show_estimated=self._sinhala_calendar_show_estimated
         )
 
     def _add_sinhala_calendar_holiday_set(
@@ -58,14 +58,12 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         Adds customizable estimation label to holiday name if holiday date
         is an estimation.
         """
-        added_dates = set()
-        for dt_estimated in dts_estimated:
-            if dt := self._add_eastern_calendar_holiday(
-                name, dt_estimated, self._sinhala_calendar_show_estimated, days_delta=days_delta
-            ):
-                added_dates.add(dt)
-
-        return added_dates
+        return self._add_eastern_calendar_holiday_set(
+            name,
+            dts_estimated,
+            show_estimated=self._sinhala_calendar_show_estimated,
+            days_delta=days_delta,
+        )
 
     def _add_bak_poya(self, name) -> Optional[date]:
         """

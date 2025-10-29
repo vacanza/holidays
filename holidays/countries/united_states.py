@@ -249,7 +249,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         kwargs.setdefault("observed_since", 1953)
         super().__init__(*args, **kwargs)
 
-    def _populate_common(self, include_federal: bool = False):
+    def _populate_common(self, *, include_federal: bool = False):
         """
         Populates common US holidays.
 
@@ -1339,7 +1339,23 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Started in Boston in 1737 for the US.
 
         # Saint Patrick's Day.
-        self._add_holiday_mar_17(tr("Saint Patrick's Day"))
+        self._add_saint_patricks_day(tr("Saint Patrick's Day"))
+
+        # Mother's Day.
+        # Starts to be observed by most US states by 1911.
+        # Officially proclaimed as a National Holiday by President Woodrow Wilson in 1914.
+
+        if self._year >= 1914:
+            # Mother's Day.
+            self._add_holiday_2nd_sun_of_may(tr("Mother's Day"))
+
+        # Father's Day.
+        # First founded in the state of Washington by Sonora Smart Dodd in 1910.
+        # Officially proclaimed as a National Holiday by President Richard Nixon in 1972.
+
+        if self._year >= 1972:
+            # Father's Day.
+            self._add_holiday_3rd_sun_of_jun(tr("Father's Day"))
 
         # Halloween.
         # Halloween began in the US sometime around the 19th century.

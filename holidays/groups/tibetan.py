@@ -13,7 +13,7 @@
 from datetime import date
 from typing import Optional
 
-from holidays.calendars import _TibetanLunisolar
+from holidays.calendars.tibetan import _TibetanLunisolar
 from holidays.groups.eastern import EasternCalendarHolidays
 
 
@@ -22,7 +22,7 @@ class TibetanCalendarHolidays(EasternCalendarHolidays):
     Tibetan lunisolar calendar holidays.
     """
 
-    def __init__(self, cls=None, show_estimated=False) -> None:
+    def __init__(self, cls=None, *, show_estimated=False) -> None:
         self._tibetan_calendar = cls() if cls else _TibetanLunisolar()
         self._tibetan_calendar_show_estimated = show_estimated
 
@@ -36,7 +36,10 @@ class TibetanCalendarHolidays(EasternCalendarHolidays):
         is an estimation.
         """
         return self._add_eastern_calendar_holiday(
-            name, dt_estimated, self._tibetan_calendar_show_estimated, days_delta
+            name,
+            dt_estimated,
+            show_estimated=self._tibetan_calendar_show_estimated,
+            days_delta=days_delta,
         )
 
     def _add_blessed_rainy_day(self, name) -> Optional[date]:
@@ -103,14 +106,13 @@ class TibetanCalendarHolidays(EasternCalendarHolidays):
             name, self._tibetan_calendar.losar_date(self._year)
         )
 
-    def _add_losar_day_two(self, name) -> set[date]:
+    def _add_losar_day_two(self, name) -> Optional[date]:
         """
         Add Losar Day Two.
         """
-        dt = self._add_tibetan_calendar_holiday(
+        return self._add_tibetan_calendar_holiday(
             name, self._tibetan_calendar.losar_date(self._year), days_delta=+1
         )
-        return {dt} if dt is not None else set()
 
     def _add_thimphu_drubchen_day(self, name) -> Optional[date]:
         """

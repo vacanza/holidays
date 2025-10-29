@@ -21,10 +21,10 @@ from dateutil.parser import parse
 
 from holidays import HolidayBase
 from holidays.calendars.gregorian import SUN
-from holidays.groups import IslamicHolidays
+from holidays.groups import EasternCalendarHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase
 
-PYTHON_LATEST_SUPPORTED_VERSION = "3.13"
+PYTHON_LATEST_SUPPORTED_VERSION = "3.14"
 PYTHON_VERSION = f"{sys.version_info.major}.{sys.version_info.minor}"
 
 
@@ -71,7 +71,7 @@ class TestCase:
         os.environ["LANGUAGE"] = language
 
     def _parse_arguments(
-        self, args, expand_items=True, instance_name="holidays", raise_on_empty=True
+        self, args, *, expand_items=True, instance_name="holidays", raise_on_empty=True
     ):
         item_args = args
         instance = None
@@ -374,11 +374,11 @@ class CommonTests(TestCase):
     """Common test cases for all entities."""
 
     def test_estimated_label(self):
-        if isinstance(self.holidays, IslamicHolidays):
+        if isinstance(self.holidays, EasternCalendarHolidays):
             self.assertTrue(
                 getattr(self.holidays, "estimated_label", None),
                 "The `estimated_label` attribute is required for entities inherited from "
-                "`IslamicHolidays`.",
+                "`EasternCalendarHolidays`.",
             )
 
     def test_observed_estimated_label(self):
@@ -487,7 +487,7 @@ class WorkingDayTests(TestCase):
         self._verify_type(holidays)
 
         for dt in dates:
-            self.assertTrue(holidays._is_weekend(parse(dt)))
+            self.assertTrue(holidays.is_weekend(dt))
             self.assertTrue(holidays.is_working_day(dt))
 
     def assertWorkingDay(self, *args):

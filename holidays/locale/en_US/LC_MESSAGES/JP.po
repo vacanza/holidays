@@ -14,17 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.30\n"
+"Project-Id-Version: Holidays 0.82\n"
 "POT-Creation-Date: 2023-07-23 15:45+0300\n"
-"PO-Revision-Date: 2023-07-23 15:47+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-09-17 10:42+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.7\n"
 "X-Source-Language: ja\n"
 
 #. Substitute Holiday.
@@ -55,10 +55,6 @@ msgstr "Emperor's Birthday"
 msgid "春分の日"
 msgstr "Vernal Equinox Day"
 
-#. Greenery Day.
-msgid "みどりの日"
-msgstr "Greenery Day"
-
 #. Showa Day.
 msgid "昭和の日"
 msgstr "Showa Day"
@@ -66,6 +62,10 @@ msgstr "Showa Day"
 #. Constitution Day.
 msgid "憲法記念日"
 msgstr "Constitution Day"
+
+#. Greenery Day.
+msgid "みどりの日"
+msgstr "Greenery Day"
 
 #. Children's Day.
 msgid "こどもの日"
@@ -85,7 +85,7 @@ msgstr "Respect for the Aged Day"
 
 #. Autumnal Equinox Day.
 msgid "秋分の日"
-msgstr "Autumnal Equinox"
+msgstr "Autumnal Equinox Day"
 
 #. Sports Day.
 msgid "スポーツの日"

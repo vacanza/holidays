@@ -14,7 +14,7 @@ from collections.abc import Iterable
 from datetime import date
 from typing import Optional
 
-from holidays.calendars import _HinduLunisolar
+from holidays.calendars.hindu import _HinduLunisolar
 from holidays.groups.eastern import EasternCalendarHolidays
 
 
@@ -23,7 +23,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
     Hindu lunisolar calendar holidays.
     """
 
-    def __init__(self, cls=None, show_estimated=False) -> None:
+    def __init__(self, cls=None, *, show_estimated=False) -> None:
         self._hindu_calendar = cls() if cls else _HinduLunisolar()
         self._hindu_calendar_show_estimated = show_estimated
 
@@ -38,7 +38,10 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
 
         return self._add_eastern_calendar_holiday(
-            name, dt_estimated, self._hindu_calendar_show_estimated, days_delta
+            name,
+            dt_estimated,
+            show_estimated=self._hindu_calendar_show_estimated,
+            days_delta=days_delta,
         )
 
     def _add_hindu_calendar_holiday_set(
@@ -50,14 +53,12 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         Adds customizable estimation label to holiday name if holiday date
         is an estimation.
         """
-        added_dates = set()
-        for dt_estimated in dts_estimated:
-            if dt := self._add_eastern_calendar_holiday(
-                name, dt_estimated, self._hindu_calendar_show_estimated, days_delta=days_delta
-            ):
-                added_dates.add(dt)
-
-        return added_dates
+        return self._add_eastern_calendar_holiday_set(
+            name,
+            dts_estimated,
+            show_estimated=self._hindu_calendar_show_estimated,
+            days_delta=days_delta,
+        )
 
     def _add_bhai_dooj(self, name) -> Optional[date]:
         """
@@ -162,11 +163,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
 
     def _add_gudi_padwa(self, name) -> Optional[date]:
         """
-        Add Gudi Padwa.
+        Add Gudi Padwa / Ugadi.
 
-        Gudi Padwa is the traditional New Year festival for Maharashtrians.
-        It falls on the first day of Chaitra (March-April).
-        https://en.wikipedia.org/wiki/Gudi_Padwa
+        Gudi Padwa is the traditional New Year festival celebrated in
+        Maharashtra. On the same day, the festival is also observed as
+        Ugadi in Karnataka, Telangana, and Andhra Pradesh.
+
+        It falls on the first day of Chaitra (March–April) according to
+        the Hindu lunisolar calendar.
+
+        References:
+            * https://en.wikipedia.org/wiki/Gudi_Padwa
+            * https://en.wikipedia.org/wiki/Ugadi
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.gudi_padwa_date(self._year)

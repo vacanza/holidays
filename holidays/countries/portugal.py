@@ -129,15 +129,14 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1911:
             if 1933 <= self._year <= 1973:
                 # Day of Camões, Portugal, and the Portuguese Race.
-                self._add_holiday_jun_10(tr("Dia de Camões, de Portugal e da Raça"))
+                name = tr("Dia de Camões, de Portugal e da Raça")
             elif self._year >= 1978:
-                self._add_holiday_jun_10(
-                    # Day of Portugal, Camões, and the Portuguese Communities.
-                    tr("Dia de Portugal, de Camões e das Comunidades Portuguesas")
-                )
+                # Day of Portugal, Camões, and the Portuguese Communities.
+                name = tr("Dia de Portugal, de Camões e das Comunidades Portuguesas")
             else:
                 # Portugal Day.
-                self._add_holiday_jun_10(tr("Dia de Portugal"))
+                name = tr("Dia de Portugal")
+            self._add_holiday_jun_10(name)
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assunção de Nossa Senhora"))

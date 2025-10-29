@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.80\n"
+"Project-Id-Version: Holidays 0.84\n"
 "POT-Creation-Date: 2025-02-06 15:34+0700\n"
-"PO-Revision-Date: 2025-03-05 19:40+0700\n"
+"PO-Revision-Date: 2025-10-29 22:34+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -24,8 +24,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.3\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.8\n"
 "X-Source-Language: zh_MO\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s（推定）"
+msgstr "%s (โดยประมาณ)"
 
 #. New Year's Day.
 msgid "元旦"
@@ -190,6 +195,16 @@ msgstr "ชดเชย%s"
 msgid "%s後首個工作日"
 msgstr "วันทำงานวันแรกหลัง%s"
 
+#. Compensatory rest day for %s (estimated).
+#, c-format
+msgid "%s的補假（推定）"
+msgstr "ชดเชย%s (โดยประมาณ)"
+
+#. The first working day after %s (estimated).
+#, c-format
+msgid "%s後首個工作日（推定）"
+msgstr "วันทำงานวันแรกหลัง%s (โดยประมาณ)"
+
 #. Day of the Municipality of Ilhas.
 msgid "海島市日"
 msgstr "วันเทศบาลอิลฮาส"
@@ -209,7 +224,7 @@ msgstr "วันหยุดครึ่งวันเพิ่มเติม
 #. 70th Anniversary of the Victory of the Chinese People's War of Resistance against Japanese
 #. Aggression and the World Anti-Fascist War.
 msgid "中國人民抗日戰爭暨世界反法西斯戰爭勝利七十周年紀念日"
-msgstr "ครบรอบ 70 ปีแห่งการได้รับชัยชนะจากสงครามต่อต้านญี่ปุ่นและลัทธิฟาสซิสต์โลก"
+msgstr "วันครบรอบ 70 ปีแห่งการได้รับชัยชนะจากสงครามต่อต้านญี่ปุ่นและลัทธิฟาสซิสต์โลก"
 
 #. Overlapping of the Day following National Day of the People's Republic of China and the Day
 #. following Mid-Autumn Festival.

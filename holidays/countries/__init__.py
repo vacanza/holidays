@@ -20,6 +20,7 @@ from holidays.countries.american_samoa import AmericanSamoa, AS, ASM, HolidaysAS
 from holidays.countries.andorra import Andorra, AD, AND
 from holidays.countries.angola import Angola, AO, AGO
 from holidays.countries.anguilla import Anguilla, AI, AIA
+from holidays.countries.antarctica import Antarctica, AQ, ATA
 from holidays.countries.antigua_and_barbuda import AntiguaAndBarbuda, AG, ATG
 from holidays.countries.argentina import Argentina, AR, ARG
 from holidays.countries.armenia import Armenia, AM, ARM
@@ -41,7 +42,9 @@ from holidays.countries.bolivia import Bolivia, BO, BOL
 from holidays.countries.bonaire_sint_eustatius_and_saba import BonaireSintEustatiusAndSaba, BQ, BES
 from holidays.countries.bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
 from holidays.countries.botswana import Botswana, BW, BWA
+from holidays.countries.bouvet_island import BouvetIsland, BV, BVT
 from holidays.countries.brazil import Brazil, BR, BRA
+from holidays.countries.british_indian_ocean_territory import BritishIndianOceanTerritory, IO, IOT
 from holidays.countries.british_virgin_islands import BritishVirginIslands, VG, VGB
 from holidays.countries.brunei import Brunei, BN, BRN
 from holidays.countries.bulgaria import Bulgaria, BG, BLG
@@ -111,6 +114,11 @@ from holidays.countries.guinea import Guinea, GN, GIN
 from holidays.countries.guinea_bissau import GuineaBissau, GW, GNB
 from holidays.countries.guyana import Guyana, GY, GUY
 from holidays.countries.haiti import Haiti, HT, HTI
+from holidays.countries.heard_island_and_mcdonald_islands import (
+    HeardIslandAndMcDonaldIslands,
+    HM,
+    HMD,
+)
 from holidays.countries.honduras import Honduras, HN, HND
 from holidays.countries.hongkong import HongKong, HK, HKG
 from holidays.countries.hungary import Hungary, HU, HUN
@@ -163,6 +171,7 @@ from holidays.countries.montenegro import Montenegro, ME, MNE
 from holidays.countries.montserrat import Montserrat, MS, MSR
 from holidays.countries.morocco import Morocco, MA, MOR
 from holidays.countries.mozambique import Mozambique, MZ, MOZ
+from holidays.countries.myanmar import Myanmar, MM, MMR
 from holidays.countries.namibia import Namibia, NA, NAM
 from holidays.countries.nauru import Nauru, NR, NRU
 from holidays.countries.nepal import Nepal, NP, NPL
@@ -174,6 +183,7 @@ from holidays.countries.niger import Niger, NE, NER
 from holidays.countries.nigeria import Nigeria, NG, NGA
 from holidays.countries.niue import Niue, NU, NIU
 from holidays.countries.norfolk_island import NorfolkIsland, NF, NFK
+from holidays.countries.north_korea import NorthKorea, KP, PRK
 from holidays.countries.north_macedonia import NorthMacedonia, MK, MKD
 from holidays.countries.northern_mariana_islands import NorthernMarianaIslands, MP, MNP, HolidaysMP
 from holidays.countries.norway import Norway, NO, NOR
@@ -239,6 +249,7 @@ from holidays.countries.south_korea import SouthKorea, KR, KOR, Korea
 from holidays.countries.south_sudan import SouthSudan, SS, SSD
 from holidays.countries.spain import Spain, ES, ESP
 from holidays.countries.sri_lanka import SriLanka, LK, LKA
+from holidays.countries.sudan import Sudan, SD, SDN
 from holidays.countries.suriname import Suriname, SR, SUR
 from holidays.countries.svalbard_and_jan_mayen import SvalbardAndJanMayen, SJ, SJM, HolidaysSJ
 from holidays.countries.sweden import Sweden, SE, SWE
@@ -282,6 +293,7 @@ from holidays.countries.vatican_city import VaticanCity, VA, VAT
 from holidays.countries.venezuela import Venezuela, VE, VEN
 from holidays.countries.vietnam import Vietnam, VN, VNM
 from holidays.countries.wallis_and_futuna import WallisAndFutuna, WF, WLF, HolidaysWF
+from holidays.countries.western_sahara import WesternSahara, EH, ESH
 from holidays.countries.yemen import Yemen, YE, YEM
 from holidays.countries.zambia import Zambia, ZM, ZMB
 from holidays.countries.zimbabwe import Zimbabwe, ZW, ZWE

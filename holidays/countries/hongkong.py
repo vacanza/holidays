@@ -69,8 +69,12 @@ class HongKong(
     country = "HK"
     default_language = "zh_HK"
     default_preferred_discretionary_holidays = (CHRISTMAS,)
+    # %s (estimated).
+    estimated_label = tr("%s（推定）")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s（補假，推定）")
     # %s (observed).
-    observed_label = tr("%s（慶祝）")
+    observed_label = tr("%s（補假）")
     supported_categories = (OPTIONAL, PUBLIC)
     supported_languages = ("en_HK", "en_US", "th", "zh_CN", "zh_HK")
     weekend = {SUN}

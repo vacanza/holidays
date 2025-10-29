@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.80\n"
+"Project-Id-Version: Holidays 0.81\n"
 "POT-Creation-Date: 2025-02-06 15:34+0700\n"
-"PO-Revision-Date: 2025-03-05 19:40+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2025-09-07 14:05+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,11 @@ msgstr ""
 "Generated-By: Lingva 5.0.3\n"
 "X-Generator: Poedit 3.5\n"
 "X-Source-Language: zh_MO\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s（推定）"
+msgstr "%s（推定）"
 
 #. New Year's Day.
 msgid "元旦"
@@ -189,6 +194,16 @@ msgstr "%s的补假"
 #, c-format
 msgid "%s後首個工作日"
 msgstr "%s后首个工作日"
+
+#. Compensatory rest day for %s (estimated).
+#, c-format
+msgid "%s的補假（推定）"
+msgstr "%s的补假（推定）"
+
+#. The first working day after %s (estimated).
+#, c-format
+msgid "%s後首個工作日（推定）"
+msgstr "%s后首个工作日（推定）"
 
 #. Day of the Municipality of Ilhas.
 msgid "海島市日"

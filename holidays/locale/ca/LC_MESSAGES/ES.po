@@ -1,0 +1,239 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Spain holidays ca localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.82\n"
+"POT-Creation-Date: 2023-12-26 19:23+0200\n"
+"PO-Revision-Date: 2025-09-25 12:50+0300\n"
+"Last-Translator: Oriol Romaní <oriolromanipicas@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4\n"
+"X-Source-Language: es\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimado)"
+msgstr "%s (estimat)"
+
+#. Monday following %s (estimated).
+#, c-format
+msgid "Lunes siguiente a %s (estimado)"
+msgstr "Dilluns següent a %s (estimat)"
+
+#. Monday following %s.
+#, c-format
+msgid "Lunes siguiente a %s"
+msgstr "Dilluns següent a %s"
+
+#. New Year's Day.
+msgid "Año Nuevo"
+msgstr "Cap d'Any"
+
+#. Epiphany.
+msgid "Epifanía del Señor"
+msgstr "Reis"
+
+#. Good Friday.
+msgid "Viernes Santo"
+msgstr "Divendres Sant"
+
+#. Labor Day.
+msgid "Fiesta del Trabajo"
+msgstr "Festa del Treball"
+
+#. Assumption Day.
+msgid "Asunción de la Virgen"
+msgstr "Assumpció de la Verge"
+
+#. National Day.
+msgid "Fiesta Nacional de España"
+msgstr "Festa Nacional d'Espanya"
+
+#. All Saints' Day.
+msgid "Todos los Santos"
+msgstr "Tots Sants"
+
+#. Constitution Day.
+msgid "Día de la Constitución Española"
+msgstr "Dia de la Constitució Espanyola"
+
+#. Immaculate Conception.
+msgid "Inmaculada Concepción"
+msgstr "Immaculada Concepció"
+
+#. Christmas Day.
+msgid "Natividad del Señor"
+msgstr "Nativitat del Senyor"
+
+#. Andalusia Day.
+msgid "Día de Andalucía"
+msgstr "Dia d'Andalusia"
+
+#. Maundy Thursday.
+msgid "Jueves Santo"
+msgstr "Dijous Sant"
+
+#. Saint George's Day.
+msgid "Día de San Jorge"
+msgstr "Dia de Sant Jordi"
+
+#. Asturias Day.
+msgid "Día de Asturias"
+msgstr "Dia d'Astúries"
+
+#. Easter Monday.
+msgid "Lunes de Pascua"
+msgstr "Dilluns de Pasqua"
+
+#. Saint James' Day.
+msgid "Santiago Apóstol"
+msgstr "Sant Jaume Apòstol"
+
+#. Cantabria Institutions Day.
+msgid "Día de las Instituciones de Cantabria"
+msgstr "Dia de les Institucions de Cantàbria"
+
+#. Our Lady of Bien Aparecida.
+msgid "La Bien Aparecida"
+msgstr "La Bien Aparecida"
+
+#. Santa Maria of Africa.
+msgid "Nuestra Señora de África"
+msgstr "Nostra Senyora d'Àfrica"
+
+#. Ceuta Day.
+msgid "Día de Ceuta"
+msgstr "Dia de Ceuta"
+
+#. Eid al-Adha.
+msgid "Fiesta del Sacrificio-Eidul Adha"
+msgstr "Festa del Sacrifici-Eidul Adha"
+
+#. Saint Joseph's Day.
+msgid "San José"
+msgstr "Sant Josep"
+
+#. Castile and León Day.
+msgid "Fiesta de Castilla y León"
+msgstr "Festa de Castella i Lleó"
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr "Corpus Christi"
+
+#. Castilla-La Mancha Day.
+msgid "Día de Castilla-La Mancha"
+msgstr "Dia de Castella-la Manxa"
+
+#. Day of the Canary Islands.
+msgid "Día de Canarias"
+msgstr "Dia de les Canàries"
+
+#. Whit Monday.
+msgid "Día de la Pascua Granada"
+msgstr "Dia de la Pasqua Granada"
+
+#. Saint John the Baptist.
+msgid "San Juan"
+msgstr "Sant Joan"
+
+#. National Day of Catalonia.
+msgid "Fiesta Nacional de Cataluña"
+msgstr "Diada Nacional de Catalunya"
+
+#. Saint Stephen's Day.
+msgid "San Esteban"
+msgstr "Sant Esteve"
+
+#. Shrove Tuesday.
+msgid "Martes de Carnaval"
+msgstr "Dimarts de Carnaval"
+
+#. Extremadura Day.
+msgid "Día de Extremadura"
+msgstr "Dia d'Extremadura"
+
+#. Galician Literature Day.
+msgid "Día de las Letras Gallegas"
+msgstr "Dia de les Lletres Gallegues"
+
+#. Galician National Day.
+msgid "Día Nacional de Galicia"
+msgstr "Dia Nacional de Galícia"
+
+#. Day of the Balearic Islands.
+msgid "Día de las Islas Baleares"
+msgstr "Dia de les Illes Balears"
+
+#. Murcia Day.
+msgid "Día de la Región de Murcia"
+msgstr "Dia de la Regió de Múrcia"
+
+#. Madrid Day.
+msgid "Fiesta de la Comunidad de Madrid"
+msgstr "Festa de la Comunitat de Madrid"
+
+#. Statute of Autonomy of Melilla Day.
+msgid "Estatuto de Autonomía de la Ciudad de Melilla"
+msgstr "Estatut d'Autonomia de la Ciutat de Melilla"
+
+#. Eid al-Fitr.
+msgid "Fiesta del Eid Fitr"
+msgstr "Festa de l'Eid Fitr"
+
+#. Eid al-Adha.
+msgid "Fiesta del Sacrificio-Aid Al Adha"
+msgstr "Festa del Sacrifici-Aid Al Adha"
+
+#. Saint Francis Xavier's Day.
+msgid "San Francisco Javier"
+msgstr "Sant Francesc Xavier"
+
+#. País Vasco Day.
+msgid "Día del País Vasco"
+msgstr "Dia del País Basc"
+
+#. La Rioja Day.
+msgid "Día de La Rioja"
+msgstr "Dia de La Rioja"
+
+#. Valencian Community Day.
+msgid "Día de la Comunidad Valenciana"
+msgstr "Dia de la Comunitat Valenciana"
+
+#. Day following Saint Joseph's Day.
+msgid "Día siguiente a San José"
+msgstr "Dia següent a Sant Josep"
+
+#. Saint Joseph's Day Transfer.
+msgid "Traslado de San José"
+msgstr "Trasllat de Sant Josep"
+
+#. 80th Anniversary of the first Basque Government.
+msgid "80 Aniversario del primer Gobierno Vasco"
+msgstr "80è Aniversari del primer Govern Basc"
+
+#. V Centennial of the Circumnavigation of the World.
+msgid "V Centenario Vuelta al Mundo"
+msgstr "V Centenari de la Volta al Món"
+
+#. The Fallas.
+msgid "Lunes de Fallas"
+msgstr "Dilluns de les Falles"
