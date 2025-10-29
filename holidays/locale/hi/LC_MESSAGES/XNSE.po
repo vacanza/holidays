@@ -125,4 +125,4 @@ msgstr "बकरी ईद"
 
 #. New Year's Day.
 msgid "New Year"
-msgstr "नया वर"
+msgstr "नया वर्ष"
