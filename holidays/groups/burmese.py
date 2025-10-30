@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.burmese import _BurmeseLunisolar
 from holidays.calendars.gregorian import _timedelta
@@ -24,8 +23,8 @@ class BurmeseCalendarHolidays:
         self._burmese_calendar = _BurmeseLunisolar()
 
     def _add_burmese_calendar_holiday(
-        self, name: str, dt: Optional[date] = None, days_delta: int = 0
-    ) -> Optional[date]:
+        self, name: str, dt: date | None = None, days_delta: int = 0
+    ) -> date | None:
         """Add Burmese calendar holiday."""
 
         if dt is None:
@@ -61,7 +60,7 @@ class BurmeseCalendarHolidays:
             )
         }
 
-    def _add_kason_full_moon_day(self, name: str) -> Optional[date]:
+    def _add_kason_full_moon_day(self, name: str) -> date | None:
         """Add Full Moon Day of Kason holiday.
 
         Vesak is known as the Full Moon Day of Kason, which is the second month
@@ -79,7 +78,7 @@ class BurmeseCalendarHolidays:
             name, self._burmese_calendar.kason_full_moon_date(self._year)
         )
 
-    def _add_myanmar_diwali(self, name: str) -> Optional[date]:
+    def _add_myanmar_diwali(self, name: str) -> date | None:
         """Add Myanmar Diwali holiday.
 
         Diwali (Deepavali, Festival of Lights) is one of the most important festivals
@@ -98,7 +97,7 @@ class BurmeseCalendarHolidays:
             name, self._burmese_calendar.tazaungmon_waxing_moon_date(self._year)
         )
 
-    def _add_myanmar_national_day(self, name: str) -> Optional[date]:
+    def _add_myanmar_national_day(self, name: str) -> date | None:
         """Add Myanmar National Day holiday.
 
         National Day is a public holiday in Myanmar, marking the anniversary of the first
@@ -163,7 +162,7 @@ class BurmeseCalendarHolidays:
             if (dt := self._add_holiday(name, _timedelta(akya, delta)))
         }
 
-    def _add_tabaung_full_moon_day(self, name: str) -> Optional[date]:
+    def _add_tabaung_full_moon_day(self, name: str) -> date | None:
         """Add Full Moon Day of Tabaung holiday.
 
         Māgha Pūjā (also written as Makha Bucha Day, Meak Bochea) is a Buddhist festival
@@ -181,7 +180,7 @@ class BurmeseCalendarHolidays:
             name, self._burmese_calendar.tabaung_full_moon_date(self._year - 1)
         )
 
-    def _add_tazaungmon_full_moon_day(self, name: str) -> Optional[date]:
+    def _add_tazaungmon_full_moon_day(self, name: str) -> date | None:
         """Add Full Moon Day of Tazaungmon holiday.
 
         The Tazaungdaing Festival, also known as the Festival of Lights, held on the full moon day
@@ -199,7 +198,7 @@ class BurmeseCalendarHolidays:
             name, self._burmese_calendar.tazaungmon_full_moon_date(self._year)
         )
 
-    def _add_thadingyut_full_moon_eve(self, name: str) -> Optional[date]:
+    def _add_thadingyut_full_moon_eve(self, name: str) -> date | None:
         """Add Pre-Full Moon Day of Thadingyut holiday.
 
         The Thadingyut Festival, also known as the Lighting Festival of Myanmar, is held
@@ -217,7 +216,7 @@ class BurmeseCalendarHolidays:
             name, self._burmese_calendar.thadingyut_full_moon_date(self._year), days_delta=-1
         )
 
-    def _add_thadingyut_full_moon_day(self, name: str) -> Optional[date]:
+    def _add_thadingyut_full_moon_day(self, name: str) -> date | None:
         """Add Full Moon Day of Thadingyut holiday.
 
         The Thadingyut Festival, also known as the Lighting Festival of Myanmar, is held
@@ -235,7 +234,7 @@ class BurmeseCalendarHolidays:
             name, self._burmese_calendar.thadingyut_full_moon_date(self._year)
         )
 
-    def _add_thadingyut_full_moon_day_two(self, name: str) -> Optional[date]:
+    def _add_thadingyut_full_moon_day_two(self, name: str) -> date | None:
         """Add Post-Full Moon Day of Thadingyut holiday.
 
         The Thadingyut Festival, also known as the Lighting Festival of Myanmar, is held
@@ -253,7 +252,7 @@ class BurmeseCalendarHolidays:
             name, self._burmese_calendar.thadingyut_full_moon_date(self._year), days_delta=+1
         )
 
-    def _add_waso_full_moon_day(self, name: str) -> Optional[date]:
+    def _add_waso_full_moon_day(self, name: str) -> date | None:
         """Add Full Moon Day of Waso holiday.
 
         Vassa is the three-month annual retreat observed by Theravada Buddhists.

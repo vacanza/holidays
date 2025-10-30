@@ -23,7 +23,6 @@ __all__ = (
 import warnings
 from collections.abc import Iterable
 from functools import cache
-from typing import Optional, Union
 
 from holidays.holiday_base import CategoryArg, HolidayBase
 from holidays.registry import EntityLoader
@@ -31,14 +30,14 @@ from holidays.registry import EntityLoader
 
 def country_holidays(
     country: str,
-    subdiv: Optional[str] = None,
-    years: Optional[Union[int, Iterable[int]]] = None,
+    subdiv: str | None = None,
+    years: int | Iterable[int] | None = None,
     expand: bool = True,
     observed: bool = True,
-    prov: Optional[str] = None,
-    state: Optional[str] = None,
-    language: Optional[str] = None,
-    categories: Optional[CategoryArg] = None,
+    prov: str | None = None,
+    state: str | None = None,
+    language: str | None = None,
+    categories: CategoryArg | None = None,
 ) -> HolidayBase:
     """Return a new dictionary-like [HolidayBase][holidays.holiday_base.HolidayBase] object.
 
@@ -230,11 +229,11 @@ def country_holidays(
 
 def financial_holidays(
     market: str,
-    subdiv: Optional[str] = None,
-    years: Optional[Union[int, Iterable[int]]] = None,
+    subdiv: str | None = None,
+    years: int | Iterable[int] | None = None,
     expand: bool = True,
     observed: bool = True,
-    language: Optional[str] = None,
+    language: str | None = None,
 ) -> HolidayBase:
     """Return a new dictionary-like [HolidayBase][holidays.holiday_base.HolidayBase] object.
 
@@ -315,12 +314,12 @@ def financial_holidays(
 
 def CountryHoliday(  # noqa: N802
     country: str,
-    subdiv: Optional[str] = None,
-    years: Optional[Union[int, Iterable[int]]] = None,
+    subdiv: str | None = None,
+    years: int | Iterable[int] | None = None,
     expand: bool = True,
     observed: bool = True,
-    prov: Optional[str] = None,
-    state: Optional[str] = None,
+    prov: str | None = None,
+    state: str | None = None,
 ) -> HolidayBase:
     """
     Note:
