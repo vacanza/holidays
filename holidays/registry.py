@@ -13,7 +13,7 @@
 import importlib
 from collections.abc import Iterable
 from threading import RLock
-from typing import Any, Optional
+from typing import Any
 
 from holidays.holiday_base import HolidayBase
 
@@ -327,7 +327,7 @@ class EntityLoader:
         cls = self.get_entity()
         return cls(*args, **kwargs)  # type: ignore[misc, operator]
 
-    def __getattr__(self, name: str) -> Optional[Any]:
+    def __getattr__(self, name: str) -> Any | None:
         """Return attribute of a lazy-loaded entity."""
         cls = self.get_entity()
         return getattr(cls, name)
@@ -339,7 +339,7 @@ class EntityLoader:
             f"use the '{self.module_name}.{self.entity_name}' class directly."
         )
 
-    def get_entity(self) -> Optional[HolidayBase]:
+    def get_entity(self) -> HolidayBase | None:
         """Return lazy-loaded entity."""
         if self.entity is None:
             # Avoid deadlock due to importlib.import_module not being thread-safe by caching all
