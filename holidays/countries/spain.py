@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, MAY, JUN, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import JAN, MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import (
     ChristianHolidays,
     IslamicHolidays,
@@ -321,7 +321,8 @@ class Spain(
             # Maundy Thursday.
             self._add_holy_thursday(tr("Jueves Santo"))
 
-        if self._year in {2013, 2015, 2019, 2020, 2024}:
+        # Add when Cantabria Institutions Day is on Sunday.
+        if self._is_sunday(JUL, 28) or self._year in {2015, 2020}:
             # Easter Monday.
             self._add_easter_monday(tr("Lunes de Pascua"))
 
@@ -329,17 +330,20 @@ class Spain(
             # Labor Day.
             self._move_holiday(self._add_labor_day(tr("Fiesta del Trabajo")))
 
-        if self._year in {2012, 2013, 2014, 2019, 2024}:
+        # Add when Our Lady of Bien Aparecida is on Sunday.
+        if self._is_sunday(SEP, 15) or self._year in {2012, 2014}:
             # Saint James' Day.
             self._add_saint_james_day(tr("Santiago Apóstol"))
 
-        if self._year not in {2012, 2015, 2019, 2024}:
-            # Cantabria Institutions Day.
-            self._add_holiday_jul_28(tr("Día de las Instituciones de Cantabria"))
+        if self._year not in {2012, 2015}:
+            self._add_observed(
+                # Cantabria Institutions Day.
+                self._add_holiday_jul_28(tr("Día de las Instituciones de Cantabria")),
+                rule=SUN_TO_NONE,
+            )
 
-        if self._year not in {2013, 2019, 2024}:
-            # Our Lady of Bien Aparecida.
-            self._add_holiday_sep_15(tr("La Bien Aparecida"))
+        # Our Lady of Bien Aparecida.
+        self._add_observed(self._add_holiday_sep_15(tr("La Bien Aparecida")), rule=SUN_TO_NONE)
 
         if self._year == 2008:
             # National Day.
@@ -383,9 +387,9 @@ class Spain(
             # Santa Maria of Africa.
             self._add_holiday_aug_5(tr("Nuestra Señora de África"))
 
-        if self._year not in {2011, 2012, 2015, 2018, 2025}:
+        if self._year not in {2011, 2015, 2025}:
             # Ceuta Day.
-            self._add_holiday_sep_2(tr("Día de Ceuta"))
+            self._add_observed(self._add_holiday_sep_2(tr("Día de Ceuta")), rule=SUN_TO_NONE)
 
         if self._year <= 2014:
             # National Day.
@@ -537,21 +541,22 @@ class Spain(
         # Easter Monday.
         self._add_easter_monday(tr("Lunes de Pascua"))
 
-        if self._year in {2011, 2016, 2022}:
+        # Add when Labor Day or Christmas Day falls on Sunday.
+        if self._is_sunday((MAY, 1)):
             # Whit Monday.
             self._add_whit_monday(tr("Día de la Pascua Granada"))
 
-        if self._year not in {2012, 2018}:
-            # Saint John the Baptist.
-            self._add_saint_johns_day(tr("San Juan"))
+        # Saint John the Baptist.
+        self._add_observed(self._add_saint_johns_day(tr("San Juan")), rule=SUN_TO_NONE)
 
-        if self._year not in {2011, 2022}:
+        self._add_observed(
             # National Day of Catalonia.
-            self._add_holiday_sep_11(tr("Fiesta Nacional de Cataluña"))
+            self._add_holiday_sep_11(tr("Fiesta Nacional de Cataluña")),
+            rule=SUN_TO_NONE,
+        )
 
-        if self._year not in {2010, 2021}:
-            # Saint Stephen's Day.
-            self._add_christmas_day_two(tr("San Esteban"))
+        # Saint Stephen's Day.
+        self._add_observed(self._add_christmas_day_two(tr("San Esteban")), rule=SUN_TO_NONE)
 
     def _populate_subdiv_ex_public_holidays(self):
         if self._year == 2012:
@@ -595,7 +600,7 @@ class Spain(
         self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
 
     def _populate_subdiv_ga_public_holidays(self):
-        if self._year in {2008, 2009, 2010, 2011, 2026} or 2019 <= self._year <= 2021:
+        if self._year in {2008, 2009, 2010, 2011, 2019, 2020, 2021, 2026}:
             # Saint Joseph's Day.
             self._move_holiday(self._add_saint_josephs_day(tr("San José")))
 
@@ -612,9 +617,11 @@ class Spain(
             # Saint John the Baptist.
             self._add_saint_johns_day(tr("San Juan"))
 
-        if self._year != 2021:
+        self._add_observed(
             # Galician National Day.
-            self._add_holiday_jul_25(tr("Día Nacional de Galicia"))
+            self._add_holiday_jul_25(tr("Día Nacional de Galicia")),
+            rule=SUN_TO_NONE,
+        )
 
         if self._year == 2015:
             # All Saints' Day.
@@ -656,7 +663,7 @@ class Spain(
 
         if self._year in {2008, 2009, 2013, 2014, 2019, 2020, 2025, 2026}:
             # Saint Stephen's Day.
-            self._add_christmas_day_two(tr("San Esteban"))
+            self._add_observed(self._add_christmas_day_two(tr("San Esteban")), rule=SUN_TO_NONE)
 
     def _populate_subdiv_mc_public_holidays(self):
         if self._year >= 2017:
@@ -667,9 +674,9 @@ class Spain(
             # Epiphany.
             self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
 
-        if self._year not in {2017, 2022, 2023}:
+        if self._year != 2022:
             # Saint Joseph's Day.
-            self._move_holiday(self._add_saint_josephs_day(tr("San José")))
+            self._add_observed(self._add_saint_josephs_day(tr("San José")), rule=SUN_TO_NONE)
 
         # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))
@@ -701,7 +708,12 @@ class Spain(
         # Epiphany.
         self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
 
-        if self._year in {2009, 2010, 2012, 2015, 2017, 2021, 2023}:
+        # Add when New Year's Day, Assumption Day, or All Saints' Day (until 2015) falls on Sunday.
+        if (
+            self._is_sunday(JAN, 1)
+            or self._is_sunday(AUG, 15)
+            or (self._year <= 2015 and self._is_sunday(NOV, 1))
+        ):
             # Saint Joseph's Day.
             self._move_holiday(self._add_saint_josephs_day(tr("San José")))
 
@@ -716,7 +728,8 @@ class Spain(
             # Corpus Christi.
             self._add_corpus_christi_day(tr("Corpus Christi"))
 
-        if self._year in {2008, 2011, 2016, 2022, 2024, 2025}:
+        # Add when Labor Day falls on Sunday.
+        if self._is_sunday(MAY, 1) or self._year in {2008, 2024, 2025}:
             # Saint James' Day.
             self._add_saint_james_day(tr("Santiago Apóstol"))
 
@@ -831,7 +844,13 @@ class Spain(
         self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
 
     def _populate_subdiv_pv_public_holidays(self):
-        if self._year in {2008, 2009, 2010, 2015, 2019, 2020, 2021, 2026}:
+        # Add when Epiphany (non-País Vasco Day years), Assumption Day,
+        # or All Saints' Day falls on Sunday.
+        if (
+            ((self._year <= 2010 or self._year >= 2015) and self._is_sunday(JAN, 6))
+            or self._is_sunday(AUG, 15)
+            or self._is_sunday(NOV, 1)
+        ):
             # Saint Joseph's Day.
             self._add_saint_josephs_day(tr("San José"))
 
@@ -841,9 +860,9 @@ class Spain(
         # Easter Monday.
         self._add_easter_monday(tr("Lunes de Pascua"))
 
-        if self._year not in {2010, 2012, 2014, 2018, 2021}:
+        if self._year not in {2012, 2014, 2018}:
             # Saint James' Day.
-            self._add_saint_james_day(tr("Santiago Apóstol"))
+            self._add_observed(self._add_saint_james_day(tr("Santiago Apóstol")), rule=SUN_TO_NONE)
 
         if 2011 <= self._year <= 2014:
             # País Vasco Day.
@@ -864,7 +883,8 @@ class Spain(
         # La Rioja Day.
         self._move_holiday(self._add_holiday_jun_9(tr("Día de La Rioja")))
 
-        if self._year in {2008, 2011, 2016}:
+        # Add when Christmas Day (until 2016) falls on Sunday.
+        if (self._year <= 2016 and self._is_sunday(DEC, 25)) or self._year == 2008:
             # Saint James' Day.
             self._add_saint_james_day(tr("Santiago Apóstol"))
 
@@ -880,11 +900,15 @@ class Spain(
             self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
 
     def _populate_subdiv_vc_public_holidays(self):
-        if self._year not in {2017, 2023}:
-            # Saint Joseph's Day.
-            self._add_saint_josephs_day(tr("San José"))
+        # Saint Joseph's Day.
+        self._add_observed(self._add_saint_josephs_day(tr("San José")), rule=SUN_TO_NONE)
 
-        if self._year in {2008, 2009, 2011, 2016, 2017, 2022}:
+        # Add when Saint Joseph's Day (until 2017) or Valencian Community Day falls on Sunday.
+        if (
+            (self._year <= 2017 and self._is_sunday(MAR, 19))
+            or self._is_sunday(OCT, 9)
+            or self._year in {2008, 2009}
+        ):
             # Maundy Thursday.
             self._add_holy_thursday(tr("Jueves Santo"))
 
