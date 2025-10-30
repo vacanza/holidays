@@ -47,7 +47,7 @@ class _SinhalaLunar:
     """
 
     START_YEAR = 2003
-    END_YEAR = 2025
+    END_YEAR = 2026
 
     BAK_POYA_DATES = {
         2003: (APR, 16),
@@ -73,6 +73,7 @@ class _SinhalaLunar:
         2023: (APR, 5),
         2024: (APR, 23),
         2025: (APR, 12),
+        2026: (APR, 1),
     }
 
     BINARA_POYA_DATES = {
@@ -99,6 +100,7 @@ class _SinhalaLunar:
         2023: (SEP, 29),
         2024: (SEP, 17),
         2025: (SEP, 7),
+        2026: (SEP, 26),
     }
 
     DURUTHU_POYA_DATES = {
@@ -124,6 +126,7 @@ class _SinhalaLunar:
         2023: (JAN, 6),
         2024: (JAN, 25),
         2025: (JAN, 13),
+        2026: (JAN, 3),
     }
 
     ESALA_POYA_DATES = {
@@ -150,6 +153,7 @@ class _SinhalaLunar:
         2023: (AUG, 1),
         2024: (JUL, 20),
         2025: (JUL, 10),
+        2026: (JUL, 29),
     }
 
     IL_POYA_DATES = {
@@ -176,6 +180,7 @@ class _SinhalaLunar:
         2023: (NOV, 26),
         2024: (NOV, 15),
         2025: (NOV, 5),
+        2026: (NOV, 24),
     }
 
     MEDIN_POYA_DATES = {
@@ -202,6 +207,7 @@ class _SinhalaLunar:
         2023: (MAR, 6),
         2024: (MAR, 24),
         2025: (MAR, 13),
+        2026: (MAR, 2),
     }
 
     NAWAM_POYA_DATES = {
@@ -228,6 +234,7 @@ class _SinhalaLunar:
         2023: (FEB, 5),
         2024: (FEB, 23),
         2025: (FEB, 12),
+        2026: (FEB, 1),
     }
 
     NIKINI_POYA_DATES = {
@@ -254,6 +261,7 @@ class _SinhalaLunar:
         2023: (AUG, 30),
         2024: (AUG, 19),
         2025: (AUG, 8),
+        2026: (AUG, 27),
     }
 
     POSON_POYA_DATES = {
@@ -280,6 +288,7 @@ class _SinhalaLunar:
         2023: (JUN, 3),
         2024: (JUN, 21),
         2025: (JUN, 10),
+        2026: (JUN, 29),
     }
 
     UNDUVAP_POYA_DATES = {
@@ -306,6 +315,7 @@ class _SinhalaLunar:
         2023: (DEC, 26),
         2024: (DEC, 14),
         2025: (DEC, 4),
+        2026: (DEC, 23),
     }
 
     VAP_POYA_DATES = {
@@ -332,6 +342,7 @@ class _SinhalaLunar:
         2023: (OCT, 28),
         2024: (OCT, 17),
         2025: (OCT, 6),
+        2026: (OCT, 25),
     }
 
     VESAK_POYA_DATES = {
@@ -358,6 +369,7 @@ class _SinhalaLunar:
         2023: (MAY, 5),
         2024: (MAY, 23),
         2025: (MAY, 12),
+        2026: (MAY, 1),
     }
 
     def _get_holiday(self, holiday: str, year: int) -> tuple[Optional[date], bool]:
