@@ -11,13 +11,12 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN, _timedelta
 from holidays.holiday_base import DateArg, HolidayBase
 
 
-class ObservedRule(dict[int, Optional[int]]):
+class ObservedRule(dict[int, int | None]):
     __slots__ = ()
 
     def __add__(self, other):
@@ -106,8 +105,8 @@ class ObservedHolidayBase(HolidayBase):
 
     def __init__(
         self,
-        observed_rule: Optional[ObservedRule] = None,
-        observed_since: Optional[int] = None,
+        observed_rule: ObservedRule | None = None,
+        observed_since: int | None = None,
         *args,
         **kwargs,
     ):
@@ -127,7 +126,7 @@ class ObservedHolidayBase(HolidayBase):
                 return dt_work
         return dt
 
-    def _get_observed_date(self, dt: date, rule: ObservedRule) -> Optional[date]:
+    def _get_observed_date(self, dt: date, rule: ObservedRule) -> date | None:
         delta = rule.get(dt.weekday(), 0)
         if delta:
             return (
@@ -143,13 +142,13 @@ class ObservedHolidayBase(HolidayBase):
 
     def _add_observed(
         self,
-        dt: Optional[DateArg] = None,
-        name: Optional[str] = None,
+        dt: DateArg | None = None,
+        name: str | None = None,
         *,
-        rule: Optional[ObservedRule] = None,
+        rule: ObservedRule | None = None,
         force_observed: bool = False,
         show_observed_label: bool = True,
-    ) -> tuple[bool, Optional[date]]:
+    ) -> tuple[bool, date | None]:
         if dt is None:
             return False, None
 
@@ -201,10 +200,10 @@ class ObservedHolidayBase(HolidayBase):
         self,
         dt: date,
         *,
-        rule: Optional[ObservedRule] = None,
+        rule: ObservedRule | None = None,
         force_observed: bool = False,
         show_observed_label: bool = True,
-    ) -> tuple[bool, Optional[date]]:
+    ) -> tuple[bool, date | None]:
         is_observed, dt_observed = self._add_observed(
             dt, rule=rule, force_observed=force_observed, show_observed_label=show_observed_label
         )
@@ -213,8 +212,8 @@ class ObservedHolidayBase(HolidayBase):
         return is_observed, dt_observed if is_observed else dt
 
     def _move_holiday_forced(
-        self, dt: date, rule: Optional[ObservedRule] = None
-    ) -> tuple[bool, Optional[date]]:
+        self, dt: date, rule: ObservedRule | None = None
+    ) -> tuple[bool, date | None]:
         return self._move_holiday(dt, rule=rule, force_observed=True, show_observed_label=False)
 
     def _populate_observed(self, dts: set[date], *, multiple: bool = False) -> None:
