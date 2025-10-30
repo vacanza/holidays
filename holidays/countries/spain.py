@@ -92,7 +92,7 @@ class Spain(
             * [2025](https://web.archive.org/web/20250622235218/https://www.lexnavarra.navarra.es/detalle.asp?r=57122)
             * [2026](https://web.archive.org/web/20251028120003/https://www.lexnavarra.navarra.es/detalle.asp?r=57937)
 
-    Holidays checked with official sources for 2010-2026 only.
+    Holidays checked with official sources for 2008-2026 only.
     """
 
     country = "ES"
@@ -756,8 +756,10 @@ class Spain(
 
         if self._year != 2024:
             self._move_holiday(
-                # Day of Our Lady of Victory.
-                self._add_holiday_sep_8(tr("Día de Nuestra Señora la Virgen de la Victoria"))
+                self._add_nativity_of_mary_day(
+                    # Day of Our Lady of Victory.
+                    tr("Día de Nuestra Señora la Virgen de la Victoria")
+                )
             )
 
         if self._year != 2023:

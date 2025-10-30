@@ -112,7 +112,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 1987:
             # Feast of Our Lady of Victories.
-            self._add_holiday_sep_8(tr("Jum il-Vitorja"))
+            self._add_nativity_of_mary_day(tr("Jum il-Vitorja"))
 
         # Jum l-Indipendenza
         # Status: In-Use.
