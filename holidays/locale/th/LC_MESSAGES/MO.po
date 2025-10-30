@@ -14,17 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.84\n"
 "POT-Creation-Date: 2025-02-06 15:34+0700\n"
-"PO-Revision-Date: 2025-09-07 14:05+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-10-29 22:34+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.3\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.8\n"
 "X-Source-Language: zh_MO\n"
 
 #. %s (estimated).
@@ -224,7 +224,7 @@ msgstr "วันหยุดครึ่งวันเพิ่มเติม
 #. 70th Anniversary of the Victory of the Chinese People's War of Resistance against Japanese
 #. Aggression and the World Anti-Fascist War.
 msgid "中國人民抗日戰爭暨世界反法西斯戰爭勝利七十周年紀念日"
-msgstr "ครบรอบ 70 ปีแห่งการได้รับชัยชนะจากสงครามต่อต้านญี่ปุ่นและลัทธิฟาสซิสต์โลก"
+msgstr "วันครบรอบ 70 ปีแห่งการได้รับชัยชนะจากสงครามต่อต้านญี่ปุ่นและลัทธิฟาสซิสต์โลก"
 
 #. Overlapping of the Day following National Day of the People's Republic of China and the Day
 #. following Mid-Autumn Festival.
