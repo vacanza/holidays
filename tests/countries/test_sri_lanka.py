@@ -20,7 +20,7 @@ from tests.common import CommonCountryTests
 class TestSriLanka(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(2003, 2026)
+        cls.full_range = range(2003, 2027)
         super().setUpClass(SriLanka, years=cls.full_range)
 
     def test_country_aliases(self):
@@ -181,7 +181,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2024-10-31",
             "2025-10-20",
         )
-        self.assertHolidayName(name, range(2004, 2026))
+        self.assertHolidayName(name, range(2004, 2027))
         self.assertNoHolidayName(name, 2003)
 
     def test_maha_sivarathri(self):
@@ -211,7 +211,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2024-01-25",
             "2025-01-13",
         )
-        self.assertHolidayNameCount(name, 1, range(2003, 2009), range(2011, 2026))
+        self.assertHolidayNameCount(name, 1, range(2003, 2009), range(2011, 2027))
         self.assertHolidayNameCount(name, 2, 2009)
 
     def test_nawam_full_moon_poya_day(self):

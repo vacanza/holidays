@@ -194,10 +194,8 @@ class SriLanka(
             2025: (FEB, 26),
             2026: (FEB, 15),
         }
-        maha_sivarathri_date = maha_sivarathri_dates.get(self._year)
-        if maha_sivarathri_date:
-            # Maha Sivarathri Day.
-            self._add_holiday(tr("මහ සිවරාත්රි දිනය"), maha_sivarathri_date)
+        # Maha Sivarathri Day.
+        self._add_holiday(tr("මහ සිවරාත්රි දිනය"), maha_sivarathri_dates.get(self._year))
 
         # Deepavali was a working day in 2003.
         if self._year >= 2004:
