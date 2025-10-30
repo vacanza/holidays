@@ -542,7 +542,7 @@ class Spain(
         self._add_easter_monday(tr("Lunes de Pascua"))
 
         # Add when Labor Day or Christmas Day falls on Sunday.
-        if self._is_sunday((MAY, 1)):
+        if self._is_sunday(MAY, 1):
             # Whit Monday.
             self._add_whit_monday(tr("Día de la Pascua Granada"))
 
@@ -663,7 +663,7 @@ class Spain(
 
         if self._year in {2008, 2009, 2013, 2014, 2019, 2020, 2025, 2026}:
             # Saint Stephen's Day.
-            self._add_observed(self._add_christmas_day_two(tr("San Esteban")), rule=SUN_TO_NONE)
+            self._add_christmas_day_two(tr("San Esteban"))
 
     def _populate_subdiv_mc_public_holidays(self):
         if self._year >= 2017:
