@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.84\n"
 "POT-Creation-Date: 2023-12-26 19:23+0200\n"
-"PO-Revision-Date: 2025-10-29 20:46+0700\n"
+"PO-Revision-Date: 2025-10-30 12:43+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -112,7 +112,7 @@ msgstr "День Інституцій Кантабрії"
 
 #. Our Lady of Bien Aparecida.
 msgid "La Bien Aparecida"
-msgstr "День Богоматері Обʼявлення"
+msgstr "День Пресвятої Богородиці Обʼявленої"
 
 #. Saint Anthony's Day.
 msgid "San Antonio"
@@ -120,7 +120,7 @@ msgstr "День Святого Антонія"
 
 #. Santa Maria of Africa.
 msgid "Nuestra Señora de África"
-msgstr "День Богоматері Африканської"
+msgstr "День Пресвятої Богородиці Африканської"
 
 #. Ceuta Day.
 msgid "Día de Ceuta"
