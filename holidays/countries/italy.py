@@ -518,7 +518,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
         self._add_holiday_jul_4("Sant'Antonino di Piacenza")
 
     def _populate_subdiv_pd_public_holidays(self):
-        self._add_holiday_jun_13("Sant'Antonio di Padova")
+        self._add_saint_anthonys_day("Sant'Antonio di Padova")
 
     def _populate_subdiv_pe_public_holidays(self):
         self._add_holiday_oct_10("San Cetteo")
