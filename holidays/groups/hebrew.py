@@ -12,7 +12,6 @@
 
 from collections.abc import Iterable
 from datetime import date
-from typing import Union
 
 from holidays.calendars.gregorian import _timedelta
 from holidays.calendars.hebrew import _HebrewLunisolar
@@ -27,7 +26,7 @@ class HebrewCalendarHolidays:
         self._hebrew_calendar = _HebrewLunisolar()
 
     def _add_hebrew_calendar_holiday(
-        self, name: str, holiday_date: date, days_delta: Union[int, Iterable[int]] = 0
+        self, name: str, holiday_date: date, days_delta: int | Iterable[int] = 0
     ) -> set[date]:
         """
         Add Hebrew calendar holiday.
@@ -38,7 +37,7 @@ class HebrewCalendarHolidays:
             if (dt := self._add_holiday(name, _timedelta(holiday_date, delta)))
         }
 
-    def _add_hanukkah(self, name: str, days_delta: Union[int, Iterable[int]] = 0) -> set[date]:
+    def _add_hanukkah(self, name: str, days_delta: int | Iterable[int] = 0) -> set[date]:
         """
         Add Hanukkah.
         In some Gregorian years, there may be two Hanukkah dates.
@@ -53,7 +52,7 @@ class HebrewCalendarHolidays:
             for dt in self._add_hebrew_calendar_holiday(name, hanukkah_dt, days_delta)
         }
 
-    def _add_lag_baomer(self, name: str, days_delta: Union[int, Iterable[int]] = 0) -> set[date]:
+    def _add_lag_baomer(self, name: str, days_delta: int | Iterable[int] = 0) -> set[date]:
         """
         Add Lag BaOmer.
 
@@ -68,7 +67,7 @@ class HebrewCalendarHolidays:
             days_delta,
         )
 
-    def _add_passover(self, name: str, days_delta: Union[int, Iterable[int]] = 0) -> set[date]:
+    def _add_passover(self, name: str, days_delta: int | Iterable[int] = 0) -> set[date]:
         """
         Add Passover.
 
@@ -96,9 +95,7 @@ class HebrewCalendarHolidays:
             self._hebrew_calendar.purim_date(self._year),  # type: ignore[arg-type]
         )
 
-    def _add_rosh_hashanah(
-        self, name: str, days_delta: Union[int, Iterable[int]] = 0
-    ) -> set[date]:
+    def _add_rosh_hashanah(self, name: str, days_delta: int | Iterable[int] = 0) -> set[date]:
         """
         Add Rosh Hashanah.
 
@@ -124,7 +121,7 @@ class HebrewCalendarHolidays:
             self._hebrew_calendar.shavuot_date(self._year),  # type: ignore[arg-type]
         )
 
-    def _add_sukkot(self, name: str, days_delta: Union[int, Iterable[int]] = 0) -> set[date]:
+    def _add_sukkot(self, name: str, days_delta: int | Iterable[int] = 0) -> set[date]:
         """
         Add Sukkot.
 
@@ -138,7 +135,7 @@ class HebrewCalendarHolidays:
             days_delta,
         )
 
-    def _add_yom_kippur(self, name: str, days_delta: Union[int, Iterable[int]] = 0) -> set[date]:
+    def _add_yom_kippur(self, name: str, days_delta: int | Iterable[int] = 0) -> set[date]:
         """
         Add Yom Kippur.
 
