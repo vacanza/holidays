@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.uruguay import Uruguay, UY, URY
+from holidays.countries.uruguay import Uruguay
 from tests.common import CommonCountryTests
 
 
@@ -20,14 +20,6 @@ class TestUruguay(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Uruguay)
-
-    def test_country_aliases(self):
-        self.assertAliases(Uruguay, UY, URY)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Uruguay(categories=Uruguay.supported_categories, years=self.start_year - 1)
-        )
 
     def test_special_holidays(self):
         self.assertHoliday(

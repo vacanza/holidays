@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.bahamas import Bahamas, BS, BHS
+from holidays.countries.bahamas import Bahamas
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestBahamas(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Bahamas)
-
-    def test_country_aliases(self):
-        self.assertAliases(Bahamas, BS, BHS)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Bahamas(years=self.start_year - 1))
 
     def test_special_public_holidays(self):
         self.assertHoliday("2022-09-19")

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.colombia import Colombia, CO, COL
+from holidays.countries.colombia import Colombia
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestColombia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Colombia)
-
-    def test_country_aliases(self):
-        self.assertAliases(Colombia, CO, COL)
 
     def test_new_years_day(self):
         self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))

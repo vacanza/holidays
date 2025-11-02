@@ -14,8 +14,8 @@ from datetime import date
 from unittest import TestCase
 
 from holidays.calendars.gregorian import _timedelta
-from holidays.constants import HALF_DAY, PUBLIC
-from holidays.countries.turkey import Turkey, TR, TUR
+from holidays.constants import HALF_DAY
+from holidays.countries.turkey import Turkey
 from tests.common import CommonCountryTests
 
 
@@ -23,12 +23,6 @@ class TestTurkey(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Turkey, years=range(1936, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Turkey, TR, TUR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Turkey(categories=(HALF_DAY, PUBLIC), years=1935))
 
     def test_special_holidays(self):
         self.assertHoliday("1999-12-31")

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.angola import Angola, AO, AGO
+from holidays.countries.angola import Angola
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestAngola(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Angola, years_non_observed=range(2000, 2030))
-
-    def test_country_aliases(self):
-        self.assertAliases(Angola, AO, AGO)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Angola(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday("2017-08-23")

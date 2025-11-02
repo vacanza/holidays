@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import UNOFFICIAL
-from holidays.countries.united_states import UnitedStates, US, USA
+from holidays.countries.united_states import UnitedStates
 from tests.common import CommonCountryTests
 
 
@@ -21,9 +21,6 @@ class TestUnitedStates(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(UnitedStates, years_non_observed=range(2000, 2024))
-
-    def test_country_aliases(self):
-        self.assertAliases(UnitedStates, US, USA)
 
     def test_subdiv_deprecation(self):
         self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")

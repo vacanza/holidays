@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao, BVMF, B3
+from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao
 from tests.common import CommonFinancialTests
 
 
@@ -20,12 +20,6 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(BrasilBolsaBalcao)
-
-    def test_market_aliases(self):
-        self.assertAliases(BrasilBolsaBalcao, BVMF, B3)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(BrasilBolsaBalcao(years=self.start_year - 1))
 
     def test_universal_fraternization_day(self):
         name = "Confraternização Universal"

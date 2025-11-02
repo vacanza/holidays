@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.botswana import Botswana, BW, BWA
+from holidays.countries.botswana import Botswana
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestBotswana(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Botswana, years_non_observed=range(2010, 2024))
-
-    def test_country_aliases(self):
-        self.assertAliases(Botswana, BW, BWA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Botswana(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday("2019-07-02")

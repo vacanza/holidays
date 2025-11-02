@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.cook_islands import CookIslands, CK, COK
+from holidays.countries.cook_islands import CookIslands
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestCookIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(CookIslands)
-
-    def test_country_aliases(self):
-        self.assertAliases(CookIslands, CK, COK)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(CookIslands(years=self.start_year - 1))
 
     def test_new_years_day(self):
         name = "New Year's Day"

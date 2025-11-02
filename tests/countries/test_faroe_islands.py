@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import HALF_DAY
-from holidays.countries.faroe_islands import FaroeIslands, FO, FRO
+from holidays.countries.faroe_islands import FaroeIslands
 from tests.common import CommonCountryTests
 
 
@@ -23,14 +23,6 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
         years = range(1949, 2050)
         super().setUpClass(FaroeIslands, years=years)
         cls.half_day_holidays = FaroeIslands(categories=HALF_DAY, years=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(FaroeIslands, FO, FRO)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            FaroeIslands(categories=self.holidays.supported_categories, years=1948)
-        )
 
     def test_new_years_day(self):
         self.assertHolidayName("Nýggjársdagur", (f"{year}-01-01" for year in range(1949, 2050)))

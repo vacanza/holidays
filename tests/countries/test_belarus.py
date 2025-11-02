@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.belarus import Belarus, BY, BLR
+from holidays.countries.belarus import Belarus
 from tests.common import CommonCountryTests, WorkingDayTests
 
 
@@ -20,14 +20,6 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Belarus)
-
-    def test_country_aliases(self):
-        self.assertAliases(Belarus, BY, BLR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Belarus(categories=Belarus.supported_categories, years=self.start_year - 1)
-        )
 
     def test_public_2018(self):
         # http://calendar.by/procal.php?year=2018

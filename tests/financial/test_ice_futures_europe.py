@@ -12,38 +12,32 @@
 
 from unittest import TestCase
 
-from holidays.financial.ice_futures_europe import ICEFuturesEurope, IFEU
+from holidays.financial.ice_futures_europe import IceFuturesEurope
 from tests.common import CommonFinancialTests
 
 
-class TestICEFuturesEurope(CommonFinancialTests, TestCase):
+class TestIceFuturesEurope(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(ICEFuturesEurope)
-
-    def test_market_aliases(self):
-        self.assertAliases(ICEFuturesEurope, IFEU)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(ICEFuturesEurope(years=self.start_year - 1))
+        super().setUpClass(IceFuturesEurope)
 
     def test_2021(self):
         self.assertHolidays(
-            ICEFuturesEurope(years=2021),
+            IceFuturesEurope(years=2021),
             ("2021-01-01", "New Year's Day"),
             ("2021-04-02", "Good Friday"),
         )
 
     def test_2022(self):
         self.assertHolidays(
-            ICEFuturesEurope(years=2022),
+            IceFuturesEurope(years=2022),
             ("2022-04-15", "Good Friday"),
             ("2022-12-26", "Christmas Day"),
         )
 
     def test_2023(self):
         self.assertHolidays(
-            ICEFuturesEurope(years=2023),
+            IceFuturesEurope(years=2023),
             ("2023-01-02", "New Year's Day"),
             ("2023-04-07", "Good Friday"),
             ("2023-12-25", "Christmas Day"),
@@ -51,7 +45,7 @@ class TestICEFuturesEurope(CommonFinancialTests, TestCase):
 
     def test_2024(self):
         self.assertHolidays(
-            ICEFuturesEurope(years=2024),
+            IceFuturesEurope(years=2024),
             ("2024-01-01", "New Year's Day"),
             ("2024-03-29", "Good Friday"),
             ("2024-12-25", "Christmas Day"),

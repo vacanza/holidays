@@ -12,20 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.mayotte import HolidaysYT, Mayotte, YT, MYT
+from holidays.countries.mayotte import Mayotte
 from tests.common import CommonCountryTests
 
 
 class TestMayotte(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysYT, years=range(1842, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysYT, Mayotte, YT, MYT)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Mayotte(years=1841))
+        super().setUpClass(Mayotte, years=range(1842, 2050))
 
     def test_abolition_of_slavery(self):
         name = "Abolition de l'esclavage"
@@ -34,7 +28,7 @@ class TestMayotte(CommonCountryTests, TestCase):
 
     def test_2024(self):
         self.assertHolidays(
-            HolidaysYT(years=2024),
+            Mayotte(years=2024),
             ("2024-01-01", "Jour de l'an"),
             ("2024-04-01", "Lundi de Pâques"),
             ("2024-04-27", "Abolition de l'esclavage"),

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.ecuador import Ecuador, EC, ECU
+from holidays.countries.ecuador import Ecuador
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestEcuador(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Ecuador, years=range(2000, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Ecuador, EC, ECU)
 
     def test_new_years_day(self):
         self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(2000, 2050)))

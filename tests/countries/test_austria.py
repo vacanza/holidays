@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import BANK
-from holidays.countries.austria import Austria, AT, AUT
+from holidays.countries.austria import Austria
 from tests.common import CommonCountryTests
 
 
@@ -21,9 +21,6 @@ class TestAustria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Austria, with_subdiv_categories=True)
-
-    def test_country_aliases(self):
-        self.assertAliases(Austria, AT, AUT)
 
     def test_new_years_day(self):
         self.assertHolidayName("Neujahr", (f"{year}-01-01" for year in self.full_range))

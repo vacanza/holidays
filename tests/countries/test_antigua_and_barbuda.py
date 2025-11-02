@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.antigua_and_barbuda import AntiguaAndBarbuda, AG, ATG
+from holidays.countries.antigua_and_barbuda import AntiguaAndBarbuda
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(AntiguaAndBarbuda)
-
-    def test_country_aliases(self):
-        self.assertAliases(AntiguaAndBarbuda, AG, ATG)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(AntiguaAndBarbuda(years=self.start_year - 1))
 
     def test_special_holidays(self):
         name_day_after_general_election = "Day after the General Election"

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.sint_maarten import SintMaarten, SX, SXM
+from holidays.countries.sint_maarten import SintMaarten
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestSintMaarten(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(SintMaarten, years=range(2011, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(SintMaarten, SX, SXM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(SintMaarten(years=2010))
 
     def test_new_years_day(self):
         self.assertHolidayName("Nieuwjaarsdag", (f"{year}-01-01" for year in range(2011, 2050)))

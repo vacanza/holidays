@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.djibouti import Djibouti, DJ, DJI
+from holidays.countries.djibouti import Djibouti
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestDjibouti(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Djibouti)
-
-    def test_country_aliases(self):
-        self.assertAliases(Djibouti, DJ, DJI)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Djibouti(years=self.start_year - 1))
 
     def test_2019(self):
         self.assertHolidays(

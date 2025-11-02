@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.north_korea import NorthKorea, KP, PRK
+from holidays.countries.north_korea import NorthKorea
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestNorthKorea(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1948, 2050)
         super().setUpClass(NorthKorea, years=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(NorthKorea, KP, PRK)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(NorthKorea(years=1947))
 
     def test_new_years_day(self):
         self.assertHolidayName("양력설", (f"{year}-01-01" for year in range(1948, 2050)))

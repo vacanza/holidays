@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.netherlands import Netherlands, NL, NLD
+from holidays.countries.netherlands import Netherlands
 from tests.common import CommonCountryTests
 
 
@@ -20,14 +20,6 @@ class TestNetherlands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Netherlands)
-
-    def test_country_aliases(self):
-        self.assertAliases(Netherlands, NL, NLD)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Netherlands(categories=Netherlands.supported_categories, years=self.start_year - 1)
-        )
 
     def test_new_years_day(self):
         self.assertHolidayName("Nieuwjaarsdag", (f"{year}-01-01" for year in self.full_range))

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.cyprus import Cyprus, CY, CYP
+from holidays.countries.cyprus import Cyprus
 from tests.common import CommonCountryTests
 
 
@@ -20,14 +20,6 @@ class TestCyprus(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Cyprus)
-
-    def test_country_aliases(self):
-        self.assertAliases(Cyprus, CY, CYP)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Cyprus(categories=Cyprus.supported_categories, years=self.start_year - 1)
-        )
 
     def test_new_years_day(self):
         self.assertHolidayName("Πρωτοχρονιά", (f"{year}-01-01" for year in self.full_range))

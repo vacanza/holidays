@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.comoros import Comoros, KM, COM
+from holidays.countries.comoros import Comoros
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestComoros(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Comoros)
-
-    def test_country_aliases(self):
-        self.assertAliases(Comoros, KM, COM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Comoros(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHolidayName("National Holiday", "2024-04-13")

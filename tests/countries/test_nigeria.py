@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.nigeria import Nigeria, NG, NGA
+from holidays.countries.nigeria import Nigeria
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestNigeria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Nigeria)
-
-    def test_country_aliases(self):
-        self.assertAliases(Nigeria, NG, NGA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Nigeria(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(

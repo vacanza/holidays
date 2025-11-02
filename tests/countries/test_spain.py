@@ -14,7 +14,7 @@ from datetime import date
 from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.countries.spain import Spain, ES, ESP
+from holidays.countries.spain import Spain
 from tests.common import CommonCountryTests
 
 
@@ -36,12 +36,6 @@ class TestSpain(CommonCountryTests, TestCase):
                     f"Failed date `{dt:%Y-%m-%d}`, subdiv `{subdiv}`: "
                     f"{', '.join(sorted(subdivisions))}",
                 )
-
-    def test_country_aliases(self):
-        self.assertAliases(Spain, ES, ESP)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Spain(years=2007))
 
     def test_fixed_holidays_2008(self):
         self.assertNonObservedHoliday(

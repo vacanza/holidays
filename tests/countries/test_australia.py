@@ -14,7 +14,7 @@ from datetime import date
 from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, AUG, SEP, OCT, NOV, DEC
-from holidays.countries.australia import Australia, AU, AUS
+from holidays.countries.australia import Australia
 from tests.common import CommonCountryTests
 
 
@@ -32,14 +32,6 @@ class TestAustralia(CommonCountryTests, TestCase):
                     subdiv in subdivisions,
                     f"Failed date `{dt:%Y-%m-%d}`, subdiv `{subdiv}`: {', '.join(subdivisions)}",
                 )
-
-    def test_country_aliases(self):
-        self.assertAliases(Australia, AU, AUS)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Australia(categories=Australia.supported_categories, years=self.start_year - 1)
-        )
 
     def test_new_years_day(self):
         name = "New Year's Day"

@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import BANK, GOVERNMENT, WORKDAY
-from holidays.countries.sri_lanka import SriLanka, LK, LKA
+from holidays.countries.sri_lanka import SriLanka
 from tests.common import CommonCountryTests
 
 
@@ -22,14 +22,6 @@ class TestSriLanka(CommonCountryTests, TestCase):
     def setUpClass(cls):
         cls.full_range = range(2003, 2027)
         super().setUpClass(SriLanka, years=cls.full_range)
-
-    def test_country_aliases(self):
-        self.assertAliases(SriLanka, LK, LKA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            SriLanka(categories=SriLanka.supported_categories, years=(2002, 2027))
-        )
 
     def test_special(self):
         self.assertHoliday(

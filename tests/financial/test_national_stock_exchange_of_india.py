@@ -12,11 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.financial.national_stock_exchange_of_india import (
-    NationalStockExchangeOfIndia,
-    XNSE,
-    NSE,
-)
+from holidays.financial.national_stock_exchange_of_india import NationalStockExchangeOfIndia
 from tests.common import CommonFinancialTests
 
 
@@ -24,12 +20,6 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(NationalStockExchangeOfIndia)
-
-    def test_market_aliases(self):
-        self.assertAliases(NationalStockExchangeOfIndia, XNSE, NSE)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(NationalStockExchangeOfIndia(years=self.start_year - 1))
 
     def test_republic_day(self):
         self.assertNonObservedHolidayName(

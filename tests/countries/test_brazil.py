@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.brazil import Brazil, BR, BRA
+from holidays.countries.brazil import Brazil
 from tests.common import CommonCountryTests
 
 
@@ -20,14 +20,6 @@ class TestBrazil(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Brazil, years_all_subdivs=range(1995, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Brazil, BR, BRA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Brazil(categories=Brazil.supported_categories, years=self.start_year - 1)
-        )
 
     def test_new_years_day(self):
         self.assertHolidayName(

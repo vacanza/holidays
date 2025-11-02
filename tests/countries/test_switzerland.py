@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.switzerland import Switzerland, CH, CHE
+from holidays.countries.switzerland import Switzerland
 from tests.common import CommonCountryTests
 
 
@@ -26,9 +26,6 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             years_subdiv_gl=range(1834, 2050),
             years_subdiv_zh=range(1898, 2050),
         )
-
-    def test_country_aliases(self):
-        self.assertAliases(Switzerland, CH, CHE)
 
     def test_all_holidays_present(self):
         y_2018 = set()

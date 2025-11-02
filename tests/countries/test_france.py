@@ -13,7 +13,7 @@
 import warnings
 from unittest import TestCase
 
-from holidays.countries.france import France, FR, FRA
+from holidays.countries.france import France
 from tests.common import CommonCountryTests
 
 
@@ -29,12 +29,6 @@ class TestFrance(CommonCountryTests, TestCase):
     def setUp(self):
         super().setUp()
         warnings.simplefilter("ignore", category=DeprecationWarning)
-
-    def test_country_aliases(self):
-        self.assertAliases(France, FR, FRA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(France(years=1802))
 
     def test_2017(self):
         self.assertHolidays(

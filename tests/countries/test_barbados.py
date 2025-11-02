@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.barbados import Barbados, BB, BRB
+from holidays.countries.barbados import Barbados
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestBarbados(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Barbados, years_non_observed=range(2000, 2024))
-
-    def test_country_aliases(self):
-        self.assertAliases(Barbados, BB, BRB)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Barbados(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(

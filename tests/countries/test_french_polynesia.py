@@ -12,20 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.french_polynesia import HolidaysPF, FrenchPolynesia, PF, PYF
+from holidays.countries.french_polynesia import FrenchPolynesia
 from tests.common import CommonCountryTests
 
 
 class TestFrenchPolynesia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysPF, years=range(1881, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysPF, FrenchPolynesia, PF, PYF)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(FrenchPolynesia(years=1880))
+        super().setUpClass(FrenchPolynesia, years=range(1881, 2050))
 
     def test_good_friday(self):
         name = "Vendredi saint"
@@ -58,7 +52,7 @@ class TestFrenchPolynesia(CommonCountryTests, TestCase):
 
     def test_2024(self):
         self.assertHolidays(
-            HolidaysPF(years=2024),
+            FrenchPolynesia(years=2024),
             ("2024-01-01", "Jour de l'an"),
             ("2024-03-05", "Arrivée de l'Évangile"),
             ("2024-03-29", "Vendredi saint"),

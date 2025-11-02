@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import GOVERNMENT
-from holidays.countries.andorra import Andorra, AD, AND
+from holidays.countries.andorra import Andorra
 from tests.common import CommonCountryTests
 
 
@@ -21,14 +21,6 @@ class TestAndorra(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Andorra)
-
-    def test_country_aliases(self):
-        self.assertAliases(Andorra, AD, AND)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Andorra(categories=Andorra.supported_categories, years=self.start_year - 1)
-        )
 
     def test_new_years_day(self):
         self.assertHolidayName("Cap d'Any", (f"{year}-01-01" for year in self.full_range))

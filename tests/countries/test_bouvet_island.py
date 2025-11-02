@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.bouvet_island import BouvetIsland, BV, BVT
+from holidays.countries.bouvet_island import BouvetIsland
 from tests.common import CommonCountryTests
 
 
@@ -21,9 +21,3 @@ class TestBouvetIsland(CommonCountryTests, TestCase):
     def setUpClass(cls):
         cls.full_range = range(1900, 2050)
         super().setUpClass(BouvetIsland)
-
-    def test_country_aliases(self):
-        self.assertAliases(BouvetIsland, BV, BVT)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(BouvetIsland)

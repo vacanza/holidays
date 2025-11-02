@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.algeria import Algeria, DZ, DZA
+from holidays.countries.algeria import Algeria
 from tests.common import CommonCountryTests
 
 
@@ -20,14 +20,6 @@ class TestAlgeria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Algeria)
-
-    def test_country_aliases(self):
-        self.assertAliases(Algeria, DZ, DZA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Algeria(categories=Algeria.supported_categories, years=self.start_year - 1)
-        )
 
     def test_new_years_day(self):
         self.assertHolidayName(

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.paraguay import Paraguay, PY, PRY
+from holidays.countries.paraguay import Paraguay
 from tests.common import CommonCountryTests
 
 
@@ -20,14 +20,6 @@ class TestParaguay(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Paraguay, years_government=range(2010, 2026))
-
-    def test_country_aliases(self):
-        self.assertAliases(Paraguay, PY, PRY)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Paraguay(categories=Paraguay.supported_categories, years=self.start_year - 1)
-        )
 
     def test_new_years_day(self):
         self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.dominican_republic import DominicanRepublic, DO, DOM
+from holidays.countries.dominican_republic import DominicanRepublic
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(DominicanRepublic)
-
-    def test_country_aliases(self):
-        self.assertAliases(DominicanRepublic, DO, DOM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(DominicanRepublic(years=self.start_year - 1))
 
     def test_2020(self):
         self.assertHolidays(

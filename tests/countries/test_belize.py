@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.belize import Belize, BZ, BLZ
+from holidays.countries.belize import Belize
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestBelize(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Belize)
-
-    def test_country_aliases(self):
-        self.assertAliases(Belize, BZ, BLZ)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Belize(years=self.start_year - 1))
 
     def test_new_years_day(self):
         name = "New Year's Day"

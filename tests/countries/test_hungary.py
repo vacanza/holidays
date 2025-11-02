@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.hungary import Hungary, HU, HUN
+from holidays.countries.hungary import Hungary
 from tests.common import CommonCountryTests, WorkingDayTests
 
 
@@ -20,12 +20,6 @@ class TestHungary(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Hungary)
-
-    def test_country_aliases(self):
-        self.assertAliases(Hungary, HU, HUN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Hungary(years=self.start_year - 1))
 
     def test_substituted_holidays(self):
         self.assertHoliday(

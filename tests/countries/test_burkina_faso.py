@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.burkina_faso import BurkinaFaso, BF, BFA
+from holidays.countries.burkina_faso import BurkinaFaso
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestBurkinaFaso(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(BurkinaFaso)
-
-    def test_country_aliases(self):
-        self.assertAliases(BurkinaFaso, BF, BFA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(BurkinaFaso(years=self.start_year - 1))
 
     def test_new_years_day(self):
         name = "New Year's Day"

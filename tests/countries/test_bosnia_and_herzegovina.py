@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
+from holidays.countries.bosnia_and_herzegovina import BosniaAndHerzegovina
 from tests.common import CommonCountryTests
 
 
@@ -21,9 +21,6 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
     def setUpClass(cls):
         cls.full_range = range(2000, 2050)
         super().setUpClass(BosniaAndHerzegovina)
-
-    def test_country_aliases(self):
-        self.assertAliases(BosniaAndHerzegovina, BA, BIH)
 
     def test_new_years_day(self):
         name = "Nova godina"

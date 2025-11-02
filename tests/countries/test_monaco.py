@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.monaco import Monaco, MC, MCO
+from holidays.countries.monaco import Monaco
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestMonaco(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Monaco)
-
-    def test_country_aliases(self):
-        self.assertAliases(Monaco, MC, MCO)
 
     def test_immaculate_conception_day(self):
         self.assertHoliday(

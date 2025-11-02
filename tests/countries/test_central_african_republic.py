@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.central_african_republic import CentralAfricanRepublic, CF, CAF
+from holidays.countries.central_african_republic import CentralAfricanRepublic
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(CentralAfricanRepublic)
-
-    def test_country_aliases(self):
-        self.assertAliases(CentralAfricanRepublic, CF, CAF)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(CentralAfricanRepublic(years=self.start_year - 1))
 
     def test_new_years_day(self):
         self.assertHolidayName("Jour de l'an", (f"{year}-01-01" for year in self.full_range))

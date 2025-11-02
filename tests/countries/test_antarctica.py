@@ -13,7 +13,7 @@
 from calendar import isleap
 from unittest import TestCase
 
-from holidays.countries.antarctica import Antarctica, AQ, ATA
+from holidays.countries.antarctica import Antarctica
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestAntarctica(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Antarctica)
-
-    def test_country_aliases(self):
-        self.assertAliases(Antarctica, AQ, ATA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Antarctica(years=self.start_year - 1))
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))

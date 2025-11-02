@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import WORKDAY
-from holidays.countries.slovakia import Slovakia, SK, SVK
+from holidays.countries.slovakia import Slovakia
 from tests.common import CommonCountryTests
 
 
@@ -24,11 +24,9 @@ class TestSlovakia(CommonCountryTests, TestCase):
         super().setUpClass(Slovakia, years=cls.full_range)
         cls.workday_holidays = Slovakia(categories=WORKDAY, years=cls.full_range)
 
-    def test_country_aliases(self):
-        self.assertAliases(Slovakia, SK, SVK)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Slovakia(years=1992))
+        super().test_no_holidays()
+
         self.assertNoHolidays(Slovakia(categories=WORKDAY, years=2020))
 
     def test_special_holidays(self):

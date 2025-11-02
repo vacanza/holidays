@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.dr_congo import DRCongo, CD, COD
+from holidays.countries.dr_congo import DRCongo
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestDRCongo(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1980, 2050)
         super().setUpClass(DRCongo, years=years, years_non_observed=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(DRCongo, CD, COD)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(DRCongo(years=1979))
 
     def test_new_years_day(self):
         name = "Nouvel an"

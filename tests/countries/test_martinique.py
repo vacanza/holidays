@@ -12,20 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.martinique import HolidaysMQ, Martinique, MQ, MTQ
+from holidays.countries.martinique import Martinique
 from tests.common import CommonCountryTests
 
 
 class TestMartinique(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysMQ, years=range(1815, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysMQ, Martinique, MQ, MTQ)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Martinique(years=1814))
+        super().setUpClass(Martinique, years=range(1815, 2050))
 
     def test_good_friday(self):
         name = "Vendredi saint"
@@ -53,7 +47,7 @@ class TestMartinique(CommonCountryTests, TestCase):
 
     def test_2024(self):
         self.assertHolidays(
-            HolidaysMQ(years=2024),
+            Martinique(years=2024),
             ("2024-01-01", "Jour de l'an"),
             ("2024-03-29", "Vendredi saint"),
             ("2024-04-01", "Lundi de Pâques"),

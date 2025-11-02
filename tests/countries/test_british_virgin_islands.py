@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.british_virgin_islands import BritishVirginIslands, VG, VGB
+from holidays.countries.british_virgin_islands import BritishVirginIslands
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(BritishVirginIslands)
-
-    def test_country_aliases(self):
-        self.assertAliases(BritishVirginIslands, VG, VGB)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(BritishVirginIslands(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(

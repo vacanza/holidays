@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.brunei import Brunei, BN, BRN
+from holidays.countries.brunei import Brunei
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestBrunei(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Brunei)
-
-    def test_country_aliases(self):
-        self.assertAliases(Brunei, BN, BRN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Brunei(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(

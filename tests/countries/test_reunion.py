@@ -12,20 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.reunion import HolidaysRE, Reunion, RE, REU
+from holidays.countries.reunion import Reunion
 from tests.common import CommonCountryTests
 
 
 class TestReunion(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysRE, years=range(1815, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysRE, Reunion, RE, REU)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Reunion(years=1814))
+        super().setUpClass(Reunion, years=range(1815, 2050))
 
     def test_abolition_of_slavery(self):
         name = "Abolition de l'esclavage"
@@ -34,7 +28,7 @@ class TestReunion(CommonCountryTests, TestCase):
 
     def test_2024(self):
         self.assertHolidays(
-            HolidaysRE(years=2024),
+            Reunion(years=2024),
             ("2024-01-01", "Jour de l'an"),
             ("2024-04-01", "Lundi de Pâques"),
             ("2024-05-01", "Fête du Travail"),

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.seychelles import Seychelles, SC, SYC
+from holidays.countries.seychelles import Seychelles
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestSeychelles(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Seychelles)
-
-    def test_country_aliases(self):
-        self.assertAliases(Seychelles, SC, SYC)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Seychelles(years=1993))
 
     def test_special_holidays(self):
         # Election Dates have its own separate checklists.

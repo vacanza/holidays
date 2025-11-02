@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.honduras import Honduras, HN, HND
+from holidays.countries.honduras import Honduras
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestHonduras(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Honduras)
-
-    def test_country_aliases(self):
-        self.assertAliases(Honduras, HN, HND)
 
     def test_2014(self):
         self.assertHolidayDates(

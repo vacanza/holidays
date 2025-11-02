@@ -12,20 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.guadeloupe import HolidaysGP, Guadeloupe, GP, GLP
+from holidays.countries.guadeloupe import Guadeloupe
 from tests.common import CommonCountryTests
 
 
 class TestGuadeloupe(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysGP, years=range(1815, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysGP, Guadeloupe, GP, GLP)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Guadeloupe(years=1814))
+        super().setUpClass(Guadeloupe, years=range(1815, 2050))
 
     def test_mi_careme(self):
         name = "Mi-Carême"
@@ -67,7 +61,7 @@ class TestGuadeloupe(CommonCountryTests, TestCase):
 
     def test_2024(self):
         self.assertHolidays(
-            HolidaysGP(years=2024),
+            Guadeloupe(years=2024),
             ("2024-01-01", "Jour de l'an"),
             ("2024-03-07", "Mi-Carême"),
             ("2024-03-29", "Vendredi saint"),

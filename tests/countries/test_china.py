@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.china import China, CN, CHN
+from holidays.countries.china import China
 from tests.common import CommonCountryTests, WorkingDayTests
 
 
@@ -20,14 +20,6 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(China, years_non_observed=range(2001, 2025))
-
-    def test_country_aliases(self):
-        self.assertAliases(China, CN, CHN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            China(categories=China.supported_categories, years=self.start_year - 1)
-        )
 
     def test_substituted_holidays(self):
         self.assertHoliday(

@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import OPTIONAL
-from holidays.countries.hongkong import HongKong, HK, HKG, CHRISTMAS, WINTER_SOLSTICE
+from holidays.countries.hongkong import HongKong, CHRISTMAS, WINTER_SOLSTICE
 from tests.common import CommonCountryTests
 
 
@@ -21,14 +21,7 @@ class TestHongKong(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(1963, 2050)
-        super().setUpClass(HongKong, years_optional=range(HK.start_year, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(HongKong, HK, HKG)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(HongKong(years=self.start_year - 1))
-        self.assertNoHolidays(HongKong(categories=OPTIONAL, years=HK.start_year - 1))
+        super().setUpClass(HongKong, years_optional=range(HongKong.start_year, 2050))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -92,7 +85,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             name,
             (
                 f"{year}-01-01"
-                for year in range(HK.start_year, self.end_year)
+                for year in range(HongKong.start_year, self.end_year)
                 if year not in years_special
             ),
         )
@@ -123,7 +116,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             name_eve, range(self.start_year, 1983), range(2012, self.end_year)
         )
         self.assertNoOptionalHolidayName(
-            name_eve, range(HK.start_year, 1983), range(2012, self.end_year)
+            name_eve, range(HongKong.start_year, 1983), range(2012, self.end_year)
         )
 
         self.assertHolidayName(
@@ -148,7 +141,11 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, years_special)
         self.assertOptionalHolidayName(
             name,
-            (year for year in range(HK.start_year, self.end_year) if year not in years_special),
+            (
+                year
+                for year in range(HongKong.start_year, self.end_year)
+                if year not in years_special
+            ),
         )
         self.assertNoOptionalHolidayName(name, years_special)
 
@@ -176,7 +173,11 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name_second, years_special)
         self.assertOptionalHolidayName(
             name_second,
-            (year for year in range(HK.start_year, self.end_year) if year not in years_special),
+            (
+                year
+                for year in range(HongKong.start_year, self.end_year)
+                if year not in years_special
+            ),
         )
         self.assertNoOptionalHolidayName(name_second, years_special)
 
@@ -203,7 +204,9 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertHolidayName(name_third, set(range(1977, self.end_year)) - years_special)
         self.assertNoHolidayName(name_third, years_special, range(self.start_year, 1977))
         self.assertOptionalHolidayName(name_third, set(range(1968, self.end_year)) - years_special)
-        self.assertNoOptionalHolidayName(name_third, years_special, range(HK.start_year, 1968))
+        self.assertNoOptionalHolidayName(
+            name_third, years_special, range(HongKong.start_year, 1968)
+        )
 
         self.assertHolidayName(
             name_fourth,
@@ -240,7 +243,7 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name_fourth, set(self.full_range) - years_special)
         self.assertOptionalHolidayName(name_fourth, years_special)
         self.assertNoOptionalHolidayName(
-            name_fourth, set(range(HK.start_year, self.end_year)) - years_special
+            name_fourth, set(range(HongKong.start_year, self.end_year)) - years_special
         )
 
     def test_good_friday(self):
@@ -281,7 +284,7 @@ class TestHongKong(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(2028, self.end_year))
         self.assertNoHolidayName(name, range(self.start_year, 2028))
-        self.assertOptionalHolidayName(name, range(HK.start_year, self.end_year))
+        self.assertOptionalHolidayName(name, range(HongKong.start_year, self.end_year))
 
     def test_holy_saturday(self):
         name = "耶穌受難節翌日"
@@ -319,7 +322,7 @@ class TestHongKong(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(2030, self.end_year))
         self.assertNoHolidayName(name, range(self.start_year, 2030))
-        self.assertOptionalHolidayName(name, range(HK.start_year, self.end_year))
+        self.assertOptionalHolidayName(name, range(HongKong.start_year, self.end_year))
 
     def test_easter_monday(self):
         name = "復活節星期一"
@@ -363,7 +366,11 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(self.start_year, 2026))
         self.assertOptionalHolidayName(
             name,
-            (year for year in range(HK.start_year, self.end_year) if year not in years_special),
+            (
+                year
+                for year in range(HongKong.start_year, self.end_year)
+                if year not in years_special
+            ),
         )
         self.assertOptionalHolidayName(
             name_following,
@@ -461,7 +468,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             "2021-04-05",
         )
         self.assertOptionalHolidayName(name, set(range(1968, self.end_year)) - years_special)
-        self.assertNoOptionalHolidayName(name, years_special, range(HK.start_year, 1968))
+        self.assertNoOptionalHolidayName(name, years_special, range(HongKong.start_year, 1968))
 
     def test_the_buddhas_birthday(self):
         name = "佛誕"
@@ -522,7 +529,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             "2022-05-09",
         )
         self.assertOptionalHolidayName(name, set(range(1999, self.end_year)) - years_special)
-        self.assertNoOptionalHolidayName(name, years_special, range(HK.start_year, 1999))
+        self.assertNoOptionalHolidayName(name, years_special, range(HongKong.start_year, 1999))
 
     def test_labor_day(self):
         name = "勞動節"
@@ -546,7 +553,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             (f"{year}-05-01" for year in range(1999, self.end_year) if year not in years_special),
         )
         self.assertOptionalHolidayName(name_following, (f"{year}-05-02" for year in years_special))
-        self.assertNoOptionalHolidayName(name, range(HK.start_year, 1999))
+        self.assertNoOptionalHolidayName(name, range(HongKong.start_year, 1999))
 
     def test_dragon_boat_festival(self):
         name = "端午節"
@@ -614,7 +621,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             "2008-06-09",
         )
         self.assertOptionalHolidayName(name, set(range(1968, self.end_year)) - years_special)
-        self.assertNoOptionalHolidayName(name, years_special, range(HK.start_year, 1968))
+        self.assertNoOptionalHolidayName(name, years_special, range(HongKong.start_year, 1968))
 
     def test_hong_kong_sar_day(self):
         name = "香港特別行政區成立紀念日"
@@ -710,7 +717,7 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertOptionalHolidayName(name_second, dt)
         self.assertNoHolidayName(name_second, set(self.full_range) - years_special)
         self.assertNoOptionalHolidayName(
-            name_second, set(range(HK.start_year, self.end_year)) - years_special
+            name_second, set(range(HongKong.start_year, self.end_year)) - years_special
         )
 
     def test_double_ninth_festival(self):
@@ -806,7 +813,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             "2020-10-26",
         )
         self.assertOptionalHolidayName(name, set(range(1968, self.end_year)) - years_special)
-        self.assertNoOptionalHolidayName(name, years_special, range(HK.start_year, 1968))
+        self.assertNoOptionalHolidayName(name, years_special, range(HongKong.start_year, 1968))
 
     def test_national_day(self):
         name = "國慶日"
@@ -848,7 +855,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             "2034-10-02",
             "2045-10-02",
         )
-        self.assertNoOptionalHolidayName(name, range(HK.start_year, 1997))
+        self.assertNoOptionalHolidayName(name, range(HongKong.start_year, 1997))
 
     def test_winter_solstice(self):
         name = "冬節"
@@ -960,7 +967,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             name,
             (
                 f"{year}-12-25"
-                for year in range(HK.start_year, self.end_year)
+                for year in range(HongKong.start_year, self.end_year)
                 if year not in years_special
             ),
         )
@@ -986,7 +993,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             name_first,
             (
                 f"{year}-12-26"
-                for year in range(HK.start_year, self.end_year)
+                for year in range(HongKong.start_year, self.end_year)
                 if year not in years_special
             ),
         )
@@ -997,7 +1004,7 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(name, range(1952, 1998))
         self.assertNoOptionalHolidayName(
-            name, range(HK.start_year, 1952), range(1998, self.end_year)
+            name, range(HongKong.start_year, 1952), range(1998, self.end_year)
         )
         self.assertOptionalHolidayName(name, "1952-06-05")
         self.assertOptionalHolidayName(name, (f"{year}-04-21" for year in range(1953, 1983)))

@@ -12,20 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.saint_barthelemy import HolidaysBL, SaintBarthelemy, BL, BLM
+from holidays.countries.saint_barthelemy import SaintBarthelemy
 from tests.common import CommonCountryTests
 
 
 class TestSaintBarthelemy(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysBL, years=range(2008, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysBL, SaintBarthelemy, BL, BLM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(SaintBarthelemy(years=2007))
+        super().setUpClass(SaintBarthelemy, years=range(2008, 2050))
 
     def test_abolition_of_slavery(self):
         name = "Abolition de l'esclavage"
@@ -34,7 +28,7 @@ class TestSaintBarthelemy(CommonCountryTests, TestCase):
 
     def test_2024(self):
         self.assertHolidays(
-            HolidaysBL(years=2024),
+            SaintBarthelemy(years=2024),
             ("2024-01-01", "Jour de l'an"),
             ("2024-04-01", "Lundi de Pâques"),
             ("2024-05-01", "Fête du Travail"),

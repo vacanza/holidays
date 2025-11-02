@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.czechia import Czechia, CZ, CZE
+from holidays.countries.czechia import Czechia
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestCzechia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Czechia)
-
-    def test_country_aliases(self):
-        self.assertAliases(Czechia, CZ, CZE)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Czechia(years=self.start_year - 1))
 
     def test_new_years_day(self):
         self.assertHolidayName(

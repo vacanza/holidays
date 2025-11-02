@@ -14,7 +14,7 @@ from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysMQ(ChildEntity, France):
+class Martinique(ChildEntity, France):
     """Martinique holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -32,13 +32,13 @@ class HolidaysMQ(ChildEntity, France):
     start_year = 1815
 
 
-class Martinique(HolidaysMQ):
+class HolidaysMQ(Martinique):
     pass
 
 
-class MQ(HolidaysMQ):
+class MQ(Martinique):
     pass
 
 
-class MTQ(HolidaysMQ):
+class MTQ(Martinique):
     pass

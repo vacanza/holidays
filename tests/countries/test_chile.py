@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.chile import Chile, CL, CHL
+from holidays.countries.chile import Chile
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestChile(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Chile)
-
-    def test_country_aliases(self):
-        self.assertAliases(Chile, CL, CHL)
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -33,11 +30,6 @@ class TestChile(CommonCountryTests, TestCase):
             "2010-09-20",
             "2017-04-19",
             "2022-09-16",
-        )
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Chile(categories=Chile.supported_categories, years=self.start_year - 1)
         )
 
     def test_new_years_day(self):

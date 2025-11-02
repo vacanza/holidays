@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.denmark import Denmark, DK, DNK
+from holidays.countries.denmark import Denmark
 from tests.common import CommonCountryTests
 
 
@@ -20,14 +20,6 @@ class TestDenmark(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Denmark)
-
-    def test_country_aliases(self):
-        self.assertAliases(Denmark, DK, DNK)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Denmark(categories=Denmark.supported_categories, years=self.start_year - 1)
-        )
 
     def test_new_years_day(self):
         self.assertHolidayName("Nytårsdag", (f"{year}-01-01" for year in self.full_range))

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.bangladesh import Bangladesh, BD, BGD
+from holidays.countries.bangladesh import Bangladesh
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestBangladesh(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Bangladesh)
-
-    def test_country_aliases(self):
-        self.assertAliases(Bangladesh, BD, BGD)
 
     def test_international_mothers_language_day(self):
         self.assertHolidayName(

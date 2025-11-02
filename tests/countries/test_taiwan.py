@@ -12,8 +12,8 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC, SCHOOL, WORKDAY
-from holidays.countries.taiwan import Taiwan, TW, TWN
+from holidays.constants import GOVERNMENT, SCHOOL
+from holidays.countries.taiwan import Taiwan
 from tests.common import CommonCountryTests, WorkingDayTests
 
 
@@ -22,13 +22,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Taiwan)
 
-    def test_country_aliases(self):
-        self.assertAliases(Taiwan, TW, TWN)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(
-            Taiwan(years=self.start_year - 1, categories=(OPTIONAL, PUBLIC, WORKDAY))
-        )
+        super().test_no_holidays()
+
         self.assertNoHolidays(
             Taiwan(years=(self.start_year - 1, 2001), categories=(GOVERNMENT, SCHOOL))
         )

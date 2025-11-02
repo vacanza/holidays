@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import BANK
-from holidays.countries.belgium import Belgium, BE, BEL
+from holidays.countries.belgium import Belgium
 from tests.common import CommonCountryTests
 
 
@@ -21,9 +21,6 @@ class TestBelgium(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Belgium)
-
-    def test_country_aliases(self):
-        self.assertAliases(Belgium, BE, BEL)
 
     def test_new_years_day(self):
         self.assertHolidayName("Nieuwjaar", (f"{year}-01-01" for year in self.full_range))

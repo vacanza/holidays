@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.gabon import Gabon, GA, GAB
+from holidays.countries.gabon import Gabon
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestGabon(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Gabon)
-
-    def test_country_aliases(self):
-        self.assertAliases(Gabon, GA, GAB)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Gabon(years=self.start_year - 1))
 
     def test_womens_rights_day(self):
         name = "Women's Rights Day"

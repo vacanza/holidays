@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.micronesia import Micronesia, FM, FSM
+from holidays.countries.micronesia import Micronesia
 from tests.common import CommonCountryTests
 
 
@@ -22,17 +22,12 @@ class TestMicronesia(CommonCountryTests, TestCase):
         years = range(1987, 2050)
         super().setUpClass(Micronesia, years=years, years_non_observed=years)
         cls.subdiv_holidays = {
-            subdiv: FM(subdiv=subdiv, years=years) for subdiv in FM.subdivisions
+            subdiv: Micronesia(subdiv=subdiv, years=years) for subdiv in Micronesia.subdivisions
         }
         cls.subdiv_holidays_non_observed = {
-            subdiv: FM(subdiv=subdiv, years=years, observed=False) for subdiv in FM.subdivisions
+            subdiv: Micronesia(subdiv=subdiv, years=years, observed=False)
+            for subdiv in Micronesia.subdivisions
         }
-
-    def test_country_aliases(self):
-        self.assertAliases(Micronesia, FM, FSM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Micronesia(years=1986))
 
     def test_new_years_day(self):
         name = "New Year's Day"

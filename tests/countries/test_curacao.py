@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import HALF_DAY
-from holidays.countries.curacao import Curacao, CW, CUW
+from holidays.countries.curacao import Curacao
 from tests.common import CommonCountryTests
 
 
@@ -22,11 +22,9 @@ class TestCuracao(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Curacao, years_half_day=range(2010, 2050))
 
-    def test_country_aliases(self):
-        self.assertAliases(Curacao, CW, CUW)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Curacao(years=self.start_year - 1))
+        super().test_no_holidays()
+
         self.assertNoHolidays(Curacao(categories=HALF_DAY, years=2009))
 
     def test_2016_public(self):

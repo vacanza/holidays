@@ -14,7 +14,7 @@ import warnings
 from unittest import TestCase
 
 from holidays.constants import OPTIONAL, PUBLIC
-from holidays.countries.portugal import Portugal, PT, PRT
+from holidays.countries.portugal import Portugal
 from tests.common import CommonCountryTests
 
 
@@ -26,9 +26,6 @@ class TestPortugal(CommonCountryTests, TestCase):
     def setUp(self):
         super().setUp()
         warnings.simplefilter("ignore", category=DeprecationWarning)
-
-    def test_country_aliases(self):
-        self.assertAliases(Portugal, PT, PRT)
 
     def test_subdiv_deprecation(self):
         self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.singapore import Singapore, SG, SGP
+from holidays.countries.singapore import Singapore
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestSingapore(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Singapore)
-
-    def test_country_aliases(self):
-        self.assertAliases(Singapore, SG, SGP)
 
     def test_common(self):
         self.assertNonObservedHolidayName("New Year's Day", "2022-01-01")

@@ -12,22 +12,20 @@
 
 from unittest import TestCase
 
-from holidays.constants import PUBLIC, UNOFFICIAL, WORKDAY
-from holidays.countries.aland_islands import HolidaysAX, AlandIslands, AX, ALA
+from holidays.constants import UNOFFICIAL
+from holidays.countries.aland_islands import AlandIslands
 from tests.common import CommonCountryTests
 
 
 class TestAland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysAX)
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysAX, AlandIslands, AX, ALA)
+        super().setUpClass(AlandIslands)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(HolidaysAX(categories=(PUBLIC, WORKDAY), years=self.start_year - 1))
-        self.assertNoHolidays(HolidaysAX(categories=UNOFFICIAL, years=1949))
+        super().test_no_holidays()
+
+        self.assertNoHolidays(AlandIslands(categories=UNOFFICIAL, years=1949))
 
     def test_alands_autonomy_day(self):
         name = "Ahvenanmaan itsehallintopäivä"

@@ -12,25 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.japan import Japan, JP, JPN
+from holidays.countries.japan import Japan
 from tests.common import CommonCountryTests
 
 
 class TestJapan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Japan, years_non_observed=range(1973, JP.end_year))
-
-    def test_country_aliases(self):
-        self.assertAliases(Japan, JP, JPN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Japan(
-                categories=Japan.supported_categories,
-                years=(self.start_year - 1, self.end_year + 1),
-            )
-        )
+        super().setUpClass(Japan, years_non_observed=range(1973, Japan.end_year))
 
     def test_special_holiday(self):
         self.assertHoliday(

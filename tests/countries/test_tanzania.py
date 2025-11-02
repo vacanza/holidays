@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import BANK, PUBLIC
-from holidays.countries.tanzania import Tanzania, TZ, TZA
+from holidays.countries.tanzania import Tanzania
 from tests.common import CommonCountryTests
 
 
@@ -24,14 +24,6 @@ class TestTanzania(CommonCountryTests, TestCase):
         super().setUpClass(Tanzania, years=years, years_non_observed=years)
         cls.bank_holidays = Tanzania(categories=BANK, years=years)
         cls.no_estimated_holidays = Tanzania(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Tanzania, TZ, TZA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Tanzania(categories=self.test_class.supported_categories, years=1964)
-        )
 
     def test_special_holidays(self):
         self.assertHoliday(

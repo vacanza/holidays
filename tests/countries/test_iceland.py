@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import HALF_DAY, PUBLIC
-from holidays.countries.iceland import Iceland, IS, ISL
+from holidays.countries.iceland import Iceland
 from tests.common import CommonCountryTests
 
 
@@ -21,9 +21,6 @@ class TestIceland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Iceland)
-
-    def test_country_aliases(self):
-        self.assertAliases(Iceland, IS, ISL)
 
     def test_1982(self):
         self.assertHolidays(

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.kyrgyzstan import Kyrgyzstan, KG, KGZ
+from holidays.countries.kyrgyzstan import Kyrgyzstan
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestKyrgyzstan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Kyrgyzstan)
-
-    def test_country_aliases(self):
-        self.assertAliases(Kyrgyzstan, KG, KGZ)
 
     def test_2022(self):
         self.assertHolidays(

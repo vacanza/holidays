@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.indonesia import Indonesia, ID, IDN
+from holidays.countries.indonesia import Indonesia
 from tests.common import CommonCountryTests
 
 
@@ -20,14 +20,6 @@ class TestIndonesia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Indonesia, years_non_observed=(2004, 2020))
-
-    def test_country_aliases(self):
-        self.assertAliases(Indonesia, ID, IDN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Indonesia(categories=Indonesia.supported_categories, years=self.start_year - 1)
-        )
 
     def test_special(self):
         dts = (

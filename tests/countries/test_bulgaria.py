@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.bulgaria import Bulgaria, BG, BLG
+from holidays.countries.bulgaria import Bulgaria
 from tests.common import CommonCountryTests
 
 
@@ -20,14 +20,6 @@ class TestBulgaria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Bulgaria, years_non_observed=range(2017, 2026))
-
-    def test_country_aliases(self):
-        self.assertAliases(Bulgaria, BG, BLG)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Bulgaria(categories=Bulgaria.supported_categories, years=self.start_year - 1)
-        )
 
     def test_new_years_day(self):
         name = "Нова година"

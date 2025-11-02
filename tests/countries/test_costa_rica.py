@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import OPTIONAL
-from holidays.countries.costa_rica import CostaRica, CR, CRI
+from holidays.countries.costa_rica import CostaRica
 from tests.common import CommonCountryTests
 
 
@@ -22,9 +22,6 @@ class TestCostaRica(CommonCountryTests, TestCase):
     def setUpClass(cls):
         cls.full_range = range(1980, 2050)
         super().setUpClass(CostaRica)
-
-    def test_country_aliases(self):
-        self.assertAliases(CostaRica, CR, CRI)
 
     def test_new_year_day(self):
         self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))

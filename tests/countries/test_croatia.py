@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.croatia import Croatia, HR, HRV
+from holidays.countries.croatia import Croatia
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestCroatia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Croatia)
-
-    def test_country_aliases(self):
-        self.assertAliases(Croatia, HR, HRV)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Croatia(years=self.start_year - 1))
 
     def test_new_years_day(self):
         self.assertHolidayName("Nova godina", (f"{year}-01-01" for year in self.full_range))

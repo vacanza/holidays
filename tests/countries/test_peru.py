@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.peru import Peru, PE, PER
+from holidays.countries.peru import Peru
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestPeru(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Peru, years=range(1950, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Peru, PE, PER)
 
     def test_2019(self):
         self.assertHolidayDates(

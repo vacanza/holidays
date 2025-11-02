@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.chad import Chad, TD, TCD
+from holidays.countries.chad import Chad
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestChad(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Chad)
-
-    def test_country_aliases(self):
-        self.assertAliases(Chad, TD, TCD)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Chad(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday("2021-04-23")

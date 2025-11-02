@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.iran import Iran, IR, IRN
+from holidays.countries.iran import Iran
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestIran(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Iran)
-
-    def test_country_aliases(self):
-        self.assertAliases(Iran, IR, IRN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Iran(years=(self.start_year - 1, 2102)))
 
     def test_2021(self):
         self.assertHolidays(

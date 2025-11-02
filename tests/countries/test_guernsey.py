@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.guernsey import Guernsey, GG, GGY
+from holidays.countries.guernsey import Guernsey
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestGG(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Guernsey, years=range(1909, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Guernsey, GG, GGY)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Guernsey(years=1908))
 
     def test_special_holidays(self):
         dt = (

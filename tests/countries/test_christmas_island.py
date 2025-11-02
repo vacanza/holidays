@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.christmas_island import ChristmasIsland, CX, CXR
+from holidays.countries.christmas_island import ChristmasIsland
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(ChristmasIsland)
-
-    def test_country_aliases(self):
-        self.assertAliases(ChristmasIsland, CX, CXR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(ChristmasIsland(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday("2022-09-22")

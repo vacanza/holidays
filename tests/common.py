@@ -10,7 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import importlib
 import os
+import re
 import sys
 import warnings
 from collections import defaultdict
@@ -25,6 +27,7 @@ from holidays.calendars.gregorian import SUN
 from holidays.constants import PUBLIC
 from holidays.groups import EasternCalendarHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase
+from holidays.registry import COUNTRIES, FINANCIAL
 
 PYTHON_LATEST_SUPPORTED_VERSION = "3.14"
 PYTHON_VERSION = f"{sys.version_info.major}.{sys.version_info.minor}"
@@ -333,16 +336,18 @@ class TestCase:
             "`holidays` object must be a subclass of `HolidayBase`",
         )
 
-    def assertAliases(self, cls, *aliases):
-        """Assert aliases match."""
+    def assertAliases(self, *aliases):
+        """Assert aliases match the test class."""
+        self.assertTrue(aliases, "Entity class does not have any aliases.")
         self.assertTrue(
-            issubclass(cls, HolidayBase), "The entity object must be a subclass of `HolidayBase`"
+            issubclass(self.test_class, HolidayBase),
+            "The entity object must be a subclass of `HolidayBase`",
         )
 
         type_error_message = "The entity alias object must be a subclass of the entity class."
         for alias in aliases:
             self.assertIsNotNone(alias, type_error_message)
-            self.assertTrue(issubclass(alias, cls), type_error_message)
+            self.assertTrue(issubclass(alias, self.test_class), type_error_message)
 
     def assertDeprecatedSubdivisions(self, message):
         warnings.simplefilter("always", category=DeprecationWarning)
@@ -518,6 +523,20 @@ class TestCase:
 class CommonTests(TestCase):
     """Common test cases for all entities."""
 
+    def check_aliases(self, registry, prefix):
+        class_name = self.test_class.__name__
+        module_name = re.sub(r"(?<!^)(?=[A-Z])", "_", class_name).lower()
+
+        if (entities := registry.get(module_name)) and class_name in entities:
+            self.assertAliases(
+                *(
+                    getattr(
+                        importlib.import_module(f"holidays.{prefix}.{module_name}"), alias_name
+                    )
+                    for alias_name in entities[1:]
+                )
+            )
+
     def test_estimated_label(self):
         if isinstance(self.holidays, EasternCalendarHolidays):
             self.assertTrue(
@@ -525,6 +544,9 @@ class CommonTests(TestCase):
                 "The `estimated_label` attribute is required for entities inherited from "
                 "`EasternCalendarHolidays`.",
             )
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(self.test_class(years=self.test_class.start_year - 1))
 
     def test_observed_estimated_label(self):
         estimated_label = getattr(self.holidays, "estimated_label", None)
@@ -575,6 +597,10 @@ class CommonCountryTests(CommonTests):
         self.assertTrue(hasattr(self.holidays, "country"))
         self.assertFalse(hasattr(self.holidays, "market"))
 
+    def test_aliases(self):
+        """Validate entity aliases."""
+        self.check_aliases(COUNTRIES, "countries")
+
 
 class CommonFinancialTests(CommonTests):
     """Common test cases for financial entities."""
@@ -582,6 +608,10 @@ class CommonFinancialTests(CommonTests):
     def test_code(self):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertFalse(hasattr(self.holidays, "country"))
+
+    def test_aliases(self):
+        """Validate entity aliases."""
+        self.check_aliases(FINANCIAL, "financial")
 
 
 class SundayHolidays(TestCase):

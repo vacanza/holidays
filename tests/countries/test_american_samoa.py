@@ -12,22 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.american_samoa import HolidaysAS, AmericanSamoa, AS, ASM
+from holidays.countries.american_samoa import AmericanSamoa
 from tests.common import CommonCountryTests
 
 
 class TestAS(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysAS)
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysAS, AmericanSamoa, AS, ASM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            HolidaysAS(categories=HolidaysAS.supported_categories, years=self.start_year - 1)
-        )
+        super().setUpClass(AmericanSamoa)
 
     def test_american_samoa_flag_day(self):
         name = "American Samoa Flag Day"

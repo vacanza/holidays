@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.bahrain import Bahrain, BH, BAH
+from holidays.countries.bahrain import Bahrain
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestBahrain(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Bahrain)
-
-    def test_country_aliases(self):
-        self.assertAliases(Bahrain, BH, BAH)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Bahrain(years=self.start_year - 1))
 
     def test_new_years_day(self):
         name = "رأس السنة الميلادية"

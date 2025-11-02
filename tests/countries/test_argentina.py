@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import ARMENIAN, BANK, GOVERNMENT, HEBREW, ISLAMIC
-from holidays.countries.argentina import Argentina, AR, ARG
+from holidays.countries.argentina import Argentina
 from tests.common import CommonCountryTests
 
 
@@ -29,16 +29,14 @@ class TestArgentina(CommonCountryTests, TestCase):
             years_islamic=range(1997, 2050),
         )
 
-    def test_country_aliases(self):
-        self.assertAliases(Argentina, AR, ARG)
-
     def test_no_holidays(self):
+        super().test_no_holidays()
+
         self.assertNoHolidays(Argentina(categories=ARMENIAN, years=2006))
         self.assertNoHolidays(Argentina(categories=BANK, years=1974))
         self.assertNoHolidays(Argentina(categories=GOVERNMENT, years=2013))
         self.assertNoHolidays(Argentina(categories=HEBREW, years=1995))
         self.assertNoHolidays(Argentina(categories=ISLAMIC, years=1996))
-        self.assertNoHolidays(Argentina(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(

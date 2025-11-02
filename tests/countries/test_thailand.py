@@ -12,8 +12,8 @@
 
 from unittest import TestCase
 
-from holidays.constants import ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY
-from holidays.countries.thailand import Thailand, TH, THA
+from holidays.constants import ARMED_FORCES, BANK, GOVERNMENT, SCHOOL, WORKDAY
+from holidays.countries.thailand import Thailand
 from tests.common import CommonCountryTests
 
 
@@ -23,11 +23,9 @@ class TestThailand(CommonCountryTests, TestCase):
         support_range = range(1914, 2050)
         super().setUpClass(Thailand, years=support_range, years_non_observed=support_range)
 
-    def test_country_aliases(self):
-        self.assertAliases(Thailand, TH, THA)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Thailand(years=1913, categories=(PUBLIC, WORKDAY)))
+        super().test_no_holidays()
+
         self.assertNoHolidays(Thailand(years=1942, categories=BANK))
         self.assertNoHolidays(Thailand(years=1956, categories=(GOVERNMENT, SCHOOL)))
         self.assertNoHolidays(Thailand(years=1958, categories=ARMED_FORCES))

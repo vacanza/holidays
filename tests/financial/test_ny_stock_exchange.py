@@ -14,7 +14,7 @@ from datetime import date
 from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, MAR, JUN, JUL, NOV, DEC, WED, SAT, SUN, _timedelta
-from holidays.financial.ny_stock_exchange import NewYorkStockExchange, XNYS, NYSE
+from holidays.financial.ny_stock_exchange import NewYorkStockExchange
 from tests.common import CommonFinancialTests
 
 
@@ -22,12 +22,6 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(NewYorkStockExchange)
-
-    def test_market_aliases(self):
-        self.assertAliases(NewYorkStockExchange, XNYS, NYSE)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(NewYorkStockExchange(years=self.start_year - 1))
 
     def test_new_years_day(self):
         name = "New Year's Day"

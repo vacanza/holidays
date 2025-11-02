@@ -12,20 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.wallis_and_futuna import HolidaysWF, WallisAndFutuna, WF, WLF
+from holidays.countries.wallis_and_futuna import WallisAndFutuna
 from tests.common import CommonCountryTests
 
 
 class TestWallisAndFutuna(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysWF, years=range(1962, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysWF, WallisAndFutuna, WF, WLF)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(WallisAndFutuna(years=1961))
+        super().setUpClass(WallisAndFutuna, years=range(1962, 2050))
 
     def test_feast_of_saint_peter_chanel(self):
         self.assertHolidayName(
@@ -44,7 +38,7 @@ class TestWallisAndFutuna(CommonCountryTests, TestCase):
 
     def test_2024(self):
         self.assertHolidays(
-            HolidaysWF(years=2024),
+            WallisAndFutuna(years=2024),
             ("2024-01-01", "Jour de l'an"),
             ("2024-04-01", "Lundi de Pâques"),
             ("2024-04-28", "Saint Pierre Chanel"),

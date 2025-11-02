@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.bhutan import Bhutan, BT, BTN
+from holidays.countries.bhutan import Bhutan
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestBhutan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Bhutan)
-
-    def test_country_aliases(self):
-        self.assertAliases(Bhutan, BT, BTN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Bhutan(years=self.start_year - 1))
 
     def test_birthday_anniversary_of_his_majesty_the_king(self):
         name = "Birth Anniversary of His Majesty the King"

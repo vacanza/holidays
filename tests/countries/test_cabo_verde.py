@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import OPTIONAL
-from holidays.countries.cabo_verde import CaboVerde, CV, CPV
+from holidays.countries.cabo_verde import CaboVerde
 from tests.common import CommonCountryTests
 
 
@@ -21,14 +21,6 @@ class TestCapeVerde(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(CaboVerde)
-
-    def test_country_aliases(self):
-        self.assertAliases(CaboVerde, CV, CPV)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            CaboVerde(categories=CaboVerde.supported_categories, years=self.start_year - 1)
-        )
 
     def test_new_years_day(self):
         self.assertHolidayName("Ano Novo", (f"{year}-01-01" for year in self.full_range))

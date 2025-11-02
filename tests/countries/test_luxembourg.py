@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import BANK
-from holidays.countries.luxembourg import Luxembourg, LU, LUX
+from holidays.countries.luxembourg import Luxembourg
 from tests.common import CommonCountryTests
 
 
@@ -21,9 +21,6 @@ class TestLuxembourg(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Luxembourg)
-
-    def test_country_aliases(self):
-        self.assertAliases(Luxembourg, LU, LUX)
 
     def test_2018(self):
         self.assertHolidays(

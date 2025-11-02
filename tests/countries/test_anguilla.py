@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.anguilla import Anguilla, AI, AIA
+from holidays.countries.anguilla import Anguilla
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestAnguilla(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Anguilla)
-
-    def test_country_aliases(self):
-        self.assertAliases(Anguilla, AI, AIA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Anguilla(years=self.start_year - 1))
 
     def test_special_holiday(self):
         self.assertHolidayName("Royal Wedding of Prince William & Kate Middleton", "2011-04-29")

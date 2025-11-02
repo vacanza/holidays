@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.cayman_islands import CaymanIslands, KY, CYM
+from holidays.countries.cayman_islands import CaymanIslands
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(CaymanIslands)
-
-    def test_country_aliases(self):
-        self.assertAliases(CaymanIslands, KY, CYM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(CaymanIslands(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.afghanistan import Afghanistan, AF, AFG
+from holidays.countries.afghanistan import Afghanistan
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestAfghanistan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Afghanistan)
-
-    def test_country_aliases(self):
-        self.assertAliases(Afghanistan, AF, AFG)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Afghanistan(years=self.start_year - 1))
 
     def test_liberation_day(self):
         name = "روز آزادی"

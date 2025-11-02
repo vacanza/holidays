@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.cocos_islands import CocosIslands, CC, CCK
+from holidays.countries.cocos_islands import CocosIslands
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestCocosIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(CocosIslands)
-
-    def test_country_aliases(self):
-        self.assertAliases(CocosIslands, CC, CCK)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(CocosIslands(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(

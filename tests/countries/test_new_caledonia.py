@@ -12,20 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.new_caledonia import HolidaysNC, NewCaledonia, NC, NCL
+from holidays.countries.new_caledonia import NewCaledonia
 from tests.common import CommonCountryTests
 
 
 class TestNewCaledonia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysNC, years=range(1854, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysNC, NewCaledonia, NC, NCL)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(NewCaledonia(years=1853))
+        super().setUpClass(NewCaledonia, years=range(1854, 2050))
 
     def test_citizenship_day(self):
         name_1953 = "Fête de la prise de possession"
@@ -38,7 +32,7 @@ class TestNewCaledonia(CommonCountryTests, TestCase):
 
     def test_2024(self):
         self.assertHolidays(
-            HolidaysNC(years=2024),
+            NewCaledonia(years=2024),
             ("2024-01-01", "Jour de l'an"),
             ("2024-04-01", "Lundi de Pâques"),
             ("2024-05-01", "Fête du Travail"),

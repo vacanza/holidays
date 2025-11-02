@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import GOVERNMENT, OPTIONAL
-from holidays.countries.canada import Canada, CA, CAN
+from holidays.countries.canada import Canada
 from tests.common import CommonCountryTests
 
 
@@ -21,14 +21,6 @@ class TestCanada(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Canada, with_subdiv_categories=True)
-
-    def test_country_aliases(self):
-        self.assertAliases(Canada, CA, CAN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Canada(categories=Canada.supported_categories, years=self.start_year - 1)
-        )
 
     def test_new_years_day(self):
         name = "New Year's Day"

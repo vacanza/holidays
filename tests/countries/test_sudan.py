@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.sudan import Sudan, SD, SDN
+from holidays.countries.sudan import Sudan
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestSudan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Sudan)
-
-    def test_country_aliases(self):
-        self.assertAliases(Sudan, SD, SDN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Sudan(years=self.start_year - 1))
 
     def test_independence_day(self):
         self.assertHolidayName(

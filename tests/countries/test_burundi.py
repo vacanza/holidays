@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.burundi import Burundi, BI, BDI
+from holidays.countries.burundi import Burundi
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestBurundi(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Burundi)
-
-    def test_country_aliases(self):
-        self.assertAliases(Burundi, BI, BDI)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Burundi(years=self.start_year - 1))
 
     def test_new_year_day(self):
         name = "Jour de l'an"

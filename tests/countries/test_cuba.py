@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.cuba import Cuba, CU, CUB
+from holidays.countries.cuba import Cuba
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestCuba(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Cuba)
-
-    def test_country_aliases(self):
-        self.assertAliases(Cuba, CU, CUB)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Cuba(years=self.start_year - 1))
 
     def test_liberation_day(self):
         name = "Triunfo de la Revolución"

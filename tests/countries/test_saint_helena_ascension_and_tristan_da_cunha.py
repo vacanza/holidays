@@ -14,8 +14,6 @@ from unittest import TestCase
 
 from holidays.countries.saint_helena_ascension_and_tristan_da_cunha import (
     SaintHelenaAscensionAndTristanDaCunha,
-    SH,
-    SHN,
 )
 from tests.common import CommonCountryTests
 
@@ -24,17 +22,6 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(SaintHelenaAscensionAndTristanDaCunha, with_subdiv_categories=True)
-
-    def test_country_aliases(self):
-        self.assertAliases(SaintHelenaAscensionAndTristanDaCunha, SH, SHN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            SaintHelenaAscensionAndTristanDaCunha(
-                categories=SaintHelenaAscensionAndTristanDaCunha.supported_categories,
-                years=self.start_year - 1,
-            )
-        )
 
     def test_special_holidays(self):
         for dt, name in (

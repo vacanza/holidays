@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.financial.european_central_bank import EuropeanCentralBank, XECB, ECB, TAR
+from holidays.financial.european_central_bank import EuropeanCentralBank
 from tests.common import CommonFinancialTests
 
 
@@ -20,12 +20,6 @@ class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(EuropeanCentralBank)
-
-    def test_market_aliases(self):
-        self.assertAliases(EuropeanCentralBank, XECB, ECB, TAR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(EuropeanCentralBank(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday("2000-12-31")

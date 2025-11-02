@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.cambodia import Cambodia, KH, KHM
+from holidays.countries.cambodia import Cambodia
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestCambodia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Cambodia)
-
-    def test_country_aliases(self):
-        self.assertAliases(Cambodia, KH, KHM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Cambodia(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(

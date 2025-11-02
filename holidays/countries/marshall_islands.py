@@ -17,7 +17,9 @@ from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHoli
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class HolidaysMH(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class MarshallIslands(
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """Marshall Islands holidays.
 
     References:
@@ -77,15 +79,15 @@ class HolidaysMH(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
             self._add_observed(self._add_christmas_day(name))
 
 
-class MH(HolidaysMH):
+class HolidaysMH(MarshallIslands):
     pass
 
 
-class MHL(HolidaysMH):
+class MH(MarshallIslands):
     pass
 
 
-class MarshallIslands(HolidaysMH):
+class MHL(MarshallIslands):
     pass
 
 

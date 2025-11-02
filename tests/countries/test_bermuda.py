@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.bermuda import Bermuda, BM, BMU
+from holidays.countries.bermuda import Bermuda
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestBermuda(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Bermuda)
-
-    def test_country_aliases(self):
-        self.assertAliases(Bermuda, BM, BMU)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Bermuda(years=self.start_year - 1))
 
     def test_special_holidays(self):
         for dt, name in (

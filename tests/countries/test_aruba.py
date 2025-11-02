@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.aruba import Aruba, AW, ABW
+from holidays.countries.aruba import Aruba
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestAruba(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Aruba)
-
-    def test_country_aliases(self):
-        self.assertAliases(Aruba, AW, ABW)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Aruba(years=self.start_year - 1))
 
     def test_2017(self):
         self.assertHolidays(

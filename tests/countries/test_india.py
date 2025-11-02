@@ -14,7 +14,7 @@ import warnings
 from unittest import TestCase
 
 from holidays.constants import OPTIONAL
-from holidays.countries.india import India, IN, IND
+from holidays.countries.india import India
 from tests.common import CommonCountryTests
 
 
@@ -27,9 +27,6 @@ class TestIndia(CommonCountryTests, TestCase):
     def setUp(self):
         super().setUp()
         warnings.simplefilter("ignore")
-
-    def test_country_aliases(self):
-        self.assertAliases(India, IN, IND)
 
     def test_subdiv_deprecation(self):
         self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")

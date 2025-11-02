@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import WORKDAY
-from holidays.countries.fiji import Fiji, FJ, FJI
+from holidays.countries.fiji import Fiji
 from tests.common import CommonCountryTests
 
 
@@ -22,11 +22,9 @@ class TestFiji(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Fiji)
 
-    def test_country_aliases(self):
-        self.assertAliases(Fiji, FJ, FJI)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Fiji(years=self.start_year - 1))
+        super().test_no_holidays()
+
         self.assertNoHolidays(Fiji(years=2022, categories=WORKDAY))
 
     def test_new_years_day(self):

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.bolivia import Bolivia, BO, BOL
+from holidays.countries.bolivia import Bolivia
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestBolivia(CommonCountryTests, TestCase):
     def setUpClass(cls):
         cls.full_range = range(1980, 2050)
         super().setUpClass(Bolivia, years_non_observed=range(2000, 2024))
-
-    def test_country_aliases(self):
-        self.assertAliases(Bolivia, BO, BOL)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Bolivia(years=BO.start_year - 1))
 
     def test_new_years_day(self):
         name = "Año Nuevo"

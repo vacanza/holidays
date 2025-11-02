@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.calendars.gregorian import FEB, JUN, JUL, AUG, DEC
-from holidays.countries.solomon_islands import SolomonIslands, SB, SLB
+from holidays.countries.solomon_islands import SolomonIslands
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(SolomonIslands)
-
-    def test_country_aliases(self):
-        self.assertAliases(SolomonIslands, SB, SLB)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(SolomonIslands(years=self.start_year - 1))
 
     def test_special_holidays(self):
         name = "Public Holiday"

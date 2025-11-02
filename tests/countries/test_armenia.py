@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.armenia import Armenia, AM, ARM
+from holidays.countries.armenia import Armenia
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestArmenia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Armenia)
-
-    def test_country_aliases(self):
-        self.assertAliases(Armenia, AM, ARM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Armenia(years=self.start_year - 1))
 
     def test_new_years_day(self):
         name = "Նոր տարվա օր"

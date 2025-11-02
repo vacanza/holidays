@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.cameroon import Cameroon, CM, CMR
+from holidays.countries.cameroon import Cameroon
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestCameroon(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Cameroon)
-
-    def test_country_aliases(self):
-        self.assertAliases(Cameroon, CM, CMR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Cameroon(years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday("2021-05-14", "2021-07-19")

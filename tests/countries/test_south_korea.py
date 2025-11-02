@@ -14,7 +14,7 @@ import warnings
 from unittest import TestCase
 
 from holidays.constants import BANK, PUBLIC
-from holidays.countries.south_korea import SouthKorea, KR, KOR, Korea
+from holidays.countries.south_korea import SouthKorea, Korea
 from tests.common import CommonCountryTests
 
 
@@ -23,11 +23,9 @@ class TestSouthKorea(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(SouthKorea, years=range(1948, 2050))
 
-    def test_country_aliases(self):
-        self.assertAliases(SouthKorea, KR, KOR)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(SouthKorea(years=1947))
+        super().test_no_holidays()
+
         self.assertNoHolidays(SouthKorea(categories=BANK, years=1947))
 
     def test_special_holidays(self):
