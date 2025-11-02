@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import OPTIONAL
+from holidays.constants import OPTIONAL, PUBLIC
 from holidays.countries.hongkong import HongKong, CHRISTMAS, WINTER_SOLSTICE
 from tests.common import CommonCountryTests
 
@@ -22,6 +22,12 @@ class TestHongKong(CommonCountryTests, TestCase):
     def setUpClass(cls):
         cls.full_range = range(1963, 2050)
         super().setUpClass(HongKong, years_optional=range(HongKong.start_year, 2050))
+
+    def test_no_holidays(self):
+        super().test_no_holidays()
+
+        self.assertNoHolidays(HongKong(categories=OPTIONAL, years=1945))
+        self.assertNoHolidays(HongKong(categories=PUBLIC, years=1962))
 
     def test_special_holidays(self):
         self.assertHoliday(
