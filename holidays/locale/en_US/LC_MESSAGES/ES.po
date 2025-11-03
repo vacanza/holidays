@@ -14,17 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.84\n"
 "POT-Creation-Date: 2023-12-26 19:23+0200\n"
-"PO-Revision-Date: 2025-09-04 12:50+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-10-29 20:45+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.8\n"
 "X-Source-Language: es\n"
 
 #. %s (estimated).
@@ -114,6 +114,10 @@ msgstr "Cantabria Institutions Day"
 msgid "La Bien Aparecida"
 msgstr "Our Lady of Bien Aparecida"
 
+#. Saint Anthony's Day.
+msgid "San Antonio"
+msgstr "Saint Anthony's Day"
+
 #. Santa Maria of Africa.
 msgid "Nuestra Señora de África"
 msgstr "Santa Maria of Africa"
@@ -193,6 +197,14 @@ msgstr "Madrid Day"
 #. Statute of Autonomy of Melilla Day.
 msgid "Estatuto de Autonomía de la Ciudad de Melilla"
 msgstr "Statute of Autonomy of Melilla Day"
+
+#. Day of Our Lady of Victory.
+msgid "Día de Nuestra Señora la Virgen de la Victoria"
+msgstr "Day of Our Lady of Victory"
+
+#. Melilla Day.
+msgid "Día de Melilla"
+msgstr "Melilla Day"
 
 #. Eid al-Fitr.
 msgid "Fiesta del Eid Fitr"
