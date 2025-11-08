@@ -1,6 +1,6 @@
 # Test requirements.
 
-coverage==7.10.7
+coverage==7.11.0
 numpy<2.3.0; python_version < '3.11'
 numpy==2.3.3; python_version >= '3.11'
 polib==1.2.0
