@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.66\n"
+"Project-Id-Version: Holidays 0.84\n"
 "POT-Creation-Date: 2025-01-12 23:29+0530\n"
-"PO-Revision-Date: 2025-01-24 18:17+0700\n"
+"PO-Revision-Date: 2025-10-30 15:47+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: si_LK\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.4\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.8\n"
 "X-Source-Language: si_LK\n"
 
 #. %s (estimated).
@@ -48,8 +48,16 @@ msgstr ""
 msgid "සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය"
 msgstr ""
 
+#. Good Friday.
+msgid "මහ සිකුරාදා දිනය"
+msgstr ""
+
 #. International Workers' Day.
 msgid "ලොක කම්කරු දිනය"
+msgstr ""
+
+#. Christmas Day.
+msgid "නත්තල් උත්සව දිනය"
 msgstr ""
 
 #. Maha Sivarathri Day.
@@ -58,14 +66,6 @@ msgstr ""
 
 #. Deepavali Festival Day.
 msgid "දීපවාලි උත්සව දිනය"
-msgstr ""
-
-#. Good Friday.
-msgid "මහ සිකුරාදා දිනය"
-msgstr ""
-
-#. Christmas Day.
-msgid "නත්තල් උත්සව දිනය"
 msgstr ""
 
 #. Duruthu Full Moon Poya Day.

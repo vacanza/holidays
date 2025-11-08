@@ -58,12 +58,12 @@ jobs:
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@16140ae1a102900babc80a33c44059580f687047
+        uses: github/codeql-action/init@0499de31b99561a6d14a36a5f662c2a54f91beee
         with:
           languages: python
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@16140ae1a102900babc80a33c44059580f687047
+        uses: github/codeql-action/analyze@0499de31b99561a6d14a36a5f662c2a54f91beee
         with:
           category: '/language:python'
 
@@ -79,7 +79,6 @@ jobs:
           - ubuntu-latest
           - windows-latest
         python-version:
-          - '3.9'
           - '3.10'
           - '3.11'
           - '3.12'
@@ -143,7 +142,7 @@ jobs:
           make package
 
       - name: Upload package artifacts
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4
         with:
           name: dist
           path: dist
@@ -159,7 +158,7 @@ jobs:
 
       - name: Upload SBOM
         if: startsWith(github.event.ref, 'refs/tags/v')
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4
         with:
           name: sbom
           path: holidays-${{ env.VERSION }}-sbom.json
@@ -189,7 +188,7 @@ jobs:
           python-version: '3.14'
 
       - name: Get package artifacts
-        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53
         with:
           name: dist
           path: dist
@@ -245,7 +244,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Download package artifacts
-        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53
         with:
           name: dist
           path: dist
@@ -262,7 +261,7 @@ jobs:
       id-token: write
     steps:
       - name: Download package artifacts
-        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53
         with:
           name: dist
           path: dist
@@ -282,7 +281,7 @@ jobs:
             ./dist/*.whl
 
       - name: Upload package dist and signatures
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4
         with:
           name: signed-artifacts
           path: dist
@@ -296,12 +295,12 @@ jobs:
       contents: write
     steps:
       - name: Download SBOM
-        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53
         with:
           name: sbom
 
       - name: Download package dist and signatures
-        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53
         with:
           name: signed-artifacts
           path: dist

@@ -357,7 +357,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
         self._add_christmas_day_two("Santo Stefano")
 
     def _populate_subdiv_bl_public_holidays(self):
-        self._add_holiday_nov_11("San Martino")
+        self._add_saint_martins_day("San Martino")
 
     def _populate_subdiv_bn_public_holidays(self):
         self._add_holiday_aug_24("San Bartolomeo apostolo")
@@ -518,7 +518,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
         self._add_holiday_jul_4("Sant'Antonino di Piacenza")
 
     def _populate_subdiv_pd_public_holidays(self):
-        self._add_holiday_jun_13("Sant'Antonio di Padova")
+        self._add_saint_anthonys_day("Sant'Antonio di Padova")
 
     def _populate_subdiv_pe_public_holidays(self):
         self._add_holiday_oct_10("San Cetteo")

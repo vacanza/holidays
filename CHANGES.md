@@ -1,3 +1,13 @@
+# Version 0.84
+
+Released November 3, 2025
+
+- Update Spain holidays in 2008-2009, 2026 (#3026 by @PPsyrius)
+- Update Sri Lanka holidays in 2026 (#3033 by @PPsyrius)
+- Add `ChristianHolidays::_add_saint_martins_day` method (#3023 by @PPsyrius)
+- Drop Python 3.9 support (#2998 by @PPsyrius)
+- Standardize `th` l10n for "{insert} Anniversary of...." (#3027 by @PPsyrius)
+
 # Version 0.83
 
 Released October 20, 2025

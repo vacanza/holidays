@@ -20,14 +20,15 @@ from tests.common import CommonCountryTests
 class TestSriLanka(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(SriLanka, years=range(1972, 2025))
+        cls.full_range = range(2003, 2027)
+        super().setUpClass(SriLanka, years=cls.full_range)
 
     def test_country_aliases(self):
         self.assertAliases(SriLanka, LK, LKA)
 
     def test_no_holidays(self):
         self.assertNoHolidays(
-            SriLanka(categories=SriLanka.supported_categories, years=(1971, 2026))
+            SriLanka(categories=SriLanka.supported_categories, years=(2002, 2027))
         )
 
     def test_special(self):
@@ -56,6 +57,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2018-05-29",
             "2020-10-01",
             "2023-07-03",
+            "2026-05-30",
         )
 
     def test_special_bank(self):
@@ -120,6 +122,54 @@ class TestSriLanka(CommonCountryTests, TestCase):
         # 2003 Deepavali.
         self.assertHoliday(SriLanka(categories=WORKDAY), "2003-10-24")
 
+    def test_tamil_thai_pongal_day(self):
+        name = "දෙමළ තෛපොංැලල් දිනය"
+        self.assertHolidayName(
+            name,
+            # Others.
+            "2020-01-15",
+            "2021-01-14",
+            "2022-01-14",
+            "2023-01-15",
+            "2024-01-15",
+            "2025-01-14",
+            # Special Cases.
+            "2026-01-15",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_independence_day(self):
+        self.assertHolidayName("නිදහස් සමරු දිනය", (f"{year}-02-04" for year in self.full_range))
+
+    def test_sinhala_and_tamil_new_year(self):
+        years_apr_13 = {2004, 2008, 2012, 2020, 2024}
+        self.assertHolidayName(
+            "සිංහල හා දෙමළ අලුත් අවුරුදු දිනය",
+            (f"{year}-04-13" for year in self.full_range if year in years_apr_13),
+            (f"{year}-04-14" for year in self.full_range if year not in years_apr_13),
+        )
+        # Day Before Sinhala and Tamil New Year.
+        self.assertHolidayName("සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය", self.full_range)
+
+    def test_good_friday(self):
+        name = "මහ සිකුරාදා දිනය"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_international_workers_day(self):
+        self.assertHolidayName("ලොක කම්කරු දිනය", (f"{year}-05-01" for year in self.full_range))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("නත්තල් උත්සව දිනය", (f"{year}-12-25" for year in self.full_range))
+
     def test_deepavali(self):
         name = "දීපවාලි උත්සව දිනය"
         self.assertHolidayName(
@@ -131,29 +181,16 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2024-10-31",
             "2025-10-20",
         )
+        self.assertHolidayName(name, range(2004, 2027))
         self.assertNoHolidayName(name, 2003)
 
     def test_maha_sivarathri(self):
         name = "මහ සිවරාත්රි දිනය"
         self.assertHolidayName(
             name,
-            "2003-03-01",
-            "2004-02-18",
-            "2005-03-08",
-            "2006-02-26",
-            "2007-02-16",
-            "2008-03-06",
-            "2009-02-23",
+            # Special Cases.
             "2010-03-13",
-            "2011-03-02",
-            "2012-02-20",
-            "2013-03-10",
-            "2014-02-27",
-            "2015-02-17",
-            "2016-03-07",
-            "2017-02-24",
-            "2018-02-13",
-            "2019-03-04",
+            # Others.
             "2020-02-21",
             "2021-03-11",
             "2022-03-01",
@@ -161,7 +198,166 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2024-03-08",
             "2025-02-26",
         )
-        self.assertNoHolidayName(name, 2002)
+        self.assertHolidayName(name, self.full_range)
+
+    def test_duruthu_full_moon_poya_day(self):
+        name = "දුරුතු පුර පසළොස්වක පෝය දිනය"
+        self.assertHolidayName(
+            name,
+            "2020-01-10",
+            "2021-01-28",
+            "2022-01-17",
+            "2023-01-06",
+            "2024-01-25",
+            "2025-01-13",
+        )
+        self.assertHolidayNameCount(name, 1, range(2003, 2009), range(2011, 2027))
+        self.assertHolidayNameCount(name, 2, 2009)
+
+    def test_nawam_full_moon_poya_day(self):
+        name = "නවම් පුර පසළොස්වක පෝය දිනය"
+        self.assertHolidayName(
+            name,
+            "2020-02-08",
+            "2021-02-26",
+            "2022-02-16",
+            "2023-02-05",
+            "2024-02-23",
+            "2025-02-12",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_medin_full_moon_poya_day(self):
+        name = "මැදින් පුර පසළොස්වක පෝය දිනය"
+        self.assertHolidayName(
+            name,
+            "2020-03-09",
+            "2021-03-28",
+            "2022-03-17",
+            "2023-03-06",
+            "2024-03-24",
+            "2025-03-13",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_bak_full_moon_poya_day(self):
+        name = "බක් පුර පසළොස්වක පෝය දිනය"
+        self.assertHolidayName(
+            name,
+            "2020-04-07",
+            "2021-04-26",
+            "2022-04-16",
+            "2023-04-05",
+            "2024-04-23",
+            "2025-04-12",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_vesak_full_moon_poya_day(self):
+        name = "වෙසක් පුර පසළොස්වක පෝය දිනය"
+        self.assertHolidayName(
+            name,
+            "2020-05-07",
+            "2021-05-26",
+            "2022-05-15",
+            "2023-05-05",
+            "2024-05-23",
+            "2025-05-12",
+        )
+        self.assertHolidayName(name, self.full_range)
+        # Day Following Vesak Full Moon Poya Day.
+        self.assertHolidayName("වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය", self.full_range)
+
+    def test_poson_full_moon_poya_day(self):
+        name = "පොසොන් පුර පසළොස්වක පෝය දිනය"
+        self.assertHolidayName(
+            name,
+            "2020-06-05",
+            "2021-06-24",
+            "2022-06-14",
+            "2023-06-03",
+            "2024-06-21",
+            "2025-06-10",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_esala_full_moon_poya_day(self):
+        name = "ඇසල පුර පසළොස්වක පෝය දිනය"
+        self.assertHolidayName(
+            name,
+            "2020-07-04",
+            "2021-07-23",
+            "2022-07-13",
+            "2023-08-01",
+            "2024-07-20",
+            "2025-07-10",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_nikini_full_moon_poya_day(self):
+        name = "නිකිණි පුර පසළොස්වක පෝය දිනය"
+        self.assertHolidayName(
+            name,
+            "2020-08-03",
+            "2021-08-22",
+            "2022-08-11",
+            "2023-08-30",
+            "2024-08-19",
+            "2025-08-08",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_binara_full_moon_poya_day(self):
+        name = "බිනර පුර පසළොස්වක පෝය දිනය"
+        self.assertHolidayName(
+            name,
+            "2020-09-01",
+            "2021-09-20",
+            "2022-09-10",
+            "2023-09-29",
+            "2024-09-17",
+            "2025-09-07",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_vap_full_moon_poya_day(self):
+        name = "වප් පුර පසළොස්වක පෝය දිනය"
+        self.assertHolidayName(
+            name,
+            "2020-10-30",
+            "2021-10-20",
+            "2022-10-09",
+            "2023-10-28",
+            "2024-10-17",
+            "2025-10-06",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_il_full_moon_poya_day(self):
+        name = "ඉල් පුර පසළොස්වක පෝය දිනය"
+        self.assertHolidayName(
+            name,
+            "2020-11-29",
+            "2021-11-18",
+            "2022-11-07",
+            "2023-11-26",
+            "2024-11-15",
+            "2025-11-05",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_unduvap_full_moon_poya_day(self):
+        name = "උඳුවප් පුර පසළොස්වක පෝය දිනය"
+        self.assertHolidayName(
+            name,
+            "2020-12-29",
+            "2021-12-18",
+            "2022-12-07",
+            "2023-12-26",
+            "2024-12-14",
+            "2025-12-04",
+        )
+        self.assertHolidayName(name, self.full_range)
 
     def test_2023_all(self):
         # https://web.archive.org/web/20250218215654/https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2023

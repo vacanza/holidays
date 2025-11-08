@@ -21,7 +21,7 @@ from datetime import date, datetime, timedelta, timezone
 from functools import cached_property
 from gettext import gettext, translation
 from pathlib import Path
-from typing import Any, Literal, Optional, Union, cast
+from typing import Any, Literal, Union, cast
 
 from dateutil.parser import parse
 
@@ -43,15 +43,16 @@ from holidays.calendars.gregorian import (
 from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC, DEFAULT_START_YEAR, DEFAULT_END_YEAR
 from holidays.helpers import _normalize_arguments, _normalize_tuple
 
-CategoryArg = Union[str, Iterable[str]]
-DateArg = Union[date, tuple[int, int], tuple[int, int, int]]
-DateLike = Union[date, datetime, str, float, int]
-SpecialHoliday = Union[tuple[int, int, str], tuple[tuple[int, int, str], ...]]
-SubstitutedHoliday = Union[
-    Union[tuple[int, int, int, int], tuple[int, int, int, int, int]],
-    tuple[Union[tuple[int, int, int, int], tuple[int, int, int, int, int]], ...],
-]
-YearArg = Union[int, Iterable[int]]
+CategoryArg = str | Iterable[str]
+DateArg = date | tuple[int, int] | tuple[int, int, int]
+DateLike = date | datetime | str | float | int
+SpecialHoliday = tuple[int, int, str] | tuple[tuple[int, int, str], ...]
+SubstitutedHoliday = (
+    tuple[int, int, int, int]
+    | tuple[int, int, int, int, int]
+    | tuple[tuple[int, int, int, int] | tuple[int, int, int, int, int], ...]
+)
+YearArg = int | Iterable[int]
 
 
 class HolidayBase(dict[date, str]):
@@ -199,9 +200,9 @@ class HolidayBase(dict[date, str]):
     is requested."""
     observed: bool
     """Whether dates when public holiday are observed are included."""
-    subdiv: Optional[str] = None
+    subdiv: str | None = None
     """The subdiv requested as ISO 3166-2 code or one of the aliases."""
-    special_holidays: dict[int, Union[SpecialHoliday, SubstitutedHoliday]] = {}
+    special_holidays: dict[int, SpecialHoliday | SubstitutedHoliday] = {}
     """A list of the country-wide special (as opposite to regular) holidays for
     a specific year."""
     _deprecated_subdivisions: tuple[str, ...] = ()
@@ -213,7 +214,7 @@ class HolidayBase(dict[date, str]):
     """Working days moved to weekends."""
     default_category: str = PUBLIC
     """The entity category used by default."""
-    default_language: Optional[str] = None
+    default_language: str | None = None
     """The entity language used by default."""
     categories: set[str] = set()
     """Requested holiday categories."""
@@ -225,19 +226,19 @@ class HolidayBase(dict[date, str]):
     """Start year of holidays presence for this entity."""
     end_year: int = DEFAULT_END_YEAR
     """End year of holidays presence for this entity."""
-    parent_entity: Optional[type["HolidayBase"]] = None
+    parent_entity: type["HolidayBase"] | None = None
     """Optional parent entity to reference as a base."""
 
     def __init__(
         self,
-        years: Optional[YearArg] = None,
+        years: YearArg | None = None,
         expand: bool = True,
         observed: bool = True,
-        subdiv: Optional[str] = None,
-        prov: Optional[str] = None,  # Deprecated.
-        state: Optional[str] = None,  # Deprecated.
-        language: Optional[str] = None,
-        categories: Optional[CategoryArg] = None,
+        subdiv: str | None = None,
+        prov: str | None = None,  # Deprecated.
+        state: str | None = None,  # Deprecated.
+        language: str | None = None,
+        categories: CategoryArg | None = None,
     ) -> None:
         """
         Args:
@@ -605,7 +606,7 @@ class HolidayBase(dict[date, str]):
             The corresponding `datetime.date` representation.
         """
 
-        dt: Optional[date] = None
+        dt: date | None = None
         # Try to catch `date` and `str` type keys first.
         # Using type() here to skip date subclasses.
         # Key is `date`.
@@ -662,7 +663,7 @@ class HolidayBase(dict[date, str]):
     def __radd__(self, other: Any) -> "HolidayBase":
         return self.__add__(other)
 
-    def __reduce__(self) -> Union[str, tuple[Any, ...]]:
+    def __reduce__(self) -> str | tuple[Any, ...]:
         return super().__reduce__()
 
     def __repr__(self) -> str:
@@ -794,7 +795,7 @@ class HolidayBase(dict[date, str]):
         """Returns True if the year is leap. Returns False otherwise."""
         return isleap(self._year)
 
-    def _add_holiday(self, name: str, *args) -> Optional[date]:
+    def _add_holiday(self, name: str, *args) -> date | None:
         """Add a holiday."""
         if not args:
             raise TypeError("Incorrect number of arguments.")
@@ -936,7 +937,7 @@ class HolidayBase(dict[date, str]):
                 for category in self._sorted_categories
             )
 
-    def append(self, *args: Union[dict[DateLike, str], list[DateLike], DateLike]) -> None:
+    def append(self, *args: dict[DateLike, str] | list[DateLike] | DateLike) -> None:
         """Alias for [update()][holidays.holiday_base.HolidayBase.update] to mimic list type.
 
         Args:
@@ -953,7 +954,7 @@ class HolidayBase(dict[date, str]):
         """Return a copy of the object."""
         return copy.copy(self)
 
-    def get(self, key: DateLike, default: Union[str, Any] = None) -> Union[str, Any]:
+    def get(self, key: DateLike, default: str | Any = None) -> str | Any:
         """Retrieve the holiday name(s) for a given date.
 
         If the date is a holiday, returns the holiday name as a string.
@@ -1055,9 +1056,9 @@ class HolidayBase(dict[date, str]):
 
     def get_closest_holiday(
         self,
-        target_date: Optional[DateLike] = None,
+        target_date: DateLike | None = None,
         direction: Literal["forward", "backward"] = "forward",
-    ) -> Optional[tuple[date, str]]:
+    ) -> tuple[date, str] | None:
         """Find the closest holiday relative to a given date.
 
         If `direction` is "forward", returns the next holiday after `target_date`.
@@ -1170,7 +1171,7 @@ class HolidayBase(dict[date, str]):
         dt = self.__keytransform__(key)
         return dt in self.weekend_workdays if self._is_weekend(dt) else dt not in self
 
-    def pop(self, key: DateLike, default: Union[str, Any] = None) -> Union[str, Any]:
+    def pop(self, key: DateLike, default: str | Any = None) -> str | Any:
         """Remove a holiday for a given date and return its name.
 
         If the specified date is a holiday, it will be removed, and its name will
@@ -1276,7 +1277,7 @@ class HolidayBase(dict[date, str]):
         return popped
 
     def update(  # type: ignore[override]
-        self, *args: Union[dict[DateLike, str], list[DateLike], DateLike]
+        self, *args: dict[DateLike, str] | list[DateLike] | DateLike
     ) -> None:
         """Update the object, overwriting existing dates.
 
@@ -1319,11 +1320,11 @@ class HolidaySum(HolidayBase):
     * Holidays are generated (expanded) for all years included in the operands.
     """
 
-    country: Union[str, list[str]]  # type: ignore[assignment]
+    country: str | list[str]  # type: ignore[assignment]
     """Countries included in the addition."""
-    market: Union[str, list[str]]  # type: ignore[assignment]
+    market: str | list[str]  # type: ignore[assignment]
     """Markets included in the addition."""
-    subdiv: Optional[Union[str, list[str]]]  # type: ignore[assignment]
+    subdiv: str | list[str] | None  # type: ignore[assignment]
     """Subdivisions included in the addition."""
     holidays: list[HolidayBase]
     """The original HolidayBase objects included in the addition."""
@@ -1382,7 +1383,7 @@ class HolidaySum(HolidayBase):
         # and Milano, or ... you get the picture.
         # Same goes when countries and markets are being mixed (working, yet
         # still nonsensical).
-        value: Optional[Union[str, list[str]]]
+        value: str | list[str] | None
         for attr in ("country", "market", "subdiv"):
             a1 = getattr(h1, attr, None)
             a2 = getattr(h2, attr, None)
