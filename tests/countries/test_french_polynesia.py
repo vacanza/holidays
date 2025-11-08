@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestFrenchPolynesia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(FrenchPolynesia, years=range(1881, 2050))
+        super().setUpClass(FrenchPolynesia)
 
     def test_good_friday(self):
         name = "Vendredi saint"
@@ -33,22 +33,22 @@ class TestFrenchPolynesia(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(1881, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_missionary_day(self):
         name = "Arrivée de l'Évangile"
-        self.assertHolidayName(name, (f"{year}-03-05" for year in range(1978, 2050)))
-        self.assertNoHolidayName(name, range(1881, 1978))
+        self.assertHolidayName(name, (f"{year}-03-05" for year in range(1978, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1978))
 
     def test_internal_autonomy_day(self):
         name = "Fête de l'autonomie"
         self.assertHolidayName(name, (f"{year}-06-29" for year in range(1985, 2025)))
-        self.assertNoHolidayName(name, range(1881, 1985), range(2025, 2050))
+        self.assertNoHolidayName(name, range(self.start_year, 1985), range(2025, self.end_year))
 
     def test_matarii(self):
         name = "Matāri'i"
-        self.assertHolidayName(name, (f"{year}-11-20" for year in range(2025, 2050)))
-        self.assertNoHolidayName(name, range(1881, 2025))
+        self.assertHolidayName(name, (f"{year}-11-20" for year in range(2025, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2025))
 
     def test_2024(self):
         self.assertHolidays(

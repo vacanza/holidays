@@ -33,7 +33,7 @@ class MarshallIslands(
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, MarshalIslandsStaticHolidays)
+        StaticHolidays.__init__(self, MarshallIslandsStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
@@ -91,7 +91,7 @@ class MHL(MarshallIslands):
     pass
 
 
-class MarshalIslandsStaticHolidays:
+class MarshallIslandsStaticHolidays:
     # General Election Day
     election_day = "General Election Day"
 

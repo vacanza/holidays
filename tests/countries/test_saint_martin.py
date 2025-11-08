@@ -19,17 +19,17 @@ from tests.common import CommonCountryTests
 class TestSaintMartin(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(SaintMartin, years=range(2008, 2050))
+        super().setUpClass(SaintMartin)
 
     def test_abolition_of_slavery(self):
         name = "Abolition de l'esclavage"
-        self.assertHolidayName(name, (f"{year}-05-28" for year in range(2012, 2050)))
-        self.assertNoHolidayName(name, range(2008, 2012))
+        self.assertHolidayName(name, (f"{year}-05-28" for year in range(2012, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2012))
 
     def test_victor_schoelcher_day(self):
         name = "Fête de Victor Schoelcher"
-        self.assertHolidayName(name, (f"{year}-07-21" for year in range(2012, 2050)))
-        self.assertNoHolidayName(name, range(2008, 2012))
+        self.assertHolidayName(name, (f"{year}-07-21" for year in range(2012, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2012))
 
     def test_2024(self):
         self.assertHolidays(

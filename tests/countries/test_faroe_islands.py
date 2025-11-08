@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import HALF_DAY
 from holidays.countries.faroe_islands import FaroeIslands
 from tests.common import CommonCountryTests
 
@@ -20,12 +19,10 @@ from tests.common import CommonCountryTests
 class TestFaroeIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1949, 2050)
-        super().setUpClass(FaroeIslands, years=years)
-        cls.half_day_holidays = FaroeIslands(categories=HALF_DAY, years=years)
+        super().setUpClass(FaroeIslands)
 
     def test_new_years_day(self):
-        self.assertHolidayName("Nýggjársdagur", (f"{year}-01-01" for year in range(1949, 2050)))
+        self.assertHolidayName("Nýggjársdagur", (f"{year}-01-01" for year in self.full_range))
 
     def test_maundy_thursday(self):
         name = "Skírhósdagur"
@@ -38,7 +35,7 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
             "2024-03-28",
             "2025-04-17",
         )
-        self.assertHolidayName(name, range(1949, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_good_friday(self):
         name = "Langifríggjadagur"
@@ -51,7 +48,7 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(1949, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_sunday(self):
         name = "Páskadagur"
@@ -64,7 +61,7 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
             "2024-03-31",
             "2025-04-20",
         )
-        self.assertHolidayName(name, range(1949, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "Annar páskadagur"
@@ -77,7 +74,7 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(1949, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_great_prayer_day(self):
         name = "Dýri biðidagur"
@@ -90,7 +87,7 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
             "2024-04-26",
             "2025-05-16",
         )
-        self.assertHolidayName(name, range(1949, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_ascension_day(self):
         name = "Kristi himmalsferðardagur"
@@ -103,7 +100,7 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
             "2024-05-09",
             "2025-05-29",
         )
-        self.assertHolidayName(name, range(1949, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_whit_sunday(self):
         name = "Hvítusunnudagur"
@@ -116,7 +113,7 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
             "2024-05-19",
             "2025-06-08",
         )
-        self.assertHolidayName(name, range(1949, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_whit_monday(self):
         name = "Annar hvítusunnudagur"
@@ -129,43 +126,37 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
             "2024-05-20",
             "2025-06-09",
         )
-        self.assertHolidayName(name, range(1949, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_saint_olafs_day(self):
-        self.assertHolidayName("Ólavsøkudagur", (f"{year}-07-29" for year in range(1949, 2050)))
+        self.assertHolidayName("Ólavsøkudagur", (f"{year}-07-29" for year in self.full_range))
 
     def test_christmas_eve(self):
-        self.assertHolidayName("Jólaaftan", (f"{year}-12-24" for year in range(1949, 2050)))
+        self.assertHolidayName("Jólaaftan", (f"{year}-12-24" for year in self.full_range))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Jóladagur", (f"{year}-12-25" for year in range(1949, 2050)))
+        self.assertHolidayName("Jóladagur", (f"{year}-12-25" for year in self.full_range))
 
     def test_christmas_second_day(self):
-        self.assertHolidayName("Annar jóladagur", (f"{year}-12-26" for year in range(1949, 2050)))
+        self.assertHolidayName("Annar jóladagur", (f"{year}-12-26" for year in self.full_range))
 
     def test_new_years_eve(self):
-        self.assertHolidayName("Nýggjársaftan", (f"{year}-12-31" for year in range(1949, 2050)))
+        self.assertHolidayName("Nýggjársaftan", (f"{year}-12-31" for year in self.full_range))
 
     def test_national_flag_day(self):
         name = "Flaggdagur"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.half_day_holidays, (f"{year}-04-25" for year in range(1949, 2050))
-        )
+        self.assertHalfDayHolidayName(name, (f"{year}-04-25" for year in self.full_range))
 
     def test_constitution_day(self):
         name = "Grundlógardagur"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.half_day_holidays, (f"{year}-06-05" for year in range(1949, 2050))
-        )
+        self.assertHalfDayHolidayName(name, (f"{year}-06-05" for year in self.full_range))
 
     def test_saint_olafs_eve(self):
         name = "Ólavsøkuaftan"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.half_day_holidays, (f"{year}-07-28" for year in range(1949, 2050))
-        )
+        self.assertHalfDayHolidayName(name, (f"{year}-07-28" for year in self.full_range))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

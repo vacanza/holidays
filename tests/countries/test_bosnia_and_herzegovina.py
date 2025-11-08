@@ -181,7 +181,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.full_range)
-        for subdiv, holidays in self.subdiv_holidays.items():
+        for holidays in self.subdiv_holidays.values():
             self.assertHolidayName(name, holidays, dts)
             self.assertHolidayName(name, holidays, self.full_range)
 
@@ -195,7 +195,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.full_range)
-        for subdiv, holidays in self.subdiv_holidays.items():
+        for holidays in self.subdiv_holidays.values():
             self.assertHolidayName(name, holidays, dts)
             self.assertHolidayName(name, holidays, self.full_range)
 

@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestFrenchSouthernTerritories(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(FrenchSouthernTerritories, years=range(1956, 2050))
+        super().setUpClass(FrenchSouthernTerritories)
 
     def test_2024(self):
         self.assertHolidays(
