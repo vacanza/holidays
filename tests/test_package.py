@@ -10,13 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import sys
-
-if sys.version_info >= (3, 10):
-    from importlib.metadata import metadata
-else:
-    from importlib_metadata import metadata
-
+from importlib.metadata import metadata
 from unittest import TestCase
 
 import holidays

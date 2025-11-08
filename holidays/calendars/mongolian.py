@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, MAY, JUN, OCT, NOV, DEC
@@ -322,19 +321,19 @@ class _MongolianLunisolar:
         2100: (FEB, 10),
     }
 
-    def _get_holiday(self, holiday: str, year: int) -> tuple[Optional[date], bool]:
+    def _get_holiday(self, holiday: str, year: int) -> tuple[date | None, bool]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
         return date(year, *dt) if dt else None, year not in exact_dates
 
-    def buddha_day_date(self, year: int) -> tuple[Optional[date], bool]:
+    def buddha_day_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BUDDHA_DAY, year)
 
-    def genghis_khan_day_date(self, year: int) -> tuple[Optional[date], bool]:
+    def genghis_khan_day_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(GENGHIS_KHAN_DAY, year)
 
-    def tsagaan_sar_date(self, year: int) -> tuple[Optional[date], bool]:
+    def tsagaan_sar_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(TSAGAAN_SAR, year)
 
 
