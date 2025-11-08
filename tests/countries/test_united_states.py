@@ -2263,7 +2263,8 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 "2022-11-25",
                 (
                     "American Indian Heritage Day; Day After Thanksgiving; Family Day; "
-                    "Friday After Thanksgiving; Lincoln's Birthday; Presidents' Day; State Holiday"
+                    "Friday After Thanksgiving; Lincoln's Birthday; Native American Heritage Day; "
+                    "Presidents' Day; State Holiday"
                 ),
             ),
             ("2022-12-08", "Constitution Day; Lady of Camarin Day"),
@@ -2368,8 +2369,8 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             (
                 "2022-11-25",
                 (
-                    "วันครอบครัว; วันประธานาธิบดี; วันหยุดประจำรัฐ; วันหลังวันขอบคุณพระเจ้า; "
-                    "วันอนุรักษ์มรดกชนพื้นเมืองอเมริกัน; วันเกิดลิงคอล์น; "
+                    "วันครอบครัว; วันประธานาธิบดี; วันมรดกชนพื้นเมืองอเมริกัน; วันหยุดประจำรัฐ; "
+                    "วันหลังวันขอบคุณพระเจ้า; วันอนุรักษ์มรดกชนพื้นเมืองอเมริกัน; วันเกิดลิงคอล์น; "
                     "ศุกร์หลังวันขอบคุณพระเจ้า"
                 ),
             ),
