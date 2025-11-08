@@ -145,6 +145,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             * <https://web.archive.org/web/20250428135456/http://mdc.library.mju.ac.th/article/57695/297565/367757.pdf>
             * <https://web.archive.org/web/20250428140422/https://resolution.soc.go.th/PDF_UPLOAD/2510/932141.pdf>
             * <https://web.archive.org/web/20161028001043/http://www.myhora.com:80/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx>
+            * <https://web.archive.org/web/20251108075053/https://pridi.or.th/th/content/2024/05/1954>
         * [Royal Thai Armed Forces Day](https://th.wikipedia.org/wiki/วันกองทัพไทย)
         * [Teacher's Day](https://web.archive.org/web/20250117105542/http://event.sanook.com/day/teacher-day/)
 
@@ -889,8 +890,9 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             2023: (MAY, 17),
             2024: (MAY, 10),
             2025: (MAY, 9),
+            2026: (MAY, 13),
         }
-        if 1960 <= self._year <= 2025 and self._year != 1999:
+        if 1960 <= self._year <= 2026 and self._year != 1999:
             self._add_observed(
                 # Royal Ploughing Ceremony.
                 self._add_holiday(tr("วันพืชมงคล"), raeknakhwan_dates.get(self._year))
@@ -1136,6 +1138,7 @@ class ThailandStaticHolidays:
         ),
         2026: (JAN, 2, thai_bridge_public_holiday),
     }
+    # Royal Ploughing Ceremony.
     special_workday_holidays = {1999: (MAY, 14, tr("วันพืชมงคล"))}
 
     special_public_holidays_observed = {
