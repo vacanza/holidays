@@ -410,7 +410,7 @@ msgstr "วันรำลึกยุทธการเบนนิงตัน
 
 #. Native American Heritage Day.
 msgid "Native American Heritage Day"
-msgstr "วันมรดกชนพื้นเมืองอเมริกัน"
+msgstr "วันอนุรักษ์มรดกชนพื้นเมืองอเมริกัน"
 
 #. West Virginia Day.
 msgid "West Virginia Day"
