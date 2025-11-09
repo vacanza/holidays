@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.85\n"
 "POT-Creation-Date: 2025-06-19 15:33+0700\n"
 "PO-Revision-Date: 2025-10-02 11:06+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
@@ -406,6 +406,10 @@ msgstr ""
 
 #. Bennington Battle Day.
 msgid "Bennington Battle Day"
+msgstr ""
+
+#. Native American Heritage Day.
+msgid "Native American Heritage Day"
 msgstr ""
 
 #. West Virginia Day.
