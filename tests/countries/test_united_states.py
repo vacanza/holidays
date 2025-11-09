@@ -2000,6 +2000,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             ("OK", "Day After Thanksgiving", 1975),
             ("PA", "Day After Thanksgiving", None),
             ("TX", "Friday After Thanksgiving", 1975),
+            ("WA", "Native American Heritage Day", 2014),
             ("WV", "Day After Thanksgiving", 1975),
         ):
             self.assertNoHolidayName(name)
