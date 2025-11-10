@@ -20,8 +20,13 @@ from tests.common import CommonCountryTests
 class TestThailand(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        support_range = range(1914, 2050)
-        super().setUpClass(Thailand, years=support_range, years_non_observed=support_range)
+        cls.full_range = range(1914, 2050)
+        super().setUpClass(Thailand, years=cls.full_range, years_non_observed=cls.full_range)
+        cls.armed_forces_holidays = Thailand(categories=ARMED_FORCES, years=cls.full_range)
+        cls.bank_holidays = Thailand(categories=BANK, years=cls.full_range)
+        cls.government_holidays = Thailand(categories=GOVERNMENT, years=cls.full_range)
+        cls.school_holidays = Thailand(categories=SCHOOL, years=cls.full_range)
+        cls.workday_holidays = Thailand(categories=WORKDAY, years=cls.full_range)
 
     def test_no_holidays(self):
         super().test_no_holidays()
@@ -121,9 +126,7 @@ class TestThailand(CommonCountryTests, TestCase):
 
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1941, 2050)))
         self.assertHolidayName(
-            name,
-            (f"{year}-01-02" for year in range(1941, 1945)),
-            (f"{year}-01-02" for year in range(1948, 1954)),
+            name, (f"{year}-01-02" for year in (*range(1941, 1945), *range(1948, 1954)))
         )
         self.assertNoHolidayName(name, range(1914, 1941))
 
@@ -138,20 +141,12 @@ class TestThailand(CommonCountryTests, TestCase):
 
     def test_national_childrens_day(self):
         name = "วันเด็กแห่งชาติ"
-        dt = (
+
+        self.assertHolidayName(
+            name,
             # First Iteration
             "1955-10-03",
             # Second and Current Iteration
-            "2010-01-09",
-            "2011-01-08",
-            "2012-01-14",
-            "2013-01-12",
-            "2014-01-11",
-            "2015-01-10",
-            "2016-01-09",
-            "2017-01-14",
-            "2018-01-13",
-            "2019-01-12",
             "2020-01-11",
             "2021-01-09",
             "2022-01-08",
@@ -159,29 +154,25 @@ class TestThailand(CommonCountryTests, TestCase):
             "2024-01-13",
             "2025-01-11",
         )
-        self.assertHolidayName(name, dt)
         self.assertNoHolidayName(name, range(1914, 1955), 1964)
 
     def test_franco_thai_war_armistice_day(self):
         name = "วันลงนามในสัญญาพักรบระหว่างประเทศไทยกับประเทศอินโดจีนฝรั่งเศส"
+
         self.assertHolidayName(name, (f"{year}-01-28" for year in range(1942, 1945)))
         self.assertNoHolidayName(name, range(1914, 1942), range(1945, 2050))
 
     def test_chakri_memorial_day(self):
-        name_maha_chakri = "วันที่ระลึกมหาจักรี"
-        name_chakri = "วันจักรี"
-        name_rama_one = "วันพระบาทสมเด็จพระพุทธยอดฟ้าจุฬาโลกมหาราช และวันที่ระลึกมหาจักรีบรมราชวงศ์"
-        years_pre = range(1914, 1926)
-        years_maha_chakri = range(1926, 1938)
-        years_chakri = range(1938, 1983)
-        years_rama_one = range(1983, 2050)
+        name_1926 = "วันที่ระลึกมหาจักรี"
+        name_1938 = "วันจักรี"
+        name_1983 = "วันพระบาทสมเด็จพระพุทธยอดฟ้าจุฬาโลกมหาราช และวันที่ระลึกมหาจักรีบรมราชวงศ์"
 
-        self.assertHolidayName(name_maha_chakri, (f"{year}-04-06" for year in years_maha_chakri))
-        self.assertHolidayName(name_chakri, (f"{year}-04-06" for year in years_chakri))
-        self.assertHolidayName(name_rama_one, (f"{year}-04-06" for year in years_rama_one))
-        self.assertNoHolidayName(name_maha_chakri, years_pre, years_chakri, years_rama_one)
-        self.assertNoHolidayName(name_chakri, years_pre, years_maha_chakri, years_rama_one)
-        self.assertNoHolidayName(name_rama_one, years_pre, years_maha_chakri, years_chakri)
+        self.assertHolidayName(name_1926, (f"{year}-04-06" for year in range(1926, 1938)))
+        self.assertHolidayName(name_1938, (f"{year}-04-06" for year in range(1938, 1983)))
+        self.assertHolidayName(name_1983, (f"{year}-04-06" for year in range(1983, 2050)))
+        self.assertNoHolidayName(name_1926, range(1914, 1926), range(1938, 2050))
+        self.assertNoHolidayName(name_1938, range(1914, 1938), range(1983, 2050))
+        self.assertNoHolidayName(name_1983, range(1914, 1983))
 
         self.assertNoNonObservedHoliday(
             "2013-04-08",
@@ -214,7 +205,7 @@ class TestThailand(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name_1938, range(1914, 1938), range(1940, 2050))
         self.assertNoHolidayName(name_1939, range(1914, 1940), range(1941, 2050))
         # APR 13-14-15
-        for year in [*range(1948, 1954), *range(1998, 2020), *range(2021, 2050)]:
+        for year in (*range(1948, 1954), *range(1998, 2020), *range(2021, 2050)):
             self.assertHolidayName(name_1948, (f"{year}-04-13", f"{year}-04-14", f"{year}-04-15"))
         # APR 12-13-14
         for year in range(1989, 1998):
@@ -281,7 +272,7 @@ class TestThailand(CommonCountryTests, TestCase):
             "2030-05-06",
         )
 
-    def test_queen_suthida_birthday(self):
+    def test_hm_queen_suthidas_birthday(self):
         name = "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"
 
         self.assertHolidayName(name, (f"{year}-06-03" for year in range(2019, 2050)))
@@ -298,13 +289,11 @@ class TestThailand(CommonCountryTests, TestCase):
         name_1939 = "วันชาติ"
 
         self.assertHolidayName(name_1938, "1938-06-24")
-        for year in [*range(1940, 1948), *range(1952, 1954)]:
+        for year in (*range(1940, 1948), *range(1952, 1954)):
             self.assertHolidayName(name_1939, (f"{year}-06-23", f"{year}-06-24", f"{year}-06-25"))
         self.assertHolidayName(
             name_1939,
-            "1939-06-24",
-            (f"{year}-06-24" for year in range(1948, 1952)),
-            (f"{year}-06-24" for year in range(1954, 1960)),
+            (f"{year}-06-24" for year in (1939, *range(1948, 1952), *range(1954, 1960))),
         )
         self.assertHolidayName(name_1939, (f"{year}-12-05" for year in range(1960, 2050)))
         self.assertNoHolidayName(name_1938, range(1914, 1938), range(1939, 2050))
@@ -333,17 +322,14 @@ class TestThailand(CommonCountryTests, TestCase):
             "2030-07-29",
         )
 
-    def test_queen_sirikit_birthday(self):
-        name_ix = "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ"
-        name_x = "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง"
-        years_pre = range(1914, 1976)
-        years_ix = range(1976, 2017)
-        years_x = range(2017, 2050)
+    def test_hm_queen_sirikit_the_queen_mothers_birthday(self):
+        name_1976 = "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ"
+        name_2017 = "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง"
 
-        self.assertHolidayName(name_ix, (f"{year}-08-12" for year in years_ix))
-        self.assertHolidayName(name_x, (f"{year}-08-12" for year in years_x))
-        self.assertNoHolidayName(name_ix, years_pre, years_x)
-        self.assertNoHolidayName(name_x, years_pre, years_ix)
+        self.assertHolidayName(name_1976, (f"{year}-08-12" for year in range(1976, 2017)))
+        self.assertHolidayName(name_2017, (f"{year}-08-12" for year in range(2017, 2050)))
+        self.assertNoHolidayName(name_1976, range(1914, 1976), range(2017, 2050))
+        self.assertNoHolidayName(name_2017, range(1914, 2017))
 
         self.assertNoNonObservedHoliday(
             "2012-08-13",
@@ -366,24 +352,21 @@ class TestThailand(CommonCountryTests, TestCase):
 
     def test_peace_proclamation_day(self):
         name = "วันประกาศสันติภาพ"
+
         self.assertHolidayName(name, (f"{year}-08-16" for year in range(1946, 1948)))
         self.assertNoHolidayName(name, range(1914, 1946), range(1948, 2050))
 
-    def test_rama_ix_memorial_day(self):
-        name_ix = "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
-        name_x = "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
-        name_x_memorial = "วันนวมินทรมหาราช"
-        years_pre = range(1914, 2017)
-        years_ix = range(2017, 2019)
-        years_x = range(2019, 2023)
-        years_x_memorial = range(2023, 2050)
+    def test_hm_king_bhumibol_adulyadej_memorial_day(self):
+        name_2017 = "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
+        name_2019 = "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+        name_2023 = "วันนวมินทรมหาราช"
 
-        self.assertHolidayName(name_ix, (f"{year}-10-13" for year in years_ix))
-        self.assertHolidayName(name_x, (f"{year}-10-13" for year in years_x))
-        self.assertHolidayName(name_x_memorial, (f"{year}-10-13" for year in years_x_memorial))
-        self.assertNoHolidayName(name_ix, years_pre, years_x, years_x_memorial)
-        self.assertNoHolidayName(name_x, years_pre, years_ix, years_x_memorial)
-        self.assertNoHolidayName(name_x_memorial, years_pre, years_ix, years_x)
+        self.assertHolidayName(name_2017, (f"{year}-10-13" for year in range(2017, 2019)))
+        self.assertHolidayName(name_2019, (f"{year}-10-13" for year in range(2019, 2023)))
+        self.assertHolidayName(name_2023, (f"{year}-10-13" for year in range(2023, 2050)))
+        self.assertNoHolidayName(name_2017, range(1914, 2017), range(2019, 2050))
+        self.assertNoHolidayName(name_2019, range(1914, 2019), range(2023, 2050))
+        self.assertNoHolidayName(name_2023, range(1914, 2023))
 
         self.assertNoNonObservedHoliday(
             "2018-10-15",
@@ -393,21 +376,17 @@ class TestThailand(CommonCountryTests, TestCase):
             "2030-10-14",
         )
 
-    def test_rama_five_memorial_day(self):
-        name_ashes = "ทำบุญพระบรมอัษฐิพระพุทธเจ้าหลวง"
-        name_death = "วันสวรรคตแห่งพระบาทสมเด็จพระพุทธเจ้าหลวง"
-        name_memorial = "วันปิยมหาราช"
-        years_ashes = range(1914, 1926)
-        years_death = range(1926, 1938)
-        years_none = range(1938, 1946)
-        years_memorial = range(1946, 2050)
+    def test_hm_king_chulalongkorn_memorial_day(self):
+        name_1914 = "ทำบุญพระบรมอัษฐิพระพุทธเจ้าหลวง"
+        name_1926 = "วันสวรรคตแห่งพระบาทสมเด็จพระพุทธเจ้าหลวง"
+        name_1946 = "วันปิยมหาราช"
 
-        self.assertHolidayName(name_ashes, (f"{year}-10-23" for year in years_ashes))
-        self.assertHolidayName(name_death, (f"{year}-10-23" for year in years_death))
-        self.assertHolidayName(name_memorial, (f"{year}-10-23" for year in years_memorial))
-        self.assertNoHolidayName(name_ashes, years_death, years_none, years_memorial)
-        self.assertNoHolidayName(name_death, years_ashes, years_none, years_memorial)
-        self.assertNoHolidayName(name_memorial, years_ashes, years_death, years_none)
+        self.assertHolidayName(name_1914, (f"{year}-10-23" for year in range(1914, 1926)))
+        self.assertHolidayName(name_1926, (f"{year}-10-23" for year in range(1926, 1938)))
+        self.assertHolidayName(name_1946, (f"{year}-10-23" for year in range(1946, 2050)))
+        self.assertNoHolidayName(name_1914, range(1926, 2050))
+        self.assertNoHolidayName(name_1926, range(1914, 1926), range(1938, 2050))
+        self.assertNoHolidayName(name_1946, range(1914, 1946))
 
         self.assertNoNonObservedHoliday(
             "2010-10-25",
@@ -452,7 +431,7 @@ class TestThailand(CommonCountryTests, TestCase):
         # Rama IX.
         for year in range(1946, 1948):
             self.assertHolidayName(name_1945, (f"{year}-12-05", f"{year}-12-06"))
-        for year in [*range(1948, 1951), *range(1952, 1954)]:
+        for year in (*range(1948, 1951), *range(1952, 1954)):
             self.assertHolidayName(name_1945, (f"{year}-12-04", f"{year}-12-05", f"{year}-12-06"))
         self.assertHolidayName(name_1945, "1951-12-05", "1951-12-06", "1951-12-07")
         self.assertHolidayName(name_1960, (f"{year}-12-05" for year in range(1960, 2016)))
@@ -488,14 +467,13 @@ class TestThailand(CommonCountryTests, TestCase):
     def test_constitution_day(self):
         name = "วันรัฐธรรมนูญ"
 
-        for year in [*range(1938, 1948), *range(1950, 1954)]:
-            self.assertHolidayName(name, (f"{year}-12-09", f"{year}-12-10", f"{year}-12-11"))
+        self.assertHolidayName(name, (f"{year}-12-10" for year in range(1938, 2050)))
         self.assertHolidayName(
-            name,
-            (f"{year}-12-10" for year in range(1948, 1950)),
-            (f"{year}-12-10" for year in range(1954, 2050)),
+            name, (f"{year}-12-09" for year in (*range(1938, 1948), *range(1950, 1954)))
         )
-        self.assertNoHolidayName(name, range(1914, 1938))
+        self.assertHolidayName(
+            name, (f"{year}-12-11" for year in (*range(1938, 1948), *range(1950, 1954)))
+        )
 
         self.assertNoNonObservedHoliday(
             "2011-12-12",
@@ -510,9 +488,7 @@ class TestThailand(CommonCountryTests, TestCase):
         name = "วันสิ้นปี"
 
         self.assertHolidayName(
-            name,
-            (f"{year}-12-31" for year in range(1941, 1957)),
-            (f"{year}-12-31" for year in range(1989, 2050)),
+            name, (f"{year}-12-31" for year in (*range(1941, 1957), *range(1989, 2050)))
         )
         self.assertNoHolidayName(name, range(1914, 1941), range(1957, 1989))
 
@@ -525,8 +501,22 @@ class TestThailand(CommonCountryTests, TestCase):
         )
 
     def test_makha_bucha(self):
-        self.assertNoHolidayName("มาฆบูชา จาตุรงฅ์สันนิบาต", 1914, range(1938, 2050))
-        self.assertNoHolidayName("วันมาฆบูชา", range(1914, 1938))
+        name_1915 = "มาฆบูชา จาตุรงฅ์สันนิบาต"
+        name_1938 = "วันมาฆบูชา"
+
+        self.assertHolidayName(name_1915, range(1915, 1926))
+        self.assertHolidayName(
+            name_1938,
+            "2020-02-08",
+            "2021-02-26",
+            "2022-02-16",
+            "2023-03-06",
+            "2024-02-24",
+            "2025-02-12",
+        )
+        self.assertHolidayName(name_1938, range(1938, 2050))
+        self.assertNoHolidayName(name_1915, range(1914, 1915), range(1926, 2050))
+        self.assertNoHolidayName(name_1938, range(1914, 1938))
 
         self.assertNoNonObservedHoliday(
             "2010-03-01",
@@ -538,10 +528,28 @@ class TestThailand(CommonCountryTests, TestCase):
         )
 
     def test_visakha_bucha(self):
-        self.assertNoHolidayName("วิสาขะบูชา", range(1926, 2050))
-        self.assertNoHolidayName("วิศาขะบูชา", range(1914, 1926), range(1938, 2050))
-        self.assertNoHolidayName("วันวิสาขะบูชา", range(1914, 1938), range(1957, 2050))
-        self.assertNoHolidayName("วันวิสาขบูชา", range(1914, 1957))
+        name_1914 = "วิสาขะบูชา"
+        name_1926 = "วิศาขะบูชา"
+        name_1938 = "วันวิสาขะบูชา"
+        name_1957 = "วันวิสาขบูชา"
+
+        self.assertHolidayName(name_1914, range(1914, 1926))
+        self.assertHolidayName(name_1926, range(1926, 1938))
+        self.assertHolidayName(name_1938, range(1938, 1957))
+        self.assertHolidayName(
+            name_1957,
+            "2020-05-06",
+            "2021-05-26",
+            "2022-05-15",
+            "2023-06-03",
+            "2024-05-22",
+            "2025-05-11",
+        )
+        self.assertHolidayName(name_1957, range(1957, 2050))
+        self.assertNoHolidayName(name_1914, range(1926, 2050))
+        self.assertNoHolidayName(name_1926, range(1914, 1926), range(1938, 2050))
+        self.assertNoHolidayName(name_1938, range(1914, 1938), range(1957, 2050))
+        self.assertNoHolidayName(name_1957, range(1914, 1957))
 
         self.assertNoNonObservedHoliday(
             "2019-05-20",
@@ -553,7 +561,19 @@ class TestThailand(CommonCountryTests, TestCase):
         )
 
     def test_asarnha_bucha(self):
-        self.assertNoHolidayName("วันอาสาฬหบูชา", range(1914, 1962))
+        name = "วันอาสาฬหบูชา"
+
+        self.assertHolidayName(
+            name,
+            "2020-07-05",
+            "2021-07-24",
+            "2022-07-13",
+            "2023-08-01",
+            "2024-07-20",
+            "2025-07-10",
+        )
+        self.assertHolidayName(name, range(1962, 2050))
+        self.assertNoHolidayName(name, range(1914, 1962))
 
         self.assertNoNonObservedHoliday(
             "2017-07-10",
@@ -565,8 +585,22 @@ class TestThailand(CommonCountryTests, TestCase):
         )
 
     def test_buddhist_lent_day(self):
-        self.assertNoHolidayName("เข้าปุริมพรรษา", range(1938, 2050))
-        self.assertNoHolidayName("วันเข้าพรรษา", range(1914, 1938))
+        name_1914 = "เข้าปุริมพรรษา"
+        name_1938 = "วันเข้าพรรษา"
+
+        self.assertHolidayName(name_1914, range(1914, 1938))
+        self.assertHolidayName(
+            name_1938,
+            "2020-07-06",
+            "2021-07-25",
+            "2022-07-14",
+            "2023-08-02",
+            "2024-07-21",
+            "2025-07-11",
+        )
+        self.assertHolidayName(name_1938, range(1938, 2050))
+        self.assertNoHolidayName(name_1914, range(1938, 2050))
+        self.assertNoHolidayName(name_1938, range(1914, 1938))
 
         self.assertNoNonObservedHoliday(
             "2011-07-18",
@@ -574,10 +608,13 @@ class TestThailand(CommonCountryTests, TestCase):
             "2018-07-30",
         )
 
-    def test_raeknakhwan(self):
+    def test_royal_ploughing_ceremony(self):
         name = "วันพืชมงคล"
 
-        dt = (
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name,
+            self.government_holidays,
             "1960-05-02",
             "1961-05-11",
             "1962-05-07",
@@ -644,146 +681,141 @@ class TestThailand(CommonCountryTests, TestCase):
             "2023-05-17",
             "2024-05-10",
             "2025-05-09",
+            "2026-05-13",
         )
-        gov_holidays = Thailand(categories=GOVERNMENT, years=range(1959, 2026))
-        self.assertHolidayName(name, gov_holidays, dt)
-        self.assertNoHolidayName(name, gov_holidays, 1959, 1999)
-        self.assertNoHolidayName(name)
+        self.assertNoHolidayName(
+            name, self.government_holidays, range(1914, 1960), 1999, range(2027, 2050)
+        )
 
-    def test_armed_forces_holiday(self):
+    def test_armed_forces_day(self):
         name = "วันกองทัพไทย"
 
-        armed_forces_holidays = Thailand(categories=ARMED_FORCES, years=range(1958, 2050))
-        self.assertHolidayName(
-            name, armed_forces_holidays, (f"{year}-04-08" for year in range(1959, 1980))
-        )
-        self.assertHolidayName(
-            name, armed_forces_holidays, (f"{year}-01-25" for year in range(1980, 2007))
-        )
-        self.assertHolidayName(
-            name, armed_forces_holidays, (f"{year}-01-18" for year in range(2007, 2050))
-        )
-        self.assertNoHolidayName(name, armed_forces_holidays, 1958)
         self.assertNoHolidayName(name)
-
-    def test_bank_holiday(self):
-        name_agri = "วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
-        name_mid = "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
-
-        bank_holidays = Thailand(categories=BANK, years=range(1942, 2023))
         self.assertHolidayName(
-            name_agri, bank_holidays, (f"{year}-04-01" for year in range(1943, 2022))
+            name, self.armed_forces_holidays, (f"{year}-04-08" for year in range(1959, 1980))
         )
         self.assertHolidayName(
-            name_mid, bank_holidays, (f"{year}-07-01" for year in range(1943, 2019))
+            name, self.armed_forces_holidays, (f"{year}-01-25" for year in range(1980, 2007))
         )
-        self.assertNoHolidayName(name_agri, bank_holidays, 1942, range(2022, 2050))
-        self.assertNoHolidayName(name_mid, bank_holidays, 1942, range(2019, 2050))
-        self.assertNoHolidayName(name_agri)
-        self.assertNoHolidayName(name_mid)
+        self.assertHolidayName(
+            name, self.armed_forces_holidays, (f"{year}-01-18" for year in range(2007, 2050))
+        )
+        self.assertNoHolidayName(name, self.armed_forces_holidays, range(1914, 1959))
 
-    def test_school_holiday(self):
+    def test_additional_closing_days_for_bank_for_agriculture_and_agircultural_cooperatives(self):
+        name = "วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
+
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.bank_holidays, (f"{year}-04-01" for year in range(1943, 2022))
+        )
+        self.assertNoHolidayName(name, self.bank_holidays, range(1914, 1942), range(2022, 2050))
+
+    def test_mid_year_closing_days(self):
+        name = "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
+
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.bank_holidays, (f"{year}-07-01" for year in range(1943, 2019))
+        )
+        self.assertNoHolidayName(name, self.bank_holidays, range(1914, 1942), range(2019, 2050))
+
+    def test_teachers_day(self):
         name = "วันครู"
 
-        school_holidays = Thailand(categories=SCHOOL, years=range(1956, 2050))
-        self.assertHolidayName(
-            name, school_holidays, (f"{year}-01-16" for year in range(1957, 2050))
-        )
-        self.assertNoHolidayName(name, school_holidays, 1956)
         self.assertNoHolidayName(name)
-
-    def test_workday_1947(self):
-        self.assertHolidays(
-            Thailand(categories=WORKDAY, years=1947),
-            ("1947-11-27", "วันลอยกระทง"),
+        self.assertHolidayName(
+            name, self.school_holidays, (f"{year}-01-16" for year in range(1957, 2050))
         )
+        self.assertNoHolidayName(name, self.school_holidays, range(1914, 1957))
 
-    def test_workday_1948(self):
-        self.assertHolidays(
-            Thailand(categories=WORKDAY, years=1948),
-            ("1948-02-03", "วันทหารผ่านศึก"),
-            ("1948-11-15", "วันลอยกระทง"),
-        )
+    def test_thai_veterans_day(self):
+        name = "วันทหารผ่านศึก"
 
-    def test_workday_1982(self):
-        self.assertHolidays(
-            Thailand(categories=WORKDAY, years=1982),
-            ("1982-02-03", "วันทหารผ่านศึก"),
-            ("1982-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
-            ("1982-10-31", "วันลอยกระทง"),
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.workday_holidays, (f"{year}-02-03" for year in range(1948, 2050))
         )
+        self.assertNoHolidayName(name, self.workday_holidays, range(1914, 1948))
 
-    def test_workday_1985(self):
-        self.assertHolidays(
-            Thailand(categories=WORKDAY, years=1985),
-            ("1985-02-03", "วันทหารผ่านศึก"),
-            ("1985-02-26", "วันศิลปินแห่งชาติ"),
-            ("1985-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
-            ("1985-11-26", "วันลอยกระทง"),
-        )
+    def test_national_science_day(self):
+        name = "วันวิทยาศาสตร์แห่งชาติ"
 
-    def test_workday_1989(self):
-        self.assertHolidays(
-            Thailand(categories=WORKDAY, years=1989),
-            ("1989-02-03", "วันทหารผ่านศึก"),
-            ("1989-02-26", "วันศิลปินแห่งชาติ"),
-            ("1989-03-08", "วันสตรีสากล"),
-            ("1989-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
-            ("1989-11-12", "วันลอยกระทง"),
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.workday_holidays, (f"{year}-08-18" for year in range(1982, 2050))
         )
+        self.assertNoHolidayName(name, self.workday_holidays, range(1914, 1982))
 
-    def test_workday_1990(self):
-        self.assertHolidays(
-            Thailand(categories=WORKDAY, years=1990),
-            ("1990-01-14", "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"),
-            ("1990-01-17", "วันพ่อขุนรามคำแหงมหาราช"),
-            ("1990-02-03", "วันทหารผ่านศึก"),
-            ("1990-02-26", "วันศิลปินแห่งชาติ"),
-            ("1990-03-08", "วันสตรีสากล"),
-            ("1990-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
-            ("1990-11-02", "วันลอยกระทง"),
-        )
+    def test_national_artist_day(self):
+        name = "วันศิลปินแห่งชาติ"
 
-    def test_workday_1995(self):
-        self.assertHolidays(
-            Thailand(categories=WORKDAY, years=1995),
-            ("1995-01-13", "วันการบินแห่งชาติ"),
-            ("1995-01-14", "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"),
-            ("1995-01-17", "วันพ่อขุนรามคำแหงมหาราช"),
-            ("1995-02-03", "วันทหารผ่านศึก"),
-            ("1995-02-26", "วันศิลปินแห่งชาติ"),
-            ("1995-03-08", "วันสตรีสากล"),
-            ("1995-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
-            ("1995-11-06", "วันลอยกระทง"),
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.workday_holidays, (f"{year}-02-26" for year in range(1985, 2050))
         )
+        self.assertNoHolidayName(name, self.workday_holidays, range(1914, 1985))
 
-    def test_workday_1999(self):
-        self.assertHolidays(
-            Thailand(categories=WORKDAY, years=1999),
-            ("1999-01-13", "วันการบินแห่งชาติ"),
-            ("1999-01-14", "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"),
-            ("1999-01-17", "วันพ่อขุนรามคำแหงมหาราช"),
-            ("1999-02-03", "วันทหารผ่านศึก"),
-            ("1999-02-26", "วันศิลปินแห่งชาติ"),
-            ("1999-03-08", "วันสตรีสากล"),
-            ("1999-05-14", "วันพืชมงคล"),
-            ("1999-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
-            ("1999-11-22", "วันลอยกระทง"),
-        )
+    def test_international_womens_day(self):
+        name = "วันสตรีสากล"
 
-    def test_workday_2017(self):
-        self.assertHolidays(
-            Thailand(categories=WORKDAY, years=2017),
-            ("2017-01-13", "วันการบินแห่งชาติ"),
-            ("2017-01-14", "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"),
-            ("2017-01-17", "วันพ่อขุนรามคำแหงมหาราช"),
-            ("2017-02-03", "วันทหารผ่านศึก"),
-            ("2017-02-26", "วันศิลปินแห่งชาติ"),
-            ("2017-03-08", "วันสตรีสากล"),
-            ("2017-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
-            ("2017-09-28", "วันพระราชทานธงชาติไทย"),
-            ("2017-11-03", "วันลอยกระทง"),
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.workday_holidays, (f"{year}-03-08" for year in range(1989, 2050))
         )
+        self.assertNoHolidayName(name, self.workday_holidays, range(1914, 1989))
+
+    def test_national_forest_conservation_day(self):
+        name = "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"
+
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.workday_holidays, (f"{year}-01-14" for year in range(1990, 2050))
+        )
+        self.assertNoHolidayName(name, self.workday_holidays, range(1914, 1990))
+
+    def test_hm_king_ramkamhaeng_memorial_day(self):
+        name = "วันพ่อขุนรามคำแหงมหาราช"
+
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.workday_holidays, (f"{year}-01-17" for year in range(1990, 2050))
+        )
+        self.assertNoHolidayName(name, self.workday_holidays, range(1914, 1990))
+
+    def test_national_aviation_day(self):
+        name = "วันการบินแห่งชาติ"
+
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.workday_holidays, (f"{year}-01-13" for year in range(1995, 2050))
+        )
+        self.assertNoHolidayName(name, self.workday_holidays, range(1914, 1995))
+
+    def test_thai_national_flag_day(self):
+        name = "วันพระราชทานธงชาติไทย"
+
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.workday_holidays, (f"{year}-09-28" for year in range(2017, 2050))
+        )
+        self.assertNoHolidayName(name, self.workday_holidays, range(1914, 2017))
+
+    def test_loy_krathong(self):
+        name = "วันลอยกระทง"
+
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name,
+            self.workday_holidays,
+            "2020-10-31",
+            "2021-11-19",
+            "2022-11-08",
+            "2023-11-27",
+            "2024-11-15",
+            "2025-11-05",
+        )
+        self.assertHolidayName(name, self.workday_holidays, self.full_range)
 
     def test_weekends(self):
         for dt in (
