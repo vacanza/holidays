@@ -19,6 +19,7 @@ from holidays.observed_holiday_base import (
     WED_TO_NEXT_FRI,
     SAT_TO_PREV_FRI,
     SUN_TO_NEXT_MON,
+    SUN_TO_NEXT_TUE,
     WED_THU_TO_NEXT_FRI,
 )
 
@@ -29,6 +30,11 @@ class Ecuador(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Ecuador>
         * [Código del Trabajo](https://web.archive.org/web/20250428092005/https://biblioteca.defensoria.gob.ec/bitstream/37000/3364/1/Código%20de%20Trabajo%20(04-11-2021).pdf)
+        * [2018](https://web.archive.org/web/20181231193947/https://www.turismo.gob.ec/wp-content/uploads/2018/06/CALENDARIO-FERIADOS2018.pdf)
+        * [2019](https://web.archive.org/web/20220707173738/https://www.turismo.gob.ec/wp-content/uploads/2019/01/FERIADOS-2019.pdf)
+        * [2020-2021](https://web.archive.org/web/20210425014244/https://www.turismo.gob.ec/wp-content/uploads/2020/03/CALENDARIO-DE-FERIADOS.pdf)
+        * [2022](https://web.archive.org/web/20220127234055/https://www.turismo.gob.ec/wp-content/uploads/2022/01/FERIADOS-NACIONALES_2022.pdf)
+        * [2023-2025](https://web.archive.org/web/20250806025223/https://www.turismo.gob.ec/wp-content/uploads/2023/12/CALENDARIO-FERIADOS-2023-2025-06-12-2022-.pdf)
     """
 
     country = "EC"
@@ -84,19 +90,21 @@ class Ecuador(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_observed(
             # All Souls' Day.
-            self._add_all_souls_day(tr("Día de los Difuntos")),
-            rule=TUE_TO_PREV_MON + WED_TO_NEXT_FRI + SAT_TO_PREV_FRI,  # Not observed the next day.
+            self._add_all_souls_day(tr("Día de Difuntos")),
+            # Not observed the next day.
+            rule=TUE_TO_PREV_MON + WED_TO_NEXT_FRI + SAT_TO_PREV_FRI + SUN_TO_NEXT_TUE,
         )
 
         self._add_observed(
             # Independence of Cuenca.
             self._add_holiday_nov_3(tr("Independencia de Cuenca")),
-            rule=WED_THU_TO_NEXT_FRI + SUN_TO_NEXT_MON,  # Not observed the previous day.
+            # Not observed the previous day.
+            rule=SUN_TO_NEXT_MON,
         )
 
         self._add_observed(
             # Christmas Day.
-            self._add_christmas_day(tr("Día de Navidad")),
+            self._add_christmas_day(tr("Navidad")),
             rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_MON,
         )
 
