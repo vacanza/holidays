@@ -24,8 +24,9 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_China>
         * [Festivals and Public Holidays](https://zh.wikipedia.org/wiki/中华人民共和国节日与公众假期)
-        * [2024 changes (Order #795)](https://web.archive.org/web/20250228151847/https://www.gov.cn/zhengce/content/202411/content_6986380.htm)
+        * [2026](https://web.archive.org/web/20251111205945/https://www.gov.cn/zhengce/content/202511/content_7047090.htm)
         * [2025](https://web.archive.org/web/20250424041657/https://www.gov.cn/zhengce/content/202411/content_6986382.htm)
+        * [2024 changes (Order #795)](https://web.archive.org/web/20250228151847/https://www.gov.cn/zhengce/content/202411/content_6986380.htm)
         * [2024](https://web.archive.org/web/20250227033646/https://www.gov.cn/zhengce/content/202310/content_6911527.htm)
         * [2023](https://web.archive.org/web/20250414125053/https://www.gov.cn/gongbao/content/2023/content_5736714.htm)
         * [2022](https://web.archive.org/web/20250413071341/http://www.gov.cn/gongbao/content/2021/content_5651728.htm)
@@ -451,6 +452,14 @@ class ChinaStaticHolidays:
             (MAY, 5, APR, 27),  # Labor Day
             (OCT, 7, SEP, 28),  # National Day
             (OCT, 8, OCT, 11),  # National Day
+        ),
+        2026: (
+            (JAN, 2, JAN, 4),  # New Year's Day
+            (FEB, 20, FEB, 14),  # Spring Festival
+            (FEB, 23, FEB, 28),  # Spring Festival
+            (MAY, 5, MAY, 9),  # Labor Day
+            (OCT, 6, SEP, 20),  # National Day
+            (OCT, 7, OCT, 10),  # National Day
         ),
     }
 
