@@ -14,7 +14,7 @@ from datetime import date
 from unittest import TestCase
 
 from holidays.calendars.gregorian import _timedelta
-from holidays.constants import HALF_DAY, PUBLIC
+from holidays.constants import HALF_DAY
 from holidays.countries.turkey import Turkey, TR, TUR
 from tests.common import CommonCountryTests
 
@@ -22,19 +22,22 @@ from tests.common import CommonCountryTests
 class TestTurkey(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Turkey, years=range(1936, 2050))
+        cls.full_range = range(1936, 2050)
+        super().setUpClass(Turkey, years=cls.full_range)
+        cls.half_day_holidays = Turkey(categories=HALF_DAY, years=cls.full_range)
+        cls.no_estimated_holidays = Turkey(years=cls.full_range, islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(Turkey, TR, TUR)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Turkey(categories=(HALF_DAY, PUBLIC), years=1935))
+        self.assertNoHolidays(Turkey(categories=Turkey.supported_categories, years=1935))
 
     def test_special_holidays(self):
         self.assertHoliday("1999-12-31")
 
     def test_new_years_day(self):
-        self.assertHolidayName("Yılbaşı", (f"{year}-01-01" for year in range(1936, 2050)))
+        self.assertHolidayName("Yılbaşı", (f"{year}-01-01" for year in self.full_range))
 
     def test_national_sovereignty_and_childrens_day(self):
         name_1 = "Ulusal Egemenlik Bayramı"
@@ -48,6 +51,11 @@ class TestTurkey(CommonCountryTests, TestCase):
         name = "Emek ve Dayanışma Günü"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(2009, 2050)))
         self.assertNoHolidayName(name, range(1936, 2009))
+
+    def test_spring_day(self):
+        name = "Bahar Bayramı"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1936, 1981)))
+        self.assertNoHolidayName(name, range(1981, 2050))
 
     def test_ataturk_youth_and_sports_day(self):
         name_1 = "Gençlik ve Spor Bayramı"
@@ -68,22 +76,21 @@ class TestTurkey(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1936, 2017))
 
     def test_victory_day(self):
-        self.assertHolidayName("Zafer Bayramı", (f"{year}-08-30" for year in range(1936, 2050)))
+        self.assertHolidayName("Zafer Bayramı", (f"{year}-08-30" for year in self.full_range))
 
     def test_republic_day(self):
         name = "Cumhuriyet Bayramı"
-        self.assertHolidayName(name, (f"{year}-10-29" for year in range(1936, 2050)))
+        self.assertHolidayName(name, (f"{year}-10-29" for year in self.full_range))
         self.assertHolidayName(name, (f"{year}-10-30" for year in range(1936, 1981)))
 
         self.assertHolidayName(
             f"{name} (saat 13.00'ten)",
-            Turkey(categories=HALF_DAY, years=range(1936, 2050)),
-            (f"{year}-10-28" for year in range(1936, 2050)),
+            self.half_day_holidays,
+            (f"{year}-10-28" for year in self.full_range),
         )
 
     def test_eid_al_fitr(self):
         name = "Ramazan Bayramı"
-        half_day_holidays = Turkey(categories=HALF_DAY, years=range(1936, 2050))
         for ymd in (
             (2000, 1, 8),
             (2000, 12, 27),
@@ -98,12 +105,19 @@ class TestTurkey(CommonCountryTests, TestCase):
             dt = date(*ymd)
             self.assertHolidayName(name, dt, _timedelta(dt, +1), _timedelta(dt, +2))
             self.assertHolidayName(
-                f"{name} (saat 13.00'ten)", half_day_holidays, _timedelta(dt, -1)
+                f"{name} (saat 13.00'ten)", self.half_day_holidays, _timedelta(dt, -1)
             )
+        exception_years = {1968, 2000, 2033}
+        self.assertHolidayNameCount(
+            name,
+            3,
+            self.no_estimated_holidays,
+            (year for year in self.full_range if year not in exception_years),
+        )
+        self.assertHolidayNameCount(name, 6, self.no_estimated_holidays, exception_years)
 
     def test_eid_al_adha(self):
         name = "Kurban Bayramı"
-        half_day_holidays = Turkey(categories=HALF_DAY, years=range(1936, 2050))
         for ymd in (
             (2006, 1, 10),
             (2006, 12, 31),
@@ -120,8 +134,17 @@ class TestTurkey(CommonCountryTests, TestCase):
                 name, dt, _timedelta(dt, +1), _timedelta(dt, +2), _timedelta(dt, +3)
             )
             self.assertHolidayName(
-                f"{name} (saat 13.00'ten)", half_day_holidays, _timedelta(dt, -1)
+                f"{name} (saat 13.00'ten)", self.half_day_holidays, _timedelta(dt, -1)
             )
+        self.assertHolidayNameCount(
+            name,
+            4,
+            self.no_estimated_holidays,
+            (year for year in self.full_range if year not in {1941, 1942, 1974, 2006, 2007, 2039}),
+        )
+        self.assertHolidayNameCount(name, 5, self.no_estimated_holidays, 1942, 2006)
+        self.assertHolidayNameCount(name, 7, self.no_estimated_holidays, 1941, 2007)
+        self.assertHolidayNameCount(name, 8, self.no_estimated_holidays, 1974, 2039)
 
     def test_2022(self):
         self.assertHolidays(
