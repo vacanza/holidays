@@ -1281,6 +1281,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             # Presidents' Day.
             self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
+        if self._year >= 2014:
+            # Native American Heritage Day.
+            self._add_holiday_1_day_past_4th_thu_of_nov(tr("Native American Heritage Day"))
+
     def _populate_subdiv_wi_public_holidays(self):
         if self._year >= 1976:
             # Susan B. Anthony Day.
