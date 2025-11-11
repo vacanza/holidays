@@ -20,6 +20,7 @@ from unittest import mock
 import pytest
 
 import holidays
+from holidays.calendars.gregorian import FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.utils import (
     CountryHoliday,
@@ -221,73 +222,117 @@ class TestListSupportedEntities(unittest.TestCase):
             1 for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
         )
         self.assertEqual(financial_count, len(supported_financial))
-        financial_files = [
-            path for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
-        ]
-        self.assertEqual(len(financial_files), len(supported_financial))
 
 
 class MockHolidayBase(HolidayBase):
-    def __init__(self, holidays, weekend={5, 6}):
+    def __init__(self, holidays: set[date], weekend: set[int] | None = None) -> None:
         super().__init__()
         self._holidays = set(holidays)
-        self.weekend = weekend
+        self.weekend = weekend or {SAT, SUN}
 
     def keys(self):
         return self._holidays
 
-    def __contains__(self, d):
-        return d in self._holidays
+    def __contains__(self, day):
+        return day in self._holidays
 
 
 class TestListLongWeekends(unittest.TestCase):
-    def test_simple_long_weekend(self):
-        holidays = [date(2025, 7, 4)]
-        instance = MockHolidayBase(holidays)
-        result = list_long_weekends(instance)
-        self.assertEqual(result, [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]])
-
-    def test_multiple_holidays(self):
-        holidays = [date(2025, 7, 4), date(2025, 12, 26)]
-        instance = MockHolidayBase(holidays)
-        result = list_long_weekends(instance)
-        expected = [
-            [date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)],
-            [date(2025, 12, 26), date(2025, 12, 27), date(2025, 12, 28)],
-        ]
+    def assertLongWeekendsEqual(  # noqa: N802
+        self,
+        holidays,
+        expected,
+        weekend=None,
+        minimum_holiday_length=3,
+        *,
+        require_weekend_overlap=True,
+    ):
+        instance = MockHolidayBase(holidays, weekend=weekend or {SAT, SUN})
+        result = list_long_weekends(
+            instance,
+            minimum_holiday_length=minimum_holiday_length,
+            require_weekend_overlap=require_weekend_overlap,
+        )
         self.assertEqual(result, expected)
 
-    def test_three_holidays_no_weekend(self):
-        holidays = [date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)]
-        instance = MockHolidayBase(holidays)
-        result = list_long_weekends(instance)
-        self.assertEqual(result, [])
+    def test_long_weekend_single(self):
+        self.assertLongWeekendsEqual(
+            [date(2025, 7, 4)],
+            [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]],
+        )
 
-    def test_three_holidays_included_with_flag(self):
-        holidays = [date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)]
-        instance = MockHolidayBase(holidays)
-        result = list_long_weekends(instance, require_weekend_overlap=False)
-        self.assertEqual(result, [[date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)]])
+    def test_long_weekend_multiple(self):
+        self.assertLongWeekendsEqual(
+            [date(2025, 7, 4), date(2025, 12, 26)],
+            [
+                [date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)],
+                [date(2025, 12, 26), date(2025, 12, 27), date(2025, 12, 28)],
+            ],
+        )
 
-    def test_custom_weekend(self):
-        holidays = [date(2025, 4, 10)]
-        instance = MockHolidayBase(holidays, weekend={4, 5})
-        result = list_long_weekends(instance)
-        self.assertEqual(result, [[date(2025, 4, 10), date(2025, 4, 11), date(2025, 4, 12)]])
+    def test_long_weekend_require_weekend_overlap(self):
+        self.assertLongWeekendsEqual(
+            [date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)],
+            [],
+        )
+        self.assertLongWeekendsEqual(
+            [date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)],
+            [[date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)]],
+            require_weekend_overlap=False,
+        )
 
-    def test_no_holidays(self):
-        instance = MockHolidayBase([])
-        result = list_long_weekends(instance)
-        self.assertEqual(result, [])
+    def test_long_weekend_custom_weekend(self):
+        self.assertLongWeekendsEqual(
+            [date(2025, 4, 10)],
+            [[date(2025, 4, 10), date(2025, 4, 11), date(2025, 4, 12)]],
+            weekend={FRI, SAT},
+        )
 
-    def test_no_weekend_overlap(self):
-        holidays = [date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)]
-        instance = MockHolidayBase(holidays)
-        result = list_long_weekends(instance, require_weekend_overlap=False)
-        self.assertEqual(result, [[date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)]])
+    def test_long_weekend_no_holidays(self):
+        self.assertLongWeekendsEqual(
+            [],
+            [],
+        )
 
-    def test_holidays_less_than_three_days(self):
-        holidays = [date(2025, 5, 3)]
-        instance = MockHolidayBase(holidays)
-        result = list_long_weekends(instance)
-        self.assertEqual(result, [])
+    def test_long_weekend_custom_minimum_length(self):
+        self.assertLongWeekendsEqual(
+            [date(2025, 8, 11), date(2025, 8, 12), date(2025, 12, 5)],
+            [[date(2025, 8, 9), date(2025, 8, 10), date(2025, 8, 11), date(2025, 8, 12)]],
+            minimum_holiday_length=4,
+        )
+
+    def test_long_weekend_across_years(self):
+        self.assertLongWeekendsEqual(
+            [date(2024, 1, 1)],
+            [[date(2023, 12, 30), date(2023, 12, 31), date(2024, 1, 1)]],
+        )
+        self.assertLongWeekendsEqual(
+            [date(2021, 12, 31)],
+            [[date(2021, 12, 31), date(2022, 1, 1), date(2022, 1, 2)]],
+        )
+
+    def test_long_weekend_real_country_holidays_data(self):
+        self.assertEqual(
+            list_long_weekends(country_holidays("AU", subdiv="NSW", years=2024)),
+            [
+                [date(2023, 12, 30), date(2023, 12, 31), date(2024, 1, 1)],
+                [date(2024, 1, 26), date(2024, 1, 27), date(2024, 1, 28)],
+                [date(2024, 3, 29), date(2024, 3, 30), date(2024, 3, 31), date(2024, 4, 1)],
+                [date(2024, 6, 8), date(2024, 6, 9), date(2024, 6, 10)],
+                [date(2024, 10, 5), date(2024, 10, 6), date(2024, 10, 7)],
+            ],
+        )
+
+    def test_long_weekend_real_financial_holidays_data(self):
+        self.assertEqual(
+            list_long_weekends(financial_holidays("XNSE", years=2024)),
+            [
+                [date(2024, 1, 26), date(2024, 1, 27), date(2024, 1, 28)],
+                [date(2024, 3, 8), date(2024, 3, 9), date(2024, 3, 10)],
+                [date(2024, 3, 23), date(2024, 3, 24), date(2024, 3, 25)],
+                [date(2024, 3, 29), date(2024, 3, 30), date(2024, 3, 31)],
+                [date(2024, 6, 15), date(2024, 6, 16), date(2024, 6, 17)],
+                [date(2024, 11, 1), date(2024, 11, 2), date(2024, 11, 3)],
+                [date(2024, 11, 15), date(2024, 11, 16), date(2024, 11, 17)],
+            ],
+        )

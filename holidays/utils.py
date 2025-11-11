@@ -23,6 +23,7 @@ __all__ = (
 
 import warnings
 from collections.abc import Iterable
+from datetime import date
 from functools import cache
 
 from holidays.calendars.gregorian import _timedelta
@@ -439,22 +440,20 @@ def list_supported_financial(include_aliases: bool = True) -> dict[str, list[str
 
 
 def list_long_weekends(
-    instance: HolidayBase,
-    minimum_holiday_length: int = 3,
-    require_weekend_overlap: Optional[bool] = True,
-) -> list:
+    instance: HolidayBase, *, minimum_holiday_length: int = 3, require_weekend_overlap: bool = True
+) -> list[list[date]]:
     """Get all long consecutive holidays.
 
     Args:
         instance:
-            `HolidaysBase` object containing holiday data.
+            HolidaysBase object containing holiday data.
 
         minimum_holiday_length:
             The minimum number of consecutive days required for a holiday period
             to be considered a long weekend. Defaults to 3.
 
         require_weekend_overlap:
-            Whether to include consecutive holidays that do not contain any weekend days.
+            Whether to include only consecutive holidays that overlap with a weekend.
             Defaults to True.
 
     Returns:
