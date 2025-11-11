@@ -19,6 +19,7 @@ import shutil
 import sys
 import warnings
 from pathlib import Path
+from time import perf_counter
 
 sys.path.append(f"{Path.cwd()}")  # Make holidays visible.
 
@@ -130,4 +131,7 @@ class SnapshotGenerator:
 
 if __name__ == "__main__":
     warnings.simplefilter("ignore")
+    total_time_start = perf_counter()
     SnapshotGenerator().run()
+    total_time_end = perf_counter()
+    print(f"[TIMER] Total snapshot runtime: {total_time_end - total_time_start:.2f} seconds")
