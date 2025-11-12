@@ -19,19 +19,18 @@ from tests.common import CommonCountryTests
 class TestEcuador(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(1950, 2050)
-        super().setUpClass(Ecuador, years=cls.full_range, years_non_observed=cls.full_range)
+        super().setUpClass(Ecuador)
 
     def test_new_years_day(self):
         name = "Año Nuevo"
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2017-01-02",
             "2021-12-31",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (observado)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_carnival(self):
         name = "Carnaval"
@@ -68,7 +67,7 @@ class TestEcuador(CommonCountryTests, TestCase):
     def test_labor_day(self):
         name = "Día del Trabajo"
         self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2018-04-30",
             "2019-05-03",
             "2021-04-30",
@@ -76,13 +75,13 @@ class TestEcuador(CommonCountryTests, TestCase):
             "2024-05-03",
             "2025-05-02",
         )
-        self.assertHolidayName(f"{name} (observado)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_battle_of_pichincha(self):
         name = "Batalla de Pichincha"
         self.assertHolidayName(name, (f"{year}-05-24" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2017-05-26",
             "2018-05-25",
             "2020-05-25",
@@ -90,13 +89,13 @@ class TestEcuador(CommonCountryTests, TestCase):
             "2023-05-26",
             "2025-05-23",
         )
-        self.assertHolidayName(f"{name} (observado)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_independence_of_quito(self):
         name = "Primer Grito de Independencia"
         self.assertHolidayName(name, (f"{year}-08-10" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2017-08-11",
             "2019-08-09",
             "2021-08-09",
@@ -105,13 +104,13 @@ class TestEcuador(CommonCountryTests, TestCase):
             "2024-08-09",
             "2025-08-11",
         )
-        self.assertHolidayName(f"{name} (observado)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_independence_of_guayaquil(self):
         name = "Independencia de Guayaquil"
         self.assertHolidayName(name, (f"{year}-10-09" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2018-10-08",
             "2019-10-11",
             "2021-10-08",
@@ -119,41 +118,41 @@ class TestEcuador(CommonCountryTests, TestCase):
             "2024-10-11",
             "2025-10-10",
         )
-        self.assertHolidayName(f"{name} (observado)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_all_souls_day(self):
         name = "Día de Difuntos"
         self.assertHolidayName(name, (f"{year}-11-02" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2019-11-01",
             "2021-11-01",
             "2022-11-04",
             "2024-11-01",
             "2025-11-04",
         )
-        self.assertHolidayName(f"{name} (observado)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_independence_of_cuenca(self):
         name = "Independencia de Cuenca"
         self.assertHolidayName(name, (f"{year}-11-03" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2019-11-04",
             "2024-11-04",
         )
-        self.assertHolidayName(f"{name} (observado)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_christmas_day(self):
         name = "Navidad"
         self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2021-12-24",
             "2022-12-26",
         )
-        self.assertHolidayName(f"{name} (observado)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
