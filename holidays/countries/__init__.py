@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# ruff: noqa: F401
-
 from holidays.countries.afghanistan import Afghanistan, AF, AFG
 from holidays.countries.aland_islands import AlandIslands, AX, ALA, HolidaysAX
 from holidays.countries.albania import Albania, AL, ALB
