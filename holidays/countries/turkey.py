@@ -66,9 +66,8 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
 
         if self._year <= 1980:
             # Spring Day.
-            self._add_holiday_may_1(tr("Bahar Bayramı"))
-
-        if self._year >= 2009:
+            self._add_labor_day(tr("Bahar Bayramı"))
+        elif self._year >= 2009:
             # Labour and Solidarity Day.
             self._add_labor_day(tr("Emek ve Dayanışma Günü"))
 

@@ -40,30 +40,28 @@ class TestTurkey(CommonCountryTests, TestCase):
         self.assertHolidayName("Yılbaşı", (f"{year}-01-01" for year in self.full_range))
 
     def test_national_sovereignty_and_childrens_day(self):
-        name_1 = "Ulusal Egemenlik Bayramı"
-        name_2 = "Ulusal Egemenlik ve Çocuk Bayramı"
-        self.assertHolidayName(name_1, (f"{year}-04-23" for year in range(1936, 1981)))
-        self.assertHolidayName(name_2, (f"{year}-04-23" for year in range(1981, 2050)))
-        self.assertNoHolidayName(name_1, range(1981, 2050))
-        self.assertNoHolidayName(name_2, range(1936, 1981))
+        name_1936 = "Ulusal Egemenlik Bayramı"
+        name_1981 = "Ulusal Egemenlik ve Çocuk Bayramı"
+        self.assertHolidayName(name_1936, (f"{year}-04-23" for year in range(1936, 1981)))
+        self.assertHolidayName(name_1981, (f"{year}-04-23" for year in range(1981, 2050)))
+        self.assertNoHolidayName(name_1936, range(1981, 2050))
+        self.assertNoHolidayName(name_1981, range(1936, 1981))
 
-    def test_labor_day(self):
-        name = "Emek ve Dayanışma Günü"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(2009, 2050)))
-        self.assertNoHolidayName(name, range(1936, 2009))
-
-    def test_spring_day(self):
-        name = "Bahar Bayramı"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1936, 1981)))
-        self.assertNoHolidayName(name, range(1981, 2050))
+    def test_spring_and_labor_day(self):
+        name_1936 = "Bahar Bayramı"
+        name_2009 = "Emek ve Dayanışma Günü"
+        self.assertHolidayName(name_1936, (f"{year}-05-01" for year in range(1936, 1981)))
+        self.assertHolidayName(name_2009, (f"{year}-05-01" for year in range(2009, 2050)))
+        self.assertNoHolidayName(name_1936, range(1981, 2050))
+        self.assertNoHolidayName(name_2009, range(1936, 2009))
 
     def test_ataturk_youth_and_sports_day(self):
-        name_1 = "Gençlik ve Spor Bayramı"
-        name_2 = "Atatürk'ü Anma, Gençlik ve Spor Bayramı"
-        self.assertHolidayName(name_1, (f"{year}-05-19" for year in range(1936, 1981)))
-        self.assertHolidayName(name_2, (f"{year}-05-19" for year in range(1981, 2050)))
-        self.assertNoHolidayName(name_1, range(1981, 2050))
-        self.assertNoHolidayName(name_2, range(1936, 1981))
+        name_1936 = "Gençlik ve Spor Bayramı"
+        name_1981 = "Atatürk'ü Anma, Gençlik ve Spor Bayramı"
+        self.assertHolidayName(name_1936, (f"{year}-05-19" for year in range(1936, 1981)))
+        self.assertHolidayName(name_1981, (f"{year}-05-19" for year in range(1981, 2050)))
+        self.assertNoHolidayName(name_1936, range(1981, 2050))
+        self.assertNoHolidayName(name_1981, range(1936, 1981))
 
     def test_freedom_and_constitution_day(self):
         name = "Hürriyet ve Anayasa Bayramı"
