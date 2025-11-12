@@ -809,6 +809,14 @@ class HolidayBase(dict[date, str]):
         self[dt] = self.tr(name)
         return dt
 
+    def _add_multiday_holiday(self, name: str, dt: date, days: int) -> set[date]:
+        """Add a multi-day holiday."""
+        return {
+            d
+            for delta in range(1, days + 1)
+            if (d := self._add_holiday(name, _timedelta(dt, delta)))
+        }
+
     def _add_special_holidays(self, mapping_names, *, observed=False):
         """Add special holidays."""
         for mapping_name in mapping_names:

@@ -325,8 +325,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
                 # Songkran New Year Holidays.
                 name = tr("พระราชพิธีตะรุษะสงกรานต์ แลนักขัตฤกษ์")
                 dt = self._add_holiday_mar_28(name)
-                for delta in range(1, 19):
-                    self._add_holiday(name, _timedelta(dt, delta))
+                self._add_multiday_holiday(name, dt, 18)
             else:
                 dt = self._add_holiday_apr_13(name)
                 self._add_holiday_apr_14(name)
