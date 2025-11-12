@@ -13,8 +13,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# ruff: noqa: T201
-
 import argparse
 import csv
 import importlib

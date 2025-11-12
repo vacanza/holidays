@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# ruff: noqa: F401
-
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
