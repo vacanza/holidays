@@ -12,14 +12,22 @@
 
 from unittest import TestCase
 
-from holidays.countries.china import China
+from holidays.constants import HALF_DAY
+from holidays.countries.china import China, CN, CHN
 from tests.common import CommonCountryTests, WorkingDayTests
 
 
 class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(China, years_non_observed=range(2001, 2025))
+        cls.full_range = range(1950, 2050)
+        super().setUpClass(China, years=cls.full_range, years_non_observed=range(2001, 2027))
+
+    def test_country_aliases(self):
+        self.assertAliases(China, CN, CHN)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(China(categories=China.supported_categories, years=1949))
 
     def test_substituted_holidays(self):
         self.assertHoliday(
@@ -186,6 +194,12 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2025-05-05",
             "2025-10-07",
             "2025-10-08",
+            "2026-01-02",
+            "2026-02-20",
+            "2026-02-23",
+            "2026-05-05",
+            "2026-10-06",
+            "2026-10-07",
         )
 
     def test_workdays(self):
@@ -353,6 +367,12 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2025-04-27",
             "2025-09-28",
             "2025-10-11",
+            "2026-01-04",
+            "2026-02-14",
+            "2026-02-28",
+            "2026-05-09",
+            "2026-09-20",
+            "2026-10-10",
         )
 
         for year, dts in {
@@ -397,10 +417,9 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             self.assertWorkingDay(China(years=year), dts)
 
     def test_new_years_day(self):
-        name = "元旦"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        self.assertHolidayName("元旦", (f"{year}-01-01" for year in self.full_range))
 
-        obs_dts = (
+        self.assertNoNonObservedHoliday(
             "2005-01-03",
             "2006-01-02",
             "2011-01-03",
@@ -409,8 +428,6 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2022-01-03",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name}（观察日）", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_chinese_new_year_eve(self):
         name = "农历除夕"
@@ -422,21 +439,22 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2011-02-02",
             "2012-01-22",
             "2013-02-09",
+            "2025-01-28",
+            "2026-02-16",
         )
-        self.assertHolidayName(name, range(2008, 2014), range(2025, self.end_year))
-        self.assertNoHolidayName(name, range(self.start_year, 2008), range(2014, 2025))
+        self.assertHolidayName(name, range(2025, 2050))
+        self.assertNoHolidayName(name, range(1950, 2008), range(2014, 2025))
 
-        obs_dts = (
+        self.assertNoNonObservedHoliday(
             "2009-01-28",
             "2010-02-16",
             "2012-01-25",
             "2013-02-12",
         )
-        self.assertHolidayName(f"{name}（观察日）", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_chinese_new_year(self):
         name = "春节"
+        self.assertHolidayName(name, self.full_range)
         self.assertHolidayName(
             name,
             "2021-02-12",
@@ -448,13 +466,18 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2023-01-22",
             "2023-01-23",
             "2023-01-24",
+            "2024-02-10",
+            "2024-02-11",
+            "2024-02-12",
+            "2025-01-29",
+            "2025-01-30",
+            "2025-01-31",
+            "2026-02-17",
+            "2026-02-18",
+            "2026-02-19",
         )
-        self.assertHolidayNameCount(
-            name, 3, range(self.start_year, 2008), range(2014, self.end_year)
-        )
-        self.assertHolidayNameCount(name, 2, range(2008, 2014))
 
-        obs_dts = (
+        self.assertNoNonObservedHoliday(
             "2003-02-04",
             "2003-02-05",
             "2004-01-26",
@@ -478,18 +501,18 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-02-13",
             "2024-02-14",
         )
-        self.assertHolidayName(f"{name}（观察日）", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
+        self.assertHolidayNameCount(name, 3, range(1950, 2008), range(2014, 2050))
+        self.assertHolidayNameCount(name, 2, range(2008, 2014))
 
     def test_labor_day(self):
         name = "劳动节"
         self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
         self.assertHolidayName(
-            name, (f"{year}-05-02" for year in (*range(2000, 2008), *range(2025, self.end_year)))
+            name, (f"{year}-05-02" for year in (*range(2000, 2008), *range(2025, 2050)))
         )
         self.assertHolidayName(name, (f"{year}-05-03" for year in range(2000, 2008)))
 
-        obs_dts = (
+        self.assertNoNonObservedHoliday(
             "2003-05-05",
             "2004-05-04",
             "2004-05-05",
@@ -499,17 +522,16 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2016-05-02",
             "2021-05-03",
             "2022-05-02",
+            "2026-05-04",
         )
-        self.assertHolidayName(f"{name}（观察日）", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_national_day(self):
         name = "国庆节"
         self.assertHolidayName(name, (f"{year}-10-01" for year in self.full_range))
         self.assertHolidayName(name, (f"{year}-10-02" for year in self.full_range))
-        self.assertHolidayName(name, (f"{year}-10-03" for year in range(1999, self.end_year)))
+        self.assertHolidayName(name, (f"{year}-10-03" for year in range(1999, 2050)))
 
-        obs_dts = (
+        self.assertNoNonObservedHoliday(
             "2004-10-04",
             "2004-10-05",
             "2005-10-04",
@@ -530,12 +552,14 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2022-10-04",
             "2022-10-05",
             "2023-10-04",
+            "2026-10-05",
         )
-        self.assertHolidayName(f"{name}（观察日）", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_qingming_festival(self):
         name = "清明节"
+        self.assertHolidayName(name, range(2008, 2050))
+        self.assertNoHolidayName(name, range(1950, 2008))
+
         self.assertHolidayName(
             name,
             "2017-04-04",
@@ -547,21 +571,21 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2023-04-05",
             "2024-04-04",
         )
-        self.assertHolidayName(name, range(2008, self.end_year))
-        self.assertNoHolidayName(name, range(self.start_year, 2008))
 
-        obs_dts = (
+        self.assertNoNonObservedHoliday(
             "2009-04-06",
             "2014-04-07",
             "2015-04-06",
             "2020-04-06",
             "2021-04-05",
+            "2026-04-06",
         )
-        self.assertHolidayName(f"{name}（观察日）", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_dragon_boat_festival(self):
         name = "端午节"
+        self.assertHolidayName(name, range(2008, 2050))
+        self.assertNoHolidayName(name, range(1950, 2008))
+
         self.assertHolidayName(
             name,
             "2017-05-30",
@@ -573,19 +597,19 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2023-06-22",
             "2024-06-10",
         )
-        self.assertHolidayName(name, range(2008, self.end_year))
-        self.assertNoHolidayName(name, range(self.start_year, 2008))
 
-        obs_dts = (
+        self.assertNoNonObservedHoliday(
             "2008-06-09",
             "2012-06-22",
             "2015-06-22",
+            "2025-06-02",
         )
-        self.assertHolidayName(f"{name}（观察日）", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_mid_autumn_festival(self):
         name = "中秋节"
+        self.assertHolidayName(name, range(2008, 2050))
+        self.assertNoHolidayName(name, range(1950, 2008))
+
         self.assertHolidayName(
             name,
             "2017-10-04",
@@ -597,10 +621,8 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2023-09-29",
             "2024-09-17",
         )
-        self.assertHolidayName(name, range(2008, self.end_year))
-        self.assertNoHolidayName(name, range(self.start_year, 2008))
 
-        obs_dts = (
+        self.assertNoNonObservedHoliday(
             "2008-09-15",
             "2009-10-05",
             "2012-10-04",
@@ -608,28 +630,6 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2020-10-06",
             "2022-09-12",
         )
-        self.assertHolidayName(f"{name}（观察日）", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
-
-    def test_international_womens_day(self):
-        name = "国际妇女节"
-        self.assertNoHolidayName(name)
-        self.assertHalfDayHolidayName(name, (f"{year}-03-08" for year in self.full_range))
-
-    def test_youth_day(self):
-        name = "五四青年节"
-        self.assertNoHolidayName(name)
-        self.assertHalfDayHolidayName(name, (f"{year}-05-04" for year in self.full_range))
-
-    def test_childrens_day(self):
-        name = "六一儿童节"
-        self.assertNoHolidayName(name)
-        self.assertHalfDayHolidayName(name, (f"{year}-06-01" for year in self.full_range))
-
-    def test_army_day(self):
-        name = "建军节"
-        self.assertNoHolidayName(name)
-        self.assertHalfDayHolidayName(name, (f"{year}-08-01" for year in self.full_range))
 
     def test_1950_public_holiday(self):
         self.assertHolidays(
@@ -1318,6 +1318,52 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             ("2025-10-06", "中秋节"),
             ("2025-10-07", "休息日（2025-09-28日起取代）"),
             ("2025-10-08", "休息日（2025-10-11日起取代）"),
+        )
+
+    def test_2026_public_holiday(self):
+        # https://www.gov.cn/zhengce/content/202511/content_7047090.htm
+        self.assertHolidays(
+            China(years=2026),
+            ("2026-01-01", "元旦"),
+            ("2026-01-02", "休息日（2026-01-04日起取代）"),
+            ("2026-02-16", "农历除夕"),
+            ("2026-02-17", "春节"),
+            ("2026-02-18", "春节"),
+            ("2026-02-19", "春节"),
+            ("2026-02-20", "休息日（2026-02-14日起取代）"),
+            ("2026-02-23", "休息日（2026-02-28日起取代）"),
+            ("2026-04-05", "清明节"),
+            ("2026-04-06", "清明节（观察日）"),
+            ("2026-05-01", "劳动节"),
+            ("2026-05-02", "劳动节"),
+            ("2026-05-04", "劳动节（观察日）"),
+            ("2026-05-05", "休息日（2026-05-09日起取代）"),
+            ("2026-06-19", "端午节"),
+            ("2026-09-25", "中秋节"),
+            ("2026-10-01", "国庆节"),
+            ("2026-10-02", "国庆节"),
+            ("2026-10-03", "国庆节"),
+            ("2026-10-05", "国庆节（观察日）"),
+            ("2026-10-06", "休息日（2026-09-20日起取代）"),
+            ("2026-10-07", "休息日（2026-10-10日起取代）"),
+        )
+
+    def test_2022_half_day_holiday(self):
+        self.assertHolidays(
+            China(categories=HALF_DAY, years=2022),
+            ("2022-03-08", "国际妇女节"),
+            ("2022-05-04", "五四青年节"),
+            ("2022-06-01", "六一儿童节"),
+            ("2022-08-01", "建军节"),
+        )
+
+    def test_2023_half_day_holiday(self):
+        self.assertHolidays(
+            China(categories=HALF_DAY, years=2023),
+            ("2023-03-08", "国际妇女节"),
+            ("2023-05-04", "五四青年节"),
+            ("2023-06-01", "六一儿童节"),
+            ("2023-08-01", "建军节"),
         )
 
     def test_l10n_default(self):
