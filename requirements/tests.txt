@@ -1,9 +1,9 @@
 # Test requirements.
 
-coverage==7.11.0
+coverage==7.11.3
 numpy<2.3.0; python_version < '3.11'
 numpy==2.3.3; python_version >= '3.11'
 polib==1.2.0
 pytest-cov==7.0.0
 pytest-xdist==3.8.0
-pytest==8.4.2
+pytest==9.0.1
