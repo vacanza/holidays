@@ -83,15 +83,14 @@ class SnapshotGenerator:
     @staticmethod
     def _country_subdiv_snapshot_worker(args: tuple) -> None:
         """Worker for generating country holiday snapshots."""
-        country_code, subdiv, years, snapshot_path = args
-        country = country_holidays(country_code)
+        country_code, subdiv, supported_categories, years, snapshot_path = args
         filename = f"{country_code}_{(subdiv or 'COMMON').replace(' ', '_').upper()}.json"
         file_path = snapshot_path / filename
         snapshot = country_holidays(
             country_code,
             subdiv=subdiv,
             years=years,
-            categories=country.supported_categories,
+            categories=supported_categories,
             language="en_US",
         )
         SnapshotGenerator.save(snapshot, file_path)
@@ -122,11 +121,13 @@ class SnapshotGenerator:
         if not self.args.country:
             self.prepare_snapshot_directory(snapshot_path)
 
-        work_items: list[tuple[str, str | None, range, Path]] = []
+        work_items: list[tuple[str, str | None, tuple[str, ...], range, Path]] = []
         for country_code in country_list:
             country = country_holidays(country_code)
             for subdiv in (None, *country.subdivisions):
-                work_items.append((country_code, subdiv, self.years, snapshot_path))
+                work_items.append(
+                    (country_code, subdiv, country.supported_categories, self.years, snapshot_path)
+                )
         with ProcessPoolExecutor() as executor:
             executor.map(SnapshotGenerator._country_subdiv_snapshot_worker, work_items)
 
