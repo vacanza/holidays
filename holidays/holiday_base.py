@@ -809,8 +809,48 @@ class HolidayBase(dict[date, str]):
         self[dt] = self.tr(name)
         return dt
 
-    def _add_multiday_holiday(self, name: str, dt: date, days: int) -> set[date]:
-        """Add a multi-day holiday."""
+    def _add_multiday_holiday(self, *args) -> set[date]:
+        """Add a multi-day holiday.
+
+        This method supports two calling conventions:
+
+        * `_add_multiday_holiday(name, date, days)`
+          Use when the holiday name is provided explicitly.
+
+        * `_add_multiday_holiday(date, days)`
+          Use when the holiday name should be inferred automatically from the
+          holiday already defined on `date`. The first day must already exist.
+
+        Args:
+            *args:
+                The positional arguments defining the multi-day holiday:
+
+                * name (str), dt (date), days (int)
+                * dt (date), days (int)
+
+        Returns:
+            A set containing all newly added holiday dates.
+
+        Raises:
+            TypeError:
+                If the number or structure of arguments does not match one of
+                the supported calling conventions.
+
+            ValueError:
+                If using the `(date, days)` form and the holiday name cannot
+                be inferred from the provided date.
+        """
+        if len(args) == 3:
+            name, dt, days = args
+        elif len(args) == 2:
+            dt, days = args
+            if not (name := self.get(dt)):
+                raise ValueError(f"Cannot infer holiday name for starting date {dt!r}.")
+        else:
+            raise TypeError(
+                "_add_multiday_holiday() expects either (name: str, date: date, days: int) "
+                "or (date: date, days: int)."
+            )
         return {
             d
             for delta in range(1, days + 1)

@@ -159,8 +159,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
 
         if self._year >= 2007:
             # New Harvest Days.
-            name = tr("Шинэ ургацын өдрүүд")
-            self._add_multiday_holiday(name, self._add_holiday_sep_5(name), 45)
+            self._add_multiday_holiday(self._add_holiday_sep_5(tr("Шинэ ургацын өдрүүд")), 45)
 
         # Memorial Day of Political Victims.
         self._add_holiday_sep_10(tr("Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр"))
