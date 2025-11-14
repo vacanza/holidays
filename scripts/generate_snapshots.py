@@ -122,11 +122,11 @@ class SnapshotGenerator:
         if not self.args.country:
             self.prepare_snapshot_directory(snapshot_path)
 
-        work_items = [
-            (country_code, subdiv, self.years, snapshot_path)
-            for country_code in country_list
-            for subdiv in (None,) + country_holidays(country_code).subdivisions
-        ]
+        work_items: list[tuple[str, str | None, range, Path]] = []
+        for country_code in country_list:
+            country = country_holidays(country_code)
+            for subdiv in (None, *country.subdivisions):
+                work_items.append((country_code, subdiv, self.years, snapshot_path))
         with ProcessPoolExecutor() as executor:
             executor.map(SnapshotGenerator._country_subdiv_snapshot_worker, work_items)
 
@@ -144,7 +144,9 @@ class SnapshotGenerator:
         if not self.args.market:
             self.prepare_snapshot_directory(snapshot_path)
 
-        work_items = [(market_code, self.years, snapshot_path) for market_code in market_list]
+        work_items: list[tuple[str, range, Path]] = []
+        for market_code in market_list:
+            work_items.append((market_code, self.years, snapshot_path))
         with ProcessPoolExecutor() as executor:
             executor.map(SnapshotGenerator._financial_snapshot_worker, work_items)
 
