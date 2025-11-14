@@ -38,24 +38,23 @@ class SnapshotGenerator:
 
     def __init__(self) -> None:
         arg_parser = argparse.ArgumentParser()
-        arg_parser.add_argument(
+        mutually_exclusive_group = arg_parser.add_mutually_exclusive_group()
+        mutually_exclusive_group.add_argument(
             "-c",
             "--country",
             action="extend",
             nargs="+",
             default=[],
             help="Country codes to use for snapshot generation",
-            required=False,
             type=str,
         )
-        arg_parser.add_argument(
+        mutually_exclusive_group.add_argument(
             "-m",
             "--market",
             action="extend",
             nargs="+",
             default=[],
             help="Market codes to use for snapshot generation",
-            required=False,
             type=str,
         )
         self.args = arg_parser.parse_args()
