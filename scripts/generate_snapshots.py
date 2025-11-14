@@ -18,13 +18,17 @@ import json
 import shutil
 import sys
 import warnings
+from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 from time import perf_counter
 
 sys.path.append(f"{Path.cwd()}")  # Make holidays visible.
-
-import holidays  # noqa: E402
-from holidays import list_supported_countries, list_supported_financial  # noqa: E402
+from holidays import (  # noqa: E402
+    country_holidays,
+    financial_holidays,
+    list_supported_countries,
+    list_supported_financial,
+)
 
 
 class SnapshotGenerator:
@@ -57,71 +61,92 @@ class SnapshotGenerator:
         self.args = arg_parser.parse_args()
 
     @staticmethod
-    def prepare_snapshot_directory(snapshot_path):
+    def prepare_snapshot_directory(snapshot_path: Path) -> None:
         """Prepare a directory for snapshots."""
         path = Path(snapshot_path)
         shutil.rmtree(path, ignore_errors=True)
         path.mkdir(parents=True, exist_ok=True)
 
     @staticmethod
-    def save(snapshot, file_path):
-        with open(file_path, "w", newline="\n") as output:
-            output.write(
-                json.dumps({str(dt): name for dt, name in sorted(snapshot.items())}, indent=4)
+    def save(snapshot: dict, file_path: Path) -> None:
+        """Save snapshot to a JSON file."""
+        file_path.write_text(
+            json.dumps(
+                {str(dt): name for dt, name in sorted(snapshot.items())},
+                ensure_ascii=False,
+                indent=4,
             )
-            output.write("\n")  # Get along with pre-commit.
+            + "\n",  # Get along with pre-commit.
+            encoding="utf-8",
+        )
 
-    def generate_country_snapshots(self):
+    @staticmethod
+    def _country_subdiv_snapshot_worker(args: tuple) -> None:
+        """Worker for generating country holiday snapshots."""
+        country_code, subdiv, years, snapshot_path = args
+        country = country_holidays(country_code)
+        filename = f"{country_code}_{(subdiv or 'COMMON').replace(' ', '_').upper()}.json"
+        file_path = snapshot_path / filename
+        snapshot = country_holidays(
+            country_code,
+            subdiv=subdiv,
+            years=years,
+            categories=country.supported_categories,
+            language="en_US",
+        )
+        SnapshotGenerator.save(snapshot, file_path)
+
+    @staticmethod
+    def _financial_snapshot_worker(args: tuple) -> None:
+        """Worker for generating financial market holiday snapshots."""
+        market_code, years, snapshot_path = args
+        file_path = snapshot_path / f"{market_code}.json"
+        snapshot = financial_holidays(
+            market_code,
+            years=years,
+            language="en_US",
+        )
+        SnapshotGenerator.save(snapshot, file_path)
+
+    def generate_country_snapshots(self) -> None:
         """Generates country snapshots."""
         if self.args.market:
             return None
 
         supported_countries = list_supported_countries(include_aliases=False)
-        country_list = self.args.country or supported_countries
+        country_list = self.args.country or list(supported_countries.keys())
         if unknown_countries := set(country_list).difference(supported_countries.keys()):
             raise ValueError(f"Countries {', '.join(unknown_countries)} not available")
 
-        snapshot_path = "snapshots/countries"
+        snapshot_path = Path("snapshots/countries")
         if not self.args.country:
             self.prepare_snapshot_directory(snapshot_path)
-        for country_code in country_list:
-            country = getattr(holidays, country_code)
 
-            for subdiv in (None,) + country.subdivisions:
-                self.save(
-                    holidays.country_holidays(
-                        country_code,
-                        subdiv=subdiv,
-                        years=self.years,
-                        categories=country.supported_categories,
-                        language="en_US",
-                    ),
-                    f"{snapshot_path}/"
-                    f"{country_code}_{(subdiv or 'COMMON').replace(' ', '_').upper()}.json",
-                )
+        work_items = [
+            (country_code, subdiv, self.years, snapshot_path)
+            for country_code in country_list
+            for subdiv in (None,) + country_holidays(country_code).subdivisions
+        ]
+        with ProcessPoolExecutor() as executor:
+            executor.map(SnapshotGenerator._country_subdiv_snapshot_worker, work_items)
 
-    def generate_financial_snapshots(self):
+    def generate_financial_snapshots(self) -> None:
         """Generates financial snapshots."""
         if self.args.country:
             return None
 
         supported_markets = list_supported_financial(include_aliases=False)
-        market_list = self.args.market or supported_markets
+        market_list = self.args.market or list(supported_markets.keys())
         if unknown_markets := set(market_list).difference(supported_markets.keys()):
             raise ValueError(f"Markets {', '.join(unknown_markets)} not available")
 
-        snapshot_path = "snapshots/financial"
+        snapshot_path = Path("snapshots/financial")
         if not self.args.market:
             self.prepare_snapshot_directory(snapshot_path)
-        for market_code in market_list:
-            self.save(
-                holidays.country_holidays(
-                    market_code,
-                    years=self.years,
-                    language="en_US",
-                ),
-                f"{snapshot_path}/{market_code}.json",
-            )
+
+        work_items = [(market_code, self.years, snapshot_path) for market_code in market_list]
+        with ProcessPoolExecutor() as executor:
+            executor.map(SnapshotGenerator._financial_snapshot_worker, work_items)
 
     def run(self):
         """Runs snapshot files generation process."""
