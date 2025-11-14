@@ -17,6 +17,7 @@ import importlib
 import inspect
 import sys
 from pathlib import Path
+from time import perf_counter
 
 from lingva.extract import extract as create_pot_file
 from lingva.extract import _location_sort_key
@@ -115,4 +116,7 @@ class POGenerator:
 
 
 if __name__ == "__main__":
+    po_time_start = perf_counter()
     POGenerator.run()
+    po_time_end = perf_counter()
+    print(f"[TIMER] Total generate po files runtime: {po_time_end - po_time_start:.2f} seconds")

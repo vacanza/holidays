@@ -14,6 +14,7 @@
 #  License: MIT (see LICENSE file)
 
 from pathlib import Path
+from time import perf_counter
 
 from polib import pofile
 
@@ -33,4 +34,7 @@ class MOGenerator:
 
 
 if __name__ == "__main__":
+    mo_time_start = perf_counter()
     MOGenerator.run()
+    mo_time_end = perf_counter()
+    print(f"[TIMER] Total generate mo files runtime: {mo_time_end - mo_time_start:.2f} seconds")
