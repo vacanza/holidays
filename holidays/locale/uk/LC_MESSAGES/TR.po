@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.37\n"
+"Project-Id-Version: Holidays 0.85\n"
 "POT-Creation-Date: 2023-11-12 18:52+0200\n"
-"PO-Revision-Date: 2023-11-14 12:55+0200\n"
+"PO-Revision-Date: 2025-11-11 22:09+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -42,6 +42,10 @@ msgstr "День національної незалежності та діте
 #. National Sovereignty Day.
 msgid "Ulusal Egemenlik Bayramı"
 msgstr "День національної незалежності"
+
+#. Spring Day.
+msgid "Bahar Bayramı"
+msgstr "День весни"
 
 #. Labour and Solidarity Day.
 msgid "Emek ve Dayanışma Günü"
