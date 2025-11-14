@@ -23,7 +23,7 @@ from pathlib import Path
 from time import perf_counter
 
 sys.path.append(f"{Path.cwd()}")  # Make holidays visible.
-from holidays import (  # noqa: E402
+from holidays import (
     country_holidays,
     financial_holidays,
     list_supported_countries,
