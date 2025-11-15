@@ -38,8 +38,8 @@ class SnapshotGenerator:
 
     def __init__(self) -> None:
         arg_parser = argparse.ArgumentParser()
-        mutually_exclusive_group = arg_parser.add_mutually_exclusive_group()
-        mutually_exclusive_group.add_argument(
+        entities_group = arg_parser.add_mutually_exclusive_group()
+        entities_group.add_argument(
             "-c",
             "--country",
             action="extend",
@@ -48,7 +48,7 @@ class SnapshotGenerator:
             help="Country codes to use for snapshot generation",
             type=str,
         )
-        mutually_exclusive_group.add_argument(
+        entities_group.add_argument(
             "-m",
             "--market",
             action="extend",
@@ -62,9 +62,8 @@ class SnapshotGenerator:
     @staticmethod
     def prepare_snapshot_directory(snapshot_path: Path) -> None:
         """Prepare a directory for snapshots."""
-        path = Path(snapshot_path)
-        shutil.rmtree(path, ignore_errors=True)
-        path.mkdir(parents=True, exist_ok=True)
+        shutil.rmtree(snapshot_path, ignore_errors=True)
+        snapshot_path.mkdir(parents=True, exist_ok=True)
 
     @staticmethod
     def save(snapshot: dict, file_path: Path) -> None:
@@ -77,6 +76,7 @@ class SnapshotGenerator:
             )
             + "\n",  # Get along with pre-commit.
             encoding="utf-8",
+            newline="\n",
         )
 
     @staticmethod
