@@ -84,6 +84,7 @@ class SnapshotGenerator:
         args: tuple[str, str | None, tuple[str, ...], range, Path],
     ) -> None:
         """Worker for generating country holiday snapshots."""
+        warnings.simplefilter("ignore")
         country_code, subdiv, supported_categories, years, snapshot_path = args
         filename = f"{country_code}_{(subdiv or 'COMMON').replace(' ', '_').upper()}.json"
         file_path = snapshot_path / filename
@@ -99,6 +100,7 @@ class SnapshotGenerator:
     @staticmethod
     def _financial_snapshot_worker(args: tuple[str, range, Path]) -> None:
         """Worker for generating financial market holiday snapshots."""
+        warnings.simplefilter("ignore")
         market_code, years, snapshot_path = args
         file_path = snapshot_path / f"{market_code}.json"
         snapshot = financial_holidays(
@@ -159,7 +161,6 @@ class SnapshotGenerator:
 
 
 if __name__ == "__main__":
-    warnings.simplefilter("ignore")
     total_time_start = perf_counter()
     SnapshotGenerator().run()
     total_time_end = perf_counter()
