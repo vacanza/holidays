@@ -22,7 +22,7 @@ from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 from time import perf_counter
 
-sys.path.append(f"{Path.cwd()}")  # Make holidays visible.
+sys.path.insert(0, str(Path.cwd()))  # Make holidays visible.
 from holidays import (
     country_holidays,
     financial_holidays,
