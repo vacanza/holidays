@@ -128,7 +128,7 @@ class SnapshotGenerator:
                     (country_code, subdiv, country.supported_categories, self.years, snapshot_path)
                 )
         with ProcessPoolExecutor() as executor:
-            executor.map(SnapshotGenerator._country_subdiv_snapshot_worker, work_items)
+            list(executor.map(SnapshotGenerator._country_subdiv_snapshot_worker, work_items))
 
     def generate_financial_snapshots(self) -> None:
         """Generates financial snapshots."""
@@ -148,7 +148,7 @@ class SnapshotGenerator:
         for market_code in market_list:
             work_items.append((market_code, self.years, snapshot_path))
         with ProcessPoolExecutor() as executor:
-            executor.map(SnapshotGenerator._financial_snapshot_worker, work_items)
+            list(executor.map(SnapshotGenerator._financial_snapshot_worker, work_items))
 
     def run(self):
         """Runs snapshot files generation process."""
