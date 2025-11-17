@@ -110,6 +110,9 @@ class SnapshotGenerator:
 
     def generate_country_snapshots(self) -> None:
         """Generates country snapshots."""
+        if self.args.market:
+            return None
+
         supported_countries = list_supported_countries(include_aliases=False)
         country_list = self.args.country or list(supported_countries.keys())
         if unknown_countries := set(country_list).difference(supported_countries.keys()):
@@ -131,6 +134,9 @@ class SnapshotGenerator:
 
     def generate_financial_snapshots(self) -> None:
         """Generates financial snapshots."""
+        if self.args.country:
+            return None
+
         supported_markets = list_supported_financial(include_aliases=False)
         market_list = self.args.market or list(supported_markets.keys())
         if unknown_markets := set(market_list).difference(supported_markets.keys()):
