@@ -80,7 +80,9 @@ class SnapshotGenerator:
         )
 
     @staticmethod
-    def _country_subdiv_snapshot_worker(args: tuple) -> None:
+    def _country_subdiv_snapshot_worker(
+        args: tuple[str, str | None, tuple[str, ...], range, Path],
+    ) -> None:
         """Worker for generating country holiday snapshots."""
         country_code, subdiv, supported_categories, years, snapshot_path = args
         filename = f"{country_code}_{(subdiv or 'COMMON').replace(' ', '_').upper()}.json"
@@ -95,7 +97,7 @@ class SnapshotGenerator:
         SnapshotGenerator.save(snapshot, file_path)
 
     @staticmethod
-    def _financial_snapshot_worker(args: tuple) -> None:
+    def _financial_snapshot_worker(args: tuple[str, range, Path]) -> None:
         """Worker for generating financial market holiday snapshots."""
         market_code, years, snapshot_path = args
         file_path = snapshot_path / f"{market_code}.json"
@@ -108,9 +110,6 @@ class SnapshotGenerator:
 
     def generate_country_snapshots(self) -> None:
         """Generates country snapshots."""
-        if self.args.market:
-            return None
-
         supported_countries = list_supported_countries(include_aliases=False)
         country_list = self.args.country or list(supported_countries.keys())
         if unknown_countries := set(country_list).difference(supported_countries.keys()):
@@ -132,9 +131,6 @@ class SnapshotGenerator:
 
     def generate_financial_snapshots(self) -> None:
         """Generates financial snapshots."""
-        if self.args.country:
-            return None
-
         supported_markets = list_supported_financial(include_aliases=False)
         market_list = self.args.market or list(supported_markets.keys())
         if unknown_markets := set(market_list).difference(supported_markets.keys()):
