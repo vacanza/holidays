@@ -550,7 +550,6 @@ class TestHelperMethods(unittest.TestCase):
     def test_add_multiday_holiday(self):
         self.hb._populate(2024)
 
-        # _add_multiday_holiday(date, days).
         name = "Multi-day Holiday"
         self.hb._add_multiday_holiday(self.hb._add_holiday(name, (JAN, 1)), 5)
         self.assertIn("2024-01-01", self.hb)
@@ -561,9 +560,8 @@ class TestHelperMethods(unittest.TestCase):
         self.assertIn("2024-01-06", self.hb)
         self.assertEqual(len(self.hb.get_named(name)), 6)
 
-        # _add_multiday_holiday(name, date, days).
         name_2 = "Multi-day Holiday 2"
-        self.hb._add_multiday_holiday(name_2, self.hb._add_holiday(name, (DEC, 25)), 6)
+        self.hb._add_multiday_holiday(self.hb._add_holiday(name, (DEC, 25)), 6, name=name_2)
         self.assertIn("2024-12-25", self.hb)
         self.assertIn("2024-12-26", self.hb)
         self.assertIn("2024-12-27", self.hb)
@@ -578,10 +576,6 @@ class TestHelperMethods(unittest.TestCase):
         self.hb._populate(2024)
         with self.assertRaises(ValueError):
             self.hb._add_multiday_holiday(date(2024, DEC, 1), 3)
-        with self.assertRaises(TypeError):
-            self.hb._add_multiday_holiday("Holiday")
-        with self.assertRaises(TypeError):
-            self.hb._add_multiday_holiday()
 
     def test_is_leap_year(self):
         self.hb._populate(1999)
