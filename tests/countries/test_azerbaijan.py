@@ -61,6 +61,7 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-11-13",
             "2024-12-30",
             "2025-01-03",
+            "2025-06-27",
         )
 
     def test_workdays(self):
@@ -89,6 +90,7 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-11-23",
             "2024-12-28",
             "2024-12-29",
+            "2025-06-21",
         )
 
         for year, dts in {

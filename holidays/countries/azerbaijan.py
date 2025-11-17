@@ -242,6 +242,7 @@ class AzerbaijanStaticHolidays:
         * <https://web.archive.org/web/20241015224204/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8332>
         * <https://web.archive.org/web/20250410132503/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8449>
         * <https://web.archive.org/web/20250216200846/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8623>
+        * <https://web.archive.org/web/20250711211545/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8864>
 
     Special holidays references:
         * <https://web.archive.org/web/20250421013220/https://www.msk.gov.az/en/elections/pages/municipal-elections/belediyye-29-01-2025>
@@ -308,6 +309,7 @@ class AzerbaijanStaticHolidays:
         2025: (
             (JAN, 3, DEC, 29, 2024),
             (JAN, 29, municipal_elections),
+            (JUN, 27, JUN, 21),
         ),
     }
 
