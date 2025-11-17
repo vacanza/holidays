@@ -12,8 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import OPTIONAL, PUBLIC
-from holidays.countries.haiti import Haiti, HT, HTI
+from holidays.countries.haiti import Haiti
 from tests.common import CommonCountryTests
 
 
@@ -22,15 +21,9 @@ class TestHaiti(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Haiti)
 
-    def test_country_aliases(self):
-        self.assertAliases(Haiti, HT, HTI)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Haiti(categories=(OPTIONAL, PUBLIC), years=1986))
-
     def test_2023_public_holiday(self):
         self.assertHolidays(
-            Haiti(categories=PUBLIC, years=2023),
+            Haiti(years=2023),
             ("2023-01-01", "Fête de l'Indépendance Nationale; Nouvel An"),
             ("2023-01-02", "Jour des Aïeux"),
             ("2023-02-19", "Carnaval"),
@@ -51,7 +44,7 @@ class TestHaiti(CommonCountryTests, TestCase):
 
     def test_2025_public_holiday(self):
         self.assertHolidays(
-            Haiti(categories=PUBLIC, years=2025),
+            Haiti(years=2025),
             ("2025-01-01", "Fête de l'Indépendance Nationale; Nouvel An"),
             ("2025-01-02", "Jour des Aïeux"),
             ("2025-03-02", "Carnaval"),

@@ -13,29 +13,22 @@
 from unittest import TestCase
 
 from holidays.constants import WORKDAY
-from holidays.countries.benin import Benin, BJ, BEN
+from holidays.countries.benin import Benin
 from tests.common import CommonCountryTests
 
 
 class TestBenin(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1977, 2050)
-        super().setUpClass(Benin, years=years)
-        cls.no_estimated_holidays = Benin(years=years, islamic_show_estimated=False)
-        cls.workday_holidays = Benin(categories=WORKDAY, years=range(1990, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Benin, BJ, BEN)
+        super().setUpClass(Benin, years_workday=range(1990, 2050))
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Benin(years=1976))
+        super().test_no_holidays()
+
         self.assertNoHolidays(Benin(categories=WORKDAY, years=1989))
 
     def test_new_years_day(self):
-        self.assertHolidayName(
-            "Fête du Nouvel An", (f"{year}-01-01" for year in range(1977, 2050))
-        )
+        self.assertHolidayName("Fête du Nouvel An", (f"{year}-01-01" for year in self.full_range))
 
     def test_vodoun_festival(self):
         name = "Fête annuelle des religions traditionnelles"
@@ -45,18 +38,18 @@ class TestBenin(CommonCountryTests, TestCase):
             "2025-01-09",
             "2025-01-10",
         )
-        self.assertHolidayName(name, range(2025, 2050))
-        self.assertNoHolidayName(name, range(1977, 1998))
+        self.assertHolidayName(name, range(2025, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1998))
 
     def test_martyrs_day(self):
         name = "Journée des Martyrs"
         self.assertHolidayName(name, (f"{year}-01-16" for year in range(1980, 1991)))
-        self.assertNoHolidayName(name, range(1977, 1980), range(1991, 2050))
+        self.assertNoHolidayName(name, range(self.start_year, 1980), range(1991, self.end_year))
 
     def test_youth_day(self):
         name = "Journée de la Jeunesse Béninoise"
         self.assertHolidayName(name, (f"{year}-04-01" for year in range(1980, 1991)))
-        self.assertNoHolidayName(name, range(1977, 1980), range(1991, 2050))
+        self.assertNoHolidayName(name, range(self.start_year, 1980), range(1991, self.end_year))
 
     def test_easter_sunday(self):
         name = "Jour de Pâques"
@@ -69,8 +62,8 @@ class TestBenin(CommonCountryTests, TestCase):
             "1987-04-19",
             "1990-04-15",
         )
-        self.assertHolidayName(name, range(1977, 1991))
-        self.assertNoHolidayName(name, range(1991, 2050))
+        self.assertHolidayName(name, range(self.start_year, 1991))
+        self.assertNoHolidayName(name, range(1991, self.end_year))
 
     def test_easter_monday(self):
         name = "Lundi de Pâques"
@@ -83,11 +76,11 @@ class TestBenin(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(1991, 2050))
-        self.assertNoHolidayName(name, range(1977, 1991))
+        self.assertHolidayName(name, range(1991, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1991))
 
     def test_labor_day(self):
-        self.assertHolidayName("Fête du Travail", (f"{year}-05-01" for year in range(1977, 2050)))
+        self.assertHolidayName("Fête du Travail", (f"{year}-05-01" for year in self.full_range))
 
     def test_ascension_day(self):
         name = "Jour de l'Ascension"
@@ -100,8 +93,8 @@ class TestBenin(CommonCountryTests, TestCase):
             "2024-05-09",
             "2025-05-29",
         )
-        self.assertHolidayName(name, range(1991, 2050))
-        self.assertNoHolidayName(name, range(1977, 1991))
+        self.assertHolidayName(name, range(1991, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1991))
 
     def test_whit_sunday(self):
         name = "Jour de Pentecôte"
@@ -114,8 +107,8 @@ class TestBenin(CommonCountryTests, TestCase):
             "1988-05-22",
             "1990-06-03",
         )
-        self.assertHolidayName(name, range(1977, 1991))
-        self.assertNoHolidayName(name, range(1991, 2050))
+        self.assertHolidayName(name, range(self.start_year, 1991))
+        self.assertNoHolidayName(name, range(1991, self.end_year))
 
     def test_whit_monday(self):
         name = "Lundi de Pentecôte"
@@ -128,44 +121,43 @@ class TestBenin(CommonCountryTests, TestCase):
             "2024-05-20",
             "2025-06-09",
         )
-        self.assertHolidayName(name, range(1991, 2050))
-        self.assertNoHolidayName(name, range(1977, 1991))
+        self.assertHolidayName(name, range(1991, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1991))
 
     def test_national_day(self):
         self.assertHolidayName(
             "Fête Nationale",
-            (f"{year}-11-30" for year in range(1977, 1991)),
-            (f"{year}-08-01" for year in range(1991, 2050)),
+            (f"{year}-11-30" for year in range(self.start_year, 1991)),
+            (f"{year}-08-01" for year in range(1991, self.end_year)),
         )
 
     def test_assumption_day(self):
         name = "Jour de l'Assomption"
-        self.assertHolidayName(name, (f"{year}-08-15" for year in range(1990, 2050)))
-        self.assertNoHolidayName(name, range(1977, 1990))
+        self.assertHolidayName(name, (f"{year}-08-15" for year in range(1990, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1990))
 
     def test_day_of_the_popular_armed_forces(self):
         name = "Fête des Forces Armées Populaires du Bénin"
-        self.assertHolidayName(name, (f"{year}-10-26" for year in range(1977, 1990)))
-        self.assertNoHolidayName(name, range(1990, 2050))
+        self.assertHolidayName(name, (f"{year}-10-26" for year in range(self.start_year, 1990)))
+        self.assertNoHolidayName(name, range(1990, self.end_year))
 
     def test_all_saints_day(self):
         name = "La Toussaint"
-        self.assertHolidayName(name, (f"{year}-11-01" for year in range(1990, 2050)))
-        self.assertNoHolidayName(name, range(1977, 1990))
+        self.assertHolidayName(name, (f"{year}-11-01" for year in range(1990, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1990))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Jour de Noël", (f"{year}-12-25" for year in range(1977, 2050)))
+        self.assertHolidayName("Jour de Noël", (f"{year}-12-25" for year in self.full_range))
 
     def test_production_day(self):
         name = "Fête de la Production"
-        self.assertHolidayName(name, (f"{year}-12-31" for year in range(1977, 1990)))
-        self.assertNoHolidayName(name, range(1990, 2050))
+        self.assertHolidayName(name, (f"{year}-12-31" for year in range(self.start_year, 1990)))
+        self.assertNoHolidayName(name, range(1990, self.end_year))
 
     def test_prophets_birthday(self):
         name = "Journée Maouloud"
-        self.assertHolidayName(
+        self.assertIslamicNoEstimatedHolidayName(
             name,
-            self.no_estimated_holidays,
             "2020-10-29",
             "2021-10-18",
             "2022-10-08",
@@ -173,14 +165,13 @@ class TestBenin(CommonCountryTests, TestCase):
             "2024-09-15",
             "2025-09-04",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1990, 2050))
-        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1977, 1990))
+        self.assertIslamicNoEstimatedHolidayName(name, range(1990, self.end_year))
+        self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1990))
 
     def test_eid_al_fitr(self):
         name = "Jour du Ramadan"
-        self.assertHolidayName(
+        self.assertIslamicNoEstimatedHolidayName(
             name,
-            self.no_estimated_holidays,
             "2020-05-24",
             "2021-05-13",
             "2022-05-02",
@@ -188,13 +179,12 @@ class TestBenin(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-30",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1977, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_adha(self):
         name = "Jour de la Tabaski"
-        self.assertHolidayName(
+        self.assertIslamicNoEstimatedHolidayName(
             name,
-            self.no_estimated_holidays,
             "2020-07-31",
             "2021-07-20",
             "2022-07-09",
@@ -202,28 +192,28 @@ class TestBenin(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-06",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1977, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_remembrance_day(self):
         name = "Journée de Souvenir"
-        self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-01-16" for year in range(1990, 2050))
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-01-16" for year in range(1990, self.end_year))
         )
-        self.assertNoHolidayName(name, range(1977, 1989))
 
     def test_peoples_sovereignty_day(self):
         name = "Journée de la Souveraineté de Peuple"
-        self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-02-28" for year in range(1990, 2050))
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-02-28" for year in range(1990, self.end_year))
         )
-        self.assertNoHolidayName(name, range(1977, 1989))
 
     def test_womens_day(self):
         name = "Journée de la Femme"
-        self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-03-08" for year in range(1990, 2050))
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-03-08" for year in range(1990, self.end_year))
         )
-        self.assertNoHolidayName(name, range(1977, 1989))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

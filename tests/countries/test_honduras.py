@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.honduras import Honduras, HN, HND
+from holidays.countries.honduras import Honduras
 from tests.common import CommonCountryTests
 
 
@@ -21,11 +21,9 @@ class TestHonduras(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Honduras)
 
-    def test_country_aliases(self):
-        self.assertAliases(Honduras, HN, HND)
-
     def test_2014(self):
         self.assertHolidayDates(
+            Honduras(years=2014),
             "2014-01-01",
             "2014-04-14",
             "2014-04-17",
@@ -42,6 +40,7 @@ class TestHonduras(CommonCountryTests, TestCase):
     def test_2016(self):
         # https://www.officeholidays.com/countries/honduras/2016
         self.assertHolidayDates(
+            Honduras(years=2016),
             "2016-01-01",
             "2016-03-24",
             "2016-03-25",
@@ -58,6 +57,7 @@ class TestHonduras(CommonCountryTests, TestCase):
     def test_2021(self):
         # https://www.officeholidays.com/countries/honduras/2021
         self.assertHolidayDates(
+            Honduras(years=2021),
             "2021-01-01",
             "2021-04-01",
             "2021-04-02",
@@ -73,6 +73,7 @@ class TestHonduras(CommonCountryTests, TestCase):
 
     def test_2022(self):
         self.assertHolidays(
+            Honduras(years=2022),
             ("2022-01-01", "Año Nuevo"),
             ("2022-04-14", "Día de las Américas; Jueves Santo"),
             ("2022-04-15", "Viernes Santo"),
@@ -87,6 +88,7 @@ class TestHonduras(CommonCountryTests, TestCase):
 
     def test_2025(self):
         self.assertHolidayDates(
+            Honduras(years=2025),
             "2025-01-01",
             "2025-04-14",
             "2025-04-17",

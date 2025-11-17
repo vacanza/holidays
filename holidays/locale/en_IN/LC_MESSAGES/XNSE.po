@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.80\n"
+"Project-Id-Version: Holidays 0.84\n"
 "POT-Creation-Date: 2025-08-21 16:22+0000\n"
 "PO-Revision-Date: 2025-08-21 16:22+0000\n"
 "Last-Translator: Saheel Sapovadia saheelsapovadia23@gmail.com\n"
@@ -39,8 +39,12 @@ msgstr ""
 msgid "Good Friday"
 msgstr ""
 
-#. Dr. Baba Saheb Ambedkar Jayanti.
+#. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. Baba Saheb Ambedkar Jayanti"
+msgstr ""
+
+#. May Day.
+msgid "May Day"
 msgstr ""
 
 #. Maharashtra Day.
@@ -51,7 +55,7 @@ msgstr ""
 msgid "Independence Day"
 msgstr ""
 
-#. Mahatma Gandhi Jayanti.
+#. Gandhi Jayanti.
 msgid "Mahatma Gandhi Jayanti"
 msgstr ""
 
@@ -83,7 +87,7 @@ msgstr ""
 msgid "Dussehra"
 msgstr ""
 
-#. Diwali Laxmi Pujan.
+#. Diwali Lakshmi Puja.
 msgid "Diwali Laxmi Pujan"
 msgstr ""
 
@@ -95,8 +99,20 @@ msgstr ""
 msgid "Guru Nanak Jayanti"
 msgstr ""
 
+#. Bhai Dooj.
+msgid "Bhau Bhij"
+msgstr ""
+
+#. Buddha Purnima.
+msgid "Buddha Purnima"
+msgstr ""
+
 #. Ashura.
 msgid "Muharram"
+msgstr ""
+
+#. Prophet's Birthday.
+msgid "Id-E-Milad-Un-Nabi"
 msgstr ""
 
 #. Eid al-Fitr.
@@ -105,4 +121,8 @@ msgstr ""
 
 #. Eid al-Adha.
 msgid "Bakri Id"
+msgstr ""
+
+#. New Year's Day.
+msgid "New Year"
 msgstr ""

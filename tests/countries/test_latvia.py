@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.latvia import Latvia, LV, LVA
+from holidays.countries.latvia import Latvia
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestLatvia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Latvia, years=range(1990, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Latvia, LV, LVA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Latvia(years=1989))
 
     def test_special_holidays(self):
         self.assertHoliday(

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.uzbekistan import Uzbekistan, UZ, UZB
+from holidays.countries.uzbekistan import Uzbekistan
 from tests.common import CommonCountryTests, WorkingDayTests
 
 
@@ -22,12 +22,6 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
         years = range(1992, 2050)
         super().setUpClass(Uzbekistan, years=years)
         cls.no_estimated_holidays = Uzbekistan(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Uzbekistan, UZ, UZB)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Uzbekistan(years=1991))
 
     def test_special_holidays(self):
         self.assertHoliday(

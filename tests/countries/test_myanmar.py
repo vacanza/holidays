@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.myanmar import Myanmar, MM, MMR
+from holidays.countries.myanmar import Myanmar
 from tests.common import CommonCountryTests, WorkingDayTests
 
 
@@ -22,12 +22,6 @@ class TestMyanmar(CommonCountryTests, WorkingDayTests, TestCase):
         years = range(1948, 2050)
         super().setUpClass(Myanmar, years=years)
         cls.no_estimated_holidays = Myanmar(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Myanmar, MM, MMR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Myanmar(years=1947))
 
     def test_substituted_holidays(self):
         self.assertHoliday(

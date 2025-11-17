@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.turks_and_caicos_islands import TurksAndCaicosIslands, TC, TCA
+from holidays.countries.turks_and_caicos_islands import TurksAndCaicosIslands
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestTC(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(TurksAndCaicosIslands, years=range(1963, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(TurksAndCaicosIslands, TC, TCA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(TurksAndCaicosIslands(years=1962))
 
     def test_new_years_day(self):
         name = "New Year's Day"

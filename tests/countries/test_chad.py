@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.chad import Chad, TD, TCD
+from holidays.countries.chad import Chad
 from tests.common import CommonCountryTests
 
 
@@ -21,48 +21,129 @@ class TestChad(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Chad)
 
-    def test_country_aliases(self):
-        self.assertAliases(Chad, TD, TCD)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Chad(years=1960))
-
     def test_special_holidays(self):
         self.assertHoliday("2021-04-23")
 
-    def test_freedom_and_democracy_day(self):
-        name = "Freedom and Democracy Day"
-        self.assertHolidayName(name, (f"{year}-12-01" for year in range(1991, 2050)))
-        self.assertNoHolidayName(name, Chad(years=range(1961, 1991)))
-        self.assertNoHoliday(f"{year}-12-01" for year in set(range(1961, 1991)).difference({1976}))
-
-    def test_observed(self):
-        dt = (
-            # New Year's Day
+    def test_new_years_day(self):
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        obs_dts = (
             "2012-01-02",
             "2017-01-02",
             "2023-01-02",
-            # International Women's Day
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_international_womens_day(self):
+        name = "International Women's Day"
+        self.assertHolidayName(name, (f"{year}-03-08" for year in self.full_range))
+        obs_dts = (
             "2015-03-09",
             "2020-03-09",
-            # Labour Day
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_easter_monday(self):
+        name = "Easter Monday"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_labor_day(self):
+        name = "Labour Day"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
+        obs_dts = (
             "2011-05-02",
             "2016-05-02",
-            # Independence Day
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_independence_day(self):
+        name = "Independence Day"
+        self.assertHolidayName(name, (f"{year}-08-11" for year in self.full_range))
+        obs_dts = (
             "2013-08-12",
             "2019-08-12",
-            # Republic Day
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_all_saints_day(self):
+        self.assertHolidayName("All Saints' Day", (f"{year}-11-01" for year in self.full_range))
+
+    def test_republic_day(self):
+        name = "Republic Day"
+        self.assertHolidayName(name, (f"{year}-11-28" for year in self.full_range))
+        obs_dts = (
             "2010-11-29",
             "2021-11-29",
-            # Freedom and Democracy Day
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_freedom_and_democracy_day(self):
+        name = "Freedom and Democracy Day"
+        self.assertHolidayName(name, (f"{year}-12-01" for year in range(1991, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1991))
+        obs_dts = (
             "2013-12-02",
             "2019-12-02",
         )
-        self.assertHoliday(dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in self.full_range))
+
+    def test_eid_al_fitr(self):
+        name = "Eid al-Fitr"
+        self.assertHolidayName(
+            name,
+            "2018-06-15",
+            "2019-06-04",
+            "2020-05-24",
+            "2021-05-13",
+            "2022-05-02",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_eid_al_adha(self):
+        name = "Eid al-Adha"
+        self.assertHolidayName(
+            name,
+            "2018-08-22",
+            "2019-08-11",
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-09",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_prophets_birthday(self):
+        name = "Mawlid"
+        self.assertHolidayName(
+            name,
+            "2018-11-21",
+            "2019-11-09",
+            "2020-10-29",
+            "2021-10-18",
+            "2022-10-08",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_2022(self):
         self.assertHolidays(
+            Chad(years=2022),
             ("2022-01-01", "New Year's Day"),
             ("2022-03-08", "International Women's Day"),
             ("2022-04-18", "Easter Monday"),

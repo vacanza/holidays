@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.russia import Russia, RU, RUS
+from holidays.countries.russia import Russia
 from tests.common import CommonCountryTests, WorkingDayTests
 
 
@@ -20,12 +20,6 @@ class TestRussia(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Russia, years=range(1991, 2025))
-
-    def test_country_aliases(self):
-        self.assertAliases(Russia, RU, RUS)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Russia(years=1990))
 
     def test_substituted_holidays(self):
         self.assertHoliday(

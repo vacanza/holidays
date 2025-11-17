@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import HINDU, ISLAMIC
-from holidays.countries.kenya import Kenya, KE, KEN
+from holidays.countries.kenya import Kenya
 from tests.common import CommonCountryTests
 
 
@@ -22,11 +22,9 @@ class TestKenya(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Kenya, years=range(1964, 2050), years_non_observed=range(2000, 2050))
 
-    def test_country_aliases(self):
-        self.assertAliases(Kenya, KE, KEN)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Kenya(years=1963))
+        super().test_no_holidays()
+
         self.assertNoHolidays(Kenya(categories=ISLAMIC, years=1963))
         self.assertNoHolidays(Kenya(categories=HINDU, years=1983))
 

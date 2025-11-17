@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.oman import Oman, OM, OMN
+from holidays.countries.oman import Oman
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestOman(CommonCountryTests, TestCase):
         years = range(1970, 2050)
         super().setUpClass(Oman, years=years)
         cls.no_estimated_holidays = Oman(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Oman, OM, OMN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Oman(years=1969))
 
     def test_accession_day(self):
         name = "اليوم الوطني لتولي السلطان"

@@ -13,7 +13,7 @@
 import warnings
 from unittest import TestCase
 
-from holidays.countries.united_kingdom import UnitedKingdom, UK, GB, GBR
+from holidays.countries.united_kingdom import UnitedKingdom
 from tests.common import CommonCountryTests
 
 
@@ -32,19 +32,17 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
         super().setUp()
         warnings.simplefilter("ignore", category=DeprecationWarning)
 
-    def test_country_aliases(self):
-        self.assertAliases(UnitedKingdom, UK, GBR)
-        self.assertAliases(UnitedKingdom, GB, GBR)
-
     def test_subdiv_deprecation(self):
         self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
 
     def test_no_holidays(self):
-        self.assertNoHolidays(UnitedKingdom(years=1870))
+        super().test_no_holidays()
+
         self.assertNoHolidays(UnitedKingdom(years=1870, subdiv="ENG"))
         self.assertNoHolidays(UnitedKingdom(years=1870, subdiv="NIR"))
         self.assertNoHolidays(UnitedKingdom(years=1870, subdiv="SCT"))
         self.assertNoHolidays(UnitedKingdom(years=1870, subdiv="WLS"))
+
         self.assertNoHoliday("1871-01-02", "1874-12-28")
 
     def test_special_holidays(self):

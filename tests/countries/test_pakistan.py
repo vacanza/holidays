@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.pakistan import Pakistan, PK, PAK
+from holidays.countries.pakistan import Pakistan
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestPakistan(CommonCountryTests, TestCase):
         years = range(1948, 2050)
         super().setUpClass(Pakistan, years=years)
         cls.no_estimated_holidays = Pakistan(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Pakistan, PK, PAK)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Pakistan(years=1947))
 
     def test_kashmir_day(self):
         name = "Kashmir Solidarity Day"
