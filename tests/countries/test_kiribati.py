@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.kiribati import Kiribati, KI, KIR
+from holidays.countries.kiribati import Kiribati
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestKiribati(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1980, 2050)
         super().setUpClass(Kiribati, years=years, years_non_observed=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(Kiribati, KI, KIR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Kiribati(years=1979))
 
     def test_new_years_day(self):
         name = "New Year's Day"

@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import BANK, PUBLIC, SCHOOL, WORKDAY
-from holidays.countries.laos import Laos, LA, LAO
+from holidays.countries.laos import Laos
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestLaos(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Laos, years=range(1976, 2050), years_non_observed=range(2018, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Laos, LA, LAO)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Laos(categories=(BANK, PUBLIC, SCHOOL, WORKDAY), years=1975))
 
     def test_special_bank_holiday(self):
         self.assertHoliday(

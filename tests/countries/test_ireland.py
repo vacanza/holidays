@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.ireland import Ireland, IE, IRL
+from holidays.countries.ireland import Ireland
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestIreland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Ireland, years=range(1900, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Ireland, IE, IRL)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Ireland(years=1871))
 
     def test_special_holidays(self):
         self.assertHoliday(

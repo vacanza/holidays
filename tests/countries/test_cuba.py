@@ -12,190 +12,96 @@
 
 from unittest import TestCase
 
-from holidays.countries.cuba import Cuba, CU, CUB
+from holidays.countries.cuba import Cuba
 from tests.common import CommonCountryTests
 
 
 class TestCuba(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Cuba, years=range(1959, 2050))
+        super().setUpClass(Cuba)
 
-    def test_country_aliases(self):
-        self.assertAliases(Cuba, CU, CUB)
+    def test_liberation_day(self):
+        name = "Triunfo de la Revolución"
+        name_observed = f"{name} (observado)"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        obs_dts = (
+            "1989-01-02",
+            "1995-01-02",
+            "2006-01-02",
+        )
+        self.assertHolidayName(name_observed, obs_dts)
+        self.assertNoHolidayName(name_observed, range(2014, self.end_year))
+        self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_no_holidays(self):
-        self.assertNoHolidays(Cuba(years=1958))
+    def test_victory_day(self):
+        name = "Día de la Victoria"
+        self.assertHolidayName(name, (f"{year}-01-02" for year in range(2008, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2008))
+
+    def test_good_friday(self):
+        name = "Viernes Santo"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, range(2012, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2012))
+
+    def test_christmas_day(self):
+        name = "Día de Navidad"
+        self.assertHolidayName(
+            name,
+            (
+                f"{year}-12-25"
+                for year in (*range(self.start_year, 1969), *range(1997, self.end_year))
+            ),
+        )
+        self.assertNoHolidayName(name, range(1969, 1997))
+
+    def test_new_years_eve(self):
+        name = "Fiesta de Fin de Año"
+        self.assertHolidayName(name, (f"{year}-12-31" for year in range(2007, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2007))
+
+    def test_international_workers_day(self):
+        name = "Día Internacional de los Trabajadores"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
+        obs_dts = (
+            "2011-05-02",
+            "2016-05-02",
+            "2022-05-02",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_assault_moncada_day(self):
-        name = "Conmemoración del asalto a Moncada"
-        self.assertHolidayName(name, (f"{year}-07-25" for year in range(1959, 2050)))
-        self.assertHolidayName(name, (f"{year}-07-27" for year in range(1959, 2050)))
+        self.assertHolidayName(
+            "Conmemoración del asalto a Moncada",
+            (f"{year}-07-25" for year in self.full_range),
+            (f"{year}-07-27" for year in self.full_range),
+        )
 
     def test_national_rebellion_day(self):
         self.assertHolidayName(
-            "Día de la Rebeldía Nacional", (f"{year}-07-26" for year in range(1959, 2050))
+            "Día de la Rebeldía Nacional", (f"{year}-07-26" for year in self.full_range)
         )
 
     def test_independence_day(self):
-        self.assertHolidayName(
-            "Inicio de las Guerras de Independencia",
-            (f"{year}-10-10" for year in range(1959, 2050)),
+        name = "Inicio de las Guerras de Independencia"
+        self.assertHolidayName(name, (f"{year}-10-10" for year in self.full_range))
+        obs_dts = (
+            "2004-10-11",
+            "2010-10-11",
+            "2021-10-11",
         )
-
-    def test_1968(self):
-        self.assertHolidayDates(
-            Cuba(years=1968),
-            "1968-01-01",
-            "1968-05-01",
-            "1968-07-25",
-            "1968-07-26",
-            "1968-07-27",
-            "1968-10-10",
-            "1968-12-25",
-        )
-
-    def test_1969(self):
-        self.assertHolidayDates(
-            Cuba(years=1969),
-            "1969-01-01",
-            "1969-05-01",
-            "1969-07-25",
-            "1969-07-26",
-            "1969-07-27",
-            "1969-10-10",
-        )
-
-    def test_1970(self):
-        self.assertHolidayDates(
-            Cuba(years=1970),
-            "1970-01-01",
-            "1970-05-01",
-            "1970-07-25",
-            "1970-07-26",
-            "1970-07-27",
-            "1970-10-10",
-        )
-
-    def test_1996(self):
-        self.assertHolidayDates(
-            Cuba(years=1996),
-            "1996-01-01",
-            "1996-05-01",
-            "1996-07-25",
-            "1996-07-26",
-            "1996-07-27",
-            "1996-10-10",
-        )
-
-    def test_1997(self):
-        self.assertHolidayDates(
-            Cuba(years=1997),
-            "1997-01-01",
-            "1997-05-01",
-            "1997-07-25",
-            "1997-07-26",
-            "1997-07-27",
-            "1997-10-10",
-            "1997-12-25",
-        )
-
-    def test_1998(self):
-        self.assertHolidayDates(
-            Cuba(years=1998),
-            "1998-01-01",
-            "1998-05-01",
-            "1998-07-25",
-            "1998-07-26",
-            "1998-07-27",
-            "1998-10-10",
-            "1998-12-25",
-        )
-
-    def test_2006(self):
-        self.assertHolidayDates(
-            Cuba(years=2006),
-            "2006-01-01",
-            "2006-01-02",
-            "2006-05-01",
-            "2006-07-25",
-            "2006-07-26",
-            "2006-07-27",
-            "2006-10-10",
-            "2006-12-25",
-        )
-
-    def test_2007(self):
-        self.assertHolidayDates(
-            Cuba(years=2007),
-            "2007-01-01",
-            "2007-05-01",
-            "2007-07-25",
-            "2007-07-26",
-            "2007-07-27",
-            "2007-10-10",
-            "2007-12-25",
-            "2007-12-31",
-        )
-
-    def test_2008(self):
-        self.assertHolidayDates(
-            Cuba(years=2008),
-            "2008-01-01",
-            "2008-01-02",
-            "2008-05-01",
-            "2008-07-25",
-            "2008-07-26",
-            "2008-07-27",
-            "2008-10-10",
-            "2008-12-25",
-            "2008-12-31",
-        )
-
-    def test_2011(self):
-        self.assertHolidayDates(
-            Cuba(years=2011),
-            "2011-01-01",
-            "2011-01-02",
-            "2011-05-01",
-            "2011-05-02",
-            "2011-07-25",
-            "2011-07-26",
-            "2011-07-27",
-            "2011-10-10",
-            "2011-12-25",
-            "2011-12-31",
-        )
-
-    def test_2012(self):
-        self.assertHolidayDates(
-            Cuba(years=2012),
-            "2012-01-01",
-            "2012-01-02",
-            "2012-04-06",
-            "2012-05-01",
-            "2012-07-25",
-            "2012-07-26",
-            "2012-07-27",
-            "2012-10-10",
-            "2012-12-25",
-            "2012-12-31",
-        )
-
-    def test_2013(self):
-        self.assertHolidayDates(
-            Cuba(years=2013),
-            "2013-01-01",
-            "2013-01-02",
-            "2013-03-29",
-            "2013-05-01",
-            "2013-07-25",
-            "2013-07-26",
-            "2013-07-27",
-            "2013-10-10",
-            "2013-12-25",
-            "2013-12-31",
-        )
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2018(self):
         # https://www.officeholidays.com/countries/cuba/2018

@@ -14,7 +14,7 @@ from holidays.countries.united_states import UnitedStates
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysUM(ChildEntity, UnitedStates):
+class UnitedStatesMinorOutlyingIslands(ChildEntity, UnitedStates):
     """United States Minor Outlying Islands holidays.
 
     Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
@@ -27,13 +27,13 @@ class HolidaysUM(ChildEntity, UnitedStates):
     start_year = 1857
 
 
-class UnitedStatesMinorOutlyingIslands(HolidaysUM):
+class HolidaysUM(UnitedStatesMinorOutlyingIslands):
     pass
 
 
-class UM(HolidaysUM):
+class UM(UnitedStatesMinorOutlyingIslands):
     pass
 
 
-class UMI(HolidaysUM):
+class UMI(UnitedStatesMinorOutlyingIslands):
     pass

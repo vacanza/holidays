@@ -12,8 +12,8 @@
 
 from unittest import TestCase
 
-from holidays import GOVERNMENT, PUBLIC, WORKDAY
-from holidays.countries.falkland_islands import FalklandIslands, FK, FLK
+from holidays import GOVERNMENT, WORKDAY
+from holidays.countries.falkland_islands import FalklandIslands
 from tests.common import CommonCountryTests
 
 
@@ -24,14 +24,6 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
         super().setUpClass(FalklandIslands, years=years, years_non_observed=years)
         cls.government_holidays = FalklandIslands(categories=GOVERNMENT, years=years)
         cls.workday_holidays = FalklandIslands(categories=WORKDAY, years=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(FalklandIslands, FK, FLK)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            FalklandIslands(categories=(GOVERNMENT, PUBLIC, WORKDAY), years=1982)
-        )
 
     def test_special_holidays(self):
         self.assertHoliday(

@@ -148,7 +148,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Aland Islands</td>
+<td>Åland Islands</td>
 <td>AX</td>
 <td>Can also be loaded as country FI, subdivision 01</td>
 <td>en_US, <strong>fi</strong>, sv_FI, th, uk</td>

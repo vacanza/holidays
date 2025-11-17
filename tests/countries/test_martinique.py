@@ -12,20 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.martinique import HolidaysMQ, Martinique, MQ, MTQ
+from holidays.countries.martinique import Martinique
 from tests.common import CommonCountryTests
 
 
 class TestMartinique(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysMQ, years=range(1815, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysMQ, Martinique, MQ, MTQ)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Martinique(years=1814))
+        super().setUpClass(Martinique)
 
     def test_good_friday(self):
         name = "Vendredi saint"
@@ -39,21 +33,21 @@ class TestMartinique(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(1815, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_abolition_of_slavery(self):
         name = "Abolition de l'esclavage"
-        self.assertHolidayName(name, (f"{year}-05-22" for year in range(1984, 2050)))
-        self.assertNoHolidayName(name, range(1815, 1984))
+        self.assertHolidayName(name, (f"{year}-05-22" for year in range(1984, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1984))
 
     def test_victor_schoelcher_day(self):
         name = "Fête de Victor Schoelcher"
-        self.assertHolidayName(name, (f"{year}-07-21" for year in range(1984, 2050)))
-        self.assertNoHolidayName(name, range(1815, 1984))
+        self.assertHolidayName(name, (f"{year}-07-21" for year in range(1984, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1984))
 
     def test_2024(self):
         self.assertHolidays(
-            HolidaysMQ(years=2024),
+            Martinique(years=2024),
             ("2024-01-01", "Jour de l'an"),
             ("2024-03-29", "Vendredi saint"),
             ("2024-04-01", "Lundi de Pâques"),

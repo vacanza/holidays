@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import CATHOLIC, ORTHODOX
-from holidays.countries.palestine import Palestine, PS, PSE
+from holidays.countries.palestine import Palestine
 from tests.common import CommonCountryTests
 
 
@@ -24,12 +24,6 @@ class TestPalestine(CommonCountryTests, TestCase):
         super().setUpClass(Palestine, years=years)
         cls.catholic_holidays = Palestine(categories=CATHOLIC, years=years)
         cls.orthodox_holidays = Palestine(categories=ORTHODOX, years=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(Palestine, PS, PSE)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Palestine(categories=self.holidays.supported_categories, years=1988))
 
     def test_new_years_day(self):
         name = "رأس السنة الميلادي"

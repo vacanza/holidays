@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.british_indian_ocean_territory import BritishIndianOceanTerritory, IO, IOT
+from holidays.countries.british_indian_ocean_territory import BritishIndianOceanTerritory
 from tests.common import CommonCountryTests
 
 
@@ -20,10 +20,4 @@ class TestBritishIndianOceanTerritory(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(1900, 2050)
-        super().setUpClass(BritishIndianOceanTerritory, years=cls.full_range)
-
-    def test_country_aliases(self):
-        self.assertAliases(BritishIndianOceanTerritory, IO, IOT)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(BritishIndianOceanTerritory(years=self.full_range))
+        super().setUpClass(BritishIndianOceanTerritory)

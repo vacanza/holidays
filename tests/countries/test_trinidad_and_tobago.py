@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import OPTIONAL
-from holidays.countries.trinidad_and_tobago import TrinidadAndTobago, TT, TTO
+from holidays.countries.trinidad_and_tobago import TrinidadAndTobago
 from tests.common import CommonCountryTests
 
 
@@ -25,11 +25,9 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         cls.no_estimated_holidays = TrinidadAndTobago(years=years, islamic_show_estimated=False)
         cls.optional_holidays = TrinidadAndTobago(categories=OPTIONAL, years=years)
 
-    def test_country_aliases(self):
-        self.assertAliases(TrinidadAndTobago, TT, TTO)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(TrinidadAndTobago(years=1962))
+        super().test_no_holidays()
+
         self.assertNoHolidays(TrinidadAndTobago(categories=OPTIONAL, years=1962))
 
     def test_new_years_day(self):

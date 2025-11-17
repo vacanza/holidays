@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.burkina_faso import BurkinaFaso, BF, BFA
+from holidays.countries.burkina_faso import BurkinaFaso
 from tests.common import CommonCountryTests
 
 
@@ -21,62 +21,146 @@ class TestBurkinaFaso(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(BurkinaFaso)
 
-    def test_country_aliases(self):
-        self.assertAliases(BurkinaFaso, BF, BFA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(BurkinaFaso(years=1960))
-
-    def test_revolution_day(self):
-        name = "Revolution Day"
-        self.assertHolidayName(name, (f"{year}-01-03" for year in range(1967, 2050)))
-        self.assertNoHolidayName(name, BurkinaFaso(years=range(1961, 1967)))
-        self.assertNoHoliday(f"{year}-01-03" for year in range(1961, 1967))
-
-    def test_martyrs_day(self):
-        name = "Martyrs' Day"
-        self.assertHolidayName(name, (f"{year}-10-31" for year in range(2016, 2050)))
-        self.assertNoHolidayName(name, BurkinaFaso(years=range(1961, 2016)))
-        self.assertNoHoliday(f"{year}-10-31" for year in set(range(1961, 2016)).difference({1979}))
-
-    def test_observed(self):
-        dt = (
-            # New Year's Day
+    def test_new_years_day(self):
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        obs_dts = (
             "2012-01-02",
             "2017-01-02",
             "2023-01-02",
-            # Revolution Day
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_revolution_day(self):
+        name = "Revolution Day"
+        self.assertHolidayName(name, (f"{year}-01-03" for year in range(1967, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1967))
+        obs_dts = (
             "2010-01-04",
             "2016-01-04",
             "2021-01-04",
-            # International Women's Day
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_international_womens_day(self):
+        name = "International Women's Day"
+        self.assertHolidayName(name, (f"{year}-03-08" for year in self.full_range))
+        obs_dts = (
             "2015-03-09",
             "2020-03-09",
-            # Labour Day
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_labor_day(self):
+        name = "Labour Day"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
+        obs_dts = (
             "2011-05-02",
             "2016-05-02",
-            # Independence Day
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_independence_day(self):
+        name = "Independence Day"
+        self.assertHolidayName(name, (f"{year}-08-05" for year in self.full_range))
+        obs_dts = (
             "2012-08-06",
             "2018-08-06",
-            # Assumption Day
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_assumption_day(self):
+        name = "Assumption Day"
+        self.assertHolidayName(name, (f"{year}-08-15" for year in self.full_range))
+        obs_dts = (
             "2010-08-16",
             "2021-08-16",
-            # All Saints' Day
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_martyrs_day(self):
+        name = "Martyrs' Day"
+        name_observed = f"{name} (observed)"
+        self.assertHolidayName(name, (f"{year}-10-31" for year in range(2016, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2016))
+        obs_dts = ("2021-11-01",)
+        self.assertHolidayName(name_observed, obs_dts)
+        self.assertNoNonObservedHolidayName(name_observed, obs_dts)
+
+    def test_all_saints_day(self):
+        name = "All Saints' Day"
+        self.assertHolidayName(name, (f"{year}-11-01" for year in self.full_range))
+        obs_dts = (
             "2015-11-02",
             "2020-11-02",
-            # Proclamation of Independence Day
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_proclamation_of_independence_day(self):
+        name = "Proclamation of Independence Day"
+        self.assertHolidayName(name, (f"{year}-12-11" for year in self.full_range))
+        obs_dts = (
             "2011-12-12",
             "2022-12-12",
-            # Christmas Day
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_christmas_day(self):
+        name = "Christmas Day"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
+        obs_dts = (
             "2011-12-26",
             "2016-12-26",
             "2022-12-26",
         )
-        self.assertHoliday(dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_eid_al_fitr(self):
+        name = "Eid al-Fitr"
+        self.assertHolidayName(
+            name,
+            "2014-07-29",
+            "2015-07-18",
+            "2016-07-07",
+            "2017-06-26",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_eid_al_adha(self):
+        name = "Eid al-Adha"
+        self.assertHolidayName(
+            name,
+            "2014-10-05",
+            "2015-09-24",
+            "2016-09-13",
+            "2017-09-02",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_prophets_birthday(self):
+        name = "Mawlid"
+        self.assertHolidayName(
+            name,
+            "2014-01-14",
+            "2015-01-03",
+            "2015-12-24",
+            "2016-12-12",
+            "2017-12-01",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_2022(self):
         self.assertHolidays(
+            BurkinaFaso(years=2022),
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "Revolution Day"),
             ("2022-03-08", "International Women's Day"),

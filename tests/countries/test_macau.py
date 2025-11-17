@@ -12,8 +12,8 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT, OPTIONAL
-from holidays.countries.macau import Macau, MO, MAC
+from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC
+from holidays.countries.macau import Macau
 from tests.common import CommonCountryTests
 
 
@@ -24,13 +24,12 @@ class TestMacau(CommonCountryTests, TestCase):
         cls.government_holidays = Macau(categories=GOVERNMENT, years=range(2005, 2050))
         cls.optional_holidays = Macau(categories=OPTIONAL, years=range(1982, 2050))
 
-    def test_country_aliases(self):
-        self.assertAliases(Macau, MO, MAC)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Macau(years=1984))
-        self.assertNoHolidays(Macau(years=1981, categories=OPTIONAL))
-        self.assertNoHolidays(Macau(years=2004, categories=GOVERNMENT))
+        super().test_no_holidays()
+
+        self.assertNoHolidays(Macau(categories=GOVERNMENT, years=2004))
+        self.assertNoHolidays(Macau(categories=OPTIONAL, years=1981))
+        self.assertNoHolidays(Macau(categories=PUBLIC, years=1984))
 
     def test_special_holidays(self):
         dt_optional_full = (

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.nicaragua import Nicaragua, NI, NIC
+from holidays.countries.nicaragua import Nicaragua
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestNicaragua(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Nicaragua, years=range(1950, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Nicaragua, NI, NIC)
 
     def test_new_years_day(self):
         self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(1950, 2050)))

@@ -12,33 +12,29 @@
 
 from unittest import TestCase
 
-from holidays.countries.new_caledonia import HolidaysNC, NewCaledonia, NC, NCL
+from holidays.countries.new_caledonia import NewCaledonia
 from tests.common import CommonCountryTests
 
 
 class TestNewCaledonia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysNC, years=range(1854, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysNC, NewCaledonia, NC, NCL)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(NewCaledonia(years=1853))
+        super().setUpClass(NewCaledonia)
 
     def test_citizenship_day(self):
         name_1953 = "Fête de la prise de possession"
         name_2004 = "Fête de la Citoyenneté"
 
         self.assertHolidayName(name_1953, (f"{year}-09-24" for year in range(1953, 2004)))
-        self.assertHolidayName(name_2004, (f"{year}-09-24" for year in range(2004, 2050)))
-        self.assertNoHolidayName(name_1953, range(1854, 1953), range(2004, 2050))
-        self.assertNoHolidayName(name_2004, range(1854, 2004))
+        self.assertHolidayName(name_2004, (f"{year}-09-24" for year in range(2004, self.end_year)))
+        self.assertNoHolidayName(
+            name_1953, range(self.start_year, 1953), range(2004, self.end_year)
+        )
+        self.assertNoHolidayName(name_2004, range(self.start_year, 2004))
 
     def test_2024(self):
         self.assertHolidays(
-            HolidaysNC(years=2024),
+            NewCaledonia(years=2024),
             ("2024-01-01", "Jour de l'an"),
             ("2024-04-01", "Lundi de Pâques"),
             ("2024-05-01", "Fête du Travail"),

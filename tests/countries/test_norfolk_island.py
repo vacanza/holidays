@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.norfolk_island import NorfolkIsland, NF, NFK
+from holidays.countries.norfolk_island import NorfolkIsland
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestNorfolkIsland(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(2016, 2050)
         super().setUpClass(NorfolkIsland, years=years, years_non_observed=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(NorfolkIsland, NF, NFK)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(NorfolkIsland(years=2015))
 
     def test_special_holidays(self):
         self.assertHoliday("2022-09-22")

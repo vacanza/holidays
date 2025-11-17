@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.jersey import Jersey, JE, JEY
+from holidays.countries.jersey import Jersey
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestJE(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Jersey, years=range(1952, 2070))
-
-    def test_country_aliases(self):
-        self.assertAliases(Jersey, JE, JEY)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Jersey(years=1951))
 
     def test_special_holidays(self):
         dt = (

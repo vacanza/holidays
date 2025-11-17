@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.vatican_city import VaticanCity, VA, VAT
+from holidays.countries.vatican_city import VaticanCity
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestVaticanCity(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(VaticanCity, years=range(1929, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(VaticanCity, VA, VAT)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(VaticanCity(years=1928))
 
     def test_solemnity_of_mary_mother_of_god(self):
         self.assertHolidayName(

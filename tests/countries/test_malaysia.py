@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.malaysia import Malaysia, MY, MYS
+from holidays.countries.malaysia import Malaysia
 from tests.common import CommonCountryTests
 
 
@@ -24,12 +24,6 @@ class TestMalaysia(CommonCountryTests, TestCase):
             subdiv: Malaysia(subdiv=subdiv, years=range(2000, 2050))
             for subdiv in Malaysia.subdivisions
         }
-
-    def test_country_aliases(self):
-        self.assertAliases(Malaysia, MY, MYS)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Malaysia(years=1951))
 
     def test_2023(self):
         rows = (
