@@ -37,7 +37,7 @@ class POGenerator:
     @staticmethod
     def _process_entity_worker(
         entity_code_info: tuple[str, tuple[str, Path]],
-    ) -> list[tuple[str, str, str]]:
+    ) -> list[tuple[str, str]]:
         """Process a single entity: create .pot, default .po, and return update tasks."""
         entity_code, (default_language, class_file_path) = entity_code_info
 
@@ -77,17 +77,15 @@ class POGenerator:
             pot_file.save(str(default_po_path), newline="\n")
 
         # Collect .po update tasks.
-        po_update_tasks: list[tuple[str, str, str]] = [
-            (str(po_file_path), str(pot_file_path), package_version)
+        return [
+            (str(po_file_path), str(pot_file_path))
             for po_file_path in locale_path.rglob(f"{entity_code}.po")
         ]
 
-        return po_update_tasks
-
     @staticmethod
-    def _update_po_file(args: tuple[str, str, str]) -> None:
+    def _update_po_file(args: tuple[str, str]) -> None:
         """Merge .po file with .pot"""
-        po_path, pot_path, package_version = args
+        po_path, pot_path = args
         po_file = pofile(po_path, wrapwidth=WRAP_WIDTH)
         po_file_initial = po_file.copy()
 
@@ -96,7 +94,7 @@ class POGenerator:
         for entry in po_file:
             entry.occurrences.clear()
 
-        # Only update the project version if po file translation entriesv has changed.
+        # Only update the project version if po file translation entries has changed.
         if po_file != po_file_initial:
             po_file.metadata["Project-Id-Version"] = f"Holidays {package_version}"
 
@@ -121,7 +119,7 @@ class POGenerator:
                         entity_code_info_mapping[name.upper()] = (cls.default_language, path)
                         break
 
-        all_po_update_tasks: list[tuple[str, str, str]] = []
+        all_po_update_tasks: list[tuple[str, str]] = []
         with ProcessPoolExecutor() as executor:
             for po_tasks in executor.map(
                 self._process_entity_worker, entity_code_info_mapping.items()
