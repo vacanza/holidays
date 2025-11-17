@@ -17,7 +17,9 @@ from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHoli
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class HolidaysMH(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class MarshallIslands(
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """Marshall Islands holidays.
 
     References:
@@ -31,7 +33,7 @@ class HolidaysMH(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, MarshalIslandsStaticHolidays)
+        StaticHolidays.__init__(self, MarshallIslandsStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
@@ -77,19 +79,19 @@ class HolidaysMH(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
             self._add_observed(self._add_christmas_day(name))
 
 
-class MH(HolidaysMH):
+class HolidaysMH(MarshallIslands):
     pass
 
 
-class MHL(HolidaysMH):
+class MH(MarshallIslands):
     pass
 
 
-class MarshallIslands(HolidaysMH):
+class MHL(MarshallIslands):
     pass
 
 
-class MarshalIslandsStaticHolidays:
+class MarshallIslandsStaticHolidays:
     # General Election Day
     election_day = "General Election Day"
 

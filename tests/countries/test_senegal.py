@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.senegal import Senegal, SN, SEN
+from holidays.countries.senegal import Senegal
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestSenegal(CommonCountryTests, TestCase):
         years = range(1964, 2050)
         super().setUpClass(Senegal, years=years, years_non_observed=years)
         cls.no_estimated_holidays = Senegal(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Senegal, SN, SEN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Senegal(years=1963))
 
     def test_special_holidays(self):
         self.assertHoliday(

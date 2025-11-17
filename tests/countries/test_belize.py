@@ -12,26 +12,20 @@
 
 from unittest import TestCase
 
-from holidays.countries.belize import Belize, BZ, BLZ
+from holidays.countries.belize import Belize
 from tests.common import CommonCountryTests
 
 
 class TestBelize(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Belize, years=range(1982, 2050), years_non_observed=range(1982, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Belize, BZ, BLZ)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Belize(years=1981))
+        super().setUpClass(Belize)
 
     def test_new_years_day(self):
         name = "New Year's Day"
         years_observed = {1984, 1989, 1995, 2006, 2012, 2017, 2023, 2034, 2040, 2045}
         self.assertHolidayName(
-            name, (f"{year}-01-01" for year in set(range(1982, 2050)).difference(years_observed))
+            name, (f"{year}-01-01" for year in self.full_range if year not in years_observed)
         )
         self.assertHolidayName(f"{name} (observed)", (f"{year}-01-02" for year in years_observed))
 
@@ -39,11 +33,11 @@ class TestBelize(CommonCountryTests, TestCase):
         name = "George Price Day"
         years_observed = {2023, 2034, 2040, 2045}
         self.assertHolidayName(
-            name, (f"{year}-01-15" for year in set(range(2021, 2050)).difference(years_observed))
+            name,
+            (f"{year}-01-15" for year in range(2021, self.end_year) if year not in years_observed),
         )
         self.assertHolidayName(f"{name} (observed)", (f"{year}-01-16" for year in years_observed))
-        self.assertNoHoliday(f"{year}-01-15" for year in range(1982, 2021))
-        self.assertNoHolidayName(name, range(1982, 2021))
+        self.assertNoHolidayName(name, range(self.start_year, 2021))
 
     def test_national_heroes_and_benefactors_day(self):
         name = "National Heroes and Benefactors Day"
@@ -60,41 +54,52 @@ class TestBelize(CommonCountryTests, TestCase):
             "2022-03-07",
             "2023-03-06",
         )
-        self.assertNonObservedHolidayName(name, (f"{year}-03-09" for year in range(1982, 2050)))
+        self.assertNonObservedHolidayName(name, (f"{year}-03-09" for year in self.full_range))
 
-    def test_easter_holidays(self):
+    def test_good_friday(self):
+        name = "Good Friday"
         self.assertHolidayName(
-            "Good Friday",
-            "2019-04-19",
+            name,
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
         )
+        self.assertHolidayName(name, self.full_range)
 
+    def test_holy_saturday(self):
+        name = "Holy Saturday"
         self.assertHolidayName(
-            "Holy Saturday",
-            "2019-04-20",
+            name,
             "2020-04-11",
             "2021-04-03",
             "2022-04-16",
             "2023-04-08",
+            "2024-03-30",
+            "2025-04-19",
         )
+        self.assertHolidayName(name, self.full_range)
 
+    def test_easter_monday(self):
+        name = "Easter Monday"
         self.assertHolidayName(
-            "Easter Monday",
-            "2019-04-22",
+            name,
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
         )
+        self.assertHolidayName(name, self.full_range)
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         name = "Labour Day"
         years_observed = {1983, 1988, 1994, 2005, 2011, 2016, 2022, 2033, 2039, 2044}
         self.assertHolidayName(
-            name, (f"{year}-05-01" for year in set(range(1982, 2050)).difference(years_observed))
+            name, (f"{year}-05-01" for year in self.full_range if year not in years_observed)
         )
         self.assertHolidayName(f"{name} (observed)", (f"{year}-05-02" for year in years_observed))
 
@@ -111,8 +116,10 @@ class TestBelize(CommonCountryTests, TestCase):
             "2019-05-27",
             "2020-05-25",
         )
-        self.assertNonObservedHolidayName(name, (f"{year}-05-24" for year in range(1982, 2022)))
-        self.assertNoHolidayName(name, range(2022, 2050))
+        self.assertNonObservedHolidayName(
+            name, (f"{year}-05-24" for year in range(self.start_year, 2022))
+        )
+        self.assertNoHolidayName(name, range(2022, self.end_year))
 
     def test_emancipation_day(self):
         name = "Emancipation Day"
@@ -123,14 +130,16 @@ class TestBelize(CommonCountryTests, TestCase):
             "2024-07-29",
             "2025-08-04",
         )
-        self.assertNonObservedHolidayName(name, (f"{year}-08-01" for year in range(2021, 2050)))
-        self.assertNoHolidayName(name, range(1982, 2021))
+        self.assertNonObservedHolidayName(
+            name, (f"{year}-08-01" for year in range(2021, self.end_year))
+        )
+        self.assertNoHolidayName(name, range(self.start_year, 2021))
 
     def test_saint_georges_caye_day(self):
         name = "Saint George's Caye Day"
         years_observed = {1989, 1995, 2000, 2006, 2017, 2023, 2028, 2034, 2045}
         self.assertHolidayName(
-            name, (f"{year}-09-10" for year in set(range(1982, 2050)).difference(years_observed))
+            name, (f"{year}-09-10" for year in self.full_range if year not in years_observed)
         )
         self.assertHolidayName(f"{name} (observed)", (f"{year}-09-11" for year in years_observed))
 
@@ -138,7 +147,7 @@ class TestBelize(CommonCountryTests, TestCase):
         name = "Independence Day"
         years_observed = {1986, 1997, 2003, 2008, 2014, 2025, 2031, 2036, 2042}
         self.assertHolidayName(
-            name, (f"{year}-09-21" for year in set(range(1982, 2050)).difference(years_observed))
+            name, (f"{year}-09-21" for year in self.full_range if year not in years_observed)
         )
         self.assertHolidayName(f"{name} (observed)", (f"{year}-09-22" for year in years_observed))
 
@@ -162,27 +171,31 @@ class TestBelize(CommonCountryTests, TestCase):
             "2025-10-13",
             "2027-10-11",
         )
-        self.assertNonObservedHolidayName(name1, (f"{year}-10-12" for year in range(1982, 2021)))
-        self.assertNonObservedHolidayName(name2, (f"{year}-10-12" for year in range(2021, 2050)))
-        self.assertNoHolidayName(name1, range(2021, 2050))
-        self.assertNoHolidayName(name2, range(1982, 2021))
+        self.assertNonObservedHolidayName(
+            name1, (f"{year}-10-12" for year in range(self.start_year, 2021))
+        )
+        self.assertNonObservedHolidayName(
+            name2, (f"{year}-10-12" for year in range(2021, self.end_year))
+        )
+        self.assertNoHolidayName(name1, range(2021, self.end_year))
+        self.assertNoHolidayName(name2, range(self.start_year, 2021))
 
     def test_garifuna_settlement_day(self):
         name = "Garifuna Settlement Day"
         years_observed = {1989, 1995, 2000, 2006, 2017, 2023, 2028, 2034, 2045}
         self.assertHolidayName(
-            name, (f"{year}-11-19" for year in set(range(1982, 2050)).difference(years_observed))
+            name, (f"{year}-11-19" for year in self.full_range if year not in years_observed)
         )
         self.assertHolidayName(f"{name} (observed)", (f"{year}-11-20" for year in years_observed))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1982, 2050)))
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in self.full_range))
 
     def test_boxing_day(self):
         name = "Boxing Day"
         years_observed = {1982, 1993, 1999, 2004, 2010, 2021, 2027, 2032, 2038, 2049}
         self.assertHolidayName(
-            name, (f"{year}-12-26" for year in set(range(1982, 2050)).difference(years_observed))
+            name, (f"{year}-12-26" for year in self.full_range if year not in years_observed)
         )
         self.assertHolidayName(f"{name} (observed)", (f"{year}-12-27" for year in years_observed))
 

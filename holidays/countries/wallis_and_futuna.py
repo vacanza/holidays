@@ -14,7 +14,7 @@ from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysWF(ChildEntity, France):
+class WallisAndFutuna(ChildEntity, France):
     """Wallis and Futuna holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -31,13 +31,13 @@ class HolidaysWF(ChildEntity, France):
     start_year = 1962
 
 
-class WallisAndFutuna(HolidaysWF):
+class HolidaysWF(WallisAndFutuna):
     pass
 
 
-class WF(HolidaysWF):
+class WF(WallisAndFutuna):
     pass
 
 
-class WLF(HolidaysWF):
+class WLF(WallisAndFutuna):
     pass

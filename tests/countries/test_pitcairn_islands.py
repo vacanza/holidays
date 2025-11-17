@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import GOVERNMENT, WORKDAY
-from holidays.countries.pitcairn_islands import PitcairnIslands, PN, PCN
+from holidays.countries.pitcairn_islands import PitcairnIslands
 from tests.common import CommonCountryTests
 
 
@@ -24,14 +24,6 @@ class TestPitcairnIslands(CommonCountryTests, TestCase):
         super().setUpClass(PitcairnIslands, years=years)
         cls.government_holidays = PitcairnIslands(categories=GOVERNMENT, years=years)
         cls.workday_holidays = PitcairnIslands(categories=WORKDAY, years=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(PitcairnIslands, PN, PCN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            PitcairnIslands(categories=PitcairnIslands.supported_categories, years=2015)
-        )
 
     def test_new_years_day(self):
         name = "New Year's Day"

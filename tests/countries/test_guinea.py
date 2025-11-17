@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.guinea import Guinea, GN, GIN
+from holidays.countries.guinea import Guinea
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestGuinea(CommonCountryTests, TestCase):
         years = range(1959, 2050)
         super().setUpClass(Guinea, years=years)
         cls.no_estimated_holidays = Guinea(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Guinea, GN, GIN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Guinea(years=1958))
 
     def test_new_years_day(self):
         name = "Fête du Nouvel an"

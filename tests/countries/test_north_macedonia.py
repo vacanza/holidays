@@ -24,7 +24,7 @@ from holidays.constants import (
     TURKISH,
     VLACH,
 )
-from holidays.countries.north_macedonia import NorthMacedonia, MK, MKD
+from holidays.countries.north_macedonia import NorthMacedonia
 from tests.common import CommonCountryTests
 
 
@@ -48,11 +48,9 @@ class TestNorthMacedonia(CommonCountryTests, TestCase):
         cls.turkish_holidays = NorthMacedonia(categories=TURKISH, years=years)
         cls.vlach_holidays = NorthMacedonia(categories=VLACH, years=years)
 
-    def test_country_aliases(self):
-        self.assertAliases(NorthMacedonia, MK, MKD)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(NorthMacedonia(years=1998))
+        super().test_no_holidays()
+
         self.assertNoHolidays(NorthMacedonia(categories=(CATHOLIC, HEBREW, ORTHODOX), years=1998))
         self.assertNoHolidays(
             NorthMacedonia(

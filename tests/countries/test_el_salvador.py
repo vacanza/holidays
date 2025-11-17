@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.el_salvador import ElSalvador, SV, SLV
+from holidays.countries.el_salvador import ElSalvador
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestElSalvador(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(ElSalvador, years=range(1973, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(ElSalvador, SV, SLV)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(ElSalvador(years=1972))
 
     def test_new_years_day(self):
         self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(1973, 2050)))

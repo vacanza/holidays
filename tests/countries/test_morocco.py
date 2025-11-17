@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.morocco import Morocco, MA, MOR
+from holidays.countries.morocco import Morocco
 from tests.common import CommonCountryTests
 
 
@@ -21,11 +21,9 @@ class TestMorocco(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Morocco)
 
-    def test_country_aliases(self):
-        self.assertAliases(Morocco, MA, MOR)
-
     def test_2019(self):
         self.assertHolidayDates(
+            Morocco(years=2019),
             "2019-01-01",
             "2019-01-11",
             "2019-05-01",
@@ -46,6 +44,7 @@ class TestMorocco(CommonCountryTests, TestCase):
 
     def test_1999(self):
         self.assertHolidayDates(
+            Morocco(years=1999),
             "1999-01-01",
             "1999-01-11",
             "1999-01-18",

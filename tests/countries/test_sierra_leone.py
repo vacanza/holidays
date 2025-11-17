@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.sierra_leone import SierraLeone, SL, SLE
+from holidays.countries.sierra_leone import SierraLeone
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestSierraLeone(CommonCountryTests, TestCase):
         years = range(1962, 2050)
         super().setUpClass(SierraLeone, years=years, years_non_observed=years)
         cls.no_estimated_holidays = SierraLeone(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(SierraLeone, SL, SLE)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(SierraLeone(years=1961))
 
     def test_new_years_day(self):
         name = "New Year's Day"

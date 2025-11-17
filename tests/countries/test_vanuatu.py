@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.vanuatu import Vanuatu, VU, VTU
+from holidays.countries.vanuatu import Vanuatu
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestVanuatu(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Vanuatu, years=range(1981, 2050), years_non_observed=range(2000, 2024))
-
-    def test_country_aliases(self):
-        self.assertAliases(Vanuatu, VU, VTU)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Vanuatu(years=1980))
 
     def test_special_holidays(self):
         self.assertHoliday(

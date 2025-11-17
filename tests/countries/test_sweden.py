@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.sweden import Sweden, SE, SWE
+from holidays.countries.sweden import Sweden
 from tests.common import CommonCountryTests, SundayHolidays
 
 
@@ -21,9 +21,6 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
     def setUpClass(cls):
         super().setUpClass(Sweden)
         cls.holidays = Sweden(include_sundays=False, years=range(1930, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Sweden, SE, SWE)
 
     def test_new_years_day(self):
         self.assertHolidayName("Nyårsdagen", (f"{year}-01-01" for year in range(1930, 2050)))

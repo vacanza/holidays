@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.jordan import Jordan, JO, JOR
+from holidays.countries.jordan import Jordan
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestJordan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Jordan)
-
-    def test_country_aliases(self):
-        self.assertAliases(Jordan, JO, JOR)
 
     def test_2024(self):
         self.assertHolidays(

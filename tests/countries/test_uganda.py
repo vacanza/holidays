@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.uganda import Uganda, UG, UGA
+from holidays.countries.uganda import Uganda
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestUganda(CommonCountryTests, TestCase):
         years = range(1963, 2050)
         super().setUpClass(Uganda, years=years)
         cls.no_estimated_holidays = Uganda(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Uganda, UG, UGA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Uganda(years=1962))
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1963, 2050)))

@@ -13,28 +13,19 @@
 from unittest import TestCase
 
 from holidays.countries.united_states_minor_outlying_islands import (
-    HolidaysUM,
     UnitedStatesMinorOutlyingIslands,
-    UM,
-    UMI,
 )
 from tests.common import CommonCountryTests
 
 
-class TestUM(CommonCountryTests, TestCase):
+class TestUnitedStatesMinorOutlyingIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysUM)
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysUM, UnitedStatesMinorOutlyingIslands, UM, UMI)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(HolidaysUM(years=1856))
+        super().setUpClass(UnitedStatesMinorOutlyingIslands)
 
     def test_public_holidays(self):
         self.assertHolidays(
-            HolidaysUM(years=2024),
+            UnitedStatesMinorOutlyingIslands(years=2024),
             ("2024-01-01", "New Year's Day"),
             ("2024-01-15", "Martin Luther King Jr. Day"),
             ("2024-02-19", "Washington's Birthday"),

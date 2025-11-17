@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.samoa import Samoa, WS, WSM
+from holidays.countries.samoa import Samoa
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestSamoa(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Samoa, years=range(1950, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Samoa, WS, WSM)
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1950, 2050)))

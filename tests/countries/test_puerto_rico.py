@@ -12,20 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.puerto_rico import HolidaysPR, PuertoRico, PR, PRI
+from holidays.countries.puerto_rico import PuertoRico
 from tests.common import CommonCountryTests
 
 
 class TestPR(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysPR)
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysPR, PuertoRico, PR, PRI)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(HolidaysPR(years=1899))
+        super().setUpClass(PuertoRico)
 
     def test_pr_only(self):
         """Check for a holiday that is not returned by US unless the

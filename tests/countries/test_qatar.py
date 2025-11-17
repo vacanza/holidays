@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import BANK
-from holidays.countries.qatar import Qatar, QA, QAT
+from holidays.countries.qatar import Qatar
 from tests.common import CommonCountryTests
 
 
@@ -25,11 +25,9 @@ class TestQatar(CommonCountryTests, TestCase):
         cls.no_estimated_holidays = Qatar(years=years, islamic_show_estimated=False)
         cls.bank_holidays = Qatar(categories=BANK, years=years)
 
-    def test_country_aliases(self):
-        self.assertAliases(Qatar, QA, QAT)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Qatar(years=1970))
+        super().test_no_holidays()
+
         self.assertNoHolidays(Qatar(categories=BANK, years=1970))
 
     def test_special_holidays(self):
