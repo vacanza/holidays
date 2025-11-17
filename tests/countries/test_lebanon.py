@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import BANK, GOVERNMENT
-from holidays.countries.lebanon import Lebanon, LB, LBN
+from holidays.countries.lebanon import Lebanon
 from tests.common import CommonCountryTests
 
 
@@ -26,11 +26,9 @@ class TestLebanon(CommonCountryTests, TestCase):
         cls.government_holidays = Lebanon(categories=GOVERNMENT, years=years)
         cls.no_estimated_holidays = Lebanon(years=years, islamic_show_estimated=False)
 
-    def test_country_aliases(self):
-        self.assertAliases(Lebanon, LB, LBN)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Lebanon(years=1977))
+        super().test_no_holidays()
+
         self.assertNoHolidays(Lebanon(categories=BANK, years=2019))
         self.assertNoHolidays(Lebanon(categories=GOVERNMENT, years=2019))
 

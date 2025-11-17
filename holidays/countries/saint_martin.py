@@ -14,7 +14,7 @@ from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysMF(ChildEntity, France):
+class SaintMartin(ChildEntity, France):
     """Saint Martin holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -31,13 +31,13 @@ class HolidaysMF(ChildEntity, France):
     start_year = 2008
 
 
-class SaintMartin(HolidaysMF):
+class HolidaysMF(SaintMartin):
     pass
 
 
-class MF(HolidaysMF):
+class MF(SaintMartin):
     pass
 
 
-class MAF(HolidaysMF):
+class MAF(SaintMartin):
     pass

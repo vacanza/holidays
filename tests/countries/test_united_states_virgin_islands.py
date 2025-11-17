@@ -12,25 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.united_states_virgin_islands import (
-    HolidaysVI,
-    UnitedStatesVirginIslands,
-    VI,
-    VIR,
-)
+from holidays.countries.united_states_virgin_islands import UnitedStatesVirginIslands
 from tests.common import CommonCountryTests
 
 
 class TestVI(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysVI)
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysVI, UnitedStatesVirginIslands, VI, VIR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(HolidaysVI(years=1917))
+        super().setUpClass(UnitedStatesVirginIslands)
 
     def test_vi_only(self):
         """Check for a holiday that is not returned by US unless the

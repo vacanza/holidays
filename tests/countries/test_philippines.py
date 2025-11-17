@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import WORKDAY
-from holidays.countries.philippines import Philippines, PH, PHL
+from holidays.countries.philippines import Philippines
 from tests.common import CommonCountryTests
 
 
@@ -25,11 +25,9 @@ class TestPhilippines(CommonCountryTests, TestCase):
             years=range(1988, 2050), islamic_show_estimated=False
         )
 
-    def test_country_aliases(self):
-        self.assertAliases(Philippines, PH, PHL)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Philippines(years=1987))
+        super().test_no_holidays()
+
         self.assertNoHolidays(Philippines(years=2008, categories=WORKDAY))
 
     def test_special_holidays(self):

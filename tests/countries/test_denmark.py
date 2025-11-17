@@ -12,23 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.constants import OPTIONAL
-from holidays.countries.denmark import Denmark, DK, DNK
+from holidays.countries.denmark import Denmark
 from tests.common import CommonCountryTests
 
 
 class TestDenmark(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(1771, 2050)
-        super().setUpClass(Denmark, years=cls.full_range)
-        cls.optional_holidays = Denmark(categories=OPTIONAL, years=cls.full_range)
-
-    def test_country_aliases(self):
-        self.assertAliases(Denmark, DK, DNK)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Denmark(categories=Denmark.supported_categories, years=1770))
+        super().setUpClass(Denmark)
 
     def test_new_years_day(self):
         self.assertHolidayName("Nytårsdag", (f"{year}-01-01" for year in self.full_range))
@@ -88,10 +79,10 @@ class TestDenmark(CommonCountryTests, TestCase):
     def test_workers_day(self):
         name = "Arbejdernes kampdag"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-05-01" for year in range(1890, 2050))
+        self.assertOptionalHolidayName(
+            name, (f"{year}-05-01" for year in range(1890, self.end_year))
         )
-        self.assertNoHolidayName(name, self.optional_holidays, range(1771, 1890))
+        self.assertNoOptionalHolidayName(name, range(self.start_year, 1890))
 
     def test_great_day_of_prayers(self):
         name = "Store bededag"
@@ -102,8 +93,8 @@ class TestDenmark(CommonCountryTests, TestCase):
             "2022-05-13",
             "2023-05-05",
         )
-        self.assertHolidayName(name, range(1771, 2024))
-        self.assertNoHolidayName(name, range(2024, 2050))
+        self.assertHolidayName(name, range(self.start_year, 2024))
+        self.assertNoHolidayName(name, range(2024, self.end_year))
 
     def test_ascension_day(self):
         name = "Kristi himmelfartsdag"
@@ -147,17 +138,15 @@ class TestDenmark(CommonCountryTests, TestCase):
     def test_constitution_day(self):
         name = "Grundlovsdag"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-06-05" for year in range(1891, 2050))
+        self.assertOptionalHolidayName(
+            name, (f"{year}-06-05" for year in range(1891, self.end_year))
         )
-        self.assertNoHolidayName(name, self.optional_holidays, range(1771, 1891))
+        self.assertNoOptionalHolidayName(name, range(self.start_year, 1891))
 
     def test_christmas_eve(self):
         name = "Juleaftensdag"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-12-24" for year in self.full_range)
-        )
+        self.assertOptionalHolidayName(name, (f"{year}-12-24" for year in self.full_range))
 
     def test_christmas_day(self):
         self.assertHolidayName("Juledag", (f"{year}-12-25" for year in self.full_range))
@@ -168,9 +157,7 @@ class TestDenmark(CommonCountryTests, TestCase):
     def test_new_years_eve(self):
         name = "Nytårsaften"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-12-31" for year in self.full_range)
-        )
+        self.assertOptionalHolidayName(name, (f"{year}-12-31" for year in self.full_range))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

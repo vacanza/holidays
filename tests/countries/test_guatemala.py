@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.guatemala import Guatemala, GT, GUA
+from holidays.countries.guatemala import Guatemala
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestGuatemala(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Guatemala)
-
-    def test_country_aliases(self):
-        self.assertAliases(Guatemala, GT, GUA)
 
     def test_2016(self):
         # https://calendariohispanohablante.com/2016/calendario-guatemala-2016.html

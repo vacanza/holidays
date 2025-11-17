@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import UNOFFICIAL, WORKDAY
-from holidays.countries.finland import Finland, FI, FIN
+from holidays.countries.finland import Finland
 from tests.common import CommonCountryTests
 
 
@@ -25,11 +25,9 @@ class TestFinland(CommonCountryTests, TestCase):
         cls.unofficial_holidays = Finland(categories=UNOFFICIAL, years=years)
         cls.workday_holidays = Finland(categories=WORKDAY, years=years)
 
-    def test_country_aliases(self):
-        self.assertAliases(Finland, FI, FIN)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Finland(years=1852))
+        super().test_no_holidays()
+
         self.assertNoHolidays(Finland(years=1918, categories=WORKDAY))
         self.assertNoHolidays(Finland(years=1949, categories=UNOFFICIAL))
 

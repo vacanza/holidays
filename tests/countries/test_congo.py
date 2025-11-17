@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.congo import Congo, CG, COG
+from holidays.countries.congo import Congo
 from tests.common import CommonCountryTests
 
 
@@ -21,25 +21,74 @@ class TestCongo(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Congo)
 
-    def test_country_aliases(self):
-        self.assertAliases(Congo, CG, COG)
+    def test_new_years_day(self):
+        self.assertHolidayName("Jour de l'An", (f"{year}-01-01" for year in self.full_range))
 
-    def test_no_holidays(self):
-        self.assertNoHolidays(Congo(years=1993))
+    def test_easter_monday(self):
+        name = "Lundi de Pâques"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_labor_day(self):
+        self.assertHolidayName("Fête du Travail", (f"{year}-05-01" for year in self.full_range))
+
+    def test_ascension_day(self):
+        name = "Ascension"
+        self.assertHolidayName(
+            name,
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_whit_monday(self):
+        name = "Lundi de Pentecôte"
+        self.assertHolidayName(
+            name,
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_reconciliation_day(self):
+        self.assertHolidayName(
+            "Fête de la Réconciliation", (f"{year}-06-10" for year in self.full_range)
+        )
+
+    def test_national_day(self):
+        self.assertHolidayName("Fête Nationale", (f"{year}-08-15" for year in self.full_range))
+
+    def test_all_saints_day(self):
+        self.assertHolidayName("Toussaint", (f"{year}-11-01" for year in self.full_range))
 
     def test_republic_day(self):
-        self.assertHoliday(
-            "2010-11-28",
-            "2015-11-28",
-            "2016-11-28",
-            "2017-11-28",
-            "2024-11-28",
-        )
-        self.assertNoHolidayName("Jour de la République", 2009)
+        name = "Jour de la République"
+        self.assertHolidayName(name, (f"{year}-11-28" for year in range(2010, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2010))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Noël", (f"{year}-12-25" for year in self.full_range))
 
     def test_2006(self):
         # http://mokili.free.fr/jours_feries.php
         self.assertHolidays(
+            Congo(years=2006),
             ("2006-01-01", "Jour de l'An"),
             ("2006-04-17", "Lundi de Pâques"),
             ("2006-05-01", "Fête du Travail"),
@@ -54,6 +103,7 @@ class TestCongo(CommonCountryTests, TestCase):
     def test_2010(self):
         # http://mokili.free.fr/jours_feries.php
         self.assertHolidays(
+            Congo(years=2010),
             ("2010-01-01", "Jour de l'An"),
             ("2010-04-05", "Lundi de Pâques"),
             ("2010-05-01", "Fête du Travail"),
@@ -69,6 +119,7 @@ class TestCongo(CommonCountryTests, TestCase):
     def test_2015(self):
         # http://mokili.free.fr/jours_feries.php
         self.assertHolidays(
+            Congo(years=2015),
             ("2015-01-01", "Jour de l'An"),
             ("2015-04-06", "Lundi de Pâques"),
             ("2015-05-01", "Fête du Travail"),
@@ -84,6 +135,7 @@ class TestCongo(CommonCountryTests, TestCase):
     def test_2016(self):
         # http://mokili.free.fr/jours_feries.php
         self.assertHolidays(
+            Congo(years=2016),
             ("2016-01-01", "Jour de l'An"),
             ("2016-03-28", "Lundi de Pâques"),
             ("2016-05-01", "Fête du Travail"),
@@ -99,6 +151,7 @@ class TestCongo(CommonCountryTests, TestCase):
     def test_2017(self):
         # http://mokili.free.fr/jours_feries.php
         self.assertHolidays(
+            Congo(years=2017),
             ("2017-01-01", "Jour de l'An"),
             ("2017-04-17", "Lundi de Pâques"),
             ("2017-05-01", "Fête du Travail"),

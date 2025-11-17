@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.saudi_arabia import SaudiArabia, SA, SAU
+from holidays.countries.saudi_arabia import SaudiArabia
 from tests.common import CommonCountryTests
 
 
@@ -21,9 +21,6 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1950, 2050)
         super().setUpClass(SaudiArabia, years=years, years_non_observed=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(SaudiArabia, SA, SAU)
 
     def test_special_holidays(self):
         self.assertHoliday("2022-11-23")

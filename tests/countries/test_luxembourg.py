@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import BANK
-from holidays.countries.luxembourg import Luxembourg, LU, LUX
+from holidays.countries.luxembourg import Luxembourg
 from tests.common import CommonCountryTests
 
 
@@ -22,11 +22,9 @@ class TestLuxembourg(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Luxembourg)
 
-    def test_country_aliases(self):
-        self.assertAliases(Luxembourg, LU, LUX)
-
     def test_2018(self):
         self.assertHolidays(
+            Luxembourg(years=2018),
             ("2018-01-01", "Neijoerschdag"),
             ("2018-04-02", "Ouschterméindeg"),
             ("2018-05-01", "Dag vun der Aarbecht"),
@@ -49,6 +47,7 @@ class TestLuxembourg(CommonCountryTests, TestCase):
 
     def test_2019(self):
         self.assertHolidays(
+            Luxembourg(years=2019),
             ("2019-01-01", "Neijoerschdag"),
             ("2019-04-22", "Ouschterméindeg"),
             ("2019-05-01", "Dag vun der Aarbecht"),
@@ -72,6 +71,7 @@ class TestLuxembourg(CommonCountryTests, TestCase):
 
     def test_2020(self):
         self.assertHolidays(
+            Luxembourg(years=2020),
             ("2020-01-01", "Neijoerschdag"),
             ("2020-04-13", "Ouschterméindeg"),
             ("2020-05-01", "Dag vun der Aarbecht"),

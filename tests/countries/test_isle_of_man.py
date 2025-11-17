@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.isle_of_man import IsleOfMan, IM, IMN
+from holidays.countries.isle_of_man import IsleOfMan
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestIM(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(IsleOfMan, years=range(1970, 2070))
-
-    def test_country_aliases(self):
-        self.assertAliases(IsleOfMan, IM, IMN)
 
     def test_1970(self):
         self.assertHolidays(

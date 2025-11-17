@@ -12,29 +12,18 @@
 
 from unittest import TestCase
 
-from holidays.countries.french_southern_territories import (
-    HolidaysTF,
-    FrenchSouthernTerritories,
-    TF,
-    ATF,
-)
+from holidays.countries.french_southern_territories import FrenchSouthernTerritories
 from tests.common import CommonCountryTests
 
 
 class TestFrenchSouthernTerritories(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysTF, years=range(1956, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysTF, FrenchSouthernTerritories, TF, ATF)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(FrenchSouthernTerritories(years=1955))
+        super().setUpClass(FrenchSouthernTerritories)
 
     def test_2024(self):
         self.assertHolidays(
-            HolidaysTF(years=2024),
+            FrenchSouthernTerritories(years=2024),
             ("2024-01-01", "Jour de l'an"),
             ("2024-04-01", "Lundi de Pâques"),
             ("2024-05-01", "Fête du Travail"),

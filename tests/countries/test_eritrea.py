@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import GOVERNMENT
-from holidays.countries.eritrea import Eritrea, ER, ERI
+from holidays.countries.eritrea import Eritrea
 from tests.common import CommonCountryTests
 
 
@@ -24,12 +24,6 @@ class TestEritrea(CommonCountryTests, TestCase):
         super().setUpClass(Eritrea, years=years)
         cls.government_holidays = Eritrea(categories=GOVERNMENT, years=years)
         cls.no_estimated_holidays = Eritrea(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Eritrea, ER, ERI)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Eritrea(categories=Eritrea.supported_categories, years=1993))
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1994, 2050)))

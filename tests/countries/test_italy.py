@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.italy import Italy, IT, ITA
+from holidays.countries.italy import Italy
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestItaly(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Italy, years=range(1946, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Italy, IT, ITA)
 
     def test_new_years_day(self):
         self.assertHolidayName("Capodanno", (f"{year}-01-01" for year in range(1946, 2050)))

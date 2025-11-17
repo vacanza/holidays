@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.malta import Malta, MT, MLT
+from holidays.countries.malta import Malta
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestMalta(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Malta)
-
-    def test_country_aliases(self):
-        self.assertAliases(Malta, MT, MLT)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Malta(years=1979))
 
     def test_1980(self):
         self.assertHolidays(

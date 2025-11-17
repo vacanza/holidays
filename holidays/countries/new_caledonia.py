@@ -14,7 +14,7 @@ from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysNC(ChildEntity, France):
+class NewCaledonia(ChildEntity, France):
     """New Caledonia holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -31,13 +31,13 @@ class HolidaysNC(ChildEntity, France):
     start_year = 1854
 
 
-class NewCaledonia(HolidaysNC):
+class HolidaysNC(NewCaledonia):
     pass
 
 
-class NC(HolidaysNC):
+class NC(NewCaledonia):
     pass
 
 
-class NCL(HolidaysNC):
+class NCL(NewCaledonia):
     pass

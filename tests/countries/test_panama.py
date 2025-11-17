@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import BANK, PUBLIC
-from holidays.countries.panama import Panama, PA, PAN
+from holidays.countries.panama import Panama
 from tests.common import CommonCountryTests
 
 
@@ -23,12 +23,6 @@ class TestPanama(CommonCountryTests, TestCase):
         years = range(1948, 2050)
         super().setUpClass(Panama, years=years, years_non_observed=range(2000, 2025))
         cls.bank_holidays = Panama(categories=BANK, years=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(Panama, PA, PAN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Panama(categories=(BANK, PUBLIC), years=1947))
 
     def test_special_holidays(self):
         self.assertHoliday(

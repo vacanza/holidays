@@ -12,8 +12,8 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC
-from holidays.countries.united_arab_emirates import UnitedArabEmirates, AE, ARE
+from holidays.constants import GOVERNMENT, OPTIONAL
+from holidays.countries.united_arab_emirates import UnitedArabEmirates
 from tests.common import CommonCountryTests
 
 
@@ -23,14 +23,6 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
         super().setUpClass(UnitedArabEmirates, years=range(1972, 2050))
         cls.no_estimated_holidays = UnitedArabEmirates(
             years=range(1972, 2050), islamic_show_estimated=False
-        )
-
-    def test_country_aliases(self):
-        self.assertAliases(UnitedArabEmirates, AE, ARE)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            UnitedArabEmirates(years=1971, categories=(GOVERNMENT, OPTIONAL, PUBLIC))
         )
 
     def test_special(self):

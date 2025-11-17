@@ -14,7 +14,7 @@ from holidays.countries.united_states import UnitedStates
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysAS(ChildEntity, UnitedStates):
+class AmericanSamoa(ChildEntity, UnitedStates):
     """American Samoa holidays.
 
     Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
@@ -27,13 +27,13 @@ class HolidaysAS(ChildEntity, UnitedStates):
     start_year = 1901
 
 
-class AmericanSamoa(HolidaysAS):
+class HolidaysAS(AmericanSamoa):
     pass
 
 
-class AS(HolidaysAS):
+class AS(AmericanSamoa):
     pass
 
 
-class ASM(HolidaysAS):
+class ASM(AmericanSamoa):
     pass

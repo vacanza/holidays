@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import ARMED_FORCES, HALF_DAY, PUBLIC
-from holidays.countries.palau import Palau, PW, PLW
+from holidays.countries.palau import Palau
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestPalau(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Palau, years=range(1981, 2040), years_non_observed=range(1981, 2040))
-
-    def test_country_aliases(self):
-        self.assertAliases(Palau, PW, PLW)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Palau(years=1980))
 
     def test_special_holidays(self):
         self.assertHoliday(

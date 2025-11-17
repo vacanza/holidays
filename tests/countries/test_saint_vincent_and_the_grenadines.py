@@ -14,8 +14,6 @@ from unittest import TestCase
 
 from holidays.countries.saint_vincent_and_the_grenadines import (
     SaintVincentAndTheGrenadines,
-    VC,
-    VCT,
 )
 from tests.common import CommonCountryTests
 
@@ -25,12 +23,6 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1979, 2050)
         super().setUpClass(SaintVincentAndTheGrenadines, years=years, years_non_observed=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(SaintVincentAndTheGrenadines, VC, VCT)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(SaintVincentAndTheGrenadines(years=1978))
 
     def test_special_holidays(self):
         self.assertHolidayName("Public Health Holiday", "2021-01-22", "2021-01-25")

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.suriname import Suriname, SR, SUR
+from holidays.countries.suriname import Suriname
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestSuriname(CommonCountryTests, TestCase):
         years = range(1972, 2050)
         super().setUpClass(Suriname, years=years)
         cls.no_estimated_holidays = Suriname(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Suriname, SR, SUR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Suriname(years=1971))
 
     def test_new_years_day(self):
         self.assertHolidayName("Nieuwjaarsdag", (f"{year}-01-01" for year in range(1972, 2050)))

@@ -12,8 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import BANK, GOVERNMENT, WORKDAY
-from holidays.countries.sri_lanka import SriLanka, LK, LKA
+from holidays.countries.sri_lanka import SriLanka
 from tests.common import CommonCountryTests
 
 
@@ -21,15 +20,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(2003, 2027)
-        super().setUpClass(SriLanka, years=cls.full_range)
-
-    def test_country_aliases(self):
-        self.assertAliases(SriLanka, LK, LKA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            SriLanka(categories=SriLanka.supported_categories, years=(2002, 2027))
-        )
+        super().setUpClass(SriLanka)
 
     def test_special(self):
         self.assertHoliday(
@@ -96,7 +87,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2021-04-30",
             "2021-12-24",
         )
-        self.assertHoliday(SriLanka(categories=BANK), dt, dt_half)
+        self.assertBankHoliday(dt, dt_half)
 
     def test_special_government(self):
         # 2020 Covid Lockdowns
@@ -105,8 +96,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
         # https://www.adaderana.lk/news.php?nid=82979
         # https://www.adaderana.lk/news.php?nid=83082
         # https://www.adaderana.lk/news.php?nid=84035
-        self.assertHoliday(
-            SriLanka(categories=GOVERNMENT),
+        self.assertGovernmentHoliday(
             "2020-06-04",
             "2022-06-13",
             "2022-06-17",
@@ -120,7 +110,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
 
     def test_special_workday(self):
         # 2003 Deepavali.
-        self.assertHoliday(SriLanka(categories=WORKDAY), "2003-10-24")
+        self.assertWorkdayHoliday("2003-10-24")
 
     def test_tamil_thai_pongal_day(self):
         name = "දෙමළ තෛපොංැලල් දිනය"
@@ -181,7 +171,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2024-10-31",
             "2025-10-20",
         )
-        self.assertHolidayName(name, range(2004, 2027))
+        self.assertHolidayName(name, range(2004, self.end_year))
         self.assertNoHolidayName(name, 2003)
 
     def test_maha_sivarathri(self):
@@ -211,7 +201,9 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2024-01-25",
             "2025-01-13",
         )
-        self.assertHolidayNameCount(name, 1, range(2003, 2009), range(2011, 2027))
+        self.assertHolidayNameCount(
+            name, 1, range(self.start_year, 2009), range(2011, self.end_year)
+        )
         self.assertHolidayNameCount(name, 2, 2009)
 
     def test_nawam_full_moon_poya_day(self):

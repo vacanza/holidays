@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.equatorial_guinea import EquatorialGuinea, GQ, GNQ
+from holidays.countries.equatorial_guinea import EquatorialGuinea
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(2007, 2050)
         super().setUpClass(EquatorialGuinea, years=years, years_non_observed=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(EquatorialGuinea, GQ, GNQ)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(EquatorialGuinea(years=2006))
 
     def test_special_holidays(self):
         self.assertHoliday(
