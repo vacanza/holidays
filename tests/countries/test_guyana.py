@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.guyana import Guyana, GY, GUY
+from holidays.countries.guyana import Guyana
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestGuyana(CommonCountryTests, TestCase):
         years = range(1968, 2050)
         super().setUpClass(Guyana, years=years, years_non_observed=years)
         cls.no_estimated_holidays = Guyana(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Guyana, GY, GUY)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Guyana(years=1967))
 
     def test_special_holidays(self):
         self.assertHolidayName("Public Holiday", "2020-03-02")

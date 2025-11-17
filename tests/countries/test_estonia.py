@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.estonia import Estonia, EE, EST
+from holidays.countries.estonia import Estonia
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestEstonia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Estonia, years=range(1990, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Estonia, EE, EST)
 
     def test_new_years(self):
         self.assertHolidayName("uusaasta", (f"{year}-01-01" for year in range(1990, 2050)))

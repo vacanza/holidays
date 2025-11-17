@@ -12,8 +12,8 @@
 
 from unittest import TestCase
 
-from holidays.constants import PUBLIC, WORKDAY
-from holidays.countries.nepal import Nepal, NP, NPL
+from holidays.constants import WORKDAY
+from holidays.countries.nepal import Nepal
 from tests.common import CommonCountryTests
 
 
@@ -24,12 +24,6 @@ class TestNepal(CommonCountryTests, TestCase):
         super().setUpClass(Nepal, years=years)
         cls.no_estimated_holidays = Nepal(years=years, islamic_show_estimated=False)
         cls.workday_holidays = Nepal(categories=WORKDAY, years=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(Nepal, NP, NPL)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Nepal(years=2009, categories=(PUBLIC, WORKDAY)))
 
     def test_special_holidays(self):
         name_day_of_national_mourning = "Day of National Mourning"

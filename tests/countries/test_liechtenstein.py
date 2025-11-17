@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import BANK
-from holidays.countries.liechtenstein import Liechtenstein, LI, LIE
+from holidays.countries.liechtenstein import Liechtenstein
 from tests.common import CommonCountryTests
 
 
@@ -23,9 +23,6 @@ class TestLiechtenstein(CommonCountryTests, TestCase):
         years = range(1901, 2050)
         super().setUpClass(Liechtenstein, years=years)
         cls.bank_holidays = Liechtenstein(categories=BANK, years=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(Liechtenstein, LI, LIE)
 
     def test_new_years(self):
         self.assertHolidayName("Neujahr", (f"{year}-01-01" for year in range(1901, 2050)))

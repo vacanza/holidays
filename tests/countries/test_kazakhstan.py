@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.kazakhstan import Kazakhstan, KZ, KAZ
+from holidays.countries.kazakhstan import Kazakhstan
 from tests.common import CommonCountryTests, WorkingDayTests
 
 
@@ -22,12 +22,6 @@ class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
         years = range(1991, 2050)
         super().setUpClass(Kazakhstan, years=years, years_non_observed=years)
         cls.no_estimated_holidays = Kazakhstan(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Kazakhstan, KZ, KAZ)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Kazakhstan(years=1990))
 
     def test_substituted_holidays(self):
         self.assertHoliday(

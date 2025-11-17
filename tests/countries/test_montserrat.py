@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.montserrat import Montserrat, MS, MSR
+from holidays.countries.montserrat import Montserrat
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestMontserrat(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(2017, 2050)
         super().setUpClass(Montserrat, years=years, years_non_observed=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(Montserrat, MS, MSR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Montserrat(years=2016))
 
     def test_special_holidays(self):
         self.assertHolidayName(

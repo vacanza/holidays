@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import GOVERNMENT, PUBLIC, WORKDAY
-from holidays.countries.timor_leste import TimorLeste, TL, TLS
+from holidays.countries.timor_leste import TimorLeste
 from tests.common import CommonCountryTests
 
 
@@ -22,11 +22,9 @@ class TestTimorLeste(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(TimorLeste, years=range(2006, 2050))
 
-    def test_country_aliases(self):
-        self.assertAliases(TimorLeste, TL, TLS)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(TimorLeste(years=2005))
+        super().test_no_holidays()
+
         self.assertNoHolidays(TimorLeste(years=2005, categories=(GOVERNMENT, WORKDAY)))
 
     def test_special_government_holidays(self):

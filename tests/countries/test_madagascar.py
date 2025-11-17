@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.madagascar import Madagascar, MG, MDG
+from holidays.countries.madagascar import Madagascar
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestMadagascar(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Madagascar, years=range(1947, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Madagascar, MG, MDG)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Madagascar(years=1946))
 
     def test_new_years(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1947, 2050))

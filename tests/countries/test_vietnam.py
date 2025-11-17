@@ -14,7 +14,7 @@ from datetime import date
 from unittest import TestCase
 
 from holidays.calendars.gregorian import _timedelta
-from holidays.countries.vietnam import Vietnam, VN, VNM
+from holidays.countries.vietnam import Vietnam
 from tests.common import CommonCountryTests, WorkingDayTests
 
 
@@ -22,9 +22,6 @@ class TestVietnam(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Vietnam, years=range(1979, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Vietnam, VN, VNM)
 
     def test_substituted_holidays(self):
         self.assertHoliday(

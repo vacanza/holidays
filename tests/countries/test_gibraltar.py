@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.gibraltar import Gibraltar, GI, GIB
+from holidays.countries.gibraltar import Gibraltar
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestGibraltar(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(2000, 2050)
         super().setUpClass(Gibraltar, years=years, years_non_observed=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(Gibraltar, GI, GIB)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Gibraltar(years=1999))
 
     def test_special_holidays(self):
         for dt, name in (

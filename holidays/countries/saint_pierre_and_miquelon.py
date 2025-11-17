@@ -14,7 +14,7 @@ from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysPM(ChildEntity, France):
+class SaintPierreAndMiquelon(ChildEntity, France):
     """Saint Pierre and Miquelon holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -31,13 +31,13 @@ class HolidaysPM(ChildEntity, France):
     start_year = 1815
 
 
-class SaintPierreAndMiquelon(HolidaysPM):
+class HolidaysPM(SaintPierreAndMiquelon):
     pass
 
 
-class PM(HolidaysPM):
+class PM(SaintPierreAndMiquelon):
     pass
 
 
-class SPM(HolidaysPM):
+class SPM(SaintPierreAndMiquelon):
     pass

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.namibia import Namibia, NA, NAM
+from holidays.countries.namibia import Namibia
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestNamibia(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1991, 2050)
         super().setUpClass(Namibia, years=years, years_non_observed=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(Namibia, NA, NAM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Namibia(years=1990))
 
     def test_special_holidays(self):
         self.assertHoliday(

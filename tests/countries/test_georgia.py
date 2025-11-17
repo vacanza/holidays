@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.georgia import Georgia, GE, GEO
+from holidays.countries.georgia import Georgia
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestGeorgia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Georgia, years=range(1991, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Georgia, GE, GEO)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Georgia(years=1990))
 
     def test_special_holidays(self):
         self.assertHoliday(
