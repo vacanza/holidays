@@ -38,8 +38,8 @@ class MOGenerator:
         """Runs the .mo files generation process."""
         locale_path = Path("holidays/locale")
         with ProcessPoolExecutor() as executor:
-            executor.map(MOGenerator._unlink_file, locale_path.rglob("*.mo"))
-            executor.map(MOGenerator._convert_po_to_mo, locale_path.rglob("*.po"))
+            list(executor.map(MOGenerator._unlink_file, locale_path.rglob("*.mo")))
+            list(executor.map(MOGenerator._convert_po_to_mo, locale_path.rglob("*.po")))
 
 
 if __name__ == "__main__":

@@ -123,10 +123,11 @@ class POGenerator:
 
         all_po_update_tasks: list[tuple[str, str, str]] = []
         with ProcessPoolExecutor() as executor:
-            results = executor.map(self._process_entity_worker, entity_code_info_mapping.items())
-            for po_tasks in results:
+            for po_tasks in executor.map(
+                self._process_entity_worker, entity_code_info_mapping.items()
+            ):
                 all_po_update_tasks.extend(po_tasks)
-            executor.map(POGenerator._update_po_file, all_po_update_tasks)
+            list(executor.map(POGenerator._update_po_file, all_po_update_tasks))
 
     @staticmethod
     def run():
