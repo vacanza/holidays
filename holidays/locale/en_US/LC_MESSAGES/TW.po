@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.86\n"
 "POT-Creation-Date: 2023-11-24 16:16+0700\n"
 "PO-Revision-Date: 2025-09-07 14:05+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -168,5 +168,5 @@ msgstr "%m/%d/%Y"
 
 #. Day off (substituted from %s).
 #, c-format
-msgid "休息日（%s日起取代）"
+msgid "放假日（%s 補班）"
 msgstr "Day off (substituted from %s)"
