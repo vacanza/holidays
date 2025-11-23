@@ -32,7 +32,6 @@ from holidays.calendars.gregorian import (
     FRI,
     SAT,
     SUN,
-    _get_nth_weekday_of_month,
 )
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
@@ -100,12 +99,8 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         # 1998–2000: Sundays as well as the 2nd & 4th Saturday of each month.
         if dt.year <= 2000:
             weekend = {SUN}
-            if dt.weekday() == SAT:
-                if dt in {
-                    _get_nth_weekday_of_month(2, SAT, dt.month, dt.year),  # 2nd Saturday.
-                    _get_nth_weekday_of_month(4, SAT, dt.month, dt.year),  # 4th Saturday.
-                }:
-                    weekend.add(SAT)
+            if dt.weekday() == SAT and (8 <= dt.day <= 14 or 22 <= dt.day <= 28):
+                weekend.add(SAT)
         else:
             weekend = {SAT, SUN}
 
