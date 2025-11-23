@@ -509,7 +509,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
 
     def _populate_subdiv_br_public_holidays(self):
         # Saint Theodore of Amasea and Saint Lawrence of Brindisi's Day.
-        self._add_holiday_1st_sun_of_sep(tr("San Teodoro d’Amasea e San Lorenzo da Brindisi"))
+        self._add_holiday_1st_sun_of_sep(tr("San Teodoro d'Amasea e San Lorenzo da Brindisi"))
 
     def _populate_subdiv_bs_public_holidays(self):
         # Saints Faustinus and Jovita's Day.

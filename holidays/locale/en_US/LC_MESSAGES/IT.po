@@ -179,8 +179,8 @@ msgid "San Petronio"
 msgstr "Saint Petronius's Day"
 
 #. Saint Theodore of Amasea and Saint Lawrence of Brindisi's Day.
-msgid "San Teodoro d’Amasea e San Lorenzo da Brindisi"
-msgstr "Saint Lawrence of Brindisi's Day"
+msgid "San Teodoro d'Amasea e San Lorenzo da Brindisi"
+msgstr "Saint Theodore of Amasea and Saint Lawrence of Brindisi's Day"
 
 #. Saints Faustinus and Jovita's Day.
 msgid "Santi Faustino e Giovita"
