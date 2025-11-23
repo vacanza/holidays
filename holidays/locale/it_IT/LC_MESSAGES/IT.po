@@ -143,11 +143,11 @@ msgid "Sant'Emidio"
 msgstr ""
 
 #. Saint Maximus of Aveia's Day.
-msgid "San Massimo D'Aveia"
+msgid "San Massimo d'Aveia"
 msgstr ""
 
 #. Saint Donatus of Arezzo's Day.
-msgid "San Donato D'Arezzo"
+msgid "San Donato d'Arezzo"
 msgstr ""
 
 #. Saint Secundus of Asti's Day.

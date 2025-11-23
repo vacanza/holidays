@@ -469,11 +469,11 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
 
     def _populate_subdiv_aq_public_holidays(self):
         # Saint Maximus of Aveia's Day.
-        self._add_holiday_jun_10(tr("San Massimo D'Aveia"))
+        self._add_holiday_jun_10(tr("San Massimo d'Aveia"))
 
     def _populate_subdiv_ar_public_holidays(self):
         # Saint Donatus of Arezzo's Day.
-        self._add_holiday_aug_7(tr("San Donato D'Arezzo"))
+        self._add_holiday_aug_7(tr("San Donato d'Arezzo"))
 
     def _populate_subdiv_at_public_holidays(self):
         # Saint Secundus of Asti's Day.
