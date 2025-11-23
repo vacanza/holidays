@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays import OPTIONAL
-from holidays.countries.niger import Niger, NE, NER
+from holidays.countries.niger import Niger
 from tests.common import CommonCountryTests
 
 
@@ -27,12 +27,6 @@ class TestNiger(CommonCountryTests, TestCase):
         cls.optional_holidays_non_observed = Niger(
             categories=OPTIONAL, years=years, observed=False
         )
-
-    def test_country_aliases(self):
-        self.assertAliases(Niger, NE, NER)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Niger(years=1959))
 
     def test_new_years_day(self):
         name = "Jour de l'An"

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.kuwait import Kuwait, KW, KWT
+from holidays.countries.kuwait import Kuwait
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestKuwait(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Kuwait)
-
-    def test_country_aliases(self):
-        self.assertAliases(Kuwait, KW, KWT)
 
     def test_2022(self):
         self.assertHolidays(

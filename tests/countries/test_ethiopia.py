@@ -12,8 +12,8 @@
 
 from unittest import TestCase
 
-from holidays.constants import PUBLIC, WORKDAY
-from holidays.countries.ethiopia import Ethiopia, ET, ETH
+from holidays.constants import WORKDAY
+from holidays.countries.ethiopia import Ethiopia
 from tests.common import CommonCountryTests
 
 
@@ -24,12 +24,6 @@ class TestEthiopia(CommonCountryTests, TestCase):
         super().setUpClass(Ethiopia, years=years)
         cls.no_estimated_holidays = Ethiopia(years=years, islamic_show_estimated=False)
         cls.workday_holidays = Ethiopia(categories=WORKDAY, years=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(Ethiopia, ET, ETH)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Ethiopia(years=1975, categories=(PUBLIC, WORKDAY)))
 
     def test_christmas_day(self):
         self.assertHolidayName("የገና ወይም የልደት በዓል", (f"{year}-01-07" for year in range(1976, 2050)))

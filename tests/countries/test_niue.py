@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.niue import Niue, NU, NIU
+from holidays.countries.niue import Niue
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestNiue(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1962, 2050)
         super().setUpClass(Niue, years=years, years_non_observed=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(Niue, NU, NIU)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Niue(years=1961))
 
     def test_special_holidays(self):
         self.assertHoliday(

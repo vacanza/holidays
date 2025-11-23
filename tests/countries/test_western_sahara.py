@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.western_sahara import WesternSahara, EH, ESH
+from holidays.countries.western_sahara import WesternSahara
 from tests.common import CommonCountryTests
 
 
@@ -24,12 +24,6 @@ class TestWesternSahara(CommonCountryTests, TestCase):
         cls.no_estimated_holidays = WesternSahara(
             years=cls.full_range, islamic_show_estimated=False
         )
-
-    def test_country_aliases(self):
-        self.assertAliases(WesternSahara, EH, ESH)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(WesternSahara(years=1999))
 
     def test_proclamation_of_the_sadr(self):
         self.assertHolidayName(

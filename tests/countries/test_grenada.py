@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.grenada import Grenada, GD, GRD
+from holidays.countries.grenada import Grenada
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestGrenada(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(2000, 2050)
         super().setUpClass(Grenada, years=years, years_non_observed=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(Grenada, GD, GRD)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Grenada(years=1999))
 
     def test_special_holidays(self):
         self.assertHoliday(

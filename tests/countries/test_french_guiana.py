@@ -12,29 +12,23 @@
 
 from unittest import TestCase
 
-from holidays.countries.french_guiana import HolidaysGF, FrenchGuiana, GF, GUF
+from holidays.countries.french_guiana import FrenchGuiana
 from tests.common import CommonCountryTests
 
 
 class TestFrenchGuiana(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysGF, years=range(1815, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysGF, FrenchGuiana, GF, GUF)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(FrenchGuiana(years=1814))
+        super().setUpClass(FrenchGuiana)
 
     def test_abolition_of_slavery(self):
         name = "Abolition de l'esclavage"
-        self.assertHolidayName(name, (f"{year}-06-10" for year in range(1984, 2050)))
-        self.assertNoHolidayName(name, range(1815, 1984))
+        self.assertHolidayName(name, (f"{year}-06-10" for year in range(1984, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1984))
 
     def test_2024(self):
         self.assertHolidays(
-            HolidaysGF(years=2024),
+            FrenchGuiana(years=2024),
             ("2024-01-01", "Jour de l'an"),
             ("2024-04-01", "Lundi de Pâques"),
             ("2024-05-01", "Fête du Travail"),

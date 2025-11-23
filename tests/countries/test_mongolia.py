@@ -12,8 +12,8 @@
 
 from unittest import TestCase
 
-from holidays.constants import PUBLIC, WORKDAY
-from holidays.countries.mongolia import Mongolia, MN, MNG
+from holidays.constants import WORKDAY
+from holidays.countries.mongolia import Mongolia
 from tests.common import CommonCountryTests
 
 
@@ -23,12 +23,6 @@ class TestMongolia(CommonCountryTests, TestCase):
         years = range(2004, 2050)
         super().setUpClass(Mongolia, years=years)
         cls.workday_holidays = Mongolia(categories=WORKDAY, years=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(Mongolia, MN, MNG)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Mongolia(years=2003, categories=(PUBLIC, WORKDAY)))
 
     def test_new_years_day(self):
         self.assertHolidayName("Шинэ жил", (f"{year}-01-01" for year in range(2004, 2050)))

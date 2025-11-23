@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.saint_lucia import SaintLucia, LC, LCA
+from holidays.countries.saint_lucia import SaintLucia
 from tests.common import CommonCountryTests
 
 
@@ -22,9 +22,6 @@ class TestSaintLucia(CommonCountryTests, TestCase):
         super().setUpClass(
             SaintLucia, years=range(1979, 2050), years_non_observed=range(1979, 2050)
         )
-
-    def test_country_aliases(self):
-        self.assertAliases(SaintLucia, LC, LCA)
 
     def test_new_years(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1979, 2050)))

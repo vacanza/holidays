@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.lithuania import Lithuania, LT, LTU
+from holidays.countries.lithuania import Lithuania
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestLithuania(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Lithuania, years=range(1990, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Lithuania, LT, LTU)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Lithuania(years=1989))
 
     def test_new_years(self):
         self.assertHolidayName(

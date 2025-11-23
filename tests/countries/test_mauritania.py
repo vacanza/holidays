@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.mauritania import Mauritania, MR, MRT
+from holidays.countries.mauritania import Mauritania
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestMauritania(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Mauritania, years=range(1950, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Mauritania, MR, MRT)
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1950, 2050)))

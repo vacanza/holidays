@@ -348,7 +348,7 @@ class TaiwanStaticHolidays:
     substituted_date_format = tr("%Y-%m-%d")
 
     # Day off (substituted from %s).
-    substituted_label = tr("休息日（%s日起取代）")
+    substituted_label = tr("放假日（%s 補班）")
 
     # Women's Day.
     womens_day = tr("婦女節")

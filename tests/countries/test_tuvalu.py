@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.tuvalu import Tuvalu, TV, TUV
+from holidays.countries.tuvalu import Tuvalu
 from tests.common import CommonCountryTests
 
 
@@ -24,9 +24,6 @@ class TestTuvalu(CommonCountryTests, TestCase):
         cls.subdiv_holidays = {
             subdiv: Tuvalu(subdiv=subdiv, years=years) for subdiv in Tuvalu.subdivisions
         }
-
-    def test_country_aliases(self):
-        self.assertAliases(Tuvalu, TV, TUV)
 
     def test_new_years(self):
         name = "Tausaga Fou"

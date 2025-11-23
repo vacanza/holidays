@@ -14,7 +14,7 @@ import warnings
 from unittest import TestCase
 
 from holidays.constants import CATHOLIC
-from holidays.countries.germany import Germany, DE, DEU
+from holidays.countries.germany import Germany
 from tests.common import CommonCountryTests
 
 
@@ -22,17 +22,14 @@ class TestGermany(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1990, 2050)
-        super().setUpClass(DE, years=years)
+        super().setUpClass(Germany, years=years)
         cls.subdiv_holidays = {
-            subdiv: DE(subdiv=subdiv, years=years) for subdiv in DE.subdivisions
+            subdiv: Germany(subdiv=subdiv, years=years) for subdiv in Germany.subdivisions
         }
 
     def setUp(self):
         super().setUp()
         warnings.simplefilter("ignore", category=DeprecationWarning)
-
-    def test_country_aliases(self):
-        self.assertAliases(Germany, DE, DEU)
 
     def test_subdiv_deprecation(self):
         self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
@@ -44,12 +41,13 @@ class TestGermany(CommonCountryTests, TestCase):
         )
 
     def test_no_holidays(self):
-        self.assertNoHolidays(DE(years=1989))
-        for subdiv in DE.subdivisions:
-            self.assertNoHolidays(DE(years=1989, subdiv=subdiv))
+        super().test_no_holidays()
+
+        for subdiv in Germany.subdivisions:
+            self.assertNoHolidays(Germany(years=1989, subdiv=subdiv))
         # Bayern, Sachsen, Thüringen.
         for subdiv in ("BY", "SN", "TH"):
-            self.assertNoHolidays(DE(subdiv=subdiv, years=1990, categories=CATHOLIC))
+            self.assertNoHolidays(Germany(subdiv=subdiv, years=1990, categories=CATHOLIC))
 
     def test_special_holidays(self):
         # 2017's Reformation Day is tested in test_reformation_day.
@@ -244,7 +242,9 @@ class TestGermany(CommonCountryTests, TestCase):
 
         # Sachsen, Thüringen.
         for subdiv in ("SN", "TH"):
-            catholic_holidays = DE(subdiv=subdiv, categories=CATHOLIC, years=range(1991, 2050))
+            catholic_holidays = Germany(
+                subdiv=subdiv, categories=CATHOLIC, years=range(1991, 2050)
+            )
             self.assertHolidayName(name, catholic_holidays, dt)
             self.assertHolidayName(name, catholic_holidays, range(1991, 2050))
 
@@ -277,7 +277,7 @@ class TestGermany(CommonCountryTests, TestCase):
         # Bayern.
         self.assertHolidayName(
             name,
-            DE(subdiv="BY", categories=CATHOLIC, years=range(1991, 2050)),
+            Germany(subdiv="BY", categories=CATHOLIC, years=range(1991, 2050)),
             (f"{year}-08-15" for year in range(1991, 2050)),
         )
 

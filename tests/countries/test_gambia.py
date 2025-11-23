@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.gambia import Gambia, GM, GMB
+from holidays.countries.gambia import Gambia
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestGambia(CommonCountryTests, TestCase):
         years = range(1966, 2050)
         super().setUpClass(Gambia, years=years, years_non_observed=years)
         cls.no_estimated_holidays = Gambia(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Gambia, GM, GMB)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Gambia(years=1965))
 
     def test_new_years_day(self):
         name = "New Year's Day"

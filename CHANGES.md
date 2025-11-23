@@ -1,3 +1,19 @@
+# Version 0.85
+
+Released November 17, 2025
+
+- Refactor l10n scripts (#3063 by @PPsyrius, @arkid15r)
+- Refactor snapshots generator: ProcessPoolExecutor, UTF-8 support (#3062 by @PPsyrius)
+- Update Azerbaijan holidays in 2025 (#3060 by @KJhellico)
+- Update China holidays in 2026 (#3052 by @KJhellico)
+- Update Ecuador holidays: fix observance rules (#3049 by @PPsyrius)
+- Update National Stock Exchange of India holidays (#2888 by @saheelsapovadia, @KJhellico)
+- Update Thailand holidays: add 2026 Royal Ploughing Ceremony (#3044 by @PPsyrius)
+- Update Turkey holidays: add historical holidays (#3050 by @KJhellico)
+- Update United States holidays: add Native American Heritage Day in WA (#3045 by @waltdowning)
+- Centralize all per-file ignores to `pyproject.toml` (#3053 by @PPsyrius)
+- TestCase Syntactic Sugar Support (#2881 by @PPsyrius, @arkid15r)
+
 # Version 0.84
 
 Released November 3, 2025

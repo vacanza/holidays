@@ -12,20 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.guam import HolidaysGU, Guam, GU, GUM
+from holidays.countries.guam import Guam
 from tests.common import CommonCountryTests
 
 
 class TestGU(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysGU)
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysGU, Guam, GU, GUM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Guam(years=1899))
+        super().setUpClass(Guam)
 
     def test_gu_only(self):
         """Check for a holiday that is not returned by US unless the

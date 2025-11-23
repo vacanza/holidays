@@ -12,20 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.northern_mariana_islands import HolidaysMP, NorthernMarianaIslands, MP, MNP
+from holidays.countries.northern_mariana_islands import NorthernMarianaIslands
 from tests.common import CommonCountryTests
 
 
 class TestMP(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysMP)
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysMP, NorthernMarianaIslands, MP, MNP)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(HolidaysMP(years=1947))
+        super().setUpClass(NorthernMarianaIslands)
 
     def test_mp_only(self):
         """Check for a holiday that is not returned by US unless the

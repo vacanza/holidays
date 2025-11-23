@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.tokelau import Tokelau, TK, TKL
+from holidays.countries.tokelau import Tokelau
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestTokelau(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Tokelau, years=range(2003, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Tokelau, TK, TKL)
 
     def test_new_years(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(2003, 2050)))

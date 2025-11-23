@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.malawi import Malawi, MW, MWI
+from holidays.countries.malawi import Malawi
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestMalawi(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Malawi)
-
-    def test_country_aliases(self):
-        self.assertAliases(Malawi, MW, MWI)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Malawi(years=1999))
 
     def test_holidays(self):
         for year in range(2000, 2050):

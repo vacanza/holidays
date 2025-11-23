@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import SCHOOL, WORKDAY
-from holidays.countries.yemen import Yemen, YE, YEM
+from holidays.countries.yemen import Yemen
 from tests.common import CommonCountryTests
 
 
@@ -28,12 +28,6 @@ class TestYemen(CommonCountryTests, TestCase):
         cls.workday_no_estimated_holidays = Yemen(
             categories=WORKDAY, years=years, islamic_show_estimated=False
         )
-
-    def test_country_aliases(self):
-        self.assertAliases(Yemen, YE, YEM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Yemen(years=1990))
 
     def test_labor_day(self):
         name = "عيد العمال"

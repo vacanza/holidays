@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.papua_new_guinea import PapuaNewGuinea, PG, PNG
+from holidays.countries.papua_new_guinea import PapuaNewGuinea
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestPapuaNewGuinea(CommonCountryTests, TestCase):
         super().setUpClass(
             PapuaNewGuinea, years=range(1953, 2050), years_non_observed=range(1953, 2050)
         )
-
-    def test_country_aliases(self):
-        self.assertAliases(PapuaNewGuinea, PG, PNG)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(PapuaNewGuinea(years=1952))
 
     def test_special_holidays(self):
         dt = (

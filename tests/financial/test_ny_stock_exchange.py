@@ -13,24 +13,8 @@
 from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    WED,
-    SAT,
-    SUN,
-    _timedelta,
-)
-from holidays.financial.ny_stock_exchange import NewYorkStockExchange, XNYS, NYSE
+from holidays.calendars.gregorian import JAN, MAR, JUN, JUL, NOV, DEC, WED, SAT, SUN, _timedelta
+from holidays.financial.ny_stock_exchange import NewYorkStockExchange
 from tests.common import CommonFinancialTests
 
 
@@ -39,30 +23,19 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(NewYorkStockExchange)
 
-    def test_market_aliases(self):
-        self.assertAliases(NewYorkStockExchange, XNYS, NYSE)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(NewYorkStockExchange(years=1862))
-
     def test_new_years_day(self):
-        for dt in (
-            date(1900, JAN, 1),
-            date(1930, JAN, 1),
-            date(1950, JAN, 2),
-            date(1999, JAN, 1),
-            date(2010, JAN, 1),
-            date(2018, JAN, 1),
-            date(2019, JAN, 1),
-            date(2020, JAN, 1),
-            date(2021, JAN, 1),
-        ):
-            self.assertHoliday(dt)
-            self.assertNoHoliday(_timedelta(dt, -1))
-            self.assertNoHoliday(_timedelta(dt, +1))
-            self.assertNoHoliday(_timedelta(dt, +7))
+        name = "New Year's Day"
+        name_observed = f"{name} (observed)"
+        self.assertNonObservedHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        obs_dts = (
+            "2012-01-02",
+            "2017-01-02",
+            "2023-01-02",
+        )
+        self.assertHolidayName(name_observed, obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
-        # no observed on previous year Dec 31
+        # no observed on previous year Dec 31.
         for dt in (
             date(1994, JAN, 1),
             date(2000, JAN, 1),
@@ -70,194 +43,165 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(2011, JAN, 1),
             date(2022, JAN, 1),
         ):
-            self.assertNoHoliday(dt)
-            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHolidayName(name, dt)
+            self.assertNoHolidayName(name_observed, _timedelta(dt, -1))
 
     def test_martin_luther_king_jr_day(self):
-        for dt in (
-            date(1999, JAN, 18),
-            date(2000, JAN, 17),
-            date(2010, JAN, 18),
-            date(2018, JAN, 15),
-            date(2019, JAN, 21),
-            date(2020, JAN, 20),
-            date(2021, JAN, 18),
-            date(2022, JAN, 17),
-        ):
-            self.assertHoliday(dt)
-            self.assertNoHoliday(_timedelta(dt, -1))
-            self.assertNoHoliday(_timedelta(dt, +1))
-            self.assertNoHoliday(_timedelta(dt, +7))
-            self.assertNoHoliday(_timedelta(dt, -7))
-
-        self.assertNoHoliday("1997-01-20", "1985-01-21")
+        name = "Martin Luther King Jr. Day"
+        self.assertHolidayName(
+            name,
+            "2020-01-20",
+            "2021-01-18",
+            "2022-01-17",
+            "2023-01-16",
+            "2024-01-15",
+            "2025-01-20",
+        )
+        self.assertHolidayName(name, range(1998, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1998))
 
     def test_lincolns_birthday(self):
-        for dt in (
-            date(1900, FEB, 12),
-            date(1930, FEB, 12),
-            date(1953, FEB, 12),
-            date(1968, FEB, 12),
-        ):
-            self.assertHoliday(dt)
-            self.assertNoHoliday(_timedelta(dt, -1))
-            self.assertNoHoliday(_timedelta(dt, +1))
-            self.assertNoHoliday(_timedelta(dt, +7))
-            self.assertNoHoliday(_timedelta(dt, -7))
-
-        self.assertNoHoliday(
-            "1954-02-12",
-            "1967-02-10",
-            "1967-02-11",
-            "1967-02-12",
-            "1967-02-13",
-            "1969-02-12",
-            "2015-02-12",
+        name = "Lincoln's Birthday"
+        self.assertNonObservedHolidayName(
+            name,
+            (f"{year}-02-12" for year in range(1896, 1954)),
+            "1968-02-12",
         )
+        self.assertNoHolidayName(
+            name, range(self.start_year, 1896), range(1954, 1968), range(1969, self.end_year)
+        )
+        obs_dts = (
+            "1944-02-11",
+            "1949-02-11",
+            "1950-02-13",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_washingtons_birthday(self):
-        for dt in (
-            date(1900, FEB, 22),
-            date(1930, FEB, 21),
-            date(1950, FEB, 22),
-            date(1960, FEB, 22),
-            date(1965, FEB, 22),
-            date(1970, FEB, 23),
-            date(1971, FEB, 15),
-            date(1999, FEB, 15),
-            date(2000, FEB, 21),
-            date(2010, FEB, 15),
-            date(2018, FEB, 19),
-            date(2019, FEB, 18),
-            date(2020, FEB, 17),
-            date(2021, FEB, 15),
-            date(2022, FEB, 21),
-        ):
-            self.assertHoliday(dt)
-            self.assertNoHoliday(_timedelta(dt, -1))
-            self.assertNoHoliday(_timedelta(dt, +1))
-            self.assertNoHoliday(_timedelta(dt, +7))
-            self.assertNoHoliday(_timedelta(dt, -7))
+        name = "Washington's Birthday"
+        self.assertNonObservedHolidayName(
+            name, (f"{year}-02-22" for year in range(self.start_year, 1971))
+        )
+        self.assertHolidayName(
+            name,
+            "2020-02-17",
+            "2021-02-15",
+            "2022-02-21",
+            "2023-02-20",
+            "2024-02-19",
+            "2025-02-17",
+        )
+        self.assertHolidayName(name, range(1971, self.end_year))
+        obs_dts = (
+            "1964-02-21",
+            "1969-02-21",
+            "1970-02-23",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_good_friday(self):
-        for dt in (
-            date(1900, APR, 13),
-            date(1901, APR, 5),
-            date(1902, MAR, 28),
-            date(1999, APR, 2),
-            date(2000, APR, 21),
-            date(2010, APR, 2),
-            date(2018, MAR, 30),
-            date(2019, APR, 19),
-            date(2020, APR, 10),
-            date(2021, APR, 2),
-            date(2022, APR, 15),
-        ):
-            self.assertHoliday(dt)
-            self.assertNoHoliday(_timedelta(dt, -1))
-            self.assertNoHoliday(_timedelta(dt, +1))
-            self.assertNoHoliday(_timedelta(dt, +7))
-            self.assertNoHoliday(_timedelta(dt, -7))
+        name = "Good Friday"
+        years_absent = {1898, 1906, 1907}
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(
+            name, (year for year in self.full_range if year not in years_absent)
+        )
+        self.assertNoHolidayName(name, years_absent)
 
     def test_memorial_day(self):
-        for dt in (
-            date(1901, MAY, 30),
-            date(1902, MAY, 30),
-            date(1930, MAY, 30),
-            date(1950, MAY, 30),
-            date(1960, MAY, 30),
-            date(1965, MAY, 31),
-            date(1971, MAY, 31),
-            date(1999, MAY, 31),
-            date(2000, MAY, 29),
-            date(2010, MAY, 31),
-            date(2018, MAY, 28),
-            date(2019, MAY, 27),
-            date(2020, MAY, 25),
-            date(2021, MAY, 31),
-            date(2022, MAY, 30),
-        ):
-            self.assertHoliday(dt)
-            self.assertNoHoliday(_timedelta(dt, -1))
-            self.assertNoHoliday(_timedelta(dt, +1))
-            self.assertNoHoliday(_timedelta(dt, +7))
-            self.assertNoHoliday(_timedelta(dt, -7))
-
-        self.assertNoHoliday("1872-05-30")
+        name = "Memorial Day"
+        self.assertNonObservedHolidayName(name, (f"{year}-05-30" for year in range(1873, 1971)))
+        self.assertHolidayName(
+            name,
+            "2020-05-25",
+            "2021-05-31",
+            "2022-05-30",
+            "2023-05-29",
+            "2024-05-27",
+            "2025-05-26",
+        )
+        self.assertHolidayName(name, range(1971, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1873))
+        obs_dts = (
+            "1964-05-29",
+            "1965-05-31",
+            "1970-05-29",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_flag_day(self):
-        for dt in (
-            date(1916, JUN, 14),
-            date(1934, JUN, 14),
-            date(1935, JUN, 14),
-            date(1936, JUN, 15),
-            date(1941, JUN, 13),
-            date(1953, JUN, 15),
-        ):
-            self.assertHoliday(dt)
-            self.assertNoHoliday(_timedelta(dt, -1))
-            self.assertNoHoliday(_timedelta(dt, +1))
-            self.assertNoHoliday(_timedelta(dt, +7))
-            self.assertNoHoliday(_timedelta(dt, -7))
-
-        self.assertNoHoliday(
-            "1954-06-14",
-            "1967-06-14",
-            "2022-06-14",
+        name = "Flag Day"
+        self.assertNonObservedHolidayName(name, (f"{year}-06-14" for year in range(1916, 1954)))
+        self.assertNoHolidayName(name, range(self.start_year, 1916), range(1954, self.end_year))
+        obs_dts = (
+            "1947-06-13",
+            "1952-06-13",
+            "1953-06-15",
         )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_juneteenth_national_independence_day(self):
-        for dt in (
-            date(2022, JUN, 20),
-            date(2023, JUN, 19),
-        ):
-            self.assertHoliday(dt)
-            self.assertNoHoliday(_timedelta(dt, -1))
-            self.assertNoHoliday(_timedelta(dt, +1))
-            self.assertNoHoliday(_timedelta(dt, +7))
-            self.assertNoHoliday(_timedelta(dt, -7))
+        name = "Juneteenth National Independence Day"
+        self.assertNonObservedHolidayName(
+            name, (f"{year}-06-19" for year in range(2022, self.end_year))
+        )
+        self.assertNoHolidayName(name, range(self.start_year, 2022))
+        obs_dts = (
+            "2022-06-20",
+            "2027-06-18",
+            "2032-06-18",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
-        self.assertNoHoliday("1954-06-18", "1967-06-19", "2021-06-18")
+    def test_independence_day(self):
+        name = "Independence Day"
+        self.assertNonObservedHolidayName(name, (f"{year}-07-04" for year in self.full_range))
+        obs_dts = (
+            "2015-07-03",
+            "2020-07-03",
+            "2021-07-05",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_labor_day(self):
-        for dt in (
-            date(1887, SEP, 5),
-            date(1901, SEP, 2),
-            date(1902, SEP, 1),
-            date(1950, SEP, 4),
-            date(1999, SEP, 6),
-            date(2000, SEP, 4),
-            date(2010, SEP, 6),
-            date(2018, SEP, 3),
-            date(2019, SEP, 2),
-            date(2020, SEP, 7),
-            date(2021, SEP, 6),
-            date(2022, SEP, 5),
-        ):
-            self.assertHoliday(dt)
-            self.assertNoHoliday(_timedelta(dt, -1))
-            self.assertNoHoliday(_timedelta(dt, +1))
-            self.assertNoHoliday(_timedelta(dt, +7))
-            self.assertNoHoliday(_timedelta(dt, -7))
-
-        self.assertNoHoliday("1886-09-6")
+        name = "Labor Day"
+        self.assertHolidayName(
+            name,
+            "2020-09-07",
+            "2021-09-06",
+            "2022-09-05",
+            "2023-09-04",
+            "2024-09-02",
+            "2025-09-01",
+        )
+        self.assertHolidayName(name, range(1887, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1887))
 
     def test_columbus_day(self):
-        for dt in (
-            date(1909, OCT, 12),
-            date(1915, OCT, 12),
-            date(1920, OCT, 12),
-            date(1935, OCT, 11),
-            date(1945, OCT, 12),
-            date(1953, OCT, 12),
-        ):
-            self.assertHoliday(dt)
-            self.assertNoHoliday(_timedelta(dt, -1))
-            self.assertNoHoliday(_timedelta(dt, +1))
-            self.assertNoHoliday(_timedelta(dt, +7))
-            self.assertNoHoliday(_timedelta(dt, -7))
-
-        self.assertNoHoliday("1908-10-12", "1954-10-12", "2022-10-12")
+        name = "Columbus Day"
+        self.assertNonObservedHolidayName(name, (f"{year}-10-12" for year in range(1909, 1954)))
+        self.assertNoHolidayName(name, range(self.start_year, 1909), range(1954, self.end_year))
+        obs_dts = (
+            "1946-10-11",
+            "1947-10-13",
+            "1952-10-13",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_election_day(self):
         for dt in (
@@ -293,71 +237,51 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
         )
 
     def test_veterans_day(self):
-        for dt in (
-            date(1918, NOV, 11),
-            date(1921, NOV, 11),
-            date(1934, NOV, 12),
-            date(1938, NOV, 11),
-            date(1942, NOV, 11),
-            date(1946, NOV, 11),
-            date(1950, NOV, 10),
-            date(1953, NOV, 11),
-        ):
-            self.assertHoliday(dt)
-            self.assertNoHoliday(_timedelta(dt, -1))
-            self.assertNoHoliday(_timedelta(dt, +1))
-            self.assertNoHoliday(_timedelta(dt, +7))
-            self.assertNoHoliday(_timedelta(dt, -7))
-
-        self.assertNoHoliday(
-            "1917-11-12",
-            "1919-11-11",
-            "1920-11-11",
-            "1922-11-10",
-            "1933-11-10",
-            "1954-11-11",
-            "2021-11-11",
-            "2022-11-11",
+        name = "Veteran's Day"
+        self.assertNonObservedHolidayName(
+            name,
+            "1918-11-11",
+            "1921-11-11",
+            (f"{year}-11-11" for year in range(1934, 1954)),
         )
+        self.assertNoHolidayName(
+            name,
+            range(self.start_year, 1918),
+            range(1919, 1921),
+            range(1922, 1934),
+            range(1954, self.end_year),
+        )
+        obs_dts = (
+            "1945-11-12",
+            "1950-11-10",
+            "1951-11-12",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_thanksgiving_day(self):
-        for dt in (
-            date(1901, NOV, 28),
-            date(1902, NOV, 27),
-            date(1950, NOV, 23),
-            date(1999, NOV, 25),
-            date(2000, NOV, 23),
-            date(2010, NOV, 25),
-            date(2018, NOV, 22),
-            date(2019, NOV, 28),
-            date(2020, NOV, 26),
-            date(2021, NOV, 25),
-            date(2022, NOV, 24),
-        ):
-            self.assertHoliday(dt)
-            self.assertNoHoliday(_timedelta(dt, -1))
-            self.assertNoHoliday(_timedelta(dt, +1))
-            self.assertNoHoliday(_timedelta(dt, +7))
-            self.assertNoHoliday(_timedelta(dt, -7))
+        name = "Thanksgiving Day"
+        self.assertHolidayName(
+            name,
+            "2020-11-26",
+            "2021-11-25",
+            "2022-11-24",
+            "2023-11-23",
+            "2024-11-28",
+            "2025-11-27",
+        )
+        self.assertHolidayName(name, self.full_range)
 
     def test_christmas_day(self):
-        for dt in (
-            date(1901, DEC, 25),
-            date(1902, DEC, 25),
-            date(1950, DEC, 25),
-            date(1999, DEC, 24),
-            date(2000, DEC, 25),
-            date(2010, DEC, 24),
-            date(2018, DEC, 25),
-            date(2019, DEC, 25),
-            date(2020, DEC, 25),
-            date(2021, DEC, 24),
-            date(2022, DEC, 26),
-        ):
-            self.assertHoliday(dt)
-            self.assertNoHoliday(_timedelta(dt, -1))
-            self.assertNoHoliday(_timedelta(dt, +1))
-            self.assertNoHoliday(_timedelta(dt, -7))
+        name = "Christmas Day"
+        self.assertNonObservedHolidayName(name, (f"{year}-12-25" for year in self.full_range))
+        obs_dts = (
+            "2016-12-26",
+            "2021-12-24",
+            "2022-12-26",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_special_holidays(self):
         # add to this list as new historical holidays are added
@@ -458,8 +382,9 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             self.assertHoliday(dt)
             self.assertNoHoliday(_timedelta(dt, +1))
 
-    def test_all_modern_holidays_present(self):
+    def test_2023(self):
         self.assertHolidays(
+            NewYorkStockExchange(years=2023),
             ("2023-01-02", "New Year's Day (observed)"),
             ("2023-01-16", "Martin Luther King Jr. Day"),
             ("2023-02-20", "Washington's Birthday"),

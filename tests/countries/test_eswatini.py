@@ -14,7 +14,7 @@ import warnings
 from unittest import TestCase
 
 import holidays
-from holidays.countries.eswatini import Eswatini, SZ, SZW
+from holidays.countries.eswatini import Eswatini
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestEswatini(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Eswatini, years=range(1939, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Eswatini, SZ, SZW)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Eswatini(years=1938))
 
     def test_special_holidays(self):
         self.assertHoliday("1999-12-31", "2000-01-03")
