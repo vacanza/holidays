@@ -127,7 +127,7 @@ class TestBulgaria(CommonCountryTests, TestCase):
         obs_dts = ("2025-05-26",)
         self.assertHolidayName(f"{name_1991} (почивен ден)", "2020-05-25")
         self.assertHolidayName(f"{name_2021} (почивен ден)", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
+        self.assertNoNonObservedHoliday("2020-05-25", obs_dts)
 
     def test_unification_day(self):
         name = "Ден на Съединението"
