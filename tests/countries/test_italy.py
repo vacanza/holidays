@@ -21,6 +21,20 @@ class TestItaly(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Italy)
 
+    def test_special_holidays(self):
+        self.assertHoliday(
+            "1907-07-04",
+            "1910-08-10",
+            "1911-03-17",
+            "1920-03-14",
+            "1921-09-14",
+            "1926-10-04",
+            "1938-05-03",
+            "1946-06-11",
+            "1961-03-17",
+            "2011-03-17",
+        )
+
     def test_new_years_day(self):
         name = "Capodanno"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1875, self.end_year)))
@@ -157,7 +171,14 @@ class TestItaly(CommonCountryTests, TestCase):
 
     def test_anniversary_of_march_on_rome(self):
         name = "Anniversario della Marcia su Roma"
-        self.assertHolidayName(name, (f"{year}-10-28" for year in range(1926, 1941)))
+        self.assertHolidayName(
+            name,
+            "1926-10-28",
+            "1927-10-30",
+            "1928-10-28",
+            "1929-10-27",
+            (f"{year}-10-28" for year in range(1930, 1941)),
+        )
         self.assertNoHolidayName(name, range(self.start_year, 1926), range(1941, self.end_year))
 
     def test_all_saints_day(self):
@@ -167,7 +188,14 @@ class TestItaly(CommonCountryTests, TestCase):
         name_1922 = "Anniversario della Vittoria"
         name_1950 = "Giorno dell'unità nazionale"
         self.assertHolidayName(
-            name_1922, (f"{year}-11-04" for year in (*range(1922, 1941), *range(1946, 1950)))
+            name_1922,
+            (
+                f"{year}-11-04"
+                for year in (*range(1922, 1927), *range(1930, 1941), *range(1946, 1950))
+            ),
+            "1927-11-06",
+            "1928-11-04",
+            "1929-11-03",
         )
         self.assertHolidayName(name_1950, (f"{year}-11-04" for year in range(1950, 1977)))
         self.assertHolidayName(

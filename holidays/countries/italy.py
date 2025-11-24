@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAR
+from holidays.calendars.gregorian import MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -31,7 +31,9 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
         * [Royal Decree-Law 833 of Apr 19, 1923](https://web.archive.org/web/20240423171524/https://www.gazzettaufficiale.it/eli/gu/1923/04/20/93/sg/pdf)
         * [Royal Decree-Law 2859 of Dec 30, 1923](https://web.archive.org/web/20250125021721/https://www.gazzettaufficiale.it/eli/gu/1924/01/15/12/sg/pdf)
         * [Royal Decree-Law 1779 of Oct 21, 1926](https://web.archive.org/web/20221021200745/https://www.gazzettaufficiale.it/eli/gu/1926/10/23/247/sg/pdf)
+        * [Royal Decree-Law 1922 of Oct 23, 1927](https://web.archive.org/web/20250124092407/https://www.gazzettaufficiale.it/eli/gu/1927/10/25/247/sg/pdf)
         * [Law 2765 of Dec 6, 1928](https://web.archive.org/web/20251026200018/https://www.gazzettaufficiale.it/eli/gu/1928/12/19/294/sg/pdf)
+        * [Royal Decree-Law 1827 of Oct 13, 1929](https://web.archive.org/web/20250124071534/https://www.gazzettaufficiale.it/eli/gu/1929/10/22/246/sg/pdf)
         * [Law 1726 of Dec 27, 1930](https://web.archive.org/web/20240406172031/https://www.gazzettaufficiale.it/eli/gu/1931/01/13/9/sg/pdf)
         * [Law 661 of May 5, 1939](https://web.archive.org/web/20240405131312/https://www.gazzettaufficiale.it/eli/gu/1939/05/08/109/sg/pdf)
         * [Royal Decree-Law 781 of Jul 24, 1941](https://web.archive.org/web/20250123213649/https://www.gazzettaufficiale.it/eli/gu/1941/08/16/192/sg/pdf)
@@ -394,10 +396,19 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
             )
 
         # Established by Royal Decree-Law 1779 of Oct 21, 1926.
+        # Date shifted in 1927 by Royal Decree-Law 1922 of Oct 23, 1927.
+        # Date changed in 1929 by Royal Decree-Law 1827 of Oct 13, 1929.
         # Suspended by Royal Decree-Law 781 of Jul 24, 1941.
         if 1926 <= self._year <= 1940:
-            # Anniversary of the March on Rome.
-            self._add_holiday_oct_28(tr("Anniversario della Marcia su Roma"))
+            dates_obs = {
+                1927: (OCT, 30),
+                1929: (OCT, 27),
+            }
+            self._add_holiday(
+                # Anniversary of the March on Rome.
+                tr("Anniversario della Marcia su Roma"),
+                dates_obs.get(self._year, (OCT, 28)),
+            )
 
         # Established by Royal Decree 5342 of Oct 17, 1869.
 
@@ -405,6 +416,8 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
         self._add_all_saints_day(tr("Ognissanti"))
 
         # Established by Royal Decree-Law 1354 of Oct 23, 1922.
+        # Date shifted in 1927 by Royal Decree-Law 1922 of Oct 23, 1927.
+        # Date changed in 1929 by Royal Decree-Law 1827 of Oct 13, 1929.
         # Suspended by Royal Decree-Law 781 of Jul 24, 1941.
         # Restored by Legislative Decree 185 of Apr 22, 1946.
         # Renamed by Law 260 of May 27, 1949.
@@ -420,7 +433,11 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
             if self._year >= 1977:
                 self._add_holiday_1st_sun_of_nov(name)
             else:
-                self._add_holiday_nov_4(name)
+                dates_obs = {
+                    1927: (NOV, 6),
+                    1929: (NOV, 3),
+                }
+                self._add_holiday(name, dates_obs.get(self._year, (NOV, 4)))
 
         # Established by Royal Decree 5342 of Oct 17, 1869.
         # Abolished by Royal Decree 1027 of Aug 4, 1913.
@@ -960,11 +977,41 @@ class ITA(Italy):
 
 
 class ItalyStaticHolidays:
-    """Italy special holidays."""
+    """Italy special holidays.
+
+    References:
+        * [Law 366 of Jun 28, 1907](https://www.gazzettaufficiale.it/eli/gu/1907/06/28/152/sg/pdf)
+        * [Law 450 of Jul 7, 1910](https://www.gazzettaufficiale.it/eli/gu/1910/07/18/167/sg/pdf)
+        * [Royal Decree 269 of Mar 11, 1920](https://www.gazzettaufficiale.it/eli/gu/1920/03/19/66/sg/pdf)
+        * [Royal Decree 1208 of Aug 21, 1921](https://www.gazzettaufficiale.it/eli/gu/1921/09/10/215/sg/pdf)
+        * [Royal Decree 1207 of Jul 10, 1925](https://www.gazzettaufficiale.it/eli/gu/1925/07/24/170/sg/pdf)
+        * [Royal Decree-Law 376 of Apr 25, 1938](https://www.gazzettaufficiale.it/eli/gu/1938/04/28/97/sg/pdf)
+        * [Presidential Legislative Decree 2 of Jun 19, 1946](https://www.normattiva.it/atto/caricaDettaglioAtto?atto.dataPubblicazioneGazzetta=1946-06-20&atto.codiceRedazionale=046U0002&tipoDettaglio=originario&qId=0c1f85e7-d249-4987-966d-d9a4073ef48f)
+    """
 
     # Anniversary of the Unification of Italy.
     anniversary_of_unification = tr("Anniversario dell'Unità d'Italia")
+
     special_public_holidays = {
+        # 100th anniversary of the birth of General Giuseppe Garibaldi.
+        1907: (JUL, 4, tr("Centenario della nascita del generale Giuseppe Garibaldi")),
+        # 100th anniversary of the birth of Camillo Cavour.
+        1910: (AUG, 10, tr("Centenario della nascita di Camillo Cavour")),
+        1911: (MAR, 17, anniversary_of_unification),
+        # 100th anniversary of the birth of Victor Emmanuel II.
+        1920: (MAR, 14, tr("Centenario della nascita del Vittorio Emanuele II")),
+        # Celebration of 600th anniversary of the death of Dante.
+        1921: (SEP, 14, tr("Celebrazione del sesto centenario dantesco")),
+        1926: (
+            OCT,
+            4,
+            # 700th anniversary of the death of Saint Francis of Assisi.
+            tr("Anniversario del VII centenario della morte di San Francesco di Assisi"),
+        ),
+        # National Holiday.
+        1938: (MAY, 3, tr("Festa Nazionale")),
+        # Public Holiday.
+        1946: (JUN, 11, tr("Giorno Festivo")),
         1961: (MAR, 17, anniversary_of_unification),
         2011: (MAR, 17, anniversary_of_unification),
     }

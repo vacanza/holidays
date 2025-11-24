@@ -513,3 +513,31 @@ msgstr "Saint Leoluca's Day"
 #. Anniversary of the Unification of Italy.
 msgid "Anniversario dell'Unità d'Italia"
 msgstr "Anniversary of the Unification of Italy"
+
+#. 100th anniversary of the birth of General Giuseppe Garibaldi.
+msgid "Centenario della nascita del generale Giuseppe Garibaldi"
+msgstr "100th anniversary of the birth of General Giuseppe Garibaldi"
+
+#. 100th anniversary of the birth of Camillo Cavour.
+msgid "Centenario della nascita di Camillo Cavour"
+msgstr "100th anniversary of the birth of Camillo Cavour"
+
+#. 100th anniversary of the birth of Victor Emmanuel II.
+msgid "Centenario della nascita del Vittorio Emanuele II"
+msgstr "100th anniversary of the birth of Victor Emmanuel II"
+
+#. Celebration of 600th anniversary of the death of Dante.
+msgid "Celebrazione del sesto centenario dantesco"
+msgstr "Celebration of 600th anniversary of the death of Dante"
+
+#. 700th anniversary of the death of Saint Francis of Assisi.
+msgid "Anniversario del VII centenario della morte di San Francesco di Assisi"
+msgstr "700th anniversary of the death of Saint Francis of Assisi"
+
+#. National Holiday.
+msgid "Festa Nazionale"
+msgstr "National Holiday"
+
+#. Public Holiday.
+msgid "Giorno Festivo"
+msgstr "Public Holiday"
