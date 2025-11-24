@@ -71,7 +71,7 @@ msgstr ""
 
 #. Day of Bulgarian Enlightenment and Culture and Slavonic Alphabet.
 msgid "Ден на българската просвета и култура и на славянската писменост"
-msgstr "День болгарської  освіти і культури та словʼянської писемності"
+msgstr "День болгарської освіти і культури та словʼянської писемності"
 
 #. Unification Day.
 msgid "Ден на Съединението"
@@ -83,7 +83,7 @@ msgstr "День свободи"
 
 #. Independence Day.
 msgid "Ден на Независимостта на България"
-msgstr "День незалежності Болгарїі"
+msgstr "День незалежності Болгарії"
 
 #. Christmas Eve.
 msgid "Бъдни вечер"
