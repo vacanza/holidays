@@ -99,3 +99,20 @@ msgstr ""
 #. The Day of the People's Awakeners.
 msgid "Ден на народните будители"
 msgstr ""
+
+#. Substituted date format.
+msgid "%d.%m.%Y"
+msgstr ""
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Почивен ден (прехвърлен от %s)"
+msgstr ""
+
+#. Official Holiday.
+msgid "Официален празник"
+msgstr ""
+
+#. Non-working day.
+msgid "Неприсъствен ден"
+msgstr ""

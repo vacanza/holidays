@@ -15,16 +15,17 @@ from __future__ import annotations
 from gettext import gettext as tr
 from typing import TYPE_CHECKING
 
+from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, SEP, DEC
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.constants import HALF_DAY, PUBLIC, SCHOOL
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 if TYPE_CHECKING:
     from datetime import date
 
 
-class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """Bulgaria holidays.
 
     References:
@@ -57,6 +58,7 @@ class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, BulgariaStaticHolidays)
         # Labor Code changes - State Gazette, Issue 105, 30.12.2016.
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         kwargs.setdefault("observed_since", 2017)
@@ -179,3 +181,121 @@ class BG(Bulgaria):
 
 class BLG(Bulgaria):
     pass
+
+
+class BulgariaStaticHolidays:
+    """Bulgaria special holidays.
+
+    Substituted holidays references:
+        * [2004](https://web.archive.org/web/20251126005928/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=21156)
+        * [2005](https://web.archive.org/web/20251126005738/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=14875)
+        * [2006](https://web.archive.org/web/20251126005635/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=1142)
+        * [2006 changes](https://web.archive.org/web/20251126005653/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=1246)
+        * [2007](https://web.archive.org/web/20251126010247/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=3325)
+        * [2007 changes](https://web.archive.org/web/20251126010247/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=3600)
+        * [2008](https://web.archive.org/web/20251126010335/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=4686)
+        * [2009](https://web.archive.org/web/20251126005722/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=12464)
+        * [2009 changes](https://web.archive.org/web/20251126005900/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=16562)
+        * [2009 changes](https://web.archive.org/web/20251126010145/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=27525)
+        * [2010](https://web.archive.org/web/20251126010239/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=27993)
+        * [2011](https://web.archive.org/web/20251126010309/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=41994)
+        * [2012](https://web.archive.org/web/20251126010350/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=58790)
+        * [2013](https://web.archive.org/web/20251126115613/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=70577)
+        * [2013 changes](https://web.archive.org/web/20210410195503/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=74637)
+        * [2013 changes](https://web.archive.org/web/20250908131607/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=80503)
+        * [2014](https://web.archive.org/web/20231130064115/http://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=80502)
+        * [2015](https://web.archive.org/web/20250523171159/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=89532)
+        * [2016](https://web.archive.org/web/20250208071613/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=99143)
+
+    Special holidays references:
+        * [Resolution 220 of Mar 26, 2004](https://web.archive.org/web/20251126010024/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=21351)
+        * [Resolution 722 of Oct 18, 2006](https://web.archive.org/web/20251126010114/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=2739)
+        * [Resolution 808 of Nov 19, 2025](https://web.archive.org/web/20251126010045/https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=239075)
+    """
+
+    # Substituted date format.
+    substituted_date_format = tr("%d.%m.%Y")
+
+    # Day off (substituted from %s).
+    substituted_label = tr("Почивен ден (прехвърлен от %s)")
+
+    # Official Holiday.
+    official_holiday = tr("Официален празник")
+
+    # Non-working day.
+    non_working_day = tr("Неприсъствен ден")
+
+    special_public_holidays = {
+        2004: (
+            (APR, 2, official_holiday),
+            (MAY, 7, MAY, 15),
+        ),
+        2005: (
+            (MAR, 4, MAR, 12),
+            (MAY, 23, MAY, 28),
+            (SEP, 5, SEP, 10),
+            (SEP, 23, SEP, 17),
+        ),
+        2006: (JAN, 2, JAN, 28),
+        2007: (
+            (JAN, 2, official_holiday),
+            (APR, 30, APR, 21),
+            (MAY, 25, JUN, 2),
+            (SEP, 7, SEP, 15),
+            (DEC, 31, DEC, 15),
+        ),
+        2008: (
+            (MAY, 2, MAY, 10),
+            (MAY, 5, MAY, 17),
+            (DEC, 31, DEC, 20),
+        ),
+        2009: (
+            (JAN, 2, JAN, 10),
+            (MAR, 2, MAR, 14),
+            (MAY, 4, MAY, 16),
+            (MAY, 5, MAY, 30),
+            (SEP, 21, SEP, 26),
+            (DEC, 31, DEC, 19),
+        ),
+        2010: (
+            (MAY, 7, MAY, 15),
+            (DEC, 31, DEC, 11),
+        ),
+        2011: (
+            (MAR, 4, MAR, 19),
+            (MAY, 23, MAY, 28),
+            (SEP, 5, SEP, 3),
+            (SEP, 23, SEP, 17),
+        ),
+        2012: (
+            (JAN, 2, JAN, 21),
+            (APR, 30, APR, 21),
+            (MAY, 25, MAY, 19),
+            (SEP, 7, SEP, 29),
+            (DEC, 31, DEC, 15),
+        ),
+        2013: (
+            (MAY, 2, MAY, 18),
+            (DEC, 23, DEC, 21),
+            (DEC, 31, DEC, 14),
+        ),
+        2014: (
+            (MAY, 2, MAY, 10),
+            (MAY, 5, MAY, 31),
+            (DEC, 31, DEC, 13),
+        ),
+        2015: (
+            (JAN, 2, JAN, 24),
+            (MAR, 2, MAR, 21),
+            (SEP, 21, SEP, 12),
+            (DEC, 31, DEC, 12),
+        ),
+        2016: (
+            (MAR, 4, MAR, 12),
+            (MAY, 23, MAY, 14),
+            (SEP, 5, SEP, 10),
+            (SEP, 23, SEP, 17),
+        ),
+        2025: (DEC, 31, non_working_day),
+        2026: (JAN, 2, non_working_day),
+    }
