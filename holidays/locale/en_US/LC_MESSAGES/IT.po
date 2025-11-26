@@ -1,0 +1,543 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Italy holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.86\n"
+"POT-Creation-Date: 2025-11-22 18:20+0200\n"
+"PO-Revision-Date: 2025-11-23 00:35+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: it_IT\n"
+
+#. New Year's Day.
+msgid "Capodanno"
+msgstr "New Year's Day"
+
+#. Epiphany.
+msgid "Epifania"
+msgstr "Epiphany"
+
+#. Saint Joseph's Day.
+msgid "San Giuseppe"
+msgstr "Saint Joseph's Day"
+
+#. Easter Monday.
+msgid "Lunedì dell'Angelo"
+msgstr "Easter Monday"
+
+#. Foundation of Rome.
+msgid "Natale di Roma"
+msgstr "Foundation of Rome"
+
+#. Liberation Day.
+msgid "Anniversario della Liberazione"
+msgstr "Liberation Day"
+
+#. Labor Day.
+msgid "Festa del Lavoro"
+msgstr "Labor Day"
+
+#. Anniversary of Victory in Europe.
+msgid "Anniversario della Vittoria in Europa"
+msgstr "Anniversary of Victory in Europe"
+
+#. Anniversary of the founding of the Empire.
+msgid "Anniversario della fondazione dell'Impero"
+msgstr "Anniversary of the founding of the Empire"
+
+#. Republic Day.
+msgid "Festa della Repubblica"
+msgstr "Republic Day"
+
+#. Ascension Day.
+msgid "Ascensione"
+msgstr "Ascension Day"
+
+#. Saints Peter and Paul.
+msgid "Santi Apostoli Pietro e Paolo"
+msgstr "Saints Peter and Paul"
+
+#. Corpus Christi.
+msgid "Corpus Domini"
+msgstr "Corpus Christi"
+
+#. Assumption Of Mary Day.
+msgid "Assunzione della Beata Vergine Maria"
+msgstr "Assumption Of Mary Day"
+
+#. Nativity of Mary.
+msgid "Natività della Beata Vergine Maria"
+msgstr "Nativity of Mary"
+
+#. Anniversary of the capture of Rome.
+msgid "Anniversario della Presa di Roma"
+msgstr "Anniversary of the capture of Rome"
+
+#. Saint Francis of Assisi, Patron Saint of Italy.
+msgid "Festa nazionale di San Francesco d'Assisi, patrono d'Italia"
+msgstr "Saint Francis of Assisi, Patron Saint of Italy"
+
+#. Anniversary of the March on Rome.
+msgid "Anniversario della Marcia su Roma"
+msgstr "Anniversary of the March on Rome"
+
+#. All Saints' Day.
+msgid "Ognissanti"
+msgstr "All Saints' Day"
+
+#. National Unity Day.
+msgid "Giorno dell'unità nazionale"
+msgstr "National Unity Day"
+
+#. Victory Day.
+msgid "Anniversario della Vittoria"
+msgstr "Victory Day"
+
+#. Immaculate Conception.
+msgid "Immacolata Concezione"
+msgstr "Immaculate Conception"
+
+#. Christmas Day.
+msgid "Natale"
+msgstr "Christmas Day"
+
+#. Saint Stephen's Day.
+msgid "Santo Stefano"
+msgstr "Saint Stephen's Day"
+
+#. Saint Gerland's Day.
+msgid "San Gerlando"
+msgstr "Saint Gerland's Day"
+
+#. Saint Baudolino's Day.
+msgid "San Baudolino"
+msgstr "Saint Baudolino's Day"
+
+#. Saint Cyriacus's Day.
+msgid "San Ciriaco"
+msgstr "Saint Cyriacus's Day"
+
+#. Saint Grat's Day.
+msgid "San Grato"
+msgstr "Saint Grat's Day"
+
+#. Saint Emidius's Day.
+msgid "Sant'Emidio"
+msgstr "Saint Emidius's Day"
+
+#. Saint Maximus of Aveia's Day.
+msgid "San Massimo d'Aveia"
+msgstr "Saint Maximus of Aveia's Day"
+
+#. Saint Donatus of Arezzo's Day.
+msgid "San Donato d'Arezzo"
+msgstr "Saint Donatus of Arezzo's Day"
+
+#. Saint Secundus of Asti's Day.
+msgid "San Secondo di Asti"
+msgstr "Saint Secundus of Asti's Day"
+
+#. Saint Modestinus's Day.
+msgid "San Modestino"
+msgstr "Saint Modestinus's Day"
+
+#. Saint Nicholas's Day.
+msgid "San Nicola"
+msgstr "Saint Nicholas's Day"
+
+#. Saint Alexander of Bergamo's Day.
+msgid "Sant'Alessandro di Bergamo"
+msgstr "Saint Alexander of Bergamo's Day"
+
+#. Saint Martin's Day.
+msgid "San Martino"
+msgstr "Saint Martin's Day"
+
+#. Saint Bartholomew's Day.
+msgid "San Bartolomeo apostolo"
+msgstr "Saint Bartholomew's Day"
+
+#. Saint Petronius's Day.
+msgid "San Petronio"
+msgstr "Saint Petronius's Day"
+
+#. Saint Theodore of Amasea and Saint Lawrence of Brindisi's Day.
+msgid "San Teodoro d'Amasea e San Lorenzo da Brindisi"
+msgstr "Saint Theodore of Amasea and Saint Lawrence of Brindisi's Day"
+
+#. Saints Faustinus and Jovita's Day.
+msgid "Santi Faustino e Giovita"
+msgstr "Saints Faustinus and Jovita's Day"
+
+#. Saint Nicholas the Pilgrim's Day.
+msgid "San Nicola Pellegrino"
+msgstr "Saint Nicholas the Pilgrim's Day"
+
+#. Saint Richard of Andria's Day.
+msgid "San Riccardo di Andria"
+msgstr "Saint Richard of Andria's Day"
+
+#. Saint Roger's Day.
+msgid "San Ruggero"
+msgstr "Saint Roger's Day"
+
+#. Assumption Day.
+msgid "Maria Santissima Assunta"
+msgstr "Assumption Day"
+
+#. Saint Saturninus of Cagliari's Day.
+msgid "San Saturnino di Cagliari"
+msgstr "Saint Saturninus of Cagliari's Day"
+
+#. Saint George's Day.
+msgid "San Giorgio"
+msgstr "Saint George's Day"
+
+#. Saint Sebastian's Day.
+msgid "San Sebastiano"
+msgstr "Saint Sebastian's Day"
+
+#. Saint Justin of Chieti's Day.
+msgid "San Giustino di Chieti"
+msgstr "Saint Justin of Chieti's Day"
+
+#. Saint Michael the Archangel's Day.
+msgid "San Michele Arcangelo"
+msgstr "Saint Michael the Archangel's Day"
+
+#. Saint Abbondius's Day.
+msgid "Sant'Abbondio"
+msgstr "Saint Abbondius's Day"
+
+#. Saint Homobonus's Day.
+msgid "Sant'Omobono"
+msgstr "Saint Homobonus's Day"
+
+#. Our Lady of the Pilerio.
+msgid "Madonna del Pilerio"
+msgstr "Our Lady of the Pilerio"
+
+#. Saint Agatha's Day.
+msgid "Sant'Agata"
+msgstr "Saint Agatha's Day"
+
+#. Saint Vitalian's Day.
+msgid "San Vitaliano"
+msgstr "Saint Vitalian's Day"
+
+#. Visitation of Mary Day.
+msgid "Madonna della Visitazione"
+msgstr "Visitation of Mary Day"
+
+#. Our Lady of the Fire.
+msgid "Madonna del Fuoco"
+msgstr "Our Lady of the Fire"
+
+#. Saint John's Day.
+msgid "San Giovanni Battista"
+msgstr "Saint John's Day"
+
+#. Our Lady of the Seven Veils.
+msgid "Madonna dei Sette Veli"
+msgstr "Our Lady of the Seven Veils"
+
+#. Saint Silverius's Day.
+msgid "San Silverio"
+msgstr "Saint Silverius's Day"
+
+#. Saints Hilary and Tatian's Day.
+msgid "Santi Ilario e Taziano"
+msgstr "Saints Hilary and Tatian's Day"
+
+#. Saint Lawrence's Day.
+msgid "San Lorenzo"
+msgstr "Saint Lawrence's Day"
+
+#. Saint Leonard of Porto Maurizio's Day.
+msgid "San Leonardo da Porto Maurizio"
+msgstr "Saint Leonard of Porto Maurizio's Day"
+
+#. Saint Peter Celestine's Day.
+msgid "San Pietro Celestino"
+msgstr "Saint Peter Celestine's Day"
+
+#. Saint Dionysius's Day.
+msgid "San Dionigi"
+msgstr "Saint Dionysius's Day"
+
+#. Saint Orontius's Day.
+msgid "Sant'Oronzo"
+msgstr "Saint Orontius's Day"
+
+#. Saint Julia's Day.
+msgid "Santa Giulia"
+msgstr "Saint Julia's Day"
+
+#. Saint Bassianus's Day.
+msgid "San Bassiano"
+msgstr "Saint Bassianus's Day"
+
+#. Saint Mark's Day.
+msgid "San Marco Evangelista"
+msgstr "Saint Mark's Day"
+
+#. Saint Maria Goretti's Day.
+msgid "Santa Maria Goretti"
+msgstr "Saint Maria Goretti's Day"
+
+#. Saint Paulinus of Lucca's Day.
+msgid "San Paolino di Lucca"
+msgstr "Saint Paulinus of Lucca's Day"
+
+#. Saint Julian the Hospitaller's Day.
+msgid "San Giuliano l'ospitaliere"
+msgstr "Saint Julian the Hospitaller's Day"
+
+#. Our Lady of the Letter.
+msgid "Madonna della Lettera"
+msgstr "Our Lady of the Letter"
+
+#. Saint Ambrose's Day.
+msgid "Sant'Ambrogio"
+msgstr "Saint Ambrose's Day"
+
+#. Saint Anselm of Baggio's Day.
+msgid "Sant'Anselmo da Baggio"
+msgstr "Saint Anselm of Baggio's Day"
+
+#. Saint Geminianus's Day.
+msgid "San Geminiano"
+msgstr "Saint Geminianus's Day"
+
+#. Saint Francis of Assisi's Day.
+msgid "San Francesco d'Assisi"
+msgstr "Saint Francis of Assisi's Day"
+
+#. Our Lady of the Bruna.
+msgid "Madonna della Bruna"
+msgstr "Our Lady of the Bruna"
+
+#. Saint Januarius's Day.
+msgid "San Gennaro"
+msgstr "Saint Januarius's Day"
+
+#. Saint Gaudentius's Day.
+msgid "San Gaudenzio"
+msgstr "Saint Gaudentius's Day"
+
+#. Our Lady of the Snows.
+msgid "Nostra Signora della Neve"
+msgstr "Our Lady of the Snows"
+
+#. Saint Archelaus's Day.
+msgid "Sant'Archelao"
+msgstr "Saint Archelaus's Day"
+
+#. Saint Rosalia's Day.
+msgid "Santa Rosalia"
+msgstr "Saint Rosalia's Day"
+
+#. Saint Antoninus of Piacenza's Day.
+msgid "Sant'Antonino di Piacenza"
+msgstr "Saint Antoninus of Piacenza's Day"
+
+#. Saint Anthony of Padua's Day.
+msgid "Sant'Antonio di Padova"
+msgstr "Saint Anthony of Padua's Day"
+
+#. Saint Cetteus's Day.
+msgid "San Cetteo"
+msgstr "Saint Cetteus's Day"
+
+#. Saint Clare of Assisi's Day.
+msgid "Santa Chiara d'Assisi"
+msgstr "Saint Clare of Assisi's Day"
+
+#. Saint Ranieri's Day.
+msgid "San Ranieri"
+msgstr "Saint Ranieri's Day"
+
+#. Our Lady of Graces.
+msgid "Madonna delle Grazie"
+msgstr "Our Lady of Graces"
+
+#. Saint Hilary of Poitiers's Day.
+msgid "Sant'Ilario di Poitiers"
+msgstr "Saint Hilary of Poitiers's Day"
+
+#. Saint James's Day.
+msgid "San Jacopo"
+msgstr "Saint James's Day"
+
+#. Saint Crescentinus's Day.
+msgid "San Crescentino"
+msgstr "Saint Crescentinus's Day"
+
+#. Saint Terentius of Pesaro's Day.
+msgid "San Terenzio di Pesaro"
+msgstr "Saint Terentius of Pesaro's Day"
+
+#. Saint Syrus's Day.
+msgid "San Siro"
+msgstr "Saint Syrus's Day"
+
+#. Saint Gerard of Potenza's Day.
+msgid "San Gerardo di Potenza"
+msgstr "Saint Gerard of Potenza's Day"
+
+#. Saint Apollinaris's Day.
+msgid "Sant'Apollinare"
+msgstr "Saint Apollinaris's Day"
+
+#. Saint Prosper of Reggio's Day.
+msgid "San Prospero Vescovo"
+msgstr "Saint Prosper of Reggio's Day"
+
+#. Saint George's Day.
+msgid "San Giorgio Martire"
+msgstr "Saint George's Day"
+
+#. Saint Barbara's Day.
+msgid "Santa Barbara"
+msgstr "Saint Barbara's Day"
+
+#. Saints Peter and Paul's Day.
+msgid "Santi Pietro e Paolo"
+msgstr "Saints Peter and Paul's Day"
+
+#. Saint Bellinus's Day.
+msgid "San Bellino"
+msgstr "Saint Bellinus's Day"
+
+#. Saint Matthew's Day.
+msgid "San Matteo Evangelista"
+msgstr "Saint Matthew's Day"
+
+#. Saint Ansanus's Day.
+msgid "Sant'Ansano"
+msgstr "Saint Ansanus's Day"
+
+#. Saints Gervasius and Protasius's Day.
+msgid "San Gervasio e San Protasio"
+msgstr "Saints Gervasius and Protasius's Day"
+
+#. Saint Lucy's Day.
+msgid "Santa Lucia"
+msgstr "Saint Lucy's Day"
+
+#. Saint Pontian's Day.
+msgid "San Ponziano"
+msgstr "Saint Pontian's Day"
+
+#. Our Lady of Mercy.
+msgid "Nostra Signora della Misericordia"
+msgstr "Our Lady of Mercy"
+
+#. Saint Catald's Day.
+msgid "San Cataldo"
+msgstr "Saint Catald's Day"
+
+#. Saint Berardo's Day.
+msgid "San Berardo da Pagliara"
+msgstr "Saint Berardo's Day"
+
+#. Saint Vigilius's Day.
+msgid "San Vigilio"
+msgstr "Saint Vigilius's Day"
+
+#. Saint Albert of Trapani's Day.
+msgid "Sant'Alberto degli Abati"
+msgstr "Saint Albert of Trapani's Day"
+
+#. Saint Valentine's Day.
+msgid "San Valentino"
+msgstr "Saint Valentine's Day"
+
+#. Saint Justus's Day.
+msgid "San Giusto"
+msgstr "Saint Justus's Day"
+
+#. Saint Liberal's Day.
+msgid "San Liberale"
+msgstr "Saint Liberal's Day"
+
+#. Saints Hermagoras and Fortunatus's Day.
+msgid "Santi Ermacora e Fortunato"
+msgstr "Saints Hermagoras and Fortunatus's Day"
+
+#. Saint Victor the Moor's Day.
+msgid "San Vittore il Moro"
+msgstr "Saint Victor the Moor's Day"
+
+#. Saint Eusebius of Vercelli's Day.
+msgid "Sant'Eusebio di Vercelli"
+msgstr "Saint Eusebius of Vercelli's Day"
+
+#. Our Lady of Health.
+msgid "Madonna della Salute"
+msgstr "Our Lady of Health"
+
+#. Our Lady of Monte Berico.
+msgid "Madonna di Monte Berico"
+msgstr "Our Lady of Monte Berico"
+
+#. Saint Zeno's Day.
+msgid "San Zeno"
+msgstr "Saint Zeno's Day"
+
+#. Saint Rose of Viterbo's Day.
+msgid "Santa Rosa da Viterbo"
+msgstr "Saint Rose of Viterbo's Day"
+
+#. Saint Leoluca's Day.
+msgid "San Leoluca"
+msgstr "Saint Leoluca's Day"
+
+#. Anniversary of the Unification of Italy.
+msgid "Anniversario dell'Unità d'Italia"
+msgstr "Anniversary of the Unification of Italy"
+
+#. 100th anniversary of the birth of General Giuseppe Garibaldi.
+msgid "Centenario della nascita del generale Giuseppe Garibaldi"
+msgstr "100th anniversary of the birth of General Giuseppe Garibaldi"
+
+#. 100th anniversary of the birth of Camillo Cavour.
+msgid "Centenario della nascita di Camillo Cavour"
+msgstr "100th anniversary of the birth of Camillo Cavour"
+
+#. 100th anniversary of the birth of Victor Emmanuel II.
+msgid "Centenario della nascita del Vittorio Emanuele II"
+msgstr "100th anniversary of the birth of Victor Emmanuel II"
+
+#. Celebration of 600th anniversary of the death of Dante.
+msgid "Celebrazione del sesto centenario dantesco"
+msgstr "Celebration of 600th anniversary of the death of Dante"
+
+#. 700th anniversary of the death of Saint Francis of Assisi.
+msgid "Anniversario del VII centenario della morte di San Francesco di Assisi"
+msgstr "700th anniversary of the death of Saint Francis of Assisi"
+
+#. National Holiday.
+msgid "Festa Nazionale"
+msgstr "National Holiday"
+
+#. Public Holiday.
+msgid "Giorno Festivo"
+msgstr "Public Holiday"
