@@ -19,13 +19,11 @@ from tests.common import CommonCountryTests
 class TestGuinea(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1959, 2050)
-        super().setUpClass(Guinea, years=years)
-        cls.no_estimated_holidays = Guinea(years=years, islamic_show_estimated=False)
+        super().setUpClass(Guinea)
 
     def test_new_years_day(self):
         name = "Fête du Nouvel an"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1959, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         dt = (
             "2023-01-02",
             "2034-01-02",
@@ -36,7 +34,7 @@ class TestGuinea(CommonCountryTests, TestCase):
     def test_second_republic_day(self):
         name = "Jour de la Deuxième République"
         self.assertHolidayName(name, (f"{year}-04-03" for year in range(1985, 2022)))
-        self.assertNoHolidayName(name, range(1959, 1985), range(2022, 2050))
+        self.assertNoHolidayName(name, range(self.start_year, 1985), range(2022, self.end_year))
 
     def test_easter_monday(self):
         name = "Lundi de Pâques"
@@ -53,22 +51,22 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2023-04-10",
             "2024-04-01",
         )
-        self.assertHolidayName(name, range(1959, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_labor_day(self):
-        self.assertHolidayName("Fête du Travail", (f"{year}-05-01" for year in range(1959, 2050)))
+        self.assertHolidayName("Fête du Travail", (f"{year}-05-01" for year in self.full_range))
 
     def test_africa_day(self):
         self.assertHolidayName(
-            "Anniversaire de l'Union Africaine", (f"{year}-05-25" for year in range(1959, 2050))
+            "Anniversaire de l'Union Africaine", (f"{year}-05-25" for year in self.full_range)
         )
 
     def test_assumption_of_mary(self):
-        self.assertHolidayName("Assomption", (f"{year}-08-15" for year in range(1959, 2050)))
+        self.assertHolidayName("Assomption", (f"{year}-08-15" for year in self.full_range))
 
     def test_independence_day(self):
         name = "Fête anniversaire de l'indépendance de la Guinée"
-        self.assertHolidayName(name, (f"{year}-10-02" for year in range(1959, 2050)))
+        self.assertHolidayName(name, (f"{year}-10-02" for year in self.full_range))
         dt = (
             "2033-10-03",
             "2039-10-03",
@@ -78,11 +76,11 @@ class TestGuinea(CommonCountryTests, TestCase):
 
     def test_all_saints_day(self):
         name = "Toussaint"
-        self.assertHolidayName(name, (f"{year}-11-01" for year in range(1959, 2022)))
-        self.assertNoHolidayName(name, range(2022, 2050))
+        self.assertHolidayName(name, (f"{year}-11-01" for year in range(self.start_year, 2022)))
+        self.assertNoHolidayName(name, range(2022, self.end_year))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Fête de Noël", (f"{year}-12-25" for year in range(1959, 2050)))
+        self.assertHolidayName("Fête de Noël", (f"{year}-12-25" for year in self.full_range))
 
     def test_laylat_al_qadr_day(self):
         name = "Lendemain de la nuit Lailatoul Qadr"
@@ -100,7 +98,7 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2024-04-06",
             "2025-03-27",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1959, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_fitr_day(self):
         name = "Jour de l'Aïd el-Fitr"
@@ -118,7 +116,7 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-31",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1959, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         dt = (
             "2033-01-03",
             "2037-11-09",
@@ -142,7 +140,7 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-07",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1959, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_adha_day_two(self):
         name = "Lendemain de la Tabaski"
@@ -152,8 +150,8 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2024-06-17",
             "2025-06-08",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2023, 2050))
-        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1959, 2023))
+        self.assertIslamicNoEstimatedHolidayName(name, range(2023, self.end_year))
+        self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 2023))
 
     def test_mawlid_day(self):
         name = "Lendemain de la nuit du Maoloud"
@@ -171,7 +169,7 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2024-09-15",
             "2025-09-05",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1959, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_2021(self):
         # * <https://www.timeanddate.com/holidays/guinea/2021>
