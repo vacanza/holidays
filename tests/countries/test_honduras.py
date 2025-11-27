@@ -21,21 +21,104 @@ class TestHonduras(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Honduras)
 
-    def test_2014(self):
-        self.assertHolidayDates(
-            Honduras(years=2014),
-            "2014-01-01",
-            "2014-04-14",
-            "2014-04-17",
-            "2014-04-18",
-            "2014-04-19",
-            "2014-05-01",
-            "2014-09-15",
-            "2014-10-03",
-            "2014-10-12",
-            "2014-10-21",
-            "2014-12-25",
+    def test_new_years_day(self):
+        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))
+
+    def test_maundy_thursday(self):
+        name = "Jueves Santo"
+        self.assertHolidayName(
+            name,
+            "2020-04-09",
+            "2021-04-01",
+            "2022-04-14",
+            "2023-04-06",
+            "2024-03-28",
+            "2025-04-17",
         )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_good_friday(self):
+        name = "Viernes Santo"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_holy_saturday(self):
+        name = "Sábado de Gloria"
+        self.assertHolidayName(
+            name,
+            "2020-04-11",
+            "2021-04-03",
+            "2022-04-16",
+            "2023-04-08",
+            "2024-03-30",
+            "2025-04-19",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_panamerican_day(self):
+        self.assertHolidayName(
+            "Día de las Américas", (f"{year}-04-14" for year in self.full_range)
+        )
+
+    def test_labor_day(self):
+        self.assertHolidayName("Día del Trabajo", (f"{year}-05-01" for year in self.full_range))
+
+    def test_independence_day(self):
+        self.assertHolidayName(
+            "Día de la Independencia", (f"{year}-09-15" for year in self.full_range)
+        )
+
+    def test_morazan_day(self):
+        name = "Día de Morazán"
+        self.assertHolidayName(name, (f"{year}-10-03" for year in range(self.start_year, 2015)))
+        self.assertNoHolidayName(name, range(2015, self.end_year))
+
+    def test_columbus_day(self):
+        name = "Día de la Raza"
+        self.assertHolidayName(name, (f"{year}-10-12" for year in range(self.start_year, 2015)))
+        self.assertNoHolidayName(name, range(2015, self.end_year))
+
+    def test_army_day(self):
+        name = "Día de las Fuerzas Armadas"
+        self.assertHolidayName(name, (f"{year}-10-21" for year in range(self.start_year, 2015)))
+        self.assertNoHolidayName(name, range(2015, self.end_year))
+
+    def test_morazan_weekend(self):
+        name = "Semana Morazánica"
+        self.assertHolidayName(
+            name,
+            "2020-10-07",
+            "2020-10-08",
+            "2020-10-09",
+            "2021-10-06",
+            "2021-10-07",
+            "2021-10-08",
+            "2022-10-05",
+            "2022-10-06",
+            "2022-10-07",
+            "2023-10-04",
+            "2023-10-05",
+            "2023-10-06",
+            "2024-10-02",
+            "2024-10-03",
+            "2024-10-04",
+            "2025-10-01",
+            "2025-10-02",
+            "2025-10-03",
+        )
+        self.assertHolidayNameCount(name, 3, range(2015, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2015))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Navidad", (f"{year}-12-25" for year in self.full_range))
 
     def test_2016(self):
         # https://www.officeholidays.com/countries/honduras/2016
@@ -69,21 +152,6 @@ class TestHonduras(CommonCountryTests, TestCase):
             "2021-10-07",
             "2021-10-08",
             "2021-12-25",
-        )
-
-    def test_2022(self):
-        self.assertHolidays(
-            Honduras(years=2022),
-            ("2022-01-01", "Año Nuevo"),
-            ("2022-04-14", "Día de las Américas; Jueves Santo"),
-            ("2022-04-15", "Viernes Santo"),
-            ("2022-04-16", "Sábado de Gloria"),
-            ("2022-05-01", "Día del Trabajo"),
-            ("2022-09-15", "Día de la Independencia"),
-            ("2022-10-05", "Semana Morazánica"),
-            ("2022-10-06", "Semana Morazánica"),
-            ("2022-10-07", "Semana Morazánica"),
-            ("2022-12-25", "Navidad"),
         )
 
     def test_2025(self):
