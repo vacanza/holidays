@@ -10,176 +10,175 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Nepal holidays ne localization.
+# Nepal holidays.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.86\n"
-"POT-Creation-Date: 2025-11-27 20:48+0530\n"
-"PO-Revision-Date: 2025-11-28 13:01+0530\n"
-"Last-Translator: Neha Gaikwad nehagaikwadwork24@gmail.com\n"
+"POT-Creation-Date: 2025-11-28 20:26+0530\n"
+"PO-Revision-Date: 2025-11-28 20:26+0530\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ne\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Generator: Poedit 3.8\n"
-"X-Source-Language: en_US\n"
+"X-Source-Language: ne\n"
 
 #. %s (estimated).
 #, c-format
-msgid "%s (estimated)"
-msgstr "%s (अनुमानित)"
+msgid "%s (अनुमानित)"
+msgstr ""
 
 #. Martyr's Day.
-msgid "Martyr's Day"
-msgstr "शहीद दिवस"
+msgid "शहीद दिवस"
+msgstr ""
 
 #. National Democracy Day.
-msgid "National Democracy Day"
-msgstr "राष्ट्रिय प्रजातन्त्र दिवस"
+msgid "राष्ट्रिय प्रजातन्त्र दिवस"
+msgstr ""
 
-#. Established in 2009. Republic Day.
-msgid "Republic Day"
-msgstr "गणतन्त्र दिवस"
+#. Republic Day.
+msgid "गणतन्त्र दिवस"
+msgstr ""
 
 #. Ram Navami.
-msgid "Ram Navami"
-msgstr "राम नवमी"
+msgid "राम नवमी"
+msgstr ""
 
 #. Janai Poornima.
-msgid "Janai Poornima"
-msgstr "जनै पूर्णिमा"
+msgid "जनै पूर्णिमा"
+msgstr ""
 
 #. Shree Krishna Janmashtami.
-msgid "Shree Krishna Janmashtami"
-msgstr "श्रीकृष्ण जन्माष्टमी"
+msgid "श्रीकृष्ण जन्माष्टमी"
+msgstr ""
 
 #. Ghatasthapana.
-msgid "Ghatasthapana"
-msgstr "घटस्थापना"
+msgid "घटस्थापना"
+msgstr ""
 
 #. Duwadashi (Dashain).
-msgid "Duwadashi (Dashain)"
-msgstr "दुवादशी (दशैं)"
+msgid "दुवादशी (दशैं)"
+msgstr ""
 
 #. Prithvi Jayanti.
-msgid "Prithvi Jayanti"
-msgstr "पृथ्वी जयन्ती"
+msgid "पृथ्वी जयन्ती"
+msgstr ""
 
 #. International Women's Day.
-msgid "International Women's Day"
-msgstr "अन्तर्राष्ट्रिय महिला दिवस"
+msgid "अन्तर्राष्ट्रिय महिला दिवस"
+msgstr ""
 
 #. Nepal New Year.
-msgid "Nepali New Year"
-msgstr "नेपाली नयाँ वर्ष"
+msgid "नेपाली नयाँ वर्ष"
+msgstr ""
 
 #. International Labour Day.
-msgid "International Labour Day"
-msgstr "अन्तर्राष्ट्रिय श्रम दिवस"
+msgid "अन्तर्राष्ट्रिय श्रम दिवस"
+msgstr ""
 
 #. Constitution Day.
-msgid "Constitution Day"
-msgstr "संविधान दिवस"
+msgid "संविधान दिवस"
+msgstr ""
 
 #. Christmas Day.
-msgid "Christmas Day"
-msgstr "क्रिसमसको दिन"
+msgid "क्रिसमसको दिन"
+msgstr ""
 
 #. Maghe Sankranti.
-msgid "Maghe Sankranti"
-msgstr "माघे संक्रान्ति"
+msgid "माघे संक्रान्ति"
+msgstr ""
 
 #. Sonam Lhochhar.
-msgid "Sonam Lhochhar"
-msgstr "सोनम ल्होछार"
+msgid "सोनम ल्होछार"
+msgstr ""
 
 #. Maha Shivaratri.
-msgid "Maha Shivaratri"
-msgstr "महाशिवरात्रि"
+msgid "महाशिवरात्रि"
+msgstr ""
 
 #. Gyalpo Lhosar.
-msgid "Gyalpo Lhosar"
-msgstr "ग्याल्पो ल्होसार"
+msgid "ग्याल्पो ल्होसार"
+msgstr ""
 
 #. Fagu Poornima.
-msgid "Fagu Poornima"
-msgstr "फागुपुर्णिमा"
+msgid "फागुपुर्णिमा"
+msgstr ""
 
 #. Fagu Poornima (Terai).
-msgid "Fagu Poornima (Terai)"
-msgstr "फागुपूर्णिमा (तराई)"
+msgid "फागुपूर्णिमा (तराई)"
+msgstr ""
 
 #. Buddha Jayanti.
-msgid "Buddha Jayanti"
-msgstr "बुद्ध जयन्ती"
+msgid "बुद्ध जयन्ती"
+msgstr ""
 
 #. Fulpati.
-msgid "Fulpati"
-msgstr "फुलपाती"
+msgid "फुलपाती"
+msgstr ""
 
 #. Maha Ashtami.
-msgid "Maha Ashtami"
-msgstr "महा अष्टमी"
+msgid "महा अष्टमी"
+msgstr ""
 
 #. Maha Navami.
-msgid "Maha Navami"
-msgstr "महा नवमी"
+msgid "महा नवमी"
+msgstr ""
 
 #. Bijaya Dashami.
-msgid "Bijaya Dashami"
-msgstr "विजया दशमी"
+msgid "विजया दशमी"
+msgstr ""
 
 #. Ekadashi (Dashain).
-msgid "Ekadashi (Dashain)"
-msgstr "एकादशी (दशैं)"
+msgid "एकादशी (दशैं)"
+msgstr ""
 
 #. Laxmi Pooja.
-msgid "Laxmi Pooja"
-msgstr "लक्ष्मी पुजा"
+msgid "लक्ष्मी पुजा"
+msgstr ""
 
 #. Gai Tihar.
-msgid "Gai Tihar"
-msgstr "गाई तिहार"
+msgid "गाई तिहार"
+msgstr ""
 
 #. Gobardhan Pooja.
-msgid "Gobardhan Pooja"
-msgstr "गोवर्धन पूजा"
+msgid "गोवर्धन पूजा"
+msgstr ""
 
 #. Mha Pooja.
-msgid "Mha Pooja"
-msgstr "म्ह पूजा"
+msgid "म्ह पूजा"
+msgstr ""
 
 #. Bhai Tika.
-msgid "Bhai Tika"
-msgstr "भाइटीका"
+msgid "भाइटीका"
+msgstr ""
 
 #. Chhath Parva.
-msgid "Chhath Parva"
-msgstr "छठ पर्व"
+msgid "छठ पर्व"
+msgstr ""
 
 #. Tamu Lhochhar.
-msgid "Tamu Lhochhar"
-msgstr "तमु ल्हाेसार"
+msgid "तमु ल्हाेसार"
+msgstr ""
 
 #. Eid al-Fitr.
-msgid "Id-ul-Fitr"
-msgstr "इद उल फित्र"
+msgid "इद उल फित्र"
+msgstr ""
 
 #. Eid al-Adha.
-msgid "Bakrid"
-msgstr "बकरिद"
+msgid "बकरीद"
+msgstr ""
 
 #. Day of National Mourning.
-msgid "Day of National Mourning"
-msgstr "राष्ट्रिय शोक दिवस"
+msgid "राष्ट्रिय शोक दिवस"
+msgstr ""
 
 #. Tihar Holiday.
-msgid "Tihar Holiday"
-msgstr "तिहार बिदा"
+msgid "तिहार बिदा"
+msgstr ""
 
 #. People War's Day.
-msgid "People War's Day"
-msgstr "जनयुद्ध दिवस"
+msgid "जनयुद्ध दिवस"
+msgstr ""
