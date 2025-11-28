@@ -380,8 +380,8 @@ class TestRussia(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertNoHolidayName(name_2, range(1991, 1996), range(2005, 2025))
 
     def test_2018(self):
-        self.assertHolidays(
-            Russia(years=2018),
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "Новогодние каникулы"),
             ("2018-01-02", "Новогодние каникулы"),
             ("2018-01-03", "Новогодние каникулы"),

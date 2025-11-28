@@ -355,8 +355,8 @@ class TestHungary(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2021(self):
-        self.assertHolidays(
-            Hungary(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "Újév"),
             ("2021-03-15", "Nemzeti ünnep"),
             ("2021-04-02", "Nagypéntek"),

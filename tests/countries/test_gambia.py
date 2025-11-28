@@ -216,8 +216,8 @@ class TestGambia(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_2024(self):
-        self.assertHolidays(
-            Gambia(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-02-18", "Independence Day"),
             ("2024-02-19", "Independence Day (observed)"),

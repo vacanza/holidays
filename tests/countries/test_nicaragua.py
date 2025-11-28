@@ -88,8 +88,8 @@ class TestNicaragua(CommonCountryTests, TestCase):
         self.assertHolidayName("Navidad", (f"{year}-12-25" for year in range(1950, 2050)))
 
     def test_2023(self):
-        self.assertHolidays(
-            Nicaragua(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "Año Nuevo"),
             ("2023-04-06", "Jueves Santo"),
             ("2023-04-07", "Viernes Santo"),

@@ -22,8 +22,8 @@ class TestIM(CommonCountryTests, TestCase):
         super().setUpClass(IsleOfMan, years=range(1970, 2070))
 
     def test_1970(self):
-        self.assertHolidays(
-            IsleOfMan(years=1970),
+        self.assertHolidaysInYear(
+            1970,
             ("1970-03-27", "Good Friday"),
             ("1970-03-30", "Easter Monday"),
             ("1970-05-18", "Whit Monday"),
@@ -35,8 +35,8 @@ class TestIM(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            IsleOfMan(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (observed)"),
             ("2022-04-15", "Good Friday"),

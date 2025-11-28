@@ -32,8 +32,8 @@ class TestPortugal(CommonCountryTests, TestCase):
 
     def test_2014(self):
         # http://www.officeholidays.com/countries/portugal/2014.php
-        self.assertHolidays(
-            Portugal(years=2014),
+        self.assertHolidaysInYear(
+            2014,
             ("2014-01-01", "Ano Novo"),
             ("2014-04-18", "Sexta-feira Santa"),
             ("2014-04-20", "Páscoa"),
@@ -47,8 +47,8 @@ class TestPortugal(CommonCountryTests, TestCase):
 
     def test_2017(self):
         # http://www.officeholidays.com/countries/portugal/2017.php
-        self.assertHolidays(
-            Portugal(years=2017),
+        self.assertHolidaysInYear(
+            2017,
             ("2017-01-01", "Ano Novo"),
             ("2017-04-14", "Sexta-feira Santa"),
             ("2017-04-16", "Páscoa"),

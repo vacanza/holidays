@@ -536,8 +536,8 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(2010, 2050))
 
     def test_2025(self):
-        self.assertHolidays(
-            Nepal(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-11", "Prithvi Jayanti"),
             ("2025-01-14", "Maghe Sankranti"),
             ("2025-01-29", "Martyr's Day"),

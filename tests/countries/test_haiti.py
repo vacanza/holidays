@@ -22,8 +22,8 @@ class TestHaiti(CommonCountryTests, TestCase):
         super().setUpClass(Haiti)
 
     def test_2023_public_holiday(self):
-        self.assertHolidays(
-            Haiti(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "Fête de l'Indépendance Nationale; Nouvel An"),
             ("2023-01-02", "Jour des Aïeux"),
             ("2023-02-19", "Carnaval"),
@@ -43,8 +43,8 @@ class TestHaiti(CommonCountryTests, TestCase):
         )
 
     def test_2025_public_holiday(self):
-        self.assertHolidays(
-            Haiti(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "Fête de l'Indépendance Nationale; Nouvel An"),
             ("2025-01-02", "Jour des Aïeux"),
             ("2025-03-02", "Carnaval"),

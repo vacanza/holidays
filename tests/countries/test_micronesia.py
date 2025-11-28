@@ -469,8 +469,8 @@ class TestMicronesia(CommonCountryTests, TestCase):
 
     def test_2024(self):
         # https://www.timeanddate.com/holidays/micronesia/2024?hol=1
-        self.assertHolidays(
-            Micronesia(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-03-31", "Micronesian Culture and Tradition Day"),
             ("2024-04-01", "Micronesian Culture and Tradition Day (observed)"),

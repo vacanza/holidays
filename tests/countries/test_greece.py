@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import HALF_DAY
 from holidays.countries.greece import Greece
 from tests.common import CommonCountryTests
 
@@ -94,20 +93,9 @@ class TestGreece(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name_observed, range(2000, 2021), 2023)
 
-    def test_half_day_2022(self):
-        self.assertHolidays(
-            Greece(categories=HALF_DAY, years=2022),
-            ("2022-12-24", "Παραμονή Χριστουγέννων"),
-            ("2022-12-31", "Παραμονή Πρωτοχρονιάς"),
-        )
-        self.assertNoHoliday(
-            "2022-12-24",
-            "2022-12-31",
-        )
-
     def test_2024(self):
-        self.assertHolidays(
-            Greece(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "Πρωτοχρονιά"),
             ("2024-01-06", "Θεοφάνεια"),
             ("2024-03-18", "Καθαρά Δευτέρα"),

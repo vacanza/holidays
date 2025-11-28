@@ -39,8 +39,8 @@ class TestSamoa(CommonCountryTests, TestCase):
         self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in range(1950, 2050)))
 
     def test_2023(self):
-        self.assertHolidays(
-            Samoa(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "The Day After New Year's Day"),
             ("2023-04-07", "Good Friday"),
@@ -55,8 +55,8 @@ class TestSamoa(CommonCountryTests, TestCase):
         )
 
     def test_2024(self):
-        self.assertHolidays(
-            Samoa(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-01-02", "The Day After New Year's Day"),
             ("2024-03-29", "Good Friday"),

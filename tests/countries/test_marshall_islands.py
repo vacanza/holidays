@@ -17,7 +17,7 @@ from holidays.countries.marshall_islands import MarshallIslands
 from tests.common import CommonCountryTests
 
 
-class TestMH(CommonCountryTests, TestCase):
+class TestMarshallIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         warnings.simplefilter("ignore")
@@ -25,8 +25,8 @@ class TestMH(CommonCountryTests, TestCase):
 
     def test_2020(self):
         # http://web.archive.org/web/20201125072002/https://www.pscrmi.net/rmi-holiday-memos
-        self.assertHolidays(
-            MarshallIslands(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "New Year's Day"),
             ("2020-03-01", "Nuclear Victims Remembrance Day"),
             ("2020-03-02", "Nuclear Victims Remembrance Day Holiday"),
@@ -42,8 +42,8 @@ class TestMH(CommonCountryTests, TestCase):
 
     def test_2021(self):
         # http://web.archive.org/web/20210617163816/https://www.pscrmi.net/rmi-holiday-memos
-        self.assertHolidays(
-            MarshallIslands(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "New Year's Day"),
             ("2021-03-01", "Nuclear Victims Remembrance Day"),
             ("2021-04-02", "Good Friday"),
@@ -58,8 +58,8 @@ class TestMH(CommonCountryTests, TestCase):
 
     def test_2022(self):
         # http://web.archive.org/web/20220704021442/https://www.pscrmi.net/rmi-holiday-memos
-        self.assertHolidays(
-            MarshallIslands(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-03-01", "Nuclear Victims Remembrance Day"),
             ("2022-04-15", "Good Friday"),
@@ -76,8 +76,8 @@ class TestMH(CommonCountryTests, TestCase):
 
     def test_2023(self):
         # https://web.archive.org/web/20230628074915/https://www.pscrmi.net/rmi-holiday-memos
-        self.assertHolidays(
-            MarshallIslands(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day Holiday"),
             ("2023-03-01", "Nuclear Victims Remembrance Day"),

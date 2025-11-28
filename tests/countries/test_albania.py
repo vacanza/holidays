@@ -259,8 +259,8 @@ class TestAlbania(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2022(self):
-        self.assertHolidays(
-            Albania(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Festat e Vitit të Ri"),
             ("2022-01-02", "Festat e Vitit të Ri"),
             ("2022-01-03", "Festat e Vitit të Ri (ditë pushimi e shtyrë)"),
@@ -286,8 +286,8 @@ class TestAlbania(CommonCountryTests, TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidays(
-            Albania(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "Festat e Vitit të Ri"),
             ("2023-01-02", "Festat e Vitit të Ri"),
             ("2023-01-03", "Festat e Vitit të Ri (ditë pushimi e shtyrë)"),

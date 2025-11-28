@@ -218,8 +218,8 @@ class TestNauru(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_2024(self):
-        self.assertHolidays(
-            Nauru(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-01-31", "Independence Day"),
             ("2024-02-01", "Day following Independence Day"),

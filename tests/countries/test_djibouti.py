@@ -22,8 +22,8 @@ class TestDjibouti(CommonCountryTests, TestCase):
         super().setUpClass(Djibouti)
 
     def test_2019(self):
-        self.assertHolidays(
-            Djibouti(years=2019),
+        self.assertHolidaysInYear(
+            2019,
             ("2019-01-01", "Nouvel an"),
             ("2019-04-03", "Al Isra et Al Mirague (estimé)"),
             ("2019-05-01", "Fête du travail"),

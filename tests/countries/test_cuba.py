@@ -105,8 +105,8 @@ class TestCuba(CommonCountryTests, TestCase):
 
     def test_2018(self):
         # https://www.officeholidays.com/countries/cuba/2018
-        self.assertHolidayDates(
-            Cuba(years=2018),
+        self.assertHolidayDatesInYear(
+            2018,
             "2018-01-01",
             "2018-01-02",
             "2018-03-30",
@@ -121,8 +121,8 @@ class TestCuba(CommonCountryTests, TestCase):
 
     def test_2019(self):
         # https://www.officeholidays.com/countries/cuba/2019
-        self.assertHolidayDates(
-            Cuba(years=2019),
+        self.assertHolidayDatesInYear(
+            2019,
             "2019-01-01",
             "2019-01-02",
             "2019-04-19",
@@ -137,8 +137,8 @@ class TestCuba(CommonCountryTests, TestCase):
 
     def test_2020(self):
         # https://www.officeholidays.com/countries/cuba/2020
-        self.assertHolidayDates(
-            Cuba(years=2020),
+        self.assertHolidayDatesInYear(
+            2020,
             "2020-01-01",
             "2020-01-02",
             "2020-04-10",
@@ -153,8 +153,8 @@ class TestCuba(CommonCountryTests, TestCase):
 
     def test_2021(self):
         # https://www.officeholidays.com/countries/cuba/2021
-        self.assertHolidayDates(
-            Cuba(years=2021),
+        self.assertHolidayDatesInYear(
+            2021,
             "2021-01-01",
             "2021-01-02",
             "2021-04-02",
@@ -170,8 +170,8 @@ class TestCuba(CommonCountryTests, TestCase):
 
     def test_2022(self):
         # https://www.officeholidays.com/countries/cuba/2022
-        self.assertHolidayDates(
-            Cuba(years=2022),
+        self.assertHolidayDatesInYear(
+            2022,
             "2022-01-01",
             "2022-01-02",
             "2022-04-15",
@@ -187,8 +187,8 @@ class TestCuba(CommonCountryTests, TestCase):
 
     def test_2023(self):
         # https://www.officeholidays.com/countries/cuba/2023
-        self.assertHolidayDates(
-            Cuba(years=2023),
+        self.assertHolidayDatesInYear(
+            2023,
             "2023-01-01",
             "2023-01-02",
             "2023-04-07",

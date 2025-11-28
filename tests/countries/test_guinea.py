@@ -174,9 +174,9 @@ class TestGuinea(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1959, 2050))
 
     def test_2021(self):
-        # * <https://www.timeanddate.com/holidays/guinea/2021>
-        self.assertHolidays(
-            Guinea(years=2021),
+        # https://www.timeanddate.com/holidays/guinea/2021
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "Fête du Nouvel an"),
             ("2021-04-03", "Jour de la Deuxième République"),
             ("2021-04-05", "Lundi de Pâques"),

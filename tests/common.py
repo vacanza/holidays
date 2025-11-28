@@ -75,6 +75,11 @@ class TestCase:
                         raise TypeError(f"Expected (name, ...) arguments for {instance_name}")
                     name, *rest = args
                     return helper_func(self, name, instance_name, *rest, **kwargs)
+                elif method_type == "year":
+                    if not args:
+                        raise TypeError(f"Expected (year, ...) arguments for {instance_name}")
+                    year, *rest = args
+                    return helper_func(self, year, instance_name, *rest, **kwargs)
                 else:
                     return helper_func(self, instance_name, *args, **kwargs)
 
@@ -83,17 +88,21 @@ class TestCase:
         method_specs = {
             "_assertHoliday": "assert{variant}Holiday",
             "_assertHolidayDates": "assert{variant}HolidayDates",
+            "_assertHolidayDatesInYear": "assert{variant}HolidayDatesInYear",
             "_assertHolidayName": "assert{variant}HolidayName",
             "_assertHolidayNameCount": "assert{variant}HolidayNameCount",
             "_assertHolidays": "assert{variant}Holidays",
+            "_assertHolidaysInYear": "assert{variant}HolidaysInYear",
             "_assertNoHoliday": "assertNo{variant}Holiday",
             "_assertNoHolidayName": "assertNo{variant}HolidayName",
             "_assertNoHolidays": "assertNo{variant}Holidays",
         }
 
         method_types = {
+            "_assertHolidayDatesInYear": "year",
             "_assertHolidayNameCount": "name_count",
             "_assertHolidayName": "name",
+            "_assertHolidaysInYear": "year",
             "_assertNoHolidayName": "name",
         }
 
@@ -385,6 +394,26 @@ class TestCase:
 
         self.assertEqual(len(dates), len(holidays.keys()), set(dates).difference(holidays.keys()))
 
+    # HolidayDatesInYear.
+    def _assertHolidayDatesInYear(self, year, instance_name, *args):
+        """Helper: assert holiday dates exactly match expected dates in the given year."""
+        holidays, dates = self._parse_arguments(args, instance_name=instance_name)
+        self._verify_type(holidays)
+
+        filtered_holidays = {
+            dt.strftime("%Y-%m-%d"): name for dt, name in holidays.items() if dt.year == year
+        }
+
+        # Check one by one for descriptive error messages.
+        for dt in dates:
+            self.assertIn(dt, filtered_holidays, dt)
+
+        self.assertEqual(
+            len(dates),
+            len(filtered_holidays.keys()),
+            set(dates).difference(filtered_holidays.keys()),
+        )
+
     # HolidayName.
     def _assertHolidayName(self, name, instance_name, *args):
         """Helper: assert either a holiday with a specific name exists or
@@ -440,6 +469,31 @@ class TestCase:
             len(holidays),
             len(expected_holidays),
             {(dt.strftime("%Y-%m-%d"), name) for dt, name in holidays.items()}.difference(
+                (dt, name) for dt, name in expected_holidays
+            ),
+        )
+
+    # HolidaysInYear.
+    def _assertHolidaysInYear(self, year, instance_name, *args):
+        """Helper: assert holidays exactly match expected holidays in the given year."""
+        holidays, expected_holidays = self._parse_arguments(
+            args, expand_items=False, instance_name=instance_name
+        )
+        self._verify_type(holidays)
+
+        filtered_holidays = {
+            dt.strftime("%Y-%m-%d"): name for dt, name in holidays.items() if dt.year == year
+        }
+
+        # Check one by one for descriptive error messages.
+        for dt, name in expected_holidays:
+            self.assertIn(dt, filtered_holidays)
+            self.assertEqual(name, filtered_holidays.get(dt), dt)
+
+        self.assertEqual(
+            len(filtered_holidays),
+            len(expected_holidays),
+            {(dt, name) for dt, name in filtered_holidays.items()}.difference(
                 (dt, name) for dt, name in expected_holidays
             ),
         )

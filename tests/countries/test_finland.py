@@ -388,8 +388,8 @@ class TestFinland(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
 
     def test_unofficial_holidays(self):
-        self.assertHolidays(
-            Finland(categories=UNOFFICIAL, years=2024),
+        self.assertUnofficialHolidaysInYear(
+            2024,
             ("2024-02-05", "Runebergin päivä"),
             ("2024-03-19", "Minna Canthin päivä, tasa-arvon päivä"),
             ("2024-04-09", "Mikael Agricolan päivä, suomen kielen päivä"),
@@ -408,8 +408,8 @@ class TestFinland(CommonCountryTests, TestCase):
         )
 
     def test_workday_holidays(self):
-        self.assertHolidays(
-            Finland(categories=WORKDAY, years=2024),
+        self.assertWorkdayHolidaysInYear(
+            2024,
             ("2024-02-28", "Kalevalan päivä, suomalaisen kulttuurin päivä"),
             ("2024-05-01", "Vappu"),
             ("2024-05-12", "Äitienpäivä"),
@@ -420,8 +420,8 @@ class TestFinland(CommonCountryTests, TestCase):
         )
 
     def test_2018(self):
-        self.assertHolidays(
-            Finland(years=2018),
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "Uudenvuodenpäivä"),
             ("2018-01-06", "Loppiainen"),
             ("2018-03-30", "Pitkäperjantai"),
@@ -440,8 +440,8 @@ class TestFinland(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Finland(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Uudenvuodenpäivä"),
             ("2022-01-06", "Loppiainen"),
             ("2022-04-15", "Pitkäperjantai"),

@@ -118,8 +118,8 @@ class TestGG(CommonCountryTests, TestCase):
 
     def test_2019(self):
         # Wayback Machine of https://www.gov.gg/holidaydates
-        self.assertHolidays(
-            Guernsey(years=2019),
+        self.assertHolidaysInYear(
+            2019,
             ("2019-01-01", "New Year's Day"),
             ("2019-04-19", "Good Friday"),
             ("2019-04-22", "Easter Monday"),
@@ -133,8 +133,8 @@ class TestGG(CommonCountryTests, TestCase):
 
     def test_2020(self):
         # Wayback Machine of https://www.gov.gg/holidaydates
-        self.assertHolidays(
-            Guernsey(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "New Year's Day"),
             ("2020-04-10", "Good Friday"),
             ("2020-04-13", "Easter Monday"),
@@ -149,8 +149,8 @@ class TestGG(CommonCountryTests, TestCase):
 
     def test_2021(self):
         # Wayback Machine of https://www.gov.gg/holidaydates
-        self.assertHolidays(
-            Guernsey(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "New Year's Day"),
             ("2021-04-02", "Good Friday"),
             ("2021-04-05", "Easter Monday"),
@@ -167,8 +167,8 @@ class TestGG(CommonCountryTests, TestCase):
     def test_2022(self):
         # Wayback Machine of https://www.gov.gg/holidaydates
         # https://www.bbc.com/news/world-europe-guernsey-62864318
-        self.assertHolidays(
-            Guernsey(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (substitute day)"),
             ("2022-04-15", "Good Friday"),
@@ -186,8 +186,8 @@ class TestGG(CommonCountryTests, TestCase):
 
     def test_2023(self):
         # https://www.gov.gg/holidaydates
-        self.assertHolidays(
-            Guernsey(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day (substitute day)"),
             ("2023-04-07", "Good Friday"),
@@ -204,8 +204,8 @@ class TestGG(CommonCountryTests, TestCase):
     def test_2024(self):
         # https://www.gov.gg/holidaydates
         # https://www.bbc.co.uk/news/articles/c1441ddn87po
-        self.assertHolidays(
-            Guernsey(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-03-29", "Good Friday"),
             ("2024-04-01", "Easter Monday"),
@@ -220,8 +220,8 @@ class TestGG(CommonCountryTests, TestCase):
 
     def test_2025(self):
         # https://www.gov.gg/holidaydates
-        self.assertHolidays(
-            Guernsey(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "New Year's Day"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),

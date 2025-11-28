@@ -27,8 +27,8 @@ class TestGabon(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(self.start_year, 2015))
 
     def test_2022(self):
-        self.assertHolidays(
-            Gabon(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-04-17", "Women's Rights Day"),
             ("2022-04-18", "Easter Monday"),

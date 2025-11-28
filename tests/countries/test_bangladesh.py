@@ -52,8 +52,8 @@ class TestBangladesh(CommonCountryTests, TestCase):
         self.assertHolidayName("Victory Day", (f"{year}-12-16" for year in self.full_range))
 
     def test_2022(self):
-        self.assertHolidays(
-            Bangladesh(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-02-21", "International Mother's language Day"),
             ("2022-03-17", "Sheikh Mujibur Rahman's Birthday and Children's Day"),
             ("2022-03-26", "Independence Day"),

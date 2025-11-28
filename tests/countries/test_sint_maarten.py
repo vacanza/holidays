@@ -190,8 +190,8 @@ class TestSintMaarten(CommonCountryTests, TestCase):
         self.assertHolidayName("Tweede Kerstdag", (f"{year}-12-26" for year in range(2011, 2050)))
 
     def test_2017(self):
-        self.assertHolidays(
-            SintMaarten(years=2017),
+        self.assertHolidaysInYear(
+            2017,
             ("2017-01-01", "Nieuwjaarsdag"),
             ("2017-04-14", "Goede Vrijdag"),
             ("2017-04-16", "Eerste paasdag"),

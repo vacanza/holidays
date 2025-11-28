@@ -16,7 +16,7 @@ from holidays.countries.turks_and_caicos_islands import TurksAndCaicosIslands
 from tests.common import CommonCountryTests
 
 
-class TestTC(CommonCountryTests, TestCase):
+class TestTurksAndCaicosIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(TurksAndCaicosIslands, years=range(1963, 2050))
@@ -225,8 +225,8 @@ class TestTC(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_2023(self):
-        self.assertHolidays(
-            TurksAndCaicosIslands(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day (observed)"),
             ("2023-03-13", "Commonwealth Day"),

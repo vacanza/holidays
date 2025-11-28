@@ -59,8 +59,8 @@ class TestGhana(CommonCountryTests, TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidays(
-            Ghana(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day (observed)"),
             ("2023-01-07", "Constitution Day"),
@@ -79,8 +79,8 @@ class TestGhana(CommonCountryTests, TestCase):
         )
 
     def test_2024(self):
-        self.assertHolidays(
-            Ghana(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-01-07", "Constitution Day"),
             ("2024-01-08", "Constitution Day (observed)"),

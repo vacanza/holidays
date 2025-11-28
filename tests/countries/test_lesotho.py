@@ -44,8 +44,8 @@ class TestLesotho(CommonCountryTests, TestCase):
         self.assertNoHoliday(f"{year}-07-17" for year in range(1996, 1998))
 
     def test_2022(self):
-        self.assertHolidays(
-            Lesotho(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-03-11", "Moshoeshoe's Day"),
             ("2022-04-15", "Good Friday"),

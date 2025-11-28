@@ -201,8 +201,8 @@ class TestBurundi(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2024(self):
-        self.assertHolidays(
-            Burundi(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "Jour de l'an"),
             ("2024-02-05", "Fête de l'Unité"),
             ("2024-04-06", "Commémoration de l'Assassinat du Président Cyprien Ntaryamira"),

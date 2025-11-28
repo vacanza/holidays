@@ -39,8 +39,8 @@ class TestHonduras(CommonCountryTests, TestCase):
 
     def test_2016(self):
         # https://www.officeholidays.com/countries/honduras/2016
-        self.assertHolidayDates(
-            Honduras(years=2016),
+        self.assertHolidayDatesInYear(
+            2016,
             "2016-01-01",
             "2016-03-24",
             "2016-03-25",
@@ -56,8 +56,8 @@ class TestHonduras(CommonCountryTests, TestCase):
 
     def test_2021(self):
         # https://www.officeholidays.com/countries/honduras/2021
-        self.assertHolidayDates(
-            Honduras(years=2021),
+        self.assertHolidayDatesInYear(
+            2021,
             "2021-01-01",
             "2021-04-01",
             "2021-04-02",
@@ -87,8 +87,8 @@ class TestHonduras(CommonCountryTests, TestCase):
         )
 
     def test_2025(self):
-        self.assertHolidayDates(
-            Honduras(years=2025),
+        self.assertHolidayDatesInYear(
+            2025,
             "2025-01-01",
             "2025-04-14",
             "2025-04-17",

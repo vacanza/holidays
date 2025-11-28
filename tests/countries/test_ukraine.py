@@ -20,7 +20,7 @@ from tests.common import CommonCountryTests, WorkingDayTests
 class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Ukraine, years=range(1991, 2023), years_non_observed=range(1991, 2023))
+        super().setUpClass(Ukraine, years=range(1991, 2026), years_non_observed=range(1991, 2026))
 
     def test_no_holidays(self):
         super().test_no_holidays()
@@ -456,8 +456,8 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_2018(self):
         # https://www.buhoblik.org.ua/kadry-zarplata/vremya/3678-3678-normi-trivalosti-robochogo-chasu.html
-        self.assertHolidayDates(
-            Ukraine(years=2018),
+        self.assertHolidayDatesInYear(
+            2018,
             "2018-01-01",
             "2018-01-07",
             "2018-01-08",
@@ -482,8 +482,8 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_2019(self):
         # https://www.buhoblik.org.ua/kadry-zarplata/vremya/3946-3946-normi-trivalosti-robochogo-chasu.html
-        self.assertHolidayDates(
-            Ukraine(years=2019),
+        self.assertHolidayDatesInYear(
+            2019,
             "2019-01-01",
             "2019-01-07",
             "2019-03-08",
@@ -505,8 +505,8 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_2020(self):
         # https://www.buhoblik.org.ua/kadry-zarplata/vremya/4058-4058-normi-trivalosti-robochogo-chasu.html
-        self.assertHolidayDates(
-            Ukraine(years=2020),
+        self.assertHolidayDatesInYear(
+            2020,
             "2020-01-01",
             "2020-01-06",
             "2020-01-07",
@@ -528,8 +528,8 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_2021(self):
         # https://www.buhoblik.org.ua/kadry-zarplata/vremya/4221-4221-norma-trivalosti-robochogo-chasu.html
-        self.assertHolidays(
-            Ukraine(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "Новий рік"),
             ("2021-01-07", "Різдво Христове"),
             ("2021-01-08", "Вихідний день (перенесено з 16.01.2021)"),
@@ -556,8 +556,8 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_2022(self):
         # https://www.buhoblik.org.ua/kadry-zarplata/vremya/4246-norma-trivalosti-robochogo-chasu-2022.html
-        self.assertHolidays(
-            Ukraine(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Новий рік"),
             ("2022-01-03", "Новий рік (вихідний)"),
             ("2022-01-07", "Різдво Христове"),
@@ -566,8 +566,8 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2022_workday(self):
-        self.assertHolidays(
-            Ukraine(categories=WORKDAY, years=2022),
+        self.assertWorkdayHolidaysInYear(
+            2022,
             ("2022-04-24", "Великдень (Пасха)"),
             ("2022-05-01", "День праці"),
             ("2022-05-09", "День перемоги над нацизмом у Другій світовій війні (День перемоги)"),
@@ -580,8 +580,8 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2023_workday(self):
-        self.assertHolidays(
-            Ukraine(categories=WORKDAY, years=2023),
+        self.assertWorkdayHolidaysInYear(
+            2023,
             ("2023-01-01", "Новий рік"),
             ("2023-01-07", "Різдво Христове"),
             ("2023-03-08", "Міжнародний жіночий день"),
@@ -597,8 +597,8 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2024_workday(self):
-        self.assertHolidays(
-            Ukraine(categories=WORKDAY, years=2024),
+        self.assertWorkdayHolidaysInYear(
+            2024,
             ("2024-01-01", "Новий рік"),
             ("2024-03-08", "Міжнародний жіночий день"),
             ("2024-05-01", "День праці"),
