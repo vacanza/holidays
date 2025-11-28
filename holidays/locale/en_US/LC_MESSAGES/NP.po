@@ -170,3 +170,15 @@ msgstr ""
 #. Eid al-Adha.
 msgid "Bakrid"
 msgstr ""
+
+#. Day of National Mourning.
+msgid "Day of National Mourning"
+msgstr ""
+
+#. Tihar Holiday.
+msgid "Tihar Holiday"
+msgstr ""
+
+#. People War's Day.
+msgid "People War's Day"
+msgstr ""

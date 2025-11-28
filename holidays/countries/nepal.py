@@ -402,10 +402,10 @@ class NepalStaticHolidays:
     """
 
     # Day of National Mourning.
-    name_day_of_national_mourning = "Day of National Mourning"
+    name_day_of_national_mourning = tr("Day of National Mourning")
 
     # Tihar Holiday.
-    name_tihar_holiday = "Tihar Holiday"
+    name_tihar_holiday = tr("Tihar Holiday")
 
     special_public_holidays = {
         2011: (MAR, 6, name_day_of_national_mourning),
@@ -415,7 +415,7 @@ class NepalStaticHolidays:
         2023: (
             (JAN, 16, name_day_of_national_mourning),
             # People War's Day.
-            (FEB, 13, "People War's Day"),
+            (FEB, 13, tr("People War's Day")),
             (SEP, 14, name_day_of_national_mourning),
             (NOV, 16, name_tihar_holiday),
         ),
