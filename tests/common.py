@@ -251,7 +251,15 @@ class TestCase:
                 attr_name_suffix = f"_{category}{attr_name_suffix}"
 
             attr_name = f"holidays{attr_name_suffix}"
-            setattr(cls, attr_name, cls.test_class(**init_kwargs))
+            instance = cls.test_class(**init_kwargs)
+
+            # Per-year index for InYear test methods.
+            year_index = defaultdict(list)
+            for dt, name in instance.items():
+                year_index[dt.year].append((dt, name))
+            instance._year_index = dict(year_index)
+
+            setattr(cls, attr_name, instance)
 
         # Legacy `cls.subdiv_holidays` / `cls.subdiv_holidays_non_observed` behavior.
         cls.subdiv_holidays = {}
@@ -401,7 +409,7 @@ class TestCase:
         self._verify_type(holidays)
 
         filtered_holidays = {
-            dt.strftime("%Y-%m-%d"): name for dt, name in holidays.items() if dt.year == year
+            dt.strftime("%Y-%m-%d"): name for dt, name in holidays._year_index.get(year, [])
         }
 
         # Check one by one for descriptive error messages.
@@ -482,7 +490,7 @@ class TestCase:
         self._verify_type(holidays)
 
         filtered_holidays = {
-            dt.strftime("%Y-%m-%d"): name for dt, name in holidays.items() if dt.year == year
+            dt.strftime("%Y-%m-%d"): name for dt, name in holidays._year_index.get(year, [])
         }
 
         # Check one by one for descriptive error messages.
