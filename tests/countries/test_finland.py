@@ -366,7 +366,6 @@ class TestFinland(CommonCountryTests, TestCase):
             "2021-11-14",
             "2024-11-10",
         )
-        self.assertWorkdayHolidayName(name, "2020-11-08", "2024-11-10")
         self.assertWorkdayHolidayName(name, range(2019, self.end_year))
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 2019))
 
