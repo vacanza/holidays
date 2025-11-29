@@ -71,9 +71,9 @@ msgstr "Prithvi Jayanti"
 msgid "अन्तर्राष्ट्रिय महिला दिवस"
 msgstr "International Women's Day"
 
-#. Nepal New Year.
+#. Nepali New Year.
 msgid "नेपाली नयाँ वर्ष"
-msgstr "Nepal New Year"
+msgstr "Nepali New Year"
 
 #. International Labour Day.
 msgid "अन्तर्राष्ट्रिय श्रम दिवस"

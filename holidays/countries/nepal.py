@@ -197,7 +197,7 @@ class Nepal(
         # International Women's Day.
         self._add_womens_day(tr("अन्तर्राष्ट्रिय महिला दिवस"))
 
-        # Nepal New Year.
+        # Nepali New Year.
         self._add_vaisakhi(tr("नेपाली नयाँ वर्ष"))
 
         # International Labour Day.

@@ -507,7 +507,7 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2010, 2033))
 
-    def test_id_ul_fitr(self):
+    def test_eid_al_fitr(self):
         name = "इद उल फित्र"
         dt = (
             "2019-06-05",
@@ -521,7 +521,7 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, self.no_estimated_holidays, range(2010, 2050))
 
-    def test_bakrid(self):
+    def test_eid_al_adha(self):
         name = "बकरीद"
         dt = (
             "2019-08-12",
@@ -624,13 +624,13 @@ class TestNepal(CommonCountryTests, TestCase):
             ("2024-03-11", "Gyalpo Lhosar"),
             ("2024-03-24", "Fagu Poornima"),
             ("2024-03-25", "Fagu Poornima (Terai)"),
-            ("2024-04-11", "Id-ul-Fitr"),
+            ("2024-04-11", "Eid al-Fitr"),
             ("2024-04-13", "Nepali New Year"),
             ("2024-04-17", "Ram Navami"),
             ("2024-05-01", "International Labour Day"),
             ("2024-05-23", "Buddha Jayanti"),
             ("2024-05-28", "Republic Day"),
-            ("2024-06-17", "Bakrid"),
+            ("2024-06-17", "Eid al-Adha"),
             ("2024-08-19", "Janai Poornima"),
             ("2024-08-26", "Shree Krishna Janmashtami"),
             ("2024-09-19", "Constitution Day"),

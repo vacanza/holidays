@@ -71,7 +71,7 @@ msgstr ""
 msgid "अन्तर्राष्ट्रिय महिला दिवस"
 msgstr ""
 
-#. Nepal New Year.
+#. Nepali New Year.
 msgid "नेपाली नयाँ वर्ष"
 msgstr ""
 
