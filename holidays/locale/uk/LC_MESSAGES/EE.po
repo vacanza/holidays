@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.66\n"
+"Project-Id-Version: Holidays 0.86\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2025-02-02 19:32+0200\n"
+"PO-Revision-Date: 2025-11-27 18:21+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Source-Language: et\n"
 
 #. New Year's Day.
@@ -43,13 +43,17 @@ msgstr "Страсна пʼятниця"
 msgid "ülestõusmispühade 1. püha"
 msgstr "Великдень"
 
-#. Spring Day.
-msgid "kevadpüha"
-msgstr "День весни"
-
 #. Whit Sunday.
 msgid "nelipühade 1. püha"
 msgstr "Трійця"
+
+#. May Day.
+msgid "kevadpüha"
+msgstr "День весни"
+
+#. International Workers' Solidarity Day.
+msgid "töörahva rahvusvahelise solidaarsuse päev"
+msgstr "День міжнародної солідарності трудящих"
 
 #. Victory Day.
 msgid "võidupüha"
@@ -63,6 +67,10 @@ msgstr "День літнього сонцестояння"
 msgid "taasiseseisvumispäev"
 msgstr "День відновлення незалежності"
 
+#. Day of Declaration of Sovereignty.
+msgid "taassünnipäev"
+msgstr "День Декларації суверенітету"
+
 #. Christmas Eve.
 msgid "jõululaupäev"
 msgstr "Святий вечір"
@@ -74,3 +82,7 @@ msgstr "Різдво Христове"
 #. Second Day of Christmas.
 msgid "teine jõulupüha"
 msgstr "Другий день Різдва"
+
+#. Pre-holiday day (workday shortened by 3 hours).
+msgid "pühade-eelne päev (tööpäev lüheneb 3 tunni võrra)"
+msgstr "Передсвятковий робочий день (скорочений на 3 години)"
