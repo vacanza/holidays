@@ -1,6 +1,6 @@
 # Holiday Categories
 
-The holidays library supports various categories of holidays to help classify different types of observances. This allows users to filter holidays based on their official status, religious significance, or cultural importance.
+The framework offers multiple holiday categories to classify different types of observances, enabling users to filter holidays by official status, religious significance, or cultural importance.
 
 ## Overview
 
@@ -27,7 +27,7 @@ Holidays observed by government institutions but may not provide general time of
 Examples:
 
 - Flag Day in some jurisdictions
-- Government-specific commemorative days
+- Government-designated commemorative days
 
 #### WORKDAY
 
@@ -40,13 +40,13 @@ Examples:
 
 #### UNOFFICIAL
 
-Commonly celebrated cultural holidays with no official government recognition or mandated time off. These are widely observed cultural celebrations, but exclude novelty, internet, or marketing "national days."
+Commonly celebrated cultural holidays with no official government recognition or mandated time off. These are widely observed cultural celebrations, but exclude novelty, internet, or marketing "national days".
 
 Examples:
 
-- Valentine's Day
-- Saint Patrick's Day
 - Halloween
+- Saint Patrick's Day
+- Valentine's Day
 
 ### Institutional Categories
 
@@ -56,8 +56,8 @@ Holidays specifically observed by banking institutions, which may differ from ge
 
 Examples:
 
+- Additional bank-specific closures
 - Good Friday (in some countries)
-- Additional banking-specific closures
 
 #### SCHOOL
 
@@ -65,8 +65,8 @@ Holidays specific to educational institutions.
 
 Examples:
 
+- Education-related observances
 - Teacher's Day
-- Education-specific observances
 
 #### ARMED_FORCES
 
@@ -81,12 +81,12 @@ Examples:
 
 #### OPTIONAL
 
-Holidays that individuals or organizations may choose to observe, often with flexibility in implementation.
+Optional holidays that individuals or organizations may observe, often with flexible implementation.
 
 Examples:
 
-- Religious holidays for minority populations
 - Cultural observances with optional recognition
+- Religious holidays for minority populations
 
 #### MANDATORY *(deprecated)*
 
@@ -109,39 +109,39 @@ Holidays specific to the Catholic Christian tradition.
 
 Examples:
 
-- Feast of the Immaculate Conception
 - Corpus Christi
+- Feast of the Immaculate Conception
 
 #### CHRISTIAN
 
-General Christian holidays observed across denominations.
+General Christian holidays observed by multiple denominations.
 
 Examples:
 
-- Easter Sunday
 - Christmas Day
+- Easter Sunday
 
 #### ORTHODOX
 
-Holidays specific to Orthodox Christian traditions.
+Holidays specific to the Orthodox Christian tradition.
 
 Examples:
 
-- Orthodox Easter
 - Orthodox Christmas
+- Orthodox Easter
 
 #### ISLAMIC
 
-Holidays from the Islamic tradition.
+Holidays specific to the Islamic tradition.
 
 Examples:
 
-- Eid al-Fitr
 - Eid al-Adha
+- Eid al-Fitr
 
 #### HINDU
 
-Holidays from the Hindu tradition.
+Holidays specific to the Hindu tradition.
 
 Examples:
 
@@ -150,16 +150,16 @@ Examples:
 
 #### HEBREW
 
-Holidays from the Jewish tradition.
+Holidays specific to the Jewish tradition.
 
 Examples:
 
-- Yom Kippur
 - Passover
+- Yom Kippur
 
 #### CHINESE
 
-Holidays from Chinese cultural and religious traditions.
+Holidays specific to Chinese cultural and religious traditions.
 
 Examples:
 
@@ -244,26 +244,24 @@ Examples:
 
 ### Filtering by Single Category
 
-Get only public holidays:
+Get only public holidays for the United States:
 
 ```python
 import holidays
 from holidays.constants import PUBLIC
 
-# Get only public holidays for the United States
 us_public = holidays.UnitedStates(categories=PUBLIC, years=2024)
 print(f"US public holidays in 2024: {len(us_public)}")
 ```
 
 ### Filtering by Multiple Categories
 
-Get holidays from multiple categories:
+ Get both public and bank holidays for Belgium:
 
 ```python
 import holidays
 from holidays.constants import PUBLIC, BANK
 
-# Get both public and bank holidays for Belgium
 belgium_holidays = holidays.Belgium(categories=(PUBLIC, BANK), years=2024)
 for date, name in sorted(belgium_holidays.items()):
     print(f"{date}: {name}")
@@ -271,11 +269,12 @@ for date, name in sorted(belgium_holidays.items()):
 
 ### Religious Category Example
 
+Get only Catholic holidays in Germany (Saxony subdivision):
+
 ```python
 import holidays
 from holidays.constants import CATHOLIC
 
-# Get only Catholic holidays in Germany (Saxony subdivision)
 germany_catholic = holidays.Germany(subdiv='SN', categories=CATHOLIC, years=2024)
 for date, name in sorted(germany_catholic.items()):
     print(f"{date}: {name}")
@@ -283,50 +282,49 @@ for date, name in sorted(germany_catholic.items()):
 
 ### Unofficial Holidays Example
 
+Get unofficial holidays in the United States:
+
 ```python
 import holidays
 from holidays.constants import UNOFFICIAL
 
-# Get unofficial holidays in the United States
 us_unofficial = holidays.UnitedStates(categories=UNOFFICIAL, years=2024)
 for date, name in sorted(us_unofficial.items()):
     print(f"{date}: {name}")
-# Output: Valentine's Day, Saint Patrick's Day, Halloween, etc.
 ```
 
 ## Country-Specific Support
 
-Not all countries support all categories. Each country defines its own supported categories based on its legal and cultural framework.
+Not all countries support every category. Each country defines the categories it recognizes based on its legal and cultural framework.
 
 ### Checking Supported Categories
+
+Check which categories a country supports:
 
 ```python
 import holidays
 
-# Check which categories a country supports
-us = holidays.UnitedStates()
-print(f"US supported categories: {us.supported_categories}")
-# Output: ('government', 'public', 'unofficial')
+print(f"US supported categories: {holidays.UnitedStates.supported_categories}")
 
-de = holidays.Germany()
-print(f"Germany supported categories: {de.supported_categories}")
-# Output: ('catholic', 'public')
-
-# Note: The category tuples shown are examples and may change as countries update their holiday frameworks.
+print(f"Germany supported categories: {holidays.Germany.supported_categories}")
 ```
 
 ### Examples by Country
 
 **United States**: `('government', 'public', 'unofficial')`
+
 - Supports federal holidays, state holidays, and cultural observances
 
 **Germany**: `('catholic', 'public')`
+
 - Supports public holidays and Catholic religious holidays in certain regions
 
 **India**: `('optional', 'public')`
+
 - Supports national holidays and optional regional observances
 
 **Argentina**: `('armenian', 'bank', 'government', 'hebrew', 'islamic', 'public')`
+
 - Supports multiple religious traditions and institutional categories
 
 ## Implementation Guidelines
