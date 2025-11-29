@@ -19,75 +19,72 @@ from tests.common import CommonCountryTests
 class TestEstonia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(1990, 2050)
-        super().setUpClass(Estonia)
+        super().setUpClass(Estonia, years=range(1990, 2050))
 
     def test_new_years(self):
-        self.assertHolidayName("uusaasta", (f"{year}-01-01" for year in self.full_range))
+        self.assertHolidayName("uusaasta", (f"{year}-01-01" for year in range(1990, 2050)))
 
     def test_independence_day(self):
-        self.assertHolidayName("iseseisvuspäev", (f"{year}-02-24" for year in self.full_range))
+        self.assertHolidayName("iseseisvuspäev", (f"{year}-02-24" for year in range(1990, 2050)))
 
     def test_good_friday(self):
-        name = "suur reede"
         self.assertHolidayName(
-            name,
+            "suur reede",
             "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
         )
-        self.assertHolidayName(name, self.full_range)
 
     def test_easter_sunday(self):
-        name = "ülestõusmispühade 1. püha"
         self.assertHolidayName(
-            name,
+            "ülestõusmispühade 1. püha",
             "2019-04-21",
             "2020-04-12",
             "2021-04-04",
             "2022-04-17",
             "2023-04-09",
         )
-        self.assertHolidayName(name, self.full_range)
 
     def test_spring_day(self):
-        self.assertHolidayName("kevadpüha", (f"{year}-05-01" for year in self.full_range))
+        self.assertHolidayName("kevadpüha", (f"{year}-05-01" for year in range(1990, 2050)))
 
     def test_whit_sunday(self):
-        name = "nelipühade 1. püha"
         self.assertHolidayName(
-            name,
+            "nelipühade 1. püha",
             "2019-06-09",
             "2020-05-31",
             "2021-05-23",
             "2022-06-05",
             "2023-05-28",
         )
-        self.assertHolidayName(name, self.full_range)
 
     def test_victory_day(self):
-        self.assertHolidayName("võidupüha", (f"{year}-06-23" for year in self.full_range))
+        self.assertHolidayName("võidupüha", (f"{year}-06-23" for year in range(1990, 2050)))
 
     def test_midsummer_day(self):
-        self.assertHolidayName("jaanipäev", (f"{year}-06-24" for year in self.full_range))
+        self.assertHolidayName("jaanipäev", (f"{year}-06-24" for year in range(1990, 2050)))
 
     def test_restoration_of_independence_day(self):
         name = "taasiseseisvumispäev"
-        self.assertHolidayName(name, (f"{year}-08-20" for year in range(1998, self.end_year)))
-        self.assertNoHolidayName(name, range(self.start_year, 1998))
+        self.assertHolidayName(name, (f"{year}-08-20" for year in range(1998, 2050)))
+        self.assertNoHoliday(f"{year}-08-20" for year in range(1990, 1998))
+        self.assertNoHolidayName(name, range(1990, 1998))
 
     def test_christmas_eve(self):
         name = "jõululaupäev"
-        self.assertHolidayName(name, (f"{year}-12-24" for year in range(2005, self.end_year)))
-        self.assertNoHolidayName(name, range(self.start_year, 2005))
+        self.assertHolidayName(name, (f"{year}-12-24" for year in range(2005, 2050)))
+        self.assertNoHoliday(f"{year}-12-24" for year in range(1990, 2005))
+        self.assertNoHolidayName(name, range(1990, 2005))
 
     def test_christmas_day(self):
-        self.assertHolidayName("esimene jõulupüha", (f"{year}-12-25" for year in self.full_range))
+        self.assertHolidayName(
+            "esimene jõulupüha", (f"{year}-12-25" for year in range(1990, 2050))
+        )
 
     def test_second_christmas_day(self):
-        self.assertHolidayName("teine jõulupüha", (f"{year}-12-26" for year in self.full_range))
+        self.assertHolidayName("teine jõulupüha", (f"{year}-12-26" for year in range(1990, 2050)))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
