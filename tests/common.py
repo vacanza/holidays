@@ -400,18 +400,14 @@ class TestCase:
         holidays, dates = self._parse_arguments(args, instance_name=instance_name)
         self._verify_type(holidays)
 
-        filtered_holidays = {
-            dt.strftime("%Y-%m-%d"): name for dt, name in holidays.items() if dt.year == year
-        }
+        filtered_holidays = {dt.strftime("%Y-%m-%d") for dt in holidays.keys() if dt.year == year}
 
         # Check one by one for descriptive error messages.
         for dt in dates:
             self.assertIn(dt, filtered_holidays, dt)
 
         self.assertEqual(
-            len(dates),
-            len(filtered_holidays.keys()),
-            set(dates).difference(filtered_holidays.keys()),
+            len(dates), len(filtered_holidays), set(dates).difference(filtered_holidays)
         )
 
     # HolidayName.
