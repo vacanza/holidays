@@ -256,7 +256,7 @@ print(f"US public holidays in 2024: {len(us_public)}")
 
 ### Filtering by Multiple Categories
 
- Get both public and bank holidays for Belgium:
+Get both public and bank holidays for Belgium:
 
 ```python
 import holidays

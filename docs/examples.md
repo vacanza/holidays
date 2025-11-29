@@ -224,7 +224,7 @@ US categories: ('government', 'public', 'unofficial')
 
 >>> print("Germany categories:", holidays.Germany.supported_categories)
 Germany categories: ('catholic', 'public')
-()
+
 >>> print("Argentina categories:", holidays.Argentina.supported_categories)
 Argentina categories: ('armenian', 'bank', 'government', 'hebrew', 'islamic', 'public')
 ```
