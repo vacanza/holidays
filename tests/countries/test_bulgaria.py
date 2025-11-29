@@ -13,13 +13,117 @@
 from unittest import TestCase
 
 from holidays.countries.bulgaria import Bulgaria
-from tests.common import CommonCountryTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestBulgaria(CommonCountryTests, TestCase):
+class TestBulgaria(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Bulgaria, years_non_observed=range(2017, 2026))
+
+    def test_special_holidays(self):
+        self.assertHoliday(
+            "2004-04-02",
+            "2007-01-02",
+            "2025-12-31",
+            "2026-01-02",
+        )
+
+    def test_substituted_holidays(self):
+        self.assertHoliday(
+            "2004-05-07",
+            "2005-03-04",
+            "2005-05-23",
+            "2005-09-05",
+            "2005-09-23",
+            "2006-01-02",
+            "2007-04-30",
+            "2007-05-25",
+            "2007-09-07",
+            "2007-12-31",
+            "2008-05-02",
+            "2008-05-05",
+            "2008-12-31",
+            "2009-01-02",
+            "2009-03-02",
+            "2009-05-04",
+            "2009-05-05",
+            "2009-09-21",
+            "2009-12-31",
+            "2010-05-07",
+            "2010-12-31",
+            "2011-03-04",
+            "2011-05-23",
+            "2011-09-05",
+            "2011-09-23",
+            "2012-01-02",
+            "2012-04-30",
+            "2012-05-25",
+            "2012-09-07",
+            "2012-12-31",
+            "2013-05-02",
+            "2013-12-23",
+            "2013-12-31",
+            "2014-05-02",
+            "2014-05-05",
+            "2014-12-31",
+            "2015-01-02",
+            "2015-03-02",
+            "2015-09-21",
+            "2015-12-31",
+            "2016-03-04",
+            "2016-05-23",
+            "2016-09-05",
+            "2016-09-23",
+        )
+
+    def test_workdays(self):
+        self.assertWorkingDay(
+            "2004-05-15",
+            "2005-03-12",
+            "2005-05-28",
+            "2005-09-10",
+            "2005-09-17",
+            "2006-01-28",
+            "2007-04-21",
+            "2007-06-02",
+            "2007-09-15",
+            "2007-12-15",
+            "2008-05-10",
+            "2008-05-17",
+            "2008-12-20",
+            "2009-01-10",
+            "2009-03-14",
+            "2009-05-16",
+            "2009-05-30",
+            "2009-09-26",
+            "2009-12-19",
+            "2010-05-15",
+            "2010-12-11",
+            "2011-03-19",
+            "2011-05-28",
+            "2011-09-03",
+            "2011-09-17",
+            "2012-01-21",
+            "2012-04-21",
+            "2012-05-19",
+            "2012-09-29",
+            "2012-12-15",
+            "2013-05-18",
+            "2013-12-21",
+            "2013-12-14",
+            "2014-05-10",
+            "2014-05-31",
+            "2014-12-13",
+            "2015-01-24",
+            "2015-03-21",
+            "2015-09-12",
+            "2015-12-12",
+            "2016-03-12",
+            "2016-05-14",
+            "2016-09-10",
+            "2016-09-17",
+        )
 
     def test_new_years_day(self):
         name = "Нова година"
@@ -54,7 +158,8 @@ class TestBulgaria(CommonCountryTests, TestCase):
             "2024-05-03",
             "2025-04-18",
         )
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(name, range(2010, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2010))
 
     def test_easter_saturday(self):
         name = "Велика събота"
@@ -67,7 +172,8 @@ class TestBulgaria(CommonCountryTests, TestCase):
             "2024-05-04",
             "2025-04-19",
         )
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(name, range(2010, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2010))
 
     def test_easter(self):
         name = "Великден"
@@ -100,7 +206,8 @@ class TestBulgaria(CommonCountryTests, TestCase):
 
     def test_saint_georges_day(self):
         name = "Гергьовден, Ден на храбростта и Българската армия"
-        self.assertHolidayName(name, (f"{year}-05-06" for year in self.full_range))
+        self.assertHolidayName(name, (f"{year}-05-06" for year in range(1999, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1999))
         obs_dts = (
             "2017-05-08",
             "2018-05-07",
@@ -109,22 +216,27 @@ class TestBulgaria(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_twenty_fourth_of_may(self):
-        name = (
+    def test_bulgarian_culture_day(self):
+        name_1991 = "Ден на българската просвета и култура и на славянската писменост"
+        name_2021 = (
             "Ден на светите братя Кирил и Методий, на българската азбука, "
             "просвета и култура и на славянската книжовност"
         )
-        self.assertHolidayName(name, (f"{year}-05-24" for year in self.full_range))
-        obs_dts = (
-            "2020-05-25",
-            "2025-05-26",
+        self.assertHolidayName(
+            name_1991, (f"{year}-05-24" for year in range(self.start_year, 2021))
         )
-        self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
+        self.assertHolidayName(name_2021, (f"{year}-05-24" for year in range(2021, self.end_year)))
+        self.assertNoHolidayName(name_1991, range(2021, self.end_year))
+        self.assertNoHolidayName(name_2021, range(self.start_year, 2021))
+        obs_dts = ("2025-05-26",)
+        self.assertHolidayName(f"{name_1991} (почивен ден)", "2020-05-25")
+        self.assertHolidayName(f"{name_2021} (почивен ден)", obs_dts)
+        self.assertNoNonObservedHoliday("2020-05-25", obs_dts)
 
     def test_unification_day(self):
         name = "Ден на Съединението"
-        self.assertHolidayName(name, (f"{year}-09-06" for year in self.full_range))
+        self.assertHolidayName(name, (f"{year}-09-06" for year in range(1998, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1998))
         obs_dts = (
             "2020-09-07",
             "2025-09-08",
@@ -132,9 +244,15 @@ class TestBulgaria(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
+    def test_freedom_day(self):
+        name = "Ден на свободата"
+        self.assertHolidayName(name, "1991-09-09")
+        self.assertNoHolidayName(name, range(1992, self.end_year))
+
     def test_independence_day(self):
         name = "Ден на Независимостта на България"
-        self.assertHolidayName(name, (f"{year}-09-22" for year in self.full_range))
+        self.assertHolidayName(name, (f"{year}-09-22" for year in range(1998, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1998))
         obs_dts = (
             "2018-09-24",
             "2019-09-23",
@@ -146,11 +264,15 @@ class TestBulgaria(CommonCountryTests, TestCase):
     def test_national_awakening_day(self):
         name = "Ден на народните будители"
         self.assertNoHolidayName(name)
-        self.assertSchoolHolidayName(name, (f"{year}-11-01" for year in self.full_range))
+        self.assertSchoolHolidayName(
+            name, (f"{year}-11-01" for year in range(1992, self.end_year))
+        )
+        self.assertNoSchoolHolidayName(name, 1991)
 
     def test_christmas_eve(self):
         name = "Бъдни вечер"
-        self.assertHolidayName(name, (f"{year}-12-24" for year in self.full_range))
+        self.assertHolidayName(name, (f"{year}-12-24" for year in range(1996, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1996))
         obs_dts = (
             "2017-12-27",
             "2022-12-27",
@@ -159,10 +281,19 @@ class TestBulgaria(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (почивен ден)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
+        half_day_name = f"{name} (след 14 ч.)"
+        self.assertHalfDayHolidayName(
+            half_day_name, (f"{year}-12-24" for year in range(self.start_year, 1996))
+        )
+        self.assertNoHalfDayHolidayName(half_day_name, range(1996, self.end_year))
+
     def test_christmas_day(self):
         name = "Рождество Христово"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
-        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
+        self.assertHolidayName(
+            name,
+            (f"{year}-12-25" for year in self.full_range),
+            (f"{year}-12-26" for year in self.full_range),
+        )
         obs_dts = (
             "2020-12-28",
             "2021-12-27",
@@ -214,7 +345,7 @@ class TestBulgaria(CommonCountryTests, TestCase):
             ("2022-04-25", "Easter"),
             ("2022-05-01", "Labor Day and International Workers' Solidarity Day"),
             ("2022-05-02", "Labor Day and International Workers' Solidarity Day (observed)"),
-            ("2022-05-06", "Saint George's Day (Day of the Bulgarian Army)"),
+            ("2022-05-06", "Saint George's Day, Day of the Bulgarian Army"),
             ("2022-05-24", "Day of Slavonic Alphabet, Bulgarian Enlightenment and Culture"),
             ("2022-09-06", "Unification Day"),
             ("2022-09-22", "Independence Day"),
@@ -245,7 +376,7 @@ class TestBulgaria(CommonCountryTests, TestCase):
                 "освіти і культури та словʼянської літератури",
             ),
             ("2022-09-06", "День обʼєднання"),
-            ("2022-09-22", "День незалежності Болгарїі"),
+            ("2022-09-22", "День незалежності Болгарії"),
             ("2022-11-01", "День національних будителів"),
             ("2022-12-24", "Святий вечір"),
             ("2022-12-25", "Різдво Христове"),
