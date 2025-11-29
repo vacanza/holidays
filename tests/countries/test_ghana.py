@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.ghana import Ghana, GH, GHA
+from holidays.countries.ghana import Ghana
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestGhana(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Ghana, years=range(1957, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Ghana, GH, GHA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Ghana(years=1956))
 
     def test_new_year_day(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1957, 2050))

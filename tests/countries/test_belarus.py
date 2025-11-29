@@ -12,23 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.constants import PUBLIC, WORKDAY
-from holidays.countries.belarus import Belarus, BY, BLR
+from holidays.countries.belarus import Belarus
 from tests.common import CommonCountryTests, WorkingDayTests
 
 
 class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1991, 2050)
-        super().setUpClass(Belarus, years=years)
-        cls.workdays = Belarus(categories=WORKDAY, years=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(Belarus, BY, BLR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Belarus(years=1990, categories=(PUBLIC, WORKDAY)))
+        super().setUpClass(Belarus)
 
     def test_public_2018(self):
         # http://calendar.by/procal.php?year=2018
@@ -55,185 +46,151 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
             ("2018-12-31", "Выходны (перанесены з 29.12.2018)"),
         )
 
-    def test_constitution_day(self):
-        name = "Дзень Канстытуцыі"
-
-        self.assertHolidayName(
-            name, self.workdays, (f"{year}-03-15" for year in range(1999, 2050))
-        )
-        self.assertNoHolidayName(name, self.workdays, range(1991, 1995))
-        self.assertHolidayName(name, (f"{year}-03-15" for year in range(1995, 1999)))
-        self.assertNoHolidayName(
-            name,
-            (f"{year}-03-15" for year in range(1991, 1995)),
-            (f"{year}-03-15" for year in range(1999, 2050)),
-        )
-
-    def test_day_of_unity_of_the_peoples_of_belarus_and_russia(self):
-        name = "Дзень яднання народаў Беларусі і Расіі"
-
-        self.assertHolidayName(
-            name, self.workdays, (f"{year}-04-02" for year in range(1996, 2050))
-        )
-        self.assertNoHolidayName(name, self.workdays, range(1991, 1996))
-        self.assertNoHolidayName(name)
-
-    def test_national_symbol_day(self):
-        name = "Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і Дзяржаўнага гімна Рэспублікі Беларусь"
-
-        dt = (
-            "2012-05-13",
-            "2013-05-12",
-            "2014-05-11",
-            "2015-05-10",
-            "2016-05-08",
-            "2017-05-14",
-            "2018-05-13",
-            "2019-05-12",
-            "2020-05-10",
-            "2021-05-09",
-            "2022-05-08",
-            "2023-05-14",
-            "2024-05-12",
-            "2025-05-11",
-            "2026-05-10",
-            "2027-05-09",
-            "2028-05-14",
-            "2029-05-13",
-            "2030-05-12",
-        )
-        self.assertHolidayName(name, self.workdays, dt)
-        self.assertNoHolidayName(name, self.workdays, range(1991, 1998))
-        self.assertNoHolidayName(name)
-
-    def test_day_of_the_republic(self):
-        name = "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"
-
-        self.assertHolidayName(name, (f"{year}-07-27" for year in range(1991, 1997)))
-        self.assertHolidayName(name, (f"{year}-07-03" for year in range(1997, 2050)))
-        self.assertNoHolidayName(name, (f"{year}-07-27" for year in range(1997, 2050)))
-        self.assertNoHolidayName(name, (f"{year}-07-03" for year in range(1991, 1997)))
-
-    def test_day_of_peoples_unity(self):
-        name = "Дзень народнага адзінства"
-
-        self.assertHolidayName(
-            name, self.workdays, (f"{year}-09-17" for year in range(2021, 2050))
-        )
-        self.assertNoHolidayName(name, self.workdays, range(1991, 2021))
-        self.assertNoHolidayName(name)
-
     def test_new_years_day(self):
         name = "Новы год"
 
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1991, 2050)))
-        self.assertHolidayName(name, (f"{year}-01-02" for year in range(2020, 2050)))
-        self.assertNoHolidayName(name, (f"{year}-01-02" for year in range(1991, 2020)))
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        self.assertHolidayName(name, (f"{year}-01-02" for year in range(2020, self.end_year)))
+        self.assertNoHolidayName(name, (f"{year}-01-02" for year in range(self.start_year, 2020)))
+
+    def test_orthodox_christmas_day(self):
+        self.assertHolidayName(
+            "Нараджэнне Хрыстова (праваслаўнае Раство)",
+            (f"{year}-01-07" for year in self.full_range),
+        )
 
     def test_day_of_fatherland_defenders(self):
         name = "Дзень абаронцаў Айчыны і Узброеных Сіл Рэспублікі Беларусь"
 
-        self.assertHolidayName(
-            name, self.workdays, (f"{year}-02-23" for year in range(1991, 2050))
-        )
         self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-02-23" for year in self.full_range))
 
-    def test_october_revolution_day(self):
-        name = "Дзень Кастрычніцкай рэвалюцыі"
+    def test_womens_day(self):
+        self.assertHolidayName("Дзень жанчын", (f"{year}-03-08" for year in self.full_range))
 
-        self.assertHolidayName(name, (f"{year}-11-07" for year in range(1995, 2050)))
-        self.assertNoHolidayName(name, range(1991, 1995))
+    def test_constitution_day(self):
+        name = "Дзень Канстытуцыі"
+
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-03-15" for year in range(1999, self.end_year))
+        )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 1999))
+        self.assertHolidayName(name, (f"{year}-03-15" for year in range(1995, 1999)))
+        self.assertNoHolidayName(name, range(self.start_year, 1995), range(1999, self.end_year))
+
+    def test_labor_day(self):
+        self.assertHolidayName("Свята працы", (f"{year}-05-01" for year in self.full_range))
+
+    def test_day_of_unity_of_the_peoples_of_belarus_and_russia(self):
+        name = "Дзень яднання народаў Беларусі і Расіі"
+
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-04-02" for year in range(1996, self.end_year))
+        )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 1996))
 
     def test_catholic_easter(self):
         name = "Каталiцкi Вялiкдзень"
 
         # https://calendar.by/content.php?id=19
-        dt = (
-            "2012-04-08",
-            "2013-03-31",
-            "2014-04-20",
-            "2015-04-05",
-            "2016-03-27",
-            "2017-04-16",
-            "2018-04-01",
-            "2019-04-21",
+        self.assertHolidayName(
+            name,
             "2020-04-12",
             "2021-04-04",
             "2022-04-17",
             "2023-04-09",
             "2024-03-31",
             "2025-04-20",
-            "2026-04-05",
-            "2027-03-28",
-            "2028-04-16",
-            "2029-04-01",
-            "2030-04-21",
         )
-        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(1992, self.end_year))
         self.assertNoHolidayName(name, 1991)
 
     def test_orthodox_easter(self):
         name = "Праваслаўны Вялiкдзень"
 
         # https://calendar.by/content.php?id=19
-        dt = (
-            "2012-04-15",
-            "2013-05-05",
-            "2014-04-20",
-            "2015-04-12",
-            "2016-05-01",
-            "2017-04-16",
-            "2018-04-08",
-            "2019-04-28",
+        self.assertHolidayName(
+            name,
             "2020-04-19",
             "2021-05-02",
             "2022-04-24",
             "2023-04-16",
             "2024-05-05",
             "2025-04-20",
-            "2026-04-12",
-            "2027-05-02",
-            "2028-04-16",
-            "2029-04-08",
-            "2030-04-28",
         )
-        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(1992, self.end_year))
         self.assertNoHolidayName(name, 1991)
 
+    def test_national_symbol_day(self):
+        name = "Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і Дзяржаўнага гімна Рэспублікі Беларусь"
+
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name,
+            "2020-05-10",
+            "2021-05-09",
+            "2022-05-08",
+            "2023-05-14",
+            "2024-05-12",
+            "2025-05-11",
+        )
+        self.assertWorkdayHolidayName(name, range(1998, self.end_year))
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 1998))
+
+    def test_day_of_the_republic(self):
+        name = "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"
+
+        self.assertHolidayName(name, (f"{year}-07-27" for year in range(self.start_year, 1997)))
+        self.assertHolidayName(name, (f"{year}-07-03" for year in range(1997, self.end_year)))
+        self.assertNoHolidayName(name, (f"{year}-07-27" for year in range(1997, self.end_year)))
+        self.assertNoHolidayName(name, (f"{year}-07-03" for year in range(self.start_year, 1997)))
+
+    def test_day_of_peoples_unity(self):
+        name = "Дзень народнага адзінства"
+
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-09-17" for year in range(2021, self.end_year))
+        )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 2021))
+
+    def test_october_revolution_day(self):
+        name = "Дзень Кастрычніцкай рэвалюцыі"
+
+        self.assertHolidayName(name, (f"{year}-11-07" for year in range(1995, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1995))
+
     def test_radunitsa(self):
+        name = "Радаўніца"
+
         # https://calendar.by/content.php?id=20
         self.assertHolidayName(
-            "Радаўніца",
-            "2012-04-24",
-            "2013-05-14",
-            "2014-04-29",
-            "2015-04-21",
-            "2016-05-10",
-            "2017-04-25",
-            "2018-04-17",
-            "2019-05-07",
+            name,
             "2020-04-28",
             "2021-05-11",
             "2022-05-03",
             "2023-04-25",
             "2024-05-14",
             "2025-04-29",
-            "2026-04-21",
-            "2027-05-11",
-            "2028-04-25",
-            "2029-04-17",
-            "2030-05-07",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_dzyady(self):
         name = "Дзень памяці"
 
-        self.assertHolidayName(
-            name, self.workdays, (f"{year}-11-02" for year in range(1998, 2050))
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-11-02" for year in range(1998, self.end_year))
         )
-        self.assertNoHolidayName(name, self.workdays, range(1991, 1998))
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 1998))
         self.assertHolidayName(name, (f"{year}-11-02" for year in range(1992, 1998)))
-        self.assertNoHolidayName(name, 1991, range(1998, 2050))
+        self.assertNoHolidayName(name, 1991, range(1998, self.end_year))
+
+    def test_catholic_christmas_day(self):
+        self.assertHolidayName(
+            "Нараджэнне Хрыстова (каталіцкае Раство)",
+            (f"{year}-12-25" for year in self.full_range),
+        )
 
     def test_substituted_holidays(self):
         self.assertHoliday(

@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 import re
+import unicodedata
 from pathlib import Path
 from unittest import TestCase
 
@@ -88,8 +89,15 @@ class TestReadme(TestCase):
 
         for row in table_content:
             # Country: 1st column.
-            name = re.sub(r"[-,\s]", "", row[0]).lower()
-            country_names.append(name)
+            country_names.append(
+                re.sub(
+                    r"[-,\s]",
+                    "",
+                    unicodedata.normalize("NFKD", row[0])
+                    .encode("ascii", "ignore")
+                    .decode("ascii"),
+                ).lower()
+            )
 
             # Code: 2nd column.
             country_code = row[1]
@@ -168,20 +176,6 @@ class TestReadme(TestCase):
         for country_code in supported_countries:
             instance = country_holidays(country_code)
             country_name = instance.__class__.__base__.__name__
-
-            # Make sure country name is shown correctly.
-            if country_name.startswith("Holiday"):
-                self.assertIn(
-                    country_name[8:],
-                    country_alpha_2_codes,
-                    f"Country '{country_name}' name is not shown correctly in the table.",
-                )
-            else:
-                self.assertIn(
-                    country_name.lower().replace("unitedstates", "unitedstatesofamerica"),
-                    country_names,
-                    f"Country '{country_name}' name is not shown correctly in the table.",
-                )
 
             # Make sure country alpha-2 code is shown correctly.
             self.assertIn(

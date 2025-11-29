@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.69\n"
+"Project-Id-Version: Holidays 0.84\n"
 "POT-Creation-Date: 2025-02-06 15:34+0700\n"
-"PO-Revision-Date: 2025-03-05 19:40+0700\n"
+"PO-Revision-Date: 2025-10-29 22:34+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -24,8 +24,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.3\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.8\n"
 "X-Source-Language: zh_MO\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s（推定）"
+msgstr "%s (โดยประมาณ)"
 
 #. New Year's Day.
 msgid "元旦"
@@ -43,9 +48,37 @@ msgstr "วันตรุษจีนวันที่สอง"
 msgid "農曆正月初三"
 msgstr "วันตรุษจีนวันที่สาม"
 
+#. Labor Day.
+msgid "勞動節"
+msgstr "วันแรงงาน"
+
+#. Double Ninth Festival.
+msgid "重陽節"
+msgstr "วันไหว้บรรพบุรุษ"
+
+#. National Day of the People's Republic of China.
+msgid "中華人民共和國國慶日"
+msgstr "วันชาติจีน"
+
 #. Tomb-Sweeping Day.
 msgid "清明節"
 msgstr "วันเช็งเม้ง"
+
+#. Day of Portugal, Camões, and the Portuguese Communities.
+msgid "葡國日、賈梅士日暨葡僑日"
+msgstr "วันชาติโปรตุเกส วันกาม๊อยช์ และวันแห่งประชาคมโปรตุเกส"
+
+#. Mid-Autumn Festival.
+msgid "中秋節"
+msgstr "วันไหว้พระจันทร์"
+
+#. The Day following Mid-Autumn Festival.
+msgid "中秋節翌日"
+msgstr "วันหลังวันไหว้พระจันทร์"
+
+#. Macao S.A.R. Establishment Day.
+msgid "澳門特別行政區成立紀念日"
+msgstr "วันสถาปนาเขตบริหารพิเศษมาเก๊า"
 
 #. Good Friday.
 msgid "耶穌受難日"
@@ -63,25 +96,9 @@ msgstr "วันก่อนวันอาทิตย์อีสเตอร
 msgid "聖周星期六"
 msgstr "วันเสาร์ศักดิ์สิทธิ์"
 
-#. Labor Day.
-msgid "勞動節"
-msgstr "วันแรงงาน"
-
 #. Dragon Boat Festival.
 msgid "端午節"
 msgstr "วันไหว้บ๊ะจ่าง"
-
-#. Double Ninth Festival.
-msgid "重陽節"
-msgstr "วันไหว้บรรพบุรุษ"
-
-#. The Day following Mid-Autumn Festival.
-msgid "中秋節翌日"
-msgstr "วันหลังวันไหว้พระจันทร์"
-
-#. National Day of the People's Republic of China.
-msgid "中華人民共和國國慶日"
-msgstr "วันชาติจีน"
 
 #. All Soul's Day.
 msgid "追思節"
@@ -131,10 +148,6 @@ msgstr "วันสมโภชพระคริสตวรกาย"
 msgid "自由日"
 msgstr "วันแห่งเสรีภาพ"
 
-#. Day of Portugal, Camões, and the Portuguese Communities.
-msgid "葡國日、賈梅士日暨葡僑日"
-msgstr "วันชาติโปรตุเกส วันกาม๊อยช์ และวันแห่งประชาคมโปรตุเกส"
-
 #. Republic Day.
 msgid "葡萄牙共和國國慶日"
 msgstr "วันสถาปนาสาธารณรัฐโปรตุเกส"
@@ -150,14 +163,6 @@ msgstr "วันวิสาขบูชา"
 #. The day following National Day of the People's Republic of China.
 msgid "中華人民共和國國慶日翌日"
 msgstr "วันหลังวันชาติจีน"
-
-#. Macao S.A.R. Establishment Day.
-msgid "澳門特別行政區成立紀念日"
-msgstr "วันสถาปนาเขตบริหารพิเศษมาเก๊า"
-
-#. Mid-Autumn Festival.
-msgid "中秋節"
-msgstr "วันไหว้พระจันทร์"
 
 #. %s (Afternoon).
 #, c-format
@@ -190,6 +195,16 @@ msgstr "ชดเชย%s"
 msgid "%s後首個工作日"
 msgstr "วันทำงานวันแรกหลัง%s"
 
+#. Compensatory rest day for %s (estimated).
+#, c-format
+msgid "%s的補假（推定）"
+msgstr "ชดเชย%s (โดยประมาณ)"
+
+#. The first working day after %s (estimated).
+#, c-format
+msgid "%s後首個工作日（推定）"
+msgstr "วันทำงานวันแรกหลัง%s (โดยประมาณ)"
+
 #. Day of the Municipality of Ilhas.
 msgid "海島市日"
 msgstr "วันเทศบาลอิลฮาส"
@@ -209,7 +224,7 @@ msgstr "วันหยุดครึ่งวันเพิ่มเติม
 #. 70th Anniversary of the Victory of the Chinese People's War of Resistance against Japanese
 #. Aggression and the World Anti-Fascist War.
 msgid "中國人民抗日戰爭暨世界反法西斯戰爭勝利七十周年紀念日"
-msgstr "ครบรอบ 70 ปีแห่งการได้รับชัยชนะจากสงครามต่อต้านญี่ปุ่นและลัทธิฟาสซิสต์โลก"
+msgstr "วันครบรอบ 70 ปีแห่งการได้รับชัยชนะจากสงครามต่อต้านญี่ปุ่นและลัทธิฟาสซิสต์โลก"
 
 #. Overlapping of the Day following National Day of the People's Republic of China and the Day
 #. following Mid-Autumn Festival.

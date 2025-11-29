@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import GOVERNMENT, SCHOOL
-from holidays.countries.egypt import Egypt, EG, EGY
+from holidays.countries.egypt import Egypt
 from tests.common import CommonCountryTests
 
 
@@ -28,11 +28,9 @@ class TestEgypt(CommonCountryTests, TestCase):
         )
         cls.school_holidays = Egypt(categories=SCHOOL, years=years, islamic_show_estimated=False)
 
-    def test_country_aliases(self):
-        self.assertAliases(Egypt, EG, EGY)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Egypt(years=1953))
+        super().test_no_holidays()
+
         self.assertNoHolidays(Egypt(categories=GOVERNMENT, years=2017))
         self.assertNoHolidays(Egypt(categories=SCHOOL, years=2018))
 

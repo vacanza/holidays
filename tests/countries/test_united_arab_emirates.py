@@ -12,8 +12,8 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC
-from holidays.countries.united_arab_emirates import UnitedArabEmirates, AE, ARE
+from holidays.constants import GOVERNMENT, OPTIONAL
+from holidays.countries.united_arab_emirates import UnitedArabEmirates
 from tests.common import CommonCountryTests
 
 
@@ -23,14 +23,6 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
         super().setUpClass(UnitedArabEmirates, years=range(1972, 2050))
         cls.no_estimated_holidays = UnitedArabEmirates(
             years=range(1972, 2050), islamic_show_estimated=False
-        )
-
-    def test_country_aliases(self):
-        self.assertAliases(UnitedArabEmirates, AE, ARE)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            UnitedArabEmirates(years=1971, categories=(GOVERNMENT, OPTIONAL, PUBLIC))
         )
 
     def test_special(self):
@@ -141,6 +133,22 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
         self.assertHolidayName(name, "2017-04-23", "2018-04-14")
         self.assertHolidayName(name, self.no_estimated_holidays, range(1972, 2019))
         self.assertNoHolidayName(name, self.no_estimated_holidays, range(2019, 2050))
+
+    def test_weekend(self):
+        for dt in (
+            "2021-12-24",  # FRI.
+            "2021-12-25",  # SAT.
+            "2021-12-31",  # FRI.
+            "2022-01-01",  # SAT.
+            "2022-01-02",  # SUN.
+        ):
+            self.assertTrue(self.holidays.is_weekend(dt))
+
+        for dt in (
+            "2021-12-26",  # SUN.
+            "2022-01-07",  # FRI.
+        ):
+            self.assertFalse(self.holidays.is_weekend(dt))
 
     def test_2020(self):
         # https://gulfbusiness.com/revealed-uae-private-sector-holidays-for-eid-al-fitr-2020/

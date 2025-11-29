@@ -129,15 +129,14 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1911:
             if 1933 <= self._year <= 1973:
                 # Day of Camões, Portugal, and the Portuguese Race.
-                self._add_holiday_jun_10(tr("Dia de Camões, de Portugal e da Raça"))
+                name = tr("Dia de Camões, de Portugal e da Raça")
             elif self._year >= 1978:
-                self._add_holiday_jun_10(
-                    # Day of Portugal, Camões, and the Portuguese Communities.
-                    tr("Dia de Portugal, de Camões e das Comunidades Portuguesas")
-                )
+                # Day of Portugal, Camões, and the Portuguese Communities.
+                name = tr("Dia de Portugal, de Camões e das Comunidades Portuguesas")
             else:
                 # Portugal Day.
-                self._add_holiday_jun_10(tr("Dia de Portugal"))
+                name = tr("Dia de Portugal")
+            self._add_holiday_jun_10(name)
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assunção de Nossa Senhora"))
@@ -167,7 +166,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_carnival_tuesday(tr("Carnaval"))
 
         # Saint Anthony's Day.
-        self._add_holiday_jun_13(tr("Dia de Santo António"))
+        self._add_saint_anthonys_day(tr("Dia de Santo António"))
 
         # Christmas Eve.
         self._add_christmas_eve(tr("Véspera de Natal"))
@@ -226,13 +225,15 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_may_22(tr("Dia do Município de Leiria"))
 
     def _populate_subdiv_11_public_holidays(self):
-        self._add_holiday_jun_13(tr("Dia de Santo António"))
+        # Saint Anthony's Day.
+        self._add_saint_anthonys_day(tr("Dia de Santo António"))
 
     def _populate_subdiv_12_public_holidays(self):
         # Municipal Holiday of Portalegre.
         self._add_holiday_may_23(tr("Dia do Município de Portalegre"))
 
     def _populate_subdiv_13_public_holidays(self):
+        # Saint John's Day.
         self._add_saint_johns_day(tr("Dia de São João"))
 
     def _populate_subdiv_14_public_holidays(self):
@@ -248,7 +249,8 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_aug_20(tr("Dia de Nossa Senhora da Agonia"))
 
     def _populate_subdiv_17_public_holidays(self):
-        self._add_holiday_jun_13(tr("Dia de Santo António"))
+        # Saint Anthony's Day.
+        self._add_saint_anthonys_day(tr("Dia de Santo António"))
 
     def _populate_subdiv_18_public_holidays(self):
         # Saint Matthew's Day.

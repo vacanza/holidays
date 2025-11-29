@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.66\n"
+"Project-Id-Version: Holidays 0.83\n"
 "POT-Creation-Date: 2025-01-25 14:31+0100\n"
 "PO-Revision-Date: 2025-01-25 14:31+0100\n"
 "Last-Translator: Syb Wartna <971092+waarissyb@users.noreply.github.com>\n"
@@ -29,6 +29,10 @@ msgstr ""
 #. New Year's Day.
 msgid "Nieuwjaarsdag"
 msgstr "Nijjiersdei"
+
+#. Good Friday.
+msgid "Goede Vrijdag"
+msgstr "Goedfreed"
 
 #. Easter Sunday.
 msgid "Eerste paasdag"
@@ -69,7 +73,3 @@ msgstr "Eerste Krystdei"
 #. Second Day of Christmas.
 msgid "Tweede Kerstdag"
 msgstr "Twadde Krystdei"
-
-#. Good Friday.
-msgid "Goede Vrijdag"
-msgstr "Goedfreed"

@@ -9,13 +9,13 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>PyPI</td>
     <td>
-      <a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvacanza%2Faux%2Frefs%2Fheads%2Fmain%2Fbadges%2Fdownloads%2Fpepy.tech.yaml&query=%24.monthly_downloads_human&suffix=%2Fmonth&style=flat&label=downloads&color=41B5BE&cacheSeconds=86400" alt="PyPI monthly downloads"></a>&nbsp;<a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat" alt="PyPI version"></a>&nbsp;<a href="https://github.com/vacanza/holidays/releases"><img src="https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat" alt="Latest release date"></a>
+      <a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvacanza%2Faux%2Frefs%2Fheads%2Fmain%2Fbadges%2Fdownloads%2Fpepy.tech.yaml&query=%24.previous_month_downloads_human&suffix=%2Fmonth&style=flat&label=downloads&color=41B5BE&cacheSeconds=86400" alt="PyPI monthly downloads"></a>&nbsp;<a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat" alt="PyPI version"></a>&nbsp;<a href="https://github.com/vacanza/holidays/releases"><img src="https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat" alt="Latest release date"></a>
     </td>
   </tr>
   <tr>
     <td>CI/CD</td>
     <td>
-      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41BE4A&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41BE4A&style=flat" alt="Documentation status"></a>
+      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41B5BE&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41B5BE&style=flat" alt="Documentation status"></a>&nbsp;<a href="https://snyk.io/advisor/python/holidays/"><img alt="Open World Holidays Package Health Score" src="https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fsnyk.io%2Fadvisor%2Fpython%2Fholidays%2Fbadge.svg&search=%5Cd%7B1%2C3%7D%2F%5Cd%7B1%2C3%7D&style=flat&label=snyk&color=41B5BE"></a>
     </td>
   </tr>
   <tr>
@@ -27,19 +27,13 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>GitHub</td>
     <td>
-      <a href="https://github.com/vacanza/holidays/stargazers"><img src="https://img.shields.io/github/stars/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub stars"></a>&nbsp;<a href="https://github.com/vacanza/holidays/forks"><img src="https://img.shields.io/github/forks/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub forks"></a>&nbsp;<a href="https://github.com/vacanza/holidays/graphs/contributors"><img src="https://img.shields.io/github/contributors/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub contributors"></a>&nbsp;<a href="https://github.com/vacanza/holidays/commits/dev"><img src="https://img.shields.io/github/last-commit/vacanza/holidays/dev?color=41BE4A&style=flat" alt="GitHub last commit"></a>
+      <a href="https://github.com/vacanza/holidays/stargazers"><img src="https://img.shields.io/github/stars/vacanza/holidays?color=41B5BE&style=flat" alt="GitHub stars"></a>&nbsp;<a href="https://github.com/vacanza/holidays/forks"><img src="https://img.shields.io/github/forks/vacanza/holidays?color=41B5BE&style=flat" alt="GitHub forks"></a>&nbsp;<a href="https://github.com/vacanza/holidays/graphs/contributors"><img src="https://img.shields.io/github/contributors/vacanza/holidays?color=41B5BE&style=flat" alt="GitHub contributors"></a>&nbsp;<a href="https://github.com/vacanza/holidays/commits/dev"><img src="https://img.shields.io/github/last-commit/vacanza/holidays/dev?color=41B5BE&style=flat" alt="GitHub last commit"></a>
     </td>
   </tr>
   <tr>
     <td>Citation</td>
     <td>
       <a href="https://doi.org/10.5281/zenodo.14884702"><img src="https://img.shields.io/badge/DOI-10.5281/zenodo.14884702-41B5BE?style=flat" alt="Open World Holidays Framework DOI"></a>
-    </td>
-  </tr>
-  <tr>
-    <td>Snyk</td>
-    <td>
-      <a href="https://snyk.io/advisor/python/holidays/"><img src="https://snyk.io/advisor/python/holidays/badge.svg" alt="Open World Holidays Package Health Score"></a>
     </td>
   </tr>
 </table>
@@ -63,7 +57,7 @@ version upgrades.
 
 ## Documentation
 
-The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io/).
+The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io).
 
 ## Quick Start
 
@@ -105,9 +99,9 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 234 country codes. The standard way to refer to a country is by using its [ISO
-3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
-for domain names, and for a subdivision its [ISO 3166-2
+We currently support 249 country codes and are fully compatible with [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html).
+The standard way to refer to a country is by using its [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes),
+the same used for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
 abbreviations as aliases for their subdivisions. These are defined in the (optional)
 `subdivisions_aliases` attribute. Some of the countries support more than one language for holiday
@@ -154,7 +148,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Aland Islands</td>
+<td>Åland Islands</td>
 <td>AX</td>
 <td>Can also be loaded as country FI, subdivision 01</td>
 <td>en_US, <strong>fi</strong>, sv_FI, th, uk</td>
@@ -172,7 +166,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>DZ</td>
 <td></td>
 <td><strong>ar</strong>, en_US, fr</td>
-<td></td>
+<td>CHRISTIAN, HEBREW</td>
 </tr>
 <tr>
 <td>American Samoa</td>
@@ -200,6 +194,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>AI</td>
 <td></td>
 <td><strong>en_AI</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
+<td>Antarctica</td>
+<td>AQ</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -350,11 +351,25 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Bouvet Island</td>
+<td>BV</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Brazil</td>
 <td>BR</td>
 <td>States: AC (Acre), AL (Alagoas), AM (Amazonas), AP (Amapá), BA (Bahia), CE (Ceará), DF (Distrito Federal), ES (Espírito Santo), GO (Goiás), MA (Maranhão), MG (Minas Gerais), MS (Mato Grosso do Sul), MT (Mato Grosso), PA (Pará), PB (Paraíba), PE (Pernambuco), PI (Piauí), PR (Paraná), RJ (Rio de Janeiro), RN (Rio Grande do Norte), RO (Rondônia), RR (Roraima), RS (Rio Grande do Sul), SC (Santa Catarina), SE (Sergipe), SP (São Paulo), TO (Tocantins)</td>
 <td>en_US, <strong>pt_BR</strong>, uk</td>
 <td>OPTIONAL</td>
+</tr>
+<tr>
+<td>British Indian Ocean Territory</td>
+<td>IO</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>British Virgin Islands</td>
@@ -476,6 +491,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Comoros</td>
+<td>KM</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Congo</td>
 <td>CG</td>
 <td></td>
@@ -535,7 +557,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Denmark</td>
 <td>DK</td>
 <td></td>
-<td><strong>da</strong>, en_US, uk</td>
+<td><strong>da</strong>, en_US, th, uk</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -697,7 +719,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GE</td>
 <td></td>
 <td>en_US, <strong>ka</strong>, uk</td>
-<td>GOVERNMENT</td>
+<td></td>
 </tr>
 <tr>
 <td>Germany</td>
@@ -798,6 +820,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>OPTIONAL</td>
 </tr>
 <tr>
+<td>Heard Island and McDonald Islands</td>
+<td>HM</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Honduras</td>
 <td>HN</td>
 <td></td>
@@ -878,7 +907,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Italy</td>
 <td>IT</td>
 <td>Provinces: AG (Agrigento), AL (Alessandria), AN (Ancona), AO (Aosta), AP (Ascoli Piceno), AQ (L'Aquila), AR (Arezzo), AT (Asti), AV (Avellino), BA (Bari), BG (Bergamo), BI (Biella), BL (Belluno), BN (Benevento), BO (Bologna), BR (Brindisi), BS (Brescia), BT (Barletta-Andria-Trani), BZ (Bolzano), CA (Cagliari), CB (Campobasso), CE (Caserta), CH (Chieti), CL (Caltanissetta), CN (Cuneo), CO (Como), CR (Cremona), CS (Cosenza), CT (Catania), CZ (Catanzaro), EN (Enna), FC (Forli-Cesena, Forlì-Cesena), FE (Ferrara), FG (Foggia), FI (Firenze), FM (Fermo), FR (Frosinone), GE (Genova), GO (Gorizia), GR (Grosseto), IM (Imperia), IS (Isernia), KR (Crotone), LC (Lecco), LE (Lecce), LI (Livorno), LO (Lodi), LT (Latina), LU (Lucca), MB (Monza e Brianza), MC (Macerata), ME (Messina), MI (Milano), MN (Mantova), MO (Modena), MS (Massa-Carrara), MT (Matera), NA (Napoli), NO (Novara), NU (Nuoro), OR (Oristano), PA (Palermo), PC (Piacenza), PD (Padova), PE (Pescara), PG (Perugia), PI (Pisa), PN (Pordenone), PO (Prato), PR (Parma), PT (Pistoia), PU (Pesaro e Urbino), PV (Pavia), PZ (Potenza), RA (Ravenna), RC (Reggio Calabria), RE (Reggio Emilia), RG (Ragusa), RI (Rieti), RM (Roma), RN (Rimini), RO (Rovigo), SA (Salerno), SI (Siena), SO (Sondrio), SP (La Spezia), SR (Siracusa), SS (Sassari), SU (Sud Sardegna), SV (Savona), TA (Taranto), TE (Teramo), TN (Trento), TO (Torino), TP (Trapani), TR (Terni), TS (Trieste), TV (Treviso), UD (Udine), VA (Varese), VB (Verbano-Cusio-Ossola), VC (Vercelli), VE (Venezia), VI (Vicenza), VR (Verona), VT (Viterbo), VV (Vibo Valentia); cities: Andria, Barletta, Cesena, Forli (Forlì), Pesaro, Trani, Urbino</td>
-<td></td>
+<td>en_US, <strong>it_IT</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -1019,7 +1048,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>MO</td>
 <td>Historical municipalities: I (Concelho das Ilhas, 海島市, 海岛市), M (Concelho de Macau, 澳門市, 澳门市)</td>
 <td>en_MO, en_US, pt_MO, th, zh_CN, <strong>zh_MO</strong></td>
-<td>GOVERNMENT, MANDATORY</td>
+<td>GOVERNMENT, OPTIONAL</td>
 </tr>
 <tr>
 <td>Madagascar</td>
@@ -1162,6 +1191,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Myanmar</td>
+<td>MM</td>
+<td></td>
+<td>en_US, <strong>my</strong>, th</td>
+<td></td>
+</tr>
+<tr>
 <td>Namibia</td>
 <td>NA</td>
 <td></td>
@@ -1186,7 +1222,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Netherlands</td>
 <td>NL</td>
 <td></td>
-<td>en_US, fy, <strong>nl</strong>, uk</td>
+<td>en_US, fy, <strong>nl</strong>, th, uk</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -1221,7 +1257,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Nigeria</td>
 <td>NG</td>
 <td></td>
-<td></td>
+<td><strong>en_NG</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -1246,6 +1282,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>
+<td>North Korea</td>
+<td>KP</td>
+<td></td>
+<td>en_US, <strong>ko_KP</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>North Macedonia</td>
 <td>MK</td>
 <td></td>
@@ -1255,7 +1298,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Norway</td>
 <td>NO</td>
-<td>Counties and Arctic Regions: 03 (Oslo), 11 (Rogaland), 15 (Møre og Romsdal), 18 (Nordland), 21 (Svalbard), 22 (Jan Mayen), 30 (Viken), 34 (Innlandet), 38 (Vestfold og Telemark), 42 (Agder), 46 (Vestland), 50 (Trööndelage, Trøndelag), 54 (Romssa ja Finnmárkku, Troms og Finnmark, Tromssan ja Finmarkun)</td>
+<td>Counties and Arctic Regions: 03 (Oslo), 11 (Rogaland), 15 (Møre og Romsdal), 18 (Nordland), 21 (Svalbard), 22 (Jan Mayen), 31 (Østfold), 32 (Akershus), 33 (Buskerud), 34 (Innlandet), 39 (Vestfold), 40 (Telemark), 42 (Agder), 46 (Vestland), 50 (Trööndelage, Trøndelag), 55 (Romssa, Troms, Tromssan), 56 (Finmarkun, Finnmark, Finnmárkku)</td>
 <td>en_US, <strong>no</strong>, th, uk</td>
 <td></td>
 </tr>
@@ -1379,11 +1422,25 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Rwanda</td>
+<td>RW</td>
+<td></td>
+<td>en_US, fr, <strong>rw</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Saint Barthélemy</td>
 <td>BL</td>
 <td>Can also be loaded as country FR, subdivision BL</td>
 <td>en_US, <strong>fr</strong>, th, uk</td>
 <td></td>
+</tr>
+<tr>
+<td>Saint Helena, Ascension and Tristan da Cunha</td>
+<td>SH</td>
+<td>Subdivisions: AC (Ascension), HL (Saint Helena), TA (Tristan da Cunha)</td>
+<td><strong>en_GB</strong>, en_US</td>
+<td>GOVERNMENT</td>
 </tr>
 <tr>
 <td>Saint Kitts and Nevis</td>
@@ -1512,6 +1569,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Somalia</td>
+<td>SO</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>South Africa</td>
 <td>ZA</td>
 <td></td>
@@ -1533,10 +1597,17 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>BANK</td>
 </tr>
 <tr>
+<td>South Sudan</td>
+<td>SS</td>
+<td></td>
+<td></td>
+<td>ISLAMIC</td>
+</tr>
+<tr>
 <td>Spain</td>
 <td>ES</td>
 <td>Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla-La Mancha), CN (Canarias), CT (Cataluña, Catalunya), EX (Extremadura), GA (Galicia), IB (Islas Baleares, Illes Balears), MC (Murcia), MD (Madrid), ML (Melilla), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Valenciana)</td>
-<td>en_US, <strong>es</strong>, uk</td>
+<td>ca, en_US, <strong>es</strong>, th, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -1545,6 +1616,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>si_LK</strong>, ta_LK</td>
 <td>BANK, GOVERNMENT, WORKDAY</td>
+</tr>
+<tr>
+<td>Sudan</td>
+<td>SD</td>
+<td></td>
+<td><strong>ar_SD</strong>, en_US</td>
+<td></td>
 </tr>
 <tr>
 <td>Suriname</td>
@@ -1571,7 +1649,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Switzerland</td>
 <td>CH</td>
 <td>Cantons: AG (Aargau), AI (Appenzell Innerrhoden), AR (Appenzell Ausserrhoden), BE (Bern, Berne), BL (Basel-Landschaft), BS (Basel-Stadt), FR (Freiburg, Fribourg), GE (Genève), GL (Glarus), GR (Graubünden, Grigioni, Grischun), JU (Jura), LU (Luzern), NE (Neuchâtel), NW (Nidwalden), OW (Obwalden), SG (Sankt Gallen), SH (Schaffhausen), SO (Solothurn), SZ (Schwyz), TG (Thurgau), TI (Ticino), UR (Uri), VD (Vaud), VS (Valais, Wallis), ZG (Zug), ZH (Zürich)</td>
-<td><strong>de</strong>, en_US, fr, it, uk</td>
+<td><strong>de</strong>, en_US, fr, it, th, uk</td>
 <td>HALF_DAY, OPTIONAL</td>
 </tr>
 <tr>
@@ -1587,6 +1665,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, th, zh_CN, <strong>zh_TW</strong></td>
 <td>GOVERNMENT, OPTIONAL, SCHOOL, WORKDAY</td>
+</tr>
+<tr>
+<td>Tajikistan</td>
+<td>TJ</td>
+<td></td>
+<td>en_US, ru, <strong>tg</strong></td>
+<td></td>
 </tr>
 <tr>
 <td>Tanzania</td>
@@ -1670,6 +1755,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>TV</td>
 <td>Town/Island Councils: FUN (Funafuti), NIT (Niutao), NKF (Nukufetau), NKL (Nukulaelae), NMA (Nanumea), NMG (Nanumaga, Nanumanga), NUI (Nui), VAI (Vaitupu)</td>
 <td>en_GB, en_US, <strong>tvl</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Uganda</td>
+<td>UG</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -1771,6 +1863,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Western Sahara</td>
+<td>EH</td>
+<td></td>
+<td><strong>ar</strong>, en_US, es, fr</td>
+<td></td>
+</tr>
+<tr>
 <td>Yemen</td>
 <td>YE</td>
 <td></td>
@@ -1833,6 +1932,12 @@ code when available. The following financial markets are available:
 <td>IFEU</td>
 <td>A London-based Investment Exchange holidays</td>
 <td></td>
+</tr>
+<tr>
+<td>National Stock Exchange of India</td>
+<td>XNSE</td>
+<td>National Stock Exchange of India market holidays</td>
+<td><strong>en_IN</strong>, en_US, hi</td>
 </tr>
 <tr>
 <td>New York Stock Exchange</td>

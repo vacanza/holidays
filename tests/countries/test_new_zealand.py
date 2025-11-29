@@ -13,7 +13,7 @@
 import warnings
 from unittest import TestCase
 
-from holidays.countries.new_zealand import NewZealand, NZ, NZL
+from holidays.countries.new_zealand import NewZealand
 from tests.common import CommonCountryTests
 
 
@@ -27,12 +27,6 @@ class TestNZ(CommonCountryTests, TestCase):
     def setUp(self):
         super().setUp()
         warnings.simplefilter("ignore", category=DeprecationWarning)
-
-    def test_country_aliases(self):
-        self.assertAliases(NewZealand, NZ, NZL)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(NewZealand(years=1893))
 
     def test_new_years(self):
         name = "New Year's Day"

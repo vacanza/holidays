@@ -1,0 +1,104 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Saint Helena, Ascension and Tristan da Cunha holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.81\n"
+"POT-Creation-Date: 2025-08-31 16:41+0000\n"
+"PO-Revision-Date: 2025-08-31 16:41+0000\n"
+"Last-Translator: Abheelash Mishra <abheelashdev@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_GB\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (observed)"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Good Friday"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Easter Monday"
+
+#. Queen's Birthday.
+msgid "Queen's Birthday"
+msgstr "Queen's Birthday"
+
+#. King's Birthday.
+msgid "King's Birthday"
+msgstr "King's Birthday"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Christmas Day"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "Boxing Day"
+
+#. Ascension Day.
+msgid "Ascension Day"
+msgstr "Ascension Day"
+
+#. Saint Helena Day.
+msgid "Saint Helena Day"
+msgstr "Saint Helena Day"
+
+#. Ratting Day.
+msgid "Ratting Day"
+msgstr "Ratting Day"
+
+#. Anniversary Day.
+msgid "Anniversary Day"
+msgstr "Anniversary Day"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "New Year's Day"
+
+#. Whit Monday.
+msgid "Whit Monday"
+msgstr "Whit Monday"
+
+#. August Bank Holiday.
+msgid "August Bank Holiday"
+msgstr "August Bank Holiday"
+
+#. Final Departure of R.M.S. St Helena.
+msgid "Final Departure of R.M.S. St Helena"
+msgstr "Final Departure of R.M.S. St Helena"
+
+#. Queen Elizabeth II's Platinum Jubilee.
+msgid "Queen Elizabeth II's Platinum Jubilee"
+msgstr "Queen Elizabeth II's Platinum Jubilee"
+
+#. Queen Elizabeth II's State Funeral.
+msgid "Queen Elizabeth II's State Funeral"
+msgstr "Queen Elizabeth II's State Funeral"
+
+#. The Duke of Edinburgh's Visit.
+msgid "The Duke of Edinburgh's Visit"
+msgstr "The Duke of Edinburgh's Visit"
+
+#. Coronation of His Majesty King Charles III.
+msgid "Coronation of His Majesty King Charles III"
+msgstr "Coronation of His Majesty King Charles III"

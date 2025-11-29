@@ -14,7 +14,7 @@ from holidays.countries.united_states import UnitedStates
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysMP(ChildEntity, UnitedStates):
+class NorthernMarianaIslands(ChildEntity, UnitedStates):
     """Northern Mariana Islands (the) holidays.
 
     Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
@@ -27,13 +27,13 @@ class HolidaysMP(ChildEntity, UnitedStates):
     start_year = 1948
 
 
-class NorthernMarianaIslands(HolidaysMP):
+class HolidaysMP(NorthernMarianaIslands):
     pass
 
 
-class MP(HolidaysMP):
+class MP(NorthernMarianaIslands):
     pass
 
 
-class MNP(HolidaysMP):
+class MNP(NorthernMarianaIslands):
     pass

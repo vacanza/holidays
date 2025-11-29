@@ -13,7 +13,7 @@
 import importlib
 from collections.abc import Iterable
 from threading import RLock
-from typing import Any, Optional, Union
+from typing import Any
 
 from holidays.holiday_base import HolidayBase
 
@@ -28,6 +28,7 @@ COUNTRIES: RegistryDict = {
     "andorra": ("Andorra", "AD", "AND"),
     "angola": ("Angola", "AO", "AGO"),
     "anguilla": ("Anguilla", "AI", "AIA"),
+    "antarctica": ("Antarctica", "AQ", "ATA"),
     "antigua_and_barbuda": ("AntiguaAndBarbuda", "AG", "ATG"),
     "argentina": ("Argentina", "AR", "ARG"),
     "armenia": ("Armenia", "AM", "ARM"),
@@ -49,7 +50,9 @@ COUNTRIES: RegistryDict = {
     "bonaire_sint_eustatius_and_saba": ("BonaireSintEustatiusAndSaba", "BQ", "BES"),
     "bosnia_and_herzegovina": ("BosniaAndHerzegovina", "BA", "BIH"),
     "botswana": ("Botswana", "BW", "BWA"),
+    "bouvet_island": ("BouvetIsland", "BV", "BVT"),
     "brazil": ("Brazil", "BR", "BRA"),
+    "british_indian_ocean_territory": ("BritishIndianOceanTerritory", "IO", "IOT"),
     "british_virgin_islands": ("BritishVirginIslands", "VG", "VGB"),
     "brunei": ("Brunei", "BN", "BRN"),
     "bulgaria": ("Bulgaria", "BG", "BLG"),
@@ -67,6 +70,7 @@ COUNTRIES: RegistryDict = {
     "christmas_island": ("ChristmasIsland", "CX", "CXR"),
     "cocos_islands": ("CocosIslands", "CC", "CCK"),
     "colombia": ("Colombia", "CO", "COL"),
+    "comoros": ("Comoros", "KM", "COM"),
     "congo": ("Congo", "CG", "COG"),
     "cook_islands": ("CookIslands", "CK", "COK"),
     "costa_rica": ("CostaRica", "CR", "CRI"),
@@ -114,6 +118,7 @@ COUNTRIES: RegistryDict = {
     "guinea_bissau": ("GuineaBissau", "GW", "GNB"),
     "guyana": ("Guyana", "GY", "GUY"),
     "haiti": ("Haiti", "HT", "HTI"),
+    "heard_island_and_mcdonald_islands": ("HeardIslandAndMcDonaldIslands", "HM", "HMD"),
     "honduras": ("Honduras", "HN", "HND"),
     "hongkong": ("HongKong", "HK", "HKG"),
     "hungary": ("Hungary", "HU", "HUN"),
@@ -165,6 +170,7 @@ COUNTRIES: RegistryDict = {
     "montserrat": ("Montserrat", "MS", "MSR"),
     "morocco": ("Morocco", "MA", "MOR"),
     "mozambique": ("Mozambique", "MZ", "MOZ"),
+    "myanmar": ("Myanmar", "MM", "MMR"),
     "namibia": ("Namibia", "NA", "NAM"),
     "nauru": ("Nauru", "NR", "NRU"),
     "nepal": ("Nepal", "NP", "NPL"),
@@ -176,6 +182,7 @@ COUNTRIES: RegistryDict = {
     "nigeria": ("Nigeria", "NG", "NGA"),
     "niue": ("Niue", "NU", "NIU"),
     "norfolk_island": ("NorfolkIsland", "NF", "NFK"),
+    "north_korea": ("NorthKorea", "KP", "PRK"),
     "north_macedonia": ("NorthMacedonia", "MK", "MKD"),
     "northern_mariana_islands": ("NorthernMarianaIslands", "MP", "MNP", "HolidaysMP"),
     "norway": ("Norway", "NO", "NOR"),
@@ -196,7 +203,13 @@ COUNTRIES: RegistryDict = {
     "reunion": ("Reunion", "RE", "REU", "HolidaysRE"),
     "romania": ("Romania", "RO", "ROU"),
     "russia": ("Russia", "RU", "RUS"),
+    "rwanda": ("Rwanda", "RW", "RWA"),
     "saint_barthelemy": ("SaintBarthelemy", "BL", "BLM", "HolidaysBL"),
+    "saint_helena_ascension_and_tristan_da_cunha": (
+        "SaintHelenaAscensionAndTristanDaCunha",
+        "SH",
+        "SHN",
+    ),
     "saint_kitts_and_nevis": ("SaintKittsAndNevis", "KN", "KNA"),
     "saint_lucia": ("SaintLucia", "LC", "LCA"),
     "saint_martin": ("SaintMartin", "MF", "MAF", "HolidaysMF"),
@@ -215,6 +228,7 @@ COUNTRIES: RegistryDict = {
     "slovakia": ("Slovakia", "SK", "SVK"),
     "slovenia": ("Slovenia", "SI", "SVN"),
     "solomon_islands": ("SolomonIslands", "SB", "SLB"),
+    "somalia": ("Somalia", "SO", "SOM"),
     "south_africa": ("SouthAfrica", "ZA", "ZAF"),
     "south_georgia_and_the_south_sandwich_islands": (
         "SouthGeorgiaAndTheSouthSandwichIslands",
@@ -222,14 +236,17 @@ COUNTRIES: RegistryDict = {
         "SGS",
     ),
     "south_korea": ("SouthKorea", "KR", "KOR", "Korea"),
+    "south_sudan": ("SouthSudan", "SS", "SSD"),
     "spain": ("Spain", "ES", "ESP"),
     "sri_lanka": ("SriLanka", "LK", "LKA"),
+    "sudan": ("Sudan", "SD", "SDN"),
     "suriname": ("Suriname", "SR", "SUR"),
     "svalbard_and_jan_mayen": ("SvalbardAndJanMayen", "SJ", "SJM", "HolidaysSJ"),
     "sweden": ("Sweden", "SE", "SWE"),
     "switzerland": ("Switzerland", "CH", "CHE"),
     "syrian_arab_republic": ("SyrianArabRepublic", "SY", "SYR"),
     "taiwan": ("Taiwan", "TW", "TWN"),
+    "tajikistan": ("Tajikistan", "TJ", "TJK"),
     "tanzania": ("Tanzania", "TZ", "TZA"),
     "thailand": ("Thailand", "TH", "THA"),
     "timor_leste": ("TimorLeste", "TL", "TLS"),
@@ -242,6 +259,7 @@ COUNTRIES: RegistryDict = {
     "turkmenistan": ("Turkmenistan", "TM", "TKM"),
     "turks_and_caicos_islands": ("TurksAndCaicosIslands", "TC", "TCA"),
     "tuvalu": ("Tuvalu", "TV", "TUV"),
+    "uganda": ("Uganda", "UG", "UGA"),
     "ukraine": ("Ukraine", "UA", "UKR"),
     "united_arab_emirates": ("UnitedArabEmirates", "AE", "ARE"),
     "united_kingdom": ("UnitedKingdom", "GB", "GBR", "UK"),
@@ -260,16 +278,18 @@ COUNTRIES: RegistryDict = {
     "venezuela": ("Venezuela", "VE", "VEN"),
     "vietnam": ("Vietnam", "VN", "VNM"),
     "wallis_and_futuna": ("WallisAndFutuna", "WF", "WLF", "HolidaysWF"),
+    "western_sahara": ("WesternSahara", "EH", "ESH"),
     "yemen": ("Yemen", "YE", "YEM"),
     "zambia": ("Zambia", "ZM", "ZMB"),
     "zimbabwe": ("Zimbabwe", "ZW", "ZWE"),
 }
 
 FINANCIAL: RegistryDict = {
-    "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),
-    "ice_futures_europe": ("ICEFuturesEurope", "IFEU"),
-    "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
+    "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),
+    "ice_futures_europe": ("IceFuturesEurope", "IFEU", "ICEFuturesEurope"),
+    "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),
+    "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
 }
 
 # A re-entrant lock. Once a thread has acquired a re-entrant lock,
@@ -307,7 +327,7 @@ class EntityLoader:
         cls = self.get_entity()
         return cls(*args, **kwargs)  # type: ignore[misc, operator]
 
-    def __getattr__(self, name: str) -> Optional[Any]:
+    def __getattr__(self, name: str) -> Any | None:
         """Return attribute of a lazy-loaded entity."""
         cls = self.get_entity()
         return getattr(cls, name)
@@ -319,7 +339,7 @@ class EntityLoader:
             f"use the '{self.module_name}.{self.entity_name}' class directly."
         )
 
-    def get_entity(self) -> Optional[HolidayBase]:
+    def get_entity(self) -> HolidayBase | None:
         """Return lazy-loaded entity."""
         if self.entity is None:
             # Avoid deadlock due to importlib.import_module not being thread-safe by caching all
@@ -332,35 +352,47 @@ class EntityLoader:
     @staticmethod
     def _get_entity_codes(
         container: RegistryDict,
-        entity_length: Union[int, Iterable[int]],
+        *,
         include_aliases: bool = True,
+        max_code_length: int = 3,
+        min_code_length: int = 2,
     ) -> Iterable[str]:
-        entity_length = {entity_length} if isinstance(entity_length, int) else set(entity_length)
         for entities in container.values():
-            for entity in entities:
-                if len(entity) in entity_length:
-                    yield entity
-                    # Assuming that the alpha-2 code goes first.
-                    if not include_aliases:
-                        break
+            for code in entities[1:]:
+                if min_code_length <= len(code) <= max_code_length:
+                    yield code
+
+                # Stop after the first matching code if aliases are not requested.
+                # Assuming that the alpha-2 code goes first.
+                if not include_aliases:
+                    break
 
     @staticmethod
     def get_country_codes(include_aliases: bool = True) -> Iterable[str]:
         """Get supported country codes.
 
         :param include_aliases:
-            Whether to include entity aliases (e.g. UK for GB).
+            Whether to include entity aliases (e.g. GBR and UK for GB,
+            UKR for UA, USA for US, etc).
         """
-        return EntityLoader._get_entity_codes(COUNTRIES, 2, include_aliases)
+        return EntityLoader._get_entity_codes(
+            COUNTRIES,
+            include_aliases=include_aliases,
+        )
 
     @staticmethod
     def get_financial_codes(include_aliases: bool = True) -> Iterable[str]:
         """Get supported financial codes.
 
         :param include_aliases:
-            Whether to include entity aliases(e.g. TAR for ECB, XNYS for NYSE).
+            Whether to include entity aliases (e.g. B3 for BVMF,
+            TAR for ECB, NYSE for XNYS, etc).
         """
-        return EntityLoader._get_entity_codes(FINANCIAL, (3, 4), include_aliases)
+        return EntityLoader._get_entity_codes(
+            FINANCIAL,
+            include_aliases=include_aliases,
+            max_code_length=4,
+        )
 
     @staticmethod
     def load(prefix: str, scope: dict) -> None:

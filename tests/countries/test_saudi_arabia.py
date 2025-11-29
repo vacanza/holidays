@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.saudi_arabia import SaudiArabia, SA, SAU
+from holidays.countries.saudi_arabia import SaudiArabia
 from tests.common import CommonCountryTests
 
 
@@ -21,9 +21,6 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1950, 2050)
         super().setUpClass(SaudiArabia, years=years, years_non_observed=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(SaudiArabia, SA, SAU)
 
     def test_special_holidays(self):
         self.assertHoliday("2022-11-23")
@@ -160,6 +157,25 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (ملاحظة)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_weekend(self):
+        for dt in (
+            "2013-06-20",  # THU.
+            "2013-06-21",  # FRI.
+            "2013-06-27",  # THU.
+            "2013-06-28",  # FRI.
+            "2013-06-29",  # SAT.
+            "2013-07-05",  # FRI.
+        ):
+            self.assertTrue(self.holidays.is_weekend(dt))
+
+        for dt in (
+            "2013-06-22",  # SAT.
+            "2013-06-23",  # SUN.
+            "2013-06-30",  # SUN.
+            "2013-07-04",  # THU.
+        ):
+            self.assertFalse(self.holidays.is_weekend(dt))
 
     def test_2022(self):
         self.assertHolidays(

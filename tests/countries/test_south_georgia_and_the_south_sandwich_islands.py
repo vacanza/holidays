@@ -14,8 +14,6 @@ from unittest import TestCase
 
 from holidays.countries.south_georgia_and_the_south_sandwich_islands import (
     SouthGeorgiaAndTheSouthSandwichIslands,
-    GS,
-    SGS,
 )
 from tests.common import CommonCountryTests
 
@@ -27,12 +25,6 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
         super().setUpClass(
             SouthGeorgiaAndTheSouthSandwichIslands, years=years, years_non_observed=years
         )
-
-    def test_country_aliases(self):
-        self.assertAliases(SouthGeorgiaAndTheSouthSandwichIslands, GS, SGS)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(SouthGeorgiaAndTheSouthSandwichIslands(years=2011))
 
     def test_special_holidays(self):
         self.assertHoliday(

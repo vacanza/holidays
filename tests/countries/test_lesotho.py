@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.lesotho import Lesotho, LS, LSO
+from holidays.countries.lesotho import Lesotho
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestLesotho(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Lesotho, years=range(1996, 2040))
-
-    def test_country_aliases(self):
-        self.assertAliases(Lesotho, LS, LSO)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Lesotho(years=1995))
 
     def test_special_holidays(self):
         self.assertHoliday("2002-05-25")

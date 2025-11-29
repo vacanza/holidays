@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.syrian_arab_republic import SyrianArabRepublic, SY, SYR
+from holidays.countries.syrian_arab_republic import SyrianArabRepublic
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
         years = range(2004, 2050)
         super().setUpClass(SyrianArabRepublic, years=years)
         cls.no_estimated_holidays = SyrianArabRepublic(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(SyrianArabRepublic, SY, SYR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(SyrianArabRepublic(years=2003))
 
     def test_new_years_day(self):
         self.assertHolidayName(

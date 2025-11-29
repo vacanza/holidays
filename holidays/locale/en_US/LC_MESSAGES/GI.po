@@ -116,6 +116,6 @@ msgstr "75th Anniversary of VE Day"
 msgid "Platinum Jubilee"
 msgstr "Queen's Platinum Jubilee"
 
-#. Special King’s Coronation Bank Holiday.
+#. Special King's Coronation Bank Holiday.
 msgid "Special King's Coronation Bank Holiday"
 msgstr "Special King's Coronation Bank Holiday"

@@ -12,6 +12,7 @@
 
 import unittest
 import warnings
+from collections import defaultdict
 from datetime import date
 from pathlib import Path
 from unittest import mock
@@ -39,33 +40,33 @@ class TestCountryHolidays(unittest.TestCase):
         self.assertEqual(self.holidays.country, "US")
 
     def test_country_single_year(self):
-        h = country_holidays("US", years=2021)
-        self.assertEqual(h.years, {2021})
+        test_holidays = country_holidays("US", years=2021)
+        self.assertEqual(test_holidays.years, {2021})
 
-    def test_country_years(self):
-        h = country_holidays("US", years=(2015, 2016))
-        self.assertEqual(h.years, {2015, 2016})
+    def test_country_multiple_years(self):
+        test_holidays = country_holidays("US", years=(2015, 2021))
+        self.assertEqual(test_holidays.years, {2015, 2021})
 
-    def test_country_state(self):
-        h = country_holidays("US", subdiv="NY")
-        self.assertEqual(h.subdiv, "NY")
+    def test_country_range_years(self):
+        test_holidays = country_holidays("US", years=range(2010, 2015))
+        self.assertEqual(test_holidays.years, set(range(2010, 2015)))
 
-    def test_country_province(self):
-        h = country_holidays("AU", subdiv="NT")
-        self.assertEqual(h.subdiv, "NT")
+    def test_country_subdivision(self):
+        test_holidays = country_holidays("US", subdiv="NY")
+        self.assertEqual(test_holidays.subdiv, "NY")
 
-    def test_exceptions(self):
-        self.assertRaises(NotImplementedError, lambda: country_holidays("XXXX"))
-        self.assertRaises(NotImplementedError, lambda: country_holidays("US", subdiv="XXXX"))
-        self.assertRaises(NotImplementedError, lambda: country_holidays("US", subdiv="XXXX"))
+    def test_invalid_country_raises_not_implemented(self):
+        with self.assertRaises(NotImplementedError):
+            country_holidays("XXXX")
+
+    def test_invalid_country_subdivision_raises_not_implemented(self):
+        with self.assertRaises(NotImplementedError):
+            country_holidays("US", subdiv="XXXX")
 
     def test_country_holiday_class_deprecation(self):
-        with warnings.catch_warnings(record=True) as ctx:
-            warnings.simplefilter("always")
+        with self.assertWarns(DeprecationWarning) as ctx:
             CountryHoliday("IT")
-            warning = ctx[0]
-            self.assertTrue(issubclass(warning.category, DeprecationWarning))
-            self.assertIn("CountryHoliday is deprecated", str(warning.message))
+        self.assertIn("CountryHoliday is deprecated", str(ctx.warning))
 
 
 class TestFinancialHolidays(unittest.TestCase):
@@ -76,29 +77,32 @@ class TestFinancialHolidays(unittest.TestCase):
         self.assertEqual(self.holidays.market, "XNYS")
 
     def test_market_single_year(self):
-        h = financial_holidays("XNYS", years=2021)
-        self.assertEqual(h.years, {2021})
+        test_holidays = financial_holidays("XNYS", years=2021)
+        self.assertEqual(test_holidays.years, {2021})
 
-    def test_market_years(self):
-        h = financial_holidays("XNYS", years=(2015, 2016))
-        self.assertEqual(h.years, {2015, 2016})
+    def test_market_multiple_years(self):
+        test_holidays = financial_holidays("XNYS", years=(2015, 2021))
+        self.assertEqual(test_holidays.years, {2015, 2021})
 
-    def test_exceptions(self):
-        self.assertRaises(NotImplementedError, lambda: financial_holidays("XXXX"))
-        self.assertRaises(NotImplementedError, lambda: financial_holidays("XNYS", subdiv="XXXX"))
+    def test_market_range_years(self):
+        test_holidays = financial_holidays("XNYS", years=range(2010, 2015))
+        self.assertEqual(test_holidays.years, set(range(2010, 2015)))
+
+    def test_invalid_market_raises_not_implemented(self):
+        with self.assertRaises(NotImplementedError):
+            financial_holidays("XXXX")
+
+    def test_invalid_market_subdivision_raises_not_implemented(self):
+        with self.assertRaises(NotImplementedError):
+            financial_holidays("XNYS", subdiv="XXXX")
 
 
 class TestAllInSameYear(unittest.TestCase):
-    """Test that only holidays in the year(s) requested are returned."""
+    """Ensure only holidays in the year(s) requested are returned."""
 
     years = set(range(1950, 2051))
 
-    @pytest.mark.skipif(
-        PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
-        reason="Run once on the latest Python version only",
-    )
-    @mock.patch("pathlib.Path.rglob", return_value=())
-    def test_all_countries(self, unused_rglob_mock):
+    def _check_holidays_years(self, entity_func, entity_list):
         """
         Only holidays in the year(s) requested should be returned. This
         ensures that we avoid triggering a "RuntimeError: dictionary changed
@@ -108,36 +112,33 @@ class TestAllInSameYear(unittest.TestCase):
         we only run it once on the latest Python version.
         """
         warnings.simplefilter("ignore")
+        for entity in entity_list:
+            with self.subTest(entity=entity):
+                # Check each year individually
+                for year in self.years:
+                    for dt in entity_func(entity, years=year):
+                        self.assertEqual(dt.year, year)
+                        self.assertIsInstance(dt, date)
 
-        for country in list_supported_countries():
-            for year in self.years:
-                for dt in country_holidays(country, years=year):
-                    self.assertEqual(dt.year, year)
-                    self.assertEqual(type(dt), date)
-        self.assertEqual(self.years, country_holidays(country, years=self.years).years)
+                # Check full range at once
+                all_holidays = entity_func(entity, years=self.years)
+                self.assertEqual(all_holidays.years, self.years)
 
     @pytest.mark.skipif(
         PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
         reason="Run once on the latest Python version only",
     )
     @mock.patch("pathlib.Path.rglob", return_value=())
-    def test_all_financial(self, unused_rglob_mock):
-        """
-        Only holidays in the year(s) requested should be returned. This
-        ensures that we avoid triggering a "RuntimeError: dictionary changed
-        size during iteration" error.
+    def test_all_countries(self, _unused_mock):
+        self._check_holidays_years(country_holidays, list_supported_countries())
 
-        This is logic test and not a code compatibility test, so for expediency
-        we only run it once on the latest Python version.
-        """
-        warnings.simplefilter("ignore")
-
-        for market in list_supported_financial():
-            for year in self.years:
-                for dt in financial_holidays(market, years=year):
-                    self.assertEqual(dt.year, year)
-                    self.assertEqual(type(dt), date)
-        self.assertEqual(self.years, financial_holidays(market, years=self.years).years)
+    @pytest.mark.skipif(
+        PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
+        reason="Run once on the latest Python version only",
+    )
+    @mock.patch("pathlib.Path.rglob", return_value=())
+    def test_all_financial(self, _unused_mock):
+        self._check_holidays_years(financial_holidays, list_supported_financial())
 
 
 class TestListLocalizedEntities(unittest.TestCase):
@@ -145,40 +146,32 @@ class TestListLocalizedEntities(unittest.TestCase):
         tests_dir = Path(__file__).parent
         locale_dir = tests_dir.parent / "holidays" / "locale"
 
+        # Collect `<locale>` part from
+        # holidays/locale/<locale>/LC_MESSAGES/<entity_code>.mo.
+        entity_to_languages = defaultdict(list)
+        for path in locale_dir.rglob("*.mo"):
+            entity_to_languages[path.stem].append(path.parts[-3])
+
         for entity_code in supported_entities.keys():
-            actual_languages = sorted(
-                # Collect `<locale>` part from
-                # holidays/locale/<locale>/LC_MESSAGES/<entity_code>.mo.
-                path.parts[-3]
-                for path in Path(locale_dir).rglob(f"{entity_code}.mo")
-            )
+            actual_languages = sorted(entity_to_languages.get(entity_code, []))
             expected_languages = localized_entities.get(entity_code, [])
 
             self.assertEqual(
                 actual_languages,
                 expected_languages,
-                f"The supported languages for {entity_code} don't match "
-                f"its actual languages: "
+                f"The supported languages for {entity_code} don't match its actual languages: "
                 f"{set(actual_languages).difference(set(expected_languages))}",
             )
 
             entity = getattr(holidays, entity_code)
-
             self.assertEqual(
                 list(entity.supported_languages),
                 expected_languages,
                 f"The supported languages for {entity_code} don't match "
                 "its `supported_languages`.",
             )
-            self.assertEqual(
-                actual_languages,
-                expected_languages,
-                f"Actual and expected locales differ for {entity_code}: "
-                f"{set(actual_languages).difference(set(expected_languages))}",
-            )
 
             if expected_languages:
-                self.assertIsInstance(expected_languages, list, entity_code)
                 self.assertIn(
                     entity.default_language,
                     expected_languages,
@@ -201,30 +194,28 @@ class TestListSupportedEntities(unittest.TestCase):
     def test_list_supported_countries(self):
         supported_countries = list_supported_countries(include_aliases=False)
 
-        self.assertIn("AR", supported_countries)
-        self.assertIn("CA", supported_countries["US"])
-        self.assertIn("IM", supported_countries)
-        self.assertIn("ZA", supported_countries)
+        for country in ("AR", "IM", "ZA"):
+            self.assertIn(country, supported_countries)
 
         us_subdivisions = supported_countries["US"]
         self.assertIn("CA", us_subdivisions)
         self.assertIsInstance(us_subdivisions, list)
 
-        countries_files = [
-            path for path in Path("holidays/countries").glob("*.py") if path.stem != "__init__"
-        ]
-        self.assertEqual(len(countries_files), len(supported_countries))
+        countries_count = sum(
+            1 for path in Path("holidays/countries").glob("*.py") if path.stem != "__init__"
+        )
+        self.assertEqual(countries_count, len(supported_countries))
 
     def test_list_supported_financial(self):
         supported_financial = list_supported_financial(include_aliases=False)
 
-        for code in ("BVMF", "IFEU", "XECB", "XNYS"):
-            self.assertIn(code, supported_financial)
+        for market in ("BVMF", "IFEU", "XECB", "XNYS"):
+            self.assertIn(market, supported_financial)
 
-        xnys = supported_financial["XNYS"]
-        self.assertIsInstance(xnys, list)
+        xnys_subdivisions = supported_financial.get("XNYS", [])
+        self.assertIsInstance(xnys_subdivisions, list)
 
-        financial_files = [
-            path for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
-        ]
-        self.assertEqual(len(financial_files), len(supported_financial))
+        financial_count = sum(
+            1 for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
+        )
+        self.assertEqual(financial_count, len(supported_financial))

@@ -24,6 +24,8 @@ class Mauritania(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
 
     country = "MR"
+    # %s (estimated).
+    estimated_label = "%s (estimated)"
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
@@ -37,9 +39,7 @@ class Mauritania(HolidayBase, InternationalHolidays, IslamicHolidays):
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day("New Year's Day")
 
@@ -50,7 +50,7 @@ class Mauritania(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_africa_day("Africa Day")
 
         # Independence Day.
-        if year >= 1960:
+        if self._year >= 1960:
             self._add_holiday_nov_28("Independence Day")
 
         # Islamic holidays.

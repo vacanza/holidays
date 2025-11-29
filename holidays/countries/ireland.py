@@ -47,7 +47,7 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
         # Saint Patrick's Day.
         if self._year >= 1903:
-            self._add_holiday_mar_17("Saint Patrick's Day")
+            self._add_saint_patricks_day("Saint Patrick's Day")
 
         # Easter Monday.
         self._add_easter_monday("Easter Monday")

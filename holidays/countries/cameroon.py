@@ -33,6 +33,11 @@ class Cameroon(
     """
 
     country = "CM"
+    # %s (estimated).
+    estimated_label = "%s (estimated)"
+    # %s (observed, estimated).
+    observed_estimated_label = "%s (observed, estimated)"
+    # %s (observed).
     observed_label = "%s (observed)"
     # On 1 January 1960, French Cameroun gained independence from France.
     start_year = 1960

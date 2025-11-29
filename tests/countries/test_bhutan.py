@@ -12,53 +12,43 @@
 
 from unittest import TestCase
 
-from holidays.countries.bhutan import Bhutan, BT, BTN
+from holidays.countries.bhutan import Bhutan
 from tests.common import CommonCountryTests
 
 
 class TestBhutan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(2007, 2050)
-        super().setUpClass(Bhutan, years=years)
-        cls.subdiv_holidays = {
-            subdiv: Bhutan(subdiv=subdiv, years=years) for subdiv in Bhutan.subdivisions
-        }
-
-    def test_country_aliases(self):
-        self.assertAliases(Bhutan, BT, BTN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Bhutan(years=2006))
+        super().setUpClass(Bhutan)
 
     def test_birthday_anniversary_of_his_majesty_the_king(self):
         name = "Birth Anniversary of His Majesty the King"
         self.assertHolidayName(
             name,
-            (f"{year}-02-21" for year in range(2007, 2050)),
-            (f"{year}-02-22" for year in range(2007, 2050)),
-            (f"{year}-02-23" for year in range(2007, 2050)),
+            (f"{year}-02-21" for year in self.full_range),
+            (f"{year}-02-22" for year in self.full_range),
+            (f"{year}-02-23" for year in self.full_range),
         )
 
     def test_birth_anniversary_third_druk_gyalpo(self):
         self.assertHolidayName(
             "Birth Anniversary of the 3rd Druk Gyalpo",
-            (f"{year}-05-02" for year in range(2007, 2050)),
+            (f"{year}-05-02" for year in self.full_range),
         )
 
     def test_coronation_his_majesty(self):
         self.assertHolidayName(
-            "Coronation of His Majesty the King", (f"{year}-11-01" for year in range(2007, 2050))
+            "Coronation of His Majesty the King", (f"{year}-11-01" for year in self.full_range)
         )
 
     def test_birth_anniversary_fourth_druk_gyalpo(self):
         self.assertHolidayName(
             "Birth Anniversary of the 4th Druk Gyalpo - Constitution Day",
-            (f"{year}-11-11" for year in range(2007, 2050)),
+            (f"{year}-11-11" for year in self.full_range),
         )
 
     def test_national_day(self):
-        self.assertHolidayName("National Day", (f"{year}-12-17" for year in range(2007, 2050)))
+        self.assertHolidayName("National Day", (f"{year}-12-17" for year in self.full_range))
 
     def test_winter_solstice(self):
         name = "Winter Solstice"
@@ -66,7 +56,11 @@ class TestBhutan(CommonCountryTests, TestCase):
             name,
             (
                 f"{year}-01-02"
-                for year in (*range(2007, 2019), *range(2020, 2022), *range(2023, 2050))
+                for year in (
+                    *range(self.start_year, 2019),
+                    *range(2020, 2022),
+                    *range(2023, self.end_year),
+                )
             ),
             "2019-01-03",
             "2022-01-01",
@@ -83,7 +77,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             "2024-01-12",
             "2025-01-30",
         )
-        self.assertHolidayName(name, set(range(2007, 2050)) - {2031, 2040})
+        self.assertHolidayName(name, set(self.full_range) - {2031, 2040})
 
     def test_losar(self):
         name = "Losar"
@@ -96,7 +90,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             "2024-02-11",
             "2025-02-28",
         )
-        self.assertHolidayName(name, range(2007, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_death_of_zhabdrung(self):
         name = "Death Anniversary of Zhabdrung"
@@ -108,7 +102,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             "2024-04-18",
             "2025-05-07",
         )
-        self.assertHolidayName(name, set(range(2007, 2050)) - {2010, 2011, 2020})
+        self.assertHolidayName(name, set(self.full_range) - {2010, 2011, 2020})
 
     def test_lord_buddha_parinirvana(self):
         name = "Lord Buddha's Parinirvana"
@@ -121,7 +115,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             "2024-05-23",
             "2025-06-11",
         )
-        self.assertHolidayName(name, range(2007, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_birth_anniversary_guru_rinpoche(self):
         name = "Birth Anniversary of Guru Rinpoche"
@@ -134,7 +128,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-07-05",
         )
-        self.assertHolidayName(name, range(2007, 2027), range(2028, 2050))
+        self.assertHolidayName(name, range(self.start_year, 2027), range(2028, self.end_year))
 
     def test_first_sermon_lord_buddha(self):
         name = "First Sermon of Lord Buddha"
@@ -147,7 +141,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             "2024-07-10",
             "2025-07-28",
         )
-        self.assertHolidayName(name, range(2007, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_blessed_rainy_day(self):
         name = "Blessed Rainy Day"
@@ -160,7 +154,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             "2024-09-23",
             "2025-09-23",
         )
-        self.assertHolidayName(name, range(2007, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_dassain(self):
         name = "Dassain"
@@ -173,7 +167,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             "2024-10-12",
             "2025-10-02",
         )
-        self.assertHolidayName(name, (*range(2007, 2012), *range(2014, 2025)))
+        self.assertHolidayName(name, (*range(self.start_year, 2012), *range(2014, 2025)))
 
     def test_descending_day_lord_buddha(self):
         name = "Descending Day of Lord Buddha"
@@ -186,7 +180,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             "2024-11-22",
             "2025-11-11",
         )
-        self.assertHolidayName(name, range(2007, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_thimphu_drubchoe(self):
         name = "Thimphu Drubchoe"
@@ -203,7 +197,7 @@ class TestBhutan(CommonCountryTests, TestCase):
                     "2024-09-10",
                     "2025-09-29",
                 )
-                self.assertHolidayName(name, holidays, range(2007, 2050))
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -234,7 +228,7 @@ class TestBhutan(CommonCountryTests, TestCase):
                     "2025-10-03",
                     "2025-10-04",
                 )
-                self.assertHolidayName(name, holidays, range(2007, 2050))
+                self.assertHolidayNameCount(name, 3, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 

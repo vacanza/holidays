@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import BANK
-from holidays.countries.qatar import Qatar, QA, QAT
+from holidays.countries.qatar import Qatar
 from tests.common import CommonCountryTests
 
 
@@ -25,11 +25,9 @@ class TestQatar(CommonCountryTests, TestCase):
         cls.no_estimated_holidays = Qatar(years=years, islamic_show_estimated=False)
         cls.bank_holidays = Qatar(categories=BANK, years=years)
 
-    def test_country_aliases(self):
-        self.assertAliases(Qatar, QA, QAT)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Qatar(years=1970))
+        super().test_no_holidays()
+
         self.assertNoHolidays(Qatar(categories=BANK, years=1970))
 
     def test_special_holidays(self):
@@ -159,6 +157,24 @@ class TestQatar(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.bank_holidays, range(2010, 2050))
         self.assertNoHolidayName(name, self.bank_holidays, range(1971, 2010))
         self.assertNoHolidayName(name)
+
+    def test_weekend(self):
+        for dt in (
+            "2003-07-24",  # THU.
+            "2003-07-25",  # FRI.
+            "2003-07-31",  # THU.
+            "2003-08-01",  # FRI.
+            "2003-08-02",  # SAT.
+        ):
+            self.assertTrue(self.holidays.is_weekend(dt))
+
+        for dt in (
+            "2003-07-26",  # SAT.
+            "2003-07-27",  # SUN.
+            "2003-08-03",  # SUN.
+            "2003-08-07",  # THU.
+        ):
+            self.assertFalse(self.holidays.is_weekend(dt))
 
     def test_2011(self):
         self.assertHolidays(

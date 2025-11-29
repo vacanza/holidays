@@ -1,0 +1,58 @@
+name: Check financial holiday updates
+
+on:
+  schedule:
+    - cron: '0 0 2 11 *' # Run yearly on Nov 2nd at 00:00 UTC
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run in dry-run mode (no issues created)'
+        required: false
+        default: true
+        type: boolean
+      paths:
+        description: 'Multiline list of paths/globs to check (one per line, leave empty for default)'
+        required: false
+        default: ''
+        type: string
+      threshold_days:
+        description: 'Age threshold for files in days'
+        required: false
+        default: '300'
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check-financial-updates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout holidays repository
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3
+        with:
+          fetch-depth: 0 # Get full commit history to accurately determine when each file was last modified
+          repository: vacanza/holidays
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check financial holiday updates
+        id: check-financial-updates
+        uses: vacanza/aux/.github/actions/check-holiday-updates@46f7899c8ed2178d1f5f019d9c88a4b1db503060
+        with:
+          dry_run: ${{ inputs.dry_run || false }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          paths: ${{ inputs.paths || 'holidays/financial/*.py' }}
+          threshold_days: ${{ inputs.threshold_days || '300' }}
+
+      - name: Display results
+        run: |
+          echo "📊 Check Financial Holiday Updates Results:"
+          echo "  • Outdated files found: ${{ steps.check-financial-updates.outputs.outdated_files_count }}"
+          echo "  • Issues created: ${{ steps.check-financial-updates.outputs.issues_created_count }}"
+
+          if [ "${{ steps.check-financial-updates.outputs.outdated_files_count }}" -gt "0" ]; then
+            echo "⚠️  Some holiday files may need updating!"
+          else
+            echo "✅ All holiday files are up to date!"
+          fi

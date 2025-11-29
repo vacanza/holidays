@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.zimbabwe import Zimbabwe, ZW, ZWE
+from holidays.countries.zimbabwe import Zimbabwe
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestZimbabwe(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Zimbabwe, years=range(1988, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Zimbabwe, ZW, ZWE)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Zimbabwe(years=1987))
 
     def test_holidays(self):
         for year in range(1988, 2050):

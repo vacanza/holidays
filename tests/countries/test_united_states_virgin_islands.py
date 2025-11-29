@@ -12,25 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.united_states_virgin_islands import (
-    HolidaysVI,
-    UnitedStatesVirginIslands,
-    VI,
-    VIR,
-)
+from holidays.countries.united_states_virgin_islands import UnitedStatesVirginIslands
 from tests.common import CommonCountryTests
 
 
 class TestVI(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysVI)
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysVI, UnitedStatesVirginIslands, VI, VIR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(HolidaysVI(years=1917))
+        super().setUpClass(UnitedStatesVirginIslands)
 
     def test_vi_only(self):
         """Check for a holiday that is not returned by US unless the
@@ -58,8 +47,9 @@ class TestVI(CommonCountryTests, TestCase):
             ("2022-04-14", "Holy Thursday"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
+            ("2022-05-08", "Mother's Day"),
             ("2022-05-30", "Memorial Day"),
-            ("2022-06-19", "Juneteenth National Independence Day"),
+            ("2022-06-19", "Father's Day; Juneteenth National Independence Day"),
             ("2022-06-20", "Juneteenth National Independence Day (observed)"),
             ("2022-07-03", "Emancipation Day"),
             ("2022-07-04", "Independence Day"),
@@ -86,8 +76,9 @@ class TestVI(CommonCountryTests, TestCase):
             ("2022-04-14", "วันพฤหัสศักดิสิทธิ์"),
             ("2022-04-15", "วันศุกร์ประเสริฐ"),
             ("2022-04-18", "วันจันทร์อีสเตอร์"),
+            ("2022-05-08", "วันแม่"),
             ("2022-05-30", "วันรำลึก"),
-            ("2022-06-19", "วันประกาศอิสรภาพแห่งชาติจูนทีนท์"),
+            ("2022-06-19", "วันประกาศอิสรภาพแห่งชาติจูนทีนท์; วันพ่อ"),
             ("2022-06-20", "ชดเชยวันประกาศอิสรภาพแห่งชาติจูนทีนท์"),
             ("2022-07-03", "วันเลิกทาส"),
             ("2022-07-04", "วันประกาศอิสรภาพ"),

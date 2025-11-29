@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.85\n"
 "POT-Creation-Date: 2025-06-19 15:33+0700\n"
-"PO-Revision-Date: 2025-06-26 15:20+0700\n"
+"PO-Revision-Date: 2025-10-02 11:06+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Source-Language: en_US\n"
 
 #. %s (observed).
@@ -408,6 +408,10 @@ msgstr "วันประชาคมท้องถิ่น"
 msgid "Bennington Battle Day"
 msgstr "วันรำลึกยุทธการเบนนิงตัน"
 
+#. Native American Heritage Day.
+msgid "Native American Heritage Day"
+msgstr "วันอนุรักษ์มรดกชนพื้นเมืองอเมริกัน"
+
 #. West Virginia Day.
 msgid "West Virginia Day"
 msgstr "วันเวสต์เวอร์จิเนีย"
@@ -419,6 +423,14 @@ msgstr "วันวาเลนไทน์"
 #. Saint Patrick's Day.
 msgid "Saint Patrick's Day"
 msgstr "วันนักบุญแพทริก"
+
+#. Mother's Day.
+msgid "Mother's Day"
+msgstr "วันแม่"
+
+#. Father's Day.
+msgid "Father's Day"
+msgstr "วันพ่อ"
 
 #. Halloween.
 msgid "Halloween"

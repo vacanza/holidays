@@ -12,15 +12,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# ruff: noqa: T201
-
 import argparse
 import json
 import os
 import re
 import sys
 import time
-from typing import Optional
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -130,7 +127,7 @@ def scan_directory_for_links(
     return file_to_urls_map, all_unique_urls
 
 
-def check_availability_api(url: str, session: requests.Session) -> Optional[str]:
+def check_availability_api(url: str, session: requests.Session) -> str | None:
     """
     Checks the Wayback Machine CDX API for the latest available capture.
     Returns the Wayback URL of the latest capture, or None if not found or error.
@@ -252,7 +249,7 @@ def replace_urls_in_file(filepath: str, url_map: dict[str, str], urls_in_file: l
 
 def check_archive_urls_in_file(
     urls_in_file: list[str],
-    url_map: dict[str, Optional[str]],
+    url_map: dict[str, str | None],
     session: requests.Session,
     archive_policy: str,
 ):
@@ -377,7 +374,7 @@ def run_archive_mode(
 
     print("\n--- Stage: Per-File Processing ---")
     session = get_session()
-    url_map: dict[str, Optional[str]] = {}
+    url_map: dict[str, str | None] = {}
     total_files_processed = 0
     total_files_modified = 0
 

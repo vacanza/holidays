@@ -12,17 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.svalbard_and_jan_mayen import HolidaysSJ, SvalbardAndJanMayen, SJ, SJM
+from holidays.countries.svalbard_and_jan_mayen import SvalbardAndJanMayen
 from tests.common import CommonCountryTests
 
 
 class TestSvalbardAndJanMayen(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysSJ)
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysSJ, SvalbardAndJanMayen, SJ, SJM)
+        super().setUpClass(SvalbardAndJanMayen)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

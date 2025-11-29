@@ -16,7 +16,7 @@ maintainers = [
 ]
 
 authors = [ { name = "Vacanza Team" } ]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",
@@ -26,11 +26,11 @@ classifiers = [
   "Intended Audience :: Information Technology",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
   "Programming Language :: Python :: Implementation :: CPython",
   "Topic :: File Formats :: JSON",
   "Topic :: Office/Business :: Financial :: Accounting",
@@ -52,13 +52,31 @@ version = { attr = "holidays.version.__version__" }
 include = [ "holidays*" ]
 
 [tool.ruff]
-target-version = "py39"
+target-version = "py310"
 
 line-length = 99
-lint.select = [ "E4", "E5", "E7", "E9", "F", "N", "PLE", "S", "T", "TC", "UP", "W" ]
+lint.select = [ "E4", "E5", "E7", "E9", "F", "FBT", "N", "PLE", "S", "T", "TC", "UP", "W" ]
+lint.per-file-ignores."holidays/__init__.py" = [ "F403" ]
+lint.per-file-ignores."holidays/calendars/__init__.py" = [ "F401" ]
+lint.per-file-ignores."holidays/constants.py" = [ "F401" ]
+lint.per-file-ignores."holidays/countries/__init__.py" = [ "F401" ]
+lint.per-file-ignores."holidays/financial/__init__.py" = [ "F401" ]
+lint.per-file-ignores."holidays/groups/__init__.py" = [ "F401" ]
+lint.per-file-ignores."holidays/holiday_base.py" = [ "FBT" ]
+lint.per-file-ignores."holidays/ical.py" = [ "FBT" ]
+lint.per-file-ignores."holidays/mixins/__init__.py" = [ "F401" ]
+lint.per-file-ignores."holidays/registry.py" = [ "FBT" ]
+lint.per-file-ignores."holidays/utils.py" = [ "FBT" ]
+lint.per-file-ignores."scripts/archive_links.py" = [ "T201" ]
 lint.per-file-ignores."scripts/generate_release_notes.py" = [ "T201" ]
+lint.per-file-ignores."scripts/generate_snapshots.py" = [ "T201" ]
+lint.per-file-ignores."scripts/l10n/generate_mo_files.py" = [ "T201" ]
+lint.per-file-ignores."scripts/l10n/generate_po_files.py" = [ "T201" ]
+lint.per-file-ignores."scripts/l10n/l10n_helper.py" = [ "T201" ]
+lint.per-file-ignores."tests/common.py" = [ "N802" ]
 lint.per-file-ignores."tests/test_holiday_base.py" = [ "S301" ]
 lint.flake8-errmsg.max-string-length = 99
+lint.pyupgrade.keep-runtime-typing = true
 
 [tool.isort]
 known_first_party = [ "holidays", "tests" ]
@@ -76,6 +94,11 @@ filterwarnings = [
   "ignore::DeprecationWarning:holidays.deprecations.v1_incompatibility",
 ]
 testpaths = [ "tests" ]
+
+[tool.coverage.report]
+exclude_lines = [
+  "^if TYPE_CHECKING:",
+]
 
 [tool.coverage.run]
 branch = true

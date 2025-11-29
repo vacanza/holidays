@@ -13,28 +13,19 @@
 from unittest import TestCase
 
 from holidays.countries.united_states_minor_outlying_islands import (
-    HolidaysUM,
     UnitedStatesMinorOutlyingIslands,
-    UM,
-    UMI,
 )
 from tests.common import CommonCountryTests
 
 
-class TestUM(CommonCountryTests, TestCase):
+class TestUnitedStatesMinorOutlyingIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysUM)
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysUM, UnitedStatesMinorOutlyingIslands, UM, UMI)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(HolidaysUM(years=1856))
+        super().setUpClass(UnitedStatesMinorOutlyingIslands)
 
     def test_public_holidays(self):
         self.assertHolidays(
-            HolidaysUM(years=2024),
+            UnitedStatesMinorOutlyingIslands(years=2024),
             ("2024-01-01", "New Year's Day"),
             ("2024-01-15", "Martin Luther King Jr. Day"),
             ("2024-02-19", "Washington's Birthday"),
@@ -54,8 +45,9 @@ class TestUM(CommonCountryTests, TestCase):
             ("2022-02-14", "Valentine's Day"),
             ("2022-02-21", "Washington's Birthday"),
             ("2022-03-17", "Saint Patrick's Day"),
+            ("2022-05-08", "Mother's Day"),
             ("2022-05-30", "Memorial Day"),
-            ("2022-06-19", "Juneteenth National Independence Day"),
+            ("2022-06-19", "Father's Day; Juneteenth National Independence Day"),
             ("2022-06-20", "Juneteenth National Independence Day (observed)"),
             ("2022-07-04", "Independence Day"),
             ("2022-09-05", "Labor Day"),
@@ -75,8 +67,9 @@ class TestUM(CommonCountryTests, TestCase):
             ("2022-02-14", "วันวาเลนไทน์"),
             ("2022-02-21", "วันเกิดวอชิงตัน"),
             ("2022-03-17", "วันนักบุญแพทริก"),
+            ("2022-05-08", "วันแม่"),
             ("2022-05-30", "วันรำลึก"),
-            ("2022-06-19", "วันประกาศอิสรภาพแห่งชาติจูนทีนท์"),
+            ("2022-06-19", "วันประกาศอิสรภาพแห่งชาติจูนทีนท์; วันพ่อ"),
             ("2022-06-20", "ชดเชยวันประกาศอิสรภาพแห่งชาติจูนทีนท์"),
             ("2022-07-04", "วันประกาศอิสรภาพ"),
             ("2022-09-05", "วันแรงงาน"),

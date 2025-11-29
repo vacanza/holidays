@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.liberia import Liberia, LR, LBR
+from holidays.countries.liberia import Liberia
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestLiberia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Liberia, years=range(1957, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Liberia, LR, LBR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Liberia(years=1956))
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1957, 2050)))

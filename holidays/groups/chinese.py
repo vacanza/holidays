@@ -11,10 +11,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.chinese import _ChineseLunisolar, CHINESE_CALENDAR
-from holidays.calendars.gregorian import APR, DEC
+from holidays.calendars.gregorian import APR
 from holidays.groups.eastern import EasternCalendarHolidays
 
 
@@ -23,7 +22,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
     Chinese lunisolar calendar holidays.
     """
 
-    def __init__(self, cls=None, show_estimated=False, calendar=CHINESE_CALENDAR) -> None:
+    def __init__(self, cls=None, *, show_estimated=False, calendar=CHINESE_CALENDAR) -> None:
         self._chinese_calendar = (
             cls(calendar=calendar) if cls else _ChineseLunisolar(calendar=calendar)
         )
@@ -79,24 +78,12 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
     def _dongzhi_festival(self):
         """
         Return Dongzhi Festival (Chinese Winter Solstice) date.
-
-        This approximation is reliable for 1952-2099 years.
         """
-        #
-        if (
-            (self._year % 4 == 0 and self._year >= 1988)
-            or (self._year % 4 == 1 and self._year >= 2021)
-            or (self._year % 4 == 2 and self._year >= 2058)
-            or (self._year % 4 == 3 and self._year >= 2091)
-        ):
-            day = 21
-        else:
-            day = 22
-        return date(self._year, DEC, day)
+        return self._chinese_calendar.winter_solstice_date(self._year)[0]
 
     def _add_chinese_calendar_holiday(
-        self, name: str, dt_estimated: tuple[Optional[date], bool], days_delta: int = 0
-    ) -> Optional[date]:
+        self, name: str, dt_estimated: tuple[date | None, bool], days_delta: int = 0
+    ) -> date | None:
         """
         Add Chinese calendar holiday.
 
@@ -104,10 +91,13 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         is an estimation.
         """
         return self._add_eastern_calendar_holiday(
-            name, dt_estimated, self._chinese_calendar_show_estimated, days_delta
+            name,
+            dt_estimated,
+            show_estimated=self._chinese_calendar_show_estimated,
+            days_delta=days_delta,
         )
 
-    def _add_chinese_birthday_of_buddha(self, name) -> Optional[date]:
+    def _add_chinese_birthday_of_buddha(self, name) -> date | None:
         """
         Add Birthday of the Buddha by Chinese lunar calendar (8th day of the
         4th lunar month).
@@ -121,7 +111,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.buddha_birthday_date(self._year)
         )
 
-    def _add_chinese_day_before_new_years_eve(self, name) -> Optional[date]:
+    def _add_chinese_day_before_new_years_eve(self, name) -> date | None:
         """
         Add day before Chinese New Year's Eve (second to last day of 12th lunar month).
 
@@ -132,7 +122,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=-2
         )
 
-    def _add_chinese_new_years_eve(self, name) -> Optional[date]:
+    def _add_chinese_new_years_eve(self, name) -> date | None:
         """
         Add Chinese New Year's Eve (last day of 12th lunar month).
 
@@ -143,7 +133,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=-1
         )
 
-    def _add_chinese_new_years_day(self, name) -> Optional[date]:
+    def _add_chinese_new_years_day(self, name) -> date | None:
         """
         Add Chinese New Year's Day (first day of the first lunar month).
 
@@ -155,7 +145,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.lunar_new_year_date(self._year)
         )
 
-    def _add_chinese_new_years_day_two(self, name) -> Optional[date]:
+    def _add_chinese_new_years_day_two(self, name) -> date | None:
         """
         Add Chinese New Year's Day Two.
 
@@ -165,7 +155,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+1
         )
 
-    def _add_chinese_new_years_day_three(self, name) -> Optional[date]:
+    def _add_chinese_new_years_day_three(self, name) -> date | None:
         """
         Add Chinese New Year's Day Three.
 
@@ -175,7 +165,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+2
         )
 
-    def _add_chinese_new_years_day_four(self, name) -> Optional[date]:
+    def _add_chinese_new_years_day_four(self, name) -> date | None:
         """
         Add Chinese New Year's Day Four.
 
@@ -185,7 +175,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+3
         )
 
-    def _add_chinese_new_years_day_five(self, name) -> Optional[date]:
+    def _add_chinese_new_years_day_five(self, name) -> date | None:
         """
         Add Chinese New Year's Day Five.
 
@@ -195,7 +185,19 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+4
         )
 
-    def _add_dongzhi_festival(self, name) -> Optional[date]:
+    def _add_daeboreum_day(self, name) -> date | None:
+        """
+        Add Daeboreum Day (15th day of 1st lunar month).
+
+        Daeboreum is a Korean holiday that celebrates the first full moon
+        of the new year of the lunar Korean calendar.
+        https://en.wikipedia.org/wiki/Daeboreum
+        """
+        return self._add_chinese_calendar_holiday(
+            name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+14
+        )
+
+    def _add_dongzhi_festival(self, name) -> date | None:
         """
         Add Dongzhi Festival (Chinese Winter Solstice).
 
@@ -205,6 +207,19 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Dongzhi_Festival
         """
         return self._add_holiday(name, self._dongzhi_festival)
+
+    def _add_hanshi_festival(self, name) -> date | None:
+        """
+        Add Hanshi Festival (105 days after Winter Solstice).
+
+        The Cold Food or Hanshi Festival is a traditional Chinese holiday. Its name
+        derives from the tradition of avoiding the lighting of any kind of fire,
+        even for the preparation of food.
+        https://en.wikipedia.org/wiki/Cold_Food_Festival
+        """
+        return self._add_chinese_calendar_holiday(
+            name, self._chinese_calendar.winter_solstice_date(self._year - 1), days_delta=+105
+        )
 
     def _add_qingming_festival(self, name) -> date:
         """
@@ -216,7 +231,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_holiday(name, self._qingming_festival)
 
-    def _add_double_ninth_festival(self, name) -> Optional[date]:
+    def _add_double_ninth_festival(self, name) -> date | None:
         """
         Add Double Ninth Festival (9th day of 9th lunar month).
 
@@ -228,7 +243,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.double_ninth_date(self._year)
         )
 
-    def _add_dragon_boat_festival(self, name) -> Optional[date]:
+    def _add_dragon_boat_festival(self, name) -> date | None:
         """
         Add Dragon Boat Festival (5th day of 5th lunar month).
 
@@ -240,7 +255,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.dragon_boat_date(self._year)
         )
 
-    def _add_hung_kings_day(self, name) -> Optional[date]:
+    def _add_hung_kings_day(self, name) -> date | None:
         """
         Add Hùng Kings' Temple Festival (10th day of the 3rd lunar month).
 
@@ -252,7 +267,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.hung_kings_date(self._year)
         )
 
-    def _add_mid_autumn_festival(self, name) -> Optional[date]:
+    def _add_mid_autumn_festival(self, name) -> date | None:
         """
         Add Mid Autumn Festival (15th day of the 8th lunar month).
 
@@ -264,7 +279,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.mid_autumn_date(self._year)
         )
 
-    def _add_mid_autumn_festival_day_two(self, name) -> Optional[date]:
+    def _add_mid_autumn_festival_day_two(self, name) -> date | None:
         """
         Add Mid Autumn Festival Day Two (16th day of the 8th lunar month).
 

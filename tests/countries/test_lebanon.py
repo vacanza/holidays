@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import BANK, GOVERNMENT
-from holidays.countries.lebanon import Lebanon, LB, LBN
+from holidays.countries.lebanon import Lebanon
 from tests.common import CommonCountryTests
 
 
@@ -26,11 +26,9 @@ class TestLebanon(CommonCountryTests, TestCase):
         cls.government_holidays = Lebanon(categories=GOVERNMENT, years=years)
         cls.no_estimated_holidays = Lebanon(years=years, islamic_show_estimated=False)
 
-    def test_country_aliases(self):
-        self.assertAliases(Lebanon, LB, LBN)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Lebanon(years=1977))
+        super().test_no_holidays()
+
         self.assertNoHolidays(Lebanon(categories=BANK, years=2019))
         self.assertNoHolidays(Lebanon(categories=GOVERNMENT, years=2019))
 
@@ -270,6 +268,11 @@ class TestLebanon(CommonCountryTests, TestCase):
             "2025-03-31",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1978, 2050))
+        self.assertHolidayNameCount(name, 1, self.no_estimated_holidays, range(1978, 1986))
+        self.assertHolidayNameCount(name, 3, self.no_estimated_holidays, range(1986, 1995))
+        self.assertHolidayNameCount(
+            name, 2, self.no_estimated_holidays, set(range(1995, 2050)) - {2000, 2033}
+        )
 
     def test_eid_al_adha(self):
         name = "عيد الأضحى"
@@ -296,6 +299,14 @@ class TestLebanon(CommonCountryTests, TestCase):
             "2025-06-07",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1978, 2050))
+        self.assertHolidayNameCount(
+            name,
+            2,
+            self.no_estimated_holidays,
+            range(1978, 1986),
+            set(range(1994, 2050)) - {2006, 2007, 2039},
+        )
+        self.assertHolidayNameCount(name, 3, self.no_estimated_holidays, range(1986, 1994))
 
     def test_2024(self):
         self.assertHolidays(

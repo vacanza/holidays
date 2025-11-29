@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.50\n"
+"Project-Id-Version: Holidays 0.80\n"
 "POT-Creation-Date: 2023-07-18 17:31+0300\n"
-"PO-Revision-Date: 2024-05-23 11:01+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2025-08-28 01:04+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -94,3 +94,7 @@ msgstr "Holiday of Svetitskhovloba, Robe of Jesus"
 #. Saint George's Day.
 msgid "გიორგობა"
 msgstr "Saint George's Day"
+
+#. Public Holiday.
+msgid "უქმე დღე"
+msgstr "Public Holiday"

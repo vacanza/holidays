@@ -27,7 +27,7 @@ doc:
 
 l10n:
 	find . -type f -name "*.pot" -delete
-	scripts/l10n/generate_po_files.py >/dev/null 2>&1
+	scripts/l10n/generate_po_files.py 2>/dev/null
 	scripts/l10n/generate_mo_files.py
 
 package:

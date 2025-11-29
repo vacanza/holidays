@@ -26,6 +26,8 @@ from holidays.calendars.gregorian import (
     OCT,
     NOV,
     DEC,
+    SAT,
+    SUN,
     _timedelta,
 )
 from holidays.constants import ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY
@@ -143,6 +145,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             * <https://web.archive.org/web/20250428135456/http://mdc.library.mju.ac.th/article/57695/297565/367757.pdf>
             * <https://web.archive.org/web/20250428140422/https://resolution.soc.go.th/PDF_UPLOAD/2510/932141.pdf>
             * <https://web.archive.org/web/20161028001043/http://www.myhora.com:80/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx>
+            * <https://web.archive.org/web/20251108075053/https://pridi.or.th/th/content/2024/05/1954>
         * [Royal Thai Armed Forces Day](https://th.wikipedia.org/wiki/วันกองทัพไทย)
         * [Teacher's Day](https://web.archive.org/web/20250117105542/http://event.sanook.com/day/teacher-day/)
 
@@ -198,6 +201,25 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
 
     def _is_observed(self, dt: date) -> bool:
         return 1961 <= self._year <= 1973 or 1995 <= self._year <= 1997 or self._year >= 2001
+
+    def _get_weekend(self, dt: date) -> set[int]:
+        if dt >= date(1959, MAR, 1):
+            # SAT & SUN (Full Day).
+            weekend = {SAT, SUN}
+        elif date(1956, OCT, 1) <= dt <= date(1957, OCT, 6):
+            # Buddhist Sabbath Days and Sun (Full Day).
+            weekend = {SUN}
+            buddhist_sabbath_dates = self._thai_calendar.buddhist_sabbath_dates(dt.year)
+            if dt in buddhist_sabbath_dates:
+                weekend.add(dt.weekday())
+        elif dt >= date(1939, FEB, 28):
+            # SAT from 12:00 onwards and SUN (Full Day).
+            weekend = {SUN}
+        else:
+            # Prior to this, there was no concept of weekend.
+            weekend = set()
+
+        return weekend
 
     def _populate_public_holidays(self):
         # Fixed Date Holidays
@@ -660,14 +682,15 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # **For pre-1941 data, Buddhist Era year starts on APR 1st.
 
         if 1915 <= self._year <= 1925 or self._year >= 1938:
-            name = (
-                # Makha Bucha.
-                tr("วันมาฆบูชา")
-                if self._year >= 1938
-                # Makha Bucha, the Fourfold Assembly Day.
-                else tr("มาฆบูชา จาตุรงฅ์สันนิบาต")
+            self._add_observed(
+                self._add_makha_bucha(
+                    # Makha Bucha.
+                    tr("วันมาฆบูชา")
+                    if self._year >= 1938
+                    # Makha Bucha, the Fourfold Assembly Day.
+                    else tr("มาฆบูชา จาตุรงฅ์สันนิบาต")
+                )
             )
-            self._add_observed(self._add_makha_bucha(name))
 
         # วันวิสาขบูชา
         # Status: In-Use.
@@ -867,8 +890,9 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             2023: (MAY, 17),
             2024: (MAY, 10),
             2025: (MAY, 9),
+            2026: (MAY, 13),
         }
-        if 1960 <= self._year <= 2025 and self._year != 1999:
+        if 1960 <= self._year <= 2026 and self._year != 1999:
             self._add_observed(
                 # Royal Ploughing Ceremony.
                 self._add_holiday(tr("วันพืชมงคล"), raeknakhwan_dates.get(self._year))
@@ -1114,6 +1138,7 @@ class ThailandStaticHolidays:
         ),
         2026: (JAN, 2, thai_bridge_public_holiday),
     }
+    # Royal Ploughing Ceremony.
     special_workday_holidays = {1999: (MAY, 14, tr("วันพืชมงคล"))}
 
     special_public_holidays_observed = {

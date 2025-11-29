@@ -1,3 +1,134 @@
+# Version 0.85
+
+Released November 17, 2025
+
+- Refactor l10n scripts (#3063 by @PPsyrius, @arkid15r)
+- Refactor snapshots generator: ProcessPoolExecutor, UTF-8 support (#3062 by @PPsyrius)
+- Update Azerbaijan holidays in 2025 (#3060 by @KJhellico)
+- Update China holidays in 2026 (#3052 by @KJhellico)
+- Update Ecuador holidays: fix observance rules (#3049 by @PPsyrius)
+- Update National Stock Exchange of India holidays (#2888 by @saheelsapovadia, @KJhellico)
+- Update Thailand holidays: add 2026 Royal Ploughing Ceremony (#3044 by @PPsyrius)
+- Update Turkey holidays: add historical holidays (#3050 by @KJhellico)
+- Update United States holidays: add Native American Heritage Day in WA (#3045 by @waltdowning)
+- Centralize all per-file ignores to `pyproject.toml` (#3053 by @PPsyrius)
+- TestCase Syntactic Sugar Support (#2881 by @PPsyrius, @arkid15r)
+
+# Version 0.84
+
+Released November 3, 2025
+
+- Update Spain holidays in 2008-2009, 2026 (#3026 by @PPsyrius)
+- Update Sri Lanka holidays in 2026 (#3033 by @PPsyrius)
+- Add `ChristianHolidays::_add_saint_martins_day` method (#3023 by @PPsyrius)
+- Drop Python 3.9 support (#2998 by @PPsyrius)
+- Standardize `th` l10n for "{insert} Anniversary of...." (#3027 by @PPsyrius)
+
+# Version 0.83
+
+Released October 20, 2025
+
+- Add `_add_observed`/`_move_holiday`'s `force_observed` support (#2986 by @PPsyrius)
+- Introduce `HolidayBase::_is_weekday` method (#2999 by @PPsyrius, @arkid15r)
+- Refactor `HolidaySum::__init__` (#3013 by @KJhellico, @arkid15r)
+- Add Western Sahara holidays (#3003 by @PPsyrius, @arkid15r)
+- Update Denmark holidays: add `th` l10n support, refactor test cases (#3011 by @PPsyrius)
+- Update Islamic holidays calculation (#2981 by @KJhellico)
+- Update Netherlands holidays: add `th` l10n, refactor test cases (#3006 by @PPsyrius)
+- Update Slovakia holidays: additional holidays moved to `WORKDAY` for 2026 (#3005 by @KJhellico)
+- Update Slovakia holidays: move "Struggle for Freedom and Democracy Day" to `WORKDAY` category for 2025 onwards (#3004 by @PPsyrius)
+- Update Switzerland holidays: add Zurich's `HALF_DAY`, `OPTIONAL` holidays, `th` l10n support (#2984 by @PPsyrius, @arkid15r)
+- Update badges (#2990 by @arkid15r)
+- Update ruff configuration: add `flake8-boolean-trap` (FBT) errors check (#3007 by @KJhellico)
+- Inline single-use variables, update .py files formatting (#3014 by @KJhellico)
+- Switch to Python 3.14 (#2997 by @arkid15r)
+
+# Version 0.82
+
+Released October 6, 2025
+
+- Add variable weekend support (#2945 by @KJhellico, @arkid15r)
+- Refactor Chile holidays: reduce l10n string duplication (#2934 by @PPsyrius)
+- Refactor Cuba holidays: reduce l10n string duplication (#2935 by @PPsyrius)
+- Refactor Eastern holidays groups (#2966 by @KJhellico)
+- Refactor Hungary holidays: reduce l10n string duplication (#2936 by @PPsyrius)
+- Refactor Japan holidays: reduce l10n string duplication, `en_US` typo fixed (#2937 by @PPsyrius)
+- Refactor Portugal holidays: consolidate holidays code (#2943 by @PPsyrius)
+- Refactor South Africa holidays: move `start_year` to 1911, capitalization fixes (#2942 by @PPsyrius)
+- Refactor `test_utils.py` (#2970 by @PPsyrius)
+- Refactor iCal exporter (#2977 by @KJhellico)
+- Refactor imports in certain countries: use `TYPE_CHECKING` (#2949 by @KJhellico, @arkid15r)
+- Add Antarctica holidays (#2962 by @Aaqilyousuf)
+- Add Myanmar holidays (#2944 by @KJhellico, @arkid15r)
+- Add North Korea holidays (#2911 by @Wasif-Shahzad)
+- Update Spain holidays: add Catalan (`ca`) localization (#2960 by @Oriol-Romani-BA, @arkid15r, @KJhellico, @PPsyrius)
+- Fix working day test (#2950 by @KJhellico)
+- Update Afghanistan holidays: 2025 exact Islamic holidays observances (#2932 by @PPsyrius)
+- Update Algeria holidays: add `CHRISTIAN`, `HEBREW` supported categories (#2928 by @PPsyrius)
+- Update Brazil holidays: Republic Constitution Day typo fixed (#2933 by @PPsyrius)
+- Update Djibouti holidays: change holiday groups MRO (#2931 by @PPsyrius)
+- Update India holidays: add Ugadi holiday for AP, KA, TS subdivisions (#2953 by @Aaqilyousuf, @arkid15r)
+- Update Myanmar holidays: add `th` l10n support (#2959 by @PPsyrius)
+- Update Norway holidays: update subdivision list as per 2024 administrative reform (#2952 by @Exerqtor, @arkid15r, @PPsyrius)
+- Update Paraguay holidays: typo fixed, 2023-2025 government holidays (#2938 by @PPsyrius, @arkid15r)
+- Update Serbia holidays: set 2007 as `start_year` (#2939 by @PPsyrius)
+- Update Sri Lanka holidays: testcase name typo fixed (#2940 by @PPsyrius)
+- Update Switzerland holidays: standardize code comment (#2941 by @PPsyrius)
+- Update Taiwan holidays: add support for 1998-2000 special weekend pattern (#2948 by @PPsyrius, @arkid15r)
+- Update Thailand holidays: add support for historical weekend patterns (#2951 by @PPsyrius, @arkid15r)
+- Update the United States holidays: add Father's Day and Mother's Day for `UNOFFICIAL` category (#2975 by @PPsyrius)
+- Add no holiday countries (#2969 by @arkid15r)
+- Replace `lru_cache` with `cache` (#2964 by @arkid15r, @KJhellico)
+
+# Version 0.81
+
+Released September 15, 2025
+
+- Add Saint Helena, Ascension and Tristan da Cunha holidays (#2820 by @Abheelash-Mishra, @arkid15r)
+- Add Sudan holidays (#2854 by @anshonweb)
+- Update Chinese Lunisolar calendar: extend Winter Solstice support (#2927 by @KJhellico)
+- Update Philippines holidays: add 2026 holidays (#2912 by @KJhellico)
+- Update Spain holidays: add Dec 3 holiday in Navarre (#2895 by @KJhellico)
+- Update countries with Eastern holidays: add estimated holidays labels (#2924 by @KJhellico, @arkid15r)
+- Update release notes generator (#2929 by @KJhellico)
+- Simplify N802 suppression for `common.py` (#2880 by @arkid15r)
+
+# Version 0.80
+
+Released September 1, 2025
+
+- Refactor Australia holidays (#2828 by @KJhellico)
+- Refactor Macau holidays: holiday categories standardization (#2868 by @PPsyrius)
+- Add Comoros holidays (#2827 by @Prateekshit73, @arkid15r, @prateekshit-v)
+- Add Eritrea holidays (#2783 by @Prateekshit73, @prateekshit-v)
+- Add National Stock Exchange of India (NSE) holidays (#2834 by @saheelsapovadia, @arkid15r)
+- Add Rwanda holidays (#2792 by @Prateekshit73, @prateekshit-v)
+- Add Somalia holidays (#2848 by @Prateekshit73, @arkid15r, @prateekshit-v)
+- Add South Sudan holidays (#2831 by @Prateekshit73, @arkid15r, @prateekshit-v)
+- Add Tajikistan holidays (#2852 by @Wasif-Shahzad)
+- Add Uganda holidays (#2833 by @Prateekshit73, @arkid15r, @prateekshit-v)
+- Add `estimated_label` to all countries with Islamic holidays (#2860 by @KJhellico, @arkid15r)
+- Fix Hindu Lunisolar calendar (#2871 by @KJhellico)
+- Fix Islamic holidays tests (#2849 by @KJhellico)
+- Fix `TestAllInSameYear` methods (#2877 by @KJhellico)
+- Update Bosnia and Herzegovina holidays (#2869 by @KJhellico)
+- Update Burundi holidays, add l10n support (#2843 by @PPsyrius)
+- Update Canada holidays: add National Day for Truth and Reconciliation in MB (#2829 by @KJhellico)
+- Update Georgia holidays: add August 29, 2025 special holiday (#2863 by @KJhellico)
+- Update Guinea-Bissau holidays (#2859 by @KJhellico, @arkid15r)
+- Update Nigeria holidays, add l10n support (#2874 by @PPsyrius)
+- Update Singapore holidays: remove duplicate holidays label assignment (#2844 by @PPsyrius)
+- Update Tanzania holidays: extend holidays support to 1965 (#2821 by @PPsyrius)
+- Update `common::CommonTests`: expand label tests to financial entities (#2876 by @arkid15r)
+- Add .zenodo.json (#2870 by @arkid15r)
+- Add `common::TestCase::assertHolidayNameCount` method (#2873 by @KJhellico)
+- Add metadata package version mismatch hint (#2846 by @arkid15r)
+- Add missing docstring for `__init__` method (#2850 by @KJhellico)
+- Expose entity additional codes (#2879 by @arkid15r)
+- Test Case Name Standardization (#2853 by @PPsyrius)
+- Unify imports (#2845 by @KJhellico)
+- Use aux repository data for downloads badge (#2832 by @arkid15r)
+
 # Version 0.79
 
 Released August 18, 2025

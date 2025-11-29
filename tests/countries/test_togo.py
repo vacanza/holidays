@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import WORKDAY
-from holidays.countries.togo import Togo, TG, TGO
+from holidays.countries.togo import Togo
 from tests.common import CommonCountryTests
 
 
@@ -25,11 +25,9 @@ class TestTogo(CommonCountryTests, TestCase):
         cls.no_estimated_holidays = Togo(years=years, islamic_show_estimated=False)
         cls.workday_holidays = Togo(categories=WORKDAY, years=years)
 
-    def test_country_aliases(self):
-        self.assertAliases(Togo, TG, TGO)
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Togo(years=1960))
+        super().test_no_holidays()
+
         self.assertNoHolidays(Togo(categories=WORKDAY, years=1986))
 
     def test_new_years_day(self):

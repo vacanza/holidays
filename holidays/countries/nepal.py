@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import _CustomIslamicHolidays, _CustomHinduHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, AUG, SEP, OCT, NOV
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import (
     ChristianHolidays,
@@ -58,17 +58,23 @@ class Nepal(
             islamic_show_estimated:
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
+
+        In Nepal, the dates of the Islamic calendar usually fall a day later than
+        the corresponding dates in the Umm al-Qura calendar.
         """
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, cls=NepalHinduHolidays)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self, cls=NepalIslamicHolidays, show_estimated=islamic_show_estimated
+            self,
+            cls=NepalIslamicHolidays,
+            show_estimated=islamic_show_estimated,
+            calendar_delta_days=+1,
         )
         StaticHolidays.__init__(self, cls=NepalStaticHolidays)
         super().__init__(*args, **kwargs)
 
-    def _add_non_continuous_holidays(self, is_workday: bool = False):
+    def _add_non_continuous_holidays(self, *, is_workday: bool = False):
         """Holidays removed by MoHA between 2019-2020."""
         if (2019 <= self._year <= 2020) == is_workday:
             martyrs_day_dates = {
@@ -367,40 +373,15 @@ class NepalHinduHolidays(_CustomHinduHolidays):
 class NepalIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2010, 2025)
     EID_AL_ADHA_DATES = {
-        2010: (NOV, 17),
-        2011: (NOV, 7),
-        2012: (OCT, 27),
-        2013: (OCT, 16),
         2014: (OCT, 6),
         2015: (SEP, 25),
         2016: (SEP, 13),
-        2017: (SEP, 2),
-        2018: (AUG, 22),
-        2019: (AUG, 12),
-        2020: (AUG, 1),
-        2021: (JUL, 21),
-        2022: (JUL, 10),
-        2023: (JUN, 29),
-        2024: (JUN, 17),
-        2025: (JUN, 7),
     }
 
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2010, 2025)
     EID_AL_FITR_DATES = {
-        2011: (AUG, 31),
-        2012: (AUG, 20),
-        2014: (JUL, 29),
-        2015: (JUL, 18),
-        2016: (JUL, 7),
-        2017: (JUN, 26),
-        2018: (JUN, 16),
-        2019: (JUN, 5),
-        2020: (MAY, 25),
-        2021: (MAY, 14),
-        2022: (MAY, 3),
-        2023: (APR, 22),
-        2024: (APR, 11),
-        2025: (MAR, 31),
+        2010: (SEP, 10),
+        2013: (AUG, 8),
     }
 
 

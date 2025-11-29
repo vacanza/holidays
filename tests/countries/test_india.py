@@ -14,21 +14,19 @@ import warnings
 from unittest import TestCase
 
 from holidays.constants import OPTIONAL
-from holidays.countries.india import India, IN, IND
+from holidays.countries.india import India
 from tests.common import CommonCountryTests
 
 
 class TestIndia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
+        warnings.simplefilter("ignore")
         super().setUpClass(India)
 
     def setUp(self):
         super().setUp()
         warnings.simplefilter("ignore")
-
-    def test_country_aliases(self):
-        self.assertAliases(India, IN, IND)
 
     def test_subdiv_deprecation(self):
         self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
@@ -537,7 +535,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-02-19", "Chhatrapati Shivaji Maharaj Jayanti"),
             ("2018-02-20", "Mizoram State Day"),
             ("2018-03-02", "Holi"),
-            ("2018-03-18", "Gudi Padwa"),
+            ("2018-03-18", "Gudi Padwa; Ugadi"),
             ("2018-03-22", "Bihar Day"),
             ("2018-03-25", "Palm Sunday; Ram Navami"),
             ("2018-03-29", "Mahavir Jayanti"),
@@ -605,7 +603,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-02-19", "छत्रपति शिवाजी महाराज जयंती"),
             ("2018-02-20", "मिज़ोरम राज्य दिवस"),
             ("2018-03-02", "होली"),
-            ("2018-03-18", "गुडी पाडवा"),
+            ("2018-03-18", "उगादि; गुडी पाडवा"),
             ("2018-03-22", "बिहार दिवस"),
             ("2018-03-25", "पाम संडे; रामनवमी"),
             ("2018-03-29", "महावीर जयंती"),
@@ -668,7 +666,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-02-19", "Chhatrapati Shivaji Maharaj Jayanti"),
             ("2018-02-20", "Mizoram State Day"),
             ("2018-03-02", "Holi"),
-            ("2018-03-18", "Gudi Padwa"),
+            ("2018-03-18", "Gudi Padwa; Ugadi"),
             ("2018-03-22", "Bihar Day"),
             ("2018-03-25", "Palm Sunday; Ram Navami"),
             ("2018-03-29", "Mahavir Jayanti"),
