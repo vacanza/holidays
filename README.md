@@ -390,7 +390,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>BG</td>
 <td></td>
 <td><strong>bg</strong>, en_US, uk</td>
-<td>SCHOOL</td>
+<td>HALF_DAY, SCHOOL</td>
 </tr>
 <tr>
 <td>Burkina Faso</td>
@@ -628,7 +628,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>EE</td>
 <td></td>
 <td>en_US, <strong>et</strong>, uk</td>
-<td></td>
+<td>HALF_DAY</td>
 </tr>
 <tr>
 <td>Eswatini</td>
