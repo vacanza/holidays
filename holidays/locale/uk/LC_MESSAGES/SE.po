@@ -130,11 +130,11 @@ msgstr "Переддень Вознесіння Господнього"
 
 #. Day before Midsummer Eve.
 msgid "Dag före Midsommarafton"
-msgstr "День перед передднем літнього сонцестояння"
+msgstr "За два дні до літнього сонцестояння"
 
 #. Day before Whitsun Eve.
 msgid "Dag före Pingstafton"
-msgstr "День перед передднем Трійці"
+msgstr "За два дні до Трійці"
 
 #. Day before Christmas Eve.
 msgid "Dag före Julafton"
@@ -142,7 +142,7 @@ msgstr "День перед Святим вечором"
 
 #. Day before New Year's Eve.
 msgid "Dag före Nyårsafton"
-msgstr "День перед передднем Нового року"
+msgstr "За два дні до Нового року"
 
 #. Holy Saturday.
 msgid "Påskafton"
