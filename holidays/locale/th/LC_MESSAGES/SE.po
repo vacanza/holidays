@@ -106,7 +106,7 @@ msgstr "วันพฤหัสศักดิสิทธิ์"
 
 #. Walpurgis Night.
 msgid "Valborgsmässoafton"
-msgstr "วัลเพอร์กิส ไนท์"
+msgstr "คืนวัลเพอร์กิส"
 
 #. Midsummer Eve.
 msgid "Midsommarafton"
