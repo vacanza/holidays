@@ -102,7 +102,7 @@ msgstr "วันก่อนวันสมโภชพระคริสต์
 
 #. Maundy Thursday.
 msgid "Skärtorsdagen"
-msgstr "วันพฤหัสศักดิสิทธิ์"
+msgstr "วันพฤหัสศักดิ์สิทธิ์"
 
 #. Walpurgis Night.
 msgid "Valborgsmässoafton"
