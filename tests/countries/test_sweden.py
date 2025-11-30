@@ -23,6 +23,10 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
         super().setUpClass(Sweden)
         cls.holidays = Sweden(include_sundays=False, years=cls.full_range)
 
+    def test_no_holidays(self):
+        super().test_no_holidays()
+        self.assertNoHolidays(Sweden(categories=(BANK, OPTIONAL), years=self.start_year - 1))
+
     def test_new_years_day(self):
         self.assertHolidayName("Nyårsdagen", (f"{year}-01-01" for year in self.full_range))
 
