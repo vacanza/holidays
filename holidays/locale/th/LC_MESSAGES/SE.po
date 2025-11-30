@@ -98,7 +98,7 @@ msgstr "วันอาทิตย์"
 
 #. Twelfth Night.
 msgid "Trettondagsafton"
-msgstr "คืนที่สิบสอง"
+msgstr "วันก่อนวันสมโภชพระคริสต์แสดงองค์"
 
 #. Maundy Thursday.
 msgid "Skärtorsdagen"
