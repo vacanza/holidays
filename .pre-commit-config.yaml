@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-ast
       - id: check-builtin-literals
@@ -18,14 +18,15 @@ repos:
         exclude: \.md$
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.20.0
+    rev: v3.21.2
     hooks:
     -   id: pyupgrade
         args:
-          - --py39-plus
+          - --keep-runtime-typing
+          - --py310-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.7
+    rev: v0.14.7
     hooks:
       - id: ruff-check
       - id: ruff-format
@@ -41,13 +42,13 @@ repos:
           - docs/file_header.txt
 
   - repo: https://github.com/pycqa/isort
-    rev: 6.0.1
+    rev: 7.0.0
     hooks:
       - id: isort
         exclude: ^(docs)
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.17.1
+    rev: v1.19.0
     hooks:
       - id: mypy
         additional_dependencies:
@@ -55,8 +56,13 @@ repos:
           - types-python-dateutil
           - types-requests
 
+  - repo: https://github.com/tox-dev/pyproject-fmt
+    rev: v2.11.1
+    hooks:
+      - id: pyproject-fmt
+
   - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: '1.6.0'
+    rev: '1.7.0'
     hooks:
       - id: tox-ini-fmt
 

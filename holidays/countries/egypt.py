@@ -13,23 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import (
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    MON,
-    TUE,
-    WED,
-    FRI,
-    SAT,
-    SUN,
-)
+from holidays.calendars.gregorian import JAN, APR, MAY, JUL, AUG, SEP, MON, TUE, WED, FRI, SAT, SUN
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.constants import GOVERNMENT, PUBLIC, SCHOOL
 from holidays.groups import (
@@ -183,40 +167,24 @@ class EGY(Egypt):
 
 
 class EgyptIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2020, 2025)
     EID_AL_ADHA_DATES = {
-        2020: (JUL, 31),
-        2021: (JUL, 20),
         2022: (JUL, 10),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
-        2025: (JUN, 6),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2020, 2025)
     EID_AL_FITR_DATES = {
-        2020: (MAY, 24),
-        2021: (MAY, 13),
         2022: (MAY, 1),
-        2023: (APR, 21),
-        2024: (APR, 10),
-        2025: (MAR, 30),
     }
 
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2020, 2025)
     HIJRI_NEW_YEAR_DATES = {
-        2020: (AUG, 20),
         2021: (AUG, 11),
-        2022: (JUL, 30),
-        2023: (JUL, 19),
-        2024: (JUL, 7),
-        2025: (JUN, 26),
     }
 
+    MAWLID_DATES_CONFIRMED_YEARS = (2020, 2025)
     MAWLID_DATES = {
-        2020: (OCT, 29),
-        2021: (OCT, 18),
-        2022: (OCT, 8),
         2023: (SEP, 28),
-        2024: (SEP, 15),
-        2025: (SEP, 4),
     }
 
 

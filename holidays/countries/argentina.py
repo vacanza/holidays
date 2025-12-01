@@ -147,6 +147,10 @@ class Argentina(
 
     country = "AR"
     default_language = "es"
+    # %s (estimated).
+    estimated_label = tr("%s (estimado)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (observado, estimado)")
     # %s (observed).
     observed_label = tr("%s (observado)")
     # Decree-Law 2446.
@@ -778,34 +782,19 @@ class ARG(Argentina):
 
 
 class ArgentinaIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2019, 2025)
     EID_AL_ADHA_DATES = {
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
         2025: (JUN, 10),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2019, 2025)
     EID_AL_FITR_DATES = {
-        2019: (JUN, 4),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
         2025: (MAR, 31),
     }
 
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2019, 2025)
     HIJRI_NEW_YEAR_DATES = {
-        2019: (AUG, 31),
-        2020: (AUG, 20),
         2021: (AUG, 8),
-        2022: (JUL, 30),
-        2023: (JUL, 19),
-        2024: (JUL, 7),
-        2025: (JUN, 26),
     }
 
 

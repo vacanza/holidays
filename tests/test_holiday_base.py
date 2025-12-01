@@ -40,7 +40,7 @@ class EntityStubStaticHolidays:
 
 
 class EntityStub(HolidayBase):
-    def _add_observed(self, dt: date, before: bool = True, after: bool = True) -> None:
+    def _add_observed(self, dt: date, *, before: bool = True, after: bool = True) -> None:
         if not self.observed:
             return None
 
@@ -567,23 +567,31 @@ class TestHelperMethods(unittest.TestCase):
         self.hb.weekend = {MON, TUE}
         for dt in dts:
             self.assertTrue(self.hb._is_weekend(dt))
+            self.assertFalse(self.hb._is_weekday(dt))
 
         self.hb.weekend = {}
         for dt in dts:
             self.assertFalse(self.hb._is_weekend(dt))
+            self.assertTrue(self.hb._is_weekday(dt))
 
         self.hb.weekend = {SAT, SUN}
         for dt in (date(2022, 10, 1), date(2022, 10, 2)):
             self.assertTrue(self.hb._is_weekend(dt))
+            self.assertFalse(self.hb._is_weekday(dt))
         for dt in ((OCT, 1), (OCT, 2)):
             self.assertTrue(self.hb._is_weekend(dt))
             self.assertTrue(self.hb._is_weekend(*dt))
+            self.assertFalse(self.hb._is_weekday(dt))
+            self.assertFalse(self.hb._is_weekday(*dt))
 
         for dt in (date(2022, 10, 3), date(2022, 10, 4)):
             self.assertFalse(self.hb._is_weekend(dt))
+            self.assertTrue(self.hb._is_weekday(dt))
         for dt in ((OCT, 3), (OCT, 4)):
             self.assertFalse(self.hb._is_weekend(dt))
             self.assertFalse(self.hb._is_weekend(*dt))
+            self.assertTrue(self.hb._is_weekday(dt))
+            self.assertTrue(self.hb._is_weekday(*dt))
 
 
 class TestHolidaySum(unittest.TestCase):
@@ -694,6 +702,29 @@ class TestInheritance(unittest.TestCase):
         self.assertIn("2014-07-13", hb)
         self.assertNotIn("2020-07-13", self.hb)
         self.assertIn("2020-07-13", hb)
+
+
+class TestIsWeekend(unittest.TestCase):
+    def setUp(self):
+        self.hb = CountryStub1()
+
+    def test_is_weekend(self):
+        self.hb._populate(2022)
+
+        self.hb.weekend = {MON, TUE}
+        for dt in (date(2022, 10, 3), date(2022, 10, 4), "2022-10-03", "2022-10-04"):
+            self.assertTrue(self.hb.is_weekend(dt))
+
+        self.hb.weekend = set()
+        for dt in (date(2022, 10, 3), date(2022, 10, 4), "2022-10-03", "2022-10-04"):
+            self.assertFalse(self.hb.is_weekend(dt))
+
+        self.hb.weekend = {SAT, SUN}
+        for dt in (date(2022, 10, 1), date(2022, 10, 2), "2022-10-01", "2022-10-02"):
+            self.assertTrue(self.hb.is_weekend(dt))
+
+        for dt in (date(2022, 10, 3), date(2022, 10, 4), "2022-10-03", "2022-10-04"):
+            self.assertFalse(self.hb.is_weekend(dt))
 
 
 class TestKeyTransforms(unittest.TestCase):
@@ -1205,7 +1236,7 @@ class TestSubstitutedHolidays(unittest.TestCase):
         for cls in (EmptySubstitutedHolidays, NoSubstitutedHolidays):
             hb = self.CountryStub(cls=cls)
             self.assertFalse(hb.has_special_holidays)
-            self.assertTrue(hb.has_substituted_holidays)
+            self.assertFalse(hb.has_substituted_holidays)
 
             hb._populate(1991)
             self.assertNotIn("1991-01-07", hb)

@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import WORKDAY
-from holidays.countries.libya import Libya, LY, LBY
+from holidays.countries.libya import Libya
 from tests.common import CommonCountryTests
 
 
@@ -24,12 +24,6 @@ class TestLibya(CommonCountryTests, TestCase):
         super().setUpClass(Libya, years=years)
         cls.workday_holidays = Libya(years=years, categories=WORKDAY, islamic_show_estimated=False)
         cls.no_estimated_holidays = Libya(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Libya, LY, LBY)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Libya(years=1987))
 
     def test_special_holidays(self):
         self.assertHolidayName("عطلة رسمية", "2023-12-10")

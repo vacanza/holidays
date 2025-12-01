@@ -10,25 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    THU,
-    FRI,
-    SAT,
-    _timedelta,
-)
+from holidays.calendars.gregorian import AUG, THU, FRI, SAT, _timedelta
 from holidays.constants import PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, FRI_TO_NEXT_WORKDAY
@@ -60,6 +46,7 @@ class Yemen(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
     start_year = 1991
     supported_categories = (PUBLIC, SCHOOL, WORKDAY)
     supported_languages = ("ar", "en_US")
+    weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -75,11 +62,12 @@ class Yemen(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
         kwargs.setdefault("observed_rule", FRI_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
+    def _get_weekend(self, dt: date) -> set[int]:
+        # Yemen switches from THU-FRI to FRI-SAT on Aug 15, 2013.
+        return {FRI, SAT} if dt >= date(2013, AUG, 15) else {THU, FRI}
+
     def _populate_public_holidays(self):
         dts_observed = set()
-
-        # Yemen switches from THU-FRI to FRI-SAT on Aug 15, 2013
-        self.weekend = {THU, FRI} if self._year <= 2012 else {FRI, SAT}
 
         # Hijri New Year.
         dts_observed.update(self._add_islamic_new_year_day(tr("عيد رأس السنة الهجرية")))
@@ -156,52 +144,23 @@ class YEM(Yemen):
 
 class YemenIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20250115070635/https://www.timeanddate.com/holidays/yemen/eid-al-adha-first-day
-    EID_AL_ADHA_DATES = {
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
-    }
+
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2020, 2024)
 
     # https://web.archive.org/web/20250218061345/https://www.timeanddate.com/holidays/yemen/eid-al-fitr-first-day
-    EID_AL_FITR_DATES = {
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
-        2025: (MAR, 30),
-    }
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2020, 2025)
 
     # https://web.archive.org/web/20241011200213/https://www.timeanddate.com/holidays/yemen/muharram-new-year
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2020, 2024)
     HIJRI_NEW_YEAR_DATES = {
-        2020: (AUG, 20),
         2021: (AUG, 10),
-        2022: (JUL, 30),
-        2023: (JUL, 19),
-        2024: (JUL, 7),
     }
 
     # https://web.archive.org/web/20241010083000/https://www.timeanddate.com/holidays/yemen/isra-miraj
-    ISRA_AND_MIRAJ_DATES = {
-        2023: (FEB, 18),
-        2024: (FEB, 8),
-        2025: (JAN, 27),
-    }
+    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (2023, 2025)
 
     # https://web.archive.org/web/20241010222331/https://www.timeanddate.com/holidays/yemen/prophet-birthday
-    MAWLID_DATES = {
-        2020: (OCT, 29),
-        2021: (OCT, 18),
-        2022: (OCT, 8),
-        2023: (SEP, 27),
-        2024: (SEP, 15),
-    }
+    MAWLID_DATES_CONFIRMED_YEARS = (2020, 2024)
 
     # https://web.archive.org/web/20250119111122/https://www.timeanddate.com/holidays/yemen/ramadan-begins
-    RAMADAN_BEGINNING_DATES = {
-        2023: (MAR, 23),
-        2024: (MAR, 11),
-        2025: (MAR, 1),
-    }
+    RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2023, 2025)

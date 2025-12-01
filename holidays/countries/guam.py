@@ -14,7 +14,7 @@ from holidays.countries.united_states import UnitedStates
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysGU(ChildEntity, UnitedStates):
+class Guam(ChildEntity, UnitedStates):
     """Guam holidays.
 
     Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
@@ -27,13 +27,13 @@ class HolidaysGU(ChildEntity, UnitedStates):
     start_year = 1900
 
 
-class Guam(HolidaysGU):
+class HolidaysGU(Guam):
     pass
 
 
-class GU(HolidaysGU):
+class GU(Guam):
     pass
 
 
-class GUM(HolidaysGU):
+class GUM(Guam):
     pass

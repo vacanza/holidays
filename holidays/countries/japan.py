@@ -99,30 +99,38 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
             # Foundation Day.
             dts_observed.add(self._add_holiday_feb_11(tr("建国記念の日")))
 
-        if self._year >= 2020:
+        if self._year != 2019:
             # Emperor's Birthday.
-            dts_observed.add(self._add_holiday_feb_23(tr("天皇誕生日")))
+            name = tr("天皇誕生日")
+            if self._year >= 2020:
+                # Reiwa Emperor's Birthday.
+                dt = self._add_holiday_feb_23(name)
+            elif self._year >= 1989:
+                # Heisei Emperor's Birthday.
+                dt = self._add_holiday_dec_23(name)
+            else:
+                # Showa Emperor's Birthday.
+                dt = self._add_holiday_apr_29(name)
+            dts_observed.add(dt)
 
         # Vernal Equinox Day.
         dts_observed.add(self._add_holiday(tr("春分の日"), self._vernal_equinox_date))
 
-        # Showa Emperor's Birthday, Greenery Day or Showa Day.
-        if self._year <= 1988:
-            name = tr("天皇誕生日")
-        elif self._year <= 2006:
-            # Greenery Day.
-            name = tr("みどりの日")
-        else:
+        if self._year >= 2007:
             # Showa Day.
-            name = tr("昭和の日")
-        dts_observed.add(self._add_holiday_apr_29(name))
+            dts_observed.add(self._add_holiday_apr_29(tr("昭和の日")))
 
         # Constitution Day.
         dts_observed.add(self._add_holiday_may_3(tr("憲法記念日")))
 
-        # Greenery Day.
-        if self._year >= 2007:
-            dts_observed.add(self._add_holiday_may_4(tr("みどりの日")))
+        if self._year >= 1989:
+            # Greenery Day.
+            name = tr("みどりの日")
+            dts_observed.add(
+                self._add_holiday_may_4(name)
+                if self._year >= 2007
+                else self._add_holiday_apr_29(name)
+            )
 
         # Children's Day.
         dts_observed.add(self._add_holiday_may_5(tr("こどもの日")))
@@ -187,10 +195,6 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
 
         # Labor Thanksgiving Day.
         dts_observed.add(self._add_holiday_nov_23(tr("勤労感謝の日")))
-
-        # Regarding the Emperor of Heisei.
-        if 1989 <= self._year <= 2018:
-            dts_observed.add(self._add_holiday_dec_23(tr("天皇誕生日")))
 
         if self.observed:
             self._populate_observed(dts_observed)

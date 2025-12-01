@@ -10,7 +10,22 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from setuptools import setup
+from holidays.no_holiday_base import NoHolidayBase
 
-if __name__ == "__main__":
-    setup()
+
+class BritishIndianOceanTerritory(NoHolidayBase):
+    """British Indian Ocean Territory holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/British_Indian_Ocean_Territory>
+    """
+
+    country = "IO"
+
+
+class IO(BritishIndianOceanTerritory):
+    pass
+
+
+class IOT(BritishIndianOceanTerritory):
+    pass

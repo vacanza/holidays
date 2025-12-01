@@ -1,16 +1,18 @@
 # Read the Docs configuration file.
 # See https://docs.readthedocs.io/en/stable/config-file/v2.html for details.
 
-version: 2
-
 build:
-  os: ubuntu-22.04
+  # https://docs.readthedocs.com/platform/stable/config-file/v2.html#build-os
+  os: ubuntu-24.04
   tools:
-    python: '3.13'
+    # https://docs.readthedocs.com/platform/stable/config-file/v2.html#build-tools-python
+    python: '3.14'
+
+mkdocs:
+  configuration: mkdocs.yml
 
 python:
   install:
     - requirements: requirements/docs.txt
 
-mkdocs:
-  configuration: mkdocs.yml
+version: 2

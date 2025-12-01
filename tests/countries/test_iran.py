@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.iran import Iran, IR, IRN
+from holidays.countries.iran import Iran
 from tests.common import CommonCountryTests
 
 
@@ -21,15 +21,9 @@ class TestIran(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Iran)
 
-    def test_country_aliases(self):
-        self.assertAliases(Iran, IR, IRN)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Iran(years=1979))
-        self.assertNoHolidays(Iran(years=2102))
-
     def test_2021(self):
         self.assertHolidays(
+            Iran(years=2021),
             ("2021-01-17", "شهادت حضرت فاطمه زهرا سلام الله علیها"),
             ("2021-02-10", "پیروزی انقلاب اسلامی"),
             ("2021-02-25", "ولادت امام علی علیه السلام و روز پدر"),
@@ -62,6 +56,7 @@ class TestIran(CommonCountryTests, TestCase):
 
     def test_2022(self):
         self.assertHolidays(
+            Iran(years=2022),
             ("2022-01-06", "شهادت حضرت فاطمه زهرا سلام الله علیها"),
             ("2022-02-11", "پیروزی انقلاب اسلامی"),
             ("2022-02-15", "ولادت امام علی علیه السلام و روز پدر"),

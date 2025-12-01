@@ -12,20 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.guam import HolidaysGU, Guam, GU, GUM
+from holidays.countries.guam import Guam
 from tests.common import CommonCountryTests
 
 
 class TestGU(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysGU)
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysGU, Guam, GU, GUM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Guam(years=1899))
+        super().setUpClass(Guam)
 
     def test_gu_only(self):
         """Check for a holiday that is not returned by US unless the
@@ -45,8 +39,9 @@ class TestGU(CommonCountryTests, TestCase):
             ("2022-03-07", "Guam Discovery Day"),
             ("2022-03-17", "Saint Patrick's Day"),
             ("2022-04-15", "Good Friday"),
+            ("2022-05-08", "Mother's Day"),
             ("2022-05-30", "Memorial Day"),
-            ("2022-06-19", "Juneteenth National Independence Day"),
+            ("2022-06-19", "Father's Day; Juneteenth National Independence Day"),
             ("2022-06-20", "Juneteenth National Independence Day (observed)"),
             ("2022-07-04", "Independence Day"),
             ("2022-07-21", "Liberation Day (Guam)"),
@@ -71,8 +66,9 @@ class TestGU(CommonCountryTests, TestCase):
             ("2022-03-07", "วันค้นพบกวม"),
             ("2022-03-17", "วันนักบุญแพทริก"),
             ("2022-04-15", "วันศุกร์ประเสริฐ"),
+            ("2022-05-08", "วันแม่"),
             ("2022-05-30", "วันรำลึก"),
-            ("2022-06-19", "วันประกาศอิสรภาพแห่งชาติจูนทีนท์"),
+            ("2022-06-19", "วันประกาศอิสรภาพแห่งชาติจูนทีนท์; วันพ่อ"),
             ("2022-06-20", "ชดเชยวันประกาศอิสรภาพแห่งชาติจูนทีนท์"),
             ("2022-07-04", "วันประกาศอิสรภาพ"),
             ("2022-07-21", "วันปลดปล่อย (กวม)"),

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries import Mali, ML, MLI
+from holidays.countries.mali import Mali
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestMali(CommonCountryTests, TestCase):
         years = range(1961, 2050)
         super().setUpClass(Mali, years=years)
         cls.no_estimated_holidays = Mali(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Mali, ML, MLI)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Mali(years=1960))
 
     def test_new_years_day(self):
         self.assertHolidayName("Jour de l'An", (f"{year}-01-01" for year in range(1961, 2050)))

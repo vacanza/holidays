@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import HALF_DAY
-from holidays.countries.greece import Greece, GR, GRC
+from holidays.countries.greece import Greece
 from tests.common import CommonCountryTests
 
 
@@ -21,9 +21,6 @@ class TestGreece(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Greece, years=range(2000, 2025))
-
-    def test_country_aliases(self):
-        self.assertAliases(Greece, GR, GRC)
 
     def test_fixed_holidays(self):
         years = range(2000, 2024)

@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import HALF_DAY, PUBLIC, WORKDAY
-from holidays.countries.saint_kitts_and_nevis import SaintKittsAndNevis, KN, KNA
+from holidays.countries.saint_kitts_and_nevis import SaintKittsAndNevis
 from tests.common import CommonCountryTests
 
 
@@ -22,14 +22,6 @@ class TestSaintKittsAndNevis(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(
             SaintKittsAndNevis, years=range(1983, 2051), years_non_observed=range(1983, 2051)
-        )
-
-    def test_country_aliases(self):
-        self.assertAliases(SaintKittsAndNevis, KN, KNA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            SaintKittsAndNevis(categories=(HALF_DAY, PUBLIC, WORKDAY), years=1982)
         )
 
     def test_special_public_holidays(self):

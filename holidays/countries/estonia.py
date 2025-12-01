@@ -12,15 +12,31 @@
 
 from gettext import gettext as tr
 
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
 class Estonia(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """Estonia holidays."""
+    """Estonia holidays.
+
+    References:
+        * <https://et.wikipedia.org/wiki/Eesti_riigipühad>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Estonia>
+        * [Decree on State Holidays and on Amending the Labour Code of the Estonian SSR (09.10.1990)](https://www.riigiteataja.ee/akt/28395)
+        * [Holidays and Anniversaries Act (08.02.1994)](https://www.riigiteataja.ee/akt/29913)
+        * [Public Holidays and Days of National Importance Act (27.01.1998, in force since 23.02.1998)](https://www.riigiteataja.ee/akt/13276841)
+        * [Act amending § 2 of the Holidays and Anniversaries Act
+            and § 25 of the Working and Rest Hours Act](https://www.riigiteataja.ee/akt/895511)
+        * [Working and Rest Hours Act (24.01.2001)](https://www.riigiteataja.ee/akt/72738)
+        * [Employment Contracts Act (17.12.2008, in force since 01.07.2009)](https://www.riigiteataja.ee/akt/122122012029)
+    """
 
     country = "EE"
     default_language = "et"
+    # Decree on State Holidays and on Amending the Labour Code of the Estonian SSR (09.10.1990).
+    start_year = 1991
+    supported_categories = (HALF_DAY, PUBLIC)
     supported_languages = ("en_US", "et", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -35,17 +51,23 @@ class Estonia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Independence Day.
         self._add_holiday_feb_24(tr("iseseisvuspäev"))
 
-        # Good Friday.
-        self._add_good_friday(tr("suur reede"))
+        if self._year >= 1994:
+            # Good Friday.
+            self._add_good_friday(tr("suur reede"))
 
-        # Easter Sunday.
-        self._add_easter_sunday(tr("ülestõusmispühade 1. püha"))
+            # Easter Sunday.
+            self._add_easter_sunday(tr("ülestõusmispühade 1. püha"))
 
-        # Spring Day.
-        self._add_holiday_may_1(tr("kevadpüha"))
+            # Whit Sunday.
+            self._add_whit_sunday(tr("nelipühade 1. püha"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("nelipühade 1. püha"))
+        self._add_holiday_may_1(
+            # May Day.
+            tr("kevadpüha")
+            if self._year >= 1994
+            # International Workers' Solidarity Day.
+            else tr("töörahva rahvusvahelise solidaarsuse päev")
+        )
 
         # Victory Day.
         self._add_holiday_jun_23(tr("võidupüha"))
@@ -57,6 +79,12 @@ class Estonia(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Independence Restoration Day.
             self._add_holiday_aug_20(tr("taasiseseisvumispäev"))
 
+        if self._year <= 1993:
+            # Day of Declaration of Sovereignty.
+            self._add_holiday_nov_16(tr("taassünnipäev"))
+
+        # Act amending § 2 of the Holidays and Anniversaries Act
+        # and § 25 of the Working and Rest Hours Act.
         if self._year >= 2005:
             # Christmas Eve.
             self._add_christmas_eve(tr("jõululaupäev"))
@@ -66,6 +94,24 @@ class Estonia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Second Day of Christmas.
         self._add_christmas_day_two(tr("teine jõulupüha"))
+
+    def _populate_half_day_holidays(self):
+        # Working and Rest Hours Act (24.01.2001), § 25.
+        # Employment Contracts Act (17.12.2008, in force since 01.07.2009), § 53.
+
+        if self._year <= 2000:
+            return None
+
+        # Pre-holiday day (workday shortened by 3 hours).
+        name = tr("pühade-eelne päev (tööpäev lüheneb 3 tunni võrra)")
+        self._add_holiday_feb_23(name)
+        self._add_holiday_jun_22(name)
+        self._add_holiday_dec_31(name)
+
+        if self._year >= 2005:
+            self._add_holiday_dec_23(name)
+        else:
+            self._add_holiday_dec_24(name)
 
 
 class EE(Estonia):

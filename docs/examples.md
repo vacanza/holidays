@@ -143,15 +143,45 @@ To change the language translation, you can set the language explicitly.
 
 ## Holiday categories support
 
-To get a list of other categories holidays (for countries that support them):
+The framework provides multiple holiday categories, enabling you to filter results by official status, religious significance, or institutional relevance.
+
+### Basic Category Usage
+
+Categories can be provided as a single string (e.g., 'public') or an iterable of strings. For better maintainability, it's recommended to use the predefined constants in `holidays.constants`. Note that category matching is case-sensitive.
+
+To get holidays from specific categories:
 
 ``` python
->>> for dt, name in sorted(holidays.BE(years=2023, language="en_US", categories=BANK).items()):
->>>     print(dt, name)
-2023-04-07 Good Friday
-2023-05-19 Friday after Ascension Day
-2023-12-26 Bank Holiday
+>>> import holidays
+>>> from holidays.constants import PUBLIC, UNOFFICIAL
+```
 
+Get only public holidays.
+
+``` python
+>>> us_public = holidays.UnitedStates(categories=PUBLIC, years=2024)
+>>> len(us_public)
+11
+```
+
+Get only unofficial holidays (cultural celebrations).
+
+``` python
+>>> us_unofficial = holidays.UnitedStates(categories=UNOFFICIAL, years=2024)
+>>> for date, name in sorted(us_unofficial.items()):
+>>>     print(date, name)
+2024-02-14 Valentine's Day
+2024-03-17 Saint Patrick's Day
+2024-10-31 Halloween
+```
+
+### Multiple Categories
+
+You can specify multiple categories to get a combined set of holidays.
+Get both public and bank holidays for Belgium:
+
+``` python
+>>> from holidays.constants import BANK, PUBLIC
 >>> for dt, name in sorted(holidays.BE(years=2023, language="en_US", categories=(BANK, PUBLIC)).items()):
 >>>     print(dt, name)
 2023-01-01 New Year's Day
@@ -170,6 +200,36 @@ To get a list of other categories holidays (for countries that support them):
 2023-12-25 Christmas Day
 2023-12-26 Bank Holiday
 ```
+
+### Religious Categories
+
+Many countries support religious categories for holidays specific to certain communities.
+Get Catholic holidays in Germany (Saxony subdivision):
+
+``` python
+>>> from holidays.constants import CATHOLIC
+>>> de_sn_catholic = holidays.Germany(subdiv='SN', categories=CATHOLIC, years=2024)
+>>> for date, name in sorted(de_sn_catholic.items()):
+>>>     print(date, name)
+2024-08-15 Mariä Himmelfahrt
+```
+
+### Checking Supported Categories
+
+Each country defines which categories it supports:
+
+``` python
+>>> print("US categories:", holidays.UnitedStates.supported_categories)
+US categories: ('government', 'public', 'unofficial')
+
+>>> print("Germany categories:", holidays.Germany.supported_categories)
+Germany categories: ('catholic', 'public')
+
+>>> print("Argentina categories:", holidays.Argentina.supported_categories)
+Argentina categories: ('armenian', 'bank', 'government', 'hebrew', 'islamic', 'public')
+```
+
+For a comprehensive list of all available categories and their descriptions, see the [Holiday Categories](holiday_categories.md) documentation.
 
 ## Working day-related calculations
 

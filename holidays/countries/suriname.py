@@ -14,7 +14,7 @@ from gettext import gettext as tr
 
 from holidays import HolidayBase
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import MAR, APR, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -108,14 +108,13 @@ class Suriname(
             self._add_holiday_oct_10(tr("Dag der Marrons"))
 
         if self._year >= 1976:
-            name = (
+            self._add_holiday_nov_25(
                 # Independence Day.
                 tr("Onafhankelijkheidsdag")
                 if self._year >= 2008
                 # Republic Day.
                 else tr("Dag van de Republiek")
             )
-            self._add_holiday_nov_25(name)
 
         # Christmas Day.
         self._add_christmas_day(tr("Eerste Kerstdag"))
@@ -140,6 +139,14 @@ class Suriname(
         if self._year >= 2022:
             # Chinese New Year.
             self._add_chinese_new_years_day(tr("Chinees Nieuwjaar"))
+
+
+class SR(Suriname):
+    pass
+
+
+class SUR(Suriname):
+    pass
 
 
 class SurinameHinduHolidays(_CustomHinduHolidays):
@@ -187,41 +194,25 @@ class SurinameHinduHolidays(_CustomHinduHolidays):
 
 class SurinameIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20241107062349/https://www.timeanddate.com/holidays/suriname/eid-al-fitr
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2014, 2025)
     EID_AL_FITR_DATES = {
         2014: (JUL, 29),
         2015: (JUL, 18),
         2016: (JUL, 7),
         2017: (JUN, 26),
-        2018: (JUN, 15),
         2019: (JUN, 5),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
         2023: (APR, 22),
-        2024: (APR, 10),
         2025: (MAR, 31),
     }
 
     # https://web.archive.org/web/20241113121535/https://www.timeanddate.com/holidays/suriname/eid-al-adha
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2014, 2025)
     EID_AL_ADHA_DATES = {
         2014: (OCT, 5),
         2015: (SEP, 24),
         2016: (SEP, 13),
         2017: (SEP, 2),
-        2018: (AUG, 21),
         2019: (AUG, 12),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
         2023: (JUN, 29),
-        2024: (JUN, 16),
         2025: (JUN, 7),
     }
-
-
-class SR(Suriname):
-    pass
-
-
-class SUR(Suriname):
-    pass

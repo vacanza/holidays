@@ -10,12 +10,14 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from __future__ import annotations
+
 from gettext import gettext as tr
+from typing import TYPE_CHECKING
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
     FEB,
-    MAR,
     APR,
     MAY,
     JUN,
@@ -32,6 +34,9 @@ from holidays.calendars.gregorian import (
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
+
+if TYPE_CHECKING:
+    from datetime import date
 
 
 class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
@@ -80,11 +85,12 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
         StaticHolidays.__init__(self, UnitedArabEmiratesStaticHolidays)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self):
+    def _get_weekend(self, dt: date) -> set[int]:
         # The resting days are Saturday and Sunday since Jan 1, 2022.
         # https://web.archive.org/web/20250216144205/https://time.com/6126260/uae-working-days-weekend/
-        self.weekend = {FRI, SAT} if self._year <= 2021 else {SAT, SUN}
+        return {SAT, SUN} if dt.year >= 2022 else {FRI, SAT}
 
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 
@@ -143,56 +149,33 @@ class ARE(UnitedArabEmirates):
 
 
 class UnitedArabEmiratesIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2017, 2025)
     EID_AL_ADHA_DATES = {
-        2017: (SEP, 1),
         2018: (AUG, 22),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
         2025: (JUN, 4),
     }
 
-    EID_AL_FITR_DATES = {
-        2017: (JUN, 25),
-        2018: (JUN, 15),
-        2019: (JUN, 4),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
-        2025: (MAR, 30),
-    }
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2017, 2025)
 
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2017, 2025)
     HIJRI_NEW_YEAR_DATES = {
         2017: (SEP, 22),
-        2018: (SEP, 11),
-        2019: (AUG, 31),
         2020: (AUG, 23),
         2021: (AUG, 12),
-        2022: (JUL, 30),
         2023: (JUL, 21),
-        2024: (JUL, 7),
-        2025: (JUN, 26),
     }
 
+    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (2017, 2018)
     ISRA_AND_MIRAJ_DATES = {
         2017: (APR, 23),
         2018: (APR, 14),
     }
 
+    MAWLID_DATES_CONFIRMED_YEARS = (2017, 2025)
     MAWLID_DATES = {
-        2017: (NOV, 30),
         2018: (NOV, 18),
-        2019: (NOV, 9),
-        2020: (OCT, 29),
         2021: (OCT, 21),
-        2022: (OCT, 8),
         2023: (SEP, 29),
-        2024: (SEP, 15),
         2025: (SEP, 5),
     }
 

@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# ruff: noqa: F401
-
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
@@ -42,7 +40,6 @@ ARMED_FORCES = "armed_forces"
 BANK = "bank"
 GOVERNMENT = "government"
 HALF_DAY = "half_day"
-MANDATORY = "mandatory"
 OPTIONAL = "optional"
 PUBLIC = "public"
 SCHOOL = "school"
@@ -56,6 +53,8 @@ HEBREW = "hebrew"
 HINDU = "hindu"
 ISLAMIC = "islamic"
 ORTHODOX = "orthodox"
+SABIAN = "sabian"
+YAZIDI = "yazidi"
 
 ALBANIAN = "albanian"
 ARMENIAN = "armenian"

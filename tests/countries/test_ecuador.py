@@ -12,31 +12,30 @@
 
 from unittest import TestCase
 
-from holidays.countries.ecuador import Ecuador, EC, ECU
+from holidays.countries.ecuador import Ecuador
 from tests.common import CommonCountryTests
 
 
 class TestEcuador(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Ecuador, years=range(2000, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Ecuador, EC, ECU)
+        super().setUpClass(Ecuador)
 
     def test_new_years_day(self):
-        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(2000, 2050)))
+        name = "Año Nuevo"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        obs_dts = (
+            "2017-01-02",
+            "2021-12-31",
+            "2023-01-02",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_carnival(self):
-        dt = (
-            "2000-03-06",
-            "2000-03-07",
-            "2010-02-15",
-            "2010-02-16",
-            "2018-02-12",
-            "2018-02-13",
-            "2019-03-04",
-            "2019-03-05",
+        name = "Carnaval"
+        self.assertHolidayName(
+            name,
             "2020-02-24",
             "2020-02-25",
             "2021-02-15",
@@ -45,134 +44,115 @@ class TestEcuador(CommonCountryTests, TestCase):
             "2022-03-01",
             "2023-02-20",
             "2023-02-21",
+            "2024-02-12",
+            "2024-02-13",
+            "2025-03-03",
+            "2025-03-04",
         )
-        self.assertHolidayName("Carnaval", dt)
+        self.assertHolidayNameCount(name, 2, self.full_range)
 
     def test_good_friday(self):
-        dt = (
-            "2000-04-21",
-            "2010-04-02",
-            "2018-03-30",
-            "2019-04-19",
+        name = "Viernes Santo"
+        self.assertHolidayName(
+            name,
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
         )
-        self.assertHolidayName("Viernes Santo", dt)
+        self.assertHolidayName(name, self.full_range)
 
-    def test_labour_day(self):
-        self.assertHolidayName("Día del Trabajo", (f"{year}-05-01" for year in range(2000, 2050)))
-
-    def test_battle_of_pichincha(self):
-        self.assertHolidayName(
-            "Batalla de Pichincha", (f"{year}-05-24" for year in range(2000, 2050))
-        )
-
-    def test_independence_of_quito(self):
-        self.assertHolidayName(
-            "Primer Grito de Independencia", (f"{year}-08-10" for year in range(2000, 2050))
-        )
-
-    def test_independence_of_guayaquil(self):
-        self.assertHolidayName(
-            "Independencia de Guayaquil", (f"{year}-10-09" for year in range(2000, 2050))
-        )
-
-    def test_all_souls_day(self):
-        self.assertHolidayName(
-            "Día de los Difuntos", (f"{year}-11-02" for year in range(2000, 2050))
-        )
-
-    def test_independence_of_cuenca(self):
-        self.assertHolidayName(
-            "Independencia de Cuenca", (f"{year}-11-03" for year in range(2000, 2050))
-        )
-
-    def test_christmas_day(self):
-        self.assertHolidayName("Día de Navidad", (f"{year}-12-25" for year in range(2000, 2050)))
-
-    def test_observed(self):
-        dt = (
-            # Año Nuevo
-            "2017-01-02",
-            "2021-12-31",
-            "2023-01-02",
-            # Día del Trabajo
+    def test_labor_day(self):
+        name = "Día del Trabajo"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
+        obs_dts = (
             "2018-04-30",
             "2019-05-03",
             "2021-04-30",
             "2022-05-02",
             "2024-05-03",
-            # Batalla de Pichincha
+            "2025-05-02",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_battle_of_pichincha(self):
+        name = "Batalla de Pichincha"
+        self.assertHolidayName(name, (f"{year}-05-24" for year in self.full_range))
+        obs_dts = (
             "2017-05-26",
             "2018-05-25",
             "2020-05-25",
             "2022-05-23",
             "2023-05-26",
-            # Primer Grito de Independencia
+            "2025-05-23",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_independence_of_quito(self):
+        name = "Primer Grito de Independencia"
+        self.assertHolidayName(name, (f"{year}-08-10" for year in self.full_range))
+        obs_dts = (
             "2017-08-11",
             "2019-08-09",
             "2021-08-09",
             "2022-08-12",
             "2023-08-11",
-            # Independencia de Guayaquil
+            "2024-08-09",
+            "2025-08-11",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_independence_of_guayaquil(self):
+        name = "Independencia de Guayaquil"
+        self.assertHolidayName(name, (f"{year}-10-09" for year in self.full_range))
+        obs_dts = (
             "2018-10-08",
             "2019-10-11",
             "2021-10-08",
             "2022-10-10",
             "2024-10-11",
-            # Día de los Difuntos
+            "2025-10-10",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_all_souls_day(self):
+        name = "Día de Difuntos"
+        self.assertHolidayName(name, (f"{year}-11-02" for year in self.full_range))
+        obs_dts = (
             "2019-11-01",
             "2021-11-01",
             "2022-11-04",
             "2024-11-01",
-            # Independencia de Cuenca
+            "2025-11-04",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_independence_of_cuenca(self):
+        name = "Independencia de Cuenca"
+        self.assertHolidayName(name, (f"{year}-11-03" for year in self.full_range))
+        obs_dts = (
             "2019-11-04",
-            "2021-11-05",
             "2024-11-04",
-            # Día de Navidad
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_christmas_day(self):
+        name = "Navidad"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
+        obs_dts = (
             "2021-12-24",
             "2022-12-26",
         )
-        self.assertHoliday(dt)
-        self.assertNoNonObservedHoliday(dt)
-
-    def test_2022(self):
-        self.assertHolidays(
-            Ecuador(years=2022),
-            ("2022-01-01", "Año Nuevo"),
-            ("2022-02-28", "Carnaval"),
-            ("2022-03-01", "Carnaval"),
-            ("2022-04-15", "Viernes Santo"),
-            ("2022-05-01", "Día del Trabajo"),
-            ("2022-05-02", "Día del Trabajo (observado)"),
-            ("2022-05-23", "Batalla de Pichincha (observado)"),
-            ("2022-05-24", "Batalla de Pichincha"),
-            ("2022-08-10", "Primer Grito de Independencia"),
-            ("2022-08-12", "Primer Grito de Independencia (observado)"),
-            ("2022-10-09", "Independencia de Guayaquil"),
-            ("2022-10-10", "Independencia de Guayaquil (observado)"),
-            ("2022-11-02", "Día de los Difuntos"),
-            ("2022-11-03", "Independencia de Cuenca"),
-            ("2022-11-04", "Día de los Difuntos (observado); Independencia de Cuenca (observado)"),
-            ("2022-12-25", "Día de Navidad"),
-            ("2022-12-26", "Día de Navidad (observado)"),
-        )
-        self.assertNonObservedHolidays(
-            Ecuador(observed=False, years=2022),
-            ("2022-01-01", "Año Nuevo"),
-            ("2022-02-28", "Carnaval"),
-            ("2022-03-01", "Carnaval"),
-            ("2022-04-15", "Viernes Santo"),
-            ("2022-05-01", "Día del Trabajo"),
-            ("2022-05-24", "Batalla de Pichincha"),
-            ("2022-08-10", "Primer Grito de Independencia"),
-            ("2022-10-09", "Independencia de Guayaquil"),
-            ("2022-11-02", "Día de los Difuntos"),
-            ("2022-11-03", "Independencia de Cuenca"),
-            ("2022-12-25", "Día de Navidad"),
-        )
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -188,11 +168,11 @@ class TestEcuador(CommonCountryTests, TestCase):
             ("2022-08-12", "Primer Grito de Independencia (observado)"),
             ("2022-10-09", "Independencia de Guayaquil"),
             ("2022-10-10", "Independencia de Guayaquil (observado)"),
-            ("2022-11-02", "Día de los Difuntos"),
+            ("2022-11-02", "Día de Difuntos"),
             ("2022-11-03", "Independencia de Cuenca"),
-            ("2022-11-04", "Día de los Difuntos (observado); Independencia de Cuenca (observado)"),
-            ("2022-12-25", "Día de Navidad"),
-            ("2022-12-26", "Día de Navidad (observado)"),
+            ("2022-11-04", "Día de Difuntos (observado)"),
+            ("2022-12-25", "Navidad"),
+            ("2022-12-26", "Navidad (observado)"),
         )
 
     def test_l10n_en_us(self):
@@ -212,7 +192,7 @@ class TestEcuador(CommonCountryTests, TestCase):
             ("2022-10-10", "Independence of Guayaquil (observed)"),
             ("2022-11-02", "All Souls' Day"),
             ("2022-11-03", "Independence of Cuenca"),
-            ("2022-11-04", "All Souls' Day (observed); Independence of Cuenca (observed)"),
+            ("2022-11-04", "All Souls' Day (observed)"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (observed)"),
         )
@@ -234,7 +214,7 @@ class TestEcuador(CommonCountryTests, TestCase):
             ("2022-10-10", "День незалежності Гуаякіля (вихідний)"),
             ("2022-11-02", "День усіх померлих"),
             ("2022-11-03", "День незалежності Куенки"),
-            ("2022-11-04", "День незалежності Куенки (вихідний); День усіх померлих (вихідний)"),
+            ("2022-11-04", "День усіх померлих (вихідний)"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Різдво Христове (вихідний)"),
         )

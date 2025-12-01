@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import SCHOOL, WORKDAY
-from holidays.countries.yemen import Yemen, YE, YEM
+from holidays.countries.yemen import Yemen
 from tests.common import CommonCountryTests
 
 
@@ -28,12 +28,6 @@ class TestYemen(CommonCountryTests, TestCase):
         cls.workday_no_estimated_holidays = Yemen(
             categories=WORKDAY, years=years, islamic_show_estimated=False
         )
-
-    def test_country_aliases(self):
-        self.assertAliases(Yemen, YE, YEM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Yemen(years=1990))
 
     def test_labor_day(self):
         name = "عيد العمال"
@@ -249,6 +243,23 @@ class TestYemen(CommonCountryTests, TestCase):
             name, self.workday_holidays, (f"{year}-07-07" for year in range(2000, 2050))
         )
         self.assertNoHolidayName(name, self.workday_holidays, range(1991, 2000))
+
+    def test_weekend(self):
+        for dt in (
+            "2013-08-08",  # THU.
+            "2013-08-09",  # FRI.
+            "2013-08-16",  # FRI.
+            "2013-08-17",  # SAT.
+        ):
+            self.assertTrue(self.holidays.is_weekend(dt))
+
+        for dt in (
+            "2013-08-10",  # SAT.
+            "2013-08-11",  # SUN.
+            "2013-08-15",  # THU.
+            "2013-08-18",  # SUN.
+        ):
+            self.assertFalse(self.holidays.is_weekend(dt))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
+from holidays.calendars.gregorian import APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
 from holidays.groups import (
     ChristianHolidays,
     InternationalHolidays,
@@ -131,15 +131,13 @@ class SEN(Senegal):
 
 class SenegalIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20250609044648/https://www.timeanddate.com/holidays/senegal/tamkharit
+    ASHURA_DATES_CONFIRMED_YEARS = (2020, 2024)
     ASHURA_DATES = {
-        2020: (AUG, 29),
-        2021: (AUG, 18),
-        2022: (AUG, 8),
-        2023: (JUL, 28),
         2024: (JUL, 17),
     }
 
     # https://web.archive.org/web/20250609061446/https://www.timeanddate.com/holidays/senegal/grand-magal-de-touba
+    GRAND_MAGAL_OF_TOUBA_DATES_CONFIRMED_YEARS = (2020, 2024)
     GRAND_MAGAL_OF_TOUBA_DATES = {
         2020: (OCT, 6),
         2021: (SEP, 26),
@@ -149,27 +147,19 @@ class SenegalIslamicHolidays(_CustomIslamicHolidays):
     }
 
     # https://web.archive.org/web/20250609091559/https://www.timeanddate.com/holidays/senegal/maouloud
-    MAWLID_DATES = {
-        2020: (OCT, 29),
-        2021: (OCT, 18),
-        2022: (OCT, 8),
-        2023: (SEP, 27),
-        2024: (SEP, 15),
-    }
+    MAWLID_DATES_CONFIRMED_YEARS = (2020, 2024)
 
     # https://web.archive.org/web/20250609092813/https://www.timeanddate.com/holidays/senegal/korite
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2020, 2025)
     EID_AL_FITR_DATES = {
-        2020: (MAY, 24),
         2021: (MAY, 12),
         2022: (MAY, 1),
         2023: (APR, 22),
-        2024: (APR, 10),
-        2025: (MAR, 30),
     }
 
     # https://web.archive.org/web/20250609102658/https://www.timeanddate.com/holidays/senegal/tabaski
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2020, 2024)
     EID_AL_ADHA_DATES = {
-        2020: (JUL, 31),
         2021: (JUL, 21),
         2022: (JUL, 10),
         2023: (JUN, 29),

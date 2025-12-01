@@ -41,13 +41,17 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         "18",  # Nordland.
         "21",  # Svalbard.
         "22",  # Jan Mayen.
-        "30",  # Viken.
+        "31",  # Østfold.
+        "32",  # Akershus.
+        "33",  # Buskerud.
         "34",  # Innlandet.
-        "38",  # Vestfold og Telemark.
+        "39",  # Vestfold.
+        "40",  # Telemark.
         "42",  # Agder.
         "46",  # Vestland.
         "50",  # Trøndelag (Trööndelage).
-        "54",  # Troms og Finnmark (Romssa ja Finnmárkku, Tromssan ja Finmarkun).
+        "55",  # Troms (Romssa, Tromssan).
+        "56",  # Finnmark (Finnmárkku, Finmarkun).
     )
     subdivisions_aliases = {
         "Oslo": "03",
@@ -56,20 +60,31 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Nordland": "18",
         "Svalbard": "21",
         "Jan Mayen": "22",
-        "Viken": "30",
+        "Østfold": "31",
+        "Akershus": "32",
+        "Buskerud": "33",
         "Innlandet": "34",
-        "Vestfold og Telemark": "38",
+        "Vestfold": "39",
+        "Telemark": "40",
         "Agder": "42",
         "Vestland": "46",
         "Trööndelage": "50",
         "Trøndelag": "50",
-        "Romssa ja Finnmárkku": "54",
-        "Troms og Finnmark": "54",
-        "Tromssan ja Finmarkun": "54",
+        "Romssa": "55",
+        "Troms": "55",
+        "Tromssan": "55",
+        "Finmarkun": "56",
+        "Finnmark": "56",
+        "Finnmárkku": "56",
     }
     supported_languages = ("en_US", "no", "th", "uk")
+    _deprecated_subdivisions = (
+        "30",
+        "38",
+        "54",
+    )
 
-    def __init__(self, include_sundays: bool = False, *args, **kwargs):
+    def __init__(self, *args, include_sundays: bool = False, **kwargs):
         """
         Args:
             include_sundays:

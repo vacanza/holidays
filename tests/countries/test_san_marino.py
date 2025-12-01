@@ -12,8 +12,8 @@
 
 from unittest import TestCase
 
-from holidays.constants import BANK, PUBLIC
-from holidays.countries.san_marino import SanMarino, SM, SMR
+from holidays.constants import BANK
+from holidays.countries.san_marino import SanMarino
 from tests.common import CommonCountryTests
 
 
@@ -23,12 +23,6 @@ class TestSanMarino(CommonCountryTests, TestCase):
         years = range(1962, 2050)
         super().setUpClass(SanMarino, years=years)
         cls.bank_holidays = SanMarino(years=years, categories=BANK)
-
-    def test_country_aliases(self):
-        self.assertAliases(SanMarino, SM, SMR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(SanMarino(categories=(BANK, PUBLIC), years=1961))
 
     def test_new_years_day(self):
         self.assertHolidayName("Capodanno", (f"{year}-01-01" for year in range(1962, 2050)))

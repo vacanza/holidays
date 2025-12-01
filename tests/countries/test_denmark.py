@@ -12,8 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import OPTIONAL
-from holidays.countries.denmark import Denmark, DK, DNK
+from holidays.countries.denmark import Denmark
 from tests.common import CommonCountryTests
 
 
@@ -22,53 +21,143 @@ class TestDenmark(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Denmark)
 
-    def test_country_aliases(self):
-        self.assertAliases(Denmark, DK, DNK)
+    def test_new_years_day(self):
+        self.assertHolidayName("Nytårsdag", (f"{year}-01-01" for year in self.full_range))
 
-    def test_2016(self):
-        # http://www.officeholidays.com/countries/denmark/2016.php
-        self.assertHolidays(
-            ("2016-01-01", "Nytårsdag"),
-            ("2016-03-24", "Skærtorsdag"),
-            ("2016-03-25", "Langfredag"),
-            ("2016-03-27", "Påskedag"),
-            ("2016-03-28", "Anden påskedag"),
-            ("2016-04-22", "Store bededag"),
-            ("2016-05-05", "Kristi himmelfartsdag"),
-            ("2016-05-15", "Pinsedag"),
-            ("2016-05-16", "Anden pinsedag"),
-            ("2016-12-25", "Juledag"),
-            ("2016-12-26", "Anden juledag"),
+    def test_holy_thursday(self):
+        name = "Skærtorsdag"
+        self.assertHolidayName(
+            name,
+            "2020-04-09",
+            "2021-04-01",
+            "2022-04-14",
+            "2023-04-06",
+            "2024-03-28",
+            "2025-04-17",
         )
+        self.assertHolidayName(name, self.full_range)
 
-    def test_2022(self):
-        self.assertHolidays(
-            ("2022-01-01", "Nytårsdag"),
-            ("2022-04-14", "Skærtorsdag"),
-            ("2022-04-15", "Langfredag"),
-            ("2022-04-17", "Påskedag"),
-            ("2022-04-18", "Anden påskedag"),
-            ("2022-05-13", "Store bededag"),
-            ("2022-05-26", "Kristi himmelfartsdag"),
-            ("2022-06-05", "Pinsedag"),
-            ("2022-06-06", "Anden pinsedag"),
-            ("2022-12-25", "Juledag"),
-            ("2022-12-26", "Anden juledag"),
+    def test_good_friday(self):
+        name = "Langfredag"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
         )
+        self.assertHolidayName(name, self.full_range)
 
-    def test_2022_optional(self):
-        self.assertHolidays(
-            Denmark(categories=OPTIONAL, years=2022),
-            ("2022-05-01", "Arbejdernes kampdag"),
-            ("2022-06-05", "Grundlovsdag"),
-            ("2022-12-24", "Juleaftensdag"),
-            ("2022-12-31", "Nytårsaften"),
+    def test_easter_sunday(self):
+        name = "Påskedag"
+        self.assertHolidayName(
+            name,
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
+            "2024-03-31",
+            "2025-04-20",
         )
+        self.assertHolidayName(name, self.full_range)
 
-    def test_2024(self):
-        # https://www.officeholidays.com/countries/denmark/2024
-        self.assertNoHoliday("2024-04-26")
-        self.assertNoHolidayName("Store bededag", Denmark(years=2024))
+    def test_easter_monday(self):
+        name = "Anden påskedag"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_workers_day(self):
+        name = "Arbejdernes kampdag"
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(
+            name, (f"{year}-05-01" for year in range(1890, self.end_year))
+        )
+        self.assertNoOptionalHolidayName(name, range(self.start_year, 1890))
+
+    def test_great_day_of_prayers(self):
+        name = "Store bededag"
+        self.assertHolidayName(
+            name,
+            "2020-05-08",
+            "2021-04-30",
+            "2022-05-13",
+            "2023-05-05",
+        )
+        self.assertHolidayName(name, range(self.start_year, 2024))
+        self.assertNoHolidayName(name, range(2024, self.end_year))
+
+    def test_ascension_day(self):
+        name = "Kristi himmelfartsdag"
+        self.assertHolidayName(
+            name,
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_whit_sunday(self):
+        name = "Pinsedag"
+        self.assertHolidayName(
+            name,
+            "2020-05-31",
+            "2021-05-23",
+            "2022-06-05",
+            "2023-05-28",
+            "2024-05-19",
+            "2025-06-08",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_whit_monday(self):
+        name = "Anden pinsedag"
+        self.assertHolidayName(
+            name,
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_constitution_day(self):
+        name = "Grundlovsdag"
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(
+            name, (f"{year}-06-05" for year in range(1891, self.end_year))
+        )
+        self.assertNoOptionalHolidayName(name, range(self.start_year, 1891))
+
+    def test_christmas_eve(self):
+        name = "Juleaftensdag"
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(name, (f"{year}-12-24" for year in self.full_range))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Juledag", (f"{year}-12-25" for year in self.full_range))
+
+    def test_second_day_of_christmas(self):
+        self.assertHolidayName("Anden juledag", (f"{year}-12-26" for year in self.full_range))
+
+    def test_new_years_eve(self):
+        name = "Nytårsaften"
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(name, (f"{year}-12-31" for year in self.full_range))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -105,6 +194,25 @@ class TestDenmark(CommonCountryTests, TestCase):
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Second Day of Christmas"),
             ("2022-12-31", "New Year's Eve"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2022-01-01", "วันขึ้นปีใหม่"),
+            ("2022-04-14", "วันพฤหัสศักดิสิทธิ์"),
+            ("2022-04-15", "วันศุกร์ประเสริฐ"),
+            ("2022-04-17", "วันอาทิตย์อีสเตอร์"),
+            ("2022-04-18", "วันจันทร์อีสเตอร์"),
+            ("2022-05-01", "วันแรงงาน"),
+            ("2022-05-13", "วันแห่งการอธิษฐานใหญ่"),
+            ("2022-05-26", "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"),
+            ("2022-06-05", "วันรัฐธรรมนูญ; วันสมโภชพระจิตเจ้า"),
+            ("2022-06-06", "วันจันทร์หลังวันสมโภชพระจิตเจ้า"),
+            ("2022-12-24", "วันคริสต์มาสอีฟ"),
+            ("2022-12-25", "วันคริสต์มาส"),
+            ("2022-12-26", "วันคริสต์มาสวันที่สอง"),
+            ("2022-12-31", "วันสิ้นปี"),
         )
 
     def test_l10n_uk(self):

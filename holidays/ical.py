@@ -12,9 +12,9 @@
 
 import re
 import uuid
-from datetime import date, datetime, timedelta, timezone
-from typing import Union
+from datetime import date, datetime, timezone
 
+from holidays.calendars.gregorian import _timedelta
 from holidays.holiday_base import HolidayBase
 from holidays.version import __version__
 
@@ -165,7 +165,7 @@ class ICalExporter:
             "END:VEVENT",
         ]
 
-    def generate(self, return_bytes: bool = False) -> Union[str, bytes]:
+    def generate(self, return_bytes: bool = False) -> str | bytes:
         """Generate iCalendar data.
 
         Args:
@@ -185,16 +185,17 @@ class ICalExporter:
 
         sorted_dates = sorted(self.holidays.keys())
         # Merged continuous holiday with the same name and use `DURATION` instead.
+        n = len(sorted_dates)
         i = 0
-        while i < len(sorted_dates):
+        while i < n:
             dt = sorted_dates[i]
             names = self.holidays.get_list(dt)
 
             for name in names:
                 days = 1
                 while (
-                    i + days < len(sorted_dates)
-                    and sorted_dates[i + days] == sorted_dates[i] + timedelta(days=days)
+                    i + days < n
+                    and sorted_dates[i + days] == _timedelta(sorted_dates[i], days)
                     and name in self.holidays.get_list(sorted_dates[i + days])
                 ):
                     days += 1

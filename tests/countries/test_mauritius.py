@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-
 from unittest import TestCase
 
-from holidays.countries import Mauritius, MU, MUS
+from holidays.countries.mauritius import Mauritius
 from tests.common import CommonCountryTests
 
 
@@ -23,12 +22,6 @@ class TestMauritius(CommonCountryTests, TestCase):
         years = range(1988, 2050)
         super().setUpClass(Mauritius, years=years)
         cls.no_estimated_holidays = Mauritius(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Mauritius, MU, MUS)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Mauritius(years=1987))
 
     def test_special_holidays(self):
         self.assertHolidayName("Public Holiday", "2019-07-29", "2019-09-09")

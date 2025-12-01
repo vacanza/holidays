@@ -12,29 +12,18 @@
 
 from unittest import TestCase
 
-from holidays.countries.saint_pierre_and_miquelon import (
-    HolidaysPM,
-    SaintPierreAndMiquelon,
-    PM,
-    SPM,
-)
+from holidays.countries.saint_pierre_and_miquelon import SaintPierreAndMiquelon
 from tests.common import CommonCountryTests
 
 
 class TestSaintPierreAndMiquelon(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysPM, years=range(1815, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysPM, SaintPierreAndMiquelon, PM, SPM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(SaintPierreAndMiquelon(years=1814))
+        super().setUpClass(SaintPierreAndMiquelon)
 
     def test_2024(self):
         self.assertHolidays(
-            HolidaysPM(years=2024),
+            SaintPierreAndMiquelon(years=2024),
             ("2024-01-01", "Jour de l'an"),
             ("2024-04-01", "Lundi de Pâques"),
             ("2024-05-01", "Fête du Travail"),

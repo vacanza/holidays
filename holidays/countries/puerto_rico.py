@@ -14,7 +14,7 @@ from holidays.countries.united_states import UnitedStates
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysPR(ChildEntity, UnitedStates):
+class PuertoRico(ChildEntity, UnitedStates):
     """Puerto Rico holidays.
 
     Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
@@ -27,13 +27,13 @@ class HolidaysPR(ChildEntity, UnitedStates):
     start_year = 1900
 
 
-class PuertoRico(HolidaysPR):
+class HolidaysPR(PuertoRico):
     pass
 
 
-class PR(HolidaysPR):
+class PR(PuertoRico):
     pass
 
 
-class PRI(HolidaysPR):
+class PRI(PuertoRico):
     pass

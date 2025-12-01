@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from gettext import gettext as tr
-from typing import Union
 
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
@@ -42,7 +41,7 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
     default_language = "en_GB"
     # %s (observed).
     observed_label = tr("%s (observed)")
-    subdivisions: Union[tuple[()], tuple[str, ...]] = (
+    subdivisions: tuple[()] | tuple[str, ...] = (
         "ENG",  # England
         "NIR",  # Northern Ireland
         "SCT",  # Scotland
@@ -128,7 +127,7 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
     def _populate_subdiv_nir_public_holidays(self):
         if self._year >= 1903:
             # Saint Patrick's Day.
-            self._add_observed(self._add_holiday_mar_17(tr("Saint Patrick's Day")))
+            self._add_observed(self._add_saint_patricks_day(tr("Saint Patrick's Day")))
 
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))

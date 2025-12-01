@@ -10,11 +10,13 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from __future__ import annotations
+
 from gettext import gettext as tr
+from typing import TYPE_CHECKING
 
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, OCT, NOV
+from holidays.calendars.gregorian import MAR, APR, JUN, JUL, OCT, NOV
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import (
     ChristianHolidays,
@@ -28,6 +30,9 @@ from holidays.observed_holiday_base import (
     SAT_SUN_TO_NEXT_WORKDAY,
     WORKDAY_TO_NEXT_WORKDAY,
 )
+
+if TYPE_CHECKING:
+    from datetime import date
 
 
 class TrinidadAndTobago(
@@ -82,7 +87,7 @@ class TrinidadAndTobago(
         )
         super().__init__(*args, **kwargs)
 
-    def _populate_observed(self, dts: set[date], multiple: bool = False) -> None:
+    def _populate_observed(self, dts: set[date], *, multiple: bool = False) -> None:
         for dt in sorted(dts):
             self._add_observed(
                 dt,
@@ -179,19 +184,12 @@ class TrinidadAndTobagoHinduHolidays(_CustomHinduHolidays):
 
 
 class TrinidadAndTobagoIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2012, 2025)
     EID_AL_FITR_DATES = {
-        2012: (AUG, 19),
-        2013: (AUG, 8),
         2014: (JUL, 29),
         2015: (JUL, 18),
-        2016: (JUL, 6),
         2017: (JUN, 26),
-        2018: (JUN, 15),
         2019: (JUN, 5),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
         2023: (APR, 22),
-        2024: (APR, 10),
         2025: (MAR, 31),
     }

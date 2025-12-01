@@ -13,29 +13,27 @@
 from unittest import TestCase
 
 from holidays.constants import BANK
-from holidays.countries.austria import Austria, AT, AUT
+from holidays.countries.austria import Austria
 from tests.common import CommonCountryTests
 
 
 class TestAustria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Austria, years=range(1901, 2050))
+        super().setUpClass(Austria, with_subdiv_categories=True)
 
-    def test_country_aliases(self):
-        self.assertAliases(Austria, AT, AUT)
-
-    def test_new_years(self):
-        self.assertHolidayName("Neujahr", (f"{year}-01-01" for year in range(1901, 2050)))
+    def test_new_years_day(self):
+        self.assertHolidayName("Neujahr", (f"{year}-01-01" for year in self.full_range))
 
     def test_epiphany(self):
         self.assertHolidayName(
-            "Heilige Drei Könige", (f"{year}-01-06" for year in range(1901, 2050))
+            "Heilige Drei Könige", (f"{year}-01-06" for year in self.full_range)
         )
 
     def test_easter_monday(self):
+        name = "Ostermontag"
         self.assertHolidayName(
-            "Ostermontag",
+            name,
             "1901-04-08",
             "1902-03-31",
             "1999-04-05",
@@ -47,13 +45,15 @@ class TestAustria(CommonCountryTests, TestCase):
             "2021-04-05",
             "2022-04-18",
         )
+        self.assertHolidayName(name, self.full_range)
 
-    def test_labour_day(self):
-        self.assertHolidayName("Staatsfeiertag", (f"{year}-05-01" for year in range(1901, 2050)))
+    def test_labor_day(self):
+        self.assertHolidayName("Staatsfeiertag", (f"{year}-05-01" for year in self.full_range))
 
     def test_ascension_day(self):
+        name = "Christi Himmelfahrt"
         self.assertHolidayName(
-            "Christi Himmelfahrt",
+            name,
             "1901-05-16",
             "1902-05-08",
             "1999-05-13",
@@ -65,10 +65,12 @@ class TestAustria(CommonCountryTests, TestCase):
             "2021-05-13",
             "2022-05-26",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_whit_monday(self):
+        name = "Pfingstmontag"
         self.assertHolidayName(
-            "Pfingstmontag",
+            name,
             "1901-05-27",
             "1902-05-19",
             "1999-05-24",
@@ -80,10 +82,12 @@ class TestAustria(CommonCountryTests, TestCase):
             "2021-05-24",
             "2022-06-06",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_corpus_christi(self):
+        name = "Fronleichnam"
         self.assertHolidayName(
-            "Fronleichnam",
+            name,
             "1901-06-06",
             "1902-05-29",
             "1999-06-03",
@@ -95,32 +99,100 @@ class TestAustria(CommonCountryTests, TestCase):
             "2021-06-03",
             "2022-06-16",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_assumption_day(self):
-        self.assertHolidayName(
-            "Mariä Himmelfahrt", (f"{year}-08-15" for year in range(1901, 2050))
-        )
+        self.assertHolidayName("Mariä Himmelfahrt", (f"{year}-08-15" for year in self.full_range))
 
     def test_national_day(self):
         self.assertHolidayName(
             "Nationalfeiertag",
             (f"{year}-11-12" for year in range(1919, 1935)),
-            (f"{year}-10-26" for year in range(1967, 2050)),
+            (f"{year}-10-26" for year in range(1967, self.end_year)),
         )
         self.assertNoHoliday("1918-11-12", "1935-11-12", "1966-10-26")
-        self.assertNoHolidayName("Nationalfeiertag", range(1901, 1919), range(1935, 1967))
+        self.assertNoHolidayName(
+            "Nationalfeiertag", range(self.start_year, 1919), range(1935, 1967)
+        )
 
     def test_all_saints_day(self):
-        self.assertHolidayName("Allerheiligen", (f"{year}-11-01" for year in range(1901, 2050)))
+        self.assertHolidayName("Allerheiligen", (f"{year}-11-01" for year in self.full_range))
 
     def test_immaculate_conception_day(self):
-        self.assertHolidayName("Mariä Empfängnis", (f"{year}-12-08" for year in range(1901, 2050)))
+        self.assertHolidayName("Mariä Empfängnis", (f"{year}-12-08" for year in self.full_range))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Christtag", (f"{year}-12-25" for year in range(1901, 2050)))
+        self.assertHolidayName("Christtag", (f"{year}-12-25" for year in self.full_range))
 
     def test_st_stephens_day(self):
-        self.assertHolidayName("Stefanitag", (f"{year}-12-26" for year in range(1901, 2050)))
+        self.assertHolidayName("Stefanitag", (f"{year}-12-26" for year in self.full_range))
+
+    def test_saint_martins_day(self):
+        name = "Hl. Martin"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_bank_holidays.items():
+            if subdiv == "1":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-11-11" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_saint_josephs_day(self):
+        name = "Hl. Josef"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_bank_holidays.items():
+            if subdiv in {"2", "6", "7", "8"}:
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-03-19" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_1920_carinthian_plebiscite_anniversary(self):
+        name = "Tag der Volksabstimmung"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_bank_holidays.items():
+            if subdiv == "2":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-10-10" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_saint_leopolds_day(self):
+        name = "Hl. Leopold"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_bank_holidays.items():
+            if subdiv in {"3", "9"}:
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-11-15" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_saint_florians_day(self):
+        name = "Hl. Florian"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_bank_holidays.items():
+            if subdiv == "4":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-05-04" for year in range(2004, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2004))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_saint_ruperts_day(self):
+        name = "Hl. Rupert"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_bank_holidays.items():
+            if subdiv == "5":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-09-24" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_2022(self):
         self.assertHolidays(
@@ -227,41 +299,3 @@ class TestAustria(CommonCountryTests, TestCase):
             ("2022-12-26", "День Святого Стефана"),
             ("2022-12-31", "Переддень Нового року"),
         )
-
-    def test_subdiv_1_bank_holidays(self):
-        subdiv_1_bank_holidays = Austria(subdiv="1", categories=BANK)
-        self.assertHolidayName("Hl. Martin", subdiv_1_bank_holidays, "2024-11-11")
-
-    def test_subdiv_2_bank_holidays(self):
-        subdiv_2_bank_holidays = Austria(subdiv="2", categories=BANK)
-        self.assertHolidayName("Hl. Josef", subdiv_2_bank_holidays, "2024-03-19")
-        self.assertHolidayName("Tag der Volksabstimmung", subdiv_2_bank_holidays, "2024-10-10")
-
-    def test_subdiv_3_bank_holidays(self):
-        subdiv_3_bank_holidays = Austria(subdiv="3", categories=BANK)
-        self.assertHolidayName("Hl. Leopold", subdiv_3_bank_holidays, "2024-11-15")
-
-    def test_subdiv_4_bank_holidays(self):
-        subdiv_4_bank_holidays = Austria(subdiv="4", categories=BANK)
-        self.assertHolidayName("Hl. Florian", subdiv_4_bank_holidays, "2024-05-04")
-        self.assertNoHoliday(subdiv_4_bank_holidays, "2003-05-04")
-
-    def test_subdiv_5_bank_holidays(self):
-        subdiv_5_bank_holidays = Austria(subdiv="5", categories=BANK)
-        self.assertHolidayName("Hl. Rupert", subdiv_5_bank_holidays, "2024-09-24")
-
-    def test_subdiv_6_bank_holidays(self):
-        subdiv_6_bank_holidays = Austria(subdiv="6", categories=BANK)
-        self.assertHolidayName("Hl. Josef", subdiv_6_bank_holidays, "2024-03-19")
-
-    def test_subdiv_7_bank_holidays(self):
-        subdiv_7_bank_holidays = Austria(subdiv="7", categories=BANK)
-        self.assertHolidayName("Hl. Josef", subdiv_7_bank_holidays, "2024-03-19")
-
-    def test_subdiv_8_bank_holidays(self):
-        subdiv_8_bank_holidays = Austria(subdiv="8", categories=BANK)
-        self.assertHolidayName("Hl. Josef", subdiv_8_bank_holidays, "2024-03-19")
-
-    def test_subdiv_9_bank_holidays(self):
-        subdiv_9_bank_holidays = Austria(subdiv="9", categories=BANK)
-        self.assertHolidayName("Hl. Leopold", subdiv_9_bank_holidays, "2024-11-15")

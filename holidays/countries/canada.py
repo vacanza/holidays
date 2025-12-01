@@ -12,9 +12,8 @@
 
 from datetime import date
 from gettext import gettext as tr
-from typing import Optional
 
-from holidays.calendars.gregorian import MAR, APR, JUN, JUL, SEP
+from holidays.calendars.gregorian import APR, SEP
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
@@ -45,6 +44,8 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         * <https://web.archive.org/web/20250428153936/https://www.thecanadianencyclopedia.ca/en/article/thanksgiving-day>
         * <https://web.archive.org/web/20250428154427/https://recherche-collection-search.bac-lac.gc.ca/eng/home/record?idnumber=9326&app=diawlmking&ecopy=80003QJW>
         * <https://web.archive.org/web/20240915001506/https://www.britannica.com/topic/Victoria-Day>
+        * [NT National Aboriginal Day](https://web.archive.org/web/20160623071755/http://www.daair.gov.nt.ca/_live/pages/wpPages/National_Aboriginal_Day.aspx)
+        * [MB National Day for Truth and Reconciliation](https://web.archive.org/web/20240714223654/https://web2.gov.mb.ca/bills/43-1/b004e.php)
     """
 
     country = "CA"
@@ -98,9 +99,6 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         StaticHolidays.__init__(self, CanadaStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
-
-    def _get_nearest_monday(self, *args) -> Optional[date]:
-        return self._get_observed_date(date(self._year, *args), rule=ALL_TO_NEAREST_MON)
 
     def _add_statutory_holidays(self):
         """Nationwide statutory holidays."""
@@ -276,6 +274,12 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
         self._add_victoria_day()
 
+        if self._year >= 2024:
+            self._add_observed(
+                # National Day for Truth and Reconciliation.
+                self._add_holiday_sep_30(tr("National Day for Truth and Reconciliation"))
+            )
+
         self._add_thanksgiving_day()
 
     def _populate_subdiv_mb_optional_holidays(self):
@@ -328,24 +332,42 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     def _populate_subdiv_nl_optional_holidays(self):
         if self._year >= 1900:
-            # Saint Patrick's Day.
-            self._add_holiday(tr("Saint Patrick's Day"), self._get_nearest_monday(MAR, 17))
+            self._move_holiday_forced(
+                # Saint Patrick's Day.
+                self._add_saint_patricks_day(tr("Saint Patrick's Day")),
+                rule=ALL_TO_NEAREST_MON,
+            )
 
         if self._year >= 1990:
             # Nearest Monday to April 23
             # 4/26 is the Monday closer to 4/23 in 2010
             # but the holiday was observed on 4/19? Crazy Newfies!
-            dt = date(2010, APR, 19) if self._year == 2010 else self._get_nearest_monday(APR, 23)
+
             # Saint George's Day.
-            self._add_holiday(tr("Saint George's Day"), dt)
+            name = tr("Saint George's Day")
+
+            if self._year == 2010:
+                self._add_holiday_apr_19(name)
+            else:
+                # Prevents overlap with Good Friday.
+                self._add_holiday(
+                    name,
+                    self._get_observed_date(date(self._year, APR, 23), rule=ALL_TO_NEAREST_MON),
+                )
 
         if self._year >= 1997:
-            # Discovery Day.
-            self._add_holiday(tr("Discovery Day"), self._get_nearest_monday(JUN, 24))
+            self._move_holiday_forced(
+                # Discovery Day.
+                self._add_holiday_jun_24(tr("Discovery Day")),
+                rule=ALL_TO_NEAREST_MON,
+            )
 
         if self._year >= 1900:
-            # Orangemen's Day.
-            self._add_holiday(tr("Orangemen's Day"), self._get_nearest_monday(JUL, 12))
+            self._move_holiday_forced(
+                # Orangemen's Day.
+                self._add_holiday_jul_12(tr("Orangemen's Day")),
+                rule=ALL_TO_NEAREST_MON,
+            )
 
         self._add_thanksgiving_day()
 
@@ -370,7 +392,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     def _populate_subdiv_nt_public_holidays(self):
         self._add_victoria_day()
 
-        if self._year >= 1996:
+        if self._year >= 2001:
             # National Aboriginal Day.
             self._add_holiday_jun_21(tr("National Aboriginal Day"))
 

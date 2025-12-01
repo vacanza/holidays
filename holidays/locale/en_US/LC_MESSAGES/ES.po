@@ -14,18 +14,28 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.56\n"
+"Project-Id-Version: Holidays 0.84\n"
 "POT-Creation-Date: 2023-12-26 19:23+0200\n"
-"PO-Revision-Date: 2024-08-31 18:20+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-10-29 20:45+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.8\n"
 "X-Source-Language: es\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimado)"
+msgstr "%s (estimated)"
+
+#. Monday following %s (estimated).
+#, c-format
+msgid "Lunes siguiente a %s (estimado)"
+msgstr "Monday following %s (estimated)"
 
 #. Monday following %s.
 #, c-format
@@ -73,7 +83,7 @@ msgid "Natividad del Señor"
 msgstr "Christmas Day"
 
 #. Andalusia Day.
-msgid "Día de Andalucia"
+msgid "Día de Andalucía"
 msgstr "Andalusia Day"
 
 #. Maundy Thursday.
@@ -84,9 +94,9 @@ msgstr "Maundy Thursday"
 msgid "Día de San Jorge"
 msgstr "Saint George's Day"
 
-#. Asturia Day.
+#. Asturias Day.
 msgid "Día de Asturias"
-msgstr "Asturia Day"
+msgstr "Asturias Day"
 
 #. Easter Monday.
 msgid "Lunes de Pascua"
@@ -100,9 +110,13 @@ msgstr "Saint James' Day"
 msgid "Día de las Instituciones de Cantabria"
 msgstr "Cantabria Institutions Day"
 
-#. Our Lady of the Bien Aparecida.
+#. Our Lady of Bien Aparecida.
 msgid "La Bien Aparecida"
-msgstr "Our Lady of the Bien Aparecida"
+msgstr "Our Lady of Bien Aparecida"
+
+#. Saint Anthony's Day.
+msgid "San Antonio"
+msgstr "Saint Anthony's Day"
 
 #. Santa Maria of Africa.
 msgid "Nuestra Señora de África"
@@ -184,6 +198,14 @@ msgstr "Madrid Day"
 msgid "Estatuto de Autonomía de la Ciudad de Melilla"
 msgstr "Statute of Autonomy of Melilla Day"
 
+#. Day of Our Lady of Victory.
+msgid "Día de Nuestra Señora la Virgen de la Victoria"
+msgstr "Day of Our Lady of Victory"
+
+#. Melilla Day.
+msgid "Día de Melilla"
+msgstr "Melilla Day"
+
 #. Eid al-Fitr.
 msgid "Fiesta del Eid Fitr"
 msgstr "Eid al-Fitr"
@@ -191,6 +213,10 @@ msgstr "Eid al-Fitr"
 #. Eid al-Adha.
 msgid "Fiesta del Sacrificio-Aid Al Adha"
 msgstr "Eid al-Adha"
+
+#. Saint Francis Xavier's Day.
+msgid "San Francisco Javier"
+msgstr "Saint Francis Xavier's Day"
 
 #. País Vasco Day.
 msgid "Día del País Vasco"

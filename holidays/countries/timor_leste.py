@@ -193,39 +193,24 @@ class TLS(TimorLeste):
 
 
 class TimorLesteIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2011, 2025)
     EID_AL_ADHA_DATES = {
         2011: (NOV, 7),
-        2012: (OCT, 26),
-        2013: (OCT, 15),
-        2014: (OCT, 4),
         2015: (SEP, 24),
         2016: (SEP, 18),
-        2017: (SEP, 1),
-        2018: (AUG, 21),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
         2021: (JUL, 19),
-        2022: (JUL, 9),
         2023: (JUN, 29),
         2024: (JUN, 17),
-        2025: (JUN, 6),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2011, 2025)
     EID_AL_FITR_DATES = {
         2011: (AUG, 31),
         2012: (AUG, 20),
-        2013: (AUG, 8),
-        2014: (JUL, 28),
-        2015: (JUL, 17),
         2016: (JUL, 7),
         2017: (JUN, 26),
-        2018: (JUN, 15),
         2019: (JUN, 6),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
         2023: (APR, 22),
-        2024: (APR, 10),
         2025: (MAR, 31),
     }
 

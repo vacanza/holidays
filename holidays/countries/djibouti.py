@@ -17,7 +17,7 @@ from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHol
 from holidays.holiday_base import HolidayBase
 
 
-class Djibouti(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
+class Djibouti(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """Djibouti holidays."""
 
     country = "DJ"

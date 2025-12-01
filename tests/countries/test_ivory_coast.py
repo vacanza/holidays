@@ -9,9 +9,10 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
+
 from unittest import TestCase
 
-from holidays.countries import IvoryCoast, CI, CIV
+from holidays.countries.ivory_coast import IvoryCoast
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +21,6 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1997, 2050)
         super().setUpClass(IvoryCoast, years=years, years_non_observed=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(IvoryCoast, CI, CIV)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(IvoryCoast(years=1996))
 
     def test_special_holidays(self):
         self.assertHoliday(

@@ -11,8 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 
-from typing import Optional
-
 from holidays.holiday_base import HolidayBase
 
 
@@ -22,7 +20,7 @@ class ChildEntity:
     parent_entity: type[HolidayBase]
     """The parent entity class."""
 
-    parent_entity_subdivision_code: Optional[str] = None
+    parent_entity_subdivision_code: str | None = None
     """The parent entity's corresponding ISO 3166-2 subdivision code."""
 
     subdivisions: tuple[str, ...] = ()

@@ -12,8 +12,8 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
-from holidays.calendars.islamic import _CustomIslamicHolidays
+from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars.gregorian import JUN, AUG, NOV
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
@@ -115,35 +115,19 @@ class SierraLeoneIslamicHolidays(_CustomIslamicHolidays):
         * <https://web.archive.org/web/20250408204431/https://www.timeanddate.com/holidays/sierra-leone/>
     """
 
-    # Prophet's Birthday
+    MAWLID_DATES_CONFIRMED_YEARS = (2018, 2024)
     MAWLID_DATES = {
         2018: (NOV, 21),
         2019: (NOV, 10),
-        2020: (OCT, 29),
-        2021: (OCT, 18),
-        2022: (OCT, 8),
-        2023: (SEP, 27),
-        2024: (SEP, 15),
     }
 
-    # Eid al-Fitr
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2018, 2024)
     EID_AL_FITR_DATES = {
-        2018: (JUN, 15),
         2019: (JUN, 5),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
     }
 
-    # Eid al-Adha
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2018, 2024)
     EID_AL_ADHA_DATES = {
         2018: (AUG, 22),
         2019: (AUG, 12),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
     }

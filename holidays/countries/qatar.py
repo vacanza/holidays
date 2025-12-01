@@ -10,25 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import (
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    THU,
-    FRI,
-    SAT,
-)
+from holidays.calendars.gregorian import JAN, JUL, AUG, SEP, OCT, NOV, DEC, THU, FRI, SAT
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
@@ -51,6 +37,7 @@ class Qatar(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
     start_year = 1971
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("ar_QA", "en_US")
+    weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -66,10 +53,11 @@ class Qatar(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
         StaticHolidays.__init__(self, QatarStaticHolidays)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self):
+    def _get_weekend(self, dt: date) -> set[int]:
         # Qatar switches from THU-FRI to FRI-SAT on Aug 1, 2003.
-        self.weekend = {THU, FRI} if self._year <= 2003 else {FRI, SAT}
+        return {FRI, SAT} if dt >= date(2003, AUG, 1) else {THU, FRI}
 
+    def _populate_public_holidays(self):
         if self._year >= 2012:
             # National Sports Day.
             self._add_holiday_2nd_tue_of_feb(tr("اليوم الوطني للرياضة"))
@@ -109,52 +97,25 @@ class QAT(Qatar):
 
 class QatarIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20250422212912/https://www.timeanddate.com/holidays/qatar/eid-al-adha
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2005, 2024)
     EID_AL_ADHA_DATES = {
-        2005: (JAN, 21),
-        2006: ((JAN, 10), (DEC, 31)),
-        2007: (DEC, 20),
         2008: (DEC, 9),
         2009: (NOV, 28),
         2010: (NOV, 15),
-        2011: (NOV, 6),
-        2012: (OCT, 26),
-        2013: (OCT, 15),
-        2014: (OCT, 4),
-        2015: (SEP, 23),
         2016: (SEP, 10),
         2017: (AUG, 31),
         2018: (AUG, 22),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
     }
 
     # https://web.archive.org/web/20241207022523/https://www.timeanddate.com/holidays/qatar/eid-al-fitr
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2005, 2025)
     EID_AL_FITR_DATES = {
         2005: (NOV, 4),
         2006: (OCT, 24),
-        2007: (OCT, 13),
         2008: (OCT, 2),
         2009: (SEP, 21),
-        2010: (SEP, 10),
         2011: (AUG, 31),
-        2012: (AUG, 19),
-        2013: (AUG, 8),
-        2014: (JUL, 28),
         2015: (JUL, 18),
-        2016: (JUL, 6),
-        2017: (JUN, 25),
-        2018: (JUN, 15),
-        2019: (JUN, 4),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
-        2025: (MAR, 30),
     }
 
 

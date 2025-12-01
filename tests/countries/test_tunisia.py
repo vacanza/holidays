@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.tunisia import Tunisia, TN, TUN
+from holidays.countries.tunisia import Tunisia
 from tests.common import CommonCountryTests
 
 
@@ -21,11 +21,9 @@ class TestTunisia(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Tunisia)
 
-    def test_country_aliases(self):
-        self.assertAliases(Tunisia, TN, TUN)
-
     def test_2021(self):
         self.assertHolidayDates(
+            Tunisia(years=2021),
             "2021-01-01",
             "2021-01-14",
             "2021-03-20",

@@ -15,11 +15,8 @@ from gettext import gettext as tr
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
     GREGORIAN_CALENDAR,
-    JAN,
     FEB,
     MAR,
-    APR,
-    MAY,
     JUN,
     JUL,
     AUG,
@@ -58,8 +55,12 @@ class BosniaAndHerzegovina(
 
     country = "BA"
     default_language = "bs"
+    # %s (estimated).
+    estimated_label = tr("%s (procijenjeno)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (slobodan dan, procijenjeno)")
     # %s (observed).
-    observed_label = tr("%s (preneseno)")
+    observed_label = tr("%s (slobodan dan)")
     subdivisions = (
         "BIH",  # Federacija Bosne i Hercegovine.
         "BRC",  # Brčko distrikt.
@@ -259,55 +260,33 @@ class BIH(BosniaAndHerzegovina):
 
 
 class BosniaAndHerzegovinaIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2023)
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),
         2003: (FEB, 12),
         2004: (FEB, 2),
-        2005: (JAN, 21),
-        2006: ((JAN, 10), (DEC, 31)),
-        2007: (DEC, 20),
         2008: (DEC, 9),
         2009: (NOV, 28),
         2010: (NOV, 17),
         2011: (NOV, 7),
-        2012: (OCT, 26),
-        2013: (OCT, 15),
-        2014: (OCT, 4),
         2015: (SEP, 24),
         2016: (SEP, 13),
         2017: (SEP, 2),
         2018: (AUG, 22),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2024)
     EID_AL_FITR_DATES = {
         2001: (DEC, 17),
         2002: (DEC, 6),
         2003: (NOV, 26),
-        2004: (NOV, 14),
         2005: (NOV, 4),
         2006: (OCT, 24),
-        2007: (OCT, 13),
         2008: (OCT, 2),
         2009: (SEP, 21),
-        2010: (SEP, 10),
         2011: (AUG, 31),
-        2012: (AUG, 19),
-        2013: (AUG, 8),
-        2014: (JUL, 28),
         2015: (JUL, 18),
         2016: (JUL, 7),
         2017: (JUN, 26),
-        2018: (JUN, 15),
-        2019: (JUN, 4),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
     }

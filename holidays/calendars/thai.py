@@ -11,8 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from functools import lru_cache
-from typing import Optional
+from functools import cache
 
 from holidays.calendars.gregorian import _timedelta
 
@@ -100,6 +99,8 @@ class _ThaiLunisolar:
     References:
         * <https://web.archive.org/web/20241016080156/https://www.ninenik.com/แนวทางฟังก์ชั่น_php_อย่างง่ายกับการหาวันข้างขึ้นข้างแรม-1021.html>
         * <https://web.archive.org/web/20250119171416/https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2560.aspx>
+        * <https://web.archive.org/web/20250302100842/https://calendar.kunthet.com/#/>
+        * [2025 Khmer Lunar Calendar](https://web.archive.org/web/20250921045847/https://static1.squarespace.com/static/67722f65f2908e531b5f326d/t/678a87776503cc3f8bc538ac/1737131904673/2025Calendar-compressed.pdf)
 
     Example:
 
@@ -293,8 +294,8 @@ class _ThaiLunisolar:
                 f"Unknown calendar name: {calendar}. Use `KHMER_CALENDAR` or `THAI_CALENDAR`."
             )
 
-    @lru_cache
-    def _get_start_date(self, year: int) -> Optional[date]:
+    @cache
+    def _get_start_date(self, year: int) -> date | None:
         """Calculate the start date of that particular Thai Lunar Calendar Year.
 
         This usually falls in November or December of the previous Gregorian
@@ -320,7 +321,52 @@ class _ThaiLunisolar:
 
         return _timedelta(_ThaiLunisolar.START_DATE, delta_days)
 
-    def makha_bucha_date(self, year: int, calendar=None) -> Optional[date]:
+    @cache
+    def buddhist_sabbath_dates(self, year: int) -> set[date]:
+        """Return all Buddhist Sabbath (Uposatha) days in a given Gregorian year.
+
+        This function works independently of the calendar system in use,
+        whether `THAI_CALENDAR` or `KHMER_CALENDAR`.
+
+        Args:
+            year:
+                The Gregorian year.
+
+        Returns:
+            A set of `date` objects representing all Buddhist Sabbath days in the specified
+            Gregorian year. Returns an empty set if the year is outside the supported range.
+        """
+        start_date = self._get_start_date(year)
+        if not start_date:
+            return set()
+
+        # Initializes Thai lunar month lengths.
+        months = [29, 30] * 6
+        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN:
+            months.insert(7, 30)
+        elif year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
+            months[6] += 1
+        # Includes first two months of the next Thai lunar year to ensure all Buddhist Sabbaths
+        # in the Gregorian year are captured.
+        months.extend([29, 30])
+
+        buddhist_sabbaths: set[date] = set()
+        day_cursor = start_date
+        for month_days in months:
+            if day_cursor.year > year:
+                break
+            # Buddhist Sabbaths: 8 Waxing, 15 Waxing, 8 Waning, 14/15 Waning.
+            for offset in (7, 14, 22, month_days - 1):
+                buddhist_sabbath = _timedelta(day_cursor, offset)
+                if buddhist_sabbath.year == year:
+                    buddhist_sabbaths.add(buddhist_sabbath)
+                elif buddhist_sabbath.year > year:
+                    break
+            day_cursor = _timedelta(day_cursor, month_days)
+
+        return buddhist_sabbaths
+
+    def makha_bucha_date(self, year: int, calendar=None) -> date | None:
         """Calculate the estimated Gregorian date of Makha Bucha.
 
         Also known as "Magha Puja", "Makha Buxha" and "Meak Bochea".
@@ -368,7 +414,7 @@ class _ThaiLunisolar:
             else +73,
         )
 
-    def visakha_bucha_date(self, year: int, calendar=None) -> Optional[date]:
+    def visakha_bucha_date(self, year: int, calendar=None) -> date | None:
         """Calculate the estimated Gregorian date of Visakha Bucha.
 
         Also known as "Vesak" and "Buddha Day". This coincides with
@@ -415,7 +461,7 @@ class _ThaiLunisolar:
             else +161,
         )
 
-    def preah_neangkoal_date(self, year: int) -> Optional[date]:
+    def preah_neangkoal_date(self, year: int) -> date | None:
         """Calculate the estimated Gregorian date of Preah Neangkoal.
 
         Also known as "Cambodian Royal Ploughing Ceremony". This always
@@ -447,7 +493,7 @@ class _ThaiLunisolar:
 
         return _timedelta(start_date, +165)
 
-    def atthami_bucha_date(self, year: int, calendar=None) -> Optional[date]:
+    def atthami_bucha_date(self, year: int, calendar=None) -> date | None:
         """Calculate the estimated Gregorian date of Atthami Bucha.
 
         Also known as "Buddha's Cremation Day". This coincides with
@@ -496,7 +542,7 @@ class _ThaiLunisolar:
             else +169,
         )
 
-    def asarnha_bucha_date(self, year: int) -> Optional[date]:
+    def asarnha_bucha_date(self, year: int) -> date | None:
         """Calculate the estimated Gregorian date of Asarnha Bucha.
 
         Also known as "Asalha Puja". This coincides with
@@ -536,7 +582,7 @@ class _ThaiLunisolar:
             delta_days = +220
         return _timedelta(start_date, delta_days)
 
-    def khao_phansa_date(self, year: int) -> Optional[date]:
+    def khao_phansa_date(self, year: int) -> date | None:
         """Calculate the estimated Gregorian date of Khao Phansa.
 
         Also known as "(Start of) Buddhist Lent" and "Start of Vassa".
@@ -576,7 +622,7 @@ class _ThaiLunisolar:
             delta_days = +221
         return _timedelta(start_date, delta_days)
 
-    def boun_haw_khao_padapdin_date(self, year: int) -> Optional[date]:
+    def boun_haw_khao_padapdin_date(self, year: int) -> date | None:
         """Calculate the estimated Gregorian date of Boun Haw Khao Padapdin.
 
         Also known as "Boon Khao Padap Din".
@@ -613,7 +659,7 @@ class _ThaiLunisolar:
             delta_days = +264
         return _timedelta(start_date, delta_days)
 
-    def boun_haw_khao_salark_date(self, year: int) -> Optional[date]:
+    def boun_haw_khao_salark_date(self, year: int) -> date | None:
         """Calculate the estimated Gregorian date of Boun Haw Khao Salark.
 
         Also known as "Boon Khao Sak".
@@ -650,7 +696,7 @@ class _ThaiLunisolar:
             delta_days = +279
         return _timedelta(start_date, delta_days)
 
-    def pchum_ben_date(self, year: int) -> Optional[date]:
+    def pchum_ben_date(self, year: int) -> date | None:
         """Calculate the estimated Gregorian date of Pchum Ben.
 
         Also known as "Prachum Bandar".
@@ -687,7 +733,7 @@ class _ThaiLunisolar:
             delta_days = +294
         return _timedelta(start_date, delta_days)
 
-    def ok_phansa_date(self, year: int) -> Optional[date]:
+    def ok_phansa_date(self, year: int) -> date | None:
         """Calculate the estimated Gregorian date of Ok Phansa.
 
         Also known as "End of Buddhist Lent" and "End of Vassa".
@@ -724,7 +770,7 @@ class _ThaiLunisolar:
             delta_days = +309
         return _timedelta(start_date, delta_days)
 
-    def boun_suang_heua_date(self, year: int) -> Optional[date]:
+    def boun_suang_heua_date(self, year: int) -> date | None:
         """Calculate the estimated Gregorian date of Ok Boun Suang Huea.
 
         Boun Suang Huea Nakhone Luang Prabang, also known as "Vientiane Boat Racing Festival".
@@ -761,7 +807,7 @@ class _ThaiLunisolar:
             delta_days = +310
         return _timedelta(start_date, delta_days)
 
-    def loy_krathong_date(self, year: int) -> Optional[date]:
+    def loy_krathong_date(self, year: int) -> date | None:
         """Calculate the estimated Gregorian date of Loy Krathong.
 
         Also known as "Boun That Louang" and "Bon Om Touk".

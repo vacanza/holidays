@@ -14,17 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.56\n"
+"Project-Id-Version: Holidays 0.83\n"
 "POT-Creation-Date: 2023-04-10 15:41+0300\n"
-"PO-Revision-Date: 2024-08-31 18:20+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-10-08 13:09+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.7\n"
 "X-Source-Language: de\n"
 
 #. New Year's Day.
@@ -122,3 +122,35 @@ msgstr "Saints Peter and Paul"
 #. Prayer Monday.
 msgid "Bettagsmontag"
 msgstr "Prayer Monday"
+
+#. Knabenschiessen.
+msgid "Knabenschiessen"
+msgstr "Knabenschiessen"
+
+#. Day before Good Friday.
+msgid "Vortag vor Karfreitag"
+msgstr "Day before Good Friday"
+
+#. Sechseläuten.
+msgid "Sechseläuten"
+msgstr "Sechseläuten"
+
+#. Christmas Eve.
+msgid "Heiligabend"
+msgstr "Christmas Eve"
+
+#. New Year's Eve.
+msgid "Vortag vor Neujahr"
+msgstr "New Year's Eve"
+
+#. Day before Ascension Day.
+msgid "Vortag vor Auffahrt"
+msgstr "Day before Ascension Day"
+
+#. Bridge Holiday for Ascension Day.
+msgid "Brückentag nach Auffahrt"
+msgstr "Bridge Holiday for Ascension Day"
+
+#. Bridge Holiday.
+msgid "Brückentag"
+msgstr "Bridge Holiday"

@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from unittest import TestCase
 
-from holidays.countries.serbia import Serbia, RS, SRB
+from holidays.countries.serbia import Serbia
 from tests.common import CommonCountryTests
 
 
@@ -22,57 +21,115 @@ class TestSerbia(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Serbia)
 
-    def test_country_aliases(self):
-        self.assertAliases(Serbia, RS, SRB)
+    def test_new_years_day(self):
+        name = "Нова година"
+        self.assertHolidayName(
+            name,
+            (f"{year}-01-01" for year in self.full_range),
+            (f"{year}-01-02" for year in self.full_range),
+        )
+        obs_dts = (
+            "2017-01-03",
+            "2022-01-03",
+            "2023-01-03",
+        )
+        self.assertHolidayName(f"{name} (слободан дан)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_new_year(self):
-        # If January 1st is in Weekend, test oberved
-        self.assertIn(date(2017, 1, 1), self.holidays)
-        self.assertIn(date(2017, 1, 2), self.holidays)
-        self.assertIn(date(2017, 1, 3), self.holidays)
-        self.holidays.observed = False
-        self.assertNotIn(date(2017, 1, 3), self.holidays)
+    def test_orthodox_christmas(self):
+        self.assertHolidayName("Божић", (f"{year}-01-07" for year in self.full_range))
 
     def test_statehood_day(self):
-        # If February 15th is in Weekend, test oberved
-        self.assertIn(date(2020, 2, 15), self.holidays)
-        self.assertIn(date(2020, 2, 16), self.holidays)
-        self.assertIn(date(2020, 2, 17), self.holidays)
-        self.holidays.observed = False
-        self.assertNotIn(date(2020, 2, 17), self.holidays)
+        name = "Дан државности Србије"
+        self.assertHolidayName(
+            name,
+            (f"{year}-02-15" for year in self.full_range),
+            (f"{year}-02-16" for year in self.full_range),
+        )
+        obs_dts = (
+            "2015-02-17",
+            "2020-02-17",
+            "2025-02-17",
+        )
+        self.assertHolidayName(f"{name} (слободан дан)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_labour_day(self):
-        # If May 1st is in Weekend, test oberved
-        self.assertIn(date(2016, 5, 1), self.holidays)
-        self.assertIn(date(2016, 5, 2), self.holidays)
-        self.assertIn(date(2016, 5, 3), self.holidays)
-        self.assertIn(date(2021, 5, 1), self.holidays)
-        self.assertIn(date(2021, 5, 2), self.holidays)
-        self.assertIn(date(2021, 5, 3), self.holidays)
-        self.assertIn(date(2021, 5, 4), self.holidays)
-        self.holidays.observed = False
-        self.assertNotIn(date(2016, 5, 3), self.holidays)
-        self.assertIn(date(2021, 5, 3), self.holidays)
-        self.assertNotIn(date(2021, 5, 4), self.holidays)
+    def test_orthodox_good_friday(self):
+        name = "Велики петак"
+        self.assertHolidayName(
+            name,
+            "2020-04-17",
+            "2021-04-30",
+            "2022-04-22",
+            "2023-04-14",
+            "2024-05-03",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_orthodox_holy_saturday(self):
+        name = "Велика субота"
+        self.assertHolidayName(
+            name,
+            "2020-04-18",
+            "2021-05-01",
+            "2022-04-23",
+            "2023-04-15",
+            "2024-05-04",
+            "2025-04-19",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_orthodox_easter_sunday(self):
+        name = "Васкрс"
+        self.assertHolidayName(
+            name,
+            "2020-04-19",
+            "2021-05-02",
+            "2022-04-24",
+            "2023-04-16",
+            "2024-05-05",
+            "2025-04-20",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_orthodox_easter_monday(self):
+        name = "Други дан Васкрса"
+        self.assertHolidayName(
+            name,
+            "2020-04-20",
+            "2021-05-03",
+            "2022-04-25",
+            "2023-04-17",
+            "2024-05-06",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_labor_day(self):
+        name = "Празник рада"
+        self.assertHolidayName(
+            name,
+            (f"{year}-05-01" for year in self.full_range),
+            (f"{year}-05-02" for year in self.full_range),
+        )
+        obs_dts = (
+            "2016-05-03",
+            "2021-05-04",
+            "2022-05-03",
+        )
+        self.assertHolidayName(f"{name} (слободан дан)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_armistice_day(self):
-        # If November 11th is in Weekend, test oberved
-        self.assertIn(date(2018, 11, 11), self.holidays)
-        self.assertIn(date(2018, 11, 12), self.holidays)
-        self.holidays.observed = False
-        self.assertNotIn(date(2018, 11, 12), self.holidays)
-
-    def test_religious_holidays(self):
-        # Orthodox Christmas
-        self.assertIn(date(2020, 1, 7), self.holidays)
-        self.assertNotIn(date(2020, 1, 8), self.holidays)
-        # Orthodox Easter
-        self.assertNotIn(date(2020, 4, 16), self.holidays)
-        self.assertIn(date(2020, 4, 17), self.holidays)
-        self.assertIn(date(2020, 4, 18), self.holidays)
-        self.assertIn(date(2020, 4, 19), self.holidays)
-        self.assertIn(date(2020, 4, 20), self.holidays)
-        self.assertNotIn(date(2020, 4, 21), self.holidays)
+        name = "Дан примирја у Првом светском рату"
+        self.assertHolidayName(name, (f"{year}-11-11" for year in self.full_range))
+        obs_dts = (
+            "2012-11-12",
+            "2018-11-12",
+        )
+        self.assertHolidayName(f"{name} (слободан дан)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

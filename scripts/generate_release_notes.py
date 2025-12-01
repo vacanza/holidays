@@ -20,7 +20,7 @@ from datetime import date
 from pathlib import Path
 
 from git import Repo
-from github import Github
+from github import Auth, Github
 from github.GithubException import UnknownObjectException
 
 sys.path.append(f"{Path.cwd()}")
@@ -79,10 +79,10 @@ class ReleaseNotesGenerator:
         self.args = arg_parser.parse_args()
 
         self.local_repo = Repo(Path.cwd())
-        self.remote_repo = Github(self.github_token).get_repo(REPOSITORY_NAME)
+        self.remote_repo = Github(auth=Auth.Token(self.github_token)).get_repo(REPOSITORY_NAME)
 
         self.previous_commits: set[str] = set()
-        self.pull_requests: dict[int, str] = {}
+        self.pull_requests: dict[int, tuple[str, str]] = {}
 
         self.tag = holidays.__version__
 
@@ -146,8 +146,11 @@ class ReleaseNotesGenerator:
         contributors = set()
         if pull_request.number not in self.args.author_only:
             for commit in pull_request.get_commits():
-                if commit.author:
-                    contributors.add(commit.author.login)
+                if (
+                    commit.author
+                    and (author_login := commit.author.login) not in IGNORED_CONTRIBUTORS
+                ):
+                    contributors.add(author_login)
 
         if author in contributors:
             contributors.remove(author)

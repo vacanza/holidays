@@ -60,7 +60,11 @@ class Singapore(
     """
 
     country = "SG"
+    # %s (estimated).
+    estimated_label = tr("%s (estimated)")
     default_language = "en_SG"
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (observed, estimated)")
     # %s (observed).
     observed_label = tr("%s (observed)")
     supported_languages = ("en_SG", "en_US", "th")
@@ -182,33 +186,10 @@ class SingaporeBuddhistHolidays(_CustomBuddhistHolidays):
 
 
 class SingaporeChineseHolidays(_CustomChineseHolidays):
+    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2026)
     LUNAR_NEW_YEAR_DATES = {
-        2001: (JAN, 24),
-        2002: (FEB, 12),
-        2003: (FEB, 1),
-        2004: (JAN, 22),
-        2005: (FEB, 9),
         2006: (JAN, 30),
         2007: (FEB, 19),
-        2008: (FEB, 7),
-        2009: (JAN, 26),
-        2010: (FEB, 14),
-        2011: (FEB, 3),
-        2012: (JAN, 23),
-        2013: (FEB, 10),
-        2014: (JAN, 31),
-        2015: (FEB, 19),
-        2016: (FEB, 8),
-        2017: (JAN, 28),
-        2018: (FEB, 16),
-        2019: (FEB, 5),
-        2020: (JAN, 25),
-        2021: (FEB, 12),
-        2022: (FEB, 1),
-        2023: (JAN, 22),
-        2024: (FEB, 10),
-        2025: (JAN, 29),
-        2026: (FEB, 17),
     }
 
 
@@ -245,62 +226,29 @@ class SingaporeHinduHolidays(_CustomHinduHolidays):
 
 
 class SingaporeIslamicHolidays(_CustomIslamicHolidays):
-    # Hari Raya Haji
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),
         2003: (FEB, 12),
-        2004: (FEB, 1),
-        2005: (JAN, 21),
-        2006: ((JAN, 10), (DEC, 31)),
-        2007: (DEC, 20),
-        2008: (DEC, 8),
-        2009: (NOV, 27),
         2010: (NOV, 17),
-        2011: (NOV, 6),
-        2012: (OCT, 26),
-        2013: (OCT, 15),
         2014: (OCT, 5),
         2015: (SEP, 24),
         2016: (SEP, 12),
-        2017: (SEP, 1),
         2018: (AUG, 22),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
         2022: (JUL, 10),
         2023: (JUN, 29),
         2024: (JUN, 17),
         2025: (JUN, 7),
-        2026: (MAY, 27),
     }
 
-    # Hari Raya Puasa
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_FITR_DATES = {
-        2001: (DEC, 16),
         2002: (DEC, 6),
-        2003: (NOV, 25),
-        2004: (NOV, 14),
-        2005: (NOV, 3),
         2006: (OCT, 24),
-        2007: (OCT, 13),
-        2008: (OCT, 1),
-        2009: (SEP, 20),
-        2010: (SEP, 10),
-        2011: (AUG, 30),
-        2012: (AUG, 19),
-        2013: (AUG, 8),
-        2014: (JUL, 28),
-        2015: (JUL, 17),
-        2016: (JUL, 6),
-        2017: (JUN, 25),
-        2018: (JUN, 15),
         2019: (JUN, 5),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
         2022: (MAY, 3),
         2023: (APR, 22),
-        2024: (APR, 10),
         2025: (MAR, 31),
         2026: (MAR, 21),
     }
