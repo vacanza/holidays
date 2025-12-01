@@ -831,14 +831,13 @@ class HolidayBase(dict[date, str]):
             ValueError:
                 If the holiday name cannot be inferred from `start_date`.
         """
-        name = name or self.get(start_date)
-        if name is None:
+        if (holiday_name := name or self.get(start_date)) is None:
             raise ValueError(f"Cannot infer holiday name for date {start_date!r}.")
 
         return {
             d
             for delta in range(1, duration_days + 1)
-            if (d := self._add_holiday(name, _timedelta(start_date, delta)))
+            if (d := self._add_holiday(holiday_name, _timedelta(start_date, delta)))
         }
 
     def _add_special_holidays(self, mapping_names, *, observed=False):
