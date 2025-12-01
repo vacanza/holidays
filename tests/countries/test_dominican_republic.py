@@ -21,6 +21,117 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(DominicanRepublic)
 
+    def test_new_years_day(self):
+        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))
+
+    def test_epiphany(self):
+        name = "Día de los Santos Reyes"
+        self.assertNonObservedHolidayName(name, (f"{year}-01-06" for year in self.full_range))
+        self.assertHolidayName(
+            name,
+            "2020-01-06",
+            "2021-01-04",
+            "2022-01-10",
+            "2023-01-09",
+            "2024-01-06",
+            "2025-01-06",
+        )
+
+    def test_lady_of_altagracia(self):
+        self.assertHolidayName(
+            "Día de la Altagracia", (f"{year}-01-21" for year in self.full_range)
+        )
+
+    def test_juan_pablo_duarte_day(self):
+        name = "Día de Duarte"
+        self.assertNonObservedHolidayName(name, (f"{year}-01-26" for year in self.full_range))
+        self.assertHolidayName(
+            name,
+            "2020-01-26",
+            "2021-01-25",
+            "2022-01-24",
+            "2023-01-30",
+            "2024-01-29",
+            "2025-01-26",
+        )
+
+    def test_independence_day(self):
+        self.assertHolidayName(
+            "Día de Independencia", (f"{year}-02-27" for year in self.full_range)
+        )
+
+    def test_good_friday(self):
+        name = "Viernes Santo"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_labor_day(self):
+        name = "Día del Trabajo"
+        self.assertNonObservedHolidayName(name, (f"{year}-05-01" for year in self.full_range))
+        self.assertHolidayName(
+            name,
+            "2020-05-04",
+            "2021-05-01",
+            "2022-05-02",
+            "2023-05-01",
+            "2024-04-29",
+            "2025-05-05",
+        )
+
+    def test_corpus_christi_day(self):
+        name = "Corpus Christi"
+        self.assertHolidayName(
+            name,
+            "2020-06-11",
+            "2021-06-03",
+            "2022-06-16",
+            "2023-06-08",
+            "2024-05-30",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_restoration_day(self):
+        name = "Día de la Restauración"
+        self.assertNonObservedHolidayName(name, (f"{year}-08-16" for year in self.full_range))
+        self.assertHolidayName(
+            name,
+            "2020-08-16",
+            "2021-08-16",
+            "2022-08-15",
+            "2023-08-14",
+            "2024-08-16",
+            "2025-08-16",
+        )
+
+    def test_our_lady_of_mercedes_day(self):
+        self.assertHolidayName(
+            "Día de las Mercedes", (f"{year}-09-24" for year in self.full_range)
+        )
+
+    def test_constitution_day(self):
+        name = "Día de la Constitución"
+        self.assertNonObservedHolidayName(name, (f"{year}-11-06" for year in self.full_range))
+        self.assertHolidayName(
+            name,
+            "2020-11-09",
+            "2021-11-06",
+            "2022-11-06",
+            "2023-11-06",
+            "2024-11-04",
+            "2025-11-10",
+        )
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Día de Navidad", (f"{year}-12-25" for year in self.full_range))
+
     def test_2020(self):
         self.assertHolidays(
             DominicanRepublic(years=2020),

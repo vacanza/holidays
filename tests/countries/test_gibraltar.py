@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestGibraltar(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(2000, 2050)
-        super().setUpClass(Gibraltar, years=years, years_non_observed=years)
+        super().setUpClass(Gibraltar)
 
     def test_special_holidays(self):
         for dt, name in (
@@ -36,7 +35,7 @@ class TestGibraltar(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(2000, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         obs_dt = (
             "2012-01-02",
             "2017-01-02",
@@ -54,8 +53,8 @@ class TestGibraltar(CommonCountryTests, TestCase):
             "2024-02-12",
             "2025-02-17",
         )
-        self.assertHolidayName(name, range(2023, 2050))
-        self.assertNoHolidayName(name, range(2000, 2023))
+        self.assertHolidayName(name, range(2023, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2023))
 
     def test_commonwealth_day(self):
         name = "Commonwealth Day"
@@ -67,8 +66,8 @@ class TestGibraltar(CommonCountryTests, TestCase):
             "2021-02-15",
             "2022-02-21",
         )
-        self.assertHolidayName(name, range(2000, 2023))
-        self.assertNoHolidayName(name, range(2023, 2050))
+        self.assertHolidayName(name, range(self.start_year, 2023))
+        self.assertNoHolidayName(name, range(2023, self.end_year))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -81,7 +80,7 @@ class TestGibraltar(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(2000, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "Easter Monday"
@@ -94,7 +93,7 @@ class TestGibraltar(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(2000, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_workers_memorial_day(self):
         name = "Workers' Memorial Day"
@@ -107,8 +106,8 @@ class TestGibraltar(CommonCountryTests, TestCase):
             "2024-04-28",
             "2025-04-28",
         )
-        self.assertHolidayName(name, range(2013, 2050))
-        self.assertNoHolidayName(name, range(2000, 2013))
+        self.assertHolidayName(name, range(2013, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2013))
         obs_dt = (
             "2018-04-30",
             "2019-04-29",
@@ -120,7 +119,11 @@ class TestGibraltar(CommonCountryTests, TestCase):
     def test_may_day(self):
         name = "May Day"
         self.assertHolidayName(
-            name, (f"{year}-05-01" for year in (*range(2000, 2007), *range(2010, 2050)))
+            name,
+            (
+                f"{year}-05-01"
+                for year in (*range(self.start_year, 2007), *range(2010, self.end_year))
+            ),
         )
         self.assertHolidayName(
             name,
@@ -148,7 +151,7 @@ class TestGibraltar(CommonCountryTests, TestCase):
             "2024-05-27",
             "2025-05-26",
         )
-        self.assertHolidayName(name, range(2000, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_queens_birthday(self):
         name = "Queen's Birthday"
@@ -160,8 +163,8 @@ class TestGibraltar(CommonCountryTests, TestCase):
             "2021-06-14",
             "2022-06-13",
         )
-        self.assertHolidayName(name, range(2000, 2023))
-        self.assertNoHolidayName(name, range(2023, 2050))
+        self.assertHolidayName(name, range(self.start_year, 2023))
+        self.assertNoHolidayName(name, range(2023, self.end_year))
 
     def test_kings_birthday(self):
         name = "King's Birthday"
@@ -171,8 +174,8 @@ class TestGibraltar(CommonCountryTests, TestCase):
             "2024-06-17",
             "2025-06-16",
         )
-        self.assertHolidayName(name, range(2023, 2050))
-        self.assertNoHolidayName(name, range(2000, 2023))
+        self.assertHolidayName(name, range(2023, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2023))
 
     def test_summer_bank_holiday(self):
         first_name = "Summer Bank Holiday"
@@ -185,7 +188,9 @@ class TestGibraltar(CommonCountryTests, TestCase):
             "2006-08-28",
             "2007-08-27",
         )
-        self.assertNoHolidayName(first_name, range(2000, 2002), range(2008, 2050))
+        self.assertNoHolidayName(
+            first_name, range(self.start_year, 2002), range(2008, self.end_year)
+        )
 
         second_name = "Late Summer Bank Holiday"
         self.assertHolidayName(
@@ -197,13 +202,19 @@ class TestGibraltar(CommonCountryTests, TestCase):
             "2024-08-26",
             "2025-08-25",
         )
-        self.assertHolidayName(second_name, range(2000, 2002), range(2008, 2050))
+        self.assertHolidayName(
+            second_name, range(self.start_year, 2002), range(2008, self.end_year)
+        )
         self.assertNoHolidayName(second_name, range(2002, 2008))
 
     def test_national_day(self):
         name = "Gibraltar National Day"
         self.assertHolidayName(
-            name, (f"{year}-09-10" for year in (*range(2000, 2016), *range(2018, 2050)))
+            name,
+            (
+                f"{year}-09-10"
+                for year in (*range(self.start_year, 2016), *range(2018, self.end_year))
+            ),
         )
         self.assertHolidayName(
             name,
@@ -220,7 +231,7 @@ class TestGibraltar(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(2000, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
         obs_dt = (
             "2011-12-27",
             "2016-12-27",
@@ -232,7 +243,7 @@ class TestGibraltar(CommonCountryTests, TestCase):
 
     def test_boxing_day(self):
         name = "Boxing Day"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(2000, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
         obs_dt = (
             "2010-12-28",
             "2015-12-28",
