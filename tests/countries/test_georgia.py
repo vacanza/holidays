@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestGeorgia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Georgia, years=range(1991, 2050))
+        super().setUpClass(Georgia)
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -30,27 +30,27 @@ class TestGeorgia(CommonCountryTests, TestCase):
     def test_new_years_day(self):
         self.assertHolidayName(
             "ახალი წელი",
-            (f"{year}-01-01" for year in range(1991, 2050)),
-            (f"{year}-01-02" for year in range(1991, 2050)),
+            (f"{year}-01-01" for year in self.full_range),
+            (f"{year}-01-02" for year in self.full_range),
         )
 
     def test_christmas_day(self):
-        self.assertHolidayName("ქრისტეშობა", (f"{year}-01-07" for year in range(1991, 2050)))
+        self.assertHolidayName("ქრისტეშობა", (f"{year}-01-07" for year in self.full_range))
 
     def test_epiphany_day(self):
-        self.assertHolidayName("ნათლისღება", (f"{year}-01-19" for year in range(1991, 2050)))
+        self.assertHolidayName("ნათლისღება", (f"{year}-01-19" for year in self.full_range))
 
     def test_mothers_day(self):
-        self.assertHolidayName("დედის დღე", (f"{year}-03-03" for year in range(1991, 2050)))
+        self.assertHolidayName("დედის დღე", (f"{year}-03-03" for year in self.full_range))
 
     def test_international_womens_day(self):
         self.assertHolidayName(
-            "ქალთა საერთაშორისო დღე", (f"{year}-03-08" for year in range(1991, 2050))
+            "ქალთა საერთაშორისო დღე", (f"{year}-03-08" for year in self.full_range)
         )
 
     def test_national_unity_day(self):
         self.assertHolidayName(
-            "ეროვნული ერთიანობის დღე", (f"{year}-04-09" for year in range(1991, 2050))
+            "ეროვნული ერთიანობის დღე", (f"{year}-04-09" for year in self.full_range)
         )
 
     def test_good_friday(self):
@@ -64,7 +64,7 @@ class TestGeorgia(CommonCountryTests, TestCase):
             "2024-05-03",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(1991, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_holy_saturday(self):
         name = "დიდი შაბათი"
@@ -77,7 +77,7 @@ class TestGeorgia(CommonCountryTests, TestCase):
             "2024-05-04",
             "2025-04-19",
         )
-        self.assertHolidayName(name, range(1991, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_sunday(self):
         name = "აღდგომა"
@@ -90,7 +90,7 @@ class TestGeorgia(CommonCountryTests, TestCase):
             "2024-05-05",
             "2025-04-20",
         )
-        self.assertHolidayName(name, range(1991, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "შავი ორშაბათი"
@@ -103,36 +103,36 @@ class TestGeorgia(CommonCountryTests, TestCase):
             "2024-05-06",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(1991, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_day_of_victory_over_fascism(self):
         self.assertHolidayName(
-            "ფაშიზმზე გამარჯვების დღე", (f"{year}-05-09" for year in range(1991, 2050))
+            "ფაშიზმზე გამარჯვების დღე", (f"{year}-05-09" for year in self.full_range)
         )
 
     def test_saint_andrews_day(self):
         self.assertHolidayName(
-            "წმინდა ანდრია პირველწოდებულის დღე", (f"{year}-05-12" for year in range(1991, 2050))
+            "წმინდა ანდრია პირველწოდებულის დღე", (f"{year}-05-12" for year in self.full_range)
         )
 
     def test_family_sanctity_day(self):
         name = "ოჯახის სიწმინდისა და მშობლების პატივისცემის დღე"
-        self.assertHolidayName(name, (f"{year}-05-17" for year in range(2025, 2050)))
-        self.assertNoHolidayName(name, range(1991, 2025))
+        self.assertHolidayName(name, (f"{year}-05-17" for year in range(2025, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2025))
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "დამოუკიდებლობის დღე", (f"{year}-05-26" for year in range(1991, 2050))
+            "დამოუკიდებლობის დღე", (f"{year}-05-26" for year in self.full_range)
         )
 
     def test_dormition_of_the_mother_of_god(self):
-        self.assertHolidayName("მარიამობა", (f"{year}-08-28" for year in range(1991, 2050)))
+        self.assertHolidayName("მარიამობა", (f"{year}-08-28" for year in self.full_range))
 
     def test_svetitskhovloba(self):
-        self.assertHolidayName("მცხეთობის", (f"{year}-10-14" for year in range(1991, 2050)))
+        self.assertHolidayName("მცხეთობის", (f"{year}-10-14" for year in self.full_range))
 
     def test_saint_georges_day(self):
-        self.assertHolidayName("გიორგობა", (f"{year}-11-23" for year in range(1991, 2050)))
+        self.assertHolidayName("გიორგობა", (f"{year}-11-23" for year in self.full_range))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
