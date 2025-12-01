@@ -1123,6 +1123,7 @@ class TestStandardMethods(unittest.TestCase):
         self.assertRaises(ValueError, lambda: self.hb[:"2014-01-01"])
         self.assertRaises(TypeError, lambda: self.hb["2014-01-01":"2014-01-02":""])
         self.assertRaises(ValueError, lambda: self.hb["2014-01-01":"2014-01-02":0])
+        self.assertRaises(ValueError, lambda: self.hb["2014-01-01" : "2014-01-02" : td(hours=12)])
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + CountryStub1())
