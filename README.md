@@ -1215,7 +1215,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Nepal</td>
 <td>NP</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>ne</strong></td>
 <td>WORKDAY</td>
 </tr>
 <tr>
@@ -1643,7 +1643,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>SE</td>
 <td></td>
 <td>en_US, <strong>sv</strong>, th, uk</td>
-<td></td>
+<td>BANK, OPTIONAL</td>
 </tr>
 <tr>
 <td>Switzerland</td>
