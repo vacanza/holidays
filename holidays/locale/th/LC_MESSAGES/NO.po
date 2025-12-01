@@ -33,7 +33,7 @@ msgstr "วันขึ้นปีใหม่"
 
 #. Maundy Thursday.
 msgid "Skjærtorsdag"
-msgstr "วันพฤหัสศักดิสิทธิ์"
+msgstr "วันพฤหัสศักดิ์สิทธิ์"
 
 #. Good Friday.
 msgid "Langfredag"

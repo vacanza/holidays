@@ -88,7 +88,7 @@ msgstr "วันอันดาลูเซีย"
 
 #. Maundy Thursday.
 msgid "Jueves Santo"
-msgstr "วันพฤหัสศักดิสิทธิ์"
+msgstr "วันพฤหัสศักดิ์สิทธิ์"
 
 #. Saint George's Day.
 msgid "Día de San Jorge"
