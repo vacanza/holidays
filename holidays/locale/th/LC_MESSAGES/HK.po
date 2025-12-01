@@ -124,7 +124,7 @@ msgstr "วันตงจื้อ(เหมายัน)"
 
 #. The first weekday after Christmas Day.
 msgid "聖誕節後第一個周日"
-msgstr "วันคริสต์มาสวันที่สอง"
+msgstr "วันหลังวันคริสต์มาส"
 
 #. Christmas Day.
 msgid "聖誕節"
@@ -168,7 +168,7 @@ msgstr "วันหลังวันชาติจีน"
 
 #. The second weekday after Christmas Day.
 msgid "聖誕節後第二個周日"
-msgstr "วันคริสต์มาสวันที่สาม"
+msgstr "วันที่สองหลังวันคริสต์มาส"
 
 #. Queen's Birthday.
 msgid "英女皇壽辰"

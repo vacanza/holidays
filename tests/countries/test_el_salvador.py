@@ -19,101 +19,89 @@ from tests.common import CommonCountryTests
 class TestElSalvador(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(ElSalvador, years=range(1973, 2050))
+        super().setUpClass(ElSalvador)
 
     def test_new_years_day(self):
-        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(1973, 2050)))
+        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))
 
     def test_maundy_thursday(self):
         name = "Jueves Santo"
         self.assertHolidayName(
             name,
-            "2016-03-24",
-            "2017-04-13",
-            "2018-03-29",
-            "2019-04-18",
             "2020-04-09",
             "2021-04-01",
             "2022-04-14",
             "2023-04-06",
             "2024-03-28",
+            "2025-04-17",
         )
-        self.assertHolidayName(name, range(1973, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_good_friday(self):
         name = "Viernes Santo"
         self.assertHolidayName(
             name,
-            "2016-03-25",
-            "2017-04-14",
-            "2018-03-30",
-            "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
             "2024-03-29",
+            "2025-04-18",
         )
-        self.assertHolidayName(name, range(1973, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_holy_saturday(self):
         name = "Sábado Santo"
         self.assertHolidayName(
             name,
-            "2016-03-26",
-            "2017-04-15",
-            "2018-03-31",
-            "2019-04-20",
             "2020-04-11",
             "2021-04-03",
             "2022-04-16",
             "2023-04-08",
             "2024-03-30",
+            "2025-04-19",
         )
-        self.assertHolidayName(name, range(1973, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_labor_day(self):
-        self.assertHolidayName("Día del Trabajo", (f"{year}-05-01" for year in range(1973, 2050)))
+        self.assertHolidayName("Día del Trabajo", (f"{year}-05-01" for year in self.full_range))
 
     def test_mothers_day(self):
         name = "Día de la Madre"
-        self.assertHolidayName(name, (f"{year}-05-10" for year in range(2016, 2050)))
-        self.assertNoHoliday(f"{year}-05-10" for year in range(1973, 2016))
-        self.assertNoHolidayName(name, range(1973, 2016))
+        self.assertHolidayName(name, (f"{year}-05-10" for year in range(2016, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2016))
 
     def test_fathers_day(self):
         name = "Día del Padre"
-        self.assertHolidayName(name, (f"{year}-06-17" for year in range(2013, 2050)))
-        self.assertNoHoliday(f"{year}-06-17" for year in range(1973, 2013))
-        self.assertNoHolidayName(name, range(1973, 2013))
+        self.assertHolidayName(name, (f"{year}-06-17" for year in range(2013, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2013))
 
-    def test_feast_of_san_salvador(self):
+    def test_celebrations_of_san_salvador(self):
         self.assertHolidayName(
             "Celebración del Divino Salvador del Mundo",
-            (f"{year}-08-06" for year in range(1973, 2050)),
+            (f"{year}-08-06" for year in self.full_range),
         )
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "Día de la Independencia", (f"{year}-09-15" for year in range(1973, 2050))
+            "Día de la Independencia", (f"{year}-09-15" for year in self.full_range)
         )
 
     def test_all_souls_day(self):
         self.assertHolidayName(
-            "Día de los Difuntos", (f"{year}-11-02" for year in range(1973, 2050))
+            "Día de los Difuntos", (f"{year}-11-02" for year in self.full_range)
         )
 
     def test_christmas_day(self):
-        self.assertHolidayName("Navidad", (f"{year}-12-25" for year in range(1973, 2050)))
+        self.assertHolidayName("Navidad", (f"{year}-12-25" for year in self.full_range))
 
-    def test_ss_holidays(self):
+    def test_feast_of_san_salvador(self):
         name = "Fiesta de San Salvador"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
+        self.assertSubdivSsHolidayName(
             name,
-            ElSalvador(subdiv="SS", years=range(1973, 2050)),
-            (f"{year}-08-03" for year in range(1973, 2050)),
-            (f"{year}-08-05" for year in range(1973, 2050)),
+            (f"{year}-08-03" for year in self.full_range),
+            (f"{year}-08-05" for year in self.full_range),
         )
 
     def test_2021(self):

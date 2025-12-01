@@ -21,10 +21,93 @@ class TestGabon(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Gabon)
 
+    def test_new_years_day(self):
+        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))
+
     def test_womens_rights_day(self):
         name = "Women's Rights Day"
         self.assertHolidayName(name, (f"{year}-04-17" for year in range(2015, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2015))
+
+    def test_easter_monday(self):
+        name = "Easter Monday"
+        self.assertHolidayName(
+            name,
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_labor_day(self):
+        self.assertHolidayName("Labour Day", (f"{year}-05-01" for year in self.full_range))
+
+    def test_ascension_day(self):
+        name = "Ascension Day"
+        self.assertHolidayName(
+            name,
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_whit_monday(self):
+        name = "Whit Monday"
+        self.assertHolidayName(
+            name,
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_assumption_day(self):
+        self.assertHolidayName("Assumption Day", (f"{year}-08-15" for year in self.full_range))
+
+    def test_independence_day(self):
+        self.assertHolidayName("Independence Day", (f"{year}-08-16" for year in self.full_range))
+        self.assertHolidayName(
+            "Independence Day Holiday", (f"{year}-08-17" for year in self.full_range)
+        )
+
+    def test_all_saints_day(self):
+        self.assertHolidayName("All Saints' Day", (f"{year}-11-01" for year in self.full_range))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in self.full_range))
+
+    def test_eid_al_fitr(self):
+        name = "Eid al-Fitr"
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
+            "2021-05-13",
+            "2022-05-02",
+            "2023-04-21",
+            "2024-04-10",
+            "2025-03-30",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_eid_al_adha(self):
+        name = "Eid al-Adha"
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
+            "2021-07-20",
+            "2022-07-09",
+            "2023-06-28",
+            "2024-06-16",
+            "2025-06-06",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_2022(self):
         self.assertHolidaysInYear(

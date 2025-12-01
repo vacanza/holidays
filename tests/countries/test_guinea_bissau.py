@@ -19,26 +19,24 @@ from tests.common import CommonCountryTests
 class TestGuineaBissau(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(2023, 2050)
-        super().setUpClass(GuineaBissau, years=years)
-        cls.no_estimated_holidays = GuineaBissau(years=years, islamic_show_estimated=False)
+        super().setUpClass(GuineaBissau)
 
     def test_new_years_day(self):
-        self.assertHolidayName("Ano Novo", (f"{year}-01-01" for year in range(2023, 2050)))
+        self.assertHolidayName("Ano Novo", (f"{year}-01-01" for year in self.full_range))
 
     def test_national_heroes_day(self):
         self.assertHolidayName(
-            "Dia dos Heróis Nacionais", (f"{year}-01-20" for year in range(2023, 2050))
+            "Dia dos Heróis Nacionais", (f"{year}-01-20" for year in self.full_range)
         )
 
     def test_day_of_the_beginning_of_the_armed_struggle(self):
         self.assertHolidayName(
-            "Dia do Início da Luta Armada", (f"{year}-01-23" for year in range(2023, 2050))
+            "Dia do Início da Luta Armada", (f"{year}-01-23" for year in self.full_range)
         )
 
     def test_womens_day(self):
         self.assertHolidayName(
-            "Dia Internacional da Mulher", (f"{year}-03-08" for year in range(2023, 2050))
+            "Dia Internacional da Mulher", (f"{year}-03-08" for year in self.full_range)
         )
 
     def test_easter_sunday(self):
@@ -49,27 +47,23 @@ class TestGuineaBissau(CommonCountryTests, TestCase):
             "2024-03-31",
             "2025-04-20",
         )
-        self.assertHolidayName(name, range(2023, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_workers_day(self):
-        self.assertHolidayName(
-            "Dia do Trabalhador", (f"{year}-05-01" for year in range(2023, 2050))
-        )
+        self.assertHolidayName("Dia do Trabalhador", (f"{year}-05-01" for year in self.full_range))
 
     def test_pidjiguiti_day(self):
-        self.assertHolidayName(
-            "Dia de Pidjiguiti", (f"{year}-08-03" for year in range(2023, 2050))
-        )
+        self.assertHolidayName("Dia de Pidjiguiti", (f"{year}-08-03" for year in self.full_range))
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "Dia da Independência", (f"{year}-09-24" for year in range(2023, 2050))
+            "Dia da Independência", (f"{year}-09-24" for year in self.full_range)
         )
 
     def test_christmas_day(self):
-        self.assertHolidayName("Dia de Natal", (f"{year}-12-25" for year in range(2023, 2050)))
+        self.assertHolidayName("Dia de Natal", (f"{year}-12-25" for year in self.full_range))
 
-    def test_korite(self):
+    def test_eid_al_fitr(self):
         name = "Korité"
         self.assertHolidayName(
             name,
@@ -77,9 +71,9 @@ class TestGuineaBissau(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-30",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2023, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
-    def test_tabaski(self):
+    def test_eid_al_adha(self):
         name = "Tabaski"
         self.assertHolidayName(
             name,
@@ -87,7 +81,7 @@ class TestGuineaBissau(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-06",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2023, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_2024(self):
         self.assertHolidays(

@@ -24,7 +24,7 @@ class TestDenmark(CommonCountryTests, TestCase):
     def test_new_years_day(self):
         self.assertHolidayName("Nytårsdag", (f"{year}-01-01" for year in self.full_range))
 
-    def test_holy_thursday(self):
+    def test_maundy_thursday(self):
         name = "Skærtorsdag"
         self.assertHolidayName(
             name,
@@ -200,7 +200,7 @@ class TestDenmark(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "th",
             ("2022-01-01", "วันขึ้นปีใหม่"),
-            ("2022-04-14", "วันพฤหัสศักดิสิทธิ์"),
+            ("2022-04-14", "วันพฤหัสศักดิ์สิทธิ์"),
             ("2022-04-15", "วันศุกร์ประเสริฐ"),
             ("2022-04-17", "วันอาทิตย์อีสเตอร์"),
             ("2022-04-18", "วันจันทร์อีสเตอร์"),
