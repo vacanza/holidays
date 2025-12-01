@@ -695,6 +695,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 # Washington's Birthday.
                 name=tr("Washington's Birthday"),
                 rule=GA_IN_WASHINGTON_BIRTHDAY,
+                show_observed_label=False,
             )
 
     def _populate_subdiv_gu_public_holidays(self):
@@ -792,6 +793,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 # Washington's Birthday.
                 name=tr("Washington's Birthday"),
                 rule=GA_IN_WASHINGTON_BIRTHDAY,
+                show_observed_label=False,
             )
 
     def _populate_subdiv_ks_public_holidays(self):
