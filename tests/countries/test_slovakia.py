@@ -153,8 +153,8 @@ class TestSlovakia(CommonCountryTests, TestCase):
         )
 
     def test_2021_public(self):
-        self.assertHolidays(
-            Slovakia(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "Deň vzniku Slovenskej republiky"),
             (
                 "2021-01-06",
@@ -176,8 +176,8 @@ class TestSlovakia(CommonCountryTests, TestCase):
         )
 
     def test_2021_workday(self):
-        self.assertHolidays(
-            Slovakia(categories=WORKDAY, years=2021),
+        self.assertWorkdayHolidaysInYear(
+            2021,
             ("2021-10-28", "Deň vzniku samostatného česko-slovenského štátu"),
         )
 

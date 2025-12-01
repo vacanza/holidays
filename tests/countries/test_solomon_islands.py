@@ -292,8 +292,8 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         self._test_province_day_helper("WE", "Western Province Day", DEC, 7, obs_dts)
 
     def test_2025(self):
-        self.assertHolidays(
-            SolomonIslands(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "New Year's Day"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-19", "Holy Saturday"),

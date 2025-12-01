@@ -28,8 +28,8 @@ class TestCuracao(CommonCountryTests, TestCase):
         self.assertNoHolidays(Curacao(categories=HALF_DAY, years=2009))
 
     def test_2016_public(self):
-        self.assertHolidays(
-            Curacao(years=2016),
+        self.assertHolidaysInYear(
+            2016,
             ("2016-01-01", "Aña Nobo"),
             ("2016-02-08", "Dialuna despues di Carnaval Grandi"),
             ("2016-03-25", "Bièrnèsantu"),
@@ -45,8 +45,8 @@ class TestCuracao(CommonCountryTests, TestCase):
         )
 
     def test_2016_half_day(self):
-        self.assertHolidays(
-            Curacao(categories=HALF_DAY, years=2016),
+        self.assertHalfDayHolidaysInYear(
+            2016,
             ("2016-12-31", "Vispu di Aña Nobo"),
         )
 

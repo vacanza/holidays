@@ -374,8 +374,8 @@ class TestIraq(CommonCountryTests, TestCase):
         )
 
     def test_2024(self):
-        self.assertHolidays(
-            Iraq(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "رأس السنة الميلادية"),
             ("2024-01-06", "عيد الجيش"),
             ("2024-02-08", "ثورة 8 شباط"),

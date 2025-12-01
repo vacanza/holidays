@@ -941,8 +941,8 @@ class TestMacau(CommonCountryTests, TestCase):
 
     def test_2024_public(self):
         # https://www.dsal.gov.mo/en/text/holiday_table.html
-        self.assertHolidays(
-            Macau(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "元旦"),
             ("2024-02-10", "農曆正月初一"),
             ("2024-02-11", "農曆正月初二"),
@@ -957,8 +957,8 @@ class TestMacau(CommonCountryTests, TestCase):
 
     def test_2017_optional(self):
         # https://www.gov.mo/en/public-holidays/year-2017/
-        self.assertHolidays(
-            Macau(categories=OPTIONAL, years=2017),
+        self.assertOptionalHolidaysInYear(
+            2017,
             ("2017-01-01", "元旦"),
             ("2017-01-28", "農曆正月初一"),
             ("2017-01-29", "農曆正月初二"),
@@ -983,8 +983,8 @@ class TestMacau(CommonCountryTests, TestCase):
 
     def test_2018_optional(self):
         # https://www.gov.mo/en/public-holidays/year-2018/
-        self.assertHolidays(
-            Macau(categories=OPTIONAL, years=2018),
+        self.assertOptionalHolidaysInYear(
+            2018,
             ("2018-01-01", "元旦"),
             ("2018-02-16", "農曆正月初一"),
             ("2018-02-17", "農曆正月初二"),
@@ -1009,8 +1009,8 @@ class TestMacau(CommonCountryTests, TestCase):
 
     def test_2019_optional(self):
         # https://www.gov.mo/en/public-holidays/year-2019/
-        self.assertHolidays(
-            Macau(categories=OPTIONAL, years=2019),
+        self.assertOptionalHolidaysInYear(
+            2019,
             ("2019-01-01", "元旦"),
             ("2019-02-05", "農曆正月初一"),
             ("2019-02-06", "農曆正月初二"),
@@ -1035,8 +1035,8 @@ class TestMacau(CommonCountryTests, TestCase):
 
     def test_2020_optional(self):
         # https://www.gov.mo/en/public-holidays/year-2020/
-        self.assertHolidays(
-            Macau(categories=OPTIONAL, years=2020),
+        self.assertOptionalHolidaysInYear(
+            2020,
             ("2020-01-01", "元旦"),
             ("2020-01-25", "農曆正月初一"),
             ("2020-01-26", "農曆正月初二"),
@@ -1060,8 +1060,8 @@ class TestMacau(CommonCountryTests, TestCase):
 
     def test_2021_optional(self):
         # https://www.gov.mo/en/public-holidays/year-2021/
-        self.assertHolidays(
-            Macau(categories=OPTIONAL, years=2021),
+        self.assertOptionalHolidaysInYear(
+            2021,
             ("2021-01-01", "元旦"),
             ("2021-02-12", "農曆正月初一"),
             ("2021-02-13", "農曆正月初二"),
@@ -1086,8 +1086,8 @@ class TestMacau(CommonCountryTests, TestCase):
 
     def test_2022_optional(self):
         # https://www.gov.mo/en/public-holidays/year-2022/
-        self.assertHolidays(
-            Macau(categories=OPTIONAL, years=2022),
+        self.assertOptionalHolidaysInYear(
+            2022,
             ("2022-01-01", "元旦"),
             ("2022-02-01", "農曆正月初一"),
             ("2022-02-02", "農曆正月初二"),
@@ -1112,8 +1112,8 @@ class TestMacau(CommonCountryTests, TestCase):
 
     def test_2023_optional(self):
         # https://www.gov.mo/en/public-holidays/year-2023/
-        self.assertHolidays(
-            Macau(categories=OPTIONAL, years=2023),
+        self.assertOptionalHolidaysInYear(
+            2023,
             ("2023-01-01", "元旦"),
             ("2023-01-22", "農曆正月初一"),
             ("2023-01-23", "農曆正月初二"),
@@ -1138,8 +1138,8 @@ class TestMacau(CommonCountryTests, TestCase):
 
     def test_2024_optional(self):
         # https://www.gov.mo/en/public-holidays/year-2024/
-        self.assertHolidays(
-            Macau(categories=OPTIONAL, years=2024),
+        self.assertOptionalHolidaysInYear(
+            2024,
             ("2024-01-01", "元旦"),
             ("2024-02-10", "農曆正月初一"),
             ("2024-02-11", "農曆正月初二"),
@@ -1164,8 +1164,8 @@ class TestMacau(CommonCountryTests, TestCase):
 
     def test_2025_optional(self):
         # https://www.gov.mo/en/public-holidays/year-2025/
-        self.assertHolidays(
-            Macau(categories=OPTIONAL, years=2025),
+        self.assertOptionalHolidaysInYear(
+            2025,
             ("2025-01-01", "元旦"),
             ("2025-01-29", "農曆正月初一"),
             ("2025-01-30", "農曆正月初二"),

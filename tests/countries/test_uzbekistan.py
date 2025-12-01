@@ -185,9 +185,9 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
 
-    def test2020(self):
-        self.assertHolidays(
-            Uzbekistan(years=2020),
+    def test_2020(self):
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "Yangi yil"),
             ("2020-01-02", "Dam olish kuni (04/01 2020 dan ko‘chirilgan)"),
             ("2020-03-08", "Xotin-qizlar kuni"),
@@ -202,9 +202,9 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2020-12-08", "O‘zbekiston Respublikasi Konstitutsiyasi kuni"),
         )
 
-    def test2021(self):
-        self.assertHolidays(
-            Uzbekistan(years=2021),
+    def test_2021(self):
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "Yangi yil"),
             ("2021-03-08", "Xotin-qizlar kuni"),
             ("2021-03-21", "Navro‘z bayrami"),
@@ -223,9 +223,9 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2021-12-31", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
         )
 
-    def test2022(self):
-        self.assertHolidays(
-            Uzbekistan(years=2022),
+    def test_2022(self):
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Yangi yil"),
             ("2022-01-03", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
             ("2022-01-04", "Dam olish kuni (08/01 2022 dan ko‘chirilgan)"),

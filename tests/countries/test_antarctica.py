@@ -41,8 +41,8 @@ class TestAntarctica(CommonCountryTests, TestCase):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in self.full_range))
 
     def test_2025(self):
-        self.assertHolidays(
-            Antarctica(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "New Year's Day"),
             ("2025-06-21", "Midwinter Day"),
             ("2025-12-01", "Antarctica Day"),

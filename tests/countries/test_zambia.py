@@ -128,8 +128,8 @@ class TestZambia(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_2022(self):
-        self.assertHolidays(
-            Zambia(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-03-08", "International Women's Day"),
             ("2022-03-12", "Youth Day"),

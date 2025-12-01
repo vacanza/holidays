@@ -171,8 +171,8 @@ class TestSuriname(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1972, 2022))
 
     def test_2024(self):
-        self.assertHolidays(
-            Suriname(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "Nieuwjaarsdag"),
             ("2024-02-10", "Chinees Nieuwjaar"),
             ("2024-03-25", "Holi-Phagwa"),

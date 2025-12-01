@@ -380,8 +380,8 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         self.assertNoHoliday(obs_dts)
 
     def test_2021(self):
-        self.assertHolidays(
-            BosniaAndHerzegovina(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "Nova godina"),
             ("2021-01-02", "Nova godina"),
             ("2021-01-07", "Božić (Pravoslavni)"),
@@ -394,8 +394,8 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             ("2021-12-25", "Božić (Katolički)"),
         )
 
-        self.assertHolidays(
-            BosniaAndHerzegovina(subdiv="BIH", years=2021),
+        self.assertSubdivBihHolidaysInYear(
+            2021,
             ("2021-01-01", "Nova godina"),
             ("2021-01-02", "Nova godina"),
             ("2021-01-06", "Badnji dan (Pravoslavni)"),
@@ -418,8 +418,8 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             ("2021-12-25", "Božić (Katolički)"),
         )
 
-        self.assertHolidays(
-            BosniaAndHerzegovina(subdiv="BRC", years=2021),
+        self.assertSubdivBrcHolidaysInYear(
+            2021,
             ("2021-01-01", "Nova godina"),
             ("2021-01-02", "Nova godina"),
             ("2021-01-07", "Božić (Pravoslavni)"),
@@ -434,8 +434,8 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             ("2021-12-25", "Božić (Katolički)"),
         )
 
-        self.assertHolidays(
-            BosniaAndHerzegovina(subdiv="SRP", years=2021),
+        self.assertSubdivSrpHolidaysInYear(
+            2021,
             ("2021-01-01", "Nova godina"),
             ("2021-01-02", "Nova godina"),
             ("2021-01-06", "Badnji dan (Pravoslavni)"),

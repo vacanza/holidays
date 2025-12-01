@@ -115,6 +115,6 @@ msgstr ""
 msgid "Platinum Jubilee"
 msgstr ""
 
-#. Special King’s Coronation Bank Holiday.
+#. Special King's Coronation Bank Holiday.
 msgid "Special King's Coronation Bank Holiday"
 msgstr ""

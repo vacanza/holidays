@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT, OPTIONAL
 from holidays.countries.canada import Canada
 from tests.common import CommonCountryTests
 
@@ -803,8 +802,8 @@ class TestCanada(CommonCountryTests, TestCase):
                 self.assertNoHoliday(holidays, "2022-09-19")
 
     def test_public_2022(self):
-        self.assertHolidays(
-            Canada(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (observed)"),
             ("2022-04-15", "Good Friday"),
@@ -815,8 +814,8 @@ class TestCanada(CommonCountryTests, TestCase):
         )
 
     def test_government_2022(self):
-        self.assertHolidays(
-            Canada(years=2022, categories=GOVERNMENT),
+        self.assertGovernmentHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (observed)"),
             ("2022-04-15", "Good Friday"),
@@ -832,8 +831,8 @@ class TestCanada(CommonCountryTests, TestCase):
         )
 
     def test_optional_2022(self):
-        self.assertHolidays(
-            Canada(years=2022, categories=OPTIONAL),
+        self.assertOptionalHolidaysInYear(
+            2022,
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),
             ("2022-12-27", "Christmas Day (observed)"),
@@ -1033,7 +1032,7 @@ class TestCanada(CommonCountryTests, TestCase):
             ("2022-05-23", "วันรำลึกกลุ่มแปตรีออต (ควิเบก); วันวิคตอเรีย"),
             ("2022-06-21", "วันชนพื้นเมือง (นอร์ทเวสต์เทร์ริทอรีส์)"),
             ("2022-06-24", "วันแซงต์-ฌ็อง-บาติสต์ (ควิเบก)"),
-            ("2022-06-27", "วันแห่งการค้นภพ"),
+            ("2022-06-27", "วันค้นพบ"),
             ("2022-07-01", "วันชาติแคนาดา; วันรำลึก (นิวฟันด์แลนด์และแลบราดอร์)"),
             ("2022-07-09", "วันนูนาวุต"),
             ("2022-07-11", "วันออเรนจ์เมนส์"),
@@ -1042,7 +1041,7 @@ class TestCanada(CommonCountryTests, TestCase):
                 "วันซัสแคตเชวัน; วันนิวบรันสวิก; วันบริติชโคลัมเบีย; วันมรดก; วันสถาปนา; "
                 "วันหยุดราชการ; วันเทร์รี ฟอกซ์",
             ),
-            ("2022-08-15", "วันแห่งการค้นภพ"),
+            ("2022-08-15", "วันค้นพบ"),
             ("2022-09-05", "วันแรงงาน"),
             ("2022-09-19", "พระราชพิธีพระบรมศพของสมเด็จพระราชินีนาถเอลิซาเบธที่ 2"),
             ("2022-09-30", "วันชาติแห่งความจริงและการปรองดอง"),

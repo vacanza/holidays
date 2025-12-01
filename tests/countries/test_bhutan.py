@@ -233,8 +233,8 @@ class TestBhutan(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_2024(self):
-        self.assertHolidays(
-            Bhutan(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-02", "Winter Solstice"),
             ("2024-01-12", "Traditional Day of Offering"),
             ("2024-02-10", "Losar"),

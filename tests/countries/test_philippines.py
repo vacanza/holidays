@@ -310,8 +310,8 @@ class TestPhilippines(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.no_estimated_holidays, range(1988, 2010))
 
     def test_2018(self):
-        self.assertHolidays(
-            Philippines(years=2018),
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "New Year's Day"),
             ("2018-02-16", "Chinese New Year"),
             ("2018-02-25", "EDSA People Power Revolution Anniversary"),
@@ -335,8 +335,8 @@ class TestPhilippines(CommonCountryTests, TestCase):
         )
 
     def test_2019(self):
-        self.assertHolidays(
-            Philippines(years=2019),
+        self.assertHolidaysInYear(
+            2019,
             ("2019-01-01", "New Year's Day"),
             ("2019-02-05", "Chinese New Year"),
             ("2019-02-25", "EDSA People Power Revolution Anniversary"),
@@ -362,8 +362,8 @@ class TestPhilippines(CommonCountryTests, TestCase):
         )
 
     def test_2020(self):
-        self.assertHolidays(
-            Philippines(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "New Year's Day"),
             ("2020-01-25", "Chinese New Year"),
             ("2020-02-25", "EDSA People Power Revolution Anniversary"),
@@ -387,8 +387,8 @@ class TestPhilippines(CommonCountryTests, TestCase):
         )
 
     def test_2021(self):
-        self.assertHolidays(
-            Philippines(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "New Year's Day"),
             ("2021-02-12", "Chinese New Year"),
             ("2021-02-25", "EDSA People Power Revolution Anniversary"),
@@ -410,8 +410,8 @@ class TestPhilippines(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Philippines(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-02-01", "Chinese New Year"),
             ("2022-02-25", "EDSA People Power Revolution Anniversary"),
@@ -435,8 +435,8 @@ class TestPhilippines(CommonCountryTests, TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidays(
-            Philippines(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "Additional special (non-working) day"),
             ("2023-02-24", "EDSA People Power Revolution Anniversary"),
@@ -462,8 +462,8 @@ class TestPhilippines(CommonCountryTests, TestCase):
         )
 
     def test_2025(self):
-        self.assertHolidays(
-            Philippines(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "New Year's Day"),
             ("2025-01-29", "Chinese New Year"),
             ("2025-04-01", "Eid'l Fitr"),

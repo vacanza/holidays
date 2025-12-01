@@ -80,7 +80,7 @@ msgstr "วันสตรีสากล"
 
 #. Youth Day.
 msgid "五四青年节"
-msgstr "วันเยาวชนห่งชาติจีน"
+msgstr "วันเยาวชนแห่งชาติจีน"
 
 #. Children's Day.
 msgid "六一儿童节"

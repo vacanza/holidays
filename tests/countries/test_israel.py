@@ -264,8 +264,8 @@ class TestIsrael(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
 
     def test_2021(self):
-        self.assertHolidays(
-            Israel(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-03-28", "פסח"),
             ("2021-04-03", "שביעי של פסח"),
             ("2021-04-15", "יום העצמאות (נצפה)"),
@@ -278,8 +278,8 @@ class TestIsrael(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Israel(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-04-16", "פסח"),
             ("2022-04-22", "שביעי של פסח"),
             ("2022-05-05", "יום העצמאות (נצפה)"),
@@ -292,8 +292,8 @@ class TestIsrael(CommonCountryTests, TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidays(
-            Israel(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-04-06", "פסח"),
             ("2023-04-12", "שביעי של פסח"),
             ("2023-04-26", "יום העצמאות"),
@@ -306,8 +306,8 @@ class TestIsrael(CommonCountryTests, TestCase):
         )
 
     def test_2021_optional(self):
-        self.assertHolidays(
-            Israel(categories=OPTIONAL, years=2021),
+        self.assertOptionalHolidaysInYear(
+            2021,
             ("2021-02-26", "פורים"),
             ("2021-03-29", "חול המועד פסח"),
             ("2021-03-30", "חול המועד פסח"),
@@ -326,8 +326,8 @@ class TestIsrael(CommonCountryTests, TestCase):
         )
 
     def test_2022_optional(self):
-        self.assertHolidays(
-            Israel(categories=OPTIONAL, years=2022),
+        self.assertOptionalHolidaysInYear(
+            2022,
             ("2022-03-17", "פורים"),
             ("2022-04-17", "חול המועד פסח"),
             ("2022-04-18", "חול המועד פסח"),
@@ -346,8 +346,8 @@ class TestIsrael(CommonCountryTests, TestCase):
         )
 
     def test_2023_optional(self):
-        self.assertHolidays(
-            Israel(categories=OPTIONAL, years=2023),
+        self.assertOptionalHolidaysInYear(
+            2023,
             ("2023-03-07", "פורים"),
             ("2023-04-07", "חול המועד פסח"),
             ("2023-04-08", "חול המועד פסח"),
@@ -366,8 +366,8 @@ class TestIsrael(CommonCountryTests, TestCase):
         )
 
     def test_2021_school(self):
-        self.assertHolidays(
-            Israel(categories=SCHOOL, years=2021),
+        self.assertSchoolHolidaysInYear(
+            2021,
             ("2021-02-25", "תענית אסתר"),
             ("2021-02-26", "פורים"),
             ("2021-03-29", "חול המועד פסח"),
@@ -392,8 +392,8 @@ class TestIsrael(CommonCountryTests, TestCase):
         )
 
     def test_2022_school(self):
-        self.assertHolidays(
-            Israel(categories=SCHOOL, years=2022),
+        self.assertSchoolHolidaysInYear(
+            2022,
             ("2022-03-16", "תענית אסתר"),
             ("2022-03-17", "פורים"),
             ("2022-04-17", "חול המועד פסח"),
@@ -418,8 +418,8 @@ class TestIsrael(CommonCountryTests, TestCase):
         )
 
     def test_2023_school(self):
-        self.assertHolidays(
-            Israel(categories=SCHOOL, years=2023),
+        self.assertSchoolHolidaysInYear(
+            2023,
             ("2023-03-06", "תענית אסתר"),
             ("2023-03-07", "פורים"),
             ("2023-04-07", "חול המועד פסח"),

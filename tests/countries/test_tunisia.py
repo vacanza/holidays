@@ -22,8 +22,8 @@ class TestTunisia(CommonCountryTests, TestCase):
         super().setUpClass(Tunisia)
 
     def test_2021(self):
-        self.assertHolidayDates(
-            Tunisia(years=2021),
+        self.assertHolidayDatesInYear(
+            2021,
             "2021-01-01",
             "2021-01-14",
             "2021-03-20",

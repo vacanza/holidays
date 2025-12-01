@@ -126,7 +126,7 @@ msgstr "วันเซนต์จอร์จ (นิวฟันด์แล�
 
 #. Discovery Day.
 msgid "Discovery Day"
-msgstr "วันแห่งการค้นภพ"
+msgstr "วันค้นพบ"
 
 #. Orangemen's Day.
 msgid "Orangemen's Day"

@@ -153,8 +153,8 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
     def test_2020(self):
         # https://gulfbusiness.com/revealed-uae-private-sector-holidays-for-eid-al-fitr-2020/
         # https://www.timeanddate.com/holidays/united-arab-emirates/2020?hol=134217729
-        self.assertHolidays(
-            UnitedArabEmirates(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "رأس السنة الميلادية"),
             ("2020-05-22", "عطلة عيد الفطر"),
             ("2020-05-23", "عطلة عيد الفطر"),

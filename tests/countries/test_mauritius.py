@@ -152,8 +152,8 @@ class TestMauritius(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2001, 2036))
 
     def test_2024(self):
-        self.assertHolidays(
-            Mauritius(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-01-02", "Day after New Year's Day"),
             ("2024-01-25", "Thaipoosam Cavadee"),

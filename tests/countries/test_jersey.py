@@ -92,8 +92,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2010(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2010),
+        self.assertHolidaysInYear(
+            2010,
             ("2010-01-01", "New Year's Day"),
             ("2010-04-02", "Good Friday"),
             ("2010-04-05", "Easter Monday"),
@@ -109,8 +109,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2011(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2011),
+        self.assertHolidaysInYear(
+            2011,
             ("2011-01-01", "New Year's Day"),
             ("2011-01-03", "New Year's Day (substitute day)"),
             ("2011-04-22", "Good Friday"),
@@ -127,8 +127,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2012(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2012),
+        self.assertHolidaysInYear(
+            2012,
             ("2012-01-01", "New Year's Day"),
             ("2012-01-02", "New Year's Day (substitute day)"),
             ("2012-04-06", "Good Friday"),
@@ -144,8 +144,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2013(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2013),
+        self.assertHolidaysInYear(
+            2013,
             ("2013-01-01", "New Year's Day"),
             ("2013-03-29", "Good Friday"),
             ("2013-04-01", "Easter Monday"),
@@ -159,8 +159,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2014(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2014),
+        self.assertHolidaysInYear(
+            2014,
             ("2014-01-01", "New Year's Day"),
             ("2014-04-18", "Good Friday"),
             ("2014-04-21", "Easter Monday"),
@@ -174,8 +174,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2015(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2015),
+        self.assertHolidaysInYear(
+            2015,
             ("2015-01-01", "New Year's Day"),
             ("2015-04-03", "Good Friday"),
             ("2015-04-06", "Easter Monday"),
@@ -190,8 +190,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2016(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2016),
+        self.assertHolidaysInYear(
+            2016,
             ("2016-01-01", "New Year's Day"),
             ("2016-03-25", "Good Friday"),
             ("2016-03-28", "Easter Monday"),
@@ -206,8 +206,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2017(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2017),
+        self.assertHolidaysInYear(
+            2017,
             ("2017-01-01", "New Year's Day"),
             ("2017-01-02", "New Year's Day (substitute day)"),
             ("2017-04-14", "Good Friday"),
@@ -222,8 +222,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2018(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2018),
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "New Year's Day"),
             ("2018-03-30", "Good Friday"),
             ("2018-04-02", "Easter Monday"),
@@ -237,8 +237,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2019(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2019),
+        self.assertHolidaysInYear(
+            2019,
             ("2019-01-01", "New Year's Day"),
             ("2019-04-19", "Good Friday"),
             ("2019-04-22", "Easter Monday"),
@@ -252,8 +252,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2020(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "New Year's Day"),
             ("2020-04-10", "Good Friday"),
             ("2020-04-13", "Easter Monday"),
@@ -269,8 +269,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2021(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "New Year's Day"),
             ("2021-04-02", "Good Friday"),
             ("2021-04-05", "Easter Monday"),
@@ -286,8 +286,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2022(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (substitute day)"),
             ("2022-04-15", "Good Friday"),
@@ -305,8 +305,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2023(self):
         # https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day (substitute day)"),
             ("2023-04-07", "Good Friday"),
@@ -322,8 +322,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2024(self):
         # https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-03-29", "Good Friday"),
             ("2024-04-01", "Easter Monday"),
@@ -338,8 +338,8 @@ class TestJE(CommonCountryTests, TestCase):
 
     def test_2025(self):
         # https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
-        self.assertHolidays(
-            Jersey(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "New Year's Day"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),

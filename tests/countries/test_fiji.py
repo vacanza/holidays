@@ -199,8 +199,8 @@ class TestFiji(CommonCountryTests, TestCase):
 
     def test_2019(self):
         # https://web.archive.org/web/20191018023027/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
-        self.assertHolidays(
-            Fiji(years=2019),
+        self.assertHolidaysInYear(
+            2019,
             ("2019-01-01", "New Year's Day"),
             ("2019-04-19", "Good Friday"),
             ("2019-04-20", "Easter Saturday"),
@@ -217,8 +217,8 @@ class TestFiji(CommonCountryTests, TestCase):
 
     def test_2020(self):
         # https://web.archive.org/web/20210103183942/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
-        self.assertHolidays(
-            Fiji(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "New Year's Day"),
             ("2020-04-10", "Good Friday"),
             ("2020-04-11", "Easter Saturday"),
@@ -236,8 +236,8 @@ class TestFiji(CommonCountryTests, TestCase):
 
     def test_2021(self):
         # https://web.archive.org/web/20221223004409/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
-        self.assertHolidays(
-            Fiji(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "New Year's Day"),
             ("2021-04-02", "Good Friday"),
             ("2021-04-03", "Easter Saturday"),
@@ -254,8 +254,8 @@ class TestFiji(CommonCountryTests, TestCase):
 
     def test_2022(self):
         # https://web.archive.org/web/20221223004409/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
-        self.assertHolidays(
-            Fiji(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (observed)"),
             ("2022-04-15", "Good Friday"),
@@ -272,8 +272,8 @@ class TestFiji(CommonCountryTests, TestCase):
 
     def test_2023(self):
         # https://web.archive.org/web/20231129154609/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
-        self.assertHolidays(
-            Fiji(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day (observed)"),
             ("2023-04-07", "Good Friday"),
@@ -291,8 +291,8 @@ class TestFiji(CommonCountryTests, TestCase):
 
     def test_2024(self):
         # https://web.archive.org/web/20250121185434/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
-        self.assertHolidays(
-            Fiji(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-03-29", "Good Friday"),
             ("2024-03-30", "Easter Saturday"),
@@ -308,8 +308,8 @@ class TestFiji(CommonCountryTests, TestCase):
 
     def test_2025(self):
         # https://web.archive.org/web/20250121185434/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
-        self.assertHolidays(
-            Fiji(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "New Year's Day"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-19", "Easter Saturday"),

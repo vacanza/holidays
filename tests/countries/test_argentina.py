@@ -1195,8 +1195,8 @@ class TestArgentina(CommonCountryTests, TestCase):
         self.assertNoIslamicIslamicNoEstimatedHolidayName(name, range(self.start_year, 1997))
 
     def test_2022(self):
-        self.assertHolidays(
-            Argentina(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Año Nuevo"),
             ("2022-02-28", "Lunes de Carnaval"),
             ("2022-03-01", "Martes de Carnaval"),
@@ -1222,8 +1222,8 @@ class TestArgentina(CommonCountryTests, TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidays(
-            Argentina(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "Año Nuevo"),
             ("2023-02-20", "Lunes de Carnaval"),
             ("2023-02-21", "Martes de Carnaval"),
@@ -1247,8 +1247,8 @@ class TestArgentina(CommonCountryTests, TestCase):
         )
 
     def test_2024(self):
-        self.assertHolidays(
-            Argentina(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "Año Nuevo"),
             ("2024-02-12", "Lunes de Carnaval"),
             ("2024-02-13", "Martes de Carnaval"),
