@@ -803,6 +803,37 @@ class HolidayBase(dict[date, str]):
         self[dt] = self.tr(name)
         return dt
 
+    def _add_multiday_holiday(
+        self, start_date: date, duration_days: int, *, name: str | None = None
+    ) -> set[date]:
+        """Add a multi-day holiday.
+
+        Args:
+            start_date:
+                First day of the holiday.
+
+            duration_days:
+                Number of additional days to add.
+
+            name:
+                Optional holiday name; inferred from `start_date` if omitted.
+
+        Returns:
+            A set of all added holiday dates.
+
+        Raises:
+            ValueError:
+                If the holiday name cannot be inferred from `start_date`.
+        """
+        if (holiday_name := name or self.get(start_date)) is None:
+            raise ValueError(f"Cannot infer holiday name for date {start_date!r}.")
+
+        return {
+            d
+            for delta in range(1, duration_days + 1)
+            if (d := self._add_holiday(holiday_name, _timedelta(start_date, delta)))
+        }
+
     def _add_special_holidays(self, mapping_names, *, observed=False):
         """Add special holidays."""
         for mapping_name in mapping_names:
