@@ -105,7 +105,7 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2010, 2036))
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         self.assertHolidayName(
             "अन्तर्राष्ट्रिय श्रम दिवस", (f"{year}-05-01" for year in range(2010, 2050))
         )
