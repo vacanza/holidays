@@ -200,7 +200,7 @@ class Nepal(
         # Nepali New Year.
         self._add_vaisakhi(tr("नेपाली नयाँ वर्ष"))
 
-        # International Labour Day.
+        # International Labor Day.
         self._add_labor_day(tr("अन्तर्राष्ट्रिय श्रम दिवस"))
 
         constitution_day_dates = {

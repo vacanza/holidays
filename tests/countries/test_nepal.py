@@ -627,7 +627,7 @@ class TestNepal(CommonCountryTests, TestCase):
             ("2024-04-11", "Eid al-Fitr"),
             ("2024-04-13", "Nepali New Year"),
             ("2024-04-17", "Ram Navami"),
-            ("2024-05-01", "International Labour Day"),
+            ("2024-05-01", "International Labor Day"),
             ("2024-05-23", "Buddha Jayanti"),
             ("2024-05-28", "Republic Day"),
             ("2024-06-17", "Eid al-Adha"),

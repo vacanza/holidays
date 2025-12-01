@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.86\n"
 "POT-Creation-Date: 2025-11-28 20:26+0530\n"
 "PO-Revision-Date: 2025-11-28 20:26+0530\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Neha Gaikwad <nehagaikwadwork24@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ne\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,7 @@ msgstr ""
 msgid "नेपाली नयाँ वर्ष"
 msgstr ""
 
-#. International Labour Day.
+#. International Labor Day.
 msgid "अन्तर्राष्ट्रिय श्रम दिवस"
 msgstr ""
 
