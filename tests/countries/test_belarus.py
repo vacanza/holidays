@@ -24,8 +24,8 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
     def test_public_2018(self):
         # http://calendar.by/procal.php?year=2018
         # https://www.officeholidays.com/countries/belarus/index.php
-        self.assertHolidays(
-            Belarus(years=2018),
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "Новы год"),
             ("2018-01-02", "Выходны (перанесены з 20.01.2018)"),
             ("2018-01-07", "Нараджэнне Хрыстова (праваслаўнае Раство)"),

@@ -37,8 +37,8 @@ class TestCambodia(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Cambodia(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "ទិវាចូលឆ្នាំសាកល"),
             ("2022-01-07", "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍"),
             ("2022-03-08", "ទិវាអន្តរជាតិនារី"),
@@ -75,8 +75,8 @@ class TestCambodia(CommonCountryTests, TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidays(
-            Cambodia(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "ទិវាចូលឆ្នាំសាកល"),
             ("2023-01-07", "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍"),
             ("2023-03-08", "ទិវាអន្តរជាតិនារី"),

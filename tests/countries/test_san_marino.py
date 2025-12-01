@@ -143,8 +143,8 @@ class TestSanMarino(CommonCountryTests, TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidays(
-            SanMarino(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "Capodanno"),
             ("2023-01-06", "Epifania"),
             (
@@ -169,8 +169,8 @@ class TestSanMarino(CommonCountryTests, TestCase):
         )
 
     def test_2023_bank(self):
-        self.assertHolidays(
-            SanMarino(categories=BANK, years=2023),
+        self.assertBankHolidaysInYear(
+            2023,
             ("2023-12-24", "Vigilia di Natale"),
             ("2023-12-31", "Ultimo dell'anno"),
         )

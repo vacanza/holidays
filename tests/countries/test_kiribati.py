@@ -233,8 +233,8 @@ class TestKiribati(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_2025(self):
-        self.assertHolidays(
-            Kiribati(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "New Year's Day"),
             ("2025-03-08", "International Women's Day"),
             ("2025-03-10", "International Women's Day (observed)"),

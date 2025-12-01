@@ -29,8 +29,8 @@ class TestBrunei(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Brunei(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Awal Tahun Masihi"),
             ("2022-02-01", "Tahun Baru Cina"),
             ("2022-02-23", "Hari Kebangsaan"),
@@ -52,8 +52,8 @@ class TestBrunei(CommonCountryTests, TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidays(
-            Brunei(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "Awal Tahun Masihi"),
             ("2023-01-02", "Awal Tahun Masihi (diperhatikan)"),
             ("2023-01-22", "Tahun Baru Cina"),
@@ -75,8 +75,8 @@ class TestBrunei(CommonCountryTests, TestCase):
         )
 
     def test_2024(self):
-        self.assertHolidays(
-            Brunei(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "Awal Tahun Masihi"),
             ("2024-02-08", "Israk dan Mikraj"),
             ("2024-02-10", "Tahun Baru Cina"),
@@ -99,8 +99,8 @@ class TestBrunei(CommonCountryTests, TestCase):
         )
 
     def test_2025(self):
-        self.assertHolidays(
-            Brunei(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "Awal Tahun Masihi"),
             ("2025-01-27", "Israk dan Mikraj"),
             ("2025-01-29", "Tahun Baru Cina"),

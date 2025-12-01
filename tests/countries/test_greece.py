@@ -128,8 +128,8 @@ class TestGreece(CommonCountryTests, TestCase):
         self.assertHalfDayHolidayName(name, (f"{year}-12-31" for year in self.full_range))
 
     def test_2024(self):
-        self.assertHolidays(
-            Greece(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "Πρωτοχρονιά"),
             ("2024-01-06", "Θεοφάνεια"),
             ("2024-03-18", "Καθαρά Δευτέρα"),

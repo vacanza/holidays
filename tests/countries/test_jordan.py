@@ -22,8 +22,8 @@ class TestJordan(CommonCountryTests, TestCase):
         super().setUpClass(Jordan)
 
     def test_2024(self):
-        self.assertHolidays(
-            Jordan(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "رأس السنة الميلادية"),
             ("2024-02-08", "ليلة المعراج (المقدرة)"),
             ("2024-04-10", "عيد الفطر (المقدرة)"),

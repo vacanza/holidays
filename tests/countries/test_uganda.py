@@ -116,8 +116,8 @@ class TestUganda(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1963, 2050))
 
     def test_2020(self):
-        self.assertHolidays(
-            Uganda(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "New Year's Day"),
             ("2020-01-26", "NRM Liberation Day"),
             ("2020-02-16", "Archbishop Janani Luwum Day"),

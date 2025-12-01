@@ -281,8 +281,8 @@ class TestMyanmar(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2024(self):
-        self.assertHolidays(
-            Myanmar(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-04", "လွတ်လပ်ရေးနေ့"),
             ("2024-01-11", "ကရင်နှစ်သစ်ကူးနေ့"),
             ("2024-02-12", "ပြည်ထောင်စုနေ့"),

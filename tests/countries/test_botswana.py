@@ -176,8 +176,8 @@ class TestBotswana(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts, dts_holiday)
 
     def test_2021(self):
-        self.assertHolidayDates(
-            Botswana(years=2021),
+        self.assertHolidayDatesInYear(
+            2021,
             "2021-01-01",
             "2021-01-02",
             "2021-04-02",
@@ -197,8 +197,8 @@ class TestBotswana(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidayDates(
-            Botswana(years=2022),
+        self.assertHolidayDatesInYear(
+            2022,
             "2022-01-01",
             "2022-01-02",
             "2022-01-03",
@@ -219,8 +219,8 @@ class TestBotswana(CommonCountryTests, TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidayDates(
-            Botswana(years=2023),
+        self.assertHolidayDatesInYear(
+            2023,
             "2023-01-01",
             "2023-01-02",
             "2023-01-03",

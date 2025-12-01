@@ -36,8 +36,8 @@ class TestMauritania(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1950, 1960))
 
     def test_2023(self):
-        self.assertHolidays(
-            Mauritania(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-04-21", "Eid al-Fitr (estimated)"),
             ("2023-04-22", "Eid al-Fitr (estimated)"),
@@ -51,8 +51,8 @@ class TestMauritania(CommonCountryTests, TestCase):
         )
 
     def test_2024(self):
-        self.assertHolidays(
-            Mauritania(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-04-10", "Eid al-Fitr (estimated)"),
             ("2024-04-11", "Eid al-Fitr (estimated)"),

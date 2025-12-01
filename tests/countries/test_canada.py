@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT, OPTIONAL
 from holidays.countries.canada import Canada
 from tests.common import CommonCountryTests
 
@@ -803,8 +802,8 @@ class TestCanada(CommonCountryTests, TestCase):
                 self.assertNoHoliday(holidays, "2022-09-19")
 
     def test_public_2022(self):
-        self.assertHolidays(
-            Canada(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (observed)"),
             ("2022-04-15", "Good Friday"),
@@ -815,8 +814,8 @@ class TestCanada(CommonCountryTests, TestCase):
         )
 
     def test_government_2022(self):
-        self.assertHolidays(
-            Canada(years=2022, categories=GOVERNMENT),
+        self.assertGovernmentHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (observed)"),
             ("2022-04-15", "Good Friday"),
@@ -832,8 +831,8 @@ class TestCanada(CommonCountryTests, TestCase):
         )
 
     def test_optional_2022(self):
-        self.assertHolidays(
-            Canada(years=2022, categories=OPTIONAL),
+        self.assertOptionalHolidaysInYear(
+            2022,
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),
             ("2022-12-27", "Christmas Day (observed)"),

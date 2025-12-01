@@ -177,8 +177,8 @@ class TestQatar(CommonCountryTests, TestCase):
             self.assertFalse(self.holidays.is_weekend(dt))
 
     def test_2011(self):
-        self.assertHolidays(
-            Qatar(years=2011),
+        self.assertHolidaysInYear(
+            2011,
             ("2011-08-31", "عيد الفطر"),
             ("2011-09-01", "عيد الفطر"),
             ("2011-09-02", "عيد الفطر"),
@@ -189,8 +189,8 @@ class TestQatar(CommonCountryTests, TestCase):
         )
 
     def test_bank_2024(self):
-        self.assertHolidays(
-            Qatar(categories=BANK, years=2024),
+        self.assertBankHolidaysInYear(
+            2024,
             ("2024-01-01", "رأس السنة الميلادية"),
             ("2024-03-03", "عطلة البنك"),
         )

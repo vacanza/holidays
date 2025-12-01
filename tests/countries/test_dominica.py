@@ -195,8 +195,8 @@ class TestDominica(CommonCountryTests, TestCase):
 
     def test_2010_public_holidays(self):
         # https://www.dominica-weekly.com/images/dominica-calendar-2010/1600-1280.jpg
-        self.assertHolidays(
-            Dominica(years=2010),
+        self.assertHolidaysInYear(
+            2010,
             ("2010-01-01", "New Year's Day"),
             ("2010-01-04", "Special Public Holiday"),
             ("2010-02-15", "Carnival Monday"),
@@ -215,8 +215,8 @@ class TestDominica(CommonCountryTests, TestCase):
 
     def test_2011_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
-        self.assertHolidays(
-            Dominica(years=2011),
+        self.assertHolidaysInYear(
+            2011,
             ("2011-01-01", "New Year's Day"),
             ("2011-03-07", "Carnival Monday"),
             ("2011-03-08", "Carnival Tuesday"),
@@ -234,8 +234,8 @@ class TestDominica(CommonCountryTests, TestCase):
 
     def test_2012_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
-        self.assertHolidays(
-            Dominica(years=2012),
+        self.assertHolidaysInYear(
+            2012,
             ("2012-01-01", "New Year's Day"),
             ("2012-01-02", "New Year's Day (observed)"),
             ("2012-02-20", "Carnival Monday"),
@@ -254,8 +254,8 @@ class TestDominica(CommonCountryTests, TestCase):
 
     def test_2013_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
-        self.assertHolidays(
-            Dominica(years=2013),
+        self.assertHolidaysInYear(
+            2013,
             ("2013-01-01", "New Year's Day"),
             ("2013-02-11", "Carnival Monday"),
             ("2013-02-12", "Carnival Tuesday"),
@@ -273,8 +273,8 @@ class TestDominica(CommonCountryTests, TestCase):
 
     def test_2014_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
-        self.assertHolidays(
-            Dominica(years=2014),
+        self.assertHolidaysInYear(
+            2014,
             ("2014-01-01", "New Year's Day"),
             ("2014-03-03", "Carnival Monday"),
             ("2014-03-04", "Carnival Tuesday"),
@@ -291,8 +291,8 @@ class TestDominica(CommonCountryTests, TestCase):
 
     def test_2015_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
-        self.assertHolidays(
-            Dominica(years=2015),
+        self.assertHolidaysInYear(
+            2015,
             ("2015-01-01", "New Year's Day"),
             ("2015-02-16", "Carnival Monday"),
             ("2015-02-17", "Carnival Tuesday"),
@@ -309,8 +309,8 @@ class TestDominica(CommonCountryTests, TestCase):
 
     def test_2016_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
-        self.assertHolidays(
-            Dominica(years=2016),
+        self.assertHolidaysInYear(
+            2016,
             ("2016-01-01", "New Year's Day"),
             ("2016-02-08", "Carnival Monday"),
             ("2016-02-09", "Carnival Tuesday"),
@@ -328,8 +328,8 @@ class TestDominica(CommonCountryTests, TestCase):
 
     def test_2017_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
-        self.assertHolidays(
-            Dominica(years=2017),
+        self.assertHolidaysInYear(
+            2017,
             ("2017-01-01", "New Year's Day"),
             ("2017-01-02", "New Year's Day (observed)"),
             ("2017-02-27", "Carnival Monday"),
@@ -347,8 +347,8 @@ class TestDominica(CommonCountryTests, TestCase):
 
     def test_2018_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
-        self.assertHolidays(
-            Dominica(years=2018),
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "New Year's Day"),
             ("2018-02-12", "Carnival Monday"),
             ("2018-02-13", "Carnival Tuesday"),
@@ -366,8 +366,8 @@ class TestDominica(CommonCountryTests, TestCase):
 
     def test_2019_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
-        self.assertHolidays(
-            Dominica(years=2019),
+        self.assertHolidaysInYear(
+            2019,
             ("2019-01-01", "New Year's Day"),
             ("2019-03-04", "Carnival Monday"),
             ("2019-03-05", "Carnival Tuesday"),
@@ -386,8 +386,8 @@ class TestDominica(CommonCountryTests, TestCase):
 
     def test_2020_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
-        self.assertHolidays(
-            Dominica(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "New Year's Day"),
             ("2020-02-24", "Carnival Monday"),
             ("2020-02-25", "Carnival Tuesday"),
@@ -404,8 +404,8 @@ class TestDominica(CommonCountryTests, TestCase):
 
     def test_2021_public_holidays(self):
         # http://www.q95da.com/news/q95-news-received-on-december-29-2020-at-731pm-the-official-public-holiday-calendar-for-2021-approved-by-the-government-of-dominica
-        self.assertHolidays(
-            Dominica(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "New Year's Day"),
             ("2021-02-15", "Carnival Monday"),
             ("2021-02-16", "Carnival Tuesday"),
@@ -423,8 +423,8 @@ class TestDominica(CommonCountryTests, TestCase):
 
     def test_2022_public_holidays(self):
         # https://dominica.gov.dm/about-dominica/public-holidays
-        self.assertHolidays(
-            Dominica(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-02-28", "Carnival Monday"),
             ("2022-03-01", "Carnival Tuesday"),
@@ -442,8 +442,8 @@ class TestDominica(CommonCountryTests, TestCase):
 
     def test_2023_public_holidays(self):
         # https://dominica.gov.dm/about-dominica/public-holidays
-        self.assertHolidays(
-            Dominica(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day (observed)"),
             ("2023-02-20", "Carnival Monday"),
@@ -461,8 +461,8 @@ class TestDominica(CommonCountryTests, TestCase):
 
     def test_2024_public_holidays(self):
         # https://dominica.gov.dm/about-dominica/public-holidays
-        self.assertHolidays(
-            Dominica(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-02-12", "Carnival Monday"),
             ("2024-02-13", "Carnival Tuesday"),

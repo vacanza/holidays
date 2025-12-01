@@ -211,8 +211,8 @@ class TestGrenada(CommonCountryTests, TestCase):
 
     def test_2012(self):
         # https://web.archive.org/web/20120623100105/http://www.gov.gd/holiday_events.html
-        self.assertHolidays(
-            Grenada(years=2012),
+        self.assertHolidaysInYear(
+            2012,
             ("2012-01-01", "New Year's Day"),
             ("2012-01-02", "New Year's Day (observed)"),
             ("2012-02-07", "Independence Day"),

@@ -32,8 +32,8 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
 
     def test_2018(self):
-        self.assertHolidayDates(
-            India(years=2018),
+        self.assertHolidayDatesInYear(
+            2018,
             "2018-01-26",
             "2018-02-13",
             "2018-03-29",
@@ -171,8 +171,8 @@ class TestIndia(CommonCountryTests, TestCase):
             self.assertHoliday(India(subdiv=subdiv), holidays)
 
     def test_2018_optional(self):
-        self.assertHolidayDates(
-            India(categories=OPTIONAL, years=2018),
+        self.assertOptionalHolidayDatesInYear(
+            2018,
             "2018-01-14",
             "2018-03-02",
             "2018-03-25",

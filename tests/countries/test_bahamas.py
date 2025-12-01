@@ -204,8 +204,8 @@ class TestBahamas(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2023(self):
-        self.assertHolidays(
-            Bahamas(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day (observed)"),
             ("2023-01-10", "Majority Rule Day"),

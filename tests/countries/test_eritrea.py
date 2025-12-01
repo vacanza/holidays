@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT
 from holidays.countries.eritrea import Eritrea
 from tests.common import CommonCountryTests
 
@@ -137,8 +136,8 @@ class TestEritrea(CommonCountryTests, TestCase):
         self.assertGovernmentHolidayName(name, (f"{year}-02-10" for year in self.full_range))
 
     def test_2020(self):
-        self.assertHolidays(
-            Eritrea(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "New Year's Day"),
             ("2020-01-07", "Orthodox Christmas"),
             ("2020-01-20", "Epiphany"),
@@ -156,7 +155,7 @@ class TestEritrea(CommonCountryTests, TestCase):
         )
 
     def test_2020_government(self):
-        self.assertHolidays(
-            Eritrea(categories=GOVERNMENT, years=2020),
+        self.assertGovernmentHolidaysInYear(
+            2020,
             ("2020-02-10", "Fenkil Day"),
         )

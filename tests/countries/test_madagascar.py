@@ -116,8 +116,8 @@ class TestMadagascar(CommonCountryTests, TestCase):
         self.assertHoliday(f"{year}-12-25" for year in range(1947, 2050))
 
     def test_2021(self):
-        self.assertHolidays(
-            Madagascar(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "Taom-baovao"),
             ("2021-03-08", "Fetin'ny vehivavy"),
             ("2021-03-29", "Fetin'ny mahery fo"),

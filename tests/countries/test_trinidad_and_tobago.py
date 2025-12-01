@@ -278,15 +278,15 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
 
     def test_optional_2025(self):
-        self.assertHolidays(
-            TrinidadAndTobago(categories=OPTIONAL, years=2025),
+        self.assertOptionalHolidaysInYear(
+            2025,
             ("2025-03-03", "Carnival Monday"),
             ("2025-03-04", "Carnival Tuesday"),
         )
 
     def test_2024(self):
-        self.assertHolidays(
-            TrinidadAndTobago(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-03-29", "Good Friday"),
             ("2024-03-30", "Spiritual Baptist Liberation Day"),
@@ -304,8 +304,8 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         )
 
     def test_2025(self):
-        self.assertHolidays(
-            TrinidadAndTobago(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "New Year's Day"),
             ("2025-03-30", "Spiritual Baptist Liberation Day"),
             ("2025-03-31", "Eid-Ul-Fitr"),

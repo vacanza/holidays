@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT
 from holidays.countries.andorra import Andorra
 from tests.common import CommonCountryTests
 
@@ -313,8 +312,8 @@ class TestAndorra(CommonCountryTests, TestCase):
         self.assertGovernmentHolidayName(name, (f"{year}-12-31" for year in self.full_range))
 
     def test_2023(self):
-        self.assertHolidays(
-            Andorra(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "Cap d'Any"),
             ("2023-01-06", "Reis"),
             ("2023-02-20", "Carnaval"),
@@ -332,8 +331,8 @@ class TestAndorra(CommonCountryTests, TestCase):
         )
 
     def test_government_2023(self):
-        self.assertHolidays(
-            Andorra(categories=GOVERNMENT, years=2023),
+        self.assertGovernmentHolidaysInYear(
+            2023,
             ("2023-01-05", "Vigília de Reis (a partir de les 13h)"),
             ("2023-04-06", "Dijous Sant (a partir de les 13h)"),
             ("2023-12-24", "Vigília de Nadal (a partir de les 13h)"),

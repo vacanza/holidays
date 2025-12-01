@@ -138,8 +138,8 @@ class TestPakistan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
 
     def test_2002(self):
-        self.assertHolidays(
-            Pakistan(years=2002),
+        self.assertHolidaysInYear(
+            2002,
             ("2002-02-05", "Kashmir Solidarity Day"),
             ("2002-02-22", "Eid-ul-Adha (estimated)"),
             ("2002-02-23", "Eid-ul-Adha (estimated)"),
@@ -157,8 +157,8 @@ class TestPakistan(CommonCountryTests, TestCase):
         )
 
     def test_2002_no_estimated_label(self):
-        self.assertHolidays(
-            Pakistan(years=2002, islamic_show_estimated=False),
+        self.assertIslamicNoEstimatedHolidaysInYear(
+            2002,
             ("2002-02-05", "Kashmir Solidarity Day"),
             ("2002-02-22", "Eid-ul-Adha"),
             ("2002-02-23", "Eid-ul-Adha"),
@@ -176,8 +176,8 @@ class TestPakistan(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Pakistan(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-02-05", "Kashmir Solidarity Day"),
             ("2022-03-23", "Pakistan Day"),
             ("2022-05-01", "Labour Day"),
@@ -196,8 +196,8 @@ class TestPakistan(CommonCountryTests, TestCase):
         )
 
     def test_2024(self):
-        self.assertHolidays(
-            Pakistan(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-02-05", "Kashmir Solidarity Day"),
             ("2024-03-23", "Pakistan Day"),
             ("2024-05-01", "Labour Day"),

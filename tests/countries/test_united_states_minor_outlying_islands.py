@@ -23,9 +23,9 @@ class TestUnitedStatesMinorOutlyingIslands(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(UnitedStatesMinorOutlyingIslands)
 
-    def test_public_holidays(self):
-        self.assertHolidays(
-            UnitedStatesMinorOutlyingIslands(years=2024),
+    def test_2024_public_holidays(self):
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-01-15", "Martin Luther King Jr. Day"),
             ("2024-02-19", "Washington's Birthday"),

@@ -104,8 +104,8 @@ class TestLiberia(CommonCountryTests, TestCase):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1957, 2050)))
 
     def test_2025(self):
-        self.assertHolidays(
-            Liberia(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "New Year's Day"),
             ("2025-02-11", "Armed Forces Day"),
             ("2025-03-12", "Decoration Day"),

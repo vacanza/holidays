@@ -22,8 +22,8 @@ class TestKyrgyzstan(CommonCountryTests, TestCase):
         super().setUpClass(Kyrgyzstan)
 
     def test_2022(self):
-        self.assertHolidays(
-            Kyrgyzstan(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-07", "Christmas Day"),
             ("2022-02-23", "Fatherland Defender's Day"),
@@ -43,8 +43,8 @@ class TestKyrgyzstan(CommonCountryTests, TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidays(
-            Kyrgyzstan(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-07", "Christmas Day"),
             ("2023-02-23", "Fatherland Defender's Day"),

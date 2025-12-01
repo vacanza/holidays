@@ -113,8 +113,8 @@ class TestZimbabwe(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_2022(self):
-        self.assertHolidays(
-            Zimbabwe(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-02-21", "Robert Gabriel Mugabe National Youth Day"),
             ("2022-04-15", "Good Friday"),

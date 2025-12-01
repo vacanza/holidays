@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import BANK
 from holidays.countries.austria import Austria
 from tests.common import CommonCountryTests
 
@@ -195,8 +194,8 @@ class TestAustria(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_2022(self):
-        self.assertHolidays(
-            Austria(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Neujahr"),
             ("2022-01-06", "Heilige Drei Könige"),
             ("2022-04-18", "Ostermontag"),
@@ -213,8 +212,8 @@ class TestAustria(CommonCountryTests, TestCase):
         )
 
     def test_bank_2022(self):
-        self.assertHolidays(
-            Austria(categories=BANK, years=2022),
+        self.assertBankHolidaysInYear(
+            2022,
             ("2022-04-15", "Karfreitag"),
             ("2022-12-24", "Heiliger Abend"),
             ("2022-12-31", "Silvester"),

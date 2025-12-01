@@ -105,8 +105,8 @@ class TestElSalvador(CommonCountryTests, TestCase):
         )
 
     def test_2021(self):
-        self.assertHolidays(
-            ElSalvador(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "Año Nuevo"),
             ("2021-04-01", "Jueves Santo"),
             ("2021-04-02", "Viernes Santo"),
@@ -121,8 +121,8 @@ class TestElSalvador(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            ElSalvador(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Año Nuevo"),
             ("2022-04-14", "Jueves Santo"),
             ("2022-04-15", "Viernes Santo"),

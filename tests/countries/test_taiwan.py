@@ -719,8 +719,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_1998(self):
-        self.assertHolidays(
-            Taiwan(years=1998),
+        self.assertHolidaysInYear(
+            1998,
             ("1998-01-01", "中華民國開國紀念日"),
             ("1998-01-27", "農曆除夕"),
             ("1998-01-28", "春節"),
@@ -736,8 +736,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_1999(self):
-        self.assertHolidays(
-            Taiwan(years=1999),
+        self.assertHolidaysInYear(
+            1999,
             ("1999-01-01", "中華民國開國紀念日"),
             ("1999-01-02", "中華民國開國紀念日（補假）"),
             ("1999-02-15", "農曆除夕"),
@@ -753,8 +753,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2000(self):
-        self.assertHolidays(
-            Taiwan(years=2000),
+        self.assertHolidaysInYear(
+            2000,
             ("2000-01-01", "中華民國開國紀念日"),
             ("2000-02-04", "農曆除夕"),
             ("2000-02-05", "春節"),
@@ -770,8 +770,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2001(self):
-        self.assertHolidays(
-            Taiwan(years=2001),
+        self.assertHolidaysInYear(
+            2001,
             ("2001-01-01", "中華民國開國紀念日"),
             ("2001-01-22", "放假日（2001-01-20 補班）"),
             ("2001-01-23", "農曆除夕"),
@@ -786,8 +786,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2002(self):
-        self.assertHolidays(
-            Taiwan(years=2002),
+        self.assertHolidaysInYear(
+            2002,
             ("2002-01-01", "中華民國開國紀念日"),
             ("2002-04-05", "民族掃墓節"),
             ("2002-02-11", "農曆除夕"),
@@ -801,8 +801,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2003(self):
-        self.assertHolidays(
-            Taiwan(years=2003),
+        self.assertHolidaysInYear(
+            2003,
             ("2003-01-01", "中華民國開國紀念日"),
             ("2003-01-31", "農曆除夕"),
             ("2003-02-01", "春節"),
@@ -818,8 +818,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2004(self):
-        self.assertHolidays(
-            Taiwan(years=2004),
+        self.assertHolidaysInYear(
+            2004,
             ("2004-01-01", "中華民國開國紀念日"),
             ("2004-01-21", "農曆除夕"),
             ("2004-01-22", "春節"),
@@ -834,8 +834,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2005(self):
-        self.assertHolidays(
-            Taiwan(years=2005),
+        self.assertHolidaysInYear(
+            2005,
             ("2005-01-01", "中華民國開國紀念日"),
             ("2005-02-07", "放假日（2005-02-05 補班）"),
             ("2005-02-08", "農曆除夕"),
@@ -850,8 +850,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2006(self):
-        self.assertHolidays(
-            Taiwan(years=2006),
+        self.assertHolidaysInYear(
+            2006,
             ("2006-01-01", "中華民國開國紀念日"),
             ("2006-01-28", "農曆除夕"),
             ("2006-01-29", "春節"),
@@ -868,8 +868,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2007(self):
-        self.assertHolidays(
-            Taiwan(years=2007),
+        self.assertHolidaysInYear(
+            2007,
             ("2007-01-01", "中華民國開國紀念日"),
             ("2007-02-17", "農曆除夕"),
             ("2007-02-18", "春節"),
@@ -889,8 +889,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2008(self):
-        self.assertHolidays(
-            Taiwan(years=2008),
+        self.assertHolidaysInYear(
+            2008,
             ("2008-01-01", "中華民國開國紀念日"),
             ("2008-02-06", "農曆除夕"),
             ("2008-02-07", "春節"),
@@ -905,8 +905,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2009(self):
-        self.assertHolidays(
-            Taiwan(years=2009),
+        self.assertHolidaysInYear(
+            2009,
             ("2009-01-01", "中華民國開國紀念日"),
             ("2009-01-02", "放假日（2009-01-10 補班）"),
             ("2009-01-25", "農曆除夕"),
@@ -924,8 +924,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2010(self):
-        self.assertHolidays(
-            Taiwan(years=2010),
+        self.assertHolidaysInYear(
+            2010,
             ("2010-01-01", "中華民國開國紀念日"),
             ("2010-02-13", "農曆除夕"),
             ("2010-02-14", "春節"),
@@ -942,8 +942,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2011(self):
-        self.assertHolidays(
-            Taiwan(years=2011),
+        self.assertHolidaysInYear(
+            2011,
             ("2011-01-01", "中華民國開國紀念日"),
             ("2011-02-02", "農曆除夕"),
             ("2011-02-03", "春節"),
@@ -959,8 +959,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2012(self):
-        self.assertHolidays(
-            Taiwan(years=2012),
+        self.assertHolidaysInYear(
+            2012,
             ("2012-01-01", "中華民國開國紀念日"),
             ("2012-01-22", "農曆除夕"),
             ("2012-01-23", "春節"),
@@ -978,8 +978,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2013(self):
-        self.assertHolidays(
-            Taiwan(years=2013),
+        self.assertHolidaysInYear(
+            2013,
             ("2013-01-01", "中華民國開國紀念日"),
             ("2013-02-09", "農曆除夕"),
             ("2013-02-10", "春節"),
@@ -998,8 +998,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2014(self):
-        self.assertHolidays(
-            Taiwan(years=2014),
+        self.assertHolidaysInYear(
+            2014,
             ("2014-01-01", "中華民國開國紀念日"),
             ("2014-01-30", "農曆除夕"),
             ("2014-01-31", "春節"),
@@ -1016,8 +1016,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2015(self):
-        self.assertHolidays(
-            Taiwan(years=2015),
+        self.assertHolidaysInYear(
+            2015,
             ("2015-01-01", "中華民國開國紀念日"),
             ("2015-01-02", "放假日（2014-12-27 補班）"),
             ("2015-02-18", "農曆除夕"),
@@ -1040,8 +1040,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2016(self):
-        self.assertHolidays(
-            Taiwan(years=2016),
+        self.assertHolidaysInYear(
+            2016,
             ("2016-01-01", "中華民國開國紀念日"),
             ("2016-02-07", "農曆除夕"),
             ("2016-02-08", "春節"),
@@ -1061,8 +1061,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2017(self):
-        self.assertHolidays(
-            Taiwan(years=2017),
+        self.assertHolidaysInYear(
+            2017,
             ("2017-01-01", "中華民國開國紀念日"),
             ("2017-01-02", "中華民國開國紀念日（補假）"),
             ("2017-01-27", "農曆除夕"),
@@ -1083,8 +1083,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2018(self):
-        self.assertHolidays(
-            Taiwan(years=2018),
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "中華民國開國紀念日"),
             ("2018-02-15", "農曆除夕"),
             ("2018-02-16", "春節"),
@@ -1103,8 +1103,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2019(self):
-        self.assertHolidays(
-            Taiwan(years=2019),
+        self.assertHolidaysInYear(
+            2019,
             ("2019-01-01", "中華民國開國紀念日"),
             ("2019-02-04", "農曆除夕"),
             ("2019-02-05", "春節"),
@@ -1122,8 +1122,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2020(self):
-        self.assertHolidays(
-            Taiwan(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "中華民國開國紀念日"),
             ("2020-01-23", "放假日（2020-02-15 補班）"),
             ("2020-01-24", "農曆除夕"),
@@ -1145,8 +1145,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2021(self):
-        self.assertHolidays(
-            Taiwan(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "中華民國開國紀念日"),
             ("2021-02-10", "放假日（2021-02-20 補班）"),
             ("2021-02-11", "農曆除夕"),
@@ -1169,8 +1169,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Taiwan(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "中華民國開國紀念日"),
             ("2022-01-31", "農曆除夕"),
             ("2022-02-01", "春節"),
@@ -1187,8 +1187,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidays(
-            Taiwan(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "中華民國開國紀念日"),
             ("2023-01-02", "中華民國開國紀念日（補假）"),
             ("2023-01-20", "放假日（2023-01-07 補班）"),
@@ -1212,8 +1212,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2024(self):
-        self.assertHolidays(
-            Taiwan(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "中華民國開國紀念日"),
             ("2024-02-08", "放假日（2024-02-17 補班）"),
             ("2024-02-09", "農曆除夕"),
@@ -1231,8 +1231,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2025(self):
-        self.assertHolidays(
-            Taiwan(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "中華民國開國紀念日"),
             ("2025-01-27", "放假日（2025-02-08 補班）"),
             ("2025-01-28", "農曆除夕"),

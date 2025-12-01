@@ -60,8 +60,8 @@ class TestGuadeloupe(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(self.start_year, 1984))
 
     def test_2024(self):
-        self.assertHolidays(
-            Guadeloupe(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "Jour de l'an"),
             ("2024-03-07", "Mi-Carême"),
             ("2024-03-29", "Vendredi saint"),
