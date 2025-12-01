@@ -46,7 +46,7 @@ from holidays.helpers import _normalize_arguments, _normalize_tuple
 CategoryArg = str | Iterable[str]
 DateArg = date | tuple[int, int] | tuple[int, int, int]
 DateLike = date | datetime | str | float | int
-NameLookupType = Literal["contains", "exact", "startswith", "icontains", "iexact", "istartswith"]
+NameLookup = Literal["contains", "exact", "startswith", "icontains", "iexact", "istartswith"]
 SpecialHoliday = tuple[int, int, str] | tuple[tuple[int, int, str], ...]
 SubstitutedHoliday = (
     tuple[int, int, int, int]
@@ -993,7 +993,7 @@ class HolidayBase(dict[date, str]):
     def get_named(
         self,
         holiday_name: str,
-        lookup: NameLookupType = "icontains",
+        lookup: NameLookup = "icontains",
         split_multiple_names: bool = True,
     ) -> list[date]:
         """Find all holiday dates matching a given name.
@@ -1199,7 +1199,7 @@ class HolidayBase(dict[date, str]):
 
         return dict.pop(self, self.__keytransform__(key), default)
 
-    def pop_named(self, holiday_name: str, lookup: NameLookupType = "icontains") -> list[date]:
+    def pop_named(self, holiday_name: str, lookup: NameLookup = "icontains") -> list[date]:
         """Remove all holidays matching the given name.
 
         This method removes all dates associated with a holiday name, so they are
