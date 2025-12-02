@@ -61,8 +61,8 @@ GoTo :Help
     Exit /B
 
 :Sbom
-    uv sync --extra build
-    uv run python -m cyclonedx_py
+    uv sync --extra build --link-mode=copy
+    uv tool run --from cyclonedx-bom cyclonedx-py environment "$(uv python find)"
     Exit /B
 
 :Setup

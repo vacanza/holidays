@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           uv venv --clear
-          uv sync --extra build
+          uv sync --extra build --link-mode=copy
 
       - name: Generate snapshots
         run: uv run make snapshot

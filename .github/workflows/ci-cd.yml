@@ -99,7 +99,7 @@ jobs:
         uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
 
       - name: Install dependencies
-        run: uv sync --extra tests
+        run: uv sync --extra tests --link-mode=copy
 
       - name: Run tests
         run: uv run make test
@@ -127,7 +127,7 @@ jobs:
         uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
 
       - name: Install dependencies
-        run: uv sync --extra build
+        run: uv sync --extra build --link-mode=copy
 
       - name: Build distribution
         run: uv run make package
@@ -186,11 +186,11 @@ jobs:
         shell: bash
         run: |
           uv venv --clear
-          uv sync --extra tests
-          uv pip install dist/*.whl
+          uv sync --extra tests --link-mode=copy
+          uv pip install dist/*.whl --link-mode=copy
           uv run pytest --dist loadscope --numprocesses auto tests/countries tests/financial
-          uv pip uninstall -y holidays
-          uv pip install dist/*.tar.gz
+          uv pip uninstall holidays
+          uv pip install dist/*.tar.gz --link-mode=copy
           uv run pytest --dist loadscope --numprocesses auto tests/countries tests/financial
 
   test-docs:
@@ -210,7 +210,7 @@ jobs:
         uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
 
       - name: Install dependencies
-        run: uv sync --extra docs
+        run: uv sync --extra docs --link-mode=copy
 
       - name: Build docs
         run: uv run make doc

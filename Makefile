@@ -41,8 +41,8 @@ release-notes:
 	uv run scripts/generate_release_notes.py
 
 sbom:
-	uv sync --extra build
-	uv run python -m cyclonedx_py
+	uv sync --extra build --link-mode=copy
+	uv tool run --from cyclonedx-bom cyclonedx-py environment "$(uv python find)"
 
 setup:
 	uv venv --clear
