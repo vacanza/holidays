@@ -187,10 +187,10 @@ jobs:
         run: |
           uv venv --clear
           uv sync --extra tests
-          uv install dist/*.whl
+          uv pip install dist/*.whl
           uv run pytest --dist loadscope --numprocesses auto tests/countries tests/financial
-          uv uninstall -y holidays
-          uv install dist/*.tar.gz
+          uv pip uninstall -y holidays
+          uv pip install dist/*.tar.gz
           uv run pytest --dist loadscope --numprocesses auto tests/countries tests/financial
 
   test-docs:
