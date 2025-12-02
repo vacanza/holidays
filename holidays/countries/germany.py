@@ -24,25 +24,25 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     References:
         * <https://de.wikipedia.org/wiki/Feiertag_(Deutschland)>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Germany>
-        * [German Unity Day](https://www.gesetze-im-internet.de/einigvtr/art_2.html)
+        * [German Unity Day](https://web.archive.org/web/20251011161644/https://www.gesetze-im-internet.de/einigvtr/art_2.html)
 
     Subdivisions Holidays References:
-        * [Brandenburg](https://bravors.brandenburg.de/gesetze/ftg_2015)
-        * [Berlin](https://gesetze.berlin.de/bsbe/document/jlr-FeiertGBEV10P1)
-        * [Baden-Württemberg](https://www.landesrecht-bw.de/bsbw/document/jlr-FeiertGBWpP1)
-        * [Bayern](https://www.gesetze-bayern.de/Content/Document/BayFTG/True)
-        * [Bremen](https://www.transparenz.bremen.de/metainformationen/gesetz-ueber-die-sonn-gedenk-und-feiertage-vom-12-november-1954-145882)
-        * [Hessen](https://www.rv.hessenrecht.hessen.de/bshe/document/jlr-FeiertGHE1952rahmen)
-        * [Hamburg](https://www.landesrecht-hamburg.de/bsha/document/jlr-FeiertGHAV3P1)
-        * [Mecklenburg-Vorpommern](https://www.landesrecht-mv.de/bsmv/document/jlr-FTGMVV3P2)
-        * [Niedersachsen](https://voris.wolterskluwer-online.de/browse/document/b724111b-6c20-3862-b111-589842acacba)
-        * [Nordrhein-Westfalen](https://recht.nrw.de/lmi/owa/br_bes_detail?sg=0&menu=1&bes_id=3367&anw_nr=2&aufgehoben=N&det_id=144445)
-        * [Rheinland-Pfalz](https://www.landesrecht.rlp.de/bsrp/document/jlr-FeiertGRPpP2)
-        * [Schleswig-Holstein](https://www.gesetze-rechtsprechung.sh.juris.de/bssh/document/jlr-FeiertGSH2004V3P2)
-        * [Saarland](https://recht.saarland.de/bssl/document/jlr-FeiertGSL1976V6P2)
-        * [Sachsen](https://www.revosax.sachsen.de/vorschrift/3997-SaechsSFG)
-        * [Sachsen-Anhalt](https://www.landesrecht.sachsen-anhalt.de/bsst/document/jlr-FeiertGSTpP2)
-        * [Thüringen](https://landesrecht.thueringen.de/bsth/document/jlr-FeiertGTHV5P2)
+        * [Brandenburg](https://web.archive.org/web/20251002092001/https://bravors.brandenburg.de/gesetze/ftg_2015)
+        * [Berlin](https://web.archive.org/web/20250518234750/http://gesetze.berlin.de/bsbe/document/jlr-FeiertGBEV10P1)
+        * [Baden-Württemberg](https://web.archive.org/web/20240914215438/https://www.landesrecht-bw.de/bsbw/document/jlr-FeiertGBWpP1)
+        * [Bayern](https://web.archive.org/web/20250906201237/https://www.gesetze-bayern.de/Content/Document/BayFTG/true)
+        * [Bremen](https://web.archive.org/web/20240430101614/https://www.transparenz.bremen.de/metainformationen/gesetz-ueber-die-sonn-gedenk-und-feiertage-vom-12-november-1954-145882)
+        * [Hessen](https://web.archive.org/web/20250421183249/http://www.rv.hessenrecht.hessen.de/bshe/document/jlr-FeiertGHE1952rahmen)
+        * [Hamburg](https://web.archive.org/web/20250618110249/https://www.landesrecht-hamburg.de/bsha/document/jlr-FeiertGHAV3P1)
+        * [Mecklenburg-Vorpommern](https://web.archive.org/web/20250222090126/https://www.landesrecht-mv.de/bsmv/document/jlr-FTGMVV3P2)
+        * [Niedersachsen](https://web.archive.org/web/20250627100126/https://voris.wolterskluwer-online.de/browse/document/b724111b-6c20-3862-b111-589842acacba)
+        * [Nordrhein-Westfalen](https://web.archive.org/web/20250717194916/https://recht.nrw.de/lmi/owa/br_bes_detail?bes_id=3367&aufgehoben=N&det_id=144445&anw_nr=2&menu=1&sg=0)
+        * [Rheinland-Pfalz](https://web.archive.org/web/20250521153233/http://www.landesrecht.rlp.de/bsrp/document/jlr-FeiertGRPpP2)
+        * [Schleswig-Holstein](https://web.archive.org/web/20250812223916/https://www.gesetze-rechtsprechung.sh.juris.de/bssh/document/jlr-FeiertGSH2004V3P2)
+        * [Saarland](https://web.archive.org/web/20250124112139/http://recht.saarland.de/bssl/document/jlr-FeiertGSL1976V6P2)
+        * [Sachsen](https://web.archive.org/web/20250808020452/https://www.revosax.sachsen.de/vorschrift/3997-SaechsSFG)
+        * [Sachsen-Anhalt](https://web.archive.org/web/20250615214949/http://www.landesrecht.sachsen-anhalt.de/bsst/document/jlr-FeiertGSTpP2)
+        * [Thüringen](https://web.archive.org/web/20250712163548/http://landesrecht.thueringen.de/bsth/document/jlr-FeiertGTHV5P2)
 
     !!! note "Note"
         "Mariä Himmelfahrt" is only a holiday in Bavaria (BY) and "Fronleichnam"
