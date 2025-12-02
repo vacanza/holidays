@@ -92,22 +92,14 @@ jobs:
         uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
         with:
           allow-prereleases: true
-          cache: pip
-          cache-dependency-path: |
-            requirements/runtime.txt
-            requirements/tests.txt
           check-latest: true
           python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install --requirement requirements/tests.txt
-          python -m pip install .
+        run: uv sync --extra tests
 
       - name: Run tests
-        run: |
-          make test
+        run: uv run make test
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7
@@ -125,21 +117,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
         with:
-          cache: pip
-          cache-dependency-path: |
-            requirements/build.txt
           check-latest: true
           python-version: '3.14'
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install -r requirements/build.txt
-          python -m pip install .
+        run: uv sync --extra build
 
       - name: Build distribution
-        run: |
-          make package
+        run: uv run make package
 
       - name: Upload package artifacts
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4
@@ -153,8 +138,7 @@ jobs:
 
       - name: Generate SBOM
         if: startsWith(github.event.ref, 'refs/tags/v')
-        run: |
-          make sbom > holidays-${{ env.VERSION }}-sbom.json
+        run: uv run make sbom > holidays-${{ env.VERSION }}-sbom.json
 
       - name: Upload SBOM
         if: startsWith(github.event.ref, 'refs/tags/v')
@@ -180,10 +164,6 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
         with:
-          cache: pip
-          cache-dependency-path: |
-            requirements/runtime.txt
-            requirements/tests.txt
           check-latest: true
           python-version: '3.14'
 
@@ -196,13 +176,13 @@ jobs:
       - name: Run tests
         shell: bash
         run: |
-          rm -rf holidays
-          python -m pip install --requirement requirements/tests.txt
-          python -m pip install `ls dist/*.whl`
-          pytest --dist loadscope --numprocesses auto tests/countries tests/financial
-          python -m pip uninstall -y holidays python-dateutil six
-          python -m pip install `ls dist/*.tar.gz`
-          pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          uv venv --clear
+          uv sync --extra tests
+          uv run python -m pip install dist/*.whl
+          uv run pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          uv run python -m pip uninstall -y holidays
+          uv run python -m pip install dist/*.tar.gz
+          uv run pytest --dist loadscope --numprocesses auto tests/countries tests/financial
 
   test-docs:
     name: Test docs build
@@ -215,18 +195,13 @@ jobs:
       - name: Set Up Python
         uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
         with:
-          cache: pip
-          cache-dependency-path: requirements/docs.txt
           python-version: '3.14'
 
       - name: Install dependencies
-        run: |
-          python -m pip install --requirement requirements/docs.txt
-          python -m pip install .
+        run: uv sync --docs
 
       - name: Build docs
-        run: |
-          make doc
+        run: uv run make doc
 
   publish-main:
     name: Publish generated artifacts

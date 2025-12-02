@@ -26,7 +26,7 @@ GoTo :Help
     Exit /B
 
 :Doc
-    mkdocs build
+    uv run mkdocs build
     Exit /B
 
 :Help
@@ -43,49 +43,47 @@ GoTo :Help
     Exit /B
 
 :L10n
-    python scripts\l10n\generate_po_files.py 2>nul >nul
-    python scripts\l10n\generate_mo_files.py
+    uv run python scripts\l10n\generate_po_files.py 2>nul >nul
+    uv run python scripts\l10n\generate_mo_files.py
     Exit /B
 
 :Package
-    python scripts\l10n\generate_mo_files.py
-    python -m build
+    uv run python scripts\l10n\generate_mo_files.py
+    uv build
     Exit /B
 
 :Pre-commit
-    pre-commit run --all-files
+    uv run pre-commit run --all-files
     Exit /B
 
 :Release-notes
-    python scripts\generate_release_notes.py
+    uv run python scripts\generate_release_notes.py
     Exit /B
 
 :Sbom
-    python -m cyclonedx_py requirements requirements\runtime.txt
+    uv sync --extra build
+    uv run python -m cyclonedx_py
     Exit /B
 
 :Setup
-    pip install --upgrade pip
-    pip install --requirement requirements\dev.txt
-    pip install --requirement requirements\docs.txt
-    pip install --requirement requirements\runtime.txt
-    pip install --requirement requirements\tests.txt
-    pre-commit install --hook-type pre-commit
-    pre-commit install --hook-type pre-push
+    uv venv --clear
+    uv sync --extra build --extra dev --extra docs --extra tests --link-mode=copy
+    uv run pre-commit install --hook-type pre-commit
+    uv run pre-commit install --hook-type pre-push
     Call :L10n
     Call :Package
     Exit /B
 
 :Snapshot
-    python scripts\l10n\generate_mo_files.py
-    python scripts\generate_snapshots.py
+    uv run python scripts\l10n\generate_mo_files.py
+    uv run python scripts\generate_snapshots.py
     Exit /B
 
 :Test
-    python scripts\l10n\generate_mo_files.py
-    pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
+    uv run python scripts\l10n\generate_mo_files.py
+    uv run pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
     Exit /B
 
 :Tox
-    tox --parallel auto
+    uv run tox --parallel auto
     Exit /B
