@@ -38,7 +38,7 @@ pre-commit:
 	uv run pre-commit run --all-files
 
 release-notes:
-	uv run @scripts/generate_release_notes.py
+	uv run scripts/generate_release_notes.py
 
 sbom:
 	uv sync --extra build
