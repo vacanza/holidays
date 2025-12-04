@@ -88,15 +88,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
-        with:
-          allow-prereleases: true
-          check-latest: true
-          python-version: ${{ matrix.python-version }}
-
-      - name: Install uv
+      - name: Set up Python ${{ matrix.python-version }} (uv)
         uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
+        with:
+          python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: uv sync --extra tests --link-mode=copy
@@ -117,14 +112,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
-        with:
-          check-latest: true
-          python-version: '3.14'
-
-      - name: Install uv
+      - name: Set up Python (uv)
         uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
+        with:
+          python-version: '3.14'
 
       - name: Install dependencies
         run: uv sync --extra build --link-mode=copy
@@ -167,10 +158,9 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
+      - name: Set up Python (uv)
+        uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
-          check-latest: true
           python-version: '3.14'
 
       - name: Get package artifacts
@@ -179,19 +169,16 @@ jobs:
           name: dist
           path: dist
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
-
       - name: Run tests
         shell: bash
         run: |
           uv venv --clear
           uv sync --extra tests --link-mode=copy
           uv pip install dist/*.whl --link-mode=copy
-          uv run pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          uv run --no-sync pytest --dist loadscope --numprocesses auto tests/countries tests/financial
           uv pip uninstall holidays
           uv pip install dist/*.tar.gz --link-mode=copy
-          uv run pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          uv run --no-sync pytest --dist loadscope --numprocesses auto tests/countries tests/financial
 
   test-docs:
     name: Test docs build
@@ -201,13 +188,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set Up Python
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
+      - name: Set up Python (uv)
+        uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
           python-version: '3.14'
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
 
       - name: Install dependencies
         run: uv sync --extra docs --link-mode=copy
