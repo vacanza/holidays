@@ -668,7 +668,7 @@ class NewYorkStockExchangeStaticHolidays:
     #   Warren G. Harding in Washington, DC.
     # * Jan. 28, 1936 (Tue) - Closed from 10:00 to 11:00 am. Funeral of King George V of England.
     # * May 18, 1942 (Mon) - Closed from 12:00 noon to 1:00 pm. NYSE 150th anniversary.
-    # * June 19, 1945 (Tue) - Closed from 11:00 am to 1:00 pm – Parade for General Eisenhower.
+    # * June 19, 1945 (Tue) - Closed from 11:00 am to 1:00 pm. Parade for General Eisenhower.
     # * Apr. 20, 1951 (Fri) - Closed from 11:00 am to 1:00 pm. Parade for General MacArthur.
 
     special_half_day_holidays = {
