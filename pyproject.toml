@@ -40,7 +40,38 @@ classifiers = [
 ]
 dynamic = [ "version" ]
 
-dependencies = [ "python-dateutil" ]
+dependencies = [ "python-dateutil>=2.9.0.post0" ]
+optional-dependencies.build = [
+  "cyclonedx-bom==7.2.1",
+  "polib==1.2",
+]
+optional-dependencies.dev = [
+  "gitpython==3.1.45",
+  "hijridate==2.5",
+  "lingva==5.0.6",
+  "pre-commit==4.5",
+  "pygithub==2.8.1",
+  "requests==2.32.5",
+  "ruff==0.14.7",
+  "tox==4.32",
+  "tox-uv==1.29",
+]
+optional-dependencies.docs = [
+  "markdown-include==0.8.1",
+  "mkdocs==1.6.1",
+  "mkdocs-gen-files==0.6",
+  "mkdocs-literate-nav==0.6.2",
+  "mkdocstrings-python==2.0.1",
+]
+optional-dependencies.tests = [
+  "coverage==7.12",
+  "numpy<2.3; python_version<'3.11'",
+  "numpy==2.3.5; python_version>='3.11'",
+  "polib==1.2",
+  "pytest==9.0.1",
+  "pytest-cov==7",
+  "pytest-xdist==3.8",
+]
 urls.Changelog = "https://github.com/vacanza/holidays/releases/"
 urls.Documentation = "https://holidays.readthedocs.io/en/latest/"
 urls.Repository = "https://github.com/vacanza/holidays/"

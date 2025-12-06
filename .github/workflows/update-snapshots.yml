@@ -18,25 +18,19 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
+      - name: Set up Python (uv)
+        uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
-          cache: pip
-          cache-dependency-path: |
-            requirements/build.txt
-            requirements/runtime.txt
-          check-latest: true
           python-version: '3.14'
+          version: '0.9.16'
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install -r requirements/build.txt
-          python -m pip install -r requirements/runtime.txt
+          uv venv --clear
+          uv sync --extra build --link-mode=copy
 
       - name: Generate snapshots
-        run: |
-          make snapshot
+        run: uv run make snapshot
 
       - uses: peter-evans/create-pull-request@84ae59a2cdc2258d6fa0732dd66352dddae2a412
         with:
