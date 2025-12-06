@@ -92,6 +92,7 @@ jobs:
         uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
           python-version: ${{ matrix.python-version }}
+          version: '0.9.16'
 
       - name: Install dependencies
         run: uv sync --extra tests --link-mode=copy
@@ -116,6 +117,7 @@ jobs:
         uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
           python-version: '3.14'
+          version: '0.9.16'
 
       - name: Install dependencies
         run: uv sync --extra build --link-mode=copy
@@ -162,6 +164,7 @@ jobs:
         uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
           python-version: '3.14'
+          version: '0.9.16'
 
       - name: Get package artifacts
         uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53
@@ -193,6 +196,7 @@ jobs:
         uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
           python-version: '3.14'
+          version: '0.9.16'
 
       - name: Install dependencies
         run: uv sync --extra docs --link-mode=copy
