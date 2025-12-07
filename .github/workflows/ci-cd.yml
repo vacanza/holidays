@@ -58,12 +58,12 @@ jobs:
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@fe4161a26a8629af62121b670040955b330f9af2
+        uses: github/codeql-action/init@cf1bb45a277cb3c205638b2cd5c984db1c46a412
         with:
           languages: python
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@fe4161a26a8629af62121b670040955b330f9af2
+        uses: github/codeql-action/analyze@cf1bb45a277cb3c205638b2cd5c984db1c46a412
         with:
           category: '/language:python'
 
@@ -88,26 +88,17 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
+      - name: Set up Python ${{ matrix.python-version }} (uv)
+        uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
-          allow-prereleases: true
-          cache: pip
-          cache-dependency-path: |
-            requirements/runtime.txt
-            requirements/tests.txt
-          check-latest: true
           python-version: ${{ matrix.python-version }}
+          version: '0.9.16'
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install --requirement requirements/tests.txt
-          python -m pip install .
+        run: uv sync --extra tests --link-mode=copy
 
       - name: Run tests
-        run: |
-          make test
+        run: uv run make test
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7
@@ -122,24 +113,17 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
+      - name: Set up Python (uv)
+        uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
-          cache: pip
-          cache-dependency-path: |
-            requirements/build.txt
-          check-latest: true
           python-version: '3.14'
+          version: '0.9.16'
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install -r requirements/build.txt
-          python -m pip install .
+        run: uv sync --extra build --link-mode=copy
 
       - name: Build distribution
-        run: |
-          make package
+        run: uv run make package
 
       - name: Upload package artifacts
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4
@@ -153,8 +137,7 @@ jobs:
 
       - name: Generate SBOM
         if: startsWith(github.event.ref, 'refs/tags/v')
-        run: |
-          make sbom > holidays-${{ env.VERSION }}-sbom.json
+        run: uv run make sbom > holidays-${{ env.VERSION }}-sbom.json
 
       - name: Upload SBOM
         if: startsWith(github.event.ref, 'refs/tags/v')
@@ -177,15 +160,11 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
+      - name: Set up Python (uv)
+        uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
-          cache: pip
-          cache-dependency-path: |
-            requirements/runtime.txt
-            requirements/tests.txt
-          check-latest: true
           python-version: '3.14'
+          version: '0.9.16'
 
       - name: Get package artifacts
         uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53
@@ -196,13 +175,14 @@ jobs:
       - name: Run tests
         shell: bash
         run: |
+          uv venv --clear
+          uv sync --extra tests --link-mode=copy
           rm -rf holidays
-          python -m pip install --requirement requirements/tests.txt
-          python -m pip install `ls dist/*.whl`
-          pytest --dist loadscope --numprocesses auto tests/countries tests/financial
-          python -m pip uninstall -y holidays python-dateutil six
-          python -m pip install `ls dist/*.tar.gz`
-          pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          uv pip install dist/*.whl --link-mode=copy
+          uv run --no-sync pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          uv pip uninstall holidays
+          uv pip install dist/*.tar.gz --link-mode=copy
+          uv run --no-sync pytest --dist loadscope --numprocesses auto tests/countries tests/financial
 
   test-docs:
     name: Test docs build
@@ -212,21 +192,17 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set Up Python
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
+      - name: Set up Python (uv)
+        uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
-          cache: pip
-          cache-dependency-path: requirements/docs.txt
           python-version: '3.14'
+          version: '0.9.16'
 
       - name: Install dependencies
-        run: |
-          python -m pip install --requirement requirements/docs.txt
-          python -m pip install .
+        run: uv sync --extra docs --link-mode=copy
 
       - name: Build docs
-        run: |
-          make doc
+        run: uv run make doc
 
   publish-main:
     name: Publish generated artifacts
