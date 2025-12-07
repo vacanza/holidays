@@ -264,8 +264,8 @@ class NewYorkStockExchangeStaticHolidays:
     # %s (markets close at 11:00am).
     close_11am_label = "%s (markets close at 11:00am)"
 
-    # %s (markets close at 12:00noon).
-    close_12noon_label = "%s (markets close at 12:00noon)"
+    # %s (markets close at 12:00pm).
+    close_12pm_label = "%s (markets close at 12:00pm)"
 
     # %s (markets close at 12:30pm).
     close_12_30pm_label = "%s (markets close at 12:30pm)"
@@ -660,8 +660,7 @@ class NewYorkStockExchangeStaticHolidays:
         2025: (JAN, 9, "National Day of Mourning for former President Jimmy Carter"),
     }
 
-    # Late opens are not implemented.
-    # Partial suspensions of work during the day are also not implemented:
+    # Late opens and partial suspensions of work during the day are not implemented, such as:
     # * May 20, 1910 (Fri) - Closed from 10:00 am to 12:00 noon. Funeral of King Edward VII.
     # * Apr. 14, 1913 (Mon) - Closed from 10:00 am to 12:00 noon. Funeral of J. P. Morgan.
     # * Sept. 22, 1913 (Mon) - Closed from 10:00 am to 12:00 noon. Funeral of
@@ -679,15 +678,15 @@ class NewYorkStockExchangeStaticHolidays:
         1908: (JUN, 26, close_1pm_label % "Funeral of former President Grover Cleveland"),
         1910: (MAY, 7, close_11am_label % "Death of King Edward VII of England"),
         1917: (
-            (AUG, 29, close_12noon_label % "Parade of National Guard"),
-            (OCT, 24, close_12noon_label % name_liberty_day),
+            (AUG, 29, close_12pm_label % "Parade of National Guard"),
+            (OCT, 24, close_12pm_label % name_liberty_day),
         ),
         1918: (
-            (APR, 26, close_12noon_label % name_liberty_day),
+            (APR, 26, close_12pm_label % name_liberty_day),
             (NOV, 7, close_2_30pm_label % "False armistice report"),
         ),
         1919: (JAN, 7, close_12_30pm_label % "Funeral of former President Theodore Roosevelt"),
-        1920: (SEP, 16, close_12noon_label % "Wall Street explosion"),
+        1920: (SEP, 16, close_12pm_label % "Wall Street explosion"),
         1924: (FEB, 6, close_12_30pm_label % "Funeral of former President Woodrow Wilson"),
         1925: (
             SEP,
@@ -717,7 +716,7 @@ class NewYorkStockExchangeStaticHolidays:
             (NOV, 22, close_1pm_label % name_catch_up_day),
         ),
         1930: (MAR, 11, close_12_30pm_label % "Funeral of former President William Howard Taft"),
-        1933: (SEP, 13, close_12noon_label % "NRA demonstration"),
+        1933: (SEP, 13, close_12pm_label % "NRA demonstration"),
         1951: (DEC, 24, close_1pm_label % name_christmas_eve),
         1963: (NOV, 22, "Assassination of President John F. Kennedy (markets close at 2:07pm)"),
         1964: (OCT, 23, close_2pm_label % "Funeral of former President Herbert C. Hoover"),
