@@ -18,19 +18,20 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python (uv)
+      - name: Install uv
         uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
           python-version: '3.14'
           version: '0.9.16'
 
+      - name: Install Python
+        run: uv python install "$UV_PYTHON"
+
       - name: Install dependencies
-        run: |
-          uv venv --clear
-          uv sync --extra build --link-mode=copy
+        run: uv sync --frozen --no-dev --group build
 
       - name: Generate snapshots
-        run: uv run make snapshot
+        run: make snapshot
 
       - uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676
         with:
