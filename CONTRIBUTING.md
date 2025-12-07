@@ -30,13 +30,13 @@ make setup
 
     **Step 1**: Edit the WSL configuration file:
 
-    ```console
+    ``` shell
     sudo nano /etc/wsl.conf
     ```
 
     **Step 2**: Add the following section at the bottom of `wsl.conf`, then save (Ctrl+O, Enter) and exit (Ctrl+X):
 
-    ```ini
+    ``` ini
     [automount]
     enabled = true
     options = "metadata,umask=22,fmask=11"
@@ -44,17 +44,17 @@ make setup
 
     **Step 3**: Close your WSL session, open PowerShell, then restart WSL:
 
-    ```powershell
+    ``` powershell
     wsl --shutdown
     wsl ~
     ```
 
     After this, running `ls -l` on your local `holidays` installation should show:
 
-    ```console
+    ``` console
     drwxr-xr-x 1 username username ...
     ```
-    - you’re good to go!
+    - you're good to go!
 
 The project provides automated style, tests and coverage checks:
 
