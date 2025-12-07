@@ -313,7 +313,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             "1936-11-26",
             "1937-11-25",
             "1938-11-24",
-            # 'Franksgiving'.
+            # Franksgiving.
             "1939-11-23",
             "1940-11-21",
             "1941-11-20",
@@ -353,7 +353,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
         ]
 
     def test_special_public_holidays(self):
-        # NOTE: add to this list as new historical holidays are added.
+        # NOTE: update the list whenever new historical holidays are added.
         special_holidays = [
             "1885-08-08",  # Funeral of former President Ulysses S. Grant.
             "1887-07-02",  # Saturday before Independence Day.
@@ -560,7 +560,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
         ]
 
         wwi_holidays = self._make_special_holiday_list(date(1914, JUL, 31), date(1914, NOV, 27))
-        oneoff_bank_holidays = self._make_special_holiday_list(
+        special_bank_holidays = self._make_special_holiday_list(
             date(1933, MAR, 6), date(1933, MAR, 14)
         )
         paperwork_crisis_holidays = self._make_special_holiday_list(
@@ -569,7 +569,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
         self.assertHoliday(
             special_holidays,
             wwi_holidays,
-            oneoff_bank_holidays,
+            special_bank_holidays,
             paperwork_crisis_holidays,
         )
 

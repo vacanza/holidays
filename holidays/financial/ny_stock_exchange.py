@@ -227,8 +227,12 @@ class NewYorkStockExchange(
         # 1990-1992 early closings are covered by special holidays.
         if self._year >= 1993:
             # Day before Independence Day.
-            dt = (JUL, 4)
-            if self._is_weekday(dt) and not self._is_monday(dt) and self._year not in {1996, 2002}:
+            jul_4 = (JUL, 4)
+            if (
+                self._is_weekday(jul_4)
+                and not self._is_monday(jul_4)
+                and self._year not in {1996, 2002}
+            ):
                 self._add_holiday_jul_3(close_1pm_label % "Day before Independence Day")
 
             # Day after Thanksgiving Day.
@@ -282,10 +286,10 @@ class NewYorkStockExchangeStaticHolidays:
     close_3_30pm_label = "%s (markets close at 3:30pm)"
 
     # Blizzard of 1888.
-    name_blizard_1888 = "Blizzard of 1888"
+    name_blizzard_of_1888 = "Blizzard of 1888"
 
     # Centennial of George Washington's Inauguration.
-    name_george_washington_centennial = "Centennial of George Washington's Inauguration"
+    name_centennial_of_gw_inauguration = "Centennial of George Washington's Inauguration"
 
     # Columbian Celebration.
     name_columbian_celebration = "Columbian Celebration"
@@ -306,7 +310,7 @@ class NewYorkStockExchangeStaticHolidays:
     name_christmas_eve = "Christmas Eve"
 
     # Closed following Attacks on the World Trade Center.
-    name_closed_following_attacks_wtc = "Closed following Attacks on the World Trade Center"
+    name_closed_following_wtc_attacks = "Closed following Attacks on the World Trade Center"
 
     # Hurricane Sandy.
     name_hurricane_sandy = "Hurricane Sandy"
@@ -324,37 +328,37 @@ class NewYorkStockExchangeStaticHolidays:
     name_saturday_after_good_friday = "Saturday after Good Friday"
 
     # Saturday before Decoration Day.
-    name_saturday_before_decoration = "Saturday before Decoration Day"
+    name_saturday_before_decoration_day = "Saturday before Decoration Day"
 
     # Saturday after Decoration Day.
-    name_saturday_after_decoration = "Saturday after Decoration Day"
+    name_saturday_after_decoration_day = "Saturday after Decoration Day"
 
     # Saturday before Independence Day.
-    name_saturday_before_independence = "Saturday before Independence Day"
+    name_saturday_before_independence_day = "Saturday before Independence Day"
 
     # Saturday after Independence Day.
-    name_saturday_after_independence = "Saturday after Independence Day"
+    name_saturday_after_independence_day = "Saturday after Independence Day"
 
     # Day after Independence Day.
-    name_after_independence = "Day after Independence Day"
+    name_day_after_independence_day = "Day after Independence Day"
 
     # Saturday before Labor Day.
     name_saturday_before_labor_day = "Saturday before Labor Day"
 
     # Saturday after Columbus Day.
-    name_saturday_after_columbus = "Saturday after Columbus Day"
+    name_saturday_after_columbus_day = "Saturday after Columbus Day"
 
     # Saturday before Christmas.
-    name_saturday_before_christmas = "Saturday before Christmas"
+    name_saturday_before_christmas_day = "Saturday before Christmas Day"
 
     # Friday after Christmas Day.
     name_friday_after_christmas = "Friday after Christmas Day"
 
     # Saturday after Christmas Day.
-    name_saturday_after_christmas = "Saturday after Christmas Day"
+    name_saturday_after_christmas_day = "Saturday after Christmas Day"
 
     # Admiral Dewey Celebration.
-    name_dewey_celebration = "Admiral Dewey Celebration"
+    name_admiral_dewey_celebration = "Admiral Dewey Celebration"
 
     # Draft Registration Day.
     name_draft_registration_day = "Draft Registration Day"
@@ -380,50 +384,50 @@ class NewYorkStockExchangeStaticHolidays:
     special_public_holidays = {
         1885: (AUG, 8, "Funeral of former President Ulysses S. Grant"),
         1887: (
-            (JUL, 2, name_saturday_before_independence),
-            (DEC, 24, name_saturday_before_christmas),
+            (JUL, 2, name_saturday_before_independence_day),
+            (DEC, 24, name_saturday_before_christmas_day),
         ),
         1888: (
-            (MAR, 12, name_blizard_1888),
-            (MAR, 13, name_blizard_1888),
+            (MAR, 12, name_blizzard_of_1888),
+            (MAR, 13, name_blizzard_of_1888),
             (SEP, 1, name_saturday_before_labor_day),
             (NOV, 30, "Friday after Thanksgiving Day"),
         ),
         1889: (
-            (APR, 29, name_george_washington_centennial),
-            (APR, 30, name_george_washington_centennial),
-            (MAY, 1, name_george_washington_centennial),
+            (APR, 29, name_centennial_of_gw_inauguration),
+            (APR, 30, name_centennial_of_gw_inauguration),
+            (MAY, 1, name_centennial_of_gw_inauguration),
         ),
-        1890: (JUL, 5, name_saturday_after_independence),
-        1891: (DEC, 26, name_saturday_after_christmas),
+        1890: (JUL, 5, name_saturday_after_independence_day),
+        1891: (DEC, 26, name_saturday_after_christmas_day),
         1892: (
-            (JUL, 2, name_saturday_before_independence),
+            (JUL, 2, name_saturday_before_independence_day),
             (OCT, 12, name_columbian_celebration),
             (OCT, 21, name_columbian_celebration),
             (OCT, 22, name_columbian_celebration),
         ),
         1893: (APR, 27, name_columbian_celebration),
-        1896: (DEC, 26, name_saturday_after_christmas),
+        1896: (DEC, 26, name_saturday_after_christmas_day),
         1897: (APR, 27, "Grant's Birthday"),
         1898: (
             (MAY, 4, "Charter Day"),
-            (JUL, 2, name_saturday_before_independence),
+            (JUL, 2, name_saturday_before_independence_day),
             (AUG, 20, "Welcome of naval commanders"),
             (SEP, 3, name_saturday_before_labor_day),
-            (DEC, 24, name_saturday_before_christmas),
+            (DEC, 24, name_saturday_before_christmas_day),
         ),
         1899: (
             (FEB, 11, "Saturday before Lincoln's Birthday"),
             (MAY, 29, "Monday before Decoration Day"),
             (JUL, 3, "Monday before Independence Day"),
-            (SEP, 29, name_dewey_celebration),
-            (SEP, 30, name_dewey_celebration),
+            (SEP, 29, name_admiral_dewey_celebration),
+            (SEP, 30, name_admiral_dewey_celebration),
             (NOV, 25, "Funeral of Vice-President Garret A. Hobart"),
         ),
         1900: (
             (APR, 14, name_saturday_after_good_friday),
             (SEP, 1, name_saturday_before_labor_day),
-            (DEC, 24, name_saturday_before_christmas),
+            (DEC, 24, name_saturday_before_christmas_day),
         ),
         1901: (
             (FEB, 2, "Funeral of Queen Victoria of England"),
@@ -432,15 +436,15 @@ class NewYorkStockExchangeStaticHolidays:
             (APR, 27, "Moved to temporary quarters in Produce Exchange"),
             (MAY, 11, "Enlarged temporary quarters in Produce Exchange"),
             (JUL, 5, "Friday after Independence Day"),
-            (JUL, 6, name_saturday_after_independence),
+            (JUL, 6, name_saturday_after_independence_day),
             (AUG, 31, name_saturday_before_labor_day),
             (SEP, 14, "Death of President William McKinley"),
             (SEP, 19, "Funeral of President William McKinley"),
         ),
         1902: (
             (MAR, 29, name_saturday_after_good_friday),
-            (MAY, 31, name_saturday_after_decoration),
-            (JUL, 5, name_saturday_after_independence),
+            (MAY, 31, name_saturday_after_decoration_day),
+            (JUL, 5, name_saturday_after_independence_day),
             (AUG, 9, "Coronation of King Edward VII of England"),
             (AUG, 30, name_saturday_before_labor_day),
         ),
@@ -449,13 +453,13 @@ class NewYorkStockExchangeStaticHolidays:
             (APR, 11, name_saturday_after_good_friday),
             (APR, 22, "Opening of new NYSE building"),
             (SEP, 5, name_saturday_before_labor_day),
-            (DEC, 26, name_saturday_after_christmas),
+            (DEC, 26, name_saturday_after_christmas_day),
         ),
         1904: (
-            (MAY, 28, name_saturday_before_decoration),
-            (JUL, 2, name_saturday_before_independence),
+            (MAY, 28, name_saturday_before_decoration_day),
+            (JUL, 2, name_saturday_before_independence_day),
             (SEP, 3, name_saturday_before_labor_day),
-            (DEC, 24, name_saturday_before_christmas),
+            (DEC, 24, name_saturday_before_christmas_day),
         ),
         1905: (APR, 22, name_saturday_after_good_friday),
         1907: (
@@ -466,27 +470,27 @@ class NewYorkStockExchangeStaticHolidays:
         1908: (
             (APR, 18, name_saturday_after_good_friday),
             (SEP, 5, name_saturday_before_labor_day),
-            (DEC, 26, name_saturday_after_christmas),
+            (DEC, 26, name_saturday_after_christmas_day),
         ),
         1909: (
             (FEB, 13, "Saturday after Lincoln's Birthday"),
             (APR, 10, name_saturday_after_good_friday),
-            (MAY, 29, name_saturday_before_decoration),
-            (JUL, 3, name_saturday_before_independence),
+            (MAY, 29, name_saturday_before_decoration_day),
+            (JUL, 3, name_saturday_before_independence_day),
             (SEP, 4, name_saturday_before_labor_day),
             (SEP, 25, "Reception Day of the Hudson-Fulton Celebration"),
         ),
         1910: (
             (MAR, 26, name_saturday_after_good_friday),
-            (MAY, 28, name_saturday_before_decoration),
-            (JUL, 2, name_saturday_before_independence),
+            (MAY, 28, name_saturday_before_decoration_day),
+            (JUL, 2, name_saturday_before_independence_day),
             (SEP, 3, name_saturday_before_labor_day),
-            (DEC, 24, name_saturday_before_christmas),
+            (DEC, 24, name_saturday_before_christmas_day),
         ),
         1911: (
             (APR, 15, name_saturday_after_good_friday),
             (SEP, 2, name_saturday_before_labor_day),
-            (DEC, 23, name_saturday_before_christmas),
+            (DEC, 23, name_saturday_before_christmas_day),
         ),
         1912: (
             (AUG, 31, name_saturday_before_labor_day),
@@ -494,8 +498,8 @@ class NewYorkStockExchangeStaticHolidays:
         ),
         1913: (
             (MAR, 22, name_saturday_after_good_friday),
-            (MAY, 31, name_saturday_after_decoration),
-            (JUL, 5, name_saturday_after_independence),
+            (MAY, 31, name_saturday_after_decoration_day),
+            (JUL, 5, name_saturday_after_independence_day),
             (AUG, 30, name_saturday_before_labor_day),
         ),
         1916: (DEC, 30, "Saturday before New Year's Day"),
@@ -503,7 +507,7 @@ class NewYorkStockExchangeStaticHolidays:
             (JUN, 5, name_draft_registration_day),
             (AUG, 4, "Heat"),
             (SEP, 1, name_saturday_before_labor_day),
-            (OCT, 13, name_saturday_after_columbus),
+            (OCT, 13, name_saturday_after_columbus_day),
         ),
         1918: (
             (JAN, 28, name_heatless_day),
@@ -515,8 +519,8 @@ class NewYorkStockExchangeStaticHolidays:
         1919: (
             (MAR, 25, "Homecoming of 27th Division"),
             (MAY, 6, "Parade of 77th Division"),
-            (MAY, 31, name_saturday_after_decoration),
-            (JUL, 5, name_saturday_after_independence),
+            (MAY, 31, name_saturday_after_decoration_day),
+            (JUL, 5, name_saturday_after_independence_day),
             (JUL, 19, "Heat and to allow offices to catch up on work"),
             (AUG, 2, name_to_catch_up),
             (AUG, 16, name_to_catch_up),
@@ -526,25 +530,25 @@ class NewYorkStockExchangeStaticHolidays:
         1920: (
             (APR, 3, name_saturday_after_good_friday),
             (MAY, 1, "Many firms changed office locations"),
-            (JUL, 3, name_saturday_before_independence),
+            (JUL, 3, name_saturday_before_independence_day),
             (SEP, 4, name_saturday_before_labor_day),
         ),
         1921: (
-            (MAY, 28, name_saturday_before_decoration),
-            (JUL, 2, name_saturday_before_independence),
+            (MAY, 28, name_saturday_before_decoration_day),
+            (JUL, 2, name_saturday_before_independence_day),
             (SEP, 3, name_saturday_before_labor_day),
             (NOV, 11, "Veteran's Day"),
         ),
-        1922: (DEC, 23, name_saturday_before_christmas),
+        1922: (DEC, 23, name_saturday_before_christmas_day),
         1923: (
             (AUG, 3, "Death of President Warren G. Harding"),
             (AUG, 10, "Funeral of President Warren G. Harding"),
         ),
-        1924: (MAY, 31, name_saturday_after_decoration),
-        1925: (DEC, 26, name_saturday_after_christmas),
+        1924: (MAY, 31, name_saturday_after_decoration_day),
+        1925: (DEC, 26, name_saturday_after_christmas_day),
         1926: (
-            (MAY, 29, name_saturday_before_decoration),
-            (JUL, 3, name_saturday_before_independence),
+            (MAY, 29, name_saturday_before_decoration_day),
+            (JUL, 3, name_saturday_before_independence_day),
             (SEP, 4, name_saturday_before_labor_day),
         ),
         1927: (JUN, 13, "Parade for Colonel Charles A. Lindbergh"),
@@ -572,15 +576,15 @@ class NewYorkStockExchangeStaticHolidays:
         ),
         1930: (
             (APR, 19, name_saturday_after_good_friday),
-            (MAY, 31, name_saturday_after_decoration),
-            (JUL, 5, name_saturday_after_independence),
+            (MAY, 31, name_saturday_after_decoration_day),
+            (JUL, 5, name_saturday_after_independence_day),
             (AUG, 30, name_saturday_before_labor_day),
         ),
         1931: (
             (SEP, 5, name_saturday_before_labor_day),
-            (DEC, 26, name_saturday_after_christmas),
+            (DEC, 26, name_saturday_after_christmas_day),
         ),
-        1932: (JUL, 2, name_saturday_before_independence),
+        1932: (JUL, 2, name_saturday_before_independence_day),
         1933: (
             (JAN, 7, "Funeral of former President Calvin Coolidge"),
             (MAR, 4, "State Banking Holiday"),
@@ -599,16 +603,16 @@ class NewYorkStockExchangeStaticHolidays:
             (AUG, 26, name_volume_activity),
             (SEP, 2, name_volume_activity),
         ),
-        1936: (DEC, 26, name_saturday_after_christmas),
+        1936: (DEC, 26, name_saturday_after_christmas_day),
         1937: (
-            (MAY, 29, name_saturday_before_decoration),
-            (JUL, 3, name_saturday_before_independence),
+            (MAY, 29, name_saturday_before_decoration_day),
+            (JUL, 3, name_saturday_before_independence_day),
         ),
         1945: (
             (APR, 14, "National Day of Mourning for President Franklin D. Roosevelt"),
             (AUG, 15, name_vj_day),
             (AUG, 16, name_vj_day),
-            (OCT, 13, name_saturday_after_columbus),
+            (OCT, 13, name_saturday_after_columbus_day),
             (OCT, 27, "Navy Day"),
             (DEC, 24, name_christmas_eve),
         ),
@@ -628,7 +632,7 @@ class NewYorkStockExchangeStaticHolidays:
         1968: (
             (FEB, 12, "Lincoln's Birthday"),
             (APR, 9, "National Day of Mourning for Martin Luther King, Jr."),
-            (JUL, 5, name_after_independence),
+            (JUL, 5, name_day_after_independence_day),
         ),
         1969: (
             (FEB, 10, "Heavy Snow"),
@@ -641,10 +645,10 @@ class NewYorkStockExchangeStaticHolidays:
         1985: (SEP, 27, "Hurricane Gloria"),
         1994: (APR, 27, "Funeral of former President Richard M. Nixon"),
         2001: (
-            (SEP, 11, name_closed_following_attacks_wtc),
-            (SEP, 12, name_closed_following_attacks_wtc),
-            (SEP, 13, name_closed_following_attacks_wtc),
-            (SEP, 14, name_closed_following_attacks_wtc),
+            (SEP, 11, name_closed_following_wtc_attacks),
+            (SEP, 12, name_closed_following_wtc_attacks),
+            (SEP, 13, name_closed_following_wtc_attacks),
+            (SEP, 14, name_closed_following_wtc_attacks),
         ),
         2004: (JUN, 11, "National Day of Mourning for former President Ronald Reagan"),
         2007: (JAN, 2, "National Day of Mourning for former President Gerald R. Ford"),
@@ -771,10 +775,10 @@ class NewYorkStockExchangeStaticHolidays:
             (DEC, 24, close_2pm_label % name_christmas_eve),
         ),
         1994: (FEB, 11, close_2_30pm_label % name_snowstorm),
-        1996: (JUL, 5, close_1pm_label % name_after_independence),
+        1996: (JUL, 5, close_1pm_label % name_day_after_independence_day),
         1997: (DEC, 26, close_1pm_label % name_friday_after_christmas),
         1999: (DEC, 31, close_1pm_label % "New Year's Eve"),
-        2002: (JUL, 5, close_1pm_label % name_after_independence),
+        2002: (JUL, 5, close_1pm_label % name_day_after_independence_day),
         2003: (DEC, 26, close_1pm_label % name_friday_after_christmas),
         2013: (JUL, 3, close_1pm_label % "Day before Independence Day"),
     }
