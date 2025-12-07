@@ -61,11 +61,6 @@ repos:
     hooks:
       - id: pyproject-fmt
 
-  - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: '1.7.0'
-    hooks:
-      - id: tox-ini-fmt
-
   - repo: local
     hooks:
       - id: tests

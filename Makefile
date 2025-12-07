@@ -8,7 +8,6 @@ help:
 	@echo "    pre-commit    run pre-commit against all files"
 	@echo "    setup         setup development environment"
 	@echo "    test          run tests (in parallel)"
-	@echo "    tox           run tox (in parallel)"
 
 check:
 	make l10n
@@ -58,6 +57,3 @@ snapshot:
 test:
 	uv run --no-sync scripts/l10n/generate_mo_files.py
 	uv run --no-sync pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
-
-tox:
-	uv run tox --parallel auto
