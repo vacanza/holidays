@@ -37,14 +37,17 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
+      - name: Install uv
+        uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
-          check-latest: true
           python-version: '3.14'
+          version: '0.9.16'
+
+      - name: Install Python
+        run: uv python install "$UV_PYTHON"
 
       - name: Run pre-commit
-        uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd
+        run: uv tool run --with pre-commit-uv pre-commit run --show-diff-on-failure --color=always --all-files
 
   code-ql:
     name: CodeQL
