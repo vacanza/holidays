@@ -45,7 +45,7 @@ sbom:
 	uv tool run --from cyclonedx-bom cyclonedx-py environment "$(uv python find)"
 
 setup:
-	uv venv --clear
+	uv venv --clear --python 3.14
 	uv sync --extra build --extra dev --extra docs --extra tests --link-mode=copy
 	uv run pre-commit install --hook-type pre-commit
 	uv run pre-commit install --hook-type pre-push
