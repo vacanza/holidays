@@ -19,7 +19,7 @@ clean:
 	@for ext in mo pot pyc; do \
 		find . -type f -name "*.$$ext" -delete; \
 	done
-	@rm -rf .mypy_cache .pytest_cache dist .tox
+	@rm -rf .mypy_cache .pytest_cache dist
 
 doc:
 	uv run --no-sync mkdocs build
