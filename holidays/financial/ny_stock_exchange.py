@@ -61,7 +61,7 @@ class NewYorkStockExchange(
         super().__init__(*args, **kwargs)
 
     def _add_observed(self, dt: date, **kwargs) -> tuple[bool, date | None]:
-        kwargs["rule"] = SUN_TO_NEXT_MON if self._year <= 1952 else self._observed_rule
+        kwargs["rule"] = SUN_TO_NEXT_MON if dt.year <= 1952 else self._observed_rule
         return super()._add_observed(dt, **kwargs)
 
     def _get_weekend(self, dt: date) -> set[int]:
