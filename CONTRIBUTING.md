@@ -54,7 +54,7 @@ make setup
     ``` console
     drwxr-xr-x 1 username username ...
     ```
-    - you’re good to go!
+    - you're good to go!
 
 The project provides automated style, tests and coverage checks:
 
