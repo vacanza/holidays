@@ -40,12 +40,12 @@ class NewYorkStockExchange(
     """New York Stock Exchange holidays.
 
     References:
-        * <https://web.archive.org/web/20240118104341/https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf>
+        * [NYSE Rules](https://web.archive.org/web/20240118104341/https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf)
         * [NYSE History - Timeline](https://web.archive.org/web/20150113014537/https://www.nyse.com/about/history/timeline_trading.html)
 
     Historical data:
-        * <https://web.archive.org/web/20221206064307/https://s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf>
-        * <https://web.archive.org/web/20211101162021/https://www.nyse.com/markets/hours-calendars>
+        * [History of NYSE Holidays](https://web.archive.org/web/20221206064307/https://s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf)
+        * [NYSE Holidays & Trading Hours](https://web.archive.org/web/20211101162021/https://www.nyse.com/markets/hours-calendars)
     """
 
     market = "XNYS"
@@ -82,8 +82,14 @@ class NewYorkStockExchange(
             self._add_holiday(name, dt)
 
     def _populate_public_holidays(self):
+        # According to NYSE Rules (Rule 51), when any holiday observed by the Exchange falls on
+        # a Saturday, the Exchange will not be open for business on the preceding Friday ...,
+        # unless unusual business conditions exist, such as the ending of a monthly or the yearly
+        # accounting period.
+        # Therefore, New Year's Day holiday is not moved to Dec 31, even after 1952 amendments.
+
         # New Year's Day.
-        self._move_holiday(self._add_new_years_day("New Year's Day"), rule=SUN_TO_NEXT_MON)
+        self._move_holiday(self._add_new_years_day("New Year's Day"))
 
         # Martin Luther King Jr. Day.
         if self._year >= 1998:
