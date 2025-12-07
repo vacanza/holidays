@@ -66,7 +66,7 @@ class NewYorkStockExchange(
 
     def _get_weekend(self, dt: date) -> set[int]:
         # September 29, 1952: The NYSE changes its trading hours
-        # to 10 A.M. to 3:30 P.M. Monday-Friday, and closes on Saturdays.
+        # to 10am to 3:30pm Monday-Friday, and closes on Saturdays.
         return {SAT, SUN} if dt >= date(1952, SEP, 29) else {SUN}
 
     def _populate_ranged_holidays(
@@ -661,18 +661,18 @@ class NewYorkStockExchangeStaticHolidays:
     }
 
     # Late opens and partial suspensions of work during the day are not implemented, such as:
-    # * May 20, 1910 (Fri) - Closed from 10:00 am to 12:00 pm. Funeral of King Edward VII.
-    # * Apr. 14, 1913 (Mon) - Closed from 10:00 am to 12:00 pm. Funeral of J. P. Morgan.
-    # * Sept. 22, 1913 (Mon) - Closed from 10:00 am to 12:00 pm. Funeral of
+    # * May 20, 1910 (Fri) - Closed from 10:00am to 12:00pm. Funeral of King Edward VII.
+    # * Apr. 14, 1913 (Mon) - Closed from 10:00am to 12:00pm. Funeral of J. P. Morgan.
+    # * Sept. 22, 1913 (Mon) - Closed from 10:00am to 12:00pm. Funeral of
     #   Mayor William J. Gaynor.
-    # * July 11, 1918 (Thu) - Closed from 11:00 am to 12:00 pm. Funeral of former Mayor
+    # * July 11, 1918 (Thu) - Closed from 11:00am to 12:00pm. Funeral of former Mayor
     #   John Purroy Mitchell.
-    # * Aug. 8, 1923 (Wed) - Closed from 11:00 am to 12:30 pm during funeral services for President
+    # * Aug. 8, 1923 (Wed) - Closed from 11:00am to 12:30pm during funeral services for President
     #   Warren G. Harding in Washington, DC.
-    # * Jan. 28, 1936 (Tue) - Closed from 10:00 to 11:00 am. Funeral of King George V of England.
-    # * May 18, 1942 (Mon) - Closed from 12:00 pm to 1:00 pm. NYSE 150th anniversary.
-    # * June 19, 1945 (Tue) - Closed from 11:00 am to 1:00 pm. Parade for General Eisenhower.
-    # * Apr. 20, 1951 (Fri) - Closed from 11:00 am to 1:00 pm. Parade for General MacArthur.
+    # * Jan. 28, 1936 (Tue) - Closed from 10:00 to 11:00am. Funeral of King George V of England.
+    # * May 18, 1942 (Mon) - Closed from 12:00pm to 1:00pm. NYSE 150th anniversary.
+    # * June 19, 1945 (Tue) - Closed from 11:00am to 1:00pm. Parade for General Eisenhower.
+    # * Apr. 20, 1951 (Fri) - Closed from 11:00am to 1:00pm. Parade for General MacArthur.
 
     special_half_day_holidays = {
         1908: (JUN, 26, close_1pm_label % "Funeral of former President Grover Cleveland"),
