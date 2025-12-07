@@ -67,9 +67,9 @@ GoTo :Help
 
 :Setup
     uv venv --clear --python 3.14
-	uv sync --all-groups
-	uv run --no-sync pre-commit install --hook-type pre-commit
-	uv run --no-sync pre-commit install --hook-type pre-push
+    uv sync --all-groups
+    uv run --no-sync pre-commit install --hook-type pre-commit
+    uv run --no-sync pre-commit install --hook-type pre-push
     Call :L10n
     Call :Package
     Exit /B
