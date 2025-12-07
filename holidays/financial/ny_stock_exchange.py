@@ -661,16 +661,16 @@ class NewYorkStockExchangeStaticHolidays:
     }
 
     # Late opens and partial suspensions of work during the day are not implemented, such as:
-    # * May 20, 1910 (Fri) - Closed from 10:00 am to 12:00 noon. Funeral of King Edward VII.
-    # * Apr. 14, 1913 (Mon) - Closed from 10:00 am to 12:00 noon. Funeral of J. P. Morgan.
-    # * Sept. 22, 1913 (Mon) - Closed from 10:00 am to 12:00 noon. Funeral of
+    # * May 20, 1910 (Fri) - Closed from 10:00 am to 12:00 pm. Funeral of King Edward VII.
+    # * Apr. 14, 1913 (Mon) - Closed from 10:00 am to 12:00 pm. Funeral of J. P. Morgan.
+    # * Sept. 22, 1913 (Mon) - Closed from 10:00 am to 12:00 pm. Funeral of
     #   Mayor William J. Gaynor.
-    # * July 11, 1918 (Thu) - Closed from 11:00 am to 12:00 noon. Funeral of former Mayor
+    # * July 11, 1918 (Thu) - Closed from 11:00 am to 12:00 pm. Funeral of former Mayor
     #   John Purroy Mitchell.
     # * Aug. 8, 1923 (Wed) - Closed from 11:00 am to 12:30 pm during funeral services for President
     #   Warren G. Harding in Washington, DC.
     # * Jan. 28, 1936 (Tue) - Closed from 10:00 to 11:00 am. Funeral of King George V of England.
-    # * May 18, 1942 (Mon) - Closed from 12:00 noon to 1:00 pm. NYSE 150th anniversary.
+    # * May 18, 1942 (Mon) - Closed from 12:00 pm to 1:00 pm. NYSE 150th anniversary.
     # * June 19, 1945 (Tue) - Closed from 11:00 am to 1:00 pm. Parade for General Eisenhower.
     # * Apr. 20, 1951 (Fri) - Closed from 11:00 am to 1:00 pm. Parade for General MacArthur.
 

@@ -640,12 +640,12 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
         special_holidays = [
             "1908-06-26",  # Funeral of former President Grover Cleveland (from 1:00pm).
             "1910-05-07",  # Death of King Edward VII of England (from 11:00am).
-            "1917-08-29",  # Parade of National Guard (from 12:00noon).
-            "1917-10-24",  # Liberty Day (from 12:00noon).
-            "1918-04-26",  # Liberty Day (from 12:00noon).
+            "1917-08-29",  # Parade of National Guard (from 12:00pm).
+            "1917-10-24",  # Liberty Day (from 12:00pm).
+            "1918-04-26",  # Liberty Day (from 12:00pm).
             "1918-11-07",  # False armistice report (from 2:30pm).
             "1919-01-07",  # Funeral of former President Theodore Roosevelt (from 12:30pm).
-            "1920-09-16",  # Wall Street explosion (from 12:00noon).
+            "1920-09-16",  # Wall Street explosion (from 12:00pm).
             "1924-02-06",  # Funeral of former President Woodrow Wilson (from 12:30pm).
             "1925-09-18",  # Funeral of former NYSE president Seymour L. Cromwell (from 2:30pm).
             "1928-05-21",  # Heavy volume. To allow member firm offices to catch up (from 2:00pm).
@@ -667,7 +667,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             "1929-11-21",  # Catch Up Day (from 1:00pm).
             "1929-11-22",  # Catch Up Day (from 1:00pm).
             "1930-03-11",  # Funeral of former President William Howard Taft (from 12:30pm).
-            "1933-09-13",  # NRA demonstration (from 12:00noon).
+            "1933-09-13",  # NRA demonstration (from 12:00pm).
             "1951-12-24",  # Christmas Eve (from 1:00pm).
             "1963-11-22",  # Assassination of President John F. Kennedy (from 2:07pm).
             "1964-10-23",  # Funeral of former President Herbert C. Hoover (from 2:00pm).
