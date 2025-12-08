@@ -142,5 +142,9 @@ module = "holidays.countries.*"
 disable_error_code = [ "override" ]
 
 [[tool.mypy.overrides]]
+module = "holidays.financial.*"
+disable_error_code = [ "override" ]
+
+[[tool.mypy.overrides]]
 module = "holidays.groups.*"
 disable_error_code = [ "attr-defined" ]
