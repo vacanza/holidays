@@ -27,29 +27,29 @@ msgstr ""
 "X-Source-Language: bn\n"
 
 #. International Mother's language Day.
-msgid "International Mother's language Day"
+msgid "আন্তর্জাতিক মাতৃভাষা দিবস"
 msgstr ""
 
 #. Sheikh Mujibur Rahman's Birthday and Children's Day.
-msgid "Sheikh Mujibur Rahman's Birthday and Children's Day"
+msgid "শেখ মুজিবুর রহমানের জন্মদিন এবং শিশু দিবস"
 msgstr ""
 
 #. Independence Day.
-msgid "Independence Day"
+msgid "স্বাধীনতা দিবস"
 msgstr ""
 
 #. Bengali New Year's Day.
-msgid "Bengali New Year's Day"
+msgid "পহেলা বৈশাখ"
 msgstr ""
 
 #. May Day.
-msgid "May Day"
+msgid "মে দিবস"
 msgstr ""
 
 #. National Mourning Day.
-msgid "National Mourning Day"
+msgid "জাতীয় শোক দিবস"
 msgstr ""
 
 #. Victory Day.
-msgid "Victory Day"
+msgid "বিজয় দিবস"
 msgstr ""

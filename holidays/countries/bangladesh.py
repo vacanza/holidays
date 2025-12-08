@@ -36,25 +36,25 @@ class Bangladesh(HolidayBase, InternationalHolidays):
 
     def _populate_public_holidays(self):
         # International Mother's language Day.
-        self._add_holiday_feb_21(tr("International Mother's language Day"))
+        self._add_holiday_feb_21(tr("আন্তর্জাতিক মাতৃভাষা দিবস"))
 
         # Sheikh Mujibur Rahman's Birthday and Children's Day.
-        self._add_holiday_mar_17(tr("Sheikh Mujibur Rahman's Birthday and Children's Day"))
+        self._add_holiday_mar_17(tr("শেখ মুজিবুর রহমানের জন্মদিন এবং শিশু দিবস"))
 
         # Independence Day.
-        self._add_holiday_mar_26(tr("Independence Day"))
+        self._add_holiday_mar_26(tr("স্বাধীনতা দিবস"))
 
         # Bengali New Year's Day.
-        self._add_holiday_apr_14(tr("Bengali New Year's Day"))
+        self._add_holiday_apr_14(tr("পহেলা বৈশাখ"))
 
         # May Day.
-        self._add_labor_day(tr("May Day"))
+        self._add_labor_day(tr("মে দিবস"))
 
         # National Mourning Day.
-        self._add_holiday_aug_15(tr("National Mourning Day"))
+        self._add_holiday_aug_15(tr("জাতীয় শোক দিবস"))
 
         # Victory Day.
-        self._add_holiday_dec_16(tr("Victory Day"))
+        self._add_holiday_dec_16(tr("বিজয় দিবস"))
 
 
 class BD(Bangladesh):
