@@ -57,7 +57,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2022-12-16", "বিজয় দিবস"),
         )
 
-    def testt_l10n_default(self):
+    def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2021-02-21", "আন্তর্জাতিক মাতৃভাষা দিবস"),
             ("2021-03-17", "শেখ মুজিবুর রহমানের জন্মদিন এবং শিশু দিবস"),
