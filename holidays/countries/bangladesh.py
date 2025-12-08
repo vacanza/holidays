@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.calendars.gregorian import FRI, SAT
 from holidays.groups import InternationalHolidays
 from holidays.holiday_base import HolidayBase
@@ -24,6 +26,8 @@ class Bangladesh(HolidayBase, InternationalHolidays):
     """
 
     country = "BD"
+    default_language = "bn"
+    supported_languages = ("bn", "en_US")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, **kwargs):
@@ -32,25 +36,25 @@ class Bangladesh(HolidayBase, InternationalHolidays):
 
     def _populate_public_holidays(self):
         # International Mother's language Day.
-        self._add_holiday_feb_21("International Mother's language Day")
+        self._add_holiday_feb_21(tr("International Mother's language Day"))
 
         # Sheikh Mujibur Rahman's Birthday and Children's Day.
-        self._add_holiday_mar_17("Sheikh Mujibur Rahman's Birthday and Children's Day")
+        self._add_holiday_mar_17(tr("Sheikh Mujibur Rahman's Birthday and Children's Day"))
 
         # Independence Day.
-        self._add_holiday_mar_26("Independence Day")
+        self._add_holiday_mar_26(tr("Independence Day"))
 
         # Bengali New Year's Day.
-        self._add_holiday_apr_14("Bengali New Year's Day")
+        self._add_holiday_apr_14(tr("Bengali New Year's Day"))
 
         # May Day.
-        self._add_labor_day("May Day")
+        self._add_labor_day(tr("May Day"))
 
         # National Mourning Day.
-        self._add_holiday_aug_15("National Mourning Day")
+        self._add_holiday_aug_15(tr("National Mourning Day"))
 
         # Victory Day.
-        self._add_holiday_dec_16("Victory Day")
+        self._add_holiday_dec_16(tr("Victory Day"))
 
 
 class BD(Bangladesh):
