@@ -23,8 +23,80 @@ class TestChineseLunisolarCalendar(unittest.TestCase):
     def test_check_calendar(self):
         self.assertRaises(ValueError, lambda: _ChineseLunisolar("INVALID_CALENDAR"))
 
+    def test_qingming_chinese(self):
+        for year, day in (
+            (1906, 6),
+            (1910, 6),
+            (1914, 5),
+            (1939, 6),
+            (1943, 6),
+            (1947, 5),
+            (1972, 5),
+            (1976, 4),
+            (1980, 4),
+            (2005, 5),
+            (2009, 4),
+            (2013, 4),
+            (2038, 5),
+            (2042, 4),
+            (2046, 4),
+            (2071, 5),
+            (2075, 4),
+            (2079, 4),
+        ):
+            self.assertEqual(self.calendar.qingming_date(year)[0].day, day)
+
+    def test_qingming_korean(self):
+        for year, day in (
+            (1910, 6),
+            (1914, 6),
+            (1918, 5),
+            (1943, 6),
+            (1947, 6),
+            (1971, 5),
+            (1980, 5),
+            (1984, 4),
+            (1988, 4),
+            (2013, 5),
+            (2017, 4),
+            (2021, 4),
+            (2042, 5),
+            (2046, 4),
+            (2050, 4),
+            (2075, 5),
+            (2079, 4),
+            (2083, 4),
+        ):
+            self.assertEqual(self.calendar.qingming_date(year, KOREAN_CALENDAR)[0].day, day)
+
+    def test_qingming_vietnamese(self):
+        for year, day in (
+            (1902, 6),
+            (1906, 6),
+            (1910, 5),
+            (1931, 6),
+            (1935, 6),
+            (1939, 5),
+            (1968, 5),
+            (1972, 4),
+            (1976, 4),
+            (2001, 5),
+            (2005, 4),
+            (2009, 4),
+            (2034, 5),
+            (2038, 4),
+            (2042, 4),
+            (2063, 5),
+            (2067, 4),
+            (2071, 4),
+        ):
+            self.assertEqual(self.calendar.qingming_date(year, VIETNAMESE_CALENDAR)[0].day, day)
+
     def test_winter_solstice_chinese(self):
         for year, day in (
+            (1910, 23),
+            (1914, 23),
+            (1918, 22),
             (1943, 23),
             (1947, 23),
             (1951, 22),
@@ -45,6 +117,9 @@ class TestChineseLunisolarCalendar(unittest.TestCase):
 
     def test_winter_solstice_korean(self):
         for year, day in (
+            (1914, 23),
+            (1918, 23),
+            (1922, 22),
             (1951, 23),
             (1955, 23),
             (1959, 22),
@@ -64,6 +139,9 @@ class TestChineseLunisolarCalendar(unittest.TestCase):
 
     def test_winter_solstice_vietnamese(self):
         for year, day in (
+            (1906, 23),
+            (1910, 23),
+            (1914, 22),
             (1943, 23),
             (1947, 22),
             (1976, 22),
@@ -84,7 +162,13 @@ class TestChineseLunisolarCalendar(unittest.TestCase):
             )
 
     def test_winter_solstice_estimated(self):
-        for year in (1940, 2100):
+        for year in (1900, 2100):
             self.assertTrue(self.calendar.winter_solstice_date(year)[1])
-        for year in (1941, 2099):
+        for year in (1901, 2099):
             self.assertFalse(self.calendar.winter_solstice_date(year)[1])
+
+    def test_qingming_estimated(self):
+        for year in (1900, 2100):
+            self.assertTrue(self.calendar.qingming_date(year)[1])
+        for year in (1901, 2099):
+            self.assertFalse(self.calendar.qingming_date(year)[1])

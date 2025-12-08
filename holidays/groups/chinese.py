@@ -13,7 +13,6 @@
 from datetime import date
 
 from holidays.calendars.chinese import _ChineseLunisolar, CHINESE_CALENDAR
-from holidays.calendars.gregorian import APR
 from holidays.groups.eastern import EasternCalendarHolidays
 
 
@@ -38,12 +37,9 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
     @property
     def _qingming_festival(self):
         """
-        Return Qingming Festival (15th day after the Spring Equinox) date.
+        Return Qingming Festival (5th solar term) date.
         """
-        day = 5
-        if (self._year % 4 < 1) or (self._year % 4 < 2 and self._year >= 2009):
-            day = 4
-        return date(self._year, APR, day)
+        return self._chinese_calendar.qingming_date(self._year)[0]
 
     @property
     def _mid_autumn_festival(self):
@@ -77,7 +73,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
     @property
     def _dongzhi_festival(self):
         """
-        Return Dongzhi Festival (Chinese Winter Solstice) date.
+        Return Dongzhi Festival (22th solar term, Winter Solstice) date.
         """
         return self._chinese_calendar.winter_solstice_date(self._year)[0]
 
@@ -221,15 +217,17 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.winter_solstice_date(self._year - 1), days_delta=+105
         )
 
-    def _add_qingming_festival(self, name) -> date:
+    def _add_qingming_festival(self, name) -> date | None:
         """
-        Add Qingming Festival (15th day after the Spring Equinox).
+        Add Qingming Festival (5th solar term of the Chinese lunisolar calendar).
 
         The Qingming festival or Ching Ming Festival, also known as
         Tomb-Sweeping Day in English, is a traditional Chinese festival.
         https://en.wikipedia.org/wiki/Qingming_Festival
         """
-        return self._add_holiday(name, self._qingming_festival)
+        return self._add_chinese_calendar_holiday(
+            name, self._chinese_calendar.qingming_date(self._year)
+        )
 
     def _add_double_ninth_festival(self, name) -> date | None:
         """
