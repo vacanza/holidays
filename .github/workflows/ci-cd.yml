@@ -37,14 +37,17 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
+      - name: Install uv
+        uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
-          check-latest: true
           python-version: '3.14'
+          version: '0.9.16'
+
+      - name: Install Python
+        run: uv python install "$UV_PYTHON"
 
       - name: Run pre-commit
-        uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd
+        run: uv tool run --with pre-commit-uv pre-commit run --show-diff-on-failure --color=always --all-files
 
   code-ql:
     name: CodeQL
@@ -88,17 +91,20 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python ${{ matrix.python-version }} (uv)
+      - name: Install uv
         uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
           python-version: ${{ matrix.python-version }}
           version: '0.9.16'
 
+      - name: Install Python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
+
       - name: Install dependencies
-        run: uv sync --extra tests --link-mode=copy
+        run: uv sync --frozen --no-dev --group tests --link-mode=copy
 
       - name: Run tests
-        run: uv run make test
+        run: make test
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7
@@ -113,17 +119,20 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python (uv)
+      - name: Install uv
         uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
           python-version: '3.14'
           version: '0.9.16'
 
+      - name: Install Python
+        run: uv python install "$UV_PYTHON"
+
       - name: Install dependencies
-        run: uv sync --extra build --link-mode=copy
+        run: uv sync --frozen --no-default-groups --no-install-project --group build --link-mode=copy
 
       - name: Build distribution
-        run: uv run make package
+        run: make package
 
       - name: Upload package artifacts
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4
@@ -137,7 +146,7 @@ jobs:
 
       - name: Generate SBOM
         if: startsWith(github.event.ref, 'refs/tags/v')
-        run: uv run make sbom > holidays-${{ env.VERSION }}-sbom.json
+        run: make sbom > holidays-${{ env.VERSION }}-sbom.json
 
       - name: Upload SBOM
         if: startsWith(github.event.ref, 'refs/tags/v')
@@ -160,11 +169,15 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python (uv)
+      - name: Install uv
         uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
           python-version: '3.14'
           version: '0.9.16'
+
+      - name: Install Python
+        shell: bash
+        run: uv python install "$UV_PYTHON"
 
       - name: Get package artifacts
         uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53
@@ -175,8 +188,7 @@ jobs:
       - name: Run tests
         shell: bash
         run: |
-          uv venv --clear
-          uv sync --extra tests --link-mode=copy
+          uv sync --frozen --no-default-groups --no-install-project --group tests --link-mode=copy
           rm -rf holidays
           uv pip install dist/*.whl --link-mode=copy
           uv run --no-sync pytest --dist loadscope --numprocesses auto tests/countries tests/financial
@@ -192,17 +204,20 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python (uv)
+      - name: Install uv
         uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
           python-version: '3.14'
           version: '0.9.16'
 
+      - name: Install Python
+        run: uv python install "$UV_PYTHON"
+
       - name: Install dependencies
-        run: uv sync --extra docs --link-mode=copy
+        run: uv sync --frozen --no-default-groups --no-install-project --group docs --link-mode=copy
 
       - name: Build docs
-        run: uv run make doc
+        run: make doc
 
   publish-main:
     name: Publish generated artifacts
