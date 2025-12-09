@@ -70,13 +70,6 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         """
         return self._chinese_calendar.double_ninth_date(self._year)[0]
 
-    @property
-    def _dongzhi_festival(self):
-        """
-        Return Dongzhi Festival (22nd solar term, Winter Solstice) date.
-        """
-        return self._chinese_calendar.winter_solstice_date(self._year)[0]
-
     def _add_chinese_calendar_holiday(
         self, name: str, dt_estimated: tuple[date | None, bool], days_delta: int = 0
     ) -> date | None:
@@ -195,7 +188,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
 
     def _add_dongzhi_festival(self, name) -> date | None:
         """
-        Add Dongzhi Festival (Chinese Winter Solstice).
+        Add Dongzhi Festival (22nd solar term, Winter Solstice).
 
         The Dongzhi Festival or Winter Solstice Festival is a traditional
         Chinese festival celebrated during the Dongzhi solar term
