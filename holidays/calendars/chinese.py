@@ -1395,7 +1395,7 @@ class _ChineseLunisolar:
         return self._get_holiday(MID_AUTUMN, year, calendar)
 
     def qingming_date(self, year: int, calendar=None) -> tuple[date, bool]:
-        """ "Return Qingming Festival (5th solar term of the Chinese lunisolar calendar) date.
+        """Return Qingming Festival (5th solar term of the Chinese lunisolar calendar) date.
 
         !!! note "Note"
             This approximation is reliable for 1901-2099 years.

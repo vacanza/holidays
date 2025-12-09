@@ -73,7 +73,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
     @property
     def _dongzhi_festival(self):
         """
-        Return Dongzhi Festival (22th solar term, Winter Solstice) date.
+        Return Dongzhi Festival (22nd solar term, Winter Solstice) date.
         """
         return self._chinese_calendar.winter_solstice_date(self._year)[0]
 
@@ -202,7 +202,9 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         (winter solstice), which falls between December 21 and 23.
         https://en.wikipedia.org/wiki/Dongzhi_Festival
         """
-        return self._add_holiday(name, self._dongzhi_festival)
+        return self._add_chinese_calendar_holiday(
+            name, self._chinese_calendar.winter_solstice_date(self._year)
+        )
 
     def _add_hanshi_festival(self, name) -> date | None:
         """
