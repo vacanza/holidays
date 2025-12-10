@@ -35,11 +35,11 @@ class Bangladesh(HolidayBase, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # International Mother's language Day.
-        self._add_holiday_feb_21(tr("আন্তর্জাতিক মাতৃভাষা দিবস"))
+        # Martyrs' Day and International Mother Language Day.
+        self._add_holiday_feb_21(tr("শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস"))
 
-        # Sheikh Mujibur Rahman's Birthday and Children's Day.
-        self._add_holiday_mar_17(tr("শেখ মুজিবুর রহমানের জন্মদিন এবং শিশু দিবস"))
+        # Sheikh Mujibur Rahman's Birthday.
+        self._add_holiday_mar_17(tr("জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান এর জন্মদিবস"))
 
         # Independence Day.
         self._add_holiday_mar_26(tr("স্বাধীনতা দিবস"))
