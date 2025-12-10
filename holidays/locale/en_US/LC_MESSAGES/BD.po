@@ -26,13 +26,13 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: bn\n"
 
-#. International Mother's language Day.
-msgid "আন্তর্জাতিক মাতৃভাষা দিবস"
-msgstr "International Mother's language Day"
+#. Martyrs' Day and International Mother Language Day.
+msgid "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস"
+msgstr "Martyrs' Day and International Mother Language Day"
 
-#. Sheikh Mujibur Rahman's Birthday and Children's Day.
-msgid "শেখ মুজিবুর রহমানের জন্মদিন এবং শিশু দিবস"
-msgstr "Sheikh Mujibur Rahman's Birthday and Children's Day"
+#. Sheikh Mujibur Rahman's Birthday.
+msgid "জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান এর জন্মদিবস"
+msgstr "Sheikh Mujibur Rahman's Birthday"
 
 #. Independence Day.
 msgid "স্বাধীনতা দিবস"

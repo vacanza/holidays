@@ -21,12 +21,14 @@ class TestBangladesh(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Bangladesh)
 
-    def test_international_mothers_language_day(self):
-        self.assertHolidayName("আন্তর্জাতিক মাতৃভাষা দিবস", (f"{year}-02-21" for year in self.full_range))
-
-    def test_sheikh_mujibur_rahmans_birthday_and_childrens_day(self):
+    def test_martyrs_day_and_international_mother_language_day(self):
         self.assertHolidayName(
-            "শেখ মুজিবুর রহমানের জন্মদিন এবং শিশু দিবস",
+            "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস", (f"{year}-02-21" for year in self.full_range)
+        )
+
+    def test_sheikh_mujibur_rahmans_birthday(self):
+        self.assertHolidayName(
+            "জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান এর জন্মদিবস",
             (f"{year}-03-17" for year in self.full_range),
         )
 
@@ -48,8 +50,8 @@ class TestBangladesh(CommonCountryTests, TestCase):
     def test_2022(self):
         self.assertHolidaysInYear(
             2022,
-            ("2022-02-21", "আন্তর্জাতিক মাতৃভাষা দিবস"),
-            ("2022-03-17", "শেখ মুজিবুর রহমানের জন্মদিন এবং শিশু দিবস"),
+            ("2022-02-21", "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস"),
+            ("2022-03-17", "জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান এর জন্মদিবস"),
             ("2022-03-26", "স্বাধীনতা দিবস"),
             ("2022-04-14", "পহেলা বৈশাখ"),
             ("2022-05-01", "মে দিবস"),
@@ -59,8 +61,8 @@ class TestBangladesh(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2021-02-21", "আন্তর্জাতিক মাতৃভাষা দিবস"),
-            ("2021-03-17", "শেখ মুজিবুর রহমানের জন্মদিন এবং শিশু দিবস"),
+            ("2021-02-21", "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস"),
+            ("2021-03-17", "জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান এর জন্মদিবস"),
             ("2021-03-26", "স্বাধীনতা দিবস"),
             ("2021-04-14", "পহেলা বৈশাখ"),
             ("2021-05-01", "মে দিবস"),
@@ -71,8 +73,8 @@ class TestBangladesh(CommonCountryTests, TestCase):
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2021-02-21", "International Mother's language Day"),
-            ("2021-03-17", "Sheikh Mujibur Rahman's Birthday and Children's Day"),
+            ("2021-02-21", "Martyrs' Day and International Mother Language Day"),
+            ("2021-03-17", "Sheikh Mujibur Rahman's Birthday"),
             ("2021-03-26", "Independence Day"),
             ("2021-04-14", "Bengali New Year's Day"),
             ("2021-05-01", "May Day"),
