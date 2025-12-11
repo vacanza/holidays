@@ -469,48 +469,42 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             self.assertNoHolidayName(name, holidays, range(self.start_year, 1879))
 
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv not in {
-                "AK",
-                "AL",
-                "AR",
-                "AZ",
-                "CA",
-                "CO",
-                "DE",
-                "FL",
-                "GA",
-                "HI",
-                "ID",
-                "IN",
-                "MD",
-                "MN",
-                "MT",
-                "NJ",
-                "NM",
-                "OH",
-                "OK",
-                "OR",
-                "PA",
-                "PR",
-                "SC",
-                "TN",
-                "TX",
-                "UT",
-                "VA",
-                "VI",
-                "VT",
-                "WA",
-                "WV",
-                "WY",
-            }:
+            if subdiv not in {"AL", "AR", "DE", "FL", "GA", "IN", "NM", "VI"}:
                 self.assertHolidayName(
                     name, holidays, (f"{year}-02-22" for year in range(1879, 1971))
                 )
-                self.assertHolidayName(name, holidays, dts)
-                self.assertHolidayName(name, holidays, range(1971, self.end_year))
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 1879))
+                if subdiv not in {
+                    "AK",
+                    "AZ",
+                    "CA",
+                    "CO",
+                    "HI",
+                    "ID",
+                    "MD",
+                    "MN",
+                    "MT",
+                    "NJ",
+                    "OH",
+                    "OK",
+                    "OR",
+                    "PA",
+                    "PR",
+                    "SC",
+                    "TN",
+                    "TX",
+                    "UT",
+                    "VA",
+                    "VT",
+                    "WA",
+                    "WV",
+                    "WY",
+                }:
+                    self.assertHolidayName(name, holidays, dts)
+                    self.assertHolidayName(name, holidays, range(1971, self.end_year))
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 1879))
 
     def test_washingtons_birthday_states(self):
+        common_name = "Washington's Birthday"
         dts = (
             "2010-02-15",
             "2011-02-21",
@@ -535,7 +529,6 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             ("AZ", "Lincoln/Washington Presidents' Day"),
             ("CA", "Presidents' Day"),
             ("CO", "Washington-Lincoln Day"),
-            ("DE", None),
             ("HI", "Presidents' Day"),
             ("ID", "Presidents' Day"),
             ("MD", "Presidents' Day"),
@@ -569,9 +562,22 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 )
             else:
                 self.assertNoHoliday(self.subdiv_holidays[subdiv], dts)
-                self.assertNoHolidayName(name, self.subdiv_holidays[subdiv])
+                self.assertNoHolidayName(common_name, self.subdiv_holidays[subdiv])
 
-        name = "Washington's Birthday"
+        # DE.
+        name_de_1971 = common_name
+        name_de_1990 = "Presidents' Day"
+        self.assertSubdivDeHolidayName(name_de_1971, range(1971, 1990))
+        self.assertSubdivDeHolidayName(name_de_1990, range(1990, 2010))
+        self.assertNoSubdivDeHoliday(dts)
+        self.assertNoSubdivDeHolidayName(
+            name_de_1971, range(self.start_year, 1971), range(1990, self.end_year)
+        )
+        self.assertNoSubdivDeHolidayName(
+            name_de_1990, range(self.start_year, 1990), range(2010, self.end_year)
+        )
+
+        # FL.
         self.assertNoSubdivFlHoliday(
             "2010-02-15",
             "2011-02-21",
@@ -586,8 +592,9 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             "2022-02-21",
             "2023-02-20",
         )
-        self.assertNoSubdivFlHolidayName(name)
+        self.assertNoSubdivFlHolidayName(common_name)
 
+        # GA, IN.
         dts = (
             "2010-12-23",
             "2011-12-23",
@@ -606,10 +613,12 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             "2024-12-24",
         )
         for subdiv in ("GA", "IN"):
-            self.assertHolidayName(name, self.subdiv_holidays[subdiv], dts)
-            self.assertHolidayName(name, self.subdiv_holidays[subdiv], range(1971, self.end_year))
+            self.assertHolidayName(common_name, self.subdiv_holidays[subdiv], dts)
+            self.assertHolidayName(
+                common_name, self.subdiv_holidays[subdiv], range(1971, self.end_year)
+            )
             self.assertNoHolidayName(
-                name, self.subdiv_holidays[subdiv], range(self.start_year, 1879)
+                common_name, self.subdiv_holidays[subdiv], range(self.start_year, 1879)
             )
 
     def test_columbus_day(self):
@@ -2292,10 +2301,11 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             (
                 "2022-01-17",
                 (
-                    "วัน ดร. มาร์ติน ลูเทอร์ คิง จูเนียร์ / วันสิทธิพลเมือง; วันมาร์ติน ลูเทอร์ "
-                    "คิง จูเนียร์; วันมาร์ติน ลูเทอร์ คิง จูเนียร์ / วันสิทธิมนุษยชนไอดาโฮ; "
-                    "วันเกิด ดร. มาร์ติน ลูเทอร์ คิง จูเนียร์และโรเบิร์ต อี. ลี; วันเกิดมาร์ติน "
-                    "ลูเทอร์ คิง จูเนียร์; วันเกิดมาร์ติน ลูเทอร์ คิง จูเนียร์และโรเบิร์ต อี. ลี"
+                    "วัน ดร. มาร์ติน ลูเทอร์ คิง จูเนียร์ / วันสิทธิพลเมือง; "
+                    "วันมาร์ติน ลูเทอร์ คิง จูเนียร์; วันมาร์ติน ลูเทอร์ คิง จูเนียร์ / วันสิทธิมนุษยชนไอดาโฮ; "
+                    "วันเกิด ดร. มาร์ติน ลูเทอร์ คิง จูเนียร์และโรเบิร์ต อี. ลี; "
+                    "วันเกิดมาร์ติน ลูเทอร์ คิง จูเนียร์; "
+                    "วันเกิดมาร์ติน ลูเทอร์ คิง จูเนียร์และโรเบิร์ต อี. ลี"
                 ),
             ),
             ("2022-01-19", "วันรำลึกถึงฝ่ายสมาพันธรัฐ"),
@@ -2309,8 +2319,9 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 (
                     "วันจอร์จ วอชิงตัน; วันประธานาธิบดี; วันประธานาธิบดีลิงคอล์น/วอชิงตัน; "
                     "วันลิงคอล์นและวอชิงตัน; วันวอชิงตัน-ลิงคอล์น; วันวอชิงตันและลิงคอล์น; "
-                    "วันเกิดจอร์จ วอชิงตัน และทอมัส เจฟเฟอร์สัน; วันเกิดจอร์จ วอชิงตันและวันเดซี่ "
-                    "แกตสัน เบตส์; วันเกิดวอชิงตัน; วันเกิดวอชิงตันและลิงคอล์น"
+                    "วันเกิดจอร์จ วอชิงตัน และทอมัส เจฟเฟอร์สัน; "
+                    "วันเกิดจอร์จ วอชิงตันและวันเดซี่ แกตสัน เบตส์; วันเกิดวอชิงตัน; "
+                    "วันเกิดวอชิงตันและลิงคอล์น"
                 ),
             ),
             ("2022-03-01", "วันประชาคมท้องถิ่น; วันมาร์ดิกราส์"),
@@ -2358,9 +2369,9 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 "2022-10-10",
                 (
                     "วันชนพื้นเมืองอเมริกัน; วันวัฒนธรรมแห่งเครือรัฐ; วันแห่งชนพื้นเมือง; "
-                    "วันแห่งชนพื้นเมือง / วันโคลัมบัส; วันโคลัมบัส; วันโคลัมบัส / "
-                    "วันอนุรักษ์มรดกชนพื้นเมืองอเมริกัน / วันภราดรภาพ; วันโคลัมบัส "
-                    "และวันมิตรภาพกับเปอร์โตริโก"
+                    "วันแห่งชนพื้นเมือง / วันโคลัมบัส; วันโคลัมบัส; "
+                    "วันโคลัมบัส / วันอนุรักษ์มรดกชนพื้นเมืองอเมริกัน / วันภราดรภาพ; "
+                    "วันโคลัมบัส และวันมิตรภาพกับเปอร์โตริโก"
                 ),
             ),
             ("2022-10-18", "วันอะลาสกา"),
@@ -2377,8 +2388,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 "2022-11-25",
                 (
                     "วันครอบครัว; วันประธานาธิบดี; วันหยุดประจำรัฐ; วันหลังวันขอบคุณพระเจ้า; "
-                    "วันอนุรักษ์มรดกชนพื้นเมืองอเมริกัน; วันเกิดลิงคอล์น; "
-                    "ศุกร์หลังวันขอบคุณพระเจ้า"
+                    "วันอนุรักษ์มรดกชนพื้นเมืองอเมริกัน; วันเกิดลิงคอล์น; ศุกร์หลังวันขอบคุณพระเจ้า"
                 ),
             ),
             ("2022-12-08", "วันรัฐธรรมนูญ; วันแม่พระแห่งคามาริน"),

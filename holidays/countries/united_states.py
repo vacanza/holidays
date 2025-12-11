@@ -387,43 +387,45 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             self._add_holiday_3rd_mon_of_jan(tr("Martin Luther King Jr. Day"))
 
         if self._year >= 1879 and self.subdiv not in {
-            "AK",
             "AL",
             "AR",
-            "AZ",
-            "CA",
-            "CO",
             "DE",
             "FL",
             "GA",
-            "HI",
-            "ID",
             "IN",
-            "MD",
-            "MN",
-            "MT",
-            "NJ",
             "NM",
-            "OH",
-            "OK",
-            "OR",
-            "PA",
-            "PR",
-            "SC",
-            "TN",
-            "TX",
-            "UT",
-            "VA",
             "VI",
-            "VT",
-            "WA",
-            "WV",
-            "WY",
         }:
             # Washington's Birthday.
             name = tr("Washington's Birthday")
             if self._year >= 1971:
-                self._add_holiday_3rd_mon_of_feb(name)
+                if self.subdiv not in {
+                    "AK",
+                    "AZ",
+                    "CA",
+                    "CO",
+                    "HI",
+                    "ID",
+                    "MD",
+                    "MN",
+                    "MT",
+                    "NJ",
+                    "OH",
+                    "OK",
+                    "OR",
+                    "PA",
+                    "PR",
+                    "SC",
+                    "TN",
+                    "TX",
+                    "UT",
+                    "VA",
+                    "VT",
+                    "WA",
+                    "WV",
+                    "WY",
+                }:
+                    self._add_holiday_3rd_mon_of_feb(name)
             else:
                 self._add_holiday_feb_22(name)
 
@@ -494,13 +496,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 tr("Martin Luther King, Jr & Robert E. Lee's Birthday")
             )
 
-        if self._year >= 1879:
+        if self._year >= 1971:
             # George Washington & Thomas Jefferson's Birthday.
-            name = tr("George Washington & Thomas Jefferson's Birthday")
-            if self._year >= 1971:
-                self._add_holiday_3rd_mon_of_feb(name)
-            else:
-                self._add_holiday_feb_22(name)
+            self._add_holiday_3rd_mon_of_feb(tr("George Washington & Thomas Jefferson's Birthday"))
 
         if self._year >= 1866:
             # Confederate Memorial Day.
@@ -529,13 +527,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 else tr("Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays")
             )
 
-        if self._year >= 1879:
-            # George Washington's Birthday and Daisy Gatson Bates Day.
-            name = tr("George Washington's Birthday and Daisy Gatson Bates Day")
-            if self._year >= 1971:
-                self._add_holiday_3rd_mon_of_feb(name)
-            else:
-                self._add_holiday_feb_22(name)
+        if self._year >= 1971:
+            self._add_holiday_3rd_mon_of_feb(
+                # George Washington's Birthday and Daisy Gatson Bates Day.
+                tr("George Washington's Birthday and Daisy Gatson Bates Day")
+            )
 
     def _populate_subdiv_as_public_holidays(self):
         if self._year >= 1901:
@@ -635,6 +631,15 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
+        if 1971 <= self._year <= 2009:
+            self._add_holiday_3rd_mon_of_feb(
+                # Presidents' Day.
+                tr("Presidents' Day")
+                if self._year >= 1990
+                # Washington's Birthday.
+                else tr("Washington's Birthday")
+            )
+
         if self._year >= 2008 and self._year % 2 == 0:
             # Election Day.
             self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
@@ -684,11 +689,13 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 else tr("Robert E. Lee's Birthday")
             )
 
-        if self._year >= 1879:
-            self._add_holiday(
+        if self._year >= 1971:
+            self._add_observed(
+                self._christmas_day,
                 # Washington's Birthday.
-                tr("Washington's Birthday"),
-                self._get_observed_date(self._christmas_day, rule=GA_IN_WASHINGTON_BIRTHDAY),
+                name=tr("Washington's Birthday"),
+                rule=GA_IN_WASHINGTON_BIRTHDAY,
+                show_observed_label=False,
             )
 
     def _populate_subdiv_gu_public_holidays(self):
@@ -780,11 +787,13 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             # Lincoln's Birthday.
             self._add_holiday_1_day_past_4th_thu_of_nov(tr("Lincoln's Birthday"))
 
-        if self._year >= 1879:
-            self._add_holiday(
+        if self._year >= 1971:
+            self._add_observed(
+                self._christmas_day,
                 # Washington's Birthday.
-                tr("Washington's Birthday"),
-                self._get_observed_date(self._christmas_day, rule=GA_IN_WASHINGTON_BIRTHDAY),
+                name=tr("Washington's Birthday"),
+                rule=GA_IN_WASHINGTON_BIRTHDAY,
+                show_observed_label=False,
             )
 
     def _populate_subdiv_ks_public_holidays(self):
