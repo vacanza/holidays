@@ -382,7 +382,7 @@ msgstr "วันส่งมอบดินแดน"
 
 #. Holy Thursday.
 msgid "Holy Thursday"
-msgstr "วันพฤหัสศักดิสิทธิ์"
+msgstr "วันพฤหัสศักดิ์สิทธิ์"
 
 #. Easter Monday.
 msgid "Easter Monday"

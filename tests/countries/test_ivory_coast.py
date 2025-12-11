@@ -194,8 +194,8 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(1997, 2050))
 
     def test_2024(self):
-        self.assertHolidays(
-            IvoryCoast(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "1er janvier"),
             ("2024-02-12", "Victoire à la Coupe d'Afrique des Nations 2024"),
             ("2024-04-06", "Lendemain de la Nuit du Destin"),

@@ -1,6 +1,8 @@
 __pycache__
 .coverage
+.cursor/rules/snyk_rules.mdc
 .github_token
+.github/instructions/snyk_rules.instructions.md
 .gitpod.yml
 .idea
 .tox
@@ -15,6 +17,7 @@ __pycache__
 build/*
 coverage.lcov
 coverage.xml
+design/
 dist/
 docs/auto_gen_files/
 holidays/locale/pot/*.pot

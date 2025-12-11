@@ -178,8 +178,8 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_2024_holidays(self):
-        self.assertHolidays(
-            SaintVincentAndTheGrenadines(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-03-14", "National Heroes' Day"),
             ("2024-03-29", "Good Friday"),

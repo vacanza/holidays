@@ -201,8 +201,8 @@ class TestNamibia(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_2024(self):
-        self.assertHolidays(
-            Namibia(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-02-25", "Burial ceremony of Dr. Hage Gottfried Geingob"),
             ("2024-03-21", "Independence Day"),

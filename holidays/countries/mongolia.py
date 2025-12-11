@@ -12,7 +12,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import _timedelta
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import InternationalHolidays, MongolianCalendarHolidays
 from holidays.holiday_base import HolidayBase
@@ -160,10 +159,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
 
         if self._year >= 2007:
             # New Harvest Days.
-            name = tr("Шинэ ургацын өдрүүд")
-            dt = self._add_holiday_sep_5(name)
-            for delta in range(1, 46):
-                self._add_holiday(name, _timedelta(dt, delta))
+            self._add_multiday_holiday(self._add_holiday_sep_5(tr("Шинэ ургацын өдрүүд")), 45)
 
         # Memorial Day of Political Victims.
         self._add_holiday_sep_10(tr("Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр"))

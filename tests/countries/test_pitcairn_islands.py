@@ -111,8 +111,8 @@ class TestPitcairnIslands(CommonCountryTests, TestCase):
         )
 
     def test_2022_public(self):
-        self.assertHolidays(
-            PitcairnIslands(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-23", "Bounty Day"),
             ("2022-04-15", "Good Friday"),
@@ -124,14 +124,14 @@ class TestPitcairnIslands(CommonCountryTests, TestCase):
         )
 
     def test_2022_government(self):
-        self.assertHolidays(
-            PitcairnIslands(categories=GOVERNMENT, years=2022),
+        self.assertGovernmentHolidaysInYear(
+            2022,
             ("2022-01-02", "New Year's Day"),
         )
 
     def test_2022_workday(self):
-        self.assertHolidays(
-            PitcairnIslands(categories=WORKDAY, years=2022),
+        self.assertWorkdayHolidaysInYear(
+            2022,
             ("2022-04-25", "ANZAC Day"),
             ("2022-11-11", "Remembrance Day"),
         )

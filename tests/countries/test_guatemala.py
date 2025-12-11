@@ -21,9 +21,95 @@ class TestGuatemala(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Guatemala)
 
+    def test_new_years_day(self):
+        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))
+
+    def test_maundy_thursday(self):
+        name = "Jueves Santo"
+        self.assertHolidayName(
+            name,
+            "2020-04-09",
+            "2021-04-01",
+            "2022-04-14",
+            "2023-04-06",
+            "2024-03-28",
+            "2025-04-17",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_good_friday(self):
+        name = "Viernes Santo"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_holy_saturday(self):
+        name = "Sábado Santo"
+        self.assertHolidayName(
+            name,
+            "2020-04-11",
+            "2021-04-03",
+            "2022-04-16",
+            "2023-04-08",
+            "2024-03-30",
+            "2025-04-19",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_labor_day(self):
+        name = "Día del Trabajo"
+        self.assertNonObservedHolidayName(name, (f"{year}-05-01" for year in self.full_range))
+        self.assertHolidayName(name, "2019-04-29")
+
+    def test_army_day(self):
+        name = "Día del Ejército"
+        self.assertNonObservedHolidayName(name, (f"{year}-06-30" for year in self.full_range))
+        self.assertHolidayName(
+            name,
+            "2020-06-29",
+            "2021-06-28",
+            "2022-07-04",
+            "2023-07-03",
+            "2024-07-01",
+            "2025-06-30",
+        )
+
+    def test_assumption_day(self):
+        self.assertHolidayName("Día de la Asunción", (f"{year}-08-15" for year in self.full_range))
+
+    def test_independence_day(self):
+        self.assertHolidayName(
+            "Día de la Independencia", (f"{year}-09-15" for year in self.full_range)
+        )
+
+    def test_revolution_day(self):
+        name = "Día de la Revolución"
+        self.assertNonObservedHolidayName(name, (f"{year}-10-20" for year in self.full_range))
+        self.assertHolidayName(
+            name,
+            "2018-10-22",
+            "2019-10-21",
+        )
+
+    def test_all_saints_day(self):
+        self.assertHolidayName(
+            "Día de Todos los Santos", (f"{year}-11-01" for year in self.full_range)
+        )
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Día de Navidad", (f"{year}-12-25" for year in self.full_range))
+
     def test_2016(self):
         # https://calendariohispanohablante.com/2016/calendario-guatemala-2016.html
-        dt = (
+        self.assertHolidayDates(
+            Guatemala(years=2016),
             "2016-01-01",
             "2016-03-24",
             "2016-03-25",
@@ -36,11 +122,11 @@ class TestGuatemala(CommonCountryTests, TestCase):
             "2016-11-01",
             "2016-12-25",
         )
-        self.assertHoliday(dt)
 
     def test_2017(self):
         # https://calendariohispanohablante.com/2017/calendario-guatemala-2017.html
-        dt = (
+        self.assertHolidayDates(
+            Guatemala(years=2017),
             "2017-01-01",
             "2017-04-13",
             "2017-04-14",
@@ -53,11 +139,11 @@ class TestGuatemala(CommonCountryTests, TestCase):
             "2017-11-01",
             "2017-12-25",
         )
-        self.assertHoliday(dt)
 
     def test_2018(self):
         # https://calendariohispanohablante.com/2018/calendario-guatemala-2018.html
-        dt = (
+        self.assertHolidayDates(
+            Guatemala(years=2018),
             "2018-01-01",
             "2018-03-29",
             "2018-03-30",
@@ -70,11 +156,11 @@ class TestGuatemala(CommonCountryTests, TestCase):
             "2018-11-01",
             "2018-12-25",
         )
-        self.assertHoliday(dt)
 
     def test_2019(self):
         # https://calendariohispanohablante.com/2019/calendario-guatemala-2019.html
-        dt = (
+        self.assertHolidayDates(
+            Guatemala(years=2019),
             "2019-01-01",
             "2019-04-18",
             "2019-04-19",
@@ -87,11 +173,11 @@ class TestGuatemala(CommonCountryTests, TestCase):
             "2019-11-01",
             "2019-12-25",
         )
-        self.assertHoliday(dt)
 
     def test_2020(self):
         # https://calendariohispanohablante.com/2020/calendario-guatemala-2020.html
-        dt = (
+        self.assertHolidayDates(
+            Guatemala(years=2020),
             "2020-01-01",
             "2020-04-09",
             "2020-04-10",
@@ -104,11 +190,11 @@ class TestGuatemala(CommonCountryTests, TestCase):
             "2020-11-01",
             "2020-12-25",
         )
-        self.assertHoliday(dt)
 
     def test_2021(self):
         # https://calendariohispanohablante.com/2021/calendario-guatemala-2021.html
-        dt = (
+        self.assertHolidayDates(
+            Guatemala(years=2021),
             "2021-01-01",
             "2021-04-01",
             "2021-04-02",
@@ -121,11 +207,11 @@ class TestGuatemala(CommonCountryTests, TestCase):
             "2021-11-01",
             "2021-12-25",
         )
-        self.assertHoliday(dt)
 
     def test_2022(self):
         # https://publicholidays.la/guatemala/es/2022-dates/
-        dt = (
+        self.assertHolidayDates(
+            Guatemala(years=2022),
             "2022-01-01",
             "2022-04-14",
             "2022-04-15",
@@ -138,11 +224,11 @@ class TestGuatemala(CommonCountryTests, TestCase):
             "2022-11-01",
             "2022-12-25",
         )
-        self.assertHoliday(dt)
 
     def test_2023(self):
         # https://publicholidays.la/guatemala/es/2023-dates/
-        dt = (
+        self.assertHolidayDates(
+            Guatemala(years=2023),
             "2023-01-01",
             "2023-04-06",
             "2023-04-07",
@@ -155,11 +241,11 @@ class TestGuatemala(CommonCountryTests, TestCase):
             "2023-11-01",
             "2023-12-25",
         )
-        self.assertHoliday(dt)
 
     def test_2024(self):
         # https://publicholidays.la/guatemala/es/2024-dates/
-        dt = (
+        self.assertHolidayDates(
+            Guatemala(years=2024),
             "2024-01-01",
             "2024-03-28",
             "2024-03-29",
@@ -172,7 +258,6 @@ class TestGuatemala(CommonCountryTests, TestCase):
             "2024-11-01",
             "2024-12-25",
         )
-        self.assertHoliday(dt)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

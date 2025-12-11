@@ -481,8 +481,8 @@ class TestIndonesia(CommonCountryTests, TestCase):
         )
 
     def test_2021(self):
-        self.assertHolidays(
-            Indonesia(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "Tahun Baru Masehi"),
             ("2021-02-12", "Tahun Baru Imlek"),
             ("2021-03-11", "Isra Mikraj Nabi Muhammad"),
@@ -501,8 +501,8 @@ class TestIndonesia(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Indonesia(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Tahun Baru Masehi"),
             ("2022-02-01", "Tahun Baru Imlek"),
             ("2022-02-28", "Isra Mikraj Nabi Muhammad"),

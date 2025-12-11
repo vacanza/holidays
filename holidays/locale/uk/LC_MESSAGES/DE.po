@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.78\n"
+"Project-Id-Version: Holidays 0.87\n"
 "POT-Creation-Date: 2023-04-04 16:13+0300\n"
-"PO-Revision-Date: 2025-07-24 17:58+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2025-12-02 18:19+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -79,9 +79,9 @@ msgstr "Трійця"
 msgid "Reformationstag"
 msgstr "День Реформації"
 
-#. International Women's Day.
-msgid "Internationaler Frauentag"
-msgstr "Міжнародний жіночий день"
+#. Women's Day.
+msgid "Frauentag"
+msgstr "Жіночий день"
 
 #. Epiphany.
 msgid "Heilige Drei Könige"

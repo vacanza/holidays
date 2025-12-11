@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestGG(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Guernsey, years=range(1909, 2050))
+        super().setUpClass(Guernsey)
 
     def test_special_holidays(self):
         dt = (
@@ -63,9 +63,102 @@ class TestGG(CommonCountryTests, TestCase):
         self.assertHoliday(dt, dt_observed)
         self.assertNoNonObservedHoliday(dt_observed)
 
-    def test_his_majesty_birthday(self):
+    def test_new_years_day(self):
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        obs_dts = (
+            "2012-01-02",
+            "2017-01-02",
+            "2022-01-03",
+            "2023-01-02",
+        )
+        self.assertHolidayName(f"{name} (substitute day)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_good_friday(self):
+        name = "Good Friday"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_easter_monday(self):
+        name = "Easter Monday"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_may_day_bank_holiday(self):
+        name = "May Day Bank Holiday"
+        self.assertHolidayName(
+            name,
+            "1995-05-08",
+            "2020-05-08",
+            "2021-05-03",
+            "2022-05-02",
+            "2023-05-01",
+            "2024-05-06",
+            "2025-05-05",
+        )
+        self.assertHolidayName(name, range(1980, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1980))
+
+    def test_spring_bank_holiday(self):
+        name = "Spring Bank Holiday"
+        self.assertHolidayName(
+            name,
+            "1967-05-29",
+            "1970-05-25",
+            "1973-05-28",
+            "1974-05-27",
+            "1975-05-26",
+            "1976-05-31",
+            "2020-05-25",
+            "2021-05-31",
+            "2022-06-02",
+            "2023-05-29",
+            "2024-05-27",
+            "2025-05-26",
+        )
+        self.assertHolidayName(name, range(1979, self.end_year))
+        self.assertNoHolidayName(
+            name,
+            range(self.start_year, 1967),
+            range(1968, 1970),
+            range(1971, 1973),
+            range(1977, 1979),
+        )
+
+    def test_whit_monday(self):
+        name = "Whit Monday"
+        self.assertHolidayName(
+            name,
+            "1966-05-30",
+            "1968-06-03",
+            "1969-05-26",
+            "1971-05-31",
+            "1972-05-22",
+        )
+        self.assertHolidayName(name, range(self.start_year, 1967))
+        self.assertNoHolidayName(name, 1967, 1970, range(1973, self.end_year))
+
+    def test_his_majestys_birthday(self):
         name = "His Majesty's Birthday"
-        dt = (
+        self.assertHolidayName(
+            name,
             # Edward VII (MAY/JUN observance).
             "1909-06-25",
             # George V.
@@ -105,21 +198,69 @@ class TestGG(CommonCountryTests, TestCase):
             "1945-06-14",
             "1946-06-13",
         )
-        self.assertHolidayName(name, dt)
-        self.assertNoHolidayName(name, range(1915, 1919), range(1940, 1942), range(1947, 2050))
+        self.assertNoHolidayName(
+            name, range(1915, 1919), range(1940, 1942), range(1947, self.end_year)
+        )
+
+    def test_summer_bank_holiday(self):
+        name = "Summer Bank Holiday"
+        self.assertHolidayName(
+            name,
+            "1962-08-06",
+            "1963-08-05",
+            "1964-08-03",
+            "1965-08-30",
+            "1966-08-29",
+            "1967-08-28",
+            "1968-09-02",
+            "1969-09-01",
+            "2020-08-31",
+            "2021-08-30",
+            "2022-08-29",
+            "2023-08-28",
+            "2024-08-26",
+            "2025-08-25",
+        )
+        self.assertHolidayName(name, range(self.start_year, 1977), range(1979, self.end_year))
+        self.assertNoHolidayName(name, range(1977, 1979))
+
+    def test_christmas_day(self):
+        name = "Christmas Day"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
+        obs_dts = (
+            "2011-12-27",
+            "2016-12-27",
+            "2021-12-27",
+            "2022-12-27",
+        )
+        self.assertHolidayName(f"{name} (substitute day)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_boxing_day(self):
+        name = "Boxing Day"
+        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
+        obs_dts = (
+            "2010-12-28",
+            "2015-12-28",
+            "2020-12-28",
+            "2021-12-28",
+        )
+        self.assertHolidayName(f"{name} (substitute day)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_liberation_day(self):
+        name = "Liberation Day"
         self.assertHolidayName(
-            "Liberation Day",
+            name,
             "2010-05-10",
-            (f"{year}-05-09" for year in range(1946, 2010)),
-            (f"{year}-05-09" for year in range(2011, 2050)),
+            (f"{year}-05-09" for year in (*range(1946, 2010), *range(2011, 2050))),
         )
+        self.assertNoHolidayName(name, range(self.start_year, 1946))
 
     def test_2019(self):
         # Wayback Machine of https://www.gov.gg/holidaydates
-        self.assertHolidays(
-            Guernsey(years=2019),
+        self.assertHolidaysInYear(
+            2019,
             ("2019-01-01", "New Year's Day"),
             ("2019-04-19", "Good Friday"),
             ("2019-04-22", "Easter Monday"),
@@ -133,8 +274,8 @@ class TestGG(CommonCountryTests, TestCase):
 
     def test_2020(self):
         # Wayback Machine of https://www.gov.gg/holidaydates
-        self.assertHolidays(
-            Guernsey(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "New Year's Day"),
             ("2020-04-10", "Good Friday"),
             ("2020-04-13", "Easter Monday"),
@@ -149,8 +290,8 @@ class TestGG(CommonCountryTests, TestCase):
 
     def test_2021(self):
         # Wayback Machine of https://www.gov.gg/holidaydates
-        self.assertHolidays(
-            Guernsey(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "New Year's Day"),
             ("2021-04-02", "Good Friday"),
             ("2021-04-05", "Easter Monday"),
@@ -167,8 +308,8 @@ class TestGG(CommonCountryTests, TestCase):
     def test_2022(self):
         # Wayback Machine of https://www.gov.gg/holidaydates
         # https://www.bbc.com/news/world-europe-guernsey-62864318
-        self.assertHolidays(
-            Guernsey(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (substitute day)"),
             ("2022-04-15", "Good Friday"),
@@ -186,8 +327,8 @@ class TestGG(CommonCountryTests, TestCase):
 
     def test_2023(self):
         # https://www.gov.gg/holidaydates
-        self.assertHolidays(
-            Guernsey(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day (substitute day)"),
             ("2023-04-07", "Good Friday"),
@@ -204,8 +345,8 @@ class TestGG(CommonCountryTests, TestCase):
     def test_2024(self):
         # https://www.gov.gg/holidaydates
         # https://www.bbc.co.uk/news/articles/c1441ddn87po
-        self.assertHolidays(
-            Guernsey(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-03-29", "Good Friday"),
             ("2024-04-01", "Easter Monday"),
@@ -220,8 +361,8 @@ class TestGG(CommonCountryTests, TestCase):
 
     def test_2025(self):
         # https://www.gov.gg/holidaydates
-        self.assertHolidays(
-            Guernsey(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "New Year's Day"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),

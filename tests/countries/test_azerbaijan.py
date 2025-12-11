@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import WORKDAY
 from holidays.countries.azerbaijan import Azerbaijan
 from tests.common import CommonCountryTests, WorkingDayTests
 
@@ -362,8 +361,8 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2021(self):
-        self.assertHolidayDates(
-            Azerbaijan(years=2021),
+        self.assertHolidayDatesInYear(
+            2021,
             "2021-01-01",
             "2021-01-02",
             "2021-01-04",
@@ -395,8 +394,8 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Azerbaijan(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Yeni il bayramı"),
             ("2022-01-02", "Yeni il bayramı"),
             ("2022-01-03", "Yeni il bayramı (müşahidə olunur)"),
@@ -429,8 +428,8 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_2022_workday(self):
-        self.assertHolidays(
-            Azerbaijan(categories=WORKDAY, years=2022),
+        self.assertWorkdayHolidaysInYear(
+            2022,
             ("2022-09-27", "Anım Günü"),
             ("2022-10-18", "Müstəqilliyin Bərpası Günü"),
             ("2022-11-12", "Konstitusiya Günü"),

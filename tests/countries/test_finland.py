@@ -20,10 +20,7 @@ from tests.common import CommonCountryTests
 class TestFinland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1853, 2050)
-        super().setUpClass(Finland, years=years)
-        cls.unofficial_holidays = Finland(categories=UNOFFICIAL, years=years)
-        cls.workday_holidays = Finland(categories=WORKDAY, years=years)
+        super().setUpClass(Finland)
 
     def test_no_holidays(self):
         super().test_no_holidays()
@@ -53,7 +50,11 @@ class TestFinland(CommonCountryTests, TestCase):
             "1989-01-06",
         )
         self.assertHolidayName(
-            name, (f"{year}-01-06" for year in (*range(1853, 1973), *range(1991, 2050)))
+            name,
+            (
+                f"{year}-01-06"
+                for year in (*range(self.start_year, 1973), *range(1991, self.end_year))
+            ),
         )
         self.assertHolidayName(name, range(1973, 1991))
 
@@ -68,7 +69,7 @@ class TestFinland(CommonCountryTests, TestCase):
             "2022-04-15",
             "2023-04-07",
         )
-        self.assertHolidayName(name, range(1853, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_sunday(self):
         name = "Pääsiäispäivä"
@@ -81,7 +82,7 @@ class TestFinland(CommonCountryTests, TestCase):
             "2022-04-17",
             "2023-04-09",
         )
-        self.assertHolidayName(name, range(1853, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "Toinen pääsiäispäivä"
@@ -94,7 +95,7 @@ class TestFinland(CommonCountryTests, TestCase):
             "2022-04-18",
             "2023-04-10",
         )
-        self.assertHolidayName(name, range(1853, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_ascension_day(self):
         name = "Helatorstai"
@@ -127,18 +128,18 @@ class TestFinland(CommonCountryTests, TestCase):
             "1989-05-04",
             "1990-05-24",
         )
-        self.assertHolidayName(name, range(1853, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_may_day(self):
         name = "Vappu"
         # PUBLIC.
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1944, 2050)))
-        self.assertNoHolidayName(name, range(1853, 1944))
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1944, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1944))
         # WORKDAY.
-        self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-05-01" for year in range(1979, 2050))
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-05-01" for year in range(1979, self.end_year))
         )
-        self.assertNoHolidayName(name, self.workday_holidays, range(1853, 1979))
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 1979))
 
     def test_whit_sunday(self):
         name = "Helluntaipäivä"
@@ -151,7 +152,7 @@ class TestFinland(CommonCountryTests, TestCase):
             "2022-06-05",
             "2023-05-28",
         )
-        self.assertHolidayName(name, range(1853, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_midsummer_eve(self):
         name = "Juhannusaatto"
@@ -170,8 +171,8 @@ class TestFinland(CommonCountryTests, TestCase):
             "1956-06-23",
             "1957-06-23",
         )
-        self.assertHolidayName(name, (f"{year}-06-23" for year in range(1853, 1955)))
-        self.assertHolidayName(name, range(1955, 2050))
+        self.assertHolidayName(name, (f"{year}-06-23" for year in range(self.start_year, 1955)))
+        self.assertHolidayName(name, range(1955, self.end_year))
 
     def test_midsummer_day(self):
         name = "Juhannuspäivä"
@@ -192,17 +193,17 @@ class TestFinland(CommonCountryTests, TestCase):
         # PUBLIC.
         self.assertHolidayName(name, dt)
         self.assertNoHolidayName(name, dt_no_obs)
-        self.assertHolidayName(name, (f"{year}-06-24" for year in range(1853, 1955)))
-        self.assertHolidayName(name, range(1955, 2050))
+        self.assertHolidayName(name, (f"{year}-06-24" for year in range(self.start_year, 1955)))
+        self.assertHolidayName(name, range(1955, self.end_year))
         # WORKDAY.
-        self.assertHolidayName(name_workday, self.workday_holidays, dt)
-        self.assertNoHolidayName(name_workday, self.workday_holidays, dt_no_obs)
-        self.assertHolidayName(
-            name_workday, self.workday_holidays, (f"{year}-06-24" for year in range(1934, 1955))
-        )
-        self.assertHolidayName(name_workday, self.workday_holidays, range(1955, 2050))
-        self.assertNoHolidayName(name_workday, self.workday_holidays, range(1853, 1934))
         self.assertNoHolidayName(name_workday)
+        self.assertWorkdayHolidayName(name_workday, dt)
+        self.assertNoWorkdayHolidayName(name_workday, dt_no_obs)
+        self.assertWorkdayHolidayName(
+            name_workday, (f"{year}-06-24" for year in range(1934, 1955))
+        )
+        self.assertWorkdayHolidayName(name_workday, range(1955, self.end_year))
+        self.assertNoWorkdayHolidayName(name_workday, range(self.start_year, 1934))
 
     def test_all_saints_day(self):
         name = "Pyhäinpäivä"
@@ -222,35 +223,39 @@ class TestFinland(CommonCountryTests, TestCase):
             "1956-11-01",
             "1957-11-01",
         )
-        self.assertHolidayName(name, (f"{year}-11-01" for year in range(1853, 1955)))
-        self.assertHolidayName(name, range(1955, 2050))
+        self.assertHolidayName(name, (f"{year}-11-01" for year in range(self.start_year, 1955)))
+        self.assertHolidayName(name, range(1955, self.end_year))
 
     def test_independence_day(self):
         name = "Itsenäisyyspäivä"
         # PUBLIC.
-        self.assertHolidayName(name, (f"{year}-12-06" for year in range(1919, 2050)))
-        self.assertNoHolidayName(name, range(1853, 1919))
+        self.assertHolidayName(name, (f"{year}-12-06" for year in range(1919, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1919))
         # WORKDAY.
-        self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-12-06" for year in range(1919, 2050))
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-12-06" for year in range(1919, self.end_year))
         )
-        self.assertNoHolidayName(name, self.workday_holidays, range(1853, 1919))
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 1919))
 
-    def _test_categorized_holiday(self, name, holidays_list, since, end_year):
+    def _test_categorized_holiday(self, name, holidays_list, since, end_year=None):
+        if end_year is None:
+            end_year = self.end_year
         start_year, month, day = (int(p) for p in since.split("-"))
+        self.assertNoHolidayName(name)
         self.assertHolidayName(
             name,
             holidays_list,
             (f"{year}-{month:02d}-{day:02d}" for year in range(start_year, end_year)),
         )
-        self.assertNoHolidayName(name, holidays_list, range(1853, start_year))
-        self.assertNoHolidayName(name)
+        self.assertNoHolidayName(name, holidays_list, range(self.start_year, start_year))
+        if end_year != self.end_year:
+            self.assertNoHolidayName(name, holidays_list, range(end_year, self.end_year))
 
-    def _test_unofficial_holiday(self, name, since, end_year=2050):
-        self._test_categorized_holiday(name, self.unofficial_holidays, since, end_year)
+    def _test_unofficial_holiday(self, name, since, end_year=None):
+        self._test_categorized_holiday(name, self.holidays_unofficial, since, end_year)
 
-    def _test_workday_holiday(self, name, since, end_year=2050):
-        self._test_categorized_holiday(name, self.workday_holidays, since, end_year)
+    def _test_workday_holiday(self, name, since, end_year=None):
+        self._test_categorized_holiday(name, self.holidays_workday, since, end_year)
 
     def test_runeberg_day(self):
         self._test_unofficial_holiday("Runebergin päivä", "1976-02-05")
@@ -272,17 +277,16 @@ class TestFinland(CommonCountryTests, TestCase):
 
     def test_mothers_day(self):
         name = "Äitienpäivä"
-        self.assertHolidayName(
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
             name,
-            self.workday_holidays,
             "1947-05-11",
             "1948-05-09",
             "2020-05-10",
             "2024-05-12",
         )
-        self.assertHolidayName(name, self.workday_holidays, range(1947, 2050))
-        self.assertNoHolidayName(name, self.workday_holidays, range(1853, 1947))
-        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, range(1947, self.end_year))
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 1947))
 
     def test_j_v_snellmans_day_day_of_finnish_heritage(self):
         self._test_unofficial_holiday("J.V. Snellmanin päivä", "1952-05-12", 1978)
@@ -290,18 +294,17 @@ class TestFinland(CommonCountryTests, TestCase):
 
     def test_remembrance_day(self):
         name = "Kaatuneitten muistopäivä"
-        self.assertHolidayName(
+        self.assertNoHolidayName(name)
+        self.assertUnofficialHolidayName(
             name,
-            self.unofficial_holidays,
             "1977-05-15",
             "1978-05-21",
             "1985-05-19",
             "2024-05-19",
             "2025-05-18",
         )
-        self.assertHolidayName(name, self.unofficial_holidays, range(1977, 2050))
-        self.assertNoHolidayName(name, self.unofficial_holidays, range(1853, 1977))
-        self.assertNoHolidayName(name)
+        self.assertUnofficialHolidayName(name, range(1977, self.end_year))
+        self.assertNoUnofficialHolidayName(name, range(self.start_year, 1977))
 
     def test_flag_day_of_the_finnish_defense_forces(self):
         self._test_workday_holiday("Suomen marsalkan syntymäpäivä", "1942-06-06", 1950)
@@ -312,17 +315,16 @@ class TestFinland(CommonCountryTests, TestCase):
 
     def test_finlands_nature_day(self):
         name = "Suomen luonnon päivä"
-        self.assertHolidayName(
+        self.assertNoHolidayName(name)
+        self.assertUnofficialHolidayName(
             name,
-            self.unofficial_holidays,
             "2023-08-26",
             "2024-08-31",
             "2025-08-30",
             "2026-08-29",
         )
-        self.assertHolidayName(name, self.unofficial_holidays, range(2023, 2050))
-        self.assertNoHolidayName(name, self.unofficial_holidays, range(1853, 2023))
-        self.assertNoHolidayName(name)
+        self.assertUnofficialHolidayName(name, range(2023, self.end_year))
+        self.assertNoUnofficialHolidayName(name, range(self.start_year, 2023))
 
     def test_miina_sillanpaa_day_day_of_civic_participation(self):
         self._test_unofficial_holiday(
@@ -343,32 +345,29 @@ class TestFinland(CommonCountryTests, TestCase):
 
     def test_fathers_day(self):
         name = "Isänpäivä"
+        self.assertNoHolidayName(name)
         # UNOFFICIAL.
-        self.assertHolidayName(
+        self.assertUnofficialHolidayName(
             name,
-            self.unofficial_holidays,
             "1987-11-08",
             "1988-11-13",
             "2017-11-12",
             "2018-11-11",
         )
-        self.assertHolidayName(name, self.unofficial_holidays, range(1987, 2019))
-        self.assertNoHolidayName(
-            name, self.unofficial_holidays, range(1853, 1987), range(2019, 2050)
+        self.assertUnofficialHolidayName(name, range(1987, 2019))
+        self.assertNoUnofficialHolidayName(
+            name, range(self.start_year, 1987), range(2019, self.end_year)
         )
         # WORKDAY.
-        self.assertHolidayName(
+        self.assertWorkdayHolidayName(
             name,
-            self.workday_holidays,
             "2019-11-10",
             "2020-11-08",
             "2021-11-14",
             "2024-11-10",
         )
-        self.assertHolidayName(name, self.workday_holidays, "2020-11-08", "2024-11-10")
-        self.assertHolidayName(name, self.workday_holidays, range(2019, 2050))
-        self.assertNoHolidayName(name, self.workday_holidays, range(1853, 2019))
-        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, range(2019, self.end_year))
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 2019))
 
     def test_day_of_childrens_rights(self):
         self._test_unofficial_holiday("Lapsen oikeuksien päivä", "2020-11-20")
@@ -380,16 +379,15 @@ class TestFinland(CommonCountryTests, TestCase):
 
     def test_alands_autonomy_day(self):
         name = "Ahvenanmaan itsehallintopäivä"
-        subdiv_01_public_holidays = Finland(subdiv="01", years=range(1853, 2050))
-        self.assertHolidayName(
-            name, subdiv_01_public_holidays, (f"{year}-06-09" for year in range(1993, 2050))
-        )
-        self.assertNoHolidayName(name, subdiv_01_public_holidays, range(1853, 1993))
         self.assertNoHolidayName(name)
+        self.assertSubdiv01HolidayName(
+            name, (f"{year}-06-09" for year in range(1993, self.end_year))
+        )
+        self.assertNoSubdiv01HolidayName(name, range(self.start_year, 1993))
 
     def test_unofficial_holidays(self):
-        self.assertHolidays(
-            Finland(categories=UNOFFICIAL, years=2024),
+        self.assertUnofficialHolidaysInYear(
+            2024,
             ("2024-02-05", "Runebergin päivä"),
             ("2024-03-19", "Minna Canthin päivä, tasa-arvon päivä"),
             ("2024-04-09", "Mikael Agricolan päivä, suomen kielen päivä"),
@@ -408,8 +406,8 @@ class TestFinland(CommonCountryTests, TestCase):
         )
 
     def test_workday_holidays(self):
-        self.assertHolidays(
-            Finland(categories=WORKDAY, years=2024),
+        self.assertWorkdayHolidaysInYear(
+            2024,
             ("2024-02-28", "Kalevalan päivä, suomalaisen kulttuurin päivä"),
             ("2024-05-01", "Vappu"),
             ("2024-05-12", "Äitienpäivä"),
@@ -420,8 +418,8 @@ class TestFinland(CommonCountryTests, TestCase):
         )
 
     def test_2018(self):
-        self.assertHolidays(
-            Finland(years=2018),
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "Uudenvuodenpäivä"),
             ("2018-01-06", "Loppiainen"),
             ("2018-03-30", "Pitkäperjantai"),
@@ -440,8 +438,8 @@ class TestFinland(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Finland(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Uudenvuodenpäivä"),
             ("2022-01-06", "Loppiainen"),
             ("2022-04-15", "Pitkäperjantai"),
@@ -576,7 +574,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2024-01-06", "วันสมโภชพระคริสต์แสดงองค์"),
             ("2024-02-05", "วันรูนแบร์ก"),
             ("2024-02-28", "วันกาเลวาลา, วันวัฒนธรรมฟินแลนด์"),
-            ("2024-03-19", "วันมินน่า คานท์, วันแห่งความความเสมอภาค"),
+            ("2024-03-19", "วันมินน่า คานท์, วันแห่งความเสมอภาค"),
             ("2024-03-29", "วันศุกร์ประเสริฐ"),
             ("2024-03-31", "วันอาทิตย์อีสเตอร์"),
             ("2024-04-01", "วันจันทร์อีสเตอร์"),

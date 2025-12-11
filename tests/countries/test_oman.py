@@ -173,8 +173,8 @@ class TestOman(CommonCountryTests, TestCase):
             self.assertFalse(self.holidays.is_weekend(dt))
 
     def test_2019(self):
-        self.assertHolidays(
-            Oman(years=2019),
+        self.assertHolidaysInYear(
+            2019,
             ("2019-04-03", "الإسراء والمعراج"),
             ("2019-06-03", "عيد الفطر (المقدرة)"),
             ("2019-06-04", "عيد الفطر"),
@@ -190,8 +190,8 @@ class TestOman(CommonCountryTests, TestCase):
         )
 
     def test_2021(self):
-        self.assertHolidays(
-            Oman(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-11", "اليوم الوطني لتولي السلطان"),
             ("2021-03-11", "الإسراء والمعراج"),
             ("2021-05-11", "عيد الفطر (المقدرة)"),

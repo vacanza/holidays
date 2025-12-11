@@ -309,8 +309,8 @@ class TestLebanon(CommonCountryTests, TestCase):
         self.assertHolidayNameCount(name, 3, self.no_estimated_holidays, range(1986, 1994))
 
     def test_2024(self):
-        self.assertHolidays(
-            Lebanon(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "رأس السنة الميلادية"),
             ("2024-01-06", "عيد الميلاد عند الطوائف الارمنية الارثوذكسية"),
             ("2024-02-09", "عيد مار مارون"),

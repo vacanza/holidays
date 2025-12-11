@@ -22,8 +22,8 @@ class TestMalta(CommonCountryTests, TestCase):
         super().setUpClass(Malta)
 
     def test_1980(self):
-        self.assertHolidays(
-            Malta(years=1980),
+        self.assertHolidaysInYear(
+            1980,
             ("1980-01-01", "L-Ewwel tas-Sena"),
             ("1980-03-31", "Jum il-Ħelsien"),
             ("1980-04-04", "Il-Ġimgħa l-Kbira"),
@@ -34,8 +34,8 @@ class TestMalta(CommonCountryTests, TestCase):
         )
 
     def test_1987(self):
-        self.assertHolidays(
-            Malta(years=1987),
+        self.assertHolidaysInYear(
+            1987,
             ("1987-01-01", "L-Ewwel tas-Sena"),
             ("1987-02-10", "Il-Festa tan-Nawfraġju ta' San Pawl"),
             ("1987-03-19", "Il-Festa ta' San Ġużepp"),
@@ -51,8 +51,8 @@ class TestMalta(CommonCountryTests, TestCase):
         )
 
     def test_1989(self):
-        self.assertHolidays(
-            Malta(years=1989),
+        self.assertHolidaysInYear(
+            1989,
             ("1989-01-01", "L-Ewwel tas-Sena"),
             ("1989-02-10", "Il-Festa tan-Nawfraġju ta' San Pawl"),
             ("1989-03-19", "Il-Festa ta' San Ġużepp"),
@@ -70,8 +70,8 @@ class TestMalta(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Malta(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "L-Ewwel tas-Sena"),
             ("2022-02-10", "Il-Festa tan-Nawfraġju ta' San Pawl"),
             ("2022-03-19", "Il-Festa ta' San Ġużepp"),

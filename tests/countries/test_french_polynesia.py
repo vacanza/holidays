@@ -51,8 +51,8 @@ class TestFrenchPolynesia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(self.start_year, 2025))
 
     def test_2024(self):
-        self.assertHolidays(
-            FrenchPolynesia(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "Jour de l'an"),
             ("2024-03-05", "Arrivée de l'Évangile"),
             ("2024-03-29", "Vendredi saint"),

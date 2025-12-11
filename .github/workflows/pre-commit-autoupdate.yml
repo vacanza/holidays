@@ -17,30 +17,24 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3
+      - name: Check out repository
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
+      - name: Install uv
+        uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244
         with:
-          cache: pip
           python-version: '3.14'
+          version: '0.9.16'
 
-      - name: Install dependencies
-        run: |
-          python -m pip install pre-commit
-
-      - name: Use pre-commit environment cache
-        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
-        with:
-          key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
-          path: ~/.cache/pre-commit
-          restore-keys: ${{ runner.os }}-pre-commit-
+      - name: Install Python
+        run: uv python install "$UV_PYTHON"
 
       - name: Run pre-commit automatic update
         run: |
-          pre-commit autoupdate
-          pre-commit run --all-files
+          uv tool run --with pre-commit-uv pre-commit autoupdate
+          uv tool run --with pre-commit-uv pre-commit run --all-files
 
-      - uses: peter-evans/create-pull-request@84ae59a2cdc2258d6fa0732dd66352dddae2a412
+      - uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676
         with:
           base: dev
           body: Update pre-commit hooks to their latest versions.

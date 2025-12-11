@@ -121,8 +121,8 @@ class TestPalau(CommonCountryTests, TestCase):
 
     def test_2022(self):
         # https://www.facebook.com/photo/?fbid=2076492362502852&set=a.175933635892077
-        self.assertHolidays(
-            Palau(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-03-15", "Youth Day"),
             ("2022-05-05", "Senior Citizens Day"),
@@ -141,8 +141,8 @@ class TestPalau(CommonCountryTests, TestCase):
 
     def test_2023(self):
         # https://www.facebook.com/photo/?fbid=510442897789296&set=a.368725625294358
-        self.assertHolidays(
-            Palau(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day (observed)"),
             ("2023-03-15", "Youth Day"),

@@ -209,8 +209,8 @@ class TestSierraLeone(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_2024(self):
-        self.assertHolidays(
-            SierraLeone(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-02-18", "Armed Forces Day"),
             ("2024-02-19", "Armed Forces Day (observed)"),

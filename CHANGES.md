@@ -1,3 +1,24 @@
+# Version 0.86
+
+Released December 1, 2025
+
+- Introduce `HolidayBase::_add_multiday_holiday` method (#3059 by @KJhellico, @arkid15r)
+- Refactor Taiwan holidays (#3077 by @KJhellico)
+- Refactor some `HolidayBase` methods (#3079 by @KJhellico, @arkid15r)
+- Fix typography: replace U+2019 with "'" (#3076 by @KJhellico)
+- Update .readthedocs.yaml: bump OS/Python versions (#3093 by @arkid15r)
+- Update Bulgaria holidays (#3078 by @KJhellico)
+- Update Estonia holidays (#3089 by @KJhellico)
+- Update Italy holidays: add new holiday Oct 4, historical holidays, l10n support (#3075 by @KJhellico)
+- Update Nepal holidays: add l10n support (#3091 by @NehaaGaikwad)
+- Update Sweden holidays: add categories support (#3096 by @KJhellico)
+- Update Taiwan holidays: fix l10n for substituted day off (#3066 by @petercpg)
+- Update documentation: remove mixins from summary (#3094 by @KJhellico)
+- Add `assert{variant}HolidayDatesInYear`, `assert{variant}HolidaysInYear` test methods (#3090 by @PPsyrius, @arkid15r)
+- Add comprehensive holiday categories documentation (#2851 by @tharu-jwd, @arkid15r, @KJhellico)
+- Library-wide `th` l10n typo cleanup (#3097 by @PPsyrius)
+- Migrate D-H countries to new test case standards (#3088 by @PPsyrius)
+
 # Version 0.85
 
 Released November 17, 2025

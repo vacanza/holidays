@@ -53,7 +53,7 @@ msgstr "วันสมโภชนักบุญโยเซฟ"
 
 #. Maundy Thursday.
 msgid "Giovedì Santo"
-msgstr "วันพฤหัสศักดิสิทธิ์"
+msgstr "วันพฤหัสศักดิ์สิทธิ์"
 
 #. Good Friday.
 msgid "Venerdì Santo"

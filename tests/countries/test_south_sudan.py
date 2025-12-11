@@ -171,8 +171,8 @@ class TestSouthSudan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.islamic_holidays, range(2012, 2050))
 
     def test_2020(self):
-        self.assertHolidays(
-            SouthSudan(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "New Year's Day"),
             ("2020-01-09", "Peace Agreement Day"),
             ("2020-04-10", "Good Friday"),

@@ -27,8 +27,8 @@ class TestSaintBarthelemy(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(self.start_year, 2012))
 
     def test_2024(self):
-        self.assertHolidays(
-            SaintBarthelemy(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "Jour de l'an"),
             ("2024-04-01", "Lundi de Pâques"),
             ("2024-05-01", "Fête du Travail"),

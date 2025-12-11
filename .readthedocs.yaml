@@ -7,6 +7,15 @@ build:
   tools:
     # https://docs.readthedocs.com/platform/stable/config-file/v2.html#build-tools-python
     python: '3.14'
+  jobs:
+    pre_create_environment:
+       - asdf plugin add uv
+       - asdf install uv 0.9.16
+       - asdf global uv 0.9.16
+    create_environment:
+       - uv venv "${READTHEDOCS_VIRTUALENV_PATH}"
+    install:
+       - UV_PROJECT_ENVIRONMENT="${READTHEDOCS_VIRTUALENV_PATH}" uv sync --frozen --no-dev --group docs
 
 mkdocs:
   configuration: mkdocs.yml

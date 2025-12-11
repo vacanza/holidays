@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import OPTIONAL
 from holidays.countries.costa_rica import CostaRica
 from tests.common import CommonCountryTests
 
@@ -228,8 +227,8 @@ class TestCostaRica(CommonCountryTests, TestCase):
         self.assertHolidayName("Navidad", (f"{year}-12-25" for year in self.full_range))
 
     def test_2022(self):
-        self.assertHolidays(
-            CostaRica(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Año Nuevo"),
             ("2022-04-11", "Día de Juan Santamaría"),
             ("2022-04-14", "Jueves Santo"),
@@ -241,8 +240,8 @@ class TestCostaRica(CommonCountryTests, TestCase):
             ("2022-12-25", "Navidad"),
         )
 
-        self.assertNonObservedHolidays(
-            CostaRica(years=2022, observed=False),
+        self.assertNonObservedHolidaysInYear(
+            2022,
             ("2022-01-01", "Año Nuevo"),
             ("2022-04-11", "Día de Juan Santamaría"),
             ("2022-04-14", "Jueves Santo"),
@@ -255,16 +254,16 @@ class TestCostaRica(CommonCountryTests, TestCase):
         )
 
     def test_optional_2022(self):
-        self.assertHolidays(
-            CostaRica(categories=OPTIONAL, years=2022),
+        self.assertOptionalHolidaysInYear(
+            2022,
             ("2022-08-02", "Fiesta de Nuestra Señora de los Ángeles"),
             ("2022-09-04", "Día de la Persona Negra y la Cultura Afrocostarricense (observado)"),
             ("2022-12-05", "Día de la Abolición del Ejército (observado)"),
         )
 
     def test_2023(self):
-        self.assertHolidays(
-            CostaRica(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "Año Nuevo"),
             ("2023-04-06", "Jueves Santo"),
             ("2023-04-07", "Viernes Santo"),
@@ -277,8 +276,8 @@ class TestCostaRica(CommonCountryTests, TestCase):
         )
 
     def test_optional_2023(self):
-        self.assertHolidays(
-            CostaRica(categories=OPTIONAL, years=2023),
+        self.assertOptionalHolidaysInYear(
+            2023,
             ("2023-08-02", "Fiesta de Nuestra Señora de los Ángeles"),
             ("2023-09-03", "Día de la Persona Negra y la Cultura Afrocostarricense (observado)"),
             ("2023-12-01", "Día de la Abolición del Ejército"),

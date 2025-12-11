@@ -170,7 +170,6 @@ class TestReadme(TestCase):
             ),
         )
 
-        country_names = {c.split("(the)")[0] for c in country_names}
         supported_countries = list_supported_countries(include_aliases=False)
         localized_countries = list_localized_countries(include_aliases=False)
         for country_code in supported_countries:
@@ -248,6 +247,7 @@ class TestReadme(TestCase):
         market_default_languages = {}
         market_names = []
         market_supported_languages = {}
+        market_supported_categories = {}
         default_value_re = re.compile(r"<strong>(.*?)</strong>")
 
         # Parse 2nd table.
@@ -283,6 +283,14 @@ class TestReadme(TestCase):
                     languages.append(supported_language)
 
                 market_supported_languages[market_code] = languages
+
+            # Supported Categories: 5th column.
+            supported_categories = row[4]
+            if supported_categories:
+                categories = [PUBLIC]
+                for supported_category in supported_categories.split(","):
+                    categories.append(supported_category.strip().lower())
+                market_supported_categories[market_code] = sorted(categories)
 
         # Check the data.
         self.assertEqual(
@@ -334,3 +342,14 @@ class TestReadme(TestCase):
                     "to specify the market default language: "
                     f"<strong>{instance.default_language}</strong>.",
                 )
+
+            # Make sure supported categories are shown correctly.
+            supported_categories = sorted(instance.supported_categories)
+            self.assertEqual(
+                supported_categories,
+                market_supported_categories.get(market_code, [PUBLIC]),
+                f"Market {market_name} supported categories are not "
+                "shown correctly in the table. The column must contain "
+                "all supported categories: "
+                f"{', '.join(instance.supported_categories)}",
+            )

@@ -264,8 +264,8 @@ class TestAfghanistan(CommonCountryTests, TestCase):
         self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1925))
 
     def test_2021(self):
-        self.assertHolidays(
-            Afghanistan(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-02-15", "روز آزادی"),
             ("2021-04-13", "اول رمضان"),
             ("2021-04-28", "روز پیروزی مجاهدین"),

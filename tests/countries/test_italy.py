@@ -233,8 +233,8 @@ class TestItaly(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(self.start_year, 1949))
 
     def test_2022(self):
-        self.assertHolidays(
-            Italy(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Capodanno"),
             ("2022-01-06", "Epifania"),
             ("2022-04-18", "Lunedì dell'Angelo"),

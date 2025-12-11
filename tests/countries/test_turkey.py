@@ -139,8 +139,8 @@ class TestTurkey(CommonCountryTests, TestCase):
         self.assertHolidayNameCount(name, 8, self.no_estimated_holidays, 1974, 2039)
 
     def test_2022(self):
-        self.assertHolidays(
-            Turkey(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Yılbaşı"),
             ("2022-04-23", "Ulusal Egemenlik ve Çocuk Bayramı"),
             ("2022-05-01", "Emek ve Dayanışma Günü"),

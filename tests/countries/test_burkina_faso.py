@@ -159,8 +159,8 @@ class TestBurkinaFaso(CommonCountryTests, TestCase):
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_2022(self):
-        self.assertHolidays(
-            BurkinaFaso(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "Revolution Day"),
             ("2022-03-08", "International Women's Day"),

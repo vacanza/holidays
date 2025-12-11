@@ -201,8 +201,8 @@ class TestBelize(CommonCountryTests, TestCase):
 
     def test_2021(self):
         # https://www.pressoffice.gov.bz/public-and-bank-holidays-2021-3/
-        self.assertHolidays(
-            Belize(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "New Year's Day"),
             ("2021-01-15", "George Price Day"),
             ("2021-03-08", "National Heroes and Benefactors Day (observed)"),
@@ -222,8 +222,8 @@ class TestBelize(CommonCountryTests, TestCase):
 
     def test_2022(self):
         # https://www.pressoffice.gov.bz/public-and-bank-holidays-2022-updated/
-        self.assertHolidays(
-            Belize(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-15", "George Price Day"),
             ("2022-03-07", "National Heroes and Benefactors Day (observed)"),

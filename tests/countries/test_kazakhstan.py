@@ -298,9 +298,9 @@ class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHoliday(observed_holidays)
         self.assertNoNonObservedHoliday(observed_holidays)
 
-    def test2022(self):
-        self.assertHolidays(
-            Kazakhstan(years=2022),
+    def test_2022(self):
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Жаңа жыл"),
             ("2022-01-02", "Жаңа жыл"),
             ("2022-01-03", "Жаңа жыл (қайта белгіленген демалыс)"),

@@ -126,8 +126,8 @@ class TestTonga(CommonCountryTests, TestCase):
 
     def test_2017(self):
         # https://www.officeholidays.com/countries/tonga/2017
-        self.assertHolidays(
-            Tonga(years=2017),
+        self.assertHolidaysInYear(
+            2017,
             ("2017-01-01", "'Uluaki 'Aho 'o e Ta'u Fo'ou"),
             ("2017-04-14", "Falaite Lelei"),
             ("2017-04-17", "Monite 'o e Toetu'u"),
@@ -148,8 +148,8 @@ class TestTonga(CommonCountryTests, TestCase):
 
     def test_2018(self):
         # https://www.gov.to/press-release/tonga-public-holidays-for-2018/
-        self.assertHolidays(
-            Tonga(years=2018),
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "'Uluaki 'Aho 'o e Ta'u Fo'ou"),
             ("2018-03-30", "Falaite Lelei"),
             ("2018-04-02", "Monite 'o e Toetu'u"),
@@ -171,8 +171,8 @@ class TestTonga(CommonCountryTests, TestCase):
 
     def test_2019(self):
         # https://www.gov.to/press-release/tonga-public-holidays-for-2019-2/
-        self.assertHolidays(
-            Tonga(years=2019),
+        self.assertHolidaysInYear(
+            2019,
             ("2019-01-01", "'Uluaki 'Aho 'o e Ta'u Fo'ou"),
             ("2019-04-19", "Falaite Lelei"),
             ("2019-04-22", "Monite 'o e Toetu'u"),
@@ -196,8 +196,8 @@ class TestTonga(CommonCountryTests, TestCase):
 
     def test_2020(self):
         # https://www.gov.to/press-release/tonga-public-holidays-for-2020/
-        self.assertHolidays(
-            Tonga(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "'Uluaki 'Aho 'o e Ta'u Fo'ou"),
             ("2020-04-10", "Falaite Lelei"),
             ("2020-04-13", "Monite 'o e Toetu'u"),
@@ -219,8 +219,8 @@ class TestTonga(CommonCountryTests, TestCase):
 
     def test_2021(self):
         # https://www.gov.to/press-release/tonga-public-holidays-for-2021/
-        self.assertHolidays(
-            Tonga(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "'Uluaki 'Aho 'o e Ta'u Fo'ou"),
             ("2021-04-02", "Falaite Lelei"),
             ("2021-04-05", "Monite 'o e Toetu'u"),
@@ -250,8 +250,8 @@ class TestTonga(CommonCountryTests, TestCase):
 
     def test_2022(self):
         # https://www.gov.to/press-release/tonga-public-holidays-for-2022/
-        self.assertHolidays(
-            Tonga(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "'Uluaki 'Aho 'o e Ta'u Fo'ou"),
             ("2022-04-15", "Falaite Lelei"),
             ("2022-04-18", "Monite 'o e Toetu'u"),
@@ -273,8 +273,8 @@ class TestTonga(CommonCountryTests, TestCase):
 
     def test_2024(self):
         # https://www.gov.to/press-release/tonga-public-holidays-for-2024/
-        self.assertHolidays(
-            Tonga(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "'Uluaki 'Aho 'o e Ta'u Fo'ou"),
             ("2024-03-29", "Falaite Lelei"),
             ("2024-04-01", "Monite 'o e Toetu'u"),

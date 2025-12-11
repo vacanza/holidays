@@ -104,8 +104,8 @@ class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Norway(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Første nyttårsdag"),
             ("2022-04-14", "Skjærtorsdag"),
             ("2022-04-15", "Langfredag"),
@@ -174,7 +174,7 @@ class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
         self.assertLocalizedHolidays(
             "th",
             ("2022-01-01", "วันขึ้นปีใหม่"),
-            ("2022-04-14", "วันพฤหัสศักดิสิทธิ์"),
+            ("2022-04-14", "วันพฤหัสศักดิ์สิทธิ์"),
             ("2022-04-15", "วันศุกร์ประเสริฐ"),
             ("2022-04-17", "วันอาทิตย์อีสเตอร์"),
             ("2022-04-18", "วันจันทร์อีสเตอร์"),

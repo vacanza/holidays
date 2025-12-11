@@ -1035,8 +1035,8 @@ class TestMalaysia(CommonCountryTests, TestCase):
             self.assertFalse(subdiv_01_holidays.is_weekend(dt))
 
     def test_2024(self):
-        self.assertHolidays(
-            Malaysia(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-02-10", "Tahun Baharu Cina"),
             ("2024-02-11", "Tahun Baharu Cina (Hari Kedua)"),
             ("2024-02-12", "Cuti Tahun Baharu Cina (Hari Kedua)"),

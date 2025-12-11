@@ -144,8 +144,8 @@ class TestCameroon(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2022(self):
-        self.assertHolidays(
-            Cameroon(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-02-11", "Youth Day"),
             ("2022-04-15", "Good Friday"),

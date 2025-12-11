@@ -46,6 +46,7 @@ from holidays.helpers import _normalize_arguments, _normalize_tuple
 CategoryArg = str | Iterable[str]
 DateArg = date | tuple[int, int] | tuple[int, int, int]
 DateLike = date | datetime | str | float | int
+NameLookup = Literal["contains", "exact", "startswith", "icontains", "iexact", "istartswith"]
 SpecialHoliday = tuple[int, int, str] | tuple[tuple[int, int, str], ...]
 SubstitutedHoliday = (
     tuple[int, int, int, int]
@@ -558,27 +559,25 @@ class HolidayBase(dict[date, str]):
 
             if key.step is None:
                 step = 1
-            elif isinstance(key.step, timedelta):
-                step = key.step.days
             elif isinstance(key.step, int):
                 step = key.step
+            elif isinstance(key.step, timedelta):
+                step = key.step.days
             else:
                 raise TypeError(f"Cannot convert type '{type(key.step)}' to int.")
 
             if step == 0:
                 raise ValueError("Step value must not be zero.")
 
-            date_diff = stop - start
-            if date_diff.days < 0 <= step or date_diff.days >= 0 > step:
-                step *= -1
+            diff_days = (stop - start).days
+            if diff_days < 0 <= step or diff_days >= 0 > step:
+                step = -step
 
-            days_in_range = []
-            for delta_days in range(0, date_diff.days, step):
-                day = _timedelta(start, delta_days)
-                if day in self:
-                    days_in_range.append(day)
-
-            return days_in_range
+            return [
+                day
+                for delta_days in range(0, diff_days, step)
+                if (day := _timedelta(start, delta_days)) in self
+            ]
 
         return dict.__getitem__(self, self.__keytransform__(key))
 
@@ -670,19 +669,14 @@ class HolidayBase(dict[date, str]):
         if self:
             return super().__repr__()
 
-        parts = []
         if hasattr(self, "market"):
-            parts.append(f"holidays.financial_holidays({self.market!r}")
-            parts.append(")")
+            return f"holidays.financial_holidays({self.market!r})"
         elif hasattr(self, "country"):
-            parts.append(f"holidays.country_holidays({self.country!r}")
             if self.subdiv:
-                parts.append(f", subdiv={self.subdiv!r}")
-            parts.append(")")
-        else:
-            parts.append("holidays.HolidayBase()")
+                return f"holidays.country_holidays({self.country!r}, subdiv={self.subdiv!r})"
+            return f"holidays.country_holidays({self.country!r})"
 
-        return "".join(parts)
+        return "holidays.HolidayBase()"
 
     def __setattr__(self, key: str, value: Any) -> None:
         dict.__setattr__(self, key, value)
@@ -808,6 +802,37 @@ class HolidayBase(dict[date, str]):
 
         self[dt] = self.tr(name)
         return dt
+
+    def _add_multiday_holiday(
+        self, start_date: date, duration_days: int, *, name: str | None = None
+    ) -> set[date]:
+        """Add a multi-day holiday.
+
+        Args:
+            start_date:
+                First day of the holiday.
+
+            duration_days:
+                Number of additional days to add.
+
+            name:
+                Optional holiday name; inferred from `start_date` if omitted.
+
+        Returns:
+            A set of all added holiday dates.
+
+        Raises:
+            ValueError:
+                If the holiday name cannot be inferred from `start_date`.
+        """
+        if (holiday_name := name or self.get(start_date)) is None:
+            raise ValueError(f"Cannot infer holiday name for date {start_date!r}.")
+
+        return {
+            d
+            for delta in range(1, duration_days + 1)
+            if (d := self._add_holiday(holiday_name, _timedelta(start_date, delta)))
+        }
 
     def _add_special_holidays(self, mapping_names, *, observed=False):
         """Add special holidays."""
@@ -997,7 +1022,10 @@ class HolidayBase(dict[date, str]):
         return [name for name in self.get(key, "").split(HOLIDAY_NAME_DELIMITER) if name]
 
     def get_named(
-        self, holiday_name: str, lookup: str = "icontains", split_multiple_names: bool = True
+        self,
+        holiday_name: str,
+        lookup: NameLookup = "icontains",
+        split_multiple_names: bool = True,
     ) -> list[date]:
         """Find all holiday dates matching a given name.
 
@@ -1202,7 +1230,7 @@ class HolidayBase(dict[date, str]):
 
         return dict.pop(self, self.__keytransform__(key), default)
 
-    def pop_named(self, holiday_name: str, lookup: str = "icontains") -> list[date]:
+    def pop_named(self, holiday_name: str, lookup: NameLookup = "icontains") -> list[date]:
         """Remove all holidays matching the given name.
 
         This method removes all dates associated with a holiday name, so they are

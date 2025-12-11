@@ -21,14 +21,45 @@ class TestGU(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Guam)
 
-    def test_gu_only(self):
-        """Check for a holiday that is not returned by US unless the
-        subdivision is specified."""
-        self.assertHolidayName("Guam Discovery Day", "2016-03-07")
-        self.assertHolidayName("Good Friday", "2016-03-25")
-        self.assertHolidayName("Liberation Day (Guam)", "2016-07-21")
-        self.assertHolidayName("All Souls' Day", "2016-11-02")
-        self.assertHolidayName("Lady of Camarin Day", "2016-12-08")
+    def test_guam_discovery_day(self):
+        name = "Guam Discovery Day"
+        self.assertHolidayName(
+            name,
+            "2020-03-02",
+            "2021-03-01",
+            "2022-03-07",
+            "2023-03-06",
+            "2024-03-04",
+            "2025-03-03",
+        )
+        self.assertHolidayName(name, range(1970, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1970))
+
+    def test_good_friday(self):
+        name = "Good Friday"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_liberation_day_guam(self):
+        name = "Liberation Day (Guam)"
+        self.assertHolidayName(name, (f"{year}-07-21" for year in range(1945, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1945))
+
+    def test_all_souls_day(self):
+        self.assertHolidayName("All Souls' Day", (f"{year}-11-02" for year in self.full_range))
+
+    def test_lady_of_camarin_day(self):
+        self.assertHolidayName(
+            "Lady of Camarin Day", (f"{year}-12-08" for year in self.full_range)
+        )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

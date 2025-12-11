@@ -308,8 +308,8 @@ class TestChile(CommonCountryTests, TestCase):
         )
 
     def test_2019(self):
-        self.assertHolidayDates(
-            Chile(years=2019),
+        self.assertHolidayDatesInYear(
+            2019,
             "2019-01-01",
             "2019-04-19",
             "2019-04-20",
@@ -330,8 +330,8 @@ class TestChile(CommonCountryTests, TestCase):
 
     def test_2020(self):
         # from https://feriados.cl/2020.htm
-        self.assertHolidayDates(
-            Chile(years=2020),
+        self.assertHolidayDatesInYear(
+            2020,
             "2020-01-01",
             "2020-04-10",
             "2020-04-11",
@@ -351,8 +351,8 @@ class TestChile(CommonCountryTests, TestCase):
 
     def test_2021(self):
         # from https://feriados.cl/2021.htm
-        self.assertHolidayDates(
-            Chile(years=2021),
+        self.assertHolidayDatesInYear(
+            2021,
             "2021-01-01",
             "2021-04-02",
             "2021-04-03",

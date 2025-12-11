@@ -1215,7 +1215,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Nepal</td>
 <td>NP</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>ne</strong></td>
 <td>WORKDAY</td>
 </tr>
 <tr>
@@ -1643,7 +1643,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>SE</td>
 <td></td>
 <td>en_US, <strong>sv</strong>, th, uk</td>
-<td></td>
+<td>BANK, OPTIONAL</td>
 </tr>
 <tr>
 <td>Switzerland</td>
@@ -1903,8 +1903,9 @@ code when available. The following financial markets are available:
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 4.0%" />
-<col style="width: 65.0%" />
-<col style="width: 15.0%" />
+<col style="width: 46.0%" />
+<col style="width: 20.0%" />
+<col style="width: 10.0%" />
 </colgroup>
 <thead>
 <tr>
@@ -1912,6 +1913,7 @@ code when available. The following financial markets are available:
 <th>Code</th>
 <th>Info</th>
 <th>Supported Languages</th>
+<th>Supported Categories</th>
 </tr>
 </thead>
 <tbody>
@@ -1920,11 +1922,13 @@ code when available. The following financial markets are available:
 <td>BVMF</td>
 <td>Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)</td>
 <td>en_US, <strong>pt_BR</strong>, uk</td>
+<td></td>
 </tr>
 <tr>
 <td>European Central Bank</td>
 <td>XECB</td>
 <td>Trans-European Automated Real-time Gross Settlement (TARGET2)</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -1932,18 +1936,21 @@ code when available. The following financial markets are available:
 <td>IFEU</td>
 <td>A London-based Investment Exchange holidays</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
 <td><strong>en_IN</strong>, en_US, hi</td>
+<td></td>
 </tr>
 <tr>
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
 <td>NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)</td>
 <td></td>
+<td>HALF_DAY</td>
 </tr>
 </tbody>
 </table>
