@@ -92,6 +92,12 @@ class TestChineseLunisolarCalendar(unittest.TestCase):
         ):
             self.assertEqual(self.calendar.qingming_date(year, VIETNAMESE_CALENDAR)[0].day, day)
 
+    def test_qingming_estimated(self):
+        for year in (1900, 2100):
+            self.assertTrue(self.calendar.qingming_date(year)[1])
+        for year in (1901, 2099):
+            self.assertFalse(self.calendar.qingming_date(year)[1])
+
     def test_winter_solstice_chinese(self):
         for year, day in (
             (1910, 23),
@@ -166,9 +172,3 @@ class TestChineseLunisolarCalendar(unittest.TestCase):
             self.assertTrue(self.calendar.winter_solstice_date(year)[1])
         for year in (1901, 2099):
             self.assertFalse(self.calendar.winter_solstice_date(year)[1])
-
-    def test_qingming_estimated(self):
-        for year in (1900, 2100):
-            self.assertTrue(self.calendar.qingming_date(year)[1])
-        for year in (1901, 2099):
-            self.assertFalse(self.calendar.qingming_date(year)[1])
