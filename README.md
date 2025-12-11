@@ -270,7 +270,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bangladesh</td>
 <td>BD</td>
 <td></td>
-<td></td>
+<td><strong>bn</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
