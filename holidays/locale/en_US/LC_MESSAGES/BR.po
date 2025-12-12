@@ -262,3 +262,12 @@ msgstr "Autonomy Day"
 #. Our Lady of Nativity.
 msgid "Nossa Senhora da Natividade"
 msgstr "Our Lady of Nativity"
+
+#. São Paulo City Anniversary.
+msgid "Aniversário da Cidade de São Paulo"
+msgstr "São Paulo City Anniversary"
+
+
+
+
+

@@ -61,6 +61,7 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         "SC",
         "SE",
         "SP",
+        "SPC",
         "TO",
     )
     subdivisions_aliases = {
@@ -91,6 +92,7 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         "Sergipe": "SE",
         "São Paulo": "SP",
         "Tocantins": "TO",
+        "São Paulo Capital": "SPC",
     }
     supported_categories = (OPTIONAL, PUBLIC)
     supported_languages = ("en_US", "pt_BR", "uk")
@@ -371,6 +373,14 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1997:
             # Constitutionalist Revolution.
             self._add_holiday_jul_9(tr("Revolução Constitucionalista"))
+
+    def _populate_subdiv_spc_public_holidays(self):
+        self._populate_subdiv_sp_public_holidays(self)
+
+        # https://legislacao.prefeitura.sp.gov.br/leis/decreto-56756-de-04-de-janeiro-de-2016/anexo/5ec3d7a71411926001a56c56/Anexo%20Único%20do%20Decreto%20nº%2056.756_2016.pdf
+        if self._year >= 1967:
+            # City Anniversary.
+            self._add_holiday_jan_25(tr("Aniversário da Cidade de São Paulo"))
 
     def _populate_subdiv_to_public_holidays(self):
         if self._year >= 1998:

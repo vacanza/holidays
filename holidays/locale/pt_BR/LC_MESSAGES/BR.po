@@ -262,3 +262,7 @@ msgstr ""
 #. Our Lady of Nativity.
 msgid "Nossa Senhora da Natividade"
 msgstr ""
+
+#. São Paulo City Anniversary.
+msgid "Aniversário da Cidade de São Paulo"
+msgstr ""
