@@ -50,15 +50,15 @@ VAISAKHI = "VAISAKHI"
 
 class _HinduLunisolar:
     # Dates for Bathukamma (Mahalaya Amavasya/amavasya shraddha)
-    # [Mahalaya Amavasya](https://www.drikpanchang.com/shraddha/tithi/amavasya-shraddha-date-time.html)
-    # [2018](https: // www.telangana.gov. in / downloads / calendar - 2018 /)
-    # [2019](https: // www.telangana.gov. in / downloads / calendar - 2019 /)
-    # [2020](https: // www.telangana.gov. in / downloads / calendar - 2020 /)
-    # [2021](https: // www.telangana.gov. in / downloads / calendar - 2021 /)
-    # [2022](https: // www.telangana.gov. in / downloads / calendar - 2022 /)
-    # [2023](https: // www.telangana.gov. in / downloads / calendar - 2023 /)
-    # [2024](https: // www.telangana.gov. in / downloads / calendar - 2024 /)
-    # [2025](https: // www.telangana.gov. in / downloads / calendar - 2025 /)
+    # [Mahalaya Amavasya](https://web.archive.org/web/20250906191235/https://www.drikpanchang.com/shraddha/tithi/amavasya-shraddha-date-time.html)
+    # [2018](https://web.archive.org/web/20250402131537/https://www.telangana.gov.in/Downloads/calendar-2018/)
+    # [2019](https://web.archive.org/web/20250508145651/https://www.telangana.gov.in/Downloads/calendar-2019/)
+    # [2020](https://web.archive.org/web/20250421174049/https://www.telangana.gov.in/downloads/calendar-2020/)
+    # [2021](https://web.archive.org/web/20250404142143/https://www.telangana.gov.in/Downloads/calendar-2021/)
+    # [2022](https://web.archive.org/web/20250217143857/https://www.telangana.gov.in/Downloads/calendar-2022/)
+    # [2023](https://web.archive.org/web/20250123180708/https://www.telangana.gov.in/Downloads/calendar-2023/)
+    # [2024](https://web.archive.org/web/20250217144536/https://www.telangana.gov.in/Downloads/calendar/)
+    # [2025](https://web.archive.org/web/20250217133450/https://www.telangana.gov.in/Downloads/calendar-2025/)
     BATHUKAMMA_DATES = {
         2010: (OCT, 7),
         2011: (SEP, 27),
