@@ -50,15 +50,15 @@ VAISAKHI = "VAISAKHI"
 
 class _HinduLunisolar:
     # Dates for Bathukamma (Mahalaya Amavasya/amavasya shraddha)
-   #[Mahalaya Amavasya](https://www.drikpanchang.com/shraddha/tithi/amavasya-shraddha-date-time.html)
-   # [2018](https: // www.telangana.gov. in / downloads / calendar - 2018 /)
-   # [2019](https: // www.telangana.gov. in / downloads / calendar - 2019 /)
-   # [2020](https: // www.telangana.gov. in / downloads / calendar - 2020 /)
-   # [2021](https: // www.telangana.gov. in / downloads / calendar - 2021 /)
-   # [2022](https: // www.telangana.gov. in / downloads / calendar - 2022 /)
-   # [2023](https: // www.telangana.gov. in / downloads / calendar - 2023 /)
-   # [2024](https: // www.telangana.gov. in / downloads / calendar - 2024 /)
-   # [2025](https: // www.telangana.gov. in / downloads / calendar - 2025 /)
+    # [Mahalaya Amavasya](https://www.drikpanchang.com/shraddha/tithi/amavasya-shraddha-date-time.html)
+    # [2018](https: // www.telangana.gov. in / downloads / calendar - 2018 /)
+    # [2019](https: // www.telangana.gov. in / downloads / calendar - 2019 /)
+    # [2020](https: // www.telangana.gov. in / downloads / calendar - 2020 /)
+    # [2021](https: // www.telangana.gov. in / downloads / calendar - 2021 /)
+    # [2022](https: // www.telangana.gov. in / downloads / calendar - 2022 /)
+    # [2023](https: // www.telangana.gov. in / downloads / calendar - 2023 /)
+    # [2024](https: // www.telangana.gov. in / downloads / calendar - 2024 /)
+    # [2025](https: // www.telangana.gov. in / downloads / calendar - 2025 /)
     BATHUKAMMA_DATES = {
         2010: (OCT, 7),
         2011: (SEP, 27),
@@ -826,13 +826,13 @@ class _HinduLunisolar:
     }
 
     # Dates for Maharana Pratap Jayanti (Jyeshtha Shukla 3)
-    # [Maharana Pratap Jayanti](https://www.drikpanchang.com/calendars/indian/jayanti/maharana-pratap/maharana-pratap-jayanti.html)
-    # [2018](https: // gad.rajasthan.gov. in / writereaddata / OLDWEBDATA / PDF / Govt_Holidays_2019_02112018.pdf)
-    # [2019](https: // gad.rajasthan.gov. in / writereaddata / OLDWEBDATA / PDF / Govt_Holidays_2020_22112019.pdf)
-    # [2020](https: // gad.rajasthan.gov. in / writereaddata / OLDWEBDATA / PDF / Govt_Holidays_2020_22112019.pdf)
-    # [2021](https: // gad.rajasthan.gov. in / writereaddata / OLDWEBDATA / PDF / holiday_calender_2021_gr6_26102020.pdf)
-    # [2022](https: // gad.rajasthan.gov. in / writereaddata / OLDWEBDATA / PDF / Govt_holidays_list_21_10_2021.pdf)
-    # [2023](https: // gad.rajasthan.gov. in / writereaddata / OLDWEBDATA / PDF / Govt_holidays_list_16_11_2022.pdf)
+    # [Maharana Pratap Jayanti](https://www.drikpanchang.com/calendars/indian/jayanti/maharana-pratap/maharana-pratap-jayanti.html)  # noqa: E501
+    # [2018](https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_Holidays_2019_02112018.pdf)  # noqa: E501
+    # [2019](https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_Holidays_2020_22112019.pdf)  # noqa: E501
+    # [2020](https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_Holidays_2020_22112019.pdf)  # noqa: E501
+    # [2021](https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/holiday_calender_2021_gr6_26102020.pdf)  # noqa: E501
+    # [2022](https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_holidays_list_21_10_2021.pdf)  # noqa: E501
+    # [2023](https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_holidays_list_16_11_2022.pdf)  # noqa: E501
     MAHARANA_PRATAP_JAYANTI_DATES = {
         2010: (JUN, 15),
         2011: (JUN, 4),
