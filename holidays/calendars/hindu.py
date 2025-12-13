@@ -826,13 +826,13 @@ class _HinduLunisolar:
     }
 
     # Dates for Maharana Pratap Jayanti (Jyeshtha Shukla 3)
-    # [Maharana Pratap Jayanti](https://www.drikpanchang.com/calendars/indian/jayanti/maharana-pratap/maharana-pratap-jayanti.html)  # noqa: E501
-    # [2018](https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_Holidays_2019_02112018.pdf)  # noqa: E501
-    # [2019](https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_Holidays_2020_22112019.pdf)  # noqa: E501
-    # [2020](https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_Holidays_2020_22112019.pdf)  # noqa: E501
-    # [2021](https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/holiday_calender_2021_gr6_26102020.pdf)  # noqa: E501
-    # [2022](https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_holidays_list_21_10_2021.pdf)  # noqa: E501
-    # [2023](https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_holidays_list_16_11_2022.pdf)  # noqa: E501
+    # [Maharana Pratap Jayanti](https://web.archive.org/web/20241212205537/https://www.drikpanchang.com/calendars/indian/jayanti/maharana-pratap/maharana-pratap-jayanti.html)
+    # [2018](https://web.archive.org/web/20251213153439/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_Holidays_2018_25102017.pdf)
+    # [2019](https://web.archive.org/web/20251213151532/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_Holidays_2019_02112018.pdf)
+    # [2020](https://web.archive.org/web/20251213151547/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_Holidays_2020_22112019.pdf)
+    # [2021](https://web.archive.org/web/20251213151616/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/holiday_calender_2021_gr6_26102020.pdf)
+    # [2022](https://web.archive.org/web/20251213151608/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_holidays_list_21_10_2021.pdf)
+    # [2023](https://web.archive.org/web/20251213151559/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_holidays_list_16_11_2022.pdf)
     MAHARANA_PRATAP_JAYANTI_DATES = {
         2010: (JUN, 15),
         2011: (JUN, 4),
