@@ -112,7 +112,7 @@ class TestAllInSameYear(unittest.TestCase):
         entity, entity_func, years = args
         warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-        # Check each year individually
+        # Check each year individually.
         for year in years:
             for dt in entity_func(entity, years=year):
                 if not isinstance(dt, date):
@@ -120,7 +120,7 @@ class TestAllInSameYear(unittest.TestCase):
                 if dt.year != year:
                     raise AssertionError(f"{entity}: date {dt} not in year {year}")
 
-        # Check full range at once
+        # Check full range at once.
         all_holidays = entity_func(entity, years=years)
         if all_holidays.years != years:
             raise AssertionError(f"{entity}: years mismatch {all_holidays.years} != {years}")
@@ -129,16 +129,19 @@ class TestAllInSameYear(unittest.TestCase):
         self, entity_func: Callable[..., HolidayBase], entity_list: dict[str, list[str]]
     ):
         """
-        Only holidays in the year(s) requested should be returned. This
-        ensures that we avoid triggering a "RuntimeError: dictionary changed
-        size during iteration" error.
+        Only holidays within the requested years should be returned.
+        This prevents triggering a `RuntimeError: dictionary changed size during iteration`.
 
-        This is logic test and not a code compatibility test, so for expediency
-        we only run it once on the latest Python version.
+        This is a logic test, not a compatibility test, so for expediency it is executed
+        only once using the latest supported Python version.
         """
-        args_list = [(entity, entity_func, self.years) for entity in entity_list]
         with ProcessPoolExecutor() as executor:
-            list(executor.map(self._check_single_entity_worker, args_list))
+            list(
+                executor.map(
+                    self._check_single_entity_worker,
+                    [(entity, entity_func, self.years) for entity in entity_list],
+                )
+            )
 
     @pytest.mark.skipif(
         PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
