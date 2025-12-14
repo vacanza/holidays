@@ -110,15 +110,15 @@ class TestAllInSameYear(unittest.TestCase):
         args: tuple[str, Callable[..., HolidayBase], set[int]],
     ) -> None:
         entity, entity_func, years = args
-        warnings.simplefilter("ignore")
+        warnings.filterwarnings("ignore", category=DeprecationWarning)
 
         # Check each year individually
         for year in years:
             for dt in entity_func(entity, years=year):
-                if dt.year != year:
-                    raise AssertionError(f"{entity}: date {dt} not in year {year}")
                 if not isinstance(dt, date):
                     raise AssertionError(f"{entity}: {dt} is not a date instance")
+                if dt.year != year:
+                    raise AssertionError(f"{entity}: date {dt} not in year {year}")
 
         # Check full range at once
         all_holidays = entity_func(entity, years=years)
