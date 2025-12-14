@@ -62,7 +62,7 @@ class TestAS(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "New Year's Day"),
-            ("2022-01-17", "Birthday of Martin Luther King, Jr.; Martin Luther King Jr. Day"),
+            ("2022-01-17", "Martin Luther King Jr. Day"),
             ("2022-02-14", "Valentine's Day"),
             ("2022-02-21", "Washington's Birthday"),
             ("2022-03-17", "Saint Patrick's Day"),
@@ -89,7 +89,7 @@ class TestAS(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "th",
             ("2022-01-01", "วันขึ้นปีใหม่"),
-            ("2022-01-17", "วันมาร์ติน ลูเทอร์ คิง จูเนียร์; วันเกิดมาร์ติน ลูเทอร์ คิง จูเนียร์"),
+            ("2022-01-17", "วันมาร์ติน ลูเทอร์ คิง จูเนียร์"),
             ("2022-02-14", "วันวาเลนไทน์"),
             ("2022-02-21", "วันเกิดวอชิงตัน"),
             ("2022-03-17", "วันนักบุญแพทริก"),

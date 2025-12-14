@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.85\n"
+"Project-Id-Version: Holidays 0.87\n"
 "POT-Creation-Date: 2025-06-19 15:33+0700\n"
-"PO-Revision-Date: 2025-10-02 11:06+0700\n"
+"PO-Revision-Date: 2025-12-14 14:27+0200\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 "X-Source-Language: en_US\n"
 
 #. %s (observed).
@@ -64,14 +64,6 @@ msgstr "วันแรงงาน"
 msgid "Columbus Day"
 msgstr "วันโคลัมบัส"
 
-#. Veterans Day.
-msgid "Veterans Day"
-msgstr "วันทหารผ่านศึก"
-
-#. Armistice Day.
-msgid "Armistice Day"
-msgstr "วันสงบศึก"
-
 #. Thanksgiving Day.
 msgid "Thanksgiving Day"
 msgstr "วันขอบคุณพระเจ้า"
@@ -87,6 +79,14 @@ msgstr "วันคริสต์มาสอีฟ"
 #. Martin Luther King Jr. Day.
 msgid "Martin Luther King Jr. Day"
 msgstr "วันมาร์ติน ลูเทอร์ คิง จูเนียร์"
+
+#. Veterans Day.
+msgid "Veterans Day"
+msgstr "วันทหารผ่านศึก"
+
+#. Armistice Day.
+msgid "Armistice Day"
+msgstr "วันสงบศึก"
 
 #. Presidents' Day.
 msgid "Presidents' Day"
@@ -320,9 +320,66 @@ msgstr "วันครอบครัว"
 msgid "Epiphany"
 msgstr "วันสมโภชพระคริสต์แสดงองค์"
 
-#. Discovery Day.
-msgid "Discovery Day"
-msgstr "วันค้นพบ"
+#. Birthday of Eugenio María de Hostos.
+msgid "Birthday of Eugenio María de Hostos"
+msgstr "วันเกิดของยูเจนิโอ มาเรีย เด ออสตอส"
+
+#. George Washington Day, Presidents' Day, and the Day of the Women and Men Heroes of Puerto Rico.
+msgid ""
+"George Washington Day, Presidents' Day, and the Day of the Women and Men Heroes of Puerto Rico"
+msgstr "วันจอร์จ วอชิงตัน, วันประธานาธิบดี และวันวีรบุรุษหญิงและชายแห่งเปอร์โตริโก"
+
+#. George Washington Day, Presidents' Day, and the Day of the Hero and the Illustrious Woman of
+#. Puerto Rico.
+msgid ""
+"George Washington Day, Presidents' Day, and the Day of the Hero and the Illustrious Woman of "
+"Puerto Rico"
+msgstr "วันจอร์จ วอชิงตัน, วันประธานาธิบดี และวันวีรบุรุษและสตรีผู้ทรงเกียรติแห่งเปอร์โตริโก"
+
+#. George Washington Day, Presidents' Day, and the Puerto Rican Heroes Day.
+msgid "George Washington Day, Presidents' Day, and the Puerto Rican Heroes Day"
+msgstr "วันจอร์จ วอชิงตัน, วันประธานาธิบดี และวันวีรบุรุษเปอร์โตริโก"
+
+#. George Washington Day.
+msgid "George Washington Day"
+msgstr "วันจอร์จ วอชิงตัน"
+
+#. José de Diego Day.
+msgid "José de Diego Day"
+msgstr "โฮเซ่ เด ดิเอโก้ เดย์"
+
+#. Luis Muñoz Rivera Day.
+msgid "Luis Muñoz Rivera Day"
+msgstr "วันหลุยส์ มูญอซ ริเวรา"
+
+#. Puerto Rico Constitution Day.
+msgid "Puerto Rico Constitution Day"
+msgstr "วันรัฐธรรมนูญเปอร์โตริโก"
+
+#. Occupation Day.
+msgid "Occupation Day"
+msgstr "วันแห่งการยึดครอง"
+
+#. José Celso Barbosa Day.
+msgid "José Celso Barbosa Day"
+msgstr "วันโฮเซ่ เซลโซ บาร์โบซา"
+
+#. Puerto Rican Identity Day.
+msgid "Puerto Rican Identity Day"
+msgstr "วันแห่งเอกลักษณ์เปอร์โตริโก"
+
+#. Puerto Rican Culture and Discovery of Puerto Rico Day.
+msgid "Puerto Rican Culture and Discovery of Puerto Rico Day"
+msgstr "วันวัฒนธรรมเปอร์โตริโกและการค้นพบเปอร์โตริโก"
+
+#. Discovery of Puerto Rico Day.
+msgid "Discovery of Puerto Rico Day"
+msgstr "วันแห่งการค้นพบเปอร์โตริโก"
+
+#. %s (from 12pm).
+#, c-format
+msgid "%s (from 12pm)"
+msgstr "%s (ตั้งแต่ 12:00 น.)"
 
 #. Victory Day.
 msgid "Victory Day"
@@ -367,10 +424,6 @@ msgstr "วันผู้บุกเบิก"
 #. Lee Jackson Day.
 msgid "Lee Jackson Day"
 msgstr "วันลี-แจ็กสัน"
-
-#. George Washington Day.
-msgid "George Washington Day"
-msgstr "วันจอร์จ วอชิงตัน"
 
 #. Three Kings Day.
 msgid "Three Kings Day"
