@@ -458,7 +458,7 @@ class India(
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharana Pratap Jayanti.
-        self._add_holiday_jun_15(tr("Maharana Pratap Jayanti"))
+        self._add_maharana_pratap_jayanti(tr("Maharana Pratap Jayanti"))
 
     # Sikkim.
     def _populate_subdiv_sk_public_holidays(self):
@@ -487,7 +487,7 @@ class India(
         # Telangana Formation Day.
         self._add_holiday_jun_2(tr("Telangana Formation Day"))
         # Bathukamma Festival.
-        self._add_holiday_oct_6(tr("Bathukamma Festival"))
+        self._add_bathukamma(tr("Bathukamma Festival"))
         # Ugadi.
         self._add_gudi_padwa(tr("Ugadi"))
 
