@@ -1297,10 +1297,8 @@ class TestSpain(CommonCountryTests, TestCase):
             ("2023-09-02", "Día de Ceuta"),
             (
                 "2023-09-08",
-                (
-                    "Día de Asturias; Día de Extremadura; "
-                    "Día de Nuestra Señora la Virgen de la Victoria"
-                ),
+                "Día de Asturias; Día de Extremadura; "
+                "Día de Nuestra Señora la Virgen de la Victoria",
             ),
             ("2023-09-11", "Fiesta Nacional de Cataluña"),
             ("2023-09-15", "La Bien Aparecida"),
