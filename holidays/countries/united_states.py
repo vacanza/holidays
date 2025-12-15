@@ -106,6 +106,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         * American Samoa:
             * <https://web.archive.org/web/20240808163628/https://asbar.org/code-annotated/1-0501-public-holidays/>
         * Puerto Rico:
+            * [1902 Political Code of Puerto Rico](https://web.archive.org/web/20251019021053/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/C%C3%B3digos/0-1902/0-1902.pdf)
             * [Joint Resolution No. 31 of Aug 18, 1913](https://web.archive.org/web/20240923174029/https://bvirtualogp.pr.gov/ogp/Bvirtual/resolucionesConjuntas/PDF/0031-1913.pdf)
             * [Law No. 47 of Dec 1, 1917](https://web.archive.org/web/20240531113045/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0047-1917.pdf)
             * [Law No. 3 of Apr 9, 1925](https://web.archive.org/web/20240531113358/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0003-1925.pdf)
