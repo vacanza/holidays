@@ -20,7 +20,7 @@ from holidays.calendars.gregorian import (
     _get_nth_weekday_from,
     _timedelta,
 )
-from holidays.constants import BANK, OPTIONAL, PUBLIC
+from holidays.constants import BANK, DE_FACTO, OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -37,9 +37,31 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         * <https://sv.wikipedia.org/wiki/Sveriges_nationaldag>
         * <https://sv.wikipedia.org/wiki/Midsommarafton>
         * [Bank Holidays 2025](https://web.archive.org/web/20250811112642/https://www.riksbank.se/sv/press-och-publicerat/kalender/helgdagar-2025/)
+        * [Swedish Annual Leave Law (SFS 1977:480)](https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/semesterlag-1977480_sfs-1977-480/)
 
     In Sweden, ALL sundays are considered a holiday.
     Initialize this class with `include_sundays=False` to not include sundays as a holiday.
+
+    Supported holiday categories:
+
+    - PUBLIC: Official public holidays with general time off
+    - DE_FACTO: Holidays treated equivalently to public holidays by law
+    - BANK: Banking institution holidays
+    - OPTIONAL: Optional or cultural observances
+
+    The DE_FACTO category includes:
+        - Midsommarafton (Midsummer Eve)
+        - Julafton (Christmas Eve)
+        - Nyårsafton (New Year's Eve)
+
+    According to Swedish Annual Leave Law (SFS 1977:480, Section 7): "Med söndag
+    jämställs allmän helgdag samt midsommarafton, julafton och nyårsafton"
+    (Sundays are equivalent to public holidays as well as Midsummer's Eve,
+    Christmas Eve, and New Year's Eve).
+
+    These holidays are not official public holidays but must be treated as
+    non-working days. For accurate `is_working_day()` calculations, use:
+        `Sweden(categories=(PUBLIC, DE_FACTO))`
     """
 
     # %s (from 2pm).
@@ -48,7 +70,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "sv"
     # Act 1952:48.
     start_year = 1953
-    supported_categories = (BANK, OPTIONAL, PUBLIC)
+    supported_categories = (BANK, DE_FACTO, OPTIONAL, PUBLIC)
     supported_languages = ("en_US", "sv", "th", "uk")
 
     def __init__(self, *args, include_sundays: bool = True, **kwargs):
@@ -126,6 +148,23 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
                 # Sunday.
                 self._add_holiday(tr("Söndag"), dt)
 
+    def _populate_de_facto_holidays(self):
+        """
+        Populate de facto holidays.
+
+        These holidays are treated equivalently to public holidays for working
+        day calculations according to Swedish Annual Leave Law (SFS 1977:480),
+        but are not official public holidays.
+        """
+        # Midsummer Eve (Friday between June 19 and 25).
+        self._add_holiday_1st_fri_from_jun_19(tr("Midsommarafton"))
+
+        # Christmas Eve.
+        self._add_christmas_eve(tr("Julafton"))
+
+        # New Year's Eve.
+        self._add_new_years_eve(tr("Nyårsafton"))
+
     def _populate_common(self):
         """Populate holidays that are both optional and bank holidays."""
 
@@ -138,19 +177,10 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Walpurgis Night.
         self._add_holiday_apr_30(self.tr(self.begin_time_label) % self.tr("Valborgsmässoafton"))
 
-        # Midsummer Eve.
-        self._add_holiday_1st_fri_from_jun_19(tr("Midsommarafton"))
-
         self._add_holiday_1st_fri_from_oct_30(
             # All Saints' Eve.
             self.tr(self.begin_time_label) % self.tr("Allahelgonsafton")
         )
-
-        # Christmas Eve.
-        self._add_christmas_eve(tr("Julafton"))
-
-        # New Year's Eve.
-        self._add_new_years_eve(tr("Nyårsafton"))
 
     def _populate_bank_holidays(self):
         self._populate_common()

@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.86\n"
+"Project-Id-Version: Holidays 0.87\n"
 "POT-Creation-Date: 2024-10-01 14:12+0700\n"
 "PO-Revision-Date: 2025-11-25 23:05+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -96,6 +96,18 @@ msgstr "วันคริสต์มาสวันที่สอง"
 msgid "Söndag"
 msgstr "วันอาทิตย์"
 
+#. Midsummer Eve (Friday between June 19 and 25).
+msgid "Midsommarafton"
+msgstr "วันก่อนวันกลางฤดูร้อน"
+
+#. Christmas Eve.
+msgid "Julafton"
+msgstr "วันคริสต์มาสอีฟ"
+
+#. New Year's Eve.
+msgid "Nyårsafton"
+msgstr "วันสิ้นปี"
+
 #. Twelfth Night.
 msgid "Trettondagsafton"
 msgstr "วันก่อนวันสมโภชพระคริสต์แสดงองค์"
@@ -108,21 +120,9 @@ msgstr "วันพฤหัสศักดิ์สิทธิ์"
 msgid "Valborgsmässoafton"
 msgstr "คืนวัลเพอร์กิส"
 
-#. Midsummer Eve.
-msgid "Midsommarafton"
-msgstr "วันก่อนวันกลางฤดูร้อน"
-
 #. All Saints' Eve.
 msgid "Allahelgonsafton"
 msgstr "วันก่อนวันสมโภชนักบุญทั้งหลาย"
-
-#. Christmas Eve.
-msgid "Julafton"
-msgstr "วันคริสต์มาสอีฟ"
-
-#. New Year's Eve.
-msgid "Nyårsafton"
-msgstr "วันสิ้นปี"
 
 #. Day before Ascension Day.
 msgid "Dag före Kristi himmelsfärdsdag"

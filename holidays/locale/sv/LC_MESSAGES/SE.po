@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.86\n"
+"Project-Id-Version: Holidays 0.87\n"
 "POT-Creation-Date: 2023-04-08 20:17+0300\n"
 "PO-Revision-Date: 2025-11-25 23:04+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -96,6 +96,18 @@ msgstr ""
 msgid "Söndag"
 msgstr ""
 
+#. Midsummer Eve (Friday between June 19 and 25).
+msgid "Midsommarafton"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Julafton"
+msgstr ""
+
+#. New Year's Eve.
+msgid "Nyårsafton"
+msgstr ""
+
 #. Twelfth Night.
 msgid "Trettondagsafton"
 msgstr ""
@@ -108,20 +120,8 @@ msgstr ""
 msgid "Valborgsmässoafton"
 msgstr ""
 
-#. Midsummer Eve.
-msgid "Midsommarafton"
-msgstr ""
-
 #. All Saints' Eve.
 msgid "Allahelgonsafton"
-msgstr ""
-
-#. Christmas Eve.
-msgid "Julafton"
-msgstr ""
-
-#. New Year's Eve.
-msgid "Nyårsafton"
 msgstr ""
 
 #. Day before Ascension Day.
