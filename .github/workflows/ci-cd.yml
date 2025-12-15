@@ -35,16 +35,19 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
+      - name: Install uv
+        uses: astral-sh/setup-uv@ed21f2f24f8dd64503750218de024bcf64c7250a
         with:
-          check-latest: true
           python-version: '3.14'
+          version: '0.9.16'
+
+      - name: Install Python
+        run: uv python install "$UV_PYTHON"
 
       - name: Run pre-commit
-        uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd
+        run: uv tool run --with pre-commit-uv pre-commit run --show-diff-on-failure --color=always --all-files
 
   code-ql:
     name: CodeQL
@@ -55,15 +58,15 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@fdbfb4d2750291e159f0156def62b853c2798ca2
+        uses: github/codeql-action/init@cf1bb45a277cb3c205638b2cd5c984db1c46a412
         with:
           languages: python
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@fdbfb4d2750291e159f0156def62b853c2798ca2
+        uses: github/codeql-action/analyze@cf1bb45a277cb3c205638b2cd5c984db1c46a412
         with:
           category: '/language:python'
 
@@ -86,31 +89,25 @@ jobs:
           - '3.14'
     steps:
       - name: Check out repository
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
+      - name: Install uv
+        uses: astral-sh/setup-uv@ed21f2f24f8dd64503750218de024bcf64c7250a
         with:
-          allow-prereleases: true
-          cache: pip
-          cache-dependency-path: |
-            requirements/runtime.txt
-            requirements/tests.txt
-          check-latest: true
           python-version: ${{ matrix.python-version }}
+          version: '0.9.16'
+
+      - name: Install Python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install --requirement requirements/tests.txt
-          python -m pip install .
+        run: uv sync --frozen --no-dev --group tests --link-mode=copy
 
       - name: Run tests
-        run: |
-          make test
+        run: make test
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
@@ -120,26 +117,22 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
+      - name: Install uv
+        uses: astral-sh/setup-uv@ed21f2f24f8dd64503750218de024bcf64c7250a
         with:
-          cache: pip
-          cache-dependency-path: |
-            requirements/build.txt
-          check-latest: true
           python-version: '3.14'
+          version: '0.9.16'
+
+      - name: Install Python
+        run: uv python install "$UV_PYTHON"
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install -r requirements/build.txt
-          python -m pip install .
+        run: uv sync --frozen --no-default-groups --no-install-project --group build --link-mode=copy
 
       - name: Build distribution
-        run: |
-          make package
+        run: make package
 
       - name: Upload package artifacts
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4
@@ -153,8 +146,7 @@ jobs:
 
       - name: Generate SBOM
         if: startsWith(github.event.ref, 'refs/tags/v')
-        run: |
-          make sbom > holidays-${{ env.VERSION }}-sbom.json
+        run: make sbom > holidays-${{ env.VERSION }}-sbom.json
 
       - name: Upload SBOM
         if: startsWith(github.event.ref, 'refs/tags/v')
@@ -175,17 +167,17 @@ jobs:
           - windows-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set up Python
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
+      - name: Install uv
+        uses: astral-sh/setup-uv@ed21f2f24f8dd64503750218de024bcf64c7250a
         with:
-          cache: pip
-          cache-dependency-path: |
-            requirements/runtime.txt
-            requirements/tests.txt
-          check-latest: true
           python-version: '3.14'
+          version: '0.9.16'
+
+      - name: Install Python
+        shell: bash
+        run: uv python install "$UV_PYTHON"
 
       - name: Get package artifacts
         uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53
@@ -196,13 +188,13 @@ jobs:
       - name: Run tests
         shell: bash
         run: |
+          uv sync --frozen --no-default-groups --no-install-project --group tests --link-mode=copy
           rm -rf holidays
-          python -m pip install --requirement requirements/tests.txt
-          python -m pip install `ls dist/*.whl`
-          pytest --dist loadscope --numprocesses auto tests/countries tests/financial
-          python -m pip uninstall -y holidays python-dateutil six
-          python -m pip install `ls dist/*.tar.gz`
-          pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          uv pip install dist/*.whl --link-mode=copy
+          uv run --no-sync pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          uv pip uninstall holidays
+          uv pip install dist/*.tar.gz --link-mode=copy
+          uv run --no-sync pytest --dist loadscope --numprocesses auto tests/countries tests/financial
 
   test-docs:
     name: Test docs build
@@ -210,23 +202,22 @@ jobs:
     needs: test
     steps:
       - name: Check out repository
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
 
-      - name: Set Up Python
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
+      - name: Install uv
+        uses: astral-sh/setup-uv@ed21f2f24f8dd64503750218de024bcf64c7250a
         with:
-          cache: pip
-          cache-dependency-path: requirements/docs.txt
           python-version: '3.14'
+          version: '0.9.16'
+
+      - name: Install Python
+        run: uv python install "$UV_PYTHON"
 
       - name: Install dependencies
-        run: |
-          python -m pip install --requirement requirements/docs.txt
-          python -m pip install .
+        run: uv sync --frozen --no-default-groups --no-install-project --group docs --link-mode=copy
 
       - name: Build docs
-        run: |
-          make doc
+        run: make doc
 
   publish-main:
     name: Publish generated artifacts
@@ -274,7 +265,7 @@ jobs:
           done
 
       - name: Sign the files using Sigstore
-        uses: sigstore/gh-action-sigstore-python@f832326173235dcb00dd5d92cd3f353de3188e6c
+        uses: sigstore/gh-action-sigstore-python@a5caf349bc536fbef3668a10ed7f5cd309a4b53d
         with:
           inputs: |
             ./dist/*.tar.gz

@@ -234,6 +234,7 @@ def financial_holidays(
     expand: bool = True,
     observed: bool = True,
     language: str | None = None,
+    categories: CategoryArg | None = None,
 ) -> HolidayBase:
     """Return a new dictionary-like [HolidayBase][holidays.holiday_base.HolidayBase] object.
 
@@ -291,6 +292,9 @@ def financial_holidays(
 
             This behavior will be updated and formalized in v1.
 
+        categories:
+            Requested holiday categories.
+
     Returns:
         A `HolidayBase` object matching the `market`.
 
@@ -306,7 +310,12 @@ def financial_holidays(
 
     try:
         return getattr(holidays, market)(
-            years=years, subdiv=subdiv, expand=expand, observed=observed, language=language
+            years=years,
+            subdiv=subdiv,
+            expand=expand,
+            observed=observed,
+            language=language,
+            categories=categories,
         )
     except AttributeError:
         raise NotImplementedError(f"Financial market {market} not available")

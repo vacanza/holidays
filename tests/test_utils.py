@@ -13,6 +13,8 @@
 import unittest
 import warnings
 from collections import defaultdict
+from collections.abc import Callable
+from concurrent.futures import ProcessPoolExecutor
 from datetime import date
 from pathlib import Path
 from unittest import mock
@@ -20,6 +22,7 @@ from unittest import mock
 import pytest
 
 import holidays
+from holidays.holiday_base import HolidayBase
 from holidays.utils import (
     CountryHoliday,
     country_holidays,
@@ -102,27 +105,43 @@ class TestAllInSameYear(unittest.TestCase):
 
     years = set(range(1950, 2051))
 
-    def _check_holidays_years(self, entity_func, entity_list):
-        """
-        Only holidays in the year(s) requested should be returned. This
-        ensures that we avoid triggering a "RuntimeError: dictionary changed
-        size during iteration" error.
+    @staticmethod
+    def _check_single_entity_worker(
+        args: tuple[str, Callable[..., HolidayBase], set[int]],
+    ) -> None:
+        entity, entity_func, years = args
+        warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-        This is logic test and not a code compatibility test, so for expediency
-        we only run it once on the latest Python version.
-        """
-        warnings.simplefilter("ignore")
-        for entity in entity_list:
-            with self.subTest(entity=entity):
-                # Check each year individually
-                for year in self.years:
-                    for dt in entity_func(entity, years=year):
-                        self.assertEqual(dt.year, year)
-                        self.assertIsInstance(dt, date)
+        # Check each year individually.
+        for year in years:
+            for dt in entity_func(entity, years=year):
+                if not isinstance(dt, date):
+                    raise AssertionError(f"{entity}: {dt} is not a date instance")
+                if dt.year != year:
+                    raise AssertionError(f"{entity}: date {dt} not in year {year}")
 
-                # Check full range at once
-                all_holidays = entity_func(entity, years=self.years)
-                self.assertEqual(all_holidays.years, self.years)
+        # Check full range at once.
+        all_holidays = entity_func(entity, years=years)
+        if all_holidays.years != years:
+            raise AssertionError(f"{entity}: years mismatch {all_holidays.years} != {years}")
+
+    def _check_holidays_years(
+        self, entity_func: Callable[..., HolidayBase], entity_list: dict[str, list[str]]
+    ):
+        """
+        Only holidays within the requested years should be returned.
+        This prevents triggering a `RuntimeError: dictionary changed size during iteration`.
+
+        This is a logic test, not a compatibility test, so for expediency it is executed
+        only once using the latest supported Python version.
+        """
+        with ProcessPoolExecutor() as executor:
+            list(
+                executor.map(
+                    self._check_single_entity_worker,
+                    [(entity, entity_func, self.years) for entity in entity_list],
+                )
+            )
 
     @pytest.mark.skipif(
         PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,

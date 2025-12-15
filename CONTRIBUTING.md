@@ -16,13 +16,45 @@ Thanks a lot for your support.
 ## Running tests
 
 First step is setting up the development environment and installing all the required dependencies
-with:
+with, once you have [`uv`](https://docs.astral.sh/uv/getting-started/installation/#installation-methods) setup:
 
 ``` shell
-virtualenv -p python3 venv
-source venv/bin/activate
 make setup
 ```
+
+!!! note "WSL Windows File Permission Fix"
+
+    If you're a Windows-based developer setting this up via WSL for the first time and encounter
+    file permission errors (e.g., `[Errno 1] Operation not permitted`) where `ls -l` shows files
+    owned by root like `-rwxrwxrwx 1 root root ...`, follow these steps:
+
+    **Step 1**: Edit the WSL configuration file:
+
+    ``` shell
+    sudo nano /etc/wsl.conf
+    ```
+
+    **Step 2**: Add the following section at the bottom of `wsl.conf`, then save (Ctrl+O, Enter) and exit (Ctrl+X):
+
+    ``` ini
+    [automount]
+    enabled = true
+    options = "metadata,umask=22,fmask=11"
+    ```
+
+    **Step 3**: Close your WSL session, open PowerShell, then restart WSL:
+
+    ``` powershell
+    wsl --shutdown
+    wsl ~
+    ```
+
+    After this, running `ls -l` on your local `holidays` installation should show:
+
+    ``` console
+    drwxr-xr-x 1 username username ...
+    ```
+    - you're good to go!
 
 The project provides automated style, tests and coverage checks:
 

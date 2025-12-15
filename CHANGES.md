@@ -1,3 +1,21 @@
+# Version 0.87
+
+Released December 15, 2025
+
+- Refactor `TestAllInSameYear` class (#3131 by @PPsyrius, @arkid15r)
+- Refactor tests: long holiday names representation cleanup (#3134 by @KJhellico)
+- Update Bangladesh holidays: add l10n support (#3117 by @NehaaGaikwad)
+- Update Chinese calendar: improve Qingming Festival date calculation (#3119 by @KJhellico, @arkid15r)
+- Update Germany holidays (#3102 by @KJhellico)
+- Update India holidays: add Gujarati language support (#3130 by @pareshjoshij, @arkid15r)
+- Update India holidays: correct dates for Maharana Pratap Jayanti (RJ) and Bathukamma (TS) (#3124 by @pareshjoshij)
+- Update United States holidays: fix Washington's Birthday logic (#2722 by @parkerbxyz, @arkid15r, @KJhellico)
+- Update XNYS holidays: add half-day holidays (#3111 by @KJhellico, @arkid15r)
+- Update documentation build settings (#3114 by @KJhellico, @arkid15r)
+- Adjust project files after migration to `uv` (#3116 by @KJhellico, @arkid15r)
+- Migrate to `uv` for dependency management (#3101 by @PPsyrius, @arkid15r, @KJhellico)
+- Use explicit Python version during uv setup (#3115 by @arkid15r)
+
 # Version 0.86
 
 Released December 1, 2025
