@@ -4,6 +4,9 @@ code_generation:
   docstrings:
     language: en-US
 early_access: true
+issue_enrichment:
+  auto_enrich:
+    enabled: false
 language: en-US
 reviews:
   assess_linked_issues: true

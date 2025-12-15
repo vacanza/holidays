@@ -325,10 +325,8 @@ class TestTanzania(CommonCountryTests, TestCase):
             ("2022-01-12", "Mapinduzi ya Zanzibar"),
             (
                 "2022-04-07",
-                (
-                    "Siku ya kumbukumbu ya Rais wa Kwanza wa Serikali ya "
-                    "Mapinduzi Zanzibar Sheikh Abeid Amani Karume"
-                ),
+                "Siku ya kumbukumbu ya Rais wa Kwanza wa Serikali ya "
+                "Mapinduzi Zanzibar Sheikh Abeid Amani Karume",
             ),
             ("2022-04-15", "Ijumaa Kuu"),
             ("2022-04-17", "Sikukuu ya Pasaka"),
@@ -356,10 +354,8 @@ class TestTanzania(CommonCountryTests, TestCase):
             ("2023-01-12", "Mapinduzi ya Zanzibar"),
             (
                 "2023-04-07",
-                (
-                    "Ijumaa Kuu; Siku ya kumbukumbu ya Rais wa Kwanza wa Serikali ya "
-                    "Mapinduzi Zanzibar Sheikh Abeid Amani Karume"
-                ),
+                "Ijumaa Kuu; Siku ya kumbukumbu ya Rais wa Kwanza wa Serikali ya "
+                "Mapinduzi Zanzibar Sheikh Abeid Amani Karume",
             ),
             ("2023-04-09", "Sikukuu ya Pasaka"),
             ("2023-04-10", "Jumatatu ya Pasaka"),

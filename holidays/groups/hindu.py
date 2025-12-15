@@ -59,6 +59,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             days_delta=days_delta,
         )
 
+    def _add_bathukamma(self, name) -> date | None:
+        """
+        Add Bathukamma Festival.
+
+        Bathukamma is a floral festival celebrated predominantly in Telangana
+        and some parts of Andhra Pradesh. It starts on Mahalaya Amavasya.
+        https://en.wikipedia.org/wiki/Bathukamma
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.bathukamma_date(self._year)
+        )
+
     def _add_bhai_dooj(self, name) -> date | None:
         """
         Add Bhai Dooj.
@@ -299,6 +311,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.maha_shivaratri_date(self._year)
+        )
+
+    def _add_maharana_pratap_jayanti(self, name) -> date | None:
+        """
+        Add Maharana Pratap Jayanti.
+
+        Maharana Pratap Jayanti celebrates the birth of the Rajput king Maharana Pratap.
+        It falls on the third day of the Shukla Paksha of the month of Jyeshtha.
+        https://en.wikipedia.org/wiki/Maharana_Pratap
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.maharana_pratap_jayanti_date(self._year)
         )
 
     def _add_mahavir_jayanti(self, name) -> date | None:
