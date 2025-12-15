@@ -378,7 +378,7 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_jul_9(tr("Revolução Constitucionalista"))
 
     def _populate_subdiv_spc_public_holidays(self):
-        self._populate_subdiv_sp_public_holidays(self)
+        self._populate_subdiv_sp_public_holidays()
 
         # https://legislacao.prefeitura.sp.gov.br/leis/decreto-56756-de-04-de-janeiro-de-2016/anexo/5ec3d7a71411926001a56c56/Anexo%20Único%20do%20Decreto%20nº%2056.756_2016.pdf
         if self._year >= 1967:
