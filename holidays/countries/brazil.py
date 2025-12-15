@@ -61,8 +61,9 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         "SC",
         "SE",
         "SP",
-        "SPC",
         "TO",
+        # Cities.
+        "São Paulo Capital",
     )
     subdivisions_aliases = {
         "Acre": "AC",
@@ -92,7 +93,6 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         "Sergipe": "SE",
         "São Paulo": "SP",
         "Tocantins": "TO",
-        "São Paulo Capital": "SPC",
     }
     supported_categories = (OPTIONAL, PUBLIC)
     supported_languages = ("en_US", "pt_BR", "uk")
@@ -156,6 +156,9 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1922:
             # Christmas Day.
             self._add_christmas_day(tr("Natal"))
+
+        if self.subdiv == "São Paulo Capital":
+            self._populate_subdiv_spc_public_holidays()
 
     def _populate_optional_holidays(self):
         # Carnival.
