@@ -41,7 +41,7 @@ class TestUnitedStatesMinorOutlyingIslands(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "New Year's Day"),
-            ("2022-01-17", "Birthday of Martin Luther King, Jr.; Martin Luther King Jr. Day"),
+            ("2022-01-17", "Martin Luther King Jr. Day"),
             ("2022-02-14", "Valentine's Day"),
             ("2022-02-21", "Washington's Birthday"),
             ("2022-03-17", "Saint Patrick's Day"),
@@ -51,7 +51,6 @@ class TestUnitedStatesMinorOutlyingIslands(CommonCountryTests, TestCase):
             ("2022-06-20", "Juneteenth National Independence Day (observed)"),
             ("2022-07-04", "Independence Day"),
             ("2022-09-05", "Labor Day"),
-            ("2022-10-10", "Columbus Day"),
             ("2022-10-31", "Halloween"),
             ("2022-11-11", "Veterans Day"),
             ("2022-11-24", "Thanksgiving Day"),
@@ -63,7 +62,7 @@ class TestUnitedStatesMinorOutlyingIslands(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "th",
             ("2022-01-01", "วันขึ้นปีใหม่"),
-            ("2022-01-17", "วันมาร์ติน ลูเทอร์ คิง จูเนียร์; วันเกิดมาร์ติน ลูเทอร์ คิง จูเนียร์"),
+            ("2022-01-17", "วันมาร์ติน ลูเทอร์ คิง จูเนียร์"),
             ("2022-02-14", "วันวาเลนไทน์"),
             ("2022-02-21", "วันเกิดวอชิงตัน"),
             ("2022-03-17", "วันนักบุญแพทริก"),
@@ -73,7 +72,6 @@ class TestUnitedStatesMinorOutlyingIslands(CommonCountryTests, TestCase):
             ("2022-06-20", "ชดเชยวันประกาศอิสรภาพแห่งชาติจูนทีนท์"),
             ("2022-07-04", "วันประกาศอิสรภาพ"),
             ("2022-09-05", "วันแรงงาน"),
-            ("2022-10-10", "วันโคลัมบัส"),
             ("2022-10-31", "วันฮาโลวีน"),
             ("2022-11-11", "วันทหารผ่านศึก"),
             ("2022-11-24", "วันขอบคุณพระเจ้า"),
