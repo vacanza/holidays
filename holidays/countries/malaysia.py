@@ -77,11 +77,11 @@ class Malaysia(
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia>
         * <https://web.archive.org/web/20250123115300/https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8>
         * <https://web.archive.org/web/20240228225038/https://www.nst.com.my/news/nation/2024/02/1014012/melaka-cm-suggests-declaring-feb-20-federal-public-holiday-mark>
+        * <https://web.archive.org/web/20251216120554/https://www.kabinet.gov.my/storage/2025/08/HKA-2026.pdf>
 
     Checked with:
         * <https://web.archive.org/web/20251216110238/https://cutisekolah.com.my/en/calendar-2025/>
         * <https://web.archive.org/web/20251216110813/https://cutisekolah.com.my/en/calendar-2026/>
-        * <https://web.archive.org/web/20251216111241/https://cutisekolah.com.my/en/calendar-2027/>
 
     Section 3 of Holidays Act 1951:
     > If any day specified in the Schedule falls on Sunday then the day following shall be
@@ -622,12 +622,11 @@ class MalaysiaBuddhistHolidays(_CustomBuddhistHolidays):
         2024: (MAY, 22),
         2025: (MAY, 12),
         2026: (MAY, 31),
-        2027: (MAY, 20),
     }
 
 
 class MalaysiaChineseHolidays(_CustomChineseHolidays):
-    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2027)
+    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2026)
 
 
 class MalaysiaHinduHolidays(_CustomHinduHolidays):
@@ -658,7 +657,6 @@ class MalaysiaHinduHolidays(_CustomHinduHolidays):
         2024: (OCT, 31),
         2025: (OCT, 20),
         2026: (NOV, 8),
-        2027: (OCT, 28),
     }
 
     THAIPUSAM_DATES = {
@@ -676,7 +674,7 @@ class MalaysiaHinduHolidays(_CustomHinduHolidays):
 
 
 class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2027)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),
@@ -695,10 +693,9 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUN, 17),
         2025: (JUN, 7),
         2026: (MAY, 27),
-        2027: (MAY, 17),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2027)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_FITR_DATES = {
         2001: (DEC, 17),
         2002: (DEC, 6),
@@ -709,10 +706,9 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2023: (APR, 22),
         2025: (MAR, 31),
         2026: (MAR, 21),
-        2027: (MAR, 10),
     }
 
-    HARI_HOL_JOHOR_DATES_CONFIRMED_YEARS = (2011, 2027)
+    HARI_HOL_JOHOR_DATES_CONFIRMED_YEARS = (2011, 2026)
     HARI_HOL_JOHOR_DATES = {
         2011: (JAN, 12),
         2012: (DEC, 20),
@@ -728,7 +724,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2026: (JUL, 20),
     }
 
-    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2027)
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2026)
     HIJRI_NEW_YEAR_DATES = {
         2003: (MAR, 5),
         2004: (FEB, 22),
@@ -742,7 +738,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2026: (JUN, 17),
     }
 
-    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (2001, 2027)
+    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (2001, 2026)
     ISRA_AND_MIRAJ_DATES = {
         2001: (OCT, 15),
         2006: (AUG, 22),
@@ -753,10 +749,9 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2018: (APR, 14),
         2022: (MAR, 1),
         2026: (JAN, 17),
-        2027: ((JAN, 6), (DEC, 26)),
     }
 
-    MAWLID_DATES_CONFIRMED_YEARS = (2001, 2027)
+    MAWLID_DATES_CONFIRMED_YEARS = (2001, 2026)
     MAWLID_DATES = {
         2003: (MAY, 14),
         2004: (MAY, 2),
@@ -772,10 +767,9 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2023: (SEP, 28),
         2024: (SEP, 16),
         2025: (SEP, 5),
-        2027: (AUG, 15),
     }
 
-    NUZUL_AL_QURAN_DATES_CONFIRMED_YEARS = (2001, 2027)
+    NUZUL_AL_QURAN_DATES_CONFIRMED_YEARS = (2001, 2026)
     NUZUL_AL_QURAN_DATES = {
         2001: (DEC, 3),
         2003: (NOV, 12),
@@ -790,7 +784,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2026: (MAR, 7),
     }
 
-    RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2001, 2027)
+    RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2001, 2026)
     RAMADAN_BEGINNING_DATES = {
         2001: (NOV, 17),
         2003: (OCT, 27),
