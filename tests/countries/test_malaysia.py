@@ -19,11 +19,7 @@ from tests.common import CommonCountryTests
 class TestMalaysia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Malaysia, years=range(1952, 2050))
-        cls.subdiv_holidays = {
-            subdiv: Malaysia(subdiv=subdiv, years=range(2000, 2050))
-            for subdiv in Malaysia.subdivisions
-        }
+        super().setUpClass(Malaysia, years_all_subdivs=range(2000, 2050))
 
     def test_2023(self):
         rows = (
@@ -865,6 +861,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
                     name,
                     holidays,
                     (f"{year}-09-16" for year in (*range(2001, 2005), *range(2006, 2010))),
+                    (f"{year}-03-30" for year in range(2025, self.end_year)),
                 )
                 self.assertHolidayName(
                     name,
@@ -886,10 +883,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
                     "2023-10-07",
                     "2024-10-05",
                 )
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-03-30" for year in range(2025, 2050))
-                )
-                self.assertNoHolidayName(name, holidays, 2000)
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2001))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -899,9 +893,9 @@ class TestMalaysia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "12":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-12-24" for year in range(2019, 2050))
+                    name, holidays, (f"{year}-12-24" for year in range(2019, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(2000, 2019))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2019))
             else:
                 self.assertNoHolidayName(name, holidays)
 
