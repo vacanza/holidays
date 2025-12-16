@@ -78,6 +78,23 @@ class Malaysia(
         * <https://web.archive.org/web/20250123115300/https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8>
         * <https://web.archive.org/web/20240228225038/https://www.nst.com.my/news/nation/2024/02/1014012/melaka-cm-suggests-declaring-feb-20-federal-public-holiday-mark>
 
+    Subdivisions Holidays References:
+        * Sabah:
+            * [2001](https://web.archive.org/web/20230605164302/https://www.sabah.gov.my/gazette/docs/000207.pdf)
+            * [2002](https://web.archive.org/web/20230605173234/https://www.sabah.gov.my/gazette/docs/000968.pdf)
+            * [2003](https://web.archive.org/web/20230418041718/https://www.sabah.gov.my/gazette/docs/001736.pdf)
+            * [2004](https://web.archive.org/web/20230414022317/https://www.sabah.gov.my/gazette/docs/001546.pdf)
+            * [2005](https://web.archive.org/web/20230420233014/https://www.sabah.gov.my/gazette/docs/001714.pdf)
+            * [2006](https://web.archive.org/web/20230414141628/https://www.sabah.gov.my/gazette/docs/001803.pdf)
+            * [2007](https://web.archive.org/web/20230414125605/https://www.sabah.gov.my/gazette/docs/001866.pdf)
+            * [2008](https://web.archive.org/web/20230605175854/https://www.sabah.gov.my/gazette/docs/001942.pdf)
+            * [2009](https://web.archive.org/web/20230605180330/https://www.sabah.gov.my/gazette/docs/001998.pdf)
+            * [Christmas Eve since 2019](https://web.archive.org/web/20221207071317/https://www.sabah.gov.my/gazette/docs/002712.pdf)
+            * [Birthday of the Governor of Sabah update 2010](https://web.archive.org/web/20230414125515/https://www.sabah.gov.my/gazette/docs/002114.pdf)
+            * [2025](https://web.archive.org/web/20251216152001/https://www.sabah.gov.my/gazette/docs/003106.pdf)
+            * [2025 changes](https://web.archive.org/web/20250330061412/https://www.sabah.gov.my/gazette/docs/003144.pdf)
+            * [2026](https://web.archive.org/web/20251010011859/https://www.sabah.gov.my/gazette/docs/003152.pdf)
+
     Section 3 of Holidays Act 1951:
     > If any day specified in the Schedule falls on Sunday then the day following shall be
     > a public holiday and if such day is already a public holiday, then the day following
@@ -505,12 +522,21 @@ class Malaysia(
         self._add_holiday_may_30(name)
         self._add_holiday_may_31(name)
 
-        # Birthday of the Governor of Sabah.
-        self._add_holiday_1st_sat_of_oct(tr("Hari Jadi Yang di-Pertua Negeri Sabah"))
+        if self._year >= 2001:
+            # Birthday of the Governor of Sabah.
+            name = tr("Hari Jadi Yang di-Pertua Negeri Sabah")
+            if self._year >= 2025:
+                self._add_holiday_mar_30(name)
+            elif self._year >= 2010:
+                self._add_holiday_1st_sat_of_oct(name)
+            elif self._year == 2005:
+                self._add_holiday_feb_11(name)
+            else:
+                self._add_holiday_sep_16(name)
 
         if self._year >= 2019:
             # Christmas Eve.
-            self._add_christmas_eve(tr("Christmas Eve"))
+            self._add_christmas_eve(tr("Krismas (Eve)"))
 
     def _populate_subdiv_13_public_holidays(self):
         # New Year's Day.
