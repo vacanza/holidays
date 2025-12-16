@@ -322,12 +322,12 @@ msgstr "วันสมโภชพระคริสต์แสดงองค
 
 #. Birthday of Eugenio María de Hostos.
 msgid "Birthday of Eugenio María de Hostos"
-msgstr "วันเกิดของยูเจนิโอ มาเรีย เด ออสตอส"
+msgstr "วันเกิดเอวเฮนิโอ มารีอา เด โฮสโตส"
 
 #. George Washington Day, Presidents' Day, and the Day of the Women and Men Heroes of Puerto Rico.
 msgid ""
 "George Washington Day, Presidents' Day, and the Day of the Women and Men Heroes of Puerto Rico"
-msgstr "วันจอร์จ วอชิงตัน, วันประธานาธิบดี และวันวีรบุรุษหญิงและชายแห่งเปอร์โตริโก"
+msgstr "วันจอร์จ วอชิงตัน, วันประธานาธิบดี และวันวีรบุรุษและวีรสตรีแห่งเปอร์โตริโก"
 
 #. George Washington Day, Presidents' Day, and the Day of the Hero and the Illustrious Woman of
 #. Puerto Rico.
@@ -346,11 +346,11 @@ msgstr "วันจอร์จ วอชิงตัน"
 
 #. José de Diego Day.
 msgid "José de Diego Day"
-msgstr "โฮเซ่ เด ดิเอโก้ เดย์"
+msgstr "วันโฮเซ เด ดิเอโก"
 
 #. Luis Muñoz Rivera Day.
 msgid "Luis Muñoz Rivera Day"
-msgstr "วันหลุยส์ มูญอซ ริเวรา"
+msgstr "วันหลุยส์ มุญโญซ ริเบรา"
 
 #. Puerto Rico Constitution Day.
 msgid "Puerto Rico Constitution Day"
@@ -358,15 +358,15 @@ msgstr "วันรัฐธรรมนูญเปอร์โตริโก
 
 #. Occupation Day.
 msgid "Occupation Day"
-msgstr "วันแห่งการยึดครอง"
+msgstr "วันยึดครอง"
 
 #. José Celso Barbosa Day.
 msgid "José Celso Barbosa Day"
-msgstr "วันโฮเซ่ เซลโซ บาร์โบซา"
+msgstr "วันโฮเซ เซลโซ บาร์โบซา"
 
 #. Puerto Rican Identity Day.
 msgid "Puerto Rican Identity Day"
-msgstr "วันแห่งเอกลักษณ์เปอร์โตริโก"
+msgstr "วันเอกลักษณ์เปอร์โตริโก"
 
 #. Puerto Rican Culture and Discovery of Puerto Rico Day.
 msgid "Puerto Rican Culture and Discovery of Puerto Rico Day"
@@ -374,7 +374,7 @@ msgstr "วันวัฒนธรรมเปอร์โตริโกแล
 
 #. Discovery of Puerto Rico Day.
 msgid "Discovery of Puerto Rico Day"
-msgstr "วันแห่งการค้นพบเปอร์โตริโก"
+msgstr "วันค้นพบเปอร์โตริโก"
 
 #. %s (from 12pm).
 #, c-format
