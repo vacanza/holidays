@@ -44,6 +44,14 @@ msgstr "วันเกิดมาร์ติน ลูเทอร์ คิ�
 msgid "Washington's Birthday"
 msgstr "วันเกิดวอชิงตัน"
 
+#. Veterans Day.
+msgid "Veterans Day"
+msgstr "วันทหารผ่านศึก"
+
+#. Armistice Day.
+msgid "Armistice Day"
+msgstr "วันสงบศึก"
+
 #. Memorial Day.
 msgid "Memorial Day"
 msgstr "วันรำลึก"
@@ -79,14 +87,6 @@ msgstr "วันคริสต์มาสอีฟ"
 #. Martin Luther King Jr. Day.
 msgid "Martin Luther King Jr. Day"
 msgstr "วันมาร์ติน ลูเทอร์ คิง จูเนียร์"
-
-#. Veterans Day.
-msgid "Veterans Day"
-msgstr "วันทหารผ่านศึก"
-
-#. Armistice Day.
-msgid "Armistice Day"
-msgstr "วันสงบศึก"
 
 #. Presidents' Day.
 msgid "Presidents' Day"
