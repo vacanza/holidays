@@ -44,6 +44,14 @@ msgstr ""
 msgid "Washington's Birthday"
 msgstr ""
 
+#. Veterans Day.
+msgid "Veterans Day"
+msgstr ""
+
+#. Armistice Day.
+msgid "Armistice Day"
+msgstr ""
+
 #. Memorial Day.
 msgid "Memorial Day"
 msgstr ""
@@ -78,14 +86,6 @@ msgstr ""
 
 #. Martin Luther King Jr. Day.
 msgid "Martin Luther King Jr. Day"
-msgstr ""
-
-#. Veterans Day.
-msgid "Veterans Day"
-msgstr ""
-
-#. Armistice Day.
-msgid "Armistice Day"
 msgstr ""
 
 #. Presidents' Day.
