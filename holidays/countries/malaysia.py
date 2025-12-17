@@ -688,7 +688,6 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2023: (JUN, 29),
         2024: (JUN, 17),
         2025: (JUN, 7),
-        2026: (MAY, 27),
     }
 
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
@@ -717,7 +716,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2022: (SEP, 3),
         2023: (AUG, 23),
         2024: (AUG, 11),
-        2026: (JUL, 20),
+        2026: (JUL, 21),
     }
 
     HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2026)
