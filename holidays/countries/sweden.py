@@ -149,14 +149,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
                 self._add_holiday(tr("Söndag"), dt)
 
     def _populate_de_facto_holidays(self):
-        """
-        Populate de facto holidays.
-
-        These holidays are treated equivalently to public holidays for working
-        day calculations according to Swedish Annual Leave Law (SFS 1977:480),
-        but are not official public holidays.
-        """
-        # Midsummer Eve (Friday between June 19 and 25).
+        # Midsummer Eve
         self._add_holiday_1st_fri_from_jun_19(tr("Midsommarafton"))
 
         # Christmas Eve.
@@ -184,6 +177,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_bank_holidays(self):
         self._populate_common()
+        self._populate_de_facto_holidays()
 
         self._add_holiday_38_days_past_easter(
             # Day before Ascension Day.

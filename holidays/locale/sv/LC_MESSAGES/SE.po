@@ -96,7 +96,7 @@ msgstr ""
 msgid "Söndag"
 msgstr ""
 
-#. Midsummer Eve (Friday between June 19 and 25).
+#. Midsummer Eve
 msgid "Midsommarafton"
 msgstr ""
 

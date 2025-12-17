@@ -96,7 +96,7 @@ msgstr "Другий день Різдва"
 msgid "Söndag"
 msgstr "Неділя"
 
-#. Midsummer Eve (Friday between June 19 and 25).
+#. Midsummer Eve
 msgid "Midsommarafton"
 msgstr "Переддень літнього сонцестояння"
 

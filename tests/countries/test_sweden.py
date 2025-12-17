@@ -175,79 +175,6 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
     def test_sundays(self):
         self.assertSundays(Sweden)  # Sundays are considered holidays in Sweden.
 
-    def test_de_facto_holidays(self):
-        """Test DE_FACTO category holidays."""
-        name_midsummer = "Midsommarafton"
-        name_christmas = "Julafton"
-        name_newyear = "Nyårsafton"
-
-        # These should NOT be in default (PUBLIC) category
-        self.assertNoHolidayName(name_midsummer)
-        self.assertNoHolidayName(name_christmas)
-        self.assertNoHolidayName(name_newyear)
-
-        # These should NOT be in BANK category
-        self.assertNoBankHolidayName(name_midsummer)
-        self.assertNoBankHolidayName(name_christmas)
-        self.assertNoBankHolidayName(name_newyear)
-
-        # These should NOT be in OPTIONAL category
-        self.assertNoOptionalHolidayName(name_midsummer)
-        self.assertNoOptionalHolidayName(name_christmas)
-        self.assertNoOptionalHolidayName(name_newyear)
-
-        # These SHOULD be in DE_FACTO category
-        # Midsummer Eve dates
-        dts_midsummer = (
-            "2020-06-19",
-            "2021-06-25",
-            "2022-06-24",
-            "2023-06-23",
-            "2024-06-21",
-            "2025-06-20",
-        )
-        self.assertDeFactoHolidayName(name_midsummer, dts_midsummer)
-
-        # Christmas Eve - every year
-        self.assertDeFactoHolidayName(
-            name_christmas, (f"{year}-12-24" for year in self.full_range)
-        )
-
-        # New Year's Eve - every year
-        self.assertDeFactoHolidayName(name_newyear, (f"{year}-12-31" for year in self.full_range))
-
-    def test_de_facto_2022(self):
-        """Test all DE_FACTO holidays for 2022."""
-        self.assertHolidays(
-            Sweden(categories=DE_FACTO, years=2022),
-            ("2022-06-24", "Midsommarafton"),
-            ("2022-12-24", "Julafton"),
-            ("2022-12-31", "Nyårsafton"),
-        )
-
-    def test_is_working_day_with_de_facto(self):
-        """Test that is_working_day() works correctly with DE_FACTO holidays."""
-        from holidays.constants import PUBLIC
-
-        # Use 2024: Christmas Eve is Tuesday, New Year's Eve is Tuesday, Midsummer Eve is Friday
-        # With only PUBLIC category (default)
-        se_public = Sweden(years=2024)
-        # These return True because they're not in PUBLIC category (and fall on weekdays)
-        self.assertTrue(se_public.is_working_day("2024-06-21"))  # Midsommarafton (Friday)
-        self.assertTrue(se_public.is_working_day("2024-12-24"))  # Julafton (Tuesday)
-        self.assertTrue(se_public.is_working_day("2024-12-31"))  # Nyårsafton (Tuesday)
-
-        # With PUBLIC + DE_FACTO categories (the fix)
-        se_all = Sweden(categories=(PUBLIC, DE_FACTO), years=2024)
-        # These should correctly return False
-        self.assertFalse(se_all.is_working_day("2024-06-21"))  # Midsommarafton
-        self.assertFalse(se_all.is_working_day("2024-12-24"))  # Julafton
-        self.assertFalse(se_all.is_working_day("2024-12-31"))  # Nyårsafton
-
-        # Public holidays should still be non-working
-        self.assertFalse(se_all.is_working_day("2024-12-25"))  # Juldagen
-        self.assertFalse(se_all.is_working_day("2024-01-01"))  # Nyårsdagen
-
     def test_twelfth_night(self):
         name = "Trettondagsafton (från kl. 14.00)"
         self.assertNoHolidayName(name)
@@ -279,7 +206,6 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
     def test_midsummer_eve(self):
         name = "Midsommarafton"
         self.assertNoHolidayName(name)
-        self.assertNoBankHolidayName(name)
         self.assertNoOptionalHolidayName(name)
         dts = (
             "2020-06-19",
@@ -289,7 +215,10 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
             "2024-06-21",
             "2025-06-20",
         )
+        self.assertBankHolidayName(name, dts)
+        self.assertBankHolidayName(name, self.full_range)
         self.assertDeFactoHolidayName(name, dts)
+        self.assertDeFactoHolidayName(name, self.full_range)
 
     def test_all_saints_eve(self):
         name = "Allahelgonsafton (från kl. 14.00)"
@@ -310,15 +239,15 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
     def test_christmas_eve(self):
         name = "Julafton"
         self.assertNoHolidayName(name)
-        self.assertNoBankHolidayName(name)
         self.assertNoOptionalHolidayName(name)
+        self.assertBankHolidayName(name, (f"{year}-12-24" for year in self.full_range))
         self.assertDeFactoHolidayName(name, (f"{year}-12-24" for year in self.full_range))
 
     def test_new_years_eve(self):
         name = "Nyårsafton"
         self.assertNoHolidayName(name)
-        self.assertNoBankHolidayName(name)
         self.assertNoOptionalHolidayName(name)
+        self.assertBankHolidayName(name, (f"{year}-12-31" for year in self.full_range))
         self.assertDeFactoHolidayName(name, (f"{year}-12-31" for year in self.full_range))
 
     def test_day_before_ascension_day(self):
@@ -463,9 +392,12 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
             ("2022-05-25", "Dag före Kristi himmelsfärdsdag (från kl. 14.00)"),
             ("2022-06-03", "Dag före Pingstafton (från kl. 14.00)"),
             ("2022-06-23", "Dag före Midsommarafton (från kl. 14.00)"),
+            ("2022-06-24", "Midsommarafton"),
             ("2022-11-04", "Allahelgonsafton (från kl. 14.00)"),
             ("2022-12-23", "Dag före Julafton (från kl. 14.00)"),
+            ("2022-12-24", "Julafton"),
             ("2022-12-30", "Dag före Nyårsafton (från kl. 14.00)"),
+            ("2022-12-31", "Nyårsafton"),
         )
 
     def test_optional_2022(self):
@@ -478,6 +410,15 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
             ("2022-05-27", "Klämdag"),
             ("2022-06-04", "Pingstafton"),
             ("2022-11-04", "Allahelgonsafton (från kl. 14.00)"),
+        )
+
+    def test_de_facto_2022(self):
+        """Test all DE_FACTO holidays for 2022."""
+        self.assertHolidays(
+            Sweden(categories=DE_FACTO, years=2022),
+            ("2022-06-24", "Midsommarafton"),
+            ("2022-12-24", "Julafton"),
+            ("2022-12-31", "Nyårsafton"),
         )
 
     def test_l10n_default(self):
