@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestMalaysia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Malaysia, years_all_subdivs=range(2000, 2050))
+        super().setUpClass(Malaysia, with_subdiv_special_flags=True)
 
     def test_2023(self):
         rows = (
@@ -100,21 +100,36 @@ class TestMalaysia(CommonCountryTests, TestCase):
             "2022-11-19",
             "2022-11-28",
             "2023-04-21",
+            "2025-09-15",
         )
 
     def test_special_subdiv_holidays(self):
         for subdiv in ("14", "15", "16"):
             self.assertHoliday(self.subdiv_holidays[subdiv], "2021-12-03")
 
-        self.assertHoliday(self.subdiv_holidays["13"], "2018-05-17", "2018-05-18")
-
         for subdiv in ("01", "02", "03", "11"):
-            self.assertHoliday(self.subdiv_holidays[subdiv], "2022-05-04")
-            self.assertNoNonObservedHoliday(Malaysia(subdiv=subdiv, observed=False), "2022-05-04")
+            self.assertHoliday(
+                self.subdiv_holidays[subdiv],
+                "2018-05-10",
+                "2018-05-13",
+                "2022-05-04",
+            )
+            self.assertNoNonObservedHoliday(
+                self.subdiv_holidays_non_observed[subdiv],
+                "2022-05-04",
+            )
+
+        for subdiv in ("04", "05", "06", "07", "08", "09", "10", "14", "15", "16"):
+            self.assertHoliday(self.subdiv_holidays[subdiv], "2018-05-10", "2018-05-11")
+
+        self.assertHoliday(self.subdiv_holidays["13"], "2018-05-17", "2018-05-18")
 
         for subdiv in ("04", "05", "06", "07", "08", "09", "10", "11", "12", "14", "15", "16"):
             self.assertHoliday(self.subdiv_holidays[subdiv], "2007-01-02")
-            self.assertNoNonObservedHoliday(Malaysia(subdiv=subdiv, observed=False), "2007-01-02")
+            self.assertNoNonObservedHoliday(
+                self.subdiv_holidays_non_observed[subdiv],
+                "2007-01-02",
+            )
 
     def test_new_years_day(self):
         name = "Tahun Baharu"
@@ -122,7 +137,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv in {"04", "05", "06", "07", "08", "10", "12", "13", "14", "15", "16"}:
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-01-01" for year in range(2000, 2050))
+                    name, holidays, (f"{year}-01-01" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -133,16 +148,16 @@ class TestMalaysia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv in {"14", "15", "16"}:
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-02-01" for year in range(2000, 2050))
+                    name, holidays, (f"{year}-02-01" for year in range(1974, self.end_year))
                 )
-                self.assertNoHolidayName(name, Malaysia(subdiv=subdiv, years=1973))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1974))
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_labor_day(self):
         name = "Hari Pekerja"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1973, 2050)))
-        self.assertNoHolidayName(name, range(1952, 1973))
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1973, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1973))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -152,14 +167,6 @@ class TestMalaysia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
-                    "2012-04-06",
-                    "2013-03-29",
-                    "2014-04-18",
-                    "2015-04-03",
-                    "2016-03-25",
-                    "2017-04-14",
-                    "2018-03-30",
-                    "2019-04-19",
                     "2020-04-10",
                     "2021-04-02",
                     "2022-04-15",
@@ -167,7 +174,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
                     "2024-03-29",
                     "2025-04-18",
                 )
-                self.assertHolidayName(name, holidays, range(2000, 2050))
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -179,8 +186,8 @@ class TestMalaysia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
-                    (f"{year}-05-30" for year in range(2000, 2050)),
-                    (f"{year}-05-31" for year in range(2000, 2050)),
+                    (f"{year}-05-30" for year in self.full_range),
+                    (f"{year}-05-31" for year in self.full_range),
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -204,12 +211,12 @@ class TestMalaysia(CommonCountryTests, TestCase):
             "2024-06-03",
             "2025-06-02",
         )
-        self.assertHolidayName(name, range(1952, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_malaysia_day(self):
         name = "Hari Malaysia"
-        self.assertHolidayName(name, (f"{year}-09-16" for year in range(2010, 2050)))
-        self.assertNoHolidayName(name, range(1952, 2010))
+        self.assertHolidayName(name, (f"{year}-09-16" for year in range(2010, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2010))
 
     def test_deepavali(self):
         name = "Hari Deepavali"
@@ -228,13 +235,13 @@ class TestMalaysia(CommonCountryTests, TestCase):
             "2024-10-31",
             "2025-10-20",
         )
-
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "13":
                 self.assertNoHolidayName(name, holidays)
             elif subdiv == "15":
                 self.assertHolidayName(name, holidays, dt)
-                self.assertNoHolidayName(name, holidays, range(2000, 2014))
+                self.assertHolidayName(name, holidays, range(2014, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2014))
             else:
                 self.assertHolidayName(name, holidays, dt)
 
@@ -263,11 +270,11 @@ class TestMalaysia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv in {"01", "05", "07", "08", "10", "14", "16"}:
                 self.assertHolidayName(name, holidays, dt_1, dt_2)
-                self.assertHolidayName(name, holidays, range(2000, 2050))
+                self.assertHolidayName(name, holidays, self.full_range)
             elif subdiv == "02":
                 self.assertHolidayName(name, holidays, dt_2)
-                self.assertHolidayName(name, holidays, range(2022, 2050))
-                self.assertNoHolidayName(name, holidays, range(2000, 2022))
+                self.assertHolidayName(name, holidays, range(2022, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2022))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -290,7 +297,8 @@ class TestMalaysia(CommonCountryTests, TestCase):
             "2024-07-07",
             "2025-06-27",
         )
-        self.assertNoHolidayName(name, range(1952, 1995))
+        self.assertIslamicNoEstimatedHolidayName(name, range(1995, self.end_year))
+        self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1995))
 
     def test_prophets_birthday(self):
         name = "Hari Keputeraan Nabi Muhammad S.A.W."
@@ -312,6 +320,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
             "2024-09-16",
             "2025-09-05",
         )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_fitr(self):
         name = "Hari Raya Puasa"
@@ -332,6 +341,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-31",
         )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_fitr_second_day(self):
         name = "Hari Raya Puasa (Hari Kedua)"
@@ -352,6 +362,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
             "2024-04-11",
             "2025-04-01",
         )
+        self.assertIslamicNoEstimatedNonObservedHolidayName(name, self.full_range)
 
     def test_eid_al_adha(self):
         name = "Hari Raya Qurban"
@@ -372,6 +383,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
             "2024-06-17",
             "2025-06-07",
         )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_isra_and_miraj(self):
         name = "Israk dan Mikraj"
@@ -399,13 +411,14 @@ class TestMalaysia(CommonCountryTests, TestCase):
             "2024-02-08",
             "2025-01-27",
         )
-
-        for subdiv, holidays in self.subdiv_holidays.items():
+        for subdiv, holidays in self.subdiv_islamic_no_estimated_holidays.items():
             if subdiv in {"02", "05", "09"}:
                 self.assertHolidayName(name, holidays, dt_1, dt_2)
+                self.assertHolidayName(name, holidays, self.full_range)
             elif subdiv == "11":
                 self.assertHolidayName(name, holidays, dt_2)
-                self.assertNoHolidayName(name, holidays, range(2000, 2020))
+                self.assertHolidayName(name, holidays, range(2020, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2020))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -428,51 +441,52 @@ class TestMalaysia(CommonCountryTests, TestCase):
             "2024-03-12",
         )
         dt_2 = ("2025-03-02",)
-
-        for subdiv, holidays in self.subdiv_holidays.items():
+        for subdiv, holidays in self.subdiv_islamic_no_estimated_holidays.items():
             if subdiv in {"01", "02"}:
                 self.assertHolidayName(name, holidays, dt_1, dt_2)
+                self.assertHolidayName(name, holidays, self.full_range)
             elif subdiv == "04":
                 self.assertHolidayName(name, holidays, dt_1)
-                self.assertNoHolidayName(name, holidays, range(2025, 2050))
+                self.assertHolidayName(name, holidays, range(self.start_year, 2025))
+                self.assertNoHolidayName(name, holidays, range(2025, self.end_year))
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_eid_al_fitr_third_day(self):
         name = "Hari Raya Puasa (Hari Ketiga)"
         self.assertNoHolidayName(name)
-        dt = ("2025-04-02",)
-
-        for subdiv, holidays in self.subdiv_holidays.items():
+        for subdiv, holidays in self.subdiv_islamic_no_estimated_holidays.items():
             if subdiv == "04":
-                self.assertHolidayName(name, holidays, dt)
-                self.assertNoHolidayName(name, holidays, range(2000, 2025))
+                self.assertHolidayName(name, holidays, "2025-04-02")
+                self.assertHolidayName(name, holidays, range(2025, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2025))
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_nuzul_al_quran_day(self):
         name = "Hari Nuzul Al-Quran"
         self.assertNoHolidayName(name)
-        dt = (
-            "2012-08-05",
-            "2013-07-25",
-            "2014-07-15",
-            "2015-07-04",
-            "2016-06-22",
-            "2017-06-12",
-            "2018-06-02",
-            "2019-05-22",
-            "2020-05-10",
-            "2021-04-29",
-            "2022-04-19",
-            "2023-04-08",
-            "2024-03-28",
-            "2025-03-18",
-        )
-
-        for subdiv, holidays in self.subdiv_holidays.items():
+        for subdiv, holidays in self.subdiv_islamic_no_estimated_holidays.items():
             if subdiv in {"03", "06", "07", "08", "09", "10", "11", "14", "15", "16"}:
-                self.assertHolidayName(name, holidays, dt)
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2012-08-05",
+                    "2013-07-25",
+                    "2014-07-15",
+                    "2015-07-04",
+                    "2016-06-22",
+                    "2017-06-12",
+                    "2018-06-02",
+                    "2019-05-22",
+                    "2020-05-10",
+                    "2021-04-29",
+                    "2022-04-19",
+                    "2023-04-08",
+                    "2024-03-28",
+                    "2025-03-18",
+                )
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -498,37 +512,40 @@ class TestMalaysia(CommonCountryTests, TestCase):
             "2025-06-06",
         )
 
-        for subdiv, holidays in self.subdiv_holidays.items():
+        for subdiv, holidays in self.subdiv_islamic_no_estimated_holidays.items():
             if subdiv == "11":
                 self.assertHolidayName(name, holidays, dt_1, dt_2)
+                self.assertHolidayName(name, holidays, self.full_range)
             elif subdiv == "03":
                 self.assertHolidayName(name, holidays, dt_2)
-                self.assertNoHolidayName(name, holidays, range(2000, 2023))
+                self.assertHolidayName(name, holidays, range(2023, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2023))
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_eid_al_adha_second_day(self):
         name = "Hari Raya Qurban (Hari Kedua)"
         self.assertNoHolidayName(name)
-        dt = (
-            "2012-10-27",
-            "2013-10-16",
-            "2014-10-06",
-            "2015-09-25",
-            "2016-09-13",
-            "2017-09-02",
-            "2018-08-23",
-            "2019-08-12",
-            "2020-08-01",
-            "2021-07-21",
-            "2022-07-11",
-            "2023-06-30",
-            "2024-06-18",
-        )
-
-        for subdiv, holidays in self.subdiv_holidays.items():
+        for subdiv, holidays in self.subdiv_islamic_no_estimated_holidays.items():
             if subdiv in {"02", "03", "09", "11"}:
-                self.assertHolidayName(name, holidays, dt)
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2012-10-27",
+                    "2013-10-16",
+                    "2014-10-06",
+                    "2015-09-25",
+                    "2016-09-13",
+                    "2017-09-02",
+                    "2018-08-23",
+                    "2019-08-12",
+                    "2020-08-01",
+                    "2021-07-21",
+                    "2022-07-11",
+                    "2023-06-30",
+                    "2024-06-18",
+                )
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -568,16 +585,16 @@ class TestMalaysia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "01":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-03-23" for year in range(2015, 2050))
+                    name, holidays, (f"{year}-03-23" for year in range(2015, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(2000, 2015))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2015))
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_sultan_of_johor_hol(self):
         name = "Hari Hol Almarhum Sultan Iskandar"
         self.assertNoHolidayName(name)
-        for subdiv, holidays in self.subdiv_holidays.items():
+        for subdiv, holidays in self.subdiv_islamic_no_estimated_holidays.items():
             if subdiv == "01":
                 self.assertHolidayName(
                     name,
@@ -596,8 +613,10 @@ class TestMalaysia(CommonCountryTests, TestCase):
                     "2022-09-03",
                     "2023-08-23",
                     "2024-08-11",
+                    "2025-07-31",
                 )
-                self.assertNoHolidayName(name, holidays, range(2000, 2011))
+                self.assertHolidayName(name, holidays, range(2011, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2011))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -616,8 +635,10 @@ class TestMalaysia(CommonCountryTests, TestCase):
                     "2022-06-19",
                     "2023-06-18",
                     "2024-06-30",
+                    "2025-06-15",
                 )
-                self.assertNoHolidayName(name, holidays, range(2000, 2018))
+                self.assertHolidayName(name, holidays, range(2018, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2018))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -641,10 +662,10 @@ class TestMalaysia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
-                    (f"{year}-09-29" for year in range(2023, 2050)),
-                    (f"{year}-09-30" for year in range(2023, 2050)),
+                    (f"{year}-09-29" for year in range(2023, self.end_year)),
+                    (f"{year}-09-30" for year in range(2023, self.end_year)),
                 )
-                self.assertNoHolidayName(name, holidays, range(2000, 2010))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2010))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -654,9 +675,9 @@ class TestMalaysia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "04":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-02-20" for year in range(2024, 2050))
+                    name, holidays, (f"{year}-02-20" for year in range(2024, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(2000, 2024))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2024))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -666,10 +687,11 @@ class TestMalaysia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "04":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-04-15" for year in range(2000, 2024))
+                    name, holidays, (f"{year}-04-15" for year in range(1989, 2024))
                 )
-                self.assertNoHolidayName(name, holidays, range(2024, 2050))
-                self.assertNoHolidayName(name, Malaysia(subdiv=subdiv, years=1988))
+                self.assertNoHolidayName(
+                    name, holidays, range(self.start_year, 1989), range(2024, self.end_year)
+                )
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -679,7 +701,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "04":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-08-24" for year in range(2020, 2050))
+                    name, holidays, (f"{year}-08-24" for year in range(2020, self.end_year))
                 )
                 self.assertHolidayName(
                     name,
@@ -693,7 +715,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
                     "2018-10-12",
                     "2019-10-11",
                 )
-                self.assertHolidayName(name, holidays, range(2000, 2025))
+                self.assertHolidayName(name, holidays, range(self.start_year, 2025))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -703,9 +725,9 @@ class TestMalaysia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "05":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-01-14" for year in range(2009, 2050))
+                    name, holidays, (f"{year}-01-14" for year in range(2009, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(2000, 2009))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2009))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -717,10 +739,10 @@ class TestMalaysia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
-                    (f"{year}-05-22" for year in range(2020, 2050)),
-                    (f"{year}-05-07" for year in range(2000, 2020)),
+                    (f"{year}-05-22" for year in range(2020, self.end_year)),
+                    (f"{year}-05-07" for year in range(1975, 2020)),
                 )
-                self.assertNoHolidayName(name, Malaysia(subdiv=subdiv, years=1974))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1975))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -732,10 +754,10 @@ class TestMalaysia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
-                    (f"{year}-07-30" for year in range(2019, 2050)),
-                    (f"{year}-10-24" for year in range(2000, 2019)),
+                    (f"{year}-07-30" for year in range(2019, self.end_year)),
+                    (f"{year}-10-24" for year in range(1975, 2019)),
                 )
-                self.assertNoHolidayName(name, Malaysia(subdiv=subdiv, years=1974))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1975))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -745,9 +767,9 @@ class TestMalaysia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "07":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-07-07" for year in range(2009, 2050))
+                    name, holidays, (f"{year}-07-07" for year in range(2009, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(2000, 2009))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2009))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -774,7 +796,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
                     "2024-07-13",
                     "2025-07-12",
                 )
-                self.assertHolidayName(name, holidays, range(2000, 2050))
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -784,7 +806,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "08":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-11-27" for year in range(2000, 2018))
+                    name, holidays, (f"{year}-11-27" for year in range(self.start_year, 2018))
                 )
                 self.assertHolidayName(
                     name,
@@ -798,6 +820,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
                     "2024-11-01",
                     "2025-11-07",
                 )
+                self.assertHolidayName(name, holidays, range(2018, self.end_year))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -809,11 +832,13 @@ class TestMalaysia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
-                    (f"{year}-05-17" for year in range(2000, 2018)),
-                    (f"{year}-05-17" for year in range(2022, 2050)),
+                    (
+                        f"{year}-05-17"
+                        for year in (*range(2000, 2018), *range(2022, self.end_year))
+                    ),
                     (f"{year}-07-17" for year in range(2018, 2022)),
                 )
-                self.assertNoHolidayName(name, Malaysia(subdiv=subdiv, years=1999))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2000))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -823,7 +848,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "10":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-12-11" for year in range(2000, 2050))
+                    name, holidays, (f"{year}-12-11" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -834,9 +859,9 @@ class TestMalaysia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "11":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-03-04" for year in range(2000, 2050))
+                    name, holidays, (f"{year}-03-04" for year in range(2000, self.end_year))
                 )
-                self.assertNoHolidayName(name, Malaysia(subdiv=subdiv, years=1999))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2000))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -846,9 +871,9 @@ class TestMalaysia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "11":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-04-26" for year in range(2000, 2050))
+                    name, holidays, (f"{year}-04-26" for year in range(2000, self.end_year))
                 )
-                self.assertNoHolidayName(name, Malaysia(subdiv=subdiv, years=1999))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2000))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -907,10 +932,10 @@ class TestMalaysia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
-                    (f"{year}-06-01" for year in range(2000, 2050)),
-                    (f"{year}-06-02" for year in range(2000, 2050)),
+                    (f"{year}-06-01" for year in range(1965, self.end_year)),
+                    (f"{year}-06-02" for year in range(1965, self.end_year)),
                 )
-                self.assertNoHolidayName(name, Malaysia(subdiv=subdiv, years=1964))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1965))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -937,7 +962,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
                     "2024-10-12",
                     "2025-10-11",
                 )
-                self.assertHolidayName(name, holidays, range(2000, 2050))
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -947,9 +972,9 @@ class TestMalaysia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "13":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-07-22" for year in range(2017, 2050))
+                    name, holidays, (f"{year}-07-22" for year in range(2017, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(2000, 2017))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2017))
             else:
                 self.assertNoHolidayName(name, holidays)
 
