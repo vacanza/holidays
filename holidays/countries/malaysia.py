@@ -79,10 +79,6 @@ class Malaysia(
         * <https://web.archive.org/web/20240228225038/https://www.nst.com.my/news/nation/2024/02/1014012/melaka-cm-suggests-declaring-feb-20-federal-public-holiday-mark>
         * <https://web.archive.org/web/20251216120554/https://www.kabinet.gov.my/storage/2025/08/HKA-2026.pdf>
 
-    Checked with:
-        * <https://web.archive.org/web/20251216110238/https://cutisekolah.com.my/en/calendar-2025/>
-        * <https://web.archive.org/web/20251216110813/https://cutisekolah.com.my/en/calendar-2026/>
-
     Section 3 of Holidays Act 1951:
     > If any day specified in the Schedule falls on Sunday then the day following shall be
     > a public holiday and if such day is already a public holiday, then the day following
