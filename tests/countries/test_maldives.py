@@ -37,8 +37,8 @@ class TestMaldives(CommonCountryTests, TestCase):
         self.assertHolidayName("Republic Day", (f"{year}-11-11" for year in range(1950, 2050)))
 
     def test_2018(self):
-        self.assertHolidays(
-            Maldives(years=2018),
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "New Year's Day"),
             ("2018-05-01", "Labor Day"),
             ("2018-05-16", "Beginning of Ramadan (estimated)"),
@@ -60,8 +60,8 @@ class TestMaldives(CommonCountryTests, TestCase):
         )
 
     def test_2020(self):
-        self.assertHolidays(
-            Maldives(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "New Year's Day"),
             ("2020-04-24", "Beginning of Ramadan (estimated)"),
             ("2020-05-01", "Labor Day"),

@@ -19,6 +19,7 @@ GoTo :Help
 
 :Clean
     Del /S /Q *.mo
+    Del /S /Q *.pot
     Del /S /Q *.pyc
     RD /S /Q .mypy_cache
     RD /S /Q .pytest_cache
@@ -26,7 +27,7 @@ GoTo :Help
     Exit /B
 
 :Doc
-    mkdocs build
+    uv run --no-sync mkdocs build
     Exit /B
 
 :Help
@@ -39,53 +40,46 @@ GoTo :Help
     Echo     pre-commit    run pre-commit against all files
     Echo     setup         setup development environment
     Echo     test          run tests (in parallel)
-    Echo     tox           run tox (in parallel)
     Exit /B
 
 :L10n
-    python scripts\l10n\generate_po_files.py 2>nul >nul
-    python scripts\l10n\generate_mo_files.py
+    uv run --no-sync scripts\l10n\generate_po_files.py 2>nul >nul
+    uv run --no-sync scripts\l10n\generate_mo_files.py
     Exit /B
 
 :Package
-    python scripts\l10n\generate_mo_files.py
-    python -m build
+    uv run --no-sync scripts\l10n\generate_mo_files.py
+    uv build
     Exit /B
 
 :Pre-commit
-    pre-commit run --all-files
+    uv run --no-sync pre-commit run --all-files
     Exit /B
 
 :Release-notes
-    python scripts\generate_release_notes.py
+    uv run --no-sync scripts\generate_release_notes.py
     Exit /B
 
 :Sbom
-    python -m cyclonedx_py requirements requirements\runtime.txt
+    For /F "Delims=" %%P in ('uv python find') Do Set PYTHON_PATH=%%P
+    uv tool run --from cyclonedx-bom cyclonedx-py environment "!PYTHON_PATH!"
     Exit /B
 
 :Setup
-    pip install --upgrade pip
-    pip install --requirement requirements\dev.txt
-    pip install --requirement requirements\docs.txt
-    pip install --requirement requirements\runtime.txt
-    pip install --requirement requirements\tests.txt
-    pre-commit install --hook-type pre-commit
-    pre-commit install --hook-type pre-push
+    uv venv --clear --python 3.14
+    uv sync --all-groups
+    uv run --no-sync pre-commit install --hook-type pre-commit
+    uv run --no-sync pre-commit install --hook-type pre-push
     Call :L10n
     Call :Package
     Exit /B
 
 :Snapshot
-    python scripts\l10n\generate_mo_files.py
-    python scripts\generate_snapshots.py
+    uv run --no-sync scripts\l10n\generate_mo_files.py
+    uv run --no-sync scripts\generate_snapshots.py
     Exit /B
 
 :Test
-    python scripts\l10n\generate_mo_files.py
-    pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
-    Exit /B
-
-:Tox
-    tox --parallel auto
+    uv run --no-sync scripts\l10n\generate_mo_files.py
+    uv run --no-sync pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
     Exit /B

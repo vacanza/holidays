@@ -178,8 +178,8 @@ class TestBarbados(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2022(self):
-        self.assertHolidays(
-            Barbados(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-21", "Errol Barrow Day"),
             ("2022-04-15", "Good Friday"),
@@ -197,8 +197,8 @@ class TestBarbados(CommonCountryTests, TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidays(
-            Barbados(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day (observed)"),
             ("2023-01-21", "Errol Barrow Day"),

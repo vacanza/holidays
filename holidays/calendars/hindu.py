@@ -14,9 +14,10 @@ from collections.abc import Iterable
 from datetime import date
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, AUG, SEP, OCT, NOV, DEC
 from holidays.helpers import _normalize_tuple
 
+BATHUKAMMA = "BATHUKAMMA"
 BUDDHA_PURNIMA = "BUDDHA_PURNIMA"
 CHHATH_PUJA = "CHHATH_PUJA"
 DIWALI = "DIWALI"
@@ -32,6 +33,7 @@ HOLI = "HOLI"
 JANMASHTAMI = "JANMASHTAMI"
 MAHA_ASHTAMI = "MAHA_ASHTAMI"
 MAHA_NAVAMI = "MAHA_NAVAMI"
+MAHARANA_PRATAP_JAYANTI = "MAHARANA_PRATAP_JAYANTI"
 MAHA_SHIVARATRI = "MAHA_SHIVARATRI"
 MAHAVIR_JAYANTI = "MAHAVIR_JAYANTI"
 MAKAR_SANKRANTI = "MAKAR_SANKRANTI"
@@ -47,6 +49,45 @@ VAISAKHI = "VAISAKHI"
 
 
 class _HinduLunisolar:
+    # Dates for Bathukamma (Mahalaya Amavasya/amavasya shraddha)
+    # [Mahalaya Amavasya](https://web.archive.org/web/20250906191235/https://www.drikpanchang.com/shraddha/tithi/amavasya-shraddha-date-time.html)
+    # [2018](https://web.archive.org/web/20250402131537/https://www.telangana.gov.in/Downloads/calendar-2018/)
+    # [2019](https://web.archive.org/web/20250508145651/https://www.telangana.gov.in/Downloads/calendar-2019/)
+    # [2020](https://web.archive.org/web/20250421174049/https://www.telangana.gov.in/downloads/calendar-2020/)
+    # [2021](https://web.archive.org/web/20250404142143/https://www.telangana.gov.in/Downloads/calendar-2021/)
+    # [2022](https://web.archive.org/web/20250217143857/https://www.telangana.gov.in/Downloads/calendar-2022/)
+    # [2023](https://web.archive.org/web/20250123180708/https://www.telangana.gov.in/Downloads/calendar-2023/)
+    # [2024](https://web.archive.org/web/20250217144536/https://www.telangana.gov.in/Downloads/calendar/)
+    # [2025](https://web.archive.org/web/20250217133450/https://www.telangana.gov.in/Downloads/calendar-2025/)
+    BATHUKAMMA_DATES = {
+        2010: (OCT, 7),
+        2011: (SEP, 27),
+        2012: (OCT, 15),
+        2013: (OCT, 4),
+        2014: (SEP, 23),
+        2015: (OCT, 12),
+        2016: (SEP, 30),
+        2017: (SEP, 19),
+        2018: (OCT, 8),
+        2019: (SEP, 28),
+        2020: (OCT, 16),
+        2021: (OCT, 6),
+        2022: (SEP, 25),
+        2023: (OCT, 14),
+        2024: (OCT, 2),
+        2025: (SEP, 21),
+        2026: (OCT, 10),
+        2027: (SEP, 29),
+        2028: (SEP, 18),
+        2029: (OCT, 7),
+        2030: (SEP, 27),
+        2031: (OCT, 15),
+        2032: (OCT, 4),
+        2033: (SEP, 23),
+        2034: (OCT, 11),
+        2035: (OCT, 1),
+    }
+
     # https://web.archive.org/web/20240804044401/https://www.timeanddate.com/holidays/india/buddha-purnima
     BUDDHA_PURNIMA_DATES = {
         2001: (APR, 30),
@@ -784,6 +825,43 @@ class _HinduLunisolar:
         2035: (OCT, 10),
     }
 
+    # Dates for Maharana Pratap Jayanti (Jyeshtha Shukla 3)
+    # [Maharana Pratap Jayanti](https://web.archive.org/web/20241212205537/https://www.drikpanchang.com/calendars/indian/jayanti/maharana-pratap/maharana-pratap-jayanti.html)
+    # [2018](https://web.archive.org/web/20251213153439/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_Holidays_2018_25102017.pdf)
+    # [2019](https://web.archive.org/web/20251213151532/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_Holidays_2019_02112018.pdf)
+    # [2020](https://web.archive.org/web/20251213151547/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_Holidays_2020_22112019.pdf)
+    # [2021](https://web.archive.org/web/20251213151616/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/holiday_calender_2021_gr6_26102020.pdf)
+    # [2022](https://web.archive.org/web/20251213151608/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_holidays_list_21_10_2021.pdf)
+    # [2023](https://web.archive.org/web/20251213151559/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_holidays_list_16_11_2022.pdf)
+    MAHARANA_PRATAP_JAYANTI_DATES = {
+        2010: (JUN, 15),
+        2011: (JUN, 4),
+        2012: (MAY, 24),
+        2013: (JUN, 11),
+        2014: (MAY, 31),
+        2015: (MAY, 20),
+        2016: (JUN, 7),
+        2017: (MAY, 28),
+        2018: (JUN, 16),
+        2019: (JUN, 6),
+        2020: (MAY, 25),
+        2021: (JUN, 13),
+        2022: (JUN, 2),
+        2023: (MAY, 22),
+        2024: (JUN, 9),
+        2025: (MAY, 29),
+        2026: (JUN, 17),
+        2027: (JUN, 7),
+        2028: (MAY, 27),
+        2029: (MAY, 15),
+        2030: (JUN, 4),
+        2031: (MAY, 24),
+        2032: (JUN, 11),
+        2033: (MAY, 31),
+        2034: (MAY, 20),
+        2035: (JUN, 8),
+    }
+
     # https://web.archive.org/web/20250323040914/https://www.timeanddate.com/holidays/india/maha-shivaratri-shivaratri
     MAHA_SHIVARATRI_DATES = {
         2001: (FEB, 21),
@@ -1408,6 +1486,9 @@ class _HinduLunisolar:
             for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
                 yield date(year, *dt), year not in exact_dates
 
+    def bathukamma_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(BATHUKAMMA, year)
+
     def buddha_purnima_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BUDDHA_PURNIMA, year)
 
@@ -1458,6 +1539,9 @@ class _HinduLunisolar:
 
     def maha_shivaratri_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHA_SHIVARATRI, year)
+
+    def maharana_pratap_jayanti_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(MAHARANA_PRATAP_JAYANTI, year)
 
     def mahavir_jayanti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHAVIR_JAYANTI, year)

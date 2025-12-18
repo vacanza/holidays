@@ -252,8 +252,8 @@ class TestVaticanCity(CommonCountryTests, TestCase):
 
     def test_2020(self):
         # https://www.vaticanstate.va/images/pdf/CALENDARIO_2020.pdf
-        self.assertHolidays(
-            VaticanCity(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "Solennità di Maria Santissima Madre di Dio"),
             ("2020-01-06", "Epifania del Signore"),
             ("2020-02-11", "Anniversario della istituzione dello Stato della Città del Vaticano"),
@@ -287,8 +287,8 @@ class TestVaticanCity(CommonCountryTests, TestCase):
 
     def test_2021(self):
         # https://www.farmaciavaticana.va/images/pdf/calendario_2021.pdf
-        self.assertHolidays(
-            VaticanCity(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "Solennità di Maria Santissima Madre di Dio"),
             ("2021-01-06", "Epifania del Signore"),
             ("2021-02-11", "Anniversario della istituzione dello Stato della Città del Vaticano"),
@@ -322,8 +322,8 @@ class TestVaticanCity(CommonCountryTests, TestCase):
 
     def test_2022(self):
         # https://www.farmaciavaticana.va/images/pdf/calendario_2022.pdf
-        self.assertHolidays(
-            VaticanCity(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Solennità di Maria Santissima Madre di Dio"),
             ("2022-01-06", "Epifania del Signore"),
             ("2022-02-11", "Anniversario della istituzione dello Stato della Città del Vaticano"),
@@ -357,8 +357,8 @@ class TestVaticanCity(CommonCountryTests, TestCase):
 
     def test_2023(self):
         # https://www.farmaciavaticana.va/images/pdf/calendario_2023.pdf
-        self.assertHolidays(
-            VaticanCity(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "Solennità di Maria Santissima Madre di Dio"),
             ("2023-01-06", "Epifania del Signore"),
             ("2023-02-11", "Anniversario della istituzione dello Stato della Città del Vaticano"),
@@ -392,8 +392,8 @@ class TestVaticanCity(CommonCountryTests, TestCase):
 
     def test_2024(self):
         # https://www.farmaciavaticana.va/media/attachments/2024/01/02/calendario_2024.pdf
-        self.assertHolidays(
-            VaticanCity(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "Solennità di Maria Santissima Madre di Dio"),
             ("2024-01-06", "Epifania del Signore"),
             ("2024-02-11", "Anniversario della istituzione dello Stato della Città del Vaticano"),
@@ -502,7 +502,7 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             ("2025-02-11", "วันครบรอบการสถาปนานครรัฐวาติกัน"),
             ("2025-03-13", "วันคล้ายวันเลือกตั้งสมเด็จพระสันตะปาปา"),
             ("2025-03-19", "วันสมโภชนักบุญโยเซฟ"),
-            ("2025-04-17", "วันพฤหัสศักดิสิทธิ์"),
+            ("2025-04-17", "วันพฤหัสศักดิ์สิทธิ์"),
             ("2025-04-18", "วันศุกร์ประเสริฐ"),
             ("2025-04-19", "วันเสาร์ศักดิ์สิทธิ์"),
             ("2025-04-20", "วันอาทิตย์อีสเตอร์"),

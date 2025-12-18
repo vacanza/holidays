@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.23\n"
+"Project-Id-Version: Holidays 0.86\n"
 "POT-Creation-Date: 2023-04-08 20:17+0300\n"
-"PO-Revision-Date: 2023-04-08 20:22+0300\n"
+"PO-Revision-Date: 2025-11-25 23:04+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: sv\n"
@@ -24,8 +24,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Source-Language: sv\n"
+
+#. %s (from 2pm).
+#, c-format
+msgid "%s (från kl. 14.00)"
+msgstr ""
 
 #. New Year's Day.
 msgid "Nyårsdagen"
@@ -36,7 +41,7 @@ msgid "Trettondedag jul"
 msgstr ""
 
 #. Feast of the Annunciation.
-msgid "Jungfru Marie bebådelsedag"
+msgid "Marie bebådelsedag"
 msgstr ""
 
 #. Good Friday.
@@ -59,8 +64,8 @@ msgstr ""
 msgid "Kristi himmelsfärdsdag"
 msgstr ""
 
-#. National Day of Sweden.
-msgid "Sveriges nationaldag"
+#. National Day.
+msgid "Nationaldagen"
 msgstr ""
 
 #. Whit Sunday.
@@ -71,20 +76,12 @@ msgstr ""
 msgid "Annandag pingst"
 msgstr ""
 
-#. Midsummer Eve.
-msgid "Midsommarafton"
-msgstr ""
-
 #. Midsummer Day.
 msgid "Midsommardagen"
 msgstr ""
 
 #. All Saints' Day.
 msgid "Alla helgons dag"
-msgstr ""
-
-#. Christmas Eve.
-msgid "Julafton"
 msgstr ""
 
 #. Christmas Day.
@@ -95,10 +92,66 @@ msgstr ""
 msgid "Annandag jul"
 msgstr ""
 
+#. Sunday.
+msgid "Söndag"
+msgstr ""
+
+#. Twelfth Night.
+msgid "Trettondagsafton"
+msgstr ""
+
+#. Maundy Thursday.
+msgid "Skärtorsdagen"
+msgstr ""
+
+#. Walpurgis Night.
+msgid "Valborgsmässoafton"
+msgstr ""
+
+#. Midsummer Eve.
+msgid "Midsommarafton"
+msgstr ""
+
+#. All Saints' Eve.
+msgid "Allahelgonsafton"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Julafton"
+msgstr ""
+
 #. New Year's Eve.
 msgid "Nyårsafton"
 msgstr ""
 
-#. Sunday.
-msgid "Söndag"
+#. Day before Ascension Day.
+msgid "Dag före Kristi himmelsfärdsdag"
+msgstr ""
+
+#. Day before Midsummer Eve.
+msgid "Dag före Midsommarafton"
+msgstr ""
+
+#. Day before Whitsun Eve.
+msgid "Dag före Pingstafton"
+msgstr ""
+
+#. Day before Christmas Eve.
+msgid "Dag före Julafton"
+msgstr ""
+
+#. Day before New Year's Eve.
+msgid "Dag före Nyårsafton"
+msgstr ""
+
+#. Holy Saturday.
+msgid "Påskafton"
+msgstr ""
+
+#. Squeeze day.
+msgid "Klämdag"
+msgstr ""
+
+#. Whitsun Eve.
+msgid "Pingstafton"
 msgstr ""

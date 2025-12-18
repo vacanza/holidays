@@ -22,8 +22,8 @@ class TestAruba(CommonCountryTests, TestCase):
         super().setUpClass(Aruba)
 
     def test_2017(self):
-        self.assertHolidays(
-            Aruba(years=2017),
+        self.assertHolidaysInYear(
+            2017,
             ("2017-01-01", "Aña Nobo"),
             ("2017-01-25", "Dia di Betico"),
             ("2017-02-27", "Dialuna despues di Carnaval Grandi"),

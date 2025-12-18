@@ -217,8 +217,8 @@ class TestBermuda(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2025(self):
-        self.assertHolidays(
-            Bermuda(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "New Year's Day"),
             ("2025-04-18", "Good Friday"),
             ("2025-05-23", "Bermuda Day"),

@@ -130,8 +130,8 @@ class TestMali(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1961, 2050))
 
     def test_2024(self):
-        self.assertHolidays(
-            Mali(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "Jour de l'An"),
             ("2024-01-20", "Journée de l'Armée"),
             ("2024-03-26", "Journée du 26 mars"),

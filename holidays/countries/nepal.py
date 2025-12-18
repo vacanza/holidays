@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.calendars import _CustomIslamicHolidays, _CustomHinduHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, AUG, SEP, OCT, NOV
 from holidays.constants import PUBLIC, WORKDAY
@@ -47,10 +49,12 @@ class Nepal(
     """
 
     country = "NP"
+    default_language = "ne"
     # %s (estimated).
-    estimated_label = "%s (estimated)"
+    estimated_label = tr("%s (अनुमानित)")
     start_year = 2010
     supported_categories = (PUBLIC, WORKDAY)
+    supported_languages = ("en_US", "ne")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -105,7 +109,7 @@ class Nepal(
             }
             if dt := martyrs_day_dates.get(self._year):
                 # Martyr's Day.
-                self._add_holiday("Martyr's Day", dt)
+                self._add_holiday(tr("शहीद दिवस"), dt)
 
             democracy_day_dates = {
                 2010: (FEB, 19),
@@ -135,7 +139,7 @@ class Nepal(
             }
             if dt := democracy_day_dates.get(self._year):
                 # National Democracy Day.
-                self._add_holiday("National Democracy Day", dt)
+                self._add_holiday(tr("राष्ट्रिय प्रजातन्त्र दिवस"), dt)
 
             republic_day_dates = {
                 2010: (MAY, 29),
@@ -164,39 +168,40 @@ class Nepal(
             }
             if dt := republic_day_dates.get(self._year):
                 # Established in 2009.
+
                 # Republic Day.
-                self._add_holiday("Republic Day", dt)
+                self._add_holiday(tr("गणतन्त्र दिवस"), dt)
 
             # Hindu Holidays.
 
             # Ram Navami.
-            self._add_ram_navami("Ram Navami")
+            self._add_ram_navami(tr("राम नवमी"))
 
             # Janai Poornima.
-            self._add_raksha_bandhan("Janai Poornima")
+            self._add_raksha_bandhan(tr("जनै पूर्णिमा"))
 
             # Shree Krishna Janmashtami.
-            self._add_janmashtami("Shree Krishna Janmashtami")
+            self._add_janmashtami(tr("श्रीकृष्ण जन्माष्टमी"))
 
             # Ghatasthapana.
-            self._add_sharad_navratri("Ghatasthapana")
+            self._add_sharad_navratri(tr("घटस्थापना"))
 
             # Duwadashi (Dashain).
-            self._add_papankusha_duwadashi("Duwadashi (Dashain)")
+            self._add_papankusha_duwadashi(tr("दुवादशी (दशैं)"))
 
     def _populate_public_holidays(self):
         if self._year >= 2023:
             # Prithvi Jayanti.
-            self._add_holiday_jan_11("Prithvi Jayanti")
+            self._add_holiday_jan_11(tr("पृथ्वी जयन्ती"))
 
         # International Women's Day.
-        self._add_womens_day("International Women's Day")
+        self._add_womens_day(tr("अन्तर्राष्ट्रिय महिला दिवस"))
 
-        # Nepal New Year.
-        self._add_vaisakhi("Nepali New Year")
+        # Nepali New Year.
+        self._add_vaisakhi(tr("नेपाली नयाँ वर्ष"))
 
-        # International Labour Day.
-        self._add_labor_day("International Labour Day")
+        # International Labor Day.
+        self._add_labor_day(tr("अन्तर्राष्ट्रिय श्रम दिवस"))
 
         constitution_day_dates = {
             2016: (SEP, 19),
@@ -219,77 +224,77 @@ class Nepal(
         }
         if dt := constitution_day_dates.get(self._year):
             # Constitution Day.
-            self._add_holiday("Constitution Day", dt)
+            self._add_holiday(tr("संविधान दिवस"), dt)
 
         # Christmas Day.
-        self._add_christmas_day("Christmas Day")
+        self._add_christmas_day(tr("क्रिसमसको दिन"))
 
         # Hindu holidays.
 
         # Maghe Sankranti.
-        self._add_makar_sankranti("Maghe Sankranti")
+        self._add_makar_sankranti(tr("माघे संक्रान्ति"))
 
         # Sonam Lhochhar.
-        self._add_sonam_losar("Sonam Lhochhar")
+        self._add_sonam_losar(tr("सोनम ल्होछार"))
 
         # Maha Shivaratri.
-        self._add_maha_shivaratri("Maha Shivaratri")
+        self._add_maha_shivaratri(tr("महाशिवरात्रि"))
 
         # Gyalpo Lhosar.
-        self._add_gyalpo_losar("Gyalpo Lhosar")
+        self._add_gyalpo_losar(tr("ग्याल्पो ल्होसार"))
 
         # Fagu Poornima.
-        self._add_nepal_holi("Fagu Poornima")
+        self._add_nepal_holi(tr("फागुपुर्णिमा"))
 
         # Fagu Poornima (Terai).
-        self._add_holi("Fagu Poornima (Terai)")
+        self._add_holi(tr("फागुपूर्णिमा (तराई)"))
 
         # Buddha Jayanti.
-        self._add_buddha_purnima("Buddha Jayanti")
+        self._add_buddha_purnima(tr("बुद्ध जयन्ती"))
 
         # Fulpati.
-        self._add_maha_saptami("Fulpati")
+        self._add_maha_saptami(tr("फुलपाती"))
 
         # Maha Ashtami.
-        self._add_maha_ashtami("Maha Ashtami")
+        self._add_maha_ashtami(tr("महा अष्टमी"))
 
         # Maha Navami.
-        self._add_maha_navami("Maha Navami")
+        self._add_maha_navami(tr("महा नवमी"))
 
         # Bijaya Dashami.
-        self._add_dussehra("Bijaya Dashami")
+        self._add_dussehra(tr("विजया दशमी"))
 
         # Ekadashi (Dashain).
-        self._add_papankusha_ekadashi("Ekadashi (Dashain)")
+        self._add_papankusha_ekadashi(tr("एकादशी (दशैं)"))
 
         # Laxmi Pooja.
-        self._add_diwali_india("Laxmi Pooja")
+        self._add_diwali_india(tr("लक्ष्मी पुजा"))
 
         # Gai Tihar.
-        self._add_gau_krida("Gai Tihar")
+        self._add_gau_krida(tr("गाई तिहार"))
 
         # Gobardhan Pooja.
-        self._add_govardhan_puja("Gobardhan Pooja")
+        self._add_govardhan_puja(tr("गोवर्धन पूजा"))
 
         # Mha Pooja.
-        self._add_govardhan_puja("Mha Pooja")
+        self._add_govardhan_puja(tr("म्ह पूजा"))
 
         # Bhai Tika.
-        self._add_bhai_dooj("Bhai Tika")
+        self._add_bhai_dooj(tr("भाइटीका"))
 
         # Chhath Parva.
-        self._add_chhath_puja("Chhath Parva")
+        self._add_chhath_puja(tr("छठ पर्व"))
 
         # Tamu Lhochhar.
-        self._add_tamu_losar("Tamu Lhochhar")
+        self._add_tamu_losar(tr("तमु ल्हाेसार"))
 
         # Islamic holidays.
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day("Id-ul-Fitr")
+        self._add_eid_al_fitr_day(tr("इद उल फित्र"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day("Bakrid")
+        self._add_eid_al_adha_day(tr("बकरीद"))
 
         # Removed by MoHA between 2019-2020.
         self._add_non_continuous_holidays()
@@ -398,10 +403,10 @@ class NepalStaticHolidays:
     """
 
     # Day of National Mourning.
-    name_day_of_national_mourning = "Day of National Mourning"
+    name_day_of_national_mourning = tr("राष्ट्रिय शोक दिवस")
 
     # Tihar Holiday.
-    name_tihar_holiday = "Tihar Holiday"
+    name_tihar_holiday = tr("तिहार बिदा")
 
     special_public_holidays = {
         2011: (MAR, 6, name_day_of_national_mourning),
@@ -411,7 +416,7 @@ class NepalStaticHolidays:
         2023: (
             (JAN, 16, name_day_of_national_mourning),
             # People War's Day.
-            (FEB, 13, "People War's Day"),
+            (FEB, 13, tr("जनयुद्ध दिवस")),
             (SEP, 14, name_day_of_national_mourning),
             (NOV, 16, name_tihar_holiday),
         ),

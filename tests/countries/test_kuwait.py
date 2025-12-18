@@ -22,8 +22,8 @@ class TestKuwait(CommonCountryTests, TestCase):
         super().setUpClass(Kuwait)
 
     def test_2022(self):
-        self.assertHolidays(
-            Kuwait(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "رأس السنة الميلادية"),
             ("2022-02-25", "اليوم الوطني"),
             ("2022-02-26", "يوم التحرير"),

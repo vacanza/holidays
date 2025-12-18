@@ -547,6 +547,36 @@ class TestHelperMethods(unittest.TestCase):
         ):
             self.assertRaises(TypeError, lambda: self.hb._add_holiday(*args))
 
+    def test_add_multiday_holiday(self):
+        self.hb._populate(2024)
+
+        name = "Multi-day Holiday"
+        self.hb._add_multiday_holiday(self.hb._add_holiday(name, (JAN, 1)), 5)
+        self.assertIn("2024-01-01", self.hb)
+        self.assertIn("2024-01-02", self.hb)
+        self.assertIn("2024-01-03", self.hb)
+        self.assertIn("2024-01-04", self.hb)
+        self.assertIn("2024-01-05", self.hb)
+        self.assertIn("2024-01-06", self.hb)
+        self.assertEqual(len(self.hb.get_named(name)), 6)
+
+        name_2 = "Multi-day Holiday 2"
+        self.hb._add_multiday_holiday(self.hb._add_holiday(name, (DEC, 25)), 6, name=name_2)
+        self.assertIn("2024-12-25", self.hb)
+        self.assertIn("2024-12-26", self.hb)
+        self.assertIn("2024-12-27", self.hb)
+        self.assertIn("2024-12-28", self.hb)
+        self.assertIn("2024-12-29", self.hb)
+        self.assertIn("2024-12-30", self.hb)
+        self.assertIn("2024-12-31", self.hb)
+        # DEC, 25 itself is name instead of name_2.
+        self.assertEqual(len(self.hb.get_named(name_2)), 6)
+
+    def test_add_multiday_holiday_invalid_args(self):
+        self.hb._populate(2024)
+        with self.assertRaises(ValueError):
+            self.hb._add_multiday_holiday(date(2024, DEC, 1), 3)
+
     def test_is_leap_year(self):
         self.hb._populate(1999)
         self.assertFalse(self.hb._is_leap_year())
@@ -1123,6 +1153,7 @@ class TestStandardMethods(unittest.TestCase):
         self.assertRaises(ValueError, lambda: self.hb[:"2014-01-01"])
         self.assertRaises(TypeError, lambda: self.hb["2014-01-01":"2014-01-02":""])
         self.assertRaises(ValueError, lambda: self.hb["2014-01-01":"2014-01-02":0])
+        self.assertRaises(ValueError, lambda: self.hb["2014-01-01" : "2014-01-02" : td(hours=12)])
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + CountryStub1())

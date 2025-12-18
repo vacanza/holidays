@@ -22,8 +22,8 @@ class TestMorocco(CommonCountryTests, TestCase):
         super().setUpClass(Morocco)
 
     def test_2019(self):
-        self.assertHolidayDates(
-            Morocco(years=2019),
+        self.assertHolidayDatesInYear(
+            2019,
             "2019-01-01",
             "2019-01-11",
             "2019-05-01",
@@ -43,8 +43,8 @@ class TestMorocco(CommonCountryTests, TestCase):
         )
 
     def test_1999(self):
-        self.assertHolidayDates(
-            Morocco(years=1999),
+        self.assertHolidayDatesInYear(
+            1999,
             "1999-01-01",
             "1999-01-11",
             "1999-01-18",

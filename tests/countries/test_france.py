@@ -27,8 +27,8 @@ class TestFrance(CommonCountryTests, TestCase):
         warnings.simplefilter("ignore", category=DeprecationWarning)
 
     def test_2017(self):
-        self.assertHolidays(
-            France(years=2017),
+        self.assertHolidaysInYear(
+            2017,
             ("2017-01-01", "Jour de l'an"),
             ("2017-04-17", "Lundi de Pâques"),
             ("2017-05-01", "Fête du Travail"),
@@ -43,8 +43,8 @@ class TestFrance(CommonCountryTests, TestCase):
         )
 
     def test_2024(self):
-        self.assertHolidays(
-            France(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "Jour de l'an"),
             ("2024-04-01", "Lundi de Pâques"),
             ("2024-05-01", "Fête du Travail"),

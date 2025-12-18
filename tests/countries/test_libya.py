@@ -228,8 +228,8 @@ class TestLibya(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.workday_holidays, range(2012, 2050))
 
     def test_2024(self):
-        self.assertHolidays(
-            Libya(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-02-17", "ثورة 17 فبراير"),
             ("2024-04-10", "عيد الفطر"),
             ("2024-04-11", "عيد الفطر"),

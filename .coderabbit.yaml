@@ -4,6 +4,9 @@ code_generation:
   docstrings:
     language: en-US
 early_access: true
+issue_enrichment:
+  auto_enrich:
+    enabled: false
 language: en-US
 reviews:
   assess_linked_issues: true
@@ -17,7 +20,7 @@ reviews:
   labeling_instructions: []
   poem: false
   profile: assertive
-  request_changes_workflow: false
+  request_changes_workflow: true
   review_status: true
   sequence_diagrams: false
   tools:

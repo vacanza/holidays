@@ -122,7 +122,7 @@ msgstr "วันพุธรับเถ้า"
 
 #. Holy Thursday.
 msgid "Quinta-Feira Santa"
-msgstr "วันพฤหัสศักดิสิทธิ์"
+msgstr "วันพฤหัสศักดิ์สิทธิ์"
 
 #. The Day of Ascension of Jesus Christ into Heaven.
 msgid "Dia da Ascensão de Jesus Cristo ao Céu"

@@ -259,8 +259,8 @@ class TestKenya(CommonCountryTests, TestCase):
         )
 
     def test_2010(self):
-        self.assertHolidays(
-            Kenya(years=2010),
+        self.assertHolidaysInYear(
+            2010,
             ("2010-01-01", "New Year's Day"),
             ("2010-04-02", "Good Friday"),
             ("2010-04-05", "Easter Monday"),
@@ -275,8 +275,8 @@ class TestKenya(CommonCountryTests, TestCase):
         )
 
     def test_2019(self):
-        self.assertHolidays(
-            Kenya(years=2019),
+        self.assertHolidaysInYear(
+            2019,
             ("2019-01-01", "New Year's Day"),
             ("2019-04-19", "Good Friday"),
             ("2019-04-22", "Easter Monday"),
@@ -292,8 +292,8 @@ class TestKenya(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Kenya(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),

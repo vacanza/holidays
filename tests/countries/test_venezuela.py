@@ -23,8 +23,8 @@ class TestVenezuela(CommonCountryTests, TestCase):
 
     def test_2016(self):
         # https://www.officeholidays.com/countries/venezuela/2016
-        self.assertHolidayDates(
-            Venezuela(years=2016),
+        self.assertHolidayDatesInYear(
+            2016,
             "2016-01-01",
             "2016-02-08",
             "2016-02-09",
@@ -43,8 +43,8 @@ class TestVenezuela(CommonCountryTests, TestCase):
 
     def test_2017(self):
         # https://www.officeholidays.com/countries/venezuela/2017
-        self.assertHolidayDates(
-            Venezuela(years=2017),
+        self.assertHolidayDatesInYear(
+            2017,
             "2017-01-01",
             "2017-02-27",
             "2017-02-28",
@@ -63,8 +63,8 @@ class TestVenezuela(CommonCountryTests, TestCase):
 
     def test_2018(self):
         # https://www.officeholidays.com/countries/venezuela/2018
-        self.assertHolidayDates(
-            Venezuela(years=2018),
+        self.assertHolidayDatesInYear(
+            2018,
             "2018-01-01",
             "2018-02-12",
             "2018-02-13",
@@ -83,8 +83,8 @@ class TestVenezuela(CommonCountryTests, TestCase):
 
     def test_2019(self):
         # https://www.officeholidays.com/countries/venezuela/2019
-        self.assertHolidayDates(
-            Venezuela(years=2019),
+        self.assertHolidayDatesInYear(
+            2019,
             "2019-01-01",
             "2019-03-04",
             "2019-03-05",
@@ -102,8 +102,8 @@ class TestVenezuela(CommonCountryTests, TestCase):
 
     def test_2020(self):
         # https://www.officeholidays.com/countries/venezuela/2020
-        self.assertHolidayDates(
-            Venezuela(years=2020),
+        self.assertHolidayDatesInYear(
+            2020,
             "2020-01-01",
             "2020-02-24",
             "2020-02-25",
@@ -122,8 +122,8 @@ class TestVenezuela(CommonCountryTests, TestCase):
 
     def test_2021(self):
         # https://www.officeholidays.com/countries/venezuela/2021
-        self.assertHolidayDates(
-            Venezuela(years=2021),
+        self.assertHolidayDatesInYear(
+            2021,
             "2021-01-01",
             "2021-02-15",
             "2021-02-16",
@@ -142,8 +142,8 @@ class TestVenezuela(CommonCountryTests, TestCase):
 
     def test_2022(self):
         # https://www.officeholidays.com/countries/venezuela/2022
-        self.assertHolidayDates(
-            Venezuela(years=2022),
+        self.assertHolidayDatesInYear(
+            2022,
             "2022-01-01",
             "2022-02-28",
             "2022-03-01",
@@ -162,8 +162,8 @@ class TestVenezuela(CommonCountryTests, TestCase):
 
     def test_2023(self):
         # https://www.officeholidays.com/countries/venezuela/2023
-        self.assertHolidayDates(
-            Venezuela(years=2023),
+        self.assertHolidayDatesInYear(
+            2023,
             "2023-01-01",
             "2023-02-20",
             "2023-02-21",

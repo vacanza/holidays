@@ -120,8 +120,8 @@ class TestSomalia(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1961, 2050))
 
     def test_2018(self):
-        self.assertHolidays(
-            Somalia(years=2018),
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "New Year's Day"),
             ("2018-04-13", "Isra' and Mi'raj (estimated)"),
             ("2018-05-01", "Labour Day"),

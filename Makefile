@@ -8,7 +8,6 @@ help:
 	@echo "    pre-commit    run pre-commit against all files"
 	@echo "    setup         setup development environment"
 	@echo "    test          run tests (in parallel)"
-	@echo "    tox           run tox (in parallel)"
 
 check:
 	make l10n
@@ -20,47 +19,41 @@ clean:
 	@for ext in mo pot pyc; do \
 		find . -type f -name "*.$$ext" -delete; \
 	done
-	@rm -rf .mypy_cache .pytest_cache dist .tox
+	@rm -rf .mypy_cache .pytest_cache dist
 
 doc:
-	mkdocs build
+	uv run --no-sync mkdocs build
 
 l10n:
 	find . -type f -name "*.pot" -delete
-	scripts/l10n/generate_po_files.py 2>/dev/null
-	scripts/l10n/generate_mo_files.py
+	uv run --no-sync scripts/l10n/generate_po_files.py 2>/dev/null
+	uv run --no-sync scripts/l10n/generate_mo_files.py
 
 package:
-	scripts/l10n/generate_mo_files.py
-	python -m build
+	uv run --no-sync scripts/l10n/generate_mo_files.py
+	uv build
 
 pre-commit:
-	pre-commit run --all-files
+	uv run --no-sync pre-commit run --all-files
 
 release-notes:
-	@scripts/generate_release_notes.py
+	uv run --no-sync scripts/generate_release_notes.py
 
 sbom:
-	@python -m cyclonedx_py requirements requirements/runtime.txt
+	uv tool run --from cyclonedx-bom cyclonedx-py environment "$(uv python find)"
 
 setup:
-	pip install --upgrade pip
-	pip install --requirement requirements/dev.txt
-	pip install --requirement requirements/docs.txt
-	pip install --requirement requirements/runtime.txt
-	pip install --requirement requirements/tests.txt
-	pre-commit install --hook-type pre-commit
-	pre-commit install --hook-type pre-push
+	uv venv --clear --python 3.14
+	uv sync --all-groups
+	uv run --no-sync pre-commit install --hook-type pre-commit
+	uv run --no-sync pre-commit install --hook-type pre-push
 	make l10n
 	make package
 
 snapshot:
-	scripts/l10n/generate_mo_files.py
-	scripts/generate_snapshots.py
+	uv run --no-sync scripts/l10n/generate_mo_files.py
+	uv run --no-sync scripts/generate_snapshots.py
 
 test:
-	scripts/l10n/generate_mo_files.py
-	pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
-
-tox:
-	tox --parallel auto
+	uv run --no-sync scripts/l10n/generate_mo_files.py
+	uv run --no-sync pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto

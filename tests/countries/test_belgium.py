@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import BANK
 from holidays.countries.belgium import Belgium
 from tests.common import CommonCountryTests
 
@@ -144,8 +143,8 @@ class TestBelgium(CommonCountryTests, TestCase):
         self.assertBankHolidayName(name, (f"{year}-12-26" for year in self.full_range))
 
     def test_2020(self):
-        self.assertHolidays(
-            Belgium(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "Nieuwjaar"),
             ("2020-04-12", "Pasen"),
             ("2020-04-13", "Paasmaandag"),
@@ -161,8 +160,8 @@ class TestBelgium(CommonCountryTests, TestCase):
         )
 
     def test_2021(self):
-        self.assertHolidays(
-            Belgium(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "Nieuwjaar"),
             ("2021-04-04", "Pasen"),
             ("2021-04-05", "Paasmaandag"),
@@ -177,9 +176,9 @@ class TestBelgium(CommonCountryTests, TestCase):
             ("2021-12-25", "Kerstmis"),
         )
 
-    def test_2022_public(self):
-        self.assertHolidays(
-            Belgium(years=2022),
+    def test_2022(self):
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Nieuwjaar"),
             ("2022-04-17", "Pasen"),
             ("2022-04-18", "Paasmaandag"),
@@ -195,8 +194,8 @@ class TestBelgium(CommonCountryTests, TestCase):
         )
 
     def test_2022_bank(self):
-        self.assertHolidays(
-            Belgium(categories=BANK, years=2022),
+        self.assertBankHolidaysInYear(
+            2022,
             ("2022-04-15", "Goede Vrijdag"),
             ("2022-05-27", "Vrijdag na O. L. H. Hemelvaart"),
             ("2022-12-26", "Banksluitingsdag"),

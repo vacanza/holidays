@@ -322,11 +322,11 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
                 if self._year <= 1937:
                     self._add_holiday_apr_3(name)
             elif self._year <= 1925:
-                # Songkran New Year Holidays.
-                name = tr("พระราชพิธีตะรุษะสงกรานต์ แลนักขัตฤกษ์")
-                dt = self._add_holiday_mar_28(name)
-                for delta in range(1, 19):
-                    self._add_holiday(name, _timedelta(dt, delta))
+                self._add_multiday_holiday(
+                    # Songkran New Year Holidays.
+                    self._add_holiday_mar_28(tr("พระราชพิธีตะรุษะสงกรานต์ แลนักขัตฤกษ์")),
+                    18,
+                )
             else:
                 dt = self._add_holiday_apr_13(name)
                 self._add_holiday_apr_14(name)

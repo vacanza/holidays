@@ -1306,21 +1306,39 @@ class _ChineseLunisolar:
         2053: (FEB, 18),
     }
 
+    QINGMING_THRESHOLDS: dict[str, dict[str, dict[int, int]]] = {
+        # UTC+7.
+        VIETNAMESE_CALENDAR: {
+            "apr_4": {0: 1972, 1: 2005, 2: 2038, 3: 2067},
+            "apr_6": {2: 1906, 3: 1935},
+        },
+        # UTC+8.
+        CHINESE_CALENDAR: {
+            "apr_4": {0: 1976, 1: 2009, 2: 2042, 3: 2075},
+            "apr_6": {2: 1910, 3: 1943},
+        },
+        # UTC+9.
+        KOREAN_CALENDAR: {
+            "apr_4": {0: 1984, 1: 2017, 2: 2046, 3: 2079},
+            "apr_6": {2: 1914, 3: 1947},
+        },
+    }
+
     WINTER_SOLSTICE_THRESHOLDS: dict[str, dict[str, dict[int, int]]] = {
         # UTC+7.
         VIETNAMESE_CALENDAR: {
             "dec_21": {0: 1980, 1: 2017, 2: 2050, 3: 2083},
-            "dec_23": {3: 1943},
+            "dec_23": {2: 1910, 3: 1943},
         },
         # UTC+8.
         CHINESE_CALENDAR: {
             "dec_21": {0: 1988, 1: 2021, 2: 2058, 3: 2091},
-            "dec_23": {3: 1947},
+            "dec_23": {2: 1914, 3: 1947},
         },
         # UTC+9.
         KOREAN_CALENDAR: {
             "dec_21": {0: 1992, 1: 2029, 2: 2062, 3: 2099},
-            "dec_23": {3: 1955},
+            "dec_23": {2: 1918, 3: 1955},
         },
     }
 
@@ -1376,11 +1394,31 @@ class _ChineseLunisolar:
     def mid_autumn_date(self, year: int, calendar=None) -> tuple[date | None, bool]:
         return self._get_holiday(MID_AUTUMN, year, calendar)
 
-    def winter_solstice_date(self, year: int, calendar=None) -> tuple[date | None, bool]:
+    def qingming_date(self, year: int, calendar=None) -> tuple[date, bool]:
+        """Return Qingming Festival (5th solar term of the Chinese lunisolar calendar) date.
+
+        !!! note "Note"
+            This approximation is reliable for 1901-2099 years.
+        """
+        calendar = calendar or self.__calendar
+        self.__verify_calendar(calendar)
+
+        thresholds = self.QINGMING_THRESHOLDS[calendar]
+        year_mod = year % 4
+        if year >= thresholds["apr_4"][year_mod]:
+            day = 4
+        elif year <= thresholds["apr_6"].get(year_mod, 0):
+            day = 6
+        else:
+            day = 5
+
+        return date(year, APR, day), not (1901 <= year <= 2099)
+
+    def winter_solstice_date(self, year: int, calendar=None) -> tuple[date, bool]:
         """Return Winter Solstice (22nd solar term in Chinese Lunisolar calendar) date.
 
         !!! note "Note"
-            This approximation is reliable for 1941-2099 years.
+            This approximation is reliable for 1901-2099 years.
         """
         calendar = calendar or self.__calendar
         self.__verify_calendar(calendar)
@@ -1394,7 +1432,7 @@ class _ChineseLunisolar:
         else:
             day = 22
 
-        return date(year, DEC, day), not (1941 <= year <= 2099)
+        return date(year, DEC, day), not (1901 <= year <= 2099)
 
 
 class _CustomChineseHolidays(_CustomCalendar, _ChineseLunisolar):

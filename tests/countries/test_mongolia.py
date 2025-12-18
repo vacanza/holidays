@@ -263,8 +263,8 @@ class TestMongolia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name_2011, self.workday_holidays)
 
     def test_2025(self):
-        self.assertHolidays(
-            Mongolia(years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "Шинэ жил"),
             ("2025-03-01", "Цагаан сар"),
             ("2025-03-02", "Цагаан сар"),

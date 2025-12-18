@@ -151,8 +151,8 @@ class TestIreland(CommonCountryTests, TestCase):
         )
 
     def test_2020(self):
-        self.assertHolidays(
-            Ireland(years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "New Year's Day"),
             ("2020-03-17", "Saint Patrick's Day"),
             ("2020-04-13", "Easter Monday"),
@@ -165,8 +165,8 @@ class TestIreland(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Ireland(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-03-17", "Saint Patrick's Day"),
             ("2022-03-18", "Day of Remembrance and Recognition"),

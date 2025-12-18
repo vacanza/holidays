@@ -98,14 +98,15 @@ class SnapshotGenerator:
         SnapshotGenerator.save(snapshot, file_path)
 
     @staticmethod
-    def _financial_snapshot_worker(args: tuple[str, range, Path]) -> None:
+    def _financial_snapshot_worker(args: tuple[str, tuple[str, ...], range, Path]) -> None:
         """Worker for generating financial market holiday snapshots."""
         warnings.simplefilter("ignore")
-        market_code, years, snapshot_path = args
+        market_code, supported_categories, years, snapshot_path = args
         file_path = snapshot_path / f"{market_code}.json"
         snapshot = financial_holidays(
             market_code,
             years=years,
+            categories=supported_categories,
             language="en_US",
         )
         SnapshotGenerator.save(snapshot, file_path)
@@ -148,9 +149,12 @@ class SnapshotGenerator:
         if not self.args.market:
             self.prepare_snapshot_directory(snapshot_path)
 
-        work_items: list[tuple[str, range, Path]] = []
+        work_items: list[tuple[str, tuple[str, ...], range, Path]] = []
         for market_code in market_list:
-            work_items.append((market_code, self.years, snapshot_path))
+            market = financial_holidays(market_code)
+            work_items.append(
+                (market_code, market.supported_categories, self.years, snapshot_path)
+            )
         with ProcessPoolExecutor() as executor:
             list(executor.map(SnapshotGenerator._financial_snapshot_worker, work_items))
 

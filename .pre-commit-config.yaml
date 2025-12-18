@@ -26,7 +26,7 @@ repos:
           - --py310-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.6
+    rev: v0.14.9
     hooks:
       - id: ruff-check
       - id: ruff-format
@@ -48,7 +48,7 @@ repos:
         exclude: ^(docs)
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.18.2
+    rev: v1.19.1
     hooks:
       - id: mypy
         additional_dependencies:
@@ -60,11 +60,6 @@ repos:
     rev: v2.11.1
     hooks:
       - id: pyproject-fmt
-
-  - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: '1.7.0'
-    hooks:
-      - id: tox-ini-fmt
 
   - repo: local
     hooks:

@@ -139,8 +139,8 @@ class TestBahrain(CommonCountryTests, TestCase):
         self.assertIslamicNoEstimatedHolidayNameCount(name, 6, years_eid_al_adha_twice_all)
 
     def test_2022(self):
-        self.assertHolidays(
-            Bahrain(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "رأس السنة الميلادية"),
             ("2022-05-01", "عيد العمال"),
             ("2022-05-02", "عيد الفطر"),

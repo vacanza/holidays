@@ -178,8 +178,8 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             self.assertFalse(self.holidays.is_weekend(dt))
 
     def test_2022(self):
-        self.assertHolidays(
-            SaudiArabia(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-02-22", "يوم التأسيسي"),
             ("2022-05-01", "عطلة عيد الفطر"),
             ("2022-05-02", "عطلة عيد الفطر"),

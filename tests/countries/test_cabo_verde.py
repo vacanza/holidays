@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import OPTIONAL
 from holidays.countries.cabo_verde import CaboVerde
 from tests.common import CommonCountryTests
 
@@ -438,8 +437,8 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_2024_public_holidays(self):
-        self.assertHolidays(
-            CaboVerde(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "Ano Novo"),
             ("2024-01-13", "Dia da Liberdade e da Democracia"),
             ("2024-01-20", "Dia da Nacionalidade e dos Heróis Nacionais"),
@@ -455,8 +454,8 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         )
 
     def test_2024_optional_holidays(self):
-        self.assertHolidays(
-            CaboVerde(categories=OPTIONAL, years=2024),
+        self.assertOptionalHolidaysInYear(
+            2024,
             ("2024-03-28", "Quinta-Feira Santa"),
             ("2024-05-12", "Dia das Mães"),
             ("2024-06-16", "Dia dos Pais"),

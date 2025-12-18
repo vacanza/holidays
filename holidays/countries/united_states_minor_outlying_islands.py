@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import PUBLIC, UNOFFICIAL
 from holidays.countries.united_states import UnitedStates
 from holidays.mixins.child_entity import ChildEntity
 
@@ -25,6 +26,7 @@ class UnitedStatesMinorOutlyingIslands(ChildEntity, UnitedStates):
     parent_entity = UnitedStates
     # The first islands were claimed via Guano Islands Act on August 18th, 1856.
     start_year = 1857
+    supported_categories = (PUBLIC, UNOFFICIAL)
 
 
 class HolidaysUM(UnitedStatesMinorOutlyingIslands):

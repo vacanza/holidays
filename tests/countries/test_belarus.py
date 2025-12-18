@@ -24,8 +24,8 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
     def test_public_2018(self):
         # http://calendar.by/procal.php?year=2018
         # https://www.officeholidays.com/countries/belarus/index.php
-        self.assertHolidays(
-            Belarus(years=2018),
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "Новы год"),
             ("2018-01-02", "Выходны (перанесены з 20.01.2018)"),
             ("2018-01-07", "Нараджэнне Хрыстова (праваслаўнае Раство)"),
@@ -405,10 +405,8 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-05-03", "Радаўніца"),
             (
                 "2022-05-08",
-                (
-                    "Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і "
-                    "Дзяржаўнага гімна Рэспублікі Беларусь"
-                ),
+                "Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і "
+                "Дзяржаўнага гімна Рэспублікі Беларусь",
             ),
             ("2022-05-09", "Дзень Перамогі"),
             ("2022-07-03", "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"),
@@ -426,10 +424,8 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-01-07", "Orthodox Christmas Day"),
             (
                 "2022-02-23",
-                (
-                    "Day of the Fatherland's Defenders and "
-                    "the Armed Forces of the Republic of Belarus"
-                ),
+                "Day of the Fatherland's Defenders and "
+                "the Armed Forces of the Republic of Belarus",
             ),
             ("2022-03-07", "Day off (substituted from 03/12/2022)"),
             ("2022-03-08", "Women's Day"),
@@ -442,11 +438,9 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-05-03", "Radunitsa (Day of Rejoicing)"),
             (
                 "2022-05-08",
-                (
-                    "Day of the National Coat of Arms of the Republic of Belarus, "
-                    "the National Flag of the Republic of Belarus and "
-                    "the National Anthem of the Republic of Belarus"
-                ),
+                "Day of the National Coat of Arms of the Republic of Belarus, "
+                "the National Flag of the Republic of Belarus and "
+                "the National Anthem of the Republic of Belarus",
             ),
             ("2022-05-09", "Victory Day"),
             ("2022-07-03", "Independence Day of the Republic of Belarus (Day of the Republic)"),
@@ -474,10 +468,8 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-05-03", "Радуница"),
             (
                 "2022-05-08",
-                (
-                    "День Государственного флага, Государственного герба и "
-                    "Государственного гимна Республики Беларусь"
-                ),
+                "День Государственного флага, Государственного герба и "
+                "Государственного гимна Республики Беларусь",
             ),
             ("2022-05-09", "День Победы"),
             ("2022-07-03", "День Независимости Республики Беларусь (День Республики)"),

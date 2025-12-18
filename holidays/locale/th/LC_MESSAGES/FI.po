@@ -93,7 +93,7 @@ msgstr "วันรูนแบร์ก"
 
 #. Minna Canth Day, Day of Equality.
 msgid "Minna Canthin päivä, tasa-arvon päivä"
-msgstr "วันมินน่า คานท์, วันแห่งความความเสมอภาค"
+msgstr "วันมินน่า คานท์, วันแห่งความเสมอภาค"
 
 #. Mikael Agricola Day, Day of the Finnish Language.
 msgid "Mikael Agricolan päivä, suomen kielen päivä"

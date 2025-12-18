@@ -202,8 +202,8 @@ class TestLiechtenstein(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
 
     def test_2022(self):
-        self.assertHolidays(
-            Liechtenstein(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Neujahr"),
             ("2022-01-06", "Heilige Drei Könige"),
             ("2022-02-02", "Mariä Lichtmess"),
@@ -224,8 +224,8 @@ class TestLiechtenstein(CommonCountryTests, TestCase):
         )
 
     def test_2022_bank(self):
-        self.assertHolidays(
-            Liechtenstein(categories=BANK, years=2022),
+        self.assertBankHolidaysInYear(
+            2022,
             ("2022-01-02", "Berchtoldstag"),
             ("2022-03-01", "Fasnachtsdienstag"),
             ("2022-04-15", "Karfreitag"),

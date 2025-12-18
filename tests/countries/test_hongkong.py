@@ -1268,8 +1268,8 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_optional_2020(self):
         # https://www.gov.hk/en/about/abouthk/holiday/2020.htm
-        self.assertHolidays(
-            HongKong(categories=OPTIONAL, years=2020),
+        self.assertOptionalHolidaysInYear(
+            2020,
             ("2020-01-01", "一月一日"),
             ("2020-01-25", "農曆年初一"),
             ("2020-01-27", "農曆年初三"),
@@ -1291,8 +1291,8 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_optional_2021(self):
         # https://www.gov.hk/en/about/abouthk/holiday/2021.htm
-        self.assertHolidays(
-            HongKong(categories=OPTIONAL, years=2021),
+        self.assertOptionalHolidaysInYear(
+            2021,
             ("2021-01-01", "一月一日"),
             ("2021-02-12", "農曆年初一"),
             ("2021-02-13", "農曆年初二"),
@@ -1314,8 +1314,8 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_optional_2022(self):
         # https://www.gov.hk/en/about/abouthk/holiday/2022.htm
-        self.assertHolidays(
-            HongKong(categories=OPTIONAL, years=2022),
+        self.assertOptionalHolidaysInYear(
+            2022,
             ("2022-01-01", "一月一日"),
             ("2022-02-01", "農曆年初一"),
             ("2022-02-02", "農曆年初二"),
@@ -1337,8 +1337,8 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_optional_2023(self):
         # https://www.gov.hk/en/about/abouthk/holiday/2023.htm
-        self.assertHolidays(
-            HongKong(categories=OPTIONAL, years=2023),
+        self.assertOptionalHolidaysInYear(
+            2023,
             ("2023-01-02", "一月一日翌日"),
             ("2023-01-23", "農曆年初二"),
             ("2023-01-24", "農曆年初三"),
@@ -1360,8 +1360,8 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_optional_2024(self):
         # https://www.gov.hk/en/about/abouthk/holiday/2024.htm
-        self.assertHolidays(
-            HongKong(categories=OPTIONAL, years=2024),
+        self.assertOptionalHolidaysInYear(
+            2024,
             ("2024-01-01", "一月一日"),
             ("2024-02-10", "農曆年初一"),
             ("2024-02-12", "農曆年初三"),
@@ -1383,8 +1383,8 @@ class TestHongKong(CommonCountryTests, TestCase):
 
     def test_optional_2025(self):
         # https://www.gov.hk/en/about/abouthk/holiday/2025.htm
-        self.assertHolidays(
-            HongKong(categories=OPTIONAL, years=2025),
+        self.assertOptionalHolidaysInYear(
+            2025,
             ("2025-01-01", "一月一日"),
             ("2025-01-29", "農曆年初一"),
             ("2025-01-30", "農曆年初二"),
@@ -1488,7 +1488,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             ("2024-10-01", "วันชาติจีน"),
             ("2024-10-11", "วันไหว้บรรพบุรุษ"),
             ("2024-12-25", "วันคริสต์มาส"),
-            ("2024-12-26", "วันคริสต์มาสวันที่สอง"),
+            ("2024-12-26", "วันหลังวันคริสต์มาส"),
         )
 
     def test_l10n_zh_cn(self):

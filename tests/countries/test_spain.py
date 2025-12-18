@@ -1297,10 +1297,8 @@ class TestSpain(CommonCountryTests, TestCase):
             ("2023-09-02", "Día de Ceuta"),
             (
                 "2023-09-08",
-                (
-                    "Día de Asturias; Día de Extremadura; "
-                    "Día de Nuestra Señora la Virgen de la Victoria"
-                ),
+                "Día de Asturias; Día de Extremadura; "
+                "Día de Nuestra Señora la Virgen de la Victoria",
             ),
             ("2023-09-11", "Fiesta Nacional de Cataluña"),
             ("2023-09-15", "La Bien Aparecida"),
@@ -1413,7 +1411,7 @@ class TestSpain(CommonCountryTests, TestCase):
             ("2023-03-01", "วันหมู่เกาะบาเลอาริก"),
             ("2023-03-13", "วันกฎธรรมนูญปกครองตนเองแห่งเมืองเมลียา"),
             ("2023-03-20", "วันจันทร์หลังวันสมโภชนักบุญโยเซฟ"),
-            ("2023-04-06", "วันพฤหัสศักดิสิทธิ์"),
+            ("2023-04-06", "วันพฤหัสศักดิ์สิทธิ์"),
             ("2023-04-07", "วันศุกร์ประเสริฐ"),
             ("2023-04-10", "วันจันทร์อีสเตอร์"),
             ("2023-04-21", "วันอีฎิ้ลฟิตริ"),

@@ -269,8 +269,8 @@ class TestAngola(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2022(self):
-        self.assertHolidays(
-            Angola(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Dia do Ano Novo"),
             ("2022-02-04", "Dia do Início da Luta Armada de Libertação Nacional"),
             ("2022-02-28", "Dia do Carnaval (ponte)"),

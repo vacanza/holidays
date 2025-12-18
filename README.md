@@ -173,7 +173,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>AS</td>
 <td>Can also be loaded as country US, subdivision AS</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Andorra</td>
@@ -270,7 +270,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bangladesh</td>
 <td>BD</td>
 <td></td>
-<td></td>
+<td><strong>bn</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -390,7 +390,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>BG</td>
 <td></td>
 <td><strong>bg</strong>, en_US, uk</td>
-<td>SCHOOL</td>
+<td>HALF_DAY, SCHOOL</td>
 </tr>
 <tr>
 <td>Burkina Faso</td>
@@ -628,7 +628,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>EE</td>
 <td></td>
 <td>en_US, <strong>et</strong>, uk</td>
-<td></td>
+<td>HALF_DAY</td>
 </tr>
 <tr>
 <td>Eswatini</td>
@@ -775,7 +775,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GU</td>
 <td>Can also be loaded as country US, subdivision GU</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Guatemala</td>
@@ -858,7 +858,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>India</td>
 <td>IN</td>
 <td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
-<td><strong>en_IN</strong>, en_US, hi</td>
+<td><strong>en_IN</strong>, en_US, gu, hi</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -907,7 +907,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Italy</td>
 <td>IT</td>
 <td>Provinces: AG (Agrigento), AL (Alessandria), AN (Ancona), AO (Aosta), AP (Ascoli Piceno), AQ (L'Aquila), AR (Arezzo), AT (Asti), AV (Avellino), BA (Bari), BG (Bergamo), BI (Biella), BL (Belluno), BN (Benevento), BO (Bologna), BR (Brindisi), BS (Brescia), BT (Barletta-Andria-Trani), BZ (Bolzano), CA (Cagliari), CB (Campobasso), CE (Caserta), CH (Chieti), CL (Caltanissetta), CN (Cuneo), CO (Como), CR (Cremona), CS (Cosenza), CT (Catania), CZ (Catanzaro), EN (Enna), FC (Forli-Cesena, Forlì-Cesena), FE (Ferrara), FG (Foggia), FI (Firenze), FM (Fermo), FR (Frosinone), GE (Genova), GO (Gorizia), GR (Grosseto), IM (Imperia), IS (Isernia), KR (Crotone), LC (Lecco), LE (Lecce), LI (Livorno), LO (Lodi), LT (Latina), LU (Lucca), MB (Monza e Brianza), MC (Macerata), ME (Messina), MI (Milano), MN (Mantova), MO (Modena), MS (Massa-Carrara), MT (Matera), NA (Napoli), NO (Novara), NU (Nuoro), OR (Oristano), PA (Palermo), PC (Piacenza), PD (Padova), PE (Pescara), PG (Perugia), PI (Pisa), PN (Pordenone), PO (Prato), PR (Parma), PT (Pistoia), PU (Pesaro e Urbino), PV (Pavia), PZ (Potenza), RA (Ravenna), RC (Reggio Calabria), RE (Reggio Emilia), RG (Ragusa), RI (Rieti), RM (Roma), RN (Rimini), RO (Rovigo), SA (Salerno), SI (Siena), SO (Sondrio), SP (La Spezia), SR (Siracusa), SS (Sassari), SU (Sud Sardegna), SV (Savona), TA (Taranto), TE (Teramo), TN (Trento), TO (Torino), TP (Trapani), TR (Terni), TS (Trieste), TV (Treviso), UD (Udine), VA (Varese), VB (Verbano-Cusio-Ossola), VC (Vercelli), VE (Venezia), VI (Vicenza), VR (Verona), VT (Viterbo), VV (Vibo Valentia); cities: Andria, Barletta, Cesena, Forli (Forlì), Pesaro, Trani, Urbino</td>
-<td></td>
+<td>en_US, <strong>it_IT</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -1215,7 +1215,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Nepal</td>
 <td>NP</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>ne</strong></td>
 <td>WORKDAY</td>
 </tr>
 <tr>
@@ -1279,7 +1279,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>MP</td>
 <td>Can also be loaded as country US, subdivision MP</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>North Korea</td>
@@ -1391,7 +1391,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>PR</td>
 <td>Can also be loaded as country US, subdivision PR</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>HALF_DAY, UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Qatar</td>
@@ -1643,7 +1643,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>SE</td>
 <td></td>
 <td>en_US, <strong>sv</strong>, th, uk</td>
-<td></td>
+<td>BANK, OPTIONAL</td>
 </tr>
 <tr>
 <td>Switzerland</td>
@@ -1790,14 +1790,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>UM</td>
 <td>Can also be loaded as country US, subdivision UM</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>United States of America (the)</td>
 <td>US</td>
 <td>States and territories: AK (Alaska), AL (Alabama), AR (Arkansas), AS (American Samoa), AZ (Arizona), CA (California), CO (Colorado), CT (Connecticut), DC (District of Columbia), DE (Delaware), FL (Florida), GA (Georgia), GU (Guam), HI (Hawaii), IA (Iowa), ID (Idaho), IL (Illinois), IN (Indiana), KS (Kansas), KY (Kentucky), LA (Louisiana), MA (Massachusetts), MD (Maryland), ME (Maine), MI (Michigan), MN (Minnesota), MO (Missouri), MP (Northern Mariana Islands), MS (Mississippi), MT (Montana), NC (North Carolina), ND (North Dakota), NE (Nebraska), NH (New Hampshire), NJ (New Jersey), NM (New Mexico), NV (Nevada), NY (New York), OH (Ohio), OK (Oklahoma), OR (Oregon), PA (Pennsylvania), PR (Puerto Rico), RI (Rhode Island), SC (South Carolina), SD (South Dakota), TN (Tennessee), TX (Texas), UM (United States Minor Outlying Islands), UT (Utah), VA (Virginia), VI (Virgin Islands, U.S.), VT (Vermont), WA (Washington), WI (Wisconsin), WV (West Virginia), WY (Wyoming)</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>GOVERNMENT, HALF_DAY, UNOFFICIAL</td>
 </tr>
 <tr>
 <td>United States Virgin Islands (the)</td>
@@ -1853,7 +1853,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>VI</td>
 <td>Can also be loaded as country US, subdivision VI</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Wallis and Futuna</td>
@@ -1903,8 +1903,9 @@ code when available. The following financial markets are available:
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 4.0%" />
-<col style="width: 65.0%" />
-<col style="width: 15.0%" />
+<col style="width: 46.0%" />
+<col style="width: 20.0%" />
+<col style="width: 10.0%" />
 </colgroup>
 <thead>
 <tr>
@@ -1912,6 +1913,7 @@ code when available. The following financial markets are available:
 <th>Code</th>
 <th>Info</th>
 <th>Supported Languages</th>
+<th>Supported Categories</th>
 </tr>
 </thead>
 <tbody>
@@ -1920,11 +1922,13 @@ code when available. The following financial markets are available:
 <td>BVMF</td>
 <td>Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)</td>
 <td>en_US, <strong>pt_BR</strong>, uk</td>
+<td></td>
 </tr>
 <tr>
 <td>European Central Bank</td>
 <td>XECB</td>
 <td>Trans-European Automated Real-time Gross Settlement (TARGET2)</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -1932,18 +1936,21 @@ code when available. The following financial markets are available:
 <td>IFEU</td>
 <td>A London-based Investment Exchange holidays</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
-<td><strong>en_IN</strong>, en_US, hi</td>
+<td><strong>en_IN</strong>, en_US, gu, hi</td>
+<td></td>
 </tr>
 <tr>
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
 <td>NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)</td>
 <td></td>
+<td>HALF_DAY</td>
 </tr>
 </tbody>
 </table>

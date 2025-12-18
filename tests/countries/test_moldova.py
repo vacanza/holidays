@@ -44,8 +44,8 @@ class TestMoldova(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, Moldova(years=2015))
 
     def test_2022(self):
-        self.assertHolidayDates(
-            Moldova(years=2022),
+        self.assertHolidayDatesInYear(
+            2022,
             "2022-01-01",
             "2022-01-07",
             "2022-01-08",
@@ -62,8 +62,8 @@ class TestMoldova(CommonCountryTests, TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidayDates(
-            Moldova(years=2023),
+        self.assertHolidayDatesInYear(
+            2023,
             "2023-01-01",
             "2023-01-07",
             "2023-01-08",

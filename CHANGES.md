@@ -1,3 +1,42 @@
+# Version 0.87
+
+Released December 15, 2025
+
+- Refactor `TestAllInSameYear` class (#3131 by @PPsyrius, @arkid15r)
+- Refactor tests: long holiday names representation cleanup (#3134 by @KJhellico)
+- Update Bangladesh holidays: add l10n support (#3117 by @NehaaGaikwad)
+- Update Chinese calendar: improve Qingming Festival date calculation (#3119 by @KJhellico, @arkid15r)
+- Update Germany holidays (#3102 by @KJhellico)
+- Update India holidays: add Gujarati language support (#3130 by @pareshjoshij, @arkid15r)
+- Update India holidays: correct dates for Maharana Pratap Jayanti (RJ) and Bathukamma (TS) (#3124 by @pareshjoshij)
+- Update United States holidays: fix Washington's Birthday logic (#2722 by @parkerbxyz, @arkid15r, @KJhellico)
+- Update XNYS holidays: add half-day holidays (#3111 by @KJhellico, @arkid15r)
+- Update documentation build settings (#3114 by @KJhellico, @arkid15r)
+- Adjust project files after migration to `uv` (#3116 by @KJhellico, @arkid15r)
+- Migrate to `uv` for dependency management (#3101 by @PPsyrius, @arkid15r, @KJhellico)
+- Use explicit Python version during uv setup (#3115 by @arkid15r)
+
+# Version 0.86
+
+Released December 1, 2025
+
+- Introduce `HolidayBase::_add_multiday_holiday` method (#3059 by @KJhellico, @arkid15r)
+- Refactor Taiwan holidays (#3077 by @KJhellico)
+- Refactor some `HolidayBase` methods (#3079 by @KJhellico, @arkid15r)
+- Fix typography: replace U+2019 with "'" (#3076 by @KJhellico)
+- Update .readthedocs.yaml: bump OS/Python versions (#3093 by @arkid15r)
+- Update Bulgaria holidays (#3078 by @KJhellico)
+- Update Estonia holidays (#3089 by @KJhellico)
+- Update Italy holidays: add new holiday Oct 4, historical holidays, l10n support (#3075 by @KJhellico)
+- Update Nepal holidays: add l10n support (#3091 by @NehaaGaikwad)
+- Update Sweden holidays: add categories support (#3096 by @KJhellico)
+- Update Taiwan holidays: fix l10n for substituted day off (#3066 by @petercpg)
+- Update documentation: remove mixins from summary (#3094 by @KJhellico)
+- Add `assert{variant}HolidayDatesInYear`, `assert{variant}HolidaysInYear` test methods (#3090 by @PPsyrius, @arkid15r)
+- Add comprehensive holiday categories documentation (#2851 by @tharu-jwd, @arkid15r, @KJhellico)
+- Library-wide `th` l10n typo cleanup (#3097 by @PPsyrius)
+- Migrate D-H countries to new test case standards (#3088 by @PPsyrius)
+
 # Version 0.85
 
 Released November 17, 2025
