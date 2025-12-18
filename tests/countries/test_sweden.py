@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import BANK, OPTIONAL
+from holidays.constants import BANK, DE_FACTO, OPTIONAL
 from holidays.countries.sweden import Sweden
 from tests.common import CommonCountryTests, SundayHolidays
 
@@ -25,7 +25,9 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
 
     def test_no_holidays(self):
         super().test_no_holidays()
-        self.assertNoHolidays(Sweden(categories=(BANK, OPTIONAL), years=self.start_year - 1))
+        self.assertNoHolidays(
+            Sweden(categories=(BANK, DE_FACTO, OPTIONAL), years=self.start_year - 1)
+        )
 
     def test_new_years_day(self):
         self.assertHolidayName("Nyårsdagen", (f"{year}-01-01" for year in self.full_range))
@@ -204,6 +206,7 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
     def test_midsummer_eve(self):
         name = "Midsommarafton"
         self.assertNoHolidayName(name)
+        self.assertNoOptionalHolidayName(name)
         dts = (
             "2020-06-19",
             "2021-06-25",
@@ -213,9 +216,9 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
             "2025-06-20",
         )
         self.assertBankHolidayName(name, dts)
-        self.assertOptionalHolidayName(name, dts)
         self.assertBankHolidayName(name, self.full_range)
-        self.assertOptionalHolidayName(name, self.full_range)
+        self.assertDeFactoHolidayName(name, dts)
+        self.assertDeFactoHolidayName(name, self.full_range)
 
     def test_all_saints_eve(self):
         name = "Allahelgonsafton (från kl. 14.00)"
@@ -236,14 +239,16 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
     def test_christmas_eve(self):
         name = "Julafton"
         self.assertNoHolidayName(name)
+        self.assertNoOptionalHolidayName(name)
         self.assertBankHolidayName(name, (f"{year}-12-24" for year in self.full_range))
-        self.assertOptionalHolidayName(name, (f"{year}-12-24" for year in self.full_range))
+        self.assertDeFactoHolidayName(name, (f"{year}-12-24" for year in self.full_range))
 
     def test_new_years_eve(self):
         name = "Nyårsafton"
         self.assertNoHolidayName(name)
+        self.assertNoOptionalHolidayName(name)
         self.assertBankHolidayName(name, (f"{year}-12-31" for year in self.full_range))
-        self.assertOptionalHolidayName(name, (f"{year}-12-31" for year in self.full_range))
+        self.assertDeFactoHolidayName(name, (f"{year}-12-31" for year in self.full_range))
 
     def test_day_before_ascension_day(self):
         name = "Dag före Kristi himmelsfärdsdag (från kl. 14.00)"
@@ -404,8 +409,13 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
             ("2022-04-30", "Valborgsmässoafton (från kl. 14.00)"),
             ("2022-05-27", "Klämdag"),
             ("2022-06-04", "Pingstafton"),
-            ("2022-06-24", "Midsommarafton"),
             ("2022-11-04", "Allahelgonsafton (från kl. 14.00)"),
+        )
+
+    def test_de_facto_2022(self):
+        self.assertDeFactoHolidaysInYear(
+            2022,
+            ("2022-06-24", "Midsommarafton"),
             ("2022-12-24", "Julafton"),
             ("2022-12-31", "Nyårsafton"),
         )
