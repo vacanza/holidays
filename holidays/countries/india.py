@@ -38,8 +38,8 @@ class India(
         * <https://web.archive.org/web/20231118175007/http://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm>
         * <https://web.archive.org/web/20231008063930/https://vahan.parivahan.gov.in/vahan4dashboard/>
         * Dadra and Nagar Haveli and Daman and Diu :
-            * <http://web.archive.org/web/20250000000000*/https://en.wikipedia.org/wiki/Free_Dadra_and_Nagar_Haveli>
-            * <http://web.archive.org/web/20250000000000*/https://www.incredibleindia.gov.in/en/festivals-and-events/liberation-day>
+            * <https://web.archive.org/web/*/https://en.wikipedia.org/wiki/Free_Dadra_and_Nagar_Haveli>
+            * <https://web.archive.org/web/*/https://www.incredibleindia.gov.in/en/festivals-and-events/liberation-day>
         * Gujarat:
             * <https://gad.gujarat.gov.in/personnel/Images/pdf/general_holidays_2026_guj.pdf>
         * Tamil Nadu:
