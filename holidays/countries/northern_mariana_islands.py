@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import PUBLIC, UNOFFICIAL
 from holidays.countries.united_states import UnitedStates
 from holidays.mixins.child_entity import ChildEntity
 
@@ -25,6 +26,7 @@ class NorthernMarianaIslands(ChildEntity, UnitedStates):
     parent_entity = UnitedStates
     # UNSC Resolution 21 on April 2nd, 1947.
     start_year = 1948
+    supported_categories = (PUBLIC, UNOFFICIAL)
 
 
 class HolidaysMP(NorthernMarianaIslands):

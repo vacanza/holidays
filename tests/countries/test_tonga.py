@@ -160,10 +160,8 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2018-11-05", "'Aho Konisitutone (fakatokanga'i)"),
             (
                 "2018-12-03",
-                (
-                    "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko "
-                    "Siaosi Tupou I (fakatokanga'i)"
-                ),
+                "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko "
+                "Siaosi Tupou I (fakatokanga'i)",
             ),
             ("2018-12-25", "'Aho Kilisimasi"),
             ("2018-12-26", "'Aho 2 'o e Kilisimasi"),
@@ -185,10 +183,8 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2019-11-15", "'Aho malolo 'akapulu 'a Tonga"),
             (
                 "2019-12-02",
-                (
-                    "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko "
-                    "Siaosi Tupou I (fakatokanga'i)"
-                ),
+                "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko "
+                "Siaosi Tupou I (fakatokanga'i)",
             ),
             ("2019-12-25", "'Aho Kilisimasi"),
             ("2019-12-26", "'Aho 2 'o e Kilisimasi"),
@@ -208,10 +204,8 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2020-11-02", "'Aho Konisitutone (fakatokanga'i)"),
             (
                 "2020-12-07",
-                (
-                    "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko "
-                    "Siaosi Tupou I (fakatokanga'i)"
-                ),
+                "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko "
+                "Siaosi Tupou I (fakatokanga'i)",
             ),
             ("2020-12-25", "'Aho Kilisimasi"),
             ("2020-12-26", "'Aho 2 'o e Kilisimasi"),
@@ -229,19 +223,14 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2021-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
             (
                 "2021-07-05",
-                (
-                    "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku "
-                    "lolotonga Pule (fakatokanga'i)"
-                ),
+                "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule (fakatokanga'i)",
             ),
             ("2021-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
             ("2021-11-08", "'Aho Konisitutone (fakatokanga'i)"),
             (
                 "2021-12-06",
-                (
-                    "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko "
-                    "Siaosi Tupou I (fakatokanga'i)"
-                ),
+                "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko "
+                "Siaosi Tupou I (fakatokanga'i)",
             ),
             ("2021-12-25", "'Aho Kilisimasi"),
             ("2021-12-26", "'Aho 2 'o e Kilisimasi"),
@@ -262,10 +251,8 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2022-11-07", "'Aho Konisitutone (fakatokanga'i)"),
             (
                 "2022-12-05",
-                (
-                    "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko "
-                    "Siaosi Tupou I (fakatokanga'i)"
-                ),
+                "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko "
+                "Siaosi Tupou I (fakatokanga'i)",
             ),
             ("2022-12-25", "'Aho Kilisimasi"),
             ("2022-12-26", "'Aho 2 'o e Kilisimasi"),
@@ -285,10 +272,8 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2024-11-04", "'Aho Konisitutone"),
             (
                 "2024-12-02",
-                (
-                    "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko "
-                    "Siaosi Tupou I (fakatokanga'i)"
-                ),
+                "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko "
+                "Siaosi Tupou I (fakatokanga'i)",
             ),
             ("2024-12-25", "'Aho Kilisimasi"),
             ("2024-12-26", "'Aho 2 'o e Kilisimasi"),

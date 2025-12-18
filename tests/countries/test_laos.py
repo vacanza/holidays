@@ -374,7 +374,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2022-06-01", "ວັນປູກຕົ້ນໄມ້ແຫ່ງຊາດ; ວັນເດັກສາກົນ"),
             (
                 "2022-07-13",
-                ("ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ສຸພານຸວົງ; ວັນບຸນເຂົ້າພັນສາ; ວັນປ່ອຍປາ ແລະ ວັນອະນຸລັກສັດນ້ຳ-ສັດປ່າແຫ່ງຊາດ"),
+                "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ສຸພານຸວົງ; ວັນບຸນເຂົ້າພັນສາ; ວັນປ່ອຍປາ ແລະ ວັນອະນຸລັກສັດນ້ຳ-ສັດປ່າແຫ່ງຊາດ",
             ),
             ("2022-07-20", "ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ"),
             ("2022-08-13", "ວັນສື່ມວນຊົນແຫ່ງຊາດ ແລະ ວັນພິມຈໍາໜ່າຍ"),
@@ -414,10 +414,8 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2022-06-01", "International Children's Day; National Arbor Day"),
             (
                 "2022-07-13",
-                (
-                    "Begin of Buddhist Lent; President Souphanouvong's Birthday; "
-                    "The National Day for Wildlife and Aquatic Animal Conservation"
-                ),
+                "Begin of Buddhist Lent; President Souphanouvong's Birthday; "
+                "The National Day for Wildlife and Aquatic Animal Conservation",
             ),
             ("2022-07-20", "Establishment Day of the Lao Women's Union"),
             ("2022-08-13", "Lao National Mass Media and Publishing Day"),
@@ -457,7 +455,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2022-06-01", "วันปลูกต้นไม้แห่งชาติ; วันเด็กสากล"),
             (
                 "2022-07-13",
-                ("วันคล้ายวันเกิดท่านประธานสุภานุวงศ์; วันอนุรักษ์สัตว์น้ำ สัตว์ป่า และวันปล่อยปลาแห่งชาติ; วันเข้าพรรษา"),
+                "วันคล้ายวันเกิดท่านประธานสุภานุวงศ์; วันอนุรักษ์สัตว์น้ำ สัตว์ป่า และวันปล่อยปลาแห่งชาติ; วันเข้าพรรษา",
             ),
             ("2022-07-20", "วันก่อตั้งสหภาพแม่หญิงลาว"),
             ("2022-08-13", "วันสื่อสารมวลชนและการพิมพ์แห่งชาติ"),

@@ -173,7 +173,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>AS</td>
 <td>Can also be loaded as country US, subdivision AS</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Andorra</td>
@@ -775,7 +775,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GU</td>
 <td>Can also be loaded as country US, subdivision GU</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Guatemala</td>
@@ -858,7 +858,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>India</td>
 <td>IN</td>
 <td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
-<td><strong>en_IN</strong>, en_US, hi</td>
+<td><strong>en_IN</strong>, en_US, gu, hi</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -1279,7 +1279,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>MP</td>
 <td>Can also be loaded as country US, subdivision MP</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>North Korea</td>
@@ -1391,7 +1391,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>PR</td>
 <td>Can also be loaded as country US, subdivision PR</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>HALF_DAY, UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Qatar</td>
@@ -1790,14 +1790,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>UM</td>
 <td>Can also be loaded as country US, subdivision UM</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>United States of America (the)</td>
 <td>US</td>
 <td>States and territories: AK (Alaska), AL (Alabama), AR (Arkansas), AS (American Samoa), AZ (Arizona), CA (California), CO (Colorado), CT (Connecticut), DC (District of Columbia), DE (Delaware), FL (Florida), GA (Georgia), GU (Guam), HI (Hawaii), IA (Iowa), ID (Idaho), IL (Illinois), IN (Indiana), KS (Kansas), KY (Kentucky), LA (Louisiana), MA (Massachusetts), MD (Maryland), ME (Maine), MI (Michigan), MN (Minnesota), MO (Missouri), MP (Northern Mariana Islands), MS (Mississippi), MT (Montana), NC (North Carolina), ND (North Dakota), NE (Nebraska), NH (New Hampshire), NJ (New Jersey), NM (New Mexico), NV (Nevada), NY (New York), OH (Ohio), OK (Oklahoma), OR (Oregon), PA (Pennsylvania), PR (Puerto Rico), RI (Rhode Island), SC (South Carolina), SD (South Dakota), TN (Tennessee), TX (Texas), UM (United States Minor Outlying Islands), UT (Utah), VA (Virginia), VI (Virgin Islands, U.S.), VT (Vermont), WA (Washington), WI (Wisconsin), WV (West Virginia), WY (Wyoming)</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>GOVERNMENT, HALF_DAY, UNOFFICIAL</td>
 </tr>
 <tr>
 <td>United States Virgin Islands (the)</td>
@@ -1853,7 +1853,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>VI</td>
 <td>Can also be loaded as country US, subdivision VI</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Wallis and Futuna</td>
@@ -1942,7 +1942,7 @@ code when available. The following financial markets are available:
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
-<td><strong>en_IN</strong>, en_US, hi</td>
+<td><strong>en_IN</strong>, en_US, gu, hi</td>
 <td></td>
 </tr>
 <tr>

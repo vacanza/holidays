@@ -211,10 +211,8 @@ class TestBurundi(CommonCountryTests, TestCase):
             ("2024-05-09", "Jour de l'Ascension"),
             (
                 "2024-06-08",
-                (
-                    "Journée Nationale du Patriotisme et Commémoration de la Mort "
-                    "du Président Pierre Nkurunziza"
-                ),
+                "Journée Nationale du Patriotisme et Commémoration de la Mort "
+                "du Président Pierre Nkurunziza",
             ),
             ("2024-06-16", "Aid-El-Adha"),
             ("2024-06-17", "Aid-El-Adha (observé)"),
@@ -226,10 +224,8 @@ class TestBurundi(CommonCountryTests, TestCase):
             ),
             (
                 "2024-10-14",
-                (
-                    "Commémoration de l'Assassinat du Héros National, "
-                    "le Prince Louis Rwagasore (observé)"
-                ),
+                "Commémoration de l'Assassinat du Héros National, "
+                "le Prince Louis Rwagasore (observé)",
             ),
             ("2024-10-21", "Commémoration de l'Assassinat du Président Melchior Ndadaye"),
             ("2024-11-01", "Toussaint"),
@@ -252,17 +248,13 @@ class TestBurundi(CommonCountryTests, TestCase):
             ("2025-06-06", "Aid-El-Adha"),
             (
                 "2025-06-08",
-                (
-                    "Journée Nationale du Patriotisme et Commémoration de la Mort "
-                    "du Président Pierre Nkurunziza"
-                ),
+                "Journée Nationale du Patriotisme et Commémoration de la Mort "
+                "du Président Pierre Nkurunziza",
             ),
             (
                 "2025-06-09",
-                (
-                    "Journée Nationale du Patriotisme et Commémoration de la Mort "
-                    "du Président Pierre Nkurunziza (observé)"
-                ),
+                "Journée Nationale du Patriotisme et Commémoration de la Mort "
+                "du Président Pierre Nkurunziza (observé)",
             ),
             ("2025-07-01", "Anniversaire de l'Indépendance"),
             ("2025-08-15", "Assomption"),
@@ -292,17 +284,13 @@ class TestBurundi(CommonCountryTests, TestCase):
             ("2025-06-06", "Eid al-Adha"),
             (
                 "2025-06-08",
-                (
-                    "National Day of Patriotism and Commemoration of the Death of "
-                    "President Pierre Nkurunziza"
-                ),
+                "National Day of Patriotism and Commemoration of the Death of "
+                "President Pierre Nkurunziza",
             ),
             (
                 "2025-06-09",
-                (
-                    "National Day of Patriotism and Commemoration of the Death of "
-                    "President Pierre Nkurunziza (observed)"
-                ),
+                "National Day of Patriotism and Commemoration of the Death of "
+                "President Pierre Nkurunziza (observed)",
             ),
             ("2025-07-01", "Independence Day"),
             ("2025-08-15", "Assumption Day"),

@@ -38,15 +38,23 @@ class TestCase:
 
     @staticmethod
     @cache
-    def _get_or_create_lookup(test_class, *, with_subdiv_categories=False):
+    def _get_or_create_lookup(
+        test_class, *, with_subdiv_categories=False, with_subdiv_special_flags=False
+    ):
         """Build and cache categories and subdivision lookup tables for a holiday test class."""
 
         non_public_supported_categories = tuple(
             category for category in test_class.supported_categories if category != PUBLIC
         )
 
+        supported_special_flags_list = []
+        if issubclass(test_class, IslamicHolidays):
+            supported_special_flags_list.append("islamic_no_estimated")
+        supported_special_flags = tuple(supported_special_flags_list)
+
         subdiv_base = {}
         subdiv_category = {}
+        subdiv_special_flag = {}
         for subdiv in test_class.subdivisions:
             subdiv_code = subdiv.lower().replace(" ", "_")
             subdiv_base[subdiv_code] = (subdiv, None, subdiv_code)
@@ -55,7 +63,21 @@ class TestCase:
                 for category in non_public_supported_categories:
                     subdiv_category[f"{subdiv_code}_{category}"] = (subdiv, category, subdiv_code)
 
-        return subdiv_base, subdiv_category, non_public_supported_categories
+            if with_subdiv_special_flags:
+                for special_flag in supported_special_flags:
+                    subdiv_special_flag[f"{subdiv_code}_{special_flag}"] = (
+                        subdiv,
+                        special_flag,
+                        subdiv_code,
+                    )
+
+        return (
+            subdiv_base,
+            subdiv_category,
+            non_public_supported_categories,
+            subdiv_special_flag,
+            supported_special_flags,
+        )
 
     @classmethod
     def _generate_assert_methods(cls):
@@ -124,7 +146,13 @@ class TestCase:
 
     @classmethod
     def setUpClass(
-        cls, test_class=None, *, with_subdiv_categories=False, years=None, **year_variants
+        cls,
+        test_class=None,
+        *,
+        with_subdiv_categories=False,
+        with_subdiv_special_flags=False,
+        years=None,
+        **year_variants,
     ):
         super().setUpClass()
 
@@ -145,8 +173,12 @@ class TestCase:
             cls._subdiv_base_lookup,
             cls._subdiv_category_lookup,
             cls._non_public_supported_categories_lookup,
+            cls._subdiv_special_flag_lookup,
+            cls._supported_special_flags_lookup,
         ) = cls._get_or_create_lookup(
-            cls.test_class, with_subdiv_categories=with_subdiv_categories
+            cls.test_class,
+            with_subdiv_categories=with_subdiv_categories,
+            with_subdiv_special_flags=with_subdiv_special_flags,
         )
         cls._subdiv_lookup = {**cls._subdiv_base_lookup, **cls._subdiv_category_lookup}
 
@@ -190,7 +222,10 @@ class TestCase:
             year_variants.get("years_non_observed", year_variants.get("years_all_subdivs", years)),
         )
 
-        for key, (_, _, subdiv_code) in cls._subdiv_lookup.items():
+        for key, (_, _, subdiv_code) in (
+            *cls._subdiv_lookup.items(),
+            *cls._subdiv_special_flag_lookup.items(),
+        ):
             year_variants.setdefault(
                 f"years_subdiv_{key}",
                 year_variants.get(f"years_subdiv_{subdiv_code}", years_all_subdivs),
@@ -286,6 +321,33 @@ class TestCase:
                     key_subdiv_cat_non_obs = f"{key_subdiv_cat}_non_observed"
                     dict_subdiv_cat_non_obs[category][subdiv] = getattr(
                         cls, key_subdiv_cat_non_obs, {}
+                    )
+
+        if with_subdiv_special_flags:
+            dict_subdiv_special_flag = defaultdict(dict)
+            dict_subdiv_special_flag_non_obs = defaultdict(dict)
+            for special_flag in cls._supported_special_flags_lookup:
+                setattr(
+                    cls, f"subdiv_{special_flag}_holidays", dict_subdiv_special_flag[special_flag]
+                )
+
+                if is_observed_subclass:
+                    setattr(
+                        cls,
+                        f"subdiv_{special_flag}_holidays_non_observed",
+                        dict_subdiv_special_flag_non_obs[special_flag],
+                    )
+
+            for subdiv, special_flag, subdiv_code in cls._subdiv_special_flag_lookup.values():
+                key_subdiv_special_flag = f"holidays_subdiv_{subdiv_code}_{special_flag}"
+                dict_subdiv_special_flag[special_flag][subdiv] = getattr(
+                    cls, key_subdiv_special_flag, {}
+                )
+
+                if is_observed_subclass:
+                    key_subdiv_special_flag_non_obs = f"{key_subdiv_special_flag}_non_observed"
+                    dict_subdiv_special_flag_non_obs[special_flag][subdiv] = getattr(
+                        cls, key_subdiv_special_flag_non_obs, {}
                     )
 
         cls._generate_assert_methods()
