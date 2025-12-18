@@ -149,7 +149,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
                 self._add_holiday(tr("Söndag"), dt)
 
     def _populate_de_facto_holidays(self):
-        # Midsummer Eve
+        # Midsummer Eve.
         self._add_holiday_1st_fri_from_jun_19(tr("Midsommarafton"))
 
         # Christmas Eve.

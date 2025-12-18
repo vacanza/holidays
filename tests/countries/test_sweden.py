@@ -413,9 +413,8 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
         )
 
     def test_de_facto_2022(self):
-        """Test all DE_FACTO holidays for 2022."""
-        self.assertHolidays(
-            Sweden(categories=DE_FACTO, years=2022),
+        self.assertDeFactoHolidaysInYear(
+            2022,
             ("2022-06-24", "Midsommarafton"),
             ("2022-12-24", "Julafton"),
             ("2022-12-31", "Nyårsafton"),

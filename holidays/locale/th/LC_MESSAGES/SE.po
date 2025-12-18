@@ -96,7 +96,7 @@ msgstr "วันคริสต์มาสวันที่สอง"
 msgid "Söndag"
 msgstr "วันอาทิตย์"
 
-#. Midsummer Eve
+#. Midsummer Eve.
 msgid "Midsommarafton"
 msgstr "วันก่อนวันกลางฤดูร้อน"
 

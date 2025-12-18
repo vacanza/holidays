@@ -96,7 +96,7 @@ msgstr "Second Day of Christmas"
 msgid "Söndag"
 msgstr "Sunday"
 
-#. Midsummer Eve
+#. Midsummer Eve.
 msgid "Midsommarafton"
 msgstr "Midsummer Eve"
 
