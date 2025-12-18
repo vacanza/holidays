@@ -20,7 +20,7 @@ reviews:
   labeling_instructions: []
   poem: false
   profile: assertive
-  request_changes_workflow: false
+  request_changes_workflow: true
   review_status: true
   sequence_diagrams: false
   tools:

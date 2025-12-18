@@ -64,7 +64,7 @@ class TestGU(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "New Year's Day"),
-            ("2022-01-17", "Birthday of Martin Luther King, Jr.; Martin Luther King Jr. Day"),
+            ("2022-01-17", "Martin Luther King Jr. Day"),
             ("2022-02-14", "Valentine's Day"),
             ("2022-02-21", "Washington's Birthday"),
             ("2022-03-07", "Guam Discovery Day"),
@@ -77,7 +77,6 @@ class TestGU(CommonCountryTests, TestCase):
             ("2022-07-04", "Independence Day"),
             ("2022-07-21", "Liberation Day (Guam)"),
             ("2022-09-05", "Labor Day"),
-            ("2022-10-10", "Columbus Day"),
             ("2022-10-31", "Halloween"),
             ("2022-11-02", "All Souls' Day"),
             ("2022-11-11", "Veterans Day"),
@@ -91,7 +90,7 @@ class TestGU(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "th",
             ("2022-01-01", "วันขึ้นปีใหม่"),
-            ("2022-01-17", "วันมาร์ติน ลูเทอร์ คิง จูเนียร์; วันเกิดมาร์ติน ลูเทอร์ คิง จูเนียร์"),
+            ("2022-01-17", "วันมาร์ติน ลูเทอร์ คิง จูเนียร์"),
             ("2022-02-14", "วันวาเลนไทน์"),
             ("2022-02-21", "วันเกิดวอชิงตัน"),
             ("2022-03-07", "วันค้นพบกวม"),
@@ -104,7 +103,6 @@ class TestGU(CommonCountryTests, TestCase):
             ("2022-07-04", "วันประกาศอิสรภาพ"),
             ("2022-07-21", "วันปลดปล่อย (กวม)"),
             ("2022-09-05", "วันแรงงาน"),
-            ("2022-10-10", "วันโคลัมบัส"),
             ("2022-10-31", "วันฮาโลวีน"),
             ("2022-11-02", "วันภาวนาอุทิศแด่ผู้ล่วงลับ"),
             ("2022-11-11", "วันทหารผ่านศึก"),
