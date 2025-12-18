@@ -72,6 +72,11 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-11-01",
             ),
             "CH": ("2018-04-14",),
+            "DH": (
+                "2018-04-14",  # Dr. B. R. Ambedkar's Jayanti
+                "2018-08-02",  # Dadra and Nagar Haveli Liberation Day
+                "2018-12-19",  # Daman and Diu Liberation Day
+            ),
             "DL": ("2018-11-13",),
             "GA": (
                 "2018-04-14",
@@ -552,6 +557,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-05-16", "Sikkim State Day"),
             ("2018-06-02", "Telangana Formation Day"),
             ("2018-06-16", "Id-ul-Fitr; Maharana Pratap Jayanti"),
+            ("2018-08-02", "Dadra and Nagar Haveli Liberation Day"),
             ("2018-08-15", "Independence Day"),
             ("2018-08-16", "Puducherry De Jure Transfer Day"),
             ("2018-08-22", "Bakrid"),
@@ -585,7 +591,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-11-23", "Guru Nanak Jayanti"),
             ("2018-12-01", "Nagaland State Inauguration Day"),
             ("2018-12-02", "Assam Day"),
-            ("2018-12-19", "Goa Liberation Day"),
+            ("2018-12-19", "Daman and Diu Liberation Day; Goa Liberation Day"),
             ("2018-12-25", "Christmas"),
         )
 
@@ -616,6 +622,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-05-16", "સિક્કિમ રાજ્ય દિવસ"),
             ("2018-06-02", "તેલંગાણા સ્થાપના દિવસ"),
             ("2018-06-16", "ઈદ-ઉલ-ફિત્ર; મહારાણા પ્રતાપ જયંતિ"),
+            ("2018-08-02", "દાદરા અને નગર હવેલી મુક્તિ દિવસ"),
             ("2018-08-15", "સ્વતંત્રતા દિવસ"),
             ("2018-08-16", "પુડુચેરી ડી જ્યુર ટ્રાન્સફર દિવસ"),
             ("2018-08-22", "બકરી ઈદ"),
@@ -647,7 +654,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-11-23", "ગુરુ નાનક જયંતિ"),
             ("2018-12-01", "નાગાલેન્ડ રાજ્ય ઉદ્ઘાટન દિવસ"),
             ("2018-12-02", "આસામ દિવસ"),
-            ("2018-12-19", "ગોવા મુક્તિ દિવસ"),
+            ("2018-12-19", "ગોવા મુક્તિ દિવસ; દમણ અને દીવ મુક્તિ દિવસ"),
             ("2018-12-25", "નાતાલ"),
         )
 
@@ -678,6 +685,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-05-16", "सिक्किम राज्य दिवस"),
             ("2018-06-02", "तेलंगाना स्थापना दिवस"),
             ("2018-06-16", "ईद-उल-फितर; महाराणा प्रताप जयंती"),
+            ("2018-08-02", "दादरा और नगर हवेली मुक्ति दिवस"),
             ("2018-08-15", "स्वतंत्रता दिवस"),
             ("2018-08-16", "पुडुचेरी डी ज्यूर स्थानांतरण दिवस"),
             ("2018-08-22", "बकरीद"),
@@ -709,7 +717,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-11-23", "गुरु नानक जयंती"),
             ("2018-12-01", "नागालैंड राज्य उद्घाटन दिवस"),
             ("2018-12-02", "असम दिवस"),
-            ("2018-12-19", "गोवा मुक्ति दिवस"),
+            ("2018-12-19", "गोवा मुक्ति दिवस; दमन और दीव मुक्ति दिवस"),
             ("2018-12-25", "क्रिसमस"),
         )
 
@@ -743,6 +751,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-05-16", "Sikkim State Day"),
             ("2018-06-02", "Telangana Formation Day"),
             ("2018-06-16", "Eid al-Fitr; Maharana Pratap Jayanti"),
+            ("2018-08-02", "Dadra and Nagar Haveli Liberation Day"),
             ("2018-08-15", "Independence Day"),
             ("2018-08-16", "Puducherry De Jure Transfer Day"),
             ("2018-08-22", "Eid al-Adha"),
@@ -776,7 +785,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-11-23", "Guru Nanak Jayanti"),
             ("2018-12-01", "Nagaland State Inauguration Day"),
             ("2018-12-02", "Assam Day"),
-            ("2018-12-19", "Goa Liberation Day"),
+            ("2018-12-19", "Daman and Diu Liberation Day; Goa Liberation Day"),
             ("2018-12-25", "Christmas"),
         )
 

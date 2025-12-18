@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.88\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
 "PO-Revision-Date: 2025-03-01 15:11+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
@@ -175,6 +175,14 @@ msgstr "बिहार दिवस"
 #. Chhattisgarh Foundation Day.
 msgid "Chhattisgarh Foundation Day"
 msgstr "छत्तीसगढ़ स्थापना दिवस"
+
+#. Dadra and Nagar Haveli Liberation Day.
+msgid "Dadra and Nagar Haveli Liberation Day"
+msgstr "दादरा और नगर हवेली मुक्ति दिवस"
+
+#. Daman and Diu Liberation Day.
+msgid "Daman and Diu Liberation Day"
+msgstr "दमन और दीव मुक्ति दिवस"
 
 #. Goa Liberation Day.
 msgid "Goa Liberation Day"

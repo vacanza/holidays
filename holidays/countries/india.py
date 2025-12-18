@@ -37,6 +37,9 @@ class India(
         * <https://web.archive.org/web/20250413193633/https://www.calendarlabs.com/holidays/india/2021>
         * <https://web.archive.org/web/20231118175007/http://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm>
         * <https://web.archive.org/web/20231008063930/https://vahan.parivahan.gov.in/vahan4dashboard/>
+        * Dadra and Nagar Haveli and Daman and Diu :
+            * <http://web.archive.org/web/20250000000000*/https://en.wikipedia.org/wiki/Free_Dadra_and_Nagar_Haveli>
+            * <http://web.archive.org/web/20250000000000*/https://www.incredibleindia.gov.in/en/festivals-and-events/liberation-day>
         * Gujarat:
             * <https://gad.gujarat.gov.in/personnel/Images/pdf/general_holidays_2026_guj.pdf>
         * Tamil Nadu:
@@ -100,6 +103,7 @@ class India(
         "Chhattīsgarh": "CG",
         "Chandigarh": "CH",
         "Chandīgarh": "CH",
+        "DD": "DH",
         "Dadra and Nagar Haveli and Daman and Diu": "DH",
         "Dādra and Nagar Haveli and Damān and Diu": "DH",
         "Delhi": "DL",
@@ -317,6 +321,17 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Chhattisgarh Foundation Day.
         self._add_holiday_nov_1(tr("Chhattisgarh Foundation Day"))
+
+    # Dadra and Nagar Haveli and Daman and Diu.
+    def _populate_subdiv_dh_public_holidays(self):
+        # Dr. B. R. Ambedkar Jayanti.
+        self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
+
+        # Dadra and Nagar Haveli Liberation Day.
+        self._add_holiday_aug_2(tr("Dadra and Nagar Haveli Liberation Day"))
+
+        # Daman and Diu Liberation Day.
+        self._add_holiday_dec_19(tr("Daman and Diu Liberation Day"))
 
     # Delhi.
     def _populate_subdiv_dl_public_holidays(self):
