@@ -211,7 +211,7 @@ msgid "Hari Jadi Yang di-Pertua Negeri Sabah"
 msgstr "วันคล้ายวันเกิดผู้ว่าการรัฐซาบาห์"
 
 #. Christmas Eve.
-msgid "Christmas Eve"
+msgid "Krismas (Eve)"
 msgstr "วันคริสต์มาสอีฟ"
 
 #. Dayak Festival Day.
