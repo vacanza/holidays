@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.87\n"
 "POT-Creation-Date: 2024-10-15 20:48+0300\n"
 "PO-Revision-Date: 2025-09-17 10:13+0700\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -254,6 +254,10 @@ msgstr "День політичного звільнення Сержипі"
 #. Constitutionalist Revolution.
 msgid "Revolução Constitucionalista"
 msgstr "День Конституціоналістської революції"
+
+#. City Anniversary.
+msgid "Aniversário da Cidade de São Paulo"
+msgstr "Річниця міста Сан-Паулу"
 
 #. Autonomy Day.
 msgid "Dia da Autonomia"

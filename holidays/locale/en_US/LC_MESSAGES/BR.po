@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.87\n"
 "POT-Creation-Date: 2024-10-15 20:48+0300\n"
 "PO-Revision-Date: 2025-09-17 10:13+0700\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -255,6 +255,10 @@ msgstr "Sergipe Political Emancipation Day"
 msgid "Revolução Constitucionalista"
 msgstr "Constitutionalist Revolution"
 
+#. City Anniversary.
+msgid "Aniversário da Cidade de São Paulo"
+msgstr "São Paulo City Anniversary"
+
 #. Autonomy Day.
 msgid "Dia da Autonomia"
 msgstr "Autonomy Day"
@@ -262,12 +266,3 @@ msgstr "Autonomy Day"
 #. Our Lady of Nativity.
 msgid "Nossa Senhora da Natividade"
 msgstr "Our Lady of Nativity"
-
-#. São Paulo City Anniversary.
-msgid "Aniversário da Cidade de São Paulo"
-msgstr "São Paulo City Anniversary"
-
-
-
-
-
