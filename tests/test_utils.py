@@ -255,6 +255,67 @@ class MockHolidayBase(HolidayBase):
         return day in self._holidays
 
 
+class CountryStub1(HolidayBase):
+    country = "CS1"
+    start_year = 1000
+    end_year = 3400
+
+    def _populate(self, year: int) -> None:
+        super()._populate(year)
+        self._add_holiday_jul_4("Custom July 4th Holiday")
+        self._add_holiday_mar_4("Custom March 4th Holiday")
+        self._add_holiday_mar_5("Custom March 5th Holiday")
+        self._add_holiday_mar_6("Custom March 6th Holiday")
+
+
+class CountryStub2(HolidayBase):
+    country = "CS2"
+    start_year = 1000
+    end_year = 3400
+
+    def _populate(self, year: int) -> None:
+        super()._populate(year)
+        self._add_holiday_jul_4("Custom July 4th Holiday")
+        self._add_holiday_dec_26("Custom December 26th Holiday")
+
+
+class CountryStub3(HolidayBase):
+    country = "CS3"
+    start_year = 1000
+    end_year = 3400
+    weekend = {FRI, SAT}
+
+    def _populate(self, year: int) -> None:
+        super()._populate(year)
+        self._add_holiday_apr_10("Custom April 10th Holiday")
+
+
+class CountryStub4(HolidayBase):
+    country = "CS4"
+    start_year = 1000
+    end_year = 3400
+
+    def _populate(self, year: int) -> None:
+        super()._populate(year)
+        self._add_holiday_aug_11("Custom August 11th Holiday")
+        self._add_holiday_aug_12("Custom August 12th Holiday")
+        self._add_holiday_dec_5("Custom December 5th Holiday")
+
+
+class CountryStub5(HolidayBase):
+    country = "CS5"
+    start_year = 1000
+    end_year = 3400
+
+    def _populate(self, year: int) -> None:
+        super()._populate(year)
+
+        if self._year == 2024:
+            self._add_holiday_jan_1("Custom January 1st Holiday")
+        if self._year == 2021:
+            self._add_holiday_dec_31("Custom December 31st Holiday")
+
+
 class TestListLongWeekends(unittest.TestCase):
     def assertLongWeekendsEqual(  # noqa: N802
         self,
@@ -274,14 +335,16 @@ class TestListLongWeekends(unittest.TestCase):
         self.assertEqual(result, expected)
 
     def test_long_weekend_single(self):
+        cs1 = CountryStub1(years=2025)
         self.assertLongWeekendsEqual(
-            [date(2025, 7, 4)],
+            cs1,
             [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]],
         )
 
     def test_long_weekend_multiple(self):
+        cs2 = CountryStub2(years=2025)
         self.assertLongWeekendsEqual(
-            [date(2025, 7, 4), date(2025, 12, 26)],
+            cs2,
             [
                 [date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)],
                 [date(2025, 12, 26), date(2025, 12, 27), date(2025, 12, 28)],
@@ -289,21 +352,26 @@ class TestListLongWeekends(unittest.TestCase):
         )
 
     def test_long_weekend_require_weekend_overlap(self):
+        cs1 = CountryStub1(years=2025)
         self.assertLongWeekendsEqual(
-            [date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)],
-            [],
+            cs1,
+            [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]],
         )
         self.assertLongWeekendsEqual(
-            [date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)],
-            [[date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)]],
+            cs1,
+            [
+                [date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)],
+                [date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)],
+            ],
             require_weekend_overlap=False,
         )
 
     def test_long_weekend_custom_weekend(self):
+        cs3 = CountryStub3(years=2025)
         self.assertLongWeekendsEqual(
-            [date(2025, 4, 10)],
+            cs3,
             [[date(2025, 4, 10), date(2025, 4, 11), date(2025, 4, 12)]],
-            weekend={FRI, SAT},
+            weekend=cs3.weekend,
         )
 
     def test_long_weekend_no_holidays(self):
@@ -313,19 +381,22 @@ class TestListLongWeekends(unittest.TestCase):
         )
 
     def test_long_weekend_custom_minimum_length(self):
+        cs4 = CountryStub4(years=2025)
         self.assertLongWeekendsEqual(
-            [date(2025, 8, 11), date(2025, 8, 12), date(2025, 12, 5)],
+            cs4,
             [[date(2025, 8, 9), date(2025, 8, 10), date(2025, 8, 11), date(2025, 8, 12)]],
             minimum_holiday_length=4,
         )
 
     def test_long_weekend_across_years(self):
+        cs5 = CountryStub5(years=2024)
         self.assertLongWeekendsEqual(
-            [date(2024, 1, 1)],
+            cs5,
             [[date(2023, 12, 30), date(2023, 12, 31), date(2024, 1, 1)]],
         )
+        cs5 = CountryStub5(years=2021)
         self.assertLongWeekendsEqual(
-            [date(2021, 12, 31)],
+            cs5,
             [[date(2021, 12, 31), date(2022, 1, 1), date(2022, 1, 2)]],
         )
 
