@@ -62,6 +62,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         * [Law 21.521 (eliminate Dec 31 again, after the CMF publishes a specific regulation)](https://web.archive.org/web/20240214154900/https://www.bcn.cl/leychile/navegar?idNorma=1187323&idVersion=2023-02-03)
         * [Norma de Carácter General N° 543 de la CMF](https://web.archive.org/web/20250811111649/https://www.cmfchile.cl/normativa/ncg_543_2025.pdf)
         * [Resolución Exenta N° 7.671 (CMF, 2025-08-01)](https://web.archive.org/web/20250811123908/https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=ba5ad42feea3531a678a9db5253a9477VFdwQmVVNVVRVFJOUkZWNlRucEpORTVCUFQwPQ==&secuencia=-1&t=1754086087)
+        * [Law 21.791 (restore bank holiday on Dec 31)](https://web.archive.org/web/20251219021727/https://www.bcn.cl/leychile/navegar?idNorma=1219578&idVersion=2025-12-17)
     """
 
     country = "CL"
@@ -244,7 +245,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         if 1957 <= self._year <= 1975:
             self._add_holiday_jun_30(name)
 
-        if 1956 <= self._year <= 2024 and self._year != 1997:
+        if 1956 <= self._year and self._year != 1997:
             self._add_holiday_dec_31(name)
 
     @property
