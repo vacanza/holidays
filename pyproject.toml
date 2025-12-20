@@ -79,7 +79,7 @@ tests = [
 ]
 
 [tool.setuptools.dynamic]
-version = { attr = "holidays.version.__version__" }
+version = { file = "VERSION" }
 
 [tool.setuptools.packages.find]
 include = [ "holidays*" ]

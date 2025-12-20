@@ -10,4 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-__version__ = "0.88"
+from importlib.metadata import version
+
+__version__ = version("holidays")
