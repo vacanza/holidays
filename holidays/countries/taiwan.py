@@ -179,6 +179,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         if self._year >= 2025:
             # Confucius' Birthday.
             self._add_holiday_sep_28(tr("孔子誕辰紀念日"))
+            dts_observed.add(self._add_holiday_sep_28(tr("孔子誕辰紀念日")))
 
         # National Day.
         dts_observed.add(self._add_holiday_oct_10(tr("國慶日")))
@@ -186,6 +187,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         if self._year >= 2025:
             # Taiwan Restoration and Guningtou Victory Memorial Day.
             self._add_holiday_oct_25(tr("臺灣光復暨金門古寧頭大捷紀念日"))
+            dts_observed.add(self._add_holiday_oct_25(tr("臺灣光復暨金門古寧頭大捷紀念日")))
 
             # Constitution Day.
             self._add_holiday_dec_25(tr("行憲紀念日"))
@@ -338,7 +340,8 @@ class TaiwanStaticHolidays:
         * [2022](https://web.archive.org/web/20220809133226/https://www.dgpa.gov.tw/en/information?uid=353&pid=10659)
         * [2023](https://web.archive.org/web/20220809133225/https://www.dgpa.gov.tw/en/information?uid=353&pid=11016)
         * [2024](https://web.archive.org/web/20250414165829/https://www.dgpa.gov.tw/en/information?uid=353&pid=11402)
-        * [2025](https://web.archive.org/web/20250121091032/https://www.dgpa.gov.tw/en/information?uid=353&pid=11979)
+        * [2025](https://web.archive.org/web/20251220073230/https://www.dgpa.gov.tw/en/information?uid=353&pid=12579)
+        * [2026](https://web.archive.org/web/20251220074207/https://www.dgpa.gov.tw/en/information?uid=353&pid=12580)
     """
 
     # Date format (see strftime() Format Codes).
