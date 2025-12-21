@@ -22,7 +22,7 @@ from unittest import mock
 import pytest
 
 import holidays
-from holidays.calendars.gregorian import FRI, SAT, SUN
+from holidays.calendars.gregorian import FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import (
     CountryHoliday,
@@ -242,23 +242,8 @@ class TestListSupportedEntities(unittest.TestCase):
         self.assertEqual(financial_count, len(supported_financial))
 
 
-class MockHolidayBase(HolidayBase):
-    def __init__(self, holidays: set[date], weekend: set[int] | None = None) -> None:
-        super().__init__()
-        self._holidays = set(holidays)
-        self.weekend = weekend or {SAT, SUN}
-
-    def keys(self):
-        return self._holidays
-
-    def __contains__(self, day):
-        return day in self._holidays
-
-
 class CountryStub1(HolidayBase):
     country = "CS1"
-    start_year = 1000
-    end_year = 3400
 
     def _populate(self, year: int) -> None:
         super()._populate(year)
@@ -270,8 +255,6 @@ class CountryStub1(HolidayBase):
 
 class CountryStub2(HolidayBase):
     country = "CS2"
-    start_year = 1000
-    end_year = 3400
 
     def _populate(self, year: int) -> None:
         super()._populate(year)
@@ -281,8 +264,6 @@ class CountryStub2(HolidayBase):
 
 class CountryStub3(HolidayBase):
     country = "CS3"
-    start_year = 1000
-    end_year = 3400
     weekend = {FRI, SAT}
 
     def _populate(self, year: int) -> None:
@@ -292,8 +273,6 @@ class CountryStub3(HolidayBase):
 
 class CountryStub4(HolidayBase):
     country = "CS4"
-    start_year = 1000
-    end_year = 3400
 
     def _populate(self, year: int) -> None:
         super()._populate(year)
@@ -304,8 +283,6 @@ class CountryStub4(HolidayBase):
 
 class CountryStub5(HolidayBase):
     country = "CS5"
-    start_year = 1000
-    end_year = 3400
 
     def _populate(self, year: int) -> None:
         super()._populate(year)
@@ -318,15 +295,8 @@ class CountryStub5(HolidayBase):
 
 class TestListLongWeekends(unittest.TestCase):
     def assertLongWeekendsEqual(  # noqa: N802
-        self,
-        holidays,
-        expected,
-        weekend=None,
-        minimum_holiday_length=3,
-        *,
-        require_weekend_overlap=True,
+        self, instance, expected, minimum_holiday_length=3, *, require_weekend_overlap=True
     ):
-        instance = MockHolidayBase(holidays, weekend=weekend or {SAT, SUN})
         result = list_long_weekends(
             instance,
             minimum_holiday_length=minimum_holiday_length,
@@ -371,14 +341,10 @@ class TestListLongWeekends(unittest.TestCase):
         self.assertLongWeekendsEqual(
             cs3,
             [[date(2025, 4, 10), date(2025, 4, 11), date(2025, 4, 12)]],
-            weekend=cs3.weekend,
         )
 
     def test_long_weekend_no_holidays(self):
-        self.assertLongWeekendsEqual(
-            [],
-            [],
-        )
+        self.assertLongWeekendsEqual(HolidayBase(), [])
 
     def test_long_weekend_custom_minimum_length(self):
         cs4 = CountryStub4(years=2025)
@@ -386,6 +352,13 @@ class TestListLongWeekends(unittest.TestCase):
             cs4,
             [[date(2025, 8, 9), date(2025, 8, 10), date(2025, 8, 11), date(2025, 8, 12)]],
             minimum_holiday_length=4,
+        )
+        self.assertLongWeekendsEqual(
+            cs4,
+            [
+                [date(2025, 8, 9), date(2025, 8, 10), date(2025, 8, 11), date(2025, 8, 12)],
+                [date(2025, 12, 5), date(2025, 12, 6), date(2025, 12, 7)],
+            ],
         )
 
     def test_long_weekend_across_years(self):
