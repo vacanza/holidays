@@ -168,7 +168,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
 
         if self._year >= 2026:
             # Labor Day.
-            self._add_labor_day(tr("勞動節"))
+            dts_observed.add(self._add_labor_day(tr("勞動節")))
 
         # Dragon Boat Festival.
         dts_observed.add(self._add_dragon_boat_festival(tr("端午節")))
@@ -178,7 +178,6 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
 
         if self._year >= 2025:
             # Confucius' Birthday.
-            self._add_holiday_sep_28(tr("孔子誕辰紀念日"))
             dts_observed.add(self._add_holiday_sep_28(tr("孔子誕辰紀念日")))
 
         # National Day.
@@ -186,11 +185,10 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
 
         if self._year >= 2025:
             # Taiwan Restoration and Guningtou Victory Memorial Day.
-            self._add_holiday_oct_25(tr("臺灣光復暨金門古寧頭大捷紀念日"))
             dts_observed.add(self._add_holiday_oct_25(tr("臺灣光復暨金門古寧頭大捷紀念日")))
 
             # Constitution Day.
-            self._add_holiday_dec_25(tr("行憲紀念日"))
+            dts_observed.add(self._add_holiday_dec_25(tr("行憲紀念日")))
 
         if self.observed:
             self._populate_observed(dts_observed)
