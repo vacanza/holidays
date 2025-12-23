@@ -142,7 +142,7 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         # Easter Monday.
         self._add_easter_monday(tr("Monite ʻo e Toetuʻu"))
 
-        # Anzac Day.
+        # ANZAC Day.
         apr_25 = self._add_anzac_day(tr("ʻAho Anzac"))
         if self._year <= 2016:
             self._add_observed(apr_25, rule=SUN_TO_NEXT_MON)

@@ -247,7 +247,7 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             ("2023-04-24", "Eid al-Fitr Holiday"),
             ("2023-04-25", "Eid al-Fitr Holiday (observed)"),
             ("2023-04-26", "Eid al-Fitr Holiday (observed)"),
-            ("2023-06-27", "Arafat Day"),
+            ("2023-06-27", "Day of Arafah"),
             ("2023-06-28", "Eid al-Adha Holiday"),
             ("2023-06-29", "Eid al-Adha Holiday"),
             ("2023-06-30", "Eid al-Adha Holiday"),

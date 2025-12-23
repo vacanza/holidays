@@ -129,7 +129,7 @@ class Kenya(
         # Boxing Day.
         dts_observed.add(self._add_christmas_day_two(tr("Boxing Day")))
 
-        # Eid-al-Fitr.
+        # Eid al-Fitr.
         dts_observed.update(self._add_eid_al_fitr_day(tr("Idd-ul-Fitr")))
 
         if self.observed:
@@ -145,7 +145,7 @@ class Kenya(
     def _populate_islamic_holidays(self):
         """Additional Islamic public holidays."""
 
-        # Eid-al-Adha.
+        # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Idd-ul-Azha"))
 
 

@@ -56,7 +56,7 @@ msgstr ""
 msgid "Feriado Nacional"
 msgstr ""
 
-#. Independence Day.
+#. National Independence Day.
 msgid "Día de la Independencia Nacional"
 msgstr ""
 
@@ -80,7 +80,7 @@ msgstr ""
 msgid "Día de la Navidad"
 msgstr ""
 
-#. Public holiday.
+#. Public Holiday.
 msgid "Asueto adicional"
 msgstr ""
 

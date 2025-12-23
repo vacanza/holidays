@@ -89,7 +89,7 @@ msgstr "วันครบรอบการปฏิวัติสังคม
 msgid "День Конституции Российской Федерации"
 msgstr "วันรัฐธรรมนูญสหพันธรัฐรัสเซีย"
 
-#. Date format (see strftime() Format Codes).
+#. Substituted date format.
 msgid "%d.%m.%Y"
 msgstr "%d/%m/%Y"
 

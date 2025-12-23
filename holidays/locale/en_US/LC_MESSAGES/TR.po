@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.85\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-11-12 18:52+0200\n"
-"PO-Revision-Date: 2025-11-11 22:09+0200\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -89,6 +89,6 @@ msgstr "Eid al-Adha"
 msgid "%s (saat 13.00'ten)"
 msgstr "%s (from 1pm)"
 
-#. Public holiday.
+#. Public Holiday.
 msgid "Genel tati̇l"
-msgstr "Public holiday"
+msgstr "Public Holiday"

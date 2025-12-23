@@ -95,7 +95,7 @@ msgstr "วันอีฎิ้ลฟิตริวันที่สอง"
 msgid "Hari Raya Qurban"
 msgstr "วันอีดิ้ลอัฎฮา"
 
-#. Deepavali.
+#. Diwali.
 msgid "Hari Deepavali"
 msgstr "วันดีปาวลี"
 
@@ -135,7 +135,7 @@ msgstr "วันคล้ายวันประสูติสุลต่า
 msgid "Hari Nuzul Al-Quran"
 msgstr "วันนูซุลอัลกุรอาน"
 
-#. Arafat Day.
+#. Day of Arafah.
 msgid "Hari Arafah"
 msgstr "วันอารอฟะห์"
 

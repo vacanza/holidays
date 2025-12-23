@@ -76,7 +76,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_bank_holidays(self):
         # Good Friday.
-        self._add_good_friday(tr("Goede Vrijdag"))
+        self._add_good_friday(tr("Goede vrijdag"))
 
         # Friday after Ascension Day.
         self._add_holiday_40_days_past_easter(tr("Vrijdag na O. L. H. Hemelvaart"))
