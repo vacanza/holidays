@@ -145,6 +145,8 @@ class UnitedStates(
     default_language = "en_US"
     # %s (observed).
     observed_label = tr("%s (observed)")
+    estimated_label = tr("%s (estimated)")
+    observed_estimated_label = tr("%s (observed, estimated)")
     supported_languages = ("en_US", "th")
     # Independence Declared on July 4th, 1776.
     start_year = 1777
