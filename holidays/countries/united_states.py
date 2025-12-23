@@ -54,8 +54,8 @@ GA_IN_WASHINGTON_BIRTHDAY = ObservedRule(
 class UnitedStates(
     ObservedHolidayBase,
     ChristianHolidays,
-    InternationalHolidays,
     HinduCalendarHolidays,
+    InternationalHolidays,
     StaticHolidays,
 ):
     """United States of America (the) holidays.
@@ -145,7 +145,9 @@ class UnitedStates(
     default_language = "en_US"
     # %s (observed).
     observed_label = tr("%s (observed)")
+    # %s (estimated).
     estimated_label = tr("%s (estimated)")
+    # %s (observed, estimated).
     observed_estimated_label = tr("%s (observed, estimated)")
     supported_languages = ("en_US", "th")
     # Independence Declared on July 4th, 1776.

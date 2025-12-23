@@ -32,13 +32,15 @@ msgstr ""
 msgid "%s (observed)"
 msgstr "ชดเชย%s"
 
+#. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
-msgstr "ประมาณการ%s"
+msgstr "%s (โดยประมาณ)"
 
+#. %s (observed, estimated).
 #, c-format
 msgid "%s (observed, estimated)"
-msgstr "ชดเชยประมาณการ%s"
+msgstr "ชดเชย%s (โดยประมาณ)"
 
 #. New Year's Day.
 msgid "New Year's Day"

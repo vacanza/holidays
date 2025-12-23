@@ -32,10 +32,12 @@ msgstr ""
 msgid "%s (observed)"
 msgstr ""
 
+#. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
 msgstr ""
 
+#. %s (observed, estimated).
 #, c-format
 msgid "%s (observed, estimated)"
 msgstr ""
