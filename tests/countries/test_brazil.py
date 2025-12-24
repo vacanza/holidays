@@ -19,7 +19,11 @@ from tests.common import CommonCountryTests
 class TestBrazil(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Brazil, years_all_subdivs=range(1995, 2050))
+        super().setUpClass(
+            Brazil,
+            years_all_subdivs=range(1995, 2050),
+            years_subdiv_são_paulo_capital=range(1967, 2050),
+        )
 
     def test_new_years_day(self):
         self.assertHolidayName(
@@ -703,6 +707,18 @@ class TestBrazil(CommonCountryTests, TestCase):
                     name, holidays, (f"{year}-07-09" for year in range(1997, self.end_year))
                 )
                 self.assertNoHolidayName(name, holidays, 1996)
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_sao_paulo_city_anniversary(self):
+        name = "Aniversário da Cidade de São Paulo"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "São Paulo Capital":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-01-25" for year in range(1968, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1968))
             else:
                 self.assertNoHolidayName(name, holidays)
 
