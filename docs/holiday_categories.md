@@ -101,6 +101,25 @@ Examples:
 - Christmas Eve (afternoon only)
 - New Year's Eve (afternoon only)
 
+#### DE_FACTO
+
+Holidays that are legally treated equivalently to public holidays for specific purposes (such as working day calculations) but are not officially designated as public holidays. These observances have legal backing that grants them similar status to public holidays in certain contexts.
+
+Examples:
+
+- **Sweden**: Midsummer Eve (Midsommarafton), Christmas Eve (Julafton), and New Year's Eve (Nyårsafton) - per Swedish Annual Leave Law (SFS 1977:480), these are treated equivalently to Sundays and public holidays for working day calculations, though they are not official public holidays.
+
+Usage:
+
+```python
+import holidays
+from holidays.constants import PUBLIC, DE_FACTO
+
+# For accurate is_working_day() behavior in Sweden
+se = holidays.Sweden(categories=(PUBLIC, DE_FACTO), years=2024)
+print(se.is_working_day('2024-12-24'))  # False (Christmas Eve)
+```
+
 ### Religious Categories
 
 #### CATHOLIC
@@ -344,6 +363,7 @@ When adding support for a new country, consider:
 - **GOVERNMENT**: Official observances without general time off
 - **WORKDAY**: Recognized but working holidays
 - **UNOFFICIAL**: Widely celebrated but not official
+- **DE_FACTO**: Legally recognized holidays that must be treated like public holidays for specific purposes (e.g., working day calculations) but lack official public holiday status
 - **Religious categories**: Use specific tradition names when holidays apply to particular communities
 - **Institutional categories**: Use when holidays apply to specific sectors
 

@@ -38,6 +38,7 @@ HOLIDAY_NAME_DELIMITER = "; "  # Holiday names separator.
 # Supported holiday categories.
 ARMED_FORCES = "armed_forces"
 BANK = "bank"
+DE_FACTO = "de_facto"
 GOVERNMENT = "government"
 HALF_DAY = "half_day"
 OPTIONAL = "optional"

@@ -1643,7 +1643,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>SE</td>
 <td></td>
 <td>en_US, <strong>sv</strong>, th, uk</td>
-<td>BANK, OPTIONAL</td>
+<td>BANK, DE_FACTO, OPTIONAL</td>
 </tr>
 <tr>
 <td>Switzerland</td>
