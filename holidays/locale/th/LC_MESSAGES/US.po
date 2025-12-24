@@ -184,7 +184,7 @@ msgstr "วันหลังวันขอบคุณพระเจ้า"
 
 #. Diwali.
 msgid "Diwali"
-msgstr "เทศกาลดิวาลี"
+msgstr "วันดีปาวลี"
 
 #. Washington-Lincoln Day.
 msgid "Washington-Lincoln Day"
