@@ -29,7 +29,7 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         * [Lei n. 662, de 6.04.1949](https://web.archive.org/web/20240913060643/https://www2.camara.leg.br/legin/fed/lei/1940-1949/lei-662-6-abril-1949-347136-publicacaooriginal-1-pl.html)
         * [Lei n. 14.759, de 21.12.2023](https://web.archive.org/web/20250402234552/https://www2.camara.leg.br/legin/fed/lei/2023/lei-14759-21-dezembro-2023-795091-publicacaooriginal-170522-pl.html)
         * São Paulo Capital:
-            * [Anexo Único Integrante do Decreto n. 56.756, de 4.01.2016 ](https://web.archive.org/web/20251224031221/https://legislacao.prefeitura.sp.gov.br/leis/decreto-56756-de-04-de-janeiro-de-2016/anexo/5ec3d7a71411926001a56c56/Anexo%20Único%20do%20Decreto%20nº%2056.756_2016.pdf)
+            * [Anexo Único Integrante do Decreto n. 56.756, de 4.01.2016](https://web.archive.org/web/20251224031221/https://legislacao.prefeitura.sp.gov.br/leis/decreto-56756-de-04-de-janeiro-de-2016/anexo/5ec3d7a71411926001a56c56/Anexo%20Único%20do%20Decreto%20nº%2056.756_2016.pdf)
     """
 
     country = "BR"
