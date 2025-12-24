@@ -279,8 +279,8 @@ class UnitedStates(
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
-        InternationalHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=UnitedStatesStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
         # B-11252 February 27th, 1953 32 COMP. GEN. 378.
