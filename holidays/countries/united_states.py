@@ -31,7 +31,12 @@ from holidays.calendars.gregorian import (
     SUN,
 )
 from holidays.constants import GOVERNMENT, HALF_DAY, PUBLIC, UNOFFICIAL
-from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.groups import (
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     ObservedRule,
@@ -48,7 +53,13 @@ GA_IN_WASHINGTON_BIRTHDAY = ObservedRule(
 )
 
 
-class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class UnitedStates(
+    ObservedHolidayBase,
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+):
     """United States of America (the) holidays.
 
     References:
@@ -63,6 +74,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         * [B-112525 February 27th, 1953 32 COMP. GEN. 378](https://web.archive.org/web/20201001081239/https://www.gao.gov/products/b-112525#mt=e-report)
         * [Public Law 89-554](https://web.archive.org/web/20250512204449/https://www.govinfo.gov/content/pkg/STATUTE-80/pdf/STATUTE-80-Pg378.pdf)
         * [E.O. 11582 of February 11th, 1971](https://web.archive.org/web/20250326234305/https://www.archives.gov/federal-register/codification/executive-order/11582.html)
+        * [CA Diwali state holiday (AB 268, 2025-2026)](https://web.archive.org/web/20251223175415if_/https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB268)
         * Washington's Birthday:
             * [AK](https://web.archive.org/web/20250306070343/https://doa.alaska.gov/calendar/)
             * [AL](https://web.archive.org/web/20250125202410/https://admincode.legislature.state.al.us/administrative-code/670-X-12-.01)
@@ -135,6 +147,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     default_language = "en_US"
     # %s (observed).
     observed_label = tr("%s (observed)")
+    # %s (estimated).
+    estimated_label = tr("%s (estimated)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (observed, estimated)")
     supported_languages = ("en_US", "th")
     # Independence Declared on July 4th, 1776.
     start_year = 1777
@@ -265,6 +281,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
+        HinduCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=UnitedStatesStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
@@ -624,6 +641,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if self._year >= 1975:
             # Day After Thanksgiving.
             self._add_holiday_1_day_past_4th_thu_of_nov(tr("Day After Thanksgiving"))
+
+        if self._year >= 2026:
+            # Diwali.
+            self._add_diwali_india(tr("Diwali"))
 
     def _populate_subdiv_co_public_holidays(self):
         if self._year >= 1971:

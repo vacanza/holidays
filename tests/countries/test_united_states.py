@@ -864,6 +864,21 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             name, range(self.start_year, 1970), range(2009, self.end_year)
         )
 
+    def test_diwali_ca(self):
+        name = "Diwali"
+        self.assertNoHolidayName(name)
+        self.assertSubdivCaHolidayName(
+            name,
+            "2026-11-08",
+            "2027-10-29",
+            "2028-10-17",
+            "2029-11-05",
+            "2030-10-26",
+        )
+        # Current DIWALI_INDIA_DATES only map up to 2035 at the moment.
+        self.assertSubdivCaHolidayName(name, range(2026, 2036))
+        self.assertNoSubdivCaHolidayName(name, range(self.start_year, 2026))
+
     def test_columbus_day_pr(self):
         name = "Columbus Day"
         self.assertSubdivPrHolidayName(
