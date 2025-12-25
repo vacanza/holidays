@@ -518,3 +518,24 @@ msgstr ""
 #. Public Thanksgiving and Prayer Day.
 msgid "Public Thanksgiving and Prayer Day"
 msgstr ""
+
+#. %s (half-day closing).
+#, c-format
+msgid "%s (half-day closing)"
+msgstr ""
+
+#. National Day of Mourning for former President Ronald Reagan.
+msgid "National Day of Mourning for former President Ronald Reagan"
+msgstr ""
+
+#. National Day of Mourning for former President Gerald R. Ford.
+msgid "National Day of Mourning for former President Gerald R. Ford"
+msgstr ""
+
+#. National Day of Mourning for former President George H. W. Bush.
+msgid "National Day of Mourning for former President George H. W. Bush"
+msgstr ""
+
+#. National Day of Mourning for former President Jimmy Carter.
+msgid "National Day of Mourning for former President Jimmy Carter"
+msgstr ""

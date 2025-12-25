@@ -2412,6 +2412,29 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             "2024-10-07",
         )
 
+    def test_special_government_holidays(self):
+        self.assertGovernmentHoliday(
+            "2001-12-24",
+            "2002-12-24",
+            "2003-12-26",
+            "2004-06-11",
+            "2007-01-02",
+            "2007-12-24",
+            "2008-12-26",
+            "2009-12-24",
+            "2012-12-24",
+            "2014-12-26",
+            "2015-12-24",
+            "2018-12-05",
+            "2018-12-24",
+            "2019-12-24",
+            "2020-12-24",
+            "2024-12-24",
+            "2025-01-09",
+            "2025-12-24",
+            "2025-12-26",
+        )
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "New Year's Day"),
