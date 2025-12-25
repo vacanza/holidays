@@ -522,7 +522,7 @@ msgstr "วันขอบคุณพระเจ้าร่วมกันแ
 #. %s (half-day closing).
 #, c-format
 msgid "%s (half-day closing)"
-msgstr "% (ปิดครึ่งวัน)"
+msgstr "%s (ปิดครึ่งวัน)"
 
 #. National Day of Mourning for former President Ronald Reagan.
 msgid "National Day of Mourning for former President Ronald Reagan"
