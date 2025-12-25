@@ -159,6 +159,9 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Christmas Day.
             self._add_christmas_day(tr("Natal"))
 
+        if self.subdiv == "São Paulo Capital":
+            self._populate_subdiv_sao_paulo_capital_public_holidays()
+
     def _populate_optional_holidays(self):
         # Carnival.
         name = tr("Carnaval")
@@ -386,7 +389,7 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Constitutionalist Revolution.
             self._add_holiday_jul_9(tr("Revolução Constitucionalista"))
 
-    def _populate_subdiv_são_paulo_capital_public_holidays(self):
+    def _populate_subdiv_sao_paulo_capital_public_holidays(self):
         self._populate_subdiv_sp_public_holidays()
 
         # Lei Municipal n. 7.008, de 6.04.1967
