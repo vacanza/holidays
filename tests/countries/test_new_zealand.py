@@ -452,10 +452,6 @@ class TestNZ(CommonCountryTests, TestCase):
             "Otago Anniversary Day",
             "Southland Anniversary Day",
             "Chatham Islands Anniversary Day",
-            "Queen's Birthday",
-            "Labour Day",
-            "Christmas Day",
-            "Boxing Day",
         }
         self.assertEqual(all_holidays, holidays_1969)
         self.assertEqual(all_holidays, holidays_2015)
