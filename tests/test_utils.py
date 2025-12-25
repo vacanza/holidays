@@ -32,7 +32,7 @@ from holidays.utils import (
     list_localized_financial,
     list_supported_countries,
     list_supported_financial,
-    list_long_weekends,
+    list_long_breaks,
 )
 from tests.common import PYTHON_LATEST_SUPPORTED_VERSION, PYTHON_VERSION
 
@@ -297,9 +297,9 @@ class TestListLongWeekends(unittest.TestCase):
     def assertLongWeekendsEqual(  # noqa: N802
         self, instance, expected, minimum_holiday_length=3, *, require_weekend_overlap=True
     ):
-        result = list_long_weekends(
+        result = list_long_breaks(
             instance,
-            minimum_holiday_length=minimum_holiday_length,
+            minimum_break_length=minimum_holiday_length,
             require_weekend_overlap=require_weekend_overlap,
         )
         self.assertEqual(result, expected)
@@ -375,7 +375,7 @@ class TestListLongWeekends(unittest.TestCase):
 
     def test_long_weekend_real_country_holidays_data(self):
         self.assertEqual(
-            list_long_weekends(country_holidays("AU", subdiv="NSW", years=2024)),
+            list_long_breaks(country_holidays("AU", subdiv="NSW", years=2024)),
             [
                 [date(2023, 12, 30), date(2023, 12, 31), date(2024, 1, 1)],
                 [date(2024, 1, 26), date(2024, 1, 27), date(2024, 1, 28)],
@@ -387,7 +387,7 @@ class TestListLongWeekends(unittest.TestCase):
 
     def test_long_weekend_real_financial_holidays_data(self):
         self.assertEqual(
-            list_long_weekends(financial_holidays("XNSE", years=2024)),
+            list_long_breaks(financial_holidays("XNSE", years=2024)),
             [
                 [date(2024, 1, 26), date(2024, 1, 27), date(2024, 1, 28)],
                 [date(2024, 3, 8), date(2024, 3, 9), date(2024, 3, 10)],

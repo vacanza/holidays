@@ -18,7 +18,7 @@ __all__ = (
     "list_localized_financial",
     "list_supported_countries",
     "list_supported_financial",
-    "list_long_weekends",
+    "list_long_breaks",
 )
 
 import warnings
@@ -448,51 +448,50 @@ def list_supported_financial(include_aliases: bool = True) -> dict[str, list[str
     return _list_supported_entities(EntityLoader.get_financial_codes(include_aliases))
 
 
-def list_long_weekends(
-    instance: HolidayBase, *, minimum_holiday_length: int = 3, require_weekend_overlap: bool = True
+def list_long_breaks(
+    instance: HolidayBase, *, minimum_break_length: int = 3, require_weekend_overlap: bool = True
 ) -> list[list[date]]:
-    """Get all long consecutive holidays.
+    """Get consecutive holidays.
 
     Args:
         instance:
             HolidaysBase object containing holiday data.
 
-        minimum_holiday_length:
-            The minimum number of consecutive days required for a holiday period
-            to be considered a long weekend. Defaults to 3.
+        minimum_break_length:
+            The minimum number of consecutive days required for a break period
+            to be considered a long break. Defaults to 3.
 
         require_weekend_overlap:
             Whether to include only consecutive holidays that overlap with a weekend.
             Defaults to True.
 
     Returns:
-        A list of long consecutive holiday periods longer than or equal
-        to the specified minimum length.
+        A list of consecutive holidays longer than or equal to the specified minimum length.
     """
-    checked = set()
-    long_weekends = []
+    long_breaks = []
+    seen_dates = set()
 
-    for holiday in sorted(instance.keys()):
-        if holiday in checked:
+    for dt in sorted(instance.keys()):
+        if dt in seen_dates:
             continue
 
-        prev_work = instance.get_nth_working_day(holiday, -1)
-        next_work = instance.get_nth_working_day(holiday, +1)
-        length = (next_work - prev_work).days - 1
+        previous_working_day = instance.get_nth_working_day(dt, -1)
+        next_working_day = instance.get_nth_working_day(dt, +1)
+        long_break_length = (next_working_day - previous_working_day).days - 1
 
-        if length < minimum_holiday_length:
+        if long_break_length < minimum_break_length:
             continue
 
-        holiday_dates = []
-        is_needed = not require_weekend_overlap
-        for day_offset in range(1, length + 1):
-            current_date = _timedelta(prev_work, day_offset)
-            if not is_needed and instance._is_weekend(current_date):
-                is_needed = True
-            holiday_dates.append(current_date)
-            checked.add(current_date)
+        is_long_break = not require_weekend_overlap
+        long_break_dates = []
+        for delta_days in range(1, long_break_length + 1):
+            holiday = _timedelta(previous_working_day, delta_days)
+            if not is_long_break and instance._is_weekend(holiday):
+                is_long_break = True
+            long_break_dates.append(holiday)
+            seen_dates.add(holiday)
 
-        if is_needed:
-            long_weekends.append(holiday_dates)
+        if is_long_break:
+            long_breaks.append(long_break_dates)
 
-    return long_weekends
+    return long_breaks
