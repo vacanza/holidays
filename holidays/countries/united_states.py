@@ -13,10 +13,12 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import (
+    JAN,
     FEB,
     MAR,
     APR,
     MAY,
+    JUN,
     SEP,
     NOV,
     DEC,
@@ -1606,6 +1608,27 @@ class UnitedStatesStaticHolidays(StaticHolidays):
         * [1813](https://web.archive.org/web/20240621142030/https://founders.archives.gov/documents/Madison/03-06-02-0434)
         * [1815](https://web.archive.org/web/20240621142030/https://founders.archives.gov/documents/Madison/03-09-02-0066)
 
+    Federal Government Closings:
+        * [2001, EO 13238](https://web.archive.org/web/20250414100019/http://www.federalregister.gov/documents/2001/12/10/01-30624/closing-of-federal-government-executive-departments-and-agencies-on-monday-december-24-2001)
+        * [2002, EO 13281](https://web.archive.org/web/20250213083130/https://www.federalregister.gov/documents/2002/12/23/02-32518/half-day-closing-of-executive-departments-and-agencies-of-the-federal-government-on-tuesday-december)
+        * [2003, EO 13320](https://web.archive.org/web/20250201153913/https://www.federalregister.gov/documents/2003/12/12/03-30913/closing-of-executive-departments-and-agencies-of-the)
+        * [2004, EO 13343](https://web.archive.org/web/20250414155140/https://www.federalregister.gov/documents/2004/06/08/04-13123/providing-for-the-closing-of-government-departments-and-agencies-on-june-11-2004)
+        * [2007, EO 13421](https://web.archive.org/web/20250208143815/https://www.federalregister.gov/documents/2007/01/04/06-9993/providing-for-the-closing-of-government-departments-and-agencies-on-january-2-2007)
+        * [2007, EO 13453](https://web.archive.org/web/20250414113515/https://www.federalregister.gov/documents/2007/12/11/07-6022/closing-of-executive-departments-and-agencies-of-the-federal-government-on-monday-december-24-2007)
+        * [2008, EO 13482](https://web.archive.org/web/20250413080630/https://www.federalregister.gov/documents/2008/12/16/E8-30042/closing-of-executive-departments-and-agencies-of-the-federal-government-on-friday-december-26-2008)
+        * [2009, EO 13523](https://web.archive.org/web/20250204020329/https://www.federalregister.gov/documents/2009/12/16/E9-30020/half-day-closing-of-executive-departments-and-agencies-on-thursday-december-24-2009)
+        * [2012, EO 13633](https://web.archive.org/web/20250202102026/https://www.federalregister.gov/documents/2012/12/28/2012-31225/closing-of-executive-departments-and-agencies-of-the-federal-government-on-monday-december-24-2012)
+        * [2014, EO 13682](https://web.archive.org/web/20250204140956/https://www.federalregister.gov/documents/2014/12/10/2014-29121/closing-of-executive-departments-and-agencies-of-the-federal-government-on-friday-december-26-2014)
+        * [2015, EO 13713]https://web.archive.org/web/20250204021239/https://www.federalregister.gov/documents/2015/12/16/2015-31749/half-day-closing-of-executive-departments-and-agencies-of-the-federal-government-on-thursday)
+        * [2018, EO 13852](https://web.archive.org/web/20250507175643/https://www.federalregister.gov/documents/2018/12/04/2018-26552/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on)
+        * [2018, EO 13854](https://web.archive.org/web/20250202030122/https://www.federalregister.gov/documents/2018/12/21/2018-27945/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on)
+        * [2019, EO 13900](https://web.archive.org/web/20250205125417/https://www.federalregister.gov/documents/2019/12/20/2019-27678/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on)
+        * [2020, EO 13965](https://web.archive.org/web/20250212090335/https://www.federalregister.gov/documents/2020/12/16/2020-27807/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on)
+        * [2024, EO 14129](https://web.archive.org/web/20250219155414/https://www.federalregister.gov/documents/2024/12/26/2024-31143/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on)
+        * [2025, EO 14133](https://web.archive.org/web/20250218220403/https://www.federalregister.gov/documents/2025/01/03/2024-31766/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on-january)
+        * [2025](https://web.archive.org/web/20251219180805/https://www.whitehouse.gov/presidential-actions/2025/12/providing-for-the-closure-of-executive-departments-and-agencies-of-the-federal-government-on-december-24-2025-and-december-26-2025/)
+
+
     Pre-1971 Inauguration Day observances has been moved here.
     """
 
@@ -1619,6 +1642,15 @@ class UnitedStatesStaticHolidays(StaticHolidays):
     # Inauguration Day.
     inauguration_day_name = tr("Inauguration Day")
 
+    # %s (half-day closing).
+    half_day_closing_label = tr("%s (half-day closing)")
+
+    # Christmas Eve.
+    christmas_eve_name = tr("Christmas Eve")
+
+    # Day After Christmas.
+    day_after_christmas_name = tr("Day After Christmas")
+
     special_public_holidays = {
         1777: (DEC, 18, public_thanksgiving_and_prayer_day_name),
         1782: (NOV, 28, public_thanksgiving_and_prayer_day_name),
@@ -1628,6 +1660,38 @@ class UnitedStatesStaticHolidays(StaticHolidays):
         1799: (APR, 25, fasting_and_humiliation_day_name),
         1813: (SEP, 9, public_humiliation_and_prayer_day_name),
         1815: (APR, 13, public_humiliation_and_prayer_day_name),
+    }
+
+    special_government_holidays = {
+        2001: (DEC, 24, christmas_eve_name),
+        2002: (DEC, 24, half_day_closing_label % christmas_eve_name),
+        2003: (DEC, 26, day_after_christmas_name),
+        # National Day of Mourning for former President Ronald Reagan.
+        2004: (JUN, 11, tr("National Day of Mourning for former President Ronald Reagan")),
+        2007: (
+            # National Day of Mourning for former President Gerald R. Ford.
+            (JAN, 2, tr("National Day of Mourning for former President Gerald R. Ford")),
+            (DEC, 24, christmas_eve_name),
+        ),
+        2008: (DEC, 26, day_after_christmas_name),
+        2009: (DEC, 24, half_day_closing_label % christmas_eve_name),
+        2012: (DEC, 24, christmas_eve_name),
+        2014: (DEC, 26, day_after_christmas_name),
+        2015: (DEC, 24, half_day_closing_label % christmas_eve_name),
+        2018: (
+            # National Day of Mourning for former President George H. W. Bush.
+            (DEC, 5, tr("National Day of Mourning for former President George H. W. Bush")),
+            (DEC, 24, christmas_eve_name),
+        ),
+        2019: (DEC, 24, christmas_eve_name),
+        2020: (DEC, 24, christmas_eve_name),
+        2024: (DEC, 24, christmas_eve_name),
+        2025: (
+            # National Day of Mourning for former President Jimmy Carter.
+            (JAN, 9, tr("National Day of Mourning for former President Jimmy Carter")),
+            (DEC, 24, christmas_eve_name),
+            (DEC, 26, day_after_christmas_name),
+        ),
     }
 
     # Pre-1953 Inauguration Day observances.
