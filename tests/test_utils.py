@@ -25,14 +25,14 @@ import holidays
 from holidays.calendars.gregorian import FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import (
-    CountryHoliday,
     country_holidays,
+    CountryHoliday,
     financial_holidays,
     list_localized_countries,
     list_localized_financial,
+    list_long_breaks,
     list_supported_countries,
     list_supported_financial,
-    list_long_breaks,
 )
 from tests.common import PYTHON_LATEST_SUPPORTED_VERSION, PYTHON_VERSION
 
@@ -293,27 +293,27 @@ class CountryStub5(HolidayBase):
             self._add_holiday_dec_31("Custom December 31st Holiday")
 
 
-class TestListLongWeekends(unittest.TestCase):
-    def assertLongWeekendsEqual(  # noqa: N802
-        self, instance, expected, minimum_holiday_length=3, *, require_weekend_overlap=True
+class TestListLongBreaks(unittest.TestCase):
+    def assertLongBreaksEqual(  # noqa: N802
+        self, instance, expected, *, minimum_break_length=3, require_weekend_overlap=True
     ):
         result = list_long_breaks(
             instance,
-            minimum_break_length=minimum_holiday_length,
+            minimum_break_length=minimum_break_length,
             require_weekend_overlap=require_weekend_overlap,
         )
         self.assertEqual(result, expected)
 
-    def test_long_weekend_single(self):
+    def test_long_break_single(self):
         cs1 = CountryStub1(years=2025)
-        self.assertLongWeekendsEqual(
+        self.assertLongBreaksEqual(
             cs1,
             [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]],
         )
 
-    def test_long_weekend_multiple(self):
+    def test_long_break_multiple(self):
         cs2 = CountryStub2(years=2025)
-        self.assertLongWeekendsEqual(
+        self.assertLongBreaksEqual(
             cs2,
             [
                 [date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)],
@@ -321,13 +321,13 @@ class TestListLongWeekends(unittest.TestCase):
             ],
         )
 
-    def test_long_weekend_require_weekend_overlap(self):
+    def test_long_break_require_weekend_overlap(self):
         cs1 = CountryStub1(years=2025)
-        self.assertLongWeekendsEqual(
+        self.assertLongBreaksEqual(
             cs1,
             [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]],
         )
-        self.assertLongWeekendsEqual(
+        self.assertLongBreaksEqual(
             cs1,
             [
                 [date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)],
@@ -336,24 +336,24 @@ class TestListLongWeekends(unittest.TestCase):
             require_weekend_overlap=False,
         )
 
-    def test_long_weekend_custom_weekend(self):
+    def test_long_break_custom_weekend(self):
         cs3 = CountryStub3(years=2025)
-        self.assertLongWeekendsEqual(
+        self.assertLongBreaksEqual(
             cs3,
             [[date(2025, 4, 10), date(2025, 4, 11), date(2025, 4, 12)]],
         )
 
-    def test_long_weekend_no_holidays(self):
-        self.assertLongWeekendsEqual(HolidayBase(), [])
+    def test_long_break_no_holidays(self):
+        self.assertLongBreaksEqual(HolidayBase(), [])
 
-    def test_long_weekend_custom_minimum_length(self):
+    def test_long_break_custom_minimum_length(self):
         cs4 = CountryStub4(years=2025)
-        self.assertLongWeekendsEqual(
+        self.assertLongBreaksEqual(
             cs4,
             [[date(2025, 8, 9), date(2025, 8, 10), date(2025, 8, 11), date(2025, 8, 12)]],
-            minimum_holiday_length=4,
+            minimum_break_length=4,
         )
-        self.assertLongWeekendsEqual(
+        self.assertLongBreaksEqual(
             cs4,
             [
                 [date(2025, 8, 9), date(2025, 8, 10), date(2025, 8, 11), date(2025, 8, 12)],
@@ -361,19 +361,19 @@ class TestListLongWeekends(unittest.TestCase):
             ],
         )
 
-    def test_long_weekend_across_years(self):
+    def test_long_break_across_years(self):
         cs5 = CountryStub5(years=2024)
-        self.assertLongWeekendsEqual(
+        self.assertLongBreaksEqual(
             cs5,
             [[date(2023, 12, 30), date(2023, 12, 31), date(2024, 1, 1)]],
         )
         cs5 = CountryStub5(years=2021)
-        self.assertLongWeekendsEqual(
+        self.assertLongBreaksEqual(
             cs5,
             [[date(2021, 12, 31), date(2022, 1, 1), date(2022, 1, 2)]],
         )
 
-    def test_long_weekend_real_country_holidays_data(self):
+    def test_long_break_real_country_holidays_data(self):
         self.assertEqual(
             list_long_breaks(country_holidays("AU", subdiv="NSW", years=2024)),
             [
@@ -385,7 +385,7 @@ class TestListLongWeekends(unittest.TestCase):
             ],
         )
 
-    def test_long_weekend_real_financial_holidays_data(self):
+    def test_long_break_real_financial_holidays_data(self):
         self.assertEqual(
             list_long_breaks(financial_holidays("XNSE", years=2024)),
             [

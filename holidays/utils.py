@@ -16,9 +16,9 @@ __all__ = (
     "financial_holidays",
     "list_localized_countries",
     "list_localized_financial",
+    "list_long_breaks",
     "list_supported_countries",
     "list_supported_financial",
-    "list_long_breaks",
 )
 
 import warnings
@@ -455,11 +455,11 @@ def list_long_breaks(
 
     Args:
         instance:
-            HolidaysBase object containing holiday data.
+            HolidayBase object containing holidays data.
 
         minimum_break_length:
-            The minimum number of consecutive days required for a break period
-            to be considered a long break. Defaults to 3.
+            The minimum number of consecutive holidays required for a break period
+            to be considered a long one. Defaults to 3.
 
         require_weekend_overlap:
             Whether to include only consecutive holidays that overlap with a weekend.
