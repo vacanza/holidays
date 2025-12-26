@@ -152,3 +152,61 @@ msgstr "Autumn break"
 #. Hamburg school holidays.
 msgid "Brückentag"
 msgstr "Bridge day"
+
+#. School holidays / other school-related labels.
+msgid "Osterferien"
+msgstr "Easter holidays"
+
+msgid "Pfingsten"
+msgstr "Pentecost"
+
+msgid "Pfingstferien"
+msgstr "Pentecost holidays"
+
+msgid "Winterferien"
+msgstr "Winter holidays"
+
+msgid "Fastnachtsferien"
+msgstr "Carnival break"
+
+msgid "Tag nach Himmelfahrt"
+msgstr "Day after Ascension"
+
+msgid "Halbjahresferien"
+msgstr "mid-term holidays"
+
+msgid "Tag vor dem 03. Oktober"
+msgstr "Day before German Unity Day"
+
+msgid "Tag vor dem 01. Mai"
+msgstr "Day before May Day"
+
+msgid "Tage nach dem 03. Oktober"
+msgstr "Days after German Unity Day"
+
+msgid "Schulfreier Tag"
+msgstr "School-free day"
+
+msgid "Himmelfahrt"
+msgstr "Ascension"
+
+msgid "Unterrichtsfreier Tag"
+msgstr "Non-teaching day"
+
+msgid "Unterrichtsfreie Tage"
+msgstr "Non-teaching days"
+
+msgid "Unterrichtsfreie Tage um Allerheiligen"
+msgstr "Non-teaching days around All Saints' Day"
+
+msgid "Zusätzliche feststehende Ferientage"
+msgstr "Additional fixed holiday days"
+
+msgid "Beweglicher Ferientag"
+msgstr "Movable holiday"
+
+msgid "Variabler Ferientag"
+msgstr "Variable holiday"
+
+msgid "Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"
+msgstr "Holidays connected with May Day and Ascension Day"

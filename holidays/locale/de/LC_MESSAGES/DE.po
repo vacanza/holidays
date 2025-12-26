@@ -149,3 +149,61 @@ msgstr ""
 #. Hamburg school holidays.
 msgid "Brückentag"
 msgstr ""
+
+#. School holidays / other school-related labels.
+msgid "Osterferien"
+msgstr ""
+
+msgid "Pfingsten"
+msgstr ""
+
+msgid "Pfingstferien"
+msgstr ""
+
+msgid "Winterferien"
+msgstr ""
+
+msgid "Fastnachtsferien"
+msgstr ""
+
+msgid "Tag nach Himmelfahrt"
+msgstr ""
+
+msgid "Halbjahresferien"
+msgstr ""
+
+msgid "Tag vor dem 03. Oktober"
+msgstr ""
+
+msgid "Tag vor dem 01. Mai"
+msgstr ""
+
+msgid "Tage nach dem 03. Oktober"
+msgstr ""
+
+msgid "Schulfreier Tag"
+msgstr ""
+
+msgid "Himmelfahrt"
+msgstr ""
+
+msgid "Unterrichtsfreier Tag"
+msgstr ""
+
+msgid "Unterrichtsfreie Tage"
+msgstr ""
+
+msgid "Unterrichtsfreie Tage um Allerheiligen"
+msgstr ""
+
+msgid "Zusätzliche feststehende Ferientage"
+msgstr ""
+
+msgid "Beweglicher Ferientag"
+msgstr ""
+
+msgid "Variabler Ferientag"
+msgstr ""
+
+msgid "Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"
+msgstr ""
