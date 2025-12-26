@@ -36,6 +36,8 @@ class TestNZ(CommonCountryTests, TestCase):
             "2011-01-03",
             "2012-01-03",
             "2017-01-03",
+            "2022-01-03",
+            "2023-01-03",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
