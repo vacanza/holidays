@@ -10,8 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
 from datetime import date, timedelta
+from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAY, JUN, OCT
 from holidays.constants import CATHOLIC, PUBLIC, SCHOOL
@@ -60,7 +60,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         * [Saarland](https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Bildungsserver/allgemeine-informationen/ferienordnung_ab_2024_amtsblatt.pdf?__blob=publicationFile&v=1)
         * [Sachsen](https://www.schule.sachsen.de/schuljahrestermine-4793.html)
         * [Sachsen-Anhalt](https://mb.sachsen-anhalt.de/fileadmin/Bibliothek/Landesjournal/Bildung_und_Wissenschaft/Erlasse/Ferienregelung_2024_bis_2030.pdf)
-        * [Thüringen](https://bildung.thueringen.de/schule/schulwesen/ferien) 
+        * [Thüringen](https://bildung.thueringen.de/schule/schulwesen/ferien)
     !!! note "Note"
         "Mariä Himmelfahrt" is only a holiday in Bavaria (BY) and "Fronleichnam"
         in Saxony (SN) and Thuringia (TH) if municipality is mostly catholic which
@@ -192,7 +192,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
                 (tr("Brückentag"), date(2030, 5, 31), date(2030, 5, 31)),
                 (tr("Sommerferien"), date(2030, 7, 4), date(2030, 8, 14)),
             ]
-            
+
         for name, start, end in holidays_map:
             _add_holiday_range(name, start, end)
 
@@ -801,7 +801,11 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
                 (tr("Osterferien"), date(2026, 3, 30), date(2026, 4, 10)),
                 (tr("Pfingstferien"), date(2026, 5, 26), date(2026, 6, 5)),
                 (tr("Sommerferien"), date(2026, 8, 3), date(2026, 9, 14)),
-                (tr("Unterrichtsfreie Tage um Allerheiligen"), date(2026, 11, 2), date(2026, 11, 6)),
+                (
+                    tr("Tage um Allerheiligen"),
+                    date(2026, 11, 2),
+                    date(2026, 11, 6),
+                ),
                 (tr("Weihnachtsferien"), date(2026, 12, 24), date(2026, 12, 31)),
             ]
         elif year == 2027:
@@ -811,7 +815,11 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
                 (tr("Osterferien"), date(2027, 3, 22), date(2027, 4, 2)),
                 (tr("Pfingstferien"), date(2027, 5, 18), date(2027, 5, 28)),
                 (tr("Sommerferien"), date(2027, 8, 2), date(2027, 9, 13)),
-                (tr("Unterrichtsfreie Tage um Allerheiligen"), date(2027, 11, 2), date(2027, 11, 5)),
+                (
+                    tr(" Tage um Allerheiligen"),
+                    date(2027, 11, 2),
+                    date(2027, 11, 5),
+                ),
                 (tr("Weihnachtsferien"), date(2027, 12, 24), date(2027, 12, 31)),
             ]
         elif year == 2028:
@@ -821,7 +829,11 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
                 (tr("Osterferien"), date(2028, 4, 10), date(2028, 4, 21)),
                 (tr("Pfingstferien"), date(2028, 6, 6), date(2028, 6, 16)),
                 (tr("Sommerferien"), date(2028, 7, 31), date(2028, 9, 11)),
-                (tr("Unterrichtsfreie Tage um Allerheiligen"), date(2028, 10, 30), date(2028, 11, 3)),
+                (
+                    tr("Tage um Allerheiligen"),
+                    date(2028, 10, 30),
+                    date(2028, 11, 3),
+                ),
                 (tr("Weihnachtsferien"), date(2028, 12, 23), date(2028, 12, 31)),
             ]
         elif year == 2029:
@@ -831,7 +843,11 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
                 (tr("Osterferien"), date(2029, 3, 26), date(2029, 4, 6)),
                 (tr("Pfingstferien"), date(2029, 5, 22), date(2029, 6, 1)),
                 (tr("Sommerferien"), date(2029, 7, 30), date(2029, 9, 10)),
-                (tr("Unterrichtsfreie Tage um Allerheiligen"), date(2029, 10, 29), date(2029, 11, 2)),
+                (
+                    tr("Tage um Allerheiligen"),
+                    date(2029, 10, 29),
+                    date(2029, 11, 2),
+                ),
                 (tr("Weihnachtsferien"), date(2029, 12, 24), date(2029, 12, 31)),
             ]
         elif year == 2030:
@@ -1012,7 +1028,11 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
                 (tr("Weihnachtsferien"), date(2026, 1, 1), date(2026, 1, 5)),
                 (tr("Halbjahresferien"), date(2026, 2, 2), date(2026, 2, 3)),
                 (tr("Osterferien"), date(2026, 3, 23), date(2026, 4, 7)),
-                (tr("Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"), date(2026, 5, 15), date(2026, 5, 15)),
+                (
+                    tr("Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"),
+                    date(2026, 5, 15),
+                    date(2026, 5, 15),
+                ),
                 (tr("Pfingstferien"), date(2026, 5, 26), date(2026, 5, 26)),
                 (tr("Sommerferien"), date(2026, 7, 2), date(2026, 8, 12)),
                 (tr("Herbstferien"), date(2026, 10, 12), date(2026, 10, 24)),
@@ -1023,7 +1043,11 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
                 (tr("Weihnachtsferien"), date(2027, 1, 1), date(2027, 1, 9)),
                 (tr("Halbjahresferien"), date(2027, 2, 1), date(2027, 2, 2)),
                 (tr("Osterferien"), date(2027, 3, 22), date(2027, 4, 3)),
-                (tr("Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"), date(2027, 5, 7), date(2027, 5, 7)),
+                (
+                    tr("Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"),
+                    date(2027, 5, 7),
+                    date(2027, 5, 7),
+                ),
                 (tr("Pfingstferien"), date(2027, 5, 18), date(2027, 5, 18)),
                 (tr("Sommerferien"), date(2027, 7, 8), date(2027, 8, 18)),
                 (tr("Herbstferien"), date(2027, 10, 16), date(2027, 10, 30)),
@@ -1034,7 +1058,11 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
                 (tr("Weihnachtsferien"), date(2028, 1, 1), date(2028, 1, 8)),
                 (tr("Halbjahresferien"), date(2028, 1, 31), date(2028, 2, 1)),
                 (tr("Osterferien"), date(2028, 4, 10), date(2028, 4, 22)),
-                (tr("Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"), date(2028, 5, 26), date(2028, 5, 26)),
+                (
+                    tr("Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"),
+                    date(2028, 5, 26),
+                    date(2028, 5, 26),
+                ),
                 (tr("Pfingstferien"), date(2028, 6, 6), date(2028, 6, 6)),
                 (tr("Sommerferien"), date(2028, 7, 20), date(2028, 8, 30)),
                 (tr("Herbstferien"), date(2028, 10, 2), date(2028, 10, 2)),
@@ -1046,8 +1074,16 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
                 (tr("Weihnachtsferien"), date(2029, 1, 1), date(2029, 1, 6)),
                 (tr("Halbjahresferien"), date(2029, 2, 1), date(2029, 2, 2)),
                 (tr("Osterferien"), date(2029, 3, 19), date(2029, 4, 3)),
-                (tr("Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"), date(2029, 4, 30), date(2029, 4, 30)),
-                (tr("Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"), date(2029, 5, 11), date(2029, 5, 11)),
+                (
+                    tr("Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"),
+                    date(2029, 4, 30),
+                    date(2029, 4, 30),
+                ),
+                (
+                    tr("Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"),
+                    date(2029, 5, 11),
+                    date(2029, 5, 11),
+                ),
                 (tr("Pfingstferien"), date(2029, 5, 22), date(2029, 5, 22)),
                 (tr("Sommerferien"), date(2029, 7, 19), date(2029, 8, 29)),
                 (tr("Herbstferien"), date(2029, 10, 4), date(2029, 10, 5)),
@@ -1059,7 +1095,11 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
                 (tr("Weihnachtsferien"), date(2030, 1, 1), date(2030, 1, 5)),
                 (tr("Halbjahresferien"), date(2030, 1, 31), date(2030, 2, 1)),
                 (tr("Osterferien"), date(2030, 4, 8), date(2030, 4, 23)),
-                (tr("Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"), date(2030, 5, 31), date(2030, 5, 31)),
+                (
+                    tr("Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"),
+                    date(2030, 5, 31),
+                    date(2030, 5, 31),
+                ),
                 (tr("Pfingstferien"), date(2030, 6, 11), date(2030, 6, 11)),
                 (tr("Sommerferien"), date(2030, 7, 11), date(2030, 8, 21)),
             ]
@@ -1189,10 +1229,8 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             _add_holiday_range(name, start, end)
 
     def _populate(self, year):
-															 
         super()._populate(year)
 
-											  
         if self.subdiv == "HH" and SCHOOL in self.categories:
             self._add_school_holidays_hh(year)
             # Ensure no holidays from other years were accidentally added

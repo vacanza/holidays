@@ -193,7 +193,7 @@ msgstr ""
 msgid "Unterrichtsfreie Tage"
 msgstr ""
 
-msgid "Unterrichtsfreie Tage um Allerheiligen"
+msgid "Tage um Allerheiligen"
 msgstr ""
 
 msgid "Zusätzliche feststehende Ferientage"

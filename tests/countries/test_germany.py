@@ -565,6 +565,7 @@ class TestGermanyHamburgSchoolHolidays(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Germany, with_subdiv_categories=True)
+
     def test_christmas_cross_year(self):
         # 2025 Christmas range spans 2025->2026. Ensure per-year population.
         h_2025 = Germany(years=2025, subdiv="HH", categories=("school",))

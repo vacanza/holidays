@@ -196,8 +196,8 @@ msgstr "Non-teaching day"
 msgid "Unterrichtsfreie Tage"
 msgstr "Non-teaching days"
 
-msgid "Unterrichtsfreie Tage um Allerheiligen"
-msgstr "Non-teaching days around All Saints' Day"
+msgid "Tage um Allerheiligen"
+msgstr "days around All Saints' Day"
 
 msgid "Zusätzliche feststehende Ferientage"
 msgstr "Additional fixed holiday days"
