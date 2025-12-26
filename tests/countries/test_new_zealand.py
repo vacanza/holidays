@@ -20,6 +20,7 @@ from tests.common import CommonCountryTests
 class TestNZ(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.full_range = range(1894, 2053)
         super().setUpClass(NewZealand)
 
     def setUp(self):
@@ -244,6 +245,7 @@ class TestNZ(CommonCountryTests, TestCase):
 
     def test_auckland_anniversary_day(self):
         name = "Auckland Anniversary Day"
+        self.assertNoHolidayName(name)
         dts = (
             "2020-01-27",
             "2021-02-01",
@@ -252,7 +254,6 @@ class TestNZ(CommonCountryTests, TestCase):
             "2024-01-29",
             "2025-01-27",
         )
-        self.assertNoHolidayName(name)
         self.assertSubdivAukHolidayName(name, dts)
         self.assertSubdivAukHolidayName(name, self.full_range)
         self.assertSubdivNtlHolidayName(name, dts)
