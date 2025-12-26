@@ -22,13 +22,15 @@ from unittest import mock
 import pytest
 
 import holidays
+from holidays.calendars.gregorian import FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import (
-    CountryHoliday,
     country_holidays,
+    CountryHoliday,
     financial_holidays,
     list_localized_countries,
     list_localized_financial,
+    list_long_breaks,
     list_supported_countries,
     list_supported_financial,
 )
@@ -238,3 +240,161 @@ class TestListSupportedEntities(unittest.TestCase):
             1 for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
         )
         self.assertEqual(financial_count, len(supported_financial))
+
+
+class CountryStub1(HolidayBase):
+    country = "CS1"
+
+    def _populate(self, year: int) -> None:
+        super()._populate(year)
+        self._add_holiday_jul_4("Custom July 4th Holiday")
+        self._add_holiday_mar_4("Custom March 4th Holiday")
+        self._add_holiday_mar_5("Custom March 5th Holiday")
+        self._add_holiday_mar_6("Custom March 6th Holiday")
+
+
+class CountryStub2(HolidayBase):
+    country = "CS2"
+
+    def _populate(self, year: int) -> None:
+        super()._populate(year)
+        self._add_holiday_jul_4("Custom July 4th Holiday")
+        self._add_holiday_dec_26("Custom December 26th Holiday")
+
+
+class CountryStub3(HolidayBase):
+    country = "CS3"
+    weekend = {FRI, SAT}
+
+    def _populate(self, year: int) -> None:
+        super()._populate(year)
+        self._add_holiday_apr_10("Custom April 10th Holiday")
+
+
+class CountryStub4(HolidayBase):
+    country = "CS4"
+
+    def _populate(self, year: int) -> None:
+        super()._populate(year)
+        self._add_holiday_aug_11("Custom August 11th Holiday")
+        self._add_holiday_aug_12("Custom August 12th Holiday")
+        self._add_holiday_dec_5("Custom December 5th Holiday")
+
+
+class CountryStub5(HolidayBase):
+    country = "CS5"
+
+    def _populate(self, year: int) -> None:
+        super()._populate(year)
+
+        if self._year == 2024:
+            self._add_holiday_jan_1("Custom January 1st Holiday")
+        if self._year == 2021:
+            self._add_holiday_dec_31("Custom December 31st Holiday")
+
+
+class TestListLongBreaks(unittest.TestCase):
+    def assertLongBreaksEqual(  # noqa: N802
+        self, instance, expected, *, minimum_break_length=3, require_weekend_overlap=True
+    ):
+        result = list_long_breaks(
+            instance,
+            minimum_break_length=minimum_break_length,
+            require_weekend_overlap=require_weekend_overlap,
+        )
+        self.assertEqual(result, expected)
+
+    def test_long_break_single(self):
+        cs1 = CountryStub1(years=2025)
+        self.assertLongBreaksEqual(
+            cs1,
+            [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]],
+        )
+
+    def test_long_break_multiple(self):
+        cs2 = CountryStub2(years=2025)
+        self.assertLongBreaksEqual(
+            cs2,
+            [
+                [date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)],
+                [date(2025, 12, 26), date(2025, 12, 27), date(2025, 12, 28)],
+            ],
+        )
+
+    def test_long_break_require_weekend_overlap(self):
+        cs1 = CountryStub1(years=2025)
+        self.assertLongBreaksEqual(
+            cs1,
+            [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]],
+        )
+        self.assertLongBreaksEqual(
+            cs1,
+            [
+                [date(2025, 3, 4), date(2025, 3, 5), date(2025, 3, 6)],
+                [date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)],
+            ],
+            require_weekend_overlap=False,
+        )
+
+    def test_long_break_custom_weekend(self):
+        cs3 = CountryStub3(years=2025)
+        self.assertLongBreaksEqual(
+            cs3,
+            [[date(2025, 4, 10), date(2025, 4, 11), date(2025, 4, 12)]],
+        )
+
+    def test_long_break_no_holidays(self):
+        self.assertLongBreaksEqual(HolidayBase(), [])
+
+    def test_long_break_custom_minimum_length(self):
+        cs4 = CountryStub4(years=2025)
+        self.assertLongBreaksEqual(
+            cs4,
+            [[date(2025, 8, 9), date(2025, 8, 10), date(2025, 8, 11), date(2025, 8, 12)]],
+            minimum_break_length=4,
+        )
+        self.assertLongBreaksEqual(
+            cs4,
+            [
+                [date(2025, 8, 9), date(2025, 8, 10), date(2025, 8, 11), date(2025, 8, 12)],
+                [date(2025, 12, 5), date(2025, 12, 6), date(2025, 12, 7)],
+            ],
+        )
+
+    def test_long_break_across_years(self):
+        cs5 = CountryStub5(years=2024)
+        self.assertLongBreaksEqual(
+            cs5,
+            [[date(2023, 12, 30), date(2023, 12, 31), date(2024, 1, 1)]],
+        )
+        cs5 = CountryStub5(years=2021)
+        self.assertLongBreaksEqual(
+            cs5,
+            [[date(2021, 12, 31), date(2022, 1, 1), date(2022, 1, 2)]],
+        )
+
+    def test_long_break_real_country_holidays_data(self):
+        self.assertEqual(
+            list_long_breaks(country_holidays("AU", subdiv="NSW", years=2024)),
+            [
+                [date(2023, 12, 30), date(2023, 12, 31), date(2024, 1, 1)],
+                [date(2024, 1, 26), date(2024, 1, 27), date(2024, 1, 28)],
+                [date(2024, 3, 29), date(2024, 3, 30), date(2024, 3, 31), date(2024, 4, 1)],
+                [date(2024, 6, 8), date(2024, 6, 9), date(2024, 6, 10)],
+                [date(2024, 10, 5), date(2024, 10, 6), date(2024, 10, 7)],
+            ],
+        )
+
+    def test_long_break_real_financial_holidays_data(self):
+        self.assertEqual(
+            list_long_breaks(financial_holidays("XNSE", years=2024)),
+            [
+                [date(2024, 1, 26), date(2024, 1, 27), date(2024, 1, 28)],
+                [date(2024, 3, 8), date(2024, 3, 9), date(2024, 3, 10)],
+                [date(2024, 3, 23), date(2024, 3, 24), date(2024, 3, 25)],
+                [date(2024, 3, 29), date(2024, 3, 30), date(2024, 3, 31)],
+                [date(2024, 6, 15), date(2024, 6, 16), date(2024, 6, 17)],
+                [date(2024, 11, 1), date(2024, 11, 2), date(2024, 11, 3)],
+                [date(2024, 11, 15), date(2024, 11, 16), date(2024, 11, 17)],
+            ],
+        )

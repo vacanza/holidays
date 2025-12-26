@@ -16,14 +16,17 @@ __all__ = (
     "financial_holidays",
     "list_localized_countries",
     "list_localized_financial",
+    "list_long_breaks",
     "list_supported_countries",
     "list_supported_financial",
 )
 
 import warnings
 from collections.abc import Iterable
+from datetime import date
 from functools import cache
 
+from holidays.calendars.gregorian import _timedelta
 from holidays.holiday_base import CategoryArg, HolidayBase
 from holidays.registry import EntityLoader
 
@@ -443,3 +446,52 @@ def list_supported_financial(include_aliases: bool = True) -> dict[str, list[str
         subdivision codes.
     """
     return _list_supported_entities(EntityLoader.get_financial_codes(include_aliases))
+
+
+def list_long_breaks(
+    instance: HolidayBase, *, minimum_break_length: int = 3, require_weekend_overlap: bool = True
+) -> list[list[date]]:
+    """Get consecutive holidays.
+
+    Args:
+        instance:
+            HolidayBase object containing holidays data.
+
+        minimum_break_length:
+            The minimum number of consecutive holidays required for a break period
+            to be considered a long one. Defaults to 3.
+
+        require_weekend_overlap:
+            Whether to include only consecutive holidays that overlap with a weekend.
+            Defaults to True.
+
+    Returns:
+        A list of consecutive holidays longer than or equal to the specified minimum length.
+    """
+    long_breaks = []
+    seen_dates = set()
+
+    for dt in sorted(instance.keys()):
+        if dt in seen_dates:
+            continue
+
+        previous_working_day = instance.get_nth_working_day(dt, -1)
+        next_working_day = instance.get_nth_working_day(dt, +1)
+        long_break_length = (next_working_day - previous_working_day).days - 1
+
+        if long_break_length < minimum_break_length:
+            continue
+
+        is_long_break = not require_weekend_overlap
+        long_break_dates = []
+        for delta_days in range(1, long_break_length + 1):
+            holiday = _timedelta(previous_working_day, delta_days)
+            if not is_long_break and instance._is_weekend(holiday):
+                is_long_break = True
+            long_break_dates.append(holiday)
+            seen_dates.add(holiday)
+
+        if is_long_break:
+            long_breaks.append(long_break_dates)
+
+    return long_breaks
