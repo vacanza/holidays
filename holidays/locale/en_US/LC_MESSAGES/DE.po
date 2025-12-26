@@ -124,3 +124,31 @@ msgstr ""
 #. 75th anniversary of the East German uprising of 1953.
 msgid "75. Jahrestag des Aufstandes vom 17. Juni 1953"
 msgstr "75th anniversary of the East German uprising of 1953"
+
+#. Hamburg school holidays.
+msgid "Weihnachtsferien"
+msgstr "Christmas holidays"
+
+#. Hamburg school holidays.
+msgid "Halbjahrespause"
+msgstr "mid-term break"
+
+#. Hamburg school holidays.
+msgid "Frühjahrsferien"
+msgstr "Spring break"
+
+#. Hamburg school holidays.
+msgid "Himmelfahrt/Pfingsten"
+msgstr "Ascension/Pentecost break"
+
+#. Hamburg school holidays.
+msgid "Sommerferien"
+msgstr "Summer holidays"
+
+#. Hamburg school holidays.
+msgid "Herbstferien"
+msgstr "Autumn break"
+
+#. Hamburg school holidays.
+msgid "Brückentag"
+msgstr "Bridge day"

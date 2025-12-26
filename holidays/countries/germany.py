@@ -11,9 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from gettext import gettext as tr
+from datetime import date, timedelta
 
 from holidays.calendars.gregorian import MAY, JUN, OCT
-from holidays.constants import CATHOLIC, PUBLIC
+from holidays.constants import CATHOLIC, PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -43,7 +44,8 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         * [Sachsen](https://web.archive.org/web/20250808020452/https://www.revosax.sachsen.de/vorschrift/3997-SaechsSFG)
         * [Sachsen-Anhalt](https://web.archive.org/web/20250615214949/http://www.landesrecht.sachsen-anhalt.de/bsst/document/jlr-FeiertGSTpP2)
         * [Thüringen](https://web.archive.org/web/20250712163548/http://landesrecht.thueringen.de/bsth/document/jlr-FeiertGTHV5P2)
-
+    Hamburg School Holiday Reference:
+        * <https://www.hamburg.de/resource/blob/134372/5bc131bdd36a604f67b361d21f7df37e/ferienordnung-hamburg-2024-2030-data.pdf>
     !!! note "Note"
         "Mariä Himmelfahrt" is only a holiday in Bavaria (BY) and "Fronleichnam"
         in Saxony (SN) and Thuringia (TH) if municipality is mostly catholic which
@@ -93,7 +95,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         "Sachsen-Anhalt": "ST",
         "Thüringen": "TH",
     }
-    supported_categories = (CATHOLIC, PUBLIC)
+    supported_categories = (CATHOLIC, PUBLIC, SCHOOL)
     supported_languages = ("de", "en_US", "th", "uk")
     _deprecated_subdivisions = ("BYP",)
 
@@ -102,6 +104,95 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, GermanyStaticHolidays)
         super().__init__(*args, **kwargs)
+        # Disable automatic expansion after initial population to avoid
+        # implicitly populating adjacent years when checking membership
+        # (keeps per-year population semantics for school holiday checks).
+        self.expand = False
+
+    def _add_school_holidays_hh(self, year):
+        # Helper to add a range of holidays
+        def _add_holiday_range(name, start_date, end_date):
+            current_date = start_date
+            while current_date <= end_date:
+                if current_date.year == self._year:
+                    # Ensure holiday is added for the populated year by passing
+                    # month and day to _add_holiday so it constructs the date
+                    # using `self._year` (prevents cross-year leakage).
+                    self._add_holiday(name, current_date.month, current_date.day)
+                current_date += timedelta(days=1)
+
+        # Definition of holidays as (Name, Start Date, End Date)
+        # For single days, Start Date == End Date
+        holidays_map = []
+
+        if year == 2025:
+            holidays_map = [
+                (tr("Weihnachtsferien"), date(2025, 12, 17), date(2025, 12, 31)),
+            ]
+        elif year == 2026:
+            holidays_map = [
+                (tr("Weihnachtsferien"), date(2026, 1, 1), date(2026, 1, 2)),
+                (tr("Halbjahrespause"), date(2026, 1, 30), date(2026, 1, 30)),
+                (tr("Frühjahrsferien"), date(2026, 3, 2), date(2026, 3, 13)),
+                (tr("Himmelfahrt/Pfingsten"), date(2026, 5, 11), date(2026, 5, 15)),
+                (tr("Sommerferien"), date(2026, 7, 9), date(2026, 8, 19)),
+                (tr("Herbstferien"), date(2026, 10, 19), date(2026, 10, 30)),
+                (tr("Weihnachtsferien"), date(2026, 12, 21), date(2026, 12, 31)),
+            ]
+        elif year == 2027:
+            holidays_map = [
+                (tr("Weihnachtsferien"), date(2027, 1, 1), date(2027, 1, 1)),
+                (tr("Halbjahrespause"), date(2027, 1, 29), date(2027, 1, 29)),
+                (tr("Frühjahrsferien"), date(2027, 3, 1), date(2027, 3, 12)),
+                (tr("Himmelfahrt/Pfingsten"), date(2027, 5, 7), date(2027, 5, 14)),
+                (tr("Sommerferien"), date(2027, 7, 1), date(2027, 8, 11)),
+                (tr("Herbstferien"), date(2027, 10, 11), date(2027, 10, 22)),
+                (tr("Weihnachtsferien"), date(2027, 12, 20), date(2027, 12, 31)),
+            ]
+        elif year == 2028:
+            holidays_map = [
+                (tr("Halbjahrespause"), date(2028, 1, 28), date(2028, 1, 28)),
+                (tr("Frühjahrsferien"), date(2028, 3, 6), date(2028, 3, 17)),
+                (tr("Himmelfahrt/Pfingsten"), date(2028, 5, 22), date(2028, 5, 26)),
+                (tr("Sommerferien"), date(2028, 7, 3), date(2028, 8, 11)),
+                (tr("Herbstferien"), date(2028, 10, 2), date(2028, 10, 13)),
+                (tr("Brückentag"), date(2028, 10, 30), date(2028, 10, 30)),
+                (tr("Weihnachtsferien"), date(2028, 12, 18), date(2028, 12, 29)),
+            ]
+        elif year == 2029:
+            holidays_map = [
+                (tr("Halbjahrespause"), date(2029, 2, 2), date(2029, 2, 2)),
+                (tr("Frühjahrsferien"), date(2029, 3, 5), date(2029, 3, 16)),
+                (tr("Himmelfahrt/Pfingsten"), date(2029, 5, 11), date(2029, 5, 18)),
+                (tr("Sommerferien"), date(2029, 7, 2), date(2029, 8, 10)),
+                (tr("Herbstferien"), date(2029, 10, 1), date(2029, 10, 12)),
+                (tr("Weihnachtsferien"), date(2029, 12, 21), date(2029, 12, 31)),
+            ]
+        elif year == 2030:
+            holidays_map = [
+                (tr("Weihnachtsferien"), date(2030, 1, 1), date(2030, 1, 4)),
+                (tr("Halbjahrespause"), date(2030, 2, 1), date(2030, 2, 1)),
+                (tr("Frühjahrsferien"), date(2030, 3, 4), date(2030, 3, 15)),
+                (tr("Himmelfahrt/Pfingsten"), date(2030, 5, 20), date(2030, 5, 24)),
+                (tr("Brückentag"), date(2030, 5, 31), date(2030, 5, 31)),
+                (tr("Sommerferien"), date(2030, 7, 4), date(2030, 8, 14)),
+            ]
+            
+        for name, start, end in holidays_map:
+            _add_holiday_range(name, start, end)
+
+    def _populate(self, year):
+															 
+        super()._populate(year)
+
+											  
+        if self.subdiv == "HH" and SCHOOL in self.categories:
+            self._add_school_holidays_hh(year)
+            # Ensure no holidays from other years were accidentally added
+            # (defensive cleanup for cross-year ranges).
+            for dt in list(self.keys()):
+                if dt.year != year:
+                    self.pop(dt)
 
     def _populate_public_holidays(self):
         # New Year's Day.
