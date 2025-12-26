@@ -20,7 +20,7 @@ class BombayStockExchange(NationalStockExchangeOfIndia):
     Bombay Stock Exchange (BSE)
 
     References:
-    - https://www.bseindia.com/static/about/holiday.aspx
+    <https://web.archive.org/web/20251226065205/https://www.bseindia.com/static/markets/marketinfo/listholi.aspx>
     """
 
     market = "XBOM"
@@ -34,9 +34,4 @@ class BombayStockExchange(NationalStockExchangeOfIndia):
         self._entity_code = "XBOM"
 
 
-class XBOM(BombayStockExchange):
-    pass
-
-
-class BSE(BombayStockExchange):
-    pass
+XBOM = BSE = BombayStockExchange
