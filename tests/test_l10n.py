@@ -13,6 +13,7 @@
 import os
 import re
 import unittest
+from collections import Counter
 from pathlib import Path
 from unittest import mock
 
@@ -37,6 +38,7 @@ class TestLocalization(unittest.TestCase):
     def test_localization(self):
         tests_dir = Path(__file__).parent
         locale_dir = tests_dir.parent / "holidays" / "locale"
+        placeholder_re = re.compile(r"%[a-zA-Z]")
 
         for po_path in sorted(Path(locale_dir).rglob("*.po")):
             try:
@@ -81,3 +83,12 @@ class TestLocalization(unittest.TestCase):
                 f"The {entity_code} {language} localization contains obsolete entries: "
                 f"{', '.join(oe.msgid for oe in obsolete_entries)}",
             )
+
+            for entry in po_file:
+                self.assertEqual(
+                    Counter(placeholder_re.findall(entry.msgid)),
+                    Counter(placeholder_re.findall(entry.msgstr)),
+                    f"The {entity_code} {language} localization contains placeholders "
+                    f"mismatch in line {entry.linenum}: msgid `{entry.msgid}`, "
+                    f"msgstr `{entry.msgstr}`.",
+                )
