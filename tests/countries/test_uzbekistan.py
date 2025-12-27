@@ -181,15 +181,15 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_observed(self):
-        dts = (
+        obs_dts = (
             "2023-10-02",
             "2024-06-17",
             "2024-09-02",
             "2024-12-09",
             "2025-03-31",
         )
-        self.assertHoliday(dts)
-        self.assertNoNonObservedHoliday(dts)
+        self.assertHoliday(obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2020(self):
         self.assertHolidaysInYear(
