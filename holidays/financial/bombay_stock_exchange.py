@@ -16,7 +16,7 @@ from holidays.financial.national_stock_exchange_of_india import NationalStockExc
 class BombayStockExchange(NationalStockExchangeOfIndia):
     """Bombay Stock Exchange (BSE) holidays.
     References:
-        * <https://web.archive.org/web/20251226065205/https://www.bseindia.com/static/markets/marketinfo/listholi.aspx>
+         * <https://web.archive.org/web/20251226065205/https://www.bseindia.com/static/markets/marketinfo/listholi.aspx>
     """
 
     market = "XBOM"
