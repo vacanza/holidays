@@ -144,6 +144,7 @@ class UzbekistanStaticHolidays:
         * [2023](https://web.archive.org/web/20250522053822/https://lex.uz/docs/-6324664)
         * [2024](https://web.archive.org/web/20250522053835/https://lex.uz/docs/-6704048)
         * [2025](https://web.archive.org/web/20250422135040/https://lex.uz/docs/-7275687)
+        * [2025-2026](https://web.archive.org/web/20251227000438/https://lex.uz/docs/-7938920)
     """
 
     # Date format (see strftime() Format Codes)
@@ -220,5 +221,15 @@ class UzbekistanStaticHolidays:
             (DEC, 30, DEC, 14),
             (DEC, 31, additional_day_off),
         ),
-        2025: (JAN, 2, JAN, 4),
+        2025: (
+            (JAN, 2, JAN, 4),
+            (DEC, 31, additional_day_off),
+        ),
+        2026: (
+            (JAN, 2, additional_day_off),
+            (MAY, 28, additional_day_off),
+            (MAY, 29, additional_day_off),
+            (AUG, 31, additional_day_off),
+            (DEC, 31, DEC, 12),
+        ),
     }
