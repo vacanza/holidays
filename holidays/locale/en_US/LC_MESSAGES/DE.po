@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.87\n"
+"Project-Id-Version: Holidays 0.88\n"
 "POT-Creation-Date: 2023-04-04 16:13+0300\n"
-"PO-Revision-Date: 2025-12-02 18:19+0200\n"
+"PO-Revision-Date: 2025-12-27 00:27+0100\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -26,6 +26,87 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.6\n"
 "X-Source-Language: de\n"
+
+msgid "Weihnachtsferien"
+msgstr "Christmas holidays"
+
+msgid "Halbjahrespause"
+msgstr "mid-term break"
+
+msgid "Frühjahrsferien"
+msgstr "Spring break"
+
+msgid "Himmelfahrt/Pfingsten"
+msgstr "Ascension/Pentecost break"
+
+msgid "Sommerferien"
+msgstr "Summer holidays"
+
+msgid "Herbstferien"
+msgstr "Autumn break"
+
+msgid "Brückentag"
+msgstr "Bridge day"
+
+msgid "Osterferien"
+msgstr "Easter holidays"
+
+msgid "Pfingsten"
+msgstr "Pentecost"
+
+msgid "Halbjahresferien"
+msgstr "mid-term holidays"
+
+msgid "Tag nach Himmelfahrt"
+msgstr "Day after Ascension"
+
+msgid "Tag vor dem 03. Oktober"
+msgstr "Day before German Unity Day"
+
+msgid "Tag vor dem 01. Mai"
+msgstr "Day before May Day"
+
+msgid "Tage nach dem 03. Oktober"
+msgstr "Days after German Unity Day"
+
+msgid "Fastnachtsferien"
+msgstr "Carnival break"
+
+msgid "Pfingstferien"
+msgstr "Pentecost holidays"
+
+msgid "Winterferien"
+msgstr "Winter holidays"
+
+msgid "Schulfreier Tag"
+msgstr "School-free day"
+
+msgid "Himmelfahrt"
+msgstr "Ascension"
+
+msgid "Unterrichtsfreier Tag"
+msgstr "Non-teaching day"
+
+msgid "Beweglicher Ferientag"
+msgstr "Movable holiday"
+
+msgid "Tage um Allerheiligen"
+msgstr "days around All Saints' Day"
+
+msgid "Unterrichtsfreier Tag nach AZVO"
+msgstr "Non-teaching day according to AZVO"
+
+msgid "Unterrichtsfreie Tage"
+msgstr "Non-teaching days"
+
+msgid "Zusätzliche feststehende Ferientage"
+msgstr "Additional fixed holiday days"
+
+msgid "Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"
+msgstr "Holidays connected with May Day and Ascension Day"
+
+msgid "Variabler Ferientag"
+msgstr "Variable holiday"
 
 #. New Year's Day.
 msgid "Neujahr"
@@ -124,89 +205,3 @@ msgstr ""
 #. 75th anniversary of the East German uprising of 1953.
 msgid "75. Jahrestag des Aufstandes vom 17. Juni 1953"
 msgstr "75th anniversary of the East German uprising of 1953"
-
-#. Hamburg school holidays.
-msgid "Weihnachtsferien"
-msgstr "Christmas holidays"
-
-#. Hamburg school holidays.
-msgid "Halbjahrespause"
-msgstr "mid-term break"
-
-#. Hamburg school holidays.
-msgid "Frühjahrsferien"
-msgstr "Spring break"
-
-#. Hamburg school holidays.
-msgid "Himmelfahrt/Pfingsten"
-msgstr "Ascension/Pentecost break"
-
-#. Hamburg school holidays.
-msgid "Sommerferien"
-msgstr "Summer holidays"
-
-#. Hamburg school holidays.
-msgid "Herbstferien"
-msgstr "Autumn break"
-
-#. Hamburg school holidays.
-msgid "Brückentag"
-msgstr "Bridge day"
-
-#. School holidays / other school-related labels.
-msgid "Osterferien"
-msgstr "Easter holidays"
-
-msgid "Pfingsten"
-msgstr "Pentecost"
-
-msgid "Pfingstferien"
-msgstr "Pentecost holidays"
-
-msgid "Winterferien"
-msgstr "Winter holidays"
-
-msgid "Fastnachtsferien"
-msgstr "Carnival break"
-
-msgid "Tag nach Himmelfahrt"
-msgstr "Day after Ascension"
-
-msgid "Halbjahresferien"
-msgstr "mid-term holidays"
-
-msgid "Tag vor dem 03. Oktober"
-msgstr "Day before German Unity Day"
-
-msgid "Tag vor dem 01. Mai"
-msgstr "Day before May Day"
-
-msgid "Tage nach dem 03. Oktober"
-msgstr "Days after German Unity Day"
-
-msgid "Schulfreier Tag"
-msgstr "School-free day"
-
-msgid "Himmelfahrt"
-msgstr "Ascension"
-
-msgid "Unterrichtsfreier Tag"
-msgstr "Non-teaching day"
-
-msgid "Unterrichtsfreie Tage"
-msgstr "Non-teaching days"
-
-msgid "Tage um Allerheiligen"
-msgstr "days around All Saints' Day"
-
-msgid "Zusätzliche feststehende Ferientage"
-msgstr "Additional fixed holiday days"
-
-msgid "Beweglicher Ferientag"
-msgstr "Movable holiday"
-
-msgid "Variabler Ferientag"
-msgstr "Variable holiday"
-
-msgid "Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"
-msgstr "Holidays connected with May Day and Ascension Day"
