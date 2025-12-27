@@ -20,115 +20,135 @@ from tests.common import CommonCountryTests
 class TestNZ(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(
-            NewZealand, years=range(1900, 2050), years_non_observed=range(2000, 2024)
-        )
+        cls.full_range = range(1894, 2053)
+        super().setUpClass(NewZealand)
 
     def setUp(self):
         super().setUp()
         warnings.simplefilter("ignore", category=DeprecationWarning)
 
-    def test_new_years(self):
+    def test_new_years_day(self):
         name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1900, 2050)))
-        years_observed = (2005, 2006, 2011, 2012, 2017)
-        self.assertHolidayName(f"{name} (observed)", (f"{year}-01-03" for year in years_observed))
-        self.assertNoNonObservedHoliday(f"{year}-01-03" for year in years_observed)
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        obs_dts = (
+            "2005-01-03",
+            "2006-01-03",
+            "2011-01-03",
+            "2012-01-03",
+            "2017-01-03",
+            "2022-01-03",
+            "2023-01-03",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_day_after_new_years(self):
+    def test_day_after_new_years_day(self):
         name = "Day after New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-02" for year in range(1900, 2050)))
-        years_observed = (2010, 2011, 2016, 2021, 2022)
-        self.assertHolidayName(f"{name} (observed)", (f"{year}-01-04" for year in years_observed))
-        self.assertNoNonObservedHoliday(f"{year}-01-04" for year in years_observed)
+        self.assertHolidayName(name, (f"{year}-01-02" for year in self.full_range))
+        obs_dts = (
+            "2010-01-04",
+            "2011-01-04",
+            "2016-01-04",
+            "2021-01-04",
+            "2022-01-04",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_waitangi_day(self):
-        name1 = "New Zealand Day"
-        name2 = "Waitangi Day"
-        self.assertHolidayName(
-            name2,
-            NewZealand(subdiv="NTL"),
+        name_1974 = "New Zealand Day"
+        name_1977 = "Waitangi Day"
+
+        self.assertHolidayName(name_1974, (f"{year}-02-06" for year in range(1974, 1977)))
+        self.assertHolidayName(name_1977, (f"{year}-02-06" for year in range(1977, self.end_year)))
+        self.assertNoHolidayName(
+            name_1974, range(self.start_year, 1974), range(1977, self.end_year)
+        )
+        self.assertNoHolidayName(name_1977, range(self.start_year, 1977))
+
+        self.assertSubdivNtlHolidayName(
+            name_1977,
             "1964-02-03",
             "1965-02-08",
             "1966-02-07",
             "1967-02-06",
             "1968-02-05",
+            "1969-02-03",
+            "1970-02-09",
+            "1971-02-08",
+            "1972-02-07",
+            "1973-02-05",
+        )
+        self.assertNoSubdivNtlHolidayName(
+            name_1977, range(self.start_year, 1964), range(1974, 1977)
         )
 
-        self.assertNoHolidayName(name1, range(1900, 1974))
-        self.assertNoHolidayName(name2, range(1900, 1977))
-        self.assertNoHoliday(f"{year}-02-06" for year in range(1900, 1974))
-        self.assertHolidayName(name1, (f"{year}-02-06" for year in range(1974, 1977)))
-        self.assertHolidayName(name2, (f"{year}-02-06" for year in range(1977, 2050)))
-        obs_dt = ("2016-02-08", "2021-02-08", "2022-02-07")
-        self.assertHolidayName(f"{name2} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
-
-    def test_good_friday(self):
-        self.assertHoliday(
-            "1999-04-02",
-            "2000-04-21",
-            "2010-04-02",
-            "2018-03-30",
-            "2019-04-19",
-            "2020-04-10",
-            "2021-04-02",
-            "2022-04-15",
+        obs_dts = (
+            "2016-02-08",
+            "2021-02-08",
+            "2022-02-07",
         )
-
-    def test_easter_monday(self):
-        self.assertHoliday(
-            "1999-04-05",
-            "2000-04-24",
-            "2010-04-05",
-            "2018-04-02",
-            "2019-04-22",
-            "2020-04-13",
-            "2021-04-05",
-            "2022-04-18",
-        )
+        self.assertHolidayName(f"{name_1977} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_anzac_day(self):
         name = "Anzac Day"
-        self.assertHolidayName(name, (f"{year}-04-25" for year in range(1921, 2050)))
-        obs_dt = ("2015-04-27", "2020-04-27", "2021-04-26")
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
-        self.assertNoHolidayName(name, range(1900, 1921))
-        self.assertNoHoliday(f"{year}-04-25" for year in range(1900, 1921))
+        self.assertHolidayName(name, (f"{year}-04-25" for year in range(1921, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1921))
+        obs_dts = (
+            "2015-04-27",
+            "2020-04-27",
+            "2021-04-26",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_good_friday(self):
+        name = "Good Friday"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_easter_monday(self):
+        name = "Easter Monday"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
 
     def test_sovereigns_birthday(self):
-        name1 = "King's Birthday"
-        name2 = "Queen's Birthday"
-
-        self.assertHoliday(
-            "1909-11-09",
-            "1936-06-23",
-            "1937-06-09",
-            "1940-06-03",
-            "1952-06-02",
-            "2023-06-05",
-        )
-        self.assertHolidayName(name1, (f"{year}-06-03" for year in range(1912, 1936)))
+        name_king = "King's Birthday"
+        name_queen = "Queen's Birthday"
 
         self.assertHolidayName(
-            name2,
-            "2001-06-04",
-            "2002-06-03",
-            "2003-06-02",
-            "2004-06-07",
-            "2005-06-06",
-            "2006-06-05",
-            "2007-06-04",
-            "2008-06-02",
-            "2009-06-01",
-            "2010-06-07",
-            "2011-06-06",
-            "2012-06-04",
-            "2013-06-03",
-            "2014-06-02",
-            "2015-06-01",
-            "2016-06-06",
+            name_king,
+            (f"{year}-11-09" for year in range(1902, 1912)),
+            (f"{year}-06-03" for year in range(1912, 1936)),
+            "1936-06-23",
+            "1937-06-09",
+            "2023-06-05",
+            "2024-06-03",
+            "2025-06-02",
+        )
+        self.assertHolidayName(name_king, range(1936, 1952), range(2023, self.end_year))
+        self.assertNoHolidayName(name_king, range(self.start_year, 1902), range(1952, 2023))
+
+        self.assertHolidayName(
+            name_queen,
+            "1952-06-02",
             "2017-06-05",
             "2018-06-04",
             "2019-06-03",
@@ -136,13 +156,15 @@ class TestNZ(CommonCountryTests, TestCase):
             "2021-06-07",
             "2022-06-06",
         )
-
-        self.assertNoHolidayName(name1, range(1952, 2023))
-        self.assertNoHolidayName(name2, range(1900, 1952), range(2023, 2050))
+        self.assertHolidayName(name_queen, range(1952, 2023))
+        self.assertNoHolidayName(
+            name_queen, range(self.start_year, 1952), range(2023, self.end_year)
+        )
 
     def test_matariki(self):
+        name = "Matariki"
         self.assertHolidayName(
-            "Matariki",
+            name,
             "2022-06-24",
             "2023-07-14",
             "2024-06-28",
@@ -175,397 +197,241 @@ class TestNZ(CommonCountryTests, TestCase):
             "2051-06-30",
             "2052-06-21",
         )
+        self.assertNoHolidayName(name, range(self.start_year, 2022))
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         name = "Labour Day"
         self.assertHolidayName(
             name,
-            "2001-10-22",
-            "2002-10-28",
-            "2003-10-27",
-            "2004-10-25",
-            "2005-10-24",
-            "2006-10-23",
-            "2007-10-22",
-            "2008-10-27",
-            "2009-10-26",
-            "2010-10-25",
-            "2011-10-24",
-            "2012-10-22",
-            "2013-10-28",
-            "2014-10-27",
-            "2015-10-26",
-            "2016-10-24",
-            "2017-10-23",
-            "2018-10-22",
-            "2019-10-28",
+            "1907-10-09",
+            "1908-10-14",
+            "1909-10-13",
             "2020-10-26",
             "2021-10-25",
             "2022-10-24",
+            "2023-10-23",
+            "2024-10-28",
+            "2025-10-27",
         )
-        self.assertNoHolidayName(name, NewZealand(years=1899))
+        self.assertHolidayName(name, range(1900, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1900))
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1900, 2050)))
-        years_observed = (2004, 2005, 2010, 2011, 2016, 2021, 2022)
-        self.assertHolidayName(f"{name} (observed)", (f"{year}-12-27" for year in years_observed))
-        self.assertNoNonObservedHoliday(f"{year}-12-27" for year in years_observed)
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
+        obs_dts = (
+            "2004-12-27",
+            "2005-12-27",
+            "2010-12-27",
+            "2011-12-27",
+            "2016-12-27",
+            "2021-12-27",
+            "2022-12-27",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_boxing_day(self):
         name = "Boxing Day"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1900, 2050)))
-        years_observed = (2004, 2009, 2010, 2015, 2020, 2021)
-        self.assertHolidayName(f"{name} (observed)", (f"{year}-12-28" for year in years_observed))
-        self.assertNoNonObservedHoliday(f"{year}-12-28" for year in years_observed)
+        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
+        obs_dts = (
+            "2004-12-28",
+            "2009-12-28",
+            "2010-12-28",
+            "2015-12-28",
+            "2020-12-28",
+            "2021-12-28",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_auckland_anniversary_day(self):
-        self.assertHolidayName(
-            "Auckland Anniversary Day",
-            NewZealand(subdiv="AUK", years=range(2001, 2023)),
-            "2001-01-29",
-            "2002-01-28",
-            "2003-01-27",
-            "2004-01-26",
-            "2005-01-31",
-            "2006-01-30",
-            "2007-01-29",
-            "2008-01-28",
-            "2009-01-26",
-            "2010-02-01",
-            "2011-01-31",
-            "2012-01-30",
-            "2013-01-28",
-            "2014-01-27",
-            "2015-01-26",
-            "2016-02-01",
-            "2017-01-30",
-            "2018-01-29",
-            "2019-01-28",
+        name = "Auckland Anniversary Day"
+        self.assertNoHolidayName(name)
+        dts = (
             "2020-01-27",
             "2021-02-01",
             "2022-01-31",
+            "2023-01-30",
+            "2024-01-29",
+            "2025-01-27",
         )
-
-    def test_taranaki_anniversary_day(self):
-        self.assertHolidayName(
-            "Taranaki Anniversary Day",
-            NewZealand(subdiv="TKI", years=range(2001, 2023)),
-            "2001-03-12",
-            "2002-03-11",
-            "2003-03-10",
-            "2004-03-08",
-            "2005-03-14",
-            "2006-03-13",
-            "2007-03-12",
-            "2008-03-10",
-            "2009-03-09",
-            "2010-03-08",
-            "2011-03-14",
-            "2012-03-12",
-            "2013-03-11",
-            "2014-03-10",
-            "2015-03-09",
-            "2016-03-14",
-            "2017-03-13",
-            "2018-03-12",
-            "2019-03-11",
-            "2020-03-09",
-            "2021-03-08",
-            "2022-03-14",
-        )
-
-    def test_hawkes_bay_anniversary_day(self):
-        self.assertHolidayName(
-            "Hawke's Bay Anniversary Day",
-            NewZealand(subdiv="HKB", years=range(2001, 2023)),
-            "2001-10-19",
-            "2002-10-25",
-            "2003-10-24",
-            "2004-10-22",
-            "2005-10-21",
-            "2006-10-20",
-            "2007-10-19",
-            "2008-10-24",
-            "2009-10-23",
-            "2010-10-22",
-            "2011-10-21",
-            "2012-10-19",
-            "2013-10-25",
-            "2014-10-24",
-            "2015-10-23",
-            "2016-10-21",
-            "2017-10-20",
-            "2018-10-19",
-            "2019-10-25",
-            "2020-10-23",
-            "2021-10-22",
-            "2022-10-21",
-        )
-
-    def test_wellington_anniversary_day(self):
-        self.assertHolidayName(
-            "Wellington Anniversary Day",
-            NewZealand(subdiv="WGN", years=range(2001, 2023)),
-            "2001-01-22",
-            "2002-01-21",
-            "2003-01-20",
-            "2004-01-19",
-            "2005-01-24",
-            "2006-01-23",
-            "2007-01-22",
-            "2008-01-21",
-            "2009-01-19",
-            "2010-01-25",
-            "2011-01-24",
-            "2012-01-23",
-            "2013-01-21",
-            "2014-01-20",
-            "2015-01-19",
-            "2016-01-25",
-            "2017-01-23",
-            "2018-01-22",
-            "2019-01-21",
-            "2020-01-20",
-            "2021-01-25",
-            "2022-01-24",
-        )
-
-    def test_marlborough_anniversary_day(self):
-        self.assertHolidayName(
-            "Marlborough Anniversary Day",
-            NewZealand(subdiv="MBH", years=range(2001, 2023)),
-            "2001-10-29",
-            "2002-11-04",
-            "2003-11-03",
-            "2004-11-01",
-            "2005-10-31",
-            "2006-10-30",
-            "2007-10-29",
-            "2008-11-03",
-            "2009-11-02",
-            "2010-11-01",
-            "2011-10-31",
-            "2012-10-29",
-            "2013-11-04",
-            "2014-11-03",
-            "2015-11-02",
-            "2016-10-31",
-            "2017-10-30",
-            "2018-10-29",
-            "2019-11-04",
-            "2020-11-02",
-            "2021-11-01",
-            "2022-10-31",
-        )
-
-    def test_nelson_anniversary_day(self):
-        self.assertHolidayName(
-            "Nelson Anniversary Day",
-            NewZealand(subdiv="NSN", years=range(2001, 2023)),
-            "2001-01-29",
-            "2002-02-04",
-            "2003-02-03",
-            "2004-02-02",
-            "2005-01-31",
-            "2006-01-30",
-            "2007-01-29",
-            "2008-02-04",
-            "2009-02-02",
-            "2010-02-01",
-            "2011-01-31",
-            "2012-01-30",
-            "2013-02-04",
-            "2014-02-03",
-            "2015-02-02",
-            "2016-02-01",
-            "2017-01-30",
-            "2018-01-29",
-            "2019-02-04",
-            "2020-02-03",
-            "2021-02-01",
-            "2022-01-31",
+        self.assertSubdivAukHolidayName(name, dts)
+        self.assertSubdivAukHolidayName(name, self.full_range)
+        self.assertSubdivNtlHolidayName(name, dts)
+        self.assertSubdivNtlHolidayName(
+            name, range(self.start_year, 1964), range(1974, self.end_year)
         )
 
     def test_canterbury_anniversary_day(self):
-        self.assertHolidayName(
-            "Canterbury Anniversary Day",
-            NewZealand(subdiv="CAN", years=range(2001, 2023)),
-            "2001-11-16",
-            "2002-11-15",
-            "2003-11-14",
-            "2004-11-12",
-            "2005-11-11",
-            "2006-11-17",
-            "2007-11-16",
-            "2008-11-14",
-            "2009-11-13",
-            "2010-11-12",
-            "2011-11-11",
-            "2012-11-16",
-            "2013-11-15",
-            "2014-11-14",
-            "2015-11-13",
-            "2016-11-11",
-            "2017-11-17",
-            "2018-11-16",
-            "2019-11-15",
+        name = "Canterbury Anniversary Day"
+        self.assertNoHolidayName(name)
+        self.assertSubdivCanHolidayName(
+            name,
             "2020-11-13",
             "2021-11-12",
             "2022-11-11",
+            "2023-11-17",
+            "2024-11-15",
+            "2025-11-14",
         )
+        self.assertSubdivCanHolidayName(name, self.full_range)
 
-    def test_south_canterbury_anniversary_day(self):
-        self.assertHolidayName(
-            "South Canterbury Anniversary Day",
-            NewZealand(subdiv="STC", years=range(2001, 2023)),
-            "2001-09-24",
-            "2002-09-23",
-            "2003-09-22",
-            "2004-09-27",
-            "2005-09-26",
-            "2006-09-25",
-            "2007-09-24",
-            "2008-09-22",
-            "2009-09-28",
-            "2010-09-27",
-            "2011-09-26",
-            "2012-09-24",
-            "2013-09-23",
-            "2014-09-22",
-            "2015-09-28",
-            "2016-09-26",
-            "2017-09-25",
-            "2018-09-24",
-            "2019-09-23",
-            "2020-09-28",
-            "2021-09-27",
-            "2022-09-26",
-        )
-
-    def test_west_coast_anniversary_day(self):
-        self.assertHolidayName(
-            "West Coast Anniversary Day",
-            NewZealand(subdiv="WTC", years=range(2001, 2023)),
-            "2001-12-03",
-            "2002-12-02",
-            "2003-12-01",
-            "2004-11-29",
-            "2005-12-05",
-            "2006-12-04",
-            "2007-12-03",
-            "2008-12-01",
-            "2009-11-30",
-            "2010-11-29",
-            "2011-11-28",
-            "2012-12-03",
-            "2013-12-02",
-            "2014-12-01",
-            "2015-11-30",
-            "2016-11-28",
-            "2017-12-04",
-            "2018-12-03",
-            "2019-12-02",
+    def test_chatham_islands_anniversary_day(self):
+        name = "Chatham Islands Anniversary Day"
+        self.assertNoHolidayName(name)
+        self.assertSubdivCitHolidayName(
+            name,
             "2020-11-30",
             "2021-11-29",
             "2022-11-28",
+            "2023-11-27",
+            "2024-12-02",
+            "2025-12-01",
         )
+        self.assertSubdivCitHolidayName(name, self.full_range)
+
+    def test_hawkes_bay_anniversary_day(self):
+        name = "Hawke's Bay Anniversary Day"
+        self.assertNoHolidayName(name)
+        self.assertSubdivHkbHolidayName(
+            name,
+            "2020-10-23",
+            "2021-10-22",
+            "2022-10-21",
+            "2023-10-20",
+            "2024-10-25",
+            "2025-10-24",
+        )
+        self.assertSubdivHkbHolidayName(name, self.full_range)
+
+    def test_marlborough_anniversary_day(self):
+        name = "Marlborough Anniversary Day"
+        self.assertNoHolidayName(name)
+        self.assertSubdivMbhHolidayName(
+            name,
+            "2020-11-02",
+            "2021-11-01",
+            "2022-10-31",
+            "2023-10-30",
+            "2024-11-04",
+            "2025-11-03",
+        )
+        self.assertSubdivMbhHolidayName(name, self.full_range)
+
+    def test_nelson_anniversary_day(self):
+        name = "Nelson Anniversary Day"
+        self.assertNoHolidayName(name)
+        self.assertSubdivNsnHolidayName(
+            name,
+            "2020-02-03",
+            "2021-02-01",
+            "2022-01-31",
+            "2023-01-30",
+            "2024-01-29",
+            "2025-02-03",
+        )
+        self.assertSubdivNsnHolidayName(name, self.full_range)
 
     def test_otago_anniversary_day(self):
-        self.assertHolidayName(
-            "Otago Anniversary Day",
-            NewZealand(subdiv="OTA", years=range(2001, 2023)),
-            "2001-03-26",
-            "2002-03-25",
-            "2003-03-24",
-            "2004-03-22",
-            "2005-03-21",
-            "2006-03-20",
-            "2007-03-26",
-            "2008-03-25",
-            "2009-03-23",
-            "2010-03-22",
-            "2011-03-21",
-            "2012-03-26",
-            "2013-03-25",
-            "2014-03-24",
-            "2015-03-23",
-            "2016-03-21",
-            "2017-03-20",
-            "2018-03-26",
-            "2019-03-25",
+        name = "Otago Anniversary Day"
+        self.assertNoHolidayName(name)
+        self.assertSubdivOtaHolidayName(
+            name,
             "2020-03-23",
             "2021-03-22",
             "2022-03-21",
+            "2023-03-20",
+            "2024-03-25",
+            "2025-03-24",
         )
+        self.assertSubdivOtaHolidayName(name, self.full_range)
+
+    def test_south_canterbury_anniversary_day(self):
+        name = "South Canterbury Anniversary Day"
+        self.assertNoHolidayName(name)
+        self.assertSubdivSouthCanterburyHolidayName(
+            name,
+            "2020-09-28",
+            "2021-09-27",
+            "2022-09-26",
+            "2023-09-25",
+            "2024-09-23",
+            "2025-09-22",
+        )
+        self.assertSubdivSouthCanterburyHolidayName(name, self.full_range)
 
     def test_southland_anniversary_day(self):
-        self.assertHolidayName(
-            "Southland Anniversary Day",
-            NewZealand(subdiv="STL", years=range(2001, 2023)),
-            "2001-01-15",
-            "2002-01-14",
-            "2003-01-20",
-            "2004-01-19",
-            "2005-01-17",
-            "2006-01-16",
-            "2007-01-15",
-            "2008-01-14",
+        name = "Southland Anniversary Day"
+        self.assertNoHolidayName(name)
+        self.assertSubdivStlHolidayName(
+            name,
             "2009-01-19",
             "2010-01-18",
             "2011-01-17",
-            "2012-04-10",
-            "2013-04-02",
-            "2014-04-22",
-            "2015-04-07",
-            "2016-03-29",
-            "2017-04-18",
-            "2018-04-03",
-            "2019-04-23",
             "2020-04-14",
             "2021-04-06",
             "2022-04-19",
+            "2023-04-11",
+            "2024-04-02",
+            "2025-04-22",
         )
+        self.assertSubdivStlHolidayName(name, self.full_range)
 
-    def test_chatham_islands_anniversary_day(self):
-        self.assertHolidayName(
-            "Chatham Islands Anniversary Day",
-            NewZealand(subdiv="CIT", years=range(2001, 2023)),
-            "2001-12-03",
-            "2002-12-02",
-            "2003-12-01",
-            "2004-11-29",
-            "2005-11-28",
-            "2006-11-27",
-            "2007-12-03",
-            "2008-12-01",
-            "2009-11-30",
-            "2010-11-29",
-            "2011-11-28",
-            "2012-12-03",
-            "2013-12-02",
-            "2014-12-01",
-            "2015-11-30",
-            "2016-11-28",
-            "2017-11-27",
-            "2018-12-03",
-            "2019-12-02",
+    def test_taranaki_anniversary_day(self):
+        name = "Taranaki Anniversary Day"
+        self.assertNoHolidayName(name)
+        self.assertSubdivTkiHolidayName(
+            name,
+            "2020-03-09",
+            "2021-03-08",
+            "2022-03-14",
+            "2023-03-13",
+            "2024-03-11",
+            "2025-03-10",
+        )
+        self.assertSubdivTkiHolidayName(name, self.full_range)
+
+    def test_wellington_anniversary_day(self):
+        name = "Wellington Anniversary Day"
+        self.assertNoHolidayName(name)
+        self.assertSubdivWgnHolidayName(
+            name,
+            "2020-01-20",
+            "2021-01-25",
+            "2022-01-24",
+            "2023-01-23",
+            "2024-01-22",
+            "2025-01-20",
+        )
+        self.assertSubdivWgnHolidayName(name, self.full_range)
+
+    def test_west_coast_anniversary_day(self):
+        name = "West Coast Anniversary Day"
+        self.assertNoHolidayName(name)
+        self.assertSubdivWtcHolidayName(
+            name,
             "2020-11-30",
             "2021-11-29",
             "2022-11-28",
+            "2023-12-04",
+            "2024-12-02",
+            "2025-12-01",
         )
+        self.assertSubdivWtcHolidayName(name, self.full_range)
 
     def test_all_holidays_present(self):
-        all_subdivisions = set(NewZealand.subdivisions).union({"STC"})
+        all_subdivisions = set(NewZealand.subdivisions)
         holidays_1969 = set()
-        for p in all_subdivisions:
-            holidays_1969.update(NewZealand(years=1969, subdiv=p, observed=False).values())
+        for subdiv in all_subdivisions:
+            holidays_1969.update(NewZealand(years=1969, subdiv=subdiv, observed=False).values())
         holidays_2015 = set()
-        for p in all_subdivisions:
-            holidays_2015.update(NewZealand(years=2015, subdiv=p, observed=False).values())
+        for subdiv in all_subdivisions:
+            holidays_2015.update(NewZealand(years=2015, subdiv=subdiv, observed=False).values())
         holidays_1974 = set()
-        for p in all_subdivisions:
-            holidays_1974.update(NewZealand(years=1974, subdiv=p, observed=False).values())
+        for subdiv in all_subdivisions:
+            holidays_1974.update(NewZealand(years=1974, subdiv=subdiv, observed=False).values())
+
         all_holidays = {
             "New Year's Day",
             "Day after New Year's Day",
@@ -589,10 +455,6 @@ class TestNZ(CommonCountryTests, TestCase):
             "Otago Anniversary Day",
             "Southland Anniversary Day",
             "Chatham Islands Anniversary Day",
-            "Queen's Birthday",
-            "Labour Day",
-            "Christmas Day",
-            "Boxing Day",
         }
         self.assertEqual(all_holidays, holidays_1969)
         self.assertEqual(all_holidays, holidays_2015)
