@@ -11,3 +11,7 @@
 #  License: MIT (see LICENSE file)
 msgid ""
 msgstr ""
+"Project-Id-Version: Python-holidays\n"
+"Language: hi\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
