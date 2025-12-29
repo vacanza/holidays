@@ -775,7 +775,8 @@ class HolidayBase(dict[date, str]):
             if parent_entity := self.parent_entity:
                 entity_translation.add_fallback(
                     translation(
-                        parent_entity.country or parent_entity.market,
+                        getattr(parent_entity, "country", None)
+                        or getattr(parent_entity, "market", None),  # type: ignore[arg-type]
                         fallback=fallback,
                         languages=languages,
                         localedir=locale_directory,

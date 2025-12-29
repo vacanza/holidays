@@ -1918,6 +1918,13 @@ code when available. The following financial markets are available:
 </thead>
 <tbody>
 <tr>
+<td>Bombay Stock Exchange</td>
+<td>XBOM</td>
+<td>Bombay Stock Exchange (BSE) market holidays</td>
+<td><strong>en_IN</strong>, en_US, gu, hi</td>
+<td></td>
+</tr>
+<tr>
 <td>Brasil, Bolsa, Balcão</td>
 <td>BVMF</td>
 <td>Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)</td>
