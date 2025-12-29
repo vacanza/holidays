@@ -33,8 +33,12 @@ msgstr "Jour de l’An"
 msgid "Easter Monday"
 msgstr "Lundi de Pâques"
 
-#. Labor Day.
-msgid "Labor Day"
+#. Women's Rights Day.
+msgid "Women's Rights Day"
+msgstr "Journée des droits de la femme"
+
+#. Labour Day.
+msgid "Labour Day"
 msgstr "Fête du Travail"
 
 #. Ascension Day.
@@ -45,22 +49,30 @@ msgstr "Ascension"
 msgid "Whit Monday"
 msgstr "Lundi de Pentecôte"
 
-#. Reconciliation Day.
-msgid "Reconciliation Day"
-msgstr "Fête de la Réconciliation"
+#. Assumption Day.
+msgid "Assumption Day"
+msgstr "Assomption"
 
-#. National Day.
-msgid "National Day"
-msgstr "Fête Nationale"
+#. Independence Day.
+msgid "Independence Day"
+msgstr "Fête de l’Indépendance"
+
+#. Independence Day Holiday.
+msgid "Independence Day Holiday"
+msgstr "Jour férié de l’Indépendance"
 
 #. All Saints' Day.
 msgid "All Saints' Day"
 msgstr "Toussaint"
 
-#. Republic Day.
-msgid "Republic Day"
-msgstr "Jour de la République"
-
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr "Noël"
+
+#. Eid al-Fitr.
+msgid "Eid al-Fitr"
+msgstr "Aïd el-Fitr"
+
+#. Eid al-Adha.
+msgid "Eid al-Adha"
+msgstr "Aïd el-Adha"
