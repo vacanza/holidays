@@ -30,46 +30,58 @@ msgstr "%s (estimé)"
 msgid "New Year's Day"
 msgstr "Jour de l’An"
 
-#. Armed Forces Day.
-msgid "Armed Forces Day"
-msgstr "Journée de l’Armée"
+#. Revolution Day.
+msgid "Revolution Day"
+msgstr "Journée de la Révolution"
 
-#. Martyrs' Day.
-msgid "Martyrs' Day"
-msgstr "Journée du 26 mars"
+#. International Women's Day.
+msgid "International Women's Day"
+msgstr "Journée internationale des femmes"
 
 #. Easter Monday.
 msgid "Easter Monday"
 msgstr "Lundi de Pâques"
 
-#. Labor Day.
-msgid "Labor Day"
+#. Labour Day.
+msgid "Labour Day"
 msgstr "Fête du Travail"
 
-#. Africa Day.
-msgid "Africa Day"
-msgstr "Journée de l’Afrique"
+#. Ascension Day.
+msgid "Ascension Day"
+msgstr "Ascension"
 
-#. National Day of the Republic of Mali.
-msgid "National Day of the Republic of Mali"
-msgstr "Fête Nationale de la République du Mali"
+#. Independence Day.
+msgid "Independence Day"
+msgstr "Fête de l’Indépendance"
+
+#. Assumption Day.
+msgid "Assumption Day"
+msgstr "Assomption"
+
+#. Martyrs' Day.
+msgid "Martyrs' Day"
+msgstr "Journée des Martyrs"
+
+#. All Saints' Day.
+msgid "All Saints' Day"
+msgstr "Toussaint"
+
+#. Proclamation of Independence Day.
+msgid "Proclamation of Independence Day"
+msgstr "Proclamation de l’Indépendance"
 
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr "Fête de Noël"
 
-#. Prophet's Birthday.
-msgid "Prophet's Birthday"
-msgstr "Journée du Maouloud"
-
-#. Prophet's Baptism.
-msgid "Prophet's Baptism"
-msgstr "Journée du Maouloud (Baptême du Prophète)"
-
 #. Eid al-Fitr.
 msgid "Eid al-Fitr"
-msgstr "Journée de la Fête du Ramadan"
+msgstr "Aïd el-Fitr"
 
 #. Eid al-Adha.
 msgid "Eid al-Adha"
-msgstr "Journée de la Tabaski"
+msgstr "Aïd el-Adha"
+
+#. Mawlid.
+msgid "Mawlid"
+msgstr "Mawlid"
