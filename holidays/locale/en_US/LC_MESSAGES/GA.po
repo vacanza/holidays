@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Gabon holidays (French localization).
+# Gabon holidays (en_US localization).
 #
 
 msgid ""
@@ -20,7 +20,7 @@ msgstr ""
 "PO-Revision-Date: 2025-07-13 16:01+0530\n"
 "Last-Translator: Aman Srivastava <amansri345@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: fr\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,56 +28,56 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
-msgstr "%s (estimé)"
+msgstr "%s (estimated)"
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr "Jour de l’An"
+msgstr "New Year's Day"
 
 #. Easter Monday.
 msgid "Easter Monday"
-msgstr "Lundi de Pâques"
+msgstr "Easter Monday"
 
 #. Women's Rights Day.
 msgid "Women's Rights Day"
-msgstr "Journée des droits de la femme"
+msgstr "Women's Rights Day"
 
 #. Labour Day.
 msgid "Labour Day"
-msgstr "Fête du Travail"
+msgstr "Labour Day"
 
 #. Ascension Day.
 msgid "Ascension Day"
-msgstr "Ascension"
+msgstr "Ascension Day"
 
 #. Whit Monday.
 msgid "Whit Monday"
-msgstr "Lundi de Pentecôte"
+msgstr "Whit Monday"
 
 #. Assumption Day.
 msgid "Assumption Day"
-msgstr "Assomption"
+msgstr "Assumption Day"
 
 #. Independence Day.
 msgid "Independence Day"
-msgstr "Fête de l’Indépendance"
+msgstr "Independence Day"
 
 #. Independence Day Holiday.
 msgid "Independence Day Holiday"
-msgstr "Fête de l’Indépendance (jour férié)"
+msgstr "Independence Day Holiday"
 
 #. All Saints' Day.
 msgid "All Saints' Day"
-msgstr "Toussaint"
+msgstr "All Saints' Day"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "Noël"
+msgstr "Christmas Day"
 
 #. Eid al-Fitr.
 msgid "Eid al-Fitr"
-msgstr "Aïd el-Fitr"
+msgstr "Eid al-Fitr"
 
 #. Eid al-Adha.
 msgid "Eid al-Adha"
-msgstr "Aïd el-Adha"
+msgstr "Eid al-Adha"
