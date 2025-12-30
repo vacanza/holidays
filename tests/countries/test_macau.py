@@ -892,10 +892,9 @@ class TestMacau(CommonCountryTests, TestCase):
 
         # I Optional Holidays.
         self.assertSubdivIOptionalHolidayName(
-            name, (f"{year}-11-30" for year in range(self.start_year, 1993))
-        )
-        self.assertSubdivIOptionalHolidayName(
-            name, (f"{year}-07-13" for year in range(1993, 2000))
+            name,
+            (f"{year}-11-30" for year in range(self.start_year, 1993)),
+            (f"{year}-07-13" for year in range(1993, 2000)),
         )
         self.assertNoSubdivIOptionalHolidayName(name, range(2000, self.end_year))
         self.assertNoSubdivMOptionalHolidayName(name)
