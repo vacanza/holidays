@@ -326,7 +326,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             self.assertHolidayName(holiday_name, holidays, dts)
 
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv not in {"AL", "AR", "AZ", "GA", "ID", "MS", "NH"}:
+            if subdiv not in {"AK", "AL", "AR", "AZ", "GA", "ID", "MS", "NH"}:
                 self.assertHolidayName(name, holidays, dts)
                 self.assertHolidayName(name, holidays, range(1986, self.end_year))
                 self.assertNoHolidayName(name, holidays, range(self.start_year, 1986))
@@ -349,6 +349,10 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             "2022-01-17",
             "2023-01-16",
         )
+
+        ak_name = "Martin Luther King Jr.'s Birthday"
+        self.assertSubdivAkHolidayName(ak_name, range(1990, self.end_year))
+        self.assertNoSubdivAkHolidayName(ak_name, range(self.start_year, 1990))
 
         al_name = "Martin Luther King, Jr & Robert E. Lee's Birthday"
         self.assertSubdivAlHolidayName(al_name, dts)
@@ -486,12 +490,11 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             self.assertNoHolidayName(name, holidays, range(self.start_year, 1879))
 
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv not in {"AL", "AR", "DE", "FL", "GA", "IN", "NM", "PR", "VI"}:
+            if subdiv not in {"AK", "AL", "AR", "DE", "FL", "GA", "IN", "NM", "PR", "VI"}:
                 self.assertHolidayName(
                     name, holidays, (f"{year}-02-22" for year in range(1879, 1971))
                 )
                 if subdiv not in {
-                    "AK",
                     "AZ",
                     "CA",
                     "CO",
@@ -540,7 +543,6 @@ class TestUnitedStates(CommonCountryTests, TestCase):
         )
 
         for subdiv, name in (
-            ("AK", "Presidents' Day"),
             ("AL", "George Washington & Thomas Jefferson's Birthday"),
             ("AR", "George Washington's Birthday and Daisy Gatson Bates Day"),
             ("AZ", "Lincoln/Washington Presidents' Day"),
@@ -579,6 +581,17 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             else:
                 self.assertNoHoliday(self.subdiv_holidays[subdiv], dts)
                 self.assertNoHolidayName(common_name, self.subdiv_holidays[subdiv])
+
+        # AK.
+        name_ak_1971 = common_name
+        name_ak_1990 = "Presidents' Day"
+        self.assertSubdivAkHolidayName(name_ak_1990, dts)
+        self.assertSubdivAkHolidayName(name_ak_1971, range(1971, 1990))
+        self.assertSubdivAkHolidayName(name_ak_1990, range(1990, self.end_year))
+        self.assertNoSubdivAkHolidayName(
+            name_ak_1971, range(self.start_year, 1971), range(1990, self.end_year)
+        )
+        self.assertNoSubdivAkHolidayName(name_ak_1990, range(self.start_year, 1990))
 
         # DE.
         name_de_1971 = common_name
@@ -1070,6 +1083,21 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             self.assertNoNonObservedHolidayName(
                 f"{name} (observed)", UnitedStates(subdiv=subdiv, observed=False), obs_dt
             )
+
+        obs_dt = (
+            "1977-02-11",
+            "1978-02-13",
+            "1983-02-11",
+            "1984-02-13",
+            "1989-02-13",
+        )
+        self.assertSubdivAkHolidayName(name, (f"{year}-02-12" for year in range(1959, 1990)))
+        self.assertNoSubdivAkHolidayName(
+            name, range(self.start_year, 1959), range(1990, self.end_year)
+        )
+        self.assertSubdivAkHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoSubdivAkNonObservedHolidayName(f"{name} (observed)", obs_dt)
+
         obs_dt = (
             "1994-02-11",
             "1995-02-13",
@@ -1078,6 +1106,9 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             "2006-02-13",
         )
         self.assertSubdivCaHolidayName(name, (f"{year}-02-12" for year in range(1971, 2010)))
+        self.assertNoSubdivCaHolidayName(
+            name, range(self.start_year, 1971), range(2010, self.end_year)
+        )
         self.assertSubdivCaHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoSubdivCaNonObservedHolidayName(f"{name} (observed)", obs_dt)
 
@@ -1262,27 +1293,16 @@ class TestUnitedStates(CommonCountryTests, TestCase):
         name = "Seward's Day"
         self.assertNoHolidayName(name)
         self.assertSubdivAkHolidayName(
-            name, (f"{year}-03-30" for year in (*range(1918, 1921), *range(1922, 1955)))
-        )
-        self.assertNoSubdivAkHolidayName(name, range(self.start_year, 1918), 1921)
-        dt = (
-            "1955-03-28",
-            "2010-03-29",
-            "2011-03-28",
-            "2012-03-26",
-            "2013-03-25",
-            "2014-03-31",
-            "2015-03-30",
-            "2016-03-28",
-            "2017-03-27",
-            "2018-03-26",
-            "2019-03-25",
+            name,
             "2020-03-30",
             "2021-03-29",
             "2022-03-28",
             "2023-03-27",
+            "2024-03-25",
+            "2025-03-31",
         )
-        self.assertSubdivAkHolidayName(name, dt)
+        self.assertSubdivAkHolidayName(name, range(1959, self.end_year))
+        self.assertNoSubdivAkHolidayName(name, range(self.start_year, 1959))
 
     def test_cesar_chavez_day(self):
         name = "Cesar Chavez Day"
@@ -1937,9 +1957,9 @@ class TestUnitedStates(CommonCountryTests, TestCase):
         name = "Alaska Day"
         self.assertNoHolidayName(name)
         self.assertSubdivAkHolidayName(
-            name, (f"{year}-10-18" for year in range(1917, self.end_year))
+            name, (f"{year}-10-18" for year in range(1959, self.end_year))
         )
-        self.assertNoSubdivAkHolidayName(name, range(self.start_year, 1917))
+        self.assertNoSubdivAkHolidayName(name, range(self.start_year, 1959))
         obs_dt = (
             "2009-10-19",
             "2014-10-17",
@@ -2445,6 +2465,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 "Dr. Martin Luther King Jr. / Civil Rights Day; "
                 "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays; "
                 "Martin Luther King Jr. / Idaho Human Rights Day; Martin Luther King Jr. Day; "
+                "Martin Luther King Jr.'s Birthday; "
                 "Martin Luther King, Jr & Robert E. Lee's Birthday",
             ),
             ("2022-01-19", "Confederate Memorial Day"),

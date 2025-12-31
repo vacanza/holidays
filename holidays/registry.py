@@ -285,6 +285,7 @@ COUNTRIES: RegistryDict = {
 }
 
 FINANCIAL: RegistryDict = {
+    "bombay_stock_exchange": ("BombayStockExchange", "XBOM", "BSE"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
     "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),
     "ice_futures_europe": ("IceFuturesEurope", "IFEU", "ICEFuturesEurope"),
