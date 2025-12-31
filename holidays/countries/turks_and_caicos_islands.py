@@ -39,6 +39,7 @@ class TurksAndCaicosIslands(ObservedHolidayBase, ChristianHolidays, Internationa
         * [2025](https://web.archive.org/web/20250608202433/https://www.facebook.com/photo/?fbid=1019082573584944&set=a.353200576839817)
         * [Destination TCI](https://web.archive.org/web/20250429024708/https://destinationtci.tc/turks-and-caicos-islands-public-holidays/)
         * [Time and Date](https://web.archive.org/web/20250429024853/https://www.timeanddate.com/holidays/turks-and-caicos-islands/)
+        * [Constitution Day](https://web.archive.org/web/20251230163946/https://www.visittci.com/news/turks-and-caicos-public-holiday-changes-2026)
     """
 
     country = "TC"
@@ -99,6 +100,18 @@ class TurksAndCaicosIslands(ObservedHolidayBase, ChristianHolidays, Internationa
         # Emancipation Day.
         self._add_observed(self._add_holiday_aug_1(tr("Emancipation Day")))
 
+        if self._year >= 2014:
+            # National Day of Thanksgiving.
+            name = tr("National Day of Thanksgiving")
+            if self._year >= 2026:
+                self._add_holiday_1_day_prior_last_mon_of_aug(name)
+            else:
+                self._add_holiday_4th_fri_of_nov(name)
+
+        if self._year >= 2026:
+            # Constitution Day.
+            self._add_holiday_last_mon_of_aug(tr("Constitution Day"))
+
         # National Youth Day.
         self._add_holiday_last_fri_of_sep(tr("National Youth Day"))
 
@@ -109,9 +122,6 @@ class TurksAndCaicosIslands(ObservedHolidayBase, ChristianHolidays, Internationa
             # Columbus Day.
             else tr("Columbus Day")
         )
-
-        # National Day of Thanksgiving.
-        self._add_holiday_4th_fri_of_nov(tr("National Day of Thanksgiving"))
 
         self._add_observed(
             # Christmas Day.

@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.75\n"
+"Project-Id-Version: Holidays 0.88\n"
 "POT-Creation-Date: 2025-04-23 12:44-0500\n"
-"PO-Revision-Date: 2025-05-07 13:02-0400\n"
-"Last-Translator: Shalom Donga <shalomdonga@gmail.com>\n"
+"PO-Revision-Date: 2025-12-30 18:47+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -63,6 +63,14 @@ msgstr "Queen's Birthday"
 msgid "Emancipation Day"
 msgstr "Emancipation Day"
 
+#. National Day of Thanksgiving.
+msgid "National Day of Thanksgiving"
+msgstr "National Day of Thanksgiving"
+
+#. Constitution Day.
+msgid "Constitution Day"
+msgstr "Constitution Day"
+
 #. National Youth Day.
 msgid "National Youth Day"
 msgstr "National Youth Day"
@@ -74,10 +82,6 @@ msgstr "National Heritage Day"
 #. Columbus Day.
 msgid "Columbus Day"
 msgstr "Columbus Day"
-
-#. National Day of Thanksgiving.
-msgid "National Day of Thanksgiving"
-msgstr "National Day of Thanksgiving"
 
 #. Christmas Day.
 msgid "Christmas Day"
