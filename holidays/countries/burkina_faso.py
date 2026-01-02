@@ -24,13 +24,14 @@ class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Burkina_Faso>
         * <https://www.officeholidays.com/countries/burkina-faso>
-        * <https://fr.wikipedia.org/wiki/Jours_f%C3%A9ri%C3%A9s_au_Burkina_Faso
+        * <https://fr.wikipedia.org/wiki/Jours_f%C3%A9ri%C3%A9s_au_Burkina_Faso>
 
     """
 
     country = "BF"
-    default_language = "fr"
-    supported_languages = ("fr", "en_US")
+    # English is the official language since 2024; French remains widely used.
+    default_language = "en_US"
+    supported_languages = ("en_US", "fr")
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
     # %s (observed, estimated).
