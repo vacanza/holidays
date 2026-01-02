@@ -18,12 +18,22 @@ msgstr ""
 "Project-Id-Version: Holidays 0.77\n"
 "POT-Creation-Date: 2025-07-13 16:01+0530\n"
 "PO-Revision-Date: 2025-07-13 16:01+0530\n"
-"Last-Translator: Kriti Birda <workwithkritibirda@gmail.com>\n"
+"Last-Translator: Aman Srivastava<amansri345@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (observé)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
+msgstr "%s (observé, estimé)"
 
 #. %s (estimated).
 #, c-format

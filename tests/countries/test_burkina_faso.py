@@ -179,5 +179,23 @@ class TestBurkinaFaso(CommonCountryTests, TestCase):
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (observed)"),
         )
+     
+    def test_l10n_fr(self):
+        self.assertLocalizedHolidays(
+            "fr",
+            ("2022-01-01", "Jour de l’An"),
+            ("2022-01-03", "Journée de la Révolution"),
+            ("2022-03-08", "Journée internationale des femmes"),
+            ("2022-04-18", "Lundi de Pâques"),
+            ("2022-05-01", "Fête du Travail"),
+            ("2022-05-26", "Ascension"),
+            ("2022-07-09", "Aïd el-Adha"),
+            ("2022-08-05", "Fête de l’Indépendance"),
+            ("2022-08-15", "Assomption"),
+            ("2022-10-31", "Journée des Martyrs"),
+            ("2022-11-01", "Toussaint"),
+            ("2022-12-11", "Proclamation de l’Indépendance"),
+            ("2022-12-25", "Fête de Noël"),
+        )    
+            
         
-    
