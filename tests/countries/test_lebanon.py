@@ -20,11 +20,7 @@ from tests.common import CommonCountryTests
 class TestLebanon(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1978, 2050)
-        super().setUpClass(Lebanon, years=years)
-        cls.bank_holidays = Lebanon(categories=BANK, years=years)
-        cls.government_holidays = Lebanon(categories=GOVERNMENT, years=years)
-        cls.no_estimated_holidays = Lebanon(years=years, islamic_show_estimated=False)
+        super().setUpClass(Lebanon)
 
     def test_no_holidays(self):
         super().test_no_holidays()
@@ -34,35 +30,33 @@ class TestLebanon(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         self.assertHolidayName(
-            "رأس السنة الميلادية", (f"{year}-01-01" for year in range(1978, 2050))
+            "رأس السنة الميلادية", (f"{year}-01-01" for year in self.full_range)
         )
 
     def test_armenian_orthodox_christmas(self):
         name = "عيد الميلاد عند الطوائف الارمنية الارثوذكسية"
-        self.assertHolidayName(name, (f"{year}-01-06" for year in range(1995, 2050)))
-        self.assertNoHolidayName(name, range(1978, 1995))
+        self.assertHolidayName(name, (f"{year}-01-06" for year in range(1995, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1995))
 
     def test_saint_maron_day(self):
-        self.assertHolidayName("عيد مار مارون", (f"{year}-02-09" for year in range(1978, 2050)))
+        self.assertHolidayName("عيد مار مارون", (f"{year}-02-09" for year in self.full_range))
 
     def test_rafiki_memorial_day(self):
         name = "يوم ذكرى رفيق الحريري"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.bank_holidays, (f"{year}-02-14" for year in range(2020, 2050))
+        self.assertBankHolidayName(name, (f"{year}-02-14" for year in range(2020, self.end_year)))
+        self.assertGovernmentHolidayName(
+            name, (f"{year}-02-14" for year in range(2020, self.end_year))
         )
-        self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-02-14" for year in range(2020, 2050))
-        )
-        self.assertNoHolidayName(name, self.bank_holidays, range(1978, 2019))
-        self.assertNoHolidayName(name, self.government_holidays, range(1978, 2019))
+        self.assertNoBankHolidayName(name, range(self.start_year, 2019))
+        self.assertNoGovernmentHolidayName(name, range(self.start_year, 2019))
 
     def test_feast_of_the_annunciation(self):
         name = "عيد بشارة السيدة مريم العذراء"
         self.assertHolidayName(
-            name, (f"{year}-03-25" for year in (*range(1995, 2006), *range(2010, 2050)))
+            name, (f"{year}-03-25" for year in (*range(1995, 2006), *range(2010, self.end_year)))
         )
-        self.assertNoHolidayName(name, range(1978, 1995), range(2006, 2010))
+        self.assertNoHolidayName(name, range(self.start_year, 1995), range(2006, 2010))
 
     def test_catholic_good_friday(self):
         name = "الجمعة العظيمة عند الطوائف الكاثوليكية"
@@ -76,7 +70,7 @@ class TestLebanon(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(1978, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_orthodox_good_friday(self):
         name = "الجمعة العظيمة عند الطوائف الأرثوذكسية"
@@ -90,7 +84,7 @@ class TestLebanon(CommonCountryTests, TestCase):
             "2024-05-03",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(1978, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_orthodox_holy_saturday(self):
         name = "سبت النور للطائفة الأرثوذكسية"
@@ -114,9 +108,9 @@ class TestLebanon(CommonCountryTests, TestCase):
             "1990-04-16",
         )
         self.assertHolidayName(name, range(1986, 1995))
-        self.assertHolidayName(name, self.bank_holidays, range(2020, 2050))
-        self.assertNoHolidayName(name, range(1978, 1986), range(1995, 2050))
-        self.assertNoHolidayName(name, self.bank_holidays, range(1978, 2019))
+        self.assertBankHolidayName(name, range(2020, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1986), range(1995, self.end_year))
+        self.assertNoBankHolidayName(name, range(self.start_year, 2019))
 
     def test_orthodox_easter_monday(self):
         name = "اثنين الفصح عند الطوائف الأرثوذكسية"
@@ -129,9 +123,9 @@ class TestLebanon(CommonCountryTests, TestCase):
             "1990-04-16",
         )
         self.assertHolidayName(name, range(1986, 1995))
-        self.assertHolidayName(name, self.bank_holidays, range(2020, 2050))
-        self.assertNoHolidayName(name, range(1978, 1986), range(1995, 2050))
-        self.assertNoHolidayName(name, self.bank_holidays, range(1978, 2019))
+        self.assertBankHolidayName(name, range(2020, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1986), range(1995, self.end_year))
+        self.assertNoBankHolidayName(name, range(self.start_year, 2019))
 
     def test_orthodox_easter_tuesday(self):
         name = "ثلاثاء الفصح للطوائف الأرثوذكسية"
@@ -140,18 +134,18 @@ class TestLebanon(CommonCountryTests, TestCase):
             "1987-04-21",
             "1990-04-17",
         )
-        self.assertNoHolidayName(name, set(range(1978, 2050)) - {1987, 1990})
+        self.assertNoHolidayName(name, set(self.full_range) - {1987, 1990})
 
     def test_labor_day(self):
         name = "عيد العمل"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1978, 2050)))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
+        obs_dts = (
             "2005-05-02",
             "2011-05-02",
             "2016-05-02",
             "2022-05-02",
         )
-        self.assertHolidayName(f"{name} (يُحتفل به)", dt)
+        self.assertHolidayName(f"{name} (يُحتفل به)", obs_dts)
 
     def test_martyrs_day(self):
         name = "عيد الشهداء"
@@ -166,7 +160,7 @@ class TestLebanon(CommonCountryTests, TestCase):
             "2008-05-04",
             "2009-05-03",
         )
-        self.assertHolidayName(name, (*range(1978, 1994), *range(2006, 2050)))
+        self.assertHolidayName(name, (*range(self.start_year, 1994), *range(2006, self.end_year)))
         self.assertNoHolidayName(name, range(1994, 2006))
 
     def test_resistance_and_liberation_day(self):
@@ -179,37 +173,35 @@ class TestLebanon(CommonCountryTests, TestCase):
             "2024-05-12",
             "2025-05-11",
         )
-        self.assertHolidayName(name, range(2006, 2050))
-        self.assertNoHolidayName(name, range(1978, 2006))
+        self.assertHolidayName(name, range(2006, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2006))
 
     def test_anniversary_of_the_tragedy_of_beirut_port_explosion(self):
         name = "ذكرى مأساة انفجار مرفأ بيروت"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-08-04" for year in range(2021, 2050))
+        self.assertGovernmentHolidayName(
+            name, (f"{year}-08-04" for year in range(2021, self.end_year))
         )
-        self.assertNoHolidayName(name, self.government_holidays, range(1978, 2021))
-        self.assertNoHolidayName(name, self.bank_holidays)
+        self.assertNoGovernmentHolidayName(name, range(self.start_year, 2021))
+        self.assertNoBankHolidayName(name)
 
     def test_assumption_day(self):
-        self.assertHolidayName(
-            "عيد انتقال العذراء", (f"{year}-08-15" for year in range(1978, 2050))
-        )
+        self.assertHolidayName("عيد انتقال العذراء", (f"{year}-08-15" for year in self.full_range))
 
     def test_all_saints_days(self):
         name = "عيد جميع القديسين"
         self.assertHolidayName(name, (f"{year}-11-01" for year in range(1985, 1994)))
-        self.assertNoHolidayName(name, range(1978, 1985), range(1994, 2050))
+        self.assertNoHolidayName(name, range(self.start_year, 1985), range(1994, self.end_year))
 
     def test_independence_day(self):
-        self.assertHolidayName("ذكرى الاستقلال", (f"{year}-11-22" for year in range(1978, 2050)))
+        self.assertHolidayName("ذكرى الاستقلال", (f"{year}-11-22" for year in self.full_range))
 
     def test_christmas_day(self):
-        self.assertHolidayName("عيد الميلاد", (f"{year}-12-25" for year in range(1978, 2050)))
+        self.assertHolidayName("عيد الميلاد", (f"{year}-12-25" for year in self.full_range))
 
     def test_islamic_new_year(self):
         name = "عيد رأس السنة الهجرية"
-        self.assertHolidayName(
+        self.assertIslamicNoEstimatedHolidayName(
             name,
             "2020-08-20",
             "2021-08-09",
@@ -218,11 +210,11 @@ class TestLebanon(CommonCountryTests, TestCase):
             "2024-07-07",
             "2025-06-26",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1978, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_ashura(self):
         name = "عاشوراء"
-        self.assertHolidayName(
+        self.assertIslamicNoEstimatedHolidayName(
             name,
             "2020-08-30",
             "2021-08-19",
@@ -230,11 +222,11 @@ class TestLebanon(CommonCountryTests, TestCase):
             "2023-07-28",
             "2024-07-16",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1978, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_mawlid(self):
         name = "ذكرى المولد النبوي الشريف"
-        self.assertHolidayName(
+        self.assertIslamicNoEstimatedHolidayName(
             name,
             "2020-10-29",
             "2021-10-18",
@@ -242,11 +234,11 @@ class TestLebanon(CommonCountryTests, TestCase):
             "2023-09-27",
             "2024-09-15",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1978, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_fitr(self):
         name = "عيد الفطر"
-        self.assertHolidayName(
+        self.assertIslamicNoEstimatedHolidayName(
             name,
             "1985-06-20",
             "1986-06-10",
@@ -267,11 +259,11 @@ class TestLebanon(CommonCountryTests, TestCase):
             "2025-03-30",
             "2025-03-31",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1978, 2050))
-        self.assertHolidayNameCount(name, 1, self.no_estimated_holidays, range(1978, 1986))
-        self.assertHolidayNameCount(name, 3, self.no_estimated_holidays, range(1986, 1995))
-        self.assertHolidayNameCount(
-            name, 2, self.no_estimated_holidays, set(range(1995, 2050)) - {2000, 2033}
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 1, range(self.start_year, 1986))
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 3, range(1986, 1995))
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 2, set(range(1995, self.end_year)) - {2000, 2033}
         )
 
     def test_eid_al_adha(self):
@@ -298,15 +290,14 @@ class TestLebanon(CommonCountryTests, TestCase):
             "2025-06-06",
             "2025-06-07",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1978, 2050))
-        self.assertHolidayNameCount(
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        self.assertIslamicNoEstimatedHolidayNameCount(
             name,
             2,
-            self.no_estimated_holidays,
-            range(1978, 1986),
-            set(range(1994, 2050)) - {2006, 2007, 2039},
+            range(self.start_year, 1986),
+            set(range(1994, self.end_year)) - {2006, 2007, 2039},
         )
-        self.assertHolidayNameCount(name, 3, self.no_estimated_holidays, range(1986, 1994))
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 3, range(1986, 1994))
 
     def test_2024(self):
         self.assertHolidaysInYear(
