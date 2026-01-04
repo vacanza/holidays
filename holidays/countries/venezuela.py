@@ -50,7 +50,7 @@ class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHol
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 
-        # Carnival Monday..
+        # Carnival Monday.
         self._add_carnival_monday(tr("Lunes de Carnaval"))
 
         # Carnival Tuesday.

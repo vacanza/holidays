@@ -31,7 +31,7 @@ msgstr ""
 msgid "Año Nuevo"
 msgstr "Новий рік"
 
-#. Carnival Monday..
+#. Carnival Monday.
 msgid "Lunes de Carnaval"
 msgstr "Карнавальний понеділок"
 
@@ -57,7 +57,7 @@ msgstr "Міжнародний день трудящих"
 
 #. Family Day.
 msgid "Día de la Familia"
-msgstr "День сім'ї"
+msgstr "День сімʼї"
 
 #. Battle of Carabobo.
 msgid "Batalla de Carabobo"

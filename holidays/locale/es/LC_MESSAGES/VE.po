@@ -31,7 +31,7 @@ msgstr ""
 msgid "Año Nuevo"
 msgstr ""
 
-#. Carnival Monday..
+#. Carnival Monday.
 msgid "Lunes de Carnaval"
 msgstr ""
 
