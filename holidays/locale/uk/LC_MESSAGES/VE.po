@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.22\n"
+"Project-Id-Version: Holidays 0.88\n"
 "POT-Creation-Date: 2023-03-05 12:23+0200\n"
-"PO-Revision-Date: 2023-03-05 13:38+0200\n"
+"PO-Revision-Date: 2026-01-04 15:43+0700\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -24,18 +24,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.8\n"
 "X-Source-Language: es\n"
 
 #. New Year's Day.
 msgid "Año Nuevo"
 msgstr "Новий рік"
 
-#. Monday of Carnival.
+#. Carnival Monday..
 msgid "Lunes de Carnaval"
 msgstr "Карнавальний понеділок"
 
-#. Tuesday of Carnival.
+#. Carnival Tuesday.
 msgid "Martes de Carnaval"
 msgstr "Карнавальний вівторок"
 
@@ -54,6 +54,10 @@ msgstr "День проголошення незалежності"
 #. International Worker's Day.
 msgid "Dia Mundial del Trabajador"
 msgstr "Міжнародний день трудящих"
+
+#. Family Day.
+msgid "Día de la Familia"
+msgstr "День сім'ї"
 
 #. Battle of Carabobo.
 msgid "Batalla de Carabobo"
@@ -75,9 +79,9 @@ msgstr "День спротиву корінних народів"
 msgid "Día de la Raza"
 msgstr "День Колумба"
 
-#. Unknown Holiday.
-msgid "Día Festivo Desconocido"
-msgstr "Невідоме свято"
+#. Feast of Saint Simon the Zealot.
+msgid "Fiesta de San Simón Apóstol"
+msgstr "Свято святого апостола Симона Зилота"
 
 #. Christmas Eve.
 msgid "Nochebuena"
@@ -90,3 +94,19 @@ msgstr "Різдво Христове"
 #. New Year's Eve.
 msgid "Fiesta de Fin de Año"
 msgstr "Переддень Нового року"
+
+#. National Holidays.
+msgid "Fiesta Nacional"
+msgstr "Національне свято"
+
+#. Canonization of José Gregorio Hernández and Mother Carmen Rendiles.
+msgid "Canonización de José Gregorio Hernández y la Madre Carmen Rendiles"
+msgstr "Канонізація Хосе Ґреґоріо Ернандеса та Матері Кармен Ренділес"
+
+#. 10th Anniversary of the Bolivarian Revolution.
+msgid "10.º aniversario de la Revolución Bolivariana"
+msgstr "10-та річниця Боліваріанської революції"
+
+#. Day of Loyalty and Love for Supreme Commander Hugo Chávez and the Fatherland.
+msgid "Día de la Lealtad y el Amor al Comandante Supremo Hugo Chávez y a la Patria"
+msgstr "День вірності та любові до Верховного командувача Уго Чавеса і Батьківщини"

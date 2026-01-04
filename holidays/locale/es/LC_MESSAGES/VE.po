@@ -14,28 +14,28 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.22\n"
+"Project-Id-Version: Holidays 0.88\n"
 "POT-Creation-Date: 2023-03-05 12:23+0200\n"
-"PO-Revision-Date: 2023-03-05 12:44+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-01-04 15:43+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.8\n"
 "X-Source-Language: es\n"
 
 #. New Year's Day.
 msgid "Año Nuevo"
 msgstr ""
 
-#. Monday of Carnival.
+#. Carnival Monday..
 msgid "Lunes de Carnaval"
 msgstr ""
 
-#. Tuesday of Carnival.
+#. Carnival Tuesday.
 msgid "Martes de Carnaval"
 msgstr ""
 
@@ -53,6 +53,10 @@ msgstr ""
 
 #. International Worker's Day.
 msgid "Dia Mundial del Trabajador"
+msgstr ""
+
+#. Family Day.
+msgid "Día de la Familia"
 msgstr ""
 
 #. Battle of Carabobo.
@@ -75,8 +79,8 @@ msgstr ""
 msgid "Día de la Raza"
 msgstr ""
 
-#. Unknown Holiday.
-msgid "Día Festivo Desconocido"
+#. Feast of Saint Simon the Zealot.
+msgid "Fiesta de San Simón Apóstol"
 msgstr ""
 
 #. Christmas Eve.
@@ -89,4 +93,20 @@ msgstr ""
 
 #. New Year's Eve.
 msgid "Fiesta de Fin de Año"
+msgstr ""
+
+#. National Holidays.
+msgid "Fiesta Nacional"
+msgstr ""
+
+#. Canonization of José Gregorio Hernández and Mother Carmen Rendiles.
+msgid "Canonización de José Gregorio Hernández y la Madre Carmen Rendiles"
+msgstr ""
+
+#. 10th Anniversary of the Bolivarian Revolution.
+msgid "10.º aniversario de la Revolución Bolivariana"
+msgstr ""
+
+#. Day of Loyalty and Love for Supreme Commander Hugo Chávez and the Fatherland.
+msgid "Día de la Lealtad y el Amor al Comandante Supremo Hugo Chávez y a la Patria"
 msgstr ""
