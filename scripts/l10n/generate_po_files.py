@@ -89,7 +89,8 @@ class POGenerator:
         po_file = pofile(po_path, wrapwidth=WRAP_WIDTH)
         po_file_initial = po_file.copy()
 
-        po_file.merge(pofile(pot_path))
+        pot_file = pofile(pot_path)
+        po_file.merge(pot_file)
         po_file.sort(key=_location_sort_key)
         for entry in po_file:
             entry.occurrences.clear()
@@ -97,6 +98,7 @@ class POGenerator:
         # Only update the project version if po file translation entries has changed.
         if po_file != po_file_initial:
             po_file.metadata["Project-Id-Version"] = f"Holidays {package_version}"
+            po_file.metadata["PO-Revision-Date"] = pot_file.metadata["PO-Revision-Date"]
 
         # Save the file each time in order to capture all other changes properly.
         po_file.save(po_path, newline="\n")

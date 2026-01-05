@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.86\n"
+"Project-Id-Version: Holidays 0.88\n"
 "POT-Creation-Date: 2023-04-08 20:17+0300\n"
 "PO-Revision-Date: 2025-11-25 23:05+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -96,6 +96,18 @@ msgstr "Другий день Різдва"
 msgid "Söndag"
 msgstr "Неділя"
 
+#. Midsummer Eve.
+msgid "Midsommarafton"
+msgstr "Переддень літнього сонцестояння"
+
+#. Christmas Eve.
+msgid "Julafton"
+msgstr "Святий вечір"
+
+#. New Year's Eve.
+msgid "Nyårsafton"
+msgstr "Переддень Нового року"
+
 #. Twelfth Night.
 msgid "Trettondagsafton"
 msgstr "Дванадцята ніч"
@@ -108,21 +120,9 @@ msgstr "Великий четвер"
 msgid "Valborgsmässoafton"
 msgstr "Вальпургієва ніч"
 
-#. Midsummer Eve.
-msgid "Midsommarafton"
-msgstr "Переддень літнього сонцестояння"
-
 #. All Saints' Eve.
 msgid "Allahelgonsafton"
 msgstr "Переддень Дня усіх святих"
-
-#. Christmas Eve.
-msgid "Julafton"
-msgstr "Святий вечір"
-
-#. New Year's Eve.
-msgid "Nyårsafton"
-msgstr "Переддень Нового року"
 
 #. Day before Ascension Day.
 msgid "Dag före Kristi himmelsfärdsdag"

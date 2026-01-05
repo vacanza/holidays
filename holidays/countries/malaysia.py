@@ -74,9 +74,27 @@ class Malaysia(
         * [Holidays Act 1951](https://web.archive.org/web/20241202103403/https://www.kabinet.gov.my/bkpp/pdf/akta_warta/1951_12_31_act369.pdf)
         * [Holidays Ordinance (Sabah Cap. 56)](https://web.archive.org/web/20201028045259/https://sagc.sabah.gov.my/sites/default/files/law/HolidaysOrdinance.pdf)
         * [Public Holidays Ordinance (Sarawak Cap. 8)](https://web.archive.org/web/20221208142318/https://www.kabinet.gov.my/bkpp/pdf/akta_warta/sarawak_public_holidays_ord_chapter8.pdf)
-        * [Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia)
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia>
         * <https://web.archive.org/web/20250123115300/https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8>
         * <https://web.archive.org/web/20240228225038/https://www.nst.com.my/news/nation/2024/02/1014012/melaka-cm-suggests-declaring-feb-20-federal-public-holiday-mark>
+        * <https://web.archive.org/web/20251216120554/https://www.kabinet.gov.my/storage/2025/08/HKA-2026.pdf>
+
+    Subdivisions Holidays References:
+        * Sabah:
+            * [2001](https://web.archive.org/web/20230605164302/https://www.sabah.gov.my/gazette/docs/000207.pdf)
+            * [2002](https://web.archive.org/web/20230605173234/https://www.sabah.gov.my/gazette/docs/000968.pdf)
+            * [2003](https://web.archive.org/web/20230418041718/https://www.sabah.gov.my/gazette/docs/001736.pdf)
+            * [2004](https://web.archive.org/web/20230414022317/https://www.sabah.gov.my/gazette/docs/001546.pdf)
+            * [2005](https://web.archive.org/web/20230420233014/https://www.sabah.gov.my/gazette/docs/001714.pdf)
+            * [2006](https://web.archive.org/web/20230414141628/https://www.sabah.gov.my/gazette/docs/001803.pdf)
+            * [2007](https://web.archive.org/web/20230414125605/https://www.sabah.gov.my/gazette/docs/001866.pdf)
+            * [2008](https://web.archive.org/web/20230605175854/https://www.sabah.gov.my/gazette/docs/001942.pdf)
+            * [2009](https://web.archive.org/web/20230605180330/https://www.sabah.gov.my/gazette/docs/001998.pdf)
+            * [Christmas Eve since 2019](https://web.archive.org/web/20221207071317/https://www.sabah.gov.my/gazette/docs/002712.pdf)
+            * [Birthday of the Governor of Sabah update 2010](https://web.archive.org/web/20230414125515/https://www.sabah.gov.my/gazette/docs/002114.pdf)
+            * [2025](https://web.archive.org/web/20251216152001/https://www.sabah.gov.my/gazette/docs/003106.pdf)
+            * [2025 changes](https://web.archive.org/web/20250330061412/https://www.sabah.gov.my/gazette/docs/003144.pdf)
+            * [2026](https://web.archive.org/web/20251010011859/https://www.sabah.gov.my/gazette/docs/003152.pdf)
 
     Section 3 of Holidays Act 1951:
     > If any day specified in the Schedule falls on Sunday then the day following shall be
@@ -505,12 +523,21 @@ class Malaysia(
         self._add_holiday_may_30(name)
         self._add_holiday_may_31(name)
 
-        # Birthday of the Governor of Sabah.
-        self._add_holiday_1st_sat_of_oct(tr("Hari Jadi Yang di-Pertua Negeri Sabah"))
+        if self._year >= 2001:
+            # Birthday of the Governor of Sabah.
+            name = tr("Hari Jadi Yang di-Pertua Negeri Sabah")
+            if self._year >= 2025:
+                self._add_holiday_mar_30(name)
+            elif self._year >= 2010:
+                self._add_holiday_1st_sat_of_oct(name)
+            elif self._year == 2005:
+                self._add_holiday_feb_11(name)
+            else:
+                self._add_holiday_sep_16(name)
 
         if self._year >= 2019:
             # Christmas Eve.
-            self._add_christmas_eve(tr("Christmas Eve"))
+            self._add_christmas_eve(tr("Krismas (Eve)"))
 
     def _populate_subdiv_13_public_holidays(self):
         # New Year's Day.
@@ -616,11 +643,12 @@ class MalaysiaBuddhistHolidays(_CustomBuddhistHolidays):
         2023: (MAY, 4),
         2024: (MAY, 22),
         2025: (MAY, 12),
+        2026: (MAY, 31),
     }
 
 
 class MalaysiaChineseHolidays(_CustomChineseHolidays):
-    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2025)
+    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2026)
 
 
 class MalaysiaHinduHolidays(_CustomHinduHolidays):
@@ -650,6 +678,7 @@ class MalaysiaHinduHolidays(_CustomHinduHolidays):
         2023: (NOV, 12),
         2024: (OCT, 31),
         2025: (OCT, 20),
+        2026: (NOV, 8),
     }
 
     THAIPUSAM_DATES = {
@@ -667,7 +696,7 @@ class MalaysiaHinduHolidays(_CustomHinduHolidays):
 
 
 class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),
@@ -687,7 +716,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2025: (JUN, 7),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_FITR_DATES = {
         2001: (DEC, 17),
         2002: (DEC, 6),
@@ -697,9 +726,10 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2019: (JUN, 5),
         2023: (APR, 22),
         2025: (MAR, 31),
+        2026: (MAR, 21),
     }
 
-    HARI_HOL_JOHOR_DATES_CONFIRMED_YEARS = (2011, 2025)
+    HARI_HOL_JOHOR_DATES_CONFIRMED_YEARS = (2011, 2026)
     HARI_HOL_JOHOR_DATES = {
         2011: (JAN, 12),
         2012: (DEC, 20),
@@ -712,9 +742,10 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2022: (SEP, 3),
         2023: (AUG, 23),
         2024: (AUG, 11),
+        2026: (JUL, 21),
     }
 
-    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2025)
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2026)
     HIJRI_NEW_YEAR_DATES = {
         2003: (MAR, 5),
         2004: (FEB, 22),
@@ -725,9 +756,10 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2019: (SEP, 1),
         2021: (AUG, 10),
         2025: (JUN, 27),
+        2026: (JUN, 17),
     }
 
-    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (2001, 2025)
+    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (2001, 2026)
     ISRA_AND_MIRAJ_DATES = {
         2001: (OCT, 15),
         2006: (AUG, 22),
@@ -737,9 +769,10 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2016: (MAY, 5),
         2018: (APR, 14),
         2022: (MAR, 1),
+        2026: (JAN, 17),
     }
 
-    MAWLID_DATES_CONFIRMED_YEARS = (2001, 2025)
+    MAWLID_DATES_CONFIRMED_YEARS = (2001, 2026)
     MAWLID_DATES = {
         2003: (MAY, 14),
         2004: (MAY, 2),
@@ -757,7 +790,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2025: (SEP, 5),
     }
 
-    NUZUL_AL_QURAN_DATES_CONFIRMED_YEARS = (2001, 2025)
+    NUZUL_AL_QURAN_DATES_CONFIRMED_YEARS = (2001, 2026)
     NUZUL_AL_QURAN_DATES = {
         2001: (DEC, 3),
         2003: (NOV, 12),
@@ -769,9 +802,10 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2022: (APR, 19),
         2024: (MAR, 28),
         2025: (MAR, 18),
+        2026: (MAR, 7),
     }
 
-    RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2001, 2025)
+    RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2001, 2026)
     RAMADAN_BEGINNING_DATES = {
         2001: (NOV, 17),
         2003: (OCT, 27),
@@ -784,15 +818,16 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2022: (APR, 3),
         2024: (MAR, 12),
         2025: (MAR, 2),
+        2026: (FEB, 19),
     }
 
 
 class MalaysiaStaticHolidays:
     # General election additional holiday.
-    election_polling_day = tr("Cuti Peristiwa (pilihan raya umum)")
+    general_election_additional_holiday = tr("Cuti Peristiwa (pilihan raya umum)")
 
     # Additional holiday.
-    election_additional_holiday = "Cuti Peristiwa"
+    additional_holiday = tr("Cuti Peristiwa")
 
     # Eid al-Adha.
     eid_al_adha = tr("Hari Raya Qurban")
@@ -803,117 +838,182 @@ class MalaysiaStaticHolidays:
     # Malaysia Cup Holiday.
     malaysia_cup_holiday = tr("Cuti Piala Malaysia")
 
-    # Day of Installation of the 15th Yang di-Pertuan Agong.
-    yang_di_pertuan_agong_15_installation = tr("Hari Pertabalan Yang di-Pertuan Agong ke-15")
-
-    # Day of Installation of the 16th Yang di-Pertuan Agong.
-    yang_di_pertuan_agong_16_installation = tr("Hari Pertabalan Yang di-Pertuan Agong ke-16")
-
-    # Eid al-Fitr (additional holiday).
-    eid_al_fitr_additional_holiday = tr("Hari Raya Puasa (pergantian hari)")
-
-    # Arafat Day.
-    arafat_day = tr("Hari Arafah")
-
-    # Additional holiday in commemoration of the 2017 SEA Games.
-    additional_holiday_2017_sea_games = tr("Cuti tambahan sempena memperingati SAT 2017")
-
     special_public_holidays = {
-        1999: (NOV, 29, election_polling_day),
+        1999: (NOV, 29, general_election_additional_holiday),
         2017: (
-            (APR, 24, yang_di_pertuan_agong_15_installation),
-            (SEP, 4, additional_holiday_2017_sea_games),
+            # Day of Installation of the 15th Yang di-Pertuan Agong.
+            (APR, 24, tr("Hari Pertabalan Yang di-Pertuan Agong ke-15")),
+            # Additional holiday in commemoration of the 2017 SEA Games.
+            (SEP, 4, tr("Cuti tambahan sempena memperingati SAT 2017")),
         ),
-        2018: (MAY, 9, election_polling_day),
-        2019: (JUL, 30, yang_di_pertuan_agong_16_installation),
+        2018: (MAY, 9, general_election_additional_holiday),
+        # Day of Installation of the 16th Yang di-Pertuan Agong.
+        2019: (JUL, 30, tr("Hari Pertabalan Yang di-Pertuan Agong ke-16")),
         2022: (
-            (NOV, 18, election_polling_day),
-            (NOV, 19, election_polling_day),
-            (NOV, 28, election_additional_holiday),
+            (NOV, 18, general_election_additional_holiday),
+            (NOV, 19, general_election_additional_holiday),
+            (NOV, 28, additional_holiday),
         ),
-        2023: (APR, 21, eid_al_fitr_additional_holiday),
+        # Eid al-Fitr (additional holiday).
+        2023: (APR, 21, tr("Hari Raya Puasa (pergantian hari)")),
+        2025: (SEP, 15, additional_holiday),
     }
 
-    special_14_public_holidays = {
-        2021: (DEC, 3, malaysia_cup_holiday),
-    }
-
-    special_15_public_holidays = {
-        2021: (DEC, 3, malaysia_cup_holiday),
-    }
-
-    special_16_public_holidays = {
-        2021: (DEC, 3, malaysia_cup_holiday),
-    }
-
-    special_13_public_holidays = {
+    special_01_public_holidays = {
         2018: (
-            (MAY, 17, election_additional_holiday),
-            (MAY, 18, election_additional_holiday),
+            (MAY, 10, additional_holiday),
+            (MAY, 13, additional_holiday),
         ),
     }
-
     special_01_public_holidays_observed = {
         2022: (MAY, 4, labor_day),
     }
 
+    special_02_public_holidays = {
+        2018: (
+            (MAY, 10, additional_holiday),
+            (MAY, 13, additional_holiday),
+        ),
+    }
     special_02_public_holidays_observed = {
         2022: (MAY, 4, labor_day),
     }
 
+    special_03_public_holidays = {
+        2018: (
+            (MAY, 10, additional_holiday),
+            (MAY, 13, additional_holiday),
+        ),
+    }
     special_03_public_holidays_observed = {
         2022: (MAY, 4, labor_day),
     }
 
-    special_14_public_holidays_observed = {
-        2007: (JAN, 2, eid_al_adha),
+    special_04_public_holidays = {
+        2018: (
+            (MAY, 10, additional_holiday),
+            (MAY, 11, additional_holiday),
+        ),
     }
-
-    special_15_public_holidays_observed = {
-        2007: (JAN, 2, eid_al_adha),
-    }
-
     special_04_public_holidays_observed = {
         2007: (JAN, 2, eid_al_adha),
     }
 
+    special_05_public_holidays = {
+        2018: (
+            (MAY, 10, additional_holiday),
+            (MAY, 11, additional_holiday),
+        ),
+    }
     special_05_public_holidays_observed = {
         2007: (JAN, 2, eid_al_adha),
     }
 
+    special_06_public_holidays = {
+        2018: (
+            (MAY, 10, additional_holiday),
+            (MAY, 11, additional_holiday),
+        ),
+    }
     special_06_public_holidays_observed = {
         2007: (JAN, 2, eid_al_adha),
     }
 
-    special_16_public_holidays_observed = {
-        2007: (JAN, 2, eid_al_adha),
+    special_07_public_holidays = {
+        2018: (
+            (MAY, 10, additional_holiday),
+            (MAY, 11, additional_holiday),
+        ),
     }
-
-    special_09_public_holidays_observed = {
-        2007: (JAN, 2, eid_al_adha),
-    }
-
     special_07_public_holidays_observed = {
         2007: (JAN, 2, eid_al_adha),
     }
 
+    special_08_public_holidays = {
+        2018: (
+            (MAY, 10, additional_holiday),
+            (MAY, 11, additional_holiday),
+        ),
+    }
     special_08_public_holidays_observed = {
         2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_09_public_holidays = {
+        2018: (
+            (MAY, 10, additional_holiday),
+            (MAY, 11, additional_holiday),
+        ),
+    }
+    special_09_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_10_public_holidays = {
+        2018: (
+            (MAY, 10, additional_holiday),
+            (MAY, 11, additional_holiday),
+        ),
+    }
+    special_10_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_11_public_holidays = {
+        2018: (
+            (MAY, 10, additional_holiday),
+            (MAY, 13, additional_holiday),
+        ),
+    }
+    special_11_public_holidays_observed = {
+        # Arafat Day.
+        2007: (JAN, 2, tr("Hari Arafah")),
+        2022: (MAY, 4, labor_day),
     }
 
     special_12_public_holidays_observed = {
         2007: (JAN, 2, eid_al_adha),
     }
 
-    special_10_public_holidays_observed = {
-        2007: (JAN, 2, eid_al_adha),
+    special_13_public_holidays = {
+        2018: (
+            (MAY, 17, additional_holiday),
+            (MAY, 18, additional_holiday),
+        ),
     }
-
     special_13_public_holidays_observed = {
         2007: (JAN, 2, eid_al_adha),
     }
 
-    special_11_public_holidays_observed = {
-        2007: (JAN, 2, arafat_day),
-        2022: (MAY, 4, labor_day),
+    special_14_public_holidays = {
+        2018: (
+            (MAY, 10, additional_holiday),
+            (MAY, 11, additional_holiday),
+        ),
+        2021: (DEC, 3, malaysia_cup_holiday),
+    }
+    special_14_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_15_public_holidays = {
+        2018: (
+            (MAY, 10, additional_holiday),
+            (MAY, 11, additional_holiday),
+        ),
+        2021: (DEC, 3, malaysia_cup_holiday),
+    }
+    special_15_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_16_public_holidays = {
+        2018: (
+            (MAY, 10, additional_holiday),
+            (MAY, 11, additional_holiday),
+        ),
+        2021: (DEC, 3, malaysia_cup_holiday),
+    }
+    special_16_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
     }

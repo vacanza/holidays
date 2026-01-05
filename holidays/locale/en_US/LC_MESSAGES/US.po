@@ -14,22 +14,32 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.85\n"
+"Project-Id-Version: Holidays 0.88\n"
 "POT-Creation-Date: 2025-06-19 15:33+0700\n"
-"PO-Revision-Date: 2025-10-02 11:06+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2025-12-23 10:55-0800\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 "X-Source-Language: en_US\n"
 
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
+msgstr ""
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
 msgstr ""
 
 #. New Year's Day.
@@ -42,6 +52,14 @@ msgstr ""
 
 #. Washington's Birthday.
 msgid "Washington's Birthday"
+msgstr ""
+
+#. Veterans Day.
+msgid "Veterans Day"
+msgstr ""
+
+#. Armistice Day.
+msgid "Armistice Day"
 msgstr ""
 
 #. Memorial Day.
@@ -64,14 +82,6 @@ msgstr ""
 msgid "Columbus Day"
 msgstr ""
 
-#. Veterans Day.
-msgid "Veterans Day"
-msgstr ""
-
-#. Armistice Day.
-msgid "Armistice Day"
-msgstr ""
-
 #. Thanksgiving Day.
 msgid "Thanksgiving Day"
 msgstr ""
@@ -86,6 +96,14 @@ msgstr ""
 
 #. Martin Luther King Jr. Day.
 msgid "Martin Luther King Jr. Day"
+msgstr ""
+
+#. Martin Luther King Jr.'s Birthday.
+msgid "Martin Luther King Jr.'s Birthday"
+msgstr ""
+
+#. Lincoln's Birthday.
+msgid "Lincoln's Birthday"
 msgstr ""
 
 #. Presidents' Day.
@@ -156,10 +174,6 @@ msgstr ""
 msgid "Lincoln/Washington Presidents' Day"
 msgstr ""
 
-#. Lincoln's Birthday.
-msgid "Lincoln's Birthday"
-msgstr ""
-
 #. Susan B. Anthony Day.
 msgid "Susan B. Anthony Day"
 msgstr ""
@@ -170,6 +184,10 @@ msgstr ""
 
 #. Day After Thanksgiving.
 msgid "Day After Thanksgiving"
+msgstr ""
+
+#. Diwali.
+msgid "Diwali"
 msgstr ""
 
 #. Washington-Lincoln Day.
@@ -320,8 +338,65 @@ msgstr ""
 msgid "Epiphany"
 msgstr ""
 
-#. Discovery Day.
-msgid "Discovery Day"
+#. Birthday of Eugenio María de Hostos.
+msgid "Birthday of Eugenio María de Hostos"
+msgstr ""
+
+#. George Washington Day, Presidents' Day, and the Day of the Women and Men Heroes of Puerto Rico.
+msgid ""
+"George Washington Day, Presidents' Day, and the Day of the Women and Men Heroes of Puerto Rico"
+msgstr ""
+
+#. George Washington Day, Presidents' Day, and the Day of the Hero and the Illustrious Woman of
+#. Puerto Rico.
+msgid ""
+"George Washington Day, Presidents' Day, and the Day of the Hero and the Illustrious Woman of "
+"Puerto Rico"
+msgstr ""
+
+#. George Washington Day, Presidents' Day, and the Puerto Rican Heroes Day.
+msgid "George Washington Day, Presidents' Day, and the Puerto Rican Heroes Day"
+msgstr ""
+
+#. George Washington Day.
+msgid "George Washington Day"
+msgstr ""
+
+#. José de Diego Day.
+msgid "José de Diego Day"
+msgstr ""
+
+#. Luis Muñoz Rivera Day.
+msgid "Luis Muñoz Rivera Day"
+msgstr ""
+
+#. Puerto Rico Constitution Day.
+msgid "Puerto Rico Constitution Day"
+msgstr ""
+
+#. Occupation Day.
+msgid "Occupation Day"
+msgstr ""
+
+#. José Celso Barbosa Day.
+msgid "José Celso Barbosa Day"
+msgstr ""
+
+#. Puerto Rican Identity Day.
+msgid "Puerto Rican Identity Day"
+msgstr ""
+
+#. Puerto Rican Culture and Discovery of Puerto Rico Day.
+msgid "Puerto Rican Culture and Discovery of Puerto Rico Day"
+msgstr ""
+
+#. Discovery of Puerto Rico Day.
+msgid "Discovery of Puerto Rico Day"
+msgstr ""
+
+#. %s (from 12pm).
+#, c-format
+msgid "%s (from 12pm)"
 msgstr ""
 
 #. Victory Day.
@@ -366,10 +441,6 @@ msgstr ""
 
 #. Lee Jackson Day.
 msgid "Lee Jackson Day"
-msgstr ""
-
-#. George Washington Day.
-msgid "George Washington Day"
 msgstr ""
 
 #. Three Kings Day.
@@ -450,4 +521,25 @@ msgstr ""
 
 #. Public Thanksgiving and Prayer Day.
 msgid "Public Thanksgiving and Prayer Day"
+msgstr ""
+
+#. %s (half-day closing).
+#, c-format
+msgid "%s (half-day closing)"
+msgstr ""
+
+#. National Day of Mourning for former President Ronald Reagan.
+msgid "National Day of Mourning for former President Ronald Reagan"
+msgstr ""
+
+#. National Day of Mourning for former President Gerald R. Ford.
+msgid "National Day of Mourning for former President Gerald R. Ford"
+msgstr ""
+
+#. National Day of Mourning for former President George H. W. Bush.
+msgid "National Day of Mourning for former President George H. W. Bush"
+msgstr ""
+
+#. National Day of Mourning for former President Jimmy Carter.
+msgid "National Day of Mourning for former President Jimmy Carter"
 msgstr ""

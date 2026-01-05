@@ -19,7 +19,11 @@ from tests.common import CommonCountryTests
 class TestBrazil(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Brazil, years_all_subdivs=range(1995, 2050))
+        super().setUpClass(
+            Brazil,
+            years_all_subdivs=range(1995, 2050),
+            years_subdiv_são_paulo_capital=range(1967, 2050),
+        )
 
     def test_new_years_day(self):
         self.assertHolidayName(
@@ -698,11 +702,23 @@ class TestBrazil(CommonCountryTests, TestCase):
         name = "Revolução Constitucionalista"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "SP":
+            if subdiv in {"SP", "São Paulo Capital"}:
                 self.assertHolidayName(
                     name, holidays, (f"{year}-07-09" for year in range(1997, self.end_year))
                 )
                 self.assertNoHolidayName(name, holidays, 1996)
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_sao_paulo_city_anniversary(self):
+        name = "Aniversário da Cidade de São Paulo"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "São Paulo Capital":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-01-25" for year in range(1968, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1968))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -734,6 +750,7 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-01-01", "Confraternização Universal"),
             ("2023-01-04", "Criação do Estado"),
             ("2023-01-23", "Dia do Evangélico"),
+            ("2023-01-25", "Aniversário da Cidade de São Paulo"),
             ("2023-02-20", "Carnaval"),
             ("2023-02-21", "Carnaval"),
             ("2023-02-22", "Início da Quaresma"),
@@ -796,6 +813,7 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-01-01", "Universal Fraternization Day"),
             ("2023-01-04", "State Creation Day"),
             ("2023-01-23", "Evangelical Day"),
+            ("2023-01-25", "São Paulo City Anniversary"),
             ("2023-02-20", "Carnival"),
             ("2023-02-21", "Carnival"),
             ("2023-02-22", "Ash Wednesday"),
@@ -855,6 +873,7 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-01-01", "День всесвітнього братання"),
             ("2023-01-04", "День створення штату"),
             ("2023-01-23", "Євангельський день"),
+            ("2023-01-25", "Річниця міста Сан-Паулу"),
             ("2023-02-20", "Карнавал"),
             ("2023-02-21", "Карнавал"),
             ("2023-02-22", "Попільна середа"),

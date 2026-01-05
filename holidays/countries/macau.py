@@ -24,6 +24,8 @@ from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SUN_TO_NEXT_WORKDAY,
     SAT_SUN_TO_NEXT_WORKDAY,
+    SAT_TO_NONE,
+    SUN_TO_NONE,
 )
 
 
@@ -92,19 +94,7 @@ class Macau(
         kwargs.setdefault("observed_since", 2011)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self):
-        """Macau Mandatory (Statutory) Holidays.
-
-        Decreto-Lei n.º 101/84/M - Earliest Available Version Online.
-        Decreto-Lei n.º 24/89/M - Added Ching Ming Festival.
-        Lei n.º 8/2000 - Removed Day of Portugal
-                       - Added Macao S.A.R. Establishment Day.
-                       - Moved Mid-Autumn to Day following Mid-Autumn to match Public Holidays.
-        Lei n.º 7/2008 - Consolidated with other laws, reaffirming 2000 Amendment list.
-        """
-        if self._year <= 1984:
-            return None
-
+    def _populate_common(self):
         # New Year's Day.
         self._add_new_years_day(tr("元旦"))
 
@@ -125,6 +115,21 @@ class Macau(
 
         # National Day of the People's Republic of China.
         self._add_holiday_oct_1(tr("中華人民共和國國慶日"))
+
+    def _populate_public_holidays(self):
+        """Macau Mandatory (Statutory) Holidays.
+
+        Decreto-Lei n.º 101/84/M - Earliest Available Version Online.
+        Decreto-Lei n.º 24/89/M - Added Ching Ming Festival.
+        Lei n.º 8/2000 - Removed Day of Portugal
+                       - Added Macao S.A.R. Establishment Day.
+                       - Moved Mid-Autumn to Day following Mid-Autumn to match Public Holidays.
+        Lei n.º 7/2008 - Consolidated with other laws, reaffirming 2000 Amendment list.
+        """
+        if self._year <= 1984:
+            return None
+
+        self._populate_common()
 
         # Decreto-Lei n.º 24/89/M - Adds Ching Ming as a Mandatory Holiday.
         if self._year >= 1989:
@@ -150,17 +155,7 @@ class Macau(
 
     def _populate_optional_holidays(self):
         """Macau General Holidays."""
-        # New Year's Day.
-        self._add_new_years_day(tr("元旦"))
-
-        # Chinese New Year's Day.
-        self._add_chinese_new_years_day(tr("農曆正月初一"))
-
-        # The second day of Chinese New Year.
-        self._add_chinese_new_years_day_two(tr("農曆正月初二"))
-
-        # The third day of Chinese New Year.
-        self._add_chinese_new_years_day_three(tr("農曆正月初三"))
+        self._populate_common()
 
         # Tomb-Sweeping Day.
         self._add_qingming_festival(tr("清明節"))
@@ -183,20 +178,11 @@ class Macau(
             else tr("聖周星期六")
         )
 
-        # Labor Day.
-        self._add_labor_day(tr("勞動節"))
-
         # Dragon Boat Festival.
         self._add_dragon_boat_festival(tr("端午節"))
 
-        # Double Ninth Festival.
-        self._add_double_ninth_festival(tr("重陽節"))
-
         # The Day following Mid-Autumn Festival.
         self._add_mid_autumn_festival_day_two(tr("中秋節翌日"))
-
-        # National Day of the People's Republic of China.
-        self._add_holiday_oct_1(tr("中華人民共和國國慶日"))
 
         # All Soul's Day.
         self._add_all_souls_day(tr("追思節"))
@@ -293,17 +279,11 @@ class Macau(
         # New Year's Day.
         dts_observed.add(self._add_new_years_day(tr("元旦")))
 
-        if self._year not in {2006, 2007, 2009, 2010, 2012, 2013, 2016, 2023}:
+        if not (
+            self._is_sunday(self._chinese_new_year) or self._is_monday(self._chinese_new_year)
+        ):
             # Chinese New Year's Eve.
             self._add_chinese_new_years_eve(begin_time_label % self.tr("農曆除夕"))
-
-        if self._year in {2006, 2007, 2010, 2013, 2014, 2017, 2018}:
-            # The fourth day of Chinese New Year.
-            self._add_chinese_new_years_day_four(tr("農曆正月初四"))
-
-        if self._year in {2014, 2015, 2017, 2018}:
-            # The fifth day of Chinese New Year.
-            self._add_chinese_new_years_day_five(tr("農曆正月初五"))
 
         if self._year >= 2019:
             # Chinese New Year's Day.
@@ -314,6 +294,17 @@ class Macau(
 
             # The third day of Chinese New Year.
             dts_observed.add(self._add_chinese_new_years_day_three(tr("農曆正月初三")))
+        else:
+            if self._is_friday(self._chinese_new_year) or self._is_weekend(self._chinese_new_year):
+                # The fourth day of Chinese New Year.
+                self._add_chinese_new_years_day_four(tr("農曆正月初四"))
+            if self._year >= 2012 and (
+                self._is_thursday(self._chinese_new_year)
+                or self._is_friday(self._chinese_new_year)
+                or self._is_saturday(self._chinese_new_year)
+            ):
+                # The fifth day of Chinese New Year.
+                self._add_chinese_new_years_day_five(tr("農曆正月初五"))
 
         # The Day before Easter.
         dts_observed.add(self._add_holy_saturday(tr("復活節前日")))
@@ -361,9 +352,12 @@ class Macau(
         dts_observed.add(self._add_christmas_day(tr("聖誕節")))
 
         # 2012's Full-Day New Year's Eve is declared discretely.
-        if self._year >= 2007 and self._year not in {2011, 2012, 2016, 2017, 2022, 2023}:
-            # New Year's Eve.
-            self._add_new_years_eve(begin_time_label % self.tr("除夕"))
+        if self._year >= 2007 and self._year != 2012:
+            self._move_holiday(
+                # New Year's Eve.
+                self._add_new_years_eve(begin_time_label % self.tr("除夕")),
+                rule=SAT_TO_NONE + SUN_TO_NONE,
+            )
 
         if self.observed:
             self.observed_label = (

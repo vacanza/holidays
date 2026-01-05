@@ -14,17 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.88\n"
 "POT-Creation-Date: 2024-10-15 20:48+0300\n"
-"PO-Revision-Date: 2025-09-17 10:13+0700\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-12-24 10:16+0700\n"
+"Last-Translator: Avi Alkalay <avibrazil@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.4\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 "X-Source-Language: pt_BR\n"
 
 #. Universal Fraternization Day.
@@ -254,6 +254,10 @@ msgstr "День політичного звільнення Сержипі"
 #. Constitutionalist Revolution.
 msgid "Revolução Constitucionalista"
 msgstr "День Конституціоналістської революції"
+
+#. São Paulo City Anniversary.
+msgid "Aniversário da Cidade de São Paulo"
+msgstr "Річниця міста Сан-Паулу"
 
 #. Autonomy Day.
 msgid "Dia da Autonomia"

@@ -13,10 +13,12 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import (
+    JAN,
     FEB,
     MAR,
     APR,
     MAY,
+    JUN,
     SEP,
     NOV,
     DEC,
@@ -28,8 +30,13 @@ from holidays.calendars.gregorian import (
     SAT,
     SUN,
 )
-from holidays.constants import GOVERNMENT, PUBLIC, UNOFFICIAL
-from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.constants import GOVERNMENT, HALF_DAY, PUBLIC, UNOFFICIAL
+from holidays.groups import (
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     ObservedRule,
@@ -46,7 +53,13 @@ GA_IN_WASHINGTON_BIRTHDAY = ObservedRule(
 )
 
 
-class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class UnitedStates(
+    ObservedHolidayBase,
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+):
     """United States of America (the) holidays.
 
     References:
@@ -61,6 +74,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         * [B-112525 February 27th, 1953 32 COMP. GEN. 378](https://web.archive.org/web/20201001081239/https://www.gao.gov/products/b-112525#mt=e-report)
         * [Public Law 89-554](https://web.archive.org/web/20250512204449/https://www.govinfo.gov/content/pkg/STATUTE-80/pdf/STATUTE-80-Pg378.pdf)
         * [E.O. 11582 of February 11th, 1971](https://web.archive.org/web/20250326234305/https://www.archives.gov/federal-register/codification/executive-order/11582.html)
+        * [CA Diwali state holiday (AB 268, 2025-2026)](https://web.archive.org/web/20251223175415if_/https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB268)
         * Washington's Birthday:
             * [AK](https://web.archive.org/web/20250306070343/https://doa.alaska.gov/calendar/)
             * [AL](https://web.archive.org/web/20250125202410/https://admincode.legislature.state.al.us/administrative-code/670-X-12-.01)
@@ -103,14 +117,45 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         * Northern Mariana Islands (subdivision MP):
             * <https://web.archive.org/web/20240727045236/https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/>
             * <https://web.archive.org/web/20250429140158/https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/>
+        * Alaska:
+            * [Proclamation 3269 - Admission of the State of Alaska Into the Union](https://web.archive.org/web/20250613173049/https://www.presidency.ucsb.edu/documents/proclamation-3269-admission-the-state-alaska-into-the-union)
+            * [Alaska Statutes, Sec. 44.12.010](https://web.archive.org/web/20251014215648/https://www.akleg.gov/basis/statutes.asp#44.12.010)
+            * [Alaska Day](https://web.archive.org/web/20120502232826/http://www.alaskadispatch.com/article/happy-alaska-day-great-land)
+            * [Chapter 109, Session Laws of Alaska (1989)](https://web.archive.org/web/20251228151503/https://www.akleg.gov/basis/folioproxy.asp?url=http://wwwjnu03.akleg.org/cgi-bin/folioisa.dll/slpr/query=*/doc/%7B@1158%7D?next)
         * American Samoa:
             * <https://web.archive.org/web/20240808163628/https://asbar.org/code-annotated/1-0501-public-holidays/>
+        * Puerto Rico:
+            * [1902 Political Code of Puerto Rico](https://web.archive.org/web/20251019021053/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/C%C3%B3digos/0-1902/0-1902.pdf)
+            * [Joint Resolution No. 31 of Aug 18, 1913](https://web.archive.org/web/20240923174029/https://bvirtualogp.pr.gov/ogp/Bvirtual/resolucionesConjuntas/PDF/0031-1913.pdf)
+            * [Law No. 47 of Dec 1, 1917](https://web.archive.org/web/20240531113045/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0047-1917.pdf)
+            * [Law No. 3 of Apr 9, 1925](https://web.archive.org/web/20240531113358/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0003-1925.pdf)
+            * [Law No. 3 of Mar 27, 1931](https://web.archive.org/web/20250625060601/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/3-1931.pdf)
+            * [Law No. 91 of May 6, 1938](https://web.archive.org/web/20250807060751/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/91-1938.pdf)
+            * [Law No. 97 of May 6, 1938](https://web.archive.org/web/20251213203244/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0099-1938.pdf)
+            * [Law No. 3 of Mar 15, 1939](https://web.archive.org/web/20240531113040/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0003-1939.pdf)
+            * [Law No. 1 of Aug 1, 1952](https://web.archive.org/web/20250430200856/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/3-duplicados/1-1952.pdf)
+            * [Law No. 88 of Jun 27, 1969](https://web.archive.org/web/20250605105341/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/88-1969.pdf)
+            * [Law No. 260 of Jul 30, 1974](https://web.archive.org/web/20251214005218/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0259-1974.pdf)
+            * [Law No. 129 of Jun 13, 1980](https://web.archive.org/web/20251213230716/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0129-1980.pdf)
+            * [Law No. 121 of Dec 24, 1991](https://web.archive.org/web/20251213230111/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0121-1991.pdf)
+            * [Law No. 39 of Jul 11, 1994](https://web.archive.org/web/20221222034721/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0039-1994.pdf)
+            * [Law No. 76 of Jul 6, 1995](https://web.archive.org/web/20250605110906/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/76-1995.pdf)
+            * [Law No. 305 of Dec 25, 2002](https://web.archive.org/web/20250625061048/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/305-2002.pdf)
+            * [Law No. 182 of Dec 1, 2010](https://web.archive.org/web/20221221221227/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0182-2010.pdf)
+            * [Law No. 111 of Jul 29, 2014](https://web.archive.org/web/20250219021118/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0111-2014.pdf)
+            * [Law No. 40 of Mar 25, 2015](https://web.archive.org/web/20221221221216/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0040-2015.pdf)
+            * [Law No. 152 of Jul 23, 2018](https://web.archive.org/web/20250204220144/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2018/0152-2018.pdf)
+            * [Law No. 117 of Dec 23, 2022](https://web.archive.org/web/20250204215251/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2020/0117-2022.pdf)
     """
 
     country = "US"
     default_language = "en_US"
     # %s (observed).
     observed_label = tr("%s (observed)")
+    # %s (estimated).
+    estimated_label = tr("%s (estimated)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (observed, estimated)")
     supported_languages = ("en_US", "th")
     # Independence Declared on July 4th, 1776.
     start_year = 1777
@@ -232,7 +277,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         "West Virginia": "WV",
         "Wyoming": "WY",
     }
-    supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
+    supported_categories: tuple[str, ...] = (GOVERNMENT, HALF_DAY, PUBLIC, UNOFFICIAL)
     _deprecated_subdivisions = (
         "FM",
         "MH",
@@ -241,6 +286,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
+        HinduCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=UnitedStatesStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
@@ -296,6 +342,19 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                     if self._year >= 1954:
                         self._add_observed(dt)
 
+            if self._year >= 1938:
+                name = (
+                    # Veterans Day.
+                    tr("Veterans Day")
+                    if self._year >= 1954
+                    # Armistice Day.
+                    else tr("Armistice Day")
+                )
+                if 1971 <= self._year <= 1977:
+                    self._add_holiday_4th_mon_of_oct(name)
+                else:
+                    self._add_observed(self._add_remembrance_day(name))
+
         if self._year >= 1971:
             # Memorial Day.
             self._add_holiday_last_mon_of_may(tr("Memorial Day"))
@@ -317,19 +376,6 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if include_federal and self._year >= 1971:
             # Columbus Day.
             self._add_holiday_2nd_mon_of_oct(tr("Columbus Day"))
-
-        if self._year >= 1938:
-            name = (
-                # Veterans Day.
-                tr("Veterans Day")
-                if self._year >= 1954
-                # Armistice Day.
-                else tr("Armistice Day")
-            )
-            if 1971 <= self._year <= 1977:
-                self._add_holiday_4th_mon_of_oct(name)
-            else:
-                self._add_observed(self._add_remembrance_day(name))
 
         # Thanksgiving Day.
         # Began to be declared annually in 1862 by Abraham Lincoln.
@@ -379,101 +425,133 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         )
 
     def _populate_subdiv_holidays(self):
-        if PUBLIC not in self.categories:
-            return None
-
-        if self._year >= 1986 and self.subdiv not in {"AL", "AR", "AZ", "GA", "ID", "MS", "NH"}:
-            # Martin Luther King Jr. Day.
-            self._add_holiday_3rd_mon_of_jan(tr("Martin Luther King Jr. Day"))
-
-        if self._year >= 1879 and self.subdiv not in {
-            "AL",
-            "AR",
-            "DE",
-            "FL",
-            "GA",
-            "IN",
-            "NM",
-            "VI",
-        }:
-            # Washington's Birthday.
-            name = tr("Washington's Birthday")
-            if self._year >= 1971:
-                if self.subdiv not in {
-                    "AK",
-                    "AZ",
-                    "CA",
-                    "CO",
-                    "HI",
-                    "ID",
-                    "MD",
-                    "MN",
-                    "MT",
-                    "NJ",
-                    "OH",
-                    "OK",
-                    "OR",
-                    "PA",
-                    "PR",
-                    "SC",
-                    "TN",
-                    "TX",
-                    "UT",
-                    "VA",
-                    "VT",
-                    "WA",
-                    "WV",
-                    "WY",
-                }:
-                    self._add_holiday_3rd_mon_of_feb(name)
-            else:
-                self._add_holiday_feb_22(name)
-
-        if self._year >= 1937 and (
-            self.subdiv is None
-            or self.subdiv
-            in {
-                "AS",
+        if PUBLIC in self.categories:
+            if self._year >= 1986 and self.subdiv not in {
+                "AK",
+                "AL",
+                "AR",
                 "AZ",
-                "CT",
                 "GA",
                 "ID",
-                "IL",
+                "MS",
+                "NH",
+            }:
+                # Martin Luther King Jr. Day.
+                self._add_holiday_3rd_mon_of_jan(tr("Martin Luther King Jr. Day"))
+
+            if self._year >= 1879 and self.subdiv not in {
+                "AK",
+                "AL",
+                "AR",
+                "DE",
+                "FL",
+                "GA",
                 "IN",
-                "MA",
-                "MD",
-                "MO",
-                "MT",
-                "NJ",
-                "NY",
-                "OH",
-                "PA",
-                "UT",
-                "WV",
-            }
-        ):
-            # Columbus Day.
-            name = tr("Columbus Day")
-            if self._year >= 1971:
-                self._add_holiday_2nd_mon_of_oct(name)
-            else:
-                self._add_columbus_day(name)
+                "NM",
+                "PR",
+                "VI",
+            }:
+                # Washington's Birthday.
+                name = tr("Washington's Birthday")
+                if self._year >= 1971:
+                    if self.subdiv not in {
+                        "AZ",
+                        "CA",
+                        "CO",
+                        "HI",
+                        "ID",
+                        "MD",
+                        "MN",
+                        "MT",
+                        "NJ",
+                        "OH",
+                        "OK",
+                        "OR",
+                        "PA",
+                        "SC",
+                        "TN",
+                        "TX",
+                        "UT",
+                        "VA",
+                        "VT",
+                        "WA",
+                        "WV",
+                        "WY",
+                    }:
+                        self._add_holiday_3rd_mon_of_feb(name)
+                else:
+                    self._add_holiday_feb_22(name)
+
+            if self._year >= 1937 and (
+                self.subdiv is None
+                or self.subdiv
+                in {
+                    "AS",
+                    "AZ",
+                    "CT",
+                    "GA",
+                    "ID",
+                    "IL",
+                    "IN",
+                    "MA",
+                    "MD",
+                    "MO",
+                    "MT",
+                    "NJ",
+                    "NY",
+                    "OH",
+                    "PA",
+                    "UT",
+                    "WV",
+                }
+            ):
+                # Columbus Day.
+                name = tr("Columbus Day")
+                if self._year >= 1971:
+                    self._add_holiday_2nd_mon_of_oct(name)
+                else:
+                    self._add_columbus_day(name)
+
+            if self._year >= 1938 and self.subdiv != "PR":
+                name = (
+                    # Veterans Day.
+                    tr("Veterans Day")
+                    if self._year >= 1954
+                    # Armistice Day.
+                    else tr("Armistice Day")
+                )
+                if 1971 <= self._year <= 1977:
+                    self._add_holiday_4th_mon_of_oct(name)
+                else:
+                    self._add_observed(self._add_remembrance_day(name))
 
         super()._populate_subdiv_holidays()
 
     def _populate_subdiv_ak_public_holidays(self):
-        if self._year >= 1971:
-            # Presidents' Day.
-            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
+        # Proclamation 3269 from Jan 3, 1959.
+        if self._year <= 1958:
+            return None
 
-        # No observance in 1921: https://web.archive.org/web/20230208015211/https://chroniclingamerica.loc.gov/lccn/sn86072239/1922-03-29/ed-1/seq-8/
-        if self._year >= 1918 and self._year != 1921:
-            # Seward's Day.
-            name = tr("Seward's Day")
-            if self._year >= 1955:
-                self._add_holiday_last_mon_of_mar(name)
-            else:
-                self._add_holiday_mar_30(name)
+        # Chapter 109 SLA 1989.
+        if self._year >= 1990:
+            # Martin Luther King Jr.'s Birthday.
+            self._add_holiday_3rd_mon_of_jan(tr("Martin Luther King Jr.'s Birthday"))
+        else:
+            # Lincoln's Birthday.
+            self._add_observed(self._add_holiday_feb_12(tr("Lincoln's Birthday")))
+
+        if self._year >= 1971:
+            # Chapter 109 SLA 1989.
+            self._add_holiday_3rd_mon_of_feb(
+                # Presidents' Day.
+                tr("Presidents' Day")
+                if self._year >= 1990
+                # Washington's Birthday.
+                else tr("Washington's Birthday")
+            )
+
+        # Seward's Day.
+        self._add_holiday_last_mon_of_mar(tr("Seward's Day"))
 
         if self._year >= 1971:
             self._add_holiday_2nd_mon_of_oct(
@@ -484,10 +562,8 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 else tr("Columbus Day")
             )
 
-        # https://web.archive.org/web/20120502232826/http://www.alaskadispatch.com/article/happy-alaska-day-great-land
-        if self._year >= 1917:
-            # Alaska Day.
-            self._add_observed(self._add_holiday_oct_18(tr("Alaska Day")))
+        # Alaska Day.
+        self._add_observed(self._add_holiday_oct_18(tr("Alaska Day")))
 
     def _populate_subdiv_al_public_holidays(self):
         if self._year >= 1986:
@@ -581,6 +657,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if self._year >= 1975:
             # Day After Thanksgiving.
             self._add_holiday_1_day_past_4th_thu_of_nov(tr("Day After Thanksgiving"))
+
+        if self._year >= 2026:
+            # Diwali.
+            self._add_diwali_india(tr("Diwali"))
 
     def _populate_subdiv_co_public_holidays(self):
         if self._year >= 1971:
@@ -1079,24 +1159,174 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         self._add_holiday_1_day_past_4th_thu_of_nov(tr("Day After Thanksgiving"))
 
     def _populate_subdiv_pr_public_holidays(self):
-        # Epiphany.
-        self._add_epiphany_day(tr("Epiphany"))
+        # Art. 387 of the 1902 Political Code of Puerto Rico.
+        if self._year <= 1902:
+            return None
 
+        # Día de Reyes.
+        # Law No. 3 of Mar 27, 1931.
+        if self._year >= 1932:
+            # Epiphany.
+            self._add_epiphany_day(tr("Epiphany"))
+
+        # Natalicio de Eugenio María de Hostos.
+        # Established by Law No. 3 of Mar 15, 1939.
+        # Made movable by Law No. 88 of Jun 27, 1969.
+        # Abolished by Law No. 111 of Jul 29, 2014.
+        if 1940 <= self._year <= 2014:
+            # Birthday of Eugenio María de Hostos.
+            name = tr("Birthday of Eugenio María de Hostos")
+            if self._year >= 1971:
+                self._add_holiday_2nd_mon_of_jan(name)
+            else:
+                self._add_observed(self._add_holiday_jan_11(name), rule=SUN_TO_NEXT_MON)
+
+        # ...Día de las Mujeres y Hombres Próceres de Puerto Rico.
+        # Law No. 152 of Jul 23, 2018.
+        if self._year >= 2019:
+            # George Washington Day, Presidents' Day, and the Day of the Women and Men
+            # Heroes of Puerto Rico.
+            name = tr(
+                "George Washington Day, Presidents' Day, and the Day of the Women and Men "
+                "Heroes of Puerto Rico"
+            )
+        # ...Día del Prócer y la Mujer Ilustre de Puerto Rico.
+        # Law No. 40 of Mar 25, 2015.
+        elif self._year >= 2016:
+            # George Washington Day, Presidents' Day, and the Day of the Hero
+            # and the Illustrious Woman of Puerto Rico.
+            name = tr(
+                "George Washington Day, Presidents' Day, and the Day of the Hero "
+                "and the Illustrious Woman of Puerto Rico"
+            )
+        # ...Día de los Próceres Puertorriqueños.
+        # Law No. 111 of Jul 29, 2014.
+        elif self._year >= 2015:
+            # George Washington Day, Presidents' Day, and the Puerto Rican Heroes Day.
+            name = tr("George Washington Day, Presidents' Day, and the Puerto Rican Heroes Day")
+        else:
+            name = tr("George Washington Day")
         if self._year >= 1971:
-            # Presidents' Day.
-            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
+            self._add_holiday_3rd_mon_of_feb(name)
+        else:
+            self._add_observed(self._add_holiday_feb_22(name), rule=SUN_TO_NEXT_MON)
+
+        # Día de la Abolición de la Esclavitud.
 
         # Emancipation Day.
         self._add_observed(self._add_holiday_mar_22(tr("Emancipation Day")), rule=SUN_TO_NEXT_MON)
 
+        # Viernes Santo.
+
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
-        # Constitution Day.
-        self._add_observed(self._add_holiday_jul_25(tr("Constitution Day")), rule=SUN_TO_NEXT_MON)
+        # Día de José de Diego.
+        # Established by Law No. 3 of Apr 9, 1925.
+        # Made movable by Law No. 88 of Jun 27, 1969.
+        # Abolished by Law No. 111 of Jul 29, 2014.
+        if 1925 <= self._year <= 2014:
+            # José de Diego Day.
+            name = tr("José de Diego Day")
+            if self._year >= 1971:
+                self._add_holiday_3rd_mon_of_apr(name)
+            else:
+                self._add_observed(self._add_holiday_apr_16(name), rule=SUN_TO_NEXT_MON)
 
-        # Discovery Day.
-        self._add_observed(self._add_holiday_nov_19(tr("Discovery Day")), rule=SUN_TO_NEXT_MON)
+        # Día de Luis Muñoz Rivera.
+        # Established by Law No. 47 of Dec 1, 1917.
+        # Made movable by Law No. 88 of Jun 27, 1969.
+        # Abolished by Law No. 111 of Jul 29, 2014.
+        if 1918 <= self._year <= 2014:
+            # Luis Muñoz Rivera Day.
+            name = tr("Luis Muñoz Rivera Day")
+            if self._year >= 1971:
+                self._add_holiday_3rd_mon_of_jul(name)
+            else:
+                self._add_observed(self._add_holiday_jul_17(name), rule=SUN_TO_NEXT_MON)
+
+        # Día de la Ocupación / Día de la Constitución del Estado Libre Asociado de Puerto Rico.
+        self._add_observed(
+            self._add_holiday_jul_25(
+                # Puerto Rico Constitution Day.
+                tr("Puerto Rico Constitution Day")
+                # Renamed by Law No. 1 of Aug 1, 1952.
+                if self._year >= 1953
+                # Occupation Day.
+                else tr("Occupation Day")
+            ),
+            rule=SUN_TO_NEXT_MON,
+        )
+
+        # Día de José Celso Barbosa.
+        # Established by Law No. 97 of May 6, 1938.
+        # Abolished by Law No. 111 of Jul 29, 2014.
+        if 1938 <= self._year <= 2014:
+            # José Celso Barbosa Day.
+            name = tr("José Celso Barbosa Day")
+            # Made movable by Law No. 88 of Jun 27, 1969.
+            # Made fixed by:
+            # Law No. 39 of Jul 11, 1994 (for 1994),
+            # Law No. 76 of Jul 6, 1995.
+            if 1971 <= self._year <= 1993:
+                self._add_holiday_4th_mon_of_jul(name)
+            else:
+                self._add_observed(self._add_holiday_jul_27(name), rule=SUN_TO_NEXT_MON)
+
+        # Día de la Raza.
+        # Established by Joint Resolution No. 31 of Aug 18, 1913.
+        # Made movable by Law No. 88 of Jun 27, 1969.
+        # Made fixed by Law No. 260 of Jul 30, 1974.
+        # Made movable by Law No. 111 of Jul 29, 2014.
+        if self._year >= 1913:
+            # Columbus Day.
+            name = tr("Columbus Day")
+            if 1971 <= self._year <= 1973 or self._year >= 2014:
+                self._add_holiday_2nd_mon_of_oct(name)
+            else:
+                self._add_observed(self._add_columbus_day(name), rule=SUN_TO_NEXT_MON)
+
+        # Día del Armisticio / Día del Veterano.
+        # The exact year of holiday appearance is currently uncertain.
+        if self._year >= 1938:
+            self._add_observed(
+                self._add_remembrance_day(
+                    # Veterans Day.
+                    tr("Veterans Day")
+                    # Renamed by Law No. 129 of Jun 13, 1980.
+                    if self._year >= 1980
+                    # Armistice Day.
+                    else tr("Armistice Day")
+                ),
+                rule=SUN_TO_NEXT_MON,
+            )
+
+        # Día del Descubrimiento de Puerto Rico.
+        # Established by Law No. 91 of May 6, 1938.
+        if self._year >= 1938:
+            # Día de la Puertorriqueñidad.
+            # Renamed by Law No. 117 of Dec 23, 2022.
+            if self._year >= 2023:
+                # Puerto Rican Identity Day.
+                name = tr("Puerto Rican Identity Day")
+            # Día de la Cultura Puertorriqueña y el Descubrimiento de Puerto Rico.
+            # Renamed by Law No. 111 of Jul 29, 2014.
+            elif self._year >= 2014:
+                # Puerto Rican Culture and Discovery of Puerto Rico Day.
+                name = tr("Puerto Rican Culture and Discovery of Puerto Rico Day")
+            else:
+                # Discovery of Puerto Rico Day.
+                name = tr("Discovery of Puerto Rico Day")
+            self._add_observed(self._add_holiday_nov_19(name), rule=SUN_TO_NEXT_MON)
+
+    def _populate_subdiv_pr_half_day_holidays(self):
+        # Established by Law No. 305 of Dec 25, 2002.
+        if self._year >= 2003:
+            # %s (from 12pm).
+            begin_time_label = self.tr("%s (from 12pm)")
+
+            # Christmas Eve.
+            self._add_christmas_eve(begin_time_label % self.tr("Christmas Eve"))
 
     def _populate_subdiv_ri_public_holidays(self):
         if self._year >= 1948:
@@ -1415,6 +1645,27 @@ class UnitedStatesStaticHolidays(StaticHolidays):
         * [1813](https://web.archive.org/web/20240621142030/https://founders.archives.gov/documents/Madison/03-06-02-0434)
         * [1815](https://web.archive.org/web/20240621142030/https://founders.archives.gov/documents/Madison/03-09-02-0066)
 
+    Federal Government Closings:
+        * [2001, EO 13238](https://web.archive.org/web/20250414100019/http://www.federalregister.gov/documents/2001/12/10/01-30624/closing-of-federal-government-executive-departments-and-agencies-on-monday-december-24-2001)
+        * [2002, EO 13281](https://web.archive.org/web/20250213083130/https://www.federalregister.gov/documents/2002/12/23/02-32518/half-day-closing-of-executive-departments-and-agencies-of-the-federal-government-on-tuesday-december)
+        * [2003, EO 13320](https://web.archive.org/web/20250201153913/https://www.federalregister.gov/documents/2003/12/12/03-30913/closing-of-executive-departments-and-agencies-of-the)
+        * [2004, EO 13343](https://web.archive.org/web/20250414155140/https://www.federalregister.gov/documents/2004/06/08/04-13123/providing-for-the-closing-of-government-departments-and-agencies-on-june-11-2004)
+        * [2007, EO 13421](https://web.archive.org/web/20250208143815/https://www.federalregister.gov/documents/2007/01/04/06-9993/providing-for-the-closing-of-government-departments-and-agencies-on-january-2-2007)
+        * [2007, EO 13453](https://web.archive.org/web/20250414113515/https://www.federalregister.gov/documents/2007/12/11/07-6022/closing-of-executive-departments-and-agencies-of-the-federal-government-on-monday-december-24-2007)
+        * [2008, EO 13482](https://web.archive.org/web/20250413080630/https://www.federalregister.gov/documents/2008/12/16/E8-30042/closing-of-executive-departments-and-agencies-of-the-federal-government-on-friday-december-26-2008)
+        * [2009, EO 13523](https://web.archive.org/web/20250204020329/https://www.federalregister.gov/documents/2009/12/16/E9-30020/half-day-closing-of-executive-departments-and-agencies-on-thursday-december-24-2009)
+        * [2012, EO 13633](https://web.archive.org/web/20250202102026/https://www.federalregister.gov/documents/2012/12/28/2012-31225/closing-of-executive-departments-and-agencies-of-the-federal-government-on-monday-december-24-2012)
+        * [2014, EO 13682](https://web.archive.org/web/20250204140956/https://www.federalregister.gov/documents/2014/12/10/2014-29121/closing-of-executive-departments-and-agencies-of-the-federal-government-on-friday-december-26-2014)
+        * [2015, EO 13713]https://web.archive.org/web/20250204021239/https://www.federalregister.gov/documents/2015/12/16/2015-31749/half-day-closing-of-executive-departments-and-agencies-of-the-federal-government-on-thursday)
+        * [2018, EO 13852](https://web.archive.org/web/20250507175643/https://www.federalregister.gov/documents/2018/12/04/2018-26552/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on)
+        * [2018, EO 13854](https://web.archive.org/web/20250202030122/https://www.federalregister.gov/documents/2018/12/21/2018-27945/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on)
+        * [2019, EO 13900](https://web.archive.org/web/20250205125417/https://www.federalregister.gov/documents/2019/12/20/2019-27678/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on)
+        * [2020, EO 13965](https://web.archive.org/web/20250212090335/https://www.federalregister.gov/documents/2020/12/16/2020-27807/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on)
+        * [2024, EO 14129](https://web.archive.org/web/20250219155414/https://www.federalregister.gov/documents/2024/12/26/2024-31143/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on)
+        * [2025, EO 14133](https://web.archive.org/web/20250218220403/https://www.federalregister.gov/documents/2025/01/03/2024-31766/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on-january)
+        * [2025](https://web.archive.org/web/20251219180805/https://www.whitehouse.gov/presidential-actions/2025/12/providing-for-the-closure-of-executive-departments-and-agencies-of-the-federal-government-on-december-24-2025-and-december-26-2025/)
+
+
     Pre-1971 Inauguration Day observances has been moved here.
     """
 
@@ -1428,6 +1679,15 @@ class UnitedStatesStaticHolidays(StaticHolidays):
     # Inauguration Day.
     inauguration_day_name = tr("Inauguration Day")
 
+    # %s (half-day closing).
+    half_day_closing_label = tr("%s (half-day closing)")
+
+    # Christmas Eve.
+    christmas_eve_name = tr("Christmas Eve")
+
+    # Day After Christmas.
+    day_after_christmas_name = tr("Day After Christmas")
+
     special_public_holidays = {
         1777: (DEC, 18, public_thanksgiving_and_prayer_day_name),
         1782: (NOV, 28, public_thanksgiving_and_prayer_day_name),
@@ -1437,6 +1697,38 @@ class UnitedStatesStaticHolidays(StaticHolidays):
         1799: (APR, 25, fasting_and_humiliation_day_name),
         1813: (SEP, 9, public_humiliation_and_prayer_day_name),
         1815: (APR, 13, public_humiliation_and_prayer_day_name),
+    }
+
+    special_government_holidays = {
+        2001: (DEC, 24, christmas_eve_name),
+        2002: (DEC, 24, half_day_closing_label % christmas_eve_name),
+        2003: (DEC, 26, day_after_christmas_name),
+        # National Day of Mourning for former President Ronald Reagan.
+        2004: (JUN, 11, tr("National Day of Mourning for former President Ronald Reagan")),
+        2007: (
+            # National Day of Mourning for former President Gerald R. Ford.
+            (JAN, 2, tr("National Day of Mourning for former President Gerald R. Ford")),
+            (DEC, 24, christmas_eve_name),
+        ),
+        2008: (DEC, 26, day_after_christmas_name),
+        2009: (DEC, 24, half_day_closing_label % christmas_eve_name),
+        2012: (DEC, 24, christmas_eve_name),
+        2014: (DEC, 26, day_after_christmas_name),
+        2015: (DEC, 24, half_day_closing_label % christmas_eve_name),
+        2018: (
+            # National Day of Mourning for former President George H. W. Bush.
+            (DEC, 5, tr("National Day of Mourning for former President George H. W. Bush")),
+            (DEC, 24, christmas_eve_name),
+        ),
+        2019: (DEC, 24, christmas_eve_name),
+        2020: (DEC, 24, christmas_eve_name),
+        2024: (DEC, 24, christmas_eve_name),
+        2025: (
+            # National Day of Mourning for former President Jimmy Carter.
+            (JAN, 9, tr("National Day of Mourning for former President Jimmy Carter")),
+            (DEC, 24, christmas_eve_name),
+            (DEC, 26, day_after_christmas_name),
+        ),
     }
 
     # Pre-1953 Inauguration Day observances.

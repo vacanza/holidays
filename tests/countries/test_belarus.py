@@ -283,6 +283,7 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
             "2025-04-28",
             "2025-07-04",
             "2025-12-26",
+            "2026-04-20",
         )
 
     def test_workdays(self):
@@ -376,6 +377,7 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
             "2025-04-26",
             "2025-07-12",
             "2025-12-20",
+            "2026-04-25",
         )
 
         for year, dts in {

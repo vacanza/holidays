@@ -173,7 +173,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>AS</td>
 <td>Can also be loaded as country US, subdivision AS</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Andorra</td>
@@ -360,7 +360,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Brazil</td>
 <td>BR</td>
-<td>States: AC (Acre), AL (Alagoas), AM (Amazonas), AP (Amapá), BA (Bahia), CE (Ceará), DF (Distrito Federal), ES (Espírito Santo), GO (Goiás), MA (Maranhão), MG (Minas Gerais), MS (Mato Grosso do Sul), MT (Mato Grosso), PA (Pará), PB (Paraíba), PE (Pernambuco), PI (Piauí), PR (Paraná), RJ (Rio de Janeiro), RN (Rio Grande do Norte), RO (Rondônia), RR (Roraima), RS (Rio Grande do Sul), SC (Santa Catarina), SE (Sergipe), SP (São Paulo), TO (Tocantins)</td>
+<td>States: AC (Acre), AL (Alagoas), AM (Amazonas), AP (Amapá), BA (Bahia), CE (Ceará), DF (Distrito Federal), ES (Espírito Santo), GO (Goiás), MA (Maranhão), MG (Minas Gerais), MS (Mato Grosso do Sul), MT (Mato Grosso), PA (Pará), PB (Paraíba), PE (Pernambuco), PI (Piauí), PR (Paraná), RJ (Rio de Janeiro), RN (Rio Grande do Norte), RO (Rondônia), RR (Roraima), RS (Rio Grande do Sul), SC (Santa Catarina), SE (Sergipe), SP (São Paulo), TO (Tocantins); cities: São Paulo Capital</td>
 <td>en_US, <strong>pt_BR</strong>, uk</td>
 <td>OPTIONAL</td>
 </tr>
@@ -775,7 +775,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GU</td>
 <td>Can also be loaded as country US, subdivision GU</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Guatemala</td>
@@ -1279,7 +1279,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>MP</td>
 <td>Can also be loaded as country US, subdivision MP</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>North Korea</td>
@@ -1391,7 +1391,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>PR</td>
 <td>Can also be loaded as country US, subdivision PR</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>HALF_DAY, UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Qatar</td>
@@ -1643,7 +1643,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>SE</td>
 <td></td>
 <td>en_US, <strong>sv</strong>, th, uk</td>
-<td>BANK, OPTIONAL</td>
+<td>BANK, DE_FACTO, OPTIONAL</td>
 </tr>
 <tr>
 <td>Switzerland</td>
@@ -1790,14 +1790,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>UM</td>
 <td>Can also be loaded as country US, subdivision UM</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>United States of America (the)</td>
 <td>US</td>
 <td>States and territories: AK (Alaska), AL (Alabama), AR (Arkansas), AS (American Samoa), AZ (Arizona), CA (California), CO (Colorado), CT (Connecticut), DC (District of Columbia), DE (Delaware), FL (Florida), GA (Georgia), GU (Guam), HI (Hawaii), IA (Iowa), ID (Idaho), IL (Illinois), IN (Indiana), KS (Kansas), KY (Kentucky), LA (Louisiana), MA (Massachusetts), MD (Maryland), ME (Maine), MI (Michigan), MN (Minnesota), MO (Missouri), MP (Northern Mariana Islands), MS (Mississippi), MT (Montana), NC (North Carolina), ND (North Dakota), NE (Nebraska), NH (New Hampshire), NJ (New Jersey), NM (New Mexico), NV (Nevada), NY (New York), OH (Ohio), OK (Oklahoma), OR (Oregon), PA (Pennsylvania), PR (Puerto Rico), RI (Rhode Island), SC (South Carolina), SD (South Dakota), TN (Tennessee), TX (Texas), UM (United States Minor Outlying Islands), UT (Utah), VA (Virginia), VI (Virgin Islands, U.S.), VT (Vermont), WA (Washington), WI (Wisconsin), WV (West Virginia), WY (Wyoming)</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>GOVERNMENT, HALF_DAY, UNOFFICIAL</td>
 </tr>
 <tr>
 <td>United States Virgin Islands (the)</td>
@@ -1853,7 +1853,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>VI</td>
 <td>Can also be loaded as country US, subdivision VI</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Wallis and Futuna</td>
@@ -1918,6 +1918,13 @@ code when available. The following financial markets are available:
 </thead>
 <tbody>
 <tr>
+<td>Bombay Stock Exchange</td>
+<td>XBOM</td>
+<td>Bombay Stock Exchange (BSE) market holidays</td>
+<td><strong>en_IN</strong>, en_US, gu, hi</td>
+<td></td>
+</tr>
+<tr>
 <td>Brasil, Bolsa, Balcão</td>
 <td>BVMF</td>
 <td>Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)</td>
@@ -1942,7 +1949,7 @@ code when available. The following financial markets are available:
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
-<td><strong>en_IN</strong>, en_US, hi</td>
+<td><strong>en_IN</strong>, en_US, gu, hi</td>
 <td></td>
 </tr>
 <tr>

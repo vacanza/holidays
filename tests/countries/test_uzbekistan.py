@@ -19,9 +19,7 @@ from tests.common import CommonCountryTests, WorkingDayTests
 class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1992, 2050)
-        super().setUpClass(Uzbekistan, years=years)
-        cls.no_estimated_holidays = Uzbekistan(years=years, islamic_show_estimated=False)
+        super().setUpClass(Uzbekistan)
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -51,6 +49,11 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-06-18",
             "2024-09-03",
             "2024-12-31",
+            "2025-12-31",
+            "2026-01-02",
+            "2026-05-28",
+            "2026-05-29",
+            "2026-08-31",
         )
 
     def test_substituted_holidays(self):
@@ -82,6 +85,7 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-04-12",
             "2024-12-30",
             "2025-01-02",
+            "2026-12-31",
         )
 
     def test_workdays(self):
@@ -113,38 +117,39 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-04-13",
             "2024-12-14",
             "2025-01-04",
+            "2026-12-12",
         )
 
     def test_new_years_day(self):
-        self.assertHolidayName("Yangi yil", (f"{year}-01-01" for year in range(1992, 2050)))
+        self.assertHolidayName("Yangi yil", (f"{year}-01-01" for year in self.full_range))
 
     def test_womens_day(self):
-        self.assertHolidayName(
-            "Xotin-qizlar kuni", (f"{year}-03-08" for year in range(1992, 2050))
-        )
+        self.assertHolidayName("Xotin-qizlar kuni", (f"{year}-03-08" for year in self.full_range))
 
     def test_nowruz(self):
-        self.assertHolidayName("Navro‘z bayrami", (f"{year}-03-21" for year in range(1992, 2050)))
+        self.assertHolidayName("Navro‘z bayrami", (f"{year}-03-21" for year in self.full_range))
 
     def test_memory_and_honor_day(self):
-        name_1 = "G‘alaba kuni"
-        name_2 = "Xotira va qadrlash kuni"
-        self.assertHolidayName(name_1, (f"{year}-05-09" for year in range(1992, 1999)))
-        self.assertHolidayName(name_2, (f"{year}-05-09" for year in range(1999, 2050)))
-        self.assertNoHolidayName(name_1, range(1999, 2050))
-        self.assertNoHolidayName(name_2, range(1992, 1999))
+        name_1992 = "G‘alaba kuni"
+        name_1999 = "Xotira va qadrlash kuni"
+        self.assertHolidayName(
+            name_1992, (f"{year}-05-09" for year in range(self.start_year, 1999))
+        )
+        self.assertHolidayName(name_1999, (f"{year}-05-09" for year in range(1999, self.end_year)))
+        self.assertNoHolidayName(name_1992, range(1999, self.end_year))
+        self.assertNoHolidayName(name_1999, range(self.start_year, 1999))
 
     def test_independence_day(self):
-        self.assertHolidayName("Mustaqillik kuni", (f"{year}-09-01" for year in range(1992, 2050)))
+        self.assertHolidayName("Mustaqillik kuni", (f"{year}-09-01" for year in self.full_range))
 
     def test_teachers_and_instructors_day(self):
         name = "O‘qituvchi va murabbiylar kuni"
-        self.assertHolidayName(name, (f"{year}-10-01" for year in range(1997, 2050)))
-        self.assertNoHolidayName(name, range(1992, 1997))
+        self.assertHolidayName(name, (f"{year}-10-01" for year in range(1997, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1997))
 
     def test_constitution_day(self):
         name = "O‘zbekiston Respublikasi Konstitutsiyasi kuni"
-        self.assertHolidayName(name, (f"{year}-12-08" for year in range(1993, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-08" for year in range(1993, self.end_year)))
         self.assertNoHolidayName(name, 1992)
 
     def test_eid_al_fitr(self):
@@ -158,7 +163,7 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-04-10",
             "2025-03-30",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1992, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_adha(self):
         name = "Qurbon hayit"
@@ -173,17 +178,18 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-06-16",
             "2025-06-06",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1992, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_observed(self):
-        dt = (
+        obs_dts = (
             "2023-10-02",
             "2024-06-17",
             "2024-09-02",
             "2024-12-09",
+            "2025-03-31",
         )
-        self.assertHoliday(dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHoliday(obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2020(self):
         self.assertHolidaysInYear(
