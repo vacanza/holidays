@@ -31,7 +31,7 @@ class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
     country = "BF"
     # English is the official language since 2024; French remains widely used.
     default_language = "en_BF"
-    supported_languages = ("en_BF", "fr")
+    supported_languages = ("en_BF", "en_US", "fr")
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
     # %s (observed, estimated).
