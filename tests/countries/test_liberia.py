@@ -25,9 +25,8 @@ class TestLiberia(CommonCountryTests, TestCase):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))
 
     def test_inauguration_day(self):
-        years_after_election = {1960, 1964, 1968, 1972, 1976, 1986, 1998, 2006, 2012, 2018, 2024}
-        years_not_after_election = set(self.full_range) - years_after_election
         name = "Inauguration Day"
+        years_after_election = {1960, 1964, 1968, 1972, 1976, 1986, 1998, 2006, 2012, 2018, 2024}
         self.assertHolidayName(
             name,
             "2006-01-02",
@@ -36,7 +35,7 @@ class TestLiberia(CommonCountryTests, TestCase):
             "2024-01-01",
         )
         self.assertHolidayName(name, years_after_election)
-        self.assertNoHolidayName(name, years_not_after_election)
+        self.assertNoHolidayName(name, set(self.full_range) - years_after_election)
 
     def test_armed_forces_day(self):
         self.assertHolidayName("Armed Forces Day", (f"{year}-02-11" for year in self.full_range))
