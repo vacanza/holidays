@@ -568,12 +568,6 @@ the [icalendar](https://github.com/collective/icalendar) package.
 
 
 
-## Generate iCalendar (.ics) files for any country
-
-This example demonstrates how to generate `.ics` calendar files for any supported
-country using the `holidays` library by changing the country code and parameters.
-
-```python
 from holidays import country_holidays
 from holidays.ical import ICalExporter
 from pathlib import Path
@@ -588,6 +582,12 @@ def generate_ics(country_code, years, language=None, output_dir=None):
     :param language: optional language code (e.g. "en", "fr")
     :param output_dir: directory where the .ics file will be saved
     """
+
+    # Print a helpful message if country code is missing
+    if not country_code:
+        print("You need to provide a country code, e.g.: 'US', 'IN', 'DE'")
+        return
+
     holidays = country_holidays(
         country_code,
         years=years,
