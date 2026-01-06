@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.constants import BANK, PUBLIC
+from holidays.constants import BANK, PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -29,7 +29,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "BE"
     default_language = "nl"
-    supported_categories = (BANK, PUBLIC)
+    supported_categories = (BANK, PUBLIC, SCHOOL)
     supported_languages = ("de", "en_US", "fr", "nl", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -83,6 +83,40 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Bank Holiday.
         self._add_christmas_day_two(tr("Banksluitingsdag"))
+
+    # ------------------------------------------------------------------
+    # School Holidays
+    # ------------------------------------------------------------------
+
+    def _populate_school_holidays(self):
+        """
+        Shared school holidays across Belgian communities (if any).
+        Currently none are known to be common to all.
+        """
+        pass
+
+    def _populate_subdiv_french_school_holidays(self):
+        """
+        School holidays for the French Community
+        (Wallonia–Brussels Federation).
+        """
+        # TODO: Implement confirmed school holidays.
+        # Leave unimplemented if dates are unstable or unclear.
+        pass
+
+    def _populate_subdiv_flemish_school_holidays(self):
+        """
+        School holidays for the Flemish Community.
+        """
+        # TODO: Implement confirmed school holidays.
+        pass
+
+    def _populate_subdiv_german_school_holidays(self):
+        """
+        School holidays for the German-speaking Community.
+        """
+        # TODO: Implement confirmed school holidays.
+        pass
 
 
 class BE(Belgium):
