@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import OPTIONAL, SCHOOL
 from holidays.countries.israel import Israel
 from tests.common import CommonCountryTests
 
@@ -20,6 +21,12 @@ class TestIsrael(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Israel)
+
+    def test_no_holidays(self):
+        super().test_no_holidays()
+
+        self.assertNoHolidays(Israel(categories=OPTIONAL, years=self.start_year - 1))
+        self.assertNoHolidays(Israel(categories=SCHOOL, years=self.start_year - 1))
 
     def test_rosh_hashanah(self):
         name = "ראש השנה"
@@ -192,7 +199,7 @@ class TestIsrael(CommonCountryTests, TestCase):
 
     def test_taanit_ester(self):
         name = "תענית אסתר"
-        dt = (
+        dts = (
             "2000-03-20",
             "2001-03-08",
             "2002-02-25",
@@ -230,15 +237,15 @@ class TestIsrael(CommonCountryTests, TestCase):
             "2017-03-11",
         )
         self.assertNoHolidayName(name)
-        self.assertSchoolHolidayName(name, dt)
+        self.assertSchoolHolidayName(name, dts)
         self.assertSchoolNonObservedHolidayName(name, self.full_range)
         self.assertSchoolHolidayName(f"{name} (נצפה)", obs_dts)
-        self.assertSchoolNonObservedHolidayName(name, dt, non_obs_dts)
+        self.assertSchoolNonObservedHolidayName(name, dts, non_obs_dts)
         self.assertNoSchoolNonObservedHoliday(obs_dts)
 
     def test_purim(self):
         name = "פורים"
-        dt = (
+        dts = (
             "2020-03-10",
             "2021-02-26",
             "2022-03-17",
@@ -247,9 +254,9 @@ class TestIsrael(CommonCountryTests, TestCase):
             "2025-03-14",
         )
         self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(name, dt)
+        self.assertOptionalHolidayName(name, dts)
         self.assertOptionalHolidayName(name, self.full_range)
-        self.assertSchoolHolidayName(name, dt)
+        self.assertSchoolHolidayName(name, dts)
         self.assertSchoolHolidayName(name, self.full_range)
 
     def test_pesach(self):
@@ -279,7 +286,7 @@ class TestIsrael(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name_7th_day, self.full_range)
 
-        dt = (
+        dts = (
             "2020-04-10",
             "2020-04-11",
             "2020-04-12",
@@ -312,14 +319,14 @@ class TestIsrael(CommonCountryTests, TestCase):
             "2025-04-18",
         )
         self.assertNoHolidayName(name_holiday)
-        self.assertOptionalHolidayName(name_holiday, dt)
+        self.assertOptionalHolidayName(name_holiday, dts)
         self.assertOptionalHolidayNameCount(name_holiday, 5, self.full_range)
-        self.assertSchoolHolidayName(name_holiday, dt)
+        self.assertSchoolHolidayName(name_holiday, dts)
         self.assertSchoolHolidayNameCount(name_holiday, 5, self.full_range)
 
     def test_remembrance_day(self):
         name = "יום הזיכרון לחללי מערכות ישראל ונפגעי פעולות האיבה"
-        dt = (
+        dts = (
             "2000-05-09",
             "2002-04-16",
             "2003-05-06",
@@ -367,16 +374,16 @@ class TestIsrael(CommonCountryTests, TestCase):
             "2022-05-05",
         )
         self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(name, dt)
+        self.assertOptionalHolidayName(name, dts)
         self.assertOptionalNonObservedHolidayName(name, range(1963, self.end_year))
         self.assertOptionalHolidayName(f"{name} (נצפה)", obs_dts)
-        self.assertOptionalNonObservedHolidayName(name, dt, non_obs_dts)
+        self.assertOptionalNonObservedHolidayName(name, dts, non_obs_dts)
         self.assertNoOptionalNonObservedHoliday(obs_dts)
         self.assertNoOptionalHolidayName(name, range(self.start_year, 1963))
 
     def test_independence_day(self):
         name = "יום העצמאות"
-        dt = (
+        dts = (
             "2000-05-10",
             "2002-04-17",
             "2003-05-07",
@@ -423,10 +430,10 @@ class TestIsrael(CommonCountryTests, TestCase):
             "2021-04-17",
             "2022-05-06",
         )
-        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, dts)
         self.assertNonObservedHolidayName(name, self.full_range)
         self.assertHolidayName(f"{name} (נצפה)", obs_dts)
-        self.assertNonObservedHolidayName(name, dt, non_obs_dts)
+        self.assertNonObservedHolidayName(name, dts, non_obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_lag_baomer(self):
@@ -473,7 +480,7 @@ class TestIsrael(CommonCountryTests, TestCase):
 
     def test_tisha_bav(self):
         name = "תשעה באב"
-        dt = (
+        dts = (
             "2000-08-10",
             "2001-07-29",
             "2002-07-18",
@@ -510,10 +517,10 @@ class TestIsrael(CommonCountryTests, TestCase):
             "2022-08-06",
         )
         self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(name, dt)
+        self.assertOptionalHolidayName(name, dts)
         self.assertOptionalNonObservedHolidayName(name, self.full_range)
         self.assertOptionalHolidayName(f"{name} (נצפה)", obs_dts)
-        self.assertOptionalNonObservedHolidayName(name, dt, non_obs_dts)
+        self.assertOptionalNonObservedHolidayName(name, dts, non_obs_dts)
         self.assertNoOptionalNonObservedHoliday(obs_dts)
 
     def test_2021(self):

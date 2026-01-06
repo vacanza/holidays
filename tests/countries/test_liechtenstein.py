@@ -21,7 +21,7 @@ class TestLiechtenstein(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Liechtenstein)
 
-    def test_new_years(self):
+    def test_new_years_day(self):
         self.assertHolidayName("Neujahr", (f"{year}-01-01" for year in self.full_range))
 
     def test_saint_berchtolds_day(self):

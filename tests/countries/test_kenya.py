@@ -25,8 +25,8 @@ class TestKenya(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
+        self.assertNoHolidays(Kenya(categories=HINDU, years=1983))
         self.assertNoHolidays(Kenya(categories=ISLAMIC, years=self.start_year - 1))
-        self.assertNoHolidays(Kenya(categories=HINDU, years=self.start_year - 1))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -125,13 +125,13 @@ class TestKenya(CommonCountryTests, TestCase):
             name_2021, range(self.start_year, 2021), range(2025, self.end_year)
         )
         self.assertNoHolidayName(name_2025, range(self.start_year, 2025))
-        dt_1990 = ("2004-10-11",)
-        self.assertHolidayName(f"{name_1990} (observed)", dt_1990)
-        dt_2021 = ("2021-10-11",)
-        self.assertHolidayName(f"{name_2021} (observed)", dt_2021)
-        dt_2025 = ("2027-10-11",)
-        self.assertHolidayName(f"{name_2025} (observed)", dt_2025)
-        self.assertNoNonObservedHoliday(dt_1990, dt_2021, dt_2025)
+        dts_1990 = ("2004-10-11",)
+        self.assertHolidayName(f"{name_1990} (observed)", dts_1990)
+        dts_2021 = ("2021-10-11",)
+        self.assertHolidayName(f"{name_2021} (observed)", dts_2021)
+        dts_2025 = ("2027-10-11",)
+        self.assertHolidayName(f"{name_2025} (observed)", dts_2025)
+        self.assertNoNonObservedHoliday(dts_1990, dts_2021, dts_2025)
 
     def test_mashujaa_day(self):
         name_1964 = "Kenyatta Day"
@@ -142,15 +142,15 @@ class TestKenya(CommonCountryTests, TestCase):
         self.assertHolidayName(name_2011, (f"{year}-10-20" for year in range(2011, self.end_year)))
         self.assertNoHolidayName(name_1964, range(2011, self.end_year))
         self.assertNoHolidayName(name_2011, range(self.start_year, 2011))
-        dt_1964 = ("2002-10-21",)
-        self.assertHolidayName(f"{name_1964} (observed)", dt_1964)
-        dt_2011 = (
+        dts_1964 = ("2002-10-21",)
+        self.assertHolidayName(f"{name_1964} (observed)", dts_1964)
+        dts_2011 = (
             "2013-10-21",
             "2019-10-21",
             "2024-10-21",
         )
-        self.assertHolidayName(f"{name_2011} (observed)", dt_2011)
-        self.assertNoNonObservedHoliday(dt_1964, dt_2011)
+        self.assertHolidayName(f"{name_2011} (observed)", dts_2011)
+        self.assertNoNonObservedHoliday(dts_1964, dts_2011)
 
     def test_jamhury_day(self):
         name_1964 = "Independence Day"
@@ -161,17 +161,17 @@ class TestKenya(CommonCountryTests, TestCase):
         self.assertHolidayName(name_2011, (f"{year}-12-12" for year in range(2011, self.end_year)))
         self.assertNoHolidayName(name_1964, range(2011, self.end_year))
         self.assertNoHolidayName(name_2011, range(self.start_year, 2011))
-        dt_1964 = (
+        dts_1964 = (
             "2004-12-13",
             "2010-12-13",
         )
-        self.assertHolidayName(f"{name_1964} (observed)", dt_1964)
-        dt_2011 = (
+        self.assertHolidayName(f"{name_1964} (observed)", dts_1964)
+        dts_2011 = (
             "2021-12-13",
             "2027-12-13",
         )
-        self.assertHolidayName(f"{name_2011} (observed)", dt_2011)
-        self.assertNoNonObservedHoliday(dt_1964, dt_2011)
+        self.assertHolidayName(f"{name_2011} (observed)", dts_2011)
+        self.assertNoNonObservedHoliday(dts_1964, dts_2011)
 
     def test_christmas_day(self):
         name = "Christmas Day"

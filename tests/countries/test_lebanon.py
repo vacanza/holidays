@@ -48,8 +48,8 @@ class TestLebanon(CommonCountryTests, TestCase):
         self.assertGovernmentHolidayName(
             name, (f"{year}-02-14" for year in range(2020, self.end_year))
         )
-        self.assertNoBankHolidayName(name, range(self.start_year, 2019))
-        self.assertNoGovernmentHolidayName(name, range(self.start_year, 2019))
+        self.assertNoBankHolidayName(name, range(self.start_year, 2020))
+        self.assertNoGovernmentHolidayName(name, range(self.start_year, 2020))
 
     def test_feast_of_the_annunciation(self):
         name = "عيد بشارة السيدة مريم العذراء"
@@ -110,7 +110,7 @@ class TestLebanon(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(1986, 1995))
         self.assertBankHolidayName(name, range(2020, self.end_year))
         self.assertNoHolidayName(name, range(self.start_year, 1986), range(1995, self.end_year))
-        self.assertNoBankHolidayName(name, range(self.start_year, 2019))
+        self.assertNoBankHolidayName(name, range(self.start_year, 2020))
 
     def test_orthodox_easter_monday(self):
         name = "اثنين الفصح عند الطوائف الأرثوذكسية"
@@ -125,7 +125,7 @@ class TestLebanon(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(1986, 1995))
         self.assertBankHolidayName(name, range(2020, self.end_year))
         self.assertNoHolidayName(name, range(self.start_year, 1986), range(1995, self.end_year))
-        self.assertNoBankHolidayName(name, range(self.start_year, 2019))
+        self.assertNoBankHolidayName(name, range(self.start_year, 2020))
 
     def test_orthodox_easter_tuesday(self):
         name = "ثلاثاء الفصح للطوائف الأرثوذكسية"
