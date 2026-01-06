@@ -185,6 +185,8 @@ class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
         )
         self.assertHolidayNameCount(name, 1, range(2002, 2010))
         self.assertHolidayNameCount(name, 3, range(2010, self.end_year))
+        self.assertHolidayNameCount(name, 1, range(2002, 2010))
+        self.assertHolidayNameCount(name, 3, range(2010, self.end_year))
         self.assertNoHolidayName(name, range(self.start_year, 2002))
         obs_dts = (
             "2009-03-23",
