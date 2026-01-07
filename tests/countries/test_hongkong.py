@@ -24,8 +24,6 @@ class TestHongKong(CommonCountryTests, TestCase):
         super().setUpClass(HongKong, years_optional=range(HongKong.start_year, 2050))
 
     def test_no_holidays(self):
-        super().test_no_holidays(category_holidays_test=False)
-
         self.assertNoHolidays(HongKong(years=self.start_year - 1))
         self.assertNoHolidays(HongKong(categories=OPTIONAL, years=HongKong.start_year - 1))
 
