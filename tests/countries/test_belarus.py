@@ -21,6 +21,11 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Belarus)
 
+    def test_no_holidays(self):
+        super().test_no_holidays()
+
+        self.assertNoWorkdayHoliday(range(self.start_year, 1996))
+
     def test_public_2018(self):
         # http://calendar.by/procal.php?year=2018
         # https://www.officeholidays.com/countries/belarus/index.php

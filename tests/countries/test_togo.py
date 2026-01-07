@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import WORKDAY
 from holidays.countries.togo import Togo
 from tests.common import CommonCountryTests
 
@@ -20,23 +19,20 @@ from tests.common import CommonCountryTests
 class TestTogo(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1961, 2050)
-        super().setUpClass(Togo, years=years, years_non_observed=years)
-        cls.no_estimated_holidays = Togo(years=years, islamic_show_estimated=False)
-        cls.workday_holidays = Togo(categories=WORKDAY, years=years)
+        super().setUpClass(Togo)
 
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoHolidays(Togo(categories=WORKDAY, years=1986))
+        self.assertNoWorkdayHoliday(range(self.start_year, 1987))
 
     def test_new_years_day(self):
-        self.assertHolidayName("Jour de l'an", (f"{year}-01-01" for year in range(1961, 2050)))
+        self.assertHolidayName("Jour de l'an", (f"{year}-01-01" for year in self.full_range))
 
     def test_liberation_day(self):
         name = "Fête de la libération nationale"
         self.assertHolidayName(name, (f"{year}-01-13" for year in range(1967, 2014)))
-        self.assertNoHolidayName(name, range(1961, 1967), range(2014, 2050))
+        self.assertNoHolidayName(name, range(self.start_year, 1967), range(2014, self.end_year))
 
     def test_easter_monday(self):
         name = "Lundi de Pâques"
@@ -49,15 +45,15 @@ class TestTogo(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(1961, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "Fête de l'indépendance", (f"{year}-04-27" for year in range(1961, 2050))
+            "Fête de l'indépendance", (f"{year}-04-27" for year in self.full_range)
         )
 
     def test_labor_day(self):
-        self.assertHolidayName("Fête du travail", (f"{year}-05-01" for year in range(1961, 2050)))
+        self.assertHolidayName("Fête du travail", (f"{year}-05-01" for year in self.full_range))
 
     def test_ascension_day(self):
         name = "Fête de l'Ascension"
@@ -70,7 +66,7 @@ class TestTogo(CommonCountryTests, TestCase):
             "2024-05-09",
             "2025-05-29",
         )
-        self.assertHolidayName(name, range(1961, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_whit_monday(self):
         name = "Lundi de Pentecôte"
@@ -83,19 +79,19 @@ class TestTogo(CommonCountryTests, TestCase):
             "2024-05-20",
             "2025-06-09",
         )
-        self.assertHolidayName(name, range(1961, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_martyrs_day(self):
-        self.assertHolidayName("Fête des Martyrs", (f"{year}-06-21" for year in range(1961, 2050)))
+        self.assertHolidayName("Fête des Martyrs", (f"{year}-06-21" for year in self.full_range))
 
     def test_assumption_day(self):
-        self.assertHolidayName("Assomption", (f"{year}-08-15" for year in range(1961, 2050)))
+        self.assertHolidayName("Assomption", (f"{year}-08-15" for year in self.full_range))
 
     def test_all_saints_day(self):
-        self.assertHolidayName("Toussaint", (f"{year}-11-01" for year in range(1961, 2050)))
+        self.assertHolidayName("Toussaint", (f"{year}-11-01" for year in self.full_range))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Noël", (f"{year}-12-25" for year in range(1961, 2050)))
+        self.assertHolidayName("Noël", (f"{year}-12-25" for year in self.full_range))
 
     def test_ramadan_beginning_day(self):
         name = "Ramadan"
@@ -108,7 +104,7 @@ class TestTogo(CommonCountryTests, TestCase):
             "2024-03-11",
             "2025-03-01",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1961, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_fitr(self):
         name = "l'Aïd El-Fitr"
@@ -121,7 +117,7 @@ class TestTogo(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-30",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1961, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_adha(self):
         name = "Tabaski"
@@ -134,15 +130,15 @@ class TestTogo(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-07",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1961, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_anniversary_of_the_failed_attack_on_lome(self):
         name = "Anniversaire de l'attentat manqué contre Lomé"
-        self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-09-24" for year in range(1987, 2050))
-        )
-        self.assertNoHolidayName(name, self.workday_holidays, range(1961, 1987))
         self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-09-24" for year in range(1987, self.end_year))
+        )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 1987))
 
     def test_2024(self):
         self.assertHolidays(

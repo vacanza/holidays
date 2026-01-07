@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import UNOFFICIAL, WORKDAY
 from holidays.countries.finland import Finland
 from tests.common import CommonCountryTests
 
@@ -25,8 +24,8 @@ class TestFinland(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoHolidays(Finland(years=1918, categories=WORKDAY))
-        self.assertNoHolidays(Finland(years=1949, categories=UNOFFICIAL))
+        self.assertNoWorkdayHoliday(range(self.start_year, 1919))
+        self.assertNoUnofficialHoliday(range(self.start_year, 1950))
 
     def test_epiphany(self):
         name = "Loppiainen"

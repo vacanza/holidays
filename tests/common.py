@@ -663,8 +663,23 @@ class CommonTests(TestCase):
                 "`EasternCalendarHolidays`.",
             )
 
-    def test_no_holidays(self):
-        self.assertNoHolidays(self.test_class(years=self.test_class.start_year - 1))
+    def test_no_holidays(self, *, category_holidays_test=True):
+        year = self.test_class.start_year - 1
+        self.assertNoHolidays(self.test_class(years=year))
+
+        if category_holidays_test:
+            for category in self.test_class.supported_categories:
+                if category == PUBLIC:
+                    continue
+                method_suffix = "".join(part.capitalize() for part in category.split("_"))
+                method_name = f"assertNo{method_suffix}Holidays"
+
+                try:
+                    assertion = getattr(self, method_name)
+                except AttributeError:
+                    raise AssertionError(f"Missing assertion method: {method_name}")
+
+                assertion(self.test_class(categories=category, years=year))
 
     def test_observed_estimated_label(self):
         estimated_label = getattr(self.holidays, "estimated_label", None)

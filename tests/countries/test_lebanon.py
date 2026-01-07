@@ -24,8 +24,8 @@ class TestLebanon(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoBankHoliday(2019)
-        self.assertNoGovernmentHoliday(2019)
+        self.assertNoBankHoliday(range(self.start_year, 2019))
+        self.assertNoGovernmentHoliday(range(self.start_year, 2019))
 
     def test_new_years_day(self):
         self.assertHolidayName(

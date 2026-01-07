@@ -21,8 +21,16 @@ class TestThailand(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Thailand)
 
+    def test_no_holidays(self):
+        super().test_no_holidays()
+
+        self.assertNoArmedForcesHoliday(range(self.start_year, 1959))
+        self.assertNoBankHoliday(range(self.start_year, 1943), range(2022, self.end_year))
+        self.assertNoGovernmentHoliday(range(self.start_year, 1960))
+        self.assertNoSchoolHoliday(range(self.start_year, 1957))
+
     def test_special_holidays(self):
-        dt = (
+        dts = (
             # 1992-1994 (include In Lieus, Checked with Bank of Thailand Data).
             "1992-05-18",
             "1992-12-07",
@@ -98,14 +106,14 @@ class TestThailand(CommonCountryTests, TestCase):
             "2025-08-11",
             "2026-01-02",
         )
-        dt_observed = (
+        obs_dts = (
             "2007-12-24",
             "2020-07-27",
             "2020-09-04",
             "2020-09-07",
         )
-        self.assertHoliday(dt, dt_observed)
-        self.assertNoNonObservedHoliday(dt_observed)
+        self.assertHoliday(dts, obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_new_years_day(self):
         name = "วันขึ้นปีใหม่"

@@ -22,6 +22,11 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         cls.full_range = range(1990, 2073)
         super().setUpClass(Azerbaijan)
 
+    def test_no_holidays(self):
+        super().test_no_holidays()
+
+        self.assertNoWorkdayHoliday(range(self.start_year, 1992))
+
     def test_special_holidays(self):
         self.assertHoliday(
             "2007-01-03",

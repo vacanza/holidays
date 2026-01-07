@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import WORKDAY
 from holidays.countries.benin import Benin
 from tests.common import CommonCountryTests
 
@@ -20,12 +19,12 @@ from tests.common import CommonCountryTests
 class TestBenin(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Benin, years_workday=range(1990, 2050))
+        super().setUpClass(Benin)
 
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoHolidays(Benin(categories=WORKDAY, years=1989))
+        self.assertNoWorkdayHoliday(range(self.start_year, 1991))
 
     def test_new_years_day(self):
         self.assertHolidayName("Fête du Nouvel An", (f"{year}-01-01" for year in self.full_range))
@@ -200,6 +199,7 @@ class TestBenin(CommonCountryTests, TestCase):
         self.assertWorkdayHolidayName(
             name, (f"{year}-01-16" for year in range(1990, self.end_year))
         )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 1990))
 
     def test_peoples_sovereignty_day(self):
         name = "Journée de la Souveraineté de Peuple"
@@ -207,6 +207,7 @@ class TestBenin(CommonCountryTests, TestCase):
         self.assertWorkdayHolidayName(
             name, (f"{year}-02-28" for year in range(1990, self.end_year))
         )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 1990))
 
     def test_womens_day(self):
         name = "Journée de la Femme"
@@ -214,6 +215,7 @@ class TestBenin(CommonCountryTests, TestCase):
         self.assertWorkdayHolidayName(
             name, (f"{year}-03-08" for year in range(1990, self.end_year))
         )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 1990))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

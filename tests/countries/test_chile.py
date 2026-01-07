@@ -21,6 +21,11 @@ class TestChile(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Chile)
 
+    def test_no_holidays(self):
+        super().test_no_holidays()
+
+        self.assertNoBankHoliday(range(self.start_year, 1956))
+
     def test_special_holidays(self):
         self.assertHoliday(
             "1999-12-31",

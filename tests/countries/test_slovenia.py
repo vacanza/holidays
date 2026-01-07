@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import WORKDAY
 from holidays.countries.slovenia import Slovenia
 from tests.common import CommonCountryTests
 
@@ -20,14 +19,12 @@ from tests.common import CommonCountryTests
 class TestSlovenia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1992, 2050)
-        super().setUpClass(Slovenia, years=years)
-        cls.workday_holidays = Slovenia(categories=WORKDAY, years=years)
+        super().setUpClass(Slovenia)
 
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoHolidays(Slovenia(categories=WORKDAY, years=2004))
+        self.assertNoWorkdayHoliday(range(self.start_year, 2006))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -37,145 +34,155 @@ class TestSlovenia(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "novo leto"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1992, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         self.assertHolidayName(
-            name, (f"{year}-01-02" for year in (*range(1992, 2013), *range(2017, 2050)))
+            name,
+            (
+                f"{year}-01-02"
+                for year in (*range(self.start_year, 2013), *range(2017, self.end_year))
+            ),
         )
-        self.assertNoHoliday(f"{year}-01-02" for year in range(2013, 2017))
+        self.assertNoHolidayName(name, (f"{year}-01-02" for year in range(2013, 2017)))
 
-    def test_preserens_day(self):
+    def test_preserens_day_the_slovenian_cultural_holiday(self):
         self.assertHolidayName(
             "Prešernov dan, slovenski kulturni praznik",
-            (f"{year}-02-08" for year in range(1992, 2050)),
+            (f"{year}-02-08" for year in self.full_range),
         )
 
     def test_easter_sunday(self):
+        name = "velikonočna nedelja"
         self.assertHolidayName(
-            "velikonočna nedelja",
-            "2019-04-21",
+            name,
             "2020-04-12",
             "2021-04-04",
             "2022-04-17",
             "2023-04-09",
             "2024-03-31",
+            "2025-04-20",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
+        name = "velikonočni ponedeljek"
         self.assertHolidayName(
-            "velikonočni ponedeljek",
-            "2019-04-22",
+            name,
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
             "2024-04-01",
+            "2025-04-21",
         )
+        self.assertHolidayName(name, self.full_range)
 
-    def test_uprising_against_occupation_day(self):
+    def test_day_of_uprising_against_occupation(self):
         self.assertHolidayName(
-            "dan upora proti okupatorju", (f"{year}-04-27" for year in range(1992, 2050))
+            "dan upora proti okupatorju", (f"{year}-04-27" for year in self.full_range)
         )
 
     def test_labor_day(self):
         self.assertHolidayName(
             "praznik dela",
-            (f"{year}-05-01" for year in range(1992, 2050)),
-            (f"{year}-05-02" for year in range(1992, 2050)),
+            (f"{year}-05-01" for year in self.full_range),
+            (f"{year}-05-02" for year in self.full_range),
         )
 
     def test_whit_sunday(self):
+        name = "binkoštna nedelja"
         self.assertHolidayName(
-            "binkoštna nedelja",
-            "2019-06-09",
+            name,
             "2020-05-31",
             "2021-05-23",
             "2022-06-05",
             "2023-05-28",
             "2024-05-19",
+            "2025-06-08",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_statehood_day(self):
-        self.assertHolidayName("dan državnosti", (f"{year}-06-25" for year in range(1992, 2050)))
+        self.assertHolidayName("dan državnosti", (f"{year}-06-25" for year in self.full_range))
 
     def test_assumption_day(self):
         self.assertHolidayName(
-            "Marijino vnebovzetje", (f"{year}-08-15" for year in range(1992, 2050))
+            "Marijino vnebovzetje", (f"{year}-08-15" for year in self.full_range)
         )
 
     def test_reformation_day(self):
-        self.assertHolidayName("dan reformacije", (f"{year}-10-31" for year in range(1992, 2050)))
+        self.assertHolidayName("dan reformacije", (f"{year}-10-31" for year in self.full_range))
 
-    def test_all_saints_day(self):
+    def test_day_of_remembrance_for_the_dead(self):
         self.assertHolidayName(
-            "dan spomina na mrtve", (f"{year}-11-01" for year in range(1992, 2050))
+            "dan spomina na mrtve", (f"{year}-11-01" for year in self.full_range)
         )
 
     def test_christmas_day(self):
-        self.assertHolidayName("božič", (f"{year}-12-25" for year in range(1992, 2050)))
+        self.assertHolidayName("božič", (f"{year}-12-25" for year in self.full_range))
 
     def test_independence_and_unity_day(self):
-        name_1 = "dan samostojnosti"
-        name_2 = "dan samostojnosti in enotnosti"
-        self.assertHolidayName(name_1, (f"{year}-12-26" for year in range(1992, 2005)))
-        self.assertHolidayName(name_2, (f"{year}-12-26" for year in range(2005, 2050)))
-        self.assertNoHolidayName(name_1, range(2005, 2050))
-        self.assertNoHolidayName(name_2, range(1992, 2005))
+        name_1992 = "dan samostojnosti"
+        name_2005 = "dan samostojnosti in enotnosti"
+        self.assertHolidayName(
+            name_1992, (f"{year}-12-26" for year in range(self.start_year, 2005))
+        )
+        self.assertHolidayName(name_2005, (f"{year}-12-26" for year in range(2005, self.end_year)))
+        self.assertNoHolidayName(name_1992, range(2005, self.end_year))
+        self.assertNoHolidayName(name_2005, range(self.start_year, 2005))
 
     def test_primoz_trubar_day(self):
         name = "dan Primoža Trubarja"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-06-08" for year in range(2011, 2050))
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-06-08" for year in range(2011, self.end_year))
         )
-        self.assertNoHolidayName(name, self.workday_holidays, range(1992, 2011))
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 2011))
 
-    def test_unification_of_prekmurje_slovenes(self):
+    def test_unification_of_prekmurje_slovenes_with_the_mother_nation(self):
         name = "združitev prekmurskih Slovencev z matičnim narodom"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-08-17" for year in range(2006, 2050))
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-08-17" for year in range(2006, self.end_year))
         )
-        self.assertNoHolidayName(name, self.workday_holidays, range(1992, 2006))
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 2006))
 
-    def test_integration_of_primorska(self):
-        name_1 = "vrnitev Primorske k matični domovini"
-        name_2 = "priključitev Primorske k matični domovini"
-        self.assertNoHolidayName(name_1)
-        self.assertNoHolidayName(name_2)
-        self.assertHolidayName(
-            name_1, self.workday_holidays, (f"{year}-09-15" for year in range(2006, 2025))
+    def test_integration_of_primorska_into_the_homeland(self):
+        name_2006 = "vrnitev Primorske k matični domovini"
+        name_2025 = "priključitev Primorske k matični domovini"
+        self.assertNoHolidayName(name_2006)
+        self.assertNoHolidayName(name_2025)
+        self.assertWorkdayHolidayName(name_2006, (f"{year}-09-15" for year in range(2006, 2025)))
+        self.assertWorkdayHolidayName(
+            name_2025, (f"{year}-09-15" for year in range(2025, self.end_year))
         )
-        self.assertHolidayName(
-            name_2, self.workday_holidays, (f"{year}-09-15" for year in range(2025, 2050))
+        self.assertNoWorkdayHolidayName(
+            name_2006, range(self.start_year, 2006), range(2025, self.end_year)
         )
-        self.assertNoHolidayName(
-            name_1, self.workday_holidays, range(1992, 2006), range(2025, 2050)
-        )
-        self.assertNoHolidayName(name_2, self.workday_holidays, range(1992, 2025))
+        self.assertNoWorkdayHolidayName(name_2025, range(self.start_year, 2025))
 
     def test_slovenian_sports_day(self):
         name = "dan slovenskega športa"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-09-23" for year in range(2020, 2050))
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-09-23" for year in range(2020, self.end_year))
         )
-        self.assertNoHolidayName(name, self.workday_holidays, range(1992, 2020))
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 2020))
 
     def test_sovereignty_day(self):
         name = "dan suverenosti"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-10-25" for year in range(2015, 2050))
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-10-25" for year in range(2015, self.end_year))
         )
-        self.assertNoHolidayName(name, self.workday_holidays, range(1992, 2015))
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 2015))
 
     def test_rudolf_maister_day(self):
         name = "dan Rudolfa Maistra"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-11-23" for year in range(2005, 2050))
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-11-23" for year in range(2005, self.end_year))
         )
-        self.assertNoHolidayName(name, self.workday_holidays, range(1992, 2005))
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 2005))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

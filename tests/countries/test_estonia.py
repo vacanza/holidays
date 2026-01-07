@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import HALF_DAY
 from holidays.countries.estonia import Estonia
 from tests.common import CommonCountryTests
 
@@ -24,7 +23,8 @@ class TestEstonia(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         super().test_no_holidays()
-        self.assertNoHolidays(Estonia(categories=HALF_DAY, years=2000))
+
+        self.assertNoHalfDayHoliday(range(self.start_year, 2001))
 
     def test_new_years_day(self):
         self.assertHolidayName("uusaasta", (f"{year}-01-01" for year in self.full_range))

@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import UNOFFICIAL
 from holidays.countries.aland_islands import AlandIslands
 from tests.common import CommonCountryTests
 
@@ -25,7 +24,7 @@ class TestAland(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoHolidays(AlandIslands(categories=UNOFFICIAL, years=1949))
+        self.assertNoUnofficialHoliday(range(self.start_year, 1950))
 
     def test_alands_autonomy_day(self):
         name = "Ahvenanmaan itsehallintopäivä"

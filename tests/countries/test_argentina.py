@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import ARMENIAN, BANK, GOVERNMENT, HEBREW, ISLAMIC
 from holidays.countries.argentina import Argentina
 from tests.common import CommonCountryTests
 
@@ -32,11 +31,11 @@ class TestArgentina(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoHolidays(Argentina(categories=ARMENIAN, years=2006))
-        self.assertNoHolidays(Argentina(categories=BANK, years=1974))
-        self.assertNoHolidays(Argentina(categories=GOVERNMENT, years=2013))
-        self.assertNoHolidays(Argentina(categories=HEBREW, years=1995))
-        self.assertNoHolidays(Argentina(categories=ISLAMIC, years=1996))
+        self.assertNoArmenianHoliday(range(self.start_year, 2007))
+        self.assertNoBankHoliday(range(self.start_year, 1975))
+        self.assertNoGovernmentHoliday(range(self.start_year, 2014))
+        self.assertNoHebrewHoliday(range(self.start_year, 1996))
+        self.assertNoIslamicHoliday(range(self.start_year, 1997))
 
     def test_special_holidays(self):
         self.assertHoliday(

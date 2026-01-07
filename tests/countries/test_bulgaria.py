@@ -21,6 +21,12 @@ class TestBulgaria(CommonCountryTests, WorkingDayTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Bulgaria, years_non_observed=range(2017, 2026))
 
+    def test_no_holidays(self):
+        super().test_no_holidays()
+
+        self.assertNoHalfDayHoliday(range(1996, self.end_year))
+        self.assertNoSchoolHoliday(range(self.start_year, 1992))
+
     def test_special_holidays(self):
         self.assertHoliday(
             "2004-04-02",
