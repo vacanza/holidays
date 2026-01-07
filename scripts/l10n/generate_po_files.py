@@ -13,7 +13,7 @@
 #  License: MIT (see LICENSE file)
 
 import importlib
-import inspectgit
+import inspect
 import sys
 from concurrent.futures import ProcessPoolExecutor
 from datetime import datetime
