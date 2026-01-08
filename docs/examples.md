@@ -17,14 +17,11 @@ False
 
 It is more efficient to create the object only once:
 
-``` python
 >>> us_holidays = holidays.US()
 >>> date(2014, 1, 1) in us_holidays
 True
 >>> date(2014, 1, 2) in us_holidays
 False
-```
-
 You can use the `country_holidays` or `financial_holidays` functions to create the object
 using a string with the country code:
 
@@ -94,20 +91,12 @@ False
 >>> date(2012, 1, 1) in us_holidays
 True
 ```
+Observed Parameter
+By default, the observed parameter is True. If a holiday falls on a weekend, the statutory holiday is observed on the following workday:
 
-## Observed parameter
-
-January 1st, 2012 fell on a Sunday, so the statutory holiday was observed on the 2nd. By default,
-the `observed` param is `True`, so the holiday list will include January 2nd, 2012 as a holiday:
-
-``` python
->>> date(2012, 1, 1) in us_holidays
-True
->>> us_holidays[date(2012, 1, 1)]
-"New Year's Day"
->>> date(2012, 1, 2) in us_holidays
-True
->>> us_holidays.get(date(2012 ,1, 2))
+>>> # Jan 1, 2012 was a Sunday; the holiday was observed on Jan 2.
+>>> us_holidays = holidays.US(years=2012)
+>>> us_holidays.get(date(2012, 1, 2))
 "New Year's Day (observed)"
 ```
 
@@ -121,7 +110,12 @@ False
 us_holidays.observed = True
 >>> date(2012, 1, 2) in us_holidays
 True
-```
+`You can toggle this on the fly:
+``
+
+>>> us_holidays.observed = False
+>>> date(2012, 1, 2) in us_holidays
+False
 
 ## Language support
 
@@ -246,13 +240,10 @@ False
 >>> us_holidays.is_working_day("2024-01-15")  # Monday, Martin Luther King Jr. Day.
 False
 ```
+Business Day Math
+Get nth working day: us_holidays.get_nth_working_day("2024-12-20", 5)
 
-To find the nth working day after the specified date:
-
-``` python
->>> us_holidays.get_nth_working_day("2024-12-20", 5)
-datetime.date(2024, 12, 30)
-```
+Count working days: us_holidays.get_working_days_count("2024-04-01", "2024-06-30")
 
 Here we calculate the 5th working day after December 20, 2024. Working days are 23 (Mon), 24 (Tue),
 26 (Thu), 27 (Fri), 30 (Mon); 21-22, 28-29 - weekends, 25 - Christmas Day.
@@ -494,15 +485,9 @@ True
 [ICalExporter][holidays.ical.ICalExporter] facilitates the creation and export of iCalendar files
 in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
 
-``` python
->>> from holidays import country_holidays
->>> from holidays.ical import ICalExporter
->>> us_holidays = country_holidays('US', years=2020)
-# Initializes the iCalendar exporter.
->>> exporter = ICalExporter(us_holidays)
-```
 
-To create iCalendar content, use `generate`.
+`ICalExporter facilitates the creation of .ics files compliant with RFC 5545.
+
 
 ``` python
 >>> from holidays import country_holidays
