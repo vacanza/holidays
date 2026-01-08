@@ -474,11 +474,11 @@ wheels = [
 
 [[package]]
 name = "hijridate"
-version = "2.5.0"
+version = "2.6.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/b5/e6/ce409c1c745255cd3b756e3765a92415c5690bb7aa06dd01ca38ed24e429/hijridate-2.5.0.tar.gz", hash = "sha256:b47f0b2e5333d5d898c6f3472f5cee4a3f045c82d69c073c7a026f5a7aec5821", size = 35287, upload-time = "2024-05-24T21:08:05.142Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/0e/8a/ddbaee418c78d067832e6d684e52640e19aa04d81d8eee42870b98728205/hijridate-2.6.0.tar.gz", hash = "sha256:afe4644c4d1fe3cfd2aa3c28bfa660405c12e5ba53249ba942ec68c7bb216e00", size = 35791, upload-time = "2026-01-06T19:10:51.073Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d7/9d/f93aac492d04146fa7746f74a0e3c3194f60b0a012be030401d42367cf42/hijridate-2.5.0-py3-none-any.whl", hash = "sha256:f6871bacbb0d3c8eff3cab155fa822877b73517354f9d834ebe6a722a9caf35c", size = 14407, upload-time = "2024-05-24T21:08:03.609Z" },
+    { url = "https://files.pythonhosted.org/packages/87/8f/189391314015883f2a1a308d5692fc269ea0675dfcd61fa12be4024b2080/hijridate-2.6.0-py3-none-any.whl", hash = "sha256:290db60c7780acc2a7e2112fada70847e3c11c0030b998606db77ecf126c305b", size = 14456, upload-time = "2026-01-06T19:10:49.77Z" },
 ]
 
 [[package]]
