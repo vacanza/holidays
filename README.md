@@ -1804,7 +1804,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>See Virgin Islands (U.S.)</td>
 <td></td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Uruguay</td>
