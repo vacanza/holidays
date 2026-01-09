@@ -62,6 +62,8 @@ class POGenerator:
         """Returns the standard metadata required for gettext."""
         return {
             "Report-Msgid-Bugs-To": "dr-prodigy@users.noreply.github.com",
+            "POT-Creation-Date": datetime.now().strftime("%Y-%m-%d %H:%M%z"),
+            "Last-Translator": "Vacanza Team <dr.prodigy.github@gmail.com>",
             "Language-Team": "Holidays Localization Team",
             "MIME-Version": "1.0",
             "Content-Type": "text/plain; charset=UTF-8",
@@ -96,7 +98,6 @@ class POGenerator:
         pot_file = pofile(pot_file_path, wrapwidth=WRAP_WIDTH)
         pot_file.metadata.update(POGenerator._get_standard_metadata(default_language))
         pot_file.metadata["Project-Id-Version"] = f"Holidays {package_version}"
-        pot_file.metadata["POT-Creation-Date"] = datetime.now().strftime("%Y-%m-%d %H:%M%z")
         pot_file.save(newline="\n")
 
         po_directory = locale_path / default_language / "LC_MESSAGES"
@@ -133,7 +134,6 @@ class POGenerator:
         has_content_changed = po_file != po_file_initial
 
         license_header = POGenerator._get_license_header()
-
         current_lang = po_path.parent.parent.name
         is_default_lang = current_lang == default_language
 
