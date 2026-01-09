@@ -670,15 +670,7 @@ class CommonTests(TestCase):
         for category in self.test_class.supported_categories:
             if category == PUBLIC:
                 continue
-            method_suffix = "".join(part.capitalize() for part in category.split("_"))
-            method_name = f"assertNo{method_suffix}Holidays"
-
-            try:
-                assertion = getattr(self, method_name)
-            except AttributeError:
-                raise AssertionError(f"Missing assertion method: {method_name}")
-
-            assertion(self.test_class(categories=category, years=year))
+            self.assertNoHolidays(self.test_class(categories=category, years=year))
 
     def test_observed_estimated_label(self):
         estimated_label = getattr(self.holidays, "estimated_label", None)
