@@ -91,9 +91,7 @@ class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
         self._add_observed(self._add_all_saints_day(tr("All Saints' Day")))
 
         # Proclamation of Independence Day.
-        self._add_observed(
-            self._add_holiday_dec_11(tr("Proclamation of Independence Day"))
-        )
+        self._add_observed(self._add_holiday_dec_11(tr("Proclamation of Independence Day")))
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day(tr("Christmas Day")))
@@ -106,7 +104,6 @@ class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
 
         # Mawlid.
         self._add_mawlid_day(tr("Mawlid"))
-
 
 
 class BF(BurkinaFaso):
