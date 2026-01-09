@@ -1800,13 +1800,6 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GOVERNMENT, HALF_DAY, UNOFFICIAL</td>
 </tr>
 <tr>
-<td>United States Virgin Islands (the)</td>
-<td></td>
-<td>See Virgin Islands (U.S.)</td>
-<td></td>
-<td>GOVERNMENT, UNOFFICIAL</td>
-</tr>
-<tr>
 <td>Uruguay</td>
 <td>UY</td>
 <td></td>
@@ -1917,6 +1910,13 @@ code when available. The following financial markets are available:
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>Bombay Stock Exchange</td>
+<td>XBOM</td>
+<td>Bombay Stock Exchange (BSE) market holidays</td>
+<td><strong>en_IN</strong>, en_US, gu, hi</td>
+<td></td>
+</tr>
 <tr>
 <td>Brasil, Bolsa, Balcão</td>
 <td>BVMF</td>

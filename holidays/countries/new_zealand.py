@@ -243,8 +243,8 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
 
         if self.subdiv == "New Plymouth":
             self._populate_subdiv_tki_public_holidays()
-        elif self.subdiv == "South Canterbury":
-            self._populate_subdiv_stc_public_holidays()
+        elif self.subdiv == "STC":
+            self._populate_subdiv_south_canterbury_public_holidays()
         elif self.subdiv in {"WTL", "Westland"}:
             self._populate_subdiv_wtc_public_holidays()
 
@@ -304,7 +304,8 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         # Otago Anniversary Day.
         self._add_holiday("Otago Anniversary Day", dt)
 
-    def _populate_subdiv_stc_public_holidays(self):
+    def _populate_subdiv_south_canterbury_public_holidays(self):
+        # South Canterbury Anniversary Day.
         self._add_holiday_4th_mon_of_sep("South Canterbury Anniversary Day")
 
     def _populate_subdiv_stl_public_holidays(self):

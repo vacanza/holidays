@@ -19,9 +19,7 @@ from tests.common import CommonCountryTests, WorkingDayTests
 class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1991, 2050)
-        super().setUpClass(Kazakhstan, years=years, years_non_observed=years)
-        cls.no_estimated_holidays = Kazakhstan(years=years, islamic_show_estimated=False)
+        super().setUpClass(Kazakhstan)
 
     def test_substituted_holidays(self):
         self.assertHoliday(
@@ -142,79 +140,174 @@ class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
         }.items():
             self.assertWorkingDay(Kazakhstan(years=year), dts)
 
-    def test_new_year(self):
+    def test_new_years_day(self):
         name = "Жаңа жыл"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1991, 2050)))
-        self.assertHolidayName(name, (f"{year}-01-02" for year in range(1991, 2050)))
+        self.assertHolidayName(
+            name,
+            (f"{year}-01-01" for year in self.full_range),
+            (f"{year}-01-02" for year in self.full_range),
+        )
+        obs_dts = (
+            "2017-01-03",
+            "2021-01-04",
+            "2022-01-03",
+            "2022-01-04",
+            "2023-01-03",
+        )
+        self.assertHolidayName(f"{name} (қайта белгіленген демалыс)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_christmas(self):
+    def test_orthodox_christmas(self):
         name = "Православиелік Рождество"
-        self.assertHolidayName(name, (f"{year}-01-07" for year in range(2006, 2050)))
-        self.assertNoHoliday(f"{year}-01-07" for year in range(1991, 2006))
-        self.assertNoHolidayName(name, range(1991, 2006))
+        self.assertHolidayName(name, (f"{year}-01-07" for year in range(2006, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2006))
 
-    def test_womens_day(self):
-        self.assertHolidayName(
-            "Халықаралық әйелдер күні", (f"{year}-03-08" for year in range(1991, 2050))
+    def test_international_womens_day(self):
+        name = "Халықаралық әйелдер күні"
+        self.assertHolidayName(name, (f"{year}-03-08" for year in self.full_range))
+        obs_dts = (
+            "2009-03-09",
+            "2014-03-10",
+            "2015-03-09",
+            "2020-03-09",
+            "2025-03-10",
         )
+        self.assertHolidayName(f"{name} (қайта белгіленген демалыс)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_nauryz(self):
+    def test_nowruz_holiday(self):
         name = "Наурыз мейрамы"
-        for year in range(2010, 2050):
-            self.assertHolidayName(name, f"{year}-03-21", f"{year}-03-22", f"{year}-03-23")
-        self.assertNoHolidayName(name, range(1991, 2002))
-        for year in set(range(2002, 2010)) - {2005, 2007}:
-            self.assertNoNonObservedHoliday(f"{year}-03-21", f"{year}-03-23")
-
-    def test_solidarity_day(self):
         self.assertHolidayName(
-            "Қазақстан халқының бірлігі мерекесі", (f"{year}-05-01" for year in range(1991, 2050))
+            name,
+            (f"{year}-03-21" for year in range(2010, self.end_year)),
+            (f"{year}-03-22" for year in range(2002, self.end_year)),
+            (f"{year}-03-23" for year in range(2010, self.end_year)),
         )
+        self.assertHolidayNameCount(name, 1, range(2002, 2010))
+        self.assertHolidayNameCount(name, 3, range(2010, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2002))
+        obs_dts = (
+            "2009-03-23",
+            "2021-03-24",
+            "2024-03-25",
+            "2025-03-24",
+            "2025-03-25",
+        )
+        self.assertHolidayName(f"{name} (қайта белгіленген демалыс)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_defenders_day(self):
+    def test_kazakhstans_people_solidarity_holiday(self):
+        name = "Қазақстан халқының бірлігі мерекесі"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
+        obs_dts = (
+            "2010-05-03",
+            "2011-05-02",
+            "2016-05-02",
+            "2021-05-03",
+            "2022-05-02",
+        )
+        self.assertHolidayName(f"{name} (қайта белгіленген демалыс)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_defender_of_the_fatherland_day(self):
         name = "Отан Қорғаушы күні"
-        self.assertHolidayName(name, (f"{year}-05-07" for year in range(2013, 2050)))
-        self.assertNoHoliday(f"{year}-05-07" for year in range(1991, 2013))
-        self.assertNoHolidayName(name, range(1991, 2013))
+        self.assertHolidayName(name, (f"{year}-05-07" for year in range(2013, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2013))
+        obs_dts = (
+            "2016-05-10",
+            "2017-05-08",
+            "2022-05-10",
+            "2023-05-08",
+        )
+        self.assertHolidayName(f"{name} (қайта белгіленген демалыс)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_victory_day(self):
-        self.assertHolidayName("Жеңіс күні", (f"{year}-05-09" for year in range(1991, 2050)))
+        name = "Жеңіс күні"
+        self.assertHolidayName(name, (f"{year}-05-09" for year in self.full_range))
+        obs_dts = (
+            "2009-05-11",
+            "2010-05-10",
+            "2015-05-11",
+            "2020-05-08",
+            "2021-05-10",
+        )
+        self.assertHolidayName(f"{name} (қайта белгіленген демалыс)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_capital_day(self):
         name = "Астана күні"
-        self.assertHolidayName(name, (f"{year}-07-06" for year in range(2009, 2050)))
-        self.assertNoHoliday(f"{year}-07-06" for year in range(1991, 2009))
-        self.assertNoHolidayName(name, range(1991, 2009))
+        self.assertHolidayName(name, (f"{year}-07-06" for year in range(2009, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2009))
+        obs_dts = (
+            "2013-07-08",
+            "2014-07-07",
+            "2019-07-08",
+            "2024-07-08",
+            "2025-07-07",
+        )
+        self.assertHolidayName(f"{name} (қайта белгіленген демалыс)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_constitution_day(self):
         name = "Қазақстан Республикасының Конституциясы күні"
-        self.assertHolidayName(name, (f"{year}-08-30" for year in range(1996, 2050)))
-        self.assertNoHoliday(f"{year}-08-30" for year in range(1991, 1996))
-        self.assertNoHolidayName(name, range(1991, 1996))
+        self.assertHolidayName(name, (f"{year}-08-30" for year in range(1996, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1996))
+        obs_dts = (
+            "2009-08-31",
+            "2014-09-01",
+            "2015-08-31",
+            "2020-08-31",
+            "2025-09-01",
+        )
+        self.assertHolidayName(f"{name} (қайта белгіленген демалыс)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_republic_day(self):
         name = "Республика күні"
-        self.assertHolidayName(name, (f"{year}-10-25" for year in range(1994, 2009)))
-        self.assertHolidayName(name, (f"{year}-10-25" for year in range(2022, 2050)))
-        self.assertNoHoliday(f"{year}-10-25" for year in range(1991, 1994))
-        self.assertNoHoliday(f"{year}-10-25" for year in range(2009, 2022))
-        self.assertNoHolidayName(name, range(1991, 1994), range(2009, 2022))
+        self.assertHolidayName(
+            name, (f"{year}-10-25" for year in (*range(1994, 2009), *range(2022, self.end_year)))
+        )
+        self.assertNoHolidayName(name, range(self.start_year, 1994), range(2009, 2022))
+        obs_dts = (
+            "2003-10-27",
+            "2008-10-27",
+            "2025-10-27",
+        )
+        self.assertHolidayName(f"{name} (қайта белгіленген демалыс)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_first_president_day(self):
         name = "Қазақстан Республикасының Тұңғыш Президенті күні"
         self.assertHolidayName(name, (f"{year}-12-01" for year in range(2012, 2022)))
-        self.assertNoHoliday(f"{year}-12-01" for year in range(1991, 2012))
-        self.assertNoHoliday(f"{year}-12-01" for year in range(2022, 2050))
-        self.assertNoHolidayName(name, range(1991, 2012), range(2022, 2050))
+        self.assertNoHolidayName(name, range(self.start_year, 2012), range(2022, self.end_year))
+        obs_dts = (
+            "2012-12-03",
+            "2013-12-02",
+            "2018-12-03",
+            "2019-12-02",
+        )
+        self.assertHolidayName(f"{name} (қайта белгіленген демалыс)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_independence_day(self):
         name = "Тəуелсіздік күні"
-        self.assertHolidayName(name, (f"{year}-12-16" for year in range(1991, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-16" for year in self.full_range))
         self.assertHolidayName(name, (f"{year}-12-17" for year in range(2002, 2022)))
-        self.assertNoHoliday(f"{year}-12-17" for year in range(1991, 2002))
-        self.assertNoNonObservedHoliday(f"{year}-12-17" for year in range(2022, 2050))
+        self.assertHolidayNameCount(
+            name, 1, range(self.start_year, 2002), range(2022, self.end_year)
+        )
+        obs_dts = (
+            "2016-12-19",
+            "2017-12-18",
+            "2017-12-19",
+            "2018-12-18",
+            "2023-12-18",
+        )
+        self.assertHolidayName(f"{name} (қайта белгіленген демалыс)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_kurban_ait(self):
+    def test_eid_al_adha(self):
         name = "Құрбан айт"
         self.assertHolidayName(
             name,
@@ -239,64 +332,8 @@ class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-06-16",
             "2025-06-06",
         )
-        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1991, 2006))
-
-    def test_observed(self):
-        observed_holidays = (
-            "2012-01-03",
-            "2012-12-18",
-            "2013-03-25",
-            "2013-07-08",
-            "2013-12-02",
-            "2014-03-10",
-            "2014-03-24",
-            "2014-03-25",
-            "2014-07-07",
-            "2014-09-01",
-            "2015-03-09",
-            "2015-03-24",
-            "2015-03-25",
-            "2015-05-11",
-            "2015-08-31",
-            "2016-01-04",
-            "2016-05-02",
-            "2016-05-10",
-            "2016-12-19",
-            "2017-01-03",
-            "2017-05-08",
-            "2017-12-18",
-            "2017-12-19",
-            "2018-12-03",
-            "2018-12-18",
-            "2019-03-25",
-            "2019-07-08",
-            "2019-12-02",
-            "2020-03-09",
-            "2020-03-24",
-            "2020-03-25",
-            "2020-05-08",
-            "2020-08-31",
-            "2021-01-04",
-            "2021-03-24",
-            "2021-05-03",
-            "2021-05-10",
-            "2022-01-04",
-            "2022-05-02",
-            "2022-05-10",
-            "2023-01-03",
-            "2023-05-08",
-            "2023-12-18",
-            "2024-03-25",
-            "2024-07-08",
-            "2025-03-10",
-            "2025-03-24",
-            "2025-03-25",
-            "2025-07-07",
-            "2025-09-01",
-            "2025-10-27",
-        )
-        self.assertHoliday(observed_holidays)
-        self.assertNoNonObservedHoliday(observed_holidays)
+        self.assertIslamicNoEstimatedHolidayName(name, range(2006, self.end_year))
+        self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 2006))
 
     def test_2022(self):
         self.assertHolidaysInYear(

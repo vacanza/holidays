@@ -117,6 +117,11 @@ class UnitedStates(
         * Northern Mariana Islands (subdivision MP):
             * <https://web.archive.org/web/20240727045236/https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/>
             * <https://web.archive.org/web/20250429140158/https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/>
+        * Alaska:
+            * [Proclamation 3269 - Admission of the State of Alaska Into the Union](https://web.archive.org/web/20250613173049/https://www.presidency.ucsb.edu/documents/proclamation-3269-admission-the-state-alaska-into-the-union)
+            * [Alaska Statutes, Sec. 44.12.010](https://web.archive.org/web/20251014215648/https://www.akleg.gov/basis/statutes.asp#44.12.010)
+            * [Alaska Day](https://web.archive.org/web/20120502232826/http://www.alaskadispatch.com/article/happy-alaska-day-great-land)
+            * [Chapter 109, Session Laws of Alaska (1989)](https://web.archive.org/web/20251228151503/https://www.akleg.gov/basis/folioproxy.asp?url=http://wwwjnu03.akleg.org/cgi-bin/folioisa.dll/slpr/query=*/doc/%7B@1158%7D?next)
         * American Samoa:
             * <https://web.archive.org/web/20240808163628/https://asbar.org/code-annotated/1-0501-public-holidays/>
         * Puerto Rico:
@@ -422,6 +427,7 @@ class UnitedStates(
     def _populate_subdiv_holidays(self):
         if PUBLIC in self.categories:
             if self._year >= 1986 and self.subdiv not in {
+                "AK",
                 "AL",
                 "AR",
                 "AZ",
@@ -434,6 +440,7 @@ class UnitedStates(
                 self._add_holiday_3rd_mon_of_jan(tr("Martin Luther King Jr. Day"))
 
             if self._year >= 1879 and self.subdiv not in {
+                "AK",
                 "AL",
                 "AR",
                 "DE",
@@ -448,7 +455,6 @@ class UnitedStates(
                 name = tr("Washington's Birthday")
                 if self._year >= 1971:
                     if self.subdiv not in {
-                        "AK",
                         "AZ",
                         "CA",
                         "CO",
@@ -522,18 +528,30 @@ class UnitedStates(
         super()._populate_subdiv_holidays()
 
     def _populate_subdiv_ak_public_holidays(self):
-        if self._year >= 1971:
-            # Presidents' Day.
-            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
+        # Proclamation 3269 from Jan 3, 1959.
+        if self._year <= 1958:
+            return None
 
-        # No observance in 1921: https://web.archive.org/web/20230208015211/https://chroniclingamerica.loc.gov/lccn/sn86072239/1922-03-29/ed-1/seq-8/
-        if self._year >= 1918 and self._year != 1921:
-            # Seward's Day.
-            name = tr("Seward's Day")
-            if self._year >= 1955:
-                self._add_holiday_last_mon_of_mar(name)
-            else:
-                self._add_holiday_mar_30(name)
+        # Chapter 109 SLA 1989.
+        if self._year >= 1990:
+            # Martin Luther King Jr.'s Birthday.
+            self._add_holiday_3rd_mon_of_jan(tr("Martin Luther King Jr.'s Birthday"))
+        else:
+            # Lincoln's Birthday.
+            self._add_observed(self._add_holiday_feb_12(tr("Lincoln's Birthday")))
+
+        if self._year >= 1971:
+            # Chapter 109 SLA 1989.
+            self._add_holiday_3rd_mon_of_feb(
+                # Presidents' Day.
+                tr("Presidents' Day")
+                if self._year >= 1990
+                # Washington's Birthday.
+                else tr("Washington's Birthday")
+            )
+
+        # Seward's Day.
+        self._add_holiday_last_mon_of_mar(tr("Seward's Day"))
 
         if self._year >= 1971:
             self._add_holiday_2nd_mon_of_oct(
@@ -544,10 +562,8 @@ class UnitedStates(
                 else tr("Columbus Day")
             )
 
-        # https://web.archive.org/web/20120502232826/http://www.alaskadispatch.com/article/happy-alaska-day-great-land
-        if self._year >= 1917:
-            # Alaska Day.
-            self._add_observed(self._add_holiday_oct_18(tr("Alaska Day")))
+        # Alaska Day.
+        self._add_observed(self._add_holiday_oct_18(tr("Alaska Day")))
 
     def _populate_subdiv_al_public_holidays(self):
         if self._year >= 1986:
