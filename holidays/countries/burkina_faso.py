@@ -71,7 +71,7 @@ class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_observed(self._add_labor_day(tr("Labour Day")))
 
         # Ascension Day.
@@ -102,7 +102,7 @@ class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Eid al-Adha"))
 
-        # Mawlid.
+        # Prophet's Birthday.
         self._add_mawlid_day(tr("Mawlid"))
 
 
