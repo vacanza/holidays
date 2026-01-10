@@ -247,7 +247,7 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
         }.items():
             self.assertWorkingDay(Ukraine(years=year), dts)
 
-    def test_new_year_day(self):
+    def test_new_years_day(self):
         name = "Новий рік"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(self.start_year, 2023)))
         self.assertWorkdayHolidayName(
@@ -288,7 +288,7 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidayName(f"{name} (вихідний)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_womens_day(self):
+    def test_international_womens_day(self):
         name = "Міжнародний жіночий день"
         self.assertHolidayName(name, (f"{year}-03-08" for year in range(self.start_year, 2023)))
         self.assertWorkdayHolidayName(
@@ -410,7 +410,7 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidayName(f"{name_2018} (вихідний)", obs_dts_2018)
         self.assertNoNonObservedHoliday(obs_dts_1991, obs_dts_2018)
 
-    def test_victory_day(self):
+    def test_day_of_remembrance_and_victory_over_nazism_in_world_war_ii_1939_1945(self):
         name_1991 = "День Перемоги"
         name_2016 = "День перемоги над нацизмом у Другій світовій війні (День перемоги)"
         name_2024 = "День памʼяті та перемоги над нацизмом у Другій світовій війні 1939-1945 років"
