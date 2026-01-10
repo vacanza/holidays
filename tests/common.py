@@ -665,11 +665,7 @@ class CommonTests(TestCase):
 
     def test_no_holidays(self):
         year = self.test_class.start_year - 1
-        self.assertNoHolidays(self.test_class(years=year))
-
         for category in self.test_class.supported_categories:
-            if category == PUBLIC:
-                continue
             self.assertNoHolidays(self.test_class(categories=category, years=year))
 
     def test_observed_estimated_label(self):
