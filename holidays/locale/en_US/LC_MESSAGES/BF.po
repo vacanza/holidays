@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: en_US\n"
+"X-Source-Language: en_BF\n"
 
 #. %s (observed).
 #, c-format
