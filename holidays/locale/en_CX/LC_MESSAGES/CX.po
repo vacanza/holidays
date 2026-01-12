@@ -30,62 +30,62 @@ msgstr ""
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
-msgstr ""
+msgstr "%s (observed)"
 
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
-msgstr ""
+msgstr "%s (estimated)"
 
 #. %s (observed, estimated).
 #, c-format
 msgid "%s (observed, estimated)"
-msgstr ""
+msgstr "%s (observed, estimated)"
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr ""
+msgstr "New Year's Day"
 
 #. Australia Day.
 msgid "Australia Day"
-msgstr ""
+msgstr "Australia Day"
 
 #. Chinese New Year.
 msgid "Chinese New Year"
-msgstr ""
+msgstr "Chinese New Year"
 
 #. Labor Day.
 msgid "Labour Day"
-msgstr ""
+msgstr "Labour Day"
 
 #. Good Friday.
 msgid "Good Friday"
-msgstr ""
+msgstr "Good Friday"
 
 #. ANZAC Day.
 msgid "ANZAC Day"
-msgstr ""
+msgstr "ANZAC Day"
 
 #. Territory Day.
 msgid "Territory Day"
-msgstr ""
+msgstr "Territory Day"
 
 #. Boxing Day.
 msgid "Boxing Day"
-msgstr ""
+msgstr "Boxing Day"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr ""
+msgstr "Christmas Day"
 
 #. Eid al-Fitr.
 msgid "Hari Raya Puasa"
-msgstr ""
+msgstr "Hari Raya Puasa"
 
 #. Eid al-Adha.
 msgid "Hari Raya Haji"
-msgstr ""
+msgstr "Hari Raya Haji"
 
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
-msgstr ""
+msgstr "National Day of Mourning for Queen Elizabeth II"
