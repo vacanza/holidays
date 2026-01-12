@@ -104,8 +104,18 @@ The standard way to refer to a country is by using its [ISO 3166-1 alpha-2 code]
 the same used for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
 abbreviations as aliases for their subdivisions. These are defined in the (optional)
-`subdivisions_aliases` attribute. Some of the countries support more than one language for holiday
-names output. A default language is defined by `default_language` (optional) attribute for each
+`subdivisions_aliases` attribute.
+
+> ⚠️ **Note**
+>
+> The presence of a subdivision or city in the internal implementation does
+> not guarantee that it appears in `subdivisions_aliases`.
+> The aliases list is intentionally **not exhaustive** and only includes
+> commonly used or officially recognized alternative names.
+> As a result, some valid subdivisions (for example, certain cities)
+> may work internally but not be listed as aliases.
+
+Some of the countries support more than one language for holiday names output. A default language is defined by `default_language` (optional) attribute for each
 entity and is used as a fallback when neither user specified language nor user locale language
 available. The default language code is a [ISO 639-1
 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). A list of all languages supported by
