@@ -300,9 +300,9 @@ class India(
     # Bihar.
     def _populate_subdiv_br_public_holidays(self):
         # Chhath Puja.
-        self._add_chhath_puja(tr("Chhath Puja"))
+        self._add_chhath_puja(tr("Chhath Puja / छठ पूजा"))
         # Bihar Day.
-        self._add_holiday_mar_22(tr("Bihar Day"))
+        self._add_holiday_mar_22(tr("Bihar Day / बिहार दिवस"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
 
