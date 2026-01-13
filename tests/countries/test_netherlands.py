@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import OPTIONAL
 from holidays.countries.netherlands import Netherlands
 from tests.common import CommonCountryTests
 
@@ -24,7 +25,7 @@ class TestNetherlands(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoOptionalHoliday(range(self.start_year, 1982))
+        self.assertNoHolidays(Netherlands(categories=OPTIONAL, years=range(self.start_year, 1982)))
 
     def test_new_years_day(self):
         self.assertHolidayName("Nieuwjaarsdag", (f"{year}-01-01" for year in self.full_range))

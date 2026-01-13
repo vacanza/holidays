@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import GOVERNMENT
 from holidays.countries.macau import Macau
 from tests.common import CommonCountryTests
 
@@ -24,8 +25,8 @@ class TestMacau(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoHoliday(range(self.start_year, 1985))
-        self.assertNoGovernmentHoliday(range(self.start_year, 2005))
+        self.assertNoHolidays(Macau(years=range(self.start_year, 1985)))
+        self.assertNoHolidays(Macau(categories=GOVERNMENT, years=range(self.start_year, 2005)))
 
     def test_special_holidays(self):
         dt_optional_full = (

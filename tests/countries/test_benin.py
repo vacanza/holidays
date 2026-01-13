@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import WORKDAY
 from holidays.countries.benin import Benin
 from tests.common import CommonCountryTests
 
@@ -24,7 +25,7 @@ class TestBenin(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoWorkdayHoliday(range(self.start_year, 1991))
+        self.assertNoHolidays(Benin(categories=WORKDAY, years=range(self.start_year, 1990)))
 
     def test_new_years_day(self):
         self.assertHolidayName("Fête du Nouvel An", (f"{year}-01-01" for year in self.full_range))

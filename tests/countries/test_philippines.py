@@ -25,7 +25,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoHolidays(Philippines(years=2008, categories=WORKDAY))
+        self.assertNoHolidays(Philippines(categories=WORKDAY, years=range(self.start_year, 2009)))
 
     def test_special_holidays(self):
         self.assertHoliday(

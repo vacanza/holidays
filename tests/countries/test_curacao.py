@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import HALF_DAY
 from holidays.countries.curacao import Curacao
 from tests.common import CommonCountryTests
 
@@ -24,7 +25,7 @@ class TestCuracao(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoHalfDayHoliday(range(self.start_year, 2010))
+        self.assertNoHolidays(Curacao(categories=HALF_DAY, years=range(self.start_year, 2010)))
 
     def test_2016_public(self):
         self.assertHolidaysInYear(

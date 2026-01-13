@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import GOVERNMENT, SCHOOL
 from holidays.countries.egypt import Egypt
 from tests.common import CommonCountryTests
 
@@ -24,8 +25,8 @@ class TestEgypt(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoGovernmentHoliday(range(self.start_year, 2018))
-        self.assertNoSchoolHoliday(range(self.start_year, 2019))
+        self.assertNoHolidays(Egypt(categories=GOVERNMENT, years=range(self.start_year, 2018)))
+        self.assertNoHolidays(Egypt(categories=SCHOOL, years=range(self.start_year, 2019)))
 
     def test_coptic_christmas_day(self):
         name = "عيد الميلاد المجيد"

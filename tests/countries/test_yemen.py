@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import SCHOOL, WORKDAY
 from holidays.countries.yemen import Yemen
 from tests.common import CommonCountryTests
 
@@ -24,8 +25,8 @@ class TestYemen(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoSchoolHoliday(range(self.start_year, 2013))
-        self.assertNoWorkdayHoliday(range(self.start_year, 2000))
+        self.assertNoHolidays(Yemen(categories=SCHOOL, years=range(self.start_year, 2013)))
+        self.assertNoHolidays(Yemen(categories=WORKDAY, years=range(self.start_year, 2000)))
 
     def test_labor_day(self):
         name = "عيد العمال"

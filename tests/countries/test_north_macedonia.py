@@ -12,6 +12,15 @@
 
 from unittest import TestCase
 
+from holidays.constants import (
+    ALBANIAN,
+    BOSNIAN,
+    ISLAMIC,
+    ROMA,
+    SERBIAN,
+    TURKISH,
+    VLACH,
+)
 from holidays.countries.north_macedonia import NorthMacedonia
 from tests.common import CommonCountryTests
 
@@ -24,13 +33,15 @@ class TestNorthMacedonia(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoAlbanianHoliday(range(self.start_year, 2007))
-        self.assertNoBosnianHoliday(range(self.start_year, 2007))
-        self.assertNoIslamicHoliday(range(self.start_year, 2007))
-        self.assertNoRomaHoliday(range(self.start_year, 2007))
-        self.assertNoSerbianHoliday(range(self.start_year, 2008))
-        self.assertNoTurkishHoliday(range(self.start_year, 2007))
-        self.assertNoVlachHoliday(range(self.start_year, 2007))
+        self.assertNoHolidays(
+            NorthMacedonia(
+                categories=(ALBANIAN, BOSNIAN, ISLAMIC, ROMA, TURKISH, VLACH),
+                years=range(self.start_year, 2007),
+            )
+        )
+        self.assertNoHolidays(
+            NorthMacedonia(categories=SERBIAN, years=range(self.start_year, 2008))
+        )
 
     def test_special_holidays(self):
         self.assertHoliday(

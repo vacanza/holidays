@@ -25,7 +25,9 @@ class TestSaintKittsAndNevis(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoWorkdayHoliday(range(self.start_year, 2003))
+        self.assertNoHolidays(
+            SaintKittsAndNevis(categories=WORKDAY, years=range(self.start_year, 2003))
+        )
 
     def test_special_public_holidays(self):
         self.assertHoliday(

@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import WORKDAY
 from holidays.countries.togo import Togo
 from tests.common import CommonCountryTests
 
@@ -24,7 +25,7 @@ class TestTogo(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoWorkdayHoliday(range(self.start_year, 1987))
+        self.assertNoHolidays(Togo(categories=WORKDAY, years=range(self.start_year, 1987)))
 
     def test_new_years_day(self):
         self.assertHolidayName("Jour de l'an", (f"{year}-01-01" for year in self.full_range))

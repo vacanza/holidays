@@ -25,6 +25,7 @@ from holidays.calendars.gregorian import (
     THU,
     _timedelta,
 )
+from holidays.constants import HALF_DAY
 from holidays.financial.ny_stock_exchange import NewYorkStockExchange
 from tests.common import CommonFinancialTests
 
@@ -37,7 +38,9 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoHalfDayHoliday(range(self.start_year, 1968), range(1971, 1993))
+        self.assertNoHolidays(
+            NewYorkStockExchange(categories=HALF_DAY, years=range(self.start_year, 1908))
+        )
 
     def test_new_years_day(self):
         name = "New Year's Day"

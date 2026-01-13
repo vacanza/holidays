@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import GOVERNMENT, SCHOOL
 from holidays.countries.taiwan import Taiwan
 from tests.common import CommonCountryTests, WorkingDayTests
 
@@ -24,8 +25,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoGovernmentHoliday(range(2001, self.end_year))
-        self.assertNoSchoolHoliday(range(2001, self.end_year))
+        self.assertNoHolidays(
+            Taiwan(categories=(GOVERNMENT, SCHOOL), years=range(2001, self.end_year))
+        )
 
     def test_substituted_holidays(self):
         self.assertHoliday(
