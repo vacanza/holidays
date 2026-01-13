@@ -25,9 +25,9 @@ class TestPitcairnIslands(CommonCountryTests, TestCase):
         name = "New Year's Day"
         # Public Holidays.
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        self.assertNoHolidayName(name, (f"{year}-01-02" for year in self.full_range))
         # Government Holidays.
         self.assertGovernmentHolidayName(name, (f"{year}-01-02" for year in self.full_range))
-        self.assertNoHolidayName(name, (f"{year}-01-02" for year in self.full_range))
 
     def test_bounty_day(self):
         self.assertHolidayName("Bounty Day", (f"{year}-01-23" for year in self.full_range))
