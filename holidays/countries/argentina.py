@@ -816,6 +816,7 @@ class ArgentinaStaticHolidays:
         * [Release P50983 (2020)](https://web.archive.org/web/20241203102423/https://www.bcra.gob.ar/Pdfs/comytexord/p50983.pdf)
         * [Release P51020 (2021)](https://web.archive.org/web/20240616000609/http://www.bcra.gob.ar/Pdfs/comytexord/P51020.pdf)
         * [Release P51155 (2024)](https://web.archive.org/web/20250427172945/https://bcra.gob.ar/Pdfs/comytexord/P51155.pdf)
+        * [Release P51199 (2025)](https://web.archive.org/web/20251221165343/https://www.bcra.gob.ar/archivos/Pdfs/comytexord/P51199.pdf)
 
     Special Subdivision-level Holidays References:
         * [2018 G20 Leader Summit Special Holidays for Buenos Aires](https://web.archive.org/web/20220305033755/https://www.perfil.com/noticias/sociedad/30-de-noviembre-feriado-ciudad-de-buenos-aires-cumbre-g20.phtml)
@@ -837,10 +838,11 @@ class ArgentinaStaticHolidays:
         * [Decree 764/2022 (2023 Bridge Holidays)](https://web.archive.org/web/20250216064929/https://www.argentina.gob.ar/normativa/nacional/decreto-764-2022-375264/texto)
         * [Decree 106/2023 (2024 Bridge Holidays)](https://web.archive.org/web/20240930174820/https://www.argentina.gob.ar/normativa/nacional/decreto-106-2023-395689/texto)
         * [Decree 1017/2024 (2025 Bridge Holidays)](https://web.archive.org/web/20241227231911/https://www.argentina.gob.ar/normativa/nacional/decreto-1027-2024-406417/texto)
+        * [Resolution 164/2025 (2026 Bridge Holidays)](https://web.archive.org/web/20260113123935/https://www.argentina.gob.ar/normativa/nacional/resolución-164-2025-421799/texto)
     """
 
     # Bridge Public Holiday.
-    arg_bridge_public_holiday = tr("Feriado con fines turísticos")
+    bridge_public_holiday = tr("Feriado con fines turísticos")
 
     # Bicentenary of the May Revolution.
     bicentennial_may_revolution = tr("Bicentenario de la Revolución de Mayo")
@@ -884,80 +886,85 @@ class ArgentinaStaticHolidays:
             (OCT, 27, national_census_2010),
         ),
         2011: (
-            (MAR, 25, arg_bridge_public_holiday),
-            (DEC, 9, arg_bridge_public_holiday),
+            (MAR, 25, bridge_public_holiday),
+            (DEC, 9, bridge_public_holiday),
         ),
         2012: (
             # Law 26721.
             (FEB, 27, bicentennial_national_flag),
-            (APR, 30, arg_bridge_public_holiday),
+            (APR, 30, bridge_public_holiday),
             # Law 26763.
             (SEP, 24, bicentennial_battle_tucuman),
-            (DEC, 24, arg_bridge_public_holiday),
+            (DEC, 24, bridge_public_holiday),
         ),
         2013: (
             # Law 26840.
             (JAN, 31, bicentennial_assembly_1813),
             # Law 26837.
             (FEB, 20, bicentennial_battle_salta),
-            (APR, 1, arg_bridge_public_holiday),
-            (JUN, 21, arg_bridge_public_holiday),
+            (APR, 1, bridge_public_holiday),
+            (JUN, 21, bridge_public_holiday),
         ),
         2014: (
-            (MAY, 2, arg_bridge_public_holiday),
-            (DEC, 26, arg_bridge_public_holiday),
+            (MAY, 2, bridge_public_holiday),
+            (DEC, 26, bridge_public_holiday),
         ),
         2015: (
-            (MAR, 23, arg_bridge_public_holiday),
-            (DEC, 7, arg_bridge_public_holiday),
+            (MAR, 23, bridge_public_holiday),
+            (DEC, 7, bridge_public_holiday),
         ),
         2016: (
-            (JUL, 8, arg_bridge_public_holiday),
-            (DEC, 9, arg_bridge_public_holiday),
+            (JUL, 8, bridge_public_holiday),
+            (DEC, 9, bridge_public_holiday),
         ),
         2018: (
-            (APR, 30, arg_bridge_public_holiday),
-            (DEC, 24, arg_bridge_public_holiday),
-            (DEC, 31, arg_bridge_public_holiday),
+            (APR, 30, bridge_public_holiday),
+            (DEC, 24, bridge_public_holiday),
+            (DEC, 31, bridge_public_holiday),
         ),
         2019: (
-            (JUL, 8, arg_bridge_public_holiday),
-            (AUG, 19, arg_bridge_public_holiday),
-            (OCT, 14, arg_bridge_public_holiday),
+            (JUL, 8, bridge_public_holiday),
+            (AUG, 19, bridge_public_holiday),
+            (OCT, 14, bridge_public_holiday),
         ),
         2020: (
-            (MAR, 23, arg_bridge_public_holiday),
-            (JUL, 10, arg_bridge_public_holiday),
-            (DEC, 7, arg_bridge_public_holiday),
+            (MAR, 23, bridge_public_holiday),
+            (JUL, 10, bridge_public_holiday),
+            (DEC, 7, bridge_public_holiday),
         ),
         2021: (
-            (MAY, 24, arg_bridge_public_holiday),
-            (OCT, 8, arg_bridge_public_holiday),
-            (NOV, 22, arg_bridge_public_holiday),
+            (MAY, 24, bridge_public_holiday),
+            (OCT, 8, bridge_public_holiday),
+            (NOV, 22, bridge_public_holiday),
         ),
         2022: (
             # Decree 42/2022.
             (MAY, 18, national_census_2022),
-            (OCT, 7, arg_bridge_public_holiday),
-            (NOV, 21, arg_bridge_public_holiday),
-            (DEC, 9, arg_bridge_public_holiday),
+            (OCT, 7, bridge_public_holiday),
+            (NOV, 21, bridge_public_holiday),
+            (DEC, 9, bridge_public_holiday),
             # Decree 842/2022.
             (DEC, 20, fifa_world_cup_2022_victory_day),
         ),
         2023: (
-            (MAY, 26, arg_bridge_public_holiday),
-            (JUN, 19, arg_bridge_public_holiday),
-            (OCT, 13, arg_bridge_public_holiday),
+            (MAY, 26, bridge_public_holiday),
+            (JUN, 19, bridge_public_holiday),
+            (OCT, 13, bridge_public_holiday),
         ),
         2024: (
-            (APR, 1, arg_bridge_public_holiday),
-            (JUN, 21, arg_bridge_public_holiday),
-            (OCT, 11, arg_bridge_public_holiday),
+            (APR, 1, bridge_public_holiday),
+            (JUN, 21, bridge_public_holiday),
+            (OCT, 11, bridge_public_holiday),
         ),
         2025: (
-            (MAY, 2, arg_bridge_public_holiday),
-            (AUG, 15, arg_bridge_public_holiday),
-            (NOV, 21, arg_bridge_public_holiday),
+            (MAY, 2, bridge_public_holiday),
+            (AUG, 15, bridge_public_holiday),
+            (NOV, 21, bridge_public_holiday),
+        ),
+        2026: (
+            (MAR, 23, bridge_public_holiday),
+            (JUL, 10, bridge_public_holiday),
+            (DEC, 7, bridge_public_holiday),
         ),
     }
 
@@ -979,6 +986,11 @@ class ArgentinaStaticHolidays:
         ),
         # Release P51155.
         2024: (
+            (DEC, 24, bank_holiday),
+            (DEC, 31, bank_holiday),
+        ),
+        # Release P51199.
+        2025: (
             (DEC, 24, bank_holiday),
             (DEC, 31, bank_holiday),
         ),
