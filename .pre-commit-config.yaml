@@ -32,7 +32,7 @@ repos:
       - id: ruff-format
 
   - repo: https://github.com/lucas-c/pre-commit-hooks
-    rev: v1.5.5
+    rev: v1.5.6
     hooks:
       - id: insert-license
         name: check license headers
