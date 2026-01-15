@@ -84,6 +84,9 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2025-05-02",
             "2025-08-15",
             "2025-11-21",
+            "2026-03-23",
+            "2026-07-10",
+            "2026-12-07",
         )
 
     def test_special_bank_holidays(self):
@@ -96,6 +99,8 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2021-12-31",
             "2024-12-24",
             "2024-12-31",
+            "2025-12-24",
+            "2025-12-31",
         )
 
     def test_special_subdiv_holidays(self):
