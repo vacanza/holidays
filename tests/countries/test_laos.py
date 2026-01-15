@@ -20,54 +20,368 @@ from tests.common import CommonCountryTests
 class TestLaos(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Laos, years=range(1976, 2050), years_non_observed=range(2018, 2050))
+        super().setUpClass(Laos)
 
-    def test_special_bank_holiday(self):
-        self.assertHoliday(
-            Laos(categories=BANK),
-            "2015-01-02",
-        )
-        self.assertNoNonObservedHoliday(
-            Laos(categories=BANK, observed=False),
+    def test_no_holidays(self):
+        super().test_no_holidays()
+
+        self.assertNoHolidays(Laos(categories=BANK, years=self.start_year - 1))
+        self.assertNoHolidays(Laos(categories=WORKDAY, years=self.start_year - 1))
+
+    def test_special_bank_holidays(self):
+        self.assertBankHoliday("2015-01-02")
+        self.assertNoBankNonObservedHoliday(
             "2012-10-08",
             "2017-10-09",
             "2018-10-08",
             "2023-10-09",
         )
 
-    def test_special_public_holiday(self):
-        dt = ("2015-04-17",)
-        dt_observed = (
+    def test_special_public_holidays(self):
+        dts = ("2015-04-17",)
+        obs_dts = (
             "2011-04-13",
             "2020-04-17",
         )
-        self.assertHoliday(dt, dt_observed)
-        self.assertNoNonObservedHoliday(dt_observed)
+        self.assertHoliday(dts, obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_special_workday(self):
-        self.assertHoliday(
-            Laos(categories=WORKDAY),
-            "2019-07-22",
-        )
-        self.assertNoNonObservedHoliday(
-            Laos(categories=WORKDAY, observed=False),
-            "2019-07-22",
-        )
+    def test_special_workdays(self):
+        self.assertWorkdayHoliday("2019-07-22")
+        self.assertNoWorkdayNonObservedHoliday("2019-07-22")
 
-    def test_2022_public_holiday(self):
-        self.assertHolidaysInYear(
-            2022,
-            ("2022-01-01", "ວັນປີໃໝ່ສາກົນ"),
-            ("2022-01-03", "ພັກຊົດເຊີຍວັນປີໃໝ່ສາກົນ"),
-            ("2022-03-08", "ວັນແມ່ຍິງສາກົນ"),
-            ("2022-04-14", "ບຸນປີໃໝ່ລາວ"),
-            ("2022-04-15", "ບຸນປີໃໝ່ລາວ"),
-            ("2022-04-16", "ບຸນປີໃໝ່ລາວ"),
-            ("2022-04-18", "ພັກຊົດເຊີຍບຸນປີໃໝ່ລາວ"),
-            ("2022-05-01", "ວັນກຳມະກອນສາກົນ"),
-            ("2022-05-02", "ພັກຊົດເຊີຍວັນກຳມະກອນສາກົນ"),
-            ("2022-12-02", "ວັນຊາດ"),
+    def test_establishment_day_of_the_bol(self):
+        name = "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"
+        self.assertNoHolidayName(name)
+        self.assertBankHolidayName(name, (f"{year}-10-07" for year in self.full_range))
+
+        obs_dts = (
+            "2012-10-08",
+            "2017-10-09",
+            "2018-10-08",
+            "2023-10-09",
         )
+        self.assertBankHolidayName(f"ພັກຊົດເຊີຍ{name}", obs_dts)
+        self.assertNoBankNonObservedHoliday(obs_dts)
+
+    def test_lao_year_end_bank_holiday(self):
+        name = "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"
+        self.assertNoHolidayName(name)
+        self.assertBankHolidayName(
+            name,
+            "2020-12-29",
+            "2020-12-30",
+            "2020-12-31",
+            "2021-12-29",
+            "2021-12-30",
+            "2021-12-31",
+            "2022-12-28",
+            "2022-12-29",
+            "2022-12-30",
+            "2023-12-27",
+            "2023-12-28",
+            "2023-12-29",
+            "2024-12-27",
+            "2024-12-30",
+            "2024-12-31",
+            "2025-12-29",
+            "2025-12-30",
+            "2025-12-31",
+        )
+        self.assertBankHolidayNameCount(name, 3, self.full_range)
+
+    def test_new_years_day(self):
+        name = "ວັນປີໃໝ່ສາກົນ"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+
+        obs_dts = (
+            "2012-01-02",
+            "2017-01-02",
+            "2022-01-03",
+            "2023-01-02",
+        )
+        self.assertHolidayName(f"ພັກຊົດເຊີຍ{name}", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_international_women_rights_day(self):
+        name = "ວັນແມ່ຍິງສາກົນ"
+        self.assertHolidayName(name, (f"{year}-03-08" for year in self.full_range))
+
+        obs_dts = (
+            "2015-03-09",
+            "2020-03-09",
+        )
+        self.assertHolidayName(f"ພັກຊົດເຊີຍ{name}", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_laos_new_year_day(self):
+        name = "ບຸນປີໃໝ່ລາວ"
+        songkran_years_apr_13_15 = {2012, 2017}
+        songkran_years_apr_13_16 = {2016, 2020, 2024}
+        for year in self.full_range:
+            if year in songkran_years_apr_13_15:
+                self.assertHolidayName(name, f"{year}-04-13", f"{year}-04-14", f"{year}-04-15")
+            elif year in songkran_years_apr_13_16:
+                self.assertHolidayName(
+                    name,
+                    f"{year}-04-13",
+                    f"{year}-04-14",
+                    f"{year}-04-15",
+                    f"{year}-04-16",
+                )
+            else:
+                self.assertHolidayName(name, f"{year}-04-14", f"{year}-04-15", f"{year}-04-16")
+
+        obs_dts = (
+            "2012-04-16",
+            "2012-04-17",
+            "2013-04-17",
+            "2016-04-18",
+            "2017-04-17",
+            "2018-04-17",
+            "2018-04-18",
+            "2019-04-17",
+            "2022-04-18",
+            "2023-04-17",
+            "2023-04-18",
+            "2024-04-17",
+            "2024-04-18",
+        )
+        self.assertHolidayName(f"ພັກຊົດເຊີຍ{name}", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_international_labor_day(self):
+        name = "ວັນກຳມະກອນສາກົນ"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
+
+        obs_dts = (
+            "2016-05-02",
+            "2021-05-03",
+            "2022-05-02",
+        )
+        self.assertHolidayName(f"ພັກຊົດເຊີຍ{name}", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_international_childrens_day(self):
+        name = "ວັນເດັກສາກົນ"
+        # PUBLIC.
+        self.assertHolidayName(name, (f"{year}-06-01" for year in range(1990, 2018)))
+        self.assertNoHolidayName(name, range(self.start_year, 1990), range(2018, self.end_year))
+        # WORKDAY.
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-06-01" for year in range(2018, self.end_year))
+        )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 2018))
+
+    def test_lao_national_day(self):
+        name = "ວັນຊາດ"
+        self.assertHolidayName(name, (f"{year}-12-02" for year in self.full_range))
+
+        obs_dts = (
+            "2012-12-03",
+            "2017-12-04",
+            "2018-12-03",
+            "2023-12-04",
+        )
+        self.assertHolidayName(f"ພັກຊົດເຊີຍ{name}", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_makha_bousa_festival(self):
+        name = "ວັນບຸນມາຂະບູຊາ"
+        self.assertNoHolidayName(name)
+        self.assertSchoolHolidayName(
+            name,
+            "2020-02-08",
+            "2021-01-28",
+            "2022-02-16",
+            "2023-02-05",
+            "2024-02-24",
+            "2025-02-12",
+        )
+        self.assertSchoolHolidayName(name, self.full_range)
+
+    def test_visakha_bousa_festival(self):
+        name = "ວັນບຸນວິສາຂະບູຊາ"
+        self.assertNoHolidayName(name)
+        self.assertSchoolHolidayName(
+            name,
+            "2020-05-06",
+            "2021-04-26",
+            "2022-05-15",
+            "2023-05-04",
+            "2024-05-22",
+            "2025-05-11",
+        )
+        self.assertSchoolHolidayName(name, self.full_range)
+
+    def test_boun_khao_phansa_begin_of_buddhist_lent(self):
+        name = "ວັນບຸນເຂົ້າພັນສາ"
+        self.assertNoHolidayName(name)
+        self.assertSchoolHolidayName(
+            name,
+            "2020-07-05",
+            "2021-07-24",
+            "2022-07-13",
+            "2023-08-01",
+            "2024-07-20",
+            "2025-07-10",
+        )
+        self.assertSchoolHolidayName(name, self.full_range)
+
+    def test_boun_haw_khao_padapdin_rice_growing_festival(self):
+        name = "ວັນບຸນຫໍ່ເຂົ້າປະດັບດິນ"
+        self.assertNoHolidayName(name)
+        self.assertSchoolHolidayName(
+            name,
+            "2020-08-18",
+            "2021-09-06",
+            "2022-08-26",
+            "2023-09-14",
+            "2024-09-02",
+            "2025-08-23",
+        )
+        self.assertSchoolHolidayName(name, self.full_range)
+
+    def test_boun_haw_khao_salark_ancestor_festival(self):
+        name = "ວັນບຸນຫໍ່ເຂົ້າສະຫຼາກ"
+        self.assertNoHolidayName(name)
+        self.assertSchoolHolidayName(
+            name,
+            "2020-09-02",
+            "2021-09-21",
+            "2022-09-10",
+            "2023-09-29",
+            "2024-09-17",
+            "2025-09-07",
+        )
+        self.assertSchoolHolidayName(name, self.full_range)
+
+    def test_boun_awk_phansa_end_of_buddhist_lent(self):
+        name = "ວັນບຸນອອກພັນສາ"
+        self.assertNoHolidayName(name)
+        self.assertSchoolHolidayName(
+            name,
+            "2020-10-02",
+            "2021-10-21",
+            "2022-10-10",
+            "2023-10-29",
+            "2024-10-17",
+            "2025-10-07",
+        )
+        self.assertSchoolHolidayName(name, self.full_range)
+
+    def test_boun_suang_huea_vientiane_boat_racing_festival(self):
+        name = "ວັນບຸນຊ່ວງເຮືອ ນະຄອນຫຼວງວຽງຈັນ"
+        self.assertNoHolidayName(name)
+        self.assertSchoolHolidayName(
+            name,
+            "2020-10-03",
+            "2021-10-22",
+            "2022-10-11",
+            "2023-10-30",
+            "2024-10-18",
+            "2025-10-08",
+        )
+        self.assertSchoolHolidayName(name, self.full_range)
+
+    def test_boun_that_luang_festival(self):
+        name = "ວັນບຸນທາດຫລວງ"
+        self.assertNoHolidayName(name)
+        self.assertSchoolHolidayName(
+            name,
+            "2020-10-31",
+            "2021-11-19",
+            "2022-11-08",
+            "2023-11-27",
+            "2024-11-15",
+            "2025-11-05",
+        )
+        self.assertSchoolHolidayName(name, self.full_range)
+
+    def test_national_teacher_day(self):
+        name = "ວັນຄູແຫ່ງຊາດ"
+        self.assertNoHolidayName(name)
+        self.assertSchoolHolidayName(
+            name, (f"{year}-10-07" for year in range(1994, self.end_year))
+        )
+        self.assertNoSchoolHolidayName(name, range(self.start_year, 1994))
+
+    def test_lao_peoples_armed_force_day(self):
+        name = "ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-01-20" for year in self.full_range))
+
+    def test_lao_federation_of_trade_unions_day(self):
+        name = "ວັນສ້າງຕັ້ງສະຫະພັນກໍາມະບານລາວ"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-02-01" for year in self.full_range))
+
+    def test_establishment_day_of_the_lao_peoples_revolutionary_party(self):
+        name = "ວັນສ້າງຕັ້ງພັກປະຊາຊົນປະຕິວັດລາວ"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-03-22" for year in self.full_range))
+
+    def test_lao_peoples_revolutionary_youth_union_day(self):
+        name = "ວັນສ້າງຕັ້ງສູນກາງຊາວໜຸ່ມປະຊາຊົນປະຕິວັດລາວ"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-04-14" for year in self.full_range))
+
+    def test_national_arbor_day(self):
+        name = "ວັນປູກຕົ້ນໄມ້ແຫ່ງຊາດ"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-06-01" for year in range(1989, self.end_year))
+        )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 1989))
+
+    def test_president_souphanouvongs_birthday(self):
+        name = "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ສຸພານຸວົງ"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-07-13" for year in self.full_range))
+
+    def test_the_national_day_for_wildlife_and_aquatic_animal_conservation(self):
+        name = "ວັນປ່ອຍປາ ແລະ ວັນອະນຸລັກສັດນ້ຳ-ສັດປ່າແຫ່ງຊາດ"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-07-13" for year in range(1997, self.end_year))
+        )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 1997))
+
+    def test_establishment_day_of_the_lao_womens_union(self):
+        name = "ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-07-20" for year in self.full_range))
+
+    def test_lao_national_mass_media_and_publishing_day(self):
+        name = "ວັນສື່ມວນຊົນແຫ່ງຊາດ ແລະ ວັນພິມຈໍາໜ່າຍ"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-08-13" for year in self.full_range))
+
+    def test_lao_national_constitution_day(self):
+        name = "ວັນລັດຖະທໍາມະນູນແຫ່ງຊາດ"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-08-15" for year in range(1991, self.end_year))
+        )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 1991))
+
+    def test_national_uprising_day(self):
+        name = "ວັນຍຶດອຳນາດທົ່ວປະເທດ"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-08-23" for year in self.full_range))
+
+    def test_independence_declaration_day(self):
+        name = "ວັນປະກາດເອກະລາດ"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-10-12" for year in self.full_range))
+
+    def test_president_kaysone_promvihanes_birthday(self):
+        name = "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ໄກສອນ ພົມວິຫານ"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-12-13" for year in range(1991, self.end_year))
+        )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 1991))
 
     def test_2023_public_holiday(self):
         self.assertHolidaysInYear(
@@ -85,139 +399,6 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2023-12-04", "ພັກຊົດເຊີຍວັນຊາດ"),
         )
 
-    def test_new_years_day(self):
-        self.assertHoliday(f"{year}-01-01" for year in range(1976, 2050))
-
-        self.assertNoNonObservedHoliday(
-            "2012-01-02",
-            "2017-01-02",
-            "2022-01-03",
-            "2023-01-02",
-        )
-
-    def test_international_women_rights_day(self):
-        self.assertHoliday(f"{year}-03-08" for year in range(1976, 2050))
-
-        self.assertNoNonObservedHoliday(
-            "2015-03-09",
-            "2020-03-09",
-        )
-
-    def test_laos_new_year_day(self):
-        songkran_years_apr_13_15 = {2012, 2017}
-        songkran_years_apr_13_16 = {2016, 2020, 2024}
-        for year in range(1976, 2050):
-            if year in songkran_years_apr_13_15:
-                self.assertHoliday(f"{year}-04-13", f"{year}-04-14", f"{year}-04-15")
-            elif year in songkran_years_apr_13_16:
-                self.assertHoliday(
-                    f"{year}-04-13",
-                    f"{year}-04-14",
-                    f"{year}-04-15",
-                    f"{year}-04-16",
-                )
-            else:
-                self.assertHoliday(f"{year}-04-14", f"{year}-04-15", f"{year}-04-16")
-
-        self.assertNoNonObservedHoliday(
-            "2012-04-16",
-            "2012-04-17",
-            "2013-04-17",
-            "2016-04-18",
-            "2017-04-17",
-            "2018-04-17",
-            "2018-04-18",
-            "2019-04-17",
-            "2022-04-18",
-            "2023-04-17",
-            "2023-04-18",
-            "2024-04-17",
-            "2024-04-18",
-        )
-
-    def test_labor_day(self):
-        self.assertHoliday(f"{year}-05-01" for year in range(1976, 2050))
-
-        self.assertNoNonObservedHoliday(
-            "2016-05-02",
-            "2021-05-03",
-            "2022-05-02",
-        )
-
-    def test_international_children_day_public(self):
-        self.assertHoliday(f"{year}-06-01" for year in range(1990, 2018))
-
-    def test_lao_national_day(self):
-        self.assertHoliday(f"{year}-12-02" for year in range(1976, 2050))
-
-        self.assertNoNonObservedHoliday(
-            "2012-12-03",
-            "2017-12-04",
-            "2018-12-03",
-            "2023-12-04",
-        )
-
-    def test_2014_bank_holidays(self):
-        # Dec 31 is Wednesday.
-        self.assertBankHolidaysInYear(
-            2014,
-            ("2014-10-07", "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
-            ("2014-12-29", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-            ("2014-12-30", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-            ("2014-12-31", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-        )
-
-    def test_2018_bank_holidays(self):
-        # Dec 31 is Monday.
-        self.assertBankHolidaysInYear(
-            2018,
-            ("2018-10-07", "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
-            ("2018-10-08", "ພັກຊົດເຊີຍວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
-            ("2018-12-27", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-            ("2018-12-28", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-            ("2018-12-31", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-        )
-
-    def test_2019_bank_holidays(self):
-        # Dec 31 is Tuesday.
-        self.assertBankHolidaysInYear(
-            2019,
-            ("2019-10-07", "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
-            ("2019-12-27", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-            ("2019-12-30", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-            ("2019-12-31", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-        )
-
-    def test_2020_bank_holidays(self):
-        # Dec 31 is Thursday.
-        self.assertBankHolidaysInYear(
-            2020,
-            ("2020-10-07", "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
-            ("2020-12-29", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-            ("2020-12-30", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-            ("2020-12-31", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-        )
-
-    def test_2021_bank_holidays(self):
-        # Dec 31 is Friday.
-        self.assertBankHolidaysInYear(
-            2021,
-            ("2021-10-07", "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
-            ("2021-12-29", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-            ("2021-12-30", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-            ("2021-12-31", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-        )
-
-    def test_2022_bank_holidays(self):
-        # Dec 31 is Saturday.
-        self.assertBankHolidaysInYear(
-            2022,
-            ("2022-10-07", "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
-            ("2022-12-28", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-            ("2022-12-29", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-            ("2022-12-30", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-        )
-
     def test_2023_bank_holidays(self):
         # Dec 31 is Sunday.
         self.assertBankHolidaysInYear(
@@ -227,34 +408,6 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2023-12-27", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
             ("2023-12-28", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
             ("2023-12-29", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
-        )
-
-    def test_1993_school_holidays(self):
-        # Prior to Adoption of National Teacher Day
-        self.assertSchoolHolidaysInYear(
-            1993,
-            ("1993-02-06", "ວັນບຸນມາຂະບູຊາ"),
-            ("1993-05-05", "ວັນບຸນວິສາຂະບູຊາ"),
-            ("1993-07-03", "ວັນບຸນເຂົ້າພັນສາ"),
-            ("1993-08-16", "ວັນບຸນຫໍ່ເຂົ້າປະດັບດິນ"),
-            ("1993-08-31", "ວັນບຸນຫໍ່ເຂົ້າສະຫຼາກ"),
-            ("1993-09-30", "ວັນບຸນອອກພັນສາ"),
-            ("1993-10-01", "ວັນບຸນຊ່ວງເຮືອ ນະຄອນຫຼວງວຽງຈັນ"),
-            ("1993-10-29", "ວັນບຸນທາດຫລວງ"),
-        )
-
-    def test_2022_school_holidays(self):
-        self.assertSchoolHolidaysInYear(
-            2022,
-            ("2022-02-16", "ວັນບຸນມາຂະບູຊາ"),
-            ("2022-05-15", "ວັນບຸນວິສາຂະບູຊາ"),
-            ("2022-07-13", "ວັນບຸນເຂົ້າພັນສາ"),
-            ("2022-08-26", "ວັນບຸນຫໍ່ເຂົ້າປະດັບດິນ"),
-            ("2022-09-10", "ວັນບຸນຫໍ່ເຂົ້າສະຫຼາກ"),
-            ("2022-10-07", "ວັນຄູແຫ່ງຊາດ"),
-            ("2022-10-10", "ວັນບຸນອອກພັນສາ"),
-            ("2022-10-11", "ວັນບຸນຊ່ວງເຮືອ ນະຄອນຫຼວງວຽງຈັນ"),
-            ("2022-11-08", "ວັນບຸນທາດຫລວງ"),
         )
 
     def test_2023_school_holidays(self):
@@ -271,88 +424,21 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2023-11-27", "ວັນບຸນທາດຫລວງ"),
         )
 
-    def test_1988_workdays(self):
-        # Prior to National Arbor Day creation in 1989.
+    def test_2023_workdays(self):
         self.assertWorkdayHolidaysInYear(
-            1988,
-            ("1988-01-20", "ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ"),
-            ("1988-02-01", "ວັນສ້າງຕັ້ງສະຫະພັນກໍາມະບານລາວ"),
-            ("1988-03-22", "ວັນສ້າງຕັ້ງພັກປະຊາຊົນປະຕິວັດລາວ"),
-            ("1988-04-14", "ວັນສ້າງຕັ້ງສູນກາງຊາວໜຸ່ມປະຊາຊົນປະຕິວັດລາວ"),
-            ("1988-07-13", "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ສຸພານຸວົງ"),
-            ("1988-07-20", "ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ"),
-            ("1988-08-13", "ວັນສື່ມວນຊົນແຫ່ງຊາດ ແລະ ວັນພິມຈໍາໜ່າຍ"),
-            ("1988-08-23", "ວັນຍຶດອຳນາດທົ່ວປະເທດ"),
-            ("1988-10-12", "ວັນປະກາດເອກະລາດ"),
-        )
-
-    def test_1990_workdays(self):
-        # Prior to Kaysone Phomvihane's Presidency and 1991 Constitution Adoption.
-        self.assertWorkdayHolidaysInYear(
-            1990,
-            ("1990-01-20", "ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ"),
-            ("1990-02-01", "ວັນສ້າງຕັ້ງສະຫະພັນກໍາມະບານລາວ"),
-            ("1990-03-22", "ວັນສ້າງຕັ້ງພັກປະຊາຊົນປະຕິວັດລາວ"),
-            ("1990-04-14", "ວັນສ້າງຕັ້ງສູນກາງຊາວໜຸ່ມປະຊາຊົນປະຕິວັດລາວ"),
-            ("1990-06-01", "ວັນປູກຕົ້ນໄມ້ແຫ່ງຊາດ"),
-            ("1990-07-13", "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ສຸພານຸວົງ"),
-            ("1990-07-20", "ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ"),
-            ("1990-08-13", "ວັນສື່ມວນຊົນແຫ່ງຊາດ ແລະ ວັນພິມຈໍາໜ່າຍ"),
-            ("1990-08-23", "ວັນຍຶດອຳນາດທົ່ວປະເທດ"),
-            ("1990-10-12", "ວັນປະກາດເອກະລາດ"),
-        )
-
-    def test_1996_workdays(self):
-        # Prior to 1997's Lao Wildlife Conservation Day Designation.
-        self.assertWorkdayHolidaysInYear(
-            1996,
-            ("1996-01-20", "ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ"),
-            ("1996-02-01", "ວັນສ້າງຕັ້ງສະຫະພັນກໍາມະບານລາວ"),
-            ("1996-03-22", "ວັນສ້າງຕັ້ງພັກປະຊາຊົນປະຕິວັດລາວ"),
-            ("1996-04-14", "ວັນສ້າງຕັ້ງສູນກາງຊາວໜຸ່ມປະຊາຊົນປະຕິວັດລາວ"),
-            ("1996-06-01", "ວັນປູກຕົ້ນໄມ້ແຫ່ງຊາດ"),
-            ("1996-07-13", "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ສຸພານຸວົງ"),
-            ("1996-07-20", "ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ"),
-            ("1996-08-13", "ວັນສື່ມວນຊົນແຫ່ງຊາດ ແລະ ວັນພິມຈໍາໜ່າຍ"),
-            ("1996-08-15", "ວັນລັດຖະທໍາມະນູນແຫ່ງຊາດ"),
-            ("1996-08-23", "ວັນຍຶດອຳນາດທົ່ວປະເທດ"),
-            ("1996-10-12", "ວັນປະກາດເອກະລາດ"),
-            ("1996-12-13", "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ໄກສອນ ພົມວິຫານ"),
-        )
-
-    def test_2017_workdays(self):
-        # Prior to 2018 International Children's Day is in `PUBLIC` category
-        self.assertWorkdayHolidaysInYear(
-            2017,
-            ("2017-01-20", "ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ"),
-            ("2017-02-01", "ວັນສ້າງຕັ້ງສະຫະພັນກໍາມະບານລາວ"),
-            ("2017-03-22", "ວັນສ້າງຕັ້ງພັກປະຊາຊົນປະຕິວັດລາວ"),
-            ("2017-04-14", "ວັນສ້າງຕັ້ງສູນກາງຊາວໜຸ່ມປະຊາຊົນປະຕິວັດລາວ"),
-            ("2017-06-01", "ວັນປູກຕົ້ນໄມ້ແຫ່ງຊາດ"),
-            ("2017-07-13", "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ສຸພານຸວົງ; ວັນປ່ອຍປາ ແລະ ວັນອະນຸລັກສັດນ້ຳ-ສັດປ່າແຫ່ງຊາດ"),
-            ("2017-07-20", "ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ"),
-            ("2017-08-13", "ວັນສື່ມວນຊົນແຫ່ງຊາດ ແລະ ວັນພິມຈໍາໜ່າຍ"),
-            ("2017-08-15", "ວັນລັດຖະທໍາມະນູນແຫ່ງຊາດ"),
-            ("2017-08-23", "ວັນຍຶດອຳນາດທົ່ວປະເທດ"),
-            ("2017-10-12", "ວັນປະກາດເອກະລາດ"),
-            ("2017-12-13", "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ໄກສອນ ພົມວິຫານ"),
-        )
-
-    def test_2022_workdays(self):
-        self.assertWorkdayHolidaysInYear(
-            2022,
-            ("2022-01-20", "ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ"),
-            ("2022-02-01", "ວັນສ້າງຕັ້ງສະຫະພັນກໍາມະບານລາວ"),
-            ("2022-03-22", "ວັນສ້າງຕັ້ງພັກປະຊາຊົນປະຕິວັດລາວ"),
-            ("2022-04-14", "ວັນສ້າງຕັ້ງສູນກາງຊາວໜຸ່ມປະຊາຊົນປະຕິວັດລາວ"),
-            ("2022-06-01", "ວັນປູກຕົ້ນໄມ້ແຫ່ງຊາດ; ວັນເດັກສາກົນ"),
-            ("2022-07-13", "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ສຸພານຸວົງ; ວັນປ່ອຍປາ ແລະ ວັນອະນຸລັກສັດນ້ຳ-ສັດປ່າແຫ່ງຊາດ"),
-            ("2022-07-20", "ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ"),
-            ("2022-08-13", "ວັນສື່ມວນຊົນແຫ່ງຊາດ ແລະ ວັນພິມຈໍາໜ່າຍ"),
-            ("2022-08-15", "ວັນລັດຖະທໍາມະນູນແຫ່ງຊາດ"),
-            ("2022-08-23", "ວັນຍຶດອຳນາດທົ່ວປະເທດ"),
-            ("2022-10-12", "ວັນປະກາດເອກະລາດ"),
-            ("2022-12-13", "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ໄກສອນ ພົມວິຫານ"),
+            2023,
+            ("2023-01-20", "ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ"),
+            ("2023-02-01", "ວັນສ້າງຕັ້ງສະຫະພັນກໍາມະບານລາວ"),
+            ("2023-03-22", "ວັນສ້າງຕັ້ງພັກປະຊາຊົນປະຕິວັດລາວ"),
+            ("2023-04-14", "ວັນສ້າງຕັ້ງສູນກາງຊາວໜຸ່ມປະຊາຊົນປະຕິວັດລາວ"),
+            ("2023-06-01", "ວັນປູກຕົ້ນໄມ້ແຫ່ງຊາດ; ວັນເດັກສາກົນ"),
+            ("2023-07-13", "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ສຸພານຸວົງ; ວັນປ່ອຍປາ ແລະ ວັນອະນຸລັກສັດນ້ຳ-ສັດປ່າແຫ່ງຊາດ"),
+            ("2023-07-20", "ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ"),
+            ("2023-08-13", "ວັນສື່ມວນຊົນແຫ່ງຊາດ ແລະ ວັນພິມຈໍາໜ່າຍ"),
+            ("2023-08-15", "ວັນລັດຖະທໍາມະນູນແຫ່ງຊາດ"),
+            ("2023-08-23", "ວັນຍຶດອຳນາດທົ່ວປະເທດ"),
+            ("2023-10-12", "ວັນປະກາດເອກະລາດ"),
+            ("2023-12-13", "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ໄກສອນ ພົມວິຫານ"),
         )
 
     def test_l10n_default(self):

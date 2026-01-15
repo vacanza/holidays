@@ -467,6 +467,24 @@ class TestAustralia(CommonCountryTests, TestCase):
         self.assertNoSubdivQldNonObservedHoliday("2010-12-28", "2011-01-03")
         self.assertSubdivWaHoliday("2011-04-26")
 
+    def test_christmas_eve(self):
+        for subdiv, name, start_year in (
+            ("NT", "Christmas Eve (from 7pm)", 2016),
+            ("QLD", "Christmas Eve (from 6pm)", 2019),
+            ("SA", "Christmas Eve (from 7pm)", 2012),
+        ):
+            self.assertNoHolidayName(name)
+            self.assertHalfDayHolidayName(
+                name,
+                self.subdiv_half_day_holidays[subdiv],
+                (f"{year}-12-24" for year in range(start_year, self.end_year)),
+            )
+            self.assertNoHalfDayHolidayName(
+                name,
+                self.subdiv_half_day_holidays[subdiv],
+                (f"{year}-12-24" for year in range(self.start_year, start_year)),
+            )
+
     def test_all_holidays(self):
         holidays_found = set()
         for subdiv in Australia.subdivisions:
@@ -508,6 +526,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             "Christmas Day",
             "Proclamation Day",
             "Boxing Day",
+            "Christmas Eve (from 6pm)",
             "Christmas Eve (from 7pm)",
             "New Year's Eve (from 7pm)",
         }
@@ -701,7 +720,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             ("2022-09-26", "Queen's Birthday"),
             ("2022-10-03", "Labour Day; Queen's Birthday"),
             ("2022-11-01", "Melbourne Cup Day"),
-            ("2022-12-24", "Christmas Eve (from 7pm)"),
+            ("2022-12-24", "Christmas Eve (from 6pm); Christmas Eve (from 7pm)"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day; Christmas Day (observed); Proclamation Day"),
             (
@@ -736,7 +755,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             ("2022-09-26", "Queen's Birthday"),
             ("2022-10-03", "Labor Day; Queen's Birthday"),
             ("2022-11-01", "Melbourne Cup Day"),
-            ("2022-12-24", "Christmas Eve (from 7pm)"),
+            ("2022-12-24", "Christmas Eve (from 6pm); Christmas Eve (from 7pm)"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day; Christmas Day (observed); Proclamation Day"),
             (
@@ -771,7 +790,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             ("2022-09-26", "วันเฉลิมพระชนมพรรษาสมเด็จพระราชินีนาถ"),
             ("2022-10-03", "วันเฉลิมพระชนมพรรษาสมเด็จพระราชินีนาถ; วันแรงงาน"),
             ("2022-11-01", "วันเมลเบิร์นคัพ"),
-            ("2022-12-24", "วันคริสต์มาสอีฟ (ตั้งแต่ 19:00 น.)"),
+            ("2022-12-24", "วันคริสต์มาสอีฟ (ตั้งแต่ 18:00 น.); วันคริสต์มาสอีฟ (ตั้งแต่ 19:00 น.)"),
             ("2022-12-25", "วันคริสต์มาส"),
             ("2022-12-26", "ชดเชยวันคริสต์มาส; วันสถาปนา; วันเปิดกล่องของขวัญ"),
             ("2022-12-27", "ชดเชยวันคริสต์มาส; ชดเชยวันสถาปนา; ชดเชยวันเปิดกล่องของขวัญ; วันเปิดกล่องของขวัญ"),

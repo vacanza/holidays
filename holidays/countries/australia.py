@@ -532,6 +532,14 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         elif self._year >= 1984:
             self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
 
+    def _populate_subdiv_qld_half_day_holidays(self):
+        if self._year >= 2019:
+            # %s (from 6pm).
+            begin_time_label = self.tr("%s (from 6pm)")
+
+            # Christmas Eve.
+            self._add_christmas_eve(begin_time_label % self.tr("Christmas Eve"))
+
     def _populate_subdiv_sa_public_holidays(self):
         # New Year's Day.
         # 1984-2003: SAT, SUN - move to MON.
