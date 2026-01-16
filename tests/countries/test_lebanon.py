@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import BANK, GOVERNMENT
 from holidays.countries.lebanon import Lebanon
 from tests.common import CommonCountryTests
 
@@ -24,8 +25,9 @@ class TestLebanon(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoBankHoliday(2019)
-        self.assertNoGovernmentHoliday(2019)
+        self.assertNoHolidays(
+            Lebanon(categories=(BANK, GOVERNMENT), years=range(self.start_year, 2019))
+        )
 
     def test_new_years_day(self):
         self.assertHolidayName(

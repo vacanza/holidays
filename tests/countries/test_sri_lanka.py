@@ -19,7 +19,6 @@ from tests.common import CommonCountryTests
 class TestSriLanka(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(2003, 2027)
         super().setUpClass(SriLanka)
 
     def test_special(self):
@@ -52,7 +51,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
         )
 
     def test_special_bank(self):
-        dt = (
+        dts = (
             # Special Bank Holidays.
             "2005-05-02",
             "2005-12-26",
@@ -82,12 +81,12 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2023-01-16",
             "2025-04-15",
         )
-        dt_half = (
+        dts_half = (
             # Half-Day Special Bank Holidays.
             "2021-04-30",
             "2021-12-24",
         )
-        self.assertBankHoliday(dt, dt_half)
+        self.assertBankHoliday(dts, dts_half)
 
     def test_special_government(self):
         # 2020 Covid Lockdowns
@@ -172,7 +171,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2025-10-20",
         )
         self.assertHolidayName(name, range(2004, self.end_year))
-        self.assertNoHolidayName(name, 2003)
+        self.assertNoHolidayName(name, range(self.start_year, 2004))
 
     def test_maha_sivarathri(self):
         name = "මහ සිවරාත්රි දිනය"

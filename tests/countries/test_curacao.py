@@ -25,7 +25,7 @@ class TestCuracao(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoHolidays(Curacao(categories=HALF_DAY, years=2009))
+        self.assertNoHolidays(Curacao(categories=HALF_DAY, years=range(self.start_year, 2010)))
 
     def test_2016_public(self):
         self.assertHolidaysInYear(

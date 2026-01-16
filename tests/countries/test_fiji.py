@@ -25,7 +25,7 @@ class TestFiji(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoHolidays(Fiji(years=2022, categories=WORKDAY))
+        self.assertNoHolidays(Fiji(categories=WORKDAY, years=range(self.start_year, 2023)))
 
     def test_new_years_day(self):
         name = "New Year's Day"

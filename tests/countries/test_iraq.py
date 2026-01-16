@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays import CHRISTIAN, HEBREW, SABIAN, YAZIDI
 from holidays.countries.iraq import Iraq
 from tests.common import CommonCountryTests
 
@@ -21,14 +20,6 @@ class TestIraq(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Iraq)
-
-    def test_no_holidays(self):
-        super().test_no_holidays()
-
-        self.assertNoHolidays(Iraq(categories=CHRISTIAN, years=self.start_year - 1))
-        self.assertNoHolidays(Iraq(categories=HEBREW, years=self.start_year - 1))
-        self.assertNoHolidays(Iraq(categories=SABIAN, years=self.start_year - 1))
-        self.assertNoHolidays(Iraq(categories=YAZIDI, years=self.start_year - 1))
 
     def test_new_years_day(self):
         name = "رأس السنة الميلادية"

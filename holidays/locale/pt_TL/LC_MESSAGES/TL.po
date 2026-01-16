@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.70\n"
+"Project-Id-Version: Holidays 0.89\n"
 "POT-Creation-Date: 2023-10-14 08:23+0700\n"
-"PO-Revision-Date: 2025-04-03 16:23+0700\n"
+"PO-Revision-Date: 2026-01-07 22:14+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pt_TL\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 "X-Source-Language: pt_TL\n"
 
 #. %s (estimated).
@@ -40,12 +40,20 @@ msgstr ""
 msgid "Dia dos Veteranos"
 msgstr ""
 
+#. Good Friday.
+msgid "Sexta-Feira Santa"
+msgstr ""
+
 #. International Worker's Day.
 msgid "Dia Mundial do Trabalhador"
 msgstr ""
 
 #. Restoration of Independence Day.
 msgid "Dia da Restauração da Independência"
+msgstr ""
+
+#. Corpus Christi.
+msgid "Festa do Corpo de Deus"
 msgstr ""
 
 #. Popular Consultation Day.
@@ -88,20 +96,24 @@ msgstr ""
 msgid "Dia dos Heróis Nacionais"
 msgstr ""
 
-#. Holy Friday.
-msgid "Sexta-Feira Santa"
-msgstr ""
-
 #. Eid al-Fitr.
 msgid "Idul Fitri"
 msgstr ""
 
-#. Corpus Christi.
-msgid "Festa do Corpo de Deus"
-msgstr ""
-
 #. Eid al-Adha.
 msgid "Idul Adha"
+msgstr ""
+
+#. Ash Wednesday.
+msgid "Quarta-Feira de Cinzas"
+msgstr ""
+
+#. Maundy Thursday.
+msgid "Quinta-Feira Santa"
+msgstr ""
+
+#. The Day of Ascension of Jesus Christ into Heaven.
+msgid "Dia da Ascensão de Jesus Cristo ao Céu"
 msgstr ""
 
 #. International Children's Day.
@@ -114,18 +126,6 @@ msgstr ""
 
 #. International Human Rights Day.
 msgid "Dia Mundial dos Direitos Humanos"
-msgstr ""
-
-#. Ash Wednesday.
-msgid "Quarta-Feira de Cinzas"
-msgstr ""
-
-#. Holy Thursday.
-msgid "Quinta-Feira Santa"
-msgstr ""
-
-#. The Day of Ascension of Jesus Christ into Heaven.
-msgid "Dia da Ascensão de Jesus Cristo ao Céu"
 msgstr ""
 
 #. National Holidays (Special).
