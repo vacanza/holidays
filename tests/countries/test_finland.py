@@ -25,8 +25,8 @@ class TestFinland(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoHolidays(Finland(categories=WORKDAY, years=range(self.start_year, 1919)))
         self.assertNoHolidays(Finland(categories=UNOFFICIAL, years=range(self.start_year, 1950)))
+        self.assertNoHolidays(Finland(categories=WORKDAY, years=range(self.start_year, 1919)))
 
     def test_epiphany(self):
         name = "Loppiainen"
