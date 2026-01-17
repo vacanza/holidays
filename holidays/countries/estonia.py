@@ -24,12 +24,12 @@ class Estonia(HolidayBase, ChristianHolidays, InternationalHolidays):
         * <https://et.wikipedia.org/wiki/Eesti_riigipühad>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Estonia>
         * [Decree on State Holidays and on Amending the Labour Code of the Estonian SSR (09.10.1990)](https://www.riigiteataja.ee/akt/28395)
-        * [Holidays and Anniversaries Act (08.02.1994)](https://www.riigiteataja.ee/akt/29913)
-        * [Public Holidays and Days of National Importance Act (27.01.1998, in force since 23.02.1998)](https://www.riigiteataja.ee/akt/13276841)
+        * [Holidays and Anniversaries Act (08.02.1994)](https://web.archive.org/web/20250122175021/https://www.riigiteataja.ee/akt/29913)
+        * [Public Holidays and Days of National Importance Act (27.01.1998, in force since 23.02.1998)](https://web.archive.org/web/20260108041502/https://www.riigiteataja.ee/akt/13276841)
         * [Act amending § 2 of the Holidays and Anniversaries Act
-            and § 25 of the Working and Rest Hours Act](https://www.riigiteataja.ee/akt/895511)
-        * [Working and Rest Hours Act (24.01.2001)](https://www.riigiteataja.ee/akt/72738)
-        * [Employment Contracts Act (17.12.2008, in force since 01.07.2009)](https://www.riigiteataja.ee/akt/122122012029)
+            and § 25 of the Working and Rest Hours Act](https://web.archive.org/web/20250815032316/https://www.riigiteataja.ee/akt/895511)
+        * [Working and Rest Hours Act (24.01.2001)](https://web.archive.org/web/20250429084533/https://www.riigiteataja.ee/akt/72738)
+        * [Employment Contracts Act (17.12.2008, in force since 01.07.2009)](https://web.archive.org/web/20250520105700/https://www.riigiteataja.ee/akt/122122012029)
     """
 
     country = "EE"
