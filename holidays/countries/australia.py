@@ -34,7 +34,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
           * <https://web.archive.org/web/20250414072303/https://www.qld.gov.au/recreation/travel/holidays>
           * [ACT Holidays Act 1958](https://web.archive.org/web/20250322061953/https://www.legislation.act.gov.au/a/1958-19/)
           * [ACT 2013-2023](https://web.archive.org/web/20240401072340/https://www.cmtedd.act.gov.au/archived-content/holidays/previous-years)
-          * [ACT Holidays (Anzac Day 2026) Declaration 2025 (No 1)](https://legislation.act.gov.au/View/ni/2025-650/current/html/2025-650.html)
+          * [ACT Holidays (Anzac Day 2026) Declaration 2025 (No 1)](https://web.archive.org/web/20260116225801/https://legislation.act.gov.au/View/ni/2025-650/current/html/2025-650.html)
           * [NSW Banks and Bank Holidays Act 1912](https://web.archive.org/web/20241107225523/https://legislation.nsw.gov.au/view/html/repealed/current/act-1912-043)
           * [NSW Public Holidays Act 2010](https://web.archive.org/web/20250316173922/https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115)
           * [NT Public Holidays Act 1981](https://web.archive.org/web/20250315072128/https://legislation.nt.gov.au/api/sitecore/Act/PDF?id=12145)

@@ -30,7 +30,7 @@ class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHol
         * [1971 Jun 22](https://web.archive.org/web/20240623070739/https://docs.venezuela.justia.com/federales/leyes/ley-de-fiestas-nacionales.pdf)
         * [2002 Oct 10](https://web.archive.org/web/20250214140239/https://www.acnur.org/fileadmin/Documentos/BDL/2008/6635.pdf)
         * [2012 May 7](https://web.archive.org/web/20250418204844/https://oig.cepal.org/sites/default/files/2012_leyorgtrabajo_ven.pdf)
-        * [Family Day](https://www.globovision.com/nacional/21451/ejecutivo-decreta-feriado-el-15-de-mayo-por-dia-de-la-familia)
+        * [Family Day](https://web.archive.org/web/20240516041705/https://www.globovision.com/nacional/21451/ejecutivo-decreta-feriado-el-15-de-mayo-por-dia-de-la-familia)
     """
 
     country = "VE"
