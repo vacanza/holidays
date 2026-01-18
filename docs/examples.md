@@ -563,3 +563,51 @@ To export to `.ics` format, use `save_ics`.
 
 For advanced features and customization of the exported `.ics` output, consider using
 the [icalendar](https://github.com/collective/icalendar) package.
+
+## Generic Holiday Calendar Export Script
+
+The `examples/vacanza.py` script provides a convenient way to generate `.ics` calendar files
+for holidays in any supported country, with options for year ranges and categories.
+
+### Usage
+
+```bash
+python examples/vacanza.py <country_code> <year(s)> [categories...]
+```
+
+### Examples
+
+Generate all holiday categories for the US in 2025:
+
+```bash
+python examples/vacanza.py US 2025
+```
+
+Generate holidays for Sweden from 2020 to 2025, including only public holidays:
+
+```bash
+python examples/vacanza.py SE 2020-2025 public
+```
+
+Generate specific categories for Canada in 2024:
+
+```bash
+python examples/vacanza.py CA 2024 public bank
+```
+
+### Features
+
+- **Country Support**: Works with any country code supported by the holidays library (e.g., US, CA, SE, etc.)
+- **Year Ranges**: Specify a single year or a range (e.g., 2020-2025)
+- **Categories**: Filter by holiday categories (public, bank, de_facto, etc.). If no categories are specified, all supported categories for the country are used.
+- **Language**: Defaults to English ('en'). The script generates files named `{COUNTRY}_{CATEGORY}_{LANG}.ics`
+
+### Error Handling
+
+If insufficient arguments are provided, the script displays usage instructions:
+
+```
+Error: Insufficient arguments.
+Usage: python vacanza.py <country_code> <year(s)> [categories...]
+Example: python vacanza.py US 2025
+```

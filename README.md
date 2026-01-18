@@ -97,6 +97,17 @@ us_pr_holidays = holidays.country_holidays('US', subdiv='PR')
 Please see the [holidays documentation](https://holidays.readthedocs.io/) for additional examples
 and detailed information.
 
+## Holiday Calendar Export Script
+
+For generating `.ics` calendar files for holidays, use the included `examples/vacanza.py` script:
+
+```bash
+python examples/vacanza.py US 2025
+python examples/vacanza.py SE 2020-2025 public
+```
+
+This script supports all countries, year ranges, and holiday categories. See the [examples documentation](https://holidays.readthedocs.io/en/latest/examples.html#generic-holiday-calendar-export-script) for details.
+
 ## Available Countries
 
 We currently support 249 country codes and are fully compatible with [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html).
