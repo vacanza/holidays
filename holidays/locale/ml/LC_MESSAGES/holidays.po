@@ -1,0 +1,137 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
+
+
+
+
+msgid ""
+msgstr ""
+"Project-Id-Version: holidays 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-18 00:00+0000\n"
+"PO-Revision-Date: 2026-01-18 00:00+0000\n"
+"Last-Translator: Devadarsana R <devadarsana06@gmail.com>\n"
+"Language-Team: Malayalam\n"
+"Language: ml\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. %s (estimated)
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (അനുമാനിച്ചിരിക്കുന്നു)"
+
+#. New Year's Day
+msgid "New Year's Day"
+msgstr "പുതുവത്സര ദിനം"
+
+#. Republic Day
+msgid "Republic Day"
+msgstr "പ്രജാസ്വാമ്യത ദിനം"
+
+#. Independence Day
+msgid "Independence Day"
+msgstr "സ്വാതന്ത്ര്യ ദിനം"
+
+#. Gandhi Jayanti
+msgid "Gandhi Jayanti"
+msgstr "ഗാന്ധിജയന്തി"
+
+#. Onam
+msgid "Onam"
+msgstr "ഓണം"
+
+#. Kerala Foundation Day
+msgid "Kerala Foundation Day"
+msgstr "കേരള സ്ഥാപിത ദിനം"
+
+#. Christmas
+msgid "Christmas"
+msgstr "ക്രിസ്മസ്"
+
+#. Vishu
+msgid "Maha Vishuva Sankranti / Pana Sankranti"
+msgstr "വിഷു / പണ സംക്രാന്തി"
+
+#. Thiruvalluvar Day / Mattu Pongal
+msgid "Thiruvalluvar Day / Mattu Pongal"
+msgstr "തിരുവള്ളവർ ദിനം / മട്ടു പൊങ്കല്‍"
+
+#. Pongal
+msgid "Pongal"
+msgstr "പൊങ്കല്‍"
+
+#. Labor Day
+msgid "Labour Day"
+msgstr "കൊഴിയുന്നവരുടെ ദിനം"
+
+#. Holi
+msgid "Holi"
+msgstr "ഹോളി"
+
+#. Diwali
+msgid "Diwali"
+msgstr "ദീപാവലി"
+
+#. Eid al-Fitr
+msgid "Id-ul-Fitr"
+msgstr "ഇദ്-ഉല്-ഫിതർ"
+
+#. Eid al-Adha
+msgid "Bakrid"
+msgstr "ബക്രീദ്"
+
+#. Good Friday
+msgid "Good Friday"
+msgstr "ഗുഡ് ഫ്രൈഡേ"
+
+#. Guru Nanak Jayanti
+msgid "Guru Nanak Jayanti"
+msgstr "ഗുരു നാനക് ജയന്തി"
+
+#. Buddha Purnima
+msgid "Buddha Purnima"
+msgstr "ബുദ്ധ പൂർണിമ"
+
+#. Christmas Eve
+msgid "Christmas Eve"
+msgstr "ക്രിസ്മസ് ഇവ്"
+
+#. Maha Shivaratri
+msgid "Maha Shivaratri"
+msgstr "മഹാശിവരാത്രി"
+
+#. Raksha Bandhan
+msgid "Raksha Bandhan"
+msgstr "രക്ഷാബന്ധൻ"
+
+#. Ram Navami
+msgid "Ram Navami"
+msgstr "റാം നവമി"
+
+#. Navratri
+msgid "Navratri / Sharad Navratri"
+msgstr "നവർത്രി / ശരദ് നവർത്രി"
+
+#. Ganesh Chaturthi
+msgid "Ganesh Chaturthi"
+msgstr "ഗണേഷ് ചതുര്‍ഥി"
+
+#. Maha Navami
+msgid "Maha Navami"
+msgstr "മഹ നവമി"
+
+#. Lohri
+msgid "Lohri"
+msgstr "ലോഹരി"
