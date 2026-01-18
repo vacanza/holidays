@@ -1,3 +1,34 @@
+# Version 0.88
+
+Released January 5, 2026
+
+- Refactor Macau holidays (#3181 by @KJhellico)
+- Refactor New Zealand holidays (#3167 by @PPsyrius)
+- Add Bombay Stock Exchange (BSE) holidays (#3170 by @pareshjoshij)
+- Add `utils::list_long_breaks` function to find consecutive holidays (#3001 by @AryaPhansalkar, @arkid15r)
+- Update .po files generator: refresh "PO-Revision-Date" on file changes (#3160 by @KJhellico)
+- Update Belarus holidays: 2026 substituted holidays (#3183 by @KJhellico)
+- Update Brazil holidays: add São Paulo Capital subdivision support (#3128 by @avibrazil, @PPsyrius)
+- Update Chile holidays: restore bank holiday Dec 31 (#3154 by @bedefrunner)
+- Update Malaysia holidays: add 2026 public holidays (#3140 by @PPsyrius)
+- Update Malaysia holidays: update Birthday of the Governor of Sabah (#3141 by @KJhellico)
+- Update National Stock Exchange of India holidays: add Gujarati language support (#3143 by @pareshjoshij, @arkid15r)
+- Update Sweden holidays: add legally-recognized non-public holidays as `DE_FACTO` category (#3138 by @vruss)
+- Update Taiwan holidays in 2025-2026 (#3156 by @orcahmlee, @KJhellico)
+- Update Turks and Caicos Islands holidays: 2026 changes (#3182 by @KJhellico)
+- Update United States holidays: add Diwali for California from 2026 onwards (#3162 by @philgresh, @arkid15r)
+- Update United States holidays: add federal (`GOVERNMENT`) special holidays (#3159 by @KJhellico)
+- Update United States holidays: update Alaska (AK) state holidays (#3174 by @KJhellico)
+- Update United States holidays: update Puerto Rico holidays (#3135 by @KJhellico)
+- Update Uzbekistan holidays: add 2025-2026 special holidays (#3172 by @KJhellico)
+- Update Venezuela holidays (#3191 by @PPsyrius, @arkid15r)
+- Update l10n test: check .po files for placeholders mismatch (#3169 by @KJhellico, @arkid15r)
+- Update make script for Windows (#3173 by @KJhellico)
+- Add dependency upgrade Makefile target (#3166 by @arkid15r)
+- Move version source of truth to holidays/VERSION (#3157 by @arkid15r)
+- Run make upgrade (#3186 by @arkid15r)
+- l10n cleanup (#3142 by @PPsyrius)
+
 # Version 0.87
 
 Released December 15, 2025

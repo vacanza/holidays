@@ -42,10 +42,10 @@ class Kyrgyzstan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         # New Year's Day.
         self._add_new_years_day("New Year's Day")
 
-        # Orthodox Christmas.
+        # Christmas Day.
         self._add_christmas_day("Christmas Day")
 
-        # Feb. 23 Fatherland Defender's Day.
+        # Fatherland Defender's Day.
         self._add_holiday_feb_23("Fatherland Defender's Day")
 
         # International Women's Day.
@@ -79,6 +79,7 @@ class Kyrgyzstan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         self._add_new_years_eve("New Year's Eve")
 
         # Islamic Holidays.
+
         # Orozo Ait.
         name = "Orozo Ait"
         self._add_eid_al_fitr_day(name)

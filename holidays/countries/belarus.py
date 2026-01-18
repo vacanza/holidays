@@ -148,8 +148,9 @@ class BelarusStaticHolidays:
     """Belarus special holidays.
 
     References:
-        * <https://web.archive.org/web/20241005054448/https://belarusbank.by/en/financial-institutions/11151>
-        * <https://web.archive.org/web/20241210150222/https://belarusbank.by/en/financial-institutions/11160>
+        * [2024](https://web.archive.org/web/20241005054448/https://belarusbank.by/en/financial-institutions/11151)
+        * [2025](https://web.archive.org/web/20241210150222/https://belarusbank.by/en/financial-institutions/11160)
+        * [2026](https://web.archive.org/web/20251230174418/https://belarusbank.by/en/financial-institutions/11163)
     """
 
     # Date format (see strftime() Format Codes)
@@ -300,4 +301,5 @@ class BelarusStaticHolidays:
             (JUL, 4, JUL, 12),
             (DEC, 26, DEC, 20),
         ),
+        2026: (APR, 20, APR, 25),
     }

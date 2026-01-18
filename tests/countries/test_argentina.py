@@ -32,11 +32,11 @@ class TestArgentina(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoHolidays(Argentina(categories=ARMENIAN, years=2006))
-        self.assertNoHolidays(Argentina(categories=BANK, years=1974))
-        self.assertNoHolidays(Argentina(categories=GOVERNMENT, years=2013))
-        self.assertNoHolidays(Argentina(categories=HEBREW, years=1995))
-        self.assertNoHolidays(Argentina(categories=ISLAMIC, years=1996))
+        self.assertNoHolidays(Argentina(categories=ARMENIAN, years=range(self.start_year, 2007)))
+        self.assertNoHolidays(Argentina(categories=BANK, years=range(self.start_year, 1975)))
+        self.assertNoHolidays(Argentina(categories=GOVERNMENT, years=range(self.start_year, 2014)))
+        self.assertNoHolidays(Argentina(categories=HEBREW, years=range(self.start_year, 1996)))
+        self.assertNoHolidays(Argentina(categories=ISLAMIC, years=range(self.start_year, 1997)))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -84,6 +84,9 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2025-05-02",
             "2025-08-15",
             "2025-11-21",
+            "2026-03-23",
+            "2026-07-10",
+            "2026-12-07",
         )
 
     def test_special_bank_holidays(self):
@@ -96,6 +99,8 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2021-12-31",
             "2024-12-24",
             "2024-12-31",
+            "2025-12-24",
+            "2025-12-31",
         )
 
     def test_special_subdiv_holidays(self):

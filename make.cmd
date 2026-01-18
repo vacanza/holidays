@@ -40,6 +40,7 @@ GoTo :Help
     Echo     pre-commit    run pre-commit against all files
     Echo     setup         setup development environment
     Echo     test          run tests (in parallel)
+    Echo     upgrade       run dependency upgrade
     Exit /B
 
 :L10n
@@ -83,3 +84,7 @@ GoTo :Help
     uv run --no-sync scripts\l10n\generate_mo_files.py
     uv run --no-sync pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
     Exit /B
+
+Upgrade:
+    uv lock --upgrade
+    uv sync --all-groups
