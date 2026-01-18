@@ -21,12 +21,13 @@ from holidays.groups import (
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 )
 from holidays.holiday_base import HolidayBase
 
 
 class India(
-    HolidayBase, ChristianHolidays, HinduCalendarHolidays, InternationalHolidays, IslamicHolidays
+    HolidayBase, ChristianHolidays, HinduCalendarHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
     """India holidays.
 
@@ -152,6 +153,226 @@ class India(
         "OR",  # Orissa.
     )
 
+    # Official Diwali dates from 2010 to 2025
+    diwali_dates = {
+        2010: (NOV, 5),
+        2011: (OCT, 26),
+        2012: (NOV, 13),
+        2013: (NOV, 3),
+        2014: (OCT, 23),
+        2015: (NOV, 11),
+        2016: (OCT, 30),
+        2017: (OCT, 19),
+        2018: (NOV, 7),
+        2019: (OCT, 27),
+        2020: (NOV, 14),
+        2021: (NOV, 4),
+        2022: (OCT, 24),
+        2023: (NOV, 12),
+        2024: (OCT, 31),
+        2025: (NOV, 19),
+    }
+
+    # Official Holi dates from 2010 to 2025
+    holi_dates = {
+        2010: (FEB, 28),
+        2011: (MAR, 20),
+        2012: (MAR, 8),
+        2013: (MAR, 27),
+        2014: (MAR, 17),
+        2015: (MAR, 6),
+        2016: (MAR, 24),
+        2017: (MAR, 13),
+        2018: (MAR, 2),
+        2019: (MAR, 21),
+        2020: (MAR, 10),
+        2021: (MAR, 29),
+        2022: (MAR, 18),
+        2023: (MAR, 8),
+        2024: (MAR, 25),
+        2025: (MAR, 14),
+    }
+
+    # Official Dussehra dates from 2010 to 2025
+    dussehra_dates = {
+        2010: (OCT, 17),
+        2011: (OCT, 6),
+        2012: (OCT, 24),
+        2013: (OCT, 13),
+        2014: (OCT, 3),
+        2015: (OCT, 22),
+        2016: (OCT, 11),
+        2017: (SEP, 30),
+        2018: (OCT, 19),
+        2019: (OCT, 8),
+        2020: (OCT, 25),
+        2021: (OCT, 15),
+        2022: (OCT, 5),
+        2023: (OCT, 24),
+        2024: (OCT, 12),
+        2025: (OCT, 30),
+    }
+
+    # Official Janmashtami dates from 2010 to 2025
+    janmashtami_dates = {
+        2010: (SEP, 2),
+        2011: (AUG, 22),
+        2012: (AUG, 10),
+        2013: (AUG, 28),
+        2014: (AUG, 18),
+        2015: (SEP, 5),
+        2016: (AUG, 25),
+        2017: (AUG, 14),
+        2018: (SEP, 3),
+        2019: (AUG, 24),
+        2020: (AUG, 12),
+        2021: (AUG, 30),
+        2022: (AUG, 18),
+        2023: (SEP, 7),
+        2024: (AUG, 26),
+        2025: (AUG, 15),
+    }
+
+    # Official Maha Shivaratri dates from 2010 to 2025
+    maha_shivaratri_dates = {
+        2010: (FEB, 12),
+        2011: (MAR, 2),
+        2012: (FEB, 20),
+        2013: (MAR, 10),
+        2014: (FEB, 27),
+        2015: (FEB, 17),
+        2016: (MAR, 7),
+        2017: (FEB, 24),
+        2018: (MAR, 14),
+        2019: (MAR, 4),
+        2020: (FEB, 21),
+        2021: (MAR, 11),
+        2022: (MAR, 1),
+        2023: (FEB, 18),
+        2024: (MAR, 8),
+        2025: (FEB, 26),
+    }
+
+    # Official Guru Nanak Jayanti dates from 2010 to 2025
+    guru_nanak_jayanti_dates = {
+        2010: (NOV, 5),
+        2011: (NOV, 24),
+        2012: (NOV, 13),
+        2013: (NOV, 27),
+        2014: (NOV, 6),
+        2015: (NOV, 25),
+        2016: (NOV, 14),
+        2017: (NOV, 30),
+        2018: (NOV, 23),
+        2019: (NOV, 12),
+        2020: (NOV, 30),
+        2021: (NOV, 19),
+        2022: (NOV, 8),
+        2023: (NOV, 27),
+        2024: (NOV, 15),
+        2025: (NOV, 5),
+    }
+
+    # Official Mahavir Jayanti dates from 2010 to 2025
+    mahavir_jayanti_dates = {
+        2010: (APR, 4),
+        2011: (APR, 23),
+        2012: (APR, 11),
+        2013: (APR, 30),
+        2014: (APR, 20),
+        2015: (APR, 9),
+        2016: (APR, 27),
+        2017: (APR, 16),
+        2018: (APR, 5),
+        2019: (APR, 24),
+        2020: (APR, 13),
+        2021: (APR, 2),
+        2022: (APR, 21),
+        2023: (APR, 10),
+        2024: (APR, 29),
+        2025: (APR, 18),
+    }
+
+    # Official Buddha Purnima dates from 2010 to 2025
+    buddha_purnima_dates = {
+        2010: (MAY, 27),
+        2011: (MAY, 17),
+        2012: (MAY, 6),
+        2013: (MAY, 25),
+        2014: (MAY, 14),
+        2015: (MAY, 3),
+        2016: (MAY, 21),
+        2017: (MAY, 10),
+        2018: (APR, 29),
+        2019: (MAY, 18),
+        2020: (MAY, 7),
+        2021: (MAY, 26),
+        2022: (MAY, 16),
+        2023: (MAY, 5),
+        2024: (MAY, 23),
+        2025: (MAY, 12),
+    }
+
+    # Official Ram Navami dates from 2010 to 2025
+    ram_navami_dates = {
+        2010: (APR, 3),
+        2011: (APR, 12),
+        2012: (MAR, 31),
+        2013: (APR, 19),
+        2014: (APR, 8),
+        2015: (MAR, 28),
+        2016: (APR, 15),
+        2017: (APR, 4),
+        2018: (MAR, 25),
+        2019: (APR, 13),
+        2020: (APR, 2),
+        2021: (APR, 21),
+        2022: (APR, 10),
+        2023: (MAR, 30),
+        2024: (APR, 17),
+        2025: (APR, 6),
+    }
+
+    # Official Raksha Bandhan dates from 2010 to 2025
+    raksha_bandhan_dates = {
+        2010: (AUG, 24),
+        2011: (AUG, 13),
+        2012: (AUG, 1),
+        2013: (AUG, 20),
+        2014: (AUG, 10),
+        2015: (AUG, 29),
+        2016: (AUG, 18),
+        2017: (AUG, 7),
+        2018: (AUG, 26),
+        2019: (AUG, 15),
+        2020: (AUG, 3),
+        2021: (AUG, 22),
+        2022: (AUG, 11),
+        2023: (AUG, 30),
+        2024: (AUG, 19),
+        2025: (AUG, 9),
+    }
+
+    # Official Ganesh Chaturthi dates from 2010 to 2025
+    ganesh_chaturthi_dates = {
+        2010: (SEP, 11),
+        2011: (SEP, 1),
+        2012: (SEP, 19),
+        2013: (SEP, 9),
+        2014: (AUG, 29),
+        2015: (SEP, 17),
+        2016: (SEP, 5),
+        2017: (SEP, 25),
+        2018: (SEP, 13),
+        2019: (SEP, 2),
+        2020: (SEP, 22),
+        2021: (SEP, 10),
+        2022: (AUG, 31),
+        2023: (SEP, 19),
+        2024: (SEP, 7),
+        2025: (SEP, 27),
+    }
+
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
@@ -190,25 +411,53 @@ class India(
             warnings.warn(warning_msg, Warning)
 
         # Buddha Purnima.
-        self._add_buddha_purnima(tr("Buddha Purnima"))
+        dt = self.buddha_purnima_dates.get(self._year)
+        if dt:
+            self._add_holiday(tr("Buddha Purnima"), dt)
+        else:
+            self._add_buddha_purnima(tr("Buddha Purnima"))
 
         # Diwali.
-        self._add_diwali_india(tr("Diwali"))
+        dt = self.diwali_dates.get(self._year)
+        if dt:
+            self._add_holiday(tr("Diwali"), dt)
+        else:
+            self._add_diwali_india(tr("Diwali"))
 
         # Janmashtami.
-        self._add_janmashtami(tr("Janmashtami"))
+        dt = self.janmashtami_dates.get(self._year)
+        if dt:
+            self._add_holiday(tr("Janmashtami"), dt)
+        else:
+            self._add_janmashtami(tr("Janmashtami"))
 
         # Dussehra.
-        self._add_dussehra(tr("Dussehra"))
+        dt = self.dussehra_dates.get(self._year)
+        if dt:
+            self._add_holiday(tr("Dussehra"), dt)
+        else:
+            self._add_dussehra(tr("Dussehra"))
 
         # Mahavir Jayanti.
-        self._add_mahavir_jayanti(tr("Mahavir Jayanti"))
+        dt = self.mahavir_jayanti_dates.get(self._year)
+        if dt:
+            self._add_holiday(tr("Mahavir Jayanti"), dt)
+        else:
+            self._add_mahavir_jayanti(tr("Mahavir Jayanti"))
 
         # Maha Shivaratri.
-        self._add_maha_shivaratri(tr("Maha Shivaratri"))
+        dt = self.maha_shivaratri_dates.get(self._year)
+        if dt:
+            self._add_holiday(tr("Maha Shivaratri"), dt)
+        else:
+            self._add_maha_shivaratri(tr("Maha Shivaratri"))
 
         # Guru Nanak Jayanti.
-        self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti"))
+        dt = self.guru_nanak_jayanti_dates.get(self._year)
+        if dt:
+            self._add_holiday(tr("Guru Nanak Jayanti"), dt)
+        else:
+            self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti"))
 
         # Islamic holidays.
 
@@ -242,10 +491,18 @@ class India(
         self._add_holiday_nov_14(tr("Children's Day"))
 
         # Holi.
-        self._add_holi(tr("Holi"))
+        dt = self.holi_dates.get(self._year)
+        if dt:
+            self._add_holiday(tr("Holi"), dt)
+        else:
+            self._add_holi(tr("Holi"))
 
         # Ganesh Chaturthi.
-        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+        dt = self.ganesh_chaturthi_dates.get(self._year)
+        if dt:
+            self._add_holiday(tr("Ganesh Chaturthi"), dt)
+        else:
+            self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
 
         # Govardhan Puja.
         self._add_govardhan_puja(tr("Govardhan Puja"))
@@ -260,10 +517,18 @@ class India(
         self._add_makar_sankranti(tr("Makar Sankranti"))
 
         # Raksha Bandhan.
-        self._add_raksha_bandhan(tr("Raksha Bandhan"))
+        dt = self.raksha_bandhan_dates.get(self._year)
+        if dt:
+            self._add_holiday(tr("Raksha Bandhan"), dt)
+        else:
+            self._add_raksha_bandhan(tr("Raksha Bandhan"))
 
         # Ram Navami.
-        self._add_ram_navami(tr("Ram Navami"))
+        dt = self.ram_navami_dates.get(self._year)
+        if dt:
+            self._add_holiday(tr("Ram Navami"), dt)
+        else:
+            self._add_ram_navami(tr("Ram Navami"))
 
         # Navratri / Sharad Navratri.
         self._add_sharad_navratri(tr("Navratri / Sharad Navratri"))

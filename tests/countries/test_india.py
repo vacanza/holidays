@@ -186,6 +186,38 @@ class TestIndia(CommonCountryTests, TestCase):
             "2018-11-14",
         )
 
+    def test_2020(self):
+        self.assertHolidayDatesInYear(
+            2020,
+            "2020-01-26",
+            "2020-02-21",
+            "2020-04-10",
+            "2020-04-13",
+            "2020-05-07",
+            "2020-08-12",
+            "2020-08-15",
+            "2020-10-02",
+            "2020-10-25",
+            "2020-11-14",
+            "2020-11-30",
+            "2020-12-25",
+        )
+
+    def test_2020_optional(self):
+        self.assertOptionalHolidayDatesInYear(
+            2020,
+            "2020-01-15",
+            "2020-03-10",
+            "2020-04-02",
+            "2020-04-05",
+            "2020-04-12",
+            "2020-05-01",
+            "2020-08-03",
+            "2020-09-22",
+            "2020-10-26",
+            "2020-11-14",
+        )
+
     def test_ranged_holidays(self):
         warnings.simplefilter("always")
         for year in (2000, 2036):  # Holidays out of range.
