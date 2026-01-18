@@ -405,6 +405,13 @@ def main() -> None:
         description="Find, check/archive via Wayback Machine, and replace URLs in project files.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
+    # New positional argument for specific file or directory
+    parser.add_argument(
+        "path",
+        nargs="?",
+        help="Optional path to a specific file or directory to scan. "
+        "If omitted, scans the entire 'holidays' library.",
+    )
     parser.add_argument(
         "--archive-policy",
         choices=["if-missing", "always", "never"],
@@ -430,8 +437,25 @@ def main() -> None:
     args = parser.parse_args()
 
     start_time_total = time.time()
-    directory = os.path.abspath(os.path.join(__file__, "..", "..", "holidays"))
-    files_to_urls_data, _ = scan_directory_for_links(directory, EXTENSIONS_TO_SCAN)
+
+    files_to_urls_data: dict[str, list[str]] = {}
+
+    if args.path:
+        target_path = os.path.abspath(args.path)
+        if os.path.isfile(target_path):
+            print(f"Targeting single file: {target_path}")
+            urls = find_hyperlinks_in_file(target_path)
+            if urls:
+                files_to_urls_data = {target_path: urls}
+        elif os.path.isdir(target_path):
+            files_to_urls_data, _ = scan_directory_for_links(target_path, EXTENSIONS_TO_SCAN)
+        else:
+            print(f"Error: Path not found: {target_path}", file=sys.stderr)
+            sys.exit(1)
+    else:
+        # Default behavior: Scan the standard holidays library location
+        directory = os.path.abspath(os.path.join(__file__, "..", "..", "holidays"))
+        files_to_urls_data, _ = scan_directory_for_links(directory, EXTENSIONS_TO_SCAN)
 
     if args.show_only:
         exit_code = run_show_only_mode(files_to_urls_data)
