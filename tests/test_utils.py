@@ -73,6 +73,25 @@ class TestCountryHolidays(unittest.TestCase):
             CountryHoliday("IT")
         self.assertIn("CountryHoliday is deprecated", str(ctx.warning))
 
+class TestNoDuplicateDatesAcrossYears(unittest.TestCase):
+    """Ensure no duplicate holiday dates are produced when multiple years are requested."""
+
+    @pytest.mark.skipif(
+        PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
+        reason="Run once on the latest Python version only",
+    )
+    @mock.patch("pathlib.Path.rglob", return_value=())
+    def test_no_duplicate_dates_across_years(self, _unused_mock):
+        years = {2020, 2021}
+
+        holidays = country_holidays("US", years=years)
+        dates = [dt for dt in holidays if isinstance(dt, date)]
+
+        self.assertEqual(
+            len(dates),
+            len(set(dates)),
+            "Duplicate holiday dates detected across multiple years",
+        )
 
 class TestFinancialHolidays(unittest.TestCase):
     def setUp(self):
