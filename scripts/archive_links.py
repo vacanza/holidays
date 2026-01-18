@@ -405,7 +405,6 @@ def main() -> None:
         description="Find, check/archive via Wayback Machine, and replace URLs in project files.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-    # New positional argument for specific file or directory
     parser.add_argument(
         "path",
         nargs="?",
