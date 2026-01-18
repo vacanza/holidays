@@ -442,7 +442,6 @@ def main() -> None:
     if args.path:
         target_path = os.path.abspath(args.path)
         if os.path.isfile(target_path):
-            print(f"Targeting single file: {target_path}")
             urls = find_hyperlinks_in_file(target_path)
             if urls:
                 files_to_urls_data = {target_path: urls}
@@ -452,7 +451,6 @@ def main() -> None:
             print(f"Error: Path not found: {target_path}", file=sys.stderr)
             sys.exit(1)
     else:
-        # Default behavior: Scan the standard holidays library location
         directory = os.path.abspath(os.path.join(__file__, "..", "..", "holidays"))
         files_to_urls_data, _ = scan_directory_for_links(directory, EXTENSIONS_TO_SCAN)
 
