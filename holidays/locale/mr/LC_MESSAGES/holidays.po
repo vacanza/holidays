@@ -1,3 +1,13 @@
+#  python-holidays
+#  ---------------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly.
+#
+#  Static release: https://github.com/vacanza/python-holidays
+#  Development: https://github.com/vacanza/python-holidays
+#
+#  Authors: vacanza team and contributors
+#  License: MIT; see LICENSE file in root directory.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
