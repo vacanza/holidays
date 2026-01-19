@@ -362,6 +362,10 @@ msgstr "วันจอร์จ วอชิงตัน, วันประธ
 msgid "George Washington Day"
 msgstr "วันจอร์จ วอชิงตัน"
 
+#. American Citizenship Day Law No. 53 of Mar 4, 2000.
+msgid "American Citizenship Day"
+msgstr "วันพลเมืองอเมริกัน"
+
 #. José de Diego Day.
 msgid "José de Diego Day"
 msgstr "วันโฮเซ เด ดิเอโก"

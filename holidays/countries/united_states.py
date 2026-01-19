@@ -140,6 +140,7 @@ class UnitedStates(
             * [Law No. 121 of Dec 24, 1991](https://web.archive.org/web/20251213230111/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0121-1991.pdf)
             * [Law No. 39 of Jul 11, 1994](https://web.archive.org/web/20221222034721/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0039-1994.pdf)
             * [Law No. 76 of Jul 6, 1995](https://web.archive.org/web/20250605110906/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/76-1995.pdf)
+            * [Law No. 53 of Mar 4, 2000](https://web.archive.org/web/20230919015004/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/53-2000.pdf)
             * [Law No. 305 of Dec 25, 2002](https://web.archive.org/web/20250625061048/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/305-2002.pdf)
             * [Law No. 182 of Dec 1, 2010](https://web.archive.org/web/20221221221227/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0182-2010.pdf)
             * [Law No. 111 of Jul 29, 2014](https://web.archive.org/web/20250219021118/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0111-2014.pdf)
@@ -1210,6 +1211,10 @@ class UnitedStates(
             self._add_holiday_3rd_mon_of_feb(name)
         else:
             self._add_observed(self._add_holiday_feb_22(name), rule=SUN_TO_NEXT_MON)
+
+        # American Citizenship Day
+        # Law No. 53 of Mar 4, 2000.
+        self._add_holiday_mar_2(tr("American Citizenship Day"))
 
         # Día de la Abolición de la Esclavitud.
 
