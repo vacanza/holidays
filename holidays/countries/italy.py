@@ -22,7 +22,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
 
     References:
         * <https://it.wikipedia.org/wiki/Festività_in_Italia>
-        * <https://www.normattiva.it>
+        * <https://web.archive.org/web/20260115032712/https://www.normattiva.it/>
         * [Royal Decree 5342 of Oct 17, 1869](https://web.archive.org/web/20240405131328/https://www.gazzettaufficiale.it/eli/gu/1869/11/23/320/sg/pdf)
         * [Law 1968 of Jun 23, 1874](https://web.archive.org/web/20240101200400/https://www.gazzettaufficiale.it/eli/gu/1874/07/11/164/sg/pdf)
         * [Law 401 of Jul 19, 1895](https://web.archive.org/web/20240405131313/https://www.gazzettaufficiale.it/eli/gu/1895/07/19/169/sg/pdf)
@@ -980,13 +980,13 @@ class ItalyStaticHolidays:
     """Italy special holidays.
 
     References:
-        * [Law 366 of Jun 28, 1907](https://www.gazzettaufficiale.it/eli/gu/1907/06/28/152/sg/pdf)
-        * [Law 450 of Jul 7, 1910](https://www.gazzettaufficiale.it/eli/gu/1910/07/18/167/sg/pdf)
-        * [Royal Decree 269 of Mar 11, 1920](https://www.gazzettaufficiale.it/eli/gu/1920/03/19/66/sg/pdf)
+        * [Law 366 of Jun 28, 1907](https://web.archive.org/web/20251124204309/https://www.gazzettaufficiale.it/eli/gu/1907/06/28/152/sg/pdf)
+        * [Law 450 of Jul 7, 1910](https://web.archive.org/web/20251027060106/https://www.gazzettaufficiale.it/eli/gu/1910/07/18/167/sg/pdf)
+        * [Royal Decree 269 of Mar 11, 1920](https://web.archive.org/web/20251027093344/https://www.gazzettaufficiale.it/eli/gu/1920/03/19/66/sg/pdf)
         * [Royal Decree 1208 of Aug 21, 1921](https://www.gazzettaufficiale.it/eli/gu/1921/09/10/215/sg/pdf)
-        * [Royal Decree 1207 of Jul 10, 1925](https://www.gazzettaufficiale.it/eli/gu/1925/07/24/170/sg/pdf)
-        * [Royal Decree-Law 376 of Apr 25, 1938](https://www.gazzettaufficiale.it/eli/gu/1938/04/28/97/sg/pdf)
-        * [Presidential Legislative Decree 2 of Jun 19, 1946](https://www.normattiva.it/atto/caricaDettaglioAtto?atto.dataPubblicazioneGazzetta=1946-06-20&atto.codiceRedazionale=046U0002&tipoDettaglio=originario&qId=0c1f85e7-d249-4987-966d-d9a4073ef48f)
+        * [Royal Decree 1207 of Jul 10, 1925](https://web.archive.org/web/20251027092027/https://www.gazzettaufficiale.it/eli/gu/1925/07/24/170/sg/pdf)
+        * [Royal Decree-Law 376 of Apr 25, 1938](https://web.archive.org/web/20251027093701/https://www.gazzettaufficiale.it/eli/gu/1938/04/28/97/sg/pdf)
+        * [Presidential Legislative Decree 2 of Jun 19, 1946](https://web.archive.org/web/20251213235623/https://www.normattiva.it/atto/caricaDettaglioAtto?atto.dataPubblicazioneGazzetta=1946-06-20&atto.codiceRedazionale=046U0002&tipoDettaglio=originario&qId=0c1f85e7-d249-4987-966d-d9a4073ef48f)
     """
 
     # Anniversary of the Unification of Italy.

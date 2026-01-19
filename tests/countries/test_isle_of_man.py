@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestIM(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(IsleOfMan, years=range(1970, 2070))
+        super().setUpClass(IsleOfMan)
 
     def test_1970(self):
         self.assertHolidaysInYear(
@@ -52,27 +52,76 @@ class TestIM(CommonCountryTests, TestCase):
             ("2022-12-27", "Christmas Day (observed)"),
         )
 
-    def test_tynwald_day(self):
-        name = "Tynwald Day"
-        self.assertHoliday(f"{year}-07-05" for year in range(1970, 1992))
+    def test_easter_monday(self):
+        name = "Easter Monday"
         self.assertHolidayName(
             name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_whit_monday(self):
+        name = "Whit Monday"
+        self.assertHolidayName(
+            name,
+            "1966-05-30",
+            "1967-05-15",
+            "1968-06-03",
+            "1969-05-26",
+            "1970-05-18",
+        )
+        self.assertHolidayName(name, range(self.start_year, 1971))
+        self.assertNoHolidayName(name, range(1971, self.end_year))
+
+    def test_late_summer_bank_holiday(self):
+        name = "Late Summer Bank Holiday"
+        self.assertHolidayName(
+            name,
+            "2020-08-31",
+            "2021-08-30",
+            "2022-08-29",
+            "2023-08-28",
+            "2024-08-26",
+            "2025-08-25",
+        )
+        self.assertHolidayName(name, range(1971, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1971))
+
+    def test_tt_bank_holiday(self):
+        name = "TT Bank Holiday"
+        self.assertHolidayName(
+            name,
+            "2020-06-05",
+            "2021-06-04",
+            "2022-06-03",
+            "2023-06-02",
+            "2024-06-07",
+            "2025-06-06",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_tynwald_day(self):
+        name = "Tynwald Day"
+        self.assertNonObservedHolidayName(name, (f"{year}-07-05" for year in self.full_range))
+        obs_dts = (
             "1992-07-06",
-            "2019-07-05",
+            "1997-07-07",
+            "1998-07-06",
+            "2003-07-07",
+            "2008-07-07",
+            "2009-07-06",
+            "2014-07-07",
+            "2015-07-06",
             "2020-07-06",
-            "2021-07-05",
-            "2022-07-05",
-            "2023-07-05",
-            "2024-07-05",
             "2025-07-07",
-            "2026-07-06",
         )
-        self.assertNoHoliday(
-            "1992-07-05",
-            "2020-07-05",
-            "2025-07-05",
-            "2026-07-05",
-        )
+        self.assertHolidayName(name, obs_dts)
+        self.assertNoNonObservedHolidayName(name, obs_dts)
 
     def test_l10n_default(self):
         # https://www.gov.im/categories/home-and-neighbourhood/bank-holidays/

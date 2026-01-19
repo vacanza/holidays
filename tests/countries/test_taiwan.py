@@ -26,7 +26,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         super().test_no_holidays()
 
         self.assertNoHolidays(
-            Taiwan(years=(self.start_year - 1, 2001), categories=(GOVERNMENT, SCHOOL))
+            Taiwan(categories=(GOVERNMENT, SCHOOL), years=range(2001, self.end_year))
         )
 
     def test_substituted_holidays(self):
@@ -130,14 +130,6 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_foundation_day_of_the_republic_of_china(self):
         name = "中華民國開國紀念日"
-
-        # Government Holidays.
-        self.assertGovernmentHolidayName(
-            name, (f"{year}-01-02" for year in range(self.start_year, 2001))
-        )
-        self.assertNoGovernmentHolidayName(name, range(2001, self.end_year))
-
-        # Public Holidays.
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         obs_dts = (
             "1999-01-02",
@@ -147,8 +139,10 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
         self.assertHolidayName(f"{name}（補假）", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
-
-        # School Holidays.
+        self.assertGovernmentHolidayName(
+            name, (f"{year}-01-02" for year in range(self.start_year, 2001))
+        )
+        self.assertNoGovernmentHolidayName(name, range(2001, self.end_year))
         self.assertSchoolHolidayName(
             name, (f"{year}-01-02" for year in range(self.start_year, 2001))
         )
@@ -157,8 +151,6 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
     def test_chinese_new_year(self):
         name_eve = "農曆除夕"
         name = "春節"
-
-        # Public Holidays.
         self.assertHolidayName(
             name_eve,
             "2011-02-02",
@@ -180,49 +172,28 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2026-02-16",
         )
         self.assertHolidayName(name_eve, self.full_range)
-        # CNY itself.
         self.assertHolidayName(
             name,
-            "2015-02-19",
-            "2016-02-08",
-            "2017-01-28",
-            "2018-02-16",
-            "2019-02-05",
             "2020-01-25",
-            "2021-02-12",
-            "2022-02-01",
-            "2023-01-22",
-            "2024-02-10",
-        )
-        # CNY Day 2.
-        self.assertHolidayName(
-            name,
-            "2015-02-20",
-            "2016-02-09",
-            "2017-01-29",
-            "2018-02-17",
-            "2019-02-06",
             "2020-01-26",
-            "2021-02-13",
-            "2022-02-02",
-            "2023-01-23",
-            "2024-02-11",
-        )
-        # CNY Day 3.
-        self.assertHolidayName(
-            name,
-            "2015-02-21",
-            "2016-02-10",
-            "2017-01-30",
-            "2018-02-18",
-            "2019-02-07",
             "2020-01-27",
+            "2021-02-12",
+            "2021-02-13",
             "2021-02-14",
+            "2022-02-01",
+            "2022-02-02",
             "2022-02-03",
+            "2023-01-22",
+            "2023-01-23",
             "2023-01-24",
+            "2024-02-10",
+            "2024-02-11",
             "2024-02-12",
+            "2025-01-29",
+            "2025-01-30",
+            "2025-01-31",
         )
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayNameCount(name, 3, self.full_range)
         obs_eve_dts = (
             "2006-02-01",
             "2007-02-21",
@@ -265,29 +236,21 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_taoism_day(self):
         name = "道教節"
-
-        # Workdays.
+        self.assertNoHolidayName(name)
         self.assertWorkdayHolidayName(
             name,
-            "2015-02-19",
-            "2016-02-08",
-            "2017-01-28",
-            "2018-02-16",
-            "2019-02-05",
             "2020-01-25",
             "2021-02-12",
             "2022-02-01",
             "2023-01-22",
             "2024-02-10",
+            "2025-01-29",
         )
         self.assertWorkdayHolidayName(name, range(2001, self.end_year))
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 2001))
-        self.assertNoHolidayName(name)
 
     def test_peace_memorial_day(self):
         name = "和平紀念日"
-
-        # Public Holidays.
         self.assertHolidayName(name, (f"{year}-02-28" for year in self.full_range))
         obs_dts = (
             "2015-02-27",
@@ -299,64 +262,41 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_arbor_day(self):
         name = "植樹節"
-
-        # Workdays.
-        self.assertWorkdayHolidayName(name, (f"{year}-03-12" for year in self.full_range))
         self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-03-12" for year in self.full_range))
 
     def test_dr_sun_yat_sens_memorial_day(self):
         name = "國父逝世紀念日"
-
-        # Workdays.
-        self.assertWorkdayHolidayName(name, (f"{year}-03-12" for year in self.full_range))
         self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-03-12" for year in self.full_range))
 
     def test_anti_aggression_day(self):
         name = "反侵略日"
-
-        # Workdays.
+        self.assertNoHolidayName(name)
         self.assertWorkdayHolidayName(
             name, (f"{year}-03-14" for year in range(2006, self.end_year))
         )
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 2006))
-        self.assertNoHolidayName(name)
 
     def test_revolutionary_martyrs_memorial_day(self):
         name = "革命先烈紀念日"
-
-        # Government Holidays.
+        self.assertNoHolidayName(name)
         self.assertGovernmentHolidayName(
             name, (f"{year}-03-29" for year in range(self.start_year, 2001))
         )
         self.assertNoGovernmentHolidayName(name, range(2001, self.end_year))
-
-        # Workdays.
         self.assertWorkdayHolidayName(
             name, (f"{year}-03-29" for year in range(2001, self.end_year))
         )
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 2000))
-        self.assertNoHolidayName(name)
 
     def test_youth_day(self):
         name = "青年節"
-
-        # Workdays.
-        self.assertWorkdayHolidayName(name, (f"{year}-03-29" for year in self.full_range))
         self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-03-29" for year in self.full_range))
 
     def test_childrens_day(self):
         name = "兒童節"
-
-        # Optional Holidays.
-        obs_dts = (
-            "1998-04-04",
-            "1999-04-04",
-            "2000-04-03",
-        )
-        self.assertOptionalHolidayName(f"{name}（補假）", obs_dts)
-        self.assertNoOptionalNonObservedHoliday(obs_dts)
-
-        # Public Holidays.
         self.assertHolidayName(name, (f"{year}-04-04" for year in range(2011, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2011))
         obs_dts = (
@@ -370,9 +310,13 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2025-04-03",
         )
         self.assertHolidayName(f"{name}（補假）", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
-
-        # Workdays.
+        obs_dts_opt = (
+            "1998-04-04",
+            "1999-04-04",
+            "2000-04-03",
+        )
+        self.assertOptionalHolidayName(f"{name}（補假）", obs_dts_opt)
+        self.assertNoOptionalNonObservedHoliday(obs_dts, obs_dts_opt)
         self.assertWorkdayHolidayName(
             name, (f"{year}-04-04" for year in range(self.start_year, 2011))
         )
@@ -380,8 +324,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_womens_day(self):
         name = "婦女節"
-
-        # Optional Holidays.
+        self.assertNoHolidayName(name)
         obs_dts = (
             "1998-04-04",
             "1999-04-04",
@@ -389,32 +332,20 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
         self.assertOptionalHolidayName(f"{name}（補假）", obs_dts)
         self.assertNoOptionalNonObservedHoliday(obs_dts)
-        self.assertNoHolidayName(name)
-
-        # Workdays.
         self.assertWorkdayHolidayName(name, (f"{year}-03-08" for year in self.full_range))
 
     def test_tomb_sweeping_day(self):
         name = "民族掃墓節"
-
-        # Public Holidays.
         self.assertHolidayName(
             name,
-            "2011-04-05",
-            "2012-04-04",
-            "2013-04-04",
-            "2014-04-05",
-            "2015-04-05",
-            "2016-04-04",
-            "2017-04-04",
-            "2018-04-05",
-            "2019-04-05",
             "2020-04-04",
             "2021-04-04",
             "2022-04-05",
             "2023-04-05",
+            "2024-04-04",
+            "2025-04-04",
         )
-        self.assertNoHolidayName(name, Taiwan(years=1971))
+        self.assertHolidayName(name, self.full_range)
         obs_dts = (
             "1998-04-06",
             "2015-04-06",
@@ -426,11 +357,11 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_late_president_chiang_kai_sheks_memorial_day(self):
         name = "先總統蔣公逝世紀念日"
-
-        # Workdays.
+        self.assertNoHolidayName(name)
         self.assertWorkdayHolidayName(
             name,
             "1998-04-05",
+            "1999-04-05",
             "2000-04-04",
             "2001-04-05",
             "2002-04-05",
@@ -441,15 +372,11 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2007-04-05",
         )
         self.assertNoWorkdayHolidayName(name, range(2008, self.end_year))
-        self.assertNoHolidayName(name)
 
     def test_labor_day(self):
         name = "勞動節"
-
-        # Public Holidays.
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(2026, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2026))
-
         obs_dts = (
             "2027-04-30",
             "2032-04-30",
@@ -457,8 +384,6 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
         self.assertHolidayName(f"{name}（補假）", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
-
-        # Optional Holidays.
         self.assertOptionalHolidayName(
             name, (f"{year}-05-01" for year in range(self.start_year, 2026))
         )
@@ -466,53 +391,34 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_the_buddhas_birthday(self):
         name = "佛陀誕辰紀念日"
-
-        # Public Holidays.
         self.assertNoHolidayName(name)
         obs_dts = ("2000-05-14",)
         self.assertHolidayName(f"{name}（補假）", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
-
-        # Workdays.
         self.assertWorkdayHolidayName(
             name,
-            "2011-05-10",
-            "2012-04-28",
-            "2013-05-17",
-            "2014-05-06",
-            "2015-05-25",
-            "2016-05-14",
-            "2017-05-03",
-            "2018-05-22",
-            "2019-05-12",
             "2020-04-30",
             "2021-05-19",
             "2022-05-08",
             "2023-05-26",
+            "2024-05-15",
+            "2025-05-05",
         )
         self.assertWorkdayHolidayName(name, range(2000, self.end_year))
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 2000))
 
     def test_dragon_boat_festival(self):
         name = "端午節"
-
-        # Public Holidays.
         self.assertHolidayName(
             name,
-            "2011-06-06",
-            "2012-06-23",
-            "2013-06-12",
-            "2014-06-02",
-            "2015-06-20",
-            "2016-06-09",
-            "2017-05-30",
-            "2018-06-18",
-            "2019-06-07",
             "2020-06-25",
             "2021-06-14",
             "2022-06-03",
             "2023-06-22",
+            "2024-06-10",
+            "2025-05-31",
         )
+        self.assertHolidayName(name, self.full_range)
         obs_dts = (
             "1999-06-19",
             "2015-06-19",
@@ -523,44 +429,32 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_commemoration_day_of_the_lifting_of_martial_law(self):
         name = "解嚴紀念日"
-
-        # Workdays.
+        self.assertNoHolidayName(name)
         self.assertWorkdayHolidayName(
             name, (f"{year}-07-15" for year in range(2008, self.end_year))
         )
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 2008))
-        self.assertNoHolidayName(name)
 
     def test_armed_forces_day(self):
         name = "軍人節"
-
-        # Optional Holidays.
+        self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(name, (f"{year}-09-03" for year in self.full_range))
         obs_dts = ("2000-09-04",)
         self.assertOptionalHolidayName(f"{name}（補假）", obs_dts)
         self.assertNoOptionalNonObservedHoliday(obs_dts)
-        self.assertNoHolidayName(name)
 
     def test_mid_autumn_festival(self):
         name = "中秋節"
-
-        # Public Holidays.
         self.assertHolidayName(
             name,
-            "2011-09-12",
-            "2012-09-30",
-            "2013-09-19",
-            "2014-09-08",
-            "2015-09-27",
-            "2016-09-15",
-            "2017-10-04",
-            "2018-09-24",
-            "2019-09-13",
             "2020-10-01",
             "2021-09-21",
             "2022-09-10",
             "2023-09-29",
+            "2024-09-17",
+            "2025-10-06",
         )
+        self.assertHolidayName(name, self.full_range)
         obs_dts = (
             "2015-09-28",
             "2022-09-09",
@@ -570,8 +464,6 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_national_day(self):
         name = "國慶日"
-
-        # Public Holidays.
         self.assertHolidayName(name, (f"{year}-10-10" for year in self.full_range))
         obs_dts = (
             "2015-10-09",
@@ -583,31 +475,22 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_confucius_birthday(self):
         name = "孔子誕辰紀念日"
-
-        # Public Holidays.
         self.assertHolidayName(name, (f"{year}-09-28" for year in range(2025, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2025))
-
         obs_dts = (
             "2025-09-29",
             "2030-09-27",
         )
         self.assertHolidayName(f"{name}（補假）", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
-
-        # Government Holidays.
         self.assertGovernmentHolidayName(
             name, (f"{year}-09-28" for year in range(self.start_year, 2001))
         )
         self.assertNoGovernmentHolidayName(name, range(2001, self.end_year))
-
-        # School Holidays.
         self.assertSchoolHolidayName(
             name, (f"{year}-09-28" for year in range(self.start_year, 2001))
         )
         self.assertNoSchoolHolidayName(name, range(2001, self.end_year))
-
-        # Workdays.
         self.assertWorkdayHolidayName(name, (f"{year}-09-28" for year in range(2001, 2025)))
         self.assertNoWorkdayHolidayName(
             name, range(self.start_year, 2000), range(2025, self.end_year)
@@ -615,113 +498,83 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_teachers_day(self):
         name = "教師節"
-
-        # Workdays.
-        self.assertWorkdayHolidayName(name, (f"{year}-09-28" for year in self.full_range))
         self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-09-28" for year in self.full_range))
 
     def test_taiwan_united_nations_day(self):
         name = "臺灣聯合國日"
-
-        # Workdays.
+        self.assertNoHolidayName(name)
         self.assertWorkdayHolidayName(
             name, (f"{year}-10-24" for year in range(2008, self.end_year))
         )
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 2008))
-        self.assertNoHolidayName(name)
 
     def test_taiwan_retrocession_day(self):
-        name_old = "臺灣光復節"
-        name_new = "臺灣光復暨金門古寧頭大捷紀念日"
-
-        # Public Holidays.
-        self.assertHolidayName(name_new, (f"{year}-10-25" for year in range(2025, self.end_year)))
-        self.assertNoHolidayName(name_new, range(self.start_year, 2025))
-        self.assertNoHolidayName(name_old)
-
+        name_1998 = "臺灣光復節"
+        name_2025 = "臺灣光復暨金門古寧頭大捷紀念日"
+        self.assertHolidayName(name_2025, (f"{year}-10-25" for year in range(2025, self.end_year)))
+        self.assertNoHolidayName(name_2025, range(self.start_year, 2025))
+        self.assertNoHolidayName(name_1998)
         obs_dts = (
             "2025-10-24",
             "2026-10-26",
         )
-        self.assertHolidayName(f"{name_new}（補假）", obs_dts)
+        self.assertHolidayName(f"{name_2025}（補假）", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
-
-        # Government Holidays.
         self.assertGovernmentHolidayName(
-            name_old, (f"{year}-10-25" for year in range(self.start_year, 2001))
+            name_1998, (f"{year}-10-25" for year in range(self.start_year, 2001))
         )
-        self.assertNoGovernmentHolidayName(name_old, range(2001, self.end_year))
-
-        # School Holidays.
+        self.assertNoGovernmentHolidayName(name_1998, range(2001, self.end_year))
         self.assertSchoolHolidayName(
-            name_old, (f"{year}-10-25" for year in range(self.start_year, 2001))
+            name_1998, (f"{year}-10-25" for year in range(self.start_year, 2001))
         )
-        self.assertNoSchoolHolidayName(name_old, range(2001, self.end_year))
-
-        # Workdays.
-        self.assertWorkdayHolidayName(name_old, (f"{year}-10-25" for year in range(2001, 2025)))
+        self.assertNoSchoolHolidayName(name_1998, range(2001, self.end_year))
+        self.assertWorkdayHolidayName(name_1998, (f"{year}-10-25" for year in range(2001, 2025)))
         self.assertNoWorkdayHolidayName(
-            name_old, range(self.start_year, 2000), range(2025, self.end_year)
+            name_1998, range(self.start_year, 2000), range(2025, self.end_year)
         )
 
     def test_late_president_chiang_kai_sheks_birthday(self):
         name = "先總統　蔣公誕辰紀念日"
-
-        # Government Holidays.
+        self.assertNoHolidayName(name)
         self.assertGovernmentHolidayName(
             name, (f"{year}-10-31" for year in range(self.start_year, 2001))
         )
         self.assertNoGovernmentHolidayName(name, range(2001, self.end_year))
-
-        # School Holidays.
         self.assertSchoolHolidayName(
             name, (f"{year}-10-31" for year in range(self.start_year, 2001))
         )
         self.assertNoSchoolHolidayName(name, range(2001, self.end_year))
-
-        # Workdays.
         self.assertWorkdayHolidayName(name, (f"{year}-10-31" for year in range(2001, 2007)))
         self.assertNoWorkdayHolidayName(
             name, range(self.start_year, 2000), range(2007, self.end_year)
         )
-        self.assertNoHolidayName(name)
 
     def test_dr_sun_yat_sens_birthday(self):
         name = "國父誕辰紀念日"
-
-        # Government Holidays.
+        self.assertNoHolidayName(name)
         self.assertGovernmentHolidayName(
             name, (f"{year}-11-12" for year in range(self.start_year, 2001))
         )
         self.assertNoGovernmentHolidayName(name, range(2001, self.end_year))
-
-        # School Holidays.
         self.assertSchoolHolidayName(
             name, (f"{year}-11-12" for year in range(self.start_year, 2001))
         )
         self.assertNoSchoolHolidayName(name, range(2001, self.end_year))
-
-        # Workdays.
         self.assertWorkdayHolidayName(
             name, (f"{year}-11-12" for year in range(2001, self.end_year))
         )
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 2000))
-        self.assertNoHolidayName(name)
 
     def test_chinese_cultural_renaissance_day(self):
         name = "中華文化復興節"
-
-        # Workdays.
-        self.assertWorkdayHolidayName(name, (f"{year}-11-12" for year in self.full_range))
         self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-11-12" for year in self.full_range))
 
     def test_constitution_day(self):
         name = "行憲紀念日"
-
-        # Public Holidays.
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(2025, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2025))
-
         obs_dts = (
             "2027-12-24",
             "2032-12-24",
@@ -729,20 +582,14 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
         self.assertHolidayName(f"{name}（補假）", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
-
-        # Government Holidays.
         self.assertGovernmentHolidayName(
             name, (f"{year}-12-25" for year in range(self.start_year, 2001))
         )
         self.assertNoGovernmentHolidayName(name, range(2001, self.end_year))
-
-        # School Holidays.
         self.assertSchoolHolidayName(
             name, (f"{year}-12-25" for year in range(self.start_year, 2001))
         )
         self.assertNoSchoolHolidayName(name, range(2001, self.end_year))
-
-        # Workdays.
         self.assertWorkdayHolidayName(name, (f"{year}-12-25" for year in range(2001, 2025)))
         self.assertNoWorkdayHolidayName(
             name, range(self.start_year, 2000), range(2025, self.end_year)

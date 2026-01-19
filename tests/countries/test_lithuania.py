@@ -19,109 +19,116 @@ from tests.common import CommonCountryTests
 class TestLithuania(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Lithuania, years=range(1990, 2050))
+        super().setUpClass(Lithuania)
 
-    def test_new_years(self):
+    def test_new_years_day(self):
+        self.assertHolidayName("Naujųjų metų diena", (f"{year}-01-01" for year in self.full_range))
+
+    def test_day_of_restoration_of_the_state_of_lithuania(self):
         self.assertHolidayName(
-            "Naujųjų metų diena", (f"{year}-01-01" for year in range(1990, 2050))
+            "Lietuvos valstybės atkūrimo diena", (f"{year}-02-16" for year in self.full_range)
         )
 
-    def test_restoration_of_state_day(self):
-        self.assertHolidayName(
-            "Lietuvos valstybės atkūrimo diena", (f"{year}-02-16" for year in range(1990, 2050))
-        )
-
-    def test_restoration_of_independence_day(self):
+    def test_day_of_restoration_of_independence_of_lithuania(self):
         self.assertHolidayName(
             "Lietuvos nepriklausomybės atkūrimo diena",
-            (f"{year}-03-11" for year in range(1990, 2050)),
+            (f"{year}-03-11" for year in self.full_range),
         )
 
-    def test_easter(self):
+    def test_easter_sunday(self):
+        name = "Šv. Velykos"
         self.assertHolidayName(
-            "Šv. Velykos",
-            "2019-04-21",
+            name,
             "2020-04-12",
             "2021-04-04",
             "2022-04-17",
             "2023-04-09",
+            "2024-03-31",
+            "2025-04-20",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
+        name = "Antroji šv. Velykų diena"
         self.assertHolidayName(
-            "Antroji šv. Velykų diena",
-            "2019-04-22",
+            name,
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_labor_day(self):
         self.assertHolidayName(
-            "Tarptautinė darbo diena", (f"{year}-05-01" for year in range(1990, 2050))
+            "Tarptautinė darbo diena", (f"{year}-05-01" for year in self.full_range)
         )
 
     def test_mothers_day(self):
+        name = "Motinos diena"
         self.assertHolidayName(
-            "Motinos diena",
-            "2019-05-05",
+            name,
             "2020-05-03",
             "2021-05-02",
             "2022-05-01",
             "2023-05-07",
+            "2024-05-05",
+            "2025-05-04",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_fathers_day(self):
+        name = "Tėvo diena"
         self.assertHolidayName(
-            "Tėvo diena",
-            "2019-06-02",
+            name,
             "2020-06-07",
             "2021-06-06",
             "2022-06-05",
             "2023-06-04",
+            "2024-06-02",
+            "2025-06-01",
         )
+        self.assertHolidayName(name, self.full_range)
 
-    def test_dew_and_saint_john_day(self):
+    def test_day_of_dew_and_saint_john(self):
         name = "Rasos ir Joninių diena"
-        self.assertHolidayName(name, (f"{year}-06-24" for year in range(2003, 2050)))
-        self.assertNoHoliday(f"{year}-06-24" for year in range(1990, 2003))
-        self.assertNoHolidayName(name, range(1990, 2003))
+        self.assertHolidayName(name, (f"{year}-06-24" for year in range(2003, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2003))
 
     def test_statehood_day(self):
         name = "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės diena"
-        self.assertHolidayName(name, (f"{year}-07-06" for year in range(1991, 2050)))
-        self.assertNoHoliday(f"{year}-07-06" for year in range(1990, 1991))
-        self.assertNoHolidayName(name, range(1990, 1991))
+        self.assertHolidayName(name, (f"{year}-07-06" for year in range(1991, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1991))
 
     def test_assumption_day(self):
         self.assertHolidayName(
             "Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)",
-            (f"{year}-08-15" for year in range(1990, 2050)),
+            (f"{year}-08-15" for year in self.full_range),
         )
 
     def test_all_saints_day(self):
         self.assertHolidayName(
-            "Visų Šventųjų diena", (f"{year}-11-01" for year in range(1990, 2050))
+            "Visų Šventųjų diena", (f"{year}-11-01" for year in self.full_range)
         )
 
     def test_all_souls_day(self):
         name = "Mirusiųjų atminimo (Vėlinių) diena"
-        self.assertHolidayName(name, (f"{year}-11-02" for year in range(2020, 2050)))
-        self.assertNoHoliday(f"{year}-11-02" for year in range(1990, 2020))
-        self.assertNoHolidayName(name, range(1990, 2020))
+        self.assertHolidayName(name, (f"{year}-11-02" for year in range(2020, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2020))
 
     def test_christmas_eve(self):
-        self.assertHolidayName("Kūčių diena", (f"{year}-12-24" for year in range(1990, 2050)))
+        self.assertHolidayName("Kūčių diena", (f"{year}-12-24" for year in self.full_range))
 
     def test_christmas_day(self):
         self.assertHolidayName(
-            "Šv. Kalėdų pirma diena", (f"{year}-12-25" for year in range(1990, 2050))
+            "Šv. Kalėdų pirma diena", (f"{year}-12-25" for year in self.full_range)
         )
 
-    def test_second_christmas_day(self):
+    def test_second_day_of_christmas(self):
         self.assertHolidayName(
-            "Šv. Kalėdų antra diena", (f"{year}-12-26" for year in range(1990, 2050))
+            "Šv. Kalėdų antra diena", (f"{year}-12-26" for year in self.full_range)
         )
 
     def test_l10n_default(self):

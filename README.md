@@ -1800,13 +1800,6 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GOVERNMENT, HALF_DAY, UNOFFICIAL</td>
 </tr>
 <tr>
-<td>United States Virgin Islands (the)</td>
-<td></td>
-<td>See Virgin Islands (U.S.)</td>
-<td></td>
-<td>GOVERNMENT, UNOFFICIAL</td>
-</tr>
-<tr>
 <td>Uruguay</td>
 <td>UY</td>
 <td></td>

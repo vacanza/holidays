@@ -21,6 +21,81 @@ class TestKyrgyzstan(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Kyrgyzstan)
 
+    def test_new_years_day(self):
+        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Christmas Day", (f"{year}-01-07" for year in self.full_range))
+
+    def test_international_womens_day(self):
+        self.assertHolidayName(
+            "International Women's Day", (f"{year}-03-08" for year in self.full_range)
+        )
+
+    def test_nooruz_mairamy(self):
+        self.assertHolidayName("Nooruz Mairamy", (f"{year}-03-21" for year in self.full_range))
+
+    def test_day_of_the_peoples_april_revolution(self):
+        name = "Day of the People's April Revolution"
+        self.assertHolidayName(name, (f"{year}-04-07" for year in range(2016, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2016))
+
+    def test_international_workers_day(self):
+        self.assertHolidayName(
+            "International Workers' Day", (f"{year}-05-01" for year in self.full_range)
+        )
+
+    def test_constitution_day(self):
+        self.assertHolidayName("Constitution Day", (f"{year}-05-05" for year in self.full_range))
+
+    def test_victory_day(self):
+        self.assertHolidayName("Victory Day", (f"{year}-05-09" for year in self.full_range))
+
+    def test_independence_day(self):
+        self.assertHolidayName("Independence Day", (f"{year}-08-31" for year in self.full_range))
+
+    def test_days_of_history_and_commemoration_of_ancestors(self):
+        self.assertHolidayName(
+            "Days of History and Commemoration of Ancestors",
+            (f"{year}-11-07" for year in self.full_range),
+            (f"{year}-11-08" for year in self.full_range),
+        )
+
+    def test_new_years_eve(self):
+        self.assertHolidayName("New Year's Eve", (f"{year}-12-31" for year in self.full_range))
+
+    def test_orozo_ait(self):
+        name = "Orozo Ait"
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
+            "2020-05-24",
+            "2020-05-25",
+            "2021-05-13",
+            "2021-05-14",
+            "2022-05-02",
+            "2022-05-03",
+            "2023-04-21",
+            "2023-04-22",
+            "2024-04-10",
+            "2024-04-11",
+            "2025-03-30",
+            "2025-03-31",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_kurman_ait(self):
+        name = "Kurman Ait"
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-09",
+            "2023-06-28",
+            "2024-06-16",
+            "2025-06-06",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
     def test_2022(self):
         self.assertHolidaysInYear(
             2022,
@@ -62,7 +137,3 @@ class TestKyrgyzstan(CommonCountryTests, TestCase):
             ("2023-11-08", "Days of History and Commemoration of Ancestors"),
             ("2023-12-31", "New Year's Eve"),
         )
-
-    def test_day_of_peoples_revolution(self):
-        self.assertNoHoliday("2015-04-07")
-        self.assertHoliday("2016-04-07", "2017-04-07")

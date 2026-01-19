@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.71\n"
+"Project-Id-Version: Holidays 0.89\n"
 "POT-Creation-Date: 2025-04-03 11:35+0700\n"
-"PO-Revision-Date: 2025-04-03 16:24+0700\n"
+"PO-Revision-Date: 2026-01-07 22:14+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.5\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 "X-Source-Language: pt_TL\n"
 
 #. %s (estimated).
@@ -40,6 +40,10 @@ msgstr "วันขึ้นปีใหม่"
 msgid "Dia dos Veteranos"
 msgstr "วันทหารผ่านศึก"
 
+#. Good Friday.
+msgid "Sexta-Feira Santa"
+msgstr "วันศุกร์ประเสริฐ"
+
 #. International Worker's Day.
 msgid "Dia Mundial do Trabalhador"
 msgstr "วันแรงงานสากล"
@@ -47,6 +51,10 @@ msgstr "วันแรงงานสากล"
 #. Restoration of Independence Day.
 msgid "Dia da Restauração da Independência"
 msgstr "วันรำลึกการกอบกู้เอกราชติมอร์-เลสเต"
+
+#. Corpus Christi.
+msgid "Festa do Corpo de Deus"
+msgstr "วันสมโภชพระคริสตวรกาย"
 
 #. Popular Consultation Day.
 msgid "Dia da Consulta Popular"
@@ -88,21 +96,25 @@ msgstr "วันคริสต์มาส"
 msgid "Dia dos Heróis Nacionais"
 msgstr "วันวีรบุรุษแห่งชาติ"
 
-#. Holy Friday.
-msgid "Sexta-Feira Santa"
-msgstr "วันศุกร์ประเสริฐ"
-
 #. Eid al-Fitr.
 msgid "Idul Fitri"
 msgstr "วันอีฎิ้ลฟิตริ"
 
-#. Corpus Christi.
-msgid "Festa do Corpo de Deus"
-msgstr "วันสมโภชพระคริสตวรกาย"
-
 #. Eid al-Adha.
 msgid "Idul Adha"
 msgstr "วันอีดิ้ลอัฎฮา"
+
+#. Ash Wednesday.
+msgid "Quarta-Feira de Cinzas"
+msgstr "วันพุธรับเถ้า"
+
+#. Maundy Thursday.
+msgid "Quinta-Feira Santa"
+msgstr "วันพฤหัสศักดิ์สิทธิ์"
+
+#. The Day of Ascension of Jesus Christ into Heaven.
+msgid "Dia da Ascensão de Jesus Cristo ao Céu"
+msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
 
 #. International Children's Day.
 msgid "Dia Mundial da Criança"
@@ -115,18 +127,6 @@ msgstr "วันกองกำลังปลดปล่อยแห่งช
 #. International Human Rights Day.
 msgid "Dia Mundial dos Direitos Humanos"
 msgstr "วันสิทธิมนุษยชนสากล"
-
-#. Ash Wednesday.
-msgid "Quarta-Feira de Cinzas"
-msgstr "วันพุธรับเถ้า"
-
-#. Holy Thursday.
-msgid "Quinta-Feira Santa"
-msgstr "วันพฤหัสศักดิ์สิทธิ์"
-
-#. The Day of Ascension of Jesus Christ into Heaven.
-msgid "Dia da Ascensão de Jesus Cristo ao Céu"
-msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
 
 #. National Holidays (Special).
 msgid "Feriados Nacionais (Especiais)"

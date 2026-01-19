@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import HALF_DAY, PUBLIC, WORKDAY
+from holidays.constants import PUBLIC, WORKDAY
 from holidays.countries.saint_kitts_and_nevis import SaintKittsAndNevis
 from tests.common import CommonCountryTests
 
@@ -20,13 +20,17 @@ from tests.common import CommonCountryTests
 class TestSaintKittsAndNevis(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(
-            SaintKittsAndNevis, years=range(1983, 2051), years_non_observed=range(1983, 2051)
+        super().setUpClass(SaintKittsAndNevis)
+
+    def test_no_holidays(self):
+        super().test_no_holidays()
+
+        self.assertNoHolidays(
+            SaintKittsAndNevis(categories=WORKDAY, years=range(self.start_year, 2003))
         )
 
     def test_special_public_holidays(self):
         self.assertHoliday(
-            SaintKittsAndNevis(categories=PUBLIC),
             "2015-02-18",
             "2017-09-20",
             "2017-12-19",
@@ -35,8 +39,7 @@ class TestSaintKittsAndNevis(CommonCountryTests, TestCase):
         )
 
     def test_special_half_day_holidays(self):
-        self.assertHoliday(
-            SaintKittsAndNevis(categories=HALF_DAY),
+        self.assertHalfDayHoliday(
             "2017-03-23",
             "2017-04-10",
             "2018-12-31",
@@ -47,98 +50,170 @@ class TestSaintKittsAndNevis(CommonCountryTests, TestCase):
             "2024-08-01",
         )
 
-    def test_labour_day(self):
-        # 1st Monday of May.
-        dt = (
-            "2010-05-03",
-            "2011-05-02",
-            "2012-05-07",
-            "2013-05-06",
-            "2014-05-05",
-            "2015-05-04",
-            "2016-05-02",
-            "2017-05-01",
-            "2018-05-07",
-            "2019-05-06",
+    def test_carnival_day(self):
+        name = "Carnival Day"
+        name_lastlap = f"{name} - Last Lap"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        self.assertHolidayName(name_lastlap, (f"{year}-01-02" for year in self.full_range))
+        obs_dts = (
+            "1995-01-03",
+            "2006-01-03",
+            "2012-01-03",
+            "2017-01-03",
+            "2023-01-03",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        obs_dts_lastlap = (
+            "1994-01-03",
+            "2000-01-03",
+            "2005-01-03",
+            "2011-01-03",
+            "2022-01-03",
+        )
+        self.assertHolidayName(f"{name_lastlap} (observed)", obs_dts_lastlap)
+        self.assertNoNonObservedHoliday(obs_dts, obs_dts_lastlap)
+
+    def test_good_friday(self):
+        name = "Good Friday"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_easter_monday(self):
+        name = "Easter Monday"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_labor_day(self):
+        name = "Labour Day"
+        self.assertHolidayName(
+            name,
             "2020-05-04",
             "2021-05-03",
             "2022-05-02",
             "2023-05-01",
             "2024-05-06",
+            "2025-05-05",
         )
-        self.assertHolidayName("Labour Day", dt)
+        self.assertHolidayName(name, self.full_range)
 
-    def test_first_monday_of_august_holiday(self):
-        name_first_mon_aug = "First Monday of August"
-        name_emancipation_day = "Emancipation Day"
+    def test_whit_monday(self):
+        name = "Whit Monday"
+        self.assertHolidayName(
+            name,
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
+        )
+        self.assertHolidayName(name, self.full_range)
 
-        dt = (
-            "2010-08-02",
-            "2011-08-01",
-            "2012-08-06",
-            "2013-08-05",
-            "2014-08-04",
-            "2015-08-03",
-            "2016-08-01",
-            "2017-08-07",
-            "2018-08-06",
-            "2019-08-05",
+    def test_emancipation_day(self):
+        name_1983 = "First Monday of August"
+        name_1998 = "Emancipation Day"
+        self.assertHolidayName(
+            name_1998,
             "2020-08-03",
             "2021-08-02",
             "2022-08-01",
             "2023-08-07",
             "2024-08-05",
+            "2025-08-04",
         )
-        self.assertHolidayName(name_emancipation_day, dt)
-        self.assertNoHolidayName(name_first_mon_aug, range(1998, 2051))
-        self.assertNoHolidayName(name_emancipation_day, range(1983, 1998))
+        self.assertHolidayName(name_1983, range(self.start_year, 1998))
+        self.assertHolidayName(name_1998, range(1998, self.end_year))
+        self.assertNoHolidayName(name_1983, range(1998, self.end_year))
+        self.assertNoHolidayName(name_1998, range(self.start_year, 1998))
 
     def test_culturama_day_last_lap(self):
-        name_culturama_day_last_lap = "Culturama Day - Last Lap"
-
-        dt = (
-            "2010-08-03",
-            "2011-08-02",
-            "2012-08-07",
-            "2013-08-06",
-            "2014-08-05",
-            "2015-08-04",
-            "2016-08-02",
-            "2017-08-08",
-            "2018-08-07",
-            "2019-08-06",
+        name = "Culturama Day - Last Lap"
+        self.assertHolidayName(
+            name,
             "2020-08-04",
             "2021-08-03",
             "2022-08-02",
             "2023-08-08",
             "2024-08-06",
+            "2025-08-05",
         )
-        self.assertHolidayName(name_culturama_day_last_lap, dt)
+        self.assertHolidayName(name, self.full_range)
 
     def test_national_heroes_day(self):
-        name_national_heroes_day = "National Heroes Day"
-
-        self.assertNoHolidayName(name_national_heroes_day, range(1983, 1998))
-        self.assertHolidayName(
-            name_national_heroes_day, (f"{year}-09-16" for year in range(1998, 2051))
-        )
-
-        self.assertNoNonObservedHoliday(
+        name = "National Heroes Day"
+        self.assertHolidayName(name, (f"{year}-09-16" for year in range(1998, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1998))
+        obs_dts = (
             "2001-09-17",
             "2007-09-17",
             "2012-09-17",
             "2018-09-17",
-            "2029-09-17",
-            "2034-09-17",
-            "2040-09-17",
-            "2045-09-17",
         )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_independence_day(self):
+        name = "Independence Day"
+        self.assertHolidayName(name, (f"{year}-09-19" for year in self.full_range))
+        obs_dts = (
+            "1993-09-20",
+            "1999-09-20",
+            "2004-09-20",
+            "2010-09-20",
+            "2021-09-20",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_christmas_day(self):
+        name = "Christmas Day"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
+        obs_dts = (
+            "1994-12-27",
+            "2005-12-27",
+            "2011-12-27",
+            "2016-12-27",
+            "2022-12-27",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_boxing_day(self):
+        name = "Boxing Day"
+        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
+        obs_dts = (
+            "1993-12-27",
+            "1999-12-27",
+            "2004-12-27",
+            "2010-12-27",
+            "2021-12-27",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_kim_collins_day(self):
-        self.assertNoHoliday(SaintKittsAndNevis(categories=WORKDAY), "2002-08-25")
-        self.assertHoliday(
-            SaintKittsAndNevis(categories=WORKDAY), (f"{year}-08-25" for year in range(2003, 2051))
+        name = "Kim Collins Day"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-08-25" for year in range(2003, self.end_year))
         )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 2003))
 
     def test_2015_holidays(self):  # ?
         # https://web.archive.org/web/20221102224614/https://www.gov.kn/in-skn-national-public-holidays/

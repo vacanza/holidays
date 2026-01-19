@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.57\n"
+"Project-Id-Version: Holidays 0.89\n"
 "POT-Creation-Date: 2024-09-05 12:21+0700\n"
-"PO-Revision-Date: 2024-09-05 12:28+0700\n"
+"PO-Revision-Date: 2026-01-14 04:15+0000\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_AU\n"
@@ -123,6 +123,11 @@ msgstr ""
 
 #. The Royal Queensland Show.
 msgid "The Royal Queensland Show"
+msgstr ""
+
+#. %s (from 6pm).
+#, c-format
+msgid "%s (from 6pm)"
 msgstr ""
 
 #. Adelaide Cup Day.
