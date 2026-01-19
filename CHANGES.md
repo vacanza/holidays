@@ -1,3 +1,17 @@
+# Version 0.89
+
+Released January 19, 2026
+
+- Refactor `test_no_holidays`, now also test `supported_categories` by default (#3197 by @PPsyrius, @arkid15r)
+- Update Argentina holidays: add 2026 bridge public holidays (#3210 by @KJhellico)
+- Update Australia holidays: add Queensland's Christmas Eve `HALF_DAY` holidays from 2019 onwards (#3212 by @simongreen-net)
+- Update Australia holidays: move Anzac Day in 2026 (ACT) (#3216 by @simongreen-net)
+- Update Azerbaijan holidays (#3207 by @KJhellico)
+- Update CONTRIBUTORS (#3193 by @rpanai)
+- Update README: update Available Countries table (#3201 by @PPsyrius)
+- Add archive-links Makefile target (#3218 by @arkid15r)
+- Migrate I-L countries to new test case standards (#3187 by @PPsyrius)
+
 # Version 0.88
 
 Released January 5, 2026
