@@ -393,7 +393,7 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
 
     # Maharashtra.
-    # Reference: https://web.archive.org/web/20260119170609/https://cdnbaas.s3waas.gov.in/s33430095c577593aad3c39c701712be7/uploads/2025/12/2025121094.pdf
+    # Reference:<https://web.archive.org/web/20260119120609/https://cdnbbsr.s3waas.gov.in/s33430095c577593aad3c39c701712bcfe/uploads/2025/01/202501241197765911.pdf>
     def _populate_subdiv_mh_public_holidays(self):
         # Gudi Padwa.
         self._add_gudi_padwa(tr("Gudi Padwa"))
