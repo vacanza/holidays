@@ -80,11 +80,11 @@ msgstr ""
 
 #. Good Friday.
 msgid "Good Friday"
-msgstr ""
+msgstr "गुड फ्रायडे"
 
 #. Christmas.
 msgid "Christmas"
-msgstr ""
+msgstr "नाताळ"
 
 #. Children's Day.
 msgid "Children's Day"
@@ -136,7 +136,7 @@ msgstr ""
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
-msgstr ""
+msgstr "डॉ. बाबासाहेब आंबेडकर जयंती"
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
@@ -309,6 +309,3 @@ msgstr ""
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr ""
-
-#~ msgid "Dr. B. R. Ambedkar Jayanti"
-#~ msgstr "डॉ. बाबासाहेब आंबेडकर जयंती"
