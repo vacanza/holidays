@@ -398,8 +398,6 @@ class India(
     # Maharashtra.
     # Reference:<https://web.archive.org/web/20260119120609/https://cdnbbsr.s3waas.gov.in/s33430095c577593aad3c39c701712bcfe/uploads/2025/01/202501241197765911.pdf>
     def _populate_subdiv_mh_public_holidays(self):
-        # Republic Day.
-        self._add_holiday_jan_26(tr("Republic Day"))
 
         # Gudi Padwa.
         self._add_gudi_padwa(tr("Gudi Padwa"))
@@ -412,18 +410,6 @@ class India(
 
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
-
-        # Independence Day.
-        self._add_holiday_aug_15(tr("Independence Day"))
-
-        # Mahatma Gandhi Jayanti.
-        self._add_holiday_oct_2(tr("Mahatma Gandhi Jayanti"))
-
-        # Good Friday.
-        self._add_holiday_good_friday(tr("Good Friday"))
-
-        # Christmas Day.
-        self._add_holiday_christmas_day(tr("Christmas Day"))
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
