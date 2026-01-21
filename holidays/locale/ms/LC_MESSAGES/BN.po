@@ -65,6 +65,14 @@ msgstr ""
 msgid "Hari Natal"
 msgstr ""
 
+#. Islamic New Year.
+msgid "Awal Tahun Hijrah"
+msgstr ""
+
+#. Prophet's Birthday.
+msgid "Maulidur Rasul"
+msgstr ""
+
 #. Isra' and Mi'raj.
 msgid "Israk dan Mikraj"
 msgstr ""
@@ -83,14 +91,6 @@ msgstr ""
 
 #. Eid al-Adha.
 msgid "Hari Raya Aidil Adha"
-msgstr ""
-
-#. Islamic New Year.
-msgid "Awal Tahun Hijrah"
-msgstr ""
-
-#. Prophet's Birthday.
-msgid "Maulidur Rasul"
 msgstr ""
 
 #. Proclamation Ceremony of Crown Prince Al-Muhtadee Billah of Brunei.
