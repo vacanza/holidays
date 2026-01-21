@@ -45,6 +45,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
         * [Law 336 of Nov 20, 2000](https://web.archive.org/web/20230604111415/https://www.gazzettaufficiale.it/eli/gu/2000/11/22/273/sg/pdf)
         * [Law 151 of Oct 8, 2025](https://web.archive.org/web/20251027040938/https://www.gazzettaufficiale.it/eli/gu/2025/10/10/236/sg/pdf)
         * [Provinces holidays](https://it.wikipedia.org/wiki/Santi_patroni_cattolici_delle_città_capoluogo_di_provincia_italiane)
+        * [Bolzano Province Law 36 of Oct 16, 1992](https://web.archive.org/web/20260121223715/https://www.edizionieuropee.it/LAW/HTML/103/bz2_01_100.html)
     """
 
     country = "IT"
@@ -549,8 +550,10 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
         self._add_holiday_dec_30(tr("San Ruggero"))
 
     def _populate_subdiv_bz_public_holidays(self):
-        # Assumption Day.
-        self._add_assumption_of_mary_day(tr("Maria Santissima Assunta"))
+        # Province Law 36 of Oct 16, 1992.
+        if self._year >= 1993:
+            # Whit Monday.
+            self._add_whit_monday(tr("Lunedì di Pentecoste"))
 
     def _populate_subdiv_ca_public_holidays(self):
         # Saint Saturninus of Cagliari's Day.

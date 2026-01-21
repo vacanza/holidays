@@ -232,6 +232,21 @@ class TestItaly(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1949, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1949))
 
+    def test_bz_whit_monday(self):
+        name = "Lunedì di Pentecoste"
+        self.assertNoHolidayName(name)
+        self.assertSubdivBzHolidayName(
+            name,
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
+        )
+        self.assertSubdivBzHolidayName(name, range(1993, self.end_year))
+        self.assertNoSubdivBzHolidayName(name, range(self.start_year, 1993))
+
     def test_2022(self):
         self.assertHolidaysInYear(
             2022,
@@ -279,7 +294,7 @@ class TestItaly(CommonCountryTests, TestCase):
                 "2025-09-21": "San Riccardo di Andria",
                 "2025-12-30": "San Ruggero",
             },
-            "BZ": {"2025-08-15": "Maria Santissima Assunta"},
+            "BZ": {"2025-06-09": "Lunedì di Pentecoste"},
             "CA": {"2025-10-30": "San Saturnino di Cagliari"},
             "CB": {"2025-04-23": "San Giorgio"},
             "CE": {"2025-01-20": "San Sebastiano"},
@@ -445,6 +460,7 @@ class TestItaly(CommonCountryTests, TestCase):
             ("2025-06-01", "San Crescentino"),
             ("2025-06-02", "Festa della Repubblica"),
             ("2025-06-03", "Madonna della Lettera"),
+            ("2025-06-09", "Lunedì di Pentecoste"),
             ("2025-06-10", "San Massimo d'Aveia"),
             ("2025-06-13", "Sant'Antonio di Padova"),
             ("2025-06-17", "San Ranieri"),
@@ -547,6 +563,7 @@ class TestItaly(CommonCountryTests, TestCase):
             ("2025-06-01", "Saint Crescentinus's Day"),
             ("2025-06-02", "Republic Day"),
             ("2025-06-03", "Our Lady of the Letter"),
+            ("2025-06-09", "Whit Monday"),
             ("2025-06-10", "Saint Maximus of Aveia's Day"),
             ("2025-06-13", "Saint Anthony of Padua's Day"),
             ("2025-06-17", "Saint Ranieri's Day"),

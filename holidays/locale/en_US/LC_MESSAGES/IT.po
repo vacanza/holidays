@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.86\n"
+"Project-Id-Version: Holidays 0.90\n"
 "POT-Creation-Date: 2025-11-22 18:20+0200\n"
-"PO-Revision-Date: 2025-11-23 00:35+0200\n"
+"PO-Revision-Date: 2026-01-22 00:50+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -198,9 +198,9 @@ msgstr "Saint Richard of Andria's Day"
 msgid "San Ruggero"
 msgstr "Saint Roger's Day"
 
-#. Assumption Day.
-msgid "Maria Santissima Assunta"
-msgstr "Assumption Day"
+#. Whit Monday.
+msgid "Lunedì di Pentecoste"
+msgstr "Whit Monday"
 
 #. Saint Saturninus of Cagliari's Day.
 msgid "San Saturnino di Cagliari"
@@ -257,6 +257,10 @@ msgstr "Saint John's Day"
 #. Our Lady of the Seven Veils.
 msgid "Madonna dei Sette Veli"
 msgstr "Our Lady of the Seven Veils"
+
+#. Assumption Day.
+msgid "Maria Santissima Assunta"
+msgstr "Assumption Day"
 
 #. Saint Silverius's Day.
 msgid "San Silverio"
