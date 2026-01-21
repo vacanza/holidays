@@ -442,17 +442,16 @@ def main() -> None:
     if args.path:
         target_path = os.path.abspath(args.path)
         if os.path.isfile(target_path):
-            urls = find_hyperlinks_in_file(target_path)
-            if urls:
-                files_to_urls_data = {target_path: urls}
+            files_to_urls_data = {target_path: find_hyperlinks_in_file(target_path)}
         elif os.path.isdir(target_path):
             files_to_urls_data, _ = scan_directory_for_links(target_path, EXTENSIONS_TO_SCAN)
         else:
             print(f"Error: Path not found: {target_path}", file=sys.stderr)
             sys.exit(1)
     else:
-        directory = os.path.abspath(os.path.join(__file__, "..", "..", "holidays"))
-        files_to_urls_data, _ = scan_directory_for_links(directory, EXTENSIONS_TO_SCAN)
+        files_to_urls_data, _ = scan_directory_for_links(
+            os.path.abspath(os.path.join(__file__, "..", "..", "holidays")), EXTENSIONS_TO_SCAN
+        )
 
     if args.show_only:
         exit_code = run_show_only_mode(files_to_urls_data)
