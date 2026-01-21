@@ -780,7 +780,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-12-25", "Christmas"),
         )
         def test_l10n_mr(self):
-        self.assertLocalizedHolidays(
+            self.assertLocalizedHolidays(
             "mr",
             (
                 ("2024-02-19", "छत्रपती शिवाजी महाराज जयंती"),

@@ -1942,7 +1942,7 @@ code when available. The following financial markets are available:
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi, mr</td>
+<td><strong>en_IN</strong>, en_US, gu, hi</td>
 <td></td>
 </tr>
 <tr>

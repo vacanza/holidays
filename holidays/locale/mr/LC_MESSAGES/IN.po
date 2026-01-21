@@ -1,21 +1,30 @@
-#  python-holidays
-#  ---------------
+#  holidays
+#  --------
 #  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly.
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
 #
-#  Static release: https://github.com/vacanza/python-holidays
-#  Development: https://github.com/vacanza/python-holidays
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
 #
-#  Authors: vacanza team and contributors
-#  License: MIT; see LICENSE file in root directory.
+# India holidays mr localization.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.89\n"
-"PO-Revision-Date: 2026-01-19 20:15+0530\n"
-"Last-Translator:Kaushik RAj <https://github.com/kaushikraj1053-dotcom>\n"
+"POT-Creation-Date: 2026-01-18 11:41+0700\\nPO-Revision-Date: 2026-01-19 20:15+0530\n"
+"Last-Translator: Kaushik Raj <kaushikraj1053@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: mr\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Generator: Poedit 3.8\n"
+"X-Source-Language: en_IN\n"
 
 #. %s (estimated).
 #, c-format
@@ -44,7 +53,7 @@ msgstr "दिवाळी"
 
 #. Janmashtami.
 msgid "Janmashtami"
-msgstr ""जन्माष्टमी"
+msgstr "जन्माष्टमी"
 
 #. Dussehra.
 msgid "Dussehra"
@@ -140,7 +149,7 @@ msgstr "डॉ. बाबासाहेब आंबेडकर जयंत�
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
-msgstr ""
+msgstr "आंध्र प्रदेश स्थापना दिन"
 
 #. Ugadi.
 msgid "Ugadi"
@@ -152,7 +161,7 @@ msgstr "माघ बिहू"
 
 #. Assam Day.
 msgid "Assam Day"
-msgstr "आसाम दिन""
+msgstr "आसाम दिन"
 
 #. Chhath Puja.
 msgid "Chhath Puja"
@@ -188,7 +197,7 @@ msgstr "हरियाणा स्थापना दिन"
 
 #. Himachal Day.
 msgid "Himachal Day"
-msgstr ""हिमाचल दिन"
+msgstr "हिमाचल दिन"
 
 #. Jharkhand Formation Day.
 msgid "Jharkhand Formation Day"
