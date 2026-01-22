@@ -23,7 +23,7 @@ class Estonia(HolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * <https://et.wikipedia.org/wiki/Eesti_riigipühad>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Estonia>
-        * [Decree on State Holidays and on Amending the Labour Code of the Estonian SSR (09.10.1990)](https://www.riigiteataja.ee/akt/28395)
+        * [Decree on State Holidays and on Amending the Labour Code of the Estonian SSR (09.10.1990)](https://web.archive.org/web/20260117043713/https://www.riigiteataja.ee/akt/28395)
         * [Holidays and Anniversaries Act (08.02.1994)](https://web.archive.org/web/20250122175021/https://www.riigiteataja.ee/akt/29913)
         * [Public Holidays and Days of National Importance Act (27.01.1998, in force since 23.02.1998)](https://web.archive.org/web/20260108041502/https://www.riigiteataja.ee/akt/13276841)
         * [Act amending § 2 of the Holidays and Anniversaries Act
