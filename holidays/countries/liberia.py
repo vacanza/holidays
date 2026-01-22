@@ -18,7 +18,7 @@ class Liberia(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Liberia holidays.
 
     References:
-        * [Patriotic and Cultural Observances Law 1956](http://www.liberlii.org/lr/legis/codes/pacolt25lcolr654/)
+        * [Patriotic and Cultural Observances Law 1956](http://archive.today/2026.01.22-053103/http://www.liberlii.org/lr/legis/codes/pacolt25lcolr654/)
 
     Inauguration Day is celebrated on the first Monday of January in the year after the
     Presidential elections.

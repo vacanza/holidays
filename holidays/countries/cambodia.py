@@ -26,6 +26,8 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         * <https://web.archive.org/web/20250401111433/https://www.nbc.gov.kh/news_and_events/official_holiday.php>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Cambodia>
         * <https://web.archive.org/web/20250427180236/https://admin.taftac-cambodia.org/public/pdf_file/regulation_1704245695_Z7IALJjE.pdf>
+        * <http://archive.today/2026.01.22-052218/https://www.khmertimeskh.com/501424903/24-public-holidays-for-2024-peace-day-now-included/>
+        * <http://archive.today/2026.01.22-051938/https://www.khmertimeskh.com/501551204/govt-announces-22-public-holidays-for-next-year/>
 
     Checked with:
         * <https://web.archive.org/web/20250414071145/https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf>
@@ -270,8 +272,6 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # ទិវាសន្តិភាពនៅកម្ពុជា
         # Status: In-Use.
         # Dec 29, added from 2024 onwards.
-        #  - https://www.khmertimeskh.com/501424903/24-public-holidays-for-2024-peace-day-now-included/
-        #  - https://www.khmertimeskh.com/501551204/govt-announces-22-public-holidays-for-next-year/
 
         if self._year >= 2024:
             # Peace Day in Cambodia.
