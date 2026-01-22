@@ -1212,9 +1212,10 @@ class UnitedStates(
         else:
             self._add_observed(self._add_holiday_feb_22(name), rule=SUN_TO_NEXT_MON)
 
-        # American Citizenship Day
-        # Law No. 53 of Mar 4, 2000.
-        self._add_holiday_mar_2(tr("American Citizenship Day"))
+        # Established by Law No. 53 of Mar 4, 2000.
+        if self._year >= 2001:
+            # American Citizenship Day.
+            self._add_holiday_mar_2(tr("American Citizenship Day"))
 
         # Día de la Abolición de la Esclavitud.
 
