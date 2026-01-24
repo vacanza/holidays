@@ -144,7 +144,7 @@ msgid "Palm Sunday"
 msgstr "पाम संडे"
 
 #. Dr. B. R. Ambedkar Jayanti.
-msgid "Dr. B. R. Ambedkar's Jayanti"
+msgid "Dr. B. R. Ambedkar Jayanti"
 msgstr "डॉ. बाबासाहेब आंबेडकर जयंती"
 
 #. Andhra Pradesh Foundation Day.

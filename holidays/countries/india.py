@@ -403,7 +403,7 @@ class India(
         self._add_holiday_feb_19(tr("Chhatrapati Shivaji Maharaj Jayanti"))
 
         # Dr. B. R. Ambedkar Jayanti.
-        self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
+        self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar Jayanti"))
 
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
