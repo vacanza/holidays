@@ -317,7 +317,7 @@ import holidays
 from holidays.constants import SCHOOL
 
 # Flemish Community school holidays
-be_flemish_schools = holidays.Belgium(subdiv="VLG", categories=SCHOOL, years=2025)
+be_flemish_schools = holidays.Belgium(subdiv="VLG", categories=SCHOOL, years=2026)
 for date, name in sorted(be_flemish_schools.items()):
     print(date, name)
 ```
@@ -330,7 +330,7 @@ Get unofficial holidays in the United States:
 import holidays
 from holidays.constants import UNOFFICIAL
 
-us_unofficial = holidays.UnitedStates(categories=UNOFFICIAL, years=2024)
+us_unofficial = holidays.UnitedStates(categories=UNOFFICIAL, years=2022)
 for date, name in sorted(us_unofficial.items()):
     print(f"{date}: {name}")
 ```
