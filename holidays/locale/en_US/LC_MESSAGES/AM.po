@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.42\n"
+"Project-Id-Version: Holidays 0.90\n"
 "POT-Creation-Date: 2023-02-15 20:06-0800\n"
-"PO-Revision-Date: 2024-01-23 20:51+0200\n"
+"PO-Revision-Date: 2026-01-23 18:05+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -31,17 +31,21 @@ msgstr ""
 msgid "Նոր տարվա օր"
 msgstr "New Year's Day"
 
-#. Christmas. Epiphany Day.
+#. Christmas and Epiphany.
 msgid "Սուրբ Ծնունդ եւ Հայտնություն"
-msgstr "Christmas and Epiphany Day"
+msgstr "Christmas and Epiphany"
 
-#. Christmas Eve.
-msgid "Սուրբ Ծննդյան տոներ"
+#. Christmas Holidays.
+msgid "նախածննդյան տոներ"
 msgstr "Christmas Holidays"
 
-#. The Day of Remembrance of the Dead.
+#. Day of Remembrance of the Dead.
 msgid "Մեռելոց հիշատակի օր"
-msgstr "Memorial Day"
+msgstr "Day of Remembrance of the Dead"
+
+#. Day of Remembrance for the Fallen Defenders of the Fatherland.
+msgid "Հայրենիքի պաշտպանության համար զոհվածների հիշատակի օր"
+msgstr "Day of Remembrance for the Fallen Defenders of the Fatherland"
 
 #. Army Day.
 msgid "Բանակի օր"
@@ -51,13 +55,21 @@ msgstr "Army Day"
 msgid "Կանանց տոն"
 msgstr "Women's Day"
 
+#. International Women's Day.
+msgid "Կանանց միջազգային օր"
+msgstr "International Women's Day"
+
 #. Motherhood and Beauty Day.
 msgid "Մայրության և գեղեցկության տոն"
-msgstr "A Holiday of Motherhood and Beauty"
+msgstr "Motherhood and Beauty Day"
 
-#. Armenian Genocide Remembrance Day.
-msgid "Եղեռնի զոհերի հիշատակի օր"
-msgstr "Genocide Memorial Day"
+#. Day of Remembrance of the Victims of Armenian Genocide.
+msgid "Հայոց ցեղասպանության զոհերի հիշատակի օր"
+msgstr "Day of Remembrance of the Victims of Armenian Genocide"
+
+#. Day of Remembrance of the Victims of Genocide.
+msgid "Ցեղասպանության զոհերի հիշատակի օր"
+msgstr "Day of Remembrance of the Victims of Genocide"
 
 #. Labor Day.
 msgid "Աշխատանքի օր"
@@ -86,3 +98,117 @@ msgstr "Independence Day"
 #. New Year's Eve.
 msgid "Նոր տարվա գիշեր"
 msgstr "New Year's Eve"
+
+#. Mother Language Day.
+msgid "Մայրենի լեզվի օր"
+msgstr "Mother Language Day"
+
+#. Saint Vardanants' Day.
+msgid "Սուրբ Վարդանանց տոն"
+msgstr "Saint Vardanants' Day"
+
+#. Day of Remembrance of the Victims of the Massacres Organized in the Azerbaijan SSR and the
+#. Protection of the Rights of the Deported Armenian Population.
+msgid ""
+"Ադրբեջանական ԽՍՀ-ում կազմակերպված ջարդերի զոհերի հիշատակի եւ բռնագաղթված հայ բնակչության "
+"իրավունքների պաշտպանության օր"
+msgstr ""
+"Day of Remembrance of the Victims of the Massacres Organized in the Azerbaijan SSR and the "
+"Protection of the Rights of the Deported Armenian Population"
+
+#. Motherhood, Beauty and Love Day.
+msgid "Մայրության, գեղեցկության եւ սիրո տոն"
+msgstr "Motherhood, Beauty and Love Day"
+
+#. Armenian Cinema Day.
+msgid "Հայ կինոյի օր"
+msgstr "Armenian Cinema Day"
+
+#. Taxpayer Day.
+msgid "Հարկ վճարողի օր"
+msgstr "Taxpayer Day"
+
+#. Citizen of the Republic of Armenia Day.
+msgid "Հայաստանի Հանրապետության քաղաքացու օր"
+msgstr "Citizen of the Republic of Armenia Day"
+
+#. Defender's Day.
+msgid "Երկրապահի օր"
+msgstr "Defender's Day"
+
+#. Family Day.
+msgid "Ընտանիքի օր"
+msgstr "Family Day"
+
+#. Students and Youth Day.
+msgid "Ուսանողների եւ երիտասարդների օր"
+msgstr "Students and Youth Day"
+
+#. Children's Rights Protection Day.
+msgid "Երեխաների իրավունքների պաշտպանության օր"
+msgstr "Children's Rights Protection Day"
+
+#. Day of Remembrance of the Repressed.
+msgid "Բռնադատվածների հիշատակի օր"
+msgstr "Day of Remembrance of the Repressed"
+
+#. Father's Day.
+msgid "Հայրերի օր"
+msgstr "Father's Day"
+
+#. Feast of Holy Etchmiadzin.
+msgid "Սուրբ Էջմիածնի տոն"
+msgstr "Feast of Holy Etchmiadzin"
+
+#. State Symbols' Day.
+msgid "Պետական խորհրդանիշների օր"
+msgstr "State Symbols' Day"
+
+#. Day of Remembrance of the Victims of the Sinjar Yazidi Genocide of 2014.
+msgid "2014 թվականի՝ Սինջարի եզդիների ցեղասպանության զոհերի հիշատակի օր"
+msgstr "Day of Remembrance of the Victims of the Sinjar Yazidi Genocide of 2014"
+
+#. Knowledge and Literacy Day.
+msgid "Գիտելիքի եւ դպրության օր"
+msgstr "Knowledge and Literacy Day"
+
+#. Knowledge, Writing and Literacy Day.
+msgid "Գիտելիքի, գրի եւ դպրության օր"
+msgstr "Knowledge, Writing and Literacy Day"
+
+#. Day of National Minorities of the Republic of Armenia.
+msgid "Հայաստանի Հանրապետության ազգային փոքրամասնությունների օր"
+msgstr "Day of National Minorities of the Republic of Armenia"
+
+#. Teacher's Day.
+msgid "Ուսուցչի օր"
+msgstr "Teacher's Day"
+
+#. Translators' Day.
+msgid "Թարգմանչաց տոն"
+msgstr "Translators' Day"
+
+#. Local Self-Government Day.
+msgid "Տեղական ինքնակառավարման օր"
+msgstr "Local Self-Government Day"
+
+#. Earthquake Victims Remembrance Day and Disaster Resilience Day.
+msgid "Երկրաշարժի զոհերի հիշատակի եւ աղետներին դիմակայունության օր"
+msgstr "Earthquake Victims Remembrance Day and Disaster Resilience Day"
+
+#. Earthquake Victims Remembrance Day.
+msgid "Երկրաշարժի զոհերի հիշատակի օր"
+msgstr "Earthquake Victims Remembrance Day"
+
+#. Day of the Condemnation and Prevention of Genocides.
+msgid "Ցեղասպանությունների դատապարտման եւ կանխարգելման օր"
+msgstr "Day of the Condemnation and Prevention of Genocides"
+
+#. Substituted date format.
+msgid "%d.%m.%Y"
+msgstr "%m/%d/%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Հանգստյան օր (հետաձգվել է %s թվականից)"
+msgstr "Day off (substituted from %s)"

@@ -220,9 +220,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Armenia</td>
 <td>AM</td>
-<td></td>
+<td>Regions: AG (Aragac̣otn), AR (Ararat), AV (Armavir), ER (Erevan), GR (Geġark'unik'), KT (Kotayk'), LO (Loṙi), SH (Širak), SU (Syunik'), TV (Tavuš), VD (Vayoć Jor)</td>
 <td>en_US, <strong>hy</strong></td>
-<td></td>
+<td>WORKDAY</td>
 </tr>
 <tr>
 <td>Aruba</td>
