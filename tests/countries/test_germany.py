@@ -356,6 +356,249 @@ class TestGermany(CommonCountryTests, TestCase):
             ("2022-12-26", "Zweiter Weihnachtstag"),
         )
 
+
+class TestGermanySaarlandSchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_christmas_cross_year(self):
+        # 2025 Christmas range spans 2025->2026. Ensure per-year population.
+        h_2025 = Germany(years=2025, subdiv="SL", categories=("school",))
+        self.assertIn("2025-12-22", h_2025)
+        self.assertEqual(h_2025["2025-12-22"], "Weihnachtsferien")
+
+        h_2026 = Germany(years=2026, subdiv="SL", categories=("school",))
+        self.assertIn("2026-01-01", h_2026)
+        self.assertEqual(h_2026["2026-01-01"], "Weihnachtsferien")
+        self.assertNotIn("2025-12-22", h_2026)
+
+    def test_key_2026_ranges(self):
+        h = Germany(years=2026, subdiv="SL", categories=("school",))
+        self.assertIn("2026-02-16", h)
+        self.assertEqual(h["2026-02-16"], "Fastnachtsferien")
+        self.assertIn("2026-04-07", h)
+        self.assertEqual(h["2026-04-07"], "Osterferien")
+        self.assertIn("2026-06-29", h)
+        self.assertEqual(h["2026-06-29"], "Sommerferien")
+        self.assertIn("2026-08-07", h)
+        self.assertEqual(h["2026-08-07"], "Sommerferien")
+        self.assertIn("2026-10-05", h)
+        self.assertEqual(h["2026-10-05"], "Herbstferien")
+
+    def test_2029_and_2030_ranges(self):
+        h_2029 = Germany(years=2029, subdiv="SL", categories=("school",))
+        self.assertIn("2029-05-22", h_2029)
+        self.assertEqual(h_2029["2029-05-22"], "Pfingstferien")
+        self.assertIn("2029-07-16", h_2029)
+        self.assertEqual(h_2029["2029-07-16"], "Sommerferien")
+        self.assertIn("2029-12-21", h_2029)
+        self.assertEqual(h_2029["2029-12-21"], "Weihnachtsferien")
+
+        h_2030 = Germany(years=2030, subdiv="SL", categories=("school",))
+        self.assertIn("2030-01-01", h_2030)
+        self.assertEqual(h_2030["2030-01-01"], "Weihnachtsferien")
+        self.assertIn("2030-02-25", h_2030)
+        self.assertEqual(h_2030["2030-02-25"], "Fastnachtsferien")
+        self.assertIn("2030-07-22", h_2030)
+        self.assertEqual(h_2030["2030-07-22"], "Sommerferien")
+
+
+class TestGermanyThuringiaSchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_christmas_cross_year(self):
+        # 2025 Christmas range spans 2025->2026. Ensure per-year population.
+        h_2025 = Germany(years=2025, subdiv="TH", categories=("school",))
+        self.assertIn("2025-12-22", h_2025)
+        self.assertEqual(h_2025["2025-12-22"], "Weihnachtsferien")
+
+        h_2026 = Germany(years=2026, subdiv="TH", categories=("school",))
+        self.assertIn("2026-01-01", h_2026)
+        self.assertEqual(h_2026["2026-01-01"], "Weihnachtsferien")
+        self.assertNotIn("2025-12-22", h_2026)
+
+    def test_key_2026_ranges(self):
+        h = Germany(years=2026, subdiv="TH", categories=("school",))
+        self.assertIn("2026-02-16", h)
+        self.assertEqual(h["2026-02-16"], "Winterferien")
+        self.assertIn("2026-04-07", h)
+        self.assertEqual(h["2026-04-07"], "Osterferien")
+        self.assertIn("2026-05-15", h)
+        self.assertEqual(h["2026-05-15"], "Schulfreier Tag")
+        self.assertIn("2026-07-04", h)
+        self.assertEqual(h["2026-07-04"], "Sommerferien")
+
+    def test_2027_and_2030_ranges(self):
+        h_2027 = Germany(years=2027, subdiv="TH", categories=("school",))
+        self.assertIn("2027-02-01", h_2027)
+        self.assertEqual(h_2027["2027-02-01"], "Winterferien")
+        self.assertIn("2027-07-10", h_2027)
+        self.assertEqual(h_2027["2027-07-10"], "Sommerferien")
+
+        h_2030 = Germany(years=2030, subdiv="TH", categories=("school",))
+        self.assertIn("2030-01-01", h_2030)
+        self.assertEqual(h_2030["2030-01-01"], "Weihnachtsferien")
+        self.assertIn("2030-05-31", h_2030)
+        self.assertEqual(h_2030["2030-05-31"], "Schulfreier Tag")
+
+
+class TestGermanySchleswigHolsteinSchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_christmas_cross_year(self):
+        h_2025 = Germany(years=2025, subdiv="SH", categories=("school",))
+        self.assertIn("2025-12-19", h_2025)
+        self.assertEqual(h_2025["2025-12-19"], "Weihnachtsferien")
+
+        h_2026 = Germany(years=2026, subdiv="SH", categories=("school",))
+        self.assertIn("2026-01-01", h_2026)
+        self.assertEqual(h_2026["2026-01-01"], "Weihnachtsferien")
+        self.assertNotIn("2025-12-19", h_2026)
+
+    def test_key_2026_ranges(self):
+        h = Germany(years=2026, subdiv="SH", categories=("school",))
+        self.assertIn("2026-03-26", h)
+        self.assertEqual(h["2026-03-26"], "Osterferien")
+        self.assertIn("2026-05-15", h)
+        self.assertEqual(h["2026-05-15"], "Himmelfahrt")
+        self.assertIn("2026-07-04", h)
+        self.assertEqual(h["2026-07-04"], "Sommerferien")
+
+    def test_2028_and_2030_ranges(self):
+        h_2028 = Germany(years=2028, subdiv="SH", categories=("school",))
+        self.assertIn("2028-06-24", h_2028)
+        self.assertEqual(h_2028["2028-06-24"], "Sommerferien")
+
+        h_2030 = Germany(years=2030, subdiv="SH", categories=("school",))
+        self.assertIn("2030-07-08", h_2030)
+        self.assertEqual(h_2030["2030-07-08"], "Sommerferien")
+        self.assertIn("2030-05-31", h_2030)
+        self.assertEqual(h_2030["2030-05-31"], "Himmelfahrt")
+
+
+class TestGermanySaxonySchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_christmas_cross_year(self):
+        h_2025 = Germany(years=2025, subdiv="SN", categories=("school",))
+        self.assertIn("2025-12-22", h_2025)
+        self.assertEqual(h_2025["2025-12-22"], "Weihnachtsferien")
+
+        h_2026 = Germany(years=2026, subdiv="SN", categories=("school",))
+        self.assertIn("2026-01-01", h_2026)
+        self.assertEqual(h_2026["2026-01-01"], "Weihnachtsferien")
+        self.assertNotIn("2025-12-22", h_2026)
+
+    def test_key_2026_ranges(self):
+        h = Germany(years=2026, subdiv="SN", categories=("school",))
+        self.assertIn("2026-02-09", h)
+        self.assertEqual(h["2026-02-09"], "Winterferien")
+        self.assertIn("2026-04-03", h)
+        self.assertEqual(h["2026-04-03"], "Osterferien")
+        self.assertIn("2026-07-04", h)
+        self.assertEqual(h["2026-07-04"], "Sommerferien")
+        self.assertIn("2026-05-15", h)
+        self.assertEqual(h["2026-05-15"], "Unterrichtsfreier Tag")
+
+    def test_2027_and_2029_ranges(self):
+        h_2027 = Germany(years=2027, subdiv="SN", categories=("school",))
+        self.assertIn("2027-05-15", h_2027)
+        self.assertEqual(h_2027["2027-05-15"], "Pfingstferien")
+        self.assertIn("2027-07-10", h_2027)
+        self.assertEqual(h_2027["2027-07-10"], "Sommerferien")
+
+        h_2029 = Germany(years=2029, subdiv="SN", categories=("school",))
+        self.assertIn("2029-03-29", h_2029)
+        self.assertEqual(h_2029["2029-03-29"], "Osterferien")
+        self.assertIn("2029-07-21", h_2029)
+        self.assertEqual(h_2029["2029-07-21"], "Sommerferien")
+
+
+class TestGermanySaxonyAnhaltSchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_christmas_cross_year(self):
+        h_2025 = Germany(years=2025, subdiv="ST", categories=("school",))
+        self.assertIn("2025-12-22", h_2025)
+        self.assertEqual(h_2025["2025-12-22"], "Weihnachtsferien")
+
+        h_2026 = Germany(years=2026, subdiv="ST", categories=("school",))
+        self.assertIn("2026-01-01", h_2026)
+        self.assertEqual(h_2026["2026-01-01"], "Weihnachtsferien")
+        self.assertNotIn("2025-12-22", h_2026)
+
+    def test_key_2026_ranges(self):
+        h = Germany(years=2026, subdiv="ST", categories=("school",))
+        self.assertIn("2026-01-31", h)
+        self.assertEqual(h["2026-01-31"], "Winterferien")
+        self.assertIn("2026-03-30", h)
+        self.assertEqual(h["2026-03-30"], "Osterferien")
+        self.assertIn("2026-05-26", h)
+        self.assertEqual(h["2026-05-26"], "Pfingstferien")
+        self.assertIn("2026-07-04", h)
+        self.assertEqual(h["2026-07-04"], "Sommerferien")
+
+    def test_2028_and_2029_ranges(self):
+        h_2028 = Germany(years=2028, subdiv="ST", categories=("school",))
+        self.assertIn("2028-06-03", h_2028)
+        self.assertEqual(h_2028["2028-06-03"], "Pfingstferien")
+        self.assertIn("2028-10-02", h_2028)
+        self.assertEqual(h_2028["2028-10-02"], "Beweglicher Ferientag")
+
+        h_2029 = Germany(years=2029, subdiv="ST", categories=("school",))
+        self.assertIn("2029-04-30", h_2029)
+        self.assertEqual(h_2029["2029-04-30"], "Beweglicher Ferientag")
+        self.assertIn("2029-05-11", h_2029)
+        self.assertEqual(h_2029["2029-05-11"], "Pfingstferien")
+
+
+class TestGermanyHamburgSchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_christmas_cross_year(self):
+        # 2025 Christmas range spans 2025->2026. Ensure per-year population.
+        h_2025 = Germany(years=2025, subdiv="HH", categories=("school",))
+        self.assertIn("2025-12-17", h_2025)
+        self.assertEqual(h_2025["2025-12-17"], "Weihnachtsferien")
+
+        h_2026 = Germany(years=2026, subdiv="HH", categories=("school",))
+        # 2026 object should include 2026-01-01 but not 2025-12-17
+        self.assertIn("2026-01-01", h_2026)
+        self.assertEqual(h_2026["2026-01-01"], "Weihnachtsferien")
+        self.assertNotIn("2025-12-17", h_2026)
+
+    def test_halfyear_and_spring_2026(self):
+        h = Germany(years=2026, subdiv="HH", categories=("school",))
+        self.assertIn("2026-01-30", h)
+        self.assertEqual(h["2026-01-30"], "Halbjahrespause")
+        self.assertIn("2026-03-02", h)
+        self.assertEqual(h["2026-03-02"], "Frühjahrsferien")
+
+    def test_himmelfahrt_pfingsten_and_summer_2026(self):
+        h = Germany(years=2026, subdiv="HH", categories=("school",))
+        self.assertIn("2026-05-11", h)
+        self.assertEqual(h["2026-05-11"], "Himmelfahrt/Pfingsten")
+        self.assertIn("2026-07-09", h)
+        self.assertEqual(h["2026-07-09"], "Sommerferien")
+        self.assertIn("2026-08-19", h)
+        self.assertEqual(h["2026-08-19"], "Sommerferien")
+
+    def test_default_categories_excludes_school(self):
+        # If no categories specified, school category should not be present.
+        h = Germany(years=2026, subdiv="HH")
+        self.assertNotIn("2026-07-09", h)
+
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
@@ -430,3 +673,382 @@ class TestGermany(CommonCountryTests, TestCase):
             ("2022-12-25", "Перший день Різдва"),
             ("2022-12-26", "Другий день Різдва"),
         )
+
+
+class TestGermanyBadenWuerttembergSchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_summer_and_christmas_2025(self):
+        h = Germany(years=2025, subdiv="BW", categories=("school",))
+        self.assertIn("2025-07-31", h)
+        self.assertEqual(h["2025-07-31"], "Sommerferien")
+        self.assertIn("2025-12-22", h)
+        self.assertEqual(h["2025-12-22"], "Weihnachtsferien")
+
+    def test_2026_ranges(self):
+        h = Germany(years=2026, subdiv="BW", categories=("school",))
+        self.assertIn("2026-03-30", h)
+        self.assertEqual(h["2026-03-30"], "Osterferien")
+        self.assertIn("2026-05-26", h)
+        self.assertEqual(h["2026-05-26"], "Pfingstferien")
+
+
+class TestGermanyBayernSchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_christmas_2025_2026(self):
+        h1 = Germany(years=2025, subdiv="BY", categories=("school",))
+        self.assertIn("2025-12-22", h1)
+        self.assertEqual(h1["2025-12-22"], "Weihnachtsferien")
+
+        h2 = Germany(years=2026, subdiv="BY", categories=("school",))
+        self.assertIn("2026-01-05", h2)
+        self.assertEqual(h2["2026-01-05"], "Weihnachtsferien")
+
+    def test_spring_and_summer_2026(self):
+        h = Germany(years=2026, subdiv="BY", categories=("school",))
+        self.assertIn("2026-02-16", h)
+        self.assertEqual(h["2026-02-16"], "Frühjahrsferien")
+        self.assertIn("2026-08-03", h)
+        self.assertEqual(h["2026-08-03"], "Sommerferien")
+
+
+class TestGermanyBerlinSchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_christmas_and_winter_2025_2026(self):
+        h = Germany(years=2025, subdiv="BE", categories=("school",))
+        self.assertIn("2025-12-22", h)
+        self.assertEqual(h["2025-12-22"], "Weihnachtsferien")
+
+
+class TestGermanyBrandenburgSchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_christmas_cross_year_2025_2026(self):
+        g25 = Germany(years=2025, subdiv="BB", categories=("school",))
+        self.assertIn("2025-12-22", g25)
+        self.assertEqual(g25["2025-12-22"], "Weihnachtsferien")
+
+        g26 = Germany(years=2026, subdiv="BB", categories=("school",))
+        # 2026 object should include the 2026 portion of Christmas but not 2025-12-22
+        self.assertIn("2026-01-01", g26)
+        self.assertEqual(g26["2026-01-01"], "Weihnachtsferien")
+        self.assertNotIn("2025-12-22", g26)
+
+    def test_spring_and_pfingsten_2026(self):
+        g = Germany(years=2026, subdiv="BB", categories=("school",))
+        self.assertIn("2026-02-02", g)
+        self.assertEqual(g["2026-02-02"], "Winterferien")
+        self.assertIn("2026-03-30", g)
+        self.assertEqual(g["2026-03-30"], "Osterferien")
+        self.assertIn("2026-05-26", g)
+        self.assertEqual(g["2026-05-26"], "Pfingsten")
+        # Variable days
+        self.assertIn("2026-05-13", g)
+        self.assertIn("2026-05-15", g)
+        self.assertIn("2026-05-18", g)
+
+    def test_summer_and_autumn_2026(self):
+        g = Germany(years=2026, subdiv="BB", categories=("school",))
+        self.assertIn("2026-07-09", g)
+        self.assertEqual(g["2026-07-09"], "Sommerferien")
+        self.assertIn("2026-10-19", g)
+        self.assertEqual(g["2026-10-19"], "Herbstferien")
+
+    def test_variable_days_2028_2029(self):
+        g28 = Germany(years=2028, subdiv="BB", categories=("school",))
+        self.assertIn("2028-05-26", g28)
+        self.assertIn("2028-10-30", g28)
+
+        g29 = Germany(years=2029, subdiv="BB", categories=("school",))
+        self.assertIn("2029-04-30", g29)
+        self.assertIn("2029-05-11", g29)
+        self.assertIn("2029-05-22", g29)
+
+
+class TestGermanyBremenSchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_christmas_cross_year_2025_2026(self):
+        b25 = Germany(years=2025, subdiv="HB", categories=("school",))
+        self.assertIn("2025-12-22", b25)
+        self.assertEqual(b25["2025-12-22"], "Weihnachtsferien")
+
+        b26 = Germany(years=2026, subdiv="HB", categories=("school",))
+        self.assertIn("2026-01-01", b26)
+        self.assertEqual(b26["2026-01-01"], "Weihnachtsferien")
+        self.assertNotIn("2025-12-22", b26)
+
+    def test_halfyear_and_easter_2026(self):
+        b = Germany(years=2026, subdiv="HB", categories=("school",))
+        self.assertIn("2026-02-02", b)
+        self.assertEqual(b["2026-02-02"], "Halbjahresferien")
+        self.assertIn("2026-03-23", b)
+        self.assertEqual(b["2026-03-23"], "Osterferien")
+
+    def test_himmelfahrt_pfingsten_and_summer_2026(self):
+        b = Germany(years=2026, subdiv="HB", categories=("school",))
+        self.assertIn("2026-05-15", b)
+        self.assertEqual(b["2026-05-15"], "Tag nach Himmelfahrt")
+        self.assertIn("2026-05-26", b)
+        self.assertEqual(b["2026-05-26"], "Pfingsten")
+        self.assertIn("2026-07-02", b)
+        self.assertEqual(b["2026-07-02"], "Sommerferien")
+
+    def test_autumn_and_christmas_2026_2027(self):
+        b = Germany(years=2026, subdiv="HB", categories=("school",))
+        self.assertIn("2026-10-12", b)
+        self.assertEqual(b["2026-10-12"], "Herbstferien")
+
+        b27 = Germany(years=2027, subdiv="HB", categories=("school",))
+        self.assertIn("2027-01-01", b27)
+        self.assertIn("2027-12-23", b27)
+
+    def test_special_days_2028_2029(self):
+        b28 = Germany(years=2028, subdiv="HB", categories=("school",))
+        self.assertIn("2028-10-02", b28)
+        self.assertEqual(b28["2028-10-02"], "Tag vor dem 03. Oktober")
+
+        b29 = Germany(years=2029, subdiv="HB", categories=("school",))
+        self.assertIn("2029-04-30", b29)
+        self.assertIn("2029-10-04", b29)
+
+    def test_summer_2030(self):
+        b30 = Germany(years=2030, subdiv="HB", categories=("school",))
+        self.assertIn("2030-07-11", b30)
+        self.assertEqual(b30["2030-07-11"], "Sommerferien")
+
+
+class TestGermanyHessenSchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_christmas_cross_year_2025_2026(self):
+        h25 = Germany(years=2025, subdiv="HE", categories=("school",))
+        self.assertIn("2025-12-22", h25)
+        self.assertEqual(h25["2025-12-22"], "Weihnachtsferien")
+
+        h26 = Germany(years=2026, subdiv="HE", categories=("school",))
+        self.assertIn("2026-01-01", h26)
+        self.assertEqual(h26["2026-01-01"], "Weihnachtsferien")
+        self.assertNotIn("2025-12-22", h26)
+
+    def test_easter_and_summer_2026(self):
+        h = Germany(years=2026, subdiv="HE", categories=("school",))
+        self.assertIn("2026-03-30", h)
+        self.assertEqual(h["2026-03-30"], "Osterferien")
+        self.assertIn("2026-06-29", h)
+        self.assertEqual(h["2026-06-29"], "Sommerferien")
+
+    def test_autumn_and_christmas_2026_2027(self):
+        h = Germany(years=2026, subdiv="HE", categories=("school",))
+        self.assertIn("2026-10-05", h)
+        self.assertEqual(h["2026-10-05"], "Herbstferien")
+
+        h27 = Germany(years=2027, subdiv="HE", categories=("school",))
+        self.assertIn("2027-12-23", h27)
+        self.assertEqual(h27["2027-12-23"], "Weihnachtsferien")
+
+    def test_ranges_through_2030(self):
+        h28 = Germany(years=2028, subdiv="HE", categories=("school",))
+        self.assertIn("2028-07-03", h28)
+        self.assertIn("2028-10-09", h28)
+
+        h29 = Germany(years=2029, subdiv="HE", categories=("school",))
+        self.assertIn("2029-07-16", h29)
+        self.assertIn("2029-10-15", h29)
+
+        h30 = Germany(years=2030, subdiv="HE", categories=("school",))
+        self.assertIn("2030-07-22", h30)
+
+
+class TestGermanyMecklenburgVorpommernSchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_christmas_cross_year_2025_2026(self):
+        m25 = Germany(years=2025, subdiv="MV", categories=("school",))
+        self.assertIn("2025-12-20", m25)
+        self.assertEqual(m25["2025-12-20"], "Weihnachtsferien")
+
+        m26 = Germany(years=2026, subdiv="MV", categories=("school",))
+        self.assertIn("2026-01-01", m26)
+        self.assertEqual(m26["2026-01-01"], "Weihnachtsferien")
+        self.assertNotIn("2025-12-20", m26)
+
+    def test_winter_easter_pfingsten_2026(self):
+        m = Germany(years=2026, subdiv="MV", categories=("school",))
+        self.assertIn("2026-02-09", m)
+        self.assertEqual(m["2026-02-09"], "Winterferien")
+        self.assertIn("2026-03-30", m)
+        self.assertEqual(m["2026-03-30"], "Osterferien")
+        self.assertIn("2026-05-22", m)
+        self.assertEqual(m["2026-05-22"], "Pfingstferien")
+        self.assertIn("2026-05-15", m)
+
+    def test_summer_and_autumn_2026(self):
+        m = Germany(years=2026, subdiv="MV", categories=("school",))
+        self.assertIn("2026-07-13", m)
+        self.assertEqual(m["2026-07-13"], "Sommerferien")
+        self.assertIn("2026-10-15", m)
+        self.assertEqual(m["2026-10-15"], "Herbstferien")
+
+    def test_variable_and_special_days_2027_2029(self):
+        m27 = Germany(years=2027, subdiv="MV", categories=("school",))
+        self.assertIn("2027-05-07", m27)
+        self.assertIn("2027-07-05", m27)
+
+        m29 = Germany(years=2029, subdiv="MV", categories=("school",))
+        self.assertIn("2029-03-09", m29)
+        self.assertIn("2029-04-30", m29)
+        self.assertIn("2029-05-11", m29)
+        self.assertIn("2029-06-18", m29)
+
+    def test_ranges_through_2030(self):
+        m30 = Germany(years=2030, subdiv="MV", categories=("school",))
+        self.assertIn("2030-04-17", m30)
+        self.assertIn("2030-07-01", m30)
+
+
+class TestGermanyNiedersachsenSchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_christmas_cross_year_2025_2026(self):
+        n25 = Germany(years=2025, subdiv="NI", categories=("school",))
+        self.assertIn("2025-12-22", n25)
+        self.assertEqual(n25["2025-12-22"], "Weihnachtsferien")
+
+        n26 = Germany(years=2026, subdiv="NI", categories=("school",))
+        self.assertIn("2026-01-01", n26)
+        self.assertEqual(n26["2026-01-01"], "Weihnachtsferien")
+        self.assertNotIn("2025-12-22", n26)
+
+    def test_halfyear_and_easter_2026(self):
+        n = Germany(years=2026, subdiv="NI", categories=("school",))
+        self.assertIn("2026-02-02", n)
+        self.assertEqual(n["2026-02-02"], "Halbjahresferien")
+        self.assertIn("2026-03-23", n)
+        self.assertEqual(n["2026-03-23"], "Osterferien")
+
+    def test_may_and_pfingsten_2026(self):
+        n = Germany(years=2026, subdiv="NI", categories=("school",))
+        self.assertIn("2026-05-15", n)
+        self.assertIn("2026-05-26", n)
+
+    def test_summer_and_autumn_2026(self):
+        n = Germany(years=2026, subdiv="NI", categories=("school",))
+        self.assertIn("2026-07-02", n)
+        self.assertIn("2026-10-12", n)
+
+    def test_ranges_through_2030(self):
+        n27 = Germany(years=2027, subdiv="NI", categories=("school",))
+        self.assertIn("2027-07-08", n27)
+        self.assertIn("2027-10-16", n27)
+
+        n29 = Germany(years=2029, subdiv="NI", categories=("school",))
+        self.assertIn("2029-07-19", n29)
+        self.assertIn("2029-10-04", n29)
+
+        n30 = Germany(years=2030, subdiv="NI", categories=("school",))
+        self.assertIn("2030-07-11", n30)
+
+
+class TestGermanyNordrheinWestfalenSchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_christmas_cross_year_2025_2026(self):
+        w25 = Germany(years=2025, subdiv="NW", categories=("school",))
+        self.assertIn("2025-12-22", w25)
+        self.assertEqual(w25["2025-12-22"], "Weihnachtsferien")
+
+        w26 = Germany(years=2026, subdiv="NW", categories=("school",))
+        self.assertIn("2026-01-01", w26)
+        self.assertEqual(w26["2026-01-01"], "Weihnachtsferien")
+        self.assertNotIn("2025-12-22", w26)
+
+    def test_summer_2026(self):
+        w = Germany(years=2026, subdiv="NW", categories=("school",))
+        self.assertIn("2026-07-20", w)
+        self.assertIn("2026-09-01", w)
+
+    def test_autumn_2026(self):
+        w = Germany(years=2026, subdiv="NW", categories=("school",))
+        self.assertIn("2026-10-17", w)
+        self.assertIn("2026-10-31", w)
+
+    def test_oster_and_pfingsten_2027(self):
+        w27 = Germany(years=2027, subdiv="NW", categories=("school",))
+        self.assertIn("2027-03-22", w27)
+        self.assertIn("2027-05-18", w27)
+
+    def test_ranges_through_2030(self):
+        w29 = Germany(years=2029, subdiv="NW", categories=("school",))
+        self.assertIn("2029-03-26", w29)
+        self.assertIn("2029-07-02", w29)
+        self.assertIn("2029-10-15", w29)
+
+        w30 = Germany(years=2030, subdiv="NW", categories=("school",))
+        self.assertIn("2030-04-15", w30)
+
+
+class TestGermanyRheinlandPfalzSchoolHolidays(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Germany, with_subdiv_categories=True)
+
+    def test_summer_and_christmas_2025(self):
+        r25 = Germany(years=2025, subdiv="RP", categories=("school",))
+        self.assertIn("2025-07-07", r25)
+        self.assertEqual(r25["2025-07-07"], "Sommerferien")
+        self.assertIn("2025-12-22", r25)
+        self.assertEqual(r25["2025-12-22"], "Weihnachtsferien")
+
+    def test_2026_ranges(self):
+        r26 = Germany(years=2026, subdiv="RP", categories=("school",))
+        self.assertIn("2026-03-30", r26)
+        self.assertEqual(r26["2026-03-30"], "Osterferien")
+        self.assertIn("2026-06-29", r26)
+        self.assertEqual(r26["2026-06-29"], "Sommerferien")
+
+    def test_cross_year_christmas(self):
+        r26 = Germany(years=2026, subdiv="RP", categories=("school",))
+        self.assertIn("2026-01-01", r26)
+        self.assertEqual(r26["2026-01-01"], "Weihnachtsferien")
+        self.assertNotIn("2025-12-22", r26)
+
+    def test_ranges_through_2030(self):
+        r29 = Germany(years=2029, subdiv="RP", categories=("school",))
+        self.assertIn("2029-07-16", r29)
+        self.assertIn("2029-10-22", r29)
+
+        r30 = Germany(years=2030, subdiv="RP", categories=("school",))
+        self.assertIn("2030-01-01", r30)
+        self.assertIn("2030-04-15", r30)
+
+        h2 = Germany(years=2026, subdiv="BE", categories=("school",))
+        self.assertIn("2026-02-02", h2)
+        self.assertEqual(h2["2026-02-02"], "Winterferien")
+
+    def test_special_and_summer_2026(self):
+        h = Germany(years=2026, subdiv="BE", categories=("school",))
+        self.assertIn("2026-05-15", h)
+        self.assertEqual(h["2026-05-15"], "Unterrichtsfreier Tag nach AZVO")
+        self.assertIn("2026-07-09", h)
+        self.assertEqual(h["2026-07-09"], "Sommerferien")

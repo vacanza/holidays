@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.87\n"
+"Project-Id-Version: Holidays 0.88\n"
 "POT-Creation-Date: 2024-09-05 23:21+0700\n"
-"PO-Revision-Date: 2025-12-02 18:20+0200\n"
+"PO-Revision-Date: 2025-12-27 00:53+0100\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -26,6 +26,87 @@ msgstr ""
 "Generated-By: Lingva 5.0.3\n"
 "X-Generator: Poedit 3.6\n"
 "X-Source-Language: de\n"
+
+msgid "Weihnachtsferien"
+msgstr "Weihnachtsferien"
+
+msgid "Halbjahrespause"
+msgstr "Halbjahrespause"
+
+msgid "Frühjahrsferien"
+msgstr "Frühjahrsferien"
+
+msgid "Himmelfahrt/Pfingsten"
+msgstr "Himmelfahrt/Pfingsten"
+
+msgid "Sommerferien"
+msgstr "Sommerferien"
+
+msgid "Herbstferien"
+msgstr "Herbstferien"
+
+msgid "Brückentag"
+msgstr "Brückentag"
+
+msgid "Osterferien"
+msgstr "Osterferien"
+
+msgid "Pfingsten"
+msgstr "Pfingsten"
+
+msgid "Halbjahresferien"
+msgstr "Halbjahresferien"
+
+msgid "Tag nach Himmelfahrt"
+msgstr "Tag nach Himmelfahrt"
+
+msgid "Tag vor dem 03. Oktober"
+msgstr "Tag vor dem 03. Oktober"
+
+msgid "Tag vor dem 01. Mai"
+msgstr "Tag vor dem 01. Mai"
+
+msgid "Tage nach dem 03. Oktober"
+msgstr "Tage nach dem 03. Oktober"
+
+msgid "Fastnachtsferien"
+msgstr "Fastnachtsferien"
+
+msgid "Pfingstferien"
+msgstr "Pfingstferien"
+
+msgid "Winterferien"
+msgstr "Winterferien"
+
+msgid "Schulfreier Tag"
+msgstr "Schulfreier Tag"
+
+msgid "Himmelfahrt"
+msgstr "Himmelfahrt"
+
+msgid "Unterrichtsfreier Tag"
+msgstr "Unterrichtsfreier Tag"
+
+msgid "Beweglicher Ferientag"
+msgstr "Beweglicher Ferientag"
+
+msgid "Tage um Allerheiligen"
+msgstr "Tage um Allerheiligen"
+
+msgid "Unterrichtsfreier Tag nach AZVO"
+msgstr "Unterrichtsfreier Tag nach AZVO"
+
+msgid "Unterrichtsfreie Tage"
+msgstr "Unterrichtsfreie Tage"
+
+msgid "Zusätzliche feststehende Ferientage"
+msgstr "Zusätzliche feststehende Ferientage"
+
+msgid "Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"
+msgstr "Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"
+
+msgid "Variabler Ferientag"
+msgstr "Variabler Ferientag"
 
 #. New Year's Day.
 msgid "Neujahr"
