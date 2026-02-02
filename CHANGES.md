@@ -1,3 +1,14 @@
+# Version 0.90
+
+Released February 2, 2026
+
+- Update Armenia holidays: add `WORKDAY` category and substituted holidays (#3240 by @KJhellico)
+- Update Brunei holidays: observed holidays, 2026 exact dates (#3228 by @KJhellico)
+- Update Germany holidays: add catholic holidays to Augsburg (#3244 by @Estartu)
+- Update Italy holidays: add Whit Monday in Bolzano (BZ) (#3236 by @KJhellico)
+- Update WM archiver script: add optional target parameter (#3221 by @pareshjoshij, @arkid15r)
+- Reference maintenance: archive links, fix broken, remove unused (#3238 by @PPsyrius)
+
 # Version 0.89
 
 Released January 19, 2026
