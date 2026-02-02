@@ -267,6 +267,9 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     def _populate_subdiv_augsburg_public_holidays(self):
         self._populate_subdiv_by_public_holidays()
 
+        # Assumption Day.
+        self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
+
         # Augsburg Peace Festival.
         self._add_holiday_aug_8(tr("Augsburger Hohes Friedensfest"))
 

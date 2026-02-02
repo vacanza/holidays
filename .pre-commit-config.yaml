@@ -26,7 +26,7 @@ repos:
           - --py310-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.13
+    rev: v0.14.14
     hooks:
       - id: ruff-check
       - id: ruff-format
@@ -57,7 +57,7 @@ repos:
           - types-requests
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: v2.11.1
+    rev: v2.12.1
     hooks:
       - id: pyproject-fmt
 

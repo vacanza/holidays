@@ -45,6 +45,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
         * [Law 336 of Nov 20, 2000](https://web.archive.org/web/20230604111415/https://www.gazzettaufficiale.it/eli/gu/2000/11/22/273/sg/pdf)
         * [Law 151 of Oct 8, 2025](https://web.archive.org/web/20251027040938/https://www.gazzettaufficiale.it/eli/gu/2025/10/10/236/sg/pdf)
         * [Provinces holidays](https://it.wikipedia.org/wiki/Santi_patroni_cattolici_delle_città_capoluogo_di_provincia_italiane)
+        * [Bolzano Province Law 36 of Oct 16, 1992](https://web.archive.org/web/20260121223715/https://www.edizionieuropee.it/LAW/HTML/103/bz2_01_100.html)
     """
 
     country = "IT"
@@ -549,8 +550,10 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
         self._add_holiday_dec_30(tr("San Ruggero"))
 
     def _populate_subdiv_bz_public_holidays(self):
-        # Assumption Day.
-        self._add_assumption_of_mary_day(tr("Maria Santissima Assunta"))
+        # Province Law 36 of Oct 16, 1992.
+        if self._year >= 1993:
+            # Whit Monday.
+            self._add_whit_monday(tr("Lunedì di Pentecoste"))
 
     def _populate_subdiv_ca_public_holidays(self):
         # Saint Saturninus of Cagliari's Day.
@@ -983,7 +986,7 @@ class ItalyStaticHolidays:
         * [Law 366 of Jun 28, 1907](https://web.archive.org/web/20251124204309/https://www.gazzettaufficiale.it/eli/gu/1907/06/28/152/sg/pdf)
         * [Law 450 of Jul 7, 1910](https://web.archive.org/web/20251027060106/https://www.gazzettaufficiale.it/eli/gu/1910/07/18/167/sg/pdf)
         * [Royal Decree 269 of Mar 11, 1920](https://web.archive.org/web/20251027093344/https://www.gazzettaufficiale.it/eli/gu/1920/03/19/66/sg/pdf)
-        * [Royal Decree 1208 of Aug 21, 1921](https://www.gazzettaufficiale.it/eli/gu/1921/09/10/215/sg/pdf)
+        * [Royal Decree 1208 of Aug 21, 1921](https://web.archive.org/web/20260117043612/https://www.gazzettaufficiale.it/eli/gu/1921/09/10/215/sg/pdf)
         * [Royal Decree 1207 of Jul 10, 1925](https://web.archive.org/web/20251027092027/https://www.gazzettaufficiale.it/eli/gu/1925/07/24/170/sg/pdf)
         * [Royal Decree-Law 376 of Apr 25, 1938](https://web.archive.org/web/20251027093701/https://www.gazzettaufficiale.it/eli/gu/1938/04/28/97/sg/pdf)
         * [Presidential Legislative Decree 2 of Jun 19, 1946](https://web.archive.org/web/20251213235623/https://www.normattiva.it/atto/caricaDettaglioAtto?atto.dataPubblicazioneGazzetta=1946-06-20&atto.codiceRedazionale=046U0002&tipoDettaglio=originario&qId=0c1f85e7-d249-4987-966d-d9a4073ef48f)
