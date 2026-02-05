@@ -49,6 +49,7 @@ class TestPR(CommonCountryTests, TestCase):
                 "George Washington Day, Presidents' Day, and the Day of the Women and Men "
                 "Heroes of Puerto Rico",
             ),
+            ("2022-03-02", "American Citizenship Day"),
             ("2022-03-17", "Saint Patrick's Day"),
             ("2022-03-22", "Emancipation Day"),
             ("2022-04-15", "Good Friday"),
@@ -77,6 +78,7 @@ class TestPR(CommonCountryTests, TestCase):
             ("2022-01-17", "วันมาร์ติน ลูเทอร์ คิง จูเนียร์"),
             ("2022-02-14", "วันวาเลนไทน์"),
             ("2022-02-21", "วันจอร์จ วอชิงตัน, วันประธานาธิบดี และวันวีรบุรุษและวีรสตรีแห่งเปอร์โตริโก"),
+            ("2022-03-02", "วันแห่งความเป็นพลเมืองอเมริกัน"),
             ("2022-03-17", "วันนักบุญแพทริก"),
             ("2022-03-22", "วันเลิกทาส"),
             ("2022-04-15", "วันศุกร์ประเสริฐ"),
