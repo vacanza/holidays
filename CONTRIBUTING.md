@@ -20,7 +20,15 @@ with, once you have [`uv`](https://docs.astral.sh/uv/getting-started/installatio
 
 ``` shell
 make setup
-```
+```md
+### Windows (PowerShell)
+> 'make' is not available by default on Windows. Use the commands below instead.
+```ps1
+uv venv --clear --python 3.14
+uv sync --all-groups
+uv run --no-sync pre-commit install --hook-type pre-commit
+uv run --no-sync pre-commit install --hook-type pre-push
+
 
 !!! note "WSL Windows File Permission Fix"
 
@@ -60,14 +68,33 @@ The project provides automated style, tests and coverage checks:
 
 ``` shell
 make check
+```md
+### Windows (PowerShell)
+
+`make` is not available by default on Windows. Run the equivalent steps individually:
+
+```ps1
+uv run --no-sync scripts/l10n/generate_po_files.py
+uv run --no-sync pre-commit run --all-files
+uv run --no-sync mkdocs build
+uv run --no-sync pytest
 ```
+
 
 You can run them separately:
 
 ``` shell
 make pre-commit
 make test
-```
+```md
+#### Windows (PowerShell)
+
+`make` is not available by default on Windows. Run:
+
+```ps1
+uv run --no-sync pre-commit run --all-files
+uv run --no-sync pytest
+
 
 It'll retrieve uncovered lines too.
 
@@ -96,9 +123,13 @@ pytest -s tests/countries/test_argentina.py
 In order to add or update existing holiday names translation you'll need to generate pygettext
 .pot file first:
 
+```md
 ``` shell
 make l10n
-```
+
+```ps1
+uv run --no-sync scripts/l10n/generate_po_files.py
+```  
 
 If the template file is empty, make sure that the country/market entity has the `default_language`
 attribute set, and all holiday names are wrapped with `tr`/`self.tr` helpers. Use [ISO 639-1
