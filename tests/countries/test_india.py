@@ -780,6 +780,17 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-12-25", "Christmas"),
         )
 
+        def test_l10n_mr(self):
+            self.assertLocalizedHolidays(
+                "mr",
+                (
+                    ("2024-02-19", "छत्रपती शिवाजी महाराज जयंती"),
+                    ("2024-04-09", "गुढीपाडवा"),
+                    ("2024-04-14", "डॉ. बाबासाहेब आंबेडकर जयंती"),
+                    ("2024-05-01", "महाराष्ट्र दिन"),
+                ),
+            )
+
     def test_deprecated(self):
         self.assertEqual(
             India(subdiv="DD", years=2023).keys(), India(subdiv="DH", years=2023).keys()
