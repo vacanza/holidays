@@ -780,6 +780,54 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-12-25", "Christmas"),
         )
 
+    def test_l10n_ml(self):
+    self.assertLocalizedHolidays(
+        "ml",
+        (
+            ("2018-01-26", "പ്രജാസത്താക ദിനം"),           # Republic Day
+            ("2018-08-15", "സ്വാതന്ത്ര്യ ദിനം"),            # Independence Day
+            ("2018-10-02", "ഗാന്ധി ജയന്തി"),             # Gandhi Jayanti
+            ("2018-04-30", "ബുദ്ധ പൂർത്തിമ"),               # Buddha Purnima
+            ("2018-11-07", "ദീപാവലി"),                  # Diwali
+            ("2018-08-03", "ജന്മാഷ്ടമി"),                 # Janmashtami
+            ("2018-10-19", "ദസേര"),                       # Dussehra
+            ("2018-04-18", "മഹാവീർ ജയന്തി"),             # Mahavir Jayanti
+            ("2018-02-13", "മഹാ ശിവരാത്രി"),             # Maha Shivaratri
+            ("2018-11-23", "ഗുരു നാനക് ജയന്തി"),          # Guru Nanak Jayanti
+            ("2018-09-20", "മോഹറം"),                     # Muharram
+            ("2018-11-21", "മിലാദ്-ഉൻ-നബി"),             # Milad-un-Nabi
+            ("2018-06-15", "ഇദ്-ഉൽ-ഫിത്ര"),             # Id-ul-Fitr
+            ("2018-08-22", "ബकरीഇദ്"),                   # Bakrid
+            ("2018-03-30", "ഗുഡ് ഫ്രൈഡേ"),                # Good Friday
+            ("2018-12-25", "ക്രിസ്മസ്"),                  # Christmas
+            ("2018-11-14", "ബാലദിനം"),                  # Children's Day
+            ("2018-03-02", "ഹോളി"),                      # Holi
+            ("2018-09-13", "ഗണേശ ചതുർത്തി"),            # Ganesh Chaturthi
+            ("2018-11-08", "ഗോവർധൻ പൂജ"),              # Govardhan Puja
+            ("2018-05-01", "ശ്രമിക ദിനം"),                # Labour Day
+            ("2018-10-17", "മഹാ നവമി"),                  # Maha Navami
+            ("2018-01-14", "മകര സംക്രാന്തി"),             # Makar Sankranti
+            ("2018-08-26", "രക്ഷാബന്ധൻ"),                # Raksha Bandhan
+            ("2018-04-13", "രാമ നവമി"),                  # Ram Navami
+            ("2018-10-10", "നവരാത്രി / ശറദ് നവരാത്രി"), # Navratri / Sharad Navratri
+            ("2018-03-25", "ഈസ്റ്റർ സണ്ടേ"),               # Easter Sunday
+            ("2018-03-25", "പാം സണ്ടേ"),                  # Palm Sunday
+            ("2018-04-14", "ഡോ. ബി.ആർ. ആംബേദ്കർ ജയന്തി"), # Dr. B. R. Ambedkar Jayanti
+            ("2018-11-01", "കേരള സ്ഥാപക ദിനം"),           # Kerala Foundation Day
+            ("2018-08-15", "ആന്ധ്ര പ്രദേശ് സ്ഥാപക ദിനം"), # Andhra Pradesh Foundation Day
+            ("2018-03-18", "ഉഗാടി"),                     # Ugadi
+            ("2018-01-14", "മാഘ് ബിഹു"),                 # Magh Bihu
+            ("2018-12-02", "ബിഹാർ ദിനം"),               # Bihar Day
+            ("2018-11-01", "ഒഡിഷാ ദിനം (ഉത്കല ദിനം)"),   # Odisha Day
+            ("2018-08-15", "ഗോവാ മോക്ഷ ദിനം"),           # Goa Liberation Day
+            ("2018-10-17", "ഒണം"),                        # Onam
+            ("2018-10-02", "സാർദാർ വല്ലഭഭായി പട്ടേൽ ജയന്തി"), # Sardar Vallabhbhai Patel Jayanti
+            ("2018-11-14", "വൈശാഖി"),                     # Vaisakhi
+        )
+    )
+
+
+
     def test_deprecated(self):
         self.assertEqual(
             India(subdiv="DD", years=2023).keys(), India(subdiv="DH", years=2023).keys()
@@ -787,3 +835,4 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertEqual(
             India(subdiv="OR", years=2023).keys(), India(subdiv="OD", years=2023).keys()
         )
+

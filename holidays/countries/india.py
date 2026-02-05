@@ -146,7 +146,10 @@ class India(
         "West Bengal": "WB",
     }
     supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = ("en_IN", "en_US", "gu", "hi")
+    supported_languages = ("en_IN", "en_US", "gu", "hi","ml")
+    # Malayalam translations source:
+# https://en.wikipedia.org/wiki/Public_holidays_in_India
+
     _deprecated_subdivisions = (
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
