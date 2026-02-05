@@ -299,6 +299,29 @@ for date, name in sorted(germany_catholic.items()):
     print(f"{date}: {name}")
 ```
 
+### School Holidays Example (Belgium)
+
+Belgium provides school holidays that depend on the educational community.  
+Currently supported subdivisions are:
+
+- `VLG` → Flemish Community  
+- `WBR` → French Community (Wallonia + Brussels French schools)  
+- `GER` → German-speaking Community  
+
+To retrieve only school holidays, use the `SCHOOL` category.
+
+#### Basic Example
+
+```python
+import holidays
+from holidays.constants import SCHOOL
+
+# Flemish Community school holidays
+be_flemish_schools = holidays.Belgium(subdiv="VLG", categories=SCHOOL, years=2026)
+for date, name in sorted(be_flemish_schools.items()):
+    print(date, name)
+```
+
 ### Unofficial Holidays Example
 
 Get unofficial holidays in the United States:
@@ -307,7 +330,7 @@ Get unofficial holidays in the United States:
 import holidays
 from holidays.constants import UNOFFICIAL
 
-us_unofficial = holidays.UnitedStates(categories=UNOFFICIAL, years=2024)
+us_unofficial = holidays.UnitedStates(categories=UNOFFICIAL, years=2022)
 for date, name in sorted(us_unofficial.items()):
     print(f"{date}: {name}")
 ```
