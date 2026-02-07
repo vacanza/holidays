@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
 
 from holidays.calendars.gregorian import (
     JAN,
@@ -70,36 +70,6 @@ class JapanExchange(HolidayBase, InternationalHolidays, StaticHolidays):
     def _populate_bank_holidays(self):
         """Bank holidays for Japan Exchange (same as public for market holidays)."""
         self._populate_public_holidays()
-
-    def _apply_substitute_holidays(self):
-        """Apply substitute holiday rule (Article 3, Paragraph 2).
-        When a holiday falls on Sunday, the next weekday becomes a holiday.
-        """
-        current_holidays = list(self.keys())
-
-        for holiday_date in sorted(current_holidays):
-            if holiday_date.weekday() == 6:  # Sunday
-                candidate = holiday_date + timedelta(days=1)
-                # Find next available weekday
-                while candidate in self or candidate.weekday() >= 5:
-                    candidate += timedelta(days=1)
-                self._add_holiday("振替休日", candidate)  # Substitute Holiday
-
-    def _apply_bridge_holidays(self):
-        """Apply bridge holiday rule (Article 3, Paragraph 3).
-        When there's exactly one day between two holidays,
-        it becomes a holiday (Citizens' Holiday).
-        """
-        current_holidays = sorted(self.keys())
-
-        for i in range(len(current_holidays) - 1):
-            date1 = current_holidays[i]
-            date2 = current_holidays[i + 1]
-
-            if (date2 - date1).days == 2:  # Exactly one day gap
-                bridge_day = date1 + timedelta(days=1)
-                if bridge_day.weekday() < 5:  # Weekday
-                    self._add_holiday("国民の休日", bridge_day)  # Citizens' Holiday
 
 
 class JPX(JapanExchange):

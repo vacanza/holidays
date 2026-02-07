@@ -53,9 +53,17 @@ class TestJapanExchange(CommonFinancialTests, TestCase):
         self.assertNotIn(date(2021, 1, 3), jpx)
 
     def test_substitute_holiday(self):
-        """Test substitute holidays when holidays fall on Sunday."""
-        # Test that substitute holiday mechanism exists
-        # Since Jan 2-3, 2020 are Thursday/Friday, no substitute needed
+        """Test substitute holidays when holidays fall on Sunday.
+
+        Coverage test: Dec 31, 2023 is Sunday.
+        """
+        # 2022-01-02 is Sunday - should not be a market holiday
+        # 2023-12-31 is Sunday - should not be a market holiday
+        jpx_2022 = JapanExchange(years=2022)
+        self.assertNotIn(date(2022, 1, 2), jpx_2022)
+
+        jpx_2023 = JapanExchange(years=2023)
+        self.assertNotIn(date(2023, 12, 31), jpx_2023)
 
     def test_citizens_holiday(self):
         """Test bridge holidays (Citizens' Holidays)."""
@@ -64,6 +72,9 @@ class TestJapanExchange(CommonFinancialTests, TestCase):
             "国民の休日",  # Citizens' Holiday
             "2026-09-22",
         )
+        # Coverage for bridge holiday: check 2026 has the Citizens' Holiday
+        jpx_2026 = JapanExchange(years=2026)
+        self.assertIn(date(2026, 9, 22), jpx_2026)
 
     def test_special_bank_holidays(self):
         """Test special bank holidays for specific years."""
