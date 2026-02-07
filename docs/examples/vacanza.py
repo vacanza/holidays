@@ -37,8 +37,7 @@ def export_holiday_calendars(
 
             
 
-        except Exception as error:
-            
+        except Exception:
             continue
 
 if __name__ == "__main__":
