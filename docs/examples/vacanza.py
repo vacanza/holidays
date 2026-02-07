@@ -2,12 +2,7 @@ from holidays.ical import ICalExporter
 
 
 def export_holiday_calendars(
-    country_class,
-    country_code,
-    years,
-    categories,
-    language=None,
-    output_dir="."
+    country_class, country_code, years, categories, language=None, output_dir="."
 ):
     """
     Export holiday calendars as .ics files for each category.
@@ -48,5 +43,5 @@ export_holiday_calendars(
     country_code="US",
     years=range(2025, 2026),
     categories=US.supported_categories,
-    language="en"
+    language="en",
 )
