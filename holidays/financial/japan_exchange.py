@@ -23,7 +23,7 @@ from holidays.calendars.gregorian import (
     NOV,
     DEC,
 )
-from holidays.constants import BANK
+from holidays.constants import BANK, PUBLIC
 from holidays.groups import InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -42,8 +42,8 @@ class JapanExchange(HolidayBase, InternationalHolidays, StaticHolidays):
     start_year = 2013
     default_language = "ja"
     default_category = BANK
-    supported_categories = (BANK,)
-    supported_languages = ("en_US", "ja", "th")
+    supported_categories = (BANK, PUBLIC)
+    supported_languages = ("ja",)
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)

@@ -1942,8 +1942,8 @@ code when available. The following financial markets are available:
 <td>Japan Exchange</td>
 <td>JPX</td>
 <td>Japan Exchange Group (JPX) market holidays</td>
-<td></td>
-<td></td>
+<td><strong>ja</strong></td>
+<td>bank</td>
 </tr>
 <tr>
 <td>National Stock Exchange of India</td>
