@@ -35,10 +35,10 @@ def export_holiday_calendars(
             exporter = ICalExporter(holidays_obj)
             exporter.save_ics(file_path)
 
-            print(f"Generated: {file_name}")
+            
 
         except Exception as error:
-            print(f"Failed for category '{category}': {error}")
+            
             continue
 
 if __name__ == "__main__":
