@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from gettext import gettext as tr
 
 from holidays.calendars.gregorian import (
     FEB,
@@ -76,22 +77,22 @@ class JapanExchange(Japan, InternationalHolidays, StaticHolidays):
         # Re-added as PUBLIC since inherited Japan holiday is BANK category.
         jan1 = date(self._year, 1, 1)
         if jan1.weekday() < 5:  # Weekday
-            self._add_holiday("市場休業日", jan1)  # Market Holiday
+            self._add_holiday(tr("市場休業日"), jan1)  # Market Holiday
 
         # January 2 - Market Holiday (only on weekdays).
         jan2 = date(self._year, 1, 2)
         if jan2.weekday() < 5:  # Weekday
-            self._add_holiday("市場休業日", jan2)  # Market Holiday
+            self._add_holiday(tr("市場休業日"), jan2)  # Market Holiday
 
         # January 3 - Market Holiday (only on weekdays).
         jan3 = date(self._year, 1, 3)
         if jan3.weekday() < 5:  # Weekday
-            self._add_holiday("市場休業日", jan3)  # Market Holiday
+            self._add_holiday(tr("市場休業日"), jan3)  # Market Holiday
 
         # December 31 - Market Holiday (only on weekdays).
         dec31 = date(self._year, 12, 31)
         if dec31.weekday() < 5:  # Weekday
-            self._add_holiday("市場休業日", dec31)  # Market Holiday
+            self._add_holiday(tr("市場休業日"), dec31)  # Market Holiday
 
         # Add special bank holidays that affect market operations.
         # These are included as PUBLIC since they represent trading closures.
@@ -137,26 +138,26 @@ class JapanExchangeStaticHolidays:
     # Format: year -> tuple of (month, day, name) tuples.
     special_bank_holidays = {
         2019: (
-            (APR, 30, "銀行休業日"),  # Imperial Accession Day substitute
-            (MAY, 1, "銀行休業日"),  # Coronation Ceremony
-            (MAY, 2, "銀行休業日"),  # Imperial Accession Day substitute
-            (MAY, 6, "銀行休業日"),  # Substitute Holiday
+            (APR, 30, tr("銀行休業日")),  # Imperial Accession Day substitute
+            (MAY, 1, tr("銀行休業日")),  # Coronation Ceremony
+            (MAY, 2, tr("銀行休業日")),  # Imperial Accession Day substitute
+            (MAY, 6, tr("銀行休業日")),  # Substitute Holiday
         ),
         2020: (
-            (JUL, 23, "銀行休業日"),  # Olympic Games postponement
-            (JUL, 24, "銀行休業日"),  # Olympic Games postponement
-            (AUG, 10, "銀行休業日"),  # Mountain Day substitute
+            (JUL, 23, tr("銀行休業日")),  # Olympic Games postponement
+            (JUL, 24, tr("銀行休業日")),  # Olympic Games postponement
+            (AUG, 10, tr("銀行休業日")),  # Mountain Day substitute
         ),
         2021: (
-            (JUL, 22, "銀行休業日"),  # Olympic Games
-            (JUL, 23, "銀行休業日"),  # Olympic Games
-            (AUG, 9, "銀行休業日"),  # Peace Memorial Ceremony substitute
+            (JUL, 22, tr("銀行休業日")),  # Olympic Games
+            (JUL, 23, tr("銀行休業日")),  # Olympic Games
+            (AUG, 9, tr("銀行休業日")),  # Peace Memorial Ceremony substitute
         ),
-        2022: ((FEB, 24, "銀行休業日"),),  # Emperor's Birthday substitute
+        2022: ((FEB, 24, tr("銀行休業日")),),  # Emperor's Birthday substitute
         2025: (
-            (FEB, 24, "銀行休業日"),  # National Foundation Day substitute
-            (MAY, 6, "銀行休業日"),  # Constitution Memorial Day substitute
-            (NOV, 24, "銀行休業日"),  # Labor Thanksgiving Day substitute
+            (FEB, 24, tr("銀行休業日")),  # National Foundation Day substitute
+            (MAY, 6, tr("銀行休業日")),  # Constitution Memorial Day substitute
+            (NOV, 24, tr("銀行休業日")),  # Labor Thanksgiving Day substitute
         ),
-        2026: ((SEP, 22, "国民の休日"),),  # Silver Week (Citizens' Holiday)
+        2026: ((SEP, 22, tr("国民の休日")),),  # Silver Week (Citizens' Holiday)
     }
