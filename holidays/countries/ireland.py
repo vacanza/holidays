@@ -29,24 +29,6 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     start_year = 1872
 
     def __init__(self, *args, **kwargs):
-        self.include_good_friday = kwargs.pop("include_good_friday", False)
-
-        # Backward compatibility for the legacy `include_good_friday` flag.
-        # Good Friday now belongs to the OPTIONAL category, but if the flag is
-        # used we automatically enable OPTIONAL alongside the default category.
-        if self.include_good_friday:
-            categories = kwargs.get("categories")
-            if categories is None:
-                kwargs["categories"] = (PUBLIC, OPTIONAL)
-            else:
-                if isinstance(categories, str):
-                    categories = {categories}
-                else:
-                    categories = set(categories)
-                categories.add(OPTIONAL)
-                kwargs["categories"] = tuple(categories)
-
-        kwargs.setdefault("observed", False)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, IrelandStaticHolidays)
