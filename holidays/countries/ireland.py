@@ -101,7 +101,7 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_christmas_day_two("Saint Stephen's Day")
 
     def _populate_optional_holidays(self):
-        # Good Friday (bank holiday, not an official public holiday).
+        # Good Friday.
         self._add_good_friday("Good Friday")
 
 
