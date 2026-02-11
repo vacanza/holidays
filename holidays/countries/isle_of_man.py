@@ -29,7 +29,7 @@ class IsleOfMan(UnitedKingdom):
     subdivisions = ()  # Override UnitedKingdom subdivisions.
     subdivisions_aliases = {}  # Override UnitedKingdom subdivisions aliases.
 
-    def __init__(self, *args, **kwargs):  # Override UnitedKingdom __init__().
+    def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, UnitedKingdomStaticHolidays)
@@ -37,19 +37,12 @@ class IsleOfMan(UnitedKingdom):
         ObservedHolidayBase.__init__(self, *args, **kwargs)
 
     def _populate_public_holidays(self) -> None:
+        # Common holidays with United Kingdom.
         super()._populate_public_holidays()
-        # Easter Monday.
-        self._add_easter_monday(tr("Easter Monday"))
 
-        if self._year <= 1970:
-            # Whit Monday.
-            self._add_whit_monday(tr("Whit Monday"))
+        self._populate_common()
 
-        if self._year >= 1971:
-            # Late Summer Bank Holiday.
-            self._add_holiday_last_mon_of_aug(tr("Late Summer Bank Holiday"))
-
-        # Isle of Man exclusive holidays
+        # Isle of Man exclusive holidays.
 
         # TT Bank Holiday.
         self._add_holiday_1st_fri_of_jun(tr("TT Bank Holiday"))

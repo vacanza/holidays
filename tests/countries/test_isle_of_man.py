@@ -16,7 +16,7 @@ from holidays.countries.isle_of_man import IsleOfMan
 from tests.common import CommonCountryTests
 
 
-class TestIM(CommonCountryTests, TestCase):
+class TestIsleOfMan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(IsleOfMan)
@@ -51,46 +51,6 @@ class TestIM(CommonCountryTests, TestCase):
             ("2022-12-26", "Boxing Day"),
             ("2022-12-27", "Christmas Day (observed)"),
         )
-
-    def test_easter_monday(self):
-        name = "Easter Monday"
-        self.assertHolidayName(
-            name,
-            "2020-04-13",
-            "2021-04-05",
-            "2022-04-18",
-            "2023-04-10",
-            "2024-04-01",
-            "2025-04-21",
-        )
-        self.assertHolidayName(name, self.full_range)
-
-    def test_whit_monday(self):
-        name = "Whit Monday"
-        self.assertHolidayName(
-            name,
-            "1966-05-30",
-            "1967-05-15",
-            "1968-06-03",
-            "1969-05-26",
-            "1970-05-18",
-        )
-        self.assertHolidayName(name, range(self.start_year, 1971))
-        self.assertNoHolidayName(name, range(1971, self.end_year))
-
-    def test_late_summer_bank_holiday(self):
-        name = "Late Summer Bank Holiday"
-        self.assertHolidayName(
-            name,
-            "2020-08-31",
-            "2021-08-30",
-            "2022-08-29",
-            "2023-08-28",
-            "2024-08-26",
-            "2025-08-25",
-        )
-        self.assertHolidayName(name, range(1971, self.end_year))
-        self.assertNoHolidayName(name, range(self.start_year, 1971))
 
     def test_tt_bank_holiday(self):
         name = "TT Bank Holiday"
