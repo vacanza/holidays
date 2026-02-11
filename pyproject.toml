@@ -120,11 +120,11 @@ ini_options.filterwarnings = [
 ini_options.testpaths = [ "tests" ]
 
 [tool.coverage]
+run.branch = true
+run.omit = [ "scripts/*", "tests/*" ]
 report.exclude_lines = [
   "^if TYPE_CHECKING:",
 ]
-run.branch = true
-run.omit = [ "scripts/*", "tests/*" ]
 
 [tool.mypy]
 overrides = [
