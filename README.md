@@ -1943,7 +1943,7 @@ code when available. The following financial markets are available:
 <td>JPX</td>
 <td>Japan Exchange Group (JPX) market holidays</td>
 <td><strong>en_US, ja, th</strong></td>
-<td>bank</td>
+<td>BANK</td>
 </tr>
 <tr>
 <td>National Stock Exchange of India</td>
