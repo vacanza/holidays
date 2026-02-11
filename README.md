@@ -1942,7 +1942,7 @@ code when available. The following financial markets are available:
 <td>Japan Exchange</td>
 <td>JPX</td>
 <td>Japan Exchange Group (JPX) market holidays</td>
-<td><strong>ja</strong></td>
+<td><strong>en_US, ja, th</strong></td>
 <td>bank</td>
 </tr>
 <tr>

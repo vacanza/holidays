@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.91\n"
 "POT-Creation-Date: 2023-07-23 15:45+0300\n"
-"PO-Revision-Date: 2026-02-11 21:12+0000\n"
+"PO-Revision-Date: 2026-02-11 21:47+0000\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -27,7 +27,7 @@ msgstr ""
 "X-Generator: Poedit 3.7\n"
 "X-Source-Language: ja\n"
 
-#. 3. Apply JPX weekday‑only rule for Jan 2, Jan 3, Dec 31.
+#. 4. Apply JPX weekday‑only rule for Jan 2, Jan 3, Dec 31.
 msgid "市場休業日"
 msgstr "Market Holiday"
 
