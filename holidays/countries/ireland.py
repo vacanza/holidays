@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import FEB, MAR, SEP, DEC
+from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -24,10 +25,27 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     """
 
     country = "IE"
+    supported_categories = (OPTIONAL, PUBLIC)
     start_year = 1872
 
     def __init__(self, *args, **kwargs):
         self.include_good_friday = kwargs.pop("include_good_friday", False)
+
+        # Backward compatibility for the legacy `include_good_friday` flag.
+        # Good Friday now belongs to the OPTIONAL category, but if the flag is
+        # used we automatically enable OPTIONAL alongside the default category.
+        if self.include_good_friday:
+            categories = kwargs.get("categories")
+            if categories is None:
+                kwargs["categories"] = (PUBLIC, OPTIONAL)
+            else:
+                if isinstance(categories, str):
+                    categories = {categories}
+                else:
+                    categories = set(categories)
+                categories.add(OPTIONAL)
+                kwargs["categories"] = tuple(categories)
+
         kwargs.setdefault("observed", False)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
@@ -82,9 +100,9 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # Saint Stephen's Day.
         self._add_christmas_day_two("Saint Stephen's Day")
 
-        # Good Friday (optional, not a public holiday in Ireland but observed by banks)
-        if self.include_good_friday:
-            self._add_good_friday("Good Friday")
+    def _populate_optional_holidays(self):
+        # Good Friday (bank holiday, not an official public holiday).
+        self._add_good_friday("Good Friday")
 
 
 class IE(Ireland):
