@@ -174,3 +174,6 @@ class TestIreland(CommonCountryTests, TestCase):
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Saint Stephen's Day"),
         )
+    def test_good_friday(self):
+        name = "Good Friday"
+        self._assertHolidayName(name)
