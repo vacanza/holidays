@@ -9,14 +9,19 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
+#
+#  Japan Exchange Group (JPX) market holidays.
+#
 
 from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import (
-    FEB,
     APR,
     AUG,
+    DEC,
+    FEB,
+    JAN,
     JUL,
     MAY,
     NOV,
@@ -24,119 +29,84 @@ from holidays.calendars.gregorian import (
 )
 from holidays.constants import BANK, PUBLIC
 from holidays.countries.japan import Japan
-from holidays.groups import InternationalHolidays, StaticHolidays
+from holidays.groups import StaticHolidays
 
 
-class JapanExchange(Japan, InternationalHolidays, StaticHolidays):
+class JapanExchange(Japan):
     """Japan Exchange Group (JPX) market holidays.
 
-    This class provides Japan Exchange-specific market holidays.
+    This class provides Japan Exchange‑specific market holidays.
     Market holidays are days when the stock exchange is closed for trading.
-    Note: National holidays are included via inheritance from Japan class.
 
-    Inherits from Japan class to reuse national holidays (as BANK category).
-    Market-specific holidays (Jan 1, 2, 3, Dec 31) are added as PUBLIC
-    category since they represent public trading holidays for the exchange.
-
-    References:
-        * https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html
+    It inherits all Japanese public and bank holidays from the country calendar,
+    reclassifies all bank holidays as public holidays (market closed), and adds
+    JPX‑specific one‑off closures via a static mapping. Additionally, it enforces
+    JPX's weekday‑only rule for January 2, January 3, and December 31, overriding
+    the parent's unconditional bank holidays for these dates.
     """
 
     market = "JPX"
-    # Financial market holidays use PUBLIC category as these are public trading holidays.
-    # Japan national holidays (inherited) use BANK category.
     default_category = PUBLIC
-    supported_categories = (BANK, PUBLIC)
-    start_year = 1949  # Japan Stock Exchange established year.
-    end_year = 2099
+    # Keep the same categories as the parent Japan calendar for type compatibility.
+    supported_categories = (PUBLIC, BANK)
+    start_year = 1878  # Tokyo Stock Exchange established in 1878
 
-    def __init__(self, *args, **kwargs):
-        InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, cls=JapanExchangeStaticHolidays)
+    def __init__(self, *args, **kwargs) -> None:
+        # Always include both public and bank holidays from the parent calendar.
+        categories = kwargs.get("categories", (PUBLIC, BANK))
+        if categories is None:
+            categories = (PUBLIC, BANK)
+        else:
+            categories = tuple(set(categories) | {PUBLIC, BANK})
+        kwargs["categories"] = categories
+
         super().__init__(*args, **kwargs)
-        # Hide the 'country' attribute inherited from Japan class.
-        # Financial market entities should not expose country attribute.
-        if "country" in self.__dict__:
-            del self.__dict__["country"]
-        elif "country" in getattr(Japan, "__dict__", {}):
-            self.__dict__["country"] = None
+        StaticHolidays.__init__(self, cls=JapanExchangeStaticHolidays)
 
-    def __getattribute__(self, name):
-        # Prevent access to 'country' attribute from outside.
-        if name == "country":
-            raise AttributeError(f"type object '{type(self).__name__}' has no attribute '{name}'")
-        return super().__getattribute__(name)
+    def _populate(self, year: int) -> None:
+        """Populate the calendar for the given year."""
+        # 1. Populate all Japan public and bank holidays.
+        super()._populate(year)
 
-    def _populate_public_holidays(self):
-        """Populate Japan Exchange public (trading) holidays.
+        # 2. Reclassify all Japan bank holidays as JPX public holidays.
+        for dt, cat in list(self._category.items()):
+            if cat == BANK:
+                self._category[dt] = PUBLIC
 
-        Market-specific holidays that apply to the whole exchange trading calendar.
-        These are the days when the stock exchange is closed for trading.
-        """
-        # January 1 - New Year's Day (Market Holiday on weekdays).
-        # Re-added as PUBLIC since inherited Japan holiday is BANK category.
-        jan1 = date(self._year, 1, 1)
-        if jan1.weekday() < 5:  # Weekday
-            self._add_holiday(tr("市場休業日"), jan1)  # Market Holiday
+        # 3. Apply JPX weekday‑only rule for Jan 2, Jan 3, Dec 31.
+        market_holiday_name = tr("市場休業日")
+        for day in (2, 3):
+            dt = date(year, JAN, day)
+            self._apply_jpx_weekday_rule(dt, market_holiday_name)
+        dt = date(year, DEC, 31)
+        self._apply_jpx_weekday_rule(dt, market_holiday_name)
 
-        # January 2 - Market Holiday (only on weekdays).
-        jan2 = date(self._year, 1, 2)
-        if jan2.weekday() < 5:  # Weekday
-            self._add_holiday(tr("市場休業日"), jan2)  # Market Holiday
+        # 4. Add JPX‑specific one‑off market closures (static holidays).
+        for month, day, name in JapanExchangeStaticHolidays.special_public_holidays.get(year, ()):
+            dt = date(year, month, day)
+            self._add_holiday(name, dt)
+            self._category[dt] = PUBLIC
 
-        # January 3 - Market Holiday (only on weekdays).
-        jan3 = date(self._year, 1, 3)
-        if jan3.weekday() < 5:  # Weekday
-            self._add_holiday(tr("市場休業日"), jan3)  # Market Holiday
-
-        # December 31 - Market Holiday (only on weekdays).
-        dec31 = date(self._year, 12, 31)
-        if dec31.weekday() < 5:  # Weekday
-            self._add_holiday(tr("市場休業日"), dec31)  # Market Holiday
-
-        # Add special bank holidays that affect market operations.
-        # These are included as PUBLIC since they represent trading closures.
-        special_holidays = JapanExchangeStaticHolidays.special_bank_holidays.get(self._year, ())
-        for month, day, name in special_holidays:
-            self._add_holiday(name, date(self._year, month, day))
-
-    def _populate_bank_holidays(self):
-        """Populate Japan Exchange bank holidays.
-
-        Bank holidays are inherited from Japan class (national bank holidays).
-        These are days when banks are closed, which may affect settlement.
-        """
-        super()._populate_bank_holidays()
+    def _apply_jpx_weekday_rule(self, dt: date, name: str) -> None:
+        """Remove unconditional bank holiday and add weekday‑only market holiday."""
+        # Remove the parent's entry (bank holiday) if it exists.
+        if dt in self:
+            del self[dt]
+            self._category.pop(dt, None)
+        # Add as market holiday only on weekdays.
+        if self._is_weekday(dt):
+            self._add_holiday(name, dt)
+            self._category[dt] = PUBLIC
 
 
-class JPX(JapanExchange):
-    """Japan Exchange Group (JPX) - Alias for JapanExchange."""
+class JapanExchangeStaticHolidays(StaticHolidays):
+    """Static one‑off market closures for Japan Exchange.
 
-    pass
-
-
-class TSE(JapanExchange):
-    """Tokyo Stock Exchange (TSE) - Alias for JapanExchange."""
-
-    pass
-
-
-class OSE(JapanExchange):
-    """Osaka Exchange (OSE) - Alias for JapanExchange."""
-
-    pass
-
-
-class JapanExchangeStaticHolidays:
-    """Static holiday definitions for Japan Exchange.
-
-    Contains special bank holidays and one-off market closure days
-    that are not part of the regular holiday calendar.
+    These are exchange‑specific closures that are not part of the regular
+    Japanese holiday calendar (e.g., imperial accession, Olympic games).
     """
 
-    # Special bank holidays that result in market closure.
-    # Format: year -> tuple of (month, day, name) tuples.
-    special_bank_holidays = {
+    special_public_holidays: dict[int, tuple[tuple[int, int, str], ...]] = {
         2019: (
             (APR, 30, tr("銀行休業日")),  # Imperial Accession Day substitute
             (MAY, 1, tr("銀行休業日")),  # Coronation Ceremony
@@ -161,3 +131,16 @@ class JapanExchangeStaticHolidays:
         ),
         2026: ((SEP, 22, tr("国民の休日")),),  # Silver Week (Citizens' Holiday)
     }
+
+
+# Exchange aliases – all refer to the same JapanExchange calendar.
+class JPX(JapanExchange):
+    """Alias for JapanExchange (JPX)."""
+
+
+class TSE(JapanExchange):
+    """Alias for JapanExchange (Tokyo Stock Exchange)."""
+
+
+class OSE(JapanExchange):
+    """Alias for JapanExchange (Osaka Exchange)."""
