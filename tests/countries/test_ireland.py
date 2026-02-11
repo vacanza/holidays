@@ -176,4 +176,14 @@ class TestIreland(CommonCountryTests, TestCase):
         )
     def test_good_friday(self):
         name = "Good Friday"
-        self._assertHolidayName(name)
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertOptionalHolidayName(name, self.full_range)
