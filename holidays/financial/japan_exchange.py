@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-#  Japan Exchange Group (JPX) market holidays.
-#
 
 from datetime import date
 from gettext import gettext as tr
@@ -29,30 +27,24 @@ from holidays.calendars.gregorian import (
 )
 from holidays.constants import BANK, PUBLIC
 from holidays.countries.japan import Japan
-from holidays.groups import StaticHolidays
 
 
 class JapanExchange(Japan):
     """Japan Exchange Group (JPX) market holidays.
 
-    This class provides Japan Exchange‑specific market holidays.
-    Market holidays are days when the stock exchange is closed for trading.
-
-    It inherits all Japanese public and bank holidays from the country calendar,
+    Inherits all Japanese public and bank holidays from the country calendar,
     reclassifies all bank holidays as public holidays (market closed), and adds
-    JPX‑specific one‑off closures via a static mapping. Additionally, it enforces
-    JPX's weekday‑only rule for January 2, January 3, and December 31, overriding
-    the parent's unconditional bank holidays for these dates.
+    JPX‑specific one‑off closures. Enforces JPX's weekday‑only rule for
+    January 2, January 3, and December 31.
     """
 
     market = "JPX"
     default_category = PUBLIC
-    # Keep the same categories as the parent Japan calendar for type compatibility.
-    supported_categories = (PUBLIC, BANK)
+    supported_categories = (PUBLIC, BANK)  # match parent type for mypy
     start_year = 1878  # Tokyo Stock Exchange established in 1878
 
     def __init__(self, *args, **kwargs) -> None:
-        # Always include both public and bank holidays from the parent calendar.
+        # Always include both public and bank holidays from the parent.
         categories = kwargs.get("categories", (PUBLIC, BANK))
         if categories is None:
             categories = (PUBLIC, BANK)
@@ -60,32 +52,34 @@ class JapanExchange(Japan):
             categories = tuple(set(categories) | {PUBLIC, BANK})
         kwargs["categories"] = categories
 
+        # 1. Let the base Japan calendar populate all holidays.
         super().__init__(*args, **kwargs)
-        StaticHolidays.__init__(self, cls=JapanExchangeStaticHolidays)
 
-    def _populate(self, year: int) -> None:
-        """Populate the calendar for the given year."""
-        # 1. Populate all Japan public and bank holidays.
-        super()._populate(year)
-
-        # 2. Reclassify all Japan bank holidays as JPX public holidays.
+        # 2. Now self._category exists → reclassify all bank holidays as PUBLIC.
         for dt, cat in list(self._category.items()):
             if cat == BANK:
                 self._category[dt] = PUBLIC
 
-        # 3. Apply JPX weekday‑only rule for Jan 2, Jan 3, Dec 31.
-        market_holiday_name = tr("市場休業日")
-        for day in (2, 3):
-            dt = date(year, JAN, day)
-            self._apply_jpx_weekday_rule(dt, market_holiday_name)
-        dt = date(year, DEC, 31)
-        self._apply_jpx_weekday_rule(dt, market_holiday_name)
+        # 3. Determine which years are present in this instance.
+        years = {dt.year for dt in self._category}
 
-        # 4. Add JPX‑specific one‑off market closures (static holidays).
-        for month, day, name in JapanExchangeStaticHolidays.special_public_holidays.get(year, ()):
-            dt = date(year, month, day)
-            self._add_holiday(name, dt)
-            self._category[dt] = PUBLIC
+        # 4. Apply JPX weekday‑only rule for Jan 2, Jan 3, Dec 31.
+        market_holiday_name = tr("市場休業日")
+        for year in years:
+            for day in (2, 3):
+                dt = date(year, JAN, day)
+                self._apply_jpx_weekday_rule(dt, market_holiday_name)
+            dt = date(year, DEC, 31)
+            self._apply_jpx_weekday_rule(dt, market_holiday_name)
+
+        # 5. Add one‑off static closures.
+        for year in years:
+            for month, day, name in JapanExchangeStaticHolidays.special_public_holidays.get(
+                year, ()
+            ):
+                dt = date(year, month, day)
+                self._add_holiday(name, dt)
+                self._category[dt] = PUBLIC
 
     def _apply_jpx_weekday_rule(self, dt: date, name: str) -> None:
         """Remove unconditional bank holiday and add weekday‑only market holiday."""
@@ -99,12 +93,8 @@ class JapanExchange(Japan):
             self._category[dt] = PUBLIC
 
 
-class JapanExchangeStaticHolidays(StaticHolidays):
-    """Static one‑off market closures for Japan Exchange.
-
-    These are exchange‑specific closures that are not part of the regular
-    Japanese holiday calendar (e.g., imperial accession, Olympic games).
-    """
+class JapanExchangeStaticHolidays:
+    """Static one‑off market closures for Japan Exchange."""
 
     special_public_holidays: dict[int, tuple[tuple[int, int, str], ...]] = {
         2019: (
