@@ -69,6 +69,7 @@ class TestIreland(CommonCountryTests, TestCase):
             "2025-04-18",
         )
         self.assertOptionalHolidayName(name, self.full_range)
+
     def test_easter_monday(self):
         name = "Easter Monday"
         self.assertHolidayName(
