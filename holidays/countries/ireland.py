@@ -27,6 +27,8 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     start_year = 1872
 
     def __init__(self, *args, **kwargs):
+        self.include_good_friday=kwargs.pop("include_good_friday", False)
+        kwargs.setdefault("observed", False)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, IrelandStaticHolidays)
@@ -79,6 +81,10 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
         # Saint Stephen's Day.
         self._add_christmas_day_two("Saint Stephen's Day")
+
+        # Good Friday (optional, not a public holiday in Ireland but observed by banks)
+        if self.include_good_friday:
+            self._add_good_friday("Good Friday")
 
 
 class IE(Ireland):
