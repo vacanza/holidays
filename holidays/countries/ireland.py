@@ -27,7 +27,7 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     start_year = 1872
 
     def __init__(self, *args, **kwargs):
-        self.include_good_friday=kwargs.pop("include_good_friday", False)
+        self.include_good_friday = kwargs.pop("include_good_friday", False)
         kwargs.setdefault("observed", False)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
