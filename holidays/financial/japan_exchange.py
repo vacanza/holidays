@@ -48,8 +48,6 @@ class JapanExchange(Japan):
         raise AttributeError("JapanExchange has no country attribute")
 
     def __init__(self, *args, **kwargs) -> None:
-        self._category: dict[date, str] = {}  # Track holiday categories.
-
         # Always include both public and bank holidays from the parent.
         categories = kwargs.get("categories", (PUBLIC, BANK))
         if categories is None:
@@ -59,26 +57,6 @@ class JapanExchange(Japan):
         kwargs["categories"] = categories
 
         super().__init__(*args, **kwargs)
-
-    def _add_holiday(self, name, *args):
-        dt = super()._add_holiday(name, *args)
-        if dt:
-            cat = getattr(self, "_current_category", None)
-            if cat == BANK:
-                cat = PUBLIC
-            if cat:
-                self._category[dt] = cat
-        return dt
-
-    def _populate_bank_holidays(self):
-        self._current_category = BANK
-        super()._populate_bank_holidays()
-        self._current_category = None
-
-    def _populate_public_holidays(self):
-        self._current_category = PUBLIC
-        super()._populate_public_holidays()
-        self._current_category = None
 
     def _populate(self, year: int) -> None:
         super()._populate(year)
@@ -98,18 +76,15 @@ class JapanExchange(Japan):
         for month, day, name in JapanExchangeStaticHolidays.special_public_holidays.get(year, ()):
             dt = date(year, month, day)
             self._add_holiday(name, dt)
-            self._category[dt] = PUBLIC
 
     def _apply_jpx_weekday_rule(self, dt: date, name: str) -> None:
         """Remove unconditional bank holiday and add weekday‑only market holiday."""
         # Remove the parent's entry (bank holiday) if it exists.
         if dt in self:
             del self[dt]
-            self._category.pop(dt, None)
         # Add as market holiday only on weekdays.
         if self._is_weekday(dt):
             self._add_holiday(name, dt)
-            self._category[dt] = PUBLIC
 
 
 class JapanExchangeStaticHolidays:
