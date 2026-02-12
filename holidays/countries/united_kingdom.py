@@ -96,13 +96,12 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        if self._year <= 1970:
-            # Whit Monday.
-            self._add_whit_monday(tr("Whit Monday"))
-
         if self._year >= 1971:
             # Late Summer Bank Holiday.
             self._add_holiday_last_mon_of_aug(tr("Late Summer Bank Holiday"))
+        else:
+            # Whit Monday.
+            self._add_whit_monday(tr("Whit Monday"))
 
     def _populate_subdiv_holidays(self):
         if self.subdiv != "SCT":

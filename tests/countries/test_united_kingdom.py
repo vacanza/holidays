@@ -70,16 +70,6 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
         name_new_year = "New Year's Day"
         name_new_year_holiday = "New Year Holiday"
 
-        ny_obs_dts = (
-            "2000-01-03",
-            "2005-01-03",
-            "2006-01-02",
-            "2011-01-03",
-            "2012-01-02",
-            "2017-01-02",
-            "2022-01-03",
-            "2023-01-02",
-        )
         nyh_obs_dts = (
             "2000-01-04",
             "2005-01-04",
@@ -98,7 +88,17 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
                 self.assertSubdivSctHolidayName(
                     name_new_year, (f"{year}-01-01" for year in self.full_range)
                 )
-                self.assertSubdivSctHolidayName(f"{name_new_year} (observed)", ny_obs_dts)
+                self.assertSubdivSctHolidayName(
+                    f"{name_new_year} (observed)",
+                    "2000-01-03",
+                    "2005-01-03",
+                    "2006-01-02",
+                    "2011-01-03",
+                    "2012-01-02",
+                    "2017-01-02",
+                    "2022-01-03",
+                    "2023-01-02",
+                )
                 self.assertSubdivSctHolidayName(
                     name_new_year_holiday, (f"{year}-01-02" for year in self.full_range)
                 )
@@ -111,7 +111,7 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
         name = "Saint Patrick's Day"
         self.assertNoHolidayName(name)
 
-        obs_dt = (
+        obs_dts = (
             "2001-03-19",
             "2002-03-18",
             "2007-03-19",
@@ -126,8 +126,8 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
                     name, (f"{year}-03-17" for year in range(1903, self.end_year))
                 )
                 self.assertNoSubdivNirHolidayName(name, range(self.start_year, 1903))
-                self.assertSubdivNirHolidayName(f"{name} (observed)", obs_dt)
-                self.assertNoSubdivNirNonObservedHoliday(obs_dt)
+                self.assertSubdivNirHolidayName(f"{name} (observed)", obs_dts)
+                self.assertNoSubdivNirNonObservedHoliday(obs_dts)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -158,7 +158,7 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
         )
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "SCT":
-                self.assertNoHolidayName(name, holidays)
+                self.assertNoSubdivSctHolidayName(name)
             else:
                 self.assertHolidayName(name, holidays, dts)
                 self.assertHolidayName(name, holidays, self.full_range)
@@ -222,7 +222,7 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
         name = "Battle of the Boyne"
         self.assertNoHolidayName(name)
 
-        obs_dt = (
+        obs_dts = (
             "2003-07-14",
             "2008-07-14",
             "2009-07-13",
@@ -235,8 +235,8 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
                 self.assertSubdivNirHolidayName(
                     name, (f"{year}-07-12" for year in self.full_range)
                 )
-                self.assertSubdivNirHolidayName(f"{name} (observed)", obs_dt)
-                self.assertNoSubdivNirNonObservedHoliday(obs_dt)
+                self.assertSubdivNirHolidayName(f"{name} (observed)", obs_dts)
+                self.assertNoSubdivNirNonObservedHoliday(obs_dts)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -244,18 +244,18 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
         name = "Summer Bank Holiday"
         self.assertNoHolidayName(name)
 
-        dts = (
-            "2020-08-03",
-            "2021-08-02",
-            "2022-08-01",
-            "2023-08-07",
-            "2024-08-05",
-            "2025-08-04",
-        )
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "SCT":
-                self.assertHolidayName(name, holidays, dts)
-                self.assertHolidayName(name, holidays, self.full_range)
+                self.assertSubdivSctHolidayName(
+                    name,
+                    "2020-08-03",
+                    "2021-08-02",
+                    "2022-08-01",
+                    "2023-08-07",
+                    "2024-08-05",
+                    "2025-08-04",
+                )
+                self.assertSubdivSctHolidayName(name, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -273,7 +273,7 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
         )
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "SCT":
-                self.assertNoHolidayName(name, holidays)
+                self.assertNoSubdivSctHolidayName(name)
             else:
                 self.assertHolidayName(name, holidays, dts)
                 self.assertHolidayName(name, holidays, range(1971, self.end_year))
@@ -331,7 +331,8 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
     def test_boxing_day(self):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
-        obs_dt = (
+
+        obs_dts = (
             "2004-12-28",
             "2009-12-28",
             "2010-12-28",
@@ -339,8 +340,8 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
             "2020-12-28",
             "2021-12-28",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_boxing_day_scotland(self):
         name = "Boxing Day"
