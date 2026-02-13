@@ -54,16 +54,16 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         "Wales": "WLS",
     }
     supported_languages = ("en_GB", "en_US", "th")
-    _deprecated_subdivisions = ("UK",)
-    # Bank Holidays Act 1871
+    # Bank Holidays Act 1871.
     start_year = 1872
+    _deprecated_subdivisions = ("UK",)
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, UnitedKingdomStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
-        # Bank Holidays Extension Act 1875
+        # Bank Holidays Extension Act 1875.
         kwargs.setdefault("observed_since", 1875)
         super().__init__(*args, **kwargs)
 
@@ -92,6 +92,17 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             else:
                 self._add_holiday_last_mon_of_may(name)
 
+    def _populate_common(self):
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
+
+        if self._year >= 1971:
+            # Late Summer Bank Holiday.
+            self._add_holiday_last_mon_of_aug(tr("Late Summer Bank Holiday"))
+        else:
+            # Whit Monday.
+            self._add_whit_monday(tr("Whit Monday"))
+
     def _populate_subdiv_holidays(self):
         if self.subdiv != "SCT":
             if self._year >= 1975:
@@ -113,35 +124,17 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         super()._populate_subdiv_holidays()
 
     def _populate_subdiv_eng_public_holidays(self):
-        # Easter Monday.
-        self._add_easter_monday(tr("Easter Monday"))
-
-        if self._year <= 1970:
-            # Whit Monday.
-            self._add_whit_monday(tr("Whit Monday"))
-
-        if self._year >= 1971:
-            # Late Summer Bank Holiday.
-            self._add_holiday_last_mon_of_aug(tr("Late Summer Bank Holiday"))
+        self._populate_common()
 
     def _populate_subdiv_nir_public_holidays(self):
+        self._populate_common()
+
         if self._year >= 1903:
             # Saint Patrick's Day.
             self._add_observed(self._add_saint_patricks_day(tr("Saint Patrick's Day")))
 
-        # Easter Monday.
-        self._add_easter_monday(tr("Easter Monday"))
-
-        if self._year <= 1970:
-            # Whit Monday.
-            self._add_whit_monday(tr("Whit Monday"))
-
         # Battle of the Boyne.
         self._add_observed(self._add_holiday_jul_12(tr("Battle of the Boyne")))
-
-        if self._year >= 1971:
-            # Late Summer Bank Holiday.
-            self._add_holiday_last_mon_of_aug(tr("Late Summer Bank Holiday"))
 
     def _populate_subdiv_sct_public_holidays(self):
         # New Year's Day.
@@ -175,16 +168,7 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             )
 
     def _populate_subdiv_wls_public_holidays(self):
-        # Easter Monday.
-        self._add_easter_monday(tr("Easter Monday"))
-
-        if self._year <= 1970:
-            # Whit Monday.
-            self._add_whit_monday(tr("Whit Monday"))
-
-        if self._year >= 1971:
-            # Late Summer Bank Holiday.
-            self._add_holiday_last_mon_of_aug(tr("Late Summer Bank Holiday"))
+        self._populate_common()
 
 
 class UK(UnitedKingdom):
