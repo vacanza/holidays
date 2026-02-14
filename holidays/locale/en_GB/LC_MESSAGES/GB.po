@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.91\n"
 "POT-Creation-Date: 2025-01-29 14:18+0700\n"
-"PO-Revision-Date: 2026-02-11 18:35+0200\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-02-14 16:52+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -48,12 +48,12 @@ msgstr ""
 msgid "Easter Monday"
 msgstr ""
 
-#. Whit Monday.
-msgid "Whit Monday"
-msgstr ""
-
 #. Late Summer Bank Holiday.
 msgid "Late Summer Bank Holiday"
+msgstr ""
+
+#. Whit Monday.
+msgid "Whit Monday"
 msgstr ""
 
 #. New Year's Day.
@@ -122,4 +122,8 @@ msgstr ""
 
 #. Coronation of Charles III.
 msgid "Coronation of Charles III"
+msgstr ""
+
+#. Scotland's participation in the FIFA World Cup final.
+msgid "Scotland's participation in the FIFA World Cup final"
 msgstr ""
