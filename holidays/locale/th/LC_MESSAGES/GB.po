@@ -126,4 +126,4 @@ msgstr "พระราชพิธีราชาภิเษกของสม
 
 #. Scotland's participation in the FIFA World Cup final.
 msgid "Scotland's participation in the FIFA World Cup final"
-msgstr "การที่สกอตแลนด์ได้เข้าร่วมการแข่งขันฟุตบอลโลกรอบชิงชนะเลิศ"
+msgstr "เฉลิมฉลองสกอตแลนด์เข้ารอบฟุตบอลโลกรอบ 16 ทีมสุดท้าย"
