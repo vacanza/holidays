@@ -13,9 +13,9 @@
 # Germany holidays.
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.87\n"
+"Project-Id-Version: Holidays 0.88\n"
 "POT-Creation-Date: 2023-04-04 16:13+0300\n"
-"PO-Revision-Date: 2025-12-02 18:19+0200\n"
+"PO-Revision-Date: 2025-12-27 00:27+0100\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: de\n"
@@ -25,6 +25,87 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.6\n"
 "X-Source-Language: de\n"
+
+msgid "Weihnachtsferien"
+msgstr ""
+
+msgid "Halbjahrespause"
+msgstr ""
+
+msgid "Frühjahrsferien"
+msgstr ""
+
+msgid "Himmelfahrt/Pfingsten"
+msgstr ""
+
+msgid "Sommerferien"
+msgstr ""
+
+msgid "Herbstferien"
+msgstr ""
+
+msgid "Brückentag"
+msgstr ""
+
+msgid "Osterferien"
+msgstr ""
+
+msgid "Pfingsten"
+msgstr ""
+
+msgid "Halbjahresferien"
+msgstr ""
+
+msgid "Tag nach Himmelfahrt"
+msgstr ""
+
+msgid "Tag vor dem 03. Oktober"
+msgstr ""
+
+msgid "Tag vor dem 01. Mai"
+msgstr ""
+
+msgid "Tage nach dem 03. Oktober"
+msgstr ""
+
+msgid "Fastnachtsferien"
+msgstr ""
+
+msgid "Pfingstferien"
+msgstr ""
+
+msgid "Winterferien"
+msgstr ""
+
+msgid "Schulfreier Tag"
+msgstr ""
+
+msgid "Himmelfahrt"
+msgstr ""
+
+msgid "Unterrichtsfreier Tag"
+msgstr ""
+
+msgid "Beweglicher Ferientag"
+msgstr ""
+
+msgid "Tage um Allerheiligen"
+msgstr ""
+
+msgid "Unterrichtsfreier Tag nach AZVO"
+msgstr ""
+
+msgid "Unterrichtsfreie Tage"
+msgstr ""
+
+msgid "Zusätzliche feststehende Ferientage"
+msgstr ""
+
+msgid "Ferien in Verbindung mit dem 1. Mai und Himmelfahrt"
+msgstr ""
+
+msgid "Variabler Ferientag"
+msgstr ""
 
 #. New Year's Day.
 msgid "Neujahr"
