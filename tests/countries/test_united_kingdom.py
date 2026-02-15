@@ -48,6 +48,16 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
             "2023-05-08",
         )
 
+    def test_special_subdiv_holidays(self):
+        dts = ("2026-06-15",)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "SCT":
+                self.assertSubdivSctHoliday(dts)
+            else:
+                self.assertNoHoliday(holidays, dts)
+
+        self.assertNoHoliday(dts)
+
     def test_new_years_day(self):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1975, self.end_year)))
