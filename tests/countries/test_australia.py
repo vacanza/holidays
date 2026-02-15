@@ -141,6 +141,7 @@ class TestAustralia(CommonCountryTests, TestCase):
 
     def test_anzac_day(self):
         name = "ANZAC Day"
+        observed_name = "ANZAC Day (observed)"
         self.assertHolidayName(name, (f"{year}-04-25" for year in range(1921, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1921))
         for subdiv, holidays in self.subdiv_holidays.items():
@@ -150,6 +151,9 @@ class TestAustralia(CommonCountryTests, TestCase):
             if subdiv == "ACT":
                 self.assertNoHolidayName(name, holidays, "2026-04-25")
                 self.assertHolidayName(name, holidays, "2026-04-27")
+            elif subdiv in ("NSW", "WA"):
+                self.assertHolidayName(name, holidays, "2026-04-25")
+                self.assertHolidayName(observed_name, holidays, "2026-04-27")
 
     def test_labor_day(self):
         name = "Labour Day"

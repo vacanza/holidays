@@ -313,12 +313,15 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # ANZAC Day.
         # 1912-2010: SUN - add MON.
         # from 2011: normal.
+        # 2026-2027: SAT,SUN - add MON.
 
         if self._year >= 1921:
             # ANZAC Day.
             dt = self._add_anzac_day(tr("ANZAC Day"))
             if self._year <= 2010:
                 self._add_observed(dt, rule=SUN_TO_NEXT_MON)
+            elif 2026 <= self._year <= 2027:
+                self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON)
 
         # Labor Day.
         self._add_holiday_1st_mon_of_oct(tr("Labour Day"))
