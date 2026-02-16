@@ -30,7 +30,7 @@ from holidays.countries.japan import Japan
 
 
 class JapanExchange(Japan):
-    """Japan Exchange Group (JPX) market holidays.
+    """Japan Exchange Group (XJPX) market holidays.
 
     This class provides Japan Exchange-specific market holidays.
     Market holidays are days when the stock exchange is closed for trading
@@ -39,9 +39,9 @@ class JapanExchange(Japan):
         * https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html
     """
 
-    market = "JPX"
+    market = "XJPX"
     supported_categories = (PUBLIC, BANK)  # match parent type for mypy
-    start_year = 1878  # Tokyo Stock Exchange established in 1878
+    start_year = 1948
 
     def __init__(self, *args, **kwargs) -> None:
         # Always include both public and bank holidays from the parent.
@@ -54,34 +54,38 @@ class JapanExchange(Japan):
 
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year: int) -> None:
-        super()._populate(year)
+   def _populate_public_holidays(self) -> None:
+        # First populate standard Japan public + bank holidays.
+        super()._populate_public_holidays()
+
+        year = self._year
 
         if year < self.start_year or year > self.end_year:
             return
 
-        # Apply JPX weekday‑only rule for Jan 2, Jan 3, Dec 31.
         market_holiday_name = tr("市場休業日")
-        for day in (2, 3):
-            dt = date(year, JAN, day)
-            self._apply_jpx_weekday_rule(dt, market_holiday_name)
-        dt = date(year, DEC, 31)
-        self._apply_jpx_weekday_rule(dt, market_holiday_name)
 
-        # Add one‑off static closures.
-        for month, day, name in JapanExchangeStaticHolidays.special_public_holidays.get(year, ()):
+        # JPX fixed annual market closures.
+        for month, day in (
+            (JAN, 2),
+            (JAN, 3),
+            (DEC, 31),
+        ):
+            dt = date(year, month, day)
+
+            # Remove parent holiday entry if present (to avoid duplicates/conflicts).
+            if dt in self:
+                del self[dt]
+
+            # Add as official market holiday (regardless of weekday).
+            self._add_holiday(market_holiday_name, dt)
+
+        # Add one-off static closures.
+        for month, day, name in (
+            JapanExchangeStaticHolidays.special_public_holidays.get(year, ())
+        ):
             dt = date(year, month, day)
             self._add_holiday(name, dt)
-
-    def _apply_jpx_weekday_rule(self, dt: date, name: str) -> None:
-        """Remove unconditional bank holiday and add weekday‑only market holiday."""
-        # Remove the parent's entry (bank holiday) if it exists.
-        if dt in self:
-            del self[dt]
-        # Add as market holiday only on weekdays.
-        if self._is_weekday(dt):
-            self._add_holiday(name, dt)
-
 
 class JapanExchangeStaticHolidays:
     """Static one‑off market closures for Japan Exchange."""
@@ -115,7 +119,7 @@ class JapanExchangeStaticHolidays:
 
 # Exchange aliases – all refer to the same JapanExchange calendar.
 class JPX(JapanExchange):
-    """Alias for JapanExchange (JPX)."""
+    """Alias for JapanExchange (XJPX)."""
 
 
 class TSE(JapanExchange):
