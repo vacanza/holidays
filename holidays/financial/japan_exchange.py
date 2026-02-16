@@ -54,15 +54,11 @@ class JapanExchange(Japan):
 
         super().__init__(*args, **kwargs)
 
-   def _populate_public_holidays(self) -> None:
+    def _populate_public_holidays(self) -> None:
         # First populate standard Japan public + bank holidays.
         super()._populate_public_holidays()
 
         year = self._year
-
-        if year < self.start_year or year > self.end_year:
-            return
-
         market_holiday_name = tr("市場休業日")
 
         # JPX fixed annual market closures.
@@ -81,11 +77,10 @@ class JapanExchange(Japan):
             self._add_holiday(market_holiday_name, dt)
 
         # Add one-off static closures.
-        for month, day, name in (
-            JapanExchangeStaticHolidays.special_public_holidays.get(year, ())
-        ):
+        for month, day, name in JapanExchangeStaticHolidays.special_public_holidays.get(year, ()):
             dt = date(year, month, day)
             self._add_holiday(name, dt)
+
 
 class JapanExchangeStaticHolidays:
     """Static one‑off market closures for Japan Exchange."""
