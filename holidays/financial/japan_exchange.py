@@ -40,7 +40,6 @@ class JapanExchange(Japan):
     """
 
     market = "JPX"
-    default_category = PUBLIC
     supported_categories = (PUBLIC, BANK)  # match parent type for mypy
     start_year = 1878  # Tokyo Stock Exchange established in 1878
 
