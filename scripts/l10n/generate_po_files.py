@@ -117,9 +117,15 @@ class POGenerator:
                         and cls.__module__ == module
                         and getattr(cls, "default_language") is not None
                     ):
-                        name = getattr(cls, "country", getattr(cls, "market", None))
-                        entity_code_info_mapping[name.upper()] = (cls.default_language, path)
-                        break
+                        try:
+                            country = getattr(cls, "country", None)
+                        except AttributeError:
+                            country = None
+                        market = getattr(cls, "market", None)
+                        name = country or market
+                        if name is not None:
+                            entity_code_info_mapping[name.upper()] = (cls.default_language, path)
+                            break
 
         all_po_update_tasks: list[tuple[str, str]] = []
         with ProcessPoolExecutor() as executor:

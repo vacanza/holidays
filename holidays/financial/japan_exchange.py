@@ -32,10 +32,11 @@ from holidays.countries.japan import Japan
 class JapanExchange(Japan):
     """Japan Exchange Group (JPX) market holidays.
 
-    Inherits all Japanese public and bank holidays from the country calendar,
-    reclassifies all bank holidays as public holidays (market closed), and adds
-    JPX‑specific one‑off closures. Enforces JPX's weekday‑only rule for
-    January 2, January 3, and December 31.
+    This class provides Japan Exchange-specific market holidays.
+    Market holidays are days when the stock exchange is closed for trading
+
+    References:
+        * https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html
     """
 
     market = "JPX"

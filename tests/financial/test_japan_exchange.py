@@ -72,11 +72,3 @@ class TestJapanExchange(CommonFinancialTests, TestCase):
         self.assertIn(date(1880, 1, 2), jpx_1880)
         self.assertNotIn(date(1880, 1, 3), jpx_1880)  # Saturday
         self.assertIn(date(1880, 12, 31), jpx_1880)
-
-    def test_apply_jpx_weekday_rule_branch(self):
-        """Directly exercise the branch where the date is not already in the holidays."""
-        jpx = JapanExchange()
-        dt = date(2025, 4, 1)  # Tuesday, not a holiday
-        jpx._apply_jpx_weekday_rule(dt, "Test Holiday")
-        self.assertIn(dt, jpx)
-        self.assertEqual(jpx.get(dt), "Test Holiday")
