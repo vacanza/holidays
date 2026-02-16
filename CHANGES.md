@@ -3,6 +3,7 @@
 Released February 16, 2026
 
 - Refactor United Kingdom holidays (#3262 by @KJhellico)
+- Update Australia holidays: add extra ANZAC Day holiday in NSW (#3273 by @simongreen-net, @arkid15r)
 - Update Ireland holidays: add `OPTIONAL` category (#3260 by @PredictiveManish)
 - Update README: fix Snyk badge (#3250 by @KJhellico)
 - Update United Kingdom holidays: add Jun 15, 2026 holiday in Scotland (#3272 by @KJhellico)
