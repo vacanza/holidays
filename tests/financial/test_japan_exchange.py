@@ -48,6 +48,8 @@ class TestJapanExchange(CommonFinancialTests, TestCase):
         self.assertNotIn(date(2022, 1, 2), JapanExchange(years=2022))
         # 2023-12-31 (Sunday) – should not be a JPX holiday.
         self.assertNotIn(date(2023, 12, 31), JapanExchange(years=2023))
+        # 2022-01-03 (Monday follows Sunday) – should be a JPX holiday.
+        self.assertIn(date(2022, 1, 3), JapanExchange(years=2022))
 
     def test_citizens_holiday(self):
         """Citizens' Holiday (国民の休日) is inherited from Japan (e.g., Silver Week 2026)."""
@@ -63,3 +65,18 @@ class TestJapanExchange(CommonFinancialTests, TestCase):
         self.assertIn(date(2019, 5, 1), jpx_2019)
         self.assertIn(date(2019, 5, 2), jpx_2019)
         self.assertIn(date(2019, 5, 6), jpx_2019)
+
+    def test_pre_1949(self):
+        """Testing years before Japan's start_year (1949) to cover all branches."""
+        jpx_1880 = JapanExchange(years=1880)
+        self.assertIn(date(1880, 1, 2), jpx_1880)
+        self.assertNotIn(date(1880, 1, 3), jpx_1880)  # Saturday
+        self.assertIn(date(1880, 12, 31), jpx_1880)
+
+    def test_apply_jpx_weekday_rule_branch(self):
+        """Directly exercise the branch where the date is not already in the holidays."""
+        jpx = JapanExchange()
+        dt = date(2025, 4, 1)  # Tuesday, not a holiday
+        jpx._apply_jpx_weekday_rule(dt, "Test Holiday")
+        self.assertIn(dt, jpx)
+        self.assertEqual(jpx.get(dt), "Test Holiday")
