@@ -184,6 +184,12 @@ class GBR(UnitedKingdom):
 
 
 class UnitedKingdomStaticHolidays:
+    """United Kingdom special holidays.
+
+    References:
+        <https://web.archive.org/web/20260214143756/https://privycouncil.independent.gov.uk/wp-content/uploads/2026/02/Scotland-Bank-Holiday-Proclamation.pdf>
+    """
+
     special_public_holidays = {
         # Silver Jubilee of Elizabeth II.
         1977: (JUN, 7, tr("Silver Jubilee of Elizabeth II")),
@@ -205,4 +211,9 @@ class UnitedKingdomStaticHolidays:
         ),
         # Coronation of Charles III.
         2023: (MAY, 8, tr("Coronation of Charles III")),
+    }
+
+    special_sct_public_holidays = {
+        # Scotland's participation in the FIFA World Cup final.
+        2026: (JUN, 15, tr("Scotland's participation in the FIFA World Cup final"))
     }
