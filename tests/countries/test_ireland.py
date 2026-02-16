@@ -56,6 +56,20 @@ class TestIreland(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-03-17" for year in range(1903, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1903))
 
+    def test_good_friday(self):
+        name = "Good Friday"
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertOptionalHolidayName(name, self.full_range)
+
     def test_easter_monday(self):
         name = "Easter Monday"
         self.assertHolidayName(

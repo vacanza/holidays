@@ -14,10 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.66\n"
+"Project-Id-Version: Holidays 0.91\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-01-29 14:18+0700\n"
-"PO-Revision-Date: 2025-01-31 13:54+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-02-14 16:52+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -44,6 +45,18 @@ msgstr ""
 msgid "Spring Bank Holiday"
 msgstr ""
 
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr ""
+
+#. Late Summer Bank Holiday.
+msgid "Late Summer Bank Holiday"
+msgstr ""
+
+#. Whit Monday.
+msgid "Whit Monday"
+msgstr ""
+
 #. New Year's Day.
 msgid "New Year's Day"
 msgstr ""
@@ -54,18 +67,6 @@ msgstr ""
 
 #. Boxing Day.
 msgid "Boxing Day"
-msgstr ""
-
-#. Easter Monday.
-msgid "Easter Monday"
-msgstr ""
-
-#. Whit Monday.
-msgid "Whit Monday"
-msgstr ""
-
-#. Late Summer Bank Holiday.
-msgid "Late Summer Bank Holiday"
 msgstr ""
 
 #. Saint Patrick's Day.
@@ -122,4 +123,8 @@ msgstr ""
 
 #. Coronation of Charles III.
 msgid "Coronation of Charles III"
+msgstr ""
+
+#. Scotland's participation in the FIFA World Cup final.
+msgid "Scotland's participation in the FIFA World Cup final"
 msgstr ""

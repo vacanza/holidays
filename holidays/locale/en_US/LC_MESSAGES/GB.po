@@ -14,10 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.66\n"
+"Project-Id-Version: Holidays 0.91\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-01-29 14:18+0700\n"
-"PO-Revision-Date: 2025-01-31 13:54+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-02-14 16:52+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -44,6 +45,18 @@ msgstr "May Day"
 msgid "Spring Bank Holiday"
 msgstr "Spring Bank Holiday"
 
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Easter Monday"
+
+#. Late Summer Bank Holiday.
+msgid "Late Summer Bank Holiday"
+msgstr "Late Summer Bank Holiday"
+
+#. Whit Monday.
+msgid "Whit Monday"
+msgstr "Whit Monday"
+
 #. New Year's Day.
 msgid "New Year's Day"
 msgstr "New Year's Day"
@@ -55,18 +68,6 @@ msgstr "Christmas Day"
 #. Boxing Day.
 msgid "Boxing Day"
 msgstr "Boxing Day"
-
-#. Easter Monday.
-msgid "Easter Monday"
-msgstr "Easter Monday"
-
-#. Whit Monday.
-msgid "Whit Monday"
-msgstr "Whit Monday"
-
-#. Late Summer Bank Holiday.
-msgid "Late Summer Bank Holiday"
-msgstr "Late Summer Bank Holiday"
 
 #. Saint Patrick's Day.
 msgid "Saint Patrick's Day"
@@ -123,3 +124,7 @@ msgstr "State Funeral of Queen Elizabeth II"
 #. Coronation of Charles III.
 msgid "Coronation of Charles III"
 msgstr "Coronation of Charles III"
+
+#. Scotland's participation in the FIFA World Cup final.
+msgid "Scotland's participation in the FIFA World Cup final"
+msgstr "Scotland's participation in the FIFA World Cup final"

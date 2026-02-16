@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import FEB, MAR, SEP, DEC
+from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -24,6 +25,7 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     """
 
     country = "IE"
+    supported_categories = (OPTIONAL, PUBLIC)
     start_year = 1872
 
     def __init__(self, *args, **kwargs):
@@ -79,6 +81,10 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
         # Saint Stephen's Day.
         self._add_christmas_day_two("Saint Stephen's Day")
+
+    def _populate_optional_holidays(self):
+        # Good Friday.
+        self._add_good_friday("Good Friday")
 
 
 class IE(Ireland):

@@ -37,6 +37,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
           * [ACT Holidays (Anzac Day 2026) Declaration 2025 (No 1)](https://web.archive.org/web/20260116225801/https://legislation.act.gov.au/View/ni/2025-650/current/html/2025-650.html)
           * [NSW Banks and Bank Holidays Act 1912](https://web.archive.org/web/20241107225523/https://legislation.nsw.gov.au/view/html/repealed/current/act-1912-043)
           * [NSW Public Holidays Act 2010](https://web.archive.org/web/20250316173922/https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115)
+          * [NSW 2026-2027](https://web.archive.org/web/20260216073138/https://www.nsw.gov.au/about-nsw/public-holidays)
           * [NT Public Holidays Act 1981](https://web.archive.org/web/20250315072128/https://legislation.nt.gov.au/api/sitecore/Act/PDF?id=12145)
           * [QLD Holidays Act 1983](https://web.archive.org/web/20250404230918/https://www.legislation.qld.gov.au/view/html/inforce/current/act-1983-018)
           * [QLD 2013-2028](https://web.archive.org/web/20150703042947/http://www.qld.gov.au/recreation/travel/holidays/public/)
@@ -313,12 +314,15 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # ANZAC Day.
         # 1912-2010: SUN - add MON.
         # from 2011: normal.
+        # 2026-2027: SAT, SUN - add MON.
 
         if self._year >= 1921:
             # ANZAC Day.
             dt = self._add_anzac_day(tr("ANZAC Day"))
             if self._year <= 2010:
                 self._add_observed(dt, rule=SUN_TO_NEXT_MON)
+            elif 2026 <= self._year <= 2027:
+                self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON)
 
         # Labor Day.
         self._add_holiday_1st_mon_of_oct(tr("Labour Day"))
