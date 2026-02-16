@@ -43,10 +43,6 @@ class JapanExchange(Japan):
     supported_categories = (PUBLIC, BANK)  # match parent type for mypy
     start_year = 1878  # Tokyo Stock Exchange established in 1878
 
-    @property
-    def country(self):
-        raise AttributeError("JapanExchange has no country attribute")
-
     def __init__(self, *args, **kwargs) -> None:
         # Always include both public and bank holidays from the parent.
         categories = kwargs.get("categories", (PUBLIC, BANK))
