@@ -313,7 +313,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # ANZAC Day.
         # 1912-2010: SUN - add MON.
         # from 2011: normal.
-        # 2026-2027: SAT,SUN - add MON.
+        # 2026-2027: SAT, SUN - add MON.
 
         if self._year >= 1921:
             # ANZAC Day.
