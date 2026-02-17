@@ -26,6 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_IN\n"
+
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
@@ -149,7 +150,7 @@ msgstr "டாக்டர் பி. ஆர். அம்பேத்கர் 
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
-msgstr "ஆந்திரா அஸ்தி தினம்"
+msgstr "ஆந்திரப் பிரதேச நாள்"
 
 #. Ugadi.
 msgid "Ugadi"
@@ -173,7 +174,7 @@ msgstr "பீகார் தினம்"
 
 #. Chhattisgarh Foundation Day.
 msgid "Chhattisgarh Foundation Day"
-msgstr "சத்தீஸ்கர் அஸ்தி தினம்"
+msgstr "சத்தீஸ்கர் தினம்"
 
 #. Goa Liberation Day.
 msgid "Goa Liberation Day"
@@ -193,7 +194,7 @@ msgstr "சர்தார் வல்லபாய் படேல் ஜெய
 
 #. Haryana Foundation Day.
 msgid "Haryana Foundation Day"
-msgstr "அரியானா அஸ்தி தினம்"
+msgstr "அரியானா நாள்"
 
 #. Himachal Day.
 msgid "Himachal Day"
@@ -213,7 +214,7 @@ msgstr "ஓணம்"
 
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"
-msgstr "கேரளா அஸ்தி தினம்"
+msgstr "கேரள நாள்"
 
 #. Gudi Padwa.
 msgid "Gudi Padwa"
@@ -229,7 +230,7 @@ msgstr "மகாராஷ்டிரா தினம்"
 
 #. Madhya Pradesh Foundation Day.
 msgid "Madhya Pradesh Foundation Day"
-msgstr "மத்திய பிரதேச அஸ்தி தினம்"
+msgstr "மத்திய பிரதேச நாள்"
 
 #. Mizoram State Day.
 msgid "Mizoram State Day"
