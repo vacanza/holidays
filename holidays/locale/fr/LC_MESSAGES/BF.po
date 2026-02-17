@@ -12,12 +12,11 @@
 #
 # Burkina Faso holidays (French localization).
 #
-
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.89\n"
+"Project-Id-Version: Holidays 0.92\n"
 "POT-Creation-Date: 2026-01-09\n"
-"PO-Revision-Date: 2026-01-09\n"
+"PO-Revision-Date: 2026-02-17 23:24+0530\n"
 "Last-Translator: Aman Srivastava <amansri345@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
@@ -27,21 +26,20 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_BF\n"
 
-
-#. %s (observed).
+#. %s (estimated).
 #, c-format
-msgid "%s (observed)"
-msgstr "%s (observé)"
+msgid "%s (estimated)"
+msgstr "%s (estimé)"
 
 #. %s (observed, estimated).
 #, c-format
 msgid "%s (observed, estimated)"
 msgstr "%s (observé, estimé)"
 
-#. %s (estimated).
+#. %s (observed).
 #, c-format
-msgid "%s (estimated)"
-msgstr "%s (estimé)"
+msgid "%s (observed)"
+msgstr "%s (observé)"
 
 #. New Year's Day.
 msgid "New Year's Day"
@@ -59,7 +57,7 @@ msgstr "Journée internationale des femmes"
 msgid "Easter Monday"
 msgstr "Lundi de Pâques"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr "Fête du Travail"
 
@@ -99,6 +97,6 @@ msgstr "Aïd el-Fitr"
 msgid "Eid al-Adha"
 msgstr "Aïd el-Adha"
 
-#. Mawlid.
+#. Prophet's Birthday.
 msgid "Mawlid"
 msgstr "Mawlid"
