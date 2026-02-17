@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Burkina Faso holidays (French localization).
+# Burkina Faso holidays fr localization.
 #
 msgid ""
 msgstr ""
