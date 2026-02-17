@@ -30,7 +30,7 @@ from holidays.countries.japan import Japan
 
 
 class JapanExchange(Japan):
-    """Japan Exchange Group (XJPX) market holidays.
+    """Japan Exchange Group (JPX) market holidays.
 
     This class provides Japan Exchange-specific market holidays.
     Market holidays are days when the stock exchange is closed for trading
@@ -113,8 +113,12 @@ class JapanExchangeStaticHolidays:
 
 
 # Exchange aliases – all refer to the same JapanExchange calendar.
-class JPX(JapanExchange):
+class XJPX(JapanExchange):
     """Alias for JapanExchange (XJPX)."""
+
+
+class JPX(JapanExchange):
+    """Alias for JapanExchange (JPX)."""
 
 
 class TSE(JapanExchange):
