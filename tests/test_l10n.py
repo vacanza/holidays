@@ -36,11 +36,23 @@ class TestLocalization(unittest.TestCase):
         self.assertEqual(pl_xx["2022-01-01"], "Nowy Rok")
 
     def test_localization(self):
-        tests_dir = Path(__file__).parent
-        locale_dir = tests_dir.parent / "holidays" / "locale"
+        locale_dir = Path(__file__).parents[1] / "holidays" / "locale"
         placeholder_re = re.compile(r"%[a-zA-Z]")
+        mandatory_fields = {
+            "Project-Id-Version",
+            "Report-Msgid-Bugs-To",
+            "POT-Creation-Date",
+            "PO-Revision-Date",
+            "Last-Translator",
+            "Language-Team",
+            "Language",
+            "MIME-Version",
+            "Content-Type",
+            "Content-Transfer-Encoding",
+            "X-Source-Language",
+        }
 
-        for po_path in sorted(Path(locale_dir).rglob("*.po")):
+        for po_path in sorted(locale_dir.rglob("*.po")):
             try:
                 po_file = create_po_file(po_path, check_for_duplicates=True)
             except ValueError as e:
@@ -54,6 +66,13 @@ class TestLocalization(unittest.TestCase):
                 )
 
                 raise e
+
+            missing_fields = mandatory_fields - set(po_file.metadata.keys())
+            self.assertFalse(
+                missing_fields,
+                f"{po_path} metadata does not contain mandatory fields: "
+                f"{', '.join(missing_fields)}",
+            )
 
             # Collect `<country_code>` part from
             # holidays/locale/<locale>/LC_MESSAGES/<country_code>.po.
