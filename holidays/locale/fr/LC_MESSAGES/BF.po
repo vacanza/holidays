@@ -11,11 +11,11 @@
 #  License: MIT (see LICENSE file)
 #
 # Burkina Faso holidays fr localization.
-#
+
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.92\n"
-"POT-Creation-Date: 2026-01-09\n"
+"POT-Creation-Date: 2026-01-09 00:00+0000\n"
 "PO-Revision-Date: 2026-02-17 23:24+0530\n"
 "Last-Translator: Aman Srivastava <amansri345@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
@@ -47,11 +47,11 @@ msgstr "Jour de l’An"
 
 #. Revolution Day.
 msgid "Revolution Day"
-msgstr "Journée de la Révolution"
+msgstr "Soulèvement populaire"
 
 #. International Women's Day.
 msgid "International Women's Day"
-msgstr "Journée internationale des femmes"
+msgstr "Journée internationale de la femme"
 
 #. Easter Monday.
 msgid "Easter Monday"
@@ -59,7 +59,7 @@ msgstr "Lundi de Pâques"
 
 #. Labor Day.
 msgid "Labour Day"
-msgstr "Fête du Travail"
+msgstr "Fête du travail"
 
 #. Ascension Day.
 msgid "Ascension Day"
@@ -67,7 +67,7 @@ msgstr "Ascension"
 
 #. Independence Day.
 msgid "Independence Day"
-msgstr "Fête de l’Indépendance"
+msgstr "Fête nationale"
 
 #. Assumption Day.
 msgid "Assumption Day"
@@ -75,7 +75,7 @@ msgstr "Assomption"
 
 #. Martyrs' Day.
 msgid "Martyrs' Day"
-msgstr "Journée des Martyrs"
+msgstr "Journée nationale des martyrs"
 
 #. All Saints' Day.
 msgid "All Saints' Day"
@@ -87,16 +87,16 @@ msgstr "Proclamation de l’Indépendance"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "Fête de Noël"
+msgstr "Noël"
 
 #. Eid al-Fitr.
 msgid "Eid al-Fitr"
-msgstr "Aïd el-Fitr"
+msgstr "Korité"
 
 #. Eid al-Adha.
 msgid "Eid al-Adha"
-msgstr "Aïd el-Adha"
+msgstr "Tabaski"
 
 #. Prophet's Birthday.
 msgid "Mawlid"
-msgstr "Mawlid"
+msgstr "Mouloud"

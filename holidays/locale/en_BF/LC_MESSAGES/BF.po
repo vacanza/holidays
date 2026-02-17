@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.92\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
-"POT-Creation-Date: 2026-01-09\n"
+"POT-Creation-Date: 2026-01-09 00:00+0000\n"
 "PO-Revision-Date: 2026-02-17 23:24+0530\n"
 "Last-Translator: Aman Srivastava <amansri345@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
@@ -30,74 +30,74 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
-msgstr "%s (estimated)"
+msgstr ""
 
 #. %s (observed, estimated).
 #, c-format
 msgid "%s (observed, estimated)"
-msgstr "%s (observed, estimated)"
+msgstr ""
 
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
-msgstr "%s (observed)"
+msgstr ""
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr "New Year's Day"
+msgstr ""
 
 #. Revolution Day.
 msgid "Revolution Day"
-msgstr "Revolution Day"
+msgstr ""
 
 #. International Women's Day.
 msgid "International Women's Day"
-msgstr "International Women's Day"
+msgstr ""
 
 #. Easter Monday.
 msgid "Easter Monday"
-msgstr "Easter Monday"
+msgstr ""
 
 #. Labor Day.
 msgid "Labour Day"
-msgstr "Labour Day"
+msgstr ""
 
 #. Ascension Day.
 msgid "Ascension Day"
-msgstr "Ascension Day"
+msgstr ""
 
 #. Independence Day.
 msgid "Independence Day"
-msgstr "Independence Day"
+msgstr ""
 
 #. Assumption Day.
 msgid "Assumption Day"
-msgstr "Assumption Day"
+msgstr ""
 
 #. Martyrs' Day.
 msgid "Martyrs' Day"
-msgstr "Martyrs' Day"
+msgstr ""
 
 #. All Saints' Day.
 msgid "All Saints' Day"
-msgstr "All Saints' Day"
+msgstr ""
 
 #. Proclamation of Independence Day.
 msgid "Proclamation of Independence Day"
-msgstr "Proclamation of Independence Day"
+msgstr ""
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "Christmas Day"
+msgstr ""
 
 #. Eid al-Fitr.
 msgid "Eid al-Fitr"
-msgstr "Eid al-Fitr"
+msgstr ""
 
 #. Eid al-Adha.
 msgid "Eid al-Adha"
-msgstr "Eid al-Adha"
+msgstr ""
 
 #. Prophet's Birthday.
 msgid "Mawlid"
-msgstr "Mawlid"
+msgstr ""
