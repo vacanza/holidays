@@ -1,3 +1,15 @@
+# Version 0.91
+
+Released February 16, 2026
+
+- Refactor United Kingdom holidays (#3262 by @KJhellico)
+- Update Australia holidays: add extra ANZAC Day holiday in NSW (#3273 by @simongreen-net, @arkid15r)
+- Update Ireland holidays: add `OPTIONAL` category (#3260 by @PredictiveManish)
+- Update README: fix Snyk badge (#3250 by @KJhellico)
+- Update United Kingdom holidays: add Jun 15, 2026 holiday in Scotland (#3272 by @KJhellico)
+- Update dependencies: pre-commit + make update (#3258 by @arkid15r)
+- Add "Report-Msgid-Bugs-To" entry to .po files header (#3274 by @KJhellico)
+
 # Version 0.90
 
 Released February 2, 2026
