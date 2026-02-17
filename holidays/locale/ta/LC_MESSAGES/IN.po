@@ -10,18 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-#  holidays
-#  --------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-#  Tamil translations for India holidays.
-#  Website: https://github.com/vacanza/holidays
-#  License: MIT (see LICENSE file)
-#
-#  Author: Vacanza Team and individual contributors (see CONTRIBUTORS file)
-#          Nellai Abiram <nellaiabiram08@gmail.com> (c) 2026
-#  India holidays ta localization.
+# India holidays ta localization.
 #
 msgid ""
 msgstr ""
@@ -37,7 +26,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_IN\n"
-
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
