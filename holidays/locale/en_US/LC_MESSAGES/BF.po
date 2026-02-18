@@ -15,7 +15,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.92\n"
-"POT-Creation-Date: 2026-01-09\n"
+"POT-Creation-Date: 2026-01-09 00:00+0000\n"
 "PO-Revision-Date: 2026-02-17 23:24+0530\n"
 "Last-Translator: Aman Srivastava <amansri345@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
@@ -99,4 +99,4 @@ msgstr "Eid al-Adha"
 
 #. Prophet's Birthday.
 msgid "Mawlid"
-msgstr "Prophet's Birthday"
+msgstr "Mawlid"
