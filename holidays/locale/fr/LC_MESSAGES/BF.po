@@ -95,7 +95,7 @@ msgstr "Korité"
 
 #. Eid al-Adha.
 msgid "Eid al-Adha"
-msgstr "Tabaski"
+msgstr "Jour de Tabaski"
 
 #. Prophet's Birthday.
 msgid "Mawlid"
