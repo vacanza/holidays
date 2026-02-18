@@ -43,7 +43,7 @@ msgstr "%s (observé)"
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr "Jour de l’An"
+msgstr "Jour de l'An"
 
 #. Revolution Day.
 msgid "Revolution Day"
