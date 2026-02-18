@@ -67,11 +67,11 @@ class TestLocalization(unittest.TestCase):
 
                 raise e
 
-            missing_fields = mandatory_fields - set(po_file.metadata.keys())
+            missing_fields = mandatory_fields - set(po_file.metadata)
             self.assertFalse(
                 missing_fields,
                 f"{po_path} metadata does not contain mandatory fields: "
-                f"{', '.join(missing_fields)}",
+                f"{', '.join(sorted(missing_fields))}",
             )
 
             # Collect `<country_code>` part from
