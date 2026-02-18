@@ -9,11 +9,12 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
+#
 # India holidays ta localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.91\n"
+"Project-Id-Version: Holidays 0.92\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
 "PO-Revision-Date: 2026-02-09 12:14+0530\n"
