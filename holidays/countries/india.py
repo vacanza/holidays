@@ -42,6 +42,8 @@ class India(
         * Tamil Nadu:
             * [Tamil Monthly Calendar](https://web.archive.org/web/20231228103352/https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
             * [Tamil Calendar](https://web.archive.org/web/20250429125140/https://www.prokerala.com/general/calendar/tamilcalendar.php)
+        * Maharashtra:
+            * <https://web.archive.org/web/20260119120609/https://cdnbbsr.s3waas.gov.in/s33430095c577593aad3c39c701712bcfe/uploads/2025/01/202501241197765911.pdf>
     """
 
     country = "IN"
@@ -146,7 +148,7 @@ class India(
         "West Bengal": "WB",
     }
     supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = ("en_IN", "en_US", "gu", "hi")
+    supported_languages = ("en_IN", "en_US", "gu", "hi", "mr")
     _deprecated_subdivisions = (
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
@@ -396,10 +398,13 @@ class India(
     def _populate_subdiv_mh_public_holidays(self):
         # Gudi Padwa.
         self._add_gudi_padwa(tr("Gudi Padwa"))
+
         # Chhatrapati Shivaji Maharaj Jayanti.
         self._add_holiday_feb_19(tr("Chhatrapati Shivaji Maharaj Jayanti"))
+
         # Dr. B. R. Ambedkar Jayanti.
-        self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
+        self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar Jayanti"))
+
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
 
