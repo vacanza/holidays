@@ -99,4 +99,4 @@ msgstr "Eid al-Adha"
 
 #. Prophet's Birthday.
 msgid "Mawlid"
-msgstr "Mawlid"
+msgstr "Prophet's Birthday"
