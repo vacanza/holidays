@@ -237,7 +237,7 @@ class TestBurkinaFaso(CommonCountryTests, TestCase):
             ("2022-07-09", "Eid al-Adha"),
             ("2022-08-05", "Independence Day"),
             ("2022-08-15", "Assumption Day"),
-            ("2022-10-09", "Mawlid"),
+            ("2022-10-09", "Prophet's Birthday"),
             ("2022-10-31", "Martyrs' Day"),
             ("2022-11-01", "All Saints' Day"),
             ("2022-12-11", "Proclamation of Independence Day"),
