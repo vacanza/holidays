@@ -91,7 +91,7 @@ msgstr "Jour de Noël"
 
 #. Eid al-Fitr.
 msgid "Eid al-Fitr"
-msgstr "Korité"
+msgstr "Jour de Ramadan"
 
 #. Eid al-Adha.
 msgid "Eid al-Adha"
