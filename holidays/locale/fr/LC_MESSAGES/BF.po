@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 #
 # Burkina Faso holidays fr localization.
-
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.92\n"
