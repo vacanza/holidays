@@ -83,7 +83,7 @@ msgstr "Toussaint"
 
 #. Proclamation of Independence Day.
 msgid "Proclamation of Independence Day"
-msgstr "Proclamation de l’Indépendance"
+msgstr "Proclamation de l'Indépendance"
 
 #. Christmas Day.
 msgid "Christmas Day"
