@@ -87,7 +87,7 @@ msgstr "Proclamation de l'Indépendance"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "Noël"
+msgstr "Jour de Noël"
 
 #. Eid al-Fitr.
 msgid "Eid al-Fitr"
