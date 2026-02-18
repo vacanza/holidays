@@ -37,6 +37,21 @@ class TestLocalization(unittest.TestCase):
 
     def test_localization(self):
         locale_dir = Path(__file__).parents[1] / "holidays" / "locale"
+        placeholder_re = re.compile(r"%[a-zA-Z]")
+        mandatory_fields = {
+            "Project-Id-Version",
+            "Report-Msgid-Bugs-To",
+            "POT-Creation-Date",
+            "PO-Revision-Date",
+            "Last-Translator",
+            "Language-Team",
+            "Language",
+            "MIME-Version",
+            "Content-Type",
+            "Content-Transfer-Encoding",
+            "X-Source-Language",
+        }
+
         for po_path in sorted(locale_dir.rglob("*.po")):
             try:
                 po_file = create_po_file(po_path, check_for_duplicates=True)
@@ -52,19 +67,6 @@ class TestLocalization(unittest.TestCase):
 
                 raise e
 
-            mandatory_fields = {
-                "Content-Transfer-Encoding",
-                "Content-Type",
-                "Language-Team",
-                "Language",
-                "Last-Translator",
-                "MIME-Version",
-                "PO-Revision-Date",
-                "POT-Creation-Date",
-                "Project-Id-Version",
-                "Report-Msgid-Bugs-To",
-                "X-Source-Language",
-            }
             missing_fields = mandatory_fields - set(po_file.metadata.keys())
             self.assertFalse(
                 missing_fields,
@@ -101,7 +103,6 @@ class TestLocalization(unittest.TestCase):
                 f"{', '.join(oe.msgid for oe in obsolete_entries)}",
             )
 
-            placeholder_re = re.compile(r"%[a-zA-Z]")
             for entry in po_file:
                 self.assertEqual(
                     Counter(placeholder_re.findall(entry.msgid)),
