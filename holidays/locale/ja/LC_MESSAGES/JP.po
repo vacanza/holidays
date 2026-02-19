@@ -28,93 +28,93 @@ msgstr ""
 "X-Generator: Poedit 3.7\n"
 "X-Source-Language: ja\n"
 
-#. 4. Apply JPX weekday‑only rule for Jan 2, Jan 3, Dec 31.
+#. Market Holiday.
 msgid "市場休業日"
 msgstr ""
 
-#. Imperial Accession Day substitute
-#. Coronation Ceremony
-#. Substitute Holiday
-#. Olympic Games postponement
-#. Mountain Day substitute
-#. Olympic Games
-#. Peace Memorial Ceremony substitute
-#. Emperor's Birthday substitute
-#. National Foundation Day substitute
-#. Constitution Memorial Day substitute
-#. Labor Thanksgiving Day substitute
+#. Imperial Accession Day substitute.
+#. Coronation Ceremony.
+#. Substitute Holiday.
+#. Olympic Games postponement.
+#. Mountain Day substitute.
+#. Olympic Games.
+#. Peace Memorial Ceremony substitute.
+#. Emperor's Birthday substitute.
+#. National Foundation Day substitute.
+#. Constitution Memorial Day substitute.
+#. Labor Thanksgiving Day substitute.
 msgid "銀行休業日"
 msgstr ""
 
-#. Silver Week (Citizens' Holiday)
+#. Silver Week (Citizens' Holiday).
 msgid "国民の休日"
 msgstr ""
 
-#~ msgid "振替休日"
-#~ msgstr ""
+msgid "振替休日"
+msgstr ""
 
-#~ msgid "元日"
-#~ msgstr ""
+msgid "元日"
+msgstr ""
 
-#~ msgid "成人の日"
-#~ msgstr ""
+msgid "成人の日"
+msgstr ""
 
-#~ msgid "建国記念の日"
-#~ msgstr ""
+msgid "建国記念の日"
+msgstr ""
 
-#~ msgid "天皇誕生日"
-#~ msgstr ""
+msgid "天皇誕生日"
+msgstr ""
 
-#~ msgid "春分の日"
-#~ msgstr ""
+msgid "春分の日"
+msgstr ""
 
-#~ msgid "昭和の日"
-#~ msgstr ""
+msgid "昭和の日"
+msgstr ""
 
-#~ msgid "憲法記念日"
-#~ msgstr ""
+msgid "憲法記念日"
+msgstr ""
 
-#~ msgid "みどりの日"
-#~ msgstr ""
+msgid "みどりの日"
+msgstr ""
 
-#~ msgid "こどもの日"
-#~ msgstr ""
+msgid "こどもの日"
+msgstr ""
 
-#~ msgid "海の日"
-#~ msgstr ""
+msgid "海の日"
+msgstr ""
 
-#~ msgid "山の日"
-#~ msgstr ""
+msgid "山の日"
+msgstr ""
 
-#~ msgid "敬老の日"
-#~ msgstr ""
+msgid "敬老の日"
+msgstr ""
 
-#~ msgid "秋分の日"
-#~ msgstr ""
+msgid "秋分の日"
+msgstr ""
 
-#~ msgid "スポーツの日"
-#~ msgstr ""
+msgid "スポーツの日"
+msgstr ""
 
-#~ msgid "体育の日"
-#~ msgstr ""
+msgid "体育の日"
+msgstr ""
 
-#~ msgid "文化の日"
-#~ msgstr ""
+msgid "文化の日"
+msgstr ""
 
-#~ msgid "勤労感謝の日"
-#~ msgstr ""
+msgid "勤労感謝の日"
+msgstr ""
 
-#~ msgid "結婚の儀"
-#~ msgstr ""
+msgid "結婚の儀"
+msgstr ""
 
-#~ msgid "大喪の礼"
-#~ msgstr ""
+msgid "大喪の礼"
+msgstr ""
 
-#~ msgid "即位礼正殿の儀"
-#~ msgstr ""
+msgid "即位礼正殿の儀"
+msgstr ""
 
-#~ msgid "天皇の即位の日"
-#~ msgstr ""
+msgid "天皇の即位の日"
+msgstr ""
 
-#~ msgid "即位礼正殿の儀が行われる日"
-#~ msgstr ""
+msgid "即位礼正殿の儀が行われる日"
+msgstr ""

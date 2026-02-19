@@ -15,7 +15,7 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import DEC, JAN
-from holidays.constants import BANK, PUBLIC
+from holidays.constants import PUBLIC
 from holidays.countries.japan import Japan
 
 
@@ -23,29 +23,19 @@ class JapanExchange(Japan):
     """Japan Exchange Group (JPX) market holidays.
 
     This class provides Japan Exchange-specific market holidays.
-    Market holidays are days when the stock exchange is closed for trading
+    Market holidays are days when the stock exchange is closed for trading.
 
     References:
         * https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html
     """
 
+    country: str = None  # type: ignore[assignment]
     market = "XJPX"
-    supported_categories = (PUBLIC, BANK)  # match parent type for mypy
+    supported_categories: tuple[str, ...] = (PUBLIC,)  # type: ignore[assignment]
     start_year = 1948
 
-    def __init__(self, *args, **kwargs) -> None:
-        # Always include both public and bank holidays from the parent.
-        categories = kwargs.get("categories", (PUBLIC, BANK))
-        if categories is None:
-            categories = (PUBLIC, BANK)
-        else:
-            categories = tuple(set(categories) | {PUBLIC, BANK})
-        kwargs["categories"] = categories
-
-        super().__init__(*args, **kwargs)
-
-    def _populate_public_holidays(self) -> None:
-        # First populate standard Japan public + bank holidays.
+    def _populate_public_holidays(self):
+        # First populate standard Japan public holidays.
         super()._populate_public_holidays()
 
         year = self._year

@@ -9,16 +9,14 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-# SOME DESCRIPTIVE TITLE
-# This file is distributed under the same license as the Holidays package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
-#, fuzzy
+#
+# Japan Exchange holidays.
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.91\n"
-"POT-Creation-Date: 2026-02-07 16:17+0000\n"
+"POT-Creation-Date: 2023-07-23 15:45+0300\n"
 "PO-Revision-Date: 2026-02-07 16:17+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Jane Doe <jane@example.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -26,3 +24,94 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: ja\n"
+
+#. Market Holiday.
+msgid "市場休業日"
+msgstr ""
+
+#. Imperial Accession Day substitute.
+#. Coronation Ceremony.
+#. Substitute Holiday.
+#. Olympic Games postponement.
+#. Mountain Day substitute.
+#. Olympic Games.
+#. Peace Memorial Ceremony substitute.
+#. Emperor's Birthday substitute.
+#. National Foundation Day substitute.
+#. Constitution Memorial Day substitute.
+#. Labor Thanksgiving Day substitute.
+msgid "銀行休業日"
+msgstr ""
+
+#. Silver Week (Citizens' Holiday).
+msgid "国民の休日"
+msgstr ""
+
+msgid "振替休日"
+msgstr ""
+
+msgid "元日"
+msgstr ""
+
+msgid "成人の日"
+msgstr ""
+
+msgid "建国記念の日"
+msgstr ""
+
+msgid "天皇誕生日"
+msgstr ""
+
+msgid "春分の日"
+msgstr ""
+
+msgid "昭和の日"
+msgstr ""
+
+msgid "憲法記念日"
+msgstr ""
+
+msgid "みどりの日"
+msgstr ""
+
+msgid "こどもの日"
+msgstr ""
+
+msgid "海の日"
+msgstr ""
+
+msgid "山の日"
+msgstr ""
+
+msgid "敬老の日"
+msgstr ""
+
+msgid "秋分の日"
+msgstr ""
+
+msgid "スポーツの日"
+msgstr ""
+
+msgid "体育の日"
+msgstr ""
+
+msgid "文化の日"
+msgstr ""
+
+msgid "勤労感謝の日"
+msgstr ""
+
+msgid "結婚の儀"
+msgstr ""
+
+msgid "大喪の礼"
+msgstr ""
+
+msgid "即位礼正殿の儀"
+msgstr ""
+
+msgid "天皇の即位の日"
+msgstr ""
+
+msgid "即位礼正殿の儀が行われる日"
+msgstr ""

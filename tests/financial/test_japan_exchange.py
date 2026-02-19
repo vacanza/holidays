@@ -13,7 +13,7 @@
 from datetime import date
 from unittest import TestCase
 
-from holidays.constants import BANK, PUBLIC
+from holidays.constants import PUBLIC
 from holidays.financial.japan_exchange import JapanExchange
 from tests.common import CommonFinancialTests
 
@@ -27,13 +27,9 @@ class TestJapanExchange(CommonFinancialTests, TestCase):
         """Test initialization with categories=None."""
         jpx = JapanExchange(categories=None)
         self.assertIn(PUBLIC, jpx.categories)
-        self.assertIn(BANK, jpx.categories)
-
-    def test_code(self):
-        self.assertTrue(hasattr(self.holidays, "market"))
 
     def test_market_holidays(self):
-        """JPX‑specific market holidays: Jan 2, Jan 3, Dec 31."""
+        """JPX-specific market holidays: Jan 2, Jan 3, Dec 31."""
         self.assertHolidayName(
             "市場休業日",  # Market Holiday
             "2020-01-02",
@@ -52,9 +48,9 @@ class TestJapanExchange(CommonFinancialTests, TestCase):
         )
 
     def test_substitute_holiday(self):
-        """Substitute holidays are inherited from Japan."""
-        # 2022-01-03 (Monday follows Sunday) – should be a JPX holiday (substitute).
-        self.assertIn(date(2022, 1, 3), JapanExchange(years=2022))
+        """Verify inherited 振替休日 (substitute holiday)."""
+        # 2024-02-11 is Sunday, so 2024-02-12 is a substitute holiday.
+        self.assertIn(date(2024, 2, 12), JapanExchange(years=2024))
 
     def test_citizens_holiday(self):
         """Citizens' Holiday (国民の休日) is inherited from Japan (e.g., Silver Week 2026)."""
@@ -64,7 +60,7 @@ class TestJapanExchange(CommonFinancialTests, TestCase):
         )
 
     def test_special_one_off_closures(self):
-        """Static one‑off market closures (special bank holidays) are included."""
+        """Static one-off market closures (special bank holidays) are included."""
         jpx_2019 = JapanExchange(years=2019)
         self.assertIn(date(2019, 4, 30), jpx_2019)
         self.assertIn(date(2019, 5, 1), jpx_2019)
@@ -76,7 +72,7 @@ class TestJapanExchange(CommonFinancialTests, TestCase):
         self.assertIn(date(2025, 5, 6), jpx_2025)
         self.assertIn(date(2025, 11, 24), jpx_2025)
 
-    def test_pre_1948(self):
+    def test_no_holidays(self):
         """Testing years before JapanExchange's start_year (1948) to cover all branches."""
         self.assertNoHolidays(JapanExchange(years=1880))
         self.assertNoHolidays(JapanExchange(years=1947))

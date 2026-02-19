@@ -28,25 +28,25 @@ msgstr ""
 "X-Generator: Poedit 3.7\n"
 "X-Source-Language: ja\n"
 
-#. 4. Apply JPX weekday‑only rule for Jan 2, Jan 3, Dec 31.
+#. Market Holiday.
 msgid "市場休業日"
 msgstr "วันหยุดตลาดหลักทรัพย์"
 
-#. Imperial Accession Day substitute
-#. Coronation Ceremony
-#. Substitute Holiday
-#. Olympic Games postponement
-#. Mountain Day substitute
-#. Olympic Games
-#. Peace Memorial Ceremony substitute
-#. Emperor's Birthday substitute
-#. National Foundation Day substitute
-#. Constitution Memorial Day substitute
-#. Labor Thanksgiving Day substitute
+#. Imperial Accession Day substitute.
+#. Coronation Ceremony.
+#. Substitute Holiday.
+#. Olympic Games postponement.
+#. Mountain Day substitute.
+#. Olympic Games.
+#. Peace Memorial Ceremony substitute.
+#. Emperor's Birthday substitute.
+#. National Foundation Day substitute.
+#. Constitution Memorial Day substitute.
+#. Labor Thanksgiving Day substitute.
 msgid "銀行休業日"
 msgstr "วันหยุดธนาคาร"
 
-#. Silver Week (Citizens' Holiday)
+#. Silver Week (Citizens' Holiday).
 msgid "国民の休日"
 msgstr "วันหยุดพิเศษ"
 
