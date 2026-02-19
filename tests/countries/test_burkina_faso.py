@@ -188,7 +188,7 @@ class TestBurkinaFaso(CommonCountryTests, TestCase):
             ("2022-03-08", "Journée internationale de la femme"),
             ("2022-04-18", "Lundi de Pâques"),
             ("2022-05-01", "Fête du travail"),
-            ("2022-05-02", "Jour de Ramadan; Fête du travail (observé)"),
+            ("2022-05-02", "Fête du travail (observé); Jour de Ramadan"),
             ("2022-05-26", "Ascension"),
             ("2022-07-09", "Jour de Tabaski"),
             ("2022-08-05", "Fête nationale"),
