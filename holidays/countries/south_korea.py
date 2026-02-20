@@ -61,6 +61,7 @@ class SouthKorea(
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_South_Korea>
         * <https://web.archive.org/web/20240429121214/https://www.law.go.kr/법령/관공서의%20공휴일에%20관한%20규정>
+        * <https://web.archive.org/web/20260220070517/https://www.law.go.kr/LSW/lsInfoP.do?efYd=20220101&lsiSeq=233829>
         * <https://web.archive.org/web/20250429081641/https://elaw.klri.re.kr/eng_service/lawView.do?lang=ENG&hseq=34678>
         * <https://web.archive.org/web/20250123212346/https://elaw.klri.re.kr/eng_service/%20lawView.do?hseq=38405&lang=ENG>
         * <https://namu.wiki/w/대통령%20선거일>
@@ -189,7 +190,7 @@ class SouthKorea(
             jun_6 = self._add_holiday_jun_6(tr("현충일"))
             # jun_6 is used later for Local Election Day.
 
-        if self._year <= 2007:
+        if self._year <= 2007 or self._year >= 2026:
             # Constitution Day.
             self._add_holiday_jul_17(tr("제헌절"))
 

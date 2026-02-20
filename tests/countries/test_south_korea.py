@@ -353,7 +353,8 @@ class TestSouthKorea(CommonCountryTests, TestCase):
     def test_constitution_day(self):
         name = "제헌절"
         self.assertHolidayName(name, (f"{year}-07-17" for year in range(self.start_year, 2008)))
-        self.assertNoHolidayName(name, range(2008, self.end_year))
+        self.assertNoHolidayName(name, range(2008, 2026))
+        self.assertHolidayName(name, (f"{year}-07-17" for year in range(2026, self.end_year)))
         self.assertHolidayName(f"{name} 대체 휴일", "1960-07-18")
 
     def test_liberation_day(self):
