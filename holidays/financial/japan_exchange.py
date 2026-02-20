@@ -11,10 +11,8 @@
 #  License: MIT (see LICENSE file)
 #
 
-from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import DEC, JAN
 from holidays.constants import PUBLIC
 from holidays.countries.japan import Japan
 
@@ -31,6 +29,7 @@ class JapanExchange(Japan):
 
     country: str = None  # type: ignore[assignment]
     market = "XJPX"
+    parent_entity = Japan
     supported_categories: tuple[str, ...] = (PUBLIC,)  # type: ignore[assignment]
     start_year = 1948
 
@@ -38,23 +37,14 @@ class JapanExchange(Japan):
         # First populate standard Japan public holidays.
         super()._populate_public_holidays()
 
-        year = self._year
-        market_holiday_name = tr("市場休業日")
+        # Jan 2, Jan 3, Dec 31
+        self._populate_bank_holidays()
 
-        # JPX fixed annual market closures.
-        for month, day in (
-            (JAN, 2),
-            (JAN, 3),
-            (DEC, 31),
-        ):
-            dt = date(year, month, day)
-
-            # Remove parent holiday entry if present (to avoid duplicates/conflicts).
-            if dt in self:
-                del self[dt]
-
-            # Add as official market holiday (regardless of weekday).
-            self._add_holiday(market_holiday_name, dt)
+    def _populate_bank_holidays(self):
+        name = tr("市場休業日")
+        self._add_new_years_day_two(name)
+        self._add_new_years_day_three(name)
+        self._add_new_years_eve(name)
 
 
 # Exchange aliases – all refer to the same JapanExchange calendar.
