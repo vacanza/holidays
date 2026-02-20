@@ -363,6 +363,10 @@ msgstr ""
 msgid "George Washington Day"
 msgstr ""
 
+#. American Citizenship Day.
+msgid "American Citizenship Day"
+msgstr ""
+
 #. José de Diego Day.
 msgid "José de Diego Day"
 msgstr ""

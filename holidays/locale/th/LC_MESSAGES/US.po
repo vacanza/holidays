@@ -363,6 +363,10 @@ msgstr "วันจอร์จ วอชิงตัน, วันประธ
 msgid "George Washington Day"
 msgstr "วันจอร์จ วอชิงตัน"
 
+#. American Citizenship Day.
+msgid "American Citizenship Day"
+msgstr "วันแห่งความเป็นพลเมืองอเมริกัน"
+
 #. José de Diego Day.
 msgid "José de Diego Day"
 msgstr "วันโฮเซ เด ดิเอโก"
