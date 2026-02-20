@@ -563,3 +563,44 @@ To export to `.ics` format, use `save_ics`.
 
 For advanced features and customization of the exported `.ics` output, consider using
 the [icalendar](https://github.com/collective/icalendar) package.
+
+
+
+
+
+from holidays import country_holidays
+from holidays.ical import ICalExporter
+from pathlib import Path
+
+
+def generate_ics(country_code, years, language=None, output_dir=None):
+    """
+    Generate an .ics holiday calendar for a given country.
+
+    :param country_code: ISO country code (e.g. "US", "IN", "DE")
+    :param years: iterable of years (e.g. range(2024, 2026))
+    :param language: optional language code (e.g. "en", "fr")
+    :param output_dir: directory where the .ics file will be saved
+    """
+
+    # Print a helpful message if country code is missing
+    if not country_code:
+        print("You need to provide a country code, e.g.: 'US', 'IN', 'DE'")
+        return
+
+    holidays = country_holidays(
+        country_code,
+        years=years,
+        language=language,
+    )
+
+    output_dir = Path(output_dir or ".")
+    filename = output_dir / f"{country_code.upper()}_holidays.ics"
+
+    ICalExporter(holidays).save_ics(filename)
+    print(f"Saved calendar to {filename}")
+
+
+# Example usage
+if __name__ == "__main__":
+    generate_ics("US", years=range(2024, 2026), language="en")
