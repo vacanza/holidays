@@ -33,17 +33,9 @@ class JapanExchange(Japan):
     supported_categories = (PUBLIC,)
 
     def _populate_public_holidays(self):
-        # First populate standard Japan public holidays.
         super()._populate_public_holidays()
 
-        # Jan 2, Jan 3, Dec 31
         self._populate_bank_holidays()
-
-    def _populate_bank_holidays(self):
-        name = tr("市場休業日")
-        self._add_new_years_day_two(name)
-        self._add_new_years_day_three(name)
-        self._add_new_years_eve(name)
 
 
 # Exchange aliases - all refer to the same JapanExchange calendar.
