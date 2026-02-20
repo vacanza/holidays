@@ -24,7 +24,7 @@ class JapanExchange(Japan):
     Market holidays are days when the stock exchange is closed for trading.
 
     References:
-        * https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html
+        * <https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html>
     """
 
     country = None  # type: ignore[assignment]
