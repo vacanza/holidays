@@ -38,18 +38,17 @@ class JapanExchange(Japan):
         self._populate_bank_holidays()
 
 
-# Exchange aliases - all refer to the same JapanExchange calendar.
 class XJPX(JapanExchange):
-    """Alias for JapanExchange (XJPX)."""
+    pass
 
 
 class JPX(JapanExchange):
-    """Alias for JapanExchange (JPX)."""
+    pass
 
 
 class TSE(JapanExchange):
-    """Alias for JapanExchange (Tokyo Stock Exchange)."""
+    pass
 
 
 class OSE(JapanExchange):
-    """Alias for JapanExchange (Osaka Exchange)."""
+    pass
