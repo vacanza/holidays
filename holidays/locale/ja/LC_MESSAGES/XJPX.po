@@ -10,27 +10,24 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Japan holidays en_US localization.
-#
+# Japan Exchange holidays.
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
-"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"Project-Id-Version: Holidays 0.91\n"
 "POT-Creation-Date: 2023-07-23 15:45+0300\n"
-"PO-Revision-Date: 2026-02-11 23:59+0000\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-02-07 16:17+0000\n"
+"Last-Translator: Jane Doe <jane@example.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: en_US\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.7\n"
+"Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: ja\n"
 
 #. Market Holiday.
 msgid "市場休業日"
-msgstr "Market Holiday"
+msgstr ""
 
 #. Imperial Accession Day substitute.
 #. Coronation Ceremony.
@@ -44,77 +41,77 @@ msgstr "Market Holiday"
 #. Constitution Memorial Day substitute.
 #. Labor Thanksgiving Day substitute.
 msgid "銀行休業日"
-msgstr "Bank Holiday"
+msgstr ""
 
 #. Silver Week (Citizens' Holiday).
 msgid "国民の休日"
-msgstr "National Holiday"
+msgstr ""
 
 msgid "振替休日"
-msgstr "Substitute Holiday"
+msgstr ""
 
 msgid "元日"
-msgstr "New Year's Day"
+msgstr ""
 
 msgid "成人の日"
-msgstr "Coming of Age Day"
+msgstr ""
 
 msgid "建国記念の日"
-msgstr "Foundation Day"
+msgstr ""
 
 msgid "天皇誕生日"
-msgstr "Emperor's Birthday"
+msgstr ""
 
 msgid "春分の日"
-msgstr "Vernal Equinox Day"
+msgstr ""
 
 msgid "昭和の日"
-msgstr "Showa Day"
+msgstr ""
 
 msgid "憲法記念日"
-msgstr "Constitution Day"
+msgstr ""
 
 msgid "みどりの日"
-msgstr "Greenery Day"
+msgstr ""
 
 msgid "こどもの日"
-msgstr "Children's Day"
+msgstr ""
 
 msgid "海の日"
-msgstr "Marine Day"
+msgstr ""
 
 msgid "山の日"
-msgstr "Mountain Day"
+msgstr ""
 
 msgid "敬老の日"
-msgstr "Respect for the Aged Day"
+msgstr ""
 
 msgid "秋分の日"
-msgstr "Autumnal Equinox Day"
+msgstr ""
 
 msgid "スポーツの日"
-msgstr "Sports Day"
+msgstr ""
 
 msgid "体育の日"
-msgstr "Physical Education Day"
+msgstr ""
 
 msgid "文化の日"
-msgstr "Culture Day"
+msgstr ""
 
 msgid "勤労感謝の日"
-msgstr "Labor Thanksgiving Day"
+msgstr ""
 
 msgid "結婚の儀"
-msgstr "The Crown Prince Marriage Ceremony"
+msgstr ""
 
 msgid "大喪の礼"
-msgstr "Emperor Shōwa Funeral Ceremony"
+msgstr ""
 
 msgid "即位礼正殿の儀"
-msgstr "Enthronement Ceremony"
+msgstr ""
 
 msgid "天皇の即位の日"
-msgstr "Emperor's Enthronement Day"
+msgstr ""
 
 msgid "即位礼正殿の儀が行われる日"
-msgstr "Emperor's Enthronement Day"
+msgstr ""

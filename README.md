@@ -1939,6 +1939,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Japan Exchange</td>
+<td>XJPX</td>
+<td>Japan Exchange Group (JPX) market holidays</td>
+<td>en_US, <strong>ja</strong>, th</td>
+<td></td>
+</tr>
+<tr>
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>

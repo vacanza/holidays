@@ -28,102 +28,93 @@ msgstr ""
 "X-Generator: Poedit 3.7\n"
 "X-Source-Language: ja\n"
 
+#. Market Holiday.
+msgid "市場休業日"
+msgstr ""
+
+#. Imperial Accession Day substitute.
+#. Coronation Ceremony.
 #. Substitute Holiday.
-msgid "振替休日"
-msgstr ""
-
-#. National Holiday.
-msgid "国民の休日"
-msgstr ""
-
-#. New Year's Day.
-msgid "元日"
-msgstr ""
-
-#. Coming of Age Day.
-msgid "成人の日"
-msgstr ""
-
-#. Foundation Day.
-msgid "建国記念の日"
-msgstr ""
-
-#. Emperor's Birthday.
-msgid "天皇誕生日"
-msgstr ""
-
-#. Vernal Equinox Day.
-msgid "春分の日"
-msgstr ""
-
-#. Showa Day.
-msgid "昭和の日"
-msgstr ""
-
-#. Constitution Day.
-msgid "憲法記念日"
-msgstr ""
-
-#. Greenery Day.
-msgid "みどりの日"
-msgstr ""
-
-#. Children's Day.
-msgid "こどもの日"
-msgstr ""
-
-#. Marine Day.
-msgid "海の日"
-msgstr ""
-
-#. Mountain Day.
-msgid "山の日"
-msgstr ""
-
-#. Respect for the Aged Day.
-msgid "敬老の日"
-msgstr ""
-
-#. Autumnal Equinox Day.
-msgid "秋分の日"
-msgstr ""
-
-#. Sports Day.
-msgid "スポーツの日"
-msgstr ""
-
-#. Physical Education Day.
-msgid "体育の日"
-msgstr ""
-
-#. Culture Day.
-msgid "文化の日"
-msgstr ""
-
-#. Labor Thanksgiving Day.
-msgid "勤労感謝の日"
-msgstr ""
-
-#. Bank Holiday.
+#. Olympic Games postponement.
+#. Mountain Day substitute.
+#. Olympic Games.
+#. Peace Memorial Ceremony substitute.
+#. Emperor's Birthday substitute.
+#. National Foundation Day substitute.
+#. Constitution Memorial Day substitute.
+#. Labor Thanksgiving Day substitute.
 msgid "銀行休業日"
 msgstr ""
 
-#. The Crown Prince marriage ceremony.
+#. Silver Week (Citizens' Holiday).
+msgid "国民の休日"
+msgstr ""
+
+msgid "振替休日"
+msgstr ""
+
+msgid "元日"
+msgstr ""
+
+msgid "成人の日"
+msgstr ""
+
+msgid "建国記念の日"
+msgstr ""
+
+msgid "天皇誕生日"
+msgstr ""
+
+msgid "春分の日"
+msgstr ""
+
+msgid "昭和の日"
+msgstr ""
+
+msgid "憲法記念日"
+msgstr ""
+
+msgid "みどりの日"
+msgstr ""
+
+msgid "こどもの日"
+msgstr ""
+
+msgid "海の日"
+msgstr ""
+
+msgid "山の日"
+msgstr ""
+
+msgid "敬老の日"
+msgstr ""
+
+msgid "秋分の日"
+msgstr ""
+
+msgid "スポーツの日"
+msgstr ""
+
+msgid "体育の日"
+msgstr ""
+
+msgid "文化の日"
+msgstr ""
+
+msgid "勤労感謝の日"
+msgstr ""
+
 msgid "結婚の儀"
 msgstr ""
 
-#. State Funeral of Emperor Shōwa.
 msgid "大喪の礼"
 msgstr ""
 
-#. Enthronement ceremony.
 msgid "即位礼正殿の儀"
 msgstr ""
 
-#. Enthronement day.
 msgid "天皇の即位の日"
 msgstr ""
 
-#. Enthronement ceremony.
 msgid "即位礼正殿の儀が行われる日"
 msgstr ""

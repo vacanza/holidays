@@ -10,13 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Japan holidays th localization.
+# Japan Exchange holidays th localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
-"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
-"POT-Creation-Date: 2023-09-11 10:20+0700\n"
+"Project-Id-Version: Holidays 0.91\n"
+"POT-Creation-Date: 2026-02-11 23:59+0000\n"
 "PO-Revision-Date: 2026-02-11 23:59+0000\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
