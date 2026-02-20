@@ -977,8 +977,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Kyrgyzstan</td>
 <td>KG</td>
 <td></td>
-<td></td>
-<td></td>
+<td>en_US, <strong>ky</strong>, ru_KG</td>
+<td>WORKDAY</td>
 </tr>
 <tr>
 <td>Laos</td>

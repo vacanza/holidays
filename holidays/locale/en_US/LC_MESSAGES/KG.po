@@ -1,0 +1,136 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Kyrgyzstan holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.92\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-02-25 21:53+0200\n"
+"PO-Revision-Date: 2026-02-25 21:53+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: ky\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (болжолдуу)"
+msgstr "%s (estimated)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (көрүлгөн күнү)"
+msgstr "%s (observed)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (көрүлгөн күнү, болжолдуу)"
+msgstr "%s (observed, estimated)"
+
+#. New Year's Day.
+msgid "Жаңы жыл"
+msgstr "New Year's Day"
+
+#. New Year Holidays.
+msgid "Жаңы жылдык каникулдар"
+msgstr "New Year Holidays"
+
+#. Christmas Day.
+msgid "Ыйса Пайгамбардын туулган күнү"
+msgstr "Christmas Day"
+
+#. Fatherland Defender's Day.
+msgid "Ата-Журтту коргоонун күнү"
+msgstr "Fatherland Defender's Day"
+
+#. International Women's Day.
+msgid "Аялдардын эл аралык күнү"
+msgstr "International Women's Day"
+
+#. Women's Day.
+msgid "Аялдар күнү"
+msgstr "Women's Day"
+
+#. Nooruz Holiday.
+msgid "Элдик Нооруз майрамы"
+msgstr "Nooruz Holiday"
+
+#. Day of the People's Revolution.
+msgid "Элдик революция күнү"
+msgstr "Day of the People's Revolution"
+
+#. Day of the People's April Revolution.
+msgid "Элдик Апрель революциясы күнү"
+msgstr "Day of the People's April Revolution"
+
+#. Labor Day.
+msgid "Эмгек майрамы"
+msgstr "Labor Day"
+
+#. International Workers' Solidarity Day.
+msgid "Эмгекчилердин эл аралык тилектештик күнү"
+msgstr "International Workers' Solidarity Day"
+
+#. Constitution Day.
+msgid "Кыргыз Республикасынын Конституция күнү"
+msgstr "Constitution Day"
+
+#. May Holidays.
+msgid "Май каникулдары"
+msgstr "May Holidays"
+
+#. Victory Day.
+msgid "Жеңиш күнү"
+msgstr "Victory Day"
+
+#. Independence Day.
+msgid "Кыргыз Республикасынын Көз карандысыздыгынын күнү"
+msgstr "Independence Day"
+
+#. Days of History and Commemoration of Ancestors.
+msgid "Тарых жана ата-бабаларды эскерүү күндөрү"
+msgstr "Days of History and Commemoration of Ancestors"
+
+#. Day of the Great October Socialist Revolution.
+msgid "Улуу Октябрь социалисттик революциясынын күнү"
+msgstr "Day of the Great October Socialist Revolution"
+
+#. Eid al-Fitr.
+msgid "Орозо айт"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Курман айт"
+msgstr "Eid al-Adha"
+
+#. Fatherland Defender's Day.
+msgid "Мекенди коргоочулардын күнү"
+msgstr "Fatherland Defender's Day"
+
+#. Substituted date format.
+msgid "%d.%m.%Y"
+msgstr "%m/%d/%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Эс алуу күнү (%s күнүнөн которулган)"
+msgstr "Day off (substituted from %s)"
+
+#. Additional public holiday.
+msgid "Кошумча эс алуу күнү"
+msgstr "Additional public holiday"
