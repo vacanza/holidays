@@ -27,11 +27,10 @@ class JapanExchange(Japan):
         * https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html
     """
 
-    country: str = None  # type: ignore[assignment]
+    country = None  # type: ignore[assignment]
     market = "XJPX"
     parent_entity = Japan
-    supported_categories: tuple[str, ...] = (PUBLIC,)  # type: ignore[assignment]
-    start_year = 1949
+    supported_categories = (PUBLIC,)
 
     def _populate_public_holidays(self):
         # First populate standard Japan public holidays.
