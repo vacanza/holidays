@@ -78,9 +78,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
             dts_non_observed.add(self._add_holiday_jan_20(tr("Ümumxalq hüzn günü")))
 
         # Women's Day.
-        dt = self._add_womens_day(tr("Qadınlar günü"))
-        if self._year != 2025:
-            dts_observed.add(dt)
+        dts_observed.add(self._add_womens_day(tr("Qadınlar günü")))
 
         # Spring Festival.
         name = tr("Novruz bayramı")
@@ -147,9 +145,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
         if self._year >= 1993:
             # Eid al-Fitr.
             name = tr("Ramazan bayrami")
-            dt = self._add_eid_al_fitr_day(name)
-            if self._year != 2025:
-                dts_bairami.update(dt)
+            dts_bairami.update(self._add_eid_al_fitr_day(name))
             if self._year >= 2006:
                 dts_bairami.update(self._add_eid_al_fitr_day_two(name))
 
@@ -251,10 +247,6 @@ class AzerbaijanStaticHolidays:
 
     eid_al_adha = tr("Qurban bayrami")
 
-    eid_al_fitr = tr("Ramazan bayrami")
-
-    womens_day = tr("Qadınlar günü")
-
     # Substituted date format.
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
@@ -310,15 +302,13 @@ class AzerbaijanStaticHolidays:
         2025: (
             (JAN, 3, DEC, 29, 2024),
             (JAN, 29, municipal_elections),
+            (MAR, 27, MAR, 10),
+            (MAR, 28, APR, 1),
             (JUN, 27, JUN, 21),
         ),
     }
 
     special_public_holidays_observed = {
         2007: (JAN, 3, eid_al_adha),
-        2025: (
-            (MAR, 27, womens_day),
-            (MAR, 28, eid_al_fitr),
-        ),
         2072: (JAN, 5, eid_al_adha),
     }
