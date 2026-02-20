@@ -1931,6 +1931,13 @@ code when available. The following financial markets are available:
 <td></td>
 <td></td>
 </tr>
+  <tr>
+    <td>Germany Stock Exchange</td>
+    <td>XETR</td>
+    <td>Deutsche Börse Cash Market (Frankfurt Stock Exchange and Xetra) holidays</td>
+    <td></td>
+    <td></td>
+  </tr>
 <tr>
 <td>ICE Futures Europe</td>
 <td>IFEU</td>
