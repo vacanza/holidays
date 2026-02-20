@@ -73,10 +73,15 @@ class TestJapanExchange(CommonFinancialTests, TestCase):
         self.assertIn(date(2025, 11, 24), jpx_2025)
 
     def test_no_holidays(self):
-        """Testing years before JapanExchange's start_year (1948) to cover all branches."""
+        """Testing years before JapanExchange's start_year (1949) to cover all branches."""
         self.assertNoHolidays(JapanExchange(years=1880))
-        self.assertNoHolidays(JapanExchange(years=1947))
+        self.assertNoHolidays(JapanExchange(years=1948))
 
     def test_post_end_year(self):
         """Testing years after JapanExchange's end_year (2099) to cover all branches."""
         self.assertNoHolidays(JapanExchange(years=2101))
+
+    def test_code(self):
+        """Check market code availability while allowing country=None."""
+        self.assertTrue(hasattr(self.holidays, "market"))
+        self.assertIsNone(getattr(self.holidays, "country", None))

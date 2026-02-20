@@ -31,7 +31,7 @@ class JapanExchange(Japan):
     market = "XJPX"
     parent_entity = Japan
     supported_categories: tuple[str, ...] = (PUBLIC,)  # type: ignore[assignment]
-    start_year = 1948
+    start_year = 1949
 
     def _populate_public_holidays(self):
         # First populate standard Japan public holidays.
