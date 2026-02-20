@@ -18,7 +18,7 @@ from holidays.countries.japan import Japan
 
 
 class JapanExchange(Japan):
-    """Japan Exchange Group (JPX) market holidays.
+    """Japan Exchange Group (JPX) holidays.
 
     This class provides Japan Exchange-specific market holidays.
     Market holidays are days when the stock exchange is closed for trading.
