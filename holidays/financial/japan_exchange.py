@@ -47,7 +47,7 @@ class JapanExchange(Japan):
         self._add_new_years_eve(name)
 
 
-# Exchange aliases – all refer to the same JapanExchange calendar.
+# Exchange aliases - all refer to the same JapanExchange calendar.
 class XJPX(JapanExchange):
     """Alias for JapanExchange (XJPX)."""
 
