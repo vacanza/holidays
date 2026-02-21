@@ -396,7 +396,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Burkina Faso</td>
 <td>BF</td>
 <td></td>
-<td></td>
+<td><strong>en_BF</strong>, en_US, fr</td>
 <td></td>
 </tr>
 <tr>
