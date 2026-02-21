@@ -153,6 +153,7 @@ class RussiaStaticHolidays:
     consent_and_reconciliation_day = tr("День согласия и примирения")
 
     constitution_day = tr("День Конституции Российской Федерации")
+
     special_public_holidays = {
         # Substituted Holidays 1991
         # src: https://ru.wikipedia.org/wiki/Праздники_России
