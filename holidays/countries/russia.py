@@ -28,6 +28,8 @@ class Russia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     country = "RU"
     default_language = "ru"
+    # %s (observed).
+    observed_label = tr("%s (выходной)")
     supported_languages = ("en_US", "ru", "th")
     start_year = 1991
 
@@ -103,6 +105,10 @@ class Russia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             if self._year <= 1991:
                 self._add_holiday_nov_8(name)
 
+        if 1994 <= self._year <= 2004:
+            # Constitution Day.
+            self._add_holiday_dec_12(tr("День Конституции Российской Федерации"))
+
 
 class RU(Russia):
     pass
@@ -117,6 +123,36 @@ class RussiaStaticHolidays:
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
     substituted_label = tr("Выходной (перенесено с %s)")
+
+    new_years_day = tr("Новый год")
+
+    new_year_holidays = tr("Новогодние каникулы")
+
+    christmas_day = tr("Рождество Христово")
+
+    defender_of_fatherland_day = tr("День защитника Отечества")
+
+    international_womens_day = tr("Международный женский день")
+
+    labor_day = tr("Праздник Весны и Труда")
+
+    victory_day = tr("День Победы")
+
+    declaration_of_sovereignty_day = tr(
+        "День принятия Декларации о государственном суверенитете Российской Федерации"
+    )
+
+    russia_day = tr("День России")
+
+    unity_day = tr("День народного единства")
+
+    great_october_socialist_revolution_day = tr(
+        "Годовщина Великой Октябрьской социалистической революции"
+    )
+
+    consent_and_reconciliation_day = tr("День согласия и примирения")
+
+    constitution_day = tr("День Конституции Российской Федерации")
 
     special_public_holidays = {
         # Substituted Holidays 1991
@@ -239,14 +275,14 @@ class RussiaStaticHolidays:
         2013: (
             (MAY, 2, JAN, 5),
             (MAY, 3, JAN, 6),
-            (MAY, 10, FEB, 25),
+            (MAY, 10, FEB, 23),
         ),
         # Substituted Holidays 2014
         # src: https://web.archive.org/web/20250415234224/https://www.consultant.ru/document/cons_doc_LAW_146983/
         2014: (
             (MAY, 2, JAN, 4),
             (JUN, 13, JAN, 5),
-            (NOV, 3, FEB, 24),
+            (NOV, 3, FEB, 23),
         ),
         # Substituted Holidays 2015
         # src: https://web.archive.org/web/20250415134053/https://www.consultant.ru/document/cons_doc_LAW_167928/
@@ -257,9 +293,9 @@ class RussiaStaticHolidays:
         # Substituted Holidays 2016
         # src: https://web.archive.org/web/20250417021701/https://www.consultant.ru/document/cons_doc_LAW_186505/
         2016: (
-            (MAY, 3, JAN, 2),
-            (MAR, 7, JAN, 3),
             (FEB, 22, FEB, 20),
+            (MAR, 7, JAN, 2),
+            (MAY, 3, JAN, 3),
         ),
         # Substituted Holidays 2017
         # src: https://web.archive.org/web/20250414184011/https://www.consultant.ru/document/cons_doc_LAW_202871/
@@ -271,8 +307,8 @@ class RussiaStaticHolidays:
         # src: https://web.archive.org/web/20250414223644/https://www.consultant.ru/document/cons_doc_LAW_280526/
         2018: (
             (MAR, 9, JAN, 6),
-            (MAY, 2, JAN, 7),
             (APR, 30, APR, 28),
+            (MAY, 2, JAN, 7),
             (JUN, 11, JUN, 9),
             (DEC, 31, DEC, 29),
         ),
@@ -293,15 +329,15 @@ class RussiaStaticHolidays:
         # src: https://web.archive.org/web/20250414071843/https://www.consultant.ru/document/cons_doc_law_365179/
         2021: (
             (NOV, 5, JAN, 2),
-            (DEC, 31, JAN, 3),
             (FEB, 22, FEB, 20),
+            (DEC, 31, JAN, 3),
         ),
         # Substituted Holidays 2022
         # src: https://web.archive.org/web/20240613213507/https://www.consultant.ru/document/cons_doc_LAW_395538/
         2022: (
+            (MAR, 7, MAR, 5),
             (MAY, 3, JAN, 1),
             (MAY, 10, JAN, 2),
-            (MAR, 7, MAR, 5),
         ),
         # Substituted Holidays 2023
         # src: https://web.archive.org/web/20240908190857/https://www.consultant.ru/document/cons_doc_LAW_425407/
@@ -322,203 +358,144 @@ class RussiaStaticHolidays:
         # src: https://web.archive.org/web/20250414071812/https://www.consultant.ru/document/cons_doc_LAW_481586/
         2025: (
             (MAY, 2, JAN, 4),
-            (DEC, 31, JAN, 5),
             (MAY, 8, FEB, 23),
             (JUN, 13, MAR, 8),
             (NOV, 3, NOV, 1),
+            (DEC, 31, JAN, 5),
         ),
     }
+
+    # These are cases where additional in-lieus are given
+    # without actually making weekend workdays.
+    # src: https://ru.wikipedia.org/wiki/Праздники_России
     special_public_holidays_observed = {
-        # These are cases where additional in-lieus are given
-        # without actually making weekend workdays.
-        # Substituted Holidays 1992 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         1992: (
-            (MAY, 4, MAY, 2),
-            (MAY, 11, MAY, 9),
-            (NOV, 9, NOV, 7),
+            (MAY, 4, labor_day),
+            (MAY, 11, victory_day),
+            (NOV, 9, great_october_socialist_revolution_day),
         ),
-        # Substituted Holidays 1993 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         1993: (
-            (JAN, 4, JAN, 2),
-            (MAY, 3, MAY, 1),
-            (MAY, 4, MAY, 2),
-            (MAY, 10, MAY, 9),
-            (JUN, 14, JUN, 12),
-            (NOV, 8, NOV, 7),
+            (JAN, 4, new_years_day),
+            (MAY, 3, labor_day),
+            (MAY, 4, labor_day),
+            (MAY, 10, victory_day),
+            (JUN, 14, declaration_of_sovereignty_day),
+            (NOV, 8, great_october_socialist_revolution_day),
         ),
-        # Substituted Holidays 1994 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         1994: (
-            (JAN, 3, JAN, 1),
-            (JAN, 4, JAN, 2),
-            (MAY, 3, MAY, 1),
-            (MAY, 10, MAY, 9),
-            (JUN, 13, JUN, 12),
+            (JAN, 3, new_years_day),
+            (JAN, 4, new_years_day),
+            (MAY, 3, labor_day),
+            (MAY, 10, victory_day),
+            (JUN, 13, declaration_of_sovereignty_day),
         ),
-        # Substituted Holidays 1995 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         1995: (
-            (JAN, 3, JAN, 1),
-            (JAN, 9, JAN, 7),
+            (JAN, 3, new_years_day),
+            (JAN, 9, christmas_day),
         ),
-        # Substituted Holidays 1996 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
-        1996: (JAN, 8, JAN, 7),
-        # Substituted Holidays 1997 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
-        1997: (MAR, 10, MAR, 8),
-        # Substituted Holidays 1998 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
+        1996: (JAN, 8, christmas_day),
+        1997: (MAR, 10, international_womens_day),
         1998: (
-            (MAR, 9, MAR, 8),
-            (MAY, 4, MAY, 2),
-            (MAY, 11, MAY, 9),
-            (NOV, 9, NOV, 7),
-            (DEC, 14, DEC, 12),
+            (MAR, 9, international_womens_day),
+            (MAY, 4, labor_day),
+            (MAY, 11, victory_day),
+            (NOV, 9, consent_and_reconciliation_day),
+            (DEC, 14, constitution_day),
         ),
-        # Substituted Holidays 1999 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         1999: (
-            (JAN, 4, JAN, 2),
-            (MAY, 3, MAY, 1),
-            (MAY, 4, MAY, 2),
-            (MAY, 10, MAY, 9),
-            (JUN, 14, JUN, 12),
-            (NOV, 8, NOV, 7),
-            (DEC, 13, DEC, 12),
+            (JAN, 4, new_years_day),
+            (MAY, 3, labor_day),
+            (MAY, 4, labor_day),
+            (MAY, 10, victory_day),
+            (JUN, 14, declaration_of_sovereignty_day),
+            (NOV, 8, consent_and_reconciliation_day),
+            (DEC, 13, constitution_day),
         ),
-        # Substituted Holidays 2000 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         2000: (
-            (JAN, 3, JAN, 1),
-            (JAN, 4, JAN, 2),
+            (JAN, 3, new_years_day),
+            (JAN, 4, new_years_day),
         ),
-        # Substituted Holidays 2001 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
-        2001: (JAN, 8, JAN, 7),
-        # Substituted Holidays 2002 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
-        2002: (FEB, 25, FEB, 23),
-        # Substituted Holidays 2003 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
+        2001: (JAN, 8, christmas_day),
+        2002: (FEB, 25, defender_of_fatherland_day),
         2003: (
-            (FEB, 24, FEB, 23),
-            (MAR, 10, MAR, 8),
+            (FEB, 24, defender_of_fatherland_day),
+            (MAR, 10, international_womens_day),
         ),
-        # Substituted Holidays 2004 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         2004: (
-            (MAY, 3, MAY, 1),
-            (MAY, 4, MAY, 2),
-            (MAY, 10, MAY, 9),
-            (JUN, 14, JUN, 12),
-            (NOV, 8, NOV, 7),
-            (DEC, 13, DEC, 12),
+            (MAY, 3, labor_day),
+            (MAY, 4, labor_day),
+            (MAY, 10, victory_day),
+            (JUN, 14, russia_day),
+            (NOV, 8, consent_and_reconciliation_day),
+            (DEC, 13, constitution_day),
         ),
-        # Substituted Holidays 2005 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         2005: (
-            (JAN, 6, JAN, 1),
-            (JAN, 10, JAN, 2),
-            (MAY, 2, MAY, 1),
-            (JUN, 13, JUN, 12),
+            (JAN, 6, new_years_day),
+            (JAN, 10, new_years_day),
+            (MAY, 2, labor_day),
+            (JUN, 13, russia_day),
         ),
-        # Substituted Holidays 2006 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         2006: (
-            (JAN, 6, JAN, 1),
-            (JAN, 9, JAN, 7),
-            (NOV, 6, NOV, 4),
+            (JAN, 6, new_years_day),
+            (JAN, 9, christmas_day),
+            (NOV, 6, unity_day),
         ),
-        # Substituted Holidays 2007 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         2007: (
-            (JAN, 8, JAN, 7),
-            (NOV, 5, NOV, 4),
+            (JAN, 8, christmas_day),
+            (NOV, 5, unity_day),
         ),
-        # Substituted Holidays 2008 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         2008: (
-            (JAN, 8, JAN, 5),
-            (FEB, 25, FEB, 23),
-            (MAR, 10, MAR, 8),
+            (JAN, 8, new_year_holidays),
+            (FEB, 25, defender_of_fatherland_day),
+            (MAR, 10, international_womens_day),
         ),
-        # Substituted Holidays 2009 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         2009: (
-            (JAN, 6, JAN, 3),
-            (JAN, 8, JAN, 4),
-            (MAR, 9, MAR, 8),
-            (MAY, 11, MAY, 9),
+            (JAN, 6, new_year_holidays),
+            (JAN, 8, new_year_holidays),
+            (MAR, 9, international_womens_day),
+            (MAY, 11, victory_day),
         ),
-        # Substituted Holidays 2010 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         2010: (
-            (JAN, 6, JAN, 2),
-            (JAN, 8, JAN, 3),
-            (MAY, 3, MAY, 1),
-            (MAY, 10, MAY, 9),
-            (JUN, 14, JUN, 12),
+            (JAN, 6, new_year_holidays),
+            (JAN, 8, new_year_holidays),
+            (MAY, 3, labor_day),
+            (MAY, 10, victory_day),
+            (JUN, 14, russia_day),
         ),
-        # Substituted Holidays 2011 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         2011: (
-            (JAN, 6, JAN, 1),
-            (JAN, 10, JAN, 2),
-            (MAY, 2, MAY, 1),
-            (JUN, 13, JUN, 12),
+            (JAN, 6, new_year_holidays),
+            (JAN, 10, new_year_holidays),
+            (MAY, 2, labor_day),
+            (JUN, 13, russia_day),
         ),
-        # Substituted Holidays 2012 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         2012: (
-            (JAN, 6, JAN, 1),
-            (JAN, 9, JAN, 7),
-            (NOV, 5, NOV, 4),
+            (JAN, 6, new_year_holidays),
+            (JAN, 9, christmas_day),
+            (NOV, 5, unity_day),
         ),
-        # Substituted Holidays 2014 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
-        2014: (MAR, 10, MAR, 8),
-        # Substituted Holidays 2015 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         2015: (
-            (MAR, 9, MAR, 8),
-            (MAY, 11, MAY, 9),
+            (MAR, 9, international_womens_day),
+            (MAY, 11, victory_day),
         ),
-        # Substituted Holidays 2016 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         2016: (
-            (MAY, 2, MAY, 1),
-            (JUN, 13, JUN, 12),
+            (MAY, 2, labor_day),
+            (JUN, 13, russia_day),
         ),
-        # Substituted Holidays 2017 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
-        2017: (NOV, 6, NOV, 4),
-        # Substituted Holidays 2018 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
-        2018: (NOV, 5, NOV, 4),
-        # Substituted Holidays 2020 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
+        2017: (NOV, 6, unity_day),
+        2018: (NOV, 5, unity_day),
         2020: (
-            (FEB, 24, FEB, 23),
-            (MAR, 9, MAR, 8),
-            (MAY, 11, MAY, 9),
+            (FEB, 24, defender_of_fatherland_day),
+            (MAR, 9, international_womens_day),
+            (MAY, 11, victory_day),
         ),
-        # Substituted Holidays 2021 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         2021: (
-            (MAY, 3, MAY, 1),
-            (MAY, 10, MAY, 9),
-            (JUN, 14, JUN, 12),
+            (MAY, 3, labor_day),
+            (MAY, 10, victory_day),
+            (JUN, 14, russia_day),
         ),
-        # Substituted Holidays 2022 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
         2022: (
-            (MAY, 2, MAY, 1),
-            (JUN, 13, JUN, 12),
+            (MAY, 2, labor_day),
+            (JUN, 13, russia_day),
         ),
-        # Substituted Holidays 2023 (observed)
-        # src: https://ru.wikipedia.org/wiki/Праздники_России
-        2023: (NOV, 6, NOV, 4),
+        2023: (NOV, 6, unity_day),
     }
