@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from unittest import TestCase
+from unittest import TestCase 
 
 from holidays.countries.gabon import Gabon
 from tests.common import CommonCountryTests
@@ -126,3 +126,21 @@ class TestGabon(CommonCountryTests, TestCase):
             ("2022-11-01", "All Saints' Day"),
             ("2022-12-25", "Christmas Day"),
         )
+        
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-01", "Jour de l’An"),
+            ("2022-04-17", "Journée des droits de la femme"),
+            ("2022-04-18", "Lundi de Pâques"),
+            ("2022-05-01", "Fête du Travail"),
+            ("2022-05-02", "Aïd el-Fitr"),
+            ("2022-05-26", "Ascension"),
+            ("2022-06-06", "Lundi de Pentecôte"),
+            ("2022-07-09", "Aïd el-Adha"),
+            ("2022-08-15", "Assomption"),
+            ("2022-08-16", "Fête de l’Indépendance"),
+            ("2022-08-17", "Fête de l’Indépendance (jour férié)"),
+            ("2022-11-01", "Toussaint"),
+            ("2022-12-25", "Noël"),
+        )
+    
