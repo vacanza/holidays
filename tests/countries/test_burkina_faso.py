@@ -179,6 +179,49 @@ class TestBurkinaFaso(CommonCountryTests, TestCase):
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (observed)"),
         )
+        
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-03", "Revolution Day"),
+            ("2022-03-08", "International Women's Day"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-05-01", "Labour Day"),
+            ("2022-05-02", "Eid al-Fitr; Labour Day (observed)"),
+            ("2022-05-26", "Ascension Day"),
+            ("2022-07-09", "Eid al-Adha"),
+            ("2022-08-05", "Independence Day"),
+            ("2022-08-15", "Assumption Day"),
+            ("2022-10-09", "Mawlid"),
+            ("2022-10-31", "Martyrs' Day"),
+            ("2022-11-01", "All Saints' Day"),
+            ("2022-12-11", "Proclamation of Independence Day"),
+            ("2022-12-12", "Proclamation of Independence Day (observed)"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Christmas Day (observed)"),
+        )
+        
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-03", "Revolution Day"),
+            ("2022-03-08", "International Women's Day"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-05-02", "Eid al-Fitr; Labor Day (observed)"),
+            ("2022-05-26", "Ascension Day"),
+            ("2022-07-09", "Eid al-Adha"),
+            ("2022-08-05", "Independence Day"),
+            ("2022-08-15", "Assumption Day"),
+            ("2022-10-09", "Prophet's Birthday"),
+            ("2022-10-31", "Martyrs' Day"),
+            ("2022-11-01", "All Saints' Day"),
+            ("2022-12-11", "Proclamation of Independence Day"),
+            ("2022-12-12", "Proclamation of Independence Day (observed)"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Christmas Day (observed)"),
+        )
 
     def test_l10n_fr(self):
         self.assertLocalizedHolidays(
@@ -200,48 +243,4 @@ class TestBurkinaFaso(CommonCountryTests, TestCase):
             ("2022-12-12", "Proclamation de l'Indépendance (observé)"),
             ("2022-12-25", "Jour de Noël"),
             ("2022-12-26", "Jour de Noël (observé)"),
-        )
-
-    def test_l10n_en_bf(self):
-        self.assertLocalizedHolidays(
-            "en_BF",
-            ("2022-01-01", "New Year's Day"),
-            ("2022-01-03", "Revolution Day"),
-            ("2022-03-08", "International Women's Day"),
-            ("2022-04-18", "Easter Monday"),
-            ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Eid al-Fitr; Labour Day (observed)"),
-            ("2022-05-26", "Ascension Day"),
-            ("2022-07-09", "Eid al-Adha"),
-            ("2022-08-05", "Independence Day"),
-            ("2022-08-15", "Assumption Day"),
-            ("2022-10-09", "Mawlid"),
-            ("2022-10-31", "Martyrs' Day"),
-            ("2022-11-01", "All Saints' Day"),
-            ("2022-12-11", "Proclamation of Independence Day"),
-            ("2022-12-12", "Proclamation of Independence Day (observed)"),
-            ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Christmas Day (observed)"),
-        )
-
-    def test_l10n_en_us(self):
-        self.assertLocalizedHolidays(
-            "en_US",
-            ("2022-01-01", "New Year's Day"),
-            ("2022-01-03", "Revolution Day"),
-            ("2022-03-08", "International Women's Day"),
-            ("2022-04-18", "Easter Monday"),
-            ("2022-05-01", "Labor Day"),
-            ("2022-05-02", "Eid al-Fitr; Labor Day (observed)"),
-            ("2022-05-26", "Ascension Day"),
-            ("2022-07-09", "Eid al-Adha"),
-            ("2022-08-05", "Independence Day"),
-            ("2022-08-15", "Assumption Day"),
-            ("2022-10-09", "Prophet's Birthday"),
-            ("2022-10-31", "Martyrs' Day"),
-            ("2022-11-01", "All Saints' Day"),
-            ("2022-12-11", "Proclamation of Independence Day"),
-            ("2022-12-12", "Proclamation of Independence Day (observed)"),
-            ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Christmas Day (observed)"),
         )
