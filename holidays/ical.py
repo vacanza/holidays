@@ -172,7 +172,7 @@ class ICalExporter:
         yield f"DTSTART;VALUE=DATE:{dt:%Y%m%d}"
         yield f"DURATION:P{holiday_length}D"
         if len(self.holidays.categories) == 1:
-            yield f"CATEGORY:{next(iter(self.holidays.categories)).upper()}"
+            yield f"CATEGORIES:{next(iter(self.holidays.categories)).upper()}"
         yield "END:VEVENT"
 
     def generate(self, return_bytes: bool = False) -> str | bytes:

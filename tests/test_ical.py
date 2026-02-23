@@ -466,11 +466,11 @@ class TestIcalExporter(TestCase):
             "US", years=2024, categories=UNOFFICIAL, language="en_US"
         )
         output = ICalExporter(single_category_holidays).generate()
-        self.assertIn("CATEGORY:UNOFFICIAL", output)
+        self.assertIn("CATEGORIES:UNOFFICIAL", output)
 
         multi_category_holidays = country_holidays(
             "US", years=2024, categories=(HALF_DAY, UNOFFICIAL), language="en_US"
         )
         output = ICalExporter(multi_category_holidays).generate()
-        self.assertNotIn("CATEGORY:HALF_DAY", output)
-        self.assertNotIn("CATEGORY:UNOFFICIAL", output)
+        self.assertNotIn("CATEGORIES:HALF_DAY", output)
+        self.assertNotIn("CATEGORIES:UNOFFICIAL", output)
