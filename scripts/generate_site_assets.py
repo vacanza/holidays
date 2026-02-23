@@ -45,7 +45,7 @@ def write_assets(h_obj, filename_base, year_dir):
         )
         (year_dir / f"{filename_base}.json").write_text(json_data, encoding="utf-8", newline="\n")
     except Exception as e:
-        print(f"Error writing {filename_base}: {e}")  # noqa: T201
+        print(f"Error writing {filename_base}: {e}")
 
 
 def process_entity(args):
@@ -60,7 +60,7 @@ def process_entity(args):
     except (NotImplementedError, KeyError):
         return None
     except Exception as e:
-        print(f"Skipping {code}: Error instantiating ({e})")  # noqa: T201
+        print(f"Skipping {code}: Error instantiating ({e})")
         return None
 
     # Prepare metadata.
@@ -84,7 +84,7 @@ def process_entity(args):
         "default_language": default_lang,
     }
 
-    print(f"Processing {code} ({name})...")  # noqa: T201
+    print(f"Processing {code} ({name})...")
 
     entity_type = "countries" if is_country else "financial"
 
@@ -106,7 +106,7 @@ def process_entity(args):
                         )
                     write_assets(h_obj, f"ALL_{lang}_{cat}", year_dir)
                 except Exception as e:
-                    print(f"Failed ALL_{lang}_{cat} for {code} {year}: {e}")  # noqa: T201
+                    print(f"Failed ALL_{lang}_{cat} for {code} {year}: {e}")
 
         if is_country:
             for subdiv in instance.subdivisions:
@@ -118,13 +118,13 @@ def process_entity(args):
                             )
                             write_assets(h_obj, f"{subdiv}_{lang}_{cat}", year_dir)
                         except Exception as e:
-                            print(f"Failed {subdiv}_{lang}_{cat} for {code} {year}: {e}")  # noqa: T201
+                            print(f"Failed {subdiv}_{lang}_{cat} for {code} {year}: {e}")
 
     return (entity_type, code, manifest_entry)
 
 
 def main():
-    print(f"--- Generating to {OUTPUT_DIR} ---")  # noqa: T201
+    print(f"--- Generating to {OUTPUT_DIR} ---")
 
     # Inline output dir cleaning
     if OUTPUT_DIR.exists():
@@ -134,7 +134,7 @@ def main():
     work_items = [(c, True) for c in holidays.list_supported_countries(include_aliases=False)]
     work_items += [(m, False) for m in holidays.list_supported_financial(include_aliases=False)]
 
-    print(f"Found {len(work_items)} entities to process.")  # noqa: T201
+    print(f"Found {len(work_items)} entities to process.")
     manifest = {"countries": {}, "financial": {}}
 
     with ProcessPoolExecutor() as executor:
@@ -144,12 +144,12 @@ def main():
                 manifest[etype][code] = meta
 
     manifest_path = OUTPUT_DIR / "index.json"
-    print(f"Writing manifest to {manifest_path}...")  # noqa: T201
+    print(f"Writing manifest to {manifest_path}...")
     manifest_path.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n"
     )
 
-    print("Done.")  # noqa: T201
+    print("Done.")
 
 
 if __name__ == "__main__":
