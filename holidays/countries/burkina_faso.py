@@ -24,7 +24,7 @@ class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Burkina_Faso>
         * <https://www.officeholidays.com/countries/burkina-faso>
-        * <https://fr.wikipedia.org/wiki/Jours_f%C3%A9ri%C3%A9s_au_Burkina_Faso>
+        * [Law 079-2015/CNT](https://web.archive.org/web/20250717095711/https://academiedepolice.bf/index.php/telechargement/category/51-autres-textes-legislatifs-et-reglementaires?download=83:loi-portant-de-fetes-legales-et-evenements-a-caractere-historique-au-burkina-faso)
 
     """
 

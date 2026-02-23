@@ -179,7 +179,7 @@ class TestBurkinaFaso(CommonCountryTests, TestCase):
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (observed)"),
         )
-        
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "New Year's Day"),
@@ -200,7 +200,7 @@ class TestBurkinaFaso(CommonCountryTests, TestCase):
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (observed)"),
         )
-        
+
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
