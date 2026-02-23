@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.82\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-09-11 10:20+0700\n"
-"PO-Revision-Date: 2026-02-11 23:59+0000\n"
+"PO-Revision-Date: 2025-09-17 10:42+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -28,93 +28,102 @@ msgstr ""
 "X-Generator: Poedit 3.7\n"
 "X-Source-Language: ja\n"
 
-#. Market Holiday.
-msgid "市場休業日"
-msgstr "วันหยุดตลาดหลักทรัพย์"
-
-#. Imperial Accession Day substitute.
-#. Coronation Ceremony.
 #. Substitute Holiday.
-#. Olympic Games postponement.
-#. Mountain Day substitute.
-#. Olympic Games.
-#. Peace Memorial Ceremony substitute.
-#. Emperor's Birthday substitute.
-#. National Foundation Day substitute.
-#. Constitution Memorial Day substitute.
-#. Labor Thanksgiving Day substitute.
-msgid "銀行休業日"
-msgstr "วันหยุดธนาคาร"
-
-#. Silver Week (Citizens' Holiday).
-msgid "国民の休日"
-msgstr "วันหยุดพิเศษ"
-
 msgid "振替休日"
 msgstr "วันหยุดชดเชย"
 
+#. National Holiday.
+msgid "国民の休日"
+msgstr "วันหยุดพิเศษ (เพิ่มเติม)"
+
+#. New Year's Day.
 msgid "元日"
 msgstr "วันขึ้นปีใหม่"
 
+#. Coming of Age Day.
 msgid "成人の日"
 msgstr "วันฉลองบรรลุนิติภาวะ"
 
+#. Foundation Day.
 msgid "建国記念の日"
 msgstr "วันชาติญี่ปุ่น"
 
+#. Emperor's Birthday.
 msgid "天皇誕生日"
 msgstr "วันคล้ายวันพระราชสมภพ สมเด็จพระจักรพรรดินารุฮิโตะ"
 
+#. Vernal Equinox Day.
 msgid "春分の日"
 msgstr "วันวสันตวิษุวัต"
 
+#. Showa Day.
 msgid "昭和の日"
 msgstr "วันโชวะ"
 
+#. Constitution Day.
 msgid "憲法記念日"
 msgstr "วันรัฐธรรมนูญ"
 
+#. Greenery Day.
 msgid "みどりの日"
 msgstr "วันพฤกษชาติ"
 
+#. Children's Day.
 msgid "こどもの日"
 msgstr "วันเด็กแห่งชาติ"
 
+#. Marine Day.
 msgid "海の日"
 msgstr "วันแห่งทะเล"
 
+#. Mountain Day.
 msgid "山の日"
 msgstr "วันแห่งภูเขา"
 
+#. Respect for the Aged Day.
 msgid "敬老の日"
 msgstr "วันเคารพผู้สูงอายุ"
 
+#. Autumnal Equinox Day.
 msgid "秋分の日"
 msgstr "วันศารทวิษุวัต"
 
+#. Sports Day.
 msgid "スポーツの日"
 msgstr "วันกีฬาแห่งชาติ"
 
+#. Physical Education Day.
 msgid "体育の日"
 msgstr "วันพลศึกษา"
 
+#. Culture Day.
 msgid "文化の日"
 msgstr "วันวัฒนธรรม"
 
+#. Labor Thanksgiving Day.
 msgid "勤労感謝の日"
 msgstr "วันขอบคุณแรงงาน"
 
+#. Bank Holiday.
+msgid "銀行休業日"
+msgstr "วันหยุดธนาคาร"
+
+#. The Crown Prince marriage ceremony.
 msgid "結婚の儀"
 msgstr "พิธีเสกสมรสมกุฎราชกุมาร"
 
+#. State Funeral of Emperor Shōwa.
 msgid "大喪の礼"
 msgstr "พระราชพิธีพระบรมศพของสมเด็จพระจักรพรรดิโชวะ"
 
+#. Enthronement ceremony.
 msgid "即位礼正殿の儀"
 msgstr "พระราชพิธีจักรพรรดิยาภิเษกของสมเด็จพระจักรพรรดิ"
 
+#. Enthronement day.
 msgid "天皇の即位の日"
 msgstr "พระราชพิธีขึ้นครองราชย์ของสมเด็จพระจักรพรรดิ"
 
+#. Enthronement ceremony.
 msgid "即位礼正殿の儀が行われる日"
 msgstr "พระราชพิธีจักรพรรดิยาภิเษกของสมเด็จพระจักรพรรดิ"
