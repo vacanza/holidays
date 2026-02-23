@@ -13,7 +13,6 @@
 #  License: MIT (see LICENSE file)
 
 import json
-import re
 import shutil
 import sys
 from concurrent.futures import ProcessPoolExecutor
@@ -46,31 +45,30 @@ def write_assets(h_obj, filename_base, year_dir):
         )
         (year_dir / f"{filename_base}.json").write_text(json_data, encoding="utf-8", newline="\n")
     except Exception as e:
-        print(f"Error writing {filename_base}: {e}")
+        print(f"Error writing {filename_base}: {e}")  # noqa: T201
 
 
 def process_entity(args):
     """Worker that generates assets for a single Country/Market."""
-    code, is_financial = args
+    code, is_country = args
 
     try:
-        if not is_financial:
+        if is_country:
             instance = holidays.country_holidays(code)
         else:
             instance = holidays.financial_holidays(code)
     except (NotImplementedError, KeyError):
         return None
     except Exception as e:
-        print(f"Skipping {code}: Error instantiating ({e})")
+        print(f"Skipping {code}: Error instantiating ({e})")  # noqa: T201
         return None
 
-    # Prepare metadata
-    cls = type(instance)
-    entity_cls = cls.__base__ if cls.__name__.isupper() else cls
-    name = re.sub(r"(?<!^)(?=[A-Z])", " ", entity_cls.__name__)
-    languages = instance.supported_languages if instance.supported_languages else ["en_US"]
+    # Prepare metadata.
+    docstring = instance.__class__.__base__.__doc__
+    name = docstring.split("\n")[0].split("holidays")[0].strip()
+    languages = instance.supported_languages or ["en_US"]
     categories = instance.supported_categories
-    default_lang = getattr(instance, "default_language", "en_US")
+    default_lang = getattr(instance, "default_language", None) or "en_US"
 
     subdivision_aliases = instance.get_subdivision_aliases()
     subdivisions_map = {
@@ -86,9 +84,9 @@ def process_entity(args):
         "default_language": default_lang,
     }
 
-    print(f"Processing {code} ({name})...")
+    print(f"Processing {code} ({name})...")  # noqa: T201
 
-    entity_type = "financial" if is_financial else "countries"
+    entity_type = "countries" if is_country else "financial"
 
     # Generate files
     for year in range(DEFAULT_YEAR_START, DEFAULT_YEAR_END + 1):
@@ -98,43 +96,45 @@ def process_entity(args):
         for lang in languages:
             for cat in categories:
                 try:
-                    if not is_financial:
-                        h_obj = holidays.country_holidays(code, years=year, language=lang, categories=[cat])
+                    if is_country:
+                        h_obj = holidays.country_holidays(
+                            code, years=year, language=lang, categories=cat
+                        )
                     else:
-                        h_obj = holidays.financial_holidays(code, years=year, language=lang, categories=[cat])
+                        h_obj = holidays.financial_holidays(
+                            code, years=year, language=lang, categories=cat
+                        )
                     write_assets(h_obj, f"ALL_{lang}_{cat}", year_dir)
                 except Exception as e:
-                    print(f"Failed ALL_{lang}_{cat} for {code} {year}: {e}")
+                    print(f"Failed ALL_{lang}_{cat} for {code} {year}: {e}")  # noqa: T201
 
-        if not is_financial:
+        if is_country:
             for subdiv in instance.subdivisions:
                 for lang in languages:
                     for cat in categories:
                         try:
                             h_obj = holidays.country_holidays(
-                                code, subdiv=subdiv, years=year, language=lang, categories=[cat]
+                                code, subdiv=subdiv, years=year, language=lang, categories=cat
                             )
-                            if h_obj.subdiv == subdiv:
-                                write_assets(h_obj, f"{subdiv}_{lang}_{cat}", year_dir)
+                            write_assets(h_obj, f"{subdiv}_{lang}_{cat}", year_dir)
                         except Exception as e:
-                            print(f"Failed {subdiv}_{lang}_{cat} for {code} {year}: {e}")
+                            print(f"Failed {subdiv}_{lang}_{cat} for {code} {year}: {e}")  # noqa: T201
 
     return (entity_type, code, manifest_entry)
 
 
 def main():
-    print(f"--- Generating to {OUTPUT_DIR} ---")
-    
+    print(f"--- Generating to {OUTPUT_DIR} ---")  # noqa: T201
+
     # Inline output dir cleaning
     if OUTPUT_DIR.exists():
         shutil.rmtree(OUTPUT_DIR)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    
-    work_items = [(c, False) for c in holidays.list_supported_countries(include_aliases=False)]
-    work_items += [(m, True) for m in holidays.list_supported_financial(include_aliases=False)]
+    work_items = [(c, True) for c in holidays.list_supported_countries(include_aliases=False)]
+    work_items += [(m, False) for m in holidays.list_supported_financial(include_aliases=False)]
 
-    print(f"Found {len(work_items)} entities to process.")
+    print(f"Found {len(work_items)} entities to process.")  # noqa: T201
     manifest = {"countries": {}, "financial": {}}
 
     with ProcessPoolExecutor() as executor:
@@ -144,12 +144,12 @@ def main():
                 manifest[etype][code] = meta
 
     manifest_path = OUTPUT_DIR / "index.json"
-    print(f"Writing manifest to {manifest_path}...")
+    print(f"Writing manifest to {manifest_path}...")  # noqa: T201
     manifest_path.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n"
     )
 
-    print("Done.")
+    print("Done.")  # noqa: T201
 
 
 if __name__ == "__main__":
