@@ -20,6 +20,8 @@ from pathlib import Path
 
 sys.path.append(".")
 
+from language_registry import LANGUAGES
+
 import holidays
 from holidays.ical import ICalExporter
 
@@ -27,6 +29,11 @@ from holidays.ical import ICalExporter
 DEFAULT_YEAR_START = 2015
 DEFAULT_YEAR_END = 2035
 OUTPUT_DIR = Path("docs/downloads/ics")
+
+
+def get_full_language_name(lang_code):
+    """Fetches the full name from our language_registry.py."""
+    return LANGUAGES.get(lang_code, LANGUAGES.get(lang_code.split("_")[0], lang_code))
 
 
 def write_assets(h_obj, filename_base, year_dir):
@@ -76,10 +83,13 @@ def process_entity(args):
         for subdiv in instance.subdivisions
     }
 
+    # Generate a clean dictionary of full language names
+    languages_map = {lang: get_full_language_name(lang) for lang in sorted(languages)}
+
     manifest_entry = {
         "name": name,
         "subdivisions": subdivisions_map,
-        "languages": sorted(languages),
+        "languages": languages_map,
         "categories": sorted(categories),
         "default_language": default_lang,
     }
@@ -87,38 +97,22 @@ def process_entity(args):
     print(f"Processing {code} ({name})...")
 
     entity_type = "countries" if is_country else "financial"
+    holidays_func = holidays.country_holidays if is_country else holidays.financial_holidays
 
     # Generate files
     for year in range(DEFAULT_YEAR_START, DEFAULT_YEAR_END + 1):
         year_dir = OUTPUT_DIR / entity_type / code / str(year)
         year_dir.mkdir(parents=True, exist_ok=True)
 
-        for lang in languages:
-            for cat in categories:
-                try:
-                    if is_country:
-                        h_obj = holidays.country_holidays(
-                            code, years=year, language=lang, categories=cat
-                        )
-                    else:
-                        h_obj = holidays.financial_holidays(
-                            code, years=year, language=lang, categories=cat
-                        )
-                    write_assets(h_obj, f"ALL_{lang}_{cat}", year_dir)
-                except Exception as e:
-                    print(f"Failed ALL_{lang}_{cat} for {code} {year}: {e}")
-
-        if is_country:
-            for subdiv in instance.subdivisions:
-                for lang in languages:
-                    for cat in categories:
-                        try:
-                            h_obj = holidays.country_holidays(
-                                code, subdiv=subdiv, years=year, language=lang, categories=cat
-                            )
-                            write_assets(h_obj, f"{subdiv}_{lang}_{cat}", year_dir)
-                        except Exception as e:
-                            print(f"Failed {subdiv}_{lang}_{cat} for {code} {year}: {e}")
+        for subdiv in (None, *instance.subdivisions):
+            for lang in languages:
+                for cat in categories:
+                    filename = f"{subdiv or 'ALL'}_{lang}_{cat}"
+                    try:
+                        h_obj = holidays_func(code, years=year, language=lang, categories=cat)
+                        write_assets(h_obj, filename, year_dir)
+                    except Exception as e:
+                        print(f"Failed {filename} for {code} {year}: {e}")
 
     return (entity_type, code, manifest_entry)
 
