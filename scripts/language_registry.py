@@ -85,15 +85,12 @@ LANGUAGES = {
     "uk": "Ukrainian",
     "uz": "Uzbek",
     "vi": "Vietnamese",
-
     # --- Arabic Locales ---
     "ar_EG": "Arabic (Egypt)",
     "ar_QA": "Arabic (Qatar)",
     "ar_SD": "Arabic (Sudan)",
-
     # --- Cocos Islands ---
     "coa_CC": "Cocos Islands Malay",
-
     # --- English Locales ---
     "en_AI": "English (Anguilla)",
     "en_AU": "English (Australia)",
@@ -136,33 +133,26 @@ LANGUAGES = {
     "en_US": "English (United States)",
     "en_VC": "English (Saint Vincent and the Grenadines)",
     "en_VG": "English (British Virgin Islands)",
-
     # --- Persian / Pashto Locales ---
     "fa_AF": "Persian (Afghanistan)",
     "fa_IR": "Persian (Iran)",
     "ps_AF": "Pashto (Afghanistan)",
-
     # --- French Locales ---
     "fr_BI": "French (Burundi)",
     "fr_BJ": "French (Benin)",
     "fr_HT": "French (Haiti)",
     "fr_NE": "French (Niger)",
     "fr_SN": "French (Senegal)",
-
     # --- Italian Locales ---
     "it_IT": "Italian (Italy)",
-
     # --- Korean Locales ---
     "ko_KP": "Korean (North Korea)",
-
     # --- Malay Locales ---
     "ms_MY": "Malay (Malaysia)",
-
     # --- Papiamento Locales ---
     "pap_AW": "Papiamento (Aruba)",
     "pap_BQ": "Papiamento (Bonaire, Sint Eustatius and Saba)",
     "pap_CW": "Papiamento (Curaçao)",
-
     # --- Portuguese Locales ---
     "pt_AO": "Portuguese (Angola)",
     "pt_BR": "Portuguese (Brazil)",
@@ -173,17 +163,13 @@ LANGUAGES = {
     "pt_PT": "Portuguese (Portugal)",
     "pt_ST": "Portuguese (Sao Tome and Principe)",
     "pt_TL": "Portuguese (Timor Leste)",
-
     # --- Sinhala / Tamil Locales ---
     "si_LK": "Sinhala (Sri Lanka)",
     "ta_LK": "Tamil (Sri Lanka)",
-
     # --- Swedish Locales ---
     "sv_FI": "Swedish (Finland)",
-
     # --- Urdu Locales ---
     "ur_PK": "Urdu (Pakistan)",
-
     # --- Chinese Locales ---
     "zh_CN": "Chinese (Simplified)",
     "zh_HK": "Chinese (Hong Kong)",
