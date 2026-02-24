@@ -23,15 +23,13 @@ class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Burkina_Faso>
-        * <https://www.officeholidays.com/countries/burkina-faso>
+        * <https://web.archive.org/web/20250909124634/https://www.officeholidays.com/countries/burkina-faso>
         * [Law 079-2015/CNT](https://web.archive.org/web/20250717095711/https://academiedepolice.bf/index.php/telechargement/category/51-autres-textes-legislatifs-et-reglementaires?download=83:loi-portant-de-fetes-legales-et-evenements-a-caractere-historique-au-burkina-faso)
-
     """
 
     country = "BF"
     # English is the official language since 2024; French remains widely used.
     default_language = "en_BF"
-    supported_languages = ("en_BF", "en_US", "fr")
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
     # %s (observed, estimated).
@@ -41,6 +39,7 @@ class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
     # On 5 August 1960, Burkina Faso (Republic of Upper Volta at that time)
     # gained independence from France.
     start_year = 1961
+    supported_languages = ("en_BF", "en_US", "fr")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """

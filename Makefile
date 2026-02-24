@@ -68,5 +68,6 @@ test:
 	uv run --no-sync pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
 
 upgrade:
+	pre-commit autoupdate
 	uv lock --upgrade
 	uv sync --all-groups
