@@ -31,11 +31,6 @@ DEFAULT_YEAR_END = 2035
 OUTPUT_DIR = Path("docs/downloads/ics")
 
 
-def get_full_language_name(lang_code):
-    """Fetches the full name from our language_registry.py."""
-    return LANGUAGES.get(lang_code, LANGUAGES.get(lang_code.split("_")[0], lang_code))
-
-
 def write_assets(h_obj, filename_base, year_dir):
     """Write the ICS and JSON files to the disk."""
     if not h_obj:
@@ -84,7 +79,7 @@ def process_entity(args):
     }
 
     # Generate a clean dictionary of full language names
-    languages_map = {lang: get_full_language_name(lang) for lang in sorted(languages)}
+    languages_map = {lang: LANGUAGES.get(lang, lang) for lang in sorted(languages)}
 
     manifest_entry = {
         "name": name,
@@ -109,7 +104,12 @@ def process_entity(args):
                 for cat in categories:
                     filename = f"{subdiv or 'ALL'}_{lang}_{cat}"
                     try:
-                        h_obj = holidays_func(code, years=year, language=lang, categories=cat)
+                        if is_country:
+                            h_obj = holidays_func(
+                                code, subdiv=subdiv, years=year, language=lang, categories=cat
+                            )
+                        else:
+                            h_obj = holidays_func(code, years=year, language=lang, categories=cat)
                         write_assets(h_obj, filename, year_dir)
                     except Exception as e:
                         print(f"Failed {filename} for {code} {year}: {e}")
