@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import os
 import tempfile
 from datetime import date, datetime
 from pathlib import Path
@@ -402,14 +401,14 @@ class TestIcalExporter(TestCase):
 
     def test_save_ics_valid_path(self):
         with tempfile.TemporaryDirectory() as valid_path:
-            file_path = os.path.join(valid_path, "test_calendar.ics")
+            file_path = Path(valid_path) / "test_calendar.ics"
 
             self.us_exporter.save_ics(file_path=file_path)
-            self.assertTrue(os.path.exists(file_path), f"File should be created at {file_path}")
+            self.assertTrue(file_path.exists(), f"File should be created at {file_path}")
 
     def test_save_ics_pathlib_path(self):
         with tempfile.TemporaryDirectory() as valid_path:
-            file_path_1 = os.path.join(valid_path, "test_calendar_1.ics")
+            file_path_1 = Path(valid_path) / "test_calendar_1.ics"
             self.us_exporter.save_ics(file_path=file_path_1)
             content_1 = [
                 line.rstrip()
@@ -446,7 +445,7 @@ class TestIcalExporter(TestCase):
 
             self.assertNotEqual(new_content, "Old content", "The file was not overwritten.")
             self.assertIn("BEGIN:VCALENDAR", new_content, "New content is not valid iCalendar")
-            os.remove(temp_file.name)
+            Path(temp_file.name).unlink()
 
     def test_save_ics_with_utf8_name(self):
         with tempfile.NamedTemporaryFile(
@@ -456,10 +455,10 @@ class TestIcalExporter(TestCase):
 
             self.th_exporter.save_ics(file_path=temp_file.name)
             self.assertTrue(
-                os.path.exists(temp_file.name),
+                Path(temp_file.name).exists(),
                 "File should be created with special characters in the name.",
             )
-            os.remove(temp_file.name)
+            Path(temp_file.name).unlink()
 
     def test_holidays_category(self):
         single_category_holidays = country_holidays(
