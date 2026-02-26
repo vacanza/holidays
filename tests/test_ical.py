@@ -411,16 +411,16 @@ class TestIcalExporter(TestCase):
             file_path_1 = Path(valid_path) / "test_calendar_1.ics"
             self.us_exporter.save_ics(file_path=file_path_1)
             content_1 = [
-                line.rstrip()
-                for line in open(file_path_1).readlines()
+                line
+                for line in file_path_1.read_text().splitlines()
                 if not line.startswith("UID:")
             ]
 
             file_path_2 = Path(valid_path) / "test_calendar_2.ics"
             self.us_exporter.save_ics(file_path=file_path_2)
             content_2 = [
-                line.rstrip()
-                for line in open(file_path_2).readlines()
+                line
+                for line in file_path_2.read_text().splitlines()
                 if not line.startswith("UID:")
             ]
 
@@ -440,8 +440,7 @@ class TestIcalExporter(TestCase):
             temp_file.close()
 
             self.us_exporter.save_ics(file_path=temp_file.name)
-            with open(temp_file.name) as file:
-                new_content = file.read()
+            new_content = Path(temp_file.name).read_text()
 
             self.assertNotEqual(new_content, "Old content", "The file was not overwritten.")
             self.assertIn("BEGIN:VCALENDAR", new_content, "New content is not valid iCalendar")
