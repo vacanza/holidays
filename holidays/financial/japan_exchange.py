@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 #
 
-from gettext import gettext as tr
 
 from holidays.constants import PUBLIC
 from holidays.countries.japan import Japan
