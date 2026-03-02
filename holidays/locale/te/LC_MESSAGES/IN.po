@@ -66,7 +66,7 @@ msgstr "మహావీర్ జయంతి"
 
 #. Maha Shivaratri.
 msgid "Maha Shivaratri"
-msgstr "మహా శివరాత్రి"
+msgstr "మహాశివరాత్రి"
 
 #. Guru Nanak Jayanti.
 msgid "Guru Nanak Jayanti"
@@ -86,7 +86,7 @@ msgstr "ఈద్-ఉల్-ఫితర్"
 
 #. Eid al-Adha.
 msgid "Bakrid"
-msgstr "బకరీద్"
+msgstr "బక్రీద్"
 
 #. Good Friday.
 msgid "Good Friday"
@@ -98,7 +98,7 @@ msgstr "క్రిస్మస్"
 
 #. Children's Day.
 msgid "Children's Day"
-msgstr "పిల్లల రోజు"
+msgstr "బాలల దినోత్సవం"
 
 #. Holi.
 msgid "Holi"
@@ -114,7 +114,7 @@ msgstr "గోవర్ధన పూజ"
 
 #. Labor Day.
 msgid "Labour Day"
-msgstr "కార్మికుల రోజు"
+msgstr "కార్మిక దినోత్సవం"
 
 #. Maha Navami.
 msgid "Maha Navami"
@@ -146,11 +146,11 @@ msgstr "పామ్ ఆదివారం"
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
-msgstr "డాక్టర్ బి.ఆర్. అంబేద్కర్ జయంతి"
+msgstr "డా. బి.ఆర్. అంబేద్కర్ జయంతి"
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
-msgstr "ఆంధ్ర ప్రదేశ్ రోజు"
+msgstr "ఆంధ్రప్రదేశ్ అవతరణ దినోత్సవం"
 
 #. Ugadi.
 msgid "Ugadi"
@@ -162,23 +162,23 @@ msgstr "మాఘ్ బిహు"
 
 #. Assam Day.
 msgid "Assam Day"
-msgstr "అస్సాం రోజు"
+msgstr "అస్సాం దినోత్సవం"
 
 #. Chhath Puja.
 msgid "Chhath Puja"
-msgstr "ఛాత్ పూజ"
+msgstr "ఛఠ్ పూజ"
 
 #. Bihar Day.
 msgid "Bihar Day"
-msgstr "బీహార్ రోజు"
+msgstr "బీహార్ దినోత్సవం"
 
 #. Chhattisgarh Foundation Day.
 msgid "Chhattisgarh Foundation Day"
-msgstr "ఛత్తీస్‌గఢ్ రోజు"
+msgstr "ఛత్తీస్‌గఢ్ అవతరణ దినోత్సవం"
 
 #. Goa Liberation Day.
 msgid "Goa Liberation Day"
-msgstr "గోవా విముక్తి రోజు"
+msgstr "గోవా విమోచన దినోత్సవం"
 
 #. Makar Sankranti.
 msgid "Uttarayan"
@@ -186,27 +186,27 @@ msgstr "ఉత్తరాయణం"
 
 #. Gujarat Day.
 msgid "Gujarat Day"
-msgstr "గుజరాత్ రోజు"
+msgstr "గుజరాత్ దినోత్సవం"
 
 #. Sardar Vallabhbhai Patel Jayanti.
 msgid "Sardar Vallabhbhai Patel Jayanti"
-msgstr "సర్దార్ వల్లభాయ్ పటేల్ జయంతి"
+msgstr "సర్దార్ వల్లభభాయి పటేల్ జయంతి"
 
 #. Haryana Foundation Day.
 msgid "Haryana Foundation Day"
-msgstr "హర్యానా రోజు"
+msgstr "హర్యానా అవతరణ దినోత్సవం"
 
 #. Himachal Day.
 msgid "Himachal Day"
-msgstr "హిమాచల్ రోజు"
+msgstr "హిమాచల్ దినోత్సవం"
 
 #. Jharkhand Formation Day.
 msgid "Jharkhand Formation Day"
-msgstr "ఝార్ఖండ్ ఏర్పాటు రోజు"
+msgstr "ఝార్ఖండ్ అవతరణ దినోత్సవం"
 
 #. Karnataka Rajyotsav.
 msgid "Karnataka Rajyotsava"
-msgstr "కర్ణాటక రాజ్యోత్సవ"
+msgstr "కర్ణాటక రాజ్యోత్సవం"
 
 #. Onam.
 msgid "Onam"
@@ -214,7 +214,7 @@ msgstr "ఓణం"
 
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"
-msgstr "కేరళ రోజు"
+msgstr "కేరళ అవతరణ దినోత్సవం"
 
 #. Gudi Padwa.
 msgid "Gudi Padwa"
@@ -226,35 +226,35 @@ msgstr "ఛత్రపతి శివాజీ మహారాజ్ జయం
 
 #. Maharashtra Day.
 msgid "Maharashtra Day"
-msgstr "మహారాష్ట్ర రోజు"
+msgstr "మహారాష్ట్ర దినోత్సవం"
 
 #. Madhya Pradesh Foundation Day.
 msgid "Madhya Pradesh Foundation Day"
-msgstr "మధ్య ప్రదేశ్ రోజు"
+msgstr "మధ్యప్రదేశ్ అవతరణ దినోత్సవం"
 
 #. Mizoram State Day.
 msgid "Mizoram State Day"
-msgstr "మిజోరం రాష్ట్ర రోజు"
+msgstr "మిజోరాం రాష్ట్ర దినోత్సవం"
 
 #. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"
-msgstr "నాగాలాండ్ రాష్ట్ర ప్రారంభ రోజు"
+msgstr "నాగాలాండ్ రాష్ట్ర ప్రారంభ దినోత్సవం"
 
 #. Odisha Day.
 msgid "Odisha Day (Utkala Dibasa)"
-msgstr "ఒడిశా రోజు (ఉత్కల దిబాసా)"
+msgstr "ఒడిశా దినోత్సవం (ఉత్కల దివస)"
 
 #. Maha Vishuva Sankranti.
 msgid "Maha Vishuva Sankranti / Pana Sankranti"
-msgstr "మహా విషువ సంక్రాంతి / పానా సంక్రాంతి"
+msgstr "మహా విషువ సంక్రాంతి / పన సంక్రాంతి"
 
 #. Puducherry De Jure Transfer Day.
 msgid "Puducherry De Jure Transfer Day"
-msgstr "పుదుచ్చేరి చట్టబద్ధ బదిలీ రోజు"
+msgstr "పుదుచ్చేరి చట్టబద్ధ బదిలీ దినోత్సవం"
 
 #. Puducherry Liberation Day.
 msgid "Puducherry Liberation Day"
-msgstr "పుదుచ్చేరి విముక్తి రోజు"
+msgstr "పుదుచ్చేరి విమోచన దినోత్సవం"
 
 #. Guru Gobind Singh Jayanti.
 msgid "Guru Gobind Singh Jayanti"
@@ -262,19 +262,19 @@ msgstr "గురు గోవింద్ సింగ్ జయంతి"
 
 #. Vaisakhi.
 msgid "Vaisakhi"
-msgstr "వైసాఖి"
+msgstr "వైశాఖి"
 
 #. Lohri.
 msgid "Lohri"
-msgstr "లోహ్రి"
+msgstr "లోహ్రీ"
 
 #. Punjabi Day.
 msgid "Punjab Day"
-msgstr "పంజాబ్ రోజు"
+msgstr "పంజాబ్ దినోత్సవం"
 
 #. Rajasthan Day.
 msgid "Rajasthan Day"
-msgstr "రాజస్థాన్ రోజు"
+msgstr "రాజస్థాన్ దినోత్సవం"
 
 #. Maharana Pratap Jayanti.
 msgid "Maharana Pratap Jayanti"
@@ -282,7 +282,7 @@ msgstr "మహారాణా ప్రతాప్ జయంతి"
 
 #. Sikkim State Day.
 msgid "Sikkim State Day"
-msgstr "సిక్కిం రాష్ట్ర రోజు"
+msgstr "సిక్కిం రాష్ట్ర దినోత్సవం"
 
 #. Pongal.
 msgid "Pongal"
@@ -290,19 +290,19 @@ msgstr "పొంగల్"
 
 #. Thiruvalluvar Day / Mattu Pongal.
 msgid "Thiruvalluvar Day / Mattu Pongal"
-msgstr "తిరువల్లువర్ రోజు / మాట్టు పొంగల్"
+msgstr "తిరువళ్ళువర్ దినోత్సవం / మట్టు పొంగల్"
 
 #. Uzhavar Thirunal.
 msgid "Uzhavar Thirunal"
-msgstr "ఉజవర్ తిరునాల్"
+msgstr "ఉళవర్ తిరునాల్"
 
 #. Puthandu.
 msgid "Puthandu (Tamil New Year)"
-msgstr "పుథాండు (తమిళ నూతన సంవత్సరం)"
+msgstr "పుత్తాండు (తమిళ నూతన సంవత్సరం)"
 
 #. Telangana Formation Day.
 msgid "Telangana Formation Day"
-msgstr "తెలంగాణ ఏర్పాటు రోజు"
+msgstr "తెలంగాణ అవతరణ దినోత్సవం"
 
 #. Bathukamma Festival.
 msgid "Bathukamma Festival"
@@ -310,12 +310,12 @@ msgstr "బతుకమ్మ పండుగ"
 
 #. UP Formation Day.
 msgid "UP Formation Day"
-msgstr "ఉత్తర ప్రదేశ్ ఏర్పాటు రోజు"
+msgstr "ఉత్తర ప్రదేశ్ అవతరణ దినోత్సవం"
 
 #. Pohela Boisakh.
 msgid "Pohela Boishakh"
-msgstr "పోహేలా బోయిషాక్"
+msgstr "పొహెలా బొయిషాఖ్"
 
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
-msgstr "రబీంద్ర జయంతి"
+msgstr "రవీంద్ర జయంతి"
