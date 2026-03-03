@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from unittest import TestCase 
+from unittest import TestCase
 
 from holidays.countries.gabon import Gabon
 from tests.common import CommonCountryTests
@@ -22,15 +22,15 @@ class TestGabon(CommonCountryTests, TestCase):
         super().setUpClass(Gabon)
 
     def test_new_years_day(self):
-        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))
+        self.assertHolidayName("Jour de l'An", (f"{year}-01-01" for year in self.full_range))
 
     def test_womens_rights_day(self):
-        name = "Women's Rights Day"
+        name = "Journée des droits de la femme"
         self.assertHolidayName(name, (f"{year}-04-17" for year in range(2015, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2015))
 
     def test_easter_monday(self):
-        name = "Easter Monday"
+        name = "Lundi de Pâques"
         self.assertHolidayName(
             name,
             "2021-04-05",
@@ -42,10 +42,10 @@ class TestGabon(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_labor_day(self):
-        self.assertHolidayName("Labour Day", (f"{year}-05-01" for year in self.full_range))
+        self.assertHolidayName("Fête du Travail", (f"{year}-05-01" for year in self.full_range))
 
     def test_ascension_day(self):
-        name = "Ascension Day"
+        name = "Ascension"
         self.assertHolidayName(
             name,
             "2020-05-21",
@@ -58,7 +58,7 @@ class TestGabon(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_whit_monday(self):
-        name = "Whit Monday"
+        name = "Lundi de Pentécôte"
         self.assertHolidayName(
             name,
             "2020-06-01",
@@ -71,22 +71,22 @@ class TestGabon(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_assumption_day(self):
-        self.assertHolidayName("Assumption Day", (f"{year}-08-15" for year in self.full_range))
+        self.assertHolidayName("Assomption", (f"{year}-08-15" for year in self.full_range))
 
     def test_independence_day(self):
-        self.assertHolidayName("Independence Day", (f"{year}-08-16" for year in self.full_range))
+        self.assertHolidayName("Fête de l'Indépendance", (f"{year}-08-16" for year in self.full_range))
         self.assertHolidayName(
-            "Independence Day Holiday", (f"{year}-08-17" for year in self.full_range)
+            "Fête de l'Indépendance (jour férié)", (f"{year}-08-17" for year in self.full_range)
         )
 
     def test_all_saints_day(self):
-        self.assertHolidayName("All Saints' Day", (f"{year}-11-01" for year in self.full_range))
+        self.assertHolidayName("Toussaint", (f"{year}-11-01" for year in self.full_range))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in self.full_range))
+        self.assertHolidayName("Noël", (f"{year}-12-25" for year in self.full_range))
 
     def test_eid_al_fitr(self):
-        name = "Eid al-Fitr"
+        name = "Aïd el-Fitr"
         self.assertIslamicNoEstimatedHolidayName(
             name,
             "2021-05-13",
@@ -98,7 +98,7 @@ class TestGabon(CommonCountryTests, TestCase):
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_adha(self):
-        name = "Eid al-Adha"
+        name = "Aïd el-Adha"
         self.assertIslamicNoEstimatedHolidayName(
             name,
             "2021-07-20",
@@ -112,6 +112,41 @@ class TestGabon(CommonCountryTests, TestCase):
     def test_2022(self):
         self.assertHolidaysInYear(
             2022,
+            ("2022-01-01", "Jour de l'An"),
+            ("2022-04-17", "Journée des droits de la femme"),
+            ("2022-04-18", "Lundi de Pâques"),
+            ("2022-05-01", "Fête du Travail"),
+            ("2022-05-02", "Aïd el-Fitr"),
+            ("2022-05-26", "Ascension"),
+            ("2022-06-06", "Lundi de Pentécôte"),
+            ("2022-07-09", "Aïd el-Adha"),
+            ("2022-08-15", "Assomption"),
+            ("2022-08-16", "Fête de l'Indépendance"),
+            ("2022-08-17", "Fête de l'Indépendance (jour férié)"),
+            ("2022-11-01", "Toussaint"),
+            ("2022-12-25", "Noël"),
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-01", "Jour de l'An"),
+            ("2022-04-17", "Journée des droits de la femme"),
+            ("2022-04-18", "Lundi de Pâques"),
+            ("2022-05-01", "Fête du Travail"),
+            ("2022-05-02", "Aïd el-Fitr"),
+            ("2022-05-26", "Ascension"),
+            ("2022-06-06", "Lundi de Pentécôte"),
+            ("2022-07-09", "Aïd el-Adha"),
+            ("2022-08-15", "Assomption"),
+            ("2022-08-16", "Fête de l'Indépendance"),
+            ("2022-08-17", "Fête de l'Indépendance (jour férié)"),
+            ("2022-11-01", "Toussaint"),
+            ("2022-12-25", "Noël"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-04-17", "Women's Rights Day"),
             ("2022-04-18", "Easter Monday"),
@@ -126,21 +161,3 @@ class TestGabon(CommonCountryTests, TestCase):
             ("2022-11-01", "All Saints' Day"),
             ("2022-12-25", "Christmas Day"),
         )
-        
-    def test_l10n_default(self):
-        self.assertLocalizedHolidays(
-            ("2022-01-01", "Jour de l’An"),
-            ("2022-04-17", "Journée des droits de la femme"),
-            ("2022-04-18", "Lundi de Pâques"),
-            ("2022-05-01", "Fête du Travail"),
-            ("2022-05-02", "Aïd el-Fitr"),
-            ("2022-05-26", "Ascension"),
-            ("2022-06-06", "Lundi de Pentecôte"),
-            ("2022-07-09", "Aïd el-Adha"),
-            ("2022-08-15", "Assomption"),
-            ("2022-08-16", "Fête de l’Indépendance"),
-            ("2022-08-17", "Fête de l’Indépendance (jour férié)"),
-            ("2022-11-01", "Toussaint"),
-            ("2022-12-25", "Noël"),
-        )
-    
