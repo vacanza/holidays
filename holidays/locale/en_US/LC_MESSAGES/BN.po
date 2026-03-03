@@ -15,6 +15,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.61\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-02 00:37+0700\n"
 "PO-Revision-Date: 2024-11-05 21:39+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
@@ -65,6 +66,14 @@ msgstr "Sultan Hassanal Bolkiah's Birthday"
 msgid "Hari Natal"
 msgstr "Christmas Day"
 
+#. Islamic New Year.
+msgid "Awal Tahun Hijrah"
+msgstr "Islamic New Year"
+
+#. Prophet's Birthday.
+msgid "Maulidur Rasul"
+msgstr "Prophet's Birthday"
+
 #. Isra' and Mi'raj.
 msgid "Israk dan Mikraj"
 msgstr "Isra' and Mi'raj"
@@ -84,14 +93,6 @@ msgstr "Eid al-Fitr"
 #. Eid al-Adha.
 msgid "Hari Raya Aidil Adha"
 msgstr "Eid al-Adha"
-
-#. Islamic New Year.
-msgid "Awal Tahun Hijrah"
-msgstr "Islamic New Year"
-
-#. Prophet's Birthday.
-msgid "Maulidur Rasul"
-msgstr "Prophet's Birthday"
 
 #. Proclamation Ceremony of Crown Prince Al-Muhtadee Billah of Brunei.
 msgid "Istiadat Pengisytiharan Duli Pengiran Muda Mahkota Al-Muhtadee Billah"

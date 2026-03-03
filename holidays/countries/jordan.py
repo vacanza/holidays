@@ -75,8 +75,9 @@ class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("عيد الفطر"))
         # Eid al-Fitr Holiday.
-        self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
-        self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
+        name = tr("عطلة عيد الفطر")
+        self._add_eid_al_fitr_day_two(name)
+        self._add_eid_al_fitr_day_three(name)
 
         # Arafat Day.
         self._add_arafah_day(tr("يوم عرفة"))
@@ -84,8 +85,9 @@ class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("عيد الأضحى"))
         # Eid al-Adha Holiday.
-        self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
-        self._add_eid_al_adha_day_three(tr("عطلة عيد الأضحى"))
+        name = tr("عطلة عيد الأضحى")
+        self._add_eid_al_adha_day_two(name)
+        self._add_eid_al_adha_day_three(name)
 
 
 class JO(Jordan):

@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.iceland import Iceland
 from tests.common import CommonCountryTests
 
@@ -22,29 +21,154 @@ class TestIceland(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Iceland)
 
-    def test_1982(self):
-        self.assertHolidays(
-            Iceland(categories=(HALF_DAY, PUBLIC)),
-            ("1982-01-01", "Nýársdagur"),
-            ("1982-04-08", "Skírdagur"),
-            ("1982-04-09", "Föstudagurinn langi"),
-            ("1982-04-11", "Páskadagur"),
-            ("1982-04-12", "Annar í páskum"),
-            ("1982-04-22", "Sumardagurinn fyrsti"),
-            ("1982-05-01", "Verkalýðsdagurinn"),
-            ("1982-05-20", "Uppstigningardagur"),
-            ("1982-05-30", "Hvítasunnudagur"),
-            ("1982-05-31", "Annar í hvítasunnu"),
-            ("1982-06-17", "Þjóðhátíðardagurinn"),
-            ("1982-12-24", "Aðfangadagur (frá kl. 13.00)"),
-            ("1982-12-25", "Jóladagur"),
-            ("1982-12-26", "Annar í jólum"),
-            ("1982-12-31", "Gamlársdagur (frá kl. 13.00)"),
+    def test_new_years_day(self):
+        self.assertHolidayName("Nýársdagur", (f"{year}-01-01" for year in self.full_range))
+
+    def test_maundy_thursday(self):
+        name = "Skírdagur"
+        self.assertHolidayName(
+            name,
+            "2020-04-09",
+            "2021-04-01",
+            "2022-04-14",
+            "2023-04-06",
+            "2024-03-28",
+            "2025-04-17",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_good_friday(self):
+        name = "Föstudagurinn langi"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_easter_sunday(self):
+        name = "Páskadagur"
+        self.assertHolidayName(
+            name,
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
+            "2024-03-31",
+            "2025-04-20",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_easter_monday(self):
+        name = "Annar í páskum"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_first_day_of_summer(self):
+        name = "Sumardagurinn fyrsti"
+        self.assertHolidayName(
+            name,
+            "2020-04-23",
+            "2021-04-22",
+            "2022-04-21",
+            "2023-04-20",
+            "2024-04-25",
+            "2025-04-24",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_labor_day(self):
+        self.assertHolidayName("Verkalýðsdagurinn", (f"{year}-05-01" for year in self.full_range))
+
+    def test_ascension_day(self):
+        name = "Uppstigningardagur"
+        self.assertHolidayName(
+            name,
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_whit_sunday(self):
+        name = "Hvítasunnudagur"
+        self.assertHolidayName(
+            name,
+            "2020-05-31",
+            "2021-05-23",
+            "2022-06-05",
+            "2023-05-28",
+            "2024-05-19",
+            "2025-06-08",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_whit_monday(self):
+        name = "Annar í hvítasunnu"
+        self.assertHolidayName(
+            name,
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_national_day(self):
+        self.assertHolidayName(
+            "Þjóðhátíðardagurinn", (f"{year}-06-17" for year in self.full_range)
         )
 
-    def test_2018(self):
-        self.assertHolidays(
-            Iceland(categories=(HALF_DAY, PUBLIC)),
+    def test_commerce_day(self):
+        name = "Frídagur verslunarmanna"
+        self.assertHolidayName(
+            name,
+            "2020-08-03",
+            "2021-08-02",
+            "2022-08-01",
+            "2023-08-07",
+            "2024-08-05",
+            "2025-08-04",
+        )
+        self.assertHolidayName(name, range(1983, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1983))
+
+    def test_christmas_eve(self):
+        name = "Aðfangadagur (frá kl. 13.00)"
+        self.assertNoHolidayName(name)
+        self.assertHalfDayHolidayName(name, (f"{year}-12-24" for year in self.full_range))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Jóladagur", (f"{year}-12-25" for year in self.full_range))
+
+    def test_second_day_of_christmas(self):
+        self.assertHolidayName("Annar í jólum", (f"{year}-12-26" for year in self.full_range))
+
+    def test_new_years_eve(self):
+        name = "Gamlársdagur (frá kl. 13.00)"
+        self.assertNoHolidayName(name)
+        self.assertHalfDayHolidayName(name, (f"{year}-12-31" for year in self.full_range))
+
+    def test_2018_public(self):
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "Nýársdagur"),
             ("2018-03-29", "Skírdagur"),
             ("2018-03-30", "Föstudagurinn langi"),
@@ -57,31 +181,15 @@ class TestIceland(CommonCountryTests, TestCase):
             ("2018-05-21", "Annar í hvítasunnu"),
             ("2018-06-17", "Þjóðhátíðardagurinn"),
             ("2018-08-06", "Frídagur verslunarmanna"),
-            ("2018-12-24", "Aðfangadagur (frá kl. 13.00)"),
             ("2018-12-25", "Jóladagur"),
             ("2018-12-26", "Annar í jólum"),
-            ("2018-12-31", "Gamlársdagur (frá kl. 13.00)"),
         )
 
-    def test_2022(self):
-        self.assertHolidays(
-            Iceland(categories=(HALF_DAY, PUBLIC)),
-            ("2022-01-01", "Nýársdagur"),
-            ("2022-04-14", "Skírdagur"),
-            ("2022-04-15", "Föstudagurinn langi"),
-            ("2022-04-17", "Páskadagur"),
-            ("2022-04-18", "Annar í páskum"),
-            ("2022-04-21", "Sumardagurinn fyrsti"),
-            ("2022-05-01", "Verkalýðsdagurinn"),
-            ("2022-05-26", "Uppstigningardagur"),
-            ("2022-06-05", "Hvítasunnudagur"),
-            ("2022-06-06", "Annar í hvítasunnu"),
-            ("2022-06-17", "Þjóðhátíðardagurinn"),
-            ("2022-08-01", "Frídagur verslunarmanna"),
-            ("2022-12-24", "Aðfangadagur (frá kl. 13.00)"),
-            ("2022-12-25", "Jóladagur"),
-            ("2022-12-26", "Annar í jólum"),
-            ("2022-12-31", "Gamlársdagur (frá kl. 13.00)"),
+    def test_2018_half_day(self):
+        self.assertHalfDayHolidaysInYear(
+            2018,
+            ("2018-12-24", "Aðfangadagur (frá kl. 13.00)"),
+            ("2018-12-31", "Gamlársdagur (frá kl. 13.00)"),
         )
 
     def test_l10n_default(self):

@@ -30,10 +30,12 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         * <https://web.archive.org/web/20250414071145/https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf>
         * <https://web.archive.org/web/20250414071156/https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf>
         * <https://web.archive.org/web/20250414071331/https://www.timeanddate.com/holidays/laos/>
-        * <https://web.archive.org/web/20250414071244/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2022>
-        * <https://web.archive.org/web/20250414071349/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2023>
-        * <https://web.archive.org/web/20250414071245/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2024>
-        * <http://www.lsx.com.la/cal/getStockCalendar.do?lang=lo> (from 2011 onwards)
+        * [2022](https://web.archive.org/web/20250414071244/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2022)
+        * [2023](https://web.archive.org/web/20250414071349/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2023)
+        * [2024](https://web.archive.org/web/20250414071245/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2024)
+        * [2025](https://web.archive.org/web/20260122075248/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2025)
+        * [2026](https://web.archive.org/web/20260122075256/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2026)
+        * [Lao Securities eXchange (from 2011 onwards)](https://web.archive.org/web/20260122074030/http://lsx.com.la/en/about/holiday]
 
     !!! note "If Public Holiday falls on weekends, (in lieu) on workday"
         Despite the wording, this usually only applies to Monday only for holidays,

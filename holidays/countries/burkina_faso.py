@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, JUN, JUL, SEP, OCT, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
@@ -21,18 +23,23 @@ class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Burkina_Faso>
+        * <https://web.archive.org/web/20250909124634/https://www.officeholidays.com/countries/burkina-faso>
+        * [Law 079-2015/CNT](https://web.archive.org/web/20250717095711/https://academiedepolice.bf/index.php/telechargement/category/51-autres-textes-legislatifs-et-reglementaires?download=83:loi-portant-de-fetes-legales-et-evenements-a-caractere-historique-au-burkina-faso)
     """
 
     country = "BF"
+    # English is the official language since 2024; French remains widely used.
+    default_language = "en_BF"
     # %s (estimated).
-    estimated_label = "%s (estimated)"
+    estimated_label = tr("%s (estimated)")
     # %s (observed, estimated).
-    observed_estimated_label = "%s (observed, estimated)"
+    observed_estimated_label = tr("%s (observed, estimated)")
     # %s (observed).
-    observed_label = "%s (observed)"
+    observed_label = tr("%s (observed)")
     # On 5 August 1960, Burkina Faso (Republic of Upper Volta at that time)
     # gained independence from France.
     start_year = 1961
+    supported_languages = ("en_BF", "en_US", "fr")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -51,53 +58,51 @@ class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_observed(self._add_new_years_day("New Year's Day"))
+        self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
         if self._year >= 1967:
             # Revolution Day.
-            self._add_observed(self._add_holiday_jan_3("Revolution Day"))
+            self._add_observed(self._add_holiday_jan_3(tr("Revolution Day")))
 
         # International Women's Day.
-        self._add_observed(self._add_womens_day("International Women's Day"))
+        self._add_observed(self._add_womens_day(tr("International Women's Day")))
 
         # Easter Monday.
-        self._add_easter_monday("Easter Monday")
+        self._add_easter_monday(tr("Easter Monday"))
 
-        # Labour Day.
-        self._add_observed(self._add_labor_day("Labour Day"))
+        # Labor Day.
+        self._add_observed(self._add_labor_day(tr("Labour Day")))
 
         # Ascension Day.
-        self._add_ascension_thursday("Ascension Day")
+        self._add_ascension_thursday(tr("Ascension Day"))
 
         # Independence Day.
-        self._add_observed(self._add_holiday_aug_5("Independence Day"))
+        self._add_observed(self._add_holiday_aug_5(tr("Independence Day")))
 
         # Assumption Day.
-        self._add_observed(self._add_assumption_of_mary_day("Assumption Day"))
+        self._add_observed(self._add_assumption_of_mary_day(tr("Assumption Day")))
 
         if self._year >= 2016:
             # Martyrs' Day.
-            self._add_observed(self._add_holiday_oct_31("Martyrs' Day"))
+            self._add_observed(self._add_holiday_oct_31(tr("Martyrs' Day")))
 
         # All Saints' Day.
-        self._add_observed(self._add_all_saints_day("All Saints' Day"))
+        self._add_observed(self._add_all_saints_day(tr("All Saints' Day")))
 
-        self._add_observed(
-            # Proclamation of Independence Day.
-            self._add_holiday_dec_11("Proclamation of Independence Day")
-        )
+        # Proclamation of Independence Day.
+        self._add_observed(self._add_holiday_dec_11(tr("Proclamation of Independence Day")))
 
         # Christmas Day.
-        self._add_observed(self._add_christmas_day("Christmas Day"))
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day("Eid al-Fitr")
+        self._add_eid_al_fitr_day(tr("Eid al-Fitr"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day("Eid al-Adha")
+        self._add_eid_al_adha_day(tr("Eid al-Adha"))
 
-        # Mawlid.
-        self._add_mawlid_day("Mawlid")
+        # Prophet's Birthday.
+        self._add_mawlid_day(tr("Mawlid"))
 
 
 class BF(BurkinaFaso):

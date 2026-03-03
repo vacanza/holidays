@@ -37,7 +37,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         * <https://sv.wikipedia.org/wiki/Sveriges_nationaldag>
         * <https://sv.wikipedia.org/wiki/Midsommarafton>
         * [Bank Holidays 2025](https://web.archive.org/web/20250811112642/https://www.riksbank.se/sv/press-och-publicerat/kalender/helgdagar-2025/)
-        * [Swedish Annual Leave Law (SFS 1977:480)](https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/semesterlag-1977480_sfs-1977-480/)
+        * [Swedish Annual Leave Law (SFS 1977:480)](https://web.archive.org/web/20260106114757/https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/semesterlag-1977480_sfs-1977-480/)
 
     In Sweden, ALL sundays are considered a holiday.
     Initialize this class with `include_sundays=False` to not include sundays as a holiday.

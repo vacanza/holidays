@@ -56,6 +56,7 @@ class POGenerator:
             package_version=package_version,
             width=WRAP_WIDTH,
             allow_empty=True,
+            msgid_bugs_address="l10n@vacanza.dev",
         )
 
         # Update .pot file metadata.

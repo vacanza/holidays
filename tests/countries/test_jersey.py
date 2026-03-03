@@ -16,10 +16,10 @@ from holidays.countries.jersey import Jersey
 from tests.common import CommonCountryTests
 
 
-class TestJE(CommonCountryTests, TestCase):
+class TestJersey(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Jersey, years=range(1952, 2070))
+        super().setUpClass(Jersey)
 
     def test_special_holidays(self):
         dt = (
@@ -59,9 +59,70 @@ class TestJE(CommonCountryTests, TestCase):
         self.assertHoliday(dt, dt_observed)
         self.assertNoNonObservedHoliday(dt_observed)
 
+    def test_new_years_day(self):
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        obs_dts = (
+            "2011-01-03",
+            "2012-01-02",
+            "2017-01-02",
+            "2022-01-03",
+            "2023-01-02",
+        )
+        self.assertHolidayName(f"{name} (substitute day)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_good_friday(self):
+        name = "Good Friday"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_easter_monday(self):
+        name = "Easter Monday"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_early_may_bank_holiday(self):
+        name = "Early May Bank Holiday"
+        name_2024 = "May Bank Holiday"
+        self.assertHolidayName(
+            name,
+            "1995-05-08",
+            "2020-05-04",
+            "2021-05-03",
+            "2022-05-02",
+            "2023-05-01",
+            "2025-05-05",
+        )
+        self.assertHolidayName(name, range(1980, 2024), range(2025, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1980), 2024)
+
+        self.assertHolidayName(name_2024, "2024-05-06")
+        self.assertNoHolidayName(
+            name_2024, range(self.start_year, 2024), range(2025, self.end_year)
+        )
+
     def test_liberation_day(self):
         name = "Liberation Day"
-        non_obs_date = (
+        self.assertNonObservedHolidayName(name, (f"{year}-05-09" for year in self.full_range))
+        self.assertNoHolidayName(
+            name,
             # Sunday, May 9th list 1952-2050 excl. 2010 (65th Anniversary)
             "1954-05-09",
             "1965-05-09",  # 20th Anniversary special? need to check
@@ -87,8 +148,55 @@ class TestJE(CommonCountryTests, TestCase):
             "1998-05-09",
             "2009-05-09",
         )
-        self.assertNoHolidayName(name, non_obs_date)
-        self.assertHolidayName(name, range(2010, 2021))
+
+    def test_spring_bank_holiday(self):
+        name = "Spring Bank Holiday"
+        self.assertHolidayName(
+            name,
+            "2002-06-04",
+            "2012-06-04",
+            "2020-05-25",
+            "2021-05-31",
+            "2022-06-02",
+            "2023-05-29",
+            "2024-05-27",
+            "2025-05-26",
+        )
+        self.assertHolidayName(name, range(1970, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1970))
+
+    def test_whit_monday(self):
+        name = "Whit Monday"
+        self.assertHolidayName(
+            name,
+            "1964-05-18",
+            "1965-06-07",
+            "1966-05-30",
+            "1967-05-15",
+            "1968-06-03",
+            "1969-05-26",
+        )
+        self.assertHolidayName(name, range(self.start_year, 1970))
+        self.assertNoHolidayName(name, range(1970, self.end_year))
+
+    def test_summer_bank_holiday(self):
+        name = "Summer Bank Holiday"
+        self.assertHolidayName(
+            name,
+            "1964-09-07",
+            "1965-09-06",
+            "1966-09-05",
+            "1967-09-04",
+            "1968-09-02",
+            "1969-09-01",
+            "2020-08-31",
+            "2021-08-30",
+            "2022-08-29",
+            "2023-08-28",
+            "2024-08-26",
+            "2025-08-25",
+        )
+        self.assertHolidayName(name, self.full_range)
 
     def test_2010(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
@@ -106,6 +214,32 @@ class TestJE(CommonCountryTests, TestCase):
             ("2010-12-27", "Christmas Day (substitute day)"),
             ("2010-12-28", "Boxing Day (substitute day)"),
         )
+
+    def test_christmas_day(self):
+        name = "Christmas Day"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
+        obs_dts = (
+            "2010-12-27",
+            "2011-12-27",
+            "2016-12-27",
+            "2021-12-27",
+            "2022-12-27",
+        )
+        self.assertHolidayName(f"{name} (substitute day)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_boxing_day(self):
+        name = "Boxing Day"
+        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
+        obs_dts = (
+            "2009-12-28",
+            "2010-12-28",
+            "2015-12-28",
+            "2020-12-28",
+            "2021-12-28",
+        )
+        self.assertHolidayName(f"{name} (substitute day)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2011(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx

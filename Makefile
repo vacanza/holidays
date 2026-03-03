@@ -1,5 +1,10 @@
+.DEFAULT_GOAL := help
+
+.PHONY: help
+
 help:
 	@echo "Usage: make <target>"
+	@echo "    archive-links update URLs using Wayback Machine"
 	@echo "    check         run pre-commit and tests"
 	@echo "    doc           run documentation build process"
 	@echo "    help          show summary of available commands"
@@ -9,6 +14,9 @@ help:
 	@echo "    setup         setup development environment"
 	@echo "    test          run tests (in parallel)"
 	@echo "    upgrade       run dependency upgrade"
+
+archive-links:
+	uv run --no-sync scripts/archive_links.py
 
 check:
 	make l10n
@@ -60,5 +68,6 @@ test:
 	uv run --no-sync pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
 
 upgrade:
+	pre-commit autoupdate
 	uv lock --upgrade
 	uv sync --all-groups

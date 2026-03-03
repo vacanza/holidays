@@ -43,12 +43,10 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
     Checked With:
         * [2017](https://web.archive.org/web/20240224051858/https://www.officeholidays.com/countries/tonga/2017)
         * [2018](https://web.archive.org/web/20220713062330/https://www.gov.to/press-release/tonga-public-holidays-for-2018/)
-        * [2019](https://www.gov.to/press-release/tonga-public-holidays-for-2019-2/)
         * [2020](https://web.archive.org/web/20211207144655/https://www.gov.to/press-release/tonga-public-holidays-for-2020/)
         * [2021](https://web.archive.org/web/20201101134029/https://www.gov.to/press-release/tonga-public-holidays-for-2021/)
         * [2022](https://web.archive.org/web/20211216154631/https://www.gov.to/press-release/tonga-public-holidays-for-2022/)
         * [2023](https://web.archive.org/web/20221116225808/https://www.gov.to/press-release/tonga-public-holidays-for-2023/)
-        * [2024](https://www.gov.to/press-release/tonga-public-holidays-for-2024/)
 
     1988 Revision Observance Rule:
 

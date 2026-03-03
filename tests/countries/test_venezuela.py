@@ -19,198 +19,158 @@ from tests.common import CommonCountryTests
 class TestVenezuela(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Venezuela, years=range(1900, 2050))
+        super().setUpClass(Venezuela)
 
-    def test_2016(self):
-        # https://www.officeholidays.com/countries/venezuela/2016
-        self.assertHolidayDatesInYear(
-            2016,
-            "2016-01-01",
-            "2016-02-08",
-            "2016-02-09",
-            "2016-03-24",
-            "2016-03-25",
-            "2016-04-19",
-            "2016-05-01",
-            "2016-06-24",
-            "2016-07-05",
-            "2016-07-24",
-            "2016-10-12",
-            "2016-12-24",
-            "2016-12-25",
-            "2016-12-31",
+    def test_special_holidays(self):
+        self.assertHoliday(
+            "2009-02-02",
+            "2010-03-29",
+            "2010-03-30",
+            "2010-03-31",
+            "2013-12-08",
+            "2014-02-27",
+            "2014-02-28",
+            "2016-03-21",
+            "2016-03-22",
+            "2016-03-23",
+            "2016-04-08",
+            "2016-04-15",
+            "2016-04-18",
+            "2016-04-22",
+            "2016-04-29",
+            "2016-05-06",
+            "2016-05-13",
+            "2016-05-20",
+            "2016-05-27",
+            "2017-04-10",
+            "2017-04-11",
+            "2017-04-12",
+            "2018-08-20",
+            "2019-02-28",
+            "2019-03-01",
+            "2019-03-11",
+            "2019-03-12",
+            "2019-03-26",
+            "2025-10-19",
+            "2025-10-20",
         )
 
-    def test_2017(self):
-        # https://www.officeholidays.com/countries/venezuela/2017
-        self.assertHolidayDatesInYear(
-            2017,
-            "2017-01-01",
-            "2017-02-27",
-            "2017-02-28",
-            "2017-04-13",
-            "2017-04-14",
-            "2017-04-19",
-            "2017-05-01",
-            "2017-06-24",
-            "2017-07-05",
-            "2017-07-24",
-            "2017-10-12",
-            "2017-12-24",
-            "2017-12-25",
-            "2017-12-31",
-        )
+    def test_new_years_day(self):
+        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))
 
-    def test_2018(self):
-        # https://www.officeholidays.com/countries/venezuela/2018
-        self.assertHolidayDatesInYear(
-            2018,
-            "2018-01-01",
-            "2018-02-12",
-            "2018-02-13",
-            "2018-03-29",
-            "2018-03-30",
-            "2018-04-19",
-            "2018-05-01",
-            "2018-06-24",
-            "2018-07-05",
-            "2018-07-24",
-            "2018-10-12",
-            "2018-12-24",
-            "2018-12-25",
-            "2018-12-31",
-        )
-
-    def test_2019(self):
-        # https://www.officeholidays.com/countries/venezuela/2019
-        self.assertHolidayDatesInYear(
-            2019,
-            "2019-01-01",
-            "2019-03-04",
-            "2019-03-05",
-            "2019-04-18",
-            "2019-04-19",
-            "2019-05-01",
-            "2019-06-24",
-            "2019-07-05",
-            "2019-07-24",
-            "2019-10-12",
-            "2019-12-24",
-            "2019-12-25",
-            "2019-12-31",
-        )
-
-    def test_2020(self):
-        # https://www.officeholidays.com/countries/venezuela/2020
-        self.assertHolidayDatesInYear(
-            2020,
-            "2020-01-01",
+    def test_carnival_monday(self):
+        name = "Lunes de Carnaval"
+        self.assertHolidayName(
+            name,
             "2020-02-24",
-            "2020-02-25",
-            "2020-04-09",
-            "2020-04-10",
-            "2020-04-19",
-            "2020-05-01",
-            "2020-06-24",
-            "2020-07-05",
-            "2020-07-24",
-            "2020-10-12",
-            "2020-12-24",
-            "2020-12-25",
-            "2020-12-31",
-        )
-
-    def test_2021(self):
-        # https://www.officeholidays.com/countries/venezuela/2021
-        self.assertHolidayDatesInYear(
-            2021,
-            "2021-01-01",
             "2021-02-15",
-            "2021-02-16",
-            "2021-04-01",
-            "2021-04-02",
-            "2021-04-19",
-            "2021-05-01",
-            "2021-06-24",
-            "2021-07-05",
-            "2021-07-24",
-            "2021-10-12",
-            "2021-12-24",
-            "2021-12-25",
-            "2021-12-31",
-        )
-
-    def test_2022(self):
-        # https://www.officeholidays.com/countries/venezuela/2022
-        self.assertHolidayDatesInYear(
-            2022,
-            "2022-01-01",
             "2022-02-28",
-            "2022-03-01",
-            "2022-04-14",
-            "2022-04-15",
-            "2022-04-19",
-            "2022-05-01",
-            "2022-06-24",
-            "2022-07-05",
-            "2022-07-24",
-            "2022-10-12",
-            "2022-12-24",
-            "2022-12-25",
-            "2022-12-31",
-        )
-
-    def test_2023(self):
-        # https://www.officeholidays.com/countries/venezuela/2023
-        self.assertHolidayDatesInYear(
-            2023,
-            "2023-01-01",
             "2023-02-20",
+            "2024-02-12",
+            "2025-03-03",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_carnival_tuesday(self):
+        name = "Martes de Carnaval"
+        self.assertHolidayName(
+            name,
+            "2020-02-25",
+            "2021-02-16",
+            "2022-03-01",
             "2023-02-21",
+            "2024-02-13",
+            "2025-03-04",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_maundy_thursday(self):
+        name = "Jueves Santo"
+        self.assertHolidayName(
+            name,
+            "2020-04-09",
+            "2021-04-01",
+            "2022-04-14",
             "2023-04-06",
+            "2024-03-28",
+            "2025-04-17",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_good_friday(self):
+        name = "Viernes Santo"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
             "2023-04-07",
-            "2023-04-19",
-            "2023-05-01",
-            "2023-06-24",
-            "2023-07-05",
-            "2023-07-24",
-            "2023-10-12",
-            "2023-12-24",
-            "2023-12-25",
-            "2023-12-31",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_declaration_of_independence(self):
+        self.assertHolidayName(
+            "Declaración de la Independencia", (f"{year}-04-19" for year in self.full_range)
         )
 
-    def test_independence(self):
-        self.assertNoHoliday("1809-04-19", "1809-07-05", "1810-07-05")
-        self.assertHoliday("1811-04-19", "1811-07-05")
-        self.assertHoliday(f"{year}-04-19" for year in range(1900, 2050))
-        self.assertHoliday(f"{year}-07-05" for year in range(1900, 2050))
+    def test_international_workers_day(self):
+        name = "Dia Mundial del Trabajador"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1945, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1945))
 
-    def test_workers_day(self):
-        self.assertHoliday(f"{year}-05-01" for year in range(1946, 2050))
-        self.assertNoHoliday(f"{year}-05-01" for year in range(1900, 1946))
-
-    def test_birth_simon_bolivar(self):
-        self.assertHoliday(f"{year}-07-24" for year in range(1918, 2050))
-        self.assertNoHoliday(f"{year}-07-24" for year in range(1900, 1918))
-
-    def test_unknown_holiday(self):
-        self.assertHoliday(f"{year}-10-28" for year in range(1909, 1918))
-        self.assertNoHoliday(f"{year}-10-28" for year in range(1900, 1909))
-        self.assertNoHoliday(f"{year}-10-28" for year in range(1918, 2050))
+    def test_family_day(self):
+        name = "Día de la Familia"
+        self.assertHolidayName(name, (f"{year}-05-15" for year in range(2024, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2024))
 
     def test_battle_of_carabobo(self):
-        self.assertHoliday(f"{year}-06-24" for year in range(1971, 2050))
-        self.assertHoliday(f"{year}-06-24" for year in range(1900, 1918))
-        self.assertNoHoliday(f"{year}-06-24" for year in range(1918, 1971))
-        self.assertHoliday("1824-06-24")
-        self.assertNoHoliday("1823-06-24")
+        name = "Batalla de Carabobo"
+        self.assertHolidayName(
+            name,
+            (
+                f"{year}-06-24"
+                for year in (*range(self.start_year, 1918), *range(1971, self.end_year))
+            ),
+        )
+        self.assertNoHolidayName(name, range(1918, 1971))
 
-    def test_indigenous_resistance(self):
-        self.assertHoliday(f"{year}-10-12" for year in range(1921, 2050))
-        self.assertNoHoliday(f"{year}-10-12" for year in range(1900, 1921))
-        self.assertNoHolidayName("Día de la Resistencia Indígena", range(1921, 2002))
-        self.assertNoHolidayName("Día de la Raza", range(2002, 2050))
+    def test_independence_day(self):
+        self.assertHolidayName(
+            "Día de la Independencia", (f"{year}-07-05" for year in self.full_range)
+        )
+
+    def test_birthday_of_simon_bolivar(self):
+        name = "Natalicio de Simón Bolívar"
+        self.assertHolidayName(name, (f"{year}-07-24" for year in range(1918, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1918))
+
+    def test_day_of_indigeneous_resistance(self):
+        name_1921 = "Día de la Raza"
+        name_2002 = "Día de la Resistencia Indígena"
+        self.assertHolidayName(name_1921, (f"{year}-10-12" for year in range(1921, 2002)))
+        self.assertHolidayName(name_2002, (f"{year}-10-12" for year in range(2002, self.end_year)))
+        self.assertNoHolidayName(
+            name_1921, range(self.start_year, 1921), range(2002, self.end_year)
+        )
+        self.assertNoHolidayName(name_2002, range(self.start_year, 2002))
+
+    def test_feast_of_saint_simon_the_zealot(self):
+        name = "Fiesta de San Simón Apóstol"
+        self.assertHolidayName(name, (f"{year}-10-28" for year in range(self.start_year, 1918)))
+        self.assertNoHolidayName(name, range(1918, self.end_year))
+
+    def test_christmas_eve(self):
+        self.assertHolidayName("Nochebuena", (f"{year}-12-24" for year in self.full_range))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Día de Navidad", (f"{year}-12-25" for year in self.full_range))
+
+    def test_new_years_eve(self):
+        self.assertHolidayName(
+            "Fiesta de Fin de Año", (f"{year}-12-31" for year in self.full_range)
+        )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -234,8 +194,8 @@ class TestVenezuela(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2021-01-01", "New Year's Day"),
-            ("2021-02-15", "Monday of Carnival"),
-            ("2021-02-16", "Tuesday of Carnival"),
+            ("2021-02-15", "Carnival Monday"),
+            ("2021-02-16", "Carnival Tuesday"),
             ("2021-04-01", "Maundy Thursday"),
             ("2021-04-02", "Good Friday"),
             ("2021-04-19", "Declaration of Independence"),

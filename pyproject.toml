@@ -14,7 +14,6 @@ maintainers = [
   { name = "Panpakorn Siripanich" },
   { name = "Serhii Murza" },
 ]
-
 authors = [ { name = "Vacanza Team" } ]
 requires-python = ">=3.10"
 classifiers = [
@@ -39,9 +38,7 @@ classifiers = [
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dynamic = [ "version" ]
-
 dependencies = [ "python-dateutil>=2.9.0.post0,<3" ]
-
 urls.Changelog = "https://github.com/vacanza/holidays/releases/"
 urls.Documentation = "https://holidays.readthedocs.io/en/latest/"
 urls.Repository = "https://github.com/vacanza/holidays/"
@@ -55,7 +52,6 @@ dev = [
   "pygithub>=2.8.1,<3",
   "requests>=2.32.5,<3",
 ]
-
 docs = [
   "markdown-include>=0.8.1,<1",
   "mkdocs>=1.6.1,<2",
@@ -63,11 +59,9 @@ docs = [
   "mkdocs-literate-nav>=0.6.2,<1",
   "mkdocstrings-python>=2.0.1,<3",
 ]
-
 build = [
   "polib>=1.2,<2",
 ]
-
 tests = [
   "coverage>=7.12,<8",
   "numpy>=2,<2.3; python_version<'3.11'",
@@ -78,15 +72,12 @@ tests = [
   "pytest-xdist>=3.8,<4",
 ]
 
-[tool.setuptools.dynamic]
-version = { file = "VERSION" }
-
-[tool.setuptools.packages.find]
-include = [ "holidays*" ]
+[tool.setuptools]
+dynamic.version = { file = "VERSION" }
+packages.find.include = [ "holidays*" ]
 
 [tool.ruff]
 target-version = "py310"
-
 line-length = 99
 lint.select = [ "E4", "E5", "E7", "E9", "F", "FBT", "N", "PLE", "S", "T", "TC", "UP", "W" ]
 lint.per-file-ignores."holidays/__init__.py" = [ "F403" ]
@@ -119,32 +110,25 @@ no_inline_sort = true
 profile = "black"
 skip = [ "docs" ]
 
-[tool.pytest.ini_options]
-addopts = [
+[tool.pytest]
+ini_options.addopts = [
   "--cov-fail-under=100",
 ]
-filterwarnings = [
+ini_options.filterwarnings = [
   "ignore::DeprecationWarning:holidays.deprecations.v1_incompatibility",
 ]
-testpaths = [ "tests" ]
+ini_options.testpaths = [ "tests" ]
 
-[tool.coverage.report]
-exclude_lines = [
+[tool.coverage]
+run.branch = true
+run.omit = [ "scripts/*", "tests/*" ]
+report.exclude_lines = [
   "^if TYPE_CHECKING:",
 ]
 
-[tool.coverage.run]
-branch = true
-omit = [ "scripts/*", "tests/*" ]
-
-[[tool.mypy.overrides]]
-module = "holidays.countries.*"
-disable_error_code = [ "override" ]
-
-[[tool.mypy.overrides]]
-module = "holidays.financial.*"
-disable_error_code = [ "override" ]
-
-[[tool.mypy.overrides]]
-module = "holidays.groups.*"
-disable_error_code = [ "attr-defined" ]
+[tool.mypy]
+overrides = [
+  { module = "holidays.countries.*", disable_error_code = [ "override" ] },
+  { module = "holidays.financial.*", disable_error_code = [ "override" ] },
+  { module = "holidays.groups.*", disable_error_code = [ "attr-defined" ] },
+]
