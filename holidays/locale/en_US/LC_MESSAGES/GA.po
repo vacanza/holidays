@@ -52,8 +52,8 @@ msgstr "Labour Day"
 msgid "Ascension"
 msgstr "Ascension Day"
 
-#. Lundi de Pentécôte.
-msgid "Lundi de Pentécôte"
+#. Lundi de Pentecôte.
+msgid "Lundi de Pentecôte"
 msgstr "Whit Monday"
 
 #. Assomption.

@@ -58,7 +58,7 @@ class TestGabon(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_whit_monday(self):
-        name = "Lundi de Pentécôte"
+        name = "Lundi de Pentecôte"
         self.assertHolidayName(
             name,
             "2020-06-01",
@@ -120,7 +120,7 @@ class TestGabon(CommonCountryTests, TestCase):
             ("2022-05-01", "Fête du Travail"),
             ("2022-05-02", "Aïd el-Fitr"),
             ("2022-05-26", "Ascension"),
-            ("2022-06-06", "Lundi de Pentécôte"),
+            ("2022-06-06", "Lundi de Pentecôte"),
             ("2022-07-09", "Aïd el-Adha"),
             ("2022-08-15", "Assomption"),
             ("2022-08-16", "Fête de l'Indépendance"),
@@ -137,7 +137,7 @@ class TestGabon(CommonCountryTests, TestCase):
             ("2022-05-01", "Fête du Travail"),
             ("2022-05-02", "Aïd el-Fitr"),
             ("2022-05-26", "Ascension"),
-            ("2022-06-06", "Lundi de Pentécôte"),
+            ("2022-06-06", "Lundi de Pentecôte"),
             ("2022-07-09", "Aïd el-Adha"),
             ("2022-08-15", "Assomption"),
             ("2022-08-16", "Fête de l'Indépendance"),

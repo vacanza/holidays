@@ -52,9 +52,9 @@ msgstr "Fête du Travail"
 msgid "Ascension"
 msgstr "Ascension"
 
-#. Lundi de Pentécôte.
-msgid "Lundi de Pentécôte"
-msgstr "Lundi de Pentécôte"
+#. Lundi de Pentecôte.
+msgid "Lundi de Pentecôte"
+msgstr "Lundi de Pentecôte"
 
 #. Assomption.
 msgid "Assomption"
