@@ -74,7 +74,9 @@ class TestGabon(CommonCountryTests, TestCase):
         self.assertHolidayName("Assomption", (f"{year}-08-15" for year in self.full_range))
 
     def test_independence_day(self):
-        self.assertHolidayName("Fête de l'Indépendance", (f"{year}-08-16" for year in self.full_range))
+        self.assertHolidayName(
+            "Fête de l'Indépendance", (f"{year}-08-16" for year in self.full_range)
+        )
         self.assertHolidayName(
             "Fête de l'Indépendance (jour férié)", (f"{year}-08-17" for year in self.full_range)
         )
