@@ -61,12 +61,12 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@89a39a4e59826350b863aa6b6252a07ad50cf83e
+        uses: github/codeql-action/init@c793b717bc78562f491db7b0e93a3a178b099162
         with:
           languages: python
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@89a39a4e59826350b863aa6b6252a07ad50cf83e
+        uses: github/codeql-action/analyze@c793b717bc78562f491db7b0e93a3a178b099162
         with:
           category: '/language:python'
 
