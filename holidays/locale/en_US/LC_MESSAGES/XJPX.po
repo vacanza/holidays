@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Japan Exchange holidays en_US localization.
+# Japan Exchange Group (JPX) holidays en_US localization.
 #
 msgid ""
 msgstr ""
