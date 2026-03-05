@@ -9,8 +9,6 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-#
-
 
 from holidays.constants import PUBLIC
 from holidays.countries.japan import Japan
