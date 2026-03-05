@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.64\n"
+"Project-Id-Version: Holidays 0.92\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-15 08:13-0800\n"
-"PO-Revision-Date: 2024-12-23 15:43+0700\n"
+"PO-Revision-Date: 2026-02-20 21:01+0200\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -27,6 +27,11 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.5\n"
 "X-Source-Language: ru\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (выходной)"
+msgstr "ชดเชย%s"
 
 #. New Year's Day.
 msgid "Новый год"
@@ -79,6 +84,10 @@ msgstr "วันแห่งความตกลงและการปรอ
 #. Anniversary of the Great October Socialist Revolution.
 msgid "Годовщина Великой Октябрьской социалистической революции"
 msgstr "วันครบรอบการปฏิวัติสังคมนิยมแห่งเดือนตุลาคมอันยิ่งใหญ่"
+
+#. Constitution Day.
+msgid "День Конституции Российской Федерации"
+msgstr "วันรัฐธรรมนูญสหพันธรัฐรัสเซีย"
 
 #. Date format (see strftime() Format Codes).
 msgid "%d.%m.%Y"

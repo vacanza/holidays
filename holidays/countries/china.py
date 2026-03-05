@@ -33,6 +33,7 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
         * [2021](https://web.archive.org/web/20250424075325/https://www.gov.cn/gongbao/content/2020/content_5567750.htm)
         * [2020 Extensions](https://web.archive.org/web/20250427184932/https://www.gov.cn/zhengce/zhengceku/2020-01/27/content_5472352.htm)
         * [2020](https://web.archive.org/web/20241222150612/https://www.gov.cn/gongbao/content/2019/content_5459138.htm)
+        * [2019 Extensions](https://web.archive.org/web/20250901174347/https://www.gov.cn/gongbao/content/2019/content_5380356.htm)
         * [2019](https://web.archive.org/web/20241202235023/https://www.gov.cn/gongbao/content/2018/content_5350046.htm)
         * [2018](https://web.archive.org/web/20231205013402/https://www.gov.cn/gongbao/content/2017/content_5248221.htm)
         * [2017](https://web.archive.org/web/20231205013333/https://www.gov.cn/gongbao/content/2016/content_5148793.htm)
@@ -394,6 +395,8 @@ class ChinaStaticHolidays:
         2019: (
             (FEB, 4, FEB, 2),  # Spring Festival
             (FEB, 8, FEB, 3),  # Spring Festival
+            (MAY, 2, APR, 28),  # Labor Day
+            (MAY, 3, MAY, 5),  # Labor Day
             (OCT, 4, SEP, 29),  # National Day
             (OCT, 7, OCT, 12),  # National Day
         ),

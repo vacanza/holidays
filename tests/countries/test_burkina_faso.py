@@ -158,9 +158,8 @@ class TestBurkinaFaso(CommonCountryTests, TestCase):
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
-    def test_2022(self):
-        self.assertHolidaysInYear(
-            2022,
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "Revolution Day"),
             ("2022-03-08", "International Women's Day"),
@@ -178,4 +177,48 @@ class TestBurkinaFaso(CommonCountryTests, TestCase):
             ("2022-12-12", "Proclamation of Independence Day (observed)"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (observed)"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-03", "Revolution Day"),
+            ("2022-03-08", "International Women's Day"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-05-02", "Eid al-Fitr; Labor Day (observed)"),
+            ("2022-05-26", "Ascension Day"),
+            ("2022-07-09", "Eid al-Adha"),
+            ("2022-08-05", "Independence Day"),
+            ("2022-08-15", "Assumption Day"),
+            ("2022-10-09", "Prophet's Birthday"),
+            ("2022-10-31", "Martyrs' Day"),
+            ("2022-11-01", "All Saints' Day"),
+            ("2022-12-11", "Proclamation of Independence Day"),
+            ("2022-12-12", "Proclamation of Independence Day (observed)"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Christmas Day (observed)"),
+        )
+
+    def test_l10n_fr(self):
+        self.assertLocalizedHolidays(
+            "fr",
+            ("2022-01-01", "Jour de l'An"),
+            ("2022-01-03", "Soulèvement populaire"),
+            ("2022-03-08", "Journée internationale de la femme"),
+            ("2022-04-18", "Lundi de Pâques"),
+            ("2022-05-01", "Fête du travail"),
+            ("2022-05-02", "Fête du travail (observé); Jour de Ramadan"),
+            ("2022-05-26", "Ascension"),
+            ("2022-07-09", "Jour de Tabaski"),
+            ("2022-08-05", "Fête nationale"),
+            ("2022-08-15", "Assomption"),
+            ("2022-10-09", "Mouloud"),
+            ("2022-10-31", "Journée nationale des martyrs"),
+            ("2022-11-01", "Toussaint"),
+            ("2022-12-11", "Proclamation de l'Indépendance"),
+            ("2022-12-12", "Proclamation de l'Indépendance (observé)"),
+            ("2022-12-25", "Jour de Noël"),
+            ("2022-12-26", "Jour de Noël (observé)"),
         )

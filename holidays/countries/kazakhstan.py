@@ -99,9 +99,7 @@ class Kazakhstan(
             dts_observed.add(self._add_holiday_may_7(tr("Отан Қорғаушы күні")))
 
         # Victory Day.
-        dt = self._add_world_war_two_victory_day(tr("Жеңіс күні"), is_western=False)
-        if self._year != 2020:
-            dts_observed.add(dt)
+        dts_observed.add(self._add_world_war_two_victory_day(tr("Жеңіс күні"), is_western=False))
 
         if self._year >= 2009:
             # Capital Day.
@@ -283,6 +281,7 @@ class KazakhstanStaticHolidays:
         2019: (MAY, 10, MAY, 4),
         2020: (
             (JAN, 3, JAN, 5),
+            (MAY, 8, MAY, 11),
             (DEC, 18, DEC, 20),
         ),
         2021: (JUL, 5, JUL, 3),
@@ -294,9 +293,4 @@ class KazakhstanStaticHolidays:
         2023: (JUL, 7, JUL, 1),
         2024: (MAY, 8, MAY, 4),
         2025: (JAN, 3, JAN, 5),
-    }
-
-    special_public_holidays_observed = {
-        # Victory Day.
-        2020: (MAY, 8, tr("Жеңіс күні")),
     }

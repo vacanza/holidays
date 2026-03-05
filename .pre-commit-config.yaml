@@ -26,7 +26,7 @@ repos:
           - --py310-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.1
+    rev: v0.15.4
     hooks:
       - id: ruff-check
       - id: ruff-format
@@ -42,7 +42,7 @@ repos:
           - docs/file_header.txt
 
   - repo: https://github.com/pycqa/isort
-    rev: 7.0.0
+    rev: 8.0.1
     hooks:
       - id: isort
         exclude: ^(docs)
@@ -57,7 +57,7 @@ repos:
           - types-requests
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: v2.16.0
+    rev: v2.16.2
     hooks:
       - id: pyproject-fmt
 
