@@ -52,7 +52,7 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("Jour de l'An"))
+        self._add_new_years_day(tr("Jour de l'an"))
 
         # Easter Monday.
         self._add_easter_monday(tr("Lundi de Pâques"))
@@ -68,15 +68,15 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         self._add_ascension_thursday(tr("Ascension"))
 
         # Whit Monday.
-        self._add_whit_monday(tr("Lundi de Pentecôte"))
+        self._add_whit_monday(tr("Pentecôte"))
 
         # Assumption Day.
-        self._add_assumption_of_mary_day(tr("Assomption"))
+        self._add_assumption_of_mary_day(tr("Assomption de Marie"))
 
         # Independence Day.
-        self._add_holiday_aug_16(tr("Fête de l'Indépendance"))
+        self._add_holiday_aug_16(tr("Jour de l'indépendance"))
         # Independence Day Holiday.
-        self._add_holiday_aug_17(tr("Fête de l'Indépendance (jour férié)"))
+        self._add_holiday_aug_17(tr("Fête de l'indépendance"))
 
         # All Saints' Day.
         self._add_all_saints_day(tr("Toussaint"))
@@ -85,10 +85,10 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         self._add_christmas_day(tr("Noël"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Aïd el-Fitr"))
+        self._add_eid_al_fitr_day(tr("Fin du Ramadan"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Aïd el-Adha"))
+        self._add_eid_al_adha_day(tr("Fête du sacrifice"))
 
 
 class GA(Gabon):
