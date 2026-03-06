@@ -44,7 +44,7 @@ msgstr ""
 msgid "Journée des droits de la femme"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "Fête du Travail"
 msgstr ""
 

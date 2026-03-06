@@ -57,11 +57,11 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         # Easter Monday.
         self._add_easter_monday(tr("Lundi de Pâques"))
 
-        # Women's Rights Day.
         if self._year >= 2015:
+            # Women's Rights Day.
             self._add_holiday_apr_17(tr("Journée des droits de la femme"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_labor_day(tr("Fête du Travail"))
 
         # Ascension Day.

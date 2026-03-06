@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.92\n"
+"Project-Id-Version: Holidays 0.93\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-03 00:00+0530\n"
 "PO-Revision-Date: 2026-03-03 00:00+0530\n"
@@ -27,59 +27,59 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: fr\n"
 
-#. %s (estimé).
+#. %s (estimated).
 #, c-format
 msgid "%s (estimé)"
 msgstr "%s (estimated)"
 
-#. Jour de l'An.
+#. New Year's Day.
 msgid "Jour de l'An"
 msgstr "New Year's Day"
 
-#. Lundi de Pâques.
+#. Easter Monday.
 msgid "Lundi de Pâques"
 msgstr "Easter Monday"
 
-#. Journée des droits de la femme.
+#. Women's Rights Day.
 msgid "Journée des droits de la femme"
 msgstr "Women's Rights Day"
 
-#. Fête du Travail.
+#. Labor Day.
 msgid "Fête du Travail"
 msgstr "Labour Day"
 
-#. Ascension.
+#. Ascension Day.
 msgid "Ascension"
 msgstr "Ascension Day"
 
-#. Lundi de Pentecôte.
+#. Whit Monday.
 msgid "Lundi de Pentecôte"
 msgstr "Whit Monday"
 
-#. Assomption.
+#. Assumption Day.
 msgid "Assomption"
 msgstr "Assumption Day"
 
-#. Fête de l'Indépendance.
+#. Independence Day.
 msgid "Fête de l'Indépendance"
 msgstr "Independence Day"
 
-#. Fête de l'Indépendance (jour férié).
+#. Independence Day Holiday.
 msgid "Fête de l'Indépendance (jour férié)"
 msgstr "Independence Day Holiday"
 
-#. Toussaint.
+#. All Saints' Day.
 msgid "Toussaint"
 msgstr "All Saints' Day"
 
-#. Noël.
+#. Christmas Day.
 msgid "Noël"
 msgstr "Christmas Day"
 
-#. Aïd el-Fitr.
+#. Eid al-Fitr.
 msgid "Aïd el-Fitr"
 msgstr "Eid al-Fitr"
 
-#. Aïd el-Adha.
+#. Eid al-Adha.
 msgid "Aïd el-Adha"
 msgstr "Eid al-Adha"
