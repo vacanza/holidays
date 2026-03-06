@@ -81,6 +81,14 @@ class TestLocalization(unittest.TestCase):
             # holidays/locale/<locale>/LC_MESSAGES/<country_code>.po.
             language = po_path.parts[-3]
 
+            # Make sure no obsolete entries left.
+            obsolete_entries = po_file.obsolete_entries()
+            self.assertFalse(
+                obsolete_entries,
+                f"The {entity_code} {language} localization contains obsolete entries: "
+                f"{', '.join(oe.msgid for oe in obsolete_entries)}",
+            )
+
             entity = getattr(holidays, entity_code)
 
             # Skip original language files.
@@ -93,14 +101,6 @@ class TestLocalization(unittest.TestCase):
                 100,
                 coverage,
                 f"The {entity_code} {language} localization is incomplete ({coverage}% < 100%)",
-            )
-
-            # Make sure no obsolete entries left.
-            obsolete_entries = po_file.obsolete_entries()
-            self.assertFalse(
-                obsolete_entries,
-                f"The {entity_code} {language} localization contains obsolete entries: "
-                f"{', '.join(oe.msgid for oe in obsolete_entries)}",
             )
 
             for entry in po_file:

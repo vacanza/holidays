@@ -118,7 +118,7 @@ class POGenerator:
                         and cls.__module__ == module
                         and getattr(cls, "default_language") is not None
                     ):
-                        name = getattr(cls, "country", getattr(cls, "market", None))
+                        name = getattr(cls, "country", None) or getattr(cls, "market", None)
                         entity_code_info_mapping[name.upper()] = (cls.default_language, path)
                         break
 

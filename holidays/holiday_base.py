@@ -718,7 +718,7 @@ class HolidayBase(dict[date, str]):
 
     @cached_property
     def _entity_code(self):
-        return getattr(self, "country", getattr(self, "market", None))
+        return getattr(self, "country", None) or getattr(self, "market", None)
 
     @cached_property
     def _normalized_subdiv(self):
