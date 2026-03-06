@@ -113,24 +113,6 @@ class TestGabon(CommonCountryTests, TestCase):
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
-    def test_2022(self):
-        self.assertHolidaysInYear(
-            2022,
-            ("2022-01-01", "Jour de l'an"),
-            ("2022-04-17", "Journée des droits de la femme"),
-            ("2022-04-18", "Lundi de Pâques"),
-            ("2022-05-01", "Fête du Travail"),
-            ("2022-05-02", "Fin du Ramadan"),
-            ("2022-05-26", "Ascension"),
-            ("2022-06-06", "Pentecôte"),
-            ("2022-07-09", "Fête du sacrifice"),
-            ("2022-08-15", "Assomption de Marie"),
-            ("2022-08-16", "Jour de l'indépendance"),
-            ("2022-08-17", "Fête de l'indépendance"),
-            ("2022-11-01", "Toussaint"),
-            ("2022-12-25", "Noël"),
-        )
-
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Jour de l'an"),
