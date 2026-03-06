@@ -84,24 +84,3 @@ msgstr "End of Ramadan"
 #. Eid al-Adha.
 msgid "Fête du sacrifice"
 msgstr "Feast of Sacrifice"
-
-#~ msgid "Jour de l'An"
-#~ msgstr "New Year's Day"
-
-#~ msgid "Lundi de Pentecôte"
-#~ msgstr "Whit Monday"
-
-#~ msgid "Assomption"
-#~ msgstr "Assumption Day"
-
-#~ msgid "Fête de l'Indépendance"
-#~ msgstr "Independence Day"
-
-#~ msgid "Fête de l'Indépendance (jour férié)"
-#~ msgstr "Independence Day Holiday"
-
-#~ msgid "Aïd el-Fitr"
-#~ msgstr "Eid al-Fitr"
-
-#~ msgid "Aïd el-Adha"
-#~ msgstr "Eid al-Adha"
