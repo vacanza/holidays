@@ -31,7 +31,7 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     country = "GA"
     default_language = "fr"
     supported_languages = ("en_US", "fr")
-    # %s (estimé).
+    # %s (estimated).
     estimated_label = tr("%s (estimé)")
     # On 17 August 1960, Gabon gained independence from France.
     start_year = 1961
@@ -51,42 +51,43 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Jour de l'An.
+        # New Year's Day.
         self._add_new_years_day(tr("Jour de l'An"))
 
-        # Lundi de Pâques.
+        # Easter Monday.
         self._add_easter_monday(tr("Lundi de Pâques"))
 
-        # Journée des droits de la femme.
+        # Women's Rights Day.
         if self._year >= 2015:
             self._add_holiday_apr_17(tr("Journée des droits de la femme"))
 
-        # Fête du Travail.
+        # Labour Day.
         self._add_labor_day(tr("Fête du Travail"))
 
-        # Ascension.
+        # Ascension Day.
         self._add_ascension_thursday(tr("Ascension"))
 
-        # Lundi de Pentecôte.
+        # Whit Monday.
         self._add_whit_monday(tr("Lundi de Pentecôte"))
 
-        # Assomption.
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assomption"))
 
-        # Fête de l'Indépendance.
+        # Independence Day.
         self._add_holiday_aug_16(tr("Fête de l'Indépendance"))
+        # Independence Day Holiday.
         self._add_holiday_aug_17(tr("Fête de l'Indépendance (jour férié)"))
 
-        # Toussaint.
+        # All Saints' Day.
         self._add_all_saints_day(tr("Toussaint"))
 
-        # Noël.
+        # Christmas Day.
         self._add_christmas_day(tr("Noël"))
 
-        # Aïd el-Fitr.
+        # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("Aïd el-Fitr"))
 
-        # Aïd el-Adha.
+        # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Aïd el-Adha"))
 
 
