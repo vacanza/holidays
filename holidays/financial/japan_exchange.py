@@ -12,9 +12,10 @@
 
 from holidays.constants import PUBLIC
 from holidays.countries.japan import Japan
+from holidays.mixins.child_entity import ChildEntity
 
 
-class JapanExchange(Japan):
+class JapanExchange(ChildEntity, Japan):
     """Japan Exchange Group (JPX) holidays.
 
     This class provides Japan Exchange-specific market holidays.
