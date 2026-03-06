@@ -12,7 +12,6 @@
 #
 # Gabon holidays en_US localization.
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.93\n"
@@ -47,7 +46,7 @@ msgstr "Women's Rights Day"
 
 #. Labor Day.
 msgid "Fête du Travail"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. Ascension Day.
 msgid "Ascension"
@@ -59,7 +58,7 @@ msgstr "Pentecost"
 
 #. Assumption Day.
 msgid "Assomption de Marie"
-msgstr "Assumption of Mary"
+msgstr "Assumption Day"
 
 #. Independence Day.
 msgid "Jour de l'indépendance"
@@ -67,7 +66,7 @@ msgstr "Independence Day"
 
 #. Independence Day Holiday.
 msgid "Fête de l'indépendance"
-msgstr "Independence Day"
+msgstr "Independence Day Holiday"
 
 #. All Saints' Day.
 msgid "Toussaint"
@@ -79,8 +78,8 @@ msgstr "Christmas Day"
 
 #. Eid al-Fitr.
 msgid "Fin du Ramadan"
-msgstr "End of Ramadan"
+msgstr "Eid al-Fitr"
 
 #. Eid al-Adha.
 msgid "Fête du sacrifice"
-msgstr "Feast of Sacrifice"
+msgstr "Eid al-Adha"
