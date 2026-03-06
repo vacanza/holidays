@@ -54,7 +54,7 @@ msgstr "Ascension Day"
 
 #. Whit Monday.
 msgid "Pentecôte"
-msgstr "Pentecost"
+msgstr "Whit Monday"
 
 #. Assumption Day.
 msgid "Assomption de Marie"
