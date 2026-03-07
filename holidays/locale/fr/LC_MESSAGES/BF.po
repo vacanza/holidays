@@ -1,0 +1,103 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Burkina Faso holidays fr localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.92\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-02-17 23:24+0530\n"
+"PO-Revision-Date: 2026-02-17 23:24+0530\n"
+"Last-Translator: Aman Srivastava <amansri345@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_BF\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (estimé)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
+msgstr "%s (observé, estimé)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (observé)"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "Jour de l'An"
+
+#. Revolution Day.
+msgid "Revolution Day"
+msgstr "Soulèvement populaire"
+
+#. International Women's Day.
+msgid "International Women's Day"
+msgstr "Journée internationale de la femme"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Lundi de Pâques"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "Fête du travail"
+
+#. Ascension Day.
+msgid "Ascension Day"
+msgstr "Ascension"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "Fête nationale"
+
+#. Assumption Day.
+msgid "Assumption Day"
+msgstr "Assomption"
+
+#. Martyrs' Day.
+msgid "Martyrs' Day"
+msgstr "Journée nationale des martyrs"
+
+#. All Saints' Day.
+msgid "All Saints' Day"
+msgstr "Toussaint"
+
+#. Proclamation of Independence Day.
+msgid "Proclamation of Independence Day"
+msgstr "Proclamation de l'Indépendance"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Jour de Noël"
+
+#. Eid al-Fitr.
+msgid "Eid al-Fitr"
+msgstr "Jour de Ramadan"
+
+#. Eid al-Adha.
+msgid "Eid al-Adha"
+msgstr "Jour de Tabaski"
+
+#. Prophet's Birthday.
+msgid "Mawlid"
+msgstr "Mouloud"

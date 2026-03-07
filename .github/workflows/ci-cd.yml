@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Install uv
-        uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098
         with:
           python-version: '3.14'
           version: '0.9.16'
@@ -61,12 +61,12 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@b20883b0cd1f46c72ae0ba6d1090936928f9fa30
+        uses: github/codeql-action/init@c793b717bc78562f491db7b0e93a3a178b099162
         with:
           languages: python
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@b20883b0cd1f46c72ae0ba6d1090936928f9fa30
+        uses: github/codeql-action/analyze@c793b717bc78562f491db7b0e93a3a178b099162
         with:
           category: '/language:python'
 
@@ -92,7 +92,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Install uv
-        uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098
         with:
           python-version: ${{ matrix.python-version }}
           version: '0.9.16'
@@ -120,7 +120,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Install uv
-        uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098
         with:
           python-version: '3.14'
           version: '0.9.16'
@@ -135,7 +135,7 @@ jobs:
         run: make package
 
       - name: Upload package artifacts
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
         with:
           name: dist
           path: dist
@@ -150,7 +150,7 @@ jobs:
 
       - name: Upload SBOM
         if: startsWith(github.event.ref, 'refs/tags/v')
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
         with:
           name: sbom
           path: holidays-${{ env.VERSION }}-sbom.json
@@ -170,7 +170,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Install uv
-        uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098
         with:
           python-version: '3.14'
           version: '0.9.16'
@@ -180,7 +180,7 @@ jobs:
         run: uv python install "$UV_PYTHON"
 
       - name: Get package artifacts
-        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3
         with:
           name: dist
           path: dist
@@ -205,7 +205,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Install uv
-        uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098
         with:
           python-version: '3.14'
           version: '0.9.16'
@@ -235,7 +235,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Download package artifacts
-        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3
         with:
           name: dist
           path: dist
@@ -252,7 +252,7 @@ jobs:
       id-token: write
     steps:
       - name: Download package artifacts
-        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3
         with:
           name: dist
           path: dist
@@ -272,7 +272,7 @@ jobs:
             ./dist/*.whl
 
       - name: Upload package dist and signatures
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
         with:
           name: signed-artifacts
           path: dist
@@ -286,12 +286,12 @@ jobs:
       contents: write
     steps:
       - name: Download SBOM
-        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3
         with:
           name: sbom
 
       - name: Download package dist and signatures
-        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3
         with:
           name: signed-artifacts
           path: dist

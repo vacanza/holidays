@@ -718,7 +718,7 @@ class HolidayBase(dict[date, str]):
 
     @cached_property
     def _entity_code(self):
-        return getattr(self, "country", getattr(self, "market", None))
+        return getattr(self, "country", None) or getattr(self, "market", None)
 
     @cached_property
     def _normalized_subdiv(self):
@@ -857,7 +857,14 @@ class HolidayBase(dict[date, str]):
                         to_month,
                         to_day,
                     )
-                    self.weekend_workdays.add(from_date)
+                    # when non-working day is transferred not from weekend, but from
+                    # another transferred holiday (observed).
+                    if self._is_weekend(from_date):
+                        if from_date.year != self._year or from_date not in self:
+                            self.weekend_workdays.add(from_date)
+                    else:
+                        if from_date.year == self._year and from_date in self:
+                            self.pop(from_date)
 
     def _check_weekday(self, weekday: int, *args) -> bool:
         """

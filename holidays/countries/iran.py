@@ -28,17 +28,18 @@ from holidays.calendars.gregorian import (
     DEC,
     FRI,
 )
-from holidays.groups import IslamicHolidays, PersianCalendarHolidays
+from holidays.groups import IslamicHolidays, PersianCalendarHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
+class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays, StaticHolidays):
     """Iran holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Iran>
         * <https://fa.wikipedia.org/wiki/تعطیلات_عمومی_در_ایران>
         * <https://web.archive.org/web/20250426102648/https://www.time.ir/>
+        * <https://web.archive.org/web/20240804012557/https://www.chicagotribune.com/1989/06/07/mourners-rip-shroud-khomeinis-body-falls/>
         * <https://web.archive.org/web/20170222200759/http://www.hvm.ir/LawDetailNews.aspx?id=9017>
         * <https://en.wikipedia.org/wiki/Workweek_and_weekend>
     """
@@ -68,6 +69,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
             calendar_delta_days=+1,
         )
         PersianCalendarHolidays.__init__(self)
+        StaticHolidays.__init__(self, IranStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -97,8 +99,10 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
         # Nature's Day.
         self._add_natures_day(tr("روز طبیعت"))
 
-        # Death of Imam Khomeini.
-        self._add_death_of_khomeini_day(tr("رحلت حضرت امام خمینی"))
+        # Immediate holiday in 1989, and subsequently codified from 1990 onwards.
+        if self._year >= 1989:
+            # Death of Imam Khomeini.
+            self._add_death_of_khomeini_day(tr("رحلت حضرت امام خمینی"))
 
         # 15 Khordad Uprising.
         self._add_khordad_uprising_day(tr("قیام 15 خرداد"))
@@ -362,4 +366,33 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
         2022: (AUG, 7),
         2023: (JUL, 27),
         2024: (JUL, 15),
+    }
+
+
+class IranStaticHolidays:
+    """Iran special holidays.
+
+    References:
+       * <http://archive.today/2026.03.02-035111/https://www.dw.com/en/iran-unprecedented-heat-prompts-two-day-public-holiday/a-66410894>
+       * <http://archive.today/2026.03.02-035349/https://abanonline.com/political/government/2026-03-01/هییت-دولت-40-روز-عزای-عمومی-7-روز-تعطیل-عمو/>
+       * <http://archive.today/2026.03.02-035353/https://www.tasnimnews.ir/en/news/2026/03/01/3528137/iran-declares-40-days-of-national-mourning-after-leader-s-martyrdom-after-leader-s-martyrdom>
+    """
+
+    # Public Holiday.
+    public_holiday = tr("تعطیلی عمومی")
+
+    special_public_holidays = {
+        2023: (
+            (AUG, 1, public_holiday),
+            (AUG, 2, public_holiday),
+        ),
+        2026: (
+            (MAR, 1, public_holiday),
+            (MAR, 2, public_holiday),
+            (MAR, 3, public_holiday),
+            (MAR, 4, public_holiday),
+            (MAR, 5, public_holiday),
+            (MAR, 6, public_holiday),
+            (MAR, 7, public_holiday),
+        ),
     }
