@@ -51,17 +51,20 @@ NARAKA_CHATURDASI = "NARAKA_CHATURDASI"
 ONAM = "ONAM"
 PARSI_NEW_YEAR_S_DAY_NAURAJ = "PARSI_NEW_YEAR_S_DAY_NAURAJ"
 PONGAL = "PONGAL"
-PRATIHAR_SHASHTHI_SURYA_SHASHTHI_CHHAT_PUJA = "PRATIHAR_SHASHTHI_SURYA_SHASHTHI_CHHAT_PUJA"
+# Also knows as Pratihar Shashthi, Surya Shashthi
+CHHATH_PUJA = "CHHATH_PUJA"
 RAKSHA_BANDHAN = "RAKSHA_BANDHAN"
 RAM_NAVAMI = "RAM_NAVAMI"
 RATH_YATRA = "RATH_YATRA"
 SHARAD_NAVRATRI = "SHARAD_NAVRATRI"
 SONAM_LOSAR = "SONAM_LOSAR"
-SRI_PANCHAMI_BASANT_PANCHAMI_VASANT_PANCHAMI = "SRI_PANCHAMI_BASANT_PANCHAMI_VASANT_PANCHAMI"
+# Also known as Sri Panchami, Vasant Panchami
+BASANT_PANCHAMI = "BASANT_PANCHAMI"
 SWAMI_DAYANANDA_SARASWATI_BIRTHDAY = "SWAMI_DAYANANDA_SARASWATI_BIRTHDAY"
 TAMU_LOSAR = "TAMU_LOSAR"
 THAIPUSAM = "THAIPUSAM"
-UGADI_CHAITRA_SUKLADI_CHETI_CHAND_GUDI_PADWA = "UGADI_CHAITRA_SUKLADI_CHETI_CHAND_GUDI_PADWA"
+# Also known as Ugadi, Chaitra Sukladi, Cheti Chand
+GUDI_PADWA = "GUDI_PADWA"
 VAISAKHADI = "VAISAKHADI"
 VAISAKHI = "VAISAKHI"
 VISHU = "VISHU"
@@ -1315,7 +1318,7 @@ class _HinduLunisolar:
         2035: (JAN, 15),
     }
 
-    PRATIHAR_SHASHTHI_SURYA_SHASHTHI_CHHAT_PUJA_DATES = {
+    CHHATH_PUJA_DATES = {
         2010: (NOV, 10),
         2011: (NOV, 1),
         2012: (NOV, 19),
@@ -1503,7 +1506,7 @@ class _HinduLunisolar:
         2035: (FEB, 9),
     }
 
-    SRI_PANCHAMI_BASANT_PANCHAMI_VASANT_PANCHAMI_DATES = {
+    BASANT_PANCHAMI_DATES = {
         2010: (JAN, 20),
         2011: (FEB, 8),
         2012: (JAN, 28),
@@ -1773,7 +1776,7 @@ class _HinduLunisolar:
         2100: (FEB, 24),
     }
 
-    UGADI_CHAITRA_SUKLADI_CHETI_CHAND_GUDI_PADWA_DATES = {
+    GUDI_PADWA_DATES = {
         2010: (MAR, 16),
         2011: (APR, 4),
         2012: (MAR, 23),
@@ -1891,6 +1894,9 @@ class _HinduLunisolar:
     def bahag_bihu_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BAHAG_BIHU, year)
 
+    def basant_panchami_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(BASANT_PANCHAMI, year)
+
     def bhai_duj_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BHAI_DUJ, year)
 
@@ -1908,9 +1914,6 @@ class _HinduLunisolar:
 
     def dussehra_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(DUSSEHRA, year)
-
-    def dussehra_mahashtami_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(DUSSHERA_MAHASHTAMI, year)
 
     def ganesh_chaturthi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(GANESH_CHATURTHI, year)
@@ -1987,11 +1990,6 @@ class _HinduLunisolar:
     def parsi_new_year_s_day_nauraj_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(PARSI_NEW_YEAR_S_DAY_NAURAJ, year)
 
-    def pratihar_shashti_surya_shashti_chhath_puja_date(
-        self, year: int
-    ) -> tuple[date | None, bool]:
-        return self._get_holiday(PRATIHAR_SHASHTHI_SURYA_SHASHTHI_CHHAT_PUJA, year)
-
     def raksha_bandhan_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(RAKSHA_BANDHAN, year)
 
@@ -2007,11 +2005,6 @@ class _HinduLunisolar:
     def sonam_losar_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(SONAM_LOSAR, year)
 
-    def sri_panchami_basant_panchami_vasant_panchami_date(
-        self, year: int
-    ) -> tuple[date | None, bool]:
-        return self._get_holiday(SRI_PANCHAMI_BASANT_PANCHAMI_VASANT_PANCHAMI, year)
-
     def swami_dayananda_saraswati_birthday_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(SWAMI_DAYANANDA_SARASWATI_BIRTHDAY, year)
 
@@ -2020,11 +2013,6 @@ class _HinduLunisolar:
 
     def thaipusam_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(THAIPUSAM, year)
-
-    def ugadi_chaitra_sukladi_cheti_chand_gudi_padwa_date(
-        self, year: int
-    ) -> tuple[date | None, bool]:
-        return self._get_holiday(UGADI_CHAITRA_SUKLADI_CHETI_CHAND_GUDI_PADWA, year)
 
     def vaisakhadi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VAISAKHADI, year)

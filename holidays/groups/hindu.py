@@ -59,6 +59,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             days_delta=days_delta,
         )
 
+    def _add_bahag_bihu(self, name) -> date | None:
+        """
+        Add Bahag Bihu.
+
+        Bahag Bihu, also known as Rongali Bihu, marks the Assamese New Year
+        and the onset of spring. It is celebrated in April.
+        https://en.wikipedia.org/wiki/Bihu
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.bahag_bihu_date(self._year)
+        )
+
     def _add_bathukamma(self, name) -> date | None:
         """
         Add Bathukamma Festival.
@@ -216,6 +228,30 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.guru_nanak_jayanti_date(self._year)
         )
 
+    def _add_guru_rabindranath_tagore_birthday(self, name) -> date | None:
+        """
+        Add Guru Rabindranath Tagore Birthday.
+
+        Celebrates the birth anniversary of Rabindranath Tagore,
+        Nobel Laureate and poet.
+        https://en.wikipedia.org/wiki/Rabindranath_Tagore
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.guru_rabindranath_tagore_birthday_date(self._year)
+        )
+
+    def _add_guru_ravidas_birthday(self, name) -> date | None:
+        """
+        Add Guru Ravidas Birthday.
+
+        Commemorates the birth of Guru Ravidas, a revered saint
+        and social reformer.
+        https://en.wikipedia.org/wiki/Ravidas
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.guru_ravidas_birthday_date(self._year)
+        )
+
     def _add_gyalpo_losar(self, name) -> date | None:
         """
         Add Gyalpo Losar.
@@ -253,6 +289,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.holi_date(self._year))
 
+    def _add_holika_dahan_dolyatra(self, name) -> date | None:
+        """
+        Add Holika Dahan / Dolyatra.
+
+        Holika Dahan marks the symbolic victory of good over evil and
+        is observed the night before Holi.
+        https://en.wikipedia.org/wiki/Holika_Dahan
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.holika_dahan_dolyatra_date(self._year)
+        )
+
     def _add_janmashtami(self, name) -> date | None:
         """
         Add Janmashtami.
@@ -263,6 +311,30 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.janmashtami_date(self._year)
+        )
+
+    def _add_jumat_ul_vida(self, name) -> date | None:
+        """
+        Add Jumat-ul-Vida.
+
+        Jumat-ul-Vida is the last Friday of Ramadan and holds special
+        significance in Islamic traditions.
+        https://en.wikipedia.org/wiki/Jumat-ul-Vida
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.jumat_ul_vida_date(self._year)
+        )
+
+    def _add_karva_chauth(self, name) -> date | None:
+        """
+        Add Karva Chauth.
+
+        Karva Chauth is observed by married Hindu women for the
+        well-being and longevity of their husbands.
+        https://en.wikipedia.org/wiki/Karva_Chauth
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.karva_chauth_date(self._year)
         )
 
     def _add_maha_saptami(self, name) -> date | None:
