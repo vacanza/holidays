@@ -87,3 +87,35 @@ msgstr "Freitag nach Christi Himmelfahrt"
 #. Bank Holiday.
 msgid "Banksluitingsdag"
 msgstr "Bankschlusstag"
+
+#. Christmas Holidays.
+msgid "Kerstvakantie"
+msgstr "Weihnachtsferien"
+
+#. Carnival Holidays.
+msgid "Krokusvakantie"
+msgstr "Karnevalsferien"
+
+#. Easter Holidays.
+msgid "Paasvakantie"
+msgstr "Osterferien"
+
+#. Summer Holidays.
+msgid "Zomervakantie"
+msgstr "Sommerferien"
+
+#. Autumn Holidays.
+msgid "Herfstvakantie"
+msgstr "Herbstferien"
+
+#. French Community Day.
+msgid "Feestdag van de Franse Gemeenschap"
+msgstr "Feiertag der Französischen Gemeinschaft"
+
+#. German-speaking Community Day.
+msgid "Feestdag van de Duitstalige Gemeenschap"
+msgstr "Feiertag der Deutschsprachigen Gemeinschaft"
+
+#. Christmas Eve.
+msgid "Heiligavond"
+msgstr "Heiligabend"

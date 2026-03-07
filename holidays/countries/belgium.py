@@ -10,10 +10,20 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import (
-    date,
+    APR,
+    AUG,
+    JUL,
+    JUN,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    MON,
+    SAT,
     _timedelta,
     _get_nth_weekday_from,
     _get_nth_weekday_of_month,
@@ -45,9 +55,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
             - VLG: Flemish Community
             - WBR: French Community (Wallonia + Brussels French schools)
             - GER: German-speaking Community (Ostbelgien)
-        * Only fixed and well-defined school holidays are implemented.
-        * Variable vacation periods are either calculated (VLG) or intentionally
-        left unimplemented (WBR, GER) because they are published yearly by ministerial decree.
+        * School holiday rules are based on official education calendars.
     """
 
     country = "BE"
@@ -117,14 +125,11 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         self, start_date: date, duration_days: int, *, name: str | None = None
     ) -> set[date]:
         """Override to start adding holidays directly from start_date."""
-        if (holiday_name := name or self.get(start_date)) is None:
-            raise ValueError(f"Cannot infer holiday name for date {start_date!r}.")
-
-        return {
-            d
-            for delta in range(duration_days)
-            if (d := self._add_holiday(holiday_name, _timedelta(start_date, delta)))
-        }
+        return super()._add_multiday_holiday(
+            _timedelta(start_date, -1),
+            duration_days=duration_days,
+            name=name,
+        )
 
     def _populate_subdiv_vlg_school_holidays(self):
         """
@@ -136,19 +141,13 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         year = self._year
         easter = self._easter_sunday
 
-        # Christmas Holidays : Monday of the week of 25 Dec → 2 weeks
-        # Since Christmas holidays start in December and continue into January,
-        # we need to add the holiday for both the current and previous year.
-        # Current year's Christmas
-        christmas = date(year, 12, 25)
-        # if Christmas is on Monday, holiday will start that day.
-        # if Christmas is on Tue-Fri, start the previous Monday.
-        # if Christmas is a Sat/Sun, start the following Monday.
+        # Christmas holidays (week of 25 December).
+        christmas = date(year, DEC, 25)
         start = _get_nth_weekday_from(-1 if christmas.weekday() <= 4 else 1, 0, christmas)
         self._add_multiday_holiday(start, 13, name=tr("Kerstvakantie"))
 
-        # Previous year's Christmas (for January spillover)
-        prev_christmas = date(year - 1, 12, 25)
+        # Previous year's Christmas (for January spillover).
+        prev_christmas = date(year - 1, DEC, 25)
         prev_start = _get_nth_weekday_from(
             -1 if prev_christmas.weekday() <= 4 else 1,
             0,
@@ -156,57 +155,45 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         )
         self._add_multiday_holiday(prev_start, 14, name=tr("Kerstvakantie"))
 
-        # Carnival: Easter - 48 days → previous Sunday → 1 week
+        # Carnival holidays.
         krokus_raw = _timedelta(easter, days=-47)
-        krokus_start = _get_nth_weekday_from(-1, 0, krokus_raw)
+        krokus_start = _get_nth_weekday_from(-1, MON, krokus_raw)
         self._add_multiday_holiday(krokus_start, 7, name=tr("Krokusvakantie"))
 
-        # Easter Holidays: Easter period → 2 weeks
-        # If the Easter Sunday is in March:
-        # - Paasvakantie starts the week
-        # before Easter Sunday (Monday)
-        # If the Easter Sunday is after April 15:
-        # - Paasvakantie starts the second Monday
-        # before Easter Sunday
-        # Otherwise:
-        # - Paasvakantie starts the first Monday of April
-        if easter.month == 3:
-            paas_start = _get_nth_weekday_from(1, 0, easter)
-            paas_end = _timedelta(paas_start, days=14)
-        elif easter > date(year, 4, 15):
-            # second Monday before Easter
-            paas_start = _get_nth_weekday_from(-2, 0, easter)
-            paas_end = _timedelta(paas_start, days=15)
-        else:
-            paas_start = _get_nth_weekday_of_month(1, 0, 4, year)
-            paas_end = _timedelta(paas_start, days=14)
-        self._add_multiday_holiday(
-            paas_start, (paas_end - paas_start).days, name=tr("Paasvakantie")
-        )
+        # Easter holidays.
+        # - March Easter → week before Easter.
+        # - Easter after 15 April → second Monday before Easter.
+        # - Otherwise → first Monday of April.
+        easter_start = _get_nth_weekday_of_month(1, MON, APR, self._year)
+        easter_duration = 14
 
-        # Labour Day
+        if easter.month == 3:
+            easter_start = _timedelta(easter, -6)
+        elif easter.day >= 16:
+            easter_start = _timedelta(easter, -13)
+            easter_duration = 15
+        self._add_multiday_holiday(easter_start, easter_duration, name=tr("Paasvakantie"))
+
+        # Labour Day.
         self._add_labor_day(tr("Dag van de Arbeid"))
 
         # Ascension Day.
         self._add_ascension_thursday(tr("Hemelvaart"))
 
-        # Friday after Ascension (Ascension = Easter + 39 days, so Friday = Easter + 40 days)
+        # Friday after Ascension.
         ascension_friday = _timedelta(easter, days=40)
-        self._add_holiday(tr("Vrijdag na Hemelvaart"), ascension_friday)
+        self._add_holiday(tr("Vrijdag na O. L. H. Hemelvaart"), ascension_friday)
 
         # Whit Monday / Pentecost Monday.
         self._add_whit_monday(tr("Pinkstermaandag"))
 
-        # Summer Holidays: From 1 July to 31 August (fixed period)
-        start = date(year, 7, 1)
-        end = date(year, 9, 1)
+        # Summer holidays.
+        start = date(year, JUL, 1)
+        end = date(year, SEP, 1)
         self._add_multiday_holiday(start, (end - start).days, name=tr("Zomervakantie"))
 
-        # Autumn Holidays: Monday of the week of 1 Nov → 1 week
-        # If 1 Nov is a Monday, the holiday starts that day.
-        # If 1 Nov is a Tuesday-Friday, the holiday starts on the previous Monday.
-        # If 1 Nov is a Saturday or Sunday, start the week after (i.e., on 2 Nov or 3 Nov).
-        nov_1 = date(year, 11, 1)
+        # Autumn holidays (week of 1 November).
+        nov_1 = date(year, NOV, 1)
         start = _get_nth_weekday_from(-1 if nov_1.weekday() <= 5 else 1, 0, nov_1)
         self._add_multiday_holiday(start, 7, name=tr("Herfstvakantie"))
 
@@ -215,76 +202,143 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_subdiv_wbr_school_holidays(self):
         """
-        School holidays for Wallonia (French Community + German-speaking schools).
-        Only fixed and well-defined days are implemented.
-        Vacation periods are defined yearly by ministerial decree and are intentionally
-        left unimplemented.
+        School holidays for the French Community (Wallonie-Bruxelles).
+        Based on the official compulsory education calendar.
         """
         year = self._year
-        # Armistice Day
-        self._add_remembrance_day(tr("Jour de l'Armistice"))
+        easter = self._easter_sunday
 
-        # Labour Day
-        self._add_labor_day(tr("Fête du Travail"))
+        # Autumn holidays.
+        herfst_start = _get_nth_weekday_of_month(3, MON, OCT, year)
+        self._add_multiday_holiday(herfst_start, 14, name=tr("Herfstvakantie"))
 
-        # French Community Day
-        self._add_holiday(tr("Fête de la Communauté française"), date(year, 9, 27))
+        # current year's Christmas.
+        christmas = date(year, DEC, 25)
+        kerst_start = _get_nth_weekday_from(-1 if christmas.weekday() <= 4 else 1, 0, christmas)
+        self._add_multiday_holiday(kerst_start, 14, name=tr("Kerstvakantie"))
+
+        # Previous year's Christmas (for January spillover).
+        prev_christmas = date(year - 1, DEC, 25)
+        prev_start = _get_nth_weekday_from(
+            -1 if prev_christmas.weekday() <= 4 else 1,
+            0,
+            prev_christmas,
+        )
+        self._add_multiday_holiday(prev_start, 14, name=tr("Kerstvakantie"))
+
+        # Carnival holidays.
+        krokus_raw = _timedelta(easter, days=-49)
+        krokus_start = _get_nth_weekday_from(1, MON, krokus_raw)
+        self._add_multiday_holiday(krokus_start, 14, name=tr("Krokusvakantie"))
+
+        # Spring Holidays.
+        paas_start = _get_nth_weekday_of_month(4, MON, APR, year)
+        self._add_multiday_holiday(paas_start, 14, name=tr("Paasvakantie"))
+
+        # Summer holidays.
+        zomer_start = _get_nth_weekday_of_month(1, SAT, JUL, year)
+
+        # School restart.
+        school_restart = _get_nth_weekday_of_month(4, MON, AUG, year)
+
+        # Summer ends day before school restart.
+        zomer_end = _timedelta(school_restart, -1)
+
+        duration = (zomer_end - zomer_start).days + 1
+
+        self._add_multiday_holiday(
+            zomer_start,
+            duration,
+            name=tr("Zomervakantie"),
+        )
+        # Armistice Day.
+        self._add_remembrance_day(tr("Wapenstilstand"))
+
+        # Labour Day.
+        self._add_labor_day(tr("Dag van de Arbeid"))
+
+        # French Community Day.
+        self._add_holiday(tr("Feestdag van de Franse Gemeenschap"), date(year, SEP, 27))
 
         # Easter Monday.
-        self._add_easter_monday(tr("Lundi de Pâques"))
+        self._add_easter_monday(tr("Paasmaandag"))
 
         # Ascension Day.
-        self._add_ascension_thursday(tr("Jeudi de l'Ascension"))
+        self._add_ascension_thursday(tr("Hemelvaart"))
 
         # Whit Monday.
-        self._add_whit_monday(tr("Lundi de Pentecôte"))
-
-        # NOT IMPLEMENTED:
-        # - Vacances d'automne (Autumn holidays)
-        # - Vacances d'hiver (Christmas holidays)
-        # - Congé de détente (Carnival holidays)
-        # - Vacances de printemps (Spring holidays)
-        # - Vacances d'été (Summer holidays)
-        # - Congé d'automne (Toussaint / All saints)
-
-        # These vary each year and are published by official decree.
+        self._add_whit_monday(tr("Pinkstermaandag"))
 
     def _populate_subdiv_ger_school_holidays(self):
         """
-        School holidays for the German-speaking Community (Ostbelgien).
+        School holidays for the German-speaking Community (Deutschsprachige Gemeinschaft).
 
-        Dates are published yearly by decree.
-        Only fixed and well-defined days are implemented.
-        Vacation periods are intentionally
-        left unimplemented.
+        Based on official education calendar structure.
+        Most vacation periods follow the same framework as other Belgian communities,
+        with Easter holidays starting on the Monday after Easter.
         """
         year = self._year
+        easter = self._easter_sunday
+
+        # Christmas holidays (week of 25 December).
+        christmas = date(year, DEC, 25)
+        # if Christmas is on Monday, holiday will start that day.
+        # if Christmas is on Tue-Fri, start the previous Monday.
+        # if Christmas is a Sat/Sun, start the following Monday.
+        start = _get_nth_weekday_from(-1 if christmas.weekday() <= 4 else 1, 0, christmas)
+        self._add_multiday_holiday(start, 13, name=tr("Kerstvakantie"))
+
+        # Previous year's Christmas (for January spillover).
+        prev_christmas = date(year - 1, DEC, 25)
+        prev_start = _get_nth_weekday_from(
+            -1 if prev_christmas.weekday() <= 4 else 1,
+            0,
+            prev_christmas,
+        )
+        self._add_multiday_holiday(prev_start, 13, name=tr("Kerstvakantie"))
+
+        # Carnival holidays.
+        krokus_raw = _timedelta(easter, days=-47)
+        krokus_start = _get_nth_weekday_from(-1, MON, krokus_raw)
+        self._add_multiday_holiday(krokus_start, 6, name=tr("Krokusvakantie"))
+
+        # Easter holidays.
+        # - March Easter → week before Easter.
+        # - Easter after 15 April → second Monday before Easter.
+        # - Otherwise → first Monday of April.
+        paas_start = _timedelta(easter, 1)  # Monday after Easter
+        self._add_multiday_holiday(paas_start, 13, name=tr("Paasvakantie"))
+
+        # Summer holidays.
+        start = date(year, JUN, 30)
+        end = date(year, SEP, 1)
+        self._add_multiday_holiday(start, (end - start).days, name=tr("Zomervakantie"))
+
+        # Autumn holidays (week of 1 November).
+        nov_1 = date(year, NOV, 1)
+        start = _get_nth_weekday_from(-1 if nov_1.weekday() <= 5 else 1, 0, nov_1)
+        self._add_multiday_holiday(start, 6, name=tr("Herfstvakantie"))
 
         # Armistice Day.
-        self._add_remembrance_day(tr("Tag des Waffenstillstands"))
+        self._add_remembrance_day(tr("Wapenstilstand"))
 
-        # Labour Day
-        self._add_labor_day(tr("Tag der Arbeit"))
+        # Labour Day.
+        self._add_labor_day(tr("Dag van de Arbeid"))
 
         # German Community Day.
-        self._add_holiday(tr("Feiertag der Deutschsprachigen Gemeinschaft"), date(year, 11, 15))
+        self._add_holiday(tr("Feestdag van de Duitstalige Gemeenschap"), date(year, NOV, 15))
 
         # Easter Monday.
-        self._add_easter_monday(tr("Ostermontag"))
+        self._add_easter_monday(tr("Paasmaandag"))
 
         # Ascension Day.
-        self._add_ascension_thursday(tr("Christi Himmelfahrt"))
+        self._add_ascension_thursday(tr("Hemelvaart"))
 
         # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        self._add_whit_monday(tr("Pinkstermaandag"))
 
-        # NOT IMPLEMENTED:
-        # - Herbstferien (Autumn holidays)
-        # - Weihnachtsferien (Christmas holidays)
-        # - Karnevalsferien (Carnival holidays)
-        # - Osterferien (Easter holidays)
-        # - Sommerferien (Summer holidays)
-        # These vary each year and are published by official decree.
+        # Christmas Eve (observed in German-speaking schools).
+        self._add_holiday(tr("Heiligavond"), date(year, DEC, 24))
 
 
 class BE(Belgium):
