@@ -46,6 +46,9 @@ markdown_extensions:
 
 extra_css:
   - css/custom.css
+  - css/downloads.css
 extra_javascript:
   - js/custom.js
   - js/copyright.js
+  - js/downloads.js
+  - https://unpkg.com/alpinejs@3.13.5/dist/cdn.min.js
