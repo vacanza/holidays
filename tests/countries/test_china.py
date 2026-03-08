@@ -144,6 +144,8 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2018-12-31",
             "2019-02-04",
             "2019-02-08",
+            "2019-05-02",
+            "2019-05-03",
             "2019-10-04",
             "2019-10-07",
             "2020-01-24",
@@ -317,6 +319,8 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2018-12-29",
             "2019-02-02",
             "2019-02-03",
+            "2019-04-28",
+            "2019-05-05",
             "2019-09-29",
             "2019-10-12",
             "2020-01-19",
@@ -1143,6 +1147,7 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_2019_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2018/content_5350046.htm
+        # https://www.gov.cn/gongbao/content/2019/content_5380356.htm
         self.assertHolidaysInYear(
             2019,
             ("2019-01-01", "元旦"),
@@ -1153,6 +1158,8 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             ("2019-02-08", "休息日（2019-02-03日起取代）"),
             ("2019-04-05", "清明节"),
             ("2019-05-01", "劳动节"),
+            ("2019-05-02", "休息日（2019-04-28日起取代）"),
+            ("2019-05-03", "休息日（2019-05-05日起取代）"),
             ("2019-06-07", "端午节"),
             ("2019-09-13", "中秋节"),
             ("2019-10-01", "国庆节"),

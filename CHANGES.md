@@ -1,3 +1,17 @@
+# Version 0.92
+
+Released March 2, 2026
+
+- Add observed holidays substitution support (#3289 by @KJhellico)
+- Update Burkina Faso holidays: add l10n support (#3177 by @aman-coder03, @KJhellico)
+- Update China holidays: add additional substituted holidays in 2019 (#3294 by @KJhellico)
+- Update India holidays: add Tamil language support (#3278 by @Abiram08)
+- Update Iran holidays: add special holidays support (#3304 by @PPsyrius)
+- Update Kyrgyzstan holidays: add l10n support (#3301 by @KJhellico)
+- Update South Korea holidays: add Constitution Day back for 2026 onwards (#3284 by @kawai10)
+- Update iCal exporter (#3290 by @KJhellico, @arkid15r)
+- Update l10n test: check .po files for mandatory metadata fields (#3279 by @KJhellico, @arkid15r)
+
 # Version 0.91
 
 Released February 16, 2026

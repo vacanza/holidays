@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import FEB, MAR, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
@@ -23,12 +25,14 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Gabon>
         * <https://web.archive.org/web/20250414021427/https://www.timeanddate.com/holidays/gabon/>
         * <https://web.archive.org/web/20241206141530/https://www.officeholidays.com/countries/gabon>
-        * <https://web.archive.org/web/20231211163448/https://www.travail.gouv.ga/402-evenements/489-liste-des-jours-feries/>
+        * <https://web.archive.org/web/20200805200923/https://www.travail.gouv.ga/402-evenements/489-liste-des-jours-feries/>
     """
 
     country = "GA"
+    default_language = "fr"
+    supported_languages = ("en_US", "fr")
     # %s (estimated).
-    estimated_label = "%s (estimated)"
+    estimated_label = tr("%s (estimé)")
     # On 17 August 1960, Gabon gained independence from France.
     start_year = 1961
 
@@ -48,42 +52,43 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day("New Year's Day")
+        self._add_new_years_day(tr("Jour de l'an"))
 
         # Easter Monday.
-        self._add_easter_monday("Easter Monday")
+        self._add_easter_monday(tr("Lundi de Pâques"))
 
-        # Women's Rights Day.
         if self._year >= 2015:
-            self._add_holiday_apr_17("Women's Rights Day")
+            # Women's Rights Day.
+            self._add_holiday_apr_17(tr("Journée des droits de la femme"))
 
-        # Labour Day.
-        self._add_labor_day("Labour Day")
+        # Labor Day.
+        self._add_labor_day(tr("Fête du Travail"))
 
         # Ascension Day.
-        self._add_ascension_thursday("Ascension Day")
+        self._add_ascension_thursday(tr("Ascension"))
 
         # Whit Monday.
-        self._add_whit_monday("Whit Monday")
+        self._add_whit_monday(tr("Pentecôte"))
 
         # Assumption Day.
-        self._add_assumption_of_mary_day("Assumption Day")
+        self._add_assumption_of_mary_day(tr("Assomption de Marie"))
 
         # Independence Day.
-        self._add_holiday_aug_16("Independence Day")
-        self._add_holiday_aug_17("Independence Day Holiday")
+        self._add_holiday_aug_16(tr("Jour de l'indépendance"))
+        # Independence Day Holiday.
+        self._add_holiday_aug_17(tr("Fête de l'indépendance"))
 
         # All Saints' Day.
-        self._add_all_saints_day("All Saints' Day")
+        self._add_all_saints_day(tr("Toussaint"))
 
         # Christmas Day.
-        self._add_christmas_day("Christmas Day")
+        self._add_christmas_day(tr("Noël"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day("Eid al-Fitr")
+        self._add_eid_al_fitr_day(tr("Fin du Ramadan"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day("Eid al-Adha")
+        self._add_eid_al_adha_day(tr("Fête du sacrifice"))
 
 
 class GA(Gabon):
