@@ -21,6 +21,19 @@ class TestIran(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Iran)
 
+    def test_special_holidays(self):
+        self.assertHoliday(
+            "2023-08-01",
+            "2023-08-02",
+            "2026-03-01",
+            "2026-03-02",
+            "2026-03-03",
+            "2026-03-04",
+            "2026-03-05",
+            "2026-03-06",
+            "2026-03-07",
+        )
+
     def test_islamic_revolution_day(self):
         name = "پیروزی انقلاب اسلامی"
         self.assertHolidayName(
@@ -132,7 +145,8 @@ class TestIran(CommonCountryTests, TestCase):
             "2024-06-03",
             "2025-06-04",
         )
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(name, range(1989, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1989))
 
     def test_15_khordad_uprising(self):
         name = "قیام 15 خرداد"
@@ -458,6 +472,8 @@ class TestIran(CommonCountryTests, TestCase):
             ("2023-07-07", "عید سعید غدیر خم"),
             ("2023-07-27", "تاسوعای حسینی"),
             ("2023-07-28", "عاشورای حسینی"),
+            ("2023-08-01", "تعطیلی عمومی"),
+            ("2023-08-02", "تعطیلی عمومی"),
             ("2023-09-06", "اربعین حسینی"),
             ("2023-09-14", "رحلت رسول اکرم؛شهادت امام حسن مجتبی علیه السلام"),
             ("2023-09-16", "شهادت امام رضا علیه السلام"),
@@ -490,6 +506,8 @@ class TestIran(CommonCountryTests, TestCase):
             ("2023-07-07", "Eid al-Ghadeer"),
             ("2023-07-27", "Tasua"),
             ("2023-07-28", "Ashura"),
+            ("2023-08-01", "Public Holiday"),
+            ("2023-08-02", "Public Holiday"),
             ("2023-09-06", "Arbaeen"),
             ("2023-09-14", "Death of Prophet Muhammad and Martyrdom of Hasan ibn Ali"),
             ("2023-09-16", "Martyrdom of Ali al-Rida"),

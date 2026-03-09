@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import OPTIONAL, SCHOOL
 from holidays.countries.israel import Israel
 from tests.common import CommonCountryTests
 
@@ -21,12 +20,6 @@ class TestIsrael(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Israel)
-
-    def test_no_holidays(self):
-        super().test_no_holidays()
-
-        self.assertNoHolidays(Israel(categories=OPTIONAL, years=self.start_year - 1))
-        self.assertNoHolidays(Israel(categories=SCHOOL, years=self.start_year - 1))
 
     def test_rosh_hashanah(self):
         name = "ראש השנה"

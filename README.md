@@ -15,7 +15,7 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>CI/CD</td>
     <td>
-      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41B5BE&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41B5BE&style=flat" alt="Documentation status"></a>&nbsp;<a href="https://snyk.io/advisor/python/holidays/"><img alt="Open World Holidays Package Health Score" src="https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fsnyk.io%2Fadvisor%2Fpython%2Fholidays%2Fbadge.svg&search=%5Cd%7B1%2C3%7D%2F%5Cd%7B1%2C3%7D&style=flat&label=snyk&color=41B5BE"></a>
+      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41B5BE&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41B5BE&style=flat" alt="Documentation status"></a>&nbsp;<a href="https://security.snyk.io/package/pip/holidays/"><img alt="Open World Holidays Package Health Score" src="https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fsecurity.snyk.io%2Fpackage%2Fpip%2Fholidays%2F&search=(class%3D%22score-number%22.*%3F%3E)(%5Cd%7B1%2C3%7D%2F%5Cd%7B1%2C3%7D)&replace=%242&style=flat&label=snyk&color=41B5BE"></a>
     </td>
   </tr>
   <tr>
@@ -220,9 +220,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Armenia</td>
 <td>AM</td>
-<td></td>
+<td>Regions: AG (Aragac̣otn), AR (Ararat), AV (Armavir), ER (Erevan), GR (Geġark'unik'), KT (Kotayk'), LO (Loṙi), SH (Širak), SU (Syunik'), TV (Tavuš), VD (Vayoć Jor)</td>
 <td>en_US, <strong>hy</strong></td>
-<td></td>
+<td>WORKDAY</td>
 </tr>
 <tr>
 <td>Aruba</td>
@@ -396,7 +396,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Burkina Faso</td>
 <td>BF</td>
 <td></td>
-<td></td>
+<td><strong>en_BF</strong>, en_US, fr</td>
 <td></td>
 </tr>
 <tr>
@@ -704,7 +704,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Gabon</td>
 <td>GA</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -858,7 +858,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>India</td>
 <td>IN</td>
 <td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
-<td><strong>en_IN</strong>, en_US, gu, hi</td>
+<td><strong>en_IN</strong>, en_US, gu, hi, ta, te</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -887,7 +887,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>IE</td>
 <td></td>
 <td></td>
-<td></td>
+<td>OPTIONAL</td>
 </tr>
 <tr>
 <td>Isle of Man</td>
@@ -977,8 +977,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Kyrgyzstan</td>
 <td>KG</td>
 <td></td>
-<td></td>
-<td></td>
+<td>en_US, <strong>ky</strong>, ru_KG</td>
+<td>WORKDAY</td>
 </tr>
 <tr>
 <td>Laos</td>
@@ -1943,6 +1943,13 @@ code when available. The following financial markets are available:
 <td>IFEU</td>
 <td>A London-based Investment Exchange holidays</td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td>Japan Exchange</td>
+<td>XJPX</td>
+<td>Japan Exchange Group (JPX) market holidays</td>
+<td>en_US, <strong>ja</strong>, th</td>
 <td></td>
 </tr>
 <tr>

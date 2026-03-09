@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import WORKDAY
 from holidays.countries.azerbaijan import Azerbaijan
 from tests.common import CommonCountryTests, WorkingDayTests
 
@@ -21,6 +22,11 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
     def setUpClass(cls):
         cls.full_range = range(1990, 2073)
         super().setUpClass(Azerbaijan)
+
+    def test_no_holidays(self):
+        super().test_no_holidays()
+
+        self.assertNoHolidays(Azerbaijan(categories=WORKDAY, years=range(self.start_year, 1992)))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -136,7 +142,6 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
             "2014-03-10",
             "2015-03-09",
             "2020-03-09",
-            "2025-03-27",
         )
         self.assertHolidayName(f"{name} (müşahidə olunur)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
@@ -321,7 +326,6 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
             "2018-06-19",
             "2020-05-26",
             "2023-04-24",
-            "2025-03-28",
         )
         self.assertHolidayName(f"{name} (müşahidə olunur)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)

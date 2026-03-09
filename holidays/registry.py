@@ -290,6 +290,7 @@ FINANCIAL: RegistryDict = {
     "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),
     "germany_exchange": ("GermanyStockExchange", "XETR", "XFRA"),
     "ice_futures_europe": ("IceFuturesEurope", "IFEU", "ICEFuturesEurope"),
+    "japan_exchange": ("JapanExchange", "XJPX", "JPX", "TSE", "OSE"),
     "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
 }

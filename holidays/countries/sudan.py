@@ -46,7 +46,7 @@ class Sudan(HolidayBase, ChristianHolidays, IslamicHolidays):
 
     def _get_weekend(self, dt: date) -> set[int]:
         # The resting days are Friday and Saturday since January 26th, 2008.
-        # https://sudantribune.com/article25544/
+        # https://sudantribune.com/article/25544
         return {FRI, SAT} if dt >= date(2008, JAN, 26) else {FRI}
 
     def _populate_public_holidays(self):

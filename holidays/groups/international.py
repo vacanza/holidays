@@ -169,16 +169,6 @@ class InternationalHolidays:
         """
         return self._add_holiday_jan_3(name)
 
-    def _add_new_years_day_four(self, name) -> date:
-        """
-        Add New Year's Day Four (January 4th).
-
-        New Year's Day is a festival observed in most of the world on
-        1 January, the first day of the year in the modern Gregorian calendar.
-        https://en.wikipedia.org/wiki/New_Year's_Day
-        """
-        return self._add_holiday_jan_4(name)
-
     def _add_remembrance_day(self, name):
         """
         Add Remembrance Day / Armistice Day (Nov 11th)

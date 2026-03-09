@@ -10,13 +10,21 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from __future__ import annotations
+
 import re
 import uuid
 from datetime import date, datetime, timezone
+from pathlib import Path
+from typing import TYPE_CHECKING
 
 from holidays.calendars.gregorian import _timedelta
-from holidays.holiday_base import HolidayBase
 from holidays.version import __version__
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
+
+    from holidays.holiday_base import HolidayBase
 
 # iCal-specific constants
 CONTENT_LINE_MAX_LENGTH = 75
@@ -130,7 +138,9 @@ class ICalExporter:
         # Return as-is if it doesn't exceed the limit
         return line
 
-    def _generate_event(self, dt: date, holiday_name: str, holiday_length: int = 1) -> list[str]:
+    def _generate_event(
+        self, dt: date, holiday_name: str, holiday_length: int = 1
+    ) -> Iterable[str]:
         """Generate a single holiday event.
 
         Args:
@@ -144,7 +154,7 @@ class ICalExporter:
                 Holiday length in days, default to 1.
 
         Returns:
-            List of iCalendar format event lines.
+            Iterable of iCalendar format event lines.
         """
         # Escape special characters per RFC 5545.
         # SEMICOLON is used as a delimiter in HolidayBase (HOLIDAY_NAME_DELIMITER = "; "),
@@ -155,15 +165,15 @@ class ICalExporter:
         event_uid = f"{uuid.uuid4()}@{self.holidays_version}.holidays.local"
         language_tag = f";LANGUAGE={self.language}" if self.show_language else ""
 
-        return [
-            "BEGIN:VEVENT",
-            f"DTSTAMP:{self.ical_timestamp}",
-            f"UID:{event_uid}",
-            self._fold_line(f"SUMMARY{language_tag}:{sanitized_holiday_name}"),
-            f"DTSTART;VALUE=DATE:{dt:%Y%m%d}",
-            f"DURATION:P{holiday_length}D",
-            "END:VEVENT",
-        ]
+        yield "BEGIN:VEVENT"
+        yield f"DTSTAMP:{self.ical_timestamp}"
+        yield f"UID:{event_uid}"
+        yield self._fold_line(f"SUMMARY{language_tag}:{sanitized_holiday_name}")
+        yield f"DTSTART;VALUE=DATE:{dt:%Y%m%d}"
+        yield f"DURATION:P{holiday_length}D"
+        if len(self.holidays.categories) == 1:
+            yield f"CATEGORIES:{next(iter(self.holidays.categories)).upper()}"
+        yield "END:VEVENT"
 
     def generate(self, return_bytes: bool = False) -> str | bytes:
         """Generate iCalendar data.
@@ -210,7 +220,7 @@ class ICalExporter:
         output = CONTENT_LINE_DELIMITER.join(lines)
         return output.encode() if return_bytes else output
 
-    def save_ics(self, file_path: str) -> None:
+    def save_ics(self, file_path: str | Path) -> None:
         """Export the calendar data to a .ics file.
 
         While RFC 5545 does not specifically forbid filenames for .ics files, but it's advisable
@@ -225,5 +235,4 @@ class ICalExporter:
         if not content:
             raise ValueError("Generated content is empty or invalid.")
 
-        with open(file_path, "wb") as file:
-            file.write(content)  # type: ignore  # this is always bytes, ignoring mypy error.
+        Path(file_path).write_bytes(content)  # type: ignore[arg-type]
