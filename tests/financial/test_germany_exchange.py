@@ -22,11 +22,11 @@ class TestGermanyStockExchange(CommonFinancialTests, TestCase):
         super().setUpClass(GermanyStockExchange)
 
     def test_new_years_day(self):
-        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))
+        self.assertHolidayName("Neujahr", (f"{year}-01-01" for year in self.full_range))
 
     def test_good_friday(self):
         self.assertHolidayName(
-            "Good Friday",
+            "Karfreitag",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
@@ -35,7 +35,7 @@ class TestGermanyStockExchange(CommonFinancialTests, TestCase):
 
     def test_easter_monday(self):
         self.assertHolidayName(
-            "Easter Monday",
+            "Ostermontag",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
@@ -43,31 +43,35 @@ class TestGermanyStockExchange(CommonFinancialTests, TestCase):
         )
 
     def test_labour_day(self):
-        self.assertHolidayName("Labour Day", (f"{year}-05-01" for year in self.full_range))
+        self.assertHolidayName("Erster Mai", (f"{year}-05-01" for year in self.full_range))
 
     def test_whit_monday(self):
         self.assertHolidayName(
-            "Whit Monday",
+            "Pfingstmontag",
             "2020-06-01",
             "2021-05-24",
         )
         self.assertNoHolidayName(
-            "Whit Monday",
+            "Pfingstmontag",
             "2022-06-06",
             "2023-05-29",
         )
 
     def test_christmas_eve(self):
-        self.assertHolidayName("Christmas Eve", (f"{year}-12-24" for year in self.full_range))
+        self.assertHolidayName("Heiligabend", (f"{year}-12-24" for year in self.full_range))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in self.full_range))
+        self.assertHolidayName(
+            "Erster Weihnachtstag", (f"{year}-12-25" for year in self.full_range)
+        )
 
     def test_boxing_day(self):
-        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in self.full_range))
+        self.assertHolidayName(
+            "Zweiter Weihnachtstag", (f"{year}-12-26" for year in self.full_range)
+        )
 
     def test_new_years_eve(self):
-        self.assertHolidayName("New Year's Eve", (f"{year}-12-31" for year in self.full_range))
+        self.assertHolidayName("Silvester", (f"{year}-12-31" for year in self.full_range))
 
     def test_xetr(self):
         self.assertIsInstance(XETR(), GermanyStockExchange)

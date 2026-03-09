@@ -10,14 +10,13 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import MAY, JUN
-from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from gettext import gettext as tr
+
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class GermanyStockExchange(
-    HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
-):
+class GermanyStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Deutsche Börse Cash Market (Frankfurt Stock Exchange and Xetra) holidays.
 
     References:
@@ -26,77 +25,51 @@ class GermanyStockExchange(
         * https://www.market-clock.com/markets/xetra/equities/
     """
 
-
     market = "XETR"
-    supported_languages = ("de", "en")
     default_language = "de"
+    supported_languages = ("de", "en_US")
     start_year = 2020
 
-
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, GermanyFinancialStaticHolidays)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self):
-        # Add hard closure holidays
-        self._add_new_years_day({
-            "de": "Neujahr",
-            "en": "New Year's Day",
-        })
-        self._add_good_friday({
-            "de": "Karfreitag",
-            "en": "Good Friday",
-        })
-        self._add_easter_monday({
-            "de": "Ostermontag",
-            "en": "Easter Monday",
-        })
+    def _populate_public_holidays(self) -> None:
+        # New Year's Day.
+        self._add_new_years_day(tr("Neujahr"))
 
-        # Labour Day (May 1) - trading closed but partial settlement possible
-        self._add_labor_day({
-            "de": "Tag der Arbeit",
-            "en": "Labour Day",
-        })
+        # Good Friday.
+        self._add_good_friday(tr("Karfreitag"))
 
-        # Christmas holidays
-        self._add_christmas_eve({
-            "de": "Heiligabend",
-            "en": "Christmas Eve",
-        })
-        self._add_christmas_day({
-            "de": "Erster Weihnachtstag",
-            "en": "Christmas Day",
-        })
-        self._add_christmas_day_two({
-            "de": "Zweiter Weihnachtstag",
-            "en": "Boxing Day",
-        })
+        # Easter Monday.
+        self._add_easter_monday(tr("Ostermontag"))
 
-        # New Year's Eve
-        self._add_new_years_eve({
-            "de": "Silvester",
-            "en": "New Year's Eve",
-        })
+        # Labor Day.
+        self._add_labor_day(tr("Erster Mai"))
 
-        # Note: The following are public holidays but ARE trading days:
-        # - Ascension Day (Christi Himmelfahrt)
-        # - Whit Monday (Pfingstmontag)
-        # - Corpus Christi (Fronleichnam) in Hesse
-        # - Day of German Unity (October 3)
-        # These are intentionally NOT included as holidays here.
+        # Whit Monday.
+        # Pfingstmontag (Whit Monday) is a public holiday in Germany, but usually
+        # a trading day. XETR closed on this day in 2020 and 2021 only.
+        if self._year in {2020, 2021}:
+            self._add_whit_monday(tr("Pfingstmontag"))
+
+        # Christmas Day.
+        self._add_christmas_day(tr("Erster Weihnachtstag"))
+
+        # Second Christmas Day.
+        self._add_christmas_day_two(tr("Zweiter Weihnachtstag"))
+
+        # Christmas Eve.
+        self._add_christmas_eve(tr("Heiligabend"))
+
+        # New Year's Eve.
+        self._add_new_years_eve(tr("Silvester"))
 
 
 class XETR(GermanyStockExchange):
     pass
 
 
-class GermanyFinancialStaticHolidays:
-    special_public_holidays = {
-        # Whit Monday closures (varies by year based on exchange management decisions)
-        2020: (JUN, 1, {"de": "Pfingstmontag", "en": "Whit Monday"}),
-        2021: (MAY, 24, {"de": "Pfingstmontag", "en": "Whit Monday"}),
-        # Note: Whit Monday is NOT a holiday in 2022, 2023, 2024, 2025, etc.
-        # according to the research report
-    }
+class XFRA(GermanyStockExchange):
+    pass
