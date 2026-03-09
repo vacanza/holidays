@@ -42,6 +42,7 @@ msgstr "Easter Monday"
 msgid "Erster Mai"
 msgstr "Labour Day"
 
+#. Whit Monday.
 msgid "Pfingstmontag"
 msgstr "Whit Monday"
 

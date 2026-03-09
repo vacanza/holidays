@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.financial.germany_exchange import GermanyStockExchange, XETR
+from holidays.financial.germany_exchange import GermanyStockExchange, XETR, XFRA
 from tests.common import CommonFinancialTests
 
 
@@ -73,8 +73,9 @@ class TestGermanyStockExchange(CommonFinancialTests, TestCase):
     def test_new_years_eve(self):
         self.assertHolidayName("Silvester", (f"{year}-12-31" for year in self.full_range))
 
-    def test_xetr(self):
+    def test_aliases(self):
         self.assertIsInstance(XETR(), GermanyStockExchange)
+        self.assertIsInstance(XFRA(), GermanyStockExchange)
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
