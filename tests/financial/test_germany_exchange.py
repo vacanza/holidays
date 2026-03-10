@@ -70,7 +70,7 @@ class TestGermanyStockExchange(CommonFinancialTests, TestCase):
             "Erster Weihnachtstag", (f"{year}-12-25" for year in self.full_range)
         )
 
-    def test_boxing_day(self):
+    def test_second_day_of_christmas(self):
         self.assertHolidayName(
             "Zweiter Weihnachtstag", (f"{year}-12-26" for year in self.full_range)
         )
