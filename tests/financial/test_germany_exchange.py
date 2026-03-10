@@ -50,7 +50,7 @@ class TestGermanyStockExchange(CommonFinancialTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         self.assertHolidayName("Erster Mai", (f"{year}-05-01" for year in self.full_range))
 
     def test_whit_monday(self):
