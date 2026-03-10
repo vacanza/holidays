@@ -97,7 +97,7 @@ class TestGermanyStockExchange(CommonFinancialTests, TestCase):
             ("2020-01-01", "New Year's Day"),
             ("2020-04-10", "Good Friday"),
             ("2020-04-13", "Easter Monday"),
-            ("2020-05-01", "Labour Day"),
+            ("2020-05-01", "Labor Day"),
             ("2020-06-01", "Whit Monday"),
             ("2020-12-24", "Christmas Eve"),
             ("2020-12-25", "Christmas Day"),
