@@ -17,7 +17,9 @@ from holidays.holiday_base import HolidayBase
 
 
 class GermanyStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """Deutsche Börse Cash Market (Frankfurt Stock Exchange and Xetra) holidays.
+    """Germany Stock Exchange holidays.
+
+    Deutsche Börse Cash Market (Frankfurt Stock Exchange and Xetra) holidays.
 
     References:
         * <https://web.archive.org/web/20251229141734/https://live.deutsche-boerse.com/en/handeln/trading-calendar>
