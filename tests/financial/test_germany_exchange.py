@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.financial.germany_exchange import GermanyStockExchange, XETR, XFRA
+from holidays.financial.germany_exchange import GermanyStockExchange
 from tests.common import CommonFinancialTests
 
 
