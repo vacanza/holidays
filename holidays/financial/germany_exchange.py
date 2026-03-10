@@ -30,7 +30,7 @@ class GermanyStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
     market = "XETR"
     default_language = "de"
     supported_languages = ("de", "en_US")
-    start_year = 2020
+    start_year = 2000
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
