@@ -50,7 +50,7 @@ msgstr ""
 msgid "Erster Weihnachtstag"
 msgstr ""
 
-#. Second Christmas Day.
+#. Second Day of Christmas.
 msgid "Zweiter Weihnachtstag"
 msgstr ""
 
