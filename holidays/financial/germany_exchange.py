@@ -57,7 +57,7 @@ class GermanyStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
         # Christmas Day.
         self._add_christmas_day(tr("Erster Weihnachtstag"))
 
-        # Second Christmas Day.
+        # Second Day of Christmas.
         self._add_christmas_day_two(tr("Zweiter Weihnachtstag"))
 
         # Christmas Eve.
