@@ -87,6 +87,6 @@ class TestGermanyStockExchange(CommonFinancialTests, TestCase):
             ("2020-06-01", "Whit Monday"),
             ("2020-12-24", "Christmas Eve"),
             ("2020-12-25", "Christmas Day"),
-            ("2020-12-26", "Second Christmas Day"),
+            ("2020-12-26", "Second Day of Christmas"),
             ("2020-12-31", "New Year's Eve"),
         )
