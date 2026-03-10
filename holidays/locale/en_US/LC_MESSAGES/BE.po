@@ -88,11 +88,11 @@ msgstr "Friday after Ascension Day"
 msgid "Banksluitingsdag"
 msgstr "Bank Holiday"
 
-#. Christmas Holiday.
+#. Christmas Holidays.
 msgid "Kerstvakantie"
 msgstr "Christmas Holidays"
 
-#. Carnival Holiday.
+#. Carnival Holidays.
 msgid "Krokusvakantie"
 msgstr "Carnival Holidays"
 
@@ -116,6 +116,6 @@ msgstr "French Community Day"
 msgid "Feestdag van de Duitstalige Gemeenschap"
 msgstr "German-speaking Community Day"
 
-#. Christmas Eve
+#. Christmas Eve.
 msgid "Heiligavond"
 msgstr "Christmas Eve"
