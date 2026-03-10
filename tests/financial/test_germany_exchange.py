@@ -25,13 +25,17 @@ class TestGermanyStockExchange(CommonFinancialTests, TestCase):
         self.assertHolidayName("Neujahr", (f"{year}-01-01" for year in self.full_range))
 
     def test_good_friday(self):
+        name = "Karfreitag"
         self.assertHolidayName(
-            "Karfreitag",
+            name,
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         self.assertHolidayName(
