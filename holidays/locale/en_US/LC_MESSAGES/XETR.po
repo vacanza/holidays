@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-#  XETR.po  Deutsche Börse / Xetra market holidays English (en_US) localization.
+# Germany Stock Exchange holidays en_US localization.
 #
 msgid ""
 msgstr ""
