@@ -35,7 +35,7 @@ class GermanyStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self) -> None:
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Neujahr"))
 
