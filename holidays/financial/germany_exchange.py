@@ -56,14 +56,14 @@ class GermanyStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
             # Whit Monday.
             self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Christmas Eve.
+        self._add_christmas_eve(tr("Heiligabend"))
+
         # Christmas Day.
         self._add_christmas_day(tr("Erster Weihnachtstag"))
 
         # Second Day of Christmas.
         self._add_christmas_day_two(tr("Zweiter Weihnachtstag"))
-
-        # Christmas Eve.
-        self._add_christmas_eve(tr("Heiligabend"))
 
         # New Year's Eve.
         self._add_new_years_eve(tr("Silvester"))

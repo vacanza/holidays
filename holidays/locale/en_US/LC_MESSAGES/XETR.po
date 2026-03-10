@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.93\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-19 09:13+0000\n"
-"PO-Revision-Date: 2026-03-09 07:42+0000\n"
+"PO-Revision-Date: 2026-03-10 19:28+0530\n"
 "Last-Translator: Priya Kumari <priak388@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -47,6 +47,10 @@ msgstr "Labor Day"
 msgid "Pfingstmontag"
 msgstr "Whit Monday"
 
+#. Christmas Eve.
+msgid "Heiligabend"
+msgstr "Christmas Eve"
+
 #. Christmas Day.
 msgid "Erster Weihnachtstag"
 msgstr "Christmas Day"
@@ -54,10 +58,6 @@ msgstr "Christmas Day"
 #. Second Day of Christmas.
 msgid "Zweiter Weihnachtstag"
 msgstr "Second Day of Christmas"
-
-#. Christmas Eve.
-msgid "Heiligabend"
-msgstr "Christmas Eve"
 
 #. New Year's Eve.
 msgid "Silvester"
