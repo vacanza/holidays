@@ -20,9 +20,9 @@ class GermanyStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
     """Deutsche Börse Cash Market (Frankfurt Stock Exchange and Xetra) holidays.
 
     References:
-        * https://live.deutsche-boerse.com/en/handeln/trading-calendar
-        * https://www.eurexgroup.com/xetra-en/trading/trading-calendar-and-trading-hours
-        * https://www.market-clock.com/markets/xetra/equities/
+        * <https://web.archive.org/web/20251229141734/https://live.deutsche-boerse.com/en/handeln/trading-calendar>
+        * <https://web.archive.org/web/20260309093736/https://www.eurexgroup.com/xetra-en/trading/trading-calendar-and-trading-hours>
+        * <https://web.archive.org/web/20260309093724/https://www.market-clock.com/markets/xetra/equities/>
     """
 
     market = "XETR"
