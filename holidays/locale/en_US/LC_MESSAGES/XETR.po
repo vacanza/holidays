@@ -50,9 +50,9 @@ msgstr "Whit Monday"
 msgid "Erster Weihnachtstag"
 msgstr "Christmas Day"
 
-#. Second Christmas Day.
+#. Second Day of Christmas.
 msgid "Zweiter Weihnachtstag"
-msgstr "Second Christmas Day"
+msgstr "Second Day of Christmas"
 
 #. Christmas Eve.
 msgid "Heiligabend"
