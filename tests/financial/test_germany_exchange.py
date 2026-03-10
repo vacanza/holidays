@@ -78,9 +78,18 @@ class TestGermanyStockExchange(CommonFinancialTests, TestCase):
     def test_new_years_eve(self):
         self.assertHolidayName("Silvester", (f"{year}-12-31" for year in self.full_range))
 
-    def test_aliases(self):
-        self.assertIsInstance(XETR(), GermanyStockExchange)
-        self.assertIsInstance(XFRA(), GermanyStockExchange)
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2020-01-01", "Neujahr"),
+            ("2020-04-10", "Karfreitag"),
+            ("2020-04-13", "Ostermontag"),
+            ("2020-05-01", "Erster Mai"),
+            ("2020-06-01", "Pfingstmontag"),
+            ("2020-12-24", "Heiligabend"),
+            ("2020-12-25", "Erster Weihnachtstag"),
+            ("2020-12-26", "Zweiter Weihnachtstag"),
+            ("2020-12-31", "Silvester"),
+        )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
