@@ -36,6 +36,7 @@ class GermanyStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, GermanyStockExchangeStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
