@@ -94,6 +94,7 @@ class TestGermanyStockExchange(CommonFinancialTests, TestCase):
             ("2020-04-13", "Ostermontag"),
             ("2020-05-01", "Erster Mai"),
             ("2020-06-01", "Pfingstmontag"),
+            ("2020-10-03", "Tag der Deutschen Einheit"),
             ("2020-12-24", "Heiligabend"),
             ("2020-12-25", "Erster Weihnachtstag"),
             ("2020-12-26", "Zweiter Weihnachtstag"),
