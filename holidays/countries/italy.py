@@ -283,7 +283,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
         # Cities.
         "Forlì": "Forli",
     }
-    supported_languages = ("en_US", "it_IT")
+    supported_languages = ("en_US", "it_IT", "th")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
