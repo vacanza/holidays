@@ -57,9 +57,18 @@ class TestGermanyStockExchange(CommonFinancialTests, TestCase):
         name = "Pfingstmontag"
         self.assertHolidayName(
             name,
+            "2016-05-16",
+            "2017-06-05",
+            "2018-05-21",
+            "2019-06-10",
             "2020-06-01",
             "2021-05-24",
         )
+        self.assertNoHolidayName(name, range(2022, self.end_year))
+
+    def test_german_unity_day(self):
+        name = "Tag der Deutschen Einheit"
+        self.assertHolidayName(name, (f"{year}-10-03" for year in range(self.start_year, 2022)))
         self.assertNoHolidayName(name, range(2022, self.end_year))
 
     def test_christmas_eve(self):
