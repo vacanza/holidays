@@ -104,6 +104,19 @@ class TestItaly(CommonCountryTests, TestCase):
         self.assertSubdivBzHalfDayHolidayName(name, range(1993, self.end_year))
         self.assertNoSubdivBzHalfDayHolidayName(name, range(self.start_year, 1993))
 
+    def test_easter_sunday(self):
+        name = "Pasqua"
+        self.assertHolidayName(
+            name,
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
+            "2024-03-31",
+            "2025-04-20",
+        )
+        self.assertHolidayName(name, self.full_range)
+
     def test_easter_monday(self):
         name = "Lunedì dell'Angelo"
         self.assertHolidayName(
@@ -318,6 +331,7 @@ class TestItaly(CommonCountryTests, TestCase):
             2022,
             ("2022-01-01", "Capodanno"),
             ("2022-01-06", "Epifania"),
+            ("2022-04-17", "Pasqua"),
             ("2022-04-18", "Lunedì dell'Angelo"),
             ("2022-04-25", "Anniversario della Liberazione"),
             ("2022-05-01", "Festa del Lavoro"),
@@ -510,6 +524,7 @@ class TestItaly(CommonCountryTests, TestCase):
             ("2025-03-19", "San Giuseppe"),
             ("2025-03-22", "Madonna dei Sette Veli"),
             ("2025-04-18", "Venerdì santo"),
+            ("2025-04-20", "Pasqua"),
             ("2025-04-21", "Lunedì dell'Angelo"),
             ("2025-04-23", "San Giorgio; San Giorgio Martire"),
             ("2025-04-25", "Anniversario della Liberazione; San Marco Evangelista"),
@@ -618,6 +633,7 @@ class TestItaly(CommonCountryTests, TestCase):
             ("2025-03-19", "Saint Joseph's Day"),
             ("2025-03-22", "Our Lady of the Seven Veils"),
             ("2025-04-18", "Good Friday"),
+            ("2025-04-20", "Easter Sunday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-04-23", "Saint George's Day"),
             ("2025-04-25", "Liberation Day; Saint Mark's Day"),
@@ -732,6 +748,7 @@ class TestItaly(CommonCountryTests, TestCase):
             ("2025-03-19", "วันสมโภชนักบุญโยเซฟ"),
             ("2025-03-22", "วันแม่พระแห่งผ้าคลุมทั้งเจ็ด"),
             ("2025-04-18", "วันศุกร์ประเสริฐ"),
+            ("2025-04-20", "วันอาทิตย์อีสเตอร์"),
             ("2025-04-21", "วันจันทร์อีสเตอร์"),
             ("2025-04-23", "วันสมโภชนักบุญจอร์จ"),
             ("2025-04-25", "วันปลดปล่อย; วันสมโภชนักบุญมาระโก ผู้นิพนธ์พระวรสาร"),
