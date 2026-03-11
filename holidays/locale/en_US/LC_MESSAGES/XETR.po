@@ -47,6 +47,10 @@ msgstr "Labor Day"
 msgid "Pfingstmontag"
 msgstr "Whit Monday"
 
+#. German Unity Day.
+msgid "Tag der Deutschen Einheit"
+msgstr "German Unity Day"
+
 #. Christmas Eve.
 msgid "Heiligabend"
 msgstr "Christmas Eve"
@@ -62,3 +66,7 @@ msgstr "Second Day of Christmas"
 #. New Year's Eve.
 msgid "Silvester"
 msgstr "New Year's Eve"
+
+#. Reformation Day.
+msgid "Reformationstag"
+msgstr "Reformation Day"
