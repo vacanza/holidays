@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestItaly(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Italy)
+        super().setUpClass(Italy, with_subdiv_categories=True)
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -51,10 +51,58 @@ class TestItaly(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, range(1978, 1986))
 
+    def test_fat_thursday(self):
+        name = "Giovedì grasso"
+        self.assertNoHolidayName(name)
+        self.assertNoSubdivBzHolidayName(name)
+        self.assertSubdivBzHalfDayHolidayName(
+            name,
+            "2020-02-20",
+            "2021-02-11",
+            "2022-02-24",
+            "2023-02-16",
+            "2024-02-08",
+            "2025-02-27",
+        )
+        self.assertSubdivBzHalfDayHolidayName(name, range(1993, self.end_year))
+        self.assertNoSubdivBzHalfDayHolidayName(name, range(self.start_year, 1993))
+
+    def test_last_day_of_carnival(self):
+        name = "Ultimo giorno di carnevale"
+        self.assertNoHolidayName(name)
+        self.assertNoSubdivBzHolidayName(name)
+        self.assertSubdivBzHalfDayHolidayName(
+            name,
+            "2020-02-25",
+            "2021-02-16",
+            "2022-03-01",
+            "2023-02-21",
+            "2024-02-13",
+            "2025-03-04",
+        )
+        self.assertSubdivBzHalfDayHolidayName(name, range(1993, self.end_year))
+        self.assertNoSubdivBzHalfDayHolidayName(name, range(self.start_year, 1993))
+
     def test_saint_josephs_day(self):
         name = "San Giuseppe"
         self.assertHolidayName(name, (f"{year}-03-19" for year in range(1929, 1977)))
         self.assertNoHolidayName(name, range(self.start_year, 1929), range(1977, self.end_year))
+
+    def test_good_friday(self):
+        name = "Venerdì santo"
+        self.assertNoHolidayName(name)
+        self.assertNoSubdivBzHolidayName(name)
+        self.assertSubdivBzHalfDayHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertSubdivBzHalfDayHolidayName(name, range(1993, self.end_year))
+        self.assertNoSubdivBzHalfDayHolidayName(name, range(self.start_year, 1993))
 
     def test_easter_monday(self):
         name = "Lunedì dell'Angelo"
@@ -110,6 +158,21 @@ class TestItaly(CommonCountryTests, TestCase):
             "2000-06-04",
         )
         self.assertNoHolidayName(name, range(self.start_year, 1947))
+
+    def test_whit_monday(self):
+        name = "Lunedì di Pentecoste"
+        self.assertNoHolidayName(name)
+        self.assertSubdivBzHolidayName(
+            name,
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
+        )
+        self.assertSubdivBzHolidayName(name, range(1993, self.end_year))
+        self.assertNoSubdivBzHolidayName(name, range(self.start_year, 1993))
 
     def test_ascension_day(self):
         name = "Ascensione"
@@ -224,6 +287,15 @@ class TestItaly(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, range(1913, 1924))
 
+    def test_christmas_eve(self):
+        name = "Vigilia di Natale"
+        self.assertNoHolidayName(name)
+        self.assertNoSubdivBzHolidayName(name)
+        self.assertSubdivBzHalfDayHolidayName(
+            name, (f"{year}-12-24" for year in range(1992, self.end_year))
+        )
+        self.assertNoSubdivBzHalfDayHolidayName(name, range(self.start_year, 1992))
+
     def test_christmas_day(self):
         self.assertHolidayName("Natale", (f"{year}-12-25" for year in self.full_range))
 
@@ -232,20 +304,14 @@ class TestItaly(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1949, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1949))
 
-    def test_bz_whit_monday(self):
-        name = "Lunedì di Pentecoste"
+    def test_last_day_of_the_year(self):
+        name = "Ultimo giorno dell'anno"
         self.assertNoHolidayName(name)
-        self.assertSubdivBzHolidayName(
-            name,
-            "2020-06-01",
-            "2021-05-24",
-            "2022-06-06",
-            "2023-05-29",
-            "2024-05-20",
-            "2025-06-09",
+        self.assertNoSubdivBzHolidayName(name)
+        self.assertSubdivBzHalfDayHolidayName(
+            name, (f"{year}-12-31" for year in range(1992, self.end_year))
         )
-        self.assertSubdivBzHolidayName(name, range(1993, self.end_year))
-        self.assertNoSubdivBzHolidayName(name, range(self.start_year, 1993))
+        self.assertNoSubdivBzHalfDayHolidayName(name, range(self.start_year, 1992))
 
     def test_2022(self):
         self.assertHolidaysInYear(
@@ -436,11 +502,14 @@ class TestItaly(CommonCountryTests, TestCase):
             ("2025-02-14", "San Modestino; San Valentino"),
             ("2025-02-15", "Santi Faustino e Giovita"),
             ("2025-02-25", "San Gerlando"),
+            ("2025-02-27", "Giovedì grasso"),
             ("2025-03-01", "San Leoluca"),
+            ("2025-03-04", "Ultimo giorno di carnevale"),
             ("2025-03-16", "Santi Ilario e Taziano"),
             ("2025-03-18", "Nostra Signora della Misericordia; Sant'Anselmo da Baggio"),
             ("2025-03-19", "San Giuseppe"),
             ("2025-03-22", "Madonna dei Sette Veli"),
+            ("2025-04-18", "Venerdì santo"),
             ("2025-04-21", "Lunedì dell'Angelo"),
             ("2025-04-23", "San Giorgio; San Giorgio Martire"),
             ("2025-04-25", "Anniversario della Liberazione; San Marco Evangelista"),
@@ -517,9 +586,11 @@ class TestItaly(CommonCountryTests, TestCase):
             ("2025-12-09", "San Siro"),
             ("2025-12-13", "Santa Lucia"),
             ("2025-12-19", "San Berardo da Pagliara"),
+            ("2025-12-24", "Vigilia di Natale"),
             ("2025-12-25", "Natale"),
             ("2025-12-26", "Santo Stefano"),
             ("2025-12-30", "San Ruggero"),
+            ("2025-12-31", "Ultimo giorno dell'anno"),
         )
 
     def test_l10n_en_us(self):
@@ -539,11 +610,14 @@ class TestItaly(CommonCountryTests, TestCase):
             ("2025-02-14", "Saint Modestinus's Day; Saint Valentine's Day"),
             ("2025-02-15", "Saints Faustinus and Jovita's Day"),
             ("2025-02-25", "Saint Gerland's Day"),
+            ("2025-02-27", "Fat Thursday"),
             ("2025-03-01", "Saint Leoluca's Day"),
+            ("2025-03-04", "Last Day of Carnival"),
             ("2025-03-16", "Saints Hilary and Tatian's Day"),
             ("2025-03-18", "Our Lady of Mercy; Saint Anselm of Baggio's Day"),
             ("2025-03-19", "Saint Joseph's Day"),
             ("2025-03-22", "Our Lady of the Seven Veils"),
+            ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-04-23", "Saint George's Day"),
             ("2025-04-25", "Liberation Day; Saint Mark's Day"),
@@ -626,9 +700,11 @@ class TestItaly(CommonCountryTests, TestCase):
             ("2025-12-09", "Saint Syrus's Day"),
             ("2025-12-13", "Saint Lucy's Day"),
             ("2025-12-19", "Saint Berardo's Day"),
+            ("2025-12-24", "Christmas Eve"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Saint Stephen's Day"),
             ("2025-12-30", "Saint Roger's Day"),
+            ("2025-12-31", "Last Day of the Year"),
         )
 
     def test_l10n_th(self):
@@ -648,11 +724,14 @@ class TestItaly(CommonCountryTests, TestCase):
             ("2025-02-14", "วันสมโภชนักบุญวาเลนไทน์; วันสมโภชนักบุญโมเดสตินัส"),
             ("2025-02-15", "วันสมโภชนักบุญเฟาสตินัสและโยวิตา"),
             ("2025-02-25", "วันสมโภชนักบุญเกอร์ลันโด"),
+            ("2025-02-27", "วันพฤหัสบดีอ้วน"),
             ("2025-03-01", "วันสมโภชนักบุญเลโอลูคา"),
+            ("2025-03-04", "วันสุดท้ายของเทศกาลคาร์นิวัล"),
             ("2025-03-16", "วันสมโภชนักบุญฮิลารีและทาเทียน"),
             ("2025-03-18", "วันสมโภชนักบุญแอนเซล์มแห่งบัดโจ; วันแม่พระแห่งความเมตตา"),
             ("2025-03-19", "วันสมโภชนักบุญโยเซฟ"),
             ("2025-03-22", "วันแม่พระแห่งผ้าคลุมทั้งเจ็ด"),
+            ("2025-04-18", "วันศุกร์ประเสริฐ"),
             ("2025-04-21", "วันจันทร์อีสเตอร์"),
             ("2025-04-23", "วันสมโภชนักบุญจอร์จ"),
             ("2025-04-25", "วันปลดปล่อย; วันสมโภชนักบุญมาระโก ผู้นิพนธ์พระวรสาร"),
@@ -732,7 +811,9 @@ class TestItaly(CommonCountryTests, TestCase):
             ("2025-12-09", "วันสมโภชนักบุญไซรัส"),
             ("2025-12-13", "วันสมโภชนักบุญลูซี"),
             ("2025-12-19", "วันสมโภชนักบุญเบราร์โด"),
+            ("2025-12-24", "วันคริสต์มาสอีฟ"),
             ("2025-12-25", "วันคริสต์มาส"),
             ("2025-12-26", "วันสมโภชนักบุญสเตเฟน"),
             ("2025-12-30", "วันสมโภชนักบุญโรเจอร์"),
+            ("2025-12-31", "วันสิ้นปี"),
         )

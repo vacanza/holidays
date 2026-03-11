@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.93\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-10 12:34+0700\n"
-"PO-Revision-Date: 2026-03-10 12:34+0700\n"
+"PO-Revision-Date: 2026-03-11 18:21+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -203,6 +203,26 @@ msgstr "วันสมโภชนักบุญโรเจอร์"
 #. Whit Monday.
 msgid "Lunedì di Pentecoste"
 msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
+
+#. Fat Thursday.
+msgid "Giovedì grasso"
+msgstr "วันพฤหัสบดีอ้วน"
+
+#. Last Day of Carnival.
+msgid "Ultimo giorno di carnevale"
+msgstr "วันสุดท้ายของเทศกาลคาร์นิวัล"
+
+#. Good Friday.
+msgid "Venerdì santo"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. Christmas Eve.
+msgid "Vigilia di Natale"
+msgstr "วันคริสต์มาสอีฟ"
+
+#. Last Day of the Year.
+msgid "Ultimo giorno dell'anno"
+msgstr "วันสิ้นปี"
 
 #. Saint Saturninus of Cagliari's Day.
 msgid "San Saturnino di Cagliari"
