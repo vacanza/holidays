@@ -550,7 +550,7 @@ msgstr "วันครบรอบ 100 ปีชาตกาล คามิล
 
 #. 100th anniversary of the birth of Victor Emmanuel II.
 msgid "Centenario della nascita del Vittorio Emanuele II"
-msgstr "วันครบรอบ 100 ปีวพระราชสมภพของพระเจ้าวิตโตรีโอ เอมานูเอเลที่ 2"
+msgstr "วันครบรอบ 100 ปีพระราชสมภพของพระเจ้าวิตโตรีโอ เอมานูเอเลที่ 2"
 
 #. Celebration of 600th anniversary of the death of Dante.
 msgid "Celebrazione del sesto centenario dantesco"
