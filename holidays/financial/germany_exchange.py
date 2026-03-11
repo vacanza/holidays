@@ -81,6 +81,7 @@ class XETR(GermanyStockExchange):
 class XFRA(GermanyStockExchange):
     pass
 
+
 class GermanyStockExchangeStaticHolidays:
     """Germany Stock Exchange special holidays."""
 
