@@ -56,6 +56,9 @@ class GermanyStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
             # Whit Monday.
             self._add_whit_monday(tr("Pfingstmontag"))
 
+            # German Unity Day.
+            self._add_holiday_oct_3(tr("Tag der Deutschen Einheit"))
+
         # Christmas Eve.
         self._add_christmas_eve(tr("Heiligabend"))
 
