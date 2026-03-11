@@ -12,11 +12,12 @@
 
 from gettext import gettext as tr
 
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.calendars.gregorian import OCT
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class GermanyStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays):
+class GermanyStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """Germany Stock Exchange holidays.
 
     Deutsche Börse Cash Market (Frankfurt Stock Exchange and Xetra) holidays.
