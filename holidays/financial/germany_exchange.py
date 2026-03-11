@@ -80,3 +80,11 @@ class XETR(GermanyStockExchange):
 
 class XFRA(GermanyStockExchange):
     pass
+
+class GermanyStockExchangeStaticHolidays:
+    """Germany Stock Exchange special holidays."""
+
+    special_public_holidays = {
+        # Reformation Day.
+        2017: (OCT, 31, tr("Reformationstag")),
+    }
