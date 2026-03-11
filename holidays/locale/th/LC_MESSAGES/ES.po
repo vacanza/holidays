@@ -241,11 +241,11 @@ msgstr "ชดเชยวันสมโภชนักบุญโยเซฟ
 
 #. 80th Anniversary of the first Basque Government.
 msgid "80 Aniversario del primer Gobierno Vasco"
-msgstr "วันครบรอบ 80 ปี การก่อตั้งรัฐบาลแคว้นบาสก์ชุดแรก"
+msgstr "วันครบรอบ 80 ปีการก่อตั้งรัฐบาลแคว้นบาสก์ชุดแรก"
 
 #. V Centennial of the Circumnavigation of the World.
 msgid "V Centenario Vuelta al Mundo"
-msgstr "วันครบรอบ 500 ปี การเดินเรือรอบโลก"
+msgstr "วันครบรอบ 500 ปีการเดินเรือรอบโลก"
 
 #. The Fallas.
 msgid "Lunes de Fallas"
