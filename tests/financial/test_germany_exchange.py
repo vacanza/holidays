@@ -112,6 +112,7 @@ class TestGermanyStockExchange(CommonFinancialTests, TestCase):
             ("2020-04-13", "Easter Monday"),
             ("2020-05-01", "Labor Day"),
             ("2020-06-01", "Whit Monday"),
+            ("2020-10-03", "German Unity Day"),
             ("2020-12-24", "Christmas Eve"),
             ("2020-12-25", "Christmas Day"),
             ("2020-12-26", "Second Day of Christmas"),
