@@ -21,6 +21,9 @@ class TestGermanyStockExchange(CommonFinancialTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(GermanyStockExchange)
 
+    def test_special_holidays(self):
+        self.assertHoliday("2017-10-31")
+
     def test_new_years_day(self):
         self.assertHolidayName("Neujahr", (f"{year}-01-01" for year in self.full_range))
 
