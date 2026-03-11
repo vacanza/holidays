@@ -50,9 +50,9 @@ class GermanyStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
         # Labor Day.
         self._add_labor_day(tr("Erster Mai"))
 
-        # Pfingstmontag (Whit Monday) is a public holiday in Germany, but usually
-        # a trading day. XETR closed on this day in 2020 and 2021 only.
-        if self._year in {2020, 2021}:
+        # Pfingstmontag (Whit Monday) and German Unity Day (Tag der Deutschen Einheit)
+        # stop being market holidays from 2022 onwards.
+        if self._year in <= 2021:
             # Whit Monday.
             self._add_whit_monday(tr("Pfingstmontag"))
 
