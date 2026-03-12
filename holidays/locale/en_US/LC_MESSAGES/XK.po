@@ -41,11 +41,11 @@ msgstr "Orthodox Christmas Day"
 
 #. Independence Day.
 msgid "Dita e Pavarësisë së Republikës së Kosovës"
-msgstr "Independence Day"
+msgstr "Independence Day of the Republic of Kosovo"
 
 #. Constitution Day.
 msgid "Dita e Kushtetutës së Republikës së Kosovës"
-msgstr "Constitution Day"
+msgstr "Constitution Day of the Republic of Kosovo"
 
 #. International Workers' Day.
 msgid "Dita Ndërkombëtare e Punës"
@@ -65,11 +65,11 @@ msgstr "Orthodox Easter"
 
 #. Eid al-Fitr.
 msgid "Bajrami i Madh, dita e parë"
-msgstr "Eid al-Fitr"
+msgstr "First Day of Eid al-Fitr"
 
 #. Eid al-Adha.
 msgid "Bajrami i Vogël, dita e parë"
-msgstr "Eid al-Adha"
+msgstr "First Day of Eid al-Adha"
 
 #. Catholic Christmas Day.
 msgid "Krishtlindjet Katolike"
