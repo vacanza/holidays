@@ -99,7 +99,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 249 country codes and are fully compatible with [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html).
+We currently support 250 country codes and are fully compatible with [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html).
 The standard way to refer to a country is by using its [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes),
 the same used for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -964,6 +964,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>KI</td>
 <td></td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td>Kosovo</td>
+<td>XK</td>
+<td></td>
+<td>en_US, <strong>sq</strong>, sr</td>
 <td></td>
 </tr>
 <tr>
