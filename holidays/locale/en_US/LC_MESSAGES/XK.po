@@ -49,6 +49,7 @@ msgstr "New Year's Day"
 msgid "Krishtlindjet Ortodokse"
 msgstr "Orthodox Christmas Day"
 
+#. Independence Day.
 msgid "Dita e Pavarësisë së Republikës së Kosovës"
 msgstr "Independence Day"
 
@@ -60,6 +61,7 @@ msgstr "Catholic Easter"
 msgid "Pashkët Ortodokse"
 msgstr "Orthodox Easter"
 
+#. Constitution Day.
 msgid "Dita e Kushtetutës së Republikës së Kosovës"
 msgstr "Constitution Day"
 

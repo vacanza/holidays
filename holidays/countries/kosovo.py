@@ -61,8 +61,8 @@ class Kosovo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
         # Orthodox Christmas Day.
         dts_observed.add(self._add_christmas_day(tr("Krishtlindjet Ortodokse"), JULIAN_CALENDAR))
 
-        # Independence Day.
         dts_observed.add(
+            # Independence Day.
             self._add_holiday_feb_17(tr("Dita e Pavarësisë së Republikës së Kosovës"))
         )
 
@@ -72,8 +72,8 @@ class Kosovo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
         # Orthodox Easter.
         dts_observed.add(self._add_easter_sunday(tr("Pashkët Ortodokse"), JULIAN_CALENDAR))
 
-        # Constitution Day.
         dts_observed.add(
+            # Constitution Day.
             self._add_holiday_apr_9(tr("Dita e Kushtetutës së Republikës së Kosovës"))
         )
 
