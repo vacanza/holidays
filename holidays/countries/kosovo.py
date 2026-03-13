@@ -14,24 +14,28 @@ from gettext import gettext as tr
 
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class Kosovo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Kosovo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """Kosovo holidays.
 
     References:
         * <https://bqk-kos.org/kalendari-i-festave/>
-        * Law No. 03/L-064 on Public Holidays in the Republic of Kosovo.
+        * [Law No. 03/L-064](https://web.archive.org/web/20231127220229/https://gzk.rks-gov.net/ActDocumentDetail.aspx?ActID=2539)
     """
 
     country = "XK"
     default_language = "sq"
     # %s (estimated).
     estimated_label = tr("%s (e vlerësuar)")
+    # %s (observed).
+    observed_label = tr("%s (ditë pushimi e shtyrë)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (ditë pushimi e shtyrë, e vlerësuar)")
     supported_languages = ("en_US", "sq", "sr")
-    # Independence declared on 2008-02-17.
-    start_year = 2008
+    # First full year after independence (2008-02-17).
+    start_year = 2009
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -43,47 +47,53 @@ class Kosovo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        dts_observed = set()
+
         # New Year's Day.
         name = tr("Viti i Ri")
-        self._add_new_years_day(name)
-        self._add_new_years_day_two(name)
+        dts_observed.add(self._add_new_years_day(name))
+        dts_observed.add(self._add_new_years_day_two(name))
 
         # Orthodox Christmas Day.
-        self._add_christmas_day(tr("Krishtlindjet Ortodokse"), JULIAN_CALENDAR)
+        dts_observed.add(self._add_christmas_day(tr("Krishtlindjet Ortodokse"), JULIAN_CALENDAR))
 
         # Independence Day.
-        self._add_holiday_feb_17(tr("Dita e Pavarësisë së Republikës së Kosovës"))
-
-        # Constitution Day.
-        self._add_holiday_apr_9(tr("Dita e Kushtetutës së Republikës së Kosovës"))
-
-        # International Workers' Day.
-        self._add_labor_day(tr("Dita Ndërkombëtare e Punës"))
-
-        # Europe Day.
-        self._add_europe_day(tr("Dita e Evropës"))
+        dts_observed.add(
+            self._add_holiday_feb_17(tr("Dita e Pavarësisë së Republikës së Kosovës"))
+        )
 
         # Catholic Easter.
-        name = tr("Pashkët Katolike")
-        self._add_easter_sunday(name)
-        self._add_easter_monday(name)
+        dts_observed.add(self._add_easter_sunday(tr("Pashkët Katolike")))
 
         # Orthodox Easter.
-        name = tr("Pashkët Ortodokse")
-        self._add_easter_sunday(name, JULIAN_CALENDAR)
-        self._add_easter_monday(name, JULIAN_CALENDAR)
+        dts_observed.add(self._add_easter_sunday(tr("Pashkët Ortodokse"), JULIAN_CALENDAR))
 
-        # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Bajrami i Madh, dita e parë"))
+        # Constitution Day.
+        dts_observed.add(
+            self._add_holiday_apr_9(tr("Dita e Kushtetutës së Republikës së Kosovës"))
+        )
 
-        # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Bajrami i Vogël, dita e parë"))
+        # International Workers' Day.
+        dts_observed.add(self._add_labor_day(tr("Dita Ndërkombëtare e Punës")))
+
+        # Europe Day.
+        dts_observed.add(self._add_europe_day(tr("Dita e Evropës")))
 
         # Catholic Christmas Day.
-        self._add_christmas_day(tr("Krishtlindjet Katolike"))
+        dts_observed.add(self._add_christmas_day(tr("Krishtlindjet Katolike")))
+
+        # Eid al-Fitr.
+        dts_observed.update(self._add_eid_al_fitr_day(tr("Bajrami i Madh, dita e parë")))
+
+        # Eid al-Adha.
+        dts_observed.update(self._add_eid_al_adha_day(tr("Bajrami i Vogël, dita e parë")))
+
+        if self.observed:
+            self._populate_observed(dts_observed)
 
 
 class XK(Kosovo):

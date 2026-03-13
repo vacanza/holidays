@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.93\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-12 12:00+0000\n"
 "PO-Revision-Date: 2026-03-12 12:00+0000\n"
-"Last-Translator: \n"
+"Last-Translator: Blend Halilaj <blendhalilaj94@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -31,6 +31,16 @@ msgstr ""
 msgid "%s (e vlerësuar)"
 msgstr "%s (estimated)"
 
+#. %s (observed).
+#, c-format
+msgid "%s (ditë pushimi e shtyrë)"
+msgstr "%s (observed)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (ditë pushimi e shtyrë, e vlerësuar)"
+msgstr "%s (observed, estimated)"
+
 #. New Year's Day.
 msgid "Viti i Ri"
 msgstr "New Year's Day"
@@ -39,11 +49,17 @@ msgstr "New Year's Day"
 msgid "Krishtlindjet Ortodokse"
 msgstr "Orthodox Christmas Day"
 
-#. Independence Day.
 msgid "Dita e Pavarësisë së Republikës së Kosovës"
 msgstr "Independence Day"
 
-#. Constitution Day.
+#. Catholic Easter.
+msgid "Pashkët Katolike"
+msgstr "Catholic Easter"
+
+#. Orthodox Easter.
+msgid "Pashkët Ortodokse"
+msgstr "Orthodox Easter"
+
 msgid "Dita e Kushtetutës së Republikës së Kosovës"
 msgstr "Constitution Day"
 
@@ -55,13 +71,9 @@ msgstr "International Workers' Day"
 msgid "Dita e Evropës"
 msgstr "Europe Day"
 
-#. Catholic Easter.
-msgid "Pashkët Katolike"
-msgstr "Catholic Easter"
-
-#. Orthodox Easter.
-msgid "Pashkët Ortodokse"
-msgstr "Orthodox Easter"
+#. Catholic Christmas Day.
+msgid "Krishtlindjet Katolike"
+msgstr "Catholic Christmas Day"
 
 #. Eid al-Fitr.
 msgid "Bajrami i Madh, dita e parë"
@@ -70,7 +82,3 @@ msgstr "Eid al-Fitr"
 #. Eid al-Adha.
 msgid "Bajrami i Vogël, dita e parë"
 msgstr "Eid al-Adha"
-
-#. Catholic Christmas Day.
-msgid "Krishtlindjet Katolike"
-msgstr "Catholic Christmas Day"
