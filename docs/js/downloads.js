@@ -35,7 +35,7 @@ function holidayDownloads() {
 
         // Formatting Helper Functions
         formatLabel: (str) => str.charAt(0).toUpperCase() + str.slice(1).replace(/_/g, ' '),
-        formatDate: (dateStr) => new Date(dateStr).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric', weekday: 'short' }),
+        formatDate: (dateStr) => dateStr,
         _getPath: function(year, cat, ext) {
             return `ics/${this.type}/${this.selectedEntity}/${year}/${this.selectedSubdiv}_${this.selectedLang}_${cat}.${ext}`;
         },

@@ -1,0 +1,77 @@
+name: Deploy GitHub Page
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:
+
+env:
+  FORCE_COLOR: 1
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098
+        with:
+          python-version: "3.12"
+          version: "0.9.16"
+          enable-cache: true
+
+      - name: Install Docs Dependencies
+        run: uv sync --frozen --no-default-groups --no-install-project --group docs --link-mode=copy
+
+      - name: Build Site
+        run: uv run mkdocs build
+
+      - name: Compile Translations
+        run: |
+          uv run --with polib python scripts/l10n/generate_mo_files.py
+
+      - name: Generate Holiday Data
+        run: |
+          uv run --with . python scripts/generate_site_assets.py
+
+      - name: Inject Data into Site
+        run: |
+          mkdir -p site/downloads/ics
+
+          if [ -d "docs/downloads/ics" ]; then
+            cp -r docs/downloads/ics/* site/downloads/ics/
+            echo "Successfully injected holiday data."
+          else
+            echo "Error: Generated assets directory (docs/downloads/ics) not found!"
+            exit 1
+          fi
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
+        with:
+          path: site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-24.04
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e

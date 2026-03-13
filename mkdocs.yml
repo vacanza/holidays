@@ -51,4 +51,4 @@ extra_javascript:
   - js/custom.js
   - js/copyright.js
   - js/downloads.js
-  - https://unpkg.com/alpinejs@3.13.5/dist/cdn.min.js
+  - js/alpinejs-3.13.5.min.js
