@@ -1583,11 +1583,14 @@ class UnitedStates(
         # Saint Patrick's Day.
         self._add_saint_patricks_day(tr("Saint Patrick's Day"))
 
-        # Good Friday.
+        # Easter Holidays.
         # Observed informally across the US.
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
+
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Easter Sunday"))
 
         # Mother's Day.
         # Starts to be observed by most US states by 1911.

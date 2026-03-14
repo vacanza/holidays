@@ -1333,6 +1333,20 @@ class TestUnitedStates(CommonCountryTests, TestCase):
         self.assertUnofficialHolidayName(name, dts)
         self.assertUnofficialHolidayName(name, self.full_range)
 
+    def test_easter_sunday(self):
+        name = "Easter Sunday"
+        self.assertNoHolidayName(name)
+        self.assertUnofficialHolidayName(
+            name,
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
+            "2024-03-31",
+            "2025-04-20",
+        )
+        self.assertUnofficialHolidayName(name, self.full_range)
+
     def test_easter_monday(self):
         name = "Easter Monday"
         self.assertNoHolidayName(name)
@@ -2292,8 +2306,12 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             ("2022-04-14", "Holy Thursday"),
             ("2022-04-15", "Emancipation Day (observed); Good Friday"),
             ("2022-04-16", "Emancipation Day"),
-            ("2022-04-17", "American Samoa Flag Day"),
-            ("2022-04-18", "American Samoa Flag Day (observed); Easter Monday; Patriots' Day"),
+            ("2022-04-17", "American Samoa Flag Day; Easter Sunday"),
+            (
+                "2022-04-18",
+                "American Samoa Flag Day (observed); Easter Monday; "
+                "Easter Sunday (observed); Patriots' Day",
+            ),
             ("2022-04-21", "San Jacinto Day"),
             ("2022-04-25", "Confederate Memorial Day; State Holiday"),
             ("2022-04-29", "Arbor Day"),
@@ -2394,8 +2412,8 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             ("2022-04-14", "วันพฤหัสศักดิ์สิทธิ์"),
             ("2022-04-15", "ชดเชยวันเลิกทาส; วันศุกร์ประเสริฐ"),
             ("2022-04-16", "วันเลิกทาส"),
-            ("2022-04-17", "วันธงชาติอเมริกันซามัว"),
-            ("2022-04-18", "ชดเชยวันธงชาติอเมริกันซามัว; วันจันทร์อีสเตอร์; วันแพทริออต"),
+            ("2022-04-17", "วันธงชาติอเมริกันซามัว; วันอาทิตย์อีสเตอร์"),
+            ("2022-04-18", "ชดเชยวันธงชาติอเมริกันซามัว; ชดเชยวันอาทิตย์อีสเตอร์; วันจันทร์อีสเตอร์; วันแพทริออต"),
             ("2022-04-21", "วันรำลึกยุทธการซานฮาซินโต"),
             ("2022-04-25", "วันรำลึกถึงฝ่ายสมาพันธรัฐ; วันหยุดประจำรัฐ"),
             ("2022-04-29", "วันปลูกต้นไม้"),
