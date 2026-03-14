@@ -18,10 +18,10 @@ from pathlib import Path
 
 import mkdocs_gen_files
 
-if os.environ.get("GITHUB_ACTIONS"):
-    downloads_target = "downloads.md"
-else:
+if os.environ.get("READTHEDOCS"):
     downloads_target = "https://vacanza.github.io/holidays/downloads/"
+else:
+    downloads_target = "downloads.md"
 
 
 def main():
