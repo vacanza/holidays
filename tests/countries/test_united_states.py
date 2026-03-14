@@ -922,29 +922,27 @@ class TestUnitedStates(CommonCountryTests, TestCase):
     def test_lee_jackson_day(self):
         name = "Lee Jackson Day"
         self.assertNoHolidayName(name)
-        self.assertNoSubdivVaHolidayName(
-            name, range(self.start_year, 1889), range(2021, self.end_year)
-        )
+        self.assertSubdivVaHolidayName(name, (f"{year}-01-19" for year in range(1889, 1983)))
         self.assertSubdivVaHolidayName(
             name,
             "1983-01-17",
-            "1990-01-15",
-            "1995-01-16",
-            "1999-01-18",
+            "1984-01-16",
+            "1985-01-21",
+            "1986-01-20",
             "2000-01-14",
-            "2010-01-15",
-            "2011-01-14",
-            "2012-01-13",
-            "2013-01-18",
-            "2014-01-17",
-            "2015-01-16",
+            "2001-01-12",
+            "2002-01-18",
+            "2003-01-17",
             "2016-01-15",
             "2017-01-13",
             "2018-01-12",
             "2019-01-18",
             "2020-01-17",
         )
-        self.assertSubdivVaHolidayName(name, (f"{year}-01-19" for year in range(1889, 1983)))
+        self.assertSubdivVaHolidayName(name, range(1983, 2021))
+        self.assertNoSubdivVaHolidayName(
+            name, range(self.start_year, 1889), range(2021, self.end_year)
+        )
 
     def test_inauguration_day(self):
         name = "Inauguration Day"
