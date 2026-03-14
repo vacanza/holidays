@@ -2,6 +2,11 @@
 hide:
   - navigation
 ---
+<script defer src="../js/downloads.js"></script>
+
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js"></script>
+
+<link rel="stylesheet" href="../css/downloads.css">
 
 # Download Holiday Calendars
 

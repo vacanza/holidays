@@ -36,15 +36,13 @@ jobs:
         run: uv sync --frozen --no-default-groups --group build --group docs --link-mode=copy
 
       - name: Compile Translations
-        run: |
-          uv run --no-sync scripts/l10n/generate_mo_files.py
+        run: uv run --no-sync scripts/l10n/generate_mo_files.py
 
       - name: Build Site
         run: make doc
 
       - name: Generate Holiday Data
-        run: |
-          uv run --no-sync scripts/generate_site_assets.py
+        run: uv run --no-sync scripts/generate_site_assets.py
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
