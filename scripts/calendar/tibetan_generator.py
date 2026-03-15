@@ -12,66 +12,52 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-"""
-Generate Tibetan calendar holidays from WordPress plugin data.
-
-Downloads calendar data from bhutanese-calendar plugin, extracts Gregorian
-dates for each Tibetan holiday, and generates the _TibetanLunisolar class.
-
-Usage:
-    python tibetan_generator.py          # use cached data
-    python tibetan_generator.py --download   # force fresh download
-"""
-
-# ruff: noqa: T201, FBT001, FBT002, S310
+# ruff: noqa: T201, S310
 
 import ast
-import sys
-from datetime import date
+from datetime import date as _date
 from pathlib import Path
 from urllib.request import urlretrieve
 
-DATA_URL = "https://github.com/wp-plugins/bhutanese-calendar/raw/refs/heads/master/data/data.txt"
+# wp-plugins/bhutanese-calendar is a public archive (frozen); master will not change.
+DATA_URL = "https://raw.githubusercontent.com/wp-plugins/bhutanese-calendar/master/data/data.txt"
 DATA_FILENAME = "tibetan_data.txt"
-
-# Tibetan calendar dates for each holiday (day, month in Tibetan calendar)
-HOLIDAY_DATES = {
-    "BIRTH_OF_GURU_RINPOCHE": (10, 5),
-    "BUDDHA_PARINIRVANA": (15, 4),
-    "BUDDHA_FIRST_SERMON": (4, 6),
-    "DESCENDING_DAY_OF_LORD_BUDDHA": (22, 9),
-    "THIMPHU_DRUBCHEN": (16, 8),
-    "THIMPHU_TSHECHU": (20, 8),
-    "DEATH_OF_ZHABDRUNG": (10, 3),
-    "DAY_OF_OFFERING": (30, 11),
-    "LOSAR": (1, 1),
-}
-
-# These follow Gregorian calendar, not Tibetan
-FIXED_HOLIDAYS = {
-    "BLESSED_RAINY_DAY": (9, [22, 23, 24]),  # autumnal equinox
-    "WINTER_SOLSTICE": (1, [2]),
-}
-
-MONTH_NAMES = {
-    1: "JAN",
-    2: "FEB",
-    3: "MAR",
-    4: "APR",
-    5: "MAY",
-    6: "JUN",
-    7: "JUL",
-    8: "AUG",
-    9: "SEP",
-    10: "OCT",
-    11: "NOV",
-    12: "DEC",
-}
 
 CLASS_NAME = "_TibetanLunisolar"
 OUT_FILE_NAME = "tibetan.py"
 
-HEADER_TEMPLATE = '''#  holidays
+# (tibetan_day, tibetan_month, holiday_name)
+# Data tuple format: (day_of_year, weekday, tib_day, tib_month, leap,
+#                     tib_year_name, greg_day, greg_month, greg_year)
+HOLIDAY_DATES = (
+    (1, 1, "LOSAR"),
+    (10, 3, "DEATH_OF_ZHABDRUNG"),
+    (15, 4, "BUDDHA_PARINIRVANA"),
+    (10, 5, "BIRTH_OF_GURU_RINPOCHE"),
+    (4, 6, "BUDDHA_FIRST_SERMON"),
+    (16, 8, "THIMPHU_DRUBCHEN"),
+    (20, 8, "THIMPHU_TSHECHU"),
+    (22, 9, "DESCENDING_DAY_OF_LORD_BUDDHA"),
+    (30, 11, "DAY_OF_OFFERING"),
+)
+
+CLASS_TEMPLATE = """class {class_name}:
+    \"\"\"Tibetan lunisolar calendar.
+
+    Dates calculation is based on the Tibetan lunisolar calendar,
+    which is sourced from <https://github.com/wp-plugins/bhutanese-calendar>.
+    \"\"\"
+{holiday_data}"""
+
+HOLIDAY_DATA_TEMPLATE = """    {hol_name}_DATES = {{
+{year_dates}
+    }}
+"""
+
+YEAR_TEMPLATE = "        {year}: ({date}),"
+
+FILE_HEADER = """\
+#  holidays
 #  --------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
@@ -113,23 +99,9 @@ THIMPHU_DRUBCHEN = "THIMPHU_DRUBCHEN"
 THIMPHU_TSHECHU = "THIMPHU_TSHECHU"
 WINTER_SOLSTICE = "WINTER_SOLSTICE"
 
-
-class {class_name}:
-    """Tibetan lunisolar calendar.
-
-    Dates calculation is based on the Tibetan lunisolar calendar,
-    which is sourced from <https://github.com/wp-plugins/bhutanese-calendar>.
-    """
-'''
-
-HOLIDAY_DATA_TEMPLATE = """    {hol_name}_DATES = {{
-{year_dates}
-    }}
 """
 
-YEAR_TEMPLATE = "        {year}: ({month}, {day}),"
-
-FOOTER_TEMPLATE = """
+FOOTER = """
     def _get_holiday(self, holiday: str, year: int) -> tuple[date | None, bool]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(
@@ -179,177 +151,69 @@ class _CustomTibetanHolidays(_CustomCalendar, _TibetanLunisolar):
 """
 
 
-def download_data(force: bool = False) -> Path:
-    """Download calendar data or use cached version."""
+def generate_data() -> None:
     data_file = Path(__file__).parent / DATA_FILENAME
+    tmp_file = data_file.with_suffix(".tmp")
 
-    if data_file.exists() and not force:
-        print(f"Using existing data file: {data_file}")
-        return data_file
+    urlretrieve(DATA_URL, tmp_file)
+    tmp_file.replace(data_file)
 
-    print(f"Downloading data from: {DATA_URL}")
-    print(f"Saving to: {data_file}")
-
-    try:
-        urlretrieve(DATA_URL, data_file)
-        print(f"✅ Download complete! ({data_file.stat().st_size} bytes)")
-    except Exception as e:
-        print(f"❌ Download failed: {e}")
-        if data_file.exists():
-            print(f"Using existing cached file: {data_file}")
-        else:
-            msg = "No data file available and download failed!"
-            raise RuntimeError(msg) from e
-
-    return data_file
-
-
-def parse_data_file(filename: Path) -> list:
-    """Parse data file into list of day tuples.
-
-    Each line is a tuple:
-    (day_of_year, weekday, tib_day, tib_month, leap,
-     tib_year_name, greg_day, greg_month, greg_year)
-    """
-    print(f"Parsing {filename}...")
-    all_days = []
-
-    with open(filename, encoding="utf-8") as f:
-        for line_num, line in enumerate(f, 1):
-            stripped_line = line.strip()
-            if not stripped_line or stripped_line.startswith("#"):
-                continue
-
-            try:
-                clean_line = stripped_line.rstrip(",")
-                day_tuple = ast.literal_eval(clean_line)
-
-                if len(day_tuple) != 9:
-                    print(f"Warning: Line {line_num} has {len(day_tuple)} fields, expected 9")
-                    continue
-
-                all_days.append(day_tuple)
-            except Exception as e:
-                print(f"Warning: Could not parse line {line_num}: {e!s}")
-                continue
-
-    print(f"Parsed {len(all_days)} days")
-    return all_days
-
-
-def extract_holiday_dates(all_days: list, tibetan_day: int, tibetan_month: int) -> dict:
-    """Find Gregorian dates for a specific Tibetan calendar date."""
-    dates_dict = {}
-
-    for day_data in all_days:
-        # Tuple indices: (0:day_of_year, 1:weekday, 2:tib_day, 3:tib_month, 4:leap,
-        #                 5:tib_year_name, 6:greg_day, 7:greg_month, 8:greg_year)
-        tib_day = day_data[2]
-        tib_month = day_data[3]
-        greg_day = day_data[6]
-        greg_month = day_data[7]
-        greg_year = day_data[8]
-
-        if tib_day == tibetan_day and tib_month == tibetan_month:
-            # Validate date is real (data might have errors)
-            try:
-                date(greg_year, greg_month, greg_day)
-                month_const = MONTH_NAMES[greg_month]
-                dates_dict[greg_year] = (month_const, greg_day)
-            except ValueError as e:
-                print(
-                    f"Warning: Invalid date {greg_year}-{greg_month}-{greg_day} "
-                    f"for Tibetan {tib_day}/{tib_month}: {e}"
-                )
-
-    return dates_dict
-
-
-def extract_fixed_holiday(all_days: list, greg_month: int, greg_days: list) -> dict:
-    """Extract Gregorian-based holidays (e.g., equinoxes)."""
-    dates_dict = {}
-
-    for day_data in all_days:
-        greg_day = day_data[6]
-        g_month = day_data[7]
-        greg_year = day_data[8]
-
-        # Take first matching day per year
-        if g_month == greg_month and greg_day in greg_days and greg_year not in dates_dict:
-            try:
-                date(greg_year, greg_month, greg_day)
-                month_const = MONTH_NAMES[g_month]
-                dates_dict[greg_year] = (month_const, greg_day)
-            except ValueError:
-                continue
-
-    return dates_dict
-
-
-def generate_holiday_dict_code(hol_name: str, dates_dict: dict) -> str:
-    """Generate Python dict code for a holiday."""
-    year_dates = []
-
-    for year in sorted(dates_dict.keys()):
-        month, day = dates_dict[year]
-        year_dates.append(YEAR_TEMPLATE.format(year=year, month=month, day=day))
-
-    year_dates_str = "\n".join(year_dates)
-    return HOLIDAY_DATA_TEMPLATE.format(hol_name=hol_name, year_dates=year_dates_str)
-
-
-def generate_data(force_download: bool = False) -> None:
-    """Generate tibetan.py from calendar data."""
-    print("=" * 70)
-    print("Tibetan Calendar Holiday Generator")
-    print("=" * 70)
-    print(f"Data source: {DATA_URL}")
-    print("=" * 70)
-
-    data_file = download_data(force=force_download)
-    all_days = parse_data_file(data_file)
+    with open(data_file, encoding="utf-8") as f:
+        all_days = [
+            ast.literal_eval(line.strip().rstrip(","))
+            for line in f
+            if line.strip() and not line.strip().startswith("#")
+        ]
 
     if not all_days:
-        print("ERROR: No data parsed!")
-        return
+        raise RuntimeError(f"No data parsed from {data_file}")
+
+    dates: dict[str, dict[int, str]] = {}
+
+    for tib_day, tib_month, hol_name in HOLIDAY_DATES:
+        for d in all_days:
+            if d[2] == tib_day and d[3] == tib_month:
+                g_year, g_month, g_day = d[8], d[7], d[6]
+                month_str = _date(g_year, g_month, 1).strftime("%b").upper()
+                dates.setdefault(hol_name, {})[g_year] = f"{month_str}, {g_day}"
+
+    # Blessed Rainy Day: autumnal equinox, closest to Sept 23
+    rainy: dict[int, list[int]] = {}
+    for d in all_days:
+        g_year, g_month, g_day = d[8], d[7], d[6]
+        if g_month == 9 and g_day in (22, 23, 24):
+            rainy.setdefault(g_year, []).append(g_day)
+    for year, days in rainy.items():
+        chosen = 23 if 23 in days else (22 if 22 in days else 24)
+        dates.setdefault("BLESSED_RAINY_DAY", {})[year] = f"SEP, {chosen}"
+
+    # Winter Solstice: fixed Gregorian Jan 2
+    for d in all_days:
+        g_year, g_month, g_day = d[8], d[7], d[6]
+        if g_month == 1 and g_day == 2:
+            dates.setdefault("WINTER_SOLSTICE", {})[g_year] = "JAN, 2"
 
     holiday_data = []
+    for hol_name in sorted(dates.keys()):
+        year_dates = [
+            YEAR_TEMPLATE.format(year=year, date=date_str)
+            for year, date_str in sorted(dates[hol_name].items())
+        ]
+        holiday_data.append(
+            HOLIDAY_DATA_TEMPLATE.format(hol_name=hol_name, year_dates="\n".join(year_dates))
+        )
 
-    # Extract Tibetan calendar holidays
-    for hol_name, (tib_day, tib_month) in sorted(HOLIDAY_DATES.items()):
-        print(f"Extracting {hol_name} (Tibetan {tib_day}/{tib_month})...")
-        dates_dict = extract_holiday_dates(all_days, tib_day, tib_month)
-        print(f"  Found {len(dates_dict)} occurrences")
-        # Template adds _DATES suffix, so pass base name only
-        holiday_data.append(generate_holiday_dict_code(hol_name, dates_dict))
-
-    # Extract Gregorian-based holidays
-    for hol_name, (greg_month, greg_days) in sorted(FIXED_HOLIDAYS.items()):
-        print(f"Extracting {hol_name} (Gregorian month {greg_month})...")
-        dates_dict = extract_fixed_holiday(all_days, greg_month, greg_days)
-        print(f"  Found {len(dates_dict)} occurrences")
-        holiday_data.append(generate_holiday_dict_code(hol_name, dates_dict))
-
-    # Assemble complete file
-    holiday_data_str = "\n".join(holiday_data)
-    class_str = (
-        HEADER_TEMPLATE.format(class_name=CLASS_NAME) + "\n" + holiday_data_str + FOOTER_TEMPLATE
+    class_str = CLASS_TEMPLATE.format(
+        class_name=CLASS_NAME,
+        holiday_data="\n".join(holiday_data),
     )
 
-    # Write output
     output_path = Path(__file__).parent.parent.parent / "holidays" / "calendars" / OUT_FILE_NAME
-
     if not output_path.parent.exists():
-        msg = f"Output directory does not exist: {output_path.parent}"
-        raise RuntimeError(msg)
+        raise RuntimeError(f"Output directory not found: {output_path.parent}")
 
-    output_path.write_text(class_str, encoding="UTF-8")
-
-    print(f"\n✅ Generated: {output_path}")
-    print(f"File size: {len(class_str)} bytes")
-    print("\nDone!")
+    output_path.write_text(FILE_HEADER + class_str + FOOTER, encoding="UTF-8")
 
 
 if __name__ == "__main__":
-    force_download = "--download" in sys.argv
-    generate_data(force_download=force_download)
+    generate_data()
