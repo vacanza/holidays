@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.93\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-28 22:18+0500\n"
-"PO-Revision-Date: 2026-03-16 02:10+0500\n"
+"PO-Revision-Date: 2026-03-16 03:05+0500\n"
 "Last-Translator: Saad Bazaz <bazaz@grayhat.studio>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ur_PK\n"
@@ -60,10 +60,6 @@ msgstr "یوم اقبال"
 #. Quaid-e-Azam Day.
 msgid "Quaid-e-Azam Day"
 msgstr "یوم قائداعظم"
-
-#. Day after Christmas
-msgid "Day after Christmas"
-msgstr "کرسمس کے بعد کا دن"
 
 #. Eid al-Fitr.
 msgid "Eid-ul-Fitr"
@@ -161,3 +157,11 @@ msgstr "گرونانک دیو جی کا یوم پیدائش"
 
 msgid "Birthday of Guru Valmiki Ji"
 msgstr "گرو والمیکی جی کا یوم پیدائش"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Day after Christmas
+msgid "Day after Christmas"
+msgstr "کرسمس کے بعد کا دن"

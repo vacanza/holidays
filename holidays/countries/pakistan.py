@@ -14,7 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import OPTIONAL, PUBLIC
+from holidays.constants import OPTIONAL, PUBLIC, CHRISTIAN
 from holidays.groups import (
     InternationalHolidays,
     IslamicHolidays,
@@ -50,7 +50,7 @@ class Pakistan(
     # Achieved Independence on August 14th, 1947.
     start_year = 1948
     supported_languages = ("en_PK", "en_US", "ur_PK")
-    supported_categories = (OPTIONAL, PUBLIC)
+    supported_categories = (OPTIONAL, PUBLIC, CHRISTIAN)
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -94,9 +94,6 @@ class Pakistan(
 
         # Quaid-e-Azam Day.
         self._add_holiday_dec_25(tr("Quaid-e-Azam Day"))
-
-        # Day after Christmas
-        self._add_holiday_dec_26(tr("Day after Christmas"))
 
         # Eid al-Fitr.
         name = tr("Eid-ul-Fitr")
@@ -164,6 +161,13 @@ class Pakistan(
         # Sikh holidays
         self._add_holiday(tr("Birthday of Guru Nanak Dev Ji"), NOV, 24)
         self._add_holiday(tr("Birthday of Guru Valmiki Ji"), NOV, 30)
+
+    def _populate_christian_holidays(self):
+        # Christmas Day.
+        self._add_christmas_day(tr("Christmas Day"))
+
+        # Day after Christmas
+        self._add_holiday_dec_26(tr("Day after Christmas"))
 
 
 class PK(Pakistan):

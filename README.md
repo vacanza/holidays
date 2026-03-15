@@ -1314,7 +1314,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>PK</td>
 <td></td>
 <td><strong>en_PK</strong>, en_US, ur_PK</td>
-<td>OPTIONAL</td>
+<td>OPTIONAL, CHRISTIAN</td>
 </tr>
 <tr>
 <td>Palau</td>

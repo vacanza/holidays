@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.93\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-28 22:18+0500\n"
-"PO-Revision-Date: 2026-03-16 02:10+0500\n"
+"PO-Revision-Date: 2026-03-16 03:05+0500\n"
 "Last-Translator: Saad Bazaz <bazaz@grayhat.studio>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_PK\n"
@@ -31,7 +31,7 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
-msgstr "%s (estimated)"
+msgstr ""
 
 #. Kashmir Solidarity Day.
 msgid "Kashmir Solidarity Day"
@@ -60,10 +60,6 @@ msgstr "Iqbal Day"
 #. Quaid-e-Azam Day.
 msgid "Quaid-e-Azam Day"
 msgstr "Quaid-e-Azam Day"
-
-#. Day after Christmas
-msgid "Day after Christmas"
-msgstr "Day after Christmas"
 
 #. Eid al-Fitr.
 msgid "Eid-ul-Fitr"
@@ -161,3 +157,11 @@ msgstr "Birthday of Guru Nanak Dev Ji"
 
 msgid "Birthday of Guru Valmiki Ji"
 msgstr "Birthday of Guru Valmiki Ji"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Day after Christmas
+msgid "Day after Christmas"
+msgstr "Day after Christmas"
