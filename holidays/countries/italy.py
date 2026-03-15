@@ -13,6 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -46,6 +47,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
         * [Law 151 of Oct 8, 2025](https://web.archive.org/web/20251027040938/https://www.gazzettaufficiale.it/eli/gu/2025/10/10/236/sg/pdf)
         * [Provinces holidays](https://it.wikipedia.org/wiki/Santi_patroni_cattolici_delle_città_capoluogo_di_provincia_italiane)
         * [Bolzano Province Law 36 of Oct 16, 1992](https://web.archive.org/web/20260121223715/https://www.edizionieuropee.it/LAW/HTML/103/bz2_01_100.html)
+        * [Current List of Italy Public Holidays](https://web.archive.org/web/20260311130312/https://www.italia.it/it/italia/informazioni/orari-e-festivita-in-italia)
     """
 
     country = "IT"
@@ -283,7 +285,8 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
         # Cities.
         "Forlì": "Forli",
     }
-    supported_languages = ("en_US", "it_IT")
+    supported_categories = (HALF_DAY, PUBLIC)
+    supported_languages = ("en_US", "it_IT", "th")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -309,6 +312,12 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
         if 1929 <= self._year <= 1976:
             # Saint Joseph's Day.
             self._add_saint_josephs_day(tr("San Giuseppe"))
+
+        # Technically established by Royal Decree 5342 of Oct 17, 1869.
+        # All and Every Sundays (this includes Easter Sunday) are public holidays.
+
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Pasqua"))
 
         # Established by Law 260 of May 27, 1949.
         if self._year >= 1950:
@@ -554,6 +563,25 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
         if self._year >= 1993:
             # Whit Monday.
             self._add_whit_monday(tr("Lunedì di Pentecoste"))
+
+    def _populate_subdiv_bz_half_day_holidays(self):
+        # Province Law 36 of Oct 16, 1992.
+        if self._year >= 1993:
+            # Fat Thursday.
+            self._add_holiday_52_days_prior_easter(tr("Giovedì grasso"))
+
+            # Last Day of Carnival.
+            self._add_carnival_tuesday(tr("Ultimo giorno di carnevale"))
+
+            # Good Friday.
+            self._add_good_friday(tr("Venerdì santo"))
+
+        if self._year >= 1992:
+            # Christmas Eve.
+            self._add_christmas_eve(tr("Vigilia di Natale"))
+
+            # Last Day of the Year.
+            self._add_new_years_eve(tr("Ultimo giorno dell'anno"))
 
     def _populate_subdiv_ca_public_holidays(self):
         # Saint Saturninus of Cagliari's Day.
