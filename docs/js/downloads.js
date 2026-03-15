@@ -53,7 +53,7 @@ function holidayDownloads() {
             return Object.entries(this.activeData?.languages || { 'en_US': 'English (US)' }).map(([code, name]) => ({ code, name }));
         },
         get availableCategories() { return this.activeData?.categories || ['public']; },
-        get selectableCategories() { return ['ALL', ...this.availableCategories]; },
+        get selectableCategories() { return [...this.availableCategories, 'ALL']; },
         get categoriesToFetch() {
             return this.selectedCategory === 'ALL' ? this.availableCategories : [this.selectedCategory];
         },
@@ -79,16 +79,15 @@ function holidayDownloads() {
         // Handle Option Updates
         updateOptions() {
             this.selectedSubdiv = 'ALL';
-            this.selectedCategory = 'ALL';
+
+            // Set default category
+            this.selectedCategory = 'public';
+
+            // Set default language
+            this.selectedLang = 'en_US';
 
             this.startYear = currentYear;
             this.endYear = currentYear;
-
-            // Determine default language
-            const langs = Object.keys(this.activeData?.languages || {});
-            const defLang = this.activeData?.default_language || this.activeData?.defaultLanguage;
-
-            this.selectedLang = (defLang && langs.includes(defLang)) ? defLang : (langs[0] || 'en_US');
 
             this.updatePreview();
         },
