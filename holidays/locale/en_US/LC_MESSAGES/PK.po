@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-29 00:02+0500\n"
 "PO-Revision-Date: 2026-03-16 02:10+0500\n"
-"Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
+"Last-Translator: Saad Bazaz <bazaz@grayhat.studio>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -31,133 +31,133 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
-msgstr "%s (estimated)"
+msgstr ""
 
 #. Kashmir Solidarity Day.
 msgid "Kashmir Solidarity Day"
-msgstr "Kashmir Solidarity Day"
+msgstr ""
 
 #. Pakistan Day.
 msgid "Pakistan Day"
-msgstr "Pakistan Day"
+msgstr ""
 
 #. Labor Day.
 msgid "Labour Day"
-msgstr "Labor Day"
+msgstr ""
 
 #. Youm-e-Takbeer.
 msgid "Youm-e-Takbeer"
-msgstr "Youm-e-Takbeer"
+msgstr ""
 
 #. Independence Day.
 msgid "Independence Day"
-msgstr "Independence Day"
+msgstr ""
 
 #. Iqbal Day.
 msgid "Iqbal Day"
-msgstr "Iqbal Day"
+msgstr ""
 
 #. Quaid-e-Azam Day.
 msgid "Quaid-e-Azam Day"
-msgstr "Quaid-e-Azam Day"
+msgstr ""
 
 #. Day after Christmas
 msgid "Day after Christmas"
-msgstr "Day after Christmas"
+msgstr ""
 
 #. Eid al-Fitr.
 msgid "Eid-ul-Fitr"
-msgstr "Eid al-Fitr"
+msgstr ""
 
 #. Eid al-Adha.
 msgid "Eid-ul-Adha"
-msgstr "Eid al-Adha"
+msgstr ""
 
 #. Prophet's Birthday.
 msgid "Eid Milad-un-Nabi"
-msgstr "Prophet's Birthday"
+msgstr ""
 
 #. Ashura.
 msgid "Ashura"
-msgstr "Ashura"
+msgstr ""
 
 #. New Year's Day
 msgid "New Year's Day"
-msgstr "New Year's Day"
+msgstr ""
 
 msgid "Shab-e-Meraj (estimated)"
-msgstr "Shab-e-Meraj (estimated)"
+msgstr ""
 
 msgid "Shab-e-Barat (estimated)"
-msgstr "Shab-e-Barat (estimated)"
+msgstr ""
 
 msgid "Chehlum (estimated)"
-msgstr "Chehlum (estimated)"
+msgstr ""
 
 msgid "Giyarvee Shareef (estimated)"
-msgstr "Giyarvee Shareef (estimated)"
+msgstr ""
 
 #. Hindu & Sikh holidays
 msgid "Basant Panchami"
-msgstr "Basant Panchami"
+msgstr ""
 
 msgid "Shiv Ratri"
-msgstr "Shiv Ratri"
+msgstr ""
 
 msgid "Dulhandi"
-msgstr "Dulhandi"
+msgstr ""
 
 msgid "Holi"
-msgstr "Holi"
+msgstr ""
 
 #. Christian holidays
 msgid "Good Friday"
-msgstr "Good Friday"
+msgstr ""
 
 msgid "Easter Sunday"
-msgstr "Easter Sunday"
+msgstr ""
 
 msgid "Easter Monday"
-msgstr "Easter Monday"
+msgstr ""
 
 #. Sikh holidays
 msgid "Baisakhi"
-msgstr "Baisakhi"
+msgstr ""
 
 #. Bahai holidays
 msgid "Eid-e-Rizwan (Bahai)"
-msgstr "Eid-e-Rizwan (Bahai)"
+msgstr ""
 
 #. Buddhist holidays
 msgid "Buddha Purnima"
-msgstr "Buddha Purnima"
+msgstr ""
 
 #. Parsi holidays
 msgid "Nauroze (Parsi New Year)"
-msgstr "Nauroze (Parsi New Year)"
+msgstr ""
 
 msgid "Birthday of Lord Zoroaster (Khordad Sal)"
-msgstr "Birthday of Lord Zoroaster (Khordad Sal)"
+msgstr ""
 
 #. Hindu holidays
 msgid "Krishna Janmashtami"
-msgstr "Krishna Janmashtami"
+msgstr ""
 
 msgid "Durga Puja"
-msgstr "Durga Puja"
+msgstr ""
 
 msgid "Dussehra"
-msgstr "Dussehra"
+msgstr ""
 
 msgid "Dussehra Holiday"
-msgstr "Dussehra Holiday"
+msgstr ""
 
 msgid "Diwali"
-msgstr "Diwali"
+msgstr ""
 
 #. Sikh holidays
 msgid "Birthday of Guru Nanak Dev Ji"
-msgstr "Birthday of Guru Nanak Dev Ji"
+msgstr ""
 
 msgid "Birthday of Guru Valmiki Ji"
-msgstr "Birthday of Guru Valmiki Ji"
+msgstr ""
