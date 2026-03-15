@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.70\n"
+"Project-Id-Version: Holidays 0.93\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-29 00:02+0500\n"
-"PO-Revision-Date: 2025-04-08 04:13+0200\n"
+"PO-Revision-Date: 2026-03-16 01:11+0500\n"
 "Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -76,3 +76,85 @@ msgstr "Prophet's Birthday"
 #. Ashura.
 msgid "Ashura"
 msgstr "Ashura"
+
+#. New Year's Day (Optional)
+msgid "New Year's Day"
+msgstr "New Year's Day"
+
+#. Use _add_holiday with month/day pattern since specific helpers might not exist
+msgid "Shab-e-Meraj (estimated)"
+msgstr "Shab-e-Meraj (estimated)"
+
+msgid "Shab-e-Barat (estimated)"
+msgstr "Shab-e-Barat (estimated)"
+
+msgid "Chehlum (estimated)"
+msgstr "Chehlum (estimated)"
+
+msgid "Giyarvee Shareef (estimated)"
+msgstr "Giyarvee Shareef (estimated)"
+
+#. Hindu & Sikh holidays (Optional)
+msgid "Basant Panchami"
+msgstr "Basant Panchami"
+
+msgid "Shiv Ratri"
+msgstr "Shiv Ratri"
+
+msgid "Dulhandi"
+msgstr "Dulhandi"
+
+msgid "Holi"
+msgstr "Holi"
+
+#. Christian holidays (Optional)
+msgid "Good Friday"
+msgstr "Good Friday"
+
+msgid "Easter Sunday"
+msgstr "Easter Sunday"
+
+msgid "Easter Monday"
+msgstr "Easter Monday"
+
+#. Sikh holidays (Optional)
+msgid "Baisakhi"
+msgstr "Baisakhi"
+
+#. Bahai holidays (Optional)
+msgid "Eid-e-Rizwan (Bahai)"
+msgstr "Eid-e-Rizwan (Bahai)"
+
+#. Buddhist holidays (Optional)
+msgid "Buddha Purnima"
+msgstr "Buddha Purnima"
+
+#. Parsi holidays (Optional)
+msgid "Nauroze (Parsi New Year)"
+msgstr "Nauroze (Parsi New Year)"
+
+msgid "Birthday of Lord Zoroaster (Khordad Sal)"
+msgstr "Birthday of Lord Zoroaster (Khordad Sal)"
+
+#. Hindu holidays (Optional)
+msgid "Krishna Janmashtami"
+msgstr "Krishna Janmashtami"
+
+msgid "Durga Puja"
+msgstr "Durga Puja"
+
+msgid "Dussehra"
+msgstr "Dussehra"
+
+msgid "Dussehra Holiday"
+msgstr "Dussehra Holiday"
+
+msgid "Diwali"
+msgstr "Diwali"
+
+#. Sikh holidays (Optional)
+msgid "Birthday of Guru Nanak Dev Ji"
+msgstr "Birthday of Guru Nanak Dev Ji"
+
+msgid "Birthday of Guru Valmiki Ji"
+msgstr "Birthday of Guru Valmiki Ji"

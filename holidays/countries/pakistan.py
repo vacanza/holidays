@@ -14,11 +14,25 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.groups import InternationalHolidays, IslamicHolidays
+from holidays.constants import OPTIONAL, PUBLIC
+from holidays.groups import (
+    InternationalHolidays,
+    IslamicHolidays,
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    BuddhistCalendarHolidays,
+)
 from holidays.holiday_base import HolidayBase
 
 
-class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
+class Pakistan(
+    HolidayBase,
+    InternationalHolidays,
+    IslamicHolidays,
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    BuddhistCalendarHolidays,
+):
     """Pakistan holidays.
 
     References:
@@ -36,6 +50,7 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     # Achieved Independence on August 14th, 1947.
     start_year = 1948
     supported_languages = ("en_PK", "en_US", "ur_PK")
+    supported_categories = (OPTIONAL, PUBLIC)
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -48,8 +63,10 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         IslamicHolidays.__init__(
             self, cls=PakistanIslamicHolidays, show_estimated=islamic_show_estimated
         )
+        ChristianHolidays.__init__(self)
+        HinduCalendarHolidays.__init__(self)
+        BuddhistCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
-        self._populate_optional_holidays()
 
     def _populate_public_holidays(self):
         if self._year >= 1990:
@@ -99,9 +116,54 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_ashura_day(name)
 
     def _populate_optional_holidays(self):
-        """Optional denominational holidays."""
-        for month, day, name in PakistanOptionalHolidays.generate(self._year):
-            self._add_holiday(month, day, name)
+        # These are optional holidays that may or may not be observed
+        # depending on the year and region
+
+        # New Year's Day (Optional)
+        self._add_new_years_day(tr("New Year's Day"))
+
+        # Islamic optional holidays (estimated)
+        if self._year == 2026:
+            # Use _add_holiday with month/day pattern since specific helpers might not exist
+            self._add_holiday(tr("Shab-e-Meraj (estimated)"), JAN, 17)
+            self._add_holiday(tr("Shab-e-Barat (estimated)"), FEB, 4)
+            self._add_holiday(tr("Chehlum (estimated)"), AUG, 4)
+            self._add_holiday(tr("Giyarvee Shareef (estimated)"), SEP, 23)
+
+        # Hindu & Sikh holidays (Optional)
+        self._add_holiday(tr("Basant Panchami"), JAN, 23)
+        self._add_holiday(tr("Shiv Ratri"), FEB, 16)
+        self._add_holiday(tr("Dulhandi"), MAR, 3)
+        self._add_holiday(tr("Holi"), MAR, 4)
+
+        # Christian holidays (Optional)
+        self._add_good_friday(tr("Good Friday"))
+        self._add_easter_sunday(tr("Easter Sunday"))
+        self._add_easter_monday(tr("Easter Monday"))
+
+        # Sikh holidays (Optional)
+        self._add_holiday(tr("Baisakhi"), APR, 14)
+
+        # Bahai holidays (Optional)
+        self._add_holiday(tr("Eid-e-Rizwan (Bahai)"), APR, 21)
+
+        # Buddhist holidays (Optional)
+        self._add_holiday(tr("Buddha Purnima"), MAY, 24)
+
+        # Parsi holidays (Optional)
+        self._add_holiday(tr("Nauroze (Parsi New Year)"), AUG, 15)
+        self._add_holiday(tr("Birthday of Lord Zoroaster (Khordad Sal)"), AUG, 20)
+
+        # Hindu holidays (Optional)
+        self._add_holiday(tr("Krishna Janmashtami"), SEP, 4)
+        self._add_holiday(tr("Durga Puja"), OCT, 19)
+        self._add_holiday(tr("Dussehra"), OCT, 20)
+        self._add_holiday(tr("Dussehra Holiday"), OCT, 26)
+        self._add_diwali(tr("Diwali"))
+
+        # Sikh holidays (Optional)
+        self._add_holiday(tr("Birthday of Guru Nanak Dev Ji"), NOV, 24)
+        self._add_holiday(tr("Birthday of Guru Valmiki Ji"), NOV, 30)
 
 
 class PK(Pakistan):
@@ -189,37 +251,3 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2024: (SEP, 17),
         2026: (AUG, 25),
     }
-
-
-class PakistanOptionalHolidays:
-    """Generator for denominational optional holidays in Pakistan."""
-
-    @staticmethod
-    def generate(year):
-        yield (JAN, 1, tr("New Year's Day"))
-        if year == 2026:
-            # Muslim optional (estimated)
-            yield (JAN, 17, tr("Shab-e-Meraj (estimated)"))
-            yield (FEB, 4, tr("Shab-e-Barat (estimated)"))
-            yield (AUG, 4, tr("Chehlum (estimated)"))
-            yield (SEP, 23, tr("Giyarvee Shareef (estimated)"))
-        # Hindu & Sikh
-        yield (JAN, 23, tr("Basant Panchami"))
-        yield (FEB, 16, tr("Shiv Ratri"))
-        yield (MAR, 3, tr("Dulhandi"))
-        yield (MAR, 4, tr("Holi"))
-        yield (APR, 3, tr("Good Friday"))
-        yield (APR, 5, tr("Easter Sunday"))
-        yield (APR, 6, tr("Easter Monday"))
-        yield (APR, 14, tr("Baisakhi"))
-        yield (APR, 21, tr("Eid-e-Rizwan (Bahai)"))
-        yield (MAY, 24, tr("Buddha Purnima"))
-        yield (AUG, 15, tr("Nauroze (Parsi New Year)"))
-        yield (AUG, 20, tr("Birthday of Lord Zoroaster (Khordad Sal)"))
-        yield (SEP, 4, tr("Krishna Janmashtami"))
-        yield (OCT, 19, tr("Durga Puja"))
-        yield (OCT, 20, tr("Dussehra"))
-        yield (OCT, 26, tr("Dussehra Holiday"))
-        yield (NOV, 9, tr("Diwali"))
-        yield (NOV, 24, tr("Birthday of Guru Nanak Dev Ji"))
-        yield (NOV, 30, tr("Birthday of Guru Valmiki Ji"))

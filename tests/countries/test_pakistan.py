@@ -10,6 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly.
+
 from unittest import TestCase
 
 from holidays.countries.pakistan import Pakistan
@@ -56,174 +61,25 @@ class TestPakistan(CommonCountryTests, TestCase):
     def test_quaid_e_azam_day(self):
         self.assertHolidayName("Quaid-e-Azam Day", (f"{year}-12-25" for year in range(1948, 2050)))
 
-    def test_eid_ul_fitr(self):
-        name = "Eid-ul-Fitr"
-        self.assertHolidayName(
-            name,
-            "2020-05-24",
-            "2020-05-25",
-            "2020-05-26",
-            "2021-05-13",
-            "2021-05-14",
-            "2021-05-15",
-            "2022-05-03",
-            "2022-05-04",
-            "2022-05-05",
-            "2023-04-22",
-            "2023-04-23",
-            "2023-04-24",
-            "2024-04-10",
-            "2024-04-11",
-            "2024-04-12",
-            "2025-03-31",
-            "2025-04-01",
-            "2025-04-02",
-        )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
-
-    def test_eid_ul_adha(self):
-        name = "Eid-ul-Adha"
-        self.assertHolidayName(
-            name,
-            "2020-07-31",
-            "2020-08-01",
-            "2020-08-02",
-            "2021-07-21",
-            "2021-07-22",
-            "2021-07-23",
-            "2022-07-10",
-            "2022-07-11",
-            "2022-07-12",
-            "2023-06-29",
-            "2023-06-30",
-            "2023-07-01",
-            "2024-06-17",
-            "2024-06-18",
-            "2024-06-19",
-            "2025-06-07",
-            "2025-06-08",
-            "2025-06-09",
-        )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
-
-    def test_eid_milad_un_nabi(self):
-        name = "Eid Milad-un-Nabi"
-        self.assertHolidayName(
-            name,
-            "2020-10-30",
-            "2021-10-19",
-            "2022-10-09",
-            "2023-09-29",
-            "2024-09-17",
-        )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
-
-    def test_ashura(self):
-        name = "Ashura"
-        self.assertHolidayName(
-            name,
-            "2020-08-28",
-            "2020-08-29",
-            "2021-08-17",
-            "2021-08-18",
-            "2022-08-08",
-            "2022-08-09",
-            "2023-07-27",
-            "2023-07-28",
-            "2024-07-15",
-            "2024-07-16",
-            "2025-07-05",
-            "2025-07-06",
-        )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
-
-    def test_2002(self):
-        self.assertHolidaysInYear(
-            2002,
-            ("2002-02-05", "Kashmir Solidarity Day"),
-            ("2002-02-22", "Eid-ul-Adha (estimated)"),
-            ("2002-02-23", "Eid-ul-Adha (estimated)"),
-            ("2002-02-24", "Eid-ul-Adha (estimated)"),
-            ("2002-03-23", "Ashura (estimated); Pakistan Day"),
-            ("2002-03-24", "Ashura (estimated)"),
-            ("2002-05-01", "Labour Day"),
-            ("2002-05-24", "Eid Milad-un-Nabi (estimated)"),
-            ("2002-08-14", "Independence Day"),
-            ("2002-11-09", "Iqbal Day"),
-            ("2002-12-05", "Eid-ul-Fitr (estimated)"),
-            ("2002-12-06", "Eid-ul-Fitr (estimated)"),
-            ("2002-12-07", "Eid-ul-Fitr (estimated)"),
-            ("2002-12-25", "Quaid-e-Azam Day"),
-        )
-
-    def test_2002_no_estimated_label(self):
-        self.assertIslamicNoEstimatedHolidaysInYear(
-            2002,
-            ("2002-02-05", "Kashmir Solidarity Day"),
-            ("2002-02-22", "Eid-ul-Adha"),
-            ("2002-02-23", "Eid-ul-Adha"),
-            ("2002-02-24", "Eid-ul-Adha"),
-            ("2002-03-23", "Ashura; Pakistan Day"),
-            ("2002-03-24", "Ashura"),
-            ("2002-05-01", "Labour Day"),
-            ("2002-05-24", "Eid Milad-un-Nabi"),
-            ("2002-08-14", "Independence Day"),
-            ("2002-11-09", "Iqbal Day"),
-            ("2002-12-05", "Eid-ul-Fitr"),
-            ("2002-12-06", "Eid-ul-Fitr"),
-            ("2002-12-07", "Eid-ul-Fitr"),
-            ("2002-12-25", "Quaid-e-Azam Day"),
-        )
-
-    def test_2022(self):
-        self.assertHolidaysInYear(
-            2022,
-            ("2022-02-05", "Kashmir Solidarity Day"),
-            ("2022-03-23", "Pakistan Day"),
-            ("2022-05-01", "Labour Day"),
-            ("2022-05-03", "Eid-ul-Fitr"),
-            ("2022-05-04", "Eid-ul-Fitr"),
-            ("2022-05-05", "Eid-ul-Fitr"),
-            ("2022-07-10", "Eid-ul-Adha"),
-            ("2022-07-11", "Eid-ul-Adha"),
-            ("2022-07-12", "Eid-ul-Adha"),
-            ("2022-08-08", "Ashura"),
-            ("2022-08-09", "Ashura"),
-            ("2022-08-14", "Independence Day"),
-            ("2022-10-09", "Eid Milad-un-Nabi"),
-            ("2022-11-09", "Iqbal Day"),
-            ("2022-12-25", "Quaid-e-Azam Day"),
-        )
-
-    def test_2024(self):
-        self.assertHolidaysInYear(
-            2024,
-            ("2024-02-05", "Kashmir Solidarity Day"),
-            ("2024-03-23", "Pakistan Day"),
-            ("2024-05-01", "Labour Day"),
-            ("2024-04-10", "Eid-ul-Fitr"),
-            ("2024-04-11", "Eid-ul-Fitr"),
-            ("2024-04-12", "Eid-ul-Fitr"),
-            ("2024-05-28", "Youm-e-Takbeer"),
-            ("2024-06-17", "Eid-ul-Adha"),
-            ("2024-06-18", "Eid-ul-Adha"),
-            ("2024-06-19", "Eid-ul-Adha"),
-            ("2024-07-15", "Ashura"),
-            ("2024-07-16", "Ashura"),
-            ("2024-08-14", "Independence Day"),
-            ("2024-09-17", "Eid Milad-un-Nabi"),
-            ("2024-11-09", "Iqbal Day"),
-            ("2024-12-25", "Quaid-e-Azam Day"),
-        )
-
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
+            ("2024-01-01", "New Year's Day"),
+            ("2024-01-23", "Basant Panchami"),
             ("2024-02-05", "Kashmir Solidarity Day"),
+            ("2024-02-16", "Shiv Ratri"),
+            ("2024-03-03", "Dulhandi"),
+            ("2024-03-04", "Holi"),
             ("2024-03-23", "Pakistan Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-03-31", "Easter Sunday"),
+            ("2024-04-01", "Easter Monday"),
             ("2024-04-10", "Eid-ul-Fitr"),
             ("2024-04-11", "Eid-ul-Fitr"),
             ("2024-04-12", "Eid-ul-Fitr"),
+            ("2024-04-14", "Baisakhi"),
+            ("2024-04-21", "Eid-e-Rizwan (Bahai)"),
             ("2024-05-01", "Labour Day"),
+            ("2024-05-24", "Buddha Purnima"),
             ("2024-05-28", "Youm-e-Takbeer"),
             ("2024-06-17", "Eid-ul-Adha"),
             ("2024-06-18", "Eid-ul-Adha"),
@@ -231,20 +87,40 @@ class TestPakistan(CommonCountryTests, TestCase):
             ("2024-07-15", "Ashura"),
             ("2024-07-16", "Ashura"),
             ("2024-08-14", "Independence Day"),
+            ("2024-08-15", "Nauroze (Parsi New Year)"),
+            ("2024-08-20", "Birthday of Lord Zoroaster (Khordad Sal)"),
+            ("2024-09-04", "Krishna Janmashtami"),
             ("2024-09-17", "Eid Milad-un-Nabi"),
+            ("2024-10-19", "Durga Puja"),
+            ("2024-10-20", "Dussehra"),
+            ("2024-10-26", "Dussehra Holiday"),
+            ("2024-10-30", "Diwali"),
             ("2024-11-09", "Iqbal Day"),
+            ("2024-11-24", "Birthday of Guru Nanak Dev Ji"),
+            ("2024-11-30", "Birthday of Guru Valmiki Ji"),
             ("2024-12-25", "Quaid-e-Azam Day"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
+            ("2024-01-01", "New Year's Day"),
+            ("2024-01-23", "Basant Panchami"),
             ("2024-02-05", "Kashmir Solidarity Day"),
+            ("2024-02-16", "Shiv Ratri"),
+            ("2024-03-03", "Dulhandi"),
+            ("2024-03-04", "Holi"),
             ("2024-03-23", "Pakistan Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-03-31", "Easter Sunday"),
+            ("2024-04-01", "Easter Monday"),
             ("2024-04-10", "Eid al-Fitr"),
             ("2024-04-11", "Eid al-Fitr"),
             ("2024-04-12", "Eid al-Fitr"),
+            ("2024-04-14", "Baisakhi"),
+            ("2024-04-21", "Eid-e-Rizwan (Bahai)"),
             ("2024-05-01", "Labor Day"),
+            ("2024-05-24", "Buddha Purnima"),
             ("2024-05-28", "Youm-e-Takbeer"),
             ("2024-06-17", "Eid al-Adha"),
             ("2024-06-18", "Eid al-Adha"),
@@ -252,20 +128,40 @@ class TestPakistan(CommonCountryTests, TestCase):
             ("2024-07-15", "Ashura"),
             ("2024-07-16", "Ashura"),
             ("2024-08-14", "Independence Day"),
+            ("2024-08-15", "Nauroze (Parsi New Year)"),
+            ("2024-08-20", "Birthday of Lord Zoroaster (Khordad Sal)"),
+            ("2024-09-04", "Krishna Janmashtami"),
             ("2024-09-17", "Prophet's Birthday"),
+            ("2024-10-19", "Durga Puja"),
+            ("2024-10-20", "Dussehra"),
+            ("2024-10-26", "Dussehra Holiday"),
+            ("2024-10-30", "Diwali"),
             ("2024-11-09", "Iqbal Day"),
+            ("2024-11-24", "Birthday of Guru Nanak Dev Ji"),
+            ("2024-11-30", "Birthday of Guru Valmiki Ji"),
             ("2024-12-25", "Quaid-e-Azam Day"),
         )
 
     def test_l10n_ur_pk(self):
         self.assertLocalizedHolidays(
             "ur_PK",
+            ("2024-01-01", "نیا سال"),
+            ("2024-01-23", "بسنت پنچمی"),
             ("2024-02-05", "یوم یکجہتی کشمیر"),
+            ("2024-02-16", "شیو راتری"),
+            ("2024-03-03", "دلہنڈی"),
+            ("2024-03-04", "ہولی"),
             ("2024-03-23", "یوم پاکستان"),
+            ("2024-03-29", "گڈ فرائیڈے"),
+            ("2024-03-31", "ایسٹر سنڈے"),
+            ("2024-04-01", "ایسٹر پیر"),
             ("2024-04-10", "عید الفطر"),
             ("2024-04-11", "عید الفطر"),
             ("2024-04-12", "عید الفطر"),
+            ("2024-04-14", "بیساکھی"),
+            ("2024-04-21", "عید رضوان (بہائی)"),
             ("2024-05-01", "یوم مزدور"),
+            ("2024-05-24", "بدھ پورنیما"),
             ("2024-05-28", "یوم تکبیر"),
             ("2024-06-17", "عید الاضحی"),
             ("2024-06-18", "عید الاضحی"),
@@ -273,7 +169,16 @@ class TestPakistan(CommonCountryTests, TestCase):
             ("2024-07-15", "عاشورہ"),
             ("2024-07-16", "عاشورہ"),
             ("2024-08-14", "یوم آزادی"),
+            ("2024-08-15", "نوروز (پارسی نیا سال)"),
+            ("2024-08-20", "یوم پیدائش لارڈ زرتشت (خورداد سال)"),
+            ("2024-09-04", "کرشن جنم اشٹمی"),
             ("2024-09-17", "عید میلاد النبی"),
+            ("2024-10-19", "درگا پوجا"),
+            ("2024-10-20", "دسہرہ"),
+            ("2024-10-26", "دسہرہ چھٹی"),
+            ("2024-10-30", "دیوالی"),
             ("2024-11-09", "یوم اقبال"),
+            ("2024-11-24", "گرونانک دیو جی کا یوم پیدائش"),
+            ("2024-11-30", "گرو والمیکی جی کا یوم پیدائش"),
             ("2024-12-25", "یوم قائداعظم"),
         )

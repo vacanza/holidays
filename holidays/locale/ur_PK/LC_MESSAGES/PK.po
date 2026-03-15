@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.70\n"
+"Project-Id-Version: Holidays 0.93\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
-"POT-Creation-Date: 2025-03-29 00:09+0500\n"
-"PO-Revision-Date: 2025-04-08 04:16+0200\n"
+"POT-Creation-Date: 2025-03-28 22:18+0500\n"
+"PO-Revision-Date: 2026-03-16 01:11+0500\n"
 "Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ur_PK\n"
@@ -25,13 +25,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.5\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.5\n"
 "X-Source-Language: en_PK\n"
 
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
-msgstr "%s (اندازاً)"
+msgstr "%s (تخمینہ شدہ)"
 
 #. Kashmir Solidarity Day.
 msgid "Kashmir Solidarity Day"
@@ -76,3 +76,85 @@ msgstr "عید میلاد النبی"
 #. Ashura.
 msgid "Ashura"
 msgstr "عاشورہ"
+
+#. New Year's Day (Optional)
+msgid "New Year's Day"
+msgstr "نیا سال"
+
+#. Use _add_holiday with month/day pattern since specific helpers might not exist
+msgid "Shab-e-Meraj (estimated)"
+msgstr "شب معراج (تخمینہ شدہ)"
+
+msgid "Shab-e-Barat (estimated)"
+msgstr "شب برات (تخمینہ شدہ)"
+
+msgid "Chehlum (estimated)"
+msgstr "چہلم (تخمینہ شدہ)"
+
+msgid "Giyarvee Shareef (estimated)"
+msgstr "گیارویں شریف (تخمینہ شدہ)"
+
+#. Hindu & Sikh holidays (Optional)
+msgid "Basant Panchami"
+msgstr "بسنت پنچمی"
+
+msgid "Shiv Ratri"
+msgstr "شیو راتری"
+
+msgid "Dulhandi"
+msgstr "دلہنڈی"
+
+msgid "Holi"
+msgstr "ہولی"
+
+#. Christian holidays (Optional)
+msgid "Good Friday"
+msgstr "گڈ فرائیڈے"
+
+msgid "Easter Sunday"
+msgstr "ایسٹر سنڈے"
+
+msgid "Easter Monday"
+msgstr "ایسٹر پیر"
+
+#. Sikh holidays (Optional)
+msgid "Baisakhi"
+msgstr "بیساکھی"
+
+#. Bahai holidays (Optional)
+msgid "Eid-e-Rizwan (Bahai)"
+msgstr "عید رضوان (بہائی)"
+
+#. Buddhist holidays (Optional)
+msgid "Buddha Purnima"
+msgstr "بدھ پورنیما"
+
+#. Parsi holidays (Optional)
+msgid "Nauroze (Parsi New Year)"
+msgstr "نوروز (پارسی نیا سال)"
+
+msgid "Birthday of Lord Zoroaster (Khordad Sal)"
+msgstr "یوم پیدائش لارڈ زرتشت (خورداد سال)"
+
+#. Hindu holidays (Optional)
+msgid "Krishna Janmashtami"
+msgstr "کرشن جنم اشٹمی"
+
+msgid "Durga Puja"
+msgstr "درگا پوجا"
+
+msgid "Dussehra"
+msgstr "دسہرہ"
+
+msgid "Dussehra Holiday"
+msgstr "دسہرہ چھٹی"
+
+msgid "Diwali"
+msgstr "دیوالی"
+
+#. Sikh holidays (Optional)
+msgid "Birthday of Guru Nanak Dev Ji"
+msgstr "گرونانک دیو جی کا یوم پیدائش"
+
+msgid "Birthday of Guru Valmiki Ji"
+msgstr "گرو والمیکی جی کا یوم پیدائش"
