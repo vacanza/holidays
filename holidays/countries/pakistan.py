@@ -26,6 +26,7 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         * <https://ur.wikipedia.org/wiki/تعطیلات_پاکستان>
         * [Public and optional holidays](https://web.archive.org/web/20250118105814/https://cabinet.gov.pk/Detail/OTE2ODBiYmItZmI0MS00NDAwLWE5NGUtYmE1MGVjYzllMzAz)
         * [No.10-01/2024-Min-II](https://web.archive.org/web/20241103080918/https://cabinet.gov.pk/SiteImage/Misc/files/Holidays/28-5-24.pdf)
+        * [Public and optional holidays, 2026](https://cabinet.gov.pk/SiteImage/Misc/files/Holidays/2026/Public-Holidays-2026.pdf)
     """
 
     country = "PK"
@@ -48,6 +49,7 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
             self, cls=PakistanIslamicHolidays, show_estimated=islamic_show_estimated
         )
         super().__init__(*args, **kwargs)
+        self._populate_optional_holidays()
 
     def _populate_public_holidays(self):
         if self._year >= 1990:
@@ -96,6 +98,11 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_ashura_eve(name)
         self._add_ashura_day(name)
 
+    def _populate_optional_holidays(self):
+        """Optional denominational holidays."""
+        for month, day, name in PakistanOptionalHolidays.generate(self._year):
+            self._add_holiday(month, day, name)
+
 
 class PK(Pakistan):
     pass
@@ -118,6 +125,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2018: (SEP, 21),
         2022: (AUG, 9),
         2025: (JUL, 6),
+        2026: ((JUN, 24), (JUN, 25)),
     }
 
     # https://web.archive.org/web/20250724060629/https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
@@ -138,6 +146,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2023: (JUN, 29),
         2024: (JUN, 17),
         2025: (JUN, 7),
+        2026: (MAY, 27),
     }
 
     # https://web.archive.org/web/20250724060834/https://www.timeanddate.com/holidays/pakistan/eid-ul-fitr-1
@@ -155,10 +164,10 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (MAY, 3),
         2023: (APR, 22),
         2025: (MAR, 31),
+        2026: (MAR, 21),
     }
 
     # https://web.archive.org/web/20250724061027/https://www.timeanddate.com/holidays/pakistan/eid-milad-un-nabi
-
     MAWLID_DATES_CONFIRMED_YEARS = (2005, 2024)
     MAWLID_DATES = {
         2005: (APR, 22),
@@ -178,4 +187,39 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (OCT, 9),
         2023: (SEP, 29),
         2024: (SEP, 17),
+        2026: (AUG, 25),
     }
+
+
+class PakistanOptionalHolidays:
+    """Generator for denominational optional holidays in Pakistan."""
+
+    @staticmethod
+    def generate(year):
+        yield (JAN, 1, tr("New Year's Day"))
+        if year == 2026:
+            # Muslim optional (estimated)
+            yield (JAN, 17, tr("Shab-e-Meraj (estimated)"))
+            yield (FEB, 4, tr("Shab-e-Barat (estimated)"))
+            yield (AUG, 4, tr("Chehlum (estimated)"))
+            yield (SEP, 23, tr("Giyarvee Shareef (estimated)"))
+        # Hindu & Sikh
+        yield (JAN, 23, tr("Basant Panchami"))
+        yield (FEB, 16, tr("Shiv Ratri"))
+        yield (MAR, 3, tr("Dulhandi"))
+        yield (MAR, 4, tr("Holi"))
+        yield (APR, 3, tr("Good Friday"))
+        yield (APR, 5, tr("Easter Sunday"))
+        yield (APR, 6, tr("Easter Monday"))
+        yield (APR, 14, tr("Baisakhi"))
+        yield (APR, 21, tr("Eid-e-Rizwan (Bahai)"))
+        yield (MAY, 24, tr("Buddha Purnima"))
+        yield (AUG, 15, tr("Nauroze (Parsi New Year)"))
+        yield (AUG, 20, tr("Birthday of Lord Zoroaster (Khordad Sal)"))
+        yield (SEP, 4, tr("Krishna Janmashtami"))
+        yield (OCT, 19, tr("Durga Puja"))
+        yield (OCT, 20, tr("Dussehra"))
+        yield (OCT, 26, tr("Dussehra Holiday"))
+        yield (NOV, 9, tr("Diwali"))
+        yield (NOV, 24, tr("Birthday of Guru Nanak Dev Ji"))
+        yield (NOV, 30, tr("Birthday of Guru Valmiki Ji"))
