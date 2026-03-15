@@ -205,8 +205,8 @@ class TestKosovo(CommonCountryTests, TestCase):
             ("2025-04-20", "Pashkët Katolike; Pashkët Ortodokse"),
             (
                 "2025-04-21",
-                "Pashkët Katolike (ditë pushimi e shtyrë);"
-                " Pashkët Ortodokse (ditë pushimi e shtyrë)",
+                "Pashkët Katolike (ditë pushimi e shtyrë); "
+                "Pashkët Ortodokse (ditë pushimi e shtyrë)",
             ),
             ("2025-05-01", "Dita Ndërkombëtare e Punës"),
             ("2025-05-09", "Dita e Evropës"),
