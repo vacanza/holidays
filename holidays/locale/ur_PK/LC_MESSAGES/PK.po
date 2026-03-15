@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.93\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-28 22:18+0500\n"
-"PO-Revision-Date: 2026-03-16 01:11+0500\n"
+"PO-Revision-Date: 2026-03-16 02:10+0500\n"
 "Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ur_PK\n"
@@ -61,6 +61,10 @@ msgstr "یوم اقبال"
 msgid "Quaid-e-Azam Day"
 msgstr "یوم قائداعظم"
 
+#. Day after Christmas
+msgid "Day after Christmas"
+msgstr "کرسمس کے بعد کا دن"
+
 #. Eid al-Fitr.
 msgid "Eid-ul-Fitr"
 msgstr "عید الفطر"
@@ -77,11 +81,10 @@ msgstr "عید میلاد النبی"
 msgid "Ashura"
 msgstr "عاشورہ"
 
-#. New Year's Day (Optional)
+#. New Year's Day
 msgid "New Year's Day"
 msgstr "نیا سال"
 
-#. Use _add_holiday with month/day pattern since specific helpers might not exist
 msgid "Shab-e-Meraj (estimated)"
 msgstr "شب معراج (تخمینہ شدہ)"
 
@@ -94,7 +97,7 @@ msgstr "چہلم (تخمینہ شدہ)"
 msgid "Giyarvee Shareef (estimated)"
 msgstr "گیارویں شریف (تخمینہ شدہ)"
 
-#. Hindu & Sikh holidays (Optional)
+#. Hindu & Sikh holidays
 msgid "Basant Panchami"
 msgstr "بسنت پنچمی"
 
@@ -107,7 +110,7 @@ msgstr "دلہنڈی"
 msgid "Holi"
 msgstr "ہولی"
 
-#. Christian holidays (Optional)
+#. Christian holidays
 msgid "Good Friday"
 msgstr "گڈ فرائیڈے"
 
@@ -117,26 +120,26 @@ msgstr "ایسٹر سنڈے"
 msgid "Easter Monday"
 msgstr "ایسٹر پیر"
 
-#. Sikh holidays (Optional)
+#. Sikh holidays
 msgid "Baisakhi"
 msgstr "بیساکھی"
 
-#. Bahai holidays (Optional)
+#. Bahai holidays
 msgid "Eid-e-Rizwan (Bahai)"
 msgstr "عید رضوان (بہائی)"
 
-#. Buddhist holidays (Optional)
+#. Buddhist holidays
 msgid "Buddha Purnima"
 msgstr "بدھ پورنیما"
 
-#. Parsi holidays (Optional)
+#. Parsi holidays
 msgid "Nauroze (Parsi New Year)"
 msgstr "نوروز (پارسی نیا سال)"
 
 msgid "Birthday of Lord Zoroaster (Khordad Sal)"
 msgstr "یوم پیدائش لارڈ زرتشت (خورداد سال)"
 
-#. Hindu holidays (Optional)
+#. Hindu holidays
 msgid "Krishna Janmashtami"
 msgstr "کرشن جنم اشٹمی"
 
@@ -152,7 +155,7 @@ msgstr "دسہرہ چھٹی"
 msgid "Diwali"
 msgstr "دیوالی"
 
-#. Sikh holidays (Optional)
+#. Sikh holidays
 msgid "Birthday of Guru Nanak Dev Ji"
 msgstr "گرونانک دیو جی کا یوم پیدائش"
 

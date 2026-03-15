@@ -95,6 +95,9 @@ class Pakistan(
         # Quaid-e-Azam Day.
         self._add_holiday_dec_25(tr("Quaid-e-Azam Day"))
 
+        # Day after Christmas
+        self._add_holiday_dec_26(tr("Day after Christmas"))
+
         # Eid al-Fitr.
         name = tr("Eid-ul-Fitr")
         self._add_eid_al_fitr_day(name)
@@ -116,52 +119,49 @@ class Pakistan(
         self._add_ashura_day(name)
 
     def _populate_optional_holidays(self):
-        # These are optional holidays that may or may not be observed
-        # depending on the year and region
 
-        # New Year's Day (Optional)
+        # New Year's Day
         self._add_new_years_day(tr("New Year's Day"))
 
         # Islamic optional holidays (estimated)
         if self._year == 2026:
-            # Use _add_holiday with month/day pattern since specific helpers might not exist
             self._add_holiday(tr("Shab-e-Meraj (estimated)"), JAN, 17)
             self._add_holiday(tr("Shab-e-Barat (estimated)"), FEB, 4)
             self._add_holiday(tr("Chehlum (estimated)"), AUG, 4)
             self._add_holiday(tr("Giyarvee Shareef (estimated)"), SEP, 23)
 
-        # Hindu & Sikh holidays (Optional)
+        # Hindu & Sikh holidays
         self._add_holiday(tr("Basant Panchami"), JAN, 23)
         self._add_holiday(tr("Shiv Ratri"), FEB, 16)
         self._add_holiday(tr("Dulhandi"), MAR, 3)
         self._add_holiday(tr("Holi"), MAR, 4)
 
-        # Christian holidays (Optional)
+        # Christian holidays
         self._add_good_friday(tr("Good Friday"))
         self._add_easter_sunday(tr("Easter Sunday"))
         self._add_easter_monday(tr("Easter Monday"))
 
-        # Sikh holidays (Optional)
+        # Sikh holidays
         self._add_holiday(tr("Baisakhi"), APR, 14)
 
-        # Bahai holidays (Optional)
+        # Bahai holidays
         self._add_holiday(tr("Eid-e-Rizwan (Bahai)"), APR, 21)
 
-        # Buddhist holidays (Optional)
+        # Buddhist holidays
         self._add_holiday(tr("Buddha Purnima"), MAY, 24)
 
-        # Parsi holidays (Optional)
+        # Parsi holidays
         self._add_holiday(tr("Nauroze (Parsi New Year)"), AUG, 15)
         self._add_holiday(tr("Birthday of Lord Zoroaster (Khordad Sal)"), AUG, 20)
 
-        # Hindu holidays (Optional)
+        # Hindu holidays
         self._add_holiday(tr("Krishna Janmashtami"), SEP, 4)
         self._add_holiday(tr("Durga Puja"), OCT, 19)
         self._add_holiday(tr("Dussehra"), OCT, 20)
         self._add_holiday(tr("Dussehra Holiday"), OCT, 26)
         self._add_diwali(tr("Diwali"))
 
-        # Sikh holidays (Optional)
+        # Sikh holidays
         self._add_holiday(tr("Birthday of Guru Nanak Dev Ji"), NOV, 24)
         self._add_holiday(tr("Birthday of Guru Valmiki Ji"), NOV, 30)
 

@@ -61,6 +61,11 @@ class TestPakistan(CommonCountryTests, TestCase):
     def test_quaid_e_azam_day(self):
         self.assertHolidayName("Quaid-e-Azam Day", (f"{year}-12-25" for year in range(1948, 2050)))
 
+    def test_day_after_christmas(self):
+        self.assertHolidayName(
+            "Day after Christmas", (f"{year}-12-26" for year in range(2026, 2050))
+        )
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2024-01-01", "New Year's Day"),
@@ -99,6 +104,7 @@ class TestPakistan(CommonCountryTests, TestCase):
             ("2024-11-24", "Birthday of Guru Nanak Dev Ji"),
             ("2024-11-30", "Birthday of Guru Valmiki Ji"),
             ("2024-12-25", "Quaid-e-Azam Day"),
+            ("2024-12-26", "Day after Christmas"),
         )
 
     def test_l10n_en_us(self):
@@ -140,6 +146,7 @@ class TestPakistan(CommonCountryTests, TestCase):
             ("2024-11-24", "Birthday of Guru Nanak Dev Ji"),
             ("2024-11-30", "Birthday of Guru Valmiki Ji"),
             ("2024-12-25", "Quaid-e-Azam Day"),
+            ("2024-12-26", "Day after Christmas"),
         )
 
     def test_l10n_ur_pk(self):
@@ -181,4 +188,5 @@ class TestPakistan(CommonCountryTests, TestCase):
             ("2024-11-24", "گرونانک دیو جی کا یوم پیدائش"),
             ("2024-11-30", "گرو والمیکی جی کا یوم پیدائش"),
             ("2024-12-25", "یوم قائداعظم"),
+            ("2024-12-26", "کرسمس کے بعد کا دن"),
         )
