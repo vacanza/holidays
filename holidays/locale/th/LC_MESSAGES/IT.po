@@ -1,0 +1,573 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Italy holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.93\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-03-10 12:34+0700\n"
+"PO-Revision-Date: 2026-03-11 20:15+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.8\n"
+"X-Source-Language: it_IT\n"
+
+#. New Year's Day.
+msgid "Capodanno"
+msgstr "วันขึ้นปีใหม่"
+
+#. Epiphany.
+msgid "Epifania"
+msgstr "วันสมโภชพระคริสต์แสดงองค์"
+
+#. Saint Joseph's Day.
+msgid "San Giuseppe"
+msgstr "วันสมโภชนักบุญโยเซฟ"
+
+#. Easter Sunday.
+msgid "Pasqua"
+msgstr "วันอาทิตย์อีสเตอร์"
+
+#. Easter Monday.
+msgid "Lunedì dell'Angelo"
+msgstr "วันจันทร์อีสเตอร์"
+
+#. Foundation of Rome.
+msgid "Natale di Roma"
+msgstr "วันสถาปนากรุงโรม"
+
+#. Liberation Day.
+msgid "Anniversario della Liberazione"
+msgstr "วันปลดปล่อย"
+
+#. Labor Day.
+msgid "Festa del Lavoro"
+msgstr "วันแรงงาน"
+
+#. Anniversary of Victory in Europe.
+msgid "Anniversario della Vittoria in Europa"
+msgstr "วันแห่งชัยชนะในยุโรป"
+
+#. Anniversary of the founding of the Empire.
+msgid "Anniversario della fondazione dell'Impero"
+msgstr "วันครบรอบการสถาปนาจักรวรรดิ"
+
+#. Republic Day.
+msgid "Festa della Repubblica"
+msgstr "วันสาธารณรัฐอิตาลี"
+
+#. Ascension Day.
+msgid "Ascensione"
+msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
+
+#. Saints Peter and Paul.
+msgid "Santi Apostoli Pietro e Paolo"
+msgstr "วันสมโภชนักบุญเปโตรและเปาโล"
+
+#. Corpus Christi.
+msgid "Corpus Domini"
+msgstr "วันสมโภชพระคริสตวรกาย"
+
+#. Assumption Of Mary Day.
+msgid "Assunzione della Beata Vergine Maria"
+msgstr "วันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์"
+
+#. Nativity of Mary.
+msgid "Natività della Beata Vergine Maria"
+msgstr "วันฉลองแม่พระบังเกิด"
+
+#. Anniversary of the capture of Rome.
+msgid "Anniversario della Presa di Roma"
+msgstr "วันครบรอบการยึดกรุงโรม"
+
+#. Saint Francis of Assisi, Patron Saint of Italy.
+msgid "Festa nazionale di San Francesco d'Assisi, patrono d'Italia"
+msgstr "วันสมโภชนักบุญฟรังซิสแห่งอัสซีซีและนักบุญอุปถัมภ์แห่งอิตาลี"
+
+#. Anniversary of the March on Rome.
+msgid "Anniversario della Marcia su Roma"
+msgstr "วันครบรอบการเดินขบวนสู่กรุงโรม"
+
+#. All Saints' Day.
+msgid "Ognissanti"
+msgstr "วันสมโภชนักบุญทั้งหลาย"
+
+#. National Unity Day.
+msgid "Giorno dell'unità nazionale"
+msgstr "วันเอกภาพแห่งชาติ"
+
+#. Victory Day.
+msgid "Anniversario della Vittoria"
+msgstr "วันแห่งชัยชนะ"
+
+#. Immaculate Conception.
+msgid "Immacolata Concezione"
+msgstr "วันสมโภชแม่พระผู้ปฏิสนธินิรมล"
+
+#. Christmas Day.
+msgid "Natale"
+msgstr "วันคริสต์มาส"
+
+#. Saint Stephen's Day.
+msgid "Santo Stefano"
+msgstr "วันสมโภชนักบุญสเตเฟน"
+
+#. Saint Gerland's Day.
+msgid "San Gerlando"
+msgstr "วันสมโภชนักบุญเกอร์ลันโด"
+
+#. Saint Baudolino's Day.
+msgid "San Baudolino"
+msgstr "วันสมโภชนักบุญเบาโดลิโน"
+
+#. Saint Cyriacus's Day.
+msgid "San Ciriaco"
+msgstr "วันสมโภชนักบุญไซริอาคุส"
+
+#. Saint Grat's Day.
+msgid "San Grato"
+msgstr "วันสมโภชนักบุญกราตัส"
+
+#. Saint Emidius's Day.
+msgid "Sant'Emidio"
+msgstr "วันสมโภชนักบุญอีมิดีอุส"
+
+#. Saint Maximus of Aveia's Day.
+msgid "San Massimo d'Aveia"
+msgstr "วันสมโภชนักบุญมักซีมุสแห่งอาเวอา"
+
+#. Saint Donatus of Arezzo's Day.
+msgid "San Donato d'Arezzo"
+msgstr "วันสมโภชนักบุญโดนาโตแห่งอาเรซโซ"
+
+#. Saint Secundus of Asti's Day.
+msgid "San Secondo di Asti"
+msgstr "วันสมโภชนักบุญเซคุนดุสแห่งแอสตี้"
+
+#. Saint Modestinus's Day.
+msgid "San Modestino"
+msgstr "วันสมโภชนักบุญโมเดสตินัส"
+
+#. Saint Nicholas's Day.
+msgid "San Nicola"
+msgstr "วันสมโภชนักบุญนิโคลัส"
+
+#. Saint Alexander of Bergamo's Day.
+msgid "Sant'Alessandro di Bergamo"
+msgstr "วันสมโภชนักบุญอเล็กซานเดอร์แห่งแบร์กาโม"
+
+#. Saint Martin's Day.
+msgid "San Martino"
+msgstr "วันสมโภชนักบุญมาร์ติน"
+
+#. Saint Bartholomew's Day.
+msgid "San Bartolomeo apostolo"
+msgstr "วันสมโภชนักบุญบาร์โธโลมิว อัครสาวก"
+
+#. Saint Petronius's Day.
+msgid "San Petronio"
+msgstr "วันสมโภชนักบุญเปโตรเนียส"
+
+#. Saint Theodore of Amasea and Saint Lawrence of Brindisi's Day.
+msgid "San Teodoro d'Amasea e San Lorenzo da Brindisi"
+msgstr "วันสมโภชนักบุญธีโอดอร์แห่งอมาเซียและลอว์เรนซ์แห่งบรินดีซี"
+
+#. Saints Faustinus and Jovita's Day.
+msgid "Santi Faustino e Giovita"
+msgstr "วันสมโภชนักบุญเฟาสตินัสและโยวิตา"
+
+#. Saint Nicholas the Pilgrim's Day.
+msgid "San Nicola Pellegrino"
+msgstr "วันสมโภชนักบุญนิโคลัสผู้แสวงบุญ"
+
+#. Saint Richard of Andria's Day.
+msgid "San Riccardo di Andria"
+msgstr "วันสมโภชนักบุญริชาร์ดแห่งอันเดรีย"
+
+#. Saint Roger's Day.
+msgid "San Ruggero"
+msgstr "วันสมโภชนักบุญโรเจอร์"
+
+#. Whit Monday.
+msgid "Lunedì di Pentecoste"
+msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
+
+#. Fat Thursday.
+msgid "Giovedì grasso"
+msgstr "วันพฤหัสบดีอ้วน"
+
+#. Last Day of Carnival.
+msgid "Ultimo giorno di carnevale"
+msgstr "วันสุดท้ายของเทศกาลคาร์นิวัล"
+
+#. Good Friday.
+msgid "Venerdì santo"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. Christmas Eve.
+msgid "Vigilia di Natale"
+msgstr "วันคริสต์มาสอีฟ"
+
+#. Last Day of the Year.
+msgid "Ultimo giorno dell'anno"
+msgstr "วันสิ้นปี"
+
+#. Saint Saturninus of Cagliari's Day.
+msgid "San Saturnino di Cagliari"
+msgstr "วันสมโภชนักบุญซาเทอร์นินัสแห่งคัลยารี"
+
+#. Saint George's Day.
+msgid "San Giorgio"
+msgstr "วันสมโภชนักบุญจอร์จ"
+
+#. Saint Sebastian's Day.
+msgid "San Sebastiano"
+msgstr "วันสมโภชนักบุญเซบาสเตียน"
+
+#. Saint Justin of Chieti's Day.
+msgid "San Giustino di Chieti"
+msgstr "วันสมโภชนักบุญยุสตินแห่งคีเอตี"
+
+#. Saint Michael the Archangel's Day.
+msgid "San Michele Arcangelo"
+msgstr "วันฉลองอัครทูตสวรรค์ มีคาเอล"
+
+#. Saint Abbondius's Day.
+msgid "Sant'Abbondio"
+msgstr "วันสมโภชนักบุญอับบอนดิอุส"
+
+#. Saint Homobonus's Day.
+msgid "Sant'Omobono"
+msgstr "วันสมโภชนักบุญโฮโมโบนุส"
+
+#. Our Lady of the Pilerio.
+msgid "Madonna del Pilerio"
+msgstr "วันแม่พระแห่งปิเลรีโอ"
+
+#. Saint Agatha's Day.
+msgid "Sant'Agata"
+msgstr "วันสมโภชนักบุญอากาธา"
+
+#. Saint Vitalian's Day.
+msgid "San Vitaliano"
+msgstr "วันสมโภชนักบุญวิตาเลียน"
+
+#. Visitation of Mary Day.
+msgid "Madonna della Visitazione"
+msgstr "วันแม่พระเสด็จเยี่ยม"
+
+#. Our Lady of the Fire.
+msgid "Madonna del Fuoco"
+msgstr "วันแม่พระแห่งไฟ"
+
+#. Saint John's Day.
+msgid "San Giovanni Battista"
+msgstr "วันสมโภชนักบุญยอห์นผู้ให้บัพติศมา"
+
+#. Our Lady of the Seven Veils.
+msgid "Madonna dei Sette Veli"
+msgstr "วันแม่พระแห่งผ้าคลุมทั้งเจ็ด"
+
+#. Assumption Day.
+msgid "Maria Santissima Assunta"
+msgstr "วันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์"
+
+#. Saint Silverius's Day.
+msgid "San Silverio"
+msgstr "วันสมโภชนักบุญซิลเวริอุส"
+
+#. Saints Hilary and Tatian's Day.
+msgid "Santi Ilario e Taziano"
+msgstr "วันสมโภชนักบุญฮิลารีและทาเทียน"
+
+#. Saint Lawrence's Day.
+msgid "San Lorenzo"
+msgstr "วันสมโภชนักบุญลอเรนซ์"
+
+#. Saint Leonard of Porto Maurizio's Day.
+msgid "San Leonardo da Porto Maurizio"
+msgstr "วันสมโภชนักบุญลีโอนาร์ดแห่งปอร์โต เมาริตซีโอ"
+
+#. Saint Peter Celestine's Day.
+msgid "San Pietro Celestino"
+msgstr "วันสมโภชนักบุญเปโตร เซเลสทีน"
+
+#. Saint Dionysius's Day.
+msgid "San Dionigi"
+msgstr "วันสมโภชนักบุญไดโอนีซีอุส"
+
+#. Saint Orontius's Day.
+msgid "Sant'Oronzo"
+msgstr "วันสมโภชนักบุญโอรอนเทียส"
+
+#. Saint Julia's Day.
+msgid "Santa Giulia"
+msgstr "วันสมโภชนักบุญจูเลีย"
+
+#. Saint Bassianus's Day.
+msgid "San Bassiano"
+msgstr "วันสมโภชนักบุญบัสสิอานัส"
+
+#. Saint Mark's Day.
+msgid "San Marco Evangelista"
+msgstr "วันสมโภชนักบุญมาระโก ผู้นิพนธ์พระวรสาร"
+
+#. Saint Maria Goretti's Day.
+msgid "Santa Maria Goretti"
+msgstr "วันสมโภชนักบุญมารีอา กอเรตตี"
+
+#. Saint Paulinus of Lucca's Day.
+msgid "San Paolino di Lucca"
+msgstr "วันสมโภชนักบุญเปาลีนุสแห่งลุกกา"
+
+#. Saint Julian the Hospitaller's Day.
+msgid "San Giuliano l'ospitaliere"
+msgstr "วันสมโภชนักบุญยูเลียนผู้ใจบุญ"
+
+#. Our Lady of the Letter.
+msgid "Madonna della Lettera"
+msgstr "วันแม่พระแห่งราชสาส์น"
+
+#. Saint Ambrose's Day.
+msgid "Sant'Ambrogio"
+msgstr "วันสมโภชนักบุญอัมโบรซีอุส"
+
+#. Saint Anselm of Baggio's Day.
+msgid "Sant'Anselmo da Baggio"
+msgstr "วันสมโภชนักบุญแอนเซล์มแห่งบัดโจ"
+
+#. Saint Geminianus's Day.
+msgid "San Geminiano"
+msgstr "วันสมโภชนักบุญเกมีเนียนุส"
+
+#. Saint Francis of Assisi's Day.
+msgid "San Francesco d'Assisi"
+msgstr "วันสมโภชนักบุญฟรังซิสแห่งอัสซีซี"
+
+#. Our Lady of the Bruna.
+msgid "Madonna della Bruna"
+msgstr "วันแม่พระแห่งบรูนา"
+
+#. Saint Januarius's Day.
+msgid "San Gennaro"
+msgstr "วันสมโภชนักบุญเจนนาโร"
+
+#. Saint Gaudentius's Day.
+msgid "San Gaudenzio"
+msgstr "วันสมโภชนักบุญกอเดนทีอุส"
+
+#. Our Lady of the Snows.
+msgid "Nostra Signora della Neve"
+msgstr "วันแม่พระแห่งหิมะ"
+
+#. Saint Archelaus's Day.
+msgid "Sant'Archelao"
+msgstr "วันสมโภชนักบุญอาร์เคลาอุส"
+
+#. Saint Rosalia's Day.
+msgid "Santa Rosalia"
+msgstr "วันสมโภชนักบุญโรซาเลีย"
+
+#. Saint Antoninus of Piacenza's Day.
+msgid "Sant'Antonino di Piacenza"
+msgstr "วันสมโภชนักบุญอันโตนีนุสแห่งปิอาเชนซา"
+
+#. Saint Anthony of Padua's Day.
+msgid "Sant'Antonio di Padova"
+msgstr "วันสมโภชนักบุญอันตนแห่งปาดัว"
+
+#. Saint Cetteus's Day.
+msgid "San Cetteo"
+msgstr "วันสมโภชนักบุญเชตเทอุส"
+
+#. Saint Clare of Assisi's Day.
+msgid "Santa Chiara d'Assisi"
+msgstr "วันสมโภชนักบุญคลาราแห่งอัสซีซี"
+
+#. Saint Ranieri's Day.
+msgid "San Ranieri"
+msgstr "วันสมโภชนักบุญรานีเอรี"
+
+#. Our Lady of Graces.
+msgid "Madonna delle Grazie"
+msgstr "วันแม่พระแห่งพระหรรษทาน"
+
+#. Saint Hilary of Poitiers's Day.
+msgid "Sant'Ilario di Poitiers"
+msgstr "วันสมโภชนักบุญฮิลารีแห่งปัวตีเย"
+
+#. Saint James's Day.
+msgid "San Jacopo"
+msgstr "วันสมโภชนักบุญยากอบ อัครสาวก"
+
+#. Saint Crescentinus's Day.
+msgid "San Crescentino"
+msgstr "วันสมโภชนักบุญเครสเซนตีนุส"
+
+#. Saint Terentius of Pesaro's Day.
+msgid "San Terenzio di Pesaro"
+msgstr "วันสมโภชนักบุญเทเรนทิอัสแห่งเปซาโร"
+
+#. Saint Syrus's Day.
+msgid "San Siro"
+msgstr "วันสมโภชนักบุญไซรัส"
+
+#. Saint Gerard of Potenza's Day.
+msgid "San Gerardo di Potenza"
+msgstr "วันสมโภชนักบุญเยราร์ดแห่งโปเตนซา"
+
+#. Saint Apollinaris's Day.
+msgid "Sant'Apollinare"
+msgstr "วันสมโภชนักบุญอปอลลินาริส"
+
+#. Saint Prosper of Reggio's Day.
+msgid "San Prospero Vescovo"
+msgstr "วันสมโภชนักบุญพรอสเปอร์แห่งเรจจิโอ"
+
+#. Saint George's Day.
+msgid "San Giorgio Martire"
+msgstr "วันสมโภชนักบุญจอร์จ"
+
+#. Saint Barbara's Day.
+msgid "Santa Barbara"
+msgstr "วันสมโภชนักบุญบาร์บารา"
+
+#. Saints Peter and Paul's Day.
+msgid "Santi Pietro e Paolo"
+msgstr "วันสมโภชนักบุญเปโตรและเปาโล"
+
+#. Saint Bellinus's Day.
+msgid "San Bellino"
+msgstr "วันสมโภชนักบุญเบลลินัส"
+
+#. Saint Matthew's Day.
+msgid "San Matteo Evangelista"
+msgstr "วันสมโภชนักบุญมัทธิว อัครสาวก"
+
+#. Saint Ansanus's Day.
+msgid "Sant'Ansano"
+msgstr "วันสมโภชนักบุญอันซานุส"
+
+#. Saints Gervasius and Protasius's Day.
+msgid "San Gervasio e San Protasio"
+msgstr "วันสมโภชนักบุญเจอร์วาซีอุสและโปรตาซีอุส"
+
+#. Saint Lucy's Day.
+msgid "Santa Lucia"
+msgstr "วันสมโภชนักบุญลูซี"
+
+#. Saint Pontian's Day.
+msgid "San Ponziano"
+msgstr "วันสมโภชนักบุญปอนเทียน"
+
+#. Our Lady of Mercy.
+msgid "Nostra Signora della Misericordia"
+msgstr "วันแม่พระแห่งความเมตตา"
+
+#. Saint Catald's Day.
+msgid "San Cataldo"
+msgstr "วันสมโภชนักบุญกาตัลโด"
+
+#. Saint Berardo's Day.
+msgid "San Berardo da Pagliara"
+msgstr "วันสมโภชนักบุญเบราร์โด"
+
+#. Saint Vigilius's Day.
+msgid "San Vigilio"
+msgstr "วันสมโภชนักบุญวีจีลีโอ"
+
+#. Saint Albert of Trapani's Day.
+msgid "Sant'Alberto degli Abati"
+msgstr "วันสมโภชนักบุญอัลเบิร์ตแห่งทราปานี"
+
+#. Saint Valentine's Day.
+msgid "San Valentino"
+msgstr "วันสมโภชนักบุญวาเลนไทน์"
+
+#. Saint Justus's Day.
+msgid "San Giusto"
+msgstr "วันสมโภชนักบุญจัสตุส"
+
+#. Saint Liberal's Day.
+msgid "San Liberale"
+msgstr "วันสมโภชนักบุญลิเบอราลิสแห่งเตรวิโซ"
+
+#. Saints Hermagoras and Fortunatus's Day.
+msgid "Santi Ermacora e Fortunato"
+msgstr "วันสมโภชนักบุญเฮอร์มากอรัสและฟอร์จูนาทัส"
+
+#. Saint Victor the Moor's Day.
+msgid "San Vittore il Moro"
+msgstr "วันสมโภชนักบุญวิคตอร์ผู้เป็นมัวร์"
+
+#. Saint Eusebius of Vercelli's Day.
+msgid "Sant'Eusebio di Vercelli"
+msgstr "วันสมโภชนักบุญเอวเซบิโอแห่งแวร์แชลลี"
+
+#. Our Lady of Health.
+msgid "Madonna della Salute"
+msgstr "วันแม่พระแห่งสุขภาพ"
+
+#. Our Lady of Monte Berico.
+msgid "Madonna di Monte Berico"
+msgstr "วันแม่พระแห่งมอนเต เบริโก"
+
+#. Saint Zeno's Day.
+msgid "San Zeno"
+msgstr "วันสมโภชนักบุญเซโน"
+
+#. Saint Rose of Viterbo's Day.
+msgid "Santa Rosa da Viterbo"
+msgstr "วันสมโภชนักบุญโรซาแห่งวิแตร์โบ"
+
+#. Saint Leoluca's Day.
+msgid "San Leoluca"
+msgstr "วันสมโภชนักบุญเลโอลูคา"
+
+#. Anniversary of the Unification of Italy.
+msgid "Anniversario dell'Unità d'Italia"
+msgstr "วันครบรอบการรวมชาติอิตาลี"
+
+#. 100th anniversary of the birth of General Giuseppe Garibaldi.
+msgid "Centenario della nascita del generale Giuseppe Garibaldi"
+msgstr "วันครบรอบ 100 ปีชาตกาล นายพลจูเซ็ปเป้ การีบัลดี"
+
+#. 100th anniversary of the birth of Camillo Cavour.
+msgid "Centenario della nascita di Camillo Cavour"
+msgstr "วันครบรอบ 100 ปีชาตกาล คามิลโล คาวัวร์"
+
+#. 100th anniversary of the birth of Victor Emmanuel II.
+msgid "Centenario della nascita del Vittorio Emanuele II"
+msgstr "วันครบรอบ 100 ปีพระราชสมภพของพระเจ้าวิตโตรีโอ เอมานูเอเลที่ 2"
+
+#. Celebration of 600th anniversary of the death of Dante.
+msgid "Celebrazione del sesto centenario dantesco"
+msgstr "วันครบรอบ 600 ปีการจากไปของดันเต"
+
+#. 700th anniversary of the death of Saint Francis of Assisi.
+msgid "Anniversario del VII centenario della morte di San Francesco di Assisi"
+msgstr "วันครบรอบ 700 ปีมรณภาพของนักบุญฟรังซิสแห่งอัสซีซี"
+
+#. National Holiday.
+msgid "Festa Nazionale"
+msgstr "วันหยุดพิเศษ (เพิ่มเติม)"
+
+#. Public Holiday.
+msgid "Giorno Festivo"
+msgstr "วันหยุดพิเศษ (เพิ่มเติม)"

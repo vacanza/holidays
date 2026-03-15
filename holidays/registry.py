@@ -288,6 +288,7 @@ FINANCIAL: RegistryDict = {
     "bombay_stock_exchange": ("BombayStockExchange", "XBOM", "BSE"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
     "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),
+    "germany_exchange": ("GermanyStockExchange", "XETR", "XFRA"),
     "ice_futures_europe": ("IceFuturesEurope", "IFEU", "ICEFuturesEurope"),
     "japan_exchange": ("JapanExchange", "XJPX", "JPX", "TSE", "OSE"),
     "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),

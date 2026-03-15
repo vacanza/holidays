@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.93\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-03 00:00+0530\n"
-"PO-Revision-Date: 2026-03-06 19:57+0530\n"
-"Last-Translator: Aman Srivastava <amansri345@gmail.com>\n"
+"PO-Revision-Date: 2026-03-07 20:47+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -36,6 +36,14 @@ msgstr "%s (estimated)"
 msgid "Jour de l'an"
 msgstr "New Year's Day"
 
+#. Renovation Day.
+msgid "Journée de la rénovation"
+msgstr "Renovation Day"
+
+#. Easter Sunday.
+msgid "Pâques"
+msgstr "Easter Sunday"
+
 #. Easter Monday.
 msgid "Lundi de Pâques"
 msgstr "Easter Monday"
@@ -48,12 +56,20 @@ msgstr "Women's Rights Day"
 msgid "Fête du Travail"
 msgstr "Labor Day"
 
+#. Youth Day.
+msgid "Fête de la Jeunesse"
+msgstr "Youth Day"
+
 #. Ascension Day.
 msgid "Ascension"
 msgstr "Ascension Day"
 
-#. Whit Monday.
+#. Whit Sunday.
 msgid "Pentecôte"
+msgstr "Whit Sunday"
+
+#. Whit Monday.
+msgid "Lundi de Pentecôte"
 msgstr "Whit Monday"
 
 #. Assumption Day.
@@ -67,6 +83,10 @@ msgstr "Independence Day"
 #. Independence Day Holiday.
 msgid "Fête de l'indépendance"
 msgstr "Independence Day Holiday"
+
+#. Liberation Day.
+msgid "Journée de la Libération"
+msgstr "Liberation Day"
 
 #. All Saints' Day.
 msgid "Toussaint"
@@ -83,3 +103,7 @@ msgstr "Eid al-Fitr"
 #. Eid al-Adha.
 msgid "Fête du sacrifice"
 msgstr "Eid al-Adha"
+
+#. Public holiday.
+msgid "Jour férié"
+msgstr "Public holiday"
