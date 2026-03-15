@@ -21,7 +21,7 @@ class Kosovo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
     """Kosovo holidays.
 
     References:
-        * <https://bqk-kos.org/kalendari-i-festave/>
+        * <https://web.archive.org/web/20251105011859/https://bqk-kos.org/kalendari-i-festave/>
         * [Law No. 03/L-064](https://web.archive.org/web/20231127220229/https://gzk.rks-gov.net/ActDocumentDetail.aspx?ActID=2539)
     """
 
