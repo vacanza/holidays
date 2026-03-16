@@ -17,81 +17,69 @@ from holidays.holiday_base import HolidayBase
 
 
 class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """Peru holidays.
-
+    """
     References:
-        * <https://web.archive.org/web/20250414165243/https://www.gob.pe/feriados/>
-        * <https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú>
-        * [Ley N° 31788](https://web.archive.org/web/20250716164223/https://img.lpderecho.pe/wp-content/uploads/2023/06/Ley-31788-LPDerecho.pdf)
-        * [Ley N° 31822](https://web.archive.org/web/20250716164455/https://img.lpderecho.pe/wp-content/uploads/2023/07/Ley-31822-LPDerecho.pdf)
+      - https://en.wikipedia.org/wiki/Public_holidays_in_Peru
     """
 
     country = "PE"
     default_language = "es"
-    supported_languages = ("en_US", "es", "uk")
+    # Supported languages
+    supported_languages = ("en_US", "es")
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # New Year's Day.
+        # New Year's Day
         self._add_new_years_day(tr("Año Nuevo"))
 
-        # Maundy Thursday.
+        # Maundy Thursday
         self._add_holy_thursday(tr("Jueves Santo"))
 
-        # Good Friday.
+        # Good Friday
         self._add_good_friday(tr("Viernes Santo"))
 
-        # Easter Sunday.
-        self._add_easter_sunday(tr("Domingo de Resurrección"))
+        # Labor Day
+        self._add_labor_day(tr("Día del Trabajador"))
 
-        # Labor Day.
-        self._add_labor_day(tr("Día del Trabajo"))
+        # Battle of Arica and Flag Day
+        self._add_holiday_jun_7(tr("Día de la Batalla de Arica y Día de la Bandera"))
 
-        # Added via Ley N° 31788 on June 15th, 2023.
-        if self._year >= 2024:
-            # Battle of Arica and Flag Day.
-            self._add_holiday_jun_7(tr("Batalla de Arica y Día de la Bandera"))
+        # Saint Peter and Saint Paul
+        self._add_saints_peter_and_paul_day(tr("Día de San Pedro y San Pablo"))
 
-        # Saint Peter and Saint Paul's Day.
-        self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo"))
+        # Peruvian Air Force Day
+        self._add_holiday_jul_23(tr("Día de la Fuerza Aérea del Perú"))
 
-        # Added via Ley N° 31822 on July 8th, 2023.
-        if self._year >= 2023:
-            # Peruvian Air Force Day.
-            self._add_holiday_jul_23(tr("Día de la Fuerza Aérea del Perú"))
-
-        # Independence Day.
+        # Independence Day
         self._add_holiday_jul_28(tr("Día de la Independencia"))
 
-        # Great Military Parade Day.
-        self._add_holiday_jul_29(tr("Día de la Gran Parada Militar"))
+        # Independence Day Holiday
+        self._add_holiday_jul_29(tr("Fiestas Patrias"))
 
-        if self._year >= 2022:
-            # Battle of Junín.
-            self._add_holiday_aug_6(tr("Batalla de Junín"))
+        # Battle of Junín
+        self._add_holiday_aug_6(tr("Batalla de Junín"))
 
-        # Rose of Lima Day.
+        # Santa Rosa de Lima
         self._add_holiday_aug_30(tr("Santa Rosa de Lima"))
 
-        # Battle of Angamos.
+        # Battle of Angamos
         self._add_holiday_oct_8(tr("Combate de Angamos"))
 
-        # All Saints' Day.
-        self._add_all_saints_day(tr("Todos Los Santos"))
+        # All Saints' Day
+        self._add_all_saints_day(tr("Día de Todos los Santos"))
 
-        # Immaculate Conception.
+        # Immaculate Conception
         self._add_immaculate_conception_day(tr("Inmaculada Concepción"))
 
-        if self._year >= 2022:
-            # Battle of Ayacucho.
-            self._add_holiday_dec_9(tr("Batalla de Ayacucho"))
+        # Battle of Ayacucho
+        self._add_holiday_dec_9(tr("Batalla de Ayacucho"))
 
-        # Christmas Day.
-        self._add_christmas_day(tr("Navidad del Señor"))
+        # Christmas Day
+        self._add_christmas_day(tr("Navidad"))
 
 
 class PE(Peru):
