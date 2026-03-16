@@ -15,9 +15,23 @@
 # ruff: noqa: T201, S310
 
 import ast
-from datetime import date as _date
 from pathlib import Path
 from urllib.request import urlretrieve
+
+MONTH_NAMES = {
+    1: "JAN",
+    2: "FEB",
+    3: "MAR",
+    4: "APR",
+    5: "MAY",
+    6: "JUN",
+    7: "JUL",
+    8: "AUG",
+    9: "SEP",
+    10: "OCT",
+    11: "NOV",
+    12: "DEC",
+}
 
 # wp-plugins/bhutanese-calendar is a public archive (frozen); master will not change.
 DATA_URL = "https://raw.githubusercontent.com/wp-plugins/bhutanese-calendar/master/data/data.txt"
@@ -151,6 +165,41 @@ class _CustomTibetanHolidays(_CustomCalendar, _TibetanLunisolar):
 """
 
 
+def _pick_equinox_day(days: list[int]) -> int:
+    """Pick the day closest to Sept 23 from candidates."""
+    for preferred in (23, 22, 24):
+        if preferred in days:
+            return preferred
+    return days[0]
+
+
+def _extract_tibetan_holidays(all_days: list) -> dict[str, dict[int, str]]:
+    dates: dict[str, dict[int, str]] = {}
+    for tib_day, tib_month, hol_name in HOLIDAY_DATES:
+        for d in all_days:
+            if d[2] == tib_day and d[3] == tib_month:
+                g_year, g_month, g_day = d[8], d[7], d[6]
+                dates.setdefault(hol_name, {})[g_year] = f"{MONTH_NAMES[g_month]}, {g_day}"
+    return dates
+
+
+def _extract_blessed_rainy_day(all_days: list) -> dict[int, str]:
+    rainy: dict[int, list[int]] = {}
+    for d in all_days:
+        g_year, g_month, g_day = d[8], d[7], d[6]
+        if g_month == 9 and g_day in (22, 23, 24):
+            rainy.setdefault(g_year, []).append(g_day)
+    result: dict[int, str] = {}
+    for year, days in rainy.items():
+        chosen = _pick_equinox_day(days)
+        result[year] = f"SEP, {chosen}"
+    return result
+
+
+def _extract_winter_solstice(all_days: list) -> dict[int, str]:
+    return {d[8]: "JAN, 2" for d in all_days if d[7] == 1 and d[6] == 2}
+
+
 def generate_data() -> None:
     data_file = Path(__file__).parent / DATA_FILENAME
     tmp_file = data_file.with_suffix(".tmp")
@@ -168,30 +217,9 @@ def generate_data() -> None:
     if not all_days:
         raise RuntimeError(f"No data parsed from {data_file}")
 
-    dates: dict[str, dict[int, str]] = {}
-
-    for tib_day, tib_month, hol_name in HOLIDAY_DATES:
-        for d in all_days:
-            if d[2] == tib_day and d[3] == tib_month:
-                g_year, g_month, g_day = d[8], d[7], d[6]
-                month_str = _date(g_year, g_month, 1).strftime("%b").upper()
-                dates.setdefault(hol_name, {})[g_year] = f"{month_str}, {g_day}"
-
-    # Blessed Rainy Day: autumnal equinox, closest to Sept 23
-    rainy: dict[int, list[int]] = {}
-    for d in all_days:
-        g_year, g_month, g_day = d[8], d[7], d[6]
-        if g_month == 9 and g_day in (22, 23, 24):
-            rainy.setdefault(g_year, []).append(g_day)
-    for year, days in rainy.items():
-        chosen = 23 if 23 in days else (22 if 22 in days else 24)
-        dates.setdefault("BLESSED_RAINY_DAY", {})[year] = f"SEP, {chosen}"
-
-    # Winter Solstice: fixed Gregorian Jan 2
-    for d in all_days:
-        g_year, g_month, g_day = d[8], d[7], d[6]
-        if g_month == 1 and g_day == 2:
-            dates.setdefault("WINTER_SOLSTICE", {})[g_year] = "JAN, 2"
+    dates = _extract_tibetan_holidays(all_days)
+    dates["BLESSED_RAINY_DAY"] = _extract_blessed_rainy_day(all_days)
+    dates["WINTER_SOLSTICE"] = _extract_winter_solstice(all_days)
 
     holiday_data = []
     for hol_name in sorted(dates.keys()):
@@ -213,6 +241,8 @@ def generate_data() -> None:
         raise RuntimeError(f"Output directory not found: {output_path.parent}")
 
     output_path.write_text(FILE_HEADER + class_str + FOOTER, encoding="UTF-8")
+    print(f"Generated: {output_path}")
+    print(f"File size: {output_path.stat().st_size} bytes")
 
 
 if __name__ == "__main__":
