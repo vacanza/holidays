@@ -18,21 +18,6 @@ import ast
 from pathlib import Path
 from urllib.request import urlretrieve
 
-MONTH_NAMES = {
-    1: "JAN",
-    2: "FEB",
-    3: "MAR",
-    4: "APR",
-    5: "MAY",
-    6: "JUN",
-    7: "JUL",
-    8: "AUG",
-    9: "SEP",
-    10: "OCT",
-    11: "NOV",
-    12: "DEC",
-}
-
 # wp-plugins/bhutanese-calendar is a public archive (frozen); master will not change.
 DATA_URL = "https://raw.githubusercontent.com/wp-plugins/bhutanese-calendar/master/data/data.txt"
 DATA_FILENAME = "tibetan_data.txt"
@@ -54,6 +39,21 @@ HOLIDAY_DATES = (
     (22, 9, "DESCENDING_DAY_OF_LORD_BUDDHA"),
     (30, 11, "DAY_OF_OFFERING"),
 )
+
+MONTH_NAMES = {
+    1: "JAN",
+    2: "FEB",
+    3: "MAR",
+    4: "APR",
+    5: "MAY",
+    6: "JUN",
+    7: "JUL",
+    8: "AUG",
+    9: "SEP",
+    10: "OCT",
+    11: "NOV",
+    12: "DEC",
+}
 
 CLASS_TEMPLATE = """class {class_name}:
     \"\"\"Tibetan lunisolar calendar.
@@ -210,11 +210,14 @@ def generate_data() -> None:
 
     try:
         urlretrieve(DATA_URL, tmp_file)
-    except Exception:
+        tmp_file.replace(data_file)
+    except Exception as err:
         if tmp_file.exists():
             tmp_file.unlink()
-        raise
-    tmp_file.replace(data_file)
+        if data_file.exists():
+            print(f"Download failed; using cached file: {data_file}")
+        else:
+            raise RuntimeError("No data file available and download failed.") from err
 
     with open(data_file, encoding="utf-8") as f:
         all_days = [
