@@ -24,7 +24,7 @@ function holidayDownloads() {
         // Initialize Data Manifest
         async init() {
             try {
-                const response = await fetch('ics/index.json');
+                const response = await this._fetchWithFallback('ics/index.json');
                 this.manifest = await response.json();
             } catch (e) {
                 console.error("Failed to load data", e);
@@ -40,7 +40,20 @@ function holidayDownloads() {
             return `ics/${this.type}/${this.selectedEntity}/${year}/${this.selectedSubdiv}_${this.selectedLang}_${cat}.${ext}`;
         },
 
+        // Fetch With Fallback
+        async _fetchWithFallback(path, options = {}) {
+            try {
+                const response = await fetch(path, options);
+                if (response.ok) return response;
+                throw new Error('Local file not found');
+            } catch (e) {
+                if (e.name === 'AbortError') throw e;
+                return fetch('https://vacanza.github.io/holidays/downloads/' + path, options);
+            }
+        },
+
         // Computed Data Getters
+
         get currentManifest() { return this.manifest[this.type] || {}; },
         get activeData() { return this.currentManifest[this.selectedEntity] || {}; },
         get hasSubdivisions() { return Object.keys(this.activeData?.subdivisions || {}).length > 0; },
@@ -128,7 +141,7 @@ function holidayDownloads() {
             for (let year = this.startYear; year <= this.endYear; year++) {
                 const fetchYear = async () => {
                     const reqs = categories.map(cat =>
-                        fetch(this._getPath(year, cat, 'json'), { signal })
+                        this._fetchWithFallback(this._getPath(year, cat, 'json'), { signal })
                             .then(r => r.ok ? r.json() : [])
                             .catch(e => {
                                 if (e.name !== 'AbortError') return []; // Ignore aborts gracefully
@@ -167,7 +180,7 @@ function holidayDownloads() {
             // Fetch calendar data for all selected years and categories
             for (let year = this.startYear; year <= this.endYear; year++) {
                 categories.forEach(cat => {
-                    fetches.push(fetch(this._getPath(year, cat, 'ics')).then(r => r.ok ? r.text() : "").catch(() => ""));
+                    fetches.push(this._fetchWithFallback(this._getPath(year, cat, 'ics')).then(r => r.ok ? r.text() : "").catch(() => ""));
                 });
             }
 

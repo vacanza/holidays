@@ -12,16 +12,9 @@
 
 """Generate SUMMARY.md for literate-nav with list of the countries and markets files."""
 
-import os
-
 from pathlib import Path
 
 import mkdocs_gen_files
-
-if os.environ.get("READTHEDOCS"):
-    downloads_target = "https://vacanza.github.io/holidays/downloads/"
-else:
-    downloads_target = "downloads.md"
 
 
 def main():
@@ -34,7 +27,7 @@ def main():
         "* [Changelog](changelog.md)",
         "* [Contributing](contributing.md)",
         "* [API Reference](api.md)",
-        f"* [Downloads]({downloads_target})",
+        "* [Downloads](downloads.md)",
         "* Supported Entities",
     ]
 
