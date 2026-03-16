@@ -177,6 +177,8 @@ def _extract_tibetan_holidays(all_days: list) -> dict[str, dict[int, str]]:
     dates: dict[str, dict[int, str]] = {}
     for tib_day, tib_month, hol_name in HOLIDAY_DATES:
         for d in all_days:
+            if len(d) < 9:
+                continue
             if d[2] == tib_day and d[3] == tib_month:
                 g_year, g_month, g_day = d[8], d[7], d[6]
                 dates.setdefault(hol_name, {})[g_year] = f"{MONTH_NAMES[g_month]}, {g_day}"
@@ -186,6 +188,8 @@ def _extract_tibetan_holidays(all_days: list) -> dict[str, dict[int, str]]:
 def _extract_blessed_rainy_day(all_days: list) -> dict[int, str]:
     rainy: dict[int, list[int]] = {}
     for d in all_days:
+        if len(d) < 9:
+            continue
         g_year, g_month, g_day = d[8], d[7], d[6]
         if g_month == 9 and g_day in (22, 23, 24):
             rainy.setdefault(g_year, []).append(g_day)
@@ -197,14 +201,19 @@ def _extract_blessed_rainy_day(all_days: list) -> dict[int, str]:
 
 
 def _extract_winter_solstice(all_days: list) -> dict[int, str]:
-    return {d[8]: "JAN, 2" for d in all_days if d[7] == 1 and d[6] == 2}
+    return {d[8]: "JAN, 2" for d in all_days if len(d) >= 9 and d[7] == 1 and d[6] == 2}
 
 
 def generate_data() -> None:
     data_file = Path(__file__).parent / DATA_FILENAME
     tmp_file = data_file.with_suffix(".tmp")
 
-    urlretrieve(DATA_URL, tmp_file)
+    try:
+        urlretrieve(DATA_URL, tmp_file)
+    except Exception:
+        if tmp_file.exists():
+            tmp_file.unlink()
+        raise
     tmp_file.replace(data_file)
 
     with open(data_file, encoding="utf-8") as f:
