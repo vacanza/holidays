@@ -19,9 +19,14 @@ import sys
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
-sys.path.append(".")
+sys.path.insert(0, str(Path.cwd()))  # Make holidays visible.
 
-import holidays
+from holidays import (
+    country_holidays,
+    financial_holidays,
+    list_supported_countries,
+    list_supported_financial,
+)
 from holidays.ical import ICalExporter
 
 # Configuration Defaults
@@ -222,16 +227,8 @@ def process_entity(args):
     """Worker that generates assets for a single Country/Market."""
     code, is_country = args
 
-    try:
-        if is_country:
-            instance = holidays.country_holidays(code)
-        else:
-            instance = holidays.financial_holidays(code)
-    except (NotImplementedError, KeyError):
-        return None
-    except Exception as e:
-        print(f"Skipping {code}: Error instantiating ({e})")
-        return None
+    holidays_func = country_holidays if is_country else financial_holidays
+    instance = holidays_func(code)
 
     # Prepare metadata.
     docstring = instance.__class__.__base__.__doc__
@@ -260,7 +257,6 @@ def process_entity(args):
     print(f"Processing {code} ({name})...")
 
     entity_type = "countries" if is_country else "financial"
-    holidays_func = holidays.country_holidays if is_country else holidays.financial_holidays
 
     # Generate files
     for year in range(DEFAULT_YEAR_START, DEFAULT_YEAR_END + 1):
@@ -279,7 +275,7 @@ def process_entity(args):
                     except Exception as e:
                         print(f"Failed {filename} for {code} {year}: {e}")
 
-    return (entity_type, code, manifest_entry)
+    return entity_type, code, manifest_entry
 
 
 def main():
@@ -290,8 +286,8 @@ def main():
         shutil.rmtree(OUTPUT_DIR)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    work_items = [(c, True) for c in holidays.list_supported_countries(include_aliases=False)]
-    work_items += [(m, False) for m in holidays.list_supported_financial(include_aliases=False)]
+    work_items = [(c, True) for c in list_supported_countries(include_aliases=False)]
+    work_items += [(m, False) for m in list_supported_financial(include_aliases=False)]
 
     print(f"Found {len(work_items)} entities to process.")
     manifest = {"countries": {}, "financial": {}}
