@@ -134,8 +134,14 @@ class Pakistan(
         self._add_holiday(tr("Holi"), MAR, 4)
 
         # Christian holidays
+
+        # Good Friday.
         self._add_good_friday(tr("Good Friday"))
+
+        # Easter Sunday.
         self._add_easter_sunday(tr("Easter Sunday"))
+
+        # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
         # Sikh holidays
