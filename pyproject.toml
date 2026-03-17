@@ -110,6 +110,13 @@ no_inline_sort = true
 profile = "black"
 skip = [ "docs" ]
 
+[tool.mypy]
+overrides = [
+  { module = "holidays.countries.*", disable_error_code = [ "override" ] },
+  { module = "holidays.financial.*", disable_error_code = [ "override" ] },
+  { module = "holidays.groups.*", disable_error_code = [ "attr-defined" ] },
+]
+
 [tool.pytest]
 ini_options.addopts = [
   "--cov-fail-under=100",
@@ -124,11 +131,4 @@ run.branch = true
 run.omit = [ "scripts/*", "tests/*" ]
 report.exclude_lines = [
   "^if TYPE_CHECKING:",
-]
-
-[tool.mypy]
-overrides = [
-  { module = "holidays.countries.*", disable_error_code = [ "override" ] },
-  { module = "holidays.financial.*", disable_error_code = [ "override" ] },
-  { module = "holidays.groups.*", disable_error_code = [ "attr-defined" ] },
 ]
