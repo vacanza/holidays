@@ -8,6 +8,8 @@ function holidayDownloads() {
         manifest: {},
         previewYears: [],
         abortController: null,
+        fetchMode: null,
+        remoteBaseUrl: 'https://vacanza.github.io/holidays/downloads/',
 
         // User Selection Configuration
         type: 'countries',
@@ -24,8 +26,16 @@ function holidayDownloads() {
         // Initialize Data Manifest
         async init() {
             try {
-                const response = await this._fetchWithFallback('ics/index.json');
-                this.manifest = await response.json();
+                try {
+                    const localResponse = await fetch('ics/index.json');
+                    if (!localResponse.ok) throw new Error('Local missing');
+                    this.manifest = await localResponse.json();
+                    this.fetchMode = 'local';
+                } catch (e) {
+                    const remoteResponse = await fetch(this.remoteBaseUrl + 'ics/index.json');
+                    this.manifest = await remoteResponse.json();
+                    this.fetchMode = 'remote';
+                }
             } catch (e) {
                 console.error("Failed to load data", e);
             } finally {
@@ -40,15 +50,20 @@ function holidayDownloads() {
             return `ics/${this.type}/${this.selectedEntity}/${year}/${this.selectedSubdiv}_${this.selectedLang}_${cat}.${ext}`;
         },
 
-        // Fetch With Fallback
-        async _fetchWithFallback(path, options = {}) {
+        // Fetch file based on active mode
+        async _fetchFile(path, options = {}) {
+            // Fast path: Use saved mode if initialized
+            if (this.fetchMode === 'remote') return fetch(this.remoteBaseUrl + path, options);
+            if (this.fetchMode === 'local') return fetch(path, options);
+
+            // Safe path: Fallback during initial load
             try {
                 const response = await fetch(path, options);
                 if (response.ok) return response;
                 throw new Error('Local file not found');
             } catch (e) {
                 if (e.name === 'AbortError') throw e;
-                return fetch('https://vacanza.github.io/holidays/downloads/' + path, options);
+                return fetch(this.remoteBaseUrl + path, options);
             }
         },
 
@@ -141,7 +156,7 @@ function holidayDownloads() {
             for (let year = this.startYear; year <= this.endYear; year++) {
                 const fetchYear = async () => {
                     const reqs = categories.map(cat =>
-                        this._fetchWithFallback(this._getPath(year, cat, 'json'), { signal })
+                        this._fetchFile(this._getPath(year, cat, 'json'), { signal })
                             .then(r => r.ok ? r.json() : [])
                             .catch(e => {
                                 if (e.name !== 'AbortError') return []; // Ignore aborts gracefully
@@ -180,7 +195,7 @@ function holidayDownloads() {
             // Fetch calendar data for all selected years and categories
             for (let year = this.startYear; year <= this.endYear; year++) {
                 categories.forEach(cat => {
-                    fetches.push(this._fetchWithFallback(this._getPath(year, cat, 'ics')).then(r => r.ok ? r.text() : "").catch(() => ""));
+                    fetches.push(this._fetchFile(this._getPath(year, cat, 'ics')).then(r => r.ok ? r.text() : "").catch(() => ""));
                 });
             }
 
