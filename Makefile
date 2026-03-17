@@ -8,9 +8,11 @@ help:
 	@echo "    check         run pre-commit and tests"
 	@echo "    doc           run documentation build process"
 	@echo "    help          show summary of available commands"
+	@echo "    icalendar     generate JSON and ICS data files"
 	@echo "    l10n          update .pot and .po files"
 	@echo "    package       build package distribution"
 	@echo "    pre-commit    run pre-commit against all files"
+	@echo "    serve         serve documentation locally"
 	@echo "    setup         setup development environment"
 	@echo "    test          run tests (in parallel)"
 	@echo "    upgrade       run dependency upgrade"
@@ -33,6 +35,10 @@ clean:
 doc:
 	uv run --no-sync mkdocs build
 
+icalendar:
+	uv run --no-sync scripts/l10n/generate_mo_files.py
+	uv run --no-sync scripts/generate_site_assets.py
+
 l10n:
 	find . -type f -name "*.pot" -delete
 	uv run --no-sync scripts/l10n/generate_po_files.py 2>/dev/null
@@ -50,6 +56,9 @@ release-notes:
 
 sbom:
 	uv tool run --from cyclonedx-bom cyclonedx-py environment "$(uv python find)"
+
+serve:
+	uv run --no-sync mkdocs serve
 
 setup:
 	uv venv --clear --python 3.14

@@ -35,12 +35,19 @@ GoTo :Help
     Echo     check         run pre-commit and tests
     Echo     doc           run documentation build process
     Echo     help          show summary of available commands
+    Echo     icalendar     generate JSON and ICS data files
     Echo     l10n          update .pot and .po files
     Echo     package       build package distribution
     Echo     pre-commit    run pre-commit against all files
+    Echo     serve         serve documentation locally
     Echo     setup         setup development environment
     Echo     test          run tests (in parallel)
     Echo     upgrade       run dependency upgrade
+    Exit /B
+
+:Icalendar
+    uv run --no-sync scripts\l10n\generate_mo_files.py
+    uv run --no-sync scripts\generate_site_assets.py
     Exit /B
 
 :L10n
@@ -64,6 +71,10 @@ GoTo :Help
 :Sbom
     For /F "Delims=" %%P in ('uv python find') Do Set PYTHON_PATH=%%P
     uv tool run --from cyclonedx-bom cyclonedx-py environment "!PYTHON_PATH!"
+    Exit /B
+
+:Serve
+    uv run --no-sync mkdocs serve
     Exit /B
 
 :Setup

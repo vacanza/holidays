@@ -13,7 +13,6 @@
 #  License: MIT (see LICENSE file)
 
 import json
-import os
 import shutil
 import sys
 from concurrent.futures import ProcessPoolExecutor
@@ -33,10 +32,7 @@ from holidays.ical import ICalExporter
 DEFAULT_YEAR_START = 2015
 DEFAULT_YEAR_END = 2035
 
-if os.environ.get("GITHUB_ACTIONS") == "true":
-    OUTPUT_DIR = Path("site/downloads/ics")
-else:
-    OUTPUT_DIR = Path("docs/downloads/ics")
+OUTPUT_DIR = Path("site/downloads/ics")
 
 LANGUAGES = {
     # --- Base Languages ---
