@@ -59,7 +59,7 @@ class MarshallIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolid
         if self._year >= 1996:
             self._add_observed(
                 self._add_holiday_mar_1(
-                    # Memorial Day and Nuclear Survivors Remembrance Day
+                    # Memorial Day and Nuclear Survivors Remembrance Day.
                     "Memorial Day and Nuclear Survivors Remembrance Day"
                     if 2004 <= self._year <= 2005
                     # Nuclear Victims Remembrance Day.
