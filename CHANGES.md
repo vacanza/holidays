@@ -1,3 +1,17 @@
+# Version 0.93
+
+Released March 16, 2026
+
+- Add Germany Stock Exchange holidays (#3271 by @priak388, @krisitachhetry25-hue)
+- Add Japan Exchange Group (JPX) holidays (#3270 by @adityaanand05, @arkid15r)
+- Add Kosovo holidays (#3327 by @bleendd, @arkid15r)
+- Fix l10n tests (#3313 by @KJhellico)
+- Update CONTRIBUTORS (#3325 by @PPsyrius)
+- Update Gabon holidays (#3317 by @KJhellico)
+- Update Gabon holidays: add l10n support  (#3178 by @aman-coder03, @KJhellico)
+- Update India holidays: add Telugu language support (#3303 by @Abiram08)
+- Update Italy holidays: add Bolzano Half-Day holidays, Easter Sunday, Thai language support (#3318 by @PPsyrius)
+
 # Version 0.92
 
 Released March 2, 2026
