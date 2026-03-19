@@ -65,6 +65,18 @@ HOLIDAY_DATA_TEMPLATE = """    {hol_name}_DATES = {{
 YEAR_TEMPLATE = "        {year}: {dates},"
 
 
+def _extract_dates(all_days: list) -> dict[str, dict[int, str]]:
+    dates: dict[str, dict[int, str]] = {}
+    for tib_day, tib_month, hol_name in HOLIDAY_DATES:
+        for d in all_days:
+            if len(d) < 9:
+                continue
+            if d[2] == tib_day and d[3] == tib_month and not d[4]:
+                g_year, g_month, g_day = d[8], d[7], d[6]
+                dates.setdefault(hol_name, {})[g_year] = f"({MONTH_NAMES[g_month]}, {g_day})"
+    return dates
+
+
 def generate_data() -> None:
     data_file = Path(__file__).parent / DATA_FILENAME
 
@@ -81,26 +93,14 @@ def generate_data() -> None:
     if not all_days:
         raise RuntimeError(f"No data parsed from {data_file}")
 
-    dates: dict[str, dict[int, list[str]]] = {}
-
-    for tib_day, tib_month, hol_name in HOLIDAY_DATES:
-        for d in all_days:
-            if len(d) < 9:
-                continue
-            if d[2] == tib_day and d[3] == tib_month and not d[4]:
-                g_year, g_month, g_day = d[8], d[7], d[6]
-                date_str = f"({MONTH_NAMES[g_month]}, {g_day})"
-                dates.setdefault(hol_name, {}).setdefault(g_year, []).append(date_str)
+    dates = _extract_dates(all_days)
 
     holiday_data = []
     for hol_name in sorted(dates.keys()):
-        year_dates = []
-        for year, dt_list in sorted(dates[hol_name].items()):
-            if len(dt_list) == 1:
-                dates_str = dt_list[0]
-            else:
-                dates_str = f"({', '.join(dt_list)})"
-            year_dates.append(YEAR_TEMPLATE.format(year=year, dates=dates_str))
+        year_dates = [
+            YEAR_TEMPLATE.format(year=year, dates=date_str)
+            for year, date_str in sorted(dates[hol_name].items())
+        ]
         holiday_data.append(
             HOLIDAY_DATA_TEMPLATE.format(hol_name=hol_name, year_dates="\n".join(year_dates))
         )
