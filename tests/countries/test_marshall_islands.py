@@ -43,7 +43,9 @@ class TestMarshallIslands(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name_2003, (f"{year}-03-01" for year in range(2004, 2006)))
         self.assertNoHolidayName(name_1996, range(self.start_year, 1996), range(2004, 2006))
-        self.assertNoHolidayName(name_2003, range(self.start_year, 2004), range(2006, self.end_year))
+        self.assertNoHolidayName(
+            name_2003, range(self.start_year, 2004), range(2006, self.end_year)
+        )
         obs_dts = (
             "2014-02-28",
             "2015-03-02",
