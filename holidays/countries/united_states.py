@@ -122,6 +122,9 @@ class UnitedStates(
             * [Alaska Statutes, Sec. 44.12.010](https://web.archive.org/web/20251014215648/https://www.akleg.gov/basis/statutes.asp#44.12.010)
             * [Alaska Day](https://web.archive.org/web/20120502232826/http://www.alaskadispatch.com/article/happy-alaska-day-great-land)
             * [Chapter 109, Session Laws of Alaska (1989)](https://web.archive.org/web/20251228151503/https://www.akleg.gov/basis/folioproxy.asp?url=http://wwwjnu03.akleg.org/cgi-bin/folioisa.dll/slpr/query=*/doc/%7B@1158%7D?next)
+        * Massachusetts:
+            * [Massachusetts Legal Holidays Laws](https://web.archive.org/web/20250417214902/https://www.findlaw.com/state/massachusetts-law/massachusetts-legal-holidays-laws.html)
+            * [Patriots'_Day](https://en.wikipedia.org/wiki/Patriots'_Day)
         * American Samoa:
             * <https://web.archive.org/web/20240808163628/https://asbar.org/code-annotated/1-0501-public-holidays/>
         * Puerto Rico:
@@ -315,7 +318,9 @@ class UnitedStates(
             Whether to include federal-specific holidays.
         """
         self._observed_rule = (
-            SAT_TO_PREV_FRI + SUN_TO_NEXT_MON if self._year >= 1966 else SUN_TO_NEXT_MON
+            SAT_TO_PREV_FRI + SUN_TO_NEXT_MON
+            if self._year >= 1966 and self.subdiv != "MA"
+            else SUN_TO_NEXT_MON
         )
 
         if self._year >= 1871:
@@ -902,13 +907,6 @@ class UnitedStates(
             self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
 
     def _populate_subdiv_ma_public_holidays(self):
-        if self._year >= 1901:
-            self._add_observed(
-                # Evacuation Day.
-                self._add_holiday_mar_17(tr("Evacuation Day")),
-                rule=SAT_SUN_TO_NEXT_MON,
-            )
-
         if self._year >= 1894:
             # Patriots' Day.
             name = tr("Patriots' Day")
