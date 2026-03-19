@@ -188,16 +188,16 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20250724060822/https://www.timeanddate.com/holidays/pakistan/ashura
     ASHURA_DATES_CONFIRMED_YEARS = (2005, 2025)
     ASHURA_DATES = {
-        2005: (FEB, 18),
-        2006: (FEB, 8),
-        2007: (JAN, 28),
-        2008: (JAN, 18),
-        2009: ((JAN, 6), (DEC, 26)),
-        2012: (NOV, 23),
-        2018: (SEP, 21),
-        2022: (AUG, 9),
+        2005: (FEB, 19),
+        2006: (FEB, 9),
+        2007: (JAN, 29),
+        2008: (JAN, 19),
+        2009: ((JAN, 7), (DEC, 27)),
+        2012: (NOV, 24),
+        2018: (SEP, 20),
+        2022: (AUG, 8),
         2025: (JUL, 6),
-        2026: ((JUN, 24), (JUN, 25)),
+        2026: (JUN, 25),
     }
 
     # https://web.archive.org/web/20250724060629/https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
