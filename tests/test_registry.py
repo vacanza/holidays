@@ -162,3 +162,7 @@ class TestEntityLoader(TestCase):
             holidays.countries.USA,
         ):
             self.assertIsInstance(create_instance(cls), holidays.countries.UnitedStates)
+
+    def test_invalid_entity_path(self):
+        with self.assertRaisesRegex(ValueError, "Invalid entity path"):
+            registry.EntityLoader("invalid.entity.path")

@@ -318,6 +318,12 @@ class EntityLoader:
                 "`from holidays.financial import Entity`."
             )
 
+        if not path.startswith("holidays."):
+            raise ValueError(
+                f"Invalid entity path: {path}. "
+                "Entities must be in the holidays namespace."
+            )
+
         entity_path = path.split(".")
 
         self.entity = None
