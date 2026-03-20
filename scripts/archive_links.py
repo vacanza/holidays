@@ -165,7 +165,7 @@ class WMArchiver:
                 "fastLatest": "true",
                 "filter": "statuscode:200",
             }
-            response = self.session.get(CDX_API_URL, params=params)
+            response = self.session.get(CDX_API_URL, params=params, timeout=REQUEST_TIMEOUT)
             response.raise_for_status()
             data = response.json()
             if len(data) > 1:
