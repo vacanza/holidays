@@ -387,7 +387,7 @@ class WMArchiver:
                 total_files_modified += 1
 
         print(f"Processed {total_files_processed} files. Modified {total_files_modified} files.")
-        return 1 if total_files_modified > 0 else 0
+        return 1 if total_files_modified != total_files_processed else 0
 
     def run(self) -> None:
         start_time_total = time.time()
