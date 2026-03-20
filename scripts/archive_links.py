@@ -42,7 +42,6 @@ IGNORE_DOMAINS = [
 ]
 IGNORE_URL_REGEX = re.compile(r"|".join(IGNORE_DOMAINS))
 # Characters that can be part of a URL - used to avoid replacing URLs that are part of larger URLs.
-URL_BOUNDARY_CHARS = r"a-zA-Z0-9_/.-"
 CDX_API_URL = "https://web.archive.org/cdx/search/cdx"
 SAVE_API_URL = "https://web.archive.org/save"
 REQUEST_TIMEOUT = 60
@@ -248,9 +247,7 @@ class WMArchiver:
             # part of a URL;
             # negative lookahead: ensure URL isn't followed by a character that could be
             # part of a URL.
-            pattern = (
-                f"(?<![{URL_BOUNDARY_CHARS}]){escaped_original_url}(?![{URL_BOUNDARY_CHARS}])"
-            )
+            pattern = rf'(?<![^\s<>()"]){escaped_original_url}(?![^\s<>()"])'
             new_content, count = re.subn(pattern, wayback_url, modified_content)
             if count > 0:
                 modified_content = new_content
@@ -315,7 +312,7 @@ class WMArchiver:
         """
         print("Check-only mode: Printing all URLs that would need archiving")
 
-        if files_to_urls_data:
+        if any(files_to_urls_data.values()):
             print("FOUND: URLs that need archiving")
             for source_file, urls in files_to_urls_data.items():
                 print(f"\nFile: {source_file}")
@@ -351,8 +348,12 @@ class WMArchiver:
                     response = self.session.head(
                         url, timeout=REQUEST_TIMEOUT // 4, allow_redirects=True
                     )
+                    if response.status_code in {405, 501}:
+                        response = self.session.get(
+                            url, timeout=REQUEST_TIMEOUT // 4, allow_redirects=True
+                        )
                     response.raise_for_status()
-                except Exception as e:
+                except requests.exceptions.RequestException as e:
                     print(f"  DEAD: {url} - {e}")
                     dead_count += 1
 
@@ -386,7 +387,7 @@ class WMArchiver:
                 total_files_modified += 1
 
         print(f"Processed {total_files_processed} files. Modified {total_files_modified} files.")
-        return 0
+        return 1 if total_files_modified > 0 else 0
 
     def run(self) -> None:
         start_time_total = time.time()
