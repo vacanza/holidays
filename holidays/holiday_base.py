@@ -19,7 +19,7 @@ from calendar import isleap
 from collections.abc import Iterable
 from datetime import date, datetime, timedelta, timezone
 from functools import cached_property
-from gettext import gettext, translation
+from gettext import gettext, translation, NullTranslations
 from pathlib import Path
 from typing import Any, Literal, Union, cast
 
@@ -765,23 +765,30 @@ class HolidayBase(dict[date, str]):
             locale_directory = str(Path(__file__).with_name("locale"))
 
             # Add entity native content translations.
-            entity_translation = translation(
-                self._entity_code,
-                fallback=fallback,
-                languages=languages,
-                localedir=locale_directory,
-            )
+            try:
+                entity_translation = translation(
+                    self._entity_code,
+                    fallback=fallback,
+                    languages=languages,
+                    localedir=locale_directory,
+                )
+            except FileNotFoundError:
+                entity_translation = NullTranslations()
+
             # Add a fallback if entity has parent translations.
             if parent_entity := self.parent_entity:
-                entity_translation.add_fallback(
-                    translation(
+                try:
+                    parent_translation = translation(
                         getattr(parent_entity, "country", None)
                         or getattr(parent_entity, "market", None),  # type: ignore[arg-type]
                         fallback=fallback,
                         languages=languages,
                         localedir=locale_directory,
                     )
-                )
+                except FileNotFoundError:
+                    parent_translation = NullTranslations()
+                entity_translation.add_fallback(parent_translation)
+
             self.tr = entity_translation.gettext
         else:
             self.tr = gettext
