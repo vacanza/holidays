@@ -308,7 +308,16 @@ class EntityLoader:
     __slots__ = ("entity", "entity_name", "module_name")
 
     def __init__(self, path: str, *args, **kwargs) -> None:
-        """Set up a lazy loader."""
+        """
+        Set up a lazy loader.
+
+        :param path:
+            The path to the entity to be lazy-loaded.
+        :param args:
+            Additional arguments.
+        :param kwargs:
+            Additional keyword arguments.
+        """
         if args:
             raise TypeError(
                 "This is a holidays entity loader class. "
