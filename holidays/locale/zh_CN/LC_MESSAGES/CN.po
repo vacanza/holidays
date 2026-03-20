@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.81\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-09-28 19:23+0700\n"
-"PO-Revision-Date: 2025-09-07 14:05+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-03-20 17:50+0800\n"
+"Last-Translator: yuchengpersonal <yuchengpersonal@users.noreply.github.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -31,80 +31,80 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s（推定）"
-msgstr ""
+msgstr "%s（推定）"
 
 #. %s (observed, estimated).
 #, c-format
 msgid "%s（观察日，推定）"
-msgstr ""
+msgstr "%s（观察日，推定）"
 
 #. %s (observed).
 #, c-format
 msgid "%s（观察日）"
-msgstr ""
+msgstr "%s（观察日）"
 
 #. New Year's Day.
 msgid "元旦"
-msgstr ""
+msgstr "元旦"
 
 #. Chinese New Year (Spring Festival).
 msgid "春节"
-msgstr ""
+msgstr "春节"
 
 #. Chinese New Year's Eve.
 msgid "农历除夕"
-msgstr ""
+msgstr "农历除夕"
 
 #. Labor Day.
 msgid "劳动节"
-msgstr ""
+msgstr "劳动节"
 
 #. National Day.
 msgid "国庆节"
-msgstr ""
+msgstr "国庆节"
 
 #. Tomb-Sweeping Day.
 msgid "清明节"
-msgstr ""
+msgstr "清明节"
 
 #. Dragon Boat Festival.
 msgid "端午节"
-msgstr ""
+msgstr "端午节"
 
 #. Mid-Autumn Festival.
 msgid "中秋节"
-msgstr ""
+msgstr "中秋节"
 
 #. International Women's Day.
 msgid "国际妇女节"
-msgstr ""
+msgstr "国际妇女节"
 
 #. Youth Day.
 msgid "五四青年节"
-msgstr ""
+msgstr "五四青年节"
 
 #. Children's Day.
 msgid "六一儿童节"
-msgstr ""
+msgstr "六一儿童节"
 
 #. Army Day.
 msgid "建军节"
-msgstr ""
+msgstr "建军节"
 
 #. Date format (see strftime() Format Codes).
 msgid "%Y-%m-%d"
-msgstr ""
+msgstr "%Y-%m-%d"
 
 #. Day off (substituted from %s).
 #, c-format
 msgid "休息日（%s日起取代）"
-msgstr ""
+msgstr "休息日（%s日起取代）"
 
 #. Chinese New Year (Spring Festival) Extended Holiday.
 msgid "春节延长假期"
-msgstr ""
+msgstr "春节延长假期"
 
 #. 70th Anniversary of the Victory of the Chinese People's War of Resistance against Japanese
 #. Aggression and the World Anti-Fascist War.
 msgid "中国人民抗日战争暨世界反法西斯战争胜利70周年纪念日"
-msgstr ""
+msgstr "中国人民抗日战争暨世界反法西斯战争胜利70周年纪念日"
