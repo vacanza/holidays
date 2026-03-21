@@ -31,88 +31,88 @@ msgstr ""
 #. %s (observed).
 #, c-format
 msgid "%s (observado)"
-msgstr ""
+msgstr "%s (observado)"
 
 #. New Year's Day.
 msgid "Año Nuevo"
-msgstr ""
+msgstr "Año Nuevo"
 
 #. Plurinational State Foundation Day.
 msgid "Día de la Creación del Estado Plurinacional de Bolivia"
-msgstr ""
+msgstr "Día de la Creación del Estado Plurinacional de Bolivia"
 
 #. Carnival.
 msgid "Carnaval"
-msgstr ""
+msgstr "Carnaval"
 
 #. Good Friday.
 msgid "Viernes Santo"
-msgstr ""
+msgstr "Viernes Santo"
 
 #. Labor Day.
 msgid "Día del Trabajo"
-msgstr ""
+msgstr "Día del Trabajo"
 
 #. Corpus Christi.
 msgid "Corpus Christi"
-msgstr ""
+msgstr "Corpus Christi"
 
 #. Aymara New Year.
 msgid "Año Nuevo Aymara Amazónico"
-msgstr ""
+msgstr "Año Nuevo Aymara Amazónico"
 
 #. Independence Day.
 msgid "Día de la Independencia de Bolivia"
-msgstr ""
+msgstr "Día de la Independencia de Bolivia"
 
 #. National Dignity Day.
 msgid "Día de la Dignidad Nacional"
-msgstr ""
+msgstr "Día de la Dignidad Nacional"
 
 #. All Saints' Day.
 msgid "Día de Todos los Santos"
-msgstr ""
+msgstr "Día de Todos los Santos"
 
 #. All Souls' Day.
 msgid "Día de Todos los Difuntos"
-msgstr ""
+msgstr "Día de Todos los Difuntos"
 
 #. Christmas Day.
 msgid "Navidad"
-msgstr ""
+msgstr "Navidad"
 
 #. Beni Day.
 msgid "Día del departamento de Beni"
-msgstr ""
+msgstr "Día del departamento de Beni"
 
 #. Cochabamba Day.
 msgid "Día del departamento de Cochabamba"
-msgstr ""
+msgstr "Día del departamento de Cochabamba"
 
 #. Chuquisaca Day.
 msgid "Día del departamento de Chuquisaca"
-msgstr ""
+msgstr "Día del departamento de Chuquisaca"
 
 #. La Paz Day.
 msgid "Día del departamento de La Paz"
-msgstr ""
+msgstr "Día del departamento de La Paz"
 
 #. Pando Day.
 msgid "Día del departamento de Pando"
-msgstr ""
+msgstr "Día del departamento de Pando"
 
 #. Potosí Day.
 msgid "Día del departamento de Potosí"
-msgstr ""
+msgstr "Día del departamento de Potosí"
 
 #. Carnival in Oruro.
 msgid "Carnaval de Oruro"
-msgstr ""
+msgstr "Carnaval de Oruro"
 
 #. Santa Cruz Day.
 msgid "Día del departamento de Santa Cruz"
-msgstr ""
+msgstr "Día del departamento de Santa Cruz"
 
 #. La Tablada.
 msgid "La Tablada"
-msgstr ""
+msgstr "La Tablada"
