@@ -10,6 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date, timedelta
+from os import name
+from tracemalloc import start
+from unicodedata import category
+from unittest import result
 import warnings
 from gettext import gettext as tr
 
@@ -151,8 +156,12 @@ class India(
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
     )
+    def __init__(self, *args, **kwargs):
+        self._holiday_meta = {}
+        super().__init__(*args, **kwargs)
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
+        self._holiday_meta = {}
         """
         Args:
             islamic_show_estimated:
@@ -173,9 +182,14 @@ class India(
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
+        if getattr(self, "_year", None):
+            self._populate_workdays()
+
     def _populate_public_holidays(self):
+        self._current_category = PUBLIC
+
         if self._year >= 1950:
-            # Republic Day.
+        # Republic Day.
             self._add_holiday_jan_26(tr("Republic Day"))
 
         # Independence Day.
@@ -236,6 +250,7 @@ class India(
             self._populate_subdiv_od_public_holidays()
 
     def _populate_optional_holidays(self):
+        self._current_category = OPTIONAL
         # Hindu holidays.
 
         # Children's Day.
@@ -514,6 +529,52 @@ class India(
         # Rabindra Jayanti.
         self._add_holiday_may_9(tr("Rabindra Jayanti"))
 
+    def get_holiday_info(self, date):
+        return self._holiday_meta.get(date, None)
+    
+    def _add_holiday(self, date, name):
+        return super()._add_holiday(date, name)
+    
+    def __setitem__(self, key, value):
+        super().__setitem__(key, value)
+
+        category = getattr(self, "_current_category", None)
+
+        if category:
+            mapped_type = (
+                "public" if category == PUBLIC
+                else "unofficial" if category == OPTIONAL
+                else str(category)
+            )
+
+            self._holiday_meta[key] = {
+                "type": mapped_type,
+                "name_key": str(value)
+            }
+
+    from datetime import timedelta
+
+    def _populate_workdays(self):
+        for date in self:
+            pass  # skip holidays
+
+        # iterate full year
+        from datetime import date as dt_date
+
+        start = dt_date(self._year, 1, 1)
+        end = dt_date(self._year, 12, 31)
+
+        current = start
+        while current <= end:
+            if current not in self:
+                self._holiday_meta[current] = {
+                "type": "workday",
+                "name_key": "Workday"
+                }
+            current += timedelta(days=1)
+
+
+     
 
 class IN(India):
     pass
