@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date, timedelta
+from holidays.constants import OPTIONAL, PUBLIC
 
 import warnings
 from gettext import gettext as tr
@@ -147,7 +148,8 @@ class India(
         "Uttar Pradesh": "UP",
         "West Bengal": "WB",
     }
-    supported_categories = (OPTIONAL, PUBLIC)
+    WORKDAY = "workday"
+    supported_categories = (OPTIONAL, PUBLIC, WORKDAY)
     supported_languages = ("en_IN", "en_US", "gu", "hi", "ta", "te")
     _deprecated_subdivisions = (
         "DD",  # Daman and Diu.
@@ -175,9 +177,6 @@ class India(
         )
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
-
-        if getattr(self, "_year", None):
-            self._populate_workdays()
 
     def _populate_public_holidays(self):
         self._current_category = PUBLIC
@@ -533,6 +532,9 @@ class India(
     def __setitem__(self, key, value):
         super().__setitem__(key, value)
 
+        normalized_key = self._keytransform(key)   
+        final_value = self[normalized_key]        
+
         category = getattr(self, "_current_category", None)
 
         if category:
@@ -542,19 +544,19 @@ class India(
                 else str(category)
             )
 
-            self._holiday_meta[key] = {
-                "type": mapped_type,
-                "name_key": str(value)
+            self._holiday_meta[normalized_key] = {
+                "type": WORKDAY,
+                "name_key": "workday"
             }
 
-    def _populate_workdays(self) -> None:
+    def _populate_workday_holidays(self) -> None:
         start_date = date(self._year, 1, 1)
         end_date = date(self._year, 12, 31)
 
         current = start_date
         while current <= end_date:
             # Only weekdays (Mon–Fri) that are not holidays
-            if current.weekday() < 5 and current not in self:
+            if current.weekday() < 5 and current not in self._holidays:
                 self._holiday_meta[current] = {
                     "type": "workday",
                     "name_key": "Workday"
