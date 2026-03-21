@@ -10,9 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAY, JUL, SEP
+from holidays.calendars.gregorian import MAY, JUN, JUL, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_MON
 
@@ -23,7 +24,12 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Latvia>
         * <https://web.archive.org/web/20250210170838/https://www.information.lv/>
-        * <https://web.archive.org/web/20240914233046/https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam>
+        * [Law "On Public Holidays, Commemoration Days, and Celebration Days" of Oct 3, 1990](https://web.archive.org/web/20260308023501/https://likumi.lv/doc.php?id=72608)
+        * [Law of Sep 21, 1995](https://web.archive.org/web/20251217210932/https://likumi.lv/ta/id/37110-grozijumi-likuma-par-svetku-un-atceres-dienam-)
+        * [Law of Dec 18, 1996](https://web.archive.org/web/20251120000352/https://likumi.lv/ta/id/41773-grozijumi-likuma-par-svetku-un-atceres-dienam-)
+        * [Law of Mar 21, 2002](https://web.archive.org/web/20250918022517/https://likumi.lv/ta/id/60998-grozijumi-likuma-par-svetku-un-atceres-dienam-)
+        * [Law of May 24, 2007](https://web.archive.org/web/20251217210804/https://likumi.lv/ta/id/158621-grozijumi-likuma-par-svetku-atceres-un-atzimejamam-dienam-)
+        * [Law of Apr 7, 2011](https://web.archive.org/web/20250918032827/https://likumi.lv/ta/id/229236-grozijumi-likuma-par-svetku-atceres-un-atzimejamam-dienam-)
     """
 
     country = "LV"
@@ -31,7 +37,8 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     # %s (observed).
     observed_label = tr("%s (brīvdiena)")
     supported_languages = ("en_US", "lv", "uk")
-    start_year = 1990
+    # Law of Oct 3, 1990.
+    start_year = 1991
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -40,30 +47,51 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
+    def _is_observed(self, dt: date) -> bool:
+        # Law of May 24, 2007.
+        return dt >= date(2007, JUN, 26)
+
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("Jaunais Gads"))
+        self._add_new_years_day(tr("Jaungada diena"))
 
         # Good Friday.
         self._add_good_friday(tr("Lielā Piektdiena"))
 
         # Easter Sunday.
-        self._add_easter_sunday(tr("Lieldienas"))
+        self._add_easter_sunday(tr("Pirmās Lieldienas"))
 
-        # Easter Monday.
-        self._add_easter_monday(tr("Otrās Lieldienas"))
+        # Established by Law of Dec 18, 1996.
+        if self._year >= 1997:
+            # Easter Monday.
+            self._add_easter_monday(tr("Otrās Lieldienas"))
 
         # Labor Day.
         self._add_labor_day(tr("Darba svētki"))
 
+        # Constitutional Assembly Convocation Day.
+        self._add_holiday_may_1(tr("Latvijas Republikas Satversmes sapulces sasaukšanas diena"))
+
+        # Established by Law of Mar 21, 2002.
+        # Renamed by Law of Apr 7, 2011 (came into force on May 11, 2011).
         if self._year >= 2002:
-            # Restoration of Independence Day.
-            dt = self._add_holiday_may_4(tr("Latvijas Republikas Neatkarības atjaunošanas diena"))
-            if self._year >= 2008:
-                self._add_observed(dt)
+            self._add_observed(
+                self._add_holiday_may_4(
+                    # Restoration of Independence Day.
+                    tr("Latvijas Republikas Neatkarības atjaunošanas diena")
+                    if self._year >= 2012
+                    # Proclamation of Declaration of Independence Day.
+                    else tr("Latvijas Republikas Neatkarības deklarācijas pasludināšanas diena")
+                )
+            )
 
         # Mother's Day.
         self._add_holiday_2nd_sun_of_may(tr("Mātes diena"))
+
+        # Established by Law of Sep 21, 1995.
+        if self._year >= 1996:
+            # Whit Sunday.
+            self._add_whit_sunday(tr("Vasarsvētki"))
 
         # Midsummer Eve.
         self._add_holiday_jun_23(tr("Līgo diena"))
@@ -72,22 +100,21 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         self._add_saint_johns_day(tr("Jāņu diena"))
 
         # Republic of Latvia Proclamation Day.
-        dt = self._add_holiday_nov_18(tr("Latvijas Republikas proklamēšanas diena"))
-        if self._year >= 2007:
-            self._add_observed(dt)
+        self._add_observed(self._add_holiday_nov_18(tr("Latvijas Republikas Proklamēšanas diena")))
 
+        # Established by Law of May 24, 2007.
         if self._year >= 2007:
             # Christmas Eve.
             self._add_christmas_eve(tr("Ziemassvētku vakars"))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Ziemassvētki"))
+        self._add_christmas_day(tr("Pirmie Ziemassvētki"))
 
         # Second Day of Christmas.
         self._add_christmas_day_two(tr("Otrie Ziemassvētki"))
 
         # New Year's Eve.
-        self._add_new_years_eve(tr("Vecgada vakars"))
+        self._add_new_years_eve(tr("Vecgada diena"))
 
 
 class LV(Latvia):
@@ -99,26 +126,38 @@ class LVA(Latvia):
 
 
 class LatviaStaticHolidays:
-    # General Latvian Song and Dance Festival closing day.
-    song_and_dance_festival_closing_day = tr(
-        "Vispārējo latviešu Dziesmu un deju svētku noslēguma dienu"
+    """Latvia special holidays.
+
+    References:
+        * [Law of Oct 2, 2014](https://web.archive.org/web/20251217210815/https://likumi.lv/ta/id/269373-grozijumi-likuma-par-svetku-atceres-un-atzimejamam-dienam-)
+        * [Law of Jun 21, 2018](https://web.archive.org/web/20251217210926/https://likumi.lv/ta/id/299942-grozijums-likuma-par-svetku-atceres-un-atzimejamam-dienam-)
+        * [Law of May 28, 2023](https://web.archive.org/web/20251217210837/https://likumi.lv/ta/id/342196-grozijumi-likuma-par-svetku-atceres-un-atzimejamam-dienam-)
+        * <https://lv.wikipedia.org/wiki/Vispārējie_latviešu_Dziesmu_un_deju_svētki>
+    """
+
+    #  Nationwide Latvian Song and Dance Celebration Final Day.
+    song_and_dance_festival_final_day = tr(
+        "Vispārējo latviešu Dziesmu un deju svētku noslēguma diena"
     )
-    # Day of His Holiness Pope Francis' pastoral visit to Latvia.
+
+    # Day of the Pastoral Visit of His Holiness Pope Francis to Latvia.
     pope_francis_pastoral_visit_day = tr(
         "Viņa Svētības pāvesta Franciska pastorālās vizītes Latvijā diena"
     )
-    # Day the Latvian hockey team won the bronze medal at the 2023 World Ice Hockey Championship.
+
+    # Day of the Latvian Ice Hockey Team's Bronze Medal Win at the 2023 IIHF World Championship.
     hockey_team_win_bronze_medal_day = tr(
         "Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada "
         "Pasaules hokeja čempionātā"
     )
+
     special_public_holidays = {
         2018: (
-            (JUL, 9, song_and_dance_festival_closing_day),
+            (JUL, 9, song_and_dance_festival_final_day),
             (SEP, 24, pope_francis_pastoral_visit_day),
         ),
         2023: (
             (MAY, 29, hockey_team_win_bronze_medal_day),
-            (JUL, 10, song_and_dance_festival_closing_day),
+            (JUL, 10, song_and_dance_festival_final_day),
         ),
     }

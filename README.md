@@ -1942,7 +1942,7 @@ code when available. The following financial markets are available:
 <td>Germany Stock Exchange</td>
 <td>XETR</td>
 <td>Deutsche Börse Cash Market (Frankfurt Stock Exchange and Xetra) holidays</td>
-<td><strong>de</strong>, en_US</td>
+<td><strong>de</strong>, en_US, th, uk</td>
 <td></td>
 </tr>
 <tr>

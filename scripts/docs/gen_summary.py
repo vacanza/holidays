@@ -24,6 +24,7 @@ def main():
     entities_data = [
         "* [Overview](index.md)",
         "* [Additional Examples](examples.md)",
+        "* [Holiday Categories](holiday_categories.md)",
         "* [Changelog](changelog.md)",
         "* [Contributing](contributing.md)",
         "* [API Reference](api.md)",
