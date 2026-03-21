@@ -26,4 +26,4 @@ Pipfile
 sbom.json
 site/
 venv/
-site/downloads
+site/
