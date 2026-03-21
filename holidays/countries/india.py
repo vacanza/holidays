@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date, timedelta
-from holidays.constants import OPTIONAL, PUBLIC
+from holidays.constants import OPTIONAL, PUBLIC, WORKDAY
 
 import warnings
 from gettext import gettext as tr
@@ -148,7 +148,6 @@ class India(
         "Uttar Pradesh": "UP",
         "West Bengal": "WB",
     }
-    WORKDAY = "workday"
     supported_categories = (OPTIONAL, PUBLIC, WORKDAY)
     supported_languages = ("en_IN", "en_US", "gu", "hi", "ta", "te")
     _deprecated_subdivisions = (
@@ -541,25 +540,31 @@ class India(
             mapped_type = (
                 "public" if category == PUBLIC
                 else "unofficial" if category == OPTIONAL
+                else "workday" if category == WORKDAY
                 else str(category)
             )
 
-            self._holiday_meta[normalized_key] = {
-                "type": WORKDAY,
-                "name_key": "workday"
-            }
+        self._holiday_meta[normalized_key] = {
+            "type": mapped_type,
+            "name_key": str(final_value),
+        }
 
     def _populate_workday_holidays(self) -> None:
         start_date = date(self._year, 1, 1)
         end_date = date(self._year, 12, 31)
 
+        full_holidays = set()
+
+        for d, meta in self._holiday_meta.items():
+            if meta["type"] in ("public", "unofficial"):
+                full_holidays.add(d)
+
         current = start_date
         while current <= end_date:
-            # Only weekdays (Mon–Fri) that are not holidays
-            if current.weekday() < 5 and current not in self._holidays:
+            if current.weekday() < 5 and current not in full_holidays:
                 self._holiday_meta[current] = {
-                    "type": "workday",
-                    "name_key": "Workday"
+                    "type": WORKDAY,
+                    "name_key": "Workday",
                 }
             current += timedelta(days=1)
 
