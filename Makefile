@@ -33,7 +33,7 @@ clean:
 	@rm -rf .mypy_cache .pytest_cache dist
 
 doc:
-	uv run --no-sync mkdocs build
+	uv run --no-sync properdocs build -f .properdocs.yml
 
 icalendar:
 	uv run --no-sync scripts/l10n/generate_mo_files.py

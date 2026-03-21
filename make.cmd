@@ -27,7 +27,7 @@ GoTo :Help
     Exit /B
 
 :Doc
-    uv run --no-sync mkdocs build
+    uv run --no-sync properdocs build -f .properdocs.yml
     Exit /B
 
 :Help
