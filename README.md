@@ -106,14 +106,13 @@ code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or f
 abbreviations as aliases for their subdivisions. These are defined in the (optional)
 `subdivisions_aliases` attribute.
 
-> ⚠️ **Note**
+> [!Note]
 >
-> The presence of a subdivision or city in the internal implementation does
-> not guarantee that it appears in `subdivisions_aliases`.
-> The aliases list is intentionally **not exhaustive** and only includes
-> commonly used or officially recognized alternative names.
-> As a result, some valid subdivisions (for example, certain cities)
-> may work internally but not be listed as aliases.
+> **Aliases are optional.** Subdivisions need not have aliases. When present,
+> `subdivisions_aliases` cover only a subset of subdivisions - commonly used
+> or officially recognized alternative names. Supported subdivisions and
+> their aliases (where available) are listed in the `Subdivisions` column of
+> the table below.
 
 Some of the countries support more than one language for holiday names output. A default language is defined by `default_language` (optional) attribute for each
 entity and is used as a fallback when neither user specified language nor user locale language
