@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.88\n"
+"Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-06-19 15:33+0700\n"
-"PO-Revision-Date: 2025-12-23 10:55-0800\n"
+"PO-Revision-Date: 2026-03-18 20:34+0200\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -274,10 +274,6 @@ msgstr "วันสิ้นปี"
 #. Mardi Gras.
 msgid "Mardi Gras"
 msgstr "วันมาร์ดิกราส์"
-
-#. Evacuation Day.
-msgid "Evacuation Day"
-msgstr "วันอพยพ"
 
 #. Patriots' Day.
 msgid "Patriots' Day"

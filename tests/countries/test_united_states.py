@@ -29,13 +29,16 @@ class TestUnitedStates(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        obs_dts = (
+        name_observed = f"{name} (observed)"
+        obs_dts_1 = (
             "2004-12-31",
-            "2006-01-02",
             "2010-12-31",
+            "2021-12-31",
+        )
+        obs_dts_2 = (
+            "2006-01-02",
             "2012-01-02",
             "2017-01-02",
-            "2021-12-31",
             "2023-01-02",
         )
         for holidays, holidays_non_obs in (
@@ -49,8 +52,13 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 holidays, (f"{year}-01-01" for year in range(self.start_year, 1871))
             )
             self.assertNoHolidayName(name, holidays, range(self.start_year, 1871))
-            self.assertHolidayName(f"{name} (observed)", holidays, obs_dts)
-            self.assertNoNonObservedHoliday(holidays_non_obs, obs_dts)
+            self.assertHolidayName(name_observed, holidays, obs_dts_1, obs_dts_2)
+            self.assertNoNonObservedHoliday(holidays_non_obs, obs_dts_1, obs_dts_2)
+
+        # MA (SUN only).
+        self.assertSubdivMaHolidayName(name_observed, obs_dts_2)
+        self.assertNoSubdivMaHoliday(obs_dts_1)
+        self.assertNoSubdivMaNonObservedHoliday(obs_dts_1, obs_dts_2)
 
     def test_memorial_day(self):
         name = "Memorial Day"
@@ -82,12 +90,13 @@ class TestUnitedStates(CommonCountryTests, TestCase):
 
     def test_juneteenth_national_independence_day(self):
         name = "Juneteenth National Independence Day"
-        obs_dts = (
+        name_observed = f"{name} (observed)"
+        obs_dts_1 = (
             "2021-06-18",
-            "2022-06-20",
             "2027-06-18",
             "2032-06-18",
         )
+        obs_dts_2 = ("2022-06-20",)
         for holidays, holidays_non_obs in (
             (self.holidays, self.holidays_non_observed),
             (self.holidays_government, self.holidays_government_non_observed),
@@ -99,17 +108,25 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 holidays, (f"{year}-06-19" for year in range(self.start_year, 2021))
             )
             self.assertNoHolidayName(name, holidays, range(self.start_year, 2021))
-            self.assertHolidayName(f"{name} (observed)", holidays, obs_dts)
-            self.assertNoNonObservedHoliday(holidays_non_obs, obs_dts)
+            self.assertHolidayName(name_observed, holidays, obs_dts_1, obs_dts_2)
+            self.assertNoNonObservedHoliday(holidays_non_obs, obs_dts_1, obs_dts_2)
+
+        # MA (SUN only).
+        self.assertSubdivMaHolidayName(name_observed, obs_dts_2)
+        self.assertNoSubdivMaHoliday(obs_dts_1)
+        self.assertNoSubdivMaNonObservedHoliday(obs_dts_1, obs_dts_2)
 
     def test_independence_day(self):
         name = "Independence Day"
-        obs_dts = (
-            "2004-07-05",
+        name_observed = f"{name} (observed)"
+        obs_dts_1 = (
             "2009-07-03",
-            "2010-07-05",
             "2015-07-03",
             "2020-07-03",
+        )
+        obs_dts_2 = (
+            "2004-07-05",
+            "2010-07-05",
             "2021-07-05",
         )
         for holidays, holidays_non_obs in (
@@ -123,8 +140,13 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 holidays, (f"{year}-07-04" for year in range(self.start_year, 1870))
             )
             self.assertNoHolidayName(name, holidays, range(self.start_year, 1870))
-            self.assertHolidayName(f"{name} (observed)", holidays, obs_dts)
-            self.assertNoNonObservedHoliday(holidays_non_obs, obs_dts)
+            self.assertHolidayName(name_observed, holidays, obs_dts_1, obs_dts_2)
+            self.assertNoNonObservedHoliday(holidays_non_obs, obs_dts_1, obs_dts_2)
+
+        # MA (SUN only).
+        self.assertSubdivMaHolidayName(name_observed, obs_dts_2)
+        self.assertNoSubdivMaHoliday(obs_dts_1)
+        self.assertNoSubdivMaNonObservedHoliday(obs_dts_1, obs_dts_2)
 
     def test_labor_day(self):
         name = "Labor Day"
@@ -152,6 +174,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
     def test_veterans_day(self):
         name_1938 = "Armistice Day"
         name_1954 = "Veterans Day"
+        name_1954_observed = f"{name_1954} (observed)"
         dts = (
             "1971-10-25",
             "1972-10-23",
@@ -161,15 +184,17 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             "1976-10-25",
             "1977-10-24",
         )
-        obs_dt = (
+        obs_dts_1 = (
             "2000-11-10",
-            "2001-11-12",
             "2006-11-10",
+            "2017-11-10",
+            "2023-11-10",
+        )
+        obs_dts_2 = (
+            "2001-11-12",
             "2007-11-12",
             "2012-11-12",
-            "2017-11-10",
             "2018-11-12",
-            "2023-11-10",
         )
         for holidays, holidays_non_obs in (
             (self.holidays, self.holidays_non_observed),
@@ -188,8 +213,13 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             )
             self.assertNoHolidayName(name_1954, holidays, range(self.start_year, 1954))
             self.assertHolidayName(name_1954, holidays, dts)
-            self.assertHolidayName(f"{name_1954} (observed)", holidays, obs_dt)
-            self.assertNoNonObservedHoliday(holidays_non_obs, obs_dt)
+            self.assertHolidayName(name_1954_observed, holidays, obs_dts_1, obs_dts_2)
+            self.assertNoNonObservedHoliday(holidays_non_obs, obs_dts_1, obs_dts_2)
+
+        # MA (SUN only).
+        self.assertSubdivMaHolidayName(name_1954_observed, obs_dts_2)
+        self.assertNoSubdivMaHoliday(obs_dts_1)
+        self.assertNoSubdivMaNonObservedHoliday(obs_dts_1, obs_dts_2)
 
         # PR.
         self.assertSubdivPrHolidayName(name_1938, (f"{year}-11-11" for year in range(1938, 1980)))
@@ -200,11 +230,9 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             name_1938, range(self.start_year, 1938), range(1980, self.end_year)
         )
         self.assertNoSubdivPrHolidayName(name_1954, range(self.start_year, 1980))
-        self.assertNoSubdivPrHoliday(
-            "2006-11-10",
-            "2017-11-10",
-            "2023-11-10",
-        )
+        self.assertSubdivPrHolidayName(name_1954_observed, obs_dts_2)
+        self.assertNoSubdivPrHoliday(obs_dts_1)
+        self.assertNoSubdivPrNonObservedHoliday(obs_dts_1, obs_dts_2)
 
     def test_thanksgiving_day(self):
         name = "Thanksgiving Day"
@@ -274,13 +302,16 @@ class TestUnitedStates(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        obs_dt = (
+        name_observed = f"{name} (observed)"
+        obs_dts_1 = (
             "2004-12-24",
-            "2005-12-26",
             "2010-12-24",
+            "2021-12-24",
+        )
+        obs_dts_2 = (
+            "2005-12-26",
             "2011-12-26",
             "2016-12-26",
-            "2021-12-24",
             "2022-12-26",
         )
         for holidays, holidays_non_obs in (
@@ -294,8 +325,13 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 holidays, (f"{year}-12-25" for year in range(self.start_year, 1870))
             )
             self.assertNoHolidayName(name, holidays, range(self.start_year, 1870))
-            self.assertHolidayName(f"{name} (observed)", holidays, obs_dt)
-            self.assertNoNonObservedHoliday(holidays_non_obs, obs_dt)
+            self.assertHolidayName(name_observed, holidays, obs_dts_1, obs_dts_2)
+            self.assertNoNonObservedHoliday(holidays_non_obs, obs_dts_1, obs_dts_2)
+
+        # MA (SUN only).
+        self.assertSubdivMaHolidayName(name_observed, obs_dts_2)
+        self.assertNoSubdivMaHoliday(obs_dts_1)
+        self.assertNoSubdivMaNonObservedHoliday(obs_dts_1, obs_dts_2)
 
     def test_martin_luther_king_day(self):
         name = "Martin Luther King Jr. Day"
@@ -1225,22 +1261,6 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             "2023-03-07",
         )
         self.assertSubdivVtHolidayName(name, dt)
-
-    def test_evacuation_day(self):
-        name = "Evacuation Day"
-        self.assertNoHolidayName(name)
-        self.assertSubdivMaHolidayName(
-            name, (f"{year}-03-17" for year in range(1901, self.end_year))
-        )
-        self.assertNoSubdivMaHolidayName(name, range(self.start_year, 1901))
-        obs_dt = (
-            "2012-03-19",
-            "2013-03-18",
-            "2018-03-19",
-            "2019-03-18",
-        )
-        self.assertSubdivMaHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoSubdivMaNonObservedHolidayName(f"{name} (observed)", obs_dt)
 
     def test_emancipation_day_pr(self):
         name = "Emancipation Day"
@@ -2488,7 +2508,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             ("2022-03-01", "Mardi Gras; Town Meeting Day"),
             ("2022-03-02", "Texas Independence Day"),
             ("2022-03-07", "Casimir Pulaski Day; Guam Discovery Day"),
-            ("2022-03-17", "Evacuation Day; Saint Patrick's Day"),
+            ("2022-03-17", "Saint Patrick's Day"),
             ("2022-03-22", "Emancipation Day"),
             ("2022-03-24", "Commonwealth Covenant Day"),
             ("2022-03-25", "Prince Jonah Kuhio Kalanianaole Day (observed)"),
@@ -2590,7 +2610,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             ("2022-03-01", "วันประชาคมท้องถิ่น; วันมาร์ดิกราส์"),
             ("2022-03-02", "วันประกาศอิสรภาพเท็กซัส"),
             ("2022-03-07", "วันคาซิเมียร์ พูลาสกี้; วันค้นพบกวม"),
-            ("2022-03-17", "วันนักบุญแพทริก; วันอพยพ"),
+            ("2022-03-17", "วันนักบุญแพทริก"),
             ("2022-03-22", "วันเลิกทาส"),
             ("2022-03-24", "วันปฏิญญาเครือรัฐ"),
             ("2022-03-25", "ชดเชยวันเจ้าชายโจนาห์ คูฮิโอ คาลานิอาเนาโอะเล"),
