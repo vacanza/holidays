@@ -308,16 +308,7 @@ class EntityLoader:
     __slots__ = ("entity", "entity_name", "module_name")
 
     def __init__(self, path: str, *args, **kwargs) -> None:
-        """
-        Set up a lazy loader.
-
-        :param path:
-            The path to the entity to be lazy-loaded.
-        :param args:
-            Additional arguments.
-        :param kwargs:
-            Additional keyword arguments.
-        """
+        """Set up a lazy loader."""
         if args:
             raise TypeError(
                 "This is a holidays entity loader class. "
@@ -325,12 +316,6 @@ class EntityLoader:
                 "want to derive from directly: e.g., "
                 "`from holidays.countries import Entity` or "
                 "`from holidays.financial import Entity`."
-            )
-
-        if not path.startswith("holidays."):
-            raise ValueError(
-                f"Invalid entity path: {path}. "
-                "Entities must be in the holidays namespace."
             )
 
         entity_path = path.split(".")
