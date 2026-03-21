@@ -11,10 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date, timedelta
-from os import name
-from tracemalloc import start
-from unicodedata import category
-from unittest import result
+
 import warnings
 from gettext import gettext as tr
 
@@ -156,9 +153,6 @@ class India(
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
     )
-    def __init__(self, *args, **kwargs):
-        self._holiday_meta = {}
-        super().__init__(*args, **kwargs)
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         self._holiday_meta = {}
@@ -187,9 +181,8 @@ class India(
 
     def _populate_public_holidays(self):
         self._current_category = PUBLIC
-
         if self._year >= 1950:
-        # Republic Day.
+            # Republic Day.
             self._add_holiday_jan_26(tr("Republic Day"))
 
         # Independence Day.
@@ -249,6 +242,8 @@ class India(
         if self.subdiv == "OR":
             self._populate_subdiv_od_public_holidays()
 
+        self._current_category = None
+
     def _populate_optional_holidays(self):
         self._current_category = OPTIONAL
         # Hindu holidays.
@@ -290,6 +285,8 @@ class India(
 
         # Palm Sunday.
         self._add_palm_sunday(tr("Palm Sunday"))
+
+        self._current_category = None
 
     # Andaman and Nicobar Islands.
     def _populate_subdiv_an_public_holidays(self):
@@ -529,11 +526,9 @@ class India(
         # Rabindra Jayanti.
         self._add_holiday_may_9(tr("Rabindra Jayanti"))
 
-    def get_holiday_info(self, date):
-        return self._holiday_meta.get(date, None)
-    
-    def _add_holiday(self, date, name):
-        return super()._add_holiday(date, name)
+    def get_holiday_info(self, dt:date) -> dict | None:
+        """Return metadata for the given date, or None if not found."""
+        return self._holiday_meta.get(dt, None)
     
     def __setitem__(self, key, value):
         super().__setitem__(key, value)
@@ -552,24 +547,17 @@ class India(
                 "name_key": str(value)
             }
 
-    from datetime import timedelta
+    def _populate_workdays(self) -> None:
+        start_date = date(self._year, 1, 1)
+        end_date = date(self._year, 12, 31)
 
-    def _populate_workdays(self):
-        for date in self:
-            pass  # skip holidays
-
-        # iterate full year
-        from datetime import date as dt_date
-
-        start = dt_date(self._year, 1, 1)
-        end = dt_date(self._year, 12, 31)
-
-        current = start
-        while current <= end:
-            if current not in self:
+        current = start_date
+        while current <= end_date:
+            # Only weekdays (Mon–Fri) that are not holidays
+            if current.weekday() < 5 and current not in self:
                 self._holiday_meta[current] = {
-                "type": "workday",
-                "name_key": "Workday"
+                    "type": "workday",
+                    "name_key": "Workday"
                 }
             current += timedelta(days=1)
 
