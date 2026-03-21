@@ -35,9 +35,17 @@ class TestMarshallIslands(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_nuclear_victims_remembrance_day(self):
-        name = "Nuclear Victims Remembrance Day"
-        self.assertHolidayName(name, (f"{year}-03-01" for year in range(1996, self.end_year)))
-        self.assertNoHolidayName(name, range(self.start_year, 1996))
+        name_1996 = "Nuclear Victims Remembrance Day"
+        name_2003 = "Memorial Day and Nuclear Survivors Remembrance Day"
+        self.assertHolidayName(
+            name_1996,
+            (f"{year}-03-01" for year in (*range(1996, 2004), *range(2006, self.end_year))),
+        )
+        self.assertHolidayName(name_2003, (f"{year}-03-01" for year in range(2004, 2006)))
+        self.assertNoHolidayName(name_1996, range(self.start_year, 1996), range(2004, 2006))
+        self.assertNoHolidayName(
+            name_2003, range(self.start_year, 2004), range(2006, self.end_year)
+        )
         obs_dts = (
             "2014-02-28",
             "2015-03-02",
@@ -45,7 +53,7 @@ class TestMarshallIslands(CommonCountryTests, TestCase):
             "2025-02-28",
             "2026-03-02",
         )
-        self.assertHolidayName(f"{name} Holiday", obs_dts)
+        self.assertHolidayName(f"{name_1996} Holiday", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_good_friday(self):
@@ -133,14 +141,18 @@ class TestMarshallIslands(CommonCountryTests, TestCase):
         name = "General Election Day"
         self.assertHolidayName(
             name,
-            "2007-11-19",
-            "2011-11-21",
             "2015-11-16",
             "2019-11-18",
             "2023-11-20",
         )
-        self.assertHolidayName(name, (year for year in self.full_range if year % 4 == 3))
-        self.assertNoHolidayName(name, (year for year in self.full_range if year % 4 != 3))
+        self.assertHolidayName(
+            name, (year for year in range(2015, self.end_year) if year % 4 == 3)
+        )
+        self.assertNoHolidayName(
+            name,
+            range(self.start_year, 2015),
+            (year for year in range(2015, self.end_year) if year % 4 != 3),
+        )
 
     def test_gospel_day(self):
         name = "Gospel Day"

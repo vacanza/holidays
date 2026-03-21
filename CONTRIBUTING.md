@@ -123,13 +123,14 @@ def setUpClass(cls):
     super().setUpClass(Argentina)
 ```
 
-## Build MkDocs Documentation
+## Build ProperDocs Documentation
 
-The project provides MkDocs documentation under `./docs`, published online on
+The project provides ProperDocs documentation under `./docs`, published online on
 [readthedocs.io](https://holidays.readthedocs.io/).
 
-Great documentation is absolutely key in any project. If you are not familiar with Markdown for
-MkDocs, you can read a primer [here](https://www.mkdocs.org/user-guide/writing-your-docs/).
+Great documentation is absolutely key in any project. ProperDocs is a fork of MkDocs,
+so if you are not familiar with writing Markdown for ProperDocs, here you can read a
+[ProperDocs Primer](https://properdocs.org/user-guide/writing-your-docs/).
 
 ## GitHub Actions
 
