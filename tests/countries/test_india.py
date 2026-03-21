@@ -917,3 +917,16 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertEqual(
             India(subdiv="OR", years=2023).keys(), India(subdiv="OD", years=2023).keys()
         )
+
+    def test_holi_maharashtra_2026(self):
+        holidays = India(years=2026, subdiv="MH")
+
+        # correct date present
+        self.assertIn("2026-03-03", holidays)
+
+        # correct name
+        self.assertEqual(holidays["2026-03-03"], "Holi")
+
+        # ensure only one Holi exists
+        self.assertEqual(list(holidays.values()).count("Holi"), 1)
+
