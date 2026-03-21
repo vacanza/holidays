@@ -129,8 +129,8 @@ The project provides ProperDocs documentation under `./docs`, published online o
 [readthedocs.io](https://holidays.readthedocs.io/).
 
 Great documentation is absolutely key in any project. ProperDocs is a fork of MkDocs,
-so if you are not familiar with writing Markdown for ProperDocs, you can read a primer
-[here](https://properdocs.org/user-guide/writing-your-docs/).
+so if you are not familiar with writing Markdown for ProperDocs, here you can read a
+[ProperDocs Primer](https://properdocs.org/user-guide/writing-your-docs/).
 
 ## GitHub Actions
 
