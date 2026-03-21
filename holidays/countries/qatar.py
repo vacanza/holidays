@@ -96,8 +96,8 @@ class QAT(Qatar):
 
 
 class QatarIslamicHolidays(_CustomIslamicHolidays):
-    # https://web.archive.org/web/20250422212912/https://www.timeanddate.com/holidays/qatar/eid-al-adha
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2005, 2024)
+    # https://web.archive.org/web/20260107122007/https://www.timeanddate.com/holidays/qatar/eid-al-adha
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2005, 2025)
     EID_AL_ADHA_DATES = {
         2008: (DEC, 9),
         2009: (NOV, 28),
@@ -126,8 +126,7 @@ class QatarStaticHolidays:
         * [New Year's Holiday](https://web.archive.org/web/20250119073018/https://www.expatica.com/qa/lifestyle/holidays/qatar-public-holidays-74585/)
     """
 
-    # New Year's Holiday.
-    name = tr("عطلة رأس السنة")
     special_public_holidays = {
-        2025: (JAN, 2, name),
+        # New Year's Holiday.
+        2025: (JAN, 2, tr("عطلة رأس السنة")),
     }

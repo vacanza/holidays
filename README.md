@@ -15,7 +15,7 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>CI/CD</td>
     <td>
-      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41B5BE&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41B5BE&style=flat" alt="Documentation status"></a>&nbsp;<a href="https://snyk.io/advisor/python/holidays/"><img alt="Open World Holidays Package Health Score" src="https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fsnyk.io%2Fadvisor%2Fpython%2Fholidays%2Fbadge.svg&search=%5Cd%7B1%2C3%7D%2F%5Cd%7B1%2C3%7D&style=flat&label=snyk&color=41B5BE"></a>
+      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41B5BE&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41B5BE&style=flat" alt="Documentation status"></a>&nbsp;<a href="https://security.snyk.io/package/pip/holidays/"><img alt="Open World Holidays Package Health Score" src="https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fsecurity.snyk.io%2Fpackage%2Fpip%2Fholidays%2F&search=(class%3D%22score-number%22.*%3F%3E)(%5Cd%7B1%2C3%7D%2F%5Cd%7B1%2C3%7D)&replace=%242&style=flat&label=snyk&color=41B5BE"></a>
     </td>
   </tr>
   <tr>
@@ -99,8 +99,8 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 249 country codes and are fully compatible with [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html).
-The standard way to refer to a country is by using its [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes),
+We currently support 250 country codes, which primarily follow [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html), with a small number of widely used user-assigned or reserved codes (for example, `XK` for Kosovo).
+In general, the standard way to refer to a country is by using its [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes),
 the same used for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
 abbreviations as aliases for their subdivisions. These are defined in the (optional)
@@ -230,9 +230,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Armenia</td>
 <td>AM</td>
-<td></td>
+<td>Regions: AG (Aragac̣otn), AR (Ararat), AV (Armavir), ER (Erevan), GR (Geġark'unik'), KT (Kotayk'), LO (Loṙi), SH (Širak), SU (Syunik'), TV (Tavuš), VD (Vayoć Jor)</td>
 <td>en_US, <strong>hy</strong></td>
-<td></td>
+<td>WORKDAY</td>
 </tr>
 <tr>
 <td>Aruba</td>
@@ -406,7 +406,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Burkina Faso</td>
 <td>BF</td>
 <td></td>
-<td></td>
+<td><strong>en_BF</strong>, en_US, fr</td>
 <td></td>
 </tr>
 <tr>
@@ -714,7 +714,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Gabon</td>
 <td>GA</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -868,7 +868,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>India</td>
 <td>IN</td>
 <td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
-<td><strong>en_IN</strong>, en_US, gu, hi</td>
+<td><strong>en_IN</strong>, en_US, gu, hi, ta, te</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -897,7 +897,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>IE</td>
 <td></td>
 <td></td>
-<td></td>
+<td>OPTIONAL</td>
 </tr>
 <tr>
 <td>Isle of Man</td>
@@ -917,8 +917,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Italy</td>
 <td>IT</td>
 <td>Provinces: AG (Agrigento), AL (Alessandria), AN (Ancona), AO (Aosta), AP (Ascoli Piceno), AQ (L'Aquila), AR (Arezzo), AT (Asti), AV (Avellino), BA (Bari), BG (Bergamo), BI (Biella), BL (Belluno), BN (Benevento), BO (Bologna), BR (Brindisi), BS (Brescia), BT (Barletta-Andria-Trani), BZ (Bolzano), CA (Cagliari), CB (Campobasso), CE (Caserta), CH (Chieti), CL (Caltanissetta), CN (Cuneo), CO (Como), CR (Cremona), CS (Cosenza), CT (Catania), CZ (Catanzaro), EN (Enna), FC (Forli-Cesena, Forlì-Cesena), FE (Ferrara), FG (Foggia), FI (Firenze), FM (Fermo), FR (Frosinone), GE (Genova), GO (Gorizia), GR (Grosseto), IM (Imperia), IS (Isernia), KR (Crotone), LC (Lecco), LE (Lecce), LI (Livorno), LO (Lodi), LT (Latina), LU (Lucca), MB (Monza e Brianza), MC (Macerata), ME (Messina), MI (Milano), MN (Mantova), MO (Modena), MS (Massa-Carrara), MT (Matera), NA (Napoli), NO (Novara), NU (Nuoro), OR (Oristano), PA (Palermo), PC (Piacenza), PD (Padova), PE (Pescara), PG (Perugia), PI (Pisa), PN (Pordenone), PO (Prato), PR (Parma), PT (Pistoia), PU (Pesaro e Urbino), PV (Pavia), PZ (Potenza), RA (Ravenna), RC (Reggio Calabria), RE (Reggio Emilia), RG (Ragusa), RI (Rieti), RM (Roma), RN (Rimini), RO (Rovigo), SA (Salerno), SI (Siena), SO (Sondrio), SP (La Spezia), SR (Siracusa), SS (Sassari), SU (Sud Sardegna), SV (Savona), TA (Taranto), TE (Teramo), TN (Trento), TO (Torino), TP (Trapani), TR (Terni), TS (Trieste), TV (Treviso), UD (Udine), VA (Varese), VB (Verbano-Cusio-Ossola), VC (Vercelli), VE (Venezia), VI (Vicenza), VR (Verona), VT (Viterbo), VV (Vibo Valentia); cities: Andria, Barletta, Cesena, Forli (Forlì), Pesaro, Trani, Urbino</td>
-<td>en_US, <strong>it_IT</strong></td>
-<td></td>
+<td>en_US, <strong>it_IT</strong>, th</td>
+<td>HALF_DAY</td>
 </tr>
 <tr>
 <td>Ivory Coast</td>
@@ -977,6 +977,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Kosovo</td>
+<td>XK</td>
+<td></td>
+<td>en_US, <strong>sq</strong>, sr</td>
+<td></td>
+</tr>
+<tr>
 <td>Kuwait</td>
 <td>KW</td>
 <td></td>
@@ -987,8 +994,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Kyrgyzstan</td>
 <td>KG</td>
 <td></td>
-<td></td>
-<td></td>
+<td>en_US, <strong>ky</strong>, ru_KG</td>
+<td>WORKDAY</td>
 </tr>
 <tr>
 <td>Laos</td>
@@ -1942,10 +1949,24 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Germany Stock Exchange</td>
+<td>XETR</td>
+<td>Deutsche Börse Cash Market (Frankfurt Stock Exchange and Xetra) holidays</td>
+<td><strong>de</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>ICE Futures Europe</td>
 <td>IFEU</td>
 <td>A London-based Investment Exchange holidays</td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td>Japan Exchange</td>
+<td>XJPX</td>
+<td>Japan Exchange Group (JPX) market holidays</td>
+<td>en_US, <strong>ja</strong>, th</td>
 <td></td>
 </tr>
 <tr>

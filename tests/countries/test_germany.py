@@ -232,7 +232,7 @@ class TestGermany(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             # Saarland.
-            if subdiv == "SL":
+            if subdiv in {"SL", "Augsburg"}:
                 self.assertHolidayName(
                     name, holidays, (f"{year}-08-15" for year in self.full_range)
                 )

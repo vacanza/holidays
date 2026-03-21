@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import BANK, DE_FACTO, OPTIONAL
 from holidays.countries.sweden import Sweden
 from tests.common import CommonCountryTests, SundayHolidays
 
@@ -22,12 +21,6 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
     def setUpClass(cls):
         super().setUpClass(Sweden)
         cls.holidays = Sweden(include_sundays=False, years=cls.full_range)
-
-    def test_no_holidays(self):
-        super().test_no_holidays()
-        self.assertNoHolidays(
-            Sweden(categories=(BANK, DE_FACTO, OPTIONAL), years=self.start_year - 1)
-        )
 
     def test_new_years_day(self):
         self.assertHolidayName("Nyårsdagen", (f"{year}-01-01" for year in self.full_range))
@@ -384,8 +377,8 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
         )
 
     def test_bank_2022(self):
-        self.assertHolidays(
-            Sweden(categories=BANK, years=2022),
+        self.assertBankHolidaysInYear(
+            2022,
             ("2022-01-05", "Trettondagsafton (från kl. 14.00)"),
             ("2022-04-14", "Skärtorsdagen (från kl. 14.00)"),
             ("2022-04-30", "Valborgsmässoafton (från kl. 14.00)"),
@@ -401,8 +394,8 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
         )
 
     def test_optional_2022(self):
-        self.assertHolidays(
-            Sweden(categories=OPTIONAL, years=2022),
+        self.assertOptionalHolidaysInYear(
+            2022,
             ("2022-01-05", "Trettondagsafton (från kl. 14.00)"),
             ("2022-04-14", "Skärtorsdagen (från kl. 14.00)"),
             ("2022-04-16", "Påskafton"),

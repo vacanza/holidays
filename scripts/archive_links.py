@@ -406,6 +406,12 @@ def main() -> None:
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(
+        "path",
+        nargs="?",
+        help="Optional path to a specific file or directory to scan. "
+        "If omitted, scans the entire 'holidays' library.",
+    )
+    parser.add_argument(
         "--archive-policy",
         choices=["if-missing", "always", "never"],
         default="if-missing",
@@ -430,8 +436,22 @@ def main() -> None:
     args = parser.parse_args()
 
     start_time_total = time.time()
-    directory = os.path.abspath(os.path.join(__file__, "..", "..", "holidays"))
-    files_to_urls_data, _ = scan_directory_for_links(directory, EXTENSIONS_TO_SCAN)
+
+    files_to_urls_data: dict[str, list[str]] = {}
+
+    if args.path:
+        target_path = os.path.abspath(args.path)
+        if os.path.isfile(target_path):
+            files_to_urls_data = {target_path: find_hyperlinks_in_file(target_path)}
+        elif os.path.isdir(target_path):
+            files_to_urls_data, _ = scan_directory_for_links(target_path, EXTENSIONS_TO_SCAN)
+        else:
+            print(f"Error: Path not found: {target_path}", file=sys.stderr)
+            sys.exit(1)
+    else:
+        files_to_urls_data, _ = scan_directory_for_links(
+            os.path.abspath(os.path.join(__file__, "..", "..", "holidays")), EXTENSIONS_TO_SCAN
+        )
 
     if args.show_only:
         exit_code = run_show_only_mode(files_to_urls_data)
