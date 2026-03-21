@@ -58,7 +58,7 @@ sbom:
 	uv tool run --from cyclonedx-bom cyclonedx-py environment "$(uv python find)"
 
 serve:
-	uv run --no-sync mkdocs serve
+	uv run --no-sync properdocs serve -f .properdocs.yml
 
 setup:
 	uv venv --clear --python 3.14

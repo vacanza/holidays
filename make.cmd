@@ -74,7 +74,7 @@ GoTo :Help
     Exit /B
 
 :Serve
-    uv run --no-sync mkdocs serve
+    uv run --no-sync properdocs serve -f .properdocs.yml
     Exit /B
 
 :Setup
