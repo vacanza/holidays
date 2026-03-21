@@ -52,10 +52,8 @@ class MarshallIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolid
         self._add_observed(self._next_year_new_years_day, name=name)
 
         # Public Law 1995-134.
-        # Name amended to "Memorial Day and Nuclear Survivors Remembrance Day"
-        #   via Public Law 2003-99 on Dec 3rd, 2003.
-        # Name amended back to "Nuclear Victims Remembrance Day"
-        #   via Public Law 2005-35 around May 2005.
+        # P.L. 2003-99 (Dec 2003): renamed to Memorial Day and Nuclear Survivors Remembrance Day.
+        # P.L. 2005-35 (~May 2005): reverted to Nuclear Victims Remembrance Day.
         if self._year >= 1996:
             self._add_observed(
                 self._add_holiday_mar_1(
