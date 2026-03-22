@@ -481,15 +481,16 @@ class India(
         self._add_holiday_apr_14(tr("Puthandu (Tamil New Year)"))
 
     # Telangana.
-    def _populate_subdiv_ts_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
-        self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
-        # Telangana Formation Day.
-        self._add_holiday_jun_2(tr("Telangana Formation Day"))
-        # Bathukamma Festival.
-        self._add_bathukamma(tr("Bathukamma Festival"))
-        # Ugadi.
-        self._add_gudi_padwa(tr("Ugadi"))
+   def _populate_subdiv_ts_public_holidays(self):
+    # Telangana Formation Day
+    self._add_holiday_jun_2(tr("Telangana Formation Day"))
+    # Bathukamma Festival
+    self._add_bathukamma(tr("Bathukamma Festival"))
+    # Ugadi
+    self._add_gudi_padwa(tr("Ugadi"))
+    # Bonalu (temporary date)
+    from datetime import date
+    self[date(self.year, 7, 15)] = "Bonalu Festival"
 
     # Uttarakhand.
     def _populate_subdiv_uk_public_holidays(self):
