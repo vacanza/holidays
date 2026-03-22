@@ -229,7 +229,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Armenia</td>
 <td>AM</td>
-<td>Regions: AG (Aragac̣otn, Aragatsotn), AR (Ararat), AV (Armavir), ER (Erevan), GR (Geġark'unik',Gegharkunik), KT (Kotayk',Kotayk), LO (Loṙi,Lori), SH (Širak,Shirak), SU (Syunik',Syunik), TV (Tavuš,Tavush), VD (Vayoć Jor,Vayots Dzor)</td>
+<td>Regions: AG (Aragac̣otn, Aragatsotn), AR (Ararat), AV (Armavir), ER (Erevan), GR (Geġark'unik', Gegharkunik), KT (Kotayk', Kotayk), LO (Loṙi, Lori), SH (Širak, Shirak), SU (Syunik', Syunik), TV (Tavuš, Tavush), VD (Vayoć Jor, Vayots Dzor)</td>
 <td>en_US, <strong>hy</strong></td>
 <td>WORKDAY</td>
 </tr>
