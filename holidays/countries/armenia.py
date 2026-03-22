@@ -82,6 +82,14 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         "Syunik'": "SU",
         "Tavuš": "TV",
         "Vayoć Jor": "VD",
+        "Aragatsotn": "AG",
+        "Gegharkunik": "GR",
+        "Kotayk": "KT",
+        "Lori": "LO",
+        "Shirak": "SH",
+        "Syunik": "SU",
+        "Tavush": "TV",
+        "Vayots Dzor": "VD",
     }
 
     def __init__(self, *args, **kwargs):
