@@ -290,6 +290,14 @@ class India(
         # Ugadi.
         self._add_gudi_padwa(tr("Ugadi"))
 
+    # Arunachal Pradesh.
+    def _populate_subdiv_ar_public_holidays(self):
+        # Arunachal Pradesh Statehood Day.
+        if self._year >= 1987:
+            self._add_holiday_feb_20(tr("Arunachal Pradesh Statehood Day"))
+        # Dr. B. R. Ambedkar Jayanti.
+        self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
+
     # Assam.
     def _populate_subdiv_as_public_holidays(self):
         # Magh Bihu.
