@@ -22,6 +22,22 @@ with, once you have [`uv`](https://docs.astral.sh/uv/getting-started/installatio
 make setup
 ```
 
+### Cross-Platform Command Equivalents
+
+The examples below use `make` for Linux/macOS. On Windows, use `make.cmd` from this repository.
+
+| Task | Linux/macOS | Windows (PowerShell or Command Prompt) |
+| --- | --- | --- |
+| Setup development environment | `make setup` | `make.cmd setup` |
+| Run all checks | `make check` | `make.cmd check` |
+| Run pre-commit only | `make pre-commit` | `make.cmd pre-commit` |
+| Run tests only | `make test` | `make.cmd test` |
+| Build localization files | `make l10n` | `make.cmd l10n` |
+| Build package artifacts | `make package` | `make.cmd package` |
+
+If you prefer not to use `make`/`make.cmd`, you can run the same tasks directly with `uv` commands
+from [Makefile](Makefile) and [make.cmd](make.cmd).
+
 !!! note "WSL Windows File Permission Fix"
 
     If you're a Windows-based developer setting this up via WSL for the first time and encounter
