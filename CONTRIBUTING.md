@@ -71,6 +71,12 @@ make test
 
 It'll retrieve uncovered lines too.
 
+Install pytest using the following command
+
+``` shell
+pip install pytest-cov
+```
+
 You can run specific tests using the `pytest` command:
 
 ``` shell
