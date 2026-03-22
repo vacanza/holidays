@@ -929,4 +929,3 @@ class TestIndia(CommonCountryTests, TestCase):
 
         # ensure only one Holi exists
         self.assertEqual(list(holidays.values()).count("Holi"), 1)
-

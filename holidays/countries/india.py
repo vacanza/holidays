@@ -403,7 +403,7 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
-        #Holi
+        # Holi
         if self._year == 2026:
             self._add_holiday_mar_3(tr("Holi"))
         else:
