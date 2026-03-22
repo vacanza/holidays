@@ -1,4 +1,4 @@
-# How to release a new version of Holidays
+# How to release a new version of Holidays in all countries
 
 - Finalize the current development version
   - switch to `dev` branch and pull the most recent changes from
