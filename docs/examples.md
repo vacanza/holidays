@@ -232,6 +232,7 @@ Argentina categories: ('armenian', 'bank', 'government', 'hebrew', 'islamic', 'p
 For a comprehensive list of all available categories and their descriptions, see the [Holiday Categories](holiday_categories.md) documentation.
 
 ## Working day-related calculations
+
 ## Real-World Examples for Working Days
 
 ### Example: Planning Leave Around Holidays
