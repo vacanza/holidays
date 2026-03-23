@@ -232,6 +232,45 @@ Argentina categories: ('armenian', 'bank', 'government', 'hebrew', 'islamic', 'p
 For a comprehensive list of all available categories and their descriptions, see the [Holiday Categories](holiday_categories.md) documentation.
 
 ## Working day-related calculations
+## Real-World Examples for Working Days
+
+### Example: Planning Leave Around Holidays
+
+Scenario:
+You want to apply for leave from July 3 to July 7 and want to know how many working days are counted.
+
+```python
+import holidays
+from datetime import date
+
+us_holidays = holidays.US()
+
+start = date(2024, 7, 3)
+end = date(2024, 7, 7)
+
+working_days = us_holidays.get_working_days_count(start, end)
+print(working_days)
+```
+
+Output:
+2
+
+Explanation:
+- July 4 is a public holiday
+- Weekend is excluded
+- Only July 3 and 5 are working days
+
+---
+
+### Example: Next Working Day
+
+```python
+next_day = us_holidays.get_nth_working_day(date(2024, 7, 4), 1)
+print(next_day)
+```
+
+Output:
+2024-07-05
 
 To check if the specified date is a working day:
 
