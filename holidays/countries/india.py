@@ -401,7 +401,7 @@ class India(
         # Chhatrapati Shivaji Maharaj Jayanti.
         self._add_holiday_feb_19(tr("Chhatrapati Shivaji Maharaj Jayanti"))
         # Holi
-        self._add_holi_mar_3(tr("Holi"))
+        self._add_holiday_mar_3(tr("Holi"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
