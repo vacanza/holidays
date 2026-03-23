@@ -202,6 +202,7 @@ class NigeriaIslamicHolidays(_CustomIslamicHolidays):
         2023: (APR, 21),
         2024: (APR, 10),
         2025: (MAR, 30),
+        2026: (MAR, 20),
     }
 
     # https://web.archive.org/web/20250829053435/https://www.timeanddate.com/holidays/nigeria/id-el-maulud
