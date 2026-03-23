@@ -532,9 +532,7 @@ class TestIndia(CommonCountryTests, TestCase):
     def test_ar_statehood_day(self):
         name = "Arunachal Pradesh Statehood Day"
         self.assertNoHolidayName(name, India(subdiv="AR", years=1986))
-        self.assertHolidayName(
-            name, India(subdiv="AR"), "1987-02-20", "2018-02-20", "2025-02-20"
-        )
+        self.assertHolidayName(name, India(subdiv="AR"), "1987-02-20", "2018-02-20", "2025-02-20")
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -557,7 +555,8 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-14", "Dr. B. R. Ambedkar's Jayanti; Puthandu (Tamil New Year); Vaisakhi"),
             (
                 "2018-04-15",
-                "Bohag Bihu; Himachal Day; Maha Vishuva Sankranti / Pana Sankranti; Pohela Boishakh",
+                "Bohag Bihu; Himachal Day; "
+                "Maha Vishuva Sankranti / Pana Sankranti; Pohela Boishakh",
             ),
             ("2018-04-30", "Buddha Purnima"),
             ("2018-05-01", "Gujarat Day; Labour Day; Maharashtra Day"),
@@ -748,7 +747,8 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-14", "Dr. B. R. Ambedkar's Jayanti; Puthandu (Tamil New Year); Vaisakhi"),
             (
                 "2018-04-15",
-                "Bohag Bihu; Himachal Day; Maha Vishuva Sankranti / Pana Sankranti; Pohela Boishakh",
+                "Bohag Bihu; Himachal Day; "
+                "Maha Vishuva Sankranti / Pana Sankranti; Pohela Boishakh",
             ),
             ("2018-04-30", "Buddha Purnima"),
             ("2018-05-01", "Gujarat Day; Labor Day; Maharashtra Day"),
