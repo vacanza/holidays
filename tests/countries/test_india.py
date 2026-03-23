@@ -54,6 +54,12 @@ class TestIndia(CommonCountryTests, TestCase):
 
         subdiv_holidays_mapping = {
             "AN": ("2018-04-14",),
+            "AR": (
+                "2018-02-20",
+                "2018-04-14",
+                "2018-04-15",
+                "2018-12-01",
+            ),
             "AP": (
                 "2018-04-14",
                 "2018-11-01",
@@ -521,6 +527,13 @@ class TestIndia(CommonCountryTests, TestCase):
             "1994-03-27",
             "2017-04-09",
             "2020-04-05",
+        )
+
+    def test_ar_statehood_day(self):
+        name = "Arunachal Pradesh Statehood Day"
+        self.assertNoHolidayName(name, India(subdiv="AR", years=1986))
+        self.assertHolidayName(
+            name, India(subdiv="AR"), "1987-02-20", "2018-02-20", "2025-02-20"
         )
 
     def test_l10n_default(self):
