@@ -181,6 +181,9 @@ class India(
         # Independence Day.
         self._add_holiday_aug_15(tr("Independence Day"))
 
+        # New Year's Day
+        self._add_holiday_jan_1(tr("New Year's Day"))
+        
         # Gandhi Jayanti.
         self._add_holiday_oct_2(tr("Gandhi Jayanti"))
 
@@ -203,6 +206,9 @@ class India(
 
         # Mahavir Jayanti.
         self._add_mahavir_jayanti(tr("Mahavir Jayanti"))
+
+        # Makar Sankranti.
+        self._add_makar_sankranti(tr("Makar Sankranti"))
 
         # Maha Shivaratri.
         self._add_maha_shivaratri(tr("Maha Shivaratri"))
@@ -232,6 +238,10 @@ class India(
         # Christmas.
         self._add_christmas_day(tr("Christmas"))
 
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Easter Sunday"))
+
+
         if self.subdiv == "OR":
             self._populate_subdiv_od_public_holidays()
 
@@ -243,6 +253,9 @@ class India(
 
         # Holi.
         self._add_holi(tr("Holi"))
+        
+        #Karva Chauth
+        self._add_holiday_oct_20(tr("Karva Chauth"))
 
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
@@ -256,9 +269,6 @@ class India(
         # Maha Navami.
         self._add_maha_navami(tr("Maha Navami"))
 
-        # Makar Sankranti.
-        self._add_makar_sankranti(tr("Makar Sankranti"))
-
         # Raksha Bandhan.
         self._add_raksha_bandhan(tr("Raksha Bandhan"))
 
@@ -268,10 +278,6 @@ class India(
         # Navratri / Sharad Navratri.
         self._add_sharad_navratri(tr("Navratri / Sharad Navratri"))
 
-        # Christian holidays.
-
-        # Easter Sunday.
-        self._add_easter_sunday(tr("Easter Sunday"))
 
         # Palm Sunday.
         self._add_palm_sunday(tr("Palm Sunday"))
@@ -296,6 +302,8 @@ class India(
         self._add_makar_sankranti(tr("Magh Bihu"))
         # Assam Day.
         self._add_holiday_dec_2(tr("Assam Day"))
+        # Rongali Bihu
+        self._add_holiday_apr_14(tr("Rongali Bihu"))
 
     # Bihar.
     def _populate_subdiv_br_public_holidays(self):
@@ -428,6 +436,8 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maha Vishuva Sankranti.
         self._add_holiday_apr_15(tr("Maha Vishuva Sankranti / Pana Sankranti"))
+        # Rath Yatra
+        self._add_holiday_jun_20(tr("Rath Yatra"))
 
     # Puducherry.
     def _populate_subdiv_py_public_holidays(self):
@@ -490,7 +500,8 @@ class India(
         self._add_bathukamma(tr("Bathukamma Festival"))
         # Ugadi.
         self._add_gudi_padwa(tr("Ugadi"))
-
+        # Bonalu.
+        self._add_bonalu(tr("Bonalu"))
     # Uttarakhand.
     def _populate_subdiv_uk_public_holidays(self):
         # Dr. B. R. Ambedkar Jayanti.
@@ -513,6 +524,8 @@ class India(
         self._add_holiday_apr_15(tr("Pohela Boishakh"))
         # Rabindra Jayanti.
         self._add_holiday_may_9(tr("Rabindra Jayanti"))
+        # Durga Puja (main day)
+        self._add_dussehra(tr("Durga Puja"))
 
 
 class IN(India):
