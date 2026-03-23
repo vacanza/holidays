@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.87\n"
+"Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
-"POT-Creation-Date: 2025-03-23 00:00+0530\n"
-"PO-Revision-Date: 2025-03-23 00:00+0530\n"
+"POT-Creation-Date: 2026-03-23 14:20+0530\n"
+"PO-Revision-Date: 2026-03-23 14:20+0530\n"
 "Last-Translator: Kolusu Sai Ganesh <kolususaiganesh991@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: bn\n"
