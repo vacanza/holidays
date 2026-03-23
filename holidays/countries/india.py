@@ -491,8 +491,8 @@ class India(
        self._add_gudi_padwa(tr("Ugadi"))
     # Dr. B. R. Ambedkar Jayanti.
        self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
-    # Bonalu Festival (temporary fixed date).
-       self[date(self.year, 7, 15)] = tr("Bonalu Festival")
+    # Bonalu Festival (temporary fixed date used as date varies yearly).
+       self._add_holiday(date(self._year, 7, 15), tr("Bonalu Festival"))
 
     # Uttarakhand.
     def _populate_subdiv_uk_public_holidays(self):
