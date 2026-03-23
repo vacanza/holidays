@@ -138,6 +138,7 @@ class India(
         "Tamil Nadu": "TN",
         "Tamil Nādu": "TN",
         "Tripura": "TR",
+        "TG": "TS",
         "Telangana": "TS",
         "Telangāna": "TS",
         "Uttarakhand": "UK",
