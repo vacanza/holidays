@@ -18,25 +18,17 @@ Thanks a lot for your support.
 First step is setting up the development environment and installing all the required dependencies
 with, once you have [`uv`](https://docs.astral.sh/uv/getting-started/installation/#installation-methods) setup:
 
-``` shell
-make setup
-```
+=== "macOS and Linux"
 
-### Cross-Platform Command Equivalents
+    ``` shell
+    make setup
+    ```
 
-The examples below use `make` for Linux/macOS. On Windows, use `make.cmd` from this repository.
+=== "Windows"
 
-| Task | Linux/macOS | Windows (PowerShell or Command Prompt) |
-| --- | --- | --- |
-| Setup development environment | `make setup` | `make.cmd setup` |
-| Run all checks | `make check` | `make.cmd check` |
-| Run pre-commit only | `make pre-commit` | `make.cmd pre-commit` |
-| Run tests only | `make test` | `make.cmd test` |
-| Build localization files | `make l10n` | `make.cmd l10n` |
-| Build package artifacts | `make package` | `make.cmd package` |
-
-If you prefer not to use `make`/`make.cmd`, you can run the same tasks directly with `uv` commands
-from [Makefile](Makefile) and [make.cmd](make.cmd).
+    ``` shell
+    .\make setup
+    ```
 
 !!! note "WSL Windows File Permission Fix"
 
@@ -74,16 +66,33 @@ from [Makefile](Makefile) and [make.cmd](make.cmd).
 
 The project provides automated style, tests and coverage checks:
 
-``` shell
-make check
-```
+=== "macOS and Linux"
+
+    ``` shell
+    make check
+    ```
+
+=== "Windows"
+
+    ``` shell
+    .\make check
+    ```
 
 You can run them separately:
 
-``` shell
-make pre-commit
-make test
-```
+=== "macOS and Linux"
+
+    ``` shell
+    make pre-commit
+    make test
+    ```
+
+=== "Windows"
+
+    ``` shell
+    .\make pre-commit
+    .\make test
+    ```
 
 It'll retrieve uncovered lines too.
 
@@ -112,9 +121,17 @@ pytest -s tests/countries/test_argentina.py
 In order to add or update existing holiday names translation you'll need to generate pygettext
 .pot file first:
 
-``` shell
-make l10n
-```
+=== "macOS and Linux"
+
+    ``` shell
+    make l10n
+    ```
+
+=== "Windows"
+
+    ``` shell
+    .\make l10n
+    ```
 
 If the template file is empty, make sure that the country/market entity has the `default_language`
 attribute set, and all holiday names are wrapped with `tr`/`self.tr` helpers. Use [ISO 639-1
