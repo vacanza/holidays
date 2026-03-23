@@ -42,6 +42,8 @@ class India(
         * Tamil Nadu:
             * [Tamil Monthly Calendar](https://web.archive.org/web/20231228103352/https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
             * [Tamil Calendar](https://web.archive.org/web/20250429125140/https://www.prokerala.com/general/calendar/tamilcalendar.php)
+        * Maharashtra:
+            * <https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
     """
 
     country = "IN"
@@ -398,6 +400,8 @@ class India(
         self._add_gudi_padwa(tr("Gudi Padwa"))
         # Chhatrapati Shivaji Maharaj Jayanti.
         self._add_holiday_feb_19(tr("Chhatrapati Shivaji Maharaj Jayanti"))
+        # Holi
+        self._add_holi_mar_3(tr("Holi"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
