@@ -400,8 +400,9 @@ class India(
         self._add_gudi_padwa(tr("Gudi Padwa"))
         # Chhatrapati Shivaji Maharaj Jayanti.
         self._add_holiday_feb_19(tr("Chhatrapati Shivaji Maharaj Jayanti"))
-        # Holi
-        self._add_holiday_mar_3(tr("Holi"))
+        # Holi (Maharashtra-specific date for 2026).
+        if self._year == 2026:
+            self._add_holiday_mar_3(tr("Holi"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
