@@ -182,6 +182,7 @@ class TestNigeria(CommonCountryTests, TestCase):
         obs_holiday_dts = (
             "2018-06-18",
             "2023-04-24",
+            "2026-03-23",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertHolidayName(f"{name_holiday} (observed)", obs_holiday_dts)

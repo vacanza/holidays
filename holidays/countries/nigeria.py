@@ -175,7 +175,7 @@ class NigeriaIslamicHolidays(_CustomIslamicHolidays):
     }
 
     # https://web.archive.org/web/20250829052410/https://www.timeanddate.com/holidays/nigeria/id-el-fitr
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (1979, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (1979, 2026)
     EID_AL_FITR_DATES = {
         1979: (AUG, 25),
         1982: (JUL, 23),
