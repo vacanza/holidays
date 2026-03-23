@@ -320,3 +320,7 @@ msgstr "Pohela Boishakh"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "Rabindra Jayanti"
+
+#. Bonalu Festival.
+msgid "Bonalu Festival"
+msgstr "Bonalu Festival"
