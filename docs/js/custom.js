@@ -117,3 +117,36 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+// Global tab sync
+const tabSets = document.querySelectorAll(".tabbed-set");
+
+tabSets.forEach((set) => {
+    const inputs = set.querySelectorAll("input");
+
+    inputs.forEach((input) => {
+        input.addEventListener("change", () => {
+            if (!input.checked) return;
+
+            const label = set.querySelector(`label[for="${input.id}"]`);
+            if (!label) return;
+
+            const tabName = label.textContent.trim();
+
+            document.querySelectorAll(".tabbed-set").forEach((otherSet) => {
+                if (otherSet === set) return; // avoid redundant work
+
+                otherSet.querySelectorAll("label").forEach((otherLabel) => {
+                    if (otherLabel.textContent.trim() === tabName) {
+                        const targetId = otherLabel.getAttribute("for");
+                        const targetInput = document.getElementById(targetId);
+
+                        if (targetInput && !targetInput.checked) {
+                            targetInput.checked = true;
+                        }
+                    }
+                });
+            });
+        });
+    });
+});

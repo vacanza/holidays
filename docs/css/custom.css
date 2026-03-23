@@ -7,7 +7,18 @@ td{
 	word-break: break-word !important;
 }
 
-code.hljs{
+.rst-content .highlight,
+.rst-content pre{
+	border: none !important;
+	background: none !important;
+	padding: 0 !important;
+	box-shadow: none !important;
+}
+
+.rst-content pre code.hljs{
+	display: block;
+	padding: 0.75rem;
+	border-radius: 4px;
 	background: #eeffcc !important;
 }
 
@@ -30,9 +41,7 @@ code.hljs{
 
 .tabbed-set > label{
 	order: 1;
-	display: block;
 	padding: 0.65rem 1rem;
-	margin: 0;
 	cursor: pointer;
 	font-weight: 600;
 	background: #f3f5f7;
@@ -60,10 +69,6 @@ code.hljs{
 
 .tabbed-set > input:checked + label + .tabbed-content{
 	display: block;
-}
-
-.tabbed-set .highlight{
-	margin: 0;
 }
 
 @media (max-width: 768px){
