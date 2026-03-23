@@ -319,3 +319,7 @@ msgstr "పొహెలా బొయిషాఖ్"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "రవీంద్ర జయంతి"
+
+#. Bonalu Festival.
+msgid "Bonalu Festival"
+msgstr "బోనాలు పండుగ"
