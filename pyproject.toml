@@ -54,10 +54,11 @@ dev = [
 ]
 docs = [
   "markdown-include>=0.8.1,<1",
-  "mkdocs>=1.6.1,<2",
   "mkdocs-gen-files>=0.6,<1",
   "mkdocs-literate-nav>=0.6.2,<1",
   "mkdocstrings-python>=2.0.1,<3",
+  "properdocs>=1.6.6,<2",
+  "properdocs-theme-readthedocs>=1.6.5,<2",
 ]
 build = [
   "polib>=1.2,<2",
@@ -110,6 +111,13 @@ no_inline_sort = true
 profile = "black"
 skip = [ "docs" ]
 
+[tool.mypy]
+overrides = [
+  { module = "holidays.countries.*", disable_error_code = [ "override" ] },
+  { module = "holidays.financial.*", disable_error_code = [ "override" ] },
+  { module = "holidays.groups.*", disable_error_code = [ "attr-defined" ] },
+]
+
 [tool.pytest]
 ini_options.addopts = [
   "--cov-fail-under=100",
@@ -124,11 +132,4 @@ run.branch = true
 run.omit = [ "scripts/*", "tests/*" ]
 report.exclude_lines = [
   "^if TYPE_CHECKING:",
-]
-
-[tool.mypy]
-overrides = [
-  { module = "holidays.countries.*", disable_error_code = [ "override" ] },
-  { module = "holidays.financial.*", disable_error_code = [ "override" ] },
-  { module = "holidays.groups.*", disable_error_code = [ "attr-defined" ] },
 ]

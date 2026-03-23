@@ -90,11 +90,11 @@ Examples:
 
 #### MANDATORY *(deprecated)*
 
-Holidays that were legally required to be observed in specific contexts. Previously used in Macau, where "Mandatory (Statutory) Holidays" have since been reclassified under the `PUBLIC` category, and "General Holidays" are now included in the `OPTIONAL` category - following the same approach as in Hong Kong.
+Holidays that were legally required to be observed in specific contexts. Previously used in Macau, where "Mandatory (Statutory) Holidays" have since been reclassified under the `PUBLIC` category, and "General Holidays" are now included in the `OPTIONAL` category, following the same approach as in Hong Kong.
 
 #### HALF_DAY
 
-Holidays that are observed for only part of the day.
+Holidays observed for only part of a day, typically resulting in reduced working hours rather than a full day off.
 
 Examples:
 
@@ -115,7 +115,7 @@ Usage:
 import holidays
 from holidays.constants import PUBLIC, DE_FACTO
 
-# For accurate is_working_day() behavior in Sweden
+# For accurate is_working_day() behavior in Sweden.
 se = holidays.Sweden(categories=(PUBLIC, DE_FACTO), years=2024)
 print(se.is_working_day('2024-12-24'))  # False (Christmas Eve)
 ```
@@ -175,15 +175,6 @@ Examples:
 
 - Passover
 - Yom Kippur
-
-#### CHINESE
-
-Holidays specific to Chinese cultural and religious traditions.
-
-Examples:
-
-- Chinese New Year
-- Mid-Autumn Festival
 
 #### SABIAN
 
@@ -328,9 +319,11 @@ print(f"US supported categories: {holidays.UnitedStates.supported_categories}")
 print(f"Germany supported categories: {holidays.Germany.supported_categories}")
 ```
 
+The returned categories are lowercase strings corresponding to the constants in `holidays.constants`.
+
 ### Examples by Country
 
-**United States**: `('government', 'public', 'unofficial')`
+**United States**: `('government', 'half_day', 'public', 'unofficial')`
 
 - Supports federal holidays, state holidays, and cultural observances
 
@@ -360,22 +353,22 @@ When adding support for a new country, consider:
 ### Category Selection Principles
 
 - **PUBLIC**: Holidays mandated by law with general time off
-- **GOVERNMENT**: Official observances without general time off
-- **WORKDAY**: Recognized but working holidays
+- **GOVERNMENT**: Holidays observed by government institutions but may not provide general time off for all workers
+- **WORKDAY**: Recognized but are working holidays
 - **UNOFFICIAL**: Widely celebrated but not official
 - **DE_FACTO**: Legally recognized holidays that must be treated like public holidays for specific purposes (e.g., working day calculations) but lack official public holiday status
-- **Religious categories**: Use specific tradition names when holidays apply to particular communities
+- **Religious categories**: Use when holidays apply to particular religious communities
 - **Institutional categories**: Use when holidays apply to specific sectors
 
 ## Default Behavior
 
-When no categories are specified, most countries default to returning PUBLIC holidays, as these are typically what users expect when asking for a country's holidays.
+When no categories are specified, all countries and markets default to returning PUBLIC holidays, as these are typically what users expect when asking for a country's holidays.
 
 ```python
 import holidays
 from holidays.constants import PUBLIC
 
-# These are equivalent for most countries
+# These are equivalent for all countries and markets.
 us_default = holidays.UnitedStates(years=2024)
 us_public = holidays.UnitedStates(categories=PUBLIC, years=2024)
 ```

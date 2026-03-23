@@ -104,8 +104,17 @@ In general, the standard way to refer to a country is by using its [ISO 3166-1 a
 the same used for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
 abbreviations as aliases for their subdivisions. These are defined in the (optional)
-`subdivisions_aliases` attribute. Some of the countries support more than one language for holiday
-names output. A default language is defined by `default_language` (optional) attribute for each
+`subdivisions_aliases` attribute.
+
+> [!Note]
+>
+> **Aliases are optional.** When present, `subdivisions_aliases`
+> cover only a subset of subdivisions - commonly used or officially
+> recognized alternative names. Supported subdivisions and their
+> aliases (where available) are listed in the `Subdivisions` column
+> of the table below.
+
+Some of the countries support more than one language for holiday names output. A default language is defined by `default_language` (optional) attribute for each
 entity and is used as a fallback when neither user specified language nor user locale language
 available. The default language code is a [ISO 639-1
 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). A list of all languages supported by
@@ -1942,7 +1951,7 @@ code when available. The following financial markets are available:
 <td>Germany Stock Exchange</td>
 <td>XETR</td>
 <td>Deutsche Börse Cash Market (Frankfurt Stock Exchange and Xetra) holidays</td>
-<td><strong>de</strong>, en_US</td>
+<td><strong>de</strong>, en_US, th, uk</td>
 <td></td>
 </tr>
 <tr>

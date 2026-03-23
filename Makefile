@@ -31,7 +31,7 @@ clean:
 	@rm -rf .mypy_cache .pytest_cache dist
 
 doc:
-	uv run --no-sync mkdocs build
+	uv run --no-sync properdocs build -f .properdocs.yml
 
 l10n:
 	find . -type f -name "*.pot" -delete
