@@ -639,7 +639,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 common_name, self.subdiv_holidays[subdiv], range(self.start_year, 1879)
             )
 
-    def test_presidents_day_pr(self):
+    def test_the_day_of_the_women_and_men_heroes_of_puerto_rico(self):
         name_1903 = "George Washington Day"
         name_2015 = "George Washington Day, Presidents' Day, and the Puerto Rican Heroes Day"
         name_2016 = (

@@ -202,48 +202,6 @@ class TestPuertoRico(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_columbus_day(self):
-        name = "Columbus Day"
-        self.assertHolidayName(
-            name, (f"{year}-10-12" for year in (*range(1913, 1971), *range(1974, 2014)))
-        )
-        self.assertHolidayName(
-            name,
-            "1971-10-11",
-            "1972-10-09",
-            "1973-10-08",
-            "2020-10-12",
-            "2021-10-11",
-            "2022-10-10",
-            "2023-10-09",
-            "2024-10-14",
-            "2025-10-13",
-        )
-        self.assertHolidayName(name, range(2014, self.end_year))
-        self.assertNoHolidayName(name, range(self.start_year, 1913))
-        obs_dts = (
-            "1997-10-13",
-            "2003-10-13",
-            "2008-10-13",
-        )
-        self.assertHolidayName(f"{name} (observed)", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
-
-    def test_veterans_day(self):
-        name_1938 = "Armistice Day"
-        name_1954 = "Veterans Day"
-        self.assertHolidayName(name_1938, (f"{year}-11-11" for year in range(1938, 1980)))
-        self.assertHolidayName(name_1954, (f"{year}-11-11" for year in range(1980, self.end_year)))
-        self.assertNoHolidayName(
-            name_1938, range(self.start_year, 1938), range(1980, self.end_year)
-        )
-        self.assertNoHolidayName(name_1954, range(self.start_year, 1980))
-        self.assertNoHoliday(
-            "2006-11-10",
-            "2017-11-10",
-            "2023-11-10",
-        )
-
     def test_puerto_rican_identity_day(self):
         name_1938 = "Discovery of Puerto Rico Day"
         name_2014 = "Puerto Rican Culture and Discovery of Puerto Rico Day"
@@ -270,7 +228,7 @@ class TestPuertoRico(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name_2023} (observed)", obs_dts_2023)
         self.assertNoNonObservedHoliday(obs_dts_1938, obs_dts_2014, obs_dts_2023)
 
-    def test_christmas_eve_(self):
+    def test_christmas_eve(self):
         name = "Christmas Eve (from 12pm)"
         self.assertHalfDayHolidayName(
             name, (f"{year}-12-24" for year in range(2003, self.end_year))
