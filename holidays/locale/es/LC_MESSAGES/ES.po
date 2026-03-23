@@ -31,222 +31,222 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (estimado)"
-msgstr ""
+msgstr "%s (estimado)"
 
 #. Monday following %s (estimated).
 #, c-format
 msgid "Lunes siguiente a %s (estimado)"
-msgstr ""
+msgstr "Lunes siguiente a %s (estimado)"
 
 #. Monday following %s.
 #, c-format
 msgid "Lunes siguiente a %s"
-msgstr ""
+msgstr "Lunes siguiente a %s"
 
 #. New Year's Day.
 msgid "Año Nuevo"
-msgstr ""
+msgstr "Año Nuevo"
 
 #. Epiphany.
 msgid "Epifanía del Señor"
-msgstr ""
+msgstr "Epifanía del Señor"
 
 #. Good Friday.
 msgid "Viernes Santo"
-msgstr ""
+msgstr "Viernes Santo"
 
 #. Labor Day.
 msgid "Fiesta del Trabajo"
-msgstr ""
+msgstr "Fiesta del Trabajo"
 
 #. Assumption Day.
 msgid "Asunción de la Virgen"
-msgstr ""
+msgstr "Asunción de la Virgen"
 
 #. National Day.
 msgid "Fiesta Nacional de España"
-msgstr ""
+msgstr "Fiesta Nacional de España"
 
 #. All Saints' Day.
 msgid "Todos los Santos"
-msgstr ""
+msgstr "Todos los Santos"
 
 #. Constitution Day.
 msgid "Día de la Constitución Española"
-msgstr ""
+msgstr "Día de la Constitución Española"
 
 #. Immaculate Conception.
 msgid "Inmaculada Concepción"
-msgstr ""
+msgstr "Inmaculada Concepción"
 
 #. Christmas Day.
 msgid "Natividad del Señor"
-msgstr ""
+msgstr "Natividad del Señor"
 
 #. Andalusia Day.
 msgid "Día de Andalucía"
-msgstr ""
+msgstr "Día de Andalucía"
 
 #. Maundy Thursday.
 msgid "Jueves Santo"
-msgstr ""
+msgstr "Jueves Santo"
 
 #. Saint George's Day.
 msgid "Día de San Jorge"
-msgstr ""
+msgstr "Día de San Jorge"
 
 #. Asturias Day.
 msgid "Día de Asturias"
-msgstr ""
+msgstr "Día de Asturias"
 
 #. Easter Monday.
 msgid "Lunes de Pascua"
-msgstr ""
+msgstr "Lunes de Pascua"
 
 #. Saint James' Day.
 msgid "Santiago Apóstol"
-msgstr ""
+msgstr "Santiago Apóstol"
 
 #. Cantabria Institutions Day.
 msgid "Día de las Instituciones de Cantabria"
-msgstr ""
+msgstr "Día de las Instituciones de Cantabria"
 
 #. Our Lady of Bien Aparecida.
 msgid "La Bien Aparecida"
-msgstr ""
+msgstr "La Bien Aparecida"
 
 #. Saint Anthony's Day.
 msgid "San Antonio"
-msgstr ""
+msgstr "San Antonio"
 
 #. Santa Maria of Africa.
 msgid "Nuestra Señora de África"
-msgstr ""
+msgstr "Nuestra Señora de África"
 
 #. Ceuta Day.
 msgid "Día de Ceuta"
-msgstr ""
+msgstr "Día de Ceuta"
 
 #. Eid al-Adha.
 msgid "Fiesta del Sacrificio-Eidul Adha"
-msgstr ""
+msgstr "Fiesta del Sacrificio-Eidul Adha"
 
 #. Saint Joseph's Day.
 msgid "San José"
-msgstr ""
+msgstr "San José"
 
 #. Castile and León Day.
 msgid "Fiesta de Castilla y León"
-msgstr ""
+msgstr "Fiesta de Castilla y León"
 
 #. Corpus Christi.
 msgid "Corpus Christi"
-msgstr ""
+msgstr "Corpus Christi"
 
 #. Castilla-La Mancha Day.
 msgid "Día de Castilla-La Mancha"
-msgstr ""
+msgstr "Día de Castilla-La Mancha"
 
 #. Day of the Canary Islands.
 msgid "Día de Canarias"
-msgstr ""
+msgstr "Día de Canarias"
 
 #. Whit Monday.
 msgid "Día de la Pascua Granada"
-msgstr ""
+msgstr "Día de la Pascua Granada"
 
 #. Saint John the Baptist.
 msgid "San Juan"
-msgstr ""
+msgstr "San Juan"
 
 #. National Day of Catalonia.
 msgid "Fiesta Nacional de Cataluña"
-msgstr ""
+msgstr "Fiesta Nacional de Cataluña"
 
 #. Saint Stephen's Day.
 msgid "San Esteban"
-msgstr ""
+msgstr "San Esteban"
 
 #. Shrove Tuesday.
 msgid "Martes de Carnaval"
-msgstr ""
+msgstr "Martes de Carnaval"
 
 #. Extremadura Day.
 msgid "Día de Extremadura"
-msgstr ""
+msgstr "Día de Extremadura"
 
 #. Galician Literature Day.
 msgid "Día de las Letras Gallegas"
-msgstr ""
+msgstr "Día de las Letras Gallegas"
 
 #. Galician National Day.
 msgid "Día Nacional de Galicia"
-msgstr ""
+msgstr "Día Nacional de Galicia"
 
 #. Day of the Balearic Islands.
 msgid "Día de las Islas Baleares"
-msgstr ""
+msgstr "Día de las Islas Baleares"
 
 #. Murcia Day.
 msgid "Día de la Región de Murcia"
-msgstr ""
+msgstr "Día de la Región de Murcia"
 
 #. Madrid Day.
 msgid "Fiesta de la Comunidad de Madrid"
-msgstr ""
+msgstr "Fiesta de la Comunidad de Madrid"
 
 #. Statute of Autonomy of Melilla Day.
 msgid "Estatuto de Autonomía de la Ciudad de Melilla"
-msgstr ""
+msgstr "Estatuto de Autonomía de la Ciudad de Melilla"
 
 #. Day of Our Lady of Victory.
 msgid "Día de Nuestra Señora la Virgen de la Victoria"
-msgstr ""
+msgstr "Día de Nuestra Señora la Virgen de la Victoria"
 
 #. Melilla Day.
 msgid "Día de Melilla"
-msgstr ""
+msgstr "Día de Melilla"
 
 #. Eid al-Fitr.
 msgid "Fiesta del Eid Fitr"
-msgstr ""
+msgstr "Fiesta del Eid Fitr"
 
 #. Eid al-Adha.
 msgid "Fiesta del Sacrificio-Aid Al Adha"
-msgstr ""
+msgstr "Fiesta del Sacrificio-Aid Al Adha"
 
 #. Saint Francis Xavier's Day.
 msgid "San Francisco Javier"
-msgstr ""
+msgstr "San Francisco Javier"
 
 #. País Vasco Day.
 msgid "Día del País Vasco"
-msgstr ""
+msgstr "Día del País Vasco"
 
 #. La Rioja Day.
 msgid "Día de La Rioja"
-msgstr ""
+msgstr "Día de La Rioja"
 
 #. Valencian Community Day.
 msgid "Día de la Comunidad Valenciana"
-msgstr ""
+msgstr "Día de la Comunidad Valenciana"
 
 #. Day following Saint Joseph's Day.
 msgid "Día siguiente a San José"
-msgstr ""
+msgstr "Día siguiente a San José"
 
 #. Saint Joseph's Day Transfer.
 msgid "Traslado de San José"
-msgstr ""
+msgstr "Traslado de San José"
 
 #. 80th Anniversary of the first Basque Government.
 msgid "80 Aniversario del primer Gobierno Vasco"
-msgstr ""
+msgstr "80 Aniversario del primer Gobierno Vasco"
 
 #. V Centennial of the Circumnavigation of the World.
 msgid "V Centenario Vuelta al Mundo"
-msgstr ""
+msgstr "V Centenario Vuelta al Mundo"
 
 #. The Fallas.
 msgid "Lunes de Fallas"
-msgstr ""
+msgstr "Lunes de Fallas"
