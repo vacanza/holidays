@@ -43,6 +43,26 @@ msgstr "عيد الاستقلال"
 msgid "Republic Day"
 msgstr "عيد الجمهورية"
 
+#. Islamic New Year.
+msgid "Islamic New Year"
+msgstr "رأس السنة الهجرية"
+
+#. Ashura.
+msgid "Ashura"
+msgstr "عاشوراء"
+
+#. Prophet's Birthday.
+msgid "Prophet's Birthday"
+msgstr "المولد النبوي"
+
+#. Eid al-Fitr.
+msgid "Eid al-Fitr"
+msgstr "عيد الفطر"
+
+#. Eid al-Adha.
+msgid "Eid al-Adha"
+msgstr "عيد الأضحى"
+
 #. %s (estimated).
 msgid "%s (estimated)"
 msgstr "(المقدرة) %s"

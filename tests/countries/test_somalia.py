@@ -134,7 +134,7 @@ class TestSomalia(CommonCountryTests, TestCase):
             ("2018-11-20", "Prophet's Birthday (estimated)"),
         )
 
-    def test_l10n_arabic(self):
+    def test_l10n_ar(self):
         """Test if Arabic translations from SO.po are correctly loaded."""
         # Initialize Somalia class with Arabic language
         ar_holidays = Somalia(language="ar")

@@ -10,4 +10,15 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-__version__ = "0.45"
+from importlib.metadata import PackageNotFoundError, version as _get_version
+from pathlib import Path
+
+try:
+    __version__ = _get_version("holidays")
+except PackageNotFoundError:
+    try:
+        _version_file = Path(__file__).resolve().parent.parent / "VERSION"
+        __version__ = _version_file.read_text(encoding="utf-8").strip()
+    except OSError:
+        # Fallback version if neither package metadata nor VERSION file is available.
+        __version__ = "0.0.0"

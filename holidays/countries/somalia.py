@@ -23,7 +23,7 @@ class Somalia(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
 
     country = "SO"
-    supported_languages = ("ar",)
+    supported_languages = ("ar", "en_US")
     # %s (estimated).
     estimated_label = "%s (estimated)"
     # Unification of Somaliland and Italian Somaliland into the Somali Republic on July 1st, 1960.
