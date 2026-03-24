@@ -32,9 +32,6 @@ msgstr ""
 msgid "%s (estimated)"
 msgstr "%s (అంచనా)"
 
-#. New Year
-msgid "New Year's Day"
-msgstr "నూతన సంవత్సర దినోత్సవం"
 
 #. Republic Day.
 msgid "Republic Day"
@@ -58,7 +55,7 @@ msgstr "దీపావళి"
 
 #. Janmashtami.
 msgid "Janmashtami"
-msgstr "జన్మాష్టమి"
+msgstr "జన్మాష్టమి / కృష్ణాష్టమి"
 
 #. Dussehra.
 msgid "Dussehra"
@@ -133,7 +130,7 @@ msgid "Raksha Bandhan"
 msgstr "రాఖీ పౌర్ణమి"
 
 #. Ram Navami.
-msgid "Rama Navami"
+msgid "Ram Navami"
 msgstr "శ్రీ రామ నవమి"
 
 #. Navratri / Sharad Navratri.
@@ -156,6 +153,7 @@ msgstr "డా. బి.ఆర్. అంబేద్కర్ జయంతి"
 msgid "Andhra Pradesh Foundation Day"
 msgstr "ఆంధ్రప్రదేశ్ అవతరణ దినోత్సవం"
 
+#. Ugadi 
 msgid "Ugadi"
 msgstr "ఉగాది (తెలుగు సంవత్సరాది)"
 
@@ -322,8 +320,4 @@ msgstr "పహేలా బైశాఖ్"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "రవీంద్ర జయంతి"
-
-#. National Science Day
-msgid "National Science Day"
-msgstr "జాతీయ విజ్ఞాన దినోత్సవం"
 
