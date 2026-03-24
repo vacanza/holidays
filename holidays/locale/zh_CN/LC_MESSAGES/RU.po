@@ -95,4 +95,4 @@ msgstr "%Y-%m-%d"
 #. Day off (substituted from %s).
 #, c-format
 msgid "Выходной (перенесено с %s)"
-msgstr "休息日（由 %s 补休）"
+msgstr "休息日（由 %s 调休）"
