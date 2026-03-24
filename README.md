@@ -1434,7 +1434,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Russia</td>
 <td>RU</td>
 <td></td>
-<td>en_US, <strong>ru</strong>, th</td>
+<td>en_US, <strong>ru</strong>, th, zh_CN</td>
 <td></td>
 </tr>
 <tr>
