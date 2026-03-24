@@ -32,13 +32,17 @@ msgstr ""
 msgid "%s (estimated)"
 msgstr "%s (అంచనా)"
 
+#. New Year
+msgid "New Year's Day"
+msgstr "నూతన సంవత్సర దినోత్సవం"
+
 #. Republic Day.
 msgid "Republic Day"
 msgstr "గణతంత్ర దినోత్సవం"
 
 #. Independence Day.
 msgid "Independence Day"
-msgstr "స్వాతంత్ర్య దినోత్సవం"
+msgstr "స్వాతంత్య్ర దినోత్సవం"
 
 #. Gandhi Jayanti.
 msgid "Gandhi Jayanti"
@@ -58,7 +62,7 @@ msgstr "జన్మాష్టమి"
 
 #. Dussehra.
 msgid "Dussehra"
-msgstr "విజయదశమి"
+msgstr "దసరా / విజయదశమి"
 
 #. Mahavir Jayanti.
 msgid "Mahavir Jayanti"
@@ -74,11 +78,11 @@ msgstr "గురు నానక్ జయంతి"
 
 #. Ashura.
 msgid "Muharram"
-msgstr "మొహర్రం"
+msgstr "మొహర్రం (ఆషూరా)"
 
 #. Prophet's Birthday.
 msgid "Milad-un-Nabi"
-msgstr "మిలాద్-ఉన్-నబీ"
+msgstr "మిలాద్-ఉన్-నబీ (ఈద్-ఎ-మిలాద్)"
 
 #. Eid al-Fitr.
 msgid "Id-ul-Fitr"
@@ -102,7 +106,7 @@ msgstr "బాలల దినోత్సవం"
 
 #. Holi.
 msgid "Holi"
-msgstr "హోలీ"
+msgstr "హోలీ పండుగ"
 
 #. Ganesh Chaturthi.
 msgid "Ganesh Chaturthi"
@@ -126,11 +130,11 @@ msgstr "మకర సంక్రాంతి"
 
 #. Raksha Bandhan.
 msgid "Raksha Bandhan"
-msgstr "రక్షా బంధన్"
+msgstr "రాఖీ పౌర్ణమి"
 
 #. Ram Navami.
-msgid "Ram Navami"
-msgstr "రామ నవమి"
+msgid "Sri Rama Navami"
+msgstr "శ్రీ రామ నవమి"
 
 #. Navratri / Sharad Navratri.
 msgid "Navratri / Sharad Navratri"
@@ -142,7 +146,7 @@ msgstr "ఈస్టర్ ఆదివారం"
 
 #. Palm Sunday.
 msgid "Palm Sunday"
-msgstr "పామ్ ఆదివారం"
+msgstr "తాళపత్ర ఆదివారం"
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
@@ -152,9 +156,8 @@ msgstr "డా. బి.ఆర్. అంబేద్కర్ జయంతి"
 msgid "Andhra Pradesh Foundation Day"
 msgstr "ఆంధ్రప్రదేశ్ అవతరణ దినోత్సవం"
 
-#. Ugadi.
 msgid "Ugadi"
-msgstr "ఉగాది"
+msgstr "ఉగాది (తెలుగు సంవత్సరాది)"
 
 #. Magh Bihu.
 msgid "Magh Bihu"
@@ -210,7 +213,7 @@ msgstr "కర్ణాటక రాజ్యోత్సవం"
 
 #. Onam.
 msgid "Onam"
-msgstr "ఓణం"
+msgstr "ఓణం (తిరువోణం)"
 
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"
@@ -218,7 +221,7 @@ msgstr "కేరళ అవతరణ దినోత్సవం"
 
 #. Gudi Padwa.
 msgid "Gudi Padwa"
-msgstr "గుడి పాడ్వా"
+msgstr "గుడి పడ్వా"
 
 #. Chhatrapati Shivaji Maharaj Jayanti.
 msgid "Chhatrapati Shivaji Maharaj Jayanti"
@@ -314,8 +317,32 @@ msgstr "ఉత్తర ప్రదేశ్ అవతరణ దినోత్
 
 #. Pohela Boisakh.
 msgid "Pohela Boishakh"
-msgstr "పొహెలా బొయిషాఖ్"
+msgstr "పహేలా బైశాఖ్"
 
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "రవీంద్ర జయంతి"
+
+#. National Science Day
+msgid "National Science Day"
+msgstr "జాతీయ విజ్ఞాన దినోత్సవం"
+
+#. Bhogi.
+msgid "Bhogi"
+msgstr "భోగి పండుగ"
+
+#. Kanuma.
+msgid "Kanuma"
+msgstr "కనుమ పండుగ"
+
+#. Mahalaya Amavasya
+msgid "Mahalaya Amavasya"
+msgstr "మహాలయ అమావాస్య"
+
+#. Naraka Chaturdashi.
+msgid "Naraka Chaturdashi"
+msgstr "నరక చతుర్దశి"
+
+#. Varalakshmi Vratam.
+msgid "Varalakshmi Vratam"
+msgstr "వరలక్ష్మీ వ్రతం"
