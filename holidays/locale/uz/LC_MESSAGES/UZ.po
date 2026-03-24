@@ -9,6 +9,8 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
+#  
+#  Last changes : Komilov <java2007n1@gamil.com> 
 #
 # Uzbekistan holidays.
 #
@@ -28,70 +30,51 @@ msgstr ""
 "X-Generator: Poedit 3.4\n"
 "X-Source-Language: uz\n"
 
-#. %s (estimated).
-#, c-format
 msgid "%s (taxminiy)"
-msgstr ""
+msgstr "%s (taxminiy)"
 
-#. %s (observed).
-#, c-format
 msgid "%s (ko‘chirilgan)"
-msgstr ""
+msgstr "%s (ko‘chirilgan)"
 
-#. %s (observed, estimated).
-#, c-format
 msgid "%s (ko‘chirilgan, taxminiy)"
-msgstr ""
+msgstr "%s (ko‘chirilgan, taxminiy)"
 
-#. New Year's Day.
 msgid "Yangi yil"
-msgstr ""
+msgstr "Yangi yil"
 
-#. Women's Day.
 msgid "Xotin-qizlar kuni"
-msgstr ""
+msgstr "Xotin-qizlar kuni"
 
-#. Nowruz.
 msgid "Navro‘z bayrami"
-msgstr ""
+msgstr "Navro‘z bayrami"
 
-#. Day of Memory and Honor.
 msgid "Xotira va qadrlash kuni"
-msgstr ""
+msgstr "Xotira va qadrlash kuni"
 
-#. Victory Day.
 msgid "G‘alaba kuni"
-msgstr ""
+msgstr "G‘alaba kuni"
 
-#. Independence Day.
 msgid "Mustaqillik kuni"
-msgstr ""
+msgstr "Mustaqillik kuni"
 
-#. Teachers and Instructors Day.
 msgid "O‘qituvchi va murabbiylar kuni"
-msgstr ""
+msgstr "O‘qituvchi va murabbiylar kuni"
 
-#. Constitution Day.
 msgid "O‘zbekiston Respublikasi Konstitutsiyasi kuni"
-msgstr ""
+msgstr "O‘zbekiston Respublikasi Konstitutsiyasi kuni"
 
-#. Eid al-Fitr.
 msgid "Ro‘za hayit"
-msgstr ""
+msgstr "Ro‘za hayit"
 
-#. Eid al-Adha.
 msgid "Qurbon hayit"
-msgstr ""
+msgstr "Qurbon hayit"
 
-#. Date format (see strftime() Format Codes)
 msgid "%d/%m %Y"
-msgstr ""
+msgstr "%d/%m %Y"
 
-#. Day off (substituted from %s).
-#, c-format
 msgid "Dam olish kuni (%s dan ko‘chirilgan)"
-msgstr ""
+msgstr "Dam olish kuni (%s dan ko‘chirilgan)"
 
-#. Additional day off by Presidential decree.
 msgid "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"
-msgstr ""
+msgstr "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"
+
