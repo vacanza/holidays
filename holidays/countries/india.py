@@ -12,7 +12,7 @@
 
 import warnings
 from gettext import gettext as tr
-
+from datetime import timedelta as td 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import OPTIONAL, PUBLIC
