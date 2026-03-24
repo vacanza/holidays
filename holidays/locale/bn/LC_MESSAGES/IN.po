@@ -58,7 +58,7 @@ msgstr "জন্মাষ্টমী"
 
 #. Dussehra.
 msgid "Dussehra"
-msgstr "দশেরা"
+msgstr "বিজয়া দশমী"
 
 #. Mahavir Jayanti.
 msgid "Mahavir Jayanti"
@@ -126,7 +126,7 @@ msgstr "মকর সংক্রান্তি"
 
 #. Raksha Bandhan.
 msgid "Raksha Bandhan"
-msgstr "রক্ষাবন্ধন"
+msgstr "রাখি বন্ধন"
 
 #. Ram Navami.
 msgid "Ram Navami"
@@ -138,11 +138,11 @@ msgstr "নবরাত্রি / শারদ নবরাত্রি"
 
 #. Easter Sunday.
 msgid "Easter Sunday"
-msgstr "ইস্টার সানডে"
+msgstr "ইইস্টার রবিবার"
 
 #. Palm Sunday.
 msgid "Palm Sunday"
-msgstr "পাম সানডে"
+msgstr "পাম রবিবার"
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
@@ -166,7 +166,7 @@ msgstr "অসম দিবস"
 
 #. Chhath Puja.
 msgid "Chhath Puja"
-msgstr "ছট পূজা"
+msgstr "ছঠ পূজা"
 
 #. Bihar Day.
 msgid "Bihar Day"
@@ -234,11 +234,11 @@ msgstr "মধ্যপ্রদেশ প্রতিষ্ঠা দিবস"
 
 #. Mizoram State Day.
 msgid "Mizoram State Day"
-msgstr "মিজোরাম রাজ্য দিবস"
+msgstr "মিজোরাম প্রতিষ্ঠা দিবস"
 
 #. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"
-msgstr "নাগাল্যান্ড রাজ্য উদ্বোধন দিবস"
+msgstr "নাগাল্যান্ড প্রতিষ্ঠা দিবস"
 
 #. Odisha Day.
 msgid "Odisha Day (Utkala Dibasa)"
@@ -282,7 +282,7 @@ msgstr "মহারানা প্রতাপ জয়ন্তী"
 
 #. Sikkim State Day.
 msgid "Sikkim State Day"
-msgstr "সিকিম রাজ্য দিবস"
+msgstr "সিকিম প্রতিষ্ঠা দিবস"
 
 #. Pongal.
 msgid "Pongal"
