@@ -30,64 +30,64 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (المقدرة)"
-msgstr ""
+msgstr "%s (المقدرة)"
 
 #. New Year's Day.
 msgid "عيد رأس السنة الميلادية"
-msgstr ""
+msgstr "عيد رأس السنة الميلادية"
 
 #. Revolution Day.
 msgid "الثورة السورية"
-msgstr ""
+msgstr "الثورة السورية"
 
 #. Mother's Day.
 msgid "عيد الأم"
-msgstr ""
+msgstr "عيد الأم"
 
 #. Gregorian Easter Sunday.
 msgid "عيد الفصح حسب التقويم الغربي"
-msgstr ""
+msgstr "عيد الفصح حسب التقويم الغربي"
 
 #. Julian Easter Sunday.
 msgid "عيد الفصح حسب التقويم الشرقي"
-msgstr ""
+msgstr "عيد الفصح حسب التقويم الشرقي"
 
 #. Independence Day.
 msgid "عيد الاستقلال"
-msgstr ""
+msgstr "عيد الاستقلال"
 
 #. Labor Day.
 msgid "عيد العمال"
-msgstr ""
+msgstr "عيد العمال"
 
 #. Martyrs' Day.
 msgid "عيد الشهداء"
-msgstr ""
+msgstr "عيد الشهداء"
 
 #. Tishreen Liberation War Day.
 msgid "ذكرى حرب تشرين التحريرية"
-msgstr ""
+msgstr "ذكرى حرب تشرين التحريرية"
 
 #. Christmas Day.
 msgid "عيد الميلاد"
-msgstr ""
+msgstr "عيد الميلاد"
 
 #. Boxing Day.
 msgid "يوم الصناديق"
-msgstr ""
+msgstr "يوم البوكسينغ"
 
 #. Islamic New Year.
 msgid "رأس السنة الهجرية"
-msgstr ""
+msgstr "رأس السنة الهجرية"
 
 #. Prophet's Birthday.
 msgid "عيد المولد النبوي الشريف"
-msgstr ""
+msgstr "عيد المولد النبوي الشريف"
 
 #. Eid al-Fitr.
 msgid "عيد الفطر"
-msgstr ""
+msgstr "عيد الفطر"
 
 #. Eid al-Adha.
 msgid "عيد الأضحى"
-msgstr ""
+msgstr "عيد الأضحى"
