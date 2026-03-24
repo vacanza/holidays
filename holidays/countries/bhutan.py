@@ -41,6 +41,8 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
     """
 
     country = "BT"
+    default_language = "dz"
+    supported_languages = ("en_US", "dz")
     # %s (estimated).
     estimated_label = "%s (estimated)"
     # Jigme Khesar Namgyel Wangchuck ascended to the throne on December 9th, 2006.
@@ -92,18 +94,14 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
     }
 
     def __init__(self, *args, hindu_show_estimated: bool = True, **kwargs):
-        """
-        Args:
-            hindu_show_estimated:
-                Whether to add "estimated" label to Hindu holidays name
-                if holiday date is estimated.
-        """
         HinduCalendarHolidays.__init__(
             self, cls=BhutanHinduHolidays, show_estimated=hindu_show_estimated
         )
         TibetanCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
+        # ✅ THIS IS THE REAL FIX
+        self._set_locale(self.default_language)
     def _populate_public_holidays(self):
         name = tr("Birth Anniversary of His Majesty the King")
         # Birth Anniversary of His Majesty the King.
@@ -124,7 +122,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         self._add_holiday_dec_17(tr("National Day"))
 
         # Winter Solstice.
-        self._add_tibetan_winter_solstice("Winter Solstice")
+        self._add_tibetan_winter_solstice(tr("Winter Solstice"))
 
         # Traditional Day of Offering.
         self._add_day_of_offering(tr("Traditional Day of Offering"))
@@ -135,22 +133,22 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         self._add_losar_day_two(name)
 
         # Death Anniversary of Zhabdrung.
-        self._add_death_of_zhabdrung("Death Anniversary of Zhabdrung")
+        self._add_death_of_zhabdrung(tr("Death Anniversary of Zhabdrung"))
 
         # Lord Buddha's Parinirvana.
-        self._add_buddha_parinirvana("Lord Buddha's Parinirvana")
+        self._add_buddha_parinirvana(tr("Lord Buddha's Parinirvana"))
 
         # Birth Anniversary of Guru Rinpoche.
-        self._add_birth_of_guru_rinpoche("Birth Anniversary of Guru Rinpoche")
+        self._add_birth_of_guru_rinpoche(tr("Birth Anniversary of Guru Rinpoche"))
 
         # First Sermon of Lord Buddha.
         self._add_buddha_first_sermon(tr("First Sermon of Lord Buddha"))
 
         # Blessed Rainy Day.
-        self._add_blessed_rainy_day("Blessed Rainy Day")
+        self._add_blessed_rainy_day(tr("Blessed Rainy Day"))
 
         # Dassain.
-        self._add_dussehra("Dassain")
+        self._add_dussehra(tr("Dassain"))
 
         # Descending Day of Lord Buddha.
         self._add_descending_day_of_lord_buddha(tr("Descending Day of Lord Buddha"))

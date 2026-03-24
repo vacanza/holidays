@@ -21,8 +21,9 @@ class TestBhutan(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Bhutan)
 
+
     def test_birthday_anniversary_of_his_majesty_the_king(self):
-        name = "Birth Anniversary of His Majesty the King"
+        name = "དཔལ་འབྱོར་མི་དབང་མཆོག་གི་སྐུ་འཁྲུངས་དུས་ཆེན།"
         self.assertHolidayName(
             name,
             (f"{year}-02-21" for year in self.full_range),
@@ -32,26 +33,26 @@ class TestBhutan(CommonCountryTests, TestCase):
 
     def test_birth_anniversary_third_druk_gyalpo(self):
         self.assertHolidayName(
-            "Birth Anniversary of the 3rd Druk Gyalpo",
+            "འབྲུག་རྒྱལ་པོ་གསུམ་པའི་སྐུ་འཁྲུངས་དུས་ཆེན།",
             (f"{year}-05-02" for year in self.full_range),
         )
 
     def test_coronation_his_majesty(self):
         self.assertHolidayName(
-            "Coronation of His Majesty the King", (f"{year}-11-01" for year in self.full_range)
+            "དཔལ་འབྱོར་མི་དབང་མཆོག་གི་ཁྲི་འཛིན་དུས་ཆེན།", (f"{year}-11-01" for year in self.full_range)
         )
 
     def test_birth_anniversary_fourth_druk_gyalpo(self):
         self.assertHolidayName(
-            "Birth Anniversary of the 4th Druk Gyalpo - Constitution Day",
+            "འབྲུག་རྒྱལ་པོ་བཞི་པའི་སྐུ་འཁྲུངས་དུས་ཆེན་ - རྒྱལ་ཁབ་ཀྱི་ཁྲིམས་ཆེན་ཉིན།",
             (f"{year}-11-11" for year in self.full_range),
         )
 
     def test_national_day(self):
-        self.assertHolidayName("National Day", (f"{year}-12-17" for year in self.full_range))
+        self.assertHolidayName("རྒྱལ་ཡོངས་ཉིན།", (f"{year}-12-17" for year in self.full_range))
 
     def test_winter_solstice(self):
-        name = "Winter Solstice"
+        name = "དགུན་ཉི་ལྡོག།"
         self.assertHolidayName(
             name,
             (
@@ -67,7 +68,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         )
 
     def test_day_of_offering(self):
-        name = "Traditional Day of Offering"
+        name = "རང་ལུགས་ཀྱི་ཉིནམ།"
         self.assertHolidayName(
             name,
             "2020-01-25",
@@ -80,7 +81,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, set(self.full_range) - {2031, 2040})
 
     def test_losar(self):
-        name = "Losar"
+        name = "ཕབ་བཤུད།"
         self.assertHolidayName(
             name,
             "2020-02-24",
@@ -93,7 +94,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_death_of_zhabdrung(self):
-        name = "Death Anniversary of Zhabdrung"
+        name = "ཞབས་དྲུང་སྐུ་གཤེགས་པའི་དུས་ཆེན།"
         self.assertHolidayName(
             name,
             "2021-04-22",
@@ -105,7 +106,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, set(self.full_range) - {2010, 2011, 2020})
 
     def test_lord_buddha_parinirvana(self):
-        name = "Lord Buddha's Parinirvana"
+        name = "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་པཱ་རི་ནིར་ཝན།"
         self.assertHolidayName(
             name,
             "2020-06-05",
@@ -118,7 +119,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_birth_anniversary_guru_rinpoche(self):
-        name = "Birth Anniversary of Guru Rinpoche"
+        name = "གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན།"
         self.assertHolidayName(
             name,
             "2020-06-30",
@@ -131,7 +132,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(self.start_year, 2027), range(2028, self.end_year))
 
     def test_first_sermon_lord_buddha(self):
-        name = "First Sermon of Lord Buddha"
+        name = "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་གསུང་ཆོས་དང་པོ།"
         self.assertHolidayName(
             name,
             "2020-07-24",
@@ -144,7 +145,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_blessed_rainy_day(self):
-        name = "Blessed Rainy Day"
+        name = "བཀྲ་ཤིས་པའི་ཆར་ཆུའི་ཉིན།"
         self.assertHolidayName(
             name,
             "2020-09-23",
@@ -157,7 +158,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_dassain(self):
-        name = "Dassain"
+        name = "དཱ་སེན།"
         self.assertHolidayName(
             name,
             "2020-10-26",
@@ -170,7 +171,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (*range(self.start_year, 2012), *range(2014, 2025)))
 
     def test_descending_day_lord_buddha(self):
-        name = "Descending Day of Lord Buddha"
+        name = "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་མར་འབབ་པའི་ཉིན།"
         self.assertHolidayName(
             name,
             "2020-11-07",
@@ -183,7 +184,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_thimphu_drubchoe(self):
-        name = "Thimphu Drubchoe"
+        name = "ཐིམ་ཕུག་གྲུབ་ཆོས།"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "15":
@@ -202,7 +203,7 @@ class TestBhutan(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_thimphu_tshechu(self):
-        name = "Thimphu Tshechu"
+        name = "ཐིམ་ཕུག་ཆེ་ཆུ།"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "15":
@@ -232,7 +233,30 @@ class TestBhutan(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_2024(self):
+    def test_l10n_default1(self):
+        self.assertHolidaysInYear(
+            2024,
+            ("2024-01-02", "དགུན་ཉི་ལྡོག།"),
+            ("2024-01-12", "རང་ལུགས་ཀྱི་ཉིནམ།"),
+            ("2024-02-10", "ཕབ་བཤུད།"),
+            ("2024-02-11", "ཕབ་བཤུད།"),
+            ("2024-02-21", "མི་དབང་མངའ་བདག་རིན་པོ་ཆེ་མཆོག་གི་འཁྲུངས་སྐར་དུས་ཆེན།"),
+            ("2024-02-22", "མི་དབང་མངའ་བདག་རིན་པོ་ཆེ་མཆོག་གི་འཁྲུངས་སྐར་དུས་ཆེན།"),
+            ("2024-02-23", "མི་དབང་མངའ་བདག་རིན་པོ་ཆེ་མཆོག་གི་འཁྲུངས་སྐར་དུས་ཆེན།"),
+            ("2024-04-18", "ཞབས་དྲུང་སྐུ་གཤེགས་པའི་དུས་ཆེན།"),
+            ("2024-05-02", "དབུ་མའི་ལམ་གསུམ་པའི་འཁྲུངས་སྐར་དུས་ཆེན།"),
+            ("2024-05-23", "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་པཱ་རི་ནིར་ཝན།"),
+            ("2024-06-16", "གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན།"),
+            ("2024-07-10", "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་གསུང་ཆོས་དང་པོ།"),
+            ("2024-09-23", "བཀྲ་ཤིས་པའི་ཆར་ཆུའི་ཉིན།"),
+            ("2024-10-12", "དཱ་སེན།"),
+            ("2024-11-01", "མི་དབང་མངའ་བདག་རིན་པོ་ཆེ་མཆོག་གི་གསེར་ཁྲི་མངའ་གསོལ་ཞུ་ནི།"),
+            ("2024-11-11", "རྩ་ཁྲིམས་ཀྱི་ཉིནམ།"),
+            ("2024-11-22", "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་མར་འབབ་པའི་ཉིན།"),
+            ("2024-12-17", "རྒྱལ་ཡོངས་ཉིནམ།"),
+        )
+
+    def test_en_us(self):
         self.assertHolidaysInYear(
             2024,
             ("2024-01-02", "Winter Solstice"),
