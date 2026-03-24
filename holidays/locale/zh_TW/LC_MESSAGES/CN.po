@@ -61,7 +61,7 @@ msgstr "勞動節"
 
 #. National Day.
 msgid "国庆节"
-msgstr "國慶日"
+msgstr "國慶節"
 
 #. Tomb-Sweeping Day.
 msgid "清明节"
