@@ -1581,6 +1581,15 @@ class UnitedStates(
         # Saint Patrick's Day.
         self._add_saint_patricks_day(tr("Saint Patrick's Day"))
 
+        # Easter Holidays.
+        # Observed informally across the US.
+
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
+
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Easter Sunday"))
+
         # Mother's Day.
         # Starts to be observed by most US states by 1911.
         # Officially proclaimed as a National Holiday by President Woodrow Wilson in 1914.
@@ -1602,6 +1611,15 @@ class UnitedStates(
 
         # Halloween.
         self._add_holiday_oct_31(tr("Halloween"))
+
+        # While earlier observance existed at local levels, Christmas Day and New Year's Day
+        # were not established as federal holidays until June 28, 1870.
+        if self._year >= 1870:
+            # Christmas Eve.
+            self._add_christmas_eve(tr("Christmas Eve"))
+
+            # New Year's Eve.
+            self._add_new_years_eve(tr("New Year's Eve"))
 
         # Continental US non-Public dates
 
