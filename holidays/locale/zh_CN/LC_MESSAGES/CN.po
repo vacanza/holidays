@@ -97,7 +97,7 @@ msgstr ""
 
 #. Day off (substituted from %s).
 #, c-format
-msgid "休息日（由 %s 补休）"
+msgid "休息日（由 %s 调休）"
 msgstr ""
 
 #. Chinese New Year (Spring Festival) Extended Holiday.

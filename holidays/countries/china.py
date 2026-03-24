@@ -217,7 +217,7 @@ class ChinaStaticHolidays:
     # Date format (see strftime() Format Codes).
     substituted_date_format = tr("%Y-%m-%d")
     # Day off (substituted from %s).
-    substituted_label = tr("休息日（由 %s 补休）")
+    substituted_label = tr("休息日（由 %s 调休）")
 
     # Chinese New Year (Spring Festival).
     chinese_new_year = tr("春节")

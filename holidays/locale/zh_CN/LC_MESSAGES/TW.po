@@ -170,4 +170,4 @@ msgstr "%Y-%m-%d"
 #. Day off (substituted from %s).
 #, c-format
 msgid "放假日（%s 補班）"
-msgstr "休息日（由 %s 补休）"
+msgstr "休息日（由 %s 调休）"
