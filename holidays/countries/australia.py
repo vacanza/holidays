@@ -191,13 +191,13 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # ANZAC Day.
         # from 1959: SUN - move to MON.
-        # in 2026: move to MON.
+        # in 2026: add MON.
 
         if self._year >= 1921:
             # ANZAC Day.
             dt = self._add_anzac_day(tr("ANZAC Day"))
             if self._year == 2026:
-                self._move_holiday(dt, rule=SAT_SUN_TO_NEXT_MON, show_observed_label=False)
+                self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON)
             elif self._year >= 1959:
                 self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
 
