@@ -116,37 +116,52 @@ document.addEventListener("DOMContentLoaded", () => {
             header.style.width = "fit-content";
         }
     });
-});
 
-// Global tab sync
-const tabSets = document.querySelectorAll(".tabbed-set");
+    // Global Tab Sync
+    const tabMap = new Map();
 
-tabSets.forEach((set) => {
-    const inputs = set.querySelectorAll("input");
+    document.querySelectorAll(".tabbed-set").forEach(set => {
+        const inputs = set.querySelectorAll("input");
 
-    inputs.forEach((input) => {
-        input.addEventListener("change", () => {
-            if (!input.checked) return;
+        inputs.forEach(input => {
+            if (input.dataset.tabSyncAttached) return;
+            input.dataset.tabSyncAttached = "true";
 
             const label = set.querySelector(`label[for="${input.id}"]`);
             if (!label) return;
 
-            const tabName = label.textContent.trim();
+            const tabName = label.textContent.trim().toLowerCase();
 
-            document.querySelectorAll(".tabbed-set").forEach((otherSet) => {
-                if (otherSet === set) return; // avoid redundant work
+            if (!tabMap.has(tabName)) {
+                tabMap.set(tabName, []);
+            }
 
-                otherSet.querySelectorAll("label").forEach((otherLabel) => {
-                    if (otherLabel.textContent.trim() === tabName) {
-                        const targetId = otherLabel.getAttribute("for");
-                        const targetInput = document.getElementById(targetId);
+            tabMap.get(tabName).push(input);
 
-                        if (targetInput && !targetInput.checked) {
-                            targetInput.checked = true;
-                        }
+            // Attach listener once
+            input.addEventListener("change", () => {
+                if (!input.checked) return;
+
+                localStorage.setItem("activeTab", tabName);
+
+                const group = tabMap.get(tabName);
+                if (!group) return;
+
+                group.forEach(target => {
+                    if (target !== input && !target.checked) {
+                        target.checked = true;
                     }
                 });
             });
         });
     });
+
+    // Persistence Tab Selection
+    const saved = localStorage.getItem("activeTab");
+
+    if (saved && tabMap.has(saved)) {
+        tabMap.get(saved).forEach(input => {
+            input.checked = true;
+        });
+    }
 });
