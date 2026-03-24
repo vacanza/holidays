@@ -75,7 +75,9 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
         )
 
     def test_liberation_day(self):
-        self.assertHolidayName("عيد التحرير", (f"{year}-12-08" for year in range(2024, 2050)))
+        name = "عيد التحرير"
+        self.assertHolidayName(name, (f"{year}-12-08" for year in range(2024, 2050)))
+        self.assertNoHolidayName(name, range(2004, 2024))
 
     def test_christmas_day(self):
         name = "عيد الميلاد"
