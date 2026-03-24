@@ -1,4 +1,4 @@
-# Holidays
+﻿# Holidays
 
 A fast, efficient Python library for generating country- and subdivision- (e.g. state or province)
 specific sets of government-designated holidays on the fly. It aims to make determining whether a
@@ -97,6 +97,20 @@ us_pr_holidays = holidays.country_holidays('US', subdiv='PR')
 Please see the [holidays documentation](https://holidays.readthedocs.io/) for additional examples
 and detailed information.
 
+
+<br>
+
+### Vacanza Holidays Calendar Generator
+
+The `holidays` library also provides a utility script, `vacanza.py` (located in the `examples/` directory), which automates the generation of `.ics` (iCalendar) files for holidays around the world. You can use it to dynamically export localized holiday calendars.
+
+```bash
+python examples/vacanza.py US 2025 --category public
+```
+
+*For more details on usage, options, and output formats, check out the [Examples Documentation](https://holidays.readthedocs.io/en/latest/examples.html#vacanza-holidays-calendar-generator).*
+
+
 ## Available Countries
 
 We currently support 250 country codes, which primarily follow [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html), with a small number of widely used user-assigned or reserved codes (for example, `XK` for Kosovo).
@@ -157,7 +171,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Åland Islands</td>
+<td>Ã…land Islands</td>
 <td>AX</td>
 <td>Can also be loaded as country FI, subdivision 01</td>
 <td>en_US, <strong>fi</strong>, sv_FI, th, uk</td>
@@ -187,7 +201,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Andorra</td>
 <td>AD</td>
-<td>Parishes: 02 (Canillo), 03 (Encamp), 04 (La Massana), 05 (Ordino), 06 (Sant Julià de Lòria), 07 (Andorra la Vella), 08 (Escaldes-Engordany)</td>
+<td>Parishes: 02 (Canillo), 03 (Encamp), 04 (La Massana), 05 (Ordino), 06 (Sant JuliÃ  de LÃ²ria), 07 (Andorra la Vella), 08 (Escaldes-Engordany)</td>
 <td><strong>ca</strong>, en_US, uk</td>
 <td>GOVERNMENT</td>
 </tr>
@@ -222,14 +236,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Argentina</td>
 <td>AR</td>
-<td>Provinces: A (Salta), B (Buenos Aires), C (Ciudad Autónoma de Buenos Aires), D (San Luis), E (Entre Ríos), F (La Rioja), G (Santiago del Estero), H (Chaco), J (San Juan), K (Catamarca), L (La Pampa), M (Mendoza), N (Misiones), P (Formosa), Q (Neuquén), R (Río Negro), S (Santa Fe), T (Tucumán), U (Chubut), V (Tierra del Fuego), W (Corrientes), X (Córdoba), Y (Jujuy), Z (Santa Cruz)</td>
+<td>Provinces: A (Salta), B (Buenos Aires), C (Ciudad AutÃ³noma de Buenos Aires), D (San Luis), E (Entre RÃ­os), F (La Rioja), G (Santiago del Estero), H (Chaco), J (San Juan), K (Catamarca), L (La Pampa), M (Mendoza), N (Misiones), P (Formosa), Q (NeuquÃ©n), R (RÃ­o Negro), S (Santa Fe), T (TucumÃ¡n), U (Chubut), V (Tierra del Fuego), W (Corrientes), X (CÃ³rdoba), Y (Jujuy), Z (Santa Cruz)</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td>ARMENIAN, BANK, GOVERNMENT, HEBREW, ISLAMIC</td>
 </tr>
 <tr>
 <td>Armenia</td>
 <td>AM</td>
-<td>Regions: AG (Aragac̣otn), AR (Ararat), AV (Armavir), ER (Erevan), GR (Geġark'unik'), KT (Kotayk'), LO (Loṙi), SH (Širak), SU (Syunik'), TV (Tavuš), VD (Vayoć Jor)</td>
+<td>Regions: AG (AragacÌ£otn), AR (Ararat), AV (Armavir), ER (Erevan), GR (GeÄ¡ark'unik'), KT (Kotayk'), LO (Loá¹™i), SH (Å irak), SU (Syunik'), TV (TavuÅ¡), VD (VayoÄ‡ Jor)</td>
 <td>en_US, <strong>hy</strong></td>
 <td>WORKDAY</td>
 </tr>
@@ -250,7 +264,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Austria</td>
 <td>AT</td>
-<td>States: 1 (Burgenland, Bgld, B), 2 (Kärnten, Ktn, K), 3 (Niederösterreich, NÖ, N), 4 (Oberösterreich, OÖ, O), 5 (Salzburg, Sbg, S), 6 (Steiermark, Stmk, St), 7 (Tirol, T), 8 (Vorarlberg, Vbg, V), 9 (Wien, W)</td>
+<td>States: 1 (Burgenland, Bgld, B), 2 (KÃ¤rnten, Ktn, K), 3 (NiederÃ¶sterreich, NÃ–, N), 4 (OberÃ¶sterreich, OÃ–, O), 5 (Salzburg, Sbg, S), 6 (Steiermark, Stmk, St), 7 (Tirol, T), 8 (Vorarlberg, Vbg, V), 9 (Wien, W)</td>
 <td><strong>de</strong>, en_US, uk</td>
 <td>BANK</td>
 </tr>
@@ -334,7 +348,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Bolivia</td>
 <td>BO</td>
-<td>Departments: B (El Beni), C (Cochabamba), H (Chuquisaca), L (La Paz), N (Pando), O (Oruro), P (Potosí), S (Santa Cruz), T (Tarija)</td>
+<td>Departments: B (El Beni), C (Cochabamba), H (Chuquisaca), L (La Paz), N (Pando), O (Oruro), P (PotosÃ­), S (Santa Cruz), T (Tarija)</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
@@ -348,7 +362,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Bosnia and Herzegovina</td>
 <td>BA</td>
-<td>Entities and district: BIH (Federacija Bosne i Hercegovine, FBiH), BRC (Brčko distrikt, BD), SRP (Republika Srpska, RS)</td>
+<td>Entities and district: BIH (Federacija Bosne i Hercegovine, FBiH), BRC (BrÄko distrikt, BD), SRP (Republika Srpska, RS)</td>
 <td><strong>bs</strong>, en_US, sr, uk</td>
 <td></td>
 </tr>
@@ -369,7 +383,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Brazil</td>
 <td>BR</td>
-<td>States: AC (Acre), AL (Alagoas), AM (Amazonas), AP (Amapá), BA (Bahia), CE (Ceará), DF (Distrito Federal), ES (Espírito Santo), GO (Goiás), MA (Maranhão), MG (Minas Gerais), MS (Mato Grosso do Sul), MT (Mato Grosso), PA (Pará), PB (Paraíba), PE (Pernambuco), PI (Piauí), PR (Paraná), RJ (Rio de Janeiro), RN (Rio Grande do Norte), RO (Rondônia), RR (Roraima), RS (Rio Grande do Sul), SC (Santa Catarina), SE (Sergipe), SP (São Paulo), TO (Tocantins); cities: São Paulo Capital</td>
+<td>States: AC (Acre), AL (Alagoas), AM (Amazonas), AP (AmapÃ¡), BA (Bahia), CE (CearÃ¡), DF (Distrito Federal), ES (EspÃ­rito Santo), GO (GoiÃ¡s), MA (MaranhÃ£o), MG (Minas Gerais), MS (Mato Grosso do Sul), MT (Mato Grosso), PA (ParÃ¡), PB (ParaÃ­ba), PE (Pernambuco), PI (PiauÃ­), PR (ParanÃ¡), RJ (Rio de Janeiro), RN (Rio Grande do Norte), RO (RondÃ´nia), RR (Roraima), RS (Rio Grande do Sul), SC (Santa Catarina), SE (Sergipe), SP (SÃ£o Paulo), TO (Tocantins); cities: SÃ£o Paulo Capital</td>
 <td>en_US, <strong>pt_BR</strong>, uk</td>
 <td>OPTIONAL</td>
 </tr>
@@ -418,7 +432,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Cabo Verde</td>
 <td>CV</td>
-<td>Municipalities: BR (Brava), BV (Boa Vista), CA (Santa Catarina), CF (Santa Catarina do Fogo), CR (Santa Cruz), MA (Maio), MO (Mosteiros), PA (Paul), PN (Porto Novo), PR (Praia), RB (Ribeira Brava), RG (Ribeira Grande), RS (Ribeira Grande de Santiago), SD (São Domingos), SF (São Filipe), SL (Sal), SM (São Miguel), SO (São Lourenço dos Órgãos), SS (São Salvador do Mundo), SV (São Vicente), TA (Tarrafal), TS (Tarrafal de São Nicolau)</td>
+<td>Municipalities: BR (Brava), BV (Boa Vista), CA (Santa Catarina), CF (Santa Catarina do Fogo), CR (Santa Cruz), MA (Maio), MO (Mosteiros), PA (Paul), PN (Porto Novo), PR (Praia), RB (Ribeira Brava), RG (Ribeira Grande), RS (Ribeira Grande de Santiago), SD (SÃ£o Domingos), SF (SÃ£o Filipe), SL (Sal), SM (SÃ£o Miguel), SO (SÃ£o LourenÃ§o dos Ã“rgÃ£os), SS (SÃ£o Salvador do Mundo), SV (SÃ£o Vicente), TA (Tarrafal), TS (Tarrafal de SÃ£o Nicolau)</td>
 <td>de, en_US, es, fr, <strong>pt_CV</strong></td>
 <td>OPTIONAL</td>
 </tr>
@@ -439,7 +453,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Canada</td>
 <td>CA</td>
-<td>Provinces and territories: AB (Alberta), BC (British Columbia, Colombie-Britannique), MB (Manitoba), NB (New Brunswick, Nouveau-Brunswick), NL (Newfoundland and Labrador, Terre-Neuve-et-Labrador), NS (Nova Scotia, Nouvelle-Écosse), NT (Northwest Territories, Territoires du Nord-Ouest), NU (Nunavut), ON (Ontario), PE (Prince Edward Island, Île-du-Prince-Édouard), QC (Quebec, Québec), SK (Saskatchewan), YT (Yukon)</td>
+<td>Provinces and territories: AB (Alberta), BC (British Columbia, Colombie-Britannique), MB (Manitoba), NB (New Brunswick, Nouveau-Brunswick), NL (Newfoundland and Labrador, Terre-Neuve-et-Labrador), NS (Nova Scotia, Nouvelle-Ã‰cosse), NT (Northwest Territories, Territoires du Nord-Ouest), NU (Nunavut), ON (Ontario), PE (Prince Edward Island, ÃŽle-du-Prince-Ã‰douard), QC (Quebec, QuÃ©bec), SK (Saskatchewan), YT (Yukon)</td>
 <td>ar, <strong>en_CA</strong>, en_US, fr, th</td>
 <td>GOVERNMENT, OPTIONAL</td>
 </tr>
@@ -467,7 +481,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Chile</td>
 <td>CL</td>
-<td>Regions: AI (Aisén del General Carlos Ibañez del Campo), AN (Antofagasta), AP (Arica y Parinacota), AR (La Araucanía), AT (Atacama), BI (Biobío), CO (Coquimbo), LI (Libertador General Bernardo O'Higgins), LL (Los Lagos), LR (Los Ríos), MA (Magallanes), ML (Maule), NB (Ñuble), RM (Región Metropolitana de Santiago), TA (Tarapacá), VS (Valparaíso)</td>
+<td>Regions: AI (AisÃ©n del General Carlos IbaÃ±ez del Campo), AN (Antofagasta), AP (Arica y Parinacota), AR (La AraucanÃ­a), AT (Atacama), BI (BiobÃ­o), CO (Coquimbo), LI (Libertador General Bernardo O'Higgins), LL (Los Lagos), LR (Los RÃ­os), MA (Magallanes), ML (Maule), NB (Ã‘uble), RM (RegiÃ³n Metropolitana de Santiago), TA (TarapacÃ¡), VS (ValparaÃ­so)</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td>BANK</td>
 </tr>
@@ -614,14 +628,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>El Salvador</td>
 <td>SV</td>
-<td>Departments: AH (Ahuachapán), CA (Cabañas), CH (Chalatenango), CU (Cuscatlán), LI (La Libertad), MO (Morazán), PA (La Paz), SA (Santa Ana), SM (San Miguel), SO (Sonsonate), SS (San Salvador), SV (San Vicente), UN (La Unión), US (Usulután)</td>
+<td>Departments: AH (AhuachapÃ¡n), CA (CabaÃ±as), CH (Chalatenango), CU (CuscatlÃ¡n), LI (La Libertad), MO (MorazÃ¡n), PA (La Paz), SA (Santa Ana), SM (San Miguel), SO (Sonsonate), SS (San Salvador), SV (San Vicente), UN (La UniÃ³n), US (UsulutÃ¡n)</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
 <tr>
 <td>Equatorial Guinea</td>
 <td>GQ</td>
-<td>Provinces: AN (Annobón, Annobon), BN (Bioko Norte, North Bioko), BS (Bioko Sur, South Bioko), CS (Centro Sur, South Center), DJ (Djibloho), KN (Kié-Ntem, Kie-Ntem), LI (Litoral, Coast), WN (Wele-Nzas)</td>
+<td>Provinces: AN (AnnobÃ³n, Annobon), BN (Bioko Norte, North Bioko), BS (Bioko Sur, South Bioko), CS (Centro Sur, South Center), DJ (Djibloho), KN (KiÃ©-Ntem, Kie-Ntem), LI (Litoral, Coast), WN (Wele-Nzas)</td>
 <td>en_US, <strong>es</strong></td>
 <td></td>
 </tr>
@@ -677,14 +691,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Finland</td>
 <td>FI</td>
-<td>Regions: 01 (Ahvenanmaan maakunta, Landskapet Åland), 02 (Etelä-Karjala, Södra Karelen), 03 (Etelä-Pohjanmaa, Södra Österbotten), 04 (Etelä-Savo, Södra Savolax), 05 (Kainuu, Kajanaland), 06 (Kanta-Häme, Egentliga Tavastland), 07 (Keski-Pohjanmaa, Mellersta Österbotten), 08 (Keski-Suomi, Mellersta Finland), 09 (Kymenlaakso, Kymmenedalen), 10 (Lappi, Lappland), 11 (Pirkanmaa, Birkaland), 12 (Pohjanmaa, Österbotten), 13 (Pohjois-Karjala, Norra Karelen), 14 (Pohjois-Pohjanmaa, Norra Österbotten), 15 (Pohjois-Savo, Norra Savolax), 16 (Päijät-Häme, Päijänne-Tavastland), 17 (Satakunta), 18 (Uusimaa, Nyland), 19 (Varsinais-Suomi, Egentliga Finland)</td>
+<td>Regions: 01 (Ahvenanmaan maakunta, Landskapet Ã…land), 02 (EtelÃ¤-Karjala, SÃ¶dra Karelen), 03 (EtelÃ¤-Pohjanmaa, SÃ¶dra Ã–sterbotten), 04 (EtelÃ¤-Savo, SÃ¶dra Savolax), 05 (Kainuu, Kajanaland), 06 (Kanta-HÃ¤me, Egentliga Tavastland), 07 (Keski-Pohjanmaa, Mellersta Ã–sterbotten), 08 (Keski-Suomi, Mellersta Finland), 09 (Kymenlaakso, Kymmenedalen), 10 (Lappi, Lappland), 11 (Pirkanmaa, Birkaland), 12 (Pohjanmaa, Ã–sterbotten), 13 (Pohjois-Karjala, Norra Karelen), 14 (Pohjois-Pohjanmaa, Norra Ã–sterbotten), 15 (Pohjois-Savo, Norra Savolax), 16 (PÃ¤ijÃ¤t-HÃ¤me, PÃ¤ijÃ¤nne-Tavastland), 17 (Satakunta), 18 (Uusimaa, Nyland), 19 (Varsinais-Suomi, Egentliga Finland)</td>
 <td>en_US, <strong>fi</strong>, sv_FI, th, uk</td>
 <td>UNOFFICIAL, WORKDAY</td>
 </tr>
 <tr>
 <td>France</td>
 <td>FR</td>
-<td>Departments/European Collectivity/DOM/ROM/TOM: 57 (Moselle), 6AE (Alsace), 971 (GP, GUA, Guadeloupe), 972 (MQ, Martinique), 973 (GY, Guyane), 974 (RE, LRE, La Réunion), 976 (YT, MAY, Mayotte), BL (Saint-Barthélemy), MF (Saint-Martin), NC (Nouvelle-Calédonie), PF (Polynésie Française), PM (Saint-Pierre-et-Miquelon), TF (Terres australes françaises), WF (Wallis-et-Futuna)</td>
+<td>Departments/European Collectivity/DOM/ROM/TOM: 57 (Moselle), 6AE (Alsace), 971 (GP, GUA, Guadeloupe), 972 (MQ, Martinique), 973 (GY, Guyane), 974 (RE, LRE, La RÃ©union), 976 (YT, MAY, Mayotte), BL (Saint-BarthÃ©lemy), MF (Saint-Martin), NC (Nouvelle-CalÃ©donie), PF (PolynÃ©sie FranÃ§aise), PM (Saint-Pierre-et-Miquelon), TF (Terres australes franÃ§aises), WF (Wallis-et-Futuna)</td>
 <td>en_US, <strong>fr</strong>, th, uk</td>
 <td></td>
 </tr>
@@ -733,7 +747,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Germany</td>
 <td>DE</td>
-<td>States: BB (Brandenburg), BE (Berlin), BW (Baden-Württemberg), BY (Bayern), HB (Bremen), HE (Hessen), HH (Hamburg), MV (Mecklenburg-Vorpommern), NI (Niedersachsen), NW (Nordrhein-Westfalen), RP (Rheinland-Pfalz), SH (Schleswig-Holstein), SL (Saarland), SN (Sachsen), ST (Sachsen-Anhalt), TH (Thüringen); cities: Augsburg</td>
+<td>States: BB (Brandenburg), BE (Berlin), BW (Baden-WÃ¼rttemberg), BY (Bayern), HB (Bremen), HE (Hessen), HH (Hamburg), MV (Mecklenburg-Vorpommern), NI (Niedersachsen), NW (Nordrhein-Westfalen), RP (Rheinland-Pfalz), SH (Schleswig-Holstein), SL (Saarland), SN (Sachsen), ST (Sachsen-Anhalt), TH (ThÃ¼ringen); cities: Augsburg</td>
 <td><strong>de</strong>, en_US, th, uk</td>
 <td>CATHOLIC</td>
 </tr>
@@ -866,7 +880,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>India</td>
 <td>IN</td>
-<td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
+<td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, ArunÄchal Pradesh), AS (Assam), BR (Bihar, BihÄr), CG (Chhattisgarh, ChhattÄ«sgarh), CH (Chandigarh, ChandÄ«garh), DH (Dadra and Nagar Haveli and Daman and Diu, DÄdra and Nagar Haveli and DamÄn and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, GujarÄt), HP (Himachal Pradesh, HimÄchal Pradesh), HR (Haryana, HaryÄna), JH (Jharkhand, JhÄrkhand), JK (Jammu and Kashmir, Jammu and KashmÄ«r), KA (Karnataka, KarnÄtaka), KL (Kerala), LA (Ladakh, LadÄkh), LD (Lakshadweep), MH (Maharashtra, MahÄrÄshtra), ML (Meghalaya, MeghÄlaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, NÄgÄland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, RÄjasthÄn), SK (Sikkim), TN (Tamil Nadu, Tamil NÄdu), TR (Tripura), TS (Telangana, TelangÄna), UK (Uttarakhand, UttarÄkhand), UP (Uttar Pradesh), WB (West Bengal)</td>
 <td><strong>en_IN</strong>, en_US, gu, hi, ta, te</td>
 <td>OPTIONAL</td>
 </tr>
@@ -915,7 +929,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Italy</td>
 <td>IT</td>
-<td>Provinces: AG (Agrigento), AL (Alessandria), AN (Ancona), AO (Aosta), AP (Ascoli Piceno), AQ (L'Aquila), AR (Arezzo), AT (Asti), AV (Avellino), BA (Bari), BG (Bergamo), BI (Biella), BL (Belluno), BN (Benevento), BO (Bologna), BR (Brindisi), BS (Brescia), BT (Barletta-Andria-Trani), BZ (Bolzano), CA (Cagliari), CB (Campobasso), CE (Caserta), CH (Chieti), CL (Caltanissetta), CN (Cuneo), CO (Como), CR (Cremona), CS (Cosenza), CT (Catania), CZ (Catanzaro), EN (Enna), FC (Forli-Cesena, Forlì-Cesena), FE (Ferrara), FG (Foggia), FI (Firenze), FM (Fermo), FR (Frosinone), GE (Genova), GO (Gorizia), GR (Grosseto), IM (Imperia), IS (Isernia), KR (Crotone), LC (Lecco), LE (Lecce), LI (Livorno), LO (Lodi), LT (Latina), LU (Lucca), MB (Monza e Brianza), MC (Macerata), ME (Messina), MI (Milano), MN (Mantova), MO (Modena), MS (Massa-Carrara), MT (Matera), NA (Napoli), NO (Novara), NU (Nuoro), OR (Oristano), PA (Palermo), PC (Piacenza), PD (Padova), PE (Pescara), PG (Perugia), PI (Pisa), PN (Pordenone), PO (Prato), PR (Parma), PT (Pistoia), PU (Pesaro e Urbino), PV (Pavia), PZ (Potenza), RA (Ravenna), RC (Reggio Calabria), RE (Reggio Emilia), RG (Ragusa), RI (Rieti), RM (Roma), RN (Rimini), RO (Rovigo), SA (Salerno), SI (Siena), SO (Sondrio), SP (La Spezia), SR (Siracusa), SS (Sassari), SU (Sud Sardegna), SV (Savona), TA (Taranto), TE (Teramo), TN (Trento), TO (Torino), TP (Trapani), TR (Terni), TS (Trieste), TV (Treviso), UD (Udine), VA (Varese), VB (Verbano-Cusio-Ossola), VC (Vercelli), VE (Venezia), VI (Vicenza), VR (Verona), VT (Viterbo), VV (Vibo Valentia); cities: Andria, Barletta, Cesena, Forli (Forlì), Pesaro, Trani, Urbino</td>
+<td>Provinces: AG (Agrigento), AL (Alessandria), AN (Ancona), AO (Aosta), AP (Ascoli Piceno), AQ (L'Aquila), AR (Arezzo), AT (Asti), AV (Avellino), BA (Bari), BG (Bergamo), BI (Biella), BL (Belluno), BN (Benevento), BO (Bologna), BR (Brindisi), BS (Brescia), BT (Barletta-Andria-Trani), BZ (Bolzano), CA (Cagliari), CB (Campobasso), CE (Caserta), CH (Chieti), CL (Caltanissetta), CN (Cuneo), CO (Como), CR (Cremona), CS (Cosenza), CT (Catania), CZ (Catanzaro), EN (Enna), FC (Forli-Cesena, ForlÃ¬-Cesena), FE (Ferrara), FG (Foggia), FI (Firenze), FM (Fermo), FR (Frosinone), GE (Genova), GO (Gorizia), GR (Grosseto), IM (Imperia), IS (Isernia), KR (Crotone), LC (Lecco), LE (Lecce), LI (Livorno), LO (Lodi), LT (Latina), LU (Lucca), MB (Monza e Brianza), MC (Macerata), ME (Messina), MI (Milano), MN (Mantova), MO (Modena), MS (Massa-Carrara), MT (Matera), NA (Napoli), NO (Novara), NU (Nuoro), OR (Oristano), PA (Palermo), PC (Piacenza), PD (Padova), PE (Pescara), PG (Perugia), PI (Pisa), PN (Pordenone), PO (Prato), PR (Parma), PT (Pistoia), PU (Pesaro e Urbino), PV (Pavia), PZ (Potenza), RA (Ravenna), RC (Reggio Calabria), RE (Reggio Emilia), RG (Ragusa), RI (Rieti), RM (Roma), RN (Rimini), RO (Rovigo), SA (Salerno), SI (Siena), SO (Sondrio), SP (La Spezia), SR (Siracusa), SS (Sassari), SU (Sud Sardegna), SV (Savona), TA (Taranto), TE (Teramo), TN (Trento), TO (Torino), TP (Trapani), TR (Terni), TS (Trieste), TV (Treviso), UD (Udine), VA (Varese), VB (Verbano-Cusio-Ossola), VC (Vercelli), VE (Venezia), VI (Vicenza), VR (Verona), VT (Viterbo), VV (Vibo Valentia); cities: Andria, Barletta, Cesena, Forli (ForlÃ¬), Pesaro, Trani, Urbino</td>
 <td>en_US, <strong>it_IT</strong>, th</td>
 <td>HALF_DAY</td>
 </tr>
@@ -1062,7 +1076,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Macau</td>
 <td>MO</td>
-<td>Historical municipalities: I (Concelho das Ilhas, 海島市, 海岛市), M (Concelho de Macau, 澳門市, 澳门市)</td>
+<td>Historical municipalities: I (Concelho das Ilhas, æµ·å³¶å¸‚, æµ·å²›å¸‚), M (Concelho de Macau, æ¾³é–€å¸‚, æ¾³é—¨å¸‚)</td>
 <td>en_MO, en_US, pt_MO, th, zh_CN, <strong>zh_MO</strong></td>
 <td>GOVERNMENT, OPTIONAL</td>
 </tr>
@@ -1251,14 +1265,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>New Zealand</td>
 <td>NZ</td>
-<td>Regions and Special Island Authorities: AUK (Auckland, Tāmaki-Makaurau, AU), BOP (Bay of Plenty, Toi Moana, BP), CAN (Canterbury, Waitaha, CA), CIT (Chatham Islands Territory, Chatham Islands, Wharekauri, CI), GIS (Gisborne, Te Tairāwhiti, GI), HKB (Hawke's Bay, Te Matau-a-Māui, HB), MBH (Marlborough, MA), MWT (Manawatū Whanganui, Manawatū-Whanganui, MW), NSN (Nelson, Whakatū, NE), NTL (Northland, Te Taitokerau, NO), OTA (Otago, Ō Tākou, OT), STL (Southland, Te Taiao Tonga, SO), TAS (Tasman, Te tai o Aorere, TS), TKI (Taranaki, TK), WGN (Greater Wellington, Te Pane Matua Taiao, Wellington, Te Whanganui-a-Tara, WG), WKO (Waikato, WK), WTC (West Coast, Te Tai o Poutini, WC); subregions: South Canterbury</td>
+<td>Regions and Special Island Authorities: AUK (Auckland, TÄmaki-Makaurau, AU), BOP (Bay of Plenty, Toi Moana, BP), CAN (Canterbury, Waitaha, CA), CIT (Chatham Islands Territory, Chatham Islands, Wharekauri, CI), GIS (Gisborne, Te TairÄwhiti, GI), HKB (Hawke's Bay, Te Matau-a-MÄui, HB), MBH (Marlborough, MA), MWT (ManawatÅ« Whanganui, ManawatÅ«-Whanganui, MW), NSN (Nelson, WhakatÅ«, NE), NTL (Northland, Te Taitokerau, NO), OTA (Otago, ÅŒ TÄkou, OT), STL (Southland, Te Taiao Tonga, SO), TAS (Tasman, Te tai o Aorere, TS), TKI (Taranaki, TK), WGN (Greater Wellington, Te Pane Matua Taiao, Wellington, Te Whanganui-a-Tara, WG), WKO (Waikato, WK), WTC (West Coast, Te Tai o Poutini, WC); subregions: South Canterbury</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>Nicaragua</td>
 <td>NI</td>
-<td>Subdivisions: AN (Costa Caribe Norte), AS (Costa Caribe Sur), BO (Boaco), CA (Carazo), CI (Chinandega), CO (Chontales), ES (Estelí), GR (Granada), JI (Jinotega), LE (León), MD (Madriz), MN (Managua), MS (Masaya), MT (Matagalpa), NS (Nueva Segovia), RI (Rivas), SJ (Río San Juan)</td>
+<td>Subdivisions: AN (Costa Caribe Norte), AS (Costa Caribe Sur), BO (Boaco), CA (Carazo), CI (Chinandega), CO (Chontales), ES (EstelÃ­), GR (Granada), JI (Jinotega), LE (LeÃ³n), MD (Madriz), MN (Managua), MS (Masaya), MT (Matagalpa), NS (Nueva Segovia), RI (Rivas), SJ (RÃ­o San Juan)</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
@@ -1314,7 +1328,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Norway</td>
 <td>NO</td>
-<td>Counties and Arctic Regions: 03 (Oslo), 11 (Rogaland), 15 (Møre og Romsdal), 18 (Nordland), 21 (Svalbard), 22 (Jan Mayen), 31 (Østfold), 32 (Akershus), 33 (Buskerud), 34 (Innlandet), 39 (Vestfold), 40 (Telemark), 42 (Agder), 46 (Vestland), 50 (Trööndelage, Trøndelag), 55 (Romssa, Troms, Tromssan), 56 (Finmarkun, Finnmark, Finnmárkku)</td>
+<td>Counties and Arctic Regions: 03 (Oslo), 11 (Rogaland), 15 (MÃ¸re og Romsdal), 18 (Nordland), 21 (Svalbard), 22 (Jan Mayen), 31 (Ã˜stfold), 32 (Akershus), 33 (Buskerud), 34 (Innlandet), 39 (Vestfold), 40 (Telemark), 42 (Agder), 46 (Vestland), 50 (TrÃ¶Ã¶ndelage, TrÃ¸ndelag), 55 (Romssa, Troms, Tromssan), 56 (Finmarkun, Finnmark, FinnmÃ¡rkku)</td>
 <td>en_US, <strong>no</strong>, th, uk</td>
 <td></td>
 </tr>
@@ -1398,7 +1412,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Portugal</td>
 <td>PT</td>
-<td>Districts: 01 (Aveiro), 02 (Beja), 03 (Braga), 04 (Bragança), 05 (Castelo Branco), 06 (Coimbra), 07 (Évora), 08 (Faro), 09 (Guarda), 10 (Leiria), 11 (Lisboa), 12 (Portalegre), 13 (Porto), 14 (Santarém), 15 (Setúbal), 16 (Viana do Castelo), 17 (Vila Real), 18 (Viseu), 20 (Região Autónoma dos Açores), 30 (Região Autónoma da Madeira)</td>
+<td>Districts: 01 (Aveiro), 02 (Beja), 03 (Braga), 04 (BraganÃ§a), 05 (Castelo Branco), 06 (Coimbra), 07 (Ã‰vora), 08 (Faro), 09 (Guarda), 10 (Leiria), 11 (Lisboa), 12 (Portalegre), 13 (Porto), 14 (SantarÃ©m), 15 (SetÃºbal), 16 (Viana do Castelo), 17 (Vila Real), 18 (Viseu), 20 (RegiÃ£o AutÃ³noma dos AÃ§ores), 30 (RegiÃ£o AutÃ³noma da Madeira)</td>
 <td>en_US, <strong>pt_PT</strong>, uk</td>
 <td>OPTIONAL</td>
 </tr>
@@ -1445,7 +1459,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Saint Barthélemy</td>
+<td>Saint BarthÃ©lemy</td>
 <td>BL</td>
 <td>Can also be loaded as country FR, subdivision BL</td>
 <td>en_US, <strong>fr</strong>, th, uk</td>
@@ -1510,7 +1524,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Sao Tome and Principe</td>
 <td>ST</td>
-<td>Districts and Autonomous Region: 01 (Água Grande), 02 (Cantagalo), 03 (Caué), 04 (Lembá), 05 (Lobata), 06 (Mé-Zóchi), P (Príncipe)</td>
+<td>Districts and Autonomous Region: 01 (Ãgua Grande), 02 (Cantagalo), 03 (CauÃ©), 04 (LembÃ¡), 05 (Lobata), 06 (MÃ©-ZÃ³chi), P (PrÃ­ncipe)</td>
 <td>en_US, <strong>pt_ST</strong></td>
 <td></td>
 </tr>
@@ -1622,7 +1636,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Spain</td>
 <td>ES</td>
-<td>Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla-La Mancha), CN (Canarias), CT (Cataluña, Catalunya), EX (Extremadura), GA (Galicia), IB (Islas Baleares, Illes Balears), MC (Murcia), MD (Madrid), ML (Melilla), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Valenciana)</td>
+<td>Autonomous communities: AN (AndalucÃ­a), AR (AragÃ³n), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y LeÃ³n), CM (Castilla-La Mancha), CN (Canarias), CT (CataluÃ±a, Catalunya), EX (Extremadura), GA (Galicia), IB (Islas Baleares, Illes Balears), MC (Murcia), MD (Madrid), ML (Melilla), NC (Navarra), PV (PaÃ­s Vasco), RI (La Rioja), VC (Valenciana)</td>
 <td>ca, en_US, <strong>es</strong>, th, uk</td>
 <td></td>
 </tr>
@@ -1664,7 +1678,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Switzerland</td>
 <td>CH</td>
-<td>Cantons: AG (Aargau), AI (Appenzell Innerrhoden), AR (Appenzell Ausserrhoden), BE (Bern, Berne), BL (Basel-Landschaft), BS (Basel-Stadt), FR (Freiburg, Fribourg), GE (Genève), GL (Glarus), GR (Graubünden, Grigioni, Grischun), JU (Jura), LU (Luzern), NE (Neuchâtel), NW (Nidwalden), OW (Obwalden), SG (Sankt Gallen), SH (Schaffhausen), SO (Solothurn), SZ (Schwyz), TG (Thurgau), TI (Ticino), UR (Uri), VD (Vaud), VS (Valais, Wallis), ZG (Zug), ZH (Zürich)</td>
+<td>Cantons: AG (Aargau), AI (Appenzell Innerrhoden), AR (Appenzell Ausserrhoden), BE (Bern, Berne), BL (Basel-Landschaft), BS (Basel-Stadt), FR (Freiburg, Fribourg), GE (GenÃ¨ve), GL (Glarus), GR (GraubÃ¼nden, Grigioni, Grischun), JU (Jura), LU (Luzern), NE (NeuchÃ¢tel), NW (Nidwalden), OW (Obwalden), SG (Sankt Gallen), SH (Schaffhausen), SO (Solothurn), SZ (Schwyz), TG (Thurgau), TI (Ticino), UR (Uri), VD (Vaud), VS (Valais, Wallis), ZG (Zug), ZH (ZÃ¼rich)</td>
 <td><strong>de</strong>, en_US, fr, it, th, uk</td>
 <td>HALF_DAY, OPTIONAL</td>
 </tr>
@@ -1934,7 +1948,7 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
-<td>Brasil, Bolsa, Balcão</td>
+<td>Brasil, Bolsa, BalcÃ£o</td>
 <td>BVMF</td>
 <td>Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)</td>
 <td>en_US, <strong>pt_BR</strong>, uk</td>
@@ -1950,7 +1964,7 @@ code when available. The following financial markets are available:
 <tr>
 <td>Germany Stock Exchange</td>
 <td>XETR</td>
-<td>Deutsche Börse Cash Market (Frankfurt Stock Exchange and Xetra) holidays</td>
+<td>Deutsche BÃ¶rse Cash Market (Frankfurt Stock Exchange and Xetra) holidays</td>
 <td><strong>de</strong>, en_US, th, uk</td>
 <td></td>
 </tr>
@@ -1995,3 +2009,4 @@ requests](https://github.com/vacanza/holidays/pulls) are always welcome. Please 
 
 Code and documentation are available according to the MIT License (see
 [LICENSE](https://github.com/vacanza/holidays/blob/dev/LICENSE)).
+
