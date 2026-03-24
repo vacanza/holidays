@@ -1,0 +1,39 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly.
+#
+#  Author:   Vacanza Team and individual contributors
+#  License:  MIT License
+#  GitHub:   https://github.com/vacanza/holidays
+#
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hi_IN\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Republic Day.
+msgid "Republic Day"
+msgstr "गणतंत्र दिवस"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "स्वतंत्रता दिवस"
+
+#. Gandhi Jayanti.
+msgid "Gandhi Jayanti"
+msgstr "गांधी जयंती"
+
+#. Buddha Purnima.
+msgid "Buddha Purnima"
+msgstr "बुद्ध पूर्णिमा"
+
+#. Diwali.
+msgid "Diwali"
+msgstr "दीवाली"
+
+#. %s (estimated).
+msgid "%s (estimated)"
+msgstr "%s (अनुमानित)"
