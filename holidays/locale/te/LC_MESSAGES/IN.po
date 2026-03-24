@@ -153,7 +153,7 @@ msgstr "డా. బి.ఆర్. అంబేద్కర్ జయంతి"
 msgid "Andhra Pradesh Foundation Day"
 msgstr "ఆంధ్రప్రదేశ్ అవతరణ దినోత్సవం"
 
-#. Ugadi 
+#. Ugadi. 
 msgid "Ugadi"
 msgstr "ఉగాది (తెలుగు సంవత్సరాది)"
 
