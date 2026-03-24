@@ -41,6 +41,7 @@ class Nigeria(
         * <https://web.archive.org/web/20250829060151/https://statehouse.gov.ng/news/president-buhari-declares-june-12-the-new-democracy-day/>
         * <https://web.archive.org/web/20250829085227/https://www.nairaland.com/4548139/may-29-remains-inauguration-day>
         * <https://web.archive.org/web/20250829030023/https://www.timeanddate.com/holidays/nigeria/2025?hol=9>
+        * [2026 Eid al-Fitr](https://web.archive.org/web/20260324033902/https://nigeriahcottawa.ca/public-holidays/)
 
     In-lieu holidays have been in effect since at least 2010:
         * <http://archive.today/2025.08.30-142719/https://www.vanguardngr.com/2010/05/fg-declares-may-31-public-holiday-for-democracy/>
@@ -175,7 +176,6 @@ class NigeriaIslamicHolidays(_CustomIslamicHolidays):
     }
 
     # https://web.archive.org/web/20250829052410/https://www.timeanddate.com/holidays/nigeria/id-el-fitr
-    # https://web.archive.org/web/20260324033902/https://nigeriahcottawa.ca/public-holidays/      # 2026 Eid al-Fitr
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (1979, 2026)
     EID_AL_FITR_DATES = {
         1979: (AUG, 25),
