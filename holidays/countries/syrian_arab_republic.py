@@ -80,8 +80,8 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
         # Tishreen Liberation War Day.
         self._add_holiday_oct_6(tr("ذكرى حرب تشرين التحريرية"))
 
-        # Liberation Day.
         if self._year >= 2024:
+            # Liberation Day.
             self._add_holiday_dec_8(tr("عيد التحرير"))
 
         if self._year >= 2024:
