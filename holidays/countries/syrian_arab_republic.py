@@ -79,6 +79,11 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
         # Tishreen Liberation War Day.
         self._add_holiday_oct_6(tr("ذكرى حرب تشرين التحريرية"))
 
+        # Liberation Day.
+        # Source: https://ar.wikipedia.org/wiki/عيد_التحرير_(سوريا)
+        if self._year >= 2024:
+            self._add_holiday_dec_8(tr("عيد التحرير"))
+
         if self._year >= 2024:
             # Christmas Day.
             self._add_christmas_day(tr("عيد الميلاد"), calendar=GREGORIAN_CALENDAR)
