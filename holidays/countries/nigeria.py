@@ -175,6 +175,7 @@ class NigeriaIslamicHolidays(_CustomIslamicHolidays):
     }
 
     # https://web.archive.org/web/20250829052410/https://www.timeanddate.com/holidays/nigeria/id-el-fitr
+    # https://web.archive.org/web/20260324033902/https://nigeriahcottawa.ca/public-holidays/      # 2026 Eid al-Fitr
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (1979, 2026)
     EID_AL_FITR_DATES = {
         1979: (AUG, 25),
