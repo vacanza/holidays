@@ -149,11 +149,12 @@ class TestAustralia(CommonCountryTests, TestCase):
 
             if subdiv == "ACT":
                 self.assertHolidayName(name, holidays, "2026-04-25")
-                self.assertHolidayName(
-                    f"{name} (observed)",
-                    holidays,
-                    "2026-04-27",
-                )
+                self.assertHolidayName(f"{name} (observed)", holidays, "2026-04-27")
+                # 2027: standard ACT rules resume - Apr 25 (Sun) not observed,
+                # Apr 26 (Mon) is the sole ANZAC Day (no "observed" suffix)
+                self.assertNoHolidayName(name, holidays, "2027-04-25")
+                self.assertHolidayName(name, holidays, "2027-04-26")
+                self.assertNoHolidayName(f"{name} (observed)", holidays, "2027-04-26")
             elif subdiv in {"NSW", "WA"}:
                 self.assertHolidayName(name, holidays, "2026-04-25")
                 self.assertHolidayName(
