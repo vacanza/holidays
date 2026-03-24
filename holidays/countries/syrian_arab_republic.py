@@ -24,6 +24,7 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Syria>
+        * Source: https://ar.wikipedia.org/wiki/عيد_التحرير_(سوريا)
         * [Central Bank of Syria - Public Holidays 2024](https://web.archive.org/web/20250813035705/https://cb.gov.sy/index.php?lang=1&dir=html&ex=1&page=holidays&act=598-)
         * [Christmas and Boxing Day](https://web.archive.org/web/20250414224148/https://en.royanews.tv/news/56308)
     """
@@ -80,7 +81,6 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
         self._add_holiday_oct_6(tr("ذكرى حرب تشرين التحريرية"))
 
         # Liberation Day.
-        # Source: https://ar.wikipedia.org/wiki/عيد_التحرير_(سوريا)
         if self._year >= 2024:
             self._add_holiday_dec_8(tr("عيد التحرير"))
 
