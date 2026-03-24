@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2025-03-01 15:11+0530\n"
+"PO-Revision-Date: 2026-03-24 23:01+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -156,6 +156,17 @@ msgstr "आंध्र प्रदेश स्थापना दिवस"
 #. Ugadi.
 msgid "Ugadi"
 msgstr "उगादि"
+
+msgid "Arunachal Pradesh Statehood Day"
+msgstr "अरुणाचल प्रदेश स्थापना दिवस"
+
+#. Bohag Bihu.
+msgid "Bohag Bihu"
+msgstr "बोहाग बिहू"
+
+#. Indigenous Faith Day.
+msgid "Indigenous Faith Day"
+msgstr "स्वदेशी आस्था दिवस"
 
 #. Magh Bihu.
 msgid "Magh Bihu"

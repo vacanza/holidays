@@ -510,3 +510,16 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.vaisakhi_date(self._year)
         )
+
+    def _add_bohag_bihu(self, name) -> date | None:
+        """
+        Add Bohag Bihu (Rongali Bihu).
+
+        Bohag Bihu marks the Assamese New Year and the arrival of spring.
+        It falls on the same date as Vaisakhi (April 13 or 14).
+
+        https://en.wikipedia.org/wiki/Bohag_Bihu
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.vaisakhi_date(self._year)
+        )
