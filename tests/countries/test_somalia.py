@@ -133,3 +133,13 @@ class TestSomalia(CommonCountryTests, TestCase):
             ("2018-09-20", "Ashura (estimated)"),
             ("2018-11-20", "Prophet's Birthday (estimated)"),
         )
+
+    def test_l10n_arabic(self):
+        """Test if Arabic translations from SO.po are correctly loaded."""
+        # Initialize Somalia class with Arabic language
+        ar_holidays = Somalia(language="ar")
+        
+        # Remove the extra space at the end of each Arabic string
+        self.assertEqual(ar_holidays.get("2026-06-26"), "عيد الاستقلال")
+        self.assertEqual(ar_holidays.get("2026-07-01"), "عيد الجمهورية")
+        self.assertEqual(ar_holidays.get("2026-05-01"), "عيد العمال")

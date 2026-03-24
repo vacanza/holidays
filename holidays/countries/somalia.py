@@ -23,6 +23,7 @@ class Somalia(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
 
     country = "SO"
+    supported_languages = ("ar",)
     # %s (estimated).
     estimated_label = "%s (estimated)"
     # Unification of Somaliland and Italian Somaliland into the Somali Republic on July 1st, 1960.
@@ -32,9 +33,10 @@ class Somalia(HolidayBase, InternationalHolidays, IslamicHolidays):
         """
         Args:
             islamic_show_estimated:
-                Whether to add "estimated" label to Islamic holidays name
-                if holiday date is estimated.
+            Whether to add "estimated" label to Islamic holidays name
+            if holiday date is estimated.
         """
+
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         super().__init__(*args, **kwargs)
