@@ -12,6 +12,7 @@
 
 import warnings
 from gettext import gettext as tr
+from holidays.spell_check import correct_holiday_name
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, AUG, SEP, OCT, NOV, DEC
@@ -146,7 +147,7 @@ class India(
         "West Bengal": "WB",
     }
     supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = ("en_IN", "en_US", "gu", "hi", "ta", "te")
+    supported_languages = ("en_IN", "en_US", "gu", "hi", "ta", "te","mr")
     _deprecated_subdivisions = (
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
@@ -177,12 +178,34 @@ class India(
         if self._year >= 1950:
             # Republic Day.
             self._add_holiday_jan_26(tr("Republic Day"))
+        if "MH" in self.subdivisions:
+            self._populate_maharashtra_holidays(year)
+    # Chhatrapati Shivaji Maharaj Jayanti
+        self[date(year, 2, 19)] = "Chhatrapati Shivaji Maharaj Jayanti"
 
+        # Gudi Padwa (Marathi New Year)
+        gudi_padwa_date = self._get_gudi_padwa(year)
+        if gudi_padwa_date:
+            self[gudi_padwa_date] = "Gudi Padwa"
+
+    def _get_gudi_padwa(self, year):
+        """
+        Calculate Gudi Padwa (lunar calendar, usually March/April)
+        Placeholder: here we return fixed date for simplicity.
+        Replace with proper lunisolar calculation if needed.
+        """
+        # For example 2026, 4 March. You can adjust or use a library.
+        return date(year, 3, 4)
         # Independence Day.
         self._add_holiday_aug_15(tr("Independence Day"))
 
         # Gandhi Jayanti.
         self._add_holiday_oct_2(tr("Gandhi Jayanti"))
+
+        #shivaji maharaj jayanti
+        self._add_holiday_feb_19(tr("shivaji maharaj jayanti")) 
+        #dr.ambedkar jayanti
+        self._add_holiday_april_14(tr("Ambedkar jayanti"))
 
         # Hindu Holidays.
         if self._year < 2001 or self._year > 2035:
@@ -340,7 +363,14 @@ class India(
         self._add_holiday_may_1(tr("Gujarat Day"))
         # Sardar Vallabhbhai Patel Jayanti.
         self._add_holiday_oct_31(tr("Sardar Vallabhbhai Patel Jayanti"))
-
+    def get_holiday(self, name):
+      """Return closest matching holiday in India."""
+    holidays_list = list(self.values())
+    corrected_name = correct_holiday_name(name, holidays_list)
+    for dt, hname in self.items():
+        if hname == corrected_name:
+            return dt, hname
+    return None, None
     # Haryana.
     def _populate_subdiv_hr_public_holidays(self):
         # Dr. B. R. Ambedkar Jayanti.
