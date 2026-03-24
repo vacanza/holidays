@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 
-
 from holidays.calendars import _CustomHinduHolidays
 from holidays.calendars.gregorian import SEP, OCT
 from holidays.groups import HinduCalendarHolidays, TibetanCalendarHolidays
@@ -113,9 +112,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         self._add_holiday_nov_1("Coronation of His Majesty the King")
 
         # Constitution Day
-        self._add_holiday_nov_11(
-            "Birth Anniversary of the 4th Druk Gyalpo - Constitution Day"
-        )
+        self._add_holiday_nov_11("Birth Anniversary of the 4th Druk Gyalpo - Constitution Day")
 
         # National Day
         self._add_holiday_dec_17("National Day")
@@ -150,9 +147,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         self._add_dussehra("Dassain")
 
         # Descending Day
-        self._add_descending_day_of_lord_buddha(
-            "Descending Day of Lord Buddha"
-        )
+        self._add_descending_day_of_lord_buddha("Descending Day of Lord Buddha")
 
     def _populate_subdiv_15_public_holidays(self):
         self._add_thimphu_drubchen_day("Thimphu Drubchoe")
@@ -161,6 +156,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         self._add_thimphu_tshechu_day(name)
         self._add_thimphu_tshechu_day_two(name)
         self._add_thimphu_tshechu_day_three(name)
+
 
 class BT(Bhutan):
     pass

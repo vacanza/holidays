@@ -279,6 +279,5 @@ class TestBhutan(CommonCountryTests, TestCase):
             ("2024-11-22", "Descending Day of Lord Buddha"),
             ("2024-12-17", "National Day"),
             (" 2020-09-26", "Thimphu Tshechu"),
-            (" 2020-09-23","Thimphu Drubchoe"),
+            (" 2020-09-23", "Thimphu Drubchoe"),
         )
-
