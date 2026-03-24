@@ -133,7 +133,7 @@ msgid "Raksha Bandhan"
 msgstr "రాఖీ పౌర్ణమి"
 
 #. Ram Navami.
-msgid "Sri Rama Navami"
+msgid "Rama Navami"
 msgstr "శ్రీ రామ నవమి"
 
 #. Navratri / Sharad Navratri.
