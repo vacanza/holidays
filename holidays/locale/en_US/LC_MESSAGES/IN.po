@@ -158,7 +158,7 @@ msgid "Ugadi"
 msgstr "Ugadi"
 
 msgid "Arunachal Pradesh Statehood Day"
-msgstr ""
+msgstr "Arunachal Pradesh Statehood Day"
 
 #. Bohag Bihu.
 msgid "Bohag Bihu"

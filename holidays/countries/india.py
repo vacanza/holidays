@@ -298,8 +298,8 @@ class India(
 
     # Arunachal Pradesh.
     def _populate_subdiv_ar_public_holidays(self):
-        # Arunachal Pradesh Statehood Day.
         if self._year >= 1987:
+            # Arunachal Pradesh Statehood Day.
             self._add_holiday_feb_20(tr("Arunachal Pradesh Statehood Day"))
         # Bohag Bihu.
         self._add_bohag_bihu(tr("Bohag Bihu"))
