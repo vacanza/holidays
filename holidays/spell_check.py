@@ -1,4 +1,4 @@
-from fuzzy_search import fuzzy_match
+from holidays.fuzzy_search import fuzzy_match
 
 def correct_holiday_name(input_name, holidays_list):
     """
