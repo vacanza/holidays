@@ -38,7 +38,7 @@ msgstr "గణతంత్ర దినోత్సవం"
 
 #. Independence Day.
 msgid "Independence Day"
-msgstr "స్వాతంత్ర  దినోత్సవం"
+msgstr "స్వాతంత్ర దినోత్సవం"
 
 #. Gandhi Jayanti.
 msgid "Gandhi Jayanti"
