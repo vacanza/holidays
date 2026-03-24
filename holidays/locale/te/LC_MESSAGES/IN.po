@@ -327,22 +327,3 @@ msgstr "రవీంద్ర జయంతి"
 msgid "National Science Day"
 msgstr "జాతీయ విజ్ఞాన దినోత్సవం"
 
-#. Bhogi.
-msgid "Bhogi"
-msgstr "భోగి పండుగ"
-
-#. Kanuma.
-msgid "Kanuma"
-msgstr "కనుమ పండుగ"
-
-#. Mahalaya Amavasya
-msgid "Mahalaya Amavasya"
-msgstr "మహాలయ అమావాస్య"
-
-#. Naraka Chaturdashi.
-msgid "Naraka Chaturdashi"
-msgstr "నరక చతుర్దశి"
-
-#. Varalakshmi Vratam.
-msgid "Varalakshmi Vratam"
-msgstr "వరలక్ష్మీ వ్రతం"
