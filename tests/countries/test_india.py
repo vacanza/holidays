@@ -16,7 +16,7 @@ from datetime import timedelta as td
 from holidays.constants import OPTIONAL
 from holidays.countries.india import India
 from tests.common import CommonCountryTests
-
+import holidays
 
 class TestIndia(CommonCountryTests, TestCase):
     @classmethod

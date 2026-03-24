@@ -406,10 +406,8 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
-        # Dahi Handi (celebrated during Janmashtami).
-        janmashtami_dt = self._add_janmashtami(tr("Janmashtami"))
-        if janmashtami_dt:
-            self[janmashtami_dt] = tr("Dahi Handi")
+        # Dahi Handi (celebrated on Janmashtami).
+        self._add_janmashtami(tr("Janmashtami"))
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
