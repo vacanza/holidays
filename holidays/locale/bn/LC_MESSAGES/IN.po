@@ -138,7 +138,7 @@ msgstr "নবরাত্রি / শারদ নবরাত্রি"
 
 #. Easter Sunday.
 msgid "Easter Sunday"
-msgstr "ইইস্টার রবিবার"
+msgstr "ইস্টার রবিবার"
 
 #. Palm Sunday.
 msgid "Palm Sunday"
