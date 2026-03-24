@@ -157,16 +157,17 @@ msgstr "Andhra Pradesh Foundation Day"
 msgid "Ugadi"
 msgstr "Ugadi"
 
+#. Arunachal Pradesh Statehood Day.
 msgid "Arunachal Pradesh Statehood Day"
 msgstr "Arunachal Pradesh Statehood Day"
 
 #. Bohag Bihu.
 msgid "Bohag Bihu"
-msgstr ""
+msgstr "Bohag Bihu"
 
 #. Indigenous Faith Day.
 msgid "Indigenous Faith Day"
-msgstr ""
+msgstr "Indigenous Faith Day"
 
 #. Magh Bihu.
 msgid "Magh Bihu"
