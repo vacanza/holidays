@@ -11,9 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
-from datetime import date
 from gettext import gettext as tr
-from holidays.spell_check import correct_holiday_name
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, AUG, SEP, OCT, NOV, DEC
@@ -44,6 +42,9 @@ class India(
         * Tamil Nadu:
             * [Tamil Monthly Calendar](https://web.archive.org/web/20231228103352/https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
             * [Tamil Calendar](https://web.archive.org/web/20250429125140/https://www.prokerala.com/general/calendar/tamilcalendar.php)
+        * Telangana:
+            * <https://web.archive.org/web/20260224050455/https://transport.telangana.gov.in/html/registration-districtcodes.html>
+            * <https://web.archive.org/web/20250219131214/https://www.thehindu.com/news/national/telangana/cm-firm-on-having-states-identity-as-tg-not-ts/article68187923.ece>
     """
 
     country = "IN"
@@ -140,6 +141,7 @@ class India(
         "Tamil Nadu": "TN",
         "Tamil Nādu": "TN",
         "Tripura": "TR",
+        "TG": "TS",
         "Telangana": "TS",
         "Telangāna": "TS",
         "Uttarakhand": "UK",
@@ -148,7 +150,7 @@ class India(
         "West Bengal": "WB",
     }
     supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = ("en_IN", "en_US", "gu", "hi", "ta", "te","mr")
+    supported_languages = ("en_IN", "en_US", "gu", "hi", "ta", "te")
     _deprecated_subdivisions = (
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
@@ -185,9 +187,6 @@ class India(
 
         # Gandhi Jayanti.
         self._add_holiday_oct_2(tr("Gandhi Jayanti"))
-
-        # Dr. B. R. Ambedkar Jayanti.
-        self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
 
         # Hindu Holidays.
         if self._year < 2001 or self._year > 2035:
@@ -237,69 +236,8 @@ class India(
         # Christmas.
         self._add_christmas_day(tr("Christmas"))
 
-        # Subdivision-specific holidays.
-        if self.subdiv == "AN":
-            self._populate_subdiv_an_public_holidays()
-        elif self.subdiv == "AP":
-            self._populate_subdiv_ap_public_holidays()
-        elif self.subdiv == "AS":
-            self._populate_subdiv_as_public_holidays()
-        elif self.subdiv == "BR":
-            self._populate_subdiv_br_public_holidays()
-        elif self.subdiv == "CH":
-            self._populate_subdiv_ch_public_holidays()
-        elif self.subdiv == "CG":
-            self._populate_subdiv_cg_public_holidays()
-        elif self.subdiv == "DL":
-            self._populate_subdiv_dl_public_holidays()
-        elif self.subdiv == "GA":
-            self._populate_subdiv_ga_public_holidays()
-        elif self.subdiv == "GJ":
-            self._populate_subdiv_gj_public_holidays()
-        elif self.subdiv == "HR":
-            self._populate_subdiv_hr_public_holidays()
-        elif self.subdiv == "HP":
-            self._populate_subdiv_hp_public_holidays()
-        elif self.subdiv == "JK":
-            self._populate_subdiv_jk_public_holidays()
-        elif self.subdiv == "JH":
-            self._populate_subdiv_jh_public_holidays()
-        elif self.subdiv == "KA":
-            self._populate_subdiv_ka_public_holidays()
-        elif self.subdiv == "KL":
-            self._populate_subdiv_kl_public_holidays()
-        elif self.subdiv == "LA":
-            self._populate_subdiv_la_public_holidays()
-        elif self.subdiv == "MH":
-            self._populate_subdiv_mh_public_holidays()
-        elif self.subdiv == "MP":
-            self._populate_subdiv_mp_public_holidays()
-        elif self.subdiv == "MZ":
-            self._populate_subdiv_mz_public_holidays()
-        elif self.subdiv == "NL":
-            self._populate_subdiv_nl_public_holidays()
-        elif self.subdiv == "OD":
+        if self.subdiv == "OR":
             self._populate_subdiv_od_public_holidays()
-        elif self.subdiv == "OR":
-            self._populate_subdiv_od_public_holidays()
-        elif self.subdiv == "PY":
-            self._populate_subdiv_py_public_holidays()
-        elif self.subdiv == "PB":
-            self._populate_subdiv_pb_public_holidays()
-        elif self.subdiv == "RJ":
-            self._populate_subdiv_rj_public_holidays()
-        elif self.subdiv == "SK":
-            self._populate_subdiv_sk_public_holidays()
-        elif self.subdiv == "TN":
-            self._populate_subdiv_tn_public_holidays()
-        elif self.subdiv == "TS":
-            self._populate_subdiv_ts_public_holidays()
-        elif self.subdiv == "UK":
-            self._populate_subdiv_uk_public_holidays()
-        elif self.subdiv == "UP":
-            self._populate_subdiv_up_public_holidays()
-        elif self.subdiv == "WB":
-            self._populate_subdiv_wb_public_holidays()
 
     def _populate_optional_holidays(self):
         # Hindu holidays.
@@ -406,7 +344,7 @@ class India(
         self._add_holiday_may_1(tr("Gujarat Day"))
         # Sardar Vallabhbhai Patel Jayanti.
         self._add_holiday_oct_31(tr("Sardar Vallabhbhai Patel Jayanti"))
-    
+
     # Haryana.
     def _populate_subdiv_hr_public_holidays(self):
         # Dr. B. R. Ambedkar Jayanti.
@@ -468,6 +406,8 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
+        #dahi handi
+        self._add_holiday_sep_4(tr("dahi handi"))
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
@@ -580,29 +520,6 @@ class India(
         # Rabindra Jayanti.
         self._add_holiday_may_9(tr("Rabindra Jayanti"))
 
-    def _get_gudi_padwa(self):
-        """
-        Calculate Gudi Padwa (lunar calendar, usually March/April).
-        Returns the date of Gudi Padwa for the current year.
-        Placeholder: returns fixed date for simplicity.
-        """
-        # For 2026, Gudi Padwa is on March 21
-        # For other years, adjust based on lunar calendar
-        if self._year == 2026:
-            return date(2026, 3, 21)
-        # Default to March 21 for other years as placeholder
-        return date(self._year, 3, 21)
-
-    def get_holiday(self, name):
-        """ 
-        Return holidays date
-        """
-        holidays_list = list(self.values())
-        corrected_name = correct_holiday_name(name, holidays_list)
-        for dt, hname in self.items():
-            if hname == corrected_name:
-                return dt, hname
-        return None, None
 
 class IN(India):
     pass
