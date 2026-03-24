@@ -157,6 +157,7 @@ msgstr "आंध्र प्रदेश स्थापना दिवस"
 msgid "Ugadi"
 msgstr "उगादि"
 
+#. Arunachal Pradesh Statehood Day.
 msgid "Arunachal Pradesh Statehood Day"
 msgstr "अरुणाचल प्रदेश स्थापना दिवस"
 

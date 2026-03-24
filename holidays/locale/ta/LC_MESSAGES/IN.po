@@ -156,6 +156,7 @@ msgstr "ஆந்திரப் பிரதேச நாள்"
 msgid "Ugadi"
 msgstr "உகாதி"
 
+#. Arunachal Pradesh Statehood Day.
 msgid "Arunachal Pradesh Statehood Day"
 msgstr "அருணாசல பிரதேச மாநில தினம்"
 

@@ -157,6 +157,7 @@ msgstr "આંધ્ર પ્રદેશ સ્થાપના દિવસ"
 msgid "Ugadi"
 msgstr "ઉગાડી"
 
+#. Arunachal Pradesh Statehood Day.
 msgid "Arunachal Pradesh Statehood Day"
 msgstr "અરુણાચલ પ્રદેશ રાજ્યત્વ દિવસ"
 

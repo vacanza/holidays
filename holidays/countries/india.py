@@ -304,10 +304,8 @@ class India(
         # Bohag Bihu.
         self._add_bohag_bihu(tr("Bohag Bihu"))
 
-
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
-
 
         # Indigenous Faith Day.
         self._add_holiday_dec_1(tr("Indigenous Faith Day"))
