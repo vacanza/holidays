@@ -23,8 +23,13 @@ class ShanghaiStockExchange(ChildEntity, China):
 
     References:
         * <https://english.sse.com.cn/start/trading/schedule/>
+        * <https://www.sse.com.cn/disclosure/announcement/general/c/c_20241223_10767108.shtml>
         * <https://www.sse.com.cn/disclosure/announcement/general/c/c_20231226_5733939.shtml>
-        * <https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/c/c_20200127_4991582.shtml>
+        * <https://www.sse.com.cn/disclosure/announcement/general/c/c_20221227_5714458.shtml>
+        * <https://www.sse.com.cn/disclosure/announcement/general/c/c_20211220_5662606.shtml>
+        * <https://www.sse.com.cn/disclosure/announcement/general/c/c_20201224_5286949.shtml>
+        * <https://www.sse.com.cn/disclosure/announcement/general/c/c_20191220_4969627.shtml>
+        * <https://www.sse.com.cn/star/media/news/c/c_20200127_4991583.shtml>
     """
 
     country = None  # type: ignore[assignment]
