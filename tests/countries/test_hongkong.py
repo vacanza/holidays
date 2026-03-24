@@ -96,7 +96,7 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertOptionalHolidayName(name_following, (f"{year}-01-02" for year in years_special))
 
     def test_chinese_new_year(self):
-        name_eve = "農曆年三十"
+        name_eve = "農曆除夕"
         name = "農曆年初一"
         name_second = "農曆年初二"
         name_third = "農曆年初三"
