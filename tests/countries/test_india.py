@@ -987,3 +987,4 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertIn("2026-04-14", in_holidays)
         self.assertIn("2026-10-02", in_holidays)
         self.assertIn("2026-03-19", in_holidays)
+        self.assertIn("2026-08-26",in_holidays)
