@@ -405,7 +405,7 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
-        # Dahi Handi (celebrated on Janmashtami).
+        # Dahi Handi 
         self._add_janmashtami(tr("Dahi handi"))
 
     # Madhya Pradesh.
