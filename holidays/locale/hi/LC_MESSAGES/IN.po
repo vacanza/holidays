@@ -135,7 +135,7 @@ msgstr "रामनवमी"
 
 #. Navratri / Sharad Navratri.
 msgid "Navratri / Sharad Navratri"
-msgstr "नवरात्र/शरद नवरात्र"
+msgstr "नवरात्र / शरद नवरात्र"
 
 #. Easter Sunday.
 msgid "Easter Sunday"
