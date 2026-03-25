@@ -15,6 +15,7 @@
 # ruff: noqa: S310
 
 import ast
+from datetime import date, timedelta
 from pathlib import Path
 from urllib.request import urlretrieve
 
@@ -66,14 +67,57 @@ YEAR_TEMPLATE = "        {year}: {dates},"
 
 
 def _extract_dates(all_days: list) -> dict[str, dict[int, str]]:
+    """Extract gregorian dates for each holiday across all years.
+
+    Tibetan year names repeat on a 60-year cycle, so we scan the data linearly
+    and track month boundaries directly. When a tibetan day is expunged (skipped),
+    the holiday falls on the preceding gregorian day.
+
+    Only non-intercalary months are considered (d[4] == 0). Intercalary days
+    within a regular month are still valid and included in the scan.
+    """
     dates: dict[str, dict[int, str]] = {}
+
     for tib_day, tib_month, hol_name in HOLIDAY_DATES:
+        in_month = False
+        found = False
+
         for d in all_days:
             if len(d) < 9:
                 continue
-            if d[2] == tib_day and d[3] == tib_month and not d[4]:
-                g_year, g_month, g_day = d[8], d[7], d[6]
-                dates.setdefault(hol_name, {})[g_year] = f"({MONTH_NAMES[g_month]}, {g_day})"
+
+            if d[3] == tib_month and d[4] == 0:
+                if not in_month:
+                    in_month = True
+                    found = False
+
+                if found:
+                    continue
+
+                if d[2] == tib_day:
+                    g_date = date(d[8], d[7], d[6])
+                    if hol_name == "DAY_OF_OFFERING":
+                        g_date += timedelta(days=1)
+                    dates.setdefault(hol_name, {})[g_date.year] = (
+                        f"({MONTH_NAMES[g_date.month]}, {g_date.day})"
+                    )
+                    found = True
+                elif d[2] > tib_day:
+                    g_date = date(d[8], d[7], d[6]) - timedelta(days=1)
+                    dates.setdefault(hol_name, {})[g_date.year] = (
+                        f"({MONTH_NAMES[g_date.month]}, {g_date.day})"
+                    )
+                    found = True
+
+            else:
+                if in_month and not found:
+                    g_date = date(d[8], d[7], d[6]) - timedelta(days=1)
+                    dates.setdefault(hol_name, {})[g_date.year] = (
+                        f"({MONTH_NAMES[g_date.month]}, {g_date.day})"
+                    )
+                in_month = False
+                found = False
+
     return dates
 
 

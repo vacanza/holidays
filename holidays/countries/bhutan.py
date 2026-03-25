@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import _CustomHinduHolidays
-from holidays.calendars.gregorian import SEP, OCT
+from holidays.calendars.gregorian import JAN, SEP, OCT
 from holidays.groups import HinduCalendarHolidays, TibetanCalendarHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -122,7 +122,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         self._add_holiday_dec_17("National Day")
 
         # Winter Solstice.
-        self._add_tibetan_winter_solstice("Winter Solstice")
+        self._add_winter_solstice("Winter Solstice")
 
         # Traditional Day of Offering.
         self._add_day_of_offering("Traditional Day of Offering")
@@ -163,6 +163,16 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         self._add_thimphu_tshechu_day_two(name)
         self._add_thimphu_tshechu_day_three(name)
 
+    def _add_winter_solstice(self, name):
+        dates = BhutanStaticHolidays.WINTER_SOLSTICE_DATES
+        if self._year in dates:
+            self._add_holiday(name, dates[self._year])
+
+    def _add_blessed_rainy_day(self, name):
+        dates = BhutanStaticHolidays.BLESSED_RAINY_DAY_DATES
+        if self._year in dates:
+            self._add_holiday(name, dates[self._year])
+
 
 class BT(Bhutan):
     pass
@@ -170,6 +180,19 @@ class BT(Bhutan):
 
 class BTN(Bhutan):
     pass
+
+
+class BhutanStaticHolidays:
+    WINTER_SOLSTICE_DATES = {
+        **{year: (JAN, 2) for year in range(1950, 2050)},
+        2019: (JAN, 3),
+        2022: (JAN, 1),
+    }
+
+    BLESSED_RAINY_DAY_DATES = {
+        **{year: (SEP, 23) for year in range(1950, 2050)},
+        2023: (SEP, 24),
+    }
 
 
 class BhutanHinduHolidays(_CustomHinduHolidays):
