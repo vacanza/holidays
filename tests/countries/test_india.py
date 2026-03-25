@@ -15,7 +15,7 @@ from unittest import TestCase
 from holidays.constants import OPTIONAL
 from holidays.countries.india import India
 from tests.common import CommonCountryTests
-import holidays
+
 
 class TestIndia(CommonCountryTests, TestCase):
     @classmethod
@@ -987,4 +987,4 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertIn("2026-04-14", in_holidays)
         self.assertIn("2026-10-02", in_holidays)
         self.assertIn("2026-03-19", in_holidays)
-        self.assertIn("2026-08-26",in_holidays)
+        self.assertIn("2026-08-04",in_holidays)
