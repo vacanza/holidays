@@ -12,24 +12,25 @@
 
 from holidays.constants import PUBLIC
 from holidays.countries.china import China
-from holidays.mixins.child_entity import ChildEntity
 
 
-class ShanghaiStockExchange(ChildEntity, China):
+class ShanghaiStockExchange(China):
     """Shanghai Stock Exchange (SSE) holidays.
 
     This class provides Shanghai Stock Exchange-specific market holidays.
     Market holidays are days when the stock exchange is closed for trading.
 
     References:
-        * <https://english.sse.com.cn/start/trading/schedule/>
-        * <https://www.sse.com.cn/disclosure/announcement/general/c/c_20241223_10767108.shtml>
-        * <https://www.sse.com.cn/disclosure/announcement/general/c/c_20231226_5733939.shtml>
-        * <https://www.sse.com.cn/disclosure/announcement/general/c/c_20221227_5714458.shtml>
-        * <https://www.sse.com.cn/disclosure/announcement/general/c/c_20211220_5662606.shtml>
-        * <https://www.sse.com.cn/disclosure/announcement/general/c/c_20201224_5286949.shtml>
-        * <https://www.sse.com.cn/disclosure/announcement/general/c/c_20191220_4969627.shtml>
-        * <https://www.sse.com.cn/star/media/news/c/c_20200127_4991583.shtml>
+        * <https://web.archive.org/web/20260129171258/http://english.sse.com.cn/start/trading/schedule/>
+
+    Historical data:
+        * [2020](https://web.archive.org/web/20250620222003/http://www.sse.com.cn/disclosure/announcement/general/c/c_20191220_4969627.shtml)
+        * [2020 changes](https://web.archive.org/web/20200211063350/http://www.sse.com.cn:80/star/media/news/c/c_20200127_4991583.shtml)
+        * [2021](https://web.archive.org/web/20260212161241/http://www.sse.com.cn/disclosure/announcement/general/c/c_20201224_5286949.shtml)
+        * [2022](https://web.archive.org/web/20220518224459/http://www.sse.com.cn/disclosure/announcement/general/c/c_20211220_5662606.shtml)
+        * [2023](https://web.archive.org/web/20251213130614/http://www.sse.com.cn/disclosure/announcement/general/c/c_20221227_5714458.shtml)
+        * [2024](https://web.archive.org/web/20251208095335/http://www.sse.com.cn/disclosure/announcement/general/c/c_20231226_5733939.shtml)
+        * [2025](https://web.archive.org/web/20251213122921/https://www.sse.com.cn/disclosure/announcement/general/c/c_20241223_10767108.shtml)
     """
 
     country = None  # type: ignore[assignment]
