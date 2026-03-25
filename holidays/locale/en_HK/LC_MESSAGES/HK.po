@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-04 14:03+0700\n"
-"PO-Revision-Date: 2026-03-25 00:23+0800\n"
+"PO-Revision-Date: 2026-03-25 21:24+0800\n"
 "Last-Translator: Ryan Lee <deadcry152@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_HK\n"
@@ -60,7 +60,7 @@ msgid "農曆年初一"
 msgstr "Lunar New Year's Day"
 
 #. Chinese New Year's Eve.
-msgid "農曆除夕"
+msgid "農曆年初一的前一日"
 msgstr "The day preceding Lunar New Year's Day"
 
 #. The second day of Chinese New Year.

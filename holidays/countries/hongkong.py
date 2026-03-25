@@ -122,7 +122,7 @@ class HongKong(
         # Chinese New Year.
         name = tr("農曆年初一")
         # Chinese New Year's Eve.
-        preceding_day_lunar = tr("農曆除夕")
+        preceding_day_lunar = tr("農曆年初一的前一日")
         # The second day of Chinese New Year.
         second_day_lunar = tr("農曆年初二")
         # The third day of Chinese New Year.
