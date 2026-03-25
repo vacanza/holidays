@@ -139,11 +139,11 @@ msgstr "नवरात्र / शरद नवरात्र"
 
 #. Easter Sunday.
 msgid "Easter Sunday"
-msgstr "ईस्टर संडे"
+msgstr "ईस्टर रविवार"
 
 #. Palm Sunday.
 msgid "Palm Sunday"
-msgstr "पाम संडे"
+msgstr "पाम रविवार"
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
