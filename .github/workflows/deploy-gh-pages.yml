@@ -11,8 +11,10 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 concurrency:
-  group: "pages"
+  group: github-pages
   cancel-in-progress: true
+
+permissions: {}
 
 jobs:
   build:
@@ -50,8 +52,8 @@ jobs:
     runs-on: ubuntu-24.04
     needs: build
     permissions:
-      pages: write
       id-token: write
+      pages: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

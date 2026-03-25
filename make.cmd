@@ -30,16 +30,20 @@ GoTo :Help
     uv run --no-sync properdocs build -f .properdocs.yml
     Exit /B
 
+:Doc-serve
+    uv run --no-sync properdocs serve -f .properdocs.yml
+    Exit /B
+
 :Help
     Echo Usage: make ^<Target^>
     Echo     check         run pre-commit and tests
     Echo     doc           run documentation build process
+    Echo     doc-serve     serve documentation locally
     Echo     help          show summary of available commands
     Echo     icalendar     generate JSON and ICS data files
     Echo     l10n          update .pot and .po files
     Echo     package       build package distribution
     Echo     pre-commit    run pre-commit against all files
-    Echo     serve         serve documentation locally
     Echo     setup         setup development environment
     Echo     test          run tests (in parallel)
     Echo     upgrade       run dependency upgrade
@@ -71,10 +75,6 @@ GoTo :Help
 :Sbom
     For /F "Delims=" %%P in ('uv python find') Do Set PYTHON_PATH=%%P
     uv tool run --from cyclonedx-bom cyclonedx-py environment "!PYTHON_PATH!"
-    Exit /B
-
-:Serve
-    uv run --no-sync properdocs serve -f .properdocs.yml
     Exit /B
 
 :Setup
