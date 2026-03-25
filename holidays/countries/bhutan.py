@@ -9,8 +9,6 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-from holidays.groups import HinduCalendarHolidays, TibetanCalendarHolidays
-from holidays.holiday_base import HolidayBase
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomHinduHolidays

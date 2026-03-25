@@ -94,7 +94,7 @@ msgstr "Descending Day of Lord Buddha"
 
 #. Thimphu Drubchoe.
 msgid "ཐིམ་ཕུའི་སྒྲུབ་ཆོད།"
-msgstr "Thimphu Drubchoe"
+msgstr "Thimphu Drubchen"
 
 #. Thimphu Tshechu.
 msgid "ཐིམ་ཕུའི་ཚེས་བཅུ།"

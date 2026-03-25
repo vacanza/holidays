@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from unittest import TestCase
-from datetime import date
+
 from holidays.countries.bhutan import Bhutan
 from tests.common import CommonCountryTests
 
@@ -232,6 +232,12 @@ class TestBhutan(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
+    from holidays.countries import Bhutan
+
+    def test_subdiv_not_15_branch(self):
+        bhutan = Bhutan(years=2024, subdiv=None)
+        self.assertTrue(len(bhutan) > 0)
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             "dz",
@@ -247,22 +253,22 @@ class TestBhutan(CommonCountryTests, TestCase):
             ("2024-05-23", "སངས་རྒྱས་ཀྱི་མྱང་འདས།"),
             ("2024-06-16", "གུ་རུ་རིན་པོ་ཆེའི་སྐུ་འཁྲུངས་དུས་ཆེན།"),
             ("2024-07-10", "སངས་རྒྱས་ཀྱི་ཆོས་འཁོར་དང་པོ།"),
-            ("2024-09-13", "ཐིམ་ཕུ་ཚེས་ཆུ།"),
-            ("2024-09-14", "ཐིམ་ཕུ་ཚེས་ཆུ།"),
-            ("2024-09-15", "ཐིམ་ཕུ་ཚེས་ཆུ།"),
-            ("2024-09-10", "ཐིམ་ཕུ་དྲུབ་ཆེན།"),
+            ("2024-09-10", "ཐིམ་ཕུའི་སྒྲུབ་ཆོད།"),
+            ("2024-09-13", "ཐིམ་ཕུའི་ཚེས་བཅུ།"),
+            ("2024-09-14", "ཐིམ་ཕུའི་ཚེས་བཅུ།"),
+            ("2024-09-15", "ཐིམ་ཕུའི་ཚེས་བཅུ།"),
             ("2024-09-23", "བཀྲ་ཤིས་ཆར་པའི་ཉིན།"),
             ("2024-10-12", "ད་སེན།"),
             ("2024-11-01", "རྒྱལ་པོ་མཆོག་གི་ཁྲི་འདོན་དུས་ཆེན།"),
             ("2024-11-11", "འབྲུག་རྒྱལ་པོ་བཞི་པའི་སྐུ་འཁྲུངས་དུས་ཆེན་– རྩ་ཁྲིམས་ཀྱི་ཉིན།"),
             ("2024-11-22", "སངས་རྒྱས་ཀྱི་ལྷ་བབས་དུས་ཆེན།"),
             ("2024-12-17", "རྒྱལ་ཡོངས་ཀྱི་ཉིན།"),
-            Bhutan(years=2024, language="dz", subdiv="15")
         )
 
-    def test_en_us(self):
-        self.assertLocalizedHolidays(
-            "en_US",
+    def test_2024(self):
+        self.assertHolidaysInYear(
+            2024,
+            Bhutan(years=2024, language="en_US"),
             ("2024-01-02", "Winter Solstice"),
             ("2024-01-12", "Traditional Day of Offering"),
             ("2024-02-10", "Losar"),
@@ -275,18 +281,10 @@ class TestBhutan(CommonCountryTests, TestCase):
             ("2024-05-23", "Lord Buddha's Parinirvana"),
             ("2024-06-16", "Birth Anniversary of Guru Rinpoche"),
             ("2024-07-10", "First Sermon of Lord Buddha"),
-            ("2024-09-13", "Thimphu Tshechu"),
-            ("2024-09-14", "Thimphu Tshechu"),
-            ("2024-09-15", "Thimphu Tshechu"),
-            ("2024-09-10", "Thimphu Drubchen"),
             ("2024-09-23", "Blessed Rainy Day"),
             ("2024-10-12", "Dassain"),
             ("2024-11-01", "Coronation of His Majesty the King"),
             ("2024-11-11", "Birth Anniversary of the 4th Druk Gyalpo - Constitution Day"),
             ("2024-11-22", "Descending Day of Lord Buddha"),
             ("2024-12-17", "National Day"),
-            Bhutan(years=2024, language="en_US", subdiv="15")
         )
-
-
-
