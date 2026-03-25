@@ -494,7 +494,7 @@ True
 [ICalExporter][holidays.ical.ICalExporter] facilitates the creation and export of iCalendar files
 in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
 
-``` python
+```python
 >>> from holidays import country_holidays
 >>> from holidays.ical import ICalExporter
 >>> us_holidays = country_holidays('US', years=2020)
@@ -504,7 +504,7 @@ in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
 
 To create iCalendar content, use `generate`.
 
-``` python
+```python
 >>> from holidays import country_holidays
 >>> from holidays.ical import ICalExporter
 >>> th_holidays = country_holidays('TH', years=2024)
@@ -524,16 +524,17 @@ True
 ```
 
 !!! tip "Tip"
-    Although the iCalendar specification supports a wide range of language formats as outlined
-    in [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646), the Holidays object requires
-    that the `language` attribute adhere to the [ISO 639-1 or
-    ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php) language codes,
-    such as `en` or `pap-AW`.
+Although the iCalendar specification supports a wide range of language formats as outlined
+in [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646), the Holidays object requires
+that the `language` attribute adhere to the ISO 639-1 or ISO 639-2 language codes,
+such as `en` or `pap-AW`.
 
-    Additionally, if no `language` is specified for a holiday, but a `default_language` is set
-    for the Holiday object, the default language will be used instead.
+```
+Additionally, if no `language` is specified for a holiday, but a `default_language` is set
+for the Holiday object, the default language will be used instead.
+```
 
-``` python
+```python
 >>> from holidays import country_holidays
 >>> from holidays.ical import ICalExporter
 >>> cn_holidays = country_holidays("CN", years=2024, language="en_US")
@@ -549,7 +550,7 @@ True
 
 To export to `.ics` format, use `save_ics`.
 
-``` python
+```python
 >>> from pathlib import Path
 >>> from holidays import financial_holidays
 >>> from holidays.ical import ICalExporter
@@ -559,6 +560,25 @@ To export to `.ics` format, use `save_ics`.
 # Export the NYSE_2024_calendar.ics file to MS Windows' Downloads folder instead.
 >>> downloads_path = Path.home() / "Downloads"
 >>> nyse_exporter.save_ics(file_path=str(downloads_path / "NYSE_2024_calendar.ics"))
+```
+
+### Example: Generate `.ics` files with categories and language
+
+```python
+>>> from holidays.countries.india import IN
+>>> from holidays.ical import ICalExporter
+>>>
+>>> language = "en"
+>>> years = range(2021, 2026)
+>>>
+>>> for category in IN.supported_categories:
+>>>     holidays = IN(
+>>>         years=years,
+>>>         categories=category,
+>>>         language=language,
+>>>     )
+>>>     filename = f"IN_{language.upper()}_{category.upper()}.ics"
+>>>     ICalExporter(holidays).save_ics(filename)
 ```
 
 For advanced features and customization of the exported `.ics` output, consider using
