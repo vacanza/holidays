@@ -41,8 +41,9 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
 
     country = "BT"
     default_language = "dz"
-    supported_languages = ("dz", "en_US")
+    # %s (estimated).
     estimated_label = tr("%s (ཚོད་དཔག་གི།)")
+    supported_languages = ("dz", "en_US")
     # Jigme Khesar Namgyel Wangchuck ascended to the throne on December 9th, 2006.
     start_year = 2007
     subdivisions = (
