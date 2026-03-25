@@ -355,6 +355,40 @@ class TestLebanon(CommonCountryTests, TestCase):
             ("2025-11-22", "ذكرى الاستقلال"),
             ("2025-12-25", "عيد الميلاد"),
         )
+        
+    def test_l10n_fr(self):
+        self.assertLocalizedHolidays(
+            "fr",
+            ("2025-01-01", "Jour de l'An"),
+            ("2025-01-06", "Noël arménien orthodoxe"),
+            ("2025-02-09", "Saint Maron"),
+            ("2025-02-14", "Commémoration de Rafic Hariri"),
+            ("2025-03-25", "Fête de l'Annonciation"),
+            ("2025-03-30", "Aïd el-Fitr"),
+            ("2025-03-31", "Aïd el-Fitr"),
+            (
+                "2025-04-18",
+                "Vendredi saint (orthodoxe); Vendredi saint (catholique)",
+            ),
+            ("2025-04-19", "Samedi saint orthodoxe"),
+            (
+                "2025-04-21",
+                "Lundi de Pâques des communautés orthodoxes; "
+                "Lundi de Pâques des communautés catholiques",
+            ),
+            ("2025-05-01", "Fête du Travail"),
+            ("2025-05-04", "Journée des Martyrs"),
+            ("2025-05-11", "Fête de la Résistance et de la Libération"),
+            ("2025-06-06", "Aïd al-Adha"),
+            ("2025-06-07", "Aïd al-Adha"),
+            ("2025-06-26", "Nouvel An islamique"),
+            ("2025-07-05", "Achoura (estimé)"),
+            ("2025-08-04", "Commémoration de l'explosion du port de Beyrouth"),
+            ("2025-08-15", "Assomption"),
+            ("2025-09-04", "Mawlid (Naissance du Prophète) (estimé)"),
+            ("2025-11-22", "Jour de l'Indépendance"),
+            ("2025-12-25", "Noël"),
+        )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
