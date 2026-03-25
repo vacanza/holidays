@@ -108,7 +108,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         # Birth Anniversary of the 3rd Druk Gyalpo.
         self._add_holiday_may_2(tr("འབྲུག་རྒྱལ་པོ་གསུམ་པའི་སྐུ་འཁྲུངས་དུས་ཆེན།"))
 
-        # Coronation
+        # Coronation of His Majesty the King.
         self._add_holiday_nov_1(tr("རྒྱལ་པོ་མཆོག་གི་ཁྲི་འདོན་དུས་ཆེན།"))
 
         # Constitution Day
