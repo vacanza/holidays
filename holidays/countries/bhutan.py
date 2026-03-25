@@ -122,7 +122,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         # Coronation of His Majesty the King.
         self._add_holiday_nov_1(tr("རྒྱལ་པོ་མཆོག་གི་ཁྲི་འདོན་དུས་ཆེན།"))
 
-        # Constitution Day
+        # Birth Anniversary of the 4th Druk Gyalpo - Constitution Day.
         self._add_holiday_nov_11(tr("འབྲུག་རྒྱལ་པོ་བཞི་པའི་སྐུ་འཁྲུངས་དུས་ཆེན་– རྩ་ཁྲིམས་ཀྱི་ཉིན།"))
 
         # National Day
@@ -131,7 +131,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         # Winter Solstice
         self._add_tibetan_winter_solstice(tr("དགུན་གྱི་ཉི་མ་ཐུང་ཤོས།"))
 
-        # Traditional Day
+        # Traditional Day of Offering.
         self._add_day_of_offering(tr("ལུགས་སྲོལ་གྱི་མཆོད་པའི་ཉིན།"))
 
         # Losar
@@ -139,25 +139,25 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         self._add_losar(name)
         self._add_losar_day_two(name)
 
-        # Zhabdrung
+        # Death Anniversary of Zhabdrung.
         self._add_death_of_zhabdrung(tr("ཞབས་དྲུང་གི་སྐུ་འདས་དུས་ཆེན།"))
 
-        # Buddha
+        # Lord Buddha's Parinirvana.
         self._add_buddha_parinirvana(tr("སངས་རྒྱས་ཀྱི་མྱང་འདས།"))
 
-        # Guru Rinpoche
+        # Birth Anniversary of Guru Rinpoche.
         self._add_birth_of_guru_rinpoche(tr("གུ་རུ་རིན་པོ་ཆེའི་སྐུ་འཁྲུངས་དུས་ཆེན།"))
 
-        # First Sermon
+        # First Sermon of Lord Buddha.
         self._add_buddha_first_sermon(tr("སངས་རྒྱས་ཀྱི་ཆོས་འཁོར་དང་པོ།"))
 
-        # Rainy Day
+        # Blessed Rainy Day.
         self._add_blessed_rainy_day(tr("བཀྲ་ཤིས་ཆར་པའི་ཉིན།"))
 
         # Dassain
         self._add_dussehra(tr("ད་སེན།"))
 
-        # Descending Day
+        # Descending Day of Lord Buddha.
         self._add_descending_day_of_lord_buddha(tr("སངས་རྒྱས་ཀྱི་ལྷ་བབས་དུས་ཆེན།"))
 
     def _populate_subdiv_15_public_holidays(self):
