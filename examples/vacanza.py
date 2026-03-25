@@ -10,13 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-#  holidays
-#  --------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly.
-#
-#  License: MIT (see LICENSE file)
-
 from holidays.countries.india import IN
 from holidays.ical import ICalExporter
 
