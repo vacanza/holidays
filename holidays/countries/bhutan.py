@@ -9,7 +9,9 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
+from holidays.groups import HinduCalendarHolidays, TibetanCalendarHolidays
+from holidays.holiday_base import HolidayBase
+from gettext import gettext as tr
 
 from holidays.calendars import _CustomHinduHolidays
 from holidays.calendars.gregorian import SEP, OCT
@@ -41,8 +43,8 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
 
     country = "BT"
     default_language = "dz"
-    supported_languages = ("en_US", "dz")
-    estimated_label = "%s (estimated)"
+    supported_languages = ("dz", "en_US")
+    estimated_label = tr("%s (ཚོད་དཔག་གི།)")
     # Jigme Khesar Namgyel Wangchuck ascended to the throne on December 9th, 2006.
     start_year = 2007
     subdivisions = (
@@ -100,59 +102,59 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
 
     def _populate_public_holidays(self):
         # Birth Anniversary of His Majesty the King.
-        name = "Birth Anniversary of His Majesty the King"
+        name = tr("རྒྱལ་པོ་མཆོག་གི་སྐུ་འཁྲུངས་དུས་ཆེན།")
         self._add_holiday_feb_21(name)
         self._add_holiday_feb_22(name)
         self._add_holiday_feb_23(name)
 
         # Birth Anniversary of the 3rd Druk Gyalpo.
-        self._add_holiday_may_2("Birth Anniversary of the 3rd Druk Gyalpo")
+        self._add_holiday_may_2(tr("འབྲུག་རྒྱལ་པོ་གསུམ་པའི་སྐུ་འཁྲུངས་དུས་ཆེན།"))
 
         # Coronation
-        self._add_holiday_nov_1("Coronation of His Majesty the King")
+        self._add_holiday_nov_1(tr("རྒྱལ་པོ་མཆོག་གི་ཁྲི་འདོན་དུས་ཆེན།"))
 
         # Constitution Day
-        self._add_holiday_nov_11("Birth Anniversary of the 4th Druk Gyalpo - Constitution Day")
+        self._add_holiday_nov_11(tr("འབྲུག་རྒྱལ་པོ་བཞི་པའི་སྐུ་འཁྲུངས་དུས་ཆེན་– རྩ་ཁྲིམས་ཀྱི་ཉིན།"))
 
         # National Day
-        self._add_holiday_dec_17("National Day")
+        self._add_holiday_dec_17(tr("རྒྱལ་ཡོངས་ཀྱི་ཉིན།"))
 
         # Winter Solstice
-        self._add_tibetan_winter_solstice("Winter Solstice")
+        self._add_tibetan_winter_solstice(tr("དགུན་གྱི་ཉི་མ་ཐུང་ཤོས།"))
 
         # Traditional Day
-        self._add_day_of_offering("Traditional Day of Offering")
+        self._add_day_of_offering(tr("ལུགས་སྲོལ་གྱི་མཆོད་པའི་ཉིན།"))
 
         # Losar
-        name = "Losar"
+        name = tr("ལོ་གསར།")
         self._add_losar(name)
         self._add_losar_day_two(name)
 
         # Zhabdrung
-        self._add_death_of_zhabdrung("Death Anniversary of Zhabdrung")
+        self._add_death_of_zhabdrung(tr("ཞབས་དྲུང་གི་སྐུ་འདས་དུས་ཆེན།"))
 
         # Buddha
-        self._add_buddha_parinirvana("Lord Buddha's Parinirvana")
+        self._add_buddha_parinirvana(tr("སངས་རྒྱས་ཀྱི་མྱང་འདས།"))
 
         # Guru Rinpoche
-        self._add_birth_of_guru_rinpoche("Birth Anniversary of Guru Rinpoche")
+        self._add_birth_of_guru_rinpoche(tr("གུ་རུ་རིན་པོ་ཆེའི་སྐུ་འཁྲུངས་དུས་ཆེན།"))
 
         # First Sermon
-        self._add_buddha_first_sermon("First Sermon of Lord Buddha")
+        self._add_buddha_first_sermon(tr("སངས་རྒྱས་ཀྱི་ཆོས་འཁོར་དང་པོ།"))
 
         # Rainy Day
-        self._add_blessed_rainy_day("Blessed Rainy Day")
+        self._add_blessed_rainy_day(tr("བཀྲ་ཤིས་ཆར་པའི་ཉིན།"))
 
         # Dassain
-        self._add_dussehra("Dassain")
+        self._add_dussehra(tr("ད་སེན།"))
 
         # Descending Day
-        self._add_descending_day_of_lord_buddha("Descending Day of Lord Buddha")
+        self._add_descending_day_of_lord_buddha(tr("སངས་རྒྱས་ཀྱི་ལྷ་བབས་དུས་ཆེན།"))
 
     def _populate_subdiv_15_public_holidays(self):
-        self._add_thimphu_drubchen_day("Thimphu Drubchoe")
+        self._add_thimphu_drubchen_day(tr("ཐིམ་ཕུའི་སྒྲུབ་ཆོད།"))
 
-        name = "Thimphu Tshechu"
+        name = tr("ཐིམ་ཕུའི་ཚེས་བཅུ།")
         self._add_thimphu_tshechu_day(name)
         self._add_thimphu_tshechu_day_two(name)
         self._add_thimphu_tshechu_day_three(name)

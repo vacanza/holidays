@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-#  Bhutan holidays.
+#  Bhutan holidays en_US localization.
 #
 msgid ""
 msgstr ""
@@ -19,8 +19,8 @@ msgstr ""
 "POT-Creation-Date: 2025-06-01 00:00+0000\n"
 "PO-Revision-Date: 2025-06-01 00:00+0000\n"
 "Last-Translator: Vacanza Team\n"
-"Language-Team: Dzongkha\n"
-"Language: dz\n"
+"Language-Team: English (United States)\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,72 +30,72 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (ཚོད་དཔག་གི།)"
-msgstr ""
+msgstr "%s (estimated)"
 
 #. Birth Anniversary of His Majesty the King.
 msgid "རྒྱལ་པོ་མཆོག་གི་སྐུ་འཁྲུངས་དུས་ཆེན།"
-msgstr ""
+msgstr "Birth Anniversary of His Majesty the King"
 
 #. Birth Anniversary of the 3rd Druk Gyalpo.
 msgid "འབྲུག་རྒྱལ་པོ་གསུམ་པའི་སྐུ་འཁྲུངས་དུས་ཆེན།"
-msgstr ""
+msgstr "Birth Anniversary of the 3rd Druk Gyalpo"
 
 #. Coronation of His Majesty the King.
 msgid "རྒྱལ་པོ་མཆོག་གི་ཁྲི་འདོན་དུས་ཆེན།"
-msgstr ""
+msgstr "Coronation of His Majesty the King"
 
 #. Constitution Day.
 msgid "འབྲུག་རྒྱལ་པོ་བཞི་པའི་སྐུ་འཁྲུངས་དུས་ཆེན་– རྩ་ཁྲིམས་ཀྱི་ཉིན།"
-msgstr ""
+msgstr "Birth Anniversary of the 4th Druk Gyalpo - Constitution Day"
 
 #. National Day.
 msgid "རྒྱལ་ཡོངས་ཀྱི་ཉིན།"
-msgstr ""
+msgstr "National Day"
 
 #. Winter Solstice.
 msgid "དགུན་གྱི་ཉི་མ་ཐུང་ཤོས།"
-msgstr ""
+msgstr "Winter Solstice"
 
 #. Traditional Day of Offering.
 msgid "ལུགས་སྲོལ་གྱི་མཆོད་པའི་ཉིན།"
-msgstr ""
+msgstr "Traditional Day of Offering"
 
 #. Losar.
 msgid "ལོ་གསར།"
-msgstr ""
+msgstr "Losar"
 
 #. Death Anniversary of Zhabdrung.
 msgid "ཞབས་དྲུང་གི་སྐུ་འདས་དུས་ཆེན།"
-msgstr ""
+msgstr "Death Anniversary of Zhabdrung"
 
 #. Lord Buddha's Parinirvana.
 msgid "སངས་རྒྱས་ཀྱི་མྱང་འདས།"
-msgstr ""
+msgstr "Lord Buddha's Parinirvana"
 
 #. Birth Anniversary of Guru Rinpoche.
 msgid "གུ་རུ་རིན་པོ་ཆེའི་སྐུ་འཁྲུངས་དུས་ཆེན།"
-msgstr ""
+msgstr "Birth Anniversary of Guru Rinpoche"
 
 #. First Sermon of Lord Buddha.
 msgid "སངས་རྒྱས་ཀྱི་ཆོས་འཁོར་དང་པོ།"
-msgstr ""
+msgstr "First Sermon of Lord Buddha"
 
 #. Blessed Rainy Day.
 msgid "བཀྲ་ཤིས་ཆར་པའི་ཉིན།"
-msgstr ""
+msgstr "Blessed Rainy Day"
 
 #. Dassain.
 msgid "ད་སེན།"
-msgstr ""
+msgstr "Dassain"
 
 #. Descending Day of Lord Buddha.
 msgid "སངས་རྒྱས་ཀྱི་ལྷ་བབས་དུས་ཆེན།"
-msgstr ""
+msgstr "Descending Day of Lord Buddha"
 
 #. Thimphu Drubchoe.
 msgid "ཐིམ་ཕུའི་སྒྲུབ་ཆོད།"
-msgstr ""
+msgstr "Thimphu Drubchoe"
 
 #. Thimphu Tshechu.
 msgid "ཐིམ་ཕུའི་ཚེས་བཅུ།"
-msgstr ""
+msgstr "Thimphu Tshechu"
