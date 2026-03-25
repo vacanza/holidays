@@ -1,17 +1,39 @@
+"""
+vacanza.py - Generate .ics holiday calendar files for any country and year.
+
+Usage:
+    python vacanza.py <COUNTRY_CODE> [YEAR or YEAR_START-YEAR_END] [--public-only]
+
+Examples:
+    python vacanza.py IN
+    python vacanza.py IN 2025
+    python vacanza.py IN 2020-2025
+    python vacanza.py US 2025 --public-only
+    python vacanza.py IN 2025 --public-only
+"""
+
 import argparse
 import sys
+from datetime import date
 
 import holidays
+from holidays.constants import PUBLIC
 from holidays.ical import ICalExporter
 
 
 def parse_years(year_arg):
-    """Parse year or year range string into a range object."""
+    """Parse a year or YYYY-YYYY range string into a range object."""
     if "-" in str(year_arg):
         parts = year_arg.split("-")
         if len(parts) == 2:
             try:
                 start, end = int(parts[0]), int(parts[1])
+                if start > end:
+                    print(
+                        f"Error: Invalid year range '{year_arg}'."
+                        f" Start year {start} must be <= end year {end}."
+                    )
+                    sys.exit(1)
                 return range(start, end + 1)
             except ValueError:
                 print(f"Error: Invalid year range '{year_arg}'. Use format YYYY or YYYY-YYYY.")
@@ -24,14 +46,14 @@ def parse_years(year_arg):
 
 
 def get_supported_categories(country_code):
-    """Get all supported holiday categories for a given country."""
+    """Return supported holiday categories for the given country code."""
     try:
         country_class = holidays.country_holidays(country_code)
         if hasattr(country_class, "supported_categories"):
             return country_class.supported_categories
-        return ("PUBLIC",)
+        return (PUBLIC,)
     except Exception:
-        return ("PUBLIC",)
+        return (PUBLIC,)
 
 
 def generate_ics(country_code, years, public_only=False):
@@ -46,10 +68,13 @@ def generate_ics(country_code, years, public_only=False):
         sys.exit(1)
 
     # Determine which categories to generate
+    all_categories = get_supported_categories(country_code)
     if public_only:
-        categories = ("PUBLIC",)
+        categories = tuple(c for c in all_categories if c == PUBLIC)
+        if not categories:
+            categories = (PUBLIC,)
     else:
-        categories = get_supported_categories(country_code)
+        categories = all_categories
 
     print(f"\nGenerating .ics files for: {country_code}")
     print(f"Years: {list(years)}")
@@ -78,6 +103,7 @@ def generate_ics(country_code, years, public_only=False):
 
 
 def main():
+    """Parse CLI arguments and invoke the .ics generation."""
     parser = argparse.ArgumentParser(
         description="Generate .ics holiday calendar files for any country.",
         epilog=(
@@ -109,16 +135,14 @@ def main():
     # Show help if no arguments given
     if len(sys.argv) == 1:
         parser.print_help()
-        print(f"\nExample: python vacanza.py IN")
+        print("\nExample: python vacanza.py IN")
         sys.exit(1)
 
     args = parser.parse_args()
 
     country_code = args.country.upper()
 
-    # Default to current year if no year given
     if args.year is None:
-        from datetime import date
         year = date.today().year
         years = range(year, year + 1)
     else:
