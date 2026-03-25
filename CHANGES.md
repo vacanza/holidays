@@ -1,5 +1,3 @@
-# Release History
-
 ## Version 0.93
 
 Released March 16, 2026

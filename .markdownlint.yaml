@@ -1,25 +1,7 @@
 default: true
 
-# MD003/heading-style
-MD003:
-  style: atx
-
-# MD004/ul-style
-MD004:
-  style: dash
-
 # MD013/line-length
 MD013: false
 
-# MD024/no-duplicate-heading
-MD024: true
-
-# MD033/no-inline-html
-MD033: true
-
 # MD041/first-line-heading
 MD041: false
-
-# MD046/code-block-style
-MD046:
-  style: fenced
