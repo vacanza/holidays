@@ -488,6 +488,7 @@ True
 >>> holidays.UnitedStates() == holidays.US()
 True
 ```
+
 ## Generate iCalendar content and export to `.ics`
 
 [ICalExporter][holidays.ical.ICalExporter] facilitates the creation and export of iCalendar files
@@ -523,13 +524,15 @@ True
 ```
 
 !!! tip "Tip"
-    Although the iCalendar specification supports a wide range of language formats as outlined
-    in [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646), the Holidays object requires
-    that the `language` attribute adhere to the [ISO 639-1 or ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php)
-    language codes, such as `en` or `pap-AW`.
+Although the iCalendar specification supports a wide range of language formats as outlined
+in [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646), the Holidays object requires
+that the `language` attribute adhere to the [ISO 639-1 or ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php)
+language codes, such as `en` or `pap-AW`.
 
-    Additionally, if no `language` is specified for a holiday, but a `default_language` is set
-    for the Holiday object, the default language will be used instead.
+```
+Additionally, if no `language` is specified for a holiday, but a `default_language` is set
+for the Holiday object, the default language will be used instead.
+```
 
 ```python
 >>> from holidays import country_holidays
@@ -566,7 +569,7 @@ To export to `.ics` format, use `save_ics`.
 >>> from holidays.ical import ICalExporter
 >>>
 >>> years = range(2021, 2026)
->>> subdiv = "AP"
+>>> subdiv = "AP"  # Andhra Pradesh subdivision
 >>>
 >>> for category in IN.supported_categories:
 >>>     holidays = IN(
