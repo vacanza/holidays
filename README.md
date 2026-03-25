@@ -108,8 +108,17 @@ In general, the standard way to refer to a country is by using its [ISO 3166-1 a
 the same used for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
 abbreviations as aliases for their subdivisions. These are defined in the (optional)
-`subdivisions_aliases` attribute. Some of the countries support more than one language for holiday
-names output. A default language is defined by `default_language` (optional) attribute for each
+`subdivisions_aliases` attribute.
+
+> [!Note]
+>
+> **Aliases are optional.** When present, `subdivisions_aliases`
+> cover only a subset of subdivisions - commonly used or officially
+> recognized alternative names. Supported subdivisions and their
+> aliases (where available) are listed in the `Subdivisions` column
+> of the table below.
+
+Some of the countries support more than one language for holiday names output. A default language is defined by `default_language` (optional) attribute for each
 entity and is used as a fallback when neither user specified language nor user locale language
 available. The default language code is a [ISO 639-1
 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). A list of all languages supported by
@@ -224,7 +233,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Armenia</td>
 <td>AM</td>
-<td>Regions: AG (Aragac̣otn), AR (Ararat), AV (Armavir), ER (Erevan), GR (Geġark'unik'), KT (Kotayk'), LO (Loṙi), SH (Širak), SU (Syunik'), TV (Tavuš), VD (Vayoć Jor)</td>
+<td>Regions: AG (Aragac̣otn, Aragatsotn), AR (Ararat), AV (Armavir), ER (Erevan), GR (Geġark'unik', Gegharkunik), KT (Kotayk', Kotayk), LO (Loṙi, Lori), SH (Širak, Shirak), SU (Syunik', Syunik), TV (Tavuš, Tavush), VD (Vayoć Jor, Vayots Dzor)</td>
 <td>en_US, <strong>hy</strong></td>
 <td>WORKDAY</td>
 </tr>
@@ -861,8 +870,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>India</td>
 <td>IN</td>
-<td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
-<td><strong>en_IN</strong>, en_US, gu, hi, ta, te</td>
+<td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (TG, Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
+<td>bn, <strong>en_IN</strong>, en_US, gu, hi, ta, te</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -1429,7 +1438,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Russia</td>
 <td>RU</td>
 <td></td>
-<td>en_US, <strong>ru</strong>, th</td>
+<td>en_US, <strong>ru</strong>, th, zh_CN</td>
 <td></td>
 </tr>
 <tr>

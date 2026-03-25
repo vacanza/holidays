@@ -20,8 +20,4 @@ build:
 mkdocs:
   configuration: .properdocs.yml
 
-python:
-  install:
-    - requirements: requirements/docs.txt
-
 version: 2
