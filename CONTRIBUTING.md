@@ -20,79 +20,80 @@ with, once you have [`uv`](https://docs.astral.sh/uv/getting-started/installatio
 
 === "macOS and Linux"
 
-    ``` shell
-    make setup
-    ```
+``` shell
+make setup
+```
 
 === "Windows"
 
-    ``` shell
-    .\make setup
-    ```
+``` shell
+.\make setup
+```
 
 !!! note "WSL Windows File Permission Fix"
 
-    If you're a Windows-based developer setting this up via WSL for the first time and encounter
-    file permission errors (e.g., `[Errno 1] Operation not permitted`) where `ls -l` shows files
-    owned by root like `-rwxrwxrwx 1 root root ...`, follow these steps:
+If you're a Windows-based developer setting this up via WSL for the first time and encounter
+file permission errors (e.g., `[Errno 1] Operation not permitted`) where `ls -l` shows files
+owned by root like `-rwxrwxrwx 1 root root ...`, follow these steps:
 
-    **Step 1**: Edit the WSL configuration file:
+**Step 1**: Edit the WSL configuration file:
 
-    ``` shell
-    sudo nano /etc/wsl.conf
-    ```
+``` shell
+sudo nano /etc/wsl.conf
+```
 
-    **Step 2**: Add the following section at the bottom of `wsl.conf`, then save (Ctrl+O, Enter) and exit (Ctrl+X):
+**Step 2**: Add the following section at the bottom of `wsl.conf`, then save (Ctrl+O, Enter) and exit (Ctrl+X):
 
-    ``` ini
-    [automount]
-    enabled = true
-    options = "metadata,umask=22,fmask=11"
-    ```
+``` ini
+[automount]
+enabled = true
+options = "metadata,umask=22,fmask=11"
+```
 
-    **Step 3**: Close your WSL session, open PowerShell, then restart WSL:
+**Step 3**: Close your WSL session, open PowerShell, then restart WSL:
 
-    ``` powershell
-    wsl --shutdown
-    wsl ~
-    ```
+``` powershell
+wsl --shutdown
+wsl ~
+```
 
-    After this, running `ls -l` on your local `holidays` installation should show:
+After this, running `ls -l` on your local `holidays` installation should show:
 
-    ``` console
-    drwxr-xr-x 1 username username ...
-    ```
-    - you're good to go!
+``` console
+drwxr-xr-x 1 username username ...
+```
+
+You're good to go!
 
 The project provides automated style, tests and coverage checks:
 
 === "macOS and Linux"
 
-    ``` shell
-    make check
-    ```
+``` shell
+make check
+```
 
 === "Windows"
 
-    ``` shell
-    .\make check
-    ```
+``` shell
+.\make check
+```
 
 You can run them separately:
 
 === "macOS and Linux"
 
-    ``` shell
-    make pre-commit
-    make test
-    ```
+``` shell
+make pre-commit
+make test
+```
 
 === "Windows"
 
-    ``` shell
-    .\make pre-commit
-    .\make test
-    ```
+``` shell
+.\make pre-commit
+.\make test
+```
 
 It'll retrieve uncovered lines too.
 
@@ -123,15 +124,15 @@ In order to add or update existing holiday names translation you'll need to gene
 
 === "macOS and Linux"
 
-    ``` shell
-    make l10n
-    ```
+``` shell
+make l10n
+```
 
 === "Windows"
 
-    ``` shell
-    .\make l10n
-    ```
+``` shell
+.\make l10n
+```
 
 If the template file is empty, make sure that the country/market entity has the `default_language`
 attribute set, and all holiday names are wrapped with `tr`/`self.tr` helpers. Use [ISO 639-1
