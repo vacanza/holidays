@@ -171,6 +171,7 @@ class TestNigeria(CommonCountryTests, TestCase):
             "2023-04-21",
             "2024-04-10",
             "2025-03-30",
+            "2026-03-19",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         self.assertIslamicNoEstimatedHolidayName(name_holiday, self.full_range)
