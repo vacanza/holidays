@@ -93,6 +93,12 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
     }
 
     def __init__(self, *args, hindu_show_estimated: bool = True, **kwargs):
+        """
+        Args:
+            hindu_show_estimated:
+                Whether to add "estimated" label to Hindu holidays name
+                if holiday date is estimated.
+        """
         HinduCalendarHolidays.__init__(
             self, cls=BhutanHinduHolidays, show_estimated=hindu_show_estimated
         )
