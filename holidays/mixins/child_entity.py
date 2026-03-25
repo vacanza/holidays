@@ -17,6 +17,8 @@ from holidays.holiday_base import HolidayBase
 class ChildEntity:
     """A mixin for child entities that inherit from a parent entity."""
 
+    # Same name as HolidayBase.parent_entity (optional there).
+    # Narrowed here so type checkers treat it as required.
     parent_entity: type[HolidayBase]
     """The parent entity class."""
 
@@ -32,10 +34,11 @@ class ChildEntity:
     def __init__(self, *args, **kwargs):
         """Initialize the child entity using its country code.
 
-        A child entity always has its own country code that is different from
-        the parent entity's country code but (in majority of cases) is a
+        A child entity always has its own entity code that is different from
+        the parent entity's code but (in majority of cases) is a
         subdivision of the parent entity. For setting specific subdivision code
         value use `parent_entity_subdivision_code`.
         """
         kwargs["subdiv"] = self.parent_entity_subdivision_code or self.country
+
         super().__init__(*args, **kwargs)
