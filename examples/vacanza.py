@@ -70,9 +70,7 @@ def generate_ics(country_code, years, public_only=False):
     # Determine which categories to generate
     all_categories = get_supported_categories(country_code)
     if public_only:
-        categories = tuple(c for c in all_categories if c == PUBLIC)
-        if not categories:
-            categories = (PUBLIC,)
+        categories = (PUBLIC,)
     else:
         categories = all_categories
 
