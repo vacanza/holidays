@@ -12,6 +12,7 @@
 
 import warnings
 from gettext import gettext as tr
+
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import OPTIONAL, PUBLIC
@@ -405,7 +406,7 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
-        # Dahi Handi 
+        # Dahi Handi
         self._add_janmashtami(tr("Dahi handi"))
 
     # Madhya Pradesh.
