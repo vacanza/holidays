@@ -406,7 +406,7 @@ class India(
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
         # Dahi Handi (celebrated on Janmashtami).
-        self._add_janmashtami(tr("Janmashtami"))
+        self._add_janmashtami(tr("Dahi handi"))
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
