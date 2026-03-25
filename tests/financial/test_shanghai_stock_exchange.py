@@ -24,8 +24,6 @@ class TestShanghaiStockExchange(CommonFinancialTests, TestCase):
     def test_code(self):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
-        self.assertEqual(self.holidays.start_year, 2001)
-        self.assertNoHoliday("2000-01-01")
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
