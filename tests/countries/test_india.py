@@ -982,9 +982,10 @@ class TestIndia(CommonCountryTests, TestCase):
             India(subdiv="OR", years=2023).keys(), India(subdiv="OD", years=2023).keys()
         )
     def test_maharashtra_2026(self):
-        in_holidays=holidays.India(subdiv="MH", years=2026)
+        in_holidays=India(subdiv="MH", years=2026)
         self.assertIn("2026-02-19", in_holidays)
         self.assertIn("2026-04-14", in_holidays)
         self.assertIn("2026-10-02", in_holidays)
         self.assertIn("2026-03-19", in_holidays)
-        self.assertIn("2026-08-04",in_holidays)
+        self.assertIn("2026-09-04",in_holidays)
+        self.assertIn("2026-05-01",in_holidays)
