@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-06-19 15:33+0700\n"
-"PO-Revision-Date: 2026-03-18 20:34+0200\n"
+"PO-Revision-Date: 2026-03-23 16:16+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-Source-Language: en_US\n"
 
 #. %s (observed).
@@ -491,6 +491,10 @@ msgstr "วันวาเลนไทน์"
 #. Saint Patrick's Day.
 msgid "Saint Patrick's Day"
 msgstr "วันนักบุญแพทริก"
+
+#. Easter Sunday.
+msgid "Easter Sunday"
+msgstr "วันอาทิตย์อีสเตอร์"
 
 #. Mother's Day.
 msgid "Mother's Day"

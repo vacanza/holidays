@@ -244,6 +244,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Armenia</td>
 <td>AM</td>
 <td>Regions: AG (AragacÌ£otn), AR (Ararat), AV (Armavir), ER (Erevan), GR (GeÄ¡ark'unik'), KT (Kotayk'), LO (Loá¹™i), SH (Å irak), SU (Syunik'), TV (TavuÅ¡), VD (VayoÄ‡ Jor)</td>
+<td>Regions: AG (Aragac̣otn, Aragatsotn), AR (Ararat), AV (Armavir), ER (Erevan), GR (Geġark'unik', Gegharkunik), KT (Kotayk', Kotayk), LO (Loṙi, Lori), SH (Širak, Shirak), SU (Syunik', Syunik), TV (Tavuš, Tavush), VD (Vayoć Jor, Vayots Dzor)</td>
 <td>en_US, <strong>hy</strong></td>
 <td>WORKDAY</td>
 </tr>
@@ -882,6 +883,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>IN</td>
 <td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, ArunÄchal Pradesh), AS (Assam), BR (Bihar, BihÄr), CG (Chhattisgarh, ChhattÄ«sgarh), CH (Chandigarh, ChandÄ«garh), DH (Dadra and Nagar Haveli and Daman and Diu, DÄdra and Nagar Haveli and DamÄn and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, GujarÄt), HP (Himachal Pradesh, HimÄchal Pradesh), HR (Haryana, HaryÄna), JH (Jharkhand, JhÄrkhand), JK (Jammu and Kashmir, Jammu and KashmÄ«r), KA (Karnataka, KarnÄtaka), KL (Kerala), LA (Ladakh, LadÄkh), LD (Lakshadweep), MH (Maharashtra, MahÄrÄshtra), ML (Meghalaya, MeghÄlaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, NÄgÄland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, RÄjasthÄn), SK (Sikkim), TN (Tamil Nadu, Tamil NÄdu), TR (Tripura), TS (Telangana, TelangÄna), UK (Uttarakhand, UttarÄkhand), UP (Uttar Pradesh), WB (West Bengal)</td>
 <td><strong>en_IN</strong>, en_US, gu, hi, ta, te</td>
+<td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (TG, Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
+<td>bn, <strong>en_IN</strong>, en_US, gu, hi, ta, te</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -1448,7 +1451,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Russia</td>
 <td>RU</td>
 <td></td>
-<td>en_US, <strong>ru</strong>, th</td>
+<td>en_US, <strong>ru</strong>, th, zh_CN</td>
 <td></td>
 </tr>
 <tr>
