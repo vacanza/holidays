@@ -561,7 +561,7 @@ To export to `.ics` format, use `save_ics`.
 >>> nyse_exporter.save_ics(file_path=str(downloads_path / "NYSE_2024_calendar.ics"))
 ```
 
-### Example: Generate `.ics` files with categories, language, and subdivisions
+Generate `.ics` files with categories, language, and subdivisions.
 
 ```python
 >>> from holidays.countries.india import IN
