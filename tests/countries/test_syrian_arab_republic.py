@@ -190,7 +190,6 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
             ("2024-07-07", "رأس السنة الهجرية"),
             ("2024-09-15", "عيد المولد النبوي الشريف"),
             ("2024-10-06", "ذكرى حرب تشرين التحريرية"),
-            ("2024-12-08", "عيد التحرير"),
             ("2024-12-25", "عيد الميلاد"),
             ("2024-12-26", "يوم الصناديق"),
         )
@@ -216,7 +215,6 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
             ("2024-07-07", "Islamic New Year"),
             ("2024-09-15", "Prophet's Birthday"),
             ("2024-10-06", "Tishreen Liberation War Day"),
-            ("2024-12-08", "Liberation Day"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
         )

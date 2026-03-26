@@ -68,6 +68,7 @@ msgstr ""
 msgid "ذكرى حرب تشرين التحريرية"
 msgstr ""
 
+#. Liberation Day.
 msgid "عيد التحرير"
 msgstr ""
 
