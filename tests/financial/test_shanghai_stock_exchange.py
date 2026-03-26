@@ -61,14 +61,10 @@ class TestShanghaiStockExchange(CommonFinancialTests, TestCase):
         self.assertLocalizedHolidays(*self._expected_localized_holidays())
 
     def test_l10n_en_us(self):
-        self.assertLocalizedHolidays(
-            "en_US", *self._expected_localized_holidays("en_US")
-        )
+        self.assertLocalizedHolidays("en_US", *self._expected_localized_holidays("en_US"))
 
     def test_l10n_th(self):
         self.assertLocalizedHolidays("th", *self._expected_localized_holidays("th"))
 
     def test_l10n_zh_tw(self):
-        self.assertLocalizedHolidays(
-            "zh_TW", *self._expected_localized_holidays("zh_TW")
-        )
+        self.assertLocalizedHolidays("zh_TW", *self._expected_localized_holidays("zh_TW"))
