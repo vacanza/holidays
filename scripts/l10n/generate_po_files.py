@@ -28,6 +28,14 @@ sys.path.insert(0, str(Path.cwd()))
 from holidays import __version__ as package_version
 from holidays.holiday_base import HolidayBase
 
+LEGACY_NAME_MAP = {
+    "IM": "Isle of Man",
+    "MP": "Northern Mariana Islands",
+    "TL": "Timor-Leste",
+    "US": "United States of America",
+    "VI": "United States Virgin Islands",
+    "XNSE": "National Stock Exchange of India",
+}
 WRAP_WIDTH = 99
 HEADER_PATH = Path("docs/file_header.txt")
 
@@ -41,36 +49,36 @@ class POGenerator:
         if not HEADER_PATH.exists():
             return ""
 
-        content = HEADER_PATH.read_text(encoding="utf-8").strip()
+        content = HEADER_PATH.read_text(encoding="utf-8").lstrip("\n")
         if not content:
             return ""
 
-        lines = []
-        for line in content.splitlines():
-            line = line.rstrip()
-            if not line:
-                lines.append("#")
-            elif line.startswith("#"):
-                lines.append(line)
-            else:
-                lines.append(f"# {line}")
-
-        return "\n".join(lines) + "\n"
+        return (
+            "\n".join(
+                "#" if not line.rstrip() else f"# {line.rstrip()}" for line in content.splitlines()
+            )
+            + "\n#"
+        )
 
     @staticmethod
     def _get_standard_metadata(default_language: str = "en_US") -> dict:
         """Returns the standard metadata required for gettext."""
         return {
-            "Report-Msgid-Bugs-To": "dr-prodigy@users.noreply.github.com",
-            "POT-Creation-Date": datetime.now().strftime("%Y-%m-%d %H:%M%z"),
-            "Last-Translator": "Vacanza Team <dr.prodigy.github@gmail.com>",
+            "Report-Msgid-Bugs-To": "l10n@vacanza.dev",
+            "POT-Creation-Date": datetime.now().astimezone().strftime("%Y-%m-%d %H:%M%z"),
+            "Last-Translator": "FULL NAME <EMAIL@EXAMPLE.COM>",
             "Language-Team": "Holidays Localization Team",
             "MIME-Version": "1.0",
             "Content-Type": "text/plain; charset=UTF-8",
             "Content-Transfer-Encoding": "8bit",
-            "Generated-By": "Lingva 5.0.5",
             "X-Source-Language": default_language,
         }
+
+    @staticmethod
+    def _strip_gettext_boilerplate(content: str) -> str:
+        if content.startswith("# SOME DESCRIPTIVE TITLE"):
+            return content.split("#, fuzzy", 1)[1].lstrip()
+        return content.lstrip()
 
     @staticmethod
     def _process_entity_worker(
@@ -92,6 +100,7 @@ class POGenerator:
             package_name="Holidays",
             package_version=package_version,
             width=WRAP_WIDTH,
+            location=False,
             allow_empty=True,
             msgid_bugs_address="l10n@vacanza.dev",
         )
@@ -120,6 +129,7 @@ class POGenerator:
         """Merge .po file with .pot using strict no-change policies."""
         po_path_str, pot_path_str, entity_docstring, default_language = args
         po_path = Path(po_path_str)
+        entity_code = po_path.stem.upper()
         pot_path = Path(pot_path_str)
 
         po_file = pofile(str(po_path), wrapwidth=WRAP_WIDTH)
@@ -146,15 +156,17 @@ class POGenerator:
             else:
                 clean_name = first_line
 
+        display_name = LEGACY_NAME_MAP.get(entity_code, clean_name)
         desc_line = ""
         if not is_default_lang and clean_name:
-            desc_line = f"# {clean_name} holidays {current_lang} localization."
+            desc_line = f"# {display_name} holidays {current_lang} localization."
         elif clean_name:
-            desc_line = f"# {clean_name} holidays."
+            desc_line = f"# {display_name} holidays."
 
         if not has_content_changed:
             if po_path.exists():
                 content = po_path.read_text(encoding="utf-8")
+                content = POGenerator._strip_gettext_boilerplate(content)
                 if "Authors: Vacanza Team" not in content:
                     new_parts = []
                     if license_header:
@@ -177,23 +189,21 @@ class POGenerator:
         std_meta["Language"] = current_lang
 
         for k, v in std_meta.items():
-            if k not in po_file.metadata:
-                po_file.metadata[k] = v
+            po_file.metadata[k] = v
 
         po_file.save(str(po_path), newline="\n")
 
         content = po_path.read_text(encoding="utf-8")
         new_parts = []
 
-        if license_header and "Authors: Vacanza Team" not in content:
+        if license_header and not content.startswith("#  holidays\n#  --------"):
             new_parts.append(license_header)
 
         if desc_line and desc_line not in content:
             new_parts.append(desc_line)
 
         if new_parts:
-            if not content.startswith("#"):
-                new_parts.append("#")
+            new_parts.append("#")
 
             final_content = "\n".join(new_parts) + "\n" + content
             po_path.write_text(final_content, encoding="utf-8")
