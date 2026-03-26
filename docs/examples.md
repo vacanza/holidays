@@ -494,7 +494,7 @@ True
 [ICalExporter][holidays.ical.ICalExporter] facilitates the creation and export of iCalendar files
 in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
 
-```python
+``` python
 >>> from holidays import country_holidays
 >>> from holidays.ical import ICalExporter
 >>> us_holidays = country_holidays('US', years=2020)
@@ -504,7 +504,7 @@ in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
 
 To create iCalendar content, use `generate`.
 
-```python
+``` python
 >>> from holidays import country_holidays
 >>> from holidays.ical import ICalExporter
 >>> th_holidays = country_holidays('TH', years=2024)
@@ -524,17 +524,16 @@ True
 ```
 
 !!! tip "Tip"
-Although the iCalendar specification supports a wide range of language formats as outlined
-in [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646), the Holidays object requires
-that the `language` attribute adhere to the [ISO 639-1 or ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php)
-language codes, such as `en` or `pap-AW`.
+    Although the iCalendar specification supports a wide range of language formats as outlined
+    in [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646), the Holidays object requires
+    that the `language` attribute adhere to the [ISO 639-1 or
+    ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php) language codes,
+    such as `en` or `pap-AW`.
 
-```
-Additionally, if no `language` is specified for a holiday, but a `default_language` is set
-for the Holiday object, the default language will be used instead.
-```
+    Additionally, if no `language` is specified for a holiday, but a `default_language` is set
+    for the Holiday object, the default language will be used instead.
 
-```python
+``` python
 >>> from holidays import country_holidays
 >>> from holidays.ical import ICalExporter
 >>> cn_holidays = country_holidays("CN", years=2024, language="en_US")
@@ -550,7 +549,7 @@ for the Holiday object, the default language will be used instead.
 
 To export to `.ics` format, use `save_ics`.
 
-```python
+``` python
 >>> from pathlib import Path
 >>> from holidays import financial_holidays
 >>> from holidays.ical import ICalExporter
