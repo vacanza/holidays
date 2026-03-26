@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-26 12:14+0530\n"
-"PO-Revision-Date: 2026-03-26 10:00+0530\n"
+"PO-Revision-Date: 2026-03-26 20:03+0530\n"
 "Last-Translator: Leela Kartheek Murala <kartheekmurala19@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: kn\n"
@@ -444,7 +444,7 @@ msgstr "ಶ್ರೀ ಅನಂತಪದ್ಮನಾಭ ವ್ರತ"
 msgid "Huttari Festival"
 msgstr "ಹುತ್ತರಿ ಹಬ್ಬ"
 
-#. Kail Muhuruth
+#. Kail Muhuruth.
 msgid "Kail Muhuruth"
 msgstr "ಕೈಲ್ ಮೂಹೂರ್ತ"
 
@@ -464,7 +464,7 @@ msgstr "ನರಕ ಚತುರ್ದಶಿ"
 msgid "Souramana Ugadi"
 msgstr "ಸೌರಮಾನ ಯುಗಾದಿ"
 
-#. Buddha Purnima
+#. Buddha Purnima.
 msgid "Buddha Poornima"
 msgstr "ಬುದ್ಧ ಪೂರ್ಣಿಮ"
 
