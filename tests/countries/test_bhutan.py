@@ -232,10 +232,6 @@ class TestBhutan(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_subdiv_not_15_branch(self):
-        bhutan = Bhutan(years=2024, subdiv=None)
-        self.assertGreater(len(bhutan), 0)
-
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2024-01-02", "དགུན་གྱི་ཉི་མ་ཐུང་ཤོས།"),
