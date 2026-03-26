@@ -27,20 +27,31 @@ GoTo :Help
     Exit /B
 
 :Doc
-    uv run --no-sync mkdocs build
+    uv run --no-sync properdocs build -f .properdocs.yml
+    Exit /B
+
+:Doc-serve
+    uv run --no-sync properdocs serve -f .properdocs.yml
     Exit /B
 
 :Help
     Echo Usage: make ^<Target^>
     Echo     check         run pre-commit and tests
     Echo     doc           run documentation build process
+    Echo     doc-serve     serve documentation locally
     Echo     help          show summary of available commands
+    Echo     icalendar     generate JSON and ICS data files
     Echo     l10n          update .pot and .po files
     Echo     package       build package distribution
     Echo     pre-commit    run pre-commit against all files
     Echo     setup         setup development environment
     Echo     test          run tests (in parallel)
     Echo     upgrade       run dependency upgrade
+    Exit /B
+
+:Icalendar
+    uv run --no-sync scripts\l10n\generate_mo_files.py
+    uv run --no-sync scripts\generate_site_assets.py
     Exit /B
 
 :L10n

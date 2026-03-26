@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import HALF_DAY, SCHOOL
 from holidays.countries.bulgaria import Bulgaria
 from tests.common import CommonCountryTests, WorkingDayTests
 
@@ -20,6 +21,12 @@ class TestBulgaria(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Bulgaria, years_non_observed=range(2017, 2026))
+
+    def test_no_holidays(self):
+        super().test_no_holidays()
+
+        self.assertNoHolidays(Bulgaria(categories=HALF_DAY, years=range(1996, self.end_year)))
+        self.assertNoHolidays(Bulgaria(categories=SCHOOL, years=range(self.start_year, 1992)))
 
     def test_special_holidays(self):
         self.assertHoliday(

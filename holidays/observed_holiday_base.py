@@ -89,6 +89,7 @@ THU_FRI_SUN_TO_NEXT_MON = ObservedRule({THU: +4, FRI: +3, SUN: +1})
 FRI_SAT_TO_NEXT_WORKDAY = ObservedRule({FRI: +7, SAT: +7})
 FRI_SUN_TO_NEXT_MON = ObservedRule({FRI: +3, SUN: +1})
 FRI_SUN_TO_NEXT_SAT_MON = ObservedRule({FRI: +1, SUN: +1})
+FRI_SUN_TO_NEXT_WORKDAY = ObservedRule({FRI: +7, SUN: +7})
 
 SAT_SUN_TO_PREV_FRI = ObservedRule({SAT: -1, SUN: -2})
 SAT_SUN_TO_NEXT_MON = ObservedRule({SAT: +2, SUN: +1})

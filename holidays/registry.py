@@ -138,6 +138,7 @@ COUNTRIES: RegistryDict = {
     "kazakhstan": ("Kazakhstan", "KZ", "KAZ"),
     "kenya": ("Kenya", "KE", "KEN"),
     "kiribati": ("Kiribati", "KI", "KIR"),
+    "kosovo": ("Kosovo", "XK", "XKK"),
     "kuwait": ("Kuwait", "KW", "KWT"),
     "kyrgyzstan": ("Kyrgyzstan", "KG", "KGZ"),
     "laos": ("Laos", "LA", "LAO"),
@@ -288,7 +289,9 @@ FINANCIAL: RegistryDict = {
     "bombay_stock_exchange": ("BombayStockExchange", "XBOM", "BSE"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
     "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),
+    "germany_exchange": ("GermanyStockExchange", "XETR", "XFRA"),
     "ice_futures_europe": ("IceFuturesEurope", "IFEU", "ICEFuturesEurope"),
+    "japan_exchange": ("JapanExchange", "XJPX", "JPX", "TSE", "OSE"),
     "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
 }

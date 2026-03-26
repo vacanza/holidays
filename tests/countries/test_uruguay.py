@@ -104,11 +104,12 @@ class TestUruguay(CommonCountryTests, TestCase):
 
     def test_childrens_day(self):
         name = "Día de los Niños"
-        self.assertBankHolidayName(name, (f"{year}-01-06" for year in self.full_range))
         self.assertNoHolidayName(name)
+        self.assertBankHolidayName(name, (f"{year}-01-06" for year in self.full_range))
 
     def test_carnival(self):
         name = "Carnaval"
+        self.assertNoHolidayName(name)
         self.assertBankHolidayName(
             name,
             "2018-02-12",
@@ -125,10 +126,10 @@ class TestUruguay(CommonCountryTests, TestCase):
             "2023-02-21",
         )
         self.assertBankHolidayNameCount(name, 2, self.full_range)
-        self.assertNoHolidayName(name)
 
     def test_landing_of_33_patriots(self):
         name = "Desembarco de los 33 Orientales"
+        self.assertNoHolidayName(name)
         self.assertBankHolidayName(
             name,
             (
@@ -149,10 +150,10 @@ class TestUruguay(CommonCountryTests, TestCase):
         )
         self.assertBankHolidayName(name, range(1949, self.end_year))
         self.assertNoBankHolidayName(name, range(1934, 1949))
-        self.assertNoHolidayName(name)
 
     def test_tourism_week(self):
         name = "Semana de Turismo"
+        self.assertNoHolidayName(name)
         self.assertBankHolidayName(
             name,
             "2020-04-06",
@@ -172,10 +173,10 @@ class TestUruguay(CommonCountryTests, TestCase):
             "2022-04-15",
         )
         self.assertBankHolidayNameCount(name, 5, self.full_range)
-        self.assertNoHolidayName(name)
 
     def test_battle_of_las_piedras(self):
         name = "Batalla de Las Piedras"
+        self.assertNoHolidayName(name)
         self.assertBankHolidayName(
             name,
             (
@@ -197,10 +198,10 @@ class TestUruguay(CommonCountryTests, TestCase):
         )
         self.assertBankHolidayName(name, range(1942, self.end_year))
         self.assertNoBankHolidayName(name, range(1933, 1942))
-        self.assertNoHolidayName(name)
 
     def test_birthday_of_artigas(self):
         name = "Natalicio de Artigas"
+        self.assertNoHolidayName(name)
         self.assertBankHolidayName(
             name,
             (
@@ -224,7 +225,6 @@ class TestUruguay(CommonCountryTests, TestCase):
         )
         self.assertBankHolidayName(name, range(1940, self.end_year))
         self.assertNoBankHolidayName(name, range(1933, 1940))
-        self.assertNoHolidayName(name)
 
     def test_cultural_diversity_day(self):
         name_1920 = "Día de la Raza"
@@ -264,6 +264,7 @@ class TestUruguay(CommonCountryTests, TestCase):
 
     def test_all_souls_day(self):
         name = "Día de los Difuntos"
+        self.assertNoHolidayName(name)
         self.assertBankHolidayName(
             name,
             (
@@ -286,7 +287,6 @@ class TestUruguay(CommonCountryTests, TestCase):
         )
         self.assertBankHolidayName(name, range(1938, self.end_year))
         self.assertNoBankHolidayName(name, range(1933, 1938))
-        self.assertNoHolidayName(name)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

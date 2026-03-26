@@ -93,6 +93,7 @@ class POGenerator:
             package_version=package_version,
             width=WRAP_WIDTH,
             allow_empty=True,
+            msgid_bugs_address="l10n@vacanza.dev",
         )
 
         pot_file = pofile(pot_file_path, wrapwidth=WRAP_WIDTH)
@@ -235,7 +236,7 @@ class POGenerator:
                     candidates.sort(key=lambda c: len(c.__doc__ or ""), reverse=True)
                     chosen_cls = candidates[0]
 
-                name = getattr(chosen_cls, "country", getattr(chosen_cls, "market", None))
+                name = getattr(chosen_cls, "country", None) or getattr(chosen_cls, "market", None)
                 if not name:
                     continue
 

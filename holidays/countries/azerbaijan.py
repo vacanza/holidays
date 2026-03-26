@@ -30,7 +30,8 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan>
         * <https://az.wikipedia.org/wiki/Azərbaycanın_dövlət_bayramları_və_xüsusi_günləri>
-        * <https://web.archive.org/web/20240615110243/https://sosial.gov.az/en/prod-calendar>
+        * <https://web.archive.org/web/20221007162312/https://sosial.gov.az/en/prod-calendar>
+        * <https://web.archive.org/web/20251211151027/https://sosial.gov.az/az/faydali/istehsalat-teqvimi>
     """
 
     country = "AZ"
@@ -77,9 +78,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
             dts_non_observed.add(self._add_holiday_jan_20(tr("Ümumxalq hüzn günü")))
 
         # Women's Day.
-        dt = self._add_womens_day(tr("Qadınlar günü"))
-        if self._year != 2025:
-            dts_observed.add(dt)
+        dts_observed.add(self._add_womens_day(tr("Qadınlar günü")))
 
         # Spring Festival.
         name = tr("Novruz bayramı")
@@ -146,9 +145,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
         if self._year >= 1993:
             # Eid al-Fitr.
             name = tr("Ramazan bayrami")
-            dt = self._add_eid_al_fitr_day(name)
-            if self._year != 2025:
-                dts_bairami.update(dt)
+            dts_bairami.update(self._add_eid_al_fitr_day(name))
             if self._year >= 2006:
                 dts_bairami.update(self._add_eid_al_fitr_day_two(name))
 
@@ -162,7 +159,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
         # 5. If interweekly rest days and holidays that are not considered working days overlap,
         # that rest day is immediately transferred to the next working day.
         if self.observed and self._year >= 2006:
-            self._populate_observed(dts_observed.union(dts_bairami))
+            self._populate_observed(dts_observed.union(dts_bairami), multiple=True)
 
             bayrami_names = (self.tr("Qurban bayrami"), self.tr("Ramazan bayrami"))
             # 6. If the holidays of Qurban and Ramadan coincide with another holiday
@@ -206,7 +203,7 @@ class AZE(Azerbaijan):
 
 
 class AzerbaijanIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2002, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2002, 2026)
     EID_AL_ADHA_DATES = {
         2002: (FEB, 21),
         2005: (JAN, 22),
@@ -217,7 +214,7 @@ class AzerbaijanIslamicHolidays(_CustomIslamicHolidays):
         2019: (AUG, 12),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2002, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2002, 2026)
     EID_AL_FITR_DATES = {
         2002: (DEC, 4),
         2007: (OCT, 12),
@@ -249,10 +246,6 @@ class AzerbaijanStaticHolidays:
     """
 
     eid_al_adha = tr("Qurban bayrami")
-
-    eid_al_fitr = tr("Ramazan bayrami")
-
-    womens_day = tr("Qadınlar günü")
 
     # Substituted date format.
     substituted_date_format = tr("%d.%m.%Y")
@@ -309,15 +302,13 @@ class AzerbaijanStaticHolidays:
         2025: (
             (JAN, 3, DEC, 29, 2024),
             (JAN, 29, municipal_elections),
+            (MAR, 27, MAR, 10),
+            (MAR, 28, APR, 1),
             (JUN, 27, JUN, 21),
         ),
     }
 
     special_public_holidays_observed = {
         2007: (JAN, 3, eid_al_adha),
-        2025: (
-            (MAR, 27, womens_day),
-            (MAR, 28, eid_al_fitr),
-        ),
         2072: (JAN, 5, eid_al_adha),
     }

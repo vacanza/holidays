@@ -20,9 +20,7 @@ from tests.common import CommonCountryTests
 class TestPanama(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1948, 2050)
-        super().setUpClass(Panama, years=years, years_non_observed=range(2000, 2025))
-        cls.bank_holidays = Panama(categories=BANK, years=years)
+        super().setUpClass(Panama, years_non_observed=range(2000, 2025))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -33,176 +31,169 @@ class TestPanama(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "Año Nuevo"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1948, 2050)))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        obs_dts = (
             "2006-01-02",
             "2012-01-02",
             "2017-01-02",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (puente)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (puente)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_martyrs_day(self):
         name = "Día de los Mártires"
-        self.assertHolidayName(name, (f"{year}-01-09" for year in range(1972, 2050)))
-        self.assertNoHoliday(f"{year}-01-09" for year in range(1948, 1972))
-        self.assertNoHolidayName(name, range(1948, 1972))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-01-09" for year in range(1972, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1972))
+        obs_dts = (
             "2005-01-10",
             "2011-01-10",
             "2022-01-10",
         )
-        self.assertHolidayName(f"{name} (puente)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (puente)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_constitution_day(self):
         name = "Día de la Constitución"
-        self.assertHolidayName(name, (f"{year}-03-01" for year in range(1948, 1972)))
-        self.assertNoHolidayName(name, range(1972, 2050))
+        self.assertHolidayName(name, (f"{year}-03-01" for year in range(self.start_year, 1972)))
+        self.assertNoHolidayName(name, range(1972, self.end_year))
 
     def test_carnival_monday(self):
         name = "Lunes de Carnaval"
-        self.assertHolidayName(
+        self.assertNoHolidayName(name)
+        self.assertBankHolidayName(
             name,
-            self.bank_holidays,
-            "2019-03-04",
             "2020-02-24",
             "2021-02-15",
             "2022-02-28",
             "2023-02-20",
             "2024-02-12",
+            "2025-03-03",
         )
-        self.assertHolidayName(name, self.bank_holidays, range(1948, 2050))
-        self.assertNoHolidayName(name)
+        self.assertBankHolidayName(name, self.full_range)
 
     def test_carnival_tuesday(self):
         name = "Martes de Carnaval"
         self.assertHolidayName(
             name,
-            "2019-03-05",
             "2020-02-25",
             "2021-02-16",
             "2022-03-01",
             "2023-02-21",
             "2024-02-13",
+            "2025-03-04",
         )
-        self.assertHolidayName(name, range(1948, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_good_friday(self):
         name = "Viernes Santo"
         self.assertHolidayName(
             name,
-            "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
             "2024-03-29",
+            "2025-04-18",
         )
-        self.assertHolidayName(name, range(1948, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_labor_day(self):
         name = "Día del Trabajo"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1948, 2050)))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
+        obs_dts = (
             "2005-05-02",
             "2011-05-02",
             "2016-05-02",
             "2022-05-02",
         )
-        self.assertHolidayName(f"{name} (puente)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (puente)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_separation_day(self):
         name = "Separación de Panamá de Colombia"
-        self.assertHolidayName(name, (f"{year}-11-03" for year in range(1948, 2050)))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-11-03" for year in self.full_range))
+        obs_dts = (
             "2002-11-04",
             "2013-11-04",
             "2019-11-04",
             "2024-11-04",
         )
-        self.assertHolidayName(f"{name} (puente)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (puente)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_colon_day(self):
         name = "Día de Colón"
-        self.assertHolidayName(name, (f"{year}-11-05" for year in range(2002, 2050)))
-        self.assertNoHoliday(f"{year}-11-05" for year in range(1948, 2002))
-        self.assertNoHolidayName(name, range(1948, 2002))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-11-05" for year in range(2002, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2002))
+        obs_dts = (
             "2006-11-06",
             "2017-11-06",
             "2023-11-06",
         )
-        self.assertHolidayName(f"{name} (puente)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (puente)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_los_santos_uprising_day(self):
         name = "Primer Grito de Independencia"
-        self.assertHolidayName(name, (f"{year}-11-10" for year in range(1969, 2050)))
-        self.assertNoHoliday(f"{year}-11-10" for year in range(1948, 1969))
-        self.assertNoHolidayName(name, range(1948, 1969))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-11-10" for year in range(1969, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1969))
+        obs_dts = (
             "2002-11-11",
             "2013-11-11",
             "2019-11-11",
             "2024-11-11",
         )
-        self.assertHolidayName(f"{name} (puente)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (puente)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_independence_day(self):
         name = "Independencia de Panamá de España"
-        self.assertHolidayName(name, (f"{year}-11-28" for year in range(1948, 2050)))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-11-28" for year in self.full_range))
+        obs_dts = (
             "2004-11-29",
             "2010-11-29",
             "2021-11-29",
         )
-        self.assertHolidayName(f"{name} (puente)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (puente)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_mothers_day(self):
         name = "Día de la Madre"
-        self.assertHolidayName(name, (f"{year}-12-08" for year in range(1948, 2050)))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-12-08" for year in self.full_range))
+        obs_dts = (
             "2002-12-09",
             "2013-12-09",
             "2019-12-09",
             "2024-12-09",
         )
-        self.assertHolidayName(f"{name} (puente)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (puente)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_national_mourning_day(self):
         name = "Día de Duelo Nacional"
-        self.assertHolidayName(name, (f"{year}-12-20" for year in range(2022, 2050)))
-        self.assertNoHoliday(f"{year}-12-20" for year in range(1948, 2022))
-        self.assertNoHolidayName(name, range(1948, 2022))
-        dt = ("2026-12-21",)
-        self.assertHolidayName(f"{name} (puente)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(name, (f"{year}-12-20" for year in range(2022, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2022))
+        obs_dts = ("2026-12-21",)
+        self.assertHolidayName(f"{name} (puente)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_christmas_day(self):
         name = "Navidad"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1948, 2050)))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
+        obs_dts = (
             "2005-12-26",
             "2011-12-26",
             "2016-12-26",
             "2022-12-26",
         )
-        self.assertHolidayName(f"{name} (puente)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (puente)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_national_symbols_day(self):
         name = "Día de los Símbolos Patrios"
-        self.assertHolidayName(
-            name, self.bank_holidays, (f"{year}-11-04" for year in range(1948, 2050))
-        )
         self.assertNoHolidayName(name)
+        self.assertBankHolidayName(name, (f"{year}-11-04" for year in self.full_range))
 
     def test_2022(self):
         self.assertHolidays(

@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import BANK
 from holidays.countries.chile import Chile
 from tests.common import CommonCountryTests
 
@@ -20,6 +21,11 @@ class TestChile(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Chile)
+
+    def test_no_holidays(self):
+        super().test_no_holidays()
+
+        self.assertNoHolidays(Chile(categories=BANK, years=range(self.start_year, 1956)))
 
     def test_special_holidays(self):
         self.assertHoliday(

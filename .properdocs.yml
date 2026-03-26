@@ -40,12 +40,14 @@ markdown_extensions:
   - markdown_include.include:
       base_path: docs
   - admonition
+  - pymdownx.tabbed
   - pymdownx.superfences
   - toc:
       permalink: ''
 
 extra_css:
   - css/custom.css
+
 extra_javascript:
   - js/custom.js
   - js/copyright.js

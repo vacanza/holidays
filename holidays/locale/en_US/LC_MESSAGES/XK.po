@@ -1,0 +1,86 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Kosovo holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.93\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-03-12 12:00+0000\n"
+"PO-Revision-Date: 2026-03-12 12:00+0000\n"
+"Last-Translator: Blend Halilaj <blendhalilaj94@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Source-Language: sq\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (e vlerësuar)"
+msgstr "%s (estimated)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (ditë pushimi e shtyrë)"
+msgstr "%s (observed)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (ditë pushimi e shtyrë, e vlerësuar)"
+msgstr "%s (observed, estimated)"
+
+#. New Year's Day.
+msgid "Viti i Ri"
+msgstr "New Year's Day"
+
+#. Orthodox Christmas Day.
+msgid "Krishtlindjet Ortodokse"
+msgstr "Orthodox Christmas Day"
+
+#. Independence Day.
+msgid "Dita e Pavarësisë së Republikës së Kosovës"
+msgstr "Independence Day"
+
+#. Catholic Easter.
+msgid "Pashkët Katolike"
+msgstr "Catholic Easter"
+
+#. Orthodox Easter.
+msgid "Pashkët Ortodokse"
+msgstr "Orthodox Easter"
+
+#. Constitution Day.
+msgid "Dita e Kushtetutës së Republikës së Kosovës"
+msgstr "Constitution Day"
+
+#. International Workers' Day.
+msgid "Dita Ndërkombëtare e Punës"
+msgstr "International Workers' Day"
+
+#. Europe Day.
+msgid "Dita e Evropës"
+msgstr "Europe Day"
+
+#. Catholic Christmas Day.
+msgid "Krishtlindjet Katolike"
+msgstr "Catholic Christmas Day"
+
+#. Eid al-Fitr.
+msgid "Bajrami i Madh, dita e parë"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Bajrami i Vogël, dita e parë"
+msgstr "Eid al-Adha"

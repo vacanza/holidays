@@ -25,8 +25,8 @@ class TestEgypt(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         super().test_no_holidays()
 
-        self.assertNoHolidays(Egypt(categories=GOVERNMENT, years=2017))
-        self.assertNoHolidays(Egypt(categories=SCHOOL, years=2018))
+        self.assertNoHolidays(Egypt(categories=GOVERNMENT, years=range(self.start_year, 2018)))
+        self.assertNoHolidays(Egypt(categories=SCHOOL, years=range(self.start_year, 2019)))
 
     def test_coptic_christmas_day(self):
         name = "عيد الميلاد المجيد"
