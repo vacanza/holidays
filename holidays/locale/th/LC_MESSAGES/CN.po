@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.84\n"
+"Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-09-28 19:23+0700\n"
-"PO-Revision-Date: 2025-10-29 22:34+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-03-26 10:51+0800\n"
+"Last-Translator: Ryan Lee <deadcry152@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -35,12 +35,12 @@ msgstr "%s (โดยประมาณ)"
 
 #. %s (observed, estimated).
 #, c-format
-msgid "%s（观察日，推定）"
+msgid "%s（补假，推定）"
 msgstr "ชดเชย%s (โดยประมาณ)"
 
 #. %s (observed).
 #, c-format
-msgid "%s（观察日）"
+msgid "%s（补假）"
 msgstr "ชดเชย%s"
 
 #. New Year's Day.
@@ -97,7 +97,7 @@ msgstr "%d/%m/%Y"
 
 #. Day off (substituted from %s).
 #, c-format
-msgid "休息日（%s日起取代）"
+msgid "休息日（由 %s 调休）"
 msgstr "วันหยุด (แทน %s)"
 
 #. Chinese New Year (Spring Festival) Extended Holiday.
