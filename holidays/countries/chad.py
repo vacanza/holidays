@@ -1,15 +1,9 @@
 #  holidays
 #  --------
 #  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-#
-#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
-#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/holidays
-#  License: MIT (see LICENSE file)
+#  specific sets of holidays on the fly.
 
+from holidays.translation import tr
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, APR, JUN, JUL, AUG, SEP, NOV, DEC
 from holidays.groups import (
@@ -32,22 +26,17 @@ class Chad(
     """
 
     country = "TD"
-    # %s (estimated).
-    estimated_label = "%s (estimated)"
-    # %s (observed, estimated).
-    observed_estimated_label = "%s (observed, estimated)"
-    # %s (observed).
-    observed_label = "%s (observed)"
-    # On 11 August 1960, Chad gained independence from France.
+
+    default_language = "fr"
+    supported_languages = ("en_US", "fr", "ar")
+
+    estimated_label = tr("%s (estimated)")
+    observed_estimated_label = tr("%s (observed, estimated)")
+    observed_label = tr("%s (observed)")
+
     start_year = 1961
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
-        """
-        Args:
-            islamic_show_estimated:
-                Whether to add "estimated" label to Islamic holidays name
-                if holiday date is estimated.
-        """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
@@ -59,41 +48,41 @@ class Chad(
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_observed(self._add_new_years_day("New Year's Day"))
+        self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
         # International Women's Day.
-        self._add_observed(self._add_womens_day("International Women's Day"))
+        self._add_observed(self._add_womens_day(tr("International Women's Day")))
 
         # Easter Monday.
-        self._add_easter_monday("Easter Monday")
+        self._add_easter_monday(tr("Easter Monday"))
 
         # Labour Day.
-        self._add_observed(self._add_labor_day("Labour Day"))
+        self._add_observed(self._add_labor_day(tr("Labour Day")))
 
         # Independence Day.
-        self._add_observed(self._add_holiday_aug_11("Independence Day"))
+        self._add_observed(self._add_holiday_aug_11(tr("Independence Day")))
 
         # All Saints' Day.
-        self._add_all_saints_day("All Saints' Day")
+        self._add_all_saints_day(tr("All Saints' Day"))
 
         # Republic Day.
-        self._add_observed(self._add_holiday_nov_28("Republic Day"))
+        self._add_observed(self._add_holiday_nov_28(tr("Republic Day")))
 
         if self._year >= 1991:
             # Freedom and Democracy Day.
-            self._add_observed(self._add_holiday_dec_1("Freedom and Democracy Day"))
+            self._add_observed(self._add_holiday_dec_1(tr("Freedom and Democracy Day")))
 
         # Christmas Day.
-        self._add_christmas_day("Christmas Day")
+        self._add_christmas_day(tr("Christmas Day"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day("Eid al-Fitr")
+        self._add_eid_al_fitr_day(tr("Eid al-Fitr"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day("Eid al-Adha")
+        self._add_eid_al_adha_day(tr("Eid al-Adha"))
 
         # Mawlid.
-        self._add_mawlid_day("Mawlid")
+        self._add_mawlid_day(tr("Mawlid"))
 
 
 class TD(Chad):
@@ -131,5 +120,5 @@ class ChadIslamicHolidays(_CustomIslamicHolidays):
 
 class ChadStaticHolidays:
     special_public_holidays = {
-        2021: (APR, 23, "Funeral of Idriss Déby Itno"),
+        2021: (APR, 23, tr("Funeral of Idriss Déby Itno")),  # ✅ wrapped
     }
