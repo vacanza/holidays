@@ -125,16 +125,16 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         # Birth Anniversary of the 4th Druk Gyalpo - Constitution Day.
         self._add_holiday_nov_11(tr("འབྲུག་རྒྱལ་པོ་བཞི་པའི་སྐུ་འཁྲུངས་དུས་ཆེན་– རྩ་ཁྲིམས་ཀྱི་ཉིན།"))
 
-        # National Day
+        # National Day.
         self._add_holiday_dec_17(tr("རྒྱལ་ཡོངས་ཀྱི་ཉིན།"))
 
-        # Winter Solstice
+        # Winter Solstice.
         self._add_tibetan_winter_solstice(tr("དགུན་གྱི་ཉི་མ་ཐུང་ཤོས།"))
 
         # Traditional Day of Offering.
         self._add_day_of_offering(tr("ལུགས་སྲོལ་གྱི་མཆོད་པའི་ཉིན།"))
 
-        # Losar
+        # Losar.
         name = tr("ལོ་གསར།")
         self._add_losar(name)
         self._add_losar_day_two(name)
@@ -154,15 +154,16 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         # Blessed Rainy Day.
         self._add_blessed_rainy_day(tr("བཀྲ་ཤིས་ཆར་པའི་ཉིན།"))
 
-        # Dassain
+        # Dassain.
         self._add_dussehra(tr("ད་སེན།"))
 
         # Descending Day of Lord Buddha.
         self._add_descending_day_of_lord_buddha(tr("སངས་རྒྱས་ཀྱི་ལྷ་བབས་དུས་ཆེན།"))
 
     def _populate_subdiv_15_public_holidays(self):
+        # Thimphu Drubchoe.
         self._add_thimphu_drubchen_day(tr("ཐིམ་ཕུའི་སྒྲུབ་ཆོད།"))
-
+        # Thimphu Tshechu.
         name = tr("ཐིམ་ཕུའི་ཚེས་བཅུ།")
         self._add_thimphu_tshechu_day(name)
         self._add_thimphu_tshechu_day_two(name)
