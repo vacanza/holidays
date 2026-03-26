@@ -76,7 +76,7 @@ msgstr "ಗುರು ನಾನಕ್ ಜಯಂತಿ"
 msgid "Muharram"
 msgstr "ಮೊಹರಂ ಕಡೆ ದಿನ"
 
-#. Prophet's Birthday.
+#. Milad-un-Nabi.
 msgid "Milad-un-Nabi"
 msgstr "ಈದ್ - ಮಿಲಾದ್"
 
@@ -364,10 +364,6 @@ msgstr "ಬಲಿಪಾಡ್ಯಮಿ"
 msgid "Kanakadasa Jayanti"
 msgstr "ಕನಕದಾಸ ಜಯಂತಿ"
 
-#. Khutub-E-Ramzan.
-msgid "Khutub-E-Ramzan"
-msgstr "ಖುತುಬ್-ಎ-ರಂಜಾನ್"
-
 #. Last Day of Moharam.
 msgid "Last Day of Moharam"
 msgstr "ಮೊಹರಂ ಕಡೆ ದಿನ"
@@ -384,22 +380,6 @@ msgstr "ಕ್ರಿಸ್‌ಮಸ್ ಈವ್"
 msgid "New Year"
 msgstr "ನೂತನ ವರ್ಷಾರಂಭ"
 
-#. Sri Madvanavami.
-msgid "Sri Madvanavami"
-msgstr "ಮಧ್ಯನವಮಿ"
-
-#. Shab-e-Barath.
-msgid "Shab-e-Barath"
-msgstr "ಷಬ್-ಎ-ಬರಾತ್"
-
-#. Shab-e-Qadar.
-msgid "Shab-e-Qadar"
-msgstr "ಷಬ್-ಎ-ಖಾದರ್"
-
-#. Jumat-Ul-Wida.
-msgid "Jumat-Ul-Wida"
-msgstr "ಜುಮಾತ್-ಉಲ್-ವಿದಾ"
-
 #. Devara Daseemaiah Jayanthi.
 msgid "Devara Daseemaiah Jayanthi"
 msgstr "ದೇವರ ದಾಸಿಮಯ್ಯ ಜಯಂತಿ"
@@ -408,29 +388,13 @@ msgstr "ದೇವರ ದಾಸಿಮಯ್ಯ ಜಯಂತಿ"
 msgid "Holy Saturday"
 msgstr "ಹೋಲಿ ಸ್ಯಾಟರ್ ಡೇ"
 
-#. Sri Shankaracharya Jayanthi.
-msgid "Sri Shankaracharya Jayanthi"
-msgstr "ಶ್ರೀ ಶಂಕರಾಚಾರ್ಯ ಜಯಂತಿ"
-
-#. Sri Ramanujacharya Jayanthi.
-msgid "Sri Ramanujacharya Jayanthi"
-msgstr "ಶ್ರೀ ರಾಮಾನುಜಾಚಾರ್ಯ ಜಯಂತಿ"
-
 #. Varamahalakshmi Vrata.
 msgid "Varamahalakshmi Vrata"
 msgstr "ಶ್ರೀ ವರಮಹಾಲಕ್ಷ್ಮಿ ವ್ರತ"
 
-#. Yajur Upakarma.
-msgid "Yajur Upakarma"
-msgstr "ಯಜುರ್ ಉಪಕರ್ಮ"
-
 #. Brahma Shri Naryana Guru Jayanthi / Raksha Bandhan.
 msgid "Brahma Shri Naryana Guru Jayanthi, Raksha Bandhan"
 msgstr "ಬೃಹತ್ಶ್ರೀ ನಾರಾಯಣಗುರು ಜಯಂತಿ, ರಕ್ಷಾ ಬಂಧನ"
-
-#. Kanya Mariyamma Jayanthi.
-msgid "Kanya Mariyamma Jayanthi"
-msgstr "ಕನ್ಯಾ ಮರಿಯಮ್ಮ ಜಯಂತಿ"
 
 #. Vishwakarma Jayanthi.
 msgid "Vishwakarma Jayanthi"
@@ -440,18 +404,6 @@ msgstr "ವಿಶ್ವಕರ್ಮ ಜಯಂತಿ"
 msgid "Ananta Padmanabha Vrata"
 msgstr "ಶ್ರೀ ಅನಂತಪದ್ಮನಾಭ ವ್ರತ"
 
-#. Huttari Festival (Kodagu).
-msgid "Huttari Festival"
-msgstr "ಹುತ್ತರಿ ಹಬ್ಬ"
-
-#. Kail Muhuruth.
-msgid "Kail Muhuruth"
-msgstr "ಕೈಲ್ ಮೂಹೂರ್ತ"
-
-#. Tula Sankramana.
-msgid "Tula Sankramana"
-msgstr "ತುಲಾ ಸಂಕ್ರಮಣ"
-
 #. Maharshi Valmiki Jayanthi.
 msgid "Maharshi Valmiki Jayanthi"
 msgstr "ಮಹರ್ಷಿ ವಾಲ್ಮೀಕಿ ಜಯಂತಿ"
@@ -460,18 +412,6 @@ msgstr "ಮಹರ್ಷಿ ವಾಲ್ಮೀಕಿ ಜಯಂತಿ"
 msgid "Naraka Chaturdashi"
 msgstr "ನರಕ ಚತುರ್ದಶಿ"
 
-#. Souramana Ugadi.
-msgid "Souramana Ugadi"
-msgstr "ಸೌರಮಾನ ಯುಗಾದಿ"
-
 #. Buddha Purnima.
 msgid "Buddha Poornima"
 msgstr "ಬುದ್ಧ ಪೂರ್ಣಿಮ"
-
-#. Rug-Upakarma / Onam.
-msgid "Rug-Upakarma / Onam"
-msgstr "ಖಗ್ ಉಪಕರ್ಮ / ತಿರುಓಣಂ"
-
-#. Swarna Gowri Vrata.
-msgid "Swarna Gowri Vrata"
-msgstr "ಸ್ವರ್ಣಗೌರಿ ವ್ರತ"
