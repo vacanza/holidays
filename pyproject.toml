@@ -119,14 +119,14 @@ overrides = [
   { module = "holidays.groups.*", disable_error_code = [ "attr-defined" ] },
 ]
 
-[tool.pytest]
-ini_options.addopts = [
+[tool.pytest.ini_options]
+addopts = [
   "--cov-fail-under=100",
 ]
-ini_options.filterwarnings = [
+filterwarnings = [
   "ignore::DeprecationWarning:holidays.deprecations.v1_incompatibility",
 ]
-ini_options.testpaths = [ "tests" ]
+testpaths = [ "tests" ]
 
 [tool.coverage]
 run.branch = true
