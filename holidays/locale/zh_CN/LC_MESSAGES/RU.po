@@ -30,7 +30,7 @@ msgstr ""
 #. %s (observed).
 #, c-format
 msgid "%s (выходной)"
-msgstr "%s（连休）"
+msgstr "%s（补假）"
 
 #. New Year's Day.
 msgid "Новый год"

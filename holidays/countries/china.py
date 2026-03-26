@@ -70,9 +70,9 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
     # %s (estimated).
     estimated_label = tr("%s（推定）")
     # %s (observed, estimated).
-    observed_estimated_label = tr("%s（连休，推定）")
+    observed_estimated_label = tr("%s（补假，推定）")
     # %s (observed).
-    observed_label = tr("%s（连休）")
+    observed_label = tr("%s（补假）")
     supported_categories = (PUBLIC, HALF_DAY)
     default_language = "zh_CN"
     supported_languages = ("en_US", "th", "zh_CN", "zh_TW")
