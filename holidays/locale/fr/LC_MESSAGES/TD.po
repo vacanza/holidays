@@ -1,0 +1,35 @@
+msgid "New Year's Day"
+msgstr "Jour de l'An"
+
+msgid "International Women's Day"
+msgstr "Journée internationale des femmes"
+
+msgid "Easter Monday"
+msgstr "Lundi de Pâques"
+
+msgid "Labour Day"
+msgstr "Fête du Travail"
+
+msgid "Independence Day"
+msgstr "Fête de l'indépendance"
+
+msgid "All Saints' Day"
+msgstr "Toussaint"
+
+msgid "Republic Day"
+msgstr "Fête de la République"
+
+msgid "Freedom and Democracy Day"
+msgstr "Journée de la liberté et de la démocratie"
+
+msgid "Christmas Day"
+msgstr "Noël"
+
+msgid "Eid al-Fitr"
+msgstr "Aïd el-Fitr"
+
+msgid "Eid al-Adha"
+msgstr "Aïd el-Adha"
+
+msgid "Mawlid"
+msgstr "Mawlid"

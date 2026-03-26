@@ -1,0 +1,35 @@
+msgid "New Year's Day"
+msgstr "رأس السنة"
+
+msgid "International Women's Day"
+msgstr "اليوم العالمي للمرأة"
+
+msgid "Easter Monday"
+msgstr "اثنين الفصح"
+
+msgid "Labour Day"
+msgstr "عيد العمال"
+
+msgid "Independence Day"
+msgstr "عيد الاستقلال"
+
+msgid "All Saints' Day"
+msgstr "عيد جميع القديسين"
+
+msgid "Republic Day"
+msgstr "عيد الجمهورية"
+
+msgid "Freedom and Democracy Day"
+msgstr "يوم الحرية والديمقراطية"
+
+msgid "Christmas Day"
+msgstr "عيد الميلاد"
+
+msgid "Eid al-Fitr"
+msgstr "عيد الفطر"
+
+msgid "Eid al-Adha"
+msgstr "عيد الأضحى"
+
+msgid "Mawlid"
+msgstr "المولد النبوي"
