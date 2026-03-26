@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = [ "setuptools>=61", "wheel" ]
+requires = [ "setuptools>=77", "wheel" ]
 
 [project]
 name = "holidays"
