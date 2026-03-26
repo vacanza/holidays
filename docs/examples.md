@@ -569,7 +569,7 @@ To export to `.ics` format, use `save_ics`.
 >>>
 >>> years = range(2021, 2026)
 >>> language = "en_US"
->>> subdiv = "AP"  # Andhra Pradesh subdivision
+>>> subdiv = "AP"  # Andhra Pradesh state.
 >>>
 >>> for category in IN.supported_categories:
 >>>     holidays = IN(
