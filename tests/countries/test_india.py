@@ -982,3 +982,9 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertEqual(
             India(subdiv="OR", years=2023).keys(), India(subdiv="OD", years=2023).keys()
         )
+
+    def test_bonalu_ts_2026(self):
+        self.assertHolidayName("Bonalu", India(subdiv="TS"), "2026-08-10")
+
+    def test_bonalu_tg_alias_2026(self):
+        self.assertHolidayName("Bonalu", India(subdiv="TG"), "2026-08-10")

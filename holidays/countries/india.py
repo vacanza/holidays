@@ -53,6 +53,9 @@ class India(
     estimated_label = tr("%s (estimated)")
     # India gained independence on August 15, 1947.
     start_year = 1948
+    BONALU_DATES = {
+        2026: (AUG, 10),
+    }
     subdivisions = (
         "AN",  # Andaman and Nicobar Islands.
         "AP",  # Andhra Pradesh.
@@ -492,6 +495,10 @@ class India(
         self._add_holiday_jun_2(tr("Telangana Formation Day"))
         # Bathukamma Festival.
         self._add_bathukamma(tr("Bathukamma Festival"))
+        # Bonalu.
+        dt = self.BONALU_DATES.get(self._year)
+        if dt:
+            self._add_holiday(tr("Bonalu"), *dt)
         # Ugadi.
         self._add_gudi_padwa(tr("Ugadi"))
 
