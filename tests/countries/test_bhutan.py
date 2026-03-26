@@ -234,6 +234,7 @@ class TestBhutan(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
+            "dz",
             ("2024-01-02", "དགུན་གྱི་ཉི་མ་ཐུང་ཤོས།"),
             ("2024-01-12", "ལུགས་སྲོལ་གྱི་མཆོད་པའི་ཉིན།"),
             ("2024-02-10", "ལོ་གསར།"),
@@ -258,10 +259,9 @@ class TestBhutan(CommonCountryTests, TestCase):
             ("2024-12-17", "རྒྱལ་ཡོངས་ཀྱི་ཉིན།"),
         )
 
-    def test_l10_en_us(self):
-        self.assertHolidaysInYear(
-            2024,
-            Bhutan(years=2024, language="en_US"),
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
             ("2024-01-02", "Winter Solstice"),
             ("2024-01-12", "Traditional Day of Offering"),
             ("2024-02-10", "Losar"),
@@ -274,10 +274,37 @@ class TestBhutan(CommonCountryTests, TestCase):
             ("2024-05-23", "Lord Buddha's Parinirvana"),
             ("2024-06-16", "Birth Anniversary of Guru Rinpoche"),
             ("2024-07-10", "First Sermon of Lord Buddha"),
+            ("2024-09-10", "Thimphu Drubchoe"),
+            ("2024-09-13", "Thimphu Tshechu"),
+            ("2024-09-14", "Thimphu Tshechu"),
+            ("2024-09-15", "Thimphu Tshechu"),
             ("2024-09-23", "Blessed Rainy Day"),
             ("2024-10-12", "Dassain"),
             ("2024-11-01", "Coronation of His Majesty the King"),
             ("2024-11-11", "Birth Anniversary of the 4th Druk Gyalpo - Constitution Day"),
             ("2024-11-22", "Descending Day of Lord Buddha"),
             ("2024-12-17", "National Day"),
+        )
+
+    def test_2024(self):
+        self.assertHolidays(
+            Bhutan(years=2024),
+            ("2024-01-02", "དགུན་གྱི་ཉི་མ་ཐུང་ཤོས།"),
+            ("2024-01-12", "ལུགས་སྲོལ་གྱི་མཆོད་པའི་ཉིན།"),
+            ("2024-02-10", "ལོ་གསར།"),
+            ("2024-02-11", "ལོ་གསར།"),
+            ("2024-02-21", "རྒྱལ་པོ་མཆོག་གི་སྐུ་འཁྲུངས་དུས་ཆེན།"),
+            ("2024-02-22", "རྒྱལ་པོ་མཆོག་གི་སྐུ་འཁྲུངས་དུས་ཆེན།"),
+            ("2024-02-23", "རྒྱལ་པོ་མཆོག་གི་སྐུ་འཁྲུངས་དུས་ཆེན།"),
+            ("2024-04-18", "ཞབས་དྲུང་གི་སྐུ་འདས་དུས་ཆེན།"),
+            ("2024-05-02", "འབྲུག་རྒྱལ་པོ་གསུམ་པའི་སྐུ་འཁྲུངས་དུས་ཆེན།"),
+            ("2024-05-23", "སངས་རྒྱས་ཀྱི་མྱང་འདས།"),
+            ("2024-06-16", "གུ་རུ་རིན་པོ་ཆེའི་སྐུ་འཁྲུངས་དུས་ཆེན།"),
+            ("2024-07-10", "སངས་རྒྱས་ཀྱི་ཆོས་འཁོར་དང་པོ།"),
+            ("2024-09-23", "བཀྲ་ཤིས་ཆར་པའི་ཉིན།"),
+            ("2024-10-12", "ད་སེན།"),
+            ("2024-11-01", "རྒྱལ་པོ་མཆོག་གི་ཁྲི་འདོན་དུས་ཆེན།"),
+            ("2024-11-11", "འབྲུག་རྒྱལ་པོ་བཞི་པའི་སྐུ་འཁྲུངས་དུས་ཆེན་– རྩ་ཁྲིམས་ཀྱི་ཉིན།"),
+            ("2024-11-22", "སངས་རྒྱས་ཀྱི་ལྷ་བབས་དུས་ཆེན།"),
+            ("2024-12-17", "རྒྱལ་ཡོངས་ཀྱི་ཉིན།"),
         )
