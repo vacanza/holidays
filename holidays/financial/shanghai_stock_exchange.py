@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.constants import PUBLIC
 from holidays.countries.china import China
 
@@ -38,6 +40,21 @@ class ShanghaiStockExchange(China):
     parent_entity = China
     supported_categories: tuple[str, ...] = (PUBLIC,)  # type: ignore[assignment]
     start_year = 2001
+
+    def _populate_common_holidays(self):
+        super()._populate_common_holidays()
+
+        # SSE keeps national makeup work weekends closed and publishes its own
+        # holiday calendar instead of inheriting China weekend workdays.
+        self.weekend_workdays.clear()
+
+    def _populate_public_holidays(self):
+        super()._populate_public_holidays()
+
+        # The 2024 SSE trading schedule explicitly includes Lunar New Year's Eve
+        # as a market closure.
+        if self._year == 2024:
+            self._add_chinese_new_years_eve(tr("农历除夕"))
 
 
 class XSHG(ShanghaiStockExchange):

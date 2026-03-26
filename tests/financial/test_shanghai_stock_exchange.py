@@ -30,6 +30,7 @@ class TestShanghaiStockExchange(CommonFinancialTests, TestCase):
     def _expected_localized_holidays(language=None):
         dates = (
             "2024-01-01",
+            "2024-02-09",
             "2024-02-10",
             "2024-02-11",
             "2024-02-12",
@@ -55,7 +56,24 @@ class TestShanghaiStockExchange(CommonFinancialTests, TestCase):
         if language:
             kwargs["language"] = language
         holidays = China(**kwargs)
-        return tuple((dt, holidays.get(dt)) for dt in dates)
+        lunar_new_years_eve = {
+            None: "农历除夕",
+            "en_US": "Chinese New Year's Eve",
+            "th": "วันก่อนวันตรุษจีน",
+            "zh_TW": "農曆除夕",
+        }
+        return tuple(
+            (
+                dt,
+                lunar_new_years_eve[language] if dt == "2024-02-09" else holidays.get(dt),
+            )
+            for dt in dates
+        )
+
+    def test_makeup_work_weekends_remain_closed(self):
+        for dt in ("2024-02-04", "2024-02-18", "2025-01-26", "2025-02-08"):
+            self.assertNoHoliday(dt)
+            self.assertFalse(self.holidays.is_working_day(dt))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(*self._expected_localized_holidays())
