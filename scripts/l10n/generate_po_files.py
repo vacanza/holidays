@@ -83,13 +83,13 @@ class POGenerator:
     @staticmethod
     def _process_entity_worker(
         entity_code_info: tuple[str, tuple[str, Path, str]],
-    ) -> list[tuple[str, str, str, str]]:
+    ) -> list[tuple[Path, Path, str, str]]:
         """Process a single entity: create .pot, default .po, and return update tasks."""
         entity_code, (default_language, class_file_path, class_docstring) = entity_code_info
 
         locale_path = Path("holidays/locale")
         pot_path = locale_path / "pot"
-        pot_path.mkdir(exist_ok=True)
+        pot_path.mkdir(parents=True, exist_ok=True)
 
         pot_file_path = pot_path / f"{entity_code}.pot"
 
@@ -105,7 +105,7 @@ class POGenerator:
             msgid_bugs_address="l10n@vacanza.dev",
         )
 
-        pot_file = pofile(pot_file_path, wrapwidth=WRAP_WIDTH)
+        pot_file = pofile(str(pot_file_path), wrapwidth=WRAP_WIDTH)
         pot_file.metadata.update(POGenerator._get_standard_metadata(default_language))
         pot_file.metadata["Project-Id-Version"] = f"Holidays {package_version}"
         pot_file.save(newline="\n")
@@ -120,17 +120,17 @@ class POGenerator:
             pot_file.save(str(default_po_path), newline="\n")
 
         return [
-            (str(po_file_path), str(pot_file_path), class_docstring, default_language)
+            (po_file_path, pot_file_path, class_docstring, default_language)
             for po_file_path in locale_path.rglob(f"{entity_code}.po")
         ]
 
     @staticmethod
-    def _update_po_file(args: tuple[str, str, str, str]) -> None:
+    def _update_po_file(args: tuple[Path, Path, str, str]) -> None:
         """Merge .po file with .pot using strict no-change policies."""
-        po_path_str, pot_path_str, entity_docstring, default_language = args
-        po_path = Path(po_path_str)
+        po_path, pot_path, entity_docstring, default_language = args
+        po_path = po_path.resolve()
+        pot_path = pot_path.resolve()
         entity_code = po_path.stem.upper()
-        pot_path = Path(pot_path_str)
 
         po_file = pofile(str(po_path), wrapwidth=WRAP_WIDTH)
         po_file_initial = po_file.copy()
@@ -167,7 +167,7 @@ class POGenerator:
             if po_path.exists():
                 content = po_path.read_text(encoding="utf-8")
                 content = POGenerator._strip_gettext_boilerplate(content)
-                if "Authors: Vacanza Team" not in content:
+                if not content.startswith("#  holidays\n#  --------"):
                     new_parts = []
                     if license_header:
                         new_parts.append(license_header)
@@ -258,7 +258,7 @@ class POGenerator:
                     doc_text,
                 )
 
-        all_po_update_tasks: list[tuple[str, str, str, str]] = []
+        all_po_update_tasks: list[tuple[Path, Path, str, str]] = []
         with ProcessPoolExecutor() as executor:
             for po_tasks in executor.map(
                 self._process_entity_worker, entity_code_info_mapping.items()
