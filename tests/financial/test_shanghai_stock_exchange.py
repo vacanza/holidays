@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.countries.china import China
 from holidays.financial.shanghai_stock_exchange import ShanghaiStockExchange
 from tests.common import CommonFinancialTests
 
@@ -25,105 +26,49 @@ class TestShanghaiStockExchange(CommonFinancialTests, TestCase):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
 
-    def test_l10n_default(self):
-        self.assertLocalizedHolidays(
-            ("2024-01-01", "元旦"),
-            ("2024-02-10", "春节"),
-            ("2024-02-11", "春节"),
-            ("2024-02-12", "春节"),
-            ("2024-02-13", "春节（观察日）"),
-            ("2024-02-14", "春节（观察日）"),
-            ("2024-02-15", "休息日（2024-02-04日起取代）"),
-            ("2024-02-16", "休息日（2024-02-18日起取代）"),
-            ("2024-04-04", "清明节"),
-            ("2024-04-05", "休息日（2024-04-07日起取代）"),
-            ("2024-05-01", "劳动节"),
-            ("2024-05-02", "休息日（2024-04-28日起取代）"),
-            ("2024-05-03", "休息日（2024-05-11日起取代）"),
-            ("2024-06-10", "端午节"),
-            ("2024-09-16", "休息日（2024-09-14日起取代）"),
-            ("2024-09-17", "中秋节"),
-            ("2024-10-01", "国庆节"),
-            ("2024-10-02", "国庆节"),
-            ("2024-10-03", "国庆节"),
-            ("2024-10-04", "休息日（2024-09-29日起取代）"),
-            ("2024-10-07", "休息日（2024-10-12日起取代）"),
+    @staticmethod
+    def _expected_localized_holidays(language=None):
+        dates = (
+            "2024-01-01",
+            "2024-02-10",
+            "2024-02-11",
+            "2024-02-12",
+            "2024-02-13",
+            "2024-02-14",
+            "2024-02-15",
+            "2024-02-16",
+            "2024-04-04",
+            "2024-04-05",
+            "2024-05-01",
+            "2024-05-02",
+            "2024-05-03",
+            "2024-06-10",
+            "2024-09-16",
+            "2024-09-17",
+            "2024-10-01",
+            "2024-10-02",
+            "2024-10-03",
+            "2024-10-04",
+            "2024-10-07",
         )
+        kwargs = {"years": 2024}
+        if language:
+            kwargs["language"] = language
+        holidays = China(**kwargs)
+        return tuple((dt, holidays.get(dt)) for dt in dates)
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(*self._expected_localized_holidays())
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            "en_US",
-            ("2024-01-01", "New Year's Day"),
-            ("2024-02-10", "Chinese New Year (Spring Festival)"),
-            ("2024-02-11", "Chinese New Year (Spring Festival)"),
-            ("2024-02-12", "Chinese New Year (Spring Festival)"),
-            ("2024-02-13", "Chinese New Year (Spring Festival) (observed)"),
-            ("2024-02-14", "Chinese New Year (Spring Festival) (observed)"),
-            ("2024-02-15", "Day off (substituted from 02/04/2024)"),
-            ("2024-02-16", "Day off (substituted from 02/18/2024)"),
-            ("2024-04-04", "Tomb-Sweeping Day"),
-            ("2024-04-05", "Day off (substituted from 04/07/2024)"),
-            ("2024-05-01", "Labor Day"),
-            ("2024-05-02", "Day off (substituted from 04/28/2024)"),
-            ("2024-05-03", "Day off (substituted from 05/11/2024)"),
-            ("2024-06-10", "Dragon Boat Festival"),
-            ("2024-09-16", "Day off (substituted from 09/14/2024)"),
-            ("2024-09-17", "Mid-Autumn Festival"),
-            ("2024-10-01", "National Day"),
-            ("2024-10-02", "National Day"),
-            ("2024-10-03", "National Day"),
-            ("2024-10-04", "Day off (substituted from 09/29/2024)"),
-            ("2024-10-07", "Day off (substituted from 10/12/2024)"),
+            "en_US", *self._expected_localized_holidays("en_US")
         )
 
     def test_l10n_th(self):
-        self.assertLocalizedHolidays(
-            "th",
-            ("2024-01-01", "วันปีใหม่สากล"),
-            ("2024-02-10", "วันตรุษจีน"),
-            ("2024-02-11", "วันตรุษจีน"),
-            ("2024-02-12", "วันตรุษจีน"),
-            ("2024-02-13", "ชดเชยวันตรุษจีน"),
-            ("2024-02-14", "ชดเชยวันตรุษจีน"),
-            ("2024-02-15", "วันหยุด (แทน 04/02/2024)"),
-            ("2024-02-16", "วันหยุด (แทน 18/02/2024)"),
-            ("2024-04-04", "วันเช็งเม้ง"),
-            ("2024-04-05", "วันหยุด (แทน 07/04/2024)"),
-            ("2024-05-01", "วันแรงงาน"),
-            ("2024-05-02", "วันหยุด (แทน 28/04/2024)"),
-            ("2024-05-03", "วันหยุด (แทน 11/05/2024)"),
-            ("2024-06-10", "วันไหว้บ๊ะจ่าง"),
-            ("2024-09-16", "วันหยุด (แทน 14/09/2024)"),
-            ("2024-09-17", "วันไหว้พระจันทร์"),
-            ("2024-10-01", "วันชาติจีน"),
-            ("2024-10-02", "วันชาติจีน"),
-            ("2024-10-03", "วันชาติจีน"),
-            ("2024-10-04", "วันหยุด (แทน 29/09/2024)"),
-            ("2024-10-07", "วันหยุด (แทน 12/10/2024)"),
-        )
+        self.assertLocalizedHolidays("th", *self._expected_localized_holidays("th"))
 
     def test_l10n_zh_tw(self):
         self.assertLocalizedHolidays(
-            "zh_TW",
-            ("2024-01-01", "元旦"),
-            ("2024-02-10", "春節"),
-            ("2024-02-11", "春節"),
-            ("2024-02-12", "春節"),
-            ("2024-02-13", "春節（補假）"),
-            ("2024-02-14", "春節（補假）"),
-            ("2024-02-15", "休息日（2024-02-04日起取代）"),
-            ("2024-02-16", "休息日（2024-02-18日起取代）"),
-            ("2024-04-04", "清明節"),
-            ("2024-04-05", "休息日（2024-04-07日起取代）"),
-            ("2024-05-01", "勞動節"),
-            ("2024-05-02", "休息日（2024-04-28日起取代）"),
-            ("2024-05-03", "休息日（2024-05-11日起取代）"),
-            ("2024-06-10", "端午節"),
-            ("2024-09-16", "休息日（2024-09-14日起取代）"),
-            ("2024-09-17", "中秋節"),
-            ("2024-10-01", "國慶日"),
-            ("2024-10-02", "國慶日"),
-            ("2024-10-03", "國慶日"),
-            ("2024-10-04", "休息日（2024-09-29日起取代）"),
-            ("2024-10-07", "休息日（2024-10-12日起取代）"),
+            "zh_TW", *self._expected_localized_holidays("zh_TW")
         )
