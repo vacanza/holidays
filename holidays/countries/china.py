@@ -70,9 +70,9 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
     # %s (estimated).
     estimated_label = tr("%s（推定）")
     # %s (observed, estimated).
-    observed_estimated_label = tr("%s（观察日，推定）")
+    observed_estimated_label = tr("%s（补假，推定）")
     # %s (observed).
-    observed_label = tr("%s（观察日）")
+    observed_label = tr("%s（补假）")
     supported_categories = (PUBLIC, HALF_DAY)
     default_language = "zh_CN"
     supported_languages = ("en_US", "th", "zh_CN", "zh_TW")
@@ -217,7 +217,7 @@ class ChinaStaticHolidays:
     # Date format (see strftime() Format Codes).
     substituted_date_format = tr("%Y-%m-%d")
     # Day off (substituted from %s).
-    substituted_label = tr("休息日（%s日起取代）")
+    substituted_label = tr("休息日（由 %s 调休）")
 
     # Chinese New Year (Spring Festival).
     chinese_new_year = tr("春节")
