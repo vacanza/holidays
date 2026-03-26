@@ -235,6 +235,7 @@ class HolidayBase(dict[date, str]):
         years: YearArg | None = None,
         expand: bool = True,
         observed: bool = True,
+        only_observed: bool = False,
         subdiv: str | None = None,
         prov: str | None = None,  # Deprecated.
         state: str | None = None,  # Deprecated.
@@ -372,6 +373,7 @@ class HolidayBase(dict[date, str]):
         self.has_substituted_holidays = has_substituted_holidays
         self.language = language
         self.observed = observed
+        self.only_observed = only_observed
         self.subdiv = subdiv
         self.weekend_workdays = getattr(self, "weekend_workdays", set())
         self.years = _normalize_arguments(int, years)
@@ -800,7 +802,10 @@ class HolidayBase(dict[date, str]):
 
         if dt.year != self._year:
             return None
-
+        if getattr(self,"only_observed",False):
+            label = getattr(self,"observed_label",None)
+            if label and label not in name:
+                return None
         self[dt] = self.tr(name)
         return dt
 
