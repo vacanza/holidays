@@ -28,6 +28,7 @@ def main():
         "* [Changelog](changelog.md)",
         "* [Contributing](contributing.md)",
         "* [API Reference](api.md)",
+        "* [Downloads](downloads.md)",
         "* Supported Entities",
     ]
 

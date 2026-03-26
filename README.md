@@ -59,6 +59,10 @@ version upgrades.
 
 The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io).
 
+## ICS Exports
+
+Holiday calendars can be exported as `.ics` files via the [download page](https://holidays.readthedocs.io/en/latest/downloads/).
+
 ## Quick Start
 
 ``` python
