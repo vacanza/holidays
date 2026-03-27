@@ -72,16 +72,24 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     )
     subdivisions_aliases = {
         "Aragac̣otn": "AG",
+        "Aragatsotn": "AG",
         "Ararat": "AR",
         "Armavir": "AV",
         "Erevan": "ER",
         "Geġark'unik'": "GR",
+        "Gegharkunik": "GR",
         "Kotayk'": "KT",
+        "Kotayk": "KT",
         "Loṙi": "LO",
+        "Lori": "LO",
         "Širak": "SH",
+        "Shirak": "SH",
         "Syunik'": "SU",
+        "Syunik": "SU",
         "Tavuš": "TV",
+        "Tavush": "TV",
         "Vayoć Jor": "VD",
+        "Vayots Dzor": "VD",
     }
 
     def __init__(self, *args, **kwargs):
