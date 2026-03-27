@@ -24,7 +24,7 @@ from lingva.extract import extract as create_pot_file
 from lingva.extract import _location_sort_key
 from polib import pofile
 
-sys.path.insert(0, str(Path.cwd()))
+sys.path.insert(0, str(Path.cwd()))  # Make holidays visible.
 from holidays import __version__ as package_version
 from holidays.holiday_base import HolidayBase
 
