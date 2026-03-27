@@ -43,6 +43,7 @@ HEADER_PATH = Path("docs/file_header.txt")
 class POGenerator:
     """Generates .po files for supported country/market entities."""
 
+    _locale_path: Path = Path("holidays/locale")
     _po_index: dict[str, list[Path]] | None = None
 
     @staticmethod
@@ -89,8 +90,7 @@ class POGenerator:
         """Process a single entity: create .pot, default .po, and return update tasks."""
         entity_code, (default_language, class_file_path, class_docstring) = entity_code_info
 
-        locale_path = Path("holidays/locale")
-        pot_path = locale_path / "pot"
+        pot_path = POGenerator._locale_path / "pot"
         pot_path.mkdir(parents=True, exist_ok=True)
 
         pot_file_path = pot_path / f"{entity_code}.pot"
@@ -112,7 +112,7 @@ class POGenerator:
         pot_file.metadata["Project-Id-Version"] = f"Holidays {package_version}"
         pot_file.save(newline="\n")
 
-        po_directory = locale_path / default_language / "LC_MESSAGES"
+        po_directory = POGenerator._locale_path / default_language / "LC_MESSAGES"
         po_directory.mkdir(parents=True, exist_ok=True)
         default_po_path = po_directory / f"{entity_code}.po"
 
@@ -176,7 +176,7 @@ class POGenerator:
                     new_parts = []
                     if license_header:
                         new_parts.append(license_header)
-                    if desc_line and desc_line not in content:
+                    if desc_line and desc_line not in content.splitlines():
                         new_parts.append(desc_line)
 
                     if new_parts:
@@ -261,10 +261,8 @@ class POGenerator:
                     chosen_cls.__doc__ or "",
                 )
 
-        locale_path = Path("holidays/locale")
-
         po_index: dict[str, list[Path]] = {}
-        for path in locale_path.rglob("*.po"):
+        for path in self._locale_path.rglob("*.po"):
             po_index.setdefault(path.stem.upper(), []).append(path)
 
         all_po_update_tasks: list[tuple[Path, Path, str, str]] = []
