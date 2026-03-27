@@ -508,6 +508,8 @@ class India(
         self._add_holiday_jan_24(tr("UP Formation Day"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
+        # Maharishi Valmiki Jayanti
+        self._add_pargat_diwas(tr("Pargat Diwas"))
 
     # West Bengal.
     def _populate_subdiv_wb_public_holidays(self):
