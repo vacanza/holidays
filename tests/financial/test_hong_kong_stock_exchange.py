@@ -52,7 +52,7 @@ class TestHongKongStockExchange(CommonFinancialTests, TestCase):
             2025,
             ("2025-01-28", "農曆年初一的前一日（半日交易日）"),
             ("2025-12-24", "平安夜（半日交易日）"),
-            ("2025-12-31", "除夕（半日交易日）"),
+            ("2025-12-31", "新年前夕（半日交易日）"),
         )
         self.assertNoHalfDayHoliday("2025-05-31")
 
@@ -75,7 +75,7 @@ class TestHongKongStockExchange(CommonFinancialTests, TestCase):
             ("2025-12-24", "平安夜（半日交易日）"),
             ("2025-12-25", "聖誕節"),
             ("2025-12-26", "聖誕節後第一個周日"),
-            ("2025-12-31", "除夕（半日交易日）"),
+            ("2025-12-31", "新年前夕（半日交易日）"),
         )
 
     def test_l10n_en_hk(self):
@@ -144,7 +144,7 @@ class TestHongKongStockExchange(CommonFinancialTests, TestCase):
             ("2025-12-24", "平安夜（半日交易日）"),
             ("2025-12-25", "圣诞节"),
             ("2025-12-26", "圣诞节后第一个周日"),
-            ("2025-12-31", "除夕（半日交易日）"),
+            ("2025-12-31", "新年前夕（半日交易日）"),
         )
 
     def test_l10n_zh_hk(self):
@@ -167,5 +167,5 @@ class TestHongKongStockExchange(CommonFinancialTests, TestCase):
             ("2025-12-24", "平安夜（半日交易日）"),
             ("2025-12-25", "聖誕節"),
             ("2025-12-26", "聖誕節後第一個周日"),
-            ("2025-12-31", "除夕（半日交易日）"),
+            ("2025-12-31", "新年前夕（半日交易日）"),
         )

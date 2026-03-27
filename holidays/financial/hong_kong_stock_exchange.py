@@ -47,13 +47,15 @@ class HongKongStockExchange(HongKong):
         half_day_label = self.tr("%s（半日交易日）")
 
         if self._is_weekday(_timedelta(self._chinese_new_year, -1)):
+            # Chinese New Year's Eve.
             self._add_chinese_new_years_eve(half_day_label % self.tr("農曆年初一的前一日"))
 
         if self._is_weekday(date(self._year, DEC, 24)):
             self._add_christmas_eve(half_day_label % self.tr("平安夜"))
 
         if self._is_weekday(date(self._year, DEC, 31)):
-            self._add_new_years_eve(half_day_label % self.tr("除夕"))
+            # New Year's Eve.
+            self._add_new_years_eve(half_day_label % self.tr("新年前夕"))
 
 
 class XHKG(HongKongStockExchange):
@@ -66,3 +68,6 @@ class HKEX(HongKongStockExchange):
 
 class SEHK(HongKongStockExchange):
     pass
+
+
+

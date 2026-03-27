@@ -36,5 +36,5 @@ msgid "平安夜"
 msgstr ""
 
 #. New Year's Eve.
-msgid "除夕"
+msgid "新年前夕"
 msgstr ""
