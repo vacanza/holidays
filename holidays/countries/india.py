@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
@@ -237,14 +238,14 @@ class India(
         if self.subdiv == "OR":
             self._populate_subdiv_od_public_holidays()
 
+        if self.subdiv != "MH":
+            self._add_holi(tr("Holi"))
+
     def _populate_optional_holidays(self):
         # Hindu holidays.
 
         # Children's Day.
         self._add_holiday_nov_14(tr("Children's Day"))
-
-        # Holi.
-        self._add_holi(tr("Holi"))
 
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
@@ -400,9 +401,11 @@ class India(
         self._add_gudi_padwa(tr("Gudi Padwa"))
         # Chhatrapati Shivaji Maharaj Jayanti.
         self._add_holiday_feb_19(tr("Chhatrapati Shivaji Maharaj Jayanti"))
-        # Holi (Maharashtra-specific date for 2026).
+        # Holi
         if self._year == 2026:
-            self._add_holiday_mar_3(tr("Holi"))
+            self[tr("Holi")] = date(2026, 3, 3)
+        else:
+            self._add_holi(tr("Holi"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
