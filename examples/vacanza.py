@@ -1,10 +1,23 @@
-import sys
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
 import argparse
-from pathlib import Path   
+import datetime
+import sys
+from pathlib import Path
 
 import holidays
-from holidays.registry import COUNTRIES # All 250 countries
-from holidays.ical import ICalExporter # Export to .ics
+from holidays.ical import ICalExporter  # Export to .ics
+from holidays.registry import COUNTRIES  # All 250 countries
 
 
 def validate_country_code(country_code: str) -> str:
@@ -20,8 +33,12 @@ def validate_country_code(country_code: str) -> str:
 
     # Check if it's in the COUNTRIES registry
     for country, country_codes in COUNTRIES.items():
-        if country_code.lower() in country_codes or country_code.upper() in country_codes or country_code.title() in country_codes:
-            return COUNTRIES[country][1].upper() # return upper case version
+        if (
+            country_code.lower() in country_codes
+            or country_code.upper() in country_codes
+            or country_code.title() in country_codes
+        ):
+            return COUNTRIES[country][1].upper()  # return upper case version
     else:
         # it wasn't found
         raise ValueError(
@@ -29,6 +46,7 @@ def validate_country_code(country_code: str) -> str:
             f"Valid examples: US, GB, DE, FR, SE, NG, IN. "
             f"Run with --list-countries to see all supported countries."
         )
+
 
 def parse_year_range(year_string: str) -> range:
     """
@@ -42,8 +60,8 @@ def parse_year_range(year_string: str) -> range:
     """
     try:
         # year_string in ####-#### format
-        if '-' in year_string:
-            parts = year_string.split('-')
+        if "-" in year_string:
+            parts = year_string.split("-")
             start_year = int(parts[0])
             end_year = int(parts[1])
 
@@ -52,7 +70,7 @@ def parse_year_range(year_string: str) -> range:
 
             if start_year > end_year:
                 raise ValueError("Start can't be after end")
-            
+
             return range(start_year, end_year + 1)
 
         else:
@@ -61,15 +79,16 @@ def parse_year_range(year_string: str) -> range:
             return range(start_year, start_year + 1)
 
     except ValueError as e:
-        raise ValueError(f"Invalid year format: {year_string}. {str(e)}")
-    
+        raise ValueError(f"Invalid year format: {year_string}. {e}") from e
+
+
 def get_holidays_object(
-        country_code: str,
-        years: range,
-        language: str | None =  None,
-        category: str | None = None,
-    ) -> holidays.HolidayBase:
-    """Create and return a holidays object for the 
+    country_code: str,
+    years: range,
+    language: str | None = None,
+    category: str | None = None,
+) -> holidays.HolidayBase:
+    """Create and return a holidays object for the
     specified country, years, language, and category."""
 
     # Settings
@@ -82,23 +101,20 @@ def get_holidays_object(
     # Return holidays object
     return holidays.country_holidays(country_code, **kwargs)
 
+
 def get_categories(category: str, country_code: str, supported_categories: tuple) -> list:
     """Validate category and return list of categories to generate"""
-    # Build a case-insensitive lookup from user input to canonical category
-    category_lookup = {c.lower(): c for c in supported_categories}
-
     if category:
-        # Normalize user input to lowercase for case-insensitive matching
-        normalized_category = category.lower()
-        if normalized_category not in category_lookup:
+        # Check if specified category in supported categories, if true return category
+        if category.lower() not in supported_categories:
             raise ValueError(
                 f"Category '{category}' not supported for {country_code}. "
                 f"Supported categories: {', '.join(supported_categories)}"
             )
-        # Use the canonical category value from supported_categories
-        categories_to_generate = [category_lookup[normalized_category]]
+        else:
+            categories_to_generate = [category.lower()]
     else:
-        # User did not specify categories so return all canonical categories
+        # User did not specify categories so return all
         categories_to_generate = list(supported_categories)
 
     return categories_to_generate
@@ -109,7 +125,7 @@ def generate_calendars(
     years: range,
     language: str | None = None,
     category: str | None = None,
-    output_dir: str | None = None,
+    output_dir: str | Path | None = None,
 ) -> None:
     """
     Generate .ics calendar files for the specified country, years, and category.
@@ -120,42 +136,47 @@ def generate_calendars(
         output_dir: Optional directory to save .ics files (default: current directory)
     """
     # Create output directory if it doesn't exist
-    if output_dir is None:
-        output_dir = Path.cwd()
-    else:
-        output_dir.mkdir(parents=True, exist_ok=True)
+    # if output_dir is None:
+    #     output_dir = Path.cwd()
+    # else:
+    #     output_dir.mkdir(parents=True, exist_ok=True)
+    output_dir = Path.cwd() if output_dir is None else Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     # Create holiday object for extracting info later
     base_holidays = get_holidays_object(
         country_code=country_code,
         years=years,
         language=None,
-        )
-    
+    )
+
     supported_categories = base_holidays.supported_categories
     supported_languages = base_holidays.supported_languages
 
     # Check language
     if language and language not in supported_languages:
-        print(f"ERROR: Language '{language}' not supported for {country_code}." 
-              f"Supported languages: {', '.join(supported_languages)}", file=sys.stderr)
-        sys.exit(1)
-
-    categories_to_generate = get_categories(category=category, 
-        country_code=country_code, 
-        supported_categories=supported_categories
+        message = (
+            f"ERROR: Language '{language}' not supported for {country_code}."
+            f"Supported languages: {', '.join(supported_languages)}",
         )
+        raise ValueError(message)
+
+    categories_to_generate = get_categories(
+        category=category, country_code=country_code, supported_categories=supported_categories
+    )
 
     year_str = f"{min(years)}-{max(years)}"
     lang_suffix = f"_{language.upper()}" if language else ""
-
 
     for category in categories_to_generate:
         try:
             # Create holidays object for THIS category only
             if language:
                 holidays_obj = get_holidays_object(
-                    country_code=country_code, years=years, language=language.upper(), category=category
+                    country_code=country_code,
+                    years=years,
+                    language=language,
+                    category=category,
                 )
             else:
                 holidays_obj = get_holidays_object(
@@ -179,15 +200,18 @@ def generate_calendars(
             print(f"[ERROR] Error generating {category} holiday: {e}", file=sys.stderr)
             raise
 
+
 def list_countries() -> None:
     print("Supported countries:")
 
     samples = list(COUNTRIES.keys())
     for country_key in samples:
         codes = COUNTRIES[country_key]
-        print(f"  {codes[0]:20} {codes[1]}")
+        display_name = country_key.replace("_", " ").title()
+        print(f" {display_name:20} {codes[1]}")
 
     print(f"\nTotal supported countries: {len(COUNTRIES)}")
+
 
 def main() -> None:
     """Main entry point"""
@@ -196,7 +220,7 @@ def main() -> None:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python vacanza.py US                          # All US holidays for 2026
+  python vacanza.py US                          # All US holidays for the current year
   python vacanza.py US 2025                     # For year 2025
   python vacanza.py US 2020-2025                # For year range
   python vacanza.py US 2025 --category public   # Only public holidays
@@ -205,27 +229,30 @@ Examples:
 
     parser.add_argument(
         "country",
-        nargs="?",  
+        nargs="?",
         help="Country code (e.g., US, GB, SE, NG)",
     )
     parser.add_argument(
         "year",
-        nargs="?", 
+        nargs="?",
         default=None,
         help="Year or year range (e.g., 2025 or 2020-2025). Default: 2026",
     )
     parser.add_argument(
-        "--language", "-l",
+        "--language",
+        "-l",
         default=None,
         help="Language code (e.g., en, sv, de). Optional",
     )
     parser.add_argument(
-        "--category", "-c",
+        "--category",
+        "-c",
         default=None,
         help="Holiday category (e.g., public, government). All if not specified",
     )
     parser.add_argument(
-        "--output-dir", "-o",
+        "--output-dir",
+        "-o",
         type=Path,
         default=None,
         help="Output directory for .ics files (default: current directory)",
@@ -255,7 +282,9 @@ Examples:
         country_code = validate_country_code(args.country)
 
         year_range = (
-            range(2026, 2027)  # Default to 2026
+            range(
+                datetime.date.today().year, datetime.date.today().year + 1
+            )  # Default to current year
             if args.year is None
             else parse_year_range(args.year)
         )
@@ -283,11 +312,12 @@ Examples:
         print("\n[SUCCESS] All calendars generated successfully!")
 
     except ValueError as e:
-        print(f"Error: {e}", file=sys.stderr) #
+        print(f"Error: {e}", file=sys.stderr)  #
         sys.exit(1)
     except Exception as e:
         print(f"Unexpected error: {e}", file=sys.stderr)
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
