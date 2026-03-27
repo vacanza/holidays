@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-08-10 07:14+0500\n"
 "PO-Revision-Date: 2025-08-10 07:14+0500\n"
-"Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
+"Last-Translator: Muhannad Ebraheem <muhannadebraheem13@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -67,6 +67,10 @@ msgstr "Martyrs' Day"
 #. Tishreen Liberation War Day.
 msgid "ذكرى حرب تشرين التحريرية"
 msgstr "Tishreen Liberation War Day"
+
+#. Liberation Day.
+msgid "عيد التحرير"
+msgstr "Liberation Day"
 
 #. Christmas Day.
 msgid "عيد الميلاد"
