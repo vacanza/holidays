@@ -39,12 +39,15 @@ class India(
         * <https://web.archive.org/web/20231008063930/https://vahan.parivahan.gov.in/vahan4dashboard/>
         * Gujarat:
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
-        * Tamil Nadu:
-            * [Tamil Monthly Calendar](https://web.archive.org/web/20231228103352/https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
-            * [Tamil Calendar](https://web.archive.org/web/20250429125140/https://www.prokerala.com/general/calendar/tamilcalendar.php)
         * Maharashtra:
             * <https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
             * <http://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
+        * Tamil Nadu:
+            * [Tamil Monthly Calendar](https://web.archive.org/web/20231228103352/https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
+            * [Tamil Calendar](https://web.archive.org/web/20250429125140/https://www.prokerala.com/general/calendar/tamilcalendar.php)
+        * Telangana:
+            * <https://web.archive.org/web/20260224050455/https://transport.telangana.gov.in/html/registration-districtcodes.html>
+            * <https://web.archive.org/web/20250219131214/https://www.thehindu.com/news/national/telangana/cm-firm-on-having-states-identity-as-tg-not-ts/article68187923.ece>
     """
 
     country = "IN"
@@ -53,6 +56,11 @@ class India(
     estimated_label = tr("%s (estimated)")
     # India gained independence on August 15, 1947.
     start_year = 1948
+    # Special cases for Holi dates
+    SPECIAL_HOLI_DATES = {
+        2026: (MAR, 3),
+    }
+
     subdivisions = (
         "AN",  # Andaman and Nicobar Islands.
         "AP",  # Andhra Pradesh.
@@ -141,6 +149,7 @@ class India(
         "Tamil Nadu": "TN",
         "Tamil Nādu": "TN",
         "Tripura": "TR",
+        "TG": "TS",
         "Telangana": "TS",
         "Telangāna": "TS",
         "Uttarakhand": "UK",
@@ -149,7 +158,7 @@ class India(
         "West Bengal": "WB",
     }
     supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = ("en_IN", "en_US", "gu", "hi", "ta", "te")
+    supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "ta", "te")
     _deprecated_subdivisions = (
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
@@ -244,6 +253,10 @@ class India(
         # Children's Day.
         self._add_holiday_nov_14(tr("Children's Day"))
 
+        # Holi.
+        if self.subdiv != "MH":
+            self._add_holi(tr("Holi"))
+
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
 
@@ -275,10 +288,6 @@ class India(
 
         # Palm Sunday.
         self._add_palm_sunday(tr("Palm Sunday"))
-
-        # Holi (optional nationwide except Maharashtra)
-        if self.subdiv != "MH":
-            self._add_holi(tr("Holi"))
 
     # Andaman and Nicobar Islands.
     def _populate_subdiv_an_public_holidays(self):
@@ -402,9 +411,10 @@ class India(
         self._add_gudi_padwa(tr("Gudi Padwa"))
         # Chhatrapati Shivaji Maharaj Jayanti.
         self._add_holiday_feb_19(tr("Chhatrapati Shivaji Maharaj Jayanti"))
-        # Holi (public holiday in Maharashtra)
-        if self._year == 2026:
-            self._add_holiday_mar_3(tr("Holi"))
+        # Holi.
+        if self._year in self.SPECIAL_HOLI_DATES:
+            month, day = self.SPECIAL_HOLI_DATES[self._year]
+            self._add_holiday(tr("Holi"), month, day)
         else:
             self._add_holi(tr("Holi"))
         # Dr. B. R. Ambedkar Jayanti.
