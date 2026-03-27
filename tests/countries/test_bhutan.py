@@ -256,7 +256,6 @@ class TestBhutan(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            "dz",
             ("2024-01-02", "དགུན་གྱི་ཉི་མ་ཐུང་ཤོས།"),
             ("2024-01-12", "ལུགས་སྲོལ་གྱི་མཆོད་པའི་ཉིན།"),
             ("2024-02-10", "ལོ་གསར།"),
