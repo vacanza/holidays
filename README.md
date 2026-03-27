@@ -1,4 +1,4 @@
-﻿# Holidays
+# Holidays
 
 A fast, efficient Python library for generating country- and subdivision- (e.g. state or province)
 specific sets of government-designated holidays on the fly. It aims to make determining whether a
