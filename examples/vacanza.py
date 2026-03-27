@@ -177,24 +177,25 @@ def generate_calendars(
 
             # Tell the user it worked
             holiday_count = len(holidays_obj)
-            print(f"[OK] Generated: {filename} ({holiday_count} holidays)")
-            print(f"Saved in File path: {file_path}")
-
+            sys.stdout.write(
+                f"[OK] Generated: {filename} ({holiday_count} holidays)\n"
+            )
+            sys.stdout.write(f"Saved in File path: {file_path}\n")
+            
         except Exception as e:
-            print(f"[ERROR] Error generating {category} holiday: {e}", file=sys.stderr)
+            sys.stderr.write(
+                f"[ERROR] Error generating {category} holiday: {e}\n"
+            )
             raise
-
-
+            
 def list_countries() -> None:
-    print("Supported countries:")
-
+    sys.stdout.write("Supported countries:\n")
     samples = list(COUNTRIES.keys())
     for country_key in samples:
         codes = COUNTRIES[country_key]
         display_name = country_key.replace("_", " ").title()
-        print(f" {display_name:20} {codes[1]}")
-
-    print(f"\nTotal supported countries: {len(COUNTRIES)}")
+        sys.stdout.write(f" {display_name:20} {codes[1]}\n")
+    sys.stdout.write(f"\nTotal supported countries: {len(COUNTRIES)}\n")
 
 
 def main() -> None:
