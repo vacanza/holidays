@@ -43,6 +43,8 @@ HEADER_PATH = Path("docs/file_header.txt")
 class POGenerator:
     """Generates .po files for supported country/market entities."""
 
+    _po_index: dict[str, list[Path]] | None = None
+
     @staticmethod
     def _get_license_header() -> str:
         """Reads and formats the license header from docs/file_header.txt."""
@@ -65,14 +67,14 @@ class POGenerator:
         """Returns the standard metadata required for gettext."""
         return {
             "Report-Msgid-Bugs-To": "l10n@vacanza.dev",
-            "POT-Creation-Date": datetime.now().astimezone().strftime("%Y-%m-%d %H:%M%z"),
-            "Last-Translator": "FULL NAME <EMAIL@EXAMPLE.COM>",
             "Language-Team": "Holidays Localization Team",
-            "MIME-Version": "1.0",
-            "Content-Type": "text/plain; charset=UTF-8",
-            "Content-Transfer-Encoding": "8bit",
             "X-Source-Language": default_language,
         }
+
+    @classmethod
+    def _init_worker(cls, po_index: dict[str, list[Path]]) -> None:
+        """Initialize worker with shared PO index for multiprocessing."""
+        cls._po_index = po_index
 
     @staticmethod
     def _strip_gettext_boilerplate(content: str) -> str:
@@ -119,9 +121,12 @@ class POGenerator:
             pot_file.metadata["Language"] = default_language
             pot_file.save(str(default_po_path), newline="\n")
 
+        if POGenerator._po_index is None:
+            raise RuntimeError("PO index not initialized in worker")
+
         return [
             (po_file_path, pot_file_path, class_docstring, default_language)
-            for po_file_path in locale_path.rglob(f"{entity_code}.po")
+            for po_file_path in POGenerator._po_index.get(entity_code, [])
         ]
 
     @staticmethod
@@ -135,7 +140,7 @@ class POGenerator:
         po_file = pofile(str(po_path), wrapwidth=WRAP_WIDTH)
         po_file_initial = po_file.copy()
 
-        pot_file = pofile(str(pot_path))
+        pot_file = pofile(str(pot_path), wrapwidth=WRAP_WIDTH)
 
         po_file.merge(pot_file)
         po_file.sort(key=_location_sort_key)
@@ -181,7 +186,7 @@ class POGenerator:
                             po_path.write_text(final_content, encoding="utf-8")
             return
 
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M%z")
+        timestamp = datetime.now().astimezone().strftime("%Y-%m-%d %H:%M%z")
         po_file.metadata["Project-Id-Version"] = f"Holidays {package_version}"
         po_file.metadata["PO-Revision-Date"] = timestamp
 
@@ -250,20 +255,29 @@ class POGenerator:
                 if not name:
                     continue
 
-                doc_text = chosen_cls.__doc__ if chosen_cls.__doc__ else ""
-
                 entity_code_info_mapping[name.upper()] = (
                     chosen_cls.default_language,
                     path,
-                    doc_text,
+                    chosen_cls.__doc__ or "",
                 )
 
+        locale_path = Path("holidays/locale")
+
+        po_index: dict[str, list[Path]] = {}
+        for path in locale_path.rglob("*.po"):
+            po_index.setdefault(path.stem.upper(), []).append(path)
+
         all_po_update_tasks: list[tuple[Path, Path, str, str]] = []
-        with ProcessPoolExecutor() as executor:
+        with ProcessPoolExecutor(
+            initializer=POGenerator._init_worker,
+            initargs=(po_index,),
+        ) as executor:
             for po_tasks in executor.map(
-                self._process_entity_worker, entity_code_info_mapping.items()
+                POGenerator._process_entity_worker,
+                entity_code_info_mapping.items(),
             ):
                 all_po_update_tasks.extend(po_tasks)
+
             list(executor.map(POGenerator._update_po_file, all_po_update_tasks))
 
     @staticmethod
