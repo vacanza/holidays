@@ -40,7 +40,6 @@ msgstr ""
 msgid "Ulusal Egemenlik ve Çocuk Bayramı"
 msgstr ""
 
-# National Sovereignty Day.
 #. National Sovereignty Day.
 msgid "Ulusal Egemenlik Bayramı"
 msgstr ""
