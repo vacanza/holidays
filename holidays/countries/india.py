@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
+from datetime import timedelta
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
@@ -48,10 +49,8 @@ class India(
     """
 
     country = "IN"
-    default_language = "en_IN"
-    # %s (estimated).
+    default_language = "en_US"
     estimated_label = tr("%s (estimated)")
-    # India gained independence on August 15, 1947.
     start_year = 1948
     subdivisions = (
         "AN",  # Andaman and Nicobar Islands.
@@ -177,6 +176,9 @@ class India(
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
+    def _get_janmashtami_date(self, year):
+        return self._hindu_calendar.janmashtami_date(year)
+
     def _populate_public_holidays(self):
         if self._year >= 1950:
             # Republic Day.
@@ -214,12 +216,9 @@ class India(
         # Guru Nanak Jayanti.
         self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti"))
 
-        # Islamic holidays.
-
         # Ashura.
         self._add_ashura_day(tr("Muharram"))
 
-        # Prophet's Birthday.
         self._add_mawlid_day(tr("Milad-un-Nabi"))
 
         # Eid al-Fitr.
@@ -254,7 +253,7 @@ class India(
         # Govardhan Puja.
         self._add_govardhan_puja(tr("Govardhan Puja"))
 
-        # Labor Day.
+        # Labour Day.
         self._add_labor_day(tr("Labour Day"))
 
         # Maha Navami.
@@ -406,8 +405,12 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
-        # Dahi Handi
-        self._add_janmashtami(tr("Dahi handi"))
+
+    def _populate_subdiv_mh_optional_holidays(self):
+        # Dahi handi.
+        janmashtami_date, _ = self._get_janmashtami_date(self._year)
+        if janmashtami_date:
+            self._add_holiday(tr("Dahi handi"), janmashtami_date + timedelta(days=1))
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):

@@ -13,7 +13,7 @@
 import warnings
 from unittest import TestCase
 
-from holidays.constants import OPTIONAL
+from holidays.constants import OPTIONAL, PUBLIC
 from holidays.countries.india import India
 from tests.common import CommonCountryTests
 
@@ -169,6 +169,8 @@ class TestIndia(CommonCountryTests, TestCase):
 
         for subdiv, holidays in subdiv_holidays_mapping.items():
             self.assertHoliday(India(subdiv=subdiv), holidays)
+        # Dahi handi should no longer be public for MH; it is optional.
+        self.assertNoHolidayName("Dahi handi", India(subdiv="MH"), ("2018-09-03",))
 
     def test_2018_optional(self):
         self.assertOptionalHolidayDatesInYear(
@@ -186,13 +188,27 @@ class TestIndia(CommonCountryTests, TestCase):
             "2018-11-14",
         )
 
+    def test_2018_mh_optional_dahi_handi(self):
+        self.assertHolidayName(
+            "Dahi handi",
+            India(subdiv="MH", categories=OPTIONAL),
+            ("2018-09-04",),
+        )
+
+    def test_2018_mh_optional_dahi_handi_not_public(self):
+        self.assertNoHolidayName(
+            "Dahi handi",
+            India(subdiv="MH", categories=PUBLIC),
+            ("2018-09-04",),
+        )
+
     def test_ranged_holidays(self):
         warnings.simplefilter("always")
         for year in (2000, 2036):  # Holidays out of range.
             with self.assertWarns(Warning):
                 India(years=year)
 
-        name = "Bakrid"
+        name = "Eid al-Adha"
         dt = (
             "2001-03-06",
             "2010-11-17",
@@ -236,7 +252,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        name = "Id-ul-Fitr"
+        name = "Eid al-Fitr"
         dt = (
             "2001-12-17",
             "2010-09-10",
@@ -271,7 +287,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        name = "Milad-un-Nabi"
+        name = "Prophet's Birthday"
         dt = (
             "2001-06-05",
             "2010-02-27",
@@ -279,7 +295,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        name = "Muharram"
+        name = "Ashura"
         dt = (
             "2001-04-04",
             "2010-12-17",
@@ -547,19 +563,18 @@ class TestIndia(CommonCountryTests, TestCase):
                 "Himachal Day; Maha Vishuva Sankranti / Pana Sankranti; Pohela Boishakh",
             ),
             ("2018-04-30", "Buddha Purnima"),
-            ("2018-05-01", "Gujarat Day; Labour Day; Maharashtra Day"),
+            ("2018-05-01", "Gujarat Day; Labor Day; Maharashtra Day"),
             ("2018-05-09", "Rabindra Jayanti"),
             ("2018-05-16", "Sikkim State Day"),
             ("2018-06-02", "Telangana Formation Day"),
-            ("2018-06-16", "Id-ul-Fitr; Maharana Pratap Jayanti"),
+            ("2018-06-16", "Eid al-Fitr; Maharana Pratap Jayanti"),
             ("2018-08-15", "Independence Day"),
             ("2018-08-16", "Puducherry De Jure Transfer Day"),
-            ("2018-08-22", "Bakrid"),
             ("2018-08-24", "Onam"),
             ("2018-08-26", "Raksha Bandhan"),
             ("2018-09-03", "Janmashtami"),
             ("2018-09-13", "Ganesh Chaturthi"),
-            ("2018-09-21", "Muharram"),
+            ("2018-09-21", "Ashura"),
             ("2018-10-02", "Gandhi Jayanti"),
             ("2018-10-08", "Bathukamma Festival"),
             ("2018-10-10", "Navratri / Sharad Navratri"),
@@ -625,6 +640,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "ওনাম"),
             ("2018-08-26", "রাখি বন্ধন"),
             ("2018-09-03", "জন্মাষ্টমী"),
+            ("2018-09-04", "দই হান্ডি"),
             ("2018-09-13", "গণেশ চতুর্থী"),
             ("2018-09-21", "মহরম"),
             ("2018-10-02", "গান্ধী জয়ন্তী"),
@@ -687,6 +703,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "ઓણમ"),
             ("2018-08-26", "રક્ષાબંધન"),
             ("2018-09-03", "જન્માષ્ટમી"),
+            ("2018-09-04", "દહીં હાંડી"),
             ("2018-09-13", "ગણેશ ચતુર્થી"),
             ("2018-09-21", "મોહરમ"),
             ("2018-10-02", "ગાંધી જયંતિ"),
@@ -749,6 +766,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "ओणम"),
             ("2018-08-26", "रक्षाबंधन"),
             ("2018-09-03", "जन्माष्टमी"),
+            ("2018-09-04", "दही हांडी"),
             ("2018-09-13", "गणेश चतुर्थी"),
             ("2018-09-21", "मुहर्रम"),
             ("2018-10-02", "गांधी जयंती"),
@@ -814,6 +832,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "Onam"),
             ("2018-08-26", "Raksha Bandhan"),
             ("2018-09-03", "Janmashtami"),
+            ("2018-09-04", "Dahi handi"),
             ("2018-09-13", "Ganesh Chaturthi"),
             ("2018-09-21", "Ashura"),
             ("2018-10-02", "Gandhi Jayanti"),
@@ -867,7 +886,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-14", "டாக்டர் பி. ஆர். அம்பேத்கர் ஜெயந்தி; புத்தாண்டு (தமிழ் புத்தாண்டு); வைசாகி"),
             ("2018-04-15", "இமாச்சல் நாள்; பொஹேலா பொய்ஷாக்; மகா விஷுவ சங்கராந்தி / பானா சங்கராந்தி"),
             ("2018-04-30", "புத்தர் பௌர்ணமி"),
-            ("2018-05-01", "குஜராத் நாள்; தொழிலாளர் நாள்; மகாராஷ்டிரா நாள்"),
+            ("2018-05-01", "குஜராத் நாள்; மகாராஷ்டிரா நாள்; தொழிலாளர் நாள்"),
             ("2018-05-09", "ரபீந்திர ஜெயந்தி"),
             ("2018-05-16", "சிக்கிம் மாநில நாள்"),
             ("2018-06-02", "தெலுங்கானா உருவாக்க நாள்"),
@@ -877,7 +896,8 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-22", "பகரீத்"),
             ("2018-08-24", "ஓணம்"),
             ("2018-08-26", "ரக்ஷா பந்தன்"),
-            ("2018-09-03", "கோகுலாட்டமி"),
+            ("2018-09-03", "ஜன்மாஷ்டமி"),
+            ("2018-09-04", "தஹி ஹண்டி"),
             ("2018-09-13", "விநாயகர் சதுர்த்தி"),
             ("2018-09-21", "முஹர்ரம்"),
             ("2018-10-02", "காந்தி ஜெயந்தி"),
@@ -943,6 +963,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "ఓణం"),
             ("2018-08-26", "రక్షా బంధన్"),
             ("2018-09-03", "జన్మాష్టమి"),
+            ("2018-09-04", "దహి హండి"),
             ("2018-09-13", "వినాయక చవితి"),
             ("2018-09-21", "మొహర్రం"),
             ("2018-10-02", "గాంధీ జయంతి"),

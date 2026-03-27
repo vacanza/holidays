@@ -56,6 +56,10 @@ msgstr "தீபாவளி"
 msgid "Janmashtami"
 msgstr "கோகுலாட்டமி"
 
+#. Dahi handi.
+msgid "Dahi handi"
+msgstr "தாஹி ஹாண்டி"
+
 #. Dussehra.
 msgid "Dussehra"
 msgstr "விஜயதசமி"
