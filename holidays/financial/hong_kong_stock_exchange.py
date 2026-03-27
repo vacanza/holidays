@@ -39,9 +39,17 @@ class HongKongStockExchange(HongKong):
     def _populate_public_holidays(self):
         HongKong._populate_optional_holidays(self)
 
-        for dt in tuple(self):
-            if self._is_weekend(dt):
-                self.pop(dt)
+    def _add_holiday(self, name, *args):
+        if not args:
+            raise TypeError("Incorrect number of arguments.")
+
+        dt = args if len(args) > 1 else args[0]
+        dt = dt if isinstance(dt, date) else date(self._year, *dt)
+
+        if self._is_weekend(dt):
+            return None
+
+        return super()._add_holiday(name, dt)
 
     def _populate_half_day_holidays(self):
         half_day_label = self.tr("%s（半日交易日）")
