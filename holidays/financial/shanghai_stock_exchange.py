@@ -75,6 +75,7 @@ class ShanghaiStockExchangeStaticHolidays(ChinaStaticHolidays):
         **ChinaStaticHolidays.special_public_holidays,
         2024: (
             *ChinaStaticHolidays.special_public_holidays[2024],
+            # Chinese New Year's Eve.
             (FEB, 9, tr("农历除夕")),
         ),
     }
