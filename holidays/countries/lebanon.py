@@ -43,7 +43,7 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
     observed_estimated_label = tr("%s (يُحتفل به، المقدرة)")
     start_year = 1978
     supported_categories = (BANK, GOVERNMENT, PUBLIC)
-   supported_languages = ("ar", "en_US", "fr")
+    supported_languages = ("ar", "en_US", "fr")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
