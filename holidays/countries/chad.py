@@ -22,21 +22,34 @@ class Chad(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Chad>
-        * <https://web.archive.org/web/20240619220557/https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/97323/115433/F-316075167/TCD-97323.pdf>
+        * <https://web.archive.org/web/20221207165912/https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/97323/115433/F-316075167/TCD-97323.pdf>
     """
 
     country = "TD"
 
     default_language = "fr"
+
+    # %s (estimated).
+    estimated_label = tr("%s (estimé)")
+
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (observé, estimé)")
+
+    # %s (observed).
+    observed_label = tr("%s (observé)")
+
     supported_languages = ("en_US", "fr", "ar")
 
-    estimated_label = tr("%s (estimated)")
-    observed_estimated_label = tr("%s (observed, estimated)")
-    observed_label = tr("%s (observed)")
-
+    # On 11 August 1960, Chad gained independence from France.
     start_year = 1961
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
@@ -120,5 +133,6 @@ class ChadIslamicHolidays(_CustomIslamicHolidays):
 
 class ChadStaticHolidays:
     special_public_holidays = {
-        2021: (APR, 23, tr("Funeral of Idriss Déby Itno")),  # ✅ wrapped
+        # Funeral of Idriss Déby Itno.
+        2021: (APR, 23, tr("Funérailles d'Idriss Déby Itno")),
     }
