@@ -84,17 +84,21 @@ def get_holidays_object(
 
 def get_categories(category: str, country_code: str, supported_categories: tuple) -> list:
     """Validate category and return list of categories to generate"""
+    # Build a case-insensitive lookup from user input to canonical category
+    category_lookup = {c.lower(): c for c in supported_categories}
+
     if category:
-    # Check if specified category in supported categories, if true return category
-        if category.lower() not in supported_categories:
+        # Normalize user input to lowercase for case-insensitive matching
+        normalized_category = category.lower()
+        if normalized_category not in category_lookup:
             raise ValueError(
                 f"Category '{category}' not supported for {country_code}. "
                 f"Supported categories: {', '.join(supported_categories)}"
             )
-        else:
-            categories_to_generate = [category.lower()] 
+        # Use the canonical category value from supported_categories
+        categories_to_generate = [category_lookup[normalized_category]]
     else:
-        # User did not specify categories so return all
+        # User did not specify categories so return all canonical categories
         categories_to_generate = list(supported_categories)
 
     return categories_to_generate
