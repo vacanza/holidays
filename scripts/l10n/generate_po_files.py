@@ -58,30 +58,16 @@ class POGenerator:
 
         return (
             "\n".join(
-                "#" if not line.rstrip() else f"# {line.rstrip()}" for line in content.splitlines()
+                f"# {stripped}" if (stripped := line.rstrip()) else "#"
+                for line in content.splitlines()
             )
             + "\n#"
         )
-
-    @staticmethod
-    def _get_standard_metadata(default_language: str = "en_US") -> dict:
-        """Returns the standard metadata required for gettext."""
-        return {
-            "Report-Msgid-Bugs-To": "l10n@vacanza.dev",
-            "Language-Team": "Holidays Localization Team",
-            "X-Source-Language": default_language,
-        }
 
     @classmethod
     def _init_worker(cls, po_index: dict[str, list[Path]]) -> None:
         """Initialize worker with shared PO index for multiprocessing."""
         cls._po_index = po_index
-
-    @staticmethod
-    def _strip_gettext_boilerplate(content: str) -> str:
-        if content.startswith("# SOME DESCRIPTIVE TITLE"):
-            return content.split("#, fuzzy", 1)[1].lstrip()
-        return content.lstrip()
 
     @staticmethod
     def _build_desc_line(
@@ -107,7 +93,11 @@ class POGenerator:
     def _write_po_header(po_path: Path, desc_line: str) -> None:
         """Strips gettext boilerplate and prepends the license header + desc line."""
         content = po_path.read_text(encoding="utf-8")
-        content = POGenerator._strip_gettext_boilerplate(content)
+        content = (
+            content.split("#, fuzzy", 1)[1].lstrip()
+            if content.startswith("# SOME DESCRIPTIVE TITLE")
+            else content.lstrip()
+        )
 
         if content.startswith("#  holidays\n#  --------"):
             return
@@ -124,7 +114,7 @@ class POGenerator:
 
     @staticmethod
     def _process_entity_worker(
-        entity_code_info: tuple[str, tuple[str, Path, str, list[str]]],
+        entity_code_info: tuple[str, tuple[str, Path, str, tuple[str, ...]]],
     ) -> list[tuple[Path, Path, str, str]]:
         """Process a single entity: create .pot, default .po, and return update tasks."""
         entity_code, (default_language, class_file_path, class_docstring, supported_languages) = (
@@ -133,7 +123,6 @@ class POGenerator:
 
         pot_path = POGenerator._locale_path / "pot"
         pot_path.mkdir(parents=True, exist_ok=True)
-
         pot_file_path = pot_path / f"{entity_code}.pot"
 
         create_pot_file(
@@ -149,33 +138,27 @@ class POGenerator:
         )
 
         pot_file = pofile(str(pot_file_path), wrapwidth=WRAP_WIDTH)
-        pot_file.metadata.update(POGenerator._get_standard_metadata(default_language))
         pot_file.metadata["Project-Id-Version"] = f"Holidays {package_version}"
+        pot_file.metadata["Report-Msgid-Bugs-To"] = "l10n@vacanza.dev"
+        pot_file.metadata["PO-Revision-Date"] = pot_file.metadata["POT-Creation-Date"]
+        pot_file.metadata["Language-Team"] = "Holidays Localization Team"
+        pot_file.metadata["X-Source-Language"] = default_language
         pot_file.save(newline="\n")
 
-        po_directory = POGenerator._locale_path / default_language / "LC_MESSAGES"
-        po_directory.mkdir(parents=True, exist_ok=True)
-        default_po_path = po_directory / f"{entity_code}.po"
+        if POGenerator._po_index is None:
+            raise RuntimeError("PO index not initialized in worker")
 
-        if not default_po_path.exists():
-            pot_file.metadata["PO-Revision-Date"] = pot_file.metadata["POT-Creation-Date"]
-            pot_file.metadata["Language"] = default_language
-            pot_file.save(str(default_po_path), newline="\n")
-
-            desc_line = POGenerator._build_desc_line(
-                entity_code, class_docstring, default_language, default_language
-            )
-            POGenerator._write_po_header(default_po_path, desc_line)
+        update_tasks = [
+            (po_file_path, pot_file_path, class_docstring, default_language)
+            for po_file_path in POGenerator._po_index.get(entity_code, [])
+        ]
 
         for lang in supported_languages:
-            if lang == default_language:
-                continue
             lang_directory = POGenerator._locale_path / lang / "LC_MESSAGES"
             lang_directory.mkdir(parents=True, exist_ok=True)
             lang_po_path = lang_directory / f"{entity_code}.po"
 
             if not lang_po_path.exists():
-                pot_file.metadata["PO-Revision-Date"] = pot_file.metadata["POT-Creation-Date"]
                 pot_file.metadata["Language"] = lang
                 pot_file.save(str(lang_po_path), newline="\n")
 
@@ -184,13 +167,7 @@ class POGenerator:
                 )
                 POGenerator._write_po_header(lang_po_path, desc_line)
 
-        if POGenerator._po_index is None:
-            raise RuntimeError("PO index not initialized in worker")
-
-        return [
-            (po_file_path, pot_file_path, class_docstring, default_language)
-            for po_file_path in POGenerator._po_index.get(entity_code, [])
-        ]
+        return update_tasks
 
     @staticmethod
     def _update_po_file(args: tuple[Path, Path, str, str]) -> None:
@@ -223,14 +200,11 @@ class POGenerator:
 
         timestamp = datetime.now().astimezone().strftime("%Y-%m-%d %H:%M%z")
         po_file.metadata["Project-Id-Version"] = f"Holidays {package_version}"
+        po_file.metadata["Report-Msgid-Bugs-To"] = "l10n@vacanza.dev"
         po_file.metadata["PO-Revision-Date"] = timestamp
-
-        std_meta = POGenerator._get_standard_metadata(default_language)
-        std_meta["Language"] = current_lang
-
-        for k, v in std_meta.items():
-            po_file.metadata[k] = v
-
+        po_file.metadata["Language-Team"] = "Holidays Localization Team"
+        po_file.metadata["Language"] = current_lang
+        po_file.metadata["X-Source-Language"] = default_language
         po_file.save(str(po_path), newline="\n")
 
         POGenerator._write_po_header(po_path, desc_line)
@@ -254,7 +228,7 @@ class POGenerator:
                     if (
                         issubclass(cls, HolidayBase)
                         and cls.__module__ == module
-                        and getattr(cls, "default_language") is not None
+                        and cls.default_language is not None
                     ):
                         candidates.append(cls)
 
@@ -281,7 +255,7 @@ class POGenerator:
                     chosen_cls.default_language,
                     path,
                     chosen_cls.__doc__ or "",
-                    list(getattr(chosen_cls, "supported_languages", None) or []),
+                    chosen_cls.supported_languages or (),
                 )
 
         po_index: dict[str, list[Path]] = {}
