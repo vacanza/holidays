@@ -170,7 +170,7 @@ class TestIndia(CommonCountryTests, TestCase):
         for subdiv, holidays in subdiv_holidays_mapping.items():
             self.assertHoliday(India(subdiv=subdiv), holidays)
         # Dahi handi should no longer be public for MH; it is optional.
-        self.assertNoHolidayName("Dahi handi", India(subdiv="MH"), ("2018-09-04",))
+        self.assertNoHolidayName("Dahi handi", India(subdiv="MH"), ("2018-09-03",))
 
     def test_2018_optional(self):
         self.assertOptionalHolidayDatesInYear(
@@ -695,16 +695,17 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-15", "પોહેલા બોઈશાખ; મહા વિષુવ સંક્રાંતિ / પાના સંક્રાંતિ; હિમાચલ દિવસ"),
             ("2018-04-30", "બુદ્ધ પૂર્ણિમા"),
             ("2018-05-01", "ગુજરાત સ્થાપના દિવસ; મજૂર દિવસ; મહારાષ્ટ્ર દિવસ"),
-            ("2018-05-09", "રવીન્દ્ર જયંતિ"),
+            ("2018-05-09", "રવીન્દ્ર જયંતી"),
             ("2018-05-16", "સિક્કિમ રાજ્ય દિવસ"),
             ("2018-06-02", "તેલંગાણા સ્થાપના દિવસ"),
-            ("2018-06-16", "ઈદ-ઉલ-ફિત્ર; મહારાણા પ્રતાપ જયંતિ"),
+            ("2018-06-16", "ઈદ-ઉલ-ફિત્ર; મહારાણા પ્રતાપ જયંતી"),
             ("2018-08-15", "સ્વતંત્રતા દિવસ"),
             ("2018-08-16", "પુડુચેરી ડી જ્યુર ટ્રાન્સફર દિવસ"),
             ("2018-08-22", "બકરી ઈદ"),
             ("2018-08-24", "ઓણમ"),
             ("2018-08-26", "રક્ષાબંધન"),
             ("2018-09-03", "જન્માષ્ટમી"),
+            ("2018-09-04", "દહીં હાંડી"),
             ("2018-09-13", "ગણેશ ચતુર્થી"),
             ("2018-09-21", "મોહરમ"),
             ("2018-10-02", "ગાંધી જયંતિ"),
@@ -823,8 +824,8 @@ class TestIndia(CommonCountryTests, TestCase):
             ),
             ("2018-04-30", "Buddha Purnima"),
             ("2018-05-01", "Gujarat Day; Labor Day; Maharashtra Day"),
-            ("2018-05-09", "Rabindra Jayanti"),
-            ("2018-05-16", "Sikkim State Day"),
+            ("2018-05-09", "રવીન્દ્ર જયંતી"),
+            ("2018-05-16", "સિક્કિમ રાજ્ય દિવસ"),
             ("2018-06-02", "Telangana Formation Day"),
             ("2018-06-16", "Eid al-Fitr; Maharana Pratap Jayanti"),
             ("2018-08-15", "Independence Day"),
