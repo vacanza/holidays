@@ -28,8 +28,13 @@ class TestShanghaiStockExchange(CommonFinancialTests, TestCase):
     def test_special(self):
         self.assertHoliday("2024-02-09")
 
-    def test_makeup_work_weekends_remain_closed(self):
-        for dt in ("2024-02-04", "2024-02-18", "2025-01-26", "2025-02-08"):
+    def test_no_weekend_workdays(self):
+        for dt in (
+            "2024-02-04",
+            "2024-02-18",
+            "2025-01-26",
+            "2025-02-08",
+        ):
             self.assertNoHoliday(dt)
             self.assertFalse(self.holidays.is_working_day(dt))
 
