@@ -12,8 +12,11 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import FEB
 from holidays.constants import PUBLIC
-from holidays.countries.china import China
+from holidays.countries.china import China, ChinaStaticHolidays
+from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
 class ShanghaiStockExchange(China):
@@ -41,20 +44,20 @@ class ShanghaiStockExchange(China):
     supported_categories: tuple[str, ...] = (PUBLIC,)  # type: ignore[assignment]
     start_year = 2001
 
+    def __init__(self, *args, **kwargs):
+        ChineseCalendarHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, cls=ShanghaiStockExchangeStaticHolidays)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
+        kwargs.setdefault("observed_since", 2000)
+        ObservedHolidayBase.__init__(self, *args, **kwargs)
+
     def _populate_common_holidays(self):
         super()._populate_common_holidays()
 
         # SSE keeps national makeup work weekends closed and publishes its own
         # holiday calendar instead of inheriting China weekend workdays.
         self.weekend_workdays.clear()
-
-    def _populate_public_holidays(self):
-        super()._populate_public_holidays()
-
-        # The 2024 SSE trading schedule explicitly includes Lunar New Year's Eve
-        # as a market closure.
-        if self._year == 2024:
-            self._add_chinese_new_years_eve(tr("农历除夕"))
 
 
 class XSHG(ShanghaiStockExchange):
@@ -63,3 +66,16 @@ class XSHG(ShanghaiStockExchange):
 
 class SSE(ShanghaiStockExchange):
     pass
+
+
+class ShanghaiStockExchangeStaticHolidays(ChinaStaticHolidays):
+    substituted_date_format = ChinaStaticHolidays.substituted_date_format
+    substituted_label = ChinaStaticHolidays.substituted_label
+    special_public_holidays = {
+        **ChinaStaticHolidays.special_public_holidays,
+        2024: (
+            *ChinaStaticHolidays.special_public_holidays[2024],
+            (FEB, 9, tr("农历除夕")),
+        ),
+    }
+    special_public_holidays_observed = ChinaStaticHolidays.special_public_holidays_observed
