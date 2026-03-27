@@ -44,7 +44,7 @@ msgstr "Birth Anniversary of the 3rd Druk Gyalpo"
 msgid "རྒྱལ་པོ་མཆོག་གི་ཁྲི་འདོན་དུས་ཆེན།"
 msgstr "Coronation of His Majesty the King"
 
-#.  Birth Anniversary of the 4th Druk Gyalpo - Constitution Day..
+#.  Birth Anniversary of the 4th Druk Gyalpo - Constitution Day.
 msgid "འབྲུག་རྒྱལ་པོ་བཞི་པའི་སྐུ་འཁྲུངས་དུས་ཆེན་– རྩ་ཁྲིམས་ཀྱི་ཉིན།"
 msgstr "Birth Anniversary of the 4th Druk Gyalpo - Constitution Day"
 
