@@ -29,4 +29,4 @@ msgstr ""
 "X-Source-Language: zh_CN\n"
 
 msgid "农历除夕"
-msgstr ""
+msgstr "農曆除夕"
