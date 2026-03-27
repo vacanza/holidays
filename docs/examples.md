@@ -585,12 +585,7 @@ Generate `.ics` files with categories, language, and subdivisions.
 For advanced features and customization of the exported `.ics` output, consider using
 the [icalendar](https://github.com/collective/icalendar) package.
 
-
-
-<br>
-
-# Vacanza Holidays Calendar Generator
-
+## Vacanza Holidays Calendar Generator
 `vacanza.py` is a command-line utility that automates the generation of `.ics` (iCalendar) files for holidays worldwide. It uses the Python `holidays` library to look up dates and supports exporting them based on specific years, languages, and holiday categories.
 
 ## Prerequisites
