@@ -11,9 +11,9 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
-from datetime import timedelta
 from gettext import gettext as tr
-
+from holidays.holiday_base import HolidayBase
+from holidays.calendars.hindu import HinduCalendarHolidays
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import OPTIONAL, PUBLIC
@@ -405,12 +405,23 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
-
+class India(HolidayBase):
     def _populate_subdiv_mh_optional_holidays(self):
-        # Dahi handi.
-        janmashtami_date, _ = self._get_janmashtami_date(self._year)
-        if janmashtami_date:
-            self._add_holiday(tr("Dahi handi"), janmashtami_date + timedelta(days=1))
+        """Add optional Maharashtra holidays like Dahi Handi."""
+        # Ensure the Hindu calendar is available
+        if not hasattr(self, "_hindu_calendar"):
+            self._hindu_calendar = HinduCalendarHolidays(self._year)
+
+        # Get Janmashtami date safely
+        try:
+            janmashtami_result = self._hindu_calendar.janmashtami_date(self._year)
+        except Exception:
+            janmashtami_result = None
+
+        if janmashtami_result and janmashtami_result[0]:
+            # Dahi Handi is the day after Janmashtami
+            dahi_handi_date = janmashtami_result[0] + timedelta(days=1)
+            self._add_holiday(tr("Dahi Handi"), dahi_handi_date)
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):

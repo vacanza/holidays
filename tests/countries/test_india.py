@@ -190,14 +190,14 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_2018_mh_optional_dahi_handi(self):
         self.assertHolidayName(
-            "Dahi handi",
+            "Dahi Handi",
             India(subdiv="MH", categories=OPTIONAL),
             ("2018-09-04",),
         )
 
     def test_2018_mh_optional_dahi_handi_not_public(self):
         self.assertNoHolidayName(
-            "Dahi handi",
+            "Dahi Handi",
             India(subdiv="MH", categories=PUBLIC),
             ("2018-09-04",),
         )
@@ -574,7 +574,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "Onam"),
             ("2018-08-26", "Raksha Bandhan"),
             ("2018-09-03", "Janmashtami"),
-            ("2018-09-04", "Dahi handi"),
+            ("2018-09-04", "Dahi Handi"),
             ("2018-09-13", "Ganesh Chaturthi"),
             ("2018-09-21", "Ashura"),
             ("2018-10-02", "Gandhi Jayanti"),
@@ -834,7 +834,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "Onam"),
             ("2018-08-26", "Raksha Bandhan"),
             ("2018-09-03", "Janmashtami"),
-            ("2018-09-04", "Dahi handi"),
+            ("2018-09-04", "Dahi Handi"),
             ("2018-09-13", "Ganesh Chaturthi"),
             ("2018-09-21", "Ashura"),
             ("2018-10-02", "Gandhi Jayanti"),

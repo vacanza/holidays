@@ -9,9 +9,9 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
+from datetime import date, timedelta
 from collections.abc import Iterable
-from datetime import date
+
 
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, AUG, SEP, OCT, NOV, DEC
@@ -1572,6 +1572,17 @@ class _HinduLunisolar:
 
     def vaisakhi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VAISAKHI, year)
+
+
+class HinduCalendarHolidays:
+    def _add_dahi_handi(self, name):
+        """
+        Add Dahi Handi (day after Janmashtami).
+        """
+        janmashtami_date, _ = self._hindu_calendar.janmashtami_date(self._year)
+
+        if janmashtami_date:
+            self._add_holiday(name, janmashtami_date + timedelta(days=1))
 
 
 class _CustomHinduHolidays(_CustomCalendar, _HinduLunisolar):
