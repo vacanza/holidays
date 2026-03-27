@@ -69,5 +69,3 @@ class HKEX(HongKongStockExchange):
 
 class SEHK(HongKongStockExchange):
     pass
-
-
