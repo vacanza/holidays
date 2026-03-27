@@ -27,9 +27,9 @@ def validate_country_code(country_code: str) -> str:
             or country_code.title() in country_codes
         ):
             return COUNTRIES[country][1].upper()  # return upper case version
-    else:
-        # it wasn't found
-        raise ValueError(
+    
+    # it wasn't found
+    raise ValueError(
             f"Country code '{country_code}' not found. "
             f"Valid examples: US, GB, DE, FR, SE, NG, IN. "
             f"Run with --list-countries to see all supported countries."
@@ -123,11 +123,7 @@ def generate_calendars(
         category: Optional category filter (e.g. "public", "bank", "school")
         output_dir: Optional directory to save .ics files (default: current directory)
     """
-    # Create output directory if it doesn't exist
-    # if output_dir is None:
-    #     output_dir = Path.cwd()
-    # else:
-    #     output_dir.mkdir(parents=True, exist_ok=True)
+
     output_dir = Path.cwd() if output_dir is None else Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -145,7 +141,7 @@ def generate_calendars(
     if language and language not in supported_languages:
         message = (
             f"ERROR: Language '{language}' not supported for {country_code}."
-            f"Supported languages: {', '.join(supported_languages)}",
+            f"Supported languages: {', '.join(supported_languages)}"
         )
         raise ValueError(message)
 
