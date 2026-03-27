@@ -160,6 +160,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
     def _populate_subdiv_15_public_holidays(self):
         # Thimphu Drubchoe.
         self._add_thimphu_drubchen_day(tr("ཐིམ་ཕུའི་སྒྲུབ་ཆོད།"))
+
         # Thimphu Tshechu.
         name = tr("ཐིམ་ཕུའི་ཚེས་བཅུ།")
         self._add_thimphu_tshechu_day(name)
