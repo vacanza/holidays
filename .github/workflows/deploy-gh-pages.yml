@@ -18,9 +18,10 @@ permissions: {}
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    if: github.repository == 'vacanza/holidays'
     permissions:
       contents: read
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
@@ -49,11 +50,11 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-24.04
     needs: build
     permissions:
       id-token: write
       pages: write
+    runs-on: ubuntu-24.04
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
