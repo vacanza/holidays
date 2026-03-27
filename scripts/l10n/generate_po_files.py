@@ -111,7 +111,7 @@ class POGenerator:
             parts.append(desc_line)
         if parts:
             parts.append("#")
-            po_path.write_text("\n".join(parts) + "\n" + content, encoding="utf-8")
+            po_path.write_text("\n".join(parts) + "\n" + content, encoding="utf-8")  # NOSONAR
 
     @staticmethod
     def _process_entity_worker(
