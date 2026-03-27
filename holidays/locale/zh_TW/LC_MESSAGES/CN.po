@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Chinese holidays zh_TW localization.
+# China holidays zh_TW localization.
 #
 msgid ""
 msgstr ""
