@@ -43,10 +43,8 @@ class India(
             * [Tamil Monthly Calendar](https://web.archive.org/web/20231228103352/https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
             * [Tamil Calendar](https://web.archive.org/web/20250429125140/https://www.prokerala.com/general/calendar/tamilcalendar.php)
         * Maharashtra:
-            * <https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
-        * Telangana:
-            * <https://web.archive.org/web/20260224050455/https://transport.telangana.gov.in/html/registration-districtcodes.html>
-            * <https://web.archive.org/web/20250219131214/https://www.thehindu.com/news/national/telangana/cm-firm-on-having-states-identity-as-tg-not-ts/article68187923.ece>
+            * <https://www.mcgm.gov.in/.../Public%20Holidays%202026.pdf>
+            * <https://web.archive.org/web/2026XXXXXX/https://www.mcgm.gov.in/.../Public%20Holidays%202026.pdf>
     """
 
     country = "IN"
@@ -143,7 +141,6 @@ class India(
         "Tamil Nadu": "TN",
         "Tamil Nādu": "TN",
         "Tripura": "TR",
-        "TG": "TS",
         "Telangana": "TS",
         "Telangāna": "TS",
         "Uttarakhand": "UK",
@@ -152,7 +149,7 @@ class India(
         "West Bengal": "WB",
     }
     supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "ta", "te")
+    supported_languages = ("en_IN", "en_US", "gu", "hi", "ta", "te")
     _deprecated_subdivisions = (
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
