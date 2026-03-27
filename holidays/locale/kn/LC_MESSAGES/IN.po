@@ -74,7 +74,7 @@ msgstr "ಗುರು ನಾನಕ್ ಜಯಂತಿ"
 
 #. Ashura.
 msgid "Muharram"
-msgstr "ಮೊಹರಂ"
+msgstr "ಮೊಹರಂ ಕಡೆ ದಿನ"
 
 #. Prophet's Birthday.
 msgid "Milad-un-Nabi"
