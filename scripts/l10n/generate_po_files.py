@@ -29,6 +29,7 @@ from holidays import __version__ as package_version
 from holidays.holiday_base import HolidayBase
 
 LEGACY_NAME_MAP = {
+    "CW": "Curaçao",
     "IM": "Isle of Man",
     "MP": "Northern Mariana Islands",
     "TL": "Timor-Leste",
@@ -43,6 +44,9 @@ HEADER_PATH = Path("docs/file_header.txt")
 class POGenerator:
     """Generates .po files for supported country/market entities."""
 
+    _locale_path: Path = Path("holidays/locale")
+    _po_index: dict[str, list[Path]] | None = None
+
     @staticmethod
     def _get_license_header() -> str:
         """Reads and formats the license header from docs/file_header.txt."""
@@ -55,42 +59,71 @@ class POGenerator:
 
         return (
             "\n".join(
-                "#" if not line.rstrip() else f"# {line.rstrip()}" for line in content.splitlines()
+                f"# {stripped}" if (stripped := line.rstrip()) else "#"
+                for line in content.splitlines()
             )
             + "\n#"
         )
 
-    @staticmethod
-    def _get_standard_metadata(default_language: str = "en_US") -> dict:
-        """Returns the standard metadata required for gettext."""
-        return {
-            "Report-Msgid-Bugs-To": "l10n@vacanza.dev",
-            "POT-Creation-Date": datetime.now().astimezone().strftime("%Y-%m-%d %H:%M%z"),
-            "Last-Translator": "FULL NAME <EMAIL@EXAMPLE.COM>",
-            "Language-Team": "Holidays Localization Team",
-            "MIME-Version": "1.0",
-            "Content-Type": "text/plain; charset=UTF-8",
-            "Content-Transfer-Encoding": "8bit",
-            "X-Source-Language": default_language,
-        }
+    @classmethod
+    def _init_worker(cls, po_index: dict[str, list[Path]]) -> None:
+        """Initialize worker with shared PO index for multiprocessing."""
+        cls._po_index = po_index
 
     @staticmethod
-    def _strip_gettext_boilerplate(content: str) -> str:
-        if content.startswith("# SOME DESCRIPTIVE TITLE"):
-            return content.split("#, fuzzy", 1)[1].lstrip()
-        return content.lstrip()
+    def _build_desc_line(
+        entity_code: str, docstring: str, current_language: str, default_language: str
+    ) -> str:
+        """Builds the descriptive comment line for a .po file header."""
+        clean_name = ""
+        if docstring:
+            first_line = docstring.strip().split("\n")[0].strip().rstrip(".")
+            if first_line.endswith(" holidays"):
+                clean_name = first_line[:-9].strip()
+            else:
+                clean_name = first_line
+
+        display_name = LEGACY_NAME_MAP.get(entity_code, clean_name)
+        if not display_name:
+            return ""
+        if current_language != default_language:
+            return f"# {display_name} holidays {current_language} localization."
+        return f"# {display_name} holidays."
+
+    @staticmethod
+    def _write_po_header(po_path: Path, desc_line: str) -> None:
+        """Strips gettext boilerplate and prepends the license header + desc line."""
+        content = po_path.read_text(encoding="utf-8")
+        content = (
+            content.split("#, fuzzy", 1)[1].lstrip()
+            if content.startswith("# SOME DESCRIPTIVE TITLE")
+            else content.lstrip()
+        )
+
+        if content.startswith("#  holidays\n#  --------"):
+            return
+
+        license_header = POGenerator._get_license_header()
+        parts = []
+        if license_header:
+            parts.append(license_header)
+        if desc_line and desc_line not in content:
+            parts.append(desc_line)
+        if parts:
+            parts.append("#")
+            po_path.write_text("\n".join(parts) + "\n" + content, encoding="utf-8")
 
     @staticmethod
     def _process_entity_worker(
-        entity_code_info: tuple[str, tuple[str, Path, str]],
+        entity_code_info: tuple[str, tuple[str, Path, str, tuple[str, ...]]],
     ) -> list[tuple[Path, Path, str, str]]:
         """Process a single entity: create .pot, default .po, and return update tasks."""
-        entity_code, (default_language, class_file_path, class_docstring) = entity_code_info
+        entity_code, (default_language, class_file_path, class_docstring, supported_languages) = (
+            entity_code_info
+        )
 
-        locale_path = Path("holidays/locale")
-        pot_path = locale_path / "pot"
+        pot_path = POGenerator._locale_path / "pot"
         pot_path.mkdir(parents=True, exist_ok=True)
-
         pot_file_path = pot_path / f"{entity_code}.pot"
 
         create_pot_file(
@@ -106,23 +139,36 @@ class POGenerator:
         )
 
         pot_file = pofile(str(pot_file_path), wrapwidth=WRAP_WIDTH)
-        pot_file.metadata.update(POGenerator._get_standard_metadata(default_language))
         pot_file.metadata["Project-Id-Version"] = f"Holidays {package_version}"
+        pot_file.metadata["Report-Msgid-Bugs-To"] = "l10n@vacanza.dev"
+        pot_file.metadata["PO-Revision-Date"] = pot_file.metadata["POT-Creation-Date"]
+        pot_file.metadata["Language-Team"] = "Holidays Localization Team"
+        pot_file.metadata["X-Source-Language"] = default_language
         pot_file.save(newline="\n")
 
-        po_directory = locale_path / default_language / "LC_MESSAGES"
-        po_directory.mkdir(parents=True, exist_ok=True)
-        default_po_path = po_directory / f"{entity_code}.po"
+        if POGenerator._po_index is None:
+            raise RuntimeError("PO index not initialized in worker")
 
-        if not default_po_path.exists():
-            pot_file.metadata["PO-Revision-Date"] = pot_file.metadata["POT-Creation-Date"]
-            pot_file.metadata["Language"] = default_language
-            pot_file.save(str(default_po_path), newline="\n")
-
-        return [
+        update_tasks = [
             (po_file_path, pot_file_path, class_docstring, default_language)
-            for po_file_path in locale_path.rglob(f"{entity_code}.po")
+            for po_file_path in POGenerator._po_index.get(entity_code, [])
         ]
+
+        for lang in supported_languages:
+            lang_directory = POGenerator._locale_path / lang / "LC_MESSAGES"
+            lang_directory.mkdir(parents=True, exist_ok=True)
+            lang_po_path = lang_directory / f"{entity_code}.po"
+
+            if not lang_po_path.exists():
+                pot_file.metadata["Language"] = lang
+                pot_file.save(str(lang_po_path), newline="\n")
+
+                desc_line = POGenerator._build_desc_line(
+                    entity_code, class_docstring, lang, default_language
+                )
+                POGenerator._write_po_header(lang_po_path, desc_line)
+
+        return update_tasks
 
     @staticmethod
     def _update_po_file(args: tuple[Path, Path, str, str]) -> None:
@@ -131,11 +177,16 @@ class POGenerator:
         po_path = po_path.resolve()
         pot_path = pot_path.resolve()
         entity_code = po_path.stem.upper()
+        current_lang = po_path.parent.parent.name
+
+        desc_line = POGenerator._build_desc_line(
+            entity_code, entity_docstring, current_lang, default_language
+        )
 
         po_file = pofile(str(po_path), wrapwidth=WRAP_WIDTH)
         po_file_initial = po_file.copy()
 
-        pot_file = pofile(str(pot_path))
+        pot_file = pofile(str(pot_path), wrapwidth=WRAP_WIDTH)
 
         po_file.merge(pot_file)
         po_file.sort(key=_location_sort_key)
@@ -144,69 +195,20 @@ class POGenerator:
 
         has_content_changed = po_file != po_file_initial
 
-        license_header = POGenerator._get_license_header()
-        current_lang = po_path.parent.parent.name
-        is_default_lang = current_lang == default_language
-
-        clean_name = ""
-        if entity_docstring:
-            first_line = entity_docstring.strip().split("\n")[0].strip().rstrip(".")
-            if first_line.endswith(" holidays"):
-                clean_name = first_line[:-9].strip()
-            else:
-                clean_name = first_line
-
-        display_name = LEGACY_NAME_MAP.get(entity_code, clean_name)
-        desc_line = ""
-        if not is_default_lang and clean_name:
-            desc_line = f"# {display_name} holidays {current_lang} localization."
-        elif clean_name:
-            desc_line = f"# {display_name} holidays."
-
         if not has_content_changed:
-            if po_path.exists():
-                content = po_path.read_text(encoding="utf-8")
-                content = POGenerator._strip_gettext_boilerplate(content)
-                if not content.startswith("#  holidays\n#  --------"):
-                    new_parts = []
-                    if license_header:
-                        new_parts.append(license_header)
-                    if desc_line and desc_line not in content:
-                        new_parts.append(desc_line)
-
-                    if new_parts:
-                        new_parts.append("#")
-                        final_content = "\n".join(new_parts) + "\n" + content
-                        if final_content.strip() != content.strip():
-                            po_path.write_text(final_content, encoding="utf-8")
+            POGenerator._write_po_header(po_path, desc_line)
             return
 
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M%z")
+        timestamp = datetime.now().astimezone().strftime("%Y-%m-%d %H:%M%z")
         po_file.metadata["Project-Id-Version"] = f"Holidays {package_version}"
+        po_file.metadata["Report-Msgid-Bugs-To"] = "l10n@vacanza.dev"
         po_file.metadata["PO-Revision-Date"] = timestamp
-
-        std_meta = POGenerator._get_standard_metadata(default_language)
-        std_meta["Language"] = current_lang
-
-        for k, v in std_meta.items():
-            po_file.metadata[k] = v
-
+        po_file.metadata["Language-Team"] = "Holidays Localization Team"
+        po_file.metadata["Language"] = current_lang
+        po_file.metadata["X-Source-Language"] = default_language
         po_file.save(str(po_path), newline="\n")
 
-        content = po_path.read_text(encoding="utf-8")
-        new_parts = []
-
-        if license_header and not content.startswith("#  holidays\n#  --------"):
-            new_parts.append(license_header)
-
-        if desc_line and desc_line not in content:
-            new_parts.append(desc_line)
-
-        if new_parts:
-            new_parts.append("#")
-
-            final_content = "\n".join(new_parts) + "\n" + content
-            po_path.write_text(final_content, encoding="utf-8")
+        POGenerator._write_po_header(po_path, desc_line)
 
     def process_entities(self):
         """Processes entities in specified directory."""
@@ -227,7 +229,7 @@ class POGenerator:
                     if (
                         issubclass(cls, HolidayBase)
                         and cls.__module__ == module
-                        and getattr(cls, "default_language") is not None
+                        and cls.default_language is not None
                     ):
                         candidates.append(cls)
 
@@ -250,20 +252,28 @@ class POGenerator:
                 if not name:
                     continue
 
-                doc_text = chosen_cls.__doc__ if chosen_cls.__doc__ else ""
-
                 entity_code_info_mapping[name.upper()] = (
                     chosen_cls.default_language,
                     path,
-                    doc_text,
+                    chosen_cls.__doc__ or "",
+                    chosen_cls.supported_languages or (),
                 )
 
+        po_index: dict[str, list[Path]] = {}
+        for path in self._locale_path.rglob("*.po"):
+            po_index.setdefault(path.stem.upper(), []).append(path)
+
         all_po_update_tasks: list[tuple[Path, Path, str, str]] = []
-        with ProcessPoolExecutor() as executor:
+        with ProcessPoolExecutor(
+            initializer=POGenerator._init_worker,
+            initargs=(po_index,),
+        ) as executor:
             for po_tasks in executor.map(
-                self._process_entity_worker, entity_code_info_mapping.items()
+                POGenerator._process_entity_worker,
+                entity_code_info_mapping.items(),
             ):
                 all_po_update_tasks.extend(po_tasks)
+
             list(executor.map(POGenerator._update_po_file, all_po_update_tasks))
 
     @staticmethod
