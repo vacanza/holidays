@@ -604,7 +604,7 @@ python examples/vacanza.py [COUNTRY_CODE] [YEAR_OR_RANGE] [OPTIONS]
 
 ### Positional Arguments
 - **`country`**: The country code you want to generate holidays for (e.g., `US`, `GB`, `SE`, `NG`).
-- **`year`**: (Optional) The year (`2025`) or range of years (`2020-2025`) to generate calendars for. If omitted, it defaults to `2026`.
+- **`year`**: (Optional) The year (`2025`) or range of years (`2020-2025`) to generate calendars for. If omitted, it defaults to the current year.
 
 ### Options
 - `-h`, `--help`: Show the help message and exit.
