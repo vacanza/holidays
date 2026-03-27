@@ -35,7 +35,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         * [2022](https://web.archive.org/web/20220619061040/https://www.mohca.gov.bt/wp-content/uploads/2021/11/HolidayList.pdf)
         * [2023](https://web.archive.org/web/20221210152039/https://www.mohca.gov.bt/wp-content/uploads/2022/11/Holidays-2023.pdf)
         * [2024](https://web.archive.org/web/20250407140158/https://www.moha.gov.bt/wp-content/uploads/2023/11/National-Holiday-List-for-2024-2-.pdf)
-        * [2025](https://web.archive.org/web/20250703030226/https://www.moha.gov.bt/wp-content/uploads/2024/11/Calendar_2025.pdf)
+        * [2025](https://web.archive.org/web/20250703030226/https://www.moha.gov.bt/wp-content/uploads/2024/11/Calendar_2025.pdf>
     """
 
     country = "BT"
@@ -43,6 +43,60 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
     estimated_label = "%s (estimated)"
     # Jigme Khesar Namgyel Wangchuck ascended to the throne on December 9th, 2006.
     start_year = 2007
+
+    WINTER_SOLSTICE_DATES = {
+        2007: (JAN, 2),
+        2008: (JAN, 2),
+        2009: (JAN, 2),
+        2010: (JAN, 2),
+        2011: (JAN, 2),
+        2012: (JAN, 2),
+        2013: (JAN, 2),
+        2014: (JAN, 2),
+        2015: (JAN, 2),
+        2016: (JAN, 2),
+        2017: (JAN, 2),
+        2018: (JAN, 2),
+        2019: (JAN, 3),
+        2020: (JAN, 2),
+        2021: (JAN, 2),
+        2022: (JAN, 1),
+        2023: (JAN, 2),
+        2024: (JAN, 2),
+        2025: (JAN, 2),
+        2026: (JAN, 2),
+        2027: (JAN, 2),
+        2028: (JAN, 2),
+        2029: (JAN, 2),
+        2030: (JAN, 2),
+    }
+
+    BLESSED_RAINY_DAY_DATES = {
+        2007: (SEP, 23),
+        2008: (SEP, 22),
+        2009: (SEP, 23),
+        2010: (SEP, 23),
+        2011: (SEP, 23),
+        2012: (SEP, 22),
+        2013: (SEP, 23),
+        2014: (SEP, 23),
+        2015: (SEP, 22),
+        2016: (SEP, 23),
+        2017: (SEP, 23),
+        2018: (SEP, 23),
+        2019: (SEP, 24),
+        2020: (SEP, 23),
+        2021: (SEP, 23),
+        2022: (SEP, 23),
+        2023: (SEP, 24),
+        2024: (SEP, 23),
+        2025: (SEP, 23),
+        2026: (SEP, 23),
+        2027: (SEP, 23),
+        2028: (SEP, 22),
+        2029: (SEP, 22),
+        2030: (SEP, 23),
+    }
     subdivisions = (
         "11",  # Paro.
         "12",  # Chhukha.
@@ -122,7 +176,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         self._add_holiday_dec_17("National Day")
 
         # Winter Solstice.
-        self._add_winter_solstice("Winter Solstice")
+        self._add_tibetan_winter_solstice("Winter Solstice")
 
         # Traditional Day of Offering.
         self._add_day_of_offering("Traditional Day of Offering")
@@ -163,16 +217,6 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         self._add_thimphu_tshechu_day_two(name)
         self._add_thimphu_tshechu_day_three(name)
 
-    def _add_winter_solstice(self, name):
-        dates = BhutanStaticHolidays.WINTER_SOLSTICE_DATES
-        if self._year in dates:
-            self._add_holiday(name, dates[self._year])
-
-    def _add_blessed_rainy_day(self, name):
-        dates = BhutanStaticHolidays.BLESSED_RAINY_DAY_DATES
-        if self._year in dates:
-            self._add_holiday(name, dates[self._year])
-
 
 class BT(Bhutan):
     pass
@@ -180,19 +224,6 @@ class BT(Bhutan):
 
 class BTN(Bhutan):
     pass
-
-
-class BhutanStaticHolidays:
-    WINTER_SOLSTICE_DATES = {
-        **{year: (JAN, 2) for year in range(1950, 2050)},
-        2019: (JAN, 3),
-        2022: (JAN, 1),
-    }
-
-    BLESSED_RAINY_DAY_DATES = {
-        **{year: (SEP, 23) for year in range(1950, 2050)},
-        2023: (SEP, 24),
-    }
 
 
 class BhutanHinduHolidays(_CustomHinduHolidays):
