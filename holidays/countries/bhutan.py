@@ -108,61 +108,61 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
 
     def _populate_public_holidays(self):
         # Birth Anniversary of His Majesty the King.
-        name = tr("རྒྱལ་པོ་མཆོག་གི་སྐུ་འཁྲུངས་དུས་ཆེན།")
+        name = tr("ཟླཝ་བཅུ་གཉིས་པའི་ཚེས་ ༢༤ ལས་ ༢༥ ཚུན་མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་སྟོན་ངལ་གསོ།")
         self._add_holiday_feb_21(name)
         self._add_holiday_feb_22(name)
         self._add_holiday_feb_23(name)
 
         # Birth Anniversary of the 3rd Druk Gyalpo.
-        self._add_holiday_may_2(tr("འབྲུག་རྒྱལ་པོ་གསུམ་པའི་སྐུ་འཁྲུངས་དུས་ཆེན།"))
+        self._add_holiday_may_2(tr("ཟླཝ་གསུམ་པའི་ཚེས་ ༥ ལུ་ མི་དབང་འབྲུག་རྒྱལ་གསུམ་པའི་འཁྲུངས་སྐར་དུས་སྟོན་ངལ་གསོ།"))
 
         # Coronation of His Majesty the King.
-        self._add_holiday_nov_1(tr("རྒྱལ་པོ་མཆོག་གི་ཁྲི་འདོན་དུས་ཆེན།"))
+        self._add_holiday_nov_1(tr("ཟླཝ་དགུ་པའི་ཚེས་ ༡༡ ལུ་ མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་གསེར་ཁྲི་མངའ་གསོལ་གྱིས་དུས་སྟོན་ངལ་གསོ།"))
 
         # Birth Anniversary of the 4th Druk Gyalpo - Constitution Day.
-        self._add_holiday_nov_11(tr("འབྲུག་རྒྱལ་པོ་བཞི་པའི་སྐུ་འཁྲུངས་དུས་ཆེན་– རྩ་ཁྲིམས་ཀྱི་ཉིན།"))
+        self._add_holiday_nov_11(tr("ཟླཝ་དགུ་པའི་ཚེས་ ༢༢ ལུ་ མི་དབང་འབྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་སྟོན་ངལ་གསོ།"))
 
         # National Day.
-        self._add_holiday_dec_17(tr("རྒྱལ་ཡོངས་ཀྱི་ཉིན།"))
+        self._add_holiday_dec_17(tr("ཟླཝ་བཅུ་པའི་ཚེས་ ༢༨ ལུ་བརྒྱུད་འཛིན་གྱིས་རྒྱལ་སྲིད་ཐོག་མ་དབུ་བརྙེས་པའི་རྒྱལ་ཡོངས་དུས་ཆེན་གྱི་ངལ་གསོལ།"))
 
         # Winter Solstice.
-        self._add_tibetan_winter_solstice(tr("དགུན་གྱི་ཉི་མ་ཐུང་ཤོས།"))
+        self._add_tibetan_winter_solstice(tr("ཟླཝ་བཅུ་གཅིག་པའི་ཚེས་ ༠༣ ལུ་ དགུན་ཉི་ལྡོག་གི་ངལ་གསོ།"))
 
         # Traditional Day of Offering.
-        self._add_day_of_offering(tr("ལུགས་སྲོལ་གྱི་མཆོད་པའི་ཉིན།"))
+        self._add_day_of_offering(tr("ཟླཝ་བཅུ་གཉིས་པའི་ཚེས་ ༠༡ ལུ་ སྔར་སྲོལ་འབུལ་བའི་ལོ་གསརགྱི་ངལ་གསོ།"))
 
         # Losar.
-        name = tr("ལོ་གསར།")
+        name = tr("ཟླཝ་དང་པའི་ཚེས་ ༠༡ དང་ ༢ ལུ་ གནམ་ལོ་གསར་ཚེས་ཀྱིས་དུས་སྟོན་ངལ་གསོ།")
         self._add_losar(name)
         self._add_losar_day_two(name)
 
         # Death Anniversary of Zhabdrung.
-        self._add_death_of_zhabdrung(tr("ཞབས་དྲུང་གི་སྐུ་འདས་དུས་ཆེན།"))
+        self._add_death_of_zhabdrung(tr("ཟླཝ་གསུམ་པའི་ཚེས་ ༡༠ ལུ་ མཐུ་ཆེན་བདུད་འཇོམས་རྡོ་རྗེ་དགོངས་རྫོགས་དུས་དྲན་ངལ་གསོ།  ༼ཞབས་དྲུང་སྐུ་མཆོད༽"))
 
         # Lord Buddha's Parinirvana.
-        self._add_buddha_parinirvana(tr("སངས་རྒྱས་ཀྱི་མྱང་འདས།"))
+        self._add_buddha_parinirvana(tr("ཟླཝ་བཞི་པའི་ཚེས་ ༡༥ ལུ་ སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་དུས་ཆེན་ལྔ་འཛོམས་ངལ་གསོ།"))
 
         # Birth Anniversary of Guru Rinpoche.
-        self._add_birth_of_guru_rinpoche(tr("གུ་རུ་རིན་པོ་ཆེའི་སྐུ་འཁྲུངས་དུས་ཆེན།"))
+        self._add_birth_of_guru_rinpoche(tr("ཟླཝ་ལྔ་པའི་ཚེས་ ༡༠ ལུ་ ཨོ་རྒྱན་གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོ།"))
 
         # First Sermon of Lord Buddha.
-        self._add_buddha_first_sermon(tr("སངས་རྒྱས་ཀྱི་ཆོས་འཁོར་དང་པོ།"))
+        self._add_buddha_first_sermon(tr("ཟླཝ་དྲུག་པའི་ཚེས་ ༤ ལུ་ སྟོན་པ་མཆོག་ཝ་ར་ན་སིར་བདེན་བཞིའི་ཆོས་འཁོར་བསྐོར་བའི་དུས་ཆེན་ངལ་གསོ།"))
 
         # Blessed Rainy Day.
-        self._add_blessed_rainy_day(tr("བཀྲ་ཤིས་ཆར་པའི་ཉིན།"))
+        self._add_blessed_rainy_day(tr("ཟླཝ་བརྒྱད་པའི་ཚེས་ ༢ ལུ་ རྒྱལ་ཡོངས་ཁྲུས་བབས་ཀྱི་ངལ་གསོ།"))
 
         # Dassain.
-        self._add_dussehra(tr("ད་སེན།"))
+        self._add_dussehra(tr("ཟླཝ་བརྒྱད་པའི་ཚེས་ ༡༠ ལུ་ ལྷོ་མཚམས་ད་སའིན་ཀྱི་ངལ་གསོ།"))
 
         # Descending Day of Lord Buddha.
-        self._add_descending_day_of_lord_buddha(tr("སངས་རྒྱས་ཀྱི་ལྷ་བབས་དུས་ཆེན།"))
+        self._add_descending_day_of_lord_buddha(tr("ཟླཝ་དགུ་པའི་ཚེས་ ༢༢ ལུ་ རྒྱལ་བ་ལྷ་ལས་བབས་པའི་དུས་ཆེན་ངལ་གསོལ།"))
 
     def _populate_subdiv_15_public_holidays(self):
         # Thimphu Drubchoe.
-        self._add_thimphu_drubchen_day(tr("ཐིམ་ཕུའི་སྒྲུབ་ཆོད།"))
+        self._add_thimphu_drubchen_day(tr("ཟླཝ་བརྒྱད་པའི་ཚེས་ ༦ ལུ་ ཐིམ་རྫོང་ལྷ་མོ་གཙོ་མོའི་དངོས་འཆམ་མཇལ་རྒྱུའི་ངལ་གསོ།  ༼ཐིམ་ཕུག་ལུ་རྐྱངམ་ཅིག༽"))
 
         # Thimphu Tshechu.
-        name = tr("ཐིམ་ཕུའི་ཚེས་བཅུ།")
+        name = tr("ཟླཝ་བརྒྱད་པའི་ཚེས་ ༡༠-༡༢ ཚུན་ ཐིམ་ཕུ་ཚེས་བཅུའི་ངལ་གསོ།  ༼ཐིམ་ཕུ་ལུ་རྐྱངམ་ཅིག༽")
         self._add_thimphu_tshechu_day(name)
         self._add_thimphu_tshechu_day_two(name)
         self._add_thimphu_tshechu_day_three(name)
