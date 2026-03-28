@@ -39,6 +39,8 @@ class India(
         * <https://web.archive.org/web/20231008063930/https://vahan.parivahan.gov.in/vahan4dashboard/>
         * Gujarat:
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
+        * Maharashtra:
+            * <https://cdn.s3waas.gov.in/s344c4c17332cace2124a1a836d9fc4b6f/uploads/2025/12/17671002949025.pdf>
         * Tamil Nadu:
             * [Tamil Monthly Calendar](https://web.archive.org/web/20231228103352/https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
             * [Tamil Calendar](https://web.archive.org/web/20250429125140/https://www.prokerala.com/general/calendar/tamilcalendar.php)
@@ -150,7 +152,7 @@ class India(
         "West Bengal": "WB",
     }
     supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "kn", "ta", "te")
+    supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "kn", "mr", "ta", "te")
     _deprecated_subdivisions = (
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
