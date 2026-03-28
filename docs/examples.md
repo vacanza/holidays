@@ -617,7 +617,7 @@ python examples/vacanza.py [COUNTRY_CODE] [YEAR_OR_RANGE] [OPTIONS]
 
 ## Examples
 
-**1. Generate all holiday calendars for a country (Default Year: 2026)**
+**1. Generate all holiday calendars for a country (Default Year: Current Year)**
 ```bash
 python examples/vacanza.py US
 ```
