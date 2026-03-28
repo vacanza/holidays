@@ -10,9 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from holidays.calendars.gregorian import DEC, SAT, SUN, _timedelta
+from holidays.calendars.gregorian import SAT, SUN
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.hongkong import HongKong
 
@@ -33,38 +31,27 @@ class HongKongStockExchange(HongKong):
     parent_entity = HongKong
     start_year = 2014
     supported_categories = (HALF_DAY, PUBLIC)
-    supported_languages = ("en_HK", "en_US", "zh_CN", "zh_HK")  # type: ignore[assignment]
+    supported_languages = ("en_HK", "en_US", "th", "zh_CN", "zh_HK")
     weekend = {SAT, SUN}
+
+    def _add_holiday(self, name, *args):
+        if self._is_weekend(*args):
+            return None
+
+        return super()._add_holiday(name, *args)
 
     def _populate_public_holidays(self):
         HongKong._populate_optional_holidays(self)
 
-    def _add_holiday(self, name, *args):
-        if not args:
-            raise TypeError("Incorrect number of arguments.")
-
-        dt = args if len(args) > 1 else args[0]
-        dt = dt if isinstance(dt, date) else date(self._year, *dt)
-
-        if self._is_weekend(dt):
-            return None
-
-        return super()._add_holiday(name, dt)
-
     def _populate_half_day_holidays(self):
         half_day_label = self.tr("%s（半日交易日）")
 
-        if self._is_weekday(_timedelta(self._chinese_new_year, -1)):
-            # Chinese New Year's Eve.
-            self._add_chinese_new_years_eve(half_day_label % self.tr("農曆年初一的前一日"))
-
-        if self._is_weekday(date(self._year, DEC, 24)):
-            # Christmas Eve.
-            self._add_christmas_eve(half_day_label % self.tr("平安夜"))
-
-        if self._is_weekday(date(self._year, DEC, 31)):
-            # New Year's Eve.
-            self._add_new_years_eve(half_day_label % self.tr("新年前夕"))
+        # Chinese New Year's Eve.
+        self._add_chinese_new_years_eve(half_day_label % self.tr("農曆年初一的前一日"))
+        # Christmas Eve.
+        self._add_christmas_eve(half_day_label % self.tr("平安夜"))
+        # New Year's Eve.
+        self._add_new_years_eve(half_day_label % self.tr("新年前夕"))
 
 
 class XHKG(HongKongStockExchange):

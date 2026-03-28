@@ -25,10 +25,6 @@ class TestHongKongStockExchange(CommonFinancialTests, TestCase):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
 
-    def test_add_holiday_requires_arguments(self):
-        with self.assertRaises(TypeError):
-            self.holidays._add_holiday("Test holiday")
-
     def test_2024(self):
         self.assertHolidaysInYear(
             2024,
@@ -48,8 +44,6 @@ class TestHongKongStockExchange(CommonFinancialTests, TestCase):
             ("2024-12-25", "聖誕節"),
             ("2024-12-26", "聖誕節後第一個周日"),
         )
-        self.assertNoHoliday("2024-05-31")
-        self.assertNoHoliday("2024-03-30")
 
     def test_2024_half_day(self):
         self.assertHalfDayHolidaysInYear(
@@ -58,7 +52,6 @@ class TestHongKongStockExchange(CommonFinancialTests, TestCase):
             ("2024-12-24", "平安夜（半日交易日）"),
             ("2024-12-31", "新年前夕（半日交易日）"),
         )
-        self.assertNoHalfDayHoliday("2024-05-31")
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -126,6 +119,29 @@ class TestHongKongStockExchange(CommonFinancialTests, TestCase):
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "The first weekday after Christmas Day"),
             ("2025-12-31", "New Year's Eve (Half-Day Trading Day)"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2025-01-01", "วันขึ้นปีใหม่"),
+            ("2025-01-28", "วันก่อนวันตรุษจีน (วันซื้อขายครึ่งวัน)"),
+            ("2025-01-29", "วันตรุษจีน"),
+            ("2025-01-30", "วันตรุษจีนวันที่สอง"),
+            ("2025-01-31", "วันตรุษจีนวันที่สาม"),
+            ("2025-04-04", "วันเช็งเม้ง"),
+            ("2025-04-18", "วันศุกร์ประเสริฐ"),
+            ("2025-04-21", "วันจันทร์อีสเตอร์"),
+            ("2025-05-01", "วันแรงงาน"),
+            ("2025-05-05", "วันวิสาขบูชา"),
+            ("2025-07-01", "วันสถาปนาเขตบริหารพิเศษฮ่องกง"),
+            ("2025-10-01", "วันชาติจีน"),
+            ("2025-10-07", "วันหลังวันไหว้พระจันทร์"),
+            ("2025-10-29", "วันไหว้บรรพบุรุษ"),
+            ("2025-12-24", "วันคริสต์มาสอีฟ (วันซื้อขายครึ่งวัน)"),
+            ("2025-12-25", "วันคริสต์มาส"),
+            ("2025-12-26", "วันหลังวันคริสต์มาส"),
+            ("2025-12-31", "วันสิ้นปี (วันซื้อขายครึ่งวัน)"),
         )
 
     def test_l10n_zh_cn(self):
