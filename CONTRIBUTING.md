@@ -144,7 +144,7 @@ copying the `.po` files, open them with your favorite `.po` file editor and tran
 **non-default** locales only. Don't forget to fill in the translation file headers. Finally, update
 the list of supported translations for the country in the README.md.
 
-!!! note Default language `.po` files
+!!! note "Default language `.po` files"
 
     In this project, the `.po` file for each country or market's **default** language (the one that
     matches that entity's `default_language` attribute) **intentionally** keeps `msgstr` values
