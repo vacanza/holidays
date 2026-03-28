@@ -407,10 +407,10 @@ class India(
         self._add_gudi_padwa(tr("Gudi Padwa"))
         # Chhatrapati Shivaji Maharaj Jayanti.
         self._add_holiday_feb_19(tr("Chhatrapati Shivaji Maharaj Jayanti"))
-        # Holi (public holiday in Maharashtra).
         holi_dates = {
             2026: (MAR, 3),
         }
+        # Holi
         name = tr("Holi")
         if self._year in holi_dates:
             month, day = holi_dates[self._year]
