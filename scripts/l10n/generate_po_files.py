@@ -29,7 +29,6 @@ from holidays import __version__ as package_version
 from holidays.holiday_base import HolidayBase
 
 LEGACY_NAME_MAP = {
-    "CW": "Curaçao",
     "IM": "Isle of Man",
     "MP": "Northern Mariana Islands",
     "TL": "Timor-Leste",
