@@ -56,10 +56,6 @@ class India(
     estimated_label = tr("%s (estimated)")
     # India gained independence on August 15, 1947.
     start_year = 1948
-    # Special cases for Holi dates
-    SPECIAL_HOLI_DATES = {
-        2026: (MAR, 3),
-    }
 
     subdivisions = (
         "AN",  # Andaman and Nicobar Islands.
@@ -411,12 +407,16 @@ class India(
         self._add_gudi_padwa(tr("Gudi Padwa"))
         # Chhatrapati Shivaji Maharaj Jayanti.
         self._add_holiday_feb_19(tr("Chhatrapati Shivaji Maharaj Jayanti"))
-        # Holi.
-        if self._year in self.SPECIAL_HOLI_DATES:
-            month, day = self.SPECIAL_HOLI_DATES[self._year]
-            self._add_holiday(tr("Holi"), month, day)
+        # Holi (public holiday in Maharashtra).
+        holi_dates = {
+            2026: (MAR, 3),
+        }
+        name = tr("Holi")
+        if self._year in holi_dates:
+            month, day = holi_dates[self._year]
+            self._add_holiday(name, month, day)
         else:
-            self._add_holi(tr("Holi"))
+            self._add_holi(name)
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
