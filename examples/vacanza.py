@@ -1,4 +1,4 @@
-import argparse
+ import argparse
 import datetime
 import sys
 from pathlib import Path
@@ -90,7 +90,7 @@ def get_holidays_object(
     return holidays.country_holidays(country_code, **kwargs)
 
 
-def get_categories(category: str, country_code: str, supported_categories: tuple) -> list:
+def get_categories(category: str | None, country_code: str, supported_categories: tuple) -> list:
     """Validate category and return list of categories to generate"""
     if category:
         # Check if specified category in supported categories, if true return category
@@ -181,7 +181,7 @@ def generate_calendars(
                 f"[OK] Generated: {filename} ({holiday_count} holidays)\n"
             )
             sys.stdout.write(f"Saved in File path: {file_path}\n")
-            
+
         except Exception as e:
             sys.stderr.write(
                 f"[ERROR] Error generating {category} holiday: {e}\n"
@@ -258,8 +258,8 @@ Examples:
     # Require country code
     if not args.country:
         parser.print_help()
-        print("\nERROR: Country code is required!")
-        print("\nExample: python vacanza.py US 2025")
+        sys.stdout.write("\nERROR: Country code is required!\n")
+        sys.stdout.write("\nExample: python vacanza.py US 2025\n")
         sys.exit(1)
 
     try:
@@ -277,13 +277,13 @@ Examples:
         language = args.language
         category = args.category
 
-        print(f"Generating holidays for {country_code} ({year_range.start}-{year_range.stop - 1})")
+        sys.stdout.write(f"Generating holidays for {country_code} ({year_range.start}-{year_range.stop - 1})\n")
         if language:
-            print(f"Language: {language}")
+            sys.stdout.write(f"Language: {language}\n")
         if category:
-            print(f"Category: {category}\n")
+            sys.stdout.write(f"Category: {category}\n\n")
         else:
-            print("Category: ALL\n")
+            sys.stdout.write("Category: ALL\n\n")
 
         # Actual work
         generate_calendars(
@@ -294,14 +294,14 @@ Examples:
             output_dir=args.output_dir,
         )
 
-        print("\n[SUCCESS] All calendars generated successfully!")
+        sys.stdout.write("\n[SUCCESS] All calendars generated successfully!\n")
 
     except ValueError as e:
-        print(f"Error: {e}", file=sys.stderr)  #
+        sys.stderr.write(f"Error: {e}\n")
         sys.exit(1)
     except Exception as e:
-        print(f"Unexpected error: {e}", file=sys.stderr)
-        sys.exit(1)
+        sys.stderr.write(f"Unexpected error: {e}\n")
+        sys.exit(1))
 
 
 if __name__ == "__main__":
