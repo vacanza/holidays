@@ -33,8 +33,8 @@ def main():
     write_file(
         "index.md",
         readme_file.read_text(encoding="utf-8").replace(
-            "[here](https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.md)",
-            "[here](contributing.md)",
+            "[CONTRIBUTING.md](https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.md)",
+            "[CONTRIBUTING.md](contributing.md)",
         ),
     )
 
