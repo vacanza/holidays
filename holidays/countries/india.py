@@ -279,6 +279,9 @@ class India(
 
         # Palm Sunday.
         self._add_palm_sunday(tr("Palm Sunday"))
+        
+        # Maharishi Valmiki Jayanti
+        self._add_valmiki_jayanti(tr("Maharishi Valmiki Jayanti"))
 
     # Andaman and Nicobar Islands.
     def _populate_subdiv_an_public_holidays(self):
@@ -326,6 +329,8 @@ class India(
     def _populate_subdiv_dl_public_holidays(self):
         # Chhath Puja.
         self._add_chhath_puja(tr("Chhath Puja"))
+        # Maharishi Valmiki Jayanti
+        self._add_valmiki_jayanti(tr("Maharishi Valmiki Jayanti"))
 
     # Goa.
     def _populate_subdiv_ga_public_holidays(self):
