@@ -9,6 +9,7 @@ License: MIT
 """
 
 import sys
+import argparse
 from holidays import country_holidays
 from holidays.ical import ICalExporter
 
@@ -76,20 +77,21 @@ def generate_ics(country_code, years, category_filter=None, language=None):
 
 
 def main():
-    if len(sys.argv) < 3:
-        print("Usage:")
-        print("  python vacanza.py <COUNTRY_CODE> <YEAR|YEAR-RANGE> [CATEGORY] [LANGUAGE]")
-        print("Examples:")
-        print("  python vacanza.py IN 2025")
-        print("  python vacanza.py US 2020-2025")
-        print("  python vacanza.py SE 2025 public")
-        print("  python vacanza.py FR 2025 public fr")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(
+        description="Generate ICS holiday calendars"
+    )
 
-    country_code = sys.argv[1].upper()
-    year_input = sys.argv[2]
-    category_filter = sys.argv[3] if len(sys.argv) > 3 else None
-    language = sys.argv[4] if len(sys.argv) > 4 else None
+    parser.add_argument("country", help="Country code (e.g., US, IN, FR)")
+    parser.add_argument("year", help="Year or range (e.g., 2025 or 2020-2025)")
+    parser.add_argument("-c", "--category", help="Holiday category filter")
+    parser.add_argument("-l", "--language", help="Language code")
+
+    args = parser.parse_args()
+
+    country_code = args.country.upper()
+    year_input = args.year
+    category_filter = args.category
+    language = args.language
 
     years = parse_years(year_input)
 
