@@ -407,8 +407,7 @@ class India(
         self._add_holiday_may_1(tr("Maharashtra Day"))
 
     def _populate_subdiv_mh_optional_holidays(self):
-    # Dahi Handi (day after Janmashtami)
-        self._get_janmashtami_date(self._year)
+       janmashtami = self._get_janmashtami_date(self._year)
 
     if isinstance(janmashtami, date):
         dt = janmashtami
