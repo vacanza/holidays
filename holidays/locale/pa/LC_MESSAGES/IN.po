@@ -62,7 +62,7 @@ msgstr "ਦੁਸਹਿਰਾ"
 
 #. Mahavir Jayanti.
 msgid "Mahavir Jayanti"
-msgstr "ਮਹਾਵੀਰ ਜਯੰਤੀ"
+msgstr "ਮਹਾਵੀਰ ਜੈਯੰਤੀ"
 
 #. Maha Shivaratri.
 msgid "Maha Shivaratri"
@@ -94,7 +94,7 @@ msgstr "ਗੁੱਡ ਫਰਾਈਡੇ"
 
 #. Christmas.
 msgid "Christmas"
-msgstr "ਕ੍ਰਿਸਮਿਸ"
+msgstr "ਕ੍ਰਿਸਮਿਸ ਦਿਵਸ"
 
 #. Children's Day.
 msgid "Children's Day"
@@ -114,7 +114,7 @@ msgstr "ਗੋਵਰਧਨ ਪੂਜਾ"
 
 #. Labor Day.
 msgid "Labour Day"
-msgstr "ਮਜ਼ਦੂਰ ਦਿਵਸ"
+msgstr "ਮਈ ਦਿਵਸ"
 
 #. Maha Navami.
 msgid "Maha Navami"
@@ -126,7 +126,7 @@ msgstr "ਮਕਰ ਸੰਕ੍ਰਾਂਤੀ"
 
 #. Raksha Bandhan.
 msgid "Raksha Bandhan"
-msgstr "ਰਕਸ਼ਾ ਬੰਧਨ"
+msgstr "ਰੱਖੜੀ"
 
 #. Ram Navami.
 msgid "Ram Navami"
