@@ -146,7 +146,7 @@ msgstr "ਪਾਮ ਐਤਵਾਰ"
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
-msgstr "ਜਨਮ ਦਿਵਸ ਬਾਬਾ ਜੀਵਨ ਸਿੰਘ ਜੀ"
+msgstr "ਜਨਮ ਦਿਨ ਡਾ: ਬੀ.ਆਰ. ਅੰਬੇਡਕਰ"
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
