@@ -89,7 +89,7 @@ def get_holidays_object(
     return holidays.country_holidays(country_code, **kwargs)
 
 
-def get_categories(category: str | None, country_code: str, supported_categories: tuple) -> list:
+def get_categories(category: str | None, country_code: str, supported_categories: tuple[str, ...]) -> list[str]:
     """Validate category and return list of categories to generate"""
     # Build a case-insensitive lookup from user input to canonical category
     category_lookup = {c.lower(): c for c in supported_categories}
