@@ -82,7 +82,7 @@ msgstr "ਮਿਲਾਦ-ਉੱਨ-ਨਬੀ"
 
 #. Eid al-Fitr.
 msgid "Id-ul-Fitr"
-msgstr "ਹੋਲਾ-ਮੁਹੱਲਾ"
+msgstr "ਈਦ-ਉੱਲ-ਫਿਤਰ"
 
 #. Eid al-Adha.
 msgid "Bakrid"
@@ -278,7 +278,7 @@ msgstr "ਰਾਜਸਥਾਨ ਦਿਵਸ"
 
 #. Maharana Pratap Jayanti.
 msgid "Maharana Pratap Jayanti"
-msgstr "ਰਾਜਸਥਾਨ ਦਿਵਸ"
+msgstr "ਮਹਾਰਾਣਾ ਪ੍ਰਤਾਪ ਜਯੰਤੀ"
 
 #. Sikkim State Day.
 msgid "Sikkim State Day"
