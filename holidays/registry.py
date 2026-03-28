@@ -294,6 +294,7 @@ FINANCIAL: RegistryDict = {
     "japan_exchange": ("JapanExchange", "XJPX", "JPX", "TSE", "OSE"),
     "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
+    "shanghai_stock_exchange": ("ShanghaiStockExchange", "XSHG", "SSE"),
 }
 
 # A re-entrant lock. Once a thread has acquired a re-entrant lock,
