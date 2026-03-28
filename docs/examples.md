@@ -621,7 +621,7 @@ python examples/vacanza.py [COUNTRY_CODE] [YEAR_OR_RANGE] [OPTIONS]
 ```bash
 python examples/vacanza.py US
 ```
-*Generates `.ics` files for all available categories (e.g., public, government, unofficial) for the United States in the year 2026.*
+*Generates `.ics` files for all available categories (e.g., public, government, unofficial) for the United States in the current year.*
 
 **2. Generate holidays for a specific year**
 ```bash
@@ -654,7 +654,7 @@ python examples/vacanza.py --list-countries
 
 ## Output Format
 The generated files follow this naming convention:
-`[COUNTRY]_[YEARS]_[CATEGORY]_[LANGUAGE].ics`
+`[COUNTRY]_[YEARS]_[CATEGORY][_[LANGUAGE]].ics`
 
 For example, generating all US calendars for 2025 will output:
 - `US_2025-2025_government.ics`
