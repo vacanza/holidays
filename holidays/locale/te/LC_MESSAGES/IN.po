@@ -319,3 +319,20 @@ msgstr "పొహెలా బొయిషాఖ్"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "రవీంద్ర జయంతి"
+
+#. Bonalu.
+msgid "Bonalu"
+msgstr "బోనాలు"
+
+#. Teachers' Day.
+msgid "Teachers' Day"
+msgstr "ఉపాధ్యాయ దినోత్సవం"
+
+#. Tholi Ekadashi.
+msgid "Tholi Ekadashi"
+msgstr "తొలి ఏకాదశి"
+
+#. Varalakshmi Vratam.
+msgid "Varalakshmi Vratam"
+msgstr "వరలక్ష్మీ వ్రతం"
+
