@@ -10,15 +10,15 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Chinese holidays zh_TW localization.
+# China holidays zh_TW localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-09-28 19:23+0700\n"
-"PO-Revision-Date: 2025-09-07 14:05+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-03-26 10:51+0800\n"
+"Last-Translator: Ryan Lee <deadcry152@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
@@ -35,12 +35,12 @@ msgstr "%s（推定）"
 
 #. %s (observed, estimated).
 #, c-format
-msgid "%s（观察日，推定）"
+msgid "%s（补假，推定）"
 msgstr "%s（補假，推定）"
 
 #. %s (observed).
 #, c-format
-msgid "%s（观察日）"
+msgid "%s（补假）"
 msgstr "%s（補假）"
 
 #. New Year's Day.
@@ -61,7 +61,7 @@ msgstr "勞動節"
 
 #. National Day.
 msgid "国庆节"
-msgstr "國慶日"
+msgstr "國慶節"
 
 #. Tomb-Sweeping Day.
 msgid "清明节"
@@ -97,8 +97,8 @@ msgstr "%Y-%m-%d"
 
 #. Day off (substituted from %s).
 #, c-format
-msgid "休息日（%s日起取代）"
-msgstr "休息日（%s日起取代）"
+msgid "休息日（由 %s 调休）"
+msgstr "放假日（%s 補班）"
 
 #. Chinese New Year (Spring Festival) Extended Holiday.
 msgid "春节延长假期"
