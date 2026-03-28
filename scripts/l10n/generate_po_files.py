@@ -26,16 +26,8 @@ from polib import pofile
 
 sys.path.insert(0, str(Path.cwd()))  # Make holidays visible.
 from holidays import __version__ as package_version
-from holidays.holiday_base import HolidayBase
+from holidays.registry import COUNTRIES, FINANCIAL
 
-LEGACY_NAME_MAP = {
-    "IM": "Isle of Man",
-    "MP": "Northern Mariana Islands",
-    "TL": "Timor-Leste",
-    "US": "United States of America",
-    "VI": "United States Virgin Islands",
-    "XNSE": "National Stock Exchange of India",
-}
 WRAP_WIDTH = 99
 HEADER_PATH = Path("docs/file_header.txt")
 
@@ -74,15 +66,11 @@ class POGenerator:
         entity_code: str, docstring: str, current_language: str, default_language: str
     ) -> str:
         """Builds the descriptive comment line for a .po file header."""
-        clean_name = ""
-        if docstring:
-            first_line = docstring.strip().split("\n")[0].strip().rstrip(".")
-            if first_line.endswith(" holidays"):
-                clean_name = first_line[:-9].strip()
-            else:
-                clean_name = first_line
+        if not docstring:
+            return ""
 
-        display_name = LEGACY_NAME_MAP.get(entity_code, clean_name)
+        display_name = docstring.split("\n", maxsplit=1)[0].removesuffix(" holidays.")
+
         if not display_name:
             return ""
         if current_language != default_language:
@@ -211,51 +199,34 @@ class POGenerator:
 
     def process_entities(self):
         """Processes entities in specified directory."""
-        entity_code_info_mapping = {}
+        entity_code_info_list = []
         for entity_type in ("countries", "financial"):
+            entity_mapping = COUNTRIES if entity_type == "countries" else FINANCIAL
+
             for path in Path(f"holidays/{entity_type}").glob("*.py"):
-                if path.stem == "__init__":
-                    continue
-                module = f"holidays.{entity_type}.{path.stem}"
-
-                try:
-                    mod = importlib.import_module(module)
-                except ImportError:
+                if (mod_name := path.stem) == "__init__":
                     continue
 
-                candidates = []
-                for _, cls in inspect.getmembers(mod, inspect.isclass):
-                    if (
-                        issubclass(cls, HolidayBase)
-                        and cls.__module__ == module
-                        and cls.default_language is not None
-                    ):
-                        candidates.append(cls)
+                class_name, name = entity_mapping[mod_name][0:2]
+                mod = importlib.import_module(f"holidays.{entity_type}.{mod_name}")
+                entity_cls = None
 
-                if not candidates:
-                    continue
-
-                chosen_cls = None
-                target_name = path.stem.replace("_", "").lower()
-
-                for cls in candidates:
-                    if cls.__name__.lower() == target_name:
-                        chosen_cls = cls
+                for cls_name, cls in inspect.getmembers(mod, inspect.isclass):
+                    if cls_name == class_name:
+                        entity_cls = cls
                         break
 
-                if not chosen_cls:
-                    candidates.sort(key=lambda c: len(c.__doc__ or ""), reverse=True)
-                    chosen_cls = candidates[0]
-
-                name = getattr(chosen_cls, "country", None) or getattr(chosen_cls, "market", None)
-                if not name:
+                if not entity_cls:
                     continue
 
-                entity_code_info_mapping[name.upper()] = (
-                    chosen_cls.default_language,
-                    path,
-                    chosen_cls.__doc__ or "",
-                    chosen_cls.supported_languages or (),
+                entity_code_info_list.append(
+                    (
+                        name.upper(),
+                        entity_cls.default_language,
+                        path,
+                        entity_cls.__doc__ or "",
+                        entity_cls.supported_languages or (),
+                    )
                 )
 
         po_index: dict[str, list[Path]] = {}
@@ -263,13 +234,16 @@ class POGenerator:
             po_index.setdefault(path.stem.upper(), []).append(path)
 
         all_po_update_tasks: list[tuple[Path, Path, str, str]] = []
+
+        tasks_input = [(info[0], info[1:]) for info in entity_code_info_list]
+
         with ProcessPoolExecutor(
             initializer=POGenerator._init_worker,
             initargs=(po_index,),
         ) as executor:
             for po_tasks in executor.map(
                 POGenerator._process_entity_worker,
-                entity_code_info_mapping.items(),
+                tasks_input,
             ):
                 all_po_update_tasks.extend(po_tasks)
 
