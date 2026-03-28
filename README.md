@@ -1986,6 +1986,13 @@ code when available. The following financial markets are available:
 <td></td>
 <td>HALF_DAY</td>
 </tr>
+<tr>
+<td>Shanghai Stock Exchange</td>
+<td>XSHG</td>
+<td>Shanghai Stock Exchange (SSE) market holidays</td>
+<td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 
