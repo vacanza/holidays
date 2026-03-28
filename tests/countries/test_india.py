@@ -54,6 +54,12 @@ class TestIndia(CommonCountryTests, TestCase):
 
         subdiv_holidays_mapping = {
             "AN": ("2018-04-14",),
+            "AR": (
+                "2018-02-20",
+                "2018-04-14",
+                "2018-04-15",
+                "2018-12-01",
+            ),
             "AP": (
                 "2018-04-14",
                 "2018-11-01",
@@ -523,6 +529,11 @@ class TestIndia(CommonCountryTests, TestCase):
             "2020-04-05",
         )
 
+    def test_ar_statehood_day(self):
+        name = "Arunachal Pradesh Statehood Day"
+        self.assertNoHolidayName(name, India(subdiv="AR", years=1986))
+        self.assertHolidayName(name, India(subdiv="AR"), "1987-02-20", "2018-02-20", "2025-02-20")
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2018-01-13", "Lohri"),
@@ -533,7 +544,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-01-26", "Republic Day"),
             ("2018-02-13", "Maha Shivaratri"),
             ("2018-02-19", "Chhatrapati Shivaji Maharaj Jayanti"),
-            ("2018-02-20", "Mizoram State Day"),
+            ("2018-02-20", "Arunachal Pradesh Statehood Day; Mizoram State Day"),
             ("2018-03-02", "Holi"),
             ("2018-03-18", "Gudi Padwa; Ugadi"),
             ("2018-03-22", "Bihar Day"),
@@ -544,7 +555,8 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-14", "Dr. B. R. Ambedkar's Jayanti; Puthandu (Tamil New Year); Vaisakhi"),
             (
                 "2018-04-15",
-                "Himachal Day; Maha Vishuva Sankranti / Pana Sankranti; Pohela Boishakh",
+                "Bohag Bihu; Himachal Day; "
+                "Maha Vishuva Sankranti / Pana Sankranti; Pohela Boishakh",
             ),
             ("2018-04-30", "Buddha Purnima"),
             ("2018-05-01", "Gujarat Day; Labour Day; Maharashtra Day"),
@@ -583,7 +595,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-11-15", "Jharkhand Formation Day"),
             ("2018-11-21", "Milad-un-Nabi"),
             ("2018-11-23", "Guru Nanak Jayanti"),
-            ("2018-12-01", "Nagaland State Inauguration Day"),
+            ("2018-12-01", "Indigenous Faith Day; Nagaland State Inauguration Day"),
             ("2018-12-02", "Assam Day"),
             ("2018-12-19", "Goa Liberation Day"),
             ("2018-12-25", "Christmas"),
@@ -789,7 +801,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-01-26", "Republic Day"),
             ("2018-02-13", "Maha Shivaratri"),
             ("2018-02-19", "Chhatrapati Shivaji Maharaj Jayanti"),
-            ("2018-02-20", "Mizoram State Day"),
+            ("2018-02-20", "Arunachal Pradesh Statehood Day; Mizoram State Day"),
             ("2018-03-02", "Holi"),
             ("2018-03-18", "Gudi Padwa; Ugadi"),
             ("2018-03-22", "Bihar Day"),
@@ -800,7 +812,8 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-14", "Dr. B. R. Ambedkar's Jayanti; Puthandu (Tamil New Year); Vaisakhi"),
             (
                 "2018-04-15",
-                "Himachal Day; Maha Vishuva Sankranti / Pana Sankranti; Pohela Boishakh",
+                "Bohag Bihu; Himachal Day; "
+                "Maha Vishuva Sankranti / Pana Sankranti; Pohela Boishakh",
             ),
             ("2018-04-30", "Buddha Purnima"),
             ("2018-05-01", "Gujarat Day; Labor Day; Maharashtra Day"),
@@ -839,7 +852,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-11-15", "Jharkhand Formation Day"),
             ("2018-11-21", "Prophet's Birthday"),
             ("2018-11-23", "Guru Nanak Jayanti"),
-            ("2018-12-01", "Nagaland State Inauguration Day"),
+            ("2018-12-01", "Indigenous Faith Day; Nagaland State Inauguration Day"),
             ("2018-12-02", "Assam Day"),
             ("2018-12-19", "Goa Liberation Day"),
             ("2018-12-25", "Christmas"),

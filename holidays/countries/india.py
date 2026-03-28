@@ -37,6 +37,8 @@ class India(
         * <https://web.archive.org/web/20250413193633/https://www.calendarlabs.com/holidays/india/2021>
         * <https://web.archive.org/web/20231118175007/http://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm>
         * <https://web.archive.org/web/20231008063930/https://vahan.parivahan.gov.in/vahan4dashboard/>
+        * Arunachal Pradesh:
+            * <https://www.northeastjob.in/2025/04/arunachal-pradesh-holiday-list.html>
         * Gujarat:
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
         * Tamil Nadu:
@@ -293,6 +295,20 @@ class India(
         self._add_holiday_nov_1(tr("Andhra Pradesh Foundation Day"))
         # Ugadi.
         self._add_gudi_padwa(tr("Ugadi"))
+
+    # Arunachal Pradesh.
+    def _populate_subdiv_ar_public_holidays(self):
+        if self._year >= 1987:
+            # Arunachal Pradesh Statehood Day.
+            self._add_holiday_feb_20(tr("Arunachal Pradesh Statehood Day"))
+        # Bohag Bihu.
+        self._add_bohag_bihu(tr("Bohag Bihu"))
+
+        # Dr. B. R. Ambedkar Jayanti.
+        self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
+
+        # Indigenous Faith Day.
+        self._add_holiday_dec_1(tr("Indigenous Faith Day"))
 
     # Assam.
     def _populate_subdiv_as_public_holidays(self):
