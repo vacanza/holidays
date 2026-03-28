@@ -19,7 +19,7 @@ from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, Stat
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class ShanghaiStockExchange(China):
+class ShanghaiStockExchange(China, ChinaStaticHolidays):
     """Shanghai Stock Exchange (SSE) holidays.
 
     This class provides Shanghai Stock Exchange-specific market holidays.
@@ -68,9 +68,7 @@ class SSE(ShanghaiStockExchange):
     pass
 
 
-class ShanghaiStockExchangeStaticHolidays(ChinaStaticHolidays):
-    substituted_date_format = ChinaStaticHolidays.substituted_date_format
-    substituted_label = ChinaStaticHolidays.substituted_label
+class ShanghaiStockExchangeStaticHolidays:
     special_public_holidays = {
         **ChinaStaticHolidays.special_public_holidays,
         2024: (
@@ -79,4 +77,3 @@ class ShanghaiStockExchangeStaticHolidays(ChinaStaticHolidays):
             (FEB, 9, tr("农历除夕")),
         ),
     }
-    special_public_holidays_observed = ChinaStaticHolidays.special_public_holidays_observed
