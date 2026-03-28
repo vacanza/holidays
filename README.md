@@ -101,6 +101,17 @@ us_pr_holidays = holidays.country_holidays('US', subdiv='PR')
 Please see the [holidays documentation](https://holidays.readthedocs.io/) for additional examples
 and detailed information.
 
+### Vacanza Holidays Calendar Generator
+
+The `holidays` library also provides a utility script, `vacanza.py` (located in the `examples/` directory), which automates the generation of `.ics` (iCalendar) files for holidays around the world. You can use it to dynamically export localized holiday calendars.
+
+```bash
+python examples/vacanza.py US 2025 --category public
+```
+
+*For more details on usage, options, and output formats, check out the [Examples Documentation](https://holidays.readthedocs.io/en/latest/examples.html#vacanza-holidays-calendar-generator).*
+
+
 ## Available Countries
 
 We currently support 250 country codes, which primarily follow [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html), with a small number of widely used user-assigned or reserved codes (for example, `XK` for Kosovo).
