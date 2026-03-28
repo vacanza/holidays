@@ -1,4 +1,4 @@
- import argparse
+import argparse
 import datetime
 import sys
 from pathlib import Path
@@ -64,7 +64,7 @@ def parse_year_range(year_string: str) -> range:
             # year string in #### format
             start_year = int(year_string)
             return range(start_year, start_year + 1)
-
+         
     except ValueError as e:
         raise ValueError(f"Invalid year format: {year_string}. {e}") from e
 
@@ -93,7 +93,6 @@ def get_categories(category: str | None, country_code: str, supported_categories
     """Validate category and return list of categories to generate"""
     # Build a case-insensitive lookup from user input to canonical category
     category_lookup = {c.lower(): c for c in supported_categories}
-
     if category:
         # Normalize user input to lowercase for insensitive matching
         normalized_category = category.lower()
@@ -107,9 +106,9 @@ def get_categories(category: str | None, country_code: str, supported_categories
     else:
         # User did not specify categories so return all canonical categories
         categories_to_generate = list(supported_categories)
-    
     return categories_to_generate 
-    
+
+
 def generate_calendars(
     country_code: str,
     years: range,
@@ -189,7 +188,8 @@ def generate_calendars(
                 f"[ERROR] Error generating {category} holiday: {e}\n"
             )
             raise
-            
+
+
 def list_countries() -> None:
     sys.stdout.write("Supported countries:\n")
     samples = list(COUNTRIES.keys())
@@ -279,7 +279,10 @@ Examples:
         language = args.language
         category = args.category
 
-        sys.stdout.write(f"Generating holidays for {country_code} ({year_range.start}-{year_range.stop - 1})\n")
+        sys.stdout.write(
+            f"Generating holidays for {country_code} " 
+            f"({year_range.start}-{year_range.stop - 1})\n"
+        )
         if language:
             sys.stdout.write(f"Language: {language}\n")
         if category:
@@ -303,7 +306,7 @@ Examples:
         sys.exit(1)
     except Exception as e:
         sys.stderr.write(f"Unexpected error: {e}\n")
-        sys.exit(1))
+        sys.exit(1)
 
 
 if __name__ == "__main__":
