@@ -22,7 +22,7 @@ def parse_years(year_input):
 def generate_ics(country_code, years, category_filter=None):
     try:
         base_obj = country_holidays(country_code)
-        categories = getattr(base_obj, "supported_categories", ["public"])
+        categories = getattr(base_obj, "supported_categories", None) or ["public"]
 
         for category in categories:
             if category_filter and category.lower() != category_filter.lower():
@@ -41,8 +41,11 @@ def generate_ics(country_code, years, category_filter=None):
 
             print(f"Generated: {filename}")
 
-    except Exception as e:
-        print(f"Error: {e}")
+    except ValueError as e:
+        print(f"Invalid input: {e}")
+        sys.exit(1)
+    except OSError as e:
+        print(f"File error: {e}")
         sys.exit(1)
 
 
