@@ -19,7 +19,7 @@
   - merge the PR into `main` branch using 'Merge when ready' button
   - make sure the PR related CI/CD jobs have been completed successfully
   - make sure readthedocs.org documentation build jobs at
-    <https://readthedocs.org/projects/holidays/builds/> have been completed successfully
+    <https://app.readthedocs.org/projects/holidays/builds/> have been completed successfully
 - Create a new release:
   - open <https://github.com/vacanza/holidays/releases> page and click on the 'Draft a new
     release' button
