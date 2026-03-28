@@ -25,6 +25,10 @@ class TestHongKongStockExchange(CommonFinancialTests, TestCase):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
 
+    def test_add_holiday_requires_arguments(self):
+        with self.assertRaises(TypeError):
+            self.holidays._add_holiday("Test holiday")
+
     def test_2025(self):
         self.assertHolidaysInYear(
             2025,
