@@ -39,7 +39,7 @@ def parse_year_range(year_string: str) -> range:
     """
     Validate and normalize year range.
     Args:
-        year range: year range to validate (case-insensitive)
+        year string: year string to validate (case-insensitive)
     Returns:
         A year range object if valid
     Raises:
@@ -64,7 +64,7 @@ def parse_year_range(year_string: str) -> range:
             # year string in #### format
             start_year = int(year_string)
             return range(start_year, start_year + 1)
-         
+    
     except ValueError as e:
         raise ValueError(f"Invalid year format: {year_string}. {e}") from e
 
@@ -89,7 +89,11 @@ def get_holidays_object(
     return holidays.country_holidays(country_code, **kwargs)
 
 
-def get_categories(category: str | None, country_code: str, supported_categories: tuple[str, ...]) -> list[str]:
+def get_categories(
+    category: str | None,
+    country_code: str,
+    supported_categories: tuple[str, ...],
+) -> list[str]:
     """Validate category and return list of categories to generate"""
     # Build a case-insensitive lookup from user input to canonical category
     category_lookup = {c.lower(): c for c in supported_categories}
@@ -106,7 +110,7 @@ def get_categories(category: str | None, country_code: str, supported_categories
     else:
         # User did not specify categories so return all canonical categories
         categories_to_generate = list(supported_categories)
-    return categories_to_generate 
+    return categories_to_generate
 
 
 def generate_calendars(
@@ -141,7 +145,7 @@ def generate_calendars(
     # Check language
     if language and language not in supported_languages:
         message = (
-            f"ERROR: Language '{language}' not supported for {country_code}."
+            f"ERROR: Language '{language}' not supported for {country_code}. "
             f"Supported languages: {', '.join(supported_languages)}"
         )
         raise ValueError(message)
@@ -280,7 +284,7 @@ Examples:
         category = args.category
 
         sys.stdout.write(
-            f"Generating holidays for {country_code} " 
+            f"Generating holidays for {country_code} "
             f"({year_range.start}-{year_range.stop - 1})\n"
         )
         if language:
