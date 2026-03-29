@@ -981,7 +981,6 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-12-25", "ക്രിസ്തുമസ്"),
         )
 
-
     def test_l10n_ta(self):
         self.assertLocalizedHolidays(
             "ta",
@@ -1111,6 +1110,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-12-19", "గోవా విమోచన దినోత్సవం"),
             ("2018-12-25", "క్రిస్మస్"),
         )
+
     def test_deprecated(self):
         self.assertEqual(
             India(subdiv="DD", years=2023).keys(), India(subdiv="DH", years=2023).keys()
