@@ -23,15 +23,17 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """Lebanon holidays.
 
-    References:
-        * [Decree No. 35 of 1977](https://web.archive.org/web/20250704170408/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=204659&LawID=202420&language=ar)
-        * [Decree No. 2512 of 1985](https://web.archive.org/web/20250704170328/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=186992&LawID=184753&language=ar)
-        * [Decree No. 5112 of 1994](https://web.archive.org/web/20250704170257/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=173902&LawID=171663&language=ar)
-        * [Decree No. 15215 of 2005](https://web.archive.org/web/20250704170428/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=213954&LawID=211715&language=ar)
-        * [Decree No. 16237 of 2006](https://web.archive.org/web/20250704170424/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=215180&LawID=212941&language=ar)
-        * [Decree No. 3369 of 2010](https://web.archive.org/web/20250704170437/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=227216&LawID=224978&language=ar)
-        * <https://web.archive.org/web/20200925173058/https://www.abl.org.lb/english/abl-and-banking-sector-news/official-holidays>
-    """
+   References:
+       * [Decree No. 35 of 1977](https://web.archive.org/web/20250704170408/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=204659&LawID=202420&language=ar)
+       * [Decree No. 2512 of 1985](https://web.archive.org/web/20250704170328/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=186992&LawID=184753&language=ar)
+       * [Decree No. 5112 of 1994](https://web.archive.org/web/20250704170257/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=173902&LawID=171663&language=ar)
+       * [Decree No. 15215 of 2005](https://web.archive.org/web/20250704170428/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=213954&LawID=211715&language=ar)
+       * [Decree No. 16237 of 2006](https://web.archive.org/web/20250704170424/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=215180&LawID=212941&language=ar)
+       * [Decree No. 3369 of 2010](https://web.archive.org/web/20250704170437/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=227216&LawID=224978&language=ar)
+       * <https://web.archive.org/web/20200925173058/https://www.abl.org.lb/english/abl-and-banking-sector-news/official-holidays>
+       * <https://web.archive.org/web/20260116210114/https://www.abl.org.lb/french/news/official-holidays>
+       * <https://web.archive.org/web/20260329170010/https://www.consulatlibanmarseille.com/fr/home/holidays>
+   """
 
     country = "LB"
     default_language = "ar"
