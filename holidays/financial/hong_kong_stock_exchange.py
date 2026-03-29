@@ -31,7 +31,6 @@ class HongKongStockExchange(HongKong):
     parent_entity = HongKong
     start_year = 2014
     supported_categories = (HALF_DAY, PUBLIC)
-    supported_languages = ("en_HK", "en_US", "th", "zh_CN", "zh_HK")
     weekend = {SAT, SUN}
 
     def _add_holiday(self, name, *args):
@@ -48,8 +47,10 @@ class HongKongStockExchange(HongKong):
 
         # Chinese New Year's Eve.
         self._add_chinese_new_years_eve(half_day_label % self.tr("農曆年初一的前一日"))
+
         # Christmas Eve.
         self._add_christmas_eve(half_day_label % self.tr("平安夜"))
+
         # New Year's Eve.
         self._add_new_years_eve(half_day_label % self.tr("新年前夕"))
 
