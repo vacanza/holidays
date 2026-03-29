@@ -561,5 +561,26 @@ To export to `.ics` format, use `save_ics`.
 >>> nyse_exporter.save_ics(file_path=str(downloads_path / "NYSE_2024_calendar.ics"))
 ```
 
+Generate `.ics` files with categories, language, and subdivisions.
+
+```python
+>>> from holidays.countries.india import IN
+>>> from holidays.ical import ICalExporter
+>>>
+>>> years = range(2021, 2026)
+>>> language = "en_US"
+>>> subdiv = "AP"  # Andhra Pradesh state.
+>>>
+>>> for category in IN.supported_categories:
+>>>     holidays = IN(
+>>>         years=years,
+>>>         categories=category,
+>>>         language=language,
+>>>         subdiv=subdiv,
+>>>     )
+>>>     filename = f"IN_{subdiv}_{language}_{category.upper()}.ics"
+>>>     ICalExporter(holidays).save_ics(filename)
+```
+
 For advanced features and customization of the exported `.ics` output, consider using
 the [icalendar](https://github.com/collective/icalendar) package.
