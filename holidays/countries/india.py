@@ -152,7 +152,7 @@ class India(
         "West Bengal": "WB",
     }
     supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "kn", "ta", "te", "kl")
+    supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "kn", "ml", "ta", "te",)
     _deprecated_subdivisions = (
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
