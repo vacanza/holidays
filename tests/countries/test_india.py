@@ -573,8 +573,8 @@ class TestIndia(CommonCountryTests, TestCase):
                 "Haryana Foundation Day; "
                 "Karnataka Rajyotsava; Kerala Foundation Day; "
                 "Madhya Pradesh Foundation Day; "
-                "Puducherry Liberation Day; "
-                "Punjab Day",
+                "New Punjab Day; "
+                "Puducherry Liberation Day",
             ),
             ("2018-11-07", "Diwali"),
             ("2018-11-08", "Govardhan Puja"),
@@ -637,7 +637,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-11-01",
                 "অন্ধ্রপ্রদেশ প্রতিষ্ঠা দিবস; "
                 "কর্ণাটক রাজ্যোৎসব; কেরালা প্রতিষ্ঠা দিবস; "
-                "ছত্তিশগড় প্রতিষ্ঠা দিবস; পাঞ্জাব দিবস; "
+                "ছত্তিশগড় প্রতিষ্ঠা দিবস; নতুন পাঞ্জাব দিবস; "
                 "পুদুচেরি মুক্তি দিবস; মধ্যপ্রদেশ প্রতিষ্ঠা দিবস; "
                 "হরিয়ানা প্রতিষ্ঠা দিবস",
             ),
@@ -699,7 +699,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-11-01",
                 "આંધ્ર પ્રદેશ સ્થાપના દિવસ; "
                 "કર્ણાટક રાજ્યોત્સવ; કેરળ સ્થાપના દિવસ; "
-                "છત્તીસગઢ સ્થાપના દિવસ; પંજાબ દિવસ; "
+                "છત્તીસગઢ સ્થાપના દિવસ; નવો પંજાબ દિવસ; "
                 "પુડુચેરી મુક્તિ દિવસ; મધ્ય પ્રદેશ સ્થાપના દિવસ; "
                 "હરિયાણા સ્થાપના દિવસ",
             ),
@@ -761,7 +761,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-11-01",
                 "आंध्र प्रदेश स्थापना दिवस; "
                 "कर्नाटक राज्योत्सव; केरल स्थापना दिवस; "
-                "छत्तीसगढ़ स्थापना दिवस; पंजाब दिवस; "
+                "छत्तीसगढ़ स्थापना दिवस; नया पंजाब दिवस; "
                 "पुडुचेरी मुक्ति दिवस; मध्य प्रदेश स्थापना दिवस; "
                 "हरियाणा स्थापना दिवस",
             ),
@@ -829,8 +829,8 @@ class TestIndia(CommonCountryTests, TestCase):
                 "Haryana Foundation Day; "
                 "Karnataka Rajyotsava; Kerala Foundation Day; "
                 "Madhya Pradesh Foundation Day; "
-                "Puducherry Liberation Day; "
-                "Punjab Day",
+                "New Punjab Day; "
+                "Puducherry Liberation Day",
             ),
             ("2018-11-07", "Diwali"),
             ("2018-11-08", "Govardhan Puja"),
@@ -895,10 +895,10 @@ class TestIndia(CommonCountryTests, TestCase):
                 "ಕನ್ನಡ ರಾಜ್ಯೋತ್ಸವ; "
                 "ಕೇರಳ ಸ್ಥಾಪನಾ ದಿನ; "
                 "ಛತ್ತೀಸ್‌ಗಢ ಸ್ಥಾಪನಾ ದಿನ; "
-                "ಪಂಜಾಬ್ ದಿನೋತ್ಸವ; "
                 "ಪುದುಚ್ಚೇರಿ ವಿಮೋಚನ ದಿನೋತ್ಸವ; "
                 "ಮಧ್ಯ ಪ್ರದೇಶ ಸ್ಥಾಪನಾ ದಿನ; "
-                "ಹರ್ಯಾಣ ಸ್ಥಾಪನಾ ದಿನ",
+                "ಹರ್ಯಾಣ ಸ್ಥಾಪನಾ ದಿನ; "
+                "ಹೊಸ ಪಂಜಾಬ್ ದಿನೋತ್ಸವ",
             ),
             ("2018-11-07", "ದೀಪಾವಳಿ"),
             ("2018-11-08", "ಗೋವರ್ಧನ ಪೂಜೆ"),
@@ -1029,7 +1029,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "கர்நாடக ராஜ்யோத்சவ; "
                 "கேரள நாள்; "
                 "சத்தீஸ்கர் நாள்; "
-                "பஞ்சாப் நாள்; "
+                "நியூ பஞ்சாப் நாள்; "
                 "புதுச்சேரி விடுதலை நாள்; "
                 "மத்திய பிரதேச நாள்",
             ),
@@ -1092,8 +1092,8 @@ class TestIndia(CommonCountryTests, TestCase):
                 "ఆంధ్రప్రదేశ్ అవతరణ దినోత్సవం; "
                 "కర్ణాటక రాజ్యోత్సవం; "
                 "కేరళ అవతరణ దినోత్సవం; "
+                "కొత్త పంజాబ్ దినోత్సవం; "
                 "ఛత్తీస్‌గఢ్ అవతరణ దినోత్సవం; "
-                "పంజాబ్ దినోత్సవం; "
                 "పుదుచ్చేరి విమోచన దినోత్సవం; "
                 "మధ్యప్రదేశ్ అవతరణ దినోత్సవం; "
                 "హర్యానా అవతరణ దినోత్సవం",
