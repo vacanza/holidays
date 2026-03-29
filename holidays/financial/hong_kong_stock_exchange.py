@@ -19,11 +19,11 @@ class HongKongStockExchange(HongKong):
     """Hong Kong Stock Exchange (HKEX) holidays.
 
     References:
-        * <https://www.hkex.com.hk/Services/Trading-hours-and-Severe-Weather-Arrangements/Trading-Hours/Securities-Market?sc_lang=en>
+        * <https://web.archive.org/web/20260219133739/https://www.hkex.com.hk/Services/Trading-hours-and-Severe-Weather-Arrangements/Trading-Hours/Securities-Market?sc_lang=en>
 
     Historical data:
-        * [2014](https://www.hkex.com.hk/-/media/hkex-market/services/circulars-and-notices/participant-and-members-circulars/sehk/2013/ct01013e)
-        * [2026](https://www.hkex.com.hk/-/media/HKEX-Market/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/ce_SEHK_CT_075_2025.pdf)
+        * [2014](https://web.archive.org/web/20260329213808/https://www.hkex.com.hk/-/media/hkex-market/services/circulars-and-notices/participant-and-members-circulars/sehk/2013/ct01013e)
+        * [2026](https://web.archive.org/web/20251219153754/https://www.hkex.com.hk/-/media/HKEX-Market/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/ce_SEHK_CT_075_2025.pdf)
     """
 
     country = None  # type: ignore[assignment]
