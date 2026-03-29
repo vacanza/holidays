@@ -228,6 +228,14 @@ class TestPuertoRico(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name_2023} (observed)", obs_dts_2023)
         self.assertNoNonObservedHoliday(obs_dts_1938, obs_dts_2014, obs_dts_2023)
 
+    def test_american_citizenship_day(self):
+        name = "American Citizenship Day"
+        self.assertNoHolidayName(name)
+        self.assertGovernmentHolidayName(
+            name, (f"{year}-03-02" for year in range(2001, self.end_year))
+        )
+        self.assertNoGovernmentHolidayName(name, range(self.start_year, 2001))
+
     def test_christmas_eve(self):
         name = "Christmas Eve (from 12pm)"
         self.assertHalfDayHolidayName(

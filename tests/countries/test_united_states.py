@@ -2045,6 +2045,16 @@ class TestUnitedStates(CommonCountryTests, TestCase):
         self.assertSubdivPrHolidayName(f"{name_2023} (observed)", obs_dts_2023)
         self.assertNoSubdivPrNonObservedHoliday(obs_dts_1938, obs_dts_2014, obs_dts_2023)
 
+    def test_american_citizenship_day_pr(self):
+        name = "American Citizenship Day"
+        self.assertNoHolidayName(name)
+        self.assertNoGovernmentHolidayName(name)
+        self.assertNoSubdivPrHolidayName(name)
+        self.assertSubdivPrGovernmentHolidayName(
+            name, (f"{year}-03-02" for year in range(2001, self.end_year))
+        )
+        self.assertNoSubdivPrGovernmentHolidayName(name, range(self.start_year, 2001))
+
     def test_day_after_thanksgiving(self):
         dts = (
             "2020-11-27",

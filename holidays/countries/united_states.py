@@ -1210,11 +1210,6 @@ class UnitedStates(
         else:
             self._add_observed(self._add_holiday_feb_22(name), rule=SUN_TO_NEXT_MON)
 
-        # Established by Law No. 53 of Mar 4, 2000.
-        if self._year >= 2001:
-            # American Citizenship Day.
-            self._add_holiday_mar_2(tr("American Citizenship Day"))
-
         # Día de la Abolición de la Esclavitud.
 
         # Emancipation Day.
@@ -1322,6 +1317,13 @@ class UnitedStates(
                 # Discovery of Puerto Rico Day.
                 name = tr("Discovery of Puerto Rico Day")
             self._add_observed(self._add_holiday_nov_19(name), rule=SUN_TO_NEXT_MON)
+
+    def _populate_subdiv_pr_government_holidays(self):
+        # Día de la Ciudadanía Americana.
+        # Established by Law No. 53 of Mar 4, 2000.
+        if self._year >= 2001:
+            # American Citizenship Day.
+            self._add_holiday_mar_2(tr("American Citizenship Day"))
 
     def _populate_subdiv_pr_half_day_holidays(self):
         # Established by Law No. 305 of Dec 25, 2002.
@@ -1565,7 +1567,7 @@ class UnitedStates(
     def _populate_government_holidays(self):
         # Added by 16 Stat. 168, effectdive date June 28th, 1870.
         # New Year's Day check for 1871 is included.
-        if self._year >= 1870:
+        if self._year >= 1870 and self.subdiv != "PR":
             # Federal holidays in the United States.
             self._populate_common(include_federal=True)
 
