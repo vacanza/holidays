@@ -38,17 +38,52 @@ MONTH_NAMES = {
     12: "DEC",
 }
 
-HOLIDAY_DATES = (
-    (1, 1, "LOSAR"),
-    (3, 10, "DEATH_OF_ZHABDRUNG"),
-    (4, 15, "BUDDHA_PARINIRVANA"),
-    (5, 10, "BIRTH_OF_GURU_RINPOCHE"),
-    (6, 4, "BUDDHA_FIRST_SERMON"),
-    (8, 6, "THIMPHU_DRUBCHEN"),
-    (8, 10, "THIMPHU_TSHECHU"),
-    (9, 22, "DESCENDING_DAY_OF_LORD_BUDDHA"),
-    (12, 1, "DAY_OF_OFFERING"),
-)
+
+def _get_regular_holiday(tib_lookup, tib_month, tib_day, year):
+    key = (tib_month, tib_day, 0, year)
+    greg_date = tib_lookup.get(key)
+    if greg_date is None:
+        for prev_day in range(tib_day - 1, 0, -1):
+            greg_date = tib_lookup.get((tib_month, prev_day, 0, year))
+            if greg_date:
+                break
+    return greg_date
+
+
+def _get_losar(tib_lookup, tib_month, year):
+    for day in range(1, 32):
+        key = (tib_month, day, 0, year)
+        if key in tib_lookup:
+            return tib_lookup[key]
+    return None
+
+
+def _get_day_of_offering(tib_lookup, tib_month, tib_day, year):
+    # Day of Offering: exact match first
+    key = (tib_month, tib_day, 0, year)
+    greg_date = tib_lookup.get(key)
+    if greg_date is None:
+        # Fallback only if truly expunged
+        for prev_day in range(tib_day - 1, 0, -1):
+            greg_date = tib_lookup.get((tib_month, prev_day, 0, year))
+            if greg_date:
+                break
+    return greg_date
+
+
+HOLIDAYS = {
+    "DEATH_OF_ZHABDRUNG": (3, 10, "regular"),
+    "BUDDHA_PARINIRVANA": (4, 15, "regular"),
+    "BIRTH_OF_GURU_RINPOCHE": (5, 10, "regular"),
+    "BUDDHA_FIRST_SERMON": (6, 4, "regular"),
+    "THIMPHU_DRUBCHEN": (8, 6, "regular"),
+    "THIMPHU_TSHECHU": (8, 10, "regular"),
+    "DESCENDING_DAY_OF_LORD_BUDDHA": (9, 22, "regular"),
+    "LOSAR": (1, 1, "losar"),
+    "DAY_OF_OFFERING": (12, 1, "day_of_offering"),
+    "BLESSED_RAINY_DAY": (6, 1, "regular"),
+    "WINTER_SOLSTICE": (11, 1, "regular"),
+}
 
 
 def generate_data() -> None:
@@ -56,9 +91,7 @@ def generate_data() -> None:
     if not data_file.exists():
         urlretrieve(DATA_URL, data_file)
 
-    dates: dict[str, dict[int, tuple]] = {name: {} for _, _, name in HOLIDAY_DATES}
-
-    tib_lookup: dict[tuple, tuple] = {}
+    tib_lookup = {}
 
     with open(data_file, encoding="utf-8") as f:
         for line in f:
@@ -73,28 +106,31 @@ def generate_data() -> None:
                 key = (tib_month, tib_day, leap, greg_year)
                 tib_lookup[key] = (MONTH_NAMES[greg_month], greg_day)
 
-    for tib_month, tib_day, hol_name in HOLIDAY_DATES:
-        for year in range(1900, 2101):
-            key = (tib_month, tib_day, 0, year)
-            greg_date = tib_lookup.get(key)
-            if greg_date is None:
-                for prev_day in range(tib_day - 1, 0, -1):
-                    fallback_key = (tib_month, prev_day, 0, year)
-                    greg_date = tib_lookup.get(fallback_key)
-                    if greg_date is not None:
-                        break
-            if greg_date is not None:
-                dates[hol_name][year] = greg_date
+    dates: dict[str, dict[int, tuple]] = {name: {} for name in HOLIDAYS}
+
+    for year in range(1900, 2101):
+        for name, (tib_month, tib_day, rule) in HOLIDAYS.items():
+            if rule == "regular":
+                greg_date = _get_regular_holiday(tib_lookup, tib_month, tib_day, year)
+            elif rule == "losar":
+                greg_date = _get_losar(tib_lookup, tib_month, year)
+            elif rule == "day_of_offering":
+                greg_date = _get_day_of_offering(tib_lookup, tib_month, tib_day, year)
+            else:
+                greg_date = None
+
+            if greg_date:
+                dates[name][year] = greg_date
 
     holiday_data = []
-    for hol_name in sorted(dates.keys()):
+    for name in sorted(dates.keys()):
         year_dates = "\n".join(
-            f"        {year}: ({m}, {d})," for year, (m, d) in sorted(dates[hol_name].items())
+            f"            {year}: ({m}, {d})," for year, (m, d) in sorted(dates[name].items())
         )
-        holiday_data.append(f"    {hol_name}_DATES = {{\n{year_dates}\n    }}\n")
+        holiday_data.append(f"    {name}_DATES = {{\n{year_dates}\n        }}\n")
 
     output_path = Path(__file__).parent / OUT_FILE_NAME
-    output_path.write_text(f"class {CLASS_NAME}:\n" + "".join(holiday_data), encoding="UTF-8")
+    output_path.write_text("".join(holiday_data), encoding="UTF-8")
 
 
 if __name__ == "__main__":
