@@ -10,13 +10,14 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import os
 import tempfile
 from datetime import date, datetime
+from pathlib import Path
 from unittest import TestCase
 from unittest.mock import patch, MagicMock
 
 from holidays import country_holidays, financial_holidays
+from holidays.constants import HALF_DAY, UNOFFICIAL
 from holidays.holiday_base import HolidayBase
 from holidays.ical import CONTENT_LINE_DELIMITER, CONTENT_LINE_MAX_LENGTH, ICalExporter
 
@@ -400,10 +401,30 @@ class TestIcalExporter(TestCase):
 
     def test_save_ics_valid_path(self):
         with tempfile.TemporaryDirectory() as valid_path:
-            file_path = os.path.join(valid_path, "test_calendar.ics")
+            file_path = Path(valid_path) / "test_calendar.ics"
 
             self.us_exporter.save_ics(file_path=file_path)
-            self.assertTrue(os.path.exists(file_path), f"File should be created at {file_path}")
+            self.assertTrue(file_path.exists(), f"File should be created at {file_path}")
+
+    def test_save_ics_pathlib_path(self):
+        with tempfile.TemporaryDirectory() as valid_path:
+            file_path_1 = Path(valid_path) / "test_calendar_1.ics"
+            self.us_exporter.save_ics(file_path=file_path_1)
+            content_1 = [
+                line
+                for line in file_path_1.read_text().splitlines()
+                if not line.startswith(("UID:", "DTSTAMP:"))
+            ]
+
+            file_path_2 = Path(valid_path) / "test_calendar_2.ics"
+            self.us_exporter.save_ics(file_path=str(file_path_2))
+            content_2 = [
+                line
+                for line in file_path_2.read_text().splitlines()
+                if not line.startswith(("UID:", "DTSTAMP:"))
+            ]
+
+            self.assertEqual(content_1, content_2)
 
     def test_save_ics_empty_content(self):
         self.exporter.generate = MagicMock(return_value=b"")
@@ -419,12 +440,11 @@ class TestIcalExporter(TestCase):
             temp_file.close()
 
             self.us_exporter.save_ics(file_path=temp_file.name)
-            with open(temp_file.name) as file:
-                new_content = file.read()
+            new_content = Path(temp_file.name).read_text()
 
             self.assertNotEqual(new_content, "Old content", "The file was not overwritten.")
             self.assertIn("BEGIN:VCALENDAR", new_content, "New content is not valid iCalendar")
-            os.remove(temp_file.name)
+            Path(temp_file.name).unlink()
 
     def test_save_ics_with_utf8_name(self):
         with tempfile.NamedTemporaryFile(
@@ -434,7 +454,21 @@ class TestIcalExporter(TestCase):
 
             self.th_exporter.save_ics(file_path=temp_file.name)
             self.assertTrue(
-                os.path.exists(temp_file.name),
+                Path(temp_file.name).exists(),
                 "File should be created with special characters in the name.",
             )
-            os.remove(temp_file.name)
+            Path(temp_file.name).unlink()
+
+    def test_holidays_category(self):
+        single_category_holidays = country_holidays(
+            "US", years=2024, categories=UNOFFICIAL, language="en_US"
+        )
+        output = ICalExporter(single_category_holidays).generate()
+        self.assertIn("CATEGORIES:UNOFFICIAL", output)
+
+        multi_category_holidays = country_holidays(
+            "US", years=2024, categories=(HALF_DAY, UNOFFICIAL), language="en_US"
+        )
+        output = ICalExporter(multi_category_holidays).generate()
+        self.assertNotIn("CATEGORIES:HALF_DAY", output)
+        self.assertNotIn("CATEGORIES:UNOFFICIAL", output)

@@ -1,3 +1,54 @@
+# Version 0.93
+
+Released March 16, 2026
+
+- Add Germany Stock Exchange holidays (#3271 by @priak388, @krisitachhetry25-hue)
+- Add Japan Exchange Group (JPX) holidays (#3270 by @adityaanand05, @arkid15r)
+- Add Kosovo holidays (#3327 by @bleendd, @arkid15r)
+- Fix l10n tests (#3313 by @KJhellico)
+- Update CONTRIBUTORS (#3325 by @PPsyrius)
+- Update Gabon holidays (#3317 by @KJhellico)
+- Update Gabon holidays: add l10n support  (#3178 by @aman-coder03, @KJhellico)
+- Update India holidays: add Telugu language support (#3303 by @Abiram08)
+- Update Italy holidays: add Bolzano Half-Day holidays, Easter Sunday, Thai language support (#3318 by @PPsyrius)
+
+# Version 0.92
+
+Released March 2, 2026
+
+- Add observed holidays substitution support (#3289 by @KJhellico)
+- Update Burkina Faso holidays: add l10n support (#3177 by @aman-coder03, @KJhellico)
+- Update China holidays: add additional substituted holidays in 2019 (#3294 by @KJhellico)
+- Update India holidays: add Tamil language support (#3278 by @Abiram08)
+- Update Iran holidays: add special holidays support (#3304 by @PPsyrius)
+- Update Kyrgyzstan holidays: add l10n support (#3301 by @KJhellico)
+- Update South Korea holidays: add Constitution Day back for 2026 onwards (#3284 by @kawai10)
+- Update iCal exporter (#3290 by @KJhellico, @arkid15r)
+- Update l10n test: check .po files for mandatory metadata fields (#3279 by @KJhellico, @arkid15r)
+
+# Version 0.91
+
+Released February 16, 2026
+
+- Refactor United Kingdom holidays (#3262 by @KJhellico)
+- Update Australia holidays: add extra ANZAC Day holiday in NSW (#3273 by @simongreen-net, @arkid15r)
+- Update Ireland holidays: add `OPTIONAL` category (#3260 by @PredictiveManish)
+- Update README: fix Snyk badge (#3250 by @KJhellico)
+- Update United Kingdom holidays: add Jun 15, 2026 holiday in Scotland (#3272 by @KJhellico)
+- Update dependencies: pre-commit + make update (#3258 by @arkid15r)
+- Add "Report-Msgid-Bugs-To" entry to .po files header (#3274 by @KJhellico)
+
+# Version 0.90
+
+Released February 2, 2026
+
+- Update Armenia holidays: add `WORKDAY` category and substituted holidays (#3240 by @KJhellico)
+- Update Brunei holidays: observed holidays, 2026 exact dates (#3228 by @KJhellico)
+- Update Germany holidays: add catholic holidays to Augsburg (#3244 by @Estartu)
+- Update Italy holidays: add Whit Monday in Bolzano (BZ) (#3236 by @KJhellico)
+- Update WM archiver script: add optional target parameter (#3221 by @pareshjoshij, @arkid15r)
+- Reference maintenance: archive links, fix broken, remove unused (#3238 by @PPsyrius)
+
 # Version 0.89
 
 Released January 19, 2026

@@ -18,9 +18,17 @@ Thanks a lot for your support.
 First step is setting up the development environment and installing all the required dependencies
 with, once you have [`uv`](https://docs.astral.sh/uv/getting-started/installation/#installation-methods) setup:
 
-``` shell
-make setup
-```
+=== "macOS and Linux"
+
+    ``` shell
+    make setup
+    ```
+
+=== "Windows"
+
+    ``` shell
+    .\make setup
+    ```
 
 !!! note "WSL Windows File Permission Fix"
 
@@ -58,16 +66,33 @@ make setup
 
 The project provides automated style, tests and coverage checks:
 
-``` shell
-make check
-```
+=== "macOS and Linux"
+
+    ``` shell
+    make check
+    ```
+
+=== "Windows"
+
+    ``` shell
+    .\make check
+    ```
 
 You can run them separately:
 
-``` shell
-make pre-commit
-make test
-```
+=== "macOS and Linux"
+
+    ``` shell
+    make pre-commit
+    make test
+    ```
+
+=== "Windows"
+
+    ``` shell
+    .\make pre-commit
+    .\make test
+    ```
 
 It'll retrieve uncovered lines too.
 
@@ -96,9 +121,17 @@ pytest -s tests/countries/test_argentina.py
 In order to add or update existing holiday names translation you'll need to generate pygettext
 .pot file first:
 
-``` shell
-make l10n
-```
+=== "macOS and Linux"
+
+    ``` shell
+    make l10n
+    ```
+
+=== "Windows"
+
+    ``` shell
+    .\make l10n
+    ```
 
 If the template file is empty, make sure that the country/market entity has the `default_language`
 attribute set, and all holiday names are wrapped with `tr`/`self.tr` helpers. Use [ISO 639-1
@@ -123,13 +156,14 @@ def setUpClass(cls):
     super().setUpClass(Argentina)
 ```
 
-## Build MkDocs Documentation
+## Build ProperDocs Documentation
 
-The project provides MkDocs documentation under `./docs`, published online on
+The project provides ProperDocs documentation under `./docs`, published online on
 [readthedocs.io](https://holidays.readthedocs.io/).
 
-Great documentation is absolutely key in any project. If you are not familiar with Markdown for
-MkDocs, you can read a primer [here](https://www.mkdocs.org/user-guide/writing-your-docs/).
+Great documentation is absolutely key in any project. ProperDocs is a fork of MkDocs,
+so if you are not familiar with writing Markdown for ProperDocs, here you can read a
+[ProperDocs Primer](https://properdocs.org/user-guide/writing-your-docs/).
 
 ## GitHub Actions
 

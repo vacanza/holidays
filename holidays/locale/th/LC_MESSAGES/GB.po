@@ -14,9 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.66\n"
+"Project-Id-Version: Holidays 0.91\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-01-29 14:18+0700\n"
-"PO-Revision-Date: 2025-01-31 13:54+0700\n"
+"PO-Revision-Date: 2026-02-14 16:52+0200\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -44,6 +45,18 @@ msgstr "วันเมย์เดย์"
 msgid "Spring Bank Holiday"
 msgstr "วันหยุดฤดูใบไม้ผลิของธนาคาร"
 
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "วันจันทร์อีสเตอร์"
+
+#. Late Summer Bank Holiday.
+msgid "Late Summer Bank Holiday"
+msgstr "วันหยุดช่วงปลายฤดูร้อนของธนาคาร"
+
+#. Whit Monday.
+msgid "Whit Monday"
+msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
+
 #. New Year's Day.
 msgid "New Year's Day"
 msgstr "วันขึ้นปีใหม่"
@@ -55,18 +68,6 @@ msgstr "วันคริสต์มาส"
 #. Boxing Day.
 msgid "Boxing Day"
 msgstr "วันเปิดกล่องของขวัญ"
-
-#. Easter Monday.
-msgid "Easter Monday"
-msgstr "วันจันทร์อีสเตอร์"
-
-#. Whit Monday.
-msgid "Whit Monday"
-msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
-
-#. Late Summer Bank Holiday.
-msgid "Late Summer Bank Holiday"
-msgstr "วันหยุดช่วงปลายฤดูร้อนของธนาคาร"
 
 #. Saint Patrick's Day.
 msgid "Saint Patrick's Day"
@@ -123,3 +124,7 @@ msgstr "พระราชพิธีพระบรมศพของสมเ
 #. Coronation of Charles III.
 msgid "Coronation of Charles III"
 msgstr "พระราชพิธีราชาภิเษกของสมเด็จพระเจ้าชาลส์ที่ 3 แห่งสหราชอาณาจักร"
+
+#. Scotland's participation in the FIFA World Cup final.
+msgid "Scotland's participation in the FIFA World Cup final"
+msgstr "เฉลิมฉลองสกอตแลนด์เข้ารอบฟุตบอลโลกรอบ 16 ทีมสุดท้าย"

@@ -41,7 +41,7 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
 
     country = "JP"
     default_language = "ja"
-    supported_categories = (BANK, PUBLIC)
+    supported_categories: tuple[str, ...] = (BANK, PUBLIC)
     supported_languages = ("en_US", "ja", "th")
     start_year = 1949
     end_year = 2099

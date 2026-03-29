@@ -33,7 +33,10 @@ class EntityStubStaticHolidays:
             (JAN, 7, JAN, 12),
             (JAN, 8, JAN, 13, 1991),
         ),
-        2024: (FEB, 19, FEB, 24),
+        2024: (
+            (FEB, 19, FEB, 24),
+            (OCT, 7, OCT, 12),
+        ),
     }
     substituted_date_format = "%d/%m/%Y"
     substituted_label = "From %s"
@@ -130,6 +133,7 @@ class CountryStub6(EntityStub, StaticHolidays):
     def _populate_public_holidays(self) -> None:
         self._add_holiday_may_1("Labor Day")
         self._add_holiday_may_2("Labor Day Two")
+        self._add_holiday_oct_12("Columbus Day")
 
 
 class MarketStub1(EntityStub):
@@ -1300,6 +1304,9 @@ class TestWorkdays(unittest.TestCase):
         self.assertFalse(self.hb.is_working_day("2024-05-01"))
         self.assertFalse(self.hb.is_working_day("2024-05-02"))
         self.assertTrue(self.hb.is_working_day("2024-05-03"))
+
+        self.assertFalse(self.hb.is_working_day("2024-10-07"))  # substituted from Oct 12 (SAT).
+        self.assertFalse(self.hb.is_working_day("2024-10-12"))  # Columbus Day holiday.
 
     def test_get_nth_working_day(self):
         self.assertEqual(self.hb.get_nth_working_day("2024-01-04", 0), date(2024, 1, 4))
