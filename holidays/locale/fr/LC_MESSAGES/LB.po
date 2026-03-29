@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-25 00:00+0000\n"
-"PO-Revision-Date: 2026-03-25 00:00+0000\n"
+"PO-Revision-Date: 2026-03-29 00:00+0000\n"
 "Last-Translator: Osama Alnajar <osama.alnajar.26@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
@@ -26,6 +26,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: ar\n"
+
+# References:
+# https://web.archive.org/web/20260116210114/https://www.abl.org.lb/french/news/official-holidays
+# https://web.archive.org/web/20260329170010/https://www.consulatlibanmarseille.com/fr/home/holidays
 
 #. %s (estimated).
 #, c-format
@@ -44,43 +48,43 @@ msgstr "%s (observé, estimé)"
 
 #. New Year's Day.
 msgid "رأس السنة الميلادية"
-msgstr "Jour de l'An"
+msgstr "Nouvel An"
 
 #. Armenian Orthodox Christmas Day.
 msgid "عيد الميلاد عند الطوائف الارمنية الارثوذكسية"
-msgstr "Noël arménien orthodoxe"
+msgstr "Noël Arménien"
 
 #. Saint Maron's Day.
 msgid "عيد مار مارون"
-msgstr "Fête de saint Maron"
+msgstr "Saint Maron"
 
 #. Feast of the Annunciation.
 msgid "عيد بشارة السيدة مريم العذراء"
-msgstr "Fête de l'Annonciation"
+msgstr "Annonciation"
 
 #. Catholic Good Friday.
 msgid "الجمعة العظيمة عند الطوائف الكاثوليكية"
-msgstr "Vendredi saint des communautés catholiques"
+msgstr "Vendredi Saint Catholique"
 
 #. Orthodox Good Friday.
 msgid "الجمعة العظيمة عند الطوائف الأرثوذكسية"
-msgstr "Vendredi saint des communautés orthodoxes"
+msgstr "Vendredi Saint Orthodoxe"
 
 #. Orthodox Holy Saturday.
 msgid "سبت النور للطائفة الأرثوذكسية"
-msgstr "Samedi saint orthodoxe"
+msgstr "Samedi Saint Orthodoxe"
 
 #. Catholic Easter Monday.
 msgid "اثنين الفصح عند الطوائف الكاثوليكية"
-msgstr "Lundi de Pâques des communautés catholiques"
+msgstr "Lundi de Pâques Catholique"
 
 #. Orthodox Easter Monday.
 msgid "اثنين الفصح عند الطوائف الأرثوذكسية"
-msgstr "Lundi de Pâques des communautés orthodoxes"
+msgstr "Lundi de Pâques Orthodoxe"
 
 #. Orthodox Easter Tuesday.
 msgid "ثلاثاء الفصح للطوائف الأرثوذكسية"
-msgstr "Mardi de Pâques des communautés orthodoxes"
+msgstr "Mardi de Pâques Orthodoxe"
 
 #. Labor Day.
 msgid "عيد العمل"
@@ -92,11 +96,11 @@ msgstr "Journée des Martyrs"
 
 #. Resistance and Liberation Day.
 msgid "عيد المقاومة والتحرير"
-msgstr "Fête de la Résistance et de la Libération"
+msgstr "Résistance et Libération"
 
 #. Assumption Day.
 msgid "عيد انتقال العذراء"
-msgstr "Assomption"
+msgstr "Assomption de la Sainte Vierge"
 
 #. All Saints' Day.
 msgid "عيد جميع القديسين"
@@ -104,7 +108,7 @@ msgstr "Toussaint"
 
 #. Independence Day.
 msgid "ذكرى الاستقلال"
-msgstr "Jour de l'Indépendance"
+msgstr "Fête Nationale"
 
 #. Christmas Day.
 msgid "عيد الميلاد"
@@ -112,7 +116,7 @@ msgstr "Noël"
 
 #. Islamic New Year.
 msgid "عيد رأس السنة الهجرية"
-msgstr "Nouvel An de l'Hégire"
+msgstr "Hégire"
 
 #. Ashura.
 msgid "عاشوراء"
@@ -120,20 +124,20 @@ msgstr "Achoura"
 
 #. Prophet's Birthday.
 msgid "ذكرى المولد النبوي الشريف"
-msgstr "Mawlid"
+msgstr "Naissance du Prophète"
 
 #. Eid al-Fitr.
 msgid "عيد الفطر"
-msgstr "Aïd el-Fitr"
+msgstr "Eid El Fitr"
 
 #. Eid al-Adha.
 msgid "عيد الأضحى"
-msgstr "Aïd al-Adha"
+msgstr "Adha"
 
 #. Rafik Hariri Memorial Day.
 msgid "يوم ذكرى رفيق الحريري"
-msgstr "Journée commémorative de Rafic Hariri"
+msgstr "Commémoration de l'assassinat du PM Rafic Hariri"
 
 #. Anniversary of the tragedy of Beirut port explosion.
 msgid "ذكرى مأساة انفجار مرفأ بيروت"
-msgstr "Anniversaire de la tragédie de l'explosion du port de Beyrouth"
+msgstr "Explosion du port de Beyrouth"
