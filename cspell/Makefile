@@ -1,4 +1,4 @@
-.PHONY: cspell-install cspell-check cspell-run sort-custom-dict
+.PHONY: cspell-install cspell-check sort-custom-dict
 
 cspell-install:
 	@which docker > /dev/null 2>&1 || (echo "ERROR: docker not found in PATH. Install Docker."; exit 1)
@@ -9,7 +9,7 @@ cspell-install:
 	-t cspell
 
 cspell-check: CMD=--no-progress -r /holidays
-cspell-check: cspell-install cspell-run
+cspell-check: cspell-install
 
 	@docker run \
 	--mount type=bind,src="$(CURDIR)",dst=/holidays,readonly \

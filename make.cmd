@@ -47,7 +47,7 @@ GoTo :Help
 :Help
     Echo Usage: make ^<Target^>
     Echo     check         run pre-commit and tests
-    Echo     spellcheck    run spell check across the repository (code, docs, l10n)
+    Echo     spellcheck    run spell check across the repository (docs, l10n)
     Echo     doc           run documentation build process
     Echo     doc-serve     serve documentation locally
     Echo     help          show summary of available commands

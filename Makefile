@@ -14,7 +14,7 @@ help:
 	@echo "    package       build package distribution"
 	@echo "    pre-commit    run pre-commit against all files"
 	@echo "    setup         setup development environment"
-	@echo "    spellcheck    run spell check across the repository (code, docs, l10n)"
+	@echo "    spellcheck    run spell check across the repository (docs, l10n)"
 	@echo "    test          run tests (in parallel)"
 	@echo "    upgrade       run dependency upgrade"
 
@@ -33,7 +33,7 @@ sort-custom-dict:
 
 spellcheck: sort-custom-dict
 	@command -v docker >/dev/null 2>&1 || { echo "ERROR: docker not found. Install Docker or skip spellcheck."; exit 127; }
-	$(MAKE) cspell-check
+	$(MAKE) -f cspell/Makefile cspell-check
 
 clean:
 	@for ext in mo pot pyc; do \

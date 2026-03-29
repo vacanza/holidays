@@ -2,11 +2,12 @@
   "name": "cspell-check",
   "version": "1.0.0",
   "description": "Spell checking for holidays project",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "spellcheck": "cspell"
   },
-  "dependencies": {
+  "devDependencies": {
     "@cspell/dict-ar": "^1.1.6",
     "@cspell/dict-bg-bg": "^3.0.8",
     "@cspell/dict-bn": "^1.0.3",

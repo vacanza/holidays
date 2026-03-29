@@ -24,6 +24,10 @@ if %errorlevel% neq 0 (
 set "build_args="
 if defined FORCE set "build_args=--no-cache"
 set "DOCKER_BUILDKIT=true" && docker build %build_args% -f cspell/Dockerfile -t cspell cspell
+if %errorlevel% neq 0 (
+    echo ERROR: Docker build failed.
+    goto end
+)
 goto end
 
 :cspell-run
@@ -37,6 +41,7 @@ goto end
 :cspell-check
 set CMD=--no-progress -r /holidays
 call :cspell-install
+if %errorlevel% neq 0 goto end
 call :cspell-run
 docker run --mount type=bind,src="%CD%",dst=/holidays,readonly --rm cspell lint -c cspell/cspell.json %CMD%
 goto end
