@@ -18,17 +18,9 @@ Thanks a lot for your support.
 First step is setting up the development environment and installing all the required dependencies
 with, once you have [`uv`](https://docs.astral.sh/uv/getting-started/installation/#installation-methods) setup:
 
-=== "macOS and Linux"
-
-    ``` shell
-    make setup
-    ```
-
-=== "Windows"
-
-    ``` shell
-    .\make setup
-    ```
+``` shell
+make setup
+```
 
 !!! note "WSL Windows File Permission Fix"
 
@@ -66,33 +58,16 @@ with, once you have [`uv`](https://docs.astral.sh/uv/getting-started/installatio
 
 The project provides automated style, tests and coverage checks:
 
-=== "macOS and Linux"
-
-    ``` shell
-    make check
-    ```
-
-=== "Windows"
-
-    ``` shell
-    .\make check
-    ```
+``` shell
+make check
+```
 
 You can run them separately:
 
-=== "macOS and Linux"
-
-    ``` shell
-    make pre-commit
-    make test
-    ```
-
-=== "Windows"
-
-    ``` shell
-    .\make pre-commit
-    .\make test
-    ```
+``` shell
+make pre-commit
+make test
+```
 
 It'll retrieve uncovered lines too.
 
@@ -121,17 +96,9 @@ pytest -s tests/countries/test_argentina.py
 In order to add or update existing holiday names translation you'll need to generate pygettext
 .pot file first:
 
-=== "macOS and Linux"
-
-    ``` shell
-    make l10n
-    ```
-
-=== "Windows"
-
-    ``` shell
-    .\make l10n
-    ```
+``` shell
+make l10n
+```
 
 If the template file is empty, make sure that the country/market entity has the `default_language`
 attribute set, and all holiday names are wrapped with `tr`/`self.tr` helpers. Use [ISO 639-1

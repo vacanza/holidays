@@ -135,15 +135,15 @@ msgstr "रामनवमी"
 
 #. Navratri / Sharad Navratri.
 msgid "Navratri / Sharad Navratri"
-msgstr "नवरात्र / शरद नवरात्र"
+msgstr "नवरात्र/शरद नवरात्र"
 
 #. Easter Sunday.
 msgid "Easter Sunday"
-msgstr "ईस्टर रविवार"
+msgstr "ईस्टर संडे"
 
 #. Palm Sunday.
 msgid "Palm Sunday"
-msgstr "पाम रविवार"
+msgstr "पाम संडे"
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"

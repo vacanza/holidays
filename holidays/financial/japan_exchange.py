@@ -12,9 +12,10 @@
 
 from holidays.constants import PUBLIC
 from holidays.countries.japan import Japan
+from holidays.mixins.child_entity import ChildEntity
 
 
-class JapanExchange(Japan):
+class JapanExchange(ChildEntity, Japan):
     """Japan Exchange Group (JPX) holidays.
 
     This class provides Japan Exchange-specific market holidays.
@@ -26,7 +27,7 @@ class JapanExchange(Japan):
 
     country = None  # type: ignore[assignment]
     market = "XJPX"
-    parent_entity = Japan  # JP catalogs as gettext fallback (HolidayBase._init_translation).
+    parent_entity = Japan
     supported_categories = (PUBLIC,)
 
     def _populate_public_holidays(self):

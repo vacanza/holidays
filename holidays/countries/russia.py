@@ -30,7 +30,7 @@ class Russia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     default_language = "ru"
     # %s (observed).
     observed_label = tr("%s (выходной)")
-    supported_languages = ("en_US", "ru", "th", "zh_CN")
+    supported_languages = ("en_US", "ru", "th")
     start_year = 1991
 
     def __init__(self, *args, **kwargs):
