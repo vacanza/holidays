@@ -1,26 +1,42 @@
 import sys
+from datetime import date
+from pathlib import Path
+
+sys.path.insert(0, str(Path.cwd()))  # Make holidays package importable
+
 import holidays
 from holidays.ical import ICalExporter
 
 
 def parse_years(year_arg):
     if "-" in year_arg:
-        start, end = year_arg.split("-")
-        return range(int(start), int(end) + 1)
-    return int(year_arg)
+        parts = year_arg.split("-")
+        if len(parts) == 2 and all(p.isdigit() for p in parts):
+            return range(int(parts[0]), int(parts[1]) + 1)
+        else:
+            print(f"Error: invalid year range '{year_arg}'. Use YYYY or YYYY-YYYY.")
+            sys.exit(1)
+    if year_arg.isdigit():
+        return int(year_arg)
+    print(f"Error: invalid year '{year_arg}'. Use YYYY or YYYY-YYYY.")
+    sys.exit(1)
 
 
-def generate(country_code, years=2025, language=None, public_only=False):
-    h = holidays.country_holidays(
-        country_code,
-        years=years,
-        language=language
-    )
+def generate(country_code, years=None, language=None, public_only=False):
+    if years is None:
+        years = date.today().year
 
-    categories = h.supported_categories
+    try:
+        country_holidays_instance = holidays.country_holidays(country_code)
+    except NotImplementedError:
+        print(f"Error: '{country_code}' is not a supported country code.")
+        print("See https://python-holidays.readthedocs.io for supported countries.")
+        sys.exit(1)
+
+    categories = country_holidays_instance.supported_categories
 
     if public_only:
-        categories = [c for c in categories if c == "PUBLIC"]
+        categories = [c for c in categories if c == holidays.constants.PUBLIC]
 
     for category in categories:
         h = holidays.country_holidays(
@@ -41,7 +57,7 @@ def generate(country_code, years=2025, language=None, public_only=False):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python examples/vacanza.py <COUNTRY_CODE> [YEAR or YEAR_RANGE] [LANGUAGE] [public-holidays]")
+        print("Usage: python examples/vacanza.py <COUNTRY_CODE> [YEAR or YYYY-YYYY] [LANGUAGE] [public-holidays]")
         print("Examples:")
         print("  python examples/vacanza.py IN")
         print("  python examples/vacanza.py IN 2025")
@@ -51,14 +67,14 @@ if __name__ == "__main__":
         sys.exit(1)
 
     country_code = sys.argv[1].upper()
-    years = 2025
+    years = None
     language = None
     public_only = False
 
     for arg in sys.argv[2:]:
         if arg == "public-holidays":
             public_only = True
-        elif arg.replace("-", "").isdigit() and len(arg) > 2:
+        elif arg.replace("-", "").isdigit() and len(arg) >= 4:
             years = parse_years(arg)
         else:
             language = arg
