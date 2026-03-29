@@ -324,7 +324,7 @@ class TestLebanon(CommonCountryTests, TestCase):
             ("2024-12-25", "عيد الميلاد"),
         )
 
-        def test_l10n_default(self):
+    def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2025-01-01", "رأس السنة الميلادية"),
             ("2025-01-06", "عيد الميلاد عند الطوائف الارمنية الارثوذكسية"),
