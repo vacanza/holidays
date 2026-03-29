@@ -1962,7 +1962,7 @@ code when available. The following financial markets are available:
 <td>Hong Kong Stock Exchange</td>
 <td>XHKG</td>
 <td>Hong Kong Stock Exchange (HKEX) securities market holidays</td>
-<td>en_HK, en_US, zh_CN, <strong>zh_HK</strong></td>
+<td>en_HK, en_US, th, zh_CN, <strong>zh_HK</strong></td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
