@@ -120,7 +120,6 @@ class POGenerator:
             package_name="Holidays",
             package_version=package_version,
             width=WRAP_WIDTH,
-            location=False,
             allow_empty=True,
             msgid_bugs_address="l10n@vacanza.dev",
         )
