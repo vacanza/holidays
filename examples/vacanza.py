@@ -33,16 +33,22 @@ logger = logging.getLogger(__name__)
 
 def parse_years(year_input):
     if "-" in year_input:
+        parts = year_input.split("-", 1)
+
+        if len(parts) != 2:
+            raise ValueError("Invalid year range format. Use YYYY or YYYY-YYYY")
+
         try:
-            start, end = map(int, year_input.split("-"))
-
-            if start > end:
-                raise ValueError("Start year must be <= end year")
-
-            return range(start, end + 1)
-
+            start = int(parts[0])
+            end = int(parts[1])
         except ValueError as e:
             raise ValueError("Invalid year range format. Use YYYY or YYYY-YYYY") from e
+
+        if start > end:
+            raise ValueError("Start year must be <= end year")
+
+        return range(start, end + 1)
+
     else:
         try:
             return [int(year_input)]
@@ -51,42 +57,33 @@ def parse_years(year_input):
 
 
 def generate_ics(country_code, years, category_filter=None, language=None):
-    try:
-        base_obj = country_holidays(country_code, language=language)
-        categories = getattr(base_obj, "supported_categories", None) or ["public"]
+    base_obj = country_holidays(country_code, language=language)
+    categories = getattr(base_obj, "supported_categories", None) or ["public"]
 
-        matched = False
+    matched = False
 
-        for category in categories:
-            if category_filter and category.lower() != category_filter.lower():
-                continue
+    for category in categories:
+        if category_filter and category.lower() != category_filter.lower():
+            continue
 
-            matched = True
+        matched = True
 
-            holidays_data = country_holidays(
-                country_code,
-                years=years,
-                categories=category,
-                language=language,
-            )
+        holidays_data = country_holidays(
+            country_code,
+            years=years,
+            categories=category,
+            language=language,
+        )
 
-            filename = f"{country_code}_{category}_{min(years)}_{max(years)}.ics"
+        filename = f"{country_code}_{category}_{min(years)}_{max(years)}.ics"
 
-            exporter = ICalExporter(holidays_data)
-            exporter.save_ics(filename)
+        exporter = ICalExporter(holidays_data)
+        exporter.save_ics(filename)
 
-            logger.info("Generated: %s", filename)
+        logger.info("Generated: %s", filename)
 
-        if category_filter and not matched:
-            raise ValueError(f"No matching category. Supported categories: {categories}")
-
-    except ValueError as e:
-        logger.error("Invalid input: %s", e)
-        sys.exit(1)
-
-    except OSError as e:
-        logger.error("File error: %s", e)
-        sys.exit(1)
+    if category_filter and not matched:
+        raise ValueError(f"No matching category. Supported categories: {categories}")
 
 
 def main():
@@ -99,16 +96,16 @@ def main():
 
     args = parser.parse_args()
 
-    country_code = args.country.upper()
-    year_input = args.year
-    category_filter = args.category
-    language = args.language
-
     try:
-        years = parse_years(year_input)
-        generate_ics(country_code, years, category_filter, language)
-    except ValueError as e:
-        logger.error("%s", e)
+        years = parse_years(args.year)
+        generate_ics(args.country.upper(), years, args.category, args.language)
+
+    except ValueError:
+        logger.exception("Invalid input")
+        sys.exit(1)
+
+    except OSError:
+        logger.exception("File error")
         sys.exit(1)
 
 
