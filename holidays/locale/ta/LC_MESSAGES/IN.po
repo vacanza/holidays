@@ -126,7 +126,7 @@ msgstr "மகர சங்கராந்தி"
 
 #. Raksha Bandhan.
 msgid "Raksha Bandhan"
-msgstr "ரக்ஷா பந்தன் (அண்ணன்-தங்கை உறவு திருநாள்)"
+msgstr "ரக்ஷா பந்தன்"
 
 #. Ram Navami.
 msgid "Ram Navami"
@@ -134,7 +134,7 @@ msgstr "ராம நவமி"
 
 #. Navratri / Sharad Navratri.
 msgid "Navratri / Sharad Navratri"
-msgstr "நவராத்திரி / சரத்நவராத்திரி"
+msgstr "நவராத்திரி / சரத நவராத்திரி"
 
 #. Easter Sunday.
 msgid "Easter Sunday"
@@ -182,7 +182,7 @@ msgstr "கோவா விடுதலை நாள்"
 
 #. Makar Sankranti.
 msgid "Uttarayan"
-msgstr "உத்தராயண் திருநாள்"
+msgstr "உத்தராயண் நாள்"
 
 #. Gujarat Day.
 msgid "Gujarat Day"
@@ -194,7 +194,7 @@ msgstr "சர்தார் வல்லபாய் படேல் ஜெய
 
 #. Haryana Foundation Day.
 msgid "Haryana Foundation Day"
-msgstr "ஹரியானா நிறுவ நாள்"
+msgstr "ஹரியானா நாள்"
 
 #. Himachal Day.
 msgid "Himachal Day"
@@ -206,7 +206,7 @@ msgstr "ஜார்கண்ட் உருவாக்க நாள்"
 
 #. Karnataka Rajyotsav.
 msgid "Karnataka Rajyotsava"
-msgstr "கர்நாடக மாநில உருவாக்க விழா (ராஜ்யோற்சவம்)"
+msgstr "கர்நாடக ராஜ்யோற்சவம்"
 
 #. Onam.
 msgid "Onam"
