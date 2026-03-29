@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
+from datetime import date, timedelta  # Add timedelta here too
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
@@ -155,6 +156,18 @@ class India(
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
     )
+    def _add_parsi_new_year(self, name):
+        from datetime import date, timedelta
+        # Reference: Aug 15, 2024 is a known Parsi New Year date.
+        # We calculate how many leap days have passed since 2024.
+        # This keeps the date at Aug 15 for 2024-2027 and shifts it 
+        # to Aug 14 starting in 2028.
+        leaps = (self._year - 2024) // 4
+        
+        # We start at Aug 15 of the current year and subtract the shift.
+        dt = date(self._year, 8, 15) - timedelta(days=leaps)
+        self._add_holiday(name, dt)
+        self._add_holiday(name, dt)
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -344,6 +357,7 @@ class India(
         self._add_holiday_may_1(tr("Gujarat Day"))
         # Sardar Vallabhbhai Patel Jayanti.
         self._add_holiday_oct_31(tr("Sardar Vallabhbhai Patel Jayanti"))
+        self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
 
     # Haryana.
     def _populate_subdiv_hr_public_holidays(self):
@@ -406,6 +420,7 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
+        self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
