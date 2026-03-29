@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.86\n"
+"Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-11-24 16:16+0700\n"
-"PO-Revision-Date: 2025-11-19 17:50+0800\n"
-"Last-Translator: Peter Chen <petercpg@gmail.com>\n"
+"PO-Revision-Date: 2026-03-24 18:53+0800\n"
+"Last-Translator: Ryan Lee <deadcry152@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -36,12 +36,12 @@ msgstr "%s（推定）"
 #. %s (observed, estimated).
 #, c-format
 msgid "%s（補假，推定）"
-msgstr "%s（观察日，推定）"
+msgstr "%s（补假，推定）"
 
 #. %s (observed).
 #, c-format
 msgid "%s（補假）"
-msgstr "%s（观察日）"
+msgstr "%s（补假）"
 
 #. Children's Day.
 msgid "兒童節"
@@ -170,4 +170,4 @@ msgstr "%Y-%m-%d"
 #. Day off (substituted from %s).
 #, c-format
 msgid "放假日（%s 補班）"
-msgstr "放假日（%s 补班）"
+msgstr "休息日（由 %s 调休）"

@@ -59,6 +59,10 @@ version upgrades.
 
 The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io).
 
+## ICS Exports
+
+Holiday calendars can be exported as `.ics` files via the [download page](https://holidays.readthedocs.io/en/latest/downloads/).
+
 ## Quick Start
 
 ``` python
@@ -867,7 +871,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>India</td>
 <td>IN</td>
 <td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (TG, Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
-<td><strong>en_IN</strong>, en_US, gu, hi, ta, te</td>
+<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, ta, te</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -1434,7 +1438,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Russia</td>
 <td>RU</td>
 <td></td>
-<td>en_US, <strong>ru</strong>, th</td>
+<td>en_US, <strong>ru</strong>, th, zh_CN</td>
 <td></td>
 </tr>
 <tr>
@@ -1981,6 +1985,13 @@ code when available. The following financial markets are available:
 <td>NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)</td>
 <td></td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Shanghai Stock Exchange</td>
+<td>XSHG</td>
+<td>Shanghai Stock Exchange (SSE) market holidays</td>
+<td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
+<td></td>
 </tr>
 </tbody>
 </table>

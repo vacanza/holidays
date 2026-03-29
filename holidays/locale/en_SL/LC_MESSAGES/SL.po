@@ -30,62 +30,62 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
-msgstr "%s (estimated)"
+msgstr ""
 
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
-msgstr "%s (observed)"
+msgstr ""
 
 #. %s (observed, estimated).
 #, c-format
 msgid "%s (observed, estimated)"
-msgstr "%s (observed, estimated)"
+msgstr ""
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr "New Year's Day"
+msgstr ""
 
 #. Armed Forces Day.
 msgid "Armed Forces Day"
-msgstr "Armed Forces Day"
+msgstr ""
 
 #. International Women's Day.
 msgid "International Women's Day"
-msgstr "International Women's Day"
+msgstr ""
 
 #. Good Friday.
 msgid "Good Friday"
-msgstr "Good Friday"
+msgstr ""
 
 #. Easter Monday.
 msgid "Easter Monday"
-msgstr "Easter Monday"
+msgstr ""
 
 #. Independence Day.
 msgid "Independence Day"
-msgstr "Independence Day"
+msgstr ""
 
 #. International Worker's Day.
 msgid "International Worker's Day"
-msgstr "International Worker's Day"
+msgstr ""
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "Christmas Day"
+msgstr ""
 
 #. Boxing Day.
 msgid "Boxing Day"
-msgstr "Boxing Day"
+msgstr ""
 
 #. Prophet's Birthday.
 msgid "Prophet's Birthday"
-msgstr "Prophet's Birthday"
+msgstr ""
 
 #. Eid al-Fitr.
 msgid "Eid al-Fitr"
-msgstr "Eid al-Fitr"
+msgstr ""
 
 #. Eid al-Adha.
 msgid "Eid al-Adha"
-msgstr "Eid al-Adha"
+msgstr ""
