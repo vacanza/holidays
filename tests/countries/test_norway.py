@@ -10,9 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import warnings
 from unittest import TestCase
 
-from holidays.countries.norway import Norway, NO, NOR
+from holidays.countries.norway import Norway
 from tests.common import CommonCountryTests, SundayHolidays
 
 
@@ -21,8 +22,12 @@ class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
     def setUpClass(cls):
         super().setUpClass(Norway)
 
-    def test_country_aliases(self):
-        self.assertAliases(Norway, NO, NOR)
+    def setUp(self):
+        super().setUp()
+        warnings.simplefilter("ignore", category=DeprecationWarning)
+
+    def test_subdiv_deprecation(self):
+        self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
 
     def test_new_years(self):
         self.assertHoliday("1901-01-01", "2017-01-01", "2023-01-01")
@@ -99,7 +104,8 @@ class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Første nyttårsdag"),
             ("2022-04-14", "Skjærtorsdag"),
             ("2022-04-15", "Langfredag"),
@@ -168,7 +174,7 @@ class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
         self.assertLocalizedHolidays(
             "th",
             ("2022-01-01", "วันขึ้นปีใหม่"),
-            ("2022-04-14", "วันพฤหัสศักดิสิทธิ์"),
+            ("2022-04-14", "วันพฤหัสศักดิ์สิทธิ์"),
             ("2022-04-15", "วันศุกร์ประเสริฐ"),
             ("2022-04-17", "วันอาทิตย์อีสเตอร์"),
             ("2022-04-18", "วันจันทร์อีสเตอร์"),

@@ -13,7 +13,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.rwanda import Rwanda, RW, RWA
+from holidays.countries.rwanda import Rwanda
 from tests.common import CommonCountryTests
 
 
@@ -23,12 +23,6 @@ class TestRwanda(CommonCountryTests, TestCase):
         years = range(2012, 2050)
         super().setUpClass(Rwanda, years=years, years_non_observed=years)
         cls.no_estimated_holidays = Rwanda(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Rwanda, RW, RWA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Rwanda(years=2011))
 
     def test_new_years_day(self):
         name = "Ubunani"

@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, SEP, OCT, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
@@ -53,7 +52,7 @@ class Guernsey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         kwargs.setdefault("observed_since", 1955)
         ObservedHolidayBase.__init__(self, *args, **kwargs)
 
-    def _add_observed(self, dt: date, **kwargs) -> tuple[bool, Optional[date]]:
+    def _add_observed(self, dt: date, **kwargs) -> tuple[bool, date | None]:
         # Prior to 2009, in-lieu are only given for Sundays.
         # https://web.archive.org/web/20230930101652/https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55179
         kwargs.setdefault(

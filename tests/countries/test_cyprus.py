@@ -12,115 +12,153 @@
 
 from unittest import TestCase
 
-from holidays.constants import BANK, OPTIONAL, PUBLIC
-from holidays.countries.cyprus import Cyprus, CY, CYP
+from holidays.countries.cyprus import Cyprus
 from tests.common import CommonCountryTests
 
 
 class TestCyprus(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Cyprus, years=range(2000, 2025))
+        super().setUpClass(Cyprus)
 
-    def test_country_aliases(self):
-        self.assertAliases(Cyprus, CY, CYP)
+    def test_new_years_day(self):
+        self.assertHolidayName("Πρωτοχρονιά", (f"{year}-01-01" for year in self.full_range))
 
-    def test_no_holidays(self):
-        self.assertNoHolidays(Cyprus(categories=(BANK, OPTIONAL, PUBLIC), years=1960))
-
-    def test_fixed_holidays(self):
-        fdays = (
-            (1, 1, "Πρωτοχρονιά"),
-            (1, 6, "Ημέρα των Θεοφανίων"),
-            (3, 25, "Ημέρα της Ελληνικής Ανεξαρτησίας"),
-            (4, 1, "Εθνική Ημέρα Κύπρου"),
-            (5, 1, "Πρωτομαγιά"),
-            (8, 15, "Κοίμηση της Θεοτόκου"),
-            (10, 1, "Ημέρα της Κυπριακής Ανεξαρτησίας"),
-            (10, 28, "Ημέρα του Όχι"),
-            (12, 25, "Χριστούγεννα"),
-            (12, 26, "Επομένη Χριστουγέννων"),
+    def test_epiphany(self):
+        self.assertHolidayName(
+            "Ημέρα των Θεοφανίων", (f"{year}-01-06" for year in self.full_range)
         )
-        for y in range(2000, 2025):
-            for m, d, name in fdays:
-                self.assertHolidayName(name, f"{y}-{m}-{d}")
 
     def test_green_monday(self):
+        name = "Καθαρά Δευτέρα"
         self.assertHolidayName(
-            "Καθαρά Δευτέρα",
-            "2018-02-19",
-            "2019-03-11",
+            name,
             "2020-03-02",
             "2021-03-15",
             "2022-03-07",
             "2023-02-27",
             "2024-03-18",
+            "2025-03-03",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_greek_independence_day(self):
+        self.assertHolidayName(
+            "Ημέρα της Ελληνικής Ανεξαρτησίας", (f"{year}-03-25" for year in self.full_range)
+        )
+
+    def test_cyprus_national_day(self):
+        self.assertHolidayName(
+            "Εθνική Ημέρα Κύπρου", (f"{year}-04-01" for year in self.full_range)
         )
 
     def test_good_friday(self):
+        name = "Μεγάλη Παρασκευή"
         self.assertHolidayName(
-            "Μεγάλη Παρασκευή",
-            "2018-04-06",
-            "2019-04-26",
+            name,
             "2020-04-17",
             "2021-04-30",
             "2022-04-22",
             "2023-04-14",
             "2024-05-03",
+            "2025-04-18",
         )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_holy_saturday(self):
+        name = "Μεγάλο Σάββατο"
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(
+            name,
+            "2020-04-18",
+            "2021-05-01",
+            "2022-04-23",
+            "2023-04-15",
+            "2024-05-04",
+            "2025-04-19",
+        )
+        self.assertOptionalHolidayName(name, self.full_range)
 
     def test_easter_sunday(self):
+        name = "Κυριακή του Πάσχα"
         self.assertHolidayName(
-            "Κυριακή του Πάσχα",
-            "2018-04-08",
-            "2019-04-28",
+            name,
             "2020-04-19",
             "2021-05-02",
             "2022-04-24",
             "2023-04-16",
             "2024-05-05",
+            "2025-04-20",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
+        name = "Δευτέρα της Διακαινησίμου"
         self.assertHolidayName(
-            "Δευτέρα της Διακαινησίμου",
-            "2018-04-09",
-            "2019-04-29",
+            name,
             "2020-04-20",
             "2021-05-03",
             "2022-04-25",
             "2023-04-17",
             "2024-05-06",
+            "2025-04-21",
         )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_easter_tuesday(self):
+        name = "Τρίτη της Διακαινησίμου"
+        self.assertNoHolidayName(name)
+        self.assertBankHolidayName(
+            name,
+            "2020-04-21",
+            "2021-05-04",
+            "2022-04-26",
+            "2023-04-18",
+            "2024-05-07",
+            "2025-04-22",
+        )
+        self.assertBankHolidayName(name, self.full_range)
+
+    def test_labor_day(self):
+        self.assertHolidayName("Πρωτομαγιά", (f"{year}-05-01" for year in self.full_range))
 
     def test_whit_monday(self):
+        name = "Δευτέρα του Αγίου Πνεύματος"
         self.assertHolidayName(
-            "Δευτέρα του Αγίου Πνεύματος",
-            "2018-05-28",
-            "2019-06-17",
+            name,
             "2020-06-08",
             "2021-06-21",
             "2022-06-13",
             "2023-06-05",
             "2024-06-24",
+            "2025-06-09",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_assumption_day(self):
+        self.assertHolidayName(
+            "Κοίμηση της Θεοτόκου", (f"{year}-08-15" for year in self.full_range)
         )
 
     def test_cyprus_independence_day(self):
         name = "Ημέρα της Κυπριακής Ανεξαρτησίας"
-        self.assertHolidayName(name, (f"{year}-10-01" for year in range(1979, 2025)))
-        self.assertNoHolidayName(name, Cyprus(years=range(1961, 1979)))
+        self.assertHolidayName(name, (f"{year}-10-01" for year in range(1979, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1979))
 
-    def test_bank_2023(self):
-        self.assertHolidays(
-            Cyprus(categories=BANK, years=2023),
-            ("2023-04-18", "Τρίτη της Διακαινησίμου"),
-        )
+    def test_ochi_day(self):
+        self.assertHolidayName("Ημέρα του Όχι", (f"{year}-10-28" for year in self.full_range))
 
-    def test_optional_2023(self):
-        self.assertHolidays(
-            Cyprus(categories=OPTIONAL, years=2023),
-            ("2023-04-15", "Μεγάλο Σάββατο"),
-            ("2023-12-24", "Παραμονή Χριστουγέννων"),
+    def test_christmas_eve(self):
+        name = "Παραμονή Χριστουγέννων"
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(name, (f"{year}-12-24" for year in self.full_range))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Χριστούγεννα", (f"{year}-12-25" for year in self.full_range))
+
+    def test_day_after_christmas(self):
+        self.assertHolidayName(
+            "Επομένη Χριστουγέννων", (f"{year}-12-26" for year in self.full_range)
         )
 
     def test_l10n_default(self):

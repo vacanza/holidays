@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.gregorian import _timedelta
 
@@ -32,7 +31,7 @@ class _Persian:
         """
         return (year % 33) in {3, 7, 11, 16, 20, 24, 28, 32}
 
-    def new_year_date(self, year: int) -> Optional[date]:
+    def new_year_date(self, year: int) -> date | None:
         """
         Return Gregorian date of Persian new year (1 Farvardin) in a given Gregorian year.
         """
@@ -51,7 +50,7 @@ class _Persian:
             day = 22
         return date(year, 3, day)
 
-    def persian_to_gregorian(self, year: int, j_month: int, j_day: int) -> Optional[date]:
+    def persian_to_gregorian(self, year: int, j_month: int, j_day: int) -> date | None:
         """
         Return Gregorian date of Persian day and month in a given Gregorian year.
         """

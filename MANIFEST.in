@@ -2,6 +2,5 @@ include holidays/py.typed
 include Makefile
 
 recursive-include holidays/locale *.mo
-recursive-include requirements *
 
 prune tests

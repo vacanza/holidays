@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.somalia import Somalia, SO, SOM
+from holidays.countries.somalia import Somalia
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestSomalia(CommonCountryTests, TestCase):
         years = range(1961, 2050)
         super().setUpClass(Somalia, years=years)
         cls.no_estimated_holidays = Somalia(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Somalia, SO, SOM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Somalia(years=1960))
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1961, 2050)))
@@ -126,8 +120,8 @@ class TestSomalia(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1961, 2050))
 
     def test_2018(self):
-        self.assertHolidays(
-            Somalia(years=2018),
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "New Year's Day"),
             ("2018-04-13", "Isra' and Mi'raj (estimated)"),
             ("2018-05-01", "Labour Day"),

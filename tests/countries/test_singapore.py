@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.singapore import Singapore, SG, SGP
+from holidays.countries.singapore import Singapore
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestSingapore(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Singapore)
-
-    def test_country_aliases(self):
-        self.assertAliases(Singapore, SG, SGP)
 
     def test_common(self):
         self.assertNonObservedHolidayName("New Year's Day", "2022-01-01")
@@ -58,7 +55,8 @@ class TestSingapore(CommonCountryTests, TestCase):
 
     # Source: https://www.mom.gov.sg/employment-practices/public-holidays
     def test_2018(self):
-        self.assertHolidays(
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "New Year's Day"),
             ("2018-02-16", "Chinese New Year"),
             ("2018-02-17", "Chinese New Year"),
@@ -73,7 +71,8 @@ class TestSingapore(CommonCountryTests, TestCase):
         )
 
     def test_2019(self):
-        self.assertHolidays(
+        self.assertHolidaysInYear(
+            2019,
             ("2019-01-01", "New Year's Day"),
             ("2019-02-05", "Chinese New Year"),
             ("2019-02-06", "Chinese New Year"),
@@ -91,7 +90,8 @@ class TestSingapore(CommonCountryTests, TestCase):
         )
 
     def test_2020(self):
-        self.assertHolidays(
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "New Year's Day"),
             ("2020-01-25", "Chinese New Year"),
             ("2020-01-26", "Chinese New Year"),
@@ -110,7 +110,8 @@ class TestSingapore(CommonCountryTests, TestCase):
         )
 
     def test_2021(self):
-        self.assertHolidays(
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "New Year's Day"),
             ("2021-02-12", "Chinese New Year"),
             ("2021-02-13", "Chinese New Year"),
@@ -125,7 +126,8 @@ class TestSingapore(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-02-01", "Chinese New Year"),
             ("2022-02-02", "Chinese New Year"),
@@ -144,7 +146,8 @@ class TestSingapore(CommonCountryTests, TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidays(
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day (observed)"),
             ("2023-01-22", "Chinese New Year"),
@@ -163,7 +166,8 @@ class TestSingapore(CommonCountryTests, TestCase):
         )
 
     def test_2024(self):
-        self.assertHolidays(
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-02-10", "Chinese New Year"),
             ("2024-02-11", "Chinese New Year"),
@@ -179,7 +183,8 @@ class TestSingapore(CommonCountryTests, TestCase):
         )
 
     def test_2025(self):
-        self.assertHolidays(
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "New Year's Day"),
             ("2025-01-29", "Chinese New Year"),
             ("2025-01-30", "Chinese New Year"),
@@ -195,7 +200,8 @@ class TestSingapore(CommonCountryTests, TestCase):
         )
 
     def test_2026(self):
-        self.assertHolidays(
+        self.assertHolidaysInYear(
+            2026,
             ("2026-01-01", "New Year's Day"),
             ("2026-02-17", "Chinese New Year"),
             ("2026-02-18", "Chinese New Year"),

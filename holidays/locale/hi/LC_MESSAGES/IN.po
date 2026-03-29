@@ -14,7 +14,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.72\n"
+"Project-Id-Version: Holidays 0.82\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
 "PO-Revision-Date: 2025-03-01 15:11+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
@@ -134,15 +135,15 @@ msgstr "रामनवमी"
 
 #. Navratri / Sharad Navratri.
 msgid "Navratri / Sharad Navratri"
-msgstr "नवरात्र/शरद नवरात्र"
+msgstr "नवरात्र / शरद नवरात्र"
 
 #. Easter Sunday.
 msgid "Easter Sunday"
-msgstr "ईस्टर संडे"
+msgstr "ईस्टर रविवार"
 
 #. Palm Sunday.
 msgid "Palm Sunday"
-msgstr "पाम संडे"
+msgstr "पाम रविवार"
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
@@ -151,6 +152,10 @@ msgstr "डॉ. बी.आर. आम्बेडकर जयंती"
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
 msgstr "आंध्र प्रदेश स्थापना दिवस"
+
+#. Ugadi.
+msgid "Ugadi"
+msgstr "उगादि"
 
 #. Magh Bihu.
 msgid "Magh Bihu"

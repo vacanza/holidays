@@ -12,8 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import OPTIONAL, PUBLIC
-from holidays.countries.greenland import Greenland, GL, GRL
+from holidays.countries.greenland import Greenland
 from tests.common import CommonCountryTests
 
 
@@ -22,14 +21,9 @@ class TestGreenland(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Greenland)
 
-    def test_country_aliases(self):
-        self.assertAliases(Greenland, GL, GRL)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Greenland(categories=(OPTIONAL, PUBLIC), years=1978))
-
     def test_1982(self):
-        self.assertHolidays(
+        self.assertHolidaysInYear(
+            1982,
             ("1982-01-01", "Ukiortaaq"),
             ("1982-04-08", "Sisamanngortoq illernartoq"),
             ("1982-04-09", "Tallimanngorneq tannaartoq"),
@@ -44,8 +38,8 @@ class TestGreenland(CommonCountryTests, TestCase):
         )
 
     def test_1982_optional(self):
-        self.assertHolidays(
-            Greenland(categories=OPTIONAL, years=1982),
+        self.assertOptionalHolidaysInYear(
+            1982,
             ("1982-01-06", "Kunngit pingasut ulluat"),
             ("1982-05-01", "Sulisartut ulluat"),
             ("1982-12-24", "Juulliaraq"),
@@ -53,7 +47,8 @@ class TestGreenland(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Ukiortaaq"),
             ("2022-04-14", "Sisamanngortoq illernartoq"),
             ("2022-04-15", "Tallimanngorneq tannaartoq"),
@@ -68,8 +63,8 @@ class TestGreenland(CommonCountryTests, TestCase):
         )
 
     def test_2022_optional(self):
-        self.assertHolidays(
-            Greenland(categories=OPTIONAL, years=2022),
+        self.assertOptionalHolidaysInYear(
+            2022,
             ("2022-01-06", "Kunngit pingasut ulluat"),
             ("2022-05-01", "Sulisartut ulluat"),
             ("2022-06-21", "Ullortuneq"),

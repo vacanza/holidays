@@ -43,7 +43,10 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
         if self._year <= 1950 or self._year >= 1989:
             # National Day.
-            self._add_holiday_mar_15(tr("Nemzeti ünnep"))
+            name = tr("Nemzeti ünnep")
+            self._add_holiday_mar_15(name)
+            if self._year >= 1991:
+                self._add_holiday_oct_23(name)
 
         if self._year >= 2017:
             # Good Friday.
@@ -77,10 +80,6 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             # State Foundation Day.
             else tr("Az államalapítás ünnepe")
         )
-
-        if self._year >= 1991:
-            # National Day.
-            self._add_holiday_oct_23(tr("Nemzeti ünnep"))
 
         if self._year >= 1999:
             # All Saints' Day.

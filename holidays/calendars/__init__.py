@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# ruff: noqa: F401
-
 from holidays.calendars.balinese_saka import _BalineseSakaLunar
 from holidays.calendars.buddhist import _BuddhistLunisolar, _CustomBuddhistHolidays
+from holidays.calendars.burmese import _BurmeseLunisolar
 from holidays.calendars.chinese import _ChineseLunisolar, _CustomChineseHolidays
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import GREGORIAN_CALENDAR

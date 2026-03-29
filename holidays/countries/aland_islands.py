@@ -14,7 +14,7 @@ from holidays.countries.finland import Finland
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysAX(ChildEntity, Finland):
+class AlandIslands(ChildEntity, Finland):
     """Åland Islands holidays.
 
     Alias of a Finnish subdivision that is also officially assigned
@@ -35,13 +35,13 @@ class HolidaysAX(ChildEntity, Finland):
     start_year = 1921
 
 
-class AlandIslands(HolidaysAX):
+class HolidaysAX(AlandIslands):
     pass
 
 
-class AX(HolidaysAX):
+class AX(AlandIslands):
     pass
 
 
-class ALA(HolidaysAX):
+class ALA(AlandIslands):
     pass

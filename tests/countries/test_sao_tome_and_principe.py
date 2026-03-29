@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.sao_tome_and_principe import SaoTomeAndPrincipe, ST, STP
+from holidays.countries.sao_tome_and_principe import SaoTomeAndPrincipe
 from tests.common import CommonCountryTests
 
 
@@ -25,12 +25,6 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
         cls.subdiv_p_holidays_non_observed = SaoTomeAndPrincipe(
             subdiv="P", years=years, observed=False
         )
-
-    def test_country_aliases(self):
-        self.assertAliases(SaoTomeAndPrincipe, ST, STP)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(SaoTomeAndPrincipe(years=2013))
 
     def test_new_years_day(self):
         name = "Ano Novo"

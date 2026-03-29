@@ -215,14 +215,13 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Become a Flag Day in 1952.
         # Also considered the "Day of Finnish Heritage" from 1978 onward.
         if self._year >= 1952:
-            name = (
+            self._add_holiday_may_12(
                 # J. V. Snellman Day, Day of Finnish Heritage.
                 tr("J.V. Snellmanin päivä, suomalaisuuden päivä")
                 if self._year >= 1978
                 # J. V. Snellman Day.
                 else tr("J.V. Snellmanin päivä")
             )
-            self._add_holiday_may_12(name)
 
         # Become a Flag Day in 1977.
         if self._year >= 1977:
@@ -248,14 +247,13 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Become a Flag Day in 1950.
         # Also considered the "Day of Finnish Literature" from 1978 onward.
         if self._year >= 1950:
-            name = (
+            self._add_holiday_oct_10(
                 # Aleksis Kivi Day, Day of Finnish Literature.
                 tr("Aleksis Kiven päivä, suomalaisen kirjallisuuden päivä")
                 if self._year >= 1978
                 # Aleksis Kivi Day.
                 else tr("Aleksis Kiven päivä")
             )
-            self._add_holiday_oct_10(name)
 
         # Become a Flag Day in 1987.
         if self._year >= 1987:
@@ -310,14 +308,13 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Become a Flag Day in 1942.
         # Got its current name in 1950.
         if self._year >= 1942:
-            name = (
+            self._add_holiday_jun_6(
                 # Flag Day of the Finnish Defense Forces.
                 tr("Puolustusvoimain lippujuhlan päivä")
                 if self._year >= 1950
                 # Birthday of the Marshal of Finland.
                 else tr("Suomen marsalkan syntymäpäivä")
             )
-            self._add_holiday_jun_6(name)
 
         # Day of the Finnish Flag was first created in 1934.
         # This coincides with Midsummer Day.

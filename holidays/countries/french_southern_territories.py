@@ -14,7 +14,7 @@ from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysTF(ChildEntity, France):
+class FrenchSouthernTerritories(ChildEntity, France):
     """French Southern Territories holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -36,13 +36,13 @@ class HolidaysTF(ChildEntity, France):
     start_year = 1956
 
 
-class FrenchSouthernTerritories(HolidaysTF):
+class HolidaysTF(FrenchSouthernTerritories):
     pass
 
 
-class TF(HolidaysTF):
+class TF(FrenchSouthernTerritories):
     pass
 
 
-class ATF(HolidaysTF):
+class ATF(FrenchSouthernTerritories):
     pass

@@ -10,26 +10,37 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Chinese holidays th localization.
+# China holidays th localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.42\n"
+"Project-Id-Version: Holidays 0.94\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-09-28 19:23+0700\n"
-"PO-Revision-Date: 2024-01-18 11:42+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-03-26 10:51+0800\n"
+"Last-Translator: Ryan Lee <deadcry152@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.8\n"
 "X-Source-Language: zh_CN\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s（推定）"
+msgstr "%s (โดยประมาณ)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s（补假，推定）"
+msgstr "ชดเชย%s (โดยประมาณ)"
 
 #. %s (observed).
 #, c-format
-msgid "%s（观察日）"
+msgid "%s（补假）"
 msgstr "ชดเชย%s"
 
 #. New Year's Day.
@@ -70,7 +81,7 @@ msgstr "วันสตรีสากล"
 
 #. Youth Day.
 msgid "五四青年节"
-msgstr "วันเยาวชนห่งชาติจีน"
+msgstr "วันเยาวชนแห่งชาติจีน"
 
 #. Children's Day.
 msgid "六一儿童节"
@@ -86,7 +97,7 @@ msgstr "%d/%m/%Y"
 
 #. Day off (substituted from %s).
 #, c-format
-msgid "休息日（%s日起取代）"
+msgid "休息日（由 %s 调休）"
 msgstr "วันหยุด (แทน %s)"
 
 #. Chinese New Year (Spring Festival) Extended Holiday.
@@ -96,4 +107,4 @@ msgstr "หยุดพิเศษวันตรุษจีน"
 #. 70th Anniversary of the Victory of the Chinese People's War of Resistance against Japanese
 #. Aggression and the World Anti-Fascist War.
 msgid "中国人民抗日战争暨世界反法西斯战争胜利70周年纪念日"
-msgstr "ครบรอบ 70 ปีแห่งการได้รับชัยชนะจากสงครามต่อต้านญี่ปุ่นและลัทธิฟาสซิสต์โลก"
+msgstr "วันครบรอบ 70 ปีแห่งการได้รับชัยชนะจากสงครามต่อต้านญี่ปุ่นและลัทธิฟาสซิสต์โลก"

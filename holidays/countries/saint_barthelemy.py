@@ -14,7 +14,7 @@ from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysBL(ChildEntity, France):
+class SaintBarthelemy(ChildEntity, France):
     """Saint Barthélemy holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -31,13 +31,13 @@ class HolidaysBL(ChildEntity, France):
     start_year = 2008
 
 
-class SaintBarthelemy(HolidaysBL):
+class HolidaysBL(SaintBarthelemy):
     pass
 
 
-class BL(HolidaysBL):
+class BL(SaintBarthelemy):
     pass
 
 
-class BLM(HolidaysBL):
+class BLM(SaintBarthelemy):
     pass

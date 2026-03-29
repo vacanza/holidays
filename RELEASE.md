@@ -41,7 +41,7 @@
     version and the released date updated
 - Finish the process with the following post-release actions:
   - pull the recent changes from `main` branch into `dev`
-  - bump the Holidays version at `holidays/version.py` file
+  - bump the Holidays version at `holidays/VERSION` file
   - create a commit with 'Initialize v<version>' message, e.g. 'Initialize v0.40' and
     push it to `dev` branch (this may require running `make package` to pass the tests locally)
   - make sure `dev` branch **is not behind** the `main` branch (there will be a message on top

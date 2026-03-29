@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.turkmenistan import Turkmenistan, TM, TKM
+from holidays.countries.turkmenistan import Turkmenistan
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestTurkmenistan(CommonCountryTests, TestCase):
         years = range(1992, 2050)
         super().setUpClass(Turkmenistan, years=years)
         cls.no_estimated_holidays = Turkmenistan(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Turkmenistan, TM, TKM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Turkmenistan(years=1991))
 
     def test_new_years_day(self):
         name = "Täze ýyl"

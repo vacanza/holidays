@@ -24,9 +24,11 @@ def main():
     entities_data = [
         "* [Overview](index.md)",
         "* [Additional Examples](examples.md)",
+        "* [Holiday Categories](holiday_categories.md)",
+        "* [Changelog](changelog.md)",
         "* [Contributing](contributing.md)",
         "* [API Reference](api.md)",
-        "* [Mixins](mixins.md)",
+        "* [Downloads](downloads.md)",
         "* Supported Entities",
     ]
 
@@ -37,8 +39,6 @@ def main():
             if file_name == "__init__":
                 continue
             entities_data.append(f"        * [{file_name}](auto_gen_docs/{file_name}.md)")
-
-    entities_data.append("* [Changelog](changelog.md)")
 
     with mkdocs_gen_files.open("SUMMARY.md", "w") as f:
         f.write("\n".join(entities_data))

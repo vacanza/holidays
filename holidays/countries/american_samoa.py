@@ -10,11 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import PUBLIC, UNOFFICIAL
 from holidays.countries.united_states import UnitedStates
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysAS(ChildEntity, UnitedStates):
+class AmericanSamoa(ChildEntity, UnitedStates):
     """American Samoa holidays.
 
     Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
@@ -25,15 +26,16 @@ class HolidaysAS(ChildEntity, UnitedStates):
     parent_entity = UnitedStates
     # Became a U.S. Territory since April 17th, 1900.
     start_year = 1901
+    supported_categories = (PUBLIC, UNOFFICIAL)
 
 
-class AmericanSamoa(HolidaysAS):
+class HolidaysAS(AmericanSamoa):
     pass
 
 
-class AS(HolidaysAS):
+class AS(AmericanSamoa):
     pass
 
 
-class ASM(HolidaysAS):
+class ASM(AmericanSamoa):
     pass

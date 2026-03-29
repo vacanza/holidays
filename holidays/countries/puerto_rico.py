@@ -10,11 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import HALF_DAY, PUBLIC, UNOFFICIAL
 from holidays.countries.united_states import UnitedStates
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysPR(ChildEntity, UnitedStates):
+class PuertoRico(ChildEntity, UnitedStates):
     """Puerto Rico holidays.
 
     Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
@@ -23,17 +24,18 @@ class HolidaysPR(ChildEntity, UnitedStates):
 
     country = "PR"
     parent_entity = UnitedStates
-    # Became a U.S. Territory on April 11th, 1899.
-    start_year = 1900
+    # Art. 387 of the 1902 Political Code of Puerto Rico.
+    start_year = 1903
+    supported_categories = (HALF_DAY, PUBLIC, UNOFFICIAL)
 
 
-class PuertoRico(HolidaysPR):
+class HolidaysPR(PuertoRico):
     pass
 
 
-class PR(HolidaysPR):
+class PR(PuertoRico):
     pass
 
 
-class PRI(HolidaysPR):
+class PRI(PuertoRico):
     pass

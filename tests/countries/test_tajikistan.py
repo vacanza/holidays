@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.tajikistan import Tajikistan, TJ, TJK
+from holidays.countries.tajikistan import Tajikistan
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestTajikistan(CommonCountryTests, TestCase):
         years = range(1992, 2050)
         super().setUpClass(Tajikistan, years=years)
         cls.no_estimated_holidays = Tajikistan(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Tajikistan, TJ, TJK)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Tajikistan(years=1991))
 
     def test_new_years_day(self):
         self.assertHolidayName("Соли Нав", (f"{year}-01-01" for year in range(1992, 2050)))

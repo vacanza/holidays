@@ -33,14 +33,17 @@ class EntityStubStaticHolidays:
             (JAN, 7, JAN, 12),
             (JAN, 8, JAN, 13, 1991),
         ),
-        2024: (FEB, 19, FEB, 24),
+        2024: (
+            (FEB, 19, FEB, 24),
+            (OCT, 7, OCT, 12),
+        ),
     }
     substituted_date_format = "%d/%m/%Y"
     substituted_label = "From %s"
 
 
 class EntityStub(HolidayBase):
-    def _add_observed(self, dt: date, before: bool = True, after: bool = True) -> None:
+    def _add_observed(self, dt: date, *, before: bool = True, after: bool = True) -> None:
         if not self.observed:
             return None
 
@@ -130,6 +133,7 @@ class CountryStub6(EntityStub, StaticHolidays):
     def _populate_public_holidays(self) -> None:
         self._add_holiday_may_1("Labor Day")
         self._add_holiday_may_2("Labor Day Two")
+        self._add_holiday_oct_12("Columbus Day")
 
 
 class MarketStub1(EntityStub):
@@ -547,6 +551,36 @@ class TestHelperMethods(unittest.TestCase):
         ):
             self.assertRaises(TypeError, lambda: self.hb._add_holiday(*args))
 
+    def test_add_multiday_holiday(self):
+        self.hb._populate(2024)
+
+        name = "Multi-day Holiday"
+        self.hb._add_multiday_holiday(self.hb._add_holiday(name, (JAN, 1)), 5)
+        self.assertIn("2024-01-01", self.hb)
+        self.assertIn("2024-01-02", self.hb)
+        self.assertIn("2024-01-03", self.hb)
+        self.assertIn("2024-01-04", self.hb)
+        self.assertIn("2024-01-05", self.hb)
+        self.assertIn("2024-01-06", self.hb)
+        self.assertEqual(len(self.hb.get_named(name)), 6)
+
+        name_2 = "Multi-day Holiday 2"
+        self.hb._add_multiday_holiday(self.hb._add_holiday(name, (DEC, 25)), 6, name=name_2)
+        self.assertIn("2024-12-25", self.hb)
+        self.assertIn("2024-12-26", self.hb)
+        self.assertIn("2024-12-27", self.hb)
+        self.assertIn("2024-12-28", self.hb)
+        self.assertIn("2024-12-29", self.hb)
+        self.assertIn("2024-12-30", self.hb)
+        self.assertIn("2024-12-31", self.hb)
+        # DEC, 25 itself is name instead of name_2.
+        self.assertEqual(len(self.hb.get_named(name_2)), 6)
+
+    def test_add_multiday_holiday_invalid_args(self):
+        self.hb._populate(2024)
+        with self.assertRaises(ValueError):
+            self.hb._add_multiday_holiday(date(2024, DEC, 1), 3)
+
     def test_is_leap_year(self):
         self.hb._populate(1999)
         self.assertFalse(self.hb._is_leap_year())
@@ -567,23 +601,31 @@ class TestHelperMethods(unittest.TestCase):
         self.hb.weekend = {MON, TUE}
         for dt in dts:
             self.assertTrue(self.hb._is_weekend(dt))
+            self.assertFalse(self.hb._is_weekday(dt))
 
         self.hb.weekend = {}
         for dt in dts:
             self.assertFalse(self.hb._is_weekend(dt))
+            self.assertTrue(self.hb._is_weekday(dt))
 
         self.hb.weekend = {SAT, SUN}
         for dt in (date(2022, 10, 1), date(2022, 10, 2)):
             self.assertTrue(self.hb._is_weekend(dt))
+            self.assertFalse(self.hb._is_weekday(dt))
         for dt in ((OCT, 1), (OCT, 2)):
             self.assertTrue(self.hb._is_weekend(dt))
             self.assertTrue(self.hb._is_weekend(*dt))
+            self.assertFalse(self.hb._is_weekday(dt))
+            self.assertFalse(self.hb._is_weekday(*dt))
 
         for dt in (date(2022, 10, 3), date(2022, 10, 4)):
             self.assertFalse(self.hb._is_weekend(dt))
+            self.assertTrue(self.hb._is_weekday(dt))
         for dt in ((OCT, 3), (OCT, 4)):
             self.assertFalse(self.hb._is_weekend(dt))
             self.assertFalse(self.hb._is_weekend(*dt))
+            self.assertTrue(self.hb._is_weekday(dt))
+            self.assertTrue(self.hb._is_weekday(*dt))
 
 
 class TestHolidaySum(unittest.TestCase):
@@ -1115,6 +1157,7 @@ class TestStandardMethods(unittest.TestCase):
         self.assertRaises(ValueError, lambda: self.hb[:"2014-01-01"])
         self.assertRaises(TypeError, lambda: self.hb["2014-01-01":"2014-01-02":""])
         self.assertRaises(ValueError, lambda: self.hb["2014-01-01":"2014-01-02":0])
+        self.assertRaises(ValueError, lambda: self.hb["2014-01-01" : "2014-01-02" : td(hours=12)])
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + CountryStub1())
@@ -1228,7 +1271,7 @@ class TestSubstitutedHolidays(unittest.TestCase):
         for cls in (EmptySubstitutedHolidays, NoSubstitutedHolidays):
             hb = self.CountryStub(cls=cls)
             self.assertFalse(hb.has_special_holidays)
-            self.assertTrue(hb.has_substituted_holidays)
+            self.assertFalse(hb.has_substituted_holidays)
 
             hb._populate(1991)
             self.assertNotIn("1991-01-07", hb)
@@ -1261,6 +1304,9 @@ class TestWorkdays(unittest.TestCase):
         self.assertFalse(self.hb.is_working_day("2024-05-01"))
         self.assertFalse(self.hb.is_working_day("2024-05-02"))
         self.assertTrue(self.hb.is_working_day("2024-05-03"))
+
+        self.assertFalse(self.hb.is_working_day("2024-10-07"))  # substituted from Oct 12 (SAT).
+        self.assertFalse(self.hb.is_working_day("2024-10-12"))  # Columbus Day holiday.
 
     def test_get_nth_working_day(self):
         self.assertEqual(self.hb.get_nth_working_day("2024-01-04", 0), date(2024, 1, 4))

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.moldova import Moldova, MD, MDA
+from holidays.countries.moldova import Moldova
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestMoldova(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Moldova)
-
-    def test_country_aliases(self):
-        self.assertAliases(Moldova, MD, MDA)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Moldova(years=1990))
 
     def test_christmas(self):
         name_old1 = "Nașterea lui Iisus Hristos (Crăciunul)"
@@ -50,8 +44,8 @@ class TestMoldova(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, Moldova(years=2015))
 
     def test_2022(self):
-        self.assertHolidayDates(
-            Moldova(years=2022),
+        self.assertHolidayDatesInYear(
+            2022,
             "2022-01-01",
             "2022-01-07",
             "2022-01-08",
@@ -68,8 +62,8 @@ class TestMoldova(CommonCountryTests, TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidayDates(
-            Moldova(years=2023),
+        self.assertHolidayDatesInYear(
+            2023,
             "2023-01-01",
             "2023-01-07",
             "2023-01-08",

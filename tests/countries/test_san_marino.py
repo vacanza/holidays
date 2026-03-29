@@ -12,39 +12,30 @@
 
 from unittest import TestCase
 
-from holidays.constants import BANK, PUBLIC
-from holidays.countries.san_marino import SanMarino, SM, SMR
+from holidays.countries.san_marino import SanMarino
 from tests.common import CommonCountryTests
 
 
 class TestSanMarino(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1962, 2050)
-        super().setUpClass(SanMarino, years=years)
-        cls.bank_holidays = SanMarino(years=years, categories=BANK)
-
-    def test_country_aliases(self):
-        self.assertAliases(SanMarino, SM, SMR)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(SanMarino(categories=(BANK, PUBLIC), years=1961))
+        super().setUpClass(SanMarino)
 
     def test_new_years_day(self):
-        self.assertHolidayName("Capodanno", (f"{year}-01-01" for year in range(1962, 2050)))
+        self.assertHolidayName("Capodanno", (f"{year}-01-01" for year in self.full_range))
 
     def test_epiphany(self):
-        self.assertHolidayName("Epifania", (f"{year}-01-06" for year in range(1962, 2050)))
+        self.assertHolidayName("Epifania", (f"{year}-01-06" for year in self.full_range))
 
     def test_anniversary_of_liberation_of_republic(self):
         self.assertHolidayName(
             "Anniversario della Liberazione della Repubblica e Festa di Sant'Agata",
-            (f"{year}-02-05" for year in range(1962, 2050)),
+            (f"{year}-02-05" for year in self.full_range),
         )
 
     def test_anniversary_of_arengo(self):
         self.assertHolidayName(
-            "Anniversario dell'Arengo", (f"{year}-03-25" for year in range(1962, 2050))
+            "Anniversario dell'Arengo", (f"{year}-03-25" for year in self.full_range)
         )
 
     def test_easter_sunday(self):
@@ -58,7 +49,7 @@ class TestSanMarino(CommonCountryTests, TestCase):
             "2024-03-31",
             "2025-04-20",
         )
-        self.assertHolidayName(name, range(1962, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "Lunedì dell'angelo"
@@ -71,18 +62,18 @@ class TestSanMarino(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(1962, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_investiture_of_captains_regent(self):
         self.assertHolidayName(
             "Investitura Capitani Reggenti",
-            (f"{year}-04-01" for year in range(1962, 2050)),
-            (f"{year}-10-01" for year in range(1962, 2050)),
+            (f"{year}-04-01" for year in self.full_range),
+            (f"{year}-10-01" for year in self.full_range),
         )
 
     def test_workers_day(self):
         self.assertHolidayName(
-            "Festa dei lavoratori", (f"{year}-05-01" for year in range(1962, 2050))
+            "Festa dei lavoratori", (f"{year}-05-01" for year in self.full_range)
         )
 
     def test_corpus_christi(self):
@@ -96,61 +87,57 @@ class TestSanMarino(CommonCountryTests, TestCase):
             "2024-05-30",
             "2025-06-19",
         )
-        self.assertHolidayName(name, range(1962, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_anniversary_of_fall_of_fascism(self):
         self.assertHolidayName(
             "Anniversario della Caduta del Fascismo e Festa della Libertà",
-            (f"{year}-07-28" for year in range(1962, 2050)),
+            (f"{year}-07-28" for year in self.full_range),
         )
 
     def test_assumption_day(self):
         self.assertHolidayName(
-            "Assunzione della B.V. Maria", (f"{year}-08-15" for year in range(1962, 2050))
+            "Assunzione della B.V. Maria", (f"{year}-08-15" for year in self.full_range)
         )
 
     def test_saint_marinus_day(self):
         self.assertHolidayName(
             "San Marino, Anniversario di Fondazione della Repubblica",
-            (f"{year}-09-03" for year in range(1962, 2050)),
+            (f"{year}-09-03" for year in self.full_range),
         )
 
     def test_all_saints_day(self):
-        self.assertHolidayName("Tutti i Santi", (f"{year}-11-01" for year in range(1962, 2050)))
+        self.assertHolidayName("Tutti i Santi", (f"{year}-11-01" for year in self.full_range))
 
     def test_commemoration_of_the_dead(self):
         self.assertHolidayName(
-            "Commemorazione dei defunti", (f"{year}-11-02" for year in range(1962, 2050))
+            "Commemorazione dei defunti", (f"{year}-11-02" for year in self.full_range)
         )
 
     def test_immaculate_conception(self):
         self.assertHolidayName(
-            "Immacolata Concezione", (f"{year}-12-08" for year in range(1962, 2050))
+            "Immacolata Concezione", (f"{year}-12-08" for year in self.full_range)
         )
 
     def test_christmas_day(self):
-        self.assertHolidayName("Natale", (f"{year}-12-25" for year in range(1962, 2050)))
+        self.assertHolidayName("Natale", (f"{year}-12-25" for year in self.full_range))
 
     def test_saint_stephens_day(self):
-        self.assertHolidayName("Santo Stefano", (f"{year}-12-26" for year in range(1962, 2050)))
+        self.assertHolidayName("Santo Stefano", (f"{year}-12-26" for year in self.full_range))
 
     def test_christmas_eve(self):
         name = "Vigilia di Natale"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.bank_holidays, (f"{year}-12-24" for year in range(1962, 2050))
-        )
+        self.assertBankHolidayName(name, (f"{year}-12-24" for year in self.full_range))
 
     def test_new_years_eve(self):
         name = "Ultimo dell'anno"
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name, self.bank_holidays, (f"{year}-12-31" for year in range(1962, 2050))
-        )
+        self.assertBankHolidayName(name, (f"{year}-12-31" for year in self.full_range))
 
     def test_2023(self):
-        self.assertHolidays(
-            SanMarino(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "Capodanno"),
             ("2023-01-06", "Epifania"),
             (
@@ -175,8 +162,8 @@ class TestSanMarino(CommonCountryTests, TestCase):
         )
 
     def test_2023_bank(self):
-        self.assertHolidays(
-            SanMarino(categories=BANK, years=2023),
+        self.assertBankHolidaysInYear(
+            2023,
             ("2023-12-24", "Vigilia di Natale"),
             ("2023-12-31", "Ultimo dell'anno"),
         )

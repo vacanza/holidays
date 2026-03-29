@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.nauru import Nauru, NR, NRU
+from holidays.countries.nauru import Nauru
 from tests.common import CommonCountryTests
 
 
@@ -21,12 +21,6 @@ class TestNauru(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1969, 2050)
         super().setUpClass(Nauru, years=years, years_non_observed=years)
-
-    def setup_country_aliases(self):
-        self.assertAliases(Nauru, NR, NRU)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Nauru(years=1968))
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -224,8 +218,8 @@ class TestNauru(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_2024(self):
-        self.assertHolidays(
-            Nauru(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-01-31", "Independence Day"),
             ("2024-02-01", "Day following Independence Day"),

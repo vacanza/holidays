@@ -10,9 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from __future__ import annotations
+
 from gettext import gettext as tr
-from typing import Optional
+from typing import TYPE_CHECKING
 
 from holidays.calendars.gregorian import (
     JAN,
@@ -41,6 +42,9 @@ from holidays.observed_holiday_base import (
     SUN_TO_NEXT_WORKDAY,
     SAT_SUN_TO_NEXT_WORKDAY,
 )
+
+if TYPE_CHECKING:
+    from datetime import date
 
 CHILDRENS_DAY_RULE = ObservedRule({MON: +1, TUE: -1, WED: -1, THU: +1, FRI: -1, SAT: -1, SUN: -2})
 
@@ -72,8 +76,12 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
     """
 
     country = "TW"
+    # %s (estimated).
+    estimated_label = tr("%s（推定）")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s（補假，推定）")
     # %s (observed).
-    observed_label = tr("%s（慶祝）")
+    observed_label = tr("%s（補假）")
     default_language = "zh_TW"
     supported_categories = (GOVERNMENT, OPTIONAL, PUBLIC, SCHOOL, WORKDAY)
     supported_languages = ("en_US", "th", "zh_CN", "zh_TW")
@@ -87,8 +95,21 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         kwargs.setdefault("observed_rule", SAT_TO_PREV_WORKDAY + SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
+    def _get_weekend(self, dt: date) -> set[int]:
+        # 1998–2000: Sundays as well as the 2nd & 4th Saturday of each month.
+        if dt.year <= 2000:
+            weekend = {SUN}
+            if dt.weekday() == SAT:
+                nth_saturday = (dt.day - 1) // 7 + 1  # Saturday number in the month.
+                if nth_saturday in {2, 4}:
+                    weekend.add(SAT)
+        else:
+            weekend = {SAT, SUN}
+
+        return weekend
+
     def _populate_observed(
-        self, dts: set[date], rule: Optional[ObservedRule] = None, since: int = 2015
+        self, dts: set[date], rule: ObservedRule | None = None, since: int = 2015
     ) -> None:
         """
         Taiwan's General Observance Rule first started in 2015 as per
@@ -110,7 +131,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
                     dt,
                     name,
                     # Children's Day falls on the same day as Tomb-Sweeping Day.
-                    CHILDRENS_DAY_RULE if name == childrens_day and len(names) > 1 else rule,
+                    rule=CHILDRENS_DAY_RULE if name == childrens_day and len(names) > 1 else rule,
                 )
 
     def _populate_public_holidays(self):
@@ -147,7 +168,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
 
         if self._year >= 2026:
             # Labor Day.
-            self._add_labor_day(tr("勞動節"))
+            dts_observed.add(self._add_labor_day(tr("勞動節")))
 
         # Dragon Boat Festival.
         dts_observed.add(self._add_dragon_boat_festival(tr("端午節")))
@@ -157,17 +178,17 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
 
         if self._year >= 2025:
             # Confucius' Birthday.
-            self._add_holiday_sep_28(tr("孔子誕辰紀念日"))
+            dts_observed.add(self._add_holiday_sep_28(tr("孔子誕辰紀念日")))
 
         # National Day.
         dts_observed.add(self._add_holiday_oct_10(tr("國慶日")))
 
         if self._year >= 2025:
             # Taiwan Restoration and Guningtou Victory Memorial Day.
-            self._add_holiday_oct_25(tr("臺灣光復暨金門古寧頭大捷紀念日"))
+            dts_observed.add(self._add_holiday_oct_25(tr("臺灣光復暨金門古寧頭大捷紀念日")))
 
             # Constitution Day.
-            self._add_holiday_dec_25(tr("行憲紀念日"))
+            dts_observed.add(self._add_holiday_dec_25(tr("行憲紀念日")))
 
         if self.observed:
             self._populate_observed(dts_observed)
@@ -317,14 +338,15 @@ class TaiwanStaticHolidays:
         * [2022](https://web.archive.org/web/20220809133226/https://www.dgpa.gov.tw/en/information?uid=353&pid=10659)
         * [2023](https://web.archive.org/web/20220809133225/https://www.dgpa.gov.tw/en/information?uid=353&pid=11016)
         * [2024](https://web.archive.org/web/20250414165829/https://www.dgpa.gov.tw/en/information?uid=353&pid=11402)
-        * [2025](https://web.archive.org/web/20250121091032/https://www.dgpa.gov.tw/en/information?uid=353&pid=11979)
+        * [2025](https://web.archive.org/web/20251220073230/https://www.dgpa.gov.tw/en/information?uid=353&pid=12579)
+        * [2026](https://web.archive.org/web/20251220074207/https://www.dgpa.gov.tw/en/information?uid=353&pid=12580)
     """
 
     # Date format (see strftime() Format Codes).
     substituted_date_format = tr("%Y-%m-%d")
 
     # Day off (substituted from %s).
-    substituted_label = tr("休息日（%s日起取代）")
+    substituted_label = tr("放假日（%s 補班）")
 
     # Women's Day.
     womens_day = tr("婦女節")

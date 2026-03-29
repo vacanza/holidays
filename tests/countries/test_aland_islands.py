@@ -12,27 +12,27 @@
 
 from unittest import TestCase
 
-from holidays.constants import PUBLIC, UNOFFICIAL, WORKDAY
-from holidays.countries.aland_islands import HolidaysAX, AlandIslands, AX, ALA
+from holidays.constants import UNOFFICIAL
+from holidays.countries.aland_islands import AlandIslands
 from tests.common import CommonCountryTests
 
 
 class TestAland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysAX)
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysAX, AlandIslands, AX, ALA)
+        super().setUpClass(AlandIslands)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(HolidaysAX(years=1920, categories=(PUBLIC, WORKDAY)))
-        self.assertNoHolidays(HolidaysAX(years=1949, categories=UNOFFICIAL))
+        super().test_no_holidays()
+
+        self.assertNoHolidays(
+            AlandIslands(categories=UNOFFICIAL, years=range(self.start_year, 1950))
+        )
 
     def test_alands_autonomy_day(self):
         name = "Ahvenanmaan itsehallintopäivä"
-        self.assertHolidayName(name, (f"{year}-06-09" for year in range(1993, 2050)))
-        self.assertNoHolidayName(name, range(1921, 1993))
+        self.assertHolidayName(name, (f"{year}-06-09" for year in range(1993, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1993))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -157,7 +157,7 @@ class TestAland(CommonCountryTests, TestCase):
             ("2022-01-06", "วันสมโภชพระคริสต์แสดงองค์"),
             ("2022-02-05", "วันรูนแบร์ก"),
             ("2022-02-28", "วันกาเลวาลา, วันวัฒนธรรมฟินแลนด์"),
-            ("2022-03-19", "วันมินน่า คานท์, วันแห่งความความเสมอภาค"),
+            ("2022-03-19", "วันมินน่า คานท์, วันแห่งความเสมอภาค"),
             ("2022-04-09", "วันมิคาเอล อากริโคลา, วันภาษาฟินแลนด์"),
             ("2022-04-15", "วันศุกร์ประเสริฐ"),
             ("2022-04-17", "วันอาทิตย์อีสเตอร์"),

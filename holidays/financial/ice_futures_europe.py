@@ -14,7 +14,7 @@ from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_NONE, SUN_TO_NEXT_MON
 
 
-class ICEFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class IceFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """ICE Futures Europe holidays.
 
     References:
@@ -41,5 +41,9 @@ class ICEFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHoli
         self._move_holiday(self._add_christmas_day("Christmas Day"))
 
 
-class IFEU(ICEFuturesEurope):
+class ICEFuturesEurope(IceFuturesEurope):
+    pass
+
+
+class IFEU(IceFuturesEurope):
     pass

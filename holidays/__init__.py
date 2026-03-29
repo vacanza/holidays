@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# ruff: noqa: F403
-
 from holidays.constants import *
 from holidays.holiday_base import *
 from holidays.registry import EntityLoader

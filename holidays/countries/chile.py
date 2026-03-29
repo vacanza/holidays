@@ -60,8 +60,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         * [Law 19.973 (Sep 17, 2004 holiday)](https://web.archive.org/web/20250812023003/https://www.bcn.cl/leychile/navegar?idLey=19973)
         * [Law 20.450 (Sep 17, 2010 and Sep 20, 2010 holidays)](https://web.archive.org/web/20250812023308/https://www.bcn.cl/leychile/navegar?idLey=20450)
         * [Law 21.521 (eliminate Dec 31 again, after the CMF publishes a specific regulation)](https://web.archive.org/web/20240214154900/https://www.bcn.cl/leychile/navegar?idNorma=1187323&idVersion=2023-02-03)
-        * [Norma de Carácter General N° 543 de la CMF](https://web.archive.org/web/20250811111649/https://www.cmfchile.cl/normativa/ncg_543_2025.pdf)
-        * [Resolución Exenta N° 7.671 (CMF, 2025-08-01)](https://web.archive.org/web/20250811123908/https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=ba5ad42feea3531a678a9db5253a9477VFdwQmVVNVVRVFJOUkZWNlRucEpORTVCUFQwPQ==&secuencia=-1&t=1754086087)
+        * [Law 21.791 (restore bank holiday on Dec 31)](https://web.archive.org/web/20251219021727/https://www.bcn.cl/leychile/navegar?idNorma=1219578&idVersion=2025-12-17)
     """
 
     country = "CL"
@@ -118,6 +117,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
         if self._year >= 2017:
+            # National Holiday.
             self._add_observed(self._add_new_years_day_two(tr("Feriado nacional")), rule=MON_ONLY)
 
         # Good Friday.
@@ -171,24 +171,24 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
             # Day of National Unity.
             self._add_holiday_1st_mon_of_sep(tr("Día de la Unidad Nacional"))
 
+        # National Holiday.
+        name = tr("Fiestas Patrias")
+
         if self._year >= 2007:
             self._add_observed(
-                # National Holiday.
-                self._add_holiday_sep_17(tr("Fiestas Patrias")),
+                self._add_holiday_sep_17(name),
                 rule=MON_FRI_ONLY if self._year >= 2017 else MON_ONLY,
             )
+            if self._year >= 2008:
+                self._add_observed(self._add_holiday_sep_20(name), rule=FRI_ONLY)
+        elif 1932 <= self._year <= 1944:
+            self._add_holiday_sep_20(name)
 
         # Independence Day.
         self._add_holiday_sep_18(tr("Día de la Independencia"))
 
         # Army Day.
         self._add_holiday_sep_19(tr("Día de las Glorias del Ejército"))
-
-        if self._year >= 2008:
-            self._add_observed(self._add_holiday_sep_20(tr("Fiestas Patrias")), rule=FRI_ONLY)
-
-        if 1932 <= self._year <= 1944:
-            self._add_holiday_sep_20(tr("Fiestas Patrias"))
 
         if self._year >= 1922 and self._year != 1973:
             self._move_holiday(
@@ -243,7 +243,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         if 1957 <= self._year <= 1975:
             self._add_holiday_jun_30(name)
 
-        if 1956 <= self._year <= 2024 and self._year != 1997:
+        if 1956 <= self._year and self._year != 1997:
             self._add_holiday_dec_31(name)
 
     @property

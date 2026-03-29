@@ -12,18 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.anguilla import Anguilla, AI, AIA
+from holidays.countries.anguilla import Anguilla
 from tests.common import CommonCountryTests
 
 
 class TestAnguilla(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(2001, 2050)
-        super().setUpClass(Anguilla, years=years, years_non_observed=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(Anguilla, AI, AIA)
+        super().setUpClass(Anguilla)
 
     def test_special_holiday(self):
         self.assertHolidayName("Royal Wedding of Prince William & Kate Middleton", "2011-04-29")
@@ -37,34 +33,35 @@ class TestAnguilla(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(2001, 2050)))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        obs_dts = (
             "2011-01-03",
             "2012-01-02",
             "2017-01-02",
             "2022-01-03",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_james_ronald_webster_day(self):
         name = "James Ronald Webster Day"
-        self.assertHolidayName(name, (f"{year}-03-02" for year in range(2010, 2050)))
-        self.assertNoHolidayName(name, range(2001, 2010))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-03-02" for year in range(2010, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2010))
+        obs_dts = (
             "2013-03-04",
             "2014-03-03",
             "2019-03-04",
             "2024-03-04",
             "2025-03-03",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_good_friday(self):
         name = "Good Friday"
-        dt = (
+        self.assertHolidayName(
+            name,
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
@@ -72,12 +69,12 @@ class TestAnguilla(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2001, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "Easter Monday"
-        dt = (
+        self.assertHolidayName(
+            name,
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
@@ -85,12 +82,12 @@ class TestAnguilla(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2001, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_sunday(self):
         name = "Easter Sunday"
-        dt = (
+        self.assertHolidayName(
+            name,
             "2020-04-12",
             "2021-04-04",
             "2022-04-17",
@@ -98,20 +95,19 @@ class TestAnguilla(CommonCountryTests, TestCase):
             "2024-03-31",
             "2025-04-20",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2001, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_labor_day(self):
         name = "Labour Day"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(2001, 2050)))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
+        obs_dts = (
             "2011-05-02",
             "2016-05-02",
             "2021-05-03",
             "2022-05-02",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_whit_monday(self):
         name = "Whit Monday"
@@ -124,7 +120,7 @@ class TestAnguilla(CommonCountryTests, TestCase):
             "2024-05-20",
             "2025-06-09",
         )
-        self.assertHolidayName(name, range(2001, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_queen_birthday(self):
         name = "Celebration of the Birthday of Her Majesty the Queen"
@@ -138,8 +134,8 @@ class TestAnguilla(CommonCountryTests, TestCase):
             "2021-06-14",
             "2022-06-03",
         )
-        self.assertHolidayName(name, range(2001, 2023))
-        self.assertNoHolidayName(name, range(2023, 2050))
+        self.assertHolidayName(name, range(self.start_year, 2023))
+        self.assertNoHolidayName(name, range(2023, self.end_year))
 
     def test_king_birthday(self):
         name = "Celebration of the Birthday of His Majesty the King"
@@ -149,13 +145,13 @@ class TestAnguilla(CommonCountryTests, TestCase):
             "2024-06-17",
             "2025-06-16",
         )
-        self.assertHolidayName(name, range(2023, 2050))
-        self.assertNoHolidayName(name, range(2001, 2023))
+        self.assertHolidayName(name, range(2023, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2023))
 
     def test_anguilla_day(self):
         name = "Anguilla Day"
-        self.assertHolidayName(name, (f"{year}-05-30" for year in range(2001, 2050)))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-05-30" for year in self.full_range))
+        obs_dts = (
             "2004-06-01",
             "2009-06-02",
             "2010-05-31",
@@ -164,8 +160,8 @@ class TestAnguilla(CommonCountryTests, TestCase):
             "2021-05-31",
             "2039-05-31",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_august_monday(self):
         name = "August Monday"
@@ -178,7 +174,7 @@ class TestAnguilla(CommonCountryTests, TestCase):
             "2024-08-05",
             "2025-08-04",
         )
-        self.assertHolidayName(name, range(2001, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_august_thursday(self):
         name = "August Thursday"
@@ -191,7 +187,7 @@ class TestAnguilla(CommonCountryTests, TestCase):
             "2024-08-08",
             "2025-08-07",
         )
-        self.assertHolidayName(name, range(2001, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_constitution_day(self):
         name = "Constitution Day"
@@ -204,56 +200,58 @@ class TestAnguilla(CommonCountryTests, TestCase):
             "2024-08-09",
             "2025-08-08",
         )
-        self.assertHolidayName(name, range(2001, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_national_heroes_and_heroines_day(self):
         name_2001 = "Separation Day"
-        self.assertHolidayName(name_2001, (f"{year}-12-19" for year in range(2001, 2011)))
-        self.assertNoHolidayName(name_2001, range(2011, 2050))
-        dt_2001 = (
+        self.assertHolidayName(
+            name_2001, (f"{year}-12-19" for year in range(self.start_year, 2011))
+        )
+        self.assertNoHolidayName(name_2001, range(2011, self.end_year))
+        obs_dts_2001 = (
             "2004-12-17",
             "2009-12-18",
             "2010-12-17",
         )
-        self.assertHolidayName(f"{name_2001} (observed)", dt_2001)
-        self.assertNoNonObservedHoliday(dt_2001)
+        self.assertHolidayName(f"{name_2001} (observed)", obs_dts_2001)
+        self.assertNoNonObservedHoliday(obs_dts_2001)
 
         name_2011 = "National Heroes and Heroines Day"
-        self.assertHolidayName(name_2011, (f"{year}-12-19" for year in range(2011, 2050)))
-        self.assertNoHolidayName(name_2011, range(2001, 2011))
-        dt_2011 = (
+        self.assertHolidayName(name_2011, (f"{year}-12-19" for year in range(2011, self.end_year)))
+        self.assertNoHolidayName(name_2011, range(self.start_year, 2011))
+        obs_dts_2011 = (
             "2015-12-18",
             "2020-12-18",
             "2021-12-17",
         )
-        self.assertHolidayName(f"{name_2011} (observed)", dt_2011)
-        self.assertNoNonObservedHoliday(dt_2011)
+        self.assertHolidayName(f"{name_2011} (observed)", obs_dts_2011)
+        self.assertNoNonObservedHoliday(obs_dts_2011)
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(2001, 2050)))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
+        obs_dts = (
             "2010-12-27",
             "2011-12-27",
             "2016-12-27",
             "2021-12-27",
             "2022-12-27",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_boxing_day(self):
         name = "Boxing Day"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(2001, 2050)))
-        dt = (
+        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
+        obs_dts = (
             "2009-12-28",
             "2010-12-28",
             "2015-12-28",
             "2020-12-28",
             "2021-12-28",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

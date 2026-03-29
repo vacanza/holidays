@@ -13,7 +13,7 @@
 from collections.abc import Iterable
 from datetime import date
 
-from holidays.calendars import _IslamicLunar
+from holidays.calendars.islamic import _IslamicLunar
 from holidays.groups.eastern import EasternCalendarHolidays
 
 
@@ -25,8 +25,12 @@ class IslamicHolidays(EasternCalendarHolidays):
     calendar consisting of 12 lunar months in a year of 354 or 355 days.
     """
 
-    def __init__(self, cls=None, show_estimated=True) -> None:
-        self._islamic_calendar = cls() if cls else _IslamicLunar()
+    def __init__(self, cls=None, *, show_estimated=True, calendar_delta_days=0) -> None:
+        self._islamic_calendar = (
+            cls(calendar_delta_days=calendar_delta_days)
+            if cls
+            else _IslamicLunar(calendar_delta_days=calendar_delta_days)
+        )
         self._islamic_calendar_show_estimated = show_estimated
 
     def _add_ali_al_rida_death_day(self, name) -> set[date]:
@@ -35,7 +39,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Ali_al-Rida
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.ali_al_rida_death_dates(self._year)
         )
 
@@ -45,7 +49,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Ali
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.ali_birthday_dates(self._year)
         )
 
@@ -55,7 +59,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Ali
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.ali_death_dates(self._year)
         )
 
@@ -65,7 +69,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Arbaeen
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.arbaeen_dates(self._year)
         )
 
@@ -78,7 +82,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         Arafat.
         https://en.wikipedia.org/wiki/Day_of_Arafah
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.eid_al_adha_dates(self._year), days_delta=-1
         )
 
@@ -90,7 +94,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         10th of Muharram, the first month of the Islamic calendar.
         https://en.wikipedia.org/wiki/Ashura
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.ashura_dates(self._year)
         )
 
@@ -102,7 +106,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         10th of Muharram, the first month of the Islamic calendar.
         https://en.wikipedia.org/wiki/Ashura
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.ashura_dates(self._year), days_delta=-1
         )
 
@@ -115,7 +119,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         to Allah's command.
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.eid_al_adha_dates(self._year)
         )
 
@@ -125,7 +129,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.eid_al_adha_dates(self._year), days_delta=+1
         )
 
@@ -135,7 +139,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.eid_al_adha_dates(self._year), days_delta=+2
         )
 
@@ -145,7 +149,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.eid_al_adha_dates(self._year), days_delta=+3
         )
 
@@ -158,7 +162,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         dawn-to-sunset fasting of Ramadan.
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.eid_al_fitr_dates(self._year)
         )
 
@@ -168,7 +172,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+1
         )
 
@@ -178,8 +182,18 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+2
+        )
+
+    def _add_eid_al_fitr_day_four(self, name) -> set[date]:
+        """
+        Add Eid al-Fitr Day Four.
+
+        https://en.wikipedia.org/wiki/Eid_al-Fitr
+        """
+        return self._add_islamic_calendar_holiday_set(
+            name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+3
         )
 
     def _add_eid_al_fitr_eve(self, name) -> set[date]:
@@ -188,7 +202,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=-1
         )
 
@@ -198,7 +212,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Eid_al-Ghadeer
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.eid_al_ghadir_dates(self._year)
         )
 
@@ -208,7 +222,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Fatima
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.fatima_death_dates(self._year)
         )
 
@@ -218,7 +232,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Grand_Magal_of_Touba
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.grand_magal_of_touba_dates(self._year)
         )
 
@@ -228,7 +242,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://web.archive.org/web/20241202170507/https://publicholidays.com.my/hari-hol-almarhum-sultan-iskandar/
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.hari_hol_johor_dates(self._year)
         )
 
@@ -238,7 +252,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Hasan_al-Askari
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.hasan_al_askari_death_dates(self._year)
         )
 
@@ -248,7 +262,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://web.archive.org/web/20250323065556/https://decree.om/2022/rd20220088/
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.ramadan_beginning_dates(self._year), days_delta=+28
         )
 
@@ -258,12 +272,12 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Muhammad_al-Mahdi
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.imam_mahdi_birthday_dates(self._year)
         )
 
-    def _add_islamic_calendar_holiday(
-        self, name: str, dates: Iterable[tuple[date, bool]], days_delta: int = 0
+    def _add_islamic_calendar_holiday_set(
+        self, name: str, dts_estimated: Iterable[tuple[date, bool]], days_delta: int = 0
     ) -> set[date]:
         """
         Add lunar calendar holiday.
@@ -271,14 +285,12 @@ class IslamicHolidays(EasternCalendarHolidays):
         Appends customizable estimation label at the end of holiday name if
         holiday date is an estimation.
         """
-        added_dates = set()
-        for dts in dates:
-            if dt := self._add_eastern_calendar_holiday(
-                name, dts, self._islamic_calendar_show_estimated, days_delta
-            ):
-                added_dates.add(dt)
-
-        return added_dates
+        return self._add_eastern_calendar_holiday_set(
+            name,
+            dts_estimated,
+            show_estimated=self._islamic_calendar_show_estimated,
+            days_delta=days_delta,
+        )
 
     def _add_islamic_new_year_day(self, name) -> set[date]:
         """
@@ -290,7 +302,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         observed by most Muslims on the first day of the month of Muharram.
         https://en.wikipedia.org/wiki/Islamic_New_Year
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.hijri_new_year_dates(self._year)
         )
 
@@ -301,7 +313,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         The Prophet's Ascension.
         https://en.wikipedia.org/wiki/Isra'_and_Mi'raj
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.isra_and_miraj_dates(self._year)
         )
 
@@ -312,7 +324,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         The Night of Power.
         https://en.wikipedia.org/wiki/Night_of_Power
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.laylat_al_qadr_dates(self._year)
         )
 
@@ -322,7 +334,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Islam_in_Maldives
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.maldives_embraced_islam_day_dates(self._year)
         )
 
@@ -334,7 +346,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         Muhammad.
         https://en.wikipedia.org/wiki/Mawlid
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.mawlid_dates(self._year)
         )
 
@@ -346,7 +358,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         Muhammad.
         https://en.wikipedia.org/wiki/Mawlid
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.mawlid_dates(self._year), days_delta=+1
         )
 
@@ -359,7 +371,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         the holy Quran.
         https://web.archive.org/web/20241012115752/https://zamzam.com/blog/nuzul-al-quran/
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.nuzul_al_quran_dates(self._year)
         )
 
@@ -376,7 +388,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         ritual akin to Christian baptism.
         https://web.archive.org/web/20240722052111/https://www.officeholidays.com/holidays/mali/prophets-baptism
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.mawlid_dates(self._year), days_delta=+7
         )
 
@@ -386,7 +398,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Hasan_ibn_Ali
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.prophet_death_dates(self._year)
         )
 
@@ -396,7 +408,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Qaumee_Dhuvas_(Maldives_National_Day)
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.quamee_dhuvas_dates(self._year)
         )
 
@@ -408,7 +420,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         worldwide as a month of fasting, prayer, reflection, and community
         https://en.wikipedia.org/wiki/Ramadan
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.ramadan_beginning_dates(self._year)
         )
 
@@ -418,7 +430,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Ja'far_al-Sadiq
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.sadiq_birthday_dates(self._year)
         )
 
@@ -428,7 +440,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Ja'far_al-Sadiq
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.sadiq_death_dates(self._year)
         )
 
@@ -438,6 +450,6 @@ class IslamicHolidays(EasternCalendarHolidays):
 
         https://en.wikipedia.org/wiki/Tasua
         """
-        return self._add_islamic_calendar_holiday(
+        return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.tasua_dates(self._year)
         )

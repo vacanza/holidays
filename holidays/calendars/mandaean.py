@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.gregorian import _timedelta
 
@@ -27,7 +26,7 @@ class _Mandaean:
     START_YEAR = 1901
     END_YEAR = 2100
 
-    def new_year_date(self, year: int) -> Optional[date]:
+    def new_year_date(self, year: int) -> date | None:
         """
         Return Gregorian date of Mandaean new year (1 Dowla) in a given Gregorian year.
         """
@@ -36,7 +35,7 @@ class _Mandaean:
 
         return _timedelta(_Mandaean.START_DATE, 365 * (year - _Mandaean.START_YEAR))
 
-    def mandaean_to_gregorian(self, year: int, month: int, day: int) -> Optional[date]:
+    def mandaean_to_gregorian(self, year: int, month: int, day: int) -> date | None:
         """
         Return Gregorian date of Mandaean day and month of the year that begins in a given
         Gregorian year.

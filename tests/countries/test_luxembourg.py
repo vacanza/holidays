@@ -12,8 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import BANK
-from holidays.countries.luxembourg import Luxembourg, LU, LUX
+from holidays.countries.luxembourg import Luxembourg
 from tests.common import CommonCountryTests
 
 
@@ -22,11 +21,100 @@ class TestLuxembourg(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Luxembourg)
 
-    def test_country_aliases(self):
-        self.assertAliases(Luxembourg, LU, LUX)
+    def test_new_years_day(self):
+        self.assertHolidayName("Neijoerschdag", (f"{year}-01-01" for year in self.full_range))
+
+    def test_good_friday(self):
+        name = "Karfreideg"
+        self.assertNoHolidayName(name)
+        self.assertBankHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertBankHolidayName(name, self.full_range)
+
+    def test_easter_monday(self):
+        name = "Ouschterméindeg"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_labor_day(self):
+        self.assertHolidayName(
+            "Dag vun der Aarbecht", (f"{year}-05-01" for year in self.full_range)
+        )
+
+    def test_europe_day(self):
+        name = "Europadag"
+        self.assertHolidayName(name, (f"{year}-05-09" for year in range(2019, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2019))
+
+    def test_ascension_day(self):
+        name = "Christi Himmelfaart"
+        self.assertHolidayName(
+            name,
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_whit_monday(self):
+        name = "Péngschtméindeg"
+        self.assertHolidayName(
+            name,
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_national_day(self):
+        self.assertHolidayName("Nationalfeierdag", (f"{year}-06-23" for year in self.full_range))
+
+    def test_assumption_day(self):
+        self.assertHolidayName("Léiffrawëschdag", (f"{year}-08-15" for year in self.full_range))
+
+    def test_all_saints_day(self):
+        self.assertHolidayName("Allerhellgen", (f"{year}-11-01" for year in self.full_range))
+
+    def test_christmas_eve(self):
+        name = "Hellegowend (nomëtteg)"
+        self.assertNoHolidayName(name)
+        self.assertBankHolidayName(name, (f"{year}-12-24" for year in self.full_range))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Chrëschtdag", (f"{year}-12-25" for year in self.full_range))
+
+    def test_saint_stephens_day(self):
+        self.assertHolidayName("Stiefesdag", (f"{year}-12-26" for year in self.full_range))
+
+    def test_new_years_eve(self):
+        name = "Silvester"
+        self.assertNoHolidayName(name)
+        self.assertBankHolidayName(name, (f"{year}-12-31" for year in self.full_range))
 
     def test_2018(self):
-        self.assertHolidays(
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "Neijoerschdag"),
             ("2018-04-02", "Ouschterméindeg"),
             ("2018-05-01", "Dag vun der Aarbecht"),
@@ -40,15 +128,16 @@ class TestLuxembourg(CommonCountryTests, TestCase):
         )
 
     def test_2018_bank(self):
-        self.assertHolidays(
-            Luxembourg(categories=BANK, years=2018),
+        self.assertBankHolidaysInYear(
+            2018,
             ("2018-03-30", "Karfreideg"),
             ("2018-12-24", "Hellegowend (nomëtteg)"),
             ("2018-12-31", "Silvester"),
         )
 
     def test_2019(self):
-        self.assertHolidays(
+        self.assertHolidaysInYear(
+            2019,
             ("2019-01-01", "Neijoerschdag"),
             ("2019-04-22", "Ouschterméindeg"),
             ("2019-05-01", "Dag vun der Aarbecht"),
@@ -63,15 +152,16 @@ class TestLuxembourg(CommonCountryTests, TestCase):
         )
 
     def test_2019_bank(self):
-        self.assertHolidays(
-            Luxembourg(categories=BANK, years=2019),
+        self.assertBankHolidaysInYear(
+            2019,
             ("2019-04-19", "Karfreideg"),
             ("2019-12-24", "Hellegowend (nomëtteg)"),
             ("2019-12-31", "Silvester"),
         )
 
     def test_2020(self):
-        self.assertHolidays(
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "Neijoerschdag"),
             ("2020-04-13", "Ouschterméindeg"),
             ("2020-05-01", "Dag vun der Aarbecht"),
@@ -86,8 +176,8 @@ class TestLuxembourg(CommonCountryTests, TestCase):
         )
 
     def test_2020_bank(self):
-        self.assertHolidays(
-            Luxembourg(categories=BANK, years=2020),
+        self.assertBankHolidaysInYear(
+            2020,
             ("2020-04-10", "Karfreideg"),
             ("2020-12-24", "Hellegowend (nomëtteg)"),
             ("2020-12-31", "Silvester"),

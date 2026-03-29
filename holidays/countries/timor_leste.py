@@ -80,11 +80,17 @@ class TimorLeste(
             # Veteran's Day.
             self._add_holiday_mar_3(tr("Dia dos Veteranos"))
 
+        # Good Friday.
+        self._add_good_friday(tr("Sexta-Feira Santa"))
+
         # International Worker's Day.
         self._add_labor_day(tr("Dia Mundial do Trabalhador"))
 
         # Restoration of Independence Day.
         self._add_holiday_may_20(tr("Dia da Restauração da Independência"))
+
+        # Corpus Christi.
+        self._add_corpus_christi_day(tr("Festa do Corpo de Deus"))
 
         # Popular Consultation Day.
         self._add_holiday_aug_30(tr("Dia da Consulta Popular"))
@@ -133,22 +139,21 @@ class TimorLeste(
         else:
             self._add_holiday_dec_7(name)
 
-        # Variable Date Public Holidays.
-
-        # Holy Friday.
-        self._add_good_friday(tr("Sexta-Feira Santa"))
-
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("Idul Fitri"))
-
-        # Corpus Christi.
-        self._add_corpus_christi_day(tr("Festa do Corpo de Deus"))
 
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Idul Adha"))
 
     def _populate_workday_holidays(self):
-        # Fixed Date Government Holidays.
+        # Ash Wednesday.
+        self._add_ash_wednesday(tr("Quarta-Feira de Cinzas"))
+
+        # Maundy Thursday.
+        self._add_holy_thursday(tr("Quinta-Feira Santa"))
+
+        # The Day of Ascension of Jesus Christ into Heaven.
+        self._add_ascension_thursday(tr("Dia da Ascensão de Jesus Cristo ao Céu"))
 
         # International Children's Day.
         self._add_childrens_day(tr("Dia Mundial da Criança"))
@@ -171,17 +176,6 @@ class TimorLeste(
 
         # International Human Rights Day.
         self._add_holiday_dec_10(tr("Dia Mundial dos Direitos Humanos"))
-
-        # Variable Date Government Holidays.
-
-        # Ash Wednesday.
-        self._add_ash_wednesday(tr("Quarta-Feira de Cinzas"))
-
-        # Holy Thursday.
-        self._add_holy_thursday(tr("Quinta-Feira Santa"))
-
-        # The Day of Ascension of Jesus Christ into Heaven.
-        self._add_ascension_thursday(tr("Dia da Ascensão de Jesus Cristo ao Céu"))
 
 
 class TL(TimorLeste):

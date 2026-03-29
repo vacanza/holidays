@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.romania import Romania, RO, ROU
+from holidays.countries.romania import Romania
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestRomania(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Romania)
-
-    def test_country_aliases(self):
-        self.assertAliases(Romania, RO, ROU)
 
     def test_from_2024(self):
         self.assertHoliday("2024-01-06", "2024-01-07")
@@ -62,8 +59,8 @@ class TestRomania(CommonCountryTests, TestCase):
 
     def test_2020(self):
         # https://publicholidays.ro/2020-dates/
-        self.assertHolidayDates(
-            Romania(years=2020),
+        self.assertHolidayDatesInYear(
+            2020,
             "2020-01-01",
             "2020-01-02",
             "2020-01-24",
@@ -83,8 +80,8 @@ class TestRomania(CommonCountryTests, TestCase):
 
     def test_2022(self):
         # https://publicholidays.ro/2022-dates/
-        self.assertHolidayDates(
-            Romania(years=2022),
+        self.assertHolidayDatesInYear(
+            2022,
             "2022-01-01",
             "2022-01-02",
             "2022-01-24",
@@ -104,8 +101,8 @@ class TestRomania(CommonCountryTests, TestCase):
 
     def test_2023(self):
         # https://publicholidays.ro/2023-dates/
-        self.assertHolidayDates(
-            Romania(years=2023),
+        self.assertHolidayDatesInYear(
+            2023,
             "2023-01-01",
             "2023-01-02",
             "2023-01-24",

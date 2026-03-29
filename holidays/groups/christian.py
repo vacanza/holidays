@@ -414,6 +414,16 @@ class ChristianHolidays:
         """
         return self._add_holiday(name, _timedelta(self._easter_sunday, +9))
 
+    def _add_saint_anthonys_day(self, name) -> date:
+        """
+        Add Saint Anthony of Padua's Day (June 13th).
+
+        Saint Anthony's Day is celebrated on 13 June, the traditionally
+        accepted date of the saint's death.
+        https://en.wikipedia.org/wiki/Anthony_of_Padua
+        """
+        return self._add_holiday_jun_13(name)
+
     def _add_saint_georges_day(self, name) -> date:
         """
         Add Saint George's Day (April 23th).
@@ -454,6 +464,26 @@ class ChristianHolidays:
         https://en.wikipedia.org/wiki/Saint_Joseph's_Day
         """
         return self._add_holiday_mar_19(name)
+
+    def _add_saint_martins_day(self, name) -> date:
+        """
+        Add Saint Martin of Tours Day (November 11th).
+
+        Saint Martin of Tours is the patron saint of many communities and organizations
+        across Europe, including France's Third Republic.
+        https://en.wikipedia.org/wiki/Martin_of_Tours
+        """
+        return self._add_holiday_nov_11(name)
+
+    def _add_saint_patricks_day(self, name) -> date:
+        """
+        Add Saint Patrick's Day (March 17th).
+
+        Saint Patrick's Day is a religious and cultural holiday held on 17 March,
+        the traditional death date of Saint Patrick, the foremost patron saint of Ireland.
+        https://en.wikipedia.org/wiki/Saint_Patrick's_Day
+        """
+        return self._add_holiday_mar_17(name)
 
     def _add_saints_peter_and_paul_day(self, name) -> date:
         """

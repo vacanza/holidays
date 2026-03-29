@@ -14,7 +14,7 @@ from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysGP(ChildEntity, France):
+class Guadeloupe(ChildEntity, France):
     """Guadeloupe holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -32,13 +32,13 @@ class HolidaysGP(ChildEntity, France):
     start_year = 1815
 
 
-class Guadeloupe(HolidaysGP):
+class HolidaysGP(Guadeloupe):
     pass
 
 
-class GP(HolidaysGP):
+class GP(Guadeloupe):
     pass
 
 
-class GLP(HolidaysGP):
+class GLP(Guadeloupe):
     pass

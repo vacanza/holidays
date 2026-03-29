@@ -25,6 +25,9 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Slovakia>
         * <https://sk.wikipedia.org/wiki/Zoznam_sviatkov_na_Slovensku>
         * <https://web.archive.org/web/20250413192257/https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/>
+        * [Law 326/2020](https://web.archive.org/web/20250713005858/https://static.slov-lex.sk/static/SK/ZZ/2020/326/20210101.html)
+        * [Law 530/2023](https://web.archive.org/web/20250424165411/https://static.slov-lex.sk/static/SK/ZZ/2023/530/20240101.html)
+        * [Law 261/2025](https://web.archive.org/web/20251014224441/https://static.slov-lex.sk/static/SK/ZZ/2025/261/20251101.html)
     """
 
     country = "SK"
@@ -58,7 +61,7 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         # Labor Day.
         self._add_labor_day(tr("Sviatok práce"))
 
-        if self._year >= 1997:
+        if self._year >= 1997 and self._year != 2026:
             # Day of Victory over Fascism.
             self._add_world_war_two_victory_day(tr("Deň víťazstva nad fašizmom"))
 
@@ -72,13 +75,14 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
             # Constitution Day.
             self._add_holiday_sep_1(tr("Deň Ústavy Slovenskej republiky"))
 
-        # Day of Our Lady of the Seven Sorrows.
-        self._add_holiday_sep_15(tr("Sedembolestná Panna Mária"))
+        if self._year != 2026:
+            # Day of Our Lady of the Seven Sorrows.
+            self._add_holiday_sep_15(tr("Sedembolestná Panna Mária"))
 
         # All Saints' Day.
         self._add_all_saints_day(tr("Sviatok Všetkých svätých"))
 
-        if self._year >= 2001:
+        if 2001 <= self._year <= 2024:
             # Struggle for Freedom and Democracy Day.
             self._add_holiday_nov_17(tr("Deň boja za slobodu a demokraciu"))
 
@@ -94,13 +98,28 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
     def _populate_workday_holidays(self):
         # According to Law 241/1993, these state holidays are not non-working days.
 
+        # Law 261/2025.
+        if self._year == 2026:
+            # Day of Victory over Fascism.
+            self._add_world_war_two_victory_day(tr("Deň víťazstva nad fašizmom"))
+
+            # Day of Our Lady of the Seven Sorrows.
+            self._add_holiday_sep_15(tr("Sedembolestná Panna Mária"))
+
+        # Law 530/2023.
         if self._year >= 2024:
             # Constitution Day.
             self._add_holiday_sep_1(tr("Deň Ústavy Slovenskej republiky"))
 
+        # Law 326/2020.
         if self._year >= 2021:
             # Day of the Establishment of the Independent Czech-Slovak State.
             self._add_holiday_oct_28(tr("Deň vzniku samostatného česko-slovenského štátu"))
+
+        # Law 261/2025.
+        if self._year >= 2025:
+            # Struggle for Freedom and Democracy Day.
+            self._add_holiday_nov_17(tr("Deň boja za slobodu a demokraciu"))
 
 
 class SK(Slovakia):

@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
@@ -36,6 +37,7 @@ class Qatar(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
     start_year = 1971
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("ar_QA", "en_US")
+    weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -51,10 +53,11 @@ class Qatar(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
         StaticHolidays.__init__(self, QatarStaticHolidays)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self):
+    def _get_weekend(self, dt: date) -> set[int]:
         # Qatar switches from THU-FRI to FRI-SAT on Aug 1, 2003.
-        self.weekend = {THU, FRI} if self._year <= 2003 else {FRI, SAT}
+        return {FRI, SAT} if dt >= date(2003, AUG, 1) else {THU, FRI}
 
+    def _populate_public_holidays(self):
         if self._year >= 2012:
             # National Sports Day.
             self._add_holiday_2nd_tue_of_feb(tr("اليوم الوطني للرياضة"))
@@ -93,8 +96,8 @@ class QAT(Qatar):
 
 
 class QatarIslamicHolidays(_CustomIslamicHolidays):
-    # https://web.archive.org/web/20250422212912/https://www.timeanddate.com/holidays/qatar/eid-al-adha
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2005, 2024)
+    # https://web.archive.org/web/20260107122007/https://www.timeanddate.com/holidays/qatar/eid-al-adha
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2005, 2025)
     EID_AL_ADHA_DATES = {
         2008: (DEC, 9),
         2009: (NOV, 28),
@@ -123,8 +126,7 @@ class QatarStaticHolidays:
         * [New Year's Holiday](https://web.archive.org/web/20250119073018/https://www.expatica.com/qa/lifestyle/holidays/qatar-public-holidays-74585/)
     """
 
-    # New Year's Holiday.
-    name = tr("عطلة رأس السنة")
     special_public_holidays = {
-        2025: (JAN, 2, name),
+        # New Year's Holiday.
+        2025: (JAN, 2, tr("عطلة رأس السنة")),
     }

@@ -54,7 +54,7 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # https://web.archive.org/web/20240315074159/http://zakon.rada.gov.ua/laws/show/576-14
         return date(1995, JAN, 27) <= dt <= date(1998, JAN, 9) or dt >= date(1999, APR, 23)
 
-    def _populate_common(self, is_martial_law: bool = False):
+    def _populate_common(self, *, is_martial_law: bool = False):
         # There is no public holidays in Ukraine during the period of martial law
         # https://web.archive.org/web/20250418204733/https://zakon.rada.gov.ua/laws/show/2136-20
         # law is in force from March 15, 2022

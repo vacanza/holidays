@@ -124,7 +124,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_subdiv_1_bank_holidays(self):
         # Saint Martin's Day.
-        self._add_holiday_nov_11(tr("Hl. Martin"))
+        self._add_saint_martins_day(tr("Hl. Martin"))
 
     def _populate_subdiv_2_bank_holidays(self):
         # Saint Joseph's Day.

@@ -12,26 +12,17 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT, PUBLIC, WORKDAY
-from holidays.countries.timor_leste import TimorLeste, TL, TLS
+from holidays.countries.timor_leste import TimorLeste
 from tests.common import CommonCountryTests
 
 
 class TestTimorLeste(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(TimorLeste, years=range(2006, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(TimorLeste, TL, TLS)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(TimorLeste(years=2005))
-        self.assertNoHolidays(TimorLeste(years=2005, categories=(GOVERNMENT, WORKDAY)))
+        super().setUpClass(TimorLeste)
 
     def test_special_government_holidays(self):
-        self.assertHoliday(
-            TimorLeste(categories=GOVERNMENT),
+        self.assertGovernmentHoliday(
             "2010-11-03",
             "2010-12-24",
             "2010-12-31",
@@ -152,10 +143,192 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             "2025-01-29",
         )
 
+    def test_new_years_day(self):
+        self.assertHolidayName("Dia de Ano Novo", (f"{year}-01-01" for year in self.full_range))
+
+    def test_veterans_day(self):
+        name = "Dia dos Veteranos"
+        self.assertHolidayName(name, (f"{year}-03-03" for year in range(2017, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2017))
+
+    def test_good_friday(self):
+        name = "Sexta-Feira Santa"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_international_workers_day(self):
+        self.assertHolidayName(
+            "Dia Mundial do Trabalhador", (f"{year}-05-01" for year in self.full_range)
+        )
+
+    def test_restoration_of_independence_day(self):
+        self.assertHolidayName(
+            "Dia da Restauração da Independência", (f"{year}-05-20" for year in self.full_range)
+        )
+
+    def test_corpus_domini(self):
+        name = "Festa do Corpo de Deus"
+        self.assertHolidayName(
+            name,
+            "2020-06-11",
+            "2021-06-03",
+            "2022-06-16",
+            "2023-06-08",
+            "2024-05-30",
+            "2025-06-19",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_popular_consultation_day(self):
+        self.assertHolidayName(
+            "Dia da Consulta Popular", (f"{year}-08-30" for year in self.full_range)
+        )
+
+    def test_all_saints_day(self):
+        self.assertHolidayName(
+            "Dia de Todos os Santos", (f"{year}-11-01" for year in self.full_range)
+        )
+
+    def test_all_souls_day(self):
+        self.assertHolidayName(
+            "Dia de Todos os Fiéis Defuntos", (f"{year}-11-02" for year in self.full_range)
+        )
+
+    def test_national_womens_day(self):
+        name = "Dia Nacional da Mulher"
+        self.assertHolidayName(name, (f"{year}-11-03" for year in range(2023, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2023))
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-11-03" for year in range(self.start_year, 2023))
+        )
+        self.assertNoWorkdayHolidayName(name, range(2023, self.end_year))
+
+    def test_national_youth_day(self):
+        self.assertHolidayName(
+            "Dia Nacional da Juventude", (f"{year}-11-12" for year in self.full_range)
+        )
+
+    def test_proclamation_of_independence_day(self):
+        self.assertHolidayName(
+            "Dia da Proclamação da Independência", (f"{year}-11-28" for year in self.full_range)
+        )
+
+    def test_memorial_day(self):
+        name = "Dia da Memória"
+        self.assertHolidayName(name, (f"{year}-12-07" for year in range(2017, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2017))
+
+    def test_day_of_our_lady_of_immaculate_conception_and_timor_leste_patroness(self):
+        self.assertHolidayName(
+            "Dia de Nossa Senhora da Imaculada Conceição, padroeira de Timor-Leste",
+            (f"{year}-12-08" for year in self.full_range),
+        )
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Dia de Natal", (f"{year}-12-25" for year in self.full_range))
+
+    def test_national_heroes_day(self):
+        self.assertHolidayName(
+            "Dia dos Heróis Nacionais",
+            (f"{year}-12-07" for year in range(self.start_year, 2017)),
+            (f"{year}-12-31" for year in range(2017, self.end_year)),
+        )
+
+    def test_eid_al_fitr(self):
+        name = "Idul Fitri"
+        self.assertHolidayName(
+            name,
+            "2020-05-24",
+            "2021-05-13",
+            "2022-05-02",
+            "2023-04-22",
+            "2024-04-10",
+            "2025-03-31",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_eid_al_adha(self):
+        name = "Idul Adha"
+        self.assertHolidayName(
+            name,
+            "2020-07-31",
+            "2021-07-19",
+            "2022-07-09",
+            "2023-06-29",
+            "2024-06-17",
+            "2025-06-06",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_ash_wednesday(self):
+        name = "Quarta-Feira de Cinzas"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name,
+            "2020-02-26",
+            "2021-02-17",
+            "2022-03-02",
+            "2023-02-22",
+            "2024-02-14",
+            "2025-03-05",
+        )
+        self.assertWorkdayHolidayName(name, self.full_range)
+
+    def test_maundy_thursday(self):
+        name = "Quinta-Feira Santa"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name,
+            "2020-04-09",
+            "2021-04-01",
+            "2022-04-14",
+            "2023-04-06",
+            "2024-03-28",
+            "2025-04-17",
+        )
+        self.assertWorkdayHolidayName(name, self.full_range)
+
+    def test_the_day_of_ascension_of_jesus_christ_into_heaven(self):
+        name = "Dia da Ascensão de Jesus Cristo ao Céu"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name,
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
+        )
+        self.assertWorkdayHolidayName(name, self.full_range)
+
+    def test_international_childrens_day(self):
+        name = "Dia Mundial da Criança"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-06-01" for year in self.full_range))
+
+    def test_day_of_the_armed_forces_for_the_national_liberation_of_timor_leste_falintil(self):
+        name = "Dia das Forças Armadas de Libertação Nacional de Timor-Leste (FALINTIL)"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-08-20" for year in self.full_range))
+
+    def test_international_human_rights_day(self):
+        name = "Dia Mundial dos Direitos Humanos"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-12-10" for year in self.full_range))
+
     def test_2011_public(self):
         # https://timor-leste.gov.tl/?p=4442&lang=en&lang=en
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2011),
+        self.assertHolidaysInYear(
+            2011,
             ("2011-01-01", "Dia de Ano Novo"),
             ("2011-04-22", "Sexta-Feira Santa"),
             ("2011-05-01", "Dia Mundial do Trabalhador"),
@@ -178,8 +351,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
 
     def test_2012_public(self):
         # https://timor-leste.gov.tl/?p=6269&lang=en
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2012),
+        self.assertHolidaysInYear(
+            2012,
             ("2012-01-01", "Dia de Ano Novo"),
             ("2012-04-06", "Sexta-Feira Santa"),
             ("2012-05-01", "Dia Mundial do Trabalhador"),
@@ -202,8 +375,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
 
     def test_2013_public(self):
         # https://timor-leste.gov.tl/?p=7627&lang=en&lang=en
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2013),
+        self.assertHolidaysInYear(
+            2013,
             ("2013-01-01", "Dia de Ano Novo"),
             ("2013-03-29", "Sexta-Feira Santa"),
             ("2013-05-01", "Dia Mundial do Trabalhador"),
@@ -226,8 +399,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
 
     def test_2014_public(self):
         # https://timor-leste.gov.tl/?p=9653&lang=en&lang=en
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2014),
+        self.assertHolidaysInYear(
+            2014,
             ("2014-01-01", "Dia de Ano Novo"),
             ("2014-04-18", "Sexta-Feira Santa"),
             ("2014-05-01", "Dia Mundial do Trabalhador"),
@@ -250,8 +423,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
 
     def test_2015_public(self):
         # https://timor-leste.gov.tl/?p=11331&lang=en&lang=en
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2015),
+        self.assertHolidaysInYear(
+            2015,
             ("2015-01-01", "Dia de Ano Novo"),
             ("2015-04-03", "Sexta-Feira Santa"),
             ("2015-05-01", "Dia Mundial do Trabalhador"),
@@ -274,8 +447,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
 
     def test_2016_public(self):
         # https://timor-leste.gov.tl/?p=14419&lang=en&lang=en
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2016),
+        self.assertHolidaysInYear(
+            2016,
             ("2016-01-01", "Dia de Ano Novo"),
             ("2016-03-25", "Sexta-Feira Santa"),
             ("2016-05-01", "Dia Mundial do Trabalhador"),
@@ -298,8 +471,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
 
     def test_2017_public(self):
         # https://timor-leste.gov.tl/?p=17138&lang=en&lang=en
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2017),
+        self.assertHolidaysInYear(
+            2017,
             ("2017-01-01", "Dia de Ano Novo"),
             ("2017-03-03", "Dia dos Veteranos"),
             ("2017-04-14", "Sexta-Feira Santa"),
@@ -323,8 +496,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2018_public(self):
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2018),
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "Dia de Ano Novo"),
             ("2018-03-03", "Dia dos Veteranos"),
             ("2018-03-30", "Sexta-Feira Santa"),
@@ -349,8 +522,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
 
     def test_2019_public(self):
         # https://timor-leste.gov.tl/?p=21146&lang=en&lang=en
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2019),
+        self.assertHolidaysInYear(
+            2019,
             ("2019-01-01", "Dia de Ano Novo"),
             ("2019-03-03", "Dia dos Veteranos"),
             ("2019-04-19", "Sexta-Feira Santa"),
@@ -375,8 +548,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
 
     def test_2020_public(self):
         # https://timor-leste.gov.tl/?p=23415&lang=en&lang=en
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2020),
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "Dia de Ano Novo"),
             ("2020-03-03", "Dia dos Veteranos"),
             ("2020-04-10", "Sexta-Feira Santa"),
@@ -401,8 +574,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
 
     def test_2021_public(self):
         # https://timor-leste.gov.tl/?p=26494&lang=en&lang=en
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "Dia de Ano Novo"),
             ("2021-03-03", "Dia dos Veteranos"),
             ("2021-04-02", "Sexta-Feira Santa"),
@@ -427,8 +600,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
 
     def test_2022_public(self):
         # https://timor-leste.gov.tl/?p=30266&lang=en
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Dia de Ano Novo"),
             ("2022-03-03", "Dia dos Veteranos"),
             ("2022-04-15", "Sexta-Feira Santa"),
@@ -453,8 +626,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
 
     def test_2023_public(self):
         # https://timor-leste.gov.tl/?p=31750&lang=en&lang=en
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "Dia de Ano Novo"),
             ("2023-03-03", "Dia dos Veteranos"),
             ("2023-04-07", "Sexta-Feira Santa"),
@@ -480,8 +653,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
 
     def test_2024_public(self):
         # https://timor-leste.gov.tl/?p=35833&lang=en&lang=en
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "Dia de Ano Novo"),
             ("2024-03-03", "Dia dos Veteranos"),
             ("2024-03-29", "Sexta-Feira Santa"),
@@ -507,8 +680,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
 
     def test_2025_public(self):
         # https://timor-leste.gov.tl/?p=41492&lang=en
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2025),
+        self.assertHolidaysInYear(
+            2025,
             ("2025-01-01", "Dia de Ano Novo"),
             ("2025-03-03", "Dia dos Veteranos"),
             ("2025-03-31", "Idul Fitri"),
@@ -533,8 +706,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2022_workday(self):
-        self.assertHolidays(
-            TimorLeste(categories=WORKDAY, years=2022),
+        self.assertWorkdayHolidaysInYear(
+            2022,
             ("2022-03-02", "Quarta-Feira de Cinzas"),
             ("2022-04-14", "Quinta-Feira Santa"),
             ("2022-05-26", "Dia da Ascensão de Jesus Cristo ao Céu"),
@@ -548,8 +721,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2023_workday(self):
-        self.assertHolidays(
-            TimorLeste(categories=WORKDAY, years=2023),
+        self.assertWorkdayHolidaysInYear(
+            2023,
             ("2023-02-22", "Quarta-Feira de Cinzas"),
             ("2023-04-06", "Quinta-Feira Santa"),
             ("2023-05-18", "Dia da Ascensão de Jesus Cristo ao Céu"),
@@ -655,8 +828,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             ("2023-01-23", "National Holidays (Special)"),
             ("2023-02-22", "Ash Wednesday; National Holidays (Special)"),
             ("2023-03-03", "Veteran's Day"),
-            ("2023-04-06", "Holy Thursday; National Holidays (Special)"),
-            ("2023-04-07", "Holy Friday"),
+            ("2023-04-06", "Maundy Thursday; National Holidays (Special)"),
+            ("2023-04-07", "Good Friday"),
             ("2023-04-10", "National Holidays (Special)"),
             ("2023-04-20", "National Holidays (Special)"),
             ("2023-04-21", "National Holidays (Special)"),
@@ -736,7 +909,7 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             ("2023-01-23", "วันหยุดพิเศษ (เพิ่มเติม)"),
             ("2023-02-22", "วันพุธรับเถ้า; วันหยุดพิเศษ (เพิ่มเติม)"),
             ("2023-03-03", "วันทหารผ่านศึก"),
-            ("2023-04-06", "วันพฤหัสศักดิสิทธิ์; วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-04-06", "วันพฤหัสศักดิ์สิทธิ์; วันหยุดพิเศษ (เพิ่มเติม)"),
             ("2023-04-07", "วันศุกร์ประเสริฐ"),
             ("2023-04-10", "วันหยุดพิเศษ (เพิ่มเติม)"),
             ("2023-04-20", "วันหยุดพิเศษ (เพิ่มเติม)"),

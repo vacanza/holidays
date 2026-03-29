@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.bangladesh import Bangladesh, BD, BGD
+from holidays.countries.bangladesh import Bangladesh
 from tests.common import CommonCountryTests
 
 
@@ -21,16 +21,63 @@ class TestBangladesh(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Bangladesh)
 
-    def test_country_aliases(self):
-        self.assertAliases(Bangladesh, BD, BGD)
+    def test_martyrs_day_and_international_mother_language_day(self):
+        self.assertHolidayName(
+            "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস", (f"{year}-02-21" for year in self.full_range)
+        )
+
+    def test_sheikh_mujibur_rahmans_birthday(self):
+        self.assertHolidayName(
+            "জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান এর জন্মদিবস",
+            (f"{year}-03-17" for year in self.full_range),
+        )
+
+    def test_independence_day(self):
+        self.assertHolidayName("স্বাধীনতা দিবস", (f"{year}-03-26" for year in self.full_range))
+
+    def test_bengali_new_years_day(self):
+        self.assertHolidayName("পহেলা বৈশাখ", (f"{year}-04-14" for year in self.full_range))
+
+    def test_may_day(self):
+        self.assertHolidayName("মে দিবস", (f"{year}-05-01" for year in self.full_range))
+
+    def test_national_mourning_day(self):
+        self.assertHolidayName("জাতীয় শোক দিবস", (f"{year}-08-15" for year in self.full_range))
+
+    def test_victory_day(self):
+        self.assertHolidayName("বিজয় দিবস", (f"{year}-12-16" for year in self.full_range))
 
     def test_2022(self):
-        self.assertHolidays(
-            ("2022-02-21", "International Mother's language Day"),
-            ("2022-03-17", "Sheikh Mujibur Rahman's Birthday and Children's Day"),
-            ("2022-03-26", "Independence Day"),
-            ("2022-04-14", "Bengali New Year's Day"),
-            ("2022-05-01", "May Day"),
-            ("2022-08-15", "National Mourning Day"),
-            ("2022-12-16", "Victory Day"),
+        self.assertHolidaysInYear(
+            2022,
+            ("2022-02-21", "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস"),
+            ("2022-03-17", "জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান এর জন্মদিবস"),
+            ("2022-03-26", "স্বাধীনতা দিবস"),
+            ("2022-04-14", "পহেলা বৈশাখ"),
+            ("2022-05-01", "মে দিবস"),
+            ("2022-08-15", "জাতীয় শোক দিবস"),
+            ("2022-12-16", "বিজয় দিবস"),
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2021-02-21", "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস"),
+            ("2021-03-17", "জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান এর জন্মদিবস"),
+            ("2021-03-26", "স্বাধীনতা দিবস"),
+            ("2021-04-14", "পহেলা বৈশাখ"),
+            ("2021-05-01", "মে দিবস"),
+            ("2021-08-15", "জাতীয় শোক দিবস"),
+            ("2021-12-16", "বিজয় দিবস"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2021-02-21", "Martyrs' Day and International Mother Language Day"),
+            ("2021-03-17", "Sheikh Mujibur Rahman's Birthday"),
+            ("2021-03-26", "Independence Day"),
+            ("2021-04-14", "Bengali New Year's Day"),
+            ("2021-05-01", "May Day"),
+            ("2021-08-15", "National Mourning Day"),
+            ("2021-12-16", "Victory Day"),
         )

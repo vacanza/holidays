@@ -12,17 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.countries.svalbard_and_jan_mayen import HolidaysSJ, SvalbardAndJanMayen, SJ, SJM
+from holidays.countries.svalbard_and_jan_mayen import SvalbardAndJanMayen
 from tests.common import CommonCountryTests
 
 
 class TestSvalbardAndJanMayen(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysSJ)
-
-    def test_country_aliases(self):
-        self.assertAliases(HolidaysSJ, SvalbardAndJanMayen, SJ, SJM)
+        super().setUpClass(SvalbardAndJanMayen)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -78,7 +75,7 @@ class TestSvalbardAndJanMayen(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "th",
             ("2022-01-01", "วันขึ้นปีใหม่"),
-            ("2022-04-14", "วันพฤหัสศักดิสิทธิ์"),
+            ("2022-04-14", "วันพฤหัสศักดิ์สิทธิ์"),
             ("2022-04-15", "วันศุกร์ประเสริฐ"),
             ("2022-04-17", "วันอาทิตย์อีสเตอร์"),
             ("2022-04-18", "วันจันทร์อีสเตอร์"),

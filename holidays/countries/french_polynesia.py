@@ -14,7 +14,7 @@ from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysPF(ChildEntity, France):
+class FrenchPolynesia(ChildEntity, France):
     """French Polynesia holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -31,13 +31,13 @@ class HolidaysPF(ChildEntity, France):
     start_year = 1881
 
 
-class FrenchPolynesia(HolidaysPF):
+class HolidaysPF(FrenchPolynesia):
     pass
 
 
-class PF(HolidaysPF):
+class PF(FrenchPolynesia):
     pass
 
 
-class PYF(HolidaysPF):
+class PYF(FrenchPolynesia):
     pass

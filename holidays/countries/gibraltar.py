@@ -214,6 +214,6 @@ class GibraltarStaticHolidays(StaticHolidays):
         2020: (MAY, 8, tr("75th Anniversary of VE Day")),
         # Queen's Platinum Jubilee.
         2022: (JUN, 3, tr("Platinum Jubilee")),
-        # Special King’s Coronation Bank Holiday.
+        # Special King's Coronation Bank Holiday.
         2023: (MAY, 8, tr("Special King's Coronation Bank Holiday")),
     }

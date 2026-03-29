@@ -10,11 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import PUBLIC, UNOFFICIAL
 from holidays.countries.united_states import UnitedStates
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysGU(ChildEntity, UnitedStates):
+class Guam(ChildEntity, UnitedStates):
     """Guam holidays.
 
     Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
@@ -25,15 +26,16 @@ class HolidaysGU(ChildEntity, UnitedStates):
     parent_entity = UnitedStates
     # Became a U.S. Territory on April 11th, 1899.
     start_year = 1900
+    supported_categories = (PUBLIC, UNOFFICIAL)
 
 
-class Guam(HolidaysGU):
+class HolidaysGU(Guam):
     pass
 
 
-class GU(HolidaysGU):
+class GU(Guam):
     pass
 
 
-class GUM(HolidaysGU):
+class GUM(Guam):
     pass

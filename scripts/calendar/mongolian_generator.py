@@ -41,27 +41,27 @@ a1 = 253 / 3528
 a2 = 1 / 28
 
 
-def mstar(y, m):
+def mstar(y: int, m: int) -> int:
     return 12 * (y - epoch) + m - m_zero
 
 
-def leap_month(y, m):
+def leap_month(y: int, m: int) -> bool:
     t = (24 * (y - epoch) + 2 * m - beta) % 65
     return t <= 1
 
 
-def leap_year(y):
+def leap_year(y: int) -> bool:
     t = (24 * (y - epoch) - beta) % 65
     return t >= 41
 
 
-def true_month(y, m, is_leap):
+def true_month(y: int, m: int, *, is_leap: bool) -> int:
     p = 67 * mstar(y, m) + betastar
     pp, ix = divmod(p, 65)
     return pp if is_leap or ix < ixx else pp + 1
 
 
-def moon_tab(i):
+def moon_tab(i: float) -> float:
     i %= 28
     s = 1
     if i >= 14:
@@ -75,7 +75,7 @@ def moon_tab(i):
     return s * (v[a] if a == i else (b - i) * v[a] + (i - a) * v[b])
 
 
-def sun_tab(i):
+def sun_tab(i: float) -> float:
     i %= 12
     s = 1
     if i >= 6:
@@ -89,7 +89,7 @@ def sun_tab(i):
     return s * (v[a] if a == i else (b - i) * v[a] + (i - a) * v[b])
 
 
-def true_date(d, n):
+def true_date(d: int, n: int) -> float:
     mean_date = n * m1 + d * m2 + m0
     mean_sun = n * s1 + d * s2 + s0
     anomaly_moon = n * a1 + d * a2 + a0
@@ -99,13 +99,13 @@ def true_date(d, n):
     return mean_date + moon_equ / 60 - sun_equ / 60
 
 
-def julian_day(y, m, is_leap, d):
-    n = true_month(y, m, is_leap)
+def julian_day(y: int, m: int, d: int, *, is_leap: bool) -> int:
+    n = true_month(y, m, is_leap=is_leap)
     t = true_date(d, n)
     return int(t)
 
 
-def gregorian_date(jdn):
+def gregorian_date(jdn: int) -> date:
     f = jdn + 1401 + (4 * jdn + 274277) // 146097 * 3 // 4 - 38
     e = 4 * f + 3
     h = e % 1461 // 4
@@ -116,16 +116,16 @@ def gregorian_date(jdn):
     return date(y, m, d)
 
 
-def mongolian_to_gregorian(m_year, m_month, is_leap, m_day):
-    return gregorian_date(julian_day(m_year, m_month, is_leap, m_day))
+def mongolian_to_gregorian(m_year: int, m_month: int, m_day: int, *, is_leap: bool) -> date:
+    return gregorian_date(julian_day(m_year, m_month, m_day, is_leap=is_leap))
 
 
-def get_tsagaan_sar(y):
-    return gregorian_date(julian_day(y - 1, 12, False, 30) + 1)
+def get_tsagaan_sar(y: int) -> date:
+    return gregorian_date(julian_day(y - 1, 12, 30, is_leap=False) + 1)
 
 
-def find_festival_date(y, m_month, m_day):
-    return gregorian_date(julian_day(y, m_month, False, m_day))
+def find_festival_date(y: int, m_month: int, m_day: int) -> date:
+    return gregorian_date(julian_day(y, m_month, m_day, is_leap=False))
 
 
 CLASS_NAME = "_{cal_name}Lunisolar"
@@ -152,7 +152,7 @@ MONGOLIAN_HOLIDAYS = (
 )
 
 
-def generate_data():
+def generate_data() -> None:
     g_year_min, g_year_max = 2004, 2100
     holiday_data = []
 

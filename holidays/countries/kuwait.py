@@ -10,9 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import THU, FRI, SAT
+from holidays.calendars.gregorian import SEP, THU, FRI, SAT
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -31,6 +32,7 @@ class Kuwait(HolidayBase, InternationalHolidays, IslamicHolidays):
     # %s (estimated).
     estimated_label = tr("%s (المقدرة)")
     supported_languages = ("ar", "en_US")
+    weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -43,11 +45,12 @@ class Kuwait(HolidayBase, InternationalHolidays, IslamicHolidays):
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self):
+    def _get_weekend(self, dt: date) -> set[int]:
         # The resting days are Friday and Saturday since Sep 1, 2007.
         # https://web.archive.org/web/20250414072729/https://www.arabnews.com/node/298933
-        self.weekend = {THU, FRI} if self._year <= 2006 else {FRI, SAT}
+        return {FRI, SAT} if dt >= date(2007, SEP, 1) else {THU, FRI}
 
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 

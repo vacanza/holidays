@@ -23,7 +23,7 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays, PersianCa
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Afghanistan>
-        * <https://web.archive.org/web/20250408032244/https://www.timeanddate.com/holidays/afghanistan>
+        * <https://web.archive.org/web/20250903162748/https://www.timeanddate.com/holidays/afghanistan>
         * <https://en.wikipedia.org/wiki/Workweek_and_weekend>
     """
 
@@ -131,16 +131,17 @@ class AfghanistanIslamicHolidays(_CustomIslamicHolidays):
         2021: (AUG, 19),
     }
 
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2014, 2024)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2014, 2025)
     EID_AL_ADHA_DATES = {
         2014: (OCT, 5),
         2016: (SEP, 13),
         2017: (SEP, 2),
         2018: (AUG, 22),
         2024: (JUN, 17),
+        2025: (JUN, 7),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2014, 2024)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2014, 2025)
     EID_AL_FITR_DATES = {
         2014: (JUL, 29),
         2015: (JUL, 18),
@@ -150,7 +151,7 @@ class AfghanistanIslamicHolidays(_CustomIslamicHolidays):
         2023: (APR, 22),
     }
 
-    MAWLID_DATES_CONFIRMED_YEARS = (2014, 2024)
+    MAWLID_DATES_CONFIRMED_YEARS = (2014, 2025)
     MAWLID_DATES = {
         2014: (JAN, 14),
         2015: ((JAN, 3), (DEC, 24)),
@@ -160,9 +161,10 @@ class AfghanistanIslamicHolidays(_CustomIslamicHolidays):
         2019: (NOV, 10),
         2021: (OCT, 19),
         2024: (SEP, 16),
+        2025: (SEP, 5),
     }
 
-    RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2014, 2024)
+    RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2014, 2025)
     RAMADAN_BEGINNING_DATES = {
         2014: (JUN, 29),
         2016: (JUN, 7),

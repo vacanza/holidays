@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.seychelles import Seychelles, SC, SYC
+from holidays.countries.seychelles import Seychelles
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestSeychelles(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Seychelles)
-
-    def test_country_aliases(self):
-        self.assertAliases(Seychelles, SC, SYC)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Seychelles(years=1993))
 
     def test_special_holidays(self):
         # Election Dates have its own separate checklists.
@@ -44,8 +38,8 @@ class TestSeychelles(CommonCountryTests, TestCase):
 
     def test_2009(self):
         # https://web.archive.org/web/20091208104016/https://www.cbs.sc/PublicHolidays.html
-        self.assertHolidays(
-            Seychelles(years=2009),
+        self.assertHolidaysInYear(
+            2009,
             ("2009-01-01", "New Year's Day"),
             ("2009-01-02", "New Year Holiday"),
             ("2009-04-10", "Good Friday"),
@@ -64,8 +58,8 @@ class TestSeychelles(CommonCountryTests, TestCase):
 
     def test_2012(self):
         # https://web.archive.org/web/20121023221205/https://www.cbs.sc/PublicHolidays.html
-        self.assertHolidays(
-            Seychelles(years=2012),
+        self.assertHolidaysInYear(
+            2012,
             ("2012-01-01", "New Year's Day"),
             ("2012-01-02", "New Year Holiday"),
             ("2012-04-06", "Good Friday"),
@@ -83,8 +77,8 @@ class TestSeychelles(CommonCountryTests, TestCase):
 
     def test_2019(self):
         # https://web.archive.org/web/20191029202210/http://cbs.sc/PublicHolidays.html
-        self.assertHolidays(
-            Seychelles(years=2019),
+        self.assertHolidaysInYear(
+            2019,
             ("2019-01-01", "New Year's Day"),
             ("2019-01-02", "New Year Holiday"),
             ("2019-03-07", "Funeral of the Former President France Albert René"),
@@ -104,8 +98,8 @@ class TestSeychelles(CommonCountryTests, TestCase):
 
     def test_2021(self):
         # https://web.archive.org/web/20211206090711/https://www.cbs.sc/PublicHolidays.html
-        self.assertHolidays(
-            Seychelles(years=2021),
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "New Year's Day"),
             ("2021-01-02", "New Year Holiday"),
             ("2021-04-02", "Good Friday"),
@@ -124,8 +118,8 @@ class TestSeychelles(CommonCountryTests, TestCase):
 
     def test_2023(self):
         # https://web.archive.org/web/20230318041823/https://www.cbs.sc/PublicHolidays.html
-        self.assertHolidays(
-            Seychelles(years=2023),
+        self.assertHolidaysInYear(
+            2023,
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year Holiday"),
             ("2023-04-07", "Good Friday"),

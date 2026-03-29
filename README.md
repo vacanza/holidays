@@ -15,7 +15,7 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>CI/CD</td>
     <td>
-      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41BE4A&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41BE4A&style=flat" alt="Documentation status"></a>
+      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41B5BE&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41B5BE&style=flat" alt="Documentation status"></a>&nbsp;<a href="https://security.snyk.io/package/pip/holidays/"><img alt="Open World Holidays Package Health Score" src="https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fsecurity.snyk.io%2Fpackage%2Fpip%2Fholidays%2F&search=(class%3D%22score-number%22.*%3F%3E)(%5Cd%7B1%2C3%7D%2F%5Cd%7B1%2C3%7D)&replace=%242&style=flat&label=snyk&color=41B5BE"></a>
     </td>
   </tr>
   <tr>
@@ -27,19 +27,13 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>GitHub</td>
     <td>
-      <a href="https://github.com/vacanza/holidays/stargazers"><img src="https://img.shields.io/github/stars/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub stars"></a>&nbsp;<a href="https://github.com/vacanza/holidays/forks"><img src="https://img.shields.io/github/forks/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub forks"></a>&nbsp;<a href="https://github.com/vacanza/holidays/graphs/contributors"><img src="https://img.shields.io/github/contributors/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub contributors"></a>&nbsp;<a href="https://github.com/vacanza/holidays/commits/dev"><img src="https://img.shields.io/github/last-commit/vacanza/holidays/dev?color=41BE4A&style=flat" alt="GitHub last commit"></a>
+      <a href="https://github.com/vacanza/holidays/stargazers"><img src="https://img.shields.io/github/stars/vacanza/holidays?color=41B5BE&style=flat" alt="GitHub stars"></a>&nbsp;<a href="https://github.com/vacanza/holidays/forks"><img src="https://img.shields.io/github/forks/vacanza/holidays?color=41B5BE&style=flat" alt="GitHub forks"></a>&nbsp;<a href="https://github.com/vacanza/holidays/graphs/contributors"><img src="https://img.shields.io/github/contributors/vacanza/holidays?color=41B5BE&style=flat" alt="GitHub contributors"></a>&nbsp;<a href="https://github.com/vacanza/holidays/commits/dev"><img src="https://img.shields.io/github/last-commit/vacanza/holidays/dev?color=41B5BE&style=flat" alt="GitHub last commit"></a>
     </td>
   </tr>
   <tr>
     <td>Citation</td>
     <td>
       <a href="https://doi.org/10.5281/zenodo.14884702"><img src="https://img.shields.io/badge/DOI-10.5281/zenodo.14884702-41B5BE?style=flat" alt="Open World Holidays Framework DOI"></a>
-    </td>
-  </tr>
-  <tr>
-    <td>Snyk</td>
-    <td>
-      <a href="https://snyk.io/advisor/python/holidays/"><img src="https://snyk.io/advisor/python/holidays/badge.svg" alt="Open World Holidays Package Health Score"></a>
     </td>
   </tr>
 </table>
@@ -63,7 +57,11 @@ version upgrades.
 
 ## Documentation
 
-The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io/).
+The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io).
+
+## ICS Exports
+
+Holiday calendars can be exported as `.ics` files via the [download page](https://holidays.readthedocs.io/en/latest/downloads/).
 
 ## Quick Start
 
@@ -105,13 +103,22 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 241 country codes. The standard way to refer to a country is by using its [ISO
-3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
-for domain names, and for a subdivision its [ISO 3166-2
+We currently support 250 country codes, which primarily follow [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html), with a small number of widely used user-assigned or reserved codes (for example, `XK` for Kosovo).
+In general, the standard way to refer to a country is by using its [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes),
+the same used for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
 abbreviations as aliases for their subdivisions. These are defined in the (optional)
-`subdivisions_aliases` attribute. Some of the countries support more than one language for holiday
-names output. A default language is defined by `default_language` (optional) attribute for each
+`subdivisions_aliases` attribute.
+
+> [!Note]
+>
+> **Aliases are optional.** When present, `subdivisions_aliases`
+> cover only a subset of subdivisions - commonly used or officially
+> recognized alternative names. Supported subdivisions and their
+> aliases (where available) are listed in the `Subdivisions` column
+> of the table below.
+
+Some of the countries support more than one language for holiday names output. A default language is defined by `default_language` (optional) attribute for each
 entity and is used as a fallback when neither user specified language nor user locale language
 available. The default language code is a [ISO 639-1
 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). A list of all languages supported by
@@ -154,7 +161,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Aland Islands</td>
+<td>Åland Islands</td>
 <td>AX</td>
 <td>Can also be loaded as country FI, subdivision 01</td>
 <td>en_US, <strong>fi</strong>, sv_FI, th, uk</td>
@@ -172,14 +179,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>DZ</td>
 <td></td>
 <td><strong>ar</strong>, en_US, fr</td>
-<td></td>
+<td>CHRISTIAN, HEBREW</td>
 </tr>
 <tr>
 <td>American Samoa</td>
 <td>AS</td>
 <td>Can also be loaded as country US, subdivision AS</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Andorra</td>
@@ -203,6 +210,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Antarctica</td>
+<td>AQ</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Antigua and Barbuda</td>
 <td>AG</td>
 <td></td>
@@ -219,9 +233,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Armenia</td>
 <td>AM</td>
-<td></td>
+<td>Regions: AG (Aragac̣otn, Aragatsotn), AR (Ararat), AV (Armavir), ER (Erevan), GR (Geġark'unik', Gegharkunik), KT (Kotayk', Kotayk), LO (Loṙi, Lori), SH (Širak, Shirak), SU (Syunik', Syunik), TV (Tavuš, Tavush), VD (Vayoć Jor, Vayots Dzor)</td>
 <td>en_US, <strong>hy</strong></td>
-<td></td>
+<td>WORKDAY</td>
 </tr>
 <tr>
 <td>Aruba</td>
@@ -269,7 +283,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bangladesh</td>
 <td>BD</td>
 <td></td>
-<td></td>
+<td><strong>bn</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -350,11 +364,25 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Bouvet Island</td>
+<td>BV</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Brazil</td>
 <td>BR</td>
-<td>States: AC (Acre), AL (Alagoas), AM (Amazonas), AP (Amapá), BA (Bahia), CE (Ceará), DF (Distrito Federal), ES (Espírito Santo), GO (Goiás), MA (Maranhão), MG (Minas Gerais), MS (Mato Grosso do Sul), MT (Mato Grosso), PA (Pará), PB (Paraíba), PE (Pernambuco), PI (Piauí), PR (Paraná), RJ (Rio de Janeiro), RN (Rio Grande do Norte), RO (Rondônia), RR (Roraima), RS (Rio Grande do Sul), SC (Santa Catarina), SE (Sergipe), SP (São Paulo), TO (Tocantins)</td>
+<td>States: AC (Acre), AL (Alagoas), AM (Amazonas), AP (Amapá), BA (Bahia), CE (Ceará), DF (Distrito Federal), ES (Espírito Santo), GO (Goiás), MA (Maranhão), MG (Minas Gerais), MS (Mato Grosso do Sul), MT (Mato Grosso), PA (Pará), PB (Paraíba), PE (Pernambuco), PI (Piauí), PR (Paraná), RJ (Rio de Janeiro), RN (Rio Grande do Norte), RO (Rondônia), RR (Roraima), RS (Rio Grande do Sul), SC (Santa Catarina), SE (Sergipe), SP (São Paulo), TO (Tocantins); cities: São Paulo Capital</td>
 <td>en_US, <strong>pt_BR</strong>, uk</td>
 <td>OPTIONAL</td>
+</tr>
+<tr>
+<td>British Indian Ocean Territory</td>
+<td>IO</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>British Virgin Islands</td>
@@ -375,13 +403,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>BG</td>
 <td></td>
 <td><strong>bg</strong>, en_US, uk</td>
-<td>SCHOOL</td>
+<td>HALF_DAY, SCHOOL</td>
 </tr>
 <tr>
 <td>Burkina Faso</td>
 <td>BF</td>
 <td></td>
-<td></td>
+<td><strong>en_BF</strong>, en_US, fr</td>
 <td></td>
 </tr>
 <tr>
@@ -542,7 +570,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Denmark</td>
 <td>DK</td>
 <td></td>
-<td><strong>da</strong>, en_US, uk</td>
+<td><strong>da</strong>, en_US, th, uk</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -613,7 +641,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>EE</td>
 <td></td>
 <td>en_US, <strong>et</strong>, uk</td>
-<td></td>
+<td>HALF_DAY</td>
 </tr>
 <tr>
 <td>Eswatini</td>
@@ -689,7 +717,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Gabon</td>
 <td>GA</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -760,7 +788,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GU</td>
 <td>Can also be loaded as country US, subdivision GU</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Guatemala</td>
@@ -805,6 +833,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>OPTIONAL</td>
 </tr>
 <tr>
+<td>Heard Island and McDonald Islands</td>
+<td>HM</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Honduras</td>
 <td>HN</td>
 <td></td>
@@ -835,8 +870,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>India</td>
 <td>IN</td>
-<td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
-<td><strong>en_IN</strong>, en_US, hi</td>
+<td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (TG, Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
+<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, ta, te</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -865,7 +900,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>IE</td>
 <td></td>
 <td></td>
-<td></td>
+<td>OPTIONAL</td>
 </tr>
 <tr>
 <td>Isle of Man</td>
@@ -885,8 +920,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Italy</td>
 <td>IT</td>
 <td>Provinces: AG (Agrigento), AL (Alessandria), AN (Ancona), AO (Aosta), AP (Ascoli Piceno), AQ (L'Aquila), AR (Arezzo), AT (Asti), AV (Avellino), BA (Bari), BG (Bergamo), BI (Biella), BL (Belluno), BN (Benevento), BO (Bologna), BR (Brindisi), BS (Brescia), BT (Barletta-Andria-Trani), BZ (Bolzano), CA (Cagliari), CB (Campobasso), CE (Caserta), CH (Chieti), CL (Caltanissetta), CN (Cuneo), CO (Como), CR (Cremona), CS (Cosenza), CT (Catania), CZ (Catanzaro), EN (Enna), FC (Forli-Cesena, Forlì-Cesena), FE (Ferrara), FG (Foggia), FI (Firenze), FM (Fermo), FR (Frosinone), GE (Genova), GO (Gorizia), GR (Grosseto), IM (Imperia), IS (Isernia), KR (Crotone), LC (Lecco), LE (Lecce), LI (Livorno), LO (Lodi), LT (Latina), LU (Lucca), MB (Monza e Brianza), MC (Macerata), ME (Messina), MI (Milano), MN (Mantova), MO (Modena), MS (Massa-Carrara), MT (Matera), NA (Napoli), NO (Novara), NU (Nuoro), OR (Oristano), PA (Palermo), PC (Piacenza), PD (Padova), PE (Pescara), PG (Perugia), PI (Pisa), PN (Pordenone), PO (Prato), PR (Parma), PT (Pistoia), PU (Pesaro e Urbino), PV (Pavia), PZ (Potenza), RA (Ravenna), RC (Reggio Calabria), RE (Reggio Emilia), RG (Ragusa), RI (Rieti), RM (Roma), RN (Rimini), RO (Rovigo), SA (Salerno), SI (Siena), SO (Sondrio), SP (La Spezia), SR (Siracusa), SS (Sassari), SU (Sud Sardegna), SV (Savona), TA (Taranto), TE (Teramo), TN (Trento), TO (Torino), TP (Trapani), TR (Terni), TS (Trieste), TV (Treviso), UD (Udine), VA (Varese), VB (Verbano-Cusio-Ossola), VC (Vercelli), VE (Venezia), VI (Vicenza), VR (Verona), VT (Viterbo), VV (Vibo Valentia); cities: Andria, Barletta, Cesena, Forli (Forlì), Pesaro, Trani, Urbino</td>
-<td></td>
-<td></td>
+<td>en_US, <strong>it_IT</strong>, th</td>
+<td>HALF_DAY</td>
 </tr>
 <tr>
 <td>Ivory Coast</td>
@@ -945,6 +980,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Kosovo</td>
+<td>XK</td>
+<td></td>
+<td>en_US, <strong>sq</strong>, sr</td>
+<td></td>
+</tr>
+<tr>
 <td>Kuwait</td>
 <td>KW</td>
 <td></td>
@@ -955,8 +997,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Kyrgyzstan</td>
 <td>KG</td>
 <td></td>
-<td></td>
-<td></td>
+<td>en_US, <strong>ky</strong>, ru_KG</td>
+<td>WORKDAY</td>
 </tr>
 <tr>
 <td>Laos</td>
@@ -1169,6 +1211,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Myanmar</td>
+<td>MM</td>
+<td></td>
+<td>en_US, <strong>my</strong>, th</td>
+<td></td>
+</tr>
+<tr>
 <td>Namibia</td>
 <td>NA</td>
 <td></td>
@@ -1186,14 +1235,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Nepal</td>
 <td>NP</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>ne</strong></td>
 <td>WORKDAY</td>
 </tr>
 <tr>
 <td>Netherlands</td>
 <td>NL</td>
 <td></td>
-<td>en_US, fy, <strong>nl</strong>, uk</td>
+<td>en_US, fy, <strong>nl</strong>, th, uk</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -1250,7 +1299,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>MP</td>
 <td>Can also be loaded as country US, subdivision MP</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
+</tr>
+<tr>
+<td>North Korea</td>
+<td>KP</td>
+<td></td>
+<td>en_US, <strong>ko_KP</strong></td>
+<td></td>
 </tr>
 <tr>
 <td>North Macedonia</td>
@@ -1262,7 +1318,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Norway</td>
 <td>NO</td>
-<td>Counties and Arctic Regions: 03 (Oslo), 11 (Rogaland), 15 (Møre og Romsdal), 18 (Nordland), 21 (Svalbard), 22 (Jan Mayen), 30 (Viken), 34 (Innlandet), 38 (Vestfold og Telemark), 42 (Agder), 46 (Vestland), 50 (Trööndelage, Trøndelag), 54 (Romssa ja Finnmárkku, Troms og Finnmark, Tromssan ja Finmarkun)</td>
+<td>Counties and Arctic Regions: 03 (Oslo), 11 (Rogaland), 15 (Møre og Romsdal), 18 (Nordland), 21 (Svalbard), 22 (Jan Mayen), 31 (Østfold), 32 (Akershus), 33 (Buskerud), 34 (Innlandet), 39 (Vestfold), 40 (Telemark), 42 (Agder), 46 (Vestland), 50 (Trööndelage, Trøndelag), 55 (Romssa, Troms, Tromssan), 56 (Finmarkun, Finnmark, Finnmárkku)</td>
 <td>en_US, <strong>no</strong>, th, uk</td>
 <td></td>
 </tr>
@@ -1355,7 +1411,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>PR</td>
 <td>Can also be loaded as country US, subdivision PR</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>HALF_DAY, UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Qatar</td>
@@ -1382,7 +1438,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Russia</td>
 <td>RU</td>
 <td></td>
-<td>en_US, <strong>ru</strong>, th</td>
+<td>en_US, <strong>ru</strong>, th, zh_CN</td>
 <td></td>
 </tr>
 <tr>
@@ -1571,7 +1627,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Spain</td>
 <td>ES</td>
 <td>Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla-La Mancha), CN (Canarias), CT (Cataluña, Catalunya), EX (Extremadura), GA (Galicia), IB (Islas Baleares, Illes Balears), MC (Murcia), MD (Madrid), ML (Melilla), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Valenciana)</td>
-<td>en_US, <strong>es</strong>, uk</td>
+<td>ca, en_US, <strong>es</strong>, th, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -1580,6 +1636,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>si_LK</strong>, ta_LK</td>
 <td>BANK, GOVERNMENT, WORKDAY</td>
+</tr>
+<tr>
+<td>Sudan</td>
+<td>SD</td>
+<td></td>
+<td><strong>ar_SD</strong>, en_US</td>
+<td></td>
 </tr>
 <tr>
 <td>Suriname</td>
@@ -1600,13 +1663,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>SE</td>
 <td></td>
 <td>en_US, <strong>sv</strong>, th, uk</td>
-<td></td>
+<td>BANK, DE_FACTO, OPTIONAL</td>
 </tr>
 <tr>
 <td>Switzerland</td>
 <td>CH</td>
 <td>Cantons: AG (Aargau), AI (Appenzell Innerrhoden), AR (Appenzell Ausserrhoden), BE (Bern, Berne), BL (Basel-Landschaft), BS (Basel-Stadt), FR (Freiburg, Fribourg), GE (Genève), GL (Glarus), GR (Graubünden, Grigioni, Grischun), JU (Jura), LU (Luzern), NE (Neuchâtel), NW (Nidwalden), OW (Obwalden), SG (Sankt Gallen), SH (Schaffhausen), SO (Solothurn), SZ (Schwyz), TG (Thurgau), TI (Ticino), UR (Uri), VD (Vaud), VS (Valais, Wallis), ZG (Zug), ZH (Zürich)</td>
-<td><strong>de</strong>, en_US, fr, it, uk</td>
+<td><strong>de</strong>, en_US, fr, it, th, uk</td>
 <td>HALF_DAY, OPTIONAL</td>
 </tr>
 <tr>
@@ -1747,21 +1810,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>UM</td>
 <td>Can also be loaded as country US, subdivision UM</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>United States of America (the)</td>
 <td>US</td>
 <td>States and territories: AK (Alaska), AL (Alabama), AR (Arkansas), AS (American Samoa), AZ (Arizona), CA (California), CO (Colorado), CT (Connecticut), DC (District of Columbia), DE (Delaware), FL (Florida), GA (Georgia), GU (Guam), HI (Hawaii), IA (Iowa), ID (Idaho), IL (Illinois), IN (Indiana), KS (Kansas), KY (Kentucky), LA (Louisiana), MA (Massachusetts), MD (Maryland), ME (Maine), MI (Michigan), MN (Minnesota), MO (Missouri), MP (Northern Mariana Islands), MS (Mississippi), MT (Montana), NC (North Carolina), ND (North Dakota), NE (Nebraska), NH (New Hampshire), NJ (New Jersey), NM (New Mexico), NV (Nevada), NY (New York), OH (Ohio), OK (Oklahoma), OR (Oregon), PA (Pennsylvania), PR (Puerto Rico), RI (Rhode Island), SC (South Carolina), SD (South Dakota), TN (Tennessee), TX (Texas), UM (United States Minor Outlying Islands), UT (Utah), VA (Virginia), VI (Virgin Islands, U.S.), VT (Vermont), WA (Washington), WI (Wisconsin), WV (West Virginia), WY (Wyoming)</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
-</tr>
-<tr>
-<td>United States Virgin Islands (the)</td>
-<td></td>
-<td>See Virgin Islands (U.S.)</td>
-<td></td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>GOVERNMENT, HALF_DAY, UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Uruguay</td>
@@ -1810,13 +1866,20 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>VI</td>
 <td>Can also be loaded as country US, subdivision VI</td>
 <td><strong>en_US</strong>, th</td>
-<td>GOVERNMENT, UNOFFICIAL</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Wallis and Futuna</td>
 <td>WF</td>
 <td>Can also be loaded as country FR, subdivision WF</td>
 <td>en_US, <strong>fr</strong>, th, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Western Sahara</td>
+<td>EH</td>
+<td></td>
+<td><strong>ar</strong>, en_US, es, fr</td>
 <td></td>
 </tr>
 <tr>
@@ -1853,8 +1916,9 @@ code when available. The following financial markets are available:
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 4.0%" />
-<col style="width: 65.0%" />
-<col style="width: 15.0%" />
+<col style="width: 46.0%" />
+<col style="width: 20.0%" />
+<col style="width: 10.0%" />
 </colgroup>
 <thead>
 <tr>
@@ -1862,19 +1926,36 @@ code when available. The following financial markets are available:
 <th>Code</th>
 <th>Info</th>
 <th>Supported Languages</th>
+<th>Supported Categories</th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>Bombay Stock Exchange</td>
+<td>XBOM</td>
+<td>Bombay Stock Exchange (BSE) market holidays</td>
+<td><strong>en_IN</strong>, en_US, gu, hi</td>
+<td></td>
+</tr>
 <tr>
 <td>Brasil, Bolsa, Balcão</td>
 <td>BVMF</td>
 <td>Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)</td>
 <td>en_US, <strong>pt_BR</strong>, uk</td>
+<td></td>
 </tr>
 <tr>
 <td>European Central Bank</td>
 <td>XECB</td>
 <td>Trans-European Automated Real-time Gross Settlement (TARGET2)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Germany Stock Exchange</td>
+<td>XETR</td>
+<td>Deutsche Börse Cash Market (Frankfurt Stock Exchange and Xetra) holidays</td>
+<td><strong>de</strong>, en_US, th, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -1882,17 +1963,34 @@ code when available. The following financial markets are available:
 <td>IFEU</td>
 <td>A London-based Investment Exchange holidays</td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td>Japan Exchange</td>
+<td>XJPX</td>
+<td>Japan Exchange Group (JPX) market holidays</td>
+<td>en_US, <strong>ja</strong>, th</td>
+<td></td>
 </tr>
 <tr>
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
-<td><strong>en_IN</strong>, en_US, hi</td>
+<td><strong>en_IN</strong>, en_US, gu, hi</td>
+<td></td>
 </tr>
 <tr>
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
 <td>NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)</td>
+<td></td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Shanghai Stock Exchange</td>
+<td>XSHG</td>
+<td>Shanghai Stock Exchange (SSE) market holidays</td>
+<td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
 <td></td>
 </tr>
 </tbody>

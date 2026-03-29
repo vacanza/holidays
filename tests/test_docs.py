@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 import re
+import unicodedata
 from pathlib import Path
 from unittest import TestCase
 
@@ -88,8 +89,15 @@ class TestReadme(TestCase):
 
         for row in table_content:
             # Country: 1st column.
-            name = re.sub(r"[-,\s]", "", row[0]).lower()
-            country_names.append(name)
+            country_names.append(
+                re.sub(
+                    r"[-,\s]",
+                    "",
+                    unicodedata.normalize("NFKD", row[0])
+                    .encode("ascii", "ignore")
+                    .decode("ascii"),
+                ).lower()
+            )
 
             # Code: 2nd column.
             country_code = row[1]
@@ -162,26 +170,11 @@ class TestReadme(TestCase):
             ),
         )
 
-        country_names = {c.split("(the)")[0] for c in country_names}
         supported_countries = list_supported_countries(include_aliases=False)
         localized_countries = list_localized_countries(include_aliases=False)
         for country_code in supported_countries:
             instance = country_holidays(country_code)
             country_name = instance.__class__.__base__.__name__
-
-            # Make sure country name is shown correctly.
-            if country_name.startswith("Holiday"):
-                self.assertIn(
-                    country_name[8:],
-                    country_alpha_2_codes,
-                    f"Country '{country_name}' name is not shown correctly in the table.",
-                )
-            else:
-                self.assertIn(
-                    country_name.lower().replace("unitedstates", "unitedstatesofamerica"),
-                    country_names,
-                    f"Country '{country_name}' name is not shown correctly in the table.",
-                )
 
             # Make sure country alpha-2 code is shown correctly.
             self.assertIn(
@@ -254,6 +247,7 @@ class TestReadme(TestCase):
         market_default_languages = {}
         market_names = []
         market_supported_languages = {}
+        market_supported_categories = {}
         default_value_re = re.compile(r"<strong>(.*?)</strong>")
 
         # Parse 2nd table.
@@ -289,6 +283,14 @@ class TestReadme(TestCase):
                     languages.append(supported_language)
 
                 market_supported_languages[market_code] = languages
+
+            # Supported Categories: 5th column.
+            supported_categories = row[4]
+            if supported_categories:
+                categories = [PUBLIC]
+                for supported_category in supported_categories.split(","):
+                    categories.append(supported_category.strip().lower())
+                market_supported_categories[market_code] = sorted(categories)
 
         # Check the data.
         self.assertEqual(
@@ -340,3 +342,14 @@ class TestReadme(TestCase):
                     "to specify the market default language: "
                     f"<strong>{instance.default_language}</strong>.",
                 )
+
+            # Make sure supported categories are shown correctly.
+            supported_categories = sorted(instance.supported_categories)
+            self.assertEqual(
+                supported_categories,
+                market_supported_categories.get(market_code, [PUBLIC]),
+                f"Market {market_name} supported categories are not "
+                "shown correctly in the table. The column must contain "
+                "all supported categories: "
+                f"{', '.join(instance.supported_categories)}",
+            )

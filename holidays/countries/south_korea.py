@@ -10,9 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from __future__ import annotations
+
 import warnings
-from datetime import date
 from gettext import gettext as tr
+from typing import TYPE_CHECKING
 
 from holidays.calendars.chinese import KOREAN_CALENDAR
 from holidays.calendars.gregorian import (
@@ -43,6 +45,9 @@ from holidays.observed_holiday_base import (
     SUN_TO_NEXT_WORKDAY,
 )
 
+if TYPE_CHECKING:
+    from datetime import date
+
 
 class SouthKorea(
     ObservedHolidayBase,
@@ -56,6 +61,8 @@ class SouthKorea(
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_South_Korea>
         * <https://web.archive.org/web/20240429121214/https://www.law.go.kr/법령/관공서의%20공휴일에%20관한%20규정>
+        * [Public Holidays Act (2026 Amendment)](http://archive.today/2026.02.20-080801/https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=283311&ancYd=20260210%230000)
+        * [National Day Act (2014 Amendment)](http://archive.today/2026.02.20-081906/https://www.law.go.kr/LSW//lsInfoP.do?lsiSeq=165523&ancYd=20141230%230000)
         * <https://web.archive.org/web/20250429081641/https://elaw.klri.re.kr/eng_service/lawView.do?lang=ENG&hseq=34678>
         * <https://web.archive.org/web/20250123212346/https://elaw.klri.re.kr/eng_service/%20lawView.do?hseq=38405&lang=ENG>
         * <https://namu.wiki/w/대통령%20선거일>
@@ -81,6 +88,10 @@ class SouthKorea(
     country = "KR"
     supported_categories = (BANK, PUBLIC)
     default_language = "ko"
+    # %s (estimated).
+    estimated_label = tr("%s (추정)")
+    # Alternative holiday for %s (estimated).
+    observed_estimated_label = tr("%s 대체 휴일 (추정)")
     # Alternative holiday for %s.
     observed_label = tr("%s 대체 휴일")
     supported_languages = ("en_US", "ko", "th")
@@ -180,7 +191,7 @@ class SouthKorea(
             jun_6 = self._add_holiday_jun_6(tr("현충일"))
             # jun_6 is used later for Local Election Day.
 
-        if self._year <= 2007:
+        if self._year <= 2007 or self._year >= 2026:
             # Constitution Day.
             self._add_holiday_jul_17(tr("제헌절"))
 

@@ -14,7 +14,7 @@ from holidays.countries.norway import Norway
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysSJ(ChildEntity, Norway):
+class SvalbardAndJanMayen(ChildEntity, Norway):
     """Svalbard and Jan Mayen holidays.
 
     Alias of Norwegian subdivisions that are also officially assigned
@@ -29,13 +29,13 @@ class HolidaysSJ(ChildEntity, Norway):
     parent_entity_subdivision_code = "21"
 
 
-class SvalbardAndJanMayen(HolidaysSJ):
+class HolidaysSJ(SvalbardAndJanMayen):
     pass
 
 
-class SJ(HolidaysSJ):
+class SJ(SvalbardAndJanMayen):
     pass
 
 
-class SJM(HolidaysSJ):
+class SJM(SvalbardAndJanMayen):
     pass

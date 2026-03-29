@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.gregorian import MAR, APR
 
@@ -99,11 +98,11 @@ class _BalineseSakaLunar:
         2050: (MAR, 24),
     }
 
-    def _get_holiday(self, holiday: str, year: int) -> Optional[date]:
+    def _get_holiday(self, holiday: str, year: int) -> date | None:
         dt = getattr(self, f"{holiday}_DATES", {}).get(year, ())
         return date(year, *dt) if dt else None
 
-    def nyepi_date(self, year: int) -> Optional[date]:
+    def nyepi_date(self, year: int) -> date | None:
         """
         Data References:
             * [1983-2025](https://id.wikipedia.org/wiki/Indonesia_dalam_tahun_1983)

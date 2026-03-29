@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.poland import Poland, PL, POL
+from holidays.countries.poland import Poland
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestPoland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Poland, years=range(1925, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Poland, PL, POL)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Poland(years=1924))
 
     def test_special_holidays(self):
         self.assertHoliday("2018-11-12")
@@ -196,8 +190,8 @@ class TestPoland(CommonCountryTests, TestCase):
 
     def test_2017(self):
         # http://www.officeholidays.com/countries/poland/2017.php
-        self.assertHolidayDates(
-            Poland(years=2017),
+        self.assertHolidayDatesInYear(
+            2017,
             "2017-01-01",
             "2017-01-06",
             "2017-04-16",
@@ -214,8 +208,8 @@ class TestPoland(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidayDates(
-            Poland(years=2022),
+        self.assertHolidayDatesInYear(
+            2022,
             "2022-01-01",
             "2022-01-06",
             "2022-04-17",
@@ -232,8 +226,8 @@ class TestPoland(CommonCountryTests, TestCase):
         )
 
     def test_2025(self):
-        self.assertHolidayDates(
-            Poland(years=2025),
+        self.assertHolidayDatesInYear(
+            2025,
             "2025-01-01",
             "2025-01-06",
             "2025-04-20",

@@ -64,7 +64,7 @@ class Montserrat(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         )
 
         # Saint Patrick's Day.
-        self._add_observed(self._add_holiday_mar_17(tr("Saint Patrick's Day")))
+        self._add_observed(self._add_saint_patricks_day(tr("Saint Patrick's Day")))
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))

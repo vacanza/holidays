@@ -108,14 +108,13 @@ class Suriname(
             self._add_holiday_oct_10(tr("Dag der Marrons"))
 
         if self._year >= 1976:
-            name = (
+            self._add_holiday_nov_25(
                 # Independence Day.
                 tr("Onafhankelijkheidsdag")
                 if self._year >= 2008
                 # Republic Day.
                 else tr("Dag van de Republiek")
             )
-            self._add_holiday_nov_25(name)
 
         # Christmas Day.
         self._add_christmas_day(tr("Eerste Kerstdag"))

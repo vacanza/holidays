@@ -31,17 +31,23 @@ class StaticHolidays:
                 setattr(self, attribute_name, value)
                 self.has_special_holidays = True
 
-            # Substituted holidays.
+            # "Substituted" labels.
             elif attribute_name.startswith("substituted_") and (
                 value := getattr(cls, attribute_name, None)
             ):
                 setattr(self, attribute_name, value)
-                self.has_substituted_holidays = True
 
         # Populate substituted holidays from adjacent years.
         self.weekend_workdays = set()
         for special_public_holidays in getattr(self, "special_public_holidays", {}).values():
             for special_public_holiday in _normalize_tuple(special_public_holidays):
+                # Normally, special holiday is a 3 item tuple: (month, day, name).
+                if len(special_public_holiday) < 4:  # Skip non-substituted holidays.
+                    continue
+
+                # Handle cross-year substituted holidays.
                 if len(special_public_holiday) == 5:  # The fifth element is the year.
                     _, _, from_month, from_day, from_year = special_public_holiday
                     self.weekend_workdays.add(date(from_year, from_month, from_day))
+
+                self.has_substituted_holidays = True

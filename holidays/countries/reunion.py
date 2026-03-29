@@ -14,7 +14,7 @@ from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysRE(ChildEntity, France):
+class Reunion(ChildEntity, France):
     """Réunion holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -32,13 +32,13 @@ class HolidaysRE(ChildEntity, France):
     start_year = 1815
 
 
-class Reunion(HolidaysRE):
+class HolidaysRE(Reunion):
     pass
 
 
-class RE(HolidaysRE):
+class RE(Reunion):
     pass
 
 
-class REU(HolidaysRE):
+class REU(Reunion):
     pass

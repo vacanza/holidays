@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, WORKDAY
-from holidays.countries.montenegro import Montenegro, ME, MNE
+from holidays.countries.montenegro import Montenegro
 from tests.common import CommonCountryTests
 
 
@@ -26,14 +26,6 @@ class TestMontenegro(CommonCountryTests, TestCase):
         cls.hebrew_holidays = Montenegro(categories=HEBREW, years=years)
         cls.islamic_holidays = Montenegro(categories=ISLAMIC, years=years)
         cls.orthodox_holidays = Montenegro(categories=ORTHODOX, years=years)
-
-    def test_country_aliases(self):
-        self.assertAliases(Montenegro, ME, MNE)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(
-            Montenegro(categories=self.holidays.supported_categories, years=2006)
-        )
 
     def test_new_years_day(self):
         name = "Nova godina"

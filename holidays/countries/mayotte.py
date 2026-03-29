@@ -14,7 +14,7 @@ from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysYT(ChildEntity, France):
+class Mayotte(ChildEntity, France):
     """Mayotte holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -32,13 +32,13 @@ class HolidaysYT(ChildEntity, France):
     start_year = 1842
 
 
-class Mayotte(HolidaysYT):
+class HolidaysYT(Mayotte):
     pass
 
 
-class YT(HolidaysYT):
+class YT(Mayotte):
     pass
 
 
-class MYT(HolidaysYT):
+class MYT(Mayotte):
     pass

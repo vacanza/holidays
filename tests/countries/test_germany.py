@@ -14,25 +14,18 @@ import warnings
 from unittest import TestCase
 
 from holidays.constants import CATHOLIC
-from holidays.countries.germany import Germany, DE, DEU
+from holidays.countries.germany import Germany
 from tests.common import CommonCountryTests
 
 
 class TestGermany(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1990, 2050)
-        super().setUpClass(DE, years=years)
-        cls.subdiv_holidays = {
-            subdiv: DE(subdiv=subdiv, years=years) for subdiv in DE.subdivisions
-        }
+        super().setUpClass(Germany, with_subdiv_categories=True)
 
     def setUp(self):
         super().setUp()
         warnings.simplefilter("ignore", category=DeprecationWarning)
-
-    def test_country_aliases(self):
-        self.assertAliases(Germany, DE, DEU)
 
     def test_subdiv_deprecation(self):
         self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
@@ -44,16 +37,18 @@ class TestGermany(CommonCountryTests, TestCase):
         )
 
     def test_no_holidays(self):
-        self.assertNoHolidays(DE(years=1989))
-        for subdiv in DE.subdivisions:
-            self.assertNoHolidays(DE(years=1989, subdiv=subdiv))
-        # Bayern, Sachsen, Thüringen.
+        super().test_no_holidays()
+
+        for subdiv in Germany.subdivisions:
+            self.assertNoHolidays(Germany(years=self.start_year - 1, subdiv=subdiv))
         for subdiv in ("BY", "SN", "TH"):
-            self.assertNoHolidays(DE(subdiv=subdiv, years=1990, categories=CATHOLIC))
+            self.assertNoHolidays(
+                Germany(subdiv=subdiv, years=self.start_year - 1, categories=CATHOLIC)
+            )
 
     def test_special_holidays(self):
         # 2017's Reformation Day is tested in test_reformation_day.
-        be_dt = (
+        be_dts = (
             "2020-05-08",
             "2025-05-08",
             "2028-06-17",
@@ -61,14 +56,12 @@ class TestGermany(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             # Berlin.
             if subdiv == "BE":
-                self.assertHoliday(holidays, be_dt)
+                self.assertHoliday(holidays, be_dts)
             else:
-                self.assertNoHoliday(holidays, be_dt)
+                self.assertNoHoliday(holidays, be_dts)
 
     def test_new_years_day(self):
-        name = "Neujahr"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1991, 2050)))
-        self.assertNoHolidayName(name, 1990)
+        self.assertHolidayName("Neujahr", (f"{year}-01-01" for year in self.full_range))
 
     def test_epiphany(self):
         name = "Heilige Drei Könige"
@@ -77,34 +70,34 @@ class TestGermany(CommonCountryTests, TestCase):
             # Bayern, Sachsen, Thüringen, Augsburg.
             if subdiv in {"BW", "BY", "ST", "Augsburg"}:
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-01-06" for year in range(1991, 2050))
+                    name, holidays, (f"{year}-01-06" for year in self.full_range)
                 )
-                self.assertNoHolidayName(name, holidays, 1990)
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_international_womens_day(self):
-        name = "Internationaler Frauentag"
+    def test_womens_day(self):
+        name = "Frauentag"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             # Berlin - 2019.
             if subdiv == "BE":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-03-08" for year in range(2019, 2050))
+                    name, holidays, (f"{year}-03-08" for year in range(2019, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(1990, 2019))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2019))
             # Mecklenburg-Vorpommern - 2023.
             elif subdiv == "MV":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-03-08" for year in range(2023, 2050))
+                    name, holidays, (f"{year}-03-08" for year in range(2023, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(1990, 2023))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2023))
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_good_friday(self):
         name = "Karfreitag"
-        dt = (
+        self.assertHolidayName(
+            name,
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
@@ -112,13 +105,7 @@ class TestGermany(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        for holidays in self.subdiv_holidays.values():
-            self.assertHolidayName(name, holidays, dt)
-            self.assertHolidayName(name, holidays, range(1991, 2050))
-            self.assertNoHolidayName(name, holidays, 1990)
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(1991, 2050))
-        self.assertNoHolidayName(name, 1990)
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_sunday(self):
         name = "Ostersonntag"
@@ -136,14 +123,14 @@ class TestGermany(CommonCountryTests, TestCase):
                     "2024-03-31",
                     "2025-04-20",
                 )
-                self.assertHolidayName(name, holidays, range(1991, 2050))
-                self.assertNoHolidayName(name, holidays, 1990)
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_easter_monday(self):
         name = "Ostermontag"
-        dt = (
+        self.assertHolidayName(
+            name,
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
@@ -151,17 +138,12 @@ class TestGermany(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        for holidays in self.subdiv_holidays.values():
-            self.assertHolidayName(name, holidays, dt)
-            self.assertHolidayName(name, holidays, range(1991, 2050))
-            self.assertNoHolidayName(name, holidays, 1990)
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(1991, 2050))
-        self.assertNoHolidayName(name, 1990)
+        self.assertHolidayName(name, self.full_range)
 
     def test_ascension_day(self):
         name = "Christi Himmelfahrt"
-        dt = (
+        self.assertHolidayName(
+            name,
             "2020-05-21",
             "2021-05-13",
             "2022-05-26",
@@ -169,18 +151,10 @@ class TestGermany(CommonCountryTests, TestCase):
             "2024-05-09",
             "2025-05-29",
         )
-        for holidays in self.subdiv_holidays.values():
-            self.assertHolidayName(name, holidays, dt)
-            self.assertHolidayName(name, holidays, range(1991, 2050))
-            self.assertNoHolidayName(name, holidays, 1990)
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(1991, 2050))
-        self.assertNoHolidayName(name, 1990)
+        self.assertHolidayName(name, self.full_range)
 
     def test_labor_day(self):
-        name = "Erster Mai"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1991, 2050)))
-        self.assertNoHolidayName(name, 1990)
+        self.assertHolidayName("Erster Mai", (f"{year}-05-01" for year in self.full_range))
 
     def test_whit_sunday(self):
         name = "Pfingstsonntag"
@@ -198,14 +172,14 @@ class TestGermany(CommonCountryTests, TestCase):
                     "2024-05-19",
                     "2025-06-08",
                 )
-                self.assertHolidayName(name, holidays, range(1991, 2050))
-                self.assertNoHolidayName(name, holidays, 1990)
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_whit_monday(self):
         name = "Pfingstmontag"
-        dt = (
+        self.assertHolidayName(
+            name,
             "2020-06-01",
             "2021-05-24",
             "2022-06-06",
@@ -213,18 +187,12 @@ class TestGermany(CommonCountryTests, TestCase):
             "2024-05-20",
             "2025-06-09",
         )
-        for holidays in self.subdiv_holidays.values():
-            self.assertHolidayName(name, holidays, dt)
-            self.assertHolidayName(name, holidays, range(1991, 2050))
-            self.assertNoHolidayName(name, holidays, 1990)
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(1991, 2050))
-        self.assertNoHolidayName(name, 1990)
+        self.assertHolidayName(name, self.full_range)
 
     def test_corpus_christi(self):
         name = "Fronleichnam"
         self.assertNoHolidayName(name)
-        dt = (
+        dts = (
             "2020-06-11",
             "2021-06-03",
             "2022-06-16",
@@ -236,17 +204,16 @@ class TestGermany(CommonCountryTests, TestCase):
             # Baden-Württemberg, Bayern, Hessen, Nordrhein-Westfalen,
             # Rheinland-Pfalz, Saarland, Augsburg.
             if subdiv in {"BW", "BY", "HE", "NW", "RP", "SL", "Augsburg"}:
-                self.assertHolidayName(name, holidays, dt)
-                self.assertHolidayName(name, holidays, range(1991, 2050))
-                self.assertNoHolidayName(name, holidays, 1990)
+                self.assertHolidayName(name, holidays, dts)
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
         # Sachsen, Thüringen.
-        for subdiv in ("SN", "TH"):
-            catholic_holidays = DE(subdiv=subdiv, categories=CATHOLIC, years=range(1991, 2050))
-            self.assertHolidayName(name, catholic_holidays, dt)
-            self.assertHolidayName(name, catholic_holidays, range(1991, 2050))
+        self.assertSubdivSnCatholicHolidayName(name, dts)
+        self.assertSubdivSnCatholicHolidayName(name, self.full_range)
+        self.assertSubdivThCatholicHolidayName(name, dts)
+        self.assertSubdivThCatholicHolidayName(name, self.full_range)
 
     def test_augsburg_peace_festival(self):
         name = "Augsburger Hohes Friedensfest"
@@ -255,9 +222,8 @@ class TestGermany(CommonCountryTests, TestCase):
             # Augsburg.
             if subdiv == "Augsburg":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-08-08" for year in range(1991, 2050))
+                    name, holidays, (f"{year}-08-08" for year in self.full_range)
                 )
-                self.assertNoHolidayName(name, holidays, 1990)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -266,20 +232,15 @@ class TestGermany(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             # Saarland.
-            if subdiv == "SL":
+            if subdiv in {"SL", "Augsburg"}:
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-08-15" for year in range(1991, 2050))
+                    name, holidays, (f"{year}-08-15" for year in self.full_range)
                 )
-                self.assertNoHolidayName(name, holidays, 1990)
             else:
                 self.assertNoHolidayName(name, holidays)
 
         # Bayern.
-        self.assertHolidayName(
-            name,
-            DE(subdiv="BY", categories=CATHOLIC, years=range(1991, 2050)),
-            (f"{year}-08-15" for year in range(1991, 2050)),
-        )
+        self.assertSubdivByCatholicHolidayName(name, (f"{year}-08-15" for year in self.full_range))
 
     def test_world_childrens_day(self):
         name = "Weltkindertag"
@@ -288,15 +249,15 @@ class TestGermany(CommonCountryTests, TestCase):
             # Thüringen.
             if subdiv == "TH":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-09-20" for year in range(2019, 2050))
+                    name, holidays, (f"{year}-09-20" for year in range(2019, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(1990, 2019))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2019))
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_german_unity_day(self):
         self.assertHolidayName(
-            "Tag der Deutschen Einheit", (f"{year}-10-03" for year in range(1990, 2050))
+            "Tag der Deutschen Einheit", (f"{year}-10-03" for year in self.full_range)
         )
 
     def test_reformation_day(self):
@@ -305,19 +266,21 @@ class TestGermany(CommonCountryTests, TestCase):
             # Brandenburg, Mecklenburg-Vorpommern, Sachsen, Sachsen-Anhalt, Thüringen.
             if subdiv in {"BB", "MV", "SN", "ST", "TH"}:
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-10-31" for year in range(1990, 2050))
+                    name, holidays, (f"{year}-10-31" for year in self.full_range)
                 )
             # Bremen, Hamburg, Niedersachsen, Schleswig-Holstein.
             elif subdiv in {"HB", "HH", "NI", "SH"}:
                 # While these subdivisions started their holiday observance in 2018,
                 # this is de facto implemented in 2017's nationwide special observance.
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-10-31" for year in range(2017, 2050))
+                    name, holidays, (f"{year}-10-31" for year in range(2017, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(1990, 2017))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2017))
             else:
                 self.assertHolidayName(name, holidays, "2017-10-31")
-                self.assertNoHolidayName(name, holidays, range(1991, 2017), range(2018, 2050))
+                self.assertNoHolidayName(
+                    name, holidays, range(self.start_year, 2017), range(2018, self.end_year)
+                )
         self.assertHolidayName(name, "2017-10-31")
 
     def test_all_saints_day(self):
@@ -327,21 +290,20 @@ class TestGermany(CommonCountryTests, TestCase):
             # Baden-Württemberg, Bayern, Nordrhein-Westfalen, Rheinland-Pfalz, Saarland, Augsburg.
             if subdiv in {"BW", "BY", "NW", "RP", "SL", "Augsburg"}:
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-11-01" for year in range(1990, 2050))
+                    name, holidays, (f"{year}-11-01" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
 
     def test_repentance_and_prayer_day(self):
         name = "Buß- und Bettag"
-        dt_pre_1995 = (
-            "1990-11-21",
+        dts_pre_1995 = (
             "1991-11-20",
             "1992-11-18",
             "1993-11-17",
             "1994-11-16",
         )
-        dt = (
+        dts = (
             "2020-11-18",
             "2021-11-17",
             "2022-11-16",
@@ -352,29 +314,29 @@ class TestGermany(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             # Sachsen.
             if subdiv == "SN":
-                self.assertHolidayName(name, holidays, dt, dt_pre_1995)
-                self.assertHolidayName(name, holidays, range(1990, 2050))
+                self.assertHolidayName(name, holidays, dts, dts_pre_1995)
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
-                self.assertHolidayName(name, holidays, dt_pre_1995)
-                self.assertNoHolidayName(name, holidays, range(1995, 2050))
-        self.assertHolidayName(name, dt_pre_1995)
-        self.assertNoHolidayName(name, range(1995, 2050))
+                self.assertHolidayName(name, holidays, dts_pre_1995)
+                self.assertNoHolidayName(name, holidays, range(1995, self.end_year))
+        self.assertHolidayName(name, dts_pre_1995)
+        self.assertNoHolidayName(name, range(1995, self.end_year))
 
     def test_christmas_day(self):
         self.assertHolidayName(
-            "Erster Weihnachtstag", (f"{year}-12-25" for year in range(1990, 2050))
+            "Erster Weihnachtstag", (f"{year}-12-25" for year in self.full_range)
         )
 
     def test_second_day_of_christmas(self):
         self.assertHolidayName(
-            "Zweiter Weihnachtstag", (f"{year}-12-26" for year in range(1990, 2050))
+            "Zweiter Weihnachtstag", (f"{year}-12-26" for year in self.full_range)
         )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Neujahr"),
             ("2022-01-06", "Heilige Drei Könige"),
-            ("2022-03-08", "Internationaler Frauentag"),
+            ("2022-03-08", "Frauentag"),
             ("2022-04-15", "Karfreitag"),
             ("2022-04-17", "Ostersonntag"),
             ("2022-04-18", "Ostermontag"),
@@ -399,7 +361,7 @@ class TestGermany(CommonCountryTests, TestCase):
             "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-01-06", "Epiphany"),
-            ("2022-03-08", "International Women's Day"),
+            ("2022-03-08", "Women's Day"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-17", "Easter Sunday"),
             ("2022-04-18", "Easter Monday"),
@@ -424,7 +386,7 @@ class TestGermany(CommonCountryTests, TestCase):
             "th",
             ("2022-01-01", "วันขึ้นปีใหม่"),
             ("2022-01-06", "วันสมโภชพระคริสต์แสดงองค์"),
-            ("2022-03-08", "วันสตรีสากล"),
+            ("2022-03-08", "วันสตรี"),
             ("2022-04-15", "วันศุกร์ประเสริฐ"),
             ("2022-04-17", "วันอาทิตย์อีสเตอร์"),
             ("2022-04-18", "วันจันทร์อีสเตอร์"),
@@ -449,7 +411,7 @@ class TestGermany(CommonCountryTests, TestCase):
             "uk",
             ("2022-01-01", "Новий рік"),
             ("2022-01-06", "Богоявлення"),
-            ("2022-03-08", "Міжнародний жіночий день"),
+            ("2022-03-08", "Жіночий день"),
             ("2022-04-15", "Страсна пʼятниця"),
             ("2022-04-17", "Великдень"),
             ("2022-04-18", "Великодній понеділок"),

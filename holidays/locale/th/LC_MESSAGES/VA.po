@@ -15,6 +15,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.66\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-01-27 23:00+0700\n"
 "PO-Revision-Date: 2025-01-27 23:03+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
@@ -53,7 +54,7 @@ msgstr "วันสมโภชนักบุญโยเซฟ"
 
 #. Maundy Thursday.
 msgid "Giovedì Santo"
-msgstr "วันพฤหัสศักดิสิทธิ์"
+msgstr "วันพฤหัสศักดิ์สิทธิ์"
 
 #. Good Friday.
 msgid "Venerdì Santo"

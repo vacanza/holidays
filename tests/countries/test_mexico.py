@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.mexico import Mexico, MX, MEX
+from holidays.countries.mexico import Mexico
 from tests.common import CommonCountryTests
 
 
@@ -20,9 +20,6 @@ class TestMexico(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Mexico, years=range(1901, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Mexico, MX, MEX)
 
     def test_new_years_day(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1901, 2050))

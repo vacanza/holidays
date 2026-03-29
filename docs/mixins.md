@@ -1,3 +1,0 @@
-# Mixins
-
-::: holidays.mixins

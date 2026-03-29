@@ -14,7 +14,7 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import SEP, NOV, THU, FRI, SAT, _timedelta
+from holidays.calendars.gregorian import JUN, SEP, NOV, THU, FRI, SAT, _timedelta
 from holidays.groups import IslamicHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -46,6 +46,7 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (المقدرة، ملاحظة)")
     supported_languages = ("ar", "en_US")
+    weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = False, **kwargs):
         """Saudi Arabia has traditionally used the Umm al-Qura calendar
@@ -71,16 +72,16 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
         for i in range(4):
             self._add_observed(_timedelta(dt, -i), name=self[dt], rule=observed_rule)
 
-    def _populate_public_holidays(self):
+    def _get_weekend(self, dt: date) -> set[int]:
         # Weekend used to be THU, FRI before June 28th, 2013.
-        # On that year both Eids were after that date, and Founding day
-        # holiday started at 2022; so what below works.
+        return {FRI, SAT} if dt >= date(2013, JUN, 28) else {THU, FRI}
+
+    def _populate_public_holidays(self):
         self._observed_rule = (
             THU_TO_PREV_WED + FRI_TO_NEXT_SAT
             if self._year <= 2012
             else FRI_TO_PREV_THU + SAT_TO_NEXT_SUN
         )
-        self.weekend = {THU, FRI} if self._year <= 2012 else {FRI, SAT}
 
         # Eid al-Fitr Holiday.
         eid_al_fitr_name = tr("عطلة عيد الفطر")

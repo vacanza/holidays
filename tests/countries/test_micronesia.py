@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.micronesia import Micronesia, FM, FSM
+from holidays.countries.micronesia import Micronesia
 from tests.common import CommonCountryTests
 
 
@@ -22,17 +22,12 @@ class TestMicronesia(CommonCountryTests, TestCase):
         years = range(1987, 2050)
         super().setUpClass(Micronesia, years=years, years_non_observed=years)
         cls.subdiv_holidays = {
-            subdiv: FM(subdiv=subdiv, years=years) for subdiv in FM.subdivisions
+            subdiv: Micronesia(subdiv=subdiv, years=years) for subdiv in Micronesia.subdivisions
         }
         cls.subdiv_holidays_non_observed = {
-            subdiv: FM(subdiv=subdiv, years=years, observed=False) for subdiv in FM.subdivisions
+            subdiv: Micronesia(subdiv=subdiv, years=years, observed=False)
+            for subdiv in Micronesia.subdivisions
         }
-
-    def test_country_aliases(self):
-        self.assertAliases(Micronesia, FM, FSM)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Micronesia(years=1986))
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -474,8 +469,8 @@ class TestMicronesia(CommonCountryTests, TestCase):
 
     def test_2024(self):
         # https://www.timeanddate.com/holidays/micronesia/2024?hol=1
-        self.assertHolidays(
-            Micronesia(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "New Year's Day"),
             ("2024-03-31", "Micronesian Culture and Tradition Day"),
             ("2024-04-01", "Micronesian Culture and Tradition Day (observed)"),

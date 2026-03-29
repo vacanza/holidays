@@ -10,14 +10,16 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# ruff: noqa: F401
-
+from holidays.financial.bombay_stock_exchange import BombayStockExchange, XBOM, BSE
 from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao, BVMF, B3
 from holidays.financial.european_central_bank import EuropeanCentralBank, XECB, ECB, TAR
-from holidays.financial.ice_futures_europe import ICEFuturesEurope, IFEU
+from holidays.financial.germany_exchange import GermanyStockExchange, XETR, XFRA
+from holidays.financial.ice_futures_europe import IceFuturesEurope, ICEFuturesEurope, IFEU
+from holidays.financial.japan_exchange import JapanExchange, XJPX, JPX, TSE, OSE
 from holidays.financial.national_stock_exchange_of_india import (
     NationalStockExchangeOfIndia,
     XNSE,
     NSE,
 )
 from holidays.financial.ny_stock_exchange import NewYorkStockExchange, XNYS, NYSE
+from holidays.financial.shanghai_stock_exchange import ShanghaiStockExchange, XSHG, SSE

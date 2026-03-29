@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.pakistan import Pakistan, PK, PAK
+from holidays.countries.pakistan import Pakistan
 from tests.common import CommonCountryTests
 
 
@@ -22,12 +22,6 @@ class TestPakistan(CommonCountryTests, TestCase):
         years = range(1948, 2050)
         super().setUpClass(Pakistan, years=years)
         cls.no_estimated_holidays = Pakistan(years=years, islamic_show_estimated=False)
-
-    def test_country_aliases(self):
-        self.assertAliases(Pakistan, PK, PAK)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Pakistan(years=1947))
 
     def test_kashmir_day(self):
         name = "Kashmir Solidarity Day"
@@ -144,8 +138,8 @@ class TestPakistan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
 
     def test_2002(self):
-        self.assertHolidays(
-            Pakistan(years=2002),
+        self.assertHolidaysInYear(
+            2002,
             ("2002-02-05", "Kashmir Solidarity Day"),
             ("2002-02-22", "Eid-ul-Adha (estimated)"),
             ("2002-02-23", "Eid-ul-Adha (estimated)"),
@@ -163,8 +157,8 @@ class TestPakistan(CommonCountryTests, TestCase):
         )
 
     def test_2002_no_estimated_label(self):
-        self.assertHolidays(
-            Pakistan(years=2002, islamic_show_estimated=False),
+        self.assertIslamicNoEstimatedHolidaysInYear(
+            2002,
             ("2002-02-05", "Kashmir Solidarity Day"),
             ("2002-02-22", "Eid-ul-Adha"),
             ("2002-02-23", "Eid-ul-Adha"),
@@ -182,8 +176,8 @@ class TestPakistan(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Pakistan(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-02-05", "Kashmir Solidarity Day"),
             ("2022-03-23", "Pakistan Day"),
             ("2022-05-01", "Labour Day"),
@@ -202,8 +196,8 @@ class TestPakistan(CommonCountryTests, TestCase):
         )
 
     def test_2024(self):
-        self.assertHolidays(
-            Pakistan(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-02-05", "Kashmir Solidarity Day"),
             ("2024-03-23", "Pakistan Day"),
             ("2024-05-01", "Labour Day"),

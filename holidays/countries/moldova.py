@@ -23,7 +23,7 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Moldova>
-        * <https://www.legis.md/cautare/getResults?doc_id=133686>
+        * <https://archive.org/details/httpswww.legis.mdcautaregetresultsdoc_id133686langro>
     """
 
     country = "MD"

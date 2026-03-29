@@ -13,7 +13,7 @@
 import importlib
 from collections.abc import Iterable
 from threading import RLock
-from typing import Any, Optional
+from typing import Any
 
 from holidays.holiday_base import HolidayBase
 
@@ -28,6 +28,7 @@ COUNTRIES: RegistryDict = {
     "andorra": ("Andorra", "AD", "AND"),
     "angola": ("Angola", "AO", "AGO"),
     "anguilla": ("Anguilla", "AI", "AIA"),
+    "antarctica": ("Antarctica", "AQ", "ATA"),
     "antigua_and_barbuda": ("AntiguaAndBarbuda", "AG", "ATG"),
     "argentina": ("Argentina", "AR", "ARG"),
     "armenia": ("Armenia", "AM", "ARM"),
@@ -49,7 +50,9 @@ COUNTRIES: RegistryDict = {
     "bonaire_sint_eustatius_and_saba": ("BonaireSintEustatiusAndSaba", "BQ", "BES"),
     "bosnia_and_herzegovina": ("BosniaAndHerzegovina", "BA", "BIH"),
     "botswana": ("Botswana", "BW", "BWA"),
+    "bouvet_island": ("BouvetIsland", "BV", "BVT"),
     "brazil": ("Brazil", "BR", "BRA"),
+    "british_indian_ocean_territory": ("BritishIndianOceanTerritory", "IO", "IOT"),
     "british_virgin_islands": ("BritishVirginIslands", "VG", "VGB"),
     "brunei": ("Brunei", "BN", "BRN"),
     "bulgaria": ("Bulgaria", "BG", "BLG"),
@@ -115,6 +118,7 @@ COUNTRIES: RegistryDict = {
     "guinea_bissau": ("GuineaBissau", "GW", "GNB"),
     "guyana": ("Guyana", "GY", "GUY"),
     "haiti": ("Haiti", "HT", "HTI"),
+    "heard_island_and_mcdonald_islands": ("HeardIslandAndMcDonaldIslands", "HM", "HMD"),
     "honduras": ("Honduras", "HN", "HND"),
     "hongkong": ("HongKong", "HK", "HKG"),
     "hungary": ("Hungary", "HU", "HUN"),
@@ -134,6 +138,7 @@ COUNTRIES: RegistryDict = {
     "kazakhstan": ("Kazakhstan", "KZ", "KAZ"),
     "kenya": ("Kenya", "KE", "KEN"),
     "kiribati": ("Kiribati", "KI", "KIR"),
+    "kosovo": ("Kosovo", "XK", "XKK"),
     "kuwait": ("Kuwait", "KW", "KWT"),
     "kyrgyzstan": ("Kyrgyzstan", "KG", "KGZ"),
     "laos": ("Laos", "LA", "LAO"),
@@ -166,6 +171,7 @@ COUNTRIES: RegistryDict = {
     "montserrat": ("Montserrat", "MS", "MSR"),
     "morocco": ("Morocco", "MA", "MOR"),
     "mozambique": ("Mozambique", "MZ", "MOZ"),
+    "myanmar": ("Myanmar", "MM", "MMR"),
     "namibia": ("Namibia", "NA", "NAM"),
     "nauru": ("Nauru", "NR", "NRU"),
     "nepal": ("Nepal", "NP", "NPL"),
@@ -177,6 +183,7 @@ COUNTRIES: RegistryDict = {
     "nigeria": ("Nigeria", "NG", "NGA"),
     "niue": ("Niue", "NU", "NIU"),
     "norfolk_island": ("NorfolkIsland", "NF", "NFK"),
+    "north_korea": ("NorthKorea", "KP", "PRK"),
     "north_macedonia": ("NorthMacedonia", "MK", "MKD"),
     "northern_mariana_islands": ("NorthernMarianaIslands", "MP", "MNP", "HolidaysMP"),
     "norway": ("Norway", "NO", "NOR"),
@@ -233,6 +240,7 @@ COUNTRIES: RegistryDict = {
     "south_sudan": ("SouthSudan", "SS", "SSD"),
     "spain": ("Spain", "ES", "ESP"),
     "sri_lanka": ("SriLanka", "LK", "LKA"),
+    "sudan": ("Sudan", "SD", "SDN"),
     "suriname": ("Suriname", "SR", "SUR"),
     "svalbard_and_jan_mayen": ("SvalbardAndJanMayen", "SJ", "SJM", "HolidaysSJ"),
     "sweden": ("Sweden", "SE", "SWE"),
@@ -271,17 +279,22 @@ COUNTRIES: RegistryDict = {
     "venezuela": ("Venezuela", "VE", "VEN"),
     "vietnam": ("Vietnam", "VN", "VNM"),
     "wallis_and_futuna": ("WallisAndFutuna", "WF", "WLF", "HolidaysWF"),
+    "western_sahara": ("WesternSahara", "EH", "ESH"),
     "yemen": ("Yemen", "YE", "YEM"),
     "zambia": ("Zambia", "ZM", "ZMB"),
     "zimbabwe": ("Zimbabwe", "ZW", "ZWE"),
 }
 
 FINANCIAL: RegistryDict = {
+    "bombay_stock_exchange": ("BombayStockExchange", "XBOM", "BSE"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
     "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),
-    "ice_futures_europe": ("ICEFuturesEurope", "IFEU"),
+    "germany_exchange": ("GermanyStockExchange", "XETR", "XFRA"),
+    "ice_futures_europe": ("IceFuturesEurope", "IFEU", "ICEFuturesEurope"),
+    "japan_exchange": ("JapanExchange", "XJPX", "JPX", "TSE", "OSE"),
     "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
+    "shanghai_stock_exchange": ("ShanghaiStockExchange", "XSHG", "SSE"),
 }
 
 # A re-entrant lock. Once a thread has acquired a re-entrant lock,
@@ -319,7 +332,7 @@ class EntityLoader:
         cls = self.get_entity()
         return cls(*args, **kwargs)  # type: ignore[misc, operator]
 
-    def __getattr__(self, name: str) -> Optional[Any]:
+    def __getattr__(self, name: str) -> Any | None:
         """Return attribute of a lazy-loaded entity."""
         cls = self.get_entity()
         return getattr(cls, name)
@@ -331,7 +344,7 @@ class EntityLoader:
             f"use the '{self.module_name}.{self.entity_name}' class directly."
         )
 
-    def get_entity(self) -> Optional[HolidayBase]:
+    def get_entity(self) -> HolidayBase | None:
         """Return lazy-loaded entity."""
         if self.entity is None:
             # Avoid deadlock due to importlib.import_module not being thread-safe by caching all
@@ -344,6 +357,7 @@ class EntityLoader:
     @staticmethod
     def _get_entity_codes(
         container: RegistryDict,
+        *,
         include_aliases: bool = True,
         max_code_length: int = 3,
         min_code_length: int = 2,

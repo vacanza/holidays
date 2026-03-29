@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# ruff: noqa: F401
-
 """Mixins for the holidays package."""
 
 from holidays.mixins.child_entity import ChildEntity

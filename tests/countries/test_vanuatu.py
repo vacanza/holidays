@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.vanuatu import Vanuatu, VU, VTU
+from holidays.countries.vanuatu import Vanuatu
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestVanuatu(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Vanuatu, years=range(1981, 2050), years_non_observed=range(2000, 2024))
-
-    def test_country_aliases(self):
-        self.assertAliases(Vanuatu, VU, VTU)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Vanuatu(years=1980))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -201,8 +195,8 @@ class TestVanuatu(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_2022(self):
-        self.assertHolidays(
-            Vanuatu(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-02-21", "Father Lini Day"),
             ("2022-03-05", "Custom Chief's Day"),

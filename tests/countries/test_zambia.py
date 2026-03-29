@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.zambia import Zambia, ZM, ZMB
+from holidays.countries.zambia import Zambia
 from tests.common import CommonCountryTests
 
 
@@ -20,12 +20,6 @@ class TestZambia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Zambia, years=range(1965, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Zambia, ZM, ZMB)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Zambia(years=1964))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -134,8 +128,8 @@ class TestZambia(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_2022(self):
-        self.assertHolidays(
-            Zambia(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-03-08", "International Women's Day"),
             ("2022-03-12", "Youth Day"),
