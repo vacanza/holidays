@@ -162,7 +162,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         self._add_thimphu_drubchen_day(tr("ཐིམ་རྫོང་ལྷ་མོའི་དངོས་འཆམ་མཇལ་རྒྱུའི་ངལ་གསོ།"))
 
         # Thimphu Tshechu.
-        name = name = tr("ཐིམ་ཕུ་ཚེས་བཅུའི་ངལ་གསོ།")
+        name = tr("ཐིམ་ཕུ་ཚེས་བཅུའི་ངལ་གསོ།")
         self._add_thimphu_tshechu_day(name)
         self._add_thimphu_tshechu_day_two(name)
         self._add_thimphu_tshechu_day_three(name)
