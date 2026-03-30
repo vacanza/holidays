@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from unittest import TestCase
-
 from holidays.countries.bhutan import Bhutan
 from tests.common import CommonCountryTests
 
@@ -188,9 +187,7 @@ class TestBhutan(CommonCountryTests, TestCase):
 
     def test_thimphu_drubchoe(self):
         name = "ཐིམ་རྫོང་ལྷ་མོའི་དངོས་འཆམ་མཇལ་རྒྱུའི་ངལ་གསོ།"
-
         self.assertNoHolidayName(name)
-
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "15":
                 self.assertHolidayName(
@@ -209,9 +206,7 @@ class TestBhutan(CommonCountryTests, TestCase):
 
     def test_thimphu_tshechu(self):
         name = "ཐིམ་ཕུ་ཚེས་བཅུའི་ངལ་གསོ།"
-
         self.assertNoHolidayName(name)
-
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "15":
                 self.assertHolidayName(
