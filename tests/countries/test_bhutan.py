@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from unittest import TestCase
+
 from holidays.countries.bhutan import Bhutan
 from tests.common import CommonCountryTests
 
