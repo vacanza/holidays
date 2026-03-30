@@ -30,32 +30,32 @@ msgstr ""
 
 #. New Year's Day.
 msgid "Año Nuevo"
-msgstr ""
+msgstr "Año Nuevo"
 
 #. Constitution Day.
 msgid "Día de la Constitución"
-msgstr ""
+msgstr "Día de la Constitución"
 
 #. Benito Juárez's birthday.
 msgid "Natalicio de Benito Juárez"
-msgstr ""
+msgstr "Natalicio de Benito Juárez"
 
 #. Labor Day.
 msgid "Día del Trabajo"
-msgstr ""
+msgstr "Día del Trabajo"
 
 #. Independence Day.
 msgid "Día de la Independencia"
-msgstr ""
+msgstr "Día de la Independencia"
 
 #. Revolution Day.
 msgid "Día de la Revolución"
-msgstr ""
+msgstr "Día de la Revolución"
 
 #. Change of Federal Government.
 msgid "Transmisión del Poder Ejecutivo Federal"
-msgstr ""
+msgstr "Transmisión del Poder Ejecutivo Federal"
 
 #. Christmas Day.
 msgid "Navidad"
-msgstr ""
+msgstr "Navidad"

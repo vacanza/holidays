@@ -13,7 +13,7 @@
 # Ethiopia holidays.
 #
 msgid ""
-msgstr ""
+msgstr "%s (ግምት)"
 "Project-Id-Version: Holidays 0.72\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-15 14:15-0800\n"
@@ -31,71 +31,71 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (ግምት)"
-msgstr ""
+msgstr "የገና ወይም የልደት በዓል"
 
 #. Christmas Day.
 msgid "የገና ወይም የልደት በዓል"
-msgstr ""
+msgstr "የጥምቀት በዓል"
 
 #. Epiphany.
 msgid "የጥምቀት በዓል"
-msgstr ""
+msgstr "የአድዋ ድል በዓል"
 
 #. Adwa Victory Day.
 msgid "የአድዋ ድል በዓል"
-msgstr ""
+msgstr "የስቅለት በዓል"
 
 #. Good Friday.
 msgid "የስቅለት በዓል"
-msgstr ""
+msgstr "የትንሳኤ(ፋሲካ) በዓል"
 
 #. Easter Sunday.
 msgid "የትንሳኤ(ፋሲካ) በዓል"
-msgstr ""
+msgstr "የዓለም የሠራተኞች (የላብአደሮች) ቀን"
 
 #. International Workers' Day.
 msgid "የዓለም የሠራተኞች (የላብአደሮች) ቀን"
-msgstr ""
+msgstr "የአርበኞች (የድል) ቀን በዓል"
 
 #. Ethiopian Patriots' Victory Day.
 msgid "የአርበኞች (የድል) ቀን በዓል"
-msgstr ""
+msgstr "ደርግ የወደቀበት ቀን"
 
 #. Downfall of the Dergue Regime Day.
 msgid "ደርግ የወደቀበት ቀን"
-msgstr ""
+msgstr "የዘመን መለወጫ (እንቁጣጣሽ) በዓል"
 
 #. Ethiopian New Year.
 msgid "የዘመን መለወጫ (እንቁጣጣሽ) በዓል"
-msgstr ""
+msgstr "የመስቀል በዓል"
 
 #. Finding of True Cross.
 msgid "የመስቀል በዓል"
-msgstr ""
+msgstr "የአብዮት ቀን"
 
 #. Popular Revolution Commemoration Day.
 msgid "የአብዮት ቀን"
-msgstr ""
+msgstr "የጥቅምት አብዮት ቀን"
 
 #. October Revolution Day.
 msgid "የጥቅምት አብዮት ቀን"
-msgstr ""
+msgstr "የኢድ አልፈጥር"
 
 #. Eid al-Fitr.
 msgid "የኢድ አልፈጥር"
-msgstr ""
+msgstr "የኢድ አልአድሃ (አረፋ)"
 
 #. Eid al-Adha.
 msgid "የኢድ አልአድሃ (አረፋ)"
-msgstr ""
+msgstr "የመውሊድ በዓል"
 
 #. Prophet's Birthday.
 msgid "የመውሊድ በዓል"
-msgstr ""
+msgstr "የሰማዕታት ቀን"
 
 #. Ethiopian Martyrs' Day.
 msgid "የሰማዕታት ቀን"
-msgstr ""
+msgstr "የብሔር ብሔረሰቦች ቀን"
 
 #. Nations, Nationalities and Peoples Day.
 msgid "የብሔር ብሔረሰቦች ቀን"

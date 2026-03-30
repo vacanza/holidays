@@ -29,24 +29,24 @@ msgstr ""
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr ""
+msgstr "New Year's Day"
 
 #. Good Friday.
 msgid "Good Friday"
-msgstr ""
+msgstr "Good Friday"
 
 #. Easter Monday.
 msgid "Easter Monday"
-msgstr ""
+msgstr "Easter Monday"
 
 #. Tokehega Day.
 msgid "Tokehega Day"
-msgstr ""
+msgstr "Tokehega Day"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr ""
+msgstr "Christmas Day"
 
 #. Boxing Day.
 msgid "Boxing Day"
-msgstr ""
+msgstr "Boxing Day"
