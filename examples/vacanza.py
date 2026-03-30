@@ -101,7 +101,7 @@ if __name__ == "__main__":
     i = 0
     while i < len(args):
         arg = args[i]
-        if arg == "--public-holidays":
+        if arg in {"--public-holidays", "public-holidays"}:
             public_only = True
         elif arg == "--subdivision":
             if i + 1 < len(args):
