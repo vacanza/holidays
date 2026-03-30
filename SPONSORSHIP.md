@@ -2,15 +2,18 @@
 
 The Open World Holidays Framework is launching a year-round sponsorship program to reward meaningful, independent contributions based on task complexity. Sponsored tasks are open year-round and tiered by complexity and available budget. We aim to reward meaningful work fairly while encouraging long-term engagement beyond specific coding events.
 
-- [Program Goals](#program-goals)
-- [Current Funding](#current-funding)
-- [Sponsorship Amounts](#sponsorship-amounts)
-- [Eligibility](#eligibility)
-- [Application and Selection Process](#application-and-selection-process)
-- [Payment Process](#payment-process)
-- [For Potential Sponsors](#for-potential-sponsors)
-- [FAQ](#faq)
-- [Contact](#contact)
+- [Open World Holidays Framework Sponsorship Program](#open-world-holidays-framework-sponsorship-program)
+  - [Program Goals](#program-goals)
+  - [Current Funding](#current-funding)
+  - [Sponsorship Amounts](#sponsorship-amounts)
+    - [Sponsorship Amounts Notes](#sponsorship-amounts-notes)
+  - [Eligibility](#eligibility)
+    - [Eligibility Notes](#eligibility-notes)
+  - [Application and Selection Process](#application-and-selection-process)
+  - [Payment Process](#payment-process)
+  - [For Potential Sponsors](#for-potential-sponsors)
+  - [FAQ](#faq)
+  - [Contact](#contact)
 
 ## Program Goals
 
@@ -31,7 +34,7 @@ The amount sponsored will vary depending on the complexity of the task:
 | Task Size | Description                                                                                    | Compensation |
 | --------- | ---------------------------------------------------------------------------------------------- | ------------ |
 | Medium    | Tasks such as implementing holidays for a new entity using well-established templates or rules | \$25 USD     |
-| Hard       | Tasks requiring deeper research, localization, or custom rule logic                           | \$50 USD     |
+| Hard      | Tasks requiring deeper research, localization, or custom rule logic                            | \$50 USD     |
 
 ### Sponsorship Amounts Notes
 
