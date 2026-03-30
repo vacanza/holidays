@@ -1993,6 +1993,13 @@ code when available. The following financial markets are available:
 <td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
 <td></td>
 </tr>
+<tr>
+<td>Shenzhen Stock Exchange</td>
+<td>XSHE</td>
+<td>Shenzhen Stock Exchange (SZSE) market holidays</td>
+<td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 
