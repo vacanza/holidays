@@ -27,10 +27,6 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: ar\n"
 
-# References:
-# https://web.archive.org/web/20260116210114/https://www.abl.org.lb/french/news/official-holidays
-# https://web.archive.org/web/20260329170010/https://www.consulatlibanmarseille.com/fr/home/holidays
-
 #. %s (estimated).
 #, c-format
 msgid "%s (المقدرة)"
