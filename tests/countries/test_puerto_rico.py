@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNEMNT
+from holidays.constants import GOVERNMENT
 from holidays.countries.puerto_rico import PuertoRico
 from tests.common import CommonCountryTests
 
