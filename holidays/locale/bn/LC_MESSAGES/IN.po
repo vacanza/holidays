@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-03-23 14:20+0530\n"
+"PO-Revision-Date: 2026-03-29 14:40+0530\n"
 "Last-Translator: Kolusu Sai Ganesh <kolususaiganesh991@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: bn\n"
@@ -268,9 +268,9 @@ msgstr "বৈশাখী"
 msgid "Lohri"
 msgstr "লোহরি"
 
-#. Punjabi Day.
-msgid "Punjab Day"
-msgstr "পাঞ্জাব দিবস"
+#. New Punjab Day.
+msgid "New Punjab Day"
+msgstr "নতুন পাঞ্জাব দিবস"
 
 #. Rajasthan Day.
 msgid "Rajasthan Day"
