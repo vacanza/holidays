@@ -154,6 +154,16 @@ the list of supported translations for the country in the README.md.
     `msgstr` lines there as missing work or duplicate the `msgid` text into `msgstr` unless
     maintainers explicitly ask for a change.
 
+!!! note "Duplicate translations across per-entity files"
+
+    When the same holiday name (e.g., "New Year's Day") appears across 
+    multiple countries in the same language, each country currently 
+    generates a separate translation entry. This results in duplicate 
+    msgids across per-entity .po files, which adds redundancy to the 
+    localization workflow. See issue #1658 for the ongoing discussion on
+    moving towards a per-locale approach that would consolidate 
+    translations into one file per language.
+
 If the translation already exists you'll just need to update it with the new template entries
 (your .po file editor may help you to do that with no hassle).
 
