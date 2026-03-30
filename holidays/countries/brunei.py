@@ -62,7 +62,7 @@ class Brunei(
     """Brunei holidays.
 
     References:
-        * <https://web.archive.org/web/20250421085743/https://www.labour.gov.bn/lists/upcomming%20events/allitems.aspx>
+        * <https://web.archive.org/web/20250421085743/https://www.labour.gov.bn/lists/upcoming%20events/allitems.aspx>
         * <https://web.archive.org/web/20250421234214/https://www.labour.gov.bn/Download/GUIDE%20TO%20BRUNEI%20EMPLOYMENT%20LAWS%20-%20english%20version-3.pdf>
         * <https://web.archive.org/web/20250429080129/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk12-1997.pdf>
         * <https://web.archive.org/web/20250429080148/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk14-1998.pdf>

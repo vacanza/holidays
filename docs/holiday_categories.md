@@ -107,7 +107,7 @@ Holidays that are legally treated equivalently to public holidays for specific p
 
 Examples:
 
-- **Sweden**: Midsummer Eve (Midsommarafton), Christmas Eve (Julafton), and New Year's Eve (Nyårsafton) - per Swedish Annual Leave Law (SFS 1977:480), these are treated equivalently to Sundays and public holidays for working day calculations, though they are not official public holidays.
+- **Sweden**: Midsummer Eve (Midsommarafton), Christmas Eve (Julafton), and New Year's Eve (Nyårsafton) - per Swedish annually Leave Law (SFS 1977:480), these are treated equivalently to Sundays and public holidays for working day calculations, though they are not official public holidays.
 
 Usage:
 

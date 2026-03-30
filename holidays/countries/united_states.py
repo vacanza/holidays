@@ -88,8 +88,8 @@ class UnitedStates(
             * IN:
                 * <https://web.archive.org/web/20250119103241/https://digital.statelib.lib.in.us/infoexpress/holidays.aspx>
                 * <https://web.archive.org/web/20250418142531/https://www.in.gov/spd/benefits/state-holidays/>
-            * [MD](https://web.archive.org/web/20250310030503/https://msa.maryland.gov/msa/mdmanual/01glance/html/holidayl.html)
-            * [MI](https://web.archive.org/web/20250328094534/https://www.michigan.gov/som/government/state-holidays)
+            * [MD](https://web.archive.org/web/20250310030503/https://msa.maryland.gov/msa/mdmannual/01glance/html/holidayl.html)
+            * [MI](https://web.archive.org/web/20250328094534/https://www.michigan.gov/some/government/state-holidays)
             * [MN](https://web.archive.org/web/20250322174508/https://www.revisor.mn.gov/statutes/cite/645.44)
             * [MT](https://web.archive.org/web/20250408030903/https://archive.legmt.gov/bills/mca/title_0010/chapter_0010/part_0020/section_0160/0010-0010-0020-0160.html)
             * [NJ](https://web.archive.org/web/20250409164919/https://nj.gov/nj/about/facts/holidays/)

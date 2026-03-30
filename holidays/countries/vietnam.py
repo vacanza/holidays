@@ -168,7 +168,7 @@ class VietnamStaticHolidays:
     # Date format (see strftime() Format Codes).
     substituted_date_format = tr("%d/%m/%Y")
     # Day off (substituted from %s).
-    substituted_label = tr("Ngày nghỉ (thay cho ngày %s)")
+    substituted_label = tr("Ngày nghỉ (they cho ngày %s)")
 
     special_public_holidays = {
         2010: (FEB, 19, FEB, 27),

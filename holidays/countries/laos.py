@@ -120,7 +120,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
 
         # ບຸນປີໃໝ່ລາວ
         # Status: In-Use.
-        # Celebrated for 3 days from 14-16 April annualy.
+        # Celebrated for 3 days from 14-16 April annually.
         # Observed dates prior to 2018 are assigned manually.
 
         # Lao New Year's Day.
@@ -334,7 +334,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         # Status: In-Use.
         # Celebrated the Declaration of Independence on Oct 12, 1945.
 
-        # Indepedence Declaration Day.
+        # Independence Declaration Day.
         self._add_holiday_oct_12(tr("ວັນປະກາດເອກະລາດ"))
 
         # ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ໄກສອນ ພົມວິຫານ

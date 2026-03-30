@@ -114,7 +114,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             * <https://web.archive.org/web/20230205075326/https://workpointtoday.com/news1-5/>
         * [HM Queen Suthida's Birthday](https://web.archive.org/web/20241217104142/https://www.thairath.co.th/news/politic/1567418)
         * [HM Maha Vajiralongkorn's Birthday](https://web.archive.org/web/20220817223130/https://www.matichon.co.th/politics/news_526200)
-        * [HM Queen Sirikit the Queen Mother's Birthday](https://web.archive.org/web/20250203002257/https://hilight.kapook.com/view/14164)
+        * [HM Queen Sirikit the Queen Mother's Birthday](https://web.archive.org/web/20250203002257/https://highlight.kapook.com/view/14164)
         * [National Mother's Day](https://web.archive.org/web/20221207161434/https://www.brh.go.th/index.php/2019-02-27-04-11-52/542-12-2564)
         * [HM King Bhumibol Adulyadej Memorial Day](https://web.archive.org/web/20220817223130/https://www.matichon.co.th/politics/news_526200)
         * HM King Chulalongkorn Memorial Day:
@@ -126,7 +126,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         * [National Father's Day](https://web.archive.org/web/20230205075650/https://www.brh.go.th/index.php/2019-02-27-04-12-21/594-5-5)
         * Constitution Day:
             * <https://th.wikipedia.org/wiki/วันรัฐธรรมนูญ>
-            * <https://web.archive.org/web/20250212210436/https://hilight.kapook.com/view/18208>
+            * <https://web.archive.org/web/20250212210436/https://highlight.kapook.com/view/18208>
             * [Bank of Thailand](https://web.archive.org/web/20230205072056/https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/2023.aspx)
             * <https://web.archive.org/web/20161028001043/http://www.myhora.com:80/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx>
         * New Year's Eve:
@@ -813,7 +813,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # Become an holiday again until 1960 (B.E. 2503).
         # Removed as an holiday in 1999 due to financial crisis, reinstated in 2000.
         # No event was held in 2021 due to local Covid-19 situation, though it stays a day off.
-        # Is dated on an annual basis by the Royal Palace, always on weekdays.
+        # Is dated on an annually basis by the Royal Palace, always on weekdays.
         # For historic research, วันเกษตรแห่งชาติ (National Agricultural Day) also concides with
         #   this from 1966 onwards. For earlier records the date was refered as วันแรกนาขวัญ.
         # This isn't even fixed even by the Thai Lunar Calendar besides being in Month 6

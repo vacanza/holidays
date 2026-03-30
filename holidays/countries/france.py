@@ -322,7 +322,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         # While it's not clear when these holidays were added,
         # they're likely added after local autonomy was granted on July 29th, 1961.
         if self._year >= 1962:
-            # Feast of Saint Peter Chanel.
+            # Feast of Saint Peter Channel.
             self._add_holiday_apr_28(tr("Saint Pierre Chanel"))
 
             # Saints Peter and Paul Day.

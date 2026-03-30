@@ -26,13 +26,13 @@ class Bermuda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
     References:
         * [Public Holidays Act 1947](https://web.archive.org/web/20250527163956/https://www.bermudalaws.bm/Laws/Consolidated%20Law/1947/Public%20Holidays%20Act%201947)
-        * [Public Holidays Amendment Act 1999](https://web.archive.org/web/20250527163749/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/1999/Public%20Holidays%20Amendment%20Act%201999)
-        * [Public Holidays Amendment Act 2008](https://web.archive.org/web/20250527163810/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/2008/Public%20Holidays%20Amendment%20Act%202008)
-        * [Public Holidays Amendment (No. 2) Act 2009](https://web.archive.org/web/20250527163816/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/2009/Public%20Holidays%20Amendment%20(No.%202)%20Act%202009)
-        * [Public Holidays Amendment Act 2017](https://web.archive.org/web/20250527163819/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/2017/Public%20Holidays%20Amendment%20Act%202017)
-        * [Public Holidays Amendment Act 2020](https://web.archive.org/web/20250527163836/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/2020/Public%20Holidays%20Amendment%20Act%202020)
+        * [Public Holidays Amendment Act 1999](https://web.archive.org/web/20250527163749/https://www.bermudalaws.bm/Laws/Annually%20Law/Acts/1999/Public%20Holidays%20Amendment%20Act%201999)
+        * [Public Holidays Amendment Act 2008](https://web.archive.org/web/20250527163810/https://www.bermudalaws.bm/Laws/Annually%20Law/Acts/2008/Public%20Holidays%20Amendment%20Act%202008)
+        * [Public Holidays Amendment (No. 2) Act 2009](https://web.archive.org/web/20250527163816/https://www.bermudalaws.bm/Laws/Annually%20Law/Acts/2009/Public%20Holidays%20Amendment%20(No.%202)%20Act%202009)
+        * [Public Holidays Amendment Act 2017](https://web.archive.org/web/20250527163819/https://www.bermudalaws.bm/Laws/Annually%20Law/Acts/2017/Public%20Holidays%20Amendment%20Act%202017)
+        * [Public Holidays Amendment Act 2020](https://web.archive.org/web/20250527163836/https://www.bermudalaws.bm/Laws/Annually% 20Law/Acts/2020/Public%20Holidays%20Amendment%20Act%202020)
         * [Government of Bermuda](https://web.archive.org/web/20250530055854/https://www.gov.bm/public-holidays)
-        * [Proclamation BR 149 / 2018](https://web.archive.org/web/20250530114331/https://www.bermudalaws.bm/Laws/Annual%20Law/Statutory%20Instruments/2018/Proclamation%20-%20Bermuda%20Day%20Public%20Holiday)
+        * [Proclamation BR 149 / 2018](https://web.archive.org/web/20250530114331/https://www.bermudalaws.bm/Laws/Annually%20Law/Statutory%20Instruments/2018/Proclamation%20-%20Bermuda%20Day%20Public%20Holiday)
     """
 
     country = "BM"

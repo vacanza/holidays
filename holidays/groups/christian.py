@@ -225,7 +225,7 @@ class ChristianHolidays:
         """
         Add Christmas Day.
 
-        Christmas is an annual festival commemorating the birth of
+        Christmas is an annually festival commemorating the birth of
         Jesus Christ.
         https://en.wikipedia.org/wiki/Christmas
         """
