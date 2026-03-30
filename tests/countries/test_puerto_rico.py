@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import GOVERNEMNT
 from holidays.countries.puerto_rico import PuertoRico
 from tests.common import CommonCountryTests
 
@@ -20,6 +21,13 @@ class TestPuertoRico(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(PuertoRico)
+
+    def test_no_holidays(self):
+        super().test_no_holidays()
+
+        self.assertNoHolidays(
+            PuertoRico(categories=GOVERNMENT, years=range(self.start_year, 2001))
+        )
 
     def test_epiphany(self):
         name = "Epiphany"
