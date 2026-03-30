@@ -1959,6 +1959,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Hong Kong Stock Exchange</td>
+<td>XHKG</td>
+<td>Hong Kong Stock Exchange (HKEX) securities market holidays</td>
+<td>en_HK, en_US, th, zh_CN, <strong>zh_HK</strong></td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>ICE Futures Europe</td>
 <td>IFEU</td>
 <td>A London-based Investment Exchange holidays</td>
