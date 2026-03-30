@@ -268,9 +268,9 @@ msgstr "വൈശാഖി"
 msgid "Lohri"
 msgstr "ലോഹരി"
 
-#. Punjabi Day.
-msgid "Punjab Day"
-msgstr "പഞ്ചാബ് ദിനം"
+#. New Punjab Day.
+msgid "New Punjab Day"
+msgstr "പുതിയ പഞ്ചാബ് ദിനം"
 
 #. Rajasthan Day.
 msgid "Rajasthan Day"
