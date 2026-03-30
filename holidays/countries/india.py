@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
-from datetime import date, timedelta  
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
@@ -156,18 +155,6 @@ class India(
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
     )
-    def _add_parsi_new_year(self, name):
-        
-        # Reference: Aug 15, 2024 is a known Parsi New Year date.
-        # We calculate how many leap days have passed since 2024.
-        # This keeps the date at Aug 15 for 2024-2027 and shifts it 
-        # to Aug 14 starting in 2028.
-        leaps = (self._year - 2024) // 4
-        
-        # We start at Aug 15 of the current year and subtract the shift.
-        dt = date(self._year, 8, 15) - timedelta(days=leaps)
-        self._add_holiday(name, dt)
-        
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """

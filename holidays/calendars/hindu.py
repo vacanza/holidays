@@ -14,7 +14,20 @@ from collections.abc import Iterable
 from datetime import date
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    _timedelta,
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.helpers import _normalize_tuple
 
 BATHUKAMMA = "BATHUKAMMA"
@@ -1572,6 +1585,21 @@ class _HinduLunisolar:
 
     def vaisakhi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VAISAKHI, year)
+
+
+def _add_parsi_new_year(self, name):
+    # The Parsi New Year (Shahenshahi) follows a 365-day fixed cycle.
+    # It shifts back by 1 day every 4 years relative to the Gregorian calendar.
+    # Base reference: August 15, 2024.
+    # Using 1970 as a more standard base year:
+    # In 1970, the holiday fell on August 28.
+
+    # Calculate shifts based on leap years since 1970
+    leaps = (self._year - 1970) // 4
+
+    # Use the internal _timedelta helper
+    dt = _timedelta(date(self._year, 8, 28), -leaps)
+    self._add_holiday(name, dt)
 
 
 class _CustomHinduHolidays(_CustomCalendar, _HinduLunisolar):
