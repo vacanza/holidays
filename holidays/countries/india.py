@@ -24,7 +24,9 @@ from holidays.groups import (
 )
 from holidays.holiday_base import HolidayBase
 
-
+"""
+See docs/india_festivals.md for detailed explanation of Navratri and Durga Puja handling.
+"""
 class India(
     HolidayBase, ChristianHolidays, HinduCalendarHolidays, InternationalHolidays, IslamicHolidays
 ):
