@@ -41,6 +41,8 @@ class India(
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
         * Kerala:
             * <https://web.archive.org/web/20260329164551/https://kerala.gov.in/showcalendar/2026>
+        * Punjab:
+            * <https://web.archive.org/web/20260216022835/https://punjab.gov.in/wp-content/uploads/2025/12/Calender-2026.pdf>
         * Tamil Nadu:
             * [Tamil Monthly Calendar](https://web.archive.org/web/20231228103352/https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
             * [Tamil Calendar](https://web.archive.org/web/20250429125140/https://www.prokerala.com/general/calendar/tamilcalendar.php)
@@ -152,17 +154,7 @@ class India(
         "West Bengal": "WB",
     }
     supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = (
-        "bn",
-        "en_IN",
-        "en_US",
-        "gu",
-        "hi",
-        "kn",
-        "ml",
-        "ta",
-        "te",
-    )
+    supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "kn", "ml", "pa", "ta", "te")
     _deprecated_subdivisions = (
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
@@ -464,8 +456,8 @@ class India(
         self._add_holiday_jan_13(tr("Lohri"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
-        # Punjabi Day.
-        self._add_holiday_nov_1(tr("Punjab Day"))
+        # New Punjab Day.
+        self._add_holiday_nov_1(tr("New Punjab Day"))
 
     # Rajasthan.
     def _populate_subdiv_rj_public_holidays(self):
