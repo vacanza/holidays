@@ -16,7 +16,7 @@ from holidays.countries.guam import Guam
 from tests.common import CommonCountryTests
 
 
-class TestGU(CommonCountryTests, TestCase):
+class TestGuam(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Guam)
@@ -70,6 +70,7 @@ class TestGU(CommonCountryTests, TestCase):
             ("2022-03-07", "Guam Discovery Day"),
             ("2022-03-17", "Saint Patrick's Day"),
             ("2022-04-15", "Good Friday"),
+            ("2022-04-17", "Easter Sunday"),
             ("2022-05-08", "Mother's Day"),
             ("2022-05-30", "Memorial Day"),
             ("2022-06-19", "Father's Day; Juneteenth National Independence Day"),
@@ -82,8 +83,10 @@ class TestGU(CommonCountryTests, TestCase):
             ("2022-11-11", "Veterans Day"),
             ("2022-11-24", "Thanksgiving Day"),
             ("2022-12-08", "Lady of Camarin Day"),
+            ("2022-12-24", "Christmas Eve"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (observed)"),
+            ("2022-12-31", "New Year's Eve"),
         )
 
     def test_l10n_th(self):
@@ -96,6 +99,7 @@ class TestGU(CommonCountryTests, TestCase):
             ("2022-03-07", "วันค้นพบกวม"),
             ("2022-03-17", "วันนักบุญแพทริก"),
             ("2022-04-15", "วันศุกร์ประเสริฐ"),
+            ("2022-04-17", "วันอาทิตย์อีสเตอร์"),
             ("2022-05-08", "วันแม่"),
             ("2022-05-30", "วันรำลึก"),
             ("2022-06-19", "วันประกาศอิสรภาพแห่งชาติจูนทีนท์; วันพ่อ"),
@@ -108,6 +112,8 @@ class TestGU(CommonCountryTests, TestCase):
             ("2022-11-11", "วันทหารผ่านศึก"),
             ("2022-11-24", "วันขอบคุณพระเจ้า"),
             ("2022-12-08", "วันแม่พระแห่งคามาริน"),
+            ("2022-12-24", "วันคริสต์มาสอีฟ"),
             ("2022-12-25", "วันคริสต์มาส"),
             ("2022-12-26", "ชดเชยวันคริสต์มาส"),
+            ("2022-12-31", "วันสิ้นปี"),
         )

@@ -1,0 +1,321 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# India holidays bn localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.94\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-03-23 14:20+0530\n"
+"PO-Revision-Date: 2026-03-29 14:40+0530\n"
+"Last-Translator: Kolusu Sai Ganesh <kolususaiganesh991@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: bn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_IN\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (আনুমানিক)"
+
+#. Republic Day.
+msgid "Republic Day"
+msgstr "প্রজাতন্ত্র দিবস"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "স্বাধীনতা দিবস"
+
+#. Gandhi Jayanti.
+msgid "Gandhi Jayanti"
+msgstr "গান্ধী জয়ন্তী"
+
+#. Buddha Purnima.
+msgid "Buddha Purnima"
+msgstr "বুদ্ধ পূর্ণিমা"
+
+#. Diwali.
+msgid "Diwali"
+msgstr "দীপাবলি"
+
+#. Janmashtami.
+msgid "Janmashtami"
+msgstr "জন্মাষ্টমী"
+
+#. Dussehra.
+msgid "Dussehra"
+msgstr "বিজয়া দশমী"
+
+#. Mahavir Jayanti.
+msgid "Mahavir Jayanti"
+msgstr "মহাবীর জয়ন্তী"
+
+#. Maha Shivaratri.
+msgid "Maha Shivaratri"
+msgstr "মহাশিবরাত্রি"
+
+#. Guru Nanak Jayanti.
+msgid "Guru Nanak Jayanti"
+msgstr "গুরু নানক জয়ন্তী"
+
+#. Ashura.
+msgid "Muharram"
+msgstr "মহরম"
+
+#. Prophet's Birthday.
+msgid "Milad-un-Nabi"
+msgstr "মিলাদ-উন-নবী"
+
+#. Eid al-Fitr.
+msgid "Id-ul-Fitr"
+msgstr "ঈদ-উল-ফিতর"
+
+#. Eid al-Adha.
+msgid "Bakrid"
+msgstr "বকরিদ"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "গুড ফ্রাইডে"
+
+#. Christmas.
+msgid "Christmas"
+msgstr "বড়দিন"
+
+#. Children's Day.
+msgid "Children's Day"
+msgstr "শিশু দিবস"
+
+#. Holi.
+msgid "Holi"
+msgstr "হোলি"
+
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr "গণেশ চতুর্থী"
+
+#. Govardhan Puja.
+msgid "Govardhan Puja"
+msgstr "গোবর্ধন পূজা"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "শ্রমিক দিবস"
+
+#. Maha Navami.
+msgid "Maha Navami"
+msgstr "মহানবমী"
+
+#. Makar Sankranti.
+msgid "Makar Sankranti"
+msgstr "মকর সংক্রান্তি"
+
+#. Raksha Bandhan.
+msgid "Raksha Bandhan"
+msgstr "রাখি বন্ধন"
+
+#. Ram Navami.
+msgid "Ram Navami"
+msgstr "রাম নবমী"
+
+#. Navratri / Sharad Navratri.
+msgid "Navratri / Sharad Navratri"
+msgstr "নবরাত্রি / শারদ নবরাত্রি"
+
+#. Easter Sunday.
+msgid "Easter Sunday"
+msgstr "ইস্টার রবিবার"
+
+#. Palm Sunday.
+msgid "Palm Sunday"
+msgstr "পাম রবিবার"
+
+#. Dr. B. R. Ambedkar Jayanti.
+msgid "Dr. B. R. Ambedkar's Jayanti"
+msgstr "ড. বি. আর. আম্বেদকর জয়ন্তী"
+
+#. Andhra Pradesh Foundation Day.
+msgid "Andhra Pradesh Foundation Day"
+msgstr "অন্ধ্রপ্রদেশ প্রতিষ্ঠা দিবস"
+
+#. Ugadi.
+msgid "Ugadi"
+msgstr "উগাদি"
+
+#. Magh Bihu.
+msgid "Magh Bihu"
+msgstr "মাঘ বিহু"
+
+#. Assam Day.
+msgid "Assam Day"
+msgstr "অসম দিবস"
+
+#. Chhath Puja.
+msgid "Chhath Puja"
+msgstr "ছঠ পূজা"
+
+#. Bihar Day.
+msgid "Bihar Day"
+msgstr "বিহার দিবস"
+
+#. Chhattisgarh Foundation Day.
+msgid "Chhattisgarh Foundation Day"
+msgstr "ছত্তিশগড় প্রতিষ্ঠা দিবস"
+
+#. Goa Liberation Day.
+msgid "Goa Liberation Day"
+msgstr "গোয়া মুক্তি দিবস"
+
+#. Makar Sankranti.
+msgid "Uttarayan"
+msgstr "উত্তরায়ণ"
+
+#. Gujarat Day.
+msgid "Gujarat Day"
+msgstr "গুজরাট দিবস"
+
+#. Sardar Vallabhbhai Patel Jayanti.
+msgid "Sardar Vallabhbhai Patel Jayanti"
+msgstr "সরদার বল্লভভাই প্যাটেল জয়ন্তী"
+
+#. Haryana Foundation Day.
+msgid "Haryana Foundation Day"
+msgstr "হরিয়ানা প্রতিষ্ঠা দিবস"
+
+#. Himachal Day.
+msgid "Himachal Day"
+msgstr "হিমাচল দিবস"
+
+#. Jharkhand Formation Day.
+msgid "Jharkhand Formation Day"
+msgstr "ঝাড়খণ্ড গঠন দিবস"
+
+#. Karnataka Rajyotsav.
+msgid "Karnataka Rajyotsava"
+msgstr "কর্ণাটক রাজ্যোৎসব"
+
+#. Onam.
+msgid "Onam"
+msgstr "ওনাম"
+
+#. Kerala Foundation Day.
+msgid "Kerala Foundation Day"
+msgstr "কেরালা প্রতিষ্ঠা দিবস"
+
+#. Gudi Padwa.
+msgid "Gudi Padwa"
+msgstr "গুড়ি পাড়ওয়া"
+
+#. Chhatrapati Shivaji Maharaj Jayanti.
+msgid "Chhatrapati Shivaji Maharaj Jayanti"
+msgstr "ছত্রপতি শিবাজী মহারাজ জয়ন্তী"
+
+#. Maharashtra Day.
+msgid "Maharashtra Day"
+msgstr "মহারাষ্ট্র দিবস"
+
+#. Madhya Pradesh Foundation Day.
+msgid "Madhya Pradesh Foundation Day"
+msgstr "মধ্যপ্রদেশ প্রতিষ্ঠা দিবস"
+
+#. Mizoram State Day.
+msgid "Mizoram State Day"
+msgstr "মিজোরাম প্রতিষ্ঠা দিবস"
+
+#. Nagaland State Inauguration Day.
+msgid "Nagaland State Inauguration Day"
+msgstr "নাগাল্যান্ড প্রতিষ্ঠা দিবস"
+
+#. Odisha Day.
+msgid "Odisha Day (Utkala Dibasa)"
+msgstr "ওড়িশা দিবস (উৎকল দিবস)"
+
+#. Maha Vishuva Sankranti.
+msgid "Maha Vishuva Sankranti / Pana Sankranti"
+msgstr "মহা বিষুব সংক্রান্তি / পানা সংক্রান্তি"
+
+#. Puducherry De Jure Transfer Day.
+msgid "Puducherry De Jure Transfer Day"
+msgstr "পুদুচেরি আইনি হস্তান্তর দিবস"
+
+#. Puducherry Liberation Day.
+msgid "Puducherry Liberation Day"
+msgstr "পুদুচেরি মুক্তি দিবস"
+
+#. Guru Gobind Singh Jayanti.
+msgid "Guru Gobind Singh Jayanti"
+msgstr "গুরু গোবিন্দ সিং জয়ন্তী"
+
+#. Vaisakhi.
+msgid "Vaisakhi"
+msgstr "বৈশাখী"
+
+#. Lohri.
+msgid "Lohri"
+msgstr "লোহরি"
+
+#. New Punjab Day.
+msgid "New Punjab Day"
+msgstr "নতুন পাঞ্জাব দিবস"
+
+#. Rajasthan Day.
+msgid "Rajasthan Day"
+msgstr "রাজস্থান দিবস"
+
+#. Maharana Pratap Jayanti.
+msgid "Maharana Pratap Jayanti"
+msgstr "মহারানা প্রতাপ জয়ন্তী"
+
+#. Sikkim State Day.
+msgid "Sikkim State Day"
+msgstr "সিকিম প্রতিষ্ঠা দিবস"
+
+#. Pongal.
+msgid "Pongal"
+msgstr "পোঙ্গল"
+
+#. Thiruvalluvar Day / Mattu Pongal.
+msgid "Thiruvalluvar Day / Mattu Pongal"
+msgstr "তিরুভাল্লুভার দিবস / মাট্টু পোঙ্গল"
+
+#. Uzhavar Thirunal.
+msgid "Uzhavar Thirunal"
+msgstr "উঝাভার থিরুনাল"
+
+#. Puthandu.
+msgid "Puthandu (Tamil New Year)"
+msgstr "পুত্থান্ডু (তামিল নববর্ষ)"
+
+#. Telangana Formation Day.
+msgid "Telangana Formation Day"
+msgstr "তেলেঙ্গানা গঠন দিবস"
+
+#. Bathukamma Festival.
+msgid "Bathukamma Festival"
+msgstr "বাথুকাম্মা উৎসব"
+
+#. UP Formation Day.
+msgid "UP Formation Day"
+msgstr "উত্তরপ্রদেশ গঠন দিবস"
+
+#. Pohela Boisakh.
+msgid "Pohela Boishakh"
+msgstr "পহেলা বৈশাখ"
+
+#. Rabindra Jayanti.
+msgid "Rabindra Jayanti"
+msgstr "রবীন্দ্র জয়ন্তী"
