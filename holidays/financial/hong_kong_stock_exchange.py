@@ -40,7 +40,7 @@ class HongKongStockExchange(HongKong):
         return super()._add_holiday(name, *args)
 
     def _populate_public_holidays(self):
-        HongKong._populate_optional_holidays(self)
+        super()._populate_optional_holidays()
 
     def _populate_half_day_holidays(self):
         half_day_label = self.tr("%s（半日交易日）")
