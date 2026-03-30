@@ -154,7 +154,7 @@ class India(
         "West Bengal": "WB",
     }
     supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "kn", "ta", "te")
+    supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "kn", "pa", "ta", "te")
     _deprecated_subdivisions = (
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
@@ -467,8 +467,8 @@ class India(
         self._add_holiday_jan_13(tr("Lohri"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
-        # Punjabi Day.
-        self._add_holiday_nov_1(tr("Punjab Day"))
+        # New Punjab Day.
+        self._add_holiday_nov_1(tr("New Punjab Day"))
 
     # Rajasthan.
     def _populate_subdiv_rj_public_holidays(self):
