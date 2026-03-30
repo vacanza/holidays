@@ -159,6 +159,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-01-24",
                 "2018-04-14",
                 "2018-11-13",
+                "2018-10-24",
             ),
             "WB": (
                 "2018-04-14",
