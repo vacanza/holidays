@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-25 14:00-0700\n"
-"PO-Revision-Date: 2026-03-25 14:00-0700\n"
+"PO-Revision-Date: 2026-03-29 21:34-0700\n"
 "Last-Translator: Chengxi Meng <mengchengxi0615@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: zh_HK\n"
@@ -28,7 +28,12 @@ msgstr ""
 "X-Source-Language: zh_HK\n"
 
 #. %s (Half-Day Trading Day).
+#, c-format
 msgid "%s（半日交易日）"
+msgstr ""
+
+#. Chinese New Year's Eve.
+msgid "農曆年初一的前一日"
 msgstr ""
 
 #. Christmas Eve.

@@ -43,6 +43,7 @@ class HongKongStockExchange(HongKong):
         super()._populate_optional_holidays()
 
     def _populate_half_day_holidays(self):
+        # %s (Half-Day Trading Day).
         half_day_label = self.tr("%s（半日交易日）")
 
         # Chinese New Year's Eve.

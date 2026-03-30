@@ -79,7 +79,7 @@ class TestHongKongStockExchange(CommonFinancialTests, TestCase):
         self.assertLocalizedHolidays(
             "en_HK",
             ("2025-01-01", "The first day of January"),
-            ("2025-01-28", "The day preceding Lunar New Year's Day (Half-Day Trading Day)"),
+            ("2025-01-28", "Chinese New Year's Eve (Half-Day Trading Day)"),
             ("2025-01-29", "Lunar New Year's Day"),
             ("2025-01-30", "The second day of Lunar New Year"),
             ("2025-01-31", "The third day of Lunar New Year"),
@@ -148,7 +148,7 @@ class TestHongKongStockExchange(CommonFinancialTests, TestCase):
         self.assertLocalizedHolidays(
             "zh_CN",
             ("2025-01-01", "一月一日"),
-            ("2025-01-28", "农历年初一的前一日（半日交易日）"),
+            ("2025-01-28", "农历除夕（半日交易日）"),
             ("2025-01-29", "农历年初一"),
             ("2025-01-30", "农历年初二"),
             ("2025-01-31", "农历年初三"),
