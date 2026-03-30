@@ -96,7 +96,7 @@ msgstr "Résistance et Libération"
 
 #. Assumption Day.
 msgid "عيد انتقال العذراء"
-msgstr "Assomption de la Sainte Vierge"
+msgstr "Assomption"
 
 #. All Saints' Day.
 msgid "عيد جميع القديسين"
