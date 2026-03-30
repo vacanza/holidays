@@ -34,7 +34,7 @@ msgstr "%s (Half-Day Trading Day)"
 
 #. Chinese New Year's Eve.
 msgid "農曆年初一的前一日"
-msgstr "Chinese New Year's Eve"
+msgstr "The day preceding Lunar New Year's Day"
 
 #. Christmas Eve.
 msgid "平安夜"
