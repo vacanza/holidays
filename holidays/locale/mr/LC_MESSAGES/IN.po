@@ -30,7 +30,7 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
-msgstr "%s (अंदाज)"
+msgstr "%s (अंदाजे)"
 
 #. Republic Day.
 msgid "Republic Day"
@@ -54,7 +54,7 @@ msgstr "दिवाळी (लक्ष्मीपूजन)"
 
 #. Janmashtami.
 msgid "Janmashtami"
-msgstr "जन्माष्टमी"
+msgstr "गोकुळाष्टमी"
 
 #. Dussehra.
 msgid "Dussehra"
@@ -122,7 +122,7 @@ msgstr "महा नवमी"
 
 #. Makar Sankranti.
 msgid "Makar Sankranti"
-msgstr "मकर संक्रांती"
+msgstr "मकर संक्रांत"
 
 #. Raksha Bandhan.
 msgid "Raksha Bandhan"
@@ -134,11 +134,11 @@ msgstr "रामनवमी"
 
 #. Navratri / Sharad Navratri.
 msgid "Navratri / Sharad Navratri"
-msgstr "नवरात्री / शरद नवरात्री"
+msgstr "नवरात्र / शारदीय नवरात्र"
 
 #. Easter Sunday.
 msgid "Easter Sunday"
-msgstr "इस्टर रविवार"
+msgstr "ईस्टर रविवार"
 
 #. Palm Sunday.
 msgid "Palm Sunday"
@@ -298,7 +298,7 @@ msgstr "उझावर थिरुनल"
 
 #. Puthandu.
 msgid "Puthandu (Tamil New Year)"
-msgstr "पुथंडू (तमिळ नवीन वर्ष)"
+msgstr "पुथंडू (तमिळ नववर्ष)"
 
 #. Telangana Formation Day.
 msgid "Telangana Formation Day"
@@ -314,7 +314,7 @@ msgstr "यूपी स्थापना दिवस"
 
 #. Pohela Boisakh.
 msgid "Pohela Boishakh"
-msgstr "पोहेला बोइशाख"
+msgstr "पोहेला बैशाख"
 
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
