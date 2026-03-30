@@ -1595,10 +1595,10 @@ def _add_parsi_new_year(self, name):
     # In 1970, the holiday fell on August 28.
 
     # Calculate shifts based on leap years since 1970
-    leaps = (self._year - 1970) // 4
+    leaps = (self._year - 1972) // 4
 
     # Use the internal _timedelta helper
-    dt = _timedelta(date(self._year, 8, 28), -leaps)
+    dt = _timedelta(date(self._year, 8, 27), -leaps)
     self._add_holiday(name, dt)
 
 
