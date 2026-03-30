@@ -320,3 +320,7 @@ msgstr "पोहेला बोइशाख"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "रवींद्र जयंती"
+
+#. Valmiki Jayanti.
+msgid "Valmiki Jayanti"
+msgstr "वाल्मीकि जयंती"

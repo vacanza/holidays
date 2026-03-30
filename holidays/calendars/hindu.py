@@ -46,6 +46,7 @@ SONAM_LOSAR = "SONAM_LOSAR"
 TAMU_LOSAR = "TAMU_LOSAR"
 THAIPUSAM = "THAIPUSAM"
 VAISAKHI = "VAISAKHI"
+VALMIKI_JAYANTI = "VALMIKI_JAYANTI"
 
 
 class _HinduLunisolar:
@@ -1473,6 +1474,46 @@ class _HinduLunisolar:
         2035: (APR, 14),
     }
 
+    # https://web.archive.org/web/20250330120000/https://www.timeanddate.com/holidays/india/valmiki-jayanti
+    # Valmiki Jayanti falls on Sharad Purnima (full moon of Ashwin, October).
+    VALMIKI_JAYANTI_DATES = {
+        2001: (OCT, 31),
+        2002: (OCT, 21),
+        2003: (OCT, 10),
+        2004: (OCT, 28),
+        2005: (OCT, 18),
+        2006: (OCT, 7),
+        2007: (OCT, 26),
+        2008: (OCT, 14),
+        2009: (OCT, 3),
+        2010: (OCT, 22),
+        2011: (OCT, 12),
+        2012: (OCT, 30),
+        2013: (OCT, 19),
+        2014: (OCT, 9),
+        2015: (OCT, 27),
+        2016: (OCT, 15),
+        2017: (OCT, 5),
+        2018: (OCT, 24),
+        2019: (OCT, 13),
+        2020: (OCT, 31),
+        2021: (OCT, 20),
+        2022: (OCT, 9),
+        2023: (OCT, 28),
+        2024: (OCT, 17),
+        2025: (OCT, 7),
+        2026: (OCT, 25),
+        2027: (OCT, 14),
+        2028: (OCT, 3),
+        2029: (OCT, 22),
+        2030: (OCT, 12),
+        2031: (OCT, 31),
+        2032: (OCT, 19),
+        2033: (OCT, 8),
+        2034: (OCT, 27),
+        2035: (OCT, 16),
+    }
+
     def _get_holiday(self, holiday: str, year: int) -> tuple[date | None, bool]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
@@ -1572,6 +1613,9 @@ class _HinduLunisolar:
 
     def vaisakhi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VAISAKHI, year)
+
+    def valmiki_jayanti_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(VALMIKI_JAYANTI, year)
 
 
 class _CustomHinduHolidays(_CustomCalendar, _HinduLunisolar):

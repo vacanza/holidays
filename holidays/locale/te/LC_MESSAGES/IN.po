@@ -319,3 +319,7 @@ msgstr "పొహెలా బొయిషాఖ్"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "రవీంద్ర జయంతి"
+
+#. Valmiki Jayanti.
+msgid "Valmiki Jayanti"
+msgstr "వాల్మీకి జయంతి"

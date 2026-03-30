@@ -320,3 +320,7 @@ msgstr ""
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr ""
+
+#. Valmiki Jayanti.
+msgid "Valmiki Jayanti"
+msgstr ""

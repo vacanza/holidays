@@ -319,3 +319,7 @@ msgstr "ਪੋਹੇਲਾ ਬੋਸ਼ਾਖ"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "ਰਬਿੰਦਰ ਜੈਅੰਤੀ"
+
+#. Valmiki Jayanti.
+msgid "Valmiki Jayanti"
+msgstr "ਵਾਲਮੀਕਿ ਜਯੰਤੀ"

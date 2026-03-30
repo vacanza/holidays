@@ -319,3 +319,7 @@ msgstr "পহেলা বৈশাখ"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "রবীন্দ্র জয়ন্তী"
+
+#. Valmiki Jayanti.
+msgid "Valmiki Jayanti"
+msgstr "ভাল্মীকি জয়ন্তী"

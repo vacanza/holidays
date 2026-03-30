@@ -316,6 +316,8 @@ class India(
     def _populate_subdiv_ch_public_holidays(self):
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
+        # Valmiki Jayanti.
+        self._add_valmiki_jayanti(tr("Valmiki Jayanti"))
 
     # Chhattisgarh.
     def _populate_subdiv_cg_public_holidays(self):
@@ -328,6 +330,8 @@ class India(
     def _populate_subdiv_dl_public_holidays(self):
         # Chhath Puja.
         self._add_chhath_puja(tr("Chhath Puja"))
+        # Valmiki Jayanti.
+        self._add_valmiki_jayanti(tr("Valmiki Jayanti"))
 
     # Goa.
     def _populate_subdiv_ga_public_holidays(self):
@@ -353,6 +357,8 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Haryana Foundation Day.
         self._add_holiday_nov_1(tr("Haryana Foundation Day"))
+        # Valmiki Jayanti.
+        self._add_valmiki_jayanti(tr("Valmiki Jayanti"))
 
     # Himachal Pradesh.
     def _populate_subdiv_hp_public_holidays(self):
@@ -360,6 +366,8 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Himachal Day.
         self._add_holiday_apr_15(tr("Himachal Day"))
+        # Valmiki Jayanti.
+        self._add_valmiki_jayanti(tr("Valmiki Jayanti"))
 
     # Jammu and Kashmir
     def _populate_subdiv_jk_public_holidays(self):
@@ -454,6 +462,8 @@ class India(
         self._add_holiday_jan_13(tr("Lohri"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
+        # Valmiki Jayanti.
+        self._add_valmiki_jayanti(tr("Valmiki Jayanti"))
         # New Punjab Day.
         self._add_holiday_nov_1(tr("New Punjab Day"))
 
@@ -501,6 +511,8 @@ class India(
     def _populate_subdiv_uk_public_holidays(self):
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
+        # Valmiki Jayanti.
+        self._add_valmiki_jayanti(tr("Valmiki Jayanti"))
 
     # Uttar Pradesh.
     def _populate_subdiv_up_public_holidays(self):

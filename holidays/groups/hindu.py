@@ -510,3 +510,16 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.vaisakhi_date(self._year)
         )
+
+    def _add_valmiki_jayanti(self, name) -> date | None:
+        """
+        Add Valmiki Jayanti.
+
+        Valmiki Jayanti celebrates the birth of the Hindu sage Maharishi Valmiki,
+        author of the Ramayana. It is observed on Sharad Purnima, the full moon
+        day of the Hindu lunisolar month of Ashwin (October).
+        https://en.wikipedia.org/wiki/Valmiki_Jayanti
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.valmiki_jayanti_date(self._year)
+        )
