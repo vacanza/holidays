@@ -2007,7 +2007,7 @@ code when available. The following financial markets are available:
 
 [Issues](https://github.com/vacanza/holidays/issues) and [pull
 requests](https://github.com/vacanza/holidays/pulls) are always welcome. Please see
-[here](https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.md) for more information.
+[CONTRIBUTING.md](https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.md) for more information.
 
 ## License
 
