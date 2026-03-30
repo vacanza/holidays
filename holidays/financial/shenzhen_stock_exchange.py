@@ -21,15 +21,12 @@ class ShenzhenStockExchange(ShanghaiStockExchange):
     implementation and provides SZSE-specific market codes and translations.
 
     References:
-        * [2026](https://www.szse.cn/disclosure/notice/t20251222_618087.html)
-
-    Historical data:
-        * [2024](https://www.szse.cn/disclosure/notice/t20231226_605108.html)
-        * [2025](https://www.szse.cn/www/disclosure/notice/general/t20241223_611283.html)
+        * [2024](http://archive.today/2026.03.30-044431/https://www.szse.cn/disclosure/notice/t20231226_605108.html)
+        * [2025](http://archive.today/2026.03.30-044217/https://www.szse.cn/www/disclosure/notice/general/t20241223_611283.html)
+        * [2026](http://archive.today/2026.03.30-043931/https://www.szse.cn/disclosure/notice/t20251222_618087.html)
     """
 
     market = "XSHE"
-    start_year = 2001
 
 
 class XSHE(ShenzhenStockExchange):
