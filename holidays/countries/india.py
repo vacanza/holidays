@@ -283,9 +283,16 @@ class India(
         self._add_palm_sunday(tr("Palm Sunday"))
 
     # Andaman and Nicobar Islands.
+    # https://veerayeehr.com/Andaman-Nicobar-state-list-of-holidays-2026.pdf
     def _populate_subdiv_an_public_holidays(self):
+        # Ram Navami.
+        # Official A&N public holiday (notification No. 90/2025/F.No.M-13/18/2022-GA-Section-Sectt)
+        self._add_ram_navami(tr("Ram Navami"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
+        # Onam / Thiru Onam day.
+        # Official A&N public holiday (notification No. 90/2025/F.No.M-13/18/2022-GA-Section-Sectt)
+        self._add_onam(tr("Onam"))
 
     # Andhra Pradesh.
     def _populate_subdiv_ap_public_holidays(self):

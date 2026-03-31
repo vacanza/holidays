@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-03-29 14:40+0530\n"
+"PO-Revision-Date: 2026-03-31 13:30+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
@@ -130,6 +130,8 @@ msgid "Raksha Bandhan"
 msgstr ""
 
 #. Ram Navami.
+#. Ram Navami. Official A&N public holiday (notification No. 90/2025/F.No.M-13/18/2022-GA-Section-
+#. Sectt)
 msgid "Ram Navami"
 msgstr ""
 
@@ -147,6 +149,12 @@ msgstr ""
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
+msgstr ""
+
+#. Onam / Thiru Onam day. Official A&N public holiday (notification No.
+#. 90/2025/F.No.M-13/18/2022-GA-Section-Sectt)
+#. Onam.
+msgid "Onam"
 msgstr ""
 
 #. Andhra Pradesh Foundation Day.
@@ -207,10 +215,6 @@ msgstr ""
 
 #. Karnataka Rajyotsav.
 msgid "Karnataka Rajyotsava"
-msgstr ""
-
-#. Onam.
-msgid "Onam"
 msgstr ""
 
 #. Kerala Foundation Day.
