@@ -45,7 +45,7 @@ msgstr "رأس السنة البنغالية"
 
 #. May Day.
 msgid "মে দিবস"
-msgstr "عيد العمال"
+msgstr "الأول من مايو"
 
 #. National Mourning Day.
 msgid "জাতীয় শোক দিবস"
