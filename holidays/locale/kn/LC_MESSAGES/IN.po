@@ -80,6 +80,10 @@ msgstr "ಮೊಹರಂ ಕಡೆ ದಿನ"
 msgid "Milad-un-Nabi"
 msgstr "ಈದ್-ಮಿಲಾದ್"
 
+#. Parsi New Year.
+msgid "Parsi New Year (Shahenshahi)"
+msgstr "ಪಾರ್ಸಿ ಹೊಸ ವರ್ಷ (ಶಹನ್ಶಾಹಿ)"
+
 #. Eid al-Fitr.
 msgid "Id-ul-Fitr"
 msgstr "ಈದ್-ಉಲ್-ಫಿತರ್"

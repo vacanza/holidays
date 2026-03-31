@@ -40,6 +40,10 @@ msgstr "ਗਣਤੰਤਰ ਦਿਵਸ"
 msgid "Independence Day"
 msgstr "ਸੁਤੰਤਰਤਾ ਦਿਵਸ"
 
+#. Parsi New Year.
+msgid "Parsi New Year (Shahenshahi)"
+msgstr "ਪਾਰਸੀ ਨਵਾਂ ਸਾਲ (ਸ਼ਾਹਨਸ਼ਾਹੀ)"
+
 #. Gandhi Jayanti.
 msgid "Gandhi Jayanti"
 msgstr "ਜਨਮ ਦਿਵਸ ਮਹਾਤਮਾ ਗਾਂਧੀ ਜੀ"

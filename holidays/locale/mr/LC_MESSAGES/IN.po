@@ -319,3 +319,6 @@ msgstr "पोहेला बैशाख"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "रवींद्र जयंती"
+#. Parsi New Year.
+msgid "Parsi New Year (Shahenshahi)"
+msgstr "पारसी नवीन वर्ष (शहेनशाही)"

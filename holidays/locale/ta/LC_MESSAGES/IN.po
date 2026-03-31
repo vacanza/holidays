@@ -36,6 +36,10 @@ msgstr "%s (மதிப்பிடப்பட்டது)"
 msgid "Republic Day"
 msgstr "குடியரசு நாள்"
 
+#. Parsi New Year.
+msgid "Parsi New Year (Shahenshahi)"
+msgstr "பார்சி புத்தாண்டு (ஷாஹென்ஷாஹி)"
+
 #. Independence Day.
 msgid "Independence Day"
 msgstr "விடுதலை நாள்"

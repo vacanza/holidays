@@ -319,3 +319,6 @@ msgstr "পহেলা বৈশাখ"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "রবীন্দ্র জয়ন্তী"
+#. Parsi new year.
+msgid "Parsi New Year (Shahenshahi)"
+msgstr "পারসি নববর্ষ (শাহেনশাহী)"

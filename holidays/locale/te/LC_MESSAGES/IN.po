@@ -319,3 +319,6 @@ msgstr "పొహెలా బొయిషాఖ్"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "రవీంద్ర జయంతి"
+#. Parsi new year.
+msgid "Parsi New Year (Shahenshahi)"
+msgstr "పార్సీ నూతన సంవత్సరం (షహన్‌షాహీ)"

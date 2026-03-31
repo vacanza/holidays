@@ -320,3 +320,6 @@ msgstr "પોહેલા બોઈશાખ"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "રવીન્દ્ર જયંતિ"
+#. Parsi New Year.
+msgid "Parsi New Year (Shahenshahi)"
+msgstr "પારસી નવું વર્ષ (શાહેનશાહી)"
