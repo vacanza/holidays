@@ -47,6 +47,8 @@ class India(
         * Telangana:
             * <https://web.archive.org/web/20260224050455/https://transport.telangana.gov.in/html/registration-districtcodes.html>
             * <https://web.archive.org/web/20250219131214/https://www.thehindu.com/news/national/telangana/cm-firm-on-having-states-identity-as-tg-not-ts/article68187923.ece>
+        * Andaman and Nicobar Islands:
+            * <https://web.archive.org/web/20251214133200/https://andamannicobar.gov.in/admin-pannel/othersdoc/1-29-Holiday%20List%202026%20Gazette.pdf>
     """
 
     country = "IN"
@@ -283,15 +285,12 @@ class India(
         self._add_palm_sunday(tr("Palm Sunday"))
 
     # Andaman and Nicobar Islands.
-    # https://veerayeehr.com/Andaman-Nicobar-state-list-of-holidays-2026.pdf
     def _populate_subdiv_an_public_holidays(self):
         # Ram Navami.
-        # Official A&N public holiday (notification No. 90/2025/F.No.M-13/18/2022-GA-Section-Sectt)
         self._add_ram_navami(tr("Ram Navami"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
-        # Onam / Thiru Onam day.
-        # Official A&N public holiday (notification No. 90/2025/F.No.M-13/18/2022-GA-Section-Sectt)
+        # Onam.
         self._add_onam(tr("Onam"))
 
     # Andhra Pradesh.

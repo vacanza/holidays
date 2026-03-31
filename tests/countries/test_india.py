@@ -54,9 +54,9 @@ class TestIndia(CommonCountryTests, TestCase):
 
         subdiv_holidays_mapping = {
             "AN": (
-                "2018-03-25",  # Ram Navami
-                "2018-04-14",  # Dr. B. R. Ambedkar's Jayanti
-                "2018-08-24",  # Onam
+                "2018-03-25",
+                "2018-04-14",
+                "2018-08-24",
             ),
             "AP": (
                 "2018-04-14",

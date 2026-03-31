@@ -129,8 +129,6 @@ msgid "Raksha Bandhan"
 msgstr "ਰੱਖੜੀ"
 
 #. Ram Navami.
-#. Ram Navami. Official A&N public holiday (notification No. 90/2025/F.No.M-13/18/2022-GA-Section-
-#. Sectt)
 msgid "Ram Navami"
 msgstr "ਰਾਮ ਨੌਮੀ"
 
@@ -150,8 +148,6 @@ msgstr "ਪਾਮ ਐਤਵਾਰ"
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr "ਜਨਮ ਦਿਨ ਡਾ: ਬੀ.ਆਰ. ਅੰਬੇਡਕਰ"
 
-#. Onam / Thiru Onam day. Official A&N public holiday (notification No.
-#. 90/2025/F.No.M-13/18/2022-GA-Section-Sectt)
 #. Onam.
 msgid "Onam"
 msgstr "ਓਨਮ"
