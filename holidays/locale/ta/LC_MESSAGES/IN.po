@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.94\n"
+"Project-Id-Version: Holidays 0.93\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-03-29 14:40+0530\n"
+"PO-Revision-Date: 2026-03-31 18:55+0530\n"
 "Last-Translator: Nellai Abiram <nellaiabiram08@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ta\n"
@@ -35,10 +35,6 @@ msgstr "%s (மதிப்பிடப்பட்டது)"
 #. Republic Day.
 msgid "Republic Day"
 msgstr "குடியரசு நாள்"
-
-#. Parsi New Year.
-msgid "Parsi New Year (Shahenshahi)"
-msgstr "பார்சி புத்தாண்டு (ஷாஹென்ஷாஹி)"
 
 #. Independence Day.
 msgid "Independence Day"
@@ -195,6 +191,10 @@ msgstr "குஜராத் நாள்"
 #. Sardar Vallabhbhai Patel Jayanti.
 msgid "Sardar Vallabhbhai Patel Jayanti"
 msgstr "சர்தார் வல்லபாய் படேல் ஜெயந்தி"
+
+#. Parsi New Year (Shahenshahi).
+msgid "Parsi New Year (Shahenshahi)"
+msgstr "பார்சி புத்தாண்டு (ஷாஹென்ஷாஹி)"
 
 #. Haryana Foundation Day.
 msgid "Haryana Foundation Day"
