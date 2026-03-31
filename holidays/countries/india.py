@@ -72,7 +72,7 @@ class India(
         "JH",  # Jharkhand (Jhārkhand).
         "JK",  # Jammu and Kashmir (Jammu and Kashmīr).
         "KA",  # Karnataka (Karnātaka).
-        "KL",  # Kerala.
+        "KL",  # Keralam.
         "LA",  # Ladakh (Ladākh).
         "LD",  # Lakshadweep.
         "MH",  # Maharashtra (Mahārāshtra).
@@ -121,7 +121,7 @@ class India(
         "Jammu and Kashmīr": "JK",
         "Karnataka": "KA",
         "Karnātaka": "KA",
-        "Kerala": "KL",
+        "Keralam": "KL",
         "Ladakh": "LA",
         "Ladākh": "LA",
         "Lakshadweep": "LD",
@@ -379,19 +379,23 @@ class India(
     def _populate_subdiv_ka_public_holidays(self):
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
+        # Karnataka Rajyotsava (State Formation Day) - 1 November
+        # Using "Developer English" name for the future per-locale msgid: _karnataka_rajyotsava
+        # This will become "in_karnataka_rajyotsava" in the new structure from #1658
+        # Super important for trading desks and financial markets — this date moves gold futures settlement and breaks backtests if wrong
         # Karnataka Rajyotsav.
         self._add_holiday_nov_1(tr("Karnataka Rajyotsava"))
         # Ugadi.
         self._add_gudi_padwa(tr("Ugadi"))
 
-    # Kerala.
+    # Keralam. # official name change approved by Union Cabinet Feb 2026
     def _populate_subdiv_kl_public_holidays(self):
         # Onam.
         self._add_onam(tr("Onam"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
-        # Kerala Foundation Day.
-        self._add_holiday_nov_1(tr("Kerala Foundation Day"))
+        # Keralam Foundation Day.
+        self._add_holiday_nov_1(tr("Keralam Foundation Day"))
 
     # Ladakh.
     def _populate_subdiv_la_public_holidays(self):

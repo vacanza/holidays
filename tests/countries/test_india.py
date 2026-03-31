@@ -571,7 +571,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "Andhra Pradesh Foundation Day; "
                 "Chhattisgarh Foundation Day; "
                 "Haryana Foundation Day; "
-                "Karnataka Rajyotsava; Kerala Foundation Day; "
+                "Karnataka Rajyotsava; Keralam Foundation Day; "
                 "Madhya Pradesh Foundation Day; "
                 "New Punjab Day; "
                 "Puducherry Liberation Day",
@@ -827,7 +827,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "Andhra Pradesh Foundation Day; "
                 "Chhattisgarh Foundation Day; "
                 "Haryana Foundation Day; "
-                "Karnataka Rajyotsava; Kerala Foundation Day; "
+                "Karnataka Rajyotsava; Keralam Foundation Day; "
                 "Madhya Pradesh Foundation Day; "
                 "New Punjab Day; "
                 "Puducherry Liberation Day",
@@ -1110,6 +1110,12 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-12-19", "గోవా విమోచన దినోత్సవం"),
             ("2018-12-25", "క్రిస్మస్"),
         )
+
+    def test_karnataka_rajyotsava(self):
+        """Test Karnataka Rajyotsava for per-locale l10n prep (#1658)."""
+        holidays = India(subdiv="KA", years=2024)
+        self.assertIn("2024-11-01", holidays)
+        self.assertEqual(holidays.get("2024-11-01"), "Karnataka Rajyotsava")
 
     def test_deprecated(self):
         self.assertEqual(
