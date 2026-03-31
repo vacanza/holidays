@@ -11,7 +11,8 @@
 #  License: MIT (see LICENSE file)
 
 from collections.abc import Iterable
-from datetime import date, timedelta
+from datetime import date
+from holidays.calendars.gregorian import _timedelta
 
 from holidays.calendars.hindu import _HinduLunisolar
 from holidays.groups.eastern import EasternCalendarHolidays
@@ -517,5 +518,5 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         # It shifts back by 1 day every 4 years relative to the Gregorian calendar.
         # Reference: In 1972 (a leap year), the holiday fell on August 28.
         leaps = (self._year - 1972) // 4
-        dt = date(self._year, 8, 28) - timedelta(days=leaps)
+        dt = _timedelta(date(self._year, 8, 28), -leaps)
         self._add_holiday(name, dt)
