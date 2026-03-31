@@ -29,7 +29,7 @@ msgstr ""
 
 #. Martyrs' Day and International Mother Language Day.
 msgid "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস"
-msgstr "اليوم الدولي للغة الأم"
+msgstr "يوم الشهداء واليوم الدولي للغة الأم"
 
 #. Sheikh Mujibur Rahman's Birthday.
 msgid "জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান এর জন্মদিবস"
