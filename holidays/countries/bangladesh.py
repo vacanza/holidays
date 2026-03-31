@@ -23,11 +23,12 @@ class Bangladesh(HolidayBase, InternationalHolidays):
     References:
         * <https://web.archive.org/web/20241109215908/https://mopa.gov.bd/sites/default/files/files/mopa.gov.bd/public_holiday/61c35b73_e335_462a_9bcf_4695b23b6d82/reg4-2019-212.PDF>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Bangladesh>
+        * <file:///C:/Users/MR%20SHAON/Downloads/bd_holidays_translation_fixed.pdf>
     """
 
     country = "BD"
     default_language = "bn"
-    supported_languages = ("bn", "en_US")
+    supported_languages = ("bn", "en_US", "ar")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, **kwargs):
