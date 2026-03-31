@@ -28,7 +28,7 @@ import holidays  # noqa: E402
 
 BRANCH_NAME = "dev"
 HEADER_TEMPLATE = """
-# Version {version}
+## Version {version}
 
 Released {month} {day}, {year}
 """

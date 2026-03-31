@@ -491,6 +491,7 @@ True
 
 ## Generate iCalendar content and export to `.ics`
 
+<!-- markdownlint-disable-next-line MD052 -->
 [ICalExporter][holidays.ical.ICalExporter] facilitates the creation and export of iCalendar files
 in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
 
@@ -528,10 +529,8 @@ True
     in [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646), the Holidays object requires
     that the `language` attribute adhere to the [ISO 639-1 or
     ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php) language codes,
-    such as `en` or `pap-AW`.
-
-    Additionally, if no `language` is specified for a holiday, but a `default_language` is set
-    for the Holiday object, the default language will be used instead.
+    such as `en` or `pap-AW`. Additionally, if no `language` is specified for a holiday, but a
+    `default_language` is set for the Holiday object, the default language will be used instead.
 
 ``` python
 >>> from holidays import country_holidays

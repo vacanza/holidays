@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.39\n"
+"Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-09-11 15:10+0700\n"
-"PO-Revision-Date: 2023-11-16 20:47+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-03-30 23:06+0530\n"
+"Last-Translator: Sourav Singh <souravsingh202036@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: lo\n"
 "MIME-Version: 1.0\n"
@@ -144,7 +144,7 @@ msgstr ""
 msgid "ວັນຍຶດອຳນາດທົ່ວປະເທດ"
 msgstr ""
 
-#. Indepedence Declaration Day.
+#. Independence Declaration Day.
 msgid "ວັນປະກາດເອກະລາດ"
 msgstr ""
 
