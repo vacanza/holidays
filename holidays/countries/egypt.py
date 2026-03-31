@@ -172,7 +172,7 @@ class EgyptIslamicHolidays(_CustomIslamicHolidays):
         2022: (JUL, 10),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2020, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2020, 2026)
     EID_AL_FITR_DATES = {
         2022: (MAY, 1),
     }

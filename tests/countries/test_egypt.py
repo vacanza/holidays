@@ -200,6 +200,9 @@ class TestEgypt(CommonCountryTests, TestCase):
             "2024-04-11",
             "2025-03-30",
             "2025-03-31",
+            "2026-03-20",
+            "2026-03-21",
+            # 2026 Eid al-Fitr: https://www.presidency.eg/en/مصر/العطلات-الرسمية/
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
