@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import HALF_DAY, PUBLIC, UNOFFICIAL
 from holidays.countries.united_states import UnitedStates
 from holidays.mixins.child_entity import ChildEntity
 
@@ -26,7 +25,6 @@ class PuertoRico(ChildEntity, UnitedStates):
     parent_entity = UnitedStates
     # Art. 387 of the 1902 Political Code of Puerto Rico.
     start_year = 1903
-    supported_categories = (HALF_DAY, PUBLIC, UNOFFICIAL)
 
 
 class HolidaysPR(PuertoRico):
