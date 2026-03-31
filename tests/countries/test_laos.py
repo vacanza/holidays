@@ -505,7 +505,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2022-10-07", "Establishment Day of the BOL; National Teacher Day"),
             ("2022-10-10", "End of Buddhist Lent"),
             ("2022-10-11", "Vientiane Boat Racing Festival"),
-            ("2022-10-12", "Indepedence Declaration Day"),
+            ("2022-10-12", "Independence Declaration Day"),
             ("2022-11-08", "Boun That Luang Festival"),
             ("2022-12-02", "Lao National Day"),
             ("2022-12-13", "President Kaysone Phomvihane's Birthday"),
