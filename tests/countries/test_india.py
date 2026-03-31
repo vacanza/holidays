@@ -1118,3 +1118,31 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertEqual(
             India(subdiv="OR", years=2023).keys(), India(subdiv="OD", years=2023).keys()
         )
+
+    def test_diwali_reference_validation(self):
+        # References:
+        # https://en.wikipedia.org/wiki/Diwali
+        # https://www.timeanddate.com/holidays/india/diwali
+        expected_dates = {
+            2020: "2020-11-14",
+            2021: "2021-11-04",
+            2022: "2022-10-24",
+            2023: "2023-11-12",
+            2024: "2024-10-31",
+        }
+        for year, expected_date in expected_dates.items():
+            holidays = India(years=year)
+            self.assertIn(expected_date, holidays)
+
+    def test_holi_reference_validation(self):
+        # References:
+        # https://en.wikipedia.org/wiki/Holi
+        # https://www.timeanddate.com/holidays/india/holi
+        expected_dates = {
+            2022: "2022-03-18",
+            2023: "2023-03-08",
+            2024: "2024-03-25",
+        }
+        for year, expected_date in expected_dates.items():
+            holidays = India(categories=OPTIONAL, years=year)
+            self.assertIn(expected_date, holidays)
