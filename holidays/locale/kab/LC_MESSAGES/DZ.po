@@ -9,11 +9,9 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
-# Kabyle translations for Holidays.
-# This file is distributed under the same license as the Holidays package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
-#, fuzzy
+#
+# Algeria holidays fr localization.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.94\n"
