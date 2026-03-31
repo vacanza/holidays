@@ -31,6 +31,8 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         * [Decree No. 16237 of 2006](https://web.archive.org/web/20250704170424/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=215180&LawID=212941&language=ar)
         * [Decree No. 3369 of 2010](https://web.archive.org/web/20250704170437/http://legiliban.ul.edu.lb/LawArticles.aspx?LawTreeSectionID=227216&LawID=224978&language=ar)
         * <https://web.archive.org/web/20200925173058/https://www.abl.org.lb/english/abl-and-banking-sector-news/official-holidays>
+        * <https://web.archive.org/web/20260116210114/https://www.abl.org.lb/french/news/official-holidays>
+        * <https://web.archive.org/web/20260329170010/https://www.consulatlibanmarseille.com/fr/home/holidays>
     """
 
     country = "LB"
@@ -43,7 +45,7 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
     observed_estimated_label = tr("%s (يُحتفل به، المقدرة)")
     start_year = 1978
     supported_categories = (BANK, GOVERNMENT, PUBLIC)
-    supported_languages = ("ar", "en_US")
+    supported_languages = ("ar", "en_US", "fr")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """

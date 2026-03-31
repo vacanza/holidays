@@ -31,6 +31,14 @@ repos:
       - id: ruff-check
       - id: ruff-format
 
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.48.0
+    hooks:
+      - id: markdownlint
+        args:
+          - --fix
+        files: \.md$
+
   - repo: https://github.com/lucas-c/pre-commit-hooks
     rev: v1.5.6
     hooks:
