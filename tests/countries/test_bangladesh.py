@@ -94,3 +94,4 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2021-12-16", "عيد النصر"),
         )
         
+        """Test Arabic localization For Bangladesh Holidays."""
