@@ -83,6 +83,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
         )
 
     def test_l10_ar(self):
+        """Test Arabic localization For Bangladesh Holidays."""
         self.assertLocalizedHolidays(
             "ar",
             ("2021-02-21", "اليوم الدولي للغة الأم"),
@@ -93,5 +94,3 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2021-08-15", "اليوم الوطني للحداد"),
             ("2021-12-16", "عيد النصر"),
         )
-        
-        """Test Arabic localization For Bangladesh Holidays."""
