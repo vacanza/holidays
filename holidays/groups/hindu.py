@@ -518,5 +518,5 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         # It shifts back by 1 day every 4 years relative to the Gregorian calendar.
         # Reference: In 1972 (a leap year), the holiday fell on August 28.
         leaps = (self._year - 1972) // 4
-        dt = _timedelta(date(self._year, 8, 28), -leaps)
+        dt = _timedelta(date(self._year, AUG, 28), -leaps)
         self._add_holiday(name, dt)
