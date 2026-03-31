@@ -121,6 +121,7 @@ class India(
         "Jammu and Kashmīr": "JK",
         "Karnataka": "KA",
         "Karnātaka": "KA",
+        "Kerala": "KL",
         "Keralam": "KL",
         "Ladakh": "LA",
         "Ladākh": "LA",
@@ -388,14 +389,17 @@ class India(
         # Ugadi.
         self._add_gudi_padwa(tr("Ugadi"))
 
-    # Keralam. # official name change approved by Union Cabinet Feb 2026
+        # Keralam (official name change approved by Union Cabinet Feb 2026).
     def _populate_subdiv_kl_public_holidays(self):
         # Onam.
         self._add_onam(tr("Onam"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
-        # Keralam Foundation Day.
-        self._add_holiday_nov_1(tr("Keralam Foundation Day"))
+        # Kerala/Keralam Foundation Day (conditional on year).
+        if self._year >= 2025:
+            self._add_holiday_nov_1(tr("Keralam Foundation Day"))
+        else:
+            self._add_holiday_nov_1(tr("Kerala Foundation Day"))
 
     # Ladakh.
     def _populate_subdiv_la_public_holidays(self):

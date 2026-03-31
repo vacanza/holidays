@@ -523,6 +523,20 @@ class TestIndia(CommonCountryTests, TestCase):
             "2020-04-05",
         )
 
+    def test_keralam_foundation_day(self):
+        name_1948 = "Kerala Foundation Day"
+        name_2025 = "Keralam Foundation Day"
+        self.assertNoHolidayName(name_1948)
+        self.assertNoHolidayName(name_2025)
+        self.assertSubdivKlHolidayName(
+            name_1948, (f"{year}-11-01" for year in range(self.start_year, 2025))
+        )
+        self.assertSubdivKlHolidayName(
+            name_2025, (f"{year}-11-01" for year in range(2025, self.end_year))
+        )
+        self.assertNoSubdivKlHolidayName(name_1948, range(2025, self.end_year))
+        self.assertNoSubdivKlHolidayName(name_2025, range(self.start_year, 2025))
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2018-01-13", "Lohri"),
@@ -1111,11 +1125,6 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-12-25", "క్రిస్మస్"),
         )
 
-    def test_karnataka_rajyotsava(self):
-        """Test Karnataka Rajyotsava for per-locale l10n prep (#1658)."""
-        holidays = India(subdiv="KA", years=2024)
-        self.assertIn("2024-11-01", holidays)
-        self.assertEqual(holidays.get("2024-11-01"), "Karnataka Rajyotsava")
 
     def test_deprecated(self):
         self.assertEqual(
