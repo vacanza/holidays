@@ -31,72 +31,72 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (ግምት)"
-msgstr ""
+msgstr "%s (estimated)"
 
 #. Christmas Day.
 msgid "የገና ወይም የልደት በዓል"
-msgstr ""
+msgstr "Christmas Day"
 
 #. Epiphany.
 msgid "የጥምቀት በዓል"
-msgstr ""
+msgstr "Epiphany"
 
 #. Adwa Victory Day.
 msgid "የአድዋ ድል በዓል"
-msgstr ""
+msgstr "Adwa Victory Day"
 
 #. Good Friday.
 msgid "የስቅለት በዓል"
-msgstr ""
+msgstr "Good Friday"
 
 #. Easter Sunday.
 msgid "የትንሳኤ(ፋሲካ) በዓል"
-msgstr ""
+msgstr "Easter Sunday"
 
 #. International Workers' Day.
 msgid "የዓለም የሠራተኞች (የላብአደሮች) ቀን"
-msgstr ""
+msgstr "International Workers' Day"
 
 #. Ethiopian Patriots' Victory Day.
 msgid "የአርበኞች (የድል) ቀን በዓል"
-msgstr ""
+msgstr "Ethiopian Patriots' Victory Day"
 
 #. Downfall of the Dergue Regime Day.
 msgid "ደርግ የወደቀበት ቀን"
-msgstr ""
+msgstr "Downfall of the Dergue Regime Day"
 
 #. Ethiopian New Year.
 msgid "የዘመን መለወጫ (እንቁጣጣሽ) በዓል"
-msgstr ""
+msgstr "Ethiopian New Year"
 
 #. Finding of True Cross.
 msgid "የመስቀል በዓል"
-msgstr ""
+msgstr "Finding of True Cross"
 
 #. Popular Revolution Commemoration Day.
 msgid "የአብዮት ቀን"
-msgstr ""
+msgstr "Popular Revolution Commemoration Day"
 
 #. October Revolution Day.
 msgid "የጥቅምት አብዮት ቀን"
-msgstr ""
+msgstr "October Revolution Day"
 
 #. Eid al-Fitr.
 msgid "የኢድ አልፈጥር"
-msgstr ""
+msgstr "Eid al-Fitr"
 
 #. Eid al-Adha.
 msgid "የኢድ አልአድሃ (አረፋ)"
-msgstr ""
+msgstr "Eid al-Adha"
 
 #. Prophet's Birthday.
 msgid "የመውሊድ በዓል"
-msgstr ""
+msgstr "Prophet's Birthday"
 
 #. Ethiopian Martyrs' Day.
 msgid "የሰማዕታት ቀን"
-msgstr ""
+msgstr "Ethiopian Martyrs' Day"
 
 #. Nations, Nationalities and Peoples Day.
 msgid "የብሔር ብሔረሰቦች ቀን"
-msgstr ""
+msgstr "Nations, Nationalities and Peoples Day"
