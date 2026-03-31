@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-06-19 15:33+0700\n"
-"PO-Revision-Date: 2026-03-23 16:16+0700\n"
+"PO-Revision-Date: 2026-03-30 00:58+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -389,6 +389,10 @@ msgstr ""
 
 #. Discovery of Puerto Rico Day.
 msgid "Discovery of Puerto Rico Day"
+msgstr ""
+
+#. American Citizenship Day.
+msgid "American Citizenship Day"
 msgstr ""
 
 #. %s (from 12pm).
