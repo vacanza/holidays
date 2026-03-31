@@ -81,6 +81,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2021-08-15", "National Mourning Day"),
             ("2021-12-16", "Victory Day"),
         )
+
     def test_l10_ar(self):
         self.assertLocalizedHolidays(
             "ar",
@@ -92,3 +93,4 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2021-08-15", "اليوم الوطني للحداد"),
             ("2021-12-16", "عيد النصر"),
         )
+        
