@@ -12,8 +12,8 @@
 
 from collections.abc import Iterable
 from datetime import date
-from holidays.calendars.gregorian import _timedelta
 
+from holidays.calendars.gregorian import _timedelta
 from holidays.calendars.hindu import _HinduLunisolar
 from holidays.groups.eastern import EasternCalendarHolidays
 
