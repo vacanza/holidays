@@ -86,7 +86,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
         """Test Arabic localization For Bangladesh Holidays."""
         self.assertLocalizedHolidays(
             "ar",
-            ("2021-02-21", "اليوم الدولي للغة الأم"),
+            ("2021-02-21", "يوم الشهداء واليوم الدولي للغة الأم"),
             ("2021-03-17", "عيد ميلاد الشيخ مجيب الرحمن"),
             ("2021-03-26", "عيد الاستقلال"),
             ("2021-04-14", "رأس السنة البنغالية"),
