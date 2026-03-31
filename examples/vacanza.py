@@ -26,60 +26,62 @@ def is_financial_market(code):
     return code in holidays.list_supported_financial()
 
 
-def validate_and_generate(code, years=None, language=None,
-                           public_only=False, subdivision=None):
-    if years is None:
-        years = date.today().year
+def get_year_tag(years):
+    """Return a string representation of the year(s)."""
+    if isinstance(years, range):
+        return f"{years.start}-{years.stop - 1}"
+    return str(years)
 
-    # Handle financial market codes
-    if is_financial_market(code):
-        if subdivision:
-            print(f"Error: --subdivision is not supported for financial markets.")
-            sys.exit(1)
-        try:
-            h = holidays.financial_holidays(code, years=years)
-        except NotImplementedError:
-            print(f"Error: '{code}' is not a supported financial market code.")
-            sys.exit(1)
-        if isinstance(years, range):
-            year_tag = f"{years.start}-{years.stop - 1}"
-        else:
-            year_tag = str(years)
-        file_path = f"{code}_{year_tag}.ics"
-        ICalExporter(h).save_ics(file_path)
-        print(f"Generated: {file_path}")
-        return
 
-    # Handle country codes
+def generate_financial(code, years):
+    """Generate .ics for financial market holidays."""
     try:
-        instance = holidays.country_holidays(code)
+        h = holidays.financial_holidays(code, years=years)
+    except NotImplementedError:
+        print(f"Error: '{code}' is not a supported financial market code.")
+        sys.exit(1)
+    file_path = f"{code}_{get_year_tag(years)}.ics"
+    ICalExporter(h).save_ics(file_path)
+    print(f"Generated: {file_path}")
+
+
+def validate_country(code):
+    """Validate country code and return holidays instance."""
+    try:
+        return holidays.country_holidays(code)
     except NotImplementedError:
         print(f"Error: '{code}' is not a supported country or market code.")
         print("See https://python-holidays.readthedocs.io for supported entities.")
         sys.exit(1)
 
-    # Validate subdivision
-    if subdivision:
-        valid_subdivisions = instance.subdivisions
-        if subdivision not in valid_subdivisions:
-            print(f"Error: '{subdivision}' is not a valid subdivision for {code}.")
-            print(f"Valid subdivisions: {', '.join(valid_subdivisions)}")
-            sys.exit(1)
 
-    # Validate language
-    if language:
-        valid_languages = instance.supported_languages
-        if language not in valid_languages:
-            print(f"Error: '{language}' is not a supported language for {code}.")
-            print(f"Supported languages: {', '.join(valid_languages) if valid_languages else 'None'}")
-            sys.exit(1)
+def validate_subdivision(instance, code, subdivision):
+    """Validate subdivision against supported list."""
+    if subdivision and subdivision not in instance.subdivisions:
+        print(f"Error: '{subdivision}' is not a valid subdivision for {code}.")
+        print(f"Valid subdivisions: {', '.join(instance.subdivisions)}")
+        sys.exit(1)
 
-    # Get categories
+
+def validate_language(instance, code, language):
+    """Validate language against supported list."""
+    if language and language not in instance.supported_languages:
+        print(f"Error: '{language}' is not a supported language for {code}.")
+        langs = ', '.join(instance.supported_languages) if instance.supported_languages else 'None'
+        print(f"Supported languages: {langs}")
+        sys.exit(1)
+
+
+def generate_country(code, years, language, public_only, subdivision):
+    """Generate .ics for country holidays."""
+    instance = validate_country(code)
+    validate_subdivision(instance, code, subdivision)
+    validate_language(instance, code, language)
+
     categories = instance.supported_categories
     if public_only:
         categories = [c for c in categories if c == holidays.constants.PUBLIC]
 
-    # Generate .ics files
     for category in categories:
         h = holidays.country_holidays(
             code,
@@ -90,13 +92,23 @@ def validate_and_generate(code, years=None, language=None,
         )
         lang_tag = f"_{language}" if language else ""
         subdiv_tag = f"_{subdivision}" if subdivision else ""
-        if isinstance(years, range):
-            year_tag = f"{years.start}-{years.stop - 1}"
-        else:
-            year_tag = str(years)
-        file_path = f"{code}{subdiv_tag}_{category}_{year_tag}{lang_tag}.ics"
+        file_path = f"{code}{subdiv_tag}_{category}_{get_year_tag(years)}{lang_tag}.ics"
         ICalExporter(h).save_ics(file_path)
         print(f"Generated: {file_path}")
+
+
+def validate_and_generate(code, years=None, language=None,
+                           public_only=False, subdivision=None):
+    if years is None:
+        years = date.today().year
+
+    if is_financial_market(code):
+        if subdivision:
+            print("Error: --subdivision is not supported for financial markets.")
+            sys.exit(1)
+        generate_financial(code, years)
+    else:
+        generate_country(code, years, language, public_only, subdivision)
 
 
 if __name__ == "__main__":
