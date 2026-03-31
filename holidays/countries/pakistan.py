@@ -76,13 +76,13 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Quaid-e-Azam Day.
         self._add_holiday_dec_25(tr("Quaid-e-Azam Day"))
 
-        # Eid al-Fitr.
+        # Eid-ul-Fitr.
         name = tr("Eid-ul-Fitr")
         self._add_eid_al_fitr_day(name)
         self._add_eid_al_fitr_day_two(name)
         self._add_eid_al_fitr_day_three(name)
 
-        # Eid al-Adha.
+        # Eid-ul-Adha.
         name = tr("Eid-ul-Adha")
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
