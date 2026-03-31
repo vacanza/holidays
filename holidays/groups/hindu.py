@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from collections.abc import Iterable
-from datetime import date
+from datetime import date, timedelta
 
 from holidays.calendars.hindu import _HinduLunisolar
 from holidays.groups.eastern import EasternCalendarHolidays
@@ -510,3 +510,12 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.vaisakhi_date(self._year)
         )
+
+    def _add_parsi_new_year(self, name: str) -> None:
+        """Add Parsi New Year (Shahenshahi)."""
+        # The Parsi New Year (Shahenshahi) follows a 365-day fixed cycle.
+        # It shifts back by 1 day every 4 years relative to the Gregorian calendar.
+        # Reference: In 1972 (a leap year), the holiday fell on August 28.
+        leaps = (self._year - 1972) // 4
+        dt = date(self._year, 8, 28) - timedelta(days=leaps)
+        self._add_holiday(name, dt)

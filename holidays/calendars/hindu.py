@@ -15,7 +15,6 @@ from datetime import date
 
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import (
-    _timedelta,
     JAN,
     FEB,
     MAR,
