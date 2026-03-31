@@ -21,24 +21,48 @@ def parse_years(year_arg):
     sys.exit(1)
 
 
-def validate_and_generate(country_code, years=None, language=None,
+def is_financial_market(code):
+    """Check if the given code is a financial market code."""
+    return code in holidays.list_supported_financial()
+
+
+def validate_and_generate(code, years=None, language=None,
                            public_only=False, subdivision=None):
     if years is None:
         years = date.today().year
 
-    # Validate country code
+    # Handle financial market codes
+    if is_financial_market(code):
+        if subdivision:
+            print(f"Error: --subdivision is not supported for financial markets.")
+            sys.exit(1)
+        try:
+            h = holidays.financial_holidays(code, years=years)
+        except NotImplementedError:
+            print(f"Error: '{code}' is not a supported financial market code.")
+            sys.exit(1)
+        if isinstance(years, range):
+            year_tag = f"{years.start}-{years.stop - 1}"
+        else:
+            year_tag = str(years)
+        file_path = f"{code}_{year_tag}.ics"
+        ICalExporter(h).save_ics(file_path)
+        print(f"Generated: {file_path}")
+        return
+
+    # Handle country codes
     try:
-        instance = holidays.country_holidays(country_code)
+        instance = holidays.country_holidays(code)
     except NotImplementedError:
-        print(f"Error: '{country_code}' is not a supported country code.")
-        print("See https://python-holidays.readthedocs.io for supported countries.")
+        print(f"Error: '{code}' is not a supported country or market code.")
+        print("See https://python-holidays.readthedocs.io for supported entities.")
         sys.exit(1)
 
     # Validate subdivision
     if subdivision:
         valid_subdivisions = instance.subdivisions
         if subdivision not in valid_subdivisions:
-            print(f"Error: '{subdivision}' is not a valid subdivision for {country_code}.")
+            print(f"Error: '{subdivision}' is not a valid subdivision for {code}.")
             print(f"Valid subdivisions: {', '.join(valid_subdivisions)}")
             sys.exit(1)
 
@@ -46,7 +70,7 @@ def validate_and_generate(country_code, years=None, language=None,
     if language:
         valid_languages = instance.supported_languages
         if language not in valid_languages:
-            print(f"Error: '{language}' is not a supported language for {country_code}.")
+            print(f"Error: '{language}' is not a supported language for {code}.")
             print(f"Supported languages: {', '.join(valid_languages) if valid_languages else 'None'}")
             sys.exit(1)
 
@@ -58,29 +82,26 @@ def validate_and_generate(country_code, years=None, language=None,
     # Generate .ics files
     for category in categories:
         h = holidays.country_holidays(
-            country_code,
+            code,
             years=years,
             categories=category,
             language=language,
             subdiv=subdivision
         )
-
-        # Build filename
         lang_tag = f"_{language}" if language else ""
         subdiv_tag = f"_{subdivision}" if subdivision else ""
         if isinstance(years, range):
             year_tag = f"{years.start}-{years.stop - 1}"
         else:
             year_tag = str(years)
-
-        file_path = f"{country_code}{subdiv_tag}_{category}_{year_tag}{lang_tag}.ics"
+        file_path = f"{code}{subdiv_tag}_{category}_{year_tag}{lang_tag}.ics"
         ICalExporter(h).save_ics(file_path)
         print(f"Generated: {file_path}")
 
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python examples/vacanza.py <COUNTRY_CODE> [YEAR or YYYY-YYYY] "
+        print("Usage: python examples/vacanza.py <COUNTRY_OR_MARKET_CODE> [YEAR or YYYY-YYYY] "
               "[LANGUAGE] [--subdivision CODE] [--public-holidays]")
         print("Examples:")
         print("  python examples/vacanza.py IN")
@@ -89,6 +110,8 @@ if __name__ == "__main__":
         print("  python examples/vacanza.py IN 2025 --subdivision MH")
         print("  python examples/vacanza.py IN 2025 mr")
         print("  python examples/vacanza.py IN 2025 --public-holidays")
+        print("  python examples/vacanza.py XBOM 2025")
+        print("  python examples/vacanza.py XNSE 2025")
         sys.exit(1)
 
     country_code = sys.argv[1].upper()
