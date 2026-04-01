@@ -716,7 +716,6 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-12-25", "નાતાલ"),
         )
 
-
     def test_l10n_hi(self):
         self.assertLocalizedHolidays(
             "hi",
