@@ -249,8 +249,8 @@ class India(
         # Children's Day.
         self._add_holiday_nov_14(tr("Children's Day"))
 
-        # Holi.
         if self.subdiv != "MH":
+            # Holi.
             self._add_holi(tr("Holi"))
 
         # Ganesh Chaturthi.
@@ -412,9 +412,8 @@ class India(
         }
         # Holi
         name = tr("Holi")
-        if self._year in holi_dates:
-            month, day = holi_dates[self._year]
-            self._add_holiday(name, month, day)
+        if dt := holi_dates.get(self._year):
+            self._add_holiday(name, dt)
         else:
             self._add_holi(name)
         # Dr. B. R. Ambedkar Jayanti.
