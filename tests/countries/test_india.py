@@ -522,6 +522,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2017-04-09",
             "2020-04-05",
         )
+
     def test_parsi_new_year(self):
         name = "Parsi New Year (Shahenshahi)"
         self.assertNoHolidayName(name)
@@ -541,7 +542,6 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertHolidayName(name, India(subdiv=subdiv), dt)
             else:
                 self.assertNoHolidayName(name, India(subdiv=subdiv), dt)
-
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -1216,5 +1216,3 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertEqual(
             India(subdiv="OR", years=2023).keys(), India(subdiv="OD", years=2023).keys()
         )
-
-    
