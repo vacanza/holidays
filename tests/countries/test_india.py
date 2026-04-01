@@ -1196,3 +1196,19 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertEqual(
             India(subdiv="OR", years=2023).keys(), India(subdiv="OD", years=2023).keys()
         )
+
+    def test_parsi_new_year_shahenshahi(self):
+        # We create a fresh instance specifically for a state that has the holiday
+        gj_holidays = India(subdiv="GJ")
+
+        # 1972: Reference year
+        self.assertIn(
+            "Parsi New Year (Shahenshahi)",
+            gj_holidays.get("1972-08-28"),
+        )
+
+        # 2024: Current drift
+        self.assertIn(
+            "Parsi New Year (Shahenshahi)",
+            gj_holidays.get("2024-08-15"),
+        )
