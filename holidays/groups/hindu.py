@@ -203,6 +203,20 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.guru_gobind_singh_jayanti_date(self._year)
         )
 
+    def _add_maharishi_valmiki_jayanti(self, name) -> date | None:
+        """
+        Add Maharishi Valmiki Jayanti.
+
+        Maharishi Valmiki Jayanti, celebrating the birth of the author
+        of the Ramayana and the Adi Kavi (first poet) of Sanskrit,
+        occurs on the full moon day (Purnima) in the Hindu month of Ashwin.
+        https://en.wikipedia.org/wiki/Valmiki_Jayanti
+        https://www.drikpanchang.com/hindu-saints/valmiki/maharishi-valmiki-jayanti.html
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.maharishi_valmiki_jayanti_date(self._year)
+        )
+
     def _add_guru_nanak_jayanti(self, name) -> date | None:
         """
         Add Guru Nanak Jayanti.

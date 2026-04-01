@@ -196,6 +196,9 @@ class India(
         # Buddha Purnima.
         self._add_buddha_purnima(tr("Buddha Purnima"))
 
+        # Maharishi Valmiki Jayanti
+        self._add_maharishi_valmiki_jayanti(tr("Maharishi Valmiki Jayanti"))
+
         # Diwali.
         self._add_diwali_india(tr("Diwali"))
 
@@ -260,6 +263,9 @@ class India(
         # Maha Navami.
         self._add_maha_navami(tr("Maha Navami"))
 
+        # Maharishi Valmiki Jayanti
+        self._add_maharishi_valmiki_jayanti(tr("Maharishi Valmiki Jayanti"))
+
         # Makar Sankranti.
         self._add_makar_sankranti(tr("Makar Sankranti"))
 
@@ -279,9 +285,6 @@ class India(
 
         # Palm Sunday.
         self._add_palm_sunday(tr("Palm Sunday"))
-        
-        # Maharishi Valmiki Jayanti
-        self._add_valmiki_jayanti(tr("Maharishi Valmiki Jayanti"))
 
     # Andaman and Nicobar Islands.
     def _populate_subdiv_an_public_holidays(self):
@@ -329,8 +332,6 @@ class India(
     def _populate_subdiv_dl_public_holidays(self):
         # Chhath Puja.
         self._add_chhath_puja(tr("Chhath Puja"))
-        # Maharishi Valmiki Jayanti
-        self._add_valmiki_jayanti(tr("Maharishi Valmiki Jayanti"))
 
     # Goa.
     def _populate_subdiv_ga_public_holidays(self):
@@ -514,7 +515,7 @@ class India(
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharishi Valmiki Jayanti
-        self._add_valmiki_jayanti(tr("Maharishi Valmiki Jayanti"))
+        self._add_maharishi_valmiki_jayanti(tr("Maharishi Valmiki Jayanti"))
 
     # West Bengal.
     def _populate_subdiv_wb_public_holidays(self):

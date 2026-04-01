@@ -48,6 +48,10 @@ msgstr "গান্ধী জয়ন্তী"
 msgid "Buddha Purnima"
 msgstr "বুদ্ধ পূর্ণিমা"
 
+#. Maharishi Valmiki Jayanti
+msgid "Maharishi Valmiki Jayanti"
+msgstr "মহার্ষি বাল্মীকি জয়ন্তী"
+
 #. Diwali.
 msgid "Diwali"
 msgstr "দীপাবলি"
