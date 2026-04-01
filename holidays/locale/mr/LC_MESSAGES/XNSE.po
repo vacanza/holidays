@@ -78,7 +78,7 @@ msgstr "रामनवमी"
 
 #. Mahavir Jayanti.
 msgid "Mahavir Jayanti"
-msgstr "महावीर जयंती"
+msgstr "महावीर जन्म कल्याणक"
 
 #. Ganesh Chaturthi.
 msgid "Ganesh Chaturthi"
