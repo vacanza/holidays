@@ -70,18 +70,6 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2021-12-16", "বিজয় দিবস"),
         )
 
-    def test_l10n_en_us(self):
-        self.assertLocalizedHolidays(
-            "en_US",
-            ("2021-02-21", "Martyrs' Day and International Mother Language Day"),
-            ("2021-03-17", "Sheikh Mujibur Rahman's Birthday"),
-            ("2021-03-26", "Independence Day"),
-            ("2021-04-14", "Bengali New Year's Day"),
-            ("2021-05-01", "May Day"),
-            ("2021-08-15", "National Mourning Day"),
-            ("2021-12-16", "Victory Day"),
-        )
-
     def test_l10n_ar(self):
         self.assertLocalizedHolidays(
             "ar",
@@ -92,4 +80,16 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2021-05-01", "الأول من مايو"),
             ("2021-08-15", "اليوم الوطني للحداد"),
             ("2021-12-16", "عيد النصر"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2021-02-21", "Martyrs' Day and International Mother Language Day"),
+            ("2021-03-17", "Sheikh Mujibur Rahman's Birthday"),
+            ("2021-03-26", "Independence Day"),
+            ("2021-04-14", "Bengali New Year's Day"),
+            ("2021-05-01", "May Day"),
+            ("2021-08-15", "National Mourning Day"),
+            ("2021-12-16", "Victory Day"),
         )
