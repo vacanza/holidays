@@ -17,13 +17,14 @@ import inspect
 import sys
 from collections import defaultdict
 from concurrent.futures import ProcessPoolExecutor
+from copy import deepcopy
 from datetime import datetime
 from pathlib import Path
 from time import perf_counter
 
 from lingva.extract import extract as create_pot_file
 from lingva.extract import _location_sort_key
-from polib import pofile
+from polib import POFile, pofile
 
 sys.path.insert(0, str(Path.cwd()))  # Make holidays visible.
 from holidays import __version__ as package_version
@@ -103,7 +104,7 @@ class POGenerator:
     @staticmethod
     def _process_entity_worker(
         entity_code_info: tuple[str, str, Path, str, tuple[str, ...]],
-    ) -> list[tuple[Path, Path, str, str]]:
+    ) -> list[tuple[Path, POFile, str, str]]:
         """Process a single entity: create .pot, default .po, and return update tasks."""
         entity_code, default_language, class_file_path, class_docstring, supported_languages = (
             entity_code_info
@@ -132,14 +133,6 @@ class POGenerator:
         pot_file.metadata["X-Source-Language"] = default_language
         pot_file.save(newline="\n")
 
-        if POGenerator._po_index is None:
-            raise RuntimeError("PO index not initialized in worker")
-
-        update_tasks = [
-            (po_file_path, pot_file_path, class_docstring, default_language)
-            for po_file_path in POGenerator._po_index.get(entity_code, [])
-        ]
-
         for lang in supported_languages:
             lang_directory = POGenerator._locale_path / lang / "LC_MESSAGES"
             lang_directory.mkdir(parents=True, exist_ok=True)
@@ -152,20 +145,23 @@ class POGenerator:
                 desc_line = POGenerator._build_desc_line(class_docstring, lang, default_language)
                 POGenerator._write_po_header(lang_po_path, desc_line)
 
-        return update_tasks
+        if POGenerator._po_index is None:
+            raise RuntimeError("PO index not initialized in worker")
+
+        return [
+            (po_file_path, pot_file, class_docstring, default_language)
+            for po_file_path in POGenerator._po_index.get(entity_code, [])
+        ]
 
     @staticmethod
-    def _update_po_file(args: tuple[Path, Path, str, str]) -> None:
+    def _update_po_file(args: tuple[Path, POFile, str, str]) -> None:
         """Merge .po file with .pot using strict no-change policies."""
-        po_path, pot_path, entity_docstring, default_language = args
+        po_path, pot_file, entity_docstring, default_language = args
         po_path = po_path.resolve()
-        pot_path = pot_path.resolve()
         current_lang = po_path.parent.parent.name
 
         po_file = pofile(str(po_path), wrapwidth=WRAP_WIDTH)
-        po_file_initial = po_file.copy()
-
-        pot_file = pofile(str(pot_path), wrapwidth=WRAP_WIDTH)
+        po_file_initial = deepcopy(po_file)
 
         po_file.merge(pot_file)
         po_file.sort(key=_location_sort_key)
@@ -188,7 +184,7 @@ class POGenerator:
     @staticmethod
     def process_entities() -> None:
         """Processes entities in specified directory."""
-        entity_code_info_list = []
+        entities_data = []
         for entity_type in ("countries", "financial"):
             entity_mapping = COUNTRIES if entity_type == "countries" else FINANCIAL
 
@@ -196,7 +192,7 @@ class POGenerator:
                 if (mod_name := path.stem) == "__init__":
                     continue
 
-                class_name, name = entity_mapping[mod_name][0:2]
+                class_name, entity_code = entity_mapping[mod_name][0:2]
                 mod = importlib.import_module(f"holidays.{entity_type}.{mod_name}")
                 entity_cls = None
 
@@ -208,9 +204,9 @@ class POGenerator:
                 if not entity_cls:
                     continue
 
-                entity_code_info_list.append(
+                entities_data.append(
                     (
-                        name,
+                        entity_code,
                         entity_cls.default_language,
                         path,
                         entity_cls.__doc__ or "",
@@ -222,15 +218,13 @@ class POGenerator:
         for path in POGenerator._locale_path.rglob("*.po"):
             po_index[path.stem].append(path)
 
-        all_po_update_tasks: list[tuple[Path, Path, str, str]] = []
+        all_po_update_tasks: list[tuple[Path, POFile, str, str]] = []
 
         with ProcessPoolExecutor(
             initializer=POGenerator._init_worker,
             initargs=(po_index, POGenerator._get_license_header()),
         ) as executor:
-            for po_tasks in executor.map(
-                POGenerator._process_entity_worker, entity_code_info_list
-            ):
+            for po_tasks in executor.map(POGenerator._process_entity_worker, entities_data):
                 all_po_update_tasks.extend(po_tasks)
 
             list(executor.map(POGenerator._update_po_file, all_po_update_tasks))
