@@ -30,7 +30,7 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
-msgstr "%s (अंदाजित)"
+msgstr "%s (अंदाजे)"
 
 #. Republic Day.
 msgid "Republic Day"
