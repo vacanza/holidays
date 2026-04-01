@@ -522,6 +522,26 @@ class TestIndia(CommonCountryTests, TestCase):
             "2017-04-09",
             "2020-04-05",
         )
+    def test_parsi_new_year(self):
+        name = "Parsi New Year (Shahenshahi)"
+        self.assertNoHolidayName(name)
+
+        dt = (
+            "1972-08-28",
+            "2019-08-17",
+            "2020-08-16",
+            "2021-08-16",
+            "2022-08-16",
+            "2023-08-16",
+            "2024-08-15",
+            "2025-08-15",
+        )
+        for subdiv in India.subdivisions:
+            if subdiv in {"GJ", "MH"}:
+                self.assertHolidayName(name, India(subdiv=subdiv), dt)
+            else:
+                self.assertNoHolidayName(name, India(subdiv=subdiv), dt)
+
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -1197,22 +1217,4 @@ class TestIndia(CommonCountryTests, TestCase):
             India(subdiv="OR", years=2023).keys(), India(subdiv="OD", years=2023).keys()
         )
 
-    def test_parsi_new_year(self):
-        name = "Parsi New Year (Shahenshahi)"
-        self.assertNoHolidayName(name)
-
-        dt = (
-            "1972-08-28",
-            "2019-08-17",
-            "2020-08-16",
-            "2021-08-16",
-            "2022-08-16",
-            "2023-08-16",
-            "2024-08-15",
-            "2025-08-15",
-        )
-        for subdiv in India.subdivisions:
-            if subdiv in {"GJ", "MH"}:
-                self.assertHolidayName(name, India(subdiv=subdiv), dt)
-            else:
-                self.assertNoHolidayName(name, India(subdiv=subdiv), dt)
+    
