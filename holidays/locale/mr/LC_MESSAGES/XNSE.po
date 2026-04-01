@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Bombay Stock Exchange holidays mr localization.
+# National Stock Exchange of India holidays holidays mr localization.
 #
 msgid ""
 msgstr ""
