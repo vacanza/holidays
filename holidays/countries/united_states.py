@@ -143,6 +143,7 @@ class UnitedStates(
             * [Law No. 121 of Dec 24, 1991](https://web.archive.org/web/20251213230111/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0121-1991.pdf)
             * [Law No. 39 of Jul 11, 1994](https://web.archive.org/web/20221222034721/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0039-1994.pdf)
             * [Law No. 76 of Jul 6, 1995](https://web.archive.org/web/20250605110906/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/76-1995.pdf)
+            * [Law No. 53 of Mar 4, 2000](https://web.archive.org/web/20230919015004/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/53-2000.pdf)
             * [Law No. 305 of Dec 25, 2002](https://web.archive.org/web/20250625061048/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/305-2002.pdf)
             * [Law No. 182 of Dec 1, 2010](https://web.archive.org/web/20221221221227/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0182-2010.pdf)
             * [Law No. 111 of Jul 29, 2014](https://web.archive.org/web/20250219021118/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0111-2014.pdf)
@@ -1317,6 +1318,13 @@ class UnitedStates(
                 name = tr("Discovery of Puerto Rico Day")
             self._add_observed(self._add_holiday_nov_19(name), rule=SUN_TO_NEXT_MON)
 
+    def _populate_subdiv_pr_government_holidays(self):
+        # Día de la Ciudadanía Americana.
+        # Established by Law No. 53 of Mar 4, 2000.
+        if self._year >= 2001:
+            # American Citizenship Day.
+            self._add_holiday_mar_2(tr("American Citizenship Day"))
+
     def _populate_subdiv_pr_half_day_holidays(self):
         # Established by Law No. 305 of Dec 25, 2002.
         if self._year >= 2003:
@@ -1559,7 +1567,7 @@ class UnitedStates(
     def _populate_government_holidays(self):
         # Added by 16 Stat. 168, effectdive date June 28th, 1870.
         # New Year's Day check for 1871 is included.
-        if self._year >= 1870:
+        if self._year >= 1870 and self.subdiv != "PR":
             # Federal holidays in the United States.
             self._populate_common(include_federal=True)
 
