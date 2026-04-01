@@ -1,0 +1,139 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Lebanon holidays fr localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.94\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-03-25 00:00+0000\n"
+"PO-Revision-Date: 2026-03-29 00:00+0000\n"
+"Last-Translator: Osama Alnajar <osama.alnajar.26@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: ar\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (المقدرة)"
+msgstr "%s (estimé)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (يُحتفل به)"
+msgstr "%s (observé)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (يُحتفل به، المقدرة)"
+msgstr "%s (observé, estimé)"
+
+#. New Year's Day.
+msgid "رأس السنة الميلادية"
+msgstr "Nouvel An"
+
+#. Armenian Orthodox Christmas Day.
+msgid "عيد الميلاد عند الطوائف الارمنية الارثوذكسية"
+msgstr "Noël Arménien"
+
+#. Saint Maron's Day.
+msgid "عيد مار مارون"
+msgstr "Saint Maron"
+
+#. Feast of the Annunciation.
+msgid "عيد بشارة السيدة مريم العذراء"
+msgstr "Annonciation"
+
+#. Catholic Good Friday.
+msgid "الجمعة العظيمة عند الطوائف الكاثوليكية"
+msgstr "Vendredi Saint Catholique"
+
+#. Orthodox Good Friday.
+msgid "الجمعة العظيمة عند الطوائف الأرثوذكسية"
+msgstr "Vendredi Saint Orthodoxe"
+
+#. Orthodox Holy Saturday.
+msgid "سبت النور للطائفة الأرثوذكسية"
+msgstr "Samedi Saint Orthodoxe"
+
+#. Catholic Easter Monday.
+msgid "اثنين الفصح عند الطوائف الكاثوليكية"
+msgstr "Lundi de Pâques Catholique"
+
+#. Orthodox Easter Monday.
+msgid "اثنين الفصح عند الطوائف الأرثوذكسية"
+msgstr "Lundi de Pâques Orthodoxe"
+
+#. Orthodox Easter Tuesday.
+msgid "ثلاثاء الفصح للطوائف الأرثوذكسية"
+msgstr "Mardi de Pâques Orthodoxe"
+
+#. Labor Day.
+msgid "عيد العمل"
+msgstr "Fête du Travail"
+
+#. Martyrs' Day.
+msgid "عيد الشهداء"
+msgstr "Journée des Martyrs"
+
+#. Resistance and Liberation Day.
+msgid "عيد المقاومة والتحرير"
+msgstr "Résistance et Libération"
+
+#. Assumption Day.
+msgid "عيد انتقال العذراء"
+msgstr "Assomption"
+
+#. All Saints' Day.
+msgid "عيد جميع القديسين"
+msgstr "Toussaint"
+
+#. Independence Day.
+msgid "ذكرى الاستقلال"
+msgstr "Fête Nationale"
+
+#. Christmas Day.
+msgid "عيد الميلاد"
+msgstr "Noël"
+
+#. Islamic New Year.
+msgid "عيد رأس السنة الهجرية"
+msgstr "Hégire"
+
+#. Ashura.
+msgid "عاشوراء"
+msgstr "Achoura"
+
+#. Prophet's Birthday.
+msgid "ذكرى المولد النبوي الشريف"
+msgstr "Naissance du Prophète"
+
+#. Eid al-Fitr.
+msgid "عيد الفطر"
+msgstr "Eid El Fitr"
+
+#. Eid al-Adha.
+msgid "عيد الأضحى"
+msgstr "Adha"
+
+#. Rafik Hariri Memorial Day.
+msgid "يوم ذكرى رفيق الحريري"
+msgstr "Commémoration de l'assassinat du PM Rafic Hariri"
+
+#. Anniversary of the tragedy of Beirut port explosion.
+msgid "ذكرى مأساة انفجار مرفأ بيروت"
+msgstr "Explosion du port de Beyrouth"

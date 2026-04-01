@@ -871,7 +871,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>India</td>
 <td>IN</td>
 <td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (TG, Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
-<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, pa, ta, te</td>
+<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, mr, pa, ta, te</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -1018,7 +1018,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Lebanon</td>
 <td>LB</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
+<td><strong>ar</strong>, en_US, fr</td>
 <td>BANK, GOVERNMENT</td>
 </tr>
 <tr>
@@ -1411,7 +1411,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>PR</td>
 <td>Can also be loaded as country US, subdivision PR</td>
 <td><strong>en_US</strong>, th</td>
-<td>HALF_DAY, UNOFFICIAL</td>
+<td>GOVERNMENT, HALF_DAY, UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Qatar</td>
