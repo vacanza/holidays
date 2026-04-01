@@ -1197,18 +1197,22 @@ class TestIndia(CommonCountryTests, TestCase):
             India(subdiv="OR", years=2023).keys(), India(subdiv="OD", years=2023).keys()
         )
 
-    def test_parsi_new_year_shahenshahi(self):
-        # We create a fresh instance specifically for a state that has the holiday
-        gj_holidays = India(subdiv="GJ")
+    def test_parsi_new_year(self):
+        name = "Parsi New Year (Shahenshahi)"
+        self.assertNoHolidayName(name)
 
-        # 1972: Reference year
-        self.assertIn(
-            "Parsi New Year (Shahenshahi)",
-            gj_holidays.get("1972-08-28"),
+        dt = (
+            "1972-08-28",
+            "2019-08-17",
+            "2020-08-16",
+            "2021-08-16",
+            "2022-08-16",
+            "2023-08-16",
+            "2024-08-15",
+            "2025-08-15",
         )
-
-        # 2024: Current drift
-        self.assertIn(
-            "Parsi New Year (Shahenshahi)",
-            gj_holidays.get("2024-08-15"),
-        )
+        for subdiv in India.subdivisions:
+            if subdiv in {"GJ", "MH"}:
+                self.assertHolidayName(name, India(subdiv=subdiv), dt)
+            else:
+                self.assertNoHolidayName(name, India(subdiv=subdiv), dt)
