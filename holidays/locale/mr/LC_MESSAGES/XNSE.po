@@ -106,7 +106,7 @@ msgstr "भाऊबीज"
 
 #. Buddha Purnima.
 msgid "Buddha Purnima"
-msgstr "बुद्ध पौर्णिमा"
+msgstr "बुध्द पौर्णिमा"
 
 #. Ashura.
 msgid "Muharram"
@@ -118,7 +118,7 @@ msgstr "ईद-ए-मिलाद"
 
 #. Eid al-Fitr.
 msgid "Id-Ul-Fitr (Ramadan Eid)"
-msgstr "रमजान ईद (ईद-उल-फित्र)"
+msgstr "रमझान ईद (ईद-उल-फितर)"
 
 #. Eid al-Adha.
 msgid "Bakri Id"
