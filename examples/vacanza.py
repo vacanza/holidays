@@ -1,3 +1,15 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
 import sys
 from datetime import date
 from pathlib import Path
@@ -8,16 +20,26 @@ import holidays
 from holidays.ical import ICalExporter
 
 
+def eprint(message: str) -> None:
+    """Print error messages to stderr."""
+    sys.stderr.write(f"{message}\n")
+
+
+def oprint(message: str) -> None:
+    """Print normal output to stdout."""
+    sys.stdout.write(f"{message}\n")
+
+
 def parse_years(year_arg):
     if "-" in year_arg:
         parts = year_arg.split("-")
         if len(parts) == 2 and all(p.isdigit() and len(p) == 4 for p in parts):
             return range(int(parts[0]), int(parts[1]) + 1)
-        print(f"Error: invalid year range '{year_arg}'. Use YYYY or YYYY-YYYY.")
+        eprint(f"Error: invalid year range '{year_arg}'. Use YYYY or YYYY-YYYY.")
         sys.exit(1)
     if year_arg.isdigit() and len(year_arg) == 4:
         return int(year_arg)
-    print(f"Error: invalid year '{year_arg}'. Use YYYY or YYYY-YYYY.")
+    eprint(f"Error: invalid year '{year_arg}'. Use YYYY or YYYY-YYYY.")
     sys.exit(1)
 
 
@@ -38,11 +60,11 @@ def generate_financial(code, years):
     try:
         h = holidays.financial_holidays(code, years=years)
     except NotImplementedError:
-        print(f"Error: '{code}' is not a supported financial market code.")
+        eprint(f"Error: '{code}' is not a supported financial market code.")
         sys.exit(1)
     file_path = f"{code}_{get_year_tag(years)}.ics"
     ICalExporter(h).save_ics(file_path)
-    print(f"Generated: {file_path}")
+    oprint(f"Generated: {file_path}")
 
 
 def validate_country(code):
@@ -50,25 +72,25 @@ def validate_country(code):
     try:
         return holidays.country_holidays(code)
     except NotImplementedError:
-        print(f"Error: '{code}' is not a supported country or market code.")
-        print("See https://python-holidays.readthedocs.io for supported entities.")
+        eprint(f"Error: '{code}' is not a supported country or market code.")
+        eprint("See https://python-holidays.readthedocs.io for supported entities.")
         sys.exit(1)
 
 
 def validate_subdivision(instance, code, subdivision):
     """Validate subdivision against supported list."""
     if subdivision and subdivision not in instance.subdivisions:
-        print(f"Error: '{subdivision}' is not a valid subdivision for {code}.")
-        print(f"Valid subdivisions: {', '.join(instance.subdivisions)}")
+        eprint(f"Error: '{subdivision}' is not a valid subdivision for {code}.")
+        eprint(f"Valid subdivisions: {', '.join(instance.subdivisions)}")
         sys.exit(1)
 
 
 def validate_language(instance, code, language):
     """Validate language against supported list."""
     if language and language not in instance.supported_languages:
-        print(f"Error: '{language}' is not a supported language for {code}.")
+        eprint(f"Error: '{language}' is not a supported language for {code}.")
         langs = ', '.join(instance.supported_languages) if instance.supported_languages else 'None'
-        print(f"Supported languages: {langs}")
+        eprint(f"Supported languages: {langs}")
         sys.exit(1)
 
 
@@ -94,7 +116,7 @@ def generate_country(code, years, language, public_only, subdivision):
         subdiv_tag = f"_{subdivision}" if subdivision else ""
         file_path = f"{code}{subdiv_tag}_{category}_{get_year_tag(years)}{lang_tag}.ics"
         ICalExporter(h).save_ics(file_path)
-        print(f"Generated: {file_path}")
+        oprint(f"Generated: {file_path}")
 
 
 def validate_and_generate(code, years=None, language=None,
@@ -104,7 +126,7 @@ def validate_and_generate(code, years=None, language=None,
 
     if is_financial_market(code):
         if subdivision:
-            print("Error: --subdivision is not supported for financial markets.")
+            eprint("Error: --subdivision is not supported for financial markets.")
             sys.exit(1)
         generate_financial(code, years)
     else:
@@ -113,17 +135,17 @@ def validate_and_generate(code, years=None, language=None,
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python examples/vacanza.py <COUNTRY_OR_MARKET_CODE> [YEAR or YYYY-YYYY] "
-              "[LANGUAGE] [--subdivision CODE] [--public-holidays]")
-        print("Examples:")
-        print("  python examples/vacanza.py IN")
-        print("  python examples/vacanza.py IN 2025")
-        print("  python examples/vacanza.py IN 2020-2025")
-        print("  python examples/vacanza.py IN 2025 --subdivision MH")
-        print("  python examples/vacanza.py IN 2025 mr")
-        print("  python examples/vacanza.py IN 2025 --public-holidays")
-        print("  python examples/vacanza.py XBOM 2025")
-        print("  python examples/vacanza.py XNSE 2025")
+        eprint("Usage: python examples/vacanza.py <COUNTRY_OR_MARKET_CODE> [YEAR or YYYY-YYYY] "
+               "[LANGUAGE] [--subdivision CODE] [--public-holidays]")
+        eprint("Examples:")
+        eprint("  python examples/vacanza.py IN")
+        eprint("  python examples/vacanza.py IN 2025")
+        eprint("  python examples/vacanza.py IN 2020-2025")
+        eprint("  python examples/vacanza.py IN 2025 --subdivision MH")
+        eprint("  python examples/vacanza.py IN 2025 mr")
+        eprint("  python examples/vacanza.py IN 2025 --public-holidays")
+        eprint("  python examples/vacanza.py XBOM 2025")
+        eprint("  python examples/vacanza.py XNSE 2025")
         sys.exit(1)
 
     country_code = sys.argv[1].upper()
@@ -143,7 +165,7 @@ if __name__ == "__main__":
                 subdivision = args[i + 1].upper()
                 i += 1
             else:
-                print("Error: --subdivision requires a value e.g. --subdivision MH")
+                eprint("Error: --subdivision requires a value e.g. --subdivision MH")
                 sys.exit(1)
         elif arg.replace("-", "").isdigit() and len(arg) >= 4:
             years = parse_years(arg)
