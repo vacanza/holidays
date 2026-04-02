@@ -199,12 +199,9 @@ class POGenerator:
                 )
 
         with ProcessPoolExecutor() as executor:
-            entity_pot_mapping = {
-                entity_code: pot_file
-                for entity_code, pot_file in executor.map(
-                    POGenerator._process_entity_worker, entities_data.items()
-                )
-            }
+            entity_pot_mapping = dict(
+                executor.map(POGenerator._process_entity_worker, entities_data.items())
+            )
 
         all_po_update_tasks = [
             (path, entity_pot_mapping[path.stem], entities_data[path.stem])
