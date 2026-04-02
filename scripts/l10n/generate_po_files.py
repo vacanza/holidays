@@ -144,7 +144,7 @@ class POGenerator:
     @staticmethod
     def _update_po_file(args: tuple[Path, POFile, tuple[str, Path, str, tuple[str, ...]]]) -> None:
         """Merge .po file with .pot using strict no-change policies."""
-        po_path, pot_file, (default_language, _, entity_docstring, supported_languages) = args
+        po_path, pot_file, (default_language, _, entity_docstring, _) = args
         po_path = po_path.resolve()
         current_lang = po_path.parent.parent.name
 
@@ -184,7 +184,7 @@ class POGenerator:
 
                 entity_cls = None
                 for cls_name, cls in inspect.getmembers(mod, inspect.isclass):
-                    if cls_name == class_name:
+                    if cls_name == class_name and cls.default_language is not None:
                         entity_cls = cls
                         break
 
