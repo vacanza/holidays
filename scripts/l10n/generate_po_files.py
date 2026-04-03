@@ -14,6 +14,7 @@
 
 import importlib
 import inspect
+import re
 import sys
 from concurrent.futures import ProcessPoolExecutor
 from copy import deepcopy
@@ -32,7 +33,24 @@ from holidays.registry import COUNTRIES, FINANCIAL
 WRAP_WIDTH = 99
 HEADER_PATH = Path("docs/file_header.txt")
 MSGID_BUGS_ADDRESS = "l10n@vacanza.dev"
-LOCALIZATION_TEAM = "Holidays Localization Team"
+REQUIRED_METADATA_KEYS = frozenset(
+    {
+        "Project-Id-Version",
+        "Report-Msgid-Bugs-To",
+        "POT-Creation-Date",
+        "PO-Revision-Date",
+        "Last-Translator",
+        "Language-Team",
+        "Language",
+        "MIME-Version",
+        "Content-Type",
+        "Content-Transfer-Encoding",
+        "X-Source-Language",
+    }
+)
+
+DATE_PATTERN = re.compile(r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}[+-]\d{4}")
+TRANSLATOR_PATTERN = re.compile(r"[^<\s](?:[^<]*)? <[^@\s]+@[^@\s]+\.[^@\s]+>")
 
 
 class POGenerator:
@@ -65,18 +83,43 @@ class POGenerator:
         cls._license_header = license_header
 
     @staticmethod
+    def _apply_metadata(
+        po_file: POFile, current_lang: str, default_language: str, timestamp: str
+    ) -> None:
+        """Applies metadata to a .po file."""
+        forced_metadata = {
+            "Project-Id-Version": f"Holidays {package_version}",
+            "Report-Msgid-Bugs-To": MSGID_BUGS_ADDRESS,
+            "PO-Revision-Date": timestamp,
+            "Language-Team": "Holidays Localization Team",
+            "Language": current_lang,
+            "MIME-Version": "1.0",
+            "Content-Type": "text/plain; charset=UTF-8",
+            "Content-Transfer-Encoding": "8bit",
+            "X-Source-Language": default_language,
+        }
+        default_metadata = {
+            "POT-Creation-Date": timestamp,
+            "Last-Translator": "FULL NAME <EMAIL@ADDRESS>",
+        }
+        po_file.metadata = {**default_metadata, **po_file.metadata, **forced_metadata}
+
+    @staticmethod
     def _write_po_header(
         po_path: Path, docstring: str, current_language: str, default_language: str
     ) -> None:
         """Strips gettext boilerplate and prepends the license header + desc line."""
         content = po_path.read_text(encoding="utf-8")
+
+        # Strip existing vacanza header so we don't bail out and can refresh the docstring
+        if content.startswith("#  holidays\n#  --------"):
+            content = content.split("\n\n", 1)[-1].lstrip()
+
         content = (
             content.split("#, fuzzy", 1)[1].lstrip()
             if content.startswith("# SOME DESCRIPTIVE TITLE")
             else content.lstrip()
         )
-        if content.startswith("#  holidays\n#  --------"):
-            return
 
         desc_line = None
         if docstring:
@@ -123,11 +166,6 @@ class POGenerator:
         )
 
         pot_file = pofile(str(pot_file_path), wrapwidth=WRAP_WIDTH)
-        pot_file.metadata["Project-Id-Version"] = f"Holidays {package_version}"
-        pot_file.metadata["Report-Msgid-Bugs-To"] = MSGID_BUGS_ADDRESS
-        pot_file.metadata["PO-Revision-Date"] = pot_file.metadata["POT-Creation-Date"]
-        pot_file.metadata["Language-Team"] = LOCALIZATION_TEAM
-        pot_file.metadata["X-Source-Language"] = default_language
 
         for lang in supported_languages:
             lang_directory = POGenerator._locale_path / lang / "LC_MESSAGES"
@@ -135,8 +173,14 @@ class POGenerator:
             lang_po_path = lang_directory / f"{entity_code}.po"
 
             if not lang_po_path.exists():
-                pot_file.metadata["Language"] = lang
-                pot_file.save(str(lang_po_path), newline="\n")
+                lang_po_file = deepcopy(pot_file)
+                POGenerator._apply_metadata(
+                    lang_po_file,
+                    lang,
+                    default_language,
+                    pot_file.metadata.get("POT-Creation-Date", ""),
+                )
+                lang_po_file.save(str(lang_po_path), newline="\n")
 
         return entity_code, pot_file
 
@@ -155,14 +199,21 @@ class POGenerator:
         for entry in po_file:
             entry.occurrences.clear()
 
-        if po_file != po_file_initial:
-            timestamp = datetime.now().astimezone().strftime("%Y-%m-%d %H:%M%z")
-            po_file.metadata["Project-Id-Version"] = f"Holidays {package_version}"
-            po_file.metadata["Report-Msgid-Bugs-To"] = MSGID_BUGS_ADDRESS
-            po_file.metadata["PO-Revision-Date"] = timestamp
-            po_file.metadata["Language-Team"] = LOCALIZATION_TEAM
-            po_file.metadata["Language"] = current_lang
-            po_file.metadata["X-Source-Language"] = default_language
+        metadata = po_file.metadata
+        if not DATE_PATTERN.fullmatch(metadata.get("POT-Creation-Date", "")):
+            metadata.pop("POT-Creation-Date", None)
+        if not DATE_PATTERN.fullmatch(metadata.get("PO-Revision-Date", "")):
+            metadata.pop("PO-Revision-Date", None)
+        if not TRANSLATOR_PATTERN.fullmatch(metadata.get("Last-Translator", "")):
+            metadata.pop("Last-Translator", None)
+
+        if po_file != po_file_initial or not REQUIRED_METADATA_KEYS.issubset(metadata):
+            POGenerator._apply_metadata(
+                po_file,
+                current_lang,
+                default_language,
+                datetime.now().astimezone().strftime("%Y-%m-%d %H:%M%z"),
+            )
             po_file.save(str(po_path), newline="\n")
 
         POGenerator._write_po_header(po_path, entity_docstring, current_lang, default_language)
