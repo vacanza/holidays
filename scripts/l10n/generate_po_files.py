@@ -40,7 +40,6 @@ class POGenerator:
 
     _license_header: str = ""
     _locale_path: Path = Path("holidays/locale")
-    _po_index: dict[str, list[Path]] | None = None
 
     @staticmethod
     def _get_license_header() -> str:
@@ -172,9 +171,7 @@ class POGenerator:
     def process_entities() -> None:
         """Processes entities in specified directory."""
         entities_data = {}
-        for entity_type in ("countries", "financial"):
-            entity_mapping = COUNTRIES if entity_type == "countries" else FINANCIAL
-
+        for entity_type, entity_mapping in (("countries", COUNTRIES), ("financial", FINANCIAL)):
             for path in Path(f"holidays/{entity_type}").glob("*.py"):
                 if (mod_name := path.stem) == "__init__":
                     continue
