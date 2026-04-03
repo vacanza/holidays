@@ -13,6 +13,7 @@
 from collections.abc import Iterable
 from datetime import date
 
+from holidays.calendars.gregorian import AUG, _timedelta
 from holidays.calendars.hindu import _HinduLunisolar
 from holidays.groups.eastern import EasternCalendarHolidays
 
@@ -510,3 +511,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.vaisakhi_date(self._year)
         )
+
+    def _add_parsi_new_year(self, name: str) -> None:
+        """
+        Add Parsi New Year (Shahenshahi).
+
+        The Parsi New Year (Shahenshahi) follows a fixed 365-day cycle and does not
+        observe leap years, causing a 1-day backward drift every 4 years relative
+        to the Gregorian calendar.
+        In 1972 (Y.Z. 1341), the holiday fell on August 28.
+        https://zanc.org/zcal/zcal.html
+        https://www.calendarr.com/india/parsi-new-year-history-and-celebration/
+        """
+        leaps = (self._year - 1972) // 4
+        dt = _timedelta(date(self._year, AUG, 28), -leaps)
+        self._add_holiday(name, dt)

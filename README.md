@@ -283,7 +283,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bangladesh</td>
 <td>BD</td>
 <td></td>
-<td><strong>bn</strong>, en_US</td>
+<td>ar, <strong>bn</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -1934,7 +1934,7 @@ code when available. The following financial markets are available:
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>
 <td>Bombay Stock Exchange (BSE) market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi</td>
+<td><strong>en_IN</strong>, en_US, gu, hi, mr</td>
 <td></td>
 </tr>
 <tr>
@@ -1983,7 +1983,7 @@ code when available. The following financial markets are available:
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi</td>
+<td><strong>en_IN</strong>, en_US, gu, hi, mr</td>
 <td></td>
 </tr>
 <tr>
@@ -1997,6 +1997,13 @@ code when available. The following financial markets are available:
 <td>Shanghai Stock Exchange</td>
 <td>XSHG</td>
 <td>Shanghai Stock Exchange (SSE) market holidays</td>
+<td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
+<td></td>
+</tr>
+<tr>
+<td>Shenzhen Stock Exchange</td>
+<td>XSHE</td>
+<td>Shenzhen Stock Exchange (SZSE) market holidays</td>
 <td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
 <td></td>
 </tr>
