@@ -27,7 +27,3 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4.2\n"
 "X-Source-Language: zh_CN\n"
-
-#. Chinese New Year's Eve.
-msgid "农历除夕"
-msgstr "Chinese New Year's Eve"
