@@ -36,12 +36,12 @@ msgstr "%s（推定）"
 #. %s (observed, estimated).
 #, c-format
 msgid "%s（補假，推定）"
-msgstr "%s（连休，推定）"
+msgstr "%s（补假，推定）"
 
 #. %s (observed).
 #, c-format
 msgid "%s（補假）"
-msgstr "%s（连休）"
+msgstr "%s（补假）"
 
 #. The Day following Mid-Autumn Festival.
 msgid "中秋節翌日"
