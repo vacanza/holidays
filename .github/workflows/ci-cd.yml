@@ -15,12 +15,6 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
-  workflow_run:
-    workflows: ['Update pre-commit hooks']
-    branches:
-      - update-pre-commit-hooks
-    types:
-      - completed
 
 env:
   FORCE_COLOR: 1
