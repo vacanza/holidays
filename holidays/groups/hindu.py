@@ -75,7 +75,9 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         Add Bonalu.
 
-        Bonalu is a Hindu festival celebrated in Telangana during Ashada Masam.
+        Bonalu is a Hindu festival celebrated in Telangana during Ashada Masam
+        (4th month of the Hindu lunar calendar).
+        https://en.wikipedia.org/wiki/Bonalu
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.bonalu_date(self._year)
