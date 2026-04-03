@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 #
 # Djibouti holidays.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.30\n"
