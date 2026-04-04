@@ -100,7 +100,7 @@ class POGenerator:
         }
         default_metadata = {
             "POT-Creation-Date": timestamp,
-            "Last-Translator": "FULL NAME <EMAIL@ADDRESS>",
+            "Last-Translator": "FULL NAME <EMAIL@EXAMPLE.COM>",
         }
         po_file.metadata = {**default_metadata, **po_file.metadata, **forced_metadata}
 
