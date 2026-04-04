@@ -110,16 +110,13 @@ class POGenerator:
     ) -> None:
         """Strips gettext boilerplate and prepends the license header + desc line."""
         content = po_path.read_text(encoding="utf-8")
-
-        # Strip existing vacanza header so we don't bail out and can refresh the docstring
-        if content.startswith("#  holidays\n#  --------"):
-            content = content.split("\n\n", 1)[-1].lstrip()
-
         content = (
             content.split("#, fuzzy", 1)[1].lstrip()
             if content.startswith("# SOME DESCRIPTIVE TITLE")
             else content.lstrip()
         )
+        if content.startswith("#  holidays\n#  --------"):
+            return
 
         desc_line = None
         if docstring:
@@ -175,10 +172,7 @@ class POGenerator:
             if not lang_po_path.exists():
                 lang_po_file = deepcopy(pot_file)
                 POGenerator._apply_metadata(
-                    lang_po_file,
-                    lang,
-                    default_language,
-                    pot_file.metadata.get("POT-Creation-Date", ""),
+                    lang_po_file, lang, default_language, pot_file.metadata["POT-Creation-Date"]
                 )
                 lang_po_file.save(str(lang_po_path), newline="\n")
 
