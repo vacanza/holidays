@@ -15,12 +15,6 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
-  workflow_run:
-    workflows: ['Update pre-commit hooks']
-    branches:
-      - update-pre-commit-hooks
-    types:
-      - completed
 
 env:
   FORCE_COLOR: 1
@@ -38,7 +32,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Install uv
-        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78
+        uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57
         with:
           python-version: '3.14'
           version: '0.9.16'
@@ -61,12 +55,12 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@38697555549f1db7851b81482ff19f1fa5c4fedc
+        uses: github/codeql-action/init@c10b8064de6f491fea524254123dbe5e09572f13
         with:
           languages: python
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@38697555549f1db7851b81482ff19f1fa5c4fedc
+        uses: github/codeql-action/analyze@c10b8064de6f491fea524254123dbe5e09572f13
         with:
           category: '/language:python'
 
@@ -92,7 +86,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Install uv
-        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78
+        uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57
         with:
           python-version: ${{ matrix.python-version }}
           version: '0.9.16'
@@ -107,7 +101,7 @@ jobs:
         run: make test
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@1af58845a975a7985b0beb0cbe6fbbb71a41dbad
+        uses: codecov/codecov-action@57e3a136b779b570ffcdbf80b3bdc90e7fab3de2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
@@ -120,7 +114,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Install uv
-        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78
+        uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57
         with:
           python-version: '3.14'
           version: '0.9.16'
@@ -170,7 +164,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Install uv
-        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78
+        uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57
         with:
           python-version: '3.14'
           version: '0.9.16'
@@ -205,7 +199,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Install uv
-        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78
+        uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57
         with:
           python-version: '3.14'
           version: '0.9.16'
@@ -265,7 +259,7 @@ jobs:
           done
 
       - name: Sign the files using Sigstore
-        uses: sigstore/gh-action-sigstore-python@a5caf349bc536fbef3668a10ed7f5cd309a4b53d
+        uses: sigstore/gh-action-sigstore-python@04cffa1d795717b140764e8b640de88853c92acc
         with:
           inputs: |
             ./dist/*.tar.gz

@@ -27,7 +27,7 @@ class Bangladesh(HolidayBase, InternationalHolidays):
 
     country = "BD"
     default_language = "bn"
-    supported_languages = ("bn", "en_US")
+    supported_languages = ("ar", "bn", "en_US")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, **kwargs):
