@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-03-29 14:40+0530\n"
+"PO-Revision-Date: 2026-03-31 18:55+0530\n"
 "Last-Translator: Nellai Abiram <nellaiabiram08@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: te\n"
@@ -191,6 +191,10 @@ msgstr "గుజరాత్ దినోత్సవం"
 #. Sardar Vallabhbhai Patel Jayanti.
 msgid "Sardar Vallabhbhai Patel Jayanti"
 msgstr "సర్దార్ వల్లభభాయి పటేల్ జయంతి"
+
+#. Parsi New Year (Shahenshahi).
+msgid "Parsi New Year (Shahenshahi)"
+msgstr "పార్సీ నూతన సంవత్సరం (షహన్‌షాహీ)"
 
 #. Haryana Foundation Day.
 msgid "Haryana Foundation Day"
