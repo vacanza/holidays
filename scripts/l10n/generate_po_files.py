@@ -50,7 +50,7 @@ REQUIRED_METADATA_KEYS = frozenset(
 )
 
 DATE_PATTERN = re.compile(r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}[+-]\d{4}")
-TRANSLATOR_PATTERN = re.compile(r"[^\s<]+(?:\s+[^\s<]+)*\s+<[^@\s]+@[^@\s]+\.[^@\s]+>")
+TRANSLATOR_PATTERN = re.compile(r"[^\s<]+(?:\s+[^\s<]+)*\s+<[^@\s<]+@[^@\s<.]+(?:\.[^@\s<.]+)+>")
 
 
 class POGenerator:
