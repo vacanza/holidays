@@ -30,9 +30,9 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         * [Law of May 24, 2007](https://web.archive.org/web/20251217210804/https://likumi.lv/ta/id/158621-grozijumi-likuma-par-svetku-atceres-un-atzimejamam-dienam-)
         * [Law of Apr 7, 2011](https://web.archive.org/web/20250918032827/https://likumi.lv/ta/id/229236-grozijumi-likuma-par-svetku-atceres-un-atzimejamam-dienam-)
 
-        Regarding observed holidays start year: the law entered into force on May 24, 2007,
-        but since May 4 (Restoration of Independence Day) fell on a Friday, starting in 2007 has
-        no extra impact.
+    Regarding observed holidays start year: the law entered into force on May 24, 2007,
+    but since May 4 (Restoration of Independence Day) fell on a Friday, starting in 2007 has
+    no extra impact.
     """
 
     country = "LV"
