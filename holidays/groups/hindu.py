@@ -79,9 +79,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         (4th month of the Hindu lunar calendar).
         https://en.wikipedia.org/wiki/Bonalu
         """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.bonalu_date(self._year)
-        )
+        return self._add_hindu_calendar_holiday(name, self._hindu_calendar.bonalu_date(self._year))
 
     def _add_bhai_dooj(self, name) -> date | None:
         """
