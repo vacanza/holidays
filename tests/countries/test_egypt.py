@@ -202,7 +202,6 @@ class TestEgypt(CommonCountryTests, TestCase):
             "2025-03-31",
             "2026-03-20",
             "2026-03-21",
-            # 2026 Eid al-Fitr: https://sis.gov.eg/en/media-center/news/dar-al-ifta-announces-friday-as-the-first-day-of-eidul-fitr/
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -229,6 +228,8 @@ class TestEgypt(CommonCountryTests, TestCase):
             "2024-04-12",
             "2025-03-29",
             "2025-04-01",
+            "2026-03-19",
+            "2026-03-23",
         )
         self.assertGovernmentIslamicNoEstimatedHolidayName(name, range(2019, self.end_year))
         self.assertNoGovernmentIslamicNoEstimatedHolidayName(name, range(self.start_year, 2019))
