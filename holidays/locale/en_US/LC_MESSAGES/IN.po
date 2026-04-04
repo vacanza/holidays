@@ -193,6 +193,10 @@ msgstr "Gujarat Day"
 msgid "Sardar Vallabhbhai Patel Jayanti"
 msgstr "Sardar Vallabhbhai Patel Jayanti"
 
+#. Parsi New Year (Shahenshahi).
+msgid "Parsi New Year (Shahenshahi)"
+msgstr "Parsi New Year (Shahenshahi)"
+
 #. Haryana Foundation Day.
 msgid "Haryana Foundation Day"
 msgstr "Haryana Foundation Day"
