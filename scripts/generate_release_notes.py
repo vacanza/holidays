@@ -16,7 +16,7 @@
 import argparse
 import re
 import sys
-from datetime import datetime, UTC
+from datetime import datetime, timezone
 from pathlib import Path
 
 from git import Repo
@@ -233,7 +233,7 @@ class ReleaseNotesGenerator:
         """Print generated release notes."""
         print("")
         if self.pull_requests:
-            today = datetime.now(UTC)
+            today = datetime.now(tz=timezone.utc)
             print(
                 HEADER_TEMPLATE.format(
                     day=today.day, month=today.strftime("%B"), version=self.tag, year=today.year
