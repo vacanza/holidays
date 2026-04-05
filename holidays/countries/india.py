@@ -39,6 +39,8 @@ class India(
         * <https://web.archive.org/web/20231008063930/https://vahan.parivahan.gov.in/vahan4dashboard/>
         * Gujarat:
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
+        * Maharashtra:
+            * <https://web.archive.org/web/20260329132658/https://cdn.s3waas.gov.in/s344c4c17332cace2124a1a836d9fc4b6f/uploads/2025/12/17671002949025.pdf>
         * Punjab:
             * <https://web.archive.org/web/20260216022835/https://punjab.gov.in/wp-content/uploads/2025/12/Calender-2026.pdf>
         * Tamil Nadu:
@@ -152,7 +154,7 @@ class India(
         "West Bengal": "WB",
     }
     supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "kn", "pa", "ta", "te")
+    supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "kn", "mr", "pa", "ta", "te")
     _deprecated_subdivisions = (
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
@@ -346,6 +348,8 @@ class India(
         self._add_holiday_may_1(tr("Gujarat Day"))
         # Sardar Vallabhbhai Patel Jayanti.
         self._add_holiday_oct_31(tr("Sardar Vallabhbhai Patel Jayanti"))
+        # Parsi New Year (Shahenshahi).
+        self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
 
     # Haryana.
     def _populate_subdiv_hr_public_holidays(self):
@@ -408,6 +412,8 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
+        # Parsi New Year (Shahenshahi).
+        self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
