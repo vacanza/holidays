@@ -492,7 +492,6 @@ True
 
 ## Generate iCalendar content and export to `.ics`
 
-<!-- markdownlint-disable-next-line MD052 -->
 [ICalExporter](https://github.com/vacanza/holidays/blob/main/holidays/ical.py) facilitates
 the creation and export of iCalendar files
 in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
