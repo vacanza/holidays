@@ -178,7 +178,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Algeria</td>
 <td>DZ</td>
 <td></td>
-<td><strong>ar</strong>, en_US, fr</td>
+<td><strong>ar</strong>, en_US, fr, kab</td>
 <td>CHRISTIAN, HEBREW</td>
 </tr>
 <tr>
