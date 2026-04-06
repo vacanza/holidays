@@ -301,7 +301,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2027-08-02",
         )
         name = "Bonalu"
-        for subdiv in {"TS"}:
+        for subdiv in ("TS",):
             self.assertHolidayName(name, India(subdiv=subdiv), dt)
 
         dt = (
