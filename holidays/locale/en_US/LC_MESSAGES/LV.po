@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2026-03-20 01:18+0200\n"
+"PO-Revision-Date: 2026-04-03 16:02+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -100,6 +100,15 @@ msgstr "Second Day of Christmas"
 #. New Year's Eve.
 msgid "Vecgada diena"
 msgstr "New Year's Eve"
+
+#. Substituted date format.
+msgid "%d.%m.%Y"
+msgstr "%m/%d/%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Brīvdiena (pārcelta no %s)"
+msgstr "Day off (substituted from %s)"
 
 #. Nationwide Latvian Song and Dance Celebration Final Day.
 msgid "Vispārējo latviešu Dziesmu un deju svētku noslēguma diena"

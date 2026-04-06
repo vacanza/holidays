@@ -116,7 +116,8 @@ code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or f
 abbreviations as aliases for their subdivisions. These are defined in the (optional)
 `subdivisions_aliases` attribute.
 
-> [!Note]
+> [!note]
+> **Subdivisions aliases**
 >
 > **Aliases are optional.** When present, `subdivisions_aliases`
 > cover only a subset of subdivisions - commonly used or officially
@@ -1528,7 +1529,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Saudi Arabia</td>
 <td>SA</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
+<td><strong>ar</strong>, bn, en_US</td>
 <td></td>
 </tr>
 <tr>
