@@ -27,12 +27,18 @@ GFM_MKDOCS_MAPPING = {
 }
 
 FILES_REPLACE_MAPPING = {
+    "examples.md": (
+        (
+            "[ICalExporter](https://github.com/vacanza/holidays/blob/main/holidays/ical.py)",
+            "[ICalExporter][holidays.ical.ICalExporter]",
+        ),
+    ),
     "index.md": (
         (
             "[CONTRIBUTING.md](https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.md)",
             "[Contributing](contributing.md)",
         ),
-    )
+    ),
 }
 
 
@@ -43,8 +49,7 @@ def gfm_to_mkdocs(text: str) -> str:
     i = 0
     while i < len(lines):
         line = lines[i]
-        match = re.match(r"^>\s*\[!(\w+)\]$", line)
-        if not match:
+        if not (match := re.match(r"^>\s*\[!(\w+)\]$", line)):
             out.append(line)
             i += 1
             continue
@@ -54,8 +59,7 @@ def gfm_to_mkdocs(text: str) -> str:
 
         title = ""
         if i < len(lines):
-            match = re.match(r"^>\s*\*\*(.+?)\*\*", lines[i])
-            if match:
+            if match := re.match(r"^>\s*\*\*(.+?)\*\*", lines[i]):
                 title = f' "{match.group(1)}"'
                 i += 1
 
