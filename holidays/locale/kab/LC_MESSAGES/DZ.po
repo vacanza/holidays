@@ -30,7 +30,7 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (المقدرة)"
-msgstr "%s (S useqreb)"
+msgstr "%s (s useqreb)"
 
 #. New Year's Day.
 msgid "رأس السنة الميلادية"
