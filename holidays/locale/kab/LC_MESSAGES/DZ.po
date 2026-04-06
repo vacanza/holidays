@@ -30,11 +30,11 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (المقدرة)"
-msgstr "%s (s useqreb)"
+msgstr "%s (S useqreb)"
 
 #. New Year's Day.
 msgid "رأس السنة الميلادية"
-msgstr "Assegas amaynut"
+msgstr "Assegas Amaynut"
 
 #. Amazigh New Year.
 msgid "رأس السنة الأمازيغية"
@@ -42,11 +42,11 @@ msgstr "Yennayer"
 
 #. Labor Day.
 msgid "عيد العمال"
-msgstr "Ass agraɣlan n yixeddamen"
+msgstr "Ass Amadlan n Yixeddamen"
 
 #. Independence Day.
 msgid "عيد الاستقلال"
-msgstr "Ass n uzarug"
+msgstr "Ass n Uzarug"
 
 #. Independence and National Liberation Front Day.
 msgid "عيد الاستقلال وجبهة التحرير الوطني"
@@ -58,7 +58,7 @@ msgstr "Ass n tegrawla"
 
 #. Islamic New Year.
 msgid "رأس السنة الهجرية"
-msgstr "Aseggas amaynut ahijri"
+msgstr "Aseggas Amaynut Ahijri"
 
 #. Ashura.
 msgid "عاشورة"
@@ -74,7 +74,7 @@ msgstr "Lɛid Tamezyant"
 
 #. Eid al-Adha.
 msgid "عيد الأضحى"
-msgstr "Lɛid tameqrant"
+msgstr "Lɛid Tameqrant"
 
 #. Easter Monday.
 msgid "إثنين الفصح"
@@ -82,7 +82,7 @@ msgstr "Lḥedd n Tfaska"
 
 #. Ascension Day.
 msgid "عيد الصعود"
-msgstr "Ass n walluy"
+msgstr "Ass n Walluy"
 
 #. Whit Monday.
 msgid "إثنين العنصرة"
@@ -94,16 +94,16 @@ msgstr "Lɛid n Tmerreyt"
 
 #. Christmas Day.
 msgid "عيد الميلاد"
-msgstr "Lɛid n tlalit"
+msgstr "Lɛid n Tlalit"
 
 #. Rosh Hashanah.
 msgid "رأس السنة العبرية"
-msgstr "Ixef n useggas n udayen"
+msgstr "Ixef n Useggas n Udayen"
 
 #. Yom Kippur.
 msgid "يوم الغفران"
-msgstr "Was n ussuru"
+msgstr "Was n Ussuru"
 
 #. Pesach.
 msgid "عيد الفصح اليهودي"
-msgstr "Lɛid n tfaska n udayen"
+msgstr "Lɛid n Tfaska n Udayen"
