@@ -170,11 +170,7 @@ class POGenerator:
             lang_po_path = lang_directory / f"{entity_code}.po"
 
             if not lang_po_path.exists():
-                lang_po_file = deepcopy(pot_file)
-                POGenerator._apply_metadata(
-                    lang_po_file, lang, default_language, pot_file.metadata["POT-Creation-Date"]
-                )
-                lang_po_file.save(str(lang_po_path), newline="\n")
+                pot_file.save(str(lang_po_path), newline="\n")
 
         return entity_code, pot_file
 
@@ -194,10 +190,9 @@ class POGenerator:
             entry.occurrences.clear()
 
         metadata = po_file.metadata
-        if not DATE_PATTERN.fullmatch(metadata.get("POT-Creation-Date", "")):
-            metadata.pop("POT-Creation-Date", None)
-        if not DATE_PATTERN.fullmatch(metadata.get("PO-Revision-Date", "")):
-            metadata.pop("PO-Revision-Date", None)
+        for field_name in ("POT-Creation-Date", "PO-Revision-Date"):
+            if not DATE_PATTERN.fullmatch(metadata.get(field_name, "")):
+                metadata.pop(field_name, None)
         if not TRANSLATOR_PATTERN.fullmatch(metadata.get("Last-Translator", "")):
             metadata.pop("Last-Translator", None)
 
