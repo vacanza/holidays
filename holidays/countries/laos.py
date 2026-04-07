@@ -120,7 +120,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
 
         # ບຸນປີໃໝ່ລາວ
         # Status: In-Use.
-        # Celebrated for 3 days from 14-16 April annualy.
+        # Celebrated for 3 days from 14-16 April annually.
         # Observed dates prior to 2018 are assigned manually.
 
         # Lao New Year's Day.
