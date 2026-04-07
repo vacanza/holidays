@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-03-31 18:55+0530\n"
+"PO-Revision-Date: 2026-04-03 22:16+0530\n"
 "Last-Translator: Nellai Abiram <nellaiabiram08@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ta\n"
@@ -311,6 +311,10 @@ msgstr "தெலுங்கானா உருவாக்க நாள்"
 #. Bathukamma Festival.
 msgid "Bathukamma Festival"
 msgstr "பதுக்கம்மா திருவிழா"
+
+#. Bonalu.
+msgid "Bonalu"
+msgstr "போனாலு"
 
 #. UP Formation Day.
 msgid "UP Formation Day"
