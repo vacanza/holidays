@@ -94,8 +94,8 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
 
     In Lieus:
         * [isranews.org](https://web.archive.org/web/20230205073547/https://www.isranews.org/content-page/item/20544-วันหยุดชดเชย-มาจากไหน-sp-863880667.html)
-        * <https://web.archive.org/web/20250428135057/https://resolution.soc.go.th/?prep_id=99159317>
-        * <https://web.archive.org/web/20250428151918/https://resolution.soc.go.th/?prep_id=196007>
+        * [B.E. 2544 (2001) Resumption of In-lieu Holiday Observances for Government Employees](https://web.archive.org/web/20250428135057/https://resolution.soc.go.th/?prep_id=99159317)
+        * [B.E. 2547 (2004) Amendment regarding Government Employee Holidays](https://web.archive.org/web/20250428151918/https://resolution.soc.go.th/?prep_id=196007)
         * <https://github.com/vacanza/holidays/pull/929>
         * <https://web.archive.org/web/20250418080608/https://www.thairath.co.th/lifestyle/life/2812118>
         * <https://web.archive.org/web/20250408214054/https://www.thaipbs.or.th/news/content/346216>
