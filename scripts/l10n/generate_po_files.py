@@ -102,11 +102,11 @@ class POGenerator:
             "POT-Creation-Date": timestamp,
             "Last-Translator": "FULL NAME <EMAIL@EXAMPLE.COM>",
         }
-        po_file.metadata = {**default_metadata, **po_file.metadata, **forced_metadata}
+        po_file.metadata = default_metadata | po_file.metadata | forced_metadata
 
-    @staticmethod
+    @classmethod
     def _write_po_header(
-        po_path: Path, docstring: str, current_language: str, default_language: str
+        cls, po_path: Path, docstring: str, current_language: str, default_language: str
     ) -> None:
         """Strips gettext boilerplate and prepends the license header + desc line."""
         content = po_path.read_text(encoding="utf-8")
@@ -130,8 +130,8 @@ class POGenerator:
                 desc_line = f"# {display_name} holidays{lang_tag}."
 
         parts = []
-        if POGenerator._license_header:
-            parts.append(POGenerator._license_header)
+        if cls._license_header:
+            parts.append(cls._license_header)
         if desc_line and desc_line not in content:
             parts.append(desc_line)
         if parts:
@@ -145,7 +145,7 @@ class POGenerator:
         args: tuple[str, tuple[str, Path, str, tuple[str, ...]]],
     ) -> tuple[str, POFile]:
         """Process a single entity: create .pot, default .po, and return update tasks."""
-        entity_code, (default_language, class_file_path, _, supported_languages) = args
+        entity_code, (_, class_file_path, _, supported_languages) = args
 
         pot_path = POGenerator._locale_path / "pot"
         pot_path.mkdir(parents=True, exist_ok=True)
@@ -247,7 +247,8 @@ class POGenerator:
         with ProcessPoolExecutor(
             initializer=POGenerator._init_worker, initargs=(POGenerator._get_license_header(),)
         ) as executor:
-            list(executor.map(POGenerator._update_po_file, all_po_update_tasks))
+            for _ in executor.map(POGenerator._update_po_file, all_po_update_tasks):
+                pass
 
 
 if __name__ == "__main__":
