@@ -22,9 +22,9 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
     """Cambodia holidays.
 
     References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Cambodia>
         * [Public Holidays (English)](https://web.archive.org/web/20241117220849/https://www.nbc.gov.kh/english/news_and_events/official_holiday.php)
         * [Public Holidays (Khmer)](https://web.archive.org/web/20250401111433/https://www.nbc.gov.kh/news_and_events/official_holiday.php)
-        * <https://en.wikipedia.org/wiki/Public_holidays_in_Cambodia>
         * [Sub-decree On Peace Day in Cambodia](https://web.archive.org/web/20250427180236/https://admin.taftac-cambodia.org/public/pdf_file/regulation_1704245695_Z7IALJjE.pdf)
         * <http://archive.today/2026.01.22-052218/https://www.khmertimeskh.com/501424903/24-public-holidays-for-2024-peace-day-now-included/>
         * <http://archive.today/2026.01.22-051938/https://www.khmertimeskh.com/501551204/govt-announces-22-public-holidays-for-next-year/>
@@ -35,7 +35,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         * <https://web.archive.org/web/20250416140353/https://www.timeanddate.com/holidays/cambodia/>
 
     Limitations:
-        * Cambodian holidays only works from 1993 onwards.
+        * Cambodian holidays only work from 1993 onwards.
         * Exact Public Holidays as per Cambodia's Official Gazette are only available
            from 2015 onwards.
         * Cambodian Lunar Calendar Holidays only work until 2157 (B.E. 2701) as we only

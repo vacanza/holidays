@@ -48,7 +48,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
     Although in-lieus has been de facto observed since at least 2012.
 
     Limitations:
-        - Laotian holidays only works from 1976 onwards, and are only 100% accurate
+        - Laotian holidays only work from 1976 onwards, and are only 100% accurate
            from 2018 onwards.
         - Laotian Lunar Calendar Holidays only work until 2157 (B.E. 2701) as we only
            have Thai year-type data for cross-checking until then.
