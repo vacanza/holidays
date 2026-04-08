@@ -249,20 +249,17 @@ False
 ```
 
 To find the nth working day after the specified date:
-The `get_nth_working_day` function can also be used to get the next or previous working day:
 
 ```python
-# Next working day
+# Next working day.
 >>> us_holidays.get_nth_working_day("2024-12-20", 1)
 datetime.date(2024, 12, 23)
 
-# Previous working day
+# Previous working day.
 >>> us_holidays.get_nth_working_day("2024-12-20", -1)
 datetime.date(2024, 12, 19)
-```
 
-```python
-# 5th working day after the date
+# 5th working day after the date.
 >>> us_holidays.get_nth_working_day("2024-12-20", 5)
 datetime.date(2024, 12, 30)
 ```
