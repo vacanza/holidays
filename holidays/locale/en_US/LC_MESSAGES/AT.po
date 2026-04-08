@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.56\n"
+"Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-01 17:13+0300\n"
-"PO-Revision-Date: 2024-08-31 18:20+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-04-08 22:19+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -52,6 +52,10 @@ msgstr "Ascension Day"
 msgid "Pfingstmontag"
 msgstr "Whit Monday"
 
+#. Saint Peter and Saint Paul's Day.
+msgid "Peter und Paul"
+msgstr "Saint Peter and Saint Paul's Day"
+
 #. Corpus Christi.
 msgid "Fronleichnam"
 msgstr "Corpus Christi"
@@ -77,7 +81,7 @@ msgid "Christtag"
 msgstr "Christmas Day"
 
 #. Saint Stephen's Day.
-msgid "Stefanitag"
+msgid "Stephanstag"
 msgstr "Saint Stephen's Day"
 
 #. Good Friday.
