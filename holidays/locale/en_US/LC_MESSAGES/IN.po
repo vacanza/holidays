@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2025-03-02 12:54+0530\n"
+"PO-Revision-Date: 2026-04-03 22:16+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -193,6 +193,10 @@ msgstr "Gujarat Day"
 msgid "Sardar Vallabhbhai Patel Jayanti"
 msgstr "Sardar Vallabhbhai Patel Jayanti"
 
+#. Parsi New Year (Shahenshahi).
+msgid "Parsi New Year (Shahenshahi)"
+msgstr "Parsi New Year (Shahenshahi)"
+
 #. Haryana Foundation Day.
 msgid "Haryana Foundation Day"
 msgstr "Haryana Foundation Day"
@@ -269,9 +273,9 @@ msgstr "Vaisakhi"
 msgid "Lohri"
 msgstr "Lohri"
 
-#. Punjabi Day.
-msgid "Punjab Day"
-msgstr "Punjab Day"
+#. New Punjab Day.
+msgid "New Punjab Day"
+msgstr "New Punjab Day"
 
 #. Rajasthan Day.
 msgid "Rajasthan Day"
@@ -308,6 +312,10 @@ msgstr "Telangana Formation Day"
 #. Bathukamma Festival.
 msgid "Bathukamma Festival"
 msgstr "Bathukamma Festival"
+
+#. Bonalu.
+msgid "Bonalu"
+msgstr "Bonalu"
 
 #. UP Formation Day.
 msgid "UP Formation Day"
