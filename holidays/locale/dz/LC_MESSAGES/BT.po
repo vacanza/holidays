@@ -33,43 +33,43 @@ msgid "%s (ཚོད་དཔག་གི།)"
 msgstr ""
 
 #. Birth Anniversary of His Majesty the King.
-msgid "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་སྟོན་ངལ་གསོ།"
+msgid "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"
 msgstr ""
 
 #. Birth Anniversary of the 3rd Druk Gyalpo.
-msgid "མི་དབང་འབྲུག་རྒྱལ་གསུམ་པའི་འཁྲུངས་སྐར་དུས་སྟོན་ངལ་གསོ།"
+msgid "མི་དབང་འབྲུག་རྒྱལ་གསུམ་པའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"
 msgstr ""
 
 #. Coronation of His Majesty the King.
-msgid "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་གསེར་ཁྲི་མངའ་གསོལ་དུས་སྟོན་ངལ་གསོ།"
+msgid "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་གསེར་ཁྲི་མངའ་གསོལ་གྱི་དུས་ཆེན་ངལ་གསོལ།"
 msgstr ""
 
 #. "Birth Anniversary of the 4th Druk Gyalpo - Constitution Day"
-msgid "མི་དབང་འབྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་སྟོན་ངལ་གསོ།"
+msgid "མི་དབང་འབྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"
 msgstr ""
 
 #. National Day.
-msgid "རྒྱལ་ཡོངས་དུས་ཆེན་ངལ་གསོ།"
+msgid "རྒྱལ་ཡོངས་དུས་ཆེན་གྱི་ངལ་གསོལ།"
 msgstr ""
 
 #. Winter Solstice.
-msgid "དགུན་ཉི་ལྡོག་གི་ངལ་གསོ།"
+msgid "དགུན་ཉི་ལྡོག་གི་ངལ་གསོལ།"
 msgstr ""
 
 #. Traditional Day of Offering.
-msgid "སྔར་སྲོལ་འབུལ་བའི་ལོ་གསར་ངལ་གསོ།"
+msgid "སྔར་སྲོལ་འབུལ་བའི་ལོ་གསར་གྱི་ངལ་གསོལ།"
 msgstr ""
 
 #. Losar.
-msgid "གནམ་ལོ་གསར་ཚེས་དུས་སྟོན་ངལ་གསོ།"
+msgid "གནམ་ལོ་གསར་ཚེས་ཀྱིས་དུས་སྟོན་ངལ་གསོལ།"
 msgstr ""
 
 #. Death Anniversary of Zhabdrung.
-msgid "མཐུ་ཆེན་བདུད་འཇོམས་རྡོ་རྗེ་དགོངས་རྫོགས་དུས་དྲན་ངལ་གསོ།"
+msgid "མཐུ་ཆེན་ཆོས་ཀྱི་རྒྱལ་པོའི་དུས་ཆེན་ངལ་གསོལ།"
 msgstr ""
 
 #. Lord Buddha's Parinirvana.
-msgid "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་དུས་ཆེན་ལྔ་འཛོམས་ངལ་གསོ།"
+msgid "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་དུས་ཆེན་ལྔ་འཛོམས་ངལ་གསོལ།"
 msgstr ""
 
 #. Birth Anniversary of Guru Rinpoche.

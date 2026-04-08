@@ -11,12 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from gettext import gettext as tr
-
 from holidays.calendars import _CustomHinduHolidays
 from holidays.calendars.gregorian import SEP, OCT
 from holidays.groups import HinduCalendarHolidays, TibetanCalendarHolidays
 from holidays.holiday_base import HolidayBase
-
 
 class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
     """Bhutan holidays.
@@ -108,39 +106,39 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
 
     def _populate_public_holidays(self):
         # Birth Anniversary of His Majesty the King.
-        name = tr("མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་སྟོན་ངལ་གསོ།")
+        name = tr("མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།")
         self._add_holiday_feb_21(name)
         self._add_holiday_feb_22(name)
         self._add_holiday_feb_23(name)
 
         # Birth Anniversary of the 3rd Druk Gyalpo.
-        self._add_holiday_may_2(tr("མི་དབང་འབྲུག་རྒྱལ་གསུམ་པའི་འཁྲུངས་སྐར་དུས་སྟོན་ངལ་གསོ།"))
+        self._add_holiday_may_2(tr("མི་དབང་འབྲུག་རྒྱལ་གསུམ་པའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"))
 
         # Coronation of His Majesty the King.
-        self._add_holiday_nov_1(tr("མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་གསེར་ཁྲི་མངའ་གསོལ་དུས་སྟོན་ངལ་གསོ།"))
+        self._add_holiday_nov_1(tr("མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་གསེར་ཁྲི་མངའ་གསོལ་གྱི་དུས་ཆེན་ངལ་གསོལ།"))
 
         # Birth Anniversary of the 4th Druk Gyalpo - Constitution Day.
-        self._add_holiday_nov_11(tr("མི་དབང་འབྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་སྟོན་ངལ་གསོ།"))
+        self._add_holiday_nov_11(tr("མི་དབང་འབྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"))
 
         # National Day.
-        self._add_holiday_dec_17(tr("རྒྱལ་ཡོངས་དུས་ཆེན་ངལ་གསོ།"))
+        self._add_holiday_dec_17(tr("རྒྱལ་ཡོངས་དུས་ཆེན་གྱི་ངལ་གསོལ།"))
 
         # Winter Solstice.
-        self._add_tibetan_winter_solstice(tr("དགུན་ཉི་ལྡོག་གི་ངལ་གསོ།"))
+        self._add_tibetan_winter_solstice(tr("དགུན་ཉི་ལྡོག་གི་ངལ་གསོལ།"))
 
         # Traditional Day of Offering.
-        self._add_day_of_offering(tr("སྔར་སྲོལ་འབུལ་བའི་ལོ་གསར་ངལ་གསོ།"))
+        self._add_day_of_offering(tr("སྔར་སྲོལ་འབུལ་བའི་ལོ་གསར་གྱི་ངལ་གསོལ།"))
 
         # Losar.
-        name = tr("གནམ་ལོ་གསར་ཚེས་དུས་སྟོན་ངལ་གསོ།")
+        name = tr("གནམ་ལོ་གསར་ཚེས་ཀྱིས་དུས་སྟོན་ངལ་གསོལ།")
         self._add_losar(name)
         self._add_losar_day_two(name)
 
         # Death Anniversary of Zhabdrung.
-        self._add_death_of_zhabdrung(tr("མཐུ་ཆེན་བདུད་འཇོམས་རྡོ་རྗེ་དགོངས་རྫོགས་དུས་དྲན་ངལ་གསོ།"))
+        self._add_death_of_zhabdrung(tr("མཐུ་ཆེན་ཆོས་ཀྱི་རྒྱལ་པོའི་དུས་ཆེན་ངལ་གསོལ།"))
 
         # Lord Buddha's Parinirvana.
-        self._add_buddha_parinirvana(tr("སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་དུས་ཆེན་ལྔ་འཛོམས་ངལ་གསོ།"))
+        self._add_buddha_parinirvana(tr("སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་དུས་ཆེན་ལྔ་འཛོམས་ངལ་གསོལ།"))
 
         # Birth Anniversary of Guru Rinpoche.
         self._add_birth_of_guru_rinpoche(tr("ཨོ་རྒྱན་གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོ།"))
