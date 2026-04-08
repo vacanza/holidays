@@ -118,7 +118,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Removed via StGBl. Nr. 116/1945.
         if self._year <= 1945:
             # Saint Peter and Saint Paul's Day.
-            self._add_holiday_jun_29(tr("Peter und Paul"))
+            self._add_saints_peter_and_paul_day(tr("Peter und Paul"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
