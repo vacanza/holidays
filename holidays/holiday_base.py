@@ -100,8 +100,8 @@ class HolidayBase(dict[date, str]):
 
         >>> assert date(2015, 1, 2) not in us_holidays
 
-    The `HolidayBase` class also recognizes strings of many formats
-    and numbers representing a POSIX timestamp:
+    The [`HolidayBase`][holidays.holiday_base.HolidayBase] class also recognizes strings
+    of many formats and numbers representing a POSIX timestamp:
 
         >>> assert '2014-01-01' in us_holidays
         >>> assert '1/1/2014' in us_holidays
@@ -180,7 +180,7 @@ class HolidayBase(dict[date, str]):
             ...
 
     For more complex logic, like 4th Monday of January, you can inherit the
-    [HolidayBase][holidays.holiday_base.HolidayBase] class and define your own `_populate()`
+    [`HolidayBase`][holidays.holiday_base.HolidayBase] class and define your own `_populate()`
     method.
     See documentation for examples.
     """
@@ -301,7 +301,8 @@ class HolidayBase(dict[date, str]):
                 Requested holiday categories.
 
         Returns:
-            A `HolidayBase` object matching the `country` or `market`.
+            A [`HolidayBase`][holidays.holiday_base.HolidayBase] object matching
+            the `country` or `market`.
         """
         super().__init__()
 
@@ -385,14 +386,15 @@ class HolidayBase(dict[date, str]):
 
     def __add__(self, other: Union[int, "HolidayBase", "HolidaySum"]) -> "HolidayBase":
         """Add another dictionary of public holidays creating a
-        [HolidaySum][holidays.holiday_base.HolidaySum] object.
+        [`HolidaySum`][holidays.holiday_base.HolidaySum] object.
 
         Args:
             other:
                 The dictionary of public holiday to be added.
 
         Returns:
-            A `HolidayBase` object unless the other object cannot be added, then `self`.
+            A [`HolidayBase`][holidays.holiday_base.HolidayBase] object
+            unless the other object cannot be added, then `self`.
         """
         if isinstance(other, int) and other == 0:
             # Required to sum() list of holidays
@@ -748,7 +750,8 @@ class HolidayBase(dict[date, str]):
         """Get subdivision aliases.
 
         Returns:
-            A dictionary mapping subdivision aliases to their official ISO 3166-2 codes.
+            A dictionary mapping subdivision aliases to their official
+            [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) codes.
         """
         subdivision_aliases: dict[str, list[str]] = {s: [] for s in cls.subdivisions}
         for alias, subdivision in cls.subdivisions_aliases.items():
@@ -1345,8 +1348,8 @@ class HolidaySum(HolidayBase):
     """
     Combine multiple holiday collections into a single dictionary-like object.
 
-    This class represents the sum of two or more `HolidayBase` instances.
-    The resulting object behaves like a dictionary mapping dates to holiday
+    This class represents the sum of two or more [`HolidayBase`][holidays.holiday_base.HolidayBase]
+    instances. The resulting object behaves like a dictionary mapping dates to holiday
     names, with the following behaviors:
 
     * The `holidays` attribute stores the original holiday collections as a list.

@@ -42,7 +42,7 @@ def country_holidays(
     language: str | None = None,
     categories: CategoryArg | None = None,
 ) -> HolidayBase:
-    """Return a new dictionary-like [HolidayBase][holidays.holiday_base.HolidayBase] object.
+    """Return a new dictionary-like [`HolidayBase`][holidays.holiday_base.HolidayBase] object.
 
     Include public holidays for the country matching `country` and other keyword arguments.
 
