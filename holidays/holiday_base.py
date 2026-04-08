@@ -299,10 +299,6 @@ class HolidayBase(dict[date, str]):
 
             categories:
                 Requested holiday categories.
-
-        Returns:
-            A [`HolidayBase`][holidays.holiday_base.HolidayBase] object matching
-            the `country` or `market`.
         """
         super().__init__()
 
@@ -393,8 +389,13 @@ class HolidayBase(dict[date, str]):
                 The dictionary of public holiday to be added.
 
         Returns:
-            A [`HolidayBase`][holidays.holiday_base.HolidayBase] object
-            unless the other object cannot be added, then `self`.
+            A [`HolidaySum`][holidays.holiday_base.HolidaySum]
+            instance representing the combined holidays,
+            or the original object if no combination occurs.
+
+        Raises:
+            TypeError:
+                If `other` is not a `HolidayBase` or `HolidaySum`.
         """
         if isinstance(other, int) and other == 0:
             # Required to sum() list of holidays
