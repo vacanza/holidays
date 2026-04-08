@@ -51,7 +51,7 @@ class TestBhutan(CommonCountryTests, TestCase):
     def test_national_day(self):
         self.assertHolidayName(
             "རྒྱལ་ཡོངས་དུས་ཆེན་གྱི་ངལ་གསོལ།",
-            (f"{year}-12-17" for year in self.full_range),
+            (f"{year}-12-17" for year in self.full_range)
         )
 
     def test_winter_solstice(self):
