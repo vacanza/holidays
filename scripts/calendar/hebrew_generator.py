@@ -106,24 +106,21 @@ class _Lunisolar:
         for m in range(1, months_in_year + 1):
             offsets[m] = days
 
-            # Fixed-length 29 day months: Iyyar, Tammuz, Elul, Tevet, Adar II.
-            if m in {2, 4, 6, 10, 13}:
-                days += 29
-
-            # Short Adar (in non-leap years).
-            elif m == 12 and not is_leap:
-                days += 29
-
-            # Short Marḥeshvan (days depend on length of year).
-            elif m == 8 and year_len_mod != 5:
-                days += 29
-
-            # Short Kislev (the same).
-            elif m == 9 and year_len_mod == 3:
-                days += 29
-
-            else:
-                days += 30
+            match m:
+                # Fixed-length 29 day months: Iyyar, Tammuz, Elul, Tevet, Adar II.
+                case 2 | 4 | 6 | 10 | 13:
+                    days += 29
+                # Short Adar (in non-leap years).
+                case 12 if not is_leap:
+                    days += 29
+                # Short Marḥeshvan (days depend on length of year).
+                case 8 if year_len_mod != 5:
+                    days += 29
+                # Short Kislev (the same)
+                case 9 if year_len_mod == 3:
+                    days += 29
+                case _:
+                    days += 30
 
         return offsets
 
