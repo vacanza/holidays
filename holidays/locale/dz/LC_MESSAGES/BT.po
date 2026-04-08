@@ -9,9 +9,9 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
+#
 # Bhutan holidays.
-
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.95\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་གསེར་ཁྲི་མངའ་གསོལ་གྱི་དུས་ཆེན་ངལ་གསོལ།"
 msgstr ""
 
-#. "Birth Anniversary of the 4th Druk Gyalpo - Constitution Day"
+#. Birth Anniversary of the 4th Druk Gyalpo - Constitution Day.
 msgid "མི་དབང་འབྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"
 msgstr ""
 

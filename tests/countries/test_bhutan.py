@@ -286,7 +286,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             ("2024-12-17", "རྒྱལ་ཡོངས་དུས་ཆེན་གྱི་ངལ་གསོལ།"),
         )
 
-    def test_en_us(self):
+    def test_l10_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
             ("2024-01-02", "Winter Solstice"),
