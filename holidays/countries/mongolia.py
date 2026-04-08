@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import MAY, SEP, _get_nth_week_of_month, _timedelta
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import InternationalHolidays, MongolianCalendarHolidays
 from holidays.holiday_base import HolidayBase
@@ -163,6 +164,28 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
 
         # Memorial Day of Political Victims.
         self._add_holiday_sep_10(tr("Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр"))
+
+        # Established on July 2nd, 2021.
+        if self._year >= 2021:
+            # National Literary, Cultural and Book Days.
+            name = tr("Үндэсний бичиг соёл, номын өдрүүд")
+            sep_third_week_start = _get_nth_week_of_month(3, SEP, self._year)
+            self._add_holiday(name, _timedelta(sep_third_week_start, +5))
+            self._add_holiday(name, _timedelta(sep_third_week_start, +6))
+
+            if self._year >= 2022:
+                may_third_week_start = _get_nth_week_of_month(3, MAY, self._year)
+                self._add_holiday(name, _timedelta(may_third_week_start, +5))
+                self._add_holiday(name, _timedelta(may_third_week_start, +6))
+
+        self._add_multiday_holiday(
+            self._add_holiday(
+                # Environmental Protection Days.
+                tr("Байгаль орчныг хамгаалах өдрүүд"),
+                _get_nth_week_of_month(4, SEP, self._year),
+            ),
+            6,
+        )
 
         # Elders' Day.
         self._add_holiday_oct_1(tr("Ахмадын өдөр"))

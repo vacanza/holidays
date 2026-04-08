@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-06-04 01:55+0530\n"
-"PO-Revision-Date: 2025-09-07 13:47+0300\n"
+"PO-Revision-Date: 2026-04-12 19:22+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -135,3 +135,11 @@ msgstr "Democracy and Human Rights Day"
 #. National Freedom Day.
 msgid "Үндэсний эрх чөлөөний өдөр"
 msgstr "National Freedom Day"
+
+#. Environmental Protection Days.
+msgid "Байгаль орчныг хамгаалах өдрүүд"
+msgstr "Environmental Protection Days"
+
+#. National Literary, Cultural and Book Days.
+msgid "Үндэсний бичиг соёл, номын өдрүүд"
+msgstr "National Literary, Cultural and Book Days"
