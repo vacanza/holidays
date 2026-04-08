@@ -142,10 +142,10 @@ class POGenerator:
 
     @staticmethod
     def _process_entity_worker(
-        args: tuple[str, tuple[str, Path, str, tuple[str, ...]]],
+        args: tuple[str, Path, tuple[str, ...]],
     ) -> tuple[str, POFile]:
         """Process a single entity: create .pot, default .po, and return update tasks."""
-        entity_code, (_, class_file_path, _, supported_languages) = args
+        entity_code, class_file_path, supported_languages = args
 
         pot_path = POGenerator._locale_path / "pot"
         pot_path.mkdir(parents=True, exist_ok=True)
@@ -175,9 +175,9 @@ class POGenerator:
         return entity_code, pot_file
 
     @staticmethod
-    def _update_po_file(args: tuple[Path, POFile, tuple[str, Path, str, tuple[str, ...]]]) -> None:
+    def _update_po_file(args: tuple[Path, POFile, str, str]) -> None:
         """Merge .po file with .pot using strict no-change policies."""
-        po_path, pot_file, (default_language, _, entity_docstring, _) = args
+        po_path, pot_file, default_language, entity_docstring = args
         po_path = po_path.resolve()
         current_lang = po_path.parent.parent.name
 
@@ -211,6 +211,8 @@ class POGenerator:
     def process_entities() -> None:
         """Processes entities in specified directory."""
         entities_data = {}
+        entity_worker_data = []
+
         for entity_type, entity_mapping in (("countries", COUNTRIES), ("financial", FINANCIAL)):
             for path in Path(f"holidays/{entity_type}").glob("*.py"):
                 if (mod_name := path.stem) == "__init__":
@@ -228,20 +230,19 @@ class POGenerator:
                 if not entity_cls:
                     continue
 
+                entity_worker_data.append((entity_code, path, entity_cls.supported_languages))
                 entities_data[entity_code] = (
                     entity_cls.default_language,
-                    path,
                     entity_cls.__doc__ or "",
-                    entity_cls.supported_languages,
                 )
 
         with ProcessPoolExecutor() as executor:
             entity_pot_mapping = dict(
-                executor.map(POGenerator._process_entity_worker, entities_data.items())
+                executor.map(POGenerator._process_entity_worker, entity_worker_data)
             )
 
         all_po_update_tasks = [
-            (path, entity_pot_mapping[path.stem], entities_data[path.stem])
+            (path, entity_pot_mapping[path.stem], *entities_data[path.stem])
             for path in POGenerator._locale_path.rglob("*.po")
         ]
         with ProcessPoolExecutor(
