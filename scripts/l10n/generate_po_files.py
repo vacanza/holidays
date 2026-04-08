@@ -141,9 +141,7 @@ class POGenerator:
             )
 
     @staticmethod
-    def _process_entity_worker(
-        args: tuple[str, Path, tuple[str, ...]],
-    ) -> tuple[str, POFile]:
+    def _process_entity_worker(args: tuple[str, Path, tuple[str, ...]]) -> tuple[str, POFile]:
         """Process a single entity: create .pot, default .po, and return update tasks."""
         entity_code, class_file_path, supported_languages = args
 
