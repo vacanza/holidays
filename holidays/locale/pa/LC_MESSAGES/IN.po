@@ -312,6 +312,10 @@ msgstr "ਤੇਲੰਗਾਨਾ ਗਠਨ ਦਿਵਸ"
 msgid "Bathukamma Festival"
 msgstr "ਬਾਥੁਕੰਮਾ ਤਿਉਹਾਰ"
 
+#. Bonalu.
+msgid "Bonalu"
+msgstr "ਬੋਨਾਲੂ"
+
 #. UP Formation Day.
 msgid "UP Formation Day"
 msgstr "ਯੂਪੀ ਗਠਨ ਦਿਵਸ"

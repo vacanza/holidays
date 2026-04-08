@@ -502,6 +502,8 @@ class India(
         self._add_holiday_jun_2(tr("Telangana Formation Day"))
         # Bathukamma Festival.
         self._add_bathukamma(tr("Bathukamma Festival"))
+        # Bonalu.
+        self._add_bonalu(tr("Bonalu"))
         # Ugadi.
         self._add_gudi_padwa(tr("Ugadi"))
 
