@@ -45,7 +45,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         - Saturdays and Sundays shall be restdays each week.
         - In-Lieu holidays shall be given if it fall on the weekends.
 
-    Although in-lieus has been de facto observed since at least 2012.
+    Although in-lieu holidays have been de facto observed since at least 2012.
 
     Limitations:
         - Laotian holidays only work from 1976 onwards, and are only 100% accurate
@@ -111,7 +111,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         # ວັນແມ່ຍິງສາກົນ
         # Status: In-Use.
         # Only acts as day off for Women.
-        # No in-lieus are observed in 2014.
+        # No in-lieu holidays are observed in 2014.
 
         # International Women's Rights Day.
         womens_day = self._add_womens_day(tr("ວັນແມ່ຍິງສາກົນ"))

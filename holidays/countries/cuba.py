@@ -88,7 +88,7 @@ class Cuba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         # In 1969, Christmas was cancelled for the sugar harvest but then was cancelled for good.
         # In 1997, Christmas was temporarily back for the Pope's visit.
-        # In 1998, Christmas returns for good.
+        # In 1998, Christmas returned for good.
         if self._year <= 1968 or self._year >= 1997:
             # Christmas Day.
             self._add_christmas_day(tr("Día de Navidad"))

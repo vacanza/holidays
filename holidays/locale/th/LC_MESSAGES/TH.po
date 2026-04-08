@@ -293,7 +293,7 @@ msgstr ""
 msgid "วันลอยกระทง"
 msgstr ""
 
-#. Special In Lieu Holiday.
+#. Special in-lieu holiday.
 msgid "วันหยุดชดเชย"
 msgstr ""
 

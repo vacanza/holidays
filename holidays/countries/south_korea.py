@@ -77,12 +77,12 @@ class SouthKorea(
         * <https://web.archive.org/web/20231002172705/https://publicholidays.co.kr/ko/2022-dates/>
 
     According to Article 3 of the Public Holidays Act:
-        * The alt holiday means next first non holiday after the holiday.
+        * The alternative holiday is the first non-holiday after the holiday.
         * Independence Movement Day, Liberation Day, National Foundation Day,
-            Hangul Day, Children's Day, Birthday of the Buddha, Christmas Day have
-            alt holiday if they fell on Saturday or Sunday.
-        * Korean New Year's Day, Korean Mid Autumn Day have alt holiday if they
-            fell on Sunday.
+            Hangul Day, Children's Day, Birthday of the Buddha, and Christmas Day have
+            an alternative holiday if they fall on Saturday or Sunday.
+        * Korean New Year's Day and Korean Mid-Autumn Day have an alternative holiday if they
+            fall on Sunday.
     """
 
     country = "KR"

@@ -1690,7 +1690,7 @@ class UnitedStatesStaticHolidays(StaticHolidays):
         * [2025, EO 14371](https://web.archive.org/web/20251219180805/https://www.whitehouse.gov/presidential-actions/2025/12/providing-for-the-closure-of-executive-departments-and-agencies-of-the-federal-government-on-december-24-2025-and-december-26-2025/)
 
 
-    Pre-1971 Inauguration Day observances has been moved here.
+    Pre-1971 Inauguration Day observances have been moved here.
     """
 
     # Fasting and Humiliation Day.
