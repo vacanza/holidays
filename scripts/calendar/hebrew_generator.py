@@ -113,10 +113,10 @@ class _Lunisolar:
                 # Short Adar (in non-leap years).
                 case 12 if not is_leap:
                     days += 29
-                # Short Marḥeshvan (days depend on length of year).
+                # Short Marcheshvan (days depend on length of year).
                 case 8 if year_len_mod != 5:
                     days += 29
-                # Short Kislev (the same)
+                # Short Kislev (the same).
                 case 9 if year_len_mod == 3:
                     days += 29
                 case _:
