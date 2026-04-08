@@ -58,7 +58,7 @@ class _Lunisolar:
     """
 
     @staticmethod
-    def leap(year):
+    def leap(year: int) -> bool:
         """Return True if a Hebrew year is a leap year."""
         return ((year * 7) + 1) % 19 < 7
 
