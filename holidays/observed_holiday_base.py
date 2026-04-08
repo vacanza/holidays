@@ -118,7 +118,8 @@ SAT_SUN_TO_NEXT_WORKDAY = ObservedRule({SAT: +7, SUN: +7})
 
 
 class ObservedHolidayBase(HolidayBase):
-    """Extend HolidayBase with support for observed holiday dates.
+    """Extend [`HolidayBase`][holidays.holiday_base.HolidayBase]
+    with support for observed holiday dates.
 
     When a public holiday falls on a weekend or non-working day, many countries
     observe it on the nearest working day instead. This class adds that logic on
