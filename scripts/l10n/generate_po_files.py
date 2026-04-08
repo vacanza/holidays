@@ -65,8 +65,7 @@ class POGenerator:
         if not HEADER_PATH.exists():
             return ""
 
-        content = HEADER_PATH.read_text(encoding="utf-8").lstrip("\n")
-        if not content:
+        if not (content := HEADER_PATH.read_text(encoding="utf-8").lstrip("\n")):
             return ""
 
         return (
@@ -120,8 +119,7 @@ class POGenerator:
 
         desc_line = None
         if docstring:
-            display_name = docstring.split("\n", maxsplit=1)[0].removesuffix(" holidays.")
-            if display_name:
+            if display_name := docstring.split("\n", maxsplit=1)[0].removesuffix(" holidays."):
                 lang_tag = (
                     f" {current_language} localization"
                     if current_language != default_language
