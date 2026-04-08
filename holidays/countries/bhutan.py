@@ -11,10 +11,12 @@
 #  License: MIT (see LICENSE file)
 
 from gettext import gettext as tr
+
 from holidays.calendars import _CustomHinduHolidays
 from holidays.calendars.gregorian import SEP, OCT
 from holidays.groups import HinduCalendarHolidays, TibetanCalendarHolidays
 from holidays.holiday_base import HolidayBase
+
 
 class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
     """Bhutan holidays.
