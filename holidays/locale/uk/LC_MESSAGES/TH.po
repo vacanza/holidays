@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-18 15:58-0700\n"
-"PO-Revision-Date: 2026-04-09 10:04+0700\n"
+"PO-Revision-Date: 2026-04-09 19:54+0700\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -293,7 +293,7 @@ msgstr "День національного прапора Таїланду"
 msgid "วันลอยกระทง"
 msgstr "Лой Кратонг"
 
-#. Special in-lieu holiday.
+#. Special In-Lieu Holiday.
 msgid "วันหยุดชดเชย"
 msgstr "Додатковий вихідний"
 

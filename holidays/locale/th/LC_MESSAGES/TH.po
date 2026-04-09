@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-02 00:37+0700\n"
-"PO-Revision-Date: 2026-04-09 10:04+0700\n"
+"PO-Revision-Date: 2026-04-09 19:54+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -293,7 +293,7 @@ msgstr ""
 msgid "วันลอยกระทง"
 msgstr ""
 
-#. Special in-lieu holiday.
+#. Special In-Lieu Holiday.
 msgid "วันหยุดชดเชย"
 msgstr ""
 

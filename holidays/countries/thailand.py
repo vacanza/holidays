@@ -999,7 +999,7 @@ class ThailandStaticHolidays:
        * [HM Queen Rambai Barni's Royal Cremation Ceremony](https://web.archive.org/web/20250428140115/https://ratchakitcha.soc.go.th/documents/1560949.pdf)
     """
 
-    # Special in-lieu holiday.
+    # Special In-Lieu Holiday.
     thai_special_in_lieu_holidays = tr("วันหยุดชดเชย")
     # Thai Election Day.
     thai_election = tr("วันเลือกตั้ง")
