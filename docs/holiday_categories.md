@@ -88,7 +88,7 @@ Examples:
 - Cultural observances with optional recognition
 - Religious holidays for minority populations
 
-#### MANDATORY *(deprecated)*
+#### MANDATORY _(deprecated)_
 
 Holidays that were legally required to be observed in specific contexts. Previously used in Macau, where "Mandatory (Statutory) Holidays" have since been reclassified under the `PUBLIC` category, and "General Holidays" are now included in the `OPTIONAL` category, following the same approach as in Hong Kong.
 
@@ -382,3 +382,31 @@ When contributing new countries or updating existing ones:
 3. Classify each holiday according to its official status and cultural significance
 4. Document the reasoning for category assignments
 5. Provide examples in tests demonstrating category usage
+
+## Example: Retrieving Holidays for a Country
+
+This example demonstrates how to retrieve holidays for a specific country, check if a date is a holiday, and understand what data is returned.
+
+```python
+import holidays
+
+# Get holidays for India
+india = holidays.country_holidays('IN')
+
+# Check if a specific date is a holiday
+print('2024-01-26' in india)  # True (Republic Day)
+
+# Get the holiday name
+print(india.get('2024-01-26'))  # Republic Day
+
+### What does this return?
+
+The `country_holidays('IN')` function returns a dictionary-like object where:
+
+- Keys are dates (YYYY-MM-DD format)
+- Values are holiday names
+This allows you to:
+- Check if a date is a holiday using `in`
+- Retrieve holiday names using `.get()`
+- Iterate through all holidays
+```
