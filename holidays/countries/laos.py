@@ -27,15 +27,15 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         * [Decree on Holidays No. 386 / Rev. 15.12.2017](https://web.archive.org/web/20250427180756/https://juristact.weebly.com/uploads/1/0/9/9/109947087/d17_386.pdf)
 
     Checked with:
-        * <https://web.archive.org/web/20250414071145/https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf>
-        * <https://web.archive.org/web/20250414071156/https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf>
+        * [ASEAN National Holidays 2022](https://web.archive.org/web/20250414071145/https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf)
+        * [ASEAN National Holidays 2023](https://web.archive.org/web/20250414071156/https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf)
         * <https://web.archive.org/web/20250414071331/https://www.timeanddate.com/holidays/laos/>
         * [2022](https://web.archive.org/web/20250414071244/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2022)
         * [2023](https://web.archive.org/web/20250414071349/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2023)
         * [2024](https://web.archive.org/web/20250414071245/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2024)
         * [2025](https://web.archive.org/web/20260122075248/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2025)
         * [2026](https://web.archive.org/web/20260122075256/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2026)
-        * [Lao Securities eXchange (from 2011 onwards)](https://web.archive.org/web/20260122074030/http://lsx.com.la/en/about/holiday]
+        * [Lao Securities eXchange (from 2011 onwards)](https://web.archive.org/web/20260122074030/http://lsx.com.la/en/about/holiday)
 
     !!! note "If Public Holiday falls on weekends, (in lieu) on workday"
         Despite the wording, this usually only applies to Monday only for holidays,
@@ -45,13 +45,13 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         - Saturdays and Sundays shall be restdays each week.
         - In-Lieu holidays shall be given if it fall on the weekends.
 
-    Although in-lieus has been de facto observed since at least 2012.
+    Although in-lieu holidays have been de facto observed since at least 2012.
 
     Limitations:
-        - Laotian holidays only works from 1976 onwards, and are only 100% accurate from 2018
-            onwards.
-        - Laotian Lunar Calendar Holidays only work from 1941 (B.E. 2485) onwards until 2157
-            (B.E. 2701) as we only have Thai year-type data for cross-checking until then.
+        - Laotian holidays only work from 1976 onwards, and are only 100% accurate
+           from 2018 onwards.
+        - Laotian Lunar Calendar Holidays only work until 2157 (B.E. 2701) as we only
+           have Thai year-type data for cross-checking until then.
     """
 
     country = "LA"
@@ -111,7 +111,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         # ວັນແມ່ຍິງສາກົນ
         # Status: In-Use.
         # Only acts as day off for Women.
-        # No in-lieus are observed in 2014.
+        # No in-lieu holidays are observed in 2014.
 
         # International Women's Rights Day.
         womens_day = self._add_womens_day(tr("ວັນແມ່ຍິງສາກົນ"))
@@ -120,7 +120,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
 
         # ບຸນປີໃໝ່ລາວ
         # Status: In-Use.
-        # Celebrated for 3 days from 14-16 April annualy.
+        # Celebrated for 3 days from 14-16 April annually.
         # Observed dates prior to 2018 are assigned manually.
 
         # Lao New Year's Day.

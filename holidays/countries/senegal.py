@@ -27,6 +27,7 @@ class Senegal(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
     """Senegal holidays.
+
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Senegal>
         * [Law 63-51](https://web.archive.org/web/20250604134724/https://www.dri.gouv.sn/sites/default/files/LOI/1963/63_51.pdf)

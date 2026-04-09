@@ -18,6 +18,9 @@ class BouvetIsland(NoHolidayBase):
 
     References:
         * <https://en.wikipedia.org/wiki/Bouvet_Island>
+
+    !!! note "Note"
+        This territory is uninhabited and is provided for ISO 3166-1 completeness only.
     """
 
     country = "BV"
