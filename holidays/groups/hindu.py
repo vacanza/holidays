@@ -72,6 +72,16 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.bathukamma_date(self._year)
         )
 
+    def _add_bonalu(self, name) -> date | None:
+        """
+        Add Bonalu.
+
+        Bonalu is a Hindu festival celebrated in Telangana during Ashada Masam
+        (4th month of the Hindu lunar calendar).
+        https://en.wikipedia.org/wiki/Bonalu
+        """
+        return self._add_hindu_calendar_holiday(name, self._hindu_calendar.bonalu_date(self._year))
+
     def _add_bhai_dooj(self, name) -> date | None:
         """
         Add Bhai Dooj.

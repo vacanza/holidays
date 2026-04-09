@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-03-31 18:55+0530\n"
+"PO-Revision-Date: 2026-04-03 22:16+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -312,6 +312,10 @@ msgstr "तेलंगाना स्थापना दिवस"
 #. Bathukamma Festival.
 msgid "Bathukamma Festival"
 msgstr "बतुकम्मा महोत्सव"
+
+#. Bonalu.
+msgid "Bonalu"
+msgstr "बोनालु"
 
 #. UP Formation Day.
 msgid "UP Formation Day"
