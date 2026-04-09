@@ -334,7 +334,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         # Status: In-Use.
         # Celebrated the Declaration of Independence on Oct 12, 1945.
 
-        # Indepedence Declaration Day.
+        # Independence Declaration Day.
         self._add_holiday_oct_12(tr("ວັນປະກາດເອກະລາດ"))
 
         # ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ໄກສອນ ພົມວິຫານ
