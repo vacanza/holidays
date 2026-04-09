@@ -452,100 +452,97 @@ class HolidayBase(dict[date, str]):
 
             tokens = name.split("_")
 
-            # Handle <month> <day> patterns (e.g., _add_holiday_jun_15()).
-            if len(tokens) == 5:
-                *_, month, day = tokens
-                if month in MONTHS and day in DAYS:
-                    return lambda name: self._add_holiday(
-                        name, date(self._year, MONTHS[month], int(day))
-                    )
-
-            elif len(tokens) == 7:
+            match len(tokens):
+                # Handle <month> <day> patterns (e.g., _add_holiday_jun_15()).
+                case 5:
+                    *_, month, day = tokens
+                    if month in MONTHS and day in DAYS:
+                        return lambda name: self._add_holiday(
+                            name, date(self._year, MONTHS[month], int(day))
+                        )
                 # Handle <last/nth> <weekday> of <month> patterns (e.g.,
                 # _add_holiday_last_mon_of_aug() or _add_holiday_3rd_fri_of_aug()).
-                *_, number, weekday, of, month = tokens
-                if (
-                    of == "of"
-                    and (number == "last" or number[0].isdigit())
-                    and month in MONTHS
-                    and weekday in WEEKDAYS
-                ):
-                    return lambda name: self._add_holiday(
-                        name,
-                        _get_nth_weekday_of_month(
-                            -1 if number == "last" else int(number[0]),
-                            WEEKDAYS[weekday],
-                            MONTHS[month],
-                            self._year,
-                        ),
-                    )
-
-                # Handle <n> days <past/prior> easter patterns (e.g.,
-                # _add_holiday_8_days_past_easter() or
-                # _add_holiday_5_days_prior_easter()).
-                *_, days, unit, delta_direction, easter = tokens
-                if (
-                    unit in {"day", "days"}
-                    and delta_direction in {"past", "prior"}
-                    and easter == "easter"
-                    and len(days) < 3
-                    and days.isdigit()
-                ):
-                    return lambda name: self._add_holiday(
-                        name,
-                        _timedelta(
-                            self._easter_sunday,
-                            +int(days) if delta_direction == "past" else -int(days),
-                        ),
-                    )
-
-            # Handle <n> day(s) <past/prior> <last/<nth> <weekday> of <month> patterns (e.g.,
-            # _add_holiday_1_day_past_1st_fri_of_aug() or
-            # _add_holiday_5_days_prior_last_fri_of_aug()).
-            elif len(tokens) == 10:
-                *_, days, unit, delta_direction, number, weekday, of, month = tokens
-                if (
-                    unit in {"day", "days"}
-                    and delta_direction in {"past", "prior"}
-                    and of == "of"
-                    and len(days) < 3
-                    and days.isdigit()
-                    and (number == "last" or number[0].isdigit())
-                    and month in MONTHS
-                    and weekday in WEEKDAYS
-                ):
-                    return lambda name: self._add_holiday(
-                        name,
-                        _timedelta(
+                case 7:
+                    *_, number, weekday, of, month = tokens
+                    if (
+                        of == "of"
+                        and (number == "last" or number[0].isdigit())
+                        and month in MONTHS
+                        and weekday in WEEKDAYS
+                    ):
+                        return lambda name: self._add_holiday(
+                            name,
                             _get_nth_weekday_of_month(
                                 -1 if number == "last" else int(number[0]),
                                 WEEKDAYS[weekday],
                                 MONTHS[month],
                                 self._year,
                             ),
-                            +int(days) if delta_direction == "past" else -int(days),
-                        ),
-                    )
-
-            # Handle <nth> <weekday> <before/from> <month> <day> patterns (e.g.,
-            # _add_holiday_1st_mon_before_jun_15() or _add_holiday_1st_mon_from_jun_15()).
-            elif len(tokens) == 8:
-                *_, number, weekday, date_direction, month, day = tokens
-                if (
-                    date_direction in {"before", "from"}
-                    and number[0].isdigit()
-                    and month in MONTHS
-                    and weekday in WEEKDAYS
-                    and day in DAYS
-                ):
-                    return lambda name: self._add_holiday(
-                        name,
-                        _get_nth_weekday_from(
-                            -int(number[0]) if date_direction == "before" else +int(number[0]),
-                            WEEKDAYS[weekday],
-                            date(self._year, MONTHS[month], int(day)),
-                        ),
-                    )
+                        )
+                    # Handle <n> days <past/prior> easter patterns (e.g.,
+                    # _add_holiday_8_days_past_easter() or
+                    # _add_holiday_5_days_prior_easter()).
+                    *_, days, unit, delta_direction, easter = tokens
+                    if (
+                        unit in {"day", "days"}
+                        and delta_direction in {"past", "prior"}
+                        and easter == "easter"
+                        and len(days) < 3
+                        and days.isdigit()
+                    ):
+                        return lambda name: self._add_holiday(
+                            name,
+                            _timedelta(
+                                self._easter_sunday,
+                                +int(days) if delta_direction == "past" else -int(days),
+                            ),
+                        )
+                # Handle <n> day(s) <past/prior> <last/<nth> <weekday> of <month> patterns (e.g.,
+                # _add_holiday_1_day_past_1st_fri_of_aug() or
+                # _add_holiday_5_days_prior_last_fri_of_aug()).
+                case 10:
+                    *_, days, unit, delta_direction, number, weekday, of, month = tokens
+                    if (
+                        unit in {"day", "days"}
+                        and delta_direction in {"past", "prior"}
+                        and of == "of"
+                        and len(days) < 3
+                        and days.isdigit()
+                        and (number == "last" or number[0].isdigit())
+                        and month in MONTHS
+                        and weekday in WEEKDAYS
+                    ):
+                        return lambda name: self._add_holiday(
+                            name,
+                            _timedelta(
+                                _get_nth_weekday_of_month(
+                                    -1 if number == "last" else int(number[0]),
+                                    WEEKDAYS[weekday],
+                                    MONTHS[month],
+                                    self._year,
+                                ),
+                                +int(days) if delta_direction == "past" else -int(days),
+                            ),
+                        )
+                # Handle <nth> <weekday> <before/from> <month> <day> patterns (e.g.,
+                # _add_holiday_1st_mon_before_jun_15() or _add_holiday_1st_mon_from_jun_15()).
+                case 8:
+                    *_, number, weekday, date_direction, month, day = tokens
+                    if (
+                        date_direction in {"before", "from"}
+                        and number[0].isdigit()
+                        and month in MONTHS
+                        and weekday in WEEKDAYS
+                        and day in DAYS
+                    ):
+                        return lambda name: self._add_holiday(
+                            name,
+                            _get_nth_weekday_from(
+                                -int(number[0]) if date_direction == "before" else +int(number[0]),
+                                WEEKDAYS[weekday],
+                                date(self._year, MONTHS[month], int(day)),
+                            ),
+                        )
 
             raise e  # No match.
 
