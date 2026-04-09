@@ -39,8 +39,7 @@ class Egypt(
         * [National Holidays (English)](https://web.archive.org/web/20250529043734/https://www.presidency.eg/en/مصر/العطلات-الرسمية/)
         * [National Holidays (French)](https://web.archive.org/web/20250608173134/https://www.presidency.eg/fr/مصر/العطلات-الرسمية/)
         * [Ministerial Decision 1193](https://web.archive.org/web/20250423073350/https://manshurat.org/node/44922)
-        * 2026 Eid al-Fitr: https://sis.gov.eg/en/media-center/news/dar-al-ifta-announces-friday-as-the-first-day-of-eidul-fitr/
-        * [National Holidays 2026 (English)](https://www.presidency.eg/en/%D9%85%D8%B5%D8%B1/%D8%A7%D9%84%D8%B9%D8%B7%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D8%B1%D8%B3%D9%85%D9%8A%D8%A9/)
+        * [2026 Eid al-Fitr](https://web.archive.org/web/20260331062747/https://sis.gov.eg/en/media-center/news/dar-al-ifta-announces-friday-as-the-first-day-of-eidul-fitr/)
     """
 
     country = "EG"
