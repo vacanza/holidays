@@ -26,3 +26,6 @@ Pipfile
 sbom.json
 site/
 venv/
+# Local dev
+venv/
+*.ics
