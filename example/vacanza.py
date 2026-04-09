@@ -38,7 +38,7 @@ def main():
     """Main entry point for the vacanza-holidays CLI script."""
     parser = argparse.ArgumentParser(
         description="Generate holiday calendar exports (.ics) for any country.",
-        usage="python vacanza.py <COUNTRY_CODE> <YEAR> [public-holidays]"
+        usage="python vacanza.py <COUNTRY_CODE> <YEAR> [public-holidays]",
     )
     parser.add_argument("country", help="Country code (e.g., US, MZ, SE)")
     parser.add_argument("year", help="Year or year range (e.g., 2025 or 2020-2025)")
@@ -46,7 +46,7 @@ def main():
         "filter",
         nargs="?",
         choices=["public-holidays"],
-        help="Optional: Filter only public holidays"
+        help="Optional: Filter only public holidays",
     )
 
     # Friendly error message for insufficient arguments
@@ -64,7 +64,7 @@ def main():
         holiday_data = holidays.country_holidays(
             country_code,
             years=years,
-            categories="public" if only_public else None
+            categories="public" if only_public else None,
         )
 
         if not holiday_data:
