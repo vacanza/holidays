@@ -38,47 +38,45 @@ def main():
     """Main entry point for the vacanza-holidays CLI script."""
     parser = argparse.ArgumentParser(
         description="Generate holiday calendar exports (.ics) for any country.",
-        usage="python vacanza.py <COUNTRY_CODE> <YEAR> [public-holidays]",
     )
-    parser.add_argument("country", help="Country code (e.g., US, MZ, SE)")
-    parser.add_argument("year", help="Year or year range (e.g., 2025 or 2020-2025)")
-    parser.add_argument(
-        "filter",
-        nargs="?",
-        choices=["public-holidays"],
-        help="Optional: Filter only public holidays",
-    )
+    parser.add_argument("country", help="Country code (e.g., MZ, US, PT)")
+    parser.add_argument("year", help="Year or year range (e.g., 2026 or 2024-2026)")
+    parser.add_argument("--subdiv", help="Subdivision/Province code (e.g., MPM for Maputo)")
+    parser.add_argument("--categories", help="Holiday categories (e.g., public, bank)")
+    parser.add_argument("--language", help="Language code for holiday names (e.g., pt_MZ)")
+    parser.add_argument("--financial", action="store_true", help="Use financial market holidays")
 
-    # Friendly error message for insufficient arguments
     if len(sys.argv) < 3:
         parser.print_help()
         sys.exit(1)
 
     args = parser.parse_args()
-    country_code = args.country.upper()
     years = get_years(args.year)
-    only_public = args.filter == "public-holidays"
 
     try:
-        # Dynamic country holidays fetching
-        holiday_data = holidays.country_holidays(
-            country_code,
+        # Determine if we use financial markets or standard country holidays
+        holiday_base = holidays.financial_holidays if args.financial else holidays.country_holidays
+
+        holiday_data = holiday_base(
+            args.country.upper(),
+            subdiv=args.subdiv,
             years=years,
-            categories="public" if only_public else None,
+            categories=args.categories,
+            language=args.language,
         )
 
         if not holiday_data:
-            print(f"Warning: No holidays found for {country_code} in {args.year}.")
+            print(f"Warning: No holidays found for {args.country} with given filters.")
             return
 
         # Export logic
         exporter = ICalExporter(holiday_data)
-        file_name = f"{country_code}_{args.year.replace('-', '_')}.ics"
+        file_name = f"{args.country.upper()}_{args.year.replace('-', '_')}.ics"
         exporter.save_ics(file_name)
 
         print(f"Success! Calendar exported to: {file_name}")
     except Exception as e:
-        print(f"Error processing country '{country_code}': {e}")
+        print(f"Error: {e}")
         sys.exit(1)
 
 
