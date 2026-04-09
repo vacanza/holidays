@@ -518,13 +518,13 @@ class TestMalaysia(CommonCountryTests, TestCase):
 
         for subdiv, holidays in self.subdiv_islamic_no_estimated_holidays.items():
             match subdiv:
-                case "11":
-                    self.assertHolidayName(name, holidays, dt_1, dt_2)
-                    self.assertHolidayName(name, holidays, self.full_range)
                 case "03":
                     self.assertHolidayName(name, holidays, dt_2)
                     self.assertHolidayName(name, holidays, range(2023, self.end_year))
                     self.assertNoHolidayName(name, holidays, range(self.start_year, 2023))
+                case "11":
+                    self.assertHolidayName(name, holidays, dt_1, dt_2)
+                    self.assertHolidayName(name, holidays, self.full_range)
                 case _:
                     self.assertNoHolidayName(name, holidays)
 
