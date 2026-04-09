@@ -249,9 +249,15 @@ class India(
         # Children's Day.
         self._add_holiday_nov_14(tr("Children's Day"))
 
-        if self.subdiv != "MH":
-            # Holi.
-            self._add_holi(tr("Holi"))
+        holi_dates = {
+            2026: (MAR, 3),
+        }
+        # Holi
+        name = tr("Holi")
+        if dt := holi_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_holi(name)
 
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
