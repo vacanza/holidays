@@ -24,6 +24,7 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Syria>
+        * <https://en.wikipedia.org/wiki/Liberation_Day_(Syria)>
         * [Central Bank of Syria - Public Holidays 2024](https://web.archive.org/web/20250813035705/https://cb.gov.sy/index.php?lang=1&dir=html&ex=1&page=holidays&act=598-)
         * [Christmas and Boxing Day](https://web.archive.org/web/20250414224148/https://en.royanews.tv/news/56308)
     """
@@ -78,6 +79,10 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
 
         # Tishreen Liberation War Day.
         self._add_holiday_oct_6(tr("ذكرى حرب تشرين التحريرية"))
+
+        if self._year >= 2025:
+            # Liberation Day.
+            self._add_holiday_dec_8(tr("عيد التحرير"))
 
         if self._year >= 2024:
             # Christmas Day.

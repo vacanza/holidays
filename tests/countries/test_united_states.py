@@ -2045,6 +2045,16 @@ class TestUnitedStates(CommonCountryTests, TestCase):
         self.assertSubdivPrHolidayName(f"{name_2023} (observed)", obs_dts_2023)
         self.assertNoSubdivPrNonObservedHoliday(obs_dts_1938, obs_dts_2014, obs_dts_2023)
 
+    def test_american_citizenship_day_pr(self):
+        name = "American Citizenship Day"
+        self.assertNoHolidayName(name)
+        self.assertNoGovernmentHolidayName(name)
+        self.assertNoSubdivPrHolidayName(name)
+        self.assertSubdivPrGovernmentHolidayName(
+            name, (f"{year}-03-02" for year in range(2001, self.end_year))
+        )
+        self.assertNoSubdivPrGovernmentHolidayName(name, range(self.start_year, 2001))
+
     def test_day_after_thanksgiving(self):
         dts = (
             "2020-11-27",
@@ -2312,7 +2322,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 "Washington's and Lincoln's Birthday; Washington-Lincoln Day",
             ),
             ("2022-03-01", "Mardi Gras; Town Meeting Day"),
-            ("2022-03-02", "Texas Independence Day"),
+            ("2022-03-02", "American Citizenship Day; Texas Independence Day"),
             ("2022-03-07", "Casimir Pulaski Day; Guam Discovery Day"),
             ("2022-03-17", "Saint Patrick's Day"),
             ("2022-03-22", "Emancipation Day"),
@@ -2418,7 +2428,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 "วันเกิดจอร์จ วอชิงตันและวันเดซี่ แกตสัน เบตส์; วันเกิดวอชิงตัน; วันเกิดวอชิงตันและลิงคอล์น",
             ),
             ("2022-03-01", "วันประชาคมท้องถิ่น; วันมาร์ดิกราส์"),
-            ("2022-03-02", "วันประกาศอิสรภาพเท็กซัส"),
+            ("2022-03-02", "วันประกาศอิสรภาพเท็กซัส; วันแห่งความเป็นพลเมืองอเมริกัน"),
             ("2022-03-07", "วันคาซิเมียร์ พูลาสกี้; วันค้นพบกวม"),
             ("2022-03-17", "วันนักบุญแพทริก"),
             ("2022-03-22", "วันเลิกทาส"),
