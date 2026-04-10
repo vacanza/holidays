@@ -10,14 +10,18 @@
 #  License: MIT (see LICENSE file)
 
 import argparse
+import logging
 import sys
-from typing import List
 
 import holidays
 from holidays.ical import ICalExporter
 
+# Configure logging to show messages clearly in the terminal
+logging.basicConfig(level=logging.INFO, format="%(message)s")
+logger = logging.getLogger(__name__)
 
-def get_years(year_input: str) -> List[int]:
+
+def get_years(year_input: str) -> list[int]:
     """
     Parse the year input string into a list of integers.
     Supports single year (2025) or ranges (2020-2025).
@@ -30,7 +34,10 @@ def get_years(year_input: str) -> List[int]:
             return list(range(start, end + 1))
         return [int(year_input)]
     except ValueError as e:
-        print(f"Error: {e if 'range' in str(e) else f'Invalid format {year_input}'}")
+        logger.error(
+            "Error: %s",
+            e if "range" in str(e) else f"Invalid format {year_input}",
+        )
         sys.exit(1)
 
 
@@ -66,7 +73,7 @@ def main():
         )
 
         if not holiday_data:
-            print(f"Warning: No holidays found for {args.country} with given filters.")
+            logger.warning("No holidays found for %s with given filters.", args.country)
             return
 
         # Export logic
@@ -74,9 +81,9 @@ def main():
         file_name = f"{args.country.upper()}_{args.year.replace('-', '_')}.ics"
         exporter.save_ics(file_name)
 
-        print(f"Success! Calendar exported to: {file_name}")
+        logger.info("Success! Calendar exported to: %s", file_name)
     except Exception as e:
-        print(f"Error: {e}")
+        logger.error("Error: %s", e)
         sys.exit(1)
 
 
