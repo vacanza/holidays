@@ -448,7 +448,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertHolidayName(name, opt_holidays, dt)
 
         self.assertHoliday(
-            India(subdiv="MH", categories=OPTIONAL),
+            India(subdiv="MH"),
             "2026-03-03",
         )
 
