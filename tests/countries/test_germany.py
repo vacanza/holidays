@@ -79,20 +79,21 @@ class TestGermany(CommonCountryTests, TestCase):
         name = "Frauentag"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
-            # Berlin - 2019.
-            if subdiv == "BE":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-03-08" for year in range(2019, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 2019))
-            # Mecklenburg-Vorpommern - 2023.
-            elif subdiv == "MV":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-03-08" for year in range(2023, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 2023))
-            else:
-                self.assertNoHolidayName(name, holidays)
+            match subdiv:
+                # Berlin - 2019.
+                case "BE":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-03-08" for year in range(2019, self.end_year))
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 2019))
+                # Mecklenburg-Vorpommern - 2023.
+                case "MV":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-03-08" for year in range(2023, self.end_year))
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 2023))
+                case _:
+                    self.assertNoHolidayName(name, holidays)
 
     def test_good_friday(self):
         name = "Karfreitag"
@@ -263,24 +264,25 @@ class TestGermany(CommonCountryTests, TestCase):
     def test_reformation_day(self):
         name = "Reformationstag"
         for subdiv, holidays in self.subdiv_holidays.items():
-            # Brandenburg, Mecklenburg-Vorpommern, Sachsen, Sachsen-Anhalt, Thüringen.
-            if subdiv in {"BB", "MV", "SN", "ST", "TH"}:
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-10-31" for year in self.full_range)
-                )
-            # Bremen, Hamburg, Niedersachsen, Schleswig-Holstein.
-            elif subdiv in {"HB", "HH", "NI", "SH"}:
-                # While these subdivisions started their holiday observance in 2018,
-                # this is de facto implemented in 2017's nationwide special observance.
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-10-31" for year in range(2017, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 2017))
-            else:
-                self.assertHolidayName(name, holidays, "2017-10-31")
-                self.assertNoHolidayName(
-                    name, holidays, range(self.start_year, 2017), range(2018, self.end_year)
-                )
+            match subdiv:
+                # Brandenburg, Mecklenburg-Vorpommern, Sachsen, Sachsen-Anhalt, Thüringen.
+                case "BB" | "MV" | "SN" | "ST" | "TH":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-10-31" for year in self.full_range)
+                    )
+                # Bremen, Hamburg, Niedersachsen, Schleswig-Holstein.
+                case "HB" | "HH" | "NI" | "SH":
+                    # While these subdivisions started their holiday observance in 2018,
+                    # this is de facto implemented in 2017's nationwide special observance.
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-10-31" for year in range(2017, self.end_year))
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 2017))
+                case _:
+                    self.assertHolidayName(name, holidays, "2017-10-31")
+                    self.assertNoHolidayName(
+                        name, holidays, range(self.start_year, 2017), range(2018, self.end_year)
+                    )
         self.assertHolidayName(name, "2017-10-31")
 
     def test_all_saints_day(self):

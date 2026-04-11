@@ -200,6 +200,8 @@ class TestEgypt(CommonCountryTests, TestCase):
             "2024-04-11",
             "2025-03-30",
             "2025-03-31",
+            "2026-03-20",
+            "2026-03-21",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -226,6 +228,8 @@ class TestEgypt(CommonCountryTests, TestCase):
             "2024-04-12",
             "2025-03-29",
             "2025-04-01",
+            "2026-03-19",
+            "2026-03-22",
         )
         self.assertGovernmentIslamicNoEstimatedHolidayName(name, range(2019, self.end_year))
         self.assertNoGovernmentIslamicNoEstimatedHolidayName(name, range(self.start_year, 2019))
