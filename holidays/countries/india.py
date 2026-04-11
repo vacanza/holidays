@@ -42,7 +42,7 @@ class India(
         * Kerala:
             * <https://web.archive.org/web/20260329164551/https://kerala.gov.in/showcalendar/2026>
         * Maharashtra:
-            * <https://web.archive.org/web/20260329132658/https://cdn.s3waas.gov.in/s344c4c17332cace2124a1a836d9fc4b6f/uploads/2025/12/17671002949025.pdf>
+            * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
         * Punjab:
             * <https://web.archive.org/web/20260216022835/https://punjab.gov.in/wp-content/uploads/2025/12/Calender-2026.pdf>
         * Tamil Nadu:
@@ -251,8 +251,9 @@ class India(
         # Children's Day.
         self._add_holiday_nov_14(tr("Children's Day"))
 
-        # Holi.
-        self._add_holi(tr("Holi"))
+        if self.subdiv != "MH":
+            # Holi.
+            self._add_holi(tr("Holi"))
 
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
@@ -410,6 +411,17 @@ class India(
         self._add_gudi_padwa(tr("Gudi Padwa"))
         # Chhatrapati Shivaji Maharaj Jayanti.
         self._add_holiday_feb_19(tr("Chhatrapati Shivaji Maharaj Jayanti"))
+
+        holi_dates = {
+            2026: (MAR, 3),
+        }
+        # Holi.
+        name = tr("Holi")
+        if dt := holi_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_holi(name)
+
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
