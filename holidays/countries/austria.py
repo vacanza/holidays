@@ -95,7 +95,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day(tr("Neujahr"))
 
         # Removed via StGBl. Nr. 116/1945.
-        # Readded via BGBl. Nr. 173/1949.
+        # Re-added via BGBl. Nr. 173/1949.
         if self._year <= 1945 or self._year >= 1950:
             # Epiphany.
             self._add_epiphany_day(tr("Heilige Drei Könige"))
@@ -135,7 +135,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_all_saints_day(tr("Allerheiligen"))
 
         # Removed via StGBl. Nr. 116/1945.
-        # Readded via BGBl. Nr. 227/1955.
+        # Re-added via BGBl. Nr. 227/1955.
         if self._year <= 1944 or self._year >= 1955:
             # Immaculate Conception.
             self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
@@ -179,8 +179,8 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_nov_15(tr("Hl. Leopold"))
 
     def _populate_subdiv_4_bank_holidays(self):
-        # Appointed as Saint of Upper Austrian via Provincial Government
-        # decision on March 17th, 2004.
+        # Appointed as Saint of Upper Austrian via Provincial Government decision
+        # on March 17th, 2004.
         if self._year >= 2004:
             # Saint Florian's Day.
             self._add_holiday_may_4(tr("Hl. Florian"))
