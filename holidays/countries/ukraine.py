@@ -26,7 +26,7 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
     References:
         * [Labor Code of Ukraine, Art. 73](https://web.archive.org/web/20240607021920/https://zakon1.rada.gov.ua/laws/show/322-08/paran454)
-        * <https://web.archive.org/web/20240612025118/https://zakon.rada.gov.ua/laws/show/585-12>
+        * [Resolution No. 585-XII](https://web.archive.org/web/20240612025118/https://zakon.rada.gov.ua/laws/show/585-12)
     """
 
     country = "UA"
