@@ -237,15 +237,18 @@ class POGenerator:
                 executor.map(POGenerator._process_entity_worker, entity_worker_data)
             )
 
-        all_po_update_tasks = [
-            (path, entity_pot_mapping[path.stem], *entities_data[path.stem])
-            for path in POGenerator._locale_path.rglob("*.po")
-        ]
         with ProcessPoolExecutor(
             initializer=POGenerator._init_worker, initargs=(POGenerator._get_license_header(),)
         ) as executor:
-            for _ in executor.map(POGenerator._update_po_file, all_po_update_tasks):
-                pass
+            list(
+                executor.map(
+                    POGenerator._update_po_file,
+                    (
+                        (path, entity_pot_mapping[path.stem], *entities_data[path.stem])
+                        for path in POGenerator._locale_path.rglob("*.po")
+                    ),
+                )
+            )
 
 
 if __name__ == "__main__":
