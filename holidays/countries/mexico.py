@@ -22,8 +22,8 @@ class Mexico(HolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Mexico>
         * <https://es.wikipedia.org/wiki/Anexo:Días_festivos_en_México>
-        * <https://web.archive.org/web/20250421111013/https://www.gob.mx/cms/uploads/attachment/file/156203/1044_Ley_Federal_del_Trabajo.pdf>
-        * <https://web.archive.org/web/20250427131751/http://www.diputados.gob.mx/LeyesBiblio/ref/lft/LFT_orig_01abr70_ima.pdf>
+        * [Ley Federal del Trabajo (1884)](https://web.archive.org/web/20250427131751/http://www.diputados.gob.mx/LeyesBiblio/ref/lft/LFT_orig_01abr70_ima.pdf)
+        * [Ley Federal del Trabajo (1970)](https://web.archive.org/web/20250421111013/https://www.gob.mx/cms/uploads/attachment/file/156203/1044_Ley_Federal_del_Trabajo.pdf)
         * <https://web.archive.org/web/20250414071145/https://www.gob.mx/profedet/es/articulos/sabes-cuales-son-los-dias-de-descanso-obligatorio-para-este-2024>
     """
 

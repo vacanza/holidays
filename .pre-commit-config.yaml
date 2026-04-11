@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # v6.0.0
     hooks:
       - id: check-ast
       - id: check-builtin-literals
@@ -18,21 +18,21 @@ repos:
         exclude: \.md$
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.21.2
+    rev: 75992aaa40730136014f34227e0135f63fc951b4  # v3.21.2
     hooks:
-    -   id: pyupgrade
+      - id: pyupgrade
         args:
           - --keep-runtime-typing
           - --py310-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.9
+    rev: c60c980e561ed3e73101667fe8365c609d19a438  # v0.15.9
     hooks:
       - id: ruff-check
       - id: ruff-format
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.48.0
+    rev: e72a3ca1632f0b11a07d171449fe447a7ff6795e  # v0.48.0
     hooks:
       - id: markdownlint
         args:
@@ -40,7 +40,7 @@ repos:
         files: \.md$
 
   - repo: https://github.com/lucas-c/pre-commit-hooks
-    rev: v1.5.6
+    rev: ad1b27d73581aa16cca06fc4a0761fc563ffe8e8  # v1.5.6
     hooks:
       - id: insert-license
         name: check license headers
@@ -50,13 +50,13 @@ repos:
           - docs/file_header.txt
 
   - repo: https://github.com/pycqa/isort
-    rev: 8.0.1
+    rev: a333737ed43df02b18e6c95477ea1b285b3de15a  # 8.0.1
     hooks:
       - id: isort
         exclude: ^(docs)
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.20.0
+    rev: 8e5c80792e2ec0c87804d8ef915bf35e2caea6da  # v1.20.0
     hooks:
       - id: mypy
         additional_dependencies:
@@ -65,7 +65,7 @@ repos:
           - types-requests
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: v2.21.0
+    rev: 6e10264313f53d6247a8b1b984f5b5ccf50ba539  # v2.21.0
     hooks:
       - id: pyproject-fmt
 

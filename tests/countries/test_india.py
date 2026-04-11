@@ -436,7 +436,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, India(subdiv=subdiv), dt)
 
     def test_ranged_optional_holidays(self):
-        opt_holidays = India(categories=OPTIONAL)
+        opt_holidays = India(categories=OPTIONAL, years=range(2001, 2036))
 
         name = "Holi"
         dt = (
@@ -446,6 +446,14 @@ class TestIndia(CommonCountryTests, TestCase):
             "2035-03-24",
         )
         self.assertHolidayName(name, opt_holidays, dt)
+
+        # MH.
+        self.assertNoHolidayName(
+            name, India(categories=OPTIONAL, subdiv="MH", years=range(2001, 2036))
+        )
+        self.assertSubdivMhHolidayName(name, range(2001, 2036))
+        self.assertSubdivMhHolidayName(name, "2026-03-03")
+        self.assertNoSubdivMhHolidayName(name, "2026-03-04")
 
         name = "Ganesh Chaturthi"
         dt = (
