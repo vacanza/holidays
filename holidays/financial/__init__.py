@@ -24,3 +24,4 @@ from holidays.financial.national_stock_exchange_of_india import (
 )
 from holidays.financial.ny_stock_exchange import NewYorkStockExchange, XNYS, NYSE
 from holidays.financial.shanghai_stock_exchange import ShanghaiStockExchange, XSHG, SSE
+from holidays.financial.shenzhen_stock_exchange import ShenzhenStockExchange, XSHE, SZSE

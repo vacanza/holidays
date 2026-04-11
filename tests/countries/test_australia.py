@@ -148,8 +148,8 @@ class TestAustralia(CommonCountryTests, TestCase):
             self.assertNoHolidayName(name, holidays, range(self.start_year, 1921))
 
             if subdiv == "ACT":
-                self.assertNoHolidayName(name, holidays, "2026-04-25")
-                self.assertHolidayName(name, holidays, "2026-04-27")
+                self.assertHolidayName(name, holidays, "2026-04-25")
+                self.assertHolidayName(f"{name} (observed)", holidays, "2026-04-27")
             elif subdiv in {"NSW", "WA"}:
                 self.assertHolidayName(name, holidays, "2026-04-25")
                 self.assertHolidayName(

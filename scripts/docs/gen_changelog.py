@@ -24,12 +24,9 @@ def main():
     file_content = re.sub(
         r"#(\d+)", r"[\g<0>](https://github.com/vacanza/holidays/pull/\1)", file_content
     )
-    changes_lines = file_content.split("\n")
-    header = ["# Changelog", ""]
-    changelog = [f"#{line}" if line.startswith("# Version") else line for line in changes_lines]
 
     with mkdocs_gen_files.open("changelog.md", "w", newline="\n") as f:
-        f.write("\n".join(header + changelog))
+        f.write("\n".join(("# Changelog", "", *file_content.split("\n"))))
 
 
 if __name__ in {"__main__", "<run_path>"}:

@@ -180,7 +180,7 @@ class TestCase:
             with_subdiv_categories=with_subdiv_categories,
             with_subdiv_special_flags=with_subdiv_special_flags,
         )
-        cls._subdiv_lookup = {**cls._subdiv_base_lookup, **cls._subdiv_category_lookup}
+        cls._subdiv_lookup = cls._subdiv_base_lookup | cls._subdiv_category_lookup
 
         if years is None:
             # Default `self.full_range`
