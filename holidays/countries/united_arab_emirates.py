@@ -43,17 +43,17 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
     """United Arab Emirates holidays.
 
     References:
-    * [2017](https://web.archive.org/web/20230209125034/https://www.khaleejtimes.com/nation/uae-official-public-holidays-list-2017)
-    * [2018](https://web.archive.org/web/20201111212817/https://www.khaleejtimes.com/nation/Here-are-the-holidays-remaining-in-2018-in-UAE)
-    * [2019](https://web.archive.org/web/20240513133929/https://www.thenational.ae/uae/government/uae-public-holidays-for-2019-and-2020-announced-by-cabinet-1.833425)
-    * [2020](https://web.archive.org/web/20250424164934/https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays)
-    * [2021](https://web.archive.org/web/20210928140451/http://wam.ae/en/details/1395302957696)
-    * [2022](https://web.archive.org/web/20250207171255/https://www.khaleejtimes.com/ramadan/eid-al-fitr-holiday-announced-in-uae-3)
-    * 2023:
-        * <https://web.archive.org/web/20231207191645/https://www.timeoutdubai.com/news/uae-public-holidays-in-2023>
-        * <https://web.archive.org/web/20250125141309/https://www.khaleejtimes.com/uae/islamic-new-year-2023-uae-announces-official-holiday-for-public-sector>
-    * [2024](https://web.archive.org/web/20241001104607/https://www.timeoutdubai.com/news/uae-public-holidays-in-2024)
-    * [2025](https://web.archive.org/web/20250415131512/https://www.timeoutdubai.com/news/uae-public-holidays-2025)
+        * [2017](https://web.archive.org/web/20230209125034/https://www.khaleejtimes.com/nation/uae-official-public-holidays-list-2017)
+        * [2018](https://web.archive.org/web/20201111212817/https://www.khaleejtimes.com/nation/Here-are-the-holidays-remaining-in-2018-in-UAE)
+        * [2019](https://web.archive.org/web/20240513133929/https://www.thenational.ae/uae/government/uae-public-holidays-for-2019-and-2020-announced-by-cabinet-1.833425)
+        * [2020](https://web.archive.org/web/20250424164934/https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays)
+        * [2021](https://web.archive.org/web/20210928140451/http://wam.ae/en/details/1395302957696)
+        * [2022](https://web.archive.org/web/20250207171255/https://www.khaleejtimes.com/ramadan/eid-al-fitr-holiday-announced-in-uae-3)
+        * 2023:
+            * <https://web.archive.org/web/20231207191645/https://www.timeoutdubai.com/news/uae-public-holidays-in-2023>
+            * <https://web.archive.org/web/20250125141309/https://www.khaleejtimes.com/uae/islamic-new-year-2023-uae-announces-official-holiday-for-public-sector>
+        * [2024](https://web.archive.org/web/20241001104607/https://www.timeoutdubai.com/news/uae-public-holidays-in-2024)
+        * [2025](https://web.archive.org/web/20250415131512/https://www.timeoutdubai.com/news/uae-public-holidays-2025)
 
     Holidays are regulated by the Article 74 of [Federal Law No.
     08](https://web.archive.org/web/20250304004437/https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/11956/69376/F417089305/ARE11956.pdf)
