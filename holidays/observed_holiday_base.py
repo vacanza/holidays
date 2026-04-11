@@ -20,7 +20,7 @@ class ObservedRule(dict[int, int | None]):
     __slots__ = ()
 
     def __add__(self, other):
-        return ObservedRule({**self, **other})
+        return ObservedRule(self | other)
 
 
 # Observance calculation rules: +7 - next workday, -7 - previous workday.

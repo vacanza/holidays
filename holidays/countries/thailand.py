@@ -92,10 +92,10 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
     Checked with:
         * [Bank of Thailand](https://web.archive.org/web/20230205072056/https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/2023.aspx)
 
-    In Lieus:
+    In-lieu holidays:
         * [isranews.org](https://web.archive.org/web/20230205073547/https://www.isranews.org/content-page/item/20544-วันหยุดชดเชย-มาจากไหน-sp-863880667.html)
-        * <https://web.archive.org/web/20250428135057/https://resolution.soc.go.th/?prep_id=99159317>
-        * <https://web.archive.org/web/20250428151918/https://resolution.soc.go.th/?prep_id=196007>
+        * [B.E. 2544 (2001) Resumption of In-lieu Holiday Observances for Government Employees](https://web.archive.org/web/20250428135057/https://resolution.soc.go.th/?prep_id=99159317)
+        * [B.E. 2547 (2004) Amendment regarding Government Employee Holidays](https://web.archive.org/web/20250428151918/https://resolution.soc.go.th/?prep_id=196007)
         * <https://github.com/vacanza/holidays/pull/929>
         * <https://web.archive.org/web/20250418080608/https://www.thairath.co.th/lifestyle/life/2812118>
         * <https://web.archive.org/web/20250408214054/https://www.thaipbs.or.th/news/content/346216>
@@ -164,7 +164,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
     !!! note "Note"
         No New Year's Eve (in lieu) for this period
 
-        No In Lieu days available: 1974-1988
+        No in-lieu days available: 1974-1988
 
         Case-by-Case application for Workday if on Weekends: 1989-1994
 
@@ -999,7 +999,7 @@ class ThailandStaticHolidays:
        * [HM Queen Rambai Barni's Royal Cremation Ceremony](https://web.archive.org/web/20250428140115/https://ratchakitcha.soc.go.th/documents/1560949.pdf)
     """
 
-    # Special In Lieu Holiday.
+    # Special In-Lieu Holiday.
     thai_special_in_lieu_holidays = tr("วันหยุดชดเชย")
     # Thai Election Day.
     thai_election = tr("วันเลือกตั้ง")
@@ -1022,9 +1022,9 @@ class ThailandStaticHolidays:
         1985: (APR, 9, tr("วันพระราชพิธีถวายพระเพลิงพระบรมศพสมเด็จพระนางเจ้ารำไพพรรณี"))
     }
     special_public_holidays = {
-        # 1992-1994 (include In Lieus, Checked with Bank of Thailand Data).
+        # 1992-1994 (include in-lieu holidays, checked with Bank of Thailand data).
         # 1995-1997 (Bank of Thailand Data).
-        # 1998-2000 (include In Lieus, Checked with Bank of Thailand Data).
+        # 1998-2000 (include in-lieu holidays, checked with Bank of Thailand data).
         # From 2001 Onwards (Checked with Bank of Thailand Data).
         1992: (
             (MAY, 18, thai_special_in_lieu_holidays),

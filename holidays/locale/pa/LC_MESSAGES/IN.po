@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.94\n"
+"Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-28 17:22+0530\n"
 "PO-Revision-Date: 2026-04-03 22:16+0530\n"
@@ -148,6 +148,10 @@ msgstr "ਪਾਮ ਐਤਵਾਰ"
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr "ਜਨਮ ਦਿਨ ਡਾ: ਬੀ.ਆਰ. ਅੰਬੇਡਕਰ"
 
+#. Onam.
+msgid "Onam"
+msgstr "ਓਨਮ"
+
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
 msgstr "ਆਂਧਰਾ ਪ੍ਰਦੇਸ਼ ਸਥਾਪਨਾ ਦਿਵਸ"
@@ -211,10 +215,6 @@ msgstr "ਝਾਰਖੰਡ ਗਠਨ ਦਿਵਸ"
 #. Karnataka Rajyotsav.
 msgid "Karnataka Rajyotsava"
 msgstr "ਕਰਨਾਟਕ ਰਾਜਯੋਤਸਵ"
-
-#. Onam.
-msgid "Onam"
-msgstr "ਓਨਮ"
 
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"
