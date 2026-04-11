@@ -101,7 +101,7 @@ class TestRomania(CommonCountryTests, TestCase):
             "2025-06-08",
             "2025-06-09",
         )
-        self.assertHolidayName(name, range(2009, self.end_year))
+        self.assertHolidayNameCount(name, 2, range(2009, self.end_year))
         self.assertNoHolidayName(name, range(self.start_year, 2009))
 
     def test_dormition_of_mother_of_god(self):
