@@ -33,7 +33,7 @@ class TestRomania(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-01-06" for year in range(2024, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2024))
 
-    def test_saint_jonh_baptist(self):
+    def test_saint_john_baptist(self):
         name = "Soborul Sfântului Proroc Ioan Botezătorul"
         self.assertHolidayName(name, (f"{year}-01-07" for year in range(2024, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2024))
