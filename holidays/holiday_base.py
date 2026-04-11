@@ -380,7 +380,9 @@ class HolidayBase(dict[date, str]):
         for year in self.years:
             self._populate(year)
 
-    def __add__(self, other: Union[int, "HolidayBase", "HolidaySum"]) -> "HolidayBase":
+    def __add__(
+        self, other: Union[int, "HolidayBase", "HolidaySum"]
+    ) -> "HolidayBase | HolidaySum":
         """Add another dictionary of public holidays creating a
         [`HolidaySum`][holidays.holiday_base.HolidaySum] object.
 
