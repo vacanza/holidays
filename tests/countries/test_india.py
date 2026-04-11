@@ -53,7 +53,11 @@ class TestIndia(CommonCountryTests, TestCase):
         )
 
         subdiv_holidays_mapping = {
-            "AN": ("2018-04-14",),
+            "AN": (
+                "2018-03-25",
+                "2018-04-14",
+                "2018-08-24",
+            ),
             "AP": (
                 "2018-04-14",
                 "2018-11-01",
@@ -351,7 +355,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         name = "Onam"
         for subdiv in India.subdivisions:
-            if subdiv in {"KL"}:
+            if subdiv in {"AN", "KL"}:
                 self.assertHolidayName(name, India(subdiv=subdiv), dt)
             else:
                 self.assertNoHolidayName(name, India(subdiv=subdiv), dt)

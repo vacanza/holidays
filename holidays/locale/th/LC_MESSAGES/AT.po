@@ -10,112 +10,111 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Austria holidays.
+# Austria holidays th localization.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
-"POT-Creation-Date: 2023-04-01 17:13+0300\n"
+"POT-Creation-Date: 2026-04-08 22:19+0700\n"
 "PO-Revision-Date: 2026-04-08 22:19+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: de\n"
+"Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: de\n"
 
 #. New Year's Day.
 msgid "Neujahr"
-msgstr ""
+msgstr "วันขึ้นปีใหม่"
 
 #. Epiphany.
 msgid "Heilige Drei Könige"
-msgstr ""
+msgstr "วันสมโภชพระคริสต์แสดงองค์"
 
 #. Easter Monday.
 msgid "Ostermontag"
-msgstr ""
+msgstr "วันจันทร์อีสเตอร์"
 
 #. Labor Day.
 msgid "Staatsfeiertag"
-msgstr ""
+msgstr "วันแรงงาน"
 
 #. Ascension Day.
 msgid "Christi Himmelfahrt"
-msgstr ""
+msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
 
 #. Whit Monday.
 msgid "Pfingstmontag"
-msgstr ""
+msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
 
 #. Saint Peter and Saint Paul's Day.
 msgid "Peter und Paul"
-msgstr ""
+msgstr "วันสมโภชนักบุญเปโตรและเปาโล"
 
 #. Corpus Christi.
 msgid "Fronleichnam"
-msgstr ""
+msgstr "วันสมโภชพระคริสตวรกาย"
 
 #. Assumption Day.
 msgid "Mariä Himmelfahrt"
-msgstr ""
+msgstr "วันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์"
 
 #. National Day.
 msgid "Nationalfeiertag"
-msgstr ""
+msgstr "วันชาติออสเตรีย"
 
 #. All Saints' Day.
 msgid "Allerheiligen"
-msgstr ""
+msgstr "วันสมโภชนักบุญทั้งหลาย"
 
 #. Immaculate Conception.
 msgid "Mariä Empfängnis"
-msgstr ""
+msgstr "วันสมโภชแม่พระผู้ปฏิสนธินิรมล"
 
 #. Christmas Day.
 msgid "Christtag"
-msgstr ""
+msgstr "วันคริสต์มาส"
 
 #. Saint Stephen's Day.
 msgid "Stephanstag"
-msgstr ""
+msgstr "วันสมโภชนักบุญสเตเฟน"
 
 #. Good Friday.
 msgid "Karfreitag"
-msgstr ""
+msgstr "วันศุกร์ประเสริฐ"
 
 #. Christmas Eve.
 msgid "Heiliger Abend"
-msgstr ""
+msgstr "วันคริสต์มาสอีฟ"
 
 #. New Year's Eve.
 msgid "Silvester"
-msgstr ""
+msgstr "วันสิ้นปี"
 
 #. Saint Martin's Day.
 msgid "Hl. Martin"
-msgstr ""
+msgstr "วันสมโภชนักบุญมาร์ติน"
 
 #. Saint Joseph's Day.
 msgid "Hl. Josef"
-msgstr ""
+msgstr "วันสมโภชนักบุญโยเซฟ"
 
 #. 1920 Carinthian plebiscite.
 msgid "Tag der Volksabstimmung"
-msgstr ""
+msgstr "วันครบรอบการลงประชามติคารินเทีย"
 
 #. Saint Leopold's Day.
 msgid "Hl. Leopold"
-msgstr ""
+msgstr "วันสมโภชนักบุญลีโอโพลด์"
 
 #. Saint Florian's Day.
 msgid "Hl. Florian"
-msgstr ""
+msgstr "วันสมโภชนักบุญฟลอเรียน"
 
 #. Saint Rupert's Day.
 msgid "Hl. Rupert"
-msgstr ""
+msgstr "วันสมโภชนักบุญรูเพิร์ตแห่งซาลซ์บูร์ก"

@@ -206,35 +206,36 @@ class TestBrazil(CommonCountryTests, TestCase):
         name = "Dia do Evangélico"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "AC":
-                self.assertHolidayName(
-                    name,
-                    holidays,
-                    (f"{year}-01-23" for year in range(2005, 2009)),
-                    "2013-01-25",
-                    "2014-01-24",
-                    "2018-01-26",
-                    "2019-01-25",
-                    "2020-01-24",
-                )
-                self.assertHolidayName(name, holidays, range(2009, self.end_year))
-                self.assertNoHolidayName(name, holidays, range(1996, 2005))
-            elif subdiv == "AL":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-11-30" for year in range(2013, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(1996, 2013))
-            elif subdiv == "DF":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-11-30" for year in range(1996, self.end_year))
-                )
-            elif subdiv == "RO":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-06-18" for year in range(2002, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(1996, 2002))
-            else:
-                self.assertNoHolidayName(name, holidays)
+            match subdiv:
+                case "AC":
+                    self.assertHolidayName(
+                        name,
+                        holidays,
+                        (f"{year}-01-23" for year in range(2005, 2009)),
+                        "2013-01-25",
+                        "2014-01-24",
+                        "2018-01-26",
+                        "2019-01-25",
+                        "2020-01-24",
+                    )
+                    self.assertHolidayName(name, holidays, range(2009, self.end_year))
+                    self.assertNoHolidayName(name, holidays, range(1996, 2005))
+                case "AL":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-11-30" for year in range(2013, self.end_year))
+                    )
+                    self.assertNoHolidayName(name, holidays, range(1996, 2013))
+                case "DF":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-11-30" for year in range(1996, self.end_year))
+                    )
+                case "RO":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-06-18" for year in range(2002, self.end_year))
+                    )
+                    self.assertNoHolidayName(name, holidays, range(1996, 2002))
+                case _:
+                    self.assertNoHolidayName(name, holidays)
 
     def test_international_womens_day(self):
         name = "Dia Internacional da Mulher"
@@ -359,17 +360,18 @@ class TestBrazil(CommonCountryTests, TestCase):
         name = "São José"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "AP":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-03-19" for year in range(2003, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(1996, 2003))
-            elif subdiv == "CE":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-03-19" for year in range(1996, self.end_year))
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
+            match subdiv:
+                case "AP":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-03-19" for year in range(2003, self.end_year))
+                    )
+                    self.assertNoHolidayName(name, holidays, range(1996, 2003))
+                case "CE":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-03-19" for year in range(1996, self.end_year))
+                    )
+                case _:
+                    self.assertNoHolidayName(name, holidays)
 
     def test_saint_james_day(self):
         name = "São Tiago"
@@ -506,20 +508,21 @@ class TestBrazil(CommonCountryTests, TestCase):
         name = "Criação do Estado"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "MS":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-10-11" for year in range(1996, self.end_year))
-                )
-            elif subdiv == "RO":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-01-04" for year in range(1996, self.end_year))
-                )
-            elif subdiv in {"RR", "TO"}:
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-10-05" for year in range(1996, self.end_year))
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
+            match subdiv:
+                case "MS":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-10-11" for year in range(1996, self.end_year))
+                    )
+                case "RO":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-01-04" for year in range(1996, self.end_year))
+                    )
+                case "RR" | "TO":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-10-05" for year in range(1996, self.end_year))
+                    )
+                case _:
+                    self.assertNoHolidayName(name, holidays)
 
     def test_grao_para_joining_to_independence_of_brazil(self):
         name = "Adesão do Grão-Pará à independência do Brasil"
