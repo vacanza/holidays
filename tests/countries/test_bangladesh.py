@@ -45,7 +45,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
         name = "জুলাই গণ-অভ্যুত্থান দিবস"
         self.assertHolidayName(name, (f"{year}-08-05" for year in range(2024, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2024))
- 
+
     def test_national_mourning_day(self):
         self.assertHolidayName("জাতীয় শোক দিবস", (f"{year}-08-15" for year in self.full_range))
 
