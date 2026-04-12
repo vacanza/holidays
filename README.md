@@ -553,7 +553,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Curacao</td>
+<td>Curaçao</td>
 <td>CW</td>
 <td></td>
 <td>en_US, nl, <strong>pap_CW</strong>, uk</td>
