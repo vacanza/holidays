@@ -88,7 +88,7 @@ date(2015, 1, 2) in us_holidays  # False
 us_holidays.get('2014-01-01')  # "New Year's Day"
 ```
 
-The HolidayBase dict-like class will also recognize date strings and Unix timestamps:
+The [`HolidayBase`](https://github.com/vacanza/holidays/blob/main/holidays/holiday_base.py) dict-like class will also recognize date strings and Unix timestamps:
 
 ``` python
 '2014-01-01' in us_holidays  # True
