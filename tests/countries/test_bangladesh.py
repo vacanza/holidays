@@ -41,7 +41,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
     def test_may_day(self):
         self.assertHolidayName("মে দিবস", (f"{year}-05-01" for year in self.full_range))
 
-    def test_july_uprising_day(self):
+    def test_july_mass_uprising_day(self):
         name = "জুলাই গণ-অভ্যুত্থান দিবস"
         self.assertHolidayName(name, (f"{year}-08-05" for year in range(2025, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2025))
