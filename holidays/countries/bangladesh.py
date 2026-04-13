@@ -50,7 +50,7 @@ class Bangladesh(HolidayBase, InternationalHolidays):
         # May Day.
         self._add_labor_day(tr("মে দিবস"))
 
-        if self._year >= 2024:
+        if self._year >= 2025:
             # July Mass Uprising Day.
             self._add_holiday_aug_5(tr("জুলাই গণ-অভ্যুত্থান দিবস"))
 
