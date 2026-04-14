@@ -46,7 +46,7 @@ msgstr "डॉ. बी. आर. आंबेडकर जयंती"
 
 #. May Day.
 msgid "May Day"
-msgstr "मजदूर दिवस"
+msgstr "श्रम दिवस"
 
 #. Maharashtra Day.
 msgid "Maharashtra Day"
@@ -74,7 +74,7 @@ msgstr "होली"
 
 #. Ram Navami.
 msgid "Ram Navami"
-msgstr "रामनवमी"
+msgstr "राम नवमी"
 
 #. Mahavir Jayanti.
 msgid "Mahavir Jayanti"
@@ -101,7 +101,7 @@ msgid "Guru Nanak Jayanti"
 msgstr "गुरु नानक जयंती"
 
 #. Bhai Dooj.
-msgid "Bhai Dooj"
+msgid "Bhau Bhij"
 msgstr "भाई दूज"
 
 #. Buddha Purnima.
