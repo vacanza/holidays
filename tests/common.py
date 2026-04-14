@@ -597,12 +597,14 @@ class TestCase:
         self.assertEqual(0, len(holidays))
 
     # LocalizedHolidays.
-    def _assertLocalizedHolidays(self, localized_holidays, language=None):
+    def _assertLocalizedHolidays(self, localized_holidays, language=None, categories=None):
         """Helper: assert localized holidays match expected names."""
+        if categories is None:
+            categories = self.test_class.supported_categories
         instance = self.test_class(
             years=int(localized_holidays[0][0].split("-")[0]),
             language=language,
-            categories=self.test_class.supported_categories,
+            categories=categories,
         )
 
         for subdiv in instance.subdivisions:
@@ -611,7 +613,7 @@ class TestCase:
                     subdiv=subdiv,
                     years=instance.years,
                     language=language,
-                    categories=instance.supported_categories,
+                    categories=categories,
                 )
             )
 
@@ -624,7 +626,7 @@ class TestCase:
             f"Please make sure all holiday names are localized: {actual_holidays}",
         )
 
-    def assertLocalizedHolidays(self, *args):
+    def assertLocalizedHolidays(self, *args, categories=None):
         """Assert localized holidays match expected names."""
         arg = args[0]
         is_string = isinstance(arg, str)
@@ -635,7 +637,7 @@ class TestCase:
         if language:
             self.set_language(language)
         for language in (language, "invalid", ""):
-            self._assertLocalizedHolidays(localized_holidays, language)
+            self._assertLocalizedHolidays(localized_holidays, language, categories)
 
 
 class CommonTests(TestCase):

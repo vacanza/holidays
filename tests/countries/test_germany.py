@@ -11,10 +11,11 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
-from unittest import TestCase
+from unittest import TestCase, mock
 
-from holidays.constants import CATHOLIC
-from holidays.countries.germany import Germany
+from holidays.constants import CATHOLIC, PUBLIC, SCHOOL
+from holidays.countries.germany import Germany, tr
+from holidays.countries.germany_school_holidays import GERMANY_SCHOOL_HOLIDAYS
 from tests.common import CommonCountryTests
 
 
@@ -45,6 +46,121 @@ class TestGermany(CommonCountryTests, TestCase):
             self.assertNoHolidays(
                 Germany(subdiv=subdiv, years=self.start_year - 1, categories=CATHOLIC)
             )
+        self.assertNoHolidays(Germany(subdiv="BY", years=self.start_year - 1, categories=SCHOOL))
+        self.assertNoHolidays(Germany(years=2025, categories=SCHOOL))
+
+    def test_supported_categories(self):
+        self.assertEqual(Germany.supported_categories, ("catholic", "public", "school"))
+
+    def test_all_states_present_for_all_dataset_years(self):
+        expected_subdivs = set(Germany.subdivisions) - {"Augsburg"}
+        for year, year_data in GERMANY_SCHOOL_HOLIDAYS.items():
+            self.assertEqual(set(year_data), expected_subdivs, year)
+
+    def test_school_holidays(self):
+        bw_1991 = Germany(subdiv="BW", years=1991, categories=SCHOOL)
+        self.assertHolidayName("Winterferien", bw_1991, "1991-02-11", "1991-02-16")
+        self.assertHolidayName("Sommerferien", bw_1991, "1991-07-11", "1991-08-24")
+
+        self.assertHolidayName(
+            "Sommerferien",
+            Germany(subdiv="BY", years=2025, categories=SCHOOL),
+            "2025-08-01",
+            "2025-08-31",
+        )
+        self.assertHolidayName(
+            "Himmelfahrts-/Pfingstferien",
+            Germany(subdiv="BW", years=2025, categories=SCHOOL),
+            "2025-06-10",
+            "2025-06-20",
+        )
+        self.assertHolidayName(
+            "Herbstferien",
+            Germany(subdiv="BE", years=2025, categories=SCHOOL),
+            "2025-10-20",
+            "2025-11-01",
+        )
+        self.assertHolidayName(
+            "Sommerferien",
+            Germany(subdiv="NW", years=2026, categories=SCHOOL),
+            "2026-07-20",
+            "2026-09-01",
+        )
+        self.assertHolidayName(
+            "Winterferien",
+            Germany(subdiv="SN", years=2026, categories=SCHOOL),
+            "2026-02-09",
+            "2026-02-21",
+        )
+        self.assertHolidayName(
+            "Sommerferien",
+            Germany(subdiv="SH", years=2026, categories=SCHOOL),
+            "2026-07-04",
+            "2026-08-15",
+        )
+
+    def test_school_holidays_subdivision_aliases(self):
+        bayern_2025 = Germany(subdiv="Bayern", years=2025, categories=SCHOOL)
+        self.assertHolidayName("Sommerferien", bayern_2025, "2025-08-01", "2025-08-31")
+
+        augsburg_2025 = Germany(subdiv="Augsburg", years=2025, categories=SCHOOL)
+        self.assertHolidayName("Sommerferien", augsburg_2025, "2025-08-01", "2025-08-31")
+
+        byp_2025 = Germany(subdiv="BYP", years=2025, categories=SCHOOL)
+        self.assertHolidayName("Sommerferien", byp_2025, "2025-08-01", "2025-08-31")
+
+    def test_cross_year_school_holidays(self):
+        by_2026 = Germany(subdiv="BY", years=2026, categories=SCHOOL)
+        self.assertHolidayName("Weihnachtsferien", by_2026, "2026-01-02", "2026-12-24")
+
+    def test_school_holiday_translation_and_out_of_year_ranges(self):
+        with mock.patch("holidays.countries.germany.tr", wraps=tr) as tr_mock:
+            Germany._translate_school_holiday_names()
+
+        self.assertEqual(
+            tr_mock.call_args_list,
+            [
+                mock.call("Herbstferien"),
+                mock.call("Weihnachtsferien"),
+                mock.call("Winterferien"),
+                mock.call("Oster-/Frühjahrsferien"),
+                mock.call("Himmelfahrts-/Pfingstferien"),
+                mock.call("Sommerferien"),
+            ],
+        )
+
+        with mock.patch.dict(
+            GERMANY_SCHOOL_HOLIDAYS,
+            {2025: {"BE": ((1, 1, 1, 1, 1, 2, "Herbstferien"),)}},
+            clear=True,
+        ):
+            self.assertNoHolidays(Germany(subdiv="BE", years=2025, categories=SCHOOL))
+
+        with (
+            mock.patch.dict(
+                GERMANY_SCHOOL_HOLIDAYS,
+                {2025: {"BE": ((0, 10, 20, 0, 10, 21, "Herbstferien"),)}},
+                clear=True,
+            ),
+            mock.patch.object(Germany, "_add_holiday", return_value=None),
+            mock.patch.object(Germany, "_add_multiday_holiday") as add_multiday_mock,
+        ):
+            self.assertNoHolidays(Germany(subdiv="BE", years=2025, categories=SCHOOL))
+            add_multiday_mock.assert_not_called()
+
+    def test_school_and_public_categories(self):
+        be_2025 = Germany(subdiv="BE", years=2025, categories=(PUBLIC, SCHOOL))
+        self.assertHolidayName("Frauentag", be_2025, "2025-03-08")
+        self.assertHolidayName("Herbstferien", be_2025, "2025-10-20")
+
+        bayern_2025 = Germany(subdiv="Bayern", years=2025, categories=(PUBLIC, SCHOOL))
+        self.assertHolidayName("Neujahr", bayern_2025, "2025-01-01")
+        self.assertHolidayName("Sommerferien", bayern_2025, "2025-08-01")
+
+    def test_public_category_excludes_school_holidays(self):
+        by_2025 = Germany(subdiv="BY", years=2025, categories=PUBLIC)
+        self.assertHolidayName("Neujahr", by_2025, "2025-01-01")
+        self.assertNoHolidayName("Sommerferien", by_2025)
 
     def test_special_holidays(self):
         # 2017's Reformation Day is tested in test_reformation_day.
@@ -354,6 +470,7 @@ class TestGermany(CommonCountryTests, TestCase):
             ("2022-11-16", "Buß- und Bettag"),
             ("2022-12-25", "Erster Weihnachtstag"),
             ("2022-12-26", "Zweiter Weihnachtstag"),
+            categories=(CATHOLIC, PUBLIC),
         )
 
     def test_l10n_en_us(self):
@@ -379,6 +496,7 @@ class TestGermany(CommonCountryTests, TestCase):
             ("2022-11-16", "Repentance and Prayer Day"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Second Day of Christmas"),
+            categories=(CATHOLIC, PUBLIC),
         )
 
     def test_l10n_th(self):
@@ -404,6 +522,7 @@ class TestGermany(CommonCountryTests, TestCase):
             ("2022-11-16", "วันแห่งการอธิษฐานและการกลับใจ"),
             ("2022-12-25", "วันคริสต์มาสวันแรก"),
             ("2022-12-26", "วันคริสต์มาสวันที่สอง"),
+            categories=(CATHOLIC, PUBLIC),
         )
 
     def test_l10n_uk(self):
@@ -429,4 +548,10 @@ class TestGermany(CommonCountryTests, TestCase):
             ("2022-11-16", "День молитви та покаяння"),
             ("2022-12-25", "Перший день Різдва"),
             ("2022-12-26", "Другий день Різдва"),
+            categories=(CATHOLIC, PUBLIC),
         )
+
+    def test_l10n_en_us_school_bavaria(self):
+        by_2025 = Germany(subdiv="BY", years=2025, language="en_US", categories=SCHOOL)
+        self.assertHolidayName("Easter/Spring Break", by_2025, "2025-03-03")
+        self.assertHolidayName("Summer Break", by_2025, "2025-08-01")

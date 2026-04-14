@@ -327,9 +327,9 @@ The returned categories are lowercase strings corresponding to the constants in 
 
 - Supports federal holidays, state holidays, and cultural observances
 
-**Germany**: `('catholic', 'public')`
+**Germany**: `('catholic', 'public', 'school')`
 
-- Supports public holidays and Catholic religious holidays in certain regions
+- Supports public holidays, Catholic holidays in certain regions, and school holidays
 
 **India**: `('optional', 'public')`
 

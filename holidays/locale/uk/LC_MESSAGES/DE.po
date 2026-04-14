@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.87\n"
+"Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-04 16:13+0300\n"
-"PO-Revision-Date: 2025-12-02 18:19+0200\n"
+"PO-Revision-Date: 2026-04-12 22:56+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -27,6 +27,24 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.6\n"
 "X-Source-Language: de\n"
+
+msgid "Herbstferien"
+msgstr "Осінні канікули"
+
+msgid "Weihnachtsferien"
+msgstr "Різдвяні канікули"
+
+msgid "Winterferien"
+msgstr "Зимові канікули"
+
+msgid "Oster-/Frühjahrsferien"
+msgstr "Великодні/весняні канікули"
+
+msgid "Himmelfahrts-/Pfingstferien"
+msgstr "Канікули на Вознесіння/Трійцю"
+
+msgid "Sommerferien"
+msgstr "Літні канікули"
 
 #. New Year's Day.
 msgid "Neujahr"
