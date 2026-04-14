@@ -101,8 +101,8 @@ msgid "Guru Nanak Jayanti"
 msgstr "गुरु नानक जयंती"
 
 #. Bhai Dooj.
-msgid "Bhau Bhij"
-msgstr "भाऊ बीज"
+msgid "Bhai Dooj"
+msgstr "भाई दूज"
 
 #. Buddha Purnima.
 msgid "Buddha Purnima"
