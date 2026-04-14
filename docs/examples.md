@@ -583,3 +583,29 @@ Generate `.ics` files with categories, language, and subdivisions.
 
 For advanced features and customization of the exported `.ics` output, consider using
 the [icalendar](https://github.com/collective/icalendar) package.
+
+
+## Generic Holiday Calendar Generator (vacanza.py)
+
+This example shows how to generate `.ics` calendar files for any supported country.
+
+### Usage
+
+```bash
+python holidays/examples/vacanza.py IN 2025
+python holidays/examples/vacanza.py US 2020-2025
+python holidays/examples/vacanza.py US 2025 public
+
+Arguments
+
+COUNTRY_CODE: ISO country code (IN, US, etc.)
+YEAR: Single year (2025) or range (2020-2025)
+public: Optional argument to include only public holidays
+
+Description
+The script:
+
+  Dynamically loads country holidays
+  Detects supported categories
+  Generates .ics files for each category
+  Supports filtering public holidays
