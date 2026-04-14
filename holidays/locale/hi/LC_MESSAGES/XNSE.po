@@ -41,8 +41,8 @@ msgid "Good Friday"
 msgstr "गुड फ्राइडे"
 
 #. Dr. B. R. Ambedkar Jayanti.
-msgid "Dr. Baba Saheb Ambedkar Jayanti"
-msgstr "डॉ. बाबा साहेब अम्बेडकर जयंती"
+msgid "Dr. B. R. Ambedkar's Jayanti"
+msgstr "डॉ. बी. आर. आंबेडकर जयंती"
 
 #. May Day.
 msgid "May Day"
@@ -57,7 +57,7 @@ msgid "Independence Day"
 msgstr "स्वतंत्रता दिवस"
 
 #. Gandhi Jayanti.
-msgid "Mahatma Gandhi Jayanti"
+msgid "Gandhi Jayanti"
 msgstr "महात्मा गांधी जयंती"
 
 #. Christmas Day.
@@ -74,7 +74,7 @@ msgstr "होली"
 
 #. Ram Navami.
 msgid "Ram Navami"
-msgstr "राम नवमी"
+msgstr "रामनवमी"
 
 #. Mahavir Jayanti.
 msgid "Mahavir Jayanti"
@@ -121,8 +121,8 @@ msgid "Id-Ul-Fitr (Ramadan Eid)"
 msgstr "ईद-उल-फितर (रमजान ईद)"
 
 #. Eid al-Adha.
-msgid "Bakri Id"
-msgstr "बकरी ईद"
+msgid "Bakrid"
+msgstr "बकरीद"
 
 #. New Year's Day.
 msgid "New Year"

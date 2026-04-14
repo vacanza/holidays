@@ -129,7 +129,7 @@ msgstr "मकर संक्रांति"
 
 #. Raksha Bandhan.
 msgid "Raksha Bandhan"
-msgstr "रक्षाबंधन"
+msgstr "रक्षा बंधन"
 
 #. Ram Navami.
 msgid "Ram Navami"
