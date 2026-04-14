@@ -37,8 +37,16 @@ class India(
         * <https://web.archive.org/web/20250413193633/https://www.calendarlabs.com/holidays/india/2021>
         * <https://web.archive.org/web/20231118175007/http://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm>
         * <https://web.archive.org/web/20231008063930/https://vahan.parivahan.gov.in/vahan4dashboard/>
+        * Andaman and Nicobar Islands:
+            * <https://web.archive.org/web/20251214133200/https://andamannicobar.gov.in/admin-pannel/othersdoc/1-29-Holiday%20List%202026%20Gazette.pdf>
         * Gujarat:
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
+        * Kerala:
+            * <https://web.archive.org/web/20260329164551/https://kerala.gov.in/showcalendar/2026>
+        * Maharashtra:
+            * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
+        * Punjab:
+            * <https://web.archive.org/web/20260216022835/https://punjab.gov.in/wp-content/uploads/2025/12/Calender-2026.pdf>
         * Tamil Nadu:
             * [Tamil Monthly Calendar](https://web.archive.org/web/20231228103352/https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
             * [Tamil Calendar](https://web.archive.org/web/20250429125140/https://www.prokerala.com/general/calendar/tamilcalendar.php)
@@ -150,7 +158,7 @@ class India(
         "West Bengal": "WB",
     }
     supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "ta", "te")
+    supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "kn", "ml", "mr", "pa", "ta", "te")
     _deprecated_subdivisions = (
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
@@ -248,8 +256,9 @@ class India(
         # Children's Day.
         self._add_holiday_nov_14(tr("Children's Day"))
 
-        # Holi.
-        self._add_holi(tr("Holi"))
+        if self.subdiv != "MH":
+            # Holi.
+            self._add_holi(tr("Holi"))
 
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
@@ -288,8 +297,12 @@ class India(
 
     # Andaman and Nicobar Islands.
     def _populate_subdiv_an_public_holidays(self):
+        # Ram Navami.
+        self._add_ram_navami(tr("Ram Navami"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
+        # Onam.
+        self._add_onam(tr("Onam"))
 
     # Andhra Pradesh.
     def _populate_subdiv_ap_public_holidays(self):
@@ -350,6 +363,8 @@ class India(
         self._add_holiday_may_1(tr("Gujarat Day"))
         # Sardar Vallabhbhai Patel Jayanti.
         self._add_holiday_oct_31(tr("Sardar Vallabhbhai Patel Jayanti"))
+        # Parsi New Year (Shahenshahi).
+        self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
 
     # Haryana.
     def _populate_subdiv_hr_public_holidays(self):
@@ -408,10 +423,23 @@ class India(
         self._add_gudi_padwa(tr("Gudi Padwa"))
         # Chhatrapati Shivaji Maharaj Jayanti.
         self._add_holiday_feb_19(tr("Chhatrapati Shivaji Maharaj Jayanti"))
+
+        holi_dates = {
+            2026: (MAR, 3),
+        }
+        # Holi.
+        name = tr("Holi")
+        if dt := holi_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_holi(name)
+
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
+        # Parsi New Year (Shahenshahi).
+        self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
@@ -458,8 +486,8 @@ class India(
         self._add_holiday_jan_13(tr("Lohri"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
-        # Punjabi Day.
-        self._add_holiday_nov_1(tr("Punjab Day"))
+        # New Punjab Day.
+        self._add_holiday_nov_1(tr("New Punjab Day"))
 
     # Rajasthan.
     def _populate_subdiv_rj_public_holidays(self):
@@ -498,6 +526,8 @@ class India(
         self._add_holiday_jun_2(tr("Telangana Formation Day"))
         # Bathukamma Festival.
         self._add_bathukamma(tr("Bathukamma Festival"))
+        # Bonalu.
+        self._add_bonalu(tr("Bonalu"))
         # Ugadi.
         self._add_gudi_padwa(tr("Ugadi"))
 

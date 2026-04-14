@@ -18,6 +18,9 @@ class HeardIslandAndMcDonaldIslands(NoHolidayBase):
 
     References:
         * <https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands>
+
+    !!! note "Note"
+        This territory is uninhabited and is provided for ISO 3166-1 completeness only.
     """
 
     country = "HM"

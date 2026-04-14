@@ -42,7 +42,7 @@ def country_holidays(
     language: str | None = None,
     categories: CategoryArg | None = None,
 ) -> HolidayBase:
-    """Return a new dictionary-like [HolidayBase][holidays.holiday_base.HolidayBase] object.
+    """Return a new dictionary-like [`HolidayBase`][holidays.holiday_base.HolidayBase] object.
 
     Include public holidays for the country matching `country` and other keyword arguments.
 
@@ -108,10 +108,10 @@ def country_holidays(
             Requested holiday categories.
 
     Returns:
-        A `HolidayBase` object matching the `country`.
+        A [`HolidayBase`][holidays.holiday_base.HolidayBase] object matching the `country`.
 
-    The key of the `dict`-like `HolidayBase` object is the
-    `date` of the holiday, and the value is the name of the holiday itself.
+    The key of the `dict`-like [`HolidayBase`][holidays.holiday_base.HolidayBase]
+    object is the `date` of the holiday, and the value is the name of the holiday itself.
     Dates where a key is not present are not public holidays (or, if
     `observed` is `False`, days when a public holiday is observed).
 
@@ -150,8 +150,8 @@ def country_holidays(
 
         >>> assert date(2015, 1, 2) not in us_holidays
 
-    The `HolidayBase` class also recognizes strings of many formats
-    and numbers representing a POSIX timestamp:
+    The [`HolidayBase`][holidays.holiday_base.HolidayBase] class also recognizes
+    strings of many formats and numbers representing a POSIX timestamp:
 
         >>> assert '2014-01-01' in us_holidays
         >>> assert '1/1/2014' in us_holidays
@@ -210,8 +210,8 @@ def country_holidays(
     ```
 
     For more complex logic, like 4th Monday of January, you can inherit the
-    `HolidayBase` class and define your own `_populate` method.
-    See documentation for examples.
+    [`HolidayBase`][holidays.holiday_base.HolidayBase] class and define your
+    own `_populate` method. See documentation for examples.
     """
     import holidays
 
@@ -239,7 +239,7 @@ def financial_holidays(
     language: str | None = None,
     categories: CategoryArg | None = None,
 ) -> HolidayBase:
-    """Return a new dictionary-like [HolidayBase][holidays.holiday_base.HolidayBase] object.
+    """Return a new dictionary-like [`HolidayBase`][holidays.holiday_base.HolidayBase] object.
 
     Include public holidays for the financial market matching `market` and other keyword
     arguments.
@@ -299,7 +299,7 @@ def financial_holidays(
             Requested holiday categories.
 
     Returns:
-        A `HolidayBase` object matching the `market`.
+        A [`HolidayBase`][holidays.holiday_base.HolidayBase] object matching the `market`.
 
     Example usage:
 
@@ -455,7 +455,7 @@ def list_long_breaks(
 
     Args:
         instance:
-            HolidayBase object containing holidays data.
+            [`HolidayBase`][holidays.holiday_base.HolidayBase] object containing holidays data.
 
         minimum_break_length:
             The minimum number of consecutive holidays required for a break period

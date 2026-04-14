@@ -13,10 +13,10 @@
 from unittest import TestCase
 
 from holidays.countries.latvia import Latvia
-from tests.common import CommonCountryTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestLatvia(CommonCountryTests, TestCase):
+class TestLatvia(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Latvia)
@@ -27,6 +27,86 @@ class TestLatvia(CommonCountryTests, TestCase):
             "2018-09-24",
             "2023-05-29",
             "2023-07-10",
+        )
+
+    def test_substituted_holidays(self):
+        self.assertHoliday(
+            "2001-12-24",
+            "2002-12-30",
+            "2003-11-17",
+            "2004-01-02",
+            "2004-05-03",
+            "2004-06-25",
+            "2004-11-19",
+            "2006-11-27",
+            "2007-04-30",
+            "2008-05-02",
+            "2008-11-17",
+            "2009-01-02",
+            "2009-06-22",
+            "2010-05-03",
+            "2010-06-25",
+            "2010-11-19",
+            "2012-04-30",
+            "2013-12-23",
+            "2013-12-30",
+            "2014-05-02",
+            "2014-11-17",
+            "2015-01-02",
+            "2015-06-22",
+            "2017-05-05",
+            "2018-04-30",
+            "2020-06-22",
+            "2021-05-03",
+            "2021-06-25",
+            "2021-11-19",
+            "2023-05-05",
+            "2024-12-23",
+            "2024-12-30",
+            "2025-05-02",
+            "2025-11-17",
+            "2026-01-02",
+            "2026-06-22",
+        )
+
+    def test_workdays(self):
+        self.assertWorkingDay(
+            "2001-12-22",
+            "2002-12-28",
+            "2003-11-15",
+            "2004-01-10",
+            "2004-05-08",
+            "2004-06-19",
+            "2004-11-13",
+            "2006-12-02",
+            "2007-04-14",
+            "2008-05-10",
+            "2008-11-22",
+            "2009-01-10",
+            "2009-06-27",
+            "2010-05-29",
+            "2010-06-19",
+            "2010-11-13",
+            "2012-04-28",
+            "2013-12-14",
+            "2013-12-28",
+            "2014-05-10",
+            "2014-11-22",
+            "2015-01-10",
+            "2015-06-27",
+            "2017-05-13",
+            "2018-04-21",
+            "2020-06-13",
+            "2021-05-08",
+            "2021-06-19",
+            "2021-11-13",
+            "2023-05-20",
+            "2024-12-14",
+            "2024-12-28",
+            "2025-05-10",
+            "2025-11-08",
+            "2026-01-17",
+            "2026-06-27",
         )
 
     def test_new_years(self):
@@ -84,6 +164,8 @@ class TestLatvia(CommonCountryTests, TestCase):
     def test_restoration_of_independence_day(self):
         name_2002 = "Latvijas Republikas Neatkarības deklarācijas pasludināšanas diena"
         name_2012 = "Latvijas Republikas Neatkarības atjaunošanas diena"
+        name_2002_observed = f"{name_2002} (brīvdiena)"
+        name_2012_observed = f"{name_2012} (brīvdiena)"
         self.assertHolidayName(name_2002, (f"{year}-05-04" for year in range(2002, 2012)))
         self.assertHolidayName(name_2012, (f"{year}-05-04" for year in range(2012, self.end_year)))
         self.assertNoHolidayName(
@@ -97,9 +179,12 @@ class TestLatvia(CommonCountryTests, TestCase):
             "2014-05-05",
             "2019-05-06",
         )
-        self.assertHolidayName(f"{name_2002} (brīvdiena)", obs_dts_1)
-        self.assertHolidayName(f"{name_2012} (brīvdiena)", obs_dts_2)
+
+        self.assertHolidayName(name_2002_observed, obs_dts_1)
+        self.assertHolidayName(name_2012_observed, obs_dts_2)
         self.assertNoNonObservedHoliday(obs_dts_1, obs_dts_2)
+        self.assertNoHolidayName(name_2002_observed, range(self.start_year, 2008))
+        self.assertNoHolidayName(name_2012_observed, range(self.start_year, 2008))
 
     def test_mothers_day(self):
         name = "Mātes diena"
@@ -136,6 +221,7 @@ class TestLatvia(CommonCountryTests, TestCase):
 
     def test_republic_of_latvia_proclamation_day(self):
         name = "Latvijas Republikas Proklamēšanas diena"
+        name_observed = f"{name} (brīvdiena)"
         self.assertHolidayName(name, (f"{year}-11-18" for year in self.full_range))
 
         obs_dts = (
@@ -145,8 +231,9 @@ class TestLatvia(CommonCountryTests, TestCase):
             "2018-11-19",
             "2023-11-20",
         )
-        self.assertHolidayName(f"{name} (brīvdiena)", obs_dts)
+        self.assertHolidayName(name_observed, obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
+        self.assertNoHolidayName(name_observed, range(self.start_year, 2007))
 
     def test_christmas_eve(self):
         name = "Ziemassvētku vakars"
