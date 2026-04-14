@@ -2,13 +2,13 @@
 
 ## Overview
 
-Some Indian festivals are not included as global holidays because they:
+Some Indian festivals are complex to model as global holidays because they:
 - Follow a lunisolar calendar
 - Vary each year
-- Are region-specific
-- Span multiple days
+- May be region-specific
+- Can span multiple days
 
-These are typically implemented at the subdivision level.
+Depending on the festival, they may be implemented either as optional holidays or at the subdivision level.
 
 ---
 
@@ -20,10 +20,8 @@ These are typically implemented at the subdivision level.
 
 ### Implementation Notes
 - Not a fixed-date holiday
-- Should be handled using:
-  - Precomputed date mappings, or
-  - Festival-based logic
-- Recommended to include only in relevant subdivisions
+- Handled using festival-based logic or precomputed mappings
+- Available as an optional holiday in the current implementation
 
 ---
 
@@ -36,12 +34,12 @@ These are typically implemented at the subdivision level.
 - Regional festival
 - May overlap with Navratri
 - Typically represented by key observed days (e.g., Ashtami or Dashami)
-- Should be added at subdivision level
+- Generally implemented at the subdivision level
 
 ---
 
 ## Summary
 
-- These festivals are not globally applicable
-- Implementation should be subdivision-specific
+- Some festivals may be available as optional holidays
+- Others are better suited for subdivision-level implementation
 - Special handling is required due to variable dates
