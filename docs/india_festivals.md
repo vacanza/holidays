@@ -40,5 +40,6 @@ Depending on the festival, they may be implemented either as optional holidays o
 
 ## Summary
 
+- Added using the Hindu calendar holiday hook in the India implementation
 - Others are better suited for subdivision-level implementation
 - Special handling is required due to variable dates
