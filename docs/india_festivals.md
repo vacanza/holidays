@@ -19,8 +19,9 @@ Depending on the festival, they may be implemented either as optional holidays o
 - Observed across multiple Indian states
 
 ### Implementation Notes
+
 - Not a fixed-date holiday
-- Handled using festival-based logic or precomputed mappings
+- Handled using Hindu calendar-based date computation (via _add_sharad_navratri)
 - Available as an optional holiday in the current implementation
 
 ---
@@ -31,6 +32,7 @@ Depending on the festival, they may be implemented either as optional holidays o
 - Primarily observed in eastern India
 
 ### Implementation Notes
+
 - Regional festival
 - May overlap with Navratri
 - Typically represented by key observed days (e.g., Ashtami or Dashami)
