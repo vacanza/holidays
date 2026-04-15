@@ -22,8 +22,7 @@ Depending on the festival, they may be implemented either as optional holidays o
 
 - Not a fixed-date holiday
 - Handled using Hindu calendar-based date computation (via _add_sharad_navratri)
-- Available as an optional holiday in the current implementation
-
+- Implemented using Hindu calendar-based date computation (via _add_sharad_navratri)
 ---
 
 ## Durga Puja
@@ -36,12 +35,10 @@ Depending on the festival, they may be implemented either as optional holidays o
 - Regional festival
 - May overlap with Navratri
 - Typically represented by key observed days (e.g., Ashtami or Dashami)
-- Generally implemented at the subdivision level
-
+- Represented through related Hindu calendar observances (e.g., Saptami, Ashtami, Navami, Dussehra)
 ---
 
 ## Summary
 
-- Some festivals may be available as optional holidays
 - Others are better suited for subdivision-level implementation
 - Special handling is required due to variable dates
