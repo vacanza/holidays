@@ -9,6 +9,7 @@ Some Indian festivals are complex to model as global holidays because they:
 - Can span multiple days
 
 Depending on the festival, they are modeled via dedicated calendar hooks or subdivision-specific holiday definitions.
+
 ---
 
 ## Navratri

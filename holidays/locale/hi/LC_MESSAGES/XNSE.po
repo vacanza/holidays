@@ -57,7 +57,7 @@ msgid "Independence Day"
 msgstr "स्वतंत्रता दिवस"
 
 #. Gandhi Jayanti.
-msgid "Mahatma  Gandhi Jayanti"
+msgid "Mahatma Gandhi Jayanti"
 msgstr "महात्मा गांधी जयंती"
 
 #. Christmas Day.
