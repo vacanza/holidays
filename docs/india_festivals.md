@@ -8,8 +8,7 @@ Some Indian festivals are complex to model as global holidays because they:
 - May be region-specific
 - Can span multiple days
 
-Depending on the festival, they may be implemented either as optional holidays or at the subdivision level.
-
+Depending on the festival, they are modeled via dedicated calendar hooks or subdivision-specific holiday definitions.
 ---
 
 ## Navratri
@@ -21,7 +20,6 @@ Depending on the festival, they may be implemented either as optional holidays o
 ### Implementation Notes
 
 - Not a fixed-date holiday
-- Handled using Hindu calendar-based date computation (via _add_sharad_navratri)
 - Implemented using Hindu calendar-based date computation (via _add_sharad_navratri)
 ---
 
@@ -41,5 +39,5 @@ Depending on the festival, they may be implemented either as optional holidays o
 ## Summary
 
 - Added using the Hindu calendar holiday hook in the India implementation
-- Others are better suited for subdivision-level implementation
+- Other regional or local festivals are better suited for subdivision-level implementation
 - Special handling is required due to variable dates
