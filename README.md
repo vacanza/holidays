@@ -2026,3 +2026,32 @@ requests](https://github.com/vacanza/holidays/pulls) are always welcome. Please 
 
 Code and documentation are available according to the MIT License (see
 [LICENSE](https://github.com/vacanza/holidays/blob/dev/LICENSE)).
+
+
+This script generates holiday calendar (.ics) files for different countries using the holidays library.
+## Usage
+
+Run the script using:
+
+python vacanza.py [country] [year or range] [type]
+Examples
+# Default usage (no arguments)
+python vacanza.py
+
+# Specific country and year
+python vacanza.py IN 2024
+
+# Multiple years
+python vacanza.py US 2020-2024
+
+# Only public holidays
+python vacanza.py IN 2024 public
+Default Behavior
+
+If no arguments are provided, the script uses:
+
+Country: IN (India)
+Year: 2024
+Output
+
+The script generates .ics files that can be imported into calendar applications like Google Calendar or Outlook.
