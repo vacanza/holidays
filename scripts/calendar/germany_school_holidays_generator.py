@@ -90,14 +90,31 @@ EXPECTED_SUBDIVISIONS = frozenset(STATE_LABEL_TO_CODE.values())
 
 DATE_TOKEN_RE = re.compile(
     r"""
-    (?P<range_full>\d{2}\.\d{2}\.?\s*-\s*\d{2}\.\d{2}\.?)
-    |(?P<range_same_month>\d{2}\.?\s*-\s*\d{2}\.\d{2}\.?)
-    |(?P<single>\d{2}\.\d{2}\.?)
+    (?P<range_full>\d{1,2}\.\d{1,2}\.?\s*-\s*\d{1,2}\.\d{1,2}\.?)
+    |(?P<range_same_month>\d{1,2}\.?\s*-\s*\d{1,2}\.\d{1,2}\.?)
+    |(?P<single>\d{1,2}\.\d{1,2}\.?)
     """,
     re.VERBOSE,
 )
 KMK_SCHOOL_YEAR_RE = re.compile(r"(?P<start>\d{4})/(?P<end>\d{2,4})")
 PDF_FILENAME_YEAR_RE = re.compile(r"(?i)(?:fer)(?P<start>\d{2,4})[-_](?P<end>\d{2,4})\.pdf$")
+NON_DATE_FOOTNOTE_RE = re.compile(r"(?<![\d.])\d+\)")
+DATE_DAY_MONTH_FOOTNOTE_RE = re.compile(r"(\d{1,2}\.\d{2})\.?\d+\)")
+SPACED_FOOTNOTE_RE = re.compile(r"(\d{1,2}\.\d{2}\.?)\s+\d+\)")
+EMPTY_PLACEHOLDER_FOOTNOTE_RE = re.compile(r"(-+)\d+\)")
+TRAILING_PAREN_FOOTNOTE_RE = re.compile(r"(?<=\.)\d+\)$")
+TRAILING_SPACED_FOOTNOTE_RE = re.compile(r"(?<=\.)\s+\d+$")
+TRAILING_APPENDED_SINGLE_DAY_FOOTNOTE_RE = re.compile(r"(\d{1,2}\.\d{2}\.?)\d$")
+TRAILING_APPENDED_RANGE_FOOTNOTE_RE = re.compile(
+    r"(\d{1,2}\.\d{1,2}\.?\s*-\s*\d{1,2}\.\d{2}\.?)\d$"
+)
+BROKEN_DAY_MONTH_SEPARATOR_RE = re.compile(r"(?<!\.\d)(?<!\.\d\d)(?<=\d)-(?=\d{1,2}\.)")
+DOUBLE_DOT_RANGE_RE = re.compile(r"\.\s*\.\s*-\s*")
+SHARED_MONTH_SPACED_RE = re.compile(r"(?<!\d\.)\b(\d{1,2})\.\s*/\s*(\d{1,2})\.(\d{1,2})\.")
+SHARED_MONTH_COMPACT_RE = re.compile(r"(?<!\d\.)\b(\d{1,2})\./(\d{1,2})\.(\d{1,2})\.")
+MULTIPLE_DOTS_RE = re.compile(r"\.{2,}")
+MULTIPLE_SLASHES_RE = re.compile(r"/{2,}")
+ONLY_DASHES_RE = re.compile(r"-+")
 
 
 class _AnchorCollector(HTMLParser):
@@ -216,17 +233,64 @@ def _normalize_state_label(label: str) -> str:
     return re.sub(r"\s+", " ", label).strip()
 
 
-def _normalize_cell(cell: str) -> str:
-    cell = cell.replace("\n", " ")
+def _normalize_cell_separators(cell: str) -> str:
+    """Normalize KMK cell separators before date-specific cleanup."""
+
+    cell = cell.replace("\n", "/")
     cell = cell.replace("–", "-").replace("—", "-")
-    cell = re.sub(r"(?<=[\d.])\s+(?=[\d.])", "", cell)
-    cell = re.sub(r"\b\d+\)", "", cell)
-    cell = re.sub(r"[¹²³⁴⁵⁶⁷⁸⁹]", "", cell)
-    cell = cell.replace("und", "/")
+    cell = re.sub(r"\bund\b", "/", cell)
+    return cell.replace("+", "/")
+
+
+def _strip_cell_footnotes(cell: str) -> str:
+    """Remove KMK footnote markers without changing the underlying dates."""
+
+    cell = NON_DATE_FOOTNOTE_RE.sub("", cell)
+    cell = DATE_DAY_MONTH_FOOTNOTE_RE.sub(r"\1", cell)
+    cell = SPACED_FOOTNOTE_RE.sub(r"\1", cell)
+    cell = EMPTY_PLACEHOLDER_FOOTNOTE_RE.sub(r"\1", cell)
+    cell = TRAILING_PAREN_FOOTNOTE_RE.sub("", cell)
+    cell = TRAILING_SPACED_FOOTNOTE_RE.sub("", cell)
+    cell = TRAILING_APPENDED_SINGLE_DAY_FOOTNOTE_RE.sub(r"\1", cell)
+    return TRAILING_APPENDED_RANGE_FOOTNOTE_RE.sub(r"\1", cell)
+
+
+def _repair_pdf_artifacts(cell: str) -> str:
+    """Repair malformed date text emitted by KMK PDFs/PDF extraction."""
+
+    cell = BROKEN_DAY_MONTH_SEPARATOR_RE.sub(".", cell)
+    cell = DOUBLE_DOT_RANGE_RE.sub(".-", cell)
+    return cell
+
+
+def _expand_shared_month_notation(cell: str) -> str:
+    """Expand forms like `20./21.06.` into explicit month-qualified dates."""
+
+    cell = SHARED_MONTH_SPACED_RE.sub(r"\1.\3/\2.\3", cell)
+    return SHARED_MONTH_COMPACT_RE.sub(r"\1.\3/\2.\3", cell)
+
+
+def _collapse_cell_formatting(cell: str) -> str:
+    """Collapse duplicate delimiters and normalize empty placeholders."""
+
     cell = re.sub(r"\s*/\s*", "/", cell)
     cell = re.sub(r"\s*-\s*", "-", cell)
-    cell = re.sub(r"\s+", " ", cell).strip(" .")
+    cell = cell.replace("./", "/")
+    cell = MULTIPLE_DOTS_RE.sub(".", cell)
+    cell = MULTIPLE_SLASHES_RE.sub("/", cell)
+    cell = re.sub(r"\s+", " ", cell).strip(" ./")
+    if ONLY_DASHES_RE.fullmatch(cell):
+        return "--"
     return cell
+
+
+def _normalize_cell(cell: str) -> str:
+    cell = _normalize_cell_separators(cell)
+    cell = _strip_cell_footnotes(cell)
+    cell = _repair_pdf_artifacts(cell)
+    cell = re.sub(r"[¹²³⁴⁵⁶⁷⁸⁹]", "", cell)
+    cell = _expand_shared_month_notation(cell)
+    return _collapse_cell_formatting(cell)
 
 
 def _parse_header_cell(cell: str) -> tuple[str, str]:
@@ -246,13 +310,16 @@ def _parse_header_cell(cell: str) -> tuple[str, str]:
 def _parse_school_year(value: str) -> tuple[int, int]:
     start_year_str, end_year_str = value.split("/")
     start_year = int(start_year_str)
-    end_year = (
-        int(end_year_str) if len(end_year_str) == 4 else int(f"{start_year // 100}{end_year_str}")
-    )
+    if len(end_year_str) == 4:
+        end_year = int(end_year_str)
+    else:
+        end_year = (start_year // 100) * 100 + int(end_year_str)
+        if end_year <= start_year:
+            end_year += 100
     return start_year, end_year
 
 
-def _parse_pdf_table(path: Path) -> tuple[int, dict[str, dict[str, str]], dict[str, str]]:
+def _parse_pdf_table(path: Path) -> tuple[int, dict[str, list[tuple[str, str, str]]]]:
     pdfplumber = _require_pdfplumber()
     with pdfplumber.open(path) as pdf:
         table = pdf.pages[0].extract_table()
@@ -261,8 +328,8 @@ def _parse_pdf_table(path: Path) -> tuple[int, dict[str, dict[str, str]], dict[s
         raise ValueError(f"Unable to extract table from {path.name}.")
 
     headers = [_parse_header_cell(cell or "") for cell in table[0]]
-    columns = [key for key, _ in headers[1:]]
-    column_years = {key: year_label for key, year_label in headers[1:]}
+    column_specs = headers[1:]
+    columns = [key for key, _ in column_specs]
     unknown_columns = sorted(set(columns) - HOLIDAY_NAMES.keys())
     if unknown_columns:
         raise ValueError(f"Unsupported KMK holiday columns in {path.name}: {unknown_columns}.")
@@ -280,10 +347,10 @@ def _parse_pdf_table(path: Path) -> tuple[int, dict[str, dict[str, str]], dict[s
                 f"Unexpected KMK column count for {state_label!r} in {path.name}: "
                 f"expected {len(columns)}, got {len(row_cells)}."
             )
-        rows[subdiv] = {
-            column: _normalize_cell(cell or "")
-            for column, cell in zip(columns, row_cells, strict=True)
-        }
+        rows[subdiv] = [
+            (column, year_label, _normalize_cell(cell or ""))
+            for (column, year_label), cell in zip(column_specs, row_cells, strict=True)
+        ]
 
     missing_subdivisions = sorted(EXPECTED_SUBDIVISIONS - rows.keys())
     extra_subdivisions = sorted(rows.keys() - EXPECTED_SUBDIVISIONS)
@@ -295,15 +362,17 @@ def _parse_pdf_table(path: Path) -> tuple[int, dict[str, dict[str, str]], dict[s
             details.append(f"unexpected subdivisions: {extra_subdivisions}")
         raise ValueError(f"Unexpected KMK subdivision set in {path.name}: {', '.join(details)}.")
 
-    school_year = next(year_label for year_label in column_years.values() if "/" in year_label)
+    school_year = next((year_label for _, year_label in column_specs if "/" in year_label), None)
+    if school_year is None:
+        raise ValueError(f"Missing school-year header in {path.name}.")
     start_year, _ = _parse_school_year(school_year)
 
-    return start_year, rows, column_years
+    return start_year, rows
 
 
 def load_pdf_sources(
     raw_pdf_dir: Path, index_url: str
-) -> list[tuple[int, dict[str, dict[str, str]], dict[str, str]]]:
+) -> list[tuple[int, dict[str, list[tuple[str, str, str]]]]]:
     pdf_paths = ensure_pdf_sources(raw_pdf_dir, index_url)
     return sorted((_parse_pdf_table(pdf_path) for pdf_path in pdf_paths), key=lambda item: item[0])
 
@@ -315,25 +384,39 @@ def _parse_day_month(value: str) -> tuple[int, int]:
 
 
 def parse_cell_ranges(cell: str) -> list[tuple[int, int, int, int]]:
-    if not cell or set(cell) <= {"-"}:
+    if not cell or set(cell) <= {"-", "_"}:
         return []
 
     matches = []
-    for match in DATE_TOKEN_RE.finditer(cell):
-        token = match.group(0)
-        if match.lastgroup == "range_full":
-            start, end = re.split(r"\s*-\s*", token)
+    for token in (part.strip() for part in cell.split("/")):
+        if not token:
+            continue
+
+        if match := re.fullmatch(r"(\d{1,2}\.\d{1,2}\.?)\s*-\s*(\d{1,2}\.\d{1,2}\.?)", token):
+            start, end = match.groups()
             sm, sd = _parse_day_month(start)
             em, ed = _parse_day_month(end)
             matches.append((sm, sd, em, ed))
-        elif match.lastgroup == "range_same_month":
-            start, end = re.split(r"\s*-\s*", token)
+            continue
+
+        if match := re.fullmatch(r"(\d{1,2}\.?)\s*-\s*(\d{1,2}\.\d{1,2}\.?)", token):
+            start, end = match.groups()
             em, ed = _parse_day_month(end)
             sd = int(start.rstrip("."))
             matches.append((em, sd, em, ed))
-        elif match.lastgroup == "single":
+            continue
+
+        if re.fullmatch(r"\d{1,2}\.\d{1,2}\.?", token):
             month, day = _parse_day_month(token)
             matches.append((month, day, month, day))
+            continue
+
+        for match in DATE_TOKEN_RE.finditer(token):
+            month, day = _parse_day_month(match.group(0))
+            matches.append((month, day, month, day))
+
+    if not matches:
+        raise ValueError(f"Unsupported KMK date cell format: {cell!r}.")
     return matches
 
 
@@ -343,12 +426,13 @@ def _resolve_years(
     sm, sd, em, ed = month_day_range
     if "/" in year_label:
         start_year, end_year = _parse_school_year(year_label)
-        start_date = date(start_year, sm, sd)
-        end_date = date(
-            end_year if (em, ed) < (sm, sd) or start_year != end_year else start_year,
-            em,
-            ed,
-        )
+        if (em, ed) < (sm, sd):
+            start_date = date(start_year, sm, sd)
+            end_date = date(end_year, em, ed)
+        else:
+            range_year = start_year if sm >= 7 else end_year
+            start_date = date(range_year, sm, sd)
+            end_date = date(range_year, em, ed)
         return start_date, end_date
 
     year = int(year_label)
@@ -356,19 +440,17 @@ def _resolve_years(
 
 
 def normalize_ranges(
-    sources: list[tuple[int, dict[str, dict[str, str]], dict[str, str]]],
+    sources: list[tuple[int, dict[str, list[tuple[str, str, str]]]]],
 ) -> dict[int, dict[str, list[tuple[int, int, int, int, int, int, str]]]]:
     data: defaultdict[int, defaultdict[str, list[tuple[int, int, int, int, int, int, str]]]]
     data = defaultdict(lambda: defaultdict(list))
 
-    for _, rows, column_years in sources:
+    for _, rows in sources:
         for subdiv, cells in rows.items():
-            for column_key, cell in cells.items():
+            for column_key, year_label, cell in cells:
                 holiday_name = HOLIDAY_NAMES[column_key]
                 for month_day_range in parse_cell_ranges(cell):
-                    start_date, end_date = _resolve_years(
-                        column_years[column_key], month_day_range
-                    )
+                    start_date, end_date = _resolve_years(year_label, month_day_range)
                     for year in range(start_date.year, end_date.year + 1):
                         year_start = date(year, 1, 1)
                         year_end = date(year, 12, 31)
@@ -441,7 +523,7 @@ def _parse_args() -> argparse.Namespace:
 def main() -> None:
     args = _parse_args()
     data = normalize_ranges(load_pdf_sources(args.input_dir, args.download_url))
-    OUTPUT_PATH.write_text(render_python_module(data))
+    OUTPUT_PATH.write_text(render_python_module(data), encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":

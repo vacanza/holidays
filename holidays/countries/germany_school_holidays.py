@@ -1123,7 +1123,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 4, 2, 0, 4, 17, "Oster-/Frühjahrsferien"),
             (0, 7, 16, 0, 8, 28, "Sommerferien"),
             (0, 10, 10, 0, 10, 24, "Herbstferien"),
-            (0, 12, 21, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 21, 0, 12, 31, "Weihnachtsferien"),
         ),
         "SH": (
             (-1, 12, 22, 0, 1, 6, "Weihnachtsferien"),
@@ -1176,7 +1176,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 5, 25, 0, 5, 26, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 15, 0, 8, 28, "Sommerferien"),
             (0, 10, 16, 0, 10, 23, "Herbstferien"),
-            (0, 12, 24, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 24, 0, 12, 31, "Weihnachtsferien"),
         ),
         "BE": (
             (-1, 12, 24, 0, 1, 2, "Weihnachtsferien"),
@@ -1185,7 +1185,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 5, 14, 0, 5, 14, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 15, 0, 8, 28, "Sommerferien"),
             (0, 10, 16, 0, 10, 23, "Herbstferien"),
-            (0, 12, 23, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 23, 0, 12, 31, "Weihnachtsferien"),
         ),
         "BW": (
             (-1, 12, 23, 0, 1, 5, "Weihnachtsferien"),
@@ -1235,7 +1235,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 5, 21, 0, 5, 25, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 15, 0, 8, 25, "Sommerferien"),
             (0, 10, 18, 0, 10, 23, "Herbstferien"),
-            (0, 12, 22, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 22, 0, 12, 31, "Weihnachtsferien"),
         ),
         "NI": (
             (-1, 12, 23, 0, 1, 6, "Weihnachtsferien"),
@@ -1254,7 +1254,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 23, 1, 1, 7, "Weihnachtsferien"),
         ),
         "RP": (
-            (-1, 12, 21, 0, 12, 31, "Weihnachtsferien"),
             (0, 3, 26, 0, 4, 10, "Oster-/Frühjahrsferien"),
             (0, 7, 1, 0, 8, 13, "Sommerferien"),
             (0, 10, 4, 0, 10, 15, "Herbstferien"),
@@ -1304,7 +1303,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
     },
     2000: {
         "BB": (
-            (-1, 12, 24, 0, 12, 31, "Weihnachtsferien"),
             (0, 1, 31, 0, 2, 12, "Winterferien"),
             (0, 4, 25, 0, 5, 4, "Oster-/Frühjahrsferien"),
             (0, 7, 20, 0, 9, 2, "Sommerferien"),
@@ -1312,7 +1310,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 23, 1, 1, 2, "Weihnachtsferien"),
         ),
         "BE": (
-            (-1, 12, 23, 0, 12, 31, "Weihnachtsferien"),
             (0, 1, 29, 0, 2, 9, "Winterferien"),
             (0, 4, 20, 0, 5, 6, "Oster-/Frühjahrsferien"),
             (0, 6, 2, 0, 6, 2, "Himmelfahrts-/Pfingstferien"),
@@ -1361,7 +1358,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 21, 1, 1, 2, "Weihnachtsferien"),
         ),
         "MV": (
-            (-1, 12, 22, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 7, 0, 2, 19, "Winterferien"),
             (0, 4, 15, 0, 4, 25, "Oster-/Frühjahrsferien"),
             (0, 6, 9, 0, 6, 13, "Himmelfahrts-/Pfingstferien"),
@@ -1441,14 +1437,16 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (-1, 12, 23, 0, 1, 2, "Weihnachtsferien"),
             (0, 2, 5, 0, 2, 16, "Winterferien"),
             (0, 4, 17, 0, 4, 30, "Oster-/Frühjahrsferien"),
+            (0, 7, 19, 0, 9, 1, "Sommerferien"),
             (0, 10, 29, 0, 11, 3, "Herbstferien"),
-            (0, 12, 24, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 24, 0, 12, 31, "Weihnachtsferien"),
         ),
         "BE": (
             (-1, 12, 23, 0, 1, 2, "Weihnachtsferien"),
             (0, 2, 3, 0, 2, 17, "Winterferien"),
             (0, 4, 14, 0, 4, 30, "Oster-/Frühjahrsferien"),
             (0, 5, 25, 0, 5, 25, "Himmelfahrts-/Pfingstferien"),
+            (0, 7, 19, 0, 9, 1, "Sommerferien"),
             (0, 10, 27, 0, 11, 3, "Herbstferien"),
             (0, 12, 22, 1, 1, 5, "Weihnachtsferien"),
         ),
@@ -1456,6 +1454,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (-1, 12, 23, 0, 1, 5, "Weihnachtsferien"),
             (0, 4, 9, 0, 4, 20, "Oster-/Frühjahrsferien"),
             (0, 5, 28, 0, 6, 9, "Himmelfahrts-/Pfingstferien"),
+            (0, 7, 26, 0, 9, 8, "Sommerferien"),
             (0, 10, 29, 0, 11, 2, "Herbstferien"),
             (0, 12, 22, 1, 1, 5, "Weihnachtsferien"),
         ),
@@ -1464,18 +1463,21 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 2, 26, 0, 2, 26, "Winterferien"),
             (0, 4, 9, 0, 4, 21, "Oster-/Frühjahrsferien"),
             (0, 6, 5, 0, 6, 16, "Himmelfahrts-/Pfingstferien"),
+            (0, 7, 26, 0, 9, 10, "Sommerferien"),
             (0, 10, 29, 0, 11, 3, "Herbstferien"),
             (0, 12, 24, 1, 1, 5, "Weihnachtsferien"),
         ),
         "HB": (
             (-1, 12, 22, 0, 1, 6, "Weihnachtsferien"),
             (0, 3, 26, 0, 4, 17, "Oster-/Frühjahrsferien"),
+            (0, 6, 28, 0, 8, 11, "Sommerferien"),
             (0, 10, 1, 0, 10, 13, "Herbstferien"),
             (0, 12, 24, 1, 1, 5, "Weihnachtsferien"),
         ),
         "HE": (
             (-1, 12, 27, 0, 1, 13, "Weihnachtsferien"),
             (0, 4, 9, 0, 4, 20, "Oster-/Frühjahrsferien"),
+            (0, 6, 21, 0, 8, 3, "Sommerferien"),
             (0, 10, 1, 0, 10, 13, "Herbstferien"),
             (0, 12, 24, 1, 1, 11, "Weihnachtsferien"),
         ),
@@ -1484,6 +1486,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 3, 5, 0, 3, 17, "Oster-/Frühjahrsferien"),
             (0, 4, 30, 0, 4, 30, "Himmelfahrts-/Pfingstferien"),
             (0, 5, 21, 0, 5, 26, "Himmelfahrts-/Pfingstferien"),
+            (0, 7, 19, 0, 8, 29, "Sommerferien"),
             (0, 10, 15, 0, 10, 27, "Herbstferien"),
             (0, 12, 24, 1, 1, 5, "Weihnachtsferien"),
         ),
@@ -1492,34 +1495,40 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 2, 5, 0, 2, 16, "Winterferien"),
             (0, 4, 9, 0, 4, 18, "Oster-/Frühjahrsferien"),
             (0, 6, 1, 0, 6, 5, "Himmelfahrts-/Pfingstferien"),
+            (0, 7, 19, 0, 8, 29, "Sommerferien"),
             (0, 10, 22, 0, 10, 27, "Herbstferien"),
             (0, 12, 19, 1, 1, 2, "Weihnachtsferien"),
         ),
         "NI": (
             (-1, 12, 22, 0, 1, 6, "Weihnachtsferien"),
+            (0, 1, 29, 0, 1, 29, "Winterferien"),
             (0, 1, 30, 0, 1, 30, "Winterferien"),
             (0, 4, 2, 0, 4, 17, "Oster-/Frühjahrsferien"),
             (0, 4, 30, 0, 4, 30, "Himmelfahrts-/Pfingstferien"),
             (0, 5, 25, 0, 5, 25, "Himmelfahrts-/Pfingstferien"),
             (0, 6, 5, 0, 6, 5, "Himmelfahrts-/Pfingstferien"),
+            (0, 6, 28, 0, 8, 8, "Sommerferien"),
             (0, 10, 1, 0, 10, 13, "Herbstferien"),
             (0, 12, 24, 1, 1, 5, "Weihnachtsferien"),
         ),
         "NW": (
             (-1, 12, 22, 0, 1, 6, "Weihnachtsferien"),
             (0, 4, 9, 0, 4, 21, "Oster-/Frühjahrsferien"),
+            (0, 7, 5, 0, 8, 18, "Sommerferien"),
             (0, 10, 8, 0, 10, 20, "Herbstferien"),
             (0, 12, 24, 1, 1, 5, "Weihnachtsferien"),
         ),
         "RP": (
             (-1, 12, 22, 0, 1, 5, "Weihnachtsferien"),
             (0, 4, 5, 0, 4, 20, "Oster-/Frühjahrsferien"),
+            (0, 6, 28, 0, 8, 10, "Sommerferien"),
             (0, 10, 1, 0, 10, 12, "Herbstferien"),
             (0, 12, 21, 1, 1, 4, "Weihnachtsferien"),
         ),
         "SH": (
             (-1, 12, 27, 0, 1, 6, "Weihnachtsferien"),
             (0, 4, 9, 0, 4, 24, "Oster-/Frühjahrsferien"),
+            (0, 7, 19, 0, 9, 1, "Sommerferien"),
             (0, 10, 22, 0, 11, 3, "Herbstferien"),
             (0, 12, 24, 1, 1, 5, "Weihnachtsferien"),
         ),
@@ -1527,6 +1536,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (-1, 12, 23, 0, 1, 6, "Weihnachtsferien"),
             (0, 4, 9, 0, 4, 28, "Oster-/Frühjahrsferien"),
             (0, 5, 25, 0, 5, 25, "Himmelfahrts-/Pfingstferien"),
+            (0, 6, 21, 0, 8, 1, "Sommerferien"),
             (0, 10, 1, 0, 10, 13, "Herbstferien"),
             (0, 12, 21, 1, 1, 5, "Weihnachtsferien"),
         ),
@@ -1535,6 +1545,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 2, 12, 0, 2, 23, "Winterferien"),
             (0, 4, 12, 0, 4, 21, "Oster-/Frühjahrsferien"),
             (0, 6, 2, 0, 6, 5, "Himmelfahrts-/Pfingstferien"),
+            (0, 6, 28, 0, 8, 8, "Sommerferien"),
             (0, 10, 8, 0, 10, 19, "Herbstferien"),
             (0, 12, 22, 1, 1, 2, "Weihnachtsferien"),
         ),
@@ -1543,6 +1554,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 2, 12, 0, 2, 24, "Winterferien"),
             (0, 4, 17, 0, 4, 30, "Oster-/Frühjahrsferien"),
             (0, 5, 25, 0, 5, 25, "Himmelfahrts-/Pfingstferien"),
+            (0, 6, 28, 0, 8, 8, "Sommerferien"),
             (0, 10, 4, 0, 10, 13, "Herbstferien"),
             (0, 12, 20, 1, 1, 5, "Weihnachtsferien"),
         ),
@@ -1551,13 +1563,13 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 2, 5, 0, 2, 10, "Winterferien"),
             (0, 4, 9, 0, 4, 21, "Oster-/Frühjahrsferien"),
             (0, 6, 1, 0, 6, 5, "Himmelfahrts-/Pfingstferien"),
+            (0, 6, 28, 0, 8, 8, "Sommerferien"),
             (0, 10, 15, 0, 10, 20, "Herbstferien"),
             (0, 12, 21, 1, 1, 5, "Weihnachtsferien"),
         ),
     },
     2002: {
         "BB": (
-            (-1, 12, 24, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 4, 0, 2, 16, "Winterferien"),
             (0, 3, 25, 0, 4, 5, "Oster-/Frühjahrsferien"),
             (0, 5, 21, 0, 5, 21, "Himmelfahrts-/Pfingstferien"),
@@ -1752,7 +1764,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
         ),
         "HH": (
             (-1, 12, 23, 0, 1, 4, "Weihnachtsferien"),
-            (0, 1, 30, 1, 1, 30, "Weihnachtsferien"),
             (0, 1, 31, 0, 1, 31, "Winterferien"),
             (0, 3, 10, 0, 3, 22, "Oster-/Frühjahrsferien"),
             (0, 5, 2, 0, 5, 2, "Himmelfahrts-/Pfingstferien"),
@@ -1848,15 +1859,16 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 5, 21, 0, 5, 21, "Himmelfahrts-/Pfingstferien"),
             (0, 6, 24, 0, 8, 7, "Sommerferien"),
             (0, 10, 4, 0, 10, 16, "Herbstferien"),
-            (0, 12, 23, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 23, 0, 12, 31, "Weihnachtsferien"),
         ),
         "BE": (
             (-1, 12, 22, 0, 1, 2, "Weihnachtsferien"),
             (0, 2, 2, 0, 2, 7, "Winterferien"),
             (0, 4, 5, 0, 4, 16, "Oster-/Frühjahrsferien"),
+            (0, 5, 21, 0, 5, 21, "Himmelfahrts-/Pfingstferien"),
             (0, 6, 24, 0, 8, 7, "Sommerferien"),
             (0, 10, 4, 0, 10, 16, "Herbstferien"),
-            (0, 12, 23, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 23, 0, 12, 31, "Weihnachtsferien"),
         ),
         "BW": (
             (-1, 12, 22, 0, 1, 5, "Weihnachtsferien"),
@@ -1893,13 +1905,13 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 22, 1, 1, 8, "Weihnachtsferien"),
         ),
         "HH": (
-            (-1, 1, 30, 0, 1, 30, "Weihnachtsferien"),
             (-1, 12, 22, 0, 1, 3, "Weihnachtsferien"),
+            (0, 1, 30, 0, 1, 30, "Weihnachtsferien"),
             (0, 3, 8, 0, 3, 20, "Oster-/Frühjahrsferien"),
             (0, 5, 17, 0, 5, 22, "Himmelfahrts-/Pfingstferien"),
             (0, 6, 24, 0, 8, 4, "Sommerferien"),
             (0, 10, 4, 0, 10, 16, "Herbstferien"),
-            (0, 12, 22, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 22, 0, 12, 31, "Weihnachtsferien"),
         ),
         "MV": (
             (-1, 12, 22, 0, 1, 3, "Weihnachtsferien"),
@@ -1951,6 +1963,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 2, 24, 0, 2, 24, "Winterferien"),
             (0, 4, 5, 0, 4, 20, "Oster-/Frühjahrsferien"),
             (0, 5, 21, 0, 5, 21, "Himmelfahrts-/Pfingstferien"),
+            (0, 6, 11, 0, 6, 11, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 19, 0, 8, 28, "Sommerferien"),
             (0, 10, 11, 0, 10, 23, "Herbstferien"),
             (0, 12, 23, 1, 1, 4, "Weihnachtsferien"),
@@ -1969,8 +1982,8 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 4, 5, 0, 4, 8, "Oster-/Frühjahrsferien"),
             (0, 5, 21, 0, 5, 28, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 8, 0, 8, 18, "Sommerferien"),
-            (0, 10, 18, 0, 10, 18, "Herbstferien"),
-            (0, 12, 22, 1, 12, 31, "Weihnachtsferien"),
+            (0, 10, 18, 0, 10, 23, "Herbstferien"),
+            (0, 12, 22, 0, 12, 31, "Weihnachtsferien"),
         ),
         "TH": (
             (-1, 12, 22, 0, 1, 3, "Weihnachtsferien"),
@@ -1979,12 +1992,11 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 5, 28, 0, 6, 1, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 8, 0, 8, 18, "Sommerferien"),
             (0, 10, 11, 0, 10, 23, "Herbstferien"),
-            (0, 12, 22, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 22, 0, 12, 31, "Weihnachtsferien"),
         ),
     },
     2005: {
         "BB": (
-            (-1, 12, 23, 0, 12, 31, "Weihnachtsferien"),
             (0, 1, 24, 0, 1, 29, "Winterferien"),
             (0, 3, 23, 0, 4, 2, "Oster-/Frühjahrsferien"),
             (0, 5, 6, 0, 5, 6, "Himmelfahrts-/Pfingstferien"),
@@ -1993,7 +2005,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 22, 1, 1, 3, "Weihnachtsferien"),
         ),
         "BE": (
-            (-1, 12, 23, 0, 12, 31, "Weihnachtsferien"),
             (0, 1, 24, 0, 1, 29, "Winterferien"),
             (0, 3, 23, 0, 4, 1, "Oster-/Frühjahrsferien"),
             (0, 5, 6, 0, 5, 6, "Himmelfahrts-/Pfingstferien"),
@@ -2037,7 +2048,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 21, 1, 1, 7, "Weihnachtsferien"),
         ),
         "HH": (
-            (-1, 12, 22, 0, 12, 31, "Weihnachtsferien"),
             (0, 3, 14, 0, 3, 26, "Oster-/Frühjahrsferien"),
             (0, 5, 6, 0, 5, 13, "Himmelfahrts-/Pfingstferien"),
             (0, 6, 30, 0, 8, 10, "Sommerferien"),
@@ -2105,7 +2115,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 23, 1, 1, 2, "Weihnachtsferien"),
         ),
         "ST": (
-            (-1, 12, 22, 0, 12, 31, "Weihnachtsferien"),
             (0, 1, 31, 0, 2, 9, "Winterferien"),
             (0, 3, 21, 0, 4, 1, "Oster-/Frühjahrsferien"),
             (0, 5, 17, 0, 5, 21, "Himmelfahrts-/Pfingstferien"),
@@ -2114,7 +2123,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 23, 1, 1, 5, "Weihnachtsferien"),
         ),
         "TH": (
-            (-1, 12, 22, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 7, 0, 2, 12, "Winterferien"),
             (0, 3, 21, 0, 4, 2, "Oster-/Frühjahrsferien"),
             (0, 5, 14, 0, 5, 17, "Himmelfahrts-/Pfingstferien"),
@@ -2248,8 +2256,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
         ),
         "ST": (
             (-1, 12, 23, 0, 1, 5, "Weihnachtsferien"),
-            (0, 2, 1, 0, 2, 1, "Winterferien"),
-            (0, 2, 10, 0, 2, 10, "Winterferien"),
+            (0, 2, 1, 0, 2, 10, "Winterferien"),
             (0, 4, 10, 0, 4, 13, "Oster-/Frühjahrsferien"),
             (0, 5, 26, 0, 6, 2, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 20, 0, 8, 30, "Sommerferien"),
@@ -2593,6 +2600,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
         ),
         "HB": (
             (-1, 12, 22, 0, 1, 6, "Weihnachtsferien"),
+            (0, 2, 2, 0, 2, 2, "Winterferien"),
             (0, 2, 3, 0, 2, 3, "Winterferien"),
             (0, 3, 30, 0, 4, 14, "Oster-/Frühjahrsferien"),
             (0, 6, 2, 0, 6, 2, "Himmelfahrts-/Pfingstferien"),
@@ -2614,7 +2622,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 5, 18, 0, 5, 23, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 16, 0, 8, 26, "Sommerferien"),
             (0, 10, 12, 0, 10, 24, "Herbstferien"),
-            (0, 12, 21, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 21, 0, 12, 31, "Weihnachtsferien"),
         ),
         "MV": (
             (-1, 12, 22, 0, 1, 3, "Weihnachtsferien"),
@@ -2747,7 +2755,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 20, 1, 1, 7, "Weihnachtsferien"),
         ),
         "HH": (
-            (-1, 12, 21, 0, 12, 31, "Weihnachtsferien"),
             (0, 1, 29, 0, 1, 29, "Winterferien"),
             (0, 3, 8, 0, 3, 20, "Oster-/Frühjahrsferien"),
             (0, 5, 14, 0, 5, 22, "Himmelfahrts-/Pfingstferien"),
@@ -2762,7 +2769,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 5, 21, 0, 5, 22, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 12, 0, 8, 21, "Sommerferien"),
             (0, 10, 18, 0, 10, 23, "Herbstferien"),
-            (0, 12, 23, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 23, 0, 12, 31, "Weihnachtsferien"),
         ),
         "NI": (
             (-1, 12, 23, 0, 1, 6, "Weihnachtsferien"),
@@ -2803,7 +2810,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 3, 29, 0, 4, 10, "Oster-/Frühjahrsferien"),
             (0, 7, 5, 0, 8, 14, "Sommerferien"),
             (0, 10, 11, 0, 10, 23, "Herbstferien"),
-            (0, 12, 20, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 20, 0, 12, 31, "Weihnachtsferien"),
         ),
         "SN": (
             (-1, 12, 23, 0, 1, 2, "Weihnachtsferien"),
@@ -2829,7 +2836,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 3, 29, 0, 4, 9, "Oster-/Frühjahrsferien"),
             (0, 6, 24, 0, 8, 4, "Sommerferien"),
             (0, 10, 9, 0, 10, 23, "Herbstferien"),
-            (0, 12, 23, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 23, 0, 12, 31, "Weihnachtsferien"),
         ),
     },
     2011: {
@@ -2896,7 +2903,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 27, 1, 1, 6, "Weihnachtsferien"),
         ),
         "MV": (
-            (-1, 12, 23, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 7, 0, 2, 19, "Winterferien"),
             (0, 4, 16, 0, 4, 27, "Oster-/Frühjahrsferien"),
             (0, 6, 10, 0, 6, 14, "Himmelfahrts-/Pfingstferien"),
@@ -2937,7 +2943,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 23, 1, 1, 6, "Weihnachtsferien"),
         ),
         "SL": (
-            (-1, 12, 20, 0, 12, 31, "Weihnachtsferien"),
             (0, 3, 7, 0, 3, 12, "Winterferien"),
             (0, 4, 18, 0, 4, 30, "Oster-/Frühjahrsferien"),
             (0, 6, 24, 0, 8, 6, "Sommerferien"),
@@ -2963,13 +2968,12 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 22, 1, 1, 7, "Weihnachtsferien"),
         ),
         "TH": (
-            (-1, 12, 23, 0, 12, 31, "Weihnachtsferien"),
             (0, 1, 31, 0, 2, 5, "Winterferien"),
             (0, 4, 18, 0, 4, 30, "Oster-/Frühjahrsferien"),
             (0, 6, 11, 0, 6, 14, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 11, 0, 8, 19, "Sommerferien"),
             (0, 10, 17, 0, 10, 28, "Herbstferien"),
-            (0, 12, 23, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 23, 0, 12, 31, "Weihnachtsferien"),
         ),
     },
     2012: {
@@ -2989,6 +2993,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 4, 2, 0, 4, 14, "Oster-/Frühjahrsferien"),
             (0, 4, 30, 0, 4, 30, "Himmelfahrts-/Pfingstferien"),
             (0, 5, 18, 0, 5, 18, "Himmelfahrts-/Pfingstferien"),
+            (0, 6, 20, 0, 6, 20, "Sommerferien"),
             (0, 6, 21, 0, 8, 3, "Sommerferien"),
             (0, 10, 1, 0, 10, 13, "Herbstferien"),
             (0, 12, 24, 1, 1, 4, "Weihnachtsferien"),
@@ -3106,7 +3111,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 19, 1, 1, 4, "Weihnachtsferien"),
         ),
         "TH": (
-            (-1, 12, 23, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 6, 0, 2, 11, "Winterferien"),
             (0, 4, 2, 0, 4, 13, "Oster-/Frühjahrsferien"),
             (0, 5, 25, 0, 5, 29, "Himmelfahrts-/Pfingstferien"),
@@ -3132,6 +3136,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 3, 25, 0, 4, 6, "Oster-/Frühjahrsferien"),
             (0, 5, 10, 0, 5, 10, "Himmelfahrts-/Pfingstferien"),
             (0, 5, 21, 0, 5, 21, "Himmelfahrts-/Pfingstferien"),
+            (0, 6, 19, 0, 6, 19, "Sommerferien"),
             (0, 6, 20, 0, 8, 2, "Sommerferien"),
             (0, 9, 30, 0, 10, 12, "Herbstferien"),
             (0, 12, 23, 1, 1, 3, "Weihnachtsferien"),
@@ -3274,6 +3279,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 4, 14, 0, 4, 26, "Oster-/Frühjahrsferien"),
             (0, 5, 2, 0, 5, 2, "Himmelfahrts-/Pfingstferien"),
             (0, 5, 30, 0, 5, 30, "Himmelfahrts-/Pfingstferien"),
+            (0, 7, 9, 0, 7, 9, "Sommerferien"),
             (0, 7, 10, 0, 8, 22, "Sommerferien"),
             (0, 10, 20, 0, 11, 1, "Herbstferien"),
             (0, 12, 22, 1, 1, 2, "Weihnachtsferien"),
@@ -3557,6 +3563,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 3, 21, 0, 4, 2, "Oster-/Frühjahrsferien"),
             (0, 5, 6, 0, 5, 6, "Himmelfahrts-/Pfingstferien"),
             (0, 5, 17, 0, 5, 17, "Himmelfahrts-/Pfingstferien"),
+            (0, 7, 20, 0, 7, 20, "Sommerferien"),
             (0, 7, 21, 0, 9, 2, "Sommerferien"),
             (0, 10, 17, 0, 10, 28, "Herbstferien"),
             (0, 12, 23, 1, 1, 3, "Weihnachtsferien"),
@@ -3618,7 +3625,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 1, 28, 0, 1, 29, "Winterferien"),
             (0, 3, 18, 0, 4, 2, "Oster-/Frühjahrsferien"),
             (0, 5, 6, 0, 5, 6, "Himmelfahrts-/Pfingstferien"),
-            (0, 5, 17, 0, 5, 17, "Himmelfahrts-/Pfingstferien"),
             (0, 6, 23, 0, 8, 3, "Sommerferien"),
             (0, 10, 4, 0, 10, 15, "Herbstferien"),
             (0, 12, 21, 1, 1, 6, "Weihnachtsferien"),
@@ -3652,7 +3658,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 3, 29, 0, 4, 9, "Oster-/Frühjahrsferien"),
             (0, 7, 18, 0, 8, 27, "Sommerferien"),
             (0, 10, 10, 0, 10, 22, "Herbstferien"),
-            (0, 12, 19, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 19, 0, 12, 31, "Weihnachtsferien"),
         ),
         "SN": (
             (-1, 12, 21, 0, 1, 2, "Weihnachtsferien"),
@@ -3679,7 +3685,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 5, 6, 0, 5, 6, "Himmelfahrts-/Pfingstferien"),
             (0, 6, 27, 0, 8, 10, "Sommerferien"),
             (0, 10, 10, 0, 10, 22, "Herbstferien"),
-            (0, 12, 23, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 23, 0, 12, 31, "Weihnachtsferien"),
         ),
     },
     2017: {
@@ -3792,7 +3798,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 21, 1, 1, 6, "Weihnachtsferien"),
         ),
         "SL": (
-            (-1, 12, 19, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 27, 0, 3, 4, "Winterferien"),
             (0, 4, 10, 0, 4, 22, "Oster-/Frühjahrsferien"),
             (0, 7, 3, 0, 8, 14, "Sommerferien"),
@@ -3820,7 +3825,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 21, 1, 1, 3, "Weihnachtsferien"),
         ),
         "TH": (
-            (-1, 12, 23, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 6, 0, 2, 11, "Winterferien"),
             (0, 4, 10, 0, 4, 21, "Oster-/Frühjahrsferien"),
             (0, 5, 26, 0, 5, 26, "Himmelfahrts-/Pfingstferien"),
@@ -4222,7 +4226,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 4, 9, 0, 4, 17, "Oster-/Frühjahrsferien"),
             (0, 7, 6, 0, 8, 14, "Sommerferien"),
             (0, 10, 12, 0, 10, 23, "Herbstferien"),
-            (0, 12, 21, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 21, 0, 12, 31, "Weihnachtsferien"),
         ),
         "SH": (
             (-1, 12, 23, 0, 1, 6, "Weihnachtsferien"),
@@ -4238,7 +4242,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 4, 14, 0, 4, 24, "Oster-/Frühjahrsferien"),
             (0, 7, 6, 0, 8, 14, "Sommerferien"),
             (0, 10, 12, 0, 10, 23, "Herbstferien"),
-            (0, 12, 21, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 21, 0, 12, 31, "Weihnachtsferien"),
         ),
         "SN": (
             (-1, 12, 21, 0, 1, 3, "Weihnachtsferien"),
@@ -4275,7 +4279,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 3, 29, 0, 4, 9, "Oster-/Frühjahrsferien"),
             (0, 6, 24, 0, 8, 7, "Sommerferien"),
             (0, 10, 11, 0, 10, 23, "Herbstferien"),
-            (0, 12, 23, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 23, 0, 12, 31, "Weihnachtsferien"),
         ),
         "BE": (
             (-1, 12, 21, 0, 1, 2, "Weihnachtsferien"),
@@ -4284,7 +4288,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 5, 14, 0, 5, 14, "Himmelfahrts-/Pfingstferien"),
             (0, 6, 24, 0, 8, 6, "Sommerferien"),
             (0, 10, 11, 0, 10, 23, "Herbstferien"),
-            (0, 12, 24, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 24, 0, 12, 31, "Weihnachtsferien"),
         ),
         "BW": (
             (-1, 12, 23, 0, 1, 9, "Weihnachtsferien"),
@@ -4341,7 +4345,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 6, 21, 0, 7, 31, "Sommerferien"),
             (0, 10, 2, 0, 10, 9, "Herbstferien"),
             (0, 11, 1, 0, 11, 2, "Herbstferien"),
-            (0, 12, 22, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 22, 0, 12, 31, "Weihnachtsferien"),
         ),
         "NI": (
             (-1, 12, 23, 0, 1, 8, "Weihnachtsferien"),
@@ -4362,12 +4366,11 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 24, 1, 1, 8, "Weihnachtsferien"),
         ),
         "RP": (
-            (-1, 12, 21, 0, 12, 31, "Weihnachtsferien"),
             (0, 3, 29, 0, 4, 6, "Oster-/Frühjahrsferien"),
             (0, 5, 25, 0, 6, 2, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 19, 0, 8, 27, "Sommerferien"),
             (0, 10, 11, 0, 10, 22, "Herbstferien"),
-            (0, 12, 23, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 23, 0, 12, 31, "Weihnachtsferien"),
         ),
         "SH": (
             (-1, 12, 21, 0, 1, 6, "Weihnachtsferien"),
@@ -4378,7 +4381,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 23, 1, 1, 8, "Weihnachtsferien"),
         ),
         "SL": (
-            (-1, 12, 21, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 15, 0, 2, 19, "Winterferien"),
             (0, 3, 29, 0, 4, 7, "Oster-/Frühjahrsferien"),
             (0, 5, 25, 0, 5, 28, "Himmelfahrts-/Pfingstferien"),
@@ -4411,12 +4413,11 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 5, 14, 0, 5, 14, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 26, 0, 9, 4, "Sommerferien"),
             (0, 10, 25, 0, 11, 6, "Herbstferien"),
-            (0, 12, 23, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 23, 0, 12, 31, "Weihnachtsferien"),
         ),
     },
     2022: {
         "BB": (
-            (-1, 12, 23, 0, 12, 31, "Weihnachtsferien"),
             (0, 1, 31, 0, 2, 5, "Winterferien"),
             (0, 4, 11, 0, 4, 23, "Oster-/Frühjahrsferien"),
             (0, 7, 7, 0, 8, 20, "Sommerferien"),
@@ -4424,7 +4425,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 22, 1, 1, 3, "Weihnachtsferien"),
         ),
         "BE": (
-            (-1, 12, 24, 0, 12, 31, "Weihnachtsferien"),
             (0, 1, 29, 0, 2, 5, "Winterferien"),
             (0, 3, 7, 0, 3, 7, "Oster-/Frühjahrsferien"),
             (0, 4, 11, 0, 4, 23, "Oster-/Frühjahrsferien"),
@@ -4441,7 +4441,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 6, 7, 0, 6, 18, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 28, 0, 9, 10, "Sommerferien"),
             (0, 10, 31, 0, 10, 31, "Herbstferien"),
-            (0, 11, 2, 0, 11, 2, "Herbstferien"),
+            (0, 11, 2, 0, 11, 4, "Herbstferien"),
             (0, 12, 21, 1, 1, 7, "Weihnachtsferien"),
         ),
         "BY": (
@@ -4480,7 +4480,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 23, 1, 1, 6, "Weihnachtsferien"),
         ),
         "MV": (
-            (-1, 12, 22, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 5, 0, 2, 17, "Winterferien"),
             (0, 2, 18, 0, 2, 18, "Winterferien"),
             (0, 4, 11, 0, 4, 20, "Oster-/Frühjahrsferien"),
@@ -4509,7 +4508,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 23, 1, 1, 6, "Weihnachtsferien"),
         ),
         "RP": (
-            (-1, 12, 23, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 21, 0, 2, 25, "Winterferien"),
             (0, 4, 13, 0, 4, 22, "Oster-/Frühjahrsferien"),
             (0, 7, 25, 0, 9, 2, "Sommerferien"),
@@ -4552,7 +4550,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 21, 1, 1, 5, "Weihnachtsferien"),
         ),
         "TH": (
-            (-1, 12, 23, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 12, 0, 2, 19, "Winterferien"),
             (0, 4, 11, 0, 4, 23, "Oster-/Frühjahrsferien"),
             (0, 5, 27, 0, 5, 27, "Himmelfahrts-/Pfingstferien"),
@@ -4719,7 +4716,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 3, 25, 0, 4, 5, "Oster-/Frühjahrsferien"),
             (0, 7, 18, 0, 8, 31, "Sommerferien"),
             (0, 10, 21, 0, 11, 2, "Herbstferien"),
-            (0, 12, 23, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 23, 0, 12, 31, "Weihnachtsferien"),
         ),
         "BE": (
             (-1, 12, 23, 0, 1, 5, "Weihnachtsferien"),
@@ -4729,7 +4726,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 7, 18, 0, 8, 30, "Sommerferien"),
             (0, 10, 4, 0, 10, 4, "Herbstferien"),
             (0, 10, 21, 0, 11, 2, "Herbstferien"),
-            (0, 12, 23, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 23, 0, 12, 31, "Weihnachtsferien"),
         ),
         "BW": (
             (-1, 12, 23, 0, 1, 5, "Weihnachtsferien"),
@@ -4866,7 +4863,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
     },
     2025: {
         "BB": (
-            (-1, 12, 23, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 3, 0, 2, 8, "Winterferien"),
             (0, 4, 14, 0, 4, 25, "Oster-/Frühjahrsferien"),
             (0, 6, 10, 0, 6, 10, "Himmelfahrts-/Pfingstferien"),
@@ -4875,7 +4871,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 22, 1, 1, 2, "Weihnachtsferien"),
         ),
         "BE": (
-            (-1, 12, 23, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 3, 0, 2, 8, "Winterferien"),
             (0, 4, 14, 0, 4, 25, "Oster-/Frühjahrsferien"),
             (0, 5, 2, 0, 5, 2, "Oster-/Frühjahrsferien"),
@@ -5129,7 +5124,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 4, 7, 0, 4, 17, "Oster-/Frühjahrsferien"),
             (0, 6, 29, 0, 8, 7, "Sommerferien"),
             (0, 10, 5, 0, 10, 16, "Herbstferien"),
-            (0, 12, 21, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 21, 0, 12, 31, "Weihnachtsferien"),
         ),
         "SN": (
             (-1, 12, 22, 0, 1, 2, "Weihnachtsferien"),
@@ -5167,7 +5162,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 5, 18, 0, 5, 18, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 1, 0, 8, 14, "Sommerferien"),
             (0, 10, 11, 0, 10, 23, "Herbstferien"),
-            (0, 12, 23, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 23, 0, 12, 31, "Weihnachtsferien"),
         ),
         "BE": (
             (-1, 12, 23, 0, 1, 2, "Weihnachtsferien"),
@@ -5177,7 +5172,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 5, 18, 0, 5, 19, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 1, 0, 8, 14, "Sommerferien"),
             (0, 10, 11, 0, 10, 23, "Herbstferien"),
-            (0, 12, 22, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 22, 0, 12, 31, "Weihnachtsferien"),
         ),
         "BW": (
             (-1, 12, 23, 0, 1, 9, "Weihnachtsferien"),
@@ -5221,7 +5216,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 5, 7, 0, 5, 14, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 1, 0, 8, 11, "Sommerferien"),
             (0, 10, 11, 0, 10, 22, "Herbstferien"),
-            (0, 12, 20, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 20, 0, 12, 31, "Weihnachtsferien"),
         ),
         "MV": (
             (-1, 12, 21, 0, 1, 2, "Weihnachtsferien"),
@@ -5267,12 +5262,11 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 23, 1, 1, 8, "Weihnachtsferien"),
         ),
         "SL": (
-            (-1, 12, 21, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 8, 0, 2, 12, "Winterferien"),
             (0, 3, 30, 0, 4, 9, "Oster-/Frühjahrsferien"),
             (0, 6, 28, 0, 8, 6, "Sommerferien"),
             (0, 10, 4, 0, 10, 15, "Herbstferien"),
-            (0, 12, 20, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 20, 0, 12, 31, "Weihnachtsferien"),
         ),
         "SN": (
             (-1, 12, 23, 0, 1, 2, "Weihnachtsferien"),
@@ -5291,7 +5285,7 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 5, 15, 0, 5, 22, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 10, 0, 8, 20, "Sommerferien"),
             (0, 10, 18, 0, 10, 23, "Herbstferien"),
-            (0, 12, 20, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 20, 0, 12, 31, "Weihnachtsferien"),
         ),
         "TH": (
             (-1, 12, 23, 0, 1, 2, "Weihnachtsferien"),
@@ -5300,12 +5294,11 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 5, 7, 0, 5, 7, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 10, 0, 8, 20, "Sommerferien"),
             (0, 10, 9, 0, 10, 23, "Herbstferien"),
-            (0, 12, 23, 1, 12, 31, "Weihnachtsferien"),
+            (0, 12, 23, 0, 12, 31, "Weihnachtsferien"),
         ),
     },
     2028: {
         "BB": (
-            (-1, 12, 23, 0, 12, 31, "Weihnachtsferien"),
             (0, 1, 31, 0, 2, 5, "Winterferien"),
             (0, 4, 10, 0, 4, 22, "Oster-/Frühjahrsferien"),
             (0, 6, 29, 0, 8, 12, "Sommerferien"),
@@ -5313,7 +5306,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 22, 1, 1, 2, "Weihnachtsferien"),
         ),
         "BE": (
-            (-1, 12, 22, 0, 12, 31, "Weihnachtsferien"),
             (0, 1, 31, 0, 2, 5, "Winterferien"),
             (0, 4, 10, 0, 4, 22, "Oster-/Frühjahrsferien"),
             (0, 5, 26, 0, 5, 26, "Himmelfahrts-/Pfingstferien"),
@@ -5359,14 +5351,13 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 27, 1, 1, 12, "Weihnachtsferien"),
         ),
         "HH": (
-            (-1, 12, 20, 0, 12, 31, "Weihnachtsferien"),
             (0, 1, 28, 0, 1, 28, "Winterferien"),
             (0, 3, 6, 0, 3, 17, "Oster-/Frühjahrsferien"),
             (0, 5, 22, 0, 5, 26, "Himmelfahrts-/Pfingstferien"),
             (0, 7, 3, 0, 8, 11, "Sommerferien"),
             (0, 10, 2, 0, 10, 13, "Herbstferien"),
             (0, 10, 30, 0, 10, 30, "Herbstferien"),
-            (0, 12, 18, 1, 12, 29, "Weihnachtsferien"),
+            (0, 12, 18, 0, 12, 29, "Weihnachtsferien"),
         ),
         "MV": (
             (-1, 12, 22, 0, 1, 4, "Weihnachtsferien"),
@@ -5415,7 +5406,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 21, 1, 1, 5, "Weihnachtsferien"),
         ),
         "SL": (
-            (-1, 12, 20, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 21, 0, 2, 29, "Winterferien"),
             (0, 4, 12, 0, 4, 21, "Oster-/Frühjahrsferien"),
             (0, 7, 3, 0, 8, 11, "Sommerferien"),
@@ -5432,7 +5422,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 23, 1, 1, 3, "Weihnachtsferien"),
         ),
         "ST": (
-            (-1, 12, 20, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 7, 0, 2, 12, "Winterferien"),
             (0, 4, 10, 0, 4, 22, "Oster-/Frühjahrsferien"),
             (0, 6, 3, 0, 6, 10, "Himmelfahrts-/Pfingstferien"),
@@ -5442,7 +5431,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 12, 21, 1, 1, 2, "Weihnachtsferien"),
         ),
         "TH": (
-            (-1, 12, 23, 0, 12, 31, "Weihnachtsferien"),
             (0, 2, 7, 0, 2, 12, "Winterferien"),
             (0, 4, 3, 0, 4, 15, "Oster-/Frühjahrsferien"),
             (0, 5, 26, 0, 5, 26, "Himmelfahrts-/Pfingstferien"),
@@ -5497,7 +5485,6 @@ GERMANY_SCHOOL_HOLIDAYS = {
             (0, 7, 16, 0, 8, 24, "Sommerferien"),
         ),
         "HH": (
-            (-1, 12, 18, 0, 12, 29, "Weihnachtsferien"),
             (0, 2, 2, 0, 2, 2, "Winterferien"),
             (0, 3, 5, 0, 3, 16, "Oster-/Frühjahrsferien"),
             (0, 5, 11, 0, 5, 18, "Himmelfahrts-/Pfingstferien"),

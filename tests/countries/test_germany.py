@@ -61,6 +61,68 @@ class TestGermany(CommonCountryTests, TestCase):
         bw_1991 = Germany(subdiv="BW", years=1991, categories=SCHOOL)
         self.assertHolidayName("Winterferien", bw_1991, "1991-02-11", "1991-02-16")
         self.assertHolidayName("Sommerferien", bw_1991, "1991-07-11", "1991-08-24")
+        self.assertHolidayName(
+            "Sommerferien",
+            Germany(subdiv="TH", years=2001, categories=SCHOOL),
+            "2001-06-28",
+            "2001-08-08",
+        )
+        self.assertHolidayName(
+            "Winterferien",
+            Germany(subdiv="NI", years=2001, categories=SCHOOL),
+            "2001-01-29",
+            "2001-01-30",
+        )
+        self.assertHolidayName(
+            "Himmelfahrts-/Pfingstferien",
+            Germany(subdiv="BE", years=2004, categories=SCHOOL),
+            "2004-05-21",
+        )
+        self.assertHolidayName(
+            "Weihnachtsferien",
+            Germany(subdiv="HH", years=2004, categories=SCHOOL),
+            "2004-01-30",
+            "2004-12-22",
+        )
+        self.assertHolidayName(
+            "Himmelfahrts-/Pfingstferien",
+            Germany(subdiv="SL", years=2004, categories=SCHOOL),
+            "2004-05-21",
+            "2004-06-11",
+        )
+        self.assertHolidayName(
+            "Herbstferien",
+            Germany(subdiv="ST", years=2004, categories=SCHOOL),
+            "2004-10-18",
+            "2004-10-23",
+        )
+        self.assertHolidayName(
+            "Winterferien",
+            Germany(subdiv="ST", years=2006, categories=SCHOOL),
+            "2006-02-01",
+            "2006-02-10",
+        )
+        self.assertHolidayName(
+            "Winterferien",
+            Germany(subdiv="HB", years=2009, categories=SCHOOL),
+            "2009-02-02",
+            "2009-02-03",
+        )
+        self.assertHolidayName(
+            "Sommerferien", Germany(subdiv="BE", years=2012, categories=SCHOOL), "2012-06-20"
+        )
+        self.assertHolidayName(
+            "Sommerferien", Germany(subdiv="BE", years=2013, categories=SCHOOL), "2013-06-19"
+        )
+        self.assertHolidayName(
+            "Sommerferien", Germany(subdiv="BE", years=2014, categories=SCHOOL), "2014-07-09"
+        )
+        self.assertHolidayName(
+            "Sommerferien", Germany(subdiv="BE", years=2016, categories=SCHOOL), "2016-07-20"
+        )
+        self.assertHolidayName(
+            "Herbstferien", Germany(subdiv="BW", years=2022, categories=SCHOOL), "2022-11-04"
+        )
 
         self.assertHolidayName(
             "Sommerferien",
