@@ -118,7 +118,7 @@ msgstr "मिलाद-उन-नबी"
 
 #. Eid al-Fitr.
 msgid "Id-Ul-Fitr (Ramadan Eid)"
-msgstr "ईद-उल-फ़ित्र (रमजान ईद)"
+msgstr "ईद-उल-फितर (रमज़ान ईद)"
 
 #. Eid al-Adha.
 msgid "Bakri Id"
@@ -126,4 +126,4 @@ msgstr "बकरीद"
 
 #. New Year's Day.
 msgid "New Year"
-msgstr "नया वर्ष"
+msgstr "नया साल"
