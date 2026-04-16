@@ -42,7 +42,7 @@ msgstr "गुड फ्राइडे"
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. Baba Saheb Ambedkar Jayanti"
-msgstr "डॉ. बी. आर. आंबेडकर जयंती"
+msgstr "डॉ. बाबा साहेब अम्बेडकर जयंती"
 
 #. May Day.
 msgid "May Day"
@@ -57,8 +57,8 @@ msgid "Independence Day"
 msgstr "स्वतंत्रता दिवस"
 
 #. Gandhi Jayanti.
-msgid "Gandhi Jayanti"
-msgstr "गांधी जयंती"
+msgid "Mahatma Gandhi Jayanti"
+msgstr "महात्मा गांधी जयंती"
 
 #. Christmas Day.
 msgid "Christmas Day"
