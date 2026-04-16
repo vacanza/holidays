@@ -25,10 +25,19 @@ class StaticHolidays:
     def __init__(self, cls) -> None:
         for attribute_name in cls.__dict__:
             # Special holidays.
-            if attribute_name.startswith("special_") and (
-                value := getattr(cls, attribute_name, None)
+            if (
+                attribute_name.startswith("special_")
+                and (value := getattr(cls, attribute_name, None))
+                and isinstance(value, dict)
             ):
-                setattr(self, attribute_name, value)
+                if special_holidays := getattr(self, attribute_name, None):
+                    for year, holidays_tuple in value.items():
+                        special_holidays[year] = _normalize_tuple(
+                            special_holidays.get(year, ())
+                        ) + _normalize_tuple(holidays_tuple)
+                else:
+                    setattr(self, attribute_name, dict(value))
+
                 self.has_special_holidays = True
 
             # "Substituted" labels.
@@ -38,7 +47,7 @@ class StaticHolidays:
                 setattr(self, attribute_name, value)
 
         # Populate substituted holidays from adjacent years.
-        self.weekend_workdays = set()
+        self.weekend_workdays: set[date] = getattr(self, "weekend_workdays", set())
         for special_public_holidays in getattr(self, "special_public_holidays", {}).values():
             for special_public_holiday in _normalize_tuple(special_public_holidays):
                 # Normally, special holiday is a 3 item tuple: (month, day, name).
