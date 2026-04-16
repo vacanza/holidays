@@ -24,6 +24,7 @@ from holidays.groups import (
 )
 from holidays.holiday_base import HolidayBase
 
+
 class India(
     HolidayBase, ChristianHolidays, HinduCalendarHolidays, InternationalHolidays, IslamicHolidays
 ):
