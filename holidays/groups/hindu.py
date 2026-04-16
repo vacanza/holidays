@@ -19,6 +19,26 @@ from holidays.groups.eastern import EasternCalendarHolidays
 
 class HinduCalendarHolidays(EasternCalendarHolidays):
     """
+    Hindu calendar-based holiday calculations.
+
+    Notes on selected festivals:
+
+    Navratri:
+        - Multi-day festival (typically 9 days)
+        - Computed using Hindu calendar logic
+        - Implemented via `_add_sharad_navratri`
+
+    Durga Puja:
+        - Regional festival (primarily eastern India)
+        - May overlap with Navratri
+        - Represented using key observance days (Saptami–Dashami)
+
+    These festivals:
+        - Are not fixed-date holidays
+        - Vary each year based on lunisolar calculations
+        - May be implemented at subdivision level when region-specific
+    """
+    """
     Hindu lunisolar calendar holidays.
     """
 
