@@ -41,7 +41,7 @@ msgid "Good Friday"
 msgstr "गुड फ्राइडे"
 
 #. Dr. B. R. Ambedkar Jayanti.
-msgid "Dr. B. R. Ambedkar's Jayanti"
+msgid "Dr. Baba Saheb Ambedkar Jayanti"
 msgstr "डॉ. बी. आर. आंबेडकर जयंती"
 
 #. May Day.
