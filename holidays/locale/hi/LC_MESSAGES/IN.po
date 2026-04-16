@@ -45,7 +45,6 @@ msgstr "स्वतंत्रता दिवस"
 msgid "Gandhi Jayanti"
 msgstr "गांधी जयंती"
 
-
 #. Buddha Purnima.
 msgid "Buddha Purnima"
 msgstr "बुद्ध पूर्णिमा"
