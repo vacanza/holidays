@@ -43,8 +43,7 @@ msgstr "स्वतंत्रता दिवस"
 
 #. Gandhi Jayanti.
 msgid "Gandhi Jayanti"
-msgstr "महात्मा गांधी जयंती"
-
+msgstr "गांधी जयंती"
 
 
 #. Buddha Purnima.
@@ -85,7 +84,7 @@ msgstr "मिलाद-उन-नबी"
 
 #. Eid al-Fitr.
 msgid "Id-ul-Fitr"
-msgstr "ईद-उल-फ़ित्र"
+msgstr "ईद-उल-फितर"
 
 #. Eid al-Adha.
 msgid "Bakrid"
@@ -117,7 +116,7 @@ msgstr "गोवर्धन पूजा"
 
 #. Labor Day.
 msgid "Labour Day"
-msgstr "श्रम दिवस"
+msgstr "मजदूर दिवस"
 
 #. Maha Navami.
 msgid "Maha Navami"
@@ -129,7 +128,7 @@ msgstr "मकर संक्रांति"
 
 #. Raksha Bandhan.
 msgid "Raksha Bandhan"
-msgstr "रक्षा बंधन"
+msgstr "रक्षाबंधन"
 
 #. Ram Navami.
 msgid "Ram Navami"
