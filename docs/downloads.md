@@ -2,6 +2,7 @@
 hide:
   - navigation
 ---
+<!-- markdownlint-disable MD033 -->
 <script defer src="../js/downloads.js"></script>
 
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js"></script>
@@ -13,7 +14,7 @@ hide:
 <div class="portal-wrapper" x-data="holidayDownloads()" x-init="init()">
 
   <div class="portal-sidebar" x-show="!isLoading" style="display: none;">
-    
+
     <div class="control-group">
       <label for="calendar-type">Calendar Type</label>
       <select id="calendar-type" class="control-input" x-model="type" @change="updateType()">

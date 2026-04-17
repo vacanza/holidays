@@ -15,13 +15,19 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>CI/CD</td>
     <td>
-      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41B5BE&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41B5BE&style=flat" alt="Documentation status"></a>&nbsp;<a href="https://security.snyk.io/package/pip/holidays/"><img alt="Open World Holidays Package Health Score" src="https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fsecurity.snyk.io%2Fpackage%2Fpip%2Fholidays%2F&search=(class%3D%22score-number%22.*%3F%3E)(%5Cd%7B1%2C3%7D%2F%5Cd%7B1%2C3%7D)&replace=%242&style=flat&label=snyk&color=41B5BE"></a>
+      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41B5BE&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41B5BE&style=flat&label=documentation" alt="Documentation build status"></a>&nbsp;<a href="https://security.snyk.io/package/pip/holidays/"><img alt="Open World Holidays Package Health Score" src="https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fsecurity.snyk.io%2Fpackage%2Fpip%2Fholidays%2F&search=(class%3D%22score-number%22.*%3F%3E)(%5Cd%7B1%2C3%7D%2F%5Cd%7B1%2C3%7D)&replace=%242&style=flat&label=snyk&color=41B5BE"></a>
     </td>
   </tr>
   <tr>
     <td>Code</td>
     <td>
       <a href="https://github.com/vacanza/holidays/blob/dev/LICENSE"><img src="https://img.shields.io/github/license/vacanza/holidays?color=41B5BE&style=flat" alt="License"></a>&nbsp;<a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/pyversions/holidays?label=python&color=41B5BE&style=flat" alt="Python supported versions"></a>&nbsp;<a href="https://github.com/astral-sh/ruff"><img src="https://img.shields.io/badge/style-ruff-41B5BE?style=flat" alt="Code style"></a>&nbsp;<a href="https://app.codecov.io/gh/vacanza/holidays"><img src="https://img.shields.io/codecov/c/github/vacanza/holidays/dev?color=41B5BE&style=flat" alt="Code coverage"></a>
+    </td>
+  </tr>
+  <tr>
+    <td>Docs</td>
+    <td>
+      <a href="https://holidays.readthedocs.io/en/latest/"><img src="https://img.shields.io/badge/documentation-readthedocs.io-41B5BE?style=flat" alt="Documentation on Read the Docs"></a>&nbsp;<a href="https://deepwiki.com/vacanza/holidays"><img src="https://img.shields.io/badge/documentation-deepwiki.com-41B5BE?style=flat" alt="Documentation on DeepWiki"></a>
     </td>
   </tr>
   <tr>
@@ -82,7 +88,7 @@ date(2015, 1, 2) in us_holidays  # False
 us_holidays.get('2014-01-01')  # "New Year's Day"
 ```
 
-The HolidayBase dict-like class will also recognize date strings and Unix timestamps:
+The [`HolidayBase`](https://github.com/vacanza/holidays/blob/main/holidays/holiday_base.py) dict-like class will also recognize date strings and Unix timestamps:
 
 ``` python
 '2014-01-01' in us_holidays  # True
@@ -110,7 +116,8 @@ code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or f
 abbreviations as aliases for their subdivisions. These are defined in the (optional)
 `subdivisions_aliases` attribute.
 
-> [!Note]
+> [!note]
+> **Subdivisions aliases**
 >
 > **Aliases are optional.** When present, `subdivisions_aliases`
 > cover only a subset of subdivisions - commonly used or officially
@@ -255,8 +262,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Austria</td>
 <td>AT</td>
 <td>States: 1 (Burgenland, Bgld, B), 2 (Kärnten, Ktn, K), 3 (Niederösterreich, NÖ, N), 4 (Oberösterreich, OÖ, O), 5 (Salzburg, Sbg, S), 6 (Steiermark, Stmk, St), 7 (Tirol, T), 8 (Vorarlberg, Vbg, V), 9 (Wien, W)</td>
-<td><strong>de</strong>, en_US, uk</td>
-<td>BANK</td>
+<td><strong>de</strong>, en_US, th, uk</td>
+<td>BANK, PROTESTANT</td>
 </tr>
 <tr>
 <td>Azerbaijan</td>
@@ -283,7 +290,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bangladesh</td>
 <td>BD</td>
 <td></td>
-<td><strong>bn</strong>, en_US</td>
+<td>ar, <strong>bn</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -332,7 +339,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bhutan</td>
 <td>BT</td>
 <td>Administrative Subdivisions: 11 (Paro), 12 (Chhukha), 13 (Haa), 14 (Samtse), 15 (Thimphu), 21 (Tsirang), 22 (Dagana), 23 (Punakha), 24 (Wangdue Phodrang), 31 (Sarpang), 32 (Trongsa), 33 (Bumthang), 34 (Zhemgang), 41 (Trashigang), 42 (Monggar), 43 (Pema Gatshel), 44 (Lhuentse), 45 (Samdrup Jongkhar), GA (Gasa), TY (Trashi Yangtse)</td>
-<td></td>
+<td><strong>dz</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -546,7 +553,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Curacao</td>
+<td>Curaçao</td>
 <td>CW</td>
 <td></td>
 <td>en_US, nl, <strong>pap_CW</strong>, uk</td>
@@ -871,7 +878,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>India</td>
 <td>IN</td>
 <td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (TG, Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
-<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, pa, ta, te</td>
+<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, pa, ta, te</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -1018,7 +1025,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Lebanon</td>
 <td>LB</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
+<td><strong>ar</strong>, en_US, fr</td>
 <td>BANK, GOVERNMENT</td>
 </tr>
 <tr>
@@ -1411,7 +1418,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>PR</td>
 <td>Can also be loaded as country US, subdivision PR</td>
 <td><strong>en_US</strong>, th</td>
-<td>HALF_DAY, UNOFFICIAL</td>
+<td>GOVERNMENT, HALF_DAY, UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Qatar</td>
@@ -1522,7 +1529,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Saudi Arabia</td>
 <td>SA</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
+<td><strong>ar</strong>, bn, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -1934,7 +1941,7 @@ code when available. The following financial markets are available:
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>
 <td>Bombay Stock Exchange (BSE) market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi</td>
+<td><strong>en_IN</strong>, en_US, gu, hi, mr</td>
 <td></td>
 </tr>
 <tr>
@@ -1983,7 +1990,7 @@ code when available. The following financial markets are available:
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi</td>
+<td><strong>en_IN</strong>, en_US, gu, hi, mr</td>
 <td></td>
 </tr>
 <tr>
@@ -2000,6 +2007,13 @@ code when available. The following financial markets are available:
 <td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
 <td></td>
 </tr>
+<tr>
+<td>Shenzhen Stock Exchange</td>
+<td>XSHE</td>
+<td>Shenzhen Stock Exchange (SZSE) market holidays</td>
+<td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 
@@ -2007,7 +2021,7 @@ code when available. The following financial markets are available:
 
 [Issues](https://github.com/vacanza/holidays/issues) and [pull
 requests](https://github.com/vacanza/holidays/pulls) are always welcome. Please see
-[here](https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.md) for more information.
+[CONTRIBUTING.md](https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.md) for more information.
 
 ## License
 

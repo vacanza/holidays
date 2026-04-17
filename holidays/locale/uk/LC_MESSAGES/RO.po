@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.22\n"
+"Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-22 18:35+0200\n"
-"PO-Revision-Date: 2023-03-22 21:28+0200\n"
+"PO-Revision-Date: 2026-04-10 20:45+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -33,16 +33,20 @@ msgid "Anul Nou"
 msgstr "Новий рік"
 
 #. Epiphany.
-msgid "Bobotează"
+msgid "Botezul Domnului - Boboteaza"
 msgstr "Богоявлення"
 
 #. Saint John the Baptist.
-msgid "Sfântul Ion"
+msgid "Soborul Sfântului Proroc Ioan Botezătorul"
 msgstr "День Івана Хрестителя"
 
 #. Unification of the Romanian Principalities Day.
 msgid "Ziua Unirii Principatelor Române"
 msgstr "День обʼєднання Дунайських князівств"
+
+#. Good Friday.
+msgid "Vinerea Mare"
+msgstr "Страсна пʼятниця"
 
 #. Easter.
 msgid "Paștele"
@@ -65,8 +69,8 @@ msgid "Adormirea Maicii Domnului"
 msgstr "Успіння Пресвятої Богородиці"
 
 #. Saint Andrew's Day.
-msgid "Sfantul Apostol Andrei cel Intai chemat"
-msgstr "День Святого Андрія Первозваного"
+msgid "Sfântul Apostol Andrei, cel Întâi chemat, Ocrotitorul României"
+msgstr "День Святого Андрія Первозваного, захисника Румунії"
 
 #. National Day.
 msgid "Ziua Națională a României"
