@@ -176,17 +176,18 @@ class TestFrance(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
-            # Alsace, Moselle - 1893.
-            if subdiv in {"57", "6AE"}:
-                self.assertHolidayName(name, holidays, dt)
-                self.assertHolidayName(name, holidays, range(1893, self.end_year))
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 1893))
-            # Guadeloupe, Martinique, French Polynesia - Unknown, but exists.
-            elif subdiv in {"971", "972", "PF"}:
-                self.assertHolidayName(name, holidays, dt)
-                self.assertHolidayName(name, holidays, self.full_range)
-            else:
-                self.assertNoHolidayName(name, holidays)
+            match subdiv:
+                # Alsace, Moselle - 1893.
+                case "57" | "6AE":
+                    self.assertHolidayName(name, holidays, dt)
+                    self.assertHolidayName(name, holidays, range(1893, self.end_year))
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 1893))
+                # Guadeloupe, Martinique, French Polynesia - Unknown, but exists.
+                case "971" | "972" | "PF":
+                    self.assertHolidayName(name, holidays, dt)
+                    self.assertHolidayName(name, holidays, self.full_range)
+                case _:
+                    self.assertNoHolidayName(name, holidays)
 
     def test_saint_stephens_day(self):
         name = "Saint Étienne"
@@ -225,69 +226,71 @@ class TestFrance(CommonCountryTests, TestCase):
         name = "Abolition de l'esclavage"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
-            # Guadeloupe - 1984.
-            if subdiv == "971":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-05-27" for year in range(1984, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 1984))
-            # Martinique - 1984.
-            elif subdiv == "972":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-05-22" for year in range(1984, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 1984))
-            # Guyane - 1984.
-            elif subdiv == "973":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-06-10" for year in range(1984, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 1984))
-            # Reunion - 1983.
-            elif subdiv == "974":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-12-20" for year in range(1983, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 1983))
-            # Mayotte - 1984.
-            elif subdiv == "976":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-04-27" for year in range(1984, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 1984))
-            # Saint Barthelemy - 2012.
-            elif subdiv == "BL":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-10-09" for year in range(2012, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 2012))
-            # Saint Martin - 2012.
-            elif subdiv == "MF":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-05-28" for year in range(2012, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 2012))
-            else:
-                self.assertNoHolidayName(name, holidays)
+            match subdiv:
+                # Guadeloupe - 1984.
+                case "971":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-05-27" for year in range(1984, self.end_year))
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 1984))
+                # Martinique - 1984.
+                case "972":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-05-22" for year in range(1984, self.end_year))
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 1984))
+                # Guyane - 1984.
+                case "973":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-06-10" for year in range(1984, self.end_year))
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 1984))
+                # Reunion - 1983.
+                case "974":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-12-20" for year in range(1983, self.end_year))
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 1983))
+                # Mayotte - 1984.
+                case "976":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-04-27" for year in range(1984, self.end_year))
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 1984))
+                # Saint Barthelemy - 2012.
+                case "BL":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-10-09" for year in range(2012, self.end_year))
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 2012))
+                # Saint Martin - 2012.
+                case "MF":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-05-28" for year in range(2012, self.end_year))
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 2012))
+                case _:
+                    self.assertNoHolidayName(name, holidays)
 
     def test_victor_schoelcher_day(self):
         name = "Fête de Victor Schoelcher"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
-            # Guadeloupe, Martinique - 1984.
-            if subdiv in {"971", "972"}:
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-07-21" for year in range(1984, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 1984))
-            # Saint Martin - 2012.
-            elif subdiv == "MF":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-07-21" for year in range(2012, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 2012))
-            else:
-                self.assertNoHolidayName(name, holidays)
+            match subdiv:
+                # Guadeloupe, Martinique - 1984.
+                case "971" | "972":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-07-21" for year in range(1984, self.end_year))
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 1984))
+                # Saint Martin - 2012.
+                case "MF":
+                    self.assertHolidayName(
+                        name, holidays, (f"{year}-07-21" for year in range(2012, self.end_year))
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 2012))
+                case _:
+                    self.assertNoHolidayName(name, holidays)
 
     def test_citizenship_day(self):
         name_1953 = "Fête de la prise de possession"

@@ -40,15 +40,15 @@ The amount sponsored will vary depending on the complexity of the task:
 
 - These rates are contingent on available funding and **do not cover any fees** charged by payment processors or platforms.
 - By default, tasks are classified as `sponsorship-medium`, unless a maintainer explicitly labels them as `sponsorship-hard`.
-- A task may be **reclassified as `sponsorship-hard` at the maintainer’s discretion, based on its complexity or scope.
+- A task may be **reclassified as `sponsorship-hard` at the maintainer's discretion, based on its complexity or scope.
 
 ## Eligibility
 
 To participate in the sponsorship program, contributors must:
 
-- Have successfully implemented at least one entity’s holiday support (not necessarily through the sponsorship program)
+- Have successfully implemented at least one entity's holiday support (not necessarily through the sponsorship program)
 - Not be currently receiving payment through other structured coding programs (e.g., GSoC, Outreachy)
-- Have a GitHub Sponsors account set up and eligible to receive payments (check [GitHub’s supported countries](https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors#supported-regions-for-github-sponsors))
+- Have a GitHub Sponsors account set up and eligible to receive payments (check [GitHub's supported countries](https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors#supported-regions-for-github-sponsors))
 
 ### Eligibility Notes
 
@@ -61,9 +61,9 @@ To apply for a sponsored issue, simply comment on the issue expressing your inte
 
 Before applying, please ensure that you meet the eligibility requirements:
 
-- You must have **at least one merged pull request** that adds support for a new entity’s holidays.
+- You must have **at least one merged pull request** that adds support for a new entity's holidays.
 
-If more than one eligible contributor expresses interest, we will review each applicant’s prior contributions and sponsorship participation history. Priority will be given to **new eligible contributors** who have not yet participated in the sponsorship program. This helps ensure a fair and balanced distribution of sponsored tasks across the community.
+If more than one eligible contributor expresses interest, we will review each applicant's prior contributions and sponsorship participation history. Priority will be given to **new eligible contributors** who have not yet participated in the sponsorship program. This helps ensure a fair and balanced distribution of sponsored tasks across the community.
 
 A previously sponsored contributor will not be assigned to a new task if there is another eligible contributor who has not yet had the opportunity to participate.
 
@@ -79,7 +79,7 @@ All applications from eligible contributors will be considered, and the issue wi
 
 ## For Potential Sponsors
 
-We welcome additional financial support from individuals and organizations who believe in the mission of Open World Holidays Framework and want to help sustain high-quality open source contributions. The easiest way to contribute to our sponsorship fund is via: [Open Collective – Open World Holidays Framework](https://opencollective.com/open-world-holidays-framework). To recognize your support, all sponsors who contribute $100 USD or more will be acknowledged in the project's README.md file.
+We welcome additional financial support from individuals and organizations who believe in the mission of Open World Holidays Framework and want to help sustain high-quality open source contributions. The easiest way to contribute to our sponsorship fund is via: [Open Collective - Open World Holidays Framework](https://opencollective.com/open-world-holidays-framework). To recognize your support, all sponsors who contribute $100 USD or more will be acknowledged in the project's README.md file.
 
 Your contributions help expand our budget, allowing us to sponsor more contributors and cover a wider range of countries, regions, and entities. Thank you for helping us grow the Open World Holidays Framework community.
 
@@ -118,7 +118,7 @@ If these requirements are not met, the contributor will be unassigned and **no p
 **A:** To be eligible for payment, the pull request must be successfully merged into the dev branch. This typically requires 100% test coverage (in line with the current project standard) and adherence to strict code style and quality guidelines. Please refer to our contributing guide and recently merged PRs for examples. These standards help maintain the high quality of a project used by millions, with over 10 million downloads per month.
 
 **Q: Is there a limit to the number of sponsorship-eligible pull requests a contributor can complete per month?**  
-**A:** There is no fixed limit on the number of sponsorship-eligible pull requests a contributor can complete per month. However, to ensure fair distribution of available tasks, contributors may only work on one sponsored task at a time. Priority is given to new eligible contributors who have not yet participated in the program. As long as you meet the eligibility criteria and follow the assignment process, you’re welcome to continue contributing.
+**A:** There is no fixed limit on the number of sponsorship-eligible pull requests a contributor can complete per month. However, to ensure fair distribution of available tasks, contributors may only work on one sponsored task at a time. Priority is given to new eligible contributors who have not yet participated in the program. As long as you meet the eligibility criteria and follow the assignment process, you're welcome to continue contributing.
 
 ## Contact
 

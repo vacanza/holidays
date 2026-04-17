@@ -16,6 +16,9 @@ from holidays.holiday_base import HolidayBase
 class NoHolidayBase(HolidayBase):
     """A dummy holiday class that does not contain any holidays."""
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year: int) -> None:
         """No holidays."""
         return None

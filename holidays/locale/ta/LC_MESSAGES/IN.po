@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.94\n"
+"Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
 "PO-Revision-Date: 2026-04-03 22:16+0530\n"
@@ -38,7 +38,7 @@ msgstr "குடியரசு நாள்"
 
 #. Independence Day.
 msgid "Independence Day"
-msgstr "விடுதலை நாள்"
+msgstr "சுதந்திர தினம்"
 
 #. Gandhi Jayanti.
 msgid "Gandhi Jayanti"
@@ -54,7 +54,7 @@ msgstr "தீபாவளி"
 
 #. Janmashtami.
 msgid "Janmashtami"
-msgstr "கோகுலாட்டமி"
+msgstr "கிருஷ்ண ஜெயந்தி"
 
 #. Dussehra.
 msgid "Dussehra"
@@ -110,7 +110,7 @@ msgstr "விநாயகர் சதுர்த்தி"
 
 #. Govardhan Puja.
 msgid "Govardhan Puja"
-msgstr "கோவர்த்தன பூஜை"
+msgstr "கோவர்தன் பூஜை"
 
 #. Labor Day.
 msgid "Labour Day"
@@ -134,7 +134,7 @@ msgstr "ராம நவமி"
 
 #. Navratri / Sharad Navratri.
 msgid "Navratri / Sharad Navratri"
-msgstr "நவராத்திரி / சரத் நவராத்திரி"
+msgstr "நவராத்திரி / சரத நவராத்திரி"
 
 #. Easter Sunday.
 msgid "Easter Sunday"
@@ -147,6 +147,10 @@ msgstr "பனை ஞாயிறு"
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr "டாக்டர் பி. ஆர். அம்பேத்கர் ஜெயந்தி"
+
+#. Onam.
+msgid "Onam"
+msgstr "ஓணம்"
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
@@ -166,7 +170,7 @@ msgstr "அஸ்ஸாம் நாள்"
 
 #. Chhath Puja.
 msgid "Chhath Puja"
-msgstr "சாட் பூஜை"
+msgstr "சத் பூஜை"
 
 #. Bihar Day.
 msgid "Bihar Day"
@@ -182,7 +186,7 @@ msgstr "கோவா விடுதலை நாள்"
 
 #. Makar Sankranti.
 msgid "Uttarayan"
-msgstr "உத்தராயண்"
+msgstr "உத்தராயண் நாள்"
 
 #. Gujarat Day.
 msgid "Gujarat Day"
@@ -198,7 +202,7 @@ msgstr "பார்சி புத்தாண்டு (ஷாஹென்ஷ
 
 #. Haryana Foundation Day.
 msgid "Haryana Foundation Day"
-msgstr "அரியானா நாள்"
+msgstr "ஹரியானா நாள்"
 
 #. Himachal Day.
 msgid "Himachal Day"
@@ -210,11 +214,7 @@ msgstr "ஜார்கண்ட் உருவாக்க நாள்"
 
 #. Karnataka Rajyotsav.
 msgid "Karnataka Rajyotsava"
-msgstr "கர்நாடக ராஜ்யோத்சவ"
-
-#. Onam.
-msgid "Onam"
-msgstr "ஓணம்"
+msgstr "கர்நாடக ராஜ்யோற்சவம்"
 
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"
@@ -246,7 +246,7 @@ msgstr "நாகலாந்து மாநில தொடக்க நாள
 
 #. Odisha Day.
 msgid "Odisha Day (Utkala Dibasa)"
-msgstr "ஒடிசா நாள் (உத்கள திபாசா)"
+msgstr "ஒடிசா நாள் (உத்கல திவசம்)"
 
 #. Maha Vishuva Sankranti.
 msgid "Maha Vishuva Sankranti / Pana Sankranti"
