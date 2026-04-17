@@ -512,6 +512,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
     def test_l10n_hi(self):
         self.assertLocalizedHolidays(
             "hi",
+            ("2023-01-01", "नया साल"),
             ("2023-01-26", "गणतंत्र दिवस"),
             ("2023-03-07", "होली"),
             ("2023-03-30", "राम नवमी"),
@@ -519,7 +520,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             ("2023-04-07", "गुड फ्राइडे"),
             ("2023-04-14", "डॉ. बाबा साहेब अम्बेडकर जयंती"),
             ("2023-05-01", "महाराष्ट्र दिवस"),
-            ("2023-06-28", "बकरी ईद"),
+            ("2023-06-28", "बकरीद"),
             ("2023-08-15", "स्वतंत्रता दिवस"),
             ("2023-09-19", "गणेश चतुर्थी"),
             ("2023-10-02", "महात्मा गांधी जयंती"),
