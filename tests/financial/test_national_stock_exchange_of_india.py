@@ -512,8 +512,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
     def test_l10n_hi(self):
         self.assertLocalizedHolidays(
             "hi",
-            ("2023-01-01", "नया साल"),
-            ("2023-01-26", "गणतंत्र दिवस"),
+            ("2023-01-26", "गणतंत्र दिवस"),  # New Year removed because 2023-01-01 was a Sunday
             ("2023-03-07", "होली"),
             ("2023-03-30", "राम नवमी"),
             ("2023-04-04", "महावीर जयंती"),
