@@ -223,15 +223,16 @@ class TestMicronesia(CommonCountryTests, TestCase):
             "2025-04-18",
         )
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "KSA":
-                self.assertHolidayName(name, holidays, dt)
-                self.assertHolidayName(name, holidays, range(2000, 2050))
-                self.assertNoHolidayName(name, holidays, range(1987, 2000))
-            elif subdiv == "PNI":
-                self.assertHolidayName(name, holidays, dt)
-                self.assertHolidayName(name, holidays, range(1987, 2050))
-            else:
-                self.assertNoHolidayName(name, holidays)
+            match subdiv:
+                case "KSA":
+                    self.assertHolidayName(name, holidays, dt)
+                    self.assertHolidayName(name, holidays, range(2000, 2050))
+                    self.assertNoHolidayName(name, holidays, range(1987, 2000))
+                case "PNI":
+                    self.assertHolidayName(name, holidays, dt)
+                    self.assertHolidayName(name, holidays, range(1987, 2050))
+                case _:
+                    self.assertNoHolidayName(name, holidays)
 
     def test_gospel_day(self):
         name = "Gospel Day"

@@ -53,6 +53,7 @@ HEBREW = "hebrew"
 HINDU = "hindu"
 ISLAMIC = "islamic"
 ORTHODOX = "orthodox"
+PROTESTANT = "protestant"
 SABIAN = "sabian"
 YAZIDI = "yazidi"
 

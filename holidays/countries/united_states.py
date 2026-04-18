@@ -143,6 +143,7 @@ class UnitedStates(
             * [Law No. 121 of Dec 24, 1991](https://web.archive.org/web/20251213230111/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0121-1991.pdf)
             * [Law No. 39 of Jul 11, 1994](https://web.archive.org/web/20221222034721/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0039-1994.pdf)
             * [Law No. 76 of Jul 6, 1995](https://web.archive.org/web/20250605110906/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/76-1995.pdf)
+            * [Law No. 53 of Mar 4, 2000](https://web.archive.org/web/20230919015004/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/53-2000.pdf)
             * [Law No. 305 of Dec 25, 2002](https://web.archive.org/web/20250625061048/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/305-2002.pdf)
             * [Law No. 182 of Dec 1, 2010](https://web.archive.org/web/20221221221227/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0182-2010.pdf)
             * [Law No. 111 of Jul 29, 2014](https://web.archive.org/web/20250219021118/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0111-2014.pdf)
@@ -1317,6 +1318,13 @@ class UnitedStates(
                 name = tr("Discovery of Puerto Rico Day")
             self._add_observed(self._add_holiday_nov_19(name), rule=SUN_TO_NEXT_MON)
 
+    def _populate_subdiv_pr_government_holidays(self):
+        # Día de la Ciudadanía Americana.
+        # Established by Law No. 53 of Mar 4, 2000.
+        if self._year >= 2001:
+            # American Citizenship Day.
+            self._add_holiday_mar_2(tr("American Citizenship Day"))
+
     def _populate_subdiv_pr_half_day_holidays(self):
         # Established by Law No. 305 of Dec 25, 2002.
         if self._year >= 2003:
@@ -1559,7 +1567,7 @@ class UnitedStates(
     def _populate_government_holidays(self):
         # Added by 16 Stat. 168, effectdive date June 28th, 1870.
         # New Year's Day check for 1871 is included.
-        if self._year >= 1870:
+        if self._year >= 1870 and self.subdiv != "PR":
             # Federal holidays in the United States.
             self._populate_common(include_federal=True)
 
@@ -1672,17 +1680,17 @@ class UnitedStatesStaticHolidays(StaticHolidays):
         * [2009, EO 13523](https://web.archive.org/web/20250204020329/https://www.federalregister.gov/documents/2009/12/16/E9-30020/half-day-closing-of-executive-departments-and-agencies-on-thursday-december-24-2009)
         * [2012, EO 13633](https://web.archive.org/web/20250202102026/https://www.federalregister.gov/documents/2012/12/28/2012-31225/closing-of-executive-departments-and-agencies-of-the-federal-government-on-monday-december-24-2012)
         * [2014, EO 13682](https://web.archive.org/web/20250204140956/https://www.federalregister.gov/documents/2014/12/10/2014-29121/closing-of-executive-departments-and-agencies-of-the-federal-government-on-friday-december-26-2014)
-        * [2015, EO 13713]https://web.archive.org/web/20250204021239/https://www.federalregister.gov/documents/2015/12/16/2015-31749/half-day-closing-of-executive-departments-and-agencies-of-the-federal-government-on-thursday)
+        * [2015, EO 13713](https://web.archive.org/web/20250204021239/https://www.federalregister.gov/documents/2015/12/16/2015-31749/half-day-closing-of-executive-departments-and-agencies-of-the-federal-government-on-thursday)
         * [2018, EO 13852](https://web.archive.org/web/20250507175643/https://www.federalregister.gov/documents/2018/12/04/2018-26552/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on)
         * [2018, EO 13854](https://web.archive.org/web/20250202030122/https://www.federalregister.gov/documents/2018/12/21/2018-27945/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on)
         * [2019, EO 13900](https://web.archive.org/web/20250205125417/https://www.federalregister.gov/documents/2019/12/20/2019-27678/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on)
         * [2020, EO 13965](https://web.archive.org/web/20250212090335/https://www.federalregister.gov/documents/2020/12/16/2020-27807/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on)
         * [2024, EO 14129](https://web.archive.org/web/20250219155414/https://www.federalregister.gov/documents/2024/12/26/2024-31143/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on)
         * [2025, EO 14133](https://web.archive.org/web/20250218220403/https://www.federalregister.gov/documents/2025/01/03/2024-31766/providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on-january)
-        * [2025](https://web.archive.org/web/20251219180805/https://www.whitehouse.gov/presidential-actions/2025/12/providing-for-the-closure-of-executive-departments-and-agencies-of-the-federal-government-on-december-24-2025-and-december-26-2025/)
+        * [2025, EO 14371](https://web.archive.org/web/20251219180805/https://www.whitehouse.gov/presidential-actions/2025/12/providing-for-the-closure-of-executive-departments-and-agencies-of-the-federal-government-on-december-24-2025-and-december-26-2025/)
 
 
-    Pre-1971 Inauguration Day observances has been moved here.
+    Pre-1971 Inauguration Day observances have been moved here.
     """
 
     # Fasting and Humiliation Day.

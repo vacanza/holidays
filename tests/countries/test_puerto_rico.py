@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import GOVERNMENT, HALF_DAY
 from holidays.countries.puerto_rico import PuertoRico
 from tests.common import CommonCountryTests
 
@@ -20,6 +21,14 @@ class TestPuertoRico(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(PuertoRico)
+
+    def test_no_holidays(self):
+        super().test_no_holidays()
+
+        self.assertNoHolidays(
+            PuertoRico(categories=GOVERNMENT, years=range(self.start_year, 2001))
+        )
+        self.assertNoHolidays(PuertoRico(categories=HALF_DAY, years=range(self.start_year, 2003)))
 
     def test_epiphany(self):
         name = "Epiphany"
@@ -228,6 +237,14 @@ class TestPuertoRico(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name_2023} (observed)", obs_dts_2023)
         self.assertNoNonObservedHoliday(obs_dts_1938, obs_dts_2014, obs_dts_2023)
 
+    def test_american_citizenship_day(self):
+        name = "American Citizenship Day"
+        self.assertNoHolidayName(name)
+        self.assertGovernmentHolidayName(
+            name, (f"{year}-03-02" for year in range(2001, self.end_year))
+        )
+        self.assertNoGovernmentHolidayName(name, range(self.start_year, 2001))
+
     def test_christmas_eve(self):
         name = "Christmas Eve (from 12pm)"
         self.assertHalfDayHolidayName(
@@ -246,6 +263,7 @@ class TestPuertoRico(CommonCountryTests, TestCase):
                 "George Washington Day, Presidents' Day, and the Day of the Women and Men "
                 "Heroes of Puerto Rico",
             ),
+            ("2022-03-02", "American Citizenship Day"),
             ("2022-03-17", "Saint Patrick's Day"),
             ("2022-03-22", "Emancipation Day"),
             ("2022-04-15", "Good Friday"),
@@ -276,6 +294,7 @@ class TestPuertoRico(CommonCountryTests, TestCase):
             ("2022-01-17", "วันมาร์ติน ลูเทอร์ คิง จูเนียร์"),
             ("2022-02-14", "วันวาเลนไทน์"),
             ("2022-02-21", "วันจอร์จ วอชิงตัน, วันประธานาธิบดี และวันวีรบุรุษและวีรสตรีแห่งเปอร์โตริโก"),
+            ("2022-03-02", "วันแห่งความเป็นพลเมืองอเมริกัน"),
             ("2022-03-17", "วันนักบุญแพทริก"),
             ("2022-03-22", "วันเลิกทาส"),
             ("2022-04-15", "วันศุกร์ประเสริฐ"),

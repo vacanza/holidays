@@ -14,10 +14,11 @@ from collections.abc import Iterable
 from datetime import date
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.helpers import _normalize_tuple
 
 BATHUKAMMA = "BATHUKAMMA"
+BONALU = "BONALU"
 BUDDHA_PURNIMA = "BUDDHA_PURNIMA"
 CHHATH_PUJA = "CHHATH_PUJA"
 DIWALI = "DIWALI"
@@ -86,6 +87,28 @@ class _HinduLunisolar:
         2033: (SEP, 23),
         2034: (OCT, 11),
         2035: (OCT, 1),
+    }
+
+    # Dates for Bonalu (Ashada Masam).
+    # [2018](https://web.archive.org/web/20250402131537/https://www.telangana.gov.in/Downloads/calendar-2018/)
+    # [2019](https://web.archive.org/web/20250508145651/https://www.telangana.gov.in/Downloads/calendar-2019/)
+    # [2020](https://web.archive.org/web/20250421174049/https://www.telangana.gov.in/downloads/calendar-2020/)
+    # [2021](https://web.archive.org/web/20250404142143/https://www.telangana.gov.in/Downloads/calendar-2021/)
+    # [2022](https://web.archive.org/web/20250217143857/https://www.telangana.gov.in/Downloads/calendar-2022/)
+    # [2023](https://web.archive.org/web/20250123180708/https://www.telangana.gov.in/Downloads/calendar-2023/)
+    # [2024](https://web.archive.org/web/20250217144536/https://www.telangana.gov.in/Downloads/calendar/)
+    # [2025](https://web.archive.org/web/20250217133450/https://www.telangana.gov.in/Downloads/calendar-2025/)
+    BONALU_DATES = {
+        2018: (AUG, 6),
+        2019: (JUL, 29),
+        2020: (JUL, 20),
+        2021: (AUG, 2),
+        2022: (JUL, 25),
+        2023: (JUL, 17),
+        2024: (JUL, 29),
+        2025: (JUL, 21),
+        2026: (AUG, 10),
+        2027: (AUG, 2),
     }
 
     # https://web.archive.org/web/20240804044401/https://www.timeanddate.com/holidays/india/buddha-purnima
@@ -1488,6 +1511,9 @@ class _HinduLunisolar:
 
     def bathukamma_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BATHUKAMMA, year)
+
+    def bonalu_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(BONALU, year)
 
     def buddha_purnima_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BUDDHA_PURNIMA, year)
