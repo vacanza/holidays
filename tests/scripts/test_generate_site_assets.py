@@ -18,7 +18,7 @@ from scripts.generate_site_assets import LANGUAGES
 
 class TestGenerateSiteAssets(TestCase):
     def test_languages_mapping(self):
-        languages = set(LANGUAGES.keys())
+        languages = set(LANGUAGES)
         supported_languages = set().union(
             *list_localized_countries(include_aliases=False).values(),
             *list_localized_financial(include_aliases=False).values(),
