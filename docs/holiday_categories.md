@@ -137,7 +137,7 @@ Holidays specific to the Protestant Christian tradition.
 
 Examples:
 
-- In Austria (1956–2018), Good Friday was treated as a public holiday for members of the Evangelical Churches of the Augsburg and Helvetic Confessions, the Methodist Church, and the Old Catholic Church (the special provision was removed via [BGBl. I Nr. 22/2019](https://web.archive.org/web/20260408111719/https://www.ris.bka.gv.at/Dokumente/BgblAuth/BGBLA_2019_I_22/BGBLA_2019_I_22.pdf)).
+- In Austria (1956-2018), Good Friday was treated as a public holiday for members of the Evangelical Churches of the Augsburg and Helvetic Confessions, the Methodist Church, and the Old Catholic Church (the special provision was removed via [BGBl. I Nr. 22/2019](https://web.archive.org/web/20260408111719/https://www.ris.bka.gv.at/Dokumente/BgblAuth/BGBLA_2019_I_22/BGBLA_2019_I_22.pdf)).
 
 #### CHRISTIAN
 
