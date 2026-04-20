@@ -86,7 +86,7 @@ class TextNormalizer:
             # For Python >=3.13: original = path.read_text(encoding="utf-8", newline="")
             with path.open("r", encoding="utf-8", newline="") as f:
                 original = f.read()
-        except Exception as e:
+        except (OSError, UnicodeDecodeError) as e:
             print(f"Warning: Could not read {path}: {e}", file=sys.stderr)
             return False
         # Skip binary files
@@ -100,7 +100,7 @@ class TextNormalizer:
             return False
         try:
             path.write_text(fixed, encoding="utf-8", newline="")
-        except Exception as e:
+        except OSError as e:
             print(f"Error writing {path}: {e}", file=sys.stderr)
             return False
         return True
