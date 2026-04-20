@@ -105,11 +105,11 @@ msgid "ग्याल्पो ल्होसार"
 msgstr ""
 
 #. Fagu Poornima.
-msgid "फागुपुर्णिमा"
+msgid "फागु पूर्णिमा"
 msgstr ""
 
 #. Fagu Poornima (Terai).
-msgid "फागुपूर्णिमा (तराई)"
+msgid "फागु पूर्णिमा (तराई)"
 msgstr ""
 
 #. Buddha Jayanti.
@@ -137,7 +137,7 @@ msgid "एकादशी (दशैं)"
 msgstr ""
 
 #. Laxmi Pooja.
-msgid "लक्ष्मी पुजा"
+msgid "लक्ष्मी पूजा"
 msgstr ""
 
 #. Gai Tihar.
