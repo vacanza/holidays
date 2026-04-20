@@ -102,7 +102,7 @@ msgstr "गुरु नानक जयंती"
 
 #. Bhai Dooj.
 msgid "Bhau Bhij"
-msgstr "भाऊ बीज"
+msgstr "भाई दूज"
 
 #. Buddha Purnima.
 msgid "Buddha Purnima"
@@ -118,12 +118,12 @@ msgstr "मिलाद-उन-नबी"
 
 #. Eid al-Fitr.
 msgid "Id-Ul-Fitr (Ramadan Eid)"
-msgstr "ईद-उल-फितर (रमजान ईद)"
+msgstr "ईद-उल-फितर (रमज़ान ईद)"
 
 #. Eid al-Adha.
 msgid "Bakri Id"
-msgstr "बकरी ईद"
+msgstr "बकरीद"
 
 #. New Year's Day.
 msgid "New Year"
-msgstr "नया वर्ष"
+msgstr "नया साल"
