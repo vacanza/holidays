@@ -68,7 +68,7 @@ class TextNormalizer:
         for match in FIND_URL_PATTERN.finditer(text):
             start, end = match.start(), match.end()
             result.append(text[last_end:start].translate(REPLACEMENT_TABLE))
-            result.append(match.group())
+            result.append(text[start:end])
             last_end = end
         result.append(text[last_end:].translate(REPLACEMENT_TABLE))
         return "".join(result)
