@@ -16,6 +16,8 @@ from pathlib import Path
 
 FIND_URL_PATTERN = re.compile(r'https?://[^\s<>"]+')
 REPLACEMENTS = {
+    # Space (U+0020)
+    " ": " ",  # No-Break Space (U+00A0)
     # Quotation Mark (U+0022)
     "“": '"',  # Left Double Quotation Mark (U+201C)
     "”": '"',  # Right Double Quotation Mark (U+201D)
@@ -58,7 +60,9 @@ class TextNormalizer:
         if not path.is_file():
             return False
         try:
-            original = path.read_text(encoding="utf-8")
+            # For Python >=3.13: original = path.read_text(encoding="utf-8", newline="")
+            with path.open("r", encoding="utf-8", newline="") as f:
+                original = f.read()
         except Exception as e:
             print(f"Warning: Could not read {path}: {e}", file=sys.stderr)
             return False
@@ -72,8 +76,7 @@ class TextNormalizer:
         if fixed == original:
             return False
         try:
-            newline = "\r\n" if "\r\n" in original else "\n"
-            path.write_text(fixed, encoding="utf-8", newline=newline)
+            path.write_text(fixed, encoding="utf-8", newline="")
         except Exception as e:
             print(f"Error writing {path}: {e}", file=sys.stderr)
             return False
