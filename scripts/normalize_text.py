@@ -34,6 +34,8 @@ REPLACEMENTS = {
     "“": '"',  # Left Double Quotation Mark (U+201C)
     "”": '"',  # Right Double Quotation Mark (U+201D)
     # Apostrophe (U+0027)
+    # Note: Modifier Letter Turned Comma (U+02BB) is used in Tongan and Uzbek
+    #       while Modifier Letter Apostrophe (U+02BC) is used in Ukrainian.
     "‘": "'",  # Left Single Quotation Mark (U+2018)
     "’": "'",  # Right Single Quotation Mark (U+2019)
     # Hyphen Minus (U+002D)
