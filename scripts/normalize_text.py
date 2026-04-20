@@ -22,7 +22,6 @@ REPLACEMENTS = {
     "“": '"',  # Left Double Quotation Mark (U+201C)
     "”": '"',  # Right Double Quotation Mark (U+201D)
     # Apostrophe (U+0027)
-    "ʻ": "'",  # Modifier Letter Turned Comma (U+02BB)
     "‘": "'",  # Left Single Quotation Mark (U+2018)
     "’": "'",  # Right Single Quotation Mark (U+2019)
     # Hyphen Minus (U+002D)
