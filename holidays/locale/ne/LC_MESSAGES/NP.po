@@ -29,157 +29,157 @@ msgstr ""
 
 #. %s (estimated).
 #, c-format
-msgid "%s (अनुमानित)"
-msgstr ""
+msgid "%s (estimated)"
+msgstr "%s (अनुमानित)"
 
 #. Martyr's Day.
-msgid "शहीद दिवस"
-msgstr ""
+msgid "Martyr's Day"
+msgstr "शहीद दिवस"
 
 #. National Democracy Day.
-msgid "राष्ट्रिय प्रजातन्त्र दिवस"
-msgstr ""
+msgid "National Democracy Day"
+msgstr "राष्ट्रिय प्रजातन्त्र दिवस"
 
 #. Republic Day.
-msgid "गणतन्त्र दिवस"
-msgstr ""
+msgid "Republic Day"
+msgstr "गणतन्त्र दिवस"
 
 #. Ram Navami.
-msgid "राम नवमी"
-msgstr ""
+msgid "Ram Navami"
+msgstr "राम नवमी"
 
 #. Janai Poornima.
-msgid "जनै पूर्णिमा"
-msgstr ""
+msgid "Janai Poornima"
+msgstr "जनै पूर्णिमा"
 
 #. Shree Krishna Janmashtami.
-msgid "श्रीकृष्ण जन्माष्टमी"
-msgstr ""
+msgid "Shree Krishna Janmashtami"
+msgstr "श्रीकृष्ण जन्माष्टमी"
 
 #. Ghatasthapana.
-msgid "घटस्थापना"
-msgstr ""
+msgid "Ghatasthapana"
+msgstr "घटस्थापना"
 
 #. Duwadashi (Dashain).
-msgid "दुवादशी (दशैं)"
-msgstr ""
+msgid "Duwadashi (Dashain)"
+msgstr "द्वादशी (दशैं)"
 
 #. Prithvi Jayanti.
-msgid "पृथ्वी जयन्ती"
-msgstr ""
+msgid "Prithvi Jayanti"
+msgstr "पृथ्वी जयन्ती"
 
 #. International Women's Day.
-msgid "अन्तर्राष्ट्रिय महिला दिवस"
-msgstr ""
+msgid "International Women's Day"
+msgstr "अन्तर्राष्ट्रिय महिला दिवस"
 
 #. Nepali New Year.
-msgid "नेपाली नयाँ वर्ष"
-msgstr ""
+msgid "Nepali New Year"
+msgstr "नेपाली नयाँ वर्ष"
 
 #. International Labor Day.
-msgid "अन्तर्राष्ट्रिय श्रम दिवस"
-msgstr ""
+msgid "International Labor Day"
+msgstr "अन्तर्राष्ट्रिय श्रम दिवस"
 
 #. Constitution Day.
-msgid "संविधान दिवस"
-msgstr ""
+msgid "Constitution Day"
+msgstr "संविधान दिवस"
 
 #. Christmas Day.
-msgid "क्रिसमसको दिन"
-msgstr ""
+msgid "Christmas Day"
+msgstr "क्रिसमस"
 
 #. Maghe Sankranti.
-msgid "माघे संक्रान्ति"
-msgstr ""
+msgid "Maghe Sankranti"
+msgstr "माघे संक्रान्ति"
 
 #. Sonam Lhochhar.
-msgid "सोनम ल्होछार"
-msgstr ""
+msgid "Sonam Lhochhar"
+msgstr "सोनम ल्होछार"
 
 #. Maha Shivaratri.
-msgid "महाशिवरात्रि"
-msgstr ""
+msgid "Maha Shivaratri"
+msgstr "महाशिवरात्रि"
 
 #. Gyalpo Lhosar.
-msgid "ग्याल्पो ल्होसार"
-msgstr ""
+msgid "Gyalpo Lhosar"
+msgstr "ग्याल्पो ल्होसार"
 
 #. Fagu Poornima.
-msgid "फागुपुर्णिमा"
-msgstr ""
+msgid "Fagu Poornima"
+msgstr "फागु पूर्णिमा"
 
 #. Fagu Poornima (Terai).
-msgid "फागुपूर्णिमा (तराई)"
-msgstr ""
+msgid "Fagu Poornima (Terai)"
+msgstr "फागु पूर्णिमा (तराई)"
 
 #. Buddha Jayanti.
-msgid "बुद्ध जयन्ती"
-msgstr ""
+msgid "Buddha Jayanti"
+msgstr "बुद्ध जयन्ती"
 
 #. Fulpati.
-msgid "फुलपाती"
-msgstr ""
+msgid "Fulpati"
+msgstr "फूलपाती"
 
 #. Maha Ashtami.
-msgid "महा अष्टमी"
-msgstr ""
+msgid "Maha Ashtami"
+msgstr "महा अष्टमी"
 
 #. Maha Navami.
-msgid "महा नवमी"
-msgstr ""
+msgid "Maha Navami"
+msgstr "महा नवमी"
 
 #. Bijaya Dashami.
-msgid "विजया दशमी"
-msgstr ""
+msgid "Bijaya Dashami"
+msgstr "विजया दशमी"
 
 #. Ekadashi (Dashain).
-msgid "एकादशी (दशैं)"
-msgstr ""
+msgid "Ekadashi (Dashain)"
+msgstr "एकादशी (दशैं)"
 
 #. Laxmi Pooja.
-msgid "लक्ष्मी पुजा"
-msgstr ""
+msgid "Laxmi Pooja"
+msgstr "लक्ष्मी पूजा"
 
 #. Gai Tihar.
-msgid "गाई तिहार"
-msgstr ""
+msgid "Gai Tihar"
+msgstr "गाई तिहार"
 
 #. Gobardhan Pooja.
-msgid "गोवर्धन पूजा"
-msgstr ""
+msgid "Gobardhan Pooja"
+msgstr "गोवर्धन पूजा"
 
 #. Mha Pooja.
-msgid "म्ह पूजा"
-msgstr ""
+msgid "Mha Pooja"
+msgstr "म्ह पूजा"
 
 #. Bhai Tika.
-msgid "भाइटीका"
-msgstr ""
+msgid "Bhai Tika"
+msgstr "भाइटीका"
 
 #. Chhath Parva.
-msgid "छठ पर्व"
-msgstr ""
+msgid "Chhath Parva"
+msgstr "छठ पर्व"
 
 #. Tamu Lhochhar.
-msgid "तमु ल्हाेसार"
-msgstr ""
+msgid "Tamu Lhochhar"
+msgstr "तमु ल्होसार"
 
 #. Eid al-Fitr.
-msgid "इद उल फित्र"
-msgstr ""
+msgid "Eid al-Fitr"
+msgstr "इद उल फित्र"
 
 #. Eid al-Adha.
-msgid "बकरीद"
-msgstr ""
+msgid "Eid al-Adha"
+msgstr "इद उल अधा"
 
 #. Day of National Mourning.
-msgid "राष्ट्रिय शोक दिवस"
-msgstr ""
+msgid "Day of National Mourning"
+msgstr "राष्ट्रिय शोक दिवस"
 
 #. Tihar Holiday.
-msgid "तिहार बिदा"
-msgstr ""
+msgid "Tihar Holiday"
+msgstr "तिहार बिदा"
 
 #. People War's Day.
-msgid "जनयुद्ध दिवस"
-msgstr ""
+msgid "People War's Day"
+msgstr "जनयुद्ध दिवस"
