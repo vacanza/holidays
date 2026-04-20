@@ -291,7 +291,7 @@ class Nepal(
         # Islamic holidays.
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("इद उल अजहा"))
+        self._add_eid_al_fitr_day(tr("इद उल फित्र"))
 
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("बकरीद"))
