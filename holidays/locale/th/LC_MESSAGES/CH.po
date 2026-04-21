@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.83\n"
+"Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-10-02 15:36+0700\n"
-"PO-Revision-Date: 2025-10-08 13:09+0700\n"
+"PO-Revision-Date: 2026-04-21 15:06+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.9\n"
 "X-Source-Language: de\n"
 
 #. New Year's Day.
@@ -123,6 +123,14 @@ msgstr "วันสมโภชนักบุญเปโตรและเป
 #. Prayer Monday.
 msgid "Bettagsmontag"
 msgstr "วันจันทร์แห่งการอธิษฐาน"
+
+#. Easter Sunday.
+msgid "Ostersontag"
+msgstr "วันอาทิตย์อีสเตอร์"
+
+#. Whit Sunday.
+msgid "Pfingstsontag"
+msgstr "วันสมโภชพระจิตเจ้า"
 
 #. Knabenschiessen.
 msgid "Knabenschiessen"

@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAR, APR, MON, THU, _timedelta, _get_nth_weekday_of_month
-from holidays.constants import HALF_DAY, OPTIONAL, PUBLIC
+from holidays.constants import DE_FACTO, HALF_DAY, OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -111,7 +111,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Cities
         "Stadt Zürich": "Stadt Zurich",
     }
-    supported_categories = (HALF_DAY, OPTIONAL, PUBLIC)
+    supported_categories = (DE_FACTO, HALF_DAY, OPTIONAL, PUBLIC)
     supported_languages = ("de", "en_US", "fr", "it", "th", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -733,6 +733,13 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
+    def _populate_subdiv_zh_de_facto_holidays(self):
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Ostersontag"))
+
+        # Whit Sunday.
+        self._add_whit_sunday(tr("Pfingstsontag"))
+
     def _populate_subdiv_stadt_zurich_public_holidays(self):
         self._populate_subdiv_zh_public_holidays()
 
@@ -744,6 +751,9 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             name = tr("Knabenschiessen")
             self._add_holiday_2nd_sun_of_sep(name)
             self._add_holiday_1_day_prior_2nd_sun_of_sep(name)
+
+    def _populate_subdiv_stadt_zurich_de_facto_holidays(self):
+        self._populate_subdiv_zh_de_facto_holidays()
 
     def _populate_subdiv_stadt_zurich_common(self):
         """Populate list of holidays observed by both `HALF_DAY` and `OPTIONAL` categories."""
