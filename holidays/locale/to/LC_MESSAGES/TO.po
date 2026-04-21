@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.96\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-10-24 19:30+0700\n"
-"PO-Revision-Date: 2023-10-24 19:38+0700\n"
+"PO-Revision-Date: 2026-04-21 09:57+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: to\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.9\n"
 "X-Source-Language: to\n"
 
 #. %s (observed).
@@ -62,8 +62,7 @@ msgid "ʻAho Tauʻataina"
 msgstr ""
 
 #. Anniversary of the Coronation Day of the reigning Sovereign of Tonga.
-msgid ""
-"Fakamanatu ʻo e ʻAho Hilifaki Kalauni ʻo ʻEne ʻAfio ko e Tuʻi ʻo Tonga ʻa ia ʻoku lolotonga Pule"
+msgid "Fakamanatu ʻo e ʻAho Hilifaki Kalauni ʻo ʻEne ʻAfio ko e Tuʻi ʻo Tonga ʻa ia ʻoku lolotonga Pule"
 msgstr ""
 
 #. Constitution Day.
