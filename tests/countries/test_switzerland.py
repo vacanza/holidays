@@ -44,14 +44,14 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             "Näfelser Fahrt",
             "Vortag vor Karfreitag",
             "Karfreitag",
-            "Ostersontag",
+            "Ostersonntag",
             "Ostermontag",
             "Sechseläuten",
             "Tag der Arbeit",
             "Vortag vor Auffahrt",
             "Auffahrt",
             "Brückentag nach Auffahrt",
-            "Pfingstsontag",
+            "Pfingstsonntag",
             "Pfingstmontag",
             "Fronleichnam",
             "Fest der Unabhängigkeit",
@@ -214,7 +214,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_easter_sunday(self):
-        name = "Ostersontag"
+        name = "Ostersonntag"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_de_facto_holidays.items():
             if subdiv in {"ZH", "Stadt Zurich"}:
@@ -283,7 +283,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_whit_sunday(self):
-        name = "Pfingstsontag"
+        name = "Pfingstsonntag"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_de_facto_holidays.items():
             if subdiv in {"ZH", "Stadt Zurich"}:
@@ -316,7 +316,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
         subdivs_that_have = set(Switzerland.subdivisions) - subdivs_that_dont - subdivs_optional
 
         self.assertNoHolidayName(name)
-        # PUBLC.
+        # PUBLIC.
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv in subdivs_that_have:
                 self.assertHolidayName(name, holidays, dts)
@@ -782,14 +782,14 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-03-19", "Josefstag"),
             ("2023-04-06", "Vortag vor Karfreitag"),
             ("2023-04-07", "Karfreitag"),
-            ("2023-04-09", "Ostersontag"),
+            ("2023-04-09", "Ostersonntag"),
             ("2023-04-10", "Ostermontag"),
             ("2023-04-13", "Näfelser Fahrt"),
             ("2023-04-17", "Sechseläuten"),
             ("2023-05-01", "Tag der Arbeit"),
             ("2023-05-17", "Vortag vor Auffahrt"),
             ("2023-05-18", "Auffahrt"),
-            ("2023-05-28", "Pfingstsontag"),
+            ("2023-05-28", "Pfingstsonntag"),
             ("2023-05-29", "Pfingstmontag"),
             ("2023-06-08", "Fronleichnam"),
             ("2023-06-23", "Fest der Unabhängigkeit"),

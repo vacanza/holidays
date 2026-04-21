@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-10-02 15:36+0700\n"
-"PO-Revision-Date: 2026-04-21 15:06+0700\n"
+"PO-Revision-Date: 2026-04-21 16:16+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -125,11 +125,11 @@ msgid "Bettagsmontag"
 msgstr "วันจันทร์แห่งการอธิษฐาน"
 
 #. Easter Sunday.
-msgid "Ostersontag"
+msgid "Ostersonntag"
 msgstr "วันอาทิตย์อีสเตอร์"
 
 #. Whit Sunday.
-msgid "Pfingstsontag"
+msgid "Pfingstsonntag"
 msgstr "วันสมโภชพระจิตเจ้า"
 
 #. Knabenschiessen.

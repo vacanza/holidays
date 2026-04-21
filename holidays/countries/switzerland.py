@@ -735,10 +735,10 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
 
     def _populate_subdiv_zh_de_facto_holidays(self):
         # Easter Sunday.
-        self._add_easter_sunday(tr("Ostersontag"))
+        self._add_easter_sunday(tr("Ostersonntag"))
 
         # Whit Sunday.
-        self._add_whit_sunday(tr("Pfingstsontag"))
+        self._add_whit_sunday(tr("Pfingstsonntag"))
 
     def _populate_subdiv_stadt_zurich_public_holidays(self):
         self._populate_subdiv_zh_public_holidays()
