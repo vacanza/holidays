@@ -59,6 +59,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             "Nationalfeiertag",
             "Mariä Himmelfahrt",
             "Knabenschiessen",
+            "Eidgenössischer Bettag",
             "Bettagsmontag",
             "Bruder Klaus",
             "Allerheiligen",
@@ -380,6 +381,25 @@ class TestSwitzerland(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-08-15" for year in self.full_range)
                 )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_federal_day_of_thanksgiving_prayer_and_repentance(self):
+        name = "Eidgenössischer Bettag"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_de_facto_holidays.items():
+            if subdiv in {"ZH", "Stadt Zurich"}:
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2020-09-20",
+                    "2021-09-19",
+                    "2022-09-18",
+                    "2023-09-17",
+                    "2024-09-15",
+                    "2025-09-21",
+                )
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -800,6 +820,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-09-09", "Knabenschiessen"),
             ("2023-09-10", "Knabenschiessen"),
             ("2023-09-11", "Knabenschiessen"),
+            ("2023-09-17", "Eidgenössischer Bettag"),
             ("2023-09-18", "Bettagsmontag"),
             ("2023-09-25", "Bruder Klaus"),
             ("2023-11-01", "Allerheiligen"),
@@ -841,6 +862,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-09-09", "Knabenschiessen"),
             ("2023-09-10", "Knabenschiessen"),
             ("2023-09-11", "Knabenschiessen"),
+            ("2023-09-17", "Federal Day of Thanksgiving, Repentance, and Prayer"),
             ("2023-09-18", "Prayer Monday"),
             ("2023-09-25", "Saint Nicholas of Flüe"),
             ("2023-11-01", "All Saints' Day"),
@@ -882,6 +904,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-09-09", "Knabenschiessen"),
             ("2023-09-10", "Knabenschiessen"),
             ("2023-09-11", "Knabenschiessen"),
+            ("2023-09-17", "Jeûne fédéral"),
             ("2023-09-18", "Lundi du Jeûne fédéral"),
             ("2023-09-25", "Fête de Saint-Nicolas-de-Flüe"),
             ("2023-11-01", "Toussaint"),
@@ -923,7 +946,8 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-09-09", "Knabenschiessen"),
             ("2023-09-10", "Knabenschiessen"),
             ("2023-09-11", "Knabenschiessen"),
-            ("2023-09-18", "Lunedì del digiuno federal"),
+            ("2023-09-17", "Digiuno federale"),
+            ("2023-09-18", "Lunedì del digiuno federale"),
             ("2023-09-25", "San Nicolao della Flue"),
             ("2023-11-01", "Ognissanti"),
             ("2023-12-08", "Immacolata Concezione"),
@@ -964,7 +988,8 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-09-09", "คนาเบนชิสเซน"),
             ("2023-09-10", "คนาเบนชิสเซน"),
             ("2023-09-11", "คนาเบนชิสเซน"),
-            ("2023-09-18", "วันจันทร์แห่งการอธิษฐาน"),
+            ("2023-09-17", "วันอธิษฐานแห่งชาติสวิตเซอร์แลนด์"),
+            ("2023-09-18", "วันจันทร์หลังวันอธิษฐานแห่งชาติสวิตเซอร์แลนด์"),
             ("2023-09-25", "วันสมโภชนักบุญนิโคลัสแห่งฟลือเออ"),
             ("2023-11-01", "วันสมโภชนักบุญทั้งหลาย"),
             ("2023-12-08", "วันสมโภชแม่พระผู้ปฏิสนธินิรมล"),
@@ -1005,6 +1030,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-09-09", "Кнабеншісен"),
             ("2023-09-10", "Кнабеншісен"),
             ("2023-09-11", "Кнабеншісен"),
+            ("2023-09-17", "Швейцарський національний день молитви"),
             ("2023-09-18", "Молитовний понеділок"),
             ("2023-09-25", "День Святого Ніклауса з Флюе"),
             ("2023-11-01", "День усіх святих"),

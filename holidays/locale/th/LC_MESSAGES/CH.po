@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-10-02 15:36+0700\n"
-"PO-Revision-Date: 2026-04-21 16:16+0700\n"
+"PO-Revision-Date: 2026-04-21 16:52+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -122,7 +122,7 @@ msgstr "วันสมโภชนักบุญเปโตรและเป
 
 #. Prayer Monday.
 msgid "Bettagsmontag"
-msgstr "วันจันทร์แห่งการอธิษฐาน"
+msgstr "วันจันทร์หลังวันอธิษฐานแห่งชาติสวิตเซอร์แลนด์"
 
 #. Easter Sunday.
 msgid "Ostersonntag"
@@ -131,6 +131,10 @@ msgstr "วันอาทิตย์อีสเตอร์"
 #. Whit Sunday.
 msgid "Pfingstsonntag"
 msgstr "วันสมโภชพระจิตเจ้า"
+
+#. Federal Day of Thanksgiving, Repentance, and Prayer.
+msgid "Eidgenössischer Bettag"
+msgstr "วันอธิษฐานแห่งชาติสวิตเซอร์แลนด์"
 
 #. Knabenschiessen.
 msgid "Knabenschiessen"

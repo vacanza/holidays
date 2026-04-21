@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-10 15:41+0300\n"
-"PO-Revision-Date: 2026-04-21 16:16+0700\n"
+"PO-Revision-Date: 2026-04-21 16:52+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: it\n"
@@ -122,7 +122,7 @@ msgstr "Santi Pietro e Paolo"
 
 #. Prayer Monday.
 msgid "Bettagsmontag"
-msgstr "Lunedì del digiuno federal"
+msgstr "Lunedì del digiuno federale"
 
 #. Easter Sunday.
 msgid "Ostersonntag"
@@ -131,6 +131,10 @@ msgstr "Pasqua"
 #. Whit Sunday.
 msgid "Pfingstsonntag"
 msgstr "Domenica di Pentecoste"
+
+#. Federal Day of Thanksgiving, Repentance, and Prayer.
+msgid "Eidgenössischer Bettag"
+msgstr "Digiuno federale"
 
 #. Knabenschiessen.
 msgid "Knabenschiessen"

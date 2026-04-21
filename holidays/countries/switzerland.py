@@ -740,6 +740,9 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Whit Sunday.
         self._add_whit_sunday(tr("Pfingstsonntag"))
 
+        # Federal Day of Thanksgiving, Repentance, and Prayer.
+        self._add_holiday_3rd_sun_of_sep(tr("Eidgenössischer Bettag"))
+
     def _populate_subdiv_stadt_zurich_public_holidays(self):
         self._populate_subdiv_zh_public_holidays()
 
