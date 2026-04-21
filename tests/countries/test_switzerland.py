@@ -24,7 +24,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             Switzerland,
             with_subdiv_categories=True,
             years_subdiv_gl=range(1834, 2050),
-            years_subdiv_zh=range(1898, 2050),
+            years_subdiv_stadt_zurich=range(1898, 2050),
         )
 
     def test_all_holidays_present(self):
@@ -114,7 +114,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
 
     def test_berchtolds_day(self):
         name = "Berchtoldstag"
-        subdivs_that_have = {"AG", "BE", "JU", "LU", "TG", "VD", "ZH"}
+        subdivs_that_have = {"AG", "BE", "JU", "LU", "TG", "VD", "Stadt Zurich"}
         subdivs_optional = {"FR", "GL", "NW", "OW", "SG", "SH", "SO", "VS", "ZG"}
 
         self.assertNoHolidayName(name)
@@ -292,7 +292,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
 
     def test_labor_day(self):
         name = "Tag der Arbeit"
-        subdivs_that_have = {"AG", "BL", "BS", "JU", "NE", "SH", "TG", "TI", "ZH"}
+        subdivs_that_have = {"AG", "BL", "BS", "JU", "NE", "SH", "TG", "TI", "ZH", "Stadt Zurich"}
 
         self.assertNoHolidayName(name)
 
@@ -559,6 +559,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             "TG",
             "TI",
             "ZH",
+            "Stadt Zurich",
         }
         subdivs_optional = {"FR", "NW", "OW", "VS", "ZG"}
         subdivs_that_dont = (
@@ -648,7 +649,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "ZH":
+            if subdiv == "Stadt Zurich":
                 self.assertHolidayName(
                     name,
                     holidays,
@@ -671,7 +672,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
         for subdiv, holidays in self.subdiv_half_day_holidays.items():
-            if subdiv == "ZH":
+            if subdiv == "Stadt Zurich":
                 self.assertHolidayName(
                     name,
                     holidays,
@@ -688,7 +689,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
         for subdiv, holidays in self.subdiv_optional_holidays.items():
-            if subdiv == "ZH":
+            if subdiv == "Stadt Zurich":
                 self.assertHolidayName(
                     name,
                     holidays,
@@ -719,7 +720,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             **self.subdiv_half_day_holidays,
             **self.subdiv_optional_holidays,
         }.items():
-            if subdiv == "ZH":
+            if subdiv == "Stadt Zurich":
                 self.assertHolidayName(
                     name,
                     holidays,
@@ -743,7 +744,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             **self.subdiv_half_day_holidays,
             **self.subdiv_optional_holidays,
         }.items():
-            if subdiv == "ZH":
+            if subdiv == "Stadt Zurich":
                 self.assertHolidayName(
                     name,
                     holidays,
@@ -774,7 +775,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_half_day_holidays.items():
-            if subdiv == "ZH":
+            if subdiv == "Stadt Zurich":
                 self.assertHolidayName(
                     name,
                     holidays,
@@ -795,7 +796,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_optional_holidays.items():
-            if subdiv == "ZH":
+            if subdiv == "Stadt Zurich":
                 self.assertHolidayName(
                     name,
                     holidays,
@@ -816,7 +817,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             **self.subdiv_half_day_holidays,
             **self.subdiv_optional_holidays,
         }.items():
-            if subdiv == "ZH":
+            if subdiv == "Stadt Zurich":
                 self.assertHolidayName(
                     name, holidays, (f"{year}-12-24" for year in self.full_range)
                 )
@@ -829,7 +830,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_optional_holidays_non_observed.items():
-            if subdiv == "ZH":
+            if subdiv == "Stadt Zurich":
                 self.assertNonObservedHolidayName(
                     name,
                     holidays,
@@ -842,7 +843,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
                 self.assertNoNonObservedHolidayName(name, holidays)
 
         self.assertNoHoliday(
-            self.subdiv_optional_holidays["ZH"],
+            self.subdiv_optional_holidays["Stadt Zurich"],
             "2025-12-27",
             "2025-12-28",
             "2026-12-27",
@@ -857,7 +858,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             **self.subdiv_half_day_holidays,
             **self.subdiv_optional_holidays,
         }.items():
-            if subdiv == "ZH":
+            if subdiv == "Stadt Zurich":
                 self.assertHolidayName(
                     name, holidays, (f"{year}-12-31" for year in self.full_range)
                 )
