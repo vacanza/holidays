@@ -22,7 +22,7 @@ class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         * <https://web.archive.org/web/20241206135307/https://www.officeholidays.com/countries/zambia>
         * <https://web.archive.org/web/20250408170158/https://www.timeanddate.com/holidays/zambia/>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Zambia>
-        * <https://web.archive.org/web/20250329191121/http://www.parliament.gov.zm/sites/default/files/documents/acts/Public%20Holidays%20Act.pdf>
+        * [The Public Holidays Act (1987)](https://web.archive.org/web/20231208015918/https://www.parliament.gov.zm/sites/default/files/documents/acts/Public%20Holidays%20Act.pdf)
     """
 
     country = "ZM"

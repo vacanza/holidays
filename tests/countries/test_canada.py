@@ -95,13 +95,14 @@ class TestCanada(CommonCountryTests, TestCase):
         self.assertGovernmentHolidayName(name_observed, obs_dts_sat, obs_dts_sun)
         self.assertNoGovernmentNonObservedHoliday(obs_dts_sat, obs_dts_sun)
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv in {"AB", "BC", "QC"}:
-                self.assertHolidayName(name_observed, holidays, obs_dts_sun)
-                self.assertNoHoliday(holidays, obs_dts_sat)
-            elif subdiv in {"NL", "PE", "SK", "YT"}:
-                self.assertHoliday(holidays, obs_dts_sat, obs_dts_sun)
-            else:
-                self.assertNoHoliday(holidays, obs_dts_sat, obs_dts_sun)
+            match subdiv:
+                case "AB" | "BC" | "QC":
+                    self.assertHolidayName(name_observed, holidays, obs_dts_sun)
+                    self.assertNoHoliday(holidays, obs_dts_sat)
+                case "NL" | "PE" | "SK" | "YT":
+                    self.assertHoliday(holidays, obs_dts_sat, obs_dts_sun)
+                case _:
+                    self.assertNoHoliday(holidays, obs_dts_sat, obs_dts_sun)
             self.assertNoNonObservedHoliday(
                 self.subdiv_holidays_non_observed[subdiv], obs_dts_sat, obs_dts_sun
             )

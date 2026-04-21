@@ -293,7 +293,8 @@ Examples:
         category = args.category
 
         sys.stdout.write(
-            f"Generating holidays for {country_code} ({year_range.start}-{year_range.stop - 1})\n"
+            f"Generating holidays for {country_code} "
+            f"({year_range.start}-{year_range.stop - 1})\n"
         )
         if language:
             sys.stdout.write(f"Language: {language}\n")
