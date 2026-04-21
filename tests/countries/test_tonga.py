@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestTonga(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Tonga, years=range(1989, 2050), years_non_observed=range(1989, 2050))
+        super().setUpClass(Tonga)
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -32,37 +32,30 @@ class TestTonga(CommonCountryTests, TestCase):
             "2021-12-27",
         )
 
-    def test_government_actual_date_observance(self):
-        self.assertNonObservedHoliday(
-            # Emancipation Day.
-            "2017-06-04",
-            "2019-06-04",
-            "2020-06-04",
-            "2021-06-04",
-            "2022-06-04",
-            "2023-06-04",
-            "2024-06-04",
-            # Constitution Day.
-            "2017-11-04",
-            "2018-11-04",
-            "2020-11-04",
-            "2021-11-04",
-            "2022-11-04",
-            "2023-11-04",
-            # HM King Topou I's Coronation Day.
-            "2018-12-04",
-            "2019-12-04",
-            "2021-12-04",
-            "2022-12-04",
-            "2024-12-04",
+    def test_new_years_day(self):
+        name = "ʻUluaki ʻAho ʻo e Taʻu Foʻou"
+        name_observed = f"{name} (fakatokangaʻi)"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        obs_dts = (
+            "1995-01-02",
+            "2006-01-02",
+            "2012-01-02",
         )
+        self.assertHolidayName(name_observed, obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+        self.assertNoHolidayName(name_observed, range(2017, self.end_year))
 
-    def test_birthday_of_the_reigning_sovereign(self):
+    def test_birthday_of_the_reigning_sovereign_of_tonga(self):
         name = "ʻAho ʻAloʻi ʻo ʻEne ʻAfio ko e Tuʻi ʻo Tonga ʻoku lolotonga Pule"
-        self.assertHolidayName(name, (f"{year}-07-04" for year in range(1989, 2007)))
-        self.assertHolidayName(name, (f"{year}-05-04" for year in range(2007, 2011)))
+        self.assertHolidayName(
+            name,
+            (
+                f"{year}-07-04"
+                for year in (*range(self.start_year, 2007), *range(2013, self.end_year))
+            ),
+            (f"{year}-05-04" for year in range(2007, 2011)),
+        )
         self.assertNoHolidayName(name, 2012)
-        self.assertHolidayName(name, (f"{year}-07-04" for year in range(2013, 2050)))
 
         self.assertNoNonObservedHoliday(
             # Topou IV.
@@ -82,11 +75,14 @@ class TestTonga(CommonCountryTests, TestCase):
             "2011-05-04",
         )
 
-    def test_birthday_of_the_heir_to_the_crown(self):
+    def test_birthday_of_the_heir_to_the_crown_of_tonga(self):
         name = "ʻAho ʻAloʻi ʻo e ʻEa ki he Kalauni ʻo Tonga"
-        self.assertHolidayName(name, (f"{year}-05-04" for year in range(1989, 2007)))
-        self.assertHolidayName(name, (f"{year}-07-12" for year in range(2007, 2011)))
-        self.assertHolidayName(name, (f"{year}-09-17" for year in range(2012, 2050)))
+        self.assertHolidayName(
+            name,
+            (f"{year}-05-04" for year in range(self.start_year, 2007)),
+            (f"{year}-07-12" for year in range(2007, 2011)),
+            (f"{year}-09-17" for year in range(2012, self.end_year)),
+        )
 
         self.assertNoNonObservedHoliday(
             # Topou IV's Heir: Topou V.
@@ -106,14 +102,73 @@ class TestTonga(CommonCountryTests, TestCase):
             "2011-07-12",
         )
 
-    def test_coronation_day_anniversary(self):
+    def test_good_friday(self):
+        name = "Falaite Lelei"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_easter_monday(self):
+        name = "Monite ʻo e Toetuʻu"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_anzac_day(self):
+        name = "ʻAho Anzac"
+        name_observed = f"{name} (fakatokangaʻi)"
+        self.assertHolidayName(name, (f"{year}-04-25" for year in self.full_range))
+        obs_dts = (
+            "1999-04-26",
+            "2004-04-26",
+            "2010-04-26",
+        )
+        self.assertHolidayName(name_observed, obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+        self.assertNoHolidayName(name_observed, range(2017, self.end_year))
+
+    def test_emancipation_day(self):
+        name = "ʻAho Tauʻataina"
+        self.assertHolidayName(name, (f"{year}-06-04" for year in range(self.start_year, 2010)))
+        self.assertHoliday(
+            "2020-06-08",
+            "2021-06-07",
+            "2022-06-06",
+            "2023-06-05",
+            "2024-06-03",
+            "2025-06-02",
+        )
+        self.assertNonObservedHolidayName(name, range(2010, self.end_year))
+
+        obs_dts = (
+            "1995-06-05",
+            "2000-06-05",
+            "2006-06-05",
+        )
+        self.assertHolidayName(f"{name} (fakatokangaʻi)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_anniversary_of_the_coronation_day_of_the_reigning_sovereign_of_tonga(self):
         name = (
             "Fakamanatu ʻo e ʻAho Hilifaki Kalauni ʻo ʻEne ʻAfio ko e Tuʻi ʻo Tonga "
             "ʻa ia ʻoku lolotonga Pule"
         )
-        self.assertNoHolidayName(name, range(1989, 2008))
         self.assertHolidayName(name, (f"{year}-08-01" for year in {2008, 2009, 2011}))
-        self.assertNoHolidayName(name, range(2012, 2050))
+        self.assertNoHolidayName(name, range(self.start_year, 2008), range(2012, self.end_year))
 
         self.assertNoNonObservedHoliday(
             # Topou V (Act 10 of 2010).
@@ -123,6 +178,63 @@ class TestTonga(CommonCountryTests, TestCase):
             # Topou V (Act 10 of 2010).
             "2010-08-01",
         )
+
+    def test_constitution_day(self):
+        name = "ʻAho Konisitutone"
+        self.assertHolidayName(name, (f"{year}-11-04" for year in range(self.start_year, 2010)))
+        self.assertHoliday(
+            "2020-11-02",
+            "2021-11-08",
+            "2022-11-07",
+            "2023-11-06",
+            "2024-11-04",
+            "2025-11-03",
+        )
+        self.assertNonObservedHolidayName(name, range(2010, self.end_year))
+
+        obs_dts = (
+            "1990-11-05",
+            "2001-11-05",
+            "2007-11-05",
+        )
+        self.assertHolidayName(f"{name} (fakatokangaʻi)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_anniversary_of_the_coronation_of_hm_king_george_tupou_i(self):
+        name = "ʻAho Fakamanatu ʻo e Hilifaki Kalauni ʻo ʻEne ʻAfio ko Siaosi Tupou I"
+        self.assertHolidayName(name, (f"{year}-12-04" for year in range(self.start_year, 2010)))
+        self.assertHoliday(
+            "2020-12-07",
+            "2021-12-06",
+            "2022-12-05",
+            "2023-12-04",
+            "2024-12-02",
+            "2025-12-08",
+        )
+        self.assertNonObservedHolidayName(name, range(2010, self.end_year))
+
+        obs_dts = (
+            "1994-12-05",
+            "2005-12-05",
+        )
+        self.assertHolidayName(f"{name} (fakatokangaʻi)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_christmas_day(self):
+        self.assertHolidayName("ʻAho Kilisimasi", (f"{year}-12-25" for year in self.full_range))
+
+    def test_boxing_day(self):
+        name = "ʻAho 2 ʻo e Kilisimasi"
+        name_observed = f"{name} (fakatokangaʻi)"
+        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
+        obs_dts = (
+            "1994-12-27",
+            "2005-12-27",
+            "2021-12-27",
+        )
+        self.assertHolidayName(name_observed, obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+        self.assertNoHolidayName(name_observed, range(2009, 2021), range(2022, self.end_year))
 
     def test_2017(self):
         # https://www.officeholidays.com/countries/tonga/2017
@@ -178,7 +290,7 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2019-06-03", "ʻAho Tauʻataina (fakatokangaʻi)"),
             ("2019-07-04", "ʻAho ʻAloʻi ʻo ʻEne ʻAfio ko e Tuʻi ʻo Tonga ʻoku lolotonga Pule"),
             ("2019-09-17", "ʻAho ʻAloʻi ʻo e ʻEa ki he Kalauni ʻo Tonga"),
-            ("2019-09-19", "Meʻafakaʻeiki ʻo e Siteiti ʻAkilisi Pohiva"),
+            ("2019-09-19", "Meʻafakaʻeiki ʻo e Siteiti ʻAkilisi Pōhiva"),
             ("2019-11-04", "ʻAho Konisitutone"),
             ("2019-11-15", "ʻAho malolo ʻakapulu ʻa Tonga"),
             (

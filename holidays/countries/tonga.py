@@ -222,8 +222,8 @@ class TongaStaticHolidays:
     special_public_holidays = {
         2017: (NOV, 29, rugby_special_holidays),
         2019: (
-            # State Funeral of ʻAkilisi Pohiva.
-            (SEP, 19, tr("Meʻafakaʻeiki ʻo e Siteiti ʻAkilisi Pohiva")),
+            # State Funeral of Akilisi Pohiva.
+            (SEP, 19, tr("Meʻafakaʻeiki ʻo e Siteiti ʻAkilisi Pōhiva")),
             (NOV, 15, rugby_special_holidays),
         ),
     }

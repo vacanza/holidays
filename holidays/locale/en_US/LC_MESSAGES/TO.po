@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.96\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-10-24 19:30+0700\n"
-"PO-Revision-Date: 2026-04-21 09:57+0700\n"
+"PO-Revision-Date: 2026-04-21 22:59+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -85,6 +85,6 @@ msgstr "Boxing Day"
 msgid "ʻAho malolo ʻakapulu ʻa Tonga"
 msgstr "Tonga Rugby Public Holiday"
 
-#. State Funeral of ʻAkilisi Pohiva.
-msgid "Meʻafakaʻeiki ʻo e Siteiti ʻAkilisi Pohiva"
+#. State Funeral of Akilisi Pohiva.
+msgid "Meʻafakaʻeiki ʻo e Siteiti ʻAkilisi Pōhiva"
 msgstr "State Funeral of ʻAkilisi Pohiva"

@@ -113,8 +113,8 @@ class TextNormalizer:
             if self.fix_file(path):
                 print(f"Fixed: {path}")
                 changed = True
-        return 1 if changed else 0
+        sys.exit(1 if changed else 0)
 
 
 if __name__ == "__main__":
-    sys.exit(TextNormalizer().run())
+    TextNormalizer().run()
