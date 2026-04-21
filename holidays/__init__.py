@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from typing import TYPE_CHECKING
+
 from holidays.constants import *
 from holidays.holiday_base import *
 from holidays.registry import EntityLoader
@@ -18,3 +20,7 @@ from holidays.version import __version__  # noqa: F401
 
 EntityLoader.load("countries", globals())
 EntityLoader.load("financial", globals())
+
+if TYPE_CHECKING:
+    from holidays.countries import *
+    from holidays.financial import *
