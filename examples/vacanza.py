@@ -79,7 +79,7 @@ def get_holidays_object(
     specified country, years, language, and category."""
 
     # Settings
-    kwargs = {"years": years}
+    kwargs: dict[str, Any] = {"years": years}
     if language:
         kwargs["language"] = language
     if category:
@@ -182,15 +182,11 @@ def generate_calendars(
 
             # Tell the user it worked
             holiday_count = len(holidays_obj)
-            sys.stdout.write(
-                f"[OK] Generated: {filename} ({holiday_count} holidays)\n"
-            )
+            sys.stdout.write(f"[OK] Generated: {filename} ({holiday_count} holidays)\n")
             sys.stdout.write(f"Saved in File path: {file_path}\n")
 
         except Exception as e:
-            sys.stderr.write(
-                f"[ERROR] Error generating {category} holiday: {e}\n"
-            )
+            sys.stderr.write(f"[ERROR] Error generating {category} holiday: {e}\n")
             raise
 
 
@@ -283,10 +279,7 @@ Examples:
         language = args.language
         category = args.category
 
-        sys.stdout.write(
-            f"Generating holidays for {country_code} "
-            f"({year_range.start}-{year_range.stop - 1})\n"
-        )
+        sys.stdout.write(f"Generating holidays for {country_code} ({year_range.start}-{year_range.stop - 1})\n")
         if language:
             sys.stdout.write(f"Language: {language}\n")
         if category:
