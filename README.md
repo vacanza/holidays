@@ -111,7 +111,6 @@ python examples/vacanza.py US 2025 --category public
 
 *For more details on usage, options, and output formats, check out the [Examples Documentation](https://holidays.readthedocs.io/en/latest/examples#vacanza-holidays-calendar-generator).*
 
-
 ## Available Countries
 
 We currently support 250 country codes, which primarily follow [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html), with a small number of widely used user-assigned or reserved codes (for example, `XK` for Kosovo).

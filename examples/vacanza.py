@@ -1,7 +1,20 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
 import argparse
 import datetime
 import sys
 from pathlib import Path
+from typing import Any
 
 import holidays
 from holidays.ical import ICalExporter  # Export to .ics
@@ -64,7 +77,7 @@ def parse_year_range(year_string: str) -> range:
             # year string in #### format
             start_year = int(year_string)
             return range(start_year, start_year + 1)
-    
+
     except ValueError as e:
         raise ValueError(f"Invalid year format: {year_string}. {e}") from e
 
@@ -79,7 +92,7 @@ def get_holidays_object(
     specified country, years, language, and category."""
 
     # Settings
-    kwargs = {"years": years}
+    kwargs: dict[str, Any] = {"years": years}
     if language:
         kwargs["language"] = language
     if category:
@@ -182,15 +195,11 @@ def generate_calendars(
 
             # Tell the user it worked
             holiday_count = len(holidays_obj)
-            sys.stdout.write(
-                f"[OK] Generated: {filename} ({holiday_count} holidays)\n"
-            )
+            sys.stdout.write(f"[OK] Generated: {filename} ({holiday_count} holidays)\n")
             sys.stdout.write(f"Saved in File path: {file_path}\n")
 
         except Exception as e:
-            sys.stderr.write(
-                f"[ERROR] Error generating {category} holiday: {e}\n"
-            )
+            sys.stderr.write(f"[ERROR] Error generating {category} holiday: {e}\n")
             raise
 
 
@@ -284,8 +293,7 @@ Examples:
         category = args.category
 
         sys.stdout.write(
-            f"Generating holidays for {country_code} "
-            f"({year_range.start}-{year_range.stop - 1})\n"
+            f"Generating holidays for {country_code} ({year_range.start}-{year_range.stop - 1})\n"
         )
         if language:
             sys.stdout.write(f"Language: {language}\n")
