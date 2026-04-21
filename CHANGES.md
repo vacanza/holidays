@@ -1,3 +1,26 @@
+## Version 0.95
+
+Released April 20, 2026
+
+- Refactor PO generator for robust metadata and improved class discovery (#3204 by @pareshjoshij, @arkid15r, @KJhellico, @PPsyrius)
+- Refactor conditional logic using structural pattern matching (PEP 636) (#3518 by @PPsyrius)
+- Fix typography: replace U+2019 with "'" and U+2013 with '-' (#3539 by @KJhellico)
+- Update .pre-commit-config.yaml: use SHA for versions (#3516 by @arkid15r)
+- Update Austria holidays (#3513 by @PPsyrius, @arkid15r)
+- Update Bhutan holidays: add l10n support (#3389 by @Devika9705)
+- Update Egypt holidays: add Eid al-Fitr 2026 exact date (#3474 by @aziamimoh, @PPsyrius)
+- Update Hebrew calendar generator (#3512 by @KJhellico)
+- Update India holidays: add Bonalu holiday in Telangana (TS) (#3426 by @Vikash-Kumar-23, @arkid15r)
+- Update India holidays: change 2026 Holi date in Maharashtra (MH) (#3379 by @Devika9705, @KJhellico, @PPsyrius)
+- Update India holidays: improve Tamil translations (#3437 by @2024yuva, @KJhellico, @PPsyrius)
+- Update India holidays: update Andaman and Nicobar Islands (AN) holidays (#3476 by @Saahi30, @KJhellico, @PPsyrius)
+- Update National Stock Exchange of India holidays: correct Hindi translations for some holidays (#3457 by @Ritik-tech731, @KJhellico)
+- Update Romania holidays (#3526 by @KJhellico)
+- Update documentation: surface API for `ObservedHolidayBase` and `NoHolidayBase` (#3511 by @PPsyrius, @arkid15r)
+- Update languages list in site assets generator (#3540 by @KJhellico)
+- Add tests for site assets generator (#3543 by @KJhellico)
+- Standardize and fix docstring references (#3509 by @PPsyrius, @arkid15r)
+
 ## Version 0.94
 
 Released April 6, 2026
