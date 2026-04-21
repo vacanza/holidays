@@ -772,8 +772,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             else:
                 self.assertNoNonObservedHolidayName(name, holidays)
 
-        self.assertNoHoliday(
-            self.subdiv_optional_holidays["Stadt Zurich"],
+        self.assertNoSubdivStadtZurichOptionalHoliday(
             "2025-12-27",
             "2025-12-28",
             "2026-12-27",
