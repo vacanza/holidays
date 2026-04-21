@@ -45,7 +45,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
     default_language = "de"
     start_year = 1801
     subdivisions = (
-        # Cantons
+        # Cantons.
         "AG",  # Aargau.
         "AI",  # Appenzell Innerrhoden.
         "AR",  # Appenzell Ausserrhoden.
