@@ -15,7 +15,7 @@ from gettext import gettext as tr
 from holidays.calendars import (
     _CustomBuddhistHolidays,
     _CustomChineseHolidays,
-    _CustomIslamicHolidays,
+    _CustomIslamicMabimsHolidays,
     _CustomHinduHolidays,
 )
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
@@ -225,7 +225,7 @@ class SingaporeHinduHolidays(_CustomHinduHolidays):
     }
 
 
-class SingaporeIslamicHolidays(_CustomIslamicHolidays):
+class SingaporeIslamicHolidays(_CustomIslamicMabimsHolidays):
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),

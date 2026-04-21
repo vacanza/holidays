@@ -18,7 +18,11 @@ from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import GREGORIAN_CALENDAR
 from holidays.calendars.hebrew import _HebrewLunisolar
 from holidays.calendars.hindu import _CustomHinduHolidays, _HinduLunisolar
-from holidays.calendars.islamic import _CustomIslamicHolidays, _IslamicLunar
+from holidays.calendars.islamic import (
+    _CustomIslamicHolidays,
+    _CustomIslamicMabimsHolidays,
+    _IslamicLunar,
+)
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.calendars.mongolian import _CustomMongolianHolidays, _MongolianLunisolar

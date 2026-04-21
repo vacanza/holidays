@@ -19,7 +19,7 @@ from holidays.calendars import (
     _CustomBuddhistHolidays,
     _CustomChineseHolidays,
     _CustomHinduHolidays,
-    _CustomIslamicHolidays,
+    _CustomIslamicMabimsHolidays,
 )
 from holidays.calendars.gregorian import (
     JAN,
@@ -695,7 +695,7 @@ class MalaysiaHinduHolidays(_CustomHinduHolidays):
     }
 
 
-class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
+class MalaysiaIslamicHolidays(_CustomIslamicMabimsHolidays):
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),

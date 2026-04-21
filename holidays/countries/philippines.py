@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomChineseHolidays, _CustomIslamicHolidays
+from holidays.calendars import _CustomChineseHolidays, _CustomIslamicMabimsHolidays
 from holidays.calendars.gregorian import JAN, FEB, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import (
@@ -205,7 +205,7 @@ class PhilippinesChineseHolidays(_CustomChineseHolidays):
     LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2012, 2025)
 
 
-class PhilippinesIslamicHolidays(_CustomIslamicHolidays):
+class PhilippinesIslamicHolidays(_CustomIslamicMabimsHolidays):
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2010, 2025)
     EID_AL_ADHA_DATES = {
         2010: (NOV, 17),

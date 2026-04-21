@@ -9,9 +9,10 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
+#
 from unittest import TestCase
 
+from holidays.calendars.islamic import _IslamicMabimsLunar
 from holidays.countries.brunei import Brunei
 from tests.common import CommonCountryTests
 
@@ -27,6 +28,13 @@ class TestBrunei(CommonCountryTests, TestCase):
             "2004-09-09",
             "2017-10-05",
         )
+
+    # Test that Brunei uses the MABIMS lunar calendar for Islamic holidays
+    def test_brunei_uses_mabims_calendar(self):
+        br = Brunei()
+        self.assertIsInstance(br._islamic_calendar, _IslamicMabimsLunar)
+        self.assertEqual("Hari Raya Aidil Fitri", br.get("2026-03-21"))
+        self.assertEqual("Hari Raya Aidil Adha", br.get("2026-05-27"))
 
     def test_2022(self):
         self.assertHolidaysInYear(

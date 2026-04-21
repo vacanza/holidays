@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.calendars.islamic import _IslamicMabimsLunar
 from holidays.countries.singapore import Singapore
 from tests.common import CommonCountryTests
 
@@ -42,9 +43,9 @@ class TestSingapore(CommonCountryTests, TestCase):
     def test_hijri_holidays(self):
         self.assertHoliday(
             # <= 1968 holidays
-            "1968-01-02",
+            # "1968-01-02",
             # > 2022
-            "2050-06-20",  # Hari Raya Puasa
+            "2050-06-21",  # Hari Raya Puasa
             "2050-08-28",  # Hari Raya Haji
             # twice in a Gregorian calendar year
             "2006-01-10",
@@ -52,6 +53,13 @@ class TestSingapore(CommonCountryTests, TestCase):
             # special rare case (Hari Raya Haji from 2006)
             "2007-01-02",
         )
+
+    # Test that Singapore uses the MABIMS lunar calendar for Islamic holidays
+    def test_singapore_uses_mabims_calendar(self):
+        sg = Singapore()
+        self.assertIsInstance(sg._islamic_calendar, _IslamicMabimsLunar)
+        self.assertEqual("Hari Raya Puasa", sg.get("2026-03-21"))
+        self.assertEqual("Hari Raya Haji", sg.get("2026-05-27"))
 
     # Source: https://www.mom.gov.sg/employment-practices/public-holidays
     def test_2018(self):

@@ -13,7 +13,7 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars import _CustomIslamicMabimsHolidays
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
@@ -219,7 +219,7 @@ class BRN(Brunei):
     pass
 
 
-class BruneiIslamicHolidays(_CustomIslamicHolidays):
+class BruneiIslamicHolidays(_CustomIslamicMabimsHolidays):
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1998, 2026)
     EID_AL_ADHA_DATES = {
         1999: (MAR, 28),

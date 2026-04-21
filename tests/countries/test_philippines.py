@@ -9,9 +9,10 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
+#
 from unittest import TestCase
 
+from holidays.calendars.islamic import _IslamicMabimsLunar
 from holidays.constants import WORKDAY
 from holidays.countries.philippines import Philippines
 from tests.common import CommonCountryTests
@@ -26,6 +27,13 @@ class TestPhilippines(CommonCountryTests, TestCase):
         super().test_no_holidays()
 
         self.assertNoHolidays(Philippines(categories=WORKDAY, years=range(self.start_year, 2009)))
+
+    # Test that Philippines uses the MABIMS lunar calendar for Islamic holidays
+    def test_philippines_uses_mabims_calendar(self):
+        ph = Philippines()
+        self.assertIsInstance(ph._islamic_calendar, _IslamicMabimsLunar)
+        self.assertEqual("Eid'l Fitr (estimated)", ph.get("2026-03-21"))
+        self.assertEqual("Eid'l Adha (estimated)", ph.get("2026-05-27"))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -281,7 +289,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2020-05-25",
             "2021-05-13",
             "2022-05-03",
-            "2023-04-21",
+            "2023-04-22",
             "2024-04-10",
             "2025-04-01",
         )
@@ -295,9 +303,9 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2020-07-31",
             "2021-07-20",
             "2022-07-09",
-            "2023-06-28",
+            "2023-06-29",
             "2024-06-17",
-            "2025-06-06",
+            "2025-06-07",
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(2010, self.end_year))
         self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 2010))
@@ -437,10 +445,10 @@ class TestPhilippines(CommonCountryTests, TestCase):
             ("2023-04-07", "Good Friday"),
             ("2023-04-08", "Black Saturday"),
             ("2023-04-10", "Araw ng Kagitingan"),
-            ("2023-04-21", "Eid'l Fitr"),
+            ("2023-04-22", "Eid'l Fitr"),
             ("2023-05-01", "Labor Day"),
             ("2023-06-12", "Independence Day"),
-            ("2023-06-28", "Eid'l Adha"),
+            ("2023-06-29", "Eid'l Adha"),
             ("2023-08-21", "Ninoy Aquino Day"),
             ("2023-08-28", "National Heroes Day"),
             ("2023-10-30", "Elections special (non-working) day"),
@@ -466,7 +474,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
             ("2025-04-19", "Black Saturday"),
             ("2025-05-01", "Labor Day"),
             ("2025-05-12", "Elections special (non-working) day"),
-            ("2025-06-06", "Eid'l Adha"),
+            ("2025-06-07", "Eid'l Adha"),
             ("2025-06-12", "Independence Day"),
             ("2025-07-27", "Additional special (non-working) day"),
             ("2025-08-21", "Ninoy Aquino Day"),

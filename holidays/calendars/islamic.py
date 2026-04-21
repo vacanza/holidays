@@ -9,9 +9,11 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
+# mypy: disable-error-code="assignment"
 
 from collections.abc import Iterable
 from datetime import date
+from typing import Any
 
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import (
@@ -841,7 +843,7 @@ class _IslamicLunar:
         2076: (DEC, 6),
     }
 
-    EID_AL_ADHA_DATES = {
+    EID_AL_ADHA_DATES: dict[Any, Any] = {
         1925: (JUL, 2),
         1926: (JUN, 21),
         1927: (JUN, 10),
@@ -997,7 +999,7 @@ class _IslamicLunar:
         2077: (OCT, 27),
     }
 
-    EID_AL_FITR_DATES = {
+    EID_AL_FITR_DATES: dict[Any, Any] = {
         1925: (APR, 24),
         1926: (APR, 14),
         1927: (APR, 3),
@@ -4102,5 +4104,137 @@ class _IslamicLunar:
         return self._get_holiday(TASUA, year)
 
 
+class _IslamicMabimsLunar(_IslamicLunar):
+    """
+    Islamic holidays based on MABIMS (Brunei, Indonesia, Malaysia, Singapore) criteria.
+    """
+
+    EID_AL_ADHA_DATES = _IslamicLunar.EID_AL_ADHA_DATES | {
+        # Prior to 2022 same as general lunar calendar
+        # From 2022 onwards MABIMS specific dates often differ from the general lunar calendar
+        2023: (JUN, 29),
+        2024: (JUN, 17),
+        2025: (JUN, 7),
+        2026: (MAY, 27),
+        2027: (MAY, 17),
+        2028: (MAY, 5),
+        2029: (APR, 25),
+        2030: (APR, 14),
+        2031: (APR, 3),
+        2032: (MAR, 22),
+        2033: (MAR, 12),
+        2034: (MAR, 2),
+        2035: (FEB, 19),
+        2036: (FEB, 8),
+        2037: (JAN, 27),
+        2038: (JAN, 16),
+        2039: [(JAN, 6), (DEC, 26)],
+        2040: (DEC, 15),
+        2041: (DEC, 4),
+        2042: (NOV, 23),
+        2043: (NOV, 12),
+        2044: (NOV, 1),
+        2045: (OCT, 21),
+        2046: (OCT, 11),
+        2047: (SEP, 30),
+        2048: (SEP, 19),
+        2049: (SEP, 8),
+        2050: (AUG, 28),
+        2051: (AUG, 17),
+        2052: (AUG, 6),
+        2053: (JUL, 26),
+        2054: (JUL, 16),
+        2055: (JUL, 6),
+        2056: (JUN, 24),
+        2057: (JUN, 13),
+        2058: (JUN, 2),
+        2059: (MAY, 22),
+        2060: (MAY, 11),
+        2061: (MAY, 1),
+        2062: (APR, 20),
+        2063: (APR, 10),
+        2064: (MAR, 29),
+        2065: (MAR, 18),
+        2066: (MAR, 7),
+        2067: (FEB, 24),
+        2068: (FEB, 14),
+        2069: (FEB, 3),
+        2070: (JAN, 23),
+        2071: (JAN, 12),
+        2072: [(JAN, 1), (DEC, 20)],
+        2073: (DEC, 10),
+        2074: (NOV, 29),
+        2075: (NOV, 19),
+        2076: (NOV, 7),
+        2077: (OCT, 28),
+    }
+
+    EID_AL_FITR_DATES = _IslamicLunar.EID_AL_FITR_DATES | {
+        # MABIMS specific dates often differ from the general lunar calendar
+        2023: (APR, 22),
+        2024: (APR, 10),
+        2025: (MAR, 31),
+        2026: (MAR, 21),
+        2027: (MAR, 10),
+        2028: (FEB, 27),
+        2029: (FEB, 15),
+        2030: (FEB, 4),
+        2031: (JAN, 25),
+        2032: (JAN, 14),
+        2033: [(JAN, 3), (DEC, 23)],
+        2034: (DEC, 12),
+        2035: (DEC, 1),
+        2036: (NOV, 20),
+        2037: (NOV, 9),
+        2038: (OCT, 30),
+        2039: (OCT, 19),
+        2040: (OCT, 8),
+        2041: (SEP, 27),
+        2042: (SEP, 16),
+        2043: (SEP, 5),
+        2044: (AUG, 25),
+        2045: (AUG, 14),
+        2046: (AUG, 4),
+        2047: (JUL, 25),
+        2048: (JUL, 13),
+        2049: (JUL, 2),
+        2050: (JUN, 21),
+        2051: (JUN, 10),
+        2052: (MAY, 30),
+        2053: (MAY, 20),
+        2054: (MAY, 9),
+        2055: (APR, 28),
+        2056: (APR, 17),
+        2057: (APR, 6),
+        2058: (MAR, 26),
+        2059: (MAR, 15),
+        2060: (MAR, 4),
+        2061: (FEB, 22),
+        2062: (FEB, 11),
+        2063: (JAN, 31),
+        2064: (JAN, 20),
+        2065: [(JAN, 8), (DEC, 29)],
+        2066: (DEC, 19),
+        2067: (DEC, 8),
+        2068: (NOV, 27),
+        2069: (NOV, 16),
+        2070: (NOV, 5),
+        2071: (OCT, 25),
+        2072: (OCT, 13),
+        2073: (OCT, 3),
+        2074: (SEP, 23),
+        2075: (SEP, 12),
+        2076: (AUG, 31),
+        2077: (AUG, 20),
+    }
+
+    def __init__(self, calendar_delta_days: int = 0) -> None:
+        super().__init__(calendar_delta_days=calendar_delta_days)
+
+
 class _CustomIslamicHolidays(_CustomCalendar, _IslamicLunar):
+    pass
+
+
+class _CustomIslamicMabimsHolidays(_CustomCalendar, _IslamicMabimsLunar):
     pass

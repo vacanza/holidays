@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.calendars.islamic import _IslamicMabimsLunar
 from holidays.countries.malaysia import Malaysia
 from tests.common import CommonCountryTests
 
@@ -102,6 +103,13 @@ class TestMalaysia(CommonCountryTests, TestCase):
             "2023-04-21",
             "2025-09-15",
         )
+
+    # Test that Malaysia uses the MABIMS lunar calendar for Islamic holidays
+    def test_malaysia_uses_mabims_calendar(self):
+        my = Malaysia()
+        self.assertIsInstance(my._islamic_calendar, _IslamicMabimsLunar)
+        self.assertEqual("Hari Raya Puasa", my.get("2026-03-21"))
+        self.assertEqual("Hari Raya Qurban", my.get("2026-05-27"))
 
     def test_special_subdiv_holidays(self):
         for subdiv in ("14", "15", "16"):

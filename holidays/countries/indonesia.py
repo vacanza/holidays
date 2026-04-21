@@ -15,7 +15,7 @@ from gettext import gettext as tr
 from holidays.calendars import (
     _CustomBuddhistHolidays,
     _CustomChineseHolidays,
-    _CustomIslamicHolidays,
+    _CustomIslamicMabimsHolidays,
 )
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import GOVERNMENT, PUBLIC
@@ -254,7 +254,7 @@ class IndonesiaChineseHolidays(_CustomChineseHolidays):
     }
 
 
-class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
+class IndonesiaIslamicHolidays(_CustomIslamicMabimsHolidays):
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1963, 2025)
     EID_AL_ADHA_DATES = {
         1963: (MAY, 4),

@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.calendars.islamic import _IslamicMabimsLunar
 from holidays.countries.indonesia import Indonesia
 from tests.common import CommonCountryTests
 
@@ -43,6 +44,13 @@ class TestIndonesia(CommonCountryTests, TestCase):
         obs_dts = ("2004-11-16",)
         self.assertHoliday(dts, obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
+
+    # Test that Indonesia uses the MABIMS lunar calendar for Islamic holidays
+    def test_indonesia_uses_mabims_calendar(self):
+        id = Indonesia()
+        self.assertIsInstance(id._islamic_calendar, _IslamicMabimsLunar)
+        self.assertEqual("Hari Raya Idul Fitri (perkiraan)", id.get("2026-03-21"))
+        self.assertEqual("Hari Raya Idul Adha (perkiraan)", id.get("2026-05-27"))
 
     def test_special_government(self):
         dts = (
