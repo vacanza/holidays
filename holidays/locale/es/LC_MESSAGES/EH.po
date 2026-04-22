@@ -30,7 +30,7 @@ msgstr ""
 
 #. %s (estimated).
 #, c-format
-msgid "%s (مقدرة)"
+msgid "%s (تقديري)"
 msgstr "%s (estimado)"
 
 #. Proclamation of the SADR.

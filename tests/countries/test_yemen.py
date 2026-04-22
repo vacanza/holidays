@@ -36,7 +36,7 @@ class TestYemen(CommonCountryTests, TestCase):
             "2015-05-03",
             "2020-05-03",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_unity_day(self):
@@ -47,7 +47,7 @@ class TestYemen(CommonCountryTests, TestCase):
             "2015-05-24",
             "2020-05-27",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_revolution_day(self):
@@ -58,7 +58,7 @@ class TestYemen(CommonCountryTests, TestCase):
             "2008-09-27",
             "2014-09-28",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_liberation_day(self):
@@ -69,7 +69,7 @@ class TestYemen(CommonCountryTests, TestCase):
             "2016-10-16",
             "2022-10-16",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_independence_day(self):
@@ -80,7 +80,7 @@ class TestYemen(CommonCountryTests, TestCase):
             "2012-12-01",
             "2018-12-02",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_hijri_new_year(self):
@@ -99,7 +99,7 @@ class TestYemen(CommonCountryTests, TestCase):
             "2002-03-16",
             "2009-12-19",
         )
-        self.assertIslamicNoEstimatedHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertIslamicNoEstimatedHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_eid_al_fitr(self):
@@ -139,7 +139,7 @@ class TestYemen(CommonCountryTests, TestCase):
             "2023-04-24",
             "2024-04-14",
         )
-        self.assertIslamicNoEstimatedHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertIslamicNoEstimatedHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_eid_al_adha(self):
@@ -179,7 +179,7 @@ class TestYemen(CommonCountryTests, TestCase):
             "2022-07-13",
             "2023-07-02",
         )
-        self.assertIslamicNoEstimatedHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertIslamicNoEstimatedHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_teachers_day(self):
@@ -209,7 +209,7 @@ class TestYemen(CommonCountryTests, TestCase):
             "1991-09-21",
             "1994-08-20",
         )
-        self.assertIslamicNoEstimatedHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertIslamicNoEstimatedHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
         self.assertWorkdayIslamicNoEstimatedHolidayName(
             name,
@@ -267,7 +267,7 @@ class TestYemen(CommonCountryTests, TestCase):
             ("2023-04-21", "عيد الفطر"),
             ("2023-04-22", "عيد الفطر"),
             ("2023-04-23", "عيد الفطر"),
-            ("2023-04-24", "عيد الفطر (ملاحظة)"),
+            ("2023-04-24", "عيد الفطر (يوم تعويضي)"),
             ("2023-05-01", "عيد العمال"),
             ("2023-05-05", "عيد المعلم"),
             ("2023-05-22", "اليوم الوطني للجمهورية اليمنية"),
@@ -276,7 +276,7 @@ class TestYemen(CommonCountryTests, TestCase):
             ("2023-06-29", "عيد الأضحى"),
             ("2023-06-30", "عيد الأضحى"),
             ("2023-07-01", "عيد الأضحى"),
-            ("2023-07-02", "عيد الأضحى (ملاحظة)"),
+            ("2023-07-02", "عيد الأضحى (يوم تعويضي)"),
             ("2023-07-07", "ذكرى 7 يوليو"),
             ("2023-07-19", "عيد رأس السنة الهجرية"),
             ("2023-09-26", "ثورة 26 سبتمبر المجيدة"),
