@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-12-08 16:56+0530\n"
-"PO-Revision-Date: 2026-04-12 13:43+0400\n"
+"PO-Revision-Date: 2026-04-21 11:17+0400\n"
 "Last-Translator: Shaon Ahamed <shaonahmed8788@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -26,6 +26,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: bn\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (আনুমানিক)"
+msgstr "%s (estimated)"
 
 #. Martyrs' Day and International Mother Language Day.
 msgid "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস"
@@ -58,3 +63,35 @@ msgstr "National Mourning Day"
 #. Victory Day.
 msgid "বিজয় দিবস"
 msgstr "Victory Day"
+
+#. Christmas Day.
+msgid "বড়দিন"
+msgstr "Christmas Day"
+
+#. Ashura Day.
+msgid "আশুরা"
+msgstr "Ashura"
+
+#. Eid-e-Milad un-Nabi.
+msgid "ঈদে মিলাদুন্নবী"
+msgstr "Mawlid"
+
+#. Mid-Sha'ban.
+msgid "শবে বরাত"
+msgstr "Mid-Sha'ban"
+
+#. Night of Power.
+msgid "শবে কদর"
+msgstr "Night of Power"
+
+#. Jumu'atul-Wida.
+msgid "জুমাতুল বিদা"
+msgstr "Jumu'atul-Wida"
+
+#. Eid al-Fitr.
+msgid "ঈদুল ফিতর"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "ঈদুল আজহা"
+msgstr "Eid al-Adha"
