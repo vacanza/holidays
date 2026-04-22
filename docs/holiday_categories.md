@@ -107,7 +107,8 @@ Holidays that are legally treated equivalently to public holidays for specific p
 
 Examples:
 
-- **Sweden**: Midsummer Eve (Midsommarafton), Christmas Eve (Julafton), and New Year's Eve (Nyårsafton) - per [Swedish Annual Leave Law (SFS 1977:480)](https://web.archive.org/web/20260106114757/https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/semesterlag-1977480_sfs-1977-480/), these are treated equivalently to Sundays and public holidays for working day calculations, though they are not official public holidays.
+- **Sweden**: Midsummer Eve (Midsommarafton), Christmas Eve (Julafton), and New Year's Eve (Nyårsafton) - per [Semesterlag (SFS 1977:480)](https://web.archive.org/web/20260106114757/https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/semesterlag-1977480_sfs-1977-480/), these are treated equivalently to Sundays and public holidays for working day calculations, though they are not official public holidays.
+- **Switzerland**: Easter Sunday (Ostersonntag), Whit Sunday (Pfingstsonntag), and Federal Day of Thanksgiving, Repentance, and Prayer (Eidgenössischer Bettag) - per Zürich's [Ruhetags- und Ladenöffnungsgesetz vom 26. Juni 2000](https://web.archive.org/web/20260421063821/https://www.notes.zh.ch/appl/zhlex_r.nsf/WebView/C1256C610039641BC12569990033674B/$File/822.4.pdf).
 
 Usage:
 

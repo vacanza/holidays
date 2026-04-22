@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.83\n"
+"Project-Id-Version: Holidays 0.96\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-10 15:41+0300\n"
-"PO-Revision-Date: 2025-10-08 13:09+0700\n"
+"PO-Revision-Date: 2026-04-21 16:52+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.9\n"
 "X-Source-Language: de\n"
 
 #. New Year's Day.
@@ -123,6 +123,18 @@ msgstr "Saint-Pierre et Paul"
 #. Prayer Monday.
 msgid "Bettagsmontag"
 msgstr "Lundi du Jeûne fédéral"
+
+#. Easter Sunday.
+msgid "Ostersonntag"
+msgstr "Jour de Pâques"
+
+#. Whit Sunday.
+msgid "Pfingstsonntag"
+msgstr "Jour de Pentecôte"
+
+#. Federal Day of Thanksgiving, Repentance, and Prayer.
+msgid "Eidgenössischer Bettag"
+msgstr "Jeûne fédéral"
 
 #. Knabenschiessen.
 msgid "Knabenschiessen"
