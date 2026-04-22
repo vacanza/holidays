@@ -67,15 +67,16 @@ class InternationalHolidays:
         supports another internationally adopted variant, November 20th.
         https://en.wikipedia.org/wiki/Children's_Day
         """
-        if variation == "JUN":
-            return self._add_holiday_jun_1(name)
-        elif variation == "NOV":
-            return self._add_holiday_nov_20(name)
-        else:
-            raise ValueError(
-                f"Unknown variation name: {variation}. "
-                "This entry currently supports `JUN` and `NOV` variation only."
-            )
+        match variation:
+            case "JUN":
+                return self._add_holiday_jun_1(name)
+            case "NOV":
+                return self._add_holiday_nov_20(name)
+            case _:
+                raise ValueError(
+                    f"Unknown variation name: {variation}. "
+                    "This entry currently supports `JUN` and `NOV` variation only."
+                )
 
     def _add_columbus_day(self, name):
         """

@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.94\n"
+"Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-03-31 18:55+0530\n"
+"PO-Revision-Date: 2026-04-03 22:16+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -149,6 +149,10 @@ msgstr "Palm Sunday"
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr "Dr. B. R. Ambedkar's Jayanti"
 
+#. Onam.
+msgid "Onam"
+msgstr "Onam"
+
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
 msgstr "Andhra Pradesh Foundation Day"
@@ -212,10 +216,6 @@ msgstr "Jharkhand Formation Day"
 #. Karnataka Rajyotsav.
 msgid "Karnataka Rajyotsava"
 msgstr "Karnataka Rajyotsava"
-
-#. Onam.
-msgid "Onam"
-msgstr "Onam"
 
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"
@@ -312,6 +312,10 @@ msgstr "Telangana Formation Day"
 #. Bathukamma Festival.
 msgid "Bathukamma Festival"
 msgstr "Bathukamma Festival"
+
+#. Bonalu.
+msgid "Bonalu"
+msgstr "Bonalu"
 
 #. UP Formation Day.
 msgid "UP Formation Day"

@@ -20,21 +20,21 @@ class VaticanCity(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Vatican City holidays.
 
     References:
-        * <https://web.archive.org/web/20250125172412/https://www.vatican.va/roman_curia/labour_office/docs/documents/ulsa_b18_7_it.html>
-        * <https://web.archive.org/web/20250320055902/https://cdn.restorethe54.com/media/pdf/1917-code-of-canon-law-english.pdf>
-        * <https://web.archive.org/web/20250425093046/https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann1244-1253_en.html>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Vatican_City>
         * <https://en.wikipedia.org/wiki/Holy_day_of_obligation>
-        * <https://web.archive.org/web/20241004015531/https://www.ewtn.com/catholicism/library/solemnity-of-mary-mother-of-god-5826>
-        * <https://web.archive.org/web/20241130180934/https://www.franciscanmedia.org/saint-of-the-day/saint-joseph-the-worker/>
+        * [Regolamento generale del personale del Governatorato vaticano](https://web.archive.org/web/20250125172412/https://www.vatican.va/roman_curia/labour_office/docs/documents/ulsa_b18_7_it.html)
+        * [1917 Code of Canon Law](https://web.archive.org/web/20250320055902/https://cdn.restorethe54.com/media/pdf/1917-code-of-canon-law-english.pdf)
+        * [1983 Code of Canon Law](https://web.archive.org/web/20250425093046/https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann1244-1253_en.html)
+        * [Solemnity of Mary, Mother of God](https://web.archive.org/web/20241004015531/https://www.ewtn.com/catholicism/library/solemnity-of-mary-mother-of-god-5826)
+        * [Saint Joseph the Worker](https://web.archive.org/web/20241130180934/https://www.franciscanmedia.org/saint-of-the-day/saint-joseph-the-worker/)
 
     Cross-checked With:
-        * <https://web.archive.org/web/20250427173707/https://www.vaticanstate.va/images/pdf/CALENDARIO_2020.pdf>
-        * <https://web.archive.org/web/20220723175312/https://www.farmaciavaticana.va/images/pdf/calendario_2021.pdf>
-        * <https://web.archive.org/web/20221018201001/https://www.farmaciavaticana.va/images/pdf/calendario_2022.pdf>
-        * <https://web.archive.org/web/20231101221620/https://www.farmaciavaticana.va/images/pdf/calendario_2023.pdf>
-        * <https://web.archive.org/web/20241208034527/https://www.farmaciavaticana.va/media/attachments/2024/01/02/calendario_2024.pdf>
-        * <https://web.archive.org/web/20250208160702/https://www.farmaciavaticana.va/media/attachments/2025/01/02/calendario-2025.pdf>
+        * [2020](https://web.archive.org/web/20250427173707/https://www.vaticanstate.va/images/pdf/CALENDARIO_2020.pdf)
+        * [2021](https://web.archive.org/web/20220723175312/https://www.farmaciavaticana.va/images/pdf/calendario_2021.pdf)
+        * [2022](https://web.archive.org/web/20221018201001/https://www.farmaciavaticana.va/images/pdf/calendario_2022.pdf)
+        * [2023](https://web.archive.org/web/20231101221620/https://www.farmaciavaticana.va/images/pdf/calendario_2023.pdf)
+        * [2024](https://web.archive.org/web/20241208034527/https://www.farmaciavaticana.va/media/attachments/2024/01/02/calendario_2024.pdf)
+        * [2025](https://web.archive.org/web/20250208160702/https://www.farmaciavaticana.va/media/attachments/2025/01/02/calendario-2025.pdf)
     """
 
     country = "VA"

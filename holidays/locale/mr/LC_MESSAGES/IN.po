@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.94\n"
+"Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-29 00:37+0530\n"
-"PO-Revision-Date: 2026-03-31 18:55+0530\n"
-"Last-Translator: Ankush Kapoor work.ankushkapoor1626@gmail.com\n"
+"PO-Revision-Date: 2026-03-29 00:37+0530\n"
+"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
@@ -148,6 +148,10 @@ msgstr "पाम रविवार"
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr "डॉ. बाबासाहेब आंबेडकर जयंती"
 
+#. Onam.
+msgid "Onam"
+msgstr "ओणम"
+
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
 msgstr "आंध्र प्रदेश स्थापना दिन"
@@ -211,10 +215,6 @@ msgstr "झारखंड स्थापना दिन"
 #. Karnataka Rajyotsav.
 msgid "Karnataka Rajyotsava"
 msgstr "कर्नाटक राज्योत्सव"
-
-#. Onam.
-msgid "Onam"
-msgstr "ओणम"
 
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"
@@ -311,6 +311,10 @@ msgstr "तेलंगणा स्थापना दिन"
 #. Bathukamma Festival.
 msgid "Bathukamma Festival"
 msgstr "बथुकम्मा उत्सव"
+
+#. Bonalu.
+msgid "Bonalu"
+msgstr "बोनालू"
 
 #. UP Formation Day.
 msgid "UP Formation Day"

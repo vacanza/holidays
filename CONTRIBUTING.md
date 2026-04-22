@@ -31,39 +31,41 @@ with, once you have [`uv`](https://docs.astral.sh/uv/getting-started/installatio
     .\make setup
     ```
 
-!!! note "WSL Windows File Permission Fix"
-
-    If you're a Windows-based developer setting this up via WSL for the first time and encounter
-    file permission errors (e.g., `[Errno 1] Operation not permitted`) where `ls -l` shows files
-    owned by root like `-rwxrwxrwx 1 root root ...`, follow these steps:
-
-    **Step 1**: Edit the WSL configuration file:
-
-    ``` shell
-    sudo nano /etc/wsl.conf
-    ```
-
-    **Step 2**: Add the following section at the bottom of `wsl.conf`, then save (Ctrl+O, Enter) and exit (Ctrl+X):
-
-    ``` ini
-    [automount]
-    enabled = true
-    options = "metadata,umask=22,fmask=11"
-    ```
-
-    **Step 3**: Close your WSL session, open PowerShell, then restart WSL:
-
-    ``` powershell
-    wsl --shutdown
-    wsl ~
-    ```
-
-    After this, running `ls -l` on your local `holidays` installation should show:
-
-    ``` console
-    drwxr-xr-x 1 username username ...
-    ```
-    - you're good to go!
+> [!note]
+> **WSL Windows File Permission Fix**
+>
+> If you're a Windows-based developer setting this up via WSL for the first time and encounter
+> file permission errors (e.g., `[Errno 1] Operation not permitted`) where `ls -l` shows files
+> owned by root like `-rwxrwxrwx 1 root root ...`, follow these steps:
+>
+> **Step 1**: Edit the WSL configuration file:
+>
+> ``` shell
+> sudo nano /etc/wsl.conf
+> ```
+>
+> **Step 2**: Add the following section at the bottom of `wsl.conf`, then save (Ctrl+O, Enter) and exit (Ctrl+X):
+>
+> ``` ini
+> [automount]
+> enabled = true
+> options = "metadata,umask=22,fmask=11"
+> ```
+>
+> **Step 3**: Close your WSL session, open PowerShell, then restart WSL:
+>
+> ``` powershell
+> wsl --shutdown
+> wsl ~
+> ```
+>
+> After this, running `ls -l` on your local `holidays` installation should show:
+>
+> ``` console
+> drwxr-xr-x 1 username username ...
+> ```
+>
+> You're good to go!
 
 The project provides automated style, tests and coverage checks:
 
@@ -145,14 +147,15 @@ copying the `.po` files, open them with your favorite `.po` file editor and tran
 **non-default** locales only. Don't forget to fill in the translation file headers. Finally, update
 the list of supported translations for the country in the README.md.
 
-!!! note "Default language `.po` files"
-
-    In this project, the `.po` file for each country or market's **default** language (the one that
-    matches that entity's `default_language` attribute) **intentionally** keeps `msgstr` values
-    empty for those messages. Holiday names are already authored in that language in the source
-    code; the catalog is still required for tooling and consistency. Please do not treat empty
-    `msgstr` lines there as missing work or duplicate the `msgid` text into `msgstr` unless
-    maintainers explicitly ask for a change.
+> [!note]
+> **Default language `.po` files**
+>
+> In this project, the `.po` file for each country or market's **default** language (the one that
+> matches that entity's `default_language` attribute) **intentionally** keeps `msgstr` values
+> empty for those messages. Holiday names are already authored in that language in the source
+> code; the catalog is still required for tooling and consistency. Please do not treat empty
+> `msgstr` lines there as missing work or duplicate the `msgid` text into `msgstr` unless
+> maintainers explicitly ask for a change.
 
 If the translation already exists you'll just need to update it with the new template entries
 (your .po file editor may help you to do that with no hassle).

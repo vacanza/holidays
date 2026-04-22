@@ -241,12 +241,13 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         # Boxing Day.
         self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
-        if self.subdiv == "New Plymouth":
-            self._populate_subdiv_tki_public_holidays()
-        elif self.subdiv == "STC":
-            self._populate_subdiv_south_canterbury_public_holidays()
-        elif self.subdiv in {"WTL", "Westland"}:
-            self._populate_subdiv_wtc_public_holidays()
+        match self.subdiv:
+            case "New Plymouth":
+                self._populate_subdiv_tki_public_holidays()
+            case "STC":
+                self._populate_subdiv_south_canterbury_public_holidays()
+            case "WTL" | "Westland":
+                self._populate_subdiv_wtc_public_holidays()
 
     def _populate_subdiv_auk_public_holidays(self):
         self._move_holiday_forced(
