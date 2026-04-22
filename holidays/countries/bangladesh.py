@@ -93,7 +93,7 @@ class Bangladesh(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         # Christmas Day.
         self._add_christmas_day(tr("বড়দিন"))
 
-        # Ashura Day.
+        # Ashura.
         self._add_ashura_day(tr("আশুরা"))
 
         # Prophet's Birthday.
