@@ -29,7 +29,7 @@ msgstr ""
 
 #. %s (estimated).
 #, c-format
-msgid "%s (المقدرة)"
+msgid "%s (مقدرة)"
 msgstr "%s (estimé)"
 
 #. %s (observed).
@@ -39,7 +39,7 @@ msgstr "%s (observé)"
 
 #. %s (observed, estimated).
 #, c-format
-msgid "%s (يُحتفل به، المقدرة)"
+msgid "%s (يُحتفل به، مقدرة)"
 msgstr "%s (observé, estimé)"
 
 #. New Year's Day.

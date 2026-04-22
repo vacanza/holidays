@@ -30,7 +30,7 @@ msgstr ""
 
 #. %s (estimated).
 #, c-format
-msgid "%s (المقدرة)"
+msgid "%s (مقدرة)"
 msgstr "%s (estimé)"
 
 #. %s (observed).
@@ -40,7 +40,7 @@ msgstr "%s (observé)"
 
 #. %s (observed, estimated).
 #, c-format
-msgid "%s (المقدرة، ملاحظة)"
+msgid "%s (مقدرة، ملاحظة)"
 msgstr "%s (observé, estimé)"
 
 #. Coptic Christmas Day.

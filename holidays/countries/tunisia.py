@@ -22,7 +22,7 @@ class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):
     country = "TN"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (مقدرة)")
     supported_languages = ("ar", "en_US")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):

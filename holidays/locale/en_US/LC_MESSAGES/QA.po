@@ -30,7 +30,7 @@ msgstr ""
 
 #. %s (estimated).
 #, c-format
-msgid "%s (المقدرة)"
+msgid "%s (مقدرة)"
 msgstr "%s (estimated)"
 
 #. National Sports Day.
