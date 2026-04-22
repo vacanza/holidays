@@ -72,11 +72,11 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         "VS",  # Valais (Wallis).
         "ZG",  # Zug.
         "ZH",  # Zürich.
-        # Cities
+        # Cities.
         "Stadt Zurich",
     )
     subdivisions_aliases = {
-        # Cantons
+        # Cantons.
         "Aargau": "AG",
         "Appenzell Innerrhoden": "AI",
         "Appenzell Ausserrhoden": "AR",
@@ -108,7 +108,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         "Wallis": "VS",
         "Zug": "ZG",
         "Zürich": "ZH",
-        # Cities
+        # Cities.
         "Stadt Zürich": "Stadt Zurich",
     }
     supported_categories = (DE_FACTO, HALF_DAY, OPTIONAL, PUBLIC)
