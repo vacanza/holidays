@@ -28,21 +28,27 @@ msgstr ""
 "X-Generator: Poedit 3.6\n"
 "X-Source-Language: de\n"
 
+#. Autumn Break.
 msgid "Herbstferien"
 msgstr "ปิดเทอมฤดูใบไม้ร่วง"
 
+#. Christmas Break.
 msgid "Weihnachtsferien"
 msgstr "ปิดเทอมคริสต์มาส"
 
+#. Winter Break.
 msgid "Winterferien"
 msgstr "ปิดเทอมฤดูหนาว"
 
+#. Easter/Spring Break.
 msgid "Oster-/Frühjahrsferien"
 msgstr "ปิดเทอมอีสเตอร์/ฤดูใบไม้ผลิ"
 
+#. Ascension/Whit Break.
 msgid "Himmelfahrts-/Pfingstferien"
 msgstr "ปิดเทอมวันสมโภชพระเยซูเจ้าเสด็จสู่สวรรค์/เพ็นเทคอสต์"
 
+#. Summer Break.
 msgid "Sommerferien"
 msgstr "ปิดเทอมฤดูร้อน"
 

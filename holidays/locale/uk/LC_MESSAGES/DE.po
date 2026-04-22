@@ -28,21 +28,27 @@ msgstr ""
 "X-Generator: Poedit 3.6\n"
 "X-Source-Language: de\n"
 
+#. Autumn Break.
 msgid "Herbstferien"
 msgstr "Осінні канікули"
 
+#. Christmas Break.
 msgid "Weihnachtsferien"
 msgstr "Різдвяні канікули"
 
+#. Winter Break.
 msgid "Winterferien"
 msgstr "Зимові канікули"
 
+#. Easter/Spring Break.
 msgid "Oster-/Frühjahrsferien"
 msgstr "Великодні/весняні канікули"
 
+#. Ascension/Whit Break.
 msgid "Himmelfahrts-/Pfingstferien"
 msgstr "Канікули на Вознесіння/Трійцю"
 
+#. Summer Break.
 msgid "Sommerferien"
 msgstr "Літні канікули"
 

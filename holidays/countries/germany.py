@@ -120,11 +120,17 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     @staticmethod
     def _get_school_holiday_names() -> dict[int, str]:
         return {
+            # Autumn Break.
             AUTUMN_BREAK: tr("Herbstferien"),
+            # Christmas Break.
             CHRISTMAS_BREAK: tr("Weihnachtsferien"),
+            # Winter Break.
             WINTER_BREAK: tr("Winterferien"),
+            # Easter/Spring Break.
             EASTER_SPRING_BREAK: tr("Oster-/Frühjahrsferien"),
+            # Ascension/Whit Break.
             ASCENSION_WHIT_BREAK: tr("Himmelfahrts-/Pfingstferien"),
+            # Summer Break.
             SUMMER_BREAK: tr("Sommerferien"),
         }
 
