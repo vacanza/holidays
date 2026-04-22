@@ -18,9 +18,9 @@ from holidays.registry import EntityLoader
 from holidays.utils import *
 from holidays.version import __version__  # noqa: F401
 
-EntityLoader.load("countries", globals())
-EntityLoader.load("financial", globals())
-
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # Re-export for static analysis. Runtime names come from EntityLoader below.
     from holidays.countries import *
     from holidays.financial import *
+
+EntityLoader.load("countries", globals())
+EntityLoader.load("financial", globals())
