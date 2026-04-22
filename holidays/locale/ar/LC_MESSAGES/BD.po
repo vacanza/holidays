@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.95\n"
+"Project-Id-Version: Holidays 0.96\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-31 00:00+0000\n"
 "PO-Revision-Date: 2026-04-21 11:17+0400\n"
