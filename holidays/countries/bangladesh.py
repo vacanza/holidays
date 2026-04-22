@@ -13,19 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import (
-    APR,
-    AUG,
-    FEB,
-    FRI,
-    JUN,
-    JUL,
-    MAR,
-    MAY,
-    SAT,
-    SEP,
-    OCT,
-)
+from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, FRI, SAT
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
