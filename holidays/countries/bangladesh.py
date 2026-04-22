@@ -163,7 +163,7 @@ class BangladeshIslamicHolidays(_CustomIslamicHolidays):
         2022: (APR, 29),
         2023: (APR, 21),
         2024: (APR, 5),
-        2025: (),
+        2025: (MAR, 28),
         2026: (MAR, 20),
     }
 
