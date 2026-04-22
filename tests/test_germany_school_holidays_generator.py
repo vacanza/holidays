@@ -39,6 +39,16 @@ class _FakePDFPlumber:
 
 
 class TestGermanySchoolHolidaysGenerator(TestCase):
+    def test_normalize_ranges_uses_symbolic_holiday_ids(self):
+        data = generator.normalize_ranges(
+            [(2025, {"BE": [("Herbst", "2025", "20.10.-21.10")]})]
+        )
+
+        self.assertEqual(
+            data,
+            {2025: {"BE": [(0, 10, 20, 0, 10, 21, generator.AUTUMN_BREAK)]}},
+        )
+
     def test_parse_school_year_century_rollover(self):
         self.assertEqual(generator._parse_school_year("1999/00"), (1999, 2000))
 
@@ -200,3 +210,13 @@ class TestGermanySchoolHolidaysGenerator(TestCase):
                 ("Sommer", "2002", "20.06.-31.07"),
             ],
         )
+
+    def test_render_python_module_uses_constants(self):
+        rendered = generator.render_python_module(
+            {2025: {"BE": [(0, 10, 20, 0, 10, 21, generator.AUTUMN_BREAK)]}}
+        )
+
+        self.assertIn("AUTUMN_BREAK", rendered)
+        self.assertIn(") = range(6)", rendered)
+        self.assertIn('(0, 10, 20, 0, 10, 21, AUTUMN_BREAK),', rendered)
+        self.assertNotIn('"Herbstferien"', rendered)

@@ -18,7 +18,7 @@ Workflow:
 1. Run ``python scripts/calendar/germany_school_holidays_generator.py``.
 2. On cold start, the script downloads official KMK school-year PDFs into a local cache
    directory outside the repository.
-3. Review the diff in ``holidays/countries/germany_school_holidays.py``.
+3. Review the diff in ``holidays/calendars/germany_school.py``.
 4. Run Germany tests and docs tests, then commit the updated runtime module.
 
 The raw KMK files are dev-only inputs and are intentionally not committed as canonical
@@ -41,7 +41,7 @@ from urllib.request import urlopen
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DEFAULT_KMK_PAGE_URL = "https://www.kmk.org/service/ferienregelung.html"
 DEFAULT_RAW_PDF_DIR = Path(gettempdir()) / "holidays-germany-school-holidays" / "pdfs"
-OUTPUT_PATH = ROOT_DIR / "holidays" / "countries" / "germany_school_holidays.py"
+OUTPUT_PATH = ROOT_DIR / "holidays" / "calendars" / "germany_school.py"
 SUPPORTED_START_YEAR = 1990
 URL_TIMEOUT_SECONDS = 30
 
@@ -78,13 +78,20 @@ CANONICAL_COLUMN_KEYS = {
     "Himmelfahrt/Pfingsten": "Himmelfahrt/Pfingsten",
 }
 
-HOLIDAY_NAMES = {
-    "Herbst": "Herbstferien",
-    "Sommer": "Sommerferien",
-    "Weihnachten": "Weihnachtsferien",
-    "Winter": "Winterferien",
-    "Ostern/Frühjahr": "Oster-/Frühjahrsferien",
-    "Himmelfahrt/Pfingsten": "Himmelfahrts-/Pfingstferien",
+AUTUMN_BREAK = "AUTUMN_BREAK"
+CHRISTMAS_BREAK = "CHRISTMAS_BREAK"
+WINTER_BREAK = "WINTER_BREAK"
+EASTER_SPRING_BREAK = "EASTER_SPRING_BREAK"
+ASCENSION_WHIT_BREAK = "ASCENSION_WHIT_BREAK"
+SUMMER_BREAK = "SUMMER_BREAK"
+
+HOLIDAY_IDS = {
+    "Herbst": AUTUMN_BREAK,
+    "Sommer": SUMMER_BREAK,
+    "Weihnachten": CHRISTMAS_BREAK,
+    "Winter": WINTER_BREAK,
+    "Ostern/Frühjahr": EASTER_SPRING_BREAK,
+    "Himmelfahrt/Pfingsten": ASCENSION_WHIT_BREAK,
 }
 EXPECTED_SUBDIVISIONS = frozenset(STATE_LABEL_TO_CODE.values())
 
@@ -330,7 +337,7 @@ def _parse_pdf_table(path: Path) -> tuple[int, dict[str, list[tuple[str, str, st
     headers = [_parse_header_cell(cell or "") for cell in table[0]]
     column_specs = headers[1:]
     columns = [key for key, _ in column_specs]
-    unknown_columns = sorted(set(columns) - HOLIDAY_NAMES.keys())
+    unknown_columns = sorted(set(columns) - HOLIDAY_IDS.keys())
     if unknown_columns:
         raise ValueError(f"Unsupported KMK holiday columns in {path.name}: {unknown_columns}.")
 
@@ -448,7 +455,7 @@ def normalize_ranges(
     for _, rows in sources:
         for subdiv, cells in rows.items():
             for column_key, year_label, cell in cells:
-                holiday_name = HOLIDAY_NAMES[column_key]
+                holiday_id = HOLIDAY_IDS[column_key]
                 for month_day_range in parse_cell_ranges(cell):
                     start_date, end_date = _resolve_years(year_label, month_day_range)
                     for year in range(start_date.year, end_date.year + 1):
@@ -466,7 +473,7 @@ def normalize_ranges(
                                 end_date.year - year,
                                 end_date.month,
                                 end_date.day,
-                                holiday_name,
+                                holiday_id,
                             )
                         )
 
@@ -481,19 +488,16 @@ def render_python_module(
     data: dict[int, dict[str, list[tuple[int, int, int, int, int, int, str]]]],
 ) -> str:
     lines = [
-        "#  holidays",
-        "#  --------",
-        "#  A fast, efficient Python library for generating country, province and state",
-        "#  specific sets of holidays on the fly. It aims to make determining whether a",
-        "#  specific date is a holiday as fast and flexible as possible.",
-        "#",
-        "#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)",
-        "#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023",
-        "#           ryanss <ryanssdev@icloud.com> (c) 2014-2017",
-        "#  Website: https://github.com/vacanza/holidays",
-        "#  License: MIT (see LICENSE file)",
-        "",
         '"""Auto-generated Germany school holidays dataset from official KMK sources."""',
+        "",
+        "(",
+        "    AUTUMN_BREAK,",
+        "    CHRISTMAS_BREAK,",
+        "    WINTER_BREAK,",
+        "    EASTER_SPRING_BREAK,",
+        "    ASCENSION_WHIT_BREAK,",
+        "    SUMMER_BREAK,",
+        ") = range(6)",
         "",
         "GERMANY_SCHOOL_HOLIDAYS = {",
     ]
@@ -502,14 +506,23 @@ def render_python_module(
         lines.append(f"    {year}: {{")
         for subdiv, ranges in year_data.items():
             lines.append(f'        "{subdiv}": (')
-            for start_offset, sm, sd, end_offset, em, ed, name in ranges:
+            for start_offset, sm, sd, end_offset, em, ed, holiday_id in ranges:
                 lines.append(
                     "            "
-                    f'({start_offset}, {sm}, {sd}, {end_offset}, {em}, {ed}, "{name}"),'
+                    f"({start_offset}, {sm}, {sd}, {end_offset}, {em}, {ed}, {holiday_id}),"
                 )
             lines.append("        ),")
         lines.append("    },")
-    lines.extend(["}", "", '__all__ = ("GERMANY_SCHOOL_HOLIDAYS",)'])
+    lines.extend(
+        [
+            "}",
+            "",
+            "__all__ = ("
+            '"AUTUMN_BREAK", "CHRISTMAS_BREAK", "WINTER_BREAK", '
+            '"EASTER_SPRING_BREAK", "ASCENSION_WHIT_BREAK", "SUMMER_BREAK", '
+            '"GERMANY_SCHOOL_HOLIDAYS")',
+        ]
+    )
     return "\n".join(lines) + "\n"
 
 

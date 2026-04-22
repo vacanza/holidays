@@ -15,7 +15,15 @@ from unittest import TestCase, mock
 
 from holidays.constants import CATHOLIC, PUBLIC, SCHOOL
 from holidays.countries.germany import Germany, tr
-from holidays.countries.germany_school_holidays import GERMANY_SCHOOL_HOLIDAYS
+from holidays.calendars.germany_school import (
+    ASCENSION_WHIT_BREAK,
+    AUTUMN_BREAK,
+    CHRISTMAS_BREAK,
+    EASTER_SPRING_BREAK,
+    GERMANY_SCHOOL_HOLIDAYS,
+    SUMMER_BREAK,
+    WINTER_BREAK,
+)
 from tests.common import CommonCountryTests
 
 
@@ -56,6 +64,16 @@ class TestGermany(CommonCountryTests, TestCase):
         expected_subdivs = set(Germany.subdivisions) - {"Augsburg"}
         for year, year_data in GERMANY_SCHOOL_HOLIDAYS.items():
             self.assertEqual(set(year_data), expected_subdivs, year)
+
+    def test_all_school_holiday_ids_are_mapped(self):
+        known_ids = set(Germany._get_school_holiday_names())
+        dataset_ids = {
+            holiday_id
+            for year_data in GERMANY_SCHOOL_HOLIDAYS.values()
+            for holidays in year_data.values()
+            for *_, holiday_id in holidays
+        }
+        self.assertEqual(dataset_ids, known_ids)
 
     def test_school_holidays(self):
         bw_1991 = Germany(subdiv="BW", years=1991, categories=SCHOOL)
@@ -177,7 +195,17 @@ class TestGermany(CommonCountryTests, TestCase):
 
     def test_school_holiday_translation_and_out_of_year_ranges(self):
         with mock.patch("holidays.countries.germany.tr", wraps=tr) as tr_mock:
-            Germany._translate_school_holiday_names()
+            self.assertEqual(
+                Germany._get_school_holiday_names(),
+                {
+                    AUTUMN_BREAK: "Herbstferien",
+                    CHRISTMAS_BREAK: "Weihnachtsferien",
+                    WINTER_BREAK: "Winterferien",
+                    EASTER_SPRING_BREAK: "Oster-/Frühjahrsferien",
+                    ASCENSION_WHIT_BREAK: "Himmelfahrts-/Pfingstferien",
+                    SUMMER_BREAK: "Sommerferien",
+                },
+            )
 
         self.assertEqual(
             tr_mock.call_args_list,
@@ -193,7 +221,7 @@ class TestGermany(CommonCountryTests, TestCase):
 
         with mock.patch.dict(
             GERMANY_SCHOOL_HOLIDAYS,
-            {2025: {"BE": ((1, 1, 1, 1, 1, 2, "Herbstferien"),)}},
+            {2025: {"BE": ((1, 1, 1, 1, 1, 2, AUTUMN_BREAK),)}},
             clear=True,
         ):
             self.assertNoHolidays(Germany(subdiv="BE", years=2025, categories=SCHOOL))
@@ -201,7 +229,7 @@ class TestGermany(CommonCountryTests, TestCase):
         with (
             mock.patch.dict(
                 GERMANY_SCHOOL_HOLIDAYS,
-                {2025: {"BE": ((0, 10, 20, 0, 10, 21, "Herbstferien"),)}},
+                {2025: {"BE": ((0, 10, 20, 0, 10, 21, AUTUMN_BREAK),)}},
                 clear=True,
             ),
             mock.patch.object(Germany, "_add_holiday", return_value=None),
@@ -209,6 +237,13 @@ class TestGermany(CommonCountryTests, TestCase):
         ):
             self.assertNoHolidays(Germany(subdiv="BE", years=2025, categories=SCHOOL))
             add_multiday_mock.assert_not_called()
+
+        with mock.patch.dict(
+            GERMANY_SCHOOL_HOLIDAYS,
+            {2025: {"BE": ((0, 10, 20, 0, 10, 21, 999),)}},
+            clear=True,
+        ), self.assertRaisesRegex(ValueError, "Unsupported Germany school holiday id: 999"):
+            Germany(subdiv="BE", years=2025, categories=SCHOOL)
 
     def test_school_and_public_categories(self):
         be_2025 = Germany(subdiv="BE", years=2025, categories=(PUBLIC, SCHOOL))

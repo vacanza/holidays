@@ -15,7 +15,15 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import DEC, JAN, MAY, JUN, OCT
 from holidays.constants import CATHOLIC, PUBLIC, SCHOOL
-from holidays.countries.germany_school_holidays import GERMANY_SCHOOL_HOLIDAYS
+from holidays.calendars.germany_school import (
+    ASCENSION_WHIT_BREAK,
+    AUTUMN_BREAK,
+    CHRISTMAS_BREAK,
+    EASTER_SPRING_BREAK,
+    GERMANY_SCHOOL_HOLIDAYS,
+    SUMMER_BREAK,
+    WINTER_BREAK,
+)
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -110,24 +118,15 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         super().__init__(*args, **kwargs)
 
     @staticmethod
-    def _translate_school_holiday_names() -> None:
-        # Autumn Break.
-        tr("Herbstferien")
-
-        # Christmas Break.
-        tr("Weihnachtsferien")
-
-        # Winter Break.
-        tr("Winterferien")
-
-        # Easter/Spring Break.
-        tr("Oster-/Frühjahrsferien")
-
-        # Ascension/Whit Break.
-        tr("Himmelfahrts-/Pfingstferien")
-
-        # Summer Break.
-        tr("Sommerferien")
+    def _get_school_holiday_names() -> dict[int, str]:
+        return {
+            AUTUMN_BREAK: tr("Herbstferien"),
+            CHRISTMAS_BREAK: tr("Weihnachtsferien"),
+            WINTER_BREAK: tr("Winterferien"),
+            EASTER_SPRING_BREAK: tr("Oster-/Frühjahrsferien"),
+            ASCENSION_WHIT_BREAK: tr("Himmelfahrts-/Pfingstferien"),
+            SUMMER_BREAK: tr("Sommerferien"),
+        }
 
     def _populate_public_holidays(self):
         # New Year's Day.
@@ -170,6 +169,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
         normalized_subdiv = self._normalized_subdiv
         subdiv = "BY" if normalized_subdiv in {"augsburg", "byp"} else normalized_subdiv.upper()
+        school_holiday_names = self._get_school_holiday_names()
         for (
             start_year_offset,
             start_month,
@@ -177,8 +177,11 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             end_year_offset,
             end_month,
             end_day,
-            name,
+            holiday_id,
         ) in GERMANY_SCHOOL_HOLIDAYS.get(self._year, {}).get(subdiv, ()):
+            name = school_holiday_names.get(holiday_id)
+            if name is None:
+                raise ValueError(f"Unsupported Germany school holiday id: {holiday_id}")
             start_date = date(self._year + start_year_offset, start_month, start_day)
             end_date = date(self._year + end_year_offset, end_month, end_day)
             active_start = max(start_date, date(self._year, JAN, 1))
