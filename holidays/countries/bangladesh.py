@@ -108,7 +108,7 @@ class Bangladesh(HolidayBase, InternationalHolidays, ChristianHolidays, IslamicH
         # Mid-Sha'ban.
         self._add_mid_shaban_day(tr("শবে বরাত"))
 
-        # Night of Power.
+        # Laylat al-Qadr.
         self._add_laylat_al_qadr_day(tr("শবে কদর"))
 
         # Jumu'atul-Wida.
