@@ -40,9 +40,9 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
     # %s (estimated).
     estimated_label = tr("%s (مقدرة)")
     # %s (observed).
-    observed_label = tr("%s (يُحتفل به)")
+    observed_label = tr("%s (ملاحظة)")
     # %s (observed, estimated).
-    observed_estimated_label = tr("%s (يُحتفل به، مقدرة)")
+    observed_estimated_label = tr("%s (مقدرة، ملاحظة)")
     start_year = 1978
     supported_categories = (BANK, GOVERNMENT, PUBLIC)
     supported_languages = ("ar", "en_US", "fr")

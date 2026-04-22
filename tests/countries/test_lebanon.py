@@ -146,7 +146,7 @@ class TestLebanon(CommonCountryTests, TestCase):
             "2016-05-02",
             "2022-05-02",
         )
-        self.assertHolidayName(f"{name} (يُحتفل به)", obs_dts)
+        self.assertHolidayName(f"{name} (ملاحظة)", obs_dts)
 
     def test_martyrs_day(self):
         name = "عيد الشهداء"
