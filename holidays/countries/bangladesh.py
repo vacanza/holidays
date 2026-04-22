@@ -18,7 +18,7 @@ from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHol
 from holidays.holiday_base import HolidayBase
 
 
-class Bangladesh(HolidayBase, InternationalHolidays, ChristianHolidays, IslamicHolidays):
+class Bangladesh(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """Bangladesh holidays.
 
     References:
