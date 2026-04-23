@@ -48,7 +48,7 @@ class Oman(HolidayBase, IslamicHolidays):
     country = "OM"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     start_year = 1970
     supported_languages = ("ar", "en_US")
     weekend = {FRI, SAT}

@@ -32,7 +32,7 @@ class Sudan(HolidayBase, ChristianHolidays, IslamicHolidays):
     country = "SD"
     default_language = "ar_SD"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     supported_languages = ("ar_SD", "en_US")
     start_year = 1985
     weekend = {FRI, SAT}
