@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+# mypy: disable-error-code=attr-defined
+
 from unittest import TestCase
 
 from holidays.calendars.gregorian import FEB, JUN, JUL, AUG, DEC
@@ -184,22 +186,22 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         day: int,
         obs_dts: tuple[str, ...],
     ):
-        for subdiv, holidays in self.subdiv_holidays.items():  # type: ignore[attr-defined]
+        for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == province_code:
-                self.assertHolidayName(  # type: ignore[attr-defined]
+                self.assertHolidayName(
                     holiday_name,
                     holidays,
-                    (f"{year}-{month}-{day}" for year in self.full_range),  # type: ignore[attr-defined]
+                    (f"{year}-{month}-{day}" for year in self.full_range),
                 )
                 observed_name = f"{holiday_name} (observed)"
-                self.assertHolidayName(observed_name, holidays, obs_dts)  # type: ignore[attr-defined]
-                self.assertNoNonObservedHolidayName(  # type: ignore[attr-defined]
+                self.assertHolidayName(observed_name, holidays, obs_dts)
+                self.assertNoNonObservedHolidayName(
                     observed_name,
-                    self.subdiv_holidays_non_observed[subdiv],  # type: ignore[attr-defined]
+                    self.subdiv_holidays_non_observed[subdiv],
                     obs_dts,
                 )
             else:
-                self.assertNoHolidayName(holiday_name, holidays, self.full_range)  # type: ignore[attr-defined]
+                self.assertNoHolidayName(holiday_name, holidays, self.full_range)
 
     def test_central_province_day(self):
         obs_dts = (

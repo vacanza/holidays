@@ -39,7 +39,7 @@ class TestEgypt(CommonCountryTests, TestCase):
             "2022-01-06",
             "2023-01-08",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_january_25_revolution(self):
@@ -66,7 +66,7 @@ class TestEgypt(CommonCountryTests, TestCase):
             "2022-01-27",
             "2023-01-26",
         )
-        self.assertHolidayName(f"{name_2012} (ملاحظة)", obs_dts)
+        self.assertHolidayName(f"{name_2012} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_sinai_liberation_day(self):
@@ -80,7 +80,7 @@ class TestEgypt(CommonCountryTests, TestCase):
             "2021-04-29",
             "2023-04-27",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_spring_festival(self):
@@ -111,7 +111,7 @@ class TestEgypt(CommonCountryTests, TestCase):
             "2023-05-04",
             "2024-05-05",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_june_30_revolution_day(self):
@@ -127,7 +127,7 @@ class TestEgypt(CommonCountryTests, TestCase):
             "2023-07-02",
             "2025-07-03",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_july_23_revolution_day(self):
@@ -138,7 +138,7 @@ class TestEgypt(CommonCountryTests, TestCase):
             "2024-07-25",
             "2025-07-24",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_armed_forces_day(self):
@@ -150,7 +150,7 @@ class TestEgypt(CommonCountryTests, TestCase):
             "2021-10-07",
             "2025-10-09",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_islamic_new_year(self):
@@ -168,7 +168,7 @@ class TestEgypt(CommonCountryTests, TestCase):
             "2023-07-20",
             "2024-07-11",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_prophets_birthday(self):
@@ -209,7 +209,7 @@ class TestEgypt(CommonCountryTests, TestCase):
             "2022-05-04",
             "2023-04-24",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
         self.assertGovernmentIslamicNoEstimatedHolidayName(
@@ -277,7 +277,7 @@ class TestEgypt(CommonCountryTests, TestCase):
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
         obs_dts = ("2023-07-03",)
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dts)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
         self.assertGovernmentIslamicNoEstimatedHolidayName(
@@ -320,7 +320,7 @@ class TestEgypt(CommonCountryTests, TestCase):
             ("2024-04-11", "عيد الفطر المبارك"),
             ("2024-04-12", "عيد الفطر المبارك"),
             ("2024-04-25", "عيد تحرير سيناء"),
-            ("2024-05-05", "عيد العمال (ملاحظة)"),
+            ("2024-05-05", "عيد العمال (يوم تعويضي)"),
             ("2024-05-06", "عيد شم النسيم"),
             ("2024-06-15", "وقفة عيد الأضحى المبارك"),
             ("2024-06-16", "عيد الأضحى المبارك"),
@@ -328,8 +328,8 @@ class TestEgypt(CommonCountryTests, TestCase):
             ("2024-06-18", "عيد الأضحى المبارك; عيد الجلاء"),
             ("2024-06-19", "عيد الأضحى المبارك"),
             ("2024-06-30", "عيد ثورة ٣٠ يونيو"),
-            ("2024-07-11", "رأس السنة الهجرية (ملاحظة)"),
-            ("2024-07-25", "عيد ثورة ٢٣ يوليو (ملاحظة)"),
+            ("2024-07-11", "رأس السنة الهجرية (يوم تعويضي)"),
+            ("2024-07-25", "عيد ثورة ٢٣ يوليو (يوم تعويضي)"),
             ("2024-09-15", "المولد النبوي الشريف"),
             ("2024-10-06", "عيد القوات المسلحة"),
         )

@@ -37,11 +37,11 @@ class Yemen(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
     country = "YE"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     # %s (observed).
-    observed_label = tr("%s (ملاحظة)")
+    observed_label = tr("%s (يوم تعويضي)")
     # %s (observed, estimated).
-    observed_estimated_label = tr("%s (المقدرة، ملاحظة)")
+    observed_estimated_label = tr("%s (يوم تعويضي تقديري)")
     # The Republic of Yemen was declared on 22 May 1990.
     start_year = 1991
     supported_categories = (PUBLIC, SCHOOL, WORKDAY)

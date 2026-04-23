@@ -31,7 +31,7 @@ msgstr ""
 #. %s (observed).
 #, c-format
 msgid "%s (вихідний)"
-msgstr "%s (ملاحظة)"
+msgstr "%s (يوم تعويضي)"
 
 #. New Year's Day.
 msgid "Новий рік"
