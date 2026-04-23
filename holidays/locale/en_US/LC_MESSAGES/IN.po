@@ -49,7 +49,7 @@ msgstr "Gandhi Jayanti"
 msgid "Buddha Purnima"
 msgstr "Buddha Purnima"
 
-#. Maharishi Valmiki Jayanti
+#. Maharishi Valmiki Jayanti.
 msgid "Maharishi Valmiki Jayanti"
 msgstr "Maharishi Valmiki Jayanti"
 
