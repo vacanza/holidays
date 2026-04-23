@@ -339,7 +339,9 @@ def CountryHoliday(  # noqa: N802
     """
 
     warnings.warn(
-        "CountryHoliday is deprecated, use country_holidays instead.", DeprecationWarning
+        "CountryHoliday is deprecated, use country_holidays instead.",
+        DeprecationWarning,
+        stacklevel=2,
     )
     return country_holidays(country, subdiv, years, expand, observed, prov, state)
 
