@@ -327,3 +327,7 @@ msgstr "പൊഹേലാ ബൈശാഖ്"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "രബീന്ദ്ര ജയന്തി"
+
+#. Maharishi Valmiki Jayanti.
+msgid "Maharishi Valmiki Jayanti"
+msgstr "മഹർഷി വാൽമീകി ജയന്തി"
