@@ -68,6 +68,10 @@ msgstr "ಮಹಾವೀರ ಜಯಂತಿ"
 msgid "Maha Shivaratri"
 msgstr "ಮಹಾ ಶಿವರಾತ್ರಿ"
 
+#. Maharishi Valmiki Jayanti.
+msgid "Maharishi Valmiki Jayanti"
+msgstr "ಮಹರ್ಷಿ ವಾಲ್ಮೀಕಿ ಜಯಂತಿ"
+
 #. Guru Nanak Jayanti.
 msgid "Guru Nanak Jayanti"
 msgstr "ಗುರು ನಾನಕ್ ಜಯಂತಿ"
@@ -327,3 +331,4 @@ msgstr "ಪೊಹೆಲಾ ಬೊಯಿಶಾಖ್"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "ರವೀಂದ್ರ ಜಯಂತಿ"
+
