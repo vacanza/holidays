@@ -491,7 +491,7 @@ class TestIndia(CommonCountryTests, TestCase):
         dt = (
             "2001-11-01",
             "2010-10-22",
-            "2025-10-7",
+            "2025-10-07",
             "2035-10-17",
         )
         self.assertHolidayName(name, opt_holidays, dt)
