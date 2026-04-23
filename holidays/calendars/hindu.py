@@ -1609,7 +1609,7 @@ class _HinduLunisolar:
     def maharana_pratap_jayanti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHARANA_PRATAP_JAYANTI, year)
 
-     def maharishi_valmiki_jayanti_date(self, year: int) -> tuple[date | None, bool]:
+    def maharishi_valmiki_jayanti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHARISHI_VALMIKI_JAYANTI, year)
 
     def mahavir_jayanti_date(self, year: int) -> tuple[date | None, bool]:
