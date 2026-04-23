@@ -21,12 +21,12 @@ from tests.common import CommonCountryTests
 class TestIndia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        warnings.simplefilter("ignore")
+        warnings.simplefilter("ignore", category=UserWarning)
         super().setUpClass(India)
 
     def setUp(self):
         super().setUp()
-        warnings.simplefilter("ignore")
+        warnings.simplefilter("ignore", category=UserWarning)
 
     def test_subdiv_deprecation(self):
         self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
