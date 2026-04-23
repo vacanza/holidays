@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.86\n"
+"Project-Id-Version: Holidays 0.95\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-11-28 20:26+0530\n"
-"PO-Revision-Date: 2026-04-20 23:45+0545\n"
+"PO-Revision-Date: 2026-04-23 11:08+0545\n"
 "Last-Translator: Ritik Karn <karnritik0@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -105,11 +105,11 @@ msgid "ग्याल्पो ल्होसार"
 msgstr "Gyalpo Lhosar"
 
 #. Fagu Poornima.
-msgid "फागु पूर्णिमा"
+msgid "फागुपूर्णिमा"
 msgstr "Fagu Poornima"
 
 #. Fagu Poornima (Terai).
-msgid "फागु पूर्णिमा (तराई)"
+msgid "फागुपूर्णिमा (तराई)"
 msgstr "Fagu Poornima (Terai)"
 
 #. Buddha Jayanti.
@@ -137,7 +137,7 @@ msgid "एकादशी (दशैं)"
 msgstr "Ekadashi (Dashain)"
 
 #. Laxmi Pooja.
-msgid "लक्ष्मी पूजा"
+msgid "लक्ष्मीपूजा"
 msgstr "Laxmi Pooja"
 
 #. Gai Tihar.
@@ -165,11 +165,11 @@ msgid "तमु ल्हाेसार"
 msgstr "Tamu Lhochhar"
 
 #. Eid al-Fitr.
-msgid "इद उल फित्र"
+msgid "ईद उल फित्र"
 msgstr "Eid al-Fitr"
 
 #. Eid al-Adha.
-msgid "बकरीद"
+msgid "ईद उल अजहा"
 msgstr "Eid al-Adha"
 
 #. Day of National Mourning.
