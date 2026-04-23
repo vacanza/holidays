@@ -327,3 +327,7 @@ msgstr "ਪੋਹੇਲਾ ਬੋਸ਼ਾਖ"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "ਰਬਿੰਦਰ ਜੈਅੰਤੀ"
+
+#. Maharishi Valmiki Jayanti.
+msgid "Maharishi Valmiki Jayanti"
+msgstr "ਮਹਾਰਿਸ਼ੀ ਵਾਲਮੀਕੀ ਜਯੰਤੀ"
