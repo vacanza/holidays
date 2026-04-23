@@ -30,7 +30,7 @@ class Kuwait(HolidayBase, InternationalHolidays, IslamicHolidays):
     country = "KW"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     supported_languages = ("ar", "en_US")
     weekend = {FRI, SAT}
 
