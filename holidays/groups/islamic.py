@@ -328,6 +328,16 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.laylat_al_qadr_dates(self._year)
         )
 
+    def _add_jumuatul_wida(self, name):
+        """
+        Add Jumuatul Wida.
+
+        https://en.wikipedia.org/wiki/Jumu%27atul-Wida
+        """
+        return self._add_islamic_calendar_holiday_set(
+            name, self._islamic_calendar.jumuatul_wida_dates(self._year)
+        )
+
     def _add_maldives_embraced_islam_day(self, name) -> set[date]:
         """
         Add Maldives Embraced Islam Day (1st day of 4th month).
@@ -360,6 +370,16 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.mawlid_dates(self._year), days_delta=+1
+        )
+
+    def _add_mid_shaban_day(self, name):
+        """
+        Add Mid Shaban Day.
+
+        https://en.wikipedia.org/wiki/Mid-Sha%27ban
+        """
+        return self._add_islamic_calendar_holiday_set(
+            name, self._islamic_calendar.mid_shaban_dates(self._year)
         )
 
     def _add_nuzul_al_quran_day(self, name) -> set[date]:

@@ -46,9 +46,11 @@ HASAN_AL_ASKARI_DEATH = "HASAN_AL_ASKARI_DEATH"
 HIJRI_NEW_YEAR = "HIJRI_NEW_YEAR"
 IMAM_MAHDI_BIRTHDAY = "IMAM_MAHDI_BIRTHDAY"
 ISRA_AND_MIRAJ = "ISRA_AND_MIRAJ"
+JUMATUL_WIDA = "JUMATUL_WIDA"
 LAYLAT_AL_QADR = "LAYLAT_AL_QADR"
 MALDIVES_EMBRACED_ISLAM_DAY = "MALDIVES_EMBRACED_ISLAM_DAY"
 MAWLID = "MAWLID"
+MID_SHABAN = "MID_SHABAN"
 NUZUL_AL_QURAN = "NUZUL_AL_QURAN"
 PROPHET_DEATH = "PROPHET_DEATH"
 QUAMEE_DHUVAS = "QUAMEE_DHUVAS"
@@ -4071,6 +4073,9 @@ class _IslamicLunar:
     def isra_and_miraj_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(ISRA_AND_MIRAJ, year)
 
+    def jumuatul_wida_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday(JUMATUL_WIDA, year)
+
     def laylat_al_qadr_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(LAYLAT_AL_QADR, year)
 
@@ -4079,6 +4084,9 @@ class _IslamicLunar:
 
     def mawlid_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(MAWLID, year)
+
+    def mid_shaban_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday(MID_SHABAN, year)
 
     def nuzul_al_quran_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(NUZUL_AL_QURAN, year)

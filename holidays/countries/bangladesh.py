@@ -50,18 +50,6 @@ class Bangladesh(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         )
         super().__init__(*args, **kwargs)
 
-    def _add_mid_shaban_day(self, name):
-        # Mid-Sha'ban Day.
-        return self._add_islamic_calendar_holiday_set(
-            name, self._islamic_calendar._get_holiday("MID_SHABAN", self._year)
-        )
-
-    def _add_jumuatul_wida(self, name):
-        # Jumu'atul-Wida is the last Friday of Ramadan.
-        return self._add_islamic_calendar_holiday_set(
-            name, self._islamic_calendar._get_holiday("JUMATUL_WIDA", self._year)
-        )
-
     def _populate_public_holidays(self):
         # Martyrs' Day and International Mother Language Day.
         self._add_holiday_feb_21(tr("শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস"))
