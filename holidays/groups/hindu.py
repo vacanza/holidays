@@ -191,7 +191,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         Maharashtra. On the same day, the festival is also observed as
         Ugadi in Karnataka, Telangana, and Andhra Pradesh.
 
-        It falls on the first day of Chaitra (March–April) according to
+        It falls on the first day of Chaitra (March-April) according to
         the Hindu lunisolar calendar.
 
         References:
