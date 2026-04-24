@@ -109,10 +109,9 @@ def run_generator():
             if not dts:
                 continue
 
-            # Format: (MONTH, DAY)
-            d_str = ", ".join([f"({d.strftime('%b').upper()}, {d.day})" for d in dts])
+            d_str = ", ".join(f"({d.strftime('%b').upper()}, {d.day})" for d in dts)
             if len(dts) > 1:
-                d_str = f"[{d_str}]"
+                d_str = f"({d_str})"
 
             year_lines.append(YEAR_TEMPLATE.format(year=y, dates=d_str))
 
