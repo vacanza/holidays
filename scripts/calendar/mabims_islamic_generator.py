@@ -18,7 +18,7 @@ from datetime import timedelta
 from pathlib import Path
 
 import ephem
-from hijri_converter import Hijri
+from hijridate import Hijri
 
 CLASS_NAME = "_IslamicMabimsLunar"
 OUT_FILE_NAME = "islamic_mabims_dates.py"
@@ -62,6 +62,8 @@ class MabimsEngine:
         self.moon = ephem.Moon()
         self.sun = ephem.Sun()
         self.moon = ephem.Moon()
+        self.sun = ephem.Sun()
+        self.moon = ephem.Moon()
 
     def get_month_start(self, h_year, h_month):
         """Finds Gregorian date for Hijri 1st using MABIMS criteria."""
@@ -72,16 +74,14 @@ class MabimsEngine:
         conjunction = ephem.previous_new_moon(search_date)
 
         # Check visibility at sunset on the day of conjunction
-        self.obs.date = conjunction
-        next_sunset = self.obs.next_setting(ephem.Sun())
+        next_sunset = self.obs.next_setting(self.sun, start=conjunction)
         self.obs.date = next_sunset
-
-        moon = ephem.Moon(self.obs)
-        sun = ephem.Sun(self.obs)
+        self.moon.compute(self.obs)
+        self.sun.compute(self.obs)
 
         age = (next_sunset - conjunction) * 24.0
-        elongation = math.degrees(ephem.separation(moon, sun))
-        altitude = math.degrees(moon.alt)
+        elongation = math.degrees(ephem.separation(self.moon, self.sun))
+        altitude = math.degrees(self.moon.alt)
 
         if age >= 0 and elongation >= 6.4 and altitude >= 3.0:
             # Month starts the next day
