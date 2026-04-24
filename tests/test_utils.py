@@ -24,7 +24,6 @@ import pytest
 import holidays
 from holidays.calendars.gregorian import FRI, SAT
 from holidays.holiday_base import HolidayBase
-from holidays.registry import COUNTRIES, FINANCIAL
 from holidays.utils import (
     country_holidays,
     CountryHoliday,
@@ -223,7 +222,9 @@ class TestListSupportedEntities(unittest.TestCase):
         self.assertIn("CA", us_subdivisions)
         self.assertIsInstance(us_subdivisions, list)
 
-        countries_count = len(COUNTRIES)
+        countries_count = sum(
+            1 for path in Path("holidays/countries").glob("*.py") if path.stem != "__init__"
+        )
         self.assertEqual(countries_count, len(supported_countries))
 
     def test_list_supported_financial(self):
@@ -235,7 +236,9 @@ class TestListSupportedEntities(unittest.TestCase):
         xnys_subdivisions = supported_financial.get("XNYS", [])
         self.assertIsInstance(xnys_subdivisions, list)
 
-        financial_count = len(FINANCIAL)
+        financial_count = sum(
+            1 for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
+        )
         self.assertEqual(financial_count, len(supported_financial))
 
 
