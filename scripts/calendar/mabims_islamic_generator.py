@@ -63,7 +63,7 @@ class MabimsEngine:
         """Finds Gregorian date for Hijri 1st using MABIMS criteria."""
 
         approx = Hijri(h_year, h_month, 1).to_gregorian()
-        search_date = ephem.Date(f"{approx.year}/{approx.month}/{approx.day} 12:00")
+        search_date = ephem.Date(datetime(approx.year, approx.month, approx.day, 12))
 
         conjunction = ephem.previous_new_moon(search_date)
 
