@@ -60,6 +60,8 @@ class MabimsEngine:
         self.obs.pressure = 0
         self.sun = ephem.Sun()
         self.moon = ephem.Moon()
+        self.sun = ephem.Sun()
+        self.moon = ephem.Moon()
 
     def get_month_start(self, h_year, h_month):
         """Finds Gregorian date for Hijri 1st using MABIMS criteria."""
