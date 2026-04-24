@@ -57,11 +57,6 @@ class MabimsEngine:
         self.obs.lat = OBS_LAT
         self.obs.lon = OBS_LON
         self.obs.elevation = OBS_ELEV
-        self.obs.pressure = 0
-        self.sun = ephem.Sun()
-        self.moon = ephem.Moon()
-        self.sun = ephem.Sun()
-        self.moon = ephem.Moon()
         self.sun = ephem.Sun()
         self.moon = ephem.Moon()
 
