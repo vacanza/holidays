@@ -91,7 +91,7 @@ class MabimsEngine:
 def run_generator():
     engine = MabimsEngine()
     h_start, h_end = HIJRI_RANGE
-    dates_map = {}
+    dates_map = defaultdict(lambda: defaultdict(list))
 
     for h_year in range(h_start, h_end + 1):
         # Month starts for the year
