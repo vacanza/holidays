@@ -98,18 +98,8 @@ def run_generator():
         starts = {m: engine.get_month_start(h_year, m) for m in range(1, 13)}
 
         for h_month, h_day, hol_var in ISLAMIC_HOLIDAYS:
-            month_start = starts[h_month]
-
-            # Simple conversion: Day 1 is index 0
-            g_date = month_start + timedelta(days=h_day - 1)
-            g_year = g_date.year
-
-            if g_year not in dates_map:
-                dates_map[g_year] = {}
-            if hol_var not in dates_map[g_year]:
-                dates_map[g_year][hol_var] = []
-
-            dates_map[g_year][hol_var].append(g_date)
+            g_date = starts[h_month] + timedelta(days=h_day - 1)
+            dates_map[g_date.year][hol_var].append(g_date)
 
     holiday_sections = []
     for hol_name in sorted(h[2] for h in ISLAMIC_HOLIDAYS):
