@@ -112,9 +112,7 @@ def run_generator():
             dates_map[g_year][hol_var].append(g_date)
 
     holiday_sections = []
-    unique_hols = sorted(list({h[2] for h in ISLAMIC_HOLIDAYS}))
-
-    for hol_name in unique_hols:
+    for hol_name in sorted(h[2] for h in ISLAMIC_HOLIDAYS):
         year_lines = []
         for y in sorted(dates_map.keys()):
             dts = dates_map[y].get(hol_name)
