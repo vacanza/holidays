@@ -13,9 +13,7 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import DEC, JAN, MAY, JUN, OCT
-from holidays.constants import CATHOLIC, PUBLIC, SCHOOL
-from holidays.calendars.germany_school import (
+from holidays.calendars.germany_school_dates import (
     ASCENSION_WHIT_BREAK,
     AUTUMN_BREAK,
     CHRISTMAS_BREAK,
@@ -24,6 +22,8 @@ from holidays.calendars.germany_school import (
     SUMMER_BREAK,
     WINTER_BREAK,
 )
+from holidays.calendars.gregorian import JAN, MAY, JUN, OCT, DEC
+from holidays.constants import CATHOLIC, PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -192,8 +192,6 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             end_date = date(self._year + end_year_offset, end_month, end_day)
             active_start = max(start_date, date(self._year, JAN, 1))
             active_end = min(end_date, date(self._year, DEC, 31))
-            if active_start > active_end:
-                continue
             if self._add_holiday(name, active_start):
                 duration_days = (active_end - active_start).days
                 if duration_days:

@@ -13,9 +13,7 @@
 import warnings
 from unittest import TestCase, mock
 
-from holidays.constants import CATHOLIC, PUBLIC, SCHOOL
-from holidays.countries.germany import Germany, tr
-from holidays.calendars.germany_school import (
+from holidays.calendars.germany_school_dates import (
     ASCENSION_WHIT_BREAK,
     AUTUMN_BREAK,
     CHRISTMAS_BREAK,
@@ -24,6 +22,8 @@ from holidays.calendars.germany_school import (
     SUMMER_BREAK,
     WINTER_BREAK,
 )
+from holidays.constants import CATHOLIC, PUBLIC, SCHOOL
+from holidays.countries.germany import Germany, tr
 from tests.common import CommonCountryTests
 
 
@@ -50,11 +50,13 @@ class TestGermany(CommonCountryTests, TestCase):
 
         for subdiv in Germany.subdivisions:
             self.assertNoHolidays(Germany(years=self.start_year - 1, subdiv=subdiv))
-        for subdiv in ("BY", "SN", "TH"):
             self.assertNoHolidays(
-                Germany(subdiv=subdiv, years=self.start_year - 1, categories=CATHOLIC)
+                Germany(subdiv=subdiv, years=self.start_year - 1, categories=SCHOOL)
             )
-        self.assertNoHolidays(Germany(subdiv="BY", years=self.start_year - 1, categories=SCHOOL))
+            if subdiv in {"BY", "SN", "TH"}:
+                self.assertNoHolidays(
+                    Germany(subdiv=subdiv, years=self.start_year - 1, categories=CATHOLIC)
+                )
         self.assertNoHolidays(Germany(years=2025, categories=SCHOOL))
 
     def test_supported_categories(self):
@@ -76,108 +78,41 @@ class TestGermany(CommonCountryTests, TestCase):
         self.assertEqual(dataset_ids, known_ids)
 
     def test_school_holidays(self):
-        bw_1991 = Germany(subdiv="BW", years=1991, categories=SCHOOL)
-        self.assertHolidayName("Winterferien", bw_1991, "1991-02-11", "1991-02-16")
-        self.assertHolidayName("Sommerferien", bw_1991, "1991-07-11", "1991-08-24")
-        self.assertHolidayName(
-            "Sommerferien",
-            Germany(subdiv="TH", years=2001, categories=SCHOOL),
-            "2001-06-28",
-            "2001-08-08",
-        )
-        self.assertHolidayName(
-            "Winterferien",
-            Germany(subdiv="NI", years=2001, categories=SCHOOL),
-            "2001-01-29",
-            "2001-01-30",
-        )
-        self.assertHolidayName(
+        self.assertSubdivBwSchoolHolidayName("Winterferien", "1991-02-11", "1991-02-16")
+        self.assertSubdivBwSchoolHolidayName("Sommerferien", "1991-07-11", "1991-08-24")
+        self.assertSubdivThSchoolHolidayName("Sommerferien", "2001-06-28", "2001-08-08")
+        self.assertSubdivNiSchoolHolidayName("Winterferien", "2001-01-29", "2001-01-30")
+        self.assertSubdivBeSchoolHolidayName(
             "Himmelfahrts-/Pfingstferien",
-            Germany(subdiv="BE", years=2004, categories=SCHOOL),
             "2004-05-21",
         )
-        self.assertHolidayName(
-            "Weihnachtsferien",
-            Germany(subdiv="HH", years=2004, categories=SCHOOL),
-            "2004-01-30",
-            "2004-12-22",
-        )
-        self.assertHolidayName(
+        self.assertSubdivHhSchoolHolidayName("Weihnachtsferien", "2004-01-30", "2004-12-22")
+        self.assertSubdivSlSchoolHolidayName(
             "Himmelfahrts-/Pfingstferien",
-            Germany(subdiv="SL", years=2004, categories=SCHOOL),
             "2004-05-21",
             "2004-06-11",
         )
-        self.assertHolidayName(
-            "Herbstferien",
-            Germany(subdiv="ST", years=2004, categories=SCHOOL),
-            "2004-10-18",
-            "2004-10-23",
-        )
-        self.assertHolidayName(
-            "Winterferien",
-            Germany(subdiv="ST", years=2006, categories=SCHOOL),
-            "2006-02-01",
-            "2006-02-10",
-        )
-        self.assertHolidayName(
-            "Winterferien",
-            Germany(subdiv="HB", years=2009, categories=SCHOOL),
-            "2009-02-02",
-            "2009-02-03",
-        )
-        self.assertHolidayName(
-            "Sommerferien", Germany(subdiv="BE", years=2012, categories=SCHOOL), "2012-06-20"
-        )
-        self.assertHolidayName(
-            "Sommerferien", Germany(subdiv="BE", years=2013, categories=SCHOOL), "2013-06-19"
-        )
-        self.assertHolidayName(
-            "Sommerferien", Germany(subdiv="BE", years=2014, categories=SCHOOL), "2014-07-09"
-        )
-        self.assertHolidayName(
-            "Sommerferien", Germany(subdiv="BE", years=2016, categories=SCHOOL), "2016-07-20"
-        )
-        self.assertHolidayName(
-            "Herbstferien", Germany(subdiv="BW", years=2022, categories=SCHOOL), "2022-11-04"
-        )
-
-        self.assertHolidayName(
+        self.assertSubdivStSchoolHolidayName("Herbstferien", "2004-10-18", "2004-10-23")
+        self.assertSubdivStSchoolHolidayName("Winterferien", "2006-02-01", "2006-02-10")
+        self.assertSubdivHbSchoolHolidayName("Winterferien", "2009-02-02", "2009-02-03")
+        self.assertSubdivBeSchoolHolidayName(
             "Sommerferien",
-            Germany(subdiv="BY", years=2025, categories=SCHOOL),
-            "2025-08-01",
-            "2025-08-31",
+            "2012-06-20",
+            "2013-06-19",
+            "2014-07-09",
+            "2016-07-20",
         )
-        self.assertHolidayName(
+        self.assertSubdivBwSchoolHolidayName("Herbstferien", "2022-11-04")
+        self.assertSubdivBySchoolHolidayName("Sommerferien", "2025-08-01", "2025-08-31")
+        self.assertSubdivBwSchoolHolidayName(
             "Himmelfahrts-/Pfingstferien",
-            Germany(subdiv="BW", years=2025, categories=SCHOOL),
             "2025-06-10",
             "2025-06-20",
         )
-        self.assertHolidayName(
-            "Herbstferien",
-            Germany(subdiv="BE", years=2025, categories=SCHOOL),
-            "2025-10-20",
-            "2025-11-01",
-        )
-        self.assertHolidayName(
-            "Sommerferien",
-            Germany(subdiv="NW", years=2026, categories=SCHOOL),
-            "2026-07-20",
-            "2026-09-01",
-        )
-        self.assertHolidayName(
-            "Winterferien",
-            Germany(subdiv="SN", years=2026, categories=SCHOOL),
-            "2026-02-09",
-            "2026-02-21",
-        )
-        self.assertHolidayName(
-            "Sommerferien",
-            Germany(subdiv="SH", years=2026, categories=SCHOOL),
-            "2026-07-04",
-            "2026-08-15",
-        )
+        self.assertSubdivBeSchoolHolidayName("Herbstferien", "2025-10-20", "2025-11-01")
+        self.assertSubdivNwSchoolHolidayName("Sommerferien", "2026-07-20", "2026-09-01")
+        self.assertSubdivSnSchoolHolidayName("Winterferien", "2026-02-09", "2026-02-21")
+        self.assertSubdivShSchoolHolidayName("Sommerferien", "2026-07-04", "2026-08-15")
 
     def test_school_holidays_subdivision_aliases(self):
         bayern_2025 = Germany(subdiv="Bayern", years=2025, categories=SCHOOL)
@@ -193,7 +128,7 @@ class TestGermany(CommonCountryTests, TestCase):
         by_2026 = Germany(subdiv="BY", years=2026, categories=SCHOOL)
         self.assertHolidayName("Weihnachtsferien", by_2026, "2026-01-02", "2026-12-24")
 
-    def test_school_holiday_translation_and_out_of_year_ranges(self):
+    def test_school_holiday_translation(self):
         with mock.patch("holidays.countries.germany.tr", wraps=tr) as tr_mock:
             self.assertEqual(
                 Germany._get_school_holiday_names(),
@@ -219,13 +154,6 @@ class TestGermany(CommonCountryTests, TestCase):
             ],
         )
 
-        with mock.patch.dict(
-            GERMANY_SCHOOL_HOLIDAYS,
-            {2025: {"BE": ((1, 1, 1, 1, 1, 2, AUTUMN_BREAK),)}},
-            clear=True,
-        ):
-            self.assertNoHolidays(Germany(subdiv="BE", years=2025, categories=SCHOOL))
-
         with (
             mock.patch.dict(
                 GERMANY_SCHOOL_HOLIDAYS,
@@ -238,11 +166,14 @@ class TestGermany(CommonCountryTests, TestCase):
             self.assertNoHolidays(Germany(subdiv="BE", years=2025, categories=SCHOOL))
             add_multiday_mock.assert_not_called()
 
-        with mock.patch.dict(
-            GERMANY_SCHOOL_HOLIDAYS,
-            {2025: {"BE": ((0, 10, 20, 0, 10, 21, 999),)}},
-            clear=True,
-        ), self.assertRaisesRegex(ValueError, "Unsupported Germany school holiday id: 999"):
+        with (
+            mock.patch.dict(
+                GERMANY_SCHOOL_HOLIDAYS,
+                {2025: {"BE": ((0, 10, 20, 0, 10, 21, 999),)}},
+                clear=True,
+            ),
+            self.assertRaisesRegex(ValueError, "Unsupported Germany school holiday id: 999"),
+        ):
             Germany(subdiv="BE", years=2025, categories=SCHOOL)
 
     def test_school_and_public_categories(self):

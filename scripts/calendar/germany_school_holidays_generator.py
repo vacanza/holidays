@@ -18,7 +18,7 @@ Workflow:
 1. Run ``python scripts/calendar/germany_school_holidays_generator.py``.
 2. On cold start, the script downloads official KMK school-year PDFs into a local cache
    directory outside the repository.
-3. Review the diff in ``holidays/calendars/germany_school.py``.
+3. Review the diff in ``holidays/calendars/germany_school_dates.py``.
 4. Run Germany tests and docs tests, then commit the updated runtime module.
 
 The raw KMK files are dev-only inputs and are intentionally not committed as canonical
@@ -41,7 +41,7 @@ from urllib.request import urlopen
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DEFAULT_KMK_PAGE_URL = "https://www.kmk.org/service/ferienregelung.html"
 DEFAULT_RAW_PDF_DIR = Path(gettempdir()) / "holidays-germany-school-holidays" / "pdfs"
-OUTPUT_PATH = ROOT_DIR / "holidays" / "calendars" / "germany_school.py"
+OUTPUT_PATH = ROOT_DIR / "holidays" / "calendars" / "germany_school_dates.py"
 SUPPORTED_START_YEAR = 1990
 URL_TIMEOUT_SECONDS = 30
 
