@@ -67,11 +67,8 @@ class POGenerator:
         try:
             repo = Repo(Path(__file__).parents[2])
             config = repo.config_reader()
-            if config.has_section("user"):
-                name = config.get_value("user", "name", "")
-                email = config.get_value("user", "email", "")
-            else:
-                name = email = None
+            name = config.get_value("user", "name", "")
+            email = config.get_value("user", "email", "")
             if name and email:
                 result = f"{name} <{email}>"
         except exc.GitError:
