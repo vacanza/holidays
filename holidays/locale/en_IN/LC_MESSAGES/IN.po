@@ -49,10 +49,6 @@ msgstr ""
 msgid "Buddha Purnima"
 msgstr ""
 
-#. Maharishi Valmiki Jayanti.
-msgid "Maharishi Valmiki Jayanti"
-msgstr ""
-
 #. Diwali.
 msgid "Diwali"
 msgstr ""
@@ -331,4 +327,8 @@ msgstr ""
 
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
+msgstr ""
+
+#. Maharishi Valmiki Jayanti.
+msgid "Maharishi Valmiki Jayanti"
 msgstr ""
