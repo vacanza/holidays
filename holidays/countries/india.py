@@ -272,7 +272,7 @@ class India(
         # Maha Navami.
         self._add_maha_navami(tr("Maha Navami"))
 
-        # Maharishi Valmiki Jayanti
+        # Maharishi Valmiki Jayanti.
         self._add_maharishi_valmiki_jayanti(tr("Maharishi Valmiki Jayanti"))
 
         # Makar Sankranti.
