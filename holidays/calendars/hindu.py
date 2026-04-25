@@ -885,7 +885,7 @@ class _HinduLunisolar:
         2034: (MAY, 20),
         2035: (JUN, 8),
     }
-    
+
     # https://www.drikpanchang.com/hindu-saints/valmiki/maharishi-valmiki-jayanti.html
     MAHARISHI_VALMIKI_JAYANTI_DATES = {
         2001: (NOV, 1),
