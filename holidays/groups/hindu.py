@@ -335,8 +335,8 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.maharana_pratap_jayanti_date(self._year)
         )
-        
-     def _add_maharishi_valmiki_jayanti(self, name) -> date | None:
+
+    def _add_maharishi_valmiki_jayanti(self, name) -> date | None:
         """
         Add Maharishi Valmiki Jayanti.
 
