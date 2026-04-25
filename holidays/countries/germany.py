@@ -185,17 +185,15 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             end_day,
             holiday_id,
         ) in GERMANY_SCHOOL_HOLIDAYS.get(self._year, {}).get(subdiv, ()):
-            name = school_holiday_names.get(holiday_id)
-            if name is None:
-                raise ValueError(f"Unsupported Germany school holiday id: {holiday_id}")
+            name = school_holiday_names[holiday_id]
             start_date = date(self._year + start_year_offset, start_month, start_day)
             end_date = date(self._year + end_year_offset, end_month, end_day)
             active_start = max(start_date, date(self._year, JAN, 1))
             active_end = min(end_date, date(self._year, DEC, 31))
-            if self._add_holiday(name, active_start):
-                duration_days = (active_end - active_start).days
-                if duration_days:
-                    self._add_multiday_holiday(active_start, duration_days, name=name)
+            self._add_holiday(name, active_start)
+            duration_days = (active_end - active_start).days
+            if duration_days:
+                self._add_multiday_holiday(active_start, duration_days, name=name)
 
     def _populate_subdiv_bb_public_holidays(self):
         # Easter Sunday.
