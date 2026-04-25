@@ -68,8 +68,8 @@ class POGenerator:
             repo = Repo(Path(__file__).parents[2])
             config = repo.config_reader()
             if config.has_section("user"):
-                name = config.get_value("user", "name", None)
-                email = config.get_value("user", "email", None)
+                name = config.get_value("user", "name", "")
+                email = config.get_value("user", "email", "")
             else:
                 name = email = None
             if name and email:
