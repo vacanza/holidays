@@ -330,4 +330,4 @@ msgstr "রবীন্দ্র জয়ন্তী"
 
 #. Maharishi Valmiki Jayanti.
 msgid "Maharishi Valmiki Jayanti"
-msgstr "মহার্ষি বাল্মীকি জয়ন্তী"
+msgstr "মহার্ষি বাল্মীকি জয়ন্তীী"
