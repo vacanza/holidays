@@ -13,7 +13,7 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.germany_school_dates import (
+from holidays.calendars.germany_school import (
     ASCENSION_WHIT_BREAK,
     AUTUMN_BREAK,
     CHRISTMAS_BREAK,
