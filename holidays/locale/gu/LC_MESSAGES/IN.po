@@ -331,4 +331,4 @@ msgstr "રવીન્દ્ર જયંતિ"
 
 #. Maharishi Valmiki Jayanti.
 msgid "Maharishi Valmiki Jayanti"
-msgstr "મહર્ષિ વાલ્મીકિ જયંતીિ"
+msgstr "મહર્ષિ વાલ્મીકિ જયંતિ"
