@@ -49,10 +49,6 @@ msgstr "गांधी जयंती"
 msgid "Buddha Purnima"
 msgstr "बुद्ध पूर्णिमा"
 
-#. Maharishi Valmiki Jayanti.
-msgid "Maharishi Valmiki Jayanti"
-msgstr "महर्षि वाल्मीकि जयंती"
-
 #. Diwali.
 msgid "Diwali"
 msgstr "दिवाली"
