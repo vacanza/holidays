@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 # Script: mabims_islamic_generator.py
-# Author: Ali Fathelrahman (https://github.com/AliCoder8)
+# Copyright (c) 2026 AliCoder8
 
 import math
 from datetime import timedelta
