@@ -886,7 +886,7 @@ class _HinduLunisolar:
         2035: (JUN, 8),
     }
 
-    # https://web.archive.org/web/2025*/https://www.drikpanchang.com/hindu-saints/valmiki/maharishi-valmiki-jayanti.html
+    # https://web.archive.org/web/20260219010222/https://www.drikpanchang.com/hindu-saints/valmiki/maharishi-valmiki-jayanti.html
     MAHARISHI_VALMIKI_JAYANTI_DATES = {
         2001: (NOV, 1),
         2002: (OCT, 21),
