@@ -469,18 +469,37 @@ class TestGermany(CommonCountryTests, TestCase):
         )
 
     def test_school_and_public_categories(self):
-        be_2025 = Germany(subdiv="BE", years=2025, categories=(PUBLIC, SCHOOL))
-        self.assertHolidayName("Frauentag", be_2025, "2025-03-08")
-        self.assertHolidayName("Herbstferien", be_2025, "2025-10-20")
-
-        bayern_2025 = Germany(subdiv="Bayern", years=2025, categories=(PUBLIC, SCHOOL))
-        self.assertHolidayName("Neujahr", bayern_2025, "2025-01-01")
-        self.assertHolidayName("Sommerferien", bayern_2025, "2025-08-01")
+        self.assertHolidayName(
+            "Frauentag",
+            Germany(subdiv="BE", years=2025, categories=(PUBLIC, SCHOOL)),
+            "2025-03-08",
+        )
+        self.assertHolidayName(
+            "Herbstferien",
+            Germany(subdiv="BE", years=2025, categories=(PUBLIC, SCHOOL)),
+            "2025-10-20",
+        )
+        self.assertHolidayName(
+            "Neujahr",
+            Germany(subdiv="Bayern", years=2025, categories=(PUBLIC, SCHOOL)),
+            "2025-01-01",
+        )
+        self.assertHolidayName(
+            "Sommerferien",
+            Germany(subdiv="Bayern", years=2025, categories=(PUBLIC, SCHOOL)),
+            "2025-08-01",
+        )
 
     def test_public_category_excludes_school_holidays(self):
-        by_2025 = Germany(subdiv="BY", years=2025, categories=PUBLIC)
-        self.assertHolidayName("Neujahr", by_2025, "2025-01-01")
-        self.assertNoHolidayName("Sommerferien", by_2025)
+        self.assertHolidayName(
+            "Neujahr",
+            Germany(subdiv="BY", years=2025, categories=PUBLIC),
+            "2025-01-01",
+        )
+        self.assertNoHolidayName(
+            "Sommerferien",
+            Germany(subdiv="BY", years=2025, categories=PUBLIC),
+        )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -586,37 +605,145 @@ class TestGermany(CommonCountryTests, TestCase):
         )
 
     def test_l10n_default_school(self):
-        bb_2025 = Germany(subdiv="BB", years=2025, categories=SCHOOL)
-        self.assertHolidayName("Winterferien", bb_2025, "2025-02-03", "2025-02-08")
-        self.assertHolidayName("Oster-/Frühjahrsferien", bb_2025, "2025-04-14", "2025-04-25")
-        self.assertHolidayName("Himmelfahrts-/Pfingstferien", bb_2025, "2025-06-10")
-        self.assertHolidayName("Sommerferien", bb_2025, "2025-07-24", "2025-09-06")
-        self.assertHolidayName("Herbstferien", bb_2025, "2025-10-20", "2025-11-01")
-        self.assertHolidayName("Weihnachtsferien", bb_2025, "2025-12-22")
+        self.assertHolidayName(
+            "Winterferien",
+            Germany(subdiv="BB", years=2025, categories=SCHOOL),
+            "2025-02-03",
+            "2025-02-08",
+        )
+        self.assertHolidayName(
+            "Oster-/Frühjahrsferien",
+            Germany(subdiv="BB", years=2025, categories=SCHOOL),
+            "2025-04-14",
+            "2025-04-25",
+        )
+        self.assertHolidayName(
+            "Himmelfahrts-/Pfingstferien",
+            Germany(subdiv="BB", years=2025, categories=SCHOOL),
+            "2025-06-10",
+        )
+        self.assertHolidayName(
+            "Sommerferien",
+            Germany(subdiv="BB", years=2025, categories=SCHOOL),
+            "2025-07-24",
+            "2025-09-06",
+        )
+        self.assertHolidayName(
+            "Herbstferien",
+            Germany(subdiv="BB", years=2025, categories=SCHOOL),
+            "2025-10-20",
+            "2025-11-01",
+        )
+        self.assertHolidayName(
+            "Weihnachtsferien",
+            Germany(subdiv="BB", years=2025, categories=SCHOOL),
+            "2025-12-22",
+        )
 
     def test_l10n_en_us_school(self):
-        bb_2025 = Germany(subdiv="BB", years=2025, language="en_US", categories=SCHOOL)
-        self.assertHolidayName("Winter Break", bb_2025, "2025-02-03", "2025-02-08")
-        self.assertHolidayName("Easter/Spring Break", bb_2025, "2025-04-14", "2025-04-25")
-        self.assertHolidayName("Ascension/Whit Break", bb_2025, "2025-06-10")
-        self.assertHolidayName("Summer Break", bb_2025, "2025-07-24", "2025-09-06")
-        self.assertHolidayName("Autumn Break", bb_2025, "2025-10-20", "2025-11-01")
-        self.assertHolidayName("Christmas Break", bb_2025, "2025-12-22")
+        self.assertHolidayName(
+            "Winter Break",
+            Germany(subdiv="BB", years=2025, language="en_US", categories=SCHOOL),
+            "2025-02-03",
+            "2025-02-08",
+        )
+        self.assertHolidayName(
+            "Easter/Spring Break",
+            Germany(subdiv="BB", years=2025, language="en_US", categories=SCHOOL),
+            "2025-04-14",
+            "2025-04-25",
+        )
+        self.assertHolidayName(
+            "Ascension/Whit Break",
+            Germany(subdiv="BB", years=2025, language="en_US", categories=SCHOOL),
+            "2025-06-10",
+        )
+        self.assertHolidayName(
+            "Summer Break",
+            Germany(subdiv="BB", years=2025, language="en_US", categories=SCHOOL),
+            "2025-07-24",
+            "2025-09-06",
+        )
+        self.assertHolidayName(
+            "Autumn Break",
+            Germany(subdiv="BB", years=2025, language="en_US", categories=SCHOOL),
+            "2025-10-20",
+            "2025-11-01",
+        )
+        self.assertHolidayName(
+            "Christmas Break",
+            Germany(subdiv="BB", years=2025, language="en_US", categories=SCHOOL),
+            "2025-12-22",
+        )
 
     def test_l10n_th_school(self):
-        bb_2025 = Germany(subdiv="BB", years=2025, language="th", categories=SCHOOL)
-        self.assertHolidayName("ปิดเทอมฤดูหนาว", bb_2025, "2025-02-03", "2025-02-08")
-        self.assertHolidayName("ปิดเทอมอีสเตอร์/ฤดูใบไม้ผลิ", bb_2025, "2025-04-14", "2025-04-25")
-        self.assertHolidayName("ปิดเทอมวันสมโภชพระเยซูเจ้าเสด็จสู่สวรรค์/เพ็นเทคอสต์", bb_2025, "2025-06-10")
-        self.assertHolidayName("ปิดเทอมฤดูร้อน", bb_2025, "2025-07-24", "2025-09-06")
-        self.assertHolidayName("ปิดเทอมฤดูใบไม้ร่วง", bb_2025, "2025-10-20", "2025-11-01")
-        self.assertHolidayName("ปิดเทอมคริสต์มาส", bb_2025, "2025-12-22")
+        self.assertHolidayName(
+            "ปิดเทอมฤดูหนาว",
+            Germany(subdiv="BB", years=2025, language="th", categories=SCHOOL),
+            "2025-02-03",
+            "2025-02-08",
+        )
+        self.assertHolidayName(
+            "ปิดเทอมอีสเตอร์/ฤดูใบไม้ผลิ",
+            Germany(subdiv="BB", years=2025, language="th", categories=SCHOOL),
+            "2025-04-14",
+            "2025-04-25",
+        )
+        self.assertHolidayName(
+            "ปิดเทอมวันสมโภชพระเยซูเจ้าเสด็จสู่สวรรค์/เพ็นเทคอสต์",
+            Germany(subdiv="BB", years=2025, language="th", categories=SCHOOL),
+            "2025-06-10",
+        )
+        self.assertHolidayName(
+            "ปิดเทอมฤดูร้อน",
+            Germany(subdiv="BB", years=2025, language="th", categories=SCHOOL),
+            "2025-07-24",
+            "2025-09-06",
+        )
+        self.assertHolidayName(
+            "ปิดเทอมฤดูใบไม้ร่วง",
+            Germany(subdiv="BB", years=2025, language="th", categories=SCHOOL),
+            "2025-10-20",
+            "2025-11-01",
+        )
+        self.assertHolidayName(
+            "ปิดเทอมคริสต์มาส",
+            Germany(subdiv="BB", years=2025, language="th", categories=SCHOOL),
+            "2025-12-22",
+        )
 
     def test_l10n_uk_school(self):
-        bb_2025 = Germany(subdiv="BB", years=2025, language="uk", categories=SCHOOL)
-        self.assertHolidayName("Зимові канікули", bb_2025, "2025-02-03", "2025-02-08")
-        self.assertHolidayName("Великодні/весняні канікули", bb_2025, "2025-04-14", "2025-04-25")
-        self.assertHolidayName("Канікули на Вознесіння/Трійцю", bb_2025, "2025-06-10")
-        self.assertHolidayName("Літні канікули", bb_2025, "2025-07-24", "2025-09-06")
-        self.assertHolidayName("Осінні канікули", bb_2025, "2025-10-20", "2025-11-01")
-        self.assertHolidayName("Різдвяні канікули", bb_2025, "2025-12-22")
+        self.assertHolidayName(
+            "Зимові канікули",
+            Germany(subdiv="BB", years=2025, language="uk", categories=SCHOOL),
+            "2025-02-03",
+            "2025-02-08",
+        )
+        self.assertHolidayName(
+            "Великодні/весняні канікули",
+            Germany(subdiv="BB", years=2025, language="uk", categories=SCHOOL),
+            "2025-04-14",
+            "2025-04-25",
+        )
+        self.assertHolidayName(
+            "Канікули на Вознесіння/Трійцю",
+            Germany(subdiv="BB", years=2025, language="uk", categories=SCHOOL),
+            "2025-06-10",
+        )
+        self.assertHolidayName(
+            "Літні канікули",
+            Germany(subdiv="BB", years=2025, language="uk", categories=SCHOOL),
+            "2025-07-24",
+            "2025-09-06",
+        )
+        self.assertHolidayName(
+            "Осінні канікули",
+            Germany(subdiv="BB", years=2025, language="uk", categories=SCHOOL),
+            "2025-10-20",
+            "2025-11-01",
+        )
+        self.assertHolidayName(
+            "Різдвяні канікули",
+            Germany(subdiv="BB", years=2025, language="uk", categories=SCHOOL),
+            "2025-12-22",
+        )
