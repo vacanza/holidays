@@ -287,7 +287,9 @@ class SouthKorea(
 
 class Korea(SouthKorea):
     def __init__(self, *args, **kwargs) -> None:
-        warnings.warn("Korea is deprecated, use SouthKorea instead.", DeprecationWarning)
+        warnings.warn(
+            "Korea is deprecated, use SouthKorea instead.", DeprecationWarning, stacklevel=3
+        )
 
         super().__init__(*args, **kwargs)
 

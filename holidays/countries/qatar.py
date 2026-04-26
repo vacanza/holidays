@@ -33,7 +33,7 @@ class Qatar(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
     country = "QA"
     default_language = "ar_QA"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     start_year = 1971
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("ar_QA", "en_US")

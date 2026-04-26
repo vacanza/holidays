@@ -174,5 +174,5 @@ class TestEswatini(CommonCountryTests, TestCase):
 
     def test_swaziland_deprecation_warning(self):
         warnings.simplefilter("default")
-        with self.assertWarns(Warning):
+        with self.assertWarns(DeprecationWarning):
             holidays.Swaziland()

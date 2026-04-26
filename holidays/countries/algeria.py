@@ -48,7 +48,7 @@ class Algeria(
     country = "DZ"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     # Loi n° 63-278 du 26 juillet 1963.
     start_year = 1964
     supported_categories = (CHRISTIAN, HEBREW, PUBLIC)
