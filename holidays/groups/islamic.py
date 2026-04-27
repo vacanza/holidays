@@ -379,7 +379,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Mid-Sha%27ban
         """
         return self._add_islamic_calendar_holiday_set(
-            name, self._islamic_calendar.mid_shaban_dates(self._year)
+            name, self._islamic_calendar.imam_mahdi_birthday_dates(self._year)
         )
 
     def _add_nuzul_al_quran_day(self, name) -> set[date]:
