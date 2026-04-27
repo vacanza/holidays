@@ -340,7 +340,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         Add Maharishi Valmiki Jayanti.
 
-        Maharishi Valmiki Jayanti, celebrating the birth of the author
+        Maharishi Valmiki Jayanti (Pargat Diwas), celebrating the birth of the author
         of the Ramayana and the Adi Kavi (first poet) of Sanskrit,
         occurs on the full moon day (Purnima) in the Hindu month of Ashwin.
         https://en.wikipedia.org/wiki/Valmiki_Jayanti
