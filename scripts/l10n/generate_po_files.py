@@ -69,8 +69,8 @@ class POGenerator:
             config = repo.config_reader()
             name = config.get_value("user", "name", "")
             email = config.get_value("user", "email", "")
-            if name and email:
-                result = f"{name} <{email}>"
+            if name and email and TRANSLATOR_PATTERN.fullmatch(identity := f"{name} <{email}>"):
+                result = identity
         except exc.GitError:
             pass
 
