@@ -35,7 +35,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         * <https://de.wikipedia.org/wiki/Feiertag_(Deutschland)>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Germany>
         * [German Unity Day](https://web.archive.org/web/20251011161644/https://www.gesetze-im-internet.de/einigvtr/art_2.html)
-        * [KMK school holidays](https://www.kmk.org/service/ferienregelung/ferienkalender.html)
+        * [KMK school holidays](https://web.archive.org/web/20260426091657/https://www.kmk.org/service/ferienregelung/ferienkalender.html)
 
     Subdivisions Holidays References:
         * [Brandenburg](https://web.archive.org/web/20251002092001/https://bravors.brandenburg.de/gesetze/ftg_2015)
