@@ -18,11 +18,18 @@ Workflow:
 1. Run ``python scripts/calendar/germany_school_holidays_generator.py``.
 2. On cold start, the script downloads official KMK school-year PDFs into a local cache
    directory outside the repository.
-3. Review the diff in ``holidays/calendars/germany_school.py``.
-4. Run Germany tests and docs tests, then commit the updated runtime module.
+3. The script writes fresh data to ``holidays/calendars/germany_school_dates.py`` — a
+   throwaway file that is **not committed**. It mirrors the structure of the committed
+   module ``holidays/calendars/germany_school.py`` so you can diff the two directly::
 
-The raw KMK files are dev-only inputs and are intentionally not committed as canonical
-intermediate data. The generator is intentionally dev-only and keeps runtime logic in
+       diff holidays/calendars/germany_school{_dates,}.py
+
+4. Apply the relevant changes from ``germany_school_dates.py`` to ``germany_school.py``
+   (the committed module that ships with the library).
+5. Run Germany tests and docs tests, then commit the updated ``germany_school.py``.
+
+The raw KMK PDFs and the generated ``germany_school_dates.py`` are dev-only artifacts and
+are intentionally not committed. The generator keeps runtime logic in
 ``holidays/countries/germany.py`` small and offline.
 """
 
@@ -41,7 +48,7 @@ from urllib.request import urlopen
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DEFAULT_KMK_PAGE_URL = "https://www.kmk.org/service/ferienregelung.html"
 DEFAULT_RAW_PDF_DIR = Path(gettempdir()) / "holidays-germany-school-holidays" / "pdfs"
-OUTPUT_PATH = ROOT_DIR / "holidays" / "calendars" / "germany_school.py"
+OUTPUT_PATH = ROOT_DIR / "holidays" / "calendars" / "germany_school_dates.py"
 SUPPORTED_START_YEAR = 1990
 URL_TIMEOUT_SECONDS = 30
 
