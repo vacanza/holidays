@@ -122,6 +122,9 @@ class UnitedStates(
             * [Alaska Statutes, Sec. 44.12.010](https://web.archive.org/web/20251014215648/https://www.akleg.gov/basis/statutes.asp#44.12.010)
             * [Alaska Day](https://web.archive.org/web/20120502232826/http://www.alaskadispatch.com/article/happy-alaska-day-great-land)
             * [Chapter 109, Session Laws of Alaska (1989)](https://web.archive.org/web/20251228151503/https://www.akleg.gov/basis/folioproxy.asp?url=http://wwwjnu03.akleg.org/cgi-bin/folioisa.dll/slpr/query=*/doc/%7B@1158%7D?next)
+        * Georgia:
+            * [State of Georgia Holiday Schedule](https://web.archive.org/web/20260428032230/https://team.georgia.gov/all-articles/state-georgia-holiday-schedule)
+            * [Confederate Memorial Day/State Holiday](https://en.wikipedia.org/wiki/Confederate_Memorial_Day)
         * Massachusetts:
             * [Massachusetts Legal Holidays Laws](https://web.archive.org/web/20250417214902/https://www.findlaw.com/state/massachusetts-law/massachusetts-legal-holidays-laws.html)
             * [Patriots'_Day](https://en.wikipedia.org/wiki/Patriots'_Day)
@@ -761,8 +764,8 @@ class UnitedStates(
                 # Confederate Memorial Day.
                 else tr("Confederate Memorial Day")
             )
-            if self._year == 2020:
-                self._add_holiday_apr_10(name)
+            if self._year >= 2020:
+                self._add_good_friday(name)
             else:
                 self._add_holiday_4th_mon_of_apr(name)
 
