@@ -33,7 +33,7 @@ class SaintKittsAndNevis(
     If Sovereign's Birthday, New Year's Day, Independence Day, or National Heroes Day
     fall on a Sunday the next following Monday shall be a public holiday.
 
-    Boxing Day—that is the day after Christmas Day, but if Christmas Day falls
+    Boxing Day-that is the day after Christmas Day, but if Christmas Day falls
     on a Saturday, then the next following Monday shall be a public holiday, and if
     Christmas Day falls on a Sunday, then the next following Monday and Tuesday
     shall be public holidays.
