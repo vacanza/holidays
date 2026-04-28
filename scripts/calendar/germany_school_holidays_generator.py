@@ -18,7 +18,7 @@ Workflow:
 1. Run ``python scripts/calendar/germany_school_holidays_generator.py``.
 2. On cold start, the script downloads official KMK school-year PDFs into a local cache
    directory outside the repository.
-3. The script writes fresh data to ``holidays/calendars/germany_school_dates.py`` — a
+3. The script writes fresh data to ``holidays/calendars/germany_school_dates.py`` - a
    throwaway file that is **not committed**. It mirrors the structure of the committed
    module ``holidays/calendars/germany_school.py`` so you can diff the two directly::
 
@@ -251,7 +251,7 @@ def _normalize_cell_separators(cell: str) -> str:
     """Normalize KMK cell separators before date-specific cleanup."""
 
     cell = cell.replace("\n", "/")
-    cell = cell.replace("–", "-").replace("—", "-")
+    cell = cell.replace("\u2013", "-").replace("\u2014", "-")
     cell = re.sub(r"\bund\b", "/", cell)
     return cell.replace("+", "/")
 
