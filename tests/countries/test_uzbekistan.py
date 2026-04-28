@@ -127,10 +127,10 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidayName("Xotin-qizlar kuni", (f"{year}-03-08" for year in self.full_range))
 
     def test_nowruz(self):
-        self.assertHolidayName("Navro‘z bayrami", (f"{year}-03-21" for year in self.full_range))
+        self.assertHolidayName("Navroʻz bayrami", (f"{year}-03-21" for year in self.full_range))
 
     def test_memory_and_honor_day(self):
-        name_1992 = "G‘alaba kuni"
+        name_1992 = "Gʻalaba kuni"
         name_1999 = "Xotira va qadrlash kuni"
         self.assertHolidayName(
             name_1992, (f"{year}-05-09" for year in range(self.start_year, 1999))
@@ -143,17 +143,17 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidayName("Mustaqillik kuni", (f"{year}-09-01" for year in self.full_range))
 
     def test_teachers_and_instructors_day(self):
-        name = "O‘qituvchi va murabbiylar kuni"
+        name = "Oʻqituvchi va murabbiylar kuni"
         self.assertHolidayName(name, (f"{year}-10-01" for year in range(1997, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1997))
 
     def test_constitution_day(self):
-        name = "O‘zbekiston Respublikasi Konstitutsiyasi kuni"
+        name = "Oʻzbekiston Respublikasi Konstitutsiyasi kuni"
         self.assertHolidayName(name, (f"{year}-12-08" for year in range(1993, self.end_year)))
         self.assertNoHolidayName(name, 1992)
 
     def test_eid_al_fitr(self):
-        name = "Ro‘za hayit"
+        name = "Roʻza hayit"
         self.assertHolidayName(
             name,
             "2020-05-24",
@@ -195,17 +195,17 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidaysInYear(
             2020,
             ("2020-01-01", "Yangi yil"),
-            ("2020-01-02", "Dam olish kuni (04/01 2020 dan ko‘chirilgan)"),
+            ("2020-01-02", "Dam olish kuni (04/01 2020 dan koʻchirilgan)"),
             ("2020-03-08", "Xotin-qizlar kuni"),
-            ("2020-03-21", "Navro‘z bayrami"),
-            ("2020-03-23", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
+            ("2020-03-21", "Navroʻz bayrami"),
+            ("2020-03-23", "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"),
             ("2020-05-09", "Xotira va qadrlash kuni"),
-            ("2020-05-24", "Ro‘za hayit"),
+            ("2020-05-24", "Roʻza hayit"),
             ("2020-07-31", "Qurbon hayit"),
-            ("2020-08-31", "Dam olish kuni (29/08 2020 dan ko‘chirilgan)"),
+            ("2020-08-31", "Dam olish kuni (29/08 2020 dan koʻchirilgan)"),
             ("2020-09-01", "Mustaqillik kuni"),
-            ("2020-10-01", "O‘qituvchi va murabbiylar kuni"),
-            ("2020-12-08", "O‘zbekiston Respublikasi Konstitutsiyasi kuni"),
+            ("2020-10-01", "Oʻqituvchi va murabbiylar kuni"),
+            ("2020-12-08", "Oʻzbekiston Respublikasi Konstitutsiyasi kuni"),
         )
 
     def test_2021(self):
@@ -213,64 +213,64 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
             2021,
             ("2021-01-01", "Yangi yil"),
             ("2021-03-08", "Xotin-qizlar kuni"),
-            ("2021-03-21", "Navro‘z bayrami"),
-            ("2021-03-22", "Dam olish kuni (27/03 2021 dan ko‘chirilgan)"),
+            ("2021-03-21", "Navroʻz bayrami"),
+            ("2021-03-22", "Dam olish kuni (27/03 2021 dan koʻchirilgan)"),
             ("2021-05-09", "Xotira va qadrlash kuni"),
-            ("2021-05-13", "Ro‘za hayit"),
-            ("2021-05-14", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
+            ("2021-05-13", "Roʻza hayit"),
+            ("2021-05-14", "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"),
             ("2021-07-20", "Qurbon hayit"),
-            ("2021-07-21", "Dam olish kuni (17/07 2021 dan ko‘chirilgan)"),
-            ("2021-07-22", "Dam olish kuni (24/07 2021 dan ko‘chirilgan)"),
+            ("2021-07-21", "Dam olish kuni (17/07 2021 dan koʻchirilgan)"),
+            ("2021-07-22", "Dam olish kuni (24/07 2021 dan koʻchirilgan)"),
             ("2021-09-01", "Mustaqillik kuni"),
-            ("2021-09-02", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
-            ("2021-09-03", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
-            ("2021-10-01", "O‘qituvchi va murabbiylar kuni"),
-            ("2021-12-08", "O‘zbekiston Respublikasi Konstitutsiyasi kuni"),
-            ("2021-12-31", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
+            ("2021-09-02", "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"),
+            ("2021-09-03", "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"),
+            ("2021-10-01", "Oʻqituvchi va murabbiylar kuni"),
+            ("2021-12-08", "Oʻzbekiston Respublikasi Konstitutsiyasi kuni"),
+            ("2021-12-31", "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"),
         )
 
     def test_2022(self):
         self.assertHolidaysInYear(
             2022,
             ("2022-01-01", "Yangi yil"),
-            ("2022-01-03", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
-            ("2022-01-04", "Dam olish kuni (08/01 2022 dan ko‘chirilgan)"),
+            ("2022-01-03", "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"),
+            ("2022-01-04", "Dam olish kuni (08/01 2022 dan koʻchirilgan)"),
             ("2022-03-08", "Xotin-qizlar kuni"),
-            ("2022-03-21", "Navro‘z bayrami"),
-            ("2022-03-22", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
-            ("2022-03-23", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
-            ("2022-05-02", "Ro‘za hayit"),
-            ("2022-05-03", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
-            ("2022-05-04", "Dam olish kuni (07/05 2022 dan ko‘chirilgan)"),
+            ("2022-03-21", "Navroʻz bayrami"),
+            ("2022-03-22", "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"),
+            ("2022-03-23", "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"),
+            ("2022-05-02", "Roʻza hayit"),
+            ("2022-05-03", "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"),
+            ("2022-05-04", "Dam olish kuni (07/05 2022 dan koʻchirilgan)"),
             ("2022-05-09", "Xotira va qadrlash kuni"),
             ("2022-07-09", "Qurbon hayit"),
-            ("2022-07-11", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
-            ("2022-07-12", "Dam olish kuni (16/07 2022 dan ko‘chirilgan)"),
+            ("2022-07-11", "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"),
+            ("2022-07-12", "Dam olish kuni (16/07 2022 dan koʻchirilgan)"),
             ("2022-09-01", "Mustaqillik kuni"),
-            ("2022-09-02", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
-            ("2022-10-01", "O‘qituvchi va murabbiylar kuni"),
-            ("2022-12-08", "O‘zbekiston Respublikasi Konstitutsiyasi kuni"),
+            ("2022-09-02", "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"),
+            ("2022-10-01", "Oʻqituvchi va murabbiylar kuni"),
+            ("2022-12-08", "Oʻzbekiston Respublikasi Konstitutsiyasi kuni"),
         )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2023-01-01", "Yangi yil"),
-            ("2023-01-02", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
-            ("2023-01-03", "Dam olish kuni (07/01 2023 dan ko‘chirilgan)"),
+            ("2023-01-02", "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"),
+            ("2023-01-03", "Dam olish kuni (07/01 2023 dan koʻchirilgan)"),
             ("2023-03-08", "Xotin-qizlar kuni"),
-            ("2023-03-20", "Dam olish kuni (11/03 2023 dan ko‘chirilgan)"),
-            ("2023-03-21", "Navro‘z bayrami"),
-            ("2023-03-22", "Dam olish kuni (25/03 2023 dan ko‘chirilgan)"),
-            ("2023-04-21", "Ro‘za hayit"),
-            ("2023-04-24", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
+            ("2023-03-20", "Dam olish kuni (11/03 2023 dan koʻchirilgan)"),
+            ("2023-03-21", "Navroʻz bayrami"),
+            ("2023-03-22", "Dam olish kuni (25/03 2023 dan koʻchirilgan)"),
+            ("2023-04-21", "Roʻza hayit"),
+            ("2023-04-24", "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"),
             ("2023-05-09", "Xotira va qadrlash kuni"),
             ("2023-06-28", "Qurbon hayit"),
-            ("2023-06-29", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
-            ("2023-06-30", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
+            ("2023-06-29", "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"),
+            ("2023-06-30", "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"),
             ("2023-09-01", "Mustaqillik kuni"),
-            ("2023-10-01", "O‘qituvchi va murabbiylar kuni"),
-            ("2023-10-02", "O‘qituvchi va murabbiylar kuni (ko‘chirilgan)"),
-            ("2023-12-08", "O‘zbekiston Respublikasi Konstitutsiyasi kuni"),
+            ("2023-10-01", "Oʻqituvchi va murabbiylar kuni"),
+            ("2023-10-02", "Oʻqituvchi va murabbiylar kuni (koʻchirilgan)"),
+            ("2023-12-08", "Oʻzbekiston Respublikasi Konstitutsiyasi kuni"),
         )
 
     def test_l10n_en_us(self):

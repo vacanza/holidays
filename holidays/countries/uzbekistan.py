@@ -33,9 +33,9 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
     # %s (estimated).
     estimated_label = tr("%s (taxminiy)")
     # %s (observed).
-    observed_label = tr("%s (ko‘chirilgan)")
+    observed_label = tr("%s (koʻchirilgan)")
     # %s (observed, estimated).
-    observed_estimated_label = tr("%s (ko‘chirilgan, taxminiy)")
+    observed_estimated_label = tr("%s (koʻchirilgan, taxminiy)")
     supported_languages = ("en_US", "uk", "uz")
     start_year = 1992
 
@@ -68,7 +68,7 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
         dts_observed.add(self._add_womens_day(tr("Xotin-qizlar kuni")))
 
         # Nowruz.
-        dts_observed.add(self._add_holiday_mar_21(tr("Navro‘z bayrami")))
+        dts_observed.add(self._add_holiday_mar_21(tr("Navroʻz bayrami")))
 
         dts_observed.add(
             self._add_world_war_two_victory_day(
@@ -76,7 +76,7 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
                 tr("Xotira va qadrlash kuni")
                 if self._year >= 1999
                 # Victory Day.
-                else tr("G‘alaba kuni"),
+                else tr("Gʻalaba kuni"),
                 is_western=False,
             )
         )
@@ -86,16 +86,16 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
 
         if self._year >= 1997:
             # Teachers and Instructors Day.
-            dts_observed.add(self._add_holiday_oct_1(tr("O‘qituvchi va murabbiylar kuni")))
+            dts_observed.add(self._add_holiday_oct_1(tr("Oʻqituvchi va murabbiylar kuni")))
 
         if self._year >= 1993:
             dts_observed.add(
                 # Constitution Day.
-                self._add_holiday_dec_8(tr("O‘zbekiston Respublikasi Konstitutsiyasi kuni"))
+                self._add_holiday_dec_8(tr("Oʻzbekiston Respublikasi Konstitutsiyasi kuni"))
             )
 
         # Eid al-Fitr.
-        dts_observed.update(self._add_eid_al_fitr_day(tr("Ro‘za hayit")))
+        dts_observed.update(self._add_eid_al_fitr_day(tr("Roʻza hayit")))
 
         # Eid al-Adha.
         dts_observed.update(self._add_eid_al_adha_day(tr("Qurbon hayit")))
@@ -150,10 +150,10 @@ class UzbekistanStaticHolidays:
     # Date format (see strftime() Format Codes)
     substituted_date_format = tr("%d/%m %Y")
     # Day off (substituted from %s).
-    substituted_label = tr("Dam olish kuni (%s dan ko‘chirilgan)")
+    substituted_label = tr("Dam olish kuni (%s dan koʻchirilgan)")
 
     # Additional day off by Presidential decree.
-    additional_day_off = tr("Prezidentining farmoni bilan qo‘shimcha dam olish kuni")
+    additional_day_off = tr("Prezidentining farmoni bilan qoʻshimcha dam olish kuni")
     special_public_holidays = {
         2018: (
             (JAN, 2, additional_day_off),

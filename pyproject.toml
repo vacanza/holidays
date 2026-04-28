@@ -99,6 +99,7 @@ lint.per-file-ignores."scripts/generate_snapshots.py" = [ "T201" ]
 lint.per-file-ignores."scripts/l10n/generate_mo_files.py" = [ "T201" ]
 lint.per-file-ignores."scripts/l10n/generate_po_files.py" = [ "T201" ]
 lint.per-file-ignores."scripts/l10n/l10n_helper.py" = [ "T201" ]
+lint.per-file-ignores."scripts/normalize_text.py" = [ "T201" ]
 lint.per-file-ignores."tests/common.py" = [ "N802" ]
 lint.per-file-ignores."tests/test_holiday_base.py" = [ "S301" ]
 lint.flake8-errmsg.max-string-length = 99
