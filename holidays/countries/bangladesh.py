@@ -146,8 +146,8 @@ class BangladeshIslamicHolidays(_CustomIslamicHolidays):
     }
 
     # https://www.timeanddate.com/holidays/bangladesh/jumatul-bidah
-    JUMATUL_WIDA_DATES_CONFIRMED_YEARS = (2022, 2026)
-    JUMATUL_WIDA_DATES = {
+    JUMUATUL_WIDA_DATES_CONFIRMED_YEARS = (2022, 2026)
+    JUMUATUL_WIDA_DATES = {
         2022: (APR, 29),
         2023: (APR, 21),
         2024: (APR, 5),
