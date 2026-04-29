@@ -72,10 +72,14 @@ class TestBangladesh(CommonCountryTests, TestCase):
             "2024-07-17",
             "2025-07-06",
         )
-        self.assertHolidayName(
-            name, self.no_estimated_holidays, range(self.start_year, self.end_year)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2022, 2026))
+        self.assertNoHolidayName(
+            name,
+            self.no_estimated_holidays,
+            range(self.start_year, 2022),
+            range(2026, self.end_year),
         )
-
+        
     def test_eid_e_milad_un_nabi(self):
         name = "ঈদে মিলাদুন্নবী"
         self.assertHolidayName(
@@ -86,8 +90,12 @@ class TestBangladesh(CommonCountryTests, TestCase):
             "2024-09-16",
             "2025-09-06",
         )
-        self.assertHolidayName(
-            name, self.no_estimated_holidays, range(self.start_year, self.end_year)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2022, 2026))
+        self.assertNoHolidayName(
+            name,
+            self.no_estimated_holidays,
+            range(self.start_year, 2022),
+            range(2026, self.end_year),
         )
 
     def test_eid_al_fitr(self):
@@ -108,10 +116,14 @@ class TestBangladesh(CommonCountryTests, TestCase):
             "2025-04-01",
             "2025-04-02",
         )
-        self.assertHolidayName(
-            name, self.no_estimated_holidays, range(self.start_year, self.end_year)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2022, 2026))
+        self.assertNoHolidayName(
+            name,
+            self.no_estimated_holidays,
+            range(self.start_year, 2022),
+            range(2026, self.end_year),
         )
-
+        
     def test_eid_al_adha(self):
         name = "ঈদুল আজহা"
         self.assertHolidayName(
@@ -130,8 +142,12 @@ class TestBangladesh(CommonCountryTests, TestCase):
             "2025-06-08",
             "2025-06-09",
         )
-        self.assertHolidayName(
-            name, self.no_estimated_holidays, range(self.start_year, self.end_year)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2022, 2026))
+        self.assertNoHolidayName(
+            name,
+            self.no_estimated_holidays,
+            range(self.start_year, 2022),
+            range(2026, self.end_year),
         )
 
     def test_l10n_default(self):
