@@ -345,7 +345,7 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_oct_19(tr("Dia do Piauí"))
 
     def _populate_subdiv_pr_public_holidays(self):
-        # Established by lei n. 18.397.
+        # Established by Lei n. 18.397.
         if self._year >= 2014:
             # Our Lady of Rocio.
             self._add_holiday_nov_15(tr("Nossa Senhora do Rocio"))
