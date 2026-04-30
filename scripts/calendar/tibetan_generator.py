@@ -71,6 +71,22 @@ HOLIDAYS = {
 }
 
 
+def _get_holiday_date(tib_lookup, tib_month, tib_day, rule, year):
+    if rule == "losar":
+        return _get_losar(tib_lookup, tib_month, year)
+    return _get_regular_holiday(tib_lookup, tib_month, tib_day, year)
+
+
+def _generate_year_dates(tib_lookup):
+    dates: dict[str, dict[int, tuple]] = {name: {} for name in HOLIDAYS}
+    for year in range(1900, 2101):
+        for name, (tib_month, tib_day, rule) in HOLIDAYS.items():
+            greg_date = _get_holiday_date(tib_lookup, tib_month, tib_day, rule, year)
+            if greg_date:
+                dates[name][year] = greg_date
+    return dates
+
+
 def generate_data() -> None:
     data_file = Path(__file__).parent / DATA_FILENAME
     if not data_file.exists():
@@ -91,19 +107,7 @@ def generate_data() -> None:
                 key = (tib_month, tib_day, leap, greg_year)
                 tib_lookup[key] = (MONTH_NAMES[greg_month], greg_day)
 
-    dates: dict[str, dict[int, tuple]] = {name: {} for name in HOLIDAYS}
-
-    for year in range(1900, 2101):
-        for name, (tib_month, tib_day, rule) in HOLIDAYS.items():
-            if rule == "regular":
-                greg_date = _get_regular_holiday(tib_lookup, tib_month, tib_day, year)
-            elif rule == "losar":
-                greg_date = _get_losar(tib_lookup, tib_month, year)
-            else:
-                greg_date = None
-
-            if greg_date:
-                dates[name][year] = greg_date
+    dates = _generate_year_dates(tib_lookup)
 
     holiday_data = []
     for name in sorted(dates.keys()):
