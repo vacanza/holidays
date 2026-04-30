@@ -38,4 +38,4 @@ class TestTibetanCalendarHolidays(TestCase):
         test_holidays._add_thimphu_drubchen_day("Thimphu Drubchoe")
         test_holidays._add_thimphu_tshechu_day("Thimphu Tshechu")
         test_holidays._add_tibetan_winter_solstice("Winter Solstice Day")
-        self.assertEqual(0, len(test_holidays))
+        self.assertEqual(11, len(test_holidays))

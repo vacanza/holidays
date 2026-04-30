@@ -58,19 +58,6 @@ def _get_losar(tib_lookup, tib_month, year):
     return None
 
 
-def _get_day_of_offering(tib_lookup, tib_month, tib_day, year):
-    # Day of Offering: exact match first
-    key = (tib_month, tib_day, 0, year)
-    greg_date = tib_lookup.get(key)
-    if greg_date is None:
-        # Fallback only if truly expunged
-        for prev_day in range(tib_day - 1, 0, -1):
-            greg_date = tib_lookup.get((tib_month, prev_day, 0, year))
-            if greg_date:
-                break
-    return greg_date
-
-
 HOLIDAYS = {
     "DEATH_OF_ZHABDRUNG": (3, 10, "regular"),
     "BUDDHA_PARINIRVANA": (4, 15, "regular"),
@@ -80,9 +67,7 @@ HOLIDAYS = {
     "THIMPHU_TSHECHU": (8, 10, "regular"),
     "DESCENDING_DAY_OF_LORD_BUDDHA": (9, 22, "regular"),
     "LOSAR": (1, 1, "losar"),
-    "DAY_OF_OFFERING": (12, 1, "day_of_offering"),
-    "BLESSED_RAINY_DAY": (6, 1, "regular"),
-    "WINTER_SOLSTICE": (11, 1, "regular"),
+    "DAY_OF_OFFERING": (12, 1, "regular"),
 }
 
 
@@ -114,8 +99,6 @@ def generate_data() -> None:
                 greg_date = _get_regular_holiday(tib_lookup, tib_month, tib_day, year)
             elif rule == "losar":
                 greg_date = _get_losar(tib_lookup, tib_month, year)
-            elif rule == "day_of_offering":
-                greg_date = _get_day_of_offering(tib_lookup, tib_month, tib_day, year)
             else:
                 greg_date = None
 
