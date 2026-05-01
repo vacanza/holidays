@@ -178,7 +178,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
         In 1921, Thanksgiving Day was moved to "Armistice Day" (1st Monday in the week of Nov 11).
         "Remembrance Day" and "Thanksgiving Day" split again in 1931, with Thanksgiving usually on
-        the 2nd Monday of October — except in 1935, when it was delayed 10 days due to a General
+        the 2nd Monday of October - except in 1935, when it was delayed 10 days due to a General
         Election. It was finally fixed to the 2nd Monday of October permanently in 1957.
         """
         if self._year >= 1931:

@@ -10,11 +10,17 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from typing import TYPE_CHECKING
+
 from holidays.constants import *
 from holidays.holiday_base import *
 from holidays.registry import EntityLoader
 from holidays.utils import *
 from holidays.version import __version__  # noqa: F401
+
+if TYPE_CHECKING:  # Re-export for static analysis. Runtime names come from EntityLoader below.
+    from holidays.countries import *
+    from holidays.financial import *
 
 EntityLoader.load("countries", globals())
 EntityLoader.load("financial", globals())

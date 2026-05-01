@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.96\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-10-24 19:30+0700\n"
-"PO-Revision-Date: 2023-10-24 19:36+0700\n"
+"PO-Revision-Date: 2026-04-22 00:06+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -25,24 +25,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.9\n"
 "X-Source-Language: to\n"
 
 #. %s (observed).
 #, c-format
-msgid "%s (fakatokanga'i)"
+msgid "%s (fakatokangaʻi)"
 msgstr "%s (observed)"
 
 #. New Year's Day.
-msgid "'Uluaki 'Aho 'o e Ta'u Fo'ou"
+msgid "ʻUluaki ʻAho ʻo e Taʻu Foʻou"
 msgstr "New Year's Day"
 
 #. Birthday of the Reigning Sovereign of Tonga.
-msgid "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"
+msgid "ʻAho ʻAloʻi ʻo ʻEne ʻAfio ko e Tuʻi ʻo Tonga ʻoku lolotonga Pule"
 msgstr "Birthday of the Reigning Sovereign of Tonga"
 
 #. Birthday of the Heir to the Crown of Tonga.
-msgid "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"
+msgid "ʻAho ʻAloʻi ʻo e ʻEa ki he Kalauni ʻo Tonga"
 msgstr "Birthday of the Heir to the Crown of Tonga"
 
 #. Good Friday.
@@ -50,42 +50,41 @@ msgid "Falaite Lelei"
 msgstr "Good Friday"
 
 #. Easter Monday.
-msgid "Monite 'o e Toetu'u"
+msgid "Monite ʻo e Toetuʻu"
 msgstr "Easter Monday"
 
 #. Anzac Day.
-msgid "'Aho Anzac"
+msgid "ʻAho Anzac"
 msgstr "Anzac Day"
 
 #. Emancipation Day.
-msgid "'Aho Tau'ataina"
+msgid "ʻAho Tauʻataina"
 msgstr "Emancipation Day"
 
 #. Anniversary of the Coronation Day of the reigning Sovereign of Tonga.
-msgid ""
-"Fakamanatu 'o e 'Aho Hilifaki Kalauni 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'a ia 'oku lolotonga Pule"
+msgid "Fakamanatu ʻo e ʻAho Hilifaki Kalauni ʻo ʻEne ʻAfio ko e Tuʻi ʻo Tonga ʻa ia ʻoku lolotonga Pule"
 msgstr "Anniversary of the Coronation Day of the reigning Sovereign of Tonga"
 
 #. Constitution Day.
-msgid "'Aho Konisitutone"
+msgid "ʻAho Konisitutone"
 msgstr "Constitution Day"
 
 #. Anniversary of the Coronation of HM King George Tupou I.
-msgid "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko Siaosi Tupou I"
+msgid "ʻAho Fakamanatu ʻo e Hilifaki Kalauni ʻo ʻEne ʻAfio ko Siaosi Tupou I"
 msgstr "Anniversary of the Coronation of HM King George Tupou I"
 
 #. Christmas Day.
-msgid "'Aho Kilisimasi"
+msgid "ʻAho Kilisimasi"
 msgstr "Christmas Day"
 
 #. Boxing Day.
-msgid "'Aho 2 'o e Kilisimasi"
+msgid "ʻAho 2 ʻo e Kilisimasi"
 msgstr "Boxing Day"
 
 #. Tonga Rugby Public Holiday.
-msgid "'Aho malolo 'akapulu 'a Tonga"
+msgid "ʻAho malolo ʻakapulu ʻa Tonga"
 msgstr "Tonga Rugby Public Holiday"
 
-#. State Funeral of 'Akilisi Pohiva.
-msgid "Me'afaka'eiki 'o e Siteiti 'Akilisi Pohiva"
-msgstr "State Funeral of 'Akilisi Pohiva"
+#. State Funeral of Akilisi Pohiva.
+msgid "Meʻafakaʻeiki ʻo e Siteiti ʻAkilisi Pōhiva"
+msgstr "State Funeral of Akilisi Pohiva"
