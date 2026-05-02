@@ -181,20 +181,23 @@ so if you are not familiar with writing Markdown for ProperDocs, here you can re
 
 ## GitHub Actions
 
-All new GitHub actions must use commit SHAs instead of version tags. When updating an action, contributors should explicitly use the commit SHA from the latest release.
+All new GitHub actions must use commit SHAs instead of version tags. When updating an action,
+contributors should explicitly use the commit SHA from the latest release, with the version
+tag included as a comment for readability. Dependabot will keep both the SHA and comment
+in sync automatically.
 
 ### Example
 
 Allowed:
 
 ```yaml
-uses: actions/checkout@8fdb40e56baf9c5dc24e3ab5bc2a91db65f39f21
+uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
 ```
 
 Not allowed:
 
 ```yaml
-uses: actions/checkout@v4
+uses: actions/checkout@v6
 ```
 
 ## Contributors

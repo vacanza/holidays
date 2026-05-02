@@ -45,11 +45,11 @@ class Egypt(
     country = "EG"
     default_language = "ar_EG"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     # %s (observed).
-    observed_label = tr("%s (ملاحظة)")
+    observed_label = tr("%s (يوم تعويضي)")
     # %s (observed, estimated).
-    observed_estimated_label = tr("%s (المقدرة، ملاحظة)")
+    observed_estimated_label = tr("%s (يوم تعويضي تقديري)")
     # Republic of Egypt was declared on 18 June 1953.
     start_year = 1954
     supported_categories = (GOVERNMENT, PUBLIC, SCHOOL)

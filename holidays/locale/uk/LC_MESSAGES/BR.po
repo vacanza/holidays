@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.88\n"
+"Project-Id-Version: Holidays 0.96\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-10-15 20:48+0300\n"
-"PO-Revision-Date: 2025-12-24 10:16+0700\n"
-"Last-Translator: Avi Alkalay <avibrazil@gmail.com>\n"
+"PO-Revision-Date: 2026-04-29 22:48+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -212,13 +212,17 @@ msgstr "День приєдання Гран-Пара до незалежнос�
 msgid "Fundação do Estado"
 msgstr "День заснування штату"
 
-#. Pernambuco Revolution.
-msgid "Revolução Pernambucana"
-msgstr "День Пернамбуканської революції"
+#. Pernambuco Revolution of 1817.
+msgid "Revolução Pernambucana de 1817"
+msgstr "День Пернамбуканської революції 1817 року"
 
 #. Piauí Day.
 msgid "Dia do Piauí"
 msgstr "День Піауї"
+
+#. Our Lady of Rocio.
+msgid "Nossa Senhora do Rocio"
+msgstr "День Богоматері Росіо"
 
 #. Political Emancipation of Paraná.
 msgid "Emancipação do Paraná"

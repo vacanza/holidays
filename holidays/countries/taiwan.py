@@ -96,7 +96,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         super().__init__(*args, **kwargs)
 
     def _get_weekend(self, dt: date) -> set[int]:
-        # 1998–2000: Sundays as well as the 2nd & 4th Saturday of each month.
+        # 1998-2000: Sundays as well as the 2nd & 4th Saturday of each month.
         if dt.year <= 2000:
             weekend = {SUN}
             if dt.weekday() == SAT:

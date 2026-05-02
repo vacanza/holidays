@@ -22,6 +22,7 @@ from datetime import datetime
 from pathlib import Path
 from time import perf_counter
 
+from git import Repo, exc
 from lingva.extract import extract as create_pot_file
 from lingva.extract import _location_sort_key
 from polib import POFile, pofile
@@ -56,8 +57,24 @@ TRANSLATOR_PATTERN = re.compile(r"[^\s<]+(?:\s+[^\s<]+)*\s+<[^@\s<]+@[^@\s<.]+(?
 class POGenerator:
     """Generates .po files for supported country/market entities."""
 
+    _author_identity: str = ""
     _license_header: str = ""
     _locale_path: Path = Path("holidays/locale")
+
+    @staticmethod
+    def _get_author_identity() -> str:
+        result = "FULL NAME <EMAIL@EXAMPLE.COM>"
+        try:
+            repo = Repo(Path(__file__).parents[2])
+            config = repo.config_reader()
+            name = config.get_value("user", "name", "")
+            email = config.get_value("user", "email", "")
+            if name and email and TRANSLATOR_PATTERN.fullmatch(identity := f"{name} <{email}>"):
+                result = identity
+        except exc.GitError:
+            pass
+
+        return result
 
     @staticmethod
     def _get_license_header() -> str:
@@ -77,19 +94,21 @@ class POGenerator:
         )
 
     @classmethod
-    def _init_worker(cls, license_header: str) -> None:
-        """Initialize worker with shared license header for multiprocessing."""
+    def _init_worker(cls, author_identity: str, license_header: str) -> None:
+        """Initialize worker with shared data for multiprocessing."""
+        cls._author_identity = author_identity
         cls._license_header = license_header
 
-    @staticmethod
+    @classmethod
     def _apply_metadata(
-        po_file: POFile, current_lang: str, default_language: str, timestamp: str
+        cls, po_file: POFile, current_lang: str, default_language: str, timestamp: str
     ) -> None:
         """Applies metadata to a .po file."""
         forced_metadata = {
             "Project-Id-Version": f"Holidays {package_version}",
             "Report-Msgid-Bugs-To": MSGID_BUGS_ADDRESS,
             "PO-Revision-Date": timestamp,
+            "Last-Translator": cls._author_identity,
             "Language-Team": "Holidays Localization Team",
             "Language": current_lang,
             "MIME-Version": "1.0",
@@ -99,7 +118,6 @@ class POGenerator:
         }
         default_metadata = {
             "POT-Creation-Date": timestamp,
-            "Last-Translator": "FULL NAME <EMAIL@EXAMPLE.COM>",
         }
         po_file.metadata = default_metadata | po_file.metadata | forced_metadata
 
@@ -238,7 +256,8 @@ class POGenerator:
             )
 
         with ProcessPoolExecutor(
-            initializer=POGenerator._init_worker, initargs=(POGenerator._get_license_header(),)
+            initializer=POGenerator._init_worker,
+            initargs=(POGenerator._get_author_identity(), POGenerator._get_license_header()),
         ) as executor:
             list(
                 executor.map(

@@ -79,7 +79,7 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             "2023-04-26",
             "2024-04-14",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dt)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_arafat_day(self):
@@ -127,7 +127,7 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             "2025-06-09",
             "2025-06-10",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dt)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_national_day(self):
@@ -142,7 +142,7 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             "2022-09-22",
             "2023-09-24",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dt)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_founding_day(self):
@@ -155,7 +155,7 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             "2030-02-21",
             "2031-02-23",
         )
-        self.assertHolidayName(f"{name} (ملاحظة)", obs_dt)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_weekend(self):
@@ -189,9 +189,9 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             ("2022-07-09", "عطلة عيد الأضحى"),
             ("2022-07-10", "عطلة عيد الأضحى"),
             ("2022-07-11", "عطلة عيد الأضحى"),
-            ("2022-07-12", "عطلة عيد الأضحى (ملاحظة)"),
-            ("2022-07-13", "عطلة عيد الأضحى (ملاحظة)"),
-            ("2022-09-22", "اليوم الوطني (ملاحظة)"),
+            ("2022-07-12", "عطلة عيد الأضحى (يوم تعويضي)"),
+            ("2022-07-13", "عطلة عيد الأضحى (يوم تعويضي)"),
+            ("2022-09-22", "اليوم الوطني (يوم تعويضي)"),
             ("2022-09-23", "اليوم الوطني"),
             ("2022-11-23", "يوم وطني"),
         )
@@ -203,15 +203,15 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             ("2023-04-22", "عطلة عيد الفطر"),
             ("2023-04-23", "عطلة عيد الفطر"),
             ("2023-04-24", "عطلة عيد الفطر"),
-            ("2023-04-25", "عطلة عيد الفطر (ملاحظة)"),
-            ("2023-04-26", "عطلة عيد الفطر (ملاحظة)"),
+            ("2023-04-25", "عطلة عيد الفطر (يوم تعويضي)"),
+            ("2023-04-26", "عطلة عيد الفطر (يوم تعويضي)"),
             ("2023-06-27", "يوم عرفة"),
             ("2023-06-28", "عطلة عيد الأضحى"),
             ("2023-06-29", "عطلة عيد الأضحى"),
             ("2023-06-30", "عطلة عيد الأضحى"),
-            ("2023-07-02", "عطلة عيد الأضحى (ملاحظة)"),
+            ("2023-07-02", "عطلة عيد الأضحى (يوم تعويضي)"),
             ("2023-09-23", "اليوم الوطني"),
-            ("2023-09-24", "اليوم الوطني (ملاحظة)"),
+            ("2023-09-24", "اليوم الوطني (يوم تعويضي)"),
         )
 
     def test_l10n_bn(self):

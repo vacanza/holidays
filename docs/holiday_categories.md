@@ -107,7 +107,8 @@ Holidays that are legally treated equivalently to public holidays for specific p
 
 Examples:
 
-- **Sweden**: Midsummer Eve (Midsommarafton), Christmas Eve (Julafton), and New Year's Eve (Nyårsafton) - per [Swedish Annual Leave Law (SFS 1977:480)](https://web.archive.org/web/20260106114757/https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/semesterlag-1977480_sfs-1977-480/), these are treated equivalently to Sundays and public holidays for working day calculations, though they are not official public holidays.
+- **Sweden**: Midsummer Eve (Midsommarafton), Christmas Eve (Julafton), and New Year's Eve (Nyårsafton) - per [Semesterlag (SFS 1977:480)](https://web.archive.org/web/20260106114757/https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/semesterlag-1977480_sfs-1977-480/), these are treated equivalently to Sundays and public holidays for working day calculations, though they are not official public holidays.
+- **Switzerland**: Easter Sunday (Ostersonntag), Whit Sunday (Pfingstsonntag), and Federal Day of Thanksgiving, Repentance, and Prayer (Eidgenössischer Bettag) - per Zürich's [Ruhetags- und Ladenöffnungsgesetz vom 26. Juni 2000](https://web.archive.org/web/20260421063821/https://www.notes.zh.ch/appl/zhlex_r.nsf/WebView/C1256C610039641BC12569990033674B/$File/822.4.pdf).
 
 Usage:
 
@@ -137,7 +138,7 @@ Holidays specific to the Protestant Christian tradition.
 
 Examples:
 
-- In Austria (1956–2018), Good Friday was treated as a public holiday for members of the Evangelical Churches of the Augsburg and Helvetic Confessions, the Methodist Church, and the Old Catholic Church (the special provision was removed via [BGBl. I Nr. 22/2019](https://web.archive.org/web/20260408111719/https://www.ris.bka.gv.at/Dokumente/BgblAuth/BGBLA_2019_I_22/BGBLA_2019_I_22.pdf)).
+- In Austria (1956-2018), Good Friday was treated as a public holiday for members of the Evangelical Churches of the Augsburg and Helvetic Confessions, the Methodist Church, and the Old Catholic Church (the special provision was removed via [BGBl. I Nr. 22/2019](https://web.archive.org/web/20260408111719/https://www.ris.bka.gv.at/Dokumente/BgblAuth/BGBLA_2019_I_22/BGBLA_2019_I_22.pdf)).
 
 #### CHRISTIAN
 
