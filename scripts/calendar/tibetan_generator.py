@@ -39,25 +39,6 @@ MONTH_NAMES = {
 }
 
 
-def _get_regular_holiday(tib_lookup, tib_month, tib_day, year):
-    key = (tib_month, tib_day, 0, year)
-    greg_date = tib_lookup.get(key)
-    if greg_date is None:
-        for prev_day in range(tib_day - 1, 0, -1):
-            greg_date = tib_lookup.get((tib_month, prev_day, 0, year))
-            if greg_date:
-                break
-    return greg_date
-
-
-def _get_losar(tib_lookup, tib_month, year):
-    for day in range(1, 32):
-        key = (tib_month, day, 0, year)
-        if key in tib_lookup:
-            return tib_lookup[key]
-    return None
-
-
 HOLIDAYS = {
     "DEATH_OF_ZHABDRUNG": (3, 10, "regular"),
     "BUDDHA_PARINIRVANA": (4, 15, "regular"),
@@ -72,9 +53,48 @@ HOLIDAYS = {
 
 
 def _get_holiday_date(tib_lookup, tib_month, tib_day, rule, year):
+    """Get Gregorian date for a Tibetan lunar holiday.
+
+    For regular holidays: looks up the exact Tibetan day. If the day is
+    expunged (yangchar) and tib_day > 1, falls back to the nearest preceding
+    day within the same month. If tib_day == 1 is expunged, falls back to
+    the last available day of the previous Tibetan month (cross-month case).
+
+    For losar (new year): finds the first available day of the month.
+    """
     if rule == "losar":
-        return _get_losar(tib_lookup, tib_month, year)
-    return _get_regular_holiday(tib_lookup, tib_month, tib_day, year)
+        # Losar is the first day of the Tibetan new year month.
+        for day in range(1, 32):
+            key = (tib_month, day, 0, year)
+            if key in tib_lookup:
+                return tib_lookup[key]
+        return None
+
+    # Regular holiday: try exact day first.
+    key = (tib_month, tib_day, 0, year)
+    if key in tib_lookup:
+        return tib_lookup[key]
+
+    if tib_day > 1:
+        # Day is expunged: fall back to nearest preceding day in same month.
+        for prev_day in range(tib_day - 1, 0, -1):
+            key = (tib_month, prev_day, 0, year)
+            if key in tib_lookup:
+                return tib_lookup[key]
+    else:
+        # tib_day == 1 is expunged: range(0, 0, -1) would be empty, so we
+        # must cross into the previous Tibetan month instead.
+        if tib_month > 1:
+            prev_month, prev_year = tib_month - 1, year
+        else:
+            # Month 1 day 1 expunged: cross into month 12 of the prior year.
+            prev_month, prev_year = 12, year - 1
+        for prev_day in range(30, 0, -1):
+            key = (prev_month, prev_day, 0, prev_year)
+            if key in tib_lookup:
+                return tib_lookup[key]
+
+    return None
 
 
 def _generate_year_dates(tib_lookup):
