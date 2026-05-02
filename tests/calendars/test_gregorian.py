@@ -56,6 +56,10 @@ class TestGregorianCalendar(TestCase):
         self.assertEqual(_get_nth_week_of_month(-4, 12, 2024), date(2024, 12, 2))
         self.assertEqual(_get_nth_week_of_month(-5, 12, 2024), date(2024, 11, 25))
 
+        # Oversized n for December.
+        with self.assertRaises(ValueError):
+            _get_nth_week_of_month(53, 12, 2023)
+
     def test_get_nth_weekday_of_month(self):
         year = 2023
         # The first Tuesdays of 2023.

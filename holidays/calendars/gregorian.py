@@ -86,9 +86,9 @@ def _get_nth_week_of_month(n: int, month: int, year: int) -> date:
     start_date = date(year, month, 1)
     dt = _timedelta(start_date, -start_date.weekday() + (n - 1) * 7)
 
-    # If the last day of the specified week falls in another month,
-    # it's already the first (last) week of that month.
-    if _timedelta(dt, +6).month != original_month:
+    # Reject out-of-range n when the week's Sunday is not in the requested year+month.
+    week_end = _timedelta(dt, +6)
+    if (week_end.year, week_end.month) != (original_year, original_month):
         raise ValueError(
             f"Month {original_month} of {original_year} does not have week {original_n}"
         )
