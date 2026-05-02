@@ -116,6 +116,14 @@ msgstr "New Harvest Days"
 msgid "Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр"
 msgstr "Memorial Day of Political Victims"
 
+#. National Literary, Cultural and Book Days.
+msgid "Үндэсний бичиг соёл, номын өдрүүд"
+msgstr "National Literary, Cultural and Book Days"
+
+#. Environmental Protection Days.
+msgid "Байгаль орчныг хамгаалах өдрүүд"
+msgstr "Environmental Protection Days"
+
 #. Elders' Day.
 msgid "Ахмадын өдөр"
 msgstr "Elders' Day"
@@ -135,11 +143,3 @@ msgstr "Democracy and Human Rights Day"
 #. National Freedom Day.
 msgid "Үндэсний эрх чөлөөний өдөр"
 msgstr "National Freedom Day"
-
-#. Environmental Protection Days.
-msgid "Байгаль орчныг хамгаалах өдрүүд"
-msgstr "Environmental Protection Days"
-
-#. National Literary, Cultural and Book Days.
-msgid "Үндэсний бичиг соёл, номын өдрүүд"
-msgstr "National Literary, Cultural and Book Days"

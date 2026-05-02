@@ -117,6 +117,14 @@ msgstr ""
 msgid "Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр"
 msgstr ""
 
+#. National Literary, Cultural and Book Days.
+msgid "Үндэсний бичиг соёл, номын өдрүүд"
+msgstr ""
+
+#. Environmental Protection Days.
+msgid "Байгаль орчныг хамгаалах өдрүүд"
+msgstr ""
+
 #. Elders' Day.
 msgid "Ахмадын өдөр"
 msgstr ""
@@ -135,12 +143,4 @@ msgstr ""
 
 #. National Freedom Day.
 msgid "Үндэсний эрх чөлөөний өдөр"
-msgstr ""
-
-#. Environmental Protection Days.
-msgid "Байгаль орчныг хамгаалах өдрүүд"
-msgstr ""
-
-#. National Literary, Cultural and Book Days.
-msgid "Үндэсний бичиг соёл, номын өдрүүд"
 msgstr ""

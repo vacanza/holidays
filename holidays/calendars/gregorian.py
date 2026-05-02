@@ -63,15 +63,19 @@ def _get_nth_weekday_from(n: int, weekday: int, from_dt: date) -> date:
 
 def _get_nth_week_of_month(n: int, month: int, year: int) -> date:
     """
-    Return begin of the n-th week of a month for a specific year.
-    Weeks are Monday-Sunday.
-    Week 1 is the week containing the 1st day of the month
-    (may start in the previous month), week 2 is next one,
-    and so on.
-    Accordingly, Week -1 is the last (full) week of the month,
-    week -2 is the preceding one, and so on.
+    Return the Monday at the start of week ``n`` for ``month`` in ``year``.
+
+    Weeks span Monday through Sunday. If ``n`` is greater than ``0``, then week ``1``
+    contains day ``1`` of ``month``. That Monday may fall in the preceding calendar
+    month; each higher ``n`` advances one week chronologically.
+
+    If ``n`` is negative, numbering runs backward from the end of the month: ``-1`` means
+    the Monday whose Sunday is the latest Sunday that still falls in ``month`` (the Monday
+    may itself fall in the preceding month); ``-2`` is one week earlier, etc.
+
+    Raises ``ValueError`` when no such ``n`` appears in ``month``.
     """
-    orig_n, orig_month, orig_year = n, month, year
+    original_n, original_month, original_year = n, month, year
     if n < 0:
         month += 1
         if month > 12:
@@ -81,10 +85,13 @@ def _get_nth_week_of_month(n: int, month: int, year: int) -> date:
 
     start_date = date(year, month, 1)
     dt = _timedelta(start_date, -start_date.weekday() + (n - 1) * 7)
+
     # If the last day of the specified week falls in another month,
     # it's already the first (last) week of that month.
-    if _timedelta(dt, +6).month != orig_month:
-        raise ValueError(f"Month {orig_month} of {orig_year} does not have week {orig_n}")
+    if _timedelta(dt, +6).month != original_month:
+        raise ValueError(
+            f"Month {original_month} of {original_year} does not have week {original_n}"
+        )
 
     return dt
 
