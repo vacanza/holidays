@@ -61,7 +61,7 @@ msgid "घटस्थापना"
 msgstr "ಘಟಸ್ಥಾಪನಾ"
 
 #. Duwadashi (Dashain).
-msgid "द्वादशी (दशैं)"
+msgid "दुवादशी (दशैं)"
 msgstr "ದ್ವಾದಶಿ (ದಸರಾ)"
 
 #. Prithvi Jayanti.
@@ -153,7 +153,7 @@ msgid "म्ह पूजा"
 msgstr "ಮ್ಹಾ ಪೂಜೆ"
 
 #. Bhai Tika.
-msgid "भाईटीका"
+msgid "भाइटीका"
 msgstr "ಭಾಯಿ ತಿಕಾ"
 
 #. Chhath Parva.
