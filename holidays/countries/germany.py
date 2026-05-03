@@ -10,10 +10,20 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAY, JUN, OCT
-from holidays.constants import CATHOLIC, PUBLIC
+from holidays.calendars.germany_school import (
+    ASCENSION_WHIT_BREAK,
+    AUTUMN_BREAK,
+    CHRISTMAS_BREAK,
+    EASTER_SPRING_BREAK,
+    GERMANY_SCHOOL_HOLIDAYS,
+    SUMMER_BREAK,
+    WINTER_BREAK,
+)
+from holidays.calendars.gregorian import JAN, MAY, JUN, OCT, DEC
+from holidays.constants import CATHOLIC, PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -25,6 +35,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         * <https://de.wikipedia.org/wiki/Feiertag_(Deutschland)>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Germany>
         * [German Unity Day](https://web.archive.org/web/20251011161644/https://www.gesetze-im-internet.de/einigvtr/art_2.html)
+        * [KMK school holidays](https://web.archive.org/web/20260426091657/https://www.kmk.org/service/ferienregelung/ferienkalender.html)
 
     Subdivisions Holidays References:
         * [Brandenburg](https://web.archive.org/web/20251002092001/https://bravors.brandenburg.de/gesetze/ftg_2015)
@@ -48,6 +59,9 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         "Mariä Himmelfahrt" is only a holiday in Bavaria (BY) and "Fronleichnam"
         in Saxony (SN) and Thuringia (TH) if municipality is mostly catholic which
         in term depends on census data. It's listed in "CATHOLIC" category for these provinces.
+
+    !!! note "School holidays"
+        German school holidays are subdivision-specific.
     """
 
     country = "DE"
@@ -93,7 +107,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         "Sachsen-Anhalt": "ST",
         "Thüringen": "TH",
     }
-    supported_categories = (CATHOLIC, PUBLIC)
+    supported_categories = (CATHOLIC, PUBLIC, SCHOOL)
     supported_languages = ("de", "en_US", "th", "uk")
     _deprecated_subdivisions = ("BYP",)
 
@@ -102,6 +116,23 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, GermanyStaticHolidays)
         super().__init__(*args, **kwargs)
+
+    @staticmethod
+    def _get_school_holiday_names() -> dict[int, str]:
+        return {
+            # Autumn Break.
+            AUTUMN_BREAK: tr("Herbstferien"),
+            # Christmas Break.
+            CHRISTMAS_BREAK: tr("Weihnachtsferien"),
+            # Winter Break.
+            WINTER_BREAK: tr("Winterferien"),
+            # Easter/Spring Break.
+            EASTER_SPRING_BREAK: tr("Oster-/Frühjahrsferien"),
+            # Ascension/Whit Break.
+            ASCENSION_WHIT_BREAK: tr("Himmelfahrts-/Pfingstferien"),
+            # Summer Break.
+            SUMMER_BREAK: tr("Sommerferien"),
+        }
 
     def _populate_public_holidays(self):
         # New Year's Day.
@@ -137,6 +168,32 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
         if self.subdiv == "BYP":
             self._populate_subdiv_by_public_holidays()
+
+    def _populate_school_holidays(self):
+        if self.subdiv is None:
+            return None
+
+        normalized_subdiv = self._normalized_subdiv
+        subdiv = "BY" if normalized_subdiv in {"augsburg", "byp"} else normalized_subdiv.upper()
+        school_holiday_names = self._get_school_holiday_names()
+        for (
+            start_year_offset,
+            start_month,
+            start_day,
+            end_year_offset,
+            end_month,
+            end_day,
+            holiday_id,
+        ) in GERMANY_SCHOOL_HOLIDAYS.get(self._year, {}).get(subdiv, ()):
+            name = school_holiday_names[holiday_id]
+            start_date = date(self._year + start_year_offset, start_month, start_day)
+            end_date = date(self._year + end_year_offset, end_month, end_day)
+            active_start = max(start_date, date(self._year, JAN, 1))
+            active_end = min(end_date, date(self._year, DEC, 31))
+            self._add_holiday(name, active_start)
+
+            if duration_days := (active_end - active_start).days:
+                self._add_multiday_holiday(active_start, duration_days, name=name)
 
     def _populate_subdiv_bb_public_holidays(self):
         # Easter Sunday.
