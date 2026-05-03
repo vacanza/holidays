@@ -85,25 +85,26 @@ class TestCase:
 
         def make_assert(helper_func, instance_name, method_type):
             def _method(self, *args, **kwargs):
-                if method_type == "name_count":
-                    if len(args) < 2:
-                        raise TypeError(
-                            f"Expected (name, count, ...) arguments for {instance_name}"
-                        )
-                    name, count, *rest = args
-                    return helper_func(self, name, count, instance_name, *rest, **kwargs)
-                elif method_type == "name":
-                    if not args:
-                        raise TypeError(f"Expected (name, ...) arguments for {instance_name}")
-                    name, *rest = args
-                    return helper_func(self, name, instance_name, *rest, **kwargs)
-                elif method_type == "year":
-                    if not args:
-                        raise TypeError(f"Expected (year, ...) arguments for {instance_name}")
-                    year, *rest = args
-                    return helper_func(self, year, instance_name, *rest, **kwargs)
-                else:
-                    return helper_func(self, instance_name, *args, **kwargs)
+                match method_type:
+                    case "name_count":
+                        if len(args) < 2:
+                            raise TypeError(
+                                f"Expected (name, count, ...) arguments for {instance_name}"
+                            )
+                        name, count, *rest = args
+                        return helper_func(self, name, count, instance_name, *rest, **kwargs)
+                    case "name":
+                        if not args:
+                            raise TypeError(f"Expected (name, ...) arguments for {instance_name}")
+                        name, *rest = args
+                        return helper_func(self, name, instance_name, *rest, **kwargs)
+                    case "year":
+                        if not args:
+                            raise TypeError(f"Expected (year, ...) arguments for {instance_name}")
+                        year, *rest = args
+                        return helper_func(self, year, instance_name, *rest, **kwargs)
+                    case _:
+                        return helper_func(self, instance_name, *args, **kwargs)
 
             return _method
 
@@ -388,12 +389,13 @@ class TestCase:
         items = []
         if expand_items:
             for item_arg in item_args:
-                if isinstance(item_arg, (list, set, tuple)):
-                    items.extend(item_arg)
-                elif isinstance(item_arg, (Generator, range)):
-                    items.extend(tuple(item_arg))
-                else:
-                    items.append(item_arg)
+                match item_arg:
+                    case list() | set() | tuple():
+                        items.extend(item_arg)
+                    case Generator() | range():
+                        items.extend(tuple(item_arg))
+                    case _:
+                        items.append(item_arg)
         else:
             items.extend(item_args)
 

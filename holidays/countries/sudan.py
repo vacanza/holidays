@@ -32,7 +32,7 @@ class Sudan(HolidayBase, ChristianHolidays, IslamicHolidays):
     country = "SD"
     default_language = "ar_SD"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     supported_languages = ("ar_SD", "en_US")
     start_year = 1985
     weekend = {FRI, SAT}
@@ -53,7 +53,7 @@ class Sudan(HolidayBase, ChristianHolidays, IslamicHolidays):
         # Independence Day.
         self._add_holiday_jan_1(tr("عيد الإستقلال"))
 
-        # Christian public holidays were suspended 2011–2018 and reinstated in 2019.
+        # Christian public holidays were suspended 2011-2018 and reinstated in 2019.
         if self._year <= 2010 or self._year >= 2019:
             # Coptic Christmas Day.
             self._add_christmas_day(tr("عيد الميلاد المجيد"), calendar=JULIAN_CALENDAR)

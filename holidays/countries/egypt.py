@@ -39,16 +39,17 @@ class Egypt(
         * [National Holidays (English)](https://web.archive.org/web/20250529043734/https://www.presidency.eg/en/مصر/العطلات-الرسمية/)
         * [National Holidays (French)](https://web.archive.org/web/20250608173134/https://www.presidency.eg/fr/مصر/العطلات-الرسمية/)
         * [Ministerial Decision 1193](https://web.archive.org/web/20250423073350/https://manshurat.org/node/44922)
+        * [2026 Eid al-Fitr](https://web.archive.org/web/20260331062747/https://sis.gov.eg/en/media-center/news/dar-al-ifta-announces-friday-as-the-first-day-of-eidul-fitr/)
     """
 
     country = "EG"
     default_language = "ar_EG"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     # %s (observed).
-    observed_label = tr("%s (ملاحظة)")
+    observed_label = tr("%s (يوم تعويضي)")
     # %s (observed, estimated).
-    observed_estimated_label = tr("%s (المقدرة، ملاحظة)")
+    observed_estimated_label = tr("%s (يوم تعويضي تقديري)")
     # Republic of Egypt was declared on 18 June 1953.
     start_year = 1954
     supported_categories = (GOVERNMENT, PUBLIC, SCHOOL)
@@ -172,7 +173,7 @@ class EgyptIslamicHolidays(_CustomIslamicHolidays):
         2022: (JUL, 10),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2020, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2020, 2026)
     EID_AL_FITR_DATES = {
         2022: (MAY, 1),
     }

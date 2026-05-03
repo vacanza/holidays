@@ -32,7 +32,7 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
     country = "PS"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     # State of Palestine declared in November 1988.
     start_year = 1989
     supported_categories = (CATHOLIC, ORTHODOX, PUBLIC)

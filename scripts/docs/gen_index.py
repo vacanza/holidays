@@ -29,14 +29,38 @@ GFM_MKDOCS_MAPPING = {
 FILES_REPLACE_MAPPING = {
     "examples.md": (
         (
-            "[ICalExporter](https://github.com/vacanza/holidays/blob/main/holidays/ical.py)",
-            "[ICalExporter][holidays.ical.ICalExporter]",
+            "[`HolidayBase`](https://github.com/vacanza/holidays/blob/main/holidays/holiday_base.py)",
+            "[`HolidayBase`][holidays.HolidayBase]",
+        ),
+        (
+            "[`ICalExporter`](https://github.com/vacanza/holidays/blob/main/holidays/ical.py)",
+            "[`ICalExporter`][holidays.ical.ICalExporter]",
+        ),
+        (
+            "[`country_holidays`](https://github.com/vacanza/holidays/blob/dev/holidays/utils.py)",
+            "[`country_holidays`][holidays.utils.country_holidays]",
+        ),
+        (
+            "[`financial_holidays`](https://github.com/vacanza/holidays/blob/dev/holidays/utils.py)",
+            "[`financial_holidays`][holidays.utils.financial_holidays]",
+        ),
+        (
+            "[`generate`](https://github.com/vacanza/holidays/blob/main/holidays/ical.py)",
+            "[`generate`][holidays.ical.ICalExporter.generate]",
+        ),
+        (
+            "[`save_ics`](https://github.com/vacanza/holidays/blob/main/holidays/ical.py)",
+            "[`save_ics`][holidays.ical.ICalExporter.save_ics]",
         ),
     ),
     "index.md": (
         (
             "[CONTRIBUTING.md](https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.md)",
             "[Contributing](contributing.md)",
+        ),
+        (
+            "[`HolidayBase`](https://github.com/vacanza/holidays/blob/main/holidays/holiday_base.py)",
+            "[`HolidayBase`][holidays.holiday_base.HolidayBase]",
         ),
     ),
 }

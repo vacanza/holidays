@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Curacao holidays nl localization.
+# Curaçao holidays nl localization.
 #
 msgid ""
 msgstr ""

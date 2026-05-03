@@ -91,14 +91,15 @@ class AntiguaAndBarbuda(
                 # National Heroes Day.
                 else "National Heroes Day"
             )
-            if self._year == 2006:
-                self._add_holiday_dec_11(name)
-            elif self._year == 2012:
-                self._add_holiday_dec_10(name)
-            else:
-                dt = self._add_holiday_dec_9(name)
-                if self._year >= 2020:
-                    self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON)
+            match self._year:
+                case 2006:
+                    self._add_holiday_dec_11(name)
+                case 2012:
+                    self._add_holiday_dec_10(name)
+                case _:
+                    dt = self._add_holiday_dec_9(name)
+                    if self._year >= 2020:
+                        self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON)
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)

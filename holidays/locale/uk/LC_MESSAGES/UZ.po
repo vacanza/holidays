@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.66\n"
+"Project-Id-Version: Holidays 0.96\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-12-31 21:12+0200\n"
-"PO-Revision-Date: 2025-02-02 19:32+0200\n"
+"PO-Revision-Date: 2026-04-21 09:57+0700\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.9\n"
 "X-Source-Language: uz\n"
 
 #. %s (estimated).
@@ -35,12 +35,12 @@ msgstr "%s (приблизна дата)"
 
 #. %s (observed).
 #, c-format
-msgid "%s (ko‘chirilgan)"
+msgid "%s (koʻchirilgan)"
 msgstr "%s (вихідний)"
 
 #. %s (observed, estimated).
 #, c-format
-msgid "%s (ko‘chirilgan, taxminiy)"
+msgid "%s (koʻchirilgan, taxminiy)"
 msgstr "%s (вихідний, приблизна дата)"
 
 #. New Year's Day.
@@ -52,7 +52,7 @@ msgid "Xotin-qizlar kuni"
 msgstr "Жіночий день"
 
 #. Nowruz.
-msgid "Navro‘z bayrami"
+msgid "Navroʻz bayrami"
 msgstr "Свято Новруз"
 
 #. Day of Memory and Honor.
@@ -60,7 +60,7 @@ msgid "Xotira va qadrlash kuni"
 msgstr "День памʼяті і шани"
 
 #. Victory Day.
-msgid "G‘alaba kuni"
+msgid "Gʻalaba kuni"
 msgstr "День Перемоги"
 
 #. Independence Day.
@@ -68,15 +68,15 @@ msgid "Mustaqillik kuni"
 msgstr "День незалежності"
 
 #. Teachers and Instructors Day.
-msgid "O‘qituvchi va murabbiylar kuni"
+msgid "Oʻqituvchi va murabbiylar kuni"
 msgstr "День вчителя і наставника"
 
 #. Constitution Day.
-msgid "O‘zbekiston Respublikasi Konstitutsiyasi kuni"
+msgid "Oʻzbekiston Respublikasi Konstitutsiyasi kuni"
 msgstr "День Конституції Республіки Узбекистан"
 
 #. Eid al-Fitr.
-msgid "Ro‘za hayit"
+msgid "Roʻza hayit"
 msgstr "Рамазан-байрам"
 
 #. Eid al-Adha.
@@ -89,9 +89,9 @@ msgstr "%d.%m.%Y"
 
 #. Day off (substituted from %s).
 #, c-format
-msgid "Dam olish kuni (%s dan ko‘chirilgan)"
+msgid "Dam olish kuni (%s dan koʻchirilgan)"
 msgstr "Вихідний день (перенесено з %s)"
 
 #. Additional day off by Presidential decree.
-msgid "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"
+msgid "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"
 msgstr "Додатковий вихідний згідно указу Президента"
