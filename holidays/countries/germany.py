@@ -191,8 +191,8 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             active_start = max(start_date, date(self._year, JAN, 1))
             active_end = min(end_date, date(self._year, DEC, 31))
             self._add_holiday(name, active_start)
-            duration_days = (active_end - active_start).days
-            if duration_days:
+
+            if duration_days := (active_end - active_start).days:
                 self._add_multiday_holiday(active_start, duration_days, name=name)
 
     def _populate_subdiv_bb_public_holidays(self):

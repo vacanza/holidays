@@ -15,7 +15,7 @@
 """Generate Germany school holidays runtime data from official KMK sources.
 
 Workflow:
-1. Run ``python scripts/calendar/germany_school_holidays_generator.py``.
+1. Run ``python scripts/calendar/germany_school_generator.py``.
 2. On cold start, the script downloads official KMK school-year PDFs into a local cache
    directory outside the repository.
 3. The script writes fresh data to ``holidays/calendars/germany_school_dates.py`` - a
