@@ -687,4 +687,3 @@ class TestNepal(CommonCountryTests, TestCase):
             ("2024-12-25", "ಕ್ರಿಸ್ಮಸ್ ದಿನ"),
             ("2024-12-30", "ತಾಮು ಲ್ಹೋಸಾರ್"),
         )
-    

@@ -54,7 +54,7 @@ class Nepal(
     estimated_label = tr("%s (अनुमानित)")
     start_year = 2010
     supported_categories = (PUBLIC, WORKDAY)
-    supported_languages = ("en_US", "ne","kn")
+    supported_languages = ("en_US", "kn", "ne")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
