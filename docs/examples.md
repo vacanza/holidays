@@ -225,7 +225,12 @@ Each country defines which categories it supports:
 US categories: ('government', 'public', 'unofficial')
 
 >>> print("Germany categories:", holidays.Germany.supported_categories)
-Germany categories: ('catholic', 'public')
+Germany categories: ('catholic', 'public', 'school')
+
+>>> from holidays.constants import SCHOOL
+>>> de_by_school = holidays.Germany(subdiv='BY', categories=SCHOOL, years=2025)
+>>> print(de_by_school['2025-08-01'])
+Sommerferien
 
 >>> print("Argentina categories:", holidays.Argentina.supported_categories)
 Argentina categories: ('armenian', 'bank', 'government', 'hebrew', 'islamic', 'public')
