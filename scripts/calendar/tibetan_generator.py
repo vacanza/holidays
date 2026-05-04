@@ -21,6 +21,29 @@ DATA_URL = "https://raw.githubusercontent.com/wp-plugins/bhutanese-calendar/mast
 DATA_FILENAME = "tibetan_data.txt"
 OUT_FILE_NAME = "tibetan_dates.py"
 
+CLASS_NAME = "_TibetanLunisolar"
+
+CLASS_TEMPLATE = """\
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
+
+
+class {class_name}:
+{holiday_data}
+"""
+
 MONTH_NAMES = {
     1: "JAN",
     2: "FEB",
@@ -37,6 +60,8 @@ MONTH_NAMES = {
 }
 
 HOLIDAYS = {
+    "LOSAR": (1, 1, "losar"),
+    "DAY_OF_OFFERING": (12, 1, "regular"),
     "DEATH_OF_ZHABDRUNG": (3, 10, "regular"),
     "BUDDHA_PARINIRVANA": (4, 15, "regular"),
     "BIRTH_OF_GURU_RINPOCHE": (5, 10, "regular"),
@@ -44,54 +69,41 @@ HOLIDAYS = {
     "THIMPHU_DRUBCHEN": (8, 6, "regular"),
     "THIMPHU_TSHECHU": (8, 10, "regular"),
     "DESCENDING_DAY_OF_LORD_BUDDHA": (9, 22, "regular"),
-    "LOSAR": (1, 1, "losar"),
-    "DAY_OF_OFFERING": (12, 1, "regular"),
 }
 
 
-def _get_losar_date(tib_lookup, tib_month, tib_year):
-    for day in range(1, 32):
-        key = (tib_month, day, tib_year)
-        if key in tib_lookup:
-            return tib_lookup[key]
-    return None
+def _get_holiday(tib_lookup, tib_month, tib_day, rule, tib_year):
+    if rule == "losar":
+        for day in range(1, 32):
+            if (tib_month, day, tib_year) in tib_lookup:
+                return tib_lookup[(tib_month, day, tib_year)]
+        return None
 
-
-def _get_prev_month_date(tib_lookup, tib_month, tib_year):
-    if tib_month > 1:
-        prev_month, prev_year = tib_month - 1, tib_year
-    else:
-        prev_month, prev_year = 12, tib_year - 1
-    for prev_day in range(30, 0, -1):
-        key = (prev_month, prev_day, prev_year)
-        if key in tib_lookup:
-            return tib_lookup[key]
-    return None
-
-
-def _get_regular_date(tib_lookup, tib_month, tib_day, tib_year):
-    key = (tib_month, tib_day, tib_year)
-    if key in tib_lookup:
-        return tib_lookup[key]
+    if (tib_month, tib_day, tib_year) in tib_lookup:
+        return tib_lookup[(tib_month, tib_day, tib_year)]
 
     if tib_day > 1:
         for prev_day in range(tib_day - 1, 0, -1):
-            key = (tib_month, prev_day, tib_year)
-            if key in tib_lookup:
-                return tib_lookup[key]
+            if (tib_month, prev_day, tib_year) in tib_lookup:
+                return tib_lookup[(tib_month, prev_day, tib_year)]
     else:
-        return _get_prev_month_date(tib_lookup, tib_month, tib_year)
+        # Day 1 is expunged - fall back to last day of previous month.
+        prev_month = tib_month - 1 if tib_month > 1 else 12
+        prev_year = tib_year if tib_month > 1 else tib_year - 1
+        for prev_day in range(30, 0, -1):
+            if (prev_month, prev_day, prev_year) in tib_lookup:
+                return tib_lookup[(prev_month, prev_day, prev_year)]
 
     return None
 
 
-def _get_holiday_date(tib_lookup, tib_month, tib_day, rule, tib_year):
-    if rule == "losar":
-        return _get_losar_date(tib_lookup, tib_month, tib_year)
-    return _get_regular_date(tib_lookup, tib_month, tib_day, tib_year)
+def generate_data() -> None:
+    data_file = Path(__file__).parent / DATA_FILENAME
+    if not data_file.exists():
+        req = Request(DATA_URL, headers={"User-Agent": "holidays-tibetan-generator"})
+        with urlopen(req, timeout=30) as resp:
+            data_file.write_bytes(resp.read())
 
-
-def _build_lookup(data_file):
     tib_lookup = {}
     tib_years = []
     tib_year = 0
@@ -116,33 +128,16 @@ def _build_lookup(data_file):
                 tib_years.append(tib_year)
 
             # Leap month stored as month + 12 to distinguish from regular month.
-            effective_tib_month = tib_month + 12 if leap == 1 else tib_month
-            key = (effective_tib_month, tib_day, tib_year)
-            tib_lookup[key] = (greg_month, greg_day, greg_year)
+            effective_month = tib_month + 12 if leap == 1 else tib_month
+            tib_lookup[(effective_month, tib_day, tib_year)] = (greg_month, greg_day, greg_year)
 
-    return tib_lookup, tib_years
-
-
-def _generate_year_dates(tib_lookup, tib_years):
     dates: dict[str, dict[int, tuple]] = {name: {} for name in HOLIDAYS}
     for tib_year in tib_years:
         for name, (tib_month, tib_day, rule) in HOLIDAYS.items():
-            result = _get_holiday_date(tib_lookup, tib_month, tib_day, rule, tib_year)
+            result = _get_holiday(tib_lookup, tib_month, tib_day, rule, tib_year)
             if result:
                 greg_month, greg_day, greg_year = result
                 dates[name][greg_year] = (greg_month, greg_day)
-    return dates
-
-
-def generate_data() -> None:
-    data_file = Path(__file__).parent / DATA_FILENAME
-    if not data_file.exists():
-        req = Request(DATA_URL, headers={"User-Agent": "holidays-tibetan-generator"})
-        with urlopen(req, timeout=30) as resp:
-            data_file.write_bytes(resp.read())
-
-    tib_lookup, tib_years = _build_lookup(data_file)
-    dates = _generate_year_dates(tib_lookup, tib_years)
 
     holiday_data = []
     for name in sorted(dates.keys()):
@@ -152,8 +147,13 @@ def generate_data() -> None:
         )
         holiday_data.append(f"    {name}_DATES = {{\n{year_dates}\n    }}\n")
 
-    output_path = Path(__file__).parent / OUT_FILE_NAME
-    output_path.write_text("".join(holiday_data), encoding="UTF-8")
+    output = CLASS_TEMPLATE.format(
+        class_name=CLASS_NAME,
+        holiday_data="\n".join(holiday_data),
+    )
+
+    output_path = Path("holidays/calendars") / OUT_FILE_NAME
+    output_path.write_text(output, encoding="UTF-8")
 
 
 if __name__ == "__main__":
