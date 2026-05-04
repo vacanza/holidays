@@ -30,7 +30,7 @@ LAT = 23.1765
 LON = 75.7885
 
 swe.set_ephe_path(".")
-swe.set_sid_mode(swe.SIDM_LAHIRI)  # set Lahiri ayanamsa gloablly
+swe.set_sid_mode(swe.SIDM_LAHIRI)  # set Lahiri ayanamsa globally
 
 """
 Amavasya -> use SUN's sidereal sign -> determines lunar month
@@ -630,7 +630,11 @@ def get_sharad_navratri(year):
         sign = sidereal_solar_zodiac_sign(ss_jd)
         t_prev = tithi(sunset_jd(dt - timedelta(days=1)))
 
-        if (t == 30 and sign == 5) or (t == 1 and t_prev == 29 and sign == 5):
+        if t == 30 and sign == 5:
+            ashwin_ama = dt
+            break
+
+        if t == 1 and t_prev == 29 and sign == 5:
             sign_prev = sidereal_solar_zodiac_sign(sunset_jd(dt - timedelta(days=1)))
             if sign_prev == 5:
                 ashwin_ama = dt
@@ -691,7 +695,7 @@ HINDU_HOLIDAYS = (
     ("DIWALI_INDIA", lambda y: get_diwali(y)),
     ("DUSSEHRA", lambda y: get_dussehra(y)),
     ("HOLI", lambda y: get_holi(y)),
-    ("JANMASTHAMI", lambda y: get_janmashtami(y)),
+    ("JANMASHTAMI", lambda y: get_janmashtami(y)),
     ("MAHA_SHIVARATRI", lambda y: get_maha_shivaratri(y)),
     ("GANESH_CHATURTHI", lambda y: get_ganesh_chaturthi(y)),
     ("GURU_NANAK_JAYANTI", lambda y: get_guru_nanak_jayanti(y)),
