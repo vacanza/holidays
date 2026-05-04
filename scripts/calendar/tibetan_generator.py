@@ -41,8 +41,7 @@ from holidays.calendars.gregorian import (
 
 
 class {class_name}:
-{holiday_data}
-"""
+{holiday_data}"""
 
 MONTH_NAMES = {
     1: "JAN",
