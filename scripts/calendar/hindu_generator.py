@@ -138,7 +138,7 @@ def _madhyahna_jd(dt: date) -> float:
 # Lunar months (named after the zodiac sign of sun at sunset of Amavasya (new moon))
 MONTH_NAMES = [
     "Vaishakh",  # (0°-30°) - Aries (0)
-    "Jyeshth",  # (30°-60°) - Tauras (1)
+    "Jyeshth",  # (30°-60°) - Taurus (1)
     "Ashadh",  # (60°-90°) - Gemini (2)
     "Shravan",  # (90°-120°) - Cancer (3)
     "Bhadrapad",  # (120°-150°) - Leo (4)
