@@ -85,9 +85,9 @@ def _sunrise_jd(dt: date) -> float:
 
 
 def _sunset_jd(dt: date) -> float:
-    """Return the JD of sunset (disc centre) on dt at Ujjain."""
+    """Return the JD of sunset on dt at Ujjain."""
     obs = _make_observer(dt)
-    ed = obs.next_setting(ephem.Sun(), use_center=True)
+    ed = obs.next_setting(ephem.Sun())
     return _ephem_date_to_jd(ed)
 
 
@@ -152,7 +152,7 @@ MONTH_NAMES = [
 ]
 
 
-def _lunar_month(jd):
+def _lunar_month(jd: float) -> str:
     sign = _sidereal_solar_zodiac_sign(jd)
     return MONTH_NAMES[sign]
 
