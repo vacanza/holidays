@@ -1,3 +1,15 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
 #  python-holidays: A fast, efficient Python library for generating country,
 #  province and state specific sets of holidays on the fly. It aims to make
 #  determining whether a specific date is a holiday as fast and flexible as
@@ -43,11 +55,9 @@ def parse_categories(categories: str | None):
     return [c.strip().lower() for c in categories.split(",") if c.strip()]
 
 
-def validate_code(code: str, financial: bool):
+def validate_code(code: str, *, financial: bool):
     supported = (
-        holidays.list_supported_financial()
-        if financial
-        else holidays.list_supported_countries()
+        holidays.list_supported_financial() if financial else holidays.list_supported_countries()
     )
 
     if code.upper() not in supported:
@@ -55,13 +65,13 @@ def validate_code(code: str, financial: bool):
         sys.exit(1)
 
 
-def validate_subdiv(code: str, subdiv: str | None, financial: bool):
+def validate_subdiv(code: str, subdiv: str | None, *, financial: bool):
     if not subdiv or financial:
         return
 
     try:
         holidays.country_holidays(code.upper(), subdiv=subdiv)
-    except Exception:
+    except NotImplementedError:
         logger.error("Invalid subdivision '%s' for %s", subdiv, code)
         sys.exit(1)
 
@@ -91,11 +101,7 @@ def main():
     validate_subdiv(args.code, args.subdiv, args.financial)
 
     try:
-        holiday_base = (
-            holidays.financial_holidays
-            if args.financial
-            else holidays.country_holidays
-        )
+        holiday_base = holidays.financial_holidays if args.financial else holidays.country_holidays
 
         holiday_data = holiday_base(
             args.code.upper(),

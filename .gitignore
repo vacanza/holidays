@@ -7,6 +7,7 @@ __pycache__
 .idea
 .tox
 .venv
+venv/
 .vscode/
 *.code-workspace
 *.csv
