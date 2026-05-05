@@ -9,8 +9,6 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
-#  python-holidays: A fast, efficient Python library for generating country,
 #  province and state specific sets of holidays on the fly. It aims to make
 #  determining whether a specific date is a holiday as fast and flexible as
 #  possible.
@@ -97,8 +95,8 @@ def main():
     years = parse_years(args.year)
     categories = parse_categories(args.categories)
 
-    validate_code(args.code, args.financial)
-    validate_subdiv(args.code, args.subdiv, args.financial)
+    validate_code(args.code, financial=args.financial)
+    validate_subdiv(args.code, args.subdiv, financial=args.financial)
 
     try:
         holiday_base = holidays.financial_holidays if args.financial else holidays.country_holidays
