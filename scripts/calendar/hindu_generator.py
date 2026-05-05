@@ -12,10 +12,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import math
 from datetime import date, timedelta
 from pathlib import Path
 
-import swisseph as swe
+import ephem
 
 """
 This file generates Gregorian dates for Hindu lunisolar calendar based holidays.
@@ -26,11 +27,44 @@ Sources:
 """
 
 # Coordinates for Ujjain, India (holy city used in Hindu astrology)
-LAT = 23.1765
-LON = 75.7885
+LAT = "23.1765"
+LON = "75.7885"
 
-swe.set_ephe_path(".")
-swe.set_sid_mode(swe.SIDM_LAHIRI)  # set Lahiri ayanamsa globally
+_DUBLIN_TO_JD = 2415020.0
+
+_LAHIRI_J2000 = 23.85045  # degrees at J2000.0 (JD 2451545.0)
+_PRECESSION_RATE = 50.2388475 / 3600  # degrees per Julian year
+
+
+def _lahiri_ayanamsa(ephem_date: ephem.Date) -> float:
+    """Return Lahiri ayanamsa in degrees for the given pyephem Date."""
+    jd = float(ephem_date) + _DUBLIN_TO_JD
+    years_from_j2000 = (jd - 2451545.0) / 365.25
+    return _LAHIRI_J2000 + _PRECESSION_RATE * years_from_j2000
+
+
+def _ephem_date_to_jd(ed: ephem.Date) -> float:
+    """Convert a pyephem Date to a standard Julian Day Number."""
+    return float(ed) + _DUBLIN_TO_JD
+
+
+def _make_observer(dt: date) -> ephem.Observer:
+    """Return an ephem.Observer set to Ujjain at the start of dt (UTC)."""
+    obs = ephem.Observer()
+    obs.lat = LAT
+    obs.lon = LON
+    obs.elevation = 0
+    obs.pressure = 0  # disable atmospheric refraction
+    obs.date = f"{dt.year}/{dt.month}/{dt.day}"
+    return obs
+
+
+def _tropical_lon(body: ephem.Body, ephem_date: ephem.Date) -> float:
+    """Return the tropical (apparent) ecliptic longitude of body in degrees."""
+    body.compute(ephem_date)
+    ecl = ephem.Ecliptic(body, epoch=ephem_date)
+    return math.degrees(ecl.lon) % 360
+
 
 """
 Amavasya -> use SUN's sidereal sign -> determines lunar month
@@ -39,53 +73,65 @@ Purnima -> use MOON's sidereal sign -> determines lunar month
 """
 
 
-def norm360(x):
+def _norm360(x: float) -> float:
     return x % 360
 
 
-def sunrise_jd(date):
-    jd0 = swe.julday(date.year, date.month, date.day, 0.0)
-    res = swe.rise_trans(jd0, swe.SUN, swe.CALC_RISE, (LON, LAT, 0))
-    return res[1][0]
+def _sunrise_jd(dt: date) -> float:
+    """Return the JD of sunrise on dt at Ujjain."""
+    obs = _make_observer(dt)
+    ed = obs.next_rising(ephem.Sun(), use_center=False)
+    return _ephem_date_to_jd(ed)
 
 
-def sunset_jd(date):
-    jd0 = swe.julday(date.year, date.month, date.day, 0.0)
-    res = swe.rise_trans(jd0, swe.SUN, swe.CALC_SET | swe.BIT_DISC_CENTER, (LON, LAT, 0))
-    return res[1][0]
+def _sunset_jd(dt: date) -> float:
+    """Return the JD of sunset (disc centre) on dt at Ujjain."""
+    obs = _make_observer(dt)
+    ed = obs.next_setting(ephem.Sun(), use_center=True)
+    return _ephem_date_to_jd(ed)
 
 
-def midnight_jd(date):
-    # Nishita Kaal = midpoint between sunset and next sunrise.
-    ss = sunset_jd(date)
-    sr = sunrise_jd(date + timedelta(days=1))
+def _midnight_jd(dt: date) -> float:
+    """Return the JD of Nishita Kaal (midpoint of sunset -> next sunrise)."""
+    ss = _sunset_jd(dt)
+    sr = _sunrise_jd(dt + timedelta(days=1))
     return (ss + sr) / 2.0
 
 
-def sidereal_solar_zodiac_sign(jd):
-    # Returns sidereal zodiac sign index
-    lon = norm360(swe.calc_ut(jd, swe.SUN, swe.FLG_SIDEREAL)[0][0])
-    return int(lon // 30)
+def _sidereal_solar_zodiac_sign(jd: float) -> int:
+    """Return the sidereal zodiac sign index (0 = Aries … 11 = Pisces) of the
+    Sun at the given Julian Day Number."""
+    ed = ephem.Date(jd - _DUBLIN_TO_JD)
+    trop_lon = _tropical_lon(ephem.Sun(), ed)
+    ayanamsa = _lahiri_ayanamsa(ed)
+    sid_lon = _norm360(trop_lon - ayanamsa)
+    return int(sid_lon // 30)
 
 
-def tithi(jd):
-    sun = norm360(swe.calc_ut(jd, swe.SUN)[0][0])
-    moon = norm360(swe.calc_ut(jd, swe.MOON)[0][0])
-    return int(norm360(moon - sun) // 12) + 1
+def _tithi(jd: float) -> int:
+    """Return the tithi (1-30) at the given Julian Day Number.
+
+    Tithis are based on tropical longitudes (the ayanamsa cancels out in the
+    difference moon - sun).
+    """
+    ed = ephem.Date(jd - _DUBLIN_TO_JD)
+    sun_lon = _tropical_lon(ephem.Sun(), ed)
+    moon_lon = _tropical_lon(ephem.Moon(), ed)
+    return int(_norm360(moon_lon - sun_lon) // 12) + 1
 
 
-def aparahna_jd(dt):
-    # Aparahna = 4th part of the day (out of 5 equal parts between sunrise and sunset)
-    sr = sunrise_jd(dt)
-    ss = sunset_jd(dt)
+def _aparahna_jd(dt: date) -> float:
+    """Return the JD of Aparahna (4th of 5 equal day-parts) on dt."""
+    sr = _sunrise_jd(dt)
+    ss = _sunset_jd(dt)
     day_duration = ss - sr
     return sr + (3 / 5) * day_duration
 
 
-def madhyahna_jd(dt):
-    # Madhyahna = middle of day (midpoint between sunrise and sunset)
-    sr = sunrise_jd(dt)
-    ss = sunset_jd(dt)
+def _madhyahna_jd(dt: date) -> float:
+    """Return the JD of Madhyahna (midpoint of sunrise -> sunset) on dt."""
+    sr = _sunrise_jd(dt)
+    ss = _sunset_jd(dt)
     return (sr + ss) / 2
 
 
@@ -106,8 +152,8 @@ MONTH_NAMES = [
 ]
 
 
-def lunar_month(jd):
-    sign = sidereal_solar_zodiac_sign(jd)
+def _lunar_month(jd):
+    sign = _sidereal_solar_zodiac_sign(jd)
     return MONTH_NAMES[sign]
 
 
@@ -123,11 +169,11 @@ def get_diwali(year):
 
     # Kartik Amavasya (sunset tithi=30, sun in sidereal Libra=sign 6)
     while dt <= end:
-        ss_jd = sunset_jd(dt)
-        sr_jd = sunrise_jd(dt)
-        t_ss = tithi(ss_jd)
-        t_sr = tithi(sr_jd)
-        m = lunar_month(ss_jd)
+        ss_jd = _sunset_jd(dt)
+        sr_jd = _sunrise_jd(dt)
+        t_ss = _tithi(ss_jd)
+        t_sr = _tithi(sr_jd)
+        m = _lunar_month(ss_jd)
 
         # Amavasya active at sunset (pradosh rule)
         # or Amavasya fell between two sunsets, still active at sunrise
@@ -162,17 +208,17 @@ def get_dussehra(year):
 
     ashwin_ama = None
     while dt <= end:
-        ss_jd = sunset_jd(dt)
-        t = tithi(ss_jd)
-        sign = sidereal_solar_zodiac_sign(ss_jd)
-        t_prev = tithi(sunset_jd(dt - timedelta(days=1)))
+        ss_jd = _sunset_jd(dt)
+        t = _tithi(ss_jd)
+        sign = _sidereal_solar_zodiac_sign(ss_jd)
+        t_prev = _tithi(_sunset_jd(dt - timedelta(days=1)))
 
         if t == 30 and sign == 5:
             ashwin_ama = dt
             break
 
         if t == 1 and t_prev == 29 and sign == 5:
-            sign_prev = sidereal_solar_zodiac_sign(sunset_jd(dt - timedelta(days=1)))
+            sign_prev = _sidereal_solar_zodiac_sign(_sunset_jd(dt - timedelta(days=1)))
             if sign_prev == 5:
                 ashwin_ama = dt
                 break
@@ -186,11 +232,11 @@ def get_dussehra(year):
     dt = ashwin_ama + timedelta(days=1)
 
     while dt <= ashwin_ama + timedelta(days=15):
-        ap_jd = aparahna_jd(dt)
-        ap_jd_prev = aparahna_jd(dt - timedelta(days=1))
+        ap_jd = _aparahna_jd(dt)
+        ap_jd_prev = _aparahna_jd(dt - timedelta(days=1))
 
-        t = tithi(ap_jd)
-        t_prev = tithi(ap_jd_prev)
+        t = _tithi(ap_jd)
+        t_prev = _tithi(ap_jd_prev)
 
         # Case 1: Dashami present -> return FIRST occurrence
         if t == 10:
@@ -220,10 +266,10 @@ def get_ganesh_chaturthi(year):
     # Last Bhadrapada Amavasya (sunset tithi = 30, sun in Leo = sign 4)
     bhadra_ama = None
     while dt <= end:
-        ss_jd = sunset_jd(dt)
-        t = tithi(ss_jd)
-        sign = sidereal_solar_zodiac_sign(ss_jd)
-        t_prev = tithi(sunset_jd(dt - timedelta(days=1)))
+        ss_jd = _sunset_jd(dt)
+        t = _tithi(ss_jd)
+        sign = _sidereal_solar_zodiac_sign(ss_jd)
+        t_prev = _tithi(_sunset_jd(dt - timedelta(days=1)))
 
         if (t == 30 and sign == 4) or (t == 1 and t_prev == 29 and sign == 4):
             bhadra_ama = dt
@@ -236,10 +282,10 @@ def get_ganesh_chaturthi(year):
     # Find day where Chaturthi (tithi 4) is active at Madhyahna
     dt = bhadra_ama + timedelta(days=1)
     while dt <= bhadra_ama + timedelta(days=10):
-        mj = madhyahna_jd(dt)
-        mj_prev = madhyahna_jd(dt - timedelta(days=1))
-        t = tithi(mj)
-        t_prev = tithi(mj_prev)
+        mj = _madhyahna_jd(dt)
+        mj_prev = _madhyahna_jd(dt - timedelta(days=1))
+        t = _tithi(mj)
+        t_prev = _tithi(mj_prev)
 
         if t == 4:
             return dt
@@ -269,10 +315,10 @@ def get_guru_nanak_jayanti(year):
     # Kartik Amavasya (sunset tithi=30, sun in sidereal Libra=sign 6)
     kartik_ama = None
     while dt <= end:
-        ss_jd = sunset_jd(dt)
-        t = tithi(ss_jd)
-        sign = sidereal_solar_zodiac_sign(ss_jd)
-        t_prev = tithi(sunset_jd(dt - timedelta(days=1)))
+        ss_jd = _sunset_jd(dt)
+        t = _tithi(ss_jd)
+        sign = _sidereal_solar_zodiac_sign(ss_jd)
+        t_prev = _tithi(_sunset_jd(dt - timedelta(days=1)))
 
         if (t == 30 and sign == 6) or (t == 1 and t_prev == 29 and sign == 6):
             kartik_ama = dt
@@ -286,11 +332,11 @@ def get_guru_nanak_jayanti(year):
     #  Find first sunrise with Purnima active
     dt = kartik_ama + timedelta(days=1)
     while dt <= kartik_ama + timedelta(days=20):
-        sr_jd = sunrise_jd(dt)
-        sr_jd_prev = sunrise_jd(dt - timedelta(days=1))
+        sr_jd = _sunrise_jd(dt)
+        sr_jd_prev = _sunrise_jd(dt - timedelta(days=1))
 
-        t = tithi(sr_jd)
-        t_prev = tithi(sr_jd_prev)
+        t = _tithi(sr_jd)
+        t_prev = _tithi(sr_jd_prev)
 
         # First sunrise with Purnima (wasn't active yesterday)
         if t == 15 and t_prev != 15:
@@ -333,10 +379,10 @@ def get_holi(year):
 
     # Phalgun Amavasya (or Magh as fallback)
     while dt <= end:
-        ss_jd = sunset_jd(dt)
-        t = tithi(ss_jd)
-        sign = sidereal_solar_zodiac_sign(ss_jd)
-        t_prev = tithi(sunset_jd(dt - timedelta(days=1)))
+        ss_jd = _sunset_jd(dt)
+        t = _tithi(ss_jd)
+        sign = _sidereal_solar_zodiac_sign(ss_jd)
+        t_prev = _tithi(_sunset_jd(dt - timedelta(days=1)))
 
         # Magh Amavasya as fallback (sun in Capricorn = sign 9)
         if (t == 30 and sign == 9) or (t == 1 and t_prev == 29 and sign == 9):
@@ -363,9 +409,9 @@ def get_holi(year):
     dt = ref + timedelta(days=1)
 
     while dt <= ref + timedelta(days=20):
-        ss_jd = sunset_jd(dt)
-        t = tithi(ss_jd)
-        t_prev = tithi(sunset_jd(dt - timedelta(days=1)))
+        ss_jd = _sunset_jd(dt)
+        t = _tithi(ss_jd)
+        t_prev = _tithi(_sunset_jd(dt - timedelta(days=1)))
 
         # Purnima skipped entirely between sunsets (14->16)- night of Holika Dahan
         if t == 16 and t_prev == 14:
@@ -408,10 +454,10 @@ def get_janmashtami(year):
     # Bhadrapad Amavasya = tithi 30 at sunset, sun in sign 4 (Leo)
     bhadrapad_ama = None
     while dt <= end:
-        ss_jd = sunset_jd(dt)
-        t = tithi(ss_jd)
-        sign = sidereal_solar_zodiac_sign(ss_jd)
-        t_prev = tithi(sunset_jd(dt - timedelta(days=1)))
+        ss_jd = _sunset_jd(dt)
+        t = _tithi(ss_jd)
+        sign = _sidereal_solar_zodiac_sign(ss_jd)
+        t_prev = _tithi(_sunset_jd(dt - timedelta(days=1)))
 
         if (t == 30 and sign == 4) or (t == 1 and t_prev == 29 and sign == 4):
             bhadrapad_ama = dt
@@ -428,9 +474,9 @@ def get_janmashtami(year):
 
     dt = search_start
     while dt <= search_end:
-        sr_jd = sunrise_jd(dt)
-        t = tithi(sr_jd)
-        t_prev = tithi(sunrise_jd(dt - timedelta(days=1)))
+        sr_jd = _sunrise_jd(dt)
+        t = _tithi(sr_jd)
+        t_prev = _tithi(_sunrise_jd(dt - timedelta(days=1)))
 
         # Ashtami active at sunrise, keep going
         if t == 23:
@@ -469,12 +515,12 @@ def get_maha_shivaratri(year):
 
     # Magh and Phalgun Chaturdashi (tithi 29 at sunset or midnight, sun in Capricorn or Aquarius)
     while dt <= end:
-        ss_jd = sunset_jd(dt)
-        mid_jd = midnight_jd(dt)
-        t_ss = tithi(ss_jd)
-        t_mid = tithi(mid_jd)
-        sign = sidereal_solar_zodiac_sign(ss_jd)
-        sign_prev = sidereal_solar_zodiac_sign(sunset_jd(dt - timedelta(days=1)))
+        ss_jd = _sunset_jd(dt)
+        mid_jd = _midnight_jd(dt)
+        t_ss = _tithi(ss_jd)
+        t_mid = _tithi(mid_jd)
+        sign = _sidereal_solar_zodiac_sign(ss_jd)
+        sign_prev = _sidereal_solar_zodiac_sign(_sunset_jd(dt - timedelta(days=1)))
 
         is_chaturdashi = t_ss == 29 or t_mid == 29
 
@@ -487,8 +533,8 @@ def get_maha_shivaratri(year):
             and phalgun_chaturdashi is None
         ):
             # Check if previous day's midnight already had tithi 29 in Magh
-            t_mid_prev = tithi(midnight_jd(dt - timedelta(days=1)))
-            sign_prev_day = sidereal_solar_zodiac_sign(sunset_jd(dt - timedelta(days=1)))
+            t_mid_prev = _tithi(_midnight_jd(dt - timedelta(days=1)))
+            sign_prev_day = _sidereal_solar_zodiac_sign(_sunset_jd(dt - timedelta(days=1)))
             if t_mid_prev == 29 and sign_prev_day == 9:
                 phalgun_chaturdashi = dt - timedelta(days=1)
             else:
@@ -544,10 +590,10 @@ def get_ram_navami(year):
     # Find Chaitra Amavasya (sun in Pisces -> sign 11)
     chaitra_ama = None
     while dt <= end:
-        ss_jd = sunset_jd(dt)
-        t = tithi(ss_jd)
-        sign = sidereal_solar_zodiac_sign(ss_jd)
-        t_prev = tithi(sunset_jd(dt - timedelta(days=1)))
+        ss_jd = _sunset_jd(dt)
+        t = _tithi(ss_jd)
+        sign = _sidereal_solar_zodiac_sign(ss_jd)
+        t_prev = _tithi(_sunset_jd(dt - timedelta(days=1)))
 
         # Normal Amavasya
         if t == 30 and sign == 11:
@@ -556,7 +602,7 @@ def get_ram_navami(year):
 
         # skipped Amavasya (29 -> 1)
         if t == 1 and t_prev == 29 and sign == 11:
-            sign_prev = sidereal_solar_zodiac_sign(sunset_jd(dt - timedelta(days=1)))
+            sign_prev = _sidereal_solar_zodiac_sign(_sunset_jd(dt - timedelta(days=1)))
             if sign_prev == 11:
                 chaitra_ama = dt
                 break
@@ -572,11 +618,11 @@ def get_ram_navami(year):
     last_navami = None
 
     while dt <= chaitra_ama + timedelta(days=15):
-        md_jd = madhyahna_jd(dt)
-        md_jd_prev = madhyahna_jd(dt - timedelta(days=1))
+        md_jd = _madhyahna_jd(dt)
+        md_jd_prev = _madhyahna_jd(dt - timedelta(days=1))
 
-        t = tithi(md_jd)
-        t_prev = tithi(md_jd_prev)
+        t = _tithi(md_jd)
+        t_prev = _tithi(md_jd_prev)
 
         # Navami present -> keep updating (last is needed)
         if t == 9:
@@ -625,17 +671,17 @@ def get_sharad_navratri(year):
     # Ashwin Amavasya
     ashwin_ama = None
     while dt <= end:
-        ss_jd = sunset_jd(dt)
-        t = tithi(ss_jd)
-        sign = sidereal_solar_zodiac_sign(ss_jd)
-        t_prev = tithi(sunset_jd(dt - timedelta(days=1)))
+        ss_jd = _sunset_jd(dt)
+        t = _tithi(ss_jd)
+        sign = _sidereal_solar_zodiac_sign(ss_jd)
+        t_prev = _tithi(_sunset_jd(dt - timedelta(days=1)))
 
         if t == 30 and sign == 5:
             ashwin_ama = dt
             break
 
         if t == 1 and t_prev == 29 and sign == 5:
-            sign_prev = sidereal_solar_zodiac_sign(sunset_jd(dt - timedelta(days=1)))
+            sign_prev = _sidereal_solar_zodiac_sign(_sunset_jd(dt - timedelta(days=1)))
             if sign_prev == 5:
                 ashwin_ama = dt
                 break
@@ -648,16 +694,16 @@ def get_sharad_navratri(year):
     dt = ashwin_ama + timedelta(days=1)
 
     for _ in range(3):
-        sr = sunrise_jd(dt)
-        sr_prev = sunrise_jd(dt - timedelta(days=1))
-        t = tithi(sr)
-        t_prev = tithi(sr_prev)
+        sr = _sunrise_jd(dt)
+        sr_prev = _sunrise_jd(dt - timedelta(days=1))
+        t = _tithi(sr)
+        t_prev = _tithi(sr_prev)
 
         # Amavasya at sunrise, next=Pratipada, day after=Dwitiya skipped
         # Pratipada was very short - today is Navratri
         if t == 30:
-            t_next = tithi(sunrise_jd(dt + timedelta(days=1)))
-            t_next2 = tithi(sunrise_jd(dt + timedelta(days=2)))
+            t_next = _tithi(_sunrise_jd(dt + timedelta(days=1)))
+            t_next2 = _tithi(_sunrise_jd(dt + timedelta(days=2)))
             if t_next == 1 and t_next2 >= 3:
                 return dt
 
@@ -692,15 +738,15 @@ CALENDARS = {
 }
 
 HINDU_HOLIDAYS = (
-    ("DIWALI_INDIA", lambda y: get_diwali(y)),
-    ("DUSSEHRA", lambda y: get_dussehra(y)),
-    ("HOLI", lambda y: get_holi(y)),
-    ("JANMASHTAMI", lambda y: get_janmashtami(y)),
-    ("MAHA_SHIVARATRI", lambda y: get_maha_shivaratri(y)),
-    ("GANESH_CHATURTHI", lambda y: get_ganesh_chaturthi(y)),
-    ("GURU_NANAK_JAYANTI", lambda y: get_guru_nanak_jayanti(y)),
-    ("RAM_NAVAMI", lambda y: get_ram_navami(y)),
-    ("SHARAD_NAVRATRI", lambda y: get_sharad_navratri(y)),
+    ("DIWALI_INDIA", get_diwali),
+    ("DUSSEHRA", get_dussehra),
+    ("HOLI", get_holi),
+    ("JANMASHTAMI", get_janmashtami),
+    ("MAHA_SHIVARATRI", get_maha_shivaratri),
+    ("GANESH_CHATURTHI", get_ganesh_chaturthi),
+    ("GURU_NANAK_JAYANTI", get_guru_nanak_jayanti),
+    ("RAM_NAVAMI", get_ram_navami),
+    ("SHARAD_NAVRATRI", get_sharad_navratri),
 )
 
 
