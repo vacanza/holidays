@@ -14,11 +14,11 @@ from datetime import date, timedelta
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import (
-    APR,
-    AUG,
     JAN,
-    JUL,
+    APR,
     JUN,
+    JUL,
+    AUG,
     SEP,
     NOV,
     DEC,
@@ -43,15 +43,15 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         * <https://nl.wikipedia.org/wiki/Feestdagen_in_België>
         * <https://web.archive.org/web/20240816004739/https://www.nbb.be/en/about-national-bank/national-bank-belgium/public-holidays>
         * Official education calendars:
-            - [Flemish Community (Vlaanderen)](https://www.vlaanderen.be/onderwijs-en-vorming/wat-mag-en-moet-op-school/schoolvakanties-vrije-dagen-en-afwezigheden/schoolvakanties)
-            - [French Community (Fédération Wallonie-Bruxelles)](http://www.enseignement.be/index.php?page=23953)
-            - [German-speaking Community (Deutschsprachige Gemeinschaft)](https://ostbelgienbildung.be/desktopdefault.aspx/tabid-2212/4397_read-31727/)
+            * [Flemish Community (Vlaanderen)](https://www.vlaanderen.be/onderwijs-en-vorming/wat-mag-en-moet-op-school/schoolvakanties-vrije-dagen-en-afwezigheden/schoolvakanties)
+            * [French Community (Fédération Wallonie-Bruxelles)](http://www.enseignement.be/index.php?page=23953)
+            * [German-speaking Community (Deutschsprachige Gemeinschaft)](https://ostbelgienbildung.be/desktopdefault.aspx/tabid-2212/4397_read-31727/)
 
     Notes:
         * Belgium has three school systems with different vacation rules:
-            - VLG: Flemish Community
-            - WBR: French Community (Wallonia + Brussels French schools)
-            - GER: German-speaking Community (Ostbelgien)
+            * VLG: Flemish Community
+            * WBR: French Community (Wallonia + Brussels French schools)
+            * GER: German-speaking Community (Ostbelgien)
         * School holiday rules are based on official education calendars.
     """
 
@@ -118,16 +118,12 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Bank Holiday.
         self._add_christmas_day_two(tr("Banksluitingsdag"))
 
-    """Override to start adding holidays directly from start_date."""
-
     def _add_multiday_holiday(
         self, start_date: date, duration_days: int, *, name: str | None = None
     ) -> set[date]:
         """Override to start adding holidays directly from start_date."""
         return super()._add_multiday_holiday(
-            _timedelta(start_date, -1),
-            duration_days=duration_days,
-            name=name,
+            _timedelta(start_date, -1), duration_days=duration_days, name=name
         )
 
     def _populate_subdiv_vlg_school_holidays(self):
@@ -138,47 +134,52 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         algorithmically, therefore they are implemented here.
         """
 
-        if self.categories != {SCHOOL}:
-            return
-
         year = self._year
         easter = self._easter_sunday
 
-        # Christmas Holidays.
-        # Start on the Monday of the week containing Christmas.
-        # The holiday period spans the end of December and continues into January,
-        # with the January portion added separately to ensure correct year coverage.
+        # Christmas Break:
+        # Starts on the Monday of the week containing Christmas,
+        # or on the following Monday if Christmas falls on a weekend.
+        # The break lasts two weeks (14 days) and spans December and January,
+        # therefore the January portion is added separately.
+
+        # Christmas Break.
         name = tr("Kerstvakantie")
 
-        # Current year's Christmas holidays (late December part).
+        # December portion of the current Christmas Break.
         christmas = self._christmas_day
         christmas_start = _get_nth_weekday_from(
             1 if self._is_weekend(christmas) else -1, MON, christmas
         )
         self._add_multiday_holiday(christmas_start, 32 - christmas_start.day, name=name)
 
-        # January spillover from previous year's Christmas holidays.
+        # January portion of the previous Christmas Break.
         new_year = date(year, JAN, 1)
-        christmas_last_part_duration = (4 - new_year.weekday()) % 7 + 3
-        self._add_multiday_holiday(new_year, christmas_last_part_duration, name=name)
+        january_duration = (4 - new_year.weekday()) % 7 + 3
+        self._add_multiday_holiday(new_year, january_duration, name=name)
 
-        # Carnival Holidays.
-        # Start on Carnival Monday, which occurs 48 days before Easter.
-        # Duration is one week (7 days), covering the traditional Carnival break.
+        # Carnival Break:
+        # Starts on Carnival Monday, 48 days before Easter.
+        # The break lasts one week (7 days).
+
+        # Carnival Break.
         self._add_multiday_holiday(_timedelta(easter, -48), 7, name=tr("Krokusvakantie"))
 
-        # Easter Holidays:
-        # The start date depends on the position of Easter in the calendar.
-        # - If Easter occurs in March → holidays start on the Monday after Easter.
-        # - If Easter occurs on or after April 16 → holidays start 13 days before Easter.
-        # - Otherwise → holidays start on the first Monday of April.
+        # Easter Break:
+        # The start date depends on the date of Easter:
+        # - If Easter falls in March, the break starts on the Monday before Easter.
+        # - If Easter falls on or after April 16, the break starts 13 days before Easter.
+        # - Otherwise, the break starts on the first Monday of April.
+        # The break normally lasts two weeks (14 days), extended to include Easter Monday
+        # when necessary.
         easter_start = _get_nth_weekday_of_month(1, MON, APR, year)
         easter_duration = 14
         if easter.month == 3:
-            easter_start = _timedelta(easter, 1)
+            easter_start = _timedelta(easter, -6)
         elif easter.day >= 16:
             easter_start = _timedelta(easter, -13)
             easter_duration = 15
+        # Easter Break.
         self._add_multiday_holiday(easter_start, easter_duration, name=tr("Paasvakantie"))
 
         # Labor Day.
@@ -193,12 +194,21 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Whit Monday.
         self._add_whit_monday(tr("Pinkstermaandag"))
 
-        # Summer Holidays.
+        # Summer Break:
+        # Fixed period running from July 1 through August 31.
+        # The break lasts 62 days.
+
+        # Summer Break.
         self._add_multiday_holiday(date(year, JUL, 1), 62, name=tr("Zomervakantie"))
 
-        # Autumn Holidays.
+        # Autumn Break:
+        # Starts on the Monday of the week containing November 1,
+        # or on the following Monday if November 1 falls on Sunday.
+        # The break lasts one week (7 days).
+
         nov_1 = date(year, NOV, 1)
         autumn_start = _get_nth_weekday_from(1 if self._is_sunday(nov_1) else -1, MON, nov_1)
+        # Autumn Break.
         self._add_multiday_holiday(autumn_start, 7, name=tr("Herfstvakantie"))
 
         # Armistice Day.
@@ -281,8 +291,8 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Autumn Holidays:
         # - Start → second last Monday of October.
-        # - Before the 2022–2023 school year → duration was 1 week.
-        # - From the 2022–2023 school year → duration is 2 weeks.
+        # - Before the 2022-2023 school year → duration was 1 week.
+        # - From the 2022-2023 school year → duration is 2 weeks.
 
         # Autumn Holidays.
         nov_first = date(year, 11, 1)
