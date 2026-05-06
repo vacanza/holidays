@@ -18,10 +18,6 @@ build:
        - UV_PROJECT_ENVIRONMENT="${READTHEDOCS_VIRTUALENV_PATH}" uv sync --frozen --no-dev --group docs
 
 mkdocs:
-  configuration: mkdocs.yml
-
-python:
-  install:
-    - requirements: requirements/docs.txt
+  configuration: .properdocs.yml
 
 version: 2

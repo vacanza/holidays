@@ -29,7 +29,7 @@ class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
     country = "JO"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     supported_languages = ("ar", "en_US")
     weekend = {FRI, SAT}
 

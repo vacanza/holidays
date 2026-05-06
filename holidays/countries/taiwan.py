@@ -71,8 +71,8 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         * [Decree No. 11400053171](https://web.archive.org/web/20250602210918/https://law.moj.gov.tw/News/newsdetail.aspx?msgid=191745)
 
     Checked With:
-        * [DGPA Work Calendar (1998-2025; Chinese)](https://web.archive.org/web/20250307201828/https://www.dgpa.gov.tw/informationlist?uid=30)
-        * [DGPA Work Calendar (2001-2025; English)](https://web.archive.org/web/20240606012108/http://www.dgpa.gov.tw/en/informationlist?uid=353)
+        * [DGPA Work Calendar (1998-2026; Chinese)](https://web.archive.org/web/20260407070050/https://www.dgpa.gov.tw/informationlist?uid=30)
+        * [DGPA Work Calendar (2001-2026; English)](https://web.archive.org/web/20260407070053/https://www.dgpa.gov.tw/en/informationlist?uid=353)
     """
 
     country = "TW"
@@ -96,7 +96,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         super().__init__(*args, **kwargs)
 
     def _get_weekend(self, dt: date) -> set[int]:
-        # 1998–2000: Sundays as well as the 2nd & 4th Saturday of each month.
+        # 1998-2000: Sundays as well as the 2nd & 4th Saturday of each month.
         if dt.year <= 2000:
             weekend = {SUN}
             if dt.weekday() == SAT:
@@ -310,7 +310,7 @@ class TWN(Taiwan):
 class TaiwanStaticHolidays:
     """Taiwan special holidays.
 
-    DGPA, Executive Yuan Work Calendars:
+    DGPA and Executive Yuan Work Calendars:
         * [1998](https://web.archive.org/web/20240119034602/https://www.dgpa.gov.tw/information?pid=4979&uid=30)
         * [1999](https://web.archive.org/web/20240119034606/https://www.dgpa.gov.tw/information?pid=4978&uid=30)
         * [2000](https://web.archive.org/web/20231230164623/https://www.dgpa.gov.tw/information?uid=30&pid=4977)

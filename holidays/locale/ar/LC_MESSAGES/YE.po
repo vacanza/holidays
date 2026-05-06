@@ -30,17 +30,17 @@ msgstr ""
 
 #. %s (estimated).
 #, c-format
-msgid "%s (المقدرة)"
+msgid "%s (تقديري)"
 msgstr ""
 
 #. %s (observed).
 #, c-format
-msgid "%s (ملاحظة)"
+msgid "%s (يوم تعويضي)"
 msgstr ""
 
 #. %s (observed, estimated).
 #, c-format
-msgid "%s (المقدرة، ملاحظة)"
+msgid "%s (يوم تعويضي تقديري)"
 msgstr ""
 
 #. Hijri New Year.

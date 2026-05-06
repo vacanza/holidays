@@ -14,10 +14,11 @@ from collections.abc import Iterable
 from datetime import date
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.helpers import _normalize_tuple
 
 BATHUKAMMA = "BATHUKAMMA"
+BONALU = "BONALU"
 BUDDHA_PURNIMA = "BUDDHA_PURNIMA"
 CHHATH_PUJA = "CHHATH_PUJA"
 DIWALI = "DIWALI"
@@ -34,6 +35,7 @@ JANMASHTAMI = "JANMASHTAMI"
 MAHA_ASHTAMI = "MAHA_ASHTAMI"
 MAHA_NAVAMI = "MAHA_NAVAMI"
 MAHARANA_PRATAP_JAYANTI = "MAHARANA_PRATAP_JAYANTI"
+MAHARISHI_VALMIKI_JAYANTI = "MAHARISHI_VALMIKI_JAYANTI"
 MAHA_SHIVARATRI = "MAHA_SHIVARATRI"
 MAHAVIR_JAYANTI = "MAHAVIR_JAYANTI"
 MAKAR_SANKRANTI = "MAKAR_SANKRANTI"
@@ -86,6 +88,28 @@ class _HinduLunisolar:
         2033: (SEP, 23),
         2034: (OCT, 11),
         2035: (OCT, 1),
+    }
+
+    # Dates for Bonalu (Ashada Masam).
+    # [2018](https://web.archive.org/web/20250402131537/https://www.telangana.gov.in/Downloads/calendar-2018/)
+    # [2019](https://web.archive.org/web/20250508145651/https://www.telangana.gov.in/Downloads/calendar-2019/)
+    # [2020](https://web.archive.org/web/20250421174049/https://www.telangana.gov.in/downloads/calendar-2020/)
+    # [2021](https://web.archive.org/web/20250404142143/https://www.telangana.gov.in/Downloads/calendar-2021/)
+    # [2022](https://web.archive.org/web/20250217143857/https://www.telangana.gov.in/Downloads/calendar-2022/)
+    # [2023](https://web.archive.org/web/20250123180708/https://www.telangana.gov.in/Downloads/calendar-2023/)
+    # [2024](https://web.archive.org/web/20250217144536/https://www.telangana.gov.in/Downloads/calendar/)
+    # [2025](https://web.archive.org/web/20250217133450/https://www.telangana.gov.in/Downloads/calendar-2025/)
+    BONALU_DATES = {
+        2018: (AUG, 6),
+        2019: (JUL, 29),
+        2020: (JUL, 20),
+        2021: (AUG, 2),
+        2022: (JUL, 25),
+        2023: (JUL, 17),
+        2024: (JUL, 29),
+        2025: (JUL, 21),
+        2026: (AUG, 10),
+        2027: (AUG, 2),
     }
 
     # https://web.archive.org/web/20240804044401/https://www.timeanddate.com/holidays/india/buddha-purnima
@@ -862,6 +886,45 @@ class _HinduLunisolar:
         2035: (JUN, 8),
     }
 
+    # https://web.archive.org/web/20260219010222/https://www.drikpanchang.com/hindu-saints/valmiki/maharishi-valmiki-jayanti.html
+    MAHARISHI_VALMIKI_JAYANTI_DATES = {
+        2001: (NOV, 1),
+        2002: (OCT, 21),
+        2003: (OCT, 10),
+        2004: (OCT, 28),
+        2005: (OCT, 17),
+        2006: (OCT, 7),
+        2007: (OCT, 26),
+        2008: (OCT, 14),
+        2009: (OCT, 4),
+        2010: (OCT, 22),
+        2011: (OCT, 11),
+        2012: (OCT, 29),
+        2013: (OCT, 18),
+        2014: (OCT, 8),
+        2015: (OCT, 27),
+        2016: (OCT, 16),
+        2017: (OCT, 5),
+        2018: (OCT, 24),
+        2019: (OCT, 13),
+        2020: (OCT, 31),
+        2021: (OCT, 20),
+        2022: (OCT, 9),
+        2023: (OCT, 28),
+        2024: (OCT, 17),
+        2025: (OCT, 7),
+        2026: (OCT, 26),
+        2027: (OCT, 15),
+        2028: (OCT, 3),
+        2029: (OCT, 22),
+        2030: (OCT, 11),
+        2031: (OCT, 30),
+        2032: (OCT, 18),
+        2033: (OCT, 8),
+        2034: (OCT, 27),
+        2035: (OCT, 17),
+    }
+
     # https://web.archive.org/web/20250323040914/https://www.timeanddate.com/holidays/india/maha-shivaratri-shivaratri
     MAHA_SHIVARATRI_DATES = {
         2001: (FEB, 21),
@@ -1489,6 +1552,9 @@ class _HinduLunisolar:
     def bathukamma_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BATHUKAMMA, year)
 
+    def bonalu_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(BONALU, year)
+
     def buddha_purnima_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BUDDHA_PURNIMA, year)
 
@@ -1542,6 +1608,9 @@ class _HinduLunisolar:
 
     def maharana_pratap_jayanti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHARANA_PRATAP_JAYANTI, year)
+
+    def maharishi_valmiki_jayanti_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(MAHARISHI_VALMIKI_JAYANTI, year)
 
     def mahavir_jayanti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHAVIR_JAYANTI, year)

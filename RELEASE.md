@@ -9,24 +9,24 @@
   - update the supported versions table at `SECURITY.md` file (the table should contain the
     version being currently released)
   - commit the updated `CHANGES.md` and `SECURITY.md` files to `dev` branch with the following
-    commit message 'Finalize v<version>', e.g. 'Finalize v0.39'
+    commit message 'Finalize v\<version\>', e.g. 'Finalize v0.39'
   - push changes to <https://github.com/vacanza/holidays> `dev` branch
   - make sure the push related CI/CD jobs have been completed successfully
 - Merge the finalized changes into `main` branch:
-  - create a new PR for the recent changes from `dev` to `main` branch using 'v<version>'
+  - create a new PR for the recent changes from `dev` to `main` branch using 'v\<version\>'
     as a PR title and the previously generated release notes as a PR description
   - get the PR reviewed by at least one of the code owners
   - merge the PR into `main` branch using 'Merge when ready' button
   - make sure the PR related CI/CD jobs have been completed successfully
   - make sure readthedocs.org documentation build jobs at
-    <https://readthedocs.org/projects/holidays/builds/> have been completed successfully
+    <https://app.readthedocs.org/projects/holidays/builds/> have been completed successfully
 - Create a new release:
   - open <https://github.com/vacanza/holidays/releases> page and click on the 'Draft a new
     release' button
-  - click on 'Choose a tag', enter 'v<version>' into the input field (you should see
+  - click on 'Choose a tag', enter 'v\<version\>' into the input field (you should see
     something like 'Create a new tag: v0.39' on publish'
   - select **main** - instead of default `dev` in 'Target' dropdown
-  - put 'v<version>' into 'Release title' field, e.g. 'v0.39'
+  - put 'v\<version\>' into 'Release title' field, e.g. 'v0.39'
   - click on 'Generate release notes' button to collect new contributors and full changelog
     link information (we normally keep it at the bottom with a bit of re-formatting)
   - replace auto-generated release notes with the previously generated release notes (keep the
@@ -42,7 +42,7 @@
 - Finish the process with the following post-release actions:
   - pull the recent changes from `main` branch into `dev`
   - bump the Holidays version at `holidays/VERSION` file
-  - create a commit with 'Initialize v<version>' message, e.g. 'Initialize v0.40' and
+  - create a commit with 'Initialize v\<version\>' message, e.g. 'Initialize v0.40' and
     push it to `dev` branch (this may require running `make package` to pass the tests locally)
   - make sure `dev` branch **is not behind** the `main` branch (there will be a message on top
     of the <https://github.com/vacanza/holidays/tree/dev> page in case it is)

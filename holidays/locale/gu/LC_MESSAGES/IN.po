@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.87\n"
+"Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2025-03-01 15:11+0530\n"
-"Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
+"PO-Revision-Date: 2026-04-27 12:19+0530\n"
+"Last-Translator: Vanshika Pundir <pundirvanshika9@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: gu\n"
 "MIME-Version: 1.0\n"
@@ -121,6 +121,10 @@ msgstr "મજૂર દિવસ"
 msgid "Maha Navami"
 msgstr "મહાનવમી"
 
+#. Maharishi Valmiki Jayanti.
+msgid "Maharishi Valmiki Jayanti"
+msgstr "મહર્ષિ વાલ્મિકી જયંતિ"
+
 #. Makar Sankranti.
 msgid "Makar Sankranti"
 msgstr "મકરસંક્રાંતિ"
@@ -148,6 +152,10 @@ msgstr "પામ સન્ડે"
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr "ડૉ. બી. આર. આંબેડકર જયંતિ"
+
+#. Onam.
+msgid "Onam"
+msgstr "ઓણમ"
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
@@ -193,6 +201,10 @@ msgstr "ગુજરાત સ્થાપના દિવસ"
 msgid "Sardar Vallabhbhai Patel Jayanti"
 msgstr "સરદાર વલ્લભભાઈ પટેલ જયંતિ"
 
+#. Parsi New Year (Shahenshahi).
+msgid "Parsi New Year (Shahenshahi)"
+msgstr "પારસી નવું વર્ષ (શાહેનશાહી)"
+
 #. Haryana Foundation Day.
 msgid "Haryana Foundation Day"
 msgstr "હરિયાણા સ્થાપના દિવસ"
@@ -208,10 +220,6 @@ msgstr "ઝારખંડ સ્થાપના દિવસ"
 #. Karnataka Rajyotsav.
 msgid "Karnataka Rajyotsava"
 msgstr "કર્ણાટક રાજ્યોત્સવ"
-
-#. Onam.
-msgid "Onam"
-msgstr "ઓણમ"
 
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"
@@ -269,9 +277,9 @@ msgstr "વૈશાખી"
 msgid "Lohri"
 msgstr "લોહરી"
 
-#. Punjabi Day.
-msgid "Punjab Day"
-msgstr "પંજાબ દિવસ"
+#. New Punjab Day.
+msgid "New Punjab Day"
+msgstr "નવો પંજાબ દિવસ"
 
 #. Rajasthan Day.
 msgid "Rajasthan Day"
@@ -308,6 +316,10 @@ msgstr "તેલંગાણા સ્થાપના દિવસ"
 #. Bathukamma Festival.
 msgid "Bathukamma Festival"
 msgstr "બથુકમ્મા ઉત્સવ"
+
+#. Bonalu.
+msgid "Bonalu"
+msgstr "બોનાલુ"
 
 #. UP Formation Day.
 msgid "UP Formation Day"

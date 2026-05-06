@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2025-03-01 15:11+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-04-27 12:19+0530\n"
+"Last-Translator: Vanshika Pundir <pundirvanshika9@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
@@ -121,6 +121,10 @@ msgstr "मजदूर दिवस"
 msgid "Maha Navami"
 msgstr "महानवमी"
 
+#. Maharishi Valmiki Jayanti.
+msgid "Maharishi Valmiki Jayanti"
+msgstr "महर्षि वाल्मीकि जयंती"
+
 #. Makar Sankranti.
 msgid "Makar Sankranti"
 msgstr "मकर संक्रांति"
@@ -135,19 +139,23 @@ msgstr "रामनवमी"
 
 #. Navratri / Sharad Navratri.
 msgid "Navratri / Sharad Navratri"
-msgstr "नवरात्र/शरद नवरात्र"
+msgstr "नवरात्र / शरद नवरात्र"
 
 #. Easter Sunday.
 msgid "Easter Sunday"
-msgstr "ईस्टर संडे"
+msgstr "ईस्टर रविवार"
 
 #. Palm Sunday.
 msgid "Palm Sunday"
-msgstr "पाम संडे"
+msgstr "पाम रविवार"
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr "डॉ. बी.आर. आम्बेडकर जयंती"
+
+#. Onam.
+msgid "Onam"
+msgstr "ओणम"
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
@@ -193,6 +201,10 @@ msgstr "गुजरात दिवस"
 msgid "Sardar Vallabhbhai Patel Jayanti"
 msgstr "सरदार वल्लभभाई पटेल जयंती"
 
+#. Parsi New Year (Shahenshahi).
+msgid "Parsi New Year (Shahenshahi)"
+msgstr "पारसी नव वर्ष (शहंशाही)"
+
 #. Haryana Foundation Day.
 msgid "Haryana Foundation Day"
 msgstr "हरियाणा स्थापना दिवस"
@@ -208,10 +220,6 @@ msgstr "झारखंड स्थापना दिवस"
 #. Karnataka Rajyotsav.
 msgid "Karnataka Rajyotsava"
 msgstr "कर्नाटक राज्योत्सव"
-
-#. Onam.
-msgid "Onam"
-msgstr "ओणम"
 
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"
@@ -269,9 +277,9 @@ msgstr "वैसाखी"
 msgid "Lohri"
 msgstr "लोहड़ी"
 
-#. Punjabi Day.
-msgid "Punjab Day"
-msgstr "पंजाब दिवस"
+#. New Punjab Day.
+msgid "New Punjab Day"
+msgstr "नया पंजाब दिवस"
 
 #. Rajasthan Day.
 msgid "Rajasthan Day"
@@ -308,6 +316,10 @@ msgstr "तेलंगाना स्थापना दिवस"
 #. Bathukamma Festival.
 msgid "Bathukamma Festival"
 msgstr "बतुकम्मा महोत्सव"
+
+#. Bonalu.
+msgid "Bonalu"
+msgstr "बोनालु"
 
 #. UP Formation Day.
 msgid "UP Formation Day"

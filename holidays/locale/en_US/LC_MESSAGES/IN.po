@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2025-03-02 12:54+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-04-27 12:19+0530\n"
+"Last-Translator: Vanshika Pundir <pundirvanshika9@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -121,6 +121,10 @@ msgstr "Labor Day"
 msgid "Maha Navami"
 msgstr "Maha Navami"
 
+#. Maharishi Valmiki Jayanti.
+msgid "Maharishi Valmiki Jayanti"
+msgstr "Maharishi Valmiki Jayanti"
+
 #. Makar Sankranti.
 msgid "Makar Sankranti"
 msgstr "Makar Sankranti"
@@ -148,6 +152,10 @@ msgstr "Palm Sunday"
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr "Dr. B. R. Ambedkar's Jayanti"
+
+#. Onam.
+msgid "Onam"
+msgstr "Onam"
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
@@ -193,6 +201,10 @@ msgstr "Gujarat Day"
 msgid "Sardar Vallabhbhai Patel Jayanti"
 msgstr "Sardar Vallabhbhai Patel Jayanti"
 
+#. Parsi New Year (Shahenshahi).
+msgid "Parsi New Year (Shahenshahi)"
+msgstr "Parsi New Year (Shahenshahi)"
+
 #. Haryana Foundation Day.
 msgid "Haryana Foundation Day"
 msgstr "Haryana Foundation Day"
@@ -208,10 +220,6 @@ msgstr "Jharkhand Formation Day"
 #. Karnataka Rajyotsav.
 msgid "Karnataka Rajyotsava"
 msgstr "Karnataka Rajyotsava"
-
-#. Onam.
-msgid "Onam"
-msgstr "Onam"
 
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"
@@ -269,9 +277,9 @@ msgstr "Vaisakhi"
 msgid "Lohri"
 msgstr "Lohri"
 
-#. Punjabi Day.
-msgid "Punjab Day"
-msgstr "Punjab Day"
+#. New Punjab Day.
+msgid "New Punjab Day"
+msgstr "New Punjab Day"
 
 #. Rajasthan Day.
 msgid "Rajasthan Day"
@@ -308,6 +316,10 @@ msgstr "Telangana Formation Day"
 #. Bathukamma Festival.
 msgid "Bathukamma Festival"
 msgstr "Bathukamma Festival"
+
+#. Bonalu.
+msgid "Bonalu"
+msgstr "Bonalu"
 
 #. UP Formation Day.
 msgid "UP Formation Day"

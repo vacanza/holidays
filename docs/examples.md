@@ -11,9 +11,10 @@ True
 False
 ```
 
-!!! tip "Tip"
-    Don't do this! It is not efficient because it is initializing a new Holiday object and
-    generating a list of all the holidays in 2014 during each comparison.
+> [!tip]
+>
+> Don't do this! It is not efficient because it is initializing a new Holiday object and
+> generating a list of all the holidays in 2014 during each comparison.
 
 It is more efficient to create the object only once:
 
@@ -25,8 +26,9 @@ True
 False
 ```
 
-You can use the `country_holidays` or `financial_holidays` functions to create the object
-using a string with the country code:
+You can use the [`country_holidays`](https://github.com/vacanza/holidays/blob/dev/holidays/utils.py)
+or [`financial_holidays`](https://github.com/vacanza/holidays/blob/dev/holidays/utils.py) functions
+to create the object using a string with the country code:
 
 ``` python
 >>> us_holidays = holidays.country_holidays('US')
@@ -223,7 +225,12 @@ Each country defines which categories it supports:
 US categories: ('government', 'public', 'unofficial')
 
 >>> print("Germany categories:", holidays.Germany.supported_categories)
-Germany categories: ('catholic', 'public')
+Germany categories: ('catholic', 'public', 'school')
+
+>>> from holidays.constants import SCHOOL
+>>> de_by_school = holidays.Germany(subdiv='BY', categories=SCHOOL, years=2025)
+>>> print(de_by_school['2025-08-01'])
+Sommerferien
 
 >>> print("Argentina categories:", holidays.Argentina.supported_categories)
 Argentina categories: ('armenian', 'bank', 'government', 'hebrew', 'islamic', 'public')
@@ -386,9 +393,9 @@ False
 True
 ```
 
-We can also inherit from the HolidayBase class which has an empty `_populate` method so we start
-with no holidays and must define them all ourselves. This is how we would create a holidays class
-for a country that is not supported yet:
+We can also inherit from the [`HolidayBase`](https://github.com/vacanza/holidays/blob/main/holidays/holiday_base.py)
+class which has an empty `_populate` method so we start with no holidays and must define them all ourselves.
+This is how we would create a holidays class for a country that is not supported yet:
 
 ``` python
 >>> class NewCountryHolidays(holidays.HolidayBase):
@@ -404,7 +411,7 @@ We can use the `self._add_holiday_*` methods to specify holidays:
 >>> class MovingHolidays(holidays.HolidayBase):
 >>>     def _populate(self, year):
 >>>         super()._populate(year)
->>> 
+>>>
 >>>         self._add_holiday_3rd_mon_of_jan("Martin Luther King Jr. Day")
 >>>         self._add_holiday_last_fri_of_feb("Last Friday of February")
 >>>         self._add_holiday_1st_mon_before_dec_25("Monday before Christmas")
@@ -491,7 +498,8 @@ True
 
 ## Generate iCalendar content and export to `.ics`
 
-[ICalExporter][holidays.ical.ICalExporter] facilitates the creation and export of iCalendar files
+[`ICalExporter`](https://github.com/vacanza/holidays/blob/main/holidays/ical.py) facilitates
+the creation and export of iCalendar files
 in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
 
 ``` python
@@ -502,7 +510,8 @@ in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
 >>> exporter = ICalExporter(us_holidays)
 ```
 
-To create iCalendar content, use `generate`.
+To create iCalendar content, use
+[`generate`](https://github.com/vacanza/holidays/blob/main/holidays/ical.py).
 
 ``` python
 >>> from holidays import country_holidays
@@ -510,7 +519,7 @@ To create iCalendar content, use `generate`.
 >>> th_holidays = country_holidays('TH', years=2024)
 >>> exporter = ICalExporter(th_holidays)
 >>> ical_content = exporter.generate()
-# Thailand's Songkran Festival (April 13th–15th) should be counted as a single
+# Thailand's Songkran Festival (April 13th-15th) should be counted as a single
 # VEVENT with a duration of three days.
 >>> ical_content.count("SUMMARY:วันสงกรานต์\r\n")
 1
@@ -523,15 +532,14 @@ True
 1
 ```
 
-!!! tip "Tip"
-    Although the iCalendar specification supports a wide range of language formats as outlined
-    in [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646), the Holidays object requires
-    that the `language` attribute adhere to the [ISO 639-1 or
-    ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php) language codes,
-    such as `en` or `pap-AW`.
-
-    Additionally, if no `language` is specified for a holiday, but a `default_language` is set
-    for the Holiday object, the default language will be used instead.
+> [!tip]
+>
+> Although the iCalendar specification supports a wide range of language formats as outlined
+> in [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646), the Holidays object requires
+> that the `language` attribute adhere to the [ISO 639-1 or
+> ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php) language codes,
+> such as `en` or `pap-AW`. Additionally, if no `language` is specified for a holiday, but a
+> `default_language` is set for the Holiday object, the default language will be used instead.
 
 ``` python
 >>> from holidays import country_holidays
@@ -547,7 +555,8 @@ True
 1
 ```
 
-To export to `.ics` format, use `save_ics`.
+To export to `.ics` format, use
+[`save_ics`](https://github.com/vacanza/holidays/blob/main/holidays/ical.py).
 
 ``` python
 >>> from pathlib import Path
@@ -559,6 +568,27 @@ To export to `.ics` format, use `save_ics`.
 # Export the NYSE_2024_calendar.ics file to MS Windows' Downloads folder instead.
 >>> downloads_path = Path.home() / "Downloads"
 >>> nyse_exporter.save_ics(file_path=str(downloads_path / "NYSE_2024_calendar.ics"))
+```
+
+Generate `.ics` files with categories, language, and subdivisions.
+
+```python
+>>> from holidays.countries.india import IN
+>>> from holidays.ical import ICalExporter
+>>>
+>>> years = range(2021, 2026)
+>>> language = "en_US"
+>>> subdiv = "AP"  # Andhra Pradesh state.
+>>>
+>>> for category in IN.supported_categories:
+>>>     holidays = IN(
+>>>         years=years,
+>>>         categories=category,
+>>>         language=language,
+>>>         subdiv=subdiv,
+>>>     )
+>>>     filename = f"IN_{subdiv}_{language}_{category.upper()}.ics"
+>>>     ICalExporter(holidays).save_ics(filename)
 ```
 
 For advanced features and customization of the exported `.ics` output, consider using

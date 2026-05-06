@@ -175,10 +175,11 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Noël"))
 
-        if self.subdiv == "Alsace-Moselle":
-            self._populate_subdiv_6ae_public_holidays()
-        elif self.subdiv == "Saint-Barthélémy":
-            self._populate_subdiv_bl_public_holidays()
+        match self.subdiv:
+            case "Alsace-Moselle":
+                self._populate_subdiv_6ae_public_holidays()
+            case "Saint-Barthélémy":
+                self._populate_subdiv_bl_public_holidays()
 
     # Moselle.
     def _populate_subdiv_57_public_holidays(self):

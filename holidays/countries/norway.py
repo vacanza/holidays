@@ -25,11 +25,11 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         * <https://no.wikipedia.org/wiki/Helligdager_i_Norge>
         * <https://web.archive.org/web/20250416120557/https://www.timeanddate.no/merkedag/norge>
 
-    Note that holidays falling on a sunday is "lost", it will not be moved
+    Note that holidays falling on a Sunday are "lost"; they will not be moved
     to another day to make up for the collision.
 
-    In Norway, ALL sundays are considered a holiday (https://web.archive.org/web/20250202193959/https://snl.no/helligdag).
-    Initialize this class with `include_sundays=False` to not include sundays as a holiday.
+    In Norway, [all Sundays are considered holidays](https://web.archive.org/web/20250202193959/https://snl.no/helligdag).
+    Initialize this class with `include_sundays=False` to not include Sundays as holidays.
     """
 
     country = "NO"
@@ -88,7 +88,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         """
         Args:
             include_sundays:
-                Whether to consider sundays as a holiday (which they are in Norway)
+                Whether to consider Sundays as holidays (which they are in Norway)
         """
         self.include_sundays = include_sundays
         ChristianHolidays.__init__(self)

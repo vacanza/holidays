@@ -90,11 +90,11 @@ Examples:
 
 #### MANDATORY *(deprecated)*
 
-Holidays that were legally required to be observed in specific contexts. Previously used in Macau, where "Mandatory (Statutory) Holidays" have since been reclassified under the `PUBLIC` category, and "General Holidays" are now included in the `OPTIONAL` category - following the same approach as in Hong Kong.
+Holidays that were legally required to be observed in specific contexts. Previously used in Macau, where "Mandatory (Statutory) Holidays" have since been reclassified under the `PUBLIC` category, and "General Holidays" are now included in the `OPTIONAL` category, following the same approach as in Hong Kong.
 
 #### HALF_DAY
 
-Holidays that are observed for only part of the day.
+Holidays observed for only part of a day, typically resulting in reduced working hours rather than a full day off.
 
 Examples:
 
@@ -107,7 +107,8 @@ Holidays that are legally treated equivalently to public holidays for specific p
 
 Examples:
 
-- **Sweden**: Midsummer Eve (Midsommarafton), Christmas Eve (Julafton), and New Year's Eve (Nyårsafton) - per Swedish Annual Leave Law (SFS 1977:480), these are treated equivalently to Sundays and public holidays for working day calculations, though they are not official public holidays.
+- **Sweden**: Midsummer Eve (Midsommarafton), Christmas Eve (Julafton), and New Year's Eve (Nyårsafton) - per [Semesterlag (SFS 1977:480)](https://web.archive.org/web/20260106114757/https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/semesterlag-1977480_sfs-1977-480/), these are treated equivalently to Sundays and public holidays for working day calculations, though they are not official public holidays.
+- **Switzerland**: Easter Sunday (Ostersonntag), Whit Sunday (Pfingstsonntag), and Federal Day of Thanksgiving, Repentance, and Prayer (Eidgenössischer Bettag) - per Zürich's [Ruhetags- und Ladenöffnungsgesetz vom 26. Juni 2000](https://web.archive.org/web/20260421063821/https://www.notes.zh.ch/appl/zhlex_r.nsf/WebView/C1256C610039641BC12569990033674B/$File/822.4.pdf).
 
 Usage:
 
@@ -115,7 +116,7 @@ Usage:
 import holidays
 from holidays.constants import PUBLIC, DE_FACTO
 
-# For accurate is_working_day() behavior in Sweden
+# For accurate is_working_day() behavior in Sweden.
 se = holidays.Sweden(categories=(PUBLIC, DE_FACTO), years=2024)
 print(se.is_working_day('2024-12-24'))  # False (Christmas Eve)
 ```
@@ -130,6 +131,14 @@ Examples:
 
 - Corpus Christi
 - Feast of the Immaculate Conception
+
+#### PROTESTANT
+
+Holidays specific to the Protestant Christian tradition.
+
+Examples:
+
+- In Austria (1956-2018), Good Friday was treated as a public holiday for members of the Evangelical Churches of the Augsburg and Helvetic Confessions, the Methodist Church, and the Old Catholic Church (the special provision was removed via [BGBl. I Nr. 22/2019](https://web.archive.org/web/20260408111719/https://www.ris.bka.gv.at/Dokumente/BgblAuth/BGBLA_2019_I_22/BGBLA_2019_I_22.pdf)).
 
 #### CHRISTIAN
 
@@ -175,15 +184,6 @@ Examples:
 
 - Passover
 - Yom Kippur
-
-#### CHINESE
-
-Holidays specific to Chinese cultural and religious traditions.
-
-Examples:
-
-- Chinese New Year
-- Mid-Autumn Festival
 
 #### SABIAN
 
@@ -351,15 +351,17 @@ print(f"US supported categories: {holidays.UnitedStates.supported_categories}")
 print(f"Germany supported categories: {holidays.Germany.supported_categories}")
 ```
 
+The returned categories are lowercase strings corresponding to the constants in `holidays.constants`.
+
 ### Examples by Country
 
-**United States**: `('government', 'public', 'unofficial')`
+**United States**: `('government', 'half_day', 'public', 'unofficial')`
 
 - Supports federal holidays, state holidays, and cultural observances
 
-**Germany**: `('catholic', 'public')`
+**Germany**: `('catholic', 'public', 'school')`
 
-- Supports public holidays and Catholic religious holidays in certain regions
+- Supports public holidays, Catholic holidays in certain regions, and school holidays
 
 **India**: `('optional', 'public')`
 
@@ -383,22 +385,22 @@ When adding support for a new country, consider:
 ### Category Selection Principles
 
 - **PUBLIC**: Holidays mandated by law with general time off
-- **GOVERNMENT**: Official observances without general time off
-- **WORKDAY**: Recognized but working holidays
+- **GOVERNMENT**: Holidays observed by government institutions but may not provide general time off for all workers
+- **WORKDAY**: Recognized but are working holidays
 - **UNOFFICIAL**: Widely celebrated but not official
 - **DE_FACTO**: Legally recognized holidays that must be treated like public holidays for specific purposes (e.g., working day calculations) but lack official public holiday status
-- **Religious categories**: Use specific tradition names when holidays apply to particular communities
+- **Religious categories**: Use when holidays apply to particular religious communities
 - **Institutional categories**: Use when holidays apply to specific sectors
 
 ## Default Behavior
 
-When no categories are specified, most countries default to returning PUBLIC holidays, as these are typically what users expect when asking for a country's holidays.
+When no categories are specified, all countries and markets default to returning PUBLIC holidays, as these are typically what users expect when asking for a country's holidays.
 
 ```python
 import holidays
 from holidays.constants import PUBLIC
 
-# These are equivalent for most countries
+# These are equivalent for all countries and markets.
 us_default = holidays.UnitedStates(years=2024)
 us_public = holidays.UnitedStates(categories=PUBLIC, years=2024)
 ```

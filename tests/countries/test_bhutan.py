@@ -22,7 +22,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         super().setUpClass(Bhutan)
 
     def test_birthday_anniversary_of_his_majesty_the_king(self):
-        name = "Birth Anniversary of His Majesty the King"
+        name = "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"
         self.assertHolidayName(
             name,
             (f"{year}-02-21" for year in self.full_range),
@@ -32,26 +32,29 @@ class TestBhutan(CommonCountryTests, TestCase):
 
     def test_birth_anniversary_third_druk_gyalpo(self):
         self.assertHolidayName(
-            "Birth Anniversary of the 3rd Druk Gyalpo",
+            "མི་དབང་འབྲུག་རྒྱལ་གསུམ་པའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།",
             (f"{year}-05-02" for year in self.full_range),
         )
 
     def test_coronation_his_majesty(self):
         self.assertHolidayName(
-            "Coronation of His Majesty the King", (f"{year}-11-01" for year in self.full_range)
+            "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་གསེར་ཁྲི་མངའ་གསོལ་གྱི་དུས་ཆེན་ངལ་གསོལ།",
+            (f"{year}-11-01" for year in self.full_range),
         )
 
     def test_birth_anniversary_fourth_druk_gyalpo(self):
         self.assertHolidayName(
-            "Birth Anniversary of the 4th Druk Gyalpo - Constitution Day",
+            "མི་དབང་འབྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།",
             (f"{year}-11-11" for year in self.full_range),
         )
 
     def test_national_day(self):
-        self.assertHolidayName("National Day", (f"{year}-12-17" for year in self.full_range))
+        self.assertHolidayName(
+            "རྒྱལ་ཡོངས་དུས་ཆེན་གྱི་ངལ་གསོལ།", (f"{year}-12-17" for year in self.full_range)
+        )
 
     def test_winter_solstice(self):
-        name = "Winter Solstice"
+        name = "དགུན་ཉི་ལྡོག་གི་ངལ་གསོལ།"
         self.assertHolidayName(
             name,
             (
@@ -67,7 +70,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         )
 
     def test_day_of_offering(self):
-        name = "Traditional Day of Offering"
+        name = "སྔར་སྲོལ་འབུལ་བའི་ལོ་གསར་གྱི་ངལ་གསོལ།"
         self.assertHolidayName(
             name,
             "2020-01-25",
@@ -80,7 +83,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, set(self.full_range) - {2031, 2040})
 
     def test_losar(self):
-        name = "Losar"
+        name = "གནམ་ལོ་གསར་ཚེས་ཀྱིས་དུས་སྟོན་ངལ་གསོལ།"
         self.assertHolidayName(
             name,
             "2020-02-24",
@@ -93,7 +96,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_death_of_zhabdrung(self):
-        name = "Death Anniversary of Zhabdrung"
+        name = "མཐུ་ཆེན་ཆོས་ཀྱི་རྒྱལ་པོའི་དུས་ཆེན་ངལ་གསོལ།"
         self.assertHolidayName(
             name,
             "2021-04-22",
@@ -105,7 +108,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, set(self.full_range) - {2010, 2011, 2020})
 
     def test_lord_buddha_parinirvana(self):
-        name = "Lord Buddha's Parinirvana"
+        name = "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་དུས་ཆེན་ལྔ་འཛོམས་ངལ་གསོལ།"
         self.assertHolidayName(
             name,
             "2020-06-05",
@@ -118,7 +121,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_birth_anniversary_guru_rinpoche(self):
-        name = "Birth Anniversary of Guru Rinpoche"
+        name = "ཨོ་རྒྱན་གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོ།"
         self.assertHolidayName(
             name,
             "2020-06-30",
@@ -131,7 +134,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(self.start_year, 2027), range(2028, self.end_year))
 
     def test_first_sermon_lord_buddha(self):
-        name = "First Sermon of Lord Buddha"
+        name = "སྟོན་པ་མཆོག་ཝ་ར་ན་སིར་བདེན་བཞིའི་ཆོས་འཁོར་བསྐོར་བའི་དུས་ཆེན་ངལ་གསོ།"
         self.assertHolidayName(
             name,
             "2020-07-24",
@@ -144,7 +147,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_blessed_rainy_day(self):
-        name = "Blessed Rainy Day"
+        name = "རྒྱལ་ཡོངས་ཁྲུས་བབས་ངལ་གསོ།"
         self.assertHolidayName(
             name,
             "2020-09-23",
@@ -157,7 +160,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_dassain(self):
-        name = "Dassain"
+        name = "ལྷོ་མཚམས་ད་སའིན་ངལ་གསོ།"
         self.assertHolidayName(
             name,
             "2020-10-26",
@@ -170,7 +173,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (*range(self.start_year, 2012), *range(2014, 2025)))
 
     def test_descending_day_lord_buddha(self):
-        name = "Descending Day of Lord Buddha"
+        name = "རྒྱལ་བ་ལྷ་ལས་བབས་པའི་དུས་ཆེན་ངལ་གསོ།"
         self.assertHolidayName(
             name,
             "2020-11-07",
@@ -183,7 +186,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_thimphu_drubchoe(self):
-        name = "Thimphu Drubchoe"
+        name = "ཐིམ་རྫོང་ལྷ་མོའི་དངོས་འཆམ་མཇལ་རྒྱུའི་ངལ་གསོ།"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "15":
@@ -202,7 +205,7 @@ class TestBhutan(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_thimphu_tshechu(self):
-        name = "Thimphu Tshechu"
+        name = "ཐིམ་ཕུ་ཚེས་བཅུའི་ངལ་གསོ།"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "15":
@@ -232,9 +235,60 @@ class TestBhutan(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_2024(self):
+    def test_2025(self):
         self.assertHolidaysInYear(
-            2024,
+            2025,
+            ("2025-01-02", "དགུན་ཉི་ལྡོག་གི་ངལ་གསོལ།"),
+            ("2025-01-30", "སྔར་སྲོལ་འབུལ་བའི་ལོ་གསར་གྱི་ངལ་གསོལ།"),
+            ("2025-02-21", "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"),
+            ("2025-02-22", "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"),
+            ("2025-02-23", "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"),
+            ("2025-02-28", "གནམ་ལོ་གསར་ཚེས་ཀྱིས་དུས་སྟོན་ངལ་གསོལ།"),
+            ("2025-03-01", "གནམ་ལོ་གསར་ཚེས་ཀྱིས་དུས་སྟོན་ངལ་གསོལ།"),
+            ("2025-05-02", "མི་དབང་འབྲུག་རྒྱལ་གསུམ་པའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"),
+            ("2025-05-07", "མཐུ་ཆེན་ཆོས་ཀྱི་རྒྱལ་པོའི་དུས་ཆེན་ངལ་གསོལ།"),
+            ("2025-06-11", "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་དུས་ཆེན་ལྔ་འཛོམས་ངལ་གསོལ།"),
+            ("2025-07-05", "ཨོ་རྒྱན་གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོ།"),
+            ("2025-07-28", "སྟོན་པ་མཆོག་ཝ་ར་ན་སིར་བདེན་བཞིའི་ཆོས་འཁོར་བསྐོར་བའི་དུས་ཆེན་ངལ་གསོ།"),
+            ("2025-09-23", "རྒྱལ་ཡོངས་ཁྲུས་བབས་ངལ་གསོ།"),
+            ("2025-10-02", "ལྷོ་མཚམས་ད་སའིན་ངལ་གསོ།"),
+            ("2025-11-01", "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་གསེར་ཁྲི་མངའ་གསོལ་གྱི་དུས་ཆེན་ངལ་གསོལ།"),
+            (
+                "2025-11-11",
+                "མི་དབང་འབྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།; རྒྱལ་བ་ལྷ་ལས་བབས་པའི་དུས་ཆེན་ངལ་གསོ།",
+            ),
+            ("2025-12-17", "རྒྱལ་ཡོངས་དུས་ཆེན་གྱི་ངལ་གསོལ།"),
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2024-01-02", "དགུན་ཉི་ལྡོག་གི་ངལ་གསོལ།"),
+            ("2024-01-12", "སྔར་སྲོལ་འབུལ་བའི་ལོ་གསར་གྱི་ངལ་གསོལ།"),
+            ("2024-02-10", "གནམ་ལོ་གསར་ཚེས་ཀྱིས་དུས་སྟོན་ངལ་གསོལ།"),
+            ("2024-02-11", "གནམ་ལོ་གསར་ཚེས་ཀྱིས་དུས་སྟོན་ངལ་གསོལ།"),
+            ("2024-02-21", "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"),
+            ("2024-02-22", "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"),
+            ("2024-02-23", "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"),
+            ("2024-04-18", "མཐུ་ཆེན་ཆོས་ཀྱི་རྒྱལ་པོའི་དུས་ཆེན་ངལ་གསོལ།"),
+            ("2024-05-02", "མི་དབང་འབྲུག་རྒྱལ་གསུམ་པའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"),
+            ("2024-05-23", "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་དུས་ཆེན་ལྔ་འཛོམས་ངལ་གསོལ།"),
+            ("2024-06-16", "ཨོ་རྒྱན་གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོ།"),
+            ("2024-07-10", "སྟོན་པ་མཆོག་ཝ་ར་ན་སིར་བདེན་བཞིའི་ཆོས་འཁོར་བསྐོར་བའི་དུས་ཆེན་ངལ་གསོ།"),
+            ("2024-09-10", "ཐིམ་རྫོང་ལྷ་མོའི་དངོས་འཆམ་མཇལ་རྒྱུའི་ངལ་གསོ།"),
+            ("2024-09-13", "ཐིམ་ཕུ་ཚེས་བཅུའི་ངལ་གསོ།"),
+            ("2024-09-14", "ཐིམ་ཕུ་ཚེས་བཅུའི་ངལ་གསོ།"),
+            ("2024-09-15", "ཐིམ་ཕུ་ཚེས་བཅུའི་ངལ་གསོ།"),
+            ("2024-09-23", "རྒྱལ་ཡོངས་ཁྲུས་བབས་ངལ་གསོ།"),
+            ("2024-10-12", "ལྷོ་མཚམས་ད་སའིན་ངལ་གསོ།"),
+            ("2024-11-01", "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་གསེར་ཁྲི་མངའ་གསོལ་གྱི་དུས་ཆེན་ངལ་གསོལ།"),
+            ("2024-11-11", "མི་དབང་འབྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"),
+            ("2024-11-22", "རྒྱལ་བ་ལྷ་ལས་བབས་པའི་དུས་ཆེན་ངལ་གསོ།"),
+            ("2024-12-17", "རྒྱལ་ཡོངས་དུས་ཆེན་གྱི་ངལ་གསོལ།"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
             ("2024-01-02", "Winter Solstice"),
             ("2024-01-12", "Traditional Day of Offering"),
             ("2024-02-10", "Losar"),
@@ -247,6 +301,10 @@ class TestBhutan(CommonCountryTests, TestCase):
             ("2024-05-23", "Lord Buddha's Parinirvana"),
             ("2024-06-16", "Birth Anniversary of Guru Rinpoche"),
             ("2024-07-10", "First Sermon of Lord Buddha"),
+            ("2024-09-10", "Thimphu Drubchoe"),
+            ("2024-09-13", "Thimphu Tshechu"),
+            ("2024-09-14", "Thimphu Tshechu"),
+            ("2024-09-15", "Thimphu Tshechu"),
             ("2024-09-23", "Blessed Rainy Day"),
             ("2024-10-12", "Dassain"),
             ("2024-11-01", "Coronation of His Majesty the King"),

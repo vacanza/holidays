@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-04 14:03+0700\n"
-"PO-Revision-Date: 2025-09-07 14:05+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-03-25 21:24+0800\n"
+"Last-Translator: Ryan Lee <deadcry152@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -36,12 +36,12 @@ msgstr "%s（推定）"
 #. %s (observed, estimated).
 #, c-format
 msgid "%s（補假，推定）"
-msgstr "%s（观察日，推定）"
+msgstr "%s（补假，推定）"
 
 #. %s (observed).
 #, c-format
 msgid "%s（補假）"
-msgstr "%s（观察日）"
+msgstr "%s（补假）"
 
 #. The Day following Mid-Autumn Festival.
 msgid "中秋節翌日"

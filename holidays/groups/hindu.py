@@ -13,6 +13,7 @@
 from collections.abc import Iterable
 from datetime import date
 
+from holidays.calendars.gregorian import AUG, _timedelta
 from holidays.calendars.hindu import _HinduLunisolar
 from holidays.groups.eastern import EasternCalendarHolidays
 
@@ -70,6 +71,16 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.bathukamma_date(self._year)
         )
+
+    def _add_bonalu(self, name) -> date | None:
+        """
+        Add Bonalu.
+
+        Bonalu is a Hindu festival celebrated in Telangana during Ashada Masam
+        (4th month of the Hindu lunar calendar).
+        https://en.wikipedia.org/wiki/Bonalu
+        """
+        return self._add_hindu_calendar_holiday(name, self._hindu_calendar.bonalu_date(self._year))
 
     def _add_bhai_dooj(self, name) -> date | None:
         """
@@ -180,7 +191,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         Maharashtra. On the same day, the festival is also observed as
         Ugadi in Karnataka, Telangana, and Andhra Pradesh.
 
-        It falls on the first day of Chaitra (March–April) according to
+        It falls on the first day of Chaitra (March-April) according to
         the Hindu lunisolar calendar.
 
         References:
@@ -323,6 +334,19 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.maharana_pratap_jayanti_date(self._year)
+        )
+
+    def _add_maharishi_valmiki_jayanti(self, name) -> date | None:
+        """
+        Add Maharishi Valmiki Jayanti.
+
+        Maharishi Valmiki Jayanti (Pargat Diwas), celebrating the birth of the author
+        of the Ramayana and the Adi Kavi (first poet) of Sanskrit,
+        occurs on the full moon day (Purnima) in the Hindu month of Ashwin.
+        https://en.wikipedia.org/wiki/Pargat_Diwas
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.maharishi_valmiki_jayanti_date(self._year)
         )
 
     def _add_mahavir_jayanti(self, name) -> date | None:
@@ -510,3 +534,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.vaisakhi_date(self._year)
         )
+
+    def _add_parsi_new_year(self, name: str) -> None:
+        """
+        Add Parsi New Year (Shahenshahi).
+
+        The Parsi New Year (Shahenshahi) follows a fixed 365-day cycle and does not
+        observe leap years, causing a 1-day backward drift every 4 years relative
+        to the Gregorian calendar.
+        In 1972 (Y.Z. 1341), the holiday fell on August 28.
+        https://zanc.org/zcal/zcal.html
+        https://www.calendarr.com/india/parsi-new-year-history-and-celebration/
+        """
+        leaps = (self._year - 1972) // 4
+        dt = _timedelta(date(self._year, AUG, 28), -leaps)
+        self._add_holiday(name, dt)

@@ -7,7 +7,9 @@ help:
 	@echo "    archive-links update URLs using Wayback Machine"
 	@echo "    check         run pre-commit and tests"
 	@echo "    doc           run documentation build process"
+	@echo "    doc-serve     serve documentation locally"
 	@echo "    help          show summary of available commands"
+	@echo "    icalendar     generate JSON and ICS data files"
 	@echo "    l10n          update .pot and .po files"
 	@echo "    package       build package distribution"
 	@echo "    pre-commit    run pre-commit against all files"
@@ -31,7 +33,14 @@ clean:
 	@rm -rf .mypy_cache .pytest_cache dist
 
 doc:
-	uv run --no-sync mkdocs build
+	uv run --no-sync properdocs build -f .properdocs.yml
+
+doc-serve:
+	uv run --no-sync properdocs serve -f .properdocs.yml
+
+icalendar:
+	uv run --no-sync scripts/l10n/generate_mo_files.py
+	uv run --no-sync scripts/generate_site_assets.py
 
 l10n:
 	find . -type f -name "*.pot" -delete

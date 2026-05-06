@@ -491,7 +491,7 @@ class TestSouthKorea(CommonCountryTests, TestCase):
 
     def test_korea_deprecation_warning(self):
         warnings.simplefilter("default")
-        with self.assertWarns(Warning):
+        with self.assertWarns(DeprecationWarning):
             Korea()
 
     def test_2020_all(self):
