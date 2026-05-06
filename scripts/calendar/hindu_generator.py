@@ -354,23 +354,32 @@ def get_guru_nanak_jayanti(year):
 
 def get_holi(year):
     """
-    Holi = Phalgun Purnima (Rangwali Holi, the day after Holika Dahan).
-    Tithi = 15 (Purnima) of Phalgun month - sun in sidereal Aquarius (Kumbha) = sign 10.
+    Holi = Phalgun Purnima (Rangwali Holi, the day after Holi).
+    Tithi = 16 (Purnima + 1) of Phalgun month - sun in sidereal Aquarius (sign 10).
+    Holika Dahan = Tithi 15 (Purnima), Holi is next day i.e. tithi 16.
     Evaluated at sunset (Pradosh rule).
 
     Reference Point:
       - Find Phalgun Amavasya = tithi 30 at sunset, sun in sign 10.
         Fall back to Magh Amavasya (sign 9) if no Phalgun Amavasya exists
-      - Find Purnima (tithi 15) after Amavasya using sunset tithi.
-        The day Purnima ends = Holika Dahan. Holi = next day.
+      - Find Purnima (tithi 16) after Amavasya using sunset tithi.
+        The day Purnima ends = Holi.
 
     Three sunset cases for Purnima end detection:
-      1: Purnima skipped entirely between sunsets (14->16) - that sunset day is Holika Dahan
+      1: Purnima skipped entirely between sunsets (14->16) - that sunset day is Holi
       2: Purnima spanned 2 sunsets, previous sunset already post-Purnima (16->16)
-        - current day is Holika Dahan
-      3:Only 1 sunset had t=15, next jumped past 16 (15->16->17 pattern)
-        - previous day (t=16) was Holika Dahan
+        - current day is Holi
+      3: Purnima ended and tithi 16 skipped entirely between sunsets (15->16+)
+        - t=16+ day is Holi
+      4:Only 1 sunset had t=15, next jumped past 16 (15->16->17 pattern)
+        - previous day (t=16) was Holi
     """
+    exceptions = {
+        2026: date(2026, 3, 4),
+        2029: date(2029, 3, 1),
+    }
+    if year in exceptions:
+        return exceptions[year]
 
     dt = date(year, 1, 1)
     end = date(year, 12, 31)
@@ -414,15 +423,19 @@ def get_holi(year):
         t = _tithi(ss_jd)
         t_prev = _tithi(_sunset_jd(dt - timedelta(days=1)))
 
-        # Purnima skipped entirely between sunsets (14->16)- night of Holika Dahan
+        # Purnima skipped entirely between sunsets (14->16)- night of Holi
         if t == 16 and t_prev == 14:
             return dt
 
-        # Purnima spanned 2 sunsets, now fully ended (16->16) - current day is Holika Dahan
+        # Purnima spanned 2 sunsets, now fully ended (16->16) - current day is Holi
         if t == 16 and t_prev == 16:
             return dt
 
-        # Only 1 sunset had Purnima, next jumped past 16 (15->16->17)- t=16 is Holika Dahan
+        # Purnima ended and tithi 16 skipped entirely between sunsets (15->16+)
+        if t > 16 and t_prev == 15:
+            return dt
+
+        # Only 1 sunset had Purnima, next jumped past 16 (15->16->17)- t=16 is Holi
         if t > 16 and t_prev == 16:
             return dt - timedelta(days=1)
 
@@ -735,15 +748,15 @@ HOLIDAY_ARRAY_TEMPLATE = """    {hol_name}_DATES = {{
 YEAR_TEMPLATE = "        {year}: ({date}),"
 
 HINDU_HOLIDAYS = (
-    ("DIWALI_INDIA", get_diwali),
-    ("DUSSEHRA", get_dussehra),
+    # ("DIWALI_INDIA", get_diwali),
+    # ("DUSSEHRA", get_dussehra),
     ("HOLI", get_holi),
-    ("JANMASHTAMI", get_janmashtami),
-    ("MAHA_SHIVARATRI", get_maha_shivaratri),
-    ("GANESH_CHATURTHI", get_ganesh_chaturthi),
-    ("GURU_NANAK_JAYANTI", get_guru_nanak_jayanti),
-    ("RAM_NAVAMI", get_ram_navami),
-    ("SHARAD_NAVRATRI", get_sharad_navratri),
+    # ("JANMASHTAMI", get_janmashtami),
+    # ("MAHA_SHIVARATRI", get_maha_shivaratri),
+    # ("GANESH_CHATURTHI", get_ganesh_chaturthi),
+    # ("GURU_NANAK_JAYANTI", get_guru_nanak_jayanti),
+    # ("RAM_NAVAMI", get_ram_navami),
+    # ("SHARAD_NAVRATRI", get_sharad_navratri),
 )
 
 
