@@ -34,6 +34,7 @@ _DUBLIN_TO_JD = 2415020.0
 
 _LAHIRI_J2000 = 23.85045  # degrees at J2000.0 (JD 2451545.0)
 _PRECESSION_RATE = 50.2388475 / 3600  # degrees per Julian year
+MONTHS = ("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC")
 
 
 def _lahiri_ayanamsa(ephem_date: ephem.Date) -> float:
@@ -733,10 +734,6 @@ HOLIDAY_ARRAY_TEMPLATE = """    {hol_name}_DATES = {{
 
 YEAR_TEMPLATE = "        {year}: ({date}),"
 
-CALENDARS = {
-    "HINDU": "Hindu",
-}
-
 HINDU_HOLIDAYS = (
     ("DIWALI_INDIA", get_diwali),
     ("DUSSEHRA", get_dussehra),
@@ -759,7 +756,7 @@ def generate_data() -> None:
         for year in range(g_year_min, g_year_max + 1):
             dt = hol_func(year)
             if dt:
-                date_str = f"{dt.strftime('%b').upper()}, {dt.day}"
+                date_str = f"{MONTHS[dt.month - 1]}, {dt.day}"
             else:
                 date_str = "None"
             year_dates.append(YEAR_TEMPLATE.format(year=year, date=date_str))
