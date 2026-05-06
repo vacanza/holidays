@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import MAY, SEP, _get_nth_week_of_month, _timedelta
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import InternationalHolidays, MongolianCalendarHolidays
 from holidays.holiday_base import HolidayBase
@@ -103,26 +104,6 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
             )
 
     def _populate_workday_holidays(self):
-        """
-        NOTE:
-        The following observances are currently unimplemented
-        due to unclear week-based scheduling rules:
-
-        1. National Literary, Cultural and Book Days (Үндэсний бичиг соёл, номын өдрүүд):
-        - Observed on Saturday and Sunday of the 3rd week of May and September.
-        - Officially added on July 2nd, 2021.
-
-        2. Environmental Protection Days (Байгаль орчныг хамгаалах өдрүүд):
-        - Observed during the 4th week of September.
-
-        These are defined using "week of the month" logic, but it is unclear whether weeks start
-        from the 1st of the month or the first full week. We previously contacted
-        contact@mecc.gov.mn for clarification but received no response.
-
-        See:
-        https://github.com/vacanza/holidays/issues/2672
-        """
-
         # Constitution Day.
         self._add_holiday_jan_13(tr("Монгол Улсын Үндсэн хуулийн өдөр"))
 
@@ -163,6 +144,28 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
 
         # Memorial Day of Political Victims.
         self._add_holiday_sep_10(tr("Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр"))
+
+        # Established on July 2nd, 2021.
+        if self._year >= 2021:
+            # National Literary, Cultural and Book Days.
+            name = tr("Үндэсний бичиг соёл, номын өдрүүд")
+            sep_third_week_start = _get_nth_week_of_month(3, SEP, self._year)
+            self._add_holiday(name, _timedelta(sep_third_week_start, +5))
+            self._add_holiday(name, _timedelta(sep_third_week_start, +6))
+
+            if self._year >= 2022:
+                may_third_week_start = _get_nth_week_of_month(3, MAY, self._year)
+                self._add_holiday(name, _timedelta(may_third_week_start, +5))
+                self._add_holiday(name, _timedelta(may_third_week_start, +6))
+
+        self._add_multiday_holiday(
+            self._add_holiday(
+                # Environmental Protection Days.
+                tr("Байгаль орчныг хамгаалах өдрүүд"),
+                _get_nth_week_of_month(4, SEP, self._year),
+            ),
+            6,
+        )
 
         # Elders' Day.
         self._add_holiday_oct_1(tr("Ахмадын өдөр"))

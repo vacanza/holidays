@@ -336,6 +336,19 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.maharana_pratap_jayanti_date(self._year)
         )
 
+    def _add_maharishi_valmiki_jayanti(self, name) -> date | None:
+        """
+        Add Maharishi Valmiki Jayanti.
+
+        Maharishi Valmiki Jayanti (Pargat Diwas), celebrating the birth of the author
+        of the Ramayana and the Adi Kavi (first poet) of Sanskrit,
+        occurs on the full moon day (Purnima) in the Hindu month of Ashwin.
+        https://en.wikipedia.org/wiki/Pargat_Diwas
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.maharishi_valmiki_jayanti_date(self._year)
+        )
+
     def _add_mahavir_jayanti(self, name) -> date | None:
         """
         Add Mahavir Jayanti.

@@ -28,8 +28,20 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         * [Decreto n. 19.488, de 15.12.1930](https://web.archive.org/web/20241006041503/http://camara.leg.br/legin/fed/decret/1930-1939/decreto-19488-15-dezembro-1930-508040-republicacao-85201-pe.html)
         * [Lei n. 662, de 6.04.1949](https://web.archive.org/web/20240913060643/https://www2.camara.leg.br/legin/fed/lei/1940-1949/lei-662-6-abril-1949-347136-publicacaooriginal-1-pl.html)
         * [Lei n. 14.759, de 21.12.2023](https://web.archive.org/web/20250402234552/https://www2.camara.leg.br/legin/fed/lei/2023/lei-14759-21-dezembro-2023-795091-publicacaooriginal-170522-pl.html)
+
+    Subdivisions Holidays References:
+        * Parana:
+            * [Lei n. 18.384, de 17.12.2014](https://web.archive.org/web/20240613145927/https://www.legislacao.pr.gov.br/legislacao/pesquisarAto.do?action=exibir&codAto=134573&codItemAto=816343)
+        * Pernambuco:
+            * [Lei n. 13.386, de 24.12.2007](https://web.archive.org/web/20210727183402/http://legis.alepe.pe.gov.br/texto.aspx?id=3767&tipo=TEXTOORIGINAL)
+            * [Lei n. 16.059, de 08.06.2017](https://web.archive.org/web/20250420091334/https://legis.alepe.pe.gov.br/texto.aspx?id=28224&tipo=TEXTOORIGINAL)
+            * [Pontos Facultativos, Feriados, Festas](https://web.archive.org/web/20200624203011/https://www.pe.gov.br/conheca/datas/)
+        * Rio de Janeiro:
+            * [Lei n. 5198, de 05.03.2008](https://web.archive.org/web/20160303175842/http://alerjln1.alerj.rj.gov.br/CONTLEI.NSF/c8aa0900025feef6032564ec0060dfff/1baf90ca125ff96f8325740a00776600)
+            * [Lei n. 5243, de 14.05.2008](https://web.archive.org/web/20201106190517/http://alerjln1.alerj.rj.gov.br/contlei.nsf/351902c88b9f0cde03256bcf00607a5b/063f7c027766eab48325744a007a4ab0)
         * São Paulo Capital:
-            * [Anexo Único Integrante do Decreto n. 56.756, de 4.01.2016](https://web.archive.org/web/20251224031221/https://legislacao.prefeitura.sp.gov.br/leis/decreto-56756-de-04-de-janeiro-de-2016/anexo/5ec3d7a71411926001a56c56/Anexo%20Único%20do%20Decreto%20nº%2056.756_2016.pdf)
+            * [Lei Municipal n. 13.707, de 07.01.2004](https://web.archive.org/web/20250519045554/http://legislacao.prefeitura.sp.gov.br/leis/lei-13707-de-7-de-janeiro-de-2004/consolidado)
+            * [Anexo Único Integrante do Decreto n. 56.756, de 04.01.2016](https://web.archive.org/web/20251224031221/https://legislacao.prefeitura.sp.gov.br/leis/decreto-56756-de-04-de-janeiro-de-2016/anexo/5ec3d7a71411926001a56c56/Anexo%20Único%20do%20Decreto%20nº%2056.756_2016.pdf)
     """
 
     country = "BR"
@@ -318,19 +330,37 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_aug_5(tr("Fundação do Estado"))
 
     def _populate_subdiv_pe_public_holidays(self):
+        # Established by Lei n. 13.386.
         if self._year >= 2008:
-            # Pernambuco Revolution.
-            self._add_holiday_1st_sun_of_mar(tr("Revolução Pernambucana"))
+            # Pernambuco Revolution of 1817.
+            name = tr("Revolução Pernambucana de 1817")
+            # Made fixed by Lei n. 16.059.
+            if self._year >= 2018:
+                self._add_holiday_mar_6(name)
+            else:
+                self._add_holiday_1st_sun_of_mar(name)
 
     def _populate_subdiv_pi_public_holidays(self):
         # Piauí Day.
         self._add_holiday_oct_19(tr("Dia do Piauí"))
 
     def _populate_subdiv_pr_public_holidays(self):
-        # Political Emancipation of Paraná.
-        self._add_holiday_dec_19(tr("Emancipação do Paraná"))
+        # Established by Lei n. 18.397.
+        if self._year >= 2014:
+            # Our Lady of Rocio.
+            self._add_holiday_nov_15(tr("Nossa Senhora do Rocio"))
+        # Abolished by Lei n. 18.384.
+        else:
+            # Political Emancipation of Paraná.
+            self._add_holiday_dec_19(tr("Emancipação do Paraná"))
 
     def _populate_subdiv_rj_public_holidays(self):
+        # Established by Lei n. 5243.
+        if self._year >= 2009:
+            # Carnival.
+            self._add_carnival_tuesday(tr("Carnaval"))
+
+        # Established by Lei n. 5198.
         if self._year >= 2008:
             # Saint George's Day.
             self._add_saint_georges_day(tr("São Jorge"))
@@ -392,10 +422,18 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_subdiv_sao_paulo_capital_public_holidays(self):
         self._populate_subdiv_sp_public_holidays()
 
-        # Lei Municipal n. 7.008, de 6.04.1967
+        # Lei Municipal n. 7.008, de 06.04.1967.
         if self._year >= 1968:
             # São Paulo City Anniversary.
             self._add_holiday_jan_25(tr("Aniversário da Cidade de São Paulo"))
+
+            # Corpus Christi.
+            self._add_corpus_christi_day(tr("Corpus Christi"))
+
+        # Established by Lei Municipal n. 13.707, de 07.01.2004.
+        if 2004 <= self._year <= 2023:
+            # Black Awareness Day.
+            self._add_holiday_nov_20(tr("Consciência Negra"))
 
     def _populate_subdiv_to_public_holidays(self):
         if self._year >= 1998:

@@ -1,3 +1,21 @@
+## Version 0.96
+
+Released May 4, 2026
+
+- Add static type checking support for `countries` and `financial` aliases (#3549 by @PPsyrius, @arkid15r)
+- Refactor India holidays testcases (#3524 by @PPsyrius, @arkid15r)
+- Update .po files generator: use git user identity for "Last-Translator" field (#3553 by @KJhellico)
+- Update Arabic localization: fix "estimated" and "observed" labels translation (#3551 by @dimssu)
+- Update Brazil holidays (#3558 by @KJhellico)
+- Update Germany holidays: add school holidays support (#3533 by @dtretyakov, @arkid15r)
+- Update Mongolia holidays (#3532 by @KJhellico, @arkid15r)
+- Update Nepal holidays: fix some holiday names (#3545 by @Ritik-tech731)
+- Update Switzerland holidays: split Zürich canton and city holidays (#3548 by @PPsyrius)
+- Update United States holidays: fix Georgia's State Holiday observance (#3557 by @PPsyrius)
+- Add pinned version comment after GitHub Actions Commit Hashes (#3554 by @PPsyrius, @arkid15r)
+- Pre-Commit Check for Normalized Unicode (#3544 by @PPsyrius)
+- Scope `Warning` handling in tests to `DeprecationWarning` (#3541 by @PPsyrius)
+
 ## Version 0.95
 
 Released April 20, 2026
