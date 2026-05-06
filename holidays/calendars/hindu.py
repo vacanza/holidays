@@ -1295,7 +1295,7 @@ class _HinduLunisolar:
     }
 
     THAIPUSAM_DATES = {
-        1901: (JAN, 24),
+        1901: (FEB, 3),
         1902: (JAN, 24),
         1903: (FEB, 12),
         1904: (JAN, 31),

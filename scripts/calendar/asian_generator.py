@@ -322,6 +322,9 @@ class _Lunisolar:
 
         See <https://en.wikipedia.org/wiki/Thaipusam>.
         """
+        if year == self.START_YEAR:
+            return self.lunar_to_gre(year, 1, 15) - td(days=30)
+
         y = year - 1
         m = 12
         if self._get_leap_month(year) < 15:
