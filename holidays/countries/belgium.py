@@ -167,7 +167,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Easter Break:
         # The start date depends on the date of Easter:
-        # - If Easter falls in March, the break starts on the Monday before Easter.
+        # - If Easter falls in March, the break starts on the Monday after Easter.
         # - If Easter falls on or after April 16, the break starts 13 days before Easter.
         # - Otherwise, the break starts on the first Monday of April.
         # The break normally lasts two weeks (14 days), extended to include Easter Monday
@@ -175,7 +175,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         easter_start = _get_nth_weekday_of_month(1, MON, APR, year)
         easter_duration = 14
         if easter.month == 3:
-            easter_start = _timedelta(easter, -6)
+            easter_start = _timedelta(easter, +1)
         elif easter.day >= 16:
             easter_start = _timedelta(easter, -13)
             easter_duration = 15
