@@ -119,3 +119,7 @@ msgstr "День Німецькомовної спільноти"
 #. Christmas Eve.
 msgid "Heiligavond"
 msgstr "Святвечір"
+
+#. Spring Holidays.
+msgid "Lentevakantie"
+msgstr "Весняні канікули"

@@ -317,7 +317,7 @@ import holidays
 from holidays.constants import SCHOOL
 
 # Flemish Community school holidays
-be_flemish_schools = holidays.Belgium(subdiv="VLG", categories=SCHOOL, years=2026)
+be_flemish_schools = holidays.Belgium(subdiv="WBR", categories=SCHOOL, years=2025)
 for date, name in sorted(be_flemish_schools.items()):
     print(date, name)
 ```

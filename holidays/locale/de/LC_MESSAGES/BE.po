@@ -119,3 +119,7 @@ msgstr "Feiertag der Deutschsprachigen Gemeinschaft"
 #. Christmas Eve.
 msgid "Heiligavond"
 msgstr "Heiligabend"
+
+#. Spring Day.
+msgid "Lentevakantie"
+msgstr "Frühlingsferien"

@@ -119,3 +119,7 @@ msgstr "Fête de la Communauté germanophone"
 #. Christmas Eve.
 msgid "Heiligavond"
 msgstr "Réveillon de Noël"
+
+#. Spring Holidays.
+msgid "Lentevakantie"
+msgstr "Vacances de printemps"
