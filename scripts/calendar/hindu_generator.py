@@ -354,7 +354,7 @@ def get_guru_nanak_jayanti(year):
 
 def get_holi(year):
     """
-    Holi = Phalgun Purnima (Rangwali Holi, the day after Holi).
+    Holi = Phalgun Purnima (Rangwali Holi, the day after Holika Dahan).
     Tithi = 16 (Purnima + 1) of Phalgun month - sun in sidereal Aquarius (sign 10).
     Holika Dahan = Tithi 15 (Purnima), Holi is next day i.e. tithi 16.
     Evaluated at sunset (Pradosh rule).
