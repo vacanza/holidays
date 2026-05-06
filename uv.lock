@@ -604,12 +604,12 @@ build = [
     { name = "polib" },
 ]
 dev = [
+    { name = "ephem" },
     { name = "gitpython" },
     { name = "hijridate" },
     { name = "lingva" },
     { name = "pdfplumber" },
     { name = "pre-commit" },
-    { name = "pyephem" },
     { name = "pygithub" },
     { name = "requests" },
 ]
@@ -638,12 +638,12 @@ requires-dist = [{ name = "python-dateutil", specifier = ">=2.9.0.post0,<3" }]
 [package.metadata.requires-dev]
 build = [{ name = "polib", specifier = ">=1.2,<2" }]
 dev = [
+    { name = "ephem", specifier = ">=4.2.1,<5" },
     { name = "gitpython", specifier = ">=3.1.49,<4" },
     { name = "hijridate", specifier = ">=2.5,<3" },
     { name = "lingva", specifier = ">=5.0.6,<6" },
     { name = "pdfplumber", specifier = ">=0.11.8,<1" },
     { name = "pre-commit", specifier = ">=4.5,<5" },
-    { name = "pyephem", specifier = ">=9.99" },
     { name = "pygithub", specifier = ">=2.8.1,<3" },
     { name = "requests", specifier = ">=2.32.5,<3" },
 ]
@@ -1329,15 +1329,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/1b/7d/92392ff7815c21062
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0c/c3/44f3fbbfa403ea2a7c779186dc20772604442dde72947e7d01069cbe98e3/pycparser-3.0-py3-none-any.whl", hash = "sha256:b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992", size = 48172, upload-time = "2026-01-21T14:26:50.693Z" },
 ]
-
-[[package]]
-name = "pyephem"
-version = "9.99"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "ephem" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/8e/02/1eade827452880961bc4657df24f72e7a76d764abff3e666433e1c8d1980/pyephem-9.99.tar.gz", hash = "sha256:70836d7eab7824ef1fcfe102b751d97800d4a0ff6836d2e594ddb1c11e608b1f", size = 1449, upload-time = "2021-01-08T20:59:25.091Z" }
 
 [[package]]
 name = "pygithub"
