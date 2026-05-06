@@ -250,6 +250,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
         name = "Hari Thaipusam"
         self.assertNoHolidayName(name)
         dt_1 = (
+            "2011-01-20",
             "2012-02-07",
             "2013-01-27",
             "2014-01-17",

@@ -45,10 +45,9 @@ class CalendarGenerator:
         for hol_name, hol_dates in sorted(dates.items()):
             year_dates = []
             for year, dts in sorted(hol_dates.items()):
-                if isinstance(dts, date):
-                    dts = [dts]
-                dates_str = ", ".join(f"({MONTHS[dt.month - 1]}, {dt.day})" for dt in dts)
-                if len(dts) > 1:
+                dates_list = [dts] if isinstance(dts, date) else dts
+                dates_str = ", ".join(f"({MONTHS[dt.month - 1]}, {dt.day})" for dt in dates_list)
+                if len(dates_list) > 1:
                     dates_str = f"({dates_str})"
                 year_dates.append(YEAR_TEMPLATE.format(year=year, dates=dates_str))
             holiday_data.append(

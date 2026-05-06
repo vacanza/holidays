@@ -362,7 +362,7 @@ ASIAN_HOLIDAYS: dict[str, dict[str, tuple[int, int] | None]] = {
     },
     HINDU: {
         # KE, LK, MY, SG, SR, TT.
-        "DIWALI": (9, -2),  # Diwali.
+        "DIWALI": (9, -1),  # Diwali.
         # MU, MY.
         "THAIPUSAM": None,  # Thaipusam.
     },
@@ -384,7 +384,11 @@ def generate_data() -> None:
                         holiday_month,
                         holiday_day
                         if holiday_day > 0
-                        else cal._lunar_month_days(year, holiday_month) + holiday_day + 1,
+                        else cal._lunar_month_days(
+                            year, holiday_month + (holiday_month > cal._get_leap_month(year))
+                        )
+                        + holiday_day
+                        + 1,
                     )
             else:
                 holiday_func = getattr(cal, f"{name.lower()}_date")
