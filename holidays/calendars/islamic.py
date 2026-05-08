@@ -4085,9 +4085,6 @@ class _IslamicLunar:
     def mawlid_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(MAWLID, year)
 
-    def mid_shaban_dates(self, year: int) -> Iterable[tuple[date, bool]]:
-        return self._get_holiday(MID_SHABAN, year)
-
     def nuzul_al_quran_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(NUZUL_AL_QURAN, year)
 

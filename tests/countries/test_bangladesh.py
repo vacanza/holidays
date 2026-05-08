@@ -60,43 +60,61 @@ class TestBangladesh(CommonCountryTests, TestCase):
         name = "আশুরা"
         self.assertHolidayName(
             name,
-            self.no_estimated_holidays,
             "2022-08-09",
             "2023-07-29",
             "2024-07-17",
             "2025-07-06",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2022, 2026))
-        self.assertNoHolidayName(
-            name,
-            self.no_estimated_holidays,
-            range(self.start_year, 2022),
-            range(2026, self.end_year),
-        )
-        
-    def test_eid_e_milad_un_nabi(self):
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_prophets_birthday(self):
         name = "ঈদে মিলাদুন্নবী"
         self.assertHolidayName(
             name,
-            self.no_estimated_holidays,
             "2022-10-09",
             "2023-09-28",
             "2024-09-16",
             "2025-09-06",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2022, 2026))
-        self.assertNoHolidayName(
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_mid_shaban(self):
+        name = "শবে বরাত"
+        self.assertHolidayName(
             name,
-            self.no_estimated_holidays,
-            range(self.start_year, 2022),
-            range(2026, self.end_year),
+            "2022-03-19",
+            "2023-03-08",
+            "2024-02-26",
+            "2025-02-15",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_laylat_al_qadr(self):
+        name = "শবে কদর"
+        self.assertHolidayName(
+            name,
+            "2022-04-29",
+            "2023-04-19",
+            "2024-04-07",
+            "2025-03-28",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_jumuatul_wida(self):
+        name = "জুমাতুল বিদা"
+        self.assertHolidayName(
+            name,
+            "2022-04-29",
+            "2023-04-21",
+            "2024-04-05",
+            "2025-03-28",
+            "2026-03-20",
         )
 
     def test_eid_al_fitr(self):
         name = "ঈদুল ফিতর"
         self.assertHolidayName(
             name,
-            self.no_estimated_holidays,
             "2023-04-22",
             "2023-04-23",
             "2023-04-24",
@@ -110,19 +128,17 @@ class TestBangladesh(CommonCountryTests, TestCase):
             "2025-04-01",
             "2025-04-02",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2022, 2026))
-        self.assertNoHolidayName(
-            name,
-            self.no_estimated_holidays,
-            range(self.start_year, 2022),
-            range(2026, self.end_year),
+        exception_years = {1968, 2000, 2033}
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 3, (year for year in self.full_range if year not in exception_years)
         )
-        
+
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, exception_years)
+
     def test_eid_al_adha(self):
         name = "ঈদুল আজহা"
         self.assertHolidayName(
             name,
-            self.no_estimated_holidays,
             "2022-07-11",
             "2022-07-12",
             "2022-07-10",
@@ -136,13 +152,15 @@ class TestBangladesh(CommonCountryTests, TestCase):
             "2025-06-08",
             "2025-06-09",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2022, 2026))
-        self.assertNoHolidayName(
-            name,
-            self.no_estimated_holidays,
-            range(self.start_year, 2022),
-            range(2026, self.end_year),
+        exception_years = {1974, 2006, 2007, 2039}
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 3, (year for year in self.full_range if year not in exception_years)
         )
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 4, 2006)
+
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 5, 2007)
+
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, 1974, 2039)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
