@@ -332,7 +332,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         Add Jumuatul Wida.
 
-        https://en.wikipedia.org/wiki/Jumu%27atul-Wida
+        https://en.wikipedia.org/wiki/Jumu'atul-Wida
         """
         return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.jumuatul_wida_dates(self._year)
