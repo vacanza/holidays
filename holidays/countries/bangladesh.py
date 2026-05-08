@@ -13,16 +13,20 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import FRI, SAT
-from holidays.groups import InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Bangladesh(HolidayBase, InternationalHolidays):
+class Bangladesh(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Bangladesh holidays.
 
     References:
         * <https://web.archive.org/web/20241109215908/https://mopa.gov.bd/sites/default/files/files/mopa.gov.bd/public_holiday/61c35b73_e335_462a_9bcf_4695b23b6d82/reg4-2019-212.PDF>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Bangladesh>
+        * <https://cgbdsydney.gov.bd/about-us/holidays/>
+        * <https://publicholidays.com.bd/>
+
+
     """
 
     country = "BD"
@@ -31,6 +35,7 @@ class Bangladesh(HolidayBase, InternationalHolidays):
     weekend = {FRI, SAT}
 
     def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
@@ -38,8 +43,9 @@ class Bangladesh(HolidayBase, InternationalHolidays):
         # Martyrs' Day and International Mother Language Day.
         self._add_holiday_feb_21(tr("শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস"))
 
-        # Sheikh Mujibur Rahman's Birthday.
-        self._add_holiday_mar_17(tr("জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান এর জন্মদিবস"))
+        if self._year <= 2024:
+            # Sheikh Mujibur Rahman's Birthday.
+            self._add_holiday_mar_17(tr("জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান এর জন্মদিবস"))
 
         # Independence Day.
         self._add_holiday_mar_26(tr("স্বাধীনতা দিবস"))
@@ -50,11 +56,19 @@ class Bangladesh(HolidayBase, InternationalHolidays):
         # May Day.
         self._add_labor_day(tr("মে দিবস"))
 
-        # National Mourning Day.
-        self._add_holiday_aug_15(tr("জাতীয় শোক দিবস"))
+        if self._year >= 2025:
+            # July Mass Uprising Day.
+            self._add_holiday_aug_5(tr("জুলাই গণ-অভ্যুত্থান দিবস"))
+
+        if self._year <= 2024:
+            # National Mourning Day.
+            self._add_holiday_aug_15(tr("জাতীয় শোক দিবস"))
 
         # Victory Day.
         self._add_holiday_dec_16(tr("বিজয় দিবস"))
+
+        # Christmas Day.
+        self._add_christmas_day(tr("বড়দিন"))
 
 
 class BD(Bangladesh):

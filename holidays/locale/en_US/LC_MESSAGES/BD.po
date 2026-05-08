@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.87\n"
+"Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-12-08 16:56+0530\n"
-"PO-Revision-Date: 2025-12-08 16:56+0530\n"
-"Last-Translator: Neha Gaikwad <nehagaikwadwork24@gmail.com>\n"
+"PO-Revision-Date: 2026-05-08 14:58+0400\n"
+"Last-Translator: shoanahmed8788-lab <shaonahmed8788@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -47,6 +47,10 @@ msgstr "Bengali New Year's Day"
 msgid "মে দিবস"
 msgstr "May Day"
 
+#. July Mass Uprising Day.
+msgid "জুলাই গণ-অভ্যুত্থান দিবস"
+msgstr "July Mass Uprising Day"
+
 #. National Mourning Day.
 msgid "জাতীয় শোক দিবস"
 msgstr "National Mourning Day"
@@ -54,3 +58,7 @@ msgstr "National Mourning Day"
 #. Victory Day.
 msgid "বিজয় দিবস"
 msgstr "Victory Day"
+
+#. Christmas Day.
+msgid "বড়দিন"
+msgstr "Christmas Day"

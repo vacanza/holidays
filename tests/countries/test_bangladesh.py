@@ -27,10 +27,9 @@ class TestBangladesh(CommonCountryTests, TestCase):
         )
 
     def test_sheikh_mujibur_rahmans_birthday(self):
-        self.assertHolidayName(
-            "জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান এর জন্মদিবস",
-            (f"{year}-03-17" for year in self.full_range),
-        )
+        name = "জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান এর জন্মদিবস"
+        self.assertHolidayName(name, (f"{year}-03-17" for year in range(self.start_year, 2025)))
+        self.assertNoHolidayName(name, range(2025, self.end_year))
 
     def test_independence_day(self):
         self.assertHolidayName("স্বাধীনতা দিবস", (f"{year}-03-26" for year in self.full_range))
@@ -41,8 +40,18 @@ class TestBangladesh(CommonCountryTests, TestCase):
     def test_may_day(self):
         self.assertHolidayName("মে দিবস", (f"{year}-05-01" for year in self.full_range))
 
+    def test_july_mass_uprising_day(self):
+        name = "জুলাই গণ-অভ্যুত্থান দিবস"
+        self.assertHolidayName(name, (f"{year}-08-05" for year in range(2025, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2025))
+
     def test_national_mourning_day(self):
-        self.assertHolidayName("জাতীয় শোক দিবস", (f"{year}-08-15" for year in self.full_range))
+        name = "জাতীয় শোক দিবস"
+        self.assertHolidayName(name, (f"{year}-08-15" for year in range(self.start_year, 2025)))
+        self.assertNoHolidayName(name, range(2025, self.end_year))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("বড়দিন", (f"{year}-12-25" for year in self.full_range))
 
     def test_victory_day(self):
         self.assertHolidayName("বিজয় দিবস", (f"{year}-12-16" for year in self.full_range))
@@ -57,6 +66,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2022-05-01", "মে দিবস"),
             ("2022-08-15", "জাতীয় শোক দিবস"),
             ("2022-12-16", "বিজয় দিবস"),
+            ("2022-12-25", "বড়দিন"),
         )
 
     def test_l10n_default(self):
@@ -68,6 +78,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2021-05-01", "মে দিবস"),
             ("2021-08-15", "জাতীয় শোক দিবস"),
             ("2021-12-16", "বিজয় দিবস"),
+            ("2021-12-25", "বড়দিন"),
         )
 
     def test_l10n_ar(self):
@@ -80,6 +91,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2021-05-01", "الأول من مايو"),
             ("2021-08-15", "اليوم الوطني للحداد"),
             ("2021-12-16", "عيد النصر"),
+            ("2021-12-25", "عيد الميلاد"),
         )
 
     def test_l10n_en_us(self):
@@ -92,4 +104,5 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2021-05-01", "May Day"),
             ("2021-08-15", "National Mourning Day"),
             ("2021-12-16", "Victory Day"),
+            ("2021-12-25", "Christmas Day"),
         )
