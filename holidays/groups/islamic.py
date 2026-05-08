@@ -328,14 +328,34 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.laylat_al_qadr_dates(self._year)
         )
 
+    def _add_isra_and_miraj_day(self, name) -> set[date]:
+        """
+        Add Isra and Miraj.
+
+        https://en.wikipedia.org/wiki/Isra_and_Miraj
+        """
+        return self._add_islamic_calendar_holiday_set(
+            name, self._islamic_calendar.isra_and_miraj_dates(self._year)
+        )
+
     def _add_jumuatul_wida(self, name) -> set[date]:
         """
-        Add Jumuatul-Wida Day.
+        Add Jumuatul Wida.
 
         https://en.wikipedia.org/wiki/Jumu'atul-Wida
         """
         return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.jumuatul_wida_dates(self._year)
+        )
+
+    def _add_laylat_al_qadr_day(self, name) -> set[date]:
+        """
+        Add Laylat Al-Qadr.
+
+        https://en.wikipedia.org/wiki/Laylat_al-Qadr
+        """
+        return self._add_islamic_calendar_holiday_set(
+            name, self._islamic_calendar.laylat_al_qadr_dates(self._year)
         )
 
     def _add_maldives_embraced_islam_day(self, name) -> set[date]:
