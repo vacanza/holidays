@@ -19,12 +19,7 @@ from tests.common import CommonCountryTests
 class TestBangladesh(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1950, 2050)
-        super().setUpClass(Bangladesh, years=years)
-        cls.start_year = years.start
-        cls.end_year = years.stop
-        cls.full_range = years
-        cls.no_estimated_holidays = Bangladesh(years=years, islamic_show_estimated=False)
+        super().setUpClass(Bangladesh)
 
     def test_martyrs_day_and_international_mother_language_day(self):
         self.assertHolidayName(
