@@ -306,7 +306,7 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.hijri_new_year_dates(self._year)
         )
 
-    def _add_isra_and_miraj_day(self, name):
+    def _add_isra_and_miraj_day(self, name) -> set[date]:
         """
         Add Isra' and Mi'raj Day (27th day of 7th month).
 
@@ -317,7 +317,7 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.isra_and_miraj_dates(self._year)
         )
 
-    def _add_laylat_al_qadr_day(self, name):
+    def _add_laylat_al_qadr_day(self, name) -> set[date]:
         """
         Add Laylat al-Qadr Day (27th day of 9th month).
 
@@ -328,7 +328,7 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.laylat_al_qadr_dates(self._year)
         )
 
-    def _add_jumuatul_wida(self, name):
+    def _add_jumuatul_wida(self, name) -> set[date]:
         """
         Add Jumuatul Wida.
 
@@ -372,7 +372,7 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.mawlid_dates(self._year), days_delta=+1
         )
 
-    def _add_mid_shaban_day(self, name):
+    def _add_mid_shaban_day(self, name) -> set[date]:
         """
         Add Mid Shaban Day.
 
