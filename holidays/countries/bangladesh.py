@@ -24,8 +24,8 @@ class Bangladesh(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
     References:
         * <https://web.archive.org/web/20241109215908/https://mopa.gov.bd/sites/default/files/files/mopa.gov.bd/public_holiday/61c35b73_e335_462a_9bcf_4695b23b6d82/reg4-2019-212.PDF>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Bangladesh>
-        * <https://cgbdsydney.gov.bd/about-us/holidays/>
-        * <https://publicholidays.com.bd/>
+        * <https://web.archive.org/web/20260427032339/https://cgbdsydney.gov.bd/about-us/holidays/>
+        * <https://web.archive.org/web/20251118113843/https://publicholidays.com.bd/>
     """
 
     country = "BD"
