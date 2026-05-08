@@ -84,7 +84,7 @@ class Bangladesh(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         # Ashura.
         self._add_ashura_day(tr("আশুরা"))
 
-        # Prophet's Birthday.
+        # Eid-e-Milad un-Nabi.
         self._add_mawlid_day(tr("ঈদে মিলাদুন্নবী"))
 
         # Mid-Sha'ban.
