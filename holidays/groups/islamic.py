@@ -317,47 +317,6 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.isra_and_miraj_dates(self._year)
         )
 
-    def _add_laylat_al_qadr_day(self, name) -> set[date]:
-        """
-        Add Laylat al-Qadr Day (27th day of 9th month).
-
-        The Night of Power.
-        https://en.wikipedia.org/wiki/Night_of_Power
-        """
-        return self._add_islamic_calendar_holiday_set(
-            name, self._islamic_calendar.laylat_al_qadr_dates(self._year)
-        )
-
-    def _add_isra_and_miraj_day(self, name) -> set[date]:
-        """
-        Add Isra and Miraj.
-
-        https://en.wikipedia.org/wiki/Isra_and_Miraj
-        """
-        return self._add_islamic_calendar_holiday_set(
-            name, self._islamic_calendar.isra_and_miraj_dates(self._year)
-        )
-
-    def _add_isra_and_miraj_day(self, name) -> set[date]:
-        """
-        Add Isra and Miraj.
-
-        https://en.wikipedia.org/wiki/Isra_and_Miraj
-        """
-        return self._add_islamic_calendar_holiday_set(
-            name, self._islamic_calendar.isra_and_miraj_dates(self._year)
-        )
-
-    def _add_isra_and_miraj_day(self, name) -> set[date]:
-        """
-        Add Isra and Miraj.
-
-        https://en.wikipedia.org/wiki/Isra_and_Miraj
-        """
-        return self._add_islamic_calendar_holiday_set(
-            name, self._islamic_calendar.isra_and_miraj_dates(self._year)
-        )
-
     def _add_jumuatul_wida(self, name) -> set[date]:
         """
         Add Jumuatul Wida.
@@ -366,26 +325,6 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.jumuatul_wida_dates(self._year)
-        )
-
-    def _add_laylat_al_qadr_day(self, name) -> set[date]:
-        """
-        Add Laylat Al-Qadr.
-
-        https://en.wikipedia.org/wiki/Laylat_al-Qadr
-        """
-        return self._add_islamic_calendar_holiday_set(
-            name, self._islamic_calendar.laylat_al_qadr_dates(self._year)
-        )
-
-    def _add_laylat_al_qadr_day(self, name) -> set[date]:
-        """
-        Add Laylat Al-Qadr.
-
-        https://en.wikipedia.org/wiki/Laylat_al-Qadr
-        """
-        return self._add_islamic_calendar_holiday_set(
-            name, self._islamic_calendar.laylat_al_qadr_dates(self._year)
         )
 
     def _add_laylat_al_qadr_day(self, name) -> set[date]:
