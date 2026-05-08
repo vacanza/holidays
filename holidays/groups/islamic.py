@@ -376,7 +376,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         Add Mid Shaban Day.
 
-        https://en.wikipedia.org/wiki/Mid-Sha%27ban
+        https://en.wikipedia.org/wiki/Mid-Sha'ban
         """
         return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.imam_mahdi_birthday_dates(self._year)
