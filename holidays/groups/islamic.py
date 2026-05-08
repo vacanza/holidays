@@ -374,7 +374,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_mid_shaban_day(self, name) -> set[date]:
         """
-        Add Mid Shaban Day.
+        Add Mid-Sha'ban Day.
 
         https://en.wikipedia.org/wiki/Mid-Sha'ban
         """
