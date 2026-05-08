@@ -31,12 +31,14 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
         * [2005](https://web.archive.org/web/20210212184000/https://zh.wikisource.org/wiki/国务院办公厅关于2005年部分节假日安排的通知)
         * [2006](https://web.archive.org/web/20221130214247/https://zh.wikisource.org/wiki/国务院办公厅关于2006年部分节假日安排的通知)
         * [2007](https://web.archive.org/web/20230727050141/https://www.gov.cn/gongbao/content/2007/content_503397.htm)
+        * [2007 changes (Order #513)](https://web.archive.org/web/20080124135116/https://www.gov.cn/gongbao/content/2008/content_859863.htm)
         * [2008](https://web.archive.org/web/20240610103541/https://www.gov.cn/gongbao/content/2008/content_859870.htm)
         * [2009](https://web.archive.org/web/20230726083438/https://www.gov.cn/gongbao/content/2008/content_1175823.htm)
-        * [2010](https://web.archive.org/web/20101210083603/http://www.gov.cn:80/gongbao/content/2009/content_1487011.htm)
+        * [2010](https://web.archive.org/web/20101210083603/https://www.gov.cn/gongbao/content/2009/content_1487011.htm)
         * [2011](https://web.archive.org/web/20240812070712/https://www.gov.cn/gongbao/content/2010/content_1765282.htm)
         * [2012](https://web.archive.org/web/20250420220922/https://www.gov.cn/gongbao/content/2011/content_2020918.htm)
         * [2013](https://web.archive.org/web/20240229121946/https://www.gov.cn/gongbao/content/2012/content_2292057.htm)
+        * [2013 changes (Order #644)](https://web.archive.org/web/20140114092108/https://www.gov.cn/gongbao/content/2014/content_2561284.htm)
         * [2014](https://web.archive.org/web/20250426080722/https://www.gov.cn/gongbao/content/2014/content_2561299.htm)
         * [2015](https://web.archive.org/web/20250427025304/https://www.gov.cn/gongbao/content/2015/content_2799019.htm)
         * [2016](https://web.archive.org/web/20231205013233/https://www.gov.cn/gongbao/content/2016/content_2979719.htm)
@@ -45,14 +47,14 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
         * [2019](https://web.archive.org/web/20241202235023/https://www.gov.cn/gongbao/content/2018/content_5350046.htm)
         * [2019 Extensions](https://web.archive.org/web/20250901174347/https://www.gov.cn/gongbao/content/2019/content_5380356.htm)
         * [2020](https://web.archive.org/web/20241222150612/https://www.gov.cn/gongbao/content/2019/content_5459138.htm)
-        * [2020 Extensions](https://web.archive.org/web/20250427184932/https://www.gov.cn/zhengce/zhengceku/2020-01/27/content_5472352.htm)
+        * [2020 Extensions](https://web.archive.org/web/20200311092254/https://www.gov.cn/gongbao/content/2020/content_5477297.htm)
         * [2021](https://web.archive.org/web/20250424075325/https://www.gov.cn/gongbao/content/2020/content_5567750.htm)
-        * [2022](https://web.archive.org/web/20250413071341/http://www.gov.cn/gongbao/content/2021/content_5651728.htm)
+        * [2022](https://web.archive.org/web/20250413071341/https://www.gov.cn/gongbao/content/2021/content_5651728.htm)
         * [2023](https://web.archive.org/web/20250414125053/https://www.gov.cn/gongbao/content/2023/content_5736714.htm)
-        * [2024](https://web.archive.org/web/20250227033646/https://www.gov.cn/zhengce/content/202310/content_6911527.htm)
-        * [2024 changes (Order #795)](https://web.archive.org/web/20250228151847/https://www.gov.cn/zhengce/content/202411/content_6986380.htm)
-        * [2025](https://web.archive.org/web/20250424041657/https://www.gov.cn/zhengce/content/202411/content_6986382.htm)
-        * [2026](https://web.archive.org/web/20251111205945/https://www.gov.cn/zhengce/content/202511/content_7047090.htm)
+        * [2024](https://web.archive.org/web/20231111053456/https://www.gov.cn/gongbao/2023/issue_10806/202311/content_6913823.html)
+        * [2024 changes (Order #795)](https://web.archive.org/web/20241130063225/https://www.gov.cn/gongbao/2024/issue_11726/202411/content_6989774.html)
+        * [2025](https://web.archive.org/web/20241130063235/https://www.gov.cn/gongbao/2024/issue_11726/202411/content_6989767.html)
+        * [2026](https://web.archive.org/web/20251125134126/https://www.gov.cn/gongbao/2025/issue_12406/202511/content_7048922.html)
 
     Checked With:
         * <https://web.archive.org/web/20250213085558/https://www.officeholidays.com/countries/china/2023>
@@ -63,6 +65,7 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
     Limitations:
         * Only checked with the official General Office of the State Council Notice from 2001
             onwards.
+        * Only fetch notices from `https://www.gov.cn/gongbao/*` via `https://web.archive.org/`.
         * Due to its complexity, need yearly checks 3-weeks before year's end each year.
     """
 
