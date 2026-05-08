@@ -330,7 +330,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_jumuatul_wida(self, name) -> set[date]:
         """
-        Add Jumuatul Wida.
+        Add Jumuatul-Wida Day.
 
         https://en.wikipedia.org/wiki/Jumu'atul-Wida
         """
