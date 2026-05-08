@@ -41,9 +41,15 @@ class Bangladesh(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         Args:
             islamic_show_estimated:
                 Whether to add "estimated" label to Islamic holidays name
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
             self, cls=BangladeshIslamicHolidays, show_estimated=islamic_show_estimated
