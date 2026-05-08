@@ -28,8 +28,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
 
     def test_martyrs_day_and_international_mother_language_day(self):
         self.assertHolidayName(
-            "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস",
-            (f"{year}-02-21" for year in self.full_range),
+            "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস", (f"{year}-02-21" for year in self.full_range)
         )
 
     def test_sheikh_mujibur_rahmans_birthday(self):
