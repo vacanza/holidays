@@ -65,7 +65,6 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
     Limitations:
         * Only checked with the official General Office of the State Council Notice from 2001
             onwards.
-        * Only fetch notices from `https://www.gov.cn/gongbao/*` via `https://web.archive.org/`.
         * Due to its complexity, need yearly checks 3-weeks before year's end each year.
     """
 
