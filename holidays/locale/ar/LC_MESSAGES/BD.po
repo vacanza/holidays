@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-31 00:00+0000\n"
-"PO-Revision-Date: 2026-04-21 11:17+0400\n"
-"Last-Translator: Shaon Ahamed <shaonahmed8788@gmail.com>\n"
+"PO-Revision-Date: 2026-05-09 22:51+0400\n"
+"Last-Translator: shoanahmed8788-lab <shaonahmed8788@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -68,11 +68,11 @@ msgstr "عيد النصر"
 msgid "বড়দিন"
 msgstr "عيد الميلاد"
 
-#. Ashura Day.
+#. Ashura.
 msgid "আশুরা"
 msgstr "عاشوراء"
 
-#. Eid-e-Milad un-Nabi.
+#. Prophet's Birthday.
 msgid "ঈদে মিলাদুন্নবী"
 msgstr "المولد النبوي الشريف"
 
@@ -80,7 +80,7 @@ msgstr "المولد النبوي الشريف"
 msgid "শবে বরাত"
 msgstr "ليلة النصف من شعبان"
 
-#. Night of Power.
+#. Laylat al-Qadr.
 msgid "শবে কদর"
 msgstr "ليلة القدر"
 
