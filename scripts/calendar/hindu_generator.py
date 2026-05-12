@@ -50,30 +50,9 @@ _LAHIRI_J2000 = 23.85045  # degrees at J2000.0 (JD 2451545.0)
 _PRECESSION_RATE = 50.2388475 / 3600  # degrees per Julian year
 MONTHS = ("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC")
 
-# Lunar months (named after the zodiac sign of sun at sunset of Amavasya (new moon))
-MONTH_NAMES = [
-    "Vaishakh",  # (0°-30°) - Aries (0)
-    "Jyeshth",  # (30°-60°) - Taurus (1)
-    "Ashadh",  # (60°-90°) - Gemini (2)
-    "Shravan",  # (90°-120°) - Cancer (3)
-    "Bhadrapad",  # (120°-150°) - Leo (4)
-    "Ashwin",  # (150°-180°) - Virgo (5)
-    "Kartik",  # (180°-210°) - Libra (6)
-    "Margashirsh",  # (210°-240°) - Scorpio (7)
-    "Paush",  # (240°-270°) - Sagittarius (8)
-    "Magh",  # (270°-300°) - Capricorn (9)
-    "Phalgun",  # (300°-330°) - Aquarius (10)
-    "Chaitra",  # (330°-360°) - Pisces (11)
-]
 
-
-class _Lunisolar:
-    """Convert dates from the Hindu lunisolar calendar to Gregorian dates.
-
-    Sources:
-    - https://web.archive.org/web/20251204101508/https://deadseaquake.info/pdfs/RD2018.pdf
-    - https://web.archive.org/web/20251207235328/https://www.drikpanchang.com
-    """
+class _Astronomy:
+    """Astronimcal helper functions for Hindu calendar calculations."""
 
     _sun = ephem.Sun()
     _moon = ephem.Moon()
@@ -125,6 +104,40 @@ class _Lunisolar:
         ed = self._observer.next_setting(self._sun)
         return self._ephem_date_to_jd(ed)
 
+    def _sidereal_solar_zodiac_sign(self, jd: float) -> int:
+        """Return the sidereal zodiac sign index (0 = Aries … 11 = Pisces) of the
+        Sun at the given Julian Day Number."""
+        ed = ephem.Date(jd - _DUBLIN_TO_JD)
+        trop_lon = self._tropical_lon(self._sun, ed)
+        ayanamsa = self._lahiri_ayanamsa(ed)
+        sid_lon = self._norm360(trop_lon - ayanamsa)
+        return int(sid_lon // 30)
+
+
+class _Lunisolar(_Astronomy):
+    """Convert dates from the Hindu lunisolar calendar to Gregorian dates.
+
+    Sources:
+    - https://web.archive.org/web/20251204101508/https://deadseaquake.info/pdfs/RD2018.pdf
+    - https://web.archive.org/web/20251207235328/https://www.drikpanchang.com
+    """
+
+    # Lunar months (named after the zodiac sign of sun at sunset of Amavasya (new moon))
+    LUNAR_MONTH_NAMES = [
+        "Vaishakh",  # (0°-30°) - Aries (0)
+        "Jyeshth",  # (30°-60°) - Taurus (1)
+        "Ashadh",  # (60°-90°) - Gemini (2)
+        "Shravan",  # (90°-120°) - Cancer (3)
+        "Bhadrapad",  # (120°-150°) - Leo (4)
+        "Ashwin",  # (150°-180°) - Virgo (5)
+        "Kartik",  # (180°-210°) - Libra (6)
+        "Margashirsh",  # (210°-240°) - Scorpio (7)
+        "Paush",  # (240°-270°) - Sagittarius (8)
+        "Magh",  # (270°-300°) - Capricorn (9)
+        "Phalgun",  # (300°-330°) - Aquarius (10)
+        "Chaitra",  # (330°-360°) - Pisces (11)
+    ]
+
     @cache
     def _midnight_jd(self, dt: date) -> float:
         """Return the JD of Nishita Kaal (midpoint of sunset → next sunrise)."""
@@ -146,15 +159,6 @@ class _Lunisolar:
         ss = self._sunset_jd(dt)
         return (sr + ss) / 2
 
-    def _sidereal_solar_zodiac_sign(self, jd: float) -> int:
-        """Return the sidereal zodiac sign index (0 = Aries … 11 = Pisces) of the
-        Sun at the given Julian Day Number."""
-        ed = ephem.Date(jd - _DUBLIN_TO_JD)
-        trop_lon = self._tropical_lon(self._sun, ed)
-        ayanamsa = self._lahiri_ayanamsa(ed)
-        sid_lon = self._norm360(trop_lon - ayanamsa)
-        return int(sid_lon // 30)
-
     def _tithi(self, jd: float) -> int:
         """Return the tithi (1-30) at the given Julian Day Number.
 
@@ -168,7 +172,7 @@ class _Lunisolar:
 
     def _lunar_month(self, jd: float) -> str:
         sign = self._sidereal_solar_zodiac_sign(jd)
-        return MONTH_NAMES[sign]
+        return self.LUNAR_MONTH_NAMES[sign]
 
     """
     Amavasya -> use SUN's sidereal sign -> determines lunar month
@@ -459,7 +463,7 @@ class _Lunisolar:
     def get_janmashtami(self, year: int) -> date | None:
         """
         Janmashtami = Bhadrapad Krishna Paksha Ashtami.
-        Tithi  = 23 (Krishna Paksha tithi 8 = 15 + 8) of Bhadrapada month
+        Tithi = 23 (Krishna Paksha tithi 8 = 15 + 8) of Bhadrapada month
         - sun in sidereal Leo (sign 4).
         Evaluated at sunrise (Udaya rule).
 
@@ -522,7 +526,7 @@ class _Lunisolar:
     def get_maha_shivaratri(self, year: int) -> date | None:
         """
         Maha Shivratri = Phalgun Krishna Chaturdashi.
-        Tithi =  29 active at sunset or midnight of Phalgun or Magh month
+        Tithi = 29 active at sunset or midnight of Phalgun or Magh month
         - sun in sign 10 (Aquarius) or 9 (Capricorn).
 
         Rule:
@@ -746,6 +750,48 @@ class _Lunisolar:
         return None
 
 
+class _Solar(_Astronomy):
+    """Convert dates from Hindu solar calendar to Gregorian dates."""
+
+    # Sidereal solar zodiac signs (Rashi)
+    SOLAR_ZODIC_SIGN_NAMES = [
+        "Mesha",  # (0°-30°) - Aries (0)
+        "Vrishabha",  # (30°-60°) - Taurus (1)
+        "Mithuna",  # (60°-90°) - Gemini (2)
+        "Karka",  # (90°-120°) - Cancer (3)
+        "Simha",  # (120°-150°) - Leo (4)
+        "Kanya",  # (150°-180°) - Virgo (5)
+        "Tula",  # (180°-210°) - Libra (6)
+        "Vrishchika",  # (210°-240°) - Scorpio (7)
+        "Dhanu",  # (240°-270°) - Sagittarius (8)
+        "Makara",  # (270°-300°) - Capricorn (9)
+        "Kumbha",  # (300°-330°) - Aquarius (10)
+        "Meena",  # (330°-360°) - Pisces (11)
+    ]
+
+    def _solar_zodiac_sign(self, jd: float) -> str:
+        sign = self._sidereal_solar_zodiac_sign(jd)
+        return self.SOLAR_ZODIC_SIGN_NAMES[sign]
+
+    def get_makar_sankranti(self, year: int) -> date | None:
+        """
+        Makar Sankranti = Sun enters sidereal Capricorn (Makara rashi).
+        Evaluated at sunset (pradosh rule).
+        """
+        dt = date(year, 1, 10)
+        while dt <= date(year, 1, 20):
+            ss_jd = self._sunset_jd(dt)
+            sign_today = self._solar_zodiac_sign(ss_jd)
+            sign_prev = self._solar_zodiac_sign(self._sunset_jd(dt - timedelta(days=1)))
+
+            if sign_today == "Makara" and sign_prev != "Makara":
+                return dt
+
+            dt += timedelta(days=1)
+
+        return None
+
+
 CLASS_NAME = "_{cal_name}Lunisolar"
 OUT_FILE_NAME = "{cal_name}_dates.py"
 
@@ -760,8 +806,9 @@ HOLIDAY_ARRAY_TEMPLATE = """    {hol_name}_DATES = {{
 YEAR_TEMPLATE = "        {year}: ({date}),"
 
 _lunisolar = _Lunisolar()
+_solar = _Solar()
 
-HINDU_HOLIDAYS = (
+HINDU_LUNISOLAR_HOLIDAYS = (
     ("DIWALI_INDIA", _lunisolar.get_diwali),
     ("DUSSEHRA", _lunisolar.get_dussehra),
     ("HOLI", _lunisolar.get_holi),
@@ -773,20 +820,27 @@ HINDU_HOLIDAYS = (
     ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
 )
 
+HINDU_SOLAR_HOLIDAYS = (("MAKAR_SANKRANTI", _solar.get_makar_sankranti),)
+
 
 def generate_data() -> None:
-    g_year_min, g_year_max = 2001, 2100
-    years = range(g_year_min, g_year_max + 1)
+    years = range(2001, 2101)
 
-    dates: dict[str, dict[int, date]] = defaultdict(dict)
-    for hol_name, hol_func in HINDU_HOLIDAYS:
-        for year in years:
-            dt = hol_func(year)
-            if dt:
-                dates[hol_name][year] = dt
+    calendars = (
+        ("hindu_lunisolar", "_HinduLunisolar", HINDU_LUNISOLAR_HOLIDAYS),
+        ("hindu_solar", "_HinduSolar", HINDU_SOLAR_HOLIDAYS),
+    )
 
-    cal_gen = CalendarGenerator("hindu", "_HinduLunisolar")
-    cal_gen.generate(dates)
+    for cal_name, class_name, holidays in calendars:
+        dates: dict[str, dict[int, date]] = defaultdict(dict)
+
+        for hol_name, hol_func in holidays:
+            for year in years:
+                dt = hol_func(year)
+                if dt:
+                    dates[hol_name][year] = dt
+
+        CalendarGenerator(cal_name, class_name).generate(dates)
 
 
 if __name__ == "__main__":
