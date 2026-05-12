@@ -13,45 +13,45 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+"""Generate Gregorian dates for holidays based on the Hebrew lunisolar calendar.
+
+Run with:
+
+    python -m scripts.calendar.hebrew_generator
+
+Alternatively, run with uv:
+
+    uv run -m scripts.calendar.hebrew_generator
+
+This generates the file `holidays/calendars/hebrew_dates.py`,
+whose data can then be copied to `holidays/calendars/hebrew.py`.
+"""
+
 from collections import defaultdict
 from datetime import date
 from functools import cache
-from pathlib import Path
 
-CLASS_NAME = "_HebrewLunisolar"
-OUT_FILE_NAME = "hebrew_dates.py"
+from .generator import CalendarGenerator
 
-CLASS_TEMPLATE = """class {class_name}:
-{holiday_data}"""
-
-HOLIDAY_DATA_TEMPLATE = """    {hol_name}_DATES = {{
-{year_dates}
-    }}
-"""
-
-YEAR_TEMPLATE = "        {year}: ({dates}),"
-
-HEBREW_HOLIDAYS = (
-    (1, 15, "PASSOVER"),
-    (2, 5, "INDEPENDENCE_DAY"),
-    (2, 18, "LAG_BAOMER"),
-    (3, 6, "SHAVUOT"),
-    (5, 9, "TISHA_BAV"),
-    (7, 1, "ROSH_HASHANAH"),
-    (7, 10, "YOM_KIPPUR"),
-    (7, 15, "SUKKOT"),
-    (9, 25, "HANUKKAH"),
-    (12, 14, "PURIM"),
-)
+HEBREW_HOLIDAYS = {
+    "PASSOVER": (1, 15),
+    "INDEPENDENCE_DAY": (2, 5),
+    "LAG_BAOMER": (2, 18),
+    "SHAVUOT": (3, 6),
+    "TISHA_BAV": (5, 9),
+    "ROSH_HASHANAH": (7, 1),
+    "YOM_KIPPUR": (7, 10),
+    "SUKKOT": (7, 15),
+    "HANUKKAH": (9, 25),
+    "PURIM": (12, 14),
+}
 
 HEBREW_EPOCH_RD = -1373427  # 347997 [Hebrew epoch JD] - 1721425 [Julian date of 1 Jan 1 CE] + 1.
 HEBREW_YEAR_OFFSET = 3760  # Offset to convert Gregorian year to Hebrew year.
-MONTHS = ("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC")
 
 
 class _Lunisolar:
-    """
-    This class generates Gregorian dates for Hebrew calendar based holidays.
+    """Convert dates from the Hebrew lunisolar calendar to Gregorian dates.
 
     References:
         * <https://en.wikipedia.org/wiki/Hebrew_calendar>
@@ -134,43 +134,27 @@ class _Lunisolar:
         return self.new_year(year) + delta + day - 1
 
 
-def generate_data():
+def generate_data() -> None:
     cal = _Lunisolar()
-    g_year_min, g_year_max = (1947, 2100)
-    h_year_min = g_year_min + HEBREW_YEAR_OFFSET
-    h_year_max = g_year_max + HEBREW_YEAR_OFFSET + 1
+    g_year_min, g_year_max = 1947, 2100
 
-    dates = defaultdict(dict)
-    for h_year in range(h_year_min, h_year_max + 1):
-        for h_month, h_day, hol_name in HEBREW_HOLIDAYS:
-            if h_month == 12 and cal.leap(h_year):
-                h_month += 1
-            g_date = date.fromordinal(cal.to_rd(h_year, h_month, h_day))
+    dates: dict[str, dict[int, date]] = defaultdict(dict)
+    for name, (holiday_month, holiday_day) in HEBREW_HOLIDAYS.items():
+        for year in range(g_year_min + HEBREW_YEAR_OFFSET, g_year_max + HEBREW_YEAR_OFFSET + 2):
+            g_date = date.fromordinal(
+                cal.to_rd(
+                    year,
+                    holiday_month + 1 if holiday_month == 12 and cal.leap(year) else holiday_month,
+                    holiday_day,
+                )
+            )
             g_year = g_date.year
             if g_year < g_year_min or g_year > g_year_max:
                 continue
-            dates[g_year][hol_name] = g_date
+            dates[name][g_year] = g_date
 
-    g_year_min = min(dates.keys())
-    g_year_max = max(dates.keys())
-
-    holiday_names = sorted(hol_item[2] for hol_item in HEBREW_HOLIDAYS)
-    holiday_data = []
-    for hol_name in holiday_names:
-        year_dates = []
-        for year in range(g_year_min, g_year_max + 1):
-            if not (dt := dates[year].get(hol_name)):
-                continue
-            year_dates.append(
-                YEAR_TEMPLATE.format(year=year, dates=f"{MONTHS[dt.month - 1]}, {dt.day}")
-            )
-        holiday_data.append(
-            HOLIDAY_DATA_TEMPLATE.format(hol_name=hol_name, year_dates="\n".join(year_dates))
-        )
-
-    class_str = CLASS_TEMPLATE.format(class_name=CLASS_NAME, holiday_data="\n".join(holiday_data))
-    path = Path("holidays/calendars") / OUT_FILE_NAME
-    path.write_text(class_str, encoding="UTF-8")
+    cal_gen = CalendarGenerator("hebrew", "_HebrewLunisolar")
+    cal_gen.generate(dates)
 
 
 if __name__ == "__main__":
