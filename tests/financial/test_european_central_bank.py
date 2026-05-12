@@ -22,7 +22,10 @@ class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
         super().setUpClass(EuropeanCentralBank)
 
     def test_special_holidays(self):
-        self.assertHoliday("2000-12-31")
+        self.assertHoliday(
+            "1999-12-31",
+            "2001-12-31",
+        )
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))
@@ -41,7 +44,7 @@ class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
             "2023-04-07",
             "2024-03-29",
         )
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(name, (year for year in self.full_range if year >= 2000))
 
     def test_easter_monday(self):
         name = "Easter Monday"
@@ -57,16 +60,28 @@ class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
             "2023-04-10",
             "2024-04-01",
         )
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(name, (year for year in self.full_range if year >= 2000))
 
     def test_labor_day(self):
-        self.assertHolidayName("Labour Day", (f"{year}-05-01" for year in self.full_range))
+        self.assertHolidayName(
+            "Labour Day", (f"{year}-05-01" for year in self.full_range if year >= 2000)
+        )
 
     def test_christmas_day(self):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in self.full_range))
 
     def test_christmas_holiday(self):
-        self.assertHolidayName("Christmas Holiday", (f"{year}-12-26" for year in self.full_range))
+        self.assertHolidayName(
+            "Christmas Holiday", (f"{year}-12-26" for year in self.full_range if year >= 2000)
+        )
+
+    def test_1999(self):
+        self.assertHolidays(
+            EuropeanCentralBank(years=1999),
+            ("1999-01-01", "New Year's Day"),
+            ("1999-12-25", "Christmas Day"),
+            ("1999-12-31", "Additional closing day"),
+        )
 
     def test_2015(self):
         self.assertHolidays(
