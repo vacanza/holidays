@@ -40,7 +40,6 @@ class EuropeanCentralBank(HolidayBase, ChristianHolidays, InternationalHolidays)
         self._add_new_years_day("New Year's Day")
         self._add_christmas_day("Christmas Day")
 
-        # The ECB introduced these as mandatory closing days starting in 2000
         if self._year >= 2000:
             self._add_good_friday("Good Friday")
             self._add_easter_monday("Easter Monday")
