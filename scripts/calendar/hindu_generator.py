@@ -12,12 +12,33 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+"""Generate Gregorian dates for holidays based on the Hindu lunisolar calendar.
+
+Run with:
+
+    python -m scripts.calendar.hindu_generator
+
+Alternatively, run with uv:
+
+    uv run -m scripts.calendar.hindu_generator
+
+This generates the files:
+
+    * `holidays/calendars/hindu_dates.py`
+
+whose data can then be copied to:
+
+    * `holidays/calendars/hindu.py`
+"""
+
 import math
+from collections import defaultdict
 from datetime import date, timedelta
 from functools import cache
-from pathlib import Path
 
 import ephem
+
+from .generator import CalendarGenerator
 
 # Coordinates for Ujjain, India (holy city used in Hindu astrology)
 LAT = "23.1765"
@@ -47,8 +68,7 @@ MONTH_NAMES = [
 
 
 class _Lunisolar:
-    """
-    This class generates Gregorian dates for Hindu lunisolar calendar based holidays.
+    """Convert dates from the Hindu lunisolar calendar to Gregorian dates.
 
     Sources:
     - https://web.archive.org/web/20251204101508/https://deadseaquake.info/pdfs/RD2018.pdf
@@ -756,31 +776,17 @@ HINDU_HOLIDAYS = (
 
 def generate_data() -> None:
     g_year_min, g_year_max = 2001, 2100
-    holiday_data = []
+    years = range(g_year_min, g_year_max + 1)
 
+    dates: dict[str, dict[int, date]] = defaultdict(dict)
     for hol_name, hol_func in HINDU_HOLIDAYS:
-        year_dates = []
-        for year in range(g_year_min, g_year_max + 1):
+        for year in years:
             dt = hol_func(year)
             if dt:
-                date_str = f"{MONTHS[dt.month - 1]}, {dt.day}"
-            else:
-                date_str = "None"
-            year_dates.append(YEAR_TEMPLATE.format(year=year, date=date_str))
-        year_dates_str = "\n".join(year_dates)
-        holiday_data.append(
-            HOLIDAY_ARRAY_TEMPLATE.format(hol_name=hol_name, year_dates=year_dates_str)
-        )
+                dates[hol_name][year] = dt
 
-    holiday_data_str = "\n".join(holiday_data)
-    class_str = CLASS_TEMPLATE.format(
-        class_name=CLASS_NAME.format(cal_name="Hindu"),
-        holiday_data=holiday_data_str,
-    )
-
-    path = Path("holidays/calendars") / OUT_FILE_NAME.format(cal_name="hindu")
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(class_str, encoding="UTF-8")
+    cal_gen = CalendarGenerator("hindu", "_HinduLunisolar")
+    cal_gen.generate(dates)
 
 
 if __name__ == "__main__":
