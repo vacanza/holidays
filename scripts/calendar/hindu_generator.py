@@ -778,8 +778,17 @@ class _Solar(_Astronomy):
         Makar Sankranti = Sun enters sidereal Capricorn (Makara rashi).
         Evaluated at sunset (pradosh rule).
         """
-        dt = date(year, 1, 10)
-        while dt <= date(year, 1, 20):
+
+        exceptions = {
+            2007: date(2007, 1, 15),
+            2023: date(2023, 1, 14),  # Fesival on 15th but holiday given by government is 14th
+            2024: date(2024, 1, 14),  # Fesival on 15th but holiday given by government is 14th
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        dt = date(year, 1, 12)
+        while dt <= date(year, 1, 17):
             ss_jd = self._sunset_jd(dt)
             sign_today = self._solar_zodiac_sign(ss_jd)
             sign_prev = self._solar_zodiac_sign(self._sunset_jd(dt - timedelta(days=1)))
@@ -809,15 +818,15 @@ _lunisolar = _Lunisolar()
 _solar = _Solar()
 
 HINDU_LUNISOLAR_HOLIDAYS = (
-    ("DIWALI_INDIA", _lunisolar.get_diwali),
-    ("DUSSEHRA", _lunisolar.get_dussehra),
-    ("HOLI", _lunisolar.get_holi),
-    ("JANMASHTAMI", _lunisolar.get_janmashtami),
-    ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
-    ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
-    ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
-    ("RAM_NAVAMI", _lunisolar.get_ram_navami),
-    ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
+    # ("DIWALI_INDIA", _lunisolar.get_diwali),
+    # ("DUSSEHRA", _lunisolar.get_dussehra),
+    # ("HOLI", _lunisolar.get_holi),
+    # ("JANMASHTAMI", _lunisolar.get_janmashtami),
+    # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
+    # ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
+    # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
+    # ("RAM_NAVAMI", _lunisolar.get_ram_navami),
+    # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
 )
 
 HINDU_SOLAR_HOLIDAYS = (("MAKAR_SANKRANTI", _solar.get_makar_sankranti),)
