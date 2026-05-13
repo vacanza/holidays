@@ -100,17 +100,16 @@ def generate_data() -> None:
             first_day = Hijri(year, holiday_month, 1)
             g_date = first_day.to_gregorian()
 
-            if len(items) == 2:
-                holiday_num, holiday_weekday = items
-                if holiday_num < 0:
-                    g_date += timedelta(days=first_day.month_length() - 1)
-                g_date = _get_nth_weekday_from(holiday_num, holiday_weekday, g_date)
+            match items:
+                case (holiday_num, holiday_weekday):
+                    if holiday_num < 0:
+                        g_date += timedelta(days=first_day.month_length() - 1)
+                    g_date = _get_nth_weekday_from(holiday_num, holiday_weekday, g_date)
 
-            else:
-                (holiday_day,) = items
-                if holiday_day < 0:
-                    g_date += timedelta(days=first_day.month_length() + 1)
-                g_date += timedelta(days=holiday_day - 1)
+                case (holiday_day,):
+                    if holiday_day < 0:
+                        g_date += timedelta(days=first_day.month_length() + 1)
+                    g_date += timedelta(days=holiday_day - 1)
 
             dates[name][g_date.year].append(g_date)
 
