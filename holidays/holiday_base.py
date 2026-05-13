@@ -675,11 +675,26 @@ class HolidayBase(dict[date, str]):
             return super().__repr__()
 
         if hasattr(self, "market"):
-            return f"holidays.financial_holidays({self.market!r})"
+            args = [repr(self.market)]
+
+            if self.language is not None:
+                args.append(f"language={self.language!r}")
+
+            return f"holidays.financial_holidays({', '.join(args)})"
+
         elif hasattr(self, "country"):
+            args = [repr(self.country)]
+
+            if self.categories != {"public"}:
+                args.append(f"categories={sorted(self.categories)!r}")
+
+            if self.language is not None:
+                args.append(f"language={self.language!r}")
+
             if self.subdiv:
-                return f"holidays.country_holidays({self.country!r}, subdiv={self.subdiv!r})"
-            return f"holidays.country_holidays({self.country!r})"
+                args.append(f"subdiv={self.subdiv!r}")
+
+            return f"holidays.country_holidays({', '.join(args)})"
 
         return "holidays.HolidayBase()"
 
