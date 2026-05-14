@@ -176,10 +176,11 @@ class BangladeshIslamicHolidays(_CustomIslamicHolidays):
     }
 
     # https://www.timeanddate.com/holidays/bangladesh/shab-e-barat
-    IMAM_MAHDI_BIRTHDAY_DATES_CONFIRMED_YEARS = (2022, 2025)
+    IMAM_MAHDI_BIRTHDAY_DATES_CONFIRMED_YEARS = (2022, 2026)
     IMAM_MAHDI_BIRTHDAY_DATES = {
         2022: (MAR, 19),
         2023: (MAR, 8),
         2024: (FEB, 26),
         2025: (FEB, 15),
+        2026: (FEB, 3),
     }
