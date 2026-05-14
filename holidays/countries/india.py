@@ -37,12 +37,14 @@ class India(
         * <https://web.archive.org/web/20250413193633/https://www.calendarlabs.com/holidays/india/2021>
         * <https://web.archive.org/web/20231118175007/http://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm>
         * <https://web.archive.org/web/20231008063930/https://vahan.parivahan.gov.in/vahan4dashboard/>
+        * Andaman and Nicobar Islands:
+            * <https://web.archive.org/web/20251214133200/https://andamannicobar.gov.in/admin-pannel/othersdoc/1-29-Holiday%20List%202026%20Gazette.pdf>
         * Gujarat:
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
         * Kerala:
             * <https://web.archive.org/web/20260329164551/https://kerala.gov.in/showcalendar/2026>
         * Maharashtra:
-            * <https://web.archive.org/web/20260329132658/https://cdn.s3waas.gov.in/s344c4c17332cace2124a1a836d9fc4b6f/uploads/2025/12/17671002949025.pdf>
+            * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
         * Punjab:
             * <https://web.archive.org/web/20260216022835/https://punjab.gov.in/wp-content/uploads/2025/12/Calender-2026.pdf>
         * Tamil Nadu:
@@ -196,8 +198,11 @@ class India(
 
         # Hindu Holidays.
         if self._year < 2001 or self._year > 2035:
-            warning_msg = "Requested Holidays are available only from 2001 to 2035."
-            warnings.warn(warning_msg, Warning)
+            warnings.warn(
+                "Requested Holidays are available only from 2001 to 2035.",
+                UserWarning,
+                stacklevel=7,
+            )
 
         # Buddha Purnima.
         self._add_buddha_purnima(tr("Buddha Purnima"))
@@ -251,8 +256,9 @@ class India(
         # Children's Day.
         self._add_holiday_nov_14(tr("Children's Day"))
 
-        # Holi.
-        self._add_holi(tr("Holi"))
+        if self.subdiv != "MH":
+            # Holi.
+            self._add_holi(tr("Holi"))
 
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
@@ -265,6 +271,9 @@ class India(
 
         # Maha Navami.
         self._add_maha_navami(tr("Maha Navami"))
+
+        # Maharishi Valmiki Jayanti.
+        self._add_maharishi_valmiki_jayanti(tr("Maharishi Valmiki Jayanti"))
 
         # Makar Sankranti.
         self._add_makar_sankranti(tr("Makar Sankranti"))
@@ -288,8 +297,12 @@ class India(
 
     # Andaman and Nicobar Islands.
     def _populate_subdiv_an_public_holidays(self):
+        # Ram Navami.
+        self._add_ram_navami(tr("Ram Navami"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
+        # Onam.
+        self._add_onam(tr("Onam"))
 
     # Andhra Pradesh.
     def _populate_subdiv_ap_public_holidays(self):
@@ -410,6 +423,17 @@ class India(
         self._add_gudi_padwa(tr("Gudi Padwa"))
         # Chhatrapati Shivaji Maharaj Jayanti.
         self._add_holiday_feb_19(tr("Chhatrapati Shivaji Maharaj Jayanti"))
+
+        holi_dates = {
+            2026: (MAR, 3),
+        }
+        # Holi.
+        name = tr("Holi")
+        if dt := holi_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_holi(name)
+
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.

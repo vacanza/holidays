@@ -45,9 +45,10 @@ urls.Repository = "https://github.com/vacanza/holidays/"
 
 [dependency-groups]
 dev = [
-  "gitpython>=3.1.45,<4",
+  "gitpython>=3.1.49,<4",
   "hijridate>=2.5,<3",
   "lingva>=5.0.6,<6",
+  "pdfplumber>=0.11.8,<1",
   "pre-commit>=4.5,<5",
   "pygithub>=2.8.1,<3",
   "requests>=2.32.5,<3",
@@ -68,6 +69,7 @@ tests = [
   "numpy>=2,<2.3; python_version<'3.11'",
   "numpy>=2.3.5,<3; python_version>='3.11'",
   "polib>=1.2,<2",
+  "pygments>=2.20,<3",
   "pytest>=9.0.1,<10",
   "pytest-cov>=7,<8",
   "pytest-xdist>=3.8,<4",
@@ -99,6 +101,7 @@ lint.per-file-ignores."scripts/generate_snapshots.py" = [ "T201" ]
 lint.per-file-ignores."scripts/l10n/generate_mo_files.py" = [ "T201" ]
 lint.per-file-ignores."scripts/l10n/generate_po_files.py" = [ "T201" ]
 lint.per-file-ignores."scripts/l10n/l10n_helper.py" = [ "T201" ]
+lint.per-file-ignores."scripts/normalize_text.py" = [ "T201" ]
 lint.per-file-ignores."tests/common.py" = [ "N802" ]
 lint.per-file-ignores."tests/test_holiday_base.py" = [ "S301" ]
 lint.flake8-errmsg.max-string-length = 99

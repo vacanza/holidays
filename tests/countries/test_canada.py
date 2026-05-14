@@ -95,13 +95,14 @@ class TestCanada(CommonCountryTests, TestCase):
         self.assertGovernmentHolidayName(name_observed, obs_dts_sat, obs_dts_sun)
         self.assertNoGovernmentNonObservedHoliday(obs_dts_sat, obs_dts_sun)
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv in {"AB", "BC", "QC"}:
-                self.assertHolidayName(name_observed, holidays, obs_dts_sun)
-                self.assertNoHoliday(holidays, obs_dts_sat)
-            elif subdiv in {"NL", "PE", "SK", "YT"}:
-                self.assertHoliday(holidays, obs_dts_sat, obs_dts_sun)
-            else:
-                self.assertNoHoliday(holidays, obs_dts_sat, obs_dts_sun)
+            match subdiv:
+                case "AB" | "BC" | "QC":
+                    self.assertHolidayName(name_observed, holidays, obs_dts_sun)
+                    self.assertNoHoliday(holidays, obs_dts_sat)
+                case "NL" | "PE" | "SK" | "YT":
+                    self.assertHoliday(holidays, obs_dts_sat, obs_dts_sun)
+                case _:
+                    self.assertNoHoliday(holidays, obs_dts_sat, obs_dts_sun)
             self.assertNoNonObservedHoliday(
                 self.subdiv_holidays_non_observed[subdiv], obs_dts_sat, obs_dts_sun
             )
@@ -913,7 +914,7 @@ class TestCanada(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "ar",
             ("2022-01-01", "يوم السنة الجديدة"),
-            ("2022-01-03", "يوم السنة الجديدة (ملاحظة)"),
+            ("2022-01-03", "يوم السنة الجديدة (يوم تعويضي)"),
             ("2022-02-21", "يوم التراث; يوم الجزيرة; يوم العائلة; يوم لويس رئيل"),
             ("2022-02-25", "يوم التراث"),
             ("2022-03-14", "عيد القديس باتريك"),
@@ -939,8 +940,8 @@ class TestCanada(CommonCountryTests, TestCase):
             ("2022-10-10", "عيد الشكر"),
             ("2022-11-11", "يوم الذكرى"),
             ("2022-12-25", "عيد الميلاد"),
-            ("2022-12-26", "عيد الميلاد (ملاحظة); يوم الملاكمة"),
-            ("2022-12-27", "عيد الميلاد (ملاحظة)"),
+            ("2022-12-26", "عيد الميلاد (يوم تعويضي); يوم الملاكمة"),
+            ("2022-12-27", "عيد الميلاد (يوم تعويضي)"),
         )
 
     def test_l10n_en_us(self):

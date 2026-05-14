@@ -1,3 +1,44 @@
+## Version 0.96
+
+Released May 4, 2026
+
+- Add static type checking support for `countries` and `financial` aliases (#3549 by @PPsyrius, @arkid15r)
+- Refactor India holidays testcases (#3524 by @PPsyrius, @arkid15r)
+- Update .po files generator: use git user identity for "Last-Translator" field (#3553 by @KJhellico)
+- Update Arabic localization: fix "estimated" and "observed" labels translation (#3551 by @dimssu)
+- Update Brazil holidays (#3558 by @KJhellico)
+- Update Germany holidays: add school holidays support (#3533 by @dtretyakov, @arkid15r)
+- Update Mongolia holidays (#3532 by @KJhellico, @arkid15r)
+- Update Nepal holidays: fix some holiday names (#3545 by @Ritik-tech731)
+- Update Switzerland holidays: split Zürich canton and city holidays (#3548 by @PPsyrius)
+- Update United States holidays: fix Georgia's State Holiday observance (#3557 by @PPsyrius)
+- Add pinned version comment after GitHub Actions Commit Hashes (#3554 by @PPsyrius, @arkid15r)
+- Pre-Commit Check for Normalized Unicode (#3544 by @PPsyrius)
+- Scope `Warning` handling in tests to `DeprecationWarning` (#3541 by @PPsyrius)
+
+## Version 0.95
+
+Released April 20, 2026
+
+- Refactor PO generator for robust metadata and improved class discovery (#3204 by @pareshjoshij, @arkid15r, @KJhellico, @PPsyrius)
+- Refactor conditional logic using structural pattern matching (PEP 636) (#3518 by @PPsyrius)
+- Fix typography: replace U+2019 with "'" and U+2013 with '-' (#3539 by @KJhellico)
+- Update .pre-commit-config.yaml: use SHA for versions (#3516 by @arkid15r)
+- Update Austria holidays (#3513 by @PPsyrius, @arkid15r)
+- Update Bhutan holidays: add l10n support (#3389 by @Devika9705)
+- Update Egypt holidays: add Eid al-Fitr 2026 exact date (#3474 by @aziamimoh, @PPsyrius)
+- Update Hebrew calendar generator (#3512 by @KJhellico)
+- Update India holidays: add Bonalu holiday in Telangana (TS) (#3426 by @Vikash-Kumar-23, @arkid15r)
+- Update India holidays: change 2026 Holi date in Maharashtra (MH) (#3379 by @Devika9705, @KJhellico, @PPsyrius)
+- Update India holidays: improve Tamil translations (#3437 by @2024yuva, @KJhellico, @PPsyrius)
+- Update India holidays: update Andaman and Nicobar Islands (AN) holidays (#3476 by @Saahi30, @KJhellico, @PPsyrius)
+- Update National Stock Exchange of India holidays: correct Hindi translations for some holidays (#3457 by @Ritik-tech731, @KJhellico)
+- Update Romania holidays (#3526 by @KJhellico)
+- Update documentation: surface API for `ObservedHolidayBase` and `NoHolidayBase` (#3511 by @PPsyrius, @arkid15r)
+- Update languages list in site assets generator (#3540 by @KJhellico)
+- Add tests for site assets generator (#3543 by @KJhellico)
+- Standardize and fix docstring references (#3509 by @PPsyrius, @arkid15r)
+
 ## Version 0.94
 
 Released April 6, 2026

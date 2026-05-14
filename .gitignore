@@ -1,4 +1,5 @@
 __pycache__
+.cache
 .coverage
 .cursor/rules/snyk_rules.mdc
 .github_token

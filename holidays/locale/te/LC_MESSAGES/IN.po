@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.94\n"
+"Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-04-03 22:16+0530\n"
-"Last-Translator: Nellai Abiram <nellaiabiram08@gmail.com>\n"
+"PO-Revision-Date: 2026-04-27 12:19+0530\n"
+"Last-Translator: Vanshika Pundir <pundirvanshika9@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: te\n"
 "MIME-Version: 1.0\n"
@@ -120,6 +120,10 @@ msgstr "కార్మిక దినోత్సవం"
 msgid "Maha Navami"
 msgstr "మహా నవమి"
 
+#. Maharishi Valmiki Jayanti.
+msgid "Maharishi Valmiki Jayanti"
+msgstr "మహర్షి వాల్మీకి జయంతి"
+
 #. Makar Sankranti.
 msgid "Makar Sankranti"
 msgstr "మకర సంక్రాంతి"
@@ -147,6 +151,10 @@ msgstr "మట్టల ఆదివారం"
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr "డా. బి.ఆర్. అంబేద్కర్ జయంతి"
+
+#. Onam.
+msgid "Onam"
+msgstr "ఓణం"
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
@@ -211,10 +219,6 @@ msgstr "ఝార్ఖండ్ అవతరణ దినోత్సవం"
 #. Karnataka Rajyotsav.
 msgid "Karnataka Rajyotsava"
 msgstr "కర్ణాటక రాజ్యోత్సవం"
-
-#. Onam.
-msgid "Onam"
-msgstr "ఓణం"
 
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"

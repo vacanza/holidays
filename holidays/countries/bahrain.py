@@ -28,7 +28,7 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
     country = "BH"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     # Independence declared on August 15, 1971.
     start_year = 1972
     supported_languages = ("ar", "en_US")

@@ -88,7 +88,7 @@ date(2015, 1, 2) in us_holidays  # False
 us_holidays.get('2014-01-01')  # "New Year's Day"
 ```
 
-The HolidayBase dict-like class will also recognize date strings and Unix timestamps:
+The [`HolidayBase`](https://github.com/vacanza/holidays/blob/main/holidays/holiday_base.py) dict-like class will also recognize date strings and Unix timestamps:
 
 ``` python
 '2014-01-01' in us_holidays  # True
@@ -262,8 +262,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Austria</td>
 <td>AT</td>
 <td>States: 1 (Burgenland, Bgld, B), 2 (Kärnten, Ktn, K), 3 (Niederösterreich, NÖ, N), 4 (Oberösterreich, OÖ, O), 5 (Salzburg, Sbg, S), 6 (Steiermark, Stmk, St), 7 (Tirol, T), 8 (Vorarlberg, Vbg, V), 9 (Wien, W)</td>
-<td><strong>de</strong>, en_US, uk</td>
-<td>BANK</td>
+<td><strong>de</strong>, en_US, th, uk</td>
+<td>BANK, PROTESTANT</td>
 </tr>
 <tr>
 <td>Azerbaijan</td>
@@ -339,7 +339,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bhutan</td>
 <td>BT</td>
 <td>Administrative Subdivisions: 11 (Paro), 12 (Chhukha), 13 (Haa), 14 (Samtse), 15 (Thimphu), 21 (Tsirang), 22 (Dagana), 23 (Punakha), 24 (Wangdue Phodrang), 31 (Sarpang), 32 (Trongsa), 33 (Bumthang), 34 (Zhemgang), 41 (Trashigang), 42 (Monggar), 43 (Pema Gatshel), 44 (Lhuentse), 45 (Samdrup Jongkhar), GA (Gasa), TY (Trashi Yangtse)</td>
-<td></td>
+<td><strong>dz</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -553,7 +553,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Curacao</td>
+<td>Curaçao</td>
 <td>CW</td>
 <td></td>
 <td>en_US, nl, <strong>pap_CW</strong>, uk</td>
@@ -746,7 +746,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>DE</td>
 <td>States: BB (Brandenburg), BE (Berlin), BW (Baden-Württemberg), BY (Bayern), HB (Bremen), HE (Hessen), HH (Hamburg), MV (Mecklenburg-Vorpommern), NI (Niedersachsen), NW (Nordrhein-Westfalen), RP (Rheinland-Pfalz), SH (Schleswig-Holstein), SL (Saarland), SN (Sachsen), ST (Sachsen-Anhalt), TH (Thüringen); cities: Augsburg</td>
 <td><strong>de</strong>, en_US, th, uk</td>
-<td>CATHOLIC</td>
+<td>CATHOLIC, SCHOOL</td>
 </tr>
 <tr>
 <td>Ghana</td>
@@ -1675,9 +1675,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Switzerland</td>
 <td>CH</td>
-<td>Cantons: AG (Aargau), AI (Appenzell Innerrhoden), AR (Appenzell Ausserrhoden), BE (Bern, Berne), BL (Basel-Landschaft), BS (Basel-Stadt), FR (Freiburg, Fribourg), GE (Genève), GL (Glarus), GR (Graubünden, Grigioni, Grischun), JU (Jura), LU (Luzern), NE (Neuchâtel), NW (Nidwalden), OW (Obwalden), SG (Sankt Gallen), SH (Schaffhausen), SO (Solothurn), SZ (Schwyz), TG (Thurgau), TI (Ticino), UR (Uri), VD (Vaud), VS (Valais, Wallis), ZG (Zug), ZH (Zürich)</td>
+<td>Cantons: AG (Aargau), AI (Appenzell Innerrhoden), AR (Appenzell Ausserrhoden), BE (Bern, Berne), BL (Basel-Landschaft), BS (Basel-Stadt), FR (Freiburg, Fribourg), GE (Genève), GL (Glarus), GR (Graubünden, Grigioni, Grischun), JU (Jura), LU (Luzern), NE (Neuchâtel), NW (Nidwalden), OW (Obwalden), SG (Sankt Gallen), SH (Schaffhausen), SO (Solothurn), SZ (Schwyz), TG (Thurgau), TI (Ticino), UR (Uri), VD (Vaud), VS (Valais, Wallis), ZG (Zug), ZH (Zürich); cities: Stadt Zurich (Stadt Zürich)</td>
 <td><strong>de</strong>, en_US, fr, it, th, uk</td>
-<td>HALF_DAY, OPTIONAL</td>
+<td>DE_FACTO, HALF_DAY, OPTIONAL</td>
 </tr>
 <tr>
 <td>Syrian Arab Republic</td>

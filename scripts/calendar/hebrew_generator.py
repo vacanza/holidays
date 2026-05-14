@@ -13,82 +13,148 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from pathlib import Path
+"""Generate Gregorian dates for holidays based on the Hebrew lunisolar calendar.
 
-from convertdate import gregorian, hebrew
+Run with:
 
-CLASS_NAME = "_HebrewLunisolar"
-OUT_FILE_NAME = "hebrew_dates.py"
+    python -m scripts.calendar.hebrew_generator
 
-CLASS_TEMPLATE = """class {class_name}:
-{holiday_data}"""
+Alternatively, run with uv:
 
-HOLIDAY_DATA_TEMPLATE = """    {hol_name}_DATES = {{
-{year_dates}
-    }}
+    uv run -m scripts.calendar.hebrew_generator
+
+This generates the file `holidays/calendars/hebrew_dates.py`,
+whose data can then be copied to `holidays/calendars/hebrew.py`.
 """
 
-YEAR_TEMPLATE = "        {year}: ({dates}),"
+from collections import defaultdict
+from datetime import date
+from functools import cache
 
-HEBREW_HOLIDAYS = (
-    (1, 15, "PASSOVER"),
-    (2, 5, "INDEPENDENCE_DAY"),
-    (2, 18, "LAG_BAOMER"),
-    (3, 6, "SHAVUOT"),
-    (5, 9, "TISHA_BAV"),
-    (7, 1, "ROSH_HASHANAH"),
-    (7, 10, "YOM_KIPPUR"),
-    (7, 15, "SUKKOT"),
-    (9, 25, "HANUKKAH"),
-    (12, 14, "PURIM"),
-)
+from .generator import CalendarGenerator
+
+HEBREW_HOLIDAYS = {
+    "PASSOVER": (1, 15),
+    "INDEPENDENCE_DAY": (2, 5),
+    "LAG_BAOMER": (2, 18),
+    "SHAVUOT": (3, 6),
+    "TISHA_BAV": (5, 9),
+    "ROSH_HASHANAH": (7, 1),
+    "YOM_KIPPUR": (7, 10),
+    "SUKKOT": (7, 15),
+    "HANUKKAH": (9, 25),
+    "PURIM": (12, 14),
+}
+
+HEBREW_EPOCH_RD = -1373427  # 347997 [Hebrew epoch JD] - 1721425 [Julian date of 1 Jan 1 CE] + 1.
+HEBREW_YEAR_OFFSET = 3760  # Offset to convert Gregorian year to Hebrew year.
 
 
-def generate_data():
-    g_year_min, g_year_max = (1947, 2100)
-    h_year_min = g_year_min + hebrew.HEBREW_YEAR_OFFSET
-    h_year_max = g_year_max + hebrew.HEBREW_YEAR_OFFSET + 1
+class _Lunisolar:
+    """Convert dates from the Hebrew lunisolar calendar to Gregorian dates.
 
-    dates = {}
-    for h_year in range(h_year_min, h_year_max + 1):
-        for h_month, h_day, hol_name in HEBREW_HOLIDAYS:
-            if h_month == 12 and hebrew.leap(h_year):
-                h_month += 1
-            g_date = date(*gregorian.from_jd(hebrew.to_jd(h_year, h_month, h_day)))
+    References:
+        * <https://en.wikipedia.org/wiki/Hebrew_calendar>
+    """
+
+    @staticmethod
+    def leap(year: int) -> bool:
+        """Return True if a Hebrew year is a leap year."""
+        return ((year * 7) + 1) % 19 < 7
+
+    @staticmethod
+    @cache
+    def elapsed_days(year: int) -> int:
+        months = ((235 * year) - 234) // 19
+        parts = 12084 + 13753 * months
+        day = months * 29 + parts // 25920
+
+        # A year cannot start on a Sunday, Wednesday, or Friday.
+        if (3 * (day + 1)) % 7 < 3:
+            day += 1
+
+        return day
+
+    def year_length_correction(self, year: int) -> int:
+        present_year_len = self.elapsed_days(year)
+        next_year_len = self.elapsed_days(year + 1)
+        if next_year_len - present_year_len == 356:
+            return 2
+
+        last_year_len = self.elapsed_days(year - 1)
+        if present_year_len - last_year_len == 382:
+            return 1
+
+        return 0
+
+    def new_year(self, year: int) -> int:
+        return HEBREW_EPOCH_RD + self.elapsed_days(year) + self.year_length_correction(year)
+
+    @cache
+    def days_in_year(self, year: int) -> int:
+        return self.new_year(year + 1) - self.new_year(year)
+
+    @cache
+    def month_offsets(self, year: int) -> list[int]:
+        """Cumulative day offsets for months in a given Hebrew year."""
+        is_leap = self.leap(year)
+        months_in_year = 13 if is_leap else 12
+        year_len_mod = self.days_in_year(year) % 10
+
+        offsets = [0] * (months_in_year + 1)
+        days = 0
+        for m in range(1, months_in_year + 1):
+            offsets[m] = days
+
+            match m:
+                # Fixed-length 29 day months: Iyyar, Tammuz, Elul, Tevet, Adar II.
+                case 2 | 4 | 6 | 10 | 13:
+                    days += 29
+                # Short Marcheshvan (days depend on length of year).
+                case 8 if year_len_mod != 5:
+                    days += 29
+                # Short Kislev (the same).
+                case 9 if year_len_mod == 3:
+                    days += 29
+                # Short Adar (in non-leap years).
+                case 12 if not is_leap:
+                    days += 29
+                case _:
+                    days += 30
+
+        return offsets
+
+    def to_rd(self, year: int, month: int, day: int) -> int:
+        """Convert a Hebrew date to a Rata Die (RD) day count."""
+        offsets = self.month_offsets(year)
+        delta = offsets[month] - offsets[7]
+        if month < 7:
+            delta += self.days_in_year(year)
+
+        return self.new_year(year) + delta + day - 1
+
+
+def generate_data() -> None:
+    cal = _Lunisolar()
+    g_year_min, g_year_max = 1947, 2100
+
+    dates: dict[str, dict[int, date]] = defaultdict(dict)
+    for name, (holiday_month, holiday_day) in HEBREW_HOLIDAYS.items():
+        for year in range(g_year_min + HEBREW_YEAR_OFFSET, g_year_max + HEBREW_YEAR_OFFSET + 2):
+            g_date = date.fromordinal(
+                cal.to_rd(
+                    year,
+                    holiday_month + 1 if holiday_month == 12 and cal.leap(year) else holiday_month,
+                    holiday_day,
+                )
+            )
             g_year = g_date.year
             if g_year < g_year_min or g_year > g_year_max:
                 continue
-            if dt := dates.get(g_year):
-                dt[hol_name] = g_date
-            else:
-                dates[g_year] = {hol_name: g_date}
+            dates[name][g_year] = g_date
 
-    g_year_min = min(dates.keys())
-    g_year_max = max(dates.keys())
-
-    holiday_names = sorted(d[2] for d in HEBREW_HOLIDAYS)
-    holiday_data = []
-    for hol_name in holiday_names:
-        year_dates = []
-        for year in range(g_year_min, g_year_max + 1):
-            dts = dates[year].get(hol_name)
-            if not dts:
-                continue
-            dates_str = f"{dts.strftime('%b').upper()}, {dts.day}"
-            year_dates.append(YEAR_TEMPLATE.format(year=year, dates=dates_str))
-        year_dates_str = "\n".join(year_dates)
-        holiday_data.append(
-            HOLIDAY_DATA_TEMPLATE.format(hol_name=hol_name, year_dates=year_dates_str)
-        )
-    holiday_data_str = "\n".join(holiday_data)
-    class_str = CLASS_TEMPLATE.format(
-        class_name=CLASS_NAME,
-        holiday_data=holiday_data_str,
-    )
-
-    path = Path("holidays/calendars") / OUT_FILE_NAME
-    path.write_text(class_str, encoding="UTF-8")
+    cal_gen = CalendarGenerator("hebrew", "_HebrewLunisolar")
+    cal_gen.generate(dates)
 
 
 if __name__ == "__main__":

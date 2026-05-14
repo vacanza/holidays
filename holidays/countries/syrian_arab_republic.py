@@ -32,7 +32,7 @@ class SyrianArabRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, 
     country = "SY"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     # Earliest reliable record dates back to 2004.
     start_year = 2004
     supported_languages = ("ar", "en_US")

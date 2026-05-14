@@ -26,8 +26,9 @@ True
 False
 ```
 
-You can use the `country_holidays` or `financial_holidays` functions to create the object
-using a string with the country code:
+You can use the [`country_holidays`](https://github.com/vacanza/holidays/blob/dev/holidays/utils.py)
+or [`financial_holidays`](https://github.com/vacanza/holidays/blob/dev/holidays/utils.py) functions
+to create the object using a string with the country code:
 
 ``` python
 >>> us_holidays = holidays.country_holidays('US')
@@ -224,7 +225,12 @@ Each country defines which categories it supports:
 US categories: ('government', 'public', 'unofficial')
 
 >>> print("Germany categories:", holidays.Germany.supported_categories)
-Germany categories: ('catholic', 'public')
+Germany categories: ('catholic', 'public', 'school')
+
+>>> from holidays.constants import SCHOOL
+>>> de_by_school = holidays.Germany(subdiv='BY', categories=SCHOOL, years=2025)
+>>> print(de_by_school['2025-08-01'])
+Sommerferien
 
 >>> print("Argentina categories:", holidays.Argentina.supported_categories)
 Argentina categories: ('armenian', 'bank', 'government', 'hebrew', 'islamic', 'public')
@@ -387,9 +393,9 @@ False
 True
 ```
 
-We can also inherit from the HolidayBase class which has an empty `_populate` method so we start
-with no holidays and must define them all ourselves. This is how we would create a holidays class
-for a country that is not supported yet:
+We can also inherit from the [`HolidayBase`](https://github.com/vacanza/holidays/blob/main/holidays/holiday_base.py)
+class which has an empty `_populate` method so we start with no holidays and must define them all ourselves.
+This is how we would create a holidays class for a country that is not supported yet:
 
 ``` python
 >>> class NewCountryHolidays(holidays.HolidayBase):
@@ -405,7 +411,7 @@ We can use the `self._add_holiday_*` methods to specify holidays:
 >>> class MovingHolidays(holidays.HolidayBase):
 >>>     def _populate(self, year):
 >>>         super()._populate(year)
->>> 
+>>>
 >>>         self._add_holiday_3rd_mon_of_jan("Martin Luther King Jr. Day")
 >>>         self._add_holiday_last_fri_of_feb("Last Friday of February")
 >>>         self._add_holiday_1st_mon_before_dec_25("Monday before Christmas")
@@ -492,7 +498,7 @@ True
 
 ## Generate iCalendar content and export to `.ics`
 
-[ICalExporter](https://github.com/vacanza/holidays/blob/main/holidays/ical.py) facilitates
+[`ICalExporter`](https://github.com/vacanza/holidays/blob/main/holidays/ical.py) facilitates
 the creation and export of iCalendar files
 in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
 
@@ -504,7 +510,8 @@ in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
 >>> exporter = ICalExporter(us_holidays)
 ```
 
-To create iCalendar content, use `generate`.
+To create iCalendar content, use
+[`generate`](https://github.com/vacanza/holidays/blob/main/holidays/ical.py).
 
 ``` python
 >>> from holidays import country_holidays
@@ -512,7 +519,7 @@ To create iCalendar content, use `generate`.
 >>> th_holidays = country_holidays('TH', years=2024)
 >>> exporter = ICalExporter(th_holidays)
 >>> ical_content = exporter.generate()
-# Thailand's Songkran Festival (April 13th–15th) should be counted as a single
+# Thailand's Songkran Festival (April 13th-15th) should be counted as a single
 # VEVENT with a duration of three days.
 >>> ical_content.count("SUMMARY:วันสงกรานต์\r\n")
 1
@@ -548,7 +555,8 @@ True
 1
 ```
 
-To export to `.ics` format, use `save_ics`.
+To export to `.ics` format, use
+[`save_ics`](https://github.com/vacanza/holidays/blob/main/holidays/ical.py).
 
 ``` python
 >>> from pathlib import Path
