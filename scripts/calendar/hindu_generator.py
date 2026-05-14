@@ -76,7 +76,7 @@ class _Astronomy:
 
     def _set_observer_date(self, dt: date) -> None:
         """Point the shared observer to the start of dt (UTC)."""
-        self._observer.date = f"{dt.year}/{dt.month}/{dt.day}"
+        self._observer.date = ephem.Date(dt)
 
     def _tropical_lon(self, body: ephem.Body, ephem_date: ephem.Date) -> float:
         """Return the tropical (apparent) ecliptic longitude of body in degrees."""
@@ -85,23 +85,20 @@ class _Astronomy:
         return math.degrees(ecl.lon) % 360
 
     @cache
-    def _sunrise_jd(self, dt: date) -> float:
-        """Return the JD of sunrise on dt at Ujjain."""
+    def _sunrise(self, dt: date) -> ephem.Date:
+        """Returns sunrise on dt at Ujjain."""
         self._set_observer_date(dt)
-        ed = self._observer.next_rising(self._sun)
-        return float(ed) + _DUBLIN_TO_JD
+        return self._observer.next_rising(self._sun)
 
     @cache
-    def _sunset_jd(self, dt: date) -> float:
-        """Return the JD of sunset on dt at Ujjain."""
+    def _sunset(self, dt: date) -> ephem.Date:
+        """Returns sunset on dt at Ujjain."""
         self._set_observer_date(dt)
-        ed = self._observer.next_setting(self._sun)
-        return float(ed) + _DUBLIN_TO_JD
+        return self._observer.next_setting(self._sun)
 
-    def _sidereal_solar_zodiac_sign(self, jd: float) -> int:
+    def _sidereal_solar_zodiac_sign(self, ed: ephem.Date) -> int:
         """Return the sidereal zodiac sign index (0 = Aries … 11 = Pisces) of the
-        Sun at the given Julian Day Number."""
-        ed = ephem.Date(jd - _DUBLIN_TO_JD)
+        Sun at the given date."""
         trop_lon = self._tropical_lon(self._sun, ed)
         ayanamsa = self._lahiri_ayanamsa(ed)
         sid_lon = self._norm360(trop_lon - ayanamsa)
@@ -133,33 +130,32 @@ class _Lunisolar(_Astronomy):
     # ]
 
     @cache
-    def _midnight_jd(self, dt: date) -> float:
-        """Return the JD of Nishita Kaal (midpoint of sunset → next sunrise)."""
-        ss = self._sunset_jd(dt)
-        sr = self._sunrise_jd(dt + timedelta(days=1))
-        return (ss + sr) / 2.0
+    def _midnight(self, dt: date) -> ephem.Date:
+        """Return Nishita Kaal (midpoint of sunset → next sunrise)."""
+        ss = self._sunset(dt)
+        sr = self._sunrise(dt + timedelta(days=1))
+        return ephem.Date((float(ss) + float(sr)) / 2)
 
     @cache
-    def _aparahna_jd(self, dt: date) -> float:
-        """Return the JD of Aparahna (4th of 5 equal day-parts) on dt."""
-        sr = self._sunrise_jd(dt)
-        ss = self._sunset_jd(dt)
-        return sr + (3 / 5) * (ss - sr)
+    def _aparahna(self, dt: date) -> ephem.Date:
+        """Return Aparahna (4th of 5 equal day-parts) on dt."""
+        sr = self._sunrise(dt)
+        ss = self._sunset(dt)
+        return ephem.Date(float(sr) + (3 / 5) * (float(ss) - float(sr)))
 
     @cache
-    def _madhyahna_jd(self, dt: date) -> float:
-        """Return the JD of Madhyahna (midpoint of sunrise → sunset) on dt."""
-        sr = self._sunrise_jd(dt)
-        ss = self._sunset_jd(dt)
-        return (sr + ss) / 2
+    def _madhyahna(self, dt: date) -> ephem.Date:
+        """Return Madhyahna (midpoint of sunrise → sunset) on dt."""
+        sr = self._sunrise(dt)
+        ss = self._sunset(dt)
+        return ephem.Date((float(sr) + float(ss)) / 2)
 
-    def _tithi(self, jd: float) -> int:
-        """Return the tithi (1-30) at the given Julian Day Number.
+    def _tithi(self, ed: ephem.Date) -> int:
+        """Return the tithi (1-30) at the given date.
 
         Tithis are based on tropical longitudes (the ayanamsa cancels out in the
         difference moon - sun).
         """
-        ed = ephem.Date(jd - _DUBLIN_TO_JD)
         sun_lon = self._tropical_lon(self._sun, ed)
         moon_lon = self._tropical_lon(self._moon, ed)
         return int(self._norm360(moon_lon - sun_lon) // 12) + 1
@@ -180,11 +176,11 @@ class _Lunisolar(_Astronomy):
         end = date(year, 12, 31)
 
         while dt <= end:
-            ss_jd = self._sunset_jd(dt)
-            sr_jd = self._sunrise_jd(dt)
-            t_ss = self._tithi(ss_jd)
-            t_sr = self._tithi(sr_jd)
-            sign = self._sidereal_solar_zodiac_sign(ss_jd)
+            ss = self._sunset(dt)
+            sr = self._sunrise(dt)
+            t_ss = self._tithi(ss)
+            t_sr = self._tithi(sr)
+            sign = self._sidereal_solar_zodiac_sign(ss)
 
             # Amavasya active at sunset (pradosh rule)
             # or Amavasya fell between two sunsets, still active at sunrise
@@ -217,19 +213,17 @@ class _Lunisolar(_Astronomy):
 
         ashwin_ama = None
         while dt <= end:
-            ss_jd = self._sunset_jd(dt)
-            t = self._tithi(ss_jd)
-            sign = self._sidereal_solar_zodiac_sign(ss_jd)
-            t_prev = self._tithi(self._sunset_jd(dt - timedelta(days=1)))
+            ss = self._sunset(dt)
+            t = self._tithi(ss)
+            sign = self._sidereal_solar_zodiac_sign(ss)
+            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
 
             if t == 30 and sign == 5:
                 ashwin_ama = dt
                 break
 
             if t == 1 and t_prev == 29 and sign == 5:
-                sign_prev = self._sidereal_solar_zodiac_sign(
-                    self._sunset_jd(dt - timedelta(days=1))
-                )
+                sign_prev = self._sidereal_solar_zodiac_sign(self._sunset(dt - timedelta(days=1)))
                 if sign_prev == 5:
                     ashwin_ama = dt
                     break
@@ -243,11 +237,11 @@ class _Lunisolar(_Astronomy):
         dt = ashwin_ama + timedelta(days=1)
 
         while dt <= ashwin_ama + timedelta(days=15):
-            ap_jd = self._aparahna_jd(dt)
-            ap_jd_prev = self._aparahna_jd(dt - timedelta(days=1))
+            ap = self._aparahna(dt)
+            ap_prev = self._aparahna(dt - timedelta(days=1))
 
-            t = self._tithi(ap_jd)
-            t_prev = self._tithi(ap_jd_prev)
+            t = self._tithi(ap)
+            t_prev = self._tithi(ap_prev)
 
             # Case 1: Dashami present -> return FIRST occurrence
             if t == 10:
@@ -275,10 +269,10 @@ class _Lunisolar(_Astronomy):
         # Last Bhadrapada Amavasya (sunset tithi = 30, sun in Leo = sign 4)
         bhadra_ama = None
         while dt <= end:
-            ss_jd = self._sunset_jd(dt)
-            t = self._tithi(ss_jd)
-            sign = self._sidereal_solar_zodiac_sign(ss_jd)
-            t_prev = self._tithi(self._sunset_jd(dt - timedelta(days=1)))
+            ss = self._sunset(dt)
+            t = self._tithi(ss)
+            sign = self._sidereal_solar_zodiac_sign(ss)
+            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
 
             if (t == 30 and sign == 4) or (t == 1 and t_prev == 29 and sign == 4):
                 bhadra_ama = dt
@@ -293,8 +287,8 @@ class _Lunisolar(_Astronomy):
             return None
         dt = bhadra_ama + timedelta(days=1)
         while dt <= bhadra_ama + timedelta(days=10):
-            mj = self._madhyahna_jd(dt)
-            mj_prev = self._madhyahna_jd(dt - timedelta(days=1))
+            mj = self._madhyahna(dt)
+            mj_prev = self._madhyahna(dt - timedelta(days=1))
             t = self._tithi(mj)
             t_prev = self._tithi(mj_prev)
 
@@ -324,10 +318,10 @@ class _Lunisolar(_Astronomy):
         # Kartik Amavasya (sunset tithi=30, sun in sidereal Libra=sign 6)
         kartik_ama = None
         while dt <= end:
-            ss_jd = self._sunset_jd(dt)
-            t = self._tithi(ss_jd)
-            sign = self._sidereal_solar_zodiac_sign(ss_jd)
-            t_prev = self._tithi(self._sunset_jd(dt - timedelta(days=1)))
+            ss = self._sunset(dt)
+            t = self._tithi(ss)
+            sign = self._sidereal_solar_zodiac_sign(ss)
+            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
 
             if (t == 30 and sign == 6) or (t == 1 and t_prev == 29 and sign == 6):
                 kartik_ama = dt
@@ -341,11 +335,11 @@ class _Lunisolar(_Astronomy):
         # Find first sunrise with Purnima active
         dt = kartik_ama + timedelta(days=1)
         while dt <= kartik_ama + timedelta(days=20):
-            sr_jd = self._sunrise_jd(dt)
-            sr_jd_prev = self._sunrise_jd(dt - timedelta(days=1))
+            sr = self._sunrise(dt)
+            sr_prev = self._sunrise(dt - timedelta(days=1))
 
-            t = self._tithi(sr_jd)
-            t_prev = self._tithi(sr_jd_prev)
+            t = self._tithi(sr)
+            t_prev = self._tithi(sr_prev)
 
             # First sunrise with Purnima (wasn't active yesterday)
             if t == 15 and t_prev != 15:
@@ -396,10 +390,10 @@ class _Lunisolar(_Astronomy):
 
         # Phalgun Amavasya (or Magh as fallback)
         while dt <= end:
-            ss_jd = self._sunset_jd(dt)
-            t = self._tithi(ss_jd)
-            sign = self._sidereal_solar_zodiac_sign(ss_jd)
-            t_prev = self._tithi(self._sunset_jd(dt - timedelta(days=1)))
+            ss = self._sunset(dt)
+            t = self._tithi(ss)
+            sign = self._sidereal_solar_zodiac_sign(ss)
+            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
 
             # Magh Amavasya as fallback (sun in Capricorn = sign 9)
             if (t == 30 and sign == 9) or (t == 1 and t_prev == 29 and sign == 9):
@@ -426,9 +420,9 @@ class _Lunisolar(_Astronomy):
         dt = ref + timedelta(days=1)
 
         while dt <= ref + timedelta(days=20):
-            ss_jd = self._sunset_jd(dt)
-            t = self._tithi(ss_jd)
-            t_prev = self._tithi(self._sunset_jd(dt - timedelta(days=1)))
+            ss = self._sunset(dt)
+            t = self._tithi(ss)
+            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
 
             # Purnima skipped entirely between sunsets (14->16) - night of Holi
             if t == 16 and t_prev == 14:
@@ -473,10 +467,10 @@ class _Lunisolar(_Astronomy):
         # Bhadrapad Amavasya = tithi 30 at sunset, sun in sign 4 (Leo)
         bhadrapad_ama = None
         while dt <= end:
-            ss_jd = self._sunset_jd(dt)
-            t = self._tithi(ss_jd)
-            sign = self._sidereal_solar_zodiac_sign(ss_jd)
-            t_prev = self._tithi(self._sunset_jd(dt - timedelta(days=1)))
+            ss = self._sunset(dt)
+            t = self._tithi(ss)
+            sign = self._sidereal_solar_zodiac_sign(ss)
+            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
 
             if (t == 30 and sign == 4) or (t == 1 and t_prev == 29 and sign == 4):
                 bhadrapad_ama = dt
@@ -493,9 +487,9 @@ class _Lunisolar(_Astronomy):
 
         dt = search_start
         while dt <= search_end:
-            sr_jd = self._sunrise_jd(dt)
-            t = self._tithi(sr_jd)
-            t_prev = self._tithi(self._sunrise_jd(dt - timedelta(days=1)))
+            sr = self._sunrise(dt)
+            t = self._tithi(sr)
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             # Ashtami active at sunrise, keep going
             if t == 23:
@@ -533,12 +527,12 @@ class _Lunisolar(_Astronomy):
         # Magh and Phalgun Chaturdashi
         # (tithi 29 at sunset or midnight, sun in Capricorn or Aquarius)
         while dt <= end:
-            ss_jd = self._sunset_jd(dt)
-            mid_jd = self._midnight_jd(dt)
-            t_ss = self._tithi(ss_jd)
-            t_mid = self._tithi(mid_jd)
-            sign = self._sidereal_solar_zodiac_sign(ss_jd)
-            sign_prev = self._sidereal_solar_zodiac_sign(self._sunset_jd(dt - timedelta(days=1)))
+            ss = self._sunset(dt)
+            mid = self._midnight(dt)
+            t_ss = self._tithi(ss)
+            t_mid = self._tithi(mid)
+            sign = self._sidereal_solar_zodiac_sign(ss)
+            sign_prev = self._sidereal_solar_zodiac_sign(self._sunset(dt - timedelta(days=1)))
 
             is_chaturdashi = t_ss == 29 or t_mid == 29
 
@@ -551,9 +545,9 @@ class _Lunisolar(_Astronomy):
                 and phalgun_chaturdashi is None
             ):
                 # Check if previous day's midnight already had tithi 29 in Magh
-                t_mid_prev = self._tithi(self._midnight_jd(dt - timedelta(days=1)))
+                t_mid_prev = self._tithi(self._midnight(dt - timedelta(days=1)))
                 sign_prev_day = self._sidereal_solar_zodiac_sign(
-                    self._sunset_jd(dt - timedelta(days=1))
+                    self._sunset(dt - timedelta(days=1))
                 )
                 if t_mid_prev == 29 and sign_prev_day == 9:
                     phalgun_chaturdashi = dt - timedelta(days=1)
@@ -608,10 +602,10 @@ class _Lunisolar(_Astronomy):
         # Find Chaitra Amavasya (sun in Pisces -> sign 11)
         chaitra_ama = None
         while dt <= end:
-            ss_jd = self._sunset_jd(dt)
-            t = self._tithi(ss_jd)
-            sign = self._sidereal_solar_zodiac_sign(ss_jd)
-            t_prev = self._tithi(self._sunset_jd(dt - timedelta(days=1)))
+            ss = self._sunset(dt)
+            t = self._tithi(ss)
+            sign = self._sidereal_solar_zodiac_sign(ss)
+            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
 
             # Normal Amavasya
             if t == 30 and sign == 11:
@@ -620,9 +614,7 @@ class _Lunisolar(_Astronomy):
 
             # skipped Amavasya (29 -> 1)
             if t == 1 and t_prev == 29 and sign == 11:
-                sign_prev = self._sidereal_solar_zodiac_sign(
-                    self._sunset_jd(dt - timedelta(days=1))
-                )
+                sign_prev = self._sidereal_solar_zodiac_sign(self._sunset(dt - timedelta(days=1)))
                 if sign_prev == 11:
                     chaitra_ama = dt
                     break
@@ -638,11 +630,11 @@ class _Lunisolar(_Astronomy):
         last_navami = None
 
         while dt <= chaitra_ama + timedelta(days=15):
-            md_jd = self._madhyahna_jd(dt)
-            md_jd_prev = self._madhyahna_jd(dt - timedelta(days=1))
+            md = self._madhyahna(dt)
+            md_prev = self._madhyahna(dt - timedelta(days=1))
 
-            t = self._tithi(md_jd)
-            t_prev = self._tithi(md_jd_prev)
+            t = self._tithi(md)
+            t_prev = self._tithi(md_prev)
 
             # Navami present -> keep updating (last is needed)
             if t == 9:
@@ -689,19 +681,17 @@ class _Lunisolar(_Astronomy):
         # Ashwin Amavasya
         ashwin_ama = None
         while dt <= end:
-            ss_jd = self._sunset_jd(dt)
-            t = self._tithi(ss_jd)
-            sign = self._sidereal_solar_zodiac_sign(ss_jd)
-            t_prev = self._tithi(self._sunset_jd(dt - timedelta(days=1)))
+            ss = self._sunset(dt)
+            t = self._tithi(ss)
+            sign = self._sidereal_solar_zodiac_sign(ss)
+            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
 
             if t == 30 and sign == 5:
                 ashwin_ama = dt
                 break
 
             if t == 1 and t_prev == 29 and sign == 5:
-                sign_prev = self._sidereal_solar_zodiac_sign(
-                    self._sunset_jd(dt - timedelta(days=1))
-                )
+                sign_prev = self._sidereal_solar_zodiac_sign(self._sunset(dt - timedelta(days=1)))
                 if sign_prev == 5:
                     ashwin_ama = dt
                     break
@@ -714,16 +704,16 @@ class _Lunisolar(_Astronomy):
         dt = ashwin_ama + timedelta(days=1)
 
         for _ in range(3):
-            sr = self._sunrise_jd(dt)
-            sr_prev = self._sunrise_jd(dt - timedelta(days=1))
+            sr = self._sunrise(dt)
+            sr_prev = self._sunrise(dt - timedelta(days=1))
             t = self._tithi(sr)
             t_prev = self._tithi(sr_prev)
 
             # Amavasya at sunrise, next=Pratipada, day after=Dwitiya skipped
             # Pratipada was very short - today is Navratri
             if t == 30:
-                t_next = self._tithi(self._sunrise_jd(dt + timedelta(days=1)))
-                t_next2 = self._tithi(self._sunrise_jd(dt + timedelta(days=2)))
+                t_next = self._tithi(self._sunrise(dt + timedelta(days=1)))
+                t_next2 = self._tithi(self._sunrise(dt + timedelta(days=2)))
                 if t_next == 1 and t_next2 >= 3:
                     return dt
 
@@ -777,9 +767,9 @@ class _Solar(_Astronomy):
 
         dt = date(year, 1, 12)
         while dt <= date(year, 1, 17):
-            ss_jd = self._sunset_jd(dt)
-            sign_today = self._sidereal_solar_zodiac_sign(ss_jd)
-            sign_prev = self._sidereal_solar_zodiac_sign(self._sunset_jd(dt - timedelta(days=1)))
+            ss = self._sunset(dt)
+            sign_today = self._sidereal_solar_zodiac_sign(ss)
+            sign_prev = self._sidereal_solar_zodiac_sign(self._sunset(dt - timedelta(days=1)))
 
             if sign_today == 9 and sign_prev != 9:
                 return dt
