@@ -137,12 +137,13 @@ class BangladeshIslamicHolidays(_CustomIslamicHolidays):
     }
 
     # https://www.timeanddate.com/holidays/bangladesh/eid-ul-fitr
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2022, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2022, 2026)
     EID_AL_FITR_DATES = {
         2022: (MAY, 3),
         2023: (APR, 22),
         2024: (APR, 10),
         2025: (MAR, 31),
+        2026: (MAR, 21),
     }
 
     # https://www.timeanddate.com/holidays/bangladesh/jumatul-bidah
