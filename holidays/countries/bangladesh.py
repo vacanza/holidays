@@ -157,12 +157,13 @@ class BangladeshIslamicHolidays(_CustomIslamicHolidays):
     }
 
     # https://www.timeanddate.com/holidays/bangladesh/shab-e-qadr
-    LAYLAT_AL_QADR_DATES_CONFIRMED_YEARS = (2022, 2025)
+    LAYLAT_AL_QADR_DATES_CONFIRMED_YEARS = (2022, 2026)
     LAYLAT_AL_QADR_DATES = {
         2022: (APR, 29),
         2023: (APR, 19),
         2024: (APR, 7),
         2025: (MAR, 28),
+        2026: (MAR, 17),
     }
 
     # https://www.timeanddate.com/holidays/bangladesh/eid-e-milad-un-nabi
