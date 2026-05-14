@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-26 12:14+0530\n"
-"PO-Revision-Date: 2026-04-27 12:19+0530\n"
-"Last-Translator: Vanshika Pundir <pundirvanshika9@gmail.com>\n"
+"PO-Revision-Date: 2026-05-14 18:08+0530\n"
+"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: kn\n"
 "MIME-Version: 1.0\n"
@@ -36,6 +36,11 @@ msgstr "%s (ಅಂದಾಜು)"
 msgid "Republic Day"
 msgstr "ಗಣರಾಜ್ಯೋತ್ಸವ"
 
+#. Dr. B. R. Ambedkar's Jayanti.
+#. Dr. B. R. Ambedkar Jayanti.
+msgid "Dr. B. R. Ambedkar's Jayanti"
+msgstr "ಡಾ|| ಬಿ.ಆರ್.ಅಂಬೇಡ್ಕರ್ ಜಯಂತಿ"
+
 #. Independence Day.
 msgid "Independence Day"
 msgstr "ಸ್ವಾತಂತ್ರ್ಯ ದಿನಾಚರಣೆ"
@@ -48,17 +53,21 @@ msgstr "ಗಾಂಧಿ ಜಯಂತಿ"
 msgid "Buddha Purnima"
 msgstr "ಬುದ್ಧ ಪೂರ್ಣಿಮ"
 
-#. Diwali.
-msgid "Diwali"
+#. Diwali (Deepavali).
+msgid "Diwali (Deepavali)"
 msgstr "ದೀಪಾವಳಿ"
-
-#. Janmashtami.
-msgid "Janmashtami"
-msgstr "ಶ್ರೀ ಕೃಷ್ಣ ಜನ್ಮಾಷ್ಟಮಿ"
 
 #. Dussehra.
 msgid "Dussehra"
 msgstr "ವಿಜಯದಶಮಿ"
+
+#. Dussehra (Mahanavami).
+msgid "Dussehra (Mahanavami)"
+msgstr "ವಿಜಯದಶಮಿ (ಮಹಾನವಮಿ)"
+
+#. Janmashtami (Vaishnava).
+msgid "Janmashtami (Vaishnava)"
+msgstr "ಜನ್ಮಾಷ್ಟಮಿ (ವೈಷ್ಣವ)"
 
 #. Mahavir Jayanti.
 msgid "Mahavir Jayanti"
@@ -71,6 +80,14 @@ msgstr "ಮಹಾ ಶಿವರಾತ್ರಿ"
 #. Guru Nanak Jayanti.
 msgid "Guru Nanak Jayanti"
 msgstr "ಗುರು ನಾನಕ್ ಜಯಂತಿ"
+
+#. Holi.
+msgid "Holi"
+msgstr "ಹೋಳಿ ಹಬ್ಬ"
+
+#. Ram Navami.
+msgid "Ram Navami"
+msgstr "ಶ್ರೀ ರಾಮನವಮಿ"
 
 #. Ashura.
 msgid "Muharram"
@@ -85,8 +102,8 @@ msgid "Id-ul-Fitr"
 msgstr "ಈದ್-ಉಲ್-ಫಿತರ್"
 
 #. Eid al-Adha.
-msgid "Bakrid"
-msgstr "ಬಕ್ರೀದ್"
+msgid "Id-ul-Zuha (Bakrid)"
+msgstr "ಈದ್-ಉಲ್-ಜುಹಾ (ಬಕ್ರೀದ್)"
 
 #. Good Friday.
 msgid "Good Friday"
@@ -99,10 +116,6 @@ msgstr "ಕ್ರಿಸ್‌ಮಸ್"
 #. Children's Day.
 msgid "Children's Day"
 msgstr "ಮಕ್ಕಳ ದಿನಾಚರಣೆ"
-
-#. Holi.
-msgid "Holi"
-msgstr "ಹೋಳಿ ಹಬ್ಬ"
 
 #. Ganesh Chaturthi.
 msgid "Ganesh Chaturthi"
@@ -132,10 +145,6 @@ msgstr "ಮಕರ ಸಂಕ್ರಾಂತಿ"
 msgid "Raksha Bandhan"
 msgstr "ರಕ್ಷಾ ಬಂಧನ"
 
-#. Ram Navami.
-msgid "Ram Navami"
-msgstr "ಶ್ರೀ ರಾಮನವಮಿ"
-
 #. Navratri / Sharad Navratri.
 msgid "Navratri / Sharad Navratri"
 msgstr "ನವರಾತ್ರಿ / ಶರದ್ ನವರಾತ್ರಿ"
@@ -147,10 +156,6 @@ msgstr "ಈಸ್ಟರ್ ಭಾನುವಾರ"
 #. Palm Sunday.
 msgid "Palm Sunday"
 msgstr "ಪಾಮ್ ಭಾನುವಾರ"
-
-#. Dr. B. R. Ambedkar Jayanti.
-msgid "Dr. B. R. Ambedkar's Jayanti"
-msgstr "ಡಾ|| ಬಿ.ಆರ್.ಅಂಬೇಡ್ಕರ್ ಜಯಂತಿ"
 
 #. Onam.
 msgid "Onam"

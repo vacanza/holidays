@@ -190,6 +190,9 @@ class India(
             # Republic Day.
             self._add_holiday_jan_26(tr("Republic Day"))
 
+        # Dr. B. R. Ambedkar's Jayanti.
+        self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
+
         # Independence Day.
         self._add_holiday_aug_15(tr("Independence Day"))
 
@@ -197,6 +200,7 @@ class India(
         self._add_holiday_oct_2(tr("Gandhi Jayanti"))
 
         # Hindu Holidays.
+
         if self._year < 2001 or self._year > 2035:
             warnings.warn(
                 "Requested Holidays are available only from 2001 to 2035.",
@@ -208,22 +212,51 @@ class India(
         self._add_buddha_purnima(tr("Buddha Purnima"))
 
         # Diwali.
-        self._add_diwali_india(tr("Diwali"))
-
-        # Janmashtami.
-        self._add_janmashtami(tr("Janmashtami"))
+        self._add_diwali_india(tr("Diwali (Deepavali)"))
 
         # Dussehra.
         self._add_dussehra(tr("Dussehra"))
 
+        if self._year == 2002:
+            # Dussehra (Mahanavami).
+            self._add_maha_navami(tr("Dussehra (Mahanavami)"))
+
+        if self._year not in {2008, 2017}:
+            # Janmashtami (Vaishnava).
+            self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
+
         # Mahavir Jayanti.
         self._add_mahavir_jayanti(tr("Mahavir Jayanti"))
 
-        # Maha Shivaratri.
-        self._add_maha_shivaratri(tr("Maha Shivaratri"))
+        if self._year not in {
+            2003,
+            2009,
+            2010,
+            2013,
+            2014,
+            2015,
+            2016,
+            2018,
+            2019,
+            2020,
+            2021,
+            2023,
+            2024,
+            2026,
+        }:
+            # Maha Shivaratri.
+            self._add_maha_shivaratri(tr("Maha Shivaratri"))
 
         # Guru Nanak Jayanti.
         self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti"))
+
+        if self._year != 2011:
+            # Holi.
+            self._add_holi(tr("Holi"))
+
+        if self._year not in {2002, 2012, 2022, 2025}:
+            # Ram Navami.
+            self._add_ram_navami(tr("Ram Navami"))
 
         # Islamic holidays.
 
@@ -237,7 +270,7 @@ class India(
         self._add_eid_al_fitr_day(tr("Id-ul-Fitr"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Bakrid"))
+        self._add_eid_al_adha_day(tr("Id-ul-Zuha (Bakrid)"))
 
         # Christian holidays.
 
@@ -256,15 +289,15 @@ class India(
         # Children's Day.
         self._add_holiday_nov_14(tr("Children's Day"))
 
-        if self.subdiv != "MH":
-            # Holi.
-            self._add_holi(tr("Holi"))
-
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
 
         # Govardhan Puja.
         self._add_govardhan_puja(tr("Govardhan Puja"))
+
+        if self._year == 2008 or self._year == 2017:
+            # Janmashtami (Vaishnava).
+            self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
         # Labor Day.
         self._add_labor_day(tr("Labour Day"))
@@ -281,8 +314,9 @@ class India(
         # Raksha Bandhan.
         self._add_raksha_bandhan(tr("Raksha Bandhan"))
 
-        # Ram Navami.
-        self._add_ram_navami(tr("Ram Navami"))
+        if self._year in {2002, 2012, 2022, 2025}:
+            # Ram Navami.
+            self._add_ram_navami(tr("Ram Navami"))
 
         # Navratri / Sharad Navratri.
         self._add_sharad_navratri(tr("Navratri / Sharad Navratri"))
@@ -299,14 +333,14 @@ class India(
     def _populate_subdiv_an_public_holidays(self):
         # Ram Navami.
         self._add_ram_navami(tr("Ram Navami"))
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Onam.
         self._add_onam(tr("Onam"))
 
     # Andhra Pradesh.
     def _populate_subdiv_ap_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Andhra Pradesh Foundation Day.
         self._add_holiday_nov_1(tr("Andhra Pradesh Foundation Day"))
@@ -326,17 +360,17 @@ class India(
         self._add_chhath_puja(tr("Chhath Puja"))
         # Bihar Day.
         self._add_holiday_mar_22(tr("Bihar Day"))
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
 
     # Chandigarh.
     def _populate_subdiv_ch_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
 
     # Chhattisgarh.
     def _populate_subdiv_cg_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Chhattisgarh Foundation Day.
         self._add_holiday_nov_1(tr("Chhattisgarh Foundation Day"))
@@ -348,7 +382,7 @@ class India(
 
     # Goa.
     def _populate_subdiv_ga_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Goa Liberation Day.
         self._add_holiday_dec_19(tr("Goa Liberation Day"))
@@ -357,7 +391,7 @@ class India(
     def _populate_subdiv_gj_public_holidays(self):
         # Makar Sankranti.
         self._add_makar_sankranti(tr("Uttarayan"))
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Gujarat Day.
         self._add_holiday_may_1(tr("Gujarat Day"))
@@ -368,35 +402,35 @@ class India(
 
     # Haryana.
     def _populate_subdiv_hr_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Haryana Foundation Day.
         self._add_holiday_nov_1(tr("Haryana Foundation Day"))
 
     # Himachal Pradesh.
     def _populate_subdiv_hp_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Himachal Day.
         self._add_holiday_apr_15(tr("Himachal Day"))
 
     # Jammu and Kashmir
     def _populate_subdiv_jk_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
 
     # Jharkhand.
     def _populate_subdiv_jh_public_holidays(self):
         # Chhath Puja.
         self._add_chhath_puja(tr("Chhath Puja"))
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Jharkhand Formation Day.
         self._add_holiday_nov_15(tr("Jharkhand Formation Day"))
 
     # Karnataka.
     def _populate_subdiv_ka_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Karnataka Rajyotsav.
         self._add_holiday_nov_1(tr("Karnataka Rajyotsava"))
@@ -407,14 +441,14 @@ class India(
     def _populate_subdiv_kl_public_holidays(self):
         # Onam.
         self._add_onam(tr("Onam"))
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Kerala Foundation Day.
         self._add_holiday_nov_1(tr("Kerala Foundation Day"))
 
     # Ladakh.
     def _populate_subdiv_la_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
 
     # Maharashtra.
@@ -434,7 +468,7 @@ class India(
         else:
             self._add_holi(name)
 
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
@@ -443,7 +477,7 @@ class India(
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Madhya Pradesh Foundation Day.
         self._add_holiday_nov_1(tr("Madhya Pradesh Foundation Day"))
@@ -462,14 +496,14 @@ class India(
     def _populate_subdiv_od_public_holidays(self):
         # Odisha Day.
         self._add_holiday_apr_1(tr("Odisha Day (Utkala Dibasa)"))
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maha Vishuva Sankranti.
         self._add_holiday_apr_15(tr("Maha Vishuva Sankranti / Pana Sankranti"))
 
     # Puducherry.
     def _populate_subdiv_py_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Puducherry De Jure Transfer Day.
         self._add_holiday_aug_16(tr("Puducherry De Jure Transfer Day"))
@@ -484,7 +518,7 @@ class India(
         self._add_vaisakhi(tr("Vaisakhi"))
         # Lohri.
         self._add_holiday_jan_13(tr("Lohri"))
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # New Punjab Day.
         self._add_holiday_nov_1(tr("New Punjab Day"))
@@ -493,14 +527,14 @@ class India(
     def _populate_subdiv_rj_public_holidays(self):
         # Rajasthan Day.
         self._add_holiday_mar_30(tr("Rajasthan Day"))
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Maharana Pratap Jayanti.
         self._add_maharana_pratap_jayanti(tr("Maharana Pratap Jayanti"))
 
     # Sikkim.
     def _populate_subdiv_sk_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Sikkim State Day.
         self._add_holiday_may_16(tr("Sikkim State Day"))
@@ -513,14 +547,14 @@ class India(
         self._add_thiruvalluvar_day(tr("Thiruvalluvar Day / Mattu Pongal"))
         # Uzhavar Thirunal.
         self._add_uzhavar_thirunal(tr("Uzhavar Thirunal"))
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Puthandu.
         self._add_holiday_apr_14(tr("Puthandu (Tamil New Year)"))
 
     # Telangana.
     def _populate_subdiv_ts_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Telangana Formation Day.
         self._add_holiday_jun_2(tr("Telangana Formation Day"))
@@ -533,7 +567,7 @@ class India(
 
     # Uttarakhand.
     def _populate_subdiv_uk_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
 
     # Uttar Pradesh.
@@ -542,12 +576,12 @@ class India(
         self._add_chhath_puja(tr("Chhath Puja"))
         # UP Formation Day.
         self._add_holiday_jan_24(tr("UP Formation Day"))
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
 
     # West Bengal.
     def _populate_subdiv_wb_public_holidays(self):
-        # Dr. B. R. Ambedkar Jayanti.
+        # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Pohela Boisakh.
         self._add_holiday_apr_15(tr("Pohela Boishakh"))
