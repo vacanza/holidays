@@ -33,7 +33,7 @@ class Bangladesh(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
     # %s (estimated).
     estimated_label = tr("%s (আনুমানিক)")
 
-    supported_languages = ("ar", "bn", "en_US")
+    supported_languages = ("ar", "bn", "en_BD", "en_US")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):

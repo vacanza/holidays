@@ -1,0 +1,97 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Bangladesh holidays en_BD localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.97\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-05-14 02:09+0400\n"
+"PO-Revision-Date: 2026-05-14 14:57+0400\n"
+"Last-Translator: shoanahmed8788-lab <shaonahmed8788@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_BD\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: bn\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (আনুমানিক)"
+msgstr "%s (Estimated)"
+
+#. Martyrs' Day and International Mother Language Day.
+msgid "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস"
+msgstr "Shaheed Day and International Mother Language Day"
+
+#. Sheikh Mujibur Rahman's Birthday.
+msgid "জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান এর জন্মদিবস"
+msgstr "Father of the Nation Bangabandhu Sheikh Mujibur Rahman's Birthday"
+
+#. Independence Day.
+msgid "স্বাধীনতা দিবস"
+msgstr "Independence Day"
+
+#. Bengali New Year's Day.
+msgid "পহেলা বৈশাখ"
+msgstr "Pohela Boishakh"
+
+#. May Day.
+msgid "মে দিবস"
+msgstr "May Day"
+
+#. July Mass Uprising Day.
+msgid "জুলাই গণ-অভ্যুত্থান দিবস"
+msgstr "July Mass Uprising Day"
+
+#. National Mourning Day.
+msgid "জাতীয় শোক দিবস"
+msgstr "National Mourning Day"
+
+#. Victory Day.
+msgid "বিজয় দিবস"
+msgstr "Victory Day"
+
+#. Christmas Day.
+msgid "বড়দিন"
+msgstr "Christmas Day"
+
+#. Ashura.
+msgid "আশুরা"
+msgstr "Ashura"
+
+#. Prophet's Birthday.
+msgid "ঈদে মিলাদুন্নবী"
+msgstr "Eid-e-Miladunnabi"
+
+#. Mid-Sha'ban.
+msgid "শবে বরাত"
+msgstr "Shab-e-Barat"
+
+#. Laylat al-Qadr.
+msgid "শবে কদর"
+msgstr "Shab-e-Qadr"
+
+#. Jumu'atul-Wida.
+msgid "জুমাতুল বিদা"
+msgstr "Jumu'atul-Wida"
+
+#. Eid al-Fitr.
+msgid "ঈদুল ফিতর"
+msgstr "Eid-ul-Fitr"
+
+#. Eid al-Adha.
+msgid "ঈদুল আজহা"
+msgstr "Eid-ul-Adha"

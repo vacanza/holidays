@@ -124,6 +124,7 @@ LANGUAGES = {
     "en_AI": "English (Anguilla)",
     "en_AU": "English (Australia)",
     "en_BF": "English (Burkina Faso)",
+    "en_BD": "English (Bangladehs)",
     "en_BM": "English (Bermuda)",
     "en_BQ": "English (Bonaire, Sint Eustatius and Saba)",
     "en_CA": "English (Canada)",
