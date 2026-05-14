@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-05-14 18:08+0530\n"
+"PO-Revision-Date: 2026-05-14 21:34+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
@@ -38,7 +38,6 @@ msgid "Republic Day"
 msgstr ""
 
 #. Dr. B. R. Ambedkar's Jayanti.
-#. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr ""
 
@@ -67,7 +66,6 @@ msgid "Dussehra (Mahanavami)"
 msgstr ""
 
 #. Janmashtami (Vaishnava).
-#. Janmashtami.
 msgid "Janmashtami (Vaishnava)"
 msgstr ""
 

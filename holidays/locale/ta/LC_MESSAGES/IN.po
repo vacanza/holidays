@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-05-14 18:08+0530\n"
+"PO-Revision-Date: 2026-05-14 21:34+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ta\n"
@@ -52,7 +52,7 @@ msgstr "காந்தி ஜெயந்தி"
 msgid "Buddha Purnima"
 msgstr "புத்தர் பௌர்ணமி"
 
-#. Diwali (Deepavali).
+#. Diwali.
 msgid "Diwali (Deepavali)"
 msgstr "தீபாவளி"
 

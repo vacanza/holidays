@@ -22,11 +22,15 @@ from holidays.groups import (
     InternationalHolidays,
     IslamicHolidays,
 )
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NONE, SUN_ONLY
 
 
 class India(
-    HolidayBase, ChristianHolidays, HinduCalendarHolidays, InternationalHolidays, IslamicHolidays
+    ObservedHolidayBase,
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
 ):
     """India holidays.
 
@@ -254,9 +258,8 @@ class India(
             # Holi.
             self._add_holi(tr("Holi"))
 
-        if self._year not in {2002, 2012, 2022, 2025}:
-            # Ram Navami.
-            self._add_ram_navami(tr("Ram Navami"))
+        # Ram Navami.
+        self._add_observed(self._add_ram_navami(tr("Ram Navami")), rule=SUN_TO_NONE)
 
         # Islamic holidays.
 
@@ -314,9 +317,8 @@ class India(
         # Raksha Bandhan.
         self._add_raksha_bandhan(tr("Raksha Bandhan"))
 
-        if self._year in {2002, 2012, 2022, 2025}:
-            # Ram Navami.
-            self._add_ram_navami(tr("Ram Navami"))
+        # Ram Navami.
+        self._add_observed(self._add_ram_navami(tr("Ram Navami")), rule=SUN_ONLY)
 
         # Navratri / Sharad Navratri.
         self._add_sharad_navratri(tr("Navratri / Sharad Navratri"))

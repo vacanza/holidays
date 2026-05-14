@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-26 12:14+0530\n"
-"PO-Revision-Date: 2026-05-14 18:08+0530\n"
+"PO-Revision-Date: 2026-05-14 21:34+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: kn\n"
@@ -37,7 +37,6 @@ msgid "Republic Day"
 msgstr "ಗಣರಾಜ್ಯೋತ್ಸವ"
 
 #. Dr. B. R. Ambedkar's Jayanti.
-#. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr "ಡಾ|| ಬಿ.ಆರ್.ಅಂಬೇಡ್ಕರ್ ಜಯಂತಿ"
 
@@ -53,7 +52,7 @@ msgstr "ಗಾಂಧಿ ಜಯಂತಿ"
 msgid "Buddha Purnima"
 msgstr "ಬುದ್ಧ ಪೂರ್ಣಿಮ"
 
-#. Diwali (Deepavali).
+#. Diwali.
 msgid "Diwali (Deepavali)"
 msgstr "ದೀಪಾವಳಿ"
 
