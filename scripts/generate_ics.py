@@ -9,15 +9,7 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-#  province and state specific sets of holidays on the fly. It aims to make
-#  determining whether a specific date is a holiday as fast and flexible as
-#  possible.
-#
-#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
-#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/holidays
-#  License: MIT (see LICENSE file)
+
 
 import argparse
 import logging
@@ -47,42 +39,56 @@ def parse_years(year_input: str | None) -> list[int] | None:
         sys.exit(1)
 
 
-def parse_categories(categories: str | None):
+def parse_categories(categories: str | None) -> list[str] | None:
     if not categories:
         return None
     return [c.strip().lower() for c in categories.split(",") if c.strip()]
 
 
-def validate_code(code: str, *, financial: bool):
+def validate_code(code: str, *, financial: bool) -> None:
     supported = (
         holidays.list_supported_financial() if financial else holidays.list_supported_countries()
     )
 
     if code.upper() not in supported:
-        logger.error("Invalid %s code: %s", "market" if financial else "country", code)
+        logger.error(
+            "Invalid %s code: %s",
+            "market" if financial else "country",
+            code,
+        )
         sys.exit(1)
 
 
-def validate_subdiv(code: str, subdiv: str | None, *, financial: bool):
+def validate_subdiv(code: str, subdiv: str | None, *, financial: bool) -> None:
     if not subdiv or financial:
         return
 
-    try:
-        holidays.country_holidays(code.upper(), subdiv=subdiv)
-    except NotImplementedError:
-        logger.error("Invalid subdivision '%s' for %s", subdiv, code)
+    supported_subdivs = holidays.country_holidays(code.upper()).subdivisions
+    if subdiv.upper() not in supported_subdivs:
+        logger.error(
+            "Invalid subdivision '%s' for %s. Supported: %s", subdiv, code, supported_subdivs
+        )
         sys.exit(1)
 
 
-def main():
-    parser = argparse.ArgumentParser(
-        description="Generate holiday calendar exports (.ics).",
-    )
+def validate_categories(code: str, categories: list[str] | None, *, financial: bool) -> None:
+    if not categories or financial:
+        return
+
+    supported = holidays.country_holidays(code.upper()).supported_categories
+    invalid = [c for c in categories if c not in supported]
+    if invalid:
+        logger.error("Invalid categories: %s. Supported for %s: %s", invalid, code, supported)
+        sys.exit(1)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Generate holiday calendar exports (.ics).")
 
     parser.add_argument("code", help="Country or market code (e.g., MZ, US, NYSE)")
     parser.add_argument(
         "--year",
-        help="Year or range (e.g., 2026 or 2024-2026). If omitted, defaults apply.",
+        help="Year or range (e.g., 2026 or 2024-2026)",
     )
     parser.add_argument("--subdiv", help="Subdivision code (e.g., MPM)")
     parser.add_argument("--categories", help="Comma-separated categories (e.g., public,bank)")
@@ -92,11 +98,12 @@ def main():
 
     args = parser.parse_args()
 
-    years = parse_years(args.year)
-    categories = parse_categories(args.categories)
-
     validate_code(args.code, financial=args.financial)
     validate_subdiv(args.code, args.subdiv, financial=args.financial)
+
+    years = parse_years(args.year)
+    categories = parse_categories(args.categories)
+    validate_categories(args.code, categories, financial=args.financial)
 
     try:
         holiday_base = holidays.financial_holidays if args.financial else holidays.country_holidays
@@ -115,11 +122,8 @@ def main():
 
         exporter = ICalExporter(holiday_data)
 
-        file_name = (
-            args.output
-            if args.output
-            else f"{args.code.upper()}_{args.year.replace('-', '_') if args.year else 'full'}.ics"
-        )
+        year_part = args.year.replace("-", "_") if args.year else "full"
+        file_name = args.output or f"{args.code.upper()}_{year_part}.ics"
 
         if os.path.exists(file_name):
             logger.warning("Overwriting existing file: %s", file_name)
