@@ -308,6 +308,25 @@ class India(
         # Maha Navami.
         self._add_maha_navami(tr("Maha Navami"))
 
+        if self._year in {
+            2003,
+            2009,
+            2010,
+            2013,
+            2014,
+            2015,
+            2016,
+            2018,
+            2019,
+            2020,
+            2021,
+            2023,
+            2024,
+            2026,
+        }:
+            # Maha Shivaratri.
+            self._add_maha_shivaratri(tr("Maha Shivaratri"))
+
         # Maharishi Valmiki Jayanti.
         self._add_maharishi_valmiki_jayanti(tr("Maharishi Valmiki Jayanti"))
 

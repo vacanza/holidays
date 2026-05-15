@@ -184,7 +184,7 @@ class TestIndia(CommonCountryTests, TestCase):
         category_optional: bool = False,
         subdivs: set | None = None,
         hindu_range: range | tuple[int, ...] | list[int] | None = None,
-        never_public: bool = True,
+        skip_years: tuple[int, ...] | set[int] | None = None,
     ):
         """Once HinduHolidays properly supports full Hindu calendar range,
         update the following section in your code to the following format:
@@ -206,10 +206,7 @@ class TestIndia(CommonCountryTests, TestCase):
             - range(2000, 2005)
             - (2002, 2007, 2010)
 
-        Set never_public to False if the holiday was public in some years.
-        This will skip the assertion of no holiday name for those years.
-        Note: In this case you have to manually pass the years in which holiday
-        was not public for example assertNoHolidayName(name, 2002, 2012)
+        skip_years may be used to skip holiday assertion,works for both public & optional assertion
 
         For holidays using rule=SUN_TO_NONE, the range-wide assertion is done via
         assertNonObservedHolidayName, which ignores observance rules entirely,
@@ -217,6 +214,8 @@ class TestIndia(CommonCountryTests, TestCase):
         observed instance as usual.
         """
         effective_range = self.hindu_full_range if hindu_range is None else hindu_range
+        if skip_years:
+            effective_range = [y for y in effective_range if y not in skip_years]
 
         if category_optional is False and subdivs is None:
             self.assertHolidayName(name, dts)
@@ -233,7 +232,12 @@ class TestIndia(CommonCountryTests, TestCase):
             )
         # This assumes there's no subdiv-level optional holidays yet.
         elif category_optional is True:
-            if never_public:
+            if skip_years:
+                # holiday skipped from optional holidays for skip_years (may be present in public),
+                # assert optional absence for those
+                self.assertNoOptionalHolidayName(name, *skip_years)
+            else:
+                # holiday never in public, assert absence for full range
                 self.assertNoHolidayName(name)
             self.assertOptionalHolidayName(name, dts)
             self.assertOptionalNonObservedHolidayName(name, effective_range)
@@ -342,11 +346,31 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_maha_shivaratri(self):
         name = "Maha Shivaratri"
+        skip_years = {
+            2003,
+            2009,
+            2010,
+            2013,
+            2014,
+            2015,
+            2016,
+            2018,
+            2019,
+            2020,
+            2021,
+            2023,
+            2024,
+            2026,
+        }
         dts = (
             "2022-03-01",
             "2025-02-26",
         )
-        self._assertHinduHolidayHelper(name, dts)
+        self._assertHinduHolidayHelper(
+            name,
+            dts,
+            skip_years=skip_years,
+        )
         # OPTIONAL.
         dts = (
             "2020-02-21",
@@ -354,8 +378,12 @@ class TestIndia(CommonCountryTests, TestCase):
             "2023-02-18",
             "2024-03-08",
         )
-        self.assertNoHolidayName(name, 2020, 2021, 2023, 2024)
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+        self._assertHinduHolidayHelper(
+            name,
+            dts,
+            category_optional=True,
+            skip_years={y for y in self.hindu_full_range if y not in skip_years},
+        )
 
     def test_guru_nanak_jayanti(self):
         name = "Guru Nanak Jayanti"
@@ -475,6 +503,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self._assertHinduHolidayHelper(name, dts)
         # OPTIONAL.
+        skip_years = {2002, 2012, 2018, 2022, 2025, 2029}
         dts = (
             "2002-04-21",
             "2012-04-01",
@@ -482,8 +511,12 @@ class TestIndia(CommonCountryTests, TestCase):
             "2022-04-10",
             "2025-04-06",
         )
-        self.assertNoHolidayName(name, 2002, 2012, 2018, 2022, 2025)
-        self._assertHinduHolidayHelper(name, dts, category_optional=True, never_public=False)
+        self._assertHinduHolidayHelper(
+            name,
+            dts,
+            category_optional=True,
+            skip_years={y for y in self.hindu_full_range if y not in skip_years},
+        )
 
     def test_navratri_sharad_navratri(self):
         name = "Navratri / Sharad Navratri"
