@@ -51,12 +51,12 @@ _PRECESSION_RATE = 50.2388475 / 3600  # degrees per Julian year
 
 
 class _Astronomy:
-    """Astronimcal helper functions for Hindu calendar calculations."""
+    """Astronomical helper functions for Hindu calendar calculations."""
 
     _sun = ephem.Sun()
     _moon = ephem.Moon()
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._observer = ephem.Observer()
         self._observer.lat = LAT
         self._observer.lon = LON
@@ -239,15 +239,14 @@ class _Lunisolar(_Astronomy):
         while dt <= ashwin_ama + timedelta(days=15):
             ap = self._aparahna(dt)
             ap_prev = self._aparahna(dt - timedelta(days=1))
-
             t = self._tithi(ap)
             t_prev = self._tithi(ap_prev)
 
-            # Case 1: Dashami present -> return FIRST occurrence
+            # If Dashami present -> return first occurrence
             if t == 10:
                 return dt
 
-            # Case 2: Dashami skipped (9 -> 11)
+            # If Dashami skipped (9 -> 11)
             elif t == 11 and t_prev == 9:
                 return dt
 
@@ -341,7 +340,7 @@ class _Lunisolar(_Astronomy):
             t = self._tithi(sr)
             t_prev = self._tithi(sr_prev)
 
-            # First sunrise with Purnima (wasn't active yesterday)
+            # first sunrise with Purnima (wasn't active yesterday)
             if t == 15 and t_prev != 15:
                 return dt
 
@@ -507,71 +506,123 @@ class _Lunisolar(_Astronomy):
 
         return None
 
-    def get_maha_shivaratri(self, year: int) -> date | None:
+    def get_maha_ashtami(self, year: int) -> date | None:
         """
-        Maha Shivratri = Phalgun Krishna Chaturdashi.
-        Tithi = 29 active at sunset or midnight of Phalgun or Magh month
-        - sun in sign 10 (Aquarius) or 9 (Capricorn).
+        Maha Ashtami = Ashwin Shukla Ashtami.
+        Tithi = 8 (Ashtami) of Shukla Paksha in Ashwin month - sun in sidereal Virgo (sign 5).
+        Evaluated at sunrise (Udaya tithi rule).
 
-        Rule:
-          - Phalgun Chaturdashi on Mar 13+ -> use Magh
-          - Phalgun Chaturdashi on Mar 12 AND Magh on Feb 12 -> use Magh
-          - Otherwise -> use Phalgun
+        Two sunrise cases for Ashtami detection:
+        1: Ashtami present at sunrise (8) -> first occurrence is Maha Ashtami
+        2: Ashtami skipped between sunrises (7->9) - current day is Maha Ashtami
+        """
+        exceptions = {
+            2020: date(2020, 10, 23),
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        dt = date(year, 1, 1)
+        end = date(year, 12, 31)
+
+        # Ashwin amavasya
+        ashwin_ama = None
+        while dt <= end:
+            ss = self._sunset(dt)
+            t = self._tithi(ss)
+            sign = self._sidereal_solar_zodiac_sign(ss)
+            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
+
+            if t == 30 and sign == 5:
+                ashwin_ama = dt
+                break
+
+            if t == 1 and t_prev == 29 and sign == 5:
+                sign_prev = self._sidereal_solar_zodiac_sign(self._sunset(dt - timedelta(days=1)))
+                if sign_prev == 5:
+                    ashwin_ama = dt
+                    break
+
+            dt += timedelta(days=1)
+
+        if not ashwin_ama:
+            return None
+
+        dt = ashwin_ama + timedelta(days=1)
+
+        while dt <= ashwin_ama + timedelta(days=15):
+            sr = self._sunrise(dt)
+            sr_prev = self._sunrise(dt - timedelta(days=1))
+            t = self._tithi(sr)
+            t_prev = self._tithi(sr_prev)
+
+            # If Ashtami present at sunrise -> first occurrence
+            if t == 8 and t_prev != 8:
+                return dt
+
+            # If Ashtami skipped between sunrises (7->9)
+            if t == 9 and t_prev == 7:
+                return dt
+
+            dt += timedelta(days=1)
+
+        return None
+
+    def get_maha_navami(self, year: int) -> date | None:
+        """
+        Maha Navami = Ashwin Shukla Navami.
+        Tithi = 9 (Navami) of Shukla Paksha in Ashwin month - sun in sidereal Virgo (sign 5).
+        Evaluated at Aparahna (afternoon rule) - first day Navami active at Aparahna.
+
+        Two Aparahna cases for Navami detection:
+        1: Navami present at Aparahna (9) -> first occurrence is Maha Navami
+        2: Navami skipped between Aparahnas (8->10) - current day is Maha Navami
         """
         dt = date(year, 1, 1)
         end = date(year, 12, 31)
 
-        magh_chaturdashi = None
-        phalgun_chaturdashi = None
-
-        # Magh and Phalgun Chaturdashi
-        # (tithi 29 at sunset or midnight, sun in Capricorn or Aquarius)
+        # Ashwin Amavasya
+        ashwin_ama = None
         while dt <= end:
             ss = self._sunset(dt)
-            mid = self._midnight(dt)
-            t_ss = self._tithi(ss)
-            t_mid = self._tithi(mid)
+            t = self._tithi(ss)
             sign = self._sidereal_solar_zodiac_sign(ss)
-            sign_prev = self._sidereal_solar_zodiac_sign(self._sunset(dt - timedelta(days=1)))
+            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
 
-            is_chaturdashi = t_ss == 29 or t_mid == 29
-
-            if is_chaturdashi and sign == 9 and magh_chaturdashi is None:
-                magh_chaturdashi = dt
-
-            if (
-                is_chaturdashi
-                and (sign == 10 or (sign == 11 and sign_prev == 10))
-                and phalgun_chaturdashi is None
-            ):
-                # Check if previous day's midnight already had tithi 29 in Magh
-                t_mid_prev = self._tithi(self._midnight(dt - timedelta(days=1)))
-                sign_prev_day = self._sidereal_solar_zodiac_sign(
-                    self._sunset(dt - timedelta(days=1))
-                )
-                if t_mid_prev == 29 and sign_prev_day == 9:
-                    phalgun_chaturdashi = dt - timedelta(days=1)
-                else:
-                    phalgun_chaturdashi = dt
-
-            if sign > 10 and phalgun_chaturdashi:
+            if t == 30 and sign == 5:
+                ashwin_ama = dt
                 break
+
+            if t == 1 and t_prev == 29 and sign == 5:
+                sign_prev = self._sidereal_solar_zodiac_sign(self._sunset(dt - timedelta(days=1)))
+                if sign_prev == 5:
+                    ashwin_ama = dt
+                    break
 
             dt += timedelta(days=1)
 
-        if phalgun_chaturdashi and magh_chaturdashi:
-            p = phalgun_chaturdashi
-            m = magh_chaturdashi
+        if not ashwin_ama:
+            return None
 
-            # Phalgun very late (Mar 13+) -> always use Magh
-            if p.month == 3 and p.day >= 13:
-                return magh_chaturdashi
+        dt = ashwin_ama + timedelta(days=1)
 
-            # Phalgun on Mar 12 AND Magh on Feb 12 -> use Magh
-            if p.month == 3 and p.day == 12 and m.month == 2 and m.day == 12:
-                return magh_chaturdashi
+        while dt <= ashwin_ama + timedelta(days=15):
+            ap = self._aparahna(dt)
+            ap_prev = self._aparahna(dt - timedelta(days=1))
+            t = self._tithi(ap)
+            t_prev = self._tithi(ap_prev)
 
-        return phalgun_chaturdashi
+            # If Navami present at Aparahna -> first occurrence
+            if t == 9:
+                return dt
+
+            # If Navami skipped between Aparahnas (8->10)
+            elif t == 10 and t_prev == 8:
+                return dt - timedelta(days=1)
+
+            dt += timedelta(days=1)
+
+        return None
 
     def get_ram_navami(self, year: int) -> date | None:
         """
@@ -735,7 +786,7 @@ class _Solar(_Astronomy):
 
     """
     Sidereal solar zodiac signs (Rashi)
-    SOLAR_ZODIC_SIGN_NAMES = [
+    SOLAR_ZODIAC_SIGN_NAMES = [
         "Mesha",  # (0°-30°) - Aries (0)
         "Vrishabha",  # (30°-60°) - Taurus (1)
         "Mithuna",  # (60°-90°) - Gemini (2)
@@ -759,8 +810,8 @@ class _Solar(_Astronomy):
 
         exceptions = {
             2007: date(2007, 1, 15),
-            2023: date(2023, 1, 14),  # Fesival on 15th but holiday given by government is 14th
-            2024: date(2024, 1, 14),  # Fesival on 15th but holiday given by government is 14th
+            2023: date(2023, 1, 14),  # Festival on 15th but holiday given by government is 14th
+            2024: date(2024, 1, 14),  # Festival on 15th but holiday given by government is 14th
         }
         if year in exceptions:
             return exceptions[year]
@@ -783,18 +834,22 @@ _lunisolar = _Lunisolar()
 _solar = _Solar()
 
 HINDU_LUNISOLAR_HOLIDAYS = (
-    ("DIWALI_INDIA", _lunisolar.get_diwali),
-    ("DUSSEHRA", _lunisolar.get_dussehra),
-    ("HOLI", _lunisolar.get_holi),
-    ("JANMASHTAMI", _lunisolar.get_janmashtami),
-    ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
-    ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
-    ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
-    ("RAM_NAVAMI", _lunisolar.get_ram_navami),
-    ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
+    # ("DIWALI_INDIA", _lunisolar.get_diwali),
+    # ("DUSSEHRA", _lunisolar.get_dussehra),
+    # ("HOLI", _lunisolar.get_holi),
+    # ("JANMASHTAMI", _lunisolar.get_janmashtami),
+    ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
+    ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
+    # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
+    # ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
+    # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
+    # ("RAM_NAVAMI", _lunisolar.get_ram_navami),
+    # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
 )
 
-HINDU_SOLAR_HOLIDAYS = (("MAKAR_SANKRANTI", _solar.get_makar_sankranti),)
+HINDU_SOLAR_HOLIDAYS = (
+    # ("MAKAR_SANKRANTI", _solar.get_makar_sankranti),
+)
 
 
 def generate_data() -> None:
