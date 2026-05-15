@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.95\n"
+"Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-04-03 22:16+0530\n"
-"Last-Translator: Nellai Abiram <nellaiabiram08@gmail.com>\n"
+"PO-Revision-Date: 2026-04-27 12:19+0530\n"
+"Last-Translator: Vanshika Pundir <pundirvanshika9@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: te\n"
 "MIME-Version: 1.0\n"
@@ -119,6 +119,10 @@ msgstr "కార్మిక దినోత్సవం"
 #. Maha Navami.
 msgid "Maha Navami"
 msgstr "మహా నవమి"
+
+#. Maharishi Valmiki Jayanti.
+msgid "Maharishi Valmiki Jayanti"
+msgstr "మహర్షి వాల్మీకి జయంతి"
 
 #. Makar Sankranti.
 msgid "Makar Sankranti"
