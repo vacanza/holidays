@@ -26,7 +26,10 @@ class TestIndia(CommonCountryTests, TestCase):
         cls.hindu_start_year = 2001
         cls.hindu_end_year = 2035
         cls.hindu_full_range = range(cls.hindu_start_year, cls.hindu_end_year + 1)
-        super().setUpClass(India, with_subdiv_categories=True)
+        super().setUpClass(
+            India,
+            with_subdiv_categories=True,
+        )
 
     def setUp(self):
         super().setUp()
@@ -180,6 +183,8 @@ class TestIndia(CommonCountryTests, TestCase):
         *,
         category_optional: bool = False,
         subdivs: set | None = None,
+        hindu_range: range | tuple[int, ...] | list[int] | None = None,
+        never_public: bool = True,
     ):
         """Once HinduHolidays properly supports full Hindu calendar range,
         update the following section in your code to the following format:
@@ -195,21 +200,49 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2025-XX-XX",
             )
             self.assertHolidayName(name, self.full_range)
+
+        hindu_range can be:
+            - None (defaults to self.hindu_full_range)
+            - range(2000, 2005)
+            - (2002, 2007, 2010)
+
+        Set never_public to False if the holiday was public in some years.
+        This will skip the assertion of no holiday name for those years.
+        Note: In this case you have to manually pass the years in which holiday
+        was not public for example assertNoHolidayName(name, 2002, 2012)
+
+        For holidays using rule=SUN_TO_NONE, the range-wide assertion is done via
+        assertNonObservedHolidayName, which ignores observance rules entirely,
+        so the holiday is always present. Specific dts are then asserted on the
+        observed instance as usual.
         """
+        effective_range = self.hindu_full_range if hindu_range is None else hindu_range
+
         if category_optional is False and subdivs is None:
             self.assertHolidayName(name, dts)
-            self.assertHolidayName(name, self.hindu_full_range)
+            self.assertNonObservedHolidayName(name, effective_range)
             self.assertNoHolidayName(
+                name,
+                range(self.start_year, self.hindu_start_year),
+                range(self.hindu_end_year + 1, self.end_year),
+            )
+            self.assertNoNonObservedHolidayName(
                 name,
                 range(self.start_year, self.hindu_start_year),
                 range(self.hindu_end_year + 1, self.end_year),
             )
         # This assumes there's no subdiv-level optional holidays yet.
         elif category_optional is True:
-            self.assertNoHolidayName(name)
+            if never_public:
+                self.assertNoHolidayName(name)
             self.assertOptionalHolidayName(name, dts)
-            self.assertOptionalHolidayName(name, self.hindu_full_range)
+            self.assertOptionalNonObservedHolidayName(name, effective_range)
             self.assertNoOptionalHolidayName(
+                name,
+                range(self.start_year, self.hindu_start_year),
+                range(self.hindu_end_year + 1, self.end_year),
+            )
+            self.assertNoOptionalNonObservedHolidayName(
                 name,
                 range(self.start_year, self.hindu_start_year),
                 range(self.hindu_end_year + 1, self.end_year),
@@ -217,17 +250,25 @@ class TestIndia(CommonCountryTests, TestCase):
         elif subdivs is not None:
             self.assertNoHolidayName(name)
             for subdiv, holidays in self.subdiv_holidays.items():
+                non_obs_holidays = self.subdiv_holidays_non_observed[subdiv]
                 if subdiv in subdivs:
                     self.assertHolidayName(name, holidays, dts)
-                    self.assertHolidayName(name, holidays, self.hindu_full_range)
+                    self.assertHolidayName(name, non_obs_holidays, effective_range)
                     self.assertNoHolidayName(
                         name,
                         holidays,
                         range(self.start_year, self.hindu_start_year),
                         range(self.hindu_end_year + 1, self.end_year),
                     )
+                    self.assertNoHolidayName(
+                        name,
+                        non_obs_holidays,
+                        range(self.start_year, self.hindu_start_year),
+                        range(self.hindu_end_year + 1, self.end_year),
+                    )
                 else:
                     self.assertNoHolidayName(name, holidays)
+                    self.assertNoHolidayName(name, non_obs_holidays)
 
     def test_buddha_purnima(self):
         name = "Buddha Purnima"
@@ -435,15 +476,14 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(name, dts)
         # OPTIONAL.
         dts = (
-            "2002-04-02",
-            "2012-04-21",
+            "2002-04-21",
+            "2012-04-01",
+            "2018-03-25",
             "2022-04-10",
             "2025-04-06",
         )
-        self.assertNoHolidayName(name, 2002, 2012, 2022, 2025)
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
-        # SUBDIVS.
-        self._assertHinduHolidayHelper(name, dts, subdivs={"AN"})
+        self.assertNoHolidayName(name, 2002, 2012, 2018, 2022, 2025)
+        self._assertHinduHolidayHelper(name, dts, category_optional=True, never_public=False)
 
     def test_navratri_sharad_navratri(self):
         name = "Navratri / Sharad Navratri"

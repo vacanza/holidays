@@ -333,8 +333,6 @@ class India(
 
     # Andaman and Nicobar Islands.
     def _populate_subdiv_an_public_holidays(self):
-        # Ram Navami.
-        self._add_ram_navami(tr("Ram Navami"))
         # Dr. B. R. Ambedkar's Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Onam.
