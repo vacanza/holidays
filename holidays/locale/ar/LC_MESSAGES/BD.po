@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.94\n"
+"Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-31 00:00+0000\n"
-"PO-Revision-Date: 2026-03-31 00:00+0000\n"
+"PO-Revision-Date: 2026-05-09 22:51+0400\n"
 "Last-Translator: Shaon Ahamed <shaonahmed8788@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ar\n"
@@ -26,6 +26,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: bn\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (আনুমানিক)"
+msgstr "%s (المقدرة)"
 
 #. Martyrs' Day and International Mother Language Day.
 msgid "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস"
@@ -47,6 +52,10 @@ msgstr "رأس السنة البنغالية"
 msgid "মে দিবস"
 msgstr "الأول من مايو"
 
+#. July Mass Uprising Day.
+msgid "জুলাই গণ-অভ্যুত্থান দিবস"
+msgstr "يوم الانتفاضة الشعبية في يوليو"
+
 #. National Mourning Day.
 msgid "জাতীয় শোক দিবস"
 msgstr "اليوم الوطني للحداد"
@@ -54,3 +63,35 @@ msgstr "اليوم الوطني للحداد"
 #. Victory Day.
 msgid "বিজয় দিবস"
 msgstr "عيد النصر"
+
+#. Christmas Day.
+msgid "বড়দিন"
+msgstr "عيد الميلاد"
+
+#. Ashura.
+msgid "আশুরা"
+msgstr "عاشوراء"
+
+#. Prophet's Birthday.
+msgid "ঈদে মিলাদুন্নবী"
+msgstr "المولد النبوي الشريف"
+
+#. Mid-Sha'ban.
+msgid "শবে বরাত"
+msgstr "ليلة النصف من شعبان"
+
+#. Laylat al-Qadr.
+msgid "শবে কদর"
+msgstr "ليلة القدر"
+
+#. Jumu'atul-Wida.
+msgid "জুমাতুল বিদা"
+msgstr "جمعة الوداع"
+
+#. Eid al-Fitr.
+msgid "ঈদুল ফিতর"
+msgstr "عيد الفطر"
+
+#. Eid al-Adha.
+msgid "ঈদুল আজহা"
+msgstr "عيد الأضحى"

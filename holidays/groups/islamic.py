@@ -306,7 +306,7 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.hijri_new_year_dates(self._year)
         )
 
-    def _add_isra_and_miraj_day(self, name):
+    def _add_isra_and_miraj_day(self, name) -> set[date]:
         """
         Add Isra' and Mi'raj Day (27th day of 7th month).
 
@@ -317,12 +317,21 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.isra_and_miraj_dates(self._year)
         )
 
-    def _add_laylat_al_qadr_day(self, name):
+    def _add_jumuatul_wida(self, name) -> set[date]:
         """
-        Add Laylat al-Qadr Day (27th day of 9th month).
+        Add Jumuatul-Wida Day.
 
-        The Night of Power.
-        https://en.wikipedia.org/wiki/Night_of_Power
+        https://en.wikipedia.org/wiki/Jumu'atul-Wida
+        """
+        return self._add_islamic_calendar_holiday_set(
+            name, self._islamic_calendar.jumuatul_wida_dates(self._year)
+        )
+
+    def _add_laylat_al_qadr_day(self, name) -> set[date]:
+        """
+        Add Laylat Al-Qadr.
+
+        https://en.wikipedia.org/wiki/Laylat_al-Qadr
         """
         return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.laylat_al_qadr_dates(self._year)
@@ -360,6 +369,16 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.mawlid_dates(self._year), days_delta=+1
+        )
+
+    def _add_mid_shaban_day(self, name) -> set[date]:
+        """
+        Add Mid-Sha'ban Day.
+
+        https://en.wikipedia.org/wiki/Mid-Sha'ban
+        """
+        return self._add_islamic_calendar_holiday_set(
+            name, self._islamic_calendar.imam_mahdi_birthday_dates(self._year)
         )
 
     def _add_nuzul_al_quran_day(self, name) -> set[date]:
