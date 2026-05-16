@@ -43,6 +43,22 @@ jobs:
       - name: Run pre-commit
         run: uv tool run --with pre-commit-uv pre-commit run --show-diff-on-failure --color=always --all-files
 
+  spellcheck:
+    name: Spellcheck
+    runs-on: ubuntu-24.04
+    needs:
+      - pre-commit
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+
+      - name: Install cspell dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+        working-directory: cspell
+
+      - name: Run spellcheck
+        run: cspell/node_modules/.bin/cspell lint -c cspell/cspell.json --no-progress "docs/**/*" "README.md" "scripts/l10n/**/*" "mkdocs.yml"
+
   code-ql:
     name: CodeQL
     needs:

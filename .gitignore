@@ -23,6 +23,7 @@ dist/
 docs/auto_gen_files/
 holidays/locale/pot/*.pot
 MANIFEST
+node_modules/
 Pipfile
 sbom.json
 site/
