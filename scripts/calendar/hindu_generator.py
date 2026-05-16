@@ -399,7 +399,6 @@ class _Lunisolar(_Astronomy):
         Reference: Bhadrapad Amavasya (tithi 30, sign 4); search 5-15 days before it.
 
         Ashtami detection (sunrise tithi):
-        - Active at sunrise (23) -> continue
         - Ended overnight  (23 -> 24+) -> return previous day
         - Skipped entirely (<23 -> >23) -> return current day
         """
@@ -422,10 +421,9 @@ class _Lunisolar(_Astronomy):
         if not bhadrapad_ama:
             return None
 
-        # Search for Ashtami (tithi 23) at sunrise, ~15 days before Amavasya
-        start_search = bhadrapad_ama - timedelta(days=15)
-        for delta in range(11):
-            dt = start_search + timedelta(days=delta)
+        # Search 5-15 days before Amavasya for Ashtami
+        for delta in range(15, 2, -1):
+            dt = bhadrapad_ama - timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
             t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
