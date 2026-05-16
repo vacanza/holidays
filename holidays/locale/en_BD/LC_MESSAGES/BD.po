@@ -30,7 +30,7 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (আনুমানিক)"
-msgstr "%s (Estimated)"
+msgstr "%s (estimated)"
 
 #. Martyrs' Day and International Mother Language Day.
 msgid "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস"
