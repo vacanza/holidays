@@ -185,30 +185,6 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2024-12-25", "বড়দিন"),
         )
 
-    def test_l10n_en_us(self):
-        self.assertLocalizedHolidays(
-            "en_US",
-            ("2024-02-21", "Martyrs' Day and International Mother Language Day"),
-            ("2024-02-26", "Mid-Sha'ban"),
-            ("2024-03-17", "Sheikh Mujibur Rahman's Birthday"),
-            ("2024-03-26", "Independence Day"),
-            ("2024-04-05", "Jumu'atul-Wida"),
-            ("2024-04-07", "Laylat al-Qadr"),
-            ("2024-04-10", "Eid al-Fitr"),
-            ("2024-04-11", "Eid al-Fitr"),
-            ("2024-04-12", "Eid al-Fitr"),
-            ("2024-04-14", "Bengali New Year's Day"),
-            ("2024-05-01", "May Day"),
-            ("2024-06-17", "Eid al-Adha"),
-            ("2024-06-18", "Eid al-Adha"),
-            ("2024-06-19", "Eid al-Adha"),
-            ("2024-07-17", "Ashura"),
-            ("2024-08-15", "National Mourning Day"),
-            ("2024-09-16", "Prophet's Birthday"),
-            ("2024-12-16", "Victory Day"),
-            ("2024-12-25", "Christmas Day"),
-        )
-
     def test_l10n_ar(self):
         self.assertLocalizedHolidays(
             "ar",
@@ -231,4 +207,52 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2024-09-16", "المولد النبوي الشريف"),
             ("2024-12-16", "عيد النصر"),
             ("2024-12-25", "عيد الميلاد"),
+        )
+
+    def test_l10n_en_bd(self):
+        self.assertLocalizedHolidays(
+            "en_BD",
+            ("2024-02-21", "Shaheed Day and International Mother Language Day"),
+            ("2024-02-26", "Shab-e-Barat"),
+            ("2024-03-17", "Father of the Nation Bangabandhu Sheikh Mujibur Rahman's Birthday"),
+            ("2024-03-26", "Independence Day"),
+            ("2024-04-05", "Jumu'atul-Wida"),
+            ("2024-04-07", "Shab-e-Qadr"),
+            ("2024-04-10", "Eid-ul-Fitr"),
+            ("2024-04-11", "Eid-ul-Fitr"),
+            ("2024-04-12", "Eid-ul-Fitr"),
+            ("2024-04-14", "Pohela Boishakh"),
+            ("2024-05-01", "May Day"),
+            ("2024-06-17", "Eid-ul-Adha"),
+            ("2024-06-18", "Eid-ul-Adha"),
+            ("2024-06-19", "Eid-ul-Adha"),
+            ("2024-07-17", "Ashura"),
+            ("2024-08-15", "National Mourning Day"),
+            ("2024-09-16", "Eid-e-Miladunnabi"),
+            ("2024-12-16", "Victory Day"),
+            ("2024-12-25", "Christmas Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2024-02-21", "Martyrs' Day and International Mother Language Day"),
+            ("2024-02-26", "Mid-Sha'ban"),
+            ("2024-03-17", "Sheikh Mujibur Rahman's Birthday"),
+            ("2024-03-26", "Independence Day"),
+            ("2024-04-05", "Jumu'atul-Wida"),
+            ("2024-04-07", "Laylat al-Qadr"),
+            ("2024-04-10", "Eid al-Fitr"),
+            ("2024-04-11", "Eid al-Fitr"),
+            ("2024-04-12", "Eid al-Fitr"),
+            ("2024-04-14", "Bengali New Year's Day"),
+            ("2024-05-01", "May Day"),
+            ("2024-06-17", "Eid al-Adha"),
+            ("2024-06-18", "Eid al-Adha"),
+            ("2024-06-19", "Eid al-Adha"),
+            ("2024-07-17", "Ashura"),
+            ("2024-08-15", "National Mourning Day"),
+            ("2024-09-16", "Prophet's Birthday"),
+            ("2024-12-16", "Victory Day"),
+            ("2024-12-25", "Christmas Day"),
         )
