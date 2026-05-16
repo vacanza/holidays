@@ -82,7 +82,7 @@ msgstr "Mid-Sha'ban"
 
 #. Laylat al-Qadr.
 msgid "শবে কদর"
-msgstr "Night of Power"
+msgstr "Laylat al-Qadr"
 
 #. Jumu'atul-Wida.
 msgid "জুমাতুল বিদা"
