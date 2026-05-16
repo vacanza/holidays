@@ -193,7 +193,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2024-03-17", "Sheikh Mujibur Rahman's Birthday"),
             ("2024-03-26", "Independence Day"),
             ("2024-04-05", "Jumu'atul-Wida"),
-            ("2024-04-07", "Night of Power"),
+            ("2024-04-07", "Laylat al-Qadr"),
             ("2024-04-10", "Eid al-Fitr"),
             ("2024-04-11", "Eid al-Fitr"),
             ("2024-04-12", "Eid al-Fitr"),
@@ -204,7 +204,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2024-06-19", "Eid al-Adha"),
             ("2024-07-17", "Ashura"),
             ("2024-08-15", "National Mourning Day"),
-            ("2024-09-16", "Mawlid"),
+            ("2024-09-16", "Prophet's Birthday"),
             ("2024-12-16", "Victory Day"),
             ("2024-12-25", "Christmas Day"),
         )
