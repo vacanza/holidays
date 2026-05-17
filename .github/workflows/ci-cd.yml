@@ -17,6 +17,8 @@ on:
   workflow_dispatch:
 
 env:
+  DEFAULT_PYTHON_VERSION: '3.14'
+  DEFAULT_UV_VERSION: '0.11.8'
   FORCE_COLOR: 1
 
 concurrency:
@@ -34,8 +36,8 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b  # v8.1.0
         with:
-          python-version: '3.14'
-          version: '0.9.16'
+          python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
+          version: ${{ env.DEFAULT_UV_VERSION }}
 
       - name: Install Python
         run: uv python install "$UV_PYTHON"
@@ -89,7 +91,7 @@ jobs:
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b  # v8.1.0
         with:
           python-version: ${{ matrix.python-version }}
-          version: '0.9.16'
+          version: ${{ env.DEFAULT_UV_VERSION }}
 
       - name: Install Python ${{ matrix.python-version }}
         run: uv python install ${{ matrix.python-version }}
@@ -116,8 +118,8 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b  # v8.1.0
         with:
-          python-version: '3.14'
-          version: '0.9.16'
+          python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
+          version: ${{ env.DEFAULT_UV_VERSION }}
 
       - name: Install Python
         run: uv python install "$UV_PYTHON"
@@ -166,8 +168,8 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b  # v8.1.0
         with:
-          python-version: '3.14'
-          version: '0.9.16'
+          python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
+          version: ${{ env.DEFAULT_UV_VERSION }}
 
       - name: Install Python
         shell: bash
@@ -201,8 +203,8 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b  # v8.1.0
         with:
-          python-version: '3.14'
-          version: '0.9.16'
+          python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
+          version: ${{ env.DEFAULT_UV_VERSION }}
 
       - name: Install Python
         run: uv python install "$UV_PYTHON"

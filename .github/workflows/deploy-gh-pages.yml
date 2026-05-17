@@ -7,6 +7,8 @@ on:
   workflow_dispatch:
 
 env:
+  DEFAULT_PYTHON_VERSION: '3.14'
+  DEFAULT_UV_VERSION: '0.11.8'
   FORCE_COLOR: 1
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
@@ -29,8 +31,8 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b  # v8.1.0
         with:
-          python-version: '3.14'
-          version: '0.9.16'
+          python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
+          version: ${{ env.DEFAULT_UV_VERSION }}
 
       - name: Install Python
         run: uv python install "$UV_PYTHON"
