@@ -20,6 +20,7 @@ help:
 	@echo "    release-notes generate release notes"
 	@echo "    sbom          generate CycloneDX SBOM"
 	@echo "    setup         setup development environment"
+	@echo "    snapshot      generate project snapshots"
 	@echo "    test          run tests (in parallel)"
 	@echo "    upgrade       run dependency upgrade"
 

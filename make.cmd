@@ -54,6 +54,7 @@ GoTo :Help
     Echo     release-notes generate release notes
     Echo     sbom          generate CycloneDX SBOM
     Echo     setup         setup development environment
+    Echo     snapshot      generate project snapshots
     Echo     test          run tests (in parallel)
     Echo     upgrade       run dependency upgrade
     Exit /B
