@@ -381,7 +381,7 @@ class India(
         self._add_holiday_mar_22(tr("Bihar Day"))
 
     # Chandigarh.
-    def _populate_subdiv_ch_public_holidays(self): ...
+    # def _populate_subdiv_ch_public_holidays(self): ...
 
     # Chhattisgarh.
     def _populate_subdiv_cg_public_holidays(self):
@@ -420,7 +420,7 @@ class India(
         self._add_holiday_apr_15(tr("Himachal Day"))
 
     # Jammu and Kashmir
-    def _populate_subdiv_jk_public_holidays(self): ...
+    # def _populate_subdiv_jk_public_holidays(self): ...
 
     # Jharkhand.
     def _populate_subdiv_jh_public_holidays(self):
@@ -444,7 +444,7 @@ class India(
         self._add_holiday_nov_1(tr("Kerala Foundation Day"))
 
     # Ladakh.
-    def _populate_subdiv_la_public_holidays(self): ...
+    # def _populate_subdiv_la_public_holidays(self): ...
 
     # Maharashtra.
     def _populate_subdiv_mh_public_holidays(self):
@@ -543,7 +543,7 @@ class India(
         self._add_gudi_padwa(tr("Ugadi"))
 
     # Uttarakhand.
-    def _populate_subdiv_uk_public_holidays(self): ...
+    # def _populate_subdiv_uk_public_holidays(self): ...
 
     # Uttar Pradesh.
     def _populate_subdiv_up_public_holidays(self):
