@@ -298,6 +298,10 @@ class India(
         # Govardhan Puja.
         self._add_govardhan_puja(tr("Govardhan Puja"))
 
+        if self._year == 2011:
+            # Holi.
+            self._add_holi(tr("Holi"))
+
         if self._year == 2008 or self._year == 2017:
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))

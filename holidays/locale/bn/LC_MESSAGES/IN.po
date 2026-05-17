@@ -54,7 +54,7 @@ msgstr "বুদ্ধ পূর্ণিমা"
 
 #. Diwali.
 msgid "Diwali (Deepavali)"
-msgstr "দিওয়ালি (দীপাবলি)"
+msgstr "দীপাবলি (দীপাবলি)"
 
 #. Dussehra.
 msgid "Dussehra"

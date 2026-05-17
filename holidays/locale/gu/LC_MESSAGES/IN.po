@@ -103,7 +103,7 @@ msgstr "ઈદ-ઉલ-ફિત્ર"
 
 #. Eid al-Adha.
 msgid "Id-ul-Zuha (Bakrid)"
-msgstr "ઈદ-ઉલ-ઝુહા (બકરીદ)"
+msgstr "ઈદ-ઉલ-ઝુહા (બકરી ઈદ)"
 
 #. Good Friday.
 msgid "Good Friday"
