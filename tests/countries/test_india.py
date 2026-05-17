@@ -13,6 +13,7 @@
 # mypy: disable-error-code=attr-defined
 
 import warnings
+from collections.abc import Iterable
 from unittest import TestCase
 
 from holidays.countries.india import India
