@@ -26,10 +26,7 @@ class TestIndia(CommonCountryTests, TestCase):
         cls.hindu_start_year = 2001
         cls.hindu_end_year = 2035
         cls.hindu_full_range = range(cls.hindu_start_year, cls.hindu_end_year + 1)
-        super().setUpClass(
-            India,
-            with_subdiv_categories=True,
-        )
+        super().setUpClass(India, with_subdiv_categories=True)
 
     def setUp(self):
         super().setUp()
@@ -183,8 +180,8 @@ class TestIndia(CommonCountryTests, TestCase):
         *,
         category_optional: bool = False,
         subdivs: set | None = None,
-        hindu_range: range | tuple[int, ...] | list[int] | None = None,
-        skip_years: tuple[int, ...] | set[int] | None = None,
+        hindu_range: Iterable[int] | None = None,
+        skip_years: set[int] | None = None,
     ):
         """Once HinduHolidays properly supports full Hindu calendar range,
         update the following section in your code to the following format:
@@ -235,7 +232,7 @@ class TestIndia(CommonCountryTests, TestCase):
             if skip_years:
                 # holiday skipped from optional holidays for skip_years (may be present in public),
                 # assert optional absence for those
-                self.assertNoOptionalHolidayName(name, *skip_years)
+                self.assertNoOptionalHolidayName(name, skip_years)
             else:
                 # holiday never in public, assert absence for full range
                 self.assertNoHolidayName(name)
