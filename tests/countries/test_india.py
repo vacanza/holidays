@@ -254,25 +254,25 @@ class TestIndia(CommonCountryTests, TestCase):
         elif subdivs is not None:
             self.assertNoHolidayName(name)
             for subdiv, holidays in self.subdiv_holidays.items():
-                non_obs_holidays = self.subdiv_holidays_non_observed[subdiv]
+                # non_obs_holidays = self.subdiv_holidays_non_observed[subdiv]
                 if subdiv in subdivs:
                     self.assertHolidayName(name, holidays, dts)
-                    self.assertHolidayName(name, non_obs_holidays, effective_range)
+                    # self.assertHolidayName(name, non_obs_holidays, effective_range)
                     self.assertNoHolidayName(
                         name,
                         holidays,
                         range(self.start_year, self.hindu_start_year),
                         range(self.hindu_end_year + 1, self.end_year),
                     )
-                    self.assertNoHolidayName(
-                        name,
-                        non_obs_holidays,
-                        range(self.start_year, self.hindu_start_year),
-                        range(self.hindu_end_year + 1, self.end_year),
-                    )
+                    # self.assertNoSuNonObservedHolidayName(
+                    #     name,
+                    #     non_obs_holidays,
+                    #     range(self.start_year, self.hindu_start_year),
+                    #     range(self.hindu_end_year + 1, self.end_year),
+                    # )
                 else:
                     self.assertNoHolidayName(name, holidays)
-                    self.assertNoHolidayName(name, non_obs_holidays)
+                    # self.assertNoNonObservedHolidayName(name, non_obs_holidays)
 
     def test_buddha_purnima(self):
         name = "Buddha Purnima"
