@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: archive-links check clean doc doc-serve icalendar l10n package \
+.PHONY: archive-links check clean doc doc-serve help icalendar l10n package \
         pre-commit release-notes sbom setup snapshot test upgrade
 
 UV_RUN_CMD = uv run --no-sync
