@@ -742,40 +742,6 @@ class TestIndia(CommonCountryTests, TestCase):
     def test_dr_b_r_ambedkars_jayanti(self):
         name = "Dr. B. R. Ambedkar's Jayanti"
         self.assertHolidayName(name, (f"{year}-04-14" for year in self.full_range))
-        # for subdiv, holidays in self.subdiv_holidays.items():
-        #     if subdiv in {
-        #         "AN",
-        #         "AP",
-        #         "BR",
-        #         "CG",
-        #         "CH",
-        #         "GA",
-        #         "GJ",
-        #         "HP",
-        #         "HR",
-        #         "JH",
-        #         "JK",
-        #         "KA",
-        #         "KL",
-        #         "LA",
-        #         "MH",
-        #         "MP",
-        #         "OD",
-        #         "PB",
-        #         "PY",
-        #         "RJ",
-        #         "SK",
-        #         "TN",
-        #         "TS",
-        #         "UK",
-        #         "UP",
-        #         "WB",
-        #     }:
-        #         self.assertHolidayName(
-        #             name, holidays, (f"{year}-04-14" for year in self.full_range)
-        #         )
-        #     else:
-        #         self.assertNoHolidayName(name, holidays)
 
     def test_andhra_pradesh_foundation_day(self):
         name = "Andhra Pradesh Foundation Day"
