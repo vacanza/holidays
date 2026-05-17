@@ -109,3 +109,4 @@ GoTo :Help
 :Upgrade
     uv lock --upgrade
     uv sync --all-groups
+    Exit /B
