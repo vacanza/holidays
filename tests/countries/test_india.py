@@ -57,6 +57,9 @@ class TestIndia(CommonCountryTests, TestCase):
                 with self.assertWarns(UserWarning):
                     India(years=year)
 
+    def test_special_holidays(self):
+        self.assertHolidayName("Dussehra (Mahanavami)", "2002-10-14")
+
     def test_republic_day(self):
         name = "Republic Day"
         self.assertHolidayName(name, (f"{year}-01-26" for year in range(1950, self.end_year)))
@@ -308,9 +311,6 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self._assertHinduHolidayHelper(name, dts)
 
-    def test_dussehra_mahanavami(self):
-        self.assertHolidayName("Dussehra (Mahanavami)", "2002-10-14")
-
     def test_janmashtami_vaishnava(self):
         name = "Janmashtami (Vaishnava)"
         skip_years = {2008, 2017}
@@ -329,10 +329,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2017-08-15",
         )
         self._assertHinduHolidayHelper(
-            name,
-            dts,
-            category_optional=True,
-            skip_years={y for y in self.hindu_full_range if y not in skip_years},
+            name, dts, category_optional=True, skip_years=set(self.hindu_full_range) - skip_years
         )
 
     def test_mahavir_jayanti(self):
@@ -382,10 +379,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-03-08",
         )
         self._assertHinduHolidayHelper(
-            name,
-            dts,
-            category_optional=True,
-            skip_years={y for y in self.hindu_full_range if y not in skip_years},
+            name, dts, category_optional=True, skip_years=set(self.hindu_full_range) - skip_years
         )
 
     def test_guru_nanak_jayanti(self):
@@ -415,10 +409,7 @@ class TestIndia(CommonCountryTests, TestCase):
         # OPTIONAL.
         dts = ("2011-03-20",)
         self._assertHinduHolidayHelper(
-            name,
-            dts,
-            category_optional=True,
-            skip_years={y for y in self.hindu_full_range if y not in skip_years},
+            name, dts, category_optional=True, skip_years=set(self.hindu_full_range) - skip_years
         )
 
     def test_ganesh_chaturthi(self):
@@ -518,10 +509,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-04-06",
         )
         self._assertHinduHolidayHelper(
-            name,
-            dts,
-            category_optional=True,
-            skip_years={y for y in self.hindu_full_range if y not in skip_years},
+            name, dts, category_optional=True, skip_years=set(self.hindu_full_range) - skip_years
         )
 
     def test_navratri_sharad_navratri(self):

@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-05-14 21:34+0530\n"
+"PO-Revision-Date: 2026-05-17 22:53+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -60,10 +60,6 @@ msgstr "Diwali (Deepavali)"
 #. Dussehra.
 msgid "Dussehra"
 msgstr "Dussehra"
-
-#. Dussehra (Mahanavami).
-msgid "Dussehra (Mahanavami)"
-msgstr "Dussehra (Mahanavami)"
 
 #. Janmashtami (Vaishnava).
 msgid "Janmashtami (Vaishnava)"
@@ -336,3 +332,7 @@ msgstr "Pohela Boishakh"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "Rabindra Jayanti"
+
+#. Dussehra (Mahanavami).
+msgid "Dussehra (Mahanavami)"
+msgstr "Dussehra (Mahanavami)"

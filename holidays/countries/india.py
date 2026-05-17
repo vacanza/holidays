@@ -21,6 +21,7 @@ from holidays.groups import (
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 )
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NONE, SUN_ONLY
 
@@ -31,6 +32,7 @@ class India(
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 ):
     """India holidays.
 
@@ -168,6 +170,25 @@ class India(
         "OR",  # Orissa.
     )
 
+    janmashtami_optional_years = {2008, 2017}
+
+    maha_shivaratri_optional_years = {
+        2003,
+        2009,
+        2010,
+        2013,
+        2014,
+        2015,
+        2016,
+        2018,
+        2019,
+        2020,
+        2021,
+        2023,
+        2024,
+        2026,
+    }
+
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
@@ -187,6 +208,7 @@ class India(
             calendar_delta_days=+1,
         )
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, cls=IndiaStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -221,33 +243,14 @@ class India(
         # Dussehra.
         self._add_dussehra(tr("Dussehra"))
 
-        if self._year == 2002:
-            # Dussehra (Mahanavami).
-            self._add_maha_navami(tr("Dussehra (Mahanavami)"))
-
-        if self._year not in {2008, 2017}:
+        if self._year not in self.janmashtami_optional_years:
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
         # Mahavir Jayanti.
         self._add_mahavir_jayanti(tr("Mahavir Jayanti"))
 
-        if self._year not in {
-            2003,
-            2009,
-            2010,
-            2013,
-            2014,
-            2015,
-            2016,
-            2018,
-            2019,
-            2020,
-            2021,
-            2023,
-            2024,
-            2026,
-        }:
+        if self._year not in self.maha_shivaratri_optional_years:
             # Maha Shivaratri.
             self._add_maha_shivaratri(tr("Maha Shivaratri"))
 
@@ -302,7 +305,7 @@ class India(
             # Holi.
             self._add_holi(tr("Holi"))
 
-        if self._year == 2008 or self._year == 2017:
+        if self._year in self.janmashtami_optional_years:
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
@@ -312,23 +315,7 @@ class India(
         # Maha Navami.
         self._add_maha_navami(tr("Maha Navami"))
 
-        if self._year in {
-            2003,
-            2009,
-            2010,
-            2013,
-            2014,
-            2015,
-            2016,
-            2018,
-            2019,
-            2020,
-            2021,
-            2023,
-            2024,
-            2026,
-        }:
-            # Maha Shivaratri.
+        if self._year in self.maha_shivaratri_optional_years:
             self._add_maha_shivaratri(tr("Maha Shivaratri"))
 
         # Maharishi Valmiki Jayanti.
@@ -381,7 +368,8 @@ class India(
         self._add_holiday_mar_22(tr("Bihar Day"))
 
     # Chandigarh.
-    # def _populate_subdiv_ch_public_holidays(self): ...
+    def _populate_subdiv_ch_public_holidays(self):
+        pass
 
     # Chhattisgarh.
     def _populate_subdiv_cg_public_holidays(self):
@@ -420,7 +408,8 @@ class India(
         self._add_holiday_apr_15(tr("Himachal Day"))
 
     # Jammu and Kashmir
-    # def _populate_subdiv_jk_public_holidays(self): ...
+    def _populate_subdiv_jk_public_holidays(self):
+        pass
 
     # Jharkhand.
     def _populate_subdiv_jh_public_holidays(self):
@@ -444,7 +433,8 @@ class India(
         self._add_holiday_nov_1(tr("Kerala Foundation Day"))
 
     # Ladakh.
-    # def _populate_subdiv_la_public_holidays(self): ...
+    def _populate_subdiv_la_public_holidays(self):
+        pass
 
     # Maharashtra.
     def _populate_subdiv_mh_public_holidays(self):
@@ -543,7 +533,8 @@ class India(
         self._add_gudi_padwa(tr("Ugadi"))
 
     # Uttarakhand.
-    # def _populate_subdiv_uk_public_holidays(self): ...
+    def _populate_subdiv_uk_public_holidays(self):
+        pass
 
     # Uttar Pradesh.
     def _populate_subdiv_up_public_holidays(self):
@@ -607,4 +598,11 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
         2015: ((JAN, 4), (DEC, 25)),
         2016: (DEC, 13),
         2017: (DEC, 2),
+    }
+
+
+class IndiaStaticHolidays:
+    special_public_holidays = {
+        # Dussehra (Mahanavami).
+        2002: (OCT, 14, tr("Dussehra (Mahanavami)")),
     }

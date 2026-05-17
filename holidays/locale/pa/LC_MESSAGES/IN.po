@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-28 17:22+0530\n"
-"PO-Revision-Date: 2026-05-14 21:34+0530\n"
+"PO-Revision-Date: 2026-05-17 22:53+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pa\n"
@@ -59,10 +59,6 @@ msgstr "ਦੀਵਾਲੀ (ਦੀਪਵਾਲੀ)"
 #. Dussehra.
 msgid "Dussehra"
 msgstr "ਦੁਸਹਿਰਾ"
-
-#. Dussehra (Mahanavami).
-msgid "Dussehra (Mahanavami)"
-msgstr "ਦੁਸਹਿਰਾ (ਮਹਾਨਵਮੀ)"
 
 #. Janmashtami (Vaishnava).
 msgid "Janmashtami (Vaishnava)"
@@ -335,3 +331,7 @@ msgstr "ਪੋਹੇਲਾ ਬੋਸ਼ਾਖ"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "ਰਬਿੰਦਰ ਜੈਅੰਤੀ"
+
+#. Dussehra (Mahanavami).
+msgid "Dussehra (Mahanavami)"
+msgstr "ਦੁਸਹਿਰਾ (ਮਹਾਨਵਮੀ)"
