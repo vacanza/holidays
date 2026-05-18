@@ -93,6 +93,21 @@ class POGenerator:
             + "\n#"
         )
 
+    @staticmethod
+    def _is_po_equal(pofile1: POFile, pofile2: POFile) -> bool:
+        """Compare two .po files considering comments."""
+        if len(pofile1) != len(pofile2):
+            return False
+
+        for entry1, entry2 in zip(pofile1, pofile2):
+            if entry1 != entry2:
+                return False
+
+            if entry1.comment != entry2.comment or entry1.tcomment != entry2.tcomment:
+                return False
+
+        return True
+
     @classmethod
     def _init_worker(cls, author_identity: str, license_header: str) -> None:
         """Initialize worker with shared data for multiprocessing."""
@@ -210,7 +225,9 @@ class POGenerator:
         if not TRANSLATOR_PATTERN.fullmatch(metadata.get("Last-Translator", "")):
             metadata.pop("Last-Translator", None)
 
-        if po_file != po_file_initial or not REQUIRED_METADATA_KEYS.issubset(metadata):
+        if not POGenerator._is_po_equal(
+            po_file, po_file_initial
+        ) or not REQUIRED_METADATA_KEYS.issubset(metadata):
             POGenerator._apply_metadata(
                 po_file,
                 current_lang,

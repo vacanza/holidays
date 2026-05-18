@@ -991,9 +991,32 @@ class TestRepr(unittest.TestCase):
             repr(CountryStub1(subdiv="Subdiv 1")),
             "holidays.country_holidays('CS1', subdiv='Subdiv 1')",
         )
+        self.assertEqual(
+            repr(CountryStub1(language="de")), "holidays.country_holidays('CS1', language='de')"
+        )
+        self.assertEqual(
+            repr(CountryStub1(categories=SCHOOL)),
+            "holidays.country_holidays('CS1', categories=['school'])",
+        )
+        self.assertEqual(
+            repr(CountryStub1(categories=(PUBLIC, SCHOOL))),
+            "holidays.country_holidays('CS1', categories=['public', 'school'])",
+        )
+        self.assertEqual(
+            repr(CountryStub1(language="de", subdiv="Subdiv 1")),
+            "holidays.country_holidays('CS1', language='de', subdiv='Subdiv 1')",
+        )
+        self.assertEqual(
+            repr(CountryStub1(categories=(PUBLIC, SCHOOL), language="de", subdiv="Subdiv 1")),
+            "holidays.country_holidays('CS1', categories=['public', 'school'], "
+            "language='de', subdiv='Subdiv 1')",
+        )
 
     def test_market(self):
         self.assertEqual(repr(MarketStub1()), "holidays.financial_holidays('MS1')")
+        self.assertEqual(
+            repr(MarketStub1(language="de")), "holidays.financial_holidays('MS1', language='de')"
+        )
 
 
 class TestSerialization(unittest.TestCase):

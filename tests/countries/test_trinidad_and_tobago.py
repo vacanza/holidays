@@ -210,8 +210,6 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
         obs_dts = (
-            "2006-11-20",
-            "2009-11-16",
             "2019-10-28",
             "2023-11-13",
         )

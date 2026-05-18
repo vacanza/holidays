@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 #  holidays
 #  --------
 #  A fast, efficient Python library for generating country, province and state
@@ -12,17 +13,28 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+"""Generate Gregorian dates for holidays based on the Mongolian lunisolar calendar.
+
+References:
+    * <https://en.wikipedia.org/wiki/Mongolian_calendar>
+    * <https://web.archive.org/web/20250606051130/https://www.math.mcgill.ca/gantumur/cal/year.html>
+
+Run with:
+
+    python -m scripts.calendar.mongolian_generator
+
+Alternatively, run with uv:
+
+    uv run -m scripts.calendar.mongolian_generator
+
+This generates the file `holidays/calendars/mongolian_dates.py`,
+whose data can then be copied to `holidays/calendars/mongolian.py`.
+"""
+
+from collections import defaultdict
 from datetime import date
-from pathlib import Path
 
-"""
-This file generates Gregorian dates for Mongolian lunisolar calendar based holidays.
-
-See the Wikipedia article: https://en.wikipedia.org/wiki/Mongolian_calendar
-
-Sources:
-- https://www.math.mcgill.ca/gantumur/cal/year.html
-"""
+from .generator import CalendarGenerator
 
 m_zero = 3
 epoch = 1747
@@ -99,7 +111,7 @@ def true_date(d: int, n: int) -> float:
     return mean_date + moon_equ / 60 - sun_equ / 60
 
 
-def julian_day(y: int, m: int, d: int, *, is_leap: bool) -> int:
+def julian_day(y: int, m: int, d: int, *, is_leap: bool = False) -> int:
     n = true_month(y, m, is_leap=is_leap)
     t = true_date(d, n)
     return int(t)
@@ -121,62 +133,30 @@ def mongolian_to_gregorian(m_year: int, m_month: int, m_day: int, *, is_leap: bo
 
 
 def get_tsagaan_sar(y: int) -> date:
-    return gregorian_date(julian_day(y - 1, 12, 30, is_leap=False) + 1)
+    return gregorian_date(julian_day(y - 1, 12, 30) + 1)
 
 
 def find_festival_date(y: int, m_month: int, m_day: int) -> date:
-    return gregorian_date(julian_day(y, m_month, m_day, is_leap=False))
+    return gregorian_date(julian_day(y, m_month, m_day))
 
 
-CLASS_NAME = "_{cal_name}Lunisolar"
-OUT_FILE_NAME = "{cal_name}_dates.py"
-
-CLASS_TEMPLATE = """class {class_name}:
-{holiday_data}"""
-
-HOLIDAY_ARRAY_TEMPLATE = """    {hol_name}_DATES = {{
-{year_dates}
-    }}
-"""
-
-YEAR_TEMPLATE = "        {year}: ({date}),"
-
-CALENDARS = {
-    "MONGOLIAN": "Mongolian",
+MONGOLIAN_HOLIDAYS = {
+    "BUDDHA_DAY": lambda y: find_festival_date(y, 4, 15),
+    "GENGHIS_KHAN_DAY": lambda y: find_festival_date(y, 10, 1),
+    "TSAGAAN_SAR": get_tsagaan_sar,
 }
-
-MONGOLIAN_HOLIDAYS = (
-    ("BUDDHA_DAY", lambda y: find_festival_date(y, 4, 15)),
-    ("GENGHIS_KHAN_DAY", lambda y: find_festival_date(y, 10, 1)),
-    ("TSAGAAN_SAR", get_tsagaan_sar),
-)
 
 
 def generate_data() -> None:
-    g_year_min, g_year_max = 2004, 2100
-    holiday_data = []
+    years = range(2004, 2101)
 
-    for hol_name, hol_func in MONGOLIAN_HOLIDAYS:
-        year_dates = []
-        for year in range(g_year_min, g_year_max + 1):
-            dt = hol_func(year)
-            date_str = f"{dt.strftime('%b').upper()}, {dt.day}"
-            year_dates.append(YEAR_TEMPLATE.format(year=year, date=date_str))
+    dates: dict[str, dict[int, date]] = defaultdict(dict)
+    for name, holiday_func in MONGOLIAN_HOLIDAYS.items():
+        for year in years:
+            dates[name][year] = holiday_func(year)
 
-        year_dates_str = "\n".join(year_dates)
-        holiday_data.append(
-            HOLIDAY_ARRAY_TEMPLATE.format(hol_name=hol_name, year_dates=year_dates_str)
-        )
-
-    holiday_data_str = "\n".join(holiday_data)
-    class_str = CLASS_TEMPLATE.format(
-        class_name=CLASS_NAME.format(cal_name="Mongolian"),
-        holiday_data=holiday_data_str,
-    )
-
-    path = Path("holidays/calendars") / OUT_FILE_NAME.format(cal_name="mongolian")
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(class_str, encoding="UTF-8")
+    cal_gen = CalendarGenerator("mongolian", "_MongolianLunisolar")
+    cal_gen.generate(dates)
 
 
 if __name__ == "__main__":
