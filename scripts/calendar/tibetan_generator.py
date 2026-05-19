@@ -12,36 +12,13 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# ruff: noqa: S310
-
 from pathlib import Path
-from urllib.request import Request, urlopen
+
+import requests
 
 DATA_URL = "https://raw.githubusercontent.com/wp-plugins/bhutanese-calendar/master/data/data.txt"
 DATA_FILENAME = "tibetan_data.txt"
 OUT_FILE_NAME = "tibetan_dates.py"
-
-CLASS_NAME = "_TibetanLunisolar"
-
-CLASS_TEMPLATE = """\
-from holidays.calendars.gregorian import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
-
-
-class {class_name}:
-{holiday_data}"""
 
 MONTH_NAMES = {
     1: "JAN",
@@ -99,9 +76,9 @@ def _get_holiday(tib_lookup, tib_month, tib_day, rule, tib_year):
 def generate_data() -> None:
     data_file = Path(__file__).parent / DATA_FILENAME
     if not data_file.exists():
-        req = Request(DATA_URL, headers={"User-Agent": "holidays-tibetan-generator"})
-        with urlopen(req, timeout=30) as resp:
-            data_file.write_bytes(resp.read())
+        response = requests.get(DATA_URL, timeout=30)
+        response.raise_for_status()
+        data_file.write_bytes(response.content)
 
     tib_lookup = {}
     tib_years = []
@@ -146,13 +123,8 @@ def generate_data() -> None:
         )
         holiday_data.append(f"    {name}_DATES = {{\n{year_dates}\n    }}\n")
 
-    output = CLASS_TEMPLATE.format(
-        class_name=CLASS_NAME,
-        holiday_data="\n".join(holiday_data),
-    )
-
     output_path = Path("holidays/calendars") / OUT_FILE_NAME
-    output_path.write_text(output, encoding="UTF-8")
+    output_path.write_text("".join(holiday_data), encoding="UTF-8")
 
 
 if __name__ == "__main__":
