@@ -290,10 +290,26 @@ class India(
             self._populate_subdiv_od_public_holidays()
 
     def _populate_optional_holidays(self):
-        # Hindu holidays.
+
+        # New Year's Day.
+        self._add_new_years_day(tr("New Year's Day"))
 
         # Children's Day.
         self._add_holiday_nov_14(tr("Children's Day"))
+
+        # Hindu holidays.
+
+        # Bhai Duj.
+        self._add_bhai_dooj(tr("Bhai Duj"))
+
+        # Chhath Puja.
+        self._add_chhath_puja(tr("Chhath Puja"))
+
+        # Dussehra (Mahaashtami).
+        self._add_maha_ashtami(tr("Dussehra (Mahaashtami)"))
+
+        # Dussehra (Mahanavami).
+        self._add_maha_navami(tr("Dussehra (Mahanavami)"))
 
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
@@ -324,6 +340,15 @@ class India(
         # Makar Sankranti.
         self._add_makar_sankranti(tr("Makar Sankranti"))
 
+        # Onam.
+        self._add_onam(tr("Onam"))
+
+        # Parsi New Year.
+        self._add_parsi_new_year(tr("Parsi New Year"))
+
+        # Pongal.
+        self._add_pongal(tr("Pongal"))
+
         # Raksha Bandhan.
         self._add_raksha_bandhan(tr("Raksha Bandhan"))
 
@@ -333,7 +358,13 @@ class India(
         # Navratri / Sharad Navratri.
         self._add_sharad_navratri(tr("Navratri / Sharad Navratri"))
 
+        # Vaisakhi.
+        self._add_vaisakhi(tr("Vaisakhi"))
+
         # Christian holidays.
+
+        # Christmas Eve.
+        self._add_christmas_eve(tr("Christmas Eve"))
 
         # Easter Sunday.
         self._add_easter_sunday(tr("Easter Sunday"))
