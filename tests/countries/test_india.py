@@ -13,6 +13,7 @@
 # mypy: disable-error-code=attr-defined
 
 import warnings
+from collections.abc import Iterable
 from unittest import TestCase
 
 from holidays.countries.india import India
@@ -55,6 +56,9 @@ class TestIndia(CommonCountryTests, TestCase):
             ):
                 with self.assertWarns(UserWarning):
                     India(years=year)
+
+    def test_special_holidays(self):
+        self.assertHolidayName("Dussehra (Mahanavami)", "2002-10-14")
 
     def test_republic_day(self):
         name = "Republic Day"
@@ -161,7 +165,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_adha(self):
-        name = "Bakrid"
+        name = "Id-ul-Zuha (Bakrid)"
         self.assertHolidayName(
             name,
             "2020-08-01",
@@ -180,6 +184,8 @@ class TestIndia(CommonCountryTests, TestCase):
         *,
         category_optional: bool = False,
         subdivs: set | None = None,
+        hindu_range: Iterable[int] | None = None,
+        skip_years: set[int] | None = None,
     ):
         """Once HinduHolidays properly supports full Hindu calendar range,
         update the following section in your code to the following format:
@@ -195,21 +201,53 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2025-XX-XX",
             )
             self.assertHolidayName(name, self.full_range)
+
+        hindu_range can be:
+            - None (defaults to self.hindu_full_range)
+            - range(2000, 2005)
+            - (2002, 2007, 2010)
+
+        skip_years may be used to skip holiday assertion,works for both public & optional assertion
+
+        For holidays using rule=SUN_TO_NONE, the range-wide assertion is done via
+        assertNonObservedHolidayName, which ignores observance rules entirely,
+        so the holiday is always present. Specific dts are then asserted on the
+        observed instance as usual.
         """
+        effective_range = self.hindu_full_range if hindu_range is None else hindu_range
+        if skip_years:
+            effective_range = [y for y in effective_range if y not in skip_years]
+
         if category_optional is False and subdivs is None:
             self.assertHolidayName(name, dts)
-            self.assertHolidayName(name, self.hindu_full_range)
+            self.assertNonObservedHolidayName(name, effective_range)
             self.assertNoHolidayName(
+                name,
+                range(self.start_year, self.hindu_start_year),
+                range(self.hindu_end_year + 1, self.end_year),
+            )
+            self.assertNoNonObservedHolidayName(
                 name,
                 range(self.start_year, self.hindu_start_year),
                 range(self.hindu_end_year + 1, self.end_year),
             )
         # This assumes there's no subdiv-level optional holidays yet.
         elif category_optional is True:
-            self.assertNoHolidayName(name)
+            if skip_years:
+                # holiday skipped from optional holidays for skip_years (may be present in public),
+                # assert optional absence for those
+                self.assertNoOptionalHolidayName(name, skip_years)
+            else:
+                # holiday never in public, assert absence for full range
+                self.assertNoHolidayName(name)
             self.assertOptionalHolidayName(name, dts)
-            self.assertOptionalHolidayName(name, self.hindu_full_range)
+            self.assertOptionalNonObservedHolidayName(name, effective_range)
             self.assertNoOptionalHolidayName(
+                name,
+                range(self.start_year, self.hindu_start_year),
+                range(self.hindu_end_year + 1, self.end_year),
+            )
+            self.assertNoOptionalNonObservedHolidayName(
                 name,
                 range(self.start_year, self.hindu_start_year),
                 range(self.hindu_end_year + 1, self.end_year),
@@ -217,17 +255,25 @@ class TestIndia(CommonCountryTests, TestCase):
         elif subdivs is not None:
             self.assertNoHolidayName(name)
             for subdiv, holidays in self.subdiv_holidays.items():
+                # non_obs_holidays = self.subdiv_holidays_non_observed[subdiv]
                 if subdiv in subdivs:
                     self.assertHolidayName(name, holidays, dts)
-                    self.assertHolidayName(name, holidays, self.hindu_full_range)
+                    # self.assertHolidayName(name, non_obs_holidays, effective_range)
                     self.assertNoHolidayName(
                         name,
                         holidays,
                         range(self.start_year, self.hindu_start_year),
                         range(self.hindu_end_year + 1, self.end_year),
                     )
+                    # self.assertNoSuNonObservedHolidayName(
+                    #     name,
+                    #     non_obs_holidays,
+                    #     range(self.start_year, self.hindu_start_year),
+                    #     range(self.hindu_end_year + 1, self.end_year),
+                    # )
                 else:
                     self.assertNoHolidayName(name, holidays)
+                    # self.assertNoNonObservedHolidayName(name, non_obs_holidays)
 
     def test_buddha_purnima(self):
         name = "Buddha Purnima"
@@ -242,7 +288,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(name, dts)
 
     def test_diwali(self):
-        name = "Diwali"
+        name = "Diwali (Deepavali)"
         dts = (
             "2020-11-14",
             "2021-11-04",
@@ -265,8 +311,9 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self._assertHinduHolidayHelper(name, dts)
 
-    def test_janmashtami(self):
-        name = "Janmashtami"
+    def test_janmashtami_vaishnava(self):
+        name = "Janmashtami (Vaishnava)"
+        skip_years = {2008, 2017}
         dts = (
             "2020-08-12",
             "2021-08-30",
@@ -275,7 +322,15 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-08-26",
             "2025-08-16",
         )
-        self._assertHinduHolidayHelper(name, dts)
+        self._assertHinduHolidayHelper(name, dts, skip_years=skip_years)
+        # OPTIONAL.
+        dts = (
+            "2008-08-24",
+            "2017-08-15",
+        )
+        self._assertHinduHolidayHelper(
+            name, dts, category_optional=True, skip_years=set(self.hindu_full_range) - skip_years
+        )
 
     def test_mahavir_jayanti(self):
         name = "Mahavir Jayanti"
@@ -291,15 +346,41 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_maha_shivaratri(self):
         name = "Maha Shivaratri"
+        skip_years = {
+            2003,
+            2009,
+            2010,
+            2013,
+            2014,
+            2015,
+            2016,
+            2018,
+            2019,
+            2020,
+            2021,
+            2023,
+            2024,
+            2026,
+        }
+        dts = (
+            "2022-03-01",
+            "2025-02-26",
+        )
+        self._assertHinduHolidayHelper(
+            name,
+            dts,
+            skip_years=skip_years,
+        )
+        # OPTIONAL.
         dts = (
             "2020-02-21",
             "2021-03-11",
-            "2022-03-01",
             "2023-02-18",
             "2024-03-08",
-            "2025-02-26",
         )
-        self._assertHinduHolidayHelper(name, dts)
+        self._assertHinduHolidayHelper(
+            name, dts, category_optional=True, skip_years=set(self.hindu_full_range) - skip_years
+        )
 
     def test_guru_nanak_jayanti(self):
         name = "Guru Nanak Jayanti"
@@ -315,6 +396,7 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_holi(self):
         name = "Holi"
+        skip_years = {2011}
         dts = (
             "2020-03-10",
             "2021-03-29",
@@ -323,13 +405,12 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-03-25",
             "2025-03-14",
         )
+        self._assertHinduHolidayHelper(name, dts, skip_years=skip_years)
         # OPTIONAL.
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
-        # MH.
-        self.assertSubdivMhHolidayName(name, "2026-03-03")
-        self.assertNoSubdivMhHolidayName(name, "2026-03-04")
-        self.assertSubdivMhHolidayName(name, self.hindu_full_range)
-        self.assertNoSubdivMhOptionalHolidayName(name)
+        dts = ("2011-03-20",)
+        self._assertHinduHolidayHelper(
+            name, dts, category_optional=True, skip_years=set(self.hindu_full_range) - skip_years
+        )
 
     def test_ganesh_chaturthi(self):
         name = "Ganesh Chaturthi"
@@ -414,15 +495,22 @@ class TestIndia(CommonCountryTests, TestCase):
         dts = (
             "2020-04-02",
             "2021-04-21",
-            "2022-04-10",
             "2023-03-30",
             "2024-04-17",
+        )
+        self._assertHinduHolidayHelper(name, dts)
+        # OPTIONAL.
+        skip_years = {2002, 2012, 2018, 2022, 2025, 2029}
+        dts = (
+            "2002-04-21",
+            "2012-04-01",
+            "2018-03-25",
+            "2022-04-10",
             "2025-04-06",
         )
-        # OPTIONAL.
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
-        # SUBDIVS.
-        self._assertHinduHolidayHelper(name, dts, subdivs={"AN"})
+        self._assertHinduHolidayHelper(
+            name, dts, category_optional=True, skip_years=set(self.hindu_full_range) - skip_years
+        )
 
     def test_navratri_sharad_navratri(self):
         name = "Navratri / Sharad Navratri"
@@ -639,41 +727,7 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_dr_b_r_ambedkars_jayanti(self):
         name = "Dr. B. R. Ambedkar's Jayanti"
-        self.assertNoHolidayName(name)
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv in {
-                "AN",
-                "AP",
-                "BR",
-                "CG",
-                "CH",
-                "GA",
-                "GJ",
-                "HP",
-                "HR",
-                "JH",
-                "JK",
-                "KA",
-                "KL",
-                "LA",
-                "MH",
-                "MP",
-                "OD",
-                "PB",
-                "PY",
-                "RJ",
-                "SK",
-                "TN",
-                "TS",
-                "UK",
-                "UP",
-                "WB",
-            }:
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-04-14" for year in self.full_range)
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
+        self.assertHolidayName(name, (f"{year}-04-14" for year in self.full_range))
 
     def test_andhra_pradesh_foundation_day(self):
         name = "Andhra Pradesh Foundation Day"
@@ -1009,9 +1063,10 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertHolidayDatesInYear(
             2018,
             "2018-01-26",
-            "2018-02-13",
+            "2018-03-02",
             "2018-03-29",
             "2018-03-30",
+            "2018-04-14",
             "2018-04-30",
             "2018-06-16",
             "2018-08-15",
@@ -1028,7 +1083,6 @@ class TestIndia(CommonCountryTests, TestCase):
 
         subdiv_holidays_mapping = {
             "AN": (
-                "2018-03-25",
                 "2018-04-14",
                 "2018-08-24",
             ),
@@ -1152,7 +1206,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertOptionalHolidayDatesInYear(
             2018,
             "2018-01-14",
-            "2018-03-02",
+            "2018-02-13",
             "2018-03-25",
             "2018-04-01",
             "2018-05-01",
@@ -1198,10 +1252,10 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-15", "Independence Day"),
             ("2018-08-16", "Puducherry De Jure Transfer Day"),
             ("2018-08-17", "Parsi New Year (Shahenshahi)"),
-            ("2018-08-22", "Bakrid"),
+            ("2018-08-22", "Id-ul-Zuha (Bakrid)"),
             ("2018-08-24", "Onam"),
             ("2018-08-26", "Raksha Bandhan"),
-            ("2018-09-03", "Janmashtami"),
+            ("2018-09-03", "Janmashtami (Vaishnava)"),
             ("2018-09-13", "Ganesh Chaturthi"),
             ("2018-09-21", "Muharram"),
             ("2018-10-02", "Gandhi Jayanti"),
@@ -1221,7 +1275,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "New Punjab Day; "
                 "Puducherry Liberation Day",
             ),
-            ("2018-11-07", "Diwali"),
+            ("2018-11-07", "Diwali (Deepavali)"),
             ("2018-11-08", "Govardhan Puja"),
             ("2018-11-13", "Chhath Puja"),
             ("2018-11-14", "Children's Day"),
@@ -1268,10 +1322,10 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-15", "স্বাধীনতা দিবস"),
             ("2018-08-16", "পুদুচেরি আইনি হস্তান্তর দিবস"),
             ("2018-08-17", "পারসি নববর্ষ (শাহেনশাহী)"),
-            ("2018-08-22", "বকরিদ"),
+            ("2018-08-22", "ঈদ-উল-জুহা (বকরিদ)"),
             ("2018-08-24", "ওনাম"),
             ("2018-08-26", "রাখি বন্ধন"),
-            ("2018-09-03", "জন্মাষ্টমী"),
+            ("2018-09-03", "জন্মাষ্টমী (বৈষ্ণব)"),
             ("2018-09-13", "গণেশ চতুর্থী"),
             ("2018-09-21", "মহরম"),
             ("2018-10-02", "গান্ধী জয়ন্তী"),
@@ -1289,7 +1343,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "পুদুচেরি মুক্তি দিবস; মধ্যপ্রদেশ প্রতিষ্ঠা দিবস; "
                 "হরিয়ানা প্রতিষ্ঠা দিবস",
             ),
-            ("2018-11-07", "দীপাবলি"),
+            ("2018-11-07", "দীপাবলি (দীপাবলি)"),
             ("2018-11-08", "গোবর্ধন পূজা"),
             ("2018-11-13", "ছঠ পূজা"),
             ("2018-11-14", "শিশু দিবস"),
@@ -1339,7 +1393,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-22", "Eid al-Adha"),
             ("2018-08-24", "Onam"),
             ("2018-08-26", "Raksha Bandhan"),
-            ("2018-09-03", "Janmashtami"),
+            ("2018-09-03", "Janmashtami (Vaishnava)"),
             ("2018-09-13", "Ganesh Chaturthi"),
             ("2018-09-21", "Ashura"),
             ("2018-10-02", "Gandhi Jayanti"),
@@ -1359,7 +1413,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "New Punjab Day; "
                 "Puducherry Liberation Day",
             ),
-            ("2018-11-07", "Diwali"),
+            ("2018-11-07", "Diwali (Deepavali)"),
             ("2018-11-08", "Govardhan Puja"),
             ("2018-11-13", "Chhath Puja"),
             ("2018-11-14", "Children's Day"),
@@ -1403,10 +1457,10 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-15", "સ્વતંત્રતા દિવસ"),
             ("2018-08-16", "પુડુચેરી ડી જ્યુર ટ્રાન્સફર દિવસ"),
             ("2018-08-17", "પારસી નવું વર્ષ (શાહેનશાહી)"),
-            ("2018-08-22", "બકરી ઈદ"),
+            ("2018-08-22", "ઈદ-ઉલ-ઝુહા (બકરી ઈદ)"),
             ("2018-08-24", "ઓણમ"),
             ("2018-08-26", "રક્ષાબંધન"),
-            ("2018-09-03", "જન્માષ્ટમી"),
+            ("2018-09-03", "જન્માષ્ટમી (વૈષ્ણવ)"),
             ("2018-09-13", "ગણેશ ચતુર્થી"),
             ("2018-09-21", "મોહરમ"),
             ("2018-10-02", "ગાંધી જયંતિ"),
@@ -1424,7 +1478,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "પુડુચેરી મુક્તિ દિવસ; મધ્ય પ્રદેશ સ્થાપના દિવસ; "
                 "હરિયાણા સ્થાપના દિવસ",
             ),
-            ("2018-11-07", "દિવાળી"),
+            ("2018-11-07", "દિવાળી (દીપાવલી)"),
             ("2018-11-08", "ગોવર્ધન પૂજા"),
             ("2018-11-13", "છઠ પૂજા"),
             ("2018-11-14", "બાળ દિવસ"),
@@ -1468,10 +1522,10 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-15", "स्वतंत्रता दिवस"),
             ("2018-08-16", "पुडुचेरी डी ज्यूर स्थानांतरण दिवस"),
             ("2018-08-17", "पारसी नव वर्ष (शहंशाही)"),
-            ("2018-08-22", "बकरीद"),
+            ("2018-08-22", "ईद-उल-ज़ुहा (बकरीद)"),
             ("2018-08-24", "ओणम"),
             ("2018-08-26", "रक्षाबंधन"),
-            ("2018-09-03", "जन्माष्टमी"),
+            ("2018-09-03", "जन्माष्टमी (वैष्णव)"),
             ("2018-09-13", "गणेश चतुर्थी"),
             ("2018-09-21", "मुहर्रम"),
             ("2018-10-02", "गांधी जयंती"),
@@ -1489,7 +1543,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "पुडुचेरी मुक्ति दिवस; मध्य प्रदेश स्थापना दिवस; "
                 "हरियाणा स्थापना दिवस",
             ),
-            ("2018-11-07", "दिवाली"),
+            ("2018-11-07", "दिवाली (दीपावली)"),
             ("2018-11-08", "गोवर्धन पूजा"),
             ("2018-11-13", "छठ पूजा"),
             ("2018-11-14", "बाल दिवस"),
@@ -1536,10 +1590,10 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-15", "ಸ್ವಾತಂತ್ರ್ಯ ದಿನಾಚರಣೆ"),
             ("2018-08-16", "ಪುದುಚ್ಚೇರಿ ಕಾನೂನು ಹಸ್ತಾಂತರ ದಿನೋತ್ಸವ"),
             ("2018-08-17", "ಪಾರ್ಸಿ ಹೊಸ ವರ್ಷ (ಶಹನ್ಶಾಹಿ)"),
-            ("2018-08-22", "ಬಕ್ರೀದ್"),
+            ("2018-08-22", "ಈದ್-ಉಲ್-ಜುಹಾ (ಬಕ್ರೀದ್)"),
             ("2018-08-24", "ಓಣಂ"),
             ("2018-08-26", "ರಕ್ಷಾ ಬಂಧನ"),
-            ("2018-09-03", "ಶ್ರೀ ಕೃಷ್ಣ ಜನ್ಮಾಷ್ಟಮಿ"),
+            ("2018-09-03", "ಜನ್ಮಾಷ್ಟಮಿ (ವೈಷ್ಣವ)"),
             ("2018-09-13", "ವಿನಾಯಕ ಚತುರ್ಥಿ"),
             ("2018-09-21", "ಮೊಹರಂ ಕಡೆ ದಿನ"),
             ("2018-10-02", "ಗಾಂಧಿ ಜಯಂತಿ"),
@@ -1607,10 +1661,10 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-15", "സ്വാതന്ത്ര്യദിനം"),
             ("2018-08-16", "പുതുച്ചേരി നിയമപരമായ കൈമാറ്റദിനം"),
             ("2018-08-17", "പാർസി പുതുവർഷം (ഷഹൻഷാഹി)"),
-            ("2018-08-22", "ബക്രീദ്"),
+            ("2018-08-22", "ഈദുൽ സുഹ (ബക്രീദ്)"),
             ("2018-08-24", "ഓണം"),
             ("2018-08-26", "രക്ഷാ ബന്ധൻ"),
-            ("2018-09-03", "ജന്മാഷ്ടമി"),
+            ("2018-09-03", "ജന്മാഷ്ടമി (വൈഷ്ണവ)"),
             ("2018-09-13", "ഗണേശ് ചതുർത്ഥി"),
             ("2018-09-21", "മുഹറം"),
             ("2018-10-02", "ഗാന്ധി ജയന്തി"),
@@ -1681,10 +1735,10 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-15", "स्वातंत्र्य दिन"),
             ("2018-08-16", "पुदुचेरी कायदेशीर हस्तांतरण दिन"),
             ("2018-08-17", "पारसी नवीन वर्ष (शहेनशाही)"),
-            ("2018-08-22", "बकरी ईद (ईद-उल-झुआ)"),
+            ("2018-08-22", "ईद-उल-जुहा (बकरीद)"),
             ("2018-08-24", "ओणम"),
             ("2018-08-26", "रक्षाबंधन"),
-            ("2018-09-03", "गोकुळाष्टमी"),
+            ("2018-09-03", "गोकुळाष्टमी (वैष्णव)"),
             ("2018-09-13", "गणेश चतुर्थी"),
             ("2018-09-21", "मोहरम"),
             ("2018-10-02", "महात्मा गांधी जयंती"),
@@ -1702,7 +1756,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "पुदुचेरी मुक्ती दिन; मध्य प्रदेश स्थापना दिन; "
                 "हरियाणा स्थापना दिन",
             ),
-            ("2018-11-07", "दिवाळी (लक्ष्मीपूजन)"),
+            ("2018-11-07", "दिवाळी (दीपवाली)"),
             ("2018-11-08", "गोवर्धन पूजा"),
             ("2018-11-13", "छठ पूजा"),
             ("2018-11-14", "बाल दिन"),
@@ -1752,10 +1806,10 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-15", "ਸੁਤੰਤਰਤਾ ਦਿਵਸ"),
             ("2018-08-16", "ਪੁਡੂਚੇਰੀ ਡੀ ਜਿਊਰ ਟ੍ਰਾਂਸਫਰ ਦਿਵਸ"),
             ("2018-08-17", "ਪਾਰਸੀ ਨਵਾਂ ਸਾਲ (ਸ਼ਾਹਨਸ਼ਾਹੀ)"),
-            ("2018-08-22", "ਈਦ-ਉੱਲ-ਜੂਹਾ (ਬਕਰੀਦ)"),
+            ("2018-08-22", "ਈਦ-ਉਲ-ਜ਼ੁਹਾ (ਬਕਰੀਦ)"),
             ("2018-08-24", "ਓਨਮ"),
             ("2018-08-26", "ਰੱਖੜੀ"),
-            ("2018-09-03", "ਜਨਮ ਅਸ਼ਟਮੀ"),
+            ("2018-09-03", "ਜਨਮਾਸ਼ਟਮੀ (ਵੈਸ਼ਨਵ)"),
             ("2018-09-13", "ਗਣੇਸ਼ ਚਤੁਰਥੀ"),
             ("2018-09-21", "ਮੁਹੱਰਮ"),
             ("2018-10-02", "ਜਨਮ ਦਿਵਸ ਮਹਾਤਮਾ ਗਾਂਧੀ ਜੀ"),
@@ -1773,7 +1827,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "ਪੁਡੂਚੇਰੀ ਮੁਕਤੀ ਦਿਵਸ; ਮੱਧ ਪ੍ਰਦੇਸ਼ ਸਥਾਪਨਾ ਦਿਵਸ; "
                 "ਹਰਿਆਣਾ ਸਥਾਪਨਾ ਦਿਵਸ",
             ),
-            ("2018-11-07", "ਦੀਵਾਲੀ"),
+            ("2018-11-07", "ਦੀਵਾਲੀ (ਦੀਪਵਾਲੀ)"),
             ("2018-11-08", "ਗੋਵਰਧਨ ਪੂਜਾ"),
             ("2018-11-13", "ਛੱਠ ਪੂਜਾ"),
             ("2018-11-14", "ਬਾਲ ਦਿਵਸ"),
@@ -1817,10 +1871,10 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-15", "சுதந்திர தினம்"),
             ("2018-08-16", "புதுச்சேரி சட்டபூர்வ பரிமாற்ற நாள்"),
             ("2018-08-17", "பார்சி புத்தாண்டு (ஷாஹென்ஷாஹி)"),
-            ("2018-08-22", "பகரீத்"),
+            ("2018-08-22", "ஈதுல் ஸுஹா (பக்ரீத்)"),
             ("2018-08-24", "ஓணம்"),
             ("2018-08-26", "ரக்ஷா பந்தன்"),
-            ("2018-09-03", "கிருஷ்ண ஜெயந்தி"),
+            ("2018-09-03", "ஜனமாஷ்டமி (வைஷ்ணவ)"),
             ("2018-09-13", "விநாயகர் சதுர்த்தி"),
             ("2018-09-21", "முஹர்ரம்"),
             ("2018-10-02", "காந்தி ஜெயந்தி"),
@@ -1885,10 +1939,10 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-15", "స్వాతంత్ర దినోత్సవం"),
             ("2018-08-16", "పుదుచ్చేరి చట్టబద్ధ బదిలీ దినోత్సవం"),
             ("2018-08-17", "పార్సీ నూతన సంవత్సరం (షహన్‌షాహీ)"),
-            ("2018-08-22", "బక్రీద్"),
+            ("2018-08-22", "ఈద్-ఉల్-జుహా (బక్రీద్)"),
             ("2018-08-24", "ఓణం"),
             ("2018-08-26", "రాఖీ పౌర్ణమి"),
-            ("2018-09-03", "కృష్ణాష్టమి"),
+            ("2018-09-03", "జన్మాష్టమి (వైష్ణవ)"),
             ("2018-09-13", "వినాయక చవితి"),
             ("2018-09-21", "మొహర్రం"),
             ("2018-10-02", "గాంధీ జయంతి"),
