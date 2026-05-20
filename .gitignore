@@ -8,6 +8,7 @@ __pycache__
 .idea
 .tox
 .venv
+#venv/
 .vscode/
 *.code-workspace
 *.csv
@@ -26,4 +27,4 @@ MANIFEST
 Pipfile
 sbom.json
 site/
-venv/
+*.ics
