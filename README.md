@@ -310,9 +310,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Belgium</td>
 <td>BE</td>
-<td></td>
+<td>Regions: VLG, WBR, GER</td>
 <td>de, en_US, fr, <strong>nl</strong>, uk</td>
-<td>BANK</td>
+<td>BANK, SCHOOL</td>
 </tr>
 <tr>
 <td>Belize</td>
