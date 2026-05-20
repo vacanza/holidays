@@ -178,10 +178,12 @@ class _Lunisolar(_Astronomy):
             if self._sidereal_solar_zodiac_sign(ss) != 6:
                 continue
 
+            t = self._tithi(ss)
+            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
+
             # Amavasya active at sunset (pradosh rule)
-            # or Amavasya fell between two sunsets, still active at sunrise.
-            t_ss = self._tithi(ss)
-            if t_ss == 30 or (t_ss == 1 and self._tithi(self._sunrise(dt)) == 30):
+            # or Amavasya fell between two sunsets (active at sunrise).
+            if t == 30 or (t == 1 and t_prev == 29):
                 return dt
 
         return None
