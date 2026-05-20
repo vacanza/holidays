@@ -1,11 +1,15 @@
 .DEFAULT_GOAL := help
 
-.PHONY: help
+.PHONY: archive-links check clean doc doc-serve help icalendar l10n package \
+        pre-commit release-notes sbom setup snapshot test upgrade
+
+UV_RUN_CMD = uv run --no-sync
 
 help:
 	@echo "Usage: make <target>"
 	@echo "    archive-links update URLs using Wayback Machine"
 	@echo "    check         run pre-commit and tests"
+	@echo "    clean         clean development environment"
 	@echo "    doc           run documentation build process"
 	@echo "    doc-serve     serve documentation locally"
 	@echo "    help          show summary of available commands"
@@ -13,12 +17,15 @@ help:
 	@echo "    l10n          update .pot and .po files"
 	@echo "    package       build package distribution"
 	@echo "    pre-commit    run pre-commit against all files"
+	@echo "    release-notes generate release notes"
+	@echo "    sbom          generate CycloneDX SBOM"
 	@echo "    setup         setup development environment"
+	@echo "    snapshot      generate project snapshots"
 	@echo "    test          run tests (in parallel)"
 	@echo "    upgrade       run dependency upgrade"
 
 archive-links:
-	uv run --no-sync scripts/archive_links.py
+	$(UV_RUN_CMD) scripts/archive_links.py
 
 check:
 	make l10n
@@ -33,29 +40,29 @@ clean:
 	@rm -rf .mypy_cache .pytest_cache dist
 
 doc:
-	uv run --no-sync properdocs build -f .properdocs.yml
+	$(UV_RUN_CMD) properdocs build -f .properdocs.yml
 
 doc-serve:
-	uv run --no-sync properdocs serve -f .properdocs.yml
+	$(UV_RUN_CMD) properdocs serve -f .properdocs.yml
 
 icalendar:
-	uv run --no-sync scripts/l10n/generate_mo_files.py
-	uv run --no-sync scripts/generate_site_assets.py
+	$(UV_RUN_CMD) scripts/l10n/generate_mo_files.py
+	$(UV_RUN_CMD) scripts/generate_site_assets.py
 
 l10n:
 	find . -type f -name "*.pot" -delete
-	uv run --no-sync scripts/l10n/generate_po_files.py 2>/dev/null
-	uv run --no-sync scripts/l10n/generate_mo_files.py
+	$(UV_RUN_CMD) scripts/l10n/generate_po_files.py 2>/dev/null
+	$(UV_RUN_CMD) scripts/l10n/generate_mo_files.py
 
 package:
-	uv run --no-sync scripts/l10n/generate_mo_files.py
+	$(UV_RUN_CMD) scripts/l10n/generate_mo_files.py
 	uv build
 
 pre-commit:
-	uv run --no-sync pre-commit run --all-files
+	$(UV_RUN_CMD) pre-commit run --all-files
 
 release-notes:
-	uv run --no-sync scripts/generate_release_notes.py
+	$(UV_RUN_CMD) scripts/generate_release_notes.py
 
 sbom:
 	uv tool run --from cyclonedx-bom cyclonedx-py environment "$(uv python find)"
@@ -63,18 +70,18 @@ sbom:
 setup:
 	uv venv --clear --python 3.14
 	uv sync --all-groups
-	uv run --no-sync pre-commit install --hook-type pre-commit
-	uv run --no-sync pre-commit install --hook-type pre-push
+	$(UV_RUN_CMD) pre-commit install --hook-type pre-commit
+	$(UV_RUN_CMD) pre-commit install --hook-type pre-push
 	make l10n
 	make package
 
 snapshot:
-	uv run --no-sync scripts/l10n/generate_mo_files.py
-	uv run --no-sync scripts/generate_snapshots.py
+	$(UV_RUN_CMD) scripts/l10n/generate_mo_files.py
+	$(UV_RUN_CMD) scripts/generate_snapshots.py
 
 test:
-	uv run --no-sync scripts/l10n/generate_mo_files.py
-	uv run --no-sync pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
+	$(UV_RUN_CMD) scripts/l10n/generate_mo_files.py
+	$(UV_RUN_CMD) pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
 
 upgrade:
 	pre-commit autoupdate
