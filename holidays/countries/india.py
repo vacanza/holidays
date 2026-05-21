@@ -299,17 +299,24 @@ class India(
 
         # Hindu holidays.
 
+        # Basant Panchami / Vasant Panchami.
+        self._add_basant_panchami(tr("Basant Panchami / Vasant Panchami"))
+
         # Bhai Duj.
         self._add_bhai_dooj(tr("Bhai Duj"))
 
         # Chhath Puja.
         self._add_chhath_puja(tr("Chhath Puja"))
 
-        # Dussehra (Mahaashtami).
-        self._add_maha_ashtami(tr("Dussehra (Mahaashtami)"))
+        # Dussehra (Mahashtami).
+        self._add_maha_ashtami(tr("Dussehra (Mahashtami)"))
 
-        # Dussehra (Mahanavami).
-        self._add_maha_navami(tr("Dussehra (Mahanavami)"))
+        if self._year != 2002:
+            # Dussehra (Mahanavami).
+            self._add_maha_navami(tr("Dussehra (Mahanavami)"))
+
+        # Dusshera (Saptami).
+        self._add_maha_saptami(tr("Dussehra (Saptami)"))
 
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
@@ -320,6 +327,9 @@ class India(
         # Guru Gobind Singh's Birthday.
         self._add_guru_gobind_singh_jayanti(tr("Guru Gobind Singh's Birthday"))
 
+        # Guru Ravi Das's Birthday.
+        self._add_guru_ravidas_jayanti(tr("Guru Ravi Das's Birthday"))
+
         # Guru Tegh Bahadur's Martyrdom Day.
         self._add_holiday_nov_24(tr("Guru Tegh Bahadur's Martyrdom Day"))
 
@@ -327,15 +337,18 @@ class India(
             # Holi.
             self._add_holi(tr("Holi"))
 
+        # Holika Dahan.
+        self._add_holika_dahan(tr("Holika Dahan"))
+
         if self._year in self.janmashtami_optional_years:
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
+        # Karaka Chaturthi (Karwa Chouth).
+        self._add_karwa_chauth(tr("Karaka Chaturthi (Karwa Chouth)"))
+
         # Labor Day.
         self._add_labor_day(tr("Labour Day"))
-
-        # Maha Navami.
-        self._add_maha_navami(tr("Maha Navami"))
 
         if self._year in self.maha_shivaratri_optional_years:
             self._add_maha_shivaratri(tr("Maha Shivaratri"))
@@ -345,6 +358,12 @@ class India(
 
         # Makar Sankranti.
         self._add_makar_sankranti(tr("Makar Sankranti"))
+
+        # Naraka Chaturdasi.
+        self._add_naraka_chaturdasi(tr("Naraka Chaturdasi"))
+
+        # Navratri / Sharad Navratri.
+        self._add_sharad_navratri(tr("Navratri / Sharad Navratri"))
 
         # Onam.
         self._add_onam(tr("Onam"))
@@ -361,11 +380,19 @@ class India(
         # Ram Navami.
         self._add_observed(self._add_ram_navami(tr("Ram Navami")), rule=SUN_ONLY)
 
-        # Navratri / Sharad Navratri.
-        self._add_sharad_navratri(tr("Navratri / Sharad Navratri"))
+        # Ratha Yatra.
+        self._add_ratha_yatra(tr("Ratha Yatra"))
+
+        # Swami Dayanand Saraswati Jayanti
+        self._add_swami_dayanand_saraswati_jayanti(tr("Swami Dayanand Saraswati Jayanti"))
 
         # Vaisakhi.
         self._add_vaisakhi(tr("Vaisakhi"))
+
+        # Islamic holidays.
+
+        # Jumu'atul-Wida
+        self._add_jumuatul_wida(tr("Jamat-Ul-Vida"))
 
         # Christian holidays.
 
