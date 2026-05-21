@@ -317,6 +317,12 @@ class India(
         # Govardhan Puja.
         self._add_govardhan_puja(tr("Govardhan Puja"))
 
+        # Guru Gobind Singh's Birthday.
+        self._add_guru_gobind_singh_jayanti(tr("Guru Gobind Singh's Birthday"))
+
+        # Guru Tegh Bahadur's Martyrdom Day.
+        self._add_holiday_nov_24(tr("Guru Tegh Bahadur's Martyrdom Day"))
+
         if self._year == 2011:
             # Holi.
             self._add_holi(tr("Holi"))
