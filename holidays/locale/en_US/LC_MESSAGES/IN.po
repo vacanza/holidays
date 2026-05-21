@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-05-17 22:53+0530\n"
+"PO-Revision-Date: 2026-05-22 00:45+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -109,9 +109,37 @@ msgstr "Good Friday"
 msgid "Christmas"
 msgstr "Christmas"
 
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "New Year's Day"
+
 #. Children's Day.
 msgid "Children's Day"
 msgstr "Children's Day"
+
+#. Basant Panchami / Vasant Panchami.
+msgid "Basant Panchami / Vasant Panchami"
+msgstr "Basant Panchami / Vasant Panchami"
+
+#. Bhai Duj.
+msgid "Bhai Duj"
+msgstr "Bhai Duj"
+
+#. Chhath Puja.
+msgid "Chhath Puja"
+msgstr "Chhath Puja"
+
+#. Dussehra (Mahashtami).
+msgid "Dussehra (Mahashtami)"
+msgstr "Dussehra (Mahashtami)"
+
+#. Dussehra (Mahanavami).
+msgid "Dussehra (Mahanavami)"
+msgstr "Dussehra (Mahanavami)"
+
+#. Dusshera (Saptami).
+msgid "Dussehra (Saptami)"
+msgstr "Dussehra (Saptami)"
 
 #. Ganesh Chaturthi.
 msgid "Ganesh Chaturthi"
@@ -121,13 +149,29 @@ msgstr "Ganesh Chaturthi"
 msgid "Govardhan Puja"
 msgstr "Govardhan Puja"
 
+#. Guru Gobind Singh's Birthday.
+msgid "Guru Gobind Singh's Birthday"
+msgstr "Guru Gobind Singh's Birthday"
+
+#. Guru Ravi Das's Birthday.
+msgid "Guru Ravi Das's Birthday"
+msgstr "Guru Ravi Das's Birthday"
+
+#. Guru Tegh Bahadur's Martyrdom Day.
+msgid "Guru Tegh Bahadur's Martyrdom Day"
+msgstr "Guru Tegh Bahadur's Martyrdom Day"
+
+#. Holika Dahan.
+msgid "Holika Dahan"
+msgstr "Holika Dahan"
+
+#. Karaka Chaturthi (Karwa Chouth).
+msgid "Karaka Chaturthi (Karwa Chouth)"
+msgstr "Karaka Chaturthi (Karwa Chouth)"
+
 #. Labor Day.
 msgid "Labour Day"
 msgstr "Labor Day"
-
-#. Maha Navami.
-msgid "Maha Navami"
-msgstr "Maha Navami"
 
 #. Maharishi Valmiki Jayanti.
 msgid "Maharishi Valmiki Jayanti"
@@ -137,13 +181,49 @@ msgstr "Maharishi Valmiki Jayanti"
 msgid "Makar Sankranti"
 msgstr "Makar Sankranti"
 
-#. Raksha Bandhan.
-msgid "Raksha Bandhan"
-msgstr "Raksha Bandhan"
+#. Naraka Chaturdasi.
+msgid "Naraka Chaturdasi"
+msgstr "Naraka Chaturdasi"
 
 #. Navratri / Sharad Navratri.
 msgid "Navratri / Sharad Navratri"
 msgstr "Navratri / Sharad Navratri"
+
+#. Onam.
+msgid "Onam"
+msgstr "Onam"
+
+#. Parsi New Year.
+msgid "Parsi New Year"
+msgstr "Parsi New Year"
+
+#. Pongal.
+msgid "Pongal"
+msgstr "Pongal"
+
+#. Raksha Bandhan.
+msgid "Raksha Bandhan"
+msgstr "Raksha Bandhan"
+
+#. Rath Yatra.
+msgid "Rath Yatra"
+msgstr "Rath Yatra"
+
+#. Swami Dayanand Saraswati Jayanti.
+msgid "Swami Dayanand Saraswati Jayanti"
+msgstr "Swami Dayanand Saraswati Jayanti"
+
+#. Vaisakhi.
+msgid "Vaisakhi"
+msgstr "Vaisakhi"
+
+#. Jumu'atul-Wida.
+msgid "Jamat-Ul-Vida"
+msgstr "Jumu'atul-Wida"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "Christmas Eve"
 
 #. Easter Sunday.
 msgid "Easter Sunday"
@@ -152,10 +232,6 @@ msgstr "Easter Sunday"
 #. Palm Sunday.
 msgid "Palm Sunday"
 msgstr "Palm Sunday"
-
-#. Onam.
-msgid "Onam"
-msgstr "Onam"
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
@@ -172,10 +248,6 @@ msgstr "Magh Bihu"
 #. Assam Day.
 msgid "Assam Day"
 msgstr "Assam Day"
-
-#. Chhath Puja.
-msgid "Chhath Puja"
-msgstr "Chhath Puja"
 
 #. Bihar Day.
 msgid "Bihar Day"
@@ -269,10 +341,6 @@ msgstr "Puducherry Liberation Day"
 msgid "Guru Gobind Singh Jayanti"
 msgstr "Guru Gobind Singh Jayanti"
 
-#. Vaisakhi.
-msgid "Vaisakhi"
-msgstr "Vaisakhi"
-
 #. Lohri.
 msgid "Lohri"
 msgstr "Lohri"
@@ -292,10 +360,6 @@ msgstr "Maharana Pratap Jayanti"
 #. Sikkim State Day.
 msgid "Sikkim State Day"
 msgstr "Sikkim State Day"
-
-#. Pongal.
-msgid "Pongal"
-msgstr "Pongal"
 
 #. Thiruvalluvar Day / Mattu Pongal.
 msgid "Thiruvalluvar Day / Mattu Pongal"
@@ -332,7 +396,3 @@ msgstr "Pohela Boishakh"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "Rabindra Jayanti"
-
-#. Dussehra (Mahanavami).
-msgid "Dussehra (Mahanavami)"
-msgstr "Dussehra (Mahanavami)"

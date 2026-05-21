@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-05-17 22:53+0530\n"
+"PO-Revision-Date: 2026-05-22 00:45+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ml\n"
@@ -108,9 +108,37 @@ msgstr "ദുഃഖവെള്ളി"
 msgid "Christmas"
 msgstr "ക്രിസ്തുമസ്"
 
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "പുതുവത്സര ദിനം"
+
 #. Children's Day.
 msgid "Children's Day"
 msgstr "കുട്ടികളുടെ ദിനം"
+
+#. Basant Panchami / Vasant Panchami.
+msgid "Basant Panchami / Vasant Panchami"
+msgstr "ബസന്ത് പഞ്ചമി / വസന്ത പഞ്ചമി"
+
+#. Bhai Duj.
+msgid "Bhai Duj"
+msgstr "ഭായ് ദൂജ്"
+
+#. Chhath Puja.
+msgid "Chhath Puja"
+msgstr "ഛഠ് പൂജ"
+
+#. Dussehra (Mahashtami).
+msgid "Dussehra (Mahashtami)"
+msgstr "ദസറ (മഹാഷ്ടമി)"
+
+#. Dussehra (Mahanavami).
+msgid "Dussehra (Mahanavami)"
+msgstr "ദസറ (മഹാനവമി)"
+
+#. Dusshera (Saptami).
+msgid "Dussehra (Saptami)"
+msgstr "ദസറ (സപ്തമി)"
 
 #. Ganesh Chaturthi.
 msgid "Ganesh Chaturthi"
@@ -120,13 +148,29 @@ msgstr "ഗണേശ് ചതുർത്ഥി"
 msgid "Govardhan Puja"
 msgstr "ഗോവർധന പൂജ"
 
+#. Guru Gobind Singh's Birthday.
+msgid "Guru Gobind Singh's Birthday"
+msgstr "ഗുരു ഗോബിന്ദ് സിംഗിന്റെ ജന്മദിനം"
+
+#. Guru Ravi Das's Birthday.
+msgid "Guru Ravi Das's Birthday"
+msgstr "ഗുരു രവി ദാസിന്റെ ജന്മദിനം"
+
+#. Guru Tegh Bahadur's Martyrdom Day.
+msgid "Guru Tegh Bahadur's Martyrdom Day"
+msgstr "ഗുരു തേജ് ബഹാദൂറിൻ്റെ രക്തസാക്ഷിത്വ ദിനം"
+
+#. Holika Dahan.
+msgid "Holika Dahan"
+msgstr "ഹോളിക ദഹൻ"
+
+#. Karaka Chaturthi (Karwa Chouth).
+msgid "Karaka Chaturthi (Karwa Chouth)"
+msgstr "കാരക ചതുർത്ഥി (കർവാ ചൗത്ത്)"
+
 #. Labor Day.
 msgid "Labour Day"
 msgstr "മെയ് ദിനം"
-
-#. Maha Navami.
-msgid "Maha Navami"
-msgstr "മഹാ നവമി"
 
 #. Maharishi Valmiki Jayanti.
 msgid "Maharishi Valmiki Jayanti"
@@ -136,13 +180,49 @@ msgstr "മഹർഷി വാൽമീകി ജയന്തി"
 msgid "Makar Sankranti"
 msgstr "മകര സംക്രാന്തി"
 
-#. Raksha Bandhan.
-msgid "Raksha Bandhan"
-msgstr "രക്ഷാ ബന്ധൻ"
+#. Naraka Chaturdasi.
+msgid "Naraka Chaturdasi"
+msgstr "നരക ചതുർദസി"
 
 #. Navratri / Sharad Navratri.
 msgid "Navratri / Sharad Navratri"
 msgstr "നവരാത്രി / ശരദ് നവരാത്രി"
+
+#. Onam.
+msgid "Onam"
+msgstr "ഓണം"
+
+#. Parsi New Year.
+msgid "Parsi New Year"
+msgstr "പാഴ്സി പുതുവർഷം"
+
+#. Pongal.
+msgid "Pongal"
+msgstr "പൊങ്കൽ"
+
+#. Raksha Bandhan.
+msgid "Raksha Bandhan"
+msgstr "രക്ഷാ ബന്ധൻ"
+
+#. Rath Yatra.
+msgid "Rath Yatra"
+msgstr "രഥയാത്ര"
+
+#. Swami Dayanand Saraswati Jayanti.
+msgid "Swami Dayanand Saraswati Jayanti"
+msgstr "സ്വാമി ദയാനന്ദ സരസ്വതി ജയന്തി"
+
+#. Vaisakhi.
+msgid "Vaisakhi"
+msgstr "വൈശാഖി"
+
+#. Jumu'atul-Wida.
+msgid "Jamat-Ul-Vida"
+msgstr "ജമാഅത്ത്-ഉൽ-വിദ"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "ക്രിസ്മസ് തലേന്ന്"
 
 #. Easter Sunday.
 msgid "Easter Sunday"
@@ -151,10 +231,6 @@ msgstr "ഈസ്റ്റർ"
 #. Palm Sunday.
 msgid "Palm Sunday"
 msgstr "ഓശാന ഞായർ"
-
-#. Onam.
-msgid "Onam"
-msgstr "ഓണം"
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
@@ -171,10 +247,6 @@ msgstr "മാഘ് ബിഹു"
 #. Assam Day.
 msgid "Assam Day"
 msgstr "അസം ദിനം"
-
-#. Chhath Puja.
-msgid "Chhath Puja"
-msgstr "ഛഠ് പൂജ"
 
 #. Bihar Day.
 msgid "Bihar Day"
@@ -268,10 +340,6 @@ msgstr "പുതുച്ചേരി മോചനദിനം"
 msgid "Guru Gobind Singh Jayanti"
 msgstr "ഗുരു ഗോബിന്ദ് സിംഗ് ജയന്തി"
 
-#. Vaisakhi.
-msgid "Vaisakhi"
-msgstr "വൈശാഖി"
-
 #. Lohri.
 msgid "Lohri"
 msgstr "ലോഹരി"
@@ -291,10 +359,6 @@ msgstr "മഹാരാണ പ്രതാപ് ജയന്തി"
 #. Sikkim State Day.
 msgid "Sikkim State Day"
 msgstr "സിക്കിം സംസ്ഥാനദിനം"
-
-#. Pongal.
-msgid "Pongal"
-msgstr "പൊങ്കൽ"
 
 #. Thiruvalluvar Day / Mattu Pongal.
 msgid "Thiruvalluvar Day / Mattu Pongal"
@@ -331,7 +395,3 @@ msgstr "പൊഹേലാ ബൈശാഖ്"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "രബീന്ദ്ര ജയന്തി"
-
-#. Dussehra (Mahanavami).
-msgid "Dussehra (Mahanavami)"
-msgstr "ദശര (മഹാനവമി)"

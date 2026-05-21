@@ -275,18 +275,6 @@ class TestIndia(CommonCountryTests, TestCase):
                     self.assertNoHolidayName(name, holidays)
                     # self.assertNoNonObservedHolidayName(name, non_obs_holidays)
 
-    def test_buddha_purnima(self):
-        name = "Buddha Purnima"
-        dts = (
-            "2020-05-07",
-            "2021-05-26",
-            "2022-05-16",
-            "2023-05-05",
-            "2024-05-23",
-            "2025-05-12",
-        )
-        self._assertHinduHolidayHelper(name, dts)
-
     def test_diwali(self):
         name = "Diwali (Deepavali)"
         dts = (

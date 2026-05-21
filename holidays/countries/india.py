@@ -380,10 +380,10 @@ class India(
         # Ram Navami.
         self._add_observed(self._add_ram_navami(tr("Ram Navami")), rule=SUN_ONLY)
 
-        # Ratha Yatra.
-        self._add_ratha_yatra(tr("Ratha Yatra"))
+        # Rath Yatra.
+        self._add_rath_yatra(tr("Rath Yatra"))
 
-        # Swami Dayanand Saraswati Jayanti
+        # Swami Dayanand Saraswati Jayanti.
         self._add_swami_dayanand_saraswati_jayanti(tr("Swami Dayanand Saraswati Jayanti"))
 
         # Vaisakhi.
@@ -391,7 +391,7 @@ class India(
 
         # Islamic holidays.
 
-        # Jumu'atul-Wida
+        # Jumu'atul-Wida.
         self._add_jumuatul_wida(tr("Jamat-Ul-Vida"))
 
         # Christian holidays.
