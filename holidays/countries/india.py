@@ -315,7 +315,7 @@ class India(
             # Dussehra (Mahanavami).
             self._add_maha_navami(tr("Dussehra (Mahanavami)"))
 
-        # Dusshera (Saptami).
+        # Dussehra (Saptami).
         self._add_maha_saptami(tr("Dussehra (Saptami)"))
 
         # Ganesh Chaturthi.

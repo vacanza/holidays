@@ -136,7 +136,7 @@ msgstr "দশেরা (মহাষ্টমী)"
 msgid "Dussehra (Mahanavami)"
 msgstr "দশেরা (মহানবমী)"
 
-#. Dusshera (Saptami).
+#. Dussehra (Saptami).
 msgid "Dussehra (Saptami)"
 msgstr "দশেরা (সপ্তমী)"
 
