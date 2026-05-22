@@ -154,7 +154,7 @@ msgstr "गुरु गोबिंद सिंग यांचा वाढ�
 
 #. Guru Ravi Das's Birthday.
 msgid "Guru Ravi Das's Birthday"
-msgstr "Guru Ravi Das's Birthday"
+msgstr "गुरु रविदास यांचा वाढदिवस"
 
 #. Guru Tegh Bahadur's Martyrdom Day.
 msgid "Guru Tegh Bahadur's Martyrdom Day"
