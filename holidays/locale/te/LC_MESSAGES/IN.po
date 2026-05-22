@@ -154,11 +154,11 @@ msgstr "గురు గోవింద్ సింగ్ పుట్టిన
 
 #. Guru Ravi Das's Birthday.
 msgid "Guru Ravi Das's Birthday"
-msgstr "గురు తేగ్ బహదూర్ అమరవీర దినోత్సవం"
+msgstr "గురు రవిదాస్ పుట్టినరోజు"
 
 #. Guru Tegh Bahadur's Martyrdom Day.
 msgid "Guru Tegh Bahadur's Martyrdom Day"
-msgstr "గురు రవిదాస్ పుట్టినరోజు"
+msgstr "గురు తేగ్ బహదూర్ అమరవీర దినోత్సవం"
 
 #. Holika Dahan.
 msgid "Holika Dahan"

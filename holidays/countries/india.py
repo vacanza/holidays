@@ -351,6 +351,7 @@ class India(
         self._add_labor_day(tr("Labour Day"))
 
         if self._year in self.maha_shivaratri_optional_years:
+            # Maha Shivaratri.
             self._add_maha_shivaratri(tr("Maha Shivaratri"))
 
         # Maharishi Valmiki Jayanti.
