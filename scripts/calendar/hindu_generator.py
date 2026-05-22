@@ -160,6 +160,28 @@ class _Lunisolar(_Astronomy):
         moon_lon = self._tropical_lon(self._moon, ed)
         return int(self._norm360(moon_lon - sun_lon) // 12) + 1
 
+    @cache
+    def _get_amavasya(self, start: date, zodiac_sign: int) -> date | None:
+        """
+        Find the last Amavasya (tithi 30 or skipped 29→1) while sun is in the
+        given sidereal zodiac sign, scanning forward from start date.
+
+        Returns the last such date before the sun moves to the next sign,
+        or None if not found.
+        """
+        for delta in range(60):
+            dt = start + timedelta(days=delta)
+            ss = self._sunset(dt)
+            sign = self._sidereal_solar_zodiac_sign(ss)
+
+            if sign == zodiac_sign:
+                t = self._tithi(ss)
+                t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
+                if t == 30 or (t == 1 and t_prev == 29):
+                    return dt
+
+        return None
+
     # Amavasya -> use SUN's sidereal sign -> determines lunar month
     # Purnima -> use MOON's sidereal sign -> determines lunar month
     #            (moon is in the nakshatra the month is named after)
@@ -206,25 +228,7 @@ class _Lunisolar(_Astronomy):
             return exceptions[year]
 
         # Find Ashwin Amavasya
-        start = date(year, 9, 18)
-        ashwin_ama = None
-        for delta in range(48):
-            dt = start + timedelta(days=delta)
-            ss = self._sunset(dt)
-            if self._sidereal_solar_zodiac_sign(ss) != 5:
-                continue
-
-            t = self._tithi(ss)
-            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
-
-            if t == 30:
-                ashwin_ama = dt
-                break
-            if t == 1 and t_prev == 29:
-                ss_prev = self._sunset(dt - timedelta(days=1))
-                if self._sidereal_solar_zodiac_sign(ss_prev) == 5:
-                    ashwin_ama = dt
-                    break
+        ashwin_ama = self._get_amavasya(date(year, 9, 18), zodiac_sign=5)
 
         if not ashwin_ama:
             return None
@@ -253,21 +257,7 @@ class _Lunisolar(_Astronomy):
         - Skipped between middays (3 -> 5) -> return current day
         """
         # Find last Bhadrapada Amavasya
-        start = date(year, 8, 1)
-        bhadra_ama = None
-        for delta in range(60):
-            dt = start + timedelta(days=delta)
-            ss = self._sunset(dt)
-            if self._sidereal_solar_zodiac_sign(ss) != 4:
-                if bhadra_ama:
-                    break
-                continue
-
-            t = self._tithi(ss)
-            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
-
-            if t == 30 or (t == 1 and t_prev == 29):
-                bhadra_ama = dt
+        bhadra_ama = self._get_amavasya(date(year, 8, 1), zodiac_sign=4)
 
         if not bhadra_ama:
             return None
@@ -313,6 +303,7 @@ class _Lunisolar(_Astronomy):
             return exceptions[year]
 
         diwali = self.get_diwali(year)
+
         if diwali is None:
             return None
 
@@ -352,21 +343,7 @@ class _Lunisolar(_Astronomy):
         - Skipped between sunrises (14 -> 16) -> return previous day
         """
         # Find Kartik Amavasya
-        start = date(year, 10, 1)
-        kartik_ama = None
-        for delta in range(60):
-            dt = start + timedelta(days=delta)
-            ss = self._sunset(dt)
-            if self._sidereal_solar_zodiac_sign(ss) != 6:
-                continue
-
-            t = self._tithi(ss)
-            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
-
-            if t == 30 or (t == 1 and t_prev == 29):
-                kartik_ama = dt
-                break
-
+        kartik_ama = self._get_amavasya(date(year, 10, 1), zodiac_sign=6)
         if not kartik_ama:
             return None
 
@@ -393,9 +370,9 @@ class _Lunisolar(_Astronomy):
 
         Purnima end detection (sunset tithi):
         - Skipped entirely (14 -> 16) -> return current day
-        - Spanned 2 sunsets  (16 -> 16) -> return current day
-        - Tithi 16 skipped  (15 -> 17+) -> return current day
-        - Past tithi 16     (16 -> 17+) -> return previous day
+        - Spanned 2 sunsets (16 -> 16) -> return current day
+        - Tithi 16 skipped (15 -> 17+) -> return current day
+        - Past tithi 16 (16 -> 17+) -> return previous day
         """
         exceptions = {
             2026: date(2026, 3, 4),
@@ -405,26 +382,8 @@ class _Lunisolar(_Astronomy):
             return exceptions[year]
 
         # Find Phalgun Amavasya, fallback to Magh Amavasya
-        start = date(year, 1, 15)
-        phalgun_ama = magh_ama = None
-        for delta in range(75):
-            dt = start + timedelta(days=delta)
-            ss = self._sunset(dt)
-            sign = self._sidereal_solar_zodiac_sign(ss)
-
-            # Sun entered Aries - stop
-            if sign == 0:
-                break
-
-            t = self._tithi(ss)
-            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
-            is_ama = t == 30 or (t == 1 and t_prev == 29)
-
-            if is_ama and sign == 9:
-                magh_ama = dt
-            if is_ama and sign == 10:
-                phalgun_ama = dt
-                break
+        phalgun_ama = self._get_amavasya(date(year, 1, 15), zodiac_sign=10)
+        magh_ama = self._get_amavasya(date(year, 1, 15), zodiac_sign=9)
 
         ref = phalgun_ama or magh_ama
         if not ref:
@@ -461,20 +420,7 @@ class _Lunisolar(_Astronomy):
         - Skipped entirely (<23 -> >23) -> return current day
         """
         # Find Bhadrapad Amavasya
-        start = date(year, 8, 1)
-        bhadrapad_ama = None
-        for delta in range(60):
-            dt = start + timedelta(days=delta)
-            ss = self._sunset(dt)
-            if self._sidereal_solar_zodiac_sign(ss) != 4:
-                continue
-
-            t = self._tithi(ss)
-            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
-
-            if t == 30 or (t == 1 and t_prev == 29):
-                bhadrapad_ama = dt
-                break
+        bhadrapad_ama = self._get_amavasya(date(year, 8, 1), zodiac_sign=4)
 
         if not bhadrapad_ama:
             return None
@@ -511,25 +457,7 @@ class _Lunisolar(_Astronomy):
             return exceptions[year]
 
         # Find Ashwin Amavasya
-        start = date(year, 9, 10)
-        ashwin_ama = None
-        for delta in range(48):
-            dt = start + timedelta(days=delta)
-            ss = self._sunset(dt)
-            if self._sidereal_solar_zodiac_sign(ss) != 5:
-                continue
-
-            t = self._tithi(ss)
-            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
-
-            if t == 30:
-                ashwin_ama = dt
-                break
-            if t == 1 and t_prev == 29:
-                ss_prev = self._sunset(dt - timedelta(days=1))
-                if self._sidereal_solar_zodiac_sign(ss_prev) == 5:
-                    ashwin_ama = dt
-                    break
+        ashwin_ama = self._get_amavasya(date(year, 9, 18), zodiac_sign=5)
 
         if not ashwin_ama:
             return None
@@ -558,25 +486,7 @@ class _Lunisolar(_Astronomy):
         - Skipped between Aparahnas (8 -> 10) -> return previous day
         """
         # Find Ashwin Amavasya
-        start = date(year, 9, 1)
-        ashwin_ama = None
-        for delta in range(60):
-            dt = start + timedelta(days=delta)
-            ss = self._sunset(dt)
-            if self._sidereal_solar_zodiac_sign(ss) != 5:
-                continue
-
-            t = self._tithi(ss)
-            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
-
-            if t == 30:
-                ashwin_ama = dt
-                break
-            if t == 1 and t_prev == 29:
-                ss_prev = self._sunset(dt - timedelta(days=1))
-                if self._sidereal_solar_zodiac_sign(ss_prev) == 5:
-                    ashwin_ama = dt
-                    break
+        ashwin_ama = self._get_amavasya(date(year, 9, 18), zodiac_sign=5)
 
         if not ashwin_ama:
             return None
@@ -670,20 +580,7 @@ class _Lunisolar(_Astronomy):
             return exceptions[year]
 
         # Find Chaitra Amavasya
-        start = date(year, 3, 1)
-        chaitra_ama = None
-        for delta in range(60):
-            dt = start + timedelta(days=delta)
-            ss = self._sunset(dt)
-            if self._sidereal_solar_zodiac_sign(ss) != 11:
-                continue
-
-            t = self._tithi(ss)
-            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
-
-            if t == 30 or (t == 1 and t_prev == 29):
-                chaitra_ama = dt
-                break
+        chaitra_ama = self._get_amavasya(date(year, 3, 1), zodiac_sign=11)
 
         if not chaitra_ama:
             return None
@@ -722,25 +619,7 @@ class _Lunisolar(_Astronomy):
             return exceptions[year]
 
         # Find Ashwin Amavasya
-        start = date(year, 9, 1)
-        ashwin_ama = None
-        for delta in range(60):
-            dt = start + timedelta(days=delta)
-            ss = self._sunset(dt)
-            if self._sidereal_solar_zodiac_sign(ss) != 5:
-                continue
-
-            t = self._tithi(ss)
-            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
-
-            if t == 30:
-                ashwin_ama = dt
-                break
-            if t == 1 and t_prev == 29:
-                ss_prev = self._sunset(dt - timedelta(days=1))
-                if self._sidereal_solar_zodiac_sign(ss_prev) == 5:
-                    ashwin_ama = dt
-                    break
+        ashwin_ama = self._get_amavasya(date(year, 9, 1), zodiac_sign=5)
 
         if not ashwin_ama:
             return None
