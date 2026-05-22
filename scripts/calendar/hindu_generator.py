@@ -285,6 +285,62 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_govardhan_puja(self, year: int) -> date | None:
+        """
+        Govardhan Puja = Kartik Shukla Pratipada.
+
+        Tithi = 1 (Pratipada) of the Shukla Paksha following Diwali
+        (Kartik Amavasya). Evaluated using the Udaya Tithi (sunrise) rule.
+
+        Reference Point:
+        - Find Diwali (Kartik Amavasya).
+        - Govardhan Puja is observed on the last day Pratipada is active
+            at sunrise after Diwali.
+
+        Three sunrise cases for Pratipada detection:
+        1: Pratipada active at sunrise (tithi 1)
+            -> keep updating candidate (we want the last occurrence)
+        2: Amavasya at sunrise but Pratipada at sunset (30->1)
+            -> current day is Govardhan Puja
+        3: Pratipada skipped between sunrises (30->2)
+            -> current day is Govardhan Puja
+        """
+        exceptions = {
+            2007: date(2007, 11, 10),
+            2026: date(2026, 11, 10),
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        diwali = self.get_diwali(year)
+        if diwali is None:
+            return None
+
+        last_pratipada = None
+        for delta in range(1, 5):
+            dt = diwali + timedelta(days=delta)
+            t_sr = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+            t_ss = self._tithi(self._sunset(dt))
+
+            # Pratipada active at sunrise -> candidate
+            if t_sr == 1:
+                last_pratipada = dt
+
+            # Amavasya at sunrise but Pratipada at sunset -> this night is Govardhan Puja
+            elif t_sr == 30 and t_ss == 1:
+                return dt
+
+            # Pratipada skipped between sunrises (30->2)
+            elif t_sr == 2 and t_prev == 30:
+                return dt
+
+            # Pratipada ended
+            elif last_pratipada is not None:
+                return last_pratipada
+
+        return last_pratipada
+
     def get_guru_nanak_jayanti(self, year: int) -> date | None:
         """
         Guru Nanak Jayanti = Kartik Purnima.
@@ -766,6 +822,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
     ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
     ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
+    ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
     ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
     ("RAM_NAVAMI", _lunisolar.get_ram_navami),
     ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
