@@ -33,7 +33,6 @@ GURU_NANAK_JAYANTI = "GURU_NANAK_JAYANTI"
 GURU_RAVIDAS_JAYANTI = "GURU_RAVIDAS_JAYANTI"
 GYALPO_LOSAR = "GYALPO_LOSAR"
 HOLI = "HOLI"
-HOLIKA_DAHANA = "HOLIKA_DAHANA"
 JANMASHTAMI = "JANMASHTAMI"
 KARWA_CHAUTH = "KARWA_CHAUTH"
 MAHA_ASHTAMI = "MAHA_ASHTAMI"
@@ -816,46 +815,6 @@ class _HinduLunisolar:
         2033: (MAR, 16),
         2034: (MAR, 5),
         2035: (MAR, 24),
-    }
-
-    # https://web.archive.org/web/20260302053400/https://www.drikpanchang.com/festivals/holi/festivals-holika-dahan-timings.html
-    # https://web.archive.org/web/20250624134333/https://www.timeanddate.com/holidays/india/holika-dahana
-    HOLIKA_DAHANA_DATES = {
-        2001: (MAR, 9),
-        2002: (MAR, 28),
-        2003: (MAR, 17),
-        2004: (MAR, 6),
-        2005: (MAR, 25),
-        2006: (MAR, 14),
-        2007: (MAR, 3),
-        2008: (MAR, 21),
-        2009: (MAR, 10),
-        2010: (FEB, 28),
-        2011: (MAR, 19),
-        2012: (MAR, 7),
-        2013: (MAR, 26),
-        2014: (MAR, 16),
-        2015: (MAR, 5),
-        2016: (MAR, 23),
-        2017: (MAR, 12),
-        2018: (MAR, 1),
-        2019: (MAR, 20),
-        2020: (MAR, 9),
-        2021: (MAR, 28),
-        2022: (MAR, 17),
-        2023: (MAR, 7),
-        2024: (MAR, 24),
-        2025: (MAR, 13),
-        2026: (MAR, 3),
-        2027: (MAR, 21),
-        2028: (MAR, 10),
-        2029: (FEB, 28),
-        2030: (MAR, 19),
-        2031: (MAR, 8),
-        2032: (MAR, 26),
-        2033: (MAR, 15),
-        2034: (MAR, 4),
-        2035: (MAR, 23),
     }
 
     # https://web.archive.org/web/20241205010833/https://www.timeanddate.com/holidays/india/janmashtami
@@ -1880,9 +1839,6 @@ class _HinduLunisolar:
 
     def holi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(HOLI, year)
-
-    def holika_dahan_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(HOLIKA_DAHANA, year)
 
     def janmashtami_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(JANMASHTAMI, year)

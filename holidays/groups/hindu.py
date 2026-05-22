@@ -305,7 +305,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Holika_Dahan
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.holika_dahan_date(self._year)
+            name, self._hindu_calendar.holi_date(self._year), days_delta=-1
         )
 
     def _add_janmashtami(self, name) -> date | None:
