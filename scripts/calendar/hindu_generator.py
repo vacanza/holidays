@@ -181,7 +181,7 @@ class _Lunisolar(_Astronomy):
         If sign_boundary_guard=False (default): skipped Amavasya (29->1) is
             accepted regardless of where the sun was the previous day.
         If sign_boundary_guard=True: skipped Amavasya is only accepted if the
-            previous day's sunset was also in zodiac_sign. This prevents a
+            previous day's sunset was also in zodiac_s zign. This prevents a
             new moon straddling a sign boundary from being misattributed to
             the wrong lunar month.
         """
@@ -191,26 +191,27 @@ class _Lunisolar(_Astronomy):
             ss = self._sunset(dt)
             sign = self._sidereal_solar_zodiac_sign(ss)
 
-            if sign > zodiac_sign:
+            if sign == (zodiac_sign + 1) % 12:
                 break
 
-            if sign == zodiac_sign:
-                t = self._tithi(ss)
-                t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
-                if t == 30:
-                    found = dt
-                elif t == 1 and t_prev == 29:
-                    if sign_boundary_guard:
-                        ss_prev = self._sunset(dt - timedelta(days=1))
-                        if self._sidereal_solar_zodiac_sign(ss_prev) != zodiac_sign:
-                            continue  # previous day was a different sign - reject
-                    found = dt
-                else:
-                    continue
+            if sign != zodiac_sign:
+                continue
 
-                if not last:
-                    return found
-                last_found = found
+            t = self._tithi(ss)
+            if t == 30:
+                found = dt
+            elif t == 1 and self._tithi(ss_prev := self._sunset(dt - timedelta(days=1))) == 29:
+                if (
+                    sign_boundary_guard
+                    and self._sidereal_solar_zodiac_sign(ss_prev) != zodiac_sign
+                ):
+                    continue  # previous day was a different sign - reject.
+                found = dt
+            else:
+                continue
+            if not last:
+                return found
+            last_found = found
 
         return last_found
 
@@ -249,15 +250,11 @@ class _Lunisolar(_Astronomy):
         if not ashwin_ama:
             return None
 
-        # Find Dashami (tithi 10) at Aparahna, or skipped case (9 -> 11)
-        for delta in range(15):
+        # Find Dashami (tithi 10) at Aparahna, or skipped case (9 -> 11).
+        for delta in range(9, 12):
             dt = ashwin_ama + timedelta(days=delta)
             t = self._tithi(self._aparahna(dt))
-            t_prev = self._tithi(self._aparahna(dt - timedelta(days=1)))
-
-            if t == 10:
-                return dt
-            if t == 11 and t_prev == 9:
+            if t == 10 or (t == 11 and self._tithi(self._aparahna(dt - timedelta(days=1))) == 9):
                 return dt
 
         return None
@@ -282,11 +279,8 @@ class _Lunisolar(_Astronomy):
         for delta in range(10):
             dt = bhadra_ama + timedelta(days=delta)
             t = self._tithi(self._madhyahna(dt))
-            t_prev = self._tithi(self._madhyahna(dt - timedelta(days=1)))
 
-            if t == 4:
-                return dt
-            if t == 5 and t_prev == 3:
+            if t == 4 or (t == 5 and self._tithi(self._madhyahna(dt - timedelta(days=1))) == 3):
                 return dt
 
         return None
@@ -485,14 +479,11 @@ class _Lunisolar(_Astronomy):
             return None
 
         # Find Ashtami (tithi 8) at sunrise, or skipped case (7 -> 9)
-        for delta in range(15):
+        for delta in range(7, 12):
             dt = ashwin_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
-            if t == 8:
-                return dt
-            if t == 9 and t_prev == 7:
+            if t == 8 or (t == 9 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 7):
                 return dt
 
         return None
@@ -514,7 +505,7 @@ class _Lunisolar(_Astronomy):
             return None
 
         # Find Navami (tithi 9) at Aparahna, or skipped case (8 -> 10)
-        for delta in range(15):
+        for delta in range(8, 12):
             dt = ashwin_ama + timedelta(days=delta)
             t = self._tithi(self._aparahna(dt))
             t_prev = self._tithi(self._aparahna(dt - timedelta(days=1)))
@@ -609,7 +600,7 @@ class _Lunisolar(_Astronomy):
 
         # Find last day Navami (tithi 9) active at Madhyahna, or skipped case (8 -> 10)
         last_navami = None
-        for delta in range(15):
+        for delta in range(8, 12):
             dt = chaitra_ama + timedelta(days=delta)
             t = self._tithi(self._madhyahna(dt))
             t_prev = self._tithi(self._madhyahna(dt - timedelta(days=1)))
@@ -650,7 +641,6 @@ class _Lunisolar(_Astronomy):
         for delta in range(3):
             dt = ashwin_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 30:
                 t_next = self._tithi(self._sunrise(dt + timedelta(days=1)))
@@ -660,7 +650,7 @@ class _Lunisolar(_Astronomy):
 
             if t == 1:
                 return dt
-            if t == 2 and t_prev == 30:
+            if t == 2 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 30:
                 return dt - timedelta(days=1)
 
         return None
