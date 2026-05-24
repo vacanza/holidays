@@ -42,7 +42,7 @@ MAHARISHI_VALMIKI_JAYANTI = "MAHARISHI_VALMIKI_JAYANTI"
 MAHA_SHIVARATRI = "MAHA_SHIVARATRI"
 MAHAVIR_JAYANTI = "MAHAVIR_JAYANTI"
 MAKAR_SANKRANTI = "MAKAR_SANKRANTI"
-NARAKA_CHATURDASI = "NARAKA_CHATURDASI"
+NARAKA_CHATURDASHI = "NARAKA_CHATURDASHI"
 ONAM = "ONAM"
 PONGAL = "PONGAL"
 RAKSHA_BANDHAN = "RAKSHA_BANDHAN"
@@ -1168,7 +1168,7 @@ class _HinduLunisolar:
 
     # https://web.archive.org/web/20250321052207/https://www.drikpanchang.com/festivals/abhyangsnan/festivals-abhyangsnan-timings.html
     # https://web.archive.org/web/20260317144411/https://www.timeanddate.com/holidays/india/naraka-chaturdasi
-    NARAKA_CHATURDASI_DATES = {
+    NARAKA_CHATURDASHI_DATES = {
         2001: (NOV, 14),
         2002: (NOV, 4),
         2003: (OCT, 24),
@@ -1363,7 +1363,6 @@ class _HinduLunisolar:
 
     # https://web.archive.org/web/20260217233952/https://www.timeanddate.com/holidays/india/rath-yatra
     RATH_YATRA_DATES = {
-        2000: (JUL, 3),
         2001: (JUN, 23),
         2002: (JUL, 12),
         2003: (JUL, 1),
@@ -1867,8 +1866,8 @@ class _HinduLunisolar:
     def makar_sankranti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAKAR_SANKRANTI, year)
 
-    def naraka_chaturdasi_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(NARAKA_CHATURDASI, year)
+    def naraka_chaturdashi_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(NARAKA_CHATURDASHI, year)
 
     def onam_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(ONAM, year)

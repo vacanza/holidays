@@ -293,11 +293,11 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.holi_date(self._year))
 
-    def _add_holika_dahana(self, name) -> date | None:
+    def _add_holika_dahan(self, name) -> date | None:
         """
-        Add Holika Dahana.
+        Add Holika Dahan.
 
-        Holika Dahana is a Hindu festival that symbolizes the victory
+        Holika Dahan is a Hindu festival that symbolizes the victory
         of good over evil through the burning of Holika. It is observed
         on the full moon day (Purnima) of the Hindu month of Phalguna
         (February/March), on the eve of Holi.
@@ -433,11 +433,11 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.makar_sankranti_date(self._year)
         )
 
-    def _add_naraka_chaturdasi(self, name) -> date | None:
+    def _add_naraka_chaturdashi(self, name) -> date | None:
         """
-        Add Naraka Chaturdasi.
+        Add Naraka Chaturdashi.
 
-        Naraka Chaturdasi, also known as Choti Diwali, commemorates the
+        Naraka Chaturdashi, also known as Choti Diwali, commemorates the
         victory of Lord Krishna over the demon Narakasura. It is observed
         on the fourteenth day (Chaturdasi) of the dark fortnight of the
         Hindu month of Kartika (October/November).
@@ -445,7 +445,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Naraka_Chaturdashi
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.naraka_chaturdasi_date(self._year)
+            name, self._hindu_calendar.naraka_chaturdashi_date(self._year)
         )
 
     def _add_onam(self, name) -> date | None:

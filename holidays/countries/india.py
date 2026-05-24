@@ -360,11 +360,8 @@ class India(
         # Makar Sankranti.
         self._add_makar_sankranti(tr("Makar Sankranti"))
 
-        # Naraka Chaturdasi.
-        self._add_naraka_chaturdasi(tr("Naraka Chaturdasi"))
-
-        # Navratri / Sharad Navratri.
-        self._add_sharad_navratri(tr("Navratri / Sharad Navratri"))
+        # Naraka Chaturdashi.
+        self._add_naraka_chaturdashi(tr("Naraka Chaturdashi"))
 
         # Onam.
         self._add_onam(tr("Onam"))
