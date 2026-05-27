@@ -17,7 +17,7 @@ class NASDAQ(NewYorkStockExchange):
     """National Association of Securities Dealers Automated Quotations (NASDAQ) holidays.
 
     References:
-        * <https://web.archive.org/web/20260000000000*/https://www.nasdaq.com/holiday-trading-hours>
+        * <https://web.archive.org/web/20260202162732/https://www.nasdaq.com/holiday-trading-hours>
     """
 
     market = "XNAS"
