@@ -1987,6 +1987,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>NASDAQ</td>
+<td>XNAS</td>
+<td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
+<td></td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
@@ -1994,9 +2001,10 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<tr>
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
-<td>NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)</td>
+<td>NYSE market holidays (used by other US-exchanges)</td>
 <td></td>
 <td>HALF_DAY</td>
 </tr>
