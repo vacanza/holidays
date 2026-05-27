@@ -2001,7 +2001,6 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
-<tr>
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
 <td>NYSE market holidays (used by other US-exchanges)</td>
