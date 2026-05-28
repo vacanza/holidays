@@ -170,6 +170,8 @@ class India(
         "OR",  # Orissa.
     )
 
+    holi_optional_years = {2002, 2011}
+
     janmashtami_optional_years = {2008, 2017}
 
     maha_shivaratri_optional_years = {
@@ -257,7 +259,7 @@ class India(
         # Guru Nanak Jayanti.
         self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti"))
 
-        if self._year != 2011:
+        if self._year not in self.holi_optional_years:
             # Holi.
             self._add_holi(tr("Holi"))
 
@@ -305,8 +307,9 @@ class India(
         # Bhai Duj.
         self._add_bhai_dooj(tr("Bhai Duj"))
 
-        # Chhath Puja.
-        self._add_chhath_puja(tr("Chhath Puja"))
+        if self._year >= 2011:
+            # Pratihar Shashthi or Surya Shashthi (Chhat Puja).
+            self._add_chhath_puja(tr("Pratihar Shashthi or Surya Shashthi (Chhat Puja)"))
 
         # Dussehra (Mahashtami).
         self._add_maha_ashtami(tr("Dussehra (Mahashtami)"))
@@ -314,6 +317,10 @@ class India(
         if self._year != 2002:
             # Dussehra (Mahanavami).
             self._add_maha_navami(tr("Dussehra (Mahanavami)"))
+
+        if self._year <= 2018:
+            # Deepavali (South India).
+            self._add_diwali_south_india(tr("Deepavali (South India)"))
 
         # Dussehra (Saptami).
         self._add_maha_saptami(tr("Dussehra (Saptami)"))
@@ -333,7 +340,7 @@ class India(
         # Guru Tegh Bahadur's Martyrdom Day.
         self._add_holiday_nov_24(tr("Guru Tegh Bahadur's Martyrdom Day"))
 
-        if self._year == 2011:
+        if self._year in self.holi_optional_years:
             # Holi.
             self._add_holi(tr("Holi"))
 
@@ -344,8 +351,9 @@ class India(
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
-        # Karaka Chaturthi (Karwa Chouth).
-        self._add_karwa_chauth(tr("Karaka Chaturthi (Karwa Chouth)"))
+        if self._year >= 2012:
+            # Karaka Chaturthi (Karwa Chouth).
+            self._add_karwa_chauth(tr("Karaka Chaturthi (Karwa Chouth)"))
 
         # Labor Day.
         self._add_labor_day(tr("Labour Day"))
@@ -395,7 +403,8 @@ class India(
         # Christian holidays.
 
         # Christmas Eve.
-        self._add_christmas_eve(tr("Christmas Eve"))
+        if self._year != 2002:
+            self._add_christmas_eve(tr("Christmas Eve"))
 
         # Easter Sunday.
         self._add_easter_sunday(tr("Easter Sunday"))

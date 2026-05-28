@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.97\n"
+"Project-Id-Version: Holidays 0.98\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-28 17:22+0530\n"
-"PO-Revision-Date: 2026-05-22 00:45+0530\n"
+"PO-Revision-Date: 2026-05-29 02:00+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pa\n"
@@ -124,9 +124,9 @@ msgstr "ਬਸੰਤ ਪੰਚਮੀ / ਵਸੰਤ ਪੰਚਮੀ"
 msgid "Bhai Duj"
 msgstr "ਭਾਈ ਦੂਜ"
 
-#. Chhath Puja.
-msgid "Chhath Puja"
-msgstr "ਛੱਠ ਪੂਜਾ"
+#. Pratihar Shashthi or Surya Shashthi (Chhat Puja).
+msgid "Pratihar Shashthi or Surya Shashthi (Chhat Puja)"
+msgstr "ਪ੍ਰਤਿਹਾਰ ਸ਼ਸ਼ਠੀ ਜਾਂ ਸੂਰਜ ਸ਼ਸ਼ਠੀ (ਛਟ ਪੂਜਾ)"
 
 #. Dussehra (Mahashtami).
 msgid "Dussehra (Mahashtami)"
@@ -135,6 +135,10 @@ msgstr "ਦੁਸਹਿਰਾ (ਮਹਾਅਸ਼ਟਮੀ)"
 #. Dussehra (Mahanavami).
 msgid "Dussehra (Mahanavami)"
 msgstr "ਦੁਸਹਿਰਾ (ਮਹਾਨਵਮੀ)"
+
+#. Deepavali (South India).
+msgid "Deepavali (South India)"
+msgstr "दीपावली (दक्षिण भारत)"
 
 #. Dussehra (Saptami).
 msgid "Dussehra (Saptami)"
@@ -180,13 +184,9 @@ msgstr "ਮਹਾਰਿਸ਼ੀ ਵਾਲਮੀਕੀ ਜਯੰਤੀ"
 msgid "Makar Sankranti"
 msgstr "ਮਕਰ ਸੰਕ੍ਰਾਂਤੀ"
 
-#. Naraka Chaturdasi.
-msgid "Naraka Chaturdasi"
+#. Naraka Chaturdashi.
+msgid "Naraka Chaturdashi"
 msgstr "ਨਰਕ ਚਤੁਰਦਾਸੀ"
-
-#. Navratri / Sharad Navratri.
-msgid "Navratri / Sharad Navratri"
-msgstr "ਨਵਰਾਤਰੀ / ਸ਼ਰਦ ਨਵਰਾਤਰੀ"
 
 #. Onam.
 msgid "Onam"
@@ -220,7 +220,6 @@ msgstr "ਵਿਸਾਖੀ"
 msgid "Jamat-Ul-Vida"
 msgstr "ਜਮਾਤ-ਉਲ-ਵਿਦਾ"
 
-#. Christmas Eve.
 msgid "Christmas Eve"
 msgstr "ਕ੍ਰਿਸਮਿਸ ਤੋਂ ਪਹਿਲਾਂ"
 
@@ -247,6 +246,10 @@ msgstr "ਮਾਘ ਬਿਹੂ"
 #. Assam Day.
 msgid "Assam Day"
 msgstr "ਅਸਾਮ ਦਿਵਸ"
+
+#. Chhath Puja.
+msgid "Chhath Puja"
+msgstr "ਛੱਠ ਪੂਜਾ"
 
 #. Bihar Day.
 msgid "Bihar Day"

@@ -151,6 +151,11 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.diwali_india_date(self._year)
         )
 
+    def _add_diwali_south_india(self, name) -> date | None:
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.diwali_india_date(self._year), days_delta=-1
+        )
+
     def _add_dussehra(self, name) -> date | None:
         """
         Add Dussehra Festival.
