@@ -93,14 +93,16 @@ def generate_data() -> None:
             if key not in tibetan_dates:
                 tibetan_dates[key] = date(greg_year, greg_month, greg_day)
 
+    start_year, end_year = 1901, 2100
     dates: dict[str, dict[int, date]] = defaultdict(dict)
     for name, (tib_month, tib_day) in TIBETAN_HOLIDAYS.items():
-        for tib_year in range(1901, 2101):
+        for tib_year in range(start_year - 1, end_year + 1):
             dt = tibetan_dates.get((tib_year, tib_month, tib_day))
             # If that day doesn't exist, the holiday is celebrated on the previous day.
             if dt is None:
                 dt = tibetan_dates[(tib_year, tib_month, tib_day + 1)] + timedelta(days=-1)
-            dates[name][dt.year] = dt
+            if start_year <= dt.year <= end_year:
+                dates[name][dt.year] = dt
 
     cal_gen = CalendarGenerator("tibetan", "_TibetanLunisolar")
     cal_gen.generate(dates)
