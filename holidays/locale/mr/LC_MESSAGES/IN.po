@@ -126,7 +126,7 @@ msgstr "भाई दूज"
 
 #. Pratihar Shashthi or Surya Shashthi (Chhat Puja).
 msgid "Pratihar Shashthi or Surya Shashthi (Chhat Puja)"
-msgstr "प्रतिहार षष्ठी किंवा सूर्य षष्ठी (छट पूजा)"
+msgstr "प्रतिहार षष्ठी किंवा सूर्य षष्ठी (छठ पूजा)"
 
 #. Dussehra (Mahashtami).
 msgid "Dussehra (Mahashtami)"

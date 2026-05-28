@@ -138,7 +138,7 @@ msgstr "ਦੁਸਹਿਰਾ (ਮਹਾਨਵਮੀ)"
 
 #. Deepavali (South India).
 msgid "Deepavali (South India)"
-msgstr "दीपावली (दक्षिण भारत)"
+msgstr "ਦੀਪਾਵਲੀ (ਦੱਖਣੀ ਭਾਰਤ)"
 
 #. Dussehra (Saptami).
 msgid "Dussehra (Saptami)"
