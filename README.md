@@ -2003,7 +2003,7 @@ code when available. The following financial markets are available:
 <tr>
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
-<td>NYSE market holidays (used by other US-exchanges)</td>
+<td>NYSE market holidays</td>
 <td></td>
 <td>HALF_DAY</td>
 </tr>
