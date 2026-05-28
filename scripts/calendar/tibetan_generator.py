@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 #  holidays
 #  --------
 #  A fast, efficient Python library for generating country, province and state
@@ -12,65 +13,42 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+"""Generate Gregorian dates for holidays based on the Tibetan lunisolar calendar.
+
+Run with:
+
+    python -m scripts.calendar.tibetan_generator
+
+Alternatively, run with uv:
+
+    uv run -m scripts.calendar.tibetan_generator
+
+This generates the file `holidays/calendars/tibetan_dates.py`,
+whose data can then be copied to `holidays/calendars/tibetan.py`.
+"""
+
+from collections import defaultdict
+from datetime import date, timedelta
 from pathlib import Path
 
 import requests
 
+from .generator import CalendarGenerator
+
 DATA_URL = "https://raw.githubusercontent.com/wp-plugins/bhutanese-calendar/master/data/data.txt"
 DATA_FILENAME = "tibetan_data.txt"
-OUT_FILE_NAME = "tibetan_dates.py"
 
-MONTH_NAMES = {
-    1: "JAN",
-    2: "FEB",
-    3: "MAR",
-    4: "APR",
-    5: "MAY",
-    6: "JUN",
-    7: "JUL",
-    8: "AUG",
-    9: "SEP",
-    10: "OCT",
-    11: "NOV",
-    12: "DEC",
+TIBETAN_HOLIDAYS = {
+    "LOSAR": (1, 1),
+    "DEATH_OF_ZHABDRUNG": (3, 10),
+    "BUDDHA_PARINIRVANA": (4, 15),
+    "BIRTH_OF_GURU_RINPOCHE": (5, 10),
+    "BUDDHA_FIRST_SERMON": (6, 4),
+    "THIMPHU_DRUBCHEN": (8, 6),
+    "THIMPHU_TSHECHU": (8, 10),
+    "DESCENDING_DAY_OF_LORD_BUDDHA": (9, 22),
+    "DAY_OF_OFFERING": (12, 1),
 }
-
-HOLIDAYS = {
-    "LOSAR": (1, 1, "losar"),
-    "DAY_OF_OFFERING": (12, 1, "regular"),
-    "DEATH_OF_ZHABDRUNG": (3, 10, "regular"),
-    "BUDDHA_PARINIRVANA": (4, 15, "regular"),
-    "BIRTH_OF_GURU_RINPOCHE": (5, 10, "regular"),
-    "BUDDHA_FIRST_SERMON": (6, 4, "regular"),
-    "THIMPHU_DRUBCHEN": (8, 6, "regular"),
-    "THIMPHU_TSHECHU": (8, 10, "regular"),
-    "DESCENDING_DAY_OF_LORD_BUDDHA": (9, 22, "regular"),
-}
-
-
-def _get_holiday(tib_lookup, tib_month, tib_day, rule, tib_year):
-    if rule == "losar":
-        for day in range(1, 32):
-            if (tib_month, day, tib_year) in tib_lookup:
-                return tib_lookup[(tib_month, day, tib_year)]
-        return None
-
-    if (tib_month, tib_day, tib_year) in tib_lookup:
-        return tib_lookup[(tib_month, tib_day, tib_year)]
-
-    if tib_day > 1:
-        for prev_day in range(tib_day - 1, 0, -1):
-            if (tib_month, prev_day, tib_year) in tib_lookup:
-                return tib_lookup[(tib_month, prev_day, tib_year)]
-    else:
-        # Day 1 is expunged - fall back to last day of previous month.
-        prev_month = tib_month - 1 if tib_month > 1 else 12
-        prev_year = tib_year if tib_month > 1 else tib_year - 1
-        for prev_day in range(30, 0, -1):
-            if (prev_month, prev_day, prev_year) in tib_lookup:
-                return tib_lookup[(prev_month, prev_day, prev_year)]
-
-    return None
 
 
 def generate_data() -> None:
@@ -80,51 +58,52 @@ def generate_data() -> None:
         response.raise_for_status()
         data_file.write_bytes(response.content)
 
-    tib_lookup = {}
-    tib_years = []
-    tib_year = 0
-    prev_year_name = None
+    leap_2_fix_years = {1900, 1919, 1965, 1984, 2030, 2049, 2095}
+    tibetan_dates = {}
+    tib_year = 1900
+    prev_tib_month = 1
 
-    with open(data_file, encoding="utf-8") as f:
+    with data_file.open(encoding="utf-8") as f:
+        # Example source file row:
+        # (1, 'Thu', 1, 1, 0, 'Iron-male-Mouse', 31, 1, 1900)
         for line in f:
-            parts = line.split(",")
+            parts = line.strip("(),\n").split(", ")
             if len(parts) < 9:
                 continue
-            tib_day = int(parts[2].strip())
-            tib_month = int(parts[3].strip())
-            leap = int(parts[4].strip())
-            tib_year_name = parts[5].strip()
-            greg_day = int(parts[6].strip())
-            greg_month = int(parts[7].strip())
-            greg_year = int(parts[8].strip().rstrip("),"))
 
-            if tib_year_name != prev_year_name:
-                tib_year += 1
-                prev_year_name = tib_year_name
-                tib_years.append(tib_year)
+            _, _, _tib_day, _tib_month, _leap, _, _greg_day, _greg_month, _greg_year = parts
+            tib_day, tib_month, leap, greg_day, greg_month, greg_year = map(
+                int, (_tib_day, _tib_month, _leap, _greg_day, _greg_month, _greg_year)
+            )
+            # Tibetan year begins when month sequence wraps back to 1
+            # (and has a conventional number equal to the Gregorian year).
+            if tib_month != prev_tib_month and tib_month == 1:
+                tib_year = greg_year
+            prev_tib_month = tib_month
+
+            # Fix double leap months.
+            if tib_year in leap_2_fix_years and tib_month == 2:
+                leap = 0
 
             # Leap month stored as month + 12 to distinguish from regular month.
-            effective_month = tib_month + 12 if leap == 1 else tib_month
-            tib_lookup[(effective_month, tib_day, tib_year)] = (greg_month, greg_day, greg_year)
+            if leap > 0:
+                tib_month += 12
+            key = (tib_year, tib_month, tib_day)
+            # Skip double day.
+            if key not in tibetan_dates:
+                tibetan_dates[key] = date(greg_year, greg_month, greg_day)
 
-    dates: dict[str, dict[int, tuple]] = {name: {} for name in HOLIDAYS}
-    for tib_year in tib_years:
-        for name, (tib_month, tib_day, rule) in HOLIDAYS.items():
-            result = _get_holiday(tib_lookup, tib_month, tib_day, rule, tib_year)
-            if result:
-                greg_month, greg_day, greg_year = result
-                dates[name][greg_year] = (greg_month, greg_day)
+    dates: dict[str, dict[int, date]] = defaultdict(dict)
+    for name, (tib_month, tib_day) in TIBETAN_HOLIDAYS.items():
+        for tib_year in range(1901, 2101):
+            dt = tibetan_dates.get((tib_year, tib_month, tib_day))
+            # If that day doesn't exist, the holiday is celebrated on the previous day.
+            if dt is None:
+                dt = tibetan_dates[(tib_year, tib_month, tib_day + 1)] + timedelta(days=-1)
+            dates[name][dt.year] = dt
 
-    holiday_data = []
-    for name in sorted(dates.keys()):
-        year_dates = "\n".join(
-            f"        {year}: ({MONTH_NAMES[m]}, {d}),"
-            for year, (m, d) in sorted(dates[name].items())
-        )
-        holiday_data.append(f"    {name}_DATES = {{\n{year_dates}\n    }}\n")
-
-    output_path = Path("holidays/calendars") / OUT_FILE_NAME
-    output_path.write_text("".join(holiday_data), encoding="UTF-8")
+    cal_gen = CalendarGenerator("tibetan", "_TibetanLunisolar")
+    cal_gen.generate(dates)
 
 
 if __name__ == "__main__":
