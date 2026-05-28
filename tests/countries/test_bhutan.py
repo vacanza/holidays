@@ -150,6 +150,10 @@ class TestBhutan(CommonCountryTests, TestCase):
         name = "རྒྱལ་ཡོངས་ཁྲུས་བབས་ངལ་གསོ།"
         self.assertHolidayName(
             name,
+            "2012-09-22",
+            "2013-10-21",
+            "2015-09-22",
+            "2019-09-24",
             "2020-09-23",
             "2021-09-23",
             "2022-09-23",
@@ -157,7 +161,8 @@ class TestBhutan(CommonCountryTests, TestCase):
             "2024-09-23",
             "2025-09-23",
         )
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(name, range(2010, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2010))
 
     def test_dassain(self):
         name = "ལྷོ་མཚམས་ད་སའིན་ངལ་གསོ།"
@@ -193,12 +198,12 @@ class TestBhutan(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
-                    "2020-09-23",
-                    "2021-09-12",
-                    "2022-10-01",
-                    "2023-09-21",
-                    "2024-09-10",
-                    "2025-09-29",
+                    "2020-09-22",
+                    "2021-09-11",
+                    "2022-09-30",
+                    "2023-09-20",
+                    "2024-09-09",
+                    "2025-09-28",
                 )
                 self.assertHolidayName(name, holidays, self.full_range)
             else:
@@ -274,7 +279,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             ("2024-05-23", "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་དུས་ཆེན་ལྔ་འཛོམས་ངལ་གསོལ།"),
             ("2024-06-16", "ཨོ་རྒྱན་གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོ།"),
             ("2024-07-10", "སྟོན་པ་མཆོག་ཝ་ར་ན་སིར་བདེན་བཞིའི་ཆོས་འཁོར་བསྐོར་བའི་དུས་ཆེན་ངལ་གསོ།"),
-            ("2024-09-10", "ཐིམ་རྫོང་ལྷ་མོའི་དངོས་འཆམ་མཇལ་རྒྱུའི་ངལ་གསོ།"),
+            ("2024-09-09", "ཐིམ་རྫོང་ལྷ་མོའི་དངོས་འཆམ་མཇལ་རྒྱུའི་ངལ་གསོ།"),
             ("2024-09-13", "ཐིམ་ཕུ་ཚེས་བཅུའི་ངལ་གསོ།"),
             ("2024-09-14", "ཐིམ་ཕུ་ཚེས་བཅུའི་ངལ་གསོ།"),
             ("2024-09-15", "ཐིམ་ཕུ་ཚེས་བཅུའི་ངལ་གསོ།"),
@@ -301,7 +306,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             ("2024-05-23", "Lord Buddha's Parinirvana"),
             ("2024-06-16", "Birth Anniversary of Guru Rinpoche"),
             ("2024-07-10", "First Sermon of Lord Buddha"),
-            ("2024-09-10", "Thimphu Drubchoe"),
+            ("2024-09-09", "Thimphu Drubchoe"),
             ("2024-09-13", "Thimphu Tshechu"),
             ("2024-09-14", "Thimphu Tshechu"),
             ("2024-09-15", "Thimphu Tshechu"),

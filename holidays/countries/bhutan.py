@@ -12,8 +12,8 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomHinduHolidays
-from holidays.calendars.gregorian import SEP, OCT
+from holidays.calendars import _CustomHinduHolidays, _CustomTibetanHolidays
+from holidays.calendars.gregorian import JAN, SEP, OCT
 from holidays.groups import HinduCalendarHolidays, TibetanCalendarHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -26,6 +26,8 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         * [The Bhutanese calendar](https://web.archive.org/web/20250707105447/http://www.kalacakra.org/calendar/bhutlist.htm)
         * [2007-2011](https://web.archive.org/web/20070730055559/http://www.rcsc.gov.bt/tmpFolder/CalendarOfEvent/holiday.htm)
         * [2010-2011](https://web.archive.org/web/20100127021618/http://www.mohca.gov.bt/?mode=READMORE&news_id=157)
+        * [2012](https://web.archive.org/web/20260529185602/https://www.drukasia.com/bhutan/public-holiday-in-bhutan-2012/)
+        * [2013](https://web.archive.org/web/20260529185909/https://www.drukasia.com/bhutan/public-holiday-in-bhutan-2013/)
         * [2014](https://web.archive.org/web/20141222122050/http://www.mohca.gov.bt/Publications/calander_2014-15.pdf)
         * [2015](https://web.archive.org/web/20151004161522/http://www.mohca.gov.bt/Publications/calander_2015-16.pdf)
         * [2016](https://web.archive.org/web/20170606131500/http://www.mohca.gov.bt/download/calander_2016-17.pdf)
@@ -38,6 +40,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         * [2023](https://web.archive.org/web/20221210152039/https://www.mohca.gov.bt/wp-content/uploads/2022/11/Holidays-2023.pdf)
         * [2024](https://web.archive.org/web/20250407140158/https://www.moha.gov.bt/wp-content/uploads/2023/11/National-Holiday-List-for-2024-2-.pdf)
         * [2025](https://web.archive.org/web/20250703030226/https://www.moha.gov.bt/wp-content/uploads/2024/11/Calendar_2025.pdf)
+        * [2026](https://web.archive.org/web/20251210152706/https://www.moha.gov.bt/wp-content/uploads/2025/11/calender-2026.pdf)
     """
 
     country = "BT"
@@ -103,7 +106,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         HinduCalendarHolidays.__init__(
             self, cls=BhutanHinduHolidays, show_estimated=hindu_show_estimated
         )
-        TibetanCalendarHolidays.__init__(self)
+        TibetanCalendarHolidays.__init__(self, cls=BhutanTibetanHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -126,7 +129,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         self._add_holiday_dec_17(tr("རྒྱལ་ཡོངས་དུས་ཆེན་གྱི་ངལ་གསོལ།"))
 
         # Winter Solstice.
-        self._add_tibetan_winter_solstice(tr("དགུན་ཉི་ལྡོག་གི་ངལ་གསོལ།"))
+        self._add_holiday(tr("དགུན་ཉི་ལྡོག་གི་ངལ་གསོལ།"), self._bhutan_winter_solstice_date)
 
         # Traditional Day of Offering.
         self._add_day_of_offering(tr("སྔར་སྲོལ་འབུལ་བའི་ལོ་གསར་གྱི་ངལ་གསོལ།"))
@@ -148,8 +151,9 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         # First Sermon of Lord Buddha.
         self._add_buddha_first_sermon(tr("སྟོན་པ་མཆོག་ཝ་ར་ན་སིར་བདེན་བཞིའི་ཆོས་འཁོར་བསྐོར་བའི་དུས་ཆེན་ངལ་གསོ།"))
 
-        # Blessed Rainy Day.
-        self._add_blessed_rainy_day(tr("རྒྱལ་ཡོངས་ཁྲུས་བབས་ངལ་གསོ།"))
+        if self._year >= 2010:
+            # Blessed Rainy Day.
+            self._add_holiday(tr("རྒྱལ་ཡོངས་ཁྲུས་བབས་ངལ་གསོ།"), self._blessed_rainy_day_date)
 
         # Dassain.
         self._add_dussehra(tr("ལྷོ་མཚམས་ད་སའིན་ངལ་གསོ།"))
@@ -167,6 +171,31 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
         self._add_thimphu_tshechu_day_two(name)
         self._add_thimphu_tshechu_day_three(name)
 
+    @property
+    def _bhutan_winter_solstice_date(self) -> tuple[int, int]:
+        """Extrapolation based on available dates; the exact rule is currently unclear."""
+        dates = {
+            2019: (JAN, 3),
+            2022: (JAN, 1),
+        }
+        if dt := dates.get(self._year):
+            return dt
+        else:
+            return JAN, 2
+
+    @property
+    def _blessed_rainy_day_date(self) -> tuple[int, int]:
+        """Extrapolation based on available dates; the exact rule is currently unclear."""
+        dates = {
+            2012: (SEP, 22),
+            2013: (OCT, 21),
+            2015: (SEP, 22),
+        }
+        if self._year in dates:
+            return dates[self._year]
+        else:
+            return SEP, 24 if self._year % 4 == 3 else 23
+
 
 class BT(Bhutan):
     pass
@@ -183,6 +212,8 @@ class BhutanHinduHolidays(_CustomHinduHolidays):
         2009: (SEP, 28),
         2010: (OCT, 17),
         2011: (OCT, 6),
+        2012: (OCT, 24),
+        2013: (OCT, 14),
         2014: (OCT, 3),
         2015: (OCT, 22),
         2016: (OCT, 11),
@@ -195,4 +226,21 @@ class BhutanHinduHolidays(_CustomHinduHolidays):
         2023: (OCT, 24),
         2024: (OCT, 12),
         2025: (OCT, 2),
+        2026: (OCT, 21),
+    }
+
+
+class BhutanTibetanHolidays(_CustomTibetanHolidays):
+    THIMPHU_DRUBCHEN_DATES = {
+        2013: (SEP, 10),
+        2014: (SEP, 29),
+        2021: (SEP, 11),
+        2022: (SEP, 30),
+        2023: (SEP, 20),
+    }
+
+    THIMPHU_TSHECHU_DATES = {
+        2007: (SEP, 21),
+        2021: (SEP, 15),
+        2022: (OCT, 4),
     }

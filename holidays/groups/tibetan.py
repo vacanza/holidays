@@ -41,14 +41,6 @@ class TibetanCalendarHolidays(EasternCalendarHolidays):
             days_delta=days_delta,
         )
 
-    def _add_blessed_rainy_day(self, name) -> date | None:
-        """
-        Add Blessed Rainy Day (September Equinox of Autumn Calendar).
-        """
-        return self._add_tibetan_calendar_holiday(
-            name, self._tibetan_calendar.blessed_rainy_day_date(self._year)
-        )
-
     def _add_birth_of_guru_rinpoche(self, name) -> date | None:
         """
         Add Birth of Guru Rinpoche (10th day of the 5th lunar month).
@@ -118,7 +110,7 @@ class TibetanCalendarHolidays(EasternCalendarHolidays):
         Add Thimphu Drubchen (6th day of the 8th lunar month).
         """
         return self._add_tibetan_calendar_holiday(
-            name, self._tibetan_calendar.thimphu_drubchen_date(self._year), days_delta=+1
+            name, self._tibetan_calendar.thimphu_drubchen_date(self._year)
         )
 
     def _add_thimphu_tshechu_day(self, name) -> date | None:
@@ -143,12 +135,4 @@ class TibetanCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_tibetan_calendar_holiday(
             name, self._tibetan_calendar.thimphu_tshechu_date(self._year), days_delta=+2
-        )
-
-    def _add_tibetan_winter_solstice(self, name) -> date | None:
-        """
-        Add Winter Solstice Day.
-        """
-        return self._add_tibetan_calendar_holiday(
-            name, self._tibetan_calendar.tibetan_winter_solstice_date(self._year)
         )
