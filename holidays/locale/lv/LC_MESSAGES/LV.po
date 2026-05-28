@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.28\n"
+"Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2023-06-27 13:39+0300\n"
+"PO-Revision-Date: 2026-04-03 16:02+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: lv\n"
@@ -34,7 +34,7 @@ msgid "%s (brīvdiena)"
 msgstr ""
 
 #. New Year's Day.
-msgid "Jaunais Gads"
+msgid "Jaungada diena"
 msgstr ""
 
 #. Good Friday.
@@ -42,7 +42,7 @@ msgid "Lielā Piektdiena"
 msgstr ""
 
 #. Easter Sunday.
-msgid "Lieldienas"
+msgid "Pirmās Lieldienas"
 msgstr ""
 
 #. Easter Monday.
@@ -53,12 +53,24 @@ msgstr ""
 msgid "Darba svētki"
 msgstr ""
 
+#. Constitutional Assembly Convocation Day.
+msgid "Latvijas Republikas Satversmes sapulces sasaukšanas diena"
+msgstr ""
+
 #. Restoration of Independence Day.
 msgid "Latvijas Republikas Neatkarības atjaunošanas diena"
 msgstr ""
 
+#. Proclamation of Declaration of Independence Day.
+msgid "Latvijas Republikas Neatkarības deklarācijas pasludināšanas diena"
+msgstr ""
+
 #. Mother's Day.
 msgid "Mātes diena"
+msgstr ""
+
+#. Whit Sunday.
+msgid "Vasarsvētki"
 msgstr ""
 
 #. Midsummer Eve.
@@ -70,7 +82,7 @@ msgid "Jāņu diena"
 msgstr ""
 
 #. Republic of Latvia Proclamation Day.
-msgid "Latvijas Republikas proklamēšanas diena"
+msgid "Latvijas Republikas Proklamēšanas diena"
 msgstr ""
 
 #. Christmas Eve.
@@ -78,7 +90,7 @@ msgid "Ziemassvētku vakars"
 msgstr ""
 
 #. Christmas Day.
-msgid "Ziemassvētki"
+msgid "Pirmie Ziemassvētki"
 msgstr ""
 
 #. Second Day of Christmas.
@@ -86,18 +98,27 @@ msgid "Otrie Ziemassvētki"
 msgstr ""
 
 #. New Year's Eve.
-msgid "Vecgada vakars"
+msgid "Vecgada diena"
 msgstr ""
 
-#. General Latvian Song and Dance Festival closing day.
-msgid "Vispārējo latviešu Dziesmu un deju svētku noslēguma dienu"
+#. Substituted date format.
+msgid "%d.%m.%Y"
 msgstr ""
 
-#. Day of His Holiness Pope Francis' pastoral visit to Latvia.
+#. Day off (substituted from %s).
+#, c-format
+msgid "Brīvdiena (pārcelta no %s)"
+msgstr ""
+
+#. Nationwide Latvian Song and Dance Celebration Final Day.
+msgid "Vispārējo latviešu Dziesmu un deju svētku noslēguma diena"
+msgstr ""
+
+#. Day of the Pastoral Visit of His Holiness Pope Francis to Latvia.
 msgid "Viņa Svētības pāvesta Franciska pastorālās vizītes Latvijā diena"
 msgstr ""
 
-#. Day the Latvian hockey team won the bronze medal at the 2023 World Ice Hockey Championship.
+#. Day of the Latvian Ice Hockey Team's Bronze Medal Win at the 2023 IIHF World Championship.
 msgid ""
 "Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules hokeja čempionātā"
 msgstr ""

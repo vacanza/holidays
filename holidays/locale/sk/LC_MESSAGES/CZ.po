@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 #
 # Czechia holidays sk localization.
-# This file is distributed under the same license as the Holidays package.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.66\n"

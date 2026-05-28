@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.88\n"
+"Project-Id-Version: Holidays 0.94\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-06-19 15:33+0700\n"
-"PO-Revision-Date: 2025-12-23 10:55-0800\n"
+"PO-Revision-Date: 2026-03-30 00:58+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-Source-Language: en_US\n"
 
 #. %s (observed).
@@ -275,10 +275,6 @@ msgstr "วันสิ้นปี"
 msgid "Mardi Gras"
 msgstr "วันมาร์ดิกราส์"
 
-#. Evacuation Day.
-msgid "Evacuation Day"
-msgstr "วันอพยพ"
-
 #. Patriots' Day.
 msgid "Patriots' Day"
 msgstr "วันแพทริออต"
@@ -395,6 +391,10 @@ msgstr "วันวัฒนธรรมเปอร์โตริโกแล
 msgid "Discovery of Puerto Rico Day"
 msgstr "วันค้นพบเปอร์โตริโก"
 
+#. American Citizenship Day.
+msgid "American Citizenship Day"
+msgstr "วันแห่งความเป็นพลเมืองอเมริกัน"
+
 #. %s (from 12pm).
 #, c-format
 msgid "%s (from 12pm)"
@@ -495,6 +495,10 @@ msgstr "วันวาเลนไทน์"
 #. Saint Patrick's Day.
 msgid "Saint Patrick's Day"
 msgstr "วันนักบุญแพทริก"
+
+#. Easter Sunday.
+msgid "Easter Sunday"
+msgstr "วันอาทิตย์อีสเตอร์"
 
 #. Mother's Day.
 msgid "Mother's Day"

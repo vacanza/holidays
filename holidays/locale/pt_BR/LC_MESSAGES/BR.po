@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.88\n"
+"Project-Id-Version: Holidays 0.96\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-10-15 20:48+0300\n"
-"PO-Revision-Date: 2025-12-24 10:16+0700\n"
-"Last-Translator: Avi Alkalay <avibrazil@gmail.com>\n"
+"PO-Revision-Date: 2026-04-29 22:48+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -212,12 +212,16 @@ msgstr ""
 msgid "Fundação do Estado"
 msgstr ""
 
-#. Pernambuco Revolution.
-msgid "Revolução Pernambucana"
+#. Pernambuco Revolution of 1817.
+msgid "Revolução Pernambucana de 1817"
 msgstr ""
 
 #. Piauí Day.
 msgid "Dia do Piauí"
+msgstr ""
+
+#. Our Lady of Rocio.
+msgid "Nossa Senhora do Rocio"
 msgstr ""
 
 #. Political Emancipation of Paraná.

@@ -46,7 +46,7 @@ class Iraq(
     country = "IQ"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     start_year = 1964
     supported_categories = (CHRISTIAN, HEBREW, PUBLIC, SABIAN, YAZIDI)
     supported_languages = ("ar", "en_US")

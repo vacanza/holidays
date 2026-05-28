@@ -30,7 +30,7 @@ class GermanyStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
 
     market = "XETR"
     default_language = "de"
-    supported_languages = ("de", "en_US")
+    supported_languages = ("de", "en_US", "th", "uk")
     start_year = 2016
 
     def __init__(self, *args, **kwargs) -> None:

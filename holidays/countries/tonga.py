@@ -79,7 +79,7 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
     country = "TO"
     default_language = "to"
     # %s (observed).
-    observed_label = tr("%s (fakatokanga'i)")
+    observed_label = tr("%s (fakatokangaʻi)")
     supported_languages = ("en_US", "to")
     # Public Holidays Act, 1988 Revision.
     start_year = 1989
@@ -98,19 +98,19 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        jan_1 = self._add_new_years_day(tr("'Uluaki 'Aho 'o e Ta'u Fo'ou"))
+        jan_1 = self._add_new_years_day(tr("ʻUluaki ʻAho ʻo e Taʻu Foʻou"))
         if self._year <= 2016:
             self._add_observed(jan_1, rule=SUN_TO_NEXT_MON)
 
         # Birthday of the King/Queen of Tonga.
         # Topou VI: Jul 12 (2012-Present)*
         # George Tupou V: May 4 (2007-2011)
-        # Tāufa'āhau Tupou IV: Jul 4: (1965-2006)
+        # Tāufaʻāhau Tupou IV: Jul 4: (1965-2006)
         #  * By Cabinet Decision of Jul 6, 2012 this date was declared to be Jul 4,
         #    thus not celebrated in 2012.
 
         # Birthday of the Reigning Sovereign of Tonga.
-        name = tr("'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule")
+        name = tr("ʻAho ʻAloʻi ʻo ʻEne ʻAfio ko e Tuʻi ʻo Tonga ʻoku lolotonga Pule")
 
         if self._year == 2011:
             self._move_holiday(self._add_holiday_may_4(name))
@@ -120,12 +120,12 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
             self._add_observed(self._add_holiday_jul_4(name), rule=SUN_TO_NEXT_MON)
 
         # Birthday of the Crown Prince/Princess of Tonga.
-        # Tupouto'a 'Ulukalala: Sep 17 (2012-Present)
+        # Tupoutoʻa ʻUlukalala: Sep 17 (2012-Present)
         # Topou VI: Jul 12 (2007-2011)
         # George Tupou V: May 4 (1968-2006)
 
         # Birthday of the Heir to the Crown of Tonga.
-        name = tr("'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga")
+        name = tr("ʻAho ʻAloʻi ʻo e ʻEa ki he Kalauni ʻo Tonga")
 
         if self._year >= 2012:
             self._add_observed(self._add_holiday_sep_17(name), rule=SUN_TO_NEXT_MON)
@@ -140,15 +140,15 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         self._add_good_friday(tr("Falaite Lelei"))
 
         # Easter Monday.
-        self._add_easter_monday(tr("Monite 'o e Toetu'u"))
+        self._add_easter_monday(tr("Monite ʻo e Toetuʻu"))
 
         # Anzac Day.
-        apr_25 = self._add_anzac_day(tr("'Aho Anzac"))
+        apr_25 = self._add_anzac_day(tr("ʻAho Anzac"))
         if self._year <= 2016:
             self._add_observed(apr_25, rule=SUN_TO_NEXT_MON)
 
         # Emancipation Day.
-        jun_4 = self._add_holiday_jun_4(tr("'Aho Tau'ataina"))
+        jun_4 = self._add_holiday_jun_4(tr("ʻAho Tauʻataina"))
         if self._year >= 2010:
             self._move_holiday(jun_4)
         else:
@@ -157,15 +157,15 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         # Coronation Date of Tongan Monarchy since 1970.*
         # Topou VI: Jul 4 (2015-Present)**
         # George Tupou V: Aug 1 (2008-2011)
-        # Tāufa'āhau Tupou IV: Jul 4: (1967-2006)**
+        # Tāufaʻāhau Tupou IV: Jul 4: (1967-2006)**
         #  *  No celebration for in-between years i.e. 2007, 2012-2014.
         #  ** Has de facto merged with King's Birthday.
 
         if 2008 <= self._year <= 2011:
             name = tr(
                 # Anniversary of the Coronation Day of the reigning Sovereign of Tonga.
-                "Fakamanatu 'o e 'Aho Hilifaki Kalauni 'o 'Ene 'Afio ko e Tu'i 'o Tonga "
-                "'a ia 'oku lolotonga Pule"
+                "Fakamanatu ʻo e ʻAho Hilifaki Kalauni ʻo ʻEne ʻAfio ko e Tuʻi ʻo Tonga "
+                "ʻa ia ʻoku lolotonga Pule"
             )
             if self._year >= 2010:
                 self._move_holiday(self._add_holiday_aug_1(name))
@@ -173,7 +173,7 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
                 self._add_observed(self._add_holiday_aug_1(name))
 
         # Constitution Day.
-        nov_4 = self._add_holiday_nov_4(tr("'Aho Konisitutone"))
+        nov_4 = self._add_holiday_nov_4(tr("ʻAho Konisitutone"))
         if self._year >= 2010:
             self._move_holiday(nov_4)
         else:
@@ -181,7 +181,7 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
 
         dec_4 = self._add_holiday_dec_4(
             # Anniversary of the Coronation of HM King George Tupou I.
-            tr("'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko Siaosi Tupou I")
+            tr("ʻAho Fakamanatu ʻo e Hilifaki Kalauni ʻo ʻEne ʻAfio ko Siaosi Tupou I")
         )
         if self._year >= 2010:
             self._move_holiday(dec_4)
@@ -189,10 +189,10 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
             self._add_observed(dec_4)
 
         # Christmas Day.
-        self._add_christmas_day(tr("'Aho Kilisimasi"))
+        self._add_christmas_day(tr("ʻAho Kilisimasi"))
 
         # Boxing Day.
-        dec_26 = self._add_christmas_day_two(tr("'Aho 2 'o e Kilisimasi"))
+        dec_26 = self._add_christmas_day_two(tr("ʻAho 2 ʻo e Kilisimasi"))
         if self._year <= 2009:
             self._add_observed(dec_26, rule=MON_TO_NEXT_TUE)
 
@@ -217,18 +217,18 @@ class TongaStaticHolidays:
     # Special Cases.
 
     # Tonga Rugby Public Holiday.
-    rugby_special_holidays = tr("'Aho malolo 'akapulu 'a Tonga")
+    rugby_special_holidays = tr("ʻAho malolo ʻakapulu ʻa Tonga")
 
     special_public_holidays = {
         2017: (NOV, 29, rugby_special_holidays),
         2019: (
-            # State Funeral of 'Akilisi Pohiva.
-            (SEP, 19, tr("Me'afaka'eiki 'o e Siteiti 'Akilisi Pohiva")),
+            # State Funeral of Akilisi Pohiva.
+            (SEP, 19, tr("Meʻafakaʻeiki ʻo e Siteiti ʻAkilisi Pōhiva")),
             (NOV, 15, rugby_special_holidays),
         ),
     }
     # Special Case for 2021
     special_public_holidays_observed = {
         # Boxing Day.
-        2021: (DEC, 27, tr("'Aho 2 'o e Kilisimasi")),
+        2021: (DEC, 27, tr("ʻAho 2 ʻo e Kilisimasi")),
     }

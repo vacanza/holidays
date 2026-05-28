@@ -1,0 +1,63 @@
+name: Deploy GitHub Page
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  DEFAULT_PYTHON_VERSION: '3.14'
+  DEFAULT_UV_VERSION: '0.11.8'
+  FORCE_COLOR: 1
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  build:
+    if: github.repository == 'vacanza/holidays'
+    permissions:
+      contents: read
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b  # v8.1.0
+        with:
+          python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
+          version: ${{ env.DEFAULT_UV_VERSION }}
+
+      - name: Install Python
+        run: uv python install "$UV_PYTHON"
+
+      - name: Install dependencies
+        run: uv sync --frozen --no-default-groups --group build --link-mode=copy
+
+      - name: Generate ICalendar data
+        run: make icalendar
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9  # v5.0.0
+        with:
+          path: site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    permissions:
+      id-token: write
+      pages: write
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128  # v5.0.0

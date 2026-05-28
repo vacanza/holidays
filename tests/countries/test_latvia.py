@@ -13,10 +13,10 @@
 from unittest import TestCase
 
 from holidays.countries.latvia import Latvia
-from tests.common import CommonCountryTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestLatvia(CommonCountryTests, TestCase):
+class TestLatvia(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Latvia)
@@ -29,8 +29,88 @@ class TestLatvia(CommonCountryTests, TestCase):
             "2023-07-10",
         )
 
+    def test_substituted_holidays(self):
+        self.assertHoliday(
+            "2001-12-24",
+            "2002-12-30",
+            "2003-11-17",
+            "2004-01-02",
+            "2004-05-03",
+            "2004-06-25",
+            "2004-11-19",
+            "2006-11-27",
+            "2007-04-30",
+            "2008-05-02",
+            "2008-11-17",
+            "2009-01-02",
+            "2009-06-22",
+            "2010-05-03",
+            "2010-06-25",
+            "2010-11-19",
+            "2012-04-30",
+            "2013-12-23",
+            "2013-12-30",
+            "2014-05-02",
+            "2014-11-17",
+            "2015-01-02",
+            "2015-06-22",
+            "2017-05-05",
+            "2018-04-30",
+            "2020-06-22",
+            "2021-05-03",
+            "2021-06-25",
+            "2021-11-19",
+            "2023-05-05",
+            "2024-12-23",
+            "2024-12-30",
+            "2025-05-02",
+            "2025-11-17",
+            "2026-01-02",
+            "2026-06-22",
+        )
+
+    def test_workdays(self):
+        self.assertWorkingDay(
+            "2001-12-22",
+            "2002-12-28",
+            "2003-11-15",
+            "2004-01-10",
+            "2004-05-08",
+            "2004-06-19",
+            "2004-11-13",
+            "2006-12-02",
+            "2007-04-14",
+            "2008-05-10",
+            "2008-11-22",
+            "2009-01-10",
+            "2009-06-27",
+            "2010-05-29",
+            "2010-06-19",
+            "2010-11-13",
+            "2012-04-28",
+            "2013-12-14",
+            "2013-12-28",
+            "2014-05-10",
+            "2014-11-22",
+            "2015-01-10",
+            "2015-06-27",
+            "2017-05-13",
+            "2018-04-21",
+            "2020-06-13",
+            "2021-05-08",
+            "2021-06-19",
+            "2021-11-13",
+            "2023-05-20",
+            "2024-12-14",
+            "2024-12-28",
+            "2025-05-10",
+            "2025-11-08",
+            "2026-01-17",
+            "2026-06-27",
+        )
+
     def test_new_years(self):
-        self.assertHolidayName("Jaunais Gads", (f"{year}-01-01" for year in self.full_range))
+        self.assertHolidayName("Jaungada diena", (f"{year}-01-01" for year in self.full_range))
 
     def test_good_friday(self):
         name = "Lielā Piektdiena"
@@ -46,7 +126,7 @@ class TestLatvia(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_easter_sunday(self):
-        name = "Lieldienas"
+        name = "Pirmās Lieldienas"
         self.assertHolidayName(
             name,
             "2020-04-12",
@@ -69,24 +149,42 @@ class TestLatvia(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(name, range(1997, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1997))
 
     def test_labor_day(self):
         self.assertHolidayName("Darba svētki", (f"{year}-05-01" for year in self.full_range))
 
-    def test_restoration_of_independence_day(self):
-        name = "Latvijas Republikas Neatkarības atjaunošanas diena"
-        self.assertHolidayName(name, (f"{year}-05-04" for year in range(2002, self.end_year)))
-        self.assertNoHolidayName(name, range(self.start_year, 2002))
+    def test_constitutional_assembly_convocation_day(self):
+        self.assertHolidayName(
+            "Latvijas Republikas Satversmes sapulces sasaukšanas diena",
+            (f"{year}-05-01" for year in self.full_range),
+        )
 
-        obs_dts = (
-            "2008-05-05",
+    def test_restoration_of_independence_day(self):
+        name_2002 = "Latvijas Republikas Neatkarības deklarācijas pasludināšanas diena"
+        name_2012 = "Latvijas Republikas Neatkarības atjaunošanas diena"
+        name_2002_observed = f"{name_2002} (brīvdiena)"
+        name_2012_observed = f"{name_2012} (brīvdiena)"
+        self.assertHolidayName(name_2002, (f"{year}-05-04" for year in range(2002, 2012)))
+        self.assertHolidayName(name_2012, (f"{year}-05-04" for year in range(2012, self.end_year)))
+        self.assertNoHolidayName(
+            name_2002, range(self.start_year, 2002), range(2012, self.end_year)
+        )
+        self.assertNoHolidayName(name_2012, range(self.start_year, 2012))
+
+        obs_dts_1 = ("2008-05-05",)
+        obs_dts_2 = (
             "2013-05-06",
             "2014-05-05",
             "2019-05-06",
         )
-        self.assertHolidayName(f"{name} (brīvdiena)", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
+
+        self.assertHolidayName(name_2002_observed, obs_dts_1)
+        self.assertHolidayName(name_2012_observed, obs_dts_2)
+        self.assertNoNonObservedHoliday(obs_dts_1, obs_dts_2)
+        self.assertNoHolidayName(name_2002_observed, range(self.start_year, 2008))
+        self.assertNoHolidayName(name_2012_observed, range(self.start_year, 2008))
 
     def test_mothers_day(self):
         name = "Mātes diena"
@@ -101,6 +199,20 @@ class TestLatvia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
 
+    def test_whit_sunday(self):
+        name = "Vasarsvētki"
+        self.assertHolidayName(
+            name,
+            "2020-05-31",
+            "2021-05-23",
+            "2022-06-05",
+            "2023-05-28",
+            "2024-05-19",
+            "2025-06-08",
+        )
+        self.assertHolidayName(name, range(1996, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 1996))
+
     def test_midsummer_eve(self):
         self.assertHolidayName("Līgo diena", (f"{year}-06-23" for year in self.full_range))
 
@@ -108,7 +220,8 @@ class TestLatvia(CommonCountryTests, TestCase):
         self.assertHolidayName("Jāņu diena", (f"{year}-06-24" for year in self.full_range))
 
     def test_republic_of_latvia_proclamation_day(self):
-        name = "Latvijas Republikas proklamēšanas diena"
+        name = "Latvijas Republikas Proklamēšanas diena"
+        name_observed = f"{name} (brīvdiena)"
         self.assertHolidayName(name, (f"{year}-11-18" for year in self.full_range))
 
         obs_dts = (
@@ -118,8 +231,9 @@ class TestLatvia(CommonCountryTests, TestCase):
             "2018-11-19",
             "2023-11-20",
         )
-        self.assertHolidayName(f"{name} (brīvdiena)", obs_dts)
+        self.assertHolidayName(name_observed, obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
+        self.assertNoHolidayName(name_observed, range(self.start_year, 2007))
 
     def test_christmas_eve(self):
         name = "Ziemassvētku vakars"
@@ -127,30 +241,36 @@ class TestLatvia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(self.start_year, 2007))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Ziemassvētki", (f"{year}-12-25" for year in self.full_range))
+        self.assertHolidayName(
+            "Pirmie Ziemassvētki", (f"{year}-12-25" for year in self.full_range)
+        )
 
     def test_second_day_of_christmas(self):
         self.assertHolidayName("Otrie Ziemassvētki", (f"{year}-12-26" for year in self.full_range))
 
     def test_new_years_eve(self):
-        self.assertHolidayName("Vecgada vakars", (f"{year}-12-31" for year in self.full_range))
+        self.assertHolidayName("Vecgada diena", (f"{year}-12-31" for year in self.full_range))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2022-01-01", "Jaunais Gads"),
+            ("2022-01-01", "Jaungada diena"),
             ("2022-04-15", "Lielā Piektdiena"),
-            ("2022-04-17", "Lieldienas"),
+            ("2022-04-17", "Pirmās Lieldienas"),
             ("2022-04-18", "Otrās Lieldienas"),
-            ("2022-05-01", "Darba svētki"),
+            (
+                "2022-05-01",
+                "Darba svētki; Latvijas Republikas Satversmes sapulces sasaukšanas diena",
+            ),
             ("2022-05-04", "Latvijas Republikas Neatkarības atjaunošanas diena"),
             ("2022-05-08", "Mātes diena"),
+            ("2022-06-05", "Vasarsvētki"),
             ("2022-06-23", "Līgo diena"),
             ("2022-06-24", "Jāņu diena"),
-            ("2022-11-18", "Latvijas Republikas proklamēšanas diena"),
+            ("2022-11-18", "Latvijas Republikas Proklamēšanas diena"),
             ("2022-12-24", "Ziemassvētku vakars"),
-            ("2022-12-25", "Ziemassvētki"),
+            ("2022-12-25", "Pirmie Ziemassvētki"),
             ("2022-12-26", "Otrie Ziemassvētki"),
-            ("2022-12-31", "Vecgada vakars"),
+            ("2022-12-31", "Vecgada diena"),
         )
 
     def test_l10n_en_us(self):
@@ -160,9 +280,10 @@ class TestLatvia(CommonCountryTests, TestCase):
             ("2022-04-15", "Good Friday"),
             ("2022-04-17", "Easter Sunday"),
             ("2022-04-18", "Easter Monday"),
-            ("2022-05-01", "Labor Day"),
+            ("2022-05-01", "Constitutional Assembly Convocation Day; Labor Day"),
             ("2022-05-04", "Restoration of Independence Day"),
             ("2022-05-08", "Mother's Day"),
+            ("2022-06-05", "Whit Sunday"),
             ("2022-06-23", "Midsummer Eve"),
             ("2022-06-24", "Midsummer Day"),
             ("2022-11-18", "Republic of Latvia Proclamation Day"),
@@ -179,9 +300,13 @@ class TestLatvia(CommonCountryTests, TestCase):
             ("2022-04-15", "Страсна пʼятниця"),
             ("2022-04-17", "Великдень"),
             ("2022-04-18", "Великодній понеділок"),
-            ("2022-05-01", "День праці"),
+            (
+                "2022-05-01",
+                "День праці; День скликання Конституційних зборів Латвійської Республіки",
+            ),
             ("2022-05-04", "День відновлення незалежности Латвійської Республіки"),
             ("2022-05-08", "День матері"),
+            ("2022-06-05", "Трійця"),
             ("2022-06-23", "Ліго"),
             ("2022-06-24", "Янів день"),
             ("2022-11-18", "День проголошення Латвійської Республіки"),

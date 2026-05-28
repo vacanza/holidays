@@ -12,16 +12,38 @@
 
 from gettext import gettext as tr
 
-from holidays.constants import BANK, PUBLIC
+from holidays.constants import BANK, PROTESTANT, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
 class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """Austria holidays."""
+    """Austria holidays.
+
+    !!! note "Note"
+        Although sources for RGBl. Nr. 21, RGBl. Nr. 125, StGBl. Nr. 282, BGBl. Nr. 421,
+        BGBl. Nr. 548, and RGBl. I S. 790 are readily available, they either do not specify
+        any public holiday observances or are limited to very specific professions.
+
+    References:
+        * <https://de.wikipedia.org/wiki/Feiertage_in_Österreich>
+        * [BGBl. Nr. 31/1933](http://archive.today/2026.04.08-130337/https://alex.onb.ac.at/cgi-content/alex?apm=0&aid=bgb&datum=19330004&seite=00000103&size=45)
+        * [StGBl. Nr. 116/1945](https://web.archive.org/web/20260408120714/https://www.ris.bka.gv.at/Dokumente/BgblPdf/1945_116_0/1945_116_0.pdf)
+        * [BGBl. Nr. 173/1949](https://web.archive.org/web/20260408143732/https://ris.bka.gv.at/Dokumente/BgblPdf/1949_173_0/1949_173_0.pdf)
+        * [BGBl. Nr. 227/1955 and BGBl. Nr. 228/1955](https://web.archive.org/web/20260408143052/https://ris.bka.gv.at/Dokumente/BgblPdf/1955_227_0/1955_227_0.pdf)
+        * [BGBl. Nr. 153/1957](https://web.archive.org/web/20250521041322/https://www.ris.bka.gv.at/Dokumente/BgblPdf/1957_153_0/1957_153_0.pdf)
+        * [BGBl. Nr. 264/1967](https://web.archive.org/web/20241220074402/https://ris.bka.gv.at/Dokumente/BgblPdf/1967_264_0/1967_264_0.pdf)
+        * [BGBl. Nr. 144/1983](https://web.archive.org/web/20260408111100/https://www.ris.bka.gv.at/Dokumente/BgblPdf/1983_144_0/1983_144_0.pdf)
+        * [BGBl. I Nr. 191/1999](https://web.archive.org/web/20260330075009/https://www.ris.bka.gv.at/Dokumente/BgblPdf/1999_191_1/1999_191_1.pdf)
+        * [BGBl. I Nr. 113/2006](https://web.archive.org/web/20260408114618/https://www.ris.bka.gv.at/Dokumente/BgblAuth/BGBLA_2006_I_113/BGBLA_2006_I_113.pdf)
+        * [BGBl. I Nr. 22/2019](https://web.archive.org/web/20260408111719/https://www.ris.bka.gv.at/Dokumente/BgblAuth/BGBLA_2019_I_22/BGBLA_2019_I_22.pdf)
+        * <https://web.archive.org/web/20260408155524/https://www.nachrichten.at/archivierte-artikel/serien/wir-oberoesterreicher/Vom-Maertyrer-zum-Patron;art11547,68941>
+    """
 
     country = "AT"
     default_language = "de"
+    # BGBl. Nr. 31/1933 became in effect on June 1st, 1933.
+    start_year = 1934
     subdivisions = (
         "1",  # Burgenland.
         "2",  # Kärnten.
@@ -60,8 +82,8 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Wien": "9",
         "W": "9",
     }
-    supported_categories = (BANK, PUBLIC)
-    supported_languages = ("de", "en_US", "uk")
+    supported_categories = (BANK, PROTESTANT, PUBLIC)
+    supported_languages = ("de", "en_US", "th", "uk")
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
@@ -72,14 +94,19 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("Neujahr"))
 
-        # Epiphany.
-        self._add_epiphany_day(tr("Heilige Drei Könige"))
+        # Removed via StGBl. Nr. 116/1945.
+        # Re-added via BGBl. Nr. 173/1949.
+        if self._year <= 1945 or self._year >= 1950:
+            # Epiphany.
+            self._add_epiphany_day(tr("Heilige Drei Könige"))
 
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Labor Day.
-        self._add_labor_day(tr("Staatsfeiertag"))
+        # Added via via StGBl. Nr. 116/1945.
+        if self._year >= 1946:
+            # Labor Day.
+            self._add_labor_day(tr("Staatsfeiertag"))
 
         # Ascension Day.
         self._add_ascension_thursday(tr("Christi Himmelfahrt"))
@@ -87,30 +114,37 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Whit Monday.
         self._add_whit_monday(tr("Pfingstmontag"))
 
+        # Added via BGBl. Nr. 31/1933.
+        # Removed via StGBl. Nr. 116/1945.
+        if self._year <= 1945:
+            # Saint Peter and Saint Paul's Day.
+            self._add_saints_peter_and_paul_day(tr("Peter und Paul"))
+
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
-        # National Day.
-        national_day = tr("Nationalfeiertag")
-        if 1919 <= self._year <= 1934:
-            self._add_holiday_nov_12(national_day)
+        # Added via BGBl. Nr. 264/1967.
         if self._year >= 1967:
-            self._add_holiday_oct_26(national_day)
+            # National Day.
+            self._add_holiday_oct_26(tr("Nationalfeiertag"))
 
         # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
-        # Immaculate Conception.
-        self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
+        # Removed via StGBl. Nr. 116/1945.
+        # Re-added via BGBl. Nr. 227/1955.
+        if self._year <= 1944 or self._year >= 1955:
+            # Immaculate Conception.
+            self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Christtag"))
 
         # Saint Stephen's Day.
-        self._add_christmas_day_two(tr("Stefanitag"))
+        self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_bank_holidays(self):
         # Good Friday.
@@ -121,6 +155,13 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # New Year's Eve.
         self._add_new_years_eve(tr("Silvester"))
+
+    def _populate_protestant_holidays(self):
+        # Added via BGBl. Nr. 228/1955.
+        # Removed via BGBl. I Nr. 22/2019.
+        if 1956 <= self._year <= 2018:
+            # Good Friday.
+            self._add_good_friday(tr("Karfreitag"))
 
     def _populate_subdiv_1_bank_holidays(self):
         # Saint Martin's Day.
@@ -138,6 +179,8 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_nov_15(tr("Hl. Leopold"))
 
     def _populate_subdiv_4_bank_holidays(self):
+        # Appointed as Saint of Upper Austrian via Provincial Government decision
+        # on March 17th, 2004.
         if self._year >= 2004:
             # Saint Florian's Day.
             self._add_holiday_may_4(tr("Hl. Florian"))

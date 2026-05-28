@@ -682,6 +682,13 @@ class MalaysiaHinduHolidays(_CustomHinduHolidays):
     }
 
     THAIPUSAM_DATES = {
+        2011: (JAN, 20),
+        2012: (FEB, 7),
+        2013: (JAN, 27),
+        2014: (JAN, 17),
+        2015: (FEB, 3),
+        2016: (JAN, 24),
+        2017: (FEB, 9),
         2018: (JAN, 31),
         2019: (JAN, 21),
         2020: (FEB, 8),

@@ -48,12 +48,12 @@ UNOFFICIAL = "unofficial"
 WORKDAY = "workday"
 
 CATHOLIC = "catholic"
-CHINESE = "chinese"
 CHRISTIAN = "christian"
 HEBREW = "hebrew"
 HINDU = "hindu"
 ISLAMIC = "islamic"
 ORTHODOX = "orthodox"
+PROTESTANT = "protestant"
 SABIAN = "sabian"
 YAZIDI = "yazidi"
 

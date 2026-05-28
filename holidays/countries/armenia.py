@@ -72,16 +72,24 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     )
     subdivisions_aliases = {
         "Aragac̣otn": "AG",
+        "Aragatsotn": "AG",
         "Ararat": "AR",
         "Armavir": "AV",
         "Erevan": "ER",
         "Geġark'unik'": "GR",
+        "Gegharkunik": "GR",
         "Kotayk'": "KT",
+        "Kotayk": "KT",
         "Loṙi": "LO",
+        "Lori": "LO",
         "Širak": "SH",
+        "Shirak": "SH",
         "Syunik'": "SU",
+        "Syunik": "SU",
         "Tavuš": "TV",
+        "Tavush": "TV",
         "Vayoć Jor": "VD",
+        "Vayots Dzor": "VD",
     }
 
     def __init__(self, *args, **kwargs):
@@ -345,71 +353,71 @@ class ArmeniaStaticHolidays:
     """Armenia special holidays.
 
     Substituted holidays references:
-        * [1998](https://www.arlis.am/hy/acts/6981)
-        * [2000](https://www.arlis.am/hy/acts/7838)
-        * [2003](https://www.arlis.am/hy/acts/10474)
+        * [1998](https://web.archive.org/web/20260228163214/https://www.arlis.am/hy/acts/6981)
+        * [2000](https://web.archive.org/web/20260228163311/https://www.arlis.am/hy/acts/7838)
+        * [2003](https://web.archive.org/web/20260227001546/https://www.arlis.am/hy/acts/10474)
         * 2005:
-            * [1](https://www.arlis.am/hy/acts/13224)
-            * [2](https://www.arlis.am/hy/acts/13452)
-            * [3](https://www.arlis.am/hy/acts/13932)
+            * [1](https://web.archive.org/web/20260228190830/https://www.arlis.am/hy/acts/13224)
+            * [2](https://web.archive.org/web/20260228161934/https://www.arlis.am/hy/acts/13452)
+            * [3](https://web.archive.org/web/20260228162103/https://www.arlis.am/hy/acts/13932)
         * 2006:
-            * [1](https://www.arlis.am/hy/acts/21549)
-            * [2](https://www.arlis.am/hy/acts/23593)
+            * [1](https://web.archive.org/web/20260228162230/https://www.arlis.am/hy/acts/21549)
+            * [2](https://web.archive.org/web/20260228162135/https://www.arlis.am/hy/acts/23593)
         * 2007:
-            * [1](https://www.arlis.am/hy/acts/29581)
-            * [2](https://www.arlis.am/hy/acts/34755)
+            * [1](https://web.archive.org/web/20260228162206/https://www.arlis.am/hy/acts/29581)
+            * [2](https://web.archive.org/web/20260228162223/https://www.arlis.am/hy/acts/34755)
         * 2008:
-            * [1](https://www.arlis.am/hy/acts/40452)
-            * [2](https://www.arlis.am/hy/acts/42730)
-            * [3](https://www.arlis.am/hy/acts/44770)
-            * [4](https://www.arlis.am/hy/acts/45880)
-            * [5](https://www.arlis.am/hy/acts/46224)
+            * [1](https://web.archive.org/web/20260228162236/https://www.arlis.am/hy/acts/40452)
+            * [2](https://web.archive.org/web/20260228162321/https://www.arlis.am/hy/acts/42730)
+            * [3](https://web.archive.org/web/20260228162327/https://www.arlis.am/hy/acts/44770)
+            * [4](https://web.archive.org/web/20260228162353/https://www.arlis.am/hy/acts/45880)
+            * [5](https://web.archive.org/web/20260228162415/https://www.arlis.am/hy/acts/46224)
         * 2009:
-            * [1](https://www.arlis.am/hy/acts/48427)
-            * [2](https://www.arlis.am/hy/acts/48654)
-            * [3](https://www.arlis.am/hy/acts/50635)
+            * [1](https://web.archive.org/web/20260228190831/https://www.arlis.am/hy/acts/48427)
+            * [2](https://web.archive.org/web/20260320221446/https://www.arlis.am/hy/acts/48654)
+            * [3](https://web.archive.org/web/20260228190925/https://www.arlis.am/hy/acts/50635)
         * 2010:
-            * [1](https://www.arlis.am/hy/acts/55456)
-            * [2](https://www.arlis.am/hy/acts/55457)
-            * [3](https://www.arlis.am/hy/acts/60567)
+            * [1](https://web.archive.org/web/20260228162913/https://www.arlis.am/hy/acts/55456)
+            * [2](https://web.archive.org/web/20260228162942/https://www.arlis.am/hy/acts/55457)
+            * [3](https://web.archive.org/web/20260228163040/https://www.arlis.am/hy/acts/60567)
         * 2011:
-            * [1](https://www.arlis.am/hy/acts/60996)
-            * [2](https://www.arlis.am/hy/acts/65969)
-            * [3](https://www.arlis.am/hy/acts/69096)
+            * [1](https://web.archive.org/web/20260228163102/https://www.arlis.am/hy/acts/60996)
+            * [2](https://web.archive.org/web/20260228163117/https://www.arlis.am/hy/acts/65969)
+            * [3](https://web.archive.org/web/20260228163145/https://www.arlis.am/hy/acts/69096)
         * 2012:
-            * [1](https://www.arlis.am/hy/acts/60996)
-            * [2](https://www.arlis.am/hy/acts/74278)
-            * [3](https://www.arlis.am/hy/acts/75441)
-            * [4](https://www.arlis.am/hy/acts/76805)
+            * [1](https://web.archive.org/web/20260228163102/https://www.arlis.am/hy/acts/60996)
+            * [2](https://web.archive.org/web/20260228163243/https://www.arlis.am/hy/acts/74278)
+            * [3](https://web.archive.org/web/20260228163249/https://www.arlis.am/hy/acts/75441)
+            * [4](https://web.archive.org/web/20260228190932/https://www.arlis.am/hy/acts/76805)
         * 2013:
-            * [1](https://www.arlis.am/hy/acts/80097)
-            * [2](https://www.arlis.am/hy/acts/82971)
-            * [3](https://www.arlis.am/hy/acts/83282)
-        * [2013-2014](https://www.arlis.am/hy/acts/86936)
+            * [1](https://web.archive.org/web/20260228163323/https://www.arlis.am/hy/acts/80097)
+            * [2](https://web.archive.org/web/20260228163334/https://www.arlis.am/hy/acts/82971)
+            * [3](https://web.archive.org/web/20260320221500/https://www.arlis.am/hy/acts/83282)
+        * [2013-2014](https://web.archive.org/web/20260228163443/https://www.arlis.am/hy/acts/86936)
         * 2015:
-            * [1](https://www.arlis.am/hy/acts/94257)
-            * [2](https://www.arlis.am/hy/acts/96650)
-            * [3](https://www.arlis.am/hy/acts/96794)
-            * [4](https://www.arlis.am/hy/acts/98926)
-            * [5](https://www.arlis.am/hy/acts/99539)
+            * [1](https://web.archive.org/web/20260228163509/https://www.arlis.am/hy/acts/94257)
+            * [2](https://web.archive.org/web/20260228163521/https://www.arlis.am/hy/acts/96650)
+            * [3](https://web.archive.org/web/20260228163545/https://www.arlis.am/hy/acts/96794)
+            * [4](https://web.archive.org/web/20260228163712/https://www.arlis.am/hy/acts/98926)
+            * [5](https://web.archive.org/web/20260228163626/https://www.arlis.am/hy/acts/99539)
         * 2016:
-            * [1](https://www.arlis.am/hy/acts/103890)
-            * [2](https://www.arlis.am/hy/acts/104324)
-            * [3](https://www.arlis.am/hy/acts/108088)
+            * [1](https://web.archive.org/web/20260227001423/https://www.arlis.am/hy/acts/103890)
+            * [2](https://web.archive.org/web/20260227001500/https://www.arlis.am/hy/acts/104324)
+            * [3](https://web.archive.org/web/20260227001718/https://www.arlis.am/hy/acts/108088)
         * 2017:
-            * [1](https://www.arlis.am/hy/acts/112733)
-            * [2](https://www.arlis.am/hy/acts/112882)
-            * [3](https://www.arlis.am/hy/acts/115584)
+            * [1](https://web.archive.org/web/20260227001755/https://www.arlis.am/hy/acts/112733)
+            * [2](https://web.archive.org/web/20260227001836/https://www.arlis.am/hy/acts/112882)
+            * [3](https://web.archive.org/web/20260227001859/https://www.arlis.am/hy/acts/115584)
         * 2018:
-            * [1](https://www.arlis.am/hy/acts/119427)
-            * [2](https://www.arlis.am/hy/acts/120476)
-            * [3](https://www.arlis.am/hy/acts/121651)
-            * [4](https://www.arlis.am/hy/acts/125762)
-            * [5](https://www.arlis.am/hy/acts/126944)
+            * [1](https://web.archive.org/web/20260227001920/https://www.arlis.am/hy/acts/119427)
+            * [2](https://web.archive.org/web/20260227001940/https://www.arlis.am/hy/acts/120476)
+            * [3](https://web.archive.org/web/20260227002118/https://www.arlis.am/hy/acts/121651)
+            * [4](https://web.archive.org/web/20260227002244/https://www.arlis.am/hy/acts/125762)
+            * [5](https://web.archive.org/web/20260228161847/https://www.arlis.am/hy/acts/126944)
         * 2020:
-            * [1](https://www.arlis.am/hy/acts/138403)
-            * [2](https://www.arlis.am/hy/acts/139280)
-        * [2021](https://www.arlis.am/hy/acts/155821)
+            * [1](https://web.archive.org/web/20260228162022/https://www.arlis.am/hy/acts/138403)
+            * [2](https://web.archive.org/web/20260228162041/https://www.arlis.am/hy/acts/139280)
+        * [2021](https://web.archive.org/web/20260228162119/https://www.arlis.am/hy/acts/155821)
     """
 
     # Substituted date format.

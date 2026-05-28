@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.97\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2025-03-01 15:11+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-04-27 12:19+0530\n"
+"Last-Translator: Vanshika Pundir <pundirvanshika9@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
 "MIME-Version: 1.0\n"
@@ -121,6 +121,10 @@ msgstr ""
 msgid "Maha Navami"
 msgstr ""
 
+#. Maharishi Valmiki Jayanti.
+msgid "Maharishi Valmiki Jayanti"
+msgstr ""
+
 #. Makar Sankranti.
 msgid "Makar Sankranti"
 msgstr ""
@@ -147,6 +151,10 @@ msgstr ""
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
+msgstr ""
+
+#. Onam.
+msgid "Onam"
 msgstr ""
 
 #. Andhra Pradesh Foundation Day.
@@ -193,6 +201,10 @@ msgstr ""
 msgid "Sardar Vallabhbhai Patel Jayanti"
 msgstr ""
 
+#. Parsi New Year (Shahenshahi).
+msgid "Parsi New Year (Shahenshahi)"
+msgstr ""
+
 #. Haryana Foundation Day.
 msgid "Haryana Foundation Day"
 msgstr ""
@@ -207,10 +219,6 @@ msgstr ""
 
 #. Karnataka Rajyotsav.
 msgid "Karnataka Rajyotsava"
-msgstr ""
-
-#. Onam.
-msgid "Onam"
 msgstr ""
 
 #. Kerala Foundation Day.
@@ -269,8 +277,8 @@ msgstr ""
 msgid "Lohri"
 msgstr ""
 
-#. Punjabi Day.
-msgid "Punjab Day"
+#. New Punjab Day.
+msgid "New Punjab Day"
 msgstr ""
 
 #. Rajasthan Day.
@@ -307,6 +315,10 @@ msgstr ""
 
 #. Bathukamma Festival.
 msgid "Bathukamma Festival"
+msgstr ""
+
+#. Bonalu.
+msgid "Bonalu"
 msgstr ""
 
 #. UP Formation Day.

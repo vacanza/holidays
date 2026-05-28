@@ -40,12 +40,12 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
     country = "SA"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     # %s (observed).
-    observed_label = tr("%s (ملاحظة)")
+    observed_label = tr("%s (يوم تعويضي)")
     # %s (observed, estimated).
-    observed_estimated_label = tr("%s (المقدرة، ملاحظة)")
-    supported_languages = ("ar", "en_US")
+    observed_estimated_label = tr("%s (يوم تعويضي تقديري)")
+    supported_languages = ("ar", "bn", "en_US")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = False, **kwargs):

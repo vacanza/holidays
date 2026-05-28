@@ -116,4 +116,52 @@ document.addEventListener("DOMContentLoaded", () => {
             header.style.width = "fit-content";
         }
     });
+
+    // Global Tab Sync
+    const tabMap = new Map();
+
+    document.querySelectorAll(".tabbed-set").forEach(set => {
+        const inputs = set.querySelectorAll("input");
+
+        inputs.forEach(input => {
+            if (input.dataset.tabSyncAttached) return;
+            input.dataset.tabSyncAttached = "true";
+
+            const label = set.querySelector(`label[for="${input.id}"]`);
+            if (!label) return;
+
+            const tabName = label.textContent.trim().toLowerCase();
+
+            if (!tabMap.has(tabName)) {
+                tabMap.set(tabName, []);
+            }
+
+            tabMap.get(tabName).push(input);
+
+            // Attach listener once
+            input.addEventListener("change", () => {
+                if (!input.checked) return;
+
+                localStorage.setItem("activeTab", tabName);
+
+                const group = tabMap.get(tabName);
+                if (!group) return;
+
+                group.forEach(target => {
+                    if (target !== input && !target.checked) {
+                        target.checked = true;
+                    }
+                });
+            });
+        });
+    });
+
+    // Persistence Tab Selection
+    const saved = localStorage.getItem("activeTab");
+
+    if (saved && tabMap.has(saved)) {
+        tabMap.get(saved).forEach(input => {
+            input.checked = true;
+        });
+    }
 });

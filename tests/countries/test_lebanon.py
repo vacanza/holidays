@@ -146,7 +146,7 @@ class TestLebanon(CommonCountryTests, TestCase):
             "2016-05-02",
             "2022-05-02",
         )
-        self.assertHolidayName(f"{name} (يُحتفل به)", obs_dts)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
 
     def test_martyrs_day(self):
         name = "عيد الشهداء"
@@ -348,10 +348,10 @@ class TestLebanon(CommonCountryTests, TestCase):
             ("2025-06-06", "عيد الأضحى"),
             ("2025-06-07", "عيد الأضحى"),
             ("2025-06-26", "عيد رأس السنة الهجرية"),
-            ("2025-07-05", "عاشوراء (المقدرة)"),
+            ("2025-07-05", "عاشوراء (تقديري)"),
             ("2025-08-04", "ذكرى مأساة انفجار مرفأ بيروت"),
             ("2025-08-15", "عيد انتقال العذراء"),
-            ("2025-09-04", "ذكرى المولد النبوي الشريف (المقدرة)"),
+            ("2025-09-04", "ذكرى المولد النبوي الشريف (تقديري)"),
             ("2025-11-22", "ذكرى الاستقلال"),
             ("2025-12-25", "عيد الميلاد"),
         )
@@ -381,4 +381,31 @@ class TestLebanon(CommonCountryTests, TestCase):
             ("2025-09-04", "Prophet's Birthday (estimated)"),
             ("2025-11-22", "Independence Day"),
             ("2025-12-25", "Christmas Day"),
+        )
+
+    def test_l10n_fr(self):
+        self.assertLocalizedHolidays(
+            "fr",
+            ("2025-01-01", "Nouvel An"),
+            ("2025-01-06", "Noël Arménien"),
+            ("2025-02-09", "Saint Maron"),
+            ("2025-02-14", "Commémoration de l'assassinat du PM Rafic Hariri"),
+            ("2025-03-25", "Annonciation"),
+            ("2025-03-30", "Eid El Fitr"),
+            ("2025-03-31", "Eid El Fitr"),
+            ("2025-04-18", "Vendredi Saint Catholique; Vendredi Saint Orthodoxe"),
+            ("2025-04-19", "Samedi Saint Orthodoxe"),
+            ("2025-04-21", "Lundi de Pâques Catholique; Lundi de Pâques Orthodoxe"),
+            ("2025-05-01", "Fête du Travail"),
+            ("2025-05-04", "Journée des Martyrs"),
+            ("2025-05-11", "Résistance et Libération"),
+            ("2025-06-06", "Adha"),
+            ("2025-06-07", "Adha"),
+            ("2025-06-26", "Hégire"),
+            ("2025-07-05", "Achoura (estimé)"),
+            ("2025-08-04", "Explosion du port de Beyrouth"),
+            ("2025-08-15", "Assomption"),
+            ("2025-09-04", "Naissance du Prophète (estimé)"),
+            ("2025-11-22", "Fête Nationale"),
+            ("2025-12-25", "Noël"),
         )

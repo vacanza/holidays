@@ -31,7 +31,7 @@ class WesternSahara(HolidayBase, IslamicHolidays):
     country = "EH"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("%s (المقدرة)")
+    estimated_label = tr("%s (تقديري)")
     # 1999 Constitution was adopted by the 10th Congress on September 4th, 1999.
     start_year = 2000
     supported_languages = ("ar", "en_US", "es", "fr")
