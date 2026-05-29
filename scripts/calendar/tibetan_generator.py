@@ -15,6 +15,10 @@
 
 """Generate Gregorian dates for holidays based on the Tibetan lunisolar calendar.
 
+References:
+    * [S. Janson, "Tibetan Calendar Mathematics"](http://arxiv.org/pdf/1401.6285v1.pdf)
+    * [E. Henning, "The Bhutanese calendar"](https://web.archive.org/web/20250719103600/http://www.kalacakra.org/calendar/bhutlist.htm)
+
 Run with:
 
     python -m scripts.calendar.tibetan_generator
