@@ -446,6 +446,20 @@ class TestIndia(CommonCountryTests, TestCase):
             name, dts, category_optional=True, hindu_range=range(2012, self.hindu_end_year + 1)
         )
 
+    def test_lohri(self):
+        name = "Lohri"
+        dts = (
+            "2020-01-14",
+            "2021-01-13",
+            "2022-01-13",
+            "2024-01-13",
+        )
+        self._assertHinduHolidayHelper(
+            name, dts, category_optional=True, hindu_range=(2020, 2021, 2022, 2024)
+        )
+        # SUBDIVS.
+        self._assertHinduHolidayHelper(name, dts, subdivs={"PB"})
+
     def test_mahavir_jayanti(self):
         name = "Mahavir Jayanti"
         dts = (
@@ -1098,17 +1112,6 @@ class TestIndia(CommonCountryTests, TestCase):
             if subdiv == "PY":
                 self.assertHolidayName(
                     name, holidays, (f"{year}-11-01" for year in self.full_range)
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
-
-    def test_lohri(self):
-        name = "Lohri"
-        self.assertNoHolidayName(name)
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "PB":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-01-13" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)

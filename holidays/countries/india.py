@@ -296,6 +296,9 @@ class India(
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
 
+        # Labor Day.
+        self._add_labor_day(tr("Labour Day"))
+
         # Children's Day.
         self._add_holiday_nov_14(tr("Children's Day"))
 
@@ -355,8 +358,9 @@ class India(
             # Karaka Chaturthi (Karwa Chouth).
             self._add_karwa_chauth(tr("Karaka Chaturthi (Karwa Chouth)"))
 
-        # Labor Day.
-        self._add_labor_day(tr("Labour Day"))
+        if 2020 <= self._year <= 2022 or self._year == 2024:
+            # Lohri.
+            self._add_lohri(tr("Lohri"))
 
         if self._year in self.maha_shivaratri_optional_years:
             # Maha Shivaratri.
@@ -565,7 +569,7 @@ class India(
         # Vaisakhi.
         self._add_vaisakhi(tr("Vaisakhi"))
         # Lohri.
-        self._add_holiday_jan_13(tr("Lohri"))
+        self._add_lohri(tr("Lohri"))
         # New Punjab Day.
         self._add_holiday_nov_1(tr("New Punjab Day"))
 

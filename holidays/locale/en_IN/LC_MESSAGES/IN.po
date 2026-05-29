@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.98\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-05-29 02:00+0530\n"
+"PO-Revision-Date: 2026-05-30 00:26+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
@@ -113,6 +113,10 @@ msgstr ""
 msgid "New Year's Day"
 msgstr ""
 
+#. Labor Day.
+msgid "Labour Day"
+msgstr ""
+
 #. Children's Day.
 msgid "Children's Day"
 msgstr ""
@@ -173,8 +177,8 @@ msgstr ""
 msgid "Karaka Chaturthi (Karwa Chouth)"
 msgstr ""
 
-#. Labor Day.
-msgid "Labour Day"
+#. Lohri.
+msgid "Lohri"
 msgstr ""
 
 #. Maharishi Valmiki Jayanti.
@@ -342,10 +346,6 @@ msgstr ""
 
 #. Guru Gobind Singh Jayanti.
 msgid "Guru Gobind Singh Jayanti"
-msgstr ""
-
-#. Lohri.
-msgid "Lohri"
 msgstr ""
 
 #. New Punjab Day.

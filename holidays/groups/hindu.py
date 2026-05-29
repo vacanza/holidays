@@ -341,6 +341,20 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.karwa_chauth_date(self._year)
         )
 
+    def _add_lohri(self, name) -> date | None:
+        """
+        Add Lohri.
+
+        Lohri is a popular harvest festival celebrated primarily in
+        northern India, especially Punjab. It is observed on the eve
+        of Makar Sankranti, marking the end of the winter solstice period.
+
+        https://en.wikipedia.org/wiki/Lohri
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.makar_sankranti_date(self._year), days_delta=-1
+        )
+
     def _add_maha_saptami(self, name) -> date | None:
         """
         Add Maha Saptami.
