@@ -143,6 +143,20 @@ class TestIndia(CommonCountryTests, TestCase):
     def test_christmas(self):
         self.assertHolidayName("Christmas", (f"{year}-12-25" for year in self.full_range))
 
+    def test_ali_birthday(self):
+        name = "Hazarat Ali's Birthday"
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(
+            name,
+            "2020-03-09",
+            "2021-02-26",
+            "2022-02-15",
+            "2023-02-05",
+            "2024-01-25",
+            "2025-01-14",
+        )
+        self.assertOptionalIslamicNoEstimatedHolidayName(name, self.full_range)
+
     def test_ashura(self):
         name = "Muharram"
         self.assertHolidayName(
@@ -153,19 +167,6 @@ class TestIndia(CommonCountryTests, TestCase):
             "2023-07-29",
             "2024-07-17",
             "2025-07-06",
-        )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
-
-    def test_prophets_birthday(self):
-        name = "Milad-un-Nabi"
-        self.assertHolidayName(
-            name,
-            "2020-10-30",
-            "2021-10-19",
-            "2022-10-09",
-            "2023-09-28",
-            "2024-09-16",
-            "2025-09-05",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -192,6 +193,33 @@ class TestIndia(CommonCountryTests, TestCase):
             "2023-06-29",
             "2024-06-17",
             "2025-06-07",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_jumuatul_wida(self):
+        name = "Jamat-Ul-Vida"
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(
+            name,
+            "2020-05-22",
+            "2021-05-07",
+            "2022-04-29",
+            "2023-04-21",
+            "2024-04-05",
+            "2025-03-28",
+        )
+        self.assertOptionalIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_prophets_birthday(self):
+        name = "Milad-un-Nabi"
+        self.assertHolidayName(
+            name,
+            "2020-10-30",
+            "2021-10-19",
+            "2022-10-09",
+            "2023-09-28",
+            "2024-09-16",
+            "2025-09-05",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -786,8 +814,6 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(name, dts, category_optional=True)
         # SUBDIVS.
         self._assertHinduHolidayHelper(name, dts, subdivs={"PB"})
-
-    # SUBDIV LEVEL HOLIDAYS.
 
     def test_bathukamma_festival(self):
         name = "Bathukamma Festival"

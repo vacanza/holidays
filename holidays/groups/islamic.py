@@ -53,6 +53,11 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.ali_birthday_dates(self._year)
         )
 
+    def _add_ali_birthday_day_india(self, name) -> set[date]:
+        return self._add_islamic_calendar_holiday_set(
+            name, self._islamic_calendar.ali_birthday_dates(self._year), days_delta=+1
+        )
+
     def _add_ali_death_day(self, name) -> set[date]:
         """
         Add death of Ali ibn Abu Talib day (21st day of 9th month).
