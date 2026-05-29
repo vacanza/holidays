@@ -178,10 +178,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
             2019: (JAN, 3),
             2022: (JAN, 1),
         }
-        if dt := dates.get(self._year):
-            return dt
-        else:
-            return JAN, 2
+        return dates.get(self._year, (JAN, 2))
 
     @property
     def _blessed_rainy_day_date(self) -> tuple[int, int]:
@@ -191,10 +188,7 @@ class Bhutan(HolidayBase, HinduCalendarHolidays, TibetanCalendarHolidays):
             2013: (OCT, 21),
             2015: (SEP, 22),
         }
-        if self._year in dates:
-            return dates[self._year]
-        else:
-            return SEP, 24 if self._year % 4 == 3 else 23
+        return dates.get(self._year) or (SEP, 24 if self._year % 4 == 3 else 23)
 
 
 class BT(Bhutan):
