@@ -81,7 +81,6 @@ SUN_TO_NEXT_TUE = ObservedRule({SUN: +2})
 SUN_TO_NEXT_WED = ObservedRule({SUN: +3})
 SUN_TO_NEXT_WORKDAY = ObservedRule({SUN: +7})
 SUN_TO_NONE = ObservedRule({SUN: None})
-SUN_ONLY = ObservedRule({MON: None, TUE: None, WED: None, THU: None, FRI: None, SAT: None})
 
 # Multiple days.
 ALL_TO_NEAREST_MON = ObservedRule({TUE: -1, WED: -2, THU: -3, FRI: +3, SAT: +2, SUN: +1})

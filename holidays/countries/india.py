@@ -23,11 +23,11 @@ from holidays.groups import (
     IslamicHolidays,
     StaticHolidays,
 )
-from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NONE, SUN_ONLY
+from holidays.holiday_base import HolidayBase
 
 
 class India(
-    ObservedHolidayBase,
+    HolidayBase,
     ChristianHolidays,
     HinduCalendarHolidays,
     InternationalHolidays,
@@ -263,8 +263,9 @@ class India(
             # Holi.
             self._add_holi(tr("Holi"))
 
-        # Ram Navami.
-        self._add_observed(self._add_ram_navami(tr("Ram Navami")), rule=SUN_TO_NONE)
+        if not self._is_sunday(self._ram_navami):
+            # Ram Navami.
+            self._add_ram_navami(tr("Ram Navami"))
 
         # Islamic holidays.
 
@@ -402,8 +403,9 @@ class India(
         # Raksha Bandhan.
         self._add_raksha_bandhan(tr("Raksha Bandhan"))
 
-        # Ram Navami.
-        self._add_observed(self._add_ram_navami(tr("Ram Navami")), rule=SUN_ONLY)
+        if self._is_sunday(self._ram_navami):
+            # Ram Navami.
+            self._add_ram_navami(tr("Ram Navami"))
 
         # Rath Yatra.
         self._add_rath_yatra(tr("Rath Yatra"))

@@ -274,10 +274,6 @@ class TestIndia(CommonCountryTests, TestCase):
 
         skip_years may be used to skip holiday assertion,works for both public & optional assertion
 
-        For holidays using rule=SUN_TO_NONE, the range-wide assertion is done via
-        assertNonObservedHolidayName, which ignores observance rules entirely,
-        so the holiday is always present. Specific dts are then asserted on the
-        observed instance as usual.
         """
         effective_range = self.hindu_full_range if hindu_range is None else hindu_range
         if skip_years:
@@ -285,13 +281,13 @@ class TestIndia(CommonCountryTests, TestCase):
 
         if category_optional is False and subdivs is None:
             self.assertHolidayName(name, dts)
-            self.assertNonObservedHolidayName(name, effective_range)
+            self.assertHolidayName(name, effective_range)
             self.assertNoHolidayName(
                 name,
                 range(self.start_year, self.hindu_start_year),
                 range(self.hindu_end_year + 1, self.end_year),
             )
-            self.assertNoNonObservedHolidayName(
+            self.assertNoHolidayName(
                 name,
                 range(self.start_year, self.hindu_start_year),
                 range(self.hindu_end_year + 1, self.end_year),
@@ -306,13 +302,13 @@ class TestIndia(CommonCountryTests, TestCase):
                 # holiday never in public, assert absence for full range
                 self.assertNoHolidayName(name)
             self.assertOptionalHolidayName(name, dts)
-            self.assertOptionalNonObservedHolidayName(name, effective_range)
+            self.assertOptionalHolidayName(name, effective_range)
             self.assertNoOptionalHolidayName(
                 name,
                 range(self.start_year, self.hindu_start_year),
                 range(self.hindu_end_year + 1, self.end_year),
             )
-            self.assertNoOptionalNonObservedHolidayName(
+            self.assertNoOptionalHolidayName(
                 name,
                 range(self.start_year, self.hindu_start_year),
                 range(self.hindu_end_year + 1, self.end_year),
@@ -320,25 +316,16 @@ class TestIndia(CommonCountryTests, TestCase):
         elif subdivs is not None:
             self.assertNoHolidayName(name)
             for subdiv, holidays in self.subdiv_holidays.items():
-                # non_obs_holidays = self.subdiv_holidays_non_observed[subdiv]
                 if subdiv in subdivs:
                     self.assertHolidayName(name, holidays, dts)
-                    # self.assertHolidayName(name, non_obs_holidays, effective_range)
                     self.assertNoHolidayName(
                         name,
                         holidays,
                         range(self.start_year, self.hindu_start_year),
                         range(self.hindu_end_year + 1, self.end_year),
                     )
-                    # self.assertNoSuNonObservedHolidayName(
-                    #     name,
-                    #     non_obs_holidays,
-                    #     range(self.start_year, self.hindu_start_year),
-                    #     range(self.hindu_end_year + 1, self.end_year),
-                    # )
                 else:
                     self.assertNoHolidayName(name, holidays)
-                    # self.assertNoNonObservedHolidayName(name, non_obs_holidays)
 
     def test_basant_panchami(self):
         name = "Basant Panchami / Vasant Panchami"

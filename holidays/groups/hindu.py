@@ -28,6 +28,13 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         self._hindu_calendar = cls() if cls else _HinduLunisolar()
         self._hindu_calendar_show_estimated = show_estimated
 
+    @property
+    def _ram_navami(self):
+        """
+        Return Ram Navami date.
+        """
+        return self._hindu_calendar.ram_navami_date(self._year)[0]
+
     def _add_hindu_calendar_holiday(
         self, name: str, dt_estimated: tuple[date | None, bool], days_delta: int = 0
     ) -> date | None:
