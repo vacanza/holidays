@@ -218,8 +218,6 @@ class PhilippinesIslamicHolidays(_CustomIslamicHolidays):
         2017: (SEP, 2),
         2019: (AUG, 12),
         2024: (JUN, 17),
-        2025: (JUN, 6),
-        2026: (MAY, 27),
     }
 
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2002, 2026)
