@@ -202,7 +202,7 @@ msgstr "మకర సంక్రాంతి"
 
 #. Meshadi (Tamil New Year's Day).
 msgid "Meshadi (Tamil New Year's Day)"
-msgstr "மேஷாடி (தமிழ் புத்தாண்டு தினம்)"
+msgstr "మేషాది (తమిళ్ నూతన సంవత్సరం)"
 
 #. Naraka Chaturdashi.
 msgid "Naraka Chaturdashi"
