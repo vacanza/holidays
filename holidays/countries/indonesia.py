@@ -47,7 +47,7 @@ class Indonesia(
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Indonesia>
         * <https://id.wikipedia.org/wiki/Hari_libur_di_Indonesia>
         * <https://web.archive.org/web/20250413192412/https://www.liburnasional.com/sejarah/>
-        * [1963-2025](https://id.wikipedia.org/wiki/Indonesia_dalam_tahun_1963)
+        * [1963-2026](https://id.wikipedia.org/wiki/Indonesia_dalam_tahun_1963)
         * <https://web.archive.org/web/20250413192423/https://www.timeanddate.com/holidays/indonesia/>
     """
 
@@ -241,11 +241,12 @@ class IndonesiaBuddhistHolidays(_CustomBuddhistHolidays):
         2023: (JUN, 4),
         2024: (MAY, 23),
         2025: (MAY, 12),
+        2026: (MAY, 31),
     }
 
 
 class IndonesiaChineseHolidays(_CustomChineseHolidays):
-    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2003, 2025)
+    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2003, 2026)
     LUNAR_NEW_YEAR_DATES = {
         2006: (JAN, 30),
         2007: (FEB, 19),
@@ -255,7 +256,7 @@ class IndonesiaChineseHolidays(_CustomChineseHolidays):
 
 
 class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1963, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1963, 2026)
     EID_AL_ADHA_DATES = {
         1963: (MAY, 4),
         1964: (APR, 23),
@@ -294,7 +295,7 @@ class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUN, 17),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (1963, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (1963, 2026)
     EID_AL_FITR_DATES = {
         1963: (FEB, 25),
         1964: (FEB, 15),
@@ -328,9 +329,10 @@ class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
         2019: (JUN, 5),
         2023: (APR, 22),
         2025: (MAR, 31),
+        2026: (MAR, 21),
     }
 
-    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (1968, 2025)
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (1968, 2026)
     HIJRI_NEW_YEAR_DATES = {
         1970: (MAR, 10),
         1971: (FEB, 27),
@@ -362,7 +364,7 @@ class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
         2025: (JUN, 27),
     }
 
-    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (1968, 2025)
+    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (1968, 2026)
     ISRA_AND_MIRAJ_DATES = {
         1968: (OCT, 20),
         1969: (OCT, 9),
@@ -399,7 +401,7 @@ class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
         2018: (APR, 14),
     }
 
-    MAWLID_DATES_CONFIRMED_YEARS = (1968, 2025)
+    MAWLID_DATES_CONFIRMED_YEARS = (1968, 2026)
     MAWLID_DATES = {
         1972: (APR, 26),
         1973: (APR, 14),
