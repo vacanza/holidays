@@ -237,7 +237,6 @@ class PhilippinesIslamicHolidays(_CustomIslamicHolidays):
         2020: (MAY, 25),
         2022: (MAY, 3),
         2025: (APR, 1),
-        2026: (MAR, 20),
     }
 
 
