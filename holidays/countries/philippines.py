@@ -218,7 +218,7 @@ class PhilippinesIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUN, 17),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2002, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2002, 2026)
     EID_AL_FITR_DATES = {
         2002: (DEC, 6),
         2003: (NOV, 26),
@@ -235,6 +235,7 @@ class PhilippinesIslamicHolidays(_CustomIslamicHolidays):
         2020: (MAY, 25),
         2022: (MAY, 3),
         2025: (APR, 1),
+        2026: (MAR, 20),
     }
 
 
