@@ -53,11 +53,6 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.ali_birthday_dates(self._year)
         )
 
-    def _add_ali_birthday_day_india(self, name) -> set[date]:
-        return self._add_islamic_calendar_holiday_set(
-            name, self._islamic_calendar.ali_birthday_dates(self._year), days_delta=+1
-        )
-
     def _add_ali_death_day(self, name) -> set[date]:
         """
         Add death of Ali ibn Abu Talib day (21st day of 9th month).
@@ -330,6 +325,19 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.jumuatul_wida_dates(self._year)
+        )
+
+    def _add_jumuatul_wida_india(self, name) -> set[date]:
+        """
+        Add Jumuatul-Wida Day for India.
+
+        Most Islamic holidays in India are observed one day later than the
+        base Islamic calendar date. Jumuatul-Wida is an exception, so
+        days_delta=-1 is used to offset the standard one-day adjustment
+        and keep the holiday on the original Islamic calendar date.
+        """
+        return self._add_islamic_calendar_holiday_set(
+            name, self._islamic_calendar.jumuatul_wida_dates(self._year), days_delta=-1
         )
 
     def _add_laylat_al_qadr_day(self, name) -> set[date]:

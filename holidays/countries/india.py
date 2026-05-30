@@ -402,10 +402,10 @@ class India(
         # Islamic holidays.
 
         # Ali's Birthday.
-        self._add_ali_birthday_day_india(tr("Hazarat Ali's Birthday"))
+        self._add_ali_birthday_day(tr("Hazarat Ali's Birthday"))
 
         # Jumu'atul-Wida.
-        self._add_jumuatul_wida(tr("Jamat-Ul-Vida"))
+        self._add_jumuatul_wida_india(tr("Jamat-Ul-Vida"))
 
         # Christian holidays.
 
@@ -676,12 +676,12 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
 
     JUMUATUL_WIDA_DATES_CONFIRMED_YEARS = (2001, 2025)
     JUMUATUL_WIDA_DATES = {
-        2009: (SEP, 16),
-        2010: (SEP, 10),
-        2015: (JUL, 17),
-        2018: (JUN, 15),
-        2023: (APR, 21),
-        2026: (MAR, 20),
+        2009: (SEP, 17),
+        2010: (SEP, 11),
+        2015: (JUL, 18),
+        2018: (JUN, 16),
+        2023: (APR, 22),
+        2026: (MAR, 21),
     }
 
     MAWLID_DATES_CONFIRMED_YEARS = (2001, 2025)
