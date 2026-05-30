@@ -54,6 +54,8 @@ class Philippines(
         * [Proclamation No. 878/2025](https://archive.org/details/20250506-proc-878-frm_202506)
         * [Proclamation No. 911/2025](https://archive.org/details/20250521-proc-911-frm_20250606_1800)
         * [Proclamation No. 1006/2025](https://archive.org/details/20250903-proc-1006-frm)
+        * [Proclamation No. 1189/2026](https://www.officialgazette.gov.ph/2026/03/12/proclamation-no-1189-s-2026/)
+        * [Proclamation No. 1264/2026](https://www.officialgazette.gov.ph/2026/05/21/proclamation-no-1264-s-2026/)
     """
 
     country = "PH"
