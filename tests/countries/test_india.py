@@ -148,7 +148,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
 
     def test_vaisakhadi(self):
-        name = "Vaisakhadi (Bengal)"
+        name = "Vaisakhadi"
         self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(name, (f"{year}-04-15" for year in self.full_range))
 
@@ -770,15 +770,15 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_ram_navami(self):
         name = "Ram Navami"
+        skip_years = {2002, 2012, 2018, 2022, 2025, 2029}
         dts = (
             "2020-04-02",
             "2021-04-21",
             "2023-03-30",
             "2024-04-17",
         )
-        self._assertHinduHolidayHelper(name, dts)
+        self._assertHinduHolidayHelper(name, dts, skip_years=skip_years)
         # OPTIONAL.
-        skip_years = {2002, 2012, 2018, 2022, 2025, 2029}
         dts = (
             "2002-04-21",
             "2012-04-01",

@@ -263,7 +263,7 @@ class India(
             # Holi.
             self._add_holi(tr("Holi"))
 
-        if not self._is_sunday(self._ram_navami):
+        if self._ram_navami and not self._is_sunday(self._ram_navami):
             # Ram Navami.
             self._add_ram_navami(tr("Ram Navami"))
 
@@ -403,7 +403,7 @@ class India(
         # Raksha Bandhan.
         self._add_raksha_bandhan(tr("Raksha Bandhan"))
 
-        if self._is_sunday(self._ram_navami):
+        if self._ram_navami and self._is_sunday(self._ram_navami):
             # Ram Navami.
             self._add_ram_navami(tr("Ram Navami"))
 
