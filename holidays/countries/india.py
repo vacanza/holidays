@@ -307,12 +307,17 @@ class India(
         # Basant Panchami / Vasant Panchami.
         self._add_basant_panchami(tr("Basant Panchami / Vasant Panchami"))
 
+        # Bahag Bihu.
+        self._add_holiday_apr_15(tr("Bahag Bihu"))
+
         # Bhai Duj.
         self._add_bhai_dooj(tr("Bhai Duj"))
 
-        if self._year >= 2011:
-            # Pratihar Shashthi or Surya Shashthi (Chhat Puja).
-            self._add_chhath_puja(tr("Pratihar Shashthi or Surya Shashthi (Chhat Puja)"))
+        # Chaitra Sukladi.
+        self._add_gudi_padwa(tr("Chaitra Sukladi"))
+
+        # Cheti Chand.
+        self._add_gudi_padwa(tr("Cheti Chand"))
 
         # Dussehra (Mahashtami).
         self._add_maha_ashtami(tr("Dussehra (Mahashtami)"))
@@ -333,6 +338,9 @@ class India(
 
         # Govardhan Puja.
         self._add_govardhan_puja(tr("Govardhan Puja"))
+
+        # Gudi Padwa.
+        self._add_gudi_padwa(tr("Gudi Padwa"))
 
         # Guru Gobind Singh's Birthday.
         self._add_guru_gobind_singh_jayanti(tr("Guru Gobind Singh's Birthday"))
@@ -372,6 +380,9 @@ class India(
         # Makar Sankranti.
         self._add_makar_sankranti(tr("Makar Sankranti"))
 
+        # Meshadi (Tamil New Year's Day).
+        self._add_meshadi(tr("Meshadi (Tamil New Year's Day)"))
+
         # Naraka Chaturdashi.
         self._add_naraka_chaturdashi(tr("Naraka Chaturdashi"))
 
@@ -380,6 +391,10 @@ class India(
 
         # Parsi New Year.
         self._add_parsi_new_year(tr("Parsi New Year"))
+
+        if self._year >= 2011:
+            # Pratihar Shashthi or Surya Shashthi (Chhat Puja).
+            self._add_chhath_puja(tr("Pratihar Shashthi or Surya Shashthi (Chhat Puja)"))
 
         # Pongal.
         self._add_pongal(tr("Pongal"))
@@ -396,8 +411,17 @@ class India(
         # Swami Dayanand Saraswati Jayanti.
         self._add_swami_dayanand_saraswati_jayanti(tr("Swami Dayanand Saraswati Jayanti"))
 
+        # Ugadi.
+        self._add_gudi_padwa(tr("Ugadi"))
+
         # Vaisakhi.
         self._add_vaisakhi(tr("Vaisakhi"))
+
+        # Vishu.
+        self._add_vishu(tr("Vishu"))
+
+        # Vaisakhadi.
+        self._add_holiday_apr_15(tr("Vaisakhadi"))
 
         # Islamic holidays.
 

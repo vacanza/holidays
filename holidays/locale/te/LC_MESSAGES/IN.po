@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.98\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-05-30 00:26+0530\n"
+"PO-Revision-Date: 2026-05-30 13:56+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: te\n"
@@ -124,13 +124,21 @@ msgstr "బాలల దినోత్సవం"
 msgid "Basant Panchami / Vasant Panchami"
 msgstr "బసంత్ పంచమి / వసంత పంచమి"
 
+#. Bahag Bihu.
+msgid "Bahag Bihu"
+msgstr "బహగ్ బిహు"
+
 #. Bhai Duj.
 msgid "Bhai Duj"
 msgstr "భాయ్ దూజ్"
 
-#. Pratihar Shashthi or Surya Shashthi (Chhat Puja).
-msgid "Pratihar Shashthi or Surya Shashthi (Chhat Puja)"
-msgstr "ప్రతిహార్ షష్ఠి లేదా సూర్య షష్ఠి (ఛత్ పూజ)"
+#. Chaitra Sukladi.
+msgid "Chaitra Sukladi"
+msgstr "చైత్ర శుక్లాది"
+
+#. Cheti Chand.
+msgid "Cheti Chand"
+msgstr "చెట్టి చంద్"
 
 #. Dussehra (Mahashtami).
 msgid "Dussehra (Mahashtami)"
@@ -155,6 +163,10 @@ msgstr "వినాయక చవితి"
 #. Govardhan Puja.
 msgid "Govardhan Puja"
 msgstr "గోవర్ధన పూజ"
+
+#. Gudi Padwa.
+msgid "Gudi Padwa"
+msgstr "గుడి పడ్వా"
 
 #. Guru Gobind Singh's Birthday.
 msgid "Guru Gobind Singh's Birthday"
@@ -188,6 +200,10 @@ msgstr "మహర్షి వాల్మీకి జయంతి"
 msgid "Makar Sankranti"
 msgstr "మకర సంక్రాంతి"
 
+#. Meshadi (Tamil New Year's Day).
+msgid "Meshadi (Tamil New Year's Day)"
+msgstr "மேஷாடி (தமிழ் புத்தாண்டு தினம்)"
+
 #. Naraka Chaturdashi.
 msgid "Naraka Chaturdashi"
 msgstr "నరక చతుర్దశి"
@@ -199,6 +215,10 @@ msgstr "ఓణం"
 #. Parsi New Year.
 msgid "Parsi New Year"
 msgstr "పార్సీ నూతన సంవత్సరం"
+
+#. Pratihar Shashthi or Surya Shashthi (Chhat Puja).
+msgid "Pratihar Shashthi or Surya Shashthi (Chhat Puja)"
+msgstr "ప్రతిహార్ షష్ఠి లేదా సూర్య షష్ఠి (ఛత్ పూజ)"
 
 #. Pongal.
 msgid "Pongal"
@@ -216,9 +236,25 @@ msgstr "రథ యాత్ర"
 msgid "Swami Dayanand Saraswati Jayanti"
 msgstr "స్వామి దయానంద్ సరస్వతి జయంతి"
 
+#. Ugadi.
+msgid "Ugadi"
+msgstr "ఉగాది"
+
 #. Vaisakhi.
 msgid "Vaisakhi"
 msgstr "వైశాఖి"
+
+#. Vishu.
+msgid "Vishu"
+msgstr "விசு"
+
+#. Vaisakhadi.
+msgid "Vaisakhadi"
+msgstr "வைசாகதி"
+
+#. Ali's Birthday.
+msgid "Hazarat Ali's Birthday"
+msgstr "ஹஸ்ரத் அலியின் பிறந்தநாள்"
 
 #. Jumu'atul-Wida.
 msgid "Jamat-Ul-Vida"
@@ -238,10 +274,6 @@ msgstr "మట్టల ఆదివారం"
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
 msgstr "ఆంధ్రప్రదేశ్ అవతరణ దినోత్సవం"
-
-#. Ugadi.
-msgid "Ugadi"
-msgstr "ఉగాది"
 
 #. Magh Bihu.
 msgid "Magh Bihu"
@@ -302,10 +334,6 @@ msgstr "కర్ణాటక రాజ్యోత్సవం"
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"
 msgstr "కేరళ అవతరణ దినోత్సవం"
-
-#. Gudi Padwa.
-msgid "Gudi Padwa"
-msgstr "గుడి పడ్వా"
 
 #. Chhatrapati Shivaji Maharaj Jayanti.
 msgid "Chhatrapati Shivaji Maharaj Jayanti"

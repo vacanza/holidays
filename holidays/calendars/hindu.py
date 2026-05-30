@@ -54,6 +54,7 @@ SWAMI_DAYANAND_SARASWATI_JAYANTI = "SWAMI_DAYANAND_SARASWATI_JAYANTI"
 TAMU_LOSAR = "TAMU_LOSAR"
 THAIPUSAM = "THAIPUSAM"
 VAISAKHI = "VAISAKHI"
+VISHU = "VISHU"
 
 
 class _HinduLunisolar:
@@ -1778,6 +1779,45 @@ class _HinduLunisolar:
         2035: (APR, 14),
     }
 
+    # https://web.archive.org/web/20251213154535/http://www.drikpanchang.com/festivals/vishu/vishu-kani-date-time.html
+    VISHU_DATES = {
+        2001: (APR, 14),
+        2002: (APR, 14),
+        2003: (APR, 14),
+        2004: (APR, 13),
+        2005: (APR, 14),
+        2006: (APR, 14),
+        2007: (APR, 15),
+        2008: (APR, 14),
+        2009: (APR, 14),
+        2010: (APR, 14),
+        2011: (APR, 14),
+        2012: (APR, 14),
+        2013: (APR, 14),
+        2014: (APR, 15),
+        2015: (APR, 15),
+        2016: (APR, 14),
+        2017: (APR, 14),
+        2018: (APR, 14),
+        2019: (APR, 14),
+        2020: (APR, 14),
+        2021: (APR, 14),
+        2022: (APR, 15),
+        2023: (APR, 15),
+        2024: (APR, 14),
+        2025: (APR, 14),
+        2026: (APR, 15),
+        2027: (APR, 15),
+        2028: (APR, 14),
+        2029: (APR, 14),
+        2030: (APR, 15),
+        2031: (APR, 15),
+        2032: (APR, 14),
+        2033: (APR, 14),
+        2034: (APR, 14),
+        2035: (APR, 14),
+    }
+
     def _get_holiday(self, holiday: str, year: int) -> tuple[date | None, bool]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
@@ -1901,6 +1941,9 @@ class _HinduLunisolar:
 
     def vaisakhi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VAISAKHI, year)
+
+    def vishu_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(VISHU, year)
 
 
 class _CustomHinduHolidays(_CustomCalendar, _HinduLunisolar):

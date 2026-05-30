@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.98\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-05-30 00:26+0530\n"
+"PO-Revision-Date: 2026-05-30 13:56+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
@@ -125,12 +125,20 @@ msgstr ""
 msgid "Basant Panchami / Vasant Panchami"
 msgstr ""
 
+#. Bahag Bihu.
+msgid "Bahag Bihu"
+msgstr ""
+
 #. Bhai Duj.
 msgid "Bhai Duj"
 msgstr ""
 
-#. Pratihar Shashthi or Surya Shashthi (Chhat Puja).
-msgid "Pratihar Shashthi or Surya Shashthi (Chhat Puja)"
+#. Chaitra Sukladi.
+msgid "Chaitra Sukladi"
+msgstr ""
+
+#. Cheti Chand.
+msgid "Cheti Chand"
 msgstr ""
 
 #. Dussehra (Mahashtami).
@@ -155,6 +163,10 @@ msgstr ""
 
 #. Govardhan Puja.
 msgid "Govardhan Puja"
+msgstr ""
+
+#. Gudi Padwa.
+msgid "Gudi Padwa"
 msgstr ""
 
 #. Guru Gobind Singh's Birthday.
@@ -189,6 +201,10 @@ msgstr ""
 msgid "Makar Sankranti"
 msgstr ""
 
+#. Meshadi (Tamil New Year's Day).
+msgid "Meshadi (Tamil New Year's Day)"
+msgstr ""
+
 #. Naraka Chaturdashi.
 msgid "Naraka Chaturdashi"
 msgstr ""
@@ -199,6 +215,10 @@ msgstr ""
 
 #. Parsi New Year.
 msgid "Parsi New Year"
+msgstr ""
+
+#. Pratihar Shashthi or Surya Shashthi (Chhat Puja).
+msgid "Pratihar Shashthi or Surya Shashthi (Chhat Puja)"
 msgstr ""
 
 #. Pongal.
@@ -217,8 +237,24 @@ msgstr ""
 msgid "Swami Dayanand Saraswati Jayanti"
 msgstr ""
 
+#. Ugadi.
+msgid "Ugadi"
+msgstr ""
+
 #. Vaisakhi.
 msgid "Vaisakhi"
+msgstr ""
+
+#. Vishu.
+msgid "Vishu"
+msgstr ""
+
+#. Vaisakhadi.
+msgid "Vaisakhadi"
+msgstr ""
+
+#. Ali's Birthday.
+msgid "Hazarat Ali's Birthday"
 msgstr ""
 
 #. Jumu'atul-Wida.
@@ -238,10 +274,6 @@ msgstr ""
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
-msgstr ""
-
-#. Ugadi.
-msgid "Ugadi"
 msgstr ""
 
 #. Magh Bihu.
@@ -302,10 +334,6 @@ msgstr ""
 
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"
-msgstr ""
-
-#. Gudi Padwa.
-msgid "Gudi Padwa"
 msgstr ""
 
 #. Chhatrapati Shivaji Maharaj Jayanti.
