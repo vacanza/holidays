@@ -294,7 +294,7 @@ class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUN, 17),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (1963, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (1963, 2026)
     EID_AL_FITR_DATES = {
         1963: (FEB, 25),
         1964: (FEB, 15),
@@ -328,6 +328,7 @@ class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
         2019: (JUN, 5),
         2023: (APR, 22),
         2025: (MAR, 31),
+        2026: (MAR, 21),
     }
 
     HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (1968, 2025)
