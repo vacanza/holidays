@@ -38,7 +38,7 @@ msgstr "ಗಣರಾಜ್ಯೋತ್ಸವ"
 
 #. Dr. B. R. Ambedkar's Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
-msgstr "ಡಾ|| ಬಿ.ಆರ್.ಅಂಬೇಡ್ಕರ್ ಜಯಂತಿ"
+msgstr "ಡಾ ಬಿ.ಆರ್.ಅಂಬೇಡ್ಕರ್ ಜಯಂತಿ"
 
 #. Independence Day.
 msgid "Independence Day"
@@ -138,7 +138,7 @@ msgstr "ಚೈತ್ರ ಸುಕ್ಲಾಡಿ"
 
 #. Cheti Chand.
 msgid "Cheti Chand"
-msgstr "ಚೆಟ್ಟಿ ಚಂದ್"
+msgstr "ಚೇಟಿ ಚಂದ್"
 
 #. Dussehra (Mahashtami).
 msgid "Dussehra (Mahashtami)"

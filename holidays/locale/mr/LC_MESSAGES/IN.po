@@ -126,7 +126,7 @@ msgstr "बसंत पंचमी / वसंत पंचमी"
 
 #. Bahag Bihu.
 msgid "Bahag Bihu"
-msgstr "भाग बिहू"
+msgstr "बहाग बिहू"
 
 #. Bhai Duj.
 msgid "Bhai Duj"
@@ -134,11 +134,11 @@ msgstr "भाई दूज"
 
 #. Chaitra Sukladi.
 msgid "Chaitra Sukladi"
-msgstr "चैत्र सुकलादी"
+msgstr "चैत्र शुक्लादि"
 
 #. Cheti Chand.
 msgid "Cheti Chand"
-msgstr "चेट्टी चंद"
+msgstr "चेटी चंड"
 
 #. Dussehra (Mahashtami).
 msgid "Dussehra (Mahashtami)"

@@ -126,7 +126,7 @@ msgstr "ਬਸੰਤ ਪੰਚਮੀ / ਵਸੰਤ ਪੰਚਮੀ"
 
 #. Bahag Bihu.
 msgid "Bahag Bihu"
-msgstr "ਭਾਗ bihu"
+msgstr "ਬਹਾਗ ਬਿਹੂ"
 
 #. Bhai Duj.
 msgid "Bhai Duj"
@@ -261,7 +261,7 @@ msgid "Jamat-Ul-Vida"
 msgstr "ਜਮਾਤ-ਉਲ-ਵਿਦਾ"
 
 msgid "Christmas Eve"
-msgstr "ਕ੍ਰਿਸਮਿਸ ਤੋਂ ਪਹਿਲਾਂ"
+msgstr "ਕ੍ਰਿਸਮਿਸ ਦੀ ਪੂਰਵ ਸੰਧਿਆ"
 
 #. Easter Sunday.
 msgid "Easter Sunday"

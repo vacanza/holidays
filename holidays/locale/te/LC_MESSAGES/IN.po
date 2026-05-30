@@ -154,7 +154,7 @@ msgstr "దీపావళి (దక్షిణ భారతదేశం)"
 
 #. Dussehra (Saptami).
 msgid "Dussehra (Saptami)"
-msgstr "దసరా (ఏడవ)"
+msgstr "దసరా (సప్తమి)"
 
 #. Ganesh Chaturthi.
 msgid "Ganesh Chaturthi"
