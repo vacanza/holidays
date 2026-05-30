@@ -17,6 +17,8 @@ on:
   workflow_dispatch:
 
 env:
+  DEFAULT_PYTHON_VERSION: '3.14'
+  DEFAULT_UV_VERSION: '0.11.8'
   FORCE_COLOR: 1
 
 concurrency:
@@ -34,11 +36,17 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b  # v8.1.0
         with:
-          python-version: '3.14'
-          version: '0.9.16'
+          python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
+          version: ${{ env.DEFAULT_UV_VERSION }}
 
       - name: Install Python
         run: uv python install "$UV_PYTHON"
+
+      - name: Cache pre-commit environments
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae  # v5.0.5
+        with:
+          key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
+          path: ~/.cache/pre-commit
 
       - name: Run pre-commit
         run: uv tool run --with pre-commit-uv pre-commit run --show-diff-on-failure --color=always --all-files
@@ -55,12 +63,12 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@95e58e9a2cdfd71adc6e0353d5c52f41a045d225  # v4.35.2
+        uses: github/codeql-action/init@e46ed2cbd01164d986452f91f178727624ae40d7  # v4.35.3
         with:
           languages: python
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@95e58e9a2cdfd71adc6e0353d5c52f41a045d225  # v4.35.2
+        uses: github/codeql-action/analyze@e46ed2cbd01164d986452f91f178727624ae40d7  # v4.35.3
         with:
           category: '/language:python'
 
@@ -89,7 +97,7 @@ jobs:
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b  # v8.1.0
         with:
           python-version: ${{ matrix.python-version }}
-          version: '0.9.16'
+          version: ${{ env.DEFAULT_UV_VERSION }}
 
       - name: Install Python ${{ matrix.python-version }}
         run: uv python install ${{ matrix.python-version }}
@@ -116,8 +124,8 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b  # v8.1.0
         with:
-          python-version: '3.14'
-          version: '0.9.16'
+          python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
+          version: ${{ env.DEFAULT_UV_VERSION }}
 
       - name: Install Python
         run: uv python install "$UV_PYTHON"
@@ -166,8 +174,8 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b  # v8.1.0
         with:
-          python-version: '3.14'
-          version: '0.9.16'
+          python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
+          version: ${{ env.DEFAULT_UV_VERSION }}
 
       - name: Install Python
         shell: bash
@@ -201,8 +209,8 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b  # v8.1.0
         with:
-          python-version: '3.14'
-          version: '0.9.16'
+          python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
+          version: ${{ env.DEFAULT_UV_VERSION }}
 
       - name: Install Python
         run: uv python install "$UV_PYTHON"

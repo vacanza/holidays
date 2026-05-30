@@ -68,6 +68,8 @@ repos:
     rev: 6e10264313f53d6247a8b1b984f5b5ccf50ba539  # v2.21.0
     hooks:
       - id: pyproject-fmt
+        additional_dependencies:
+          - toml-fmt-common<1.3.3
 
   - repo: local
     hooks:

@@ -1,3 +1,19 @@
+## Version 0.97
+
+Released May 18, 2026
+
+- Refactor calendar generators (#3565 by @KJhellico)
+- Update Bangladesh holidays: add Islamic holidays (#3531 by @shaonahamed0, @KJhellico, @PPsyrius)
+- Update CI/CD workflows: set default Python and uv versions (#3581 by @KJhellico)
+- Update China holidays: update official reference links (#3569 by @nuomi1)
+- Update European Central Bank holidays: correct historical closures for 1999-2001 (#3572 by @pareshjoshij)
+- Update India holidays: add Maharishi Valmiki Jayanti holiday (#3485 by @vanshika05-ai, @KJhellico)
+- Update Islamic generator: add support for holidays of "n-th weekday of Hijri month" type (#3573 by @KJhellico)
+- Update Makefile and make script (#3582 by @KJhellico)
+- Update Nepal holidays: add Kannada language support (#3560 by @Poornesh-codes, @KJhellico)
+- Update PO generator: fix .po files refresh (#3570 by @KJhellico)
+- Update `HolidayBase::__repr__` method (#3575 by @KJhellico)
+
 ## Version 0.96
 
 Released May 4, 2026
