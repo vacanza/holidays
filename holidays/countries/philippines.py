@@ -204,7 +204,7 @@ class PHL(Philippines):
 
 
 class PhilippinesChineseHolidays(_CustomChineseHolidays):
-    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2012, 2025)
+    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2012, 2026)
 
 
 class PhilippinesIslamicHolidays(_CustomIslamicHolidays):
