@@ -241,6 +241,7 @@ class IndonesiaBuddhistHolidays(_CustomBuddhistHolidays):
         2023: (JUN, 4),
         2024: (MAY, 23),
         2025: (MAY, 12),
+        2026: (MAY, 31),
     }
 
 
