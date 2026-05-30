@@ -292,8 +292,6 @@ class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
         2022: (JUL, 10),
         2023: (JUN, 29),
         2024: (JUN, 17),
-        2025: (JUN, 6),
-        2026: (MAY, 27),
     }
 
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (1963, 2026)
