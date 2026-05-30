@@ -42,6 +42,7 @@ dependencies = [ "python-dateutil>=2.9.0.post0,<3" ]
 urls.Changelog = "https://github.com/vacanza/holidays/releases/"
 urls.Documentation = "https://holidays.readthedocs.io/en/latest/"
 urls.Repository = "https://github.com/vacanza/holidays/"
+scripts.holidays-ics = "holidays.generate_ics:main"
 
 [dependency-groups]
 dev = [
@@ -134,6 +135,6 @@ ini_options.testpaths = [ "tests" ]
 [tool.coverage]
 run.branch = true
 run.omit = [ "scripts/*", "tests/*" ]
-report.exclude_lines = [
+report.exclude_also = [
   "^if TYPE_CHECKING:",
 ]
