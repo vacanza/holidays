@@ -91,13 +91,16 @@ class IcsGenerator:
             self.entity_loader(subdiv=self.args.subdiv)
 
         except NotImplementedError:
-            entity = self.entity_loader()
+            supported_subdivisions = self.entity_loader().subdivisions
             raise SystemExit(
                 f"Subdivision '{self.args.subdiv}' is not supported for {self.args.code}. "
-                f"Supported subdivisions: {', '.join(entity.subdivisions)}"
+                f"Supported subdivisions: {', '.join(supported_subdivisions)}"
             )
 
     def validate_categories(self) -> None:
+        if not self.args.categories:
+            return None
+
         supported_categories = self.entity_loader().supported_categories
         unknown_categories = set(self.args.categories).difference(supported_categories)
         if unknown_categories:
