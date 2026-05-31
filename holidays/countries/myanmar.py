@@ -167,7 +167,7 @@ class MMR(Myanmar):
 
 
 class MyanmarIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2020, 2026)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2020, 2025)
 
 
 class MyanmarStaticHolidays:
