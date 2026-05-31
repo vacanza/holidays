@@ -166,7 +166,7 @@ class TestGenerateIcs(TestCase):
                 IcsGenerator().run()
 
             self.assertTrue(output_file.exists())
-            content = output_file.read_text(encoding="utf-8", newline="")
+            content = output_file.read_text(encoding="utf-8")
             self.assertIn("BEGIN:VCALENDAR", content)
             self.assertIn("DTSTART;VALUE=DATE:20250101", content)
             self.assertIn("DTSTART;VALUE=DATE:20250704", content)
@@ -181,7 +181,7 @@ class TestGenerateIcs(TestCase):
                 IcsGenerator().run()
 
             self.assertTrue(output_file.exists())
-            content = output_file.read_text(encoding="utf-8", newline="")
+            content = output_file.read_text(encoding="utf-8")
             self.assertIn("BEGIN:VCALENDAR", content)
             self.assertIn("DTSTART;VALUE=DATE:20250331", content)
             self.assertIn("DTSTART;VALUE=DATE:20251018", content)
@@ -194,7 +194,7 @@ class TestGenerateIcs(TestCase):
                 IcsGenerator().run()
 
             self.assertTrue(output_file.exists())
-            content = output_file.read_text(encoding="utf-8", newline="")
+            content = output_file.read_text(encoding="utf-8")
             self.assertIn("BEGIN:VCALENDAR", content)
             self.assertIn("DTSTART;VALUE=DATE:20250109", content)
             self.assertIn("END:VCALENDAR", content)
@@ -208,7 +208,7 @@ class TestGenerateIcs(TestCase):
                 IcsGenerator().run()
 
             self.assertTrue(output_file.exists())
-            content = output_file.read_text(encoding="utf-8", newline="")
+            content = output_file.read_text(encoding="utf-8")
             self.assertIn("BEGIN:VCALENDAR", content)
             self.assertIn("DTSTART;VALUE=DATE:20250418", content)
             self.assertIn("DTSTART;VALUE=DATE:20251231", content)
@@ -223,7 +223,8 @@ class TestGenerateIcs(TestCase):
                 IcsGenerator().run()
 
             self.assertTrue(output_file.exists())
-            content = output_file.read_text(encoding="utf-8", newline="")
+            with output_file.open(encoding="utf-8", newline="") as f:
+                content = f.read()
             self.assertIn("BEGIN:VCALENDAR", content)
             self.assertIn("SUMMARY:Новий рік\r\nDTSTART;VALUE=DATE:20250101", content)
             self.assertIn("SUMMARY:Національне свято\r\nDTSTART;VALUE=DATE:20251026", content)
@@ -236,7 +237,7 @@ class TestGenerateIcs(TestCase):
                 IcsGenerator().run()
 
             self.assertTrue(output_file.exists())
-            content = output_file.read_text(encoding="utf-8", newline="")
+            content = output_file.read_text(encoding="utf-8")
             self.assertIn("DTSTART;VALUE=DATE:20240101", content)
             self.assertIn("DTSTART;VALUE=DATE:20250101", content)
 
@@ -247,7 +248,7 @@ class TestGenerateIcs(TestCase):
             with self.argv("US", "--output", str(output_file)):
                 IcsGenerator().run()
 
-            content = output_file.read_text(encoding="utf-8", newline="")
+            content = output_file.read_text(encoding="utf-8")
             dates = re.findall(r"DTSTART;VALUE=DATE:(\d{8})", content)
             self.assertTrue(dates)
             self.assertEqual({date[:4] for date in dates}, {"2025"})
