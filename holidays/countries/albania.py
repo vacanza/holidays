@@ -133,8 +133,8 @@ class ALB(Albania):
 
 
 class AlbaniaIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2018, 2025)
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2018, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2018, 2026)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2018, 2026)
 
 
 class AlbaniaStaticHolidays:
