@@ -293,6 +293,7 @@ FINANCIAL: RegistryDict = {
     "hong_kong_stock_exchange": ("HongKongStockExchange", "XHKG", "HKEX", "SEHK"),
     "ice_futures_europe": ("IceFuturesEurope", "IFEU", "ICEFuturesEurope"),
     "japan_exchange": ("JapanExchange", "XJPX", "JPX", "TSE", "OSE"),
+    "nasdaq": ("NASDAQ", "XNAS"),
     "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
     "shanghai_stock_exchange": ("ShanghaiStockExchange", "XSHG", "SSE"),
