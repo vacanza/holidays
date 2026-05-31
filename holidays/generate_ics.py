@@ -17,18 +17,14 @@ from argparse import ArgumentParser, ArgumentTypeError, Namespace
 from collections.abc import Callable, Iterable
 from datetime import datetime, timezone
 
-from holidays import (
-    country_holidays,
-    financial_holidays,
-    list_supported_countries,
-    list_supported_financial,
-)
+import holidays
+from holidays.holiday_base import HolidayBase
 from holidays.ical import ICalExporter
 
 
 class IcsGenerator:
     args: Namespace
-    holiday_factory: Callable
+    entity_loader: Callable[..., HolidayBase]
 
     def __init__(self):
         parser = ArgumentParser(
@@ -80,31 +76,28 @@ class IcsGenerator:
         return [category.lower() for category in value.split(",")]
 
     def validate_code(self) -> None:
-        is_country = len(self.args.code) == 2
-        supported_entities = (
-            list_supported_countries() if is_country else list_supported_financial()
-        )
-        if self.args.code not in supported_entities:
+        entity_loader = getattr(holidays, self.args.code, None)
+        if entity_loader is None:
             raise SystemExit(f"Unsupported entity code: '{self.args.code}'")
 
-        self.holiday_factory = country_holidays if is_country else financial_holidays
+        self.entity_loader = entity_loader
 
     def validate_subdiv(self) -> None:
         if not self.args.subdiv:
             return None
 
         try:
-            self.holiday_factory(self.args.code, subdiv=self.args.subdiv)
+            self.entity_loader(subdiv=self.args.subdiv)
 
         except NotImplementedError:
-            entity = self.holiday_factory(self.args.code)
+            entity = self.entity_loader()
             raise SystemExit(
                 f"Subdivision '{self.args.subdiv}' is not supported for {self.args.code}. "
                 f"Supported subdivisions: {', '.join(entity.subdivisions)}"
             )
 
     def validate_categories(self) -> None:
-        supported_categories = self.holiday_factory(self.args.code).supported_categories
+        supported_categories = self.entity_loader().supported_categories
         unknown_categories = set(self.args.categories).difference(supported_categories)
         if unknown_categories:
             raise SystemExit(
@@ -117,7 +110,7 @@ class IcsGenerator:
         if not self.args.language:
             return None
 
-        supported_languages = self.holiday_factory(self.args.code).supported_languages
+        supported_languages = self.entity_loader().supported_languages
         if self.args.language not in supported_languages:
             raise SystemExit(
                 f"Language '{self.args.language}' is not supported for {self.args.code}. "
@@ -136,8 +129,7 @@ class IcsGenerator:
         output_path = self.args.output or f"{self.args.code}{subdiv_part}_{years_part}.ics"
 
         try:
-            holiday_obj = self.holiday_factory(
-                self.args.code,
+            holiday_obj = self.entity_loader(
                 subdiv=self.args.subdiv,
                 years=self.args.years,
                 categories=self.args.categories,

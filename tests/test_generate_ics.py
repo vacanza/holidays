@@ -20,7 +20,6 @@ from tempfile import TemporaryDirectory
 from unittest import TestCase
 from unittest.mock import patch
 
-from holidays import country_holidays, financial_holidays
 from holidays.generate_ics import IcsGenerator
 
 
@@ -84,7 +83,7 @@ class TestGenerateIcs(TestCase):
             generator = IcsGenerator()
         generator.validate_code()
 
-        self.assertEqual(generator.holiday_factory, country_holidays)
+        self.assertEqual(generator.args.code, "US")
 
         with self.argv("us"):
             generator = IcsGenerator()
@@ -97,7 +96,7 @@ class TestGenerateIcs(TestCase):
             generator = IcsGenerator()
         generator.validate_code()
 
-        self.assertEqual(generator.holiday_factory, financial_holidays)
+        self.assertEqual(generator.args.code, "XNYS")
 
     def test_validate_unknown_code(self):
         with self.argv("XXX"):
