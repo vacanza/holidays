@@ -20,6 +20,7 @@ from datetime import datetime, timezone
 import holidays
 from holidays.holiday_base import HolidayBase
 from holidays.ical import ICalExporter
+from holidays.registry import EntityLoader
 
 
 class IcsGenerator:
@@ -77,7 +78,7 @@ class IcsGenerator:
 
     def validate_code(self) -> None:
         entity_loader = getattr(holidays, self.args.code, None)
-        if entity_loader is None:
+        if entity_loader is None or not isinstance(entity_loader, EntityLoader):
             raise SystemExit(f"Unsupported entity code: '{self.args.code}'")
 
         self.entity_loader = entity_loader

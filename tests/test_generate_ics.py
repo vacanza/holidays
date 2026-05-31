@@ -99,13 +99,14 @@ class TestGenerateIcs(TestCase):
         self.assertEqual(generator.args.code, "XNYS")
 
     def test_validate_unknown_code(self):
-        with self.argv("XXX"):
-            generator = IcsGenerator()
+        for code in ("XXX", "JAN", "country_holidays"):
+            with self.argv(code):
+                generator = IcsGenerator()
 
-        with self.assertRaises(SystemExit) as context:
-            generator.validate_code()
+            with self.assertRaises(SystemExit) as context:
+                generator.validate_code()
 
-        self.assertEqual(str(context.exception), "Unsupported entity code: 'XXX'")
+            self.assertIn("Unsupported entity code:", str(context.exception))
 
     def test_validate_subdiv_valid(self):
         with self.argv("US", "--subdiv", "CA"):
