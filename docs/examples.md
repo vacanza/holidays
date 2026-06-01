@@ -593,3 +593,69 @@ Generate `.ics` files with categories, language, and subdivisions.
 
 For advanced features and customization of the exported `.ics` output, consider using
 the [icalendar](https://github.com/collective/icalendar) package.
+
+## generate-ics Tool
+
+For user convenience, the library includes `generate-ics` tool for generating iCalendar (.ics)
+files from holiday calendars provided by the library. It supports country, subdivision,
+and financial market calendars, holiday category filtering, localized holiday names,
+year selection, and custom output file names.
+
+The tool can be run either as an installed command:
+
+```shell
+generate-ics CODE [OPTIONS]
+```
+
+or as a Python module:
+
+```shell
+python -m holidays.generate_ics CODE [OPTIONS]
+```
+
+By default, the generated calendar contains holidays for the current year and is written
+to a file whose name is derived from the selected calendar and year range.
+
+### Examples
+
+Generate a holiday calendar for Switzerland in German:
+
+```shell
+generate-ics CH --language de
+```
+
+Generate a holiday calendar for the Canton of Zurich for a specific year:
+
+```shell
+generate-ics CH --subdiv ZH --years 2025
+```
+
+Generate a holiday calendar for multiple years and save it to a custom file:
+
+```shell
+generate-ics US --years 2025-2027 --output us_holidays.ics
+```
+
+Generate a calendar containing only bank holidays:
+
+```shell
+generate-ics AT --years 2025 --categories bank
+```
+
+Generate a calendar containing public and optional holidays:
+
+```shell
+generate-ics CA --years 2025 --categories public,optional
+```
+
+Generate a localized subdivision-specific calendar and save it to a custom file:
+
+```shell
+generate-ics CH --subdiv ZH --years 2025 --language de --output zurich_holidays.ics
+```
+
+Generate a financial market holiday calendar:
+
+```shell
+generate-ics XNYS --years 2025 --output nyse_holidays.ics
+```
