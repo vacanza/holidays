@@ -1952,6 +1952,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Chicago Mercantile Exchange</td>
+<td>XCME</td>
+<td>Chicago Mercantile Exchange market holidays</td>
+<td><strong>en_US</strong>, gu, hi</td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>European Central Bank</td>
 <td>XECB</td>
 <td>Trans-European Automated Real-time Gross Settlement (TARGET2)</td>

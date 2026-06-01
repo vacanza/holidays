@@ -49,6 +49,7 @@ class NewYorkStockExchange(
     """
 
     market = "XNYS"
+    # %s (observed)
     observed_label = "%s (observed)"
     start_year = 1863
     supported_categories = (HALF_DAY, PUBLIC)
