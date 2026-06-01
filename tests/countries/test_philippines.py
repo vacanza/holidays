@@ -184,8 +184,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
         name = "Founding Anniversary of Iglesia ni Cristo"
         self.assertNoHolidayName(name)
         self.assertWorkdayHolidayName(
-            name,
-            (f"{year}-07-27" for year in (*range(2009, 2025), *range(2026, self.end_year))),
+            name, (f"{year}-07-27" for year in (*range(2009, 2025), *range(2026, self.end_year)))
         )
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 2009), 2025)
 

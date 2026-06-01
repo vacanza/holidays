@@ -272,9 +272,7 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
         )
         self.assertNoHolidayName(name, (f"{year}-12-25" for year in range(self.start_year, 2017)))
         self.assertWorkdayHolidayName(
-            name,
-            "2023-01-07",
-            (f"{year}-12-25" for year in range(2022, self.end_year)),
+            name, "2023-01-07", (f"{year}-12-25" for year in range(2022, self.end_year))
         )
         self.assertNoWorkdayHolidayName(
             name, (f"{year}-01-07" for year in range(2024, self.end_year))

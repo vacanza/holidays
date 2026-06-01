@@ -494,13 +494,10 @@ class TestGermany(CommonCountryTests, TestCase):
 
     def test_public_category_excludes_school_holidays(self):
         self.assertHolidayName(
-            "Neujahr",
-            Germany(subdiv="BY", years=2025, categories=PUBLIC),
-            "2025-01-01",
+            "Neujahr", Germany(subdiv="BY", years=2025, categories=PUBLIC), "2025-01-01"
         )
         self.assertNoHolidayName(
-            "Sommerferien",
-            Germany(subdiv="BY", years=2025, categories=PUBLIC),
+            "Sommerferien", Germany(subdiv="BY", years=2025, categories=PUBLIC)
         )
 
     def test_l10n_default(self):

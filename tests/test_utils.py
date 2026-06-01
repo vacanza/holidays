@@ -306,10 +306,7 @@ class TestListLongBreaks(unittest.TestCase):
 
     def test_long_break_single(self):
         cs1 = CountryStub1(years=2025)
-        self.assertLongBreaksEqual(
-            cs1,
-            [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]],
-        )
+        self.assertLongBreaksEqual(cs1, [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]])
 
     def test_long_break_multiple(self):
         cs2 = CountryStub2(years=2025)
@@ -323,10 +320,7 @@ class TestListLongBreaks(unittest.TestCase):
 
     def test_long_break_require_weekend_overlap(self):
         cs1 = CountryStub1(years=2025)
-        self.assertLongBreaksEqual(
-            cs1,
-            [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]],
-        )
+        self.assertLongBreaksEqual(cs1, [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]])
         self.assertLongBreaksEqual(
             cs1,
             [
@@ -339,8 +333,7 @@ class TestListLongBreaks(unittest.TestCase):
     def test_long_break_custom_weekend(self):
         cs3 = CountryStub3(years=2025)
         self.assertLongBreaksEqual(
-            cs3,
-            [[date(2025, 4, 10), date(2025, 4, 11), date(2025, 4, 12)]],
+            cs3, [[date(2025, 4, 10), date(2025, 4, 11), date(2025, 4, 12)]]
         )
 
     def test_long_break_no_holidays(self):
@@ -364,14 +357,10 @@ class TestListLongBreaks(unittest.TestCase):
     def test_long_break_across_years(self):
         cs5 = CountryStub5(years=2024)
         self.assertLongBreaksEqual(
-            cs5,
-            [[date(2023, 12, 30), date(2023, 12, 31), date(2024, 1, 1)]],
+            cs5, [[date(2023, 12, 30), date(2023, 12, 31), date(2024, 1, 1)]]
         )
         cs5 = CountryStub5(years=2021)
-        self.assertLongBreaksEqual(
-            cs5,
-            [[date(2021, 12, 31), date(2022, 1, 1), date(2022, 1, 2)]],
-        )
+        self.assertLongBreaksEqual(cs5, [[date(2021, 12, 31), date(2022, 1, 1), date(2022, 1, 2)]])
 
     def test_long_break_real_country_holidays_data(self):
         self.assertEqual(

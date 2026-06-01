@@ -12,9 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.saint_vincent_and_the_grenadines import (
-    SaintVincentAndTheGrenadines,
-)
+from holidays.countries.saint_vincent_and_the_grenadines import SaintVincentAndTheGrenadines
 from tests.common import CommonCountryTests
 
 
