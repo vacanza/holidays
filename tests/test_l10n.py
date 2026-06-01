@@ -89,6 +89,14 @@ class TestLocalization(unittest.TestCase):
                 f"{', '.join(oe.msgid for oe in obsolete_entries)}",
             )
 
+            # Make sure no entries without l10n comment.
+            for entry in po_file:
+                self.assertTrue(
+                    entry.comment,
+                    f"The {entity_code} {language} localization contains missing comment "
+                    f"in line {entry.linenum}: msgid `{entry.msgid}`",
+                )
+
             entity = getattr(holidays, entity_code)
 
             # Skip original language files.
