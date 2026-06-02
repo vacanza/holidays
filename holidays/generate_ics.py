@@ -26,6 +26,7 @@ from holidays.registry import EntityLoader
 
 class IcsGenerator:
     args: Namespace
+    entity: HolidayBase
     entity_loader: Callable[..., HolidayBase]
 
     def __init__(self):
@@ -83,9 +84,10 @@ class IcsGenerator:
             raise SystemExit(f"Unsupported entity code: '{self.args.code}'")
 
         self.entity_loader = entity_loader
+        self.entity = entity_loader()
 
     def validate_years(self) -> None:
-        start_year, end_year = self.entity_loader().start_year, self.entity_loader().end_year
+        start_year, end_year = self.entity.start_year, self.entity.end_year
         min_year, max_year = min(self.args.years), max(self.args.years)
         if min_year < start_year or max_year > end_year:
             year_part = (
@@ -107,7 +109,7 @@ class IcsGenerator:
             self.entity_loader(subdiv=self.args.subdiv)
 
         except NotImplementedError:
-            supported_subdivisions = self.entity_loader().subdivisions
+            supported_subdivisions = self.entity.subdivisions
             raise SystemExit(
                 f"Subdivision '{self.args.subdiv}' is not supported for {self.args.code}. "
                 f"Supported subdivisions: {', '.join(supported_subdivisions)}"
@@ -117,7 +119,7 @@ class IcsGenerator:
         if not self.args.categories:
             return None
 
-        supported_categories = self.entity_loader().supported_categories
+        supported_categories = self.entity.supported_categories
         unknown_categories = set(self.args.categories).difference(supported_categories)
         if unknown_categories:
             raise SystemExit(
@@ -130,7 +132,7 @@ class IcsGenerator:
         if not self.args.language:
             return None
 
-        supported_languages = self.entity_loader().supported_languages
+        supported_languages = self.entity.supported_languages
         if self.args.language not in supported_languages:
             raise SystemExit(
                 f"Language '{self.args.language}' is not supported for {self.args.code}. "
