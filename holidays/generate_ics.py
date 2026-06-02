@@ -13,6 +13,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import warnings
 from argparse import ArgumentParser, ArgumentTypeError, Namespace
 from collections.abc import Callable, Iterable
 from datetime import datetime, timezone
@@ -83,6 +84,21 @@ class IcsGenerator:
 
         self.entity_loader = entity_loader
 
+    def validate_years(self) -> None:
+        start_year, end_year = self.entity_loader().start_year, self.entity_loader().end_year
+        min_year, max_year = min(self.args.years), max(self.args.years)
+        if min_year < start_year or max_year > end_year:
+            year_part = (
+                f"year {min_year} is not supported"
+                if min_year == max_year
+                else f"year range {min_year}-{max_year} is not fully supported"
+            )
+            warnings.warn(
+                f"{year_part} for {self.args.code} (supported: {start_year}-{end_year}). "
+                "Holidays may be incomplete or missing.",
+                UserWarning,
+            )
+
     def validate_subdiv(self) -> None:
         if not self.args.subdiv:
             return None
@@ -123,6 +139,7 @@ class IcsGenerator:
 
     def run(self) -> None:
         self.validate_code()
+        self.validate_years()
         self.validate_subdiv()
         self.validate_language()
         self.validate_categories()

@@ -12,6 +12,7 @@
 
 import os
 import re
+import warnings
 from argparse import ArgumentTypeError
 from contextlib import contextmanager
 from datetime import datetime
@@ -107,6 +108,43 @@ class TestGenerateIcs(TestCase):
                 generator.validate_code()
 
             self.assertIn("Unsupported entity code:", str(context.exception))
+
+    def test_validate_years_valid(self):
+        with self.argv("US", "--years", "2025"):
+            generator = IcsGenerator()
+        generator.validate_code()
+
+        with warnings.catch_warnings(record=True) as caught_warnings:
+            warnings.simplefilter("always")
+            generator.validate_years()
+        self.assertEqual(len(caught_warnings), 0)
+
+    def test_validate_years_before_start(self):
+        with self.argv("US", "--years", "1700"):
+            generator = IcsGenerator()
+        generator.validate_code()
+
+        with self.assertWarns(UserWarning) as context:
+            generator.validate_years()
+        self.assertIn("year 1700 is not supported", str(context.warning))
+
+    def test_validate_years_beyond_end(self):
+        with self.argv("US", "--years", "9999"):
+            generator = IcsGenerator()
+        generator.validate_code()
+
+        with self.assertWarns(UserWarning) as context:
+            generator.validate_years()
+        self.assertIn("year 9999 is not supported", str(context.warning))
+
+    def test_validate_years_range_partially_outside(self):
+        with self.argv("US", "--years", "1700-2025"):
+            generator = IcsGenerator()
+        generator.validate_code()
+
+        with self.assertWarns(UserWarning) as context:
+            generator.validate_years()
+        self.assertIn("year range 1700-2025 is not fully supported", str(context.warning))
 
     def test_validate_subdiv_valid(self):
         with self.argv("US", "--subdiv", "CA"):
