@@ -13,7 +13,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import warnings
+import sys
 from argparse import ArgumentParser, ArgumentTypeError, Namespace
 from collections.abc import Callable, Iterable
 from datetime import datetime, timezone
@@ -95,10 +95,10 @@ class IcsGenerator:
                 if min_year == max_year
                 else f"year range {min_year}-{max_year} is not fully supported"
             )
-            warnings.warn(
-                f"{year_part} for {self.args.code} (supported: {start_year}-{end_year}). "
+            print(
+                f"Warning: {year_part} for {self.args.code} (supported: {start_year}-{end_year}). "
                 "Holidays may be incomplete or missing.",
-                UserWarning,
+                file=sys.stderr,
             )
 
     def validate_subdiv(self) -> None:
