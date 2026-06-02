@@ -189,7 +189,7 @@ function holidayDownloads() {
             this.isGenerating = true;
             const categories = this.categoriesToFetch;
             const fetches = categories.map(cat =>
-                this._fetchFile(this._getPath(cat, 'ics')).then(r => r.ok ? r.text() : "").catch(() => "");
+                this._fetchFile(this._getPath(cat, 'ics')).then(r => r.ok ? r.text() : "").catch(() => "")
             );
 
             const results = await Promise.all(fetches);
