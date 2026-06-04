@@ -36,17 +36,15 @@ class TestIslamicMabimsLunar(unittest.TestCase):
             2026: date(2026, MAR, 21),
         }
         for year, expected_date in eid_al_fitr_dates.items():
-            dates = {dt for dt, _ in self.calendar.eid_al_fitr_dates(year)}
-            self.assertIn(
-                expected_date,
-                dates,
-                f"Eid al-Fitr {year}: expected {expected_date}, got {dates}",
-            )
+            dates = {dt: is_estimated for dt, is_estimated in self.calendar.eid_al_fitr_dates(year)}
+            self.assertIn(expected_date, dates)
+            self.assertFalse(dates[expected_date], f"Eid al-Fitr {year} should be confirmed, not estimated")
 
     def test_eid_al_adha_dates(self):
         eid_al_adha_dates = {
             2001: date(2001, MAR, 6),
             2002: date(2002, FEB, 23),
+            2006: date(2006, DEC, 31),
             2010: date(2010, NOV, 17),
             2014: date(2014, OCT, 5),
             2022: date(2022, JUL, 10),
@@ -56,12 +54,25 @@ class TestIslamicMabimsLunar(unittest.TestCase):
             2026: date(2026, MAY, 27),
         }
         for year, expected_date in eid_al_adha_dates.items():
-            dates = {dt for dt, _ in self.calendar.eid_al_adha_dates(year)}
-            self.assertIn(
-                expected_date,
-                dates,
-                f"Eid al-Adha {year}: expected {expected_date}, got {dates}",
-            )
+            dates = {dt: is_estimated for dt, is_estimated in self.calendar.eid_al_adha_dates(year)}
+            self.assertIn(expected_date, dates)
+            self.assertFalse(dates[expected_date], f"Eid al-Adha {year} should be confirmed, not estimated")
+
+    def test_eid_al_adha_2006_dual_date(self):
+        """2006 has two Eid al-Adha dates - Jan 10 and Dec 31."""
+        dates = {dt for dt, _ in self.calendar.eid_al_adha_dates(2006)}
+        self.assertIn(date(2006, 1, 10), dates)
+        self.assertIn(date(2006, 12, 31), dates)
+
+    def test_fallback_to_base_outside_range(self):
+        """Years outside 2001-2026 should fall back to base _IslamicLunar dates."""
+        dates_1990 = list(self.calendar.eid_al_fitr_dates(1990))
+        dates_2030 = list(self.calendar.eid_al_fitr_dates(2030))
+        self.assertTrue(len(dates_1990) > 0)
+        self.assertTrue(len(dates_2030) > 0)
+        # Outside confirmed range should be estimated
+        for _, is_estimated in dates_1990:
+            self.assertTrue(is_estimated)
 
 
 if __name__ == "__main__":
