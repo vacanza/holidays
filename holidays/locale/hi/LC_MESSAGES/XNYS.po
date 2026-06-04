@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.99\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-03 06:52+0000\n"
-"PO-Revision-Date: 2026-06-04 05:13+0000\n"
+"PO-Revision-Date: 2026-06-04 11:21+0000\n"
 "Last-Translator: Paresh Joshi <194076591+pareshjoshij@users.noreply.github.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -96,11 +96,11 @@ msgstr "क्रिसमस का दिन"
 msgid "Pending outbreak of World War I"
 msgstr "प्रथम विश्व युद्ध का आसन्न प्रकोप"
 
-#. WED.
+#. Paperwork Crisis.
 msgid "Paperwork Crisis"
 msgstr "कागजी कार्रवाई का संकट"
 
-#. Closed Saturdays.
+#. Closed Saturday.
 msgid "Closed Saturday"
 msgstr "शनिवार को बंद"
 

@@ -862,13 +862,16 @@ class HolidayBase(dict[date, str]):
             for data in _normalize_tuple(getattr(self, mapping_name, {}).get(self._year, ())):
                 if len(data) == 3:  # Special holidays.
                     month, day, name = data
-                    self._add_holiday(
-                        self.tr(self.observed_label) % self.tr(name)
-                        if observed
-                        else self.tr(name),
-                        month,
-                        day,
-                    )
+                    if isinstance(name, tuple):  # Composite label (fmt, inner).
+                        fmt, inner = name
+                        translated_name = self.tr(fmt) % self.tr(inner)
+                    else:
+                        translated_name = (
+                            self.tr(self.observed_label) % self.tr(name)
+                            if observed
+                            else self.tr(name)
+                        )
+                    self._add_holiday(translated_name, month, day)
                 else:  # Substituted holidays.
                     to_month, to_day, from_month, from_day, *optional = data
                     from_date = date(optional[0] if optional else self._year, from_month, from_day)

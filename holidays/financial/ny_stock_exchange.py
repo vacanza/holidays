@@ -181,8 +181,15 @@ class NewYorkStockExchange(
             )
         elif self._year == 1968:
             # WED.
-            self._populate_ranged_holidays(tr("Paperwork Crisis"), (JUN, 12), (DEC, 24), 7)
+            self._populate_ranged_holidays(
+                # Paperwork Crisis.
+                tr("Paperwork Crisis"),
+                (JUN, 12),
+                (DEC, 24),
+                7,
+            )
 
+        # Closed Saturdays.
         closed_sat_date_ranges = {
             # Start date, end date.
             1944: ((AUG, 19), (SEP, 2)),
@@ -197,7 +204,7 @@ class NewYorkStockExchange(
         }
         if self._year in closed_sat_date_ranges:
             start, end = closed_sat_date_ranges[self._year]
-            # Closed Saturdays.
+            # Closed Saturday.
             self._populate_ranged_holidays(tr("Closed Saturday"), start, end, 7)
 
     def _populate_half_day_holidays(self):
@@ -331,8 +338,8 @@ class NewYorkStockExchangeStaticHolidays:
     # Liberty Day.
     name_liberty_day = tr("Liberty Day")
 
+    # Heavy volume. To allow member firm offices to catch up on work.
     name_heavy_volume_catch_up = tr(
-        # Heavy volume. To allow member firm offices to catch up on work.
         "Heavy volume. To allow member firm offices to catch up on work"
     )
 
@@ -748,62 +755,66 @@ class NewYorkStockExchangeStaticHolidays:
 
     special_half_day_holidays = {
         # Funeral of former President Grover Cleveland.
-        1908: (JUN, 26, close_1pm_label % tr("Funeral of former President Grover Cleveland")),
+        1908: (JUN, 26, (close_1pm_label, tr("Funeral of former President Grover Cleveland"))),
         # Death of King Edward VII of England.
-        1910: (MAY, 7, close_11am_label % tr("Death of King Edward VII of England")),
+        1910: (MAY, 7, (close_11am_label, tr("Death of King Edward VII of England"))),
         1917: (
             # Parade of National Guard.
-            (AUG, 29, close_12pm_label % tr("Parade of National Guard")),
-            (OCT, 24, close_12pm_label % name_liberty_day),
+            (AUG, 29, (close_12pm_label, tr("Parade of National Guard"))),
+            (OCT, 24, (close_12pm_label, name_liberty_day)),
         ),
         1918: (
-            (APR, 26, close_12pm_label % name_liberty_day),
+            (APR, 26, (close_12pm_label, name_liberty_day)),
             # False armistice report.
-            (NOV, 7, close_2_30pm_label % tr("False armistice report")),
+            (NOV, 7, (close_2_30pm_label, tr("False armistice report"))),
         ),
-        # Funeral of former President Theodore Roosevelt.
-        1919: (JAN, 7, close_12_30pm_label % tr("Funeral of former President Theodore Roosevelt")),
+        1919: (
+            JAN,
+            7,
+            # Funeral of former President Theodore Roosevelt.
+            (close_12_30pm_label, tr("Funeral of former President Theodore Roosevelt")),
+        ),
         # Wall Street explosion.
-        1920: (SEP, 16, close_12pm_label % tr("Wall Street explosion")),
+        1920: (SEP, 16, (close_12pm_label, tr("Wall Street explosion"))),
         # Funeral of former President Woodrow Wilson.
-        1924: (FEB, 6, close_12_30pm_label % tr("Funeral of former President Woodrow Wilson")),
+        1924: (FEB, 6, (close_12_30pm_label, tr("Funeral of former President Woodrow Wilson"))),
         1925: (
             SEP,
             18,
             # Funeral of former NYSE president Seymour L. Cromwell.
-            close_2_30pm_label % tr("Funeral of former NYSE president Seymour L. Cromwell"),
+            (close_2_30pm_label, tr("Funeral of former NYSE president Seymour L. Cromwell")),
         ),
         1928: (
-            (MAY, 21, close_2pm_label % name_heavy_volume_catch_up),
-            (MAY, 22, close_2pm_label % name_heavy_volume_catch_up),
-            (MAY, 23, close_2pm_label % name_heavy_volume_catch_up),
-            (MAY, 24, close_2pm_label % name_heavy_volume_catch_up),
-            (MAY, 25, close_2pm_label % name_heavy_volume_catch_up),
+            (MAY, 21, (close_2pm_label, name_heavy_volume_catch_up)),
+            (MAY, 22, (close_2pm_label, name_heavy_volume_catch_up)),
+            (MAY, 23, (close_2pm_label, name_heavy_volume_catch_up)),
+            (MAY, 24, (close_2pm_label, name_heavy_volume_catch_up)),
+            (MAY, 25, (close_2pm_label, name_heavy_volume_catch_up)),
         ),
         1929: (
-            (NOV, 6, close_1pm_label % name_catch_up_day),
-            (NOV, 7, close_1pm_label % name_catch_up_day),
-            (NOV, 8, close_1pm_label % name_catch_up_day),
-            (NOV, 11, close_1pm_label % name_catch_up_day),
-            (NOV, 12, close_1pm_label % name_catch_up_day),
-            (NOV, 13, close_1pm_label % name_catch_up_day),
-            (NOV, 14, close_1pm_label % name_catch_up_day),
-            (NOV, 15, close_1pm_label % name_catch_up_day),
-            (NOV, 18, close_1pm_label % name_catch_up_day),
-            (NOV, 19, close_1pm_label % name_catch_up_day),
-            (NOV, 20, close_1pm_label % name_catch_up_day),
-            (NOV, 21, close_1pm_label % name_catch_up_day),
-            (NOV, 22, close_1pm_label % name_catch_up_day),
+            (NOV, 6, (close_1pm_label, name_catch_up_day)),
+            (NOV, 7, (close_1pm_label, name_catch_up_day)),
+            (NOV, 8, (close_1pm_label, name_catch_up_day)),
+            (NOV, 11, (close_1pm_label, name_catch_up_day)),
+            (NOV, 12, (close_1pm_label, name_catch_up_day)),
+            (NOV, 13, (close_1pm_label, name_catch_up_day)),
+            (NOV, 14, (close_1pm_label, name_catch_up_day)),
+            (NOV, 15, (close_1pm_label, name_catch_up_day)),
+            (NOV, 18, (close_1pm_label, name_catch_up_day)),
+            (NOV, 19, (close_1pm_label, name_catch_up_day)),
+            (NOV, 20, (close_1pm_label, name_catch_up_day)),
+            (NOV, 21, (close_1pm_label, name_catch_up_day)),
+            (NOV, 22, (close_1pm_label, name_catch_up_day)),
         ),
         1930: (
             MAR,
             11,
             # Funeral of former President William Howard Taft.
-            close_12_30pm_label % tr("Funeral of former President William Howard Taft"),
+            (close_12_30pm_label, tr("Funeral of former President William Howard Taft")),
         ),
         # NRA demonstration.
-        1933: (SEP, 13, close_12pm_label % tr("NRA demonstration")),
-        1951: (DEC, 24, close_1pm_label % name_christmas_eve),
+        1933: (SEP, 13, (close_12pm_label, tr("NRA demonstration"))),
+        1951: (DEC, 24, (close_1pm_label, name_christmas_eve)),
         1963: (
             NOV,
             22,
@@ -811,35 +822,35 @@ class NewYorkStockExchangeStaticHolidays:
             tr("Assassination of President John F. Kennedy (markets close at 2:07pm)"),
         ),
         # Funeral of former President Herbert C. Hoover.
-        1964: (OCT, 23, close_2pm_label % tr("Funeral of former President Herbert C. Hoover")),
+        1964: (OCT, 23, (close_2pm_label, tr("Funeral of former President Herbert C. Hoover"))),
         1966: (
-            (JAN, 6, close_2pm_label % name_transit_strike),
-            (JAN, 7, close_2pm_label % name_transit_strike),
-            (JAN, 10, close_2pm_label % name_transit_strike),
-            (JAN, 11, close_2pm_label % name_transit_strike),
-            (JAN, 12, close_2pm_label % name_transit_strike),
-            (JAN, 13, close_2pm_label % name_transit_strike),
-            (JAN, 14, close_2pm_label % name_transit_strike),
+            (JAN, 6, (close_2pm_label, name_transit_strike)),
+            (JAN, 7, (close_2pm_label, name_transit_strike)),
+            (JAN, 10, (close_2pm_label, name_transit_strike)),
+            (JAN, 11, (close_2pm_label, name_transit_strike)),
+            (JAN, 12, (close_2pm_label, name_transit_strike)),
+            (JAN, 13, (close_2pm_label, name_transit_strike)),
+            (JAN, 14, (close_2pm_label, name_transit_strike)),
         ),
         1967: (
-            (AUG, 8, close_2pm_label % name_back_office_work_load),
-            (AUG, 9, close_2pm_label % name_back_office_work_load),
-            (AUG, 10, close_2pm_label % name_back_office_work_load),
-            (AUG, 11, close_2pm_label % name_back_office_work_load),
-            (AUG, 14, close_2pm_label % name_back_office_work_load),
-            (AUG, 15, close_2pm_label % name_back_office_work_load),
-            (AUG, 16, close_2pm_label % name_back_office_work_load),
-            (AUG, 17, close_2pm_label % name_back_office_work_load),
-            (AUG, 18, close_2pm_label % name_back_office_work_load),
+            (AUG, 8, (close_2pm_label, name_back_office_work_load)),
+            (AUG, 9, (close_2pm_label, name_back_office_work_load)),
+            (AUG, 10, (close_2pm_label, name_back_office_work_load)),
+            (AUG, 11, (close_2pm_label, name_back_office_work_load)),
+            (AUG, 14, (close_2pm_label, name_back_office_work_load)),
+            (AUG, 15, (close_2pm_label, name_back_office_work_load)),
+            (AUG, 16, (close_2pm_label, name_back_office_work_load)),
+            (AUG, 17, (close_2pm_label, name_back_office_work_load)),
+            (AUG, 18, (close_2pm_label, name_back_office_work_load)),
         ),
-        1974: (DEC, 24, close_2pm_label % name_christmas_eve),
+        1974: (DEC, 24, (close_2pm_label, name_christmas_eve)),
         1975: (
-            (FEB, 12, close_2_30pm_label % name_snowstorm),
-            (DEC, 24, close_2pm_label % name_christmas_eve),
+            (FEB, 12, (close_2_30pm_label, name_snowstorm)),
+            (DEC, 24, (close_2pm_label, name_christmas_eve)),
         ),
         # Hurricane watch.
-        1976: (AUG, 9, close_3pm_label % tr("Hurricane watch")),
-        1978: (FEB, 6, close_2pm_label % name_snowstorm),
+        1976: (AUG, 9, (close_3pm_label, tr("Hurricane watch"))),
+        1978: (FEB, 6, (close_2pm_label, name_snowstorm)),
         1981: (
             # Assassination attempt on President Reagan (markets close at 3:17pm).
             (MAR, 30, tr("Assassination attempt on President Reagan (markets close at 3:17pm)")),
@@ -847,35 +858,35 @@ class NewYorkStockExchangeStaticHolidays:
             (SEP, 9, tr("Con Edison power failure in lower Manhattan (markets close at 3:28pm)")),
         ),
         1987: (
-            (OCT, 23, close_2pm_label % name_shortened_hours_following_market_break),
-            (OCT, 26, close_2pm_label % name_shortened_hours_following_market_break),
-            (OCT, 27, close_2pm_label % name_shortened_hours_following_market_break),
-            (OCT, 28, close_2pm_label % name_shortened_hours_following_market_break),
-            (OCT, 29, close_2pm_label % name_shortened_hours_following_market_break),
-            (OCT, 30, close_2pm_label % name_shortened_hours_following_market_break),
-            (NOV, 2, close_2_30pm_label % name_shortened_hours_following_market_break),
-            (NOV, 3, close_2_30pm_label % name_shortened_hours_following_market_break),
-            (NOV, 4, close_2_30pm_label % name_shortened_hours_following_market_break),
-            (NOV, 5, close_3pm_label % name_shortened_hours_following_market_break),
-            (NOV, 6, close_3pm_label % name_shortened_hours_following_market_break),
-            (NOV, 9, close_3_30pm_label % name_shortened_hours_following_market_break),
-            (NOV, 10, close_3_30pm_label % name_shortened_hours_following_market_break),
-            (NOV, 11, close_3_30pm_label % name_shortened_hours_following_market_break),
+            (OCT, 23, (close_2pm_label, name_shortened_hours_following_market_break)),
+            (OCT, 26, (close_2pm_label, name_shortened_hours_following_market_break)),
+            (OCT, 27, (close_2pm_label, name_shortened_hours_following_market_break)),
+            (OCT, 28, (close_2pm_label, name_shortened_hours_following_market_break)),
+            (OCT, 29, (close_2pm_label, name_shortened_hours_following_market_break)),
+            (OCT, 30, (close_2pm_label, name_shortened_hours_following_market_break)),
+            (NOV, 2, (close_2_30pm_label, name_shortened_hours_following_market_break)),
+            (NOV, 3, (close_2_30pm_label, name_shortened_hours_following_market_break)),
+            (NOV, 4, (close_2_30pm_label, name_shortened_hours_following_market_break)),
+            (NOV, 5, (close_3pm_label, name_shortened_hours_following_market_break)),
+            (NOV, 6, (close_3pm_label, name_shortened_hours_following_market_break)),
+            (NOV, 9, (close_3_30pm_label, name_shortened_hours_following_market_break)),
+            (NOV, 10, (close_3_30pm_label, name_shortened_hours_following_market_break)),
+            (NOV, 11, (close_3_30pm_label, name_shortened_hours_following_market_break)),
         ),
-        1990: (DEC, 24, close_2pm_label % name_christmas_eve),
-        1991: (DEC, 24, close_2pm_label % name_christmas_eve),
+        1990: (DEC, 24, (close_2pm_label, name_christmas_eve)),
+        1991: (DEC, 24, (close_2pm_label, name_christmas_eve)),
         1992: (
             # Day after Thanksgiving Day.
-            (NOV, 27, close_2pm_label % tr("Day after Thanksgiving Day")),
-            (DEC, 24, close_2pm_label % name_christmas_eve),
+            (NOV, 27, (close_2pm_label, tr("Day after Thanksgiving Day"))),
+            (DEC, 24, (close_2pm_label, name_christmas_eve)),
         ),
-        1994: (FEB, 11, close_2_30pm_label % name_snowstorm),
-        1996: (JUL, 5, close_1pm_label % name_day_after_independence_day),
-        1997: (DEC, 26, close_1pm_label % name_friday_after_christmas),
+        1994: (FEB, 11, (close_2_30pm_label, name_snowstorm)),
+        1996: (JUL, 5, (close_1pm_label, name_day_after_independence_day)),
+        1997: (DEC, 26, (close_1pm_label, name_friday_after_christmas)),
         # New Year's Eve.
-        1999: (DEC, 31, close_1pm_label % tr("New Year's Eve")),
-        2002: (JUL, 5, close_1pm_label % name_day_after_independence_day),
-        2003: (DEC, 26, close_1pm_label % name_friday_after_christmas),
+        1999: (DEC, 31, (close_1pm_label, tr("New Year's Eve"))),
+        2002: (JUL, 5, (close_1pm_label, name_day_after_independence_day)),
+        2003: (DEC, 26, (close_1pm_label, name_friday_after_christmas)),
         # Day before Independence Day.
-        2013: (JUL, 3, close_1pm_label % tr("Day before Independence Day")),
+        2013: (JUL, 3, (close_1pm_label, tr("Day before Independence Day"))),
     }
