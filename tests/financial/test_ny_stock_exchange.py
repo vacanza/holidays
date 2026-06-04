@@ -820,7 +820,6 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            "en_US",
             ("2024-01-01", "New Year's Day"),
             ("2024-01-15", "Martin Luther King Jr. Day"),
             ("2024-02-19", "Washington's Birthday"),

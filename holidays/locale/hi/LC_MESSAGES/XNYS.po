@@ -5,6 +5,17 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #             dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #             ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -17,7 +28,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.98\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-03 06:52+0000\n"
-"PO-Revision-Date: 2026-06-04 01:31+0000\n"
+"PO-Revision-Date: 2026-06-04 05:13+0000\n"
 "Last-Translator: Paresh Joshi <194076591+pareshjoshij@users.noreply.github.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"

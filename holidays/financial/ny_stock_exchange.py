@@ -127,8 +127,10 @@ class NewYorkStockExchange(
             self._move_holiday(self._add_holiday_jun_14(tr("Flag Day")))
 
         if self._year >= 2022:
-            # Juneteenth National Independence Day.
-            self._move_holiday(self._add_holiday_jun_19(tr("Juneteenth National Independence Day")))
+            self._move_holiday(
+                # Juneteenth National Independence Day.
+                self._add_holiday_jun_19(tr("Juneteenth National Independence Day"))
+            )
 
         # Independence Day.
         self._move_holiday(self._add_holiday_jul_4(tr("Independence Day")))
@@ -171,8 +173,12 @@ class NewYorkStockExchange(
         # Special holidays.
 
         if self._year == 1914:
-            # Pending outbreak of World War I.
-            self._populate_ranged_holidays(tr("Pending outbreak of World War I"), (JUL, 31), (NOV, 27))
+            self._populate_ranged_holidays(
+                # Pending outbreak of World War I.
+                tr("Pending outbreak of World War I"),
+                (JUL, 31),
+                (NOV, 27),
+            )
         elif self._year == 1968:
             # WED.
             self._populate_ranged_holidays(tr("Paperwork Crisis"), (JUN, 12), (DEC, 24), 7)
@@ -206,7 +212,9 @@ class NewYorkStockExchange(
         if self._year == 1968:
             self._populate_ranged_holidays(
                 # Back office work load.
-                close_2pm_label % self.tr("Back office work load"), (JAN, 22), (MAR, 1)
+                close_2pm_label % self.tr("Back office work load"),
+                (JAN, 22),
+                (MAR, 1),
             )
         elif self._year == 1969:
             # THU.
@@ -323,8 +331,10 @@ class NewYorkStockExchangeStaticHolidays:
     # Liberty Day.
     name_liberty_day = tr("Liberty Day")
 
-    # Heavy volume. To allow member firm offices to catch up on work.
-    name_heavy_volume_catch_up = tr("Heavy volume. To allow member firm offices to catch up on work")
+    name_heavy_volume_catch_up = tr(
+        # Heavy volume. To allow member firm offices to catch up on work.
+        "Heavy volume. To allow member firm offices to catch up on work"
+    )
 
     # Saturday after Washington's Birthday.
     name_saturday_after_washingtons_birthday = tr("Saturday after Washington's Birthday")
@@ -785,13 +795,21 @@ class NewYorkStockExchangeStaticHolidays:
             (NOV, 21, close_1pm_label % name_catch_up_day),
             (NOV, 22, close_1pm_label % name_catch_up_day),
         ),
-        # Funeral of former President William Howard Taft.
-        1930: (MAR, 11, close_12_30pm_label % tr("Funeral of former President William Howard Taft")),
+        1930: (
+            MAR,
+            11,
+            # Funeral of former President William Howard Taft.
+            close_12_30pm_label % tr("Funeral of former President William Howard Taft"),
+        ),
         # NRA demonstration.
         1933: (SEP, 13, close_12pm_label % tr("NRA demonstration")),
         1951: (DEC, 24, close_1pm_label % name_christmas_eve),
-        # Assassination of President John F. Kennedy (markets close at 2:07pm).
-        1963: (NOV, 22, tr("Assassination of President John F. Kennedy (markets close at 2:07pm)")),
+        1963: (
+            NOV,
+            22,
+            # Assassination of President John F. Kennedy (markets close at 2:07pm).
+            tr("Assassination of President John F. Kennedy (markets close at 2:07pm)"),
+        ),
         # Funeral of former President Herbert C. Hoover.
         1964: (OCT, 23, close_2pm_label % tr("Funeral of former President Herbert C. Hoover")),
         1966: (
