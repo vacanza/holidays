@@ -1990,7 +1990,7 @@ code when available. The following financial markets are available:
 <td>NASDAQ</td>
 <td>XNAS</td>
 <td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
-<td></td>
+<td><strong>en_US</strong>, gu, hi</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2004,7 +2004,7 @@ code when available. The following financial markets are available:
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
 <td>NYSE market holidays</td>
-<td></td>
+<td><strong>en_US</strong>, gu, hi</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>

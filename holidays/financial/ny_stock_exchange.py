@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from gettext import gettext as tr
 
 from holidays.calendars.gregorian import (
     JAN,
@@ -49,7 +50,10 @@ class NewYorkStockExchange(
     """
 
     market = "XNYS"
-    observed_label = "%s (observed)"
+    default_language = "en_US"
+    supported_languages = ("en_US", "gu", "hi")
+    # %s (observed)
+    observed_label = tr("%s (observed)")
     start_year = 1863
     supported_categories = (HALF_DAY, PUBLIC)
 
@@ -89,63 +93,62 @@ class NewYorkStockExchange(
         # Therefore, New Year's Day holiday is not moved to Dec 31, even after 1952 amendments.
 
         # New Year's Day.
-        self._move_holiday(self._add_new_years_day("New Year's Day"))
+        self._move_holiday(self._add_new_years_day(tr("New Year's Day")))
 
-        # Martin Luther King Jr. Day.
         if self._year >= 1998:
-            self._add_holiday_3rd_mon_of_jan("Martin Luther King Jr. Day")
+            # Martin Luther King Jr. Day.
+            self._add_holiday_3rd_mon_of_jan(tr("Martin Luther King Jr. Day"))
 
-        # Lincoln's Birthday.
         if 1896 <= self._year <= 1953:
-            self._move_holiday(self._add_holiday_feb_12("Lincoln's Birthday"))
+            # Lincoln's Birthday.
+            self._move_holiday(self._add_holiday_feb_12(tr("Lincoln's Birthday")))
 
         # Washington's Birthday.
-        name = "Washington's Birthday"
+        name = tr("Washington's Birthday")
         if self._year >= 1971:
             self._add_holiday_3rd_mon_of_feb(name)
         else:
             self._move_holiday(self._add_holiday_feb_22(name))
 
-        # Good Friday.
         if self._year not in {1898, 1906, 1907}:
-            self._add_good_friday("Good Friday")
+            # Good Friday.
+            self._add_good_friday(tr("Good Friday"))
 
-        # Memorial Day.
         if self._year >= 1873:
-            name = "Memorial Day"
+            # Memorial Day.
+            name = tr("Memorial Day")
             if self._year >= 1971:
                 self._add_holiday_last_mon_of_may(name)
             else:
                 self._move_holiday(self._add_holiday_may_30(name))
 
-        # Flag Day.
         if 1916 <= self._year <= 1953:
-            self._move_holiday(self._add_holiday_jun_14("Flag Day"))
+            # Flag Day.
+            self._move_holiday(self._add_holiday_jun_14(tr("Flag Day")))
 
-        # Juneteenth National Independence Day.
         if self._year >= 2022:
-            self._move_holiday(self._add_holiday_jun_19("Juneteenth National Independence Day"))
+            # Juneteenth National Independence Day.
+            self._move_holiday(self._add_holiday_jun_19(tr("Juneteenth National Independence Day")))
 
         # Independence Day.
-        self._move_holiday(self._add_holiday_jul_4("Independence Day"))
+        self._move_holiday(self._add_holiday_jul_4(tr("Independence Day")))
 
-        # Labor Day.
         if self._year >= 1887:
-            self._add_holiday_1st_mon_of_sep("Labor Day")
+            # Labor Day.
+            self._add_holiday_1st_mon_of_sep(tr("Labor Day"))
 
-        # Columbus Day.
         if 1909 <= self._year <= 1953:
-            self._move_holiday(self._add_columbus_day("Columbus Day"))
+            # Columbus Day.
+            self._move_holiday(self._add_columbus_day(tr("Columbus Day")))
 
-        # Election Day.
         if self._year <= 1968 or self._year in {1972, 1976, 1980}:
-            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+            # Election Day.
+            self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
 
-        # Veteran's Day.
         if 1934 <= self._year <= 1953:
-            self._move_holiday(self._add_remembrance_day("Veteran's Day"))
+            # Veteran's Day.
+            self._move_holiday(self._add_remembrance_day(tr("Veteran's Day")))
 
-        # Thanksgiving Day.
         thanksgiving_day_dates = {
             1865: (DEC, 7),
             1869: (NOV, 18),
@@ -153,7 +156,8 @@ class NewYorkStockExchange(
             1940: (NOV, 21),
             1941: (NOV, 20),
         }
-        name = "Thanksgiving Day"
+        # Thanksgiving Day.
+        name = tr("Thanksgiving Day")
         if dt := thanksgiving_day_dates.get(self._year):
             self._add_holiday(name, dt)
         elif self._year >= 1942:
@@ -162,17 +166,17 @@ class NewYorkStockExchange(
             self._add_holiday_last_thu_of_nov(name)
 
         # Christmas Day.
-        self._move_holiday(self._add_christmas_day("Christmas Day"))
+        self._move_holiday(self._add_christmas_day(tr("Christmas Day")))
 
         # Special holidays.
 
         if self._year == 1914:
-            self._populate_ranged_holidays("Pending outbreak of World War I", (JUL, 31), (NOV, 27))
+            # Pending outbreak of World War I.
+            self._populate_ranged_holidays(tr("Pending outbreak of World War I"), (JUL, 31), (NOV, 27))
         elif self._year == 1968:
             # WED.
-            self._populate_ranged_holidays("Paperwork Crisis", (JUN, 12), (DEC, 24), 7)
+            self._populate_ranged_holidays(tr("Paperwork Crisis"), (JUN, 12), (DEC, 24), 7)
 
-        # Closed Saturdays.
         closed_sat_date_ranges = {
             # Start date, end date.
             1944: ((AUG, 19), (SEP, 2)),
@@ -187,27 +191,22 @@ class NewYorkStockExchange(
         }
         if self._year in closed_sat_date_ranges:
             start, end = closed_sat_date_ranges[self._year]
-            self._populate_ranged_holidays("Closed Saturday", start, end, 7)
+            # Closed Saturdays.
+            self._populate_ranged_holidays(tr("Closed Saturday"), start, end, 7)
 
     def _populate_half_day_holidays(self):
-        # %s (markets close at 1:00pm).
-        close_1pm_label = "%s (markets close at 1:00pm)"
-
-        # %s (markets close at 2:00pm).
-        close_2pm_label = "%s (markets close at 2:00pm)"
-
-        # %s (markets close at 2:30pm).
-        close_2_30pm_label = "%s (markets close at 2:30pm)"
-
-        # %s (markets close at 3:00pm).
-        close_3pm_label = "%s (markets close at 3:00pm)"
+        close_1pm_label = self.tr("%s (markets close at 1:00pm)")
+        close_2pm_label = self.tr("%s (markets close at 2:00pm)")
+        close_2_30pm_label = self.tr("%s (markets close at 2:30pm)")
+        close_3pm_label = self.tr("%s (markets close at 3:00pm)")
 
         # Special holidays.
 
-        name_paperwork_crisis = "Paperwork Crisis"
+        name_paperwork_crisis = self.tr("Paperwork Crisis")
         if self._year == 1968:
             self._populate_ranged_holidays(
-                close_2pm_label % "Back office work load", (JAN, 22), (MAR, 1)
+                # Back office work load.
+                close_2pm_label % self.tr("Back office work load"), (JAN, 22), (MAR, 1)
             )
         elif self._year == 1969:
             # THU.
@@ -232,23 +231,23 @@ class NewYorkStockExchange(
 
         # 1990-1992 early closings are covered by special holidays.
         if self._year >= 1993:
-            # Day before Independence Day.
             jul_4 = (JUL, 4)
             if (
                 self._is_weekday(jul_4)
                 and not self._is_monday(jul_4)
                 and self._year not in {1996, 2002}
             ):
-                self._add_holiday_jul_3(close_1pm_label % "Day before Independence Day")
+                # Day before Independence Day.
+                self._add_holiday_jul_3(close_1pm_label % self.tr("Day before Independence Day"))
 
-            # Day after Thanksgiving Day.
             self._add_holiday_1_day_past_4th_thu_of_nov(
-                close_1pm_label % "Day after Thanksgiving Day"
+                # Day after Thanksgiving Day.
+                close_1pm_label % self.tr("Day after Thanksgiving Day")
             )
 
-            # Christmas Eve.
             if self._is_weekday(self._christmas_day) and not self._is_monday(self._christmas_day):
-                self._add_christmas_eve(close_1pm_label % "Christmas Eve")
+                # Christmas Eve.
+                self._add_christmas_eve(close_1pm_label % self.tr("Christmas Eve"))
 
 
 class XNYS(NewYorkStockExchange):
@@ -268,127 +267,128 @@ class NewYorkStockExchangeStaticHolidays:
     """
 
     # %s (markets close at 11:00am).
-    close_11am_label = "%s (markets close at 11:00am)"
+    close_11am_label = tr("%s (markets close at 11:00am)")
 
     # %s (markets close at 12:00pm).
-    close_12pm_label = "%s (markets close at 12:00pm)"
+    close_12pm_label = tr("%s (markets close at 12:00pm)")
 
     # %s (markets close at 12:30pm).
-    close_12_30pm_label = "%s (markets close at 12:30pm)"
+    close_12_30pm_label = tr("%s (markets close at 12:30pm)")
 
     # %s (markets close at 1:00pm).
-    close_1pm_label = "%s (markets close at 1:00pm)"
+    close_1pm_label = tr("%s (markets close at 1:00pm)")
 
     # %s (markets close at 2:00pm).
-    close_2pm_label = "%s (markets close at 2:00pm)"
+    close_2pm_label = tr("%s (markets close at 2:00pm)")
 
     # %s (markets close at 2:30pm).
-    close_2_30pm_label = "%s (markets close at 2:30pm)"
+    close_2_30pm_label = tr("%s (markets close at 2:30pm)")
 
     # %s (markets close at 3:00pm).
-    close_3pm_label = "%s (markets close at 3:00pm)"
+    close_3pm_label = tr("%s (markets close at 3:00pm)")
 
     # %s (markets close at 3:30pm).
-    close_3_30pm_label = "%s (markets close at 3:30pm)"
+    close_3_30pm_label = tr("%s (markets close at 3:30pm)")
 
     # Blizzard of 1888.
-    name_blizzard_of_1888 = "Blizzard of 1888"
+    name_blizzard_of_1888 = tr("Blizzard of 1888")
 
     # Centennial of George Washington's Inauguration.
-    name_centennial_of_gw_inauguration = "Centennial of George Washington's Inauguration"
+    name_centennial_of_gw_inauguration = tr("Centennial of George Washington's Inauguration")
 
     # Columbian Celebration.
-    name_columbian_celebration = "Columbian Celebration"
+    name_columbian_celebration = tr("Columbian Celebration")
 
     # Heatless Day.
-    name_heatless_day = "Heatless Day"
+    name_heatless_day = tr("Heatless Day")
 
     # Catch Up Day.
-    name_catch_up_day = "Catch Up Day"
+    name_catch_up_day = tr("Catch Up Day")
 
     # Special Bank Holiday.
-    name_national_banking_holiday = "National Banking Holiday"
+    name_national_banking_holiday = tr("National Banking Holiday")
 
     # V-J Day. End of World War II.
-    name_vj_day = "V-J Day. End of World War II"
+    name_vj_day = tr("V-J Day. End of World War II")
 
     # Christmas Eve.
-    name_christmas_eve = "Christmas Eve"
+    name_christmas_eve = tr("Christmas Eve")
 
     # Closed following Attacks on the World Trade Center.
-    name_closed_following_wtc_attacks = "Closed following Attacks on the World Trade Center"
+    name_closed_following_wtc_attacks = tr("Closed following Attacks on the World Trade Center")
 
     # Hurricane Sandy.
-    name_hurricane_sandy = "Hurricane Sandy"
+    name_hurricane_sandy = tr("Hurricane Sandy")
 
     # Liberty Day.
-    name_liberty_day = "Liberty Day"
+    name_liberty_day = tr("Liberty Day")
 
     # Heavy volume. To allow member firm offices to catch up on work.
-    name_heavy_volume_catch_up = "Heavy volume. To allow member firm offices to catch up on work"
+    name_heavy_volume_catch_up = tr("Heavy volume. To allow member firm offices to catch up on work")
 
     # Saturday after Washington's Birthday.
-    name_saturday_after_washingtons_birthday = "Saturday after Washington's Birthday"
+    name_saturday_after_washingtons_birthday = tr("Saturday after Washington's Birthday")
 
     # Saturday after Good Friday.
-    name_saturday_after_good_friday = "Saturday after Good Friday"
+    name_saturday_after_good_friday = tr("Saturday after Good Friday")
 
     # Saturday before Decoration Day.
-    name_saturday_before_decoration_day = "Saturday before Decoration Day"
+    name_saturday_before_decoration_day = tr("Saturday before Decoration Day")
 
     # Saturday after Decoration Day.
-    name_saturday_after_decoration_day = "Saturday after Decoration Day"
+    name_saturday_after_decoration_day = tr("Saturday after Decoration Day")
 
     # Saturday before Independence Day.
-    name_saturday_before_independence_day = "Saturday before Independence Day"
+    name_saturday_before_independence_day = tr("Saturday before Independence Day")
 
     # Saturday after Independence Day.
-    name_saturday_after_independence_day = "Saturday after Independence Day"
+    name_saturday_after_independence_day = tr("Saturday after Independence Day")
 
     # Day after Independence Day.
-    name_day_after_independence_day = "Day after Independence Day"
+    name_day_after_independence_day = tr("Day after Independence Day")
 
     # Saturday before Labor Day.
-    name_saturday_before_labor_day = "Saturday before Labor Day"
+    name_saturday_before_labor_day = tr("Saturday before Labor Day")
 
     # Saturday after Columbus Day.
-    name_saturday_after_columbus_day = "Saturday after Columbus Day"
+    name_saturday_after_columbus_day = tr("Saturday after Columbus Day")
 
     # Saturday before Christmas.
-    name_saturday_before_christmas_day = "Saturday before Christmas Day"
+    name_saturday_before_christmas_day = tr("Saturday before Christmas Day")
 
     # Friday after Christmas Day.
-    name_friday_after_christmas = "Friday after Christmas Day"
+    name_friday_after_christmas = tr("Friday after Christmas Day")
 
     # Saturday after Christmas Day.
-    name_saturday_after_christmas_day = "Saturday after Christmas Day"
+    name_saturday_after_christmas_day = tr("Saturday after Christmas Day")
 
     # Admiral Dewey Celebration.
-    name_admiral_dewey_celebration = "Admiral Dewey Celebration"
+    name_admiral_dewey_celebration = tr("Admiral Dewey Celebration")
 
     # Draft Registration Day.
-    name_draft_registration_day = "Draft Registration Day"
+    name_draft_registration_day = tr("Draft Registration Day")
 
     # To allow offices to catch up on work.
-    name_to_catch_up = "To allow offices to catch up on work"
+    name_to_catch_up = tr("To allow offices to catch up on work")
 
     # Volume activity.
-    name_volume_activity = "Volume activity"
+    name_volume_activity = tr("Volume activity")
 
     # Transit strike.
-    name_transit_strike = "Transit strike"
+    name_transit_strike = tr("Transit strike")
 
     # Back office work load.
-    name_back_office_work_load = "Back office work load"
+    name_back_office_work_load = tr("Back office work load")
 
     # Snowstorm.
-    name_snowstorm = "Snowstorm"
+    name_snowstorm = tr("Snowstorm")
 
     # Shortened hours following market break.
-    name_shortened_hours_following_market_break = "Shortened hours following market break"
+    name_shortened_hours_following_market_break = tr("Shortened hours following market break")
 
     special_public_holidays = {
-        1885: (AUG, 8, "Funeral of former President Ulysses S. Grant"),
+        # Funeral of former President Ulysses S. Grant.
+        1885: (AUG, 8, tr("Funeral of former President Ulysses S. Grant")),
         1887: (
             (JUL, 2, name_saturday_before_independence_day),
             (DEC, 24, name_saturday_before_christmas_day),
@@ -397,7 +397,8 @@ class NewYorkStockExchangeStaticHolidays:
             (MAR, 12, name_blizzard_of_1888),
             (MAR, 13, name_blizzard_of_1888),
             (SEP, 1, name_saturday_before_labor_day),
-            (NOV, 30, "Friday after Thanksgiving Day"),
+            # Friday after Thanksgiving Day.
+            (NOV, 30, tr("Friday after Thanksgiving Day")),
         ),
         1889: (
             (APR, 29, name_centennial_of_gw_inauguration),
@@ -414,21 +415,28 @@ class NewYorkStockExchangeStaticHolidays:
         ),
         1893: (APR, 27, name_columbian_celebration),
         1896: (DEC, 26, name_saturday_after_christmas_day),
-        1897: (APR, 27, "Grant's Birthday"),
+        # Grant's Birthday.
+        1897: (APR, 27, tr("Grant's Birthday")),
         1898: (
-            (MAY, 4, "Charter Day"),
+            # Charter Day.
+            (MAY, 4, tr("Charter Day")),
             (JUL, 2, name_saturday_before_independence_day),
-            (AUG, 20, "Welcome of naval commanders"),
+            # Welcome of naval commanders.
+            (AUG, 20, tr("Welcome of naval commanders")),
             (SEP, 3, name_saturday_before_labor_day),
             (DEC, 24, name_saturday_before_christmas_day),
         ),
         1899: (
-            (FEB, 11, "Saturday before Lincoln's Birthday"),
-            (MAY, 29, "Monday before Decoration Day"),
-            (JUL, 3, "Monday before Independence Day"),
+            # Saturday before Lincoln's Birthday.
+            (FEB, 11, tr("Saturday before Lincoln's Birthday")),
+            # Monday before Decoration Day.
+            (MAY, 29, tr("Monday before Decoration Day")),
+            # Monday before Independence Day.
+            (JUL, 3, tr("Monday before Independence Day")),
             (SEP, 29, name_admiral_dewey_celebration),
             (SEP, 30, name_admiral_dewey_celebration),
-            (NOV, 25, "Funeral of Vice-President Garret A. Hobart"),
+            # Funeral of Vice-President Garret A. Hobart.
+            (NOV, 25, tr("Funeral of Vice-President Garret A. Hobart")),
         ),
         1900: (
             (APR, 14, name_saturday_after_good_friday),
@@ -436,28 +444,37 @@ class NewYorkStockExchangeStaticHolidays:
             (DEC, 24, name_saturday_before_christmas_day),
         ),
         1901: (
-            (FEB, 2, "Funeral of Queen Victoria of England"),
+            # Funeral of Queen Victoria of England.
+            (FEB, 2, tr("Funeral of Queen Victoria of England")),
             (FEB, 23, name_saturday_after_washingtons_birthday),
             (APR, 6, name_saturday_after_good_friday),
-            (APR, 27, "Moved to temporary quarters in Produce Exchange"),
-            (MAY, 11, "Enlarged temporary quarters in Produce Exchange"),
-            (JUL, 5, "Friday after Independence Day"),
+            # Moved to temporary quarters in Produce Exchange.
+            (APR, 27, tr("Moved to temporary quarters in Produce Exchange")),
+            # Enlarged temporary quarters in Produce Exchange.
+            (MAY, 11, tr("Enlarged temporary quarters in Produce Exchange")),
+            # Friday after Independence Day.
+            (JUL, 5, tr("Friday after Independence Day")),
             (JUL, 6, name_saturday_after_independence_day),
             (AUG, 31, name_saturday_before_labor_day),
-            (SEP, 14, "Death of President William McKinley"),
-            (SEP, 19, "Funeral of President William McKinley"),
+            # Death of President William McKinley.
+            (SEP, 14, tr("Death of President William McKinley")),
+            # Funeral of President William McKinley.
+            (SEP, 19, tr("Funeral of President William McKinley")),
         ),
         1902: (
             (MAR, 29, name_saturday_after_good_friday),
             (MAY, 31, name_saturday_after_decoration_day),
             (JUL, 5, name_saturday_after_independence_day),
-            (AUG, 9, "Coronation of King Edward VII of England"),
+            # Coronation of King Edward VII of England.
+            (AUG, 9, tr("Coronation of King Edward VII of England")),
             (AUG, 30, name_saturday_before_labor_day),
         ),
         1903: (
-            (FEB, 21, "Saturday before Washington's Birthday"),
+            # Saturday before Washington's Birthday.
+            (FEB, 21, tr("Saturday before Washington's Birthday")),
             (APR, 11, name_saturday_after_good_friday),
-            (APR, 22, "Opening of new NYSE building"),
+            # Opening of new NYSE building.
+            (APR, 22, tr("Opening of new NYSE building")),
             (SEP, 5, name_saturday_before_labor_day),
             (DEC, 26, name_saturday_after_christmas_day),
         ),
@@ -479,12 +496,14 @@ class NewYorkStockExchangeStaticHolidays:
             (DEC, 26, name_saturday_after_christmas_day),
         ),
         1909: (
-            (FEB, 13, "Saturday after Lincoln's Birthday"),
+            # Saturday after Lincoln's Birthday.
+            (FEB, 13, tr("Saturday after Lincoln's Birthday")),
             (APR, 10, name_saturday_after_good_friday),
             (MAY, 29, name_saturday_before_decoration_day),
             (JUL, 3, name_saturday_before_independence_day),
             (SEP, 4, name_saturday_before_labor_day),
-            (SEP, 25, "Reception Day of the Hudson-Fulton Celebration"),
+            # Reception Day of the Hudson-Fulton Celebration.
+            (SEP, 25, tr("Reception Day of the Hudson-Fulton Celebration")),
         ),
         1910: (
             (MAR, 26, name_saturday_after_good_friday),
@@ -500,7 +519,8 @@ class NewYorkStockExchangeStaticHolidays:
         ),
         1912: (
             (AUG, 31, name_saturday_before_labor_day),
-            (NOV, 2, "Funeral of Vice-President James S. Sherman"),
+            # Funeral of Vice-President James S. Sherman.
+            (NOV, 2, tr("Funeral of Vice-President James S. Sherman")),
         ),
         1913: (
             (MAR, 22, name_saturday_after_good_friday),
@@ -508,10 +528,12 @@ class NewYorkStockExchangeStaticHolidays:
             (JUL, 5, name_saturday_after_independence_day),
             (AUG, 30, name_saturday_before_labor_day),
         ),
-        1916: (DEC, 30, "Saturday before New Year's Day"),
+        # Saturday before New Year's Day.
+        1916: (DEC, 30, tr("Saturday before New Year's Day")),
         1917: (
             (JUN, 5, name_draft_registration_day),
-            (AUG, 4, "Heat"),
+            # Heat.
+            (AUG, 4, tr("Heat")),
             (SEP, 1, name_saturday_before_labor_day),
             (OCT, 13, name_saturday_after_columbus_day),
         ),
@@ -520,22 +542,28 @@ class NewYorkStockExchangeStaticHolidays:
             (FEB, 4, name_heatless_day),
             (FEB, 11, name_heatless_day),
             (SEP, 12, name_draft_registration_day),
-            (NOV, 11, "Armistice signed"),
+            # Armistice signed.
+            (NOV, 11, tr("Armistice signed")),
         ),
         1919: (
-            (MAR, 25, "Homecoming of 27th Division"),
-            (MAY, 6, "Parade of 77th Division"),
+            # Homecoming of 27th Division.
+            (MAR, 25, tr("Homecoming of 27th Division")),
+            # Parade of 77th Division.
+            (MAY, 6, tr("Parade of 77th Division")),
             (MAY, 31, name_saturday_after_decoration_day),
             (JUL, 5, name_saturday_after_independence_day),
-            (JUL, 19, "Heat and to allow offices to catch up on work"),
+            # Heat and to allow offices to catch up on work.
+            (JUL, 19, tr("Heat and to allow offices to catch up on work")),
             (AUG, 2, name_to_catch_up),
             (AUG, 16, name_to_catch_up),
             (AUG, 30, name_saturday_before_labor_day),
-            (SEP, 10, "Return of General John J. Pershing"),
+            # Return of General John J. Pershing.
+            (SEP, 10, tr("Return of General John J. Pershing")),
         ),
         1920: (
             (APR, 3, name_saturday_after_good_friday),
-            (MAY, 1, "Many firms changed office locations"),
+            # Many firms changed office locations.
+            (MAY, 1, tr("Many firms changed office locations")),
             (JUL, 3, name_saturday_before_independence_day),
             (SEP, 4, name_saturday_before_labor_day),
         ),
@@ -543,12 +571,15 @@ class NewYorkStockExchangeStaticHolidays:
             (MAY, 28, name_saturday_before_decoration_day),
             (JUL, 2, name_saturday_before_independence_day),
             (SEP, 3, name_saturday_before_labor_day),
-            (NOV, 11, "Veteran's Day"),
+            # Veteran's Day.
+            (NOV, 11, tr("Veteran's Day")),
         ),
         1922: (DEC, 23, name_saturday_before_christmas_day),
         1923: (
-            (AUG, 3, "Death of President Warren G. Harding"),
-            (AUG, 10, "Funeral of President Warren G. Harding"),
+            # Death of President Warren G. Harding.
+            (AUG, 3, tr("Death of President Warren G. Harding")),
+            # Funeral of President Warren G. Harding.
+            (AUG, 10, tr("Funeral of President Warren G. Harding")),
         ),
         1924: (MAY, 31, name_saturday_after_decoration_day),
         1925: (DEC, 26, name_saturday_after_christmas_day),
@@ -557,7 +588,8 @@ class NewYorkStockExchangeStaticHolidays:
             (JUL, 3, name_saturday_before_independence_day),
             (SEP, 4, name_saturday_before_labor_day),
         ),
-        1927: (JUN, 13, "Parade for Colonel Charles A. Lindbergh"),
+        # Parade for Colonel Charles A. Lindbergh.
+        1927: (JUN, 13, tr("Parade for Colonel Charles A. Lindbergh")),
         1928: (
             (APR, 7, name_heavy_volume_catch_up),
             (APR, 21, name_heavy_volume_catch_up),
@@ -592,8 +624,10 @@ class NewYorkStockExchangeStaticHolidays:
         ),
         1932: (JUL, 2, name_saturday_before_independence_day),
         1933: (
-            (JAN, 7, "Funeral of former President Calvin Coolidge"),
-            (MAR, 4, "State Banking Holiday"),
+            # Funeral of former President Calvin Coolidge.
+            (JAN, 7, tr("Funeral of former President Calvin Coolidge")),
+            # State Banking Holiday.
+            (MAR, 4, tr("State Banking Holiday")),
             (MAR, 6, name_national_banking_holiday),
             (MAR, 7, name_national_banking_holiday),
             (MAR, 8, name_national_banking_holiday),
@@ -615,55 +649,77 @@ class NewYorkStockExchangeStaticHolidays:
             (JUL, 3, name_saturday_before_independence_day),
         ),
         1945: (
-            (APR, 14, "National Day of Mourning for President Franklin D. Roosevelt"),
+            # National Day of Mourning for President Franklin D. Roosevelt.
+            (APR, 14, tr("National Day of Mourning for President Franklin D. Roosevelt")),
             (AUG, 15, name_vj_day),
             (AUG, 16, name_vj_day),
             (OCT, 13, name_saturday_after_columbus_day),
-            (OCT, 27, "Navy Day"),
+            # Navy Day.
+            (OCT, 27, tr("Navy Day")),
             (DEC, 24, name_christmas_eve),
         ),
         1946: (
             (FEB, 23, name_saturday_after_washingtons_birthday),
-            (MAY, 25, "Railroad strike"),
+            # Railroad strike.
+            (MAY, 25, tr("Railroad strike")),
         ),
-        1948: (JAN, 3, "Severe weather conditions"),
+        # Severe weather conditions.
+        1948: (JAN, 3, tr("Severe weather conditions")),
         1949: (DEC, 24, name_christmas_eve),
-        1950: (DEC, 23, "Saturday before Christmas Eve"),
+        # Saturday before Christmas Eve.
+        1950: (DEC, 23, tr("Saturday before Christmas Eve")),
         1954: (DEC, 24, name_christmas_eve),
         1956: (DEC, 24, name_christmas_eve),
-        1958: (DEC, 26, "Day after Christmas"),
-        1961: (MAY, 29, "Day before Decoration Day"),
-        1963: (NOV, 25, "Funeral of President John F. Kennedy"),
+        # Day after Christmas.
+        1958: (DEC, 26, tr("Day after Christmas")),
+        # Day before Decoration Day.
+        1961: (MAY, 29, tr("Day before Decoration Day")),
+        # Funeral of President John F. Kennedy.
+        1963: (NOV, 25, tr("Funeral of President John F. Kennedy")),
         1965: (DEC, 24, name_christmas_eve),
         1968: (
-            (FEB, 12, "Lincoln's Birthday"),
-            (APR, 9, "National Day of Mourning for Martin Luther King, Jr."),
+            # Lincoln's Birthday.
+            (FEB, 12, tr("Lincoln's Birthday")),
+            # National Day of Mourning for Martin Luther King, Jr.
+            (APR, 9, tr("National Day of Mourning for Martin Luther King, Jr.")),
             (JUL, 5, name_day_after_independence_day),
         ),
         1969: (
-            (FEB, 10, "Heavy Snow"),
-            (MAR, 31, "Funeral of former President Dwight D. Eisenhower"),
-            (JUL, 21, "National Day of Participation for the Lunar Exploration"),
+            # Heavy Snow.
+            (FEB, 10, tr("Heavy Snow")),
+            # Funeral of former President Dwight D. Eisenhower.
+            (MAR, 31, tr("Funeral of former President Dwight D. Eisenhower")),
+            # National Day of Participation for the Lunar Exploration.
+            (JUL, 21, tr("National Day of Participation for the Lunar Exploration")),
         ),
-        1972: (DEC, 28, "Funeral of former President Harry S. Truman"),
-        1973: (JAN, 25, "Funeral of former President Lyndon B. Johnson"),
-        1977: (JUL, 14, "Blackout in New York City"),
-        1985: (SEP, 27, "Hurricane Gloria"),
-        1994: (APR, 27, "Funeral of former President Richard M. Nixon"),
+        # Funeral of former President Harry S. Truman.
+        1972: (DEC, 28, tr("Funeral of former President Harry S. Truman")),
+        # Funeral of former President Lyndon B. Johnson.
+        1973: (JAN, 25, tr("Funeral of former President Lyndon B. Johnson")),
+        # Blackout in New York City.
+        1977: (JUL, 14, tr("Blackout in New York City")),
+        # Hurricane Gloria.
+        1985: (SEP, 27, tr("Hurricane Gloria")),
+        # Funeral of former President Richard M. Nixon.
+        1994: (APR, 27, tr("Funeral of former President Richard M. Nixon")),
         2001: (
             (SEP, 11, name_closed_following_wtc_attacks),
             (SEP, 12, name_closed_following_wtc_attacks),
             (SEP, 13, name_closed_following_wtc_attacks),
             (SEP, 14, name_closed_following_wtc_attacks),
         ),
-        2004: (JUN, 11, "National Day of Mourning for former President Ronald Reagan"),
-        2007: (JAN, 2, "National Day of Mourning for former President Gerald R. Ford"),
+        # National Day of Mourning for former President Ronald Reagan.
+        2004: (JUN, 11, tr("National Day of Mourning for former President Ronald Reagan")),
+        # National Day of Mourning for former President Gerald R. Ford.
+        2007: (JAN, 2, tr("National Day of Mourning for former President Gerald R. Ford")),
         2012: (
             (OCT, 29, name_hurricane_sandy),
             (OCT, 30, name_hurricane_sandy),
         ),
-        2018: (DEC, 5, "National Day of Mourning for former President George H. W. Bush"),
-        2025: (JAN, 9, "National Day of Mourning for former President Jimmy Carter"),
+        # National Day of Mourning for former President George H. W. Bush.
+        2018: (DEC, 5, tr("National Day of Mourning for former President George H. W. Bush")),
+        # National Day of Mourning for former President Jimmy Carter.
+        2025: (JAN, 9, tr("National Day of Mourning for former President Jimmy Carter")),
     }
 
     # Late opens and partial suspensions of work during the day are not implemented, such as:
@@ -681,23 +737,31 @@ class NewYorkStockExchangeStaticHolidays:
     # * Apr. 20, 1951 (Fri) - Closed from 11:00am to 1:00pm. Parade for General MacArthur.
 
     special_half_day_holidays = {
-        1908: (JUN, 26, close_1pm_label % "Funeral of former President Grover Cleveland"),
-        1910: (MAY, 7, close_11am_label % "Death of King Edward VII of England"),
+        # Funeral of former President Grover Cleveland.
+        1908: (JUN, 26, close_1pm_label % tr("Funeral of former President Grover Cleveland")),
+        # Death of King Edward VII of England.
+        1910: (MAY, 7, close_11am_label % tr("Death of King Edward VII of England")),
         1917: (
-            (AUG, 29, close_12pm_label % "Parade of National Guard"),
+            # Parade of National Guard.
+            (AUG, 29, close_12pm_label % tr("Parade of National Guard")),
             (OCT, 24, close_12pm_label % name_liberty_day),
         ),
         1918: (
             (APR, 26, close_12pm_label % name_liberty_day),
-            (NOV, 7, close_2_30pm_label % "False armistice report"),
+            # False armistice report.
+            (NOV, 7, close_2_30pm_label % tr("False armistice report")),
         ),
-        1919: (JAN, 7, close_12_30pm_label % "Funeral of former President Theodore Roosevelt"),
-        1920: (SEP, 16, close_12pm_label % "Wall Street explosion"),
-        1924: (FEB, 6, close_12_30pm_label % "Funeral of former President Woodrow Wilson"),
+        # Funeral of former President Theodore Roosevelt.
+        1919: (JAN, 7, close_12_30pm_label % tr("Funeral of former President Theodore Roosevelt")),
+        # Wall Street explosion.
+        1920: (SEP, 16, close_12pm_label % tr("Wall Street explosion")),
+        # Funeral of former President Woodrow Wilson.
+        1924: (FEB, 6, close_12_30pm_label % tr("Funeral of former President Woodrow Wilson")),
         1925: (
             SEP,
             18,
-            close_2_30pm_label % "Funeral of former NYSE president Seymour L. Cromwell",
+            # Funeral of former NYSE president Seymour L. Cromwell.
+            close_2_30pm_label % tr("Funeral of former NYSE president Seymour L. Cromwell"),
         ),
         1928: (
             (MAY, 21, close_2pm_label % name_heavy_volume_catch_up),
@@ -721,11 +785,15 @@ class NewYorkStockExchangeStaticHolidays:
             (NOV, 21, close_1pm_label % name_catch_up_day),
             (NOV, 22, close_1pm_label % name_catch_up_day),
         ),
-        1930: (MAR, 11, close_12_30pm_label % "Funeral of former President William Howard Taft"),
-        1933: (SEP, 13, close_12pm_label % "NRA demonstration"),
+        # Funeral of former President William Howard Taft.
+        1930: (MAR, 11, close_12_30pm_label % tr("Funeral of former President William Howard Taft")),
+        # NRA demonstration.
+        1933: (SEP, 13, close_12pm_label % tr("NRA demonstration")),
         1951: (DEC, 24, close_1pm_label % name_christmas_eve),
-        1963: (NOV, 22, "Assassination of President John F. Kennedy (markets close at 2:07pm)"),
-        1964: (OCT, 23, close_2pm_label % "Funeral of former President Herbert C. Hoover"),
+        # Assassination of President John F. Kennedy (markets close at 2:07pm).
+        1963: (NOV, 22, tr("Assassination of President John F. Kennedy (markets close at 2:07pm)")),
+        # Funeral of former President Herbert C. Hoover.
+        1964: (OCT, 23, close_2pm_label % tr("Funeral of former President Herbert C. Hoover")),
         1966: (
             (JAN, 6, close_2pm_label % name_transit_strike),
             (JAN, 7, close_2pm_label % name_transit_strike),
@@ -751,11 +819,14 @@ class NewYorkStockExchangeStaticHolidays:
             (FEB, 12, close_2_30pm_label % name_snowstorm),
             (DEC, 24, close_2pm_label % name_christmas_eve),
         ),
-        1976: (AUG, 9, close_3pm_label % "Hurricane watch"),
+        # Hurricane watch.
+        1976: (AUG, 9, close_3pm_label % tr("Hurricane watch")),
         1978: (FEB, 6, close_2pm_label % name_snowstorm),
         1981: (
-            (MAR, 30, "Assassination attempt on President Reagan (markets close at 3:17pm)"),
-            (SEP, 9, "Con Edison power failure in lower Manhattan (markets close at 3:28pm)"),
+            # Assassination attempt on President Reagan (markets close at 3:17pm).
+            (MAR, 30, tr("Assassination attempt on President Reagan (markets close at 3:17pm)")),
+            # Con Edison power failure in lower Manhattan (markets close at 3:28pm).
+            (SEP, 9, tr("Con Edison power failure in lower Manhattan (markets close at 3:28pm)")),
         ),
         1987: (
             (OCT, 23, close_2pm_label % name_shortened_hours_following_market_break),
@@ -776,14 +847,17 @@ class NewYorkStockExchangeStaticHolidays:
         1990: (DEC, 24, close_2pm_label % name_christmas_eve),
         1991: (DEC, 24, close_2pm_label % name_christmas_eve),
         1992: (
-            (NOV, 27, close_2pm_label % "Day after Thanksgiving Day"),
+            # Day after Thanksgiving Day.
+            (NOV, 27, close_2pm_label % tr("Day after Thanksgiving Day")),
             (DEC, 24, close_2pm_label % name_christmas_eve),
         ),
         1994: (FEB, 11, close_2_30pm_label % name_snowstorm),
         1996: (JUL, 5, close_1pm_label % name_day_after_independence_day),
         1997: (DEC, 26, close_1pm_label % name_friday_after_christmas),
-        1999: (DEC, 31, close_1pm_label % "New Year's Eve"),
+        # New Year's Eve.
+        1999: (DEC, 31, close_1pm_label % tr("New Year's Eve")),
         2002: (JUL, 5, close_1pm_label % name_day_after_independence_day),
         2003: (DEC, 26, close_1pm_label % name_friday_after_christmas),
-        2013: (JUL, 3, close_1pm_label % "Day before Independence Day"),
+        # Day before Independence Day.
+        2013: (JUL, 3, close_1pm_label % tr("Day before Independence Day")),
     }

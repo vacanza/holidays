@@ -223,11 +223,11 @@ class TestIcalExporter(TestCase):
 
     def test_show_language_true_language_code_none(self):
         # Neither language nor default_language param exists.
-        nyse_holidays = financial_holidays("NYSE", years=2024)
-        self._assert_language_not_provided(nyse_holidays)
+        xecb_holidays = financial_holidays("XECB", years=2024)
+        self._assert_language_not_provided(xecb_holidays)
 
         # Combined Holidays List, one of them is None -> language got set to None.
-        self._assert_language_not_provided(nyse_holidays + self.jp_holidays)
+        self._assert_language_not_provided(xecb_holidays + self.jp_holidays)
 
         # Combined Holidays List, different language -> language got set to None.
         self._assert_language_not_provided(self.th_holidays + self.jp_holidays)
