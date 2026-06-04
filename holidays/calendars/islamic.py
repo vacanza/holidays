@@ -998,6 +998,9 @@ class _IslamicLunar:
         2077: (OCT, 27),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
+
     EID_AL_FITR_DATES = {
         1925: (APR, 24),
         1926: (APR, 14),
@@ -4266,7 +4269,7 @@ class _CustomIslamicHolidays(_CustomCalendar, _IslamicLunar):
     pass
 
 
-class _IslamicMabimsLunar(_IslamicLunar):
+class _IslamicMabimsLunar(_CustomCalendar, _IslamicLunar):
     """Islamic calendar based on MABIMS crescent visibility criteria.
 
     Used by Brunei Darussalam, Indonesia, Malaysia, and Singapore.
@@ -4279,6 +4282,9 @@ class _IslamicMabimsLunar(_IslamicLunar):
         * <https://www.muis.gov.sg/resources/islamic-calendar/>
         * <https://www.muslim.sg/articles/ramadan-countdown-unity-in-diversity>
     """
+
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
 
     EID_AL_FITR_DATES = {
         2001: (DEC, 16),
