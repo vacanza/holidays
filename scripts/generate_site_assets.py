@@ -50,6 +50,7 @@ LANGUAGES = {
     "cs": "Czech",
     "da": "Danish",
     "de": "German",
+    "dv": "Dhivehi",
     "dz": "Dzongkha",
     "el": "Greek",
     "es": "Spanish",
