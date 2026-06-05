@@ -162,7 +162,6 @@ function holidayDownloads() {
 
             const events = eventsList
                 .flat()
-                .filter(Boolean)
                 .filter(event => {
                     const year = new Date(event.date || event.start).getFullYear();
                     return year >= this.startYear && year <= this.endYear;
