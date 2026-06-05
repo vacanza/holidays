@@ -21,6 +21,7 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
     """Maldives holidays.
 
     References:
+        * <https://presidency.gov.mv/Press/Article/13097>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Maldives>
         * <https://web.archive.org/web/20250317114653/https://www.timeanddate.com/holidays/maldives>
         * <https://web.archive.org/web/20250427131834/https://www.mma.gov.mv/>
@@ -30,7 +31,7 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
     default_language = "dv"
     supported_languages = ("dv", "en_US")
     # %s (estimated).
-    estimated_label = tr("%s (estimated)")
+    estimated_label = tr("%s (އަންދާޒާކުރި)")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
@@ -60,43 +61,42 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Republic Day.
         self._add_holiday_nov_11(tr("ޖުމްހޫރީ ދުވަސް"))
 
-        # Islamic holidays.
-        # Start of Ramadan.
+        # First day of Ramadan.
         self._add_ramadan_beginning_day(tr("ރަމަޟާން މަސް ފެށޭ ދުވަސް"))
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("ފިޠުރުޢީދު ދުވަސް"))
 
         # Eid al-Fitr (Day 2).
-        eid_al_fitr = tr("ފިޠުރުޢީދުގެ މުނާސަބަތުގައި")
-        self._add_eid_al_fitr_day_two(eid_al_fitr)
+        eid_al_fitr_holiday = tr("ފިޠުރުޢީދުގެ މުނާސަބަތުގައި")
+        self._add_eid_al_fitr_day_two(eid_al_fitr_holiday)
 
         # Eid al-Fitr (Day 3).
-        self._add_eid_al_fitr_day_three(eid_al_fitr)
+        self._add_eid_al_fitr_day_three(eid_al_fitr_holiday)
 
-        # Hajj Day.
+        # Arafat Day.
         self._add_arafah_day(tr("ޙައްޖުދުވަސް"))
 
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("އަޟްޙާޢީދު ދުވަސް"))
 
         # Eid al-Adha (Day 2).
-        eid_al_adha = tr("އަޟްޙާޢީދުގެ މުނާސަބަތުގައި")
-        self._add_eid_al_adha_day_two(eid_al_adha)
+        eid_al_adha_holiday = tr("އަޟްޙާޢީދުގެ މުނާސަބަތުގައި")
+        self._add_eid_al_adha_day_two(eid_al_adha_holiday)
 
         # Eid al-Adha (Day 3).
-        self._add_eid_al_adha_day_three(eid_al_adha)
+        self._add_eid_al_adha_day_three(eid_al_adha_holiday)
 
         # Eid al-Adha (Day 4).
-        self._add_eid_al_adha_day_four(eid_al_adha)
+        self._add_eid_al_adha_day_four(eid_al_adha_holiday)
 
-        # Muharram/Islamic New Year.
+        # Islamic New Year.
         self._add_islamic_new_year_day(tr("ހިޖުރީ އާ އަހަރު ފެށޭ ދުވަސް"))
 
         # National Day.
         self._add_quamee_dhuvas_day(tr("ޤައުމީ ދުވަސް"))
 
-        # Prophet Muhammad's Birthday.
+        # Prophet's Birthday.
         self._add_mawlid_day(tr("ކީރިތި ރަސޫލާގެ ޢީދުމީލާދު"))
 
         # The Day Maldives Embraced Islam.

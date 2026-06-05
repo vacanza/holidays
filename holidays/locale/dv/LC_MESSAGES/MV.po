@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.98\n"
+"Project-Id-Version: Holidays 0.99\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-05 19:51+0530\n"
-"PO-Revision-Date: 2026-06-05 20:15+0530\n"
+"PO-Revision-Date: 2026-06-05 23:06+0530\n"
 "Last-Translator: Aadesh-Shrivastava69 <aadeshshrivastava69@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: dv\n"
@@ -29,7 +29,7 @@ msgstr ""
 
 #. %s (estimated).
 #, c-format
-msgid "%s (estimated)"
+msgid "%s (އަންދާޒާކުރި)"
 msgstr ""
 
 #. New Year's Day.
@@ -52,7 +52,7 @@ msgstr ""
 msgid "ޖުމްހޫރީ ދުވަސް"
 msgstr ""
 
-#. Islamic holidays. Start of Ramadan.
+#. First day of Ramadan.
 msgid "ރަމަޟާން މަސް ފެށޭ ދުވަސް"
 msgstr ""
 
@@ -64,7 +64,7 @@ msgstr ""
 msgid "ފިޠުރުޢީދުގެ މުނާސަބަތުގައި"
 msgstr ""
 
-#. Hajj Day.
+#. Arafat Day.
 msgid "ޙައްޖުދުވަސް"
 msgstr ""
 
@@ -76,7 +76,7 @@ msgstr ""
 msgid "އަޟްޙާޢީދުގެ މުނާސަބަތުގައި"
 msgstr ""
 
-#. Muharram/Islamic New Year.
+#. Islamic New Year.
 msgid "ހިޖުރީ އާ އަހަރު ފެށޭ ދުވަސް"
 msgstr ""
 
@@ -84,7 +84,7 @@ msgstr ""
 msgid "ޤައުމީ ދުވަސް"
 msgstr ""
 
-#. Prophet Muhammad's Birthday.
+#. Prophet's Birthday.
 msgid "ކީރިތި ރަސޫލާގެ ޢީދުމީލާދު"
 msgstr ""
 
