@@ -24,7 +24,7 @@ class Colombia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         * [Decreto 2663 de 1950 (AUG 5)](https://web.archive.org/web/20241113003142/https://www.suin-juriscol.gov.co/viewDocument.asp?id=1874133)
         * [Decreto 3743 de 1950 (DEC 20)](https://web.archive.org/web/20240725032513/http://suin-juriscol.gov.co/viewDocument.asp?id=1535683)
         * [Ley 51 de 1983 (DEC 6)](https://web.archive.org/web/20250423030608/https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=4954)
-        * [Ley 2578 de 2026 (JUN 1)(https://web.archive.org/web/20260605045552/https://lector.ramajudicial.gov.co/SIDN/NORMATIVA/TEXTOS_COMPLETOS/7_LEYES/LEYES%202026/Ley%202578%20de%202026.pdf)]
++        * [Ley 2578 de 2026 (JUN 1)](https://web.archive.org/web/20260605045552/https://lector.ramajudicial.gov.co/SIDN/NORMATIVA/TEXTOS_COMPLETOS/7_LEYES/LEYES%202026/Ley%202578%20de%202026.pdf)
 
     A few links below to calendars from the 1980s to demonstrate this law change.
     In 1984 some calendars still use the old rules, presumably because they were printed
