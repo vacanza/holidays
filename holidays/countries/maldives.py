@@ -61,7 +61,7 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Republic Day.
         self._add_holiday_nov_11(tr("ޖުމްހޫރީ ދުވަސް"))
 
-        # First day of Ramadan.
+        # First Day of Ramadan.
         self._add_ramadan_beginning_day(tr("ރަމަޟާން މަސް ފެށޭ ދުވަސް"))
 
         # Eid al-Fitr.
