@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.99\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-05 19:51+0530\n"
-"PO-Revision-Date: 2026-06-05 23:46+0530\n"
+"PO-Revision-Date: 2026-06-06 02:30+0530\n"
 "Last-Translator: Aadesh-Shrivastava69 <aadeshshrivastava69@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -52,7 +52,7 @@ msgstr "Victory Day"
 msgid "ޖުމްހޫރީ ދުވަސް"
 msgstr "Republic Day"
 
-#. First day of Ramadan.
+#. First Day of Ramadan.
 msgid "ރަމަޟާން މަސް ފެށޭ ދުވަސް"
 msgstr "Beginning of Ramadan"
 
