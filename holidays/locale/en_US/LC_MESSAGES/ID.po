@@ -136,7 +136,7 @@ msgid "Kebangkitan Yesus Kristus"
 msgstr "Easter Sunday"
 
 #. General Election Day.
-msgid "Hari Pemilihan Unum"
+msgid "Hari Pemilihan Umum"
 msgstr "General Election Day"
 
 #. Presidential Election Day.
