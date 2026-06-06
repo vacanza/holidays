@@ -64,30 +64,30 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
         # First Day of Ramadan.
         self._add_ramadan_beginning_day(tr("ރަމަޟާން މަސް ފެށޭ ދުވަސް"))
 
-        # Eid al-Fitr.
+        # Eid al-Fitr Holiday.
         self._add_eid_al_fitr_day(tr("ފިޠުރުޢީދު ދުވަސް"))
 
-        # Eid al-Fitr (Day 2).
+        # Eid al-Fitr Holiday (Day 2).
         eid_al_fitr_holiday = tr("ފިޠުރުޢީދުގެ މުނާސަބަތުގައި")
         self._add_eid_al_fitr_day_two(eid_al_fitr_holiday)
 
-        # Eid al-Fitr (Day 3).
+        # Eid al-Fitr Holiday (Day 3).
         self._add_eid_al_fitr_day_three(eid_al_fitr_holiday)
 
         # Arafat Day.
         self._add_arafah_day(tr("ޙައްޖުދުވަސް"))
 
-        # Eid al-Adha.
+        # Eid al-Adha Holiday.
         self._add_eid_al_adha_day(tr("އަޟްޙާޢީދު ދުވަސް"))
 
-        # Eid al-Adha (Day 2).
+        # Eid al-Adha Holiday (Day 2).
         eid_al_adha_holiday = tr("އަޟްޙާޢީދުގެ މުނާސަބަތުގައި")
         self._add_eid_al_adha_day_two(eid_al_adha_holiday)
 
-        # Eid al-Adha (Day 3).
+        # Eid al-Adha Holiday (Day 3).
         self._add_eid_al_adha_day_three(eid_al_adha_holiday)
 
-        # Eid al-Adha (Day 4).
+        # Eid al-Adha Holiday (Day 4).
         self._add_eid_al_adha_day_four(eid_al_adha_holiday)
 
         # Islamic New Year.
