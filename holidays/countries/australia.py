@@ -83,6 +83,12 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
     supported_categories = (BANK, HALF_DAY, PUBLIC)
     supported_languages = ("en_AU", "en_US", "th")
 
+    # %s (from 6pm).
+    begin_6pm_label = tr("%s (from 6pm)")
+
+    # %s (from 7pm).
+    begin_7pm_label = tr("%s (from 7pm)")
+
     @property
     def sovereign_birthday(self) -> str:
         """Sovereign's birthday holiday name."""
@@ -434,14 +440,15 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
     def _populate_subdiv_nt_half_day_holidays(self):
         if self._year >= 2016:
-            # %s (from 7pm).
-            begin_time_label = self.tr("%s (from 7pm)")
+            self._add_christmas_eve(
+                # Christmas Eve.
+                self._format_holiday_name(self.begin_7pm_label, tr("Christmas Eve"))
+            )
 
-            # Christmas Eve.
-            self._add_christmas_eve(begin_time_label % self.tr("Christmas Eve"))
-
-            # New Year's Eve.
-            self._add_new_years_eve(begin_time_label % self.tr("New Year's Eve"))
+            self._add_new_years_eve(
+                # New Year's Eve.
+                self._format_holiday_name(self.begin_7pm_label, tr("New Year's Eve"))
+            )
 
     def _populate_subdiv_qld_public_holidays(self):
         # New Year's Day.
@@ -542,11 +549,10 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
     def _populate_subdiv_qld_half_day_holidays(self):
         if self._year >= 2019:
-            # %s (from 6pm).
-            begin_time_label = self.tr("%s (from 6pm)")
-
-            # Christmas Eve.
-            self._add_christmas_eve(begin_time_label % self.tr("Christmas Eve"))
+            self._add_christmas_eve(
+                # Christmas Eve.
+                self._format_holiday_name(self.begin_6pm_label, tr("Christmas Eve"))
+            )
 
     def _populate_subdiv_sa_public_holidays(self):
         # New Year's Day.
@@ -652,14 +658,15 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
     def _populate_subdiv_sa_half_day_holidays(self):
         if self._year >= 2012:
-            # %s (from 7pm).
-            begin_time_label = self.tr("%s (from 7pm)")
+            self._add_christmas_eve(
+                # Christmas Eve.
+                self._format_holiday_name(self.begin_7pm_label, tr("Christmas Eve"))
+            )
 
-            # Christmas Eve.
-            self._add_christmas_eve(begin_time_label % self.tr("Christmas Eve"))
-
-            # New Year's Eve.
-            self._add_new_years_eve(begin_time_label % self.tr("New Year's Eve"))
+            self._add_new_years_eve(
+                # New Year's Eve.
+                self._format_holiday_name(self.begin_7pm_label, tr("New Year's Eve"))
+            )
 
     def _populate_subdiv_tas_public_holidays(self):
         # New Year's Day.

@@ -17,7 +17,7 @@ from unittest import TestCase
 from unittest.mock import patch, MagicMock
 
 from holidays import country_holidays, financial_holidays
-from holidays.constants import HALF_DAY, UNOFFICIAL
+from holidays.constants import HALF_DAY, SCHOOL, UNOFFICIAL
 from holidays.holiday_base import HolidayBase
 from holidays.ical import CONTENT_LINE_DELIMITER, CONTENT_LINE_MAX_LENGTH, ICalExporter
 
@@ -258,6 +258,19 @@ class TestIcalExporter(TestCase):
         self.assertEqual(labor_day_count, 1)
         self.assertIn("DTSTART;VALUE=DATE:20050501\r\n", output)
         self.assertIn("DURATION:P2D\r\n", output)
+
+    def test_single_holiday_multiple_date_cross_year_boundary(self):
+        # Multiple-date holiday that crosses the beginning of the year
+        # should be divided into two entries.
+        il_holidays = country_holidays(
+            "IL", years=(2024, 2025), categories=SCHOOL, language="en_US"
+        )
+        output = ICalExporter(il_holidays).generate()
+
+        hanukkah_count = output.count("SUMMARY:Hanukkah\r\n")
+        self.assertEqual(hanukkah_count, 3)
+        self.assertIn("DTSTART;VALUE=DATE:20241226\r\nDURATION:P6D\r\n", output)
+        self.assertIn("DTSTART;VALUE=DATE:20250101\r\nDURATION:P2D\r\n", output)
 
     def test_single_holiday_multiple_date_noncontinuous(self):
         # 2x "Eid al-Fitr", 2x "Eid al-Fitr Second Day".

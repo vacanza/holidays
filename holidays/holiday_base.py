@@ -899,6 +899,9 @@ class HolidayBase(dict[date, str]):
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
         return dt.weekday() == weekday
 
+    def _format_holiday_name(self, label: str, holiday_name: str) -> str:
+        return self.tr(label) % self.tr(holiday_name)
+
     def _get_weekend(self, dt: date) -> set[int]:
         return self.weekend
 
