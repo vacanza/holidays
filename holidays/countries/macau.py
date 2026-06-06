@@ -274,7 +274,7 @@ class Macau(
         dts_observed = set()
 
         # %s (Afternoon).
-        begin_time_label = self.tr("%s（下午）")
+        begin_time_label = tr("%s（下午）")
 
         # New Year's Day.
         dts_observed.add(self._add_new_years_day(tr("元旦")))
@@ -282,8 +282,10 @@ class Macau(
         if not (
             self._is_sunday(self._chinese_new_year) or self._is_monday(self._chinese_new_year)
         ):
-            # Chinese New Year's Eve.
-            self._add_chinese_new_years_eve(begin_time_label % self.tr("農曆除夕"))
+            self._add_chinese_new_years_eve(
+                # Chinese New Year's Eve.
+                self._format_holiday_name(begin_time_label, tr("農曆除夕"))
+            )
 
         if self._year >= 2019:
             # Chinese New Year's Day.
@@ -355,7 +357,7 @@ class Macau(
         if self._year >= 2007 and self._year != 2012:
             self._move_holiday(
                 # New Year's Eve.
-                self._add_new_years_eve(begin_time_label % self.tr("除夕")),
+                self._add_new_years_eve(self._format_holiday_name(begin_time_label, tr("除夕"))),
                 rule=SAT_TO_NONE + SUN_TO_NONE,
             )
 
@@ -369,10 +371,10 @@ class Macau(
             )
             self.observed_estimated_label = (
                 # Compensatory rest day for %s (estimated).
-                self.tr("%s的補假（推定）")
+                tr("%s的補假（推定）")
                 if self._year >= 2020
                 # The first working day after %s (estimated).
-                else self.tr("%s後首個工作日（推定）")
+                else tr("%s後首個工作日（推定）")
             )
             # Prior to 2012, in-lieus are only given for holidays which falls on Sunday.
             self._observed_rule = (
