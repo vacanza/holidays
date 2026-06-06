@@ -71,6 +71,7 @@ LANGUAGES = {
     "it": "Italian",
     "ja": "Japanese",
     "ka": "Georgian",
+    "kab": "Kabyle",
     "kk": "Kazakh",
     "kl": "Kalaallisut (Greenlandic)",
     "km": "Khmer",
