@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.99\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-05 19:51+0530\n"
-"PO-Revision-Date: 2026-06-06 17:07+0530\n"
+"PO-Revision-Date: 2026-06-06 20:42+0530\n"
 "Last-Translator: Aadesh-Shrivastava69 <aadeshshrivastava69@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -36,9 +36,9 @@ msgstr "%s (estimated)"
 msgid "މީލާދީ އާ އަހަރު ފެށޭ ދުވަސް"
 msgstr "New Year's Day"
 
-#. Labor Day.
+#. International Worker's Day.
 msgid "ބައިނަލްއަޤްވާމީ މަސައްކަތްތެރިންގެ ދުވަސް"
-msgstr "Labor Day"
+msgstr "International Worker's Day"
 
 #. Independence Day.
 msgid "މިނިވަން ދުވަސް"
@@ -54,27 +54,27 @@ msgstr "Republic Day"
 
 #. First Day of Ramadan.
 msgid "ރަމަޟާން މަސް ފެށޭ ދުވަސް"
-msgstr "Beginning of Ramadan"
+msgstr "First Day of Ramadan"
 
-#. Eid al-Fitr Holiday.
+#. Eid al-Fitr.
 msgid "ފިޠުރުޢީދު ދުވަސް"
 msgstr "Eid al-Fitr"
 
-#. Eid al-Fitr Holiday (Day 2).
+#. Eid al-Fitr Holiday.
 msgid "ފިޠުރުޢީދުގެ މުނާސަބަތުގައި"
-msgstr "Eid al-Fitr"
+msgstr "Eid al-Fitr Holiday"
 
 #. Arafat Day.
 msgid "ޙައްޖުދުވަސް"
 msgstr "Arafat Day"
 
-#. Eid al-Adha Holiday.
+#. Eid al-Adha.
 msgid "އަޟްޙާޢީދު ދުވަސް"
 msgstr "Eid al-Adha"
 
-#. Eid al-Adha Holiday (Day 2).
+#. Eid al-Adha Holiday.
 msgid "އަޟްޙާޢީދުގެ މުނާސަބަތުގައި"
-msgstr "Eid al-Adha"
+msgstr "Eid al-Adha Holiday"
 
 #. Islamic New Year.
 msgid "ހިޖުރީ އާ އަހަރު ފެށޭ ދުވަސް"
@@ -86,7 +86,7 @@ msgstr "National Day"
 
 #. Prophet's Birthday.
 msgid "ކީރިތި ރަސޫލާގެ ޢީދުމީލާދު"
-msgstr "Mawlid al-Nabi"
+msgstr "Prophet's Birthday"
 
 #. The Day Maldives Embraced Islam.
 msgid "ރާއްޖެ އިސްލާމްވީ ދުވަސް"

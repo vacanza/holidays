@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.99\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-05 19:51+0530\n"
-"PO-Revision-Date: 2026-06-06 17:07+0530\n"
+"PO-Revision-Date: 2026-06-06 20:42+0530\n"
 "Last-Translator: Aadesh-Shrivastava69 <aadeshshrivastava69@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: dv\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "މީލާދީ އާ އަހަރު ފެށޭ ދުވަސް"
 msgstr ""
 
-#. Labor Day.
+#. International Worker's Day.
 msgid "ބައިނަލްއަޤްވާމީ މަސައްކަތްތެރިންގެ ދުވަސް"
 msgstr ""
 
@@ -56,11 +56,11 @@ msgstr ""
 msgid "ރަމަޟާން މަސް ފެށޭ ދުވަސް"
 msgstr ""
 
-#. Eid al-Fitr Holiday.
+#. Eid al-Fitr.
 msgid "ފިޠުރުޢީދު ދުވަސް"
 msgstr ""
 
-#. Eid al-Fitr Holiday (Day 2).
+#. Eid al-Fitr Holiday.
 msgid "ފިޠުރުޢީދުގެ މުނާސަބަތުގައި"
 msgstr ""
 
@@ -68,11 +68,11 @@ msgstr ""
 msgid "ޙައްޖުދުވަސް"
 msgstr ""
 
-#. Eid al-Adha Holiday.
+#. Eid al-Adha.
 msgid "އަޟްޙާޢީދު ދުވަސް"
 msgstr ""
 
-#. Eid al-Adha Holiday (Day 2).
+#. Eid al-Adha Holiday.
 msgid "އަޟްޙާޢީދުގެ މުނާސަބަތުގައި"
 msgstr ""
 

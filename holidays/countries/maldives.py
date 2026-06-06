@@ -21,8 +21,8 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
     """Maldives holidays.
 
     References:
-        * <https://presidency.gov.mv/Press/Article/13097>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Maldives>
+        * <https://web.archive.org/web/20260404223324/https://presidency.gov.mv/Press/Article/13097>
         * <https://web.archive.org/web/20250317114653/https://www.timeanddate.com/holidays/maldives>
         * <https://web.archive.org/web/20250427131834/https://www.mma.gov.mv/>
     """
@@ -49,7 +49,7 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("މީލާދީ އާ އަހަރު ފެށޭ ދުވަސް"))
 
-        # Labor Day.
+        # International Worker's Day.
         self._add_labor_day(tr("ބައިނަލްއަޤްވާމީ މަސައްކަތްތެރިންގެ ދުވަސް"))
 
         # Independence Day.
@@ -64,30 +64,24 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
         # First Day of Ramadan.
         self._add_ramadan_beginning_day(tr("ރަމަޟާން މަސް ފެށޭ ދުވަސް"))
 
-        # Eid al-Fitr Holiday.
+        # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("ފިޠުރުޢީދު ދުވަސް"))
 
-        # Eid al-Fitr Holiday (Day 2).
+        # Eid al-Fitr Holiday.
         eid_al_fitr_holiday = tr("ފިޠުރުޢީދުގެ މުނާސަބަތުގައި")
         self._add_eid_al_fitr_day_two(eid_al_fitr_holiday)
-
-        # Eid al-Fitr Holiday (Day 3).
         self._add_eid_al_fitr_day_three(eid_al_fitr_holiday)
 
         # Arafat Day.
         self._add_arafah_day(tr("ޙައްޖުދުވަސް"))
 
-        # Eid al-Adha Holiday.
+        # Eid al-Adha.
         self._add_eid_al_adha_day(tr("އަޟްޙާޢީދު ދުވަސް"))
 
-        # Eid al-Adha Holiday (Day 2).
+        # Eid al-Adha Holiday.
         eid_al_adha_holiday = tr("އަޟްޙާޢީދުގެ މުނާސަބަތުގައި")
         self._add_eid_al_adha_day_two(eid_al_adha_holiday)
-
-        # Eid al-Adha Holiday (Day 3).
         self._add_eid_al_adha_day_three(eid_al_adha_holiday)
-
-        # Eid al-Adha Holiday (Day 4).
         self._add_eid_al_adha_day_four(eid_al_adha_holiday)
 
         # Islamic New Year.
