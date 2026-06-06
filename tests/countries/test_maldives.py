@@ -115,7 +115,7 @@ class TestMaldives(CommonCountryTests, TestCase):
             ("2024-04-11", "Eid al-Fitr (estimated)"),
             ("2024-04-12", "Eid al-Fitr (estimated)"),
             ("2024-05-01", "Labor Day"),
-            ("2024-06-15", "Hajj Day (estimated)"),
+            ("2024-06-15", "Arafat Day (estimated)"),
             ("2024-06-16", "Eid al-Adha (estimated)"),
             ("2024-06-17", "Eid al-Adha (estimated)"),
             ("2024-06-18", "Eid al-Adha (estimated)"),
