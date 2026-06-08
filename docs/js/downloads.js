@@ -45,9 +45,8 @@ function holidayDownloads() {
 
         // Formatting Helper Functions
         formatLabel: (str) => str.charAt(0).toUpperCase() + str.slice(1).replace(/_/g, ' '),
-        formatDate: (dateStr) => dateStr,
-        _getPath: function(year, cat, ext) {
-            return `ics/${this.type}/${this.selectedEntity}/${year}/${this.selectedSubdiv}_${this.selectedLang}_${cat}.${ext}`;
+        _getPath: function(cat, ext) {
+            return `ics/${this.type}/${this.selectedEntity}/${this.selectedSubdiv}_${this.selectedLang}_${cat}.${ext}`;
         },
 
         // Fetch file based on active mode
@@ -150,54 +149,47 @@ function holidayDownloads() {
             const signal = this.abortController.signal;
 
             const categories = this.categoriesToFetch;
-            const promises = [];
+            const reqs = categories.map(cat =>
+                this._fetchFile(this._getPath(cat, 'json'), { signal })
+                    .then(r => r.ok ? r.json() : [])
+                    .catch(e => {
+                        if (e.name !== 'AbortError') return [];
+                    })
+            );
 
-            // Fetch data for each selected year
-            for (let year = this.startYear; year <= this.endYear; year++) {
-                const fetchYear = async () => {
-                    const reqs = categories.map(cat =>
-                        this._fetchFile(this._getPath(year, cat, 'json'), { signal })
-                            .then(r => r.ok ? r.json() : [])
-                            .catch(e => {
-                                if (e.name !== 'AbortError') return []; // Ignore aborts gracefully
-                            })
-                    );
+            const eventsList = await Promise.all(reqs);
+            if (signal.aborted) return;
 
-                    if (signal.aborted) return null;
+            const events = eventsList
+                .flat()
+                .filter(event => {
+                    const year = new Date(event.date || event.start).getFullYear();
+                    return year >= this.startYear && year <= this.endYear;
+                })
+                .sort((a, b) => new Date(a.date || a.start || 0) - new Date(b.date || b.start || 0));
 
-                    const eventsList = await Promise.all(reqs);
-                    if (signal.aborted) return null;
+            const grouped = {};
+            for (const event of events) {
+                const year = new Date(event.date || event.start).getFullYear();
 
-                    const events = eventsList
-                        .flat()
-                        .filter(Boolean)
-                        .sort((a, b) => new Date(a.date || a.start || 0) - new Date(b.date || b.start || 0));
-
-                    return events.length > 0 ? { year, events } : null;
-                };
-                promises.push(fetchYear());
+                if (!grouped[year]) {
+                    grouped[year] = [];
+                }
+                grouped[year].push(event);
             }
 
-            const results = await Promise.all(promises);
-
-            // Only update the UI if this specific request batch wasn't cancelled
-            if (!signal.aborted) {
-                this.previewYears = results.filter(Boolean);
-            }
+            this.previewYears = Object.entries(grouped)
+                .sort(([a], [b]) => Number(a) - Number(b))
+                .map(([year, events]) => ({ year: Number(year), events }));
         },
 
         // Download ICS File
         async downloadICS() {
             this.isGenerating = true;
             const categories = this.categoriesToFetch;
-            const fetches = [];
-
-            // Fetch calendar data for all selected years and categories
-            for (let year = this.startYear; year <= this.endYear; year++) {
-                categories.forEach(cat => {
-                    fetches.push(this._fetchFile(this._getPath(year, cat, 'ics')).then(r => r.ok ? r.text() : "").catch(() => ""));
-                });
-            }
+            const fetches = categories.map(cat =>
+                this._fetchFile(this._getPath(cat, 'ics')).then(r => r.ok ? r.text() : "").catch(() => "")
+            );
 
             const results = await Promise.all(fetches);
 
@@ -206,7 +198,18 @@ function holidayDownloads() {
                 || "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nCALSCALE:GREGORIAN";
 
             // Combine events from all fetched files
-            const combinedEvents = results.flatMap(text => text.match(/BEGIN:VEVENT[\s\S]*?END:VEVENT/gi) || []);
+            const combinedEvents = results
+                .flatMap(text => text.match(/BEGIN:VEVENT[\s\S]*?END:VEVENT/gi) || [])
+                .filter(eventText => {
+                    const match =
+                        eventText.match(/^DTSTART;VALUE=DATE:(\d{4})/m) ||
+                        eventText.match(/^DTSTART:(\d{4})/m);
+
+                    if (!match) return false;
+
+                    const year = Number(match[1]);
+                    return year >= this.startYear && year <= this.endYear;
+                });
 
             if (combinedEvents.length === 0) {
                 alert("No data found for the selected range.");

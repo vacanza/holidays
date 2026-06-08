@@ -54,6 +54,8 @@ class Philippines(
         * [Proclamation No. 878/2025](https://archive.org/details/20250506-proc-878-frm_202506)
         * [Proclamation No. 911/2025](https://archive.org/details/20250521-proc-911-frm_20250606_1800)
         * [Proclamation No. 1006/2025](https://archive.org/details/20250903-proc-1006-frm)
+        * [Proclamation No. 1189/2026](https://archive.org/details/20260312-proc-1189)
+        * [Proclamation No. 1264/2026](https://archive.org/details/20260521-proc-1264)
     """
 
     country = "PH"
@@ -202,11 +204,11 @@ class PHL(Philippines):
 
 
 class PhilippinesChineseHolidays(_CustomChineseHolidays):
-    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2012, 2025)
+    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2012, 2026)
 
 
 class PhilippinesIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2010, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2010, 2026)
     EID_AL_ADHA_DATES = {
         2010: (NOV, 17),
         2011: (NOV, 7),
@@ -218,7 +220,7 @@ class PhilippinesIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUN, 17),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2002, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2002, 2026)
     EID_AL_FITR_DATES = {
         2002: (DEC, 6),
         2003: (NOV, 26),

@@ -1332,10 +1332,12 @@ class UnitedStates(
         # Established by Law No. 305 of Dec 25, 2002.
         if self._year >= 2003:
             # %s (from 12pm).
-            begin_time_label = self.tr("%s (from 12pm)")
+            begin_time_label = tr("%s (from 12pm)")
 
-            # Christmas Eve.
-            self._add_christmas_eve(begin_time_label % self.tr("Christmas Eve"))
+            self._add_christmas_eve(
+                # Christmas Eve.
+                self._format_holiday_name(begin_time_label, tr("Christmas Eve"))
+            )
 
     def _populate_subdiv_ri_public_holidays(self):
         if self._year >= 1948:
