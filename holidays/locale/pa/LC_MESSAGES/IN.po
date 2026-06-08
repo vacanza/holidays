@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.98\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-28 17:22+0530\n"
-"PO-Revision-Date: 2026-05-30 13:56+0530\n"
+"PO-Revision-Date: 2026-06-09 01:31+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pa\n"
@@ -260,6 +260,7 @@ msgstr "ਹਜ਼ਰਤ ਅਲੀ ਦਾ ਜਨਮਦਿਨ"
 msgid "Jamat-Ul-Vida"
 msgstr "ਜਮਾਤ-ਉਲ-ਵਿਦਾ"
 
+#. Christmas Eve.
 msgid "Christmas Eve"
 msgstr "ਕ੍ਰਿਸਮਿਸ ਦੀ ਪੂਰਵ ਸੰਧਿਆ"
 
