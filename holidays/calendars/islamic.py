@@ -4137,7 +4137,42 @@ class _IslamicLunar:
         """
         self.__calendar_delta_days = calendar_delta_days
 
-    def _get_holiday(self, holiday: str, year: int) -> Iterable[tuple[date, bool]]:
+    def _get_holiday(
+        self, holiday: str, year: int, *, use_delta: bool = True
+    ) -> Iterable[tuple[date, bool]]:
+        """Yield holiday dates for the specified Gregorian year.
+
+        The method combines dates from the underlying calendar with
+        country-specific confirmed dates.
+
+        Dates defined in `<HOLIDAY>_DATES` are treated as confirmed and take
+        precedence over calendar dates for the corresponding years. If
+        `<HOLIDAY>_DATES_CONFIRMED_YEARS` is defined, calendar dates are also
+        treated as confirmed within the specified year ranges without requiring
+        explicit entries for every year.
+
+        Since holidays based on the Islamic calendar can fall into the previous
+        Gregorian year, dates from both `year - 1` and `year` are considered.
+
+        For unconfirmed dates, a calendar delta may be applied when
+        `use_shift` is `True`. This is used by countries where the majority of
+        Islamic holidays are observed on a different date than in the base
+        calendar (Umm al-Qura), typically one day later.
+
+        Args:
+            holiday:
+                Holiday identifier.
+
+            year:
+                Gregorian year for which holiday dates should be retrieved.
+
+            use_delta:
+                Whether to apply the calendar delta to unconfirmed dates.
+
+        Yields:
+            Holiday dates together with a flag indicating whether the date is
+            considered unconfirmed for the corresponding year.
+        """
         confirmed_dates = getattr(
             self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {}
         )
@@ -4161,7 +4196,7 @@ class _IslamicLunar:
                 holiday_date = date(check_year, *dt)
                 yield (
                     _timedelta(holiday_date, calendar_delta_days)
-                    if calendar_delta_days and not is_confirmed_year
+                    if calendar_delta_days and use_delta and not is_confirmed_year
                     else holiday_date,
                     not is_confirmed,
                 )
@@ -4229,7 +4264,7 @@ class _IslamicLunar:
         return self._get_holiday(ISRA_AND_MIRAJ, year)
 
     def jumuatul_wida_dates(self, year: int) -> Iterable[tuple[date, bool]]:
-        return self._get_holiday(JUMUATUL_WIDA, year)
+        return self._get_holiday(JUMUATUL_WIDA, year, use_delta=False)
 
     def laylat_al_qadr_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(LAYLAT_AL_QADR, year)
