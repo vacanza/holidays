@@ -26,19 +26,19 @@ from holidays import (
 from holidays.constants import PUBLIC
 
 
-class TestAuthors(TestCase):
+class TestContributors(TestCase):
     @classmethod
     def setUpClass(cls):
         cls.content = Path("CONTRIBUTORS").read_text(encoding="UTF-8").strip().split("\n")
         super().setUpClass()
 
-    def test_authors_list(self):
-        authors = self.content[1:]
+    def test_contributors_list(self):
+        names = self.content
         self.assertEqual(
-            authors,
-            sorted(authors),
+            names,
+            sorted(names),
             "Contributors list should be sorted alphabetically.\n"
-            + "\n".join((f"{c} != {s}" for c, s in zip(authors, sorted(authors)) if c != s)),
+            + "\n".join((f"{c} != {s}" for c, s in zip(names, sorted(names)) if c != s)),
         )
 
 
