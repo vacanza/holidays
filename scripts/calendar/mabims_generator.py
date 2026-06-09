@@ -95,7 +95,19 @@ def get_new_moon_date(ts, eph, approximate_date: date) -> date:
 
 def check_mabims_visibility(ts, eph, observer, check_date: date) -> bool:
     """Check if crescent moon meets MABIMS criteria at Singapore sunset."""
-    t = ts.utc(check_date.year, check_date.month, check_date.day, 11, 0, 0)  # ~sunset UTC+8
+    # Find exact sunset time for Singapore.
+    t0 = ts.utc(check_date.year, check_date.month, check_date.day, 9, 0)   # 5pm SGT
+    t1 = ts.utc(check_date.year, check_date.month, check_date.day, 12, 0)  # 8pm SGT
+    f = almanac.sunrise_sunset(eph, observer)
+    times, events = almanac.find_discrete(t0, t1, f)
+    t = None
+    for st, e in zip(times, events):
+        if e == 0:  # sunset
+            t = st
+            break
+    if t is None:
+        # Fallback to approximate Singapore sunset (~6:50pm SGT = 10:50 UTC).
+        t = ts.utc(check_date.year, check_date.month, check_date.day, 10, 50, 0)
 
     earth = eph["earth"]
     moon = eph["moon"]
