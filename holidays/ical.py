@@ -210,7 +210,8 @@ class ICalExporter:
                 days = 1
                 while (
                     i + days < n
-                    and sorted_dates[i + days] == _timedelta(sorted_dates[i], days)
+                    and sorted_dates[i + days] == (end_date := _timedelta(sorted_dates[i], days))
+                    and end_date.year == dt.year
                     and name in self.holidays.get_list(sorted_dates[i + days])
                 ):
                     days += 1

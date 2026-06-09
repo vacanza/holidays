@@ -111,16 +111,20 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
 
     def _populate_half_day_holidays(self):
         # %s (from 1pm).
-        begin_time_label = self.tr("%s (saat 13.00'ten)")
+        begin_time_label = tr("%s (saat 13.00'ten)")
 
-        # Republic Day.
-        self._add_holiday_oct_28(begin_time_label % self.tr("Cumhuriyet Bayramı"))
+        self._add_holiday_oct_28(
+            # Republic Day.
+            self._format_holiday_name(begin_time_label, tr("Cumhuriyet Bayramı"))
+        )
 
-        # Eid al-Fitr.
-        self._add_eid_al_fitr_eve(begin_time_label % self.tr("Ramazan Bayramı"))
+        self._add_eid_al_fitr_eve(
+            # Eid al-Fitr.
+            self._format_holiday_name(begin_time_label, tr("Ramazan Bayramı"))
+        )
 
         # Eid al-Adha.
-        self._add_arafah_day(begin_time_label % self.tr("Kurban Bayramı"))
+        self._add_arafah_day(self._format_holiday_name(begin_time_label, tr("Kurban Bayramı")))
 
 
 class TR(Turkey):

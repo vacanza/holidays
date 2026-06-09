@@ -47,7 +47,7 @@ class Indonesia(
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Indonesia>
         * <https://id.wikipedia.org/wiki/Hari_libur_di_Indonesia>
         * <https://web.archive.org/web/20250413192412/https://www.liburnasional.com/sejarah/>
-        * [1963-2025](https://id.wikipedia.org/wiki/Indonesia_dalam_tahun_1963)
+        * [1963-2026](https://id.wikipedia.org/wiki/Indonesia_dalam_tahun_1963)
         * <https://web.archive.org/web/20250413192423/https://www.timeanddate.com/holidays/indonesia/>
     """
 
@@ -241,11 +241,12 @@ class IndonesiaBuddhistHolidays(_CustomBuddhistHolidays):
         2023: (JUN, 4),
         2024: (MAY, 23),
         2025: (MAY, 12),
+        2026: (MAY, 31),
     }
 
 
 class IndonesiaChineseHolidays(_CustomChineseHolidays):
-    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2003, 2025)
+    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2003, 2026)
     LUNAR_NEW_YEAR_DATES = {
         2006: (JAN, 30),
         2007: (FEB, 19),
@@ -255,7 +256,7 @@ class IndonesiaChineseHolidays(_CustomChineseHolidays):
 
 
 class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1963, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1963, 2026)
     EID_AL_ADHA_DATES = {
         1963: (MAY, 4),
         1964: (APR, 23),
@@ -294,7 +295,7 @@ class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUN, 17),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (1963, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (1963, 2026)
     EID_AL_FITR_DATES = {
         1963: (FEB, 25),
         1964: (FEB, 15),
@@ -328,9 +329,10 @@ class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
         2019: (JUN, 5),
         2023: (APR, 22),
         2025: (MAR, 31),
+        2026: (MAR, 21),
     }
 
-    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (1968, 2025)
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (1968, 2026)
     HIJRI_NEW_YEAR_DATES = {
         1970: (MAR, 10),
         1971: (FEB, 27),
@@ -362,7 +364,7 @@ class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
         2025: (JUN, 27),
     }
 
-    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (1968, 2025)
+    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (1968, 2026)
     ISRA_AND_MIRAJ_DATES = {
         1968: (OCT, 20),
         1969: (OCT, 9),
@@ -399,7 +401,7 @@ class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
         2018: (APR, 14),
     }
 
-    MAWLID_DATES_CONFIRMED_YEARS = (1968, 2025)
+    MAWLID_DATES_CONFIRMED_YEARS = (1968, 2026)
     MAWLID_DATES = {
         1972: (APR, 26),
         1973: (APR, 14),
@@ -487,10 +489,11 @@ class IndonesiaStaticHolidays:
         * <https://web.archive.org/web/20250413193243/https://setkab.go.id/inilah-keppres-7-2024-tentang-cuti-bersama-asn-tahun-2024/>
         * <https://web.archive.org/web/20250413193349/https://setkab.go.id/pemerintah-tetapkan-hari-libur-nasional-dan-cuti-bersama-tahun-2025/>
         * <https://web.archive.org/web/20250802143125/https://news.detik.com/berita/d-8039857/pemerintah-tetapkan-senin-18-agustus-hari-libur>
+        * <https://web.archive.org/web/20260605113344/https://www.detik.com/hikmah/khazanah/d-8346579/libur-nasional-dan-cuti-bersama-2026-cek-jadwalnya-di-sini>
     """
 
     # General Election Day.
-    general_election_day = tr("Hari Pemilihan Unum")
+    general_election_day = tr("Hari Pemilihan Umum")
     # Presidential Election Day.
     presidential_election_day = tr("Hari Pemilihan Presiden")
     # Legislative Election Day.
@@ -729,6 +732,16 @@ class IndonesiaStaticHolidays:
             (JUN, 9, eid_al_adha_joint_holiday),
             (AUG, 18, independence_day_joint_holiday),
             (DEC, 26, christmas_joint_holiday),
+        ),
+        2026: (
+            (FEB, 16, lunar_new_year_joint_holiday),
+            (MAR, 18, day_of_silence_joint_holiday),
+            (MAR, 20, eid_al_fitr_joint_holiday),
+            (MAR, 23, eid_al_fitr_joint_holiday),
+            (MAR, 24, eid_al_fitr_joint_holiday),
+            (MAY, 15, ascension_joint_holiday),
+            (MAY, 28, eid_al_adha_joint_holiday),
+            (DEC, 24, christmas_joint_holiday),
         ),
     }
     special_government_holidays_observed = {

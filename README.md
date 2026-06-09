@@ -185,7 +185,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Algeria</td>
 <td>DZ</td>
 <td></td>
-<td><strong>ar</strong>, en_US, fr</td>
+<td><strong>ar</strong>, en_US, fr, kab</td>
 <td>CHRISTIAN, HEBREW</td>
 </tr>
 <tr>
@@ -1102,7 +1102,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Maldives</td>
 <td>MV</td>
 <td></td>
-<td></td>
+<td><strong>dv</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -1987,6 +1987,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>NASDAQ</td>
+<td>XNAS</td>
+<td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
+<td></td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
@@ -1996,7 +2003,7 @@ code when available. The following financial markets are available:
 <tr>
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
-<td>NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)</td>
+<td>NYSE market holidays</td>
 <td></td>
 <td>HALF_DAY</td>
 </tr>

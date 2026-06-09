@@ -1,3 +1,15 @@
+## Version 0.98
+
+Released June 1, 2026
+
+- Add NASDAQ (XNAS) holidays (#3586 by @pareshjoshij)
+- Update United Arab Emirates holidays: fix Thai localization (#3596 by @KJhellico)
+- Update Bhutan holidays (#3590 by @KJhellico)
+- Update l10n test: check .po files for missing entries comments (#3594 by @KJhellico)
+- Add 2025-2026 Islamic holidays exact dates for Indonesia and Philippines (#3591 by @akshiDhi)
+- Add Tibetan calendar generator (#3330 by @Abiram08, @KJhellico)
+- Add pre-commit cache (#3589 by @arkid15r)
+
 ## Version 0.97
 
 Released May 18, 2026
