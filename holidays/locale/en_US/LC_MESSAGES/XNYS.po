@@ -1,0 +1,565 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# New York Stock Exchange holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.99\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-06-04 01:19+0000\n"
+"PO-Revision-Date: 2026-06-04 11:21+0000\n"
+"Last-Translator: Paresh Joshi <194076591+pareshjoshij@users.noreply.github.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_US\n"
+
+#. %s (observed)
+#, c-format
+msgid "%s (observed)"
+msgstr ""
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. Martin Luther King Jr. Day.
+msgid "Martin Luther King Jr. Day"
+msgstr ""
+
+#. Lincoln's Birthday.
+msgid "Lincoln's Birthday"
+msgstr ""
+
+#. Washington's Birthday.
+msgid "Washington's Birthday"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Memorial Day.
+msgid "Memorial Day"
+msgstr ""
+
+#. Flag Day.
+msgid "Flag Day"
+msgstr ""
+
+#. Juneteenth National Independence Day.
+msgid "Juneteenth National Independence Day"
+msgstr ""
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr ""
+
+#. Labor Day.
+msgid "Labor Day"
+msgstr ""
+
+#. Columbus Day.
+msgid "Columbus Day"
+msgstr ""
+
+#. Election Day.
+msgid "Election Day"
+msgstr ""
+
+#. Veteran's Day.
+msgid "Veteran's Day"
+msgstr ""
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Pending outbreak of World War I.
+msgid "Pending outbreak of World War I"
+msgstr ""
+
+#. Paperwork Crisis.
+msgid "Paperwork Crisis"
+msgstr ""
+
+#. Closed Saturday.
+msgid "Closed Saturday"
+msgstr ""
+
+#. %s (markets close at 1:00pm).
+#, c-format
+msgid "%s (markets close at 1:00pm)"
+msgstr ""
+
+#. %s (markets close at 2:00pm).
+#, c-format
+msgid "%s (markets close at 2:00pm)"
+msgstr ""
+
+#. %s (markets close at 2:30pm).
+#, c-format
+msgid "%s (markets close at 2:30pm)"
+msgstr ""
+
+#. %s (markets close at 3:00pm).
+#, c-format
+msgid "%s (markets close at 3:00pm)"
+msgstr ""
+
+#. Back office work load.
+msgid "Back office work load"
+msgstr ""
+
+#. Day before Independence Day.
+msgid "Day before Independence Day"
+msgstr ""
+
+#. Day after Thanksgiving Day.
+msgid "Day after Thanksgiving Day"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr ""
+
+#. %s (markets close at 11:00am).
+#, c-format
+msgid "%s (markets close at 11:00am)"
+msgstr ""
+
+#. %s (markets close at 12:00pm).
+#, c-format
+msgid "%s (markets close at 12:00pm)"
+msgstr ""
+
+#. %s (markets close at 12:30pm).
+#, c-format
+msgid "%s (markets close at 12:30pm)"
+msgstr ""
+
+#. %s (markets close at 3:30pm).
+#, c-format
+msgid "%s (markets close at 3:30pm)"
+msgstr ""
+
+#. Blizzard of 1888.
+msgid "Blizzard of 1888"
+msgstr ""
+
+#. Centennial of George Washington's Inauguration.
+msgid "Centennial of George Washington's Inauguration"
+msgstr ""
+
+#. Columbian Celebration.
+msgid "Columbian Celebration"
+msgstr ""
+
+#. Heatless Day.
+msgid "Heatless Day"
+msgstr ""
+
+#. Catch Up Day.
+msgid "Catch Up Day"
+msgstr ""
+
+#. Special Bank Holiday.
+msgid "National Banking Holiday"
+msgstr ""
+
+#. V-J Day. End of World War II.
+msgid "V-J Day. End of World War II"
+msgstr ""
+
+#. Closed following Attacks on the World Trade Center.
+msgid "Closed following Attacks on the World Trade Center"
+msgstr ""
+
+#. Hurricane Sandy.
+msgid "Hurricane Sandy"
+msgstr ""
+
+#. Liberty Day.
+msgid "Liberty Day"
+msgstr ""
+
+#. Heavy volume. To allow member firm offices to catch up on work.
+msgid "Heavy volume. To allow member firm offices to catch up on work"
+msgstr ""
+
+#. Saturday after Washington's Birthday.
+msgid "Saturday after Washington's Birthday"
+msgstr ""
+
+#. Saturday after Good Friday.
+msgid "Saturday after Good Friday"
+msgstr ""
+
+#. Saturday before Decoration Day.
+msgid "Saturday before Decoration Day"
+msgstr ""
+
+#. Saturday after Decoration Day.
+msgid "Saturday after Decoration Day"
+msgstr ""
+
+#. Saturday before Independence Day.
+msgid "Saturday before Independence Day"
+msgstr ""
+
+#. Saturday after Independence Day.
+msgid "Saturday after Independence Day"
+msgstr ""
+
+#. Day after Independence Day.
+msgid "Day after Independence Day"
+msgstr ""
+
+#. Saturday before Labor Day.
+msgid "Saturday before Labor Day"
+msgstr ""
+
+#. Saturday after Columbus Day.
+msgid "Saturday after Columbus Day"
+msgstr ""
+
+#. Saturday before Christmas.
+msgid "Saturday before Christmas Day"
+msgstr ""
+
+#. Friday after Christmas Day.
+msgid "Friday after Christmas Day"
+msgstr ""
+
+#. Saturday after Christmas Day.
+msgid "Saturday after Christmas Day"
+msgstr ""
+
+#. Admiral Dewey Celebration.
+msgid "Admiral Dewey Celebration"
+msgstr ""
+
+#. Draft Registration Day.
+msgid "Draft Registration Day"
+msgstr ""
+
+#. To allow offices to catch up on work.
+msgid "To allow offices to catch up on work"
+msgstr ""
+
+#. Volume activity.
+msgid "Volume activity"
+msgstr ""
+
+#. Transit strike.
+msgid "Transit strike"
+msgstr ""
+
+#. Snowstorm.
+msgid "Snowstorm"
+msgstr ""
+
+#. Shortened hours following market break.
+msgid "Shortened hours following market break"
+msgstr ""
+
+#. Funeral of former President Ulysses S. Grant.
+msgid "Funeral of former President Ulysses S. Grant"
+msgstr ""
+
+#. Friday after Thanksgiving Day.
+msgid "Friday after Thanksgiving Day"
+msgstr ""
+
+#. Grant's Birthday.
+msgid "Grant's Birthday"
+msgstr ""
+
+#. Charter Day.
+msgid "Charter Day"
+msgstr ""
+
+#. Welcome of naval commanders.
+msgid "Welcome of naval commanders"
+msgstr ""
+
+#. Saturday before Lincoln's Birthday.
+msgid "Saturday before Lincoln's Birthday"
+msgstr ""
+
+#. Monday before Decoration Day.
+msgid "Monday before Decoration Day"
+msgstr ""
+
+#. Monday before Independence Day.
+msgid "Monday before Independence Day"
+msgstr ""
+
+#. Funeral of Vice-President Garret A. Hobart.
+msgid "Funeral of Vice-President Garret A. Hobart"
+msgstr ""
+
+#. Funeral of Queen Victoria of England.
+msgid "Funeral of Queen Victoria of England"
+msgstr ""
+
+#. Moved to temporary quarters in Produce Exchange.
+msgid "Moved to temporary quarters in Produce Exchange"
+msgstr ""
+
+#. Enlarged temporary quarters in Produce Exchange.
+msgid "Enlarged temporary quarters in Produce Exchange"
+msgstr ""
+
+#. Friday after Independence Day.
+msgid "Friday after Independence Day"
+msgstr ""
+
+#. Death of President William McKinley.
+msgid "Death of President William McKinley"
+msgstr ""
+
+#. Funeral of President William McKinley.
+msgid "Funeral of President William McKinley"
+msgstr ""
+
+#. Coronation of King Edward VII of England.
+msgid "Coronation of King Edward VII of England"
+msgstr ""
+
+#. Saturday before Washington's Birthday.
+msgid "Saturday before Washington's Birthday"
+msgstr ""
+
+#. Opening of new NYSE building.
+msgid "Opening of new NYSE building"
+msgstr ""
+
+#. Saturday after Lincoln's Birthday.
+msgid "Saturday after Lincoln's Birthday"
+msgstr ""
+
+#. Reception Day of the Hudson-Fulton Celebration.
+msgid "Reception Day of the Hudson-Fulton Celebration"
+msgstr ""
+
+#. Funeral of Vice-President James S. Sherman.
+msgid "Funeral of Vice-President James S. Sherman"
+msgstr ""
+
+#. Saturday before New Year's Day.
+msgid "Saturday before New Year's Day"
+msgstr ""
+
+#. Heat.
+msgid "Heat"
+msgstr ""
+
+#. Armistice signed.
+msgid "Armistice signed"
+msgstr ""
+
+#. Homecoming of 27th Division.
+msgid "Homecoming of 27th Division"
+msgstr ""
+
+#. Parade of 77th Division.
+msgid "Parade of 77th Division"
+msgstr ""
+
+#. Heat and to allow offices to catch up on work.
+msgid "Heat and to allow offices to catch up on work"
+msgstr ""
+
+#. Return of General John J. Pershing.
+msgid "Return of General John J. Pershing"
+msgstr ""
+
+#. Many firms changed office locations.
+msgid "Many firms changed office locations"
+msgstr ""
+
+#. Death of President Warren G. Harding.
+msgid "Death of President Warren G. Harding"
+msgstr ""
+
+#. Funeral of President Warren G. Harding.
+msgid "Funeral of President Warren G. Harding"
+msgstr ""
+
+#. Parade for Colonel Charles A. Lindbergh.
+msgid "Parade for Colonel Charles A. Lindbergh"
+msgstr ""
+
+#. Funeral of former President Calvin Coolidge.
+msgid "Funeral of former President Calvin Coolidge"
+msgstr ""
+
+#. State Banking Holiday.
+msgid "State Banking Holiday"
+msgstr ""
+
+#. National Day of Mourning for President Franklin D. Roosevelt.
+msgid "National Day of Mourning for President Franklin D. Roosevelt"
+msgstr ""
+
+#. Navy Day.
+msgid "Navy Day"
+msgstr ""
+
+#. Railroad strike.
+msgid "Railroad strike"
+msgstr ""
+
+#. Severe weather conditions.
+msgid "Severe weather conditions"
+msgstr ""
+
+#. Saturday before Christmas Eve.
+msgid "Saturday before Christmas Eve"
+msgstr ""
+
+#. Day after Christmas.
+msgid "Day after Christmas"
+msgstr ""
+
+#. Day before Decoration Day.
+msgid "Day before Decoration Day"
+msgstr ""
+
+#. Funeral of President John F. Kennedy.
+msgid "Funeral of President John F. Kennedy"
+msgstr ""
+
+#. National Day of Mourning for Martin Luther King, Jr.
+msgid "National Day of Mourning for Martin Luther King, Jr."
+msgstr ""
+
+#. Heavy Snow.
+msgid "Heavy Snow"
+msgstr ""
+
+#. Funeral of former President Dwight D. Eisenhower.
+msgid "Funeral of former President Dwight D. Eisenhower"
+msgstr ""
+
+#. National Day of Participation for the Lunar Exploration.
+msgid "National Day of Participation for the Lunar Exploration"
+msgstr ""
+
+#. Funeral of former President Harry S. Truman.
+msgid "Funeral of former President Harry S. Truman"
+msgstr ""
+
+#. Funeral of former President Lyndon B. Johnson.
+msgid "Funeral of former President Lyndon B. Johnson"
+msgstr ""
+
+#. Blackout in New York City.
+msgid "Blackout in New York City"
+msgstr ""
+
+#. Hurricane Gloria.
+msgid "Hurricane Gloria"
+msgstr ""
+
+#. Funeral of former President Richard M. Nixon.
+msgid "Funeral of former President Richard M. Nixon"
+msgstr ""
+
+#. National Day of Mourning for former President Ronald Reagan.
+msgid "National Day of Mourning for former President Ronald Reagan"
+msgstr ""
+
+#. National Day of Mourning for former President Gerald R. Ford.
+msgid "National Day of Mourning for former President Gerald R. Ford"
+msgstr ""
+
+#. National Day of Mourning for former President George H. W. Bush.
+msgid "National Day of Mourning for former President George H. W. Bush"
+msgstr ""
+
+#. National Day of Mourning for former President Jimmy Carter.
+msgid "National Day of Mourning for former President Jimmy Carter"
+msgstr ""
+
+#. Funeral of former President Grover Cleveland.
+msgid "Funeral of former President Grover Cleveland"
+msgstr ""
+
+#. Death of King Edward VII of England.
+msgid "Death of King Edward VII of England"
+msgstr ""
+
+#. Parade of National Guard.
+msgid "Parade of National Guard"
+msgstr ""
+
+#. False armistice report.
+msgid "False armistice report"
+msgstr ""
+
+#. Funeral of former President Theodore Roosevelt.
+msgid "Funeral of former President Theodore Roosevelt"
+msgstr ""
+
+#. Wall Street explosion.
+msgid "Wall Street explosion"
+msgstr ""
+
+#. Funeral of former President Woodrow Wilson.
+msgid "Funeral of former President Woodrow Wilson"
+msgstr ""
+
+#. Funeral of former NYSE president Seymour L. Cromwell.
+msgid "Funeral of former NYSE president Seymour L. Cromwell"
+msgstr ""
+
+#. Funeral of former President William Howard Taft.
+msgid "Funeral of former President William Howard Taft"
+msgstr ""
+
+#. NRA demonstration.
+msgid "NRA demonstration"
+msgstr ""
+
+#. Assassination of President John F. Kennedy (markets close at 2:07pm).
+msgid "Assassination of President John F. Kennedy (markets close at 2:07pm)"
+msgstr ""
+
+#. Funeral of former President Herbert C. Hoover.
+msgid "Funeral of former President Herbert C. Hoover"
+msgstr ""
+
+#. Hurricane watch.
+msgid "Hurricane watch"
+msgstr ""
+
+#. Assassination attempt on President Reagan (markets close at 3:17pm).
+msgid "Assassination attempt on President Reagan (markets close at 3:17pm)"
+msgstr ""
+
+#. Con Edison power failure in lower Manhattan (markets close at 3:28pm).
+msgid "Con Edison power failure in lower Manhattan (markets close at 3:28pm)"
+msgstr ""
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr ""
