@@ -17,10 +17,12 @@ import shutil
 import sys
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
+from time import perf_counter
 
 sys.path.insert(0, str(Path.cwd()))  # Make holidays visible.
 
 from holidays import (
+    HolidayBase,
     country_holidays,
     financial_holidays,
     list_supported_countries,
@@ -48,6 +50,7 @@ LANGUAGES = {
     "cs": "Czech",
     "da": "Danish",
     "de": "German",
+    "dv": "Dhivehi",
     "dz": "Dzongkha",
     "el": "Greek",
     "es": "Spanish",
@@ -69,6 +72,7 @@ LANGUAGES = {
     "it": "Italian",
     "ja": "Japanese",
     "ka": "Georgian",
+    "kab": "Kabyle",
     "kk": "Kazakh",
     "kl": "Kalaallisut (Greenlandic)",
     "km": "Khmer",
@@ -211,26 +215,25 @@ LANGUAGES = {
 }
 
 
-def write_assets(h_obj, filename_base, year_dir):
+def write_assets(h_obj: HolidayBase, filename_base: str, out_dir: Path) -> None:
     """Write the ICS and JSON files to the disk."""
     if not h_obj:
         return
-    try:
-        exporter = ICalExporter(h_obj)
-        ics_path = year_dir / f"{filename_base}.ics"
-        exporter.save_ics(str(ics_path))
 
-        # Inline JSON generation
+    try:
+        ICalExporter(h_obj).save_ics(out_dir / f"{filename_base}.ics")
+
+        # Inline JSON generation.
         json_data = json.dumps(
             [{"date": dt.isoformat(), "name": name} for dt, name in sorted(h_obj.items())],
             ensure_ascii=False,
         )
-        (year_dir / f"{filename_base}.json").write_text(json_data, encoding="utf-8", newline="\n")
+        (out_dir / f"{filename_base}.json").write_text(json_data, encoding="utf-8", newline="\n")
     except Exception as e:
         print(f"Error writing {filename_base}: {e}")
 
 
-def process_entity(args):
+def process_entity(args) -> tuple[str, str, dict]:
     """Worker that generates assets for a single Country/Market."""
     code, is_country = args
 
@@ -238,7 +241,7 @@ def process_entity(args):
     instance = holidays_func(code)
 
     # Prepare metadata.
-    docstring = instance.__class__.__base__.__doc__
+    docstring = instance.__class__.__base__.__doc__ or ""
     name = docstring.split("\n")[0].split("holidays")[0].strip()
     languages = instance.supported_languages or ["en_US"]
     categories = instance.supported_categories
@@ -250,9 +253,7 @@ def process_entity(args):
         for subdiv in instance.subdivisions
     }
 
-    # Generate a clean dictionary of full language names
     languages_map = {lang: LANGUAGES.get(lang, lang) for lang in sorted(languages)}
-
     manifest_entry = {
         "name": name,
         "subdivisions": subdivisions_map,
@@ -265,30 +266,32 @@ def process_entity(args):
 
     entity_type = "countries" if is_country else "financial"
 
-    # Generate files
-    for year in range(DEFAULT_YEAR_START, DEFAULT_YEAR_END + 1):
-        year_dir = OUTPUT_DIR / entity_type / code / str(year)
-        year_dir.mkdir(parents=True, exist_ok=True)
-
-        for subdiv in (None, *instance.subdivisions):
-            for lang in languages:
-                for cat in categories:
-                    filename = f"{subdiv or 'ALL'}_{lang}_{cat}"
-                    try:
-                        h_obj = holidays_func(
-                            code, subdiv=subdiv, years=year, language=lang, categories=cat
-                        )
-                        write_assets(h_obj, filename, year_dir)
-                    except Exception as e:
-                        print(f"Failed {filename} for {code} {year}: {e}")
+    out_dir = OUTPUT_DIR / entity_type / code
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for subdiv in (None, *instance.subdivisions):
+        for language in languages:
+            for category in categories:
+                filename = f"{subdiv or 'ALL'}_{language}_{category}"
+                try:
+                    h_obj = holidays_func(
+                        code,
+                        subdiv=subdiv,
+                        years=range(DEFAULT_YEAR_START, DEFAULT_YEAR_END + 1),
+                        language=language,
+                        categories=category,
+                    )
+                    write_assets(h_obj, filename, out_dir)
+                except Exception as e:
+                    print(f"Failed {filename} for {code}: {e}")
 
     return entity_type, code, manifest_entry
 
 
-def main():
+def main() -> None:
     print(f"--- Generating to {OUTPUT_DIR} ---")
+    po_time_start = perf_counter()
 
-    # Inline output dir cleaning
+    # Inline output dir cleaning.
     if OUTPUT_DIR.exists():
         shutil.rmtree(OUTPUT_DIR)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -297,13 +300,16 @@ def main():
     work_items += [(m, False) for m in list_supported_financial(include_aliases=False)]
 
     print(f"Found {len(work_items)} entities to process.")
-    manifest = {"countries": {}, "financial": {}}
+    manifest: dict[str, dict] = {"countries": {}, "financial": {}}
 
     with ProcessPoolExecutor() as executor:
         for result in executor.map(process_entity, work_items):
             if result:
                 etype, code, meta = result
                 manifest[etype][code] = meta
+
+    po_time_end = perf_counter()
+    print(f"[TIMER] Total generating runtime: {po_time_end - po_time_start:.2f} seconds")
 
     manifest_path = OUTPUT_DIR / "index.json"
     print(f"Writing manifest to {manifest_path}...")

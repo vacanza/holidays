@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.calendars.gregorian import FRI, SAT
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
@@ -20,13 +22,16 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Maldives>
+        * <https://web.archive.org/web/20260404223324/https://presidency.gov.mv/Press/Article/13097>
         * <https://web.archive.org/web/20250317114653/https://www.timeanddate.com/holidays/maldives>
         * <https://web.archive.org/web/20250427131834/https://www.mma.gov.mv/>
     """
 
     country = "MV"
+    default_language = "dv"
+    supported_languages = ("dv", "en_US")
     # %s (estimated).
-    estimated_label = "%s (estimated)"
+    estimated_label = tr("%s (އަންދާޒާކުރި)")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
@@ -42,49 +47,54 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day("New Year's Day")
+        self._add_new_years_day(tr("މީލާދީ އާ އަހަރު ފެށޭ ދުވަސް"))
 
-        # Labor Day.
-        self._add_labor_day("Labor Day")
+        # International Worker's Day.
+        self._add_labor_day(tr("ބައިނަލްއަޤްވާމީ މަސައްކަތްތެރިންގެ ދުވަސް"))
 
         # Independence Day.
-        self._add_holiday_jul_26("Independence Day")
+        self._add_holiday_jul_26(tr("މިނިވަން ދުވަސް"))
 
         # Victory Day.
-        self._add_holiday_nov_3("Victory Day")
+        self._add_holiday_nov_3(tr("ނަޞްރުގެ ދުވަސް"))
 
         # Republic Day.
-        self._add_holiday_nov_11("Republic Day")
+        self._add_holiday_nov_11(tr("ޖުމްހޫރީ ދުވަސް"))
 
-        # Islamic holidays.
-        # Start of Ramadan.
-        self._add_ramadan_beginning_day("Beginning of Ramadan")
+        # First Day of Ramadan.
+        self._add_ramadan_beginning_day(tr("ރަމަޟާން މަސް ފެށޭ ދުވަސް"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day("Eid al-Fitr")
-        self._add_eid_al_fitr_day_two("Eid al-Fitr")
-        self._add_eid_al_fitr_day_three("Eid al-Fitr")
+        self._add_eid_al_fitr_day(tr("ފިޠުރުޢީދު ދުވަސް"))
 
-        # Hajj Day.
-        self._add_arafah_day("Hajj Day")
+        # Eid al-Fitr Holiday.
+        eid_al_fitr_holiday = tr("ފިޠުރުޢީދުގެ މުނާސަބަތުގައި")
+        self._add_eid_al_fitr_day_two(eid_al_fitr_holiday)
+        self._add_eid_al_fitr_day_three(eid_al_fitr_holiday)
+
+        # Arafat Day.
+        self._add_arafah_day(tr("ޙައްޖުދުވަސް"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day("Eid al-Adha")
-        self._add_eid_al_adha_day_two("Eid al-Adha")
-        self._add_eid_al_adha_day_three("Eid al-Adha")
-        self._add_eid_al_adha_day_four("Eid al-Adha")
+        self._add_eid_al_adha_day(tr("އަޟްޙާޢީދު ދުވަސް"))
 
-        # Muharram/Islamic New Year.
-        self._add_islamic_new_year_day("Islamic New Year")
+        # Eid al-Adha Holiday.
+        eid_al_adha_holiday = tr("އަޟްޙާޢީދުގެ މުނާސަބަތުގައި")
+        self._add_eid_al_adha_day_two(eid_al_adha_holiday)
+        self._add_eid_al_adha_day_three(eid_al_adha_holiday)
+        self._add_eid_al_adha_day_four(eid_al_adha_holiday)
+
+        # Islamic New Year.
+        self._add_islamic_new_year_day(tr("ހިޖުރީ އާ އަހަރު ފެށޭ ދުވަސް"))
 
         # National Day.
-        self._add_quamee_dhuvas_day("National Day")
+        self._add_quamee_dhuvas_day(tr("ޤައުމީ ދުވަސް"))
 
-        # Prophet Muhammad's Birthday.
-        self._add_mawlid_day("Mawlid al-Nabi")
+        # Prophet's Birthday.
+        self._add_mawlid_day(tr("ކީރިތި ރަސޫލާގެ ޢީދުމީލާދު"))
 
         # The Day Maldives Embraced Islam.
-        self._add_maldives_embraced_islam_day("The Day Maldives Embraced Islam")
+        self._add_maldives_embraced_islam_day(tr("ރާއްޖެ އިސްލާމްވީ ދުވަސް"))
 
 
 class MV(Maldives):
