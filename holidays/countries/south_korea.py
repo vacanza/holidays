@@ -116,11 +116,11 @@ class SouthKorea(
             if dt_observed != dt or len(self.get_list(dt)) > 1:
                 if dt_observed == dt:
                     dt_observed = self._get_next_workday(dt)
-                names = (
-                    (three_day_holidays[dt],) if dt in three_day_holidays else self.get_list(dt)
-                )
+                names = (name,) if (name := three_day_holidays.get(dt)) else self.get_list(dt)
                 for name in names:
-                    self._add_holiday(self.tr(self.observed_label) % self.tr(name), dt_observed)
+                    self._add_holiday(
+                        self._format_holiday_name(self.observed_label, name), dt_observed
+                    )
 
     def _populate_public_holidays(self):
         def append_observed(dt: date, since: int):
@@ -128,13 +128,18 @@ class SouthKorea(
                 dts_observed.add(dt)
 
         def add_three_day_holiday(dt: date, name: str):
-            name = self.tr(name)
             for dt_alt in (
-                # The day preceding %s.
-                self._add_holiday(self.tr("%s 전날") % name, _timedelta(dt, -1)),
+                self._add_holiday(
+                    # The day preceding %s.
+                    self._format_holiday_name(tr("%s 전날"), name),
+                    _timedelta(dt, -1),
+                ),
                 dt,
-                # The second day of %s.
-                self._add_holiday(self.tr("%s 다음날") % name, _timedelta(dt, +1)),
+                self._add_holiday(
+                    # The second day of %s.
+                    self._format_holiday_name(tr("%s 다음날"), name),
+                    _timedelta(dt, +1),
+                ),
             ):
                 three_days_holidays[dt_alt] = name
 
@@ -217,7 +222,8 @@ class SouthKorea(
         name = tr("추석")
         chuseok = self._add_mid_autumn_festival(name)
         if 1986 <= self._year <= 1988:
-            self._add_mid_autumn_festival_day_two(self.tr("%s 다음날") % self.tr(name))
+            # The second day of %s.
+            self._add_mid_autumn_festival_day_two(self._format_holiday_name(tr("%s 다음날"), name))
         elif self._year >= 1989:
             add_three_day_holiday(chuseok, name)
 

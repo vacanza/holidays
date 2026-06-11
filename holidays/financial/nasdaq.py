@@ -21,6 +21,7 @@ class NASDAQ(NewYorkStockExchange):
     """
 
     market = "XNAS"
+    parent_entity = NewYorkStockExchange
     start_year = 1971
 
 
