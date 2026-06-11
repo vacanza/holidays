@@ -1730,7 +1730,7 @@ class UnitedStatesStaticHolidays(StaticHolidays):
 
     special_government_holidays = {
         2001: (DEC, 24, christmas_eve_name),
-        2002: (DEC, 24, half_day_closing_label % christmas_eve_name),
+        2002: (DEC, 24, (half_day_closing_label, christmas_eve_name)),
         2003: (DEC, 26, day_after_christmas_name),
         # National Day of Mourning for former President Ronald Reagan.
         2004: (JUN, 11, tr("National Day of Mourning for former President Ronald Reagan")),
@@ -1740,10 +1740,10 @@ class UnitedStatesStaticHolidays(StaticHolidays):
             (DEC, 24, christmas_eve_name),
         ),
         2008: (DEC, 26, day_after_christmas_name),
-        2009: (DEC, 24, half_day_closing_label % christmas_eve_name),
+        2009: (DEC, 24, (half_day_closing_label, christmas_eve_name)),
         2012: (DEC, 24, christmas_eve_name),
         2014: (DEC, 26, day_after_christmas_name),
-        2015: (DEC, 24, half_day_closing_label % christmas_eve_name),
+        2015: (DEC, 24, (half_day_closing_label, christmas_eve_name)),
         2018: (
             # National Day of Mourning for former President George H. W. Bush.
             (DEC, 5, tr("National Day of Mourning for former President George H. W. Bush")),
