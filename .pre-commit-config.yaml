@@ -60,8 +60,8 @@ repos:
     hooks:
       - id: mypy
         additional_dependencies:
-          - types-polib
-          - types-python-dateutil
+          - types-polib==1.2.0.20260518
+          - types-python-dateutil==2.9.0.20260518
 
   - repo: https://github.com/tox-dev/pyproject-fmt
     rev: a007bb7dd9043d022292401abc3061cb1906b4bc  # v2.21.2
