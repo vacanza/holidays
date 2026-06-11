@@ -182,8 +182,6 @@ class India(
         2014,
         2015,
         2016,
-        2018,
-        2019,
         2020,
         2021,
         2023,
@@ -297,22 +295,37 @@ class India(
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
 
-        # Labor Day.
-        self._add_labor_day(tr("Labour Day"))
-
-        # Children's Day.
-        self._add_holiday_nov_14(tr("Children's Day"))
-
         # Hindu holidays.
+
+        # Guru Gobind Singh's Birthday.
+        self._add_guru_gobind_singh_jayanti(tr("Guru Gobind Singh's Birthday"))
+
+        if 2020 <= self._year <= 2022 or self._year == 2024:
+            # Lohri.
+            self._add_lohri(tr("Lohri"))
+
+        # Makar Sankranti.
+        self._add_makar_sankranti(tr("Makar Sankranti"))
+
+        # Pongal.
+        self._add_pongal(tr("Pongal"))
 
         # Basant Panchami / Vasant Panchami.
         self._add_basant_panchami(tr("Basant Panchami / Vasant Panchami"))
 
-        # Bahag Bihu.
-        self._add_holiday_apr_15(tr("Bahag Bihu"))
+        # Guru Ravi Das's Birthday.
+        self._add_guru_ravidas_jayanti(tr("Guru Ravi Das's Birthday"))
 
-        # Bhai Duj.
-        self._add_bhai_dooj(tr("Bhai Duj"))
+        if self._year in self.maha_shivaratri_optional_years:
+            # Maha Shivaratri.
+            self._add_maha_shivaratri(tr("Maha Shivaratri"))
+
+        # Holika Dahan.
+        self._add_holika_dahan(tr("Holika Dahan"))
+
+        if self._year in self.holi_optional_years:
+            # Holi.
+            self._add_holi(tr("Holi"))
 
         # Chaitra Sukladi.
         self._add_gudi_padwa(tr("Chaitra Sukladi"))
@@ -320,101 +333,24 @@ class India(
         # Cheti Chand.
         self._add_gudi_padwa(tr("Cheti Chand"))
 
-        # Dussehra (Mahashtami).
-        self._add_maha_ashtami(tr("Dussehra (Mahashtami)"))
-
-        if self._year != 2002:
-            # Dussehra (Mahanavami).
-            self._add_maha_navami(tr("Dussehra (Mahanavami)"))
-
-        if self._year <= 2018:
-            # Deepavali (South India).
-            self._add_diwali_south_india(tr("Deepavali (South India)"))
-
-        # Dussehra (Saptami).
-        self._add_maha_saptami(tr("Dussehra (Saptami)"))
-
-        # Ganesh Chaturthi.
-        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
-
-        # Govardhan Puja.
-        self._add_govardhan_puja(tr("Govardhan Puja"))
-
         # Gudi Padwa.
         self._add_gudi_padwa(tr("Gudi Padwa"))
 
-        # Guru Gobind Singh's Birthday.
-        self._add_guru_gobind_singh_jayanti(tr("Guru Gobind Singh's Birthday"))
-
-        # Guru Ravi Das's Birthday.
-        self._add_guru_ravidas_jayanti(tr("Guru Ravi Das's Birthday"))
-
-        # Guru Tegh Bahadur's Martyrdom Day.
-        self._add_holiday_nov_24(tr("Guru Tegh Bahadur's Martyrdom Day"))
-
-        if self._year in self.holi_optional_years:
-            # Holi.
-            self._add_holi(tr("Holi"))
-
-        # Holika Dahan.
-        self._add_holika_dahan(tr("Holika Dahan"))
-
-        if self._year in self.janmashtami_optional_years:
-            # Janmashtami (Vaishnava).
-            self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
-
-        if self._year >= 2012:
-            # Karaka Chaturthi (Karwa Chouth).
-            self._add_karwa_chauth(tr("Karaka Chaturthi (Karwa Chouth)"))
-
-        if 2020 <= self._year <= 2022 or self._year == 2024:
-            # Lohri.
-            self._add_lohri(tr("Lohri"))
-
-        if self._year in self.maha_shivaratri_optional_years:
-            # Maha Shivaratri.
-            self._add_maha_shivaratri(tr("Maha Shivaratri"))
-
-        # Maharishi Valmiki Jayanti.
-        self._add_maharishi_valmiki_jayanti(tr("Maharishi Valmiki Jayanti"))
-
-        # Makar Sankranti.
-        self._add_makar_sankranti(tr("Makar Sankranti"))
-
-        # Meshadi (Tamil New Year's Day).
-        self._add_meshadi(tr("Meshadi (Tamil New Year's Day)"))
-
-        # Naraka Chaturdashi.
-        self._add_naraka_chaturdashi(tr("Naraka Chaturdashi"))
-
-        # Onam.
-        self._add_onam(tr("Onam"))
-
-        # Parsi New Year.
-        self._add_parsi_new_year(tr("Parsi New Year"))
-
-        if self._year >= 2011:
-            # Pratihar Shashthi or Surya Shashthi (Chhat Puja).
-            self._add_chhath_puja(tr("Pratihar Shashthi or Surya Shashthi (Chhat Puja)"))
-
-        # Pongal.
-        self._add_pongal(tr("Pongal"))
-
-        # Raksha Bandhan.
-        self._add_raksha_bandhan(tr("Raksha Bandhan"))
+        # Ugadi.
+        self._add_gudi_padwa(tr("Ugadi"))
 
         if self._ram_navami and self._is_sunday(self._ram_navami):
             # Ram Navami.
             self._add_ram_navami(tr("Ram Navami"))
 
-        # Rath Yatra.
-        self._add_rath_yatra(tr("Rath Yatra"))
+        # Meshadi (Tamil New Year's Day).
+        self._add_meshadi(tr("Meshadi (Tamil New Year's Day)"))
 
-        # Swami Dayanand Saraswati Jayanti.
-        self._add_swami_dayanand_saraswati_jayanti(tr("Swami Dayanand Saraswati Jayanti"))
+        # Bahag Bihu.
+        self._add_holiday_apr_15(tr("Bahag Bihu"))
 
-        # Ugadi.
-        self._add_gudi_padwa(tr("Ugadi"))
+        # Vaisakhadi.
+        self._add_holiday_apr_15(tr("Vaisakhadi"))
 
         # Vaisakhi.
         self._add_vaisakhi(tr("Vaisakhi"))
@@ -422,8 +358,64 @@ class India(
         # Vishu.
         self._add_vishu(tr("Vishu"))
 
-        # Vaisakhadi.
-        self._add_holiday_apr_15(tr("Vaisakhadi"))
+        # Swami Dayanand Saraswati Jayanti.
+        self._add_swami_dayanand_saraswati_jayanti(tr("Swami Dayanand Saraswati Jayanti"))
+
+        # Rath Yatra.
+        self._add_rath_yatra(tr("Rath Yatra"))
+
+        # Raksha Bandhan.
+        self._add_raksha_bandhan(tr("Raksha Bandhan"))
+
+        # Onam.
+        self._add_onam(tr("Onam"))
+
+        if self._year in self.janmashtami_optional_years:
+            # Janmashtami (Vaishnava).
+            self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+
+        # Dussehra (Saptami).
+        self._add_maha_saptami(tr("Dussehra (Saptami)"))
+
+        # Dussehra (Mahashtami).
+        self._add_maha_ashtami(tr("Dussehra (Mahashtami)"))
+
+        # Dussehra (Mahanavami).
+        if self._year != 2002:
+            self._add_maha_navami(tr("Dussehra (Mahanavami)"))
+
+        # Maharishi Valmiki Jayanti.
+        self._add_maharishi_valmiki_jayanti(tr("Maharishi Valmiki Jayanti"))
+
+        if self._year >= 2012:
+            # Karaka Chaturthi (Karwa Chouth).
+            self._add_karwa_chauth(tr("Karaka Chaturthi (Karwa Chouth)"))
+
+        if self._year <= 2018:
+            # Deepavali (South India).
+            self._add_diwali_south_india(tr("Deepavali (South India)"))
+
+        # Naraka Chaturdashi.
+        self._add_naraka_chaturdashi(tr("Naraka Chaturdashi"))
+
+        # Govardhan Puja.
+        self._add_govardhan_puja(tr("Govardhan Puja"))
+
+        # Bhai Duj.
+        self._add_bhai_dooj(tr("Bhai Duj"))
+
+        if self._year >= 2011:
+            # Pratihar Shashthi or Surya Shashthi (Chhat Puja).
+            self._add_chhath_puja(tr("Pratihar Shashthi or Surya Shashthi (Chhat Puja)"))
+
+        # Guru Tegh Bahadur's Martyrdom Day.
+        self._add_holiday_nov_24(tr("Guru Tegh Bahadur's Martyrdom Day"))
+
+        # Parsi New Year.
+        self._add_parsi_new_year(tr("Parsi New Year"))
 
         # Islamic holidays.
 
