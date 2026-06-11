@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.98\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-06-11 15:31+0530\n"
+"PO-Revision-Date: 2026-06-11 19:21+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: bn\n"
@@ -36,7 +36,7 @@ msgstr "%s (আনুমানিক)"
 msgid "Republic Day"
 msgstr "প্রজাতন্ত্র দিবস"
 
-#. Dr. B. R. Ambedkar's Jayanti.
+#. Dr. B. R. Ambedkar's Birthday.
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr "ড. বি. আর. আম্বেদকর জয়ন্তী"
 
@@ -44,9 +44,9 @@ msgstr "ড. বি. আর. আম্বেদকর জয়ন্তী"
 msgid "Independence Day"
 msgstr "স্বাধীনতা দিবস"
 
-#. Gandhi Jayanti.
-msgid "Gandhi Jayanti"
-msgstr "গান্ধী জয়ন্তী"
+#. Mahatma Gandhi's Birthday.
+msgid "Mahatma Gandhi's Jayanti"
+msgstr "মহাত্মা গান্ধী জয়ন্তী"
 
 #. Buddha Purnima.
 msgid "Buddha Purnima"
@@ -64,7 +64,7 @@ msgstr "বিজয়া দশমী"
 msgid "Janmashtami (Vaishnava)"
 msgstr "জন্মাষ্টমী (বৈষ্ণব)"
 
-#. Mahavir Jayanti.
+#. Mahavir Birthday.
 msgid "Mahavir Jayanti"
 msgstr "মহাবীর জয়ন্তী"
 
@@ -72,8 +72,8 @@ msgstr "মহাবীর জয়ন্তী"
 msgid "Maha Shivaratri"
 msgstr "মহাশিবরাত্রি"
 
-#. Guru Nanak Jayanti.
-msgid "Guru Nanak Jayanti"
+#. Guru Nanak's Birthday.
+msgid "Guru Nanak's Jayanti"
 msgstr "গুরু নানক জয়ন্তী"
 
 #. Holi.
@@ -113,7 +113,7 @@ msgid "New Year's Day"
 msgstr "নববর্ষের দিন"
 
 #. Guru Gobind Singh's Birthday.
-msgid "Guru Gobind Singh's Birthday"
+msgid "Guru Gobind Singh's Jayanti"
 msgstr "গুরু গোবিন্দ সিং এর জন্মদিন"
 
 #. Lohri.
@@ -133,7 +133,7 @@ msgid "Basant Panchami / Vasant Panchami"
 msgstr "বসন্ত পঞ্চমী / বসন্ত পঞ্চমী"
 
 #. Guru Ravi Das's Birthday.
-msgid "Guru Ravi Das's Birthday"
+msgid "Guru Ravi Das's Jayanti"
 msgstr "গুরু রবি দাসের জন্মদিন"
 
 #. Holika Dahan.
@@ -176,8 +176,8 @@ msgstr "বৈশাখী"
 msgid "Vishu"
 msgstr "বিশু"
 
-#. Swami Dayanand Saraswati Jayanti.
-msgid "Swami Dayanand Saraswati Jayanti"
+#. Swami Dayanand Saraswati's Birthday.
+msgid "Swami Dayanand Saraswati's Jayanti"
 msgstr "স্বামী দয়ানন্দ সরস্বতী জয়ন্তী"
 
 #. Rath Yatra.
@@ -208,8 +208,8 @@ msgstr "দশেরা (মহাষ্টমী)"
 msgid "Dussehra (Mahanavami)"
 msgstr "দশেরা (মহানবমী)"
 
-#. Maharishi Valmiki Jayanti.
-msgid "Maharishi Valmiki Jayanti"
+#. Maharishi Valmiki's Birthday.
+msgid "Maharishi Valmiki's Jayanti"
 msgstr "মহার্ষি বাল্মীকি জয়ন্তী"
 
 #. Karaka Chaturthi (Karwa Chouth).

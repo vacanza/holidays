@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.98\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-06-11 15:31+0530\n"
+"PO-Revision-Date: 2026-06-11 19:21+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "Republic Day"
 msgstr ""
 
-#. Dr. B. R. Ambedkar's Jayanti.
+#. Dr. B. R. Ambedkar's Birthday.
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr ""
 
@@ -45,8 +45,8 @@ msgstr ""
 msgid "Independence Day"
 msgstr ""
 
-#. Gandhi Jayanti.
-msgid "Gandhi Jayanti"
+#. Mahatma Gandhi's Birthday.
+msgid "Mahatma Gandhi's Jayanti"
 msgstr ""
 
 #. Buddha Purnima.
@@ -65,7 +65,7 @@ msgstr ""
 msgid "Janmashtami (Vaishnava)"
 msgstr ""
 
-#. Mahavir Jayanti.
+#. Mahavir Birthday.
 msgid "Mahavir Jayanti"
 msgstr ""
 
@@ -73,8 +73,8 @@ msgstr ""
 msgid "Maha Shivaratri"
 msgstr ""
 
-#. Guru Nanak Jayanti.
-msgid "Guru Nanak Jayanti"
+#. Guru Nanak's Birthday.
+msgid "Guru Nanak's Jayanti"
 msgstr ""
 
 #. Holi.
@@ -114,7 +114,7 @@ msgid "New Year's Day"
 msgstr ""
 
 #. Guru Gobind Singh's Birthday.
-msgid "Guru Gobind Singh's Birthday"
+msgid "Guru Gobind Singh's Jayanti"
 msgstr ""
 
 #. Lohri.
@@ -134,7 +134,7 @@ msgid "Basant Panchami / Vasant Panchami"
 msgstr ""
 
 #. Guru Ravi Das's Birthday.
-msgid "Guru Ravi Das's Birthday"
+msgid "Guru Ravi Das's Jayanti"
 msgstr ""
 
 #. Holika Dahan.
@@ -177,8 +177,8 @@ msgstr ""
 msgid "Vishu"
 msgstr ""
 
-#. Swami Dayanand Saraswati Jayanti.
-msgid "Swami Dayanand Saraswati Jayanti"
+#. Swami Dayanand Saraswati's Birthday.
+msgid "Swami Dayanand Saraswati's Jayanti"
 msgstr ""
 
 #. Rath Yatra.
@@ -209,8 +209,8 @@ msgstr ""
 msgid "Dussehra (Mahanavami)"
 msgstr ""
 
-#. Maharishi Valmiki Jayanti.
-msgid "Maharishi Valmiki Jayanti"
+#. Maharishi Valmiki's Birthday.
+msgid "Maharishi Valmiki's Jayanti"
 msgstr ""
 
 #. Karaka Chaturthi (Karwa Chouth).

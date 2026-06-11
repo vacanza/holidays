@@ -216,14 +216,14 @@ class India(
             # Republic Day.
             self._add_holiday_jan_26(tr("Republic Day"))
 
-        # Dr. B. R. Ambedkar's Jayanti.
+        # Dr. B. R. Ambedkar's Birthday.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
 
         # Independence Day.
         self._add_holiday_aug_15(tr("Independence Day"))
 
-        # Gandhi Jayanti.
-        self._add_holiday_oct_2(tr("Gandhi Jayanti"))
+        # Mahatma Gandhi's Birthday.
+        self._add_holiday_oct_2(tr("Mahatma Gandhi's Jayanti"))
 
         # Hindu Holidays.
 
@@ -247,15 +247,15 @@ class India(
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
-        # Mahavir Jayanti.
+        # Mahavir Birthday.
         self._add_mahavir_jayanti(tr("Mahavir Jayanti"))
 
         if self._year not in self.maha_shivaratri_optional_years:
             # Maha Shivaratri.
             self._add_maha_shivaratri(tr("Maha Shivaratri"))
 
-        # Guru Nanak Jayanti.
-        self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti"))
+        # Guru Nanak's Birthday.
+        self._add_guru_nanak_jayanti(tr("Guru Nanak's Jayanti"))
 
         if self._year not in self.holi_optional_years:
             # Holi.
@@ -298,7 +298,11 @@ class India(
         # Hindu holidays.
 
         # Guru Gobind Singh's Birthday.
-        self._add_guru_gobind_singh_jayanti(tr("Guru Gobind Singh's Birthday"))
+        name = tr("Guru Gobind Singh's Jayanti")
+        if 2005 <= self._year <= 2011:
+            self._add_holiday_jan_5(name)
+        else:
+            self._add_guru_gobind_singh_jayanti(name)
 
         if 2020 <= self._year <= 2022 or self._year == 2024:
             # Lohri.
@@ -314,7 +318,7 @@ class India(
         self._add_basant_panchami(tr("Basant Panchami / Vasant Panchami"))
 
         # Guru Ravi Das's Birthday.
-        self._add_guru_ravidas_jayanti(tr("Guru Ravi Das's Birthday"))
+        self._add_guru_ravidas_jayanti(tr("Guru Ravi Das's Jayanti"))
 
         if self._year in self.maha_shivaratri_optional_years:
             # Maha Shivaratri.
@@ -358,8 +362,8 @@ class India(
         # Vishu.
         self._add_vishu(tr("Vishu"))
 
-        # Swami Dayanand Saraswati Jayanti.
-        self._add_swami_dayanand_saraswati_jayanti(tr("Swami Dayanand Saraswati Jayanti"))
+        # Swami Dayanand Saraswati's Birthday.
+        self._add_swami_dayanand_saraswati_jayanti(tr("Swami Dayanand Saraswati's Jayanti"))
 
         # Rath Yatra.
         self._add_rath_yatra(tr("Rath Yatra"))
@@ -387,8 +391,8 @@ class India(
         if self._year != 2002:
             self._add_maha_navami(tr("Dussehra (Mahanavami)"))
 
-        # Maharishi Valmiki Jayanti.
-        self._add_maharishi_valmiki_jayanti(tr("Maharishi Valmiki Jayanti"))
+        # Maharishi Valmiki's Birthday.
+        self._add_maharishi_valmiki_jayanti(tr("Maharishi Valmiki's Jayanti"))
 
         if self._year >= 2012:
             # Karaka Chaturthi (Karwa Chouth).
@@ -411,8 +415,9 @@ class India(
             # Pratihar Shashthi or Surya Shashthi (Chhat Puja).
             self._add_chhath_puja(tr("Pratihar Shashthi or Surya Shashthi (Chhat Puja)"))
 
-        # Guru Tegh Bahadur's Martyrdom Day.
-        self._add_holiday_nov_24(tr("Guru Tegh Bahadur's Martyrdom Day"))
+        if self._year >= 2004:
+            # Guru Tegh Bahadur's Martyrdom Day.
+            self._add_holiday_nov_24(tr("Guru Tegh Bahadur's Martyrdom Day"))
 
         # Parsi New Year.
         self._add_parsi_new_year(tr("Parsi New Year"))
@@ -427,12 +432,13 @@ class India(
 
         # Christian holidays.
 
-        if self._year != 2002:
+        if self._year >= 2003:
             # Christmas Eve.
             self._add_christmas_eve(tr("Christmas Eve"))
 
-        # Easter Sunday.
-        self._add_easter_sunday(tr("Easter Sunday"))
+        if self._year >= 2008:
+            # Easter Sunday.
+            self._add_easter_sunday(tr("Easter Sunday"))
 
         # Palm Sunday.
         self._add_palm_sunday(tr("Palm Sunday"))
@@ -717,4 +723,12 @@ class IndiaStaticHolidays:
     special_public_holidays = {
         # Dussehra (Mahanavami).
         2002: (OCT, 14, tr("Dussehra (Mahanavami)")),
+    }
+
+    # Guru Tegh Bahadur's Martyrdom Day.
+    name_guru_tegh_bahadur_martyrdom_day = tr("Guru Tegh Bahadur's Martyrdom Day")
+
+    special_optional_holidays = {
+        2002: (DEC, 8, name_guru_tegh_bahadur_martyrdom_day),
+        2003: (NOV, 28, name_guru_tegh_bahadur_martyrdom_day),
     }
