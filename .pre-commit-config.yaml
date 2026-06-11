@@ -62,14 +62,11 @@ repos:
         additional_dependencies:
           - types-polib
           - types-python-dateutil
-          - types-requests
 
   - repo: https://github.com/tox-dev/pyproject-fmt
     rev: a007bb7dd9043d022292401abc3061cb1906b4bc  # v2.21.2
     hooks:
       - id: pyproject-fmt
-        additional_dependencies:
-          - toml-fmt-common<1.3.3
 
   - repo: local
     hooks:
