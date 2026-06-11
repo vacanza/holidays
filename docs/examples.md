@@ -613,6 +613,17 @@ or as a Python module:
 python -m holidays.generate_ics CODE [OPTIONS]
 ```
 
+If you do not have Python installed, you can run the tool directly with `uv`:
+
+```shell
+uvx --from holidays holidays-ics CODE [OPTIONS]
+```
+
+This downloads and runs the latest version of the tool automatically, without requiring
+a Python installation or any manual setup of `holidays` package.
+
+For installation instructions, see `uv` [documentation](https://docs.astral.sh/uv/getting-started/installation/).
+
 By default, the generated calendar contains holidays for the current year and is written
 to a file whose name is derived from the selected calendar and year range.
 
