@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.98\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-06-11 19:21+0530\n"
+"PO-Revision-Date: 2026-06-12 00:27+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: bn\n"
@@ -64,7 +64,7 @@ msgstr "বিজয়া দশমী"
 msgid "Janmashtami (Vaishnava)"
 msgstr "জন্মাষ্টমী (বৈষ্ণব)"
 
-#. Mahavir Birthday.
+#. Mahavira's Birthday.
 msgid "Mahavir Jayanti"
 msgstr "মহাবীর জয়ন্তী"
 
@@ -128,9 +128,9 @@ msgstr "মকর সংক্রান্তি"
 msgid "Pongal"
 msgstr "পোঙ্গল"
 
-#. Basant Panchami / Vasant Panchami.
-msgid "Basant Panchami / Vasant Panchami"
-msgstr "বসন্ত পঞ্চমী / বসন্ত পঞ্চমী"
+#. Basant Panchami / Sri Panchami.
+msgid "Basant Panchami / Sri Panchami"
+msgstr "বসন্ত পঞ্চমী / শ্রী পঞ্চমী"
 
 #. Guru Ravi Das's Birthday.
 msgid "Guru Ravi Das's Jayanti"
@@ -192,9 +192,9 @@ msgstr "রাখি বন্ধন"
 msgid "Onam"
 msgstr "ওনাম"
 
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
-msgstr "গণেশ চতুর্থী"
+#. Ganesh Chaturthi / Vinayak Chaturthi.
+msgid "Ganesh Chaturthi / Vinayak Chaturthi"
+msgstr "গণেশ চতুর্থী / বিনায়ক চতুর্থী"
 
 #. Dussehra (Saptami).
 msgid "Dussehra (Saptami)"
@@ -216,7 +216,7 @@ msgstr "মহার্ষি বাল্মীকি জয়ন্তী"
 msgid "Karaka Chaturthi (Karwa Chouth)"
 msgstr "কারাকা চতুর্থী (কারওয়া চৌথ)"
 
-#. Deepavali (South India).
+#. Diwali (South India).
 msgid "Deepavali (South India)"
 msgstr "দীপাবলি (দক্ষিণ ভারত)"
 
@@ -419,3 +419,19 @@ msgstr "পহেলা বৈশাখ"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "রবীন্দ্র জয়ন্তী"
+
+#. Basant Panchami
+msgid "Basant Panchami"
+msgstr "বসন্ত পঞ্চমী"
+
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr "গণেশ চতুর্থী"
+
+#. Sri Panchami.
+msgid "Sri Panchami"
+msgstr "শ্রী পঞ্চমী"
+
+#. Vinayak Chaturthi.
+msgid "Vinayak Chaturthi"
+msgstr "বিনায়ক চতুর্থী"

@@ -460,18 +460,6 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.makar_sankranti_date(self._year)
         )
 
-    def _add_meshadi(self, name: str) -> None:
-        """
-        Add Meshadi.
-
-        Meshadi marks the beginning of the solar month of Mesha (Aries)
-        in the Malayalam solar calendar. It is usually observed on
-        April 14, but falls on April 13 in leap years. An exception
-        occurred in 2001, when it was also observed on April 13.
-        """
-        day = 13 if self._year == 2001 or isleap(self._year) else 14
-        self._add_holiday(name, date(self._year, APR, day))
-
     def _add_naraka_chaturdashi(self, name) -> date | None:
         """
         Add Naraka Chaturdashi.
@@ -678,6 +666,17 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.vaisakhi_date(self._year)
         )
+
+    def _add_vaisakhadi(self, name: str) -> None:
+        """
+        Add Vaisakhadi.
+
+        Vaisakhadi marks the beginning of the solar month of Vaisakha
+        in the Punjabi solar calendar. It is usually observed on
+        April 15, but falls on April 14 in leap years.
+        """
+        day = 14 if isleap(self._year) else 15
+        self._add_holiday(name, date(self._year, APR, day))
 
     def _add_vishu(self, name) -> date | None:
         """

@@ -247,7 +247,7 @@ class India(
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
-        # Mahavir Birthday.
+        # Mahavira's Birthday.
         self._add_mahavir_jayanti(tr("Mahavir Jayanti"))
 
         if self._year not in self.maha_shivaratri_optional_years:
@@ -314,8 +314,9 @@ class India(
         # Pongal.
         self._add_pongal(tr("Pongal"))
 
-        # Basant Panchami / Vasant Panchami.
-        self._add_basant_panchami(tr("Basant Panchami / Vasant Panchami"))
+        if self._year != 2013:
+            # Basant Panchami / Sri Panchami.
+            self._add_basant_panchami(tr("Basant Panchami / Sri Panchami"))
 
         # Guru Ravi Das's Birthday.
         self._add_guru_ravidas_jayanti(tr("Guru Ravi Das's Jayanti"))
@@ -348,13 +349,13 @@ class India(
             self._add_ram_navami(tr("Ram Navami"))
 
         # Meshadi (Tamil New Year's Day).
-        self._add_meshadi(tr("Meshadi (Tamil New Year's Day)"))
+        self._add_holiday_apr_14(tr("Meshadi (Tamil New Year's Day)"))
 
         # Bahag Bihu.
-        self._add_holiday_apr_15(tr("Bahag Bihu"))
+        self._add_vaisakhadi(tr("Bahag Bihu"))
 
         # Vaisakhadi.
-        self._add_holiday_apr_15(tr("Vaisakhadi"))
+        self._add_vaisakhadi(tr("Vaisakhadi"))
 
         # Vaisakhi.
         self._add_vaisakhi(tr("Vaisakhi"))
@@ -378,8 +379,9 @@ class India(
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
-        # Ganesh Chaturthi.
-        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+        if self._year != 2012 and self._year != 2023:
+            # Ganesh Chaturthi / Vinayak Chaturthi.
+            self._add_ganesh_chaturthi(tr("Ganesh Chaturthi / Vinayak Chaturthi"))
 
         # Dussehra (Saptami).
         self._add_maha_saptami(tr("Dussehra (Saptami)"))
@@ -399,7 +401,7 @@ class India(
             self._add_karwa_chauth(tr("Karaka Chaturthi (Karwa Chouth)"))
 
         if self._year <= 2018:
-            # Deepavali (South India).
+            # Diwali (South India).
             self._add_diwali_south_india(tr("Deepavali (South India)"))
 
         # Naraka Chaturdashi.
@@ -725,10 +727,25 @@ class IndiaStaticHolidays:
         2002: (OCT, 14, tr("Dussehra (Mahanavami)")),
     }
 
+    # Basant Panchami
+    name_basant_panchami = tr("Basant Panchami")
+
+    # Ganesh Chaturthi.
+    name_ganesh_chaturthi = tr("Ganesh Chaturthi")
+
     # Guru Tegh Bahadur's Martyrdom Day.
     name_guru_tegh_bahadur_martyrdom_day = tr("Guru Tegh Bahadur's Martyrdom Day")
+
+    # Sri Panchami.
+    name_sri_panchami = tr("Sri Panchami")
+
+    # Vinayak Chaturthi.
+    name_vinayak_chaturthi = tr("Vinayak Chaturthi")
 
     special_optional_holidays = {
         2002: (DEC, 8, name_guru_tegh_bahadur_martyrdom_day),
         2003: (NOV, 28, name_guru_tegh_bahadur_martyrdom_day),
+        2012: ((AUG, 21, name_vinayak_chaturthi), (SEP, 19, name_ganesh_chaturthi)),
+        2013: ((FEB, 14, name_sri_panchami), (FEB, 15, name_basant_panchami)),
+        2023: ((AUG, 20, name_vinayak_chaturthi), (SEP, 19, name_ganesh_chaturthi)),
     }

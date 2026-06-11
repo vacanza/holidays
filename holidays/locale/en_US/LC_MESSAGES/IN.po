@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.98\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-06-11 19:21+0530\n"
+"PO-Revision-Date: 2026-06-12 00:27+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -39,7 +39,7 @@ msgstr "Republic Day"
 
 #. Dr. B. R. Ambedkar's Birthday.
 msgid "Dr. B. R. Ambedkar's Jayanti"
-msgstr "Dr. B. R. Ambedkar's Jayanti"
+msgstr "Dr. B. R. Ambedkar's Birthday"
 
 #. Independence Day.
 msgid "Independence Day"
@@ -65,9 +65,9 @@ msgstr "Dussehra"
 msgid "Janmashtami (Vaishnava)"
 msgstr "Janmashtami (Vaishnava)"
 
-#. Mahavir Birthday.
+#. Mahavira's Birthday.
 msgid "Mahavir Jayanti"
-msgstr "Mahavir Birthday"
+msgstr "Mahavira's Birthday"
 
 #. Maha Shivaratri.
 msgid "Maha Shivaratri"
@@ -129,9 +129,9 @@ msgstr "Makar Sankranti"
 msgid "Pongal"
 msgstr "Pongal"
 
-#. Basant Panchami / Vasant Panchami.
-msgid "Basant Panchami / Vasant Panchami"
-msgstr "Basant Panchami / Vasant Panchami"
+#. Basant Panchami / Sri Panchami.
+msgid "Basant Panchami / Sri Panchami"
+msgstr "Basant Panchami / Sri Panchami"
 
 #. Guru Ravi Das's Birthday.
 msgid "Guru Ravi Das's Jayanti"
@@ -193,9 +193,9 @@ msgstr "Raksha Bandhan"
 msgid "Onam"
 msgstr "Onam"
 
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
-msgstr "Ganesh Chaturthi"
+#. Ganesh Chaturthi / Vinayak Chaturthi.
+msgid "Ganesh Chaturthi / Vinayak Chaturthi"
+msgstr "Ganesh Chaturthi / Vinayak Chaturthi"
 
 #. Dussehra (Saptami).
 msgid "Dussehra (Saptami)"
@@ -217,9 +217,9 @@ msgstr "Maharishi Valmiki's Birthday"
 msgid "Karaka Chaturthi (Karwa Chouth)"
 msgstr "Karaka Chaturthi (Karwa Chouth)"
 
-#. Deepavali (South India).
+#. Diwali (South India).
 msgid "Deepavali (South India)"
-msgstr "Deepavali (South India)"
+msgstr "Diwali (South India)"
 
 #. Naraka Chaturdashi.
 msgid "Naraka Chaturdashi"
@@ -420,3 +420,19 @@ msgstr "Pohela Boishakh"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "Rabindra Jayanti"
+
+#. Basant Panchami
+msgid "Basant Panchami"
+msgstr "Basant Panchami"
+
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr "Ganesh Chaturthi"
+
+#. Sri Panchami.
+msgid "Sri Panchami"
+msgstr "Sri Panchami"
+
+#. Vinayak Chaturthi.
+msgid "Vinayak Chaturthi"
+msgstr "Vinayak Chaturthi"

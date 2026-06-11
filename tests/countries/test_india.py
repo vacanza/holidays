@@ -110,11 +110,6 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(name, (f"{year}-01-01" for year in self.full_range))
 
-    def test_bahag_bihu(self):
-        name = "Bahag Bihu"
-        self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(name, (f"{year}-04-15" for year in self.full_range))
-
     def test_dr_b_r_ambedkars_jayanti(self):
         name = "Dr. B. R. Ambedkar's Jayanti"
         self.assertHolidayName(name, (f"{year}-04-14" for year in self.full_range))
@@ -130,15 +125,24 @@ class TestIndia(CommonCountryTests, TestCase):
     def test_meshadi(self):
         self.assertOptionalHolidayName(
             "Meshadi (Tamil New Year's Day)",
-            "2001-04-13",
-            (f"{year}-04-13" for year in self.full_range if isleap(year)),
-            (f"{year}-04-14" for year in self.full_range if year != 2001 and not isleap(year)),
+            (f"{year}-04-14" for year in self.full_range),
         )
 
     def test_vaisakhadi(self):
-        name = "Vaisakhadi"
-        self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(name, (f"{year}-04-15" for year in self.full_range))
+        name_vaisakhadi = "Vaisakhadi"
+        name_bahag_bihu = "Bahag Bihu"
+        self.assertNoHolidayName(name_vaisakhadi)
+        self.assertNoHolidayName(name_bahag_bihu)
+        self.assertOptionalHolidayName(
+            name_vaisakhadi,
+            (f"{year}-04-14" for year in self.full_range if isleap(year)),
+            (f"{year}-04-15" for year in self.full_range if not isleap(year)),
+        )
+        self.assertOptionalHolidayName(
+            name_bahag_bihu,
+            (f"{year}-04-14" for year in self.full_range if isleap(year)),
+            (f"{year}-04-15" for year in self.full_range if not isleap(year)),
+        )
 
     def test_christmas_eve(self):
         name = "Christmas Eve"
@@ -311,7 +315,7 @@ class TestIndia(CommonCountryTests, TestCase):
                     self.assertNoHolidayName(name, holidays)
 
     def test_basant_panchami(self):
-        name = "Basant Panchami / Vasant Panchami"
+        name = "Basant Panchami / Sri Panchami"
         dts = (
             "2020-01-29",
             "2021-02-16",
@@ -320,7 +324,9 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-02-14",
             "2025-02-02",
         )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+        self._assertHinduHolidayHelper(name, dts, category_optional=True, skip_years={2013})
+        self.assertOptionalHolidayName("Sri Panchami", "2013-02-14")
+        self.assertOptionalHolidayName("Basant Panchami", "2013-02-15")
 
     def test_bhai_duj(self):
         name = "Bhai Duj"
@@ -526,16 +532,27 @@ class TestIndia(CommonCountryTests, TestCase):
         )
 
     def test_ganesh_chaturthi(self):
-        name = "Ganesh Chaturthi"
+        name = "Ganesh Chaturthi / Vinayak Chaturthi"
         dts = (
             "2020-08-22",
             "2021-09-10",
             "2022-08-31",
-            "2023-09-19",
             "2024-09-07",
             "2025-08-27",
         )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+        self._assertHinduHolidayHelper(name, dts, category_optional=True, skip_years={2012, 2023})
+        name = "Ganesh Chaturthi"
+        dts = (
+            "2012-09-19",
+            "2023-09-19",
+        )
+        self.assertOptionalHolidayName(name, dts)
+        name = "Vinayak Chaturthi"
+        dts = (
+            "2012-08-21",
+            "2023-08-20",
+        )
+        self.assertOptionalHolidayName(name, dts)
 
     def test_govardhan_puja(self):
         name = "Govardhan Puja"
@@ -1432,7 +1449,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-01-14", "Magh Bihu; Makar Sankranti; Pongal; Uttarayan"),
             ("2018-01-15", "Thiruvalluvar Day / Mattu Pongal"),
             ("2018-01-16", "Uzhavar Thirunal"),
-            ("2018-01-22", "Basant Panchami / Vasant Panchami"),
+            ("2018-01-22", "Basant Panchami / Sri Panchami"),
             ("2018-01-24", "UP Formation Day"),
             ("2018-01-26", "Republic Day"),
             ("2018-01-31", "Guru Ravi Das's Jayanti"),
@@ -1481,7 +1498,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "Onam"),
             ("2018-08-26", "Raksha Bandhan"),
             ("2018-09-03", "Janmashtami (Vaishnava)"),
-            ("2018-09-13", "Ganesh Chaturthi"),
+            ("2018-09-13", "Ganesh Chaturthi / Vinayak Chaturthi"),
             ("2018-09-21", "Muharram"),
             ("2018-10-02", "Mahatma Gandhi's Jayanti"),
             ("2018-10-08", "Bathukamma Festival"),
@@ -1525,7 +1542,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-01-14", "উত্তরায়ণ; পোঙ্গল; মকর সংক্রান্তি; মাঘ বিহু"),
             ("2018-01-15", "তিরুভাল্লুভার দিবস / মাট্টু পোঙ্গল"),
             ("2018-01-16", "উঝাভার থিরুনাল"),
-            ("2018-01-22", "বসন্ত পঞ্চমী / বসন্ত পঞ্চমী"),
+            ("2018-01-22", "বসন্ত পঞ্চমী / শ্রী পঞ্চমী"),
             ("2018-01-24", "উত্তরপ্রদেশ গঠন দিবস"),
             ("2018-01-26", "প্রজাতন্ত্র দিবস"),
             ("2018-01-31", "গুরু রবি দাসের জন্মদিন"),
@@ -1572,7 +1589,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "ওনাম"),
             ("2018-08-26", "রাখি বন্ধন"),
             ("2018-09-03", "জন্মাষ্টমী (বৈষ্ণব)"),
-            ("2018-09-13", "গণেশ চতুর্থী"),
+            ("2018-09-13", "গণেশ চতুর্থী / বিনায়ক চতুর্থী"),
             ("2018-09-21", "মহরম"),
             ("2018-10-02", "মহাত্মা গান্ধী জয়ন্তী"),
             ("2018-10-08", "বাথুকাম্মা উৎসব"),
@@ -1620,7 +1637,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-01-14", "Magh Bihu; Makar Sankranti; Pongal; Uttarayan"),
             ("2018-01-15", "Thiruvalluvar Day / Mattu Pongal"),
             ("2018-01-16", "Uzhavar Thirunal"),
-            ("2018-01-22", "Basant Panchami / Vasant Panchami"),
+            ("2018-01-22", "Basant Panchami / Sri Panchami"),
             ("2018-01-24", "UP Formation Day"),
             ("2018-01-26", "Republic Day"),
             ("2018-01-31", "Guru Ravi Das's Birthday"),
@@ -1633,7 +1650,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-03-18", "Chaitra Sukladi; Cheti Chand; Gudi Padwa; Ugadi"),
             ("2018-03-22", "Bihar Day"),
             ("2018-03-25", "Palm Sunday; Ram Navami"),
-            ("2018-03-29", "Mahavir Birthday"),
+            ("2018-03-29", "Mahavira's Birthday"),
             ("2018-03-30", "Good Friday; Rajasthan Day"),
             (
                 "2018-04-01",
@@ -1641,7 +1658,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ),
             (
                 "2018-04-14",
-                "Dr. B. R. Ambedkar's Jayanti; "
+                "Dr. B. R. Ambedkar's Birthday; "
                 "Meshadi (Tamil New Year's Day); "
                 "Puthandu (Tamil New Year); "
                 "Vaisakhi; Vishu",
@@ -1670,7 +1687,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "Onam"),
             ("2018-08-26", "Raksha Bandhan"),
             ("2018-09-03", "Janmashtami (Vaishnava)"),
-            ("2018-09-13", "Ganesh Chaturthi"),
+            ("2018-09-13", "Ganesh Chaturthi / Vinayak Chaturthi"),
             ("2018-09-21", "Ashura"),
             ("2018-10-02", "Mahatma Gandhi's Birthday"),
             ("2018-10-08", "Bathukamma Festival"),
@@ -1691,7 +1708,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "New Punjab Day; "
                 "Puducherry Liberation Day",
             ),
-            ("2018-11-06", "Deepavali (South India); Naraka Chaturdashi"),
+            ("2018-11-06", "Diwali (South India); Naraka Chaturdashi"),
             ("2018-11-07", "Diwali (Deepavali)"),
             ("2018-11-08", "Govardhan Puja"),
             ("2018-11-09", "Bhai Duj"),
@@ -1718,7 +1735,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-01-14", "ઉત્તરાયણ; પોંગલ; મકરસંક્રાંતિ; માઘ બિહુ"),
             ("2018-01-15", "તિરુવલ્લુવર દિવસ / મટ્ટુ પોંગલ"),
             ("2018-01-16", "ઉઝાવર થિરુનલ"),
-            ("2018-01-22", "બસંત પંચમી / વસંત પંચમી"),
+            ("2018-01-22", "વસંત પંચમી / શ્રી પંચમી"),
             ("2018-01-24", "યુપી સ્થાપના દિવસ"),
             ("2018-01-26", "પ્રજાસત્તાક દિવસ"),
             ("2018-01-31", "ગુરુ રવિદાસનો જન્મદિવસ"),
@@ -1765,7 +1782,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "ઓણમ"),
             ("2018-08-26", "રક્ષાબંધન"),
             ("2018-09-03", "જન્માષ્ટમી (વૈષ્ણવ)"),
-            ("2018-09-13", "ગણેશ ચતુર્થી"),
+            ("2018-09-13", "ગણેશ ચતુર્થી / વિનાયક ચતુર્થી"),
             ("2018-09-21", "મોહરમ"),
             ("2018-10-02", "મહાત્મા ગાંધી જયંતિ"),
             ("2018-10-08", "બથુકમ્મા ઉત્સવ"),
@@ -1813,7 +1830,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-01-14", "उत्तरायण; पोंगल; मकर संक्रांति; माघ बिहू"),
             ("2018-01-15", "तिरुवल्लुवर दिवस / मट्टू पोंगल"),
             ("2018-01-16", "उझावर थिरुनल"),
-            ("2018-01-22", "बसंत पंचमी / वसंत पंचमी"),
+            ("2018-01-22", "बसंत पंचमी / श्री पंचमी"),
             ("2018-01-24", "यूपी स्थापना दिवस"),
             ("2018-01-26", "गणतंत्र दिवस"),
             ("2018-01-31", "गुरु रवि दास का जन्मदिन"),
@@ -1860,7 +1877,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "ओणम"),
             ("2018-08-26", "रक्षाबंधन"),
             ("2018-09-03", "जन्माष्टमी (वैष्णव)"),
-            ("2018-09-13", "गणेश चतुर्थी"),
+            ("2018-09-13", "गणेश चतुर्थी / विनायक चतुर्थी"),
             ("2018-09-21", "मुहर्रम"),
             ("2018-10-02", "महात्मा गांधी जयंती"),
             ("2018-10-08", "बतुकम्मा महोत्सव"),
@@ -1908,7 +1925,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-01-14", "ഉത്തരായൻ; പൊങ്കൽ; മകര സംക്രാന്തി; മാഘ് ബിഹു"),
             ("2018-01-15", "തിരുവള്ളുവർ ദിനം / മട്ടു പൊങ്കൽ"),
             ("2018-01-16", "ഉഴവർ തിരുനാൾ"),
-            ("2018-01-22", "ബസന്ത് പഞ്ചമി / വസന്ത പഞ്ചമി"),
+            ("2018-01-22", "വസന്ത പഞ്ചമി / ശ്രീ പഞ്ചമി"),
             ("2018-01-24", "ഉത്തർപ്രദേശ് രൂപീകരണദിനം"),
             ("2018-01-26", "റിപ്പബ്ലിക് ദിനം"),
             ("2018-01-31", "ഗുരു രവി ദാസിന്റെ ജന്മദിനം"),
@@ -1954,7 +1971,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "ഓണം"),
             ("2018-08-26", "രക്ഷാ ബന്ധൻ"),
             ("2018-09-03", "ജന്മാഷ്ടമി (വൈഷ്ണവ)"),
-            ("2018-09-13", "ഗണേശ് ചതുർത്ഥി"),
+            ("2018-09-13", "ഗണേശ ചതുർത്ഥി / വിനായക ചതുർത്ഥി"),
             ("2018-09-21", "മുഹറം"),
             ("2018-10-02", "മഹാത്മാ ഗാന്ധി ജയന്തി"),
             ("2018-10-08", "ബത്തുകമ്മ ഉത്സവം"),
@@ -2002,7 +2019,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-01-14", "उत्तरायण; पोंगल; मकर संक्रांत; माघ बिहू"),
             ("2018-01-15", "तिरुवल्लुवर दिन / मट्टू पोंगल"),
             ("2018-01-16", "उझावर थिरुनल"),
-            ("2018-01-22", "बसंत पंचमी / वसंत पंचमी"),
+            ("2018-01-22", "बसंत पंचमी / श्री पंचमी"),
             ("2018-01-24", "यूपी स्थापना दिन"),
             ("2018-01-26", "प्रजासत्ताक दिन"),
             ("2018-01-31", "गुरु रविदास जयंती"),
@@ -2049,7 +2066,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "ओणम"),
             ("2018-08-26", "रक्षाबंधन"),
             ("2018-09-03", "गोकुळाष्टमी (वैष्णव)"),
-            ("2018-09-13", "गणेश चतुर्थी"),
+            ("2018-09-13", "गणेश चतुर्थी / विनायक चतुर्थी"),
             ("2018-09-21", "मोहरम"),
             ("2018-10-02", "महात्मा गांधी जयंती"),
             ("2018-10-08", "बथुकम्मा उत्सव"),
@@ -2097,7 +2114,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-01-14", "ਉੱਤਰਾਯਣ; ਪੋਂਗਲ; ਮਕਰ ਸੰਕ੍ਰਾਂਤੀ; ਮਾਘ ਬਿਹੂ"),
             ("2018-01-15", "ਤਿਰੂਵੱਲੂਵਰ ਦਿਵਸ / ਮੱਟੂ ਪੋਂਗਲ"),
             ("2018-01-16", "ਉਝਾਵਰ ਥਿਰੂਨਲ"),
-            ("2018-01-22", "ਬਸੰਤ ਪੰਚਮੀ / ਵਸੰਤ ਪੰਚਮੀ"),
+            ("2018-01-22", "ਬਸੰਤ ਪੰਚਮੀ / ਸ੍ਰੀ ਪੰਚਮੀ"),
             ("2018-01-24", "ਯੂਪੀ ਗਠਨ ਦਿਵਸ"),
             ("2018-01-26", "ਗਣਤੰਤਰ ਦਿਵਸ"),
             ("2018-01-31", "ਗੁਰੂ ਰਵਿਦਾਸ ਜੀ ਦਾ ਜਨਮ ਦਿਹਾੜਾ"),
@@ -2144,7 +2161,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "ਓਨਮ"),
             ("2018-08-26", "ਰੱਖੜੀ"),
             ("2018-09-03", "ਜਨਮਾਸ਼ਟਮੀ (ਵੈਸ਼ਨਵ)"),
-            ("2018-09-13", "ਗਣੇਸ਼ ਚਤੁਰਥੀ"),
+            ("2018-09-13", "ਗਣੇਸ਼ ਚਤੁਰਥੀ / ਵਿਨਾਇਕ ਚਤੁਰਥੀ"),
             ("2018-09-21", "ਮੁਹੱਰਮ"),
             ("2018-10-02", "ਜਨਮ ਦਿਵਸ ਮਹਾਤਮਾ ਗਾਂਧੀ ਜੀ"),
             ("2018-10-08", "ਬਾਥੁਕੰਮਾ ਤਿਉਹਾਰ"),
@@ -2192,7 +2209,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-01-14", "உத்தராயண் நாள்; பொங்கல்; மகர சங்கராந்தி; மாக் பிஹூ"),
             ("2018-01-15", "திருவள்ளுவர் நாள் / மாட்டுப் பொங்கல்"),
             ("2018-01-16", "உழவர் திருநாள்"),
-            ("2018-01-22", "பசந்த பஞ்சமி / வசந்த பஞ்சமி"),
+            ("2018-01-22", "வசந்த பஞ்சமி / ஸ்ரீ பஞ்சமி"),
             ("2018-01-24", "உத்தரப்பிரதேச உருவாக்க நாள்"),
             ("2018-01-26", "குடியரசு நாள்"),
             ("2018-01-31", "குரு ரவி தாஸின் பிறந்தநாள்"),
@@ -2239,7 +2256,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "ஓணம்"),
             ("2018-08-26", "ரக்ஷா பந்தன்"),
             ("2018-09-03", "ஜனமாஷ்டமி (வைஷ்ணவ)"),
-            ("2018-09-13", "விநாயகர் சதுர்த்தி"),
+            ("2018-09-13", "விநாயகர் சதுர்த்தி / விநாயக சதுர்த்தி"),
             ("2018-09-21", "முஹர்ரம்"),
             ("2018-10-02", "மகாத்மா காந்தி ஜெயந்தி"),
             ("2018-10-08", "பதுக்கம்மா திருவிழா"),
@@ -2287,7 +2304,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-01-14", "ఉత్తరాయణం; పొంగల్; భోగాలీ బిహు; మకర సంక్రాంతి"),
             ("2018-01-15", "తిరువళ్ళువర్ దినోత్సవం / మట్టు పొంగల్"),
             ("2018-01-16", "రైతుల పండుగ"),
-            ("2018-01-22", "బసంత్ పంచమి / వసంత పంచమి"),
+            ("2018-01-22", "వసంత పంచమి / శ్రీ పంచమి"),
             ("2018-01-24", "ఉత్తర ప్రదేశ్ అవతరణ దినోత్సవం"),
             ("2018-01-26", "గణతంత్ర దినోత్సవం"),
             ("2018-01-31", "గురు రవిదాస్ పుట్టినరోజు"),
@@ -2334,7 +2351,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-24", "ఓణం"),
             ("2018-08-26", "రాఖీ పౌర్ణమి"),
             ("2018-09-03", "జన్మాష్టమి (వైష్ణవ)"),
-            ("2018-09-13", "వినాయక చవితి"),
+            ("2018-09-13", "గణేశ చవితి / వినాయక చవితి"),
             ("2018-09-21", "మొహర్రం"),
             ("2018-10-02", "మహాత్మా గాంధీ జయంతి"),
             ("2018-10-08", "బతుకమ్మ పండుగ"),
