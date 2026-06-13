@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import HALF_DAY, PUBLIC
 from holidays.financial.chicago_mercantile_exchange import ChicagoMercantileExchange
 from tests.common import CommonFinancialTests
 
@@ -24,35 +23,26 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
 
     def test_no_holidays(self):
         super().test_no_holidays()
-        self.assertNoHolidays(
-            ChicagoMercantileExchange(categories=(HALF_DAY, PUBLIC), years=range(1900, 2000))
-        )
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        name_observed = f"{name} (observed)"
-
-        self.assertNonObservedHolidayName(name, (f"{year}-01-01" for year in self.full_range))
-
         obs_dts = (
             "2012-01-02",
             "2017-01-02",
             "2023-01-02",
         )
-        self.assertHolidayName(name_observed, obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
-
+        self.assertHolidayName(name, obs_dts)
         no_obs_dts = (
             "2004-12-31",
             "2010-12-31",
             "2021-12-31",
         )
-        self.assertNoHolidayName(name_observed, no_obs_dts)
         self.assertNoHoliday(no_obs_dts)
 
     def test_martin_luther_king_jr_day(self):
         name_1030 = "Martin Luther King Jr. Day (markets pause at 10:30am CT)"
         name_1200 = "Martin Luther King Jr. Day (markets pause at 12:00pm CT)"
+
         self.assertHalfDayHolidayName(
             name_1030,
             "2001-01-15",
@@ -60,6 +50,8 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             "2013-01-21",
             "2014-01-20",
         )
+        self.assertHalfDayHolidayName(name_1030, range(self.start_year, 2015))
+
         self.assertHalfDayHolidayName(
             name_1200,
             "2015-01-19",
@@ -71,10 +63,13 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             "2025-01-20",
         )
 
+        self.assertHalfDayHolidayName(name_1200, range(2015, self.end_year))
+
     def test_washingtons_birthday(self):
         name_1030 = "Washington's Birthday (markets pause at 10:30am CT)"
         name_1200 = "Washington's Birthday (markets pause at 12:00pm CT)"
         self.assertHalfDayHolidayName(name_1030, "2001-02-19", "2014-02-17")
+        self.assertHalfDayHolidayName(name_1030, range(self.start_year, 2015))
         self.assertHalfDayHolidayName(
             name_1200,
             "2015-02-16",
@@ -85,6 +80,7 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             "2024-02-19",
             "2025-02-17",
         )
+        self.assertHalfDayHolidayName(name_1200, range(2015, self.end_year))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -99,11 +95,13 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_memorial_day(self):
         name_1030 = "Memorial Day (markets pause at 10:30am CT)"
         name_1200 = "Memorial Day (markets pause at 12:00pm CT)"
         self.assertHalfDayHolidayName(name_1030, "2001-05-28", "2014-05-26")
+        self.assertHalfDayHolidayName(name_1030, range(self.start_year, 2015))
         self.assertHalfDayHolidayName(
             name_1200,
             "2015-05-25",
@@ -114,39 +112,41 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             "2024-05-27",
             "2025-05-26",
         )
+        self.assertHalfDayHolidayName(name_1200, range(2015, self.end_year))
 
-    def test_juneteenth_national_independence_day(self):
-        name = "Juneteenth National Independence Day (markets pause at 12:00pm CT)"
-        name_observed = f"{name} (observed)"
+    def test_juneteenth(self):
+        name = "Juneteenth (markets pause at 12:00pm CT)"
+
         self.assertHalfDayHolidayName(
             name,
             "2023-06-19",
             "2024-06-19",
             "2025-06-19",
         )
+
         obs_dts = ("2022-06-20", "2027-06-18")
-        self.assertHalfDayHolidayName(name_observed, obs_dts)
+        self.assertHalfDayHolidayName(name, obs_dts)
+
+        self.assertNoHalfDayHolidayName(name, range(self.start_year, 2022))
 
     def test_independence_day(self):
         name = "Independence Day"
-        name_observed = f"{name} (observed)"
-        self.assertNonObservedHolidayName(name, (f"{year}-07-04" for year in self.full_range))
         obs_dts = (
             "2004-07-05",
             "2010-07-05",
             "2021-07-05",
         )
-        self.assertHolidayName(name_observed, obs_dts)
+        self.assertHolidayName(name, obs_dts)
 
     def test_day_before_independence_day(self):
         name_1030 = "Day before Independence Day (markets pause at 10:30am CT)"
         name_1200 = "Day before Independence Day (markets pause at 12:00pm CT)"
-        obs_name_1030 = "Independence Day (observed) (markets pause at 10:30am CT)"
-        obs_name_1200 = "Independence Day (observed) (markets pause at 12:00pm CT)"
+        shifted_name_1030 = "Independence Day (markets pause at 10:30am CT)"
+        shifted_name_1200 = "Independence Day (markets pause at 12:00pm CT)"
 
         self.assertHalfDayHolidayName(name_1030, "2001-07-03", "2002-07-03", "2007-07-03")
-        self.assertHalfDayHolidayName(obs_name_1030, "2009-07-03")
-        self.assertHalfDayHolidayName(obs_name_1200, "2015-07-03", "2020-07-03", "2026-07-03")
+        self.assertHalfDayHolidayName(shifted_name_1030, "2009-07-03")
+        self.assertHalfDayHolidayName(shifted_name_1200, "2015-07-03", "2020-07-03", "2026-07-03")
 
         self.assertHalfDayHolidayName(
             name_1200,
@@ -166,6 +166,7 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
         name_1030 = "Labor Day (markets pause at 10:30am CT)"
         name_1200 = "Labor Day (markets pause at 12:00pm CT)"
         self.assertHalfDayHolidayName(name_1030, "2001-09-03", "2014-09-01")
+        self.assertHalfDayHolidayName(name_1030, range(self.start_year, 2015))
         self.assertHalfDayHolidayName(
             name_1200,
             "2015-09-07",
@@ -176,6 +177,7 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             "2024-09-02",
             "2025-09-01",
         )
+        self.assertHalfDayHolidayName(name_1200, range(2015, self.end_year))
 
     def test_thanksgiving_day(self):
         name = "Thanksgiving Day"
@@ -188,6 +190,7 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             "2024-11-28",
             "2025-11-27",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_day_after_thanksgiving(self):
         name = "Day after Thanksgiving Day (markets pause at 12:00pm CT)"
@@ -202,6 +205,7 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             "2024-11-29",
             "2025-11-28",
         )
+        self.assertHalfDayHolidayName(name, self.full_range)
 
     def test_christmas_eve(self):
         name = "Christmas Eve (markets pause at 12:00pm CT)"
@@ -224,8 +228,6 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        name_observed = f"{name} (observed)"
-        self.assertNonObservedHolidayName(name, (f"{year}-12-25" for year in self.full_range))
         obs_dts = (
             "2004-12-24",
             "2010-12-24",
@@ -234,11 +236,10 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             "2021-12-24",
             "2022-12-26",
         )
-        self.assertHolidayName(name_observed, obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
+        self.assertHolidayName(name, obs_dts)
 
     def test_special_public_holidays(self):
-        special_holidays = [
+        self.assertHoliday(
             "2001-09-11",
             "2001-09-12",
             "2001-09-13",
@@ -249,13 +250,12 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             "2012-10-30",
             "2018-12-05",
             "2025-01-09",
-        ]
-        self.assertHoliday(special_holidays)
+        )
 
     def test_2023(self):
         self.assertHolidaysInYear(
             2023,
-            ("2023-01-02", "New Year's Day (observed)"),
+            ("2023-01-02", "New Year's Day"),
             ("2023-04-07", "Good Friday"),
             ("2023-07-04", "Independence Day"),
             ("2023-11-23", "Thanksgiving Day"),
@@ -268,7 +268,7 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             ("2023-01-16", "Martin Luther King Jr. Day (markets pause at 12:00pm CT)"),
             ("2023-02-20", "Washington's Birthday (markets pause at 12:00pm CT)"),
             ("2023-05-29", "Memorial Day (markets pause at 12:00pm CT)"),
-            ("2023-06-19", "Juneteenth National Independence Day (markets pause at 12:00pm CT)"),
+            ("2023-06-19", "Juneteenth (markets pause at 12:00pm CT)"),
             ("2023-07-03", "Day before Independence Day (markets pause at 12:00pm CT)"),
             ("2023-09-04", "Labor Day (markets pause at 12:00pm CT)"),
             ("2023-11-24", "Day after Thanksgiving Day (markets pause at 12:00pm CT)"),
@@ -290,7 +290,7 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             ("2024-01-15", "Martin Luther King Jr. Day (markets pause at 12:00pm CT)"),
             ("2024-02-19", "Washington's Birthday (markets pause at 12:00pm CT)"),
             ("2024-05-27", "Memorial Day (markets pause at 12:00pm CT)"),
-            ("2024-06-19", "Juneteenth National Independence Day (markets pause at 12:00pm CT)"),
+            ("2024-06-19", "Juneteenth (markets pause at 12:00pm CT)"),
             ("2024-07-03", "Day before Independence Day (markets pause at 12:00pm CT)"),
             ("2024-09-02", "Labor Day (markets pause at 12:00pm CT)"),
             ("2024-11-29", "Day after Thanksgiving Day (markets pause at 12:00pm CT)"),
@@ -314,7 +314,7 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             ("2025-01-20", "Martin Luther King Jr. Day (markets pause at 12:00pm CT)"),
             ("2025-02-17", "Washington's Birthday (markets pause at 12:00pm CT)"),
             ("2025-05-26", "Memorial Day (markets pause at 12:00pm CT)"),
-            ("2025-06-19", "Juneteenth National Independence Day (markets pause at 12:00pm CT)"),
+            ("2025-06-19", "Juneteenth (markets pause at 12:00pm CT)"),
             ("2025-07-03", "Day before Independence Day (markets pause at 12:00pm CT)"),
             ("2025-09-01", "Labor Day (markets pause at 12:00pm CT)"),
             ("2025-11-28", "Day after Thanksgiving Day (markets pause at 12:00pm CT)"),
@@ -328,7 +328,7 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             ("2024-02-19", "Washington's Birthday (markets pause at 12:00pm CT)"),
             ("2024-03-29", "Good Friday"),
             ("2024-05-27", "Memorial Day (markets pause at 12:00pm CT)"),
-            ("2024-06-19", "Juneteenth National Independence Day (markets pause at 12:00pm CT)"),
+            ("2024-06-19", "Juneteenth (markets pause at 12:00pm CT)"),
             ("2024-07-03", "Day before Independence Day (markets pause at 12:00pm CT)"),
             ("2024-07-04", "Independence Day"),
             ("2024-09-02", "Labor Day (markets pause at 12:00pm CT)"),
@@ -346,7 +346,7 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             ("2024-02-19", "વોશિંગ્ટનનો જન્મદિવસ (બજારો બપોરે 12:00 વાગ્યે CT સમયે થોભે છે)"),
             ("2024-03-29", "ગુડ ફ્રાઇડે"),
             ("2024-05-27", "મેમોરિયલ ડે (બજારો બપોરે 12:00 વાગ્યે CT સમયે થોભે છે)"),
-            ("2024-06-19", "જુનટીન્થ રાષ્ટ્રીય સ્વતંત્રતા દિવસ (બજારો બપોરે 12:00 વાગ્યે CT સમયે થોભે છે)"),
+            ("2024-06-19", "જુનટીન્થ (બજારો બપોરે 12:00 વાગ્યે CT સમયે થોભે છે)"),
             ("2024-07-03", "સ્વતંત્રતા દિવસનો આગલો દિવસ (બજારો બપોરે 12:00 વાગ્યે CT સમયે થોભે છે)"),
             ("2024-07-04", "સ્વતંત્રતા દિવસ"),
             ("2024-09-02", "મજૂર દિવસ (બજારો બપોરે 12:00 વાગ્યે CT સમયે થોભે છે)"),
@@ -364,7 +364,7 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             ("2024-02-19", "वाशिंगटन का जन्मदिन (बाज़ार दोपहर 12:00 बजे CT पर रुकते हैं)"),
             ("2024-03-29", "गुड फ्राइडे"),
             ("2024-05-27", "मेमोरियल डे (बाज़ार दोपहर 12:00 बजे CT पर रुकते हैं)"),
-            ("2024-06-19", "जूनटीन्थ राष्ट्रीय स्वतंत्रता दिवस (बाज़ार दोपहर 12:00 बजे CT पर रुकते हैं)"),
+            ("2024-06-19", "जूनटीन्थ (बाज़ार दोपहर 12:00 बजे CT पर रुकते हैं)"),
             ("2024-07-03", "स्वतंत्रता दिवस से पहले का दिन (बाज़ार दोपहर 12:00 बजे CT पर रुकते हैं)"),
             ("2024-07-04", "स्वतंत्रता दिवस"),
             ("2024-09-02", "मज़दूर दिवस (बाज़ार दोपहर 12:00 बजे CT पर रुकते हैं)"),

@@ -12,14 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import (
-    JAN,
-    JUN,
-    JUL,
-    SEP,
-    OCT,
-    DEC,
-)
+from holidays.calendars.gregorian import JAN, JUN, JUL, SEP, OCT, DEC
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
@@ -35,12 +28,12 @@ class ChicagoMercantileExchange(
         * [2010](https://web.archive.org/web/20100315131807/http://www.cmegroup.com/tools-information/holiday-calendar/)
         * [2011](https://web.archive.org/web/20110728164055/http://www.cmegroup.com/tools-information/holiday-calendar/)
         * [2012](https://web.archive.org/web/20120912192947/http://www.cmegroup.com/tools-information/holiday-calendar/)
-        * [2013](https://web.archive.org/web/20110728164055/http://www.cmegroup.com/tools-information/holiday-calendar/)
+        * [2013](https://web.archive.org/web/20130927113936/http://www.cmegroup.com/tools-information/holiday-calendar/)
         * [2014](https://web.archive.org/web/20141130223720/http://www.cmegroup.com/tools-information/holiday-calendar/)
         * [2015](https://web.archive.org/web/20151026083555/http://www.cmegroup.com/tools-information/holiday-calendar/)
         * [2016](https://web.archive.org/web/20151215022239/http://www.cmegroup.com/tools-information/holiday-calendar/)
         * [2017](https://web.archive.org/web/20170104172130/http://www.cmegroup.com/tools-information/holiday-calendar.html)
-        * [2018](https://docs.google.com/spreadsheets/d/1fmye6UFBpy_zhFVJZPnYyXCl9kcwwmLfMlyzcFevYLM/edit?gid=454401724#gid=454401724)
+        * [2018](https://web.archive.org/web/20180815103620/https://www.cmegroup.com/tools-information/holiday-calendar.html)
         * [2019](https://web.archive.org/web/20190122145657/http://www.cmegroup.com/tools-information/holiday-calendar.html)
         * [2020](https://web.archive.org/web/20201230225003/http://www.cmegroup.com/tools-information/holiday-calendar.html)
         * [2021](https://web.archive.org/web/20211203222922/http://www.cmegroup.com/tools-information/holiday-calendar.html)
@@ -48,14 +41,13 @@ class ChicagoMercantileExchange(
         * [2023](https://web.archive.org/web/20231203104831/https://www.cmegroup.com/tools-information/holiday-calendar.html)
         * [2024](https://web.archive.org/web/20240703233842/https://www.cmegroup.com/trading-hours.html)
         * [2025](https://web.archive.org/web/20250327221007/https://www.cmegroup.com/trading-hours.html)
+        * [2026](https://web.archive.org/web/20260522122235/https://www.cmegroup.com/trading-hours.html)
 
     """
 
     market = "XCME"
     default_language = "en_US"
     supported_languages = ("en_US", "gu", "hi")
-    # %s (observed)
-    observed_label = tr("%s (observed)")
     start_year = 2000
     supported_categories = (HALF_DAY, PUBLIC)
 
@@ -73,10 +65,10 @@ class ChicagoMercantileExchange(
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
+        # Independence Day.
         jul_4 = self._add_holiday_jul_4(tr("Independence Day"))
         if self._is_sunday(jul_4):
-            # Independence Day.
-            self._add_holiday_jul_5(self.observed_label % self.tr("Independence Day"))
+            self._move_holiday(jul_4)
 
         # Thanksgiving Day.
         self._add_holiday_4th_thu_of_nov(tr("Thanksgiving Day"))
@@ -92,34 +84,36 @@ class ChicagoMercantileExchange(
         * [Martin Luther King Holiday Schedule -2015](https://web.archive.org/web/20150905223758/http://www.cmegroup.com/tools-information/holiday-calendar/files/2015-martin-luther-king-holiday-schedule.pdf)
 
         """
-        if self._year < 2015:
+        if self._year <= 2014:
             # %s (markets pause at 10:30am CT)
-            minor_pause_label = self.tr("%s (markets pause at 10:30am CT)")
+            minor_pause_label = tr("%s (markets pause at 10:30am CT)")
         else:
             # %s (markets pause at 12:00pm CT)
-            minor_pause_label = self.tr("%s (markets pause at 12:00pm CT)")
+            minor_pause_label = tr("%s (markets pause at 12:00pm CT)")
 
         # %s (markets pause at 12:00pm CT)
-        standard_pause_label = self.tr("%s (markets pause at 12:00pm CT)")
+        standard_pause_label = tr("%s (markets pause at 12:00pm CT)")
 
         self._add_holiday_3rd_mon_of_jan(
             # Martin Luther King Jr. Day.
-            minor_pause_label % self.tr("Martin Luther King Jr. Day")
+            self._format_holiday_name(minor_pause_label, tr("Martin Luther King Jr. Day"))
         )
 
         self._add_holiday_3rd_mon_of_feb(
-            # Washington's Birthday
-            minor_pause_label % self.tr("Washington's Birthday")
+            # Washington's Birthday.
+            self._format_holiday_name(minor_pause_label, tr("Washington's Birthday"))
         )
 
-        # Memorial Day.
-        self._add_holiday_last_mon_of_may(minor_pause_label % self.tr("Memorial Day"))
+        self._add_holiday_last_mon_of_may(
+            # Memorial Day.
+            self._format_holiday_name(minor_pause_label, tr("Memorial Day"))
+        )
 
         if self._year >= 2022:
             self._move_holiday(
                 self._add_holiday_jun_19(
-                    # Juneteenth National Independence Day
-                    minor_pause_label % self.tr("Juneteenth National Independence Day")
+                    # Juneteenth.
+                    self._format_holiday_name(minor_pause_label, tr("Juneteenth"))
                 )
             )
 
@@ -127,23 +121,29 @@ class ChicagoMercantileExchange(
         if self._is_saturday(jul_4):
             self._add_holiday_jul_3(
                 # Independence Day.
-                minor_pause_label % (self.observed_label % self.tr("Independence Day"))
+                self._format_holiday_name(minor_pause_label, tr("Independence Day"))
             )
         elif self._is_weekday(jul_4) and not self._is_monday(jul_4):
-            # Day before Independence Day early close.
-            self._add_holiday_jul_3(minor_pause_label % self.tr("Day before Independence Day"))
+            self._add_holiday_jul_3(
+                # Day before Independence Day.
+                self._format_holiday_name(minor_pause_label, tr("Day before Independence Day"))
+            )
 
-        # Labor Day.
-        self._add_holiday_1st_mon_of_sep(minor_pause_label % self.tr("Labor Day"))
+        self._add_holiday_1st_mon_of_sep(
+            # Labor Day.
+            self._format_holiday_name(minor_pause_label, tr("Labor Day"))
+        )
 
         self._add_holiday_1_day_past_4th_thu_of_nov(
-            # Day after Thanksgiving.
-            standard_pause_label % self.tr("Day after Thanksgiving Day")
+            # Day after Thanksgiving Day.
+            self._format_holiday_name(standard_pause_label, tr("Day after Thanksgiving Day"))
         )
 
         if self._is_weekday(self._christmas_day) and not self._is_monday(self._christmas_day):
-            # Christmas Eve.
-            self._add_christmas_eve(standard_pause_label % self.tr("Christmas Eve"))
+            self._add_christmas_eve(
+                # Christmas Eve.
+                self._format_holiday_name(standard_pause_label, tr("Christmas Eve"))
+            )
 
 
 class XCME(ChicagoMercantileExchange):
