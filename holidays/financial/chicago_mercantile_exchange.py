@@ -60,15 +60,13 @@ class ChicagoMercantileExchange(
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._move_holiday(self._add_new_years_day(tr("New Year's Day")))
+        self._move_holiday(self._add_new_years_day(tr("New Year's Day")), rule=SUN_TO_NEXT_MON)
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
         # Independence Day.
-        jul_4 = self._add_holiday_jul_4(tr("Independence Day"))
-        if self._is_sunday(jul_4):
-            self._move_holiday(jul_4)
+        self._move_holiday(self._add_holiday_jul_4(tr("Independence Day")), rule=SUN_TO_NEXT_MON)
 
         # Thanksgiving Day.
         self._add_holiday_4th_thu_of_nov(tr("Thanksgiving Day"))
@@ -84,24 +82,20 @@ class ChicagoMercantileExchange(
         * [Martin Luther King Holiday Schedule -2015](https://web.archive.org/web/20150905223758/http://www.cmegroup.com/tools-information/holiday-calendar/files/2015-martin-luther-king-holiday-schedule.pdf)
 
         """
-        if self._year <= 2014:
-            # %s (markets pause at 10:30am CT)
-            minor_pause_label = tr("%s (markets pause at 10:30am CT)")
-        else:
-            # %s (markets pause at 12:00pm CT)
-            minor_pause_label = tr("%s (markets pause at 12:00pm CT)")
-
+        # %s (markets pause at 10:30am CT)
+        pause_1030am_label = tr("%s (markets pause at 10:30am CT)")
         # %s (markets pause at 12:00pm CT)
-        standard_pause_label = tr("%s (markets pause at 12:00pm CT)")
+        pause_1200pm_label = tr("%s (markets pause at 12:00pm CT)")
+        minor_pause_label = pause_1200pm_label if self._year >= 2015 else pause_1030am_label
 
         self._add_holiday_3rd_mon_of_jan(
-            # Martin Luther King Jr. Day.
-            self._format_holiday_name(minor_pause_label, tr("Martin Luther King Jr. Day"))
+            # Dr. Martin Luther King, Jr. Day.
+            self._format_holiday_name(minor_pause_label, tr("Dr. Martin Luther King, Jr. Day"))
         )
 
         self._add_holiday_3rd_mon_of_feb(
-            # Washington's Birthday.
-            self._format_holiday_name(minor_pause_label, tr("Washington's Birthday"))
+            # President's Day.
+            self._format_holiday_name(minor_pause_label, tr("President's Day"))
         )
 
         self._add_holiday_last_mon_of_may(
@@ -112,8 +106,8 @@ class ChicagoMercantileExchange(
         if self._year >= 2022:
             self._move_holiday(
                 self._add_holiday_jun_19(
-                    # Juneteenth.
-                    self._format_holiday_name(minor_pause_label, tr("Juneteenth"))
+                    # Juneteenth Day.
+                    self._format_holiday_name(pause_1200pm_label, tr("Juneteenth Day"))
                 )
             )
 
@@ -136,13 +130,13 @@ class ChicagoMercantileExchange(
 
         self._add_holiday_1_day_past_4th_thu_of_nov(
             # Day after Thanksgiving Day.
-            self._format_holiday_name(standard_pause_label, tr("Day after Thanksgiving Day"))
+            self._format_holiday_name(pause_1200pm_label, tr("Day after Thanksgiving Day"))
         )
 
         if self._is_weekday(self._christmas_day) and not self._is_monday(self._christmas_day):
             self._add_christmas_eve(
                 # Christmas Eve.
-                self._format_holiday_name(standard_pause_label, tr("Christmas Eve"))
+                self._format_holiday_name(pause_1200pm_label, tr("Christmas Eve"))
             )
 
 

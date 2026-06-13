@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.99\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-06 17:56+0000\n"
-"PO-Revision-Date: 2026-06-13 05:16+0000\n"
+"PO-Revision-Date: 2026-06-13 16:00+0000\n"
 "Last-Translator: Paresh Joshi <194076591+pareshjoshij@users.noreply.github.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -57,21 +57,21 @@ msgstr "%s (बाज़ार सुबह 10:30 बजे CT पर रुक�
 msgid "%s (markets pause at 12:00pm CT)"
 msgstr "%s (बाज़ार दोपहर 12:00 बजे CT पर रुकते हैं)"
 
-#. Martin Luther King Jr. Day.
-msgid "Martin Luther King Jr. Day"
-msgstr "मार्टिन लूथर किंग जूनियर डे"
+#. Dr. Martin Luther King, Jr. Day.
+msgid "Dr. Martin Luther King, Jr. Day"
+msgstr "डॉ. मार्टिन लूथर किंग, जूनियर डे"
 
-#. Washington's Birthday.
-msgid "Washington's Birthday"
-msgstr "वाशिंगटन का जन्मदिन"
+#. President's Day.
+msgid "President's Day"
+msgstr "प्रेसिडेंट्स डे"
 
 #. Memorial Day.
 msgid "Memorial Day"
 msgstr "मेमोरियल डे"
 
-#. Juneteenth.
-msgid "Juneteenth"
-msgstr "जूनटीन्थ"
+#. Juneteenth Day.
+msgid "Juneteenth Day"
+msgstr "जूनटीन्थ डे"
 
 #. Day before Independence Day.
 msgid "Day before Independence Day"

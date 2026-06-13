@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.99\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-06 17:56+0000\n"
-"PO-Revision-Date: 2026-06-13 05:16+0000\n"
+"PO-Revision-Date: 2026-06-13 16:00+0000\n"
 "Last-Translator: Paresh Joshi <194076591+pareshjoshij@users.noreply.github.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -57,20 +57,20 @@ msgstr ""
 msgid "%s (markets pause at 12:00pm CT)"
 msgstr ""
 
-#. Martin Luther King Jr. Day.
-msgid "Martin Luther King Jr. Day"
+#. Dr. Martin Luther King, Jr. Day.
+msgid "Dr. Martin Luther King, Jr. Day"
 msgstr ""
 
-#. Washington's Birthday.
-msgid "Washington's Birthday"
+#. President's Day.
+msgid "President's Day"
 msgstr ""
 
 #. Memorial Day.
 msgid "Memorial Day"
 msgstr ""
 
-#. Juneteenth.
-msgid "Juneteenth"
+#. Juneteenth Day.
+msgid "Juneteenth Day"
 msgstr ""
 
 #. Day before Independence Day.
