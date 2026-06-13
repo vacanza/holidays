@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.98\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-06-12 00:27+0530\n"
+"PO-Revision-Date: 2026-06-13 19:09+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
@@ -49,32 +49,8 @@ msgstr ""
 msgid "Mahatma Gandhi's Jayanti"
 msgstr ""
 
-#. Buddha Purnima.
-msgid "Buddha Purnima"
-msgstr ""
-
-#. Diwali.
-msgid "Diwali (Deepavali)"
-msgstr ""
-
-#. Dussehra.
-msgid "Dussehra"
-msgstr ""
-
-#. Janmashtami (Vaishnava).
-msgid "Janmashtami (Vaishnava)"
-msgstr ""
-
-#. Mahavira's Birthday.
-msgid "Mahavir Jayanti"
-msgstr ""
-
 #. Maha Shivaratri.
 msgid "Maha Shivaratri"
-msgstr ""
-
-#. Guru Nanak's Birthday.
-msgid "Guru Nanak's Jayanti"
 msgstr ""
 
 #. Holi.
@@ -83,6 +59,30 @@ msgstr ""
 
 #. Ram Navami.
 msgid "Ram Navami"
+msgstr ""
+
+#. Mahavira's Birthday.
+msgid "Mahavir Jayanti"
+msgstr ""
+
+#. Buddha Purnima.
+msgid "Buddha Purnima"
+msgstr ""
+
+#. Janmashtami (Vaishnava).
+msgid "Janmashtami (Vaishnava)"
+msgstr ""
+
+#. Dussehra.
+msgid "Dussehra"
+msgstr ""
+
+#. Diwali.
+msgid "Diwali (Deepavali)"
+msgstr ""
+
+#. Guru Nanak's Birthday.
+msgid "Guru Nanak's Jayanti"
 msgstr ""
 
 #. Ashura.
@@ -125,6 +125,10 @@ msgstr ""
 msgid "Makar Sankranti"
 msgstr ""
 
+#. Magh Bihu.
+msgid "Magh Bihu"
+msgstr ""
+
 #. Pongal.
 msgid "Pongal"
 msgstr ""
@@ -135,6 +139,18 @@ msgstr ""
 
 #. Guru Ravi Das's Birthday.
 msgid "Guru Ravi Das's Jayanti"
+msgstr ""
+
+#. Shivaji's Birthday.
+msgid "Shivaji's Jayanti"
+msgstr ""
+
+#. Swami Dayanand Saraswati's Birthday.
+msgid "Swami Dayanand Saraswati's Jayanti"
+msgstr ""
+
+#. Dolyatra.
+msgid "Dolyatra"
 msgstr ""
 
 #. Holika Dahan.
@@ -177,8 +193,8 @@ msgstr ""
 msgid "Vishu"
 msgstr ""
 
-#. Swami Dayanand Saraswati's Birthday.
-msgid "Swami Dayanand Saraswati's Jayanti"
+#. Guru Rabindranath's Birthday.
+msgid "Guru Rabindranath's Jayanti"
 msgstr ""
 
 #. Rath Yatra.
@@ -187,6 +203,10 @@ msgstr ""
 
 #. Raksha Bandhan.
 msgid "Raksha Bandhan"
+msgstr ""
+
+#. Parsi New Year.
+msgid "Parsi New Year"
 msgstr ""
 
 #. Onam.
@@ -241,10 +261,6 @@ msgstr ""
 msgid "Guru Tegh Bahadur's Martyrdom Day"
 msgstr ""
 
-#. Parsi New Year.
-msgid "Parsi New Year"
-msgstr ""
-
 #. Ali's Birthday.
 msgid "Hazarat Ali's Birthday"
 msgstr ""
@@ -267,10 +283,6 @@ msgstr ""
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
-msgstr ""
-
-#. Magh Bihu.
-msgid "Magh Bihu"
 msgstr ""
 
 #. Assam Day.
@@ -431,6 +443,10 @@ msgstr ""
 
 #. Sri Panchami.
 msgid "Sri Panchami"
+msgstr ""
+
+#. Janmashtami (Smarta).
+msgid "Janmashtami (Smarta)"
 msgstr ""
 
 #. Vinayak Chaturthi.

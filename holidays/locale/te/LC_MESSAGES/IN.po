@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.98\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-06-12 00:27+0530\n"
+"PO-Revision-Date: 2026-06-13 19:09+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: te\n"
@@ -48,33 +48,9 @@ msgstr "స్వాతంత్ర దినోత్సవం"
 msgid "Mahatma Gandhi's Jayanti"
 msgstr "మహాత్మా గాంధీ జయంతి"
 
-#. Buddha Purnima.
-msgid "Buddha Purnima"
-msgstr "బుద్ధ పూర్ణిమ"
-
-#. Diwali.
-msgid "Diwali (Deepavali)"
-msgstr "దీపావళి"
-
-#. Dussehra.
-msgid "Dussehra"
-msgstr "విజయదశమి"
-
-#. Janmashtami (Vaishnava).
-msgid "Janmashtami (Vaishnava)"
-msgstr "జన్మాష్టమి (వైష్ణవ)"
-
-#. Mahavira's Birthday.
-msgid "Mahavir Jayanti"
-msgstr "మహావీర్ జయంతి"
-
 #. Maha Shivaratri.
 msgid "Maha Shivaratri"
 msgstr "మహాశివరాత్రి"
-
-#. Guru Nanak's Birthday.
-msgid "Guru Nanak's Jayanti"
-msgstr "గురునానక్ జయంతి"
 
 #. Holi.
 msgid "Holi"
@@ -83,6 +59,30 @@ msgstr "హోలీ"
 #. Ram Navami.
 msgid "Ram Navami"
 msgstr "శ్రీరామనవమి"
+
+#. Mahavira's Birthday.
+msgid "Mahavir Jayanti"
+msgstr "మహావీర్ జయంతి"
+
+#. Buddha Purnima.
+msgid "Buddha Purnima"
+msgstr "బుద్ధ పూర్ణిమ"
+
+#. Janmashtami (Vaishnava).
+msgid "Janmashtami (Vaishnava)"
+msgstr "జన్మాష్టమి (వైష్ణవ)"
+
+#. Dussehra.
+msgid "Dussehra"
+msgstr "విజయదశమి"
+
+#. Diwali.
+msgid "Diwali (Deepavali)"
+msgstr "దీపావళి"
+
+#. Guru Nanak's Birthday.
+msgid "Guru Nanak's Jayanti"
+msgstr "గురునానక్ జయంతి"
 
 #. Ashura.
 msgid "Muharram"
@@ -124,6 +124,10 @@ msgstr "లోహ్రీ"
 msgid "Makar Sankranti"
 msgstr "మకర సంక్రాంతి"
 
+#. Magh Bihu.
+msgid "Magh Bihu"
+msgstr "భోగాలీ బిహు"
+
 #. Pongal.
 msgid "Pongal"
 msgstr "పొంగల్"
@@ -135,6 +139,18 @@ msgstr "వసంత పంచమి / శ్రీ పంచమి"
 #. Guru Ravi Das's Birthday.
 msgid "Guru Ravi Das's Jayanti"
 msgstr "గురు రవిదాస్ పుట్టినరోజు"
+
+#. Shivaji's Birthday.
+msgid "Shivaji's Jayanti"
+msgstr "శివాజీ జయంతి"
+
+#. Swami Dayanand Saraswati's Birthday.
+msgid "Swami Dayanand Saraswati's Jayanti"
+msgstr "స్వామి దయానంద్ సరస్వతి జయంతి"
+
+#. Dolyatra.
+msgid "Dolyatra"
+msgstr "దోలయాత్ర"
 
 #. Holika Dahan.
 msgid "Holika Dahan"
@@ -176,9 +192,9 @@ msgstr "వైశాఖి"
 msgid "Vishu"
 msgstr "விசு"
 
-#. Swami Dayanand Saraswati's Birthday.
-msgid "Swami Dayanand Saraswati's Jayanti"
-msgstr "స్వామి దయానంద్ సరస్వతి జయంతి"
+#. Guru Rabindranath's Birthday.
+msgid "Guru Rabindranath's Jayanti"
+msgstr "గురు రవీంద్రనాథ్ జయంతి"
 
 #. Rath Yatra.
 msgid "Rath Yatra"
@@ -187,6 +203,10 @@ msgstr "రథ యాత్ర"
 #. Raksha Bandhan.
 msgid "Raksha Bandhan"
 msgstr "రాఖీ పౌర్ణమి"
+
+#. Parsi New Year.
+msgid "Parsi New Year"
+msgstr "పార్సీ నూతన సంవత్సరం"
 
 #. Onam.
 msgid "Onam"
@@ -240,10 +260,6 @@ msgstr "ప్రతిహార్ షష్ఠి లేదా సూర్య
 msgid "Guru Tegh Bahadur's Martyrdom Day"
 msgstr "గురు తేగ్ బహదూర్ అమరవీర దినోత్సవం"
 
-#. Parsi New Year.
-msgid "Parsi New Year"
-msgstr "పార్సీ నూతన సంవత్సరం"
-
 #. Ali's Birthday.
 msgid "Hazarat Ali's Birthday"
 msgstr "ஹஸ்ரத் அலியின் பிறந்தநாள்"
@@ -267,10 +283,6 @@ msgstr "మట్టల ఆదివారం"
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
 msgstr "ఆంధ్రప్రదేశ్ అవతరణ దినోత్సవం"
-
-#. Magh Bihu.
-msgid "Magh Bihu"
-msgstr "భోగాలీ బిహు"
 
 #. Assam Day.
 msgid "Assam Day"
@@ -431,6 +443,10 @@ msgstr "గణేశ చవితి"
 #. Sri Panchami.
 msgid "Sri Panchami"
 msgstr "శ్రీ పంచమి"
+
+#. Janmashtami (Smarta).
+msgid "Janmashtami (Smarta)"
+msgstr "జన్మాష్టమి (స్మార్త)"
 
 #. Vinayak Chaturthi.
 msgid "Vinayak Chaturthi"

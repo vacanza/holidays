@@ -14,7 +14,7 @@ from calendar import isleap
 from collections.abc import Iterable
 from datetime import date
 
-from holidays.calendars.gregorian import APR, AUG, _timedelta
+from holidays.calendars.gregorian import APR, MAY, AUG, _timedelta
 from holidays.calendars.hindu import _HinduLunisolar
 from holidays.groups.eastern import EasternCalendarHolidays
 
@@ -519,6 +519,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Pongal_(festival)
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.pongal_date(self._year))
+
+    def _add_rabindranath_birthday(self, name: str) -> None:
+        """
+        Add Rabindranath Tagore's Birthday.
+
+        Rabindranath Tagore's Birthday commemorates the birth anniversary
+        of Rabindranath Tagore, the Bengali poet, philosopher, and Nobel
+        laureate. It is usually observed on May 9, but falls on May 8
+        in leap years.
+        """
+        day = 8 if isleap(self._year) else 9
+        self._add_holiday(name, date(self._year, MAY, day))
 
     def _add_raksha_bandhan(self, name) -> date | None:
         """
