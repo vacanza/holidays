@@ -19,25 +19,64 @@ from tests.common import CommonCountryTests
 class TestMozambique(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Mozambique, years=range(1975, 2050))
+        super().setUpClass(Mozambique)
 
-    def test_holidays(self):
-        for year in range(1975, 2050):
-            self.assertHoliday(
-                f"{year}-01-01",
-                f"{year}-02-03",
-                f"{year}-04-07",
-                f"{year}-05-01",
-                f"{year}-06-25",
-                f"{year}-09-07",
-                f"{year}-09-25",
-                f"{year}-12-25",
-            )
+    def test_new_years_day(self):
+        self.assertHolidayName(
+            "Dia da Fraternidade universal",
+            (f"{year}-01-01" for year in self.full_range), 
+        )
 
-        self.assertNoHoliday(f"{year}-10-04" for year in range(1975, 1993))
-        self.assertNoHolidayName("Dia da Paz e Reconciliação", range(1975, 1993))
-        self.assertHoliday(f"{year}-10-04" for year in range(1993, 2050))
+    def test_heroes_day(self):
+        self.assertHolidayName(
+            "Dia dos Heróis Moçambicanos",
+            (f"{year}-02-03" for year in self.full_range), 
+        )
+    
+    def test_womens_day(self):
+        self.assertHolidayName(
+            "Dia da Mulher Moçambicana",
+            (f"{year}-04-07" for year in self.full_range), 
+        )
 
+    def test_workers_day(self):
+        self.assertHolidayName(
+            "Dia Internacional dos Trabalhadores",
+            (f"{year}-05-01" for year in self.full_range), 
+        )
+
+    def test_independence_day(self):
+        self.assertHolidayName(
+            "Dia da Independência Nacional",
+            (f"{year}-06-25" for year in self.full_range), 
+        )
+
+    def test_victory_day(self):
+        self.assertHolidayName(
+            "Dia da Vitória",
+            (f"{year}-09-07" for year in self.full_range), 
+        )
+
+    def test_armed_forces_day(self):
+        self.assertHolidayName(
+            "Dia das Forças Armadas de Libertação Nacional",
+            (f"{year}-09-25" for year in self.full_range), 
+        )
+
+    def test_peace_and_reconciliation_day(self):
+        name = "Dia da Paz e Reconciliação"
+        self.assertHolidayName(
+            name,
+            (f"{year}-10-04" for year in range(1993, self.end_year)),
+        )
+        self.assertNoHolidayName(name, range(self.start_year, 1993))
+
+    def test_family_day(self):
+        self.assertHolidayName(
+            "Dia da Família",
+            (f"{year}-12-25" for year in self.full_range), 
+        )
+        
     def test_observed(self):
         dt = (
             "2011-05-02",
