@@ -24,43 +24,43 @@ class TestMozambique(CommonCountryTests, TestCase):
     def test_new_years_day(self):
         self.assertHolidayName(
             "Dia da Fraternidade universal",
-            (f"{year}-01-01" for year in self.full_range), 
+            (f"{year}-01-01" for year in self.full_range),
         )
 
     def test_heroes_day(self):
         self.assertHolidayName(
             "Dia dos Heróis Moçambicanos",
-            (f"{year}-02-03" for year in self.full_range), 
+            (f"{year}-02-03" for year in self.full_range),
         )
-    
+
     def test_womens_day(self):
         self.assertHolidayName(
             "Dia da Mulher Moçambicana",
-            (f"{year}-04-07" for year in self.full_range), 
+            (f"{year}-04-07" for year in self.full_range),
         )
 
     def test_workers_day(self):
         self.assertHolidayName(
             "Dia Internacional dos Trabalhadores",
-            (f"{year}-05-01" for year in self.full_range), 
+            (f"{year}-05-01" for year in self.full_range),
         )
 
     def test_independence_day(self):
         self.assertHolidayName(
             "Dia da Independência Nacional",
-            (f"{year}-06-25" for year in self.full_range), 
+            (f"{year}-06-25" for year in self.full_range),
         )
 
     def test_victory_day(self):
         self.assertHolidayName(
             "Dia da Vitória",
-            (f"{year}-09-07" for year in self.full_range), 
+            (f"{year}-09-07" for year in self.full_range),
         )
 
     def test_armed_forces_day(self):
         self.assertHolidayName(
             "Dia das Forças Armadas de Libertação Nacional",
-            (f"{year}-09-25" for year in self.full_range), 
+            (f"{year}-09-25" for year in self.full_range),
         )
 
     def test_peace_and_reconciliation_day(self):
@@ -74,9 +74,9 @@ class TestMozambique(CommonCountryTests, TestCase):
     def test_family_day(self):
         self.assertHolidayName(
             "Dia da Família",
-            (f"{year}-12-25" for year in self.full_range), 
+            (f"{year}-12-25" for year in self.full_range),
         )
-        
+
     def test_observed(self):
         dt = (
             "2011-05-02",
