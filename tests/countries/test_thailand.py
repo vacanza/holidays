@@ -305,8 +305,7 @@ class TestThailand(CommonCountryTests, TestCase):
         for year in (*range(1940, 1948), *range(1952, 1954)):
             self.assertHolidayName(name_1939, (f"{year}-06-23", f"{year}-06-24", f"{year}-06-25"))
         self.assertHolidayName(
-            name_1939,
-            (f"{year}-06-24" for year in (1939, *range(1948, 1952), *range(1954, 1960))),
+            name_1939, (f"{year}-06-24" for year in (1939, *range(1948, 1952), *range(1954, 1960)))
         )
         self.assertHolidayName(name_1939, (f"{year}-12-05" for year in range(1960, self.end_year)))
         self.assertNoHolidayName(
@@ -978,10 +977,7 @@ class TestThailand(CommonCountryTests, TestCase):
             ("2022-05-13", "วันพืชมงคล"),
             ("2022-05-15", "วันวิสาขบูชา"),
             ("2022-05-16", "ชดเชยวันวิสาขบูชา"),
-            (
-                "2022-06-03",
-                "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี",
-            ),
+            ("2022-06-03", "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"),
             ("2022-07-13", "วันอาสาฬหบูชา"),
             ("2022-07-14", "วันเข้าพรรษา"),
             ("2022-07-15", "วันหยุดพิเศษ (เพิ่มเติม)"),
@@ -1044,10 +1040,7 @@ class TestThailand(CommonCountryTests, TestCase):
             ("2022-07-15", "Bridge Public Holiday"),
             ("2022-07-28", "HM King Maha Vajiralongkorn's Birthday"),
             ("2022-07-29", "Bridge Public Holiday"),
-            (
-                "2022-08-12",
-                "HM Queen Sirikit The Queen Mother's Birthday; National Mother's Day",
-            ),
+            ("2022-08-12", "HM Queen Sirikit The Queen Mother's Birthday; National Mother's Day"),
             ("2022-08-18", "National Science Day"),
             ("2022-09-28", "Thai National Flag Day"),
             ("2022-10-13", "HM King Bhumibol Adulyadej the Great Memorial Day"),

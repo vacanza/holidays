@@ -744,14 +744,7 @@ class HolidayBase(dict[date, str]):
     def _normalized_subdiv(self):
         return (
             self.subdivisions_aliases.get(self.subdiv, self.subdiv)
-            .translate(
-                str.maketrans(
-                    {
-                        "-": "_",
-                        " ": "_",
-                    }
-                )
-            )
+            .translate(str.maketrans({"-": "_", " ": "_"}))
             .lower()
         )
 
