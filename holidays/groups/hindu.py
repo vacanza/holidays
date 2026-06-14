@@ -29,7 +29,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         self._hindu_calendar_show_estimated = show_estimated
 
     @property
-    def _ram_navami(self):
+    def _ram_navami(self) -> date | None:
         """
         Return Ram Navami date.
         """

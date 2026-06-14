@@ -438,7 +438,7 @@ class India(
             # Guru Tegh Bahadur's Martyrdom Day.
             self._add_holiday_nov_24(tr("Guru Tegh Bahadur's Martyrdom Day"))
 
-        # Islamic holidays.
+        #    holidays.
 
         # Ali's Birthday.
         self._add_ali_birthday_day(tr("Hazarat Ali's Birthday"))
@@ -455,9 +455,6 @@ class India(
         if self._year >= 2008:
             # Easter Sunday.
             self._add_easter_sunday(tr("Easter Sunday"))
-
-        # Palm Sunday.
-        self._add_palm_sunday(tr("Palm Sunday"))
 
     # Andaman and Nicobar Islands.
     def _populate_subdiv_an_public_holidays(self):
@@ -736,11 +733,6 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
 
 
 class IndiaStaticHolidays:
-    special_public_holidays = {
-        # Dussehra (Mahanavami).
-        2002: (OCT, 14, tr("Dussehra (Mahanavami)")),
-    }
-
     # Basant Panchami.
     name_basant_panchami = tr("Basant Panchami")
 
@@ -761,6 +753,11 @@ class IndiaStaticHolidays:
 
     # Janmashtami (Smarta).
     name_janmashtami_smarta = tr("Janmashtami (Smarta)")
+
+    special_public_holidays = {
+        # Dussehra (Mahanavami).
+        2002: (OCT, 14, tr("Dussehra (Mahanavami)")),
+    }
 
     special_optional_holidays = {
         2002: (DEC, 8, name_guru_tegh_bahadur_martyrdom_day),

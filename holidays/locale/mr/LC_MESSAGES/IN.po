@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.98\n"
+"Project-Id-Version: Holidays 0.99\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-29 00:37+0530\n"
-"PO-Revision-Date: 2026-06-14 11:24+0530\n"
+"PO-Revision-Date: 2026-06-14 23:00+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: mr\n"
@@ -276,10 +276,6 @@ msgstr "ख्रिसमसच्या पूर्व संध्याक�
 msgid "Easter Sunday"
 msgstr "ईस्टर रविवार"
 
-#. Palm Sunday.
-msgid "Palm Sunday"
-msgstr "पाम रविवार"
-
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
 msgstr "आंध्र प्रदेश स्थापना दिन"
@@ -450,4 +446,4 @@ msgstr "गणेश चतुर्थी"
 
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
-msgstr "ಜನ್ಮಾಷ್ಟಮಿ (ಸ್ಮಾರ್ತ)"
+msgstr "गोकुळाष्टमी (स्मार्त)"
