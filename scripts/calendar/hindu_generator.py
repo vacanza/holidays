@@ -219,6 +219,40 @@ class _Lunisolar(_Astronomy):
     # Purnima -> use MOON's sidereal sign -> determines lunar month
     #            (moon is in the nakshatra the month is named after)
 
+    def get_basant_panchami(self, year: int) -> date | None:
+        """
+        Basant Panchami (Saraswati Puja) = Magh Shukla Panchami.
+        Tithi = 5 (Panchami) of Shukla Paksha in Magh month - sun in sidereal Capricorn (sign 9).
+        Evaluated at Madhyahna (midday, midpoint of sunrise-sunset).
+
+        Panchami detection (Madhyahna tithi):
+        - First occurrence of tithi 5 (normal or skip-over-4) → return that day
+        - Tithi 5 entirely skipped (4→6) → return that day
+        """
+        exceptions = {
+            2023: date(2023, 1, 26),
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        # Find Magh Amavasya
+        magh_ama = self._get_amavasya(date(year, 1, 1), zodiac_sign=9)
+
+        if not magh_ama:
+            return None
+
+        for delta in range(1, 10):
+            dt = magh_ama + timedelta(days=delta)
+            t = self._tithi(self._madhyahna(dt))
+            t_prev = self._tithi(self._madhyahna(dt - timedelta(days=1)))
+
+            if t == 5:
+                return dt
+            if t == 6 and t_prev == 4:
+                return dt
+
+        return None
+
     def get_diwali(self, year: int) -> date | None:
         """
         Diwali = Kartik Amavasya.
@@ -705,6 +739,7 @@ _lunisolar = _Lunisolar()
 _solar = _Solar()
 
 HINDU_LUNISOLAR_HOLIDAYS = (
+    ("BASANT_PANCHAMI", _lunisolar.get_basant_panchami),
     ("DIWALI_INDIA", _lunisolar.get_diwali),
     ("DUSSEHRA", _lunisolar.get_dussehra),
     ("HOLI", _lunisolar.get_holi),
