@@ -13,18 +13,7 @@
 from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import (
-    JAN,
-    MAR,
-    MAY,
-    JUN,
-    JUL,
-    NOV,
-    DEC,
-    WED,
-    THU,
-    _timedelta,
-)
+from holidays.calendars.gregorian import JAN, MAR, MAY, JUN, JUL, NOV, DEC, WED, THU, _timedelta
 from holidays.constants import HALF_DAY
 from holidays.financial.ny_stock_exchange import NewYorkStockExchange
 from tests.common import CommonFinancialTests
@@ -575,10 +564,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(1968, JUN, 12), date(1968, DEC, 31), days={WED}
         )
         self.assertHoliday(
-            special_holidays,
-            wwi_holidays,
-            special_bank_holidays,
-            paperwork_crisis_holidays,
+            special_holidays, wwi_holidays, special_bank_holidays, paperwork_crisis_holidays
         )
 
     def test_day_before_independence_day(self):
