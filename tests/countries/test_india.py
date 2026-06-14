@@ -58,177 +58,6 @@ class TestIndia(CommonCountryTests, TestCase):
                 with self.assertWarns(UserWarning):
                     India(years=year)
 
-    def test_republic_day(self):
-        name = "Republic Day"
-        self.assertHolidayName(name, (f"{year}-01-26" for year in range(1950, self.end_year)))
-        self.assertNoHolidayName(name, range(self.start_year, 1950))
-
-    def test_good_friday(self):
-        name = "Good Friday"
-        self.assertHolidayName(
-            name,
-            "2020-04-10",
-            "2021-04-02",
-            "2022-04-15",
-            "2023-04-07",
-            "2024-03-29",
-            "2025-04-18",
-        )
-        self.assertHolidayName(name, self.full_range)
-
-    def test_easter_sunday(self):
-        name = "Easter Sunday"
-        self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(
-            name,
-            "2020-04-12",
-            "2021-04-04",
-            "2022-04-17",
-            "2023-04-09",
-            "2024-03-31",
-            "2025-04-20",
-        )
-        self.assertOptionalHolidayName(name, range(2008, self.end_year))
-        self.assertNoOptionalHolidayName(range(2001, 2009))
-
-    def test_new_year_day(self):
-        name = "New Year's Day"
-        self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(name, (f"{year}-01-01" for year in self.full_range))
-
-    def test_dr_b_r_ambedkars_jayanti(self):
-        name = "Dr. B. R. Ambedkar's Jayanti"
-        self.assertHolidayName(name, (f"{year}-04-14" for year in self.full_range))
-
-    def test_independence_day(self):
-        self.assertHolidayName("Independence Day", (f"{year}-08-15" for year in self.full_range))
-
-    def test_gandhi_jayanti(self):
-        self.assertHolidayName(
-            "Mahatma Gandhi's Jayanti", (f"{year}-10-02" for year in self.full_range)
-        )
-
-    def test_meshadi(self):
-        self.assertOptionalHolidayName(
-            "Meshadi (Tamil New Year's Day)",
-            (f"{year}-04-14" for year in self.full_range),
-        )
-
-    def test_vaisakhadi(self):
-        name_vaisakhadi = "Vaisakhadi"
-        name_bahag_bihu = "Bahag Bihu"
-        self.assertNoHolidayName(name_vaisakhadi)
-        self.assertNoHolidayName(name_bahag_bihu)
-        self.assertOptionalHolidayName(
-            name_vaisakhadi,
-            (f"{year}-04-14" for year in self.full_range if isleap(year)),
-            (f"{year}-04-15" for year in self.full_range if not isleap(year)),
-        )
-        self.assertOptionalHolidayName(
-            name_bahag_bihu,
-            (f"{year}-04-14" for year in self.full_range if isleap(year)),
-            (f"{year}-04-15" for year in self.full_range if not isleap(year)),
-        )
-
-    def test_rabindranath_jayanti(self):
-        name = "Guru Rabindranath's Jayanti"
-        self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(
-            name,
-            (f"{year}-05-08" for year in self.full_range if isleap(year)),
-            (f"{year}-05-09" for year in self.full_range if not isleap(year)),
-        )
-
-    def test_christmas_eve(self):
-        name = "Christmas Eve"
-        self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(
-            name, (f"{year}-12-24" for year in range(2003, self.end_year))
-        )
-
-    def test_christmas(self):
-        self.assertHolidayName("Christmas", (f"{year}-12-25" for year in self.full_range))
-
-    def test_ali_birthday(self):
-        name = "Hazarat Ali's Birthday"
-        self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(
-            name,
-            "2020-03-09",
-            "2021-02-26",
-            "2022-02-15",
-            "2023-02-05",
-            "2024-01-25",
-            "2025-01-14",
-        )
-        self.assertOptionalIslamicNoEstimatedHolidayName(name, self.full_range)
-
-    def test_ashura(self):
-        name = "Muharram"
-        self.assertHolidayName(
-            name,
-            "2020-08-30",
-            "2021-08-20",
-            "2022-08-09",
-            "2023-07-29",
-            "2024-07-17",
-            "2025-07-06",
-        )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
-
-    def test_eid_al_fitr(self):
-        name = "Id-ul-Fitr"
-        self.assertHolidayName(
-            name,
-            "2020-05-25",
-            "2021-05-14",
-            "2022-05-03",
-            "2023-04-22",
-            "2024-04-11",
-            "2025-03-31",
-        )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
-
-    def test_eid_al_adha(self):
-        name = "Id-ul-Zuha (Bakrid)"
-        self.assertHolidayName(
-            name,
-            "2020-08-01",
-            "2021-07-21",
-            "2022-07-10",
-            "2023-06-29",
-            "2024-06-17",
-            "2025-06-07",
-        )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
-
-    def test_jumuatul_wida(self):
-        name = "Jamat-Ul-Vida"
-        self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(
-            name,
-            "2020-05-22",
-            "2021-05-07",
-            "2022-04-29",
-            "2023-04-21",
-            "2024-04-05",
-            "2025-03-28",
-        )
-        self.assertOptionalIslamicNoEstimatedHolidayName(name, self.full_range)
-
-    def test_prophets_birthday(self):
-        name = "Milad-un-Nabi"
-        self.assertHolidayName(
-            name,
-            "2020-10-30",
-            "2021-10-19",
-            "2022-10-09",
-            "2023-09-28",
-            "2024-09-16",
-            "2025-09-05",
-        )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
-
     def _assertHinduHolidayHelper(  # noqa: N802
         self,
         name: str,
@@ -309,214 +138,26 @@ class TestIndia(CommonCountryTests, TestCase):
                 else:
                     self.assertNoHolidayName(name, holidays)
 
-    def test_basant_panchami(self):
-        name = "Basant Panchami / Sri Panchami"
-        dts = (
-            "2020-01-29",
-            "2021-02-16",
-            "2022-02-05",
-            "2023-01-26",
-            "2024-02-14",
-            "2025-02-02",
-        )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True, skip_years={2013})
-        self.assertOptionalHolidayName("Sri Panchami", "2013-02-14")
-        self.assertOptionalHolidayName("Basant Panchami", "2013-02-15")
+    # PUBLIC HOLIDAYS
 
-    def test_bhai_duj(self):
-        name = "Bhai Duj"
-        dts = (
-            "2020-11-16",
-            "2021-11-06",
-            "2022-10-26",
-            "2023-11-14",
-            "2024-11-03",
-            "2025-10-23",
-        )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+    def test_republic_day(self):
+        name = "Republic Day"
+        self.assertHolidayName(name, (f"{year}-01-26" for year in range(1950, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1950))
 
-    def test_chhatrapati_shivaji_maharaj_jayanti(self):
-        name = "Shivaji's Jayanti"
-        name_full = "Chhatrapati Shivaji Maharaj Jayanti"
-        self.assertNoHolidayName(name)
-        self.assertNoHolidayName(name_full)
-        self.assertOptionalHolidayName(name, (f"{year}-02-19" for year in self.full_range))
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "MH":
-                self.assertHolidayName(
-                    name_full, holidays, (f"{year}-02-19" for year in self.full_range)
-                )
-            else:
-                self.assertNoHolidayName(name_full, holidays)
+    def test_dr_b_r_ambedkars_jayanti(self):
+        name = "Dr. B. R. Ambedkar's Jayanti"
+        self.assertHolidayName(name, (f"{year}-04-14" for year in self.full_range))
 
-    def test_chhath_puja(self):
-        name = "Pratihar Shashthi or Surya Shashthi (Chhat Puja)"
-        name_subdiv = "Chhath Puja"
-        dts = (
-            "2020-11-20",
-            "2021-11-10",
-            "2022-10-30",
-            "2023-11-19",
-            "2024-11-07",
-            "2025-10-28",
-        )
-        self._assertHinduHolidayHelper(
-            name, dts, category_optional=True, hindu_range=range(2011, self.hindu_end_year + 1)
-        )
-        # SUBDIVS.
-        self._assertHinduHolidayHelper(name_subdiv, dts, subdivs={"BR", "DL", "JH", "UP"})
+    def test_independence_day(self):
+        self.assertHolidayName("Independence Day", (f"{year}-08-15" for year in self.full_range))
 
-    def test_diwali(self):
-        name = "Diwali (Deepavali)"
-        dts = (
-            "2020-11-14",
-            "2021-11-04",
-            "2022-10-24",
-            "2023-11-12",
-            "2024-10-31",
-            "2025-10-20",
-        )
-        self._assertHinduHolidayHelper(name, dts)
-
-    def test_deepavali_south_india(self):
-        name = "Deepavali (South India)"
-        dts = (
-            "2014-10-22",
-            "2015-11-10",
-            "2016-10-29",
-            "2017-10-18",
-            "2018-11-06",
-        )
-        self._assertHinduHolidayHelper(
-            name, dts, category_optional=True, hindu_range=range(self.hindu_start_year, 2019)
+    def test_gandhi_jayanti(self):
+        self.assertHolidayName(
+            "Mahatma Gandhi's Jayanti", (f"{year}-10-02" for year in self.full_range)
         )
 
-    def test_dussehra(self):
-        name = "Dussehra"
-        dts = (
-            "2020-10-25",
-            "2021-10-15",
-            "2022-10-05",
-            "2023-10-24",
-            "2024-10-12",
-            "2025-10-02",
-        )
-        self._assertHinduHolidayHelper(name, dts)
-
-    def test_dussehra_mahashtami(self):
-        name = "Dussehra (Mahashtami)"
-        dts = (
-            "2020-10-23",
-            "2021-10-13",
-            "2022-10-03",
-            "2023-10-22",
-            "2024-10-11",
-            "2025-09-30",
-        )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
-
-    def test_dussehra_mahanavami(self):
-        name = "Dussehra (Mahanavami)"
-        self._assertHinduHolidayHelper(
-            name, "2002-10-14", skip_years=set(self.hindu_full_range) - {2002}
-        )
-        # OPTIONAL.
-        dts = (
-            "2020-10-24",
-            "2021-10-14",
-            "2022-10-04",
-            "2023-10-23",
-            "2024-10-11",
-            "2025-10-01",
-        )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True, skip_years={2002})
-
-    def test_dussehra_saptami(self):
-        name = "Dussehra (Saptami)"
-        dts = (
-            "2020-10-22",
-            "2021-10-12",
-            "2022-10-02",
-            "2023-10-21",
-            "2024-10-10",
-            "2025-09-29",
-        )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
-
-    def test_janmashtami(self):
-        name_vaishnava = "Janmashtami (Vaishnava)"
-        name_smarta = "Janmashtami (Smarta)"
-        skip_years = {2008, 2017}
-        dts = (
-            "2020-08-12",
-            "2021-08-30",
-            "2022-08-19",
-            "2023-09-07",
-            "2024-08-26",
-            "2025-08-16",
-        )
-        self._assertHinduHolidayHelper(name_vaishnava, dts, skip_years=skip_years)
-        # OPTIONAL.
-        dts = (
-            "2008-08-24",
-            "2017-08-15",
-        )
-        self._assertHinduHolidayHelper(
-            name_vaishnava,
-            dts,
-            category_optional=True,
-            skip_years=set(self.hindu_full_range) - skip_years,
-        )
-        dts = (
-            "2008-08-28",
-            "2020-08-11",
-            "2021-08-30",
-            "2022-08-18",
-            "2023-09-06",
-            "2025-08-15",
-        )
-        self.assertNoHolidayName(name_smarta)
-        self.assertOptionalHolidayName(name_smarta, dts)
-
-    def test_karwa_chouth(self):
-        name = "Karaka Chaturthi (Karwa Chouth)"
-        dts = (
-            "2020-11-04",
-            "2021-10-24",
-            "2022-10-13",
-            "2023-11-01",
-            "2024-10-20",
-            "2025-10-10",
-        )
-        self._assertHinduHolidayHelper(
-            name, dts, category_optional=True, hindu_range=range(2012, self.hindu_end_year + 1)
-        )
-
-    def test_lohri(self):
-        name = "Lohri"
-        dts = (
-            "2020-01-14",
-            "2021-01-13",
-            "2022-01-13",
-            "2024-01-13",
-        )
-        self._assertHinduHolidayHelper(
-            name, dts, category_optional=True, hindu_range=(2020, 2021, 2022, 2024)
-        )
-        # SUBDIVS.
-        self._assertHinduHolidayHelper(name, dts, subdivs={"PB"})
-
-    def test_mahavir_jayanti(self):
-        name = "Mahavir Jayanti"
-        dts = (
-            "2020-04-06",
-            "2021-04-25",
-            "2022-04-14",
-            "2023-04-04",
-            "2024-04-21",
-            "2025-04-10",
-        )
-        self._assertHinduHolidayHelper(name, dts)
+    # Hindu Holidays
 
     def test_maha_shivaratri(self):
         name = "Maha Shivaratri"
@@ -554,116 +195,6 @@ class TestIndia(CommonCountryTests, TestCase):
             name, dts, category_optional=True, skip_years=set(self.hindu_full_range) - skip_years
         )
 
-    def test_ganesh_chaturthi(self):
-        name = "Ganesh Chaturthi / Vinayak Chaturthi"
-        dts = (
-            "2020-08-22",
-            "2021-09-10",
-            "2022-08-31",
-            "2024-09-07",
-            "2025-08-27",
-        )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True, skip_years={2012, 2023})
-        name = "Ganesh Chaturthi"
-        dts = (
-            "2012-09-19",
-            "2023-09-19",
-        )
-        self.assertOptionalHolidayName(name, dts)
-        name = "Vinayak Chaturthi"
-        dts = (
-            "2012-08-21",
-            "2023-08-20",
-        )
-        self.assertOptionalHolidayName(name, dts)
-
-    def test_govardhan_puja(self):
-        name = "Govardhan Puja"
-        dts = (
-            "2020-11-15",
-            "2021-11-05",
-            "2022-10-25",
-            "2023-11-13",
-            "2024-11-02",
-            "2025-10-22",
-        )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
-
-    def test_gudi_padwa(self):
-        name_chaitra_sukladi = "Chaitra Sukladi"
-        name_cheti_chand = "Cheti Chand"
-        name_gudi_padwa = "Gudi Padwa"
-        name_ugadi = "Ugadi"
-        dts = (
-            "2020-03-25",
-            "2021-04-13",
-            "2022-04-02",
-            "2023-03-22",
-            "2024-04-09",
-            "2025-03-30",
-        )
-        self._assertHinduHolidayHelper(name_chaitra_sukladi, dts, category_optional=True)
-        self._assertHinduHolidayHelper(name_cheti_chand, dts, category_optional=True)
-        self._assertHinduHolidayHelper(name_gudi_padwa, dts, category_optional=True)
-        self._assertHinduHolidayHelper(name_ugadi, dts, category_optional=True)
-        # SUBDIVS.
-        self._assertHinduHolidayHelper(name_gudi_padwa, dts, subdivs={"MH"})
-        self._assertHinduHolidayHelper(name_ugadi, dts, subdivs={"AP", "KA", "TS"})
-
-    def test_guru_gobind_singh_birthday(self):
-        name = "Guru Gobind Singh's Jayanti"
-        name_subdiv = "Guru Gobind Singh Jayanti"
-        skip_years = {2018, 2023, 2026, 2031}
-        fixed_years = range(2005, 2011)
-        dts = (
-            "2020-01-02",
-            "2021-01-20",
-            "2022-01-09",
-            "2022-12-29",
-            "2024-01-17",
-            "2025-01-06",
-            "2025-12-27",
-        )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True, skip_years=skip_years)
-        self.assertOptionalHolidayName(name, (f"{year}-01-05" for year in fixed_years))
-        # SUBDIVS.
-        self._assertHinduHolidayHelper(name_subdiv, dts, subdivs={"PB"})
-
-    def test_guru_nanak_jayanti(self):
-        name = "Guru Nanak's Jayanti"
-        dts = (
-            "2020-11-30",
-            "2021-11-19",
-            "2022-11-08",
-            "2023-11-27",
-            "2024-11-15",
-            "2025-11-05",
-        )
-        self._assertHinduHolidayHelper(name, dts)
-
-    def test_guru_ravidas_birthday(self):
-        name = "Guru Ravi Das's Jayanti"
-        dts = (
-            "2020-02-09",
-            "2021-02-27",
-            "2022-02-16",
-            "2023-02-05",
-            "2024-02-24",
-            "2025-02-12",
-        )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
-
-    def test_guru_tegh_bahadurs_martyrdom_day(self):
-        name = "Guru Tegh Bahadur's Martyrdom Day"
-        dts = (
-            "2002-12-08",
-            "2003-11-28",
-        )
-        self.assertOptionalHolidayName(name, dts)
-        self.assertOptionalHolidayName(
-            name, (f"{year}-11-24" for year in range(2004, self.end_year))
-        )
-
     def test_holi(self):
         name = "Holi"
         skip_years = {2002, 2011}
@@ -685,33 +216,236 @@ class TestIndia(CommonCountryTests, TestCase):
             name, dts, category_optional=True, skip_years=set(self.hindu_full_range) - skip_years
         )
 
-    def test_holika_dahan(self):
-        name_holika_dahan = "Holika Dahan"
-        name_dolyatra = "Dolyatra"
+    def test_ram_navami(self):
+        name = "Ram Navami"
+        skip_years = {2002, 2012, 2018, 2022, 2025, 2029}
         dts = (
-            "2020-03-09",
-            "2021-03-28",
-            "2022-03-17",
-            "2023-03-07",
-            "2024-03-24",
-            "2025-03-13",
+            "2020-04-02",
+            "2021-04-21",
+            "2023-03-30",
+            "2024-04-17",
         )
-        self._assertHinduHolidayHelper(name_holika_dahan, dts, category_optional=True)
+        self._assertHinduHolidayHelper(name, dts, skip_years=skip_years)
+        # OPTIONAL.
+        dts = (
+            "2002-04-21",
+            "2012-04-01",
+            "2018-03-25",
+            "2022-04-10",
+            "2025-04-06",
+        )
         self._assertHinduHolidayHelper(
-            name_dolyatra, dts, category_optional=True, skip_years=range(2012, 2016)
+            name, dts, category_optional=True, skip_years=set(self.hindu_full_range) - skip_years
         )
 
-    def test_maharishi_valmiki_jayanti(self):
-        name = "Maharishi Valmiki's Jayanti"
+    def test_mahavir_jayanti(self):
+        name = "Mahavir Jayanti"
         dts = (
-            "2020-10-31",
-            "2021-10-20",
-            "2022-10-09",
-            "2023-10-28",
-            "2024-10-17",
-            "2025-10-07",
+            "2020-04-06",
+            "2021-04-25",
+            "2022-04-14",
+            "2023-04-04",
+            "2024-04-21",
+            "2025-04-10",
         )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+        self._assertHinduHolidayHelper(name, dts)
+
+    def test_buddha_purnima(self):
+        name = "Buddha Purnima"
+        dts = (
+            "2020-05-07",
+            "2021-05-26",
+            "2022-05-16",
+            "2023-05-05",
+            "2024-05-23",
+            "2025-05-12",
+        )
+        self._assertHinduHolidayHelper(name, dts)
+
+    def test_janmashtami(self):
+        name_vaishnava = "Janmashtami (Vaishnava)"
+        name_smarta = "Janmashtami (Smarta)"
+        skip_years = {2008, 2017}
+        dts = (
+            "2020-08-12",
+            "2021-08-30",
+            "2022-08-19",
+            "2023-09-07",
+            "2024-08-26",
+            "2025-08-16",
+        )
+        self._assertHinduHolidayHelper(name_vaishnava, dts, skip_years=skip_years)
+        # OPTIONAL.
+        dts = (
+            "2008-08-24",
+            "2017-08-15",
+        )
+        self._assertHinduHolidayHelper(
+            name_vaishnava,
+            dts,
+            category_optional=True,
+            skip_years=set(self.hindu_full_range) - skip_years,
+        )
+        dts = (
+            "2008-08-28",
+            "2020-08-11",
+            "2021-08-30",
+            "2022-08-18",
+            "2023-09-06",
+            "2025-08-15",
+        )
+        self.assertNoHolidayName(name_smarta)
+        self.assertOptionalHolidayName(name_smarta, dts)
+
+    def test_dussehra(self):
+        name = "Dussehra"
+        dts = (
+            "2020-10-25",
+            "2021-10-15",
+            "2022-10-05",
+            "2023-10-24",
+            "2024-10-12",
+            "2025-10-02",
+        )
+        self._assertHinduHolidayHelper(name, dts)
+
+    def test_diwali(self):
+        name = "Diwali (Deepavali)"
+        dts = (
+            "2020-11-14",
+            "2021-11-04",
+            "2022-10-24",
+            "2023-11-12",
+            "2024-10-31",
+            "2025-10-20",
+        )
+        self._assertHinduHolidayHelper(name, dts)
+
+    def test_guru_nanak_jayanti(self):
+        name = "Guru Nanak's Jayanti"
+        dts = (
+            "2020-11-30",
+            "2021-11-19",
+            "2022-11-08",
+            "2023-11-27",
+            "2024-11-15",
+            "2025-11-05",
+        )
+        self._assertHinduHolidayHelper(name, dts)
+
+    # Islamic Holidays
+
+    def test_ashura(self):
+        name = "Muharram"
+        self.assertHolidayName(
+            name,
+            "2020-08-30",
+            "2021-08-20",
+            "2022-08-09",
+            "2023-07-29",
+            "2024-07-17",
+            "2025-07-06",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_prophets_birthday(self):
+        name = "Milad-un-Nabi"
+        self.assertHolidayName(
+            name,
+            "2020-10-30",
+            "2021-10-19",
+            "2022-10-09",
+            "2023-09-28",
+            "2024-09-16",
+            "2025-09-05",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_eid_al_fitr(self):
+        name = "Id-ul-Fitr"
+        self.assertHolidayName(
+            name,
+            "2020-05-25",
+            "2021-05-14",
+            "2022-05-03",
+            "2023-04-22",
+            "2024-04-11",
+            "2025-03-31",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_eid_al_adha(self):
+        name = "Id-ul-Zuha (Bakrid)"
+        self.assertHolidayName(
+            name,
+            "2020-08-01",
+            "2021-07-21",
+            "2022-07-10",
+            "2023-06-29",
+            "2024-06-17",
+            "2025-06-07",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    # Christian holidays
+
+    def test_good_friday(self):
+        name = "Good Friday"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_christmas(self):
+        self.assertHolidayName("Christmas", (f"{year}-12-25" for year in self.full_range))
+
+    # OPTIONAL HOLIDAYS
+
+    def test_new_year_day(self):
+        name = "New Year's Day"
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+
+    # Hindu holidays
+
+    def test_guru_gobind_singh_birthday(self):
+        name = "Guru Gobind Singh's Jayanti"
+        name_subdiv = "Guru Gobind Singh Jayanti"
+        skip_years = {2018, 2023, 2026, 2031}
+        fixed_years = range(2005, 2011)
+        dts = (
+            "2020-01-02",
+            "2021-01-20",
+            "2022-01-09",
+            "2022-12-29",
+            "2024-01-17",
+            "2025-01-06",
+            "2025-12-27",
+        )
+        self._assertHinduHolidayHelper(name, dts, category_optional=True, skip_years=skip_years)
+        self.assertOptionalHolidayName(name, (f"{year}-01-05" for year in fixed_years))
+        # SUBDIVS.
+        self._assertHinduHolidayHelper(name_subdiv, dts, subdivs={"PB"})
+
+    def test_lohri(self):
+        name = "Lohri"
+        dts = (
+            "2020-01-14",
+            "2021-01-13",
+            "2022-01-13",
+            "2024-01-13",
+        )
+        self._assertHinduHolidayHelper(
+            name, dts, category_optional=True, hindu_range=(2020, 2021, 2022, 2024)
+        )
+        # SUBDIVS.
+        self._assertHinduHolidayHelper(name, dts, subdivs={"PB"})
 
     def test_makar_sankranti(self):
         name = "Makar Sankranti"
@@ -730,55 +464,6 @@ class TestIndia(CommonCountryTests, TestCase):
         # SUBDIVS.
         self._assertHinduHolidayHelper(name_as, dts, subdivs={"AS"})
         self._assertHinduHolidayHelper(name_gj, dts, subdivs={"GJ"})
-
-    def test_naraka_chaturdashi(self):
-        name = "Naraka Chaturdashi"
-        dts = (
-            "2020-11-14",
-            "2021-11-04",
-            "2022-10-24",
-            "2023-11-12",
-            "2024-10-31",
-            "2025-10-20",
-        )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
-
-    def test_onam(self):
-        name = "Onam"
-        dts = (
-            "2020-08-31",
-            "2021-08-21",
-            "2022-09-08",
-            "2023-08-29",
-            "2024-09-15",
-            "2025-09-05",
-        )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
-        # SUBDIVS.
-        self._assertHinduHolidayHelper(name, dts, subdivs={"AN", "KL"})
-
-    def test_parsi_new_year_shahenshahi(self):
-        name = "Parsi New Year"
-        name_subdiv = "Parsi New Year (Shahenshahi)"
-        self.assertNoHolidayName(name)
-        dts = (
-            "1972-08-28",
-            "2019-08-17",
-            "2020-08-16",
-            "2021-08-16",
-            "2022-08-16",
-            "2023-08-16",
-            "2024-08-15",
-            "2025-08-15",
-        )
-        self.assertOptionalHolidayName(name, dts)
-        # SUBDIVS.
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv in {"GJ", "MH"}:
-                self.assertHolidayName(name_subdiv, holidays, dts)
-                self.assertHolidayName(name_subdiv, holidays, self.full_range)
-            else:
-                self.assertNoHolidayName(name_subdiv, holidays)
 
     def test_pongal(self):
         name_pongal = "Pongal"
@@ -808,51 +493,45 @@ class TestIndia(CommonCountryTests, TestCase):
             hindu_range=range(2021, self.hindu_end_year + 1),
         )
 
-    def test_raksha_bandhan(self):
-        name = "Raksha Bandhan"
+    def test_basant_panchami(self):
+        name = "Basant Panchami / Sri Panchami"
         dts = (
-            "2020-08-03",
-            "2021-08-22",
-            "2022-08-11",
-            "2023-08-30",
-            "2024-08-19",
-            "2025-08-09",
+            "2020-01-29",
+            "2021-02-16",
+            "2022-02-05",
+            "2023-01-26",
+            "2024-02-14",
+            "2025-02-02",
+        )
+        self._assertHinduHolidayHelper(name, dts, category_optional=True, skip_years={2013})
+        self.assertOptionalHolidayName("Sri Panchami", "2013-02-14")
+        self.assertOptionalHolidayName("Basant Panchami", "2013-02-15")
+
+    def test_guru_ravidas_birthday(self):
+        name = "Guru Ravi Das's Jayanti"
+        dts = (
+            "2020-02-09",
+            "2021-02-27",
+            "2022-02-16",
+            "2023-02-05",
+            "2024-02-24",
+            "2025-02-12",
         )
         self._assertHinduHolidayHelper(name, dts, category_optional=True)
 
-    def test_ram_navami(self):
-        name = "Ram Navami"
-        skip_years = {2002, 2012, 2018, 2022, 2025, 2029}
-        dts = (
-            "2020-04-02",
-            "2021-04-21",
-            "2023-03-30",
-            "2024-04-17",
-        )
-        self._assertHinduHolidayHelper(name, dts, skip_years=skip_years)
-        # OPTIONAL.
-        dts = (
-            "2002-04-21",
-            "2012-04-01",
-            "2018-03-25",
-            "2022-04-10",
-            "2025-04-06",
-        )
-        self._assertHinduHolidayHelper(
-            name, dts, category_optional=True, skip_years=set(self.hindu_full_range) - skip_years
-        )
-
-    def test_rath_yatra(self):
-        name = "Rath Yatra"
-        dts = (
-            "2020-06-23",
-            "2021-07-12",
-            "2022-07-01",
-            "2023-06-20",
-            "2024-07-07",
-            "2025-06-27",
-        )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+    def test_chhatrapati_shivaji_maharaj_jayanti(self):
+        name = "Shivaji's Jayanti"
+        name_full = "Chhatrapati Shivaji Maharaj Jayanti"
+        self.assertNoHolidayName(name)
+        self.assertNoHolidayName(name_full)
+        self.assertOptionalHolidayName(name, (f"{year}-02-19" for year in self.full_range))
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "MH":
+                self.assertHolidayName(
+                    name_full, holidays, (f"{year}-02-19" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name_full, holidays)
 
     def test_swami_dayanand_saraswati_jayanti(self):
         name = "Swami Dayanand Saraswati's Jayanti"
@@ -865,6 +544,65 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-02-23",
         )
         self._assertHinduHolidayHelper(name, dts, category_optional=True)
+
+    def test_holika_dahan(self):
+        name_holika_dahan = "Holika Dahan"
+        name_dolyatra = "Dolyatra"
+        dts = (
+            "2020-03-09",
+            "2021-03-28",
+            "2022-03-17",
+            "2023-03-07",
+            "2024-03-24",
+            "2025-03-13",
+        )
+        self._assertHinduHolidayHelper(name_holika_dahan, dts, category_optional=True)
+        self._assertHinduHolidayHelper(
+            name_dolyatra, dts, category_optional=True, skip_years=range(2012, 2016)
+        )
+
+    def test_gudi_padwa(self):
+        name_chaitra_sukladi = "Chaitra Sukladi"
+        name_cheti_chand = "Cheti Chand"
+        name_gudi_padwa = "Gudi Padwa"
+        name_ugadi = "Ugadi"
+        dts = (
+            "2020-03-25",
+            "2021-04-13",
+            "2022-04-02",
+            "2023-03-22",
+            "2024-04-09",
+            "2025-03-30",
+        )
+        self._assertHinduHolidayHelper(name_chaitra_sukladi, dts, category_optional=True)
+        self._assertHinduHolidayHelper(name_cheti_chand, dts, category_optional=True)
+        self._assertHinduHolidayHelper(name_gudi_padwa, dts, category_optional=True)
+        self._assertHinduHolidayHelper(name_ugadi, dts, category_optional=True)
+        # SUBDIVS.
+        self._assertHinduHolidayHelper(name_gudi_padwa, dts, subdivs={"MH"})
+        self._assertHinduHolidayHelper(name_ugadi, dts, subdivs={"AP", "KA", "TS"})
+
+    def test_meshadi(self):
+        self.assertOptionalHolidayName(
+            "Meshadi (Tamil New Year's Day)",
+            (f"{year}-04-14" for year in self.full_range),
+        )
+
+    def test_vaisakhadi(self):
+        name_vaisakhadi = "Vaisakhadi"
+        name_bahag_bihu = "Bahag Bihu"
+        self.assertNoHolidayName(name_vaisakhadi)
+        self.assertNoHolidayName(name_bahag_bihu)
+        self.assertOptionalHolidayName(
+            name_vaisakhadi,
+            (f"{year}-04-14" for year in self.full_range if isleap(year)),
+            (f"{year}-04-15" for year in self.full_range if not isleap(year)),
+        )
+        self.assertOptionalHolidayName(
+            name_bahag_bihu,
+            (f"{year}-04-14" for year in self.full_range if isleap(year)),
+            (f"{year}-04-15" for year in self.full_range if not isleap(year)),
+        )
 
     def test_vaisakhi(self):
         name = "Vaisakhi"
@@ -891,6 +629,308 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-04-14",
         )
         self._assertHinduHolidayHelper(name, dts, category_optional=True)
+
+    def test_rabindranath_jayanti(self):
+        name = "Guru Rabindranath's Jayanti"
+        name_wb = "Rabindra Jayanti"
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(
+            name,
+            (f"{year}-05-08" for year in self.full_range if isleap(year)),
+            (f"{year}-05-09" for year in self.full_range if not isleap(year)),
+        )
+        # SUBDIVS.
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "WB":
+                self.assertHolidayName(
+                    name_wb, holidays, (f"{year}-05-09" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name_wb, holidays)
+
+    def test_rath_yatra(self):
+        name = "Rath Yatra"
+        dts = (
+            "2020-06-23",
+            "2021-07-12",
+            "2022-07-01",
+            "2023-06-20",
+            "2024-07-07",
+            "2025-06-27",
+        )
+        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+
+    def test_raksha_bandhan(self):
+        name = "Raksha Bandhan"
+        dts = (
+            "2020-08-03",
+            "2021-08-22",
+            "2022-08-11",
+            "2023-08-30",
+            "2024-08-19",
+            "2025-08-09",
+        )
+        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+
+    def test_parsi_new_year_shahenshahi(self):
+        name = "Parsi New Year"
+        name_subdiv = "Parsi New Year (Shahenshahi)"
+        self.assertNoHolidayName(name)
+        dts = (
+            "1972-08-28",
+            "2019-08-17",
+            "2020-08-16",
+            "2021-08-16",
+            "2022-08-16",
+            "2023-08-16",
+            "2024-08-15",
+            "2025-08-15",
+        )
+        self.assertOptionalHolidayName(name, dts)
+        # SUBDIVS.
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv in {"GJ", "MH"}:
+                self.assertHolidayName(name_subdiv, holidays, dts)
+                self.assertHolidayName(name_subdiv, holidays, self.full_range)
+            else:
+                self.assertNoHolidayName(name_subdiv, holidays)
+
+    def test_onam(self):
+        name = "Onam"
+        dts = (
+            "2020-08-31",
+            "2021-08-21",
+            "2022-09-08",
+            "2023-08-29",
+            "2024-09-15",
+            "2025-09-05",
+        )
+        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+        # SUBDIVS.
+        self._assertHinduHolidayHelper(name, dts, subdivs={"AN", "KL"})
+
+    def test_ganesh_chaturthi(self):
+        name = "Ganesh Chaturthi / Vinayak Chaturthi"
+        dts = (
+            "2020-08-22",
+            "2021-09-10",
+            "2022-08-31",
+            "2024-09-07",
+            "2025-08-27",
+        )
+        self._assertHinduHolidayHelper(name, dts, category_optional=True, skip_years={2012, 2023})
+        name = "Ganesh Chaturthi"
+        dts = (
+            "2012-09-19",
+            "2023-09-19",
+        )
+        self.assertOptionalHolidayName(name, dts)
+        name = "Vinayak Chaturthi"
+        dts = (
+            "2012-08-21",
+            "2023-08-20",
+        )
+        self.assertOptionalHolidayName(name, dts)
+
+    def test_dussehra_saptami(self):
+        name = "Dussehra (Saptami)"
+        dts = (
+            "2020-10-22",
+            "2021-10-12",
+            "2022-10-02",
+            "2023-10-21",
+            "2024-10-10",
+            "2025-09-29",
+        )
+        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+
+    def test_dussehra_mahashtami(self):
+        name = "Dussehra (Mahashtami)"
+        dts = (
+            "2020-10-23",
+            "2021-10-13",
+            "2022-10-03",
+            "2023-10-22",
+            "2024-10-11",
+            "2025-09-30",
+        )
+        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+
+    def test_dussehra_mahanavami(self):
+        name = "Dussehra (Mahanavami)"
+        self._assertHinduHolidayHelper(
+            name, "2002-10-14", skip_years=set(self.hindu_full_range) - {2002}
+        )
+        # OPTIONAL.
+        dts = (
+            "2020-10-24",
+            "2021-10-14",
+            "2022-10-04",
+            "2023-10-23",
+            "2024-10-11",
+            "2025-10-01",
+        )
+        self._assertHinduHolidayHelper(name, dts, category_optional=True, skip_years={2002})
+
+    def test_maharishi_valmiki_jayanti(self):
+        name = "Maharishi Valmiki's Jayanti"
+        dts = (
+            "2020-10-31",
+            "2021-10-20",
+            "2022-10-09",
+            "2023-10-28",
+            "2024-10-17",
+            "2025-10-07",
+        )
+        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+
+    def test_karwa_chouth(self):
+        name = "Karaka Chaturthi (Karwa Chouth)"
+        dts = (
+            "2020-11-04",
+            "2021-10-24",
+            "2022-10-13",
+            "2023-11-01",
+            "2024-10-20",
+            "2025-10-10",
+        )
+        self._assertHinduHolidayHelper(
+            name, dts, category_optional=True, hindu_range=range(2012, self.hindu_end_year + 1)
+        )
+
+    def test_deepavali_south_india(self):
+        name = "Deepavali (South India)"
+        dts = (
+            "2014-10-22",
+            "2015-11-10",
+            "2016-10-29",
+            "2017-10-18",
+            "2018-11-06",
+        )
+        self._assertHinduHolidayHelper(
+            name, dts, category_optional=True, hindu_range=range(self.hindu_start_year, 2019)
+        )
+
+    def test_naraka_chaturdashi(self):
+        name = "Naraka Chaturdashi"
+        dts = (
+            "2020-11-14",
+            "2021-11-04",
+            "2022-10-24",
+            "2023-11-12",
+            "2024-10-31",
+            "2025-10-20",
+        )
+        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+
+    def test_govardhan_puja(self):
+        name = "Govardhan Puja"
+        dts = (
+            "2020-11-15",
+            "2021-11-05",
+            "2022-10-25",
+            "2023-11-13",
+            "2024-11-02",
+            "2025-10-22",
+        )
+        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+
+    def test_bhai_duj(self):
+        name = "Bhai Duj"
+        dts = (
+            "2020-11-16",
+            "2021-11-06",
+            "2022-10-26",
+            "2023-11-14",
+            "2024-11-03",
+            "2025-10-23",
+        )
+        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+
+    def test_chhath_puja(self):
+        name = "Pratihar Shashthi or Surya Shashthi (Chhat Puja)"
+        name_subdiv = "Chhath Puja"
+        dts = (
+            "2020-11-20",
+            "2021-11-10",
+            "2022-10-30",
+            "2023-11-19",
+            "2024-11-07",
+            "2025-10-28",
+        )
+        self._assertHinduHolidayHelper(
+            name, dts, category_optional=True, hindu_range=range(2011, self.hindu_end_year + 1)
+        )
+        # SUBDIVS.
+        self._assertHinduHolidayHelper(name_subdiv, dts, subdivs={"BR", "DL", "JH", "UP"})
+
+    def test_guru_tegh_bahadurs_martyrdom_day(self):
+        name = "Guru Tegh Bahadur's Martyrdom Day"
+        dts = (
+            "2002-12-08",
+            "2003-11-28",
+        )
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(name, dts)
+        self.assertOptionalHolidayName(
+            name, (f"{year}-11-24" for year in range(2004, self.end_year))
+        )
+
+    # Islamic holidays
+
+    def test_ali_birthday(self):
+        name = "Hazarat Ali's Birthday"
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(
+            name,
+            "2020-03-09",
+            "2021-02-26",
+            "2022-02-15",
+            "2023-02-05",
+            "2024-01-25",
+            "2025-01-14",
+        )
+        self.assertOptionalIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_jumuatul_wida(self):
+        name = "Jamat-Ul-Vida"
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(
+            name,
+            "2020-05-22",
+            "2021-05-07",
+            "2022-04-29",
+            "2023-04-21",
+            "2024-04-05",
+            "2025-03-28",
+        )
+        self.assertOptionalIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    # Christian holidays
+
+    def test_christmas_eve(self):
+        name = "Christmas Eve"
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(
+            name, (f"{year}-12-24" for year in range(2003, self.end_year))
+        )
+
+    def test_easter_sunday(self):
+        name = "Easter Sunday"
+        self.assertNoHolidayName(name)
+        self.assertOptionalHolidayName(
+            name,
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
+            "2024-03-31",
+            "2025-04-20",
+        )
+        self.assertOptionalHolidayName(name, range(2008, self.end_year))
+        self.assertNoOptionalHolidayName(range(2001, 2009))
+
+    # SUBDIV HOLIDAYS
 
     def test_bathukamma_festival(self):
         name = "Bathukamma Festival"
@@ -1281,17 +1321,6 @@ class TestIndia(CommonCountryTests, TestCase):
             if subdiv == "WB":
                 self.assertHolidayName(
                     name, holidays, (f"{year}-04-15" for year in self.full_range)
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
-
-    def test_rabindra_jayanti(self):
-        name = "Rabindra Jayanti"
-        self.assertNoHolidayName(name)
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "WB":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-05-09" for year in self.full_range)
                 )
             else:
                 self.assertNoHolidayName(name, holidays)

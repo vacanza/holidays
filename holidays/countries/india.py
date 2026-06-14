@@ -438,7 +438,7 @@ class India(
             # Guru Tegh Bahadur's Martyrdom Day.
             self._add_holiday_nov_24(tr("Guru Tegh Bahadur's Martyrdom Day"))
 
-        #    holidays.
+        # Islamic holidays.
 
         # Ali's Birthday.
         self._add_ali_birthday_day(tr("Hazarat Ali's Birthday"))
