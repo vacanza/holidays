@@ -376,6 +376,42 @@ class _Lunisolar(_Astronomy):
 
         return last_pratipada
 
+    def get_gudi_padwa(self, year: int) -> date | None:
+        """
+        Gudi Padwa = Chaitra Shukla Pratipada.
+        Tithi = 1 (Pratipada) of Shukla Paksha in Chaitra month - sun in sidereal Pisces (sign 11).
+        Evaluated at sunrise (Udaya tithi rule) - first occurrence.
+
+        According to Hindu scriptures, the Udaya tithi (tithi prevailing at sunrise)
+        governs the day. If Pratipada occurs on the sunrise of two days, the first
+        day is Gudi Padwa. It marks the Marathi New Year and the start of Chaitra.
+
+        Two sunrise cases for Pratipada detection:
+        1: Pratipada active at sunrise (tithi 1) - current day is Gudi Padwa
+        2: Pratipada skipped entirely between sunrises (30->2) - meaning Pratipada
+            started after previous sunrise and ended before current sunrise,
+            so the previous day is Gudi Padwa
+        """
+        start = date(year, 3, 10)
+        for delta in range(50):
+            dt = start + timedelta(days=delta)
+            ss = self._sunset(dt)
+            if self._sidereal_solar_zodiac_sign(ss) != 11:
+                continue
+            t_sr = self._tithi(self._sunrise(dt))
+            t_sr_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            # Pratipada active at sunrise (Udaya tithi) - first occurrence is Gudi Padwa
+            if t_sr == 1:
+                return dt
+
+            # Pratipada skipped entirely between sunrises (30->2)
+            # Pratipada occurred during previous day → previous day is Gudi Padwa
+            if t_sr == 2 and t_sr_prev == 30:
+                return dt - timedelta(days=1)
+
+        return None
+
     def get_guru_nanak_jayanti(self, year: int) -> date | None:
         """
         Guru Nanak Jayanti = Kartik Purnima.
@@ -754,7 +790,9 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
 )
 
-HINDU_SOLAR_HOLIDAYS = (("MAKAR_SANKRANTI", _solar.get_makar_sankranti),)
+HINDU_SOLAR_HOLIDAYS = (
+    # ("MAKAR_SANKRANTI", _solar.get_makar_sankranti),
+)
 
 
 def generate_data() -> None:
