@@ -225,7 +225,7 @@ class IntermediateJsonBuilder:
                 output, IntermediateJsonBuilder._output_path
             )
 
-        IntermediateJsonBuilder._output_path.write_text(
+        IntermediateJsonBuilder._output_path.resolve().write_text(
             json.dumps(output, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
             newline="\n",
@@ -287,7 +287,7 @@ class IntermediateJsonBuilder:
         data.append(new_entry)
         data.sort(key=lambda x: x["id"])
 
-        IntermediateJsonBuilder._output_path.write_text(
+        IntermediateJsonBuilder._output_path.resolve().write_text(
             json.dumps(data, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
             newline="\n",
