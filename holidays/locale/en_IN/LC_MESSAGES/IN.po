@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.98\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-06-13 19:09+0530\n"
+"PO-Revision-Date: 2026-06-14 11:24+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
@@ -433,22 +433,22 @@ msgstr ""
 msgid "Rabindra Jayanti"
 msgstr ""
 
-#. Basant Panchami
+#. Basant Panchami.
 msgid "Basant Panchami"
-msgstr ""
-
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
 msgstr ""
 
 #. Sri Panchami.
 msgid "Sri Panchami"
 msgstr ""
 
-#. Janmashtami (Smarta).
-msgid "Janmashtami (Smarta)"
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
 msgstr ""
 
 #. Vinayak Chaturthi.
 msgid "Vinayak Chaturthi"
+msgstr ""
+
+#. Janmashtami (Smarta).
+msgid "Janmashtami (Smarta)"
 msgstr ""

@@ -809,14 +809,18 @@ class TestIndia(CommonCountryTests, TestCase):
         # SUBDIVS.
         self._assertHinduHolidayHelper(name_pongal, dts, subdivs={"TN"})
         dts = (
-            "2020-01-15",
             "2021-01-14",
             "2022-01-14",
             "2023-01-14",
             "2024-01-15",
             "2025-01-14",
         )
-        self._assertHinduHolidayHelper(name_magh_bihu, dts, category_optional=True)
+        self._assertHinduHolidayHelper(
+            name_magh_bihu,
+            dts,
+            category_optional=True,
+            hindu_range=range(2021, self.hindu_end_year + 1),
+        )
 
     def test_raksha_bandhan(self):
         name = "Raksha Bandhan"

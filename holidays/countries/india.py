@@ -311,7 +311,7 @@ class India(
         # Makar Sankranti.
         self._add_makar_sankranti(tr("Makar Sankranti"))
 
-        if self._year != 2023:
+        if self._year >= 2021 and self._year != 2023:
             # Magh Bihu.
             self._add_pongal(tr("Magh Bihu"))
 
@@ -396,7 +396,7 @@ class India(
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
-        if self._year != 2012 and self._year != 2023:
+        if self._year not in {2012, 2023}:
             # Ganesh Chaturthi / Vinayak Chaturthi.
             self._add_ganesh_chaturthi(tr("Ganesh Chaturthi / Vinayak Chaturthi"))
 
@@ -741,11 +741,17 @@ class IndiaStaticHolidays:
         2002: (OCT, 14, tr("Dussehra (Mahanavami)")),
     }
 
-    # Basant Panchami
+    # Basant Panchami.
     name_basant_panchami = tr("Basant Panchami")
+
+    # Sri Panchami.
+    name_sri_panchami = tr("Sri Panchami")
 
     # Ganesh Chaturthi.
     name_ganesh_chaturthi = tr("Ganesh Chaturthi")
+
+    # Vinayak Chaturthi.
+    name_vinayak_chaturthi = tr("Vinayak Chaturthi")
 
     # Guru Tegh Bahadur's Martyrdom Day.
     name_guru_tegh_bahadur_martyrdom_day = tr("Guru Tegh Bahadur's Martyrdom Day")
@@ -753,21 +759,21 @@ class IndiaStaticHolidays:
     # Magh Bihu.
     name_magh_bihu = tr("Magh Bihu")
 
-    # Sri Panchami.
-    name_sri_panchami = tr("Sri Panchami")
-
     # Janmashtami (Smarta).
     name_janmashtami_smarta = tr("Janmashtami (Smarta)")
-
-    # Vinayak Chaturthi.
-    name_vinayak_chaturthi = tr("Vinayak Chaturthi")
 
     special_optional_holidays = {
         2002: (DEC, 8, name_guru_tegh_bahadur_martyrdom_day),
         2003: (NOV, 28, name_guru_tegh_bahadur_martyrdom_day),
         2008: (AUG, 28, name_janmashtami_smarta),
-        2012: ((AUG, 21, name_vinayak_chaturthi), (SEP, 19, name_ganesh_chaturthi)),
-        2013: ((FEB, 14, name_sri_panchami), (FEB, 15, name_basant_panchami)),
+        2012: (
+            (AUG, 21, name_vinayak_chaturthi),
+            (SEP, 19, name_ganesh_chaturthi),
+        ),
+        2013: (
+            (FEB, 14, name_sri_panchami),
+            (FEB, 15, name_basant_panchami),
+        ),
         2020: (AUG, 11, name_janmashtami_smarta),
         2021: (AUG, 30, name_janmashtami_smarta),
         2022: (AUG, 18, name_janmashtami_smarta),
