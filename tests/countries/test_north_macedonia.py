@@ -12,15 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import (
-    ALBANIAN,
-    BOSNIAN,
-    ISLAMIC,
-    ROMA,
-    SERBIAN,
-    TURKISH,
-    VLACH,
-)
+from holidays.constants import ALBANIAN, BOSNIAN, ISLAMIC, ROMA, SERBIAN, TURKISH, VLACH
 from holidays.countries.north_macedonia import NorthMacedonia
 from tests.common import CommonCountryTests
 

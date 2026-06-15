@@ -161,18 +161,24 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_common(self):
         """Populate holidays that are both optional and bank holidays."""
 
-        # Twelfth Night.
-        self._add_holiday_jan_5(self.tr(self.begin_time_label) % self.tr("Trettondagsafton"))
+        self._add_holiday_jan_5(
+            # Twelfth Night.
+            self._format_holiday_name(self.begin_time_label, tr("Trettondagsafton"))
+        )
 
-        # Maundy Thursday.
-        self._add_holy_thursday(self.tr(self.begin_time_label) % self.tr("Skärtorsdagen"))
+        self._add_holy_thursday(
+            # Maundy Thursday.
+            self._format_holiday_name(self.begin_time_label, tr("Skärtorsdagen"))
+        )
 
-        # Walpurgis Night.
-        self._add_holiday_apr_30(self.tr(self.begin_time_label) % self.tr("Valborgsmässoafton"))
+        self._add_holiday_apr_30(
+            # Walpurgis Night.
+            self._format_holiday_name(self.begin_time_label, tr("Valborgsmässoafton"))
+        )
 
         self._add_holiday_1st_fri_from_oct_30(
             # All Saints' Eve.
-            self.tr(self.begin_time_label) % self.tr("Allahelgonsafton")
+            self._format_holiday_name(self.begin_time_label, tr("Allahelgonsafton"))
         )
 
     def _populate_bank_holidays(self):
@@ -181,24 +187,28 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_holiday_38_days_past_easter(
             # Day before Ascension Day.
-            self.tr(self.begin_time_label) % self.tr("Dag före Kristi himmelsfärdsdag")
+            self._format_holiday_name(self.begin_time_label, tr("Dag före Kristi himmelsfärdsdag"))
         )
 
         self._add_holiday_1st_thu_from_jun_18(
             # Day before Midsummer Eve.
-            self.tr(self.begin_time_label) % self.tr("Dag före Midsommarafton")
+            self._format_holiday_name(self.begin_time_label, tr("Dag före Midsommarafton"))
         )
 
         self._add_holiday_47_days_past_easter(
             # Day before Whitsun Eve.
-            self.tr(self.begin_time_label) % self.tr("Dag före Pingstafton")
+            self._format_holiday_name(self.begin_time_label, tr("Dag före Pingstafton"))
         )
 
-        # Day before Christmas Eve.
-        self._add_holiday_dec_23(self.tr(self.begin_time_label) % self.tr("Dag före Julafton"))
+        self._add_holiday_dec_23(
+            # Day before Christmas Eve.
+            self._format_holiday_name(self.begin_time_label, tr("Dag före Julafton"))
+        )
 
-        # Day before New Year's Eve.
-        self._add_holiday_dec_30(self.tr(self.begin_time_label) % self.tr("Dag före Nyårsafton"))
+        self._add_holiday_dec_30(
+            # Day before New Year's Eve.
+            self._format_holiday_name(self.begin_time_label, tr("Dag före Nyårsafton"))
+        )
 
     def _populate_optional_holidays(self):
         self._populate_common()

@@ -1,0 +1,565 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# New York Stock Exchange holidays hi localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.99\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-06-03 06:52+0000\n"
+"PO-Revision-Date: 2026-06-04 11:21+0000\n"
+"Last-Translator: Paresh Joshi <194076591+pareshjoshij@users.noreply.github.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_US\n"
+
+#. %s (observed)
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (मनाया गया)"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "नव वर्ष दिवस"
+
+#. Martin Luther King Jr. Day.
+msgid "Martin Luther King Jr. Day"
+msgstr "मार्टिन लूथर किंग जूनियर दिवस"
+
+#. Lincoln's Birthday.
+msgid "Lincoln's Birthday"
+msgstr "लिंकन का जन्मदिन"
+
+#. Washington's Birthday.
+msgid "Washington's Birthday"
+msgstr "वाशिंगटन का जन्मदिन"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "गुड फ्राइडे"
+
+#. Memorial Day.
+msgid "Memorial Day"
+msgstr "मेमोरियल डे"
+
+#. Flag Day.
+msgid "Flag Day"
+msgstr "झंडा दिवस"
+
+#. Juneteenth National Independence Day.
+msgid "Juneteenth National Independence Day"
+msgstr "जूनटीन्थ राष्ट्रीय स्वतंत्रता दिवस"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "स्वतंत्रता दिवस"
+
+#. Labor Day.
+msgid "Labor Day"
+msgstr "मज़दूर दिवस"
+
+#. Columbus Day.
+msgid "Columbus Day"
+msgstr "कोलंबस दिवस"
+
+#. Election Day.
+msgid "Election Day"
+msgstr "चुनाव दिवस"
+
+#. Veteran's Day.
+msgid "Veteran's Day"
+msgstr "वेटरन्स डे"
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr "थैंक्सगिविंग डे"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "क्रिसमस का दिन"
+
+#. Pending outbreak of World War I.
+msgid "Pending outbreak of World War I"
+msgstr "प्रथम विश्व युद्ध का आसन्न प्रकोप"
+
+#. Paperwork Crisis.
+msgid "Paperwork Crisis"
+msgstr "कागजी कार्रवाई का संकट"
+
+#. Closed Saturday.
+msgid "Closed Saturday"
+msgstr "शनिवार को बंद"
+
+#. %s (markets close at 1:00pm).
+#, c-format
+msgid "%s (markets close at 1:00pm)"
+msgstr "%s (बाज़ार दोपहर 1:00 बजे बंद होते हैं)"
+
+#. %s (markets close at 2:00pm).
+#, c-format
+msgid "%s (markets close at 2:00pm)"
+msgstr "%s (बाज़ार दोपहर 2:00 बजे बंद होते हैं)"
+
+#. %s (markets close at 2:30pm).
+#, c-format
+msgid "%s (markets close at 2:30pm)"
+msgstr "%s (बाज़ार दोपहर 2:30 बजे बंद होते हैं)"
+
+#. %s (markets close at 3:00pm).
+#, c-format
+msgid "%s (markets close at 3:00pm)"
+msgstr "%s (बाज़ार दोपहर 3:00 बजे बंद होते हैं)"
+
+#. Back office work load.
+msgid "Back office work load"
+msgstr "बैक ऑफिस काम का बोझ"
+
+#. Day before Independence Day.
+msgid "Day before Independence Day"
+msgstr "स्वतंत्रता दिवस से एक दिन पहले"
+
+#. Day after Thanksgiving Day.
+msgid "Day after Thanksgiving Day"
+msgstr "थैंक्सगिविंग डे के बाद का दिन"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "क्रिसमस की पूर्व संध्या"
+
+#. %s (markets close at 11:00am).
+#, c-format
+msgid "%s (markets close at 11:00am)"
+msgstr "%s (बाज़ार सुबह 11:00 बजे बंद होते हैं)"
+
+#. %s (markets close at 12:00pm).
+#, c-format
+msgid "%s (markets close at 12:00pm)"
+msgstr "%s (बाज़ार दोपहर 12:00 बजे बंद होते हैं)"
+
+#. %s (markets close at 12:30pm).
+#, c-format
+msgid "%s (markets close at 12:30pm)"
+msgstr "%s (बाज़ार दोपहर 12:30 बजे बंद होते हैं)"
+
+#. %s (markets close at 3:30pm).
+#, c-format
+msgid "%s (markets close at 3:30pm)"
+msgstr "%s (बाज़ार दोपहर 3:30 बजे बंद होते हैं)"
+
+#. Blizzard of 1888.
+msgid "Blizzard of 1888"
+msgstr "1888 का बर्फीला तूफान"
+
+#. Centennial of George Washington's Inauguration.
+msgid "Centennial of George Washington's Inauguration"
+msgstr "जॉर्ज वाशिंगटन के उद्घाटन की शताब्दी"
+
+#. Columbian Celebration.
+msgid "Columbian Celebration"
+msgstr "कोलंबियन उत्सव"
+
+#. Heatless Day.
+msgid "Heatless Day"
+msgstr "ऊष्मारहित दिन"
+
+#. Catch Up Day.
+msgid "Catch Up Day"
+msgstr "लंबित कार्य पूरा करने का दिन"
+
+#. Special Bank Holiday.
+msgid "National Banking Holiday"
+msgstr "राष्ट्रीय बैंकिंग अवकाश"
+
+#. V-J Day. End of World War II.
+msgid "V-J Day. End of World War II"
+msgstr "वी-जे डे। द्वितीय विश्व युद्ध का अंत"
+
+#. Closed following Attacks on the World Trade Center.
+msgid "Closed following Attacks on the World Trade Center"
+msgstr "वर्ल्ड ट्रेड सेंटर पर हमलों के बाद बंद"
+
+#. Hurricane Sandy.
+msgid "Hurricane Sandy"
+msgstr "तूफान सैंडी"
+
+#. Liberty Day.
+msgid "Liberty Day"
+msgstr "लिबर्टी डे"
+
+#. Heavy volume. To allow member firm offices to catch up on work.
+msgid "Heavy volume. To allow member firm offices to catch up on work"
+msgstr "भारी मात्रा। सदस्य फर्म कार्यालयों को अपना काम पूरा करने की अनुमति देने के लिए"
+
+#. Saturday after Washington's Birthday.
+msgid "Saturday after Washington's Birthday"
+msgstr "वाशिंगटन के जन्मदिन के बाद का शनिवार"
+
+#. Saturday after Good Friday.
+msgid "Saturday after Good Friday"
+msgstr "गुड फ्राइडे के बाद का शनिवार"
+
+#. Saturday before Decoration Day.
+msgid "Saturday before Decoration Day"
+msgstr "डेकोरेशन डे से पहले का शनिवार"
+
+#. Saturday after Decoration Day.
+msgid "Saturday after Decoration Day"
+msgstr "डेकोरेशन डे के बाद का शनिवार"
+
+#. Saturday before Independence Day.
+msgid "Saturday before Independence Day"
+msgstr "स्वतंत्रता दिवस से पहले का शनिवार"
+
+#. Saturday after Independence Day.
+msgid "Saturday after Independence Day"
+msgstr "स्वतंत्रता दिवस के बाद का शनिवार"
+
+#. Day after Independence Day.
+msgid "Day after Independence Day"
+msgstr "स्वतंत्रता दिवस के बाद का दिन"
+
+#. Saturday before Labor Day.
+msgid "Saturday before Labor Day"
+msgstr "मज़दूर दिवस से पहले का शनिवार"
+
+#. Saturday after Columbus Day.
+msgid "Saturday after Columbus Day"
+msgstr "कोलंबस दिवस के बाद का शनिवार"
+
+#. Saturday before Christmas.
+msgid "Saturday before Christmas Day"
+msgstr "क्रिसमस के दिन से पहले का शनिवार"
+
+#. Friday after Christmas Day.
+msgid "Friday after Christmas Day"
+msgstr "क्रिसमस के दिन के बाद का शुक्रवार"
+
+#. Saturday after Christmas Day.
+msgid "Saturday after Christmas Day"
+msgstr "क्रिसमस के दिन के बाद का शनिवार"
+
+#. Admiral Dewey Celebration.
+msgid "Admiral Dewey Celebration"
+msgstr "एडमिरल डेवी उत्सव"
+
+#. Draft Registration Day.
+msgid "Draft Registration Day"
+msgstr "ड्राफ्ट पंजीकरण दिवस"
+
+#. To allow offices to catch up on work.
+msgid "To allow offices to catch up on work"
+msgstr "कार्यालयों को अपना काम पूरा करने की अनुमति देने के लिए"
+
+#. Volume activity.
+msgid "Volume activity"
+msgstr "वॉल्यूम गतिविधि"
+
+#. Transit strike.
+msgid "Transit strike"
+msgstr "परिवहन हड़ताल"
+
+#. Snowstorm.
+msgid "Snowstorm"
+msgstr "बर्फीला तूफान"
+
+#. Shortened hours following market break.
+msgid "Shortened hours following market break"
+msgstr "बाजार में गिरावट के बाद काम के घंटे कम किए गए"
+
+#. Funeral of former President Ulysses S. Grant.
+msgid "Funeral of former President Ulysses S. Grant"
+msgstr "पूर्व राष्ट्रपति यूलिसिस एस. ग्रांट का अंतिम संस्कार"
+
+#. Friday after Thanksgiving Day.
+msgid "Friday after Thanksgiving Day"
+msgstr "थैंक्सगिविंग डे के बाद का शुक्रवार"
+
+#. Grant's Birthday.
+msgid "Grant's Birthday"
+msgstr "ग्रांट का जन्मदिन"
+
+#. Charter Day.
+msgid "Charter Day"
+msgstr "चार्टर दिवस"
+
+#. Welcome of naval commanders.
+msgid "Welcome of naval commanders"
+msgstr "नौसेना कमांडरों का स्वागत"
+
+#. Saturday before Lincoln's Birthday.
+msgid "Saturday before Lincoln's Birthday"
+msgstr "लिंकन के जन्मदिन से पहले का शनिवार"
+
+#. Monday before Decoration Day.
+msgid "Monday before Decoration Day"
+msgstr "डेकोरेशन डे से पहले का सोमवार"
+
+#. Monday before Independence Day.
+msgid "Monday before Independence Day"
+msgstr "स्वतंत्रता दिवस से पहले का सोमवार"
+
+#. Funeral of Vice-President Garret A. Hobart.
+msgid "Funeral of Vice-President Garret A. Hobart"
+msgstr "उपराष्ट्रपति गैरेट ए. होबार्ट का अंतिम संस्कार"
+
+#. Funeral of Queen Victoria of England.
+msgid "Funeral of Queen Victoria of England"
+msgstr "इंग्लैंड की महारानी विक्टोरिया का अंतिम संस्कार"
+
+#. Moved to temporary quarters in Produce Exchange.
+msgid "Moved to temporary quarters in Produce Exchange"
+msgstr "प्रोड्यूस एक्सचेंज में अस्थायी क्वार्टर में स्थानांतरित"
+
+#. Enlarged temporary quarters in Produce Exchange.
+msgid "Enlarged temporary quarters in Produce Exchange"
+msgstr "प्रोड्यूस एक्सचेंज में विस्तारित अस्थायी क्वार्टर"
+
+#. Friday after Independence Day.
+msgid "Friday after Independence Day"
+msgstr "स्वतंत्रता दिवस के बाद का शुक्रवार"
+
+#. Death of President William McKinley.
+msgid "Death of President William McKinley"
+msgstr "राष्ट्रपति विलियम मैककिनले का निधन"
+
+#. Funeral of President William McKinley.
+msgid "Funeral of President William McKinley"
+msgstr "राष्ट्रपति विलियम मैककिनले का अंतिम संस्कार"
+
+#. Coronation of King Edward VII of England.
+msgid "Coronation of King Edward VII of England"
+msgstr "इंग्लैंड के राजा एडवर्ड सप्तम का राज्याभिषेक"
+
+#. Saturday before Washington's Birthday.
+msgid "Saturday before Washington's Birthday"
+msgstr "वाशिंगटन के जन्मदिन से पहले का शनिवार"
+
+#. Opening of new NYSE building.
+msgid "Opening of new NYSE building"
+msgstr "नई एनवाईएसई इमारत का उद्घाटन"
+
+#. Saturday after Lincoln's Birthday.
+msgid "Saturday after Lincoln's Birthday"
+msgstr "लिंकन के जन्मदिन के बाद का शनिवार"
+
+#. Reception Day of the Hudson-Fulton Celebration.
+msgid "Reception Day of the Hudson-Fulton Celebration"
+msgstr "हडसन-फुल्टन उत्सव का स्वागत दिवस"
+
+#. Funeral of Vice-President James S. Sherman.
+msgid "Funeral of Vice-President James S. Sherman"
+msgstr "उपराष्ट्रपति जेम्स एस. शेरमन का अंतिम संस्कार"
+
+#. Saturday before New Year's Day.
+msgid "Saturday before New Year's Day"
+msgstr "नव वर्ष के दिन से पहले का शनिवार"
+
+#. Heat.
+msgid "Heat"
+msgstr "गर्मी"
+
+#. Armistice signed.
+msgid "Armistice signed"
+msgstr "युद्धविराम पर हस्ताक्षर किए गए"
+
+#. Homecoming of 27th Division.
+msgid "Homecoming of 27th Division"
+msgstr "27वें डिवीजन की घर वापसी"
+
+#. Parade of 77th Division.
+msgid "Parade of 77th Division"
+msgstr "77वें डिवीजन की परेड"
+
+#. Heat and to allow offices to catch up on work.
+msgid "Heat and to allow offices to catch up on work"
+msgstr "गर्मी और कार्यालयों को काम पूरा करने की अनुमति देने के लिए"
+
+#. Return of General John J. Pershing.
+msgid "Return of General John J. Pershing"
+msgstr "जनरल जॉन जे. पर्शिंग की वापसी"
+
+#. Many firms changed office locations.
+msgid "Many firms changed office locations"
+msgstr "कई फर्मों ने कार्यालय के स्थान बदले"
+
+#. Death of President Warren G. Harding.
+msgid "Death of President Warren G. Harding"
+msgstr "राष्ट्रपति वारेन जी. हार्डिंग का निधन"
+
+#. Funeral of President Warren G. Harding.
+msgid "Funeral of President Warren G. Harding"
+msgstr "राष्ट्रपति वारेन जी. हार्डिंग का अंतिम संस्कार"
+
+#. Parade for Colonel Charles A. Lindbergh.
+msgid "Parade for Colonel Charles A. Lindbergh"
+msgstr "कर्नल चार्ल्स ए. लिंडबर्ग के लिए परेड"
+
+#. Funeral of former President Calvin Coolidge.
+msgid "Funeral of former President Calvin Coolidge"
+msgstr "पूर्व राष्ट्रपति केल्विन कूलिज का अंतिम संस्कार"
+
+#. State Banking Holiday.
+msgid "State Banking Holiday"
+msgstr "राज्य बैंकिंग अवकाश"
+
+#. National Day of Mourning for President Franklin D. Roosevelt.
+msgid "National Day of Mourning for President Franklin D. Roosevelt"
+msgstr "राष्ट्रपति फ्रैंकलिन डी. रूजवेल्ट के लिए राष्ट्रीय शोक दिवस"
+
+#. Navy Day.
+msgid "Navy Day"
+msgstr "नौसेना दिवस"
+
+#. Railroad strike.
+msgid "Railroad strike"
+msgstr "रेलवे हड़ताल"
+
+#. Severe weather conditions.
+msgid "Severe weather conditions"
+msgstr "गंभीर मौसम की स्थिति"
+
+#. Saturday before Christmas Eve.
+msgid "Saturday before Christmas Eve"
+msgstr "क्रिसमस की पूर्व संध्या से पहले का शनिवार"
+
+#. Day after Christmas.
+msgid "Day after Christmas"
+msgstr "क्रिसमस के बाद का दिन"
+
+#. Day before Decoration Day.
+msgid "Day before Decoration Day"
+msgstr "डेकोरेशन डे से एक दिन पहले"
+
+#. Funeral of President John F. Kennedy.
+msgid "Funeral of President John F. Kennedy"
+msgstr "राष्ट्रपति जॉन एफ. कैनेडी का अंतिम संस्कार"
+
+#. National Day of Mourning for Martin Luther King, Jr.
+msgid "National Day of Mourning for Martin Luther King, Jr."
+msgstr "मार्टिन लूथर किंग, जूनियर के लिए राष्ट्रीय शोक दिवस"
+
+#. Heavy Snow.
+msgid "Heavy Snow"
+msgstr "भारी बर्फबारी"
+
+#. Funeral of former President Dwight D. Eisenhower.
+msgid "Funeral of former President Dwight D. Eisenhower"
+msgstr "पूर्व राष्ट्रपति ड्वाइट डी. आइजनहावर का अंतिम संस्कार"
+
+#. National Day of Participation for the Lunar Exploration.
+msgid "National Day of Participation for the Lunar Exploration"
+msgstr "चंद्र अन्वेषण के लिए राष्ट्रीय भागीदारी दिवस"
+
+#. Funeral of former President Harry S. Truman.
+msgid "Funeral of former President Harry S. Truman"
+msgstr "पूर्व राष्ट्रपति हैरी एस. ट्रूमैन का अंतिम संस्कार"
+
+#. Funeral of former President Lyndon B. Johnson.
+msgid "Funeral of former President Lyndon B. Johnson"
+msgstr "पूर्व राष्ट्रपति लिंडन बी. जॉनसन का अंतिम संस्कार"
+
+#. Blackout in New York City.
+msgid "Blackout in New York City"
+msgstr "न्यूयॉर्क शहर में ब्लैकआउट"
+
+#. Hurricane Gloria.
+msgid "Hurricane Gloria"
+msgstr "तूफान ग्लोरिया"
+
+#. Funeral of former President Richard M. Nixon.
+msgid "Funeral of former President Richard M. Nixon"
+msgstr "पूर्व राष्ट्रपति रिचर्ड एम. निक्सन का अंतिम संस्कार"
+
+#. National Day of Mourning for former President Ronald Reagan.
+msgid "National Day of Mourning for former President Ronald Reagan"
+msgstr "पूर्व राष्ट्रपति रोनाल्ड रीगन के लिए राष्ट्रीय शोक दिवस"
+
+#. National Day of Mourning for former President Gerald R. Ford.
+msgid "National Day of Mourning for former President Gerald R. Ford"
+msgstr "पूर्व राष्ट्रपति जेराल्ड आर. फोर्ड के लिए राष्ट्रीय शोक दिवस"
+
+#. National Day of Mourning for former President George H. W. Bush.
+msgid "National Day of Mourning for former President George H. W. Bush"
+msgstr "पूर्व राष्ट्रपति जॉर्ज एच. डब्लू. बुश के लिए राष्ट्रीय शोक दिवस"
+
+#. National Day of Mourning for former President Jimmy Carter.
+msgid "National Day of Mourning for former President Jimmy Carter"
+msgstr "पूर्व राष्ट्रपति जिमी कार्टर के लिए राष्ट्रीय शोक दिवस"
+
+#. Funeral of former President Grover Cleveland.
+msgid "Funeral of former President Grover Cleveland"
+msgstr "पूर्व राष्ट्रपति ग्रोवर क्लीवलैंड का अंतिम संस्कार"
+
+#. Death of King Edward VII of England.
+msgid "Death of King Edward VII of England"
+msgstr "इंग्लैंड के राजा एडवर्ड सप्तम का निधन"
+
+#. Parade of National Guard.
+msgid "Parade of National Guard"
+msgstr "नेशनल गार्ड की परेड"
+
+#. False armistice report.
+msgid "False armistice report"
+msgstr "झूठी युद्धविराम रिपोर्ट"
+
+#. Funeral of former President Theodore Roosevelt.
+msgid "Funeral of former President Theodore Roosevelt"
+msgstr "पूर्व राष्ट्रपति थियोडोर रूजवेल्ट का अंतिम संस्कार"
+
+#. Wall Street explosion.
+msgid "Wall Street explosion"
+msgstr "वॉल स्ट्रीट विस्फोट"
+
+#. Funeral of former President Woodrow Wilson.
+msgid "Funeral of former President Woodrow Wilson"
+msgstr "पूर्व राष्ट्रपति वुडरो विल्सन का अंतिम संस्कार"
+
+#. Funeral of former NYSE president Seymour L. Cromwell.
+msgid "Funeral of former NYSE president Seymour L. Cromwell"
+msgstr "पूर्व एनवाईएसई अध्यक्ष सेमोर एल. क्रॉमवेल का अंतिम संस्कार"
+
+#. Funeral of former President William Howard Taft.
+msgid "Funeral of former President William Howard Taft"
+msgstr "पूर्व राष्ट्रपति विलियम हॉवर्ड टैफ्ट का अंतिम संस्कार"
+
+#. NRA demonstration.
+msgid "NRA demonstration"
+msgstr "एनआरए प्रदर्शन"
+
+#. Assassination of President John F. Kennedy (markets close at 2:07pm).
+msgid "Assassination of President John F. Kennedy (markets close at 2:07pm)"
+msgstr "राष्ट्रपति जॉन एफ. कैनेडी की हत्या (बाज़ार दोपहर 2:07 बजे बंद होते हैं)"
+
+#. Funeral of former President Herbert C. Hoover.
+msgid "Funeral of former President Herbert C. Hoover"
+msgstr "पूर्व राष्ट्रपति हर्बर्ट सी. हूवर का अंतिम संस्कार"
+
+#. Hurricane watch.
+msgid "Hurricane watch"
+msgstr "तूफान की चेतावनी"
+
+#. Assassination attempt on President Reagan (markets close at 3:17pm).
+msgid "Assassination attempt on President Reagan (markets close at 3:17pm)"
+msgstr "राष्ट्रपति रीगन पर हत्या का प्रयास (बाज़ार दोपहर 3:17 बजे बंद होते हैं)"
+
+#. Con Edison power failure in lower Manhattan (markets close at 3:28pm).
+msgid "Con Edison power failure in lower Manhattan (markets close at 3:28pm)"
+msgstr "लोअर मैनहट्टन में कॉन एडिसन पावर विफलता (बाज़ार दोपहर 3:28 बजे बंद होते हैं)"
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr "नव वर्ष की पूर्व संध्या"

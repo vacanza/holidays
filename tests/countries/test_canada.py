@@ -872,9 +872,7 @@ class TestCanada(CommonCountryTests, TestCase):
         }
 
         self.assertEqual(
-            all_h,
-            y_2022,
-            f"missing: {all_h - y_2022 or 'no'}, extra: {y_2022 - all_h or 'no'}",
+            all_h, y_2022, f"missing: {all_h - y_2022 or 'no'}, extra: {y_2022 - all_h or 'no'}"
         )
 
     def test_l10n_default(self):
