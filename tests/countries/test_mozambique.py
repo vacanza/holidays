@@ -23,10 +23,7 @@ class TestMozambique(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "Dia da Fraternidade universal"
-        self.assertHolidayName(
-            name,
-            (f"{year}-01-01" for year in self.full_range),
-        )
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         obs_dts = (
             "2012-01-02",
             "2017-01-02",
