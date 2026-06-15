@@ -137,16 +137,16 @@ class SaudiArabiaIslamicHolidays(_CustomIslamicHolidays):
 class SaudiArabiaStaticHolidays:
     """
     References:
-        [Occasion of King Abdullah's return](https://www.arabianbusiness.com/life/saudi-king-return-home-after-hospital-treatment-382456)
+        [Occasion of King Abdullah's return](https://web.archive.org/web/20130712223303/https://www.arabnews.com/node/369196)
         [Day of mourning for King Abdullah](https://web.archive.org/web/20221216055244/https://www.arabnews.com/saudi-arabia/news/694326)
         [Win against Argentina in the World Cup](https://web.archive.org/web/20250409214752/https://www.theguardian.com/world/2022/nov/22/saudi-arabia-declares-public-holiday-mark-world-cup-win-over-argentina)
     """
 
     special_public_holidays = {
-        # A public holiday for King Abdullah's return.
+        # King Abdullah's Return from Medical Treatment Abroad.
         2011: (FEB, 26, tr("عطلة رسمية بمناسبة عودة الملك عبد الله")),
-        # Day of mourning for King Abdullah.
+        # Day of Mourning for King Abdullah.
         2015: (JAN, 25, tr("يوم حداد على الملك عبد الله")),
-        # Holiday for the national team's victory in the World Cup.
+        # Holiday for the National Team's Victory in the World Cup.
         2022: (NOV, 23, tr("عطلة فوز المنتخب في كأس العالم")),
     }
