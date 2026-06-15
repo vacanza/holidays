@@ -97,9 +97,7 @@ class TestMozambique(CommonCountryTests, TestCase):
 
     def test_peace_and_reconciliation_day(self):
         name = "Dia da Paz e Reconciliação"
-        self.assertHolidayName(
-            name, (f"{year}-10-04" for year in range(1993, self.end_year))
-        )
+        self.assertHolidayName(name, (f"{year}-10-04" for year in range(1993, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1993))
         obs_dts = (
             "2015-10-05",
