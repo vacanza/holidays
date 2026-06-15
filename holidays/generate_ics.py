@@ -44,11 +44,13 @@ class IcsGenerator:
             help="Year or year range (default: current year)",
             metavar="YYYY[-YYYY]",
         )
-        parser.add_argument("-s", "--subdiv", help="Subdivision code (e.g., CA, NY, SCT)")
+        parser.add_argument(
+            "-s", "--subdiv", default=None, help="Subdivision code (e.g., CA, NY, SCT)"
+        )
         parser.add_argument(
             "-c",
             "--categories",
-            default=[],
+            default=None,
             type=IcsGenerator.parse_categories,
             help="Holiday categories (default: public)",
             metavar="CAT1[,CAT2,...]",
