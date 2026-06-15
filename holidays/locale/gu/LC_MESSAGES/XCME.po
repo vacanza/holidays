@@ -45,7 +45,7 @@ msgstr "થેંક્સગિવિંગ ડે"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "નાતાલ"
+msgstr "નાતાલનો દિવસ"
 
 #. %s (markets pause at 10:30am CT)
 #, c-format
@@ -79,7 +79,7 @@ msgstr "સ્વતંત્રતા દિવસનો આગલો દિવ
 
 #. Labor Day.
 msgid "Labor Day"
-msgstr "મજૂર દિવસ"
+msgstr "શ્રમ દિવસ"
 
 #. Day after Thanksgiving Day.
 msgid "Day after Thanksgiving Day"

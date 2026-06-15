@@ -23,6 +23,11 @@ class ChicagoMercantileExchange(
 ):
     """Chicago Mercantile Exchange (CME) holidays.
 
+    Prior to 2015, minor holidays halted at 10:30 AM CT.
+    From 2015 onward, CME standardized these to 12:00 PM CT.
+        * [Martin Luther King Holiday Schedule 2009](https://web.archive.org/web/20090126144353/http://cmegroup.com/tools-information/holiday-calendar/files/2009-martin-luther-king.pdf)
+        * [Martin Luther King Holiday Schedule 2015](https://web.archive.org/web/20150905223758/http://www.cmegroup.com/tools-information/holiday-calendar/files/2015-martin-luther-king-holiday-schedule.pdf)
+
     References:
         * [2009](https://web.archive.org/web/20090122062834/http://www.cmegroup.com/tools-information/holiday-calendar/)
         * [2010](https://web.archive.org/web/20100315131807/http://www.cmegroup.com/tools-information/holiday-calendar/)
@@ -42,7 +47,6 @@ class ChicagoMercantileExchange(
         * [2024](https://web.archive.org/web/20240703233842/https://www.cmegroup.com/trading-hours.html)
         * [2025](https://web.archive.org/web/20250327221007/https://www.cmegroup.com/trading-hours.html)
         * [2026](https://web.archive.org/web/20260522122235/https://www.cmegroup.com/trading-hours.html)
-
     """
 
     market = "XCME"
@@ -75,13 +79,6 @@ class ChicagoMercantileExchange(
         self._move_holiday(self._add_christmas_day(tr("Christmas Day")))
 
     def _populate_half_day_holidays(self):
-        """
-        Prior to 2015, minor holidays halted at 10:30 AM CT.
-        * [Martin Luther King Holiday Schedule -2009](https://web.archive.org/web/20090126144353/http://cmegroup.com/tools-information/holiday-calendar/files/2009-martin-luther-king.pdf)
-        From 2015 onward, CME standardized these to 12:00 PM CT.
-        * [Martin Luther King Holiday Schedule -2015](https://web.archive.org/web/20150905223758/http://www.cmegroup.com/tools-information/holiday-calendar/files/2015-martin-luther-king-holiday-schedule.pdf)
-
-        """
         # %s (markets pause at 10:30am CT)
         pause_1030am_label = tr("%s (markets pause at 10:30am CT)")
         # %s (markets pause at 12:00pm CT)
@@ -149,7 +146,7 @@ class CME(ChicagoMercantileExchange):
 
 
 class ChicagoMercantileExchangeStaticHolidays:
-    """Chicago Mercantile Exchange special historical closures.
+    """Chicago Mercantile Exchange (CME) special holidays.
 
     References:
         * [Attacks on the World Trade Center](https://web.archive.org/web/20260610102432/https://www.chicagotribune.com/2001/09/11/markets-halt-after-world-trade-center-hit/)
@@ -158,7 +155,6 @@ class ChicagoMercantileExchangeStaticHolidays:
         * [Hurricane Sandy](https://web.archive.org/web/20260610093358/https://www.cmegroup.com/tools-information/lookups/advisories/clearing/files/Chadv12-464.pdf)
         * [National Day of Mourning for former President George H. W. Bush](https://web.archive.org/web/20250824115358/https://www.prnewswire.com/news-releases/cme-group-us-equity-interest-rate-markets-to-close-for-national-day-of-mourning-300758702.html)
         * [National Day of Mourning to Honor Former President Jimmy Carter](https://web.archive.org/web/20250715124404/https://www.cmegroup.com/media-room/press-releases/2025/12/30/cme_group_announcestradinghoursforusnationaldayofmourningtohonor.html)
-
     """
 
     # Closed following Attacks on the World Trade Center.
