@@ -21,7 +21,7 @@ class TestMozambique(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Mozambique)
 
-    def test_new_years_day(self):
+    def test_international_fraternalism_day(self):
         name = "Dia da Fraternidade universal"
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         obs_dts = (
@@ -53,7 +53,7 @@ class TestMozambique(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (ponte)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_workers_day(self):
+    def test_international_workers_day(self):
         name = "Dia Internacional dos Trabalhadores"
         self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
         obs_dts = (
