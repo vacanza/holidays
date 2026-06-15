@@ -137,9 +137,9 @@ class SaudiArabiaIslamicHolidays(_CustomIslamicHolidays):
 class SaudiArabiaStaticHolidays:
     """
     References:
-        [occasion of King Abdullah's return](https://www.arabianbusiness.com/life/saudi-king-return-home-after-hospital-treatment-382456)
+        [Occasion of King Abdullah's return](https://www.arabianbusiness.com/life/saudi-king-return-home-after-hospital-treatment-382456)
         [Day of mourning for King Abdullah](https://web.archive.org/web/20221216055244/https://www.arabnews.com/saudi-arabia/news/694326)
-        [win against Argentina in the World Cup](https://www.bloomberg.com/news/articles/2022-11-23/saudi-arabia-gets-national-holiday-after-beating-argentina-stock-market-closed)
+        [Win against Argentina in the World Cup](https://web.archive.org/web/20250409214752/https://www.theguardian.com/world/2022/nov/22/saudi-arabia-declares-public-holiday-mark-world-cup-win-over-argentina)
     """
 
     special_public_holidays = {
