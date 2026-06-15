@@ -1,3 +1,23 @@
+## Version 0.99
+
+Released June 15, 2026
+
+- Refactor Australia holidays and tests (#3623 by @KJhellico)
+- Refactor holiday names translation (#3606 by @KJhellico)
+- Fix documentation tests (#3612 by @KJhellico)
+- Update .py files formatting (#3622 by @KJhellico)
+- Update Algeria holidays: add Kabyle language support (#3507 by @shaonahamed0, @mhamedmok404, @PPsyrius)
+- Update Bangladesh holidays, improve Islamic calendar (#3599 by @KJhellico)
+- Update Colombia holidays: add new Jul 9 holiday (#3607 by @healarconr, @arkid15r)
+- Update Indonesia holidays: add 2026 special holidays (#3604 by @KJhellico)
+- Update Maldives holidays: add l10n support (#3605 by @aadesh-shrivastava)
+- Update United States holidays: fix special holiday names with format labels (#3618 by @KJhellico)
+- Update XNYS holidays: add l10n support (#3600 by @pareshjoshij)
+- Update assets generation and processing (#3598 by @KJhellico)
+- Update pre-commit config (#3619 by @KJhellico, @arkid15r)
+- Add CLI tool for generating iCalendar (.ics) files (#3593 by @KJhellico, @Ebed-Iberico)
+- Migrate Mozambique tests to new test case standards (#3621 by @VaishnaviBardapure)
+
 ## Version 0.98
 
 Released June 1, 2026
