@@ -93,6 +93,7 @@ class TestMozambique(CommonCountryTests, TestCase):
         )
         obs_dts = (
             "2014-09-08",
+            "2025-09-08",
         )
         self.assertHolidayName(f"{name} (ponte)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
