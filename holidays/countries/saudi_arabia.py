@@ -14,7 +14,7 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JUN, SEP, NOV, THU, FRI, SAT, _timedelta
+from holidays.calendars.gregorian import JAN, FEB, JUN, SEP, NOV, THU, FRI, SAT, _timedelta
 from holidays.groups import IslamicHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -135,7 +135,18 @@ class SaudiArabiaIslamicHolidays(_CustomIslamicHolidays):
 
 
 class SaudiArabiaStaticHolidays:
+    """
+    References:
+        [occasion of King Abdullah's return](https://www.arabianbusiness.com/life/saudi-king-return-home-after-hospital-treatment-382456)
+        [Day of mourning for King Abdullah](https://web.archive.org/web/20221216055244/https://www.arabnews.com/saudi-arabia/news/694326)
+        [win against Argentina in the World Cup](https://www.bloomberg.com/news/articles/2022-11-23/saudi-arabia-gets-national-holiday-after-beating-argentina-stock-market-closed)
+    """
+
     special_public_holidays = {
-        # Celebrate the country's win against Argentina in the World Cup.
-        2022: (NOV, 23, tr("يوم وطني")),
+        # A public holiday for King Abdullah's return.
+        2011: (FEB, 26, tr("عطلة رسمية بمناسبة عودة الملك عبد الله")),
+        # Day of mourning for King Abdullah.
+        2015: (JAN, 25, tr("يوم حداد على الملك عبد الله")),
+        # Holiday for the national team's victory in the World Cup.
+        2022: (NOV, 23, tr("عطلة فوز المنتخب في كأس العالم")),
     }
