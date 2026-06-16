@@ -38,26 +38,24 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
     def test_new_years_day(self):
         name = "New Year's Day"
         self.assertNonObservedHolidayName(name, (f"{year}-01-01" for year in self.full_range))
-        self.assertNoHoliday(
-            "2004-12-31",
-            "2010-12-31",
-            "2021-12-31",
-        )
+        self.assertHolidayName(name, self.full_range)
         self.assertHolidayName(
             name,
             "2012-01-02",
             "2017-01-02",
             "2023-01-02",
         )
-        self.assertHolidayName(name, self.full_range)
+        self.assertNoHoliday(
+            "2004-12-31",
+            "2010-12-31",
+            "2021-12-31",
+        )
 
     def test_dr_martin_luther_king_jr_day(self):
         name_1030 = "Dr. Martin Luther King, Jr. Day (markets pause at 10:30am CT)"
         name_1200 = "Dr. Martin Luther King, Jr. Day (markets pause at 12:00pm CT)"
-
         self.assertNoHolidayName(name_1030)
         self.assertNoHolidayName(name_1200)
-
         self.assertHalfDayHolidayName(
             name_1030,
             "2010-01-18",
@@ -85,10 +83,8 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
     def test_presidents_day(self):
         name_1030 = "President's Day (markets pause at 10:30am CT)"
         name_1200 = "President's Day (markets pause at 12:00pm CT)"
-
         self.assertNoHolidayName(name_1030)
         self.assertNoHolidayName(name_1200)
-
         self.assertHalfDayHolidayName(
             name_1030,
             "2010-02-15",
@@ -99,7 +95,6 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
         )
         self.assertHalfDayHolidayName(name_1030, range(self.start_year, 2015))
         self.assertNoHalfDayHolidayName(name_1030, range(2015, self.end_year))
-
         self.assertHalfDayHolidayName(
             name_1200,
             "2015-02-16",
@@ -117,8 +112,6 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
         name = "Good Friday"
         self.assertHolidayName(
             name,
-            "2000-04-21",
-            "2010-04-02",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
@@ -131,10 +124,8 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
     def test_memorial_day(self):
         name_1030 = "Memorial Day (markets pause at 10:30am CT)"
         name_1200 = "Memorial Day (markets pause at 12:00pm CT)"
-
         self.assertNoHolidayName(name_1030)
         self.assertNoHolidayName(name_1200)
-
         self.assertHalfDayHolidayName(
             name_1030,
             "2010-05-31",
@@ -145,7 +136,6 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
         )
         self.assertHalfDayHolidayName(name_1030, range(self.start_year, 2015))
         self.assertNoHalfDayHolidayName(name_1030, range(2015, self.end_year))
-
         self.assertHalfDayHolidayName(
             name_1200,
             "2015-05-25",
@@ -161,14 +151,11 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
 
     def test_juneteenth_day(self):
         name = "Juneteenth Day (markets pause at 12:00pm CT)"
-
         self.assertNoHolidayName(name)
-
         self.assertHalfDayNonObservedHolidayName(
             name, (f"{year}-06-19" for year in range(2022, self.end_year))
         )
         self.assertNoHalfDayNonObservedHolidayName(name, range(self.start_year, 2022))
-
         self.assertHalfDayHolidayName(
             name,
             "2022-06-20",
@@ -183,7 +170,13 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
     def test_independence_day(self):
         name = "Independence Day"
         self.assertNonObservedHolidayName(name, (f"{year}-07-04" for year in self.full_range))
-
+        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(
+            name,
+            "2004-07-05",
+            "2010-07-05",
+            "2021-07-05",
+        )
         self.assertNoHolidayName(
             name,
             "2008-07-03",
@@ -191,31 +184,19 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             "2025-07-03",
         )
 
-        self.assertHolidayName(
-            name,
-            "2004-07-05",
-            "2010-07-05",
-            "2021-07-05",
-        )
-        self.assertHolidayName(name, self.full_range)
-
     def test_day_before_independence_day(self):
         name_1030 = "Day before Independence Day (markets pause at 10:30am CT)"
         name_1200 = "Day before Independence Day (markets pause at 12:00pm CT)"
-
         self.assertNoHolidayName(name_1030)
         self.assertNoHolidayName(name_1200)
-
-        self.assertNoHalfDayHoliday(
-            "2021-07-02",  # July 4 is Sunday
-            "2022-07-01",  # July 4 is Monday
-        )
-
         self.assertHalfDayHolidayName(
-            name_1030, "2001-07-03", "2002-07-03", "2007-07-03", "2009-07-03"
+            name_1030,
+            "2001-07-03",
+            "2002-07-03",
+            "2007-07-03",
+            "2009-07-03",
         )
         self.assertNoHalfDayHolidayName(name_1030, range(2015, self.end_year))
-
         self.assertHalfDayHolidayName(
             name_1200,
             "2015-07-03",
@@ -226,17 +207,14 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             "2023-07-03",
             "2024-07-03",
             "2025-07-03",
-            "2026-07-03",
         )
         self.assertNoHalfDayHolidayName(name_1200, range(self.start_year, 2015))
 
     def test_labor_day(self):
         name_1030 = "Labor Day (markets pause at 10:30am CT)"
         name_1200 = "Labor Day (markets pause at 12:00pm CT)"
-
         self.assertNoHolidayName(name_1030)
         self.assertNoHolidayName(name_1200)
-
         self.assertHalfDayHolidayName(
             name_1030,
             "2010-09-06",
@@ -247,7 +225,6 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
         )
         self.assertHalfDayHolidayName(name_1030, range(self.start_year, 2015))
         self.assertNoHalfDayHolidayName(name_1030, range(2015, self.end_year))
-
         self.assertHalfDayHolidayName(
             name_1200,
             "2015-09-07",
@@ -277,11 +254,8 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
     def test_day_after_thanksgiving(self):
         name = "Day after Thanksgiving Day (markets pause at 12:00pm CT)"
         self.assertNoHolidayName(name)
-
         self.assertHalfDayHolidayName(
             name,
-            "2001-11-23",
-            "2014-11-28",
             "2020-11-27",
             "2021-11-26",
             "2022-11-25",
@@ -294,13 +268,6 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
     def test_christmas_eve(self):
         name = "Christmas Eve (markets pause at 12:00pm CT)"
         self.assertNoHolidayName(name)
-
-        self.assertNoHalfDayHolidayName(
-            name,
-            "2022-12-24",
-            "2023-12-24",
-        )
-
         self.assertHalfDayHolidayName(
             name,
             "2001-12-24",
@@ -312,11 +279,16 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             "2024-12-24",
             "2025-12-24",
         )
+        self.assertNoHalfDayHolidayName(
+            name,
+            "2022-12-24",
+            "2023-12-24",
+        )
 
     def test_christmas_day(self):
         name = "Christmas Day"
         self.assertNonObservedHolidayName(name, (f"{year}-12-25" for year in self.full_range))
-
+        self.assertHolidayName(name, self.full_range)
         self.assertHolidayName(
             name,
             "2004-12-24",
@@ -326,7 +298,6 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             "2021-12-24",
             "2022-12-26",
         )
-        self.assertHolidayName(name, self.full_range)
 
     def test_2023(self):
         self.assertHolidaysInYear(

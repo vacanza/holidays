@@ -108,8 +108,7 @@ class ChicagoMercantileExchange(
                 )
             )
 
-        jul_3 = (JUL, 3)
-        if self._is_weekday(jul_3):
+        if self._is_weekday(JUL, 3):
             self._add_holiday_jul_3(
                 # Day before Independence Day.
                 self._format_holiday_name(minor_pause_label, tr("Day before Independence Day"))
