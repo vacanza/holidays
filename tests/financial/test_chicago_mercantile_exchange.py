@@ -66,7 +66,6 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
         )
         self.assertHalfDayHolidayName(name_1030, range(self.start_year, 2015))
         self.assertNoHalfDayHolidayName(name_1030, range(2015, self.end_year))
-
         self.assertHalfDayHolidayName(
             name_1200,
             "2015-01-19",
