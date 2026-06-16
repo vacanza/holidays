@@ -45,15 +45,7 @@ function holidayDownloads() {
 
         // Formatting Helper Functions
         formatLabel: (str) => str.charAt(0).toUpperCase() + str.slice(1).replace(/_/g, ' '),
-        formatDate: (dateStr) => {
-            if (!dateStr) return '';
-            const d = new Date(dateStr);
-            if (isNaN(d)) return dateStr;
-            const year = d.getUTCFullYear();
-            const month = String(d.getUTCMonth() + 1).padStart(2, '0');
-            const day = String(d.getUTCDate()).padStart(2, '0');
-            return `${year}-${month}-${day}`;
-        },
+
         _getPath: function(cat, ext) {
             return `ics/${this.type}/${this.selectedEntity}/${this.selectedSubdiv}_${this.selectedLang}_${cat}.${ext}`;
         },
