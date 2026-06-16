@@ -74,9 +74,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
         }
 
         self.assertEqual(
-            all_h,
-            y_2018,
-            f"missing: {all_h - y_2018 or 'no'}, extra: {y_2018 - all_h or 'no'}",
+            all_h, y_2018, f"missing: {all_h - y_2018 or 'no'}, extra: {y_2018 - all_h or 'no'}"
         )
 
     def test_new_years_day(self):

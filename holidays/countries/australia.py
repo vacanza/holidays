@@ -10,13 +10,17 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from __future__ import annotations
+
 from gettext import gettext as tr
+from typing import TYPE_CHECKING
 
 from holidays.calendars.gregorian import JAN, APR, JUN, AUG, SEP, OCT, DEC
 from holidays.constants import BANK, HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
+    ObservedRule,
     MON_TO_NEXT_TUE,
     SAT_TO_NEXT_MON,
     SUN_TO_NEXT_MON,
@@ -26,31 +30,41 @@ from holidays.observed_holiday_base import (
     ALL_TO_NEXT_MON,
 )
 
+if TYPE_CHECKING:
+    from datetime import date
+
 
 class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """Australia holidays.
 
     References:
-          * <https://web.archive.org/web/20250414072303/https://www.qld.gov.au/recreation/travel/holidays>
-          * [ACT Holidays Act 1958](https://web.archive.org/web/20250322061953/https://www.legislation.act.gov.au/a/1958-19/)
-          * [ACT 2013-2023](https://web.archive.org/web/20240401072340/https://www.cmtedd.act.gov.au/archived-content/holidays/previous-years)
-          * [ACT 2026-2029](https://web.archive.org/web/20260323230558/https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving)
-          * [NSW Banks and Bank Holidays Act 1912](https://web.archive.org/web/20241107225523/https://legislation.nsw.gov.au/view/html/repealed/current/act-1912-043)
-          * [NSW Public Holidays Act 2010](https://web.archive.org/web/20250316173922/https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115)
-          * [NSW 2026-2027](https://web.archive.org/web/20260216073138/https://www.nsw.gov.au/about-nsw/public-holidays)
-          * [NT Public Holidays Act 1981](https://web.archive.org/web/20250315072128/https://legislation.nt.gov.au/api/sitecore/Act/PDF?id=12145)
-          * [QLD Holidays Act 1983](https://web.archive.org/web/20250404230918/https://www.legislation.qld.gov.au/view/html/inforce/current/act-1983-018)
-          * [QLD 2013-2028](https://web.archive.org/web/20150703042947/http://www.qld.gov.au/recreation/travel/holidays/public/)
-          * [SA Holidays Act 1910](https://web.archive.org/web/20250420203417/https://www.legislation.sa.gov.au/LZ/C/A/HOLIDAYS%20ACT%201910.aspx)
-          * [SA Public Holidays Act 2023](https://web.archive.org/web/20250429092113/https://www.legislation.sa.gov.au/lz?path=/C/A/Public%20Holidays%20Act%202023)
-          * [SA 2023-2024](https://web.archive.org/web/20250404084235/https://www.safework.sa.gov.au/resources/public-holidays)
-          * [SA 2007-2021](https://web.archive.org/web/20240610084716/https://www.safework.sa.gov.au/__data/assets/pdf_file/0007/235474/Public-Holidays-since-2007.pdf)
-          * [TAS Statutory Holidays Act 2000](https://web.archive.org/web/20250423095807/https://www.legislation.tas.gov.au/view/html/inforce/current/act-2000-096)
-          * [VIC Public Holidays Act 1993](https://web.archive.org/web/20250212090816/https://www.legislation.vic.gov.au/in-force/acts/public-holidays-act-1993/027)
-          * [VIC Minister appointment](https://web.archive.org/web/20240328142238/https://www.gazette.vic.gov.au/gazette/Gazettes2015/GG2015S229.pdf)
-          * [VIC 2018-2024](https://web.archive.org/web/20250422235530/https://business.vic.gov.au/business-information/public-holidays)
-          * [WA Public and Bank Holidays Act 1972](https://web.archive.org/web/20241106220940/https://www.legislation.wa.gov.au/legislation/statutes.nsf/law_a639.html)
-          * [WA 2019-2023](https://web.archive.org/web/20240805123535/https://www.commerce.wa.gov.au/labour-relations/previous-years-public-holiday-dates)
+        * ACT:
+            * [ACT Holidays Act 1958](https://web.archive.org/web/20250322061953/https://www.legislation.act.gov.au/a/1958-19/)
+            * [ACT 2013-2023](https://web.archive.org/web/20240401072340/https://www.cmtedd.act.gov.au/archived-content/holidays/previous-years)
+            * [ACT 2026-2029](https://web.archive.org/web/20260323230558/https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving)
+        * NSW:
+            * [NSW Banks and Bank Holidays Act 1912](https://web.archive.org/web/20241107225523/https://legislation.nsw.gov.au/view/html/repealed/current/act-1912-043)
+            * [NSW Public Holidays Act 2010](https://web.archive.org/web/20250316173922/https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115)
+            * [NSW 2026-2027](https://web.archive.org/web/20260216073138/https://www.nsw.gov.au/about-nsw/public-holidays)
+        * NT:
+            * [NT Public Holidays Act 1981](https://web.archive.org/web/20250315072128/https://legislation.nt.gov.au/api/sitecore/Act/PDF?id=12145)
+        * QLD:
+            * [QLD Holidays Act 1983](https://web.archive.org/web/20250404230918/https://www.legislation.qld.gov.au/view/html/inforce/current/act-1983-018)
+            * [QLD 2013-2028](https://web.archive.org/web/20150703042947/http://www.qld.gov.au/recreation/travel/holidays/public/)
+        * SA:
+            * [SA Holidays Act 1910](https://web.archive.org/web/20250420203417/https://www.legislation.sa.gov.au/LZ/C/A/HOLIDAYS%20ACT%201910.aspx)
+            * [SA Public Holidays Act 2023](https://web.archive.org/web/20250429092113/https://www.legislation.sa.gov.au/lz?path=/C/A/Public%20Holidays%20Act%202023)
+            * [SA 2007-2021](https://web.archive.org/web/20240610084716/https://www.safework.sa.gov.au/__data/assets/pdf_file/0007/235474/Public-Holidays-since-2007.pdf)
+            * [SA 2023-2024](https://web.archive.org/web/20250404084235/https://www.safework.sa.gov.au/resources/public-holidays)
+        * TAS:
+            * [TAS Statutory Holidays Act 2000](https://web.archive.org/web/20250423095807/https://www.legislation.tas.gov.au/view/html/inforce/current/act-2000-096)
+        * VIC:
+            * [VIC Public Holidays Act 1993](https://web.archive.org/web/20250212090816/https://www.legislation.vic.gov.au/in-force/acts/public-holidays-act-1993/027)
+            * [VIC Minister appointment](https://web.archive.org/web/20240328142238/https://www.gazette.vic.gov.au/gazette/Gazettes2015/GG2015S229.pdf)
+            * [VIC 2018-2024](https://web.archive.org/web/20250422235530/https://business.vic.gov.au/business-information/public-holidays)
+        * WA:
+            * [WA Public and Bank Holidays Act 1972](https://web.archive.org/web/20241106220940/https://www.legislation.wa.gov.au/legislation/statutes.nsf/law_a639.html)
+            * [WA 2019-2023](https://web.archive.org/web/20240805123535/https://www.commerce.wa.gov.au/labour-relations/previous-years-public-holiday-dates)
     """
 
     country = "AU"
@@ -118,6 +132,16 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
+    def _move_holiday(
+        self,
+        dt: date,
+        *,
+        rule: ObservedRule | None = None,
+        force_observed: bool = False,
+        show_observed_label: bool = True,
+    ) -> tuple[bool, date | None]:
+        return super()._move_holiday(dt, rule=rule, show_observed_label=False)
+
     def _populate_public_holidays(self):
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
@@ -166,9 +190,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             self._add_observed(dt)
         elif self._year >= 1959:
             self._move_holiday(
-                dt,
-                rule=SAT_SUN_TO_NEXT_MON if self._year >= 1993 else SUN_TO_NEXT_MON,
-                show_observed_label=False,
+                dt, rule=SAT_SUN_TO_NEXT_MON if self._year >= 1993 else SUN_TO_NEXT_MON
             )
 
         # Australia Day.
@@ -180,9 +202,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             dt = self._add_holiday_jan_26(self.australia_day)
             if self._year >= 1959:
                 self._move_holiday(
-                    dt,
-                    rule=SAT_SUN_TO_NEXT_MON if self._year >= 1990 else ALL_TO_NEXT_MON,
-                    show_observed_label=False,
+                    dt, rule=SAT_SUN_TO_NEXT_MON if self._year >= 1990 else ALL_TO_NEXT_MON
                 )
 
         if self._year >= 1913:
@@ -203,9 +223,9 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # ANZAC Day.
             dt = self._add_anzac_day(tr("ANZAC Day"))
             if self._year == 2026:
-                self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON)
+                self._add_observed(dt)
             elif self._year >= 1959:
-                self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
+                self._move_holiday(dt, rule=SUN_TO_NEXT_MON)
 
         # Easter Saturday.
         self._add_holy_saturday(tr("Easter Saturday"))
@@ -259,7 +279,6 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
                 rule=(SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE)
                 if self._year >= 1992
                 else (SUN_TO_NEXT_MON + MON_TO_NEXT_TUE),
-                show_observed_label=False,
             )
 
         # Christmas Day.
@@ -273,9 +292,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
         elif self._year >= 1958:
             self._move_holiday(
-                dt,
-                rule=SAT_SUN_TO_NEXT_MON if self._year >= 1992 else SUN_TO_NEXT_MON,
-                show_observed_label=False,
+                dt, rule=SAT_SUN_TO_NEXT_MON if self._year >= 1992 else SUN_TO_NEXT_MON
             )
 
     def _populate_subdiv_act_bank_holidays(self):
@@ -306,7 +323,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
                 else tr("Anniversary Day")
             )
             if self._year >= 2011:
-                self._move_holiday(dt, show_observed_label=False)
+                self._move_holiday(dt)
             else:
                 self._add_observed(dt, rule=SUN_TO_NEXT_MON)
 
@@ -328,7 +345,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             if self._year <= 2010:
                 self._add_observed(dt, rule=SUN_TO_NEXT_MON)
             elif 2026 <= self._year <= 2027:
-                self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON)
+                self._add_observed(dt)
 
         # Labor Day.
         self._add_holiday_1st_mon_of_oct(tr("Labour Day"))
@@ -376,7 +393,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2017:
             self._add_observed(dt)
         elif self._year >= 1982:
-            self._move_holiday(dt, show_observed_label=False)
+            self._move_holiday(dt)
 
         # Australia Day.
         # from 1982: SAT, SUN - move to MON.
@@ -385,7 +402,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 1888:
             dt = self._add_holiday_jan_26(self.australia_day)
             if self._year >= 1982:
-                self._move_holiday(dt, show_observed_label=False)
+                self._move_holiday(dt)
 
         # ANZAC Day.
         # from 1982: SUN - to MON.
@@ -394,7 +411,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # ANZAC Day.
             dt = self._add_anzac_day(tr("ANZAC Day"))
             if self._year >= 1982:
-                self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
+                self._move_holiday(dt, rule=SUN_TO_NEXT_MON)
 
         # Easter Saturday.
         self._add_holy_saturday(tr("Easter Saturday"))
@@ -423,9 +440,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2023:
             self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE)
         elif self._year >= 1981:
-            self._move_holiday(
-                dt, rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE, show_observed_label=False
-            )
+            self._move_holiday(dt, rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE)
 
         # Christmas Day.
         # 1981-2015: SAT, SUN - to MON.
@@ -436,7 +451,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2016:
             self._add_observed(dt)
         elif self._year >= 1981:
-            self._move_holiday(dt, show_observed_label=False)
+            self._move_holiday(dt)
 
     def _populate_subdiv_nt_half_day_holidays(self):
         if self._year >= 2016:
@@ -460,7 +475,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2012:
             self._add_observed(dt)
         elif self._year >= 1984:
-            self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
+            self._move_holiday(dt, rule=SUN_TO_NEXT_MON)
 
         # Australia Day.
         # 1984-1995: not MON - move to MON.
@@ -471,9 +486,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             dt = self._add_holiday_jan_26(self.australia_day)
             if self._year >= 1984:
                 self._move_holiday(
-                    dt,
-                    rule=SAT_SUN_TO_NEXT_MON if self._year >= 1996 else ALL_TO_NEXT_MON,
-                    show_observed_label=False,
+                    dt, rule=SAT_SUN_TO_NEXT_MON if self._year >= 1996 else ALL_TO_NEXT_MON
                 )
 
         # ANZAC Day.
@@ -483,7 +496,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # ANZAC Day.
             dt = self._add_anzac_day(tr("ANZAC Day"))
             if self._year >= 1984:
-                self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
+                self._move_holiday(dt, rule=SUN_TO_NEXT_MON)
 
         # Easter Saturday.
         self._add_holy_saturday(tr("Easter Saturday"))
@@ -532,9 +545,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2011:
             self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
         elif self._year >= 1984:
-            self._move_holiday(
-                dt, rule=SUN_TO_NEXT_MON + MON_TO_NEXT_TUE, show_observed_label=False
-            )
+            self._move_holiday(dt, rule=SUN_TO_NEXT_MON + MON_TO_NEXT_TUE)
 
         # Christmas Day.
         # 1984-2010: SUN - to MON.
@@ -545,7 +556,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2011:
             self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
         elif self._year >= 1984:
-            self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
+            self._move_holiday(dt, rule=SUN_TO_NEXT_MON)
 
     def _populate_subdiv_qld_half_day_holidays(self):
         if self._year >= 2019:
@@ -566,9 +577,9 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             self._add_observed(dt)
         elif self._year >= 2004:
             self._add_observed(dt, rule=SUN_TO_NEXT_MON)
-            self._move_holiday(dt, rule=SAT_TO_NEXT_MON, show_observed_label=False)
+            self._move_holiday(dt, rule=SAT_TO_NEXT_MON)
         elif self._year >= 1984:
-            self._move_holiday(dt, show_observed_label=False)
+            self._move_holiday(dt)
 
         # Australia Day.
         # 1984-1993: not MON - move to MON.
@@ -580,12 +591,12 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # Australia Day.
             dt = self._add_holiday_jan_26(self.australia_day)
             if 1994 <= self._year <= 2003 or self._year >= 2024:
-                self._move_holiday(dt, show_observed_label=False)
+                self._move_holiday(dt)
             elif self._year >= 2004:
                 self._add_observed(dt, rule=SUN_TO_NEXT_MON)
-                self._move_holiday(dt, rule=SAT_TO_NEXT_MON, show_observed_label=False)
+                self._move_holiday(dt, rule=SAT_TO_NEXT_MON)
             elif self._year >= 1984:
-                self._move_holiday(dt, rule=ALL_TO_NEXT_MON, show_observed_label=False)
+                self._move_holiday(dt, rule=ALL_TO_NEXT_MON)
 
         # Adelaide Cup Day.
         # First observed as Public Holidays in 1973: https://web.archive.org/web/20260122052707/https://www.racingsa.com.au/news/a-little-adelaide-cup-history
@@ -633,13 +644,11 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE)
         elif self._year >= 2003:
             self._add_observed(dt, rule=SUN_TO_NEXT_TUE + MON_TO_NEXT_TUE)
-            self._move_holiday(dt, rule=SAT_TO_NEXT_MON, show_observed_label=False)
+            self._move_holiday(dt, rule=SAT_TO_NEXT_MON)
         elif self._year >= 1993:
-            self._move_holiday(
-                dt, rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE, show_observed_label=False
-            )
+            self._move_holiday(dt, rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE)
         elif self._year >= 1984:
-            self._move_holiday(dt, show_observed_label=False)
+            self._move_holiday(dt)
 
         # Christmas Day.
         # 1984-2002: SAT, SUN - move to MON.
@@ -652,9 +661,9 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             self._add_observed(dt)
         elif self._year >= 2003:
             self._add_observed(dt, rule=SUN_TO_NEXT_MON)
-            self._move_holiday(dt, rule=SAT_TO_NEXT_MON, show_observed_label=False)
+            self._move_holiday(dt, rule=SAT_TO_NEXT_MON)
         elif self._year >= 1984:
-            self._move_holiday(dt, show_observed_label=False)
+            self._move_holiday(dt)
 
     def _populate_subdiv_sa_half_day_holidays(self):
         if self._year >= 2012:
@@ -675,7 +684,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # New Year's Day.
         dt = self._add_new_years_day(tr("New Year's Day"))
         if self._year >= 2001:
-            self._move_holiday(dt, show_observed_label=False)
+            self._move_holiday(dt)
 
         # Australia Day.
         # from 2001: SAT, SUN - move to MON.
@@ -684,7 +693,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 1888:
             dt = self._add_holiday_jan_26(self.australia_day)
             if self._year >= 2001:
-                self._move_holiday(dt, show_observed_label=False)
+                self._move_holiday(dt)
 
         # Eight Hours Day.
         self._add_holiday_2nd_mon_of_mar(tr("Eight Hours Day"))
@@ -710,7 +719,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2010:
             self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
         elif self._year >= 2000:
-            self._move_holiday(dt, rule=SAT_SUN_TO_NEXT_MON_TUE, show_observed_label=False)
+            self._move_holiday(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
 
         # Boxing Day.
         # from 2000: SAT - to MON, SUN - to TUE.
@@ -718,7 +727,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # Boxing Day.
         dt = self._add_christmas_day_two(tr("Boxing Day"))
         if self._year >= 2000:
-            self._move_holiday(dt, rule=SAT_SUN_TO_NEXT_MON_TUE, show_observed_label=False)
+            self._move_holiday(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
 
     def _populate_subdiv_vic_public_holidays(self):
         # New Year's Day.
@@ -731,7 +740,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2009:
             self._add_observed(dt)
         elif self._year >= 1998:
-            self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
+            self._move_holiday(dt, rule=SUN_TO_NEXT_MON)
         elif self._year >= 1994:
             self._add_observed(dt, rule=SUN_TO_NEXT_MON)
 
@@ -742,7 +751,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 1888:
             dt = self._add_holiday_jan_26(self.australia_day)
             if self._year >= 2009:
-                self._move_holiday(dt, show_observed_label=False)
+                self._move_holiday(dt)
 
         # Labor Day.
         self._add_holiday_2nd_mon_of_mar(tr("Labour Day"))
@@ -790,7 +799,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2019:
             self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
         elif self._year >= 2008:
-            self._move_holiday(dt, rule=SAT_SUN_TO_NEXT_MON_TUE, show_observed_label=False)
+            self._move_holiday(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
 
         # Boxing Day.
         # 1994-2007: SUN - to MON.
@@ -801,7 +810,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2008:
             self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE)
         elif self._year >= 1994:
-            self._move_holiday(dt, rule=SUN_TO_NEXT_MON, show_observed_label=False)
+            self._move_holiday(dt, rule=SUN_TO_NEXT_MON)
 
     def _populate_subdiv_wa_public_holidays(self):
         # New Year's Day.
@@ -820,9 +829,9 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 1888:
             dt = self._add_holiday_jan_26(self.australia_day)
             if self._year >= 1994:
-                self._move_holiday(dt, show_observed_label=False)
+                self._move_holiday(dt)
             elif self._year >= 1973:
-                self._move_holiday(dt, rule=ALL_TO_NEXT_MON, show_observed_label=False)
+                self._move_holiday(dt, rule=ALL_TO_NEXT_MON)
 
         # Labor Day.
         self._add_holiday_1st_mon_of_mar(tr("Labour Day"))
@@ -906,7 +915,7 @@ class AustraliaStaticHolidays:
 
     special_act_public_holidays = {
         # Declared public holiday.
-        2020: (APR, 20, tr("Declared public holiday")),
+        2020: (APR, 27, tr("Declared public holiday")),
         # Additional public holiday.
         2021: (APR, 25, tr("Additional public holiday")),
     }

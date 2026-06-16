@@ -12,9 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.heard_island_and_mcdonald_islands import (
-    HeardIslandAndMcDonaldIslands,
-)
+from holidays.countries.heard_island_and_mcdonald_islands import HeardIslandAndMcDonaldIslands
 from tests.common import CommonCountryTests
 
 

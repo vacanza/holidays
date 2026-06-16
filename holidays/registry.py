@@ -384,10 +384,7 @@ class EntityLoader:
             Whether to include entity aliases (e.g. GBR and UK for GB,
             UKR for UA, USA for US, etc).
         """
-        return EntityLoader._get_entity_codes(
-            COUNTRIES,
-            include_aliases=include_aliases,
-        )
+        return EntityLoader._get_entity_codes(COUNTRIES, include_aliases=include_aliases)
 
     @staticmethod
     def get_financial_codes(include_aliases: bool = True) -> Iterable[str]:
@@ -398,9 +395,7 @@ class EntityLoader:
             TAR for ECB, NYSE for XNYS, etc).
         """
         return EntityLoader._get_entity_codes(
-            FINANCIAL,
-            include_aliases=include_aliases,
-            max_code_length=4,
+            FINANCIAL, include_aliases=include_aliases, max_code_length=4
         )
 
     @staticmethod

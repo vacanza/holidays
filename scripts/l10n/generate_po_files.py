@@ -131,9 +131,7 @@ class POGenerator:
             "Content-Transfer-Encoding": "8bit",
             "X-Source-Language": default_language,
         }
-        default_metadata = {
-            "POT-Creation-Date": timestamp,
-        }
+        default_metadata = {"POT-Creation-Date": timestamp}
         po_file.metadata = default_metadata | po_file.metadata | forced_metadata
 
     @classmethod

@@ -42,6 +42,7 @@ dependencies = [ "python-dateutil>=2.9.0.post0,<3" ]
 urls.Changelog = "https://github.com/vacanza/holidays/releases/"
 urls.Documentation = "https://holidays.readthedocs.io/en/latest/"
 urls.Repository = "https://github.com/vacanza/holidays/"
+scripts.holidays-ics = "holidays.generate_ics:main"
 
 [dependency-groups]
 dev = [
@@ -88,6 +89,7 @@ lint.per-file-ignores."holidays/calendars/__init__.py" = [ "F401" ]
 lint.per-file-ignores."holidays/constants.py" = [ "F401" ]
 lint.per-file-ignores."holidays/countries/__init__.py" = [ "F401" ]
 lint.per-file-ignores."holidays/financial/__init__.py" = [ "F401" ]
+lint.per-file-ignores."holidays/generate_ics.py" = [ "T201" ]
 lint.per-file-ignores."holidays/groups/__init__.py" = [ "F401" ]
 lint.per-file-ignores."holidays/holiday_base.py" = [ "FBT" ]
 lint.per-file-ignores."holidays/ical.py" = [ "FBT" ]
@@ -134,6 +136,6 @@ ini_options.testpaths = [ "tests" ]
 [tool.coverage]
 run.branch = true
 run.omit = [ "scripts/*", "tests/*" ]
-report.exclude_lines = [
+report.exclude_also = [
   "^if TYPE_CHECKING:",
 ]
