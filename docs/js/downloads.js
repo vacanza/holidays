@@ -45,7 +45,6 @@ function holidayDownloads() {
 
         // Formatting Helper Functions
         formatLabel: (str) => str.charAt(0).toUpperCase() + str.slice(1).replace(/_/g, ' '),
-
         _getPath: function(cat, ext) {
             return `ics/${this.type}/${this.selectedEntity}/${this.selectedSubdiv}_${this.selectedLang}_${cat}.${ext}`;
         },
