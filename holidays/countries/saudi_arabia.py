@@ -135,7 +135,8 @@ class SaudiArabiaIslamicHolidays(_CustomIslamicHolidays):
 
 
 class SaudiArabiaStaticHolidays:
-    """
+    """Saudi Arabia special holidays.
+
     References:
         [Occasion of King Abdullah's return](https://web.archive.org/web/20130712223303/https://www.arabnews.com/node/369196)
         [Day of mourning for King Abdullah](https://web.archive.org/web/20221216055244/https://www.arabnews.com/saudi-arabia/news/694326)
