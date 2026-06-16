@@ -119,8 +119,8 @@ hide:
             </tr>
             <template x-for="(event, index) in yearData.events" :key="index">
               <tr>
-                <td style="font-family: monospace;" x-text="event.date || event.start"></td>
-                <td x-text="event.name || event.summary"></td>
+                <td x-text="event.date"></td>
+                <td x-text="event.name"></td>
               </tr>
             </template>
           </tbody>
