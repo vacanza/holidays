@@ -153,7 +153,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "Mahatma Gandhi's Jayanti", (f"{year}-10-02" for year in self.full_range)
         )
 
-    # Hindu Holidays.
+    # Hindu holidays.
 
     def test_maha_shivaratri(self):
         name = "Maha Shivaratri"
@@ -328,7 +328,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self._assertHinduHolidayHelper(name, dts)
 
-    # Islamic Holidays.
+    # Islamic holidays.
 
     def test_ashura(self):
         name = "Muharram"
@@ -501,7 +501,6 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self._assertHinduHolidayHelper(name, dts, category_optional=True, skip_years={2013})
         self.assertOptionalHolidayName("Sri Panchami", "2013-02-14")
-        self.assertOptionalHolidayName("Basant Panchami", "2013-02-15")
         self.assertOptionalHolidayName("Basant Panchami", "2013-02-15")
         self.assertNoHolidayName("Sri Panchami")
         self.assertNoHolidayName("Basant Panchami")
@@ -934,7 +933,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertOptionalHolidayName(name, range(2008, self.end_year))
         self.assertNoOptionalHolidayName(range(self.start_year, 2008))
 
-    # SUBDIV HOLIDAYS
+    # SUBDIV HOLIDAYS.
 
     def test_bathukamma_festival(self):
         name = "Bathukamma Festival"
