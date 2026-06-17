@@ -407,7 +407,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(name, (f"{year}-01-01" for year in self.full_range))
 
-    # Hindu holidays
+    # Hindu holidays.
 
     def test_guru_gobind_singh_birthday(self):
         name = "Guru Gobind Singh's Jayanti"
@@ -879,7 +879,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertNoOptionalHolidayName(name, range(self.start_year, 2002))
 
-    # Islamic holidays
+    # Islamic holidays.
 
     def test_ali_birthday(self):
         name = "Hazarat Ali's Birthday"
@@ -909,7 +909,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertOptionalIslamicNoEstimatedHolidayName(name, self.full_range)
 
-    # Christian holidays
+    # Christian holidays.
 
     def test_christmas_eve(self):
         name = "Christmas Eve"
