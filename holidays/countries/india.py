@@ -43,8 +43,8 @@ class India(
         * <https://web.archive.org/web/20250413193633/https://www.calendarlabs.com/holidays/india/2021>
         * <https://web.archive.org/web/20231118175007/http://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm>
         * <https://web.archive.org/web/20231008063930/https://vahan.parivahan.gov.in/vahan4dashboard/>
-        * <https://web.archive.org/web/20250000000000*/https://doptcirculars.nic.in/Default.aspx?URL=dFaVfDsok83H>
-        * <https://web.archive.org/web/20260000000000*/https://doptcirculars.nic.in/Default.aspx?URL=dFaVfDsok83HARCH%20*>
+        * <https://web.archive.org/web/20250803044148/https://doptcirculars.nic.in/Default.aspx?URL=dFaVfDsok83H>
+        * <https://web.archive.org/web/20201027122146/https://doptcirculars.nic.in/Default.aspx?URL=dFaVfDsok83HARCH%20>
         * <https://web.archive.org/web/20220517110319/https://www.referencer.in/HolidayList.aspx>
         * Andaman and Nicobar Islands:
             * <https://web.archive.org/web/20251214133200/https://andamannicobar.gov.in/admin-pannel/othersdoc/1-29-Holiday%20List%202026%20Gazette.pdf>
