@@ -754,6 +754,9 @@ class IndiaStaticHolidays:
     # Janmashtami (Smarta).
     name_janmashtami_smarta = tr("Janmashtami (Smarta)")
 
+    # Guru Gobind Singh's Birthday.
+    name_guru_gobind_singh_birthday = tr("Guru Gobind Singh's Jayanti")
+
     special_public_holidays = {
         # Dussehra (Mahanavami).
         2002: (OCT, 14, tr("Dussehra (Mahanavami)")),
@@ -763,6 +766,7 @@ class IndiaStaticHolidays:
         2002: (DEC, 8, name_guru_tegh_bahadur_martyrdom_day),
         2003: (NOV, 28, name_guru_tegh_bahadur_martyrdom_day),
         2008: (AUG, 28, name_janmashtami_smarta),
+        2011: (DEC, 31, name_guru_gobind_singh_birthday),
         2012: (
             (AUG, 21, name_vinayak_chaturthi),
             (SEP, 19, name_ganesh_chaturthi),
