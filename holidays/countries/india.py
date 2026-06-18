@@ -46,6 +46,7 @@ class India(
         * <https://web.archive.org/web/20250803044148/https://doptcirculars.nic.in/Default.aspx?URL=dFaVfDsok83H>
         * <https://web.archive.org/web/20201027122146/https://doptcirculars.nic.in/Default.aspx?URL=dFaVfDsok83HARCH%20>
         * <https://web.archive.org/web/20220517110319/https://www.referencer.in/HolidayList.aspx>
+        * <http://web.archive.org/web/20260618194243/https://www.scribd.com/document/921146658/Govt-Holiday-List-07>
         * Andaman and Nicobar Islands:
             * <https://web.archive.org/web/20251214133200/https://andamannicobar.gov.in/admin-pannel/othersdoc/1-29-Holiday%20List%202026%20Gazette.pdf>
         * Gujarat:
@@ -380,8 +381,9 @@ class India(
         # Vishu.
         self._add_vishu(tr("Vishu"))
 
-        # Guru Rabindranath's Birthday.
-        self._add_rabindranath_birthday(tr("Guru Rabindranath's Jayanti"))
+        if self._year >= 2008:
+            # Guru Rabindranath's Birthday.
+            self._add_rabindranath_birthday(tr("Guru Rabindranath's Jayanti"))
 
         # Rath Yatra.
         self._add_rath_yatra(tr("Rath Yatra"))
@@ -455,7 +457,7 @@ class India(
             # Christmas Eve.
             self._add_christmas_eve(tr("Christmas Eve"))
 
-        if self._year >= 2008:
+        if self._year >= 2007:
             # Easter Sunday.
             self._add_easter_sunday(tr("Easter Sunday"))
 
@@ -768,6 +770,7 @@ class IndiaStaticHolidays:
     special_optional_holidays = {
         2002: (DEC, 8, name_guru_tegh_bahadur_martyrdom_day),
         2003: (NOV, 28, name_guru_tegh_bahadur_martyrdom_day),
+        2007: (SEP, 3, name_janmashtami_smarta),
         2008: (AUG, 28, name_janmashtami_smarta),
         2011: (DEC, 31, name_guru_gobind_singh_birthday),
         2012: (

@@ -280,6 +280,7 @@ class TestIndia(CommonCountryTests, TestCase):
             skip_years=set(self.hindu_full_range) - skip_years,
         )
         dts = (
+            "2007-09-03",
             "2008-08-28",
             "2020-08-11",
             "2021-08-30",
@@ -289,7 +290,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertOptionalHolidayName(name_smarta, dts)
         self.assertNoOptionalHolidayName(
-            name_smarta, set(self.hindu_full_range) - {2008, 2020, 2021, 2022, 2023, 2025}
+            name_smarta, set(self.hindu_full_range) - {2007, 2008, 2020, 2021, 2022, 2023, 2025}
         )
 
     def test_dussehra(self):
@@ -633,8 +634,8 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(
             name,
-            (f"{year}-05-08" for year in self.full_range if isleap(year)),
-            (f"{year}-05-09" for year in self.full_range if not isleap(year)),
+            (f"{year}-05-08" for year in range(2008, self.end_year) if isleap(year)),
+            (f"{year}-05-09" for year in range(2008, self.end_year) if not isleap(year)),
         )
         # SUBDIVS.
         for subdiv, holidays in self.subdiv_holidays.items():
@@ -930,8 +931,8 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-03-31",
             "2025-04-20",
         )
-        self.assertOptionalHolidayName(name, range(2008, self.end_year))
-        self.assertNoOptionalHolidayName(range(self.start_year, 2008))
+        self.assertOptionalHolidayName(name, range(2007, self.end_year))
+        self.assertNoOptionalHolidayName(range(self.start_year, 2007))
 
     # SUBDIV HOLIDAYS.
 
