@@ -51,7 +51,7 @@ class Singapore(
     Limitations:
         * Prior to 1969: holidays are estimated.
         * Prior to 2000: holidays may not be accurate.
-        * 2024 and later: the following four moving date holidays (whose exact
+        * 2028 and later: the following four moving date holidays (whose exact
             date is announced yearly) are estimated, and so denoted:
             * Hari Raya Puasa
             * Hari Raya Haji
