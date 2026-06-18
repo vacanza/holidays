@@ -69,7 +69,7 @@ class TestMalawi(CommonCountryTests, TestCase):
             "2021-04-02",
             "2022-04-15",
         )
-    
+
     def test_easter_monday(self):
         self.assertHolidayName(
             "Easter Monday",
