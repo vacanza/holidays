@@ -338,7 +338,7 @@ class India(
             # Maha Shivaratri.
             self._add_maha_shivaratri(tr("Maha Shivaratri"))
 
-        if not (2012 <= self._year <= 2015):
+        if self._year <= 2011 or self._year >= 2016:
             # Dolyatra.
             self._add_holika_dahan(tr("Dolyatra"))
 
