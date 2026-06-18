@@ -637,6 +637,7 @@ class TestIndia(CommonCountryTests, TestCase):
             (f"{year}-05-08" for year in range(2008, self.end_year) if isleap(year)),
             (f"{year}-05-09" for year in range(2008, self.end_year) if not isleap(year)),
         )
+        self.assertNoOptionalHolidayName(name, range(self.start_year, 2008))
         # SUBDIVS.
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "WB":
