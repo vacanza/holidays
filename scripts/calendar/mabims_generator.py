@@ -38,7 +38,6 @@ from __future__ import annotations
 
 from collections import defaultdict
 from datetime import date, timedelta
-import math
 from typing import TYPE_CHECKING
 
 from skyfield import almanac
