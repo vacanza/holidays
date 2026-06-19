@@ -218,6 +218,23 @@ class TestSingapore(CommonCountryTests, TestCase):
             ("2026-12-25", "Christmas Day"),
         )
 
+    def test_2027(self):
+        self.assertHolidaysInYear(
+            2027,
+            ("2027-01-01", "New Year's Day"),
+            ("2027-02-06", "Chinese New Year"),
+            ("2027-02-07", "Chinese New Year"),
+            ("2027-02-08", "Chinese New Year (observed)"),
+            ("2027-03-10", "Hari Raya Puasa"),
+            ("2027-03-26", "Good Friday"),
+            ("2027-05-01", "Labour Day"),
+            ("2027-05-17", "Hari Raya Haji"),
+            ("2027-05-20", "Vesak Day"),
+            ("2027-08-09", "National Day"),
+            ("2027-10-28", "Deepavali"),
+            ("2027-12-25", "Christmas Day"),
+        )
+
     def test_non_observed(self):
         self.assertNoNonObservedHoliday("2023-01-02")
 
