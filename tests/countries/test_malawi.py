@@ -120,6 +120,7 @@ class TestMalawi(CommonCountryTests, TestCase):
             "2014-07-07",
             "2019-07-08",
             "2024-07-08",
+            "2025-07-07",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
