@@ -19,7 +19,7 @@ class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     """Zambia holidays.
 
     While Easter Sunday and Easter Monday are not explicitly listed in The Public Holidays Act,
-    they're ncluded annually via Section 3 (Power to declare additional public holidays).
+    they're included annually via Section 3 (Power to declare additional public holidays).
 
     According to the The Constitution of Zambia (Amendment) Act, 2016 (Act No. 2 of 2016):
         Art. 56. (1) A general election shall be held, every five years after
@@ -131,7 +131,7 @@ class ZambiaStaticHolidays:
        * [The Public Holiday (Declaration) Notice, 2014](https://web.archive.org/web/20260619024137/https://media.zambialii.org/media/legislation/41389/source_file/4c0627188f528494/zm-act-si-2014-61-publication-document.pdf)
        * [The Public Holidays (Declaration) Notice, 2014](https://web.archive.org/web/20260619035400/https://media.zambialii.org/media/legislation/41393/source_file/448987a69ee8f357/zm-act-si-2014-66-publication-document.pdf)
        * [The Public Holidays (Declaration) Notice, 2015](https://web.archive.org/web/20260619040014/https://media.zambialii.org/media/legislation/41397/source_file/285b30277071303f/zm-act-si-2015-1-publication-document.pdf)
-       * [The Public Holidys (Declaration) Notice 2016](https://web.archive.org/web/20260619040813/https://media.zambialii.org/media/legislation/41587/source_file/1287ab93099c38bc/zm-act-si-2016-66-publication-document.pdf)
+       * [The Public Holidays (Declaration) Notice 2016](https://web.archive.org/web/20260619040813/https://media.zambialii.org/media/legislation/41587/source_file/1287ab93099c38bc/zm-act-si-2016-66-publication-document.pdf)
        * [The Public Holidays (Declaration) Notice, 2018](https://web.archive.org/web/20260619042036/https://media.zambialii.org/media/legislation/42023/source_file/db3fb6a9f874f9cf/zm-act-si-2018-15-publication-document.pdf)
        * [The Public Holidays (Declaration) (No. 2) Notice, 2018](https://web.archive.org/web/20260619041704/https://media.zambialii.org/media/legislation/41988/source_file/0d665b642b92af1d/zm-act-si-2018-55-publication-document.pdf)
        * [The Public Holidays (Declaration) Notice, 2019](https://web.archive.org/web/20260619041859/https://media.zambialii.org/media/legislation/41889/source_file/296795324217f09a/zm-act-si-2019-71-publication-document.pdf)
