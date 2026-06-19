@@ -39,7 +39,7 @@ from __future__ import annotations
 from collections import defaultdict
 from datetime import date, timedelta
 from typing import TYPE_CHECKING
-
+import math
 from skyfield import almanac
 from skyfield.api import N, E, Topos, load, wgs84
 
