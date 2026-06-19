@@ -162,3 +162,25 @@ class TestMalawi(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_2022(self):
+        self.assertHolidaysInYear(
+            2022,
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-03", "New Year's Day (observed)"),
+            ("2022-01-15", "John Chilembwe Day"),
+            ("2022-01-17", "John Chilembwe Day (observed)"),
+            ("2022-03-03", "Martyrs Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-05-01", "Labour Day"),
+            ("2022-05-02", "Labour Day (observed)"),
+            ("2022-05-14", "Kamuzu Day"),
+            ("2022-05-16", "Kamuzu Day (observed)"),
+            ("2022-07-06", "Independence Day"),
+            ("2022-10-15", "Mother's Day"),
+            ("2022-10-17", "Mother's Day (observed)"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Boxing Day"),
+            ("2022-12-27", "Christmas Day (observed)"),
+        )
