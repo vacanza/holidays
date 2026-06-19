@@ -38,6 +38,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from datetime import date, timedelta
+import math
 from typing import TYPE_CHECKING
 
 from skyfield import almanac
@@ -124,7 +125,6 @@ def check_mabims_visibility(ts, eph, observer, check_date: date) -> bool:
     moon_ra, moon_dec, _ = moon_pos.radec()
     sun_ra, sun_dec, _ = sun_pos.radec()
 
-    import math
     d_ra = (moon_ra.hours - sun_ra.hours) * 15
     elongation = math.degrees(math.acos(
         max(-1.0, min(1.0,
@@ -168,11 +168,11 @@ def generate_data() -> None:
     # Cache month starts to avoid recalculating.
     month_starts: dict[tuple[int, int], date] = {}
 
-    print(f"Generating MABIMS dates for Hijri years {h_start}-{h_end}...")
+    print(f"Generating MABIMS dates for Hijri years {h_start}-{h_end}...")  # noqa: T201
 
     for h_year in range(h_start, h_end + 1):
         if h_year % 10 == 0:
-            print(f"Processing Hijri year {h_year}...")
+            print(f"Processing Hijri year {h_year}...")  # noqa: T201
 
         for h_month in range(1, 13):
             # Get approximate date from Umm al-Qura.
@@ -193,7 +193,7 @@ def generate_data() -> None:
 
     cal_gen = CalendarGenerator("islamic_mabims", "_IslamicMabimsLunar")
     cal_gen.generate(dates)
-    print("Done! Generated holidays/calendars/islamic_mabims_dates.py")
+    print("Done! Generated holidays/calendars/islamic_mabims_dates.py")  # noqa: T201
 
 
 if __name__ == "__main__":
