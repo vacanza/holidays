@@ -60,6 +60,34 @@ TASUA = "TASUA"
 
 
 class _IslamicLunar:
+    
+    ali_al_rida_death_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    ali_birthday_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    ali_death_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    arbaeen_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    ashura_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    eid_al_adha_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    eid_al_fitr_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    eid_al_ghadir_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    fatima_death_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    grand_magal_of_touba_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    hari_hol_johor_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    hasan_al_askari_death_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    hijri_new_year_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    imam_mahdi_birthday_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    isra_and_miraj_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    jumuatul_wida_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    laylat_al_qadr_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    maldives_embraced_islam_day_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    mawlid_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    nuzul_al_quran_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    prophet_death_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    quamee_dhuvas_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    ramadan_beginning_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    sadiq_birthday_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    sadiq_death_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    tasua_dates: tuple[int, int] | tuple[tuple[int, int], ...]
+    
     ALI_AL_RIDA_DEATH_DATES = {
         1924: (SEP, 28),
         1925: (SEP, 18),
