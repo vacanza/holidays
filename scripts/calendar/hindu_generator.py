@@ -253,6 +253,41 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_chhath_puja(self, year: int) -> date | None:
+        """
+        Chhath Puja = Kartik Shukla Shashthi.
+        Tithi = 6 (Shashthi) of Shukla Paksha in Kartik month - sun in sidereal Libra (sign 6).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        Shashthi detection:
+        - Present at sunrise -> return that day (first occurrence)
+        - Skipped between days (5 -> 7) -> return current day
+        """
+        exceptions = {
+            2025: date(2025, 10, 28),
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        # Find Kartik Amavasya
+        kartik_ama = self._get_amavasya(date(year, 10, 15), zodiac_sign=6)
+
+        if not kartik_ama:
+            return None
+
+        # Find Shashthi (tithi 6) at sunrise, or skipped case (5 -> 7)
+        for delta in range(4, 8):
+            dt = kartik_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            if t == 6:
+                return dt
+            if t == 7 and t_prev == 5:
+                return dt
+
+        return None
+
     def get_diwali(self, year: int) -> date | None:
         """
         Diwali = Kartik Amavasya.
@@ -776,6 +811,7 @@ _solar = _Solar()
 
 HINDU_LUNISOLAR_HOLIDAYS = (
     ("BASANT_PANCHAMI", _lunisolar.get_basant_panchami),
+    ("CHHATH_PUJA", _lunisolar.get_chhath_puja),
     ("DIWALI_INDIA", _lunisolar.get_diwali),
     ("DUSSEHRA", _lunisolar.get_dussehra),
     ("HOLI", _lunisolar.get_holi),
@@ -790,9 +826,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
 )
 
-HINDU_SOLAR_HOLIDAYS = (
-    # ("MAKAR_SANKRANTI", _solar.get_makar_sankranti),
-)
+HINDU_SOLAR_HOLIDAYS = (("MAKAR_SANKRANTI", _solar.get_makar_sankranti),)
 
 
 def generate_data() -> None:
