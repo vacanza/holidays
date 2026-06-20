@@ -56,13 +56,13 @@ class TestGenerateIcs(TestCase):
             finally:
                 os.chdir(current_dir)
 
-    def test_parse_year_single(self):
-        self.assertEqual(IcsGenerator.parse_years("2025"), (2025,))
+    def test_parse_years_single(self):
+        self.assertEqual(IcsGenerator.parse_years("2025"), (2025, 2025))
 
-    def test_parse_year_range(self):
-        self.assertEqual(tuple(IcsGenerator.parse_years("2024-2026")), (2024, 2025, 2026))
+    def test_parse_years_range(self):
+        self.assertEqual(IcsGenerator.parse_years("2024-2026"), (2024, 2026))
 
-    def test_parse_year_range_reversed(self):
+    def test_parse_years_range_reversed(self):
         with self.assertRaises(ArgumentTypeError) as context:
             IcsGenerator.parse_years("2026-2024")
         self.assertEqual(
@@ -70,11 +70,27 @@ class TestGenerateIcs(TestCase):
             "Invalid year range: start year must not be greater than end year",
         )
 
-    def test_parse_year_invalid(self):
+    def test_parse_years_invalid(self):
         with self.assertRaises(ArgumentTypeError) as context:
             IcsGenerator.parse_years("abc")
         self.assertEqual(
-            str(context.exception), "Invalid years value: 'abc'. Expected YYYY or YYYY-YYYY"
+            str(context.exception), "Invalid years value: 'abc'. Expected YYYY, YYYY-YYYY, or +N"
+        )
+
+    @patch("holidays.generate_ics.datetime", MockDatetime)
+    def test_parse_years_offset(self):
+        self.assertEqual(IcsGenerator.parse_years("+5"), (2025, 2030))
+
+    def test_parse_years_offset_negative(self):
+        with self.assertRaises(ArgumentTypeError) as context:
+            IcsGenerator.parse_years("+-2")
+        self.assertEqual(str(context.exception), "Invalid year offset: expected +N with N > 0")
+
+    def test_parse_years_offset_invalid(self):
+        with self.assertRaises(ArgumentTypeError) as context:
+            IcsGenerator.parse_years("+abc")
+        self.assertEqual(
+            str(context.exception), "Invalid years value: '+abc'. Expected YYYY, YYYY-YYYY, or +N"
         )
 
     def test_parse_categories(self):

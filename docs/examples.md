@@ -626,6 +626,8 @@ For installation instructions, see `uv` [documentation](https://docs.astral.sh/u
 
 By default, the generated calendar contains holidays for the current year and is written
 to a file whose name is derived from the selected calendar and year range.
+The `--years` option accepts a single year (2025), a year range (2025-2027), or a
+relative range (+10), which selects the current year through the current year plus 10.
 
 ### Examples
 
@@ -639,6 +641,12 @@ Generate a holiday calendar for the Canton of Zurich for a specific year:
 
 ```shell
 holidays-ics CH --subdiv ZH --years 2025
+```
+
+Generate a holiday calendar for the current year and the next 5 years:
+
+```shell
+holidays-ics US --years +5
 ```
 
 Generate a holiday calendar for multiple years and save it to a custom file:

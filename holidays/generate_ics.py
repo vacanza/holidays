@@ -15,7 +15,7 @@
 
 import sys
 from argparse import ArgumentParser, ArgumentTypeError, Namespace
-from collections.abc import Callable, Iterable
+from collections.abc import Callable
 from datetime import datetime, timezone
 
 import holidays
@@ -41,8 +41,11 @@ class IcsGenerator:
             "--years",
             default=str(datetime.now(timezone.utc).year),
             type=IcsGenerator.parse_years,
-            help="Year or year range (default: current year)",
-            metavar="YYYY[-YYYY]",
+            help=(
+                "Year or year range (default: current year). "
+                "+N means current year through current year + N"
+            ),
+            metavar="YYYY | YYYY-YYYY | +N",
         )
         parser.add_argument(
             "-s", "--subdiv", default=None, help="Subdivision code (e.g., CA, NY, SCT)"
@@ -62,19 +65,30 @@ class IcsGenerator:
         self.args = parser.parse_args()
 
     @staticmethod
-    def parse_years(years: str) -> Iterable[int]:
+    def parse_years(years: str) -> tuple[int, int]:
         try:
+            if years.startswith("+"):
+                if (offset := int(years[1:])) < 1:
+                    raise ArgumentTypeError("Invalid year offset: expected +N with N > 0")
+
+                current_year = datetime.now(timezone.utc).year
+                return current_year, current_year + offset
+
             if "-" in years:
                 start, end = map(int, years.split("-", 1))
                 if start > end:
                     raise ArgumentTypeError(
                         "Invalid year range: start year must not be greater than end year"
                     )
-                return range(start, end + 1)
-            return (int(years),)
+                return start, end
+
+            year = int(years)
+            return year, year
 
         except ValueError:
-            raise ArgumentTypeError(f"Invalid years value: '{years}'. Expected YYYY or YYYY-YYYY")
+            raise ArgumentTypeError(
+                f"Invalid years value: '{years}'. Expected YYYY, YYYY-YYYY, or +N"
+            )
 
     @staticmethod
     def parse_categories(value: str) -> list[str]:
@@ -89,16 +103,17 @@ class IcsGenerator:
         self.entity = entity_loader()
 
     def validate_years(self) -> None:
-        start_year, end_year = self.entity.start_year, self.entity.end_year
-        min_year, max_year = min(self.args.years), max(self.args.years)
-        if min_year < start_year or max_year > end_year:
+        entity_start_year, entity_end_year = self.entity.start_year, self.entity.end_year
+        start_year, end_year = self.args.years
+        if start_year < entity_start_year or end_year > entity_end_year:
             year_part = (
-                f"year {min_year} is not supported"
-                if min_year == max_year
-                else f"year range {min_year}-{max_year} is not fully supported"
+                f"year {start_year} is not supported"
+                if start_year == end_year
+                else f"year range {start_year}-{end_year} is not fully supported"
             )
             print(
-                f"Warning: {year_part} for {self.args.code} (supported: {start_year}-{end_year}). "
+                f"Warning: {year_part} for {self.args.code} "
+                f"(supported: {entity_start_year}-{entity_end_year}). "
                 "Holidays may be incomplete or missing.",
                 file=sys.stderr,
             )
@@ -148,15 +163,15 @@ class IcsGenerator:
         self.validate_language()
         self.validate_categories()
 
-        min_year, max_year = min(self.args.years), max(self.args.years)
-        years_part = f"{min_year}_{max_year}" if min_year != max_year else f"{min_year}"
+        start_year, end_year = self.args.years
+        years_part = f"{start_year}_{end_year}" if start_year != end_year else f"{start_year}"
         subdiv_part = f"_{self.args.subdiv.upper().replace(' ', '_')}" if self.args.subdiv else ""
         output_path = self.args.output or f"{self.args.code}{subdiv_part}_{years_part}.ics"
 
         try:
             holiday_obj = self.entity_loader(
                 subdiv=self.args.subdiv,
-                years=self.args.years,
+                years=range(start_year, end_year + 1),
                 categories=self.args.categories,
                 language=self.args.language,
             )
