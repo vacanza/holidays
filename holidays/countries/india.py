@@ -47,6 +47,9 @@ class India(
         * <https://web.archive.org/web/20201027122146/https://doptcirculars.nic.in/Default.aspx?URL=dFaVfDsok83HARCH%20>
         * <https://web.archive.org/web/20220517110319/https://www.referencer.in/HolidayList.aspx>
         * <http://web.archive.org/web/20260618194243/https://www.scribd.com/document/921146658/Govt-Holiday-List-07>
+        * <https://web.archive.org/web/20260620201925/https://www.sci.gov.in/calendar>
+        * <https://web.archive.org/web/20260620202110/https://bombayhighcourt.nic.in/hccalender.php>
+        * <https://web.archive.org/web/20260620202127/https://www.allahabadhighcourt.in/Calendar>
         * Andaman and Nicobar Islands:
             * <https://web.archive.org/web/20251214133200/https://andamannicobar.gov.in/admin-pannel/othersdoc/1-29-Holiday%20List%202026%20Gazette.pdf>
         * Gujarat:
@@ -680,45 +683,39 @@ class IND(India):
 
 
 class IndiaIslamicHolidays(_CustomIslamicHolidays):
-    ALI_BIRTHDAY_DATES_CONFIRMED_YEARS = (2001, 2025)
+    ALI_BIRTHDAY_DATES_CONFIRMED_YEARS = (2001, 2026)
     ALI_BIRTHDAY_DATES = {
+        2003: (SEP, 10),
         2018: (APR, 1),
         2024: (JAN, 25),
     }
 
-    ASHURA_DATES_CONFIRMED_YEARS = (2001, 2025)
+    ASHURA_DATES_CONFIRMED_YEARS = (2001, 2026)
     ASHURA_DATES = {
         2001: (APR, 4),
-        2002: (MAR, 24),
         2005: (FEB, 19),
         2006: (FEB, 9),
         2008: (JAN, 19),
-        2009: ((JAN, 7), (DEC, 28)),
-        2021: (AUG, 20),
     }
 
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_ADHA_DATES = {
         2005: (JAN, 21),
-        2006: ((JAN, 11), (DEC, 31)),
-        2007: (DEC, 20),
         2014: (OCT, 6),
         2015: (SEP, 25),
-        2016: (SEP, 13),
+        2026: (MAY, 27),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_FITR_DATES = {
         2004: (NOV, 14),
         2005: (NOV, 3),
-        2007: (OCT, 13),
-        2010: (SEP, 10),
-        2013: (AUG, 8),
+        2016: (JUL, 6),
     }
 
-    JUMUATUL_WIDA_DATES_CONFIRMED_YEARS = (2001, 2025)
+    JUMUATUL_WIDA_DATES_CONFIRMED_YEARS = (2001, 2026)
     JUMUATUL_WIDA_DATES = {
-        2009: (SEP, 16),
+        2009: (SEP, 18),
         2010: (SEP, 10),
         2015: (JUL, 17),
         2018: (JUN, 15),
@@ -726,12 +723,9 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
         2026: (MAR, 20),
     }
 
-    MAWLID_DATES_CONFIRMED_YEARS = (2001, 2025)
+    MAWLID_DATES_CONFIRMED_YEARS = (2001, 2026)
     MAWLID_DATES = {
-        2003: (MAY, 15),
         2004: (MAY, 3),
-        2009: (MAR, 9),
-        2015: ((JAN, 4), (DEC, 25)),
         2016: (DEC, 13),
         2017: (DEC, 2),
     }

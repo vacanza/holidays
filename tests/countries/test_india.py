@@ -336,7 +336,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             "2020-08-30",
-            "2021-08-20",
+            "2021-08-19",
             "2022-08-09",
             "2023-07-29",
             "2024-07-17",
