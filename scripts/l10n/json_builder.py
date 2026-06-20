@@ -50,8 +50,8 @@ class IntermediateJsonBuilder:
     """Builds and manages the intermediate JSON file mapping holiday strings across all locales."""
 
     _locale_path: Path = Path("holidays/locale")
-    _output_path: Path = Path("scripts/l10n/holidays_intermediate.json")
-    _backup_path: Path = Path("scripts/l10n/holidays_intermediate.json.bak")
+    _output_path: Path = Path("scripts/l10n/holidays_l10n.json")
+    _backup_path: Path = Path("scripts/l10n/holidays_l10n.json.bak")
 
     @staticmethod
     def _deduplicate_ids(grouped: dict) -> None:
@@ -225,7 +225,7 @@ class IntermediateJsonBuilder:
                 output, IntermediateJsonBuilder._output_path
             )
 
-        IntermediateJsonBuilder._output_path.resolve().write_text(
+        IntermediateJsonBuilder._output_path.write_text(
             json.dumps(output, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
             newline="\n",
@@ -287,7 +287,7 @@ class IntermediateJsonBuilder:
         data.append(new_entry)
         data.sort(key=lambda x: x["id"])
 
-        IntermediateJsonBuilder._output_path.resolve().write_text(
+        IntermediateJsonBuilder._output_path.write_text(
             json.dumps(data, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
             newline="\n",

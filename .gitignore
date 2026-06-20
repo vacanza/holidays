@@ -14,8 +14,7 @@ __pycache__
 *.DS_Store
 *.egg-info
 *.mo
-scripts/l10n/holidays_intermediate.json
-scripts/l10n/holidays_intermediate.json.bak
+scripts/l10n/holidays_l10n.json.bak
 *.pyc
 build/*
 coverage.lcov
