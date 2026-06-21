@@ -689,14 +689,14 @@ holidays-ics XNYS
 
 Examples combining multiple flags. These examples show how to manually specify a custom output file, as options like `--categories` and `--language` are not automatically included in the default generated filename yet.
 
-Multi-year public holiday calendar saved to a custom file (Note: Replace YYYY in the filename with the actual years):
+Multi-year public holiday calendar saved to a custom file (Note: Adjust the --output filename to reflect the generated years.)
 
 ```shell
-holidays-ics US --years +10 --categories public --output US_YYYY_YYYY_public_holidays.ics
+holidays-ics US --years +10 --categories public --output US_YYYY_YYYY_public.ics
 ```
 
-Generate a localized subdivision-specific calendar saved to a custom file (Note: Replace YYYY in the filename with the actual years):
+Generate a localized subdivision-specific calendar saved to a custom file (Note: Adjust the --output filename to reflect the generated years.)
 
 ```shell
-holidays-ics CH --subdiv ZH --language de --output zurich_YYYY_holidays_deutch.ics
+holidays-ics CH --subdiv ZH --language de --output CH_ZH_de_YYYY.ics
 ```
