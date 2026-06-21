@@ -84,24 +84,14 @@ class TestGenerateIcs(TestCase):
         self.assertEqual(IcsGenerator.parse_years("-4"), (2021, 2025))
 
     def test_parse_years_offset_invalid(self):
-        with self.assertRaises(ArgumentTypeError) as context:
-            IcsGenerator.parse_years("+abc")
-            self.assertEqual(
-                str(context.exception),
-                "Invalid years value: '+abc'. Expected YYYY, YYYY-YYYY, +N, or -N",
-            )
-
-            IcsGenerator.parse_years("-abc")
-            self.assertEqual(
-                str(context.exception),
-                "Invalid years value: '-abc'. Expected YYYY, YYYY-YYYY, +N, or -N",
-            )
-
-            IcsGenerator.parse_years("+-2")
-            (
-                str(context.exception),
-                "Invalid years value: '+-2'. Expected YYYY, YYYY-YYYY, +N, or -N",
-            )
+        for value in ("+abc", "-abc", "+-2"):
+            with self.subTest(value=value):
+                with self.assertRaises(ArgumentTypeError) as context:
+                    IcsGenerator.parse_years(value)
+                self.assertEqual(
+                    str(context.exception),
+                    f"Invalid years value: '{value}'. Expected YYYY, YYYY-YYYY, +N, or -N",
+                )
 
     def test_parse_categories(self):
         self.assertEqual(IcsGenerator.parse_categories("bank"), ["bank"])
@@ -134,13 +124,14 @@ class TestGenerateIcs(TestCase):
 
     def test_validate_unknown_code(self):
         for code in ("XXX", "JAN", "country_holidays"):
-            with self.argv(code):
-                generator = IcsGenerator()
+            with self.subTest(code=code):
+                with self.argv(code):
+                    generator = IcsGenerator()
 
-            with self.assertRaises(SystemExit) as context:
-                generator.validate_code()
+                with self.assertRaises(SystemExit) as context:
+                    generator.validate_code()
 
-            self.assertIn("Unsupported entity code:", str(context.exception))
+                self.assertIn("Unsupported entity code:", str(context.exception))
 
     def test_validate_years_valid(self):
         with self.stderr() as context:
@@ -314,7 +305,7 @@ class TestGenerateIcs(TestCase):
             self.assertNotIn("DTSTART;VALUE=DATE:2026", content)
 
     @patch("holidays.generate_ics.datetime", MockDatetime)
-    def test_generate_year_offset(self):
+    def test_generate_year_offset_positive(self):
         with self.temp_cwd() as temp_dir:
             with self.argv("US", "--years", "+2"):
                 IcsGenerator().run()
@@ -327,6 +318,22 @@ class TestGenerateIcs(TestCase):
             self.assertIn("DTSTART;VALUE=DATE:20270101", content)
             self.assertNotIn("DTSTART;VALUE=DATE:2024", content)
             self.assertNotIn("DTSTART;VALUE=DATE:2028", content)
+
+    @patch("holidays.generate_ics.datetime", MockDatetime)
+    def test_generate_year_offset_negative(self):
+        with self.temp_cwd() as temp_dir:
+            with self.argv("US", "--years", "-3"):
+                IcsGenerator().run()
+
+            output_file = temp_dir / "US_2022_2025.ics"
+            self.assertTrue(output_file.exists())
+            content = output_file.read_text(encoding="utf-8")
+            self.assertIn("DTSTART;VALUE=DATE:20220101", content)
+            self.assertIn("DTSTART;VALUE=DATE:20230101", content)
+            self.assertIn("DTSTART;VALUE=DATE:20240101", content)
+            self.assertIn("DTSTART;VALUE=DATE:20250101", content)
+            self.assertNotIn("DTSTART;VALUE=DATE:2021", content)
+            self.assertNotIn("DTSTART;VALUE=DATE:2026", content)
 
     @patch("holidays.generate_ics.datetime", MockDatetime)
     def test_generate_default_year(self):
