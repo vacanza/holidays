@@ -627,46 +627,76 @@ For installation instructions, see `uv` [documentation](https://docs.astral.sh/u
 By default, the generated calendar contains holidays for the current year and is written
 to a file whose name is derived from the selected calendar and year range.
 
-### Examples
+### Simple examples
 
-Generate a holiday calendar for Switzerland in German:
+Examples that use a single flag.
+
+Save a US calendar to a custom file:
+
+```shell
+holidays-ics US --output test.ics
+```
+
+Current year (US_YYYY.ics):
+
+```shell
+holidays-ics US
+```
+
+Specific year (US_2035.ics):
+
+```shell
+holidays-ics US --years 2035
+```
+
+Spanning the next 10 years (XX_YYYY_YYYY.ics):
+
+```shell
+holidays-ics US --years +10
+```
+
+Public holidays only (US_YYYY.ics):
+
+```shell
+holidays-ics US --categories public
+```
+
+Include both public and unofficial holidays (US_YYYY.ics):
+
+```shell
+holidays-ics US --categories public,unofficial
+```
+
+Switzerland calendar in German (CH_YYYY.ics):
 
 ```shell
 holidays-ics CH --language de
 ```
 
-Generate a holiday calendar for the Canton of Zurich for a specific year:
+Canton of Zurich calendar (CH_ZH_YYYY.ics):
 
 ```shell
-holidays-ics CH --subdiv ZH --years 2025
+holidays-ics CH --subdiv ZH
 ```
 
-Generate a holiday calendar for multiple years and save it to a custom file:
+Financial market holiday calendar (XNYS_YYYY.ics):
 
 ```shell
-holidays-ics US --years 2025-2027 --output us_holidays.ics
+holidays-ics XNYS
 ```
 
-Generate a calendar containing only bank holidays:
+### Complex examples
+
+Examples combining multiple flags. These examples show how to manually specify a custom output file, as options like `--categories` and `--language` are not automatically included in the default generated filename yet.
+
+Multi-year public holiday calendar saved to a custom file (Note: Replace YYYY in the filename with the actual years):
 
 ```shell
-holidays-ics AT --categories bank
+holidays-ics US --years +10 --categories public --output US_YYYY_YYYY_public_holidays.ics
 ```
 
-Generate a calendar containing public and optional holidays:
+Generate a localized subdivision-specific calendar saved to a custom file (Note: Replace YYYY in the filename with the actual years):
 
 ```shell
-holidays-ics CA --categories public,optional
-```
-
-Generate a localized subdivision-specific calendar and save it to a custom file:
-
-```shell
-holidays-ics CH --subdiv ZH --language de --output zurich_holidays.ics
-```
-
-Generate a financial market holiday calendar:
-
-```shell
-holidays-ics XNYS --output nyse_holidays.ics
+holidays-ics CH --subdiv ZH --language de --output zurich_YYYY_holidays_deutch.ics
 ```
