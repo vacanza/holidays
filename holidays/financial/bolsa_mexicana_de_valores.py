@@ -40,7 +40,7 @@ class BolsaMexicanaDeValores(ObservedHolidayBase, ChristianHolidays, Internation
 
     market = "XMEX"
     default_language = "es"
-    supported_languages = ("en_US", "es")
+    supported_languages = ("en_US", "es", "uk")
     start_year = 2014
 
     def __init__(self, *args, **kwargs):
