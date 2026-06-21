@@ -649,6 +649,12 @@ Generate a holiday calendar for the current year and the next 5 years:
 holidays-ics US --years +5
 ```
 
+Generate a holiday calendar for the current year and the previous 5 years:
+
+```shell
+holidays-ics US --years -5
+```
+
 Generate a holiday calendar for multiple years and save it to a custom file:
 
 ```shell
@@ -661,10 +667,10 @@ Generate a calendar containing only bank holidays:
 holidays-ics AT --years 2025 --categories bank
 ```
 
-Generate a calendar containing public and optional holidays:
+Generate a calendar containing public and unofficial holidays:
 
 ```shell
-holidays-ics CA --years 2025 --categories public,optional
+holidays-ics CA --years 2025 --categories public,unofficial
 ```
 
 Generate a localized subdivision-specific calendar and save it to a custom file:

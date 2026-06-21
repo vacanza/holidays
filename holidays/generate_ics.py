@@ -43,9 +43,9 @@ class IcsGenerator:
             type=IcsGenerator.parse_years,
             help=(
                 "Year or year range (default: current year). "
-                "+N means current year through current year + N"
+                "+N includes the next N years, -N includes the previous N years"
             ),
-            metavar="YYYY | YYYY-YYYY | +N",
+            metavar="YYYY | YYYY-YYYY | +N | -N",
         )
         parser.add_argument(
             "-s", "--subdiv", default=None, help="Subdivision code (e.g., CA, NY, SCT)"
@@ -67,12 +67,14 @@ class IcsGenerator:
     @staticmethod
     def parse_years(years: str) -> tuple[int, int]:
         try:
-            if years.startswith("+"):
-                if (offset := int(years[1:])) < 1:
-                    raise ArgumentTypeError("Invalid year offset: expected +N with N > 0")
-
+            if years.startswith(("+", "-")):
+                offset = int(years)
                 current_year = datetime.now(timezone.utc).year
-                return current_year, current_year + offset
+                return (
+                    (current_year, current_year + offset)
+                    if offset > 0
+                    else (current_year + offset, current_year)
+                )
 
             if "-" in years:
                 start, end = map(int, years.split("-", 1))
@@ -87,7 +89,7 @@ class IcsGenerator:
 
         except ValueError:
             raise ArgumentTypeError(
-                f"Invalid years value: '{years}'. Expected YYYY, YYYY-YYYY, or +N"
+                f"Invalid years value: '{years}'. Expected YYYY, YYYY-YYYY, +N, or -N"
             )
 
     @staticmethod
