@@ -684,3 +684,24 @@ Generate a financial market holiday calendar:
 ```shell
 holidays-ics XNYS --years 2025 --output nyse_holidays.ics
 ```
+
+The tool can also display the supported subdivisions, categories, and languages for a selected
+country or market without generating an `.ics` file.
+
+List the supported subdivisions:
+
+```shell
+holidays-ics CH --list-subdivisions
+```
+
+List the supported holiday categories:
+
+```shell
+holidays-ics US --list-categories
+```
+
+List the supported languages:
+
+```shell
+holidays-ics CA --list-languages
+```

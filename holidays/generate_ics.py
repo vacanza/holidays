@@ -62,6 +62,17 @@ class IcsGenerator:
             "-l", "--language", help="Language code for holiday names (e.g., en_US, es)"
         )
         parser.add_argument("-o", "--output", help="Output file path (e.g., holidays.ics)")
+
+        list_group = parser.add_mutually_exclusive_group()
+        list_group.add_argument(
+            "--list-subdivisions", action="store_true", help="List supported subdivisions"
+        )
+        list_group.add_argument(
+            "--list-categories", action="store_true", help="List supported holiday categories"
+        )
+        list_group.add_argument(
+            "--list-languages", action="store_true", help="List supported languages"
+        )
         self.args = parser.parse_args()
 
     @staticmethod
@@ -128,38 +139,55 @@ class IcsGenerator:
             self.entity_loader(subdiv=self.args.subdiv)
 
         except NotImplementedError:
-            supported_subdivisions = self.entity.subdivisions
             raise SystemExit(
                 f"Subdivision '{self.args.subdiv}' is not supported for {self.args.code}. "
-                f"Supported subdivisions: {', '.join(supported_subdivisions)}"
+                "Use --list-subdivisions to see supported values"
             )
 
     def validate_categories(self) -> None:
         if not self.args.categories:
             return None
 
-        supported_categories = self.entity.supported_categories
-        unknown_categories = set(self.args.categories).difference(supported_categories)
+        unknown_categories = set(self.args.categories).difference(self.entity.supported_categories)
         if unknown_categories:
             raise SystemExit(
                 f"Unknown categories for {self.args.code}: "
                 f"{', '.join(sorted(unknown_categories))}. "
-                f"Supported categories: {', '.join(supported_categories)}"
+                "Use --list-categories to see supported values"
             )
 
     def validate_language(self) -> None:
         if not self.args.language:
             return None
 
-        supported_languages = self.entity.supported_languages
-        if self.args.language not in supported_languages:
+        if self.args.language not in self.entity.supported_languages:
             raise SystemExit(
                 f"Language '{self.args.language}' is not supported for {self.args.code}. "
-                f"Supported languages: {', '.join(supported_languages)}"
+                "Use --list-languages to see supported values"
             )
+
+    def handle_list_options(self) -> bool:
+        if self.args.list_subdivisions:
+            print(f"Supported subdivisions for {self.args.code}:")
+            print(", ".join(self.entity.subdivisions))
+            return True
+
+        if self.args.list_categories:
+            print(f"Supported holiday categories for {self.args.code}:")
+            print(", ".join(self.entity.supported_categories))
+            return True
+
+        if self.args.list_languages:
+            print(f"Supported languages for {self.args.code}:")
+            print(", ".join(self.entity.supported_languages))
+            return True
+
+        return False
 
     def run(self) -> None:
         self.validate_code()
+        if self.handle_list_options():
+            return None
         self.validate_years()
         self.validate_subdiv()
         self.validate_language()

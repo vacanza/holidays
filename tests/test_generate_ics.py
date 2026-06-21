@@ -21,13 +21,31 @@ from tempfile import TemporaryDirectory
 from unittest import TestCase
 from unittest.mock import patch
 
+from holidays import HolidayBase
+from holidays.constants import PUBLIC, SCHOOL
 from holidays.generate_ics import IcsGenerator
+from holidays.registry import EntityLoader
 
 
 class MockDatetime(datetime):
     @classmethod
     def now(cls, tz=None):
         return cls(2025, 7, 1, 0, 0, 0, tzinfo=tz if tz else None)
+
+
+class CountryStub(HolidayBase):
+    country = "CS1"
+    subdivisions = ("AB", "BC")
+    supported_categories = (PUBLIC, SCHOOL)
+    supported_languages = ("en_US", "es")
+
+
+class StubEntityLoader(EntityLoader):
+    def __init__(self):
+        super().__init__("dummy.CountryStub")
+
+    def get_entity(self):
+        return CountryStub
 
 
 class TestGenerateIcs(TestCase):
@@ -42,6 +60,13 @@ class TestGenerateIcs(TestCase):
     def stderr():
         stream = StringIO()
         with patch("sys.stderr", stream):
+            yield stream
+
+    @staticmethod
+    @contextmanager
+    def stdout():
+        stream = StringIO()
+        with patch("sys.stdout", stream):
             yield stream
 
     @staticmethod
@@ -188,22 +213,11 @@ class TestGenerateIcs(TestCase):
 
         with self.assertRaises(SystemExit) as context:
             generator.validate_subdiv()
-        self.assertIn("Subdivision 'XXX' is not supported for US.", str(context.exception))
-
-    def test_validate_language_valid(self):
-        with self.argv("US", "--language", "en_US"):
-            generator = IcsGenerator()
-        generator.validate_code()
-        generator.validate_language()
-
-    def test_validate_language_invalid(self):
-        with self.argv("US", "--language", "xx_XX"):
-            generator = IcsGenerator()
-        generator.validate_code()
-
-        with self.assertRaises(SystemExit) as context:
-            generator.validate_language()
-        self.assertIn("Language 'xx_XX' is not supported for US.", str(context.exception))
+        self.assertEqual(
+            str(context.exception),
+            "Subdivision 'XXX' is not supported for US. "
+            "Use --list-subdivisions to see supported values",
+        )
 
     def test_validate_categories_valid(self):
         with self.argv("US", "--categories", "government"):
@@ -218,7 +232,42 @@ class TestGenerateIcs(TestCase):
 
         with self.assertRaises(SystemExit) as context:
             generator.validate_categories()
-        self.assertIn("Unknown categories for US: foo.", str(context.exception))
+        self.assertEqual(
+            str(context.exception),
+            "Unknown categories for US: foo. Use --list-categories to see supported values",
+        )
+
+    def test_validate_language_valid(self):
+        with self.argv("US", "--language", "en_US"):
+            generator = IcsGenerator()
+        generator.validate_code()
+        generator.validate_language()
+
+    def test_validate_language_invalid(self):
+        with self.argv("US", "--language", "xx_XX"):
+            generator = IcsGenerator()
+        generator.validate_code()
+
+        with self.assertRaises(SystemExit) as context:
+            generator.validate_language()
+        self.assertEqual(
+            str(context.exception),
+            "Language 'xx_XX' is not supported for US. "
+            "Use --list-languages to see supported values",
+        )
+
+    @patch("holidays.generate_ics.getattr", return_value=StubEntityLoader())
+    def test_list_options(self, _unused_mock):
+        for arg, expected in (
+            ("--list-categories", ["Supported holiday categories for CS1:", "public, school"]),
+            ("--list-subdivisions", ["Supported subdivisions for CS1:", "AB, BC"]),
+            ("--list-languages", ["Supported languages for CS1:", "en_US, es"]),
+        ):
+            with self.subTest(arg=arg):
+                with self.argv("CS1", arg):
+                    with self.stdout() as context:
+                        IcsGenerator().run()
+                self.assertEqual(context.getvalue().splitlines(), expected)
 
     def test_generate_country_calendar(self):
         with TemporaryDirectory() as temp_dir:
