@@ -725,7 +725,7 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
 
     MAWLID_DATES_CONFIRMED_YEARS = (2001, 2026)
     MAWLID_DATES = {
-        2004: (MAY, 3),
+        2004: (MAY, 2),
         2016: (DEC, 13),
         2017: (DEC, 2),
     }
