@@ -667,10 +667,10 @@ Generate a calendar containing only bank holidays:
 holidays-ics AT --years 2025 --categories bank
 ```
 
-Generate a calendar containing public and unofficial holidays:
+Generate a calendar containing public and optional holidays:
 
 ```shell
-holidays-ics CA --years 2025 --categories public,unofficial
+holidays-ics CA --years 2025 --categories public,optional
 ```
 
 Generate a localized subdivision-specific calendar and save it to a custom file:
