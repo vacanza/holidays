@@ -627,9 +627,7 @@ For installation instructions, see `uv` [documentation](https://docs.astral.sh/u
 By default, the generated calendar contains holidays for the current year and is written
 to a file whose name is derived from the selected calendar and year range.
 
-### Simple examples
-
-Examples that use a single flag.
+### Examples
 
 Save a US calendar to a custom file:
 
@@ -637,62 +635,59 @@ Save a US calendar to a custom file:
 holidays-ics US --output test.ics
 ```
 
-Current year (US_YYYY.ics):
+Current year:
 
 ```shell
 holidays-ics US
 ```
 
-Specific year (US_2035.ics):
+Specific year:
 
 ```shell
 holidays-ics US --years 2035
 ```
 
-Spanning the next 10 years (US_YYYY_YYYY.ics):
+Spanning the next 10 years:
 
 ```shell
 holidays-ics US --years +10
 ```
 
-Public holidays only (US_YYYY.ics):
+Unofficial holidays only:
 
 ```shell
-holidays-ics US --categories public
+holidays-ics US --categories unofficial
 ```
 
-Include both public and unofficial holidays (US_YYYY.ics):
+Include both public and unofficial holidays:
 
 ```shell
 holidays-ics US --categories public,unofficial
 ```
 
-Switzerland calendar in German (CH_YYYY.ics):
+Switzerland calendar in German:
 
 ```shell
 holidays-ics CH --language de
 ```
 
-Canton of Zurich calendar (CH_ZH_YYYY.ics):
+Canton of Zurich calendar:
 
 ```shell
 holidays-ics CH --subdiv ZH
 ```
 
-Financial market holiday calendar (XNYS_YYYY.ics):
+Financial market holiday calendar:
 
 ```shell
 holidays-ics XNYS
 ```
 
-### Complex examples
-
-Examples combining multiple flags. These examples show how to manually specify a custom output file, as options like `--categories` and `--language` are not automatically included in the default generated filename yet.
 
 Multi-year public holiday calendar saved to a custom file (Note: Adjust the --output filename to reflect the generated years.)
 
 ```shell
-holidays-ics US --years +10 --categories public --output US_YYYY_YYYY_public.ics
+holidays-ics US --years +10 --categories unofficial --output US_YYYY_YYYY_unofficial.ics
 ```
 
 Generate a localized subdivision-specific calendar saved to a custom file (Note: Adjust the --output filename to reflect the generated years.)
