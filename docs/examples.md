@@ -649,7 +649,7 @@ Specific year (US_2035.ics):
 holidays-ics US --years 2035
 ```
 
-Spanning the next 10 years (XX_YYYY_YYYY.ics):
+Spanning the next 10 years (US_YYYY_YYYY.ics):
 
 ```shell
 holidays-ics US --years +10
