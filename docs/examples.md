@@ -638,7 +638,7 @@ holidays-ics CH --language de
 Generate a holiday calendar for the Canton of Zurich for a specific year:
 
 ```shell
-holidays-ics CH --subdiv ZH
+holidays-ics CH --subdiv ZH --year 2025
 ```
 
 Generate a holiday calendar for multiple years and save it to a custom file:
