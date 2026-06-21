@@ -692,5 +692,5 @@ holidays-ics US --years +10 --categories unofficial --output US_YYYY_YYYY_unoffi
 Generate a calendar for Switzerland, specific to the Canton of Zurich, localized in German, and saved to a custom file.
 
 ```shell
-holidays-ics CH --subdiv ZH --language de --output CH_ZH_de_YYYY.ics
+holidays-ics CH --subdiv ZH --language de --output CH_ZH_de.ics
 ```
