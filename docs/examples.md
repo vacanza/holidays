@@ -638,7 +638,7 @@ holidays-ics CH --language de
 Generate a holiday calendar for the Canton of Zurich for a specific year:
 
 ```shell
-holidays-ics CH --subdiv ZH --years 2025
+holidays-ics CH --subdiv ZH
 ```
 
 Generate a holiday calendar for multiple years and save it to a custom file:
@@ -650,23 +650,23 @@ holidays-ics US --years 2025-2027 --output us_holidays.ics
 Generate a calendar containing only bank holidays:
 
 ```shell
-holidays-ics AT --years 2025 --categories bank
+holidays-ics AT --categories bank
 ```
 
 Generate a calendar containing public and optional holidays:
 
 ```shell
-holidays-ics CA --years 2025 --categories public,optional
+holidays-ics CA --categories public,optional
 ```
 
 Generate a localized subdivision-specific calendar and save it to a custom file:
 
 ```shell
-holidays-ics CH --subdiv ZH --years 2025 --language de --output zurich_holidays.ics
+holidays-ics CH --subdiv ZH --language de --output zurich_holidays.ics
 ```
 
 Generate a financial market holiday calendar:
 
 ```shell
-holidays-ics XNYS --years 2025 --output nyse_holidays.ics
+holidays-ics XNYS --output nyse_holidays.ics
 ```
