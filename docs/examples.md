@@ -629,13 +629,13 @@ to a file whose name is derived from the selected calendar and year range.
 
 ### Examples
 
-Current year:
+Generate a US calendar for the current year:
 
 ```shell
 holidays-ics US
 ```
 
-Save a US calendar to a custom file:
+Save to a custom file:
 
 ```shell
 holidays-ics US --output test.ics
@@ -662,7 +662,7 @@ holidays-ics US --categories unofficial
 Include both public and optional holidays:
 
 ```shell
-holidays-ics CA --years 2025 --categories public,optional
+holidays-ics CA --categories public,optional
 ```
 
 Switzerland calendar in German:
@@ -683,13 +683,13 @@ Financial market holiday calendar:
 holidays-ics XNYS
 ```
 
-Multi-year public holiday calendar saved to a custom file
+Spanning the next 10 years, unofficial holidays, saved to a custom file:
 
 ```shell
 holidays-ics US --years +10 --categories unofficial --output US_YYYY_YYYY_unofficial.ics
 ```
 
-Generate a localized subdivision-specific calendar saved to a custom file
+Generate a calendar for Switzerland, specific to the Canton of Zurich, localized in German, and saved to a custom file.
 
 ```shell
 holidays-ics CH --subdiv ZH --language de --output CH_ZH_de_YYYY.ics
