@@ -692,8 +692,6 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
 
     ASHURA_DATES_CONFIRMED_YEARS = (2001, 2026)
     ASHURA_DATES = {
-        2001: (APR, 4),
-        2005: (FEB, 19),
         2006: (FEB, 9),
         2008: (JAN, 19),
     }
@@ -708,8 +706,7 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
 
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_FITR_DATES = {
-        2004: (NOV, 14),
-        2005: (NOV, 3),
+        2006: (OCT, 25),
         2016: (JUL, 6),
     }
 
@@ -725,7 +722,6 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
 
     MAWLID_DATES_CONFIRMED_YEARS = (2001, 2026)
     MAWLID_DATES = {
-        2004: (MAY, 2),
         2016: (DEC, 13),
         2017: (DEC, 2),
     }
