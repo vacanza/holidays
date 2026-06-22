@@ -529,8 +529,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         laureate. It is usually observed on May 9, but falls on May 8
         in leap years.
         """
-        day = 8 if isleap(self._year) else 9
-        self._add_holiday(name, date(self._year, MAY, day))
+        self._add_holiday(name, date(self._year, MAY, 8 if isleap(self._year) else 9))
 
     def _add_raksha_bandhan(self, name) -> date | None:
         """
@@ -687,8 +686,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         in the Punjabi solar calendar. It is usually observed on
         April 15, but falls on April 14 in leap years.
         """
-        day = 14 if isleap(self._year) else 15
-        self._add_holiday(name, date(self._year, APR, day))
+        self._add_holiday(name, date(self._year, APR, 14 if isleap(self._year) else 15))
 
     def _add_vishu(self, name) -> date | None:
         """
