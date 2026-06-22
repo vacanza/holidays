@@ -45,7 +45,7 @@ msgstr "Великий четвер"
 
 #. Good Friday.
 msgid "Viernes Santo"
-msgstr "Страсна п'ятниця"
+msgstr "Страсна пʼятниця"
 
 #. Labor Day.
 msgid "Día del Trabajo"
