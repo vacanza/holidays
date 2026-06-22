@@ -641,6 +641,24 @@ Save to a custom file:
 holidays-ics US --output test.ics
 ```
 
+List categories:
+
+```shell
+holidays-ics US --list-categories
+```
+
+List subdivisions:
+
+```shell
+holidays-ics US --list-subdivisions
+```
+
+List languages:
+
+```shell
+holidays-ics US --list-languages
+```
+
 Specific year:
 
 ```shell
