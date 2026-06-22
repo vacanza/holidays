@@ -80,6 +80,7 @@ holidays-ics US --years +10
 ```
 
 ### web-based-holidays-ics
+
 You can also generate and download custom `.ics` files directly via the [download page](https://holidays.readthedocs.io/en/latest/downloads/).
 
 ## Quick Start
