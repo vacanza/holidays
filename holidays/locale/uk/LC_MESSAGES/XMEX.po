@@ -77,4 +77,4 @@ msgstr "Різдво Христове"
 
 #. Bicentennial of Mexican Independence (Bridge day).
 msgid "Bicentenario de la Independencia de México (Día Puente)"
-msgstr "Двохсотліття незалежності Мексики (день-міст)"
+msgstr "200-річчя незалежності Мексики (додатковий вихідний)"
