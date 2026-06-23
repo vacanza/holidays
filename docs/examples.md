@@ -599,7 +599,7 @@ the [icalendar](https://github.com/collective/icalendar) package.
 For user convenience, the library includes `holidays-ics` tool for generating iCalendar (.ics)
 files from holiday calendars provided by the library. It supports country, subdivision,
 and financial market calendars, holiday category filtering, localized holiday names,
-year selection, and custom output file names.
+year selection, custom output file names, and suffixes for generated output file names.
 
 The tool can be run either as an installed command:
 
@@ -659,6 +659,12 @@ Generate a holiday calendar for multiple years and save it to a custom file:
 
 ```shell
 holidays-ics US --years 2025-2027 --output us_holidays.ics
+```
+
+Append a custom suffix to the generated file name:
+
+```shell
+holidays-ics CH --subdiv ZH --years 2025 --output-suffix -personal.ics
 ```
 
 Generate a calendar containing only bank holidays:

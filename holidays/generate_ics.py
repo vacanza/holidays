@@ -61,7 +61,13 @@ class IcsGenerator:
         parser.add_argument(
             "-l", "--language", help="Language code for holiday names (e.g., en_US, es)"
         )
-        parser.add_argument("-o", "--output", help="Output file path (e.g., holidays.ics)")
+
+        output_group = parser.add_mutually_exclusive_group()
+        output_group.add_argument("-o", "--output", help="Output file path (e.g., holidays.ics)")
+        output_group.add_argument(
+            "--output-suffix",
+            help="Suffix to append to the generated output filename base (e.g., -MYNOTE.ics)",
+        )
 
         list_group = parser.add_mutually_exclusive_group()
         list_group.add_argument(
@@ -73,7 +79,23 @@ class IcsGenerator:
         list_group.add_argument(
             "--list-languages", action="store_true", help="List supported languages"
         )
-        self.args = parser.parse_args()
+        self.args = parser.parse_args(self.normalize_output_suffix_args(sys.argv[1:]))
+
+    @staticmethod
+    def normalize_output_suffix_args(args: list[str]) -> list[str]:
+        """Allow suffix values that begin with '-' without requiring '=' syntax."""
+        normalized_args = list(args)
+        try:
+            option_index = normalized_args.index("--output-suffix")
+        except ValueError:
+            return normalized_args
+
+        value_index = option_index + 1
+        if value_index < len(normalized_args):
+            suffix = normalized_args[value_index]
+            if suffix.startswith("-") and not suffix.startswith("--"):
+                normalized_args[option_index : value_index + 1] = [f"--output-suffix={suffix}"]
+        return normalized_args
 
     @staticmethod
     def parse_years(years: str) -> tuple[int, int]:
@@ -196,7 +218,10 @@ class IcsGenerator:
         start_year, end_year = self.args.years
         years_part = f"{start_year}_{end_year}" if start_year != end_year else f"{start_year}"
         subdiv_part = f"_{self.args.subdiv.upper().replace(' ', '_')}" if self.args.subdiv else ""
-        output_path = self.args.output or f"{self.args.code}{subdiv_part}_{years_part}.ics"
+        output_suffix = self.args.output_suffix if self.args.output_suffix is not None else ".ics"
+        output_path = (
+            self.args.output or f"{self.args.code}{subdiv_part}_{years_part}{output_suffix}"
+        )
 
         try:
             holiday_obj = self.entity_loader(

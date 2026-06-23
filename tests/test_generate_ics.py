@@ -127,6 +127,30 @@ class TestGenerateIcs(TestCase):
             IcsGenerator.parse_categories("BANK,Public,optional"), ["bank", "public", "optional"]
         )
 
+    def test_normalize_output_suffix_args(self):
+        self.assertEqual(
+            IcsGenerator.normalize_output_suffix_args(["US", "--output-suffix", "-personal.ics"]),
+            ["US", "--output-suffix=-personal.ics"],
+        )
+        self.assertEqual(
+            IcsGenerator.normalize_output_suffix_args(["US", "--output-suffix", "personal.ics"]),
+            ["US", "--output-suffix", "personal.ics"],
+        )
+        self.assertEqual(
+            IcsGenerator.normalize_output_suffix_args(["US", "--output-suffix=-personal.ics"]),
+            ["US", "--output-suffix=-personal.ics"],
+        )
+        self.assertEqual(
+            IcsGenerator.normalize_output_suffix_args(
+                ["US", "--output-suffix", "--list-categories"]
+            ),
+            ["US", "--output-suffix", "--list-categories"],
+        )
+        self.assertEqual(
+            IcsGenerator.normalize_output_suffix_args(["US", "--output-suffix"]),
+            ["US", "--output-suffix"],
+        )
+
     def test_validate_country_code(self):
         with self.argv("US"):
             generator = IcsGenerator()
@@ -424,6 +448,31 @@ class TestGenerateIcs(TestCase):
                 IcsGenerator().run()
 
             self.assertTrue((temp_dir / "US_CA_2025.ics").exists())
+
+    def test_filename_output_suffix(self):
+        with self.temp_cwd() as temp_dir:
+            with self.argv(
+                "CH", "--subdiv", "ZH", "--years", "2020", "--output-suffix", "-MYNOTE.ics"
+            ):
+                IcsGenerator().run()
+
+            self.assertTrue((temp_dir / "CH_ZH_2020-MYNOTE.ics").exists())
+            self.assertFalse((temp_dir / "CH_ZH_2020.ics").exists())
+
+    def test_filename_output_suffix_does_not_append_extension(self):
+        with self.temp_cwd() as temp_dir:
+            with self.argv("US", "--years", "2025", "--output-suffix", "-personal"):
+                IcsGenerator().run()
+
+            self.assertTrue((temp_dir / "US_2025-personal").exists())
+            self.assertFalse((temp_dir / "US_2025-personal.ics").exists())
+
+    def test_filename_output_and_suffix_are_mutually_exclusive(self):
+        with (
+            self.argv("US", "--output", "calendar.ics", "--output-suffix", "-personal.ics"),
+            self.assertRaises(SystemExit),
+        ):
+            IcsGenerator()
 
     def test_generate_calendar_error(self):
         with patch(
