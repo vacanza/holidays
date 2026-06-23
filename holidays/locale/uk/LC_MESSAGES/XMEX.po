@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-21 13:51+0000\n"
-"PO-Revision-Date: 2026-06-21 13:51+0000\n"
+"PO-Revision-Date: 2026-06-23 11:54+0530\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -74,3 +74,7 @@ msgstr "День банківського працівника"
 #. Christmas Day.
 msgid "Navidad"
 msgstr "Різдво Христове"
+
+#. Bicentennial of Mexican Independence (Bridge day).
+msgid "Bicentenario de la Independencia de México (Día Puente)"
+msgstr "Двохсотліття незалежності Мексики (день-міст)"

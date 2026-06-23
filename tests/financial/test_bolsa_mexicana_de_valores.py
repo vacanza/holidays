@@ -21,6 +21,9 @@ class TestBolsaMexicanaDeValores(CommonFinancialTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(BolsaMexicanaDeValores)
 
+    def test_special_holidays(self):
+        self.assertHoliday("2010-09-17")
+
     def test_new_years_day(self):
         name = "Año Nuevo"
         self.assertNonObservedHolidayName(name, (f"{year}-01-01" for year in self.full_range))
@@ -38,8 +41,23 @@ class TestBolsaMexicanaDeValores(CommonFinancialTests, TestCase):
 
     def test_constitution_day(self):
         name = "Día de la Constitución"
+        self.assertNonObservedHolidayName(name, (f"{year}-02-05" for year in range(2001, 2006)))
         self.assertHolidayName(
             name,
+            "2006-02-06",
+            "2007-02-05",
+            "2008-02-04",
+            "2009-02-02",
+            "2010-02-01",
+            "2011-02-07",
+            "2012-02-06",
+            "2013-02-04",
+            "2014-02-03",
+            "2015-02-02",
+            "2016-02-01",
+            "2017-02-06",
+            "2018-02-05",
+            "2019-02-04",
             "2020-02-03",
             "2021-02-01",
             "2022-02-07",
@@ -47,12 +65,25 @@ class TestBolsaMexicanaDeValores(CommonFinancialTests, TestCase):
             "2024-02-05",
             "2025-02-03",
         )
-        self.assertHolidayName(name, self.full_range)
 
     def test_benito_juarez_birthday(self):
         name = "Natalicio de Benito Juárez"
+        self.assertNonObservedHolidayName(name, (f"{year}-03-21" for year in range(2001, 2007)))
         self.assertHolidayName(
             name,
+            "2007-03-19",
+            "2008-03-17",
+            "2009-03-16",
+            "2010-03-15",
+            "2011-03-21",
+            "2012-03-19",
+            "2013-03-18",
+            "2014-03-17",
+            "2015-03-16",
+            "2016-03-21",
+            "2017-03-20",
+            "2018-03-19",
+            "2019-03-18",
             "2020-03-16",
             "2021-03-15",
             "2022-03-21",
@@ -60,7 +91,6 @@ class TestBolsaMexicanaDeValores(CommonFinancialTests, TestCase):
             "2024-03-18",
             "2025-03-17",
         )
-        self.assertHolidayName(name, self.full_range)
 
     def test_holy_thursday(self):
         name = "Jueves Santo"
@@ -134,7 +164,7 @@ class TestBolsaMexicanaDeValores(CommonFinancialTests, TestCase):
             "2025-10-01",
         )
 
-    def test_dia_de_muertos(self):
+    def test_day_of_the_dead(self):
         name = "Día de Muertos"
         self.assertNonObservedHolidayName(name, (f"{year}-11-02" for year in self.full_range))
         self.assertHolidayName(
@@ -151,8 +181,23 @@ class TestBolsaMexicanaDeValores(CommonFinancialTests, TestCase):
 
     def test_revolution_day(self):
         name = "Día de la Revolución"
+        self.assertNonObservedHolidayName(name, (f"{year}-11-20" for year in range(2001, 2006)))
         self.assertHolidayName(
             name,
+            "2006-11-20",
+            "2007-11-19",
+            "2008-11-17",
+            "2009-11-16",
+            "2010-11-15",
+            "2011-11-21",
+            "2012-11-19",
+            "2013-11-18",
+            "2014-11-17",
+            "2015-11-16",
+            "2016-11-21",
+            "2017-11-20",
+            "2018-11-19",
+            "2019-11-18",
             "2020-11-16",
             "2021-11-15",
             "2022-11-21",
@@ -160,9 +205,8 @@ class TestBolsaMexicanaDeValores(CommonFinancialTests, TestCase):
             "2024-11-18",
             "2025-11-17",
         )
-        self.assertHolidayName(name, self.full_range)
 
-    def test_dia_del_empleado_bancario(self):
+    def test_bank_employee_day(self):
         name = "Día del Empleado Bancario"
         self.assertNonObservedHolidayName(name, (f"{year}-12-12" for year in self.full_range))
         self.assertHolidayName(

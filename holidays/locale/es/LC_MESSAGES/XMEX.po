@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-19 14:20+0000\n"
-"PO-Revision-Date: 2026-06-20 17:55+0000\n"
+"PO-Revision-Date: 2026-06-23 11:54+0530\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: es\n"
@@ -73,4 +73,8 @@ msgstr ""
 
 #. Christmas Day.
 msgid "Navidad"
+msgstr ""
+
+#. Bicentennial of Mexican Independence (Bridge day).
+msgid "Bicentenario de la Independencia de México (Día Puente)"
 msgstr ""
