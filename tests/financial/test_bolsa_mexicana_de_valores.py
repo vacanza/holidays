@@ -26,7 +26,6 @@ class TestBolsaMexicanaDeValores(CommonFinancialTests, TestCase):
 
     def test_new_years_day(self):
         name = "Año Nuevo"
-        self.assertNonObservedHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         self.assertHolidayName(
             name,
             "2020-01-01",
@@ -34,10 +33,7 @@ class TestBolsaMexicanaDeValores(CommonFinancialTests, TestCase):
             "2024-01-01",
             "2025-01-01",
         )
-        self.assertNoHoliday(
-            "2022-01-01",
-            "2023-01-01",
-        )
+        self.assertHolidayName(name, self.full_range)
 
     def test_constitution_day(self):
         name = "Día de la Constitución"
@@ -145,7 +141,7 @@ class TestBolsaMexicanaDeValores(CommonFinancialTests, TestCase):
 
     def test_day_of_the_dead(self):
         name = "Día de Muertos"
-        self.assertNonObservedHolidayName(name, (f"{year}-11-02" for year in self.full_range))
+        self.assertNonObservedHolidayName(name, (f"{year}-11-02" for year in range(2006, 2050)))
         self.assertHolidayName(
             name,
             "2020-11-02",

@@ -68,7 +68,7 @@ class BolsaMexicanaDeValores(
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
+        self._add_new_years_day(tr("Año Nuevo"))
 
         # Constitution Day.
         name = tr("Día de la Constitución")
@@ -106,8 +106,9 @@ class BolsaMexicanaDeValores(
             else:
                 self._move_holiday(self._add_holiday_dec_1(name))
 
-        # Day of the Dead.
-        self._move_holiday(self._add_holiday_nov_2(tr("Día de Muertos")))
+        if self._year >= 2006:
+            # Day of the Dead.
+            self._move_holiday(self._add_holiday_nov_2(tr("Día de Muertos")))
 
         # Revolution Day.
         name = tr("Día de la Revolución")
