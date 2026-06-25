@@ -28,7 +28,7 @@ class TestMexico(CommonCountryTests, TestCase):
     def test_constitution_day(self):
         name = "Día de la Constitución"
         self.assertHolidayName(name, (f"{year}-02-05" for year in range(1917, 2006)))
-        self.assertNoHolidayName(name, Mexico(years=range(1901, 1917)))
+        self.assertNoHolidayName(name, range(self.start_year, 1917))
         self.assertHolidayName(
             name,
             "2006-02-06",
@@ -49,12 +49,15 @@ class TestMexico(CommonCountryTests, TestCase):
             "2021-02-01",
             "2022-02-07",
             "2023-02-06",
+            "2024-02-05",
+            "2025-02-03",
         )
+        self.assertHolidayName(name, range(2026, self.end_year))
 
     def test_benito_juarez(self):
         name = "Natalicio de Benito Juárez"
         self.assertHolidayName(name, (f"{year}-03-21" for year in range(1917, 2007)))
-        self.assertNoHolidayName(name, Mexico(years=range(1901, 1917)))
+        self.assertNoHolidayName(name, range(self.start_year, 1917))
         self.assertHolidayName(
             name,
             "2007-03-19",
@@ -79,7 +82,7 @@ class TestMexico(CommonCountryTests, TestCase):
     def test_labour_day(self):
         name = "Día del Trabajo"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1923, self.end_year)))
-        self.assertNoHolidayName(name, Mexico(years=range(1901, 1923)))
+        self.assertNoHolidayName(name, range(self.start_year, 1923))
 
     def test_independence_day(self):
         self.assertHolidayName("Día de la Independencia", (f"{year}-09-16" for year in self.full_range))
@@ -87,7 +90,7 @@ class TestMexico(CommonCountryTests, TestCase):
     def test_revolution_day(self):
         name = "Día de la Revolución"
         self.assertHolidayName(name, (f"{year}-11-20" for year in range(1917, 2006)))
-        self.assertNoHolidayName(name, Mexico(years=range(1901, 1917)))
+        self.assertNoHolidayName(name, range(self.start_year, 1917))
         self.assertHolidayName(
             name,
             "2006-11-20",
@@ -109,6 +112,7 @@ class TestMexico(CommonCountryTests, TestCase):
             "2022-11-21",
             "2023-11-20",
         )
+        self.assertHolidayName(name, range(2024, self.end_year))
 
     def test_change_of_government(self):
         name = "Transmisión del Poder Ejecutivo Federal"
@@ -124,9 +128,13 @@ class TestMexico(CommonCountryTests, TestCase):
             "2012-12-01",
             "2018-12-01",
             "2024-10-01",
+            "2030-10-01",
+            "2036-10-01",
+            "2042-10-01",
+            "2048-10-01",
         )
-        self.assertNoHolidayName(name, Mexico(years=range(1901, 1970)))
-        self.assertNoHoliday(f"{year}-12-01" for year in range(1901, 1970))
+        self.assertNoHolidayName(name, range(self.start_year, 1970))
+        self.assertNoHoliday(f"{year}-12-01" for year in range(self.start_year, 1970))
         self.assertNoHoliday(
             f"{year}-12-01" for year in range(1970, self.end_year) if (year - 1970) % 6 > 0
         )
