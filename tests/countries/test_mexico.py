@@ -19,6 +19,7 @@ from tests.common import CommonCountryTests
 class TestMexico(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.full_range = range(1901, 2050)
         super().setUpClass(Mexico)
 
     def test_new_years_day(self):
