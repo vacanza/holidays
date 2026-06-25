@@ -1477,6 +1477,22 @@ class TestClosestHoliday(unittest.TestCase):
             (date(2024, 1, 15), "Martin Luther King Jr. Day"),
         )
 
+    def test_get_closest_holiday_updates_years(self):
+        # Searching forward should add the next year to self.years so that
+        # repeated calls do not re-populate the adjacent year.
+        us = US(years=2024, expand=False)
+        self.assertEqual(us.years, {2024})
+
+        us.get_closest_holiday(date(2024, 12, 31), "forward")
+        self.assertIn(2025, us.years)
+
+        # Searching backward should add the previous year to self.years.
+        us2 = US(years=2024, expand=False)
+        self.assertEqual(us2.years, {2024})
+
+        us2.get_closest_holiday(date(2024, 1, 1), "backward")
+        self.assertIn(2023, us2.years)
+
     def test_get_closest_holiday_invalid_direction(self):
         self.assertRaises(
             AttributeError, lambda: HolidayBase().get_closest_holiday(direction="invalid")
