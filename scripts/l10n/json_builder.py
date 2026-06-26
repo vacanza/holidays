@@ -211,6 +211,7 @@ class IntermediateJsonBuilder:
                         {
                             "id": self._make_id(comment),
                             "msgid": "",
+                            "new_comment": "",
                             "comment": comment,
                             "messages": {},
                             "countries": set(),
@@ -265,6 +266,7 @@ class IntermediateJsonBuilder:
         new_entry = {
             "id": entry_id,
             "msgid": self.args.msgid or self._get_msgid(new_messages),
+            "new_comment": f"??? {source['new_comment']}" if source["new_comment"] else "",
             "comment": comment,
             "messages": new_messages,
             "countries": country_codes,
