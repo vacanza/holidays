@@ -52,7 +52,7 @@ class TestMexico(CommonCountryTests, TestCase):
             "2024-02-05",
             "2025-02-03",
         )
-        self.assertHolidayName(name, range(2026, self.end_year))
+        self.assertHolidayName(name, range(2006, self.end_year))
 
     def test_benito_juarez(self):
         name = "Natalicio de Benito Juárez"
@@ -85,7 +85,9 @@ class TestMexico(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(self.start_year, 1923))
 
     def test_independence_day(self):
-        self.assertHolidayName("Día de la Independencia", (f"{year}-09-16" for year in self.full_range))
+        self.assertHolidayName(
+            "Día de la Independencia", (f"{year}-09-16" for year in self.full_range)
+        )
 
     def test_revolution_day(self):
         name = "Día de la Revolución"
@@ -112,7 +114,7 @@ class TestMexico(CommonCountryTests, TestCase):
             "2022-11-21",
             "2023-11-20",
         )
-        self.assertHolidayName(name, range(2024, self.end_year))
+        self.assertHolidayName(name, range(2006, self.end_year))
 
     def test_change_of_government(self):
         name = "Transmisión del Poder Ejecutivo Federal"
