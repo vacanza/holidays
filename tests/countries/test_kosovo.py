@@ -197,10 +197,7 @@ class TestKosovo(CommonCountryTests, TestCase):
             ("2025-01-07", "Krishtlindjet Ortodokse"),
             ("2025-02-17", "Dita e Pavarësisë së Republikës së Kosovës"),
             ("2025-03-30", "Bajrami i Madh, dita e parë (e vlerësuar)"),
-            (
-                "2025-03-31",
-                "Bajrami i Madh, dita e parë (ditë pushimi e shtyrë, e vlerësuar)",
-            ),
+            ("2025-03-31", "Bajrami i Madh, dita e parë (ditë pushimi e shtyrë, e vlerësuar)"),
             ("2025-04-09", "Dita e Kushtetutës së Republikës së Kosovës"),
             ("2025-04-20", "Pashkët Katolike; Pashkët Ortodokse"),
             (
@@ -221,10 +218,7 @@ class TestKosovo(CommonCountryTests, TestCase):
             ("2024-01-07", "Krishtlindjet Ortodokse"),
             ("2024-01-08", "Krishtlindjet Ortodokse (ditë pushimi e shtyrë)"),
             ("2024-02-17", "Dita e Pavarësisë së Republikës së Kosovës"),
-            (
-                "2024-02-19",
-                "Dita e Pavarësisë së Republikës së Kosovës (ditë pushimi e shtyrë)",
-            ),
+            ("2024-02-19", "Dita e Pavarësisë së Republikës së Kosovës (ditë pushimi e shtyrë)"),
             ("2024-03-31", "Pashkët Katolike"),
             ("2024-04-01", "Pashkët Katolike (ditë pushimi e shtyrë)"),
             ("2024-04-09", "Dita e Kushtetutës së Republikës së Kosovës"),
@@ -234,10 +228,7 @@ class TestKosovo(CommonCountryTests, TestCase):
             ("2024-05-06", "Pashkët Ortodokse (ditë pushimi e shtyrë)"),
             ("2024-05-09", "Dita e Evropës"),
             ("2024-06-16", "Bajrami i Vogël, dita e parë (e vlerësuar)"),
-            (
-                "2024-06-17",
-                "Bajrami i Vogël, dita e parë (ditë pushimi e shtyrë, e vlerësuar)",
-            ),
+            ("2024-06-17", "Bajrami i Vogël, dita e parë (ditë pushimi e shtyrë, e vlerësuar)"),
             ("2024-12-25", "Krishtlindjet Katolike"),
         )
 

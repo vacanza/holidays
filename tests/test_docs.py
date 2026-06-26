@@ -252,13 +252,7 @@ class TestReadme(TestCase):
 
         # Parse 2nd table.
         table_content = self._parse_table(1)
-        replace_chars = str.maketrans(
-            {
-                " ": "",
-                ",": "",
-                "ã": "a",
-            }
-        )
+        replace_chars = str.maketrans({" ": "", ",": "", "ã": "a"})
 
         for row in table_content:
             # Market: 1st column.

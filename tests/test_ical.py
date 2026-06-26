@@ -83,9 +83,7 @@ class TestIcalExporter(TestCase):
         test_holidays = MockHolidays()._add_custom_holiday(escaped_name)
         output = ICalExporter(test_holidays).generate()
         self.assertIn(
-            f"SUMMARY:{sanitized_name}\r\n",
-            output,
-            f"Failed for holiday name: {escaped_name}",
+            f"SUMMARY:{sanitized_name}\r\n", output, f"Failed for holiday name: {escaped_name}"
         )
 
     def _assert_valid_language_code(self, language_name):

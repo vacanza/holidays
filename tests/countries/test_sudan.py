@@ -121,9 +121,7 @@ class TestSudan(CommonCountryTests, TestCase):
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(self.start_year, self.end_year))
         self.assertIslamicNoEstimatedHolidayNameCount(
-            name,
-            5,
-            set(range(self.start_year, self.end_year)) - {2006, 2007, 2039},
+            name, 5, set(range(self.start_year, self.end_year)) - {2006, 2007, 2039}
         )
 
     def test_weekend(self):
