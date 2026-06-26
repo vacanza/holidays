@@ -4796,19 +4796,6 @@
     ]
   },
   {
-    "id": "celebrate_the_country_s_win_against_argentina_in_the_world_cup",
-    "msgid": "A National Day",
-    "comment": "Celebrate the country's win against Argentina in the World Cup.",
-    "messages": {
-      "ar": "يوم وطني",
-      "bn": "জাতীয় দিবস (আর্জেন্টিনার বিরুদ্ধে জয় উপলক্ষে)",
-      "en_US": "A National Day"
-    },
-    "countries": [
-      "SA"
-    ]
-  },
-  {
     "id": "celebration_of_600th_anniversary_of_the_death_of_dante",
     "msgid": "Celebration of 600th anniversary of the death of Dante",
     "comment": "Celebration of 600th anniversary of the death of Dante.",
@@ -5481,10 +5468,12 @@
       "fr_SN": "Noël",
       "fy": "Eerste Krystdei",
       "gu": {
+        "XCME": "નાતાલનો દિવસ",
         "XNSE": "નાતાલ",
         "XNYS": "નાતાલનો દિવસ"
       },
       "hi": {
+        "XCME": "क्रिसमस दिवस",
         "XNSE": "क्रिसमस डे",
         "XNYS": "क्रिसमस का दिन"
       },
@@ -5813,6 +5802,7 @@
       "VC",
       "VE",
       "VG",
+      "XCME",
       "XETR",
       "XNSE",
       "XNYS"
@@ -5938,6 +5928,7 @@
       "US",
       "VA",
       "VE",
+      "XCME",
       "XETR",
       "XHKG",
       "XNYS"
@@ -6100,6 +6091,7 @@
       "hi": "वर्ल्ड ट्रेड सेंटर पर हमलों के बाद बंद"
     },
     "countries": [
+      "XCME",
       "XNYS"
     ]
   },
@@ -7349,6 +7341,7 @@
       "hi": "थैंक्सगिविंग डे के बाद का दिन"
     },
     "countries": [
+      "XCME",
       "XNYS"
     ]
   },
@@ -7461,9 +7454,13 @@
     "messages": {
       "en_US": "Day before Independence Day",
       "gu": "સ્વતંત્રતા દિવસનો આગલો દિવસ",
-      "hi": "स्वतंत्रता दिवस से एक दिन पहले"
+      "hi": {
+        "XCME": "स्वतंत्रता दिवस से पहले का दिन",
+        "XNYS": "स्वतंत्रता दिवस से एक दिन पहले"
+      }
     },
     "countries": [
+      "XCME",
       "XNYS"
     ]
   },
@@ -7890,6 +7887,19 @@
     },
     "countries": [
       "NA"
+    ]
+  },
+  {
+    "id": "day_of_mourning_for_king_abdullah",
+    "msgid": "Day of Mourning for King Abdullah",
+    "comment": "Day of Mourning for King Abdullah.",
+    "messages": {
+      "ar": "يوم حداد على الملك عبد الله",
+      "bn": "রাজা আবদুল্লাহর জন্য শোক দিবস",
+      "en_US": "Day of Mourning for King Abdullah"
+    },
+    "countries": [
+      "SA"
     ]
   },
   {
@@ -9598,6 +9608,19 @@
     },
     "countries": [
       "US"
+    ]
+  },
+  {
+    "id": "dr_martin_luther_king_jr_day",
+    "msgid": "Dr. Martin Luther King, Jr. Day",
+    "comment": "Dr. Martin Luther King, Jr. Day.",
+    "messages": {
+      "en_US": "Dr. Martin Luther King, Jr. Day",
+      "gu": "ડૉ. માર્ટિન લ્યુથર કિંગ, જુનિયર ડે",
+      "hi": "डॉ. मार्टिन लूथर किंग, जूनियर डे"
+    },
+    "countries": [
+      "XCME"
     ]
   },
   {
@@ -13465,6 +13488,7 @@
       "fy": "Goedfreed",
       "gu": {
         "IN": "ગુડ ફ્રાઈડે",
+        "XCME": "ગુડ ફ્રાઇડે",
         "XNSE": "ગુડ ફ્રાઈડે",
         "XNYS": "ગુડ ફ્રાઇડે"
       },
@@ -13639,6 +13663,7 @@
       "VC",
       "VE",
       "VG",
+      "XCME",
       "XETR",
       "XNSE",
       "XNYS"
@@ -14512,6 +14537,19 @@
     ]
   },
   {
+    "id": "holiday_for_the_national_team_s_victory_in_the_world_cup",
+    "msgid": "Holiday for the National Team's Victory in the World Cup",
+    "comment": "Holiday for the National Team's Victory in the World Cup.",
+    "messages": {
+      "ar": "عطلة فوز المنتخب في كأس العالم",
+      "bn": "বিশ্বকাপে জাতীয় দলের জয়ের ছুটি",
+      "en_US": "Holiday for the National Team's Victory in the World Cup"
+    },
+    "countries": [
+      "SA"
+    ]
+  },
+  {
     "id": "holiday_of_spring_and_labor",
     "msgid": "Holiday of Spring and Labor",
     "comment": "Holiday of Spring and Labor.",
@@ -14691,10 +14729,17 @@
     "comment": "Hurricane Sandy.",
     "messages": {
       "en_US": "Hurricane Sandy",
-      "gu": "વાવાઝોડું સેન્ડી",
-      "hi": "तूफान सैंडी"
+      "gu": {
+        "XCME": "હરિકેન સેન્ડી",
+        "XNYS": "વાવાઝોડું સેન્ડી"
+      },
+      "hi": {
+        "XCME": "हरिकेन सैंडी",
+        "XNYS": "तूफान सैंडी"
+      }
     },
     "countries": [
+      "XCME",
       "XNYS"
     ]
   },
@@ -15154,6 +15199,7 @@
       "UZ",
       "VC",
       "VE",
+      "XCME",
       "XK",
       "XNSE",
       "XNYS",
@@ -16442,6 +16488,19 @@
     ]
   },
   {
+    "id": "juneteenth_day",
+    "msgid": "Juneteenth Day",
+    "comment": "Juneteenth Day.",
+    "messages": {
+      "en_US": "Juneteenth Day",
+      "gu": "જુનટીન્થ ડે",
+      "hi": "जूनटीन्थ डे"
+    },
+    "countries": [
+      "XCME"
+    ]
+  },
+  {
     "id": "juneteenth_national_independence_day",
     "msgid": "Juneteenth National Independence Day",
     "comment": "Juneteenth National Independence Day.",
@@ -16625,6 +16684,19 @@
     },
     "countries": [
       "KP"
+    ]
+  },
+  {
+    "id": "king_abdullah_s_return_from_medical_treatment_abroad",
+    "msgid": "King Abdullah's Return from Medical Treatment Abroad",
+    "comment": "King Abdullah's Return from Medical Treatment Abroad.",
+    "messages": {
+      "ar": "عطلة رسمية بمناسبة عودة الملك عبد الله",
+      "bn": "রাজা আবদুল্লাহর প্রত্যাবর্তন উপলক্ষে সরকারি ছুটি",
+      "en_US": "King Abdullah's Return from Medical Treatment Abroad"
+    },
+    "countries": [
+      "SA"
     ]
   },
   {
@@ -16993,9 +17065,14 @@
       },
       "fr_BJ": "Fête du Travail",
       "fr_SN": "Fête du Travail",
-      "gu": "મજૂર દિવસ",
+      "gu": {
+        "IN": "મજૂર દિવસ",
+        "XCME": "શ્રમ દિવસ",
+        "XNYS": "મજૂર દિવસ"
+      },
       "hi": {
         "IN": "मजदूर दिवस",
+        "XCME": "श्रम दिवस",
         "XNYS": "मज़दूर दिवस"
       },
       "hr": "Praznik rada",
@@ -17138,6 +17215,7 @@
       "TW",
       "UA",
       "US",
+      "XCME",
       "XETR",
       "XNYS",
       "YE"
@@ -18950,6 +19028,7 @@
       "TL",
       "TM",
       "US",
+      "XCME",
       "XNYS"
     ]
   },
@@ -20159,11 +20238,15 @@
     "messages": {
       "en_US": "National Day of Mourning for former President George H. W. Bush",
       "gu": "ભૂતપૂર્વ રાષ્ટ્રપતિ જ્યોર્જ એચ. ડબ્લ્યુ. બુશ માટે રાષ્ટ્રીય શોક દિવસ",
-      "hi": "पूर्व राष्ट्रपति जॉर्ज एच. डब्लू. बुश के लिए राष्ट्रीय शोक दिवस",
+      "hi": {
+        "XCME": "पूर्व राष्ट्रपति जॉर्ज एच. डब्ल्यू. बुश के लिए राष्ट्रीय शोक दिवस",
+        "XNYS": "पूर्व राष्ट्रपति जॉर्ज एच. डब्लू. बुश के लिए राष्ट्रीय शोक दिवस"
+      },
       "th": "วันไว้ทุกข์แห่งชาติแด่อดีตประธานาธิบดีจอร์จ เอช. ดับเบิลยู. บุช"
     },
     "countries": [
       "US",
+      "XCME",
       "XNYS"
     ]
   },
@@ -20174,11 +20257,15 @@
     "messages": {
       "en_US": "National Day of Mourning for former President Gerald R. Ford",
       "gu": "ભૂતપૂર્વ રાષ્ટ્રપતિ ગેરાલ્ડ આર. ફોર્ડ માટે રાષ્ટ્રીય શોક દિવસ",
-      "hi": "पूर्व राष्ट्रपति जेराल्ड आर. फोर्ड के लिए राष्ट्रीय शोक दिवस",
+      "hi": {
+        "XCME": "पूर्व राष्ट्रपति गेराल्ड आर. फोर्ड के लिए राष्ट्रीय शोक दिवस",
+        "XNYS": "पूर्व राष्ट्रपति जेराल्ड आर. फोर्ड के लिए राष्ट्रीय शोक दिवस"
+      },
       "th": "วันไว้ทุกข์แห่งชาติแด่อดีตประธานาธิบดีเจอรัลด์ อาร์. ฟอร์ด"
     },
     "countries": [
       "US",
+      "XCME",
       "XNYS"
     ]
   },
@@ -20194,6 +20281,7 @@
     },
     "countries": [
       "US",
+      "XCME",
       "XNYS"
     ]
   },
@@ -20209,6 +20297,7 @@
     },
     "countries": [
       "US",
+      "XCME",
       "XNYS"
     ]
   },
@@ -21556,10 +21645,12 @@
       "fr_SN": "Jour de l'an",
       "fy": "Nijjiersdei",
       "gu": {
+        "XCME": "નવા વર્ષનો દિવસ",
         "XNSE": "નવું વર્ષ",
         "XNYS": "નવા વર્ષનો દિવસ"
       },
       "hi": {
+        "XCME": "नव वर्ष दिवस",
         "XNSE": "नया साल",
         "XNYS": "नव वर्ष दिवस"
       },
@@ -21858,6 +21949,7 @@
       "VE",
       "VG",
       "VN",
+      "XCME",
       "XETR",
       "XK",
       "XNSE",
@@ -23850,11 +23942,14 @@
     "messages": {
       "en_US": "President's Day",
       "es": "Natalicio de Su Excelencia el Presidente de la República",
+      "gu": "પ્રેસિડેન્ટ્સ ડે",
+      "hi": "प्रेसिडेंट्स डे",
       "th": "วันประธานาธิบดี"
     },
     "countries": [
       "GQ",
-      "US"
+      "US",
+      "XCME"
     ]
   },
   {
@@ -26172,6 +26267,32 @@
     },
     "countries": [
       "XNYS"
+    ]
+  },
+  {
+    "id": "s_markets_pause_at_10_30am_ct",
+    "msgid": "%s (markets pause at 10:30am CT)",
+    "comment": "%s (markets pause at 10:30am CT)",
+    "messages": {
+      "en_US": "%s (markets pause at 10:30am CT)",
+      "gu": "%s (બજારો સવારે 10:30 વાગ્યે CT સમયે થોભે છે)",
+      "hi": "%s (बाज़ार सुबह 10:30 बजे CT पर रुकते हैं)"
+    },
+    "countries": [
+      "XCME"
+    ]
+  },
+  {
+    "id": "s_markets_pause_at_12_00pm_ct",
+    "msgid": "%s (markets pause at 12:00pm CT)",
+    "comment": "%s (markets pause at 12:00pm CT)",
+    "messages": {
+      "en_US": "%s (markets pause at 12:00pm CT)",
+      "gu": "%s (બજારો બપોરે 12:00 વાગ્યે CT સમયે થોભે છે)",
+      "hi": "%s (बाज़ार दोपहर 12:00 बजे CT पर रुकते हैं)"
+    },
+    "countries": [
+      "XCME"
     ]
   },
   {
@@ -30785,6 +30906,7 @@
       "LC",
       "NF",
       "US",
+      "XCME",
       "XNYS"
     ]
   },
