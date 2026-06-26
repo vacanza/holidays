@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+
 #  holidays
 #  --------
 #  A fast, efficient Python library for generating country, province and state
@@ -10,6 +12,7 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
+
 """Build a JSON file mapping holiday strings across all locales.
 
 Run with:
@@ -19,7 +22,6 @@ To rebuild from scratch, replacing the existing file:
     python scripts/l10n/json_builder.py --refresh
 
 To split a holiday entry into a country-specific dedicated msgid:
-    python scripts/l10n/json_builder.py --split <comment> <country_code> [<country_code> ...]
     python scripts/l10n/json_builder.py --split <comment> <country_code> [<country_code> ...]
         --new-id <new_id> --msgid <msgid>
 
@@ -36,7 +38,6 @@ A backup of the previous file is saved to:
 """
 
 import argparse
-import copy
 import json
 import re
 import shutil
@@ -77,10 +78,16 @@ class IntermediateJsonBuilder:
             type=str,
         )
         self.args = arg_parser.parse_args()
+
         self.locale_path = Path("holidays/locale")
         self.output_path = Path("scripts/l10n/holidays_l10n.json")
         self.backup_path = Path("scripts/l10n/holidays_l10n.json.bak")
         self.lang_countries: dict[str, set[str]] = {}
+        for po_path in self.locale_path.rglob("*.po"):
+            self.lang_countries.setdefault(po_path.parents[1].name, set()).add(po_path.stem)
+
+    def _make_id(self, text: str) -> str:
+        return _ID_RE.sub("_", text.lower()).strip("_")
 
     def _deduplicate_ids(self, grouped: dict) -> None:
         """Ensure all IDs are unique by appending a counter to duplicates."""
@@ -91,111 +98,79 @@ class IntermediateJsonBuilder:
                 seen[base_id] += 1
                 entry["id"] = f"{base_id}_{seen[base_id]}"
 
-    def _flatten_messages(self, messages: dict) -> dict:
-        """Flatten per-country messages to a single string where all countries agree."""
-        flattened = {}
-        for lang, translations in messages.items():
-            values = iter(translations.values())
-            first = next(values)
-            if all(v == first for v in values):
-                flattened[lang] = first
-            else:
-                flattened[lang] = dict(sorted(translations.items()))
-        return dict(sorted(flattened.items()))
-
-    def _get_msgid(self, messages: dict, override: str | None = None) -> str:
+    def _get_msgid(self, messages: dict) -> str:
         """Derive msgid from en_US translation or use explicit override."""
-        if override:
-            return override
         en_us = messages.get("en_US", "")
         if isinstance(en_us, dict):
             en_us = next(iter(en_us.values()), "")
         return en_us.removesuffix(".")
 
-    def _build_lang_country_map(self) -> None:
-        """Populate lang_countries map from locale .po file structure."""
-        for po_path in self.locale_path.rglob("*.po"):
-            self.lang_countries.setdefault(po_path.parents[1].name, set()).add(po_path.stem)
+    def _flatten_translation_dict(self, translations: dict[str, str]) -> str | dict[str, str]:
+        values = iter(translations.values())
+        first = next(values)
+        return first if all(v == first for v in values) else translations
 
-    def _remove_countries_from_messages(
-        self,
-        messages: dict,
-        countries: set,
-        lang_countries: dict[str, set[str]] | None = None,
-    ) -> dict:
+    def _filter_messages(self, messages: dict, countries: set[str], *, include: bool) -> dict:
+        """Keep or remove translations for the specified countries."""
+        result = {}
+        for lang, value in messages.items():
+            if isinstance(value, dict):
+                filtered = {
+                    country: translation
+                    for country, translation in value.items()
+                    if (country in countries) == include
+                }
+                if filtered:
+                    result[lang] = self._flatten_translation_dict(filtered)
+            else:
+                filtered_countries = (
+                    self.lang_countries[lang] & countries
+                    if include
+                    else self.lang_countries[lang] - countries
+                )
+                if filtered_countries:
+                    result[lang] = value
+
+        return result
+
+    def _flatten_messages(self, messages: dict) -> dict:
+        """Flatten per-country messages to a single string where all countries agree."""
+        return {
+            lang: self._flatten_translation_dict(dict(sorted(translations.items())))
+            for lang, translations in sorted(messages.items())
+        }
+
+    def _remove_countries_from_messages(self, messages: dict, countries: set[str]) -> dict:
         """Remove countries from nested language dicts, reflattening where possible."""
-        cleaned = {}
-        for lang, val in messages.items():
-            if isinstance(val, dict):
-                remaining = {k: v for k, v in val.items() if k not in countries}
-                if not remaining:
-                    continue
-                unique = set(remaining.values())
-                cleaned[lang] = next(iter(unique)) if len(unique) == 1 else remaining
-            else:
-                if lang_countries:
-                    lang_owners = lang_countries.get(lang, set())
-                    if lang_owners and lang_owners <= countries:
-                        continue
-                cleaned[lang] = val
-        return cleaned
+        return self._filter_messages(messages, countries, include=False)
 
-    def _extract_group_messages(
-        self,
-        messages: dict,
-        country_codes: set[str],
-        lang_countries: dict[str, set[str]],
-    ) -> dict:
+    def _extract_group_messages(self, messages: dict, countries: set[str]) -> dict:
         """Extract translations relevant to a group of countries."""
-        extracted = {}
-        for lang, val in messages.items():
-            if isinstance(val, dict):
-                group_translations = {k: v for k, v in val.items() if k in country_codes}
-                if not group_translations:
-                    continue
-                unique = set(group_translations.values())
-                extracted[lang] = next(iter(unique)) if len(unique) == 1 else group_translations
-            else:
-                if lang_countries.get(lang, set()) & country_codes:
-                    extracted[lang] = val
-        return extracted
-
-    def _sort_entries(self, entries: list) -> list:
-        """Sort holiday entries by ID."""
-        return sorted(entries, key=lambda x: x["id"])
-
-    def _backup(self) -> None:
-        """Save a backup of the existing JSON before overwriting."""
-        if self.output_path.exists():
-            shutil.copy2(self.output_path, self.backup_path)
-            print(f"Backup saved to: {self.backup_path}")
-            print("Note: if you have split entries, compare with the backup.")
+        return self._filter_messages(messages, countries, include=True)
 
     def _merge_with_existing(self, fresh: list) -> list:
         """Merge fresh build with existing JSON, preserving manual edits and split entries."""
         if not self.output_path.exists():
-            return self._sort_entries(fresh)
+            return fresh
 
         with self.output_path.open(encoding="utf-8") as f:
             existing = json.load(f)
 
-        fresh_comments = {entry["comment"] for entry in fresh}
-        fresh_ids = {entry["id"] for entry in fresh}
-
         existing_by_comment = {
             entry["comment"]: entry
             for entry in existing
-            if entry["id"] == _ID_RE.sub("_", entry["comment"].lower()).strip("_")
+            if entry["id"] == self._make_id(entry["comment"])
         }
 
         for entry in fresh:
             if existing_entry := existing_by_comment.get(entry["comment"]):
                 entry["id"] = existing_entry["id"]
 
+        fresh_comments = {entry["comment"] for entry in fresh}
+        fresh_ids = {entry["id"] for entry in fresh}
+
         split_entries = [
-            copy.deepcopy(e)
-            for e in existing
-            if e["comment"] in fresh_comments and e["id"] not in fresh_ids
+            e for e in existing if e["comment"] in fresh_comments and e["id"] not in fresh_ids
         ]
 
         fresh_by_comment = {e["comment"]: e for e in fresh}
@@ -207,59 +182,59 @@ class IntermediateJsonBuilder:
             if comment not in fresh_by_comment:
                 continue
             source = fresh_by_comment[comment]
-            source["countries"] = sorted(set(source["countries"]) - countries)
+            source["countries"] -= countries
             source["messages"] = self._remove_countries_from_messages(
-                source["messages"], countries, self.lang_countries
+                source["messages"], countries
             )
 
-        fresh.extend(split_entries)
-        return self._sort_entries(fresh)
+        return fresh + split_entries
+
+    def out_to_file(self, output: list) -> None:
+        for entry in output:
+            entry["countries"] = sorted(entry["countries"])
+        output.sort(key=lambda x: x["id"])
+        self.output_path.write_text(  # NOSONAR
+            json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n"
+        )
 
     def _build(self) -> None:
         """Build or update the JSON file."""
         grouped: dict[str, dict] = {}
-
-        for po_file_path in self.locale_path.rglob("*.po"):
-            lang = po_file_path.parents[1].name
-            country_code = po_file_path.stem
-            self.lang_countries.setdefault(lang, set()).add(country_code)
-            po = pofile(str(po_file_path))
-
-            for po_entry in po:
-                translation = po_entry.msgstr or po_entry.msgid
-                comment = po_entry.comment
-                entry = grouped.setdefault(
-                    comment,
-                    {
-                        "id": _ID_RE.sub("_", comment.lower()).strip("_"),
-                        "msgid": "",
-                        "comment": comment,
-                        "messages": {},
-                        "countries": set(),
-                    },
-                )
-                entry["messages"].setdefault(lang, {})[country_code] = translation
-                entry["countries"].add(country_code)
+        for lang, countries in self.lang_countries.items():
+            for country_code in countries:
+                po_file_path = self.locale_path / lang / "LC_MESSAGES" / f"{country_code}.po"
+                for po_entry in pofile(str(po_file_path)):
+                    translation = po_entry.msgstr or po_entry.msgid
+                    comment = po_entry.comment
+                    entry = grouped.setdefault(
+                        comment,
+                        {
+                            "id": self._make_id(comment),
+                            "msgid": "",
+                            "comment": comment,
+                            "messages": {},
+                            "countries": set(),
+                        },
+                    )
+                    entry["messages"].setdefault(lang, {})[country_code] = translation
+                    entry["countries"].add(country_code)
 
         self._deduplicate_ids(grouped)
 
-        output = self._sort_entries(list(grouped.values()))
+        output = list(grouped.values())
         for entry in output:
             entry["messages"] = self._flatten_messages(entry["messages"])
-            entry["countries"] = sorted(entry["countries"])
             entry["msgid"] = self._get_msgid(entry["messages"])
 
-        self._backup()
+        if self.output_path.exists():
+            shutil.copy(self.output_path, self.backup_path)
+            print(f"Backup saved to: {self.backup_path}")
+            print("Note: if you have split entries, compare with the backup.")
 
         if not self.args.refresh:
             output = self._merge_with_existing(output)
 
-        self.output_path.write_text(
-            json.dumps(output, ensure_ascii=False, indent=2) + "\n",
-            encoding="utf-8",
-            newline="\n",
-        )
-
+        self.out_to_file(output)
         print(f"Total unique holidays: {len(output)}")
         print(f"Saved to: {self.output_path}")
 
@@ -279,42 +254,29 @@ class IntermediateJsonBuilder:
             (e for e in data if e["comment"] == comment and country_codes <= set(e["countries"])),
             None,
         )
-
         if not source:
             print(f"Error: no entry found with comment {comment!r} containing {country_codes}")
             sys.exit(1)
 
-        self._build_lang_country_map()
-        entry_id = self.args.new_id or _ID_RE.sub(
-            "_",
-            f"{comment} {' '.join(sorted(country_codes))}".lower(),
-        ).strip("_")
-
-        new_messages = self._extract_group_messages(
-            source["messages"], country_codes, self.lang_countries
+        entry_id = self.args.new_id or self._make_id(
+            f"{comment} {' '.join(sorted(country_codes))}"
         )
-
+        new_messages = self._extract_group_messages(source["messages"], country_codes)
         new_entry = {
             "id": entry_id,
-            "msgid": self._get_msgid(new_messages, self.args.msgid),
+            "msgid": self.args.msgid or self._get_msgid(new_messages),
             "comment": comment,
             "messages": new_messages,
-            "countries": sorted(country_codes),
+            "countries": country_codes,
         }
 
         source["messages"] = self._remove_countries_from_messages(
-            source["messages"], country_codes, self.lang_countries
+            source["messages"], country_codes
         )
-        source["countries"] = sorted(set(source["countries"]) - country_codes)
+        source["countries"] = set(source["countries"]) - country_codes
 
         data.append(new_entry)
-        data = self._sort_entries(data)
-
-        self.output_path.write_text(
-            json.dumps(data, ensure_ascii=False, indent=2) + "\n",
-            encoding="utf-8",
-            newline="\n",
-        )
+        self.out_to_file(data)
 
         print(f"Split {sorted(country_codes)} from {comment!r}")
         print(f"New entry ID: {entry_id}")
