@@ -54,6 +54,8 @@ class India(
             * <https://web.archive.org/web/20251214133200/https://andamannicobar.gov.in/admin-pannel/othersdoc/1-29-Holiday%20List%202026%20Gazette.pdf>
         * Gujarat:
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
+        * Himachal Pradesh:
+            * <http://web.archive.org/web/20260627103337/https://www.comply360.in/labor-law-library/wp-content/uploads/2025/12/Notification-regarding-list-of-Holidays-for-the-Year-2026-in-Himachal-Pradesh-1.pdf>
         * Kerala:
             * <https://web.archive.org/web/20260329164551/https://kerala.gov.in/showcalendar/2026>
         * Maharashtra:
@@ -527,8 +529,22 @@ class India(
 
     # Himachal Pradesh.
     def _populate_subdiv_hp_public_holidays(self):
+        # Statehood Day.
+        self._add_holiday_jan_25(tr("Statehood Day"))
+        # Guru Ravidas's Jayanti.
+        self._add_guru_ravidas_jayanti(tr("Guru Ravidas's Jayanti"))
         # Himachal Day.
         self._add_holiday_apr_15(tr("Himachal Day"))
+        # Bhagvan Shree Parshuram Jayanti
+        self._add_parshuram_jayanti(tr("Bhagvan Shree Parshuram Jayanti"))
+        # Maharana Pratap Jayanti.
+        self._add_maharana_pratap_jayanti(tr("Maharana Pratap Jayanti"))
+        # Sant Guru Kabir Jayanti (Prakat Diwas).
+        self._add_kabir_jayanti(tr("Sant Guru Kabir Jayanti (Prakat Diwas)"))
+        # Dussehra.
+        self._add_dussehra(tr("Dussehra"))
+        # Maharishi Valmiki's Birthday.
+        self._add_maharishi_valmiki_jayanti(tr("Maharishi Valmiki's Birthday"))
 
     # Jammu and Kashmir
     def _populate_subdiv_jk_public_holidays(self):
