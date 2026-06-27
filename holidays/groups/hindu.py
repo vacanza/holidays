@@ -333,6 +333,21 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.janmashtami_date(self._year)
         )
 
+    def _add_kabir_jayanti(self, name) -> date | None:
+        """
+        Add Kabir Jayanti.
+
+        Kabir Jayanti commemorates the birth anniversary of Saint Kabir,
+        the 15th-century Indian mystic poet and saint. It is observed on
+        the full moon day (Purnima) of the Hindu month of Jyeshtha
+        (May/June).
+
+        https://en.wikipedia.org/wiki/Kabir
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.kabir_jayanti_date(self._year)
+        )
+
     def _add_karwa_chauth(self, name) -> date | None:
         """
         Add Karwa Chauth.
@@ -506,6 +521,21 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.dussehra_date(self._year), days_delta=+2
+        )
+
+    def _add_parshuram_jayanti(self, name) -> date | None:
+        """
+        Add Parshuram Jayanti.
+
+        Parshuram Jayanti commemorates the birth of Lord Parashurama,
+        the sixth avatar of Lord Vishnu. It is observed on the third
+        day (Tritiya) of the bright fortnight of the Hindu month of
+        Vaisakha (April/May).
+
+        https://en.wikipedia.org/wiki/Parashurama
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.parshuram_jayanti_date(self._year)
         )
 
     def _add_pongal(self, name) -> date | None:

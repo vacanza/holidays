@@ -34,6 +34,7 @@ GURU_RAVIDAS_JAYANTI = "GURU_RAVIDAS_JAYANTI"
 GYALPO_LOSAR = "GYALPO_LOSAR"
 HOLI = "HOLI"
 JANMASHTAMI = "JANMASHTAMI"
+KABIR_JAYANTI = "KABIR_JAYANTI"
 KARWA_CHAUTH = "KARWA_CHAUTH"
 MAHA_ASHTAMI = "MAHA_ASHTAMI"
 MAHA_NAVAMI = "MAHA_NAVAMI"
@@ -44,6 +45,7 @@ MAHAVIR_JAYANTI = "MAHAVIR_JAYANTI"
 MAKAR_SANKRANTI = "MAKAR_SANKRANTI"
 NARAKA_CHATURDASHI = "NARAKA_CHATURDASHI"
 ONAM = "ONAM"
+PARSHURAM_JAYANTI = "PARSHURAM_JAYANTI"
 PONGAL = "PONGAL"
 RAKSHA_BANDHAN = "RAKSHA_BANDHAN"
 RAM_NAVAMI = "RAM_NAVAMI"
@@ -857,6 +859,45 @@ class _HinduLunisolar:
         2035: (AUG, 26),
     }
 
+    # https://web.archive.org/web/20250612160056/https://www.drikpanchang.com/hindu-saints/kabirdas/sant-kabir-jayanti.html
+    KABIR_JAYANTI_DATES = {
+        2001: (JUN, 6),
+        2002: (JUN, 24),
+        2003: (JUN, 14),
+        2004: (JUN, 3),
+        2005: (JUN, 22),
+        2006: (JUN, 11),
+        2007: (JUN, 30),
+        2008: (JUN, 18),
+        2009: (JUN, 7),
+        2010: (JUN, 26),
+        2011: (JUN, 15),
+        2012: (JUN, 4),
+        2013: (JUN, 23),
+        2014: (JUN, 13),
+        2015: (JUN, 2),
+        2016: (JUN, 20),
+        2017: (JUN, 9),
+        2018: (JUN, 28),
+        2019: (JUN, 17),
+        2020: (JUN, 5),
+        2021: (JUN, 24),
+        2022: (JUN, 14),
+        2023: (JUN, 4),
+        2024: (JUN, 22),
+        2025: (JUN, 11),
+        2026: (JUN, 29),
+        2027: (JUN, 18),
+        2028: (JUN, 7),
+        2029: (JUN, 26),
+        2030: (JUN, 15),
+        2031: (JUN, 5),
+        2032: (JUN, 23),
+        2033: (JUN, 12),
+        2034: (JUN, 2),
+        2035: (JUN, 20),
+    }
+
     # https://web.archive.org/web/20260123230237/https://www.timeanddate.com/holidays/india/karaka-chaturthi
     KARWA_CHAUTH_DATES = {
         2001: (NOV, 4),
@@ -1244,6 +1285,45 @@ class _HinduLunisolar:
         2033: (SEP, 6),
         2034: (AUG, 28),
         2035: (SEP, 14),
+    }
+
+    # http://web.archive.org/web/20260312200240/https://www.drikpanchang.com/dashavatara/parashurama/parashurama-jayanti-date-time.html
+    PARSHURAM_JAYANTI_DATES = {
+        2001: (APR, 25),
+        2002: (MAY, 14),
+        2003: (MAY, 4),
+        2004: (APR, 22),
+        2005: (MAY, 10),
+        2006: (APR, 30),
+        2007: (APR, 19),
+        2008: (MAY, 7),
+        2009: (APR, 27),
+        2010: (MAY, 16),
+        2011: (MAY, 5),
+        2012: (APR, 24),
+        2013: (MAY, 12),
+        2014: (MAY, 1),
+        2015: (APR, 20),
+        2016: (MAY, 8),
+        2017: (APR, 28),
+        2018: (APR, 18),
+        2019: (MAY, 7),
+        2020: (APR, 25),
+        2021: (MAY, 14),
+        2022: (MAY, 3),
+        2023: (APR, 22),
+        2024: (MAY, 10),
+        2025: (APR, 29),
+        2026: (APR, 19),
+        2027: (MAY, 8),
+        2028: (APR, 27),
+        2029: (MAY, 16),
+        2030: (MAY, 5),
+        2031: (APR, 24),
+        2032: (MAY, 11),
+        2033: (MAY, 1),
+        2034: (APR, 20),
+        2035: (MAY, 9),
     }
 
     PONGAL_DATES = {
@@ -1885,6 +1965,9 @@ class _HinduLunisolar:
     def karwa_chauth_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(KARWA_CHAUTH, year)
 
+    def kabir_jayanti_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(KABIR_JAYANTI, year)
+
     def maha_ashtami_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHA_ASHTAMI, year)
 
@@ -1911,6 +1994,9 @@ class _HinduLunisolar:
 
     def onam_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(ONAM, year)
+
+    def parshuram_jayanti_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(PARSHURAM_JAYANTI, year)
 
     def pongal_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(PONGAL, year)

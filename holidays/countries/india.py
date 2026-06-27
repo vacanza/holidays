@@ -614,10 +614,42 @@ class India(
     def _populate_subdiv_pb_public_holidays(self):
         # Guru Gobind Singh Jayanti.
         self._add_guru_gobind_singh_jayanti(tr("Guru Gobind Singh Jayanti"))
+        # Shaheedi Diwas of Shaheed-eAzam Bhagat Singh, Sukhdev and Rajguru Ji.
+        self._add_holiday_mar_23(
+            tr("Shaheedi Diwas of Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru Ji")
+        )
+        # Birthday of Sri Guru Nabha Dass ji.
+        self._add_holiday_apr_8(tr("Birthday of Sri Guru Nabha Dass ji"))
         # Vaisakhi.
         self._add_vaisakhi(tr("Vaisakhi"))
+        # Birthday of Lord Parshuram Ji.
+        self._add_parshuram_jayanti(tr("Birthday of Lord Parshuram Ji"))
+        # Kabir Jayanti.
+        self._add_kabir_jayanti(tr("Kabir Jayanti"))
+        # Martyrdom Day of Shaheed Udham Singh.
+        self._add_holiday_july_31(tr("Martyrdom Day of Shaheed Udham Singh"))
+        # Birthday of Maharishi Valmiki Ji.
+        self._add_maharishi_valmiki_jayanti(tr("Birthday of Maharishi Valmiki Ji"))
+        # Martyrdom Day of S. Kartar Singh Sarabha ji.
+        self._add_holiday_nov_16(tr("Martyrdom Day of S. Kartar Singh Sarabha ji"))
+        # Martyrdom Day of Sri Guru Teg Bahadur ji.
+        self._add_holiday_nov_24(tr("Martyrdom Day of Sri Guru Teg Bahadur ji"))
+
+    def _populate_subdiv_pb_optional_holidays(self):
         # Lohri.
         self._add_lohri(tr("Lohri"))
+        # Birthday of Satguru Ram Singh Ji.
+        self._add_basant_panchami(tr("Birthday of Satguru Ram Singh Ji"))
+        # International Women Day.
+        self._add_womens_day(tr("International Women Day"))
+        # Death Anniversary of Maharaja Ranjit Singh Ji
+        self._add_holiday_jun_27(tr("Death Anniversary of Maharaja Ranjit Singh Ji"))
+        # Saragarhi Day.
+        self._add_holiday_sep_12(tr("Saragarhi Day"))
+        # Birthday of S. Bhagat Singh Ji.
+        self._add_holiday_sep_28(tr("Birthday of S. Bhagat Singh Ji"))
+        # Birthday of Baba Banda Singh Ji Bahadur.
+        self._add_holiday_oct_16(tr("Birthday of Baba Banda Singh Ji Bahadur"))
         # New Punjab Day.
         self._add_holiday_nov_1(tr("New Punjab Day"))
 
