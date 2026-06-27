@@ -546,6 +546,14 @@ class India(
         # Maharishi Valmiki's Birthday.
         self._add_maharishi_valmiki_jayanti(tr("Maharishi Valmiki's Birthday"))
 
+    def _populate_subdiv_hp_women_optional_holidays(self):
+        # Raksha Bandhan.
+        self._add_raksha_bandhan(tr("Raksha Bandhan"))
+        # Karwa Chouth.
+        self._add_karwa_chauth(tr("Karwa Chouth"))
+        # Bhai Duj.
+        self._add_bhai_duj(tr("Bhai Duj"))
+
     # Jammu and Kashmir
     def _populate_subdiv_jk_public_holidays(self):
         pass
