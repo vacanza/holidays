@@ -79,7 +79,7 @@ class TestMexico(CommonCountryTests, TestCase):
             "2023-03-20",
         )
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         name = "Día del Trabajo"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1923, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1923))
