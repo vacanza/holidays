@@ -54,7 +54,7 @@ class TestMexico(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(2006, self.end_year))
 
-    def test_benito_juarez(self):
+    def test_benito_juarezs_birthday(self):
         name = "Natalicio de Benito Juárez"
         self.assertHolidayName(name, (f"{year}-03-21" for year in range(1917, 2007)))
         self.assertNoHolidayName(name, range(self.start_year, 1917))
