@@ -1024,6 +1024,15 @@ class _HinduLunisolar:
     # [2022](https://web.archive.org/web/20251213151608/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_holidays_list_21_10_2021.pdf)
     # [2023](https://web.archive.org/web/20251213151559/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_holidays_list_16_11_2022.pdf)
     MAHARANA_PRATAP_JAYANTI_DATES = {
+        2001: (MAY, 25),
+        2002: (JUN, 13),
+        2003: (JUN, 3),
+        2004: (MAY, 22),
+        2005: (JUN, 10),
+        2006: (MAY, 30),
+        2007: (JUN, 17),
+        2008: (JUN, 6),
+        2009: (MAY, 27),
         2010: (JUN, 15),
         2011: (JUN, 4),
         2012: (MAY, 24),

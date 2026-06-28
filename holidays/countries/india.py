@@ -651,7 +651,7 @@ class India(
         # Kabir Jayanti.
         self._add_kabir_jayanti(tr("Kabir Jayanti"))
         # Martyrdom Day of Shaheed Udham Singh.
-        self._add_holiday_july_31(tr("Martyrdom Day of Shaheed Udham Singh"))
+        self._add_holiday_jul_31(tr("Martyrdom Day of Shaheed Udham Singh"))
         # Birthday of Maharishi Valmiki Ji.
         self._add_maharishi_valmiki_jayanti(tr("Birthday of Maharishi Valmiki Ji"))
         # Martyrdom Day of S. Kartar Singh Sarabha ji.
