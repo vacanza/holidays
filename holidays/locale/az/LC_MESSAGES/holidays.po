@@ -1,0 +1,65 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: holidays\n"
+"POT-Creation-Date: 2026-06-30\n"
+"PO-Revision-Date: 2026-06-30\n"
+"Last-Translator: fsamod <fsamod@icloud.com>\n"
+"Language-Team: Azerbaijani <az@li.org>\n"
+"Language: az\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "New Year's Day"
+msgstr "Yeni il"
+
+msgid "Day of Mourning"
+msgstr "Ümumxalq Hüzn Günü"
+
+msgid "International Women's Day"
+msgstr "Beynəlxalq Qadınlar Günü"
+
+msgid "Novruz Bayram"
+msgstr "Novruz Bayramı"
+
+msgid "Victory Day"
+msgstr "Faşizm üzərində Qələbə Günü"
+
+msgid "Republic Day"
+msgstr "Respublika Günü"
+
+msgid "Independence Day"
+msgstr "Müstəqillik Günü"
+
+msgid "Day of National Salvation"
+msgstr "Azərbaycan Xalqının Milli Qurtuluş Günü"
+
+msgid "Armed Forces Day"
+msgstr "Azərbaycan Respublikasının Silahlı Qüvvələri Günü"
+
+msgid "Victory Day (WWII)"
+msgstr "Qələbə Günü"
+
+msgid "State Sovereignty Day"
+msgstr "Dövlət Suverenliyi Günü"
+
+msgid "Victory Day (2020)"
+msgstr "Zəfər Günü"
+
+msgid "State Flag Day"
+msgstr "Azərbaycan Respublikasının Dövlət Bayrağı Günü"
+
+msgid "Constitution Day"
+msgstr "Konstitusiya Günü"
+
+msgid "National Revival Day"
+msgstr "Milli Dirçəliş Günü"
+
+msgid "Solidarity Day of World Azerbaijanis"
+msgstr "Dünya Azərbaycanlılarının Həmrəyliyi Günü"
+
+msgid "Ramadan Bayram"
+msgstr "Ramazan Bayramı"
+
+msgid "Gurban Bayram"
+msgstr "Qurban Bayramı"
