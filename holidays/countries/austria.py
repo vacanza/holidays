@@ -111,8 +111,8 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("Christi Himmelfahrt"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Added via BGBl. Nr. 31/1933.
         # Removed via StGBl. Nr. 116/1945.

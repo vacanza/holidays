@@ -60,7 +60,7 @@ msgstr "Lunedì dell'Angelo"
 msgid "Tag der Arbeit"
 msgstr "Festa del lavoro"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Pfingstmontag"
 msgstr "Lunedì di Pentecoste"
 
@@ -128,7 +128,7 @@ msgstr "Lunedì del digiuno federale"
 msgid "Ostersonntag"
 msgstr "Pasqua"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pfingstsonntag"
 msgstr "Domenica di Pentecoste"
 

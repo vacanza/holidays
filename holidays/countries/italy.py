@@ -561,8 +561,8 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
     def _populate_subdiv_bz_public_holidays(self):
         # Province Law 36 of Oct 16, 1992.
         if self._year >= 1993:
-            # Whit Monday.
-            self._add_whit_monday(tr("Lunedì di Pentecoste"))
+            # Pentecost Monday.
+            self._add_pentecost_monday(tr("Lunedì di Pentecoste"))
 
     def _populate_subdiv_bz_half_day_holidays(self):
         # Province Law 36 of Oct 16, 1992.

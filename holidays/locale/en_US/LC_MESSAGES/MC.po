@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-20 11:58+0200\n"
-"PO-Revision-Date: 2024-01-02 15:44+0200\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -53,9 +53,9 @@ msgstr "Labor Day"
 msgid "L'Ascension"
 msgstr "Ascension Day"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Le lundi de Pentecôte"
-msgstr "Whit Monday"
+msgstr "Pentecost Monday"
 
 #. Corpus Christi.
 msgid "La Fête Dieu"

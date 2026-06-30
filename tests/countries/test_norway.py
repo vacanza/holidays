@@ -147,8 +147,8 @@ class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
             ("2022-05-01", "Labor Day"),
             ("2022-05-17", "Constitution Day"),
             ("2022-05-26", "Ascension Day"),
-            ("2022-06-05", "Whit Sunday"),
-            ("2022-06-06", "Whit Monday"),
+            ("2022-06-05", "Pentecost"),
+            ("2022-06-06", "Pentecost Monday"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Second Day of Christmas"),
         )
@@ -164,8 +164,8 @@ class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
             ("2022-05-01", "День праці"),
             ("2022-05-17", "День Конституції"),
             ("2022-05-26", "Вознесіння Господнє"),
-            ("2022-06-05", "Трійця"),
-            ("2022-06-06", "День Святого Духа"),
+            ("2022-06-05", "Пʼятидесятниця"),
+            ("2022-06-06", "Другий день Пʼятидесятниці"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Другий день Різдва"),
         )

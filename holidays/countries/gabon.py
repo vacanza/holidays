@@ -94,11 +94,11 @@ class Gabon(
             # Ascension Day.
             self._add_ascension_thursday(tr("Ascension"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Pentecôte"))
+        # Pentecost.
+        self._add_pentecost(tr("Pentecôte"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Lundi de Pentecôte"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Lundi de Pentecôte"))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assomption de Marie"))

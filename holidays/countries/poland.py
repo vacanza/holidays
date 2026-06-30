@@ -72,11 +72,11 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
             self._add_ascension_thursday(tr("Wniebowstąpienie Pańskie"))
 
         # Pentecost.
-        self._add_whit_sunday(tr("Zielone Świątki"))
+        self._add_pentecost(tr("Zielone Świątki"))
 
         if self._year <= 1950:
-            # Whit Monday.
-            self._add_whit_monday(tr("Drugi dzień Zielonych Świątek"))
+            # Pentecost Monday.
+            self._add_pentecost_monday(tr("Drugi dzień Zielonych Świątek"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Dzień Bożego Ciała"))

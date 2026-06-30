@@ -75,8 +75,8 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             # Easter Sunday (Pascha).
             dts_observed.add(self._add_easter_sunday(tr("Великдень (Пасха)")))
 
-            # Holy Trinity Day.
-            dts_observed.add(self._add_whit_sunday(tr("Трійця")))
+            # Pentecost.
+            dts_observed.add(self._add_pentecost(tr("Трійця")))
 
             name = (
                 # Labor Day.
