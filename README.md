@@ -67,7 +67,7 @@ The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io).
 
 ## ICS Exports
 
-Holiday calendars can be exported as `.ics` files via command line with holidays-ics, or via the web-based-holidays-ics tool.
+Holiday calendars can be exported as `.ics` files via the command line with holidays-ics, or from the [Download Holiday Calendars](https://holidays.readthedocs.io/en/latest/downloads/)
 
 ### holidays-ics
 
@@ -78,10 +78,6 @@ To generate a US calendar spanning the next 10 years and save it to a file (US_Y
 ```shell
 holidays-ics US --years +10
 ```
-
-### web-based-holidays-ics
-
-You can also generate and download custom `.ics` files directly via the [download page](https://holidays.readthedocs.io/en/latest/downloads/).
 
 ## Quick Start
 
