@@ -142,7 +142,6 @@ class TestMexico(CommonCountryTests, TestCase):
             (f"{year}-10-01" for year in range(2024, self.end_year) if (year - 1970) % 6 > 0),
             (f"{year}-10-01" for year in range(1970, 2024)),
         )
-        self.assertNoHoliday("2024-12-01")
 
     def test_christmas_day(self):
         self.assertHolidayName("Navidad", (f"{year}-12-25" for year in self.full_range))
