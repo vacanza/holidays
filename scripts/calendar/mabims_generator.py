@@ -31,17 +31,17 @@ whose data can then be copied to `holidays/calendars/islamic.py`.
 References:
     * <https://www.muis.gov.sg/resources/islamic-calendar/>
     * <https://www.muslim.sg/articles/ramadan-countdown-unity-in-diversity>
-    * <https://accuhijri.github.io/>
 """
 
 from __future__ import annotations
 
 from collections import defaultdict
 from datetime import date, timedelta
-from typing import TYPE_CHECKING
 import math
+from functools import cache
+
 from skyfield import almanac
-from skyfield.api import N, E, Topos, load, wgs84
+from skyfield.api import N, E, load, wgs84
 
 from .generator import CalendarGenerator
 
@@ -69,130 +69,109 @@ MABIMS_HOLIDAYS = {
     "MAWLID": (3, 12),
 }
 
-# Year range to generate.
-START_YEAR = 1924
-END_YEAR = 2053
+class _MabimsLunar:
+    def __init__(self) -> None:
+        self.ts = load.timescale()
+        self.eph = load("de421.bsp")
+        self.observer = wgs84.latlon(SINGAPORE_LAT * N, SINGAPORE_LON * E, elevation_m=SINGAPORE_ELEV)
 
+    def get_approximate_date(self, h_year: int, h_month: int) -> date:
+        months_since_epoch = (h_year - 1) * 12 + (h_month - 1)
+        approx_days = int(months_since_epoch * MEAN_SYNODIC_MONTH)
+        return HIJRI_EPOCH + timedelta(days=approx_days)
 
-def get_skyfield_objects():
-    """Load skyfield ephemeris and observer."""
-    ts = load.timescale()
-    eph = load("de421.bsp")
-    observer = wgs84.latlon(SINGAPORE_LAT * N, SINGAPORE_LON * E, elevation_m=SINGAPORE_ELEV)
-    return ts, eph, observer
+    def get_new_moon_date(self, approximate_date: date) -> date:
+        """Find the new moon (conjunction) near the given date."""
+        t0 = self.ts.utc(approximate_date.year, approximate_date.month, approximate_date.day - 5)
+        t1 = self.ts.utc(approximate_date.year, approximate_date.month, approximate_date.day + 5)
+        times, events = almanac.find_discrete(t0, t1, almanac.moon_phases(self.eph))
+        for t, e in zip(times, events):
+            if e == 0:  # New moon
+                return date(*t.utc[:3])
+        return approximate_date
 
+    def check_mabims_visibility(self, check_date: date) -> bool:
+        """Check if crescent moon meets MABIMS criteria at Singapore sunset."""
+        # Find exact sunset time for Singapore.
+        t0 = self.ts.utc(check_date.year, check_date.month, check_date.day, 9, 0)   # 5pm SGT
+        t1 = self.ts.utc(check_date.year, check_date.month, check_date.day, 12, 0)  # 8pm SGT
+        f = almanac.sunrise_sunset(self.eph, self.observer)
+        times, events = almanac.find_discrete(t0, t1, f)
+        t = None
+        for st, e in zip(times, events):
+            if e == 0:  # sunset
+                t = st
+                break
+        if t is None:
+            # Fallback to approximate Singapore sunset (~6:50pm SGT = 10:50 UTC).
+            t = self.ts.utc(check_date.year, check_date.month, check_date.day, 10, 50, 0)
 
-def get_new_moon_date(ts, eph, approximate_date: date) -> date:
-    """Find the new moon (conjunction) near the given date."""
-    t0 = ts.utc(approximate_date.year, approximate_date.month, approximate_date.day - 2)
-    t1 = ts.utc(approximate_date.year, approximate_date.month, approximate_date.day + 2)
-    times, events = almanac.find_discrete(t0, t1, almanac.moon_phases(eph))
-    for t, e in zip(times, events):
-        if e == 0:  # New moon
-            return date(*t.utc[:3])
-    return approximate_date
+        earth = self.eph["earth"]
+        moon = self.eph["moon"]
+        sun = self.eph["sun"]
 
+        obs = earth + self.observer
+        moon_pos = obs.at(t).observe(moon).apparent()
+        sun_pos = obs.at(t).observe(sun).apparent()
 
-def check_mabims_visibility(ts, eph, observer, check_date: date) -> bool:
-    """Check if crescent moon meets MABIMS criteria at Singapore sunset."""
-    # Find exact sunset time for Singapore.
-    t0 = ts.utc(check_date.year, check_date.month, check_date.day, 9, 0)   # 5pm SGT
-    t1 = ts.utc(check_date.year, check_date.month, check_date.day, 12, 0)  # 8pm SGT
-    f = almanac.sunrise_sunset(eph, observer)
-    times, events = almanac.find_discrete(t0, t1, f)
-    t = None
-    for st, e in zip(times, events):
-        if e == 0:  # sunset
-            t = st
-            break
-    if t is None:
-        # Fallback to approximate Singapore sunset (~6:50pm SGT = 10:50 UTC).
-        t = ts.utc(check_date.year, check_date.month, check_date.day, 10, 50, 0)
+        moon_alt, _, _ = moon_pos.altaz()
 
-    earth = eph["earth"]
-    moon = eph["moon"]
-    sun = eph["sun"]
+        # Geocentric elongation.
+        moon_ra, moon_dec, _ = moon_pos.radec()
+        sun_ra, sun_dec, _ = sun_pos.radec()
 
-    obs = earth + observer
-    moon_pos = obs.at(t).observe(moon).apparent()
-    sun_pos = obs.at(t).observe(sun).apparent()
-
-    moon_alt, _, _ = moon_pos.altaz()
-    sun_alt, _, _ = sun_pos.altaz()
-
-    # Geocentric elongation.
-    moon_ra, moon_dec, _ = moon_pos.radec()
-    sun_ra, sun_dec, _ = sun_pos.radec()
-
-    d_ra = (moon_ra.hours - sun_ra.hours) * 15
-    elongation = math.degrees(math.acos(
-        max(-1.0, min(1.0,
-            math.sin(math.radians(moon_dec.degrees)) * math.sin(math.radians(sun_dec.degrees)) +
-            math.cos(math.radians(moon_dec.degrees)) * math.cos(math.radians(sun_dec.degrees)) *
-            math.cos(math.radians(d_ra))
+        d_ra = (moon_ra.hours - sun_ra.hours) * 15
+        elongation = math.degrees(math.acos(
+            max(-1.0, min(1.0,
+                math.sin(math.radians(moon_dec.degrees)) * math.sin(math.radians(sun_dec.degrees)) +
+                math.cos(math.radians(moon_dec.degrees)) * math.cos(math.radians(sun_dec.degrees)) *
+                math.cos(math.radians(d_ra))
+            ))
         ))
-    ))
 
-    return moon_alt.degrees >= MIN_ALTITUDE and elongation >= MIN_ELONGATION
+        return moon_alt.degrees >= MIN_ALTITUDE and elongation >= MIN_ELONGATION
 
+    @cache
+    def get_hijri_month_start(self, h_year: int, h_month: int) -> date:
+        """Get the Gregorian date of the start of a Hijri month using MABIMS criteria."""
+        approx = self.get_approximate_date(h_year, h_month)
+        new_moon = self.get_new_moon_date(approx)
 
-def get_hijri_month_start(ts, eph, observer, approximate_date: date) -> date:
-    """Get the Gregorian date of the start of a Hijri month using MABIMS criteria."""
-    new_moon = get_new_moon_date(ts, eph, approximate_date)
+        # Check visibility on day after new moon, then day after that.
+        for delta in range(1, 4):
+            check_date = new_moon + timedelta(days=delta)
+            if self.check_mabims_visibility(check_date):
+                return check_date + timedelta(days=1)
 
-    # Check visibility on day after new moon, then day after that.
-    for delta in range(1, 4):
-        check_date = new_moon + timedelta(days=delta)
-        if check_mabims_visibility(ts, eph, observer, check_date):
-            return check_date + timedelta(days=1)
-
-    # Fallback: 30 days after previous month start.
-    return new_moon + timedelta(days=1)
+        # Fallback: 30 days after previous month start.
+        return new_moon + timedelta(days=1)
 
 
 def generate_data() -> None:
     """Generate MABIMS Islamic holiday dates."""
-    ts, eph, observer = get_skyfield_objects()
+    cal = _MabimsLunar()
 
     # Start from approximate Hijri new year 1342 (≈1924 CE).
-    # Use Umm al-Qura as approximation to find new moon dates.
-    from hijridate.convert import Hijri
-    from hijridate.ummalqura import HIJRI_RANGE
+    h_start = 1342
+    h_end = 1474  # de421.bsp covers up to ~2053 CE
 
     dates: dict[str, dict[int, list[date]]] = defaultdict(lambda: defaultdict(list))
 
-    h_start = HIJRI_RANGE[0][0]
-    h_end = min(HIJRI_RANGE[1][0], 1474)  # de421.bsp covers up to ~2053 CE
-
-    # Cache month starts to avoid recalculating.
-    month_starts: dict[tuple[int, int], date] = {}
-
-    print(f"Generating MABIMS dates for Hijri years {h_start}-{h_end}...")  # noqa: T201
-
-    for h_year in range(h_start, h_end + 1):
-        if h_year % 10 == 0:
-            print(f"Processing Hijri year {h_year}...")  # noqa: T201
-
-        for h_month in range(1, 13):
-            # Get approximate date from Umm al-Qura.
-            approx = Hijri(h_year, h_month, 1).to_gregorian()
-
-            # Get MABIMS month start.
-            month_start = get_hijri_month_start(ts, eph, observer, approx)
-            month_starts[(h_year, h_month)] = month_start
+    print(f"Generating MABIMS dates for Hijri years {h_start}-{h_end}...")
 
     # Now calculate holiday dates.
     for name, (h_month, h_day) in MABIMS_HOLIDAYS.items():
         for h_year in range(h_start, h_end + 1):
-            if (h_year, h_month) not in month_starts:
-                continue
-            month_start = month_starts[(h_year, h_month)]
+            if h_year % 10 == 0 and name == "HIJRI_NEW_YEAR":
+                print(f"Processing Hijri year {h_year}...")
+
+            month_start = cal.get_hijri_month_start(h_year, h_month)
             holiday_date = month_start + timedelta(days=h_day - 1)
             dates[name][holiday_date.year].append(holiday_date)
 
     cal_gen = CalendarGenerator("islamic_mabims", "_IslamicMabimsLunar")
     cal_gen.generate(dates)
-    print("Done! Generated holidays/calendars/islamic_mabims_dates.py")  # noqa: T201
+    print("Done! Generated holidays/calendars/islamic_mabims_dates.py")
 
 
 if __name__ == "__main__":
