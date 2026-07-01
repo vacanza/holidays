@@ -1134,10 +1134,10 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Mauritania</td>
-<td>MR</td>
+<td>Mauritius</td>
+<td>MU</td>
 <td></td>
-<td></td>
+<td><strong>en_MU</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
