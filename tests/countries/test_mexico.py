@@ -137,7 +137,10 @@ class TestMexico(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, range(self.start_year, 1970))
         self.assertNoHoliday(
-            f"{year}-12-01" for year in range(1970, self.end_year) if (year - 1970) % 6 > 0
+            (f"{year}-12-01" for year in range(1970, 2024) if (year - 1970) % 6 > 0),
+            (f"{year}-12-01" for year in range(2024, self.end_year)),
+            (f"{year}-10-01" for year in range(2024, self.end_year) if (year - 1970) % 6 > 0),
+            (f"{year}-10-01" for year in range(1970, 2024)),
         )
         self.assertNoHoliday("2024-12-01")
 
