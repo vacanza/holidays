@@ -109,8 +109,8 @@ class Senegal(
         # Ascension Day.
         self._add_ascension_thursday(tr("Jeudi de l'Ascension"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Lundi de Pentecôte"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Lundi de Pentecôte"))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assomption"))

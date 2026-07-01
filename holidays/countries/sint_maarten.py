@@ -82,8 +82,8 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Ascension Day.
         self._add_ascension_thursday(tr("Hemelvaartsdag"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Eerste Pinksterdag"))
+        # Pentecost.
+        self._add_pentecost(tr("Eerste Pinksterdag"))
 
         # Established on June 13th, 2012.
         if self._year >= 2012:

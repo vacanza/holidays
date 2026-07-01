@@ -53,7 +53,7 @@ msgstr ""
 msgid "Late Summer Bank Holiday"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Whit Monday"
 msgstr ""
 

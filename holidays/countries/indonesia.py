@@ -117,8 +117,8 @@ class Indonesia(
             # Easter Monday.
             self._add_easter_monday(tr("Hari kedua Paskah"))
 
-            # Whit Monday.
-            self._add_whit_monday(tr("Hari kedua Pentakosta"))
+            # Pentecost Monday.
+            self._add_pentecost_monday(tr("Hari kedua Pentakosta"))
 
             # Nuzul Al Quran.
             self._add_nuzul_al_quran_day(tr("Nuzululqur'an"))

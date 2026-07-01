@@ -54,8 +54,8 @@ class Monaco(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Ascension Day.
         self._add_ascension_thursday(tr("L'Ascension"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Le lundi de Pentecôte"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Le lundi de Pentecôte"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("La Fête Dieu"))

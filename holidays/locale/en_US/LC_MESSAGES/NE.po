@@ -14,18 +14,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.75\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-05-30 19:15+0000\n"
-"PO-Revision-Date: 2025-05-30 19:15+0000\n"
-"Last-Translator: Abheelash Mishra <abheelashdev@gmail.com>\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: fr\n"
+"X-Source-Language: fr_NE\n"
 
 #. %s (observed).
 #, c-format
@@ -106,9 +106,9 @@ msgstr "Day after Eid al-Adha"
 msgid "Ascension"
 msgstr "Ascension"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Lundi de Pentecôte"
-msgstr "Whit Monday"
+msgstr "Pentecost Monday"
 
 #. Assumption Day.
 msgid "Assomption"
