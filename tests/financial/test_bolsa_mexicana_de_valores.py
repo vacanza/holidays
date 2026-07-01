@@ -119,16 +119,21 @@ class TestBolsaMexicanaDeValores(CommonFinancialTests, TestCase):
         name = "Transmisión del Poder Ejecutivo Federal"
         self.assertHolidayName(
             name,
+            "2006-12-01",
             "2024-10-01",
             "2030-10-01",
         )
+        self.assertNonObservedHolidayName(
+            name,
+            "2012-12-01",
+            "2018-12-01",
+        )
         self.assertNoHolidayName(
             name,
-            "2020-12-01",
-            "2021-12-01",
-            "2022-12-01",
-            "2023-12-01",
-            "2025-10-01",
+            (f"{year}-12-01" for year in range(self.start_year, 2024) if (year - 1970) % 6 > 0),
+            (f"{year}-12-01" for year in range(2024, self.end_year)),
+            (f"{year}-10-01" for year in range(2024, self.end_year) if (year - 1970) % 6 > 0),
+            (f"{year}-10-01" for year in range(self.start_year, 2024)),
         )
 
     def test_day_of_the_dead(self):
