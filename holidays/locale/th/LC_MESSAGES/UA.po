@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.66\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-08 19:40+0300\n"
-"PO-Revision-Date: 2025-02-02 19:32+0200\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-06-30 22:18+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -49,9 +49,9 @@ msgstr "วันสตรีสากล"
 msgid "Великдень (Пасха)"
 msgstr "วันอาทิตย์อีสเตอร์"
 
-#. Holy Trinity Day.
+#. Pentecost.
 msgid "Трійця"
-msgstr "วันสมโภชพระตรีเอกภาพ"
+msgstr "วันสมโภชพระจิตเจ้า"
 
 #. Labor Day.
 msgid "День праці"

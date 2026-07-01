@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-08 19:40+0300\n"
-"PO-Revision-Date: 2025-06-26 17:55+0300\n"
+"PO-Revision-Date: 2026-06-30 22:18+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ar\n"
@@ -49,9 +49,9 @@ msgstr "اليوم العالمي للمرأة"
 msgid "Великдень (Пасха)"
 msgstr "عيد الفصح"
 
-#. Holy Trinity Day.
+#. Pentecost.
 msgid "Трійця"
-msgstr "الثالوث"
+msgstr "عيد العنصرة"
 
 #. Labor Day.
 msgid "День праці"

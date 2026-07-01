@@ -626,6 +626,8 @@ For installation instructions, see `uv` [documentation](https://docs.astral.sh/u
 
 By default, the generated calendar contains holidays for the current year and is written
 to a file whose name is derived from the selected calendar and year range.
+The `--years` option accepts a single year (2025), a year range (2025-2027), or a
+relative range (+10), which selects the current year through the current year plus 10.
 
 ### Examples
 
@@ -639,6 +641,18 @@ Generate a holiday calendar for the Canton of Zurich for a specific year:
 
 ```shell
 holidays-ics CH --subdiv ZH --years 2025
+```
+
+Generate a holiday calendar for the current year and the next 5 years:
+
+```shell
+holidays-ics US --years +5
+```
+
+Generate a holiday calendar for the current year and the previous 5 years:
+
+```shell
+holidays-ics US --years -5
 ```
 
 Generate a holiday calendar for multiple years and save it to a custom file:
@@ -669,4 +683,25 @@ Generate a financial market holiday calendar:
 
 ```shell
 holidays-ics XNYS --years 2025 --output nyse_holidays.ics
+```
+
+The tool can also display the supported subdivisions, categories, and languages for a selected
+country or market without generating an `.ics` file.
+
+List the supported subdivisions:
+
+```shell
+holidays-ics CH --list-subdivisions
+```
+
+List the supported holiday categories:
+
+```shell
+holidays-ics US --list-categories
+```
+
+List the supported languages:
+
+```shell
+holidays-ics CA --list-languages
 ```

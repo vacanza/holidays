@@ -48,11 +48,11 @@ msgstr ""
 msgid "O. L. H. Hemelvaart"
 msgstr ""
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pinksteren"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Pinkstermaandag"
 msgstr ""
 

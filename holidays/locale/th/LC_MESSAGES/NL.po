@@ -60,11 +60,11 @@ msgstr "วันประกาศอิสรภาพ"
 msgid "Hemelvaartsdag"
 msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Eerste Pinksterdag"
 msgstr "วันสมโภชพระจิตเจ้า"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Tweede Pinksterdag"
 msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
 

@@ -67,8 +67,8 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         self._add_labor_day(name)
         self._add_labor_day_two(name)
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("binkoštna nedelja"))
+        # Pentecost.
+        self._add_pentecost(tr("binkoštna nedelja"))
 
         # Statehood Day.
         self._add_holiday_jun_25(tr("dan državnosti"))

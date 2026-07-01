@@ -21,13 +21,31 @@ from tempfile import TemporaryDirectory
 from unittest import TestCase
 from unittest.mock import patch
 
+from holidays import HolidayBase
+from holidays.constants import PUBLIC, SCHOOL
 from holidays.generate_ics import IcsGenerator
+from holidays.registry import EntityLoader
 
 
 class MockDatetime(datetime):
     @classmethod
     def now(cls, tz=None):
         return cls(2025, 7, 1, 0, 0, 0, tzinfo=tz if tz else None)
+
+
+class CountryStub(HolidayBase):
+    country = "CS1"
+    subdivisions = ("AB", "BC")
+    supported_categories = (PUBLIC, SCHOOL)
+    supported_languages = ("en_US", "es")
+
+
+class StubEntityLoader(EntityLoader):
+    def __init__(self):
+        super().__init__("dummy.CountryStub")
+
+    def get_entity(self):
+        return CountryStub
 
 
 class TestGenerateIcs(TestCase):
@@ -46,6 +64,13 @@ class TestGenerateIcs(TestCase):
 
     @staticmethod
     @contextmanager
+    def stdout():
+        stream = StringIO()
+        with patch("sys.stdout", stream):
+            yield stream
+
+    @staticmethod
+    @contextmanager
     def temp_cwd():
         with TemporaryDirectory() as temp_dir:
             current_dir = Path.cwd()
@@ -56,13 +81,13 @@ class TestGenerateIcs(TestCase):
             finally:
                 os.chdir(current_dir)
 
-    def test_parse_year_single(self):
-        self.assertEqual(IcsGenerator.parse_years("2025"), (2025,))
+    def test_parse_years_single(self):
+        self.assertEqual(IcsGenerator.parse_years("2025"), (2025, 2025))
 
-    def test_parse_year_range(self):
-        self.assertEqual(tuple(IcsGenerator.parse_years("2024-2026")), (2024, 2025, 2026))
+    def test_parse_years_range(self):
+        self.assertEqual(IcsGenerator.parse_years("2024-2026"), (2024, 2026))
 
-    def test_parse_year_range_reversed(self):
+    def test_parse_years_range_reversed(self):
         with self.assertRaises(ArgumentTypeError) as context:
             IcsGenerator.parse_years("2026-2024")
         self.assertEqual(
@@ -70,12 +95,28 @@ class TestGenerateIcs(TestCase):
             "Invalid year range: start year must not be greater than end year",
         )
 
-    def test_parse_year_invalid(self):
+    def test_parse_years_invalid(self):
         with self.assertRaises(ArgumentTypeError) as context:
             IcsGenerator.parse_years("abc")
         self.assertEqual(
-            str(context.exception), "Invalid years value: 'abc'. Expected YYYY or YYYY-YYYY"
+            str(context.exception),
+            "Invalid years value: 'abc'. Expected YYYY, YYYY-YYYY, +N, or -N",
         )
+
+    @patch("holidays.generate_ics.datetime", MockDatetime)
+    def test_parse_years_offset(self):
+        self.assertEqual(IcsGenerator.parse_years("+5"), (2025, 2030))
+        self.assertEqual(IcsGenerator.parse_years("-4"), (2021, 2025))
+
+    def test_parse_years_offset_invalid(self):
+        for value in ("+abc", "-abc", "+-2"):
+            with self.subTest(value=value):
+                with self.assertRaises(ArgumentTypeError) as context:
+                    IcsGenerator.parse_years(value)
+                self.assertEqual(
+                    str(context.exception),
+                    f"Invalid years value: '{value}'. Expected YYYY, YYYY-YYYY, +N, or -N",
+                )
 
     def test_parse_categories(self):
         self.assertEqual(IcsGenerator.parse_categories("bank"), ["bank"])
@@ -108,13 +149,14 @@ class TestGenerateIcs(TestCase):
 
     def test_validate_unknown_code(self):
         for code in ("XXX", "JAN", "country_holidays"):
-            with self.argv(code):
-                generator = IcsGenerator()
+            with self.subTest(code=code):
+                with self.argv(code):
+                    generator = IcsGenerator()
 
-            with self.assertRaises(SystemExit) as context:
-                generator.validate_code()
+                with self.assertRaises(SystemExit) as context:
+                    generator.validate_code()
 
-            self.assertIn("Unsupported entity code:", str(context.exception))
+                self.assertIn("Unsupported entity code:", str(context.exception))
 
     def test_validate_years_valid(self):
         with self.stderr() as context:
@@ -171,22 +213,11 @@ class TestGenerateIcs(TestCase):
 
         with self.assertRaises(SystemExit) as context:
             generator.validate_subdiv()
-        self.assertIn("Subdivision 'XXX' is not supported for US.", str(context.exception))
-
-    def test_validate_language_valid(self):
-        with self.argv("US", "--language", "en_US"):
-            generator = IcsGenerator()
-        generator.validate_code()
-        generator.validate_language()
-
-    def test_validate_language_invalid(self):
-        with self.argv("US", "--language", "xx_XX"):
-            generator = IcsGenerator()
-        generator.validate_code()
-
-        with self.assertRaises(SystemExit) as context:
-            generator.validate_language()
-        self.assertIn("Language 'xx_XX' is not supported for US.", str(context.exception))
+        self.assertEqual(
+            str(context.exception),
+            "Subdivision 'XXX' is not supported for US. "
+            "Use --list-subdivisions to see supported values",
+        )
 
     def test_validate_categories_valid(self):
         with self.argv("US", "--categories", "government"):
@@ -201,7 +232,42 @@ class TestGenerateIcs(TestCase):
 
         with self.assertRaises(SystemExit) as context:
             generator.validate_categories()
-        self.assertIn("Unknown categories for US: foo.", str(context.exception))
+        self.assertEqual(
+            str(context.exception),
+            "Unknown categories for US: foo. Use --list-categories to see supported values",
+        )
+
+    def test_validate_language_valid(self):
+        with self.argv("US", "--language", "en_US"):
+            generator = IcsGenerator()
+        generator.validate_code()
+        generator.validate_language()
+
+    def test_validate_language_invalid(self):
+        with self.argv("US", "--language", "xx_XX"):
+            generator = IcsGenerator()
+        generator.validate_code()
+
+        with self.assertRaises(SystemExit) as context:
+            generator.validate_language()
+        self.assertEqual(
+            str(context.exception),
+            "Language 'xx_XX' is not supported for US. "
+            "Use --list-languages to see supported values",
+        )
+
+    @patch("holidays.generate_ics.getattr", return_value=StubEntityLoader())
+    def test_list_options(self, _unused_mock):
+        for arg, expected in (
+            ("--list-categories", ["Supported holiday categories for CS1:", "public, school"]),
+            ("--list-subdivisions", ["Supported subdivisions for CS1:", "AB, BC"]),
+            ("--list-languages", ["Supported languages for CS1:", "en_US, es"]),
+        ):
+            with self.subTest(arg=arg):
+                with self.argv("CS1", arg):
+                    with self.stdout() as context:
+                        IcsGenerator().run()
+                self.assertEqual(context.getvalue().splitlines(), expected)
 
     def test_generate_country_calendar(self):
         with TemporaryDirectory() as temp_dir:
@@ -284,6 +350,39 @@ class TestGenerateIcs(TestCase):
             content = output_file.read_text(encoding="utf-8")
             self.assertIn("DTSTART;VALUE=DATE:20240101", content)
             self.assertIn("DTSTART;VALUE=DATE:20250101", content)
+            self.assertNotIn("DTSTART;VALUE=DATE:2023", content)
+            self.assertNotIn("DTSTART;VALUE=DATE:2026", content)
+
+    @patch("holidays.generate_ics.datetime", MockDatetime)
+    def test_generate_year_offset_positive(self):
+        with self.temp_cwd() as temp_dir:
+            with self.argv("US", "--years", "+2"):
+                IcsGenerator().run()
+
+            output_file = temp_dir / "US_2025_2027.ics"
+            self.assertTrue(output_file.exists())
+            content = output_file.read_text(encoding="utf-8")
+            self.assertIn("DTSTART;VALUE=DATE:20250101", content)
+            self.assertIn("DTSTART;VALUE=DATE:20260101", content)
+            self.assertIn("DTSTART;VALUE=DATE:20270101", content)
+            self.assertNotIn("DTSTART;VALUE=DATE:2024", content)
+            self.assertNotIn("DTSTART;VALUE=DATE:2028", content)
+
+    @patch("holidays.generate_ics.datetime", MockDatetime)
+    def test_generate_year_offset_negative(self):
+        with self.temp_cwd() as temp_dir:
+            with self.argv("US", "--years", "-3"):
+                IcsGenerator().run()
+
+            output_file = temp_dir / "US_2022_2025.ics"
+            self.assertTrue(output_file.exists())
+            content = output_file.read_text(encoding="utf-8")
+            self.assertIn("DTSTART;VALUE=DATE:20220101", content)
+            self.assertIn("DTSTART;VALUE=DATE:20230101", content)
+            self.assertIn("DTSTART;VALUE=DATE:20240101", content)
+            self.assertIn("DTSTART;VALUE=DATE:20250101", content)
+            self.assertNotIn("DTSTART;VALUE=DATE:2021", content)
+            self.assertNotIn("DTSTART;VALUE=DATE:2026", content)
 
     @patch("holidays.generate_ics.datetime", MockDatetime)
     def test_generate_default_year(self):
@@ -310,6 +409,14 @@ class TestGenerateIcs(TestCase):
                 IcsGenerator().run()
 
             self.assertTrue((temp_dir / "US_2024_2026.ics").exists())
+
+    @patch("holidays.generate_ics.datetime", MockDatetime)
+    def test_filename_year_offset(self):
+        with self.temp_cwd() as temp_dir:
+            with self.argv("US", "--years", "+6"):
+                IcsGenerator().run()
+
+            self.assertTrue((temp_dir / "US_2025_2031.ics").exists())
 
     def test_filename_subdivision(self):
         with self.temp_cwd() as temp_dir:

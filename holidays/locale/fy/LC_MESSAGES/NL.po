@@ -59,11 +59,11 @@ msgstr "Befrijingsdei"
 msgid "Hemelvaartsdag"
 msgstr "Himelfeartsdei"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Eerste Pinksterdag"
 msgstr "Pinkstersnein"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Tweede Pinksterdag"
 msgstr "Pinkstermoandei"
 

@@ -259,7 +259,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_subdiv_20_public_holidays(self):
         if self._year >= 1981:
             # Day of the Autonomous Region of the Azores.
-            self._add_whit_monday(tr("Dia da Região Autónoma dos Açores"))
+            self._add_pentecost_monday(tr("Dia da Região Autónoma dos Açores"))
 
     def _populate_subdiv_30_public_holidays(self):
         if self._year >= 1979:

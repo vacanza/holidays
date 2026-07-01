@@ -90,8 +90,8 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
         # Ascension Day.
         self._add_ascension_thursday(tr("Fête de l'Ascension"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Lundi de Pentecôte"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Lundi de Pentecôte"))
 
         # Martyrs' Day.
         self._add_holiday_jun_21(tr("Fête des Martyrs"))
