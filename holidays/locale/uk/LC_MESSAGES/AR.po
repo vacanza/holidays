@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.80\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-02 00:39+0700\n"
-"PO-Revision-Date: 2025-08-26 18:30+0300\n"
+"PO-Revision-Date: 2026-07-02 22:22+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -192,7 +192,7 @@ msgstr "День памʼяті заради правди та правосуд�
 
 #. Malvinas Memorial Day.
 msgid "Día de los Caídos en Malvinas"
-msgstr "День пам'яті на Мальвінах"
+msgstr "День памʼяті на Мальвінах"
 
 #. La Rioja Foundation Day.
 msgid "Día de la fundación de La Rioja"
