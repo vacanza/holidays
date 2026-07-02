@@ -800,6 +800,7 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_karwa_chouth(self):
         name = "Karaka Chaturthi (Karwa Chouth)"
+        name_hp = "Karwa Chouth"
         dts = (
             "2020-11-04",
             "2021-10-24",
@@ -811,6 +812,8 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(
             name, dts, category_optional=True, hindu_range=range(2012, self.hindu_end_year + 1)
         )
+        # SUBDIVS.
+        self.assertSubdivHpWomenOptionalHolidayName(name_hp, dts)
 
     def test_deepavali_south_india(self):
         name = "Deepavali (South India)"
@@ -861,7 +864,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self._assertHinduHolidayHelper(name, dts, category_optional=True)
         # SUBDIVS.
-        self.assertSubdivHpOptionalHolidayName(name, dts)
+        self.assertSubdivHpWomenOptionalHolidayName(name, dts)
 
     def test_chhath_puja(self):
         name = "Pratihar Shashthi or Surya Shashthi (Chhat Puja)"
