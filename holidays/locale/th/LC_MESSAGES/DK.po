@@ -56,11 +56,11 @@ msgstr "วันแห่งการอธิษฐานใหญ่"
 msgid "Kristi himmelfartsdag"
 msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pinsedag"
 msgstr "วันสมโภชพระจิตเจ้า"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Anden pinsedag"
 msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
 

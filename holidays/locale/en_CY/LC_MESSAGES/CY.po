@@ -64,7 +64,7 @@ msgstr "Easter Monday"
 msgid "Πρωτομαγιά"
 msgstr "Labour Day"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Δευτέρα του Αγίου Πνεύματος"
 msgstr "Pentecost"
 

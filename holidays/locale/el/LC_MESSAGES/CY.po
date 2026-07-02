@@ -64,7 +64,7 @@ msgstr ""
 msgid "Πρωτομαγιά"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Δευτέρα του Αγίου Πνεύματος"
 msgstr ""
 

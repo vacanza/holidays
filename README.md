@@ -67,17 +67,9 @@ The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io).
 
 ## ICS Exports
 
-Holiday calendars can be exported as `.ics` files via the command line with holidays-ics, or from the [Download Holiday Calendars](https://holidays.readthedocs.io/en/latest/downloads/)
-
-### holidays-ics
-
-See the [holidays-ics documentation](https://holidays.readthedocs.io/en/latest/examples/#holidays-ics-tool) for more examples.
-
-To generate a US calendar spanning the next 10 years and save it to a file (US_YYYY_YYYY.ics):
-
-```shell
-holidays-ics US --years +10
-```
+Holiday calendars can be exported as `.ics` files via [holidays-ics command line
+tool](https://holidays.readthedocs.io/en/latest/examples/#holidays-ics-tool),
+or from the [Download Holiday Calendars](https://holidays.readthedocs.io/en/latest/downloads/) page.
 
 ## Quick Start
 
@@ -1947,6 +1939,13 @@ code when available. The following financial markets are available:
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>Bolsa Mexicana de Valores</td>
+<td>XMEX</td>
+<td>Bolsa Mexicana de Valores (BMV) holidays</td>
+<td>en_US, <strong>es</strong>, uk</td>
+<td></td>
+</tr>
 <tr>
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>

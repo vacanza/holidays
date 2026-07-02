@@ -354,7 +354,7 @@ class HongKong(
 
         if self._year <= 1967:
             # Monday after Pentecost.
-            self._add_whit_monday(tr("靈降臨節後星期一"))
+            self._add_pentecost_monday(tr("靈降臨節後星期一"))
 
             # National Day of the Republic of China.
             self._add_holiday_2nd_mon_of_oct(tr("中華民國國慶日"))

@@ -60,11 +60,11 @@ msgstr "วันรัฐธรรมนูญ"
 msgid "Kristi himmelfartsdag"
 msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Første pinsedag"
 msgstr "วันสมโภชพระจิตเจ้า"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Andre pinsedag"
 msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
 

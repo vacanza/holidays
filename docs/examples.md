@@ -626,58 +626,48 @@ For installation instructions, see `uv` [documentation](https://docs.astral.sh/u
 
 By default, the generated calendar contains holidays for the current year and is written
 to a file whose name is derived from the selected calendar and year range.
+The `--years` option accepts a single year (2025), a year range (2025-2027), or a
+relative range (+10), which selects the current year through the current year plus 10.
 
 ### Examples
 
-Generate a US calendar for the current year:
+Calendar for the current year:
 
 ```shell
 holidays-ics US
 ```
 
-Save to a custom file:
+Save calendar to a custom file:
 
 ```shell
 holidays-ics US --output test.ics
 ```
 
-List categories:
-
-```shell
-holidays-ics US --list-categories
-```
-
-List subdivisions:
-
-```shell
-holidays-ics US --list-subdivisions
-```
-
-List languages:
-
-```shell
-holidays-ics US --list-languages
-```
-
-Specific year:
+Calendar for specific year:
 
 ```shell
 holidays-ics US --years 2035
 ```
 
-Spanning the next 10 years:
+Calendar for the current and next 10 years:
 
 ```shell
 holidays-ics US --years +10
 ```
 
-Unofficial holidays only:
+Calendar for the current year and the previous 5 years:
+
+```shell
+holidays-ics US --years -5
+```
+
+Calendar containing unofficial holidays only:
 
 ```shell
 holidays-ics US --categories unofficial
 ```
 
-Include both public and optional holidays:
+Calendar containing public and optional holidays:
 
 ```shell
 holidays-ics CA --categories public,optional
@@ -707,8 +697,50 @@ Spanning the next 10 years, unofficial holidays, saved to a custom file:
 holidays-ics US --years +10 --categories unofficial --output US_YYYY_YYYY_unofficial.ics
 ```
 
-Generate a calendar for Switzerland, specific to the Canton of Zurich, localized in German, and saved to a custom file.
+Calendar for Switzerland, specific to the Canton of Zurich, localized in German, and saved to a custom file.
 
 ```shell
 holidays-ics CH --subdiv ZH --language de --output CH_ZH_de.ics
+```
+
+The tool can also display the supported subdivisions, categories, and languages for a selected
+country or market without generating an `.ics` file.
+
+List the supported subdivisions:
+
+```shell
+holidays-ics CH --list-subdivisions
+```
+
+List the supported holiday categories:
+
+```shell
+holidays-ics US --list-categories
+```
+
+List the supported languages:
+
+```shell
+holidays-ics CA --list-languages
+```
+
+The tool can also display the supported subdivisions, categories, and languages for a selected
+country or market without generating an `.ics` file.
+
+List the supported subdivisions:
+
+```shell
+holidays-ics CH --list-subdivisions
+```
+
+List the supported holiday categories:
+
+```shell
+holidays-ics US --list-categories
+```
+
+List the supported languages:
+
+```shell
+holidays-ics CA --list-languages
 ```
