@@ -67,7 +67,9 @@ The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io).
 
 ## ICS Exports
 
-Holiday calendars can be exported as `.ics` files via the [download page](https://holidays.readthedocs.io/en/latest/downloads/).
+Holiday calendars can be exported as `.ics` files via [holidays-ics command line
+tool](https://holidays.readthedocs.io/en/latest/examples/#holidays-ics-tool),
+or from the [Download Holiday Calendars](https://holidays.readthedocs.io/en/latest/downloads/) page.
 
 ## Quick Start
 
