@@ -552,7 +552,7 @@ class India(
         # Karwa Chouth.
         self._add_karwa_chauth(tr("Karwa Chouth"))
         # Bhai Duj.
-        self._add_bhai_duj(tr("Bhai Duj"))
+        self._add_bhai_dooj(tr("Bhai Duj"))
 
     # Jammu and Kashmir
     def _populate_subdiv_jk_public_holidays(self):
@@ -667,7 +667,7 @@ class India(
         self._add_basant_panchami(tr("Birthday of Satguru Ram Singh Ji"))
         # International Women Day.
         self._add_womens_day(tr("International Women's Day"))
-        # Death Anniversary of Maharaja Ranjit Singh Ji
+        # Death Anniversary of Maharaja Ranjit Singh Ji.
         self._add_holiday_jun_27(tr("Death Anniversary of Maharaja Ranjit Singh Ji"))
         # Saragarhi Day.
         self._add_holiday_sep_12(tr("Saragarhi Day"))
