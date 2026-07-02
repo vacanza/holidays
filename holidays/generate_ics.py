@@ -218,7 +218,7 @@ class IcsGenerator:
         start_year, end_year = self.args.years
         years_part = f"{start_year}_{end_year}" if start_year != end_year else f"{start_year}"
         subdiv_part = f"_{self.args.subdiv.upper().replace(' ', '_')}" if self.args.subdiv else ""
-        output_suffix = self.args.output_suffix if self.args.output_suffix is not None else ".ics"
+        output_suffix = self.args.output_suffix or ".ics"
         output_path = (
             self.args.output or f"{self.args.code}{subdiv_part}_{years_part}{output_suffix}"
         )

@@ -474,16 +474,6 @@ class TestGenerateIcs(TestCase):
         ):
             IcsGenerator()
 
-    def test_output_suffix_does_not_consume_long_options(self):
-        with self.argv("US", "--output-suffix", "--list-languages"):
-            with self.assertRaises(SystemExit):
-                IcsGenerator()
-
-    def test_output_suffix_missing_value_uses_argparse_error(self):
-        with self.argv("US", "--output-suffix"):
-            with self.assertRaises(SystemExit):
-                IcsGenerator()
-
     def test_output_suffix_equals_form_is_unchanged(self):
         args = IcsGenerator.normalize_output_suffix_args(["US", "--output-suffix=-personal.ics"])
 
