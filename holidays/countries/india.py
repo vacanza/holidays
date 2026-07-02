@@ -642,8 +642,8 @@ class India(
         self._add_holiday_mar_23(
             tr("Shaheedi Diwas of Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru Ji")
         )
-        # Birthday of Sri Guru Nabha Dass ji.
-        self._add_holiday_apr_8(tr("Birthday of Sri Guru Nabha Dass ji"))
+        # Birthday of Sri Guru Nabha Dass Ji.
+        self._add_holiday_apr_8(tr("Birthday of Sri Guru Nabha Dass Ji"))
         # Vaisakhi.
         self._add_vaisakhi(tr("Vaisakhi"))
         # Birthday of Lord Parshuram Ji.
@@ -654,10 +654,11 @@ class India(
         self._add_holiday_jul_31(tr("Martyrdom Day of Shaheed Udham Singh"))
         # Birthday of Maharishi Valmiki Ji.
         self._add_maharishi_valmiki_jayanti(tr("Birthday of Maharishi Valmiki Ji"))
-        # Martyrdom Day of S. Kartar Singh Sarabha ji.
-        self._add_holiday_nov_16(tr("Martyrdom Day of S. Kartar Singh Sarabha ji"))
-        # Martyrdom Day of Sri Guru Teg Bahadur ji.
-        self._add_holiday_nov_24(tr("Martyrdom Day of Sri Guru Teg Bahadur ji"))
+        # Martyrdom Day of S. Kartar Singh Sarabha Ji.
+        self._add_holiday_nov_16(tr("Martyrdom Day of S. Kartar Singh Sarabha Ji"))
+        if self._year >= 2004:
+            # Martyrdom Day of Sri Guru Teg Bahadur Ji.
+            self._add_holiday_nov_24(tr("Martyrdom Day of Sri Guru Teg Bahadur Ji"))
 
     def _populate_subdiv_pb_optional_holidays(self):
         # Lohri.
@@ -665,7 +666,7 @@ class India(
         # Birthday of Satguru Ram Singh Ji.
         self._add_basant_panchami(tr("Birthday of Satguru Ram Singh Ji"))
         # International Women Day.
-        self._add_womens_day(tr("International Women Day"))
+        self._add_womens_day(tr("International Women's Day"))
         # Death Anniversary of Maharaja Ranjit Singh Ji
         self._add_holiday_jun_27(tr("Death Anniversary of Maharaja Ranjit Singh Ji"))
         # Saragarhi Day.
@@ -799,6 +800,9 @@ class IndiaStaticHolidays:
     # Guru Tegh Bahadur's Martyrdom Day.
     name_guru_tegh_bahadur_martyrdom_day = tr("Guru Tegh Bahadur's Martyrdom Day")
 
+    # Martyrdom Day of Sri Guru Teg Bahadur Ji.
+    name_pb_guru_tegh_bahadur_martyrdom_day = tr("Martyrdom Day of Sri Guru Teg Bahadur Ji")
+
     # Magh Bihu.
     name_magh_bihu = tr("Magh Bihu")
 
@@ -837,4 +841,9 @@ class IndiaStaticHolidays:
             (SEP, 19, name_ganesh_chaturthi),
         ),
         2025: (AUG, 15, name_janmashtami_smarta),
+    }
+
+    special_pb_public_holidays = {
+        2002: (DEC, 8, name_pb_guru_tegh_bahadur_martyrdom_day),
+        2003: (NOV, 28, name_pb_guru_tegh_bahadur_martyrdom_day),
     }
