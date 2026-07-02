@@ -1135,9 +1135,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 </tr>
 <tr>
 <td>Mauritius</td>
-<td>MU</td>
+<td>MR</td>
 <td></td>
-<td><strong>en_MU</strong>, en_US</td>
+<td><strong>ar</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
