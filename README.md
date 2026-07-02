@@ -1938,6 +1938,13 @@ code when available. The following financial markets are available:
 </thead>
 <tbody>
 <tr>
+<td>Bolsa Mexicana de Valores</td>
+<td>XMEX</td>
+<td>Bolsa Mexicana de Valores (BMV) holidays</td>
+<td>en_US, <strong>es</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>
 <td>Bombay Stock Exchange (BSE) market holidays</td>
