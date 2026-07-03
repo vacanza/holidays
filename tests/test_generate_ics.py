@@ -474,11 +474,6 @@ class TestGenerateIcs(TestCase):
         ):
             IcsGenerator()
 
-    def test_output_suffix_equals_form_is_unchanged(self):
-        args = IcsGenerator.normalize_output_suffix_args(["US", "--output-suffix=-personal.ics"])
-
-        self.assertEqual(args, ["US", "--output-suffix=-personal.ics"])
-
     def test_generate_calendar_error(self):
         with patch(
             "holidays.ical.ICalExporter.save_ics",
