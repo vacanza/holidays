@@ -10,55 +10,55 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Mauritania holidays.
+# Mauritania holidays locale localization.
+#
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
-"POT-Creation-Date: 2025-06-29 16:42+0530\n"
+"POT-Creation-Date: 2026-07-03 10:49+0530\n"
 "PO-Revision-Date: 2026-07-03 11:36+0530\n"
 "Last-Translator: TaniaRocks <taniakhatun9a@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: ar\n"
+"Language: en_MR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: ar\n"
 
 #. %s (estimated).
 #, c-format
 msgid "%s (تقديري)"
-msgstr ""
+msgstr "%s (estimated)"
 
 #. New Year's Day.
 msgid "رأس السنة الميلادية"
-msgstr ""
+msgstr "New Year's Day"
 
 #. Labor Day.
 msgid "عيد العمال"
-msgstr ""
+msgstr "Labor Day"
 
 #. Africa Day.
 msgid "يوم أفريقيا"
-msgstr ""
+msgstr "Africa Day"
 
 msgid "عيد الاستقلال"
-msgstr ""
+msgstr "Independence Day"
 
 #. Eid al-Fitr.
 msgid "عيد الفطر"
-msgstr ""
+msgstr "Eid al-Fitr"
 
 #. Eid al-Adha.
 msgid "عيد الأضحى"
-msgstr ""
+msgstr "Eid al-Adha"
 
 #. Islamic New Year.
 msgid "رأس السنة الهجرية"
-msgstr ""
+msgstr "Muharram/Islamic New Year"
 
 #. The Prophet's Birthday.
 msgid "المولد النبوي الشريف"
-msgstr ""
+msgstr "Prophet Muhammad's Birthday"

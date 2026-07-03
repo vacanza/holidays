@@ -29,7 +29,7 @@ class Mauritania(HolidayBase, InternationalHolidays, IslamicHolidays):
     default_language = "ar"
     # %s (estimated).
     estimated_label = tr("%s (تقديري)")
-    supported_languages = ("ar", "en_US")
+    supported_languages = ("ar", "en_MR", "en_US")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
@@ -67,10 +67,10 @@ class Mauritania(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_eid_al_adha_day(eid_al_adha)
         self._add_eid_al_adha_day_two(eid_al_adha)
 
-        # Muharram/Islamic New Year.
+        # Islamic New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
 
-        # Prophet Muhammad's Birthday.
+        # The Prophet's Birthday.
         self._add_mawlid_day(tr("المولد النبوي الشريف"))
 
 

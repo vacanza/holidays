@@ -80,3 +80,18 @@ class TestMauritania(CommonCountryTests, TestCase):
             ("2024-09-15", "The Prophet's Birthday (estimated)"),
             ("2024-11-28", "Independence Day"),
         )
+
+    def test_l10n_en_mr(self):
+        self.assertLocalizedHolidays(
+            "en_MR",
+            ("2024-01-01", "New Year's Day"),
+            ("2024-04-10", "Eid al-Fitr (estimated)"),
+            ("2024-04-11", "Eid al-Fitr (estimated)"),
+            ("2024-05-01", "Labor Day"),
+            ("2024-05-25", "Africa Day"),
+            ("2024-06-16", "Eid al-Adha (estimated)"),
+            ("2024-06-17", "Eid al-Adha (estimated)"),
+            ("2024-07-07", "Muharram/Islamic New Year (estimated)"),
+            ("2024-09-15", "Prophet Muhammad's Birthday (estimated)"),
+            ("2024-11-28", "Independence Day"),
+        )
