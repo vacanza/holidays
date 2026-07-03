@@ -20,6 +20,7 @@ from tests.common import CommonCountryTests, SundayHolidays
 class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.full_range = range(1940, 2050)
         super().setUpClass(Norway)
 
     def setUp(self):
@@ -86,17 +87,13 @@ class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
 
     def test_labor_day(self):
         name = "Arbeidernes dag"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
-        # Established in 1947.
-        self.assertHolidayName(name, Norway(years=1947), "1947-05-01")
-        self.assertNoHolidayName(name, Norway(years=1946))
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1947, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1947))
 
     def test_constitution_day(self):
         name = "Grunnlovsdag"
-        self.assertHolidayName(name, (f"{year}-05-17" for year in self.full_range))
-        # Established in 1947.
-        self.assertHolidayName(name, Norway(years=1947), "1947-05-17")
-        self.assertNoHolidayName(name, Norway(years=1946))
+        self.assertHolidayName(name, (f"{year}-05-17" for year in range(1947, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1947))
 
     def test_ascension_day(self):
         name = "Kristi himmelfartsdag"
