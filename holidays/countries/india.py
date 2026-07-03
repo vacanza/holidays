@@ -58,6 +58,8 @@ class India(
             * <http://web.archive.org/web/20260627103337/https://www.comply360.in/labor-law-library/wp-content/uploads/2025/12/Notification-regarding-list-of-Holidays-for-the-Year-2026-in-Himachal-Pradesh-1.pdf>
         * Kerala:
             * <https://web.archive.org/web/20260329164551/https://kerala.gov.in/showcalendar/2026>
+        * Ladakh:
+            * <http://web.archive.org/web/20260627104706/https://www.veerayeehr.com/wp-content/uploads/2025/12/Ladakh-state-list-of-holidays-2026.pdf>
         * Maharashtra:
             * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
         * Punjab:
@@ -581,7 +583,22 @@ class India(
 
     # Ladakh.
     def _populate_subdiv_la_public_holidays(self):
-        pass
+        # Nauroz.
+        self._add_nauroz(tr("Nauroz"))
+        # Dussehra.
+        self._add_dussehra(tr("Dussehra"))
+
+    def _populate_subdiv_la_optional_holidays(self):
+        # Shab-I-Miraj.
+        self._add_isra_and_miraj_day(tr("Shab-I-Miraj"))
+        # 1st Navratra.
+        self._add_chaitra_navratri(tr("1st Navratra"))
+        # Baisakhi / Vaisakhi.
+        self._add_vaisakhi(tr("Baisakhi / Vaisakhi"))
+        # Eid-e-Ghadeer.
+        self._add_eid_al_ghadir_day(tr("Eid-e-Ghadeer"))
+        # Martyr's day of Guru Arjun Dev Ji.
+        self._add_guru_arjun_dev_martyrdom_day(tr("Martyr's day of Guru Arjun Dev Ji"))
 
     # Maharashtra.
     def _populate_subdiv_mh_public_holidays(self):
@@ -648,6 +665,8 @@ class India(
         self._add_vaisakhi(tr("Vaisakhi"))
         # Birthday of Lord Parshuram Ji.
         self._add_parshuram_jayanti(tr("Birthday of Lord Parshuram Ji"))
+        # Martyrdom Day of Sri Guru Arjun Dev Ji.
+        self._add_guru_arjun_dev_martyrdom_day(tr("Martyrdom Day of Sri Guru Arjun Dev Ji"))
         # Kabir Jayanti.
         self._add_kabir_jayanti(tr("Kabir Jayanti"))
         # Martyrdom Day of Shaheed Udham Singh.
@@ -841,6 +860,11 @@ class IndiaStaticHolidays:
             (SEP, 19, name_ganesh_chaturthi),
         ),
         2025: (AUG, 15, name_janmashtami_smarta),
+    }
+
+    special_la_optional_holidays = {
+        # Eid-e-Ghadeer.
+        2026: (JUN, 4, tr("Eid-e-Ghadeer")),
     }
 
     special_pb_public_holidays = {

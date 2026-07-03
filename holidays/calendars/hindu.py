@@ -21,6 +21,7 @@ BATHUKAMMA = "BATHUKAMMA"
 BASANT_PANCHAMI = "BASANT_PANCHAMI"
 BONALU = "BONALU"
 BUDDHA_PURNIMA = "BUDDHA_PURNIMA"
+CHAITRA_NAVRATRI = "CHAITRA_NAVRATRI"
 CHHATH_PUJA = "CHHATH_PUJA"
 DIWALI = "DIWALI"
 DIWALI_INDIA = "DIWALI_INDIA"
@@ -28,6 +29,7 @@ DUSSEHRA = "DUSSEHRA"
 GANESH_CHATURTHI = "GANESH_CHATURTHI"
 GOVARDHAN_PUJA = "GOVARDHAN_PUJA"
 GUDI_PADWA = "GUDI_PADWA"
+GURU_ARJUN_DEV_MARTYRDOM_DATES = "GURU_ARJUN_DEV_MARTYRDOM_DATES"
 GURU_GOBIND_SINGH_JAYANTI = "GURU_GOBIND_SINGH_JAYANTI"
 GURU_NANAK_JAYANTI = "GURU_NANAK_JAYANTI"
 GURU_RAVIDAS_JAYANTI = "GURU_RAVIDAS_JAYANTI"
@@ -197,6 +199,45 @@ class _HinduLunisolar:
         2033: (MAY, 14),
         2034: (MAY, 3),
         2035: (MAY, 22),
+    }
+
+    # http://web.archive.org/web/20260627112746/https://www.drikpanchang.com/navratri/chaitra-navratri-ghatasthapana.html
+    CHAITRA_NAVRATRI_DATES = {
+        2001: (MAR, 26),
+        2002: (APR, 13),
+        2003: (APR, 2),
+        2004: (MAR, 22),
+        2005: (APR, 9),
+        2006: (MAR, 30),
+        2007: (MAR, 20),
+        2008: (APR, 7),
+        2009: (MAR, 27),
+        2010: (MAR, 17),
+        2011: (APR, 4),
+        2012: (MAR, 23),
+        2013: (APR, 11),
+        2014: (MAR, 31),
+        2015: (MAR, 21),
+        2016: (APR, 8),
+        2017: (MAR, 29),
+        2018: (MAR, 18),
+        2019: (APR, 6),
+        2020: (MAR, 25),
+        2021: (APR, 13),
+        2022: (APR, 2),
+        2023: (MAR, 22),
+        2024: (APR, 9),
+        2025: (MAR, 30),
+        2026: (MAR, 20),
+        2027: (APR, 8),
+        2028: (MAR, 27),
+        2029: (APR, 15),
+        2030: (APR, 4),
+        2031: (MAR, 24),
+        2032: (APR, 11),
+        2033: (MAR, 31),
+        2034: (MAR, 21),
+        2035: (APR, 9),
     }
 
     # https://web.archive.org/web/20250404174934/https://www.timeanddate.com/holidays/india/chhat-puja
@@ -634,6 +675,45 @@ class _HinduLunisolar:
         2033: (MAR, 31),
         2034: (MAR, 21),
         2035: (APR, 9),
+    }
+
+    # https://web.archive.org/web/20260617120653/https://www.officeholidays.com/holidays/india/punjab/guru-arjun-dev-martyrdom-day
+    GURU_ARJUN_DEV_MARTYRDOM_DATES = {
+        2001: (MAY, 28),
+        2002: (JUN, 16),
+        2003: (JUN, 6),
+        2004: (MAY, 26),
+        2005: (JUN, 14),
+        2006: (JUN, 3),
+        2007: (MAY, 24),
+        2008: (JUN, 11),
+        2009: (MAY, 31),
+        2010: (MAY, 21),
+        2011: (JUN, 9),
+        2012: (MAY, 28),
+        2013: (JUN, 16),
+        2014: (JUN, 5),
+        2015: (MAY, 25),
+        2016: (JUN, 13),
+        2017: (JUN, 2),
+        2018: (JUN, 17),
+        2019: (JUN, 16),
+        2020: (MAY, 26),
+        2021: (JUN, 14),
+        2022: (JUN, 3),
+        2023: (MAY, 23),
+        2024: (JUN, 10),
+        2025: (MAY, 30),
+        2026: (JUN, 18),
+        2027: (JUN, 8),
+        2028: (MAY, 28),
+        2029: (JUN, 16),
+        2030: (JUN, 5),
+        2031: (MAY, 26),
+        2032: (JUN, 13),
+        2033: (JUN, 2),
+        2034: (MAY, 22),
+        2035: (JUN, 11),
     }
 
     # https://web.archive.org/web/20241231181629/https://www.timeanddate.com/holidays/india/guru-govind-singh-jayanti
@@ -1932,6 +2012,9 @@ class _HinduLunisolar:
     def buddha_purnima_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BUDDHA_PURNIMA, year)
 
+    def chaitra_navratri_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(CHAITRA_NAVRATRI, year)
+
     def chhath_puja_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(CHHATH_PUJA, year)
 
@@ -1952,6 +2035,9 @@ class _HinduLunisolar:
 
     def gudi_padwa_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(GUDI_PADWA, year)
+
+    def guru_arjun_dev_martyrdom_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(GURU_ARJUN_DEV_MARTYRDOM_DATES, year)
 
     def guru_gobind_singh_jayanti_date(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday_set(GURU_GOBIND_SINGH_JAYANTI, year)
