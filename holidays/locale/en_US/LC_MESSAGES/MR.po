@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-06-29 16:42+0530\n"
-"PO-Revision-Date: 2026-07-03 11:36+0530\n"
+"PO-Revision-Date: 2026-07-03 12:27+0530\n"
 "Last-Translator: TaniaRocks <taniakhatun9a@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -44,6 +44,7 @@ msgstr "Labor Day"
 msgid "يوم أفريقيا"
 msgstr "Africa Day"
 
+#. Independence Day.
 msgid "عيد الاستقلال"
 msgstr "Independence Day"
 
