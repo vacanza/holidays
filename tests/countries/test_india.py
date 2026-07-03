@@ -1042,16 +1042,17 @@ class TestIndia(CommonCountryTests, TestCase):
     def test_nauroz(self):
         name = "Nauroz"
         self.assertNoHolidayName(name)
+        dts = (
+            "2020-03-20",
+            "2021-03-21",
+            "2022-03-21",
+            "2023-03-21",
+            "2024-03-20",
+            "2025-03-21",
+        )
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv in ("JK", "LA"):
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-03-20" for year in self.full_range if isleap(year))
-                )
-                self.assertHolidayName(
-                    name,
-                    holidays,
-                    (f"{year}-03-21" for year in self.full_range if not isleap(year)),
-                )
+                self.assertHolidayName(name, holidays, dts)
             else:
                 self.assertNoHolidayName(name, holidays)
 

@@ -14,7 +14,7 @@ from calendar import isleap
 from collections.abc import Iterable
 from datetime import date
 
-from holidays.calendars.gregorian import MAR, APR, MAY, AUG, _timedelta
+from holidays.calendars.gregorian import APR, MAY, AUG, _timedelta
 from holidays.calendars.hindu import _HinduLunisolar
 from holidays.groups.eastern import EasternCalendarHolidays
 
@@ -755,16 +755,6 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Vishu
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.vishu_date(self._year))
-
-    def _add_nauroz(self, name: str) -> None:
-        """
-        Add Nauroz.
-
-        Nauroz (Nowruz) marks the Persian New Year and the beginning
-        of spring. It is usually observed on March 21, but falls on
-        March 20 in leap years.
-        """
-        self._add_holiday(name, date(self._year, MAR, 20 if isleap(self._year) else 21))
 
     def _add_parsi_new_year(self, name: str) -> None:
         """

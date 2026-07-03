@@ -21,6 +21,7 @@ from holidays.groups import (
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    PersianCalendarHolidays,
     StaticHolidays,
 )
 from holidays.holiday_base import HolidayBase
@@ -32,6 +33,7 @@ class India(
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    PersianCalendarHolidays,
     StaticHolidays,
 ):
     """India holidays.
@@ -221,6 +223,7 @@ class India(
             calendar_delta_days=+1,
         )
         InternationalHolidays.__init__(self)
+        PersianCalendarHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=IndiaStaticHolidays)
         super().__init__(*args, **kwargs)
 
@@ -562,8 +565,8 @@ class India(
         self._add_isra_and_miraj_day(tr("Shab-I-Miraj"))
         # 1st Navratra.
         self._add_chaitra_navratri(tr("1st Navratra"))
-        # Nauroz.
-        self._add_nauroz(tr("Nauroz"))
+        # Nowruz.
+        self._add_nowruz_day(tr("Nauroz"))
         # Baisakhi.
         self._add_vaisakhi(tr("Baisakhi"))
         # Mahanavami.
@@ -600,7 +603,7 @@ class India(
 
     # Ladakh.
     def _populate_subdiv_la_public_holidays(self):
-        # Nauroz.
+        # Nowruz.
         self._add_nauroz(tr("Nauroz"))
 
     def _populate_subdiv_la_optional_holidays(self):
