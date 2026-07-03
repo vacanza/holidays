@@ -56,6 +56,8 @@ class India(
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
         * Himachal Pradesh:
             * <http://web.archive.org/web/20260627103337/https://www.comply360.in/labor-law-library/wp-content/uploads/2025/12/Notification-regarding-list-of-Holidays-for-the-Year-2026-in-Himachal-Pradesh-1.pdf>
+        * Jammu and Kashmir:
+            * https://web.archive.org/web/20260616165510/https://jkeducation.co.in/wp-content/uploads/2025/12/showOrder-4.pdf>
         * Kerala:
             * <https://web.archive.org/web/20260329164551/https://kerala.gov.in/showcalendar/2026>
         * Ladakh:
@@ -543,8 +545,6 @@ class India(
         self._add_maharana_pratap_jayanti(tr("Maharana Pratap Jayanti"))
         # Sant Guru Kabir Jayanti (Prakat Diwas).
         self._add_kabir_jayanti(tr("Sant Guru Kabir Jayanti (Prakat Diwas)"))
-        # Dussehra.
-        self._add_dussehra(tr("Dussehra"))
         # Maharishi Valmiki's Birthday.
         self._add_maharishi_valmiki_jayanti(tr("Maharishi Valmiki's Birthday"))
 
@@ -558,7 +558,24 @@ class India(
 
     # Jammu and Kashmir
     def _populate_subdiv_jk_public_holidays(self):
-        pass
+        # Shab-I-Miraj.
+        self._add_isra_and_miraj_day(tr("Shab-I-Miraj"))
+        # 1st Navratra.
+        self._add_chaitra_navratri(tr("1st Navratra"))
+        # Nauroz.
+        self._add_nauroz(tr("Nauroz"))
+        # Baisakhi.
+        self._add_vaisakhi(tr("Baisakhi"))
+        # Mahanavami.
+        self._add_maha_navami(tr("Mahanavami"))
+        # Birthday of Maharaja Hari Singh Ji.
+        self._add_holiday_sep_23(tr("Birthday of Maharaja Hari Singh Ji"))
+        # Accession Day.
+        self._add_holiday_oct_26(tr("Accession Day"))
+
+    def _populate_subdiv_jk_optional_holidays(self):
+        # Martyr's Day of Guru Arjun Dev Ji.
+        self._add_guru_arjun_dev_martyrdom_day(tr("Martyr's Day of Guru Arjun Dev Ji"))
 
     # Jharkhand.
     def _populate_subdiv_jh_public_holidays(self):
@@ -585,8 +602,6 @@ class India(
     def _populate_subdiv_la_public_holidays(self):
         # Nauroz.
         self._add_nauroz(tr("Nauroz"))
-        # Dussehra.
-        self._add_dussehra(tr("Dussehra"))
 
     def _populate_subdiv_la_optional_holidays(self):
         # Shab-I-Miraj.
