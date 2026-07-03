@@ -85,7 +85,7 @@ msgstr ""
 msgid "عيد الصعود"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "إثنين العنصرة"
 msgstr ""
 

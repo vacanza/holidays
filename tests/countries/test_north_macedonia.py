@@ -12,15 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import (
-    ALBANIAN,
-    BOSNIAN,
-    ISLAMIC,
-    ROMA,
-    SERBIAN,
-    TURKISH,
-    VLACH,
-)
+from holidays.constants import ALBANIAN, BOSNIAN, ISLAMIC, ROMA, SERBIAN, TURKISH, VLACH
 from holidays.countries.north_macedonia import NorthMacedonia
 from tests.common import CommonCountryTests
 
@@ -472,7 +464,7 @@ class TestNorthMacedonia(CommonCountryTests, TestCase):
             ("2024-05-23", "Національний день влахів"),
             ("2024-05-24", "День Святих Кирила та Мефодія, всесловʼянських просвітителів"),
             ("2024-06-16", "Курбан-байрам"),
-            ("2024-06-21", "Трійця"),
+            ("2024-06-21", "Пʼятидесятниця"),
             ("2024-08-02", "День Республіки"),
             ("2024-08-28", "Успіння Пресвятої Богородиці"),
             ("2024-09-08", "День незалежності"),

@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.89\n"
+"Project-Id-Version: Holidays 0.99\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-09-05 12:21+0700\n"
-"PO-Revision-Date: 2026-01-14 04:15+0000\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-06-05 16:12+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_AU\n"
 "MIME-Version: 1.0\n"
@@ -31,6 +31,16 @@ msgstr ""
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
+msgstr ""
+
+#. %s (from 6pm).
+#, c-format
+msgid "%s (from 6pm)"
+msgstr ""
+
+#. %s (from 7pm).
+#, c-format
+msgid "%s (from 7pm)"
 msgstr ""
 
 #. King's Birthday.
@@ -109,11 +119,6 @@ msgstr ""
 msgid "Picnic Day"
 msgstr ""
 
-#. %s (from 7pm).
-#, c-format
-msgid "%s (from 7pm)"
-msgstr ""
-
 #. Christmas Eve.
 msgid "Christmas Eve"
 msgstr ""
@@ -124,11 +129,6 @@ msgstr ""
 
 #. The Royal Queensland Show.
 msgid "The Royal Queensland Show"
-msgstr ""
-
-#. %s (from 6pm).
-#, c-format
-msgid "%s (from 6pm)"
 msgstr ""
 
 #. Adelaide Cup Day.

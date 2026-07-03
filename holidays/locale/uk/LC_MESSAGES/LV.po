@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.94\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2026-04-03 16:02+0300\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -69,9 +69,9 @@ msgstr "День проголошення декларації незалежн�
 msgid "Mātes diena"
 msgstr "День матері"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Vasarsvētki"
-msgstr "Трійця"
+msgstr "Пʼятидесятниця"
 
 #. Midsummer Eve.
 msgid "Līgo diena"

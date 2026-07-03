@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.95\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-22 18:35+0200\n"
-"PO-Revision-Date: 2026-04-10 20:45+0300\n"
+"PO-Revision-Date: 2026-06-30 23:20+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -62,7 +62,7 @@ msgstr "День захисту дітей"
 
 #. Pentecost.
 msgid "Rusaliile"
-msgstr "Трійця"
+msgstr "Пʼятидесятниця"
 
 #. Dormition of the Mother of God.
 msgid "Adormirea Maicii Domnului"

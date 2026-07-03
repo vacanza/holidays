@@ -104,10 +104,7 @@ class SnapshotGenerator:
         market_code, supported_categories, years, snapshot_path = args
         file_path = snapshot_path / f"{market_code}.json"
         snapshot = financial_holidays(
-            market_code,
-            years=years,
-            categories=supported_categories,
-            language="en_US",
+            market_code, years=years, categories=supported_categories, language="en_US"
         )
         SnapshotGenerator.save(snapshot, file_path)
 

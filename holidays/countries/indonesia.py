@@ -117,8 +117,8 @@ class Indonesia(
             # Easter Monday.
             self._add_easter_monday(tr("Hari kedua Paskah"))
 
-            # Whit Monday.
-            self._add_whit_monday(tr("Hari kedua Pentakosta"))
+            # Pentecost Monday.
+            self._add_pentecost_monday(tr("Hari kedua Pentakosta"))
 
             # Nuzul Al Quran.
             self._add_nuzul_al_quran_day(tr("Nuzululqur'an"))
@@ -489,10 +489,11 @@ class IndonesiaStaticHolidays:
         * <https://web.archive.org/web/20250413193243/https://setkab.go.id/inilah-keppres-7-2024-tentang-cuti-bersama-asn-tahun-2024/>
         * <https://web.archive.org/web/20250413193349/https://setkab.go.id/pemerintah-tetapkan-hari-libur-nasional-dan-cuti-bersama-tahun-2025/>
         * <https://web.archive.org/web/20250802143125/https://news.detik.com/berita/d-8039857/pemerintah-tetapkan-senin-18-agustus-hari-libur>
+        * <https://web.archive.org/web/20260605113344/https://www.detik.com/hikmah/khazanah/d-8346579/libur-nasional-dan-cuti-bersama-2026-cek-jadwalnya-di-sini>
     """
 
     # General Election Day.
-    general_election_day = tr("Hari Pemilihan Unum")
+    general_election_day = tr("Hari Pemilihan Umum")
     # Presidential Election Day.
     presidential_election_day = tr("Hari Pemilihan Presiden")
     # Legislative Election Day.
@@ -731,6 +732,16 @@ class IndonesiaStaticHolidays:
             (JUN, 9, eid_al_adha_joint_holiday),
             (AUG, 18, independence_day_joint_holiday),
             (DEC, 26, christmas_joint_holiday),
+        ),
+        2026: (
+            (FEB, 16, lunar_new_year_joint_holiday),
+            (MAR, 18, day_of_silence_joint_holiday),
+            (MAR, 20, eid_al_fitr_joint_holiday),
+            (MAR, 23, eid_al_fitr_joint_holiday),
+            (MAR, 24, eid_al_fitr_joint_holiday),
+            (MAY, 15, ascension_joint_holiday),
+            (MAY, 28, eid_al_adha_joint_holiday),
+            (DEC, 24, christmas_joint_holiday),
         ),
     }
     special_government_holidays_observed = {

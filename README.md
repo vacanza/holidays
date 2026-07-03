@@ -67,7 +67,9 @@ The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io).
 
 ## ICS Exports
 
-Holiday calendars can be exported as `.ics` files via the [download page](https://holidays.readthedocs.io/en/latest/downloads/).
+Holiday calendars can be exported as `.ics` files via [holidays-ics command line
+tool](https://holidays.readthedocs.io/en/latest/examples/#holidays-ics-tool),
+or from the [Download Holiday Calendars](https://holidays.readthedocs.io/en/latest/downloads/) page.
 
 ## Quick Start
 
@@ -185,7 +187,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Algeria</td>
 <td>DZ</td>
 <td></td>
-<td><strong>ar</strong>, en_US, fr</td>
+<td><strong>ar</strong>, en_US, fr, kab</td>
 <td>CHRISTIAN, HEBREW</td>
 </tr>
 <tr>
@@ -1102,7 +1104,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Maldives</td>
 <td>MV</td>
 <td></td>
-<td></td>
+<td><strong>dv</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -1938,6 +1940,13 @@ code when available. The following financial markets are available:
 </thead>
 <tbody>
 <tr>
+<td>Bolsa Mexicana de Valores</td>
+<td>XMEX</td>
+<td>Bolsa Mexicana de Valores (BMV) holidays</td>
+<td>en_US, <strong>es</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>
 <td>Bombay Stock Exchange (BSE) market holidays</td>
@@ -1950,6 +1959,13 @@ code when available. The following financial markets are available:
 <td>Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)</td>
 <td>en_US, <strong>pt_BR</strong>, uk</td>
 <td></td>
+</tr>
+<tr>
+<td>Chicago Mercantile Exchange</td>
+<td>XCME</td>
+<td>Chicago Mercantile Exchange market holidays</td>
+<td><strong>en_US</strong>, gu, hi</td>
+<td>HALF_DAY</td>
 </tr>
 <tr>
 <td>European Central Bank</td>
@@ -1990,7 +2006,7 @@ code when available. The following financial markets are available:
 <td>NASDAQ</td>
 <td>XNAS</td>
 <td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
-<td></td>
+<td><strong>en_US</strong>, gu, hi</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2004,7 +2020,7 @@ code when available. The following financial markets are available:
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
 <td>NYSE market holidays</td>
-<td></td>
+<td><strong>en_US</strong>, gu, hi</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>

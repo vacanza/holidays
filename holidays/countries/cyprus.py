@@ -65,8 +65,8 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_labor_day(tr("Πρωτομαγιά"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Κοίμηση της Θεοτόκου"))

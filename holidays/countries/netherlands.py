@@ -78,11 +78,11 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Ascension Day.
         self._add_ascension_thursday(tr("Hemelvaartsdag"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Eerste Pinksterdag"))
+        # Pentecost.
+        self._add_pentecost(tr("Eerste Pinksterdag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Tweede Pinksterdag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Tweede Pinksterdag"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Eerste Kerstdag"))

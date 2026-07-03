@@ -52,7 +52,7 @@ class Algeria(
     # Loi n° 63-278 du 26 juillet 1963.
     start_year = 1964
     supported_categories = (CHRISTIAN, HEBREW, PUBLIC)
-    supported_languages = ("ar", "en_US", "fr")
+    supported_languages = ("ar", "en_US", "fr", "kab")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
@@ -139,8 +139,8 @@ class Algeria(
         # Ascension Day.
         self._add_ascension_thursday(tr("عيد الصعود"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("إثنين العنصرة"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("إثنين العنصرة"))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("عيد انتقال السيدة العذراء"))

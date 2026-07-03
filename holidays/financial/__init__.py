@@ -10,8 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.financial.bolsa_mexicana_de_valores import BolsaMexicanaDeValores, XMEX, BMV
 from holidays.financial.bombay_stock_exchange import BombayStockExchange, XBOM, BSE
 from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao, BVMF, B3
+from holidays.financial.chicago_mercantile_exchange import ChicagoMercantileExchange, XCME, CME
 from holidays.financial.european_central_bank import EuropeanCentralBank, XECB, ECB, TAR
 from holidays.financial.germany_exchange import GermanyStockExchange, XETR, XFRA
 from holidays.financial.hong_kong_stock_exchange import HongKongStockExchange, XHKG, HKEX, SEHK

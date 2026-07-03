@@ -10,10 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from calendar import isleap
 from collections.abc import Iterable
 from datetime import date
 
-from holidays.calendars.gregorian import AUG, _timedelta
+from holidays.calendars.gregorian import APR, MAY, AUG, _timedelta
 from holidays.calendars.hindu import _HinduLunisolar
 from holidays.groups.eastern import EasternCalendarHolidays
 
@@ -26,6 +27,13 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
     def __init__(self, cls=None, *, show_estimated=False) -> None:
         self._hindu_calendar = cls() if cls else _HinduLunisolar()
         self._hindu_calendar_show_estimated = show_estimated
+
+    @property
+    def _ram_navami(self) -> date | None:
+        """
+        Return Ram Navami date.
+        """
+        return self._hindu_calendar.ram_navami_date(self._year)[0]
 
     def _add_hindu_calendar_holiday(
         self, name: str, dt_estimated: tuple[date | None, bool], days_delta: int = 0
@@ -58,6 +66,21 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             dts_estimated,
             show_estimated=self._hindu_calendar_show_estimated,
             days_delta=days_delta,
+        )
+
+    def _add_basant_panchami(self, name) -> date | None:
+        """
+        Add Basant Panchami.
+
+        Basant Panchami, also known as Vasant Panchami, is a Hindu festival
+        dedicated to Goddess Saraswati and marks the arrival of spring.
+        It is observed on the fifth day (Panchami) of the bright fortnight
+        of the Hindu month of Magha (January/February).
+
+        https://en.wikipedia.org/wiki/Vasant_Panchami
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.basant_panchami_date(self._year)
         )
 
     def _add_bathukamma(self, name) -> date | None:
@@ -134,6 +157,11 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
     def _add_diwali_india(self, name) -> date | None:
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.diwali_india_date(self._year)
+        )
+
+    def _add_diwali_south_india(self, name) -> date | None:
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.diwali_india_date(self._year), days_delta=-1
         )
 
     def _add_dussehra(self, name) -> date | None:
@@ -227,6 +255,20 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.guru_nanak_jayanti_date(self._year)
         )
 
+    def _add_guru_ravidas_jayanti(self, name) -> date | None:
+        """
+        Add Guru Ravidas Jayanti.
+
+        Guru Ravidas Jayanti is a Sikh and Hindu festival celebrating
+        the birth anniversary of Guru Ravidas. It is observed on the
+        full moon day (Purnima) in the Hindu month of Magha
+        (January/February).
+        https://en.wikipedia.org/wiki/Ravidassia
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.guru_ravidas_jayanti_date(self._year)
+        )
+
     def _add_gyalpo_losar(self, name) -> date | None:
         """
         Add Gyalpo Losar.
@@ -264,6 +306,21 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.holi_date(self._year))
 
+    def _add_holika_dahan(self, name) -> date | None:
+        """
+        Add Holika Dahan.
+
+        Holika Dahan is a Hindu festival that symbolizes the victory
+        of good over evil through the burning of Holika. It is observed
+        on the full moon day (Purnima) of the Hindu month of Phalguna
+        (February/March), on the eve of Holi.
+
+        https://en.wikipedia.org/wiki/Holika_Dahan
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.holi_date(self._year), days_delta=-1
+        )
+
     def _add_janmashtami(self, name) -> date | None:
         """
         Add Janmashtami.
@@ -274,6 +331,36 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.janmashtami_date(self._year)
+        )
+
+    def _add_karwa_chauth(self, name) -> date | None:
+        """
+        Add Karwa Chauth.
+
+        Karwa Chauth, also known as Karaka Chaturthi, is a Hindu festival
+        observed primarily by married women for the well-being and longevity
+        of their husbands. It is observed on the fourth day (Chaturthi) of
+        the कृष्ण पक्ष (waning phase) in the Hindu month of Kartika
+        (October/November).
+
+        https://en.wikipedia.org/wiki/Karva_Chauth
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.karwa_chauth_date(self._year)
+        )
+
+    def _add_lohri(self, name) -> date | None:
+        """
+        Add Lohri.
+
+        Lohri is a popular harvest festival celebrated primarily in
+        northern India, especially Punjab. It is observed on the eve
+        of Makar Sankranti, marking the end of the winter solstice period.
+
+        https://en.wikipedia.org/wiki/Lohri
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.makar_sankranti_date(self._year), days_delta=-1
         )
 
     def _add_maha_saptami(self, name) -> date | None:
@@ -373,6 +460,21 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.makar_sankranti_date(self._year)
         )
 
+    def _add_naraka_chaturdashi(self, name) -> date | None:
+        """
+        Add Naraka Chaturdashi.
+
+        Naraka Chaturdashi, also known as Choti Diwali, commemorates the
+        victory of Lord Krishna over the demon Narakasura. It is observed
+        on the fourteenth day (Chaturdasi) of the dark fortnight of the
+        Hindu month of Kartika (October/November).
+
+        https://en.wikipedia.org/wiki/Naraka_Chaturdashi
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.naraka_chaturdashi_date(self._year)
+        )
+
     def _add_onam(self, name) -> date | None:
         """
         Add Onam.
@@ -418,6 +520,17 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.pongal_date(self._year))
 
+    def _add_rabindranath_birthday(self, name: str) -> None:
+        """
+        Add Rabindranath Tagore's Birthday.
+
+        Rabindranath Tagore's Birthday commemorates the birth anniversary
+        of Rabindranath Tagore, the Bengali poet, philosopher, and Nobel
+        laureate. It is usually observed on May 9, but falls on May 8
+        in leap years.
+        """
+        self._add_holiday(name, date(self._year, MAY, 8 if isleap(self._year) else 9))
+
     def _add_raksha_bandhan(self, name) -> date | None:
         """
         Add Raksha Bandhan.
@@ -441,6 +554,19 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.ram_navami_date(self._year)
+        )
+
+    def _add_rath_yatra(self, name) -> date | None:
+        """
+        Add Rath Yatra.
+
+        Rath Yatra is a Hindu festival associated with Lord Jagannath.
+        It is observed on the second day (Dwitiya) of the bright half
+        of the Hindu month of Ashadha (June/July).
+        https://en.wikipedia.org/wiki/Ratha_Yatra_(Puri)
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.rath_yatra_date(self._year)
         )
 
     def _add_sharad_navratri(self, name) -> date | None:
@@ -467,6 +593,23 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.sonam_losar_date(self._year)
+        )
+
+    def _add_swami_dayanand_saraswati_jayanti(self, name) -> date | None:
+        """
+        Add Swami Dayanand Saraswati Jayanti.
+
+        Swami Dayanand Saraswati Jayanti or Maharshi Dayanand Saraswati Jayanti
+        commemorates the birth anniversary of Swami Dayanand Saraswati, the founder
+        of the Arya Samaj movement. It is observed on the tenth day
+        (Dashami) of the Krishna Paksha in the Hindu month of Phalguna
+        (February/March).
+
+        https://en.wikipedia.org/wiki/Dayananda_Saraswati
+        """
+        return self._add_hindu_calendar_holiday(
+            name,
+            self._hindu_calendar.swami_dayanand_saraswati_jayanti_date(self._year),
         )
 
     def _add_tamu_losar(self, name) -> date | None:
@@ -534,6 +677,28 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.vaisakhi_date(self._year)
         )
+
+    def _add_vaisakhadi(self, name: str) -> None:
+        """
+        Add Vaisakhadi.
+
+        Vaisakhadi marks the beginning of the solar month of Vaisakha
+        in the Punjabi solar calendar. It is usually observed on
+        April 15, but falls on April 14 in leap years.
+        """
+        self._add_holiday(name, date(self._year, APR, 14 if isleap(self._year) else 15))
+
+    def _add_vishu(self, name) -> date | None:
+        """
+        Add Vishu.
+
+        Vishu is a Hindu festival celebrated in Kerala that marks the
+        Malayalam New Year. It is observed on April 14 or 15 and is
+        associated with the Sun's transition into Mesha (Aries).
+
+        https://en.wikipedia.org/wiki/Vishu
+        """
+        return self._add_hindu_calendar_holiday(name, self._hindu_calendar.vishu_date(self._year))
 
     def _add_parsi_new_year(self, name: str) -> None:
         """

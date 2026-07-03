@@ -86,7 +86,7 @@ msgstr ""
 msgid "Jeudi de l'Ascension"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Lundi de Pentecôte"
 msgstr ""
 

@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.74\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-08 19:30+0300\n"
-"PO-Revision-Date: 2025-05-26 10:19+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -56,9 +56,9 @@ msgstr "May Day"
 msgid "Helatorstai"
 msgstr "Ascension Day"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Helluntaipäivä"
-msgstr "Whit Sunday"
+msgstr "Pentecost"
 
 #. Midsummer Eve.
 msgid "Juhannusaatto"

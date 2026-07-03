@@ -298,7 +298,7 @@ class TestAlgeria(CommonCountryTests, TestCase):
             ("2022-05-02", "Eid al-Fitr (estimated)"),
             ("2022-05-03", "Eid al-Fitr (estimated)"),
             ("2022-05-26", "Ascension Day"),
-            ("2022-06-06", "Whit Monday"),
+            ("2022-06-06", "Pentecost Monday"),
             ("2022-07-05", "Independence Day"),
             ("2022-07-09", "Eid al-Adha (estimated)"),
             ("2022-07-10", "Eid al-Adha (estimated)"),
@@ -335,4 +335,29 @@ class TestAlgeria(CommonCountryTests, TestCase):
             ("2022-10-08", "El-Mawlid Ennabawi Echarif (estimé)"),
             ("2022-11-01", "Fête de la Révolution"),
             ("2022-12-25", "Noël"),
+        )
+
+    def test_l10n_kab(self):
+        self.assertLocalizedHolidays(
+            "kab",
+            ("2022-01-01", "Aseggas amaynut"),
+            ("2022-01-12", "Yennayer"),
+            ("2022-04-16", "Lɛid n tfaska n udayen"),
+            ("2022-04-18", "Letni n tfaska"),
+            ("2022-05-01", "Ass n yixeddamen"),
+            ("2022-05-02", "Lɛid tamezyant (s useqreb)"),
+            ("2022-05-03", "Lɛid tamezyant (s useqreb)"),
+            ("2022-05-26", "Ass n walluy"),
+            ("2022-06-06", "Letni n pentikust"),
+            ("2022-07-05", "Ass n uzarug"),
+            ("2022-07-09", "Lɛid tameqrant (s useqreb)"),
+            ("2022-07-10", "Lɛid tameqrant (s useqreb)"),
+            ("2022-07-30", "Aseggas amaynut ahijri (s useqreb)"),
+            ("2022-08-08", "Ɛacura (s useqreb)"),
+            ("2022-08-15", "Ass n walluy n tmaryam"),
+            ("2022-09-26", "Ixef n useggas n udayen"),
+            ("2022-10-05", "Ass n usuref"),
+            ("2022-10-08", "Lmulud (s useqreb)"),
+            ("2022-11-01", "Ass n tegrawla"),
+            ("2022-12-25", "Lɛid n tlalit"),
         )

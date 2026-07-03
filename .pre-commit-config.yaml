@@ -26,13 +26,13 @@ repos:
           - --py310-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: c60c980e561ed3e73101667fe8365c609d19a438  # v0.15.9
+    rev: 22f0422809455ec89ffdcf5a00170ba816e42ddb  # v0.15.16
     hooks:
       - id: ruff-check
       - id: ruff-format
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: e72a3ca1632f0b11a07d171449fe447a7ff6795e  # v0.48.0
+    rev: a4d5d37e66ebcd6b3705204a1d6dbb56dea66338  # v0.49.0
     hooks:
       - id: markdownlint
         args:
@@ -56,20 +56,17 @@ repos:
         exclude: ^(docs)
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: 8e5c80792e2ec0c87804d8ef915bf35e2caea6da  # v1.20.0
+    rev: d2823d321df3af8f878f7ee3414dc94d037145b9  # v2.1.0
     hooks:
       - id: mypy
         additional_dependencies:
-          - types-polib
-          - types-python-dateutil
-          - types-requests
+          - types-polib==1.2.0.20260518
+          - types-python-dateutil==2.9.0.20260518
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: 6e10264313f53d6247a8b1b984f5b5ccf50ba539  # v2.21.0
+    rev: ca620e0df5ae9a02b7b81a6e4c954894f043ce42  # v2.24.1
     hooks:
       - id: pyproject-fmt
-        additional_dependencies:
-          - toml-fmt-common<1.3.3
 
   - repo: local
     hooks:

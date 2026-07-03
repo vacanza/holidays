@@ -272,9 +272,7 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
         )
         self.assertNoHolidayName(name, (f"{year}-12-25" for year in range(self.start_year, 2017)))
         self.assertWorkdayHolidayName(
-            name,
-            "2023-01-07",
-            (f"{year}-12-25" for year in range(2022, self.end_year)),
+            name, "2023-01-07", (f"{year}-12-25" for year in range(2022, self.end_year))
         )
         self.assertNoWorkdayHolidayName(
             name, (f"{year}-01-07" for year in range(2024, self.end_year))
@@ -724,8 +722,8 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
             ("2021-05-04", "Easter Sunday (Pascha) (observed)"),
             ("2021-05-09", "Day of Victory over Nazism in World War II (Victory Day)"),
             ("2021-05-10", "Day of Victory over Nazism in World War II (Victory Day) (observed)"),
-            ("2021-06-20", "Holy Trinity Day"),
-            ("2021-06-21", "Holy Trinity Day (observed)"),
+            ("2021-06-20", "Pentecost"),
+            ("2021-06-21", "Pentecost (observed)"),
             ("2021-06-28", "Day of the Constitution of Ukraine"),
             ("2021-08-23", "Day off (substituted from 08/28/2021)"),
             ("2021-08-24", "Independence Day"),
@@ -751,8 +749,8 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
                 "2021-05-10",
                 "يوم النصر على النازية في الحرب العالمية الثانية (يوم النصر) (يوم تعويضي)",
             ),
-            ("2021-06-20", "الثالوث"),
-            ("2021-06-21", "الثالوث (يوم تعويضي)"),
+            ("2021-06-20", "عيد العنصرة"),
+            ("2021-06-21", "عيد العنصرة (يوم تعويضي)"),
             ("2021-06-28", "يوم الدستور في أوكرانيا"),
             ("2021-08-23", "يوم عطلة (استبدل من 28/08/2021)"),
             ("2021-08-24", "عيد استقلال أوكرانيا"),
@@ -775,8 +773,8 @@ class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
             ("2021-05-04", "ชดเชยวันอาทิตย์อีสเตอร์"),
             ("2021-05-09", "วันแห่งชัยชนะเหนือระบอบชาติสังคมนิยมในสงครามโลกครั้งที่สอง (วันแห่งชัยชนะ)"),
             ("2021-05-10", "ชดเชยวันแห่งชัยชนะเหนือระบอบชาติสังคมนิยมในสงครามโลกครั้งที่สอง (วันแห่งชัยชนะ)"),
-            ("2021-06-20", "วันสมโภชพระตรีเอกภาพ"),
-            ("2021-06-21", "ชดเชยวันสมโภชพระตรีเอกภาพ"),
+            ("2021-06-20", "วันสมโภชพระจิตเจ้า"),
+            ("2021-06-21", "ชดเชยวันสมโภชพระจิตเจ้า"),
             ("2021-06-28", "วันรัฐธรรมนูญยูเครน"),
             ("2021-08-23", "วันหยุด (แทน 28/08/2021)"),
             ("2021-08-24", "วันประกาศอิสรภาพยูเครน"),

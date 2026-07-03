@@ -63,8 +63,8 @@ class Greece(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         easter_monday = self._add_easter_monday(tr("Δευτέρα του Πάσχα"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
 
         # Labor Day.
         name = tr("Εργατική Πρωτομαγιά")

@@ -79,7 +79,7 @@ msgstr ""
 msgid "Hari kedua Paskah"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Hari kedua Pentakosta"
 msgstr ""
 
@@ -136,7 +136,7 @@ msgid "Kebangkitan Yesus Kristus"
 msgstr ""
 
 #. General Election Day.
-msgid "Hari Pemilihan Unum"
+msgid "Hari Pemilihan Umum"
 msgstr ""
 
 #. Presidential Election Day.

@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-15 11:50-0800\n"
-"PO-Revision-Date: 2024-01-05 14:18+0200\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -64,9 +64,9 @@ msgstr "Великодній понеділок"
 msgid "Πρωτομαγιά"
 msgstr "День праці"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Δευτέρα του Αγίου Πνεύματος"
-msgstr "День Святого Духа"
+msgstr "Другий день Пʼятидесятниці"
 
 #. Assumption Day.
 msgid "Κοίμηση της Θεοτόκου"

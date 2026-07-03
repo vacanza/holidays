@@ -114,8 +114,8 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Was in-use prior to Spring bank holiday adoption.
 
         if self._year <= 1969:
-            # Whit Monday.
-            self._add_whit_monday("Whit Monday")
+            # Pentecost Monday.
+            self._add_pentecost_monday("Whit Monday")
 
         # Summer Bank Holiday
         # Current Pattern started in 1970. Was previously first Monday of September for Jersey.

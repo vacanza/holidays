@@ -128,8 +128,8 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_labor_day(tr("Festa del treball"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Dilluns de Pentecosta"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Dilluns de Pentecosta"))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assumpció"))
@@ -206,19 +206,23 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_government_holidays(self):
         # %s (from 1pm).
-        begin_time_label = self.tr("%s (a partir de les 13h)")
+        begin_time_label = tr("%s (a partir de les 13h)")
 
         # Epiphany Eve.
-        self._add_holiday_jan_5(begin_time_label % self.tr("Vigília de Reis"))
+        self._add_holiday_jan_5(self._format_holiday_name(begin_time_label, tr("Vigília de Reis")))
 
         # Maundy Thursday.
-        self._add_holy_thursday(begin_time_label % self.tr("Dijous Sant"))
+        self._add_holy_thursday(self._format_holiday_name(begin_time_label, tr("Dijous Sant")))
 
-        # Christmas Eve.
-        self._add_christmas_eve(begin_time_label % self.tr("Vigília de Nadal"))
+        self._add_christmas_eve(
+            # Christmas Eve.
+            self._format_holiday_name(begin_time_label, tr("Vigília de Nadal"))
+        )
 
-        # New Year's Eve.
-        self._add_new_years_eve(begin_time_label % self.tr("Vigília de Cap d'Any"))
+        self._add_new_years_eve(
+            # New Year's Eve.
+            self._format_holiday_name(begin_time_label, tr("Vigília de Cap d'Any"))
+        )
 
 
 class AD(Andorra):

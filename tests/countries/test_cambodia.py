@@ -118,19 +118,7 @@ class TestCambodia(CommonCountryTests, TestCase):
 
     def test_khmer_new_year(self):
         name = "ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
-        years_sangkranta_apr14 = {
-            2017,
-            2018,
-            2021,
-            2022,
-            2023,
-            2025,
-            2026,
-            2027,
-            2029,
-            2030,
-            2031,
-        }
+        years_sangkranta_apr14 = {2017, 2018, 2021, 2022, 2023, 2025, 2026, 2027, 2029, 2030, 2031}
         self.assertHolidayNameCount(
             name, 3, range(self.start_year, 2020), range(2021, 2024), range(2025, self.end_year)
         )

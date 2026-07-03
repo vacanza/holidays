@@ -494,13 +494,10 @@ class TestGermany(CommonCountryTests, TestCase):
 
     def test_public_category_excludes_school_holidays(self):
         self.assertHolidayName(
-            "Neujahr",
-            Germany(subdiv="BY", years=2025, categories=PUBLIC),
-            "2025-01-01",
+            "Neujahr", Germany(subdiv="BY", years=2025, categories=PUBLIC), "2025-01-01"
         )
         self.assertNoHolidayName(
-            "Sommerferien",
-            Germany(subdiv="BY", years=2025, categories=PUBLIC),
+            "Sommerferien", Germany(subdiv="BY", years=2025, categories=PUBLIC)
         )
 
     def test_l10n_default(self):
@@ -539,8 +536,8 @@ class TestGermany(CommonCountryTests, TestCase):
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labor Day"),
             ("2022-05-26", "Ascension Day"),
-            ("2022-06-05", "Whit Sunday"),
-            ("2022-06-06", "Whit Monday"),
+            ("2022-06-05", "Pentecost"),
+            ("2022-06-06", "Pentecost Monday"),
             ("2022-06-16", "Corpus Christi"),
             ("2022-08-08", "Augsburg Peace Festival"),
             ("2022-08-15", "Assumption Day"),
@@ -591,8 +588,8 @@ class TestGermany(CommonCountryTests, TestCase):
             ("2022-04-18", "Великодній понеділок"),
             ("2022-05-01", "День праці"),
             ("2022-05-26", "Вознесіння Господнє"),
-            ("2022-06-05", "Трійця"),
-            ("2022-06-06", "День Святого Духа"),
+            ("2022-06-05", "Пʼятидесятниця"),
+            ("2022-06-06", "Другий день Пʼятидесятниці"),
             ("2022-06-16", "Свято Тіла і Крові Христових"),
             ("2022-08-08", "Аугсбурзьке свято миру"),
             ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
