@@ -29,7 +29,7 @@ DUSSEHRA = "DUSSEHRA"
 GANESH_CHATURTHI = "GANESH_CHATURTHI"
 GOVARDHAN_PUJA = "GOVARDHAN_PUJA"
 GUDI_PADWA = "GUDI_PADWA"
-GURU_ARJUN_DEV_MARTYRDOM_DATES = "GURU_ARJUN_DEV_MARTYRDOM_DATES"
+GURU_ARJUN_DEV_MARTYRDOM = "GURU_ARJUN_DEV_MARTYRDOM"
 GURU_GOBIND_SINGH_JAYANTI = "GURU_GOBIND_SINGH_JAYANTI"
 GURU_NANAK_JAYANTI = "GURU_NANAK_JAYANTI"
 GURU_RAVIDAS_JAYANTI = "GURU_RAVIDAS_JAYANTI"
@@ -2037,7 +2037,7 @@ class _HinduLunisolar:
         return self._get_holiday(GUDI_PADWA, year)
 
     def guru_arjun_dev_martyrdom_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(GURU_ARJUN_DEV_MARTYRDOM_DATES, year)
+        return self._get_holiday(GURU_ARJUN_DEV_MARTYRDOM, year)
 
     def guru_gobind_singh_jayanti_date(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday_set(GURU_GOBIND_SINGH_JAYANTI, year)

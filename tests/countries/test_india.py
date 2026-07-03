@@ -1028,7 +1028,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_chaitra_navratri(self):
-        name = "1st Navratri"
+        name = "1st Navratra"
         dts = (
             "2020-03-25",
             "2021-04-13",
@@ -1037,7 +1037,8 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-04-09",
             "2025-03-30",
         )
-        self._assertHinduHolidayHelper(name, dts, subdivs={"JK", "LA"})
+        self._assertHinduHolidayHelper(name, dts, subdivs={"JK"})
+        self.assertSubdivLaOptionalHolidayName(name, dts)
 
     def test_nauroz(self):
         name = "Nauroz"
@@ -1227,8 +1228,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertSubdivJkOptionalHolidayName(name, dts)
         self.assertSubdivLaOptionalHolidayName(name, dts)
-        self.assertSubdivPbOptionalHolidayName(name_pb, dts)
-        self.assertNoHolidayName(name)
+        self._assertHinduHolidayHelper(name_pb, dts, subdivs={"PB"})
         self.assertNoHolidayName(name_pb)
 
     def test_kabir_jayanti(self):

@@ -604,7 +604,7 @@ class India(
     # Ladakh.
     def _populate_subdiv_la_public_holidays(self):
         # Nowruz.
-        self._add_nauroz(tr("Nauroz"))
+        self._add_nowruz_day(tr("Nauroz"))
 
     def _populate_subdiv_la_optional_holidays(self):
         # Shab-I-Miraj.
@@ -615,8 +615,8 @@ class India(
         self._add_vaisakhi(tr("Baisakhi / Vaisakhi"))
         # Eid-e-Ghadeer.
         self._add_eid_al_ghadir_day(tr("Eid-e-Ghadeer"))
-        # Martyr's day of Guru Arjun Dev Ji.
-        self._add_guru_arjun_dev_martyrdom_day(tr("Martyr's day of Guru Arjun Dev Ji"))
+        # Martyr's Day of Guru Arjun Dev Ji.
+        self._add_guru_arjun_dev_martyrdom_day(tr("Martyr's Day of Guru Arjun Dev Ji"))
 
     # Maharashtra.
     def _populate_subdiv_mh_public_holidays(self):
