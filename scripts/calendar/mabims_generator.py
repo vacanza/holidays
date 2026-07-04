@@ -35,9 +35,9 @@ References:
 
 from __future__ import annotations
 
+import math
 from collections import defaultdict
 from datetime import date, timedelta
-import math
 from functools import cache
 
 from skyfield import almanac
@@ -51,7 +51,7 @@ SINGAPORE_LON = 103.8198
 SINGAPORE_ELEV = 15.0  # meters
 
 # MABIMS 2021 crescent visibility criteria.
-MIN_ALTITUDE = 3.0   # degrees
+MIN_ALTITUDE = 3.0  # degrees
 MIN_ELONGATION = 6.4  # degrees
 
 # Hijri calendar constants.
@@ -69,11 +69,22 @@ MABIMS_HOLIDAYS = {
     "MAWLID": (3, 12),
 }
 
+
 class _MabimsLunar:
     def __init__(self) -> None:
         self.ts = load.timescale()
         self.eph = load("de421.bsp")
-        self.observer = wgs84.latlon(SINGAPORE_LAT * N, SINGAPORE_LON * E, elevation_m=SINGAPORE_ELEV)
+        self.observer = wgs84.latlon(
+            SINGAPORE_LAT * N, SINGAPORE_LON * E, elevation_m=SINGAPORE_ELEV
+        )
+
+        # Precalculate all new moons for the entire timeframe (1923-2052) chunked by year
+        self.new_moons = []
+        for year in range(1923, 2053):
+            t0 = self.ts.utc(year, 1, 1)
+            t1 = self.ts.utc(year + 1, 1, 1)
+            times, events = almanac.find_discrete(t0, t1, almanac.moon_phases(self.eph))
+            self.new_moons.extend([date(*t.utc[:3]) for t, e in zip(times, events) if e == 0])
 
     def get_approximate_date(self, h_year: int, h_month: int) -> date:
         months_since_epoch = (h_year - 1) * 12 + (h_month - 1)
@@ -81,19 +92,14 @@ class _MabimsLunar:
         return HIJRI_EPOCH + timedelta(days=approx_days)
 
     def get_new_moon_date(self, approximate_date: date) -> date:
-        """Find the new moon (conjunction) near the given date."""
-        t0 = self.ts.utc(approximate_date.year, approximate_date.month, approximate_date.day - 5)
-        t1 = self.ts.utc(approximate_date.year, approximate_date.month, approximate_date.day + 5)
-        times, events = almanac.find_discrete(t0, t1, almanac.moon_phases(self.eph))
-        for t, e in zip(times, events):
-            if e == 0:  # New moon
-                return date(*t.utc[:3])
-        return approximate_date
+        """Find the closest precalculated new moon (conjunction) near the given date."""
+        # Find the new moon with the minimum absolute difference in days
+        return min(self.new_moons, key=lambda nm: abs((nm - approximate_date).days))
 
     def check_mabims_visibility(self, check_date: date) -> bool:
         """Check if crescent moon meets MABIMS criteria at Singapore sunset."""
         # Find exact sunset time for Singapore.
-        t0 = self.ts.utc(check_date.year, check_date.month, check_date.day, 9, 0)   # 5pm SGT
+        t0 = self.ts.utc(check_date.year, check_date.month, check_date.day, 9, 0)  # 5pm SGT
         t1 = self.ts.utc(check_date.year, check_date.month, check_date.day, 12, 0)  # 8pm SGT
         f = almanac.sunrise_sunset(self.eph, self.observer)
         times, events = almanac.find_discrete(t0, t1, f)
@@ -121,13 +127,21 @@ class _MabimsLunar:
         sun_ra, sun_dec, _ = sun_pos.radec()
 
         d_ra = (moon_ra.hours - sun_ra.hours) * 15
-        elongation = math.degrees(math.acos(
-            max(-1.0, min(1.0,
-                math.sin(math.radians(moon_dec.degrees)) * math.sin(math.radians(sun_dec.degrees)) +
-                math.cos(math.radians(moon_dec.degrees)) * math.cos(math.radians(sun_dec.degrees)) *
-                math.cos(math.radians(d_ra))
-            ))
-        ))
+        elongation = math.degrees(
+            math.acos(
+                max(
+                    -1.0,
+                    min(
+                        1.0,
+                        math.sin(math.radians(moon_dec.degrees))
+                        * math.sin(math.radians(sun_dec.degrees))
+                        + math.cos(math.radians(moon_dec.degrees))
+                        * math.cos(math.radians(sun_dec.degrees))
+                        * math.cos(math.radians(d_ra)),
+                    ),
+                )
+            )
+        )
 
         return moon_alt.degrees >= MIN_ALTITUDE and elongation >= MIN_ELONGATION
 
@@ -157,13 +171,13 @@ def generate_data() -> None:
 
     dates: dict[str, dict[int, list[date]]] = defaultdict(lambda: defaultdict(list))
 
-    print(f"Generating MABIMS dates for Hijri years {h_start}-{h_end}...")
+    print(f"Generating MABIMS dates for Hijri years {h_start}-{h_end}...")  # noqa: T201
 
     # Now calculate holiday dates.
     for name, (h_month, h_day) in MABIMS_HOLIDAYS.items():
         for h_year in range(h_start, h_end + 1):
             if h_year % 10 == 0 and name == "HIJRI_NEW_YEAR":
-                print(f"Processing Hijri year {h_year}...")
+                print(f"Processing Hijri year {h_year}...")  # noqa: T201
 
             month_start = cal.get_hijri_month_start(h_year, h_month)
             holiday_date = month_start + timedelta(days=h_day - 1)
@@ -171,7 +185,7 @@ def generate_data() -> None:
 
     cal_gen = CalendarGenerator("islamic_mabims", "_IslamicMabimsLunar")
     cal_gen.generate(dates)
-    print("Done! Generated holidays/calendars/islamic_mabims_dates.py")
+    print("Done! Generated holidays/calendars/islamic_mabims_dates.py")  # noqa: T201
 
 
 if __name__ == "__main__":
