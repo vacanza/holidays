@@ -41,7 +41,7 @@ KARWA_CHAUTH = "KARWA_CHAUTH"
 MAHA_ASHTAMI = "MAHA_ASHTAMI"
 MAHA_NAVAMI = "MAHA_NAVAMI"
 MAHARANA_PRATAP_JAYANTI = "MAHARANA_PRATAP_JAYANTI"
-MAHARISHI_VALMIKI_JAYANTI = "MAHARISHI_VALMIKI_JAYANTI"
+MAHARSHI_VALMIKI_JAYANTI = "MAHARSHI_VALMIKI_JAYANTI"
 MAHA_SHIVARATRI = "MAHA_SHIVARATRI"
 MAHAVIR_JAYANTI = "MAHAVIR_JAYANTI"
 MAKAR_SANKRANTI = "MAKAR_SANKRANTI"
@@ -1142,7 +1142,7 @@ class _HinduLunisolar:
     }
 
     # https://web.archive.org/web/20260219010222/https://www.drikpanchang.com/hindu-saints/valmiki/maharishi-valmiki-jayanti.html
-    MAHARISHI_VALMIKI_JAYANTI_DATES = {
+    MAHARSHI_VALMIKI_JAYANTI_DATES = {
         2001: (NOV, 1),
         2002: (OCT, 21),
         2003: (OCT, 10),
@@ -2075,8 +2075,8 @@ class _HinduLunisolar:
     def maharana_pratap_jayanti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHARANA_PRATAP_JAYANTI, year)
 
-    def maharishi_valmiki_jayanti_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(MAHARISHI_VALMIKI_JAYANTI, year)
+    def maharshi_valmiki_jayanti_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(MAHARSHI_VALMIKI_JAYANTI, year)
 
     def mahavir_jayanti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHAVIR_JAYANTI, year)
