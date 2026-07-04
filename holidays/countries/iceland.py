@@ -60,11 +60,11 @@ class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("Uppstigningardagur"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Hvítasunnudagur"))
+        # Pentecost.
+        self._add_pentecost(tr("Hvítasunnudagur"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Annar í hvítasunnu"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Annar í hvítasunnu"))
 
         # National Day.
         self._add_holiday_jun_17(tr("Þjóðhátíðardagurinn"))

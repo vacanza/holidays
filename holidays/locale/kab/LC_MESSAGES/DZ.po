@@ -84,7 +84,7 @@ msgstr "Letni n tfaska"
 msgid "عيد الصعود"
 msgstr "Ass n walluy"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "إثنين العنصرة"
 msgstr "Letni n pentikust"
 

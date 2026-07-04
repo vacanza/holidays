@@ -48,11 +48,11 @@ msgstr "Tag der Arbeit"
 msgid "O. L. H. Hemelvaart"
 msgstr "Christi Himmelfahrt"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pinksteren"
 msgstr "Pfingsten"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Pinkstermaandag"
 msgstr "Pfingstmontag"
 

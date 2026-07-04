@@ -79,7 +79,7 @@ msgstr ""
 msgid "Hari kedua Paskah"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Hari kedua Pentakosta"
 msgstr ""
 
