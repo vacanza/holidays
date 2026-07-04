@@ -90,11 +90,16 @@ class LondonStockExchange(
         self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
     def _populate_half_day_holidays(self):
+        # On these days the exchange runs a shortened session and closes early
+        # (12:30). The label makes it clear to end users that trading is only
+        # partial rather than the day being a full market holiday.
+        early_close_label = "%s (early close)"
+
         # Christmas Eve.
-        self._add_christmas_eve("Christmas Eve")
+        self._add_christmas_eve(self._format_holiday_name(early_close_label, "Christmas Eve"))
 
         # New Year's Eve.
-        self._add_new_years_eve("New Year's Eve")
+        self._add_new_years_eve(self._format_holiday_name(early_close_label, "New Year's Eve"))
 
 
 class XLON(LondonStockExchange):
