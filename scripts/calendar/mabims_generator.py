@@ -90,13 +90,12 @@ class _MabimsLunar:
         ref_h_year = 1342
         ref_h_month = 1
         ref_mse = (ref_h_year - 1) * 12 + (ref_h_month - 1)
-        
+
         approx_days = int(ref_mse * MEAN_SYNODIC_MONTH)
         ref_approx = HIJRI_EPOCH + timedelta(days=approx_days)
-        
+
         ref_idx = min(
-            range(len(self.new_moons)), 
-            key=lambda i: abs((self.new_moons[i] - ref_approx).days)
+            range(len(self.new_moons)), key=lambda i: abs((self.new_moons[i] - ref_approx).days)
         )
         self.month_offset = ref_mse - ref_idx
 

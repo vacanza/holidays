@@ -60,7 +60,6 @@ TASUA = "TASUA"
 
 
 class _IslamicLunar:
-    
     ali_al_rida_death_dates: tuple[int, int] | tuple[tuple[int, int], ...]
     ali_birthday_dates: tuple[int, int] | tuple[tuple[int, int], ...]
     ali_death_dates: tuple[int, int] | tuple[tuple[int, int], ...]
@@ -87,7 +86,7 @@ class _IslamicLunar:
     sadiq_birthday_dates: tuple[int, int] | tuple[tuple[int, int], ...]
     sadiq_death_dates: tuple[int, int] | tuple[tuple[int, int], ...]
     tasua_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    
+
     ALI_AL_RIDA_DEATH_DATES = {
         1924: (SEP, 28),
         1925: (SEP, 18),
