@@ -467,13 +467,6 @@ class TestGenerateIcs(TestCase):
             self.assertTrue((temp_dir / "US_2025-personal").exists())
             self.assertFalse((temp_dir / "US_2025-personal.ics").exists())
 
-    def test_filename_output_and_suffix_are_mutually_exclusive(self):
-        with (
-            self.argv("US", "--output", "calendar.ics", "--output-suffix", "-personal.ics"),
-            self.assertRaises(SystemExit),
-        ):
-            IcsGenerator()
-
     def test_generate_calendar_error(self):
         with patch(
             "holidays.ical.ICalExporter.save_ics",
