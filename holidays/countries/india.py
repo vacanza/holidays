@@ -76,6 +76,8 @@ class India(
         * Telangana:
             * <https://web.archive.org/web/20260224050455/https://transport.telangana.gov.in/html/registration-districtcodes.html>
             * <https://web.archive.org/web/20250219131214/https://www.thehindu.com/news/national/telangana/cm-firm-on-having-states-identity-as-tg-not-ts/article68187923.ece>
+        * Uttarakhand:
+            * <https://web.archive.org/web/20260704120047/https://spiderimg.amarujala.com/assets/applications/2025/12/24/holidays-list-2026_694beebe1007a.pdf>
     """
 
     country = "IN"
@@ -783,7 +785,20 @@ class India(
 
     # Uttarakhand.
     def _populate_subdiv_uk_public_holidays(self):
-        pass
+        # Holika Dahan.
+        self._add_holika_dahan(tr("Holika Dahan"))
+        # Raksha Bandhan.
+        self._add_raksha_bandhan(tr("Raksha Bandhan"))
+        # Maharshi Valmiki's Birthday.
+        self._add_maharshi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
+        # Guru Tegh Bahadur's Martyrdom Day.
+        self._add_holiday_nov_24(tr("Guru Tegh Bahadur's Shaheedi Diwas"))
+
+    def _populate_subdiv_uk_optional_holidays(self):
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
+        # Veer Kesarichand Martyrdom Day.
+        self._add_holiday_may_3(tr("Veer Kesari Chand Shaheedi Diwas"))
 
     # Uttar Pradesh.
     def _populate_subdiv_up_public_holidays(self):
@@ -915,6 +930,11 @@ class IndiaStaticHolidays:
     }
 
     special_pb_public_holidays = {
+        2002: (DEC, 8, name_guru_tegh_bahadur_martyrdom_day),
+        2003: (NOV, 28, name_guru_tegh_bahadur_martyrdom_day),
+    }
+
+    special_uk_public_holidays = {
         2002: (DEC, 8, name_guru_tegh_bahadur_martyrdom_day),
         2003: (NOV, 28, name_guru_tegh_bahadur_martyrdom_day),
     }
