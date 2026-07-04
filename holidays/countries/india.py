@@ -56,6 +56,8 @@ class India(
             * <https://web.archive.org/web/20251214133200/https://andamannicobar.gov.in/admin-pannel/othersdoc/1-29-Holiday%20List%202026%20Gazette.pdf>
         * Gujarat:
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
+        * Haryana:
+            * <https://web.archive.org/web/20260704094548/https://haryanacalendar.co.in/wp-content/uploads/2025/12/Haryana-Govt-Official-Notification-2026-PDF.pdf>
         * Himachal Pradesh:
             * <http://web.archive.org/web/20260627103337/https://www.comply360.in/labor-law-library/wp-content/uploads/2025/12/Notification-regarding-list-of-Holidays-for-the-Year-2026-in-Himachal-Pradesh-1.pdf>
         * Jammu and Kashmir:
@@ -531,8 +533,36 @@ class India(
 
     # Haryana.
     def _populate_subdiv_hr_public_holidays(self):
-        # Haryana Foundation Day.
-        self._add_holiday_nov_1(tr("Haryana Foundation Day"))
+        # Sir Chottu Ram Jayanti.
+        self._add_basant_panchami(tr("Sir Chottu Ram Jayanti"))
+        # Shaheedi Diwas/Martyrdom day of Bhagat Singh/Rajguru & Sukhdev
+        self._add_holiday_mar_23(
+            tr("Shaheedi Diwas/Martyrdom day of Bhagat Singh/Rajguru & Sukhdev")
+        )
+        # Vaisakhi.
+        self._add_vaisakhi(tr("Vaisakhi"))
+        # Maharana Pratap Jayanti.
+        self._add_maharana_pratap_jayanti(tr("Maharana Pratap Jayanti"))
+        # Sant Kabir Jayanti.
+        self._add_kabir_jayanti(tr("Sant Kabir Jayanti"))
+        # Shaheed Udham Singh Martyrdom day.
+        self._add_holiday_jul_31(tr("Shaheed Udham Singh Martyrdom day"))
+        # Raksha Bandhan.
+        self._add_raksha_bandhan(tr("Raksha Bandhan"))
+        # Shaheed Divas/Haryana War Heroes's Martyrdom day.
+        self._add_holiday_sep_23(tr("Shaheed Divas/Haryana War Heroes's Martyrdom day"))
+        # Maharshi Valmiki Jayanti.
+        self._add_maharishi_valmiki_jayanti(tr("Maharshi Valmiki Jayanti"))
+        # Parshuram Jayanti/Akshay Tritiya.
+        self._add_parshuram_jayanti(tr("Parshuram Jayanti/Akshay Tritiya"))
+        # Haryana Day.
+        self._add_holiday_nov_1(tr("Haryana Day"))
+
+    def _populate_subdiv_hr_optional_holidays(self):
+        # Guru Arjan Dev's Martyrdom Day.
+        self._add_guru_arjun_dev_martyrdom_day(tr("Guru Arjan Dev's Martyrdom Day"))
+        # Shaheed Udham Singh's Jayanti.
+        self._add_holiday_jul_31(tr("Shaheed Udham Singh's Jayanti"))
 
     # Himachal Pradesh.
     def _populate_subdiv_hp_public_holidays(self):
