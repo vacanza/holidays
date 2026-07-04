@@ -535,7 +535,7 @@ class India(
     def _populate_subdiv_hr_public_holidays(self):
         # Sir Chottu Ram Jayanti.
         self._add_basant_panchami(tr("Sir Chottu Ram Jayanti"))
-        # Shaheedi Diwas/Martyrdom day of Bhagat Singh/Rajguru & Sukhdev
+        # Shaheedi Diwas/Martyrdom day of Bhagat Singh/Rajguru & Sukhdev.
         self._add_holiday_mar_23(
             tr("Shaheedi Diwas/Martyrdom day of Bhagat Singh/Rajguru & Sukhdev")
         )
@@ -562,7 +562,7 @@ class India(
         # Guru Arjan Dev's Martyrdom Day.
         self._add_guru_arjun_dev_martyrdom_day(tr("Guru Arjan Dev's Martyrdom Day"))
         # Shaheed Udham Singh's Jayanti.
-        self._add_holiday_jul_31(tr("Shaheed Udham Singh's Jayanti"))
+        self._add_holiday_dec_26(tr("Shaheed Udham Singh's Jayanti"))
 
     # Himachal Pradesh.
     def _populate_subdiv_hp_public_holidays(self):
