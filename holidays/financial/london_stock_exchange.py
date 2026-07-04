@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import APR, MAY, JUN, SEP
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -28,6 +29,9 @@ class LondonStockExchange(
     holidays observed in England and Wales, together with a small number of
     one-off bank holidays (royal events).
 
+    On Christmas Eve and New Year's Eve the exchange runs a shortened trading
+    session (an early close), available under the ``HALF_DAY`` category.
+
     References:
         * <https://en.wikipedia.org/wiki/London_Stock_Exchange>
         * <https://en.wikipedia.org/wiki/Bank_holiday>
@@ -37,6 +41,7 @@ class LondonStockExchange(
     market = "XLON"
     observed_label = "%s (observed)"
     start_year = 2000
+    supported_categories = (HALF_DAY, PUBLIC)
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -83,6 +88,13 @@ class LondonStockExchange(
 
         # Boxing Day.
         self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
+
+    def _populate_half_day_holidays(self):
+        # Christmas Eve.
+        self._add_christmas_eve("Christmas Eve")
+
+        # New Year's Eve.
+        self._add_new_years_eve("New Year's Eve")
 
 
 class XLON(LondonStockExchange):

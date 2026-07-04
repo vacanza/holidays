@@ -143,3 +143,10 @@ class TestLondonStockExchange(CommonFinancialTests, TestCase):
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Boxing Day"),
         )
+
+    def test_2024_half_day(self):
+        self.assertHalfDayHolidaysInYear(
+            2024,
+            ("2024-12-24", "Christmas Eve"),
+            ("2024-12-31", "New Year's Eve"),
+        )
