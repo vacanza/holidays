@@ -85,16 +85,25 @@ class _MabimsLunar:
             t1 = self.ts.utc(year + 1, 1, 1)
             times, events = almanac.find_discrete(t0, t1, almanac.moon_phases(self.eph))
             self.new_moons.extend([date(*t.utc[:3]) for t, e in zip(times, events) if e == 0])
+        # Calculate index offset to map months_since_epoch directly to self.new_moons
+        # We use Hijri 1342-01 as our reference point since that's where generation starts.
+        ref_h_year = 1342
+        ref_h_month = 1
+        ref_mse = (ref_h_year - 1) * 12 + (ref_h_month - 1)
+        
+        approx_days = int(ref_mse * MEAN_SYNODIC_MONTH)
+        ref_approx = HIJRI_EPOCH + timedelta(days=approx_days)
+        
+        ref_idx = min(
+            range(len(self.new_moons)), 
+            key=lambda i: abs((self.new_moons[i] - ref_approx).days)
+        )
+        self.month_offset = ref_mse - ref_idx
 
-    def get_approximate_date(self, h_year: int, h_month: int) -> date:
+    def get_new_moon_date(self, h_year: int, h_month: int) -> date:
+        """Get the exact precalculated new moon (conjunction) for a given Hijri month."""
         months_since_epoch = (h_year - 1) * 12 + (h_month - 1)
-        approx_days = int(months_since_epoch * MEAN_SYNODIC_MONTH)
-        return HIJRI_EPOCH + timedelta(days=approx_days)
-
-    def get_new_moon_date(self, approximate_date: date) -> date:
-        """Find the closest precalculated new moon (conjunction) near the given date."""
-        # Find the new moon with the minimum absolute difference in days
-        return min(self.new_moons, key=lambda nm: abs((nm - approximate_date).days))
+        return self.new_moons[months_since_epoch - self.month_offset]
 
     def check_mabims_visibility(self, check_date: date) -> bool:
         """Check if crescent moon meets MABIMS criteria at Singapore sunset."""
@@ -147,9 +156,8 @@ class _MabimsLunar:
 
     @cache
     def get_hijri_month_start(self, h_year: int, h_month: int) -> date:
-        """Get the Gregorian date of the start of a Hijri month using MABIMS criteria."""
-        approx = self.get_approximate_date(h_year, h_month)
-        new_moon = self.get_new_moon_date(approx)
+        """Calculate the Gregorian start date of a Hijri month using MABIMS criteria."""
+        new_moon = self.get_new_moon_date(h_year, h_month)
 
         # Check visibility on day after new moon, then day after that.
         for delta in range(1, 4):
