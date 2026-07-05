@@ -54,6 +54,8 @@ class India(
         * <https://web.archive.org/web/20260620202127/https://www.allahabadhighcourt.in/Calendar>
         * Andaman and Nicobar Islands:
             * <https://web.archive.org/web/20251214133200/https://andamannicobar.gov.in/admin-pannel/othersdoc/1-29-Holiday%20List%202026%20Gazette.pdf>
+        * Chandigarh:
+            * <http://web.archive.org/web/20260705144831/https://chandigarh.gov.in/files/updation2025/home25-17488-3012.pdf>
         * Gujarat:
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
         * Haryana:
@@ -505,7 +507,16 @@ class India(
 
     # Chandigarh.
     def _populate_subdiv_ch_public_holidays(self):
-        pass
+        # Guru Gobind Singh's Birthday.
+        self._add_guru_gobind_singh_jayanti(tr("Guru Gobind Singh's Jayanti"))
+        # Maharshi Valmiki's Birthday.
+        self._add_maharshi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
+
+    def _populate_subdiv_ch_optional_holidays(self):
+        # Guru Arjun Dev's Martyrdom Day.
+        self._add_guru_arjun_dev_martyrdom_day(tr("Guru Arjun Dev's Shaheedi Diwas"))
+        # Sant Kabir's Birthday.
+        self._add_kabir_jayanti(tr("Sant Kabir's Jayanti"))
 
     # Chhattisgarh.
     def _populate_subdiv_cg_public_holidays(self):

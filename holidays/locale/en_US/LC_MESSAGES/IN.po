@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-07-05 19:58+0530\n"
+"PO-Revision-Date: 2026-07-05 22:07+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -293,6 +293,14 @@ msgstr "Chhath Puja"
 msgid "Bihar Day"
 msgstr "Bihar Day"
 
+#. Guru Arjun Dev's Martyrdom Day.
+msgid "Guru Arjun Dev's Shaheedi Diwas"
+msgstr "Guru Arjun Dev's Martyrdom Day"
+
+#. Sant Kabir's Birthday.
+msgid "Sant Kabir's Jayanti"
+msgstr "Sant Kabir's Birthday"
+
 #. Chhattisgarh Foundation Day.
 msgid "Chhattisgarh Foundation Day"
 msgstr "Chhattisgarh Foundation Day"
@@ -328,10 +336,6 @@ msgstr ""
 msgid "Maharana Pratap's Jayanti"
 msgstr "Maharana Pratap's Birthday"
 
-#. Sant Kabir's Birthday.
-msgid "Sant Kabir's Jayanti"
-msgstr "Sant Kabir's Birthday"
-
 #. Shaheed Udham Singh's Martyrdom Day.
 msgid "Shaheed Udham Singh's Shaheedi Diwas"
 msgstr "Shaheed Udham Singh's Martyrdom Day"
@@ -351,10 +355,6 @@ msgstr "Akshay Tritiya"
 #. Haryana Day.
 msgid "Haryana Day"
 msgstr "Haryana Day"
-
-#. Guru Arjun Dev's Martyrdom Day.
-msgid "Guru Arjun Dev's Shaheedi Diwas"
-msgstr "Guru Arjun Dev's Martyrdom Day"
 
 #. Shaheed Udham Singh's Birthday.
 msgid "Shaheed Udham Singh's Jayanti"

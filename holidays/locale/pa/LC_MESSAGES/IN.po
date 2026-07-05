@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-28 17:22+0530\n"
-"PO-Revision-Date: 2026-07-05 19:58+0530\n"
+"PO-Revision-Date: 2026-07-05 22:07+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pa\n"
@@ -292,6 +292,14 @@ msgstr "ਛੱਠ ਪੂਜਾ"
 msgid "Bihar Day"
 msgstr "ਬਿਹਾਰ ਦਿਵਸ"
 
+#. Guru Arjun Dev's Martyrdom Day.
+msgid "Guru Arjun Dev's Shaheedi Diwas"
+msgstr ""
+
+#. Sant Kabir's Birthday.
+msgid "Sant Kabir's Jayanti"
+msgstr ""
+
 #. Chhattisgarh Foundation Day.
 msgid "Chhattisgarh Foundation Day"
 msgstr "ਛੱਤੀਸਗੜ੍ਹ ਸਥਾਪਨਾ ਦਿਵਸ"
@@ -327,10 +335,6 @@ msgstr ""
 msgid "Maharana Pratap's Jayanti"
 msgstr "ਮਹਾਰਾਣਾ ਪ੍ਰਤਾਪ ਜਯੰਤੀ"
 
-#. Sant Kabir's Birthday.
-msgid "Sant Kabir's Jayanti"
-msgstr ""
-
 #. Shaheed Udham Singh's Martyrdom Day.
 msgid "Shaheed Udham Singh's Shaheedi Diwas"
 msgstr ""
@@ -350,10 +354,6 @@ msgstr ""
 #. Haryana Day.
 msgid "Haryana Day"
 msgstr "ਹਰਿਆਣਾ ਦਿਵਸ"
-
-#. Guru Arjun Dev's Martyrdom Day.
-msgid "Guru Arjun Dev's Shaheedi Diwas"
-msgstr ""
 
 #. Shaheed Udham Singh's Birthday.
 msgid "Shaheed Udham Singh's Jayanti"
