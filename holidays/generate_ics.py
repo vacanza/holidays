@@ -182,7 +182,8 @@ class IcsGenerator:
             return None
 
         template = self.args.output_template
-        if not re.fullmatch(r"(?:[^{}]+|\{\{|\}\}|\{[a-z_]+\})*", template):
+        tokens = re.findall(r"[^{}]+|\{\{|\}\}|\{[a-z_]+\}", template)
+        if "".join(tokens) != template:
             raise SystemExit("Invalid output template")
 
         fields = re.findall(r"\{([a-z_]+)\}", template)
