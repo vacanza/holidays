@@ -1997,8 +1997,8 @@ code when available. The following financial markets are available:
 <td>London Stock Exchange</td>
 <td>XLON</td>
 <td>London Stock Exchange (LSE) market holidays</td>
-<td></td>
-<td></td>
+<td><strong>en_GB</strong>, en_US, th</td>
+<td>HALF_DAY</td>
 </tr>
 <tr>
 <td>NASDAQ</td>

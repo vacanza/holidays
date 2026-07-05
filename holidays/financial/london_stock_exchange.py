@@ -10,27 +10,23 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import APR, MAY, JUN, SEP
+from gettext import gettext as tr
+
 from holidays.constants import HALF_DAY, PUBLIC
-from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
-from holidays.observed_holiday_base import (
-    ObservedHolidayBase,
-    SAT_SUN_TO_NEXT_MON,
-    SAT_SUN_TO_NEXT_MON_TUE,
-)
+from holidays.countries.united_kingdom import UnitedKingdom
+from holidays.mixins.child_entity import ChildEntity
 
 
-class LondonStockExchange(
-    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
-):
+class LondonStockExchange(ChildEntity, UnitedKingdom):
     """London Stock Exchange holidays.
 
-    The London Stock Exchange (LSE) is closed on weekends and on the bank
-    holidays observed in England and Wales, together with a small number of
-    one-off bank holidays (royal events).
+    The London Stock Exchange (LSE) is closed on the bank holidays observed in
+    England and Wales, so its public holidays are an alias of the England
+    (``ENG``) subdivision of the United Kingdom, including the one-off royal
+    bank holidays.
 
     On Christmas Eve and New Year's Eve the exchange runs a shortened trading
-    session (an early close), available under the ``HALF_DAY`` category.
+    session (a half-day closing), available under the ``HALF_DAY`` category.
 
     References:
         * <https://en.wikipedia.org/wiki/London_Stock_Exchange>
@@ -38,68 +34,28 @@ class LondonStockExchange(
         * [LSE business days](https://www.londonstockexchange.com/equities-trading/business-days)
     """
 
+    country = None  # type: ignore[assignment]
     market = "XLON"
-    observed_label = "%s (observed)"
-    start_year = 2000
+    parent_entity = UnitedKingdom
+    parent_entity_subdivision_code = "ENG"
     supported_categories = (HALF_DAY, PUBLIC)
-
-    def __init__(self, *args, **kwargs):
-        ChristianHolidays.__init__(self)
-        InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, LondonStockExchangeStaticHolidays)
-        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
-        super().__init__(*args, **kwargs)
-
-    def _populate_public_holidays(self):
-        # New Year's Day.
-        self._add_observed(self._add_new_years_day("New Year's Day"))
-
-        # Good Friday.
-        self._add_good_friday("Good Friday")
-
-        # Easter Monday.
-        self._add_easter_monday("Easter Monday")
-
-        # May Day.
-        if self._year == 2020:
-            # Moved to mark the 75th anniversary of VE Day.
-            self._add_holiday_may_8("May Day")
-        else:
-            self._add_holiday_1st_mon_of_may("May Day")
-
-        # Spring Bank Holiday.
-        # Moved on the years of a Jubilee bank holiday.
-        spring_bank_dates = {
-            2002: (JUN, 4),
-            2012: (JUN, 4),
-            2022: (JUN, 2),
-        }
-        name = "Spring Bank Holiday"
-        if dt := spring_bank_dates.get(self._year):
-            self._add_holiday(name, dt)
-        else:
-            self._add_holiday_last_mon_of_may(name)
-
-        # Late Summer Bank Holiday.
-        self._add_holiday_last_mon_of_aug("Late Summer Bank Holiday")
-
-        # Christmas Day.
-        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
-
-        # Boxing Day.
-        self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
+    start_year = 2000
 
     def _populate_half_day_holidays(self):
-        # On these days the exchange runs a shortened session and closes early
-        # (12:30). The label makes it clear to end users that trading is only
-        # partial rather than the day being a full market holiday.
-        early_close_label = "%s (early close)"
+        # On these days the exchange runs a shortened session (a 12:30 close),
+        # exposed here under the HALF_DAY category with a label so end users can
+        # tell it apart from a full market holiday.
+
+        # %s (half-day closing).
+        half_day_closing_label = tr("%s (half-day closing)")
 
         # Christmas Eve.
-        self._add_christmas_eve(self._format_holiday_name(early_close_label, "Christmas Eve"))
+        christmas_eve = self._format_holiday_name(half_day_closing_label, tr("Christmas Eve"))
+        self._add_christmas_eve(christmas_eve)
 
         # New Year's Eve.
-        self._add_new_years_eve(self._format_holiday_name(early_close_label, "New Year's Eve"))
+        new_years_eve = self._format_holiday_name(half_day_closing_label, tr("New Year's Eve"))
+        self._add_new_years_eve(new_years_eve)
 
 
 class XLON(LondonStockExchange):
@@ -108,22 +64,3 @@ class XLON(LondonStockExchange):
 
 class LSE(LondonStockExchange):
     pass
-
-
-class LondonStockExchangeStaticHolidays:
-    """Special one-off bank holidays observed by the London Stock Exchange.
-
-    References:
-        * <https://en.wikipedia.org/wiki/Bank_holiday#List_of_additional_one-off_bank_holidays>
-    """
-
-    special_public_holidays = {
-        2002: (JUN, 3, "Golden Jubilee of Elizabeth II"),
-        2011: (APR, 29, "Wedding of William and Catherine"),
-        2012: (JUN, 5, "Diamond Jubilee of Elizabeth II"),
-        2022: (
-            (JUN, 3, "Platinum Jubilee of Elizabeth II"),
-            (SEP, 19, "State Funeral of Queen Elizabeth II"),
-        ),
-        2023: (MAY, 8, "Coronation of Charles III"),
-    }

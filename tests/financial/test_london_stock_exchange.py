@@ -21,6 +21,12 @@ class TestLondonStockExchange(CommonFinancialTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(LondonStockExchange)
 
+    def test_code(self):
+        # LondonStockExchange derives from UnitedKingdom, so (like JPX/SSE) it
+        # keeps a ``country`` attribute set to None rather than removing it.
+        self.assertTrue(hasattr(self.holidays, "market"))
+        self.assertIsNone(getattr(self.holidays, "country", None))
+
     def test_market_aliases(self):
         self.assertAliases(LondonStockExchange, XLON, LSE)
 
@@ -147,6 +153,6 @@ class TestLondonStockExchange(CommonFinancialTests, TestCase):
     def test_2024_half_day(self):
         self.assertHalfDayHolidaysInYear(
             2024,
-            ("2024-12-24", "Christmas Eve (early close)"),
-            ("2024-12-31", "New Year's Eve (early close)"),
+            ("2024-12-24", "Christmas Eve (half-day closing)"),
+            ("2024-12-31", "New Year's Eve (half-day closing)"),
         )
