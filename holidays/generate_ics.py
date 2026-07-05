@@ -17,6 +17,7 @@ import sys
 from argparse import ArgumentParser, ArgumentTypeError, Namespace
 from collections.abc import Callable
 from datetime import datetime, timezone
+from string import Formatter
 
 import holidays
 from holidays.holiday_base import HolidayBase
@@ -176,6 +177,28 @@ class IcsGenerator:
                 "Use --list-languages to see supported values"
             )
 
+    def validate_output_template(self, placeholders: set[str]) -> None:
+        if not self.args.output_template:
+            return None
+
+        has_placeholder = False
+        try:
+            for _, field_name, _, _ in Formatter().parse(self.args.output_template):
+                if field_name is None:
+                    continue
+                has_placeholder = True
+                if field_name not in placeholders:
+                    supported = ", ".join(f"{{{p}}}" for p in sorted(placeholders))
+                    raise SystemExit(
+                        f"Unknown placeholder '{{{field_name}}}' in output template. "
+                        f"Supported placeholders: {supported}"
+                    )
+        except ValueError as e:
+            raise SystemExit(f"Invalid output template: {e}")
+
+        if not has_placeholder:
+            raise SystemExit("Output template must contain at least one placeholder")
+
     def handle_list_options(self) -> bool:
         if self.args.list_subdivisions:
             print(f"Supported subdivisions for {self.args.code}:")
@@ -228,7 +251,6 @@ class IcsGenerator:
         if self.args.output:
             output_path = self.args.output
         else:
-            template = self.args.output_template or self.get_default_output_template()
             values = {
                 "code": self.args.code,
                 "subdiv": (self.args.subdiv or "ALL").upper().replace(" ", "_"),
@@ -240,14 +262,9 @@ class IcsGenerator:
                 "end_year": end_year,
                 "today": datetime.now(timezone.utc).strftime("%Y%m%d"),
             }
-            try:
-                output_path = template.format(**values)
-            except KeyError as e:
-                supported = ", ".join(f"{{{k}}}" for k in values)
-                raise SystemExit(
-                    f"Unknown placeholder '{{{e.args[0]}}}' in output template. "
-                    f"Supported placeholders: {supported}"
-                )
+            self.validate_output_template(set(values))
+            template = self.args.output_template or self.get_default_output_template()
+            output_path = template.format(**values)
 
         try:
             holiday_obj = self.entity_loader(

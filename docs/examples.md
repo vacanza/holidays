@@ -719,7 +719,7 @@ holidays-ics US --years +10 --categories unofficial --output-template "HOLIDAYS_
 Calendar for Switzerland, specific to the Canton of Zurich, localized in German, and saved to a custom file:
 
 ```shell
-holidays-ics CH --subdiv ZH --language de ---output-template "{code}_{subdiv}_{language}_{today}.ics"
+holidays-ics CH --subdiv ZH --language de --output-template "{code}_{subdiv}_{language}_{today}.ics"
 ```
 
 The tool can also display the supported subdivisions, categories, and languages for a selected
