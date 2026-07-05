@@ -17,6 +17,7 @@ from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.helpers import _normalize_tuple
 
+ANANT_CHATURDASHI = "ANANT_CHATURDASHI"
 BATHUKAMMA = "BATHUKAMMA"
 BASANT_PANCHAMI = "BASANT_PANCHAMI"
 BONALU = "BONALU"
@@ -59,9 +60,49 @@ TAMU_LOSAR = "TAMU_LOSAR"
 THAIPUSAM = "THAIPUSAM"
 VAISAKHI = "VAISAKHI"
 VISHU = "VISHU"
+VISHWAKARMA_PUJA = "VISHWAKARMA_PUJA"
 
 
 class _HinduLunisolar:
+    # http://web.archive.org/web/20260115044100/https://www.drikpanchang.com/festivals/anant-chaturdashi/anant-chaturdashi-date-time.html
+    ANANT_CHATURDASHI_DATES = {
+        2001: (SEP, 1),
+        2002: (SEP, 20),
+        2003: (SEP, 9),
+        2004: (SEP, 27),
+        2005: (SEP, 17),
+        2006: (SEP, 7),
+        2007: (SEP, 26),
+        2008: (SEP, 14),
+        2009: (SEP, 3),
+        2010: (SEP, 22),
+        2011: (SEP, 11),
+        2012: (SEP, 29),
+        2013: (SEP, 18),
+        2014: (SEP, 8),
+        2015: (SEP, 27),
+        2016: (SEP, 15),
+        2017: (SEP, 5),
+        2018: (SEP, 24),
+        2019: (SEP, 13),
+        2020: (SEP, 1),
+        2021: (SEP, 20),
+        2022: (SEP, 9),
+        2023: (SEP, 28),
+        2024: (SEP, 17),
+        2025: (SEP, 6),
+        2026: (SEP, 25),
+        2027: (SEP, 14),
+        2028: (SEP, 2),
+        2029: (SEP, 21),
+        2030: (SEP, 11),
+        2031: (SEP, 29),
+        2032: (SEP, 18),
+        2033: (SEP, 8),
+        2034: (SEP, 27),
+        2035: (SEP, 16),
+    }
+
     # http://web.archive.org/web/20260108141809/https://www.timeanddate.com/holidays/india/vasant-panchami
     BASANT_PANCHAMI_DATES = {
         2001: (JAN, 29),
@@ -1987,6 +2028,45 @@ class _HinduLunisolar:
         2035: (APR, 14),
     }
 
+    # http://web.archive.org/web/20250119213900/https://www.drikpanchang.com/sankranti/vishwakarma-puja-date-time.html
+    VISHWAKARMA_PUJA_DATES = {
+        2001: (SEP, 17),
+        2002: (SEP, 17),
+        2003: (SEP, 17),
+        2004: (SEP, 16),
+        2005: (SEP, 17),
+        2006: (SEP, 17),
+        2007: (SEP, 17),
+        2008: (SEP, 16),
+        2009: (SEP, 17),
+        2010: (SEP, 17),
+        2011: (SEP, 17),
+        2012: (SEP, 16),
+        2013: (SEP, 17),
+        2014: (SEP, 17),
+        2015: (SEP, 17),
+        2016: (SEP, 16),
+        2017: (SEP, 17),
+        2018: (SEP, 17),
+        2019: (SEP, 17),
+        2020: (SEP, 16),
+        2021: (SEP, 17),
+        2022: (SEP, 17),
+        2023: (SEP, 17),
+        2024: (SEP, 16),
+        2025: (SEP, 17),
+        2026: (SEP, 17),
+        2027: (SEP, 17),
+        2028: (SEP, 17),
+        2029: (SEP, 17),
+        2030: (SEP, 17),
+        2031: (SEP, 17),
+        2032: (SEP, 17),
+        2033: (SEP, 17),
+        2034: (SEP, 17),
+        2035: (SEP, 17),
+    }
+
     def _get_holiday(self, holiday: str, year: int) -> tuple[date | None, bool]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
@@ -1999,6 +2079,9 @@ class _HinduLunisolar:
         for year in (year - 1, year):
             for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
                 yield date(year, *dt), year not in exact_dates
+
+    def anant_chaturdashi_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(ANANT_CHATURDASHI, year)
 
     def basant_panchami_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BASANT_PANCHAMI, year)
@@ -2125,6 +2208,9 @@ class _HinduLunisolar:
 
     def vishu_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VISHU, year)
+
+    def vishwakarma_puja_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(VISHWAKARMA_PUJA, year)
 
 
 class _CustomHinduHolidays(_CustomCalendar, _HinduLunisolar):

@@ -517,6 +517,13 @@ class India(
         self._add_guru_arjun_dev_martyrdom_day(tr("Guru Arjun Dev's Shaheedi Diwas"))
         # Sant Kabir's Birthday.
         self._add_kabir_jayanti(tr("Sant Kabir's Jayanti"))
+        # Maharaj Agrasen's Birthday.
+        self._add_sharad_navratri(tr("Maharaj Agrasen's Jayanti"))
+        # Jor Mela Fatehgarh Sahib.
+        name = tr("Jor Mela Fatehgarh Sahib")
+        self._add_holiday_dec_26(name)
+        self._add_holiday_dec_27(name)
+        self._add_holiday_dec_28(name)
 
     # Chhattisgarh.
     def _populate_subdiv_cg_public_holidays(self):
@@ -564,8 +571,12 @@ class India(
         self._add_raksha_bandhan(tr("Raksha Bandhan"))
         # Haryana War Heroes's Martyrdom Day.
         self._add_holiday_sep_23(tr("Haryana War Heroes's Shaheedi Diwas"))
+        # Maharaj Agrasen's Birthday.
+        self._add_sharad_navratri(tr("Maharaj Agrasen's Jayanti"))
         # Maharshi Valmiki's Birthday.
         self._add_maharshi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
+        # Vishwakarma Day.
+        self._add_govardhan_puja(tr("Vishwakarma Day"))
         # Lord Shri Parshuram's Birthday.
         self._add_parshuram_jayanti(tr("Bhagvan Shri Parshuram's Jayanti"))
         # Akshay Tritiya.
@@ -736,8 +747,12 @@ class India(
         self._add_kabir_jayanti(tr("Sant Kabir's Jayanti"))
         # Shaheed Udham Singh's Martyrdom Day.
         self._add_holiday_jul_31(tr("Shaheed Udham Singh's Shaheedi Diwas"))
+        # Maharaj Agrasen's Birthday.
+        self._add_sharad_navratri(tr("Maharaj Agrasen's Jayanti"))
         # Maharshi Valmiki's Birthday.
         self._add_maharshi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
+        # Vishwakarma Day.
+        self._add_govardhan_puja(tr("Vishwakarma Day"))
         # Kartar Singh Sarabha's Martyrdom Day.
         self._add_holiday_nov_16(tr("Kartar Singh Sarabha's Shaheedi Diwas"))
         if self._year >= 2004:
@@ -755,6 +770,8 @@ class India(
         self._add_holiday_jun_27(tr("Maharaja Ranjit Singh's Death Anniversary"))
         # Saragarhi Day.
         self._add_holiday_sep_12(tr("Saragarhi Day"))
+        # Anant Chaturdashi.
+        self._add_anant_chaturdashi(tr("Anant Chaturdashi"))
         # Bhagat Singh's Birthday.
         self._add_holiday_sep_28(tr("Bhagat Singh's Jayanti"))
         # Baba Banda Singh Bahadur's Birthday.
@@ -802,6 +819,8 @@ class India(
         self._add_holika_dahan(tr("Holika Dahan"))
         # Raksha Bandhan.
         self._add_raksha_bandhan(tr("Raksha Bandhan"))
+        # Vishwakarma Puja.
+        self._add_vishwakarma_puja(tr("Vishwakarma Puja"))
         # Maharshi Valmiki's Birthday.
         self._add_maharshi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
         if self._year >= 2004:
@@ -813,6 +832,10 @@ class India(
         self._add_easter_monday(tr("Easter Monday"))
         # Veer Kesari Chand's Martyrdom Day.
         self._add_holiday_may_3(tr("Veer Kesari Chand's Shaheedi Diwas"))
+        # Ananat Chaturdashi.
+        self._add_anant_chaturdashi(tr("Anant Chaturdashi"))
+        # Maharaj Agrasen's Birthday.
+        self._add_sharad_navratri(tr("Maharaj Agrasen's Jayanti"))
 
     # Uttar Pradesh.
     def _populate_subdiv_up_public_holidays(self):

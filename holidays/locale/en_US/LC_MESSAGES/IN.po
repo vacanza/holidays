@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-07-05 22:27+0530\n"
+"PO-Revision-Date: 2026-07-06 01:06+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -301,6 +301,14 @@ msgstr "Guru Arjun Dev's Martyrdom Day"
 msgid "Sant Kabir's Jayanti"
 msgstr "Sant Kabir's Birthday"
 
+#. Maharaj Agrasen's Birthday.
+msgid "Maharaj Agrasen's Jayanti"
+msgstr ""
+
+#. Jor Mela Fatehgarh Sahib.
+msgid "Jor Mela Fatehgarh Sahib"
+msgstr ""
+
 #. Chhattisgarh Foundation Day.
 msgid "Chhattisgarh Foundation Day"
 msgstr "Chhattisgarh Foundation Day"
@@ -343,6 +351,10 @@ msgstr "Shaheed Udham Singh's Martyrdom Day"
 #. Haryana War Heroes's Martyrdom Day.
 msgid "Haryana War Heroes's Shaheedi Diwas"
 msgstr "Haryana War Heroes's Martyrdom Day"
+
+#. Vishwakarma Day.
+msgid "Vishwakarma Day"
+msgstr ""
 
 #. Lord Shri Parshuram's Birthday.
 msgid "Bhagvan Shri Parshuram's Jayanti"
@@ -476,6 +488,11 @@ msgstr "Maharaja Ranjit Singh's Death Anniversary"
 msgid "Saragarhi Day"
 msgstr "Saragarhi Day"
 
+#. Anant Chaturdashi.
+#. Ananat Chaturdashi.
+msgid "Anant Chaturdashi"
+msgstr ""
+
 #. Bhagat Singh's Birthday.
 msgid "Bhagat Singh's Jayanti"
 msgstr "Bhagat Singh's Birthday"
@@ -519,6 +536,10 @@ msgstr "Bathukamma Festival"
 #. Bonalu.
 msgid "Bonalu"
 msgstr "Bonalu"
+
+#. Vishwakarma Puja.
+msgid "Vishwakarma Puja"
+msgstr ""
 
 #. Easter Monday.
 msgid "Easter Monday"

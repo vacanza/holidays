@@ -68,6 +68,21 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             days_delta=days_delta,
         )
 
+    def _add_anant_chaturdashi(self, name) -> date | None:
+        """
+        Add Anant Chaturdashi.
+
+        Anant Chaturdashi is a Hindu festival dedicated to Lord Vishnu
+        in his Ananta form. It is observed on the fourteenth day
+        (Chaturdashi) of the bright fortnight of the Hindu month of
+        Bhadrapada (August/September).
+
+        https://en.wikipedia.org/wiki/Anant_Chaturdashi
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.anant_chaturdashi_date(self._year)
+        )
+
     def _add_basant_panchami(self, name) -> date | None:
         """
         Add Basant Panchami.
@@ -755,6 +770,22 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Vishu
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.vishu_date(self._year))
+
+    def _add_vishwakarma_puja(self, name) -> date | None:
+        """
+        Add Vishwakarma Puja.
+
+        Vishwakarma Puja is a Hindu festival dedicated to Lord
+        Vishwakarma, the divine architect and craftsman. It is
+        traditionally observed on Kanya Sankranti, marking the Sun's
+        transition into the zodiac sign of Virgo (Kanya), usually in
+        September.
+
+        https://en.wikipedia.org/wiki/Vishwakarma_Puja
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.vishwakarma_puja_date(self._year)
+        )
 
     def _add_parsi_new_year(self, name: str) -> None:
         """
