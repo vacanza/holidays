@@ -61,7 +61,17 @@ class IcsGenerator:
         parser.add_argument(
             "-l", "--language", help="Language code for holiday names (e.g., en_US, es)"
         )
-        parser.add_argument("-o", "--output", help="Output file path (e.g., holidays.ics)")
+
+        output_group = parser.add_mutually_exclusive_group()
+        output_group.add_argument("-o", "--output", help="Output file path")
+        output_group.add_argument(
+            "--output-template",
+            help=(
+                "Output filename template. Available placeholders: {code}, {subdiv}, "
+                "{language}, {categories}, {start_year}, {end_year}, {today}. "
+                "Use '{{' and '}}' for literal '{' and '}'"
+            ),
+        )
 
         list_group = parser.add_mutually_exclusive_group()
         list_group.add_argument(
@@ -184,6 +194,26 @@ class IcsGenerator:
 
         return False
 
+    def get_default_output_template(self) -> str:
+        start_year, end_year = self.args.years
+        parts = ["{code}"]
+
+        if self.args.subdiv:
+            parts.append("{subdiv}")
+
+        if self.args.language:
+            parts.append("{language}")
+
+        if self.args.categories:
+            parts.append("{categories}")
+
+        parts.append("{start_year}")
+
+        if start_year != end_year:
+            parts.append("{end_year}")
+
+        return "_".join(parts) + ".ics"
+
     def run(self) -> None:
         self.validate_code()
         if self.handle_list_options():
@@ -194,9 +224,30 @@ class IcsGenerator:
         self.validate_categories()
 
         start_year, end_year = self.args.years
-        years_part = f"{start_year}_{end_year}" if start_year != end_year else f"{start_year}"
-        subdiv_part = f"_{self.args.subdiv.upper().replace(' ', '_')}" if self.args.subdiv else ""
-        output_path = self.args.output or f"{self.args.code}{subdiv_part}_{years_part}.ics"
+
+        if self.args.output:
+            output_path = self.args.output
+        else:
+            template = self.args.output_template or self.get_default_output_template()
+            values = {
+                "code": self.args.code,
+                "subdiv": (self.args.subdiv or "ALL").upper().replace(" ", "_"),
+                "language": self.args.language.upper() if self.args.language else "DEFAULT",
+                "categories": (
+                    "_".join(self.args.categories).upper() if self.args.categories else "PUBLIC"
+                ),
+                "start_year": start_year,
+                "end_year": end_year,
+                "today": datetime.now(timezone.utc).strftime("%Y%m%d"),
+            }
+            try:
+                output_path = template.format(**values)
+            except KeyError as e:
+                supported = ", ".join(f"{{{k}}}" for k in values)
+                raise SystemExit(
+                    f"Unknown placeholder '{{{e.args[0]}}}' in output template. "
+                    f"Supported placeholders: {supported}"
+                )
 
         try:
             holiday_obj = self.entity_loader(

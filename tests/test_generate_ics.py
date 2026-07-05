@@ -403,6 +403,44 @@ class TestGenerateIcs(TestCase):
 
             self.assertTrue((temp_dir / "US_2024.ics").exists())
 
+    def test_filename_subdivision(self):
+        with self.temp_cwd() as temp_dir:
+            with self.argv("US", "--subdiv", "CA", "--years", "2025"):
+                IcsGenerator().run()
+
+            self.assertTrue((temp_dir / "US_CA_2025.ics").exists())
+
+    def test_filename_language(self):
+        with self.temp_cwd() as temp_dir:
+            with self.argv("AT", "--language", "uk", "--years", "2025"):
+                IcsGenerator().run()
+
+            self.assertTrue((temp_dir / "AT_UK_2025.ics").exists())
+
+    def test_filename_categories(self):
+        with self.temp_cwd() as temp_dir:
+            with self.argv("AT", "--categories", "bank", "--years", "2025"):
+                IcsGenerator().run()
+
+            self.assertTrue((temp_dir / "AT_BANK_2025.ics").exists())
+
+    def test_filename_language_categories_subdivision(self):
+        with self.temp_cwd() as temp_dir:
+            with self.argv(
+                "AT",
+                "--subdiv",
+                "1",
+                "--language",
+                "uk",
+                "--categories",
+                "bank,public",
+                "--years",
+                "2025",
+            ):
+                IcsGenerator().run()
+
+            self.assertTrue((temp_dir / "AT_1_UK_BANK_PUBLIC_2025.ics").exists())
+
     def test_filename_year_range(self):
         with self.temp_cwd() as temp_dir:
             with self.argv("US", "--years", "2024-2026"):
@@ -418,12 +456,55 @@ class TestGenerateIcs(TestCase):
 
             self.assertTrue((temp_dir / "US_2025_2031.ics").exists())
 
-    def test_filename_subdivision(self):
+    def test_output_template(self):
         with self.temp_cwd() as temp_dir:
-            with self.argv("US", "--subdiv", "CA", "--years", "2025"):
+            with self.argv(
+                "US", "--years", "2025", "--output-template", "{start_year}_{code}.ics"
+            ):
                 IcsGenerator().run()
 
-            self.assertTrue((temp_dir / "US_CA_2025.ics").exists())
+            self.assertTrue((temp_dir / "2025_US.ics").exists())
+
+    def test_output_template_default_values(self):
+        with self.temp_cwd() as temp_dir:
+            with self.argv(
+                "US",
+                "--years",
+                "2025",
+                "--output-template",
+                "{code}_{subdiv}_{language}_{categories}.ics",
+            ):
+                IcsGenerator().run()
+
+            self.assertTrue((temp_dir / "US_ALL_DEFAULT_PUBLIC.ics").exists())
+
+    @patch("holidays.generate_ics.datetime", MockDatetime)
+    def test_output_template_today(self):
+        with self.temp_cwd() as temp_dir:
+            with self.argv("US", "--years", "2025", "--output-template", "{code}_{today}.ics"):
+                IcsGenerator().run()
+
+            self.assertTrue((temp_dir / "US_20250701.ics").exists())
+
+    def test_output_template_with_braces(self):
+        with self.temp_cwd() as temp_dir:
+            with self.argv("US", "--years", "2025", "--output-template", "{{{code}}}.ics"):
+                IcsGenerator().run()
+
+            self.assertTrue((temp_dir / "{US}.ics").exists())
+
+    def test_output_template_unknown_placeholder(self):
+        with self.argv("US", "--output-template", "{foo}.ics"):
+            with self.assertRaises(SystemExit) as context:
+                IcsGenerator().run()
+
+        self.assertEqual(
+            str(context.exception),
+            "Unknown placeholder '{foo}' in output template. "
+            "Supported placeholders: "
+            "{code}, {subdiv}, {language}, {categories}, "
+            "{start_year}, {end_year}, {today}",
+        )
 
     def test_generate_calendar_error(self):
         with patch(
