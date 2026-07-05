@@ -551,7 +551,7 @@ class India(
         self._add_holiday_jul_31(tr("Shaheed Udham Singh's Shaheedi Diwas"))
         # Raksha Bandhan.
         self._add_raksha_bandhan(tr("Raksha Bandhan"))
-        # Haryana War Heroes's Martyrdom day.
+        # Haryana War Heroes's Martyrdom Day.
         self._add_holiday_sep_23(tr("Haryana War Heroes's Shaheedi Diwas"))
         # Maharshi Valmiki's Birthday.
         self._add_maharshi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
@@ -645,8 +645,10 @@ class India(
         self._add_isra_and_miraj_day(tr("Shab-I-Miraj"))
         # 1st Navratra.
         self._add_chaitra_navratri(tr("1st Navratra"))
-        # Baisakhi / Vaisakhi.
-        self._add_vaisakhi(tr("Baisakhi / Vaisakhi"))
+        # Vaisakhi.
+        self._add_vaisakhi(tr("Vaisakhi"))
+        # Baisakhi.
+        self._add_vaisakhi(tr("Baisakhi"))
         # Eid-e-Ghadeer.
         self._add_eid_al_ghadir_day(tr("Eid-e-Ghadeer"))
         # Guru Arjun Dev's Martyrdom Day.
@@ -738,14 +740,14 @@ class India(
         self._add_basant_panchami(tr("Satguru Ram Singh's Jayanti"))
         # International Women's Day.
         self._add_womens_day(tr("International Women's Day"))
-        # Death Anniversary of Maharaja Ranjit Singh Ji.
-        self._add_holiday_jun_27(tr("Death Anniversary of Maharaja Ranjit Singh Ji"))
+        # Maharaja Ranjit Singh's Death Anniversary.
+        self._add_holiday_jun_27(tr("Maharaja Ranjit Singh's Death Anniversary"))
         # Saragarhi Day.
         self._add_holiday_sep_12(tr("Saragarhi Day"))
         # Bhagat Singh's Birthday.
         self._add_holiday_sep_28(tr("Bhagat Singh's Jayanti"))
-        # Birthday of Baba Banda Singh Ji Bahadur.
-        self._add_holiday_oct_16(tr("Birthday of Baba Banda Singh Ji Bahadur"))
+        # Baba Banda Singh Bahadur's Birthday.
+        self._add_holiday_oct_16(tr("Baba Banda Singh Bahadur's Jayanti"))
         # New Punjab Day.
         self._add_holiday_nov_1(tr("New Punjab Day"))
 
@@ -797,8 +799,8 @@ class India(
     def _populate_subdiv_uk_optional_holidays(self):
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
-        # Veer Kesarichand Martyrdom Day.
-        self._add_holiday_may_3(tr("Veer Kesari Chand Shaheedi Diwas"))
+        # Veer Kesari Chand's Martyrdom Day.
+        self._add_holiday_may_3(tr("Veer Kesari Chand's Shaheedi Diwas"))
 
     # Uttar Pradesh.
     def _populate_subdiv_up_public_holidays(self):
