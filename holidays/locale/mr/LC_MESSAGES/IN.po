@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-29 00:37+0530\n"
-"PO-Revision-Date: 2026-07-05 22:07+0530\n"
+"PO-Revision-Date: 2026-07-05 22:27+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: mr\n"
@@ -134,7 +134,7 @@ msgstr "पोंगल"
 
 #. Basant Panchami / Shri Panchami.
 msgid "Basant Panchami / Shri Panchami"
-msgstr ""
+msgstr "बसंत पंचमी / श्री पंचमी"
 
 #. Guru Ravi Das's Birthday.
 msgid "Guru Ravi Das's Jayanti"
@@ -230,7 +230,7 @@ msgstr "दसरा (महानवमी)"
 
 #. Maharshi Valmiki's Birthday.
 msgid "Maharshi Valmiki's Jayanti"
-msgstr ""
+msgstr "महर्षी वाल्मिकी जयंती"
 
 #. Karaka Chaturthi (Karwa Chouth).
 msgid "Karaka Chaturthi (Karwa Chouth)"
@@ -258,7 +258,7 @@ msgstr "प्रतिहार षष्ठी किंवा सूर्य
 
 #. Guru Tegh Bahadur's Martyrdom Day.
 msgid "Guru Tegh Bahadur's Shaheedi Diwas"
-msgstr ""
+msgstr "गुरु तेग बहादूर यांचा हुतात्मा दिन"
 
 #. Ali's Birthday.
 msgid "Hazarat Ali's Birthday"
@@ -333,7 +333,7 @@ msgstr ""
 
 #. Maharana Pratap's Birthday.
 msgid "Maharana Pratap's Jayanti"
-msgstr ""
+msgstr "महाराणा प्रताप जयंती"
 
 #. Shaheed Udham Singh's Martyrdom Day.
 msgid "Shaheed Udham Singh's Shaheedi Diwas"
@@ -353,7 +353,7 @@ msgstr ""
 
 #. Haryana Day.
 msgid "Haryana Day"
-msgstr ""
+msgstr "हरियाणा दिन"
 
 #. Shaheed Udham Singh's Birthday.
 msgid "Shaheed Udham Singh's Jayanti"
@@ -361,10 +361,6 @@ msgstr ""
 
 #. Statehood Day.
 msgid "Statehood Day"
-msgstr ""
-
-#. Guru Ravidas's Birthday.
-msgid "Guru Ravidas's Jayanti"
 msgstr ""
 
 #. Himachal Day.
@@ -549,7 +545,7 @@ msgstr "बसंत पंचमी"
 
 #. Shri Panchami.
 msgid "Shri Panchami"
-msgstr ""
+msgstr "श्री पंचमी"
 
 #. Ganesh Chaturthi.
 msgid "Ganesh Chaturthi"
@@ -562,78 +558,3 @@ msgstr "गणेश चतुर्थी"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "गोकुळाष्टमी (स्मार्त)"
-
-#~ msgid "Baisakhi / Vaisakhi"
-#~ msgstr ""
-
-#~ msgid "Death Anniversary of Maharaja Ranjit Singh Ji"
-#~ msgstr ""
-
-#~ msgid "Birthday of Baba Banda Singh Ji Bahadur"
-#~ msgstr ""
-
-#~ msgid "Veer Kesari Chand Shaheedi Diwas"
-#~ msgstr ""
-
-#~ msgid "Basant Panchami / Sri Panchami"
-#~ msgstr "बसंत पंचमी / श्री पंचमी"
-
-#~ msgid "Maharishi Valmiki's Jayanti"
-#~ msgstr "महर्षी वाल्मिकी जयंती"
-
-#~ msgid "Guru Tegh Bahadur's Martyrdom Day"
-#~ msgstr "गुरु तेग बहादूर यांचा हुतात्मा दिन"
-
-#~ msgid "Haryana Foundation Day"
-#~ msgstr "हरियाणा स्थापना दिन"
-
-#~ msgid "Bhagvan Shree Parshuram Jayanti"
-#~ msgstr ""
-
-#~ msgid "Maharana Pratap Jayanti"
-#~ msgstr "महाराणा प्रताप जयंती"
-
-#~ msgid "Sant Guru Kabir Jayanti (Prakat Diwas)"
-#~ msgstr ""
-
-#~ msgid "Maharishi Valmiki's Birthday"
-#~ msgstr ""
-
-#~ msgid "Guru Gobind Singh Jayanti"
-#~ msgstr "गुरु गोविंद सिंग जयंती"
-
-#~ msgid "Shaheedi Diwas of Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru Ji"
-#~ msgstr ""
-
-#~ msgid "Birthday of Sri Guru Nabha Dass ji"
-#~ msgstr ""
-
-#~ msgid "Birthday of Lord Parshuram Ji"
-#~ msgstr ""
-
-#~ msgid "Kabir Jayanti"
-#~ msgstr ""
-
-#~ msgid "Martyrdom Day of Shaheed Udham Singh"
-#~ msgstr ""
-
-#~ msgid "Birthday of Maharishi Valmiki Ji"
-#~ msgstr ""
-
-#~ msgid "Martyrdom Day of S. Kartar Singh Sarabha ji"
-#~ msgstr ""
-
-#~ msgid "Martyrdom Day of Sri Guru Teg Bahadur ji"
-#~ msgstr ""
-
-#~ msgid "Birthday of Satguru Ram Singh Ji"
-#~ msgstr ""
-
-#~ msgid "International Women Day"
-#~ msgstr ""
-
-#~ msgid "Birthday of S. Bhagat Singh Ji"
-#~ msgstr ""
-
-#~ msgid "Sri Panchami"
-#~ msgstr "श्री पंचमी"

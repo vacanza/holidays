@@ -583,8 +583,8 @@ class India(
     def _populate_subdiv_hp_public_holidays(self):
         # Statehood Day.
         self._add_holiday_jan_25(tr("Statehood Day"))
-        # Guru Ravidas's Birthday.
-        self._add_guru_ravidas_jayanti(tr("Guru Ravidas's Jayanti"))
+        # Guru Ravi Das's Birthday.
+        self._add_guru_ravidas_jayanti(tr("Guru Ravi Das's Jayanti"))
         # Himachal Day.
         self._add_holiday_apr_15(tr("Himachal Day"))
         # Lord Shri Parshuram's Birthday.
@@ -804,8 +804,9 @@ class India(
         self._add_raksha_bandhan(tr("Raksha Bandhan"))
         # Maharshi Valmiki's Birthday.
         self._add_maharshi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
-        # Guru Tegh Bahadur's Martyrdom Day.
-        self._add_holiday_nov_24(tr("Guru Tegh Bahadur's Shaheedi Diwas"))
+        if self._year >= 2004:
+            # Guru Tegh Bahadur's Martyrdom Day.
+            self._add_holiday_nov_24(tr("Guru Tegh Bahadur's Shaheedi Diwas"))
 
     def _populate_subdiv_uk_optional_holidays(self):
         # Easter Monday.

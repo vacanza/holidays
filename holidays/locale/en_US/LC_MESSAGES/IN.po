@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-07-05 22:07+0530\n"
+"PO-Revision-Date: 2026-07-05 22:27+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -363,10 +363,6 @@ msgstr "Shaheed Udham Singh's Birthday"
 #. Statehood Day.
 msgid "Statehood Day"
 msgstr "Statehood Day"
-
-#. Guru Ravidas's Birthday.
-msgid "Guru Ravidas's Jayanti"
-msgstr "Guru Ravidas's Birthday"
 
 #. Himachal Day.
 msgid "Himachal Day"
