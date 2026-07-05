@@ -2029,7 +2029,6 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
-<tr>
 <td>Toronto Stock Exchange</td>
 <td>XTSE</td>
 <td>Toronto Stock Exchange (TSX) market holidays</td>
