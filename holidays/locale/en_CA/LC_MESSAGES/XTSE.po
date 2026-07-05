@@ -1,0 +1,81 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Toronto Stock Exchange (TSX) holidays en_CA localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.100\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-07-01 16:06+0000\n"
+"PO-Revision-Date: 2026-07-05 12:50+0000\n"
+"Last-Translator: Paresh Joshi <194076591+pareshjoshij@users.noreply.github.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_CA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_CA\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. Family Day.
+msgid "Family Day"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Victoria Day.
+msgid "Victoria Day"
+msgstr ""
+
+#. Canada Day.
+msgid "Canada Day"
+msgstr ""
+
+#. Civic Holiday.
+msgid "Civic Holiday"
+msgstr ""
+
+#. Labour Day.
+msgid "Labour Day"
+msgstr ""
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr ""
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. markets close at 1:00 p.m. ET.
+#, c-format
+msgid "%s (markets close at 1:00 p.m. ET)"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr ""
+
+#. Market Closed (Computer Failure).
+msgid "Market Closed (Computer Failure)"
+msgstr ""
