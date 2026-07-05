@@ -13,7 +13,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import re
 import sys
 from argparse import ArgumentParser, ArgumentTypeError, Namespace
 from collections.abc import Callable
@@ -178,15 +177,28 @@ class IcsGenerator:
             )
 
     def validate_output_template(self, placeholders: set[str]) -> None:
-        if not self.args.output_template:
+        template = self.args.output_template
+        if not template:
             return None
 
-        template = self.args.output_template
-        tokens = re.findall(r"[^{}]+|\{\{|\}\}|\{[a-z_]+\}", template)
-        if "".join(tokens) != template:
-            raise SystemExit("Invalid output template")
+        fields = []
+        i = 0
+        n = len(template)
+        while i < n:
+            if i + 1 < n and (template[i : i + 2] == "{{" or template[i : i + 2] == "}}"):
+                i += 2
+            elif template[i] == "{":
+                end = template.find("}", i + 1)
+                if end == -1:
+                    raise SystemExit("Invalid output template")
 
-        fields = re.findall(r"\{([a-z_]+)\}", template)
+                fields.append(template[i + 1 : end])
+                i = end + 1
+            elif template[i] == "}":
+                raise SystemExit("Invalid output template")
+            else:
+                i += 1
+
         if not fields:
             raise SystemExit("Output template must contain at least one placeholder")
 

@@ -494,16 +494,18 @@ class TestGenerateIcs(TestCase):
             self.assertTrue((temp_dir / "{US}.ics").exists())
 
     def test_output_template_unknown_placeholder(self):
-        with self.argv("US", "--output-template", "{foo}.ics"):
-            with self.assertRaises(SystemExit) as context:
-                IcsGenerator().run()
+        for template in ("{foo}", "{code!r}", "{code:>10}"):
+            with self.subTest(template=template):
+                with self.argv("US", "--output-template", template):
+                    with self.assertRaises(SystemExit) as context:
+                        IcsGenerator().run()
 
-        self.assertEqual(
-            str(context.exception),
-            "Unknown placeholder '{foo}' in output template. "
-            "Supported placeholders: {categories}, {code}, {end_year}, {language}, "
-            "{start_year}, {subdiv}, {today}",
-        )
+                self.assertEqual(
+                    str(context.exception),
+                    f"Unknown placeholder '{template}' in output template. "
+                    "Supported placeholders: {categories}, {code}, {end_year}, {language}, "
+                    "{start_year}, {subdiv}, {today}",
+                )
 
     def test_output_template_without_placeholders(self):
         with self.argv("US", "--output-template", "calendar.ics"):
@@ -515,7 +517,7 @@ class TestGenerateIcs(TestCase):
         )
 
     def test_output_template_invalid(self):
-        for template in ("{", "}", "{code!r}", "{code:>10}", "{code:{bad}}", "{code:{"):
+        for template in ("{", "}", "{code:{bad}}", "{code:{", "code}"):
             with self.subTest(template=template):
                 with self.argv("US", "--output-template", template):
                     with self.assertRaises(SystemExit) as context:
