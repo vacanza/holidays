@@ -13,11 +13,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import re
 import sys
 from argparse import ArgumentParser, ArgumentTypeError, Namespace
 from collections.abc import Callable
 from datetime import datetime, timezone
-from string import Formatter
 
 import holidays
 from holidays.holiday_base import HolidayBase
@@ -181,23 +181,21 @@ class IcsGenerator:
         if not self.args.output_template:
             return None
 
-        has_placeholder = False
-        try:
-            for _, field_name, _, _ in Formatter().parse(self.args.output_template):
-                if field_name is None:
-                    continue
-                has_placeholder = True
-                if field_name not in placeholders:
-                    supported = ", ".join(f"{{{p}}}" for p in sorted(placeholders))
-                    raise SystemExit(
-                        f"Unknown placeholder '{{{field_name}}}' in output template. "
-                        f"Supported placeholders: {supported}"
-                    )
-        except ValueError as e:
-            raise SystemExit(f"Invalid output template: {e}")
+        template = self.args.output_template
+        if not re.fullmatch(r"(?:[^{}]+|\{\{|\}\}|\{[a-z_]+\})*", template):
+            raise SystemExit("Invalid output template")
 
-        if not has_placeholder:
+        fields = re.findall(r"\{([a-z_]+)\}", template)
+        if not fields:
             raise SystemExit("Output template must contain at least one placeholder")
+
+        for field_name in fields:
+            if field_name not in placeholders:
+                supported = ", ".join(f"{{{p}}}" for p in sorted(placeholders))
+                raise SystemExit(
+                    f"Unknown placeholder '{{{field_name}}}' in output template. "
+                    f"Supported placeholders: {supported}"
+                )
 
     def handle_list_options(self) -> bool:
         if self.args.list_subdivisions:

@@ -515,11 +515,13 @@ class TestGenerateIcs(TestCase):
         )
 
     def test_output_template_invalid(self):
-        with self.argv("US", "--output-template", "{"):
-            with self.assertRaises(SystemExit) as context:
-                IcsGenerator().run()
+        for template in ("{", "}", "{code!r}", "{code:>10}", "{code:{bad}}", "{code:{"):
+            with self.subTest(template=template):
+                with self.argv("US", "--output-template", template):
+                    with self.assertRaises(SystemExit) as context:
+                        IcsGenerator().run()
 
-        self.assertIn("Invalid output template:", str(context.exception))
+                self.assertEqual(str(context.exception), "Invalid output template")
 
     def test_generate_calendar_error(self):
         with patch("holidays.ical.ICalExporter.save_ics", side_effect=ValueError("unknown error")):
