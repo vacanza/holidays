@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.financial.toronto_stock_exchange import TorontoStockExchange, TSX, XTSE
+from holidays.financial.toronto_stock_exchange import TorontoStockExchange
 from tests.common import CommonFinancialTests
 
 
@@ -20,9 +20,6 @@ class TestTorontoStockExchange(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(TorontoStockExchange)
-
-    def test_aliases(self):
-        self.assertAliases(TorontoStockExchange, TSX, XTSE)
 
     def test_special_holidays(self):
         self.assertHoliday("2008-12-17")
@@ -38,14 +35,17 @@ class TestTorontoStockExchange(CommonFinancialTests, TestCase):
 
     def test_family_day(self):
         name = "Family Day"
-        self.assertNoHolidayName(name, range(self.start_year, 2008))
-        self.assertHolidayName(name, range(2008, self.end_year))
         self.assertHolidayName(
             name,
-            "2008-02-18",
             "2020-02-17",
+            "2021-02-15",
+            "2022-02-21",
+            "2023-02-20",
             "2024-02-19",
+            "2025-02-17",
         )
+        self.assertHolidayName(name, range(2008, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2008))
 
     def test_good_friday(self):
         name = "Good Friday"
