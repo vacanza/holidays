@@ -467,6 +467,14 @@ class TestGenerateIcs(TestCase):
             self.assertTrue((temp_dir / "US_2025-personal").exists())
             self.assertFalse((temp_dir / "US_2025-personal.ics").exists())
 
+    def test_filename_output_suffix_allows_empty_suffix(self):
+        with self.temp_cwd() as temp_dir:
+            with self.argv("US", "--years", "2025", "--output-suffix", ""):
+                IcsGenerator().run()
+
+            self.assertTrue((temp_dir / "US_2025").exists())
+            self.assertFalse((temp_dir / "US_2025.ics").exists())
+
     def test_generate_calendar_error(self):
         with patch(
             "holidays.ical.ICalExporter.save_ics",
