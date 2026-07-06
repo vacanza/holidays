@@ -88,7 +88,7 @@ class TorontoStockExchange(
         # Civic Holiday.
         self._add_holiday_1st_mon_of_aug(tr("Civic Holiday"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_holiday_1st_mon_of_sep(tr("Labour Day"))
 
         # Thanksgiving Day.
