@@ -29,8 +29,22 @@ class TestTorontoStockExchange(CommonFinancialTests, TestCase):
         self.assertNonObservedHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         self.assertHolidayName(
             name,
+            "2005-01-03",
+            "2006-01-02",
+            "2011-01-03",
+            "2012-01-02",
+            "2017-01-02",
             "2022-01-03",
             "2023-01-02",
+        )
+        self.assertNoHoliday(
+            "2005-01-01",
+            "2006-01-01",
+            "2011-01-01",
+            "2012-01-01",
+            "2017-01-01",
+            "2022-01-01",
+            "2023-01-01",
         )
 
     def test_family_day(self):
@@ -85,6 +99,14 @@ class TestTorontoStockExchange(CommonFinancialTests, TestCase):
             "2018-07-02",
             "2023-07-03",
         )
+        self.assertNoHoliday(
+            "2006-07-01",
+            "2007-07-01",
+            "2012-07-01",
+            "2017-07-01",
+            "2018-07-01",
+            "2023-07-01",
+        )
 
     def test_civic_holiday(self):
         name = "Civic Holiday"
@@ -99,7 +121,7 @@ class TestTorontoStockExchange(CommonFinancialTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         name = "Labour Day"
         self.assertHolidayName(
             name,
@@ -135,9 +157,17 @@ class TestTorontoStockExchange(CommonFinancialTests, TestCase):
             "2010-12-27",
             "2011-12-26",
             "2016-12-26",
-            "2017-12-25",
             "2021-12-27",
             "2022-12-26",
+        )
+        self.assertNoHoliday(
+            "2004-12-25",
+            "2005-12-25",
+            "2010-12-25",
+            "2011-12-25",
+            "2016-12-25",
+            "2021-12-25",
+            "2022-12-25",
         )
 
     def test_boxing_day(self):
@@ -146,13 +176,23 @@ class TestTorontoStockExchange(CommonFinancialTests, TestCase):
         self.assertHolidayName(
             name,
             "2004-12-28",
-            "2005-12-26",
+            "2005-12-26",  # special case.
+            "2009-12-28",
             "2010-12-28",
             "2011-12-27",
+            "2015-12-28",
             "2016-12-27",
-            "2017-12-26",
+            "2020-12-28",
             "2021-12-28",
             "2022-12-27",
+        )
+        self.assertNoHoliday(
+            "2004-12-26",
+            "2009-12-26",
+            "2010-12-26",
+            "2015-12-26",
+            "2020-12-26",
+            "2021-12-26",
         )
 
     def test_christmas_eve_half_day(self):

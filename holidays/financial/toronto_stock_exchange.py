@@ -29,7 +29,7 @@ class TorontoStockExchange(
 ):
     """Toronto Stock Exchange (TSX) holidays.
 
-    References :
+    References:
         * [2002](https://web.archive.org/web/20021222071421/http://www.tsx.com/en/contactUs/index.html#holidays)
         * [2003](https://web.archive.org/web/20030810042101/http://www.tsx.com/en/contactUs/index.html)
         * [2004](https://web.archive.org/web/20031203111548/http://www.tsx.com/en/contactUs/index.html)
@@ -43,16 +43,17 @@ class TorontoStockExchange(
         * [2012](https://web.archive.org/web/20111004212723/http://tmx.com/en/about_tsx/market_hours.html)
         * [2013](https://web.archive.org/web/20130123074533/http://tmx.com/en/about_tsx/market_hours.html)
         * [2014](https://web.archive.org/web/20140209092227/http://tmx.com/en/about_tsx/market_hours.html)
-        * [2015](https://web.archive.org/web/20150319042945/http://tmx.com/en/about_tsx/market_hours.html)
-        * [2016](https://web.archive.org/web/20160715122600/http://www.tsx.com/trading/calendars-and-trading-hours/calendar-and-events)
+        * [2015](https://web.archive.org/web/20150920033428/http://tsx.com/trading/calendars-and-trading-hours/calendar-and-events)
+        * [2016](https://web.archive.org/web/20161211012946/http://tsx.com/trading/calendars-and-trading-hours/calendar-and-events)
         * [2017](https://web.archive.org/web/20170710152044/http://tsx.com/trading/calendars-and-trading-hours/calendar-and-events)
         * [2018](https://web.archive.org/web/20180911094940/https://www.tsx.com/trading/calendars-and-trading-hours/calendar)
         * [2019](https://web.archive.org/web/20191016223124/https://www.tsx.com/trading/calendars-and-trading-hours/calendar)
         * [2020](https://web.archive.org/web/20201025223915/https://www.tsx.com/trading/calendars-and-trading-hours/calendar)
         * [2021](https://web.archive.org/web/20211109023548/https://www.tsx.com/trading/calendars-and-trading-hours/calendar)
-        * [2023](https://web.archive.org/web/20221208202449/https://www.tsx.com/trading/calendars-and-trading-hours/calendar)
-        * [2024](https://web.archive.org/web/20231215123703/https://www.tsx.com/trading/calendars-and-trading-hours/calendar)
-        * [2025](https://web.archive.org/web/20250828200614/https://tsx.com/en/trading/calendars-and-trading-hours/calendar)
+        * [2022](https://web.archive.org/web/20221208202449/https://www.tsx.com/trading/calendars-and-trading-hours/calendar)
+        * [2023](https://web.archive.org/web/20231215123703/https://www.tsx.com/trading/calendars-and-trading-hours/calendar)
+        * [2024](https://web.archive.org/web/20240618062250/https://www.tsx.com/trading/calendars-and-trading-hours/calendar)
+        * [2025](https://web.archive.org/web/20251222112248/https://www.tsx.com/en/trading/calendars-and-trading-hours/calendar)
         * [2026](https://web.archive.org/web/20260509153658/https://www.tsx.com/en/trading/calendars-and-trading-hours/calendar)
     """
 
@@ -128,7 +129,7 @@ class TSX(TorontoStockExchange):
 
 
 class TorontoStockExchangeStaticHolidays:
-    """TorontoStockExchange (TSX) special holidays.
+    """Toronto Stock Exchange (TSX) special holidays.
 
     References:
         * [Computer Failure Closure](https://web.archive.org/web/20260703101419/https://archive.nytimes.com/dealbook.nytimes.com/2008/12/17/computer-failure-closes-toronto-exchange/)

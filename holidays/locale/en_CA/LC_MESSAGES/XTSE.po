@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Toronto Stock Exchange (TSX) holidays en_CA localization.
+# Toronto Stock Exchange (TSX) holidays.
 #
 msgid ""
 msgstr ""
