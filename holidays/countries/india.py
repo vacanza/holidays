@@ -556,9 +556,8 @@ class India(
         # Sir Chottu Ram's Birthday.
         self._add_basant_panchami(tr("Sir Chottu Ram's Jayanti"))
         # Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day.
-        self._add_holiday_mar_23(
-            tr("Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Shaheedi Diwas")
-        )
+        name = tr("Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Shaheedi Diwas")
+        self._add_holiday_mar_23(name)
         # Vaisakhi.
         self._add_vaisakhi(tr("Vaisakhi"))
         # Maharana Pratap's Birthday.
@@ -617,7 +616,7 @@ class India(
 
     # Jammu and Kashmir
     def _populate_subdiv_jk_public_holidays(self):
-        # Shab-I-Miraj.
+        # Isra' and Mi'raj.
         self._add_isra_and_miraj_day(tr("Shab-I-Miraj"))
         # 1st Navratra.
         self._add_chaitra_navratri(tr("1st Navratra"))
@@ -663,7 +662,7 @@ class India(
         self._add_nowruz_day(tr("Nauroz"))
 
     def _populate_subdiv_la_optional_holidays(self):
-        # Shab-I-Miraj.
+        # Isra' and Mi'raj.
         self._add_isra_and_miraj_day(tr("Shab-I-Miraj"))
         # 1st Navratra.
         self._add_chaitra_navratri(tr("1st Navratra"))
@@ -671,7 +670,7 @@ class India(
         self._add_vaisakhi(tr("Vaisakhi"))
         # Baisakhi.
         self._add_vaisakhi(tr("Baisakhi"))
-        # Eid-e-Ghadeer.
+        # Eid al-Ghadeer.
         self._add_eid_al_ghadir_day(tr("Eid-e-Ghadeer"))
         # Guru Arjun Dev's Martyrdom Day.
         self._add_guru_arjun_dev_martyrdom_day(tr("Guru Arjun Dev's Shaheedi Diwas"))
@@ -832,7 +831,7 @@ class India(
         self._add_easter_monday(tr("Easter Monday"))
         # Veer Kesari Chand's Martyrdom Day.
         self._add_holiday_may_3(tr("Veer Kesari Chand's Shaheedi Diwas"))
-        # Ananat Chaturdashi.
+        # Anant Chaturdashi.
         self._add_anant_chaturdashi(tr("Anant Chaturdashi"))
         # Maharaj Agrasen's Birthday.
         self._add_sharad_navratri(tr("Maharaj Agrasen's Jayanti"))
@@ -962,7 +961,7 @@ class IndiaStaticHolidays:
     }
 
     special_la_optional_holidays = {
-        # Eid-e-Ghadeer.
+        # Eid al-Ghadeer.
         2026: (JUN, 4, tr("Eid-e-Ghadeer")),
     }
 

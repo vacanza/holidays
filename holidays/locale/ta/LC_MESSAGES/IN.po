@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-07-06 01:06+0530\n"
+"PO-Revision-Date: 2026-07-06 11:50+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ta\n"
@@ -336,6 +336,7 @@ msgstr "பார்சி புத்தாண்டு (ஷாஹென்ஷ
 msgid "Sir Chottu Ram's Jayanti"
 msgstr ""
 
+#. Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day.
 msgid "Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Shaheedi Diwas"
 msgstr ""
 
@@ -383,7 +384,7 @@ msgstr "இமாச்சல் நாள்"
 msgid "Karwa Chouth"
 msgstr ""
 
-#. Shab-I-Miraj.
+#. Isra' and Mi'raj.
 msgid "Shab-I-Miraj"
 msgstr ""
 
@@ -423,7 +424,7 @@ msgstr "கர்நாடக ராஜ்யோற்சவம்"
 msgid "Kerala Foundation Day"
 msgstr "கேரள நாள்"
 
-#. Eid-e-Ghadeer.
+#. Eid al-Ghadeer.
 msgid "Eid-e-Ghadeer"
 msgstr ""
 
@@ -488,7 +489,6 @@ msgid "Saragarhi Day"
 msgstr ""
 
 #. Anant Chaturdashi.
-#. Ananat Chaturdashi.
 msgid "Anant Chaturdashi"
 msgstr ""
 
