@@ -43,7 +43,7 @@ msgstr ""
 msgid "Erster Mai"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Pfingstmontag"
 msgstr ""
 

@@ -626,47 +626,100 @@ For installation instructions, see `uv` [documentation](https://docs.astral.sh/u
 
 By default, the generated calendar contains holidays for the current year and is written
 to a file whose name is derived from the selected calendar and year range.
+The `--years` option accepts a single year (2025), a year range (2025-2027), or a
+relative range (+10), which selects the current year through the current year plus 10.
 
 ### Examples
 
-Generate a holiday calendar for Switzerland in German:
+Calendar for the current year:
+
+```shell
+holidays-ics US
+```
+
+Save calendar to a custom file:
+
+```shell
+holidays-ics US --output test.ics
+```
+
+Calendar for specific year:
+
+```shell
+holidays-ics US --years 2035
+```
+
+Calendar for the current and next 10 years:
+
+```shell
+holidays-ics US --years +10
+```
+
+Calendar for the current year and the previous 5 years:
+
+```shell
+holidays-ics US --years -5
+```
+
+Calendar containing unofficial holidays only:
+
+```shell
+holidays-ics US --categories unofficial
+```
+
+Calendar containing public and optional holidays:
+
+```shell
+holidays-ics CA --categories public,optional
+```
+
+Switzerland calendar in German:
 
 ```shell
 holidays-ics CH --language de
 ```
 
-Generate a holiday calendar for the Canton of Zurich for a specific year:
+Canton of Zurich calendar:
 
 ```shell
-holidays-ics CH --subdiv ZH --years 2025
+holidays-ics CH --subdiv ZH
 ```
 
-Generate a holiday calendar for multiple years and save it to a custom file:
+Financial market holiday calendar:
 
 ```shell
-holidays-ics US --years 2025-2027 --output us_holidays.ics
+holidays-ics XNYS
 ```
 
-Generate a calendar containing only bank holidays:
+Spanning the next 10 years, unofficial holidays, saved to a custom file:
 
 ```shell
-holidays-ics AT --years 2025 --categories bank
+holidays-ics US --years +10 --categories unofficial --output US_YYYY_YYYY_unofficial.ics
 ```
 
-Generate a calendar containing public and optional holidays:
+Calendar for Switzerland, specific to the Canton of Zurich, localized in German, and saved to a custom file.
 
 ```shell
-holidays-ics CA --years 2025 --categories public,optional
+holidays-ics CH --subdiv ZH --language de --output CH_ZH_de.ics
 ```
 
-Generate a localized subdivision-specific calendar and save it to a custom file:
+The tool can also display the supported subdivisions, categories, and languages for a selected
+country or market without generating an `.ics` file.
+
+List the supported subdivisions:
 
 ```shell
-holidays-ics CH --subdiv ZH --years 2025 --language de --output zurich_holidays.ics
+holidays-ics CH --list-subdivisions
 ```
 
-Generate a financial market holiday calendar:
+List the supported holiday categories:
 
 ```shell
-holidays-ics XNYS --years 2025 --output nyse_holidays.ics
+holidays-ics US --list-categories
+```
+
+List the supported languages:
+
+```shell
+holidays-ics CA --list-languages
 ```

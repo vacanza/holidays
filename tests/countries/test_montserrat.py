@@ -218,7 +218,7 @@ class TestMontserrat(CommonCountryTests, TestCase):
             ("2024-03-29", "Good Friday"),
             ("2024-04-01", "Easter Monday"),
             ("2024-05-06", "Labor Day"),
-            ("2024-05-20", "Whit Monday"),
+            ("2024-05-20", "Pentecost Monday"),
             ("2024-06-17", "King's Birthday"),
             ("2024-07-10", "Day of Prayer and Thanksgiving"),
             ("2024-08-05", "Emancipation Day"),

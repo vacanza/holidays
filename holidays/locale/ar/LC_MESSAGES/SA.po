@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-08-04 20:02+0300\n"
-"PO-Revision-Date: 2025-06-26 17:55+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-06-15 17:43+0000\n"
+"Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -63,6 +63,14 @@ msgstr ""
 msgid "اليوم الوطني"
 msgstr ""
 
-#. Celebrate the country's win against Argentina in the World Cup.
-msgid "يوم وطني"
+#. King Abdullah's Return from Medical Treatment Abroad.
+msgid "عطلة رسمية بمناسبة عودة الملك عبد الله"
+msgstr ""
+
+#. Day of Mourning for King Abdullah.
+msgid "يوم حداد على الملك عبد الله"
+msgstr ""
+
+#. Holiday for the National Team's Victory in the World Cup.
+msgid "عطلة فوز المنتخب في كأس العالم"
 msgstr ""

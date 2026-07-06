@@ -298,7 +298,7 @@ class TestAlgeria(CommonCountryTests, TestCase):
             ("2022-05-02", "Eid al-Fitr (estimated)"),
             ("2022-05-03", "Eid al-Fitr (estimated)"),
             ("2022-05-26", "Ascension Day"),
-            ("2022-06-06", "Whit Monday"),
+            ("2022-06-06", "Pentecost Monday"),
             ("2022-07-05", "Independence Day"),
             ("2022-07-09", "Eid al-Adha (estimated)"),
             ("2022-07-10", "Eid al-Adha (estimated)"),

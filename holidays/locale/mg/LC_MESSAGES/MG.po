@@ -56,11 +56,11 @@ msgstr ""
 msgid "Fiakaran'ny Jesosy kristy tany an-danitra"
 msgstr ""
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pentekosta"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Alatsinain'ny pentekosta"
 msgstr ""
 

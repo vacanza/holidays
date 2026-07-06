@@ -1,0 +1,114 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Chicago Mercantile Exchange (CME) holidays hi localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.100\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-06-06 17:56+0000\n"
+"PO-Revision-Date: 2026-06-15 17:00+0000\n"
+"Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_US\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "नव वर्ष दिवस"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "गुड फ्राइडे"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "स्वतंत्रता दिवस"
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr "थैंक्सगिविंग डे"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "क्रिसमस दिवस"
+
+#. %s (markets pause at 10:30am CT)
+#, c-format
+msgid "%s (markets pause at 10:30am CT)"
+msgstr "%s (बाज़ार सुबह 10:30 बजे CT पर रुकते हैं)"
+
+#. %s (markets pause at 12:00pm CT)
+#, c-format
+msgid "%s (markets pause at 12:00pm CT)"
+msgstr "%s (बाज़ार दोपहर 12:00 बजे CT पर रुकते हैं)"
+
+#. Dr. Martin Luther King, Jr. Day.
+msgid "Dr. Martin Luther King, Jr. Day"
+msgstr "डॉ. मार्टिन लूथर किंग, जूनियर डे"
+
+#. President's Day.
+msgid "President's Day"
+msgstr "प्रेसिडेंट्स डे"
+
+#. Memorial Day.
+msgid "Memorial Day"
+msgstr "मेमोरियल डे"
+
+#. Juneteenth Day.
+msgid "Juneteenth Day"
+msgstr "जूनटीन्थ डे"
+
+#. Day before Independence Day.
+msgid "Day before Independence Day"
+msgstr "स्वतंत्रता दिवस से पहले का दिन"
+
+#. Labor Day.
+msgid "Labor Day"
+msgstr "श्रम दिवस"
+
+#. Day after Thanksgiving Day.
+msgid "Day after Thanksgiving Day"
+msgstr "थैंक्सगिविंग डे के बाद का दिन"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "क्रिसमस की पूर्व संध्या"
+
+#. Closed following Attacks on the World Trade Center.
+msgid "Closed following Attacks on the World Trade Center"
+msgstr "वर्ल्ड ट्रेड सेंटर पर हमलों के बाद बंद"
+
+#. Hurricane Sandy.
+msgid "Hurricane Sandy"
+msgstr "हरिकेन सैंडी"
+
+#. National Day of Mourning for former President Ronald Reagan.
+msgid "National Day of Mourning for former President Ronald Reagan"
+msgstr "पूर्व राष्ट्रपति रोनाल्ड रीगन के लिए राष्ट्रीय शोक दिवस"
+
+#. National Day of Mourning for former President Gerald R. Ford.
+msgid "National Day of Mourning for former President Gerald R. Ford"
+msgstr "पूर्व राष्ट्रपति गेराल्ड आर. फोर्ड के लिए राष्ट्रीय शोक दिवस"
+
+#. National Day of Mourning for former President George H. W. Bush.
+msgid "National Day of Mourning for former President George H. W. Bush"
+msgstr "पूर्व राष्ट्रपति जॉर्ज एच. डब्ल्यू. बुश के लिए राष्ट्रीय शोक दिवस"
+
+#. National Day of Mourning for former President Jimmy Carter.
+msgid "National Day of Mourning for former President Jimmy Carter"
+msgstr "पूर्व राष्ट्रपति जिमी कार्टर के लिए राष्ट्रीय शोक दिवस"

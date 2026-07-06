@@ -84,8 +84,8 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 2009:
             # Pentecost.
             name = tr("Rusaliile")
-            self._add_whit_sunday(name)
-            self._add_whit_monday(name)
+            self._add_pentecost(name)
+            self._add_pentecost_monday(name)
 
             # Dormition of the Mother of God.
             self._add_assumption_of_mary_day(tr("Adormirea Maicii Domnului"))

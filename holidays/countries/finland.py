@@ -143,8 +143,8 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         else:
             self._add_ascension_thursday(name)
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Helluntaipäivä"))
+        # Pentecost.
+        self._add_pentecost(tr("Helluntaipäivä"))
 
         # Midsummer Eve.
         name = tr("Juhannusaatto")

@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.77\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-06-22 19:09+0530\n"
-"PO-Revision-Date: 2025-06-22 19:09+0530\n"
-"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -52,9 +52,9 @@ msgstr "Labor Day"
 msgid "Ascension"
 msgstr "Ascension Day"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Lundi de Pentecôte"
-msgstr "Whit Monday"
+msgstr "Pentecost Monday"
 
 #. General Prayer Day.
 msgid "Journée de prière générale"

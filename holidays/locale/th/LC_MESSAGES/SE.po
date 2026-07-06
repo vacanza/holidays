@@ -69,11 +69,11 @@ msgstr "วันสมโภชพระเยซูเจ้าเสด็จ
 msgid "Nationaldagen"
 msgstr "วันชาติสวีเดน"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pingstdagen"
 msgstr "วันสมโภชพระจิตเจ้า"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Annandag pingst"
 msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
 
@@ -133,7 +133,7 @@ msgstr "วันก่อนวันสมโภชพระเยซูเจ
 msgid "Dag före Midsommarafton"
 msgstr "วันก่อนวันก่อนวันกลางฤดูร้อน"
 
-#. Day before Whitsun Eve.
+#. Day before Pentecost Eve.
 msgid "Dag före Pingstafton"
 msgstr "วันก่อนวันก่อนวันสมโภชพระจิตเจ้า"
 
@@ -153,6 +153,6 @@ msgstr "วันเสาร์ศักดิ์สิทธิ์"
 msgid "Klämdag"
 msgstr "วันหยุดพิเศษ"
 
-#. Whitsun Eve.
+#. Pentecost Eve.
 msgid "Pingstafton"
 msgstr "วันก่อนวันสมโภชพระจิตเจ้า"

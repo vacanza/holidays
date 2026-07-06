@@ -26,13 +26,13 @@ repos:
           - --py310-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 5e2fb545eba1ea9dc051f6f962d52fe8f76a9794  # v0.15.13
+    rev: 22f0422809455ec89ffdcf5a00170ba816e42ddb  # v0.15.16
     hooks:
       - id: ruff-check
       - id: ruff-format
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: e72a3ca1632f0b11a07d171449fe447a7ff6795e  # v0.48.0
+    rev: a4d5d37e66ebcd6b3705204a1d6dbb56dea66338  # v0.49.0
     hooks:
       - id: markdownlint
         args:
@@ -64,7 +64,7 @@ repos:
           - types-python-dateutil==2.9.0.20260518
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: a007bb7dd9043d022292401abc3061cb1906b4bc  # v2.21.2
+    rev: ca620e0df5ae9a02b7b81a6e4c954894f043ce42  # v2.24.1
     hooks:
       - id: pyproject-fmt
 

@@ -64,7 +64,7 @@ msgstr "Koninginnedag"
 msgid "Dia di Asenshon"
 msgstr "Hemelvaartsdag"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Domingo di Pentekòstès"
 msgstr "Pinksterzondag"
 

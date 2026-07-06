@@ -58,8 +58,8 @@ class Estonia(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Easter Sunday.
             self._add_easter_sunday(tr("ülestõusmispühade 1. püha"))
 
-            # Whit Sunday.
-            self._add_whit_sunday(tr("nelipühade 1. püha"))
+            # Pentecost.
+            self._add_pentecost(tr("nelipühade 1. püha"))
 
         self._add_holiday_may_1(
             # May Day.
