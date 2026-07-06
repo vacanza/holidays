@@ -38,7 +38,7 @@ msgstr "પ્રજાસત્તાક દિવસ"
 
 #. Good Friday.
 msgid "Good Friday"
-msgstr "ગુડ ફ્રાઈડે"
+msgstr "ગુડ ફ્રાઇડે"
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. Baba Saheb Ambedkar Jayanti"
@@ -62,7 +62,7 @@ msgstr "મહાત્મા ગાંધી જયંતિ"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "નાતાલ"
+msgstr "નાતાલનો દિવસ"
 
 #. Maha Shivaratri.
 msgid "Maha Shivaratri"
@@ -126,4 +126,4 @@ msgstr "બકરી ઈદ"
 
 #. New Year's Day.
 msgid "New Year"
-msgstr "નવું વર્ષ"
+msgstr "નવા વર્ષનો દિવસ"
