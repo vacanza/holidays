@@ -234,7 +234,7 @@ msgstr "સ્વતંત્રતા દિવસ પછીનો દિવસ
 
 #. Saturday before Labor Day.
 msgid "Saturday before Labor Day"
-msgstr "લેબર ડે પહેલાંનો શનિવાર"
+msgstr "શ્રમ દિવસ પહેલાંનો શનિવાર"
 
 #. Saturday after Columbus Day.
 msgid "Saturday after Columbus Day"
