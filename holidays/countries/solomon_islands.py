@@ -112,8 +112,8 @@ class SolomonIslands(
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
 
-        # Whit Monday.
-        self._add_whit_monday("Whit Monday")
+        # Pentecost Monday.
+        self._add_pentecost_monday("Whit Monday")
 
         name = (
             # King's Birthday.

@@ -631,58 +631,76 @@ relative range (+10), which selects the current year through the current year pl
 
 ### Examples
 
-Generate a holiday calendar for Switzerland in German:
+Calendar for the current year:
 
 ```shell
-holidays-ics CH --language de
+holidays-ics US
 ```
 
-Generate a holiday calendar for the Canton of Zurich for a specific year:
+Save calendar to a custom file:
 
 ```shell
-holidays-ics CH --subdiv ZH --years 2025
+holidays-ics US --output test.ics
 ```
 
-Generate a holiday calendar for the current year and the next 5 years:
+Calendar for specific year:
 
 ```shell
-holidays-ics US --years +5
+holidays-ics US --years 2035
 ```
 
-Generate a holiday calendar for the current year and the previous 5 years:
+Calendar for the current and next 10 years:
+
+```shell
+holidays-ics US --years +10
+```
+
+Calendar for the current year and the previous 5 years:
 
 ```shell
 holidays-ics US --years -5
 ```
 
-Generate a holiday calendar for multiple years and save it to a custom file:
+Calendar containing unofficial holidays only:
 
 ```shell
-holidays-ics US --years 2025-2027 --output us_holidays.ics
+holidays-ics US --categories unofficial
 ```
 
-Generate a calendar containing only bank holidays:
+Calendar containing public and optional holidays:
 
 ```shell
-holidays-ics AT --years 2025 --categories bank
+holidays-ics CA --categories public,optional
 ```
 
-Generate a calendar containing public and optional holidays:
+Switzerland calendar in German:
 
 ```shell
-holidays-ics CA --years 2025 --categories public,optional
+holidays-ics CH --language de
 ```
 
-Generate a localized subdivision-specific calendar and save it to a custom file:
+Canton of Zurich calendar:
 
 ```shell
-holidays-ics CH --subdiv ZH --years 2025 --language de --output zurich_holidays.ics
+holidays-ics CH --subdiv ZH
 ```
 
-Generate a financial market holiday calendar:
+Financial market holiday calendar:
 
 ```shell
-holidays-ics XNYS --years 2025 --output nyse_holidays.ics
+holidays-ics XNYS
+```
+
+Spanning the next 10 years, unofficial holidays, saved to a custom file:
+
+```shell
+holidays-ics US --years +10 --categories unofficial --output US_YYYY_YYYY_unofficial.ics
+```
+
+Calendar for Switzerland, specific to the Canton of Zurich, localized in German, and saved to a custom file.
+
+```shell
+holidays-ics CH --subdiv ZH --language de --output CH_ZH_de.ics
 ```
 
 The tool can also display the supported subdivisions, categories, and languages for a selected

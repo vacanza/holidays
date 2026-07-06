@@ -250,7 +250,7 @@ class TestBenin(CommonCountryTests, TestCase):
             ("2022-05-01", "Labor Day"),
             ("2022-05-02", "Eid al-Fitr (estimated)"),
             ("2022-05-26", "Ascension Day"),
-            ("2022-06-06", "Whit Monday"),
+            ("2022-06-06", "Pentecost Monday"),
             ("2022-07-09", "Eid al-Adha (estimated)"),
             ("2022-08-01", "National Day"),
             ("2022-08-15", "Assumption Day"),

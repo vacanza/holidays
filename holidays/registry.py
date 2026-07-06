@@ -286,6 +286,7 @@ COUNTRIES: RegistryDict = {
 }
 
 FINANCIAL: RegistryDict = {
+    "bolsa_mexicana_de_valores": ("BolsaMexicanaDeValores", "XMEX", "BMV"),
     "bombay_stock_exchange": ("BombayStockExchange", "XBOM", "BSE"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
     "chicago_mercantile_exchange": ("ChicagoMercantileExchange", "XCME", "CME"),

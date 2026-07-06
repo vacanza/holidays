@@ -77,8 +77,8 @@ class SaintKittsAndNevis(
         # While Sovereign's Birthday is officially listed in the Public Holidays Act,
         # this was de facto never included in any released calendar since at least 2015.
 
-        # Whit Monday.
-        self._add_whit_monday("Whit Monday")
+        # Pentecost Monday.
+        self._add_pentecost_monday("Whit Monday")
 
         self._add_holiday_1st_mon_of_aug(
             # Emancipation Day.
