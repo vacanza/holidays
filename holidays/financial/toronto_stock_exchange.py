@@ -28,6 +28,7 @@ class TorontoStockExchange(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
 ):
     """Toronto Stock Exchange (TSX) holidays.
+
     References :
         * [2002](https://web.archive.org/web/20021222071421/http://www.tsx.com/en/contactUs/index.html#holidays)
         * [2003](https://web.archive.org/web/20030810042101/http://www.tsx.com/en/contactUs/index.html)
