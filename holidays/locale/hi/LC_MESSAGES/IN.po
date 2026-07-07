@@ -111,7 +111,7 @@ msgstr "क्रिसमस"
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr "नव वर्ष दिवस"
+msgstr "नए साल का दिन"
 
 #. Guru Gobind Singh's Birthday.
 msgid "Guru Gobind Singh's Jayanti"
