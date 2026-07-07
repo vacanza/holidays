@@ -1181,7 +1181,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Monaco</td>
 <td>MC</td>
 <td></td>
-<td>en_US, <strong>fr</strong>, uk</td>
+<td>en_US, <strong>fr_MC</strong>, uk</td>
 <td></td>
 </tr>
 <tr>
