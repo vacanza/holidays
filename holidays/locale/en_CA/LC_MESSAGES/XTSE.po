@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.101\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-07-01 16:06+0000\n"
-"PO-Revision-Date: 2026-07-06 04:25+0000\n"
+"PO-Revision-Date: 2026-07-07 05:26+0000\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_CA\n"
@@ -67,7 +67,7 @@ msgstr ""
 msgid "Christmas Day"
 msgstr ""
 
-#. markets close at 1:00 p.m. ET.
+#. %s (markets close at 1:00 p.m. ET).
 #, c-format
 msgid "%s (markets close at 1:00 p.m. ET)"
 msgstr ""

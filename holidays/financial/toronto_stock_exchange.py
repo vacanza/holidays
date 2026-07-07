@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import DEC
@@ -21,6 +20,8 @@ from holidays.observed_holiday_base import (
     SAT_SUN_TO_NEXT_MON_TUE,
     SAT_SUN_TO_NEXT_MON,
     MON_TO_NEXT_TUE,
+    SAT_TO_NONE,
+    SUN_TO_NONE,
 )
 
 
@@ -111,13 +112,14 @@ class TorontoStockExchange(
         )
 
     def _populate_half_day_holidays(self):
-        # markets close at 1:00 p.m. ET.
+        # %s (markets close at 1:00 p.m. ET).
         pause_label = tr("%s (markets close at 1:00 p.m. ET)")
-        if self._is_weekday(date(self._year, DEC, 24)):
-            self._add_christmas_eve(
-                # Christmas Eve.
-                self._format_holiday_name(pause_label, tr("Christmas Eve"))
-            )
+
+        self._move_holiday(
+            # Christmas Eve.
+            self._add_christmas_eve(self._format_holiday_name(pause_label, tr("Christmas Eve"))),
+            rule=SAT_TO_NONE + SUN_TO_NONE,
+        )
 
 
 class XTSE(TorontoStockExchange):
