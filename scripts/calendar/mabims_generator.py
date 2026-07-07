@@ -77,6 +77,11 @@ class _MabimsLunar:
         self.observer = wgs84.latlon(
             SINGAPORE_LAT * N, SINGAPORE_LON * E, elevation_m=SINGAPORE_ELEV
         )
+        self.earth = self.eph["earth"]
+        self.moon = self.eph["moon"]
+        self.sun = self.eph["sun"]
+        self.obs = self.earth + self.observer
+        self.sunset_func = almanac.sunrise_sunset(self.eph, self.observer)
 
         # Precalculate all new moons for the entire timeframe (1923-2052) chunked by year
         self.new_moons = []
@@ -106,11 +111,9 @@ class _MabimsLunar:
 
     def check_mabims_visibility(self, check_date: date) -> bool:
         """Check if crescent moon meets MABIMS criteria at Singapore sunset."""
-        # Find exact sunset time for Singapore.
-        t0 = self.ts.utc(check_date.year, check_date.month, check_date.day, 9, 0)  # 5pm SGT
-        t1 = self.ts.utc(check_date.year, check_date.month, check_date.day, 12, 0)  # 8pm SGT
-        f = almanac.sunrise_sunset(self.eph, self.observer)
-        times, events = almanac.find_discrete(t0, t1, f)
+        t0 = self.ts.utc(check_date.year, check_date.month, check_date.day, 9, 0)
+        t1 = self.ts.utc(check_date.year, check_date.month, check_date.day, 12, 0)
+        times, events = almanac.find_discrete(t0, t1, self.sunset_func)
         t = None
         for st, e in zip(times, events):
             if e == 0:  # sunset
@@ -120,17 +123,12 @@ class _MabimsLunar:
             # Fallback to approximate Singapore sunset (~6:50pm SGT = 10:50 UTC).
             t = self.ts.utc(check_date.year, check_date.month, check_date.day, 10, 50, 0)
 
-        earth = self.eph["earth"]
-        moon = self.eph["moon"]
-        sun = self.eph["sun"]
-
-        obs = earth + self.observer
-        moon_pos = obs.at(t).observe(moon).apparent()
-        sun_pos = obs.at(t).observe(sun).apparent()
+        moon_pos = self.obs.at(t).observe(self.moon).apparent()
+        sun_pos = self.obs.at(t).observe(self.sun).apparent()
 
         moon_alt, _, _ = moon_pos.altaz()
 
-        # Geocentric elongation.
+        # Elongation.
         moon_ra, moon_dec, _ = moon_pos.radec()
         sun_ra, sun_dec, _ = sun_pos.radec()
 
@@ -164,7 +162,7 @@ class _MabimsLunar:
             if self.check_mabims_visibility(check_date):
                 return check_date + timedelta(days=1)
 
-        # Fallback: 30 days after previous month start.
+        # Fallback: assume crescent was visible on first checked day.
         return new_moon + timedelta(days=1)
 
 
@@ -180,7 +178,6 @@ def generate_data() -> None:
 
     print(f"Generating MABIMS dates for Hijri years {h_start}-{h_end}...")  # noqa: T201
 
-    # Now calculate holiday dates.
     for name, (h_month, h_day) in MABIMS_HOLIDAYS.items():
         for h_year in range(h_start, h_end + 1):
             if h_year % 10 == 0 and name == "HIJRI_NEW_YEAR":
