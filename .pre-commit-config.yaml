@@ -26,7 +26,7 @@ repos:
           - --py310-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 22f0422809455ec89ffdcf5a00170ba816e42ddb  # v0.15.16
+    rev: 3b3f7c3f57fe9925356faf5fe6230835138be230  # v0.15.17
     hooks:
       - id: ruff-check
       - id: ruff-format
