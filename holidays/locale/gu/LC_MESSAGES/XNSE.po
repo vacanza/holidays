@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.88\n"
+"Project-Id-Version: Holidays 0.101\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-08-21 16:22+0000\n"
-"PO-Revision-Date: 2025-12-17 13:21+0000\n"
+"PO-Revision-Date: 2026-07-07 11:15+0530\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: gu\n"
@@ -38,7 +38,7 @@ msgstr "પ્રજાસત્તાક દિવસ"
 
 #. Good Friday.
 msgid "Good Friday"
-msgstr "ગુડ ફ્રાઈડે"
+msgstr "ગુડ ફ્રાઇડે"
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. Baba Saheb Ambedkar Jayanti"
@@ -62,7 +62,7 @@ msgstr "મહાત્મા ગાંધી જયંતિ"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "નાતાલ"
+msgstr "નાતાલનો દિવસ"
 
 #. Maha Shivaratri.
 msgid "Maha Shivaratri"
@@ -126,4 +126,4 @@ msgstr "બકરી ઈદ"
 
 #. New Year's Day.
 msgid "New Year"
-msgstr "નવું વર્ષ"
+msgstr "નવા વર્ષનો દિવસ"
