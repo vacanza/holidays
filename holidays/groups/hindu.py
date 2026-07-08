@@ -159,6 +159,22 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.chaitra_navratri_date(self._year)
         )
 
+    def _add_cheti_chand(self, name) -> date | None:
+        """
+        Add Cheti Chand.
+
+        Cheti Chand is the Sindhi New Year festival and commemorates
+        the birth anniversary of Jhulelal, the patron saint of the
+        Sindhi community. It is observed on the second day (Dwitiya)
+        of the bright fortnight of the Hindu month of Chaitra
+        (March/April).
+
+        https://en.wikipedia.org/wiki/Cheti_Chand
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.cheti_chand_date(self._year)
+        )
+
     def _add_chhath_puja(self, name) -> date | None:
         """
         Add Chhath Puja.
@@ -321,6 +337,21 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.gyalpo_losar_date(self._year)
+        )
+
+    def _add_hola_mohalla(self, name) -> date | None:
+        """
+        Add Hola Mohalla.
+
+        Hola Mohalla is a Sikh festival established by Guru Gobind Singh.
+        It is celebrated on the day following Holi and features martial
+        arts demonstrations, processions, and community gatherings.
+        It is observed during the Hindu month of Phalguna (March).
+
+        https://en.wikipedia.org/wiki/Hola_Mohalla
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.hola_mohalla_date(self._year)
         )
 
     def _add_nepal_holi(self, name) -> date | None:
@@ -638,6 +669,22 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.rath_yatra_date(self._year)
+        )
+
+    def _add_samvatsari_parva(self, name) -> date | None:
+        """
+        Add Samvatsari Parva.
+
+        Samvatsari Parva is the most important annual festival of the
+        Jain religion. It marks the last day of Paryushana and is
+        dedicated to repentance, forgiveness, and spiritual reflection.
+        Jains observe the ritual of Kshamavani (asking and granting
+        forgiveness) on this day.
+
+        https://en.wikipedia.org/wiki/Samvatsari
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.samvatsari_parva_date(self._year)
         )
 
     def _add_sharad_navratri(self, name) -> date | None:

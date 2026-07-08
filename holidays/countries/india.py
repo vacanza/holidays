@@ -757,6 +757,8 @@ class India(
         if self._year >= 2004:
             # Guru Tegh Bahadur's Martyrdom Day.
             self._add_holiday_nov_24(tr("Guru Tegh Bahadur's Shaheedi Diwas"))
+        # Jor Mela Fatehgarh Sahib.
+        self._add_holiday_dec_28(tr("Jor Mela Fatehgarh Sahib"))
 
     def _populate_subdiv_pb_optional_holidays(self):
         # Lohri.
@@ -765,10 +767,14 @@ class India(
         self._add_basant_panchami(tr("Satguru Ram Singh's Jayanti"))
         # International Women's Day.
         self._add_womens_day(tr("International Women's Day"))
+        # Hola Mohalla.
+        self._add_hola_mohalla(tr("Hola Mohalla"))
         # Maharaja Ranjit Singh's Death Anniversary.
         self._add_holiday_jun_27(tr("Maharaja Ranjit Singh's Death Anniversary"))
         # Saragarhi Day.
         self._add_holiday_sep_12(tr("Saragarhi Day"))
+        # Samvatsari Day.
+        self._add_samvatsari_parva(tr("Samvatsari Day"))
         # Anant Chaturdashi.
         self._add_anant_chaturdashi(tr("Anant Chaturdashi"))
         # Bhagat Singh's Birthday.
@@ -816,6 +822,10 @@ class India(
     def _populate_subdiv_uk_public_holidays(self):
         # Holika Dahan.
         self._add_holika_dahan(tr("Holika Dahan"))
+        # Cheti Chand.
+        self._add_cheti_chand(tr("Cheti Chand"))
+        # Harela.
+        self._add_holiday_jul_16(tr("Harela"))
         # Raksha Bandhan.
         self._add_raksha_bandhan(tr("Raksha Bandhan"))
         # Vishwakarma Puja.
@@ -831,6 +841,8 @@ class India(
         self._add_easter_monday(tr("Easter Monday"))
         # Veer Kesari Chand's Martyrdom Day.
         self._add_holiday_may_3(tr("Veer Kesari Chand's Shaheedi Diwas"))
+        # Arbaaen.
+        self._add_arbaeen_day(tr("Chehlum"))
         # Anant Chaturdashi.
         self._add_anant_chaturdashi(tr("Anant Chaturdashi"))
         # Maharaj Agrasen's Birthday.

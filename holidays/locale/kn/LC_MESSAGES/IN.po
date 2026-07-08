@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-26 12:14+0530\n"
-"PO-Revision-Date: 2026-07-06 11:50+0530\n"
+"PO-Revision-Date: 2026-07-08 22:19+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: kn\n"
@@ -480,12 +480,20 @@ msgstr ""
 msgid "International Women's Day"
 msgstr ""
 
+#. Hola Mohalla.
+msgid "Hola Mohalla"
+msgstr ""
+
 #. Maharaja Ranjit Singh's Death Anniversary.
 msgid "Maharaja Ranjit Singh's Death Anniversary"
 msgstr ""
 
 #. Saragarhi Day.
 msgid "Saragarhi Day"
+msgstr ""
+
+#. Samvatsari Day.
+msgid "Samvatsari Day"
 msgstr ""
 
 #. Anant Chaturdashi.
@@ -536,6 +544,10 @@ msgstr "ಬತುಕಮ್ಮ ಹಬ್ಬ"
 msgid "Bonalu"
 msgstr "ಬೋನಾಲು"
 
+#. Harela.
+msgid "Harela"
+msgstr ""
+
 #. Vishwakarma Puja.
 msgid "Vishwakarma Puja"
 msgstr ""
@@ -546,6 +558,10 @@ msgstr ""
 
 #. Veer Kesari Chand's Martyrdom Day.
 msgid "Veer Kesari Chand's Shaheedi Diwas"
+msgstr ""
+
+#. Arbaaen.
+msgid "Chehlum"
 msgstr ""
 
 #. UP Formation Day.
