@@ -55,8 +55,8 @@ PONGAL = "PONGAL"
 RAKSHA_BANDHAN = "RAKSHA_BANDHAN"
 RAM_NAVAMI = "RAM_NAVAMI"
 RATH_YATRA = "RATH_YATRA"
-SHARAD_NAVRATRI = "SHARAD_NAVRATRI"
 SAMVATSARI_PARVA = "SAMVATSARI_PARVA"
+SHARAD_NAVRATRI = "SHARAD_NAVRATRI"
 SONAM_LOSAR = "SONAM_LOSAR"
 SWAMI_DAYANAND_SARASWATI_JAYANTI = "SWAMI_DAYANAND_SARASWATI_JAYANTI"
 TAMU_LOSAR = "TAMU_LOSAR"
@@ -947,7 +947,7 @@ class _HinduLunisolar:
     # http://web.archive.org/web/20260416233149/https://www.calendarlabs.com/sikh-calendar
     # http://web.archive.org/web/20260417155518/https://www.sikhiwiki.org/index.php/Sikh_festivals
     # http://web.archive.org/web/20251213170213/https://www.ritiriwaz.com/gurupurabs-and-sikh-calendar
-    HOLA_MOHALLA_DATES = {
+    HOLA_MOHOLLA_DATES = {
         2001: (MAR, 10),
         2002: (MAR, 28),
         2003: (MAR, 19),
@@ -2356,7 +2356,7 @@ class _HinduLunisolar:
         return self._get_holiday(RATH_YATRA, year)
 
     def samvatsari_parva_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(SHARAD_NAVRATRI, year)
+        return self._get_holiday(SAMVATSARI_PARVA, year)
 
     def sharad_navratri_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(SHARAD_NAVRATRI, year)
