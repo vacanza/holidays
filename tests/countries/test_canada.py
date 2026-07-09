@@ -369,6 +369,13 @@ class TestCanada(CommonCountryTests, TestCase):
         self.assertSubdivMbOptionalHolidayName(
             name, (f"{year}-11-11" for year in range(1931, self.end_year))
         )
+        self.assertNoSubdivMbOptionalHolidayName(name, range(self.start_year, 1931))
+        self.assertSubdivOnOptionalHolidayName(
+            name, (f"{year}-11-11" for year in range(1931, self.end_year))
+        )
+        self.assertNoSubdivOnOptionalHolidayName(name, range(self.start_year, 1931))
+        self.assertSubdivOnOptionalHolidayName(name_observed, obs_dts)
+        self.assertNoSubdivOnNonObservedHoliday(obs_dts)
 
     def test_boxing_day(self):
         name = "Boxing Day"
@@ -388,12 +395,6 @@ class TestCanada(CommonCountryTests, TestCase):
         )
         self.assertOptionalHolidayName(name_observed, obs_dts)
         self.assertNoOptionalNonObservedHoliday(obs_dts)
-
-        obs_dts = (
-            "2004-12-28",
-            "2010-12-28",
-            "2021-12-28",
-        )
         self.assertSubdivOnHolidayName(name_observed, obs_dts)
         self.assertNoSubdivOnNonObservedHoliday(obs_dts)
 
@@ -500,8 +501,13 @@ class TestCanada(CommonCountryTests, TestCase):
             self.assertNoHoliday(holidays, dts)
             self.assertNoHolidayName(name, holidays)
 
-            if subdiv in {"AB", "QC"}:
+            if subdiv in {"AB", "ON", "QC"}:
                 self.assertHolidayName(name, self.subdiv_optional_holidays[subdiv], dts)
+                self.assertHolidayName(
+                    name, self.subdiv_optional_holidays[subdiv], self.full_range
+                )
+            else:
+                self.assertNoHolidayName(name, self.subdiv_optional_holidays[subdiv])
 
     def test_civic_holiday_ab(self):
         name = "Heritage Day"
@@ -980,7 +986,7 @@ class TestCanada(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "fr",
             ("2022-01-01", "Jour de l'an"),
-            ("2022-01-03", "Jour de l'an (Observé)"),
+            ("2022-01-03", "Jour de l'an (observé)"),
             (
                 "2022-02-21",
                 "Fête de la famille; Fête des Insulaires; Fête du Patrimoine; Journée Louis Riel",
@@ -999,9 +1005,9 @@ class TestCanada(CommonCountryTests, TestCase):
             ("2022-07-11", "Journée des Orangistes"),
             (
                 "2022-08-01",
-                "Fête du Patrimoine; Jour de la Colombie Britannique; Jour de la Fondation; "
-                "Jour du Nouveau Brunswick; Jour du Saskatchewan; Journée Terry Fox; "
-                "Premier lundi d'août",
+                "Congé civique; Fête du Patrimoine; Jour de la Colombie Britannique; "
+                "Jour de la Fondation; Jour du Nouveau Brunswick; Jour du Saskatchewan; "
+                "Journée Terry Fox",
             ),
             ("2022-08-15", "Jour de la Découverte"),
             ("2022-09-05", "Fête du Travail"),
@@ -1010,8 +1016,8 @@ class TestCanada(CommonCountryTests, TestCase):
             ("2022-10-10", "Action de grâce"),
             ("2022-11-11", "Jour du Souvenir"),
             ("2022-12-25", "Jour de Noël"),
-            ("2022-12-26", "Boxing Day; Jour de Noël (Observé)"),
-            ("2022-12-27", "Jour de Noël (Observé)"),
+            ("2022-12-26", "Boxing Day; Jour de Noël (observé)"),
+            ("2022-12-27", "Jour de Noël (observé)"),
         )
 
     def test_l10n_th(self):
