@@ -10,14 +10,14 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# London Stock Exchange holidays en_US localization.
+# London Stock Exchange (LSE) holidays en_US localization.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
-"POT-Creation-Date: 2026-07-05 09:48+0530\n"
-"PO-Revision-Date: 2026-07-05 09:48+0530\n"
+"POT-Creation-Date: 2026-07-09 00:00+0530\n"
+"PO-Revision-Date: 2026-07-09 00:00+0530\n"
 "Last-Translator: eeshsaxena <eeshsaxena@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -27,10 +27,10 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_GB\n"
 
-#. %s (half-day closing).
+#. %s (markets close at 12:30pm).
 #, c-format
-msgid "%s (half-day closing)"
-msgstr "%s (half-day closing)"
+msgid "%s (markets close at 12:30pm)"
+msgstr "%s (markets close at 12:30pm)"
 
 #. Christmas Eve.
 msgid "Christmas Eve"

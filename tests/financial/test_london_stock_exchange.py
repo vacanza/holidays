@@ -22,8 +22,6 @@ class TestLondonStockExchange(CommonFinancialTests, TestCase):
         super().setUpClass(LondonStockExchange)
 
     def test_code(self):
-        # LondonStockExchange derives from UnitedKingdom, so (like JPX/SSE) it
-        # keeps a ``country`` attribute set to None rather than removing it.
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
 
@@ -33,66 +31,10 @@ class TestLondonStockExchange(CommonFinancialTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(LondonStockExchange(years=1999))
 
-    def test_2002(self):
-        self.assertHolidays(
-            LondonStockExchange(years=2002),
-            ("2002-01-01", "New Year's Day"),
-            ("2002-03-29", "Good Friday"),
-            ("2002-04-01", "Easter Monday"),
-            ("2002-05-06", "May Day"),
-            ("2002-06-03", "Golden Jubilee of Elizabeth II"),
-            ("2002-06-04", "Spring Bank Holiday"),
-            ("2002-08-26", "Late Summer Bank Holiday"),
-            ("2002-12-25", "Christmas Day"),
-            ("2002-12-26", "Boxing Day"),
-        )
-
-    def test_2011(self):
-        self.assertHolidays(
-            LondonStockExchange(years=2011),
-            ("2011-01-01", "New Year's Day"),
-            ("2011-01-03", "New Year's Day (observed)"),
-            ("2011-04-22", "Good Friday"),
-            ("2011-04-25", "Easter Monday"),
-            ("2011-04-29", "Wedding of William and Catherine"),
-            ("2011-05-02", "May Day"),
-            ("2011-05-30", "Spring Bank Holiday"),
-            ("2011-08-29", "Late Summer Bank Holiday"),
-            ("2011-12-25", "Christmas Day"),
-            ("2011-12-26", "Boxing Day"),
-            ("2011-12-27", "Christmas Day (observed)"),
-        )
-
-    def test_2020(self):
-        self.assertHolidays(
-            LondonStockExchange(years=2020),
-            ("2020-01-01", "New Year's Day"),
-            ("2020-04-10", "Good Friday"),
-            ("2020-04-13", "Easter Monday"),
-            ("2020-05-08", "May Day"),
-            ("2020-05-25", "Spring Bank Holiday"),
-            ("2020-08-31", "Late Summer Bank Holiday"),
-            ("2020-12-25", "Christmas Day"),
-            ("2020-12-26", "Boxing Day"),
-            ("2020-12-28", "Boxing Day (observed)"),
-        )
-
-    def test_2021(self):
-        self.assertHolidays(
-            LondonStockExchange(years=2021),
-            ("2021-01-01", "New Year's Day"),
-            ("2021-04-02", "Good Friday"),
-            ("2021-04-05", "Easter Monday"),
-            ("2021-05-03", "May Day"),
-            ("2021-05-31", "Spring Bank Holiday"),
-            ("2021-08-30", "Late Summer Bank Holiday"),
-            ("2021-12-25", "Christmas Day"),
-            ("2021-12-26", "Boxing Day"),
-            ("2021-12-27", "Christmas Day (observed)"),
-            ("2021-12-28", "Boxing Day (observed)"),
-        )
-
     def test_2022(self):
+        # Exercises the royal one-off bank holidays alongside the regular
+        # England & Wales calendar; year-by-year correctness of the underlying
+        # calendar itself is covered by the United Kingdom test suite.
         self.assertHolidays(
             LondonStockExchange(years=2022),
             ("2022-01-01", "New Year's Day"),
@@ -109,50 +51,56 @@ class TestLondonStockExchange(CommonFinancialTests, TestCase):
             ("2022-12-27", "Christmas Day (observed)"),
         )
 
-    def test_2023(self):
-        self.assertHolidays(
-            LondonStockExchange(years=2023),
-            ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "New Year's Day (observed)"),
-            ("2023-04-07", "Good Friday"),
-            ("2023-04-10", "Easter Monday"),
-            ("2023-05-01", "May Day"),
-            ("2023-05-08", "Coronation of Charles III"),
-            ("2023-05-29", "Spring Bank Holiday"),
-            ("2023-08-28", "Late Summer Bank Holiday"),
-            ("2023-12-25", "Christmas Day"),
-            ("2023-12-26", "Boxing Day"),
-        )
+    def test_christmas_eve(self):
+        name = "Christmas Eve (markets close at 12:30pm)"
+        self.assertNoHolidayName(name)
+        self.assertHalfDayHolidayName(name, (f"{year}-12-24" for year in self.full_range))
 
-    def test_2024(self):
-        self.assertHolidays(
-            LondonStockExchange(years=2024),
+    def test_new_years_eve(self):
+        name = "New Year's Eve (markets close at 12:30pm)"
+        self.assertNoHolidayName(name)
+        self.assertHalfDayHolidayName(name, (f"{year}-12-31" for year in self.full_range))
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
             ("2024-01-01", "New Year's Day"),
             ("2024-03-29", "Good Friday"),
             ("2024-04-01", "Easter Monday"),
             ("2024-05-06", "May Day"),
             ("2024-05-27", "Spring Bank Holiday"),
             ("2024-08-26", "Late Summer Bank Holiday"),
+            ("2024-12-24", "Christmas Eve (markets close at 12:30pm)"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
+            ("2024-12-31", "New Year's Eve (markets close at 12:30pm)"),
         )
 
-    def test_2025(self):
-        self.assertHolidays(
-            LondonStockExchange(years=2025),
-            ("2025-01-01", "New Year's Day"),
-            ("2025-04-18", "Good Friday"),
-            ("2025-04-21", "Easter Monday"),
-            ("2025-05-05", "May Day"),
-            ("2025-05-26", "Spring Bank Holiday"),
-            ("2025-08-25", "Late Summer Bank Holiday"),
-            ("2025-12-25", "Christmas Day"),
-            ("2025-12-26", "Boxing Day"),
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2024-01-01", "New Year's Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-05-06", "May Day"),
+            ("2024-05-27", "Spring Bank Holiday"),
+            ("2024-08-26", "Late Summer Bank Holiday"),
+            ("2024-12-24", "Christmas Eve (markets close at 12:30pm)"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Boxing Day"),
+            ("2024-12-31", "New Year's Eve (markets close at 12:30pm)"),
         )
 
-    def test_2024_half_day(self):
-        self.assertHalfDayHolidaysInYear(
-            2024,
-            ("2024-12-24", "Christmas Eve (half-day closing)"),
-            ("2024-12-31", "New Year's Eve (half-day closing)"),
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2024-01-01", "วันขึ้นปีใหม่"),
+            ("2024-03-29", "วันศุกร์ประเสริฐ"),
+            ("2024-04-01", "วันจันทร์อีสเตอร์"),
+            ("2024-05-06", "วันเมย์เดย์"),
+            ("2024-05-27", "วันหยุดฤดูใบไม้ผลิของธนาคาร"),
+            ("2024-08-26", "วันหยุดช่วงปลายฤดูร้อนของธนาคาร"),
+            ("2024-12-24", "วันคริสต์มาสอีฟ (ตลาดปิดเวลา 12:30 น.)"),
+            ("2024-12-25", "วันคริสต์มาส"),
+            ("2024-12-26", "วันเปิดกล่องของขวัญ"),
+            ("2024-12-31", "วันสิ้นปี (ตลาดปิดเวลา 12:30 น.)"),
         )
