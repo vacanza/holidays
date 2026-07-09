@@ -35,8 +35,8 @@ class TestLondonStockExchange(CommonFinancialTests, TestCase):
         # Exercises the royal one-off bank holidays alongside the regular
         # England & Wales calendar; year-by-year correctness of the underlying
         # calendar itself is covered by the United Kingdom test suite.
-        self.assertHolidays(
-            LondonStockExchange(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (observed)"),
             ("2022-04-15", "Good Friday"),
