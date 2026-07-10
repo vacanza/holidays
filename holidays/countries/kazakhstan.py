@@ -105,17 +105,13 @@ class Kazakhstan(
             # Capital Day.
             dts_observed.add(self._add_holiday_jul_6(tr("Астана күні")))
 
-        if 1996 <= self._year <= 2025:
-            dts_observed.add(
-                # Constitution Day.
-                self._add_holiday_aug_30(tr("Қазақстан Республикасының Конституциясы күні"))
-            )
-
-        if self._year >= 2027:
-            dts_observed.add(
-                # Constitution Day.
-                self._add_holiday_mar_15(tr("Қазақстан Республикасының Конституциясы күні"))
-            )
+        if self._year >= 1996:
+            # Constitution Day.
+            name = tr("Қазақстан Республикасының Конституциясы күні")
+            if self._year >= 2027:
+                dts_observed.add(self._add_holiday_mar_15(name))
+            elif self._year <= 2025:
+                dts_observed.add(self._add_holiday_aug_30(name))
 
         if 1994 <= self._year <= 2008 or self._year >= 2022:
             dts_observed.add(
