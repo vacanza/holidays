@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.58\n"
+"Project-Id-Version: Holidays 0.101\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-09-26 20:24+0300\n"
-"PO-Revision-Date: 2024-09-26 20:33+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-07-10 16:56+0500\n"
+"Last-Translator: Darkhan <adarhan76@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -78,6 +78,10 @@ msgstr "Capital Day"
 #. Constitution Day.
 msgid "Қазақстан Республикасының Конституциясы күні"
 msgstr "Constitution Day"
+
+#. Republic Day.
+msgid "Қазақстан Республикасы күні"
+msgstr "Republic Day"
 
 #. Republic Day.
 msgid "Республика күні"

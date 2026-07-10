@@ -32,7 +32,7 @@ class Kazakhstan(
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Kazakhstan>
         * <https://web.archive.org/web/20241225060133/https://egov.kz/cms/en/articles/holidays-calend>
-        * <https://web.archive.org/web/20240828112119/https://adilet.zan.kz/kaz/docs/Z010000267_/history>
+        * <https://web.archive.org/web/20260710112450/https://adilet.zan.kz/kaz/docs/Z010000267_/history>
         * <https://web.archive.org/web/20240918145208/https://adilet.zan.kz/kaz/docs/Z990000493_#z63>
 
     Islamic holidays:
@@ -105,15 +105,28 @@ class Kazakhstan(
             # Capital Day.
             dts_observed.add(self._add_holiday_jul_6(tr("Астана күні")))
 
-        if self._year >= 1996:
+        if 1996 <= self._year <= 2025:
             dts_observed.add(
                 # Constitution Day.
                 self._add_holiday_aug_30(tr("Қазақстан Республикасының Конституциясы күні"))
             )
 
+        if self._year >= 2027:
+            dts_observed.add(
+                # Constitution Day.
+                self._add_holiday_mar_15(tr("Қазақстан Республикасының Конституциясы күні"))
+            )
+
         if 1994 <= self._year <= 2008 or self._year >= 2022:
-            # Republic Day.
-            dts_observed.add(self._add_holiday_oct_25(tr("Республика күні")))
+            dts_observed.add(
+                self._add_holiday_oct_25(
+                    # Republic Day.
+                    tr("Қазақстан Республикасы күні")
+                    if self._year >= 2026
+                    # Republic Day.
+                    else tr("Республика күні")
+                )
+            )
 
         if 2012 <= self._year <= 2021:
             dts_observed.add(

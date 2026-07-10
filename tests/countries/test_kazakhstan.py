@@ -250,30 +250,49 @@ class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_constitution_day(self):
         name = "Қазақстан Республикасының Конституциясы күні"
-        self.assertHolidayName(name, (f"{year}-08-30" for year in range(1996, self.end_year)))
-        self.assertNoHolidayName(name, range(self.start_year, 1996))
+        self.assertHolidayName(name, (f"{year}-08-30" for year in range(1996, 2026)))
+        self.assertHolidayName(name, (f"{year}-03-15" for year in range(2027, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1996), 2026)
+        self.assertNoHolidayName(name, (f"{year}-08-30" for year in range(2027, self.end_year)))
+        self.assertNoHolidayName(name, (f"{year}-03-15" for year in range(1996, 2026)))
+
         obs_dts = (
             "2009-08-31",
             "2014-09-01",
             "2015-08-31",
             "2020-08-31",
             "2025-09-01",
+            "2031-03-17",
+            "2036-03-17",
+            "2037-03-16",
         )
         self.assertHolidayName(f"{name} (қайта белгіленген демалыс)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_republic_day(self):
         name = "Республика күні"
+        name_2026 = "Қазақстан Республикасы күні"
         self.assertHolidayName(
-            name, (f"{year}-10-25" for year in (*range(1994, 2009), *range(2022, self.end_year)))
+            name, (f"{year}-10-25" for year in (*range(1994, 2009), *range(2022, 2026)))
         )
-        self.assertNoHolidayName(name, range(self.start_year, 1994), range(2009, 2022))
+        self.assertHolidayName(name_2026, (f"{year}-10-25" for year in range(2026, self.end_year)))
+        self.assertNoHolidayName(
+            name, range(self.start_year, 1994), range(2009, 2022), range(2026, self.end_year)
+        )
+        self.assertNoHolidayName(name_2026, range(self.start_year, 2026))
         obs_dts = (
             "2003-10-27",
             "2008-10-27",
             "2025-10-27",
         )
         self.assertHolidayName(f"{name} (қайта белгіленген демалыс)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+        obs_dts = (
+            "2026-10-26",
+            "2031-10-27",
+            "2037-10-26",
+        )
+        self.assertHolidayName(f"{name_2026} (қайта белгіленген демалыс)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_first_president_day(self):
