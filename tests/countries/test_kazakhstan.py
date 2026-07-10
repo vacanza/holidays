@@ -253,8 +253,8 @@ class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidayName(name, (f"{year}-08-30" for year in range(1996, 2026)))
         self.assertHolidayName(name, (f"{year}-03-15" for year in range(2027, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1996), 2026)
-        self.assertNoHolidayName(name, (f"{year}-08-30" for year in range(2027, self.end_year)))
-        self.assertNoHolidayName(name, (f"{year}-03-15" for year in range(1996, 2026)))
+        self.assertNoHolidayName(name, (f"{year}-08-30" for year in range(2026, self.end_year)))
+        self.assertNoHolidayName(name, (f"{year}-03-15" for year in range(1996, 2027)))
 
         obs_dts = (
             "2009-08-31",
