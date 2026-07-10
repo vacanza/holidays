@@ -290,6 +290,7 @@ class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
         obs_dts = (
             "2026-10-26",
             "2031-10-27",
+            "2036-10-27",
             "2037-10-26",
         )
         self.assertHolidayName(f"{name_2026} (қайта белгіленген демалыс)", obs_dts)
