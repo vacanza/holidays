@@ -128,11 +128,11 @@ class Benin(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             self._add_ascension_thursday(tr("Jour de l'Ascension"))
 
         if self._year >= 1991:
-            # Whit Monday.
-            self._add_whit_monday(tr("Lundi de Pentecôte"))
+            # Pentecost Monday.
+            self._add_pentecost_monday(tr("Lundi de Pentecôte"))
         else:
-            # Whit Sunday.
-            self._add_whit_sunday(tr("Jour de Pentecôte"))
+            # Pentecost.
+            self._add_pentecost(tr("Jour de Pentecôte"))
 
         # Established in 1990 by Law 90-019.
         if self._year >= 1990:

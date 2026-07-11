@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2025-09-16 10:42+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -85,9 +85,9 @@ msgstr "Easter Monday"
 msgid "عيد الصعود"
 msgstr "Ascension Day"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "إثنين العنصرة"
-msgstr "Whit Monday"
+msgstr "Pentecost Monday"
 
 #. Assumption Day.
 msgid "عيد انتقال السيدة العذراء"

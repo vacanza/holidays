@@ -85,7 +85,7 @@ msgstr "Lundi de Pâques"
 msgid "عيد الصعود"
 msgstr "Ascension"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "إثنين العنصرة"
 msgstr "Lundi de Pentecôte"
 

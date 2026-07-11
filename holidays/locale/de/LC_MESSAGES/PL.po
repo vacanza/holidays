@@ -68,7 +68,7 @@ msgstr "Christi Himmelfahrt"
 msgid "Zielone Świątki"
 msgstr "Pfingsten"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Drugi dzień Zielonych Świątek"
 msgstr "Pfingstmontag"
 

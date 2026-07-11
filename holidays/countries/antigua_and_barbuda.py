@@ -64,8 +64,8 @@ class AntiguaAndBarbuda(
         # Labour Day.
         self._add_holiday_1st_mon_of_may("Labour Day")
 
-        # Whit Monday.
-        self._add_whit_monday("Whit Monday")
+        # Pentecost Monday.
+        self._add_pentecost_monday("Whit Monday")
 
         if self._year <= 2005:
             # Caribbean Community (Caricom) Day.

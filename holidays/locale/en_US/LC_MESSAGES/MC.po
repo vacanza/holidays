@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-20 11:58+0200\n"
-"PO-Revision-Date: 2024-01-02 15:44+0200\n"
+"PO-Revision-Date: 2026-07-04 23:40+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -26,11 +26,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
-"X-Source-Language: fr\n"
+"X-Source-Language: fr_MC\n"
 
 #. %s (observed).
 #, c-format
-msgid "%s (observé)"
+msgid "%s (reporté)"
 msgstr "%s (observed)"
 
 #. New Year's Day.
@@ -38,47 +38,47 @@ msgid "Le jour de l'An"
 msgstr "New Year's Day"
 
 #. Saint Devote's Day.
-msgid "La Sainte Dévote"
+msgid "Le jour de la Sainte-Dévote"
 msgstr "Saint Devote's Day"
 
 #. Easter Monday.
-msgid "Le lundi de Pâques"
+msgid "Le Lundi de Pâques"
 msgstr "Easter Monday"
 
 #. Labor Day.
-msgid "Fête de la Travaille"
+msgid "Le jour de la Fête du Travail"
 msgstr "Labor Day"
 
 #. Ascension Day.
-msgid "L'Ascension"
+msgid "Le jour de l'Ascension"
 msgstr "Ascension Day"
 
-#. Whit Monday.
-msgid "Le lundi de Pentecôte"
-msgstr "Whit Monday"
+#. Pentecost Monday.
+msgid "Le Lundi de Pentecôte"
+msgstr "Pentecost Monday"
 
 #. Corpus Christi.
-msgid "La Fête Dieu"
+msgid "Le jour de la Fête Dieu"
 msgstr "Corpus Christi"
 
 #. Assumption Day.
-msgid "L'Assomption de Marie"
+msgid "Le jour de l'Assomption"
 msgstr "Assumption Day"
 
 #. All Saints' Day.
-msgid "La Toussaint"
+msgid "Le jour de la Toussaint"
 msgstr "All Saints' Day"
 
 #. Prince's Day.
-msgid "La Fête du Prince"
+msgid "Le jour de la Fête de S.A.S. le Prince Souverain"
 msgstr "Prince's Day"
 
 #. Immaculate Conception.
-msgid "L'Immaculée Conception"
+msgid "Le jour de l'Immaculée Conception"
 msgstr "Immaculate Conception"
 
 #. Christmas Day.
-msgid "Noël"
+msgid "Le jour de Noël"
 msgstr "Christmas Day"
 
 #. Public holiday.

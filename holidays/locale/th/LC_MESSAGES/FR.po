@@ -36,7 +36,7 @@ msgstr "วันขึ้นปีใหม่"
 msgid "Lundi de Pâques"
 msgstr "วันจันทร์อีสเตอร์"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Lundi de Pentecôte"
 msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
 

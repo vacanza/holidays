@@ -274,7 +274,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             ("2023-04-30", "Rincon Day"),
             ("2023-05-01", "Labor Day"),
             ("2023-05-18", "Ascension Day"),
-            ("2023-05-28", "Whit Sunday"),
+            ("2023-05-28", "Pentecost"),
             ("2023-07-01", "Emancipation Day"),
             ("2023-07-31", "Carnival Monday"),
             ("2023-09-06", "Bonaire Day"),

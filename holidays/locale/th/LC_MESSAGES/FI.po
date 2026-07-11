@@ -56,7 +56,7 @@ msgstr "วันเมย์เดย์ (วันแรงงาน)"
 msgid "Helatorstai"
 msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Helluntaipäivä"
 msgstr "วันสมโภชพระจิตเจ้า"
 

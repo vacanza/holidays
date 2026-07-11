@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.99\n"
+"Project-Id-Version: Holidays 0.101\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-03 06:52+0000\n"
-"PO-Revision-Date: 2026-06-04 11:21+0000\n"
-"Last-Translator: Paresh Joshi <194076591+pareshjoshij@users.noreply.github.com>\n"
+"PO-Revision-Date: 2026-07-07 11:15+0530\n"
+"Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +70,7 @@ msgstr "स्वतंत्रता दिवस"
 
 #. Labor Day.
 msgid "Labor Day"
-msgstr "मज़दूर दिवस"
+msgstr "श्रम दिवस"
 
 #. Columbus Day.
 msgid "Columbus Day"
@@ -90,7 +90,7 @@ msgstr "थैंक्सगिविंग डे"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "क्रिसमस का दिन"
+msgstr "क्रिसमस दिवस"
 
 #. Pending outbreak of World War I.
 msgid "Pending outbreak of World War I"
@@ -130,7 +130,7 @@ msgstr "बैक ऑफिस काम का बोझ"
 
 #. Day before Independence Day.
 msgid "Day before Independence Day"
-msgstr "स्वतंत्रता दिवस से एक दिन पहले"
+msgstr "स्वतंत्रता दिवस से पहले का दिन"
 
 #. Day after Thanksgiving Day.
 msgid "Day after Thanksgiving Day"
@@ -194,7 +194,7 @@ msgstr "वर्ल्ड ट्रेड सेंटर पर हमलो�
 
 #. Hurricane Sandy.
 msgid "Hurricane Sandy"
-msgstr "तूफान सैंडी"
+msgstr "हरिकेन सैंडी"
 
 #. Liberty Day.
 msgid "Liberty Day"
@@ -234,7 +234,7 @@ msgstr "स्वतंत्रता दिवस के बाद का द�
 
 #. Saturday before Labor Day.
 msgid "Saturday before Labor Day"
-msgstr "मज़दूर दिवस से पहले का शनिवार"
+msgstr "श्रम दिवस से पहले का शनिवार"
 
 #. Saturday after Columbus Day.
 msgid "Saturday after Columbus Day"
