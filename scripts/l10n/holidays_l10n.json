@@ -878,6 +878,28 @@
     ]
   },
   {
+    "id": "ali_s_birthday",
+    "msgid": "Ali's Birthday",
+    "new_comment": "",
+    "comment": "Ali's Birthday.",
+    "messages": {
+      "bn": "হযরত আলীর জন্মদিন",
+      "en_IN": "Hazarat Ali's Birthday",
+      "en_US": "Ali's Birthday",
+      "gu": "હઝરત અલીનો જન્મદિવસ",
+      "hi": "हज़रत अली का जन्मदिन",
+      "kn": "ಹಜರತ್ ಅಲಿಯವರ ಜನ್ಮದಿನ",
+      "ml": "ഹസ്രത്ത് അലിയുടെ ജന്മദിനം",
+      "mr": "हजरत अली यांचा वाढदिवस",
+      "pa": "ਹਜ਼ਰਤ ਅਲੀ ਦਾ ਜਨਮਦਿਨ",
+      "ta": "ஹஸ்ரத் அலியின் பிறந்தநாள்",
+      "te": "హజ్రత్ అలీ జన్మదినం"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
     "id": "all_saints_day",
     "msgid": "All Saints' Day",
     "new_comment": "",
@@ -921,12 +943,12 @@
         "GN": "Toussaint",
         "LB": "Toussaint",
         "LU": "Toussaint",
-        "MC": "La Toussaint",
         "TG": "Toussaint"
       },
       "fr_BI": "Toussaint",
       "fr_BJ": "La Toussaint",
       "fr_HT": "La Toussaint",
+      "fr_MC": "Le jour de la Toussaint",
       "fr_NE": "Toussaint",
       "fr_SN": "Toussaint",
       "hr": "Svi sveti",
@@ -2392,12 +2414,12 @@
         "FR": "Ascension",
         "GA": "Ascension",
         "LU": "Ascension",
-        "MC": "L'Ascension",
         "TG": "Fête de l'Ascension"
       },
       "fr_BI": "Jour de l'Ascension",
       "fr_BJ": "Jour de l'Ascension",
       "fr_HT": "Ascension",
+      "fr_MC": "Le jour de l'Ascension",
       "fr_NE": "Ascension",
       "fr_SN": "Jeudi de l'Ascension",
       "fy": "Himelfeartsdei",
@@ -2716,13 +2738,13 @@
         "GN": "Assomption",
         "LB": "Assomption",
         "LU": "Assomption",
-        "MC": "L'Assomption de Marie",
         "RW": "Assomption",
         "TG": "Assomption"
       },
       "fr_BI": "Assomption",
       "fr_BJ": "Jour de l'Assomption",
       "fr_HT": "Assomption de Marie",
+      "fr_MC": "Le jour de l'Assomption",
       "fr_NE": "Assomption",
       "fr_SN": "Assomption",
       "hr": "Velika Gospa",
@@ -3050,6 +3072,28 @@
     ]
   },
   {
+    "id": "bahag_bihu",
+    "msgid": "Bahag Bihu",
+    "new_comment": "",
+    "comment": "Bahag Bihu.",
+    "messages": {
+      "bn": "বহাগ বিহু",
+      "en_IN": "Bahag Bihu",
+      "en_US": "Bahag Bihu",
+      "gu": "બહાગ બિહુ",
+      "hi": "बहाग बिहु",
+      "kn": "ಭಾಗ ಬಿಹು",
+      "ml": "ഭാഗം ബിഹു",
+      "mr": "बहाग बिहू",
+      "pa": "ਬਹਾਗ ਬਿਹੂ",
+      "ta": "பஹாக் பிஹு",
+      "te": "బహగ్ బిహు"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
     "id": "bahia_independence_day",
     "msgid": "Bahia Independence Day",
     "new_comment": "",
@@ -3075,6 +3119,20 @@
     },
     "countries": [
       "LK"
+    ]
+  },
+  {
+    "id": "bank_employee_day",
+    "msgid": "Bank Employee Day",
+    "new_comment": "",
+    "comment": "Bank Employee Day.",
+    "messages": {
+      "en_US": "Bank Employee Day",
+      "es": "Día del Empleado Bancario",
+      "uk": "День банківського працівника"
+    },
+    "countries": [
+      "XMEX"
     ]
   },
   {
@@ -3133,6 +3191,50 @@
     },
     "countries": [
       "CF"
+    ]
+  },
+  {
+    "id": "basant_panchami",
+    "msgid": "Basant Panchami",
+    "new_comment": "",
+    "comment": "Basant Panchami.",
+    "messages": {
+      "bn": "বসন্ত পঞ্চমী",
+      "en_IN": "Basant Panchami",
+      "en_US": "Basant Panchami",
+      "gu": "વસંત પંચમી",
+      "hi": "बसंत पंचमी",
+      "kn": "ವಸಂತ ಪಂಚಮಿ",
+      "ml": "വസന്ത പഞ്ചമി",
+      "mr": "बसंत पंचमी",
+      "pa": "ਬਸੰਤ ਪੰਚਮੀ",
+      "ta": "வசந்த பஞ்சமி",
+      "te": "వసంత పంచమి"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
+    "id": "basant_panchami_sri_panchami",
+    "msgid": "Basant Panchami / Sri Panchami",
+    "new_comment": "",
+    "comment": "Basant Panchami / Sri Panchami.",
+    "messages": {
+      "bn": "বসন্ত পঞ্চমী / শ্রী পঞ্চমী",
+      "en_IN": "Basant Panchami / Sri Panchami",
+      "en_US": "Basant Panchami / Sri Panchami",
+      "gu": "વસંત પંચમી / શ્રી પંચમી",
+      "hi": "बसंत पंचमी / श्री पंचमी",
+      "kn": "ವಸಂತ ಪಂಚಮಿ / ಶ್ರೀ ಪಂಚಮಿ",
+      "ml": "വസന്ത പഞ്ചമി / ശ്രീ പഞ്ചമി",
+      "mr": "बसंत पंचमी / श्री पंचमी",
+      "pa": "ਬਸੰਤ ਪੰਚਮੀ / ਸ੍ਰੀ ਪੰਚਮੀ",
+      "ta": "வசந்த பஞ்சமி / ஸ்ரீ பஞ்சமி",
+      "te": "వసంత పంచమి / శ్రీ పంచమి"
+    },
+    "countries": [
+      "IN"
     ]
   },
   {
@@ -3396,7 +3498,8 @@
       "uk": "Річниця Беніто Хуареса"
     },
     "countries": [
-      "MX"
+      "MX",
+      "XMEX"
     ]
   },
   {
@@ -3454,6 +3557,28 @@
     },
     "countries": [
       "XNSE"
+    ]
+  },
+  {
+    "id": "bhai_duj",
+    "msgid": "Bhai Duj",
+    "new_comment": "",
+    "comment": "Bhai Duj.",
+    "messages": {
+      "bn": "ভাই দুজ",
+      "en_IN": "Bhai Duj",
+      "en_US": "Bhai Duj",
+      "gu": "ભાઈ દૂજ",
+      "hi": "भाई दूज",
+      "kn": "ಭಾಯಿ ದೂಜ್",
+      "ml": "ഭായ് ദൂജ്",
+      "mr": "भाई दूज",
+      "pa": "ਭਾਈ ਦੂਜ",
+      "ta": "பாய் தூஜ்",
+      "te": "భాయ్ దూజ్"
+    },
+    "countries": [
+      "IN"
     ]
   },
   {
@@ -3538,6 +3663,20 @@
     },
     "countries": [
       "AR"
+    ]
+  },
+  {
+    "id": "bicentennial_of_mexican_independence_bridge_day",
+    "msgid": "Bicentennial of Mexican Independence (Bridge day)",
+    "new_comment": "",
+    "comment": "Bicentennial of Mexican Independence (Bridge day).",
+    "messages": {
+      "en_US": "Bicentennial of Mexican Independence (Bridge day)",
+      "es": "Bicentenario de la Independencia de México (Día Puente)",
+      "uk": "200-річчя незалежності Мексики (додатковий вихідний)"
+    },
+    "countries": [
+      "XMEX"
     ]
   },
   {
@@ -4328,7 +4467,8 @@
     "messages": {
       "ar": {
         "CA": "يوم الملاكمة",
-        "SY": "يوم الصناديق"
+        "SY": "يوم الصناديق",
+        "XTSE": "يوم الملاكمة"
       },
       "coa_CC": "Hari Boxing",
       "en_AI": "Boxing Day",
@@ -4358,7 +4498,8 @@
       "en_VG": "Boxing Day",
       "fr": {
         "CA": "Boxing Day",
-        "RW": "Le lendemain de Noël"
+        "RW": "Le lendemain de Noël",
+        "XTSE": "Boxing Day"
       },
       "rw": "Umunsi ukurikira Noheli",
       "sw": {
@@ -4403,7 +4544,8 @@
       "TV",
       "TZ",
       "VC",
-      "VG"
+      "VG",
+      "XTSE"
     ]
   },
   {
@@ -4644,7 +4786,8 @@
       "th": "วันชาติแคนาดา"
     },
     "countries": [
-      "CA"
+      "CA",
+      "XTSE"
     ]
   },
   {
@@ -5195,6 +5338,28 @@
     ]
   },
   {
+    "id": "chaitra_sukladi",
+    "msgid": "Chaitra Sukladi",
+    "new_comment": "",
+    "comment": "Chaitra Sukladi.",
+    "messages": {
+      "bn": "চৈত্র শুক্লাদি",
+      "en_IN": "Chaitra Sukladi",
+      "en_US": "Chaitra Sukladi",
+      "gu": "ચૈત્ર શુક્લાડી",
+      "hi": "चैत्र शुक्लादि",
+      "kn": "ಚೈತ್ರ ಸುಕ್ಲಾಡಿ",
+      "ml": "ചൈത്ര ശുക്ലദി",
+      "mr": "चैत्र शुक्लादि",
+      "pa": "ਚੈਤਰਾ ਸ਼ੁਕਲਦੀ",
+      "ta": "சைத்ரா சுக்லாடி",
+      "te": "చైత్ర శుక్లాది"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
     "id": "chakri_day",
     "msgid": "Chakri Day",
     "new_comment": "",
@@ -5233,7 +5398,8 @@
       "uk": "Передача федеральної виконавчої влади"
     },
     "countries": [
-      "MX"
+      "MX",
+      "XMEX"
     ]
   },
   {
@@ -5261,6 +5427,28 @@
     },
     "countries": [
       "KP"
+    ]
+  },
+  {
+    "id": "cheti_chand",
+    "msgid": "Cheti Chand",
+    "new_comment": "",
+    "comment": "Cheti Chand.",
+    "messages": {
+      "bn": "চেতি চাঁদ",
+      "en_IN": "Cheti Chand",
+      "en_US": "Cheti Chand",
+      "gu": "ચેતી ચંદ",
+      "hi": "चेटी चंड",
+      "kn": "ಚೇಟಿ ಚಂದ್",
+      "ml": "ചേതി ചന്ദ്",
+      "mr": "चेटी चंड",
+      "pa": "ਚੇਤੀ ਚੰਦ",
+      "ta": "செட்டி சந்த்",
+      "te": "చెట్టి చంద్"
+    },
+    "countries": [
+      "IN"
     ]
   },
   {
@@ -5349,22 +5537,12 @@
     "new_comment": "",
     "comment": "Children's Day.",
     "messages": {
-      "bn": "শিশু দিবস",
-      "en_IN": "Children's Day",
       "en_US": "Children's Day",
       "es": "Día de los Niños",
-      "gu": "બાળ દિવસ",
-      "hi": "बाल दिवस",
       "ja": "こどもの日",
-      "kn": "ಮಕ್ಕಳ ದಿನಾಚರಣೆ",
       "ko": "어린이날",
-      "ml": "കുട്ടികളുടെ ദിനം",
       "mn": "Хүүхдийн баяр",
-      "mr": "बाल दिन",
-      "pa": "ਬਾਲ ਦਿਵਸ",
       "ro": "Ziua Copilului",
-      "ta": "குழந்தைகள் நாள்",
-      "te": "బాలల దినోత్సవం",
       "th": {
         "CN": "วันเด็กสากล",
         "JP": "วันเด็กแห่งชาติ",
@@ -5386,7 +5564,6 @@
     },
     "countries": [
       "CN",
-      "IN",
       "JP",
       "KR",
       "MN",
@@ -5677,7 +5854,8 @@
         "JO": "عيد الميلاد المجيد",
         "LB": "عيد الميلاد",
         "SY": "عيد الميلاد",
-        "UA": "عيد الميلاد"
+        "UA": "عيد الميلاد",
+        "XTSE": "عيد الميلاد"
       },
       "ar_SD": "عيد الميلاد",
       "bg": "Рождество Христово",
@@ -5764,7 +5942,8 @@
         "PE": "Navidad del Señor",
         "PY": "Día de la Navidad",
         "SV": "Navidad",
-        "VE": "Día de Navidad"
+        "VE": "Día de Navidad",
+        "XMEX": "Navidad"
       },
       "et": "esimene jõulupüha",
       "fi": "Joulupäivä",
@@ -5787,26 +5966,23 @@
         "GN": "Fête de Noël",
         "LB": "Noël",
         "LU": "Noël",
-        "MC": "Noël",
         "ML": "Fête de Noël",
         "RW": "Noël",
-        "TG": "Noël"
+        "TG": "Noël",
+        "XTSE": "Jour de Noël"
       },
       "fr_BI": "Noël",
       "fr_BJ": "Jour de Noël",
       "fr_HT": "Noël",
+      "fr_MC": "Le jour de Noël",
       "fr_NE": "Noël",
       "fr_SN": "Noël",
       "fy": "Eerste Krystdei",
-      "gu": {
-        "XCME": "નાતાલનો દિવસ",
-        "XNSE": "નાતાલ",
-        "XNYS": "નાતાલનો દિવસ"
-      },
+      "gu": "નાતાલનો દિવસ",
       "hi": {
         "XCME": "क्रिसमस दिवस",
         "XNSE": "क्रिसमस डे",
-        "XNYS": "क्रिसमस का दिन"
+        "XNYS": "क्रिसमस दिवस"
       },
       "hr": "Božić",
       "ht": "Nwèl",
@@ -5909,7 +6085,8 @@
         "UA": "วันคริสต์มาส",
         "US": "วันคริสต์มาส",
         "VA": "วันคริสต์มาส",
-        "XETR": "วันคริสต์มาสวันแรก"
+        "XETR": "วันคริสต์มาสวันแรก",
+        "XTSE": "วันคริสต์มาส"
       },
       "tkl": "Aho Kilihimahi",
       "to": "ʻAho Kilisimasi",
@@ -5976,7 +6153,8 @@
         "SV": "Різдво Христове",
         "UA": "Різдво Христове",
         "VE": "Різдво Христове",
-        "XETR": "Перший день Різдва"
+        "XETR": "Перший день Різдва",
+        "XMEX": "Різдво Христове"
       },
       "zh_CN": {
         "HK": "圣诞节",
@@ -6135,8 +6313,10 @@
       "VG",
       "XCME",
       "XETR",
+      "XMEX",
       "XNSE",
-      "XNYS"
+      "XNYS",
+      "XTSE"
     ]
   },
   {
@@ -6173,7 +6353,9 @@
     "new_comment": "",
     "comment": "Christmas Eve.",
     "messages": {
+      "ar": "عشية عيد الميلاد",
       "bg": "Бъдни вечер",
+      "bn": "বড়দিনের আগের দিন",
       "ca": "Vigília de Nadal",
       "cnr": "Badnji dan",
       "cs": "Štědrý den",
@@ -6187,8 +6369,10 @@
       },
       "el": "Παραμονή Χριστουγέννων",
       "en_AU": "Christmas Eve",
+      "en_CA": "Christmas Eve",
       "en_CY": "Christmas Eve",
       "en_HK": "Christmas Eve",
+      "en_IN": "Christmas Eve",
       "en_MO": "Christmas Eve",
       "en_PH": "Christmas Eve",
       "en_US": "Christmas Eve",
@@ -6201,17 +6385,25 @@
       "fil": "Bisperas ng Pasko",
       "fo": "Jólaaftan",
       "fr": "Veille de Noël",
-      "gu": "નાતાલ પૂર્વસંધ્યા",
+      "gu": {
+        "IN": "નાતાલની પૂર્વસંધ્યાએ",
+        "XCME": "નાતાલ પૂર્વસંધ્યા",
+        "XNYS": "નાતાલ પૂર્વસંધ્યા"
+      },
       "hi": "क्रिसमस की पूर्व संध्या",
       "is": "Aðfangadagur",
       "it": "Vigilia di Natale",
       "it_IT": "Vigilia di Natale",
       "kl": "Juulliaraq",
+      "kn": "ಕ್ರಿಸ್ಮಸ್ ಈವ್",
       "lt": "Kūčių diena",
       "lv": "Ziemassvētku vakars",
       "mk": "Бадник",
+      "ml": "ക്രിസ്മസ് തലേന്ന്",
+      "mr": "ख्रिसमसच्या पूर्व संध्याकाळ",
       "ms_MY": "Krismas (Eve)",
       "no": "Julaften",
+      "pa": "ਕ੍ਰਿਸਮਿਸ ਦੀ ਪੂਰਵ ਸੰਧਿਆ",
       "pl": "Wigilia Bożego Narodzenia",
       "pt_BR": "Véspera de Natal",
       "pt_MO": "Véspera de Natal",
@@ -6219,6 +6411,8 @@
       "sk": "Štedrý deň",
       "sv": "Julafton",
       "sv_FI": "Julafton",
+      "ta": "கிறிஸ்துமஸ் ஈவ்",
+      "te": "క్రిస్మస్ ఈవ్",
       "th": "วันคริสต์มาสอีฟ",
       "uk": "Святий вечір",
       "zh_CN": {
@@ -6244,6 +6438,7 @@
       "FO",
       "GL",
       "GR",
+      "IN",
       "IS",
       "IT",
       "LI",
@@ -6265,7 +6460,8 @@
       "XCME",
       "XETR",
       "XHKG",
-      "XNYS"
+      "XNYS",
+      "XTSE"
     ]
   },
   {
@@ -6423,7 +6619,8 @@
       "th": "วันหยุดราชการ"
     },
     "countries": [
-      "CA"
+      "CA",
+      "XTSE"
     ]
   },
   {
@@ -6975,7 +7172,8 @@
         "GQ": "Día de la Constitución",
         "MX": "Día de la Constitución",
         "PA": "Día de la Constitución",
-        "UY": "Jura de la Constitución"
+        "UY": "Jura de la Constitución",
+        "XMEX": "Día de la Constitución"
       },
       "fo": "Grundlógardagur",
       "hy": "Սահմանադրության օր",
@@ -7028,7 +7226,8 @@
         "SK": "День конституції Словацької Республіки",
         "TH": "День Конституції",
         "UY": "День присяги Конституції",
-        "UZ": "День Конституції Республіки Узбекистан"
+        "UZ": "День Конституції Республіки Узбекистан",
+        "XMEX": "День Конституції"
       },
       "uz": "Oʻzbekiston Respublikasi Konstitutsiyasi kuni",
       "zh_CN": {
@@ -7074,7 +7273,8 @@
       "US",
       "UY",
       "UZ",
-      "XK"
+      "XK",
+      "XMEX"
     ]
   },
   {
@@ -7299,11 +7499,9 @@
         "GQ": "Corpus Christi",
         "HT": "Fête-Dieu"
       },
-      "fr": {
-        "CH": "Fête-Dieu",
-        "MC": "La Fête Dieu"
-      },
+      "fr": "Fête-Dieu",
       "fr_HT": "Fête-Dieu",
+      "fr_MC": "Le jour de la Fête Dieu",
       "hr": "Tijelovo",
       "ht": "Fèt Dye",
       "it": "Corpus Domini",
@@ -7887,10 +8085,7 @@
     "messages": {
       "en_US": "Day before Independence Day",
       "gu": "સ્વતંત્રતા દિવસનો આગલો દિવસ",
-      "hi": {
-        "XCME": "स्वतंत्रता दिवस से पहले का दिन",
-        "XNYS": "स्वतंत्रता दिवस से एक दिन पहले"
-      }
+      "hi": "स्वतंत्रता दिवस से पहले का दिन"
     },
     "countries": [
       "XCME",
@@ -7928,6 +8123,21 @@
     ]
   },
   {
+    "id": "day_before_pentecost_eve",
+    "msgid": "Day before Pentecost Eve",
+    "new_comment": "",
+    "comment": "Day before Pentecost Eve.",
+    "messages": {
+      "en_US": "Day before Pentecost Eve",
+      "sv": "Dag före Pingstafton",
+      "th": "วันก่อนวันก่อนวันสมโภชพระจิตเจ้า",
+      "uk": "За два дні до Пʼятидесятниці"
+    },
+    "countries": [
+      "SE"
+    ]
+  },
+  {
     "id": "day_before_sinhala_and_tamil_new_year",
     "msgid": "Day Before Sinhala and Tamil New Year",
     "new_comment": "",
@@ -7939,21 +8149,6 @@
     },
     "countries": [
       "LK"
-    ]
-  },
-  {
-    "id": "day_before_whitsun_eve",
-    "msgid": "Day before Whitsun Eve",
-    "new_comment": "",
-    "comment": "Day before Whitsun Eve.",
-    "messages": {
-      "en_US": "Day before Whitsun Eve",
-      "sv": "Dag före Pingstafton",
-      "th": "วันก่อนวันก่อนวันสมโภชพระจิตเจ้า",
-      "uk": "За два дні до Трійці"
-    },
-    "countries": [
-      "SE"
     ]
   },
   {
@@ -8993,10 +9188,12 @@
       "en_US": "Day of the Dead",
       "es": "Día de Muertos",
       "fr_HT": "Fête des Morts",
-      "ht": "Jou Mouri"
+      "ht": "Jou Mouri",
+      "uk": "День мертвих"
     },
     "countries": [
-      "HT"
+      "HT",
+      "XMEX"
     ]
   },
   {
@@ -10005,19 +10202,28 @@
     "messages": {
       "bn": "দীপাবলি",
       "en_GY": "Deepavali",
-      "en_IN": "Diwali",
+      "en_IN": "Diwali (Deepavali)",
       "en_KE": "Diwali",
       "en_MU": "Divali",
       "en_TT": "Divali",
-      "en_US": "Diwali",
-      "gu": "દિવાળી",
-      "hi": "दिवाली",
+      "en_US": {
+        "GY": "Diwali",
+        "IN": "Diwali (Deepavali)",
+        "KE": "Diwali",
+        "MM": "Diwali",
+        "MU": "Diwali",
+        "SR": "Diwali",
+        "TT": "Diwali",
+        "US": "Diwali"
+      },
+      "gu": "દિવાળી (દીપાવલી)",
+      "hi": "दिवाली (दीपावली)",
       "kn": "ದೀಪಾವಳಿ",
       "ml": "ദീപാവലി",
-      "mr": "दिवाळी (लक्ष्मीपूजन)",
+      "mr": "दिवाळी (दीपवाली)",
       "my": "ဒီပါဝလီနေ့",
       "nl": "Divali",
-      "pa": "ਦੀਵਾਲੀ",
+      "pa": "ਦੀਵਾਲੀ (ਦੀਪਵਾਲੀ)",
       "sw": "Diwali",
       "ta": "தீபாவளி",
       "te": "దీపావళి",
@@ -10064,6 +10270,50 @@
     },
     "countries": [
       "XNSE"
+    ]
+  },
+  {
+    "id": "diwali_south_india",
+    "msgid": "Diwali (South India)",
+    "new_comment": "",
+    "comment": "Diwali (South India).",
+    "messages": {
+      "bn": "দীপাবলি (দক্ষিণ ভারত)",
+      "en_IN": "Deepavali (South India)",
+      "en_US": "Diwali (South India)",
+      "gu": "દીપાવલી (દક્ષિણ ભારત)",
+      "hi": "दीपावली (दक्षिण भारत)",
+      "kn": "ದೀಪಾವಳಿ (ದಕ್ಷಿಣ ಭಾರತ)",
+      "ml": "ദീപാവലി (ദക്ഷിണേന്ത്യ)",
+      "mr": "दीपावली (दक्षिण भारत)",
+      "pa": "ਦੀਪਾਵਲੀ (ਦੱਖਣੀ ਭਾਰਤ)",
+      "ta": "தீபாவளி (தென்னிந்தியா)",
+      "te": "దీపావళి (దక్షిణ భారతదేశం)"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
+    "id": "dolyatra",
+    "msgid": "Dolyatra",
+    "new_comment": "",
+    "comment": "Dolyatra.",
+    "messages": {
+      "bn": "দোলযাত্রা",
+      "en_IN": "Dolyatra",
+      "en_US": "Dolyatra",
+      "gu": "Dolyatra",
+      "hi": "दोलयात्रा",
+      "kn": "ದೋಲಯಾತ್ರೆ",
+      "ml": "ദോലയാത്ര",
+      "mr": "दोलयात्रा",
+      "pa": "ਦੋਲਯਾਤਰਾ",
+      "ta": "தோலயாத்திரை",
+      "te": "దోలయాత్ర"
+    },
+    "countries": [
+      "IN"
     ]
   },
   {
@@ -10139,28 +10389,32 @@
   },
   {
     "id": "dr_b_r_ambedkar_jayanti",
-    "msgid": "Dr. B. R. Ambedkar's Jayanti",
+    "msgid": "Dr. B. R. Ambedkar Jayanti",
     "new_comment": "",
     "comment": "Dr. B. R. Ambedkar Jayanti.",
     "messages": {
+      "en_IN": "Dr. Baba Saheb Ambedkar Jayanti",
+      "en_US": "Dr. B. R. Ambedkar Jayanti",
+      "gu": "ડૉ. બાબાસાહેબ આંબેડકર જયંતિ",
+      "hi": "डॉ. बाबा साहेब अम्बेडकर जयंती",
+      "mr": "डॉ. बाबासाहेब आंबेडकर जयंती"
+    },
+    "countries": [
+      "XNSE"
+    ]
+  },
+  {
+    "id": "dr_b_r_ambedkar_s_birthday",
+    "msgid": "Dr. B. R. Ambedkar's Birthday",
+    "new_comment": "",
+    "comment": "Dr. B. R. Ambedkar's Birthday.",
+    "messages": {
       "bn": "ড. বি. আর. আম্বেদকর জয়ন্তী",
-      "en_IN": {
-        "IN": "Dr. B. R. Ambedkar's Jayanti",
-        "XNSE": "Dr. Baba Saheb Ambedkar Jayanti"
-      },
-      "en_US": {
-        "IN": "Dr. B. R. Ambedkar's Jayanti",
-        "XNSE": "Dr. B. R. Ambedkar Jayanti"
-      },
-      "gu": {
-        "IN": "ડૉ. બી. આર. આંબેડકર જયંતિ",
-        "XNSE": "ડૉ. બાબાસાહેબ આંબેડકર જયંતિ"
-      },
-      "hi": {
-        "IN": "डॉ. बी.आर. आम्बेडकर जयंती",
-        "XNSE": "डॉ. बाबा साहेब अम्बेडकर जयंती"
-      },
-      "kn": "ಡಾ|| ಬಿ.ಆರ್.ಅಂಬೇಡ್ಕರ್ ಜಯಂತಿ",
+      "en_IN": "Dr. B. R. Ambedkar's Jayanti",
+      "en_US": "Dr. B. R. Ambedkar's Birthday",
+      "gu": "ડૉ. બી. આર. આંબેડકર જયંતિ",
+      "hi": "डॉ. बी.आर. आम्बेडकर जयंती",
+      "kn": "ಡಾ ಬಿ.ಆರ್.ಅಂಬೇಡ್ಕರ್ ಜಯಂತಿ",
       "ml": "ഡോ. ബി. ആർ. അംബേദ്കർ ജയന്തി",
       "mr": "डॉ. बाबासाहेब आंबेडकर जयंती",
       "pa": "ਜਨਮ ਦਿਨ ਡਾ: ਬੀ.ਆਰ. ਅੰਬੇਡਕਰ",
@@ -10168,8 +10422,7 @@
       "te": "డా. బి.ఆర్. అంబేద్కర్ జయంతి"
     },
     "countries": [
-      "IN",
-      "XNSE"
+      "IN"
     ]
   },
   {
@@ -10317,6 +10570,72 @@
     ]
   },
   {
+    "id": "dussehra_mahanavami",
+    "msgid": "Dussehra (Mahanavami)",
+    "new_comment": "",
+    "comment": "Dussehra (Mahanavami).",
+    "messages": {
+      "bn": "দশেরা (মহানবমী)",
+      "en_IN": "Dussehra (Mahanavami)",
+      "en_US": "Dussehra (Mahanavami)",
+      "gu": "દશેરા (મહાનવમી)",
+      "hi": "दशहरा (महानवमी)",
+      "kn": "ದಸರಾ (ಮಹಾನವಮಿ)",
+      "ml": "ദസറ (മഹാനവമി)",
+      "mr": "दसरा (महानवमी)",
+      "pa": "ਦੁਸਹਿਰਾ (ਮਹਾਨਵਮੀ)",
+      "ta": "தசரா (மகாநவமி)",
+      "te": "దసరా (మహానవమి)"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
+    "id": "dussehra_mahashtami",
+    "msgid": "Dussehra (Mahashtami)",
+    "new_comment": "",
+    "comment": "Dussehra (Mahashtami).",
+    "messages": {
+      "bn": "দশেরা (মহাষ্টমী)",
+      "en_IN": "Dussehra (Mahashtami)",
+      "en_US": "Dussehra (Mahashtami)",
+      "gu": "દશેરા (મહાષ્ટમી)",
+      "hi": "दशहरा (महाष्टमी)",
+      "kn": "ದಸರಾ (ಮಹಾಷ್ಟಮಿ)",
+      "ml": "ദസറ (മഹാഷ്ടമി)",
+      "mr": "दसरा (महाष्टमी)",
+      "pa": "ਦੁਸਹਿਰਾ (ਮਹਾਅਸ਼ਟਮੀ)",
+      "ta": "தசரா (மகாஷ்டமி)",
+      "te": "దసరా (మహాష్టమి)"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
+    "id": "dussehra_saptami",
+    "msgid": "Dussehra (Saptami)",
+    "new_comment": "",
+    "comment": "Dussehra (Saptami).",
+    "messages": {
+      "bn": "দশেরা (সপ্তমী)",
+      "en_IN": "Dussehra (Saptami)",
+      "en_US": "Dussehra (Saptami)",
+      "gu": "દશેરા (સપ્તમી)",
+      "hi": "दशहरा (सप्तमी)",
+      "kn": "ದಸರಾ (ಸಪ್ತಮಿ)",
+      "ml": "ദസറ (സപ്തമി)",
+      "mr": "दसरा (सप्तमी)",
+      "pa": "ਦੁਸਹਿਰਾ (ਸਪਤਮੀ)",
+      "ta": "தசரா (சப்தமி)",
+      "te": "దసరా (సప్తమి)"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
     "id": "duwadashi_dashain",
     "msgid": "Duwadashi (Dashain)",
     "new_comment": "",
@@ -10449,25 +10768,9 @@
       "es": "Lunes de Pascua",
       "fi": "Toinen pääsiäispäivä",
       "fo": "Annar páskadagur",
-      "fr": {
-        "BE": "Lundi de Pâques",
-        "BF": "Lundi de Pâques",
-        "CA": "Lundi de Pâques",
-        "CF": "Lundi de Pâques",
-        "CG": "Lundi de Pâques",
-        "CH": "Lundi de Pâques",
-        "CI": "Lundi de Pâques",
-        "DZ": "Lundi de Pâques",
-        "FR": "Lundi de Pâques",
-        "GA": "Lundi de Pâques",
-        "GN": "Lundi de Pâques",
-        "LU": "Lundi de Pâques",
-        "MC": "Le lundi de Pâques",
-        "ML": "Lundi de Pâques",
-        "RW": "Lundi de Pâques",
-        "TG": "Lundi de Pâques"
-      },
+      "fr": "Lundi de Pâques",
       "fr_BJ": "Lundi de Pâques",
+      "fr_MC": "Le Lundi de Pâques",
       "fr_NE": "Lundi de Pâques",
       "fr_SN": "Lundi de Pâques",
       "fy": "Peaskemoandei",
@@ -10880,7 +11183,7 @@
       "az": "Qurban bayrami",
       "bn": {
         "BD": "ঈদুল আজহা",
-        "IN": "বকরিদ"
+        "IN": "ঈদ-উল-জুহা (বকরিদ)"
       },
       "bs": "Kurban Bajram",
       "ca": "Festa del Sacrifici-Aid Al Adha",
@@ -10896,7 +11199,7 @@
       "en_GM": "Tobaski",
       "en_GY": "Eid-Ul-Azha",
       "en_IN": {
-        "IN": "Bakrid",
+        "IN": "Id-ul-Zuha (Bakrid)",
         "XNSE": "Bakri Id"
       },
       "en_NG": "Id el Kabir",
@@ -10934,20 +11237,26 @@
       "fr_BJ": "Jour de la Tabaski",
       "fr_NE": "Tabaski",
       "fr_SN": "Journée de la Tabaski",
-      "gu": "બકરી ઈદ",
-      "hi": "बकरीद",
+      "gu": {
+        "IN": "ઈદ-ઉલ-ઝુહા (બકરી ઈદ)",
+        "XNSE": "બકરી ઈદ"
+      },
+      "hi": {
+        "IN": "ईद-उल-ज़ुहा (बकरीद)",
+        "XNSE": "बकरीद"
+      },
       "id": "Hari Raya Idul Adha",
       "kab": "Lɛid tameqrant",
       "kk": "Құрбан айт",
       "kn": {
-        "IN": "ಬಕ್ರೀದ್",
+        "IN": "ಈದ್-ಉಲ್-ಜುಹಾ (ಬಕ್ರೀದ್)",
         "NP": "ಈದ್ ಅಲ್-ಅಧಾ"
       },
       "ky": "Курман айт",
       "mk": "Курбан Бајрам",
-      "ml": "ബക്രീദ്",
+      "ml": "ഈദുൽ സുഹ (ബക്രീദ്)",
       "mr": {
-        "IN": "बकरी ईद (ईद-उल-झुआ)",
+        "IN": "ईद-उल-जुहा (बकरीद)",
         "XNSE": "बकरी ईद"
       },
       "ms": "Hari Raya Aidil Adha",
@@ -10955,7 +11264,7 @@
       "my": "အီဒုလ်အဿွဟာနေ့",
       "ne": "बकर ईद (ईद उल अजहा)",
       "nl": "Ied-Ul-Adha",
-      "pa": "ਈਦ-ਉੱਲ-ਜੂਹਾ (ਬਕਰੀਦ)",
+      "pa": "ਈਦ-ਉਲ-ਜ਼ੁਹਾ (ਬਕਰੀਦ)",
       "ps_AF": "عید قربانی",
       "pt_GW": "Tabaski",
       "pt_TL": "Idul Adha",
@@ -10975,9 +11284,9 @@
         "XK": "Kurban Bajram, prvi dan"
       },
       "sw": "Eid El Hajj",
-      "ta": "பகரீத்",
+      "ta": "ஈதுல் ஸுஹா (பக்ரீத்)",
       "ta_LK": "ஈதுல் அழ்ஹா",
-      "te": "బక్రీద్",
+      "te": "ఈద్-ఉల్-జుహా (బక్రీద్)",
       "tet": "Idul Adha",
       "tg": "Рӯзи иди Қурбон",
       "th": "วันอีดิ้ลอัฎฮา",
@@ -12260,12 +12569,7 @@
       "pt_AO": "Dia da Família",
       "pt_MZ": "Dia da Família",
       "th": "วันครอบครัว",
-      "uk": {
-        "AO": "День родини",
-        "MZ": "День родини",
-        "NA": "День родини",
-        "VE": "День сімʼї"
-      }
+      "uk": "День родини"
     },
     "countries": [
       "AM",
@@ -12275,7 +12579,8 @@
       "MZ",
       "NA",
       "US",
-      "VE"
+      "VE",
+      "XTSE"
     ]
   },
   {
@@ -13826,29 +14131,13 @@
     "new_comment": "",
     "comment": "Gandhi Jayanti.",
     "messages": {
-      "bn": "গান্ধী জয়ন্তী",
-      "en_IN": {
-        "IN": "Gandhi Jayanti",
-        "XNSE": "Mahatma Gandhi Jayanti"
-      },
+      "en_IN": "Mahatma Gandhi Jayanti",
       "en_US": "Gandhi Jayanti",
-      "gu": {
-        "IN": "ગાંધી જયંતિ",
-        "XNSE": "મહાત્મા ગાંધી જયંતિ"
-      },
-      "hi": {
-        "IN": "गांधी जयंती",
-        "XNSE": "महात्मा गांधी जयंती"
-      },
-      "kn": "ಗಾಂಧಿ ಜಯಂತಿ",
-      "ml": "ഗാന്ധി ജയന്തി",
-      "mr": "महात्मा गांधी जयंती",
-      "pa": "ਜਨਮ ਦਿਵਸ ਮਹਾਤਮਾ ਗਾਂਧੀ ਜੀ",
-      "ta": "காந்தி ஜெயந்தி",
-      "te": "గాంధీ జయంతి"
+      "gu": "મહાત્મા ગાંધી જયંતિ",
+      "hi": "महात्मा गांधी जयंती",
+      "mr": "महात्मा गांधी जयंती"
     },
     "countries": [
-      "IN",
       "XNSE"
     ]
   },
@@ -13864,17 +14153,39 @@
       "en_US": "Ganesh Chaturthi",
       "gu": "ગણેશ ચતુર્થી",
       "hi": "गणेश चतुर्थी",
-      "kn": "ವಿನಾಯಕ ಚತುರ್ಥಿ",
-      "ml": "ഗണേശ് ചതുർത്ഥി",
+      "kn": "ಗಣೇಶ ಚತುರ್ಥಿ",
+      "ml": "ഗണേശ ചതുർത്ഥി",
       "mr": "गणेश चतुर्थी",
-      "pa": "ਗਣੇਸ਼ ਚਤੁਰਥੀ",
-      "ta": "விநாயகர் சதுர்த்தி",
-      "te": "వినాయక చవితి"
+      "pa": "ਵਿਨਾਇਕ ਚਤੁਰਥੀ",
+      "ta": "கணேஷ் சதுர்த்தி",
+      "te": "గణేశ చవితి"
     },
     "countries": [
       "IN",
       "MU",
       "XNSE"
+    ]
+  },
+  {
+    "id": "ganesh_chaturthi_vinayak_chaturthi",
+    "msgid": "Ganesh Chaturthi / Vinayak Chaturthi",
+    "new_comment": "",
+    "comment": "Ganesh Chaturthi / Vinayak Chaturthi.",
+    "messages": {
+      "bn": "গণেশ চতুর্থী / বিনায়ক চতুর্থী",
+      "en_IN": "Ganesh Chaturthi / Vinayak Chaturthi",
+      "en_US": "Ganesh Chaturthi / Vinayak Chaturthi",
+      "gu": "ગણેશ ચતુર્થી / વિનાયક ચતુર્થી",
+      "hi": "गणेश चतुर्थी / विनायक चतुर्थी",
+      "kn": "ಗಣೇಶ ಚತುರ್ಥಿ / ವಿನಾಯಕ ಚತುರ್ಥಿ",
+      "ml": "ഗണേശ ചതുർത്ഥി / വിനായക ചതുർത്ഥി",
+      "mr": "गणेश चतुर्थी / विनायक चतुर्थी",
+      "pa": "ਗਣੇਸ਼ ਚਤੁਰਥੀ / ਵਿਨਾਇਕ ਚਤੁਰਥੀ",
+      "ta": "விநாயகர் சதுர்த்தி / விநாயக சதுர்த்தி",
+      "te": "గణేశ చవితి / వినాయక చవితి"
+    },
+    "countries": [
+      "IN"
     ]
   },
   {
@@ -14221,7 +14532,8 @@
       "ar": {
         "CA": "الجمعة العظيمة",
         "ET": "الجمعة العظيمة (سقلَت)",
-        "PS": "الجمعة العظيمة"
+        "PS": "الجمعة العظيمة",
+        "XTSE": "الجمعة العظيمة"
       },
       "bg": "Велики петък",
       "bn": "গুড ফ্রাইডে",
@@ -14282,14 +14594,15 @@
         "CV": "Vendredi Saint",
         "FR": "Vendredi saint",
         "LU": "Vendredi Saint",
-        "RW": "Vendredi Saint"
+        "RW": "Vendredi Saint",
+        "XTSE": "Vendredi saint"
       },
       "fr_HT": "Vendredi Saint",
       "fy": "Goedfreed",
       "gu": {
         "IN": "ગુડ ફ્રાઈડે",
         "XCME": "ગુડ ફ્રાઇડે",
-        "XNSE": "ગુડ ફ્રાઈડે",
+        "XNSE": "ગુડ ફ્રાઇડે",
         "XNYS": "ગુડ ફ્રાઇડે"
       },
       "hi": "गुड फ्राइडे",
@@ -14465,8 +14778,10 @@
       "VG",
       "XCME",
       "XETR",
+      "XMEX",
       "XNSE",
-      "XNYS"
+      "XNYS",
+      "XTSE"
     ]
   },
   {
@@ -14844,14 +15159,52 @@
     ]
   },
   {
+    "id": "guru_gobind_singh_s_birthday",
+    "msgid": "Guru Gobind Singh's Birthday",
+    "new_comment": "",
+    "comment": "Guru Gobind Singh's Birthday.",
+    "messages": {
+      "bn": "গুরু গোবিন্দ সিং এর জন্মদিন",
+      "en_IN": "Guru Gobind Singh's Jayanti",
+      "en_US": "Guru Gobind Singh's Birthday",
+      "gu": "ગુરુ ગોવિંદ સિંહનો જન્મદિવસ",
+      "hi": "गुरु गोविंद सिंह का जन्मदिन",
+      "kn": "ಗುರು ಗೋವಿಂದ ಸಿಂಗ್ ಅವರ ಜನ್ಮದಿನ",
+      "ml": "ഗുരു ഗോബിന്ദ് സിംഗിന്റെ ജന്മദിനം",
+      "mr": "गुरु गोबिंद सिंग यांचा वाढदिवस",
+      "pa": "ਗੁਰੂ ਗੋਬਿੰਦ ਸਿੰਘ ਜੀ ਦਾ ਜਨਮ ਦਿਹਾੜਾ",
+      "ta": "குரு கோவிந்த் சிங்கின் பிறந்தநாள்",
+      "te": "గురు గోవింద్ సింగ్ పుట్టినరోజు"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
     "id": "guru_nanak_jayanti",
     "msgid": "Guru Nanak Jayanti",
     "new_comment": "",
     "comment": "Guru Nanak Jayanti.",
     "messages": {
-      "bn": "গুরু নানক জয়ন্তী",
       "en_IN": "Guru Nanak Jayanti",
       "en_US": "Guru Nanak Jayanti",
+      "gu": "ગુરુ નાનક જયંતિ",
+      "hi": "गुरु नानक जयंती",
+      "mr": "गुरुनानक जयंती"
+    },
+    "countries": [
+      "XNSE"
+    ]
+  },
+  {
+    "id": "guru_nanak_s_birthday",
+    "msgid": "Guru Nanak's Birthday",
+    "new_comment": "",
+    "comment": "Guru Nanak's Birthday.",
+    "messages": {
+      "bn": "গুরু নানক জয়ন্তী",
+      "en_IN": "Guru Nanak's Jayanti",
+      "en_US": "Guru Nanak's Birthday",
       "gu": "ગુરુ નાનક જયંતિ",
       "hi": "गुरु नानक जयंती",
       "kn": "ಗುರು ನಾನಕ್ ಜಯಂತಿ",
@@ -14862,8 +15215,73 @@
       "te": "గురునానక్ జయంతి"
     },
     "countries": [
-      "IN",
-      "XNSE"
+      "IN"
+    ]
+  },
+  {
+    "id": "guru_rabindranath_s_birthday",
+    "msgid": "Guru Rabindranath's Birthday",
+    "new_comment": "",
+    "comment": "Guru Rabindranath's Birthday.",
+    "messages": {
+      "bn": "গুরু রবীন্দ্রনাথের জয়ন্তী",
+      "en_IN": "Guru Rabindranath's Jayanti",
+      "en_US": "Guru Rabindranath's Birthday",
+      "gu": "ગુરુ રવીન્દ્રનાથ જયંતિ",
+      "hi": "गुरु रवींद्रनाथ जयंती",
+      "kn": "ಗುರು ರವೀಂದ್ರನಾಥ್ ಜಯಂತಿ",
+      "ml": "ഗുരു രവീന്ദ്രനാഥ് ജയന്തി",
+      "mr": "गुरु रवींद्रनाथ जयंती",
+      "pa": "ਗੁਰੂ ਰਬਿੰਦਰਨਾਥ ਜਯੰਤੀ",
+      "ta": "குரு ரவீந்திரநாத் ஜெயந்தி",
+      "te": "గురు రవీంద్రనాథ్ జయంతి"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
+    "id": "guru_ravi_das_s_birthday",
+    "msgid": "Guru Ravi Das's Birthday",
+    "new_comment": "",
+    "comment": "Guru Ravi Das's Birthday.",
+    "messages": {
+      "bn": "গুরু রবি দাসের জন্মদিন",
+      "en_IN": "Guru Ravi Das's Jayanti",
+      "en_US": "Guru Ravi Das's Birthday",
+      "gu": "ગુરુ રવિદાસનો જન્મદિવસ",
+      "hi": "गुरु रवि दास का जन्मदिन",
+      "kn": "ಗುರು ರವಿದಾಸರ ಜನ್ಮದಿನ",
+      "ml": "ഗുരു രവി ദാസിന്റെ ജന്മദിനം",
+      "mr": "गुरु रविदास जयंती",
+      "pa": "ਗੁਰੂ ਰਵਿਦਾਸ ਜੀ ਦਾ ਜਨਮ ਦਿਹਾੜਾ",
+      "ta": "குரு ரவி தாஸின் பிறந்தநாள்",
+      "te": "గురు రవిదాస్ పుట్టినరోజు"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
+    "id": "guru_tegh_bahadur_s_martyrdom_day",
+    "msgid": "Guru Tegh Bahadur's Martyrdom Day",
+    "new_comment": "",
+    "comment": "Guru Tegh Bahadur's Martyrdom Day.",
+    "messages": {
+      "bn": "গুরু তেগ বাহাদুরের শাহাদত দিবস",
+      "en_IN": "Guru Tegh Bahadur's Martyrdom Day",
+      "en_US": "Guru Tegh Bahadur's Martyrdom Day",
+      "gu": "ગુરુ તેગ બહાદુરનો શહીદ દિવસ",
+      "hi": "गुरु तेग बहादुर का शहीदी दिवस",
+      "kn": "ಗುರು ತೇಜ್ ಬಹದ್ದೂರ್ ಅವರ ಹುತಾತ್ಮ ದಿನ",
+      "ml": "ഗുരു തേജ് ബഹാദൂറിൻ്റെ രക്തസാക്ഷിത്വ ദിനം",
+      "mr": "गुरु तेग बहादूर यांचा हुतात्मा दिन",
+      "pa": "ਗੁਰੂ ਤੇਗ ਬਹਾਦਰ ਜੀ ਦਾ ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ",
+      "ta": "குரு தேக் பகதூர் தியாகி தினம்",
+      "te": "గురు తేగ్ బహదూర్ అమరవీర దినోత్సవం"
+    },
+    "countries": [
+      "IN"
     ]
   },
   {
@@ -15440,6 +15858,28 @@
     ]
   },
   {
+    "id": "holika_dahan",
+    "msgid": "Holika Dahan",
+    "new_comment": "",
+    "comment": "Holika Dahan.",
+    "messages": {
+      "bn": "হোলিকা দহন",
+      "en_IN": "Holika Dahan",
+      "en_US": "Holika Dahan",
+      "gu": "હોલિકા દહન",
+      "hi": "होलिका दहन",
+      "kn": "ಹೋಲಿಕಾ ದಹನ್",
+      "ml": "ഹോളിക ദഹൻ",
+      "mr": "होलिका दहन",
+      "pa": "ਹੋਲਿਕਾ ਦਹਨ",
+      "ta": "ஹோலிகா தஹான்",
+      "te": "హోలికా దహన్"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
     "id": "holy_saturday",
     "msgid": "Holy Saturday",
     "new_comment": "",
@@ -15505,21 +15945,6 @@
       "CV",
       "PS",
       "US"
-    ]
-  },
-  {
-    "id": "holy_trinity_day",
-    "msgid": "Holy Trinity Day",
-    "new_comment": "",
-    "comment": "Holy Trinity Day.",
-    "messages": {
-      "ar": "الثالوث",
-      "en_US": "Holy Trinity Day",
-      "th": "วันสมโภชพระตรีเอกภาพ",
-      "uk": "Трійця"
-    },
-    "countries": [
-      "UA"
     ]
   },
   {
@@ -15601,14 +16026,8 @@
     "comment": "Hurricane Sandy.",
     "messages": {
       "en_US": "Hurricane Sandy",
-      "gu": {
-        "XCME": "હરિકેન સેન્ડી",
-        "XNYS": "વાવાઝોડું સેન્ડી"
-      },
-      "hi": {
-        "XCME": "हरिकेन सैंडी",
-        "XNYS": "तूफान सैंडी"
-      }
+      "gu": "હરિકેન સેન્ડી",
+      "hi": "हरिकेन सैंडी"
     },
     "countries": [
       "XCME",
@@ -15678,10 +16097,8 @@
         "PE": "Inmaculada Concepción"
       },
       "fil": "Dakilang Kapistahan ng Kalinis-linisang Paglilihi sa Mahal na Birheng Maria",
-      "fr": {
-        "CH": "Immaculée Conception",
-        "MC": "L'Immaculée Conception"
-      },
+      "fr": "Immaculée Conception",
+      "fr_MC": "Le jour de l'Immaculée Conception",
       "it": "Immacolata Concezione",
       "it_IT": "Immacolata Concezione",
       "pt_MO": "Imaculada Conceição",
@@ -15871,7 +16288,8 @@
         "PY": "Día de la Independencia Nacional",
         "SV": "Día de la Independencia",
         "UY": "Declaratoria de la Independencia",
-        "VE": "Día de la Independencia"
+        "VE": "Día de la Independencia",
+        "XMEX": "Día de la Independencia"
       },
       "et": "iseseisvuspäev",
       "fi": "Itsenäisyyspäivä",
@@ -15987,7 +16405,8 @@
         "UA": "День незалежності України",
         "UY": "День проголошення незалежності",
         "UZ": "День незалежності",
-        "VE": "День незалежності"
+        "VE": "День незалежності",
+        "XMEX": "День незалежності"
       },
       "ur_PK": "یوم آزادی",
       "uz": "Mustaqillik kuni"
@@ -16084,6 +16503,7 @@
       "VE",
       "XCME",
       "XK",
+      "XMEX",
       "XNSE",
       "XNYS",
       "YE"
@@ -17130,22 +17550,44 @@
     ]
   },
   {
-    "id": "janmashtami",
-    "msgid": "Janmashtami",
+    "id": "janmashtami_smarta",
+    "msgid": "Janmashtami (Smarta)",
     "new_comment": "",
-    "comment": "Janmashtami.",
+    "comment": "Janmashtami (Smarta).",
     "messages": {
-      "bn": "জন্মাষ্টমী",
-      "en_IN": "Janmashtami",
-      "en_US": "Janmashtami",
-      "gu": "જન્માષ્ટમી",
-      "hi": "जन्माष्टमी",
-      "kn": "ಶ್ರೀ ಕೃಷ್ಣ ಜನ್ಮಾಷ್ಟಮಿ",
-      "ml": "ജന്മാഷ്ടമി",
-      "mr": "गोकुळाष्टमी",
-      "pa": "ਜਨਮ ਅਸ਼ਟਮੀ",
-      "ta": "கிருஷ்ண ஜெயந்தி",
-      "te": "కృష్ణాష్టమి"
+      "bn": "জন্মাষ্টমী (স্মার্ত)",
+      "en_IN": "Janmashtami (Smarta)",
+      "en_US": "Janmashtami (Smarta)",
+      "gu": "જન્માષ્ટમી (સ્માર્ત)",
+      "hi": "जन्माष्टमी (स्मार्त)",
+      "kn": "ಜನ್ಮಾಷ್ಟಮಿ (ಸ್ಮಾರ್ತ)",
+      "ml": "ജന്മാഷ്ടമി (സ്മാർത്ത)",
+      "mr": "गोकुळाष्टमी (स्मार्त)",
+      "pa": "ਜਨਮਾਸ਼ਟਮੀ (ਸਮਾਰਤ)",
+      "ta": "ஜனமாஷ்டமி (ஸ்மார்த்த)",
+      "te": "జన్మాష్టమి (స్మార్త)"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
+    "id": "janmashtami_vaishnava",
+    "msgid": "Janmashtami (Vaishnava)",
+    "new_comment": "",
+    "comment": "Janmashtami (Vaishnava).",
+    "messages": {
+      "bn": "জন্মাষ্টমী (বৈষ্ণব)",
+      "en_IN": "Janmashtami (Vaishnava)",
+      "en_US": "Janmashtami (Vaishnava)",
+      "gu": "જન્માષ્ટમી (વૈષ્ણવ)",
+      "hi": "जन्माष्टमी (वैष्णव)",
+      "kn": "ಜನ್ಮಾಷ್ಟಮಿ (ವೈಷ್ಣವ)",
+      "ml": "ജന്മാഷ്ടമി (വൈഷ്ണവ)",
+      "mr": "गोकुळाष्टमी (वैष्णव)",
+      "pa": "ਜਨਮਾਸ਼ਟਮੀ (ਵੈਸ਼ਨਵ)",
+      "ta": "ஜனமாஷ்டமி (வைஷ்ணவ)",
+      "te": "జన్మాష్టమి (వైష్ణవ)"
     },
     "countries": [
       "IN"
@@ -17426,12 +17868,25 @@
     "comment": "Jumu'atul-Wida.",
     "messages": {
       "ar": "جمعة الوداع",
-      "bn": "জুমাতুল বিদা",
+      "bn": {
+        "BD": "জুমাতুল বিদা",
+        "IN": "জামাত-উল-ভিদা"
+      },
       "en_BD": "Jumu'atul-Wida",
-      "en_US": "Jumu'atul-Wida"
+      "en_IN": "Jamat-Ul-Vida",
+      "en_US": "Jumu'atul-Wida",
+      "gu": "જમાત-ઉલ-વિદા",
+      "hi": "जमात-उल-विदा",
+      "kn": "ಜಮಾತ್-ಉಲ್-ವಿದಾ",
+      "ml": "ജമാഅത്ത്-ഉൽ-വിദ",
+      "mr": "जमात-उल-विदा",
+      "pa": "ਜਮਾਤ-ਉਲ-ਵਿਦਾ",
+      "ta": "ஜமாத்-உல்-விடா",
+      "te": "జమాత్-ఉల్-విదా"
     },
     "countries": [
-      "BD"
+      "BD",
+      "IN"
     ]
   },
   {
@@ -17505,6 +17960,28 @@
     },
     "countries": [
       "US"
+    ]
+  },
+  {
+    "id": "karaka_chaturthi_karwa_chouth",
+    "msgid": "Karaka Chaturthi (Karwa Chouth)",
+    "new_comment": "",
+    "comment": "Karaka Chaturthi (Karwa Chouth).",
+    "messages": {
+      "bn": "কারাকা চতুর্থী (কারওয়া চৌথ)",
+      "en_IN": "Karaka Chaturthi (Karwa Chouth)",
+      "en_US": "Karaka Chaturthi (Karwa Chouth)",
+      "gu": "કરકા ચતુર્થી (કરવા ચોથ)",
+      "hi": "कराका चतुर्थी (करवा चौथ)",
+      "kn": "ಕರಕ ಚತುರ್ಥಿ (ಕರ್ವಾ ಚೌತ್)",
+      "ml": "കാരക ചതുർത്ഥി (കർവാ ചൗത്ത്)",
+      "mr": "करक चतुर्थी (करवा चौथ)",
+      "pa": "ਕਰਕ ਚਤੁਰਥੀ (ਕਰਵਾ ਚੌਥ)",
+      "ta": "காரக சதுர்த்தி (கர்வா சௌத்)",
+      "te": "కరక చతుర్థి (కర్వా చౌత్)"
+    },
+    "countries": [
+      "IN"
     ]
   },
   {
@@ -17967,11 +18444,11 @@
         "SY": "عيد العمال",
         "TN": "عيد العمال",
         "UA": "عيد العمال",
+        "XTSE": "عيد العمال",
         "YE": "عيد العمال"
       },
       "ar_EG": "عيد العمال",
       "be": "Свята працы",
-      "bn": "শ্রমিক দিবস",
       "ca": {
         "AD": "Festa del treball",
         "ES": "Festa del Treball"
@@ -18004,7 +18481,6 @@
       "en_GM": "Labour Day",
       "en_GY": "Labour Day",
       "en_HK": "Labour Day",
-      "en_IN": "Labour Day",
       "en_KE": "Labour Day",
       "en_LC": "Labour Day",
       "en_MO": "Labour Day",
@@ -18030,7 +18506,8 @@
         "NI": "Día del Trabajo",
         "PA": "Día del Trabajo",
         "PE": "Día del Trabajo",
-        "SV": "Día del Trabajo"
+        "SV": "Día del Trabajo",
+        "XMEX": "Día del Trabajo"
       },
       "fil": "Araw ng Paggawa",
       "fr": {
@@ -18051,23 +18528,16 @@
         "LB": "Fête du Travail",
         "LU": "Fête du Travail",
         "MA": "Fête du Travail",
-        "MC": "Fête de la Travaille",
         "ML": "Fête du Travail",
         "RW": "Journée du Travail",
-        "TG": "Fête du travail"
+        "TG": "Fête du travail",
+        "XTSE": "Fête du Travail"
       },
       "fr_BJ": "Fête du Travail",
+      "fr_MC": "Le jour de la Fête du Travail",
       "fr_SN": "Fête du Travail",
-      "gu": {
-        "IN": "મજૂર દિવસ",
-        "XCME": "શ્રમ દિવસ",
-        "XNYS": "મજૂર દિવસ"
-      },
-      "hi": {
-        "IN": "मजदूर दिवस",
-        "XCME": "श्रम दिवस",
-        "XNYS": "मज़दूर दिवस"
-      },
+      "gu": "શ્રમ દિવસ",
+      "hi": "श्रम दिवस",
       "hr": "Praznik rada",
       "hu": "A Munka ünnepe",
       "hy": "Աշխատանքի օր",
@@ -18075,18 +18545,14 @@
       "it": "Festa del lavoro",
       "it_IT": "Festa del Lavoro",
       "kab": "Ass n yixeddamen",
-      "kn": "ಕಾರ್ಮಿಕ ದಿನಾಚರಣೆ",
       "ky": "Эмгек майрамы",
       "lb": "Dag vun der Aarbecht",
       "lv": "Darba svētki",
       "mg": "Fetin'ny asa",
       "mk": "Ден на трудот",
-      "ml": "മെയ് ദിനം",
-      "mr": "कामगार दिन",
       "ms_MY": "Hari Pekerja",
       "nl": "Dag van de Arbeid",
       "no": "Arbeidernes dag",
-      "pa": "ਮਈ ਦਿਵਸ",
       "pap_AW": "Dia di Obrero",
       "pap_BQ": "Dia di labor",
       "pap_CW": "Dia di Obrero",
@@ -18100,8 +18566,6 @@
       "sl": "praznik dela",
       "sr": "Празник рада",
       "sw": "Siku ya Kazi",
-      "ta": "தொழிலாளர் நாள்",
-      "te": "కార్మిక దినోత్సవం",
       "th": "วันแรงงาน",
       "uk": "День праці",
       "ur_PK": "یوم مزدور",
@@ -18158,7 +18622,6 @@
       "HN",
       "HR",
       "HU",
-      "IN",
       "IQ",
       "IS",
       "IT",
@@ -18210,7 +18673,9 @@
       "US",
       "XCME",
       "XETR",
+      "XMEX",
       "XNYS",
+      "XTSE",
       "YE"
     ]
   },
@@ -19164,24 +19629,11 @@
     "new_comment": "",
     "comment": "Maha Navami.",
     "messages": {
-      "bn": "মহানবমী",
-      "en_IN": "Maha Navami",
       "en_US": "Maha Navami",
-      "gu": "મહાનવમી",
-      "hi": "महानवमी",
-      "kn": {
-        "IN": "ಮಹಾನವಮಿ",
-        "NP": "ಮಹಾ ನವಮಿ"
-      },
-      "ml": "മഹാ നവമി",
-      "mr": "महा नवमी",
-      "ne": "महा नवमी",
-      "pa": "ਮਹਾ ਨਵਮੀ",
-      "ta": "மகா நவமி",
-      "te": "మహా నవమి"
+      "kn": "ಮಹಾ ನವಮಿ",
+      "ne": "महा नवमी"
     },
     "countries": [
-      "IN",
       "NP"
     ]
   },
@@ -19297,14 +19749,14 @@
     ]
   },
   {
-    "id": "maharishi_valmiki_jayanti",
-    "msgid": "Maharishi Valmiki Jayanti",
+    "id": "maharishi_valmiki_s_birthday",
+    "msgid": "Maharishi Valmiki's Birthday",
     "new_comment": "",
-    "comment": "Maharishi Valmiki Jayanti.",
+    "comment": "Maharishi Valmiki's Birthday.",
     "messages": {
       "bn": "মহার্ষি বাল্মীকি জয়ন্তী",
-      "en_IN": "Maharishi Valmiki Jayanti",
-      "en_US": "Maharishi Valmiki Jayanti",
+      "en_IN": "Maharishi Valmiki's Jayanti",
+      "en_US": "Maharishi Valmiki's Birthday",
       "gu": "મહર્ષિ વાલ્મિકી જયંતિ",
       "hi": "महर्षि वाल्मीकि जयंती",
       "kn": "ಮಹರ್ಷಿ ವಾಲ್ಮೀಕಿ ಜಯಂತಿ",
@@ -19319,14 +19771,52 @@
     ]
   },
   {
+    "id": "mahatma_gandhi_s_birthday",
+    "msgid": "Mahatma Gandhi's Birthday",
+    "new_comment": "",
+    "comment": "Mahatma Gandhi's Birthday.",
+    "messages": {
+      "bn": "মহাত্মা গান্ধী জয়ন্তী",
+      "en_IN": "Mahatma Gandhi's Jayanti",
+      "en_US": "Mahatma Gandhi's Birthday",
+      "gu": "મહાત્મા ગાંધી જયંતિ",
+      "hi": "महात्मा गांधी जयंती",
+      "kn": "ಮಹಾತ್ಮ ಗಾಂಧಿ ಜಯಂತಿ",
+      "ml": "മഹാത്മാ ഗാന്ധി ജയന്തി",
+      "mr": "महात्मा गांधी जयंती",
+      "pa": "ਜਨਮ ਦਿਵਸ ਮਹਾਤਮਾ ਗਾਂਧੀ ਜੀ",
+      "ta": "மகாத்மா காந்தி ஜெயந்தி",
+      "te": "మహాత్మా గాంధీ జయంతి"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
     "id": "mahavir_jayanti",
     "msgid": "Mahavir Jayanti",
     "new_comment": "",
     "comment": "Mahavir Jayanti.",
     "messages": {
-      "bn": "মহাবীর জয়ন্তী",
       "en_IN": "Mahavir Jayanti",
       "en_US": "Mahavir Jayanti",
+      "gu": "મહાવીર જયંતિ",
+      "hi": "महावीर जयंती",
+      "mr": "महावीर जन्म कल्याणक"
+    },
+    "countries": [
+      "XNSE"
+    ]
+  },
+  {
+    "id": "mahavira_s_birthday",
+    "msgid": "Mahavira's Birthday",
+    "new_comment": "",
+    "comment": "Mahavira's Birthday.",
+    "messages": {
+      "bn": "মহাবীর জয়ন্তী",
+      "en_IN": "Mahavir Jayanti",
+      "en_US": "Mahavira's Birthday",
       "gu": "મહાવીર જયંતિ",
       "hi": "महावीर जयंती",
       "kn": "ಮಹಾವೀರ ಜಯಂತಿ",
@@ -19337,8 +19827,7 @@
       "te": "మహావీర్ జయంతి"
     },
     "countries": [
-      "IN",
-      "XNSE"
+      "IN"
     ]
   },
   {
@@ -19457,7 +19946,7 @@
     "messages": {
       "en_US": "Malvinas Memorial Day",
       "es": "Día de los Caídos en Malvinas",
-      "uk": "День пам'яті на Мальвінах"
+      "uk": "День памʼяті на Мальвінах"
     },
     "countries": [
       "AR"
@@ -19581,6 +20070,22 @@
     },
     "countries": [
       "JP"
+    ]
+  },
+  {
+    "id": "market_closed_computer_failure",
+    "msgid": "Market Closed (Computer Failure)",
+    "new_comment": "",
+    "comment": "Market Closed (Computer Failure).",
+    "messages": {
+      "ar": "السوق مغلق (عطل في الكمبيوتر)",
+      "en_CA": "Market Closed (Computer Failure)",
+      "en_US": "Market Closed (Computer Failure)",
+      "fr": "Marché fermé (panne informatique)",
+      "th": "ตลาดปิด (ระบบคอมพิวเตอร์ขัดข้อง)"
+    },
+    "countries": [
+      "XTSE"
     ]
   },
   {
@@ -19919,7 +20424,8 @@
       "SV",
       "TL",
       "VA",
-      "VE"
+      "VE",
+      "XMEX"
     ]
   },
   {
@@ -20191,6 +20697,28 @@
     },
     "countries": [
       "TH"
+    ]
+  },
+  {
+    "id": "meshadi_tamil_new_year_s_day",
+    "msgid": "Meshadi (Tamil New Year's Day)",
+    "new_comment": "",
+    "comment": "Meshadi (Tamil New Year's Day).",
+    "messages": {
+      "bn": "মেশাদি (তামিল নববর্ষের দিন)",
+      "en_IN": "Meshadi (Tamil New Year's Day)",
+      "en_US": "Meshadi (Tamil New Year's Day)",
+      "gu": "મેશાદી (તમિલ નવા વર્ષનો દિવસ)",
+      "hi": "मेषदी (तमिल नव वर्ष दिवस)",
+      "kn": "ಮೇಷಾದಿ (ತಮಿಳು ಹೊಸ ವರ್ಷದ ದಿನ)",
+      "ml": "മേഷാദി (തമിഴ് പുതുവത്സര ദിനം)",
+      "mr": "मेशादी (तमिळ नववर्षाचा दिवस)",
+      "pa": "ਮੇਸ਼ਾਦੀ (ਤਾਮਿਲ ਨਵੇਂ ਸਾਲ ਦਾ ਦਿਨ)",
+      "ta": "மேஷாடி (தமிழ் புத்தாண்டு தினம்)",
+      "te": "మేషాది (తమిళ్ నూతన సంవత్సరం)"
+    },
+    "countries": [
+      "IN"
     ]
   },
   {
@@ -20989,6 +21517,28 @@
     ]
   },
   {
+    "id": "naraka_chaturdashi",
+    "msgid": "Naraka Chaturdashi",
+    "new_comment": "",
+    "comment": "Naraka Chaturdashi.",
+    "messages": {
+      "bn": "নরক চতুর্দশী",
+      "en_IN": "Naraka Chaturdashi",
+      "en_US": "Naraka Chaturdashi",
+      "gu": "નરક ચતુર્દશી",
+      "hi": "नरक चतुर्दशी",
+      "kn": "ನರಕ ಚತುರ್ದಶಿ",
+      "ml": "നരക ചതുർദസി",
+      "mr": "नरक चतुर्दशी",
+      "pa": "ਨਰਕ ਚਤੁਰਦਾਸੀ",
+      "ta": "நரக சதுர்தாசி",
+      "te": "నరక చతుర్దశి"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
     "id": "natal_day",
     "msgid": "Natal Day",
     "new_comment": "",
@@ -21416,10 +21966,7 @@
     "messages": {
       "en_US": "National Day of Mourning for former President George H. W. Bush",
       "gu": "ભૂતપૂર્વ રાષ્ટ્રપતિ જ્યોર્જ એચ. ડબ્લ્યુ. બુશ માટે રાષ્ટ્રીય શોક દિવસ",
-      "hi": {
-        "XCME": "पूर्व राष्ट्रपति जॉर्ज एच. डब्ल्यू. बुश के लिए राष्ट्रीय शोक दिवस",
-        "XNYS": "पूर्व राष्ट्रपति जॉर्ज एच. डब्लू. बुश के लिए राष्ट्रीय शोक दिवस"
-      },
+      "hi": "पूर्व राष्ट्रपति जॉर्ज एच. डब्लू. बुश के लिए राष्ट्रीय शोक दिवस",
       "th": "วันไว้ทุกข์แห่งชาติแด่อดีตประธานาธิบดีจอร์จ เอช. ดับเบิลยู. บุช"
     },
     "countries": [
@@ -21436,10 +21983,7 @@
     "messages": {
       "en_US": "National Day of Mourning for former President Gerald R. Ford",
       "gu": "ભૂતપૂર્વ રાષ્ટ્રપતિ ગેરાલ્ડ આર. ફોર્ડ માટે રાષ્ટ્રીય શોક દિવસ",
-      "hi": {
-        "XCME": "पूर्व राष्ट्रपति गेराल्ड आर. फोर्ड के लिए राष्ट्रीय शोक दिवस",
-        "XNYS": "पूर्व राष्ट्रपति जेराल्ड आर. फोर्ड के लिए राष्ट्रीय शोक दिवस"
-      },
+      "hi": "पूर्व राष्ट्रपति जेराल्ड आर. फोर्ड के लिए राष्ट्रीय शोक दिवस",
       "th": "วันไว้ทุกข์แห่งชาติแด่อดีตประธานาธิบดีเจอรัลด์ อาร์. ฟอร์ด"
     },
     "countries": [
@@ -22617,28 +23161,6 @@
     ]
   },
   {
-    "id": "navratri_sharad_navratri",
-    "msgid": "Navratri / Sharad Navratri",
-    "new_comment": "",
-    "comment": "Navratri / Sharad Navratri.",
-    "messages": {
-      "bn": "নবরাত্রি / শারদ নবরাত্রি",
-      "en_IN": "Navratri / Sharad Navratri",
-      "en_US": "Navratri / Sharad Navratri",
-      "gu": "નવરાત્રી / શરદ નવરાત્રી",
-      "hi": "नवरात्र / शरद नवरात्र",
-      "kn": "ನವರಾತ್ರಿ / ಶರದ್ ನವರಾತ್ರಿ",
-      "ml": "നവരാത്രി / ശരദ് നവരാത്രി",
-      "mr": "नवरात्र / शारदीय नवरात्र",
-      "pa": "ਨਵਰਾਤਰੀ / ਸ਼ਰਦ ਨਵਰਾਤਰੀ",
-      "ta": "நவராத்திரி / சரத நவராத்திரி",
-      "te": "నవరాత్రి / శరద్ నవరాత్రి"
-    },
-    "countries": [
-      "IN"
-    ]
-  },
-  {
     "id": "navy_day",
     "msgid": "Navy Day",
     "new_comment": "",
@@ -22812,12 +23334,14 @@
         "PS": "رأس السنة الميلادي",
         "SY": "عيد رأس السنة الميلادية",
         "TN": "رأس السنة الميلادية",
-        "UA": "السنة الجديدة"
+        "UA": "السنة الجديدة",
+        "XTSE": "يوم السنة الجديدة"
       },
       "ar_QA": "رأس السنة الميلادية",
       "az": "Yeni il bayramı",
       "be": "Новы год",
       "bg": "Нова година",
+      "bn": "নববর্ষের দিন",
       "bs": "Nova godina",
       "ca": "Cap d'Any",
       "cnr": "Nova godina",
@@ -22855,7 +23379,10 @@
       "en_GS": "New Year's Day",
       "en_GY": "New Year's Day",
       "en_HK": "The first day of January",
-      "en_IN": "New Year",
+      "en_IN": {
+        "IN": "New Year's Day",
+        "XNSE": "New Year"
+      },
       "en_KE": "New Year's Day",
       "en_LC": "New Year's Day",
       "en_MO": "New Year's Day",
@@ -22900,23 +23427,21 @@
         "LB": "Nouvel An",
         "LU": "Jour de l'An",
         "MA": "Nouvel an",
-        "MC": "Le jour de l'An",
         "ML": "Jour de l'An",
         "RW": "Nouvel An",
-        "TG": "Jour de l'an"
+        "TG": "Jour de l'an",
+        "XTSE": "Jour de l'an"
       },
       "fr_BI": "Jour de l'an",
       "fr_BJ": "Fête du Nouvel An",
       "fr_HT": "Nouvel An",
+      "fr_MC": "Le jour de l'An",
       "fr_NE": "Jour de l'An",
       "fr_SN": "Jour de l'an",
       "fy": "Nijjiersdei",
-      "gu": {
-        "XCME": "નવા વર્ષનો દિવસ",
-        "XNSE": "નવું વર્ષ",
-        "XNYS": "નવા વર્ષનો દિવસ"
-      },
+      "gu": "નવા વર્ષનો દિવસ",
       "hi": {
+        "IN": "नए साल का दिन",
         "XCME": "नव वर्ष दिवस",
         "XNSE": "नया साल",
         "XNYS": "नव वर्ष दिवस"
@@ -22934,6 +23459,7 @@
       "kab": "Aseggas amaynut",
       "kk": "Жаңа жыл",
       "kl": "Ukiortaaq",
+      "kn": "ಹೊಸ ವರ್ಷದ ದಿನ",
       "ko": "신정연휴",
       "ko_KP": "양력설",
       "ky": "Жаңы жыл",
@@ -22943,8 +23469,12 @@
       "lv": "Jaungada diena",
       "mg": "Taom-baovao",
       "mk": "Нова Година",
+      "ml": "പുതുവത്സര ദിനം",
       "mn": "Шинэ жил",
-      "mr": "नवीन वर्ष",
+      "mr": {
+        "IN": "नवीन वर्षाचा दिवस",
+        "XNSE": "नवीन वर्ष"
+      },
       "ms": "Awal Tahun Masihi",
       "ms_MY": "Tahun Baharu",
       "mt": "L-Ewwel tas-Sena",
@@ -22963,6 +23493,7 @@
         "GL": "Nyttårsdag",
         "NO": "Første nyttårsdag"
       },
+      "pa": "ਨਵੇਂ ਸਾਲ ਦਾ ਦਿਨ",
       "pap_AW": "Aña Nobo",
       "pap_BQ": "Aña nobo",
       "pap_CW": "Aña Nobo",
@@ -22995,6 +23526,8 @@
         "KE": "Siku ya Mwaka Mpya",
         "TZ": "Mwaka Mpya"
       },
+      "ta": "புத்தாண்டு தினம்",
+      "te": "కొత్త సంవత్సరం రోజు",
       "tet": "Loron Tinan-Foun nian",
       "tg": "Соли Нав",
       "th": {
@@ -23032,7 +23565,8 @@
         "UA": "วันขึ้นปีใหม่",
         "US": "วันขึ้นปีใหม่",
         "VN": "วันปีใหม่สากล",
-        "XETR": "วันขึ้นปีใหม่"
+        "XETR": "วันขึ้นปีใหม่",
+        "XTSE": "วันขึ้นปีใหม่"
       },
       "tk": "Täze ýyl",
       "tkl": "Aho Tauhaga Fou",
@@ -23126,6 +23660,7 @@
       "HT",
       "HU",
       "ID",
+      "IN",
       "IQ",
       "IS",
       "IT",
@@ -23219,8 +23754,10 @@
       "XCME",
       "XETR",
       "XK",
+      "XMEX",
       "XNSE",
-      "XNYS"
+      "XNYS",
+      "XTSE"
     ]
   },
   {
@@ -24285,20 +24822,9 @@
     "comment": "Palm Sunday.",
     "messages": {
       "ar": "أحد الشعانين",
-      "bn": "পাম রবিবার",
-      "en_IN": "Palm Sunday",
-      "en_US": "Palm Sunday",
-      "gu": "પામ સન્ડે",
-      "hi": "पाम रविवार",
-      "kn": "ಪಾಮ್ ಭಾನುವಾರ",
-      "ml": "ഓശാന ഞായർ",
-      "mr": "पाम रविवार",
-      "pa": "ਪਾਮ ਐਤਵਾਰ",
-      "ta": "பனை ஞாயிறு",
-      "te": "మట్టల ఆదివారం"
+      "en_US": "Palm Sunday"
     },
     "countries": [
-      "IN",
       "PS"
     ]
   },
@@ -24471,6 +24997,28 @@
     "countries": [
       "SC",
       "TL"
+    ]
+  },
+  {
+    "id": "parsi_new_year",
+    "msgid": "Parsi New Year",
+    "new_comment": "",
+    "comment": "Parsi New Year.",
+    "messages": {
+      "bn": "পার্সি নববর্ষ",
+      "en_IN": "Parsi New Year",
+      "en_US": "Parsi New Year",
+      "gu": "પારસી નવું વર્ષ",
+      "hi": "पारसी नव वर्ष",
+      "kn": "ಪಾರ್ಸಿ ಹೊಸ ವರ್ಷ",
+      "ml": "പാർസി പുതുവർഷം",
+      "mr": "पारशी नववर्ष",
+      "pa": "ਪਾਰਸੀ ਨਵਾਂ ਸਾਲ",
+      "ta": "பார்சி புத்தாண்டு",
+      "te": "పార్సీ నూతన సంవత్సరం"
+    },
+    "countries": [
+      "IN"
     ]
   },
   {
@@ -24739,23 +25287,217 @@
     "new_comment": "",
     "comment": "Pentecost.",
     "messages": {
-      "ar": "أحد العنصرة",
-      "de": "Pfingsten",
+      "ar": {
+        "PS": "أحد العنصرة",
+        "UA": "عيد العنصرة"
+      },
+      "da": "Pinsedag",
+      "de": {
+        "BE": "Pfingsten",
+        "CH": "Pfingstsonntag",
+        "DE": "Pfingstsonntag",
+        "LI": "Pfingstsonntag",
+        "PL": "Pfingsten"
+      },
+      "en_BQ": "Whit Sunday",
       "en_US": "Pentecost",
+      "et": "nelipühade 1. püha",
+      "fi": "Helluntaipäivä",
+      "fo": "Hvítusunnudagur",
+      "fr": {
+        "BE": "Pentecôte",
+        "CH": "Jour de Pentecôte",
+        "GA": "Pentecôte"
+      },
+      "fr_BJ": "Jour de Pentecôte",
+      "fy": "Pinkstersnein",
+      "hu": "Pünkösd",
+      "is": "Hvítasunnudagur",
+      "it": "Domenica di Pentecoste",
+      "kl": "Piinsip ullua",
+      "lv": "Vasarsvētki",
+      "mg": "Pentekosta",
       "mk": "Духовден",
+      "nl": {
+        "BE": "Pinksteren",
+        "BQ": "Eerste Pinksterdag",
+        "CW": "Pinksterzondag",
+        "NL": "Eerste Pinksterdag",
+        "SX": "Eerste Pinksterdag"
+      },
+      "no": "Første pinsedag",
+      "pap_BQ": "Dia di Pentekòste",
+      "pap_CW": "Domingo di Pentekòstès",
       "pl": "Zielone Świątki",
       "ro": "Rusaliile",
+      "sl": "binkoštna nedelja",
+      "sv": "Pingstdagen",
+      "sv_FI": "Pingst",
+      "th": "วันสมโภชพระจิตเจ้า",
       "uk": {
-        "MK": "Трійця",
-        "PL": "День Святої Трійці",
-        "RO": "Трійця"
+        "BE": "Пʼятидесятниця",
+        "CH": "Пʼятидесятниця",
+        "CW": "Пʼятидесятниця",
+        "DE": "Пʼятидесятниця",
+        "DK": "Пʼятидесятниця",
+        "EE": "Пʼятидесятниця",
+        "FI": "Пʼятидесятниця",
+        "GL": "Пʼятидесятниця",
+        "HU": "Пʼятидесятниця",
+        "IS": "Пʼятидесятниця",
+        "LI": "Пʼятидесятниця",
+        "LV": "Пʼятидесятниця",
+        "MG": "Пʼятидесятниця",
+        "MK": "Пʼятидесятниця",
+        "NL": "Пʼятидесятниця",
+        "NO": "Пʼятидесятниця",
+        "PL": "Пʼятидесятниця",
+        "RO": "Пʼятидесятниця",
+        "SE": "Пʼятидесятниця",
+        "SI": "Пʼятидесятниця",
+        "UA": "Трійця"
       }
     },
     "countries": [
+      "BE",
+      "BJ",
+      "BQ",
+      "CH",
+      "CW",
+      "DE",
+      "DK",
+      "EE",
+      "FI",
+      "FO",
+      "GA",
+      "GL",
+      "HU",
+      "IS",
+      "LI",
+      "LV",
+      "MG",
       "MK",
+      "NL",
+      "NO",
       "PL",
       "PS",
-      "RO"
+      "RO",
+      "SE",
+      "SI",
+      "SX",
+      "UA"
+    ]
+  },
+  {
+    "id": "pentecost_eve",
+    "msgid": "Pentecost Eve",
+    "new_comment": "",
+    "comment": "Pentecost Eve.",
+    "messages": {
+      "en_US": "Pentecost Eve",
+      "sv": "Pingstafton",
+      "th": "วันก่อนวันสมโภชพระจิตเจ้า",
+      "uk": "Переддень Пʼятидесятниці"
+    },
+    "countries": [
+      "SE"
+    ]
+  },
+  {
+    "id": "pentecost_monday",
+    "msgid": "Pentecost Monday",
+    "new_comment": "",
+    "comment": "Pentecost Monday.",
+    "messages": {
+      "ar": "إثنين العنصرة",
+      "ca": {
+        "AD": "Dilluns de Pentecosta",
+        "ES": "Dia de la Pasqua Granada"
+      },
+      "da": "Anden pinsedag",
+      "de": "Pfingstmontag",
+      "el": "Δευτέρα του Αγίου Πνεύματος",
+      "en_AI": "Whit Monday",
+      "en_CI": "Pentecost Monday",
+      "en_CY": "Pentecost",
+      "en_GB": "Whit Monday",
+      "en_GD": "Whit Monday",
+      "en_LC": "Whit Monday",
+      "en_MS": "Whit Monday",
+      "en_US": "Pentecost Monday",
+      "en_VC": "Whit Monday",
+      "en_VG": "Whit Monday",
+      "es": "Día de la Pascua Granada",
+      "fi": "Toinen helluntaipäivä",
+      "fo": "Annar hvítusunnudagur",
+      "fr": "Lundi de Pentecôte",
+      "fr_BJ": "Lundi de Pentecôte",
+      "fr_MC": "Le Lundi de Pentecôte",
+      "fr_NE": "Lundi de Pentecôte",
+      "fr_SN": "Lundi de Pentecôte",
+      "fy": "Pinkstermoandei",
+      "hu": "Pünkösdhétfő",
+      "id": "Hari kedua Pentakosta",
+      "is": "Annar í hvítasunnu",
+      "it": "Lunedì di Pentecoste",
+      "it_IT": "Lunedì di Pentecoste",
+      "kab": "Letni n pentikust",
+      "kl": "Piinsip-aappaa",
+      "lb": "Péngschtméindeg",
+      "mg": "Alatsinain'ny pentekosta",
+      "nl": {
+        "BE": "Pinkstermaandag",
+        "NL": "Tweede Pinksterdag"
+      },
+      "no": "Andre pinsedag",
+      "pl": "Drugi dzień Zielonych Świątek",
+      "sv": "Annandag pingst",
+      "th": "วันจันทร์หลังวันสมโภชพระจิตเจ้า",
+      "uk": "Другий день Пʼятидесятниці"
+    },
+    "countries": [
+      "AD",
+      "AI",
+      "AT",
+      "BE",
+      "BJ",
+      "CF",
+      "CG",
+      "CH",
+      "CI",
+      "CY",
+      "DE",
+      "DK",
+      "DZ",
+      "ES",
+      "FO",
+      "FR",
+      "GA",
+      "GB",
+      "GD",
+      "GL",
+      "GR",
+      "HU",
+      "ID",
+      "IS",
+      "IT",
+      "LC",
+      "LI",
+      "LU",
+      "MC",
+      "MG",
+      "MS",
+      "NE",
+      "NL",
+      "NO",
+      "PL",
+      "SE",
+      "SH",
+      "SN",
+      "TG",
+      "VC",
+      "VG",
+      "XETR"
     ]
   },
   {
@@ -25251,6 +25993,28 @@
     ]
   },
   {
+    "id": "pratihar_shashthi_or_surya_shashthi_chhat_puja",
+    "msgid": "Pratihar Shashthi or Surya Shashthi (Chhat Puja)",
+    "new_comment": "",
+    "comment": "Pratihar Shashthi or Surya Shashthi (Chhat Puja).",
+    "messages": {
+      "bn": "প্রতিহার ষষ্ঠী বা সূর্য ষষ্ঠী (ছট পূজা)",
+      "en_IN": "Pratihar Shashthi or Surya Shashthi (Chhat Puja)",
+      "en_US": "Pratihar Shashthi or Surya Shashthi (Chhat Puja)",
+      "gu": "પ્રતિહાર ષષ્ઠી અથવા સૂર્ય ષષ્ઠી (છટ પૂજા)",
+      "hi": "प्रतिहार षष्ठी या सूर्य षष्ठी (छठ पूजा)",
+      "kn": "ಪ್ರತಿಹಾರ್ ಷಷ್ಠಿ ಅಥವಾ ಸೂರ್ಯ ಷಷ್ಠಿ (ಛತ್ ಪೂಜೆ)",
+      "ml": "പ്രതിഹാർ ഷഷ്ഠി അല്ലെങ്കിൽ സൂര്യ ഷഷ്ഠി (ഛത് പൂജ)",
+      "mr": "प्रतिहार षष्ठी किंवा सूर्य षष्ठी (छठ पूजा)",
+      "pa": "ਪ੍ਰਤਿਹਾਰ ਸ਼ਸ਼ਠੀ ਜਾਂ ਸੂਰਜ ਸ਼ਸ਼ਠੀ (ਛਟ ਪੂਜਾ)",
+      "ta": "பிரதிஹார் ஷஷ்டி அல்லது சூர்ய ஷஷ்டி (சட் பூஜை)",
+      "te": "ప్రతిహార్ షష్ఠి లేదా సూర్య షష్ఠి (ఛత్ పూజ)"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
     "id": "prayer_monday",
     "msgid": "Prayer Monday",
     "new_comment": "",
@@ -25533,7 +26297,7 @@
     "comment": "Prince's Day.",
     "messages": {
       "en_US": "Prince's Day",
-      "fr": "La Fête du Prince",
+      "fr_MC": "Le jour de la Fête de S.A.S. le Prince Souverain",
       "uk": "День Князя"
     },
     "countries": [
@@ -25943,6 +26707,7 @@
       "en_US": "Public holiday",
       "es": "Asueto adicional",
       "fr": "Jour férié",
+      "fr_MC": "Jour férié",
       "fr_SN": "Jour férié",
       "tr": "Genel tati̇l",
       "uk": {
@@ -26535,6 +27300,28 @@
     ]
   },
   {
+    "id": "rath_yatra",
+    "msgid": "Rath Yatra",
+    "new_comment": "",
+    "comment": "Rath Yatra.",
+    "messages": {
+      "bn": "রথযাত্রা",
+      "en_IN": "Rath Yatra",
+      "en_US": "Rath Yatra",
+      "gu": "રથ યાત્રા",
+      "hi": "रथ यात्रा",
+      "kn": "ರಥ ಯಾತ್ರೆ",
+      "ml": "രഥയാത്ര",
+      "mr": "रथ यात्रा",
+      "pa": "ਰੱਥ ਯਾਤਰਾ",
+      "ta": "ரத யாத்திரை",
+      "te": "రథ యాత్ర"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
     "id": "ratting_day",
     "msgid": "Ratting Day",
     "new_comment": "",
@@ -27047,6 +27834,7 @@
       "MX",
       "NI",
       "SY",
+      "XMEX",
       "YE"
     ]
   },
@@ -27732,6 +28520,22 @@
     ]
   },
   {
+    "id": "s_markets_close_at_1_00_p_m_et",
+    "msgid": "%s (markets close at 1:00 p.m. ET)",
+    "new_comment": "",
+    "comment": "%s (markets close at 1:00 p.m. ET).",
+    "messages": {
+      "ar": "%s (تغلق الأسواق في الساعة 1:00 مساءً بالتوقيت الشرقي)",
+      "en_CA": "%s (markets close at 1:00 p.m. ET)",
+      "en_US": "%s (markets close at 1:00 p.m. ET)",
+      "fr": "%s (fermeture des marchés à 13h00 HE)",
+      "th": "%s (ตลาดปิดเวลา 13:00 น. ตามเวลา ET)"
+    },
+    "countries": [
+      "XTSE"
+    ]
+  },
+  {
     "id": "s_markets_close_at_1_00pm",
     "msgid": "%s (markets close at 1:00pm)",
     "new_comment": "",
@@ -28113,10 +28917,10 @@
         "CD": "%s (observé)",
         "EG": "%s (observé)",
         "LB": "%s (observé)",
-        "MC": "%s (observé)",
         "RW": "%s (observé)"
       },
       "fr_BI": "%s (observé)",
+      "fr_MC": "%s (reporté)",
       "fr_NE": "%s (observé)",
       "fr_SN": "%s (observé)",
       "he": "%s (נצפה)",
@@ -28816,7 +29620,7 @@
     "comment": "Saint Devote's Day.",
     "messages": {
       "en_US": "Saint Devote's Day",
-      "fr": "La Sainte Dévote",
+      "fr_MC": "Le jour de la Sainte-Dévote",
       "uk": "День Святої Девоти"
     },
     "countries": [
@@ -30715,8 +31519,8 @@
     "comment": "Saturday before Labor Day.",
     "messages": {
       "en_US": "Saturday before Labor Day",
-      "gu": "લેબર ડે પહેલાંનો શનિવાર",
-      "hi": "मज़दूर दिवस से पहले का शनिवार"
+      "gu": "શ્રમ દિવસ પહેલાંનો શનિવાર",
+      "hi": "श्रम दिवस से पहले का शनिवार"
     },
     "countries": [
       "XNYS"
@@ -31086,6 +31890,28 @@
     },
     "countries": [
       "BD"
+    ]
+  },
+  {
+    "id": "shivaji_s_birthday",
+    "msgid": "Shivaji's Birthday",
+    "new_comment": "",
+    "comment": "Shivaji's Birthday.",
+    "messages": {
+      "bn": "শিবাজীর জয়ন্তী",
+      "en_IN": "Shivaji's Jayanti",
+      "en_US": "Shivaji's Birthday",
+      "gu": "શિવાજીની જયંતિ",
+      "hi": "शिवाजी जयंती",
+      "kn": "ಶಿವಾಜಿ ಜಯಂತಿ",
+      "ml": "ശിവാജി ജയന്തി",
+      "mr": "शिवाजी जयंती",
+      "pa": "ਸ਼ਿਵਾਜੀ ਜਯੰਤੀ",
+      "ta": "சிவாஜி ஜெயந்தி",
+      "te": "శివాజీ జయంతి"
+    },
+    "countries": [
+      "IN"
     ]
   },
   {
@@ -31784,6 +32610,28 @@
     ]
   },
   {
+    "id": "sri_panchami",
+    "msgid": "Sri Panchami",
+    "new_comment": "",
+    "comment": "Sri Panchami.",
+    "messages": {
+      "bn": "শ্রী পঞ্চমী",
+      "en_IN": "Sri Panchami",
+      "en_US": "Sri Panchami",
+      "gu": "શ્રી પંચમી",
+      "hi": "श्री पंचमी",
+      "kn": "ವಸಂತ ಪಂಚಮಿ",
+      "ml": "ശ്രീ പഞ്ചമി",
+      "mr": "श्री पंचमी",
+      "pa": "ਸ੍ਰੀ ਪੰਚਮੀ",
+      "ta": "ஸ்ரீ பஞ்சமி",
+      "te": "శ్రీ పంచమి"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
     "id": "state_banking_holiday",
     "msgid": "State Banking Holiday",
     "new_comment": "",
@@ -32053,10 +32901,7 @@
       "cs": "Den boje za svobodu a demokracii",
       "en_US": "Struggle for Freedom and Democracy Day",
       "sk": "Deň boja za slobodu a demokraciu",
-      "uk": {
-        "CZ": "День боротьби за свободу і демократію",
-        "SK": "День боротьби за свободу та демократію"
-      }
+      "uk": "День боротьби за свободу та демократію"
     },
     "countries": [
       "CZ",
@@ -32072,7 +32917,7 @@
       "cs": "Den boje za svobodu a demokracii a Mezinárodní den studentstva",
       "en_US": "Struggle for Freedom and Democracy Day and International Students' Day",
       "sk": "Deň boja za slobodu a demokraciu a Medzinárodný deň študentstva",
-      "uk": "День боротьби за свободу і демократію та Міжнародний день студентів"
+      "uk": "День боротьби за свободу та демократію і Міжнародний день студентів"
     },
     "countries": [
       "CZ"
@@ -32276,6 +33121,28 @@
     },
     "countries": [
       "US"
+    ]
+  },
+  {
+    "id": "swami_dayanand_saraswati_s_birthday",
+    "msgid": "Swami Dayanand Saraswati's Birthday",
+    "new_comment": "",
+    "comment": "Swami Dayanand Saraswati's Birthday.",
+    "messages": {
+      "bn": "স্বামী দয়ানন্দ সরস্বতী জয়ন্তী",
+      "en_IN": "Swami Dayanand Saraswati's Jayanti",
+      "en_US": "Swami Dayanand Saraswati's Birthday",
+      "gu": "સ્વામી દયાનંદ સરસ્વતી જયંતિ",
+      "hi": "स्वामी दयानंद सरस्वती जयंती",
+      "kn": "ಸ್ವಾಮಿ ದಯಾನಂದ ಸರಸ್ವತಿ ಜಯಂತಿ",
+      "ml": "സ്വാമി ദയാനന്ദ സരസ്വതി ജയന്തി",
+      "mr": "स्वामी दयानंद सरस्वती जयंती",
+      "pa": "ਸਵਾਮੀ ਦਯਾਨੰਦ ਸਰਸਵਤੀ ਜਯੰਤੀ",
+      "ta": "சுவாமி தயானந்த சரஸ்வதி ஜெயந்தி",
+      "te": "స్వామి దయానంద్ సరస్వతి జయంతి"
+    },
+    "countries": [
+      "IN"
     ]
   },
   {
@@ -32503,10 +33370,7 @@
       "es": "Día del Maestro",
       "hy": "Ուսուցչի օր",
       "th": "วันครู",
-      "uk": {
-        "AR": "День учителя",
-        "TH": "День вчителя"
-      },
+      "uk": "День учителя",
       "zh_CN": "教师节",
       "zh_TW": "教師節"
     },
@@ -32741,7 +33605,8 @@
       "NF",
       "US",
       "XCME",
-      "XNYS"
+      "XNYS",
+      "XTSE"
     ]
   },
   {
@@ -34266,6 +35131,28 @@
     ]
   },
   {
+    "id": "vaisakhadi",
+    "msgid": "Vaisakhadi",
+    "new_comment": "",
+    "comment": "Vaisakhadi.",
+    "messages": {
+      "bn": "বৈশাখাদি",
+      "en_IN": "Vaisakhadi",
+      "en_US": "Vaisakhadi",
+      "gu": "વૈશાખડી",
+      "hi": "वैसाखडी",
+      "kn": "ವೈಶಾಖಾದಿ",
+      "ml": "വൈശാഖാദി",
+      "mr": "वैशाखाडी",
+      "pa": "ਵੈਸਾਖਦੀ",
+      "ta": "வைசாகதி",
+      "te": "వైశాఖాది"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
     "id": "vaisakhi",
     "msgid": "Vaisakhi",
     "new_comment": "",
@@ -34492,7 +35379,8 @@
       "th": "วันวิคตอเรีย"
     },
     "countries": [
-      "CA"
+      "CA",
+      "XTSE"
     ]
   },
   {
@@ -34644,6 +35532,28 @@
     ]
   },
   {
+    "id": "vinayak_chaturthi",
+    "msgid": "Vinayak Chaturthi",
+    "new_comment": "",
+    "comment": "Vinayak Chaturthi.",
+    "messages": {
+      "bn": "বিনায়ক চতুর্থী",
+      "en_IN": "Vinayak Chaturthi",
+      "en_US": "Vinayak Chaturthi",
+      "gu": "વિનાયક ચતુર્થી",
+      "hi": "विनायक चतुर्थी",
+      "kn": "ವಿನಾಯಕ ಚತುರ್ಥಿ",
+      "ml": "ഗണേശ ചതുർത്ഥി",
+      "mr": "गणेश चतुर्थी",
+      "pa": "ਵਿਨਾਇਕ ਚਤੁਰਥੀ",
+      "ta": "விநாயக சதுர்த்தி",
+      "te": "గణేశ చవితి"
+    },
+    "countries": [
+      "IN"
+    ]
+  },
+  {
     "id": "virgin_islands_day",
     "msgid": "Virgin Islands Day",
     "new_comment": "",
@@ -34710,6 +35620,28 @@
     },
     "countries": [
       "TH"
+    ]
+  },
+  {
+    "id": "vishu",
+    "msgid": "Vishu",
+    "new_comment": "",
+    "comment": "Vishu.",
+    "messages": {
+      "bn": "বিশু",
+      "en_IN": "Vishu",
+      "en_US": "Vishu",
+      "gu": "વિશુ",
+      "hi": "विशु",
+      "kn": "ವಿಷು",
+      "ml": "വിഷു",
+      "mr": "विशू",
+      "pa": "ਵਿਸ਼ੂ",
+      "ta": "விசு",
+      "te": "విషు"
+    },
+    "countries": [
+      "IN"
     ]
   },
   {
@@ -35009,186 +35941,6 @@
     ]
   },
   {
-    "id": "whit_monday",
-    "msgid": "Whit Monday",
-    "new_comment": "",
-    "comment": "Whit Monday.",
-    "messages": {
-      "ar": "إثنين العنصرة",
-      "ca": {
-        "AD": "Dilluns de Pentecosta",
-        "ES": "Dia de la Pasqua Granada"
-      },
-      "da": "Anden pinsedag",
-      "de": "Pfingstmontag",
-      "el": "Δευτέρα του Αγίου Πνεύματος",
-      "en_AI": "Whit Monday",
-      "en_CI": "Whit Monday",
-      "en_CY": "Pentecost",
-      "en_GB": "Whit Monday",
-      "en_GD": "Whit Monday",
-      "en_LC": "Whit Monday",
-      "en_MS": "Whit Monday",
-      "en_US": "Whit Monday",
-      "en_VC": "Whit Monday",
-      "en_VG": "Whit Monday",
-      "es": "Día de la Pascua Granada",
-      "fi": "Toinen helluntaipäivä",
-      "fo": "Annar hvítusunnudagur",
-      "fr": {
-        "BE": "Lundi de Pentecôte",
-        "CF": "Lundi de Pentecôte",
-        "CG": "Lundi de Pentecôte",
-        "CH": "Lundi de Pentecôte",
-        "CI": "Lundi de Pentecôte",
-        "DZ": "Lundi de Pentecôte",
-        "FR": "Lundi de Pentecôte",
-        "GA": "Lundi de Pentecôte",
-        "LU": "Lundi de Pentecôte",
-        "MC": "Le lundi de Pentecôte",
-        "TG": "Lundi de Pentecôte"
-      },
-      "fr_BJ": "Lundi de Pentecôte",
-      "fr_NE": "Lundi de Pentecôte",
-      "fr_SN": "Lundi de Pentecôte",
-      "fy": "Pinkstermoandei",
-      "hu": "Pünkösdhétfő",
-      "id": "Hari kedua Pentakosta",
-      "is": "Annar í hvítasunnu",
-      "it": "Lunedì di Pentecoste",
-      "it_IT": "Lunedì di Pentecoste",
-      "kab": "Letni n pentikust",
-      "kl": "Piinsip-aappaa",
-      "lb": "Péngschtméindeg",
-      "mg": "Alatsinain'ny pentekosta",
-      "nl": {
-        "BE": "Pinkstermaandag",
-        "NL": "Tweede Pinksterdag"
-      },
-      "no": "Andre pinsedag",
-      "pl": "Drugi dzień Zielonych Świątek",
-      "sv": "Annandag pingst",
-      "th": "วันจันทร์หลังวันสมโภชพระจิตเจ้า",
-      "uk": "День Святого Духа"
-    },
-    "countries": [
-      "AD",
-      "AI",
-      "AT",
-      "BE",
-      "BJ",
-      "CF",
-      "CG",
-      "CH",
-      "CI",
-      "CY",
-      "DE",
-      "DK",
-      "DZ",
-      "ES",
-      "FO",
-      "FR",
-      "GA",
-      "GB",
-      "GD",
-      "GL",
-      "GR",
-      "HU",
-      "ID",
-      "IS",
-      "IT",
-      "LC",
-      "LI",
-      "LU",
-      "MC",
-      "MG",
-      "MS",
-      "NE",
-      "NL",
-      "NO",
-      "PL",
-      "SE",
-      "SH",
-      "SN",
-      "TG",
-      "VC",
-      "VG",
-      "XETR"
-    ]
-  },
-  {
-    "id": "whit_sunday",
-    "msgid": "Whit Sunday",
-    "new_comment": "",
-    "comment": "Whit Sunday.",
-    "messages": {
-      "da": "Pinsedag",
-      "de": {
-        "BE": "Pfingsten",
-        "CH": "Pfingstsonntag",
-        "DE": "Pfingstsonntag",
-        "LI": "Pfingstsonntag"
-      },
-      "en_BQ": "Whit Sunday",
-      "en_US": "Whit Sunday",
-      "et": "nelipühade 1. püha",
-      "fi": "Helluntaipäivä",
-      "fo": "Hvítusunnudagur",
-      "fr": {
-        "BE": "Pentecôte",
-        "CH": "Jour de Pentecôte",
-        "GA": "Pentecôte"
-      },
-      "fr_BJ": "Jour de Pentecôte",
-      "fy": "Pinkstersnein",
-      "hu": "Pünkösd",
-      "is": "Hvítasunnudagur",
-      "it": "Domenica di Pentecoste",
-      "kl": "Piinsip ullua",
-      "lv": "Vasarsvētki",
-      "mg": "Pentekosta",
-      "nl": {
-        "BE": "Pinksteren",
-        "BQ": "Eerste Pinksterdag",
-        "CW": "Pinksterzondag",
-        "NL": "Eerste Pinksterdag",
-        "SX": "Eerste Pinksterdag"
-      },
-      "no": "Første pinsedag",
-      "pap_BQ": "Dia di Pentekòste",
-      "pap_CW": "Domingo di Pentekòstès",
-      "sl": "binkoštna nedelja",
-      "sv": "Pingstdagen",
-      "sv_FI": "Pingst",
-      "th": "วันสมโภชพระจิตเจ้า",
-      "uk": "Трійця"
-    },
-    "countries": [
-      "BE",
-      "BJ",
-      "BQ",
-      "CH",
-      "CW",
-      "DE",
-      "DK",
-      "EE",
-      "FI",
-      "FO",
-      "GA",
-      "GL",
-      "HU",
-      "IS",
-      "LI",
-      "LV",
-      "MG",
-      "NL",
-      "NO",
-      "SE",
-      "SI",
-      "SX"
-    ]
-  },
-  {
     "id": "white_sunday",
     "msgid": "White Sunday",
     "new_comment": "",
@@ -35199,21 +35951,6 @@
     },
     "countries": [
       "US"
-    ]
-  },
-  {
-    "id": "whitsun_eve",
-    "msgid": "Whitsun Eve",
-    "new_comment": "",
-    "comment": "Whitsun Eve.",
-    "messages": {
-      "en_US": "Whitsun Eve",
-      "sv": "Pingstafton",
-      "th": "วันก่อนวันสมโภชพระจิตเจ้า",
-      "uk": "Переддень Трійці"
-    },
-    "countries": [
-      "SE"
     ]
   },
   {
