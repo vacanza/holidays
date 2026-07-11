@@ -165,6 +165,7 @@ class IntermediateJsonBuilder:
         for entry in fresh:
             if existing_entry := existing_by_comment.get(entry["comment"]):
                 entry["id"] = existing_entry["id"]
+                entry["new_comment"] = existing_entry["new_comment"]
 
         fresh_comments = {entry["comment"] for entry in fresh}
         fresh_ids = {entry["id"] for entry in fresh}
