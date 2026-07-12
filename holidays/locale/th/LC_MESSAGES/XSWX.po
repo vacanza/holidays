@@ -1,0 +1,40 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# SIX Swiss Exchange holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.101\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-07-11 00:25+0000\n"
+"PO-Revision-Date: 2026-07-12 12:10+0000\n"
+"Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: de\n"
+
+#. Saint Berchtold's Day
+msgid "Berchtoldstag"
+msgstr "วันสมโภชนักบุญแบร์กโทลด์"
+
+#. Christmas Eve.
+msgid "Heiligabend"
+msgstr "วันคริสต์มาสอีฟ"
+
+#. New Year's Eve.
+msgid "Vortag vor Neujahr"
+msgstr "วันส่งท้ายปีเก่า"
