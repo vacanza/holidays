@@ -43,7 +43,7 @@ class SIXSwissExchange(ChildEntity, Switzerland):  # type: ignore[assignment, mi
     def _populate_public_holidays(self) -> None:
         super()._populate_public_holidays()
 
-        # Saint Berchtold's Day
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
         # Christmas Eve.
