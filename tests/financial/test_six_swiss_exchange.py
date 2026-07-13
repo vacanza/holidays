@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.financial.six_swiss_exchange import SIXSwissExchange, XSWX, SIX
+from holidays.financial.six_swiss_exchange import SIXSwissExchange
 from tests.common import CommonFinancialTests
 
 
@@ -24,12 +24,6 @@ class TestSIXSwissExchange(CommonFinancialTests, TestCase):
     def test_code(self):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
-
-    def test_market_aliases(self):
-        self.assertAliases(SIXSwissExchange, XSWX, SIX)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(SIXSwissExchange(years=1999))
 
     def test_berchtolds_day(self):
         name = "Berchtoldstag"

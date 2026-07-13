@@ -18,15 +18,16 @@ from holidays.mixins.child_entity import ChildEntity
 from holidays.observed_holiday_base import SAT_TO_NONE, SUN_TO_NONE
 
 
-class SIXSwissExchange(ChildEntity, Switzerland):  # type: ignore[assignment, misc]
-    """SIX Swiss Exchange holidays.
+class SIXSwissExchange(ChildEntity, Switzerland):
+    """SIX Swiss Exchange (SIX) holidays.
 
     References:
         [2018](https://web.archive.org/web/20260712044834/https://www.six-group.com/dam/download/sites/education/preparatory-documentation/trading-module/trading-guide.pdf)
         [2019](https://web.archive.org/web/20260712044834/https://www.six-group.com/dam/download/sites/education/preparatory-documentation/trading-module/trading-guide.pdf)
+        [2021](https://web.archive.org/web/20211102133818/https://www.six-group.com/dam/download/the-swiss-stock-exchange/trading/trading-provisions/regulation/trading-guides/trading-calendar-2021.pdf)
         [2022](https://web.archive.org/web/20220420104843/https://www.six-group.com/dam/download/the-swiss-stock-exchange/trading/trading-provisions/regulation/trading-guides/trading-calendar-2022.pdf)
         [2023](https://web.archive.org/web/20220626051815/https://www.six-group.com/dam/download/the-swiss-stock-exchange/trading/trading-provisions/regulation/trading-guides/trading-calendar-2023.pdf)
-        [2024](https://web.archive.org/web/20240910205011/https://www.six-group.com/en/market-data/news-tools/trading-currency-holiday-calendar.html#/#/)
+        [2024](https://web.archive.org/web/20240521040627/https://www.six-group.com/dam/download/the-swiss-stock-exchange/trading/trading-provisions/regulation/trading-guides/trading-calendar-2024.pdf)
         [2025](https://web.archive.org/web/20250908065713/https://www.six-group.com/dam/download/the-swiss-stock-exchange/trading/trading-provisions/regulation/trading-guides/trading-calendar-2025.pdf)
         [2026](https://web.archive.org/web/20251225182641/https://www.six-group.com/dam/download/the-swiss-stock-exchange/trading/trading-provisions/regulation/trading-guides/trading-calendar-2026.pdf)
     """
@@ -35,10 +36,8 @@ class SIXSwissExchange(ChildEntity, Switzerland):  # type: ignore[assignment, mi
     market = "XSWX"
     parent_entity = Switzerland
     parent_entity_subdivision_code = "ZH"
-    supported_categories = (PUBLIC,)  # type: ignore[assignment]
+    supported_categories: tuple[str] = (PUBLIC,)
     start_year = 2000
-
-    _weekend_to_none_rule = SAT_TO_NONE + SUN_TO_NONE
 
     def _populate_public_holidays(self) -> None:
         super()._populate_public_holidays()
@@ -58,7 +57,9 @@ class SIXSwissExchange(ChildEntity, Switzerland):  # type: ignore[assignment, mi
         if self.observed:
             for dt in tuple(self.keys()):
                 if dt.year == year:
-                    self._move_holiday_forced(dt, rule=self._weekend_to_none_rule)
+                    self._move_holiday(
+                        dt, rule=SAT_TO_NONE + SUN_TO_NONE, show_observed_label=False
+                    )
 
 
 class XSWX(SIXSwissExchange):

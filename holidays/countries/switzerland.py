@@ -44,7 +44,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
     country = "CH"
     default_language = "de"
     start_year = 1801
-    subdivisions = (
+    subdivisions: tuple[str, ...] = (
         # Cantons.
         "AG",  # Aargau.
         "AI",  # Appenzell Innerrhoden.
@@ -111,7 +111,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Cities.
         "Stadt Zürich": "Stadt Zurich",
     }
-    supported_categories = (DE_FACTO, HALF_DAY, OPTIONAL, PUBLIC)
+    supported_categories: tuple[str, ...] = (DE_FACTO, HALF_DAY, OPTIONAL, PUBLIC)
     supported_languages = ("de", "en_US", "fr", "it", "th", "uk")
 
     def __init__(self, *args, **kwargs):
