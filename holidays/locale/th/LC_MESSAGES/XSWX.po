@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# SIX Swiss Exchange holidays th localization.
+# SIX Swiss Exchange (SIX) holidays th localization.
 #
 msgid ""
 msgstr ""

@@ -15,7 +15,7 @@ from gettext import gettext as tr
 from holidays.constants import PUBLIC
 from holidays.countries.switzerland import Switzerland
 from holidays.mixins.child_entity import ChildEntity
-from holidays.observed_holiday_base import SAT_TO_NONE, SUN_TO_NONE
+from holidays.observed_holiday_base import SAT_SUN_TO_NONE
 
 
 class SIXSwissExchange(ChildEntity, Switzerland):
@@ -57,9 +57,7 @@ class SIXSwissExchange(ChildEntity, Switzerland):
         if self.observed:
             for dt in tuple(self.keys()):
                 if dt.year == year:
-                    self._move_holiday(
-                        dt, rule=SAT_TO_NONE + SUN_TO_NONE, show_observed_label=False
-                    )
+                    self._move_holiday(dt, rule=SAT_SUN_TO_NONE, show_observed_label=False)
 
 
 class XSWX(SIXSwissExchange):
