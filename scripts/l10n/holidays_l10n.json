@@ -5671,12 +5671,11 @@
       "CN",
       "MO",
       "TW",
-      "XHKG",
       "XSHG"
     ]
   },
   {
-    "id": "chinese_new_year_s_eve_hk",
+    "id": "chinese_new_year_s_eve_hk_xhkg",
     "msgid": "Chinese New Year's Eve",
     "new_comment": "The Simplified Chinese translation is taken from an official source (Chapter 149 of the General Holidays Ordinance, 2011 version)",
     "comment": "Chinese New Year's Eve.",
@@ -5688,7 +5687,8 @@
       "zh_HK": "農曆年初一的前一日"
     },
     "countries": [
-      "HK"
+      "HK",
+      "XHKG"
     ]
   },
   {
