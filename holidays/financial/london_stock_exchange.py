@@ -15,6 +15,7 @@ from gettext import gettext as tr
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.united_kingdom import UnitedKingdom
 from holidays.mixins.child_entity import ChildEntity
+from holidays.observed_holiday_base import SAT_SUN_TO_PREV_FRI, SAT_TO_NONE, SUN_TO_NONE
 
 
 class LondonStockExchange(ChildEntity, UnitedKingdom):
@@ -43,15 +44,32 @@ class LondonStockExchange(ChildEntity, UnitedKingdom):
         # %s (markets close at 12:30pm).
         close_12_30pm_label = tr("%s (markets close at 12:30pm)")
 
-        self._add_christmas_eve(
-            # Christmas Eve.
-            self._format_holiday_name(close_12_30pm_label, tr("Christmas Eve"))
-        )
+        for dt in (
+            self._add_christmas_eve(
+                # Christmas Eve.
+                self._format_holiday_name(close_12_30pm_label, tr("Christmas Eve"))
+            ),
+            self._add_new_years_eve(
+                # New Year's Eve.
+                self._format_holiday_name(close_12_30pm_label, tr("New Year's Eve"))
+            ),
+        ):
+            # The shortened session moves to the preceding Friday when the eve falls
+            # on a weekend, since the exchange does not trade on Saturday or Sunday.
+            self._move_holiday(dt, rule=SAT_SUN_TO_PREV_FRI, show_observed_label=False)
 
-        self._add_new_years_eve(
-            # New Year's Eve.
-            self._format_holiday_name(close_12_30pm_label, tr("New Year's Eve"))
-        )
+    def _populate(self, year: int) -> None:
+        super()._populate(year)
+
+        # The exchange is closed at weekends, so a bank holiday that falls on a
+        # Saturday or Sunday is not a trading day in its own right; only its
+        # observed weekday substitute is.
+        if self.observed:
+            for dt in tuple(self.keys()):
+                if dt.year == year:
+                    self._move_holiday(
+                        dt, rule=SAT_TO_NONE + SUN_TO_NONE, show_observed_label=False
+                    )
 
 
 class XLON(LondonStockExchange):

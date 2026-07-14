@@ -35,9 +35,10 @@ class TestLondonStockExchange(CommonFinancialTests, TestCase):
         # Exercises the royal one-off bank holidays alongside the regular
         # England & Wales calendar; year-by-year correctness of the underlying
         # calendar itself is covered by the United Kingdom test suite.
+        # New Year's Day (Sat) and Christmas Day (Sun) are not trading days in their
+        # own right, so only their observed weekday substitutes appear.
         self.assertHolidaysInYear(
             2022,
-            ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (observed)"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
@@ -46,20 +47,39 @@ class TestLondonStockExchange(CommonFinancialTests, TestCase):
             ("2022-06-03", "Platinum Jubilee of Elizabeth II"),
             ("2022-08-29", "Late Summer Bank Holiday"),
             ("2022-09-19", "State Funeral of Queen Elizabeth II"),
-            ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),
             ("2022-12-27", "Christmas Day (observed)"),
         )
 
+    def test_weekend_holidays_are_not_trading_days(self):
+        # The exchange is shut at weekends, so a bank holiday landing on a Saturday
+        # or Sunday is dropped and only its observed substitute remains.
+        self.assertNoHoliday("2011-01-01", "2011-12-25", "2022-01-01", "2022-12-25")
+        self.assertHoliday("2011-01-03", "2011-12-27", "2022-01-03", "2022-12-27")
+
     def test_christmas_eve(self):
         name = "Christmas Eve (markets close at 12:30pm)"
         self.assertNoHolidayName(name)
-        self.assertHalfDayHolidayName(name, (f"{year}-12-24" for year in self.full_range))
+        self.assertHalfDayHolidayName(name, self.full_range)
+        # Moved back to the preceding Friday when Dec 24 falls on a weekend.
+        self.assertHalfDayHolidayName(
+            name,
+            "2011-12-23",  # Dec 24 fell on a Saturday.
+            "2017-12-22",  # Dec 24 fell on a Sunday.
+            "2024-12-24",  # Dec 24 fell on a Tuesday.
+        )
 
     def test_new_years_eve(self):
         name = "New Year's Eve (markets close at 12:30pm)"
         self.assertNoHolidayName(name)
-        self.assertHalfDayHolidayName(name, (f"{year}-12-31" for year in self.full_range))
+        self.assertHalfDayHolidayName(name, self.full_range)
+        # Moved back to the preceding Friday when Dec 31 falls on a weekend.
+        self.assertHalfDayHolidayName(
+            name,
+            "2011-12-30",  # Dec 31 fell on a Saturday.
+            "2017-12-29",  # Dec 31 fell on a Sunday.
+            "2024-12-31",  # Dec 31 fell on a Tuesday.
+        )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
