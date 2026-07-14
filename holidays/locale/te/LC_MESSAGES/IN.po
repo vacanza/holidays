@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-07-08 22:19+0530\n"
+"PO-Revision-Date: 2026-07-14 23:55+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: te\n"
@@ -564,9 +564,37 @@ msgstr ""
 msgid "Chehlum"
 msgstr ""
 
-#. UP Formation Day.
-msgid "UP Formation Day"
-msgstr "ఉత్తర ప్రదేశ్ అవతరణ దినోత్సవం"
+#. Chitragupt's Birthday.
+msgid "Chitragupt's Jayanti"
+msgstr ""
+
+#. Karpuri Thakur's Birthday.
+msgid "Karpuri Thakur's Jayanti"
+msgstr ""
+
+#. Maharshi Kashyap and Maharaj Nishad Raj's Graha Jayanti.
+msgid "Maharshi Kashyap and Maharaj Nishad Raj's Graha Jayanti"
+msgstr ""
+
+#. Chandrashekhar's Birthday.
+msgid "Chandrashekhar's Jayanti"
+msgstr ""
+
+#. Sardar Vallabhbhai Patel's Birthday.
+msgid "Sardar Vallabhbhai Patel's Jayanti"
+msgstr ""
+
+#. Acharya Narendra Dev's Birthday.
+msgid "Acharya Narendra Dev's Jayanti"
+msgstr ""
+
+#. Veerangana Uda Devi's Martyrdom Day.
+msgid "Veerangana Uda Devi's Shaheedi Diwas"
+msgstr ""
+
+#. Chaudhary Charan Singh's Birthday.
+msgid "Chaudhary Charan Singh's Jayanti"
+msgstr ""
 
 #. Pohela Boisakh.
 msgid "Pohela Boishakh"
@@ -595,3 +623,6 @@ msgstr "గణేశ చవితి"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "జన్మాష్టమి (స్మార్త)"
+
+#~ msgid "UP Formation Day"
+#~ msgstr "ఉత్తర ప్రదేశ్ అవతరణ దినోత్సవం"

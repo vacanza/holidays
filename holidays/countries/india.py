@@ -78,6 +78,8 @@ class India(
         * Telangana:
             * <https://web.archive.org/web/20260224050455/https://transport.telangana.gov.in/html/registration-districtcodes.html>
             * <https://web.archive.org/web/20250219131214/https://www.thehindu.com/news/national/telangana/cm-firm-on-having-states-identity-as-tg-not-ts/article68187923.ece>
+        * Uttar Pradesh:
+            * <http://web.archive.org/web/20260714175419/https://ascent-hr.com/wp-content/uploads/2025/12/UP-Holiday-List-2026.pdf>
         * Uttarakhand:
             * <https://web.archive.org/web/20260704120047/https://spiderimg.amarujala.com/assets/applications/2025/12/24/holidays-list-2026_694beebe1007a.pdf>
     """
@@ -547,7 +549,7 @@ class India(
         # Gujarat Day.
         self._add_holiday_may_1(tr("Gujarat Day"))
         # Sardar Vallabhbhai Patel Jayanti.
-        self._add_holiday_oct_31(tr("Sardar Vallabhbhai Patel Jayanti"))
+        self._add_holiday_oct_31(tr("Sardar Vallabhbhai Patel's Jayanti"))
         # Parsi New Year (Shahenshahi).
         self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
 
@@ -850,10 +852,46 @@ class India(
 
     # Uttar Pradesh.
     def _populate_subdiv_up_public_holidays(self):
-        # Chhath Puja.
-        self._add_chhath_puja(tr("Chhath Puja"))
-        # UP Formation Day.
-        self._add_holiday_jan_24(tr("UP Formation Day"))
+        # Raksha Bandhan.
+        self._add_raksha_bandhan(tr("Raksha Bandhan"))
+        # Govardhan Puja.
+        self._add_govardhan_puja(tr("Govardhan Puja"))
+        # Bhai Duj.
+        self._add_bhai_dooj(tr("Bhai Duj"))
+        # Chitragupt's Birthday.
+        self._add_bhai_dooj(tr("Chitragupt's Jayanti"))
+
+    def _populate_subdiv_up_optional_holidays(self):
+        # Karpuri Thakur's Birthday.
+        self._add_holiday_jan_24(tr("Karpuri Thakur's Jayanti"))
+        # Cheti Chand.
+        self._add_cheti_chand(tr("Cheti Chand"))
+        # Maharshi Kashyap and Maharaj Nishad Raj's Graha Jayanti.
+        self._add_holiday_apr_5(tr("Maharshi Kashyap and Maharaj Nishad Raj's Graha Jayanti"))
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
+        # Chandrashekhar's Birthday.
+        self._add_holiday_apr_17(tr("Chandrashekhar's Jayanti"))
+        # Lord Shri Parshuram's Birthday.
+        self._add_parshuram_jayanti(tr("Bhagvan Shri Parshuram's Jayanti"))
+        # Maharana Pratap's Birthday.
+        self._add_maharana_pratap_jayanti(tr("Maharana Pratap's Jayanti"))
+        # Arbaaen.
+        self._add_arbaeen_day(tr("Chehlum"))
+        # Vishwakarma Puja.
+        self._add_vishwakarma_puja(tr("Vishwakarma Puja"))
+        # Anant Chaturdashi.
+        self._add_anant_chaturdashi(tr("Anant Chaturdashi"))
+        # Maharaj Agrasen's Birthday.
+        self._add_sharad_navratri(tr("Maharaj Agrasen's Jayanti"))
+        # Sardar Vallabhbhai Patel's Birthday.
+        self._add_holiday_oct_31(tr("Sardar Vallabhbhai Patel's Jayanti"))
+        # Acharya Narendra Dev's Birthday.
+        self._add_holiday_oct_31(tr("Acharya Narendra Dev's Jayanti"))
+        # Veerangana Uda Devi's Martyrdom Day.
+        self._add_holiday_nov_16(tr("Veerangana Uda Devi's Shaheedi Diwas"))
+        # Chaudhary Charan Singh's Birthday.
+        self._add_holiday_dec_23(tr("Chaudhary Charan Singh's Jayanti"))
 
     # West Bengal.
     def _populate_subdiv_wb_public_holidays(self):
