@@ -5654,7 +5654,7 @@
   {
     "id": "chinese_new_year_s_eve",
     "msgid": "Chinese New Year's Eve",
-    "new_comment": "",
+    "new_comment": "HK has no statutory holiday for Lunar New Year's Eve (see country docstring for details).",
     "comment": "Chinese New Year's Eve.",
     "messages": {
       "en_HK": "The day preceding Lunar New Year's Day",
@@ -12149,34 +12149,7 @@
       },
       "en_CY": "Epiphany",
       "en_ET": "Epiphany",
-      "en_US": {
-        "AD": "Epiphany",
-        "AR": "Epiphany",
-        "AT": "Epiphany",
-        "CH": "Epiphany",
-        "CO": "Epiphany",
-        "CY": "Epiphany",
-        "DE": "Epiphany",
-        "DO": "Epiphany",
-        "ES": "Epiphany",
-        "ET": "Epiphany",
-        "FI": "Epiphany",
-        "GE": "Epiphany",
-        "GL": "Epiphany",
-        "GR": "Epiphany",
-        "HR": "Epiphany",
-        "IT": "Epiphany",
-        "LI": "Epiphany",
-        "MK": "Epiphany",
-        "PL": "Epiphany",
-        "PS": "Epiphany",
-        "RO": "Epiphany",
-        "SE": "Epiphany",
-        "SK": "Epiphany (Three Kings' Day and Orthodox Christmas)",
-        "SM": "Epiphany",
-        "US": "Epiphany",
-        "VA": "Epiphany"
-      },
+      "en_US": "Epiphany",
       "es": {
         "AR": "Día de Reyes",
         "CO": "Día de los Reyes Magos",
@@ -12203,29 +12176,7 @@
       "sv": "Trettondedag jul",
       "sv_FI": "Trettondag",
       "th": "วันสมโภชพระคริสต์แสดงองค์",
-      "uk": {
-        "AD": "Богоявлення",
-        "AR": "Богоявлення",
-        "AT": "Богоявлення",
-        "CH": "Богоявлення",
-        "CO": "Богоявлення",
-        "CY": "Богоявлення",
-        "DE": "Богоявлення",
-        "DO": "Богоявлення",
-        "ES": "Богоявлення",
-        "FI": "Богоявлення",
-        "GE": "Богоявлення",
-        "GL": "Богоявлення",
-        "GR": "Богоявлення",
-        "HR": "Богоявлення",
-        "LI": "Богоявлення",
-        "MK": "Богоявлення",
-        "PL": "Богоявлення",
-        "RO": "Богоявлення",
-        "SE": "Богоявлення",
-        "SK": "Богоявлення (Три царі і православне Різдво Христове)",
-        "SM": "Богоявлення"
-      }
+      "uk": "Богоявлення"
     },
     "countries": [
       "AD",
@@ -12250,7 +12201,6 @@
       "PS",
       "RO",
       "SE",
-      "SK",
       "SM",
       "US",
       "VA"
@@ -12268,6 +12218,20 @@
     },
     "countries": [
       "AD"
+    ]
+  },
+  {
+    "id": "epiphany_sk",
+    "msgid": "Epiphany (Three Kings' Day and Orthodox Christmas)",
+    "new_comment": "",
+    "comment": "Epiphany.",
+    "messages": {
+      "en_US": "Epiphany (Three Kings' Day and Orthodox Christmas)",
+      "sk": "Zjavenie Pána (Traja králi a vianočný sviatok pravoslávnych kresťanov)",
+      "uk": "Богоявлення (Три царі і православне Різдво Христове)"
+    },
+    "countries": [
+      "SK"
     ]
   },
   {
