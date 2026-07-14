@@ -64,7 +64,6 @@ class HongKong(
     General Holidays:
         * [Cap. 149 General Holidays Ordinance](http://archive.today/2025.04.29-125900/https://www.elegislation.gov.hk/hk/cap149!en-zh-Hant-HK?INDEX_CS=N)
         * [Holidays for 2007-2025](https://web.archive.org/web/20250116080351/https://www.gov.hk/en/about/abouthk/holiday/index.htm)
-        * [Cap. 149 (pre-2012) confirming "前一日" as the official Lunar New Year's Eve substitute](https://www.elegislation.gov.hk/hk/cap149!en-zh-Hant-HK@1998-09-18T00:00:00?INDEX_CS=N&xpid=ID_1438402723367_001)
     """
 
     country = "HK"

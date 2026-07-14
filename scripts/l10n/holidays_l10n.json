@@ -5654,7 +5654,7 @@
   {
     "id": "chinese_new_year_s_eve",
     "msgid": "Chinese New Year's Eve",
-    "new_comment": "HK has no statutory holiday for Lunar New Year's Eve (see country docstring for details).",
+    "new_comment": "",
     "comment": "Chinese New Year's Eve.",
     "messages": {
       "en_HK": "The day preceding Lunar New Year's Day",
@@ -5662,25 +5662,33 @@
       "en_US": "Chinese New Year's Eve",
       "pt_MO": "Véspera do Novo Ano Lunar",
       "th": "วันก่อนวันตรุษจีน",
-      "zh_CN": {
-        "CN": "农历除夕",
-        "HK": "农历年初一的前一日",
-        "MO": "农历除夕",
-        "TW": "农历除夕",
-        "XHKG": "农历除夕",
-        "XSHG": "农历除夕"
-      },
+      "zh_CN": "农历除夕",
       "zh_HK": "農曆年初一的前一日",
       "zh_MO": "農曆除夕",
       "zh_TW": "農曆除夕"
     },
     "countries": [
       "CN",
-      "HK",
       "MO",
       "TW",
       "XHKG",
       "XSHG"
+    ]
+  },
+  {
+    "id": "chinese_new_year_s_eve_hk",
+    "msgid": "Chinese New Year's Eve",
+    "new_comment": "The Simplified Chinese translation is taken from an official source (Chapter 149 of the General Holidays Ordinance, 2011 version)",
+    "comment": "Chinese New Year's Eve.",
+    "messages": {
+      "en_HK": "The day preceding Lunar New Year's Day",
+      "en_US": "Chinese New Year's Eve",
+      "th": "วันก่อนวันตรุษจีน",
+      "zh_CN": "农历年初一的前一日",
+      "zh_HK": "農曆年初一的前一日"
+    },
+    "countries": [
+      "HK"
     ]
   },
   {
