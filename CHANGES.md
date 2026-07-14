@@ -1,3 +1,23 @@
+## Version 0.100
+
+Released July 6, 2026
+
+- Refactor Zambia holidays and tests (#3635 by @PPsyrius)
+- Add Chicago Mercantile Exchange (XCME) holidays (#3617 by @pareshjoshij, @arkid15r, @KJhellico)
+- Add Bolsa Mexicana de Valores (BMV) holidays (#3639 by @pareshjoshij)
+- Change standard name of "Whit Sunday" holiday to "Pentecost" (#3657 by @KJhellico)
+- Update India holidays: national holidays significant improvement (#3578 by @ankushhKapoor)
+- Update Saudi Arabia holidays (#3624 by @pareshjoshij)
+- Update Singapore holidays: add 2027 public holidays (#3632 by @PPsyrius)
+- Update calendar download page (#3626 by @pareshjoshij)
+- Update documentation: enhance iCalendar export examples (#3641 by @davidhedlund, @KJhellico)
+- Update iCalendar generation tool (#3640 by @KJhellico)
+- Update some holidays Ukrainian translations (#3667 by @KJhellico)
+- Migrate Malawi tests to new test case standards (#3633 by @VaishnaviBardapure)
+- Migrate Mexico tests to new test case standards (#3648 by @VaishnaviBardapure, @KJhellico)
+- Migrate Norway tests to new test case standards (#3671 by @eeshsaxena)
+- Migrate Zimbabwe tests to new test case standards (#3653 by @eeshsaxena)
+
 ## Version 0.99
 
 Released June 15, 2026

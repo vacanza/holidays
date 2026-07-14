@@ -1181,7 +1181,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Monaco</td>
 <td>MC</td>
 <td></td>
-<td>en_US, <strong>fr</strong>, uk</td>
+<td>en_US, <strong>fr_MC</strong>, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -2036,6 +2036,13 @@ code when available. The following financial markets are available:
 <td>Shenzhen Stock Exchange (SZSE) market holidays</td>
 <td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
 <td></td>
+</tr>
+<tr>
+<td>Toronto Stock Exchange</td>
+<td>XTSE</td>
+<td>Toronto Stock Exchange (TSX) market holidays</td>
+<td>ar, <strong>en_CA</strong>, en_US, fr, th</td>
+<td>HALF_DAY</td>
 </tr>
 </tbody>
 </table>
