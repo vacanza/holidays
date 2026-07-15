@@ -19,6 +19,7 @@ from tests.common import CommonFinancialTests
 class TestSIXSwissExchange(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.full_range = range(2000, 2027)
         super().setUpClass(SIXSwissExchange)
 
     def test_code(self):
@@ -27,7 +28,6 @@ class TestSIXSwissExchange(CommonFinancialTests, TestCase):
 
     def test_berchtolds_day(self):
         name = "Berchtoldstag"
-        self.full_range = range(2000, 2027)
         years_absent = {2000, 2005, 2010, 2011, 2016, 2021, 2022}
         self.assertNoHolidayName(name, years_absent)
         self.assertHolidayName(
@@ -36,7 +36,6 @@ class TestSIXSwissExchange(CommonFinancialTests, TestCase):
 
     def test_christmas_eve(self):
         name = "Heiligabend"
-        self.full_range = range(2000, 2027)
         years_absent = {2000, 2005, 2006, 2011, 2016, 2017, 2022, 2023}
         self.assertNoHolidayName(name, years_absent)
         self.assertHolidayName(
@@ -45,7 +44,6 @@ class TestSIXSwissExchange(CommonFinancialTests, TestCase):
 
     def test_new_years_eve(self):
         name = "Vortag vor Neujahr"
-        self.full_range = range(2000, 2027)
         years_absent = {2000, 2005, 2006, 2011, 2016, 2017, 2022, 2023}
         self.assertNoHolidayName(name, years_absent)
         self.assertHolidayName(
@@ -150,7 +148,7 @@ class TestSIXSwissExchange(CommonFinancialTests, TestCase):
             ("2024-12-24", "วันคริสต์มาสอีฟ"),
             ("2024-12-25", "วันคริสต์มาส"),
             ("2024-12-26", "วันสมโภชนักบุญสเตเฟน"),
-            ("2024-12-31", "วันส่งท้ายปีเก่า"),
+            ("2024-12-31", "วันสิ้นปี"),
         )
 
     def test_l10n_uk(self):

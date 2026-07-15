@@ -37,4 +37,4 @@ msgstr "วันคริสต์มาสอีฟ"
 
 #. New Year's Eve.
 msgid "Vortag vor Neujahr"
-msgstr "วันส่งท้ายปีเก่า"
+msgstr "วันสิ้นปี"
