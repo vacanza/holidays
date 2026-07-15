@@ -258,8 +258,10 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             self._add_holiday_1st_mon_of_aug(tr("British Columbia Day"))
 
         if self._year >= 2023:
-            # National Day for Truth and Reconciliation.
-            self._add_holiday_sep_30(tr("National Day for Truth and Reconciliation"))
+            self._add_observed(
+                # National Day for Truth and Reconciliation.
+                self._add_holiday_sep_30(tr("National Day for Truth and Reconciliation"))
+            )
 
         self._add_thanksgiving_day()
 
