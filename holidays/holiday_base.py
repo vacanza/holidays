@@ -1136,12 +1136,14 @@ class HolidayBase(dict[date, str]):
             raise AttributeError(f"Unknown direction: {direction}")
 
         dt = self.__keytransform__(target_date or datetime.now().date())
-        if direction == "forward" and (next_year := dt.year + 1) not in self.years:
-            self.years.add(next_year)
-            self._populate(next_year)
-        elif direction == "backward" and (previous_year := dt.year - 1) not in self.years:
-            self.years.add(previous_year)
-            self._populate(previous_year)
+        # Automatically expand for `expand=True` cases only, like `__keytransform__`.
+        if self.expand:
+            if direction == "forward" and (next_year := dt.year + 1) not in self.years:
+                self.years.add(next_year)
+                self._populate(next_year)
+            elif direction == "backward" and (previous_year := dt.year - 1) not in self.years:
+                self.years.add(previous_year)
+                self._populate(previous_year)
 
         sorted_dates = sorted(self.keys())
         position = (
