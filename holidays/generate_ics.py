@@ -181,7 +181,7 @@ class IcsGenerator:
         if not template:
             return None
 
-        fields = []
+        field_names = []
         i = 0
         n = len(template)
         while i < n:
@@ -192,17 +192,17 @@ class IcsGenerator:
                 if end == -1:
                     raise SystemExit("Invalid output template")
 
-                fields.append(template[i + 1 : end])
+                field_names.append(template[i + 1 : end])
                 i = end + 1
             elif template[i] == "}":
                 raise SystemExit("Invalid output template")
             else:
                 i += 1
 
-        if not fields:
+        if not field_names:
             raise SystemExit("Output template must contain at least one placeholder")
 
-        for field_name in fields:
+        for field_name in field_names:
             if field_name not in placeholders:
                 supported = ", ".join(f"{{{p}}}" for p in sorted(placeholders))
                 raise SystemExit(
@@ -246,7 +246,7 @@ class IcsGenerator:
         if start_year != end_year:
             parts.append("{end_year}")
 
-        return "_".join(parts) + ".ics"
+        return f"{'_'.join(parts)}.ics"
 
     def run(self) -> None:
         self.validate_code()
