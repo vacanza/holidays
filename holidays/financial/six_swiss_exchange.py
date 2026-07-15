@@ -10,12 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.constants import PUBLIC
 from holidays.countries.switzerland import Switzerland
 from holidays.mixins.child_entity import ChildEntity
-from holidays.observed_holiday_base import SAT_SUN_TO_NONE
 
 
 class SIXSwissExchange(ChildEntity, Switzerland):
@@ -39,6 +39,13 @@ class SIXSwissExchange(ChildEntity, Switzerland):
     supported_categories: tuple[str] = (PUBLIC,)
     start_year = 2000
 
+    def _add_holiday(self, name: str, *args) -> date | None:
+        dt = args if len(args) > 1 else args[0]
+        dt = dt if isinstance(dt, date) else date(self._year, *dt)
+        if self._is_weekend(dt):
+            return None
+        return super()._add_holiday(name, dt)
+
     def _populate_public_holidays(self) -> None:
         super()._populate_public_holidays()
 
@@ -50,14 +57,6 @@ class SIXSwissExchange(ChildEntity, Switzerland):
 
         # New Year's Eve.
         self._add_new_years_eve(tr("Vortag vor Neujahr"))
-
-    def _populate(self, year: int) -> None:
-        super()._populate(year)
-
-        if self.observed:
-            for dt in tuple(self.keys()):
-                if dt.year == year:
-                    self._move_holiday(dt, rule=SAT_SUN_TO_NONE, show_observed_label=False)
 
 
 class XSWX(SIXSwissExchange):

@@ -27,47 +27,29 @@ class TestSIXSwissExchange(CommonFinancialTests, TestCase):
 
     def test_berchtolds_day(self):
         name = "Berchtoldstag"
-        self.assertNonObservedHolidayName(name, (f"{year}-01-02" for year in self.full_range))
+        self.full_range = range(2000, 2027)
+        years_absent = {2000, 2005, 2010, 2011, 2016, 2021, 2022}
+        self.assertNoHolidayName(name, years_absent)
         self.assertHolidayName(
-            name,
-            "2020-01-02",
-            "2023-01-02",
-            "2024-01-02",
-            "2025-01-02",
-        )
-        self.assertNoHoliday(
-            "2021-01-02",
-            "2022-01-02",
+            name, (year for year in self.full_range if year not in years_absent)
         )
 
     def test_christmas_eve(self):
         name = "Heiligabend"
-        self.assertNonObservedHolidayName(name, (f"{year}-12-24" for year in self.full_range))
+        self.full_range = range(2000, 2027)
+        years_absent = {2000, 2005, 2006, 2011, 2016, 2017, 2022, 2023}
+        self.assertNoHolidayName(name, years_absent)
         self.assertHolidayName(
-            name,
-            "2020-12-24",
-            "2021-12-24",
-            "2024-12-24",
-            "2025-12-24",
-        )
-        self.assertNoHoliday(
-            "2022-12-24",
-            "2023-12-24",
+            name, (year for year in self.full_range if year not in years_absent)
         )
 
     def test_new_years_eve(self):
         name = "Vortag vor Neujahr"
-        self.assertNonObservedHolidayName(name, (f"{year}-12-31" for year in self.full_range))
+        self.full_range = range(2000, 2027)
+        years_absent = {2000, 2005, 2006, 2011, 2016, 2017, 2022, 2023}
+        self.assertNoHolidayName(name, years_absent)
         self.assertHolidayName(
-            name,
-            "2020-12-31",
-            "2021-12-31",
-            "2024-12-31",
-            "2025-12-31",
-        )
-        self.assertNoHoliday(
-            "2022-12-31",
-            "2023-12-31",
+            name, (year for year in self.full_range if year not in years_absent)
         )
 
     def test_2025(self):
