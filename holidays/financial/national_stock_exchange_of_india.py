@@ -57,6 +57,7 @@ class NationalStockExchangeOfIndia(
         * [2023](https://web.archive.org/web/20250821071635/https://nsearchives.nseindia.com/content/circulars/CMTR54757.pdf)
         * [2024](https://web.archive.org/web/20250821071650/https://nsearchives.nseindia.com/content/circulars/CMTR59722.pdf)
         * [2025](https://web.archive.org/web/20250624132016/https://nsearchives.nseindia.com/content/circulars/CMTR65587.pdf)
+        * [2026](https://web.archive.org/web/20260308055957/https://nsearchives.nseindia.com/content/circulars/CMTR71775.pdf)
     """
 
     market = "XNSE"
@@ -212,6 +213,7 @@ class NationalStockExchangeOfIndiaHinduHolidays(_CustomHinduHolidays):
 
     HOLI_DATES = {
         2023: (MAR, 7),
+        2026: (MAR, 3),
     }
 
     MAHAVIR_JAYANTI_DATES = {
