@@ -78,6 +78,7 @@ class Malaysia(
         * <https://web.archive.org/web/20250123115300/https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8>
         * <https://web.archive.org/web/20240228225038/https://www.nst.com.my/news/nation/2024/02/1014012/melaka-cm-suggests-declaring-feb-20-federal-public-holiday-mark>
         * <https://web.archive.org/web/20251216120554/https://www.kabinet.gov.my/storage/2025/08/HKA-2026.pdf>
+        * [Additional public holiday for Hari Raya Aidilfitri 2026 (20 Mar 2026)](https://www.malaymail.com/news/malaysia/2026/03/15/anwar-announces-extra-public-holiday-for-hari-raya-either-march-20-or-23-depending-on-moon-sighting/212709)
 
     Subdivisions Holidays References:
         * Sabah:
@@ -864,6 +865,8 @@ class MalaysiaStaticHolidays:
         # Eid al-Fitr (additional holiday).
         2023: (APR, 21, tr("Hari Raya Puasa (pergantian hari)")),
         2025: (SEP, 15, additional_holiday),
+        # Eid al-Fitr (additional holiday).
+        2026: (MAR, 20, tr("Hari Raya Puasa (pergantian hari)")),
     }
 
     special_01_public_holidays = {
