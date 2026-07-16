@@ -48,7 +48,7 @@ msgstr "Jour de l'Europe"
 msgid "Christi Himmelfaart"
 msgstr "Ascension"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Péngschtméindeg"
 msgstr "Lundi de Pentecôte"
 

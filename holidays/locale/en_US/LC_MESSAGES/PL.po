@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.64\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-15 08:13-0800\n"
-"PO-Revision-Date: 2025-01-03 19:32+0200\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -68,9 +68,9 @@ msgstr "Ascension Day"
 msgid "Zielone Świątki"
 msgstr "Pentecost"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Drugi dzień Zielonych Świątek"
-msgstr "Whit Monday"
+msgstr "Pentecost Monday"
 
 #. Corpus Christi.
 msgid "Dzień Bożego Ciała"

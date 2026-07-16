@@ -116,8 +116,8 @@ class Curacao(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Presumed to be removed from 2010 onwards.
 
         if self._year <= 2009:
-            # Whit Sunday.
-            self._add_whit_sunday(tr("Domingo di Pentekòstès"))
+            # Pentecost.
+            self._add_pentecost(tr("Domingo di Pentekòstès"))
 
         # Dia di Himno i Bandera.
         # Status: In-Use.

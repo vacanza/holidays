@@ -599,7 +599,7 @@ the [icalendar](https://github.com/collective/icalendar) package.
 For user convenience, the library includes `holidays-ics` tool for generating iCalendar (.ics)
 files from holiday calendars provided by the library. It supports country, subdivision,
 and financial market calendars, holiday category filtering, localized holiday names,
-year selection, and custom output file names.
+year selection, custom output paths, and output filename templates.
 
 The tool can be run either as an installed command:
 
@@ -625,64 +625,101 @@ a Python installation or any manual setup of `holidays` package.
 For installation instructions, see `uv` [documentation](https://docs.astral.sh/uv/getting-started/installation/).
 
 By default, the generated calendar contains holidays for the current year and is written
-to a file whose name is derived from the selected calendar and year range.
+to a file whose name is derived from the selected options and year range.
 The `--years` option accepts a single year (2025), a year range (2025-2027), or a
 relative range (+10), which selects the current year through the current year plus 10.
 
+### Output filename templates
+
+Instead of specifying an explicit output path with `--output`, you can use
+`--output-template` to generate output filenames dynamically.
+
+Supported placeholders:
+
+| Placeholder    | Description                                                      |
+|----------------|------------------------------------------------------------------|
+| `{code}`       | Country or financial market code                                 |
+| `{subdiv}`     | Subdivision code, or `ALL` if not specified                      |
+| `{language}`   | Requested language, or `DEFAULT` if not specified                |
+| `{categories}` | Holiday categories joined with `_`, or `PUBLIC` if not specified |
+| `{start_year}` | First year                                                       |
+| `{end_year}`   | Last year                                                        |
+| `{today}`      | Current date in `YYYYMMDD` format                                |
+
+To include literal `{` or `}` characters, write them as `{{` and `}}`.
+
 ### Examples
 
-Generate a holiday calendar for Switzerland in German:
+Calendar for the current year:
 
 ```shell
-holidays-ics CH --language de
+holidays-ics US
 ```
 
-Generate a holiday calendar for the Canton of Zurich for a specific year:
+Save calendar to a custom file:
 
 ```shell
-holidays-ics CH --subdiv ZH --years 2025
+holidays-ics US --output test.ics
 ```
 
-Generate a holiday calendar for the current year and the next 5 years:
+Calendar for specific year:
 
 ```shell
-holidays-ics US --years +5
+holidays-ics US --years 2035
 ```
 
-Generate a holiday calendar for the current year and the previous 5 years:
+Calendar for the current and next 10 years:
+
+```shell
+holidays-ics US --years +10
+```
+
+Calendar for the current year and the previous 5 years:
 
 ```shell
 holidays-ics US --years -5
 ```
 
-Generate a holiday calendar for multiple years and save it to a custom file:
+Calendar containing unofficial holidays only:
 
 ```shell
-holidays-ics US --years 2025-2027 --output us_holidays.ics
+holidays-ics US --categories unofficial
 ```
 
-Generate a calendar containing only bank holidays:
+Calendar containing public and optional holidays:
 
 ```shell
-holidays-ics AT --years 2025 --categories bank
+holidays-ics CA --categories public,optional
 ```
 
-Generate a calendar containing public and optional holidays:
+Switzerland calendar in German:
 
 ```shell
-holidays-ics CA --years 2025 --categories public,optional
+holidays-ics CH --language de
 ```
 
-Generate a localized subdivision-specific calendar and save it to a custom file:
+Canton of Zurich calendar:
 
 ```shell
-holidays-ics CH --subdiv ZH --years 2025 --language de --output zurich_holidays.ics
+holidays-ics CH --subdiv ZH
 ```
 
-Generate a financial market holiday calendar:
+Financial market holiday calendar:
 
 ```shell
-holidays-ics XNYS --years 2025 --output nyse_holidays.ics
+holidays-ics XNYS
+```
+
+Spanning the next 10 years, unofficial holidays, saved to a custom file:
+
+```shell
+holidays-ics US --years +10 --categories unofficial --output-template "HOLIDAYS_{code}_{start_year}_{end_year}_{categories}.ics"
+```
+
+Calendar for Switzerland, specific to the Canton of Zurich, localized in German, and saved to a custom file:
+
+```shell
+holidays-ics CH --subdiv ZH --language de --output-template "{code}_{subdiv}_{language}_{today}.ics"
 ```
 
 The tool can also display the supported subdivisions, categories, and languages for a selected

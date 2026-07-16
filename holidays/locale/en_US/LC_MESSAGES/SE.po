@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.88\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-08 20:17+0300\n"
-"PO-Revision-Date: 2025-11-25 23:05+0200\n"
+"PO-Revision-Date: 2026-07-01 00:12+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -69,13 +69,13 @@ msgstr "Ascension Day"
 msgid "Nationaldagen"
 msgstr "National Day"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pingstdagen"
-msgstr "Whit Sunday"
+msgstr "Pentecost"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Annandag pingst"
-msgstr "Whit Monday"
+msgstr "Pentecost Monday"
 
 #. Midsummer Day.
 msgid "Midsommardagen"
@@ -133,9 +133,9 @@ msgstr "Day before Ascension Day"
 msgid "Dag före Midsommarafton"
 msgstr "Day before Midsummer Eve"
 
-#. Day before Whitsun Eve.
+#. Day before Pentecost Eve.
 msgid "Dag före Pingstafton"
-msgstr "Day before Whitsun Eve"
+msgstr "Day before Pentecost Eve"
 
 #. Day before Christmas Eve.
 msgid "Dag före Julafton"
@@ -153,6 +153,6 @@ msgstr "Holy Saturday"
 msgid "Klämdag"
 msgstr "Squeeze day"
 
-#. Whitsun Eve.
+#. Pentecost Eve.
 msgid "Pingstafton"
-msgstr "Whitsun Eve"
+msgstr "Pentecost Eve"

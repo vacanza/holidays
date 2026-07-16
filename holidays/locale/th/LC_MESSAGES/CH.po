@@ -60,7 +60,7 @@ msgstr "วันจันทร์อีสเตอร์"
 msgid "Tag der Arbeit"
 msgstr "วันแรงงาน"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Pfingstmontag"
 msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
 
@@ -128,7 +128,7 @@ msgstr "วันจันทร์หลังวันอธิษฐานแ
 msgid "Ostersonntag"
 msgstr "วันอาทิตย์อีสเตอร์"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pfingstsonntag"
 msgstr "วันสมโภชพระจิตเจ้า"
 

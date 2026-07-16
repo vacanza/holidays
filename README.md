@@ -67,7 +67,9 @@ The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io).
 
 ## ICS Exports
 
-Holiday calendars can be exported as `.ics` files via the [download page](https://holidays.readthedocs.io/en/latest/downloads/).
+Holiday calendars can be exported as `.ics` files via [holidays-ics command line
+tool](https://holidays.readthedocs.io/en/latest/examples/#holidays-ics-tool),
+or from the [Download Holiday Calendars](https://holidays.readthedocs.io/en/latest/downloads/) page.
 
 ## Quick Start
 
@@ -1179,7 +1181,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Monaco</td>
 <td>MC</td>
 <td></td>
-<td>en_US, <strong>fr</strong>, uk</td>
+<td>en_US, <strong>fr_MC</strong>, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -1938,6 +1940,13 @@ code when available. The following financial markets are available:
 </thead>
 <tbody>
 <tr>
+<td>Bolsa Mexicana de Valores</td>
+<td>XMEX</td>
+<td>Bolsa Mexicana de Valores (BMV) holidays</td>
+<td>en_US, <strong>es</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>
 <td>Bombay Stock Exchange (BSE) market holidays</td>
@@ -2027,6 +2036,13 @@ code when available. The following financial markets are available:
 <td>Shenzhen Stock Exchange (SZSE) market holidays</td>
 <td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
 <td></td>
+</tr>
+<tr>
+<td>Toronto Stock Exchange</td>
+<td>XTSE</td>
+<td>Toronto Stock Exchange (TSX) market holidays</td>
+<td>ar, <strong>en_CA</strong>, en_US, fr, th</td>
+<td>HALF_DAY</td>
 </tr>
 </tbody>
 </table>

@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-20 11:58+0200\n"
-"PO-Revision-Date: 2024-01-02 18:34+0200\n"
+"PO-Revision-Date: 2026-07-04 23:40+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -26,11 +26,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
-"X-Source-Language: fr\n"
+"X-Source-Language: fr_MC\n"
 
 #. %s (observed).
 #, c-format
-msgid "%s (observé)"
+msgid "%s (reporté)"
 msgstr "%s (вихідний)"
 
 #. New Year's Day.
@@ -38,47 +38,47 @@ msgid "Le jour de l'An"
 msgstr "Новий рік"
 
 #. Saint Devote's Day.
-msgid "La Sainte Dévote"
+msgid "Le jour de la Sainte-Dévote"
 msgstr "День Святої Девоти"
 
 #. Easter Monday.
-msgid "Le lundi de Pâques"
+msgid "Le Lundi de Pâques"
 msgstr "Великодній понеділок"
 
 #. Labor Day.
-msgid "Fête de la Travaille"
+msgid "Le jour de la Fête du Travail"
 msgstr "День праці"
 
 #. Ascension Day.
-msgid "L'Ascension"
+msgid "Le jour de l'Ascension"
 msgstr "Вознесіння Господнє"
 
-#. Whit Monday.
-msgid "Le lundi de Pentecôte"
-msgstr "День Святого Духа"
+#. Pentecost Monday.
+msgid "Le Lundi de Pentecôte"
+msgstr "Другий день Пʼятидесятниці"
 
 #. Corpus Christi.
-msgid "La Fête Dieu"
+msgid "Le jour de la Fête Dieu"
 msgstr "Свято Тіла і Крові Христових"
 
 #. Assumption Day.
-msgid "L'Assomption de Marie"
+msgid "Le jour de l'Assomption"
 msgstr "Внебовзяття Пресвятої Діви Марії"
 
 #. All Saints' Day.
-msgid "La Toussaint"
+msgid "Le jour de la Toussaint"
 msgstr "День усіх святих"
 
 #. Prince's Day.
-msgid "La Fête du Prince"
+msgid "Le jour de la Fête de S.A.S. le Prince Souverain"
 msgstr "День Князя"
 
 #. Immaculate Conception.
-msgid "L'Immaculée Conception"
+msgid "Le jour de l'Immaculée Conception"
 msgstr "Непорочне зачаття Діви Марії"
 
 #. Christmas Day.
-msgid "Noël"
+msgid "Le jour de Noël"
 msgstr "Різдво Христове"
 
 #. Public holiday.

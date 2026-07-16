@@ -59,7 +59,7 @@ msgstr "Labour Day"
 msgid "Hemelvaartsdag"
 msgstr "Ascension Day"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Eerste Pinksterdag"
 msgstr "Whit Sunday"
 

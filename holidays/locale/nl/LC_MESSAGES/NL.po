@@ -60,11 +60,11 @@ msgstr ""
 msgid "Hemelvaartsdag"
 msgstr ""
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Eerste Pinksterdag"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Tweede Pinksterdag"
 msgstr ""
 

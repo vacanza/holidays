@@ -335,7 +335,7 @@ class TestNiger(CommonCountryTests, TestCase):
             ("2025-05-29", "Ascension"),
             ("2025-06-07", "Eid al-Adha"),
             ("2025-06-08", "Day after Eid al-Adha"),
-            ("2025-06-09", "Day after Eid al-Adha (observed); Whit Monday"),
+            ("2025-06-09", "Day after Eid al-Adha (observed); Pentecost Monday"),
             ("2025-06-27", "Islamic New Year"),
             ("2025-07-26", "Anniversary of the CNSP Coup"),
             ("2025-08-03", "Anniversary of the Proclamation of Independence"),

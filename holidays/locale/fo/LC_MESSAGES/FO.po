@@ -55,11 +55,11 @@ msgstr ""
 msgid "Kristi himmalsferðardagur"
 msgstr ""
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Hvítusunnudagur"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Annar hvítusunnudagur"
 msgstr ""
 
