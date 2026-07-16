@@ -1136,7 +1136,6 @@ class HolidayBase(dict[date, str]):
             raise AttributeError(f"Unknown direction: {direction}")
 
         dt = self.__keytransform__(target_date or datetime.now().date())
-        # Automatically expand for `expand=True` cases only, like `__keytransform__`.
         if self.expand:
             if direction == "forward" and (next_year := dt.year + 1) not in self.years:
                 self.years.add(next_year)
