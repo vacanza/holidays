@@ -198,7 +198,9 @@ class SouthKorea(
 
         if self._year <= 2007 or self._year >= 2026:
             # Constitution Day.
-            self._add_holiday_jul_17(tr("제헌절"))
+            # Reinstated from 2026 under the alternative (substitute) holiday
+            # system, so it observes a substitute day when falling on a weekend.
+            append_observed(self._add_holiday_jul_17(tr("제헌절")), 2026)
 
         # Liberation Day.
         append_observed(self._add_holiday_aug_15(tr("광복절")), 2021)
