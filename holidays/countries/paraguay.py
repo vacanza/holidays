@@ -97,6 +97,18 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         # Chaco Armistice Day.
         self._add_holiday(tr("Día de la Paz del Chaco"), dates_obs.get(self._year, (JUN, 12)))
 
+        # Ley N° 7544/2025.
+        if self._year >= 2026:
+            dates_obs = {
+                # Decreto N° 6215/2026.
+                2026: (JUN, 22),
+            }
+            self._add_holiday(
+                # Constitution Oath Day.
+                tr("Día de la Jura de la Constitución Nacional"),
+                dates_obs.get(self._year, (JUN, 20)),
+            )
+
         # Asuncion Foundation's Day.
         name = tr("Día de la Fundación de Asunción")
         # Decreto N° 6292.

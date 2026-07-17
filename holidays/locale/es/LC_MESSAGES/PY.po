@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.82\n"
+"Project-Id-Version: Holidays 0.101\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-05 12:33+0200\n"
-"PO-Revision-Date: 2025-09-17 11:01+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-07-16 22:35+0530\n"
+"Last-Translator: uttam12331 <uttam12331@users.noreply.github.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -62,6 +62,10 @@ msgstr ""
 
 #. Chaco Armistice Day.
 msgid "Día de la Paz del Chaco"
+msgstr ""
+
+#. Constitution Oath Day.
+msgid "Día de la Jura de la Constitución Nacional"
 msgstr ""
 
 #. Asuncion Foundation's Day.
