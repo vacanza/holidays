@@ -33,6 +33,13 @@ class TestGhana(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
+    def test_2026_substitute_holidays(self):
+        # Executive Instruments moving 2026 weekday holidays to Friday.
+        self.assertHoliday("2026-01-09", "2026-07-03")
+        self.assertHolidayName("Constitution Day", "2026-01-09")
+        self.assertHolidayName("Republic Day", "2026-07-03")
+        self.assertNoHolidayName("Republic Day", range(2019, 2026), range(2027, 2050))
+
     def test_constitution_day(self):
         name = "Constitution Day"
         self.assertHolidayName(name, (f"{year}-01-07" for year in range(2019, self.end_year)))

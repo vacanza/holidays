@@ -10,7 +10,13 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.calendars.gregorian import JAN, JUL
+from holidays.groups import (
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_MON,
@@ -18,7 +24,13 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Ghana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Ghana(
+    ObservedHolidayBase,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+):
     """Ghana holidays.
 
     References:
@@ -42,6 +54,7 @@ class Ghana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
+        StaticHolidays.__init__(self, cls=GhanaStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
@@ -101,3 +114,28 @@ class GH(Ghana):
 
 class GHA(Ghana):
     pass
+
+
+class GhanaStaticHolidays:
+    """Ghana special holidays.
+
+    When a statutory public holiday falls on a weekday, the President may, by
+    Executive Instrument under Section 2 of the Public Holidays and Commemorative
+    Days Act (Act 601), declare the following Friday a public holiday.
+
+    References:
+        * [Constitution Day observed 2026](https://www.mint.gov.gh/declaration-of-friday-9th-january2026-as-a-public-holiday/)
+        * [Republic Day observed 2026](https://www.mint.gov.gh/declaration-of-friday-3rd-july-2026-as-a-public-holiday/)
+    """
+
+    # Constitution Day.
+    constitution_day = "Constitution Day"
+    # Republic Day.
+    republic_day = "Republic Day"
+
+    special_public_holidays = {
+        2026: (
+            (JAN, 9, constitution_day),
+            (JUL, 3, republic_day),
+        ),
+    }
