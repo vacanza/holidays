@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-07-14 23:55+0530\n"
+"PO-Revision-Date: 2026-07-18 00:15+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: te\n"
@@ -320,13 +320,13 @@ msgstr "గోవా విమోచన దినోత్సవం"
 msgid "Uttarayan"
 msgstr "ఉత్తరాయణం"
 
-#. Gujarat Day.
-msgid "Gujarat Day"
-msgstr "గుజరాత్ దినోత్సవం"
+#. Lord Shri Parshuram's Birthday.
+msgid "Bhagvan Shri Parshuram's Jayanti"
+msgstr ""
 
-#. Sardar Vallabhbhai Patel Jayanti.
-msgid "Sardar Vallabhbhai Patel Jayanti"
-msgstr "సర్దార్ వల్లభభాయి పటేల్ జయంతి"
+#. Sardar Vallabhbhai Patel's Birthday.
+msgid "Sardar Vallabhbhai Patel's Jayanti"
+msgstr ""
 
 #. Parsi New Year (Shahenshahi).
 msgid "Parsi New Year (Shahenshahi)"
@@ -354,10 +354,6 @@ msgstr ""
 
 #. Vishwakarma Day.
 msgid "Vishwakarma Day"
-msgstr ""
-
-#. Lord Shri Parshuram's Birthday.
-msgid "Bhagvan Shri Parshuram's Jayanti"
 msgstr ""
 
 #. Akshay Tritiya.
@@ -580,10 +576,6 @@ msgstr ""
 msgid "Chandrashekhar's Jayanti"
 msgstr ""
 
-#. Sardar Vallabhbhai Patel's Birthday.
-msgid "Sardar Vallabhbhai Patel's Jayanti"
-msgstr ""
-
 #. Acharya Narendra Dev's Birthday.
 msgid "Acharya Narendra Dev's Jayanti"
 msgstr ""
@@ -623,6 +615,12 @@ msgstr "గణేశ చవితి"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "జన్మాష్టమి (స్మార్త)"
+
+#~ msgid "Gujarat Day"
+#~ msgstr "గుజరాత్ దినోత్సవం"
+
+#~ msgid "Sardar Vallabhbhai Patel Jayanti"
+#~ msgstr "సర్దార్ వల్లభభాయి పటేల్ జయంతి"
 
 #~ msgid "UP Formation Day"
 #~ msgstr "ఉత్తర ప్రదేశ్ అవతరణ దినోత్సవం"

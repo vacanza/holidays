@@ -546,9 +546,15 @@ class India(
     def _populate_subdiv_gj_public_holidays(self):
         # Makar Sankranti.
         self._add_makar_sankranti(tr("Uttarayan"))
-        # Gujarat Day.
-        self._add_holiday_may_1(tr("Gujarat Day"))
-        # Sardar Vallabhbhai Patel Jayanti.
+        # Cheti Chand.
+        self._add_cheti_chand(tr("Cheti Chand"))
+        # Lord Shri Parshuram's Birthday.
+        self._add_parshuram_jayanti(tr("Bhagvan Shri Parshuram's Jayanti"))
+        # Raksha Bandhan.
+        self._add_raksha_bandhan(tr("Raksha Bandhan"))
+        # Bhai Duj.
+        self._add_bhai_dooj(tr("Bhai Duj"))
+        # Sardar Vallabhbhai Patel's Birthday.
         self._add_holiday_oct_31(tr("Sardar Vallabhbhai Patel's Jayanti"))
         # Parsi New Year (Shahenshahi).
         self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
