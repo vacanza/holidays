@@ -257,6 +257,22 @@ class TestIcalExporter(TestCase):
         self.assertIn("DTSTART;VALUE=DATE:20050501\r\n", output)
         self.assertIn("DURATION:P2D\r\n", output)
 
+    def test_multiname_shared_start_different_run_lengths(self):
+        # A 2-day run (AAA, Jan 1-2) shares its start date with a single-day
+        # holiday (ZZZ, Jan 1). The merge loop advanced the date index by only
+        # the last name's run length, so depending on alphabetical order a
+        # holiday was duplicated (index under-advanced) or dropped
+        # (over-advanced). Every name must appear exactly once.
+        hol = MockHolidays()
+        hol[date(2024, 1, 1)] = "AAA"
+        hol[date(2024, 1, 2)] = "AAA"
+        hol[date(2024, 1, 1)] = "ZZZ"
+        output = ICalExporter(hol).generate()
+
+        self.assertEqual(output.count("SUMMARY:AAA\r\n"), 1)
+        self.assertEqual(output.count("SUMMARY:ZZZ\r\n"), 1)
+        self.assertIn("DTSTART;VALUE=DATE:20240101\r\nDURATION:P2D\r\n", output)
+
     def test_single_holiday_multiple_date_cross_year_boundary(self):
         # Multiple-date holiday that crosses the beginning of the year
         # should be divided into two entries.
