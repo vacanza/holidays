@@ -22,7 +22,6 @@ from holidays.observed_holiday_base import (
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
     SUN_TO_NEXT_MON,
-    SUN_TO_NEXT_TUE,
 )
 
 
@@ -34,18 +33,20 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         * <https://web.archive.org/web/20130703014214/http://www.hrsdc.gc.ca/eng/labour/overviews/employment_standards/holidays.shtml>
         * <https://web.archive.org/web/20250330082640/https://www.alberta.ca/alberta-general-holidays>
         * <https://web.archive.org/web/20250403044407/https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice/employment-standards/statutory-holidays>
-        * <https://web.archive.org/web/20250427131243/https://web2.gov.mb.ca/laws/statutes/ccsm/r120e.php>
-        * <https://web.archive.org/web/20250112160822/https://www2.gnb.ca/content/gnb/en/departments/elg/local_government/content/governance/content/days_of_rest_act.html>
-        * <https://web.archive.org/web/20250405170509/https://www.ontario.ca/document/your-guide-employment-standards-act-0/public-holidays>
+        * Manitoba:
+            * <https://web.archive.org/web/20250427131243/https://web2.gov.mb.ca/laws/statutes/ccsm/r120e.php>
+            * [MB National Day for Truth and Reconciliation](https://web.archive.org/web/20240714223654/https://web2.gov.mb.ca/bills/43-1/b004e.php)
+        * <https://web.archive.org/web/20260214144101/https://www2.gnb.ca/content/gnb/en/departments/elg/local_government/content/governance/content/days_of_rest_act.html>
+        * Ontario:
+            * [Employment Standards Act, 2000](https://www.ontario.ca/laws/statute/00e41)
+            * [Proclamation of Oct 12, 2007](https://www.ontario.ca/document/ontario-gazette-volume-140-issue-43-october-27-2007)
+            * [Guide to the Employment Standards Act](https://web.archive.org/web/20250405170509/https://www.ontario.ca/document/your-guide-employment-standards-act-0/public-holidays)
         * <https://archive.org/details/nunavut-day-designated-as-a-general-holiday-start-date>
-        * <https://web.archive.org/web/20250116143344/https://www.officeholidays.com/countries/canada>
-        * <https://web.archive.org/web/20250425120843/https://www.timeanddate.com/holidays/canada>
         * <https://web.archive.org/web/20250122122256/https://www.warmuseum.ca/firstworldwar/history/after-the-war/remembrance/remembrance-day/>
         * <https://web.archive.org/web/20250428153936/https://www.thecanadianencyclopedia.ca/en/article/thanksgiving-day>
         * <https://web.archive.org/web/20250428154427/https://recherche-collection-search.bac-lac.gc.ca/eng/home/record?idnumber=9326&app=diawlmking&ecopy=80003QJW>
         * <https://web.archive.org/web/20240915001506/https://www.britannica.com/topic/Victoria-Day>
         * [NT National Aboriginal Day](https://web.archive.org/web/20160623071755/http://www.daair.gov.nt.ca/_live/pages/wpPages/National_Aboriginal_Day.aspx)
-        * [MB National Day for Truth and Reconciliation](https://web.archive.org/web/20240714223654/https://web2.gov.mb.ca/bills/43-1/b004e.php)
     """
 
     country = "CA"
@@ -441,6 +442,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
                 self._add_holiday_jul_9(name)
 
     def _populate_subdiv_on_public_holidays(self):
+        # Proclamation of Oct 12, 2007.
         if self._year >= 2008:
             # Family Day.
             self._add_holiday_3rd_mon_of_feb(tr("Family Day"))
@@ -449,13 +451,23 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
         self._add_thanksgiving_day()
 
-        # Boxing Day.
-        self._add_observed(self._add_christmas_day_two(tr("Boxing Day")), rule=SUN_TO_NEXT_TUE)
+        self._add_observed(
+            # Boxing Day.
+            self._add_christmas_day_two(tr("Boxing Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
+        )
 
     def _populate_subdiv_on_optional_holidays(self):
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
+
         if self._year >= 1900:
             # Civic Holiday.
             self._add_holiday_1st_mon_of_aug(tr("Civic Holiday"))
+
+        if self._year >= 1931:
+            # Remembrance Day.
+            self._add_observed(self._add_remembrance_day(tr("Remembrance Day")))
 
     def _populate_subdiv_pe_public_holidays(self):
         if self._year >= 2009:

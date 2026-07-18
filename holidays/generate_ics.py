@@ -61,7 +61,17 @@ class IcsGenerator:
         parser.add_argument(
             "-l", "--language", help="Language code for holiday names (e.g., en_US, es)"
         )
-        parser.add_argument("-o", "--output", help="Output file path (e.g., holidays.ics)")
+
+        output_group = parser.add_mutually_exclusive_group()
+        output_group.add_argument("-o", "--output", help="Output file path")
+        output_group.add_argument(
+            "--output-template",
+            help=(
+                "Output filename template. Available placeholders: {code}, {subdiv}, "
+                "{language}, {categories}, {start_year}, {end_year}, {today}. "
+                "Use '{{' and '}}' for literal '{' and '}'"
+            ),
+        )
 
         list_group = parser.add_mutually_exclusive_group()
         list_group.add_argument(
@@ -166,6 +176,40 @@ class IcsGenerator:
                 "Use --list-languages to see supported values"
             )
 
+    def validate_output_template(self, placeholders: set[str]) -> None:
+        template = self.args.output_template
+        if not template:
+            return None
+
+        field_names = []
+        i = 0
+        n = len(template)
+        while i < n:
+            if i + 1 < n and (template[i : i + 2] == "{{" or template[i : i + 2] == "}}"):
+                i += 2
+            elif template[i] == "{":
+                end = template.find("}", i + 1)
+                if end == -1:
+                    raise SystemExit("Invalid output template")
+
+                field_names.append(template[i + 1 : end])
+                i = end + 1
+            elif template[i] == "}":
+                raise SystemExit("Invalid output template")
+            else:
+                i += 1
+
+        if not field_names:
+            raise SystemExit("Output template must contain at least one placeholder")
+
+        for field_name in field_names:
+            if field_name not in placeholders:
+                supported = ", ".join(f"{{{p}}}" for p in sorted(placeholders))
+                raise SystemExit(
+                    f"Unknown placeholder '{{{field_name}}}' in output template. "
+                    f"Supported placeholders: {supported}"
+                )
+
     def handle_list_options(self) -> bool:
         if self.args.list_subdivisions:
             print(f"Supported subdivisions for {self.args.code}:")
@@ -184,6 +228,26 @@ class IcsGenerator:
 
         return False
 
+    def get_default_output_template(self) -> str:
+        start_year, end_year = self.args.years
+        parts = ["{code}"]
+
+        if self.args.subdiv:
+            parts.append("{subdiv}")
+
+        if self.args.language:
+            parts.append("{language}")
+
+        if self.args.categories:
+            parts.append("{categories}")
+
+        parts.append("{start_year}")
+
+        if start_year != end_year:
+            parts.append("{end_year}")
+
+        return f"{'_'.join(parts)}.ics"
+
     def run(self) -> None:
         self.validate_code()
         if self.handle_list_options():
@@ -194,9 +258,24 @@ class IcsGenerator:
         self.validate_categories()
 
         start_year, end_year = self.args.years
-        years_part = f"{start_year}_{end_year}" if start_year != end_year else f"{start_year}"
-        subdiv_part = f"_{self.args.subdiv.upper().replace(' ', '_')}" if self.args.subdiv else ""
-        output_path = self.args.output or f"{self.args.code}{subdiv_part}_{years_part}.ics"
+
+        if self.args.output:
+            output_path = self.args.output
+        else:
+            values = {
+                "code": self.args.code,
+                "subdiv": (self.args.subdiv or "ALL").upper().replace(" ", "_"),
+                "language": self.args.language.upper() if self.args.language else "DEFAULT",
+                "categories": (
+                    "_".join(self.args.categories).upper() if self.args.categories else "PUBLIC"
+                ),
+                "start_year": start_year,
+                "end_year": end_year,
+                "today": datetime.now(timezone.utc).strftime("%Y%m%d"),
+            }
+            self.validate_output_template(set(values))
+            template = self.args.output_template or self.get_default_output_template()
+            output_path = template.format(**values)
 
         try:
             holiday_obj = self.entity_loader(
