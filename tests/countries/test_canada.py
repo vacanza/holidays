@@ -258,6 +258,14 @@ class TestCanada(CommonCountryTests, TestCase):
             self.assertNoNonObservedHoliday(self.subdiv_holidays_non_observed[subdiv], obs_dts)
 
         obs_dts = (
+            "2023-10-02",
+            "2028-10-02",
+            "2029-10-01",
+        )
+        self.assertSubdivBcHolidayName(name_observed, obs_dts)
+        self.assertNoSubdivBcNonObservedHoliday(obs_dts)
+
+        obs_dts = (
             "2028-10-02",
             "2029-10-01",
         )
