@@ -72,6 +72,8 @@ class India(
             * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
         * Punjab:
             * <https://web.archive.org/web/20260216022835/https://punjab.gov.in/wp-content/uploads/2025/12/Calender-2026.pdf>
+        * Rajasthan:
+            * <https://web.archive.org/web/20260718191708/https://rajasthancalendar.co.in/wp-content/uploads/2025/12/Rajasthan-Govt-Calendar-2026.pdf>
         * Tamil Nadu:
             * [Tamil Monthly Calendar](https://web.archive.org/web/20231228103352/https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
             * [Tamil Calendar](https://web.archive.org/web/20250429125140/https://www.prokerala.com/general/calendar/tamilcalendar.php)
@@ -794,10 +796,38 @@ class India(
 
     # Rajasthan.
     def _populate_subdiv_rj_public_holidays(self):
-        # Rajasthan Day.
-        self._add_holiday_mar_30(tr("Rajasthan Day"))
+        # Holika Dahan.
+        self._add_holika_dahan(tr("Holika Dahan"))
+        # Cheti Chand.
+        self._add_cheti_chand(tr("Cheti Chand"))
+        # Mahatma Jyotiba Phule's Birthday.
+        self._add_holiday_apr_11(tr("Mahatma Jyotiba Phule's Jayanti"))
+        # Lord Shri Parshuram's Birthday.
+        self._add_parshuram_jayanti(tr("Bhagvan Shri Parshuram's Jayanti"))
         # Maharana Pratap's Birthday.
         self._add_maharana_pratap_jayanti(tr("Maharana Pratap's Jayanti"))
+        # International Day of the World's Indigenous Peoples.
+        self._add_holiday_aug_9(tr("International Day of Adivasi Peoples"))
+        # Raksha Bandhan.
+        self._add_raksha_bandhan(tr("Raksha Bandhan"))
+        # Khejarli's Martyrdom Day.
+        self._add_holiday_sep_11(tr("Khejarli's Shaheedi Day"))
+        # Sharad Navratri.
+        self._add_sharad_navratri(tr("Sharad Navratri"))
+        # Maharaj Agrasen's Birthday.
+        self._add_sharad_navratri(tr("Maharaj Agrasen's Jayanti"))
+        # Durgashtami.
+        self._add_maha_ashtami(tr("Durgashtami"))
+        # Govardhan Puja.
+        self._add_govardhan_puja(tr("Govardhan Puja"))
+        # Bhai Duj.
+        self._add_bhai_dooj(tr("Bhai Duj"))
+
+    def _populate_subdiv_rj_optional_holidays(self):
+        # Gadge Maharaj's Birthday.
+        self._add_holiday_feb_23(tr("Gadge Maharaj's Jayanti"))
+        # Anant Chaturdashi.
+        self._add_anant_chaturdashi(tr("Anant Chaturdashi"))
 
     # Sikkim.
     def _populate_subdiv_sk_public_holidays(self):

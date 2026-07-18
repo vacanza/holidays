@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-26 12:14+0530\n"
-"PO-Revision-Date: 2026-07-18 00:15+0530\n"
+"PO-Revision-Date: 2026-07-19 01:07+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: kn\n"
@@ -508,9 +508,29 @@ msgstr ""
 msgid "New Punjab Day"
 msgstr "ಹೊಸ ಪಂಜಾಬ್ ದಿನೋತ್ಸವ"
 
-#. Rajasthan Day.
-msgid "Rajasthan Day"
-msgstr "ರಾಜಸ್ಥಾನ ದಿನೋತ್ಸವ"
+#. Mahatma Jyotiba Phule's Birthday.
+msgid "Mahatma Jyotiba Phule's Jayanti"
+msgstr ""
+
+#. International Day of the World's Indigenous Peoples.
+msgid "International Day of Adivasi Peoples"
+msgstr ""
+
+#. Khejarli's Martyrdom Day.
+msgid "Khejarli's Shaheedi Day"
+msgstr ""
+
+#. Sharad Navratri.
+msgid "Sharad Navratri"
+msgstr ""
+
+#. Durgashtami.
+msgid "Durgashtami"
+msgstr ""
+
+#. Gadge Maharaj's Birthday.
+msgid "Gadge Maharaj's Jayanti"
+msgstr ""
 
 #. Sikkim State Day.
 msgid "Sikkim State Day"
@@ -615,6 +635,12 @@ msgstr "ವಿನಾಯಕ ಚತುರ್ಥಿ"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ಜನ್ಮಾಷ್ಟಮಿ (ಸ್ಮಾರ್ತ)"
+
+#~ msgid "Chhat qh Puja"
+#~ msgstr ""
+
+#~ msgid "Rajasthan Day"
+#~ msgstr "ರಾಜಸ್ಥಾನ ದಿನೋತ್ಸವ"
 
 #~ msgid "Gujarat Day"
 #~ msgstr "ಗುಜರಾತ್ ದಿನೋತ್ಸವ"
