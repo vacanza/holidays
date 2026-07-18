@@ -68,6 +68,9 @@ class TestNicaragua(CommonCountryTests, TestCase):
         name = "Día de la Revolución"
         self.assertHolidayName(name, (f"{year}-07-19" for year in range(1979, 2050)))
         self.assertNoHolidayName(name, range(1950, 1979))
+        # July 20, 2026 make-up (July 19 fell on a Sunday).
+        self.assertHolidayName(name, "2026-07-20")
+        self.assertNoHolidayName(name, "2025-07-20", "2027-07-20")
 
     def test_battle_of_san_jacinto_day(self):
         self.assertHolidayName(
