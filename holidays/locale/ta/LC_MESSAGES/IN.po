@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-07-19 01:11+0530\n"
+"PO-Revision-Date: 2026-07-19 01:30+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ta\n"
@@ -312,9 +312,45 @@ msgstr ""
 msgid "Chhattisgarh Foundation Day"
 msgstr "சத்தீஸ்கர் நாள்"
 
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr "கணேஷ் சதுர்த்தி"
+
+#. Ganesh Chaturthi (2nd Day).
+msgid "Ganesh Chaturthi (2nd Day)"
+msgstr ""
+
+#. Feast of St. Francis Xavier.
+msgid "Feast of St. Francis Xavier"
+msgstr ""
+
 #. Goa Liberation Day.
 msgid "Goa Liberation Day"
 msgstr "கோவா விடுதலை நாள்"
+
+#. Feast of St. Joseph Vaz.
+msgid "Feast of St. Joseph Vaz"
+msgstr ""
+
+#. Maundy Thursday.
+msgid "Maundy Thursday"
+msgstr ""
+
+#. Feast of Sacred Heart of Jesus.
+msgid "Feast of Sacred Heart of Jesus"
+msgstr ""
+
+#. All Souls day.
+msgid "All Souls Day"
+msgstr ""
+
+#. Feast of Immaculate Conception of Mary.
+msgid "Feast of Immaculate Conception of Mary"
+msgstr ""
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr ""
 
 #. Makar Sankranti.
 msgid "Uttarayan"
@@ -431,10 +467,6 @@ msgstr "சத்ரபதி சிவாஜி மகாராஜ் ஜெய
 #. Maharashtra Day.
 msgid "Maharashtra Day"
 msgstr "மகாராஷ்டிரா நாள்"
-
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
-msgstr "கணேஷ் சதுர்த்தி"
 
 #. Diwali (Bali Pratipada).
 msgid "Diwali (Bali Pratipada)"

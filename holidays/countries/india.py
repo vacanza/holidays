@@ -56,6 +56,8 @@ class India(
             * <https://web.archive.org/web/20251214133200/https://andamannicobar.gov.in/admin-pannel/othersdoc/1-29-Holiday%20List%202026%20Gazette.pdf>
         * Chandigarh:
             * <http://web.archive.org/web/20260705144831/https://chandigarh.gov.in/files/updation2025/home25-17488-3012.pdf>
+        * Goa:
+            * <https://web.archive.org/web/20260718194348/https://goaprintingpress.gov.in/downloads/2526/2526-28-SII-OG.pdf>
         * Gujarat:
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
         * Haryana:
@@ -541,8 +543,30 @@ class India(
 
     # Goa.
     def _populate_subdiv_ga_public_holidays(self):
+        # Gudi Padwa.
+        self._add_gudi_padwa(tr("Gudi Padwa"))
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+        # Ganesh Chaturthi (2nd Day).
+        self._add_ganesh_chaturthi_day_two(tr("Ganesh Chaturthi (2nd Day)"))
+        # Feast of St. Francis Xavier.
+        self._add_holiday_dec_3(tr("Feast of St. Francis Xavier"))
         # Goa Liberation Day.
         self._add_holiday_dec_19(tr("Goa Liberation Day"))
+
+    def _populate_subdiv_ga_optional_holidays(self):
+        # Feast of St. Joseph Vaz.
+        self._add_holiday_jan_16(tr("Feast of St. Joseph Vaz"))
+        # Maundy Thursday.
+        self._add_holy_thursday(tr("Maundy Thursday"))
+        # Feast of Sacred Heart of Jesus.
+        self._add_holiday_jun_12(tr("Feast of Sacred Heart of Jesus"))
+        # All Souls day.
+        self._add_all_souls_day(tr("All Souls Day"))
+        # Feast of Immaculate Conception of Mary.
+        self._add_holiday_dec_8(tr("Feast of Immaculate Conception of Mary"))
+        # New Year's Eve.
+        self._add_new_years_eve(tr("New Year's Eve"))
 
     # Gujarat.
     def _populate_subdiv_gj_public_holidays(self):

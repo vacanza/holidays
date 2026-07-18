@@ -234,6 +234,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.ganesh_chaturthi_date(self._year)
         )
 
+    def _add_ganesh_chaturthi_day_two(self, name) -> date | None:
+        """
+        Add Ganesh Chaturthi.
+
+        Ganesh Chaturthi is a Hindu festival celebrating the birth of Lord Ganesha.
+        It falls on the fourth day of the Hindu month of Bhadrapada (August/September).
+        https://en.wikipedia.org/wiki/Ganesh_Chaturthi
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.ganesh_chaturthi_date(self._year), days_delta=+1
+        )
+
     def _add_gau_krida(self, name) -> date | None:
         """
         Add Gau Krida.
