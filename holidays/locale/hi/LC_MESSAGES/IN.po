@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-07-19 01:07+0530\n"
+"PO-Revision-Date: 2026-07-19 01:11+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -433,6 +433,14 @@ msgstr "छत्रपति शिवाजी महाराज जयंत
 msgid "Maharashtra Day"
 msgstr "महाराष्ट्र दिवस"
 
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr "गणेश चतुर्थी"
+
+#. Diwali (Bali Pratipada).
+msgid "Diwali (Bali Pratipada)"
+msgstr ""
+
 #. Madhya Pradesh Foundation Day.
 msgid "Madhya Pradesh Foundation Day"
 msgstr "मध्य प्रदेश स्थापना दिवस"
@@ -624,10 +632,6 @@ msgstr "बसंत पंचमी"
 #. Shri Panchami.
 msgid "Shri Panchami"
 msgstr "श्री पंचमी"
-
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
-msgstr "गणेश चतुर्थी"
 
 #. Vinayak Chaturthi.
 msgid "Vinayak Chaturthi"

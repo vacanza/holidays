@@ -706,6 +706,10 @@ class India(
         self._add_holiday_may_1(tr("Maharashtra Day"))
         # Parsi New Year (Shahenshahi).
         self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+        # Diwali (Bali Pratipada).
+        self._add_govardhan_puja(tr("Diwali (Bali Pratipada)"))
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
