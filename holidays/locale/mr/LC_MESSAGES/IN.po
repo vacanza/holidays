@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-29 00:37+0530\n"
-"PO-Revision-Date: 2026-07-19 01:30+0530\n"
+"PO-Revision-Date: 2026-07-19 01:56+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: mr\n"
@@ -252,9 +252,9 @@ msgstr "गोवर्धन पूजा"
 msgid "Bhai Duj"
 msgstr "भाई दूज"
 
-#. Pratihar Shashthi or Surya Shashthi (Chhat Puja).
-msgid "Pratihar Shashthi or Surya Shashthi (Chhat Puja)"
-msgstr "प्रतिहार षष्ठी किंवा सूर्य षष्ठी (छठ पूजा)"
+#. Pratihar Shashthi or Surya Shashthi (Chhath Puja).
+msgid "Pratihar Shashthi or Surya Shashthi (Chhath Puja)"
+msgstr ""
 
 #. Guru Tegh Bahadur's Martyrdom Day.
 msgid "Guru Tegh Bahadur's Shaheedi Diwas"
@@ -312,6 +312,14 @@ msgstr ""
 msgid "Chhattisgarh Foundation Day"
 msgstr "छत्तीसगड स्थापना दिन"
 
+#. Maghu Bihu.
+msgid "Maghu Bihu"
+msgstr ""
+
+#. Parsi New Year (Shahenshahi).
+msgid "Parsi New Year (Shahenshahi)"
+msgstr "पारसी नवीन वर्ष (शहेनशाही)"
+
 #. Ganesh Chaturthi.
 msgid "Ganesh Chaturthi"
 msgstr "गणेश चतुर्थी"
@@ -363,10 +371,6 @@ msgstr ""
 #. Sardar Vallabhbhai Patel's Birthday.
 msgid "Sardar Vallabhbhai Patel's Jayanti"
 msgstr ""
-
-#. Parsi New Year (Shahenshahi).
-msgid "Parsi New Year (Shahenshahi)"
-msgstr "पारसी नवीन वर्ष (शहेनशाही)"
 
 #. Sir Chottu Ram's Birthday.
 msgid "Sir Chottu Ram's Jayanti"
@@ -671,6 +675,9 @@ msgstr "गणेश चतुर्थी"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "गोकुळाष्टमी (स्मार्त)"
+
+#~ msgid "Pratihar Shashthi or Surya Shashthi (Chhat Puja)"
+#~ msgstr "प्रतिहार षष्ठी किंवा सूर्य षष्ठी (छठ पूजा)"
 
 #~ msgid "Chhat qh Puja"
 #~ msgstr ""

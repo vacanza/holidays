@@ -56,6 +56,8 @@ class India(
             * <https://web.archive.org/web/20251214133200/https://andamannicobar.gov.in/admin-pannel/othersdoc/1-29-Holiday%20List%202026%20Gazette.pdf>
         * Chandigarh:
             * <http://web.archive.org/web/20260705144831/https://chandigarh.gov.in/files/updation2025/home25-17488-3012.pdf>
+        * Dadra and Nagar Haveli and Daman and Diu:
+            * <https://web.archive.org/web/20251224204021/https://cdnbbsr.s3waas.gov.in/s371e09b16e21f7b6919bbfc43f6a5b2f0/uploads/2025/12/202512241352239707.pdf>
         * Goa:
             * <https://web.archive.org/web/20260718194348/https://goaprintingpress.gov.in/downloads/2526/2526-28-SII-OG.pdf>
         * Gujarat:
@@ -460,8 +462,8 @@ class India(
         self._add_bhai_dooj(tr("Bhai Duj"))
 
         if self._year >= 2011:
-            # Pratihar Shashthi or Surya Shashthi (Chhat Puja).
-            self._add_chhath_puja(tr("Pratihar Shashthi or Surya Shashthi (Chhat Puja)"))
+            # Pratihar Shashthi or Surya Shashthi (Chhath Puja).
+            self._add_chhath_puja(tr("Pratihar Shashthi or Surya Shashthi (Chhath Puja)"))
 
         if self._year >= 2004:
             # Guru Tegh Bahadur's Martyrdom Day.
@@ -535,6 +537,33 @@ class India(
     def _populate_subdiv_cg_public_holidays(self):
         # Chhattisgarh Foundation Day.
         self._add_holiday_nov_1(tr("Chhattisgarh Foundation Day"))
+
+    # Dadra and Nagar Haveli and Daman and Diu.
+    def _populate_subdiv_dh_public_holidays(self):
+        # Makar Sankranti.
+        self._add_makar_sankranti(tr("Makar Sankranti"))
+        # Maghu Bihu.
+        self._add_pongal(tr("Maghu Bihu"))
+        # Pongal.
+        self._add_pongal(tr("Pongal"))
+        # Chaitra Sukladi.
+        self._add_gudi_padwa(tr("Chaitra Sukladi"))
+        # Gudi Padwa.
+        self._add_gudi_padwa(tr("Gudi Padwa"))
+        # Ugadi.
+        self._add_gudi_padwa(tr("Ugadi"))
+        # Cheti Chand.
+        self._add_cheti_chand(tr("Cheti Chand"))
+        # Parsi New Year (Shahenshahi).
+        self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
+        # Raksha Bandhan.
+        self._add_raksha_bandhan(tr("Raksha Bandhan"))
+        # Ganesh Chaturthi / Vinayak Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi / Vinayak Chaturthi"))
+        # Govardhan Puja.
+        self._add_govardhan_puja(tr("Govardhan Puja"))
+        # Pratihar Shashthi or Surya Shashthi (Chhath Puja).
+        self._add_chhath_puja(tr("Pratihar Shashthi or Surya Shashthi (Chhath Puja)"))
 
     # Delhi.
     def _populate_subdiv_dl_public_holidays(self):
