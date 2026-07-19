@@ -6623,7 +6623,10 @@
       "ar": "عطلة المدنية",
       "en_CA": "Civic Holiday",
       "en_US": "Civic Holiday",
-      "fr": "Premier lundi d'août",
+      "fr": {
+        "CA": "Congé civique",
+        "XTSE": "Premier lundi d'août"
+      },
       "th": "วันหยุดราชการ"
     },
     "countries": [
@@ -28883,14 +28886,7 @@
         "EC": "%s (observado)",
         "PA": "%s (puente)"
       },
-      "fr": {
-        "BF": "%s (observé)",
-        "CA": "%s (Observé)",
-        "CD": "%s (observé)",
-        "EG": "%s (observé)",
-        "LB": "%s (observé)",
-        "RW": "%s (observé)"
-      },
+      "fr": "%s (observé)",
       "fr_BI": "%s (observé)",
       "fr_MC": "%s (reporté)",
       "fr_NE": "%s (observé)",
