@@ -48,13 +48,13 @@ class BolsasYMercadosEspanoles(ObservedHolidayBase, ChristianHolidays, Internati
     start_year = 2000
     supported_categories = (HALF_DAY, PUBLIC)
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self):
+    def _populate_public_holidays(self) -> None:
         # New Year's Day.
         self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
 
@@ -73,7 +73,7 @@ class BolsasYMercadosEspanoles(ObservedHolidayBase, ChristianHolidays, Internati
         # Boxing Day & Saint Stephen's Day.
         self._move_holiday(self._add_christmas_day_two(tr("Boxing Day & San Esteban")))
 
-    def _populate_half_day_holidays(self):
+    def _populate_half_day_holidays(self) -> None:
         # %s (markets close at 14:00 CET).
         pause_label = tr("%s (los mercados cierran a las 14:00 CET)")
 
