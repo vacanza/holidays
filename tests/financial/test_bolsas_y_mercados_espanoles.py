@@ -102,8 +102,8 @@ class TestBolsasYMercadosEspanoles(CommonFinancialTests, TestCase):
             "2021-12-27",
         )
 
-    def test_boxing_day_and_san_esteban(self):
-        name = "Boxing Day & San Esteban"
+    def test_saint_stephens_day(self):
+        name = "San Esteban"
         self.assertNonObservedHolidayName(name, (f"{year}-12-26" for year in self.full_range))
         self.assertHolidayName(
             name,
@@ -168,7 +168,7 @@ class TestBolsasYMercadosEspanoles(CommonFinancialTests, TestCase):
             ("2025-04-21", "Lunes de Pascua"),
             ("2025-05-01", "Día del Trabajo"),
             ("2025-12-25", "Navidad"),
-            ("2025-12-26", "Boxing Day & San Esteban"),
+            ("2025-12-26", "San Esteban"),
         )
 
     def test_half_day_2025(self):
@@ -186,7 +186,7 @@ class TestBolsasYMercadosEspanoles(CommonFinancialTests, TestCase):
             ("2024-05-01", "Día del Trabajo"),
             ("2024-12-24", "Nochebuena (los mercados cierran a las 14:00 CET)"),
             ("2024-12-25", "Navidad"),
-            ("2024-12-26", "Boxing Day & San Esteban"),
+            ("2024-12-26", "San Esteban"),
             ("2024-12-31", "Nochevieja (los mercados cierran a las 14:00 CET)"),
         )
 
@@ -199,6 +199,6 @@ class TestBolsasYMercadosEspanoles(CommonFinancialTests, TestCase):
             ("2024-05-01", "Labor Day"),
             ("2024-12-24", "Christmas Eve (markets close at 14:00 CET)"),
             ("2024-12-25", "Christmas Day"),
-            ("2024-12-26", "Boxing Day & Saint Stephen's Day"),
+            ("2024-12-26", "Saint Stephen's Day"),
             ("2024-12-31", "New Year's Eve (markets close at 14:00 CET)"),
         )

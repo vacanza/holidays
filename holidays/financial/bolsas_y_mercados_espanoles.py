@@ -70,8 +70,8 @@ class BolsasYMercadosEspanoles(ObservedHolidayBase, ChristianHolidays, Internati
         # Christmas Day.
         self._move_holiday(self._add_christmas_day(tr("Navidad")))
 
-        # Boxing Day & Saint Stephen's Day.
-        self._move_holiday(self._add_christmas_day_two(tr("Boxing Day & San Esteban")))
+        # Saint Stephen's Day.
+        self._move_holiday(self._add_christmas_day_two(tr("San Esteban")))
 
     def _populate_half_day_holidays(self) -> None:
         # %s (markets close at 14:00 CET).

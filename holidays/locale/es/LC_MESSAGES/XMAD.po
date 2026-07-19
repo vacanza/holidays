@@ -47,8 +47,8 @@ msgstr ""
 msgid "Navidad"
 msgstr ""
 
-#. Boxing Day & Saint Stephen's Day.
-msgid "Boxing Day & San Esteban"
+#. Saint Stephen's Day.
+msgid "San Esteban"
 msgstr ""
 
 #. %s (markets close at 14:00 CET).
