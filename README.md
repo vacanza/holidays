@@ -2038,6 +2038,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>SIX Swiss Exchange</td>
+<td>XSWX</td>
+<td>SIX Swiss Exchange market holidays</td>
+<td><strong>de</strong>, en_US, fr, it, th, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>Toronto Stock Exchange</td>
 <td>XTSE</td>
 <td>Toronto Stock Exchange (TSX) market holidays</td>

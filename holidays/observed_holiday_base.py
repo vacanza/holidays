@@ -115,6 +115,7 @@ SAT_SUN_TO_NEXT_TUE = ObservedRule({SAT: +3, SUN: +2})
 SAT_SUN_TO_NEXT_WED = ObservedRule({SAT: +4, SUN: +3})
 SAT_SUN_TO_NEXT_MON_TUE = ObservedRule({SAT: +2, SUN: +2})
 SAT_SUN_TO_NEXT_WORKDAY = ObservedRule({SAT: +7, SUN: +7})
+SAT_SUN_TO_NONE = ObservedRule({SAT: None, SUN: None})
 
 
 class ObservedHolidayBase(HolidayBase):
