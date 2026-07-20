@@ -20,8 +20,7 @@ from holidays.observed_holiday_base import (
     SAT_SUN_TO_NEXT_MON_TUE,
     SAT_SUN_TO_NEXT_MON,
     MON_TO_NEXT_TUE,
-    SAT_TO_NONE,
-    SUN_TO_NONE,
+    SAT_SUN_TO_NONE,
 )
 
 
@@ -118,7 +117,7 @@ class TorontoStockExchange(
         self._move_holiday(
             # Christmas Eve.
             self._add_christmas_eve(self._format_holiday_name(pause_label, tr("Christmas Eve"))),
-            rule=SAT_TO_NONE + SUN_TO_NONE,
+            rule=SAT_SUN_TO_NONE,
         )
 
 
