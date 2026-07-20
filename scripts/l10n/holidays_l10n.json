@@ -16234,27 +16234,19 @@
         "DJ": "عيد الإستقلال",
         "DZ": "عيد الاستقلال",
         "JO": "عيد الإستقلال",
-        "LB": "ذكرى الاستقلال",
         "LY": "عيد الاستقلال",
         "MA": "عيد الإستقلال",
         "PS": "عيد الإستقلال",
         "SY": "عيد الاستقلال",
         "TN": "عيد الإستقلال",
-        "UA": "عيد استقلال أوكرانيا",
         "YE": "عيد الجلاء"
       },
       "ar_SD": "عيد الإستقلال",
-      "az": "Milli Müstəqillik Günü",
-      "bg": "Ден на Независимостта на България",
       "bn": "স্বাধীনতা দিবস",
       "bs": "Dan nezavisnosti",
       "cnr": "Dan nezavisnosti",
-      "de": {
-        "CH": "Fest der Unabhängigkeit",
-        "CV": "Unabhängigkeitstag"
-      },
+      "de": "Fest der Unabhängigkeit",
       "dv": "މިނިވަން ދުވަސް",
-      "el": "Εικοστή Πέμπτη Μαρτίου",
       "en_BD": "Independence Day",
       "en_BF": "Independence Day",
       "en_CI": "Independence Day",
@@ -16276,21 +16268,15 @@
       "en_VC": "Independence Day",
       "es": {
         "AR": "Día de la Independencia",
-        "BO": "Día de la Independencia de Bolivia",
         "CL": "Día de la Independencia",
         "CO": "Día de la Independencia",
         "CR": "Día de la Independencia",
-        "CU": "Inicio de las Guerras de Independencia",
-        "CV": "Día de la Independencia Nacional",
         "DO": "Día de Independencia",
-        "GQ": "Día de la Independencia Nacional",
         "GT": "Día de la Independencia",
         "HN": "Día de la Independencia",
         "MX": "Día de la Independencia",
         "NI": "Día de la Independencia",
-        "PA": "Independencia de Panamá de España",
         "PE": "Día de la Independencia",
-        "PY": "Día de la Independencia Nacional",
         "SV": "Día de la Independencia",
         "UY": "Declaratoria de la Independencia",
         "VE": "Día de la Independencia",
@@ -16305,12 +16291,9 @@
         "CF": "Jour de l'indépendance",
         "CH": "Commémoration du plébiscite",
         "CI": "Fête Nationale",
-        "CV": "Fête de l'Indépendance Nationale",
         "DJ": "Fête de l'indépendance",
         "DZ": "Fête de l'Indépendance",
         "GA": "Jour de l'indépendance",
-        "GN": "Fête anniversaire de l'indépendance de la Guinée",
-        "LB": "Fête Nationale",
         "MA": "Fête de l'indépendance",
         "RW": "Journée de l'Indépendance",
         "TG": "Fête de l'indépendance"
@@ -16322,13 +16305,11 @@
       "hi": "स्वतंत्रता दिवस",
       "hr": "Dan neovisnosti",
       "hy": "Անկախության օր",
-      "id": "Hari Kemerdekaan Republik Indonesia",
       "it": "Festa dell'Indipendenza",
       "ka": "დამოუკიდებლობის დღე",
       "kab": "Ass n uzarug",
       "kk": "Тəуелсіздік күні",
       "kn": "ಸ್ವಾತಂತ್ರ್ಯ ದಿನಾಚರಣೆ",
-      "ky": "Кыргыз Республикасынын Көз карандысыздыгынын күнү",
       "mg": "Fetin'ny fahaleovantena",
       "mk": "Ден на независноста",
       "ml": "സ്വാതന്ത്ര്യദിനം",
@@ -16338,76 +16319,49 @@
       "nl": "Onafhankelijkheidsdag",
       "pa": "ਸੁਤੰਤਰਤਾ ਦਿਵਸ",
       "pt_AO": "Dia da Independência",
-      "pt_BR": "Independência do Brasil",
-      "pt_CV": "Dia da Independência Nacional",
       "pt_GW": "Dia da Independência",
-      "pt_MZ": "Dia da Independência Nacional",
       "pt_ST": "Dia da Independência",
-      "ru": {
-        "TJ": "День Государственной независимости Республики Таджикистан",
-        "TM": "День независимости"
-      },
-      "ru_KG": "День независимости Кыргызской Республики",
+      "ru": "День независимости",
       "rw": "Umunsi w'Ubwigenge",
       "si_LK": "නිදහස් සමරු දිනය",
       "sl": "dan samostojnosti",
-      "sq": "Dita e Pavarësisë së Republikës së Kosovës",
-      "sr": {
-        "BA": "Дан независности",
-        "XK": "Dan Nezavisnosti Republike Kosova"
-      },
+      "sr": "Дан независности",
       "sv_FI": "Självständighetsdagen",
       "sw": "Siku ya Uhuru",
       "ta": "சுதந்திர தினம்",
       "ta_LK": "சுதந்திர தினம்",
       "te": "స్వాతంత్ర దినోత్సవం",
-      "tg": "Рӯзи Истиқлолияти давлатии Ҷумҳурии Тоҷикистон",
       "th": {
         "CH": "วันประกาศเอกราชจูรา",
         "FI": "วันประกาศอิสรภาพฟินแลนด์",
-        "ID": "วันประกาศอิสรภาพสาธารณรัฐอินโดนีเซีย",
         "MM": "วันเอกราช",
         "PH": "วันประกาศเอกราชสาธารณรัฐฟิลิปปินส์",
-        "UA": "วันประกาศอิสรภาพยูเครน",
         "US": "วันประกาศอิสรภาพ"
       },
-      "tk": "Türkmenistanyň Garaşsyzlyk güni",
       "uk": {
         "AO": "День незалежності",
         "AR": "День незалежності",
-        "AZ": "День національної незалежності",
         "BA": "День незалежності",
-        "BG": "День незалежності Болгарії",
-        "BO": "День незалежності Болівії",
-        "BR": "День незалежності Бразилії",
-        "BVMF": "День незалежності Бразилії",
         "CH": "День незалежності",
         "CL": "День незалежності",
         "CO": "День незалежності",
         "CR": "День незалежності",
-        "CU": "Початок війни за незалежність",
         "DO": "День незалежності",
         "EE": "День незалежності",
         "FI": "День незалежності",
         "GE": "День незалежності",
-        "GR": "День незалежності",
         "HN": "День незалежності",
         "HR": "День незалежності",
-        "ID": "День незалежності Республіки Індонезія",
         "KZ": "День незалежності",
         "ME": "День незалежності",
         "MG": "День незалежності",
         "MK": "День незалежності",
         "MX": "День незалежності",
-        "MZ": "День національної незалежності",
         "NA": "День незалежності",
         "NI": "День незалежності",
-        "PA": "День незалежності від Іспанії",
         "PE": "День незалежності",
-        "PY": "День незалежності",
         "SI": "День незалежності",
         "SV": "День незалежності",
-        "UA": "День незалежності України",
         "UY": "День проголошення незалежності",
         "UZ": "День незалежності",
         "VE": "День незалежності",
@@ -16420,15 +16374,10 @@
       "AM",
       "AO",
       "AR",
-      "AZ",
       "BA",
       "BD",
       "BF",
-      "BG",
       "BI",
-      "BO",
-      "BR",
-      "BVMF",
       "CD",
       "CF",
       "CH",
@@ -16436,8 +16385,6 @@
       "CL",
       "CO",
       "CR",
-      "CU",
-      "CV",
       "DJ",
       "DO",
       "DZ",
@@ -16448,21 +16395,15 @@
       "GD",
       "GE",
       "GM",
-      "GN",
-      "GQ",
-      "GR",
       "GT",
       "GW",
       "GY",
       "HN",
       "HR",
-      "ID",
       "IN",
       "JO",
       "KE",
-      "KG",
       "KZ",
-      "LB",
       "LC",
       "LK",
       "LY",
@@ -16474,17 +16415,14 @@
       "MT",
       "MV",
       "MX",
-      "MZ",
       "NA",
       "NE",
       "NI",
       "NR",
-      "PA",
       "PE",
       "PH",
       "PK",
       "PS",
-      "PY",
       "RW",
       "SC",
       "SD",
@@ -16496,22 +16434,128 @@
       "SV",
       "SY",
       "TG",
-      "TJ",
-      "TM",
       "TN",
       "TT",
-      "UA",
       "US",
       "UY",
       "UZ",
       "VC",
       "VE",
       "XCME",
-      "XK",
       "XMEX",
       "XNSE",
       "XNYS",
       "YE"
+    ]
+  },
+  {
+    "id": "independence_day_az_cv_gq_mz_py",
+    "msgid": "National Independence Day",
+    "new_comment": "",
+    "comment": "Independence Day.",
+    "messages": {
+      "az": "Milli Müstəqillik Günü",
+      "de": "Unabhängigkeitstag",
+      "en_US": "Independence Day",
+      "es": "Día de la Independencia Nacional",
+      "fr": "Fête de l'Indépendance Nationale",
+      "pt_CV": "Dia da Independência Nacional",
+      "pt_MZ": "Dia da Independência Nacional",
+      "uk": {
+        "MZ": "День національної незалежності",
+        "PY": "День незалежності"
+      }
+    },
+    "countries": [
+      "AZ",
+      "CV",
+      "GQ",
+      "MZ",
+      "PY"
+    ]
+  },
+  {
+    "id": "independence_day_bg",
+    "msgid": "Independence Day of Bulgaria",
+    "new_comment": "",
+    "comment": "Independence Day.",
+    "messages": {
+      "bg": "Ден на Независимостта на България",
+      "en_US": "Independence Day",
+      "uk": "День незалежності Болгарії"
+    },
+    "countries": [
+      "BG"
+    ]
+  },
+  {
+    "id": "independence_day_bo",
+    "msgid": "Independence Day of Bolivia",
+    "new_comment": "",
+    "comment": "Independence Day.",
+    "messages": {
+      "en_US": "Independence Day",
+      "es": "Día de la Independencia de Bolivia",
+      "uk": "День незалежності Болівії"
+    },
+    "countries": [
+      "BO"
+    ]
+  },
+  {
+    "id": "independence_day_br_bvmf",
+    "msgid": "Independence Day of Brazil",
+    "new_comment": "",
+    "comment": "Independence Day.",
+    "messages": {
+      "en_US": "Independence Day",
+      "pt_BR": "Independência do Brasil",
+      "uk": "День незалежності Бразилії"
+    },
+    "countries": [
+      "BR",
+      "BVMF"
+    ]
+  },
+  {
+    "id": "independence_day_cu",
+    "msgid": "Start of the Wars of Independence",
+    "new_comment": "",
+    "comment": "Independence Day.",
+    "messages": {
+      "en_US": "Independence Day",
+      "es": "Inicio de las Guerras de Independencia",
+      "uk": "Початок війни за незалежність"
+    },
+    "countries": [
+      "CU"
+    ]
+  },
+  {
+    "id": "independence_day_gn",
+    "msgid": "Anniversary of the Independence of Guinea",
+    "new_comment": "",
+    "comment": "Independence Day.",
+    "messages": {
+      "en_US": "Independence Day",
+      "fr": "Fête anniversaire de l'indépendance de la Guinée"
+    },
+    "countries": [
+      "GN"
+    ]
+  },
+  {
+    "id": "independence_day_gr",
+    "msgid": "25th March (Independence Day)",
+    "new_comment": "",
+    "comment": "Independence Day.",
+    "messages": {
+      "el": "Εικοστή Πέμπτη Μαρτίου",
+      "en_US": "Independence Day",
+      "uk": "День незалежності"
+    },
+    "countries": [
+      "GR"
     ]
   },
   {
@@ -16533,6 +16577,21 @@
     ]
   },
   {
+    "id": "independence_day_id",
+    "msgid": "Independence Day of the Republic of Indonesia",
+    "new_comment": "",
+    "comment": "Independence Day.",
+    "messages": {
+      "en_US": "Independence Day",
+      "id": "Hari Kemerdekaan Republik Indonesia",
+      "th": "วันประกาศอิสรภาพสาธารณรัฐอินโดนีเซีย",
+      "uk": "День незалежності Республіки Індонезія"
+    },
+    "countries": [
+      "ID"
+    ]
+  },
+  {
     "id": "independence_day_joint_holiday",
     "msgid": "Independence Day Joint Holiday",
     "new_comment": "",
@@ -16548,6 +16607,34 @@
     ]
   },
   {
+    "id": "independence_day_kg",
+    "msgid": "Independence Day of the Kyrgyz Republic",
+    "new_comment": "",
+    "comment": "Independence Day.",
+    "messages": {
+      "en_US": "Independence Day",
+      "ky": "Кыргыз Республикасынын Көз карандысыздыгынын күнү",
+      "ru_KG": "День независимости Кыргызской Республики"
+    },
+    "countries": [
+      "KG"
+    ]
+  },
+  {
+    "id": "independence_day_lb",
+    "msgid": "Independence Anniversary",
+    "new_comment": "",
+    "comment": "Independence Day.",
+    "messages": {
+      "ar": "ذكرى الاستقلال",
+      "en_US": "Independence Day",
+      "fr": "Fête Nationale"
+    },
+    "countries": [
+      "LB"
+    ]
+  },
+  {
     "id": "independence_day_of_the_republic_of_belarus_day_of_the_republic",
     "msgid": "Independence Day of the Republic of Belarus (Day of the Republic)",
     "new_comment": "",
@@ -16560,6 +16647,77 @@
     },
     "countries": [
       "BY"
+    ]
+  },
+  {
+    "id": "independence_day_pa",
+    "msgid": "Panama's Independence from Spain Day",
+    "new_comment": "",
+    "comment": "Independence Day.",
+    "messages": {
+      "en_US": "Independence Day",
+      "es": "Independencia de Panamá de España",
+      "uk": "День незалежності від Іспанії"
+    },
+    "countries": [
+      "PA"
+    ]
+  },
+  {
+    "id": "independence_day_tj",
+    "msgid": "National Independence Day of the Republic of Tajikistan",
+    "new_comment": "",
+    "comment": "Independence Day.",
+    "messages": {
+      "en_US": "Independence Day",
+      "ru": "День Государственной независимости Республики Таджикистан",
+      "tg": "Рӯзи Истиқлолияти давлатии Ҷумҳурии Тоҷикистон"
+    },
+    "countries": [
+      "TJ"
+    ]
+  },
+  {
+    "id": "independence_day_tm",
+    "msgid": "Independence Day of Turkmenistan",
+    "new_comment": "",
+    "comment": "Independence Day.",
+    "messages": {
+      "en_US": "Independence Day",
+      "ru": "День независимости",
+      "tk": "Türkmenistanyň Garaşsyzlyk güni"
+    },
+    "countries": [
+      "TM"
+    ]
+  },
+  {
+    "id": "independence_day_ua",
+    "msgid": "Independence Day of Ukraine",
+    "new_comment": "",
+    "comment": "Independence Day.",
+    "messages": {
+      "ar": "عيد استقلال أوكرانيا",
+      "en_US": "Independence Day",
+      "th": "วันประกาศอิสรภาพยูเครน",
+      "uk": "День незалежності України"
+    },
+    "countries": [
+      "UA"
+    ]
+  },
+  {
+    "id": "independence_day_xk",
+    "msgid": "Independence Day of the Republic of Kosovo",
+    "new_comment": "",
+    "comment": "Independence Day.",
+    "messages": {
+      "en_US": "Independence Day",
+      "sq": "Dita e Pavarësisë së Republikës së Kosovës",
+      "sr": "Dan Nezavisnosti Republike Kosova"
+    },
+    "countries": [
+      "XK"
     ]
   },
   {
@@ -22580,19 +22738,14 @@
       "fr_HT": "Fête de l'Indépendance Nationale",
       "ht": "Jounen Endepandans Nasyonal",
       "km": "ពិធីបុណ្យឯករាជ្យជាតិ",
-      "pl": "Narodowe Święto Niepodległości",
       "pt_AO": "Dia da Independência Nacional",
       "th": "วันประกาศเอกราชจากฝรั่งเศส",
-      "uk": {
-        "AO": "День національної незалежності",
-        "PL": "День незалежності"
-      }
+      "uk": "День національної незалежності"
     },
     "countries": [
       "AO",
       "HT",
-      "KH",
-      "PL"
+      "KH"
     ]
   },
   {
@@ -22605,6 +22758,21 @@
       "en_US": "National Independence Day - 100th anniversary",
       "pl": "Narodowe Święto Niepodległości - 100-lecie",
       "uk": "100-а річниця Дня незалежності"
+    },
+    "countries": [
+      "PL"
+    ]
+  },
+  {
+    "id": "national_independence_day_pl",
+    "msgid": "National Day of Independence",
+    "new_comment": "",
+    "comment": "National Independence Day.",
+    "messages": {
+      "de": "Nationalfeiertag der Unabhängigkeit",
+      "en_US": "National Independence Day",
+      "pl": "Narodowe Święto Niepodległości",
+      "uk": "День незалежності"
     },
     "countries": [
       "PL"
