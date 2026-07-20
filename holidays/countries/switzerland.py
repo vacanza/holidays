@@ -20,7 +20,7 @@ from holidays.observed_holiday_base import (
     MON_ONLY,
     TUE_TO_NONE,
     SAT_TO_NONE,
-    SUN_TO_NONE,
+    SAT_SUN_TO_NONE,
     ALL_TO_NEXT_MON,
 )
 
@@ -44,7 +44,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
     country = "CH"
     default_language = "de"
     start_year = 1801
-    subdivisions = (
+    subdivisions: tuple[str, ...] = (
         # Cantons.
         "AG",  # Aargau.
         "AI",  # Appenzell Innerrhoden.
@@ -111,7 +111,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Cities.
         "Stadt Zürich": "Stadt Zurich",
     }
-    supported_categories = (DE_FACTO, HALF_DAY, OPTIONAL, PUBLIC)
+    supported_categories: tuple[str, ...] = (DE_FACTO, HALF_DAY, OPTIONAL, PUBLIC)
     supported_languages = ("de", "en_US", "fr", "it", "th", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -811,10 +811,10 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
 
         # Bridge Holiday.
         name = tr("Brückentag")
-        self._add_observed(self._add_holiday_dec_27(name), rule=SAT_TO_NONE + SUN_TO_NONE)
-        self._add_observed(self._add_holiday_dec_28(name), rule=SAT_TO_NONE + SUN_TO_NONE)
-        self._add_observed(self._add_holiday_dec_29(name), rule=SAT_TO_NONE + SUN_TO_NONE)
-        self._add_observed(self._add_holiday_dec_30(name), rule=SAT_TO_NONE + SUN_TO_NONE)
+        self._add_observed(self._add_holiday_dec_27(name), rule=SAT_SUN_TO_NONE)
+        self._add_observed(self._add_holiday_dec_28(name), rule=SAT_SUN_TO_NONE)
+        self._add_observed(self._add_holiday_dec_29(name), rule=SAT_SUN_TO_NONE)
+        self._add_observed(self._add_holiday_dec_30(name), rule=SAT_SUN_TO_NONE)
 
     @property
     def _vernal_equinox_date(self) -> tuple[int, int]:

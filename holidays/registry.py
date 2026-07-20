@@ -300,6 +300,8 @@ FINANCIAL: RegistryDict = {
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
     "shanghai_stock_exchange": ("ShanghaiStockExchange", "XSHG", "SSE"),
     "shenzhen_stock_exchange": ("ShenzhenStockExchange", "XSHE", "SZSE"),
+    "six_swiss_exchange": ("SIXSwissExchange", "XSWX", "SIX"),
+    "toronto_stock_exchange": ("TorontoStockExchange", "XTSE", "TSX"),
 }
 
 # A re-entrant lock. Once a thread has acquired a re-entrant lock,

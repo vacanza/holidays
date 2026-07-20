@@ -26,7 +26,7 @@ repos:
           - --py310-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 22f0422809455ec89ffdcf5a00170ba816e42ddb  # v0.15.16
+    rev: 745be0411e3c150e246d527e531e5a221b8c3462  # v0.15.19
     hooks:
       - id: ruff-check
       - id: ruff-format
@@ -64,7 +64,7 @@ repos:
           - types-python-dateutil==2.9.0.20260518
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: ca620e0df5ae9a02b7b81a6e4c954894f043ce42  # v2.24.1
+    rev: f073523dfd27b01ec7997cc970a2a7b36c303460  # v2.25.0
     hooks:
       - id: pyproject-fmt
 

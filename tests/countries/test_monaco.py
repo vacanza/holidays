@@ -21,128 +21,182 @@ class TestMonaco(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Monaco)
 
-    def test_immaculate_conception_day(self):
-        self.assertHoliday(
-            "2018-12-08",
+    def test_special_holidays(self):
+        self.assertHoliday("2015-01-07")
+
+    def test_new_years_day(self):
+        name = "Le jour de l'An"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        obs_dts = (
+            "2006-01-02",
+            "2012-01-02",
+            "2017-01-02",
+            "2023-01-02",
+        )
+        self.assertHolidayName(f"{name} (reporté)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_saint_devotes_day(self):
+        self.assertHolidayName(
+            "Le jour de la Sainte-Dévote", (f"{year}-01-27" for year in self.full_range)
+        )
+
+    def test_easter_monday(self):
+        name = "Le Lundi de Pâques"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_labor_day(self):
+        name = "Le jour de la Fête du Travail"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
+        obs_dts = (
+            "2005-05-02",
+            "2011-05-02",
+            "2016-05-02",
+            "2022-05-02",
+        )
+        self.assertHolidayName(f"{name} (reporté)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_ascension_day(self):
+        name = "Le jour de l'Ascension"
+        self.assertHolidayName(
+            name,
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_pentecost_monday(self):
+        name = "Le Lundi de Pentecôte"
+        self.assertHolidayName(
+            name,
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_corpus_christi(self):
+        name = "Le jour de la Fête Dieu"
+        self.assertHolidayName(
+            name,
+            "2020-06-11",
+            "2021-06-03",
+            "2022-06-16",
+            "2023-06-08",
+            "2024-05-30",
+            "2025-06-19",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_assumption_day(self):
+        name = "Le jour de l'Assomption"
+        self.assertHolidayName(name, (f"{year}-08-15" for year in self.full_range))
+        obs_dts = (
+            "2004-08-16",
+            "2010-08-16",
+            "2021-08-16",
+        )
+        self.assertHolidayName(f"{name} (reporté)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_all_saints_day(self):
+        name = "Le jour de la Toussaint"
+        self.assertHolidayName(name, (f"{year}-11-01" for year in self.full_range))
+        obs_dts = (
+            "2009-11-02",
+            "2015-11-02",
+            "2020-11-02",
+        )
+        self.assertHolidayName(f"{name} (reporté)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_princes_day(self):
+        name = "Le jour de la Fête de S.A.S. le Prince Souverain"
+        self.assertHolidayName(name, (f"{year}-11-19" for year in self.full_range))
+        obs_dts = (
+            "2006-11-20",
+            "2017-11-20",
+            "2023-11-20",
+        )
+        self.assertHolidayName(f"{name} (reporté)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_immaculate_conception(self):
+        name = "Le jour de l'Immaculée Conception"
+        name_observed = f"{name} (reporté)"
+        self.assertHolidayName(name, (f"{year}-12-08" for year in self.full_range))
+        obs_dts = (
             "2019-12-09",
-            "2020-12-08",
-            "2021-12-08",
-            "2022-12-08",
-            "2023-12-08",
             "2024-12-09",
         )
+        self.assertHolidayName(name_observed, obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+        self.assertNoHolidayName(name_observed, range(self.start_year, 2019))
 
-    def test_observed(self):
-        observed_holidays = (
-            "2010-08-16",
-            "2011-05-02",
+    def test_christmas_day(self):
+        name = "Le jour de Noël"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
+        obs_dts = (
+            "2005-12-26",
             "2011-12-26",
-            "2012-01-02",
-            "2015-11-02",
-            "2016-05-02",
             "2016-12-26",
-            "2017-01-02",
-            "2017-11-20",
-            "2020-11-02",
-            "2021-08-16",
-            "2022-05-02",
-            "2022-12-26",
-            "2023-01-02",
-            "2023-11-20",
-        )
-        self.assertHoliday(observed_holidays)
-        self.assertNoNonObservedHoliday(observed_holidays)
-
-    def test_2020(self):
-        self.assertHolidayDatesInYear(
-            2020,
-            "2020-01-01",
-            "2020-01-27",
-            "2020-04-13",
-            "2020-05-01",
-            "2020-05-21",
-            "2020-06-01",
-            "2020-06-11",
-            "2020-08-15",
-            "2020-11-01",
-            "2020-11-02",
-            "2020-11-19",
-            "2020-12-08",
-            "2020-12-25",
-        )
-
-    def test_2021(self):
-        self.assertHolidayDatesInYear(
-            2021,
-            "2021-01-01",
-            "2021-01-27",
-            "2021-04-05",
-            "2021-05-01",
-            "2021-05-13",
-            "2021-05-24",
-            "2021-06-03",
-            "2021-08-15",
-            "2021-08-16",
-            "2021-11-01",
-            "2021-11-19",
-            "2021-12-08",
-            "2021-12-25",
-        )
-
-    def test_2022(self):
-        self.assertHolidayDatesInYear(
-            2022,
-            "2022-01-01",
-            "2022-01-27",
-            "2022-04-18",
-            "2022-05-01",
-            "2022-05-02",
-            "2022-05-26",
-            "2022-06-06",
-            "2022-06-16",
-            "2022-08-15",
-            "2022-11-01",
-            "2022-11-19",
-            "2022-12-08",
-            "2022-12-25",
             "2022-12-26",
         )
+        self.assertHolidayName(f"{name} (reporté)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_2023(self):
-        self.assertHolidayDatesInYear(
+        self.assertHolidaysInYear(
             2023,
-            "2023-01-01",
-            "2023-01-02",
-            "2023-01-27",
-            "2023-04-10",
-            "2023-05-01",
-            "2023-05-18",
-            "2023-05-29",
-            "2023-06-08",
-            "2023-08-15",
-            "2023-11-01",
-            "2023-11-19",
-            "2023-11-20",
-            "2023-12-08",
-            "2023-12-25",
+            ("2023-01-01", "Le jour de l'An"),
+            ("2023-01-02", "Le jour de l'An (reporté)"),
+            ("2023-01-27", "Le jour de la Sainte-Dévote"),
+            ("2023-04-10", "Le Lundi de Pâques"),
+            ("2023-05-01", "Le jour de la Fête du Travail"),
+            ("2023-05-18", "Le jour de l'Ascension"),
+            ("2023-05-29", "Le Lundi de Pentecôte"),
+            ("2023-06-08", "Le jour de la Fête Dieu"),
+            ("2023-08-15", "Le jour de l'Assomption"),
+            ("2023-11-01", "Le jour de la Toussaint"),
+            ("2023-11-19", "Le jour de la Fête de S.A.S. le Prince Souverain"),
+            ("2023-11-20", "Le jour de la Fête de S.A.S. le Prince Souverain (reporté)"),
+            ("2023-12-08", "Le jour de l'Immaculée Conception"),
+            ("2023-12-25", "Le jour de Noël"),
         )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Le jour de l'An"),
-            ("2022-01-27", "La Sainte Dévote"),
-            ("2022-04-18", "Le lundi de Pâques"),
-            ("2022-05-01", "Fête de la Travaille"),
-            ("2022-05-02", "Fête de la Travaille (observé)"),
-            ("2022-05-26", "L'Ascension"),
-            ("2022-06-06", "Le lundi de Pentecôte"),
-            ("2022-06-16", "La Fête Dieu"),
-            ("2022-08-15", "L'Assomption de Marie"),
-            ("2022-11-01", "La Toussaint"),
-            ("2022-11-19", "La Fête du Prince"),
-            ("2022-12-08", "L'Immaculée Conception"),
-            ("2022-12-25", "Noël"),
-            ("2022-12-26", "Noël (observé)"),
+            ("2022-01-27", "Le jour de la Sainte-Dévote"),
+            ("2022-04-18", "Le Lundi de Pâques"),
+            ("2022-05-01", "Le jour de la Fête du Travail"),
+            ("2022-05-02", "Le jour de la Fête du Travail (reporté)"),
+            ("2022-05-26", "Le jour de l'Ascension"),
+            ("2022-06-06", "Le Lundi de Pentecôte"),
+            ("2022-06-16", "Le jour de la Fête Dieu"),
+            ("2022-08-15", "Le jour de l'Assomption"),
+            ("2022-11-01", "Le jour de la Toussaint"),
+            ("2022-11-19", "Le jour de la Fête de S.A.S. le Prince Souverain"),
+            ("2022-12-08", "Le jour de l'Immaculée Conception"),
+            ("2022-12-25", "Le jour de Noël"),
+            ("2022-12-26", "Le jour de Noël (reporté)"),
         )
 
     def test_l10n_en_us(self):
