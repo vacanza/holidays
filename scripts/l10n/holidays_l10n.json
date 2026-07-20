@@ -6373,7 +6373,8 @@
         "CH": "Heiligabend",
         "LI": "Heiligabend",
         "PL": "Heiligabend",
-        "XETR": "Heiligabend"
+        "XETR": "Heiligabend",
+        "XSWX": "Heiligabend"
       },
       "el": "Παραμονή Χριστουγέννων",
       "en_AU": "Christmas Eve",
@@ -6422,7 +6423,35 @@
       "ta": "கிறிஸ்துமஸ் ஈவ்",
       "te": "క్రిస్మస్ ఈవ్",
       "th": "วันคริสต์มาสอีฟ",
-      "uk": "Святий вечір",
+      "uk": {
+        "AD": "Святий вечір",
+        "AT": "Святий вечір",
+        "BG": "Святий вечір",
+        "BR": "Святий вечір",
+        "CH": "Святий вечір",
+        "CL": "Святий вечір",
+        "CY": "Святий вечір",
+        "CZ": "Святий вечір",
+        "DK": "Святий вечір",
+        "EE": "Святий вечір",
+        "FI": "Святий вечір",
+        "GL": "Святий вечір",
+        "GR": "Святий вечір",
+        "IS": "Святий вечір",
+        "LI": "Святий вечір",
+        "LT": "Святий вечір",
+        "LV": "Святий вечір",
+        "ME": "Святий вечір",
+        "MK": "Святий вечір",
+        "PL": "Святий вечір",
+        "PT": "Святий вечір",
+        "SE": "Святий вечір",
+        "SK": "Святий вечір",
+        "SM": "Святий вечір",
+        "VE": "Святий вечір",
+        "XETR": "Святий вечір",
+        "XSWX": "Святвечір"
+      },
       "zh_CN": {
         "MO": "圣诞前夕",
         "XHKG": "平安夜"
@@ -6469,6 +6498,7 @@
       "XETR",
       "XHKG",
       "XNYS",
+      "XSWX",
       "XTSE"
     ]
   },
@@ -23748,7 +23778,8 @@
         "CH": "Vortag vor Neujahr",
         "LI": "Silvester",
         "LU": "Silvester",
-        "XETR": "Silvester"
+        "XETR": "Silvester",
+        "XSWX": "Vortag vor Neujahr"
       },
       "el": "Παραμονή Πρωτοχρονιάς",
       "en_AU": "New Year's Eve",
@@ -23762,7 +23793,8 @@
       "fo": "Nýggjársaftan",
       "fr": {
         "CH": "Réveillon du Nouvel An",
-        "LU": "Saint Sylvestre"
+        "LU": "Saint Sylvestre",
+        "XSWX": "Réveillon de la Saint-Sylvestre"
       },
       "gu": "નવા વર્ષની પૂર્વસંધ્યા",
       "hi": "नव वर्ष की पूर्व संध्या",
@@ -23770,7 +23802,8 @@
       "is": "Gamlársdagur",
       "it": {
         "CH": "Vigilia di Capodanno",
-        "SM": "Ultimo dell'anno"
+        "SM": "Ultimo dell'anno",
+        "XSWX": "Vigilia di Capodanno"
       },
       "kl": "Ukiortaami",
       "lb": "Silvester",
@@ -23818,7 +23851,8 @@
       "VE",
       "XETR",
       "XHKG",
-      "XNYS"
+      "XNYS",
+      "XSWX"
     ]
   },
   {
@@ -29480,7 +29514,8 @@
     },
     "countries": [
       "CH",
-      "LI"
+      "LI",
+      "XSWX"
     ]
   },
   {
