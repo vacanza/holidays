@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-07-08 22:19+0530\n"
+"PO-Revision-Date: 2026-07-21 21:51+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -229,7 +229,7 @@ msgstr "Dussehra (Mahashtami)"
 msgid "Dussehra (Mahanavami)"
 msgstr "Dussehra (Mahanavami)"
 
-#. Maharshi Valmiki's Birthday.
+#. Maharishi Valmiki's Birthday.
 msgid "Maharshi Valmiki's Jayanti"
 msgstr "Maharshi Valmiki's Birthday"
 
@@ -293,6 +293,14 @@ msgstr "Chhath Puja"
 msgid "Bihar Day"
 msgstr "Bihar Day"
 
+#. Maharishi Valmiki's Birthday.
+msgid "Maharishi Valmiki's Jayanti"
+msgstr ""
+
+#. Jor Mela Fatehgarh Sahib.
+msgid "Jor Mela Fatehgarh Sahib"
+msgstr "Jor Mela Fatehgarh Sahib"
+
 #. Guru Arjun Dev's Martyrdom Day.
 msgid "Guru Arjun Dev's Shaheedi Diwas"
 msgstr "Guru Arjun Dev's Martyrdom Day"
@@ -305,10 +313,6 @@ msgstr "Sant Kabir's Birthday"
 msgid "Maharaj Agrasen's Jayanti"
 msgstr "Maharaj Agrasen's Birthday"
 
-#. Jor Mela Fatehgarh Sahib.
-msgid "Jor Mela Fatehgarh Sahib"
-msgstr "Jor Mela Fatehgarh Sahib"
-
 #. Chhattisgarh Foundation Day.
 msgid "Chhattisgarh Foundation Day"
 msgstr "Chhattisgarh Foundation Day"
@@ -316,10 +320,6 @@ msgstr "Chhattisgarh Foundation Day"
 #. Goa Liberation Day.
 msgid "Goa Liberation Day"
 msgstr "Goa Liberation Day"
-
-#. Makar Sankranti.
-msgid "Uttarayan"
-msgstr "Uttarayan"
 
 #. Gujarat Day.
 msgid "Gujarat Day"
@@ -329,21 +329,17 @@ msgstr "Gujarat Day"
 msgid "Sardar Vallabhbhai Patel Jayanti"
 msgstr "Sardar Vallabhbhai Patel Jayanti"
 
+#. Makar Sankranti.
+msgid "Uttarayan"
+msgstr "Uttarayan"
+
 #. Parsi New Year (Shahenshahi).
 msgid "Parsi New Year (Shahenshahi)"
 msgstr "Parsi New Year (Shahenshahi)"
 
-#. Sir Chottu Ram's Birthday.
-msgid "Sir Chottu Ram's Jayanti"
-msgstr "Sir Chottu Ram's Birthday"
-
 #. Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day.
 msgid "Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Shaheedi Diwas"
 msgstr "Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day"
-
-#. Maharana Pratap's Birthday.
-msgid "Maharana Pratap's Jayanti"
-msgstr "Maharana Pratap's Birthday"
 
 #. Shaheed Udham Singh's Martyrdom Day.
 msgid "Shaheed Udham Singh's Shaheedi Diwas"
@@ -352,6 +348,18 @@ msgstr "Shaheed Udham Singh's Martyrdom Day"
 #. Haryana War Heroes's Martyrdom Day.
 msgid "Haryana War Heroes's Shaheedi Diwas"
 msgstr "Haryana War Heroes's Martyrdom Day"
+
+#. Haryana Day.
+msgid "Haryana Day"
+msgstr "Haryana Day"
+
+#. Sir Chottu Ram's Birthday.
+msgid "Sir Chottu Ram's Jayanti"
+msgstr "Sir Chottu Ram's Birthday"
+
+#. Maharana Pratap's Birthday.
+msgid "Maharana Pratap's Jayanti"
+msgstr "Maharana Pratap's Birthday"
 
 #. Vishwakarma Day.
 msgid "Vishwakarma Day"
@@ -364,10 +372,6 @@ msgstr "Lord Shri Parshuram's Birthday"
 #. Akshay Tritiya.
 msgid "Akshay Tritiya"
 msgstr "Akshay Tritiya"
-
-#. Haryana Day.
-msgid "Haryana Day"
-msgstr "Haryana Day"
 
 #. Shaheed Udham Singh's Birthday.
 msgid "Shaheed Udham Singh's Jayanti"
@@ -385,17 +389,17 @@ msgstr "Himachal Day"
 msgid "Karwa Chouth"
 msgstr "Karwa Chouth"
 
-#. Isra' and Mi'raj.
-msgid "Shab-I-Miraj"
-msgstr "Isra' and Mi'raj"
+#. Maharaja Hari Singh's Birthday.
+msgid "Maharaja Hari Singh's Jayanti"
+msgstr "Maharaja Hari Singh's Birthday"
+
+#. Accession Day.
+msgid "Accession Day"
+msgstr "Accession Day"
 
 #. 1st Navratra.
 msgid "1st Navratra"
 msgstr "1st Navratra"
-
-#. Nowruz.
-msgid "Nauroz"
-msgstr "Nowruz"
 
 #. Baisakhi.
 msgid "Baisakhi"
@@ -405,13 +409,13 @@ msgstr "Baisakhi"
 msgid "Mahanavami"
 msgstr "Mahanavami"
 
-#. Maharaja Hari Singh's Birthday.
-msgid "Maharaja Hari Singh's Jayanti"
-msgstr "Maharaja Hari Singh's Birthday"
+#. Isra' and Mi'raj.
+msgid "Shab-I-Miraj"
+msgstr "Isra' and Mi'raj"
 
-#. Accession Day.
-msgid "Accession Day"
-msgstr "Accession Day"
+#. Nowruz.
+msgid "Nauroz"
+msgstr "Nowruz"
 
 #. Jharkhand Formation Day.
 msgid "Jharkhand Formation Day"
@@ -473,35 +477,14 @@ msgstr "Guru Nabha Dass's Birthday"
 msgid "Kartar Singh Sarabha's Shaheedi Diwas"
 msgstr "Kartar Singh Sarabha's Martyrdom Day"
 
-#. Satguru Ram Singh's Birthday.
-msgid "Satguru Ram Singh's Jayanti"
-msgstr "Satguru Ram Singh's Birthday"
-
 #. International Women's Day.
 msgid "International Women's Day"
 msgstr "International Women's Day"
-
-#. Hola Mohalla.
-msgid "Hola Mohalla"
-msgstr ""
 
 #. Maharaja Ranjit Singh's Death Anniversary.
 msgid "Maharaja Ranjit Singh's Death Anniversary"
 msgstr "Maharaja Ranjit Singh's Death Anniversary"
 
-#. Saragarhi Day.
-msgid "Saragarhi Day"
-msgstr "Saragarhi Day"
-
-#. Samvatsari Day.
-msgid "Samvatsari Day"
-msgstr ""
-
-#. Anant Chaturdashi.
-msgid "Anant Chaturdashi"
-msgstr "Anant Chaturdashi"
-
-#. Bhagat Singh's Birthday.
 msgid "Bhagat Singh's Jayanti"
 msgstr "Bhagat Singh's Birthday"
 
@@ -512,6 +495,26 @@ msgstr "Baba Banda Singh Bahadur's Birthday"
 #. New Punjab Day.
 msgid "New Punjab Day"
 msgstr "New Punjab Day"
+
+#. Saragarhi Day.
+msgid "Saragarhi Day"
+msgstr "Saragarhi Day"
+
+#. Satguru Ram Singh's Birthday.
+msgid "Satguru Ram Singh's Jayanti"
+msgstr "Satguru Ram Singh's Birthday"
+
+#. Hola Mohalla.
+msgid "Hola Mohalla"
+msgstr ""
+
+#. Samvatsari Day.
+msgid "Samvatsari Day"
+msgstr ""
+
+#. Anant Chaturdashi.
+msgid "Anant Chaturdashi"
+msgstr "Anant Chaturdashi"
 
 #. Rajasthan Day.
 msgid "Rajasthan Day"
@@ -553,10 +556,6 @@ msgstr ""
 msgid "Vishwakarma Puja"
 msgstr "Vishwakarma Puja"
 
-#. Easter Monday.
-msgid "Easter Monday"
-msgstr "Easter Monday"
-
 #. Veer Kesari Chand's Martyrdom Day.
 msgid "Veer Kesari Chand's Shaheedi Diwas"
 msgstr "Veer Kesari Chand's Martyrdom Day"
@@ -564,6 +563,10 @@ msgstr "Veer Kesari Chand's Martyrdom Day"
 #. Arbaaen.
 msgid "Chehlum"
 msgstr ""
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Easter Monday"
 
 #. UP Formation Day.
 msgid "UP Formation Day"

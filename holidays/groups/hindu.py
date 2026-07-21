@@ -510,7 +510,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.maharana_pratap_jayanti_date(self._year)
         )
 
-    def _add_maharshi_valmiki_jayanti(self, name) -> date | None:
+    def _add_maharishi_valmiki_jayanti(self, name) -> date | None:
         """
         Add Maharshi Valmiki Jayanti.
 
@@ -520,7 +520,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Pargat_Diwas
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.maharshi_valmiki_jayanti_date(self._year)
+            name, self._hindu_calendar.maharishi_valmiki_jayanti_date(self._year)
         )
 
     def _add_mahavir_jayanti(self, name) -> date | None:
