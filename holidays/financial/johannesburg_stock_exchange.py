@@ -19,7 +19,7 @@ class JohannesburgStockExchange(SouthAfrica):
     """Johannesburg Stock Exchange (JSE) holidays.
 
     References:
-        [2019](http://web.archive.org/web/20250914175608/https://clientportal.jse.co.za/Content/JSE%20Trading%20Dates%20and%20Calendars%20Items/JSE%20Market%20Notice%2051122%20All%20Markets%20-%20JSE%20Markets%20Calendar%202023.pdf)
+        [2019](https://web.archive.org/web/20230103093400/https://clientportal.jse.co.za/Content/JSE%20Trading%20Dates%20and%20Calendars%20Items/JSE%20Market%20Notice%202019%20Markets%20Calendar.pdf)
         [2020](https://web.archive.org/web/20220123212248/https://clientportal.jse.co.za/Content/JSE%20Trading%20Dates%20and%20Calendars%20Items/JSE%20Market%20Notice%2030319%20All%20Markets%20-%20Calendar%202020.pdf)
         [2021](https://web.archive.org/web/20220123222115/https://clientportal.jse.co.za/Content/JSE%20Trading%20Dates%20and%20Calendars%20Items/JSE%20Market%20Notice%2051720%20All%20Markets%20-%20Updated%20JSE%20Markets%20Calendar%202021.pdf)
         [2022](https://web.archive.org/web/20250914180247/https://clientportal.jse.co.za/Content/JSE%20Trading%20Dates%20and%20Calendars%20Items/JSE%20Markets%20Calendar%202022%20Market%20Notice%20updated.pdf)
