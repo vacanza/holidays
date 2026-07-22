@@ -24,7 +24,7 @@ from holidays.observed_holiday_base import (
 
 
 class BolsasYMercadosArgentinos(Argentina):
-    """Bolsas y Mercados Argentinos (BYMA, MIC XBUE) holidays.
+    """Bolsas y Mercados Argentinos (BYMA) holidays.
 
     BYMA follows the Argentine national public holiday calendar (including the
     statutory observance shifts), with three market-specific differences: it keeps
@@ -56,11 +56,8 @@ class BolsasYMercadosArgentinos(Argentina):
         ObservedHolidayBase.__init__(self, *args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Argentine national public holidays,
-        # "bridge" holidays are dropped because the market trades on those days.
         super()._populate_public_holidays()
 
-        # Día del Bancario - Argentina's bank holiday.
         self._populate_bank_holidays()
 
         # Year-end market holiday.
@@ -68,10 +65,10 @@ class BolsasYMercadosArgentinos(Argentina):
 
     def _populate_half_day_holidays(self):
         # %s (markets close at 3:00pm).
-        early_close_label = self.tr("%s (el mercado cierra a las 15:00)")
+        early_close_label = tr("%s (el mercado cierra a las 15:00)")
 
         # Christmas Eve.
-        self._add_christmas_eve(early_close_label % self.tr("Nochebuena"))
+        self._add_christmas_eve(self._format_holiday_name(early_close_label, tr("Nochebuena")))
 
 
 class XBUE(BolsasYMercadosArgentinos):
@@ -83,7 +80,9 @@ class BYMA(BolsasYMercadosArgentinos):
 
 
 class BolsasYMercadosArgentinosStaticHolidays:
-    """BYMA settlement-restricted trading days.
+    """Bolsas y Mercados Argentinos (BYMA) special holidays.
+
+    BYMA settlement-restricted trading days.
 
     On these days the market trades a full session but one settlement type is
     unavailable. The "no cable" days track U.S. Federal Reserve holidays; the

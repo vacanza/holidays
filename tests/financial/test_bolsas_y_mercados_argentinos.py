@@ -27,8 +27,8 @@ class TestBolsasYMercadosArgentinos(CommonFinancialTests, TestCase):
         self.assertIsNone(getattr(self.holidays, "country", None))
 
     def test_restricted_settlement(self):
-        self.assertHolidays(
-            BolsasYMercadosArgentinos(categories=RESTRICTED_SETTLEMENT, years=2026),
+        self.assertRestrictedSettlementHolidaysInYear(
+            2026,
             ("2026-01-19", "Sin liquidación cable"),
             ("2026-03-23", "Sin liquidación local"),
             ("2026-06-19", "Sin liquidación cable"),
@@ -41,8 +41,8 @@ class TestBolsasYMercadosArgentinos(CommonFinancialTests, TestCase):
         )
 
     def test_half_day(self):
-        self.assertHolidays(
-            BolsasYMercadosArgentinos(categories=HALF_DAY, years=2026),
+        self.assertHalfDayHolidaysInYear(
+            2026,
             ("2026-12-24", "Nochebuena (el mercado cierra a las 15:00)"),
         )
 
