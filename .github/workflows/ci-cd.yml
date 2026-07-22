@@ -158,7 +158,7 @@ jobs:
           path: holidays-${{ env.VERSION }}-sbom.json
 
   test-build:
-    name: Test build on ${{ matrix.os }}
+    name: Test build ${{ matrix.dist.name }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     needs: build
     strategy:
@@ -167,6 +167,11 @@ jobs:
           - macos-latest
           - ubuntu-latest
           - windows-latest
+        dist:
+          - name: wheel
+            artifact: dist/*.whl
+          - name: sdist
+            artifact: dist/*.tar.gz
     steps:
       - name: Check out repository
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
@@ -190,13 +195,8 @@ jobs:
       - name: Run tests
         shell: bash
         run: |
-          uv sync --frozen --no-default-groups --no-install-project --group tests --link-mode=copy
           rm -rf holidays
-          uv pip install dist/*.whl --link-mode=copy
-          uv run --no-sync pytest --dist loadscope --numprocesses auto tests/countries tests/financial
-          uv pip uninstall holidays
-          uv pip install dist/*.tar.gz --link-mode=copy
-          uv run --no-sync pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          uv run --isolated --no-default-groups --group tests --with ${{ matrix.dist.artifact }} -- pytest --dist loadscope --numprocesses auto tests/countries tests/financial
 
   test-docs:
     name: Test docs build
