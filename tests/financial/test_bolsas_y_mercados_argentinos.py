@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import HALF_DAY, RESTRICTED_SETTLEMENT
 from holidays.financial.bolsas_y_mercados_argentinos import BolsasYMercadosArgentinos
 from tests.common import CommonFinancialTests
 
