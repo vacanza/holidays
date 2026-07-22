@@ -28,8 +28,9 @@ class BolsasYMercadosArgentinos(Argentina):
 
     BYMA follows the Argentine national public holiday calendar (including the
     statutory observance shifts), with three market-specific differences: it keeps
-    trading on the tourism "bridge" holidays (feriados con fines turísticos), it is
-    closed on Bankers' Day, and it adds a year-end market close on December 31st.
+    trading on the tourism "bridge" holidays (feriados con fines turísticos), it
+    stays open on Bankers' Day though without local settlement, and it adds a
+    year-end market close on December 31st.
 
     References:
         * [BYMA trading calendar](https://web.archive.org/web/20260309064908/https://www.byma.com.ar/mercado/calendario-bursatil)
@@ -58,8 +59,6 @@ class BolsasYMercadosArgentinos(Argentina):
     def _populate_public_holidays(self):
         super()._populate_public_holidays()
 
-        self._populate_bank_holidays()
-
         # Year-end market holiday.
         self._add_holiday_dec_31(tr("Feriado bursátil de fin de año"))
 
@@ -86,8 +85,8 @@ class BolsasYMercadosArgentinosStaticHolidays:
 
     On these days the market trades a full session but one settlement type is
     unavailable. The "no cable" days track U.S. Federal Reserve holidays; the
-    "no local" days follow BYMA's annual calendar (bridge holidays and Christmas
-    Eve). Neither is derivable from a formula, so they are listed per year.
+    "no local" days follow BYMA's annual calendar.
+    Neither is derivable from a formula, so they are listed per year.
     """
 
     # No local settlement.
@@ -103,6 +102,7 @@ class BolsasYMercadosArgentinosStaticHolidays:
             (JUN, 19, no_cable_settlement),
             (JUL, 10, no_local_settlement),
             (SEP, 7, no_cable_settlement),
+            (NOV, 6, no_local_settlement),
             (NOV, 11, no_cable_settlement),
             (NOV, 26, no_cable_settlement),
             (DEC, 7, no_local_settlement),
