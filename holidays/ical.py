@@ -200,13 +200,27 @@ class ICalExporter:
 
         sorted_dates = sorted(self.holidays.keys())
         # Merged continuous holiday with the same name and use `DURATION` instead.
+        date_set = set(sorted_dates)
         n = len(sorted_dates)
         i = 0
         while i < n:
             dt = sorted_dates[i]
-            names = self.holidays.get_list(dt)
+            # Only look at an existing key: probing an absent date would populate
+            # it on an expandable HolidayBase and mutate `self` mid-render.
+            prev_date = _timedelta(dt, -1)
+            prev_names = (
+                self.holidays.get_list(prev_date)
+                if prev_date in date_set and prev_date.year == dt.year
+                else []
+            )
 
-            for name in names:
+            for name in self.holidays.get_list(dt):
+                # A name continuing yesterday's same-year run was already emitted
+                # with its DURATION when the run started; re-emitting it here
+                # would duplicate the event.
+                if name in prev_names:
+                    continue
+
                 days = 1
                 while (
                     i + days < n
@@ -218,7 +232,7 @@ class ICalExporter:
 
                 lines.extend(self._generate_event(dt, name, days))
 
-            i += days
+            i += 1
 
         lines.append("END:VCALENDAR")
         lines.append("")
