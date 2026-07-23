@@ -360,7 +360,10 @@ class TestSouthKorea(CommonCountryTests, TestCase):
             ),
         )
         self.assertNoHolidayName(name, range(2008, 2026))
-        self.assertHolidayName(f"{name} 대체 휴일", "1960-07-18")
+        # Substitute holiday: reinstated Constitution Day observes the modern
+        # alternative-holiday system from 2026 (2027-07-17 is a Saturday).
+        self.assertHolidayName(f"{name} 대체 휴일", "1960-07-18", "2027-07-19")
+        self.assertNoHolidayName(f"{name} 대체 휴일", range(2008, 2027))
 
     def test_liberation_day(self):
         name = "광복절"
