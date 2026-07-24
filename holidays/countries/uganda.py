@@ -10,11 +10,19 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.calendars.gregorian import JAN
+from holidays.groups import (
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+)
 from holidays.holiday_base import HolidayBase
 
 
-class Uganda(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Uganda(
+    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+):
     """Uganda holidays.
 
     References:
@@ -44,6 +52,7 @@ class Uganda(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
+        StaticHolidays.__init__(self, cls=UgandaStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -99,3 +108,21 @@ class UG(Uganda):
 
 class UGA(Uganda):
     pass
+
+
+class UgandaStaticHolidays:
+    """Uganda special holidays.
+
+    References:
+        * [General elections public holidays 2026](https://web.archive.org/web/20260110000000/https://eagle.co.ug/2026/01/10/museveni-declares-jan-15-16-as-public-holidays-for-general-elections/)
+    """
+
+    # General elections.
+    general_elections = "General elections"
+
+    special_public_holidays = {
+        2026: (
+            (JAN, 15, general_elections),
+            (JAN, 16, general_elections),
+        ),
+    }
