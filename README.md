@@ -2010,6 +2010,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Johannesburg Stock Exchange</td>
+<td>XJSE</td>
+<td>Johannesburg Stock Exchange (JSE) market holidays</td>
+<td></td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>NASDAQ</td>
 <td>XNAS</td>
 <td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
