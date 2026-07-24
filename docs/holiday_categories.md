@@ -101,6 +101,14 @@ Examples:
 - Christmas Eve (afternoon only)
 - New Year's Eve (afternoon only)
 
+#### RESTRICTED_SETTLEMENT
+
+Trading days on which a financial market operates a full, normal-hours session but one or more settlement types are unavailable.
+
+Examples:
+
+- **Bolsas y Mercados Argentinos (XBUE)**: days with no local (ARS) settlement, or no foreign (USD C) settlement.
+
 #### DE_FACTO
 
 Holidays that are legally treated equivalently to public holidays for specific purposes (such as working day calculations) but are not officially designated as public holidays. These observances have legal backing that grants them similar status to public holidays in certain contexts.
