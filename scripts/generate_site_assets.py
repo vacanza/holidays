@@ -150,6 +150,7 @@ LANGUAGES = {
     "en_LC": "English (Saint Lucia)",
     "en_MO": "English (Macau)",
     "en_MS": "English (Montserrat)",
+    "en_MR": "English (Mauritania)",
     "en_MU": "English (Mauritius)",
     "en_NA": "English (Namibia)",
     "en_NF": "English (Norfolk Island)",
