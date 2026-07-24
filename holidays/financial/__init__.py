@@ -20,6 +20,7 @@ from holidays.financial.germany_exchange import GermanyStockExchange, XETR, XFRA
 from holidays.financial.hong_kong_stock_exchange import HongKongStockExchange, XHKG, HKEX, SEHK
 from holidays.financial.ice_futures_europe import IceFuturesEurope, ICEFuturesEurope, IFEU
 from holidays.financial.japan_exchange import JapanExchange, XJPX, JPX, TSE, OSE
+from holidays.financial.london_stock_exchange import LondonStockExchange, XLON, LSE
 from holidays.financial.nasdaq import NASDAQ, XNAS
 from holidays.financial.national_stock_exchange_of_india import (
     NationalStockExchangeOfIndia,

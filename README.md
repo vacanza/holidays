@@ -2010,6 +2010,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>London Stock Exchange</td>
+<td>XLON</td>
+<td>London Stock Exchange (LSE) market holidays</td>
+<td><strong>en_GB</strong>, en_US, th</td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>NASDAQ</td>
 <td>XNAS</td>
 <td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
