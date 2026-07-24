@@ -101,6 +101,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
             "2022-11-28",
             "2023-04-21",
             "2025-09-15",
+            "2026-03-20",
         )
 
     def test_special_subdiv_holidays(self):
