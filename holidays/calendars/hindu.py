@@ -17,10 +17,13 @@ from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.helpers import _normalize_tuple
 
+ANANT_CHATURDASHI = "ANANT_CHATURDASHI"
 BATHUKAMMA = "BATHUKAMMA"
 BASANT_PANCHAMI = "BASANT_PANCHAMI"
 BONALU = "BONALU"
 BUDDHA_PURNIMA = "BUDDHA_PURNIMA"
+CHAITRA_NAVRATRI = "CHAITRA_NAVRATRI"
+CHETI_CHAND = "CHETI_CHAND"
 CHHATH_PUJA = "CHHATH_PUJA"
 DIWALI = "DIWALI"
 DIWALI_INDIA = "DIWALI_INDIA"
@@ -28,12 +31,15 @@ DUSSEHRA = "DUSSEHRA"
 GANESH_CHATURTHI = "GANESH_CHATURTHI"
 GOVARDHAN_PUJA = "GOVARDHAN_PUJA"
 GUDI_PADWA = "GUDI_PADWA"
+GURU_ARJUN_DEV_MARTYRDOM = "GURU_ARJUN_DEV_MARTYRDOM"
 GURU_GOBIND_SINGH_JAYANTI = "GURU_GOBIND_SINGH_JAYANTI"
 GURU_NANAK_JAYANTI = "GURU_NANAK_JAYANTI"
 GURU_RAVIDAS_JAYANTI = "GURU_RAVIDAS_JAYANTI"
 GYALPO_LOSAR = "GYALPO_LOSAR"
+HOLA_MOHOLLA = "HOLA_MOHOLLA"
 HOLI = "HOLI"
 JANMASHTAMI = "JANMASHTAMI"
+KABIR_JAYANTI = "KABIR_JAYANTI"
 KARWA_CHAUTH = "KARWA_CHAUTH"
 MAHA_ASHTAMI = "MAHA_ASHTAMI"
 MAHA_NAVAMI = "MAHA_NAVAMI"
@@ -44,10 +50,12 @@ MAHAVIR_JAYANTI = "MAHAVIR_JAYANTI"
 MAKAR_SANKRANTI = "MAKAR_SANKRANTI"
 NARAKA_CHATURDASHI = "NARAKA_CHATURDASHI"
 ONAM = "ONAM"
+PARSHURAM_JAYANTI = "PARSHURAM_JAYANTI"
 PONGAL = "PONGAL"
 RAKSHA_BANDHAN = "RAKSHA_BANDHAN"
 RAM_NAVAMI = "RAM_NAVAMI"
 RATH_YATRA = "RATH_YATRA"
+SAMVATSARI_PARVA = "SAMVATSARI_PARVA"
 SHARAD_NAVRATRI = "SHARAD_NAVRATRI"
 SONAM_LOSAR = "SONAM_LOSAR"
 SWAMI_DAYANAND_SARASWATI_JAYANTI = "SWAMI_DAYANAND_SARASWATI_JAYANTI"
@@ -55,9 +63,49 @@ TAMU_LOSAR = "TAMU_LOSAR"
 THAIPUSAM = "THAIPUSAM"
 VAISAKHI = "VAISAKHI"
 VISHU = "VISHU"
+VISHWAKARMA_PUJA = "VISHWAKARMA_PUJA"
 
 
 class _HinduLunisolar:
+    # http://web.archive.org/web/20260115044100/https://www.drikpanchang.com/festivals/anant-chaturdashi/anant-chaturdashi-date-time.html
+    ANANT_CHATURDASHI_DATES = {
+        2001: (SEP, 1),
+        2002: (SEP, 20),
+        2003: (SEP, 9),
+        2004: (SEP, 27),
+        2005: (SEP, 17),
+        2006: (SEP, 7),
+        2007: (SEP, 26),
+        2008: (SEP, 14),
+        2009: (SEP, 3),
+        2010: (SEP, 22),
+        2011: (SEP, 11),
+        2012: (SEP, 29),
+        2013: (SEP, 18),
+        2014: (SEP, 8),
+        2015: (SEP, 27),
+        2016: (SEP, 15),
+        2017: (SEP, 5),
+        2018: (SEP, 24),
+        2019: (SEP, 13),
+        2020: (SEP, 1),
+        2021: (SEP, 20),
+        2022: (SEP, 9),
+        2023: (SEP, 28),
+        2024: (SEP, 17),
+        2025: (SEP, 6),
+        2026: (SEP, 25),
+        2027: (SEP, 14),
+        2028: (SEP, 2),
+        2029: (SEP, 21),
+        2030: (SEP, 11),
+        2031: (SEP, 29),
+        2032: (SEP, 18),
+        2033: (SEP, 8),
+        2034: (SEP, 27),
+        2035: (SEP, 16),
+    }
+
     # http://web.archive.org/web/20260108141809/https://www.timeanddate.com/holidays/india/vasant-panchami
     BASANT_PANCHAMI_DATES = {
         2001: (JAN, 29),
@@ -195,6 +243,84 @@ class _HinduLunisolar:
         2033: (MAY, 14),
         2034: (MAY, 3),
         2035: (MAY, 22),
+    }
+
+    # http://web.archive.org/web/20260627112746/https://www.drikpanchang.com/navratri/chaitra-navratri-ghatasthapana.html
+    CHAITRA_NAVRATRI_DATES = {
+        2001: (MAR, 26),
+        2002: (APR, 13),
+        2003: (APR, 2),
+        2004: (MAR, 22),
+        2005: (APR, 9),
+        2006: (MAR, 30),
+        2007: (MAR, 20),
+        2008: (APR, 7),
+        2009: (MAR, 27),
+        2010: (MAR, 17),
+        2011: (APR, 4),
+        2012: (MAR, 23),
+        2013: (APR, 11),
+        2014: (MAR, 31),
+        2015: (MAR, 21),
+        2016: (APR, 8),
+        2017: (MAR, 29),
+        2018: (MAR, 18),
+        2019: (APR, 6),
+        2020: (MAR, 25),
+        2021: (APR, 13),
+        2022: (APR, 2),
+        2023: (MAR, 22),
+        2024: (APR, 9),
+        2025: (MAR, 30),
+        2026: (MAR, 20),
+        2027: (APR, 8),
+        2028: (MAR, 27),
+        2029: (APR, 15),
+        2030: (APR, 4),
+        2031: (MAR, 24),
+        2032: (APR, 11),
+        2033: (MAR, 31),
+        2034: (MAR, 21),
+        2035: (APR, 9),
+    }
+
+    # https://web.archive.org/web/20260118174122/https://www.drikpanchang.com/hindu-saints/jhulelal/cheti-chand-date-time.html
+    CHETI_CHAND_DATES = {
+        2001: (MAR, 26),
+        2002: (APR, 14),
+        2003: (APR, 3),
+        2004: (MAR, 22),
+        2005: (APR, 10),
+        2006: (MAR, 30),
+        2007: (MAR, 20),
+        2008: (APR, 7),
+        2009: (MAR, 28),
+        2010: (MAR, 17),
+        2011: (APR, 5),
+        2012: (MAR, 24),
+        2013: (APR, 11),
+        2014: (APR, 1),
+        2015: (MAR, 21),
+        2016: (APR, 8),
+        2017: (MAR, 29),
+        2018: (MAR, 19),
+        2019: (APR, 6),
+        2020: (MAR, 26),
+        2021: (APR, 13),
+        2022: (APR, 2),
+        2023: (MAR, 23),
+        2024: (APR, 10),
+        2025: (MAR, 30),
+        2026: (MAR, 20),
+        2027: (APR, 8),
+        2028: (MAR, 27),
+        2029: (APR, 15),
+        2030: (APR, 4),
+        2031: (MAR, 24),
+        2032: (APR, 11),
+        2033: (APR, 1),
+        2034: (MAR, 21),
+        2035: (APR, 9),
     }
 
     # https://web.archive.org/web/20250404174934/https://www.timeanddate.com/holidays/india/chhat-puja
@@ -634,6 +760,45 @@ class _HinduLunisolar:
         2035: (APR, 9),
     }
 
+    # https://web.archive.org/web/20260617120653/https://www.officeholidays.com/holidays/india/punjab/guru-arjun-dev-martyrdom-day
+    GURU_ARJUN_DEV_MARTYRDOM_DATES = {
+        2001: (MAY, 28),
+        2002: (JUN, 16),
+        2003: (JUN, 6),
+        2004: (MAY, 26),
+        2005: (JUN, 14),
+        2006: (JUN, 3),
+        2007: (MAY, 24),
+        2008: (JUN, 11),
+        2009: (MAY, 31),
+        2010: (MAY, 21),
+        2011: (JUN, 9),
+        2012: (MAY, 28),
+        2013: (JUN, 16),
+        2014: (JUN, 5),
+        2015: (MAY, 25),
+        2016: (JUN, 13),
+        2017: (JUN, 2),
+        2018: (JUN, 17),
+        2019: (JUN, 16),
+        2020: (MAY, 26),
+        2021: (JUN, 14),
+        2022: (JUN, 3),
+        2023: (MAY, 23),
+        2024: (JUN, 10),
+        2025: (MAY, 30),
+        2026: (JUN, 18),
+        2027: (JUN, 8),
+        2028: (MAY, 28),
+        2029: (JUN, 16),
+        2030: (JUN, 5),
+        2031: (MAY, 26),
+        2032: (JUN, 13),
+        2033: (JUN, 2),
+        2034: (MAY, 22),
+        2035: (JUN, 11),
+    }
+
     # https://web.archive.org/web/20241231181629/https://www.timeanddate.com/holidays/india/guru-govind-singh-jayanti
     GURU_GOBIND_SINGH_JAYANTI_DATES = {
         2001: (JAN, 2),
@@ -779,6 +944,47 @@ class _HinduLunisolar:
         2035: (FEB, 9),
     }
 
+    # http://web.archive.org/web/20260416233149/https://www.calendarlabs.com/sikh-calendar
+    # http://web.archive.org/web/20260417155518/https://www.sikhiwiki.org/index.php/Sikh_festivals
+    # http://web.archive.org/web/20251213170213/https://www.ritiriwaz.com/gurupurabs-and-sikh-calendar
+    HOLA_MOHOLLA_DATES = {
+        2001: (MAR, 10),
+        2002: (MAR, 28),
+        2003: (MAR, 19),
+        2004: (MAR, 7),
+        2005: (MAR, 26),
+        2006: (MAR, 15),
+        2007: (MAR, 4),
+        2008: (MAR, 22),
+        2009: (MAR, 11),
+        2010: (MAR, 1),
+        2011: (MAR, 20),
+        2012: (MAR, 9),
+        2013: (MAR, 28),
+        2014: (MAR, 17),
+        2015: (MAR, 6),
+        2016: (MAR, 24),
+        2017: (MAR, 13),
+        2018: (MAR, 2),
+        2019: (MAR, 21),
+        2020: (MAR, 10),
+        2021: (MAR, 29),
+        2022: (MAR, 18),
+        2023: (MAR, 11),
+        2024: (MAR, 25),
+        2025: (MAR, 14),
+        2026: (MAR, 3),
+        2027: (MAR, 23),
+        2028: (MAR, 11),
+        2029: (MAR, 1),
+        2030: (MAR, 20),
+        2031: (MAR, 10),
+        2032: (MAR, 27),
+        2033: (MAR, 17),
+        2034: (MAR, 6),
+        2035: (MAR, 24),
+    }
+
     # https://web.archive.org/web/20250410002117/https://www.timeanddate.com/holidays/india/holi
     HOLI_DATES = {
         2001: (MAR, 10),
@@ -855,6 +1061,45 @@ class _HinduLunisolar:
         2033: (AUG, 17),
         2034: (SEP, 6),
         2035: (AUG, 26),
+    }
+
+    # https://web.archive.org/web/20250612160056/https://www.drikpanchang.com/hindu-saints/kabirdas/sant-kabir-jayanti.html
+    KABIR_JAYANTI_DATES = {
+        2001: (JUN, 6),
+        2002: (JUN, 24),
+        2003: (JUN, 14),
+        2004: (JUN, 3),
+        2005: (JUN, 22),
+        2006: (JUN, 11),
+        2007: (JUN, 30),
+        2008: (JUN, 18),
+        2009: (JUN, 7),
+        2010: (JUN, 26),
+        2011: (JUN, 15),
+        2012: (JUN, 4),
+        2013: (JUN, 23),
+        2014: (JUN, 13),
+        2015: (JUN, 2),
+        2016: (JUN, 20),
+        2017: (JUN, 9),
+        2018: (JUN, 28),
+        2019: (JUN, 17),
+        2020: (JUN, 5),
+        2021: (JUN, 24),
+        2022: (JUN, 14),
+        2023: (JUN, 4),
+        2024: (JUN, 22),
+        2025: (JUN, 11),
+        2026: (JUN, 29),
+        2027: (JUN, 18),
+        2028: (JUN, 7),
+        2029: (JUN, 26),
+        2030: (JUN, 15),
+        2031: (JUN, 5),
+        2032: (JUN, 23),
+        2033: (JUN, 12),
+        2034: (JUN, 2),
+        2035: (JUN, 20),
     }
 
     # https://web.archive.org/web/20260123230237/https://www.timeanddate.com/holidays/india/karaka-chaturthi
@@ -983,6 +1228,15 @@ class _HinduLunisolar:
     # [2022](https://web.archive.org/web/20251213151608/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_holidays_list_21_10_2021.pdf)
     # [2023](https://web.archive.org/web/20251213151559/https://gad.rajasthan.gov.in/writereaddata/OLDWEBDATA/PDF/Govt_holidays_list_16_11_2022.pdf)
     MAHARANA_PRATAP_JAYANTI_DATES = {
+        2001: (MAY, 25),
+        2002: (JUN, 13),
+        2003: (JUN, 3),
+        2004: (MAY, 22),
+        2005: (JUN, 10),
+        2006: (MAY, 30),
+        2007: (JUN, 17),
+        2008: (JUN, 6),
+        2009: (MAY, 27),
         2010: (JUN, 15),
         2011: (JUN, 4),
         2012: (MAY, 24),
@@ -1207,6 +1461,45 @@ class _HinduLunisolar:
         2035: (OCT, 30),
     }
 
+    # http://web.archive.org/web/20260624232336/https://www.drikpanchang.com/ekadashis/nirjala/nirjala-ekadashi-date-time.html
+    NIRJALA_EKADASHI_DATES = {
+        2001: (JUN, 2),
+        2002: (JUN, 21),
+        2003: (JUN, 11),
+        2004: (MAY, 30),
+        2005: (JUN, 18),
+        2006: (JUN, 7),
+        2007: (JUN, 26),
+        2008: (JUN, 14),
+        2009: (JUN, 3),
+        2010: (JUN, 22),
+        2011: (JUN, 12),
+        2012: (JUN, 1),
+        2013: (JUN, 20),
+        2014: (JUN, 9),
+        2015: (MAY, 28),
+        2016: (JUN, 16),
+        2017: (JUN, 5),
+        2018: (JUN, 24),
+        2019: (JUN, 13),
+        2020: (JUN, 2),
+        2021: (JUN, 21),
+        2022: (JUN, 11),
+        2023: (MAY, 30),
+        2024: (JUN, 18),
+        2025: (JUN, 7),
+        2026: (JUN, 25),
+        2027: (JUN, 15),
+        2028: (JUN, 3),
+        2029: (JUN, 22),
+        2030: (JUN, 12),
+        2031: (JUN, 2),
+        2032: (JUN, 19),
+        2033: (JUN, 9),
+        2034: (MAY, 28),
+        2035: (JUN, 16),
+    }
+
     # https://web.archive.org/web/20241205101551/https://www.timeanddate.com/holidays/india/onam
     ONAM_DATES = {
         2001: (AUG, 31),
@@ -1244,6 +1537,45 @@ class _HinduLunisolar:
         2033: (SEP, 6),
         2034: (AUG, 28),
         2035: (SEP, 14),
+    }
+
+    # http://web.archive.org/web/20260312200240/https://www.drikpanchang.com/dashavatara/parashurama/parashurama-jayanti-date-time.html
+    PARSHURAM_JAYANTI_DATES = {
+        2001: (APR, 25),
+        2002: (MAY, 14),
+        2003: (MAY, 4),
+        2004: (APR, 22),
+        2005: (MAY, 10),
+        2006: (APR, 30),
+        2007: (APR, 19),
+        2008: (MAY, 7),
+        2009: (APR, 27),
+        2010: (MAY, 16),
+        2011: (MAY, 5),
+        2012: (APR, 24),
+        2013: (MAY, 12),
+        2014: (MAY, 1),
+        2015: (APR, 20),
+        2016: (MAY, 8),
+        2017: (APR, 28),
+        2018: (APR, 18),
+        2019: (MAY, 7),
+        2020: (APR, 25),
+        2021: (MAY, 14),
+        2022: (MAY, 3),
+        2023: (APR, 22),
+        2024: (MAY, 10),
+        2025: (APR, 29),
+        2026: (APR, 19),
+        2027: (MAY, 8),
+        2028: (APR, 27),
+        2029: (MAY, 16),
+        2030: (MAY, 5),
+        2031: (APR, 24),
+        2032: (MAY, 11),
+        2033: (MAY, 1),
+        2034: (APR, 20),
+        2035: (MAY, 9),
     }
 
     PONGAL_DATES = {
@@ -1399,6 +1731,45 @@ class _HinduLunisolar:
         2033: (JUN, 28),
         2034: (JUL, 17),
         2035: (JUL, 7),
+    }
+
+    # http://web.archive.org/web/20250430040132/https://www.drikpanchang.com/jain/calendar/jain-calendar.html
+    SAMVATSARI_PARVA_DATES = {
+        2001: (AUG, 23),
+        2002: (SEP, 11),
+        2003: (SEP, 1),
+        2004: (SEP, 19),
+        2005: (SEP, 8),
+        2006: (AUG, 28),
+        2007: (SEP, 16),
+        2008: (SEP, 4),
+        2009: (AUG, 24),
+        2010: (SEP, 12),
+        2011: (SEP, 2),
+        2012: (SEP, 20),
+        2013: (SEP, 10),
+        2014: (AUG, 30),
+        2015: (SEP, 18),
+        2016: (SEP, 6),
+        2017: (AUG, 26),
+        2018: (SEP, 14),
+        2019: (SEP, 3),
+        2020: (AUG, 23),
+        2021: (SEP, 11),
+        2022: (SEP, 1),
+        2023: (SEP, 20),
+        2024: (SEP, 8),
+        2025: (AUG, 28),
+        2026: (SEP, 15),
+        2027: (SEP, 4),
+        2028: (AUG, 24),
+        2029: (SEP, 12),
+        2030: (SEP, 2),
+        2031: (SEP, 21),
+        2032: (SEP, 9),
+        2033: (AUG, 30),
+        2034: (SEP, 17),
+        2035: (SEP, 6),
     }
 
     # https://web.archive.org/web/20241202103625/https://www.timeanddate.com/holidays/india/navratri
@@ -1818,6 +2189,45 @@ class _HinduLunisolar:
         2035: (APR, 14),
     }
 
+    # http://web.archive.org/web/20250119213900/https://www.drikpanchang.com/sankranti/vishwakarma-puja-date-time.html
+    VISHWAKARMA_PUJA_DATES = {
+        2001: (SEP, 17),
+        2002: (SEP, 17),
+        2003: (SEP, 17),
+        2004: (SEP, 16),
+        2005: (SEP, 17),
+        2006: (SEP, 17),
+        2007: (SEP, 17),
+        2008: (SEP, 16),
+        2009: (SEP, 17),
+        2010: (SEP, 17),
+        2011: (SEP, 17),
+        2012: (SEP, 16),
+        2013: (SEP, 17),
+        2014: (SEP, 17),
+        2015: (SEP, 17),
+        2016: (SEP, 16),
+        2017: (SEP, 17),
+        2018: (SEP, 17),
+        2019: (SEP, 17),
+        2020: (SEP, 16),
+        2021: (SEP, 17),
+        2022: (SEP, 17),
+        2023: (SEP, 17),
+        2024: (SEP, 16),
+        2025: (SEP, 17),
+        2026: (SEP, 17),
+        2027: (SEP, 17),
+        2028: (SEP, 17),
+        2029: (SEP, 17),
+        2030: (SEP, 17),
+        2031: (SEP, 17),
+        2032: (SEP, 17),
+        2033: (SEP, 17),
+        2034: (SEP, 17),
+        2035: (SEP, 17),
+    }
+
     def _get_holiday(self, holiday: str, year: int) -> tuple[date | None, bool]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
@@ -1831,6 +2241,9 @@ class _HinduLunisolar:
             for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
                 yield date(year, *dt), year not in exact_dates
 
+    def anant_chaturdashi_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(ANANT_CHATURDASHI, year)
+
     def basant_panchami_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BASANT_PANCHAMI, year)
 
@@ -1842,6 +2255,12 @@ class _HinduLunisolar:
 
     def buddha_purnima_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BUDDHA_PURNIMA, year)
+
+    def chaitra_navratri_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(CHAITRA_NAVRATRI, year)
+
+    def cheti_chand_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(CHETI_CHAND, year)
 
     def chhath_puja_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(CHHATH_PUJA, year)
@@ -1864,6 +2283,9 @@ class _HinduLunisolar:
     def gudi_padwa_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(GUDI_PADWA, year)
 
+    def guru_arjun_dev_martyrdom_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(GURU_ARJUN_DEV_MARTYRDOM, year)
+
     def guru_gobind_singh_jayanti_date(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday_set(GURU_GOBIND_SINGH_JAYANTI, year)
 
@@ -1876,6 +2298,9 @@ class _HinduLunisolar:
     def gyalpo_losar_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(GYALPO_LOSAR, year)
 
+    def hola_mohalla_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(HOLA_MOHOLLA, year)
+
     def holi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(HOLI, year)
 
@@ -1884,6 +2309,9 @@ class _HinduLunisolar:
 
     def karwa_chauth_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(KARWA_CHAUTH, year)
+
+    def kabir_jayanti_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(KABIR_JAYANTI, year)
 
     def maha_ashtami_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHA_ASHTAMI, year)
@@ -1912,6 +2340,9 @@ class _HinduLunisolar:
     def onam_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(ONAM, year)
 
+    def parshuram_jayanti_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(PARSHURAM_JAYANTI, year)
+
     def pongal_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(PONGAL, year)
 
@@ -1923,6 +2354,9 @@ class _HinduLunisolar:
 
     def rath_yatra_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(RATH_YATRA, year)
+
+    def samvatsari_parva_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(SAMVATSARI_PARVA, year)
 
     def sharad_navratri_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(SHARAD_NAVRATRI, year)
@@ -1944,6 +2378,9 @@ class _HinduLunisolar:
 
     def vishu_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VISHU, year)
+
+    def vishwakarma_puja_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(VISHWAKARMA_PUJA, year)
 
 
 class _CustomHinduHolidays(_CustomCalendar, _HinduLunisolar):
