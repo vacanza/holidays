@@ -24,6 +24,12 @@ class TestParaguay(CommonCountryTests, TestCase):
     def test_new_years_day(self):
         self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))
 
+    def test_constitution_oath_day(self):
+        name = "Día de la Jura de la Constitución Nacional"
+        self.assertHolidayName(name, "2026-06-22", "2027-06-20", "2028-06-20")
+        self.assertHolidayName(name, range(2026, 2050))
+        self.assertNoHolidayName(name, range(1990, 2026))
+
     def test_patriots_day(self):
         self.assertHolidayName(
             "Día de los Héroes de la Patria",
