@@ -1,3 +1,18 @@
+## Version 0.101
+
+Released July 20, 2026
+
+- Add SIX Swiss Exchange (SIX) holidays (#3692 by @pareshjoshij)
+- Add Toronto Stock Exchange (TSX) holidays (#3680 by @pareshjoshij, @KJhellico)
+- Update Canada holidays: add observed rule for National Day for Truth and Reconciliation in BC (#3695 by @uttam12331)
+- Update Canada holidays: update Ontario (ON) holidays (#3689 by @KJhellico)
+- Update Kazakhstan holidays: 2026 constitutional law changes (#3690 by @stetat)
+- Update Monaco holidays (#3678 by @KJhellico)
+- Update PR template (#3707 by @KJhellico)
+- Update `HolidayBase::get_closest_holiday` method (#3651 by @gaoflow, @KJhellico)
+- Update iCalendar generation tool: add output filename template support (#3679 by @KJhellico)
+- Update l10n: synchronize Hindi and Gujarati translations (#3681 by @pareshjoshij)
+
 ## Version 0.100
 
 Released July 6, 2026
