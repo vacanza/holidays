@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-26 12:14+0530\n"
-"PO-Revision-Date: 2026-07-19 01:56+0530\n"
+"PO-Revision-Date: 2026-07-25 00:32+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: kn\n"
@@ -228,7 +228,7 @@ msgstr "ದಸರಾ (ಮಹಾಷ್ಟಮಿ)"
 msgid "Dussehra (Mahanavami)"
 msgstr "ದಸರಾ (ಮಹಾನವಮಿ)"
 
-#. Maharshi Valmiki's Birthday.
+#. Maharishi Valmiki's Birthday.
 msgid "Maharshi Valmiki's Jayanti"
 msgstr "ಮಹರ್ಷಿ ವಾಲ್ಮೀಕಿ ಜಯಂತಿ"
 
@@ -308,12 +308,100 @@ msgstr ""
 msgid "Jor Mela Fatehgarh Sahib"
 msgstr ""
 
-#. Chhattisgarh Foundation Day.
-msgid "Chhattisgarh Foundation Day"
-msgstr "ಛತ್ತೀಸ್‌ಗಢ ಸ್ಥಾಪನಾ ದಿನ"
+#. International Day of the World's Indigenous Peoples.
+msgid "International Day of Adivasi Peoples"
+msgstr ""
 
-#. Maghu Bihu.
-msgid "Maghu Bihu"
+#. Maa Shakambhari's Birthday.
+msgid "Maa Shakambhari's Jayanti"
+msgstr ""
+
+#. Cherchera.
+msgid "Cherchera"
+msgstr ""
+
+#. Hareli.
+msgid "Hareli"
+msgstr ""
+
+#. Hartalika Teej.
+msgid "Hartalika Teej"
+msgstr ""
+
+#. Guru Ghasidas's Birthday.
+msgid "Guru Ghasidas's Jayanti"
+msgstr ""
+
+#. Savitribai Phule's Birthday.
+msgid "Savitribai Phule's Jayanti"
+msgstr ""
+
+#. Gend Singh's Martyrdom Day.
+msgid "Gend Singh's Shaheedi Diwas"
+msgstr ""
+
+#. Netaji Subhas Chandra Bose's Birthday.
+msgid "Netaji Subhas Chandra Bose Jayanti"
+msgstr ""
+
+#. Veerangana Avantibai's Martyrdom Day.
+msgid "Veerangana Avantibai's Shaheedi Diwas"
+msgstr ""
+
+#. Shri Vallabhacharya's Birthday.
+msgid "Shri Vallabhacharya's Jayanti"
+msgstr ""
+
+#. Lord Shri Parshuram's Birthday.
+msgid "Bhagvan Shri Parshuram's Jayanti"
+msgstr ""
+
+#. Adi Shankaracharya's Birthday.
+msgid "Adi Shankaracharya's Jayanti"
+msgstr ""
+
+#. Maharana Pratap's Birthday.
+msgid "Maharana Pratap's Jayanti"
+msgstr "ಮಹಾರಾಣಾ ಪ್ರತಾಪ್ ಜಯಂತಿ"
+
+#. Mahesh Navami.
+msgid "Mahesh Navami"
+msgstr ""
+
+#. Veerangana Dugravati's Martyrdom Day.
+msgid "Veerangana Dugravati's Shaheedi Diwas"
+msgstr ""
+
+#. Naag Panchami.
+msgid "Naag Panchami"
+msgstr ""
+
+#. Harchath.
+msgid "Harchath"
+msgstr ""
+
+#. Anant Chaturdashi.
+msgid "Anant Chaturdashi"
+msgstr ""
+
+#. Sarva Pitra Moksha Amavasya.
+msgid "Sarva Pitra Moksha Amavasya"
+msgstr ""
+
+#. Maharaj Ajmodh Dev's Birthday.
+msgid "Maharaj Ajmodh Dev's Jayanti"
+msgstr ""
+
+#. Sant Guru Tekchand Maharaj Samadhi Utsav.
+msgid "Sant Guru Tekchand Maharaj Samadhi Utsav"
+msgstr ""
+
+#. Shaheed Veer Narayan Singh's Martyrdom Day.
+msgid "Shaheed Veer Narayan Singh's Shaheedi Diwas"
+msgstr ""
+
+#. Dattatreya's Birthday.
+msgid "Dattatreya's Jayanti"
 msgstr ""
 
 #. Parsi New Year (Shahenshahi).
@@ -364,10 +452,6 @@ msgstr ""
 msgid "Uttarayan"
 msgstr "ಉತ್ತರಾಯಣ"
 
-#. Lord Shri Parshuram's Birthday.
-msgid "Bhagvan Shri Parshuram's Jayanti"
-msgstr ""
-
 #. Sardar Vallabhbhai Patel's Birthday.
 msgid "Sardar Vallabhbhai Patel's Jayanti"
 msgstr ""
@@ -379,10 +463,6 @@ msgstr ""
 #. Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day.
 msgid "Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Shaheedi Diwas"
 msgstr ""
-
-#. Maharana Pratap's Birthday.
-msgid "Maharana Pratap's Jayanti"
-msgstr "ಮಹಾರಾಣಾ ಪ್ರತಾಪ್ ಜಯಂತಿ"
 
 #. Shaheed Udham Singh's Martyrdom Day.
 msgid "Shaheed Udham Singh's Shaheedi Diwas"
@@ -536,10 +616,6 @@ msgstr ""
 msgid "Samvatsari Day"
 msgstr ""
 
-#. Anant Chaturdashi.
-msgid "Anant Chaturdashi"
-msgstr ""
-
 #. Bhagat Singh's Birthday.
 msgid "Bhagat Singh's Jayanti"
 msgstr ""
@@ -556,12 +632,8 @@ msgstr "ಹೊಸ ಪಂಜಾಬ್ ದಿನೋತ್ಸವ"
 msgid "Mahatma Jyotiba Phule's Jayanti"
 msgstr ""
 
-#. International Day of the World's Indigenous Peoples.
-msgid "International Day of Adivasi Peoples"
-msgstr ""
-
 #. Khejarli's Martyrdom Day.
-msgid "Khejarli's Shaheedi Day"
+msgid "Khejarli's Shaheedi Diwas"
 msgstr ""
 
 #. Sharad Navratri.
@@ -632,7 +704,7 @@ msgstr ""
 msgid "Karpuri Thakur's Jayanti"
 msgstr ""
 
-#. Maharshi Kashyap and Maharaj Nishad Raj's Graha Jayanti.
+#. Maharishi Kashyap and Maharaj Nishad Raj's Graha Jayanti.
 msgid "Maharshi Kashyap and Maharaj Nishad Raj's Graha Jayanti"
 msgstr ""
 
@@ -675,6 +747,15 @@ msgstr "ವಿನಾಯಕ ಚತುರ್ಥಿ"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ಜನ್ಮಾಷ್ಟಮಿ (ಸ್ಮಾರ್ತ)"
+
+#~ msgid "Chhattisgarh Foundation Day"
+#~ msgstr "ಛತ್ತೀಸ್‌ಗಢ ಸ್ಥಾಪನಾ ದಿನ"
+
+#~ msgid "Maghu Bihu"
+#~ msgstr ""
+
+#~ msgid "Khejarli's Shaheedi Day"
+#~ msgstr ""
 
 #~ msgid "Pratihar Shashthi or Surya Shashthi (Chhat Puja)"
 #~ msgstr "ಪ್ರತಿಹಾರ್ ಷಷ್ಠಿ ಅಥವಾ ಸೂರ್ಯ ಷಷ್ಠಿ (ಛತ್ ಪೂಜೆ)"
