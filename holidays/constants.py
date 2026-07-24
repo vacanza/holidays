@@ -45,6 +45,7 @@ OPTIONAL = "optional"
 PUBLIC = "public"
 SCHOOL = "school"
 UNOFFICIAL = "unofficial"
+WOMEN_OPTIONAL = "women_optional"
 WORKDAY = "workday"
 
 CATHOLIC = "catholic"

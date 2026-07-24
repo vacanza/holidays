@@ -68,6 +68,38 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             days_delta=days_delta,
         )
 
+    def _add_adi_shankaracharya_jayanti(self, name) -> date | None:
+        """
+        Add Adi Shankaracharya Jayanti.
+
+        Adi Shankaracharya Jayanti commemorates the birth anniversary
+        of Adi Shankaracharya, the renowned Hindu philosopher and
+        theologian who consolidated the doctrine of Advaita Vedanta.
+        It is observed on the fifth day (Panchami) of the bright
+        fortnight of the Hindu month of Vaisakha (April/May).
+
+        https://en.wikipedia.org/wiki/Adi_Shankara
+        """
+        return self._add_hindu_calendar_holiday(
+            name,
+            self._hindu_calendar.adi_shankaracharya_jayanti_date(self._year),
+        )
+
+    def _add_anant_chaturdashi(self, name) -> date | None:
+        """
+        Add Anant Chaturdashi.
+
+        Anant Chaturdashi is a Hindu festival dedicated to Lord Vishnu
+        in his Ananta form. It is observed on the fourteenth day
+        (Chaturdashi) of the bright fortnight of the Hindu month of
+        Bhadrapada (August/September).
+
+        https://en.wikipedia.org/wiki/Anant_Chaturdashi
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.anant_chaturdashi_date(self._year)
+        )
+
     def _add_basant_panchami(self, name) -> date | None:
         """
         Add Basant Panchami.
@@ -130,6 +162,36 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.buddha_purnima_date(self._year)
         )
 
+    def _add_chaitra_navratri(self, name) -> date | None:
+        """
+        Add Chaitra Navratri.
+
+        Chaitra Navratri is a nine-night Hindu festival dedicated to
+        Goddess Durga. It begins on the first day (Pratipada) of the
+        bright fortnight of the Hindu month of Chaitra (March/April).
+
+        https://en.wikipedia.org/wiki/Chaitra_Navratri
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.chaitra_navratri_date(self._year)
+        )
+
+    def _add_cheti_chand(self, name) -> date | None:
+        """
+        Add Cheti Chand.
+
+        Cheti Chand is the Sindhi New Year festival and commemorates
+        the birth anniversary of Jhulelal, the patron saint of the
+        Sindhi community. It is observed on the second day (Dwitiya)
+        of the bright fortnight of the Hindu month of Chaitra
+        (March/April).
+
+        https://en.wikipedia.org/wiki/Cheti_Chand
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.cheti_chand_date(self._year)
+        )
+
     def _add_chhath_puja(self, name) -> date | None:
         """
         Add Chhath Puja.
@@ -140,6 +202,23 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.chhath_puja_date(self._year)
+        )
+
+    def _add_dattatreya_jayanti(self, name) -> date | None:
+        """
+        Add Dattatreya Jayanti.
+
+        Dattatreya Jayanti commemorates the birth anniversary of Lord
+        Dattatreya, regarded as a combined incarnation of Brahma,
+        Vishnu, and Shiva. It is observed on the full moon day
+        (Purnima) of the Hindu month of Margashirsha
+        (November/December).
+
+        https://en.wikipedia.org/wiki/Dattatreya
+        """
+        return self._add_hindu_calendar_holiday(
+            name,
+            self._hindu_calendar.dattatreya_jayanti_date(self._year),
         )
 
     def _add_diwali(self, name) -> date | None:
@@ -189,6 +268,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.ganesh_chaturthi_date(self._year)
         )
 
+    def _add_ganesh_chaturthi_day_two(self, name) -> date | None:
+        """
+        Add Ganesh Chaturthi.
+
+        Ganesh Chaturthi is a Hindu festival celebrating the birth of Lord Ganesha.
+        It falls on the fourth day of the Hindu month of Bhadrapada (August/September).
+        https://en.wikipedia.org/wiki/Ganesh_Chaturthi
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.ganesh_chaturthi_date(self._year), days_delta=+1
+        )
+
     def _add_gau_krida(self, name) -> date | None:
         """
         Add Gau Krida.
@@ -228,6 +319,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.gudi_padwa_date(self._year)
+        )
+
+    def _add_guru_arjun_dev_martyrdom_day(self, name) -> date | None:
+        """
+        Add the Martyrdom of Guru Arjun Dev Ji.
+
+        Guru Arjun Dev Ji, the fifth Sikh Guru, attained martyrdom in 1606.
+        The day is observed according to the Bikrami calendar and is
+        recognized as a gazetted holiday in Punjab.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.guru_arjun_dev_martyrdom_date(self._year)
         )
 
     def _add_guru_gobind_singh_jayanti(self, name) -> set[date]:
@@ -282,6 +385,68 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.gyalpo_losar_date(self._year)
         )
 
+    def _add_hal_shashthi(self, name) -> date | None:
+        """
+        Add Hal Shashthi.
+
+        Hal Shashthi, also known as Lalahi Chhath, is a Hindu festival
+        observed primarily by mothers for the well-being and longevity
+        of their children. It is celebrated on the sixth day (Shashthi)
+        of the Krishna Paksha in the Hindu month of Bhadrapada
+        (August/September).
+
+        https://en.wikipedia.org/wiki/Hal_Shashthi
+        """
+        return self._add_hindu_calendar_holiday(
+            name,
+            self._hindu_calendar.hal_shashthi_date(self._year),
+        )
+
+    def _add_hariyali_amavasya(self, name) -> date | None:
+        """
+        Add Hariyali Amavasya.
+
+        Hariyali Amavasya is a Hindu festival celebrated during the
+        monsoon season to honor nature, greenery, and prosperity. It is
+        observed on the new moon day (Amavasya) of the Hindu month of
+        Shravana (July/August).
+
+        https://en.wikipedia.org/wiki/Hariyali_Amavasya
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.hariyali_amavasya_date(self._year)
+        )
+
+    def _add_hartalika_teej(self, name) -> date | None:
+        """
+        Add Hartalika Teej.
+
+        Hartalika Teej is a Hindu festival observed primarily by women
+        in honor of Goddess Parvati and Lord Shiva. It is celebrated on
+        the third day (Tritiya) of the bright fortnight of the Hindu
+        month of Bhadrapada (August/September).
+
+        https://en.wikipedia.org/wiki/Hartalika_Teej
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.hartalika_teej_date(self._year)
+        )
+
+    def _add_hola_mohalla(self, name) -> date | None:
+        """
+        Add Hola Mohalla.
+
+        Hola Mohalla is a Sikh festival established by Guru Gobind Singh.
+        It is celebrated on the day following Holi and features martial
+        arts demonstrations, processions, and community gatherings.
+        It is observed during the Hindu month of Phalguna (March).
+
+        https://en.wikipedia.org/wiki/Hola_Mohalla
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.hola_mohalla_date(self._year)
+        )
+
     def _add_nepal_holi(self, name) -> date | None:
         """
         Add Holi Festival for Nepal (Mountain & Hilly).
@@ -331,6 +496,21 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.janmashtami_date(self._year)
+        )
+
+    def _add_kabir_jayanti(self, name) -> date | None:
+        """
+        Add Kabir Jayanti.
+
+        Kabir Jayanti commemorates the birth anniversary of Saint Kabir,
+        the 15th-century Indian mystic poet and saint. It is observed on
+        the full moon day (Purnima) of the Hindu month of Jyeshtha
+        (May/June).
+
+        https://en.wikipedia.org/wiki/Kabir
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.kabir_jayanti_date(self._year)
         )
 
     def _add_karwa_chauth(self, name) -> date | None:
@@ -425,15 +605,15 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
 
     def _add_maharishi_valmiki_jayanti(self, name) -> date | None:
         """
-        Add Maharishi Valmiki Jayanti.
+        Add Maharshi Valmiki Jayanti.
 
-        Maharishi Valmiki Jayanti (Pargat Diwas), celebrating the birth of the author
+        Maharshi Valmiki Jayanti (Pargat Diwas), celebrating the birth of the author
         of the Ramayana and the Adi Kavi (first poet) of Sanskrit,
         occurs on the full moon day (Purnima) in the Hindu month of Ashwin.
         https://en.wikipedia.org/wiki/Pargat_Diwas
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.maharishi_valmiki_jayanti_date(self._year)
+            name, self._hindu_calendar.maharshi_valmiki_jayanti_date(self._year)
         )
 
     def _add_mahavir_jayanti(self, name) -> date | None:
@@ -448,6 +628,22 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.mahavir_jayanti_date(self._year)
         )
 
+    def _add_mahesh_navami(self, name) -> date | None:
+        """
+        Add Mahesh Navami.
+
+        Mahesh Navami is a Hindu festival celebrated by the Maheshwari
+        community in honor of Lord Shiva. It is observed on the ninth
+        day (Navami) of the bright fortnight of the Hindu month of
+        Jyeshtha (May/June).
+
+        https://en.wikipedia.org/wiki/Maheshwari
+        """
+        return self._add_hindu_calendar_holiday(
+            name,
+            self._hindu_calendar.mahesh_navami_date(self._year),
+        )
+
     def _add_makar_sankranti(self, name) -> date | None:
         """
         Add Makar Sankranti.
@@ -458,6 +654,22 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.makar_sankranti_date(self._year)
+        )
+
+    def _add_naag_panchami(self, name) -> date | None:
+        """
+        Add Naag Panchami.
+
+        Naag Panchami is a Hindu festival dedicated to the worship of
+        serpent deities (Nāgas). It is observed on the fifth day
+        (Panchami) of the bright fortnight of the Hindu month of
+        Shravana (July/August).
+
+        https://en.wikipedia.org/wiki/Nag_Panchami
+        """
+        return self._add_hindu_calendar_holiday(
+            name,
+            self._hindu_calendar.naag_panchami_date(self._year),
         )
 
     def _add_naraka_chaturdashi(self, name) -> date | None:
@@ -506,6 +718,39 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.dussehra_date(self._year), days_delta=+2
+        )
+
+    def _add_parshuram_jayanti(self, name) -> date | None:
+        """
+        Add Parshuram Jayanti.
+
+        Parshuram Jayanti commemorates the birth of Lord Parashurama,
+        the sixth avatar of Lord Vishnu. It is observed on the third
+        day (Tritiya) of the bright fortnight of the Hindu month of
+        Vaisakha (April/May).
+
+        https://en.wikipedia.org/wiki/Parashurama
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.parshuram_jayanti_date(self._year)
+        )
+
+    def _add_pitra_moksh_amavasya(self, name) -> date | None:
+        """
+        Add Pitra Moksh Amavasya.
+
+        Pitra Moksh Amavasya, also known as Sarva Pitru Amavasya or
+        Mahalaya Amavasya, marks the final day of Pitru Paksha. It is
+        dedicated to honoring ancestors through the offering of
+        Shraddha and Tarpana. It is observed on the new moon day
+        (Amavasya) of the Hindu month of Ashvina
+        (September/October).
+
+        https://en.wikipedia.org/wiki/Mahalaya
+        """
+        return self._add_hindu_calendar_holiday(
+            name,
+            self._hindu_calendar.pitra_moksh_amavasya_date(self._year),
         )
 
     def _add_pongal(self, name) -> date | None:
@@ -569,6 +814,37 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.rath_yatra_date(self._year)
         )
 
+    def _add_samvatsari_parva(self, name) -> date | None:
+        """
+        Add Samvatsari Parva.
+
+        Samvatsari Parva is the most important annual festival of the
+        Jain religion. It marks the last day of Paryushana and is
+        dedicated to repentance, forgiveness, and spiritual reflection.
+        Jains observe the ritual of Kshamavani (asking and granting
+        forgiveness) on this day.
+
+        https://en.wikipedia.org/wiki/Samvatsari
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.samvatsari_parva_date(self._year)
+        )
+
+    def _add_shakambhari_purnima(self, name) -> set[date]:
+        """
+        Add Shakambhari Purnima.
+
+        Shakambhari Purnima is a Hindu festival dedicated to Goddess
+        Shakambhari, an incarnation of Goddess Durga associated with
+        nourishment and vegetation. It is observed on the full moon day
+        (Purnima) of the Hindu month of Pausha (January).
+
+        https://en.wikipedia.org/wiki/Shakambhari
+        """
+        return self._add_hindu_calendar_holiday_set(
+            name, self._hindu_calendar.shakambhari_purnima_date(self._year)
+        )
+
     def _add_sharad_navratri(self, name) -> date | None:
         """
         Add Navratri / Sharad Navratri.
@@ -580,6 +856,23 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.sharad_navratri_date(self._year)
+        )
+
+    def _add_shri_vallabhacharya_jayanti(self, name) -> date | None:
+        """
+        Add Shri Vallabhacharya Jayanti.
+
+        Shri Vallabhacharya Jayanti commemorates the birth anniversary
+        of Shri Vallabhacharya, the founder of the Pushtimarg tradition
+        of Vaishnavism. It is observed on the eleventh day (Ekadashi)
+        of the bright fortnight of the Hindu month of Vaisakha
+        (April/May).
+
+        https://en.wikipedia.org/wiki/Vallabha
+        """
+        return self._add_hindu_calendar_holiday(
+            name,
+            self._hindu_calendar.shri_vallabhacharya_jayanti_date(self._year),
         )
 
     def _add_sonam_losar(self, name) -> date | None:
@@ -699,6 +992,22 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Vishu
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.vishu_date(self._year))
+
+    def _add_vishwakarma_puja(self, name) -> date | None:
+        """
+        Add Vishwakarma Puja.
+
+        Vishwakarma Puja is a Hindu festival dedicated to Lord
+        Vishwakarma, the divine architect and craftsman. It is
+        traditionally observed on Kanya Sankranti, marking the Sun's
+        transition into the zodiac sign of Virgo (Kanya), usually in
+        September.
+
+        https://en.wikipedia.org/wiki/Vishwakarma_Puja
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.vishwakarma_puja_date(self._year)
+        )
 
     def _add_parsi_new_year(self, name: str) -> None:
         """
