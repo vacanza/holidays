@@ -20,7 +20,7 @@ from holidays.groups import (
     IslamicHolidays,
     StaticHolidays,
 )
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_NONE, SUN_TO_NONE
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NONE
 
 
 class NationalStockExchangeOfIndia(
@@ -85,7 +85,7 @@ class NationalStockExchangeOfIndia(
             calendar_delta_days=+1,
         )
         StaticHolidays.__init__(self, cls=NationalStockExchangeOfIndiaStaticHolidays)
-        kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NONE)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
