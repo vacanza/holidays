@@ -31,8 +31,8 @@ class SingaporeExchange(Singapore):
     start_year = 2000
     observed_label = "%s"
 
-    def _populate_public_holidays(self):
-        super()._populate_public_holidays()
+    def _populate_common_holidays(self):
+        super()._populate_common_holidays()
 
         for dt in tuple(self):
             if self._is_weekend(dt):

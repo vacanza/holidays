@@ -42,4 +42,4 @@ msgstr "วันสิ้นปี"
 
 #. Chinese New Year's Eve.
 msgid "Chinese New Year's Eve"
-msgstr "วันสิ้นปีจีน"
+msgstr "วันก่อนวันตรุษจีน"
