@@ -55,8 +55,8 @@ class SingaporeExchange(Singapore):
         )
 
         self._move_holiday(
-            # Chinese New Year's Eve.
             self._add_chinese_new_years_eve(
+                # Chinese New Year's Eve.
                 self._format_holiday_name(pause_label, tr("Chinese New Year's Eve"))
             ),
             rule=SAT_SUN_TO_NONE,
