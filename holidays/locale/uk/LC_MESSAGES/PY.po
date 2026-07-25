@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.101\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-05 12:33+0200\n"
 "PO-Revision-Date: 2026-07-16 22:35+0530\n"
@@ -66,7 +66,7 @@ msgstr "День мирного договору в Чако"
 
 #. Constitution Oath Day.
 msgid "Día de la Jura de la Constitución Nacional"
-msgstr "День присяги на вірність Національній Конституції"
+msgstr "День присяги національній Конституції"
 
 #. Asuncion Foundation's Day.
 msgid "Día de la Fundación de Asunción"
