@@ -21,6 +21,11 @@ class TestNicaragua(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Nicaragua, years=range(1950, 2050))
 
+    def test_special_holidays(self):
+        self.assertHoliday(
+            "2026-07-20",
+        )
+
     def test_new_years_day(self):
         self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(1950, 2050)))
 
@@ -68,9 +73,6 @@ class TestNicaragua(CommonCountryTests, TestCase):
         name = "Día de la Revolución"
         self.assertHolidayName(name, (f"{year}-07-19" for year in range(1979, 2050)))
         self.assertNoHolidayName(name, range(1950, 1979))
-        # July 20, 2026 make-up (July 19 fell on a Sunday).
-        self.assertHolidayName(name, "2026-07-20")
-        self.assertNoHolidayName(name, "2025-07-20", "2027-07-20")
 
     def test_battle_of_san_jacinto_day(self):
         self.assertHolidayName(

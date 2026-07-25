@@ -127,14 +127,10 @@ class NicaraguaStaticHolidays:
     """Nicaragua special holidays.
 
     References:
-        * [Revolution Day make-up 2026](https://www.el19digital.com/articulos/ver/44052-gobierno-decreta-feriado-nacional-el-19-de-julio-y-asueto-para-sector-publico-el-dia-20)
+        * [Jul 20, 2026 additional holiday](https://www.el19digital.com/articulos/ver/44052-gobierno-decreta-feriado-nacional-el-19-de-julio-y-asueto-para-sector-publico-el-dia-20)
     """
 
-    # Revolution Day.
-    revolution_day = tr("Día de la Revolución")
-
     special_public_holidays = {
-        # July 19 (Revolution Day) fell on a Sunday, so Monday July 20 was
-        # declared a make-up national holiday.
-        2026: (JUL, 20, revolution_day),
+        # National Holiday.
+        2026: (JUL, 20, tr("Feriado Nacional")),
     }
