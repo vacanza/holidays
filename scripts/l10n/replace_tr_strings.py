@@ -51,33 +51,18 @@ def replace_tr_calls(source: str, reverse_map: dict[str, str]) -> tuple[str, int
         if isinstance(node, ast.Call):
             if isinstance(node.func, ast.Name) and node.func.id == "tr":
                 if node.args and isinstance(node.args[0], ast.Constant):
-                    arg = node.args[0]
-                    s = arg.value
+                    s = node.args[0].value
                     if s in reverse_map and reverse_map[s] != s:
-                        if arg.end_lineno is None or arg.end_col_offset is None:
-                            continue
-                        changes.append(
-                            (
-                                arg.lineno,
-                                arg.col_offset,
-                                arg.end_lineno,
-                                arg.end_col_offset,
-                                reverse_map[s],
-                            )
-                        )
+                        changes.append((node.lineno, s, reverse_map[s]))
 
-    for start_line, start_col, end_line, end_col, new in sorted(changes, reverse=True):
-        new_quoted = repr(new)
-        if start_line == end_line:
-            line = lines[start_line - 1]
-            lines[start_line - 1] = line[:start_col] + new_quoted + line[end_col:]
-        else:
-            first_line = lines[start_line - 1]
-            last_line = lines[end_line - 1]
-            lines[start_line - 1 : end_line] = [
-                first_line[:start_col] + new_quoted + last_line[end_col:]
-            ]
-        replacements += 1
+    for lineno, old, new in sorted(changes, reverse=True):
+        line = lines[lineno - 1]
+        for quote in (repr(old), f'"{old}"', f"'{old}'"):
+            if quote in line:
+                new_quoted = repr(new)
+                lines[lineno - 1] = line.replace(quote, new_quoted, 1)
+                replacements += 1
+                break
 
     return "".join(lines), replacements
 
