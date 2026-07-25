@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-07-21 21:51+0530\n"
+"PO-Revision-Date: 2026-07-25 23:13+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -292,10 +292,6 @@ msgstr "छठ पूजा"
 #. Bihar Day.
 msgid "Bihar Day"
 msgstr "बिहार दिवस"
-
-#. Maharishi Valmiki's Birthday.
-msgid "Maharishi Valmiki's Jayanti"
-msgstr ""
 
 #. Jor Mela Fatehgarh Sahib.
 msgid "Jor Mela Fatehgarh Sahib"
@@ -599,3 +595,6 @@ msgstr "विनायक चतुर्थी"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "जन्माष्टमी (स्मार्त)"
+
+#~ msgid "Maharishi Valmiki's Jayanti"
+#~ msgstr ""

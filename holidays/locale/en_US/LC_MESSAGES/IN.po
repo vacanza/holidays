@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-07-21 21:51+0530\n"
+"PO-Revision-Date: 2026-07-25 23:13+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -293,10 +293,6 @@ msgstr "Chhath Puja"
 msgid "Bihar Day"
 msgstr "Bihar Day"
 
-#. Maharishi Valmiki's Birthday.
-msgid "Maharishi Valmiki's Jayanti"
-msgstr ""
-
 #. Jor Mela Fatehgarh Sahib.
 msgid "Jor Mela Fatehgarh Sahib"
 msgstr "Jor Mela Fatehgarh Sahib"
@@ -506,11 +502,11 @@ msgstr "Satguru Ram Singh's Birthday"
 
 #. Hola Mohalla.
 msgid "Hola Mohalla"
-msgstr ""
+msgstr "Hola Mohalla"
 
 #. Samvatsari Day.
 msgid "Samvatsari Day"
-msgstr ""
+msgstr "Samvatsari Day"
 
 #. Anant Chaturdashi.
 msgid "Anant Chaturdashi"
@@ -550,7 +546,7 @@ msgstr "Bonalu"
 
 #. Harela.
 msgid "Harela"
-msgstr ""
+msgstr "Harela"
 
 #. Vishwakarma Puja.
 msgid "Vishwakarma Puja"
@@ -562,7 +558,7 @@ msgstr "Veer Kesari Chand's Martyrdom Day"
 
 #. Arbaaen.
 msgid "Chehlum"
-msgstr ""
+msgstr "Arbaaen"
 
 #. Easter Monday.
 msgid "Easter Monday"

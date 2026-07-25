@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-07-21 21:51+0530\n"
+"PO-Revision-Date: 2026-07-25 23:13+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: bn\n"
@@ -292,10 +292,6 @@ msgstr "ছঠ পূজা"
 msgid "Bihar Day"
 msgstr "বিহার দিবস"
 
-#. Maharishi Valmiki's Birthday.
-msgid "Maharishi Valmiki's Jayanti"
-msgstr "মহর্ষি বাল্মীকির জন্মজয়ন্তী"
-
 #. Jor Mela Fatehgarh Sahib.
 msgid "Jor Mela Fatehgarh Sahib"
 msgstr "জোড় মেলা ফতেহগড় সাহিব"
@@ -394,7 +390,7 @@ msgstr "মহারাজা হরি সিংয়ের জন্মজয
 
 #. Accession Day.
 msgid "Accession Day"
-msgstr সংযুক্তি দিবস"
+msgstr "ংযুক্তি দিবস"
 
 #. 1st Navratra.
 msgid "1st Navratra"

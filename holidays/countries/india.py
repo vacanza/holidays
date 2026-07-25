@@ -513,7 +513,7 @@ class India(
         self._add_guru_gobind_singh_jayanti(tr("Guru Gobind Singh's Jayanti"))
 
         # Maharishi Valmiki's Birthday.
-        self._add_maharishi_valmiki_jayanti(tr("Maharishi Valmiki's Jayanti"))
+        self._add_maharishi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
 
     def _populate_subdiv_ch_optional_holidays(self):
         # Jor Mela Fatehgarh Sahib.
