@@ -24,8 +24,7 @@ from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SUN_TO_NEXT_WORKDAY,
     SAT_SUN_TO_NEXT_WORKDAY,
-    SAT_TO_NONE,
-    SUN_TO_NONE,
+    SAT_SUN_TO_NONE,
 )
 
 
@@ -358,7 +357,7 @@ class Macau(
             self._move_holiday(
                 # New Year's Eve.
                 self._add_new_years_eve(self._format_holiday_name(begin_time_label, tr("除夕"))),
-                rule=SAT_TO_NONE + SUN_TO_NONE,
+                rule=SAT_SUN_TO_NONE,
             )
 
         if self.observed:

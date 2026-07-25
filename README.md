@@ -1947,6 +1947,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Bolsas y Mercados Españoles</td>
+<td>XMAD</td>
+<td>Bolsas y Mercados Españoles (BME) holidays</td>
+<td>en_US, <strong>es</strong></td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>
 <td>Bombay Stock Exchange (BSE) market holidays</td>
@@ -2035,6 +2042,13 @@ code when available. The following financial markets are available:
 <td>XSHE</td>
 <td>Shenzhen Stock Exchange (SZSE) market holidays</td>
 <td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
+<td></td>
+</tr>
+<tr>
+<td>SIX Swiss Exchange</td>
+<td>XSWX</td>
+<td>SIX Swiss Exchange market holidays</td>
+<td><strong>de</strong>, en_US, fr, it, th, uk</td>
 <td></td>
 </tr>
 <tr>
