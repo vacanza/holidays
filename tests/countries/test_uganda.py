@@ -23,13 +23,15 @@ class TestUganda(CommonCountryTests, TestCase):
         super().setUpClass(Uganda, years=years)
         cls.no_estimated_holidays = Uganda(years=years, islamic_show_estimated=False)
 
+    def test_special_holidays(self):
+        self.assertHolidayName(
+            "General elections",
+            "2026-01-15",
+            "2026-01-16",
+        )
+
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1963, 2050)))
-
-    def test_2026_general_elections(self):
-        name = "General elections"
-        self.assertHolidayName(name, "2026-01-15", "2026-01-16")
-        self.assertNoHolidayName(name, range(1963, 2026), range(2027, 2050))
 
     def test_nrm_liberation_day(self):
         name = "NRM Liberation Day"

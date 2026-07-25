@@ -114,7 +114,7 @@ class UgandaStaticHolidays:
     """Uganda special holidays.
 
     References:
-        * [General elections public holidays 2026](https://web.archive.org/web/20260110000000/https://eagle.co.ug/2026/01/10/museveni-declares-jan-15-16-as-public-holidays-for-general-elections/)
+        * [General elections 2026](https://web.archive.org/web/20260112000421/https://eagle.co.ug/2026/01/10/museveni-declares-jan-15-16-as-public-holidays-for-general-elections/)
     """
 
     # General elections.
