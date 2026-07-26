@@ -14,14 +14,13 @@ from gettext import gettext as tr
 
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.singapore import Singapore
-from holidays.observed_holiday_base import SAT_SUN_TO_NONE
 
 
 class SingaporeExchange(Singapore):
     """Singapore Exchange (SGX) holidays.
 
     References:
-        <https://web.archive.org/web/20260725102849/https://www.sgx.com/stock-exchange/trading>
+        * <https://web.archive.org/web/20260725102849/https://www.sgx.com/stock-exchange/trading>
     """
 
     country = None  # type: ignore[assignment]
@@ -34,7 +33,7 @@ class SingaporeExchange(Singapore):
     def _populate_common_holidays(self):
         super()._populate_common_holidays()
 
-        for dt in tuple(self):
+        for dt in tuple(self.keys()):
             if self._is_weekend(dt):
                 self.pop(dt)
 
@@ -42,24 +41,15 @@ class SingaporeExchange(Singapore):
         # %s (markets close at 12:00 p.m. SGT).
         pause_label = tr("%s (markets close at 12:00 p.m. SGT)")
 
-        self._move_holiday(
-            # Christmas Eve.
-            self._add_christmas_eve(self._format_holiday_name(pause_label, tr("Christmas Eve"))),
-            rule=SAT_SUN_TO_NONE,
-        )
+        # Christmas Eve.
+        self._add_christmas_eve(self._format_holiday_name(pause_label, tr("Christmas Eve")))
 
-        self._move_holiday(
-            # New Year's Eve.
-            self._add_new_years_eve(self._format_holiday_name(pause_label, tr("New Year's Eve"))),
-            rule=SAT_SUN_TO_NONE,
-        )
+        # New Year's Eve.
+        self._add_new_years_eve(self._format_holiday_name(pause_label, tr("New Year's Eve")))
 
-        self._move_holiday(
-            self._add_chinese_new_years_eve(
-                # Chinese New Year's Eve.
-                self._format_holiday_name(pause_label, tr("Chinese New Year's Eve"))
-            ),
-            rule=SAT_SUN_TO_NONE,
+        self._add_chinese_new_years_eve(
+            # Chinese New Year's Eve.
+            self._format_holiday_name(pause_label, tr("Chinese New Year's Eve"))
         )
 
 
