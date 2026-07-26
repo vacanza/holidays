@@ -28,13 +28,13 @@ _JSON_PATH = Path("scripts/l10n/holidays_l10n.json")
 
 def build_reverse_map(data: list[dict]) -> dict[str, str]:
     """Build reverse lookup: translation string -> msgid."""
-    reverse_map = {}
+    candidates: dict[str, set[str]] = {}
     for entry in data:
         msgid = entry.get("msgid", "")
         for lang, val in entry["messages"].items():
-            if isinstance(val, str) and val not in reverse_map:
-                reverse_map[val] = msgid
-    return reverse_map
+            if isinstance(val, str):
+                candidates.setdefault(val, set()).add(msgid)
+    return {val: next(iter(msgids)) for val, msgids in candidates.items() if len(msgids) == 1}
 
 
 def _char_offset_from_byte_offset(line: str, byte_offset: int) -> int:
@@ -60,7 +60,9 @@ def replace_tr_calls(source: str, reverse_map: dict[str, str]) -> tuple[str, int
     changes = []
     for node in ast.walk(tree):
         if isinstance(node, ast.Call):
-            if isinstance(node.func, ast.Name) and node.func.id == "tr":
+            if (isinstance(node.func, ast.Name) and node.func.id == "tr") or (
+                isinstance(node.func, ast.Attribute) and node.func.attr == "tr"
+            ):
                 if node.args and isinstance(node.args[0], ast.Constant):
                     arg = node.args[0]
                     s = arg.value
@@ -71,31 +73,25 @@ def replace_tr_calls(source: str, reverse_map: dict[str, str]) -> tuple[str, int
                     if s in reverse_map and reverse_map[s] != s:
                         changes.append((arg, s, reverse_map[s]))
 
-    single_line = [c for c in changes if c[0].lineno == c[0].end_lineno]
-    for arg, old, new in sorted(single_line, key=lambda c: c[0].lineno, reverse=True):
-        lineno = arg.lineno
-        line = lines[lineno - 1]
-        for quote in (repr(old), f'"{old}"', f"'{old}'"):
-            if quote in line:
-                new_quoted = repr(new)
-                lines[lineno - 1] = line.replace(quote, new_quoted, 1)
-                replacements += 1
-                break
+    line_starts = [0]
+    for line in lines:
+        line_starts.append(line_starts[-1] + len(line))
 
-    multi_line = [c for c in changes if c[0].lineno != c[0].end_lineno]
-    for arg, old, new in sorted(multi_line, key=lambda c: c[0].lineno, reverse=True):
-        if arg.end_lineno is None or arg.end_col_offset is None:
-            continue
-        start_line = lines[arg.lineno - 1]
-        end_line = lines[arg.end_lineno - 1]
-        start_char = arg.col_offset
-        end_char = _char_offset_from_byte_offset(end_line, arg.end_col_offset)
-        prefix = start_line[:start_char]
-        suffix = end_line[end_char:]
-        lines[arg.lineno - 1 : arg.end_lineno] = [prefix + repr(new) + suffix]
+    def to_char_offset(lineno, byte_col):
+        return line_starts[lineno - 1] + _char_offset_from_byte_offset(lines[lineno - 1], byte_col)
+
+    spans = []
+    for arg, old, new in changes:
+        start = to_char_offset(arg.lineno, arg.col_offset)
+        end = to_char_offset(arg.end_lineno, arg.end_col_offset)
+        spans.append((start, end, new))
+
+    source = "".join(lines)
+    for start, end, new in sorted(spans, key=lambda c: c[0], reverse=True):
+        source = source[:start] + repr(new) + source[end:]
         replacements += 1
 
-    return "".join(lines), replacements
+    return source, replacements
 
 
 def main() -> None:
