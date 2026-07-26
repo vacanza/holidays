@@ -2017,6 +2017,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Korea Exchange</td>
+<td>XKRX</td>
+<td>Korea Exchange (KRX) holidays</td>
+<td>en_US, <strong>ko</strong>, th</td>
+<td></td>
+</tr>
+<tr>
 <td>NASDAQ</td>
 <td>XNAS</td>
 <td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
