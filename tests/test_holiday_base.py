@@ -1477,6 +1477,34 @@ class TestClosestHoliday(unittest.TestCase):
             (date(2024, 1, 15), "Martin Luther King Jr. Day"),
         )
 
+    def test_get_closest_holiday_updates_years(self):
+        us = US(years=2024)
+        self.assertEqual(us.years, {2024})
+
+        us.get_closest_holiday(date(2024, 12, 31), "forward")
+        self.assertIn(2025, us.years)
+
+        us_2 = US(years=2024)
+        self.assertEqual(us_2.years, {2024})
+
+        us_2.get_closest_holiday(date(2024, 1, 1), "backward")
+        self.assertIn(2023, us_2.years)
+
+    def test_get_closest_holiday_expand_false_keeps_state(self):
+        us = US(years=2024, expand=False)
+        keys_before = set(us.keys())
+
+        self.assertIsNone(us.get_closest_holiday(date(2024, 12, 31), "forward"))
+        self.assertEqual(us.years, {2024})
+        self.assertEqual(set(us.keys()), keys_before)
+
+        self.assertEqual(
+            us.get_closest_holiday(date(2024, 12, 31), "backward"),
+            (date(2024, 12, 25), "Christmas Day"),
+        )
+        self.assertEqual(us.years, {2024})
+        self.assertEqual(set(us.keys()), keys_before)
+
     def test_get_closest_holiday_invalid_direction(self):
         self.assertRaises(
             AttributeError, lambda: HolidayBase().get_closest_holiday(direction="invalid")

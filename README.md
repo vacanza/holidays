@@ -1947,6 +1947,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Bolsas y Mercados Españoles</td>
+<td>XMAD</td>
+<td>Bolsas y Mercados Españoles (BME) holidays</td>
+<td>en_US, <strong>es</strong></td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>
 <td>Bombay Stock Exchange (BSE) market holidays</td>
