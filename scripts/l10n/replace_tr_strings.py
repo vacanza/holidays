@@ -14,8 +14,8 @@
 """Replace tr() string arguments in .py files with new msgid keys.
 
 Run with:
-    python scripts/l10n/replace_tr_strings.py --preview
     python scripts/l10n/replace_tr_strings.py
+    python scripts/l10n/replace_tr_strings.py --country bulgaria
 """
 
 import argparse
@@ -27,7 +27,11 @@ _JSON_PATH = Path("scripts/l10n/holidays_l10n.json")
 
 
 def build_reverse_map(data: list[dict]) -> dict[str, str]:
-    """Build reverse lookup: translation string -> msgid."""
+    """Build reverse lookup: translation string -> msgid.
+
+    Only includes strings that unambiguously map to exactly one msgid
+    across all languages to avoid incorrect replacements.
+    """
     candidates: dict[str, set[str]] = {}
     for entry in data:
         msgid = entry.get("msgid", "")
@@ -35,6 +39,11 @@ def build_reverse_map(data: list[dict]) -> dict[str, str]:
             if isinstance(val, str):
                 candidates.setdefault(val, set()).add(msgid)
     return {val: next(iter(msgids)) for val, msgids in candidates.items() if len(msgids) == 1}
+
+
+def build_comment_map(data: list[dict]) -> dict[str, str]:
+    """Build lookup: msgid -> new_comment (empty string if none)."""
+    return {entry["msgid"]: entry.get("new_comment", "") for entry in data if entry.get("msgid")}
 
 
 def _char_offset_from_byte_offset(line: str, byte_offset: int) -> int:
@@ -48,10 +57,13 @@ def _char_offset_from_byte_offset(line: str, byte_offset: int) -> int:
     raise ValueError(f"byte offset {byte_offset} does not fall on a character boundary")
 
 
-def replace_tr_calls(source: str, reverse_map: dict[str, str]) -> tuple[str, int]:
-    """Replace tr() string arguments with msgid keys."""
+def replace_tr_calls(
+    source: str,
+    reverse_map: dict[str, str],
+    comment_map: dict[str, str],
+) -> tuple[str, int]:
+    """Replace tr() string arguments with msgid keys and update comments above."""
     lines = source.splitlines(keepends=True)
-    replacements = 0
     try:
         tree = ast.parse(source)
     except SyntaxError:
@@ -60,18 +72,18 @@ def replace_tr_calls(source: str, reverse_map: dict[str, str]) -> tuple[str, int
     changes = []
     for node in ast.walk(tree):
         if isinstance(node, ast.Call):
-            if (isinstance(node.func, ast.Name) and node.func.id == "tr") or (
+            is_tr = (isinstance(node.func, ast.Name) and node.func.id == "tr") or (
                 isinstance(node.func, ast.Attribute) and node.func.attr == "tr"
-            ):
-                if node.args and isinstance(node.args[0], ast.Constant):
-                    arg = node.args[0]
-                    s = arg.value
-                    if not isinstance(s, str):
-                        continue
-                    if arg.end_lineno is None or arg.end_col_offset is None:
-                        continue
-                    if s in reverse_map and reverse_map[s] != s:
-                        changes.append((arg, s, reverse_map[s]))
+            )
+            if is_tr and node.args and isinstance(node.args[0], ast.Constant):
+                arg = node.args[0]
+                s = arg.value
+                if not isinstance(s, str):
+                    continue
+                if arg.end_lineno is None or arg.end_col_offset is None:
+                    continue
+                if s in reverse_map and reverse_map[s] != s:
+                    changes.append((arg, s, reverse_map[s]))
 
     line_starts = [0]
     for line in lines:
@@ -84,22 +96,38 @@ def replace_tr_calls(source: str, reverse_map: dict[str, str]) -> tuple[str, int
     for arg, old, new in changes:
         start = to_char_offset(arg.lineno, arg.col_offset)
         end = to_char_offset(arg.end_lineno, arg.end_col_offset)
-        spans.append((start, end, new))
+        spans.append((start, end, repr(new)))
+
+    for arg, old, new in changes:
+        new_msgid = reverse_map.get(old, "")
+        new_comment = comment_map.get(new_msgid, None)
+        if new_comment is None:
+            continue
+        comment_lineno = arg.lineno - 2
+        if comment_lineno < 0:
+            continue
+        comment_line = lines[comment_lineno]
+        stripped = comment_line.lstrip()
+        if not stripped.startswith("#"):
+            continue
+        indent = comment_line[: len(comment_line) - len(stripped)]
+        start = line_starts[comment_lineno]
+        end = line_starts[comment_lineno + 1]
+        if new_comment:
+            spans.append((start, end, f"{indent}# {new_comment}\n"))
+        else:
+            spans.append((start, end, ""))
 
     source = "".join(lines)
-    for start, end, new in sorted(spans, key=lambda c: c[0], reverse=True):
-        source = source[:start] + repr(new) + source[end:]
-        replacements += 1
+    for start, end, new_val in sorted(spans, key=lambda c: c[0], reverse=True):
+        source = source[:start] + new_val + source[end:]
 
-    return source, replacements
+    return source, len(changes)
 
 
 def main() -> None:
-    arg_parser = argparse.ArgumentParser(description="Replace tr() strings with msgid keys.")
-    arg_parser.add_argument(
-        "--preview",
-        action="store_true",
-        help="Preview changes without writing to disk.",
+    arg_parser = argparse.ArgumentParser(
+        description="Replace tr() strings with msgid keys and update l10n comments."
     )
     arg_parser.add_argument(
         "--country",
@@ -112,9 +140,9 @@ def main() -> None:
         data = json.load(f)
 
     reverse_map = build_reverse_map(data)
+    comment_map = build_comment_map(data)
     print(f"Reverse map entries: {len(reverse_map)}")
 
-    paths = []
     if args.country:
         paths = [Path(f"holidays/countries/{args.country}.py")]
     else:
@@ -126,21 +154,13 @@ def main() -> None:
         if path.stem == "__init__":
             continue
         source = path.read_text(encoding="utf-8")
-        new_source, count = replace_tr_calls(source, reverse_map)
+        new_source, count = replace_tr_calls(source, reverse_map, comment_map)
         if count > 0:
             total_replacements += count
-            print(f"\n{path} - {count} replacements")
-            if args.preview:
-                for old, new in zip(source.splitlines(), new_source.splitlines()):
-                    if old != new:
-                        print(f"  - {old.strip()}")
-                        print(f"  + {new.strip()}")
-            else:
-                path.write_text(new_source, encoding="utf-8", newline="\n")
+            print(f"{path} - {count} replacements")
+            path.write_text(new_source, encoding="utf-8", newline="\n")
 
     print(f"\nTotal replacements: {total_replacements}")
-    if args.preview:
-        print("Preview only - no files written.")
 
 
 if __name__ == "__main__":
