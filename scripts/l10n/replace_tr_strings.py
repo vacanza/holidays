@@ -37,6 +37,17 @@ def build_reverse_map(data: list[dict]) -> dict[str, str]:
     return reverse_map
 
 
+def _char_offset_from_byte_offset(line: str, byte_offset: int) -> int:
+    encoded = 0
+    for i, ch in enumerate(line):
+        if encoded == byte_offset:
+            return i
+        encoded += len(ch.encode("utf-8"))
+    if encoded == byte_offset:
+        return len(line)
+    raise ValueError(f"byte offset {byte_offset} does not fall on a character boundary")
+
+
 def replace_tr_calls(source: str, reverse_map: dict[str, str]) -> tuple[str, int]:
     """Replace tr() string arguments with msgid keys."""
     lines = source.splitlines(keepends=True)
@@ -51,11 +62,18 @@ def replace_tr_calls(source: str, reverse_map: dict[str, str]) -> tuple[str, int
         if isinstance(node, ast.Call):
             if isinstance(node.func, ast.Name) and node.func.id == "tr":
                 if node.args and isinstance(node.args[0], ast.Constant):
-                    s = node.args[0].value
+                    arg = node.args[0]
+                    s = arg.value
+                    if not isinstance(s, str):
+                        continue
+                    if arg.end_lineno is None or arg.end_col_offset is None:
+                        continue
                     if s in reverse_map and reverse_map[s] != s:
-                        changes.append((node.lineno, s, reverse_map[s]))
+                        changes.append((arg, s, reverse_map[s]))
 
-    for lineno, old, new in sorted(changes, reverse=True):
+    single_line = [c for c in changes if c[0].lineno == c[0].end_lineno]
+    for arg, old, new in sorted(single_line, key=lambda c: c[0].lineno, reverse=True):
+        lineno = arg.lineno
         line = lines[lineno - 1]
         for quote in (repr(old), f'"{old}"', f"'{old}'"):
             if quote in line:
@@ -63,6 +81,19 @@ def replace_tr_calls(source: str, reverse_map: dict[str, str]) -> tuple[str, int
                 lines[lineno - 1] = line.replace(quote, new_quoted, 1)
                 replacements += 1
                 break
+
+    multi_line = [c for c in changes if c[0].lineno != c[0].end_lineno]
+    for arg, old, new in sorted(multi_line, key=lambda c: c[0].lineno, reverse=True):
+        if arg.end_lineno is None or arg.end_col_offset is None:
+            continue
+        start_line = lines[arg.lineno - 1]
+        end_line = lines[arg.end_lineno - 1]
+        start_char = arg.col_offset
+        end_char = _char_offset_from_byte_offset(end_line, arg.end_col_offset)
+        prefix = start_line[:start_char]
+        suffix = end_line[end_char:]
+        lines[arg.lineno - 1 : arg.end_lineno] = [prefix + repr(new) + suffix]
+        replacements += 1
 
     return "".join(lines), replacements
 
