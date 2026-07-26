@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-07-25 23:13+0530\n"
+"PO-Revision-Date: 2026-07-26 13:15+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ml\n"
@@ -480,6 +480,7 @@ msgstr "അന്താരാഷ്ട്ര വനിതാ ദിനം"
 msgid "Maharaja Ranjit Singh's Death Anniversary"
 msgstr "മഹാരാജാ രഞ്ജിത് സിംഗിന്റെ ചരമവാർഷികം"
 
+#. Bhagat Singh's Birthday.
 msgid "Bhagat Singh's Jayanti"
 msgstr "ഭഗത് സിംഗ് ജയന്തി"
 

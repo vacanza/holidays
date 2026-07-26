@@ -846,7 +846,6 @@ class India(
         self._add_holiday_jun_27(tr("Maharaja Ranjit Singh's Death Anniversary"))
 
         # Bhagat Singh's Birthday.
-
         self._add_holiday_sep_28(tr("Bhagat Singh's Jayanti"))
 
         # Baba Banda Singh Bahadur's Birthday.
