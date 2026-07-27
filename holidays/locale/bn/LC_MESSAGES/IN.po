@@ -406,7 +406,7 @@ msgstr "মহানবমী"
 
 #. Isra' and Mi'raj.
 msgid "Shab-I-Miraj"
-msgstr "ইসরা ও মেরাজ"
+msgstr "শব-ই-মেরাজ"
 
 #. Nowruz.
 msgid "Nauroz"
@@ -426,7 +426,7 @@ msgstr "কেরালা প্রতিষ্ঠা দিবস"
 
 #. Eid al-Ghadeer.
 msgid "Eid-e-Ghadeer"
-msgstr "ঈদুল গাদীর"
+msgstr "ঈদ-এ-গাদীর"
 
 #. Chhatrapati Shivaji Maharaj Jayanti.
 msgid "Chhatrapati Shivaji Maharaj Jayanti"

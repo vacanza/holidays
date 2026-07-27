@@ -346,7 +346,7 @@ msgstr "ഹരിയാനയിലെ യുദ്ധവീരരുടെ ശ�
 
 #. Haryana Day.
 msgid "Haryana Day"
-msgstr "ഹരിയാന സ്ഥാപനദിനം"
+msgstr "ഹരിയാന ദിനം"
 
 #. Sir Chottu Ram's Birthday.
 msgid "Sir Chottu Ram's Jayanti"
@@ -406,7 +406,7 @@ msgstr "മഹാനവമി"
 
 #. Isra' and Mi'raj.
 msgid "Shab-I-Miraj"
-msgstr "ഇസ്റാ വൽ മിഅ്റാജ്"
+msgstr "ഷബ്-എ-മെറാജ്"
 
 #. Nowruz.
 msgid "Nauroz"
@@ -426,7 +426,7 @@ msgstr "കേരളപ്പിറവി"
 
 #. Eid al-Ghadeer.
 msgid "Eid-e-Ghadeer"
-msgstr "ഈദ് അൽ-ഗദീർ"
+msgstr "ഈദ്-എ-ഗദീർ"
 
 #. Chhatrapati Shivaji Maharaj Jayanti.
 msgid "Chhatrapati Shivaji Maharaj Jayanti"
