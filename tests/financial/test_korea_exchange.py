@@ -27,7 +27,7 @@ class TestKoreaExchange(CommonFinancialTests, TestCase):
         self.assertIsNone(getattr(self.holidays, "country", None))
 
     def test_labor_day(self):
-        name = "근로자의날"
+        name = "노동절"
         years_absent = {2004, 2005, 2010, 2011, 2016, 2021, 2022, 2027}
         self.assertNoHolidayName(name, (f"{year}-05-01" for year in years_absent))
         self.assertHolidayName(
@@ -63,7 +63,7 @@ class TestKoreaExchange(CommonFinancialTests, TestCase):
             ("2025-01-29", "설날"),
             ("2025-01-30", "설날 다음날"),
             ("2025-03-03", "삼일절 대체 휴일"),
-            ("2025-05-01", "근로자의날"),
+            ("2025-05-01", "노동절"),
             ("2025-05-05", "부처님오신날; 어린이날"),
             ("2025-05-06", "부처님오신날 대체 휴일; 어린이날 대체 휴일"),
             ("2025-06-03", "대통령 선거일"),
@@ -85,7 +85,7 @@ class TestKoreaExchange(CommonFinancialTests, TestCase):
             ("2024-02-12", "설날 대체 휴일"),
             ("2024-03-01", "삼일절"),
             ("2024-04-10", "국회의원 선거일"),
-            ("2024-05-01", "근로자의날"),
+            ("2024-05-01", "노동절"),
             ("2024-05-06", "어린이날 대체 휴일"),
             ("2024-05-15", "부처님오신날"),
             ("2024-06-06", "현충일"),

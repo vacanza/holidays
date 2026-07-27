@@ -14,7 +14,6 @@ from gettext import gettext as tr
 
 from holidays.constants import PUBLIC
 from holidays.countries.south_korea import SouthKorea
-from holidays.observed_holiday_base import SAT_SUN_TO_PREV_FRI
 
 
 class KoreaExchange(SouthKorea):
@@ -34,14 +33,12 @@ class KoreaExchange(SouthKorea):
         super()._populate_public_holidays()
 
         # Labor Day.
-        self._add_labor_day(tr("근로자의날"))
+        self._add_labor_day(tr("노동절"))
 
-        self._move_holiday(
+        self._add_holiday(
             # End of Year Holiday.
-            self._add_holiday_dec_31(tr("연말휴장일")),
-            rule=SAT_SUN_TO_PREV_FRI,
-            show_observed_label=False,
-            force_observed=True,
+            tr("연말휴장일"),
+            self._get_next_workday(self._next_year_new_years_day, -1),
         )
 
         for dt in tuple(self.keys()):

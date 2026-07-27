@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-07-26 13:24+0000\n"
-"PO-Revision-Date: 2026-07-26 14:49+0000\n"
+"PO-Revision-Date: 2026-07-27 06:00+0000\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ko\n"
@@ -28,7 +28,7 @@ msgstr ""
 "X-Source-Language: ko\n"
 
 #. Labor Day.
-msgid "근로자의날"
+msgid "노동절"
 msgstr ""
 
 #. End of Year Holiday.
