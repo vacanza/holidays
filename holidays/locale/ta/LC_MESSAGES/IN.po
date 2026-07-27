@@ -382,7 +382,7 @@ msgstr "இமாச்சல் நாள்"
 
 #. Karwa Chouth.
 msgid "Karwa Chouth"
-msgstr "ர்வா சௌத்"
+msgstr "கர்வா சௌத்"
 
 #. Maharaja Hari Singh's Birthday.
 msgid "Maharaja Hari Singh's Jayanti"
