@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.101\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-07-27 08:17+0530\n"
+"PO-Revision-Date: 2026-07-27 20:49+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -231,7 +231,7 @@ msgstr "Dussehra (Mahanavami)"
 
 #. Maharishi Valmiki's Birthday.
 msgid "Maharshi Valmiki's Jayanti"
-msgstr "Maharshi Valmiki's Birthday"
+msgstr "Maharishi Valmiki's Birthday"
 
 #. Karaka Chaturthi (Karwa Chouth).
 msgid "Karaka Chaturthi (Karwa Chouth)"
@@ -425,9 +425,9 @@ msgstr "Karnataka Rajyotsava"
 msgid "Kerala Foundation Day"
 msgstr "Kerala Foundation Day"
 
-#. Eid al-Ghadeer.
+#. Eid al-Ghadir.
 msgid "Eid-e-Ghadeer"
-msgstr "Eid al-Ghadeer"
+msgstr "Eid al-Ghadir"
 
 #. Chhatrapati Shivaji Maharaj Jayanti.
 msgid "Chhatrapati Shivaji Maharaj Jayanti"

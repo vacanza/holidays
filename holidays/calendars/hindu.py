@@ -1461,45 +1461,6 @@ class _HinduLunisolar:
         2035: (OCT, 30),
     }
 
-    # http://web.archive.org/web/20260624232336/https://www.drikpanchang.com/ekadashis/nirjala/nirjala-ekadashi-date-time.html
-    NIRJALA_EKADASHI_DATES = {
-        2001: (JUN, 2),
-        2002: (JUN, 21),
-        2003: (JUN, 11),
-        2004: (MAY, 30),
-        2005: (JUN, 18),
-        2006: (JUN, 7),
-        2007: (JUN, 26),
-        2008: (JUN, 14),
-        2009: (JUN, 3),
-        2010: (JUN, 22),
-        2011: (JUN, 12),
-        2012: (JUN, 1),
-        2013: (JUN, 20),
-        2014: (JUN, 9),
-        2015: (MAY, 28),
-        2016: (JUN, 16),
-        2017: (JUN, 5),
-        2018: (JUN, 24),
-        2019: (JUN, 13),
-        2020: (JUN, 2),
-        2021: (JUN, 21),
-        2022: (JUN, 11),
-        2023: (MAY, 30),
-        2024: (JUN, 18),
-        2025: (JUN, 7),
-        2026: (JUN, 25),
-        2027: (JUN, 15),
-        2028: (JUN, 3),
-        2029: (JUN, 22),
-        2030: (JUN, 12),
-        2031: (JUN, 2),
-        2032: (JUN, 19),
-        2033: (JUN, 9),
-        2034: (MAY, 28),
-        2035: (JUN, 16),
-    }
-
     # https://web.archive.org/web/20241205101551/https://www.timeanddate.com/holidays/india/onam
     ONAM_DATES = {
         2001: (AUG, 31),

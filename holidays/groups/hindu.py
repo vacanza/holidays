@@ -344,7 +344,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         Add Hola Mohalla.
 
         Hola Mohalla is a Sikh festival established by Guru Gobind Singh.
-        It is celebrated on the day following Holi and features martial
+        It is celebrated around Holi and features martial
         arts demonstrations, processions, and community gatherings.
         It is observed during the Hindu month of Phalguna (March).
 

@@ -1233,7 +1233,6 @@ class TestIndia(CommonCountryTests, TestCase):
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
-                self.assertNoHolidayName(name, holidays)
 
     def test_kesari_chand_martyrdom_day(self):
         name = "Veer Kesari Chand's Shaheedi Diwas"
@@ -1332,7 +1331,7 @@ class TestIndia(CommonCountryTests, TestCase):
         name = "Harela"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv in ("UK"):
+            if subdiv == "UK":
                 self.assertHolidayName(
                     name, holidays, (f"{year}-07-16" for year in self.full_range)
                 )
@@ -2074,7 +2073,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-22", "Eid al-Adha"),
             ("2018-08-24", "Onam"),
             ("2018-08-26", "Raksha Bandhan"),
-            ("2018-08-30", "Eid al-Ghadeer (estimated)"),
+            ("2018-08-30", "Eid al-Ghadir (estimated)"),
             ("2018-09-03", "Janmashtami (Vaishnava)"),
             ("2018-09-12", "Saragarhi Day"),
             ("2018-09-13", "Ganesh Chaturthi / Vinayak Chaturthi"),
@@ -2099,7 +2098,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "Dussehra (Mahanavami); Dussehra (Mahashtami); Mahanavami",
             ),
             ("2018-10-19", "Dussehra"),
-            ("2018-10-24", "Maharshi Valmiki's Birthday"),
+            ("2018-10-24", "Maharishi Valmiki's Birthday"),
             ("2018-10-26", "Accession Day"),
             ("2018-10-27", "Karaka Chaturthi (Karwa Chouth); Karwa Chouth"),
             ("2018-10-30", "Arbaaen (estimated)"),

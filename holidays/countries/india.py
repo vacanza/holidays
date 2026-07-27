@@ -735,7 +735,7 @@ class India(
         # Isra' and Mi'raj.
         self._add_isra_and_miraj_day(tr("Shab-I-Miraj"))
 
-        # Eid al-Ghadeer.
+        # Eid al-Ghadir.
         self._add_eid_al_ghadir_day(tr("Eid-e-Ghadeer"))
 
     # Maharashtra.
@@ -1081,7 +1081,7 @@ class IndiaStaticHolidays:
     }
 
     special_la_optional_holidays = {
-        # Eid al-Ghadeer.
+        # Eid al-Ghadir.
         2026: (JUN, 4, tr("Eid-e-Ghadeer")),
     }
 

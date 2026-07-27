@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.101\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-07-27 08:17+0530\n"
+"PO-Revision-Date: 2026-07-27 20:49+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ta\n"
@@ -424,7 +424,7 @@ msgstr "கர்நாடக ராஜ்யோற்சவம்"
 msgid "Kerala Foundation Day"
 msgstr "கேரள நாள்"
 
-#. Eid al-Ghadeer.
+#. Eid al-Ghadir.
 msgid "Eid-e-Ghadeer"
 msgstr "ஈத்-எ-கதீர்"
 
