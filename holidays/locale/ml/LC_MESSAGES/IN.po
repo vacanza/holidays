@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-07-26 13:15+0530\n"
+"PO-Revision-Date: 2026-07-27 08:17+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ml\n"
@@ -340,8 +340,8 @@ msgstr "ഷഹീദ്-എ-ആസം ഭഗത് സിംഗ്, സുഖ്
 msgid "Shaheed Udham Singh's Shaheedi Diwas"
 msgstr "ശഹീദ് ഉദം സിംഗിന്റെ ശഹീദ് ദിനം"
 
-#. Haryana War Heroes's Martyrdom Day.
-msgid "Haryana War Heroes's Shaheedi Diwas"
+#. Haryana War Heroes' Martyrdom Day.
+msgid "Haryana War Heroes' Shaheedi Diwas"
 msgstr "ഹരിയാനയിലെ യുദ്ധവീരരുടെ ശഹീദ് ദിനം"
 
 #. Haryana Day.

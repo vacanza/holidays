@@ -573,8 +573,8 @@ class India(
         # Shaheed Udham Singh's Martyrdom Day.
         self._add_holiday_jul_31(tr("Shaheed Udham Singh's Shaheedi Diwas"))
 
-        # Haryana War Heroes's Martyrdom Day.
-        self._add_holiday_sep_23(tr("Haryana War Heroes's Shaheedi Diwas"))
+        # Haryana War Heroes' Martyrdom Day.
+        self._add_holiday_sep_23(tr("Haryana War Heroes' Shaheedi Diwas"))
 
         # Haryana Day.
         self._add_holiday_nov_1(tr("Haryana Day"))

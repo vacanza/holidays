@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-07-26 13:15+0530\n"
+"PO-Revision-Date: 2026-07-27 08:17+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -341,8 +341,8 @@ msgstr "शहीद-ए-आज़म भगत सिंह, सुखदेव
 msgid "Shaheed Udham Singh's Shaheedi Diwas"
 msgstr "शहीद ऊधम सिंह शहीदी दिवस"
 
-#. Haryana War Heroes's Martyrdom Day.
-msgid "Haryana War Heroes's Shaheedi Diwas"
+#. Haryana War Heroes' Martyrdom Day.
+msgid "Haryana War Heroes' Shaheedi Diwas"
 msgstr "हरियाणा के युद्ध वीरों का शहीदी दिवस"
 
 #. Haryana Day.
@@ -375,7 +375,7 @@ msgstr "शहीद ऊधम सिंह जयंती"
 
 #. Statehood Day.
 msgid "Statehood Day"
-msgstr "ाज्य स्थापना दिवस"
+msgstr "राज्य स्थापना दिवस"
 
 #. Himachal Day.
 msgid "Himachal Day"
@@ -471,7 +471,7 @@ msgstr "गुरु नाभा दास जयंती"
 
 #. Kartar Singh Sarabha's Martyrdom Day.
 msgid "Kartar Singh Sarabha's Shaheedi Diwas"
-msgstr "गुरु नाभा दास जयंती"
+msgstr "करतार सिंह सराभा शहीदी दिवस"
 
 #. International Women's Day.
 msgid "International Women's Day"
@@ -547,7 +547,7 @@ msgstr "बोनालु"
 
 #. Harela.
 msgid "Harela"
-msgstr "चेहल्लुम"
+msgstr "हरेला"
 
 #. Vishwakarma Puja.
 msgid "Vishwakarma Puja"
