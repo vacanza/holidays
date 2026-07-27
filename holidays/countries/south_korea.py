@@ -63,6 +63,7 @@ class SouthKorea(
         * <https://web.archive.org/web/20240429121214/https://www.law.go.kr/법령/관공서의%20공휴일에%20관한%20규정>
         * [Public Holidays Act (2026 Amendment)](http://archive.today/2026.02.20-080801/https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=283311&ancYd=20260210%230000)
         * [National Day Act (2014 Amendment)](http://archive.today/2026.02.20-081906/https://www.law.go.kr/LSW//lsInfoP.do?lsiSeq=165523&ancYd=20141230%230000)
+        * [Labor Day and Constitution Day substitute holidays](https://web.archive.org/web/20260727135256/https://www.mpm.go.kr/mpm/comm/newsPress/newsPressRelease/?boardId=bbs_0000000000000029&category&cntId=4250&mode=view&pageIdx)
         * <https://web.archive.org/web/20250429081641/https://elaw.klri.re.kr/eng_service/lawView.do?lang=ENG&hseq=34678>
         * <https://web.archive.org/web/20250123212346/https://elaw.klri.re.kr/eng_service/%20lawView.do?hseq=38405&lang=ENG>
         * <https://namu.wiki/w/대통령%20선거일>
@@ -78,8 +79,8 @@ class SouthKorea(
 
     According to Article 3 of the Public Holidays Act:
         * The alternative holiday is the first non-holiday after the holiday.
-        * Independence Movement Day, Liberation Day, National Foundation Day,
-            Hangul Day, Children's Day, Birthday of the Buddha, and Christmas Day have
+        * Independence Movement Day, Constitution Day, Liberation Day, National Foundation Day,
+            Hangul Day, Children's Day, Labor Day, Birthday of the Buddha, and Christmas Day have
             an alternative holiday if they fall on Saturday or Sunday.
         * Korean New Year's Day and Korean Mid-Autumn Day have an alternative holiday if they
             fall on Sunday.
@@ -187,6 +188,10 @@ class SouthKorea(
             )
             append_observed(self._add_chinese_birthday_of_buddha(name), 2023)
 
+        if self._year >= 2026:
+            # Labor Day.
+            append_observed(self._add_labor_day(tr("노동절")), 2026)
+
         if self._year >= 1975:
             # Children's Day.
             append_observed(self._add_holiday_may_5(tr("어린이날")), 2015)
@@ -198,7 +203,7 @@ class SouthKorea(
 
         if self._year <= 2007 or self._year >= 2026:
             # Constitution Day.
-            self._add_holiday_jul_17(tr("제헌절"))
+            append_observed(self._add_holiday_jul_17(tr("제헌절")), 2026)
 
         # Liberation Day.
         append_observed(self._add_holiday_aug_15(tr("광복절")), 2021)
@@ -283,12 +288,13 @@ class SouthKorea(
             self._populate_observed(dts_observed, three_days_holidays)
 
     def _populate_bank_holidays(self):
-        # Workers' Day.
-        name = tr("근로자의날")
-        if self._year >= 1994:
-            self._add_labor_day(name)
-        else:
-            self._add_holiday_mar_10(name)
+        if self._year <= 2025:
+            # Workers' Day.
+            name = tr("근로자의날")
+            if self._year >= 1994:
+                self._add_labor_day(name)
+            else:
+                self._add_holiday_mar_10(name)
 
 
 class Korea(SouthKorea):
