@@ -1947,6 +1947,20 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Bolsas y Mercados Argentinos</td>
+<td>XBUE</td>
+<td>Bolsas y Mercados Argentinos (BYMA) holidays</td>
+<td>en_US, <strong>es</strong></td>
+<td>HALF_DAY, RESTRICTED_SETTLEMENT</td>
+</tr>
+<tr>
+<td>Bolsas y Mercados Españoles</td>
+<td>XMAD</td>
+<td>Bolsas y Mercados Españoles (BME) holidays</td>
+<td>en_US, <strong>es</strong></td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>
 <td>Bombay Stock Exchange (BSE) market holidays</td>
@@ -2003,6 +2017,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Johannesburg Stock Exchange</td>
+<td>XJSE</td>
+<td>Johannesburg Stock Exchange (JSE) market holidays</td>
+<td></td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>NASDAQ</td>
 <td>XNAS</td>
 <td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
@@ -2035,6 +2056,20 @@ code when available. The following financial markets are available:
 <td>XSHE</td>
 <td>Shenzhen Stock Exchange (SZSE) market holidays</td>
 <td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
+<td></td>
+</tr>
+<tr>
+<td>Singapore Exchange</td>
+<td>XSES</td>
+<td>Singapore Exchange (SGX) market holidays</td>
+<td><strong>en_SG</strong>, en_US, th</td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
+<td>SIX Swiss Exchange</td>
+<td>XSWX</td>
+<td>SIX Swiss Exchange market holidays</td>
+<td><strong>de</strong>, en_US, fr, it, th, uk</td>
 <td></td>
 </tr>
 <tr>
