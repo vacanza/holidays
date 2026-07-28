@@ -352,6 +352,7 @@ msgstr "মধ্যপ্রদেশ প্রতিষ্ঠা দিবস"
 msgid "Mizoram State Day"
 msgstr "মিজোরাম প্রতিষ্ঠা দিবস"
 
+#. Remna Ni (Peace Accord Day)
 msgid "Remna Ni (Peace Accord Day)"
 msgstr "রেমনা নি (শান্তি চুক্তি দিবস)"
 
