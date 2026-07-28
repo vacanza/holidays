@@ -29,7 +29,7 @@ msgstr ""
 
 #. Workers' Day.
 msgid "근로자의날"
-msgstr "วันแรงงาน"
+msgstr "วันกรรมกร"
 
 #. End of Year Holiday.
 msgid "연말휴장일"
