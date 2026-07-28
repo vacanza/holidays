@@ -28,16 +28,16 @@ class TestKoreaExchange(CommonFinancialTests, TestCase):
 
     def test_workers_day(self):
         name = "근로자의날"
-        years_absent = {2004, 2005, 2010, 2011, 2016, 2021, 2022, 2026, 2027, 2028, 2029}
-        self.assertNoHolidayName(name, (f"{year}-05-01" for year in years_absent))
+        years_absent = {2004, 2005, 2010, 2011, 2016, 2021, 2022}
         self.assertHolidayName(
-            name, (f"{year}-05-01" for year in self.full_range if year not in years_absent)
+            name,
+            (f"{year}-05-01" for year in range(self.start_year, 2026) if year not in years_absent),
         )
+        self.assertNoHolidayName(name, range(2026, self.end_year), years_absent)
 
     def test_end_of_year_holiday(self):
         name = "연말휴장일"
         years_absent = {2000, 2005, 2006, 2011, 2016, 2017, 2022, 2023, 2028}
-        self.assertNoHolidayName(name, (f"{year}-12-31" for year in years_absent))
         self.assertHolidayName(
             name, (f"{year}-12-31" for year in self.full_range if year not in years_absent)
         )
@@ -53,6 +53,7 @@ class TestKoreaExchange(CommonFinancialTests, TestCase):
             "2023-12-29",
             "2028-12-29",
         )
+        self.assertNoHolidayName(name, (f"{year}-12-31" for year in years_absent))
 
     def test_2025(self):
         self.assertHolidaysInYear(
