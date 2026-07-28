@@ -117,6 +117,13 @@ def replace_tr_calls(
             continue
         comment_line = lines[comment_end_lineno]
         stripped = comment_line.lstrip()
+        # If line above string is tr( itself, look one more line up
+        if stripped.startswith("tr(") or stripped == "tr(":
+            comment_end_lineno -= 1
+            if comment_end_lineno < 0:
+                continue
+            comment_line = lines[comment_end_lineno]
+            stripped = comment_line.lstrip()
         if not stripped.startswith("#"):
             continue
         indent = comment_line[: len(comment_line) - len(stripped)]
