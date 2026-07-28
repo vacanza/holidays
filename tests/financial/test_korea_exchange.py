@@ -19,7 +19,7 @@ from tests.common import CommonFinancialTests
 class TestKoreaExchange(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(2000, 2026)
+        cls.full_range = range(2000, 2030)
         super().setUpClass(KoreaExchange)
 
     def test_code(self):
@@ -28,7 +28,7 @@ class TestKoreaExchange(CommonFinancialTests, TestCase):
 
     def test_workers_day(self):
         name = "근로자의날"
-        years_absent = {2004, 2005, 2010, 2011, 2016, 2021, 2022, 2027}
+        years_absent = {2004, 2005, 2010, 2011, 2016, 2021, 2022, 2026, 2027, 2028, 2029}
         self.assertNoHolidayName(name, (f"{year}-05-01" for year in years_absent))
         self.assertHolidayName(
             name, (f"{year}-05-01" for year in self.full_range if year not in years_absent)
