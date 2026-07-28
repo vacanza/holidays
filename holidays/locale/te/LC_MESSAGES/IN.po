@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-06-14 23:00+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-07-28 23:03+0530\n"
+"Last-Translator: FULL NAME <EMAIL@EXAMPLE.COM>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: te\n"
 "MIME-Version: 1.0\n"
@@ -351,6 +351,10 @@ msgstr "మధ్యప్రదేశ్ అవతరణ దినోత్స�
 #. Mizoram State Day.
 msgid "Mizoram State Day"
 msgstr "మిజోరాం రాష్ట్ర దినోత్సవం"
+
+#. Remna Ni(Peace Accord Day).
+msgid "Remna Ni (Peace Accord Day)"
+msgstr "రెమ్నా నీ (శాంతి ఒప్పంద దినోత్సవం)"
 
 #. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"

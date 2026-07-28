@@ -590,6 +590,13 @@ class India(
     def _populate_subdiv_mz_public_holidays(self):
         # Mizoram State Day.
         self._add_holiday_feb_20(tr("Mizoram State Day"))
+        """
+        Reference:
+          Mizoram offical govt Website: https://dipr.mizoram.gov.in/post/holidays-to-be-observed-in-government-offices-during-the-year-2026
+          http://mizoram.nic.in/gov/hols.htm
+        """
+        # Remna Ni(Peace Accord Day).
+        self._add_holiday_jun_30(tr("Remna Ni (Peace Accord Day)"))
 
     # Nagaland.
     def _populate_subdiv_nl_public_holidays(self):
