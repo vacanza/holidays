@@ -23,7 +23,6 @@ BASANT_PANCHAMI = "BASANT_PANCHAMI"
 BONALU = "BONALU"
 BUDDHA_PURNIMA = "BUDDHA_PURNIMA"
 CHAITRA_NAVRATRI = "CHAITRA_NAVRATRI"
-CHETI_CHAND = "CHETI_CHAND"
 CHHATH_PUJA = "CHHATH_PUJA"
 DIWALI = "DIWALI"
 DIWALI_INDIA = "DIWALI_INDIA"
@@ -280,45 +279,6 @@ class _HinduLunisolar:
         2031: (MAR, 24),
         2032: (APR, 11),
         2033: (MAR, 31),
-        2034: (MAR, 21),
-        2035: (APR, 9),
-    }
-
-    # https://web.archive.org/web/20260118174122/https://www.drikpanchang.com/hindu-saints/jhulelal/cheti-chand-date-time.html
-    CHETI_CHAND_DATES = {
-        2001: (MAR, 26),
-        2002: (APR, 14),
-        2003: (APR, 3),
-        2004: (MAR, 22),
-        2005: (APR, 10),
-        2006: (MAR, 30),
-        2007: (MAR, 20),
-        2008: (APR, 7),
-        2009: (MAR, 28),
-        2010: (MAR, 17),
-        2011: (APR, 5),
-        2012: (MAR, 24),
-        2013: (APR, 11),
-        2014: (APR, 1),
-        2015: (MAR, 21),
-        2016: (APR, 8),
-        2017: (MAR, 29),
-        2018: (MAR, 19),
-        2019: (APR, 6),
-        2020: (MAR, 26),
-        2021: (APR, 13),
-        2022: (APR, 2),
-        2023: (MAR, 23),
-        2024: (APR, 10),
-        2025: (MAR, 30),
-        2026: (MAR, 20),
-        2027: (APR, 8),
-        2028: (MAR, 27),
-        2029: (APR, 15),
-        2030: (APR, 4),
-        2031: (MAR, 24),
-        2032: (APR, 11),
-        2033: (APR, 1),
         2034: (MAR, 21),
         2035: (APR, 9),
     }
@@ -2219,9 +2179,6 @@ class _HinduLunisolar:
 
     def chaitra_navratri_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(CHAITRA_NAVRATRI, year)
-
-    def cheti_chand_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(CHETI_CHAND, year)
 
     def chhath_puja_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(CHHATH_PUJA, year)

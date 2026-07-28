@@ -159,22 +159,6 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.chaitra_navratri_date(self._year)
         )
 
-    def _add_cheti_chand(self, name) -> date | None:
-        """
-        Add Cheti Chand.
-
-        Cheti Chand is the Sindhi New Year festival and commemorates
-        the birth anniversary of Jhulelal, the patron saint of the
-        Sindhi community. It is observed on the second day (Dwitiya)
-        of the bright fortnight of the Hindu month of Chaitra
-        (March/April).
-
-        https://en.wikipedia.org/wiki/Cheti_Chand
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.cheti_chand_date(self._year)
-        )
-
     def _add_chhath_puja(self, name) -> date | None:
         """
         Add Chhath Puja.

@@ -919,7 +919,7 @@ class India(
         self._add_holika_dahan(tr("Holika Dahan"))
 
         # Cheti Chand.
-        self._add_cheti_chand(tr("Cheti Chand"))
+        self._add_gudi_padwa(tr("Cheti Chand"))
 
         # Raksha Bandhan.
         self._add_raksha_bandhan(tr("Raksha Bandhan"))

@@ -585,6 +585,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(name_gudi_padwa, dts, category_optional=True)
         self._assertHinduHolidayHelper(name_ugadi, dts, category_optional=True)
         # SUBDIVS.
+        self._assertHinduHolidayHelper(name_cheti_chand, dts, subdivs={"UK"})
         self._assertHinduHolidayHelper(name_gudi_padwa, dts, subdivs={"MH"})
         self._assertHinduHolidayHelper(name_ugadi, dts, subdivs={"AP", "KA", "TS"})
 
@@ -1039,18 +1040,6 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertSubdivPbOptionalHolidayName(name, dts)
         self.assertNoHolidayName(name)
-
-    def test_cheti_chand(self):
-        name = "Cheti Chand"
-        dts = (
-            "2020-03-26",
-            "2021-04-13",
-            "2022-04-02",
-            "2023-03-23",
-            "2024-04-10",
-            "2025-03-30",
-        )
-        self._assertHinduHolidayHelper(name, dts, subdivs={"UK"})
 
     def test_chaitra_navratri(self):
         name = "1st Navratra"
@@ -1729,7 +1718,6 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-03-18",
                 "1st Navratra; Chaitra Sukladi; Cheti Chand; Gudi Padwa; Ugadi",
             ),
-            ("2018-03-19", "Cheti Chand"),
             ("2018-03-21", "Nauroz"),
             ("2018-03-22", "Bihar Day"),
             (
@@ -1879,7 +1867,6 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-03-18",
                 "উগাদি; গুড়ি পাড়ওয়া; চেতি চাঁদ; চৈত্র শুক্লাদি; নবরাত্রির প্রথম দিন",
             ),
-            ("2018-03-19", "চেতি চাঁদ"),
             ("2018-03-21", "নওরোজ"),
             ("2018-03-22", "বিহার দিবস"),
             (
@@ -2017,7 +2004,6 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-03-18",
                 "1st Navratra; Chaitra Sukladi; Cheti Chand; Gudi Padwa; Ugadi",
             ),
-            ("2018-03-19", "Cheti Chand"),
             ("2018-03-21", "Nowruz"),
             ("2018-03-22", "Bihar Day"),
             (
@@ -2167,7 +2153,6 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-03-18",
                 "ઉગાડી; ગુડી પડવો; ચેતી ચંદ; ચૈત્ર શુક્લાડી; પ્રથમ નવરાત્રી",
             ),
-            ("2018-03-19", "ચેતી ચંદ"),
             ("2018-03-21", "નવરોઝ"),
             ("2018-03-22", "બિહાર દિવસ"),
             (
@@ -2301,7 +2286,6 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-03-18",
                 "उगादि; गुडी पाडवा; चेटी चंड; चैत्र शुक्लादि; प्रथम नवरात्र",
             ),
-            ("2018-03-19", "चेटी चंड"),
             ("2018-03-21", "नौरोज़"),
             ("2018-03-22", "बिहार दिवस"),
             (
@@ -2435,7 +2419,6 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-03-18",
                 "ಗುಡಿ ಪಾಡ್ವ; ಚೇಟಿ ಚಂದ್; ಚೈತ್ರ ಸುಕ್ಲಾಡಿ; ಮೊದಲ ನವರಾತ್ರಿ; ಯುಗಾದಿ ಹಬ್ಬ",
             ),
-            ("2018-03-19", "ಚೇಟಿ ಚಂದ್"),
             ("2018-03-21", "ನೌರೋಜ್"),
             ("2018-03-22", "ಬಿಹಾರ್ ದಿನೋತ್ಸವ"),
             (
@@ -2569,7 +2552,6 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-03-18",
                 "ആദ്യ നവരാത്രി; ഉഗാദി; ഗുഡി പദ്വ; ചേതി ചന്ദ്; ചൈത്ര ശുക്ലദി",
             ),
-            ("2018-03-19", "ചേതി ചന്ദ്"),
             ("2018-03-21", "നൗറോസ്"),
             ("2018-03-22", "ബിഹാർ ദിനം"),
             (
@@ -2700,7 +2682,6 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-03-18",
                 "उगाडी; गुढीपाडवा; चेटी चंड; चैत्र शुक्लादि; पहिली नवरात्र",
             ),
-            ("2018-03-19", "चेटी चंड"),
             ("2018-03-21", "नौरोज"),
             ("2018-03-22", "बिहार दिन"),
             (
@@ -2834,7 +2815,6 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-03-18",
                 "ਉਗਾਦੀ; ਗੁੜੀ ਪਦਵਾ; ਚੇਤੀ ਚੰਦ; ਚੈਤਰਾ ਸ਼ੁਕਲਦੀ; ਪਹਿਲਾ ਨਵਰਾਤਰਾ",
             ),
-            ("2018-03-19", "ਚੇਤੀ ਚੰਦ"),
             ("2018-03-21", "ਨੌਰੋਜ਼"),
             ("2018-03-22", "ਬਿਹਾਰ ਦਿਵਸ"),
             (
@@ -2970,7 +2950,6 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-03-18",
                 "உகாதி; குடி பாத்வா; செட்டி சந்த்; சைத்ரா சுக்லாடி; முதல் நவராத்திரி",
             ),
-            ("2018-03-19", "செட்டி சந்த்"),
             ("2018-03-21", "நவ்ரோஸ்"),
             ("2018-03-22", "பீகார் நாள்"),
             (
@@ -3103,7 +3082,6 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-03-18",
                 "ఉగాది; గుడి పడ్వా; చెట్టి చంద్; చైత్ర శుక్లాది; మొదటి నవరాత్రి",
             ),
-            ("2018-03-19", "చెట్టి చంద్"),
             ("2018-03-21", "నౌరోజ్"),
             ("2018-03-22", "బీహార్ దినోత్సవం"),
             (
