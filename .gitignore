@@ -22,9 +22,7 @@ coverage.xml
 design/
 dist/
 docs/auto_gen_files/
-holidays/locale/pot/*.
-holidays/locale/*.pot
-holidays/locale/*.po
+holidays/locale/pot/*.pot
 MANIFEST
 Pipfile
 sbom.json
