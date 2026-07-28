@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-10-26 23:49+0700\n"
-"PO-Revision-Date: 2026-07-27 16:44+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-07-28 23:07+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -139,7 +139,7 @@ msgstr "วันเลือกตั้งท้องถิ่น"
 
 #. Workers' Day.
 msgid "근로자의날"
-msgstr "วันแรงงาน"
+msgstr "วันกรรมกร"
 
 #. Temporary Public Holiday.
 msgid "임시공휴일"
