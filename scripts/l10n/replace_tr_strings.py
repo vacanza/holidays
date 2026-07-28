@@ -26,7 +26,7 @@ from pathlib import Path
 _JSON_PATH = Path("scripts/l10n/holidays_l10n.json")
 
 
-def build_reverse_map(data: list[dict]) -> dict[str, str]:
+def build_reverse_map(data: list[dict]) -> tuple[dict[str, str], dict[str, set[str]]]:
     """Build reverse lookup: translation string -> msgid.
 
     Only includes strings that unambiguously map to exactly one msgid
@@ -38,7 +38,10 @@ def build_reverse_map(data: list[dict]) -> dict[str, str]:
         for lang, val in entry["messages"].items():
             if isinstance(val, str):
                 candidates.setdefault(val, set()).add(msgid)
-    return {val: next(iter(msgids)) for val, msgids in candidates.items() if len(msgids) == 1}
+    ambiguous = {val: msgids for val, msgids in candidates.items() if len(msgids) > 1}
+    return {
+        val: next(iter(msgids)) for val, msgids in candidates.items() if len(msgids) == 1
+    }, ambiguous
 
 
 def build_comment_map(data: list[dict]) -> dict[str, str]:
@@ -61,6 +64,8 @@ def replace_tr_calls(
     source: str,
     reverse_map: dict[str, str],
     comment_map: dict[str, str],
+    ambiguous_map: dict[str, set[str]] | None = None,
+    path: str = "",
 ) -> tuple[str, int]:
     """Replace tr() string arguments with msgid keys and update comments above."""
     lines = source.splitlines(keepends=True)
@@ -84,6 +89,9 @@ def replace_tr_calls(
                     continue
                 if s in reverse_map and reverse_map[s] != s:
                     changes.append((arg, s, reverse_map[s]))
+                elif ambiguous_map and s in ambiguous_map:
+                    print(f"WARNING: ambiguous string in {path} line {arg.lineno}: {s!r}")
+                    print(f"  maps to: {ambiguous_map[s]}")
 
     line_starts = [0]
     for line in lines:
@@ -103,16 +111,25 @@ def replace_tr_calls(
         new_comment = comment_map.get(new_msgid, None)
         if new_comment is None:
             continue
-        comment_lineno = arg.lineno - 2
-        if comment_lineno < 0:
+        # Find all consecutive comment lines above the tr() call
+        comment_end_lineno = arg.lineno - 2
+        if comment_end_lineno < 0:
             continue
-        comment_line = lines[comment_lineno]
+        comment_line = lines[comment_end_lineno]
         stripped = comment_line.lstrip()
         if not stripped.startswith("#"):
             continue
         indent = comment_line[: len(comment_line) - len(stripped)]
-        start = line_starts[comment_lineno]
-        end = line_starts[comment_lineno + 1]
+        # Walk backwards to find start of multi-line comment
+        comment_start_lineno = comment_end_lineno
+        while comment_start_lineno > 0:
+            prev = lines[comment_start_lineno - 1].lstrip()
+            if prev.startswith("#"):
+                comment_start_lineno -= 1
+            else:
+                break
+        start = line_starts[comment_start_lineno]
+        end = line_starts[comment_end_lineno + 1]
         if new_comment:
             spans.append((start, end, f"{indent}# {new_comment}\n"))
         else:
@@ -139,7 +156,7 @@ def main() -> None:
     with _JSON_PATH.open(encoding="utf-8") as f:
         data = json.load(f)
 
-    reverse_map = build_reverse_map(data)
+    reverse_map, ambiguous_map = build_reverse_map(data)
     comment_map = build_comment_map(data)
     print(f"Reverse map entries: {len(reverse_map)}")
 
@@ -154,7 +171,9 @@ def main() -> None:
         if path.stem == "__init__":
             continue
         source = path.read_text(encoding="utf-8")
-        new_source, count = replace_tr_calls(source, reverse_map, comment_map)
+        new_source, count = replace_tr_calls(
+            source, reverse_map, comment_map, ambiguous_map, str(path)
+        )
         if count > 0:
             total_replacements += count
             print(f"{path} - {count} replacements")
