@@ -352,6 +352,7 @@ msgstr "మధ్యప్రదేశ్ అవతరణ దినోత్స�
 msgid "Mizoram State Day"
 msgstr "మిజోరాం రాష్ట్ర దినోత్సవం"
 
+#. Remna Ni (Peace Accord Day)
 msgid "Remna Ni (Peace Accord Day)"
 msgstr "రెమ్నా నీ (శాంతి ఒప్పంద దినోత్సవం)"
 
