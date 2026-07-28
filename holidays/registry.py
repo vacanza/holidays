@@ -287,6 +287,7 @@ COUNTRIES: RegistryDict = {
 
 FINANCIAL: RegistryDict = {
     "bolsa_mexicana_de_valores": ("BolsaMexicanaDeValores", "XMEX", "BMV"),
+    "bolsas_y_mercados_argentinos": ("BolsasYMercadosArgentinos", "XBUE", "BYMA"),
     "bolsas_y_mercados_espanoles": ("BolsasYMercadosEspanoles", "XMAD", "BME"),
     "bombay_stock_exchange": ("BombayStockExchange", "XBOM", "BSE"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
@@ -296,11 +297,13 @@ FINANCIAL: RegistryDict = {
     "hong_kong_stock_exchange": ("HongKongStockExchange", "XHKG", "HKEX", "SEHK"),
     "ice_futures_europe": ("IceFuturesEurope", "IFEU", "ICEFuturesEurope"),
     "japan_exchange": ("JapanExchange", "XJPX", "JPX", "TSE", "OSE"),
+    "johannesburg_stock_exchange": ("JohannesburgStockExchange", "XJSE", "JSE"),
     "nasdaq": ("NASDAQ", "XNAS"),
     "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
     "shanghai_stock_exchange": ("ShanghaiStockExchange", "XSHG", "SSE"),
     "shenzhen_stock_exchange": ("ShenzhenStockExchange", "XSHE", "SZSE"),
+    "singapore_exchange": ("SingaporeExchange", "XSES", "SGX"),
     "six_swiss_exchange": ("SIXSwissExchange", "XSWX", "SIX"),
     "toronto_stock_exchange": ("TorontoStockExchange", "XTSE", "TSX"),
 }
