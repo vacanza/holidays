@@ -32,8 +32,9 @@ class KoreaExchange(SouthKorea):
     def _populate_public_holidays(self):
         super()._populate_public_holidays()
 
-        # Labor Day.
-        self._add_labor_day(tr("노동절"))
+        if self._year <= 2025:
+            # Workers' Day.
+            self._add_labor_day(tr("근로자의날"))
 
         self._add_holiday(
             # End of Year Holiday.
