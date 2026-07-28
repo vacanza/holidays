@@ -595,8 +595,8 @@ class India(
           Mizoram offical govt Website: https://dipr.mizoram.gov.in/post/holidays-to-be-observed-in-government-offices-during-the-year-2026
           http://mizoram.nic.in/gov/hols.htm
         """
-        # Remna Ni(Peace Accord Day).
         if self._year >= 1986:
+            # Remna Ni (Peace Accord Day).
             self._add_holiday_jun_30(tr("Remna Ni (Peace Accord Day)"))
 
     # Nagaland.
