@@ -183,7 +183,7 @@ class GabonStaticHolidays:
         * <https://web.archive.org/web/20260307182549/https://info241.com/gabon-le-samedi-27-septembre-declare-jour-ferie-pour-les,2558>
     """
 
-    # Public holiday.
+    # Public Holiday.
     public_holiday = tr("Jour férié")
 
     special_public_holidays = {

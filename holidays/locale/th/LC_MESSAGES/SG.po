@@ -80,7 +80,6 @@ msgid "Labour Day"
 msgstr "วันแรงงาน"
 
 #. Vesak Day.
-#. type: ignore[arg-type]
 msgid "Vesak Day"
 msgstr "วันวิสาขบูชา"
 
@@ -88,8 +87,7 @@ msgstr "วันวิสาขบูชา"
 msgid "National Day"
 msgstr "วันชาติสิงคโปร์"
 
-#. Deepavali.
-#. type: ignore[arg-type]
+#. Diwali.
 msgid "Deepavali"
 msgstr "วันดีปาวลี"
 

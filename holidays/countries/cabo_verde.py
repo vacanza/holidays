@@ -118,7 +118,7 @@ class CaboVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
             # International Children's Day.
             self._add_childrens_day(tr("Dia Mundial da Criança"))
 
-        # Independence Day.
+        # National Independence Day.
         self._add_holiday_jul_5(tr("Dia da Independência Nacional"))
 
         # Assumption Day.

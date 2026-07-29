@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-20 11:58+0200\n"
-"PO-Revision-Date: 2026-07-04 23:40+0300\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -81,6 +81,6 @@ msgstr "Immaculate Conception"
 msgid "Le jour de Noël"
 msgstr "Christmas Day"
 
-#. Public holiday.
+#. Public Holiday.
 msgid "Jour férié"
-msgstr "Public holiday"
+msgstr "Public Holiday"

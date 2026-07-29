@@ -134,7 +134,7 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         # Christmas Day.
         self._add_christmas_day(tr("عيد الميلاد"))
 
-        # Islamic New Year.
+        # Islamic New Year Day.
         self._add_islamic_new_year_day(tr("عيد رأس السنة الهجرية"))
 
         # Ashura.

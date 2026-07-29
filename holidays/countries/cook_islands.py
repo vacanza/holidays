@@ -64,7 +64,7 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-        # Anzac Day.
+        # ANZAC Day.
         self._add_anzac_day(tr("Anzac Day"))
 
         # Good Friday.

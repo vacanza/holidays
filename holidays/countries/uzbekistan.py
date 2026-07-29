@@ -147,7 +147,7 @@ class UzbekistanStaticHolidays:
         * [2025-2026](https://web.archive.org/web/20251227000438/https://lex.uz/docs/-7938920)
     """
 
-    # Date format (see strftime() Format Codes)
+    # Substituted date format.
     substituted_date_format = tr("%d/%m %Y")
     # Day off (substituted from %s).
     substituted_label = tr("Dam olish kuni (%s dan koʻchirilgan)")

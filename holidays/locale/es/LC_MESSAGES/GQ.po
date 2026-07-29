@@ -27,7 +27,7 @@ msgstr ""
 "Generated-By: Lingva 5.0.5\n"
 "X-Source-Language: es\n"
 
-#. %s observed.
+#. %s (observed).
 #, c-format
 msgid "%s (observado)"
 msgstr ""
@@ -72,7 +72,7 @@ msgstr ""
 msgid "Día de la Constitución"
 msgstr ""
 
-#. Independence Day.
+#. National Independence Day.
 msgid "Día de la Independencia Nacional"
 msgstr ""
 

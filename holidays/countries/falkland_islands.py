@@ -44,7 +44,7 @@ class FalklandIslands(
 
     country = "FK"
     default_language = "en_GB"
-    # %s observed.
+    # %s (observed).
     observed_label = tr("%s (observed)")
     # Falkland War's Conclusion.
     start_year = 1983

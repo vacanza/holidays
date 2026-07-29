@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-05-03 08:13+0500\n"
-"PO-Revision-Date: 2025-06-26 17:55+0300\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -43,9 +43,9 @@ msgstr "%s (observed)"
 msgid "%s (يوم تعويضي تقديري)"
 msgstr "%s (observed, estimated)"
 
-#. Hijri New Year.
+#. Islamic New Year Day.
 msgid "عيد رأس السنة الهجرية"
-msgstr "Hijri New Year"
+msgstr "Islamic New Year Day"
 
 #. Prophet's Birthday.
 msgid "المولد النبوي"
@@ -79,9 +79,9 @@ msgstr "Revolution Day"
 msgid "ثورة 14 أكتوبر المجيدة"
 msgstr "Liberation Day"
 
-#. Independence Day.
+#. Evacuation Day.
 msgid "عيد الجلاء"
-msgstr "Independence Day"
+msgstr "Evacuation Day"
 
 #. Teacher's Day.
 msgid "عيد المعلم"
