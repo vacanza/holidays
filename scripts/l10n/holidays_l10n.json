@@ -513,14 +513,19 @@
     "new_comment": "",
     "comment": "Additional Public Holiday.",
     "messages": {
+      "en_AU": "Additional Public Holiday",
       "en_MO": "Additional Public Holiday",
       "en_US": "Additional Public Holiday",
       "pt_MO": "Feriado Público Adicional",
-      "th": "วันหยุดเพิ่มเติม",
+      "th": {
+        "AU": "วันหยุดพิเศษ (เพิ่มเติม)",
+        "MO": "วันหยุดเพิ่มเติม"
+      },
       "zh_CN": "额外公众假期",
       "zh_MO": "額外公眾假期"
     },
     "countries": [
+      "AU",
       "MO"
     ]
   },
@@ -530,20 +535,15 @@
     "new_comment": "",
     "comment": "Additional public holiday.",
     "messages": {
-      "en_AU": "Additional public holiday",
       "en_HK": "Additional public holiday",
       "en_US": "Additional public holiday",
       "ky": "Кошумча эс алуу күнү",
       "ru_KG": "Дополнительный выходной",
-      "th": {
-        "AU": "วันหยุดพิเศษ (เพิ่มเติม)",
-        "HK": "วันหยุดเพิ่มเติม"
-      },
+      "th": "วันหยุดเพิ่มเติม",
       "zh_CN": "额外公众假期",
       "zh_HK": "額外公眾假期"
     },
     "countries": [
-      "AU",
       "HK",
       "KG"
     ]
@@ -1032,50 +1032,21 @@
     ]
   },
   {
-    "id": "all_saints_day_eve",
-    "msgid": "All Saints' Day Eve",
-    "new_comment": "",
-    "comment": "All Saints' Day Eve.",
-    "messages": {
-      "en_PH": "All Saints' Day Eve",
-      "en_US": "All Saints' Day Eve",
-      "fil": "Bisperas ng Araw ng mga Santo",
-      "th": "วันก่อนวันสมโภชนักบุญทั้งหลาย"
-    },
-    "countries": [
-      "PH"
-    ]
-  },
-  {
     "id": "all_saints_eve",
     "msgid": "All Saints' Eve",
     "new_comment": "",
     "comment": "All Saints' Eve.",
     "messages": {
+      "en_PH": "All Saints' Day Eve",
       "en_US": "All Saints' Eve",
+      "fil": "Bisperas ng Araw ng mga Santo",
       "sv": "Allahelgonsafton",
       "th": "วันก่อนวันสมโภชนักบุญทั้งหลาย",
       "uk": "Переддень Дня усіх святих"
     },
     "countries": [
+      "PH",
       "SE"
-    ]
-  },
-  {
-    "id": "all_soul_s_day",
-    "msgid": "All Soul's Day",
-    "new_comment": "",
-    "comment": "All Soul's Day.",
-    "messages": {
-      "en_MO": "All Soul's Day",
-      "en_US": "All Soul's Day",
-      "pt_MO": "Dia de Finados",
-      "th": "วันภาวนาอุทิศแด่ผู้ล่วงลับ",
-      "zh_CN": "追思节",
-      "zh_MO": "追思節"
-    },
-    "countries": [
-      "MO"
     ]
   },
   {
@@ -1084,6 +1055,7 @@
     "new_comment": "",
     "comment": "All Souls' Day.",
     "messages": {
+      "en_MO": "All Soul's Day",
       "en_PH": "All Souls' Day",
       "en_TL": "All Souls Day",
       "en_US": "All Souls' Day",
@@ -1098,6 +1070,7 @@
       "lt": "Mirusiųjų atminimo (Vėlinių) diena",
       "pt_AO": "Dia dos Finados",
       "pt_BR": "Finados",
+      "pt_MO": "Dia de Finados",
       "pt_TL": "Dia de Todos os Fiéis Defuntos",
       "tet": "Loron Matebian sira nian",
       "th": "วันภาวนาอุทิศแด่ผู้ล่วงลับ",
@@ -1110,7 +1083,9 @@
         "LT": "День памʼяті (День всіх померлих)",
         "SV": "День усіх померлих",
         "UY": "День усіх померлих"
-      }
+      },
+      "zh_CN": "追思节",
+      "zh_MO": "追思節"
     },
     "countries": [
       "AO",
@@ -1119,6 +1094,7 @@
       "BVMF",
       "EC",
       "LT",
+      "MO",
       "PH",
       "SV",
       "TL",
@@ -1993,7 +1969,7 @@
     ]
   },
   {
-    "id": "anzac_day_1",
+    "id": "anzac_day",
     "msgid": "ANZAC Day",
     "new_comment": "",
     "comment": "ANZAC Day.",
@@ -2001,32 +1977,21 @@
       "coa_CC": "Hari ANZAC",
       "en_AU": "ANZAC Day",
       "en_CC": "ANZAC Day",
+      "en_CK": "Anzac Day",
       "en_CX": "ANZAC Day",
       "en_NF": "ANZAC Day",
       "en_NU": "ANZAC Day",
       "en_US": "ANZAC Day",
-      "th": "วันแอนแซค"
+      "th": "วันแอนแซค",
+      "to": "ʻAho Anzac"
     },
     "countries": [
       "AU",
       "CC",
+      "CK",
       "CX",
       "NF",
-      "NU"
-    ]
-  },
-  {
-    "id": "anzac_day_2",
-    "msgid": "Anzac Day",
-    "new_comment": "",
-    "comment": "Anzac Day.",
-    "messages": {
-      "en_CK": "Anzac Day",
-      "en_US": "Anzac Day",
-      "to": "ʻAho Anzac"
-    },
-    "countries": [
-      "CK",
+      "NU",
       "TO"
     ]
   },
@@ -2042,43 +2007,6 @@
     },
     "countries": [
       "KR"
-    ]
-  },
-  {
-    "id": "arafat_day",
-    "msgid": "Arafat Day",
-    "new_comment": "",
-    "comment": "Arafat Day.",
-    "messages": {
-      "ar": {
-        "AE": "وقفة عرفة",
-        "DJ": "يوم عرفة",
-        "JO": "يوم عرفة",
-        "KW": "يوم عرفة",
-        "SA": "يوم عرفة",
-        "TN": "يوم عرفة"
-      },
-      "ar_EG": "وقفة عيد الأضحى المبارك",
-      "bn": "আরাফাত দিবস",
-      "dv": "ޙައްޖުދުވަސް",
-      "en_US": "Arafat Day",
-      "fr": {
-        "DJ": "Arafat",
-        "EG": "Le jour d'Arafat"
-      },
-      "ms_MY": "Hari Arafah",
-      "th": "วันอารอฟะห์"
-    },
-    "countries": [
-      "AE",
-      "DJ",
-      "EG",
-      "JO",
-      "KW",
-      "MV",
-      "MY",
-      "SA",
-      "TN"
     ]
   },
   {
@@ -2351,51 +2279,7 @@
       "en_CI": "Ascension Day",
       "en_GB": "Ascension Day",
       "en_NA": "Ascension Day",
-      "en_US": {
-        "AT": "Ascension Day",
-        "AW": "Ascension Day",
-        "BE": "Ascension Day",
-        "BF": "Ascension Day",
-        "BI": "Ascension Day",
-        "BJ": "Ascension Day",
-        "BQ": "Ascension Day",
-        "CF": "Ascension Day",
-        "CG": "Ascension Day",
-        "CH": "Ascension Day",
-        "CI": "Ascension Day",
-        "CL": "Ascension Day",
-        "CO": "Ascension Day",
-        "CW": "Ascension Day",
-        "DE": "Ascension Day",
-        "DK": "Ascension Day",
-        "DZ": "Ascension Day",
-        "FI": "Ascension Day",
-        "FO": "Ascension Day",
-        "FR": "Ascension Day",
-        "GA": "Ascension Day",
-        "GL": "Ascension Day",
-        "HT": "Ascension Day",
-        "ID": "Ascension Day",
-        "IS": "Ascension Day",
-        "IT": "Ascension Day",
-        "LI": "Ascension Day",
-        "LU": "Ascension Day",
-        "MC": "Ascension Day",
-        "MG": "Ascension Day",
-        "NA": "Ascension Day",
-        "NE": "Ascension",
-        "NL": "Ascension Day",
-        "NO": "Ascension Day",
-        "PL": "Ascension Day",
-        "PS": "Ascension Day",
-        "PT": "Ascension Day",
-        "SE": "Ascension Day",
-        "SH": "Ascension Day",
-        "SN": "Ascension Day",
-        "SX": "Ascension Day",
-        "TG": "Ascension Day",
-        "VA": "Ascension Day"
-      },
+      "en_US": "Ascension Day",
       "es": {
         "CL": "Ascensión del Señor",
         "CO": "Ascensión del señor",
@@ -2707,10 +2591,8 @@
         "ES": "Assumpció de la Verge"
       },
       "de": "Mariä Himmelfahrt",
-      "el": "Κοίμηση της Θεοτόκου",
       "en_BF": "Assumption Day",
       "en_CI": "Assumption Day",
-      "en_CY": "Assumption Day",
       "en_GM": "Feast of the Assumption",
       "en_MO": "Assumption Day",
       "en_MU": "Assumption of the Blessed Virgin Mary",
@@ -2767,29 +2649,7 @@
       "rw": "Ijyanwa mu Ijuru rya Bikiramariya",
       "sl": "Marijino vnebovzetje",
       "th": "วันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์",
-      "uk": {
-        "AD": "Внебовзяття Пресвятої Діви Марії",
-        "AR": "Внебовзяття Пресвятої Діви Марії",
-        "AT": "Внебовзяття Пресвятої Діви Марії",
-        "BE": "Внебовзяття Пресвятої Діви Марії",
-        "CH": "Внебовзяття Пресвятої Діви Марії",
-        "CL": "Внебовзяття Пресвятої Діви Марії",
-        "CO": "Внебовзяття Пресвятої Діви Марії",
-        "CY": "Успіння Пресвятої Богородиці",
-        "DE": "Внебовзяття Пресвятої Діви Марії",
-        "ES": "Внебовзяття Пресвятої Діви Марії",
-        "FR": "Внебовзяття Пресвятої Діви Марії",
-        "HR": "Внебовзяття Пресвятої Діви Марії",
-        "ID": "Внебовзяття Пресвятої Діви Марії",
-        "LT": "Внебовзяття Пресвятої Діви Марії",
-        "LU": "Внебовзяття Пресвятої Діви Марії",
-        "MC": "Внебовзяття Пресвятої Діви Марії",
-        "MG": "Внебовзяття Пресвятої Діви Марії",
-        "PL": "Внебовзяття Пресвятої Діви Марії",
-        "PT": "Внебовзяття Пресвятої Діви Марії",
-        "SI": "Внебовзяття Пресвятої Діви Марії",
-        "SM": "Внебовзяття Пресвятої Діви Марії"
-      },
+      "uk": "Внебовзяття Пресвятої Діви Марії",
       "zh_CN": "圣母升天",
       "zh_MO": "聖母升天"
     },
@@ -2807,7 +2667,6 @@
       "CL",
       "CO",
       "CV",
-      "CY",
       "DE",
       "DZ",
       "ES",
@@ -4810,10 +4669,7 @@
     "new_comment": "",
     "comment": "Candlemas.",
     "messages": {
-      "de": {
-        "LI": "Mariä Lichtmess",
-        "PL": "Darstellung des Herrn"
-      },
+      "de": "Mariä Lichtmess",
       "en_US": "Candlemas",
       "pl": "Oczyszczenie Najświętszej Marii Panny",
       "uk": "Стрітення"
@@ -5657,13 +5513,12 @@
     "new_comment": "",
     "comment": "Chinese New Year's Eve.",
     "messages": {
-      "en_HK": "The day preceding Lunar New Year's Day",
       "en_MO": "Lunar New Year's Eve",
+      "en_SG": "Chinese New Year's Eve",
       "en_US": "Chinese New Year's Eve",
       "pt_MO": "Véspera do Novo Ano Lunar",
       "th": "วันก่อนวันตรุษจีน",
       "zh_CN": "农历除夕",
-      "zh_HK": "農曆年初一的前一日",
       "zh_MO": "農曆除夕",
       "zh_TW": "農曆除夕"
     },
@@ -5671,6 +5526,7 @@
       "CN",
       "MO",
       "TW",
+      "XSES",
       "XSHG"
     ]
   },
@@ -5951,6 +5807,7 @@
         "PY": "Día de la Navidad",
         "SV": "Navidad",
         "VE": "Día de Navidad",
+        "XMAD": "Navidad",
         "XMEX": "Navidad"
       },
       "et": "esimene jõulupüha",
@@ -6017,13 +5874,13 @@
       "my": "ခရစ္စမတ်နေ့",
       "ne": "क्रिसमसको दिन",
       "nl": {
-        "AW": "Eerste Kerstdag",
+        "AW": "Eerste kerstdag",
         "BE": "Kerstmis",
-        "BQ": "Eerste Kerstdag",
-        "CW": "Eerste Kerstdag",
-        "NL": "Eerste Kerstdag",
-        "SR": "Eerste Kerstdag",
-        "SX": "Eerste Kerstdag"
+        "BQ": "Eerste kerstdag",
+        "CW": "Eerste kerstdag",
+        "NL": "Eerste kerstdag",
+        "SR": "Eerste kerstdag",
+        "SX": "Eerste kerstdag"
       },
       "no": {
         "FO": "Første juledag",
@@ -6321,6 +6178,7 @@
       "VG",
       "XCME",
       "XETR",
+      "XMAD",
       "XMEX",
       "XNSE",
       "XNYS",
@@ -6384,10 +6242,13 @@
       "en_IN": "Christmas Eve",
       "en_MO": "Christmas Eve",
       "en_PH": "Christmas Eve",
+      "en_SG": "Christmas Eve",
       "en_US": "Christmas Eve",
       "es": {
         "CL": "Víspera de Navidad",
-        "VE": "Nochebuena"
+        "VE": "Nochebuena",
+        "XBUE": "Nochebuena",
+        "XMAD": "Nochebuena"
       },
       "et": "jõululaupäev",
       "fi": "Jouluaatto",
@@ -6494,10 +6355,13 @@
       "US",
       "VA",
       "VE",
+      "XBUE",
       "XCME",
       "XETR",
       "XHKG",
+      "XMAD",
       "XNYS",
+      "XSES",
       "XSWX",
       "XTSE"
     ]
@@ -7394,10 +7258,7 @@
     "messages": {
       "ar_EG": "عيد الميلاد المجيد",
       "ar_SD": "عيد الميلاد المجيد",
-      "en_US": {
-        "EG": "Coptic Christmas Day",
-        "SD": "Coptic Christmas"
-      },
+      "en_US": "Coptic Christmas Day",
       "fr": "Fête de Noël"
     },
     "countries": [
@@ -7798,46 +7659,6 @@
     ]
   },
   {
-    "id": "date_format_see_strftime_format_codes_1",
-    "msgid": "%m/%d/%Y",
-    "new_comment": "",
-    "comment": "Date format (see strftime() Format Codes)",
-    "messages": {
-      "ar": "%d/%m/%Y",
-      "be": "%d.%m.%Y",
-      "en_US": "%m/%d/%Y",
-      "ru": "%d.%m.%Y",
-      "th": "%d/%m/%Y",
-      "uk": "%d.%m.%Y",
-      "uz": "%d/%m %Y"
-    },
-    "countries": [
-      "BY",
-      "UA",
-      "UZ"
-    ]
-  },
-  {
-    "id": "date_format_see_strftime_format_codes_2",
-    "msgid": "%m/%d/%Y",
-    "new_comment": "",
-    "comment": "Date format (see strftime() Format Codes).",
-    "messages": {
-      "en_US": "%m/%d/%Y",
-      "ru": "%d.%m.%Y",
-      "th": "%d/%m/%Y",
-      "vi": "%d/%m/%Y",
-      "zh_CN": "%Y-%m-%d",
-      "zh_TW": "%Y-%m-%d"
-    },
-    "countries": [
-      "CN",
-      "RU",
-      "TW",
-      "VN"
-    ]
-  },
-  {
     "id": "date_of_founding_of_mpla_labor_party",
     "msgid": "Date of Founding of MPLA - Labor Party",
     "new_comment": "",
@@ -7866,35 +7687,24 @@
     ]
   },
   {
-    "id": "day_after_christmas_1",
+    "id": "day_after_christmas",
     "msgid": "Day After Christmas",
     "new_comment": "",
     "comment": "Day After Christmas.",
     "messages": {
       "el": "Επομένη Χριστουγέννων",
       "en_CY": "Day After Christmas",
+      "en_GY": "Day After Christmas",
       "en_US": "Day After Christmas",
+      "gu": "નાતાલ પછીનો દિવસ",
+      "hi": "क्रिसमस के बाद का दिन",
       "th": "วันหลังวันคริสต์มาส",
       "uk": "Другий день Різдва"
     },
     "countries": [
       "CY",
-      "US"
-    ]
-  },
-  {
-    "id": "day_after_christmas_2",
-    "msgid": "Day after Christmas",
-    "new_comment": "",
-    "comment": "Day after Christmas.",
-    "messages": {
-      "en_GY": "Day after Christmas",
-      "en_US": "Day after Christmas",
-      "gu": "નાતાલ પછીનો દિવસ",
-      "hi": "क्रिसमस के बाद का दिन"
-    },
-    "countries": [
       "GY",
+      "US",
       "XNYS"
     ]
   },
@@ -8282,15 +8092,42 @@
     "new_comment": "",
     "comment": "Day of Arafah.",
     "messages": {
-      "ar": "يوم عرفة",
+      "ar": {
+        "AE": "وقفة عرفة",
+        "DJ": "يوم عرفة",
+        "IQ": "يوم عرفة",
+        "JO": "يوم عرفة",
+        "KW": "يوم عرفة",
+        "LY": "يوم عرفة",
+        "SA": "يوم عرفة",
+        "TN": "يوم عرفة"
+      },
+      "ar_EG": "وقفة عيد الأضحى المبارك",
+      "bn": "আরাফাত দিবস",
+      "dv": "ޙައްޖުދުވަސް",
       "en_US": "Day of Arafah",
       "fa_AF": "روز عرفه",
-      "ps_AF": "د عرفه ورځ"
+      "fr": {
+        "DJ": "Arafat",
+        "EG": "Le jour d'Arafat"
+      },
+      "ms_MY": "Hari Arafah",
+      "ps_AF": "د عرفه ورځ",
+      "th": "วันอารอฟะห์"
     },
     "countries": [
+      "AE",
       "AF",
+      "DJ",
+      "EG",
       "IQ",
-      "LY"
+      "JO",
+      "KW",
+      "LY",
+      "MV",
+      "MY",
+      "SA",
+      "TN"
     ]
   },
   {
@@ -8645,20 +8482,6 @@
     ]
   },
   {
-    "id": "day_of_national_liberation",
-    "msgid": "Day of National Liberation",
-    "new_comment": "",
-    "comment": "Day of National Liberation.",
-    "messages": {
-      "en_US": "Day of National Liberation",
-      "es": "Día de la Liberación Nacional",
-      "uk": "День національного визволення"
-    },
-    "countries": [
-      "CL"
-    ]
-  },
-  {
     "id": "day_of_national_minorities_of_the_republic_of_armenia",
     "msgid": "Day of National Minorities of the Republic of Armenia",
     "new_comment": "",
@@ -8683,26 +8506,6 @@
     },
     "countries": [
       "NP"
-    ]
-  },
-  {
-    "id": "day_of_national_unity",
-    "msgid": "Day of National Unity",
-    "new_comment": "",
-    "comment": "Day of National Unity.",
-    "messages": {
-      "en_US": {
-        "CL": "Day of National Unity",
-        "TJ": "National Unity Day"
-      },
-      "es": "Día de la Unidad Nacional",
-      "ru": "День Национального единства",
-      "tg": "Рӯзи Ваҳдати миллӣ",
-      "uk": "День національної єдності"
-    },
-    "countries": [
-      "CL",
-      "TJ"
     ]
   },
   {
@@ -9280,20 +9083,6 @@
     ]
   },
   {
-    "id": "day_of_the_family",
-    "msgid": "Day of the Family",
-    "new_comment": "",
-    "comment": "Day of the Family.",
-    "messages": {
-      "en_US": "Day of the Family",
-      "es": "Día de la Familia",
-      "uk": "День родини"
-    },
-    "countries": [
-      "UY"
-    ]
-  },
-  {
     "id": "day_of_the_fatherland_s_defenders_and_the_armed_forces_of_the_republic_of_belarus",
     "msgid": "Day of the Fatherland's Defenders and the Armed Forces of the Republic of Belarus",
     "new_comment": "",
@@ -9678,20 +9467,6 @@
     ]
   },
   {
-    "id": "day_of_virgin_of_carmen",
-    "msgid": "Our Lady of Mount Carmel",
-    "new_comment": "",
-    "comment": "Day of Virgin of Carmen.",
-    "messages": {
-      "en_US": "Our Lady of Mount Carmel",
-      "es": "Virgen del Carmen",
-      "uk": "Матір Божа Кармельська"
-    },
-    "countries": [
-      "CL"
-    ]
-  },
-  {
     "id": "day_off_substituted_from_s",
     "msgid": "Day off (substituted from %s)",
     "new_comment": "",
@@ -9946,58 +9721,16 @@
   },
   {
     "id": "declared_public_holiday",
-    "msgid": "Declared public holiday",
+    "msgid": "Declared Public Holiday",
     "new_comment": "",
-    "comment": "Declared public holiday.",
+    "comment": "Declared Public Holiday.",
     "messages": {
-      "en_AU": "Declared public holiday",
-      "en_US": "Declared public holiday",
+      "en_AU": "Declared Public Holiday",
+      "en_US": "Declared Public Holiday",
       "th": "วันหยุดพิเศษ (ตามประกาศ)"
     },
     "countries": [
       "AU"
-    ]
-  },
-  {
-    "id": "deepavali",
-    "msgid": "Deepavali",
-    "new_comment": "",
-    "comment": "Deepavali.",
-    "messages": {
-      "en_US": "Deepavali",
-      "ms_MY": "Hari Deepavali",
-      "th": "วันดีปาวลี"
-    },
-    "countries": [
-      "MY"
-    ]
-  },
-  {
-    "id": "deepavali_festival_day",
-    "msgid": "Deepavali Festival Day",
-    "new_comment": "",
-    "comment": "Deepavali Festival Day.",
-    "messages": {
-      "en_US": "Deepavali Festival Day",
-      "si_LK": "දීපවාලි උත්සව දිනය",
-      "ta_LK": "தீபாவளிப் பண்டிகை தினம்"
-    },
-    "countries": [
-      "LK"
-    ]
-  },
-  {
-    "id": "deepavali_type_ignore_arg_type",
-    "msgid": "Deepavali",
-    "new_comment": "",
-    "comment": "Deepavali.\ntype: ignore[arg-type]",
-    "messages": {
-      "en_SG": "Deepavali",
-      "en_US": "Deepavali",
-      "th": "วันดีปาวลี"
-    },
-    "countries": [
-      "SG"
     ]
   },
   {
@@ -10246,13 +9979,17 @@
       "en_IN": "Diwali (Deepavali)",
       "en_KE": "Diwali",
       "en_MU": "Divali",
+      "en_SG": "Deepavali",
       "en_TT": "Divali",
       "en_US": {
         "GY": "Diwali",
         "IN": "Diwali (Deepavali)",
         "KE": "Diwali",
+        "LK": "Diwali",
         "MM": "Diwali",
         "MU": "Diwali",
+        "MY": "Diwali",
+        "SG": "Diwali",
         "SR": "Diwali",
         "TT": "Diwali",
         "US": "Diwali"
@@ -10262,11 +9999,14 @@
       "kn": "ದೀಪಾವಳಿ",
       "ml": "ദീപാവലി",
       "mr": "दिवाळी (दीपवाली)",
+      "ms_MY": "Hari Deepavali",
       "my": "ဒီပါဝလီနေ့",
       "nl": "Divali",
       "pa": "ਦੀਵਾਲੀ (ਦੀਪਵਾਲੀ)",
+      "si_LK": "දීපවාලි උත්සව දිනය",
       "sw": "Diwali",
       "ta": "தீபாவளி",
+      "ta_LK": "தீபாவளிப் பண்டிகை தினம்",
       "te": "దీపావళి",
       "th": "วันดีปาวลี"
     },
@@ -10274,8 +10014,11 @@
       "GY",
       "IN",
       "KE",
+      "LK",
       "MM",
       "MU",
+      "MY",
+      "SG",
       "SR",
       "TT",
       "US"
@@ -10380,6 +10123,7 @@
     "comment": "Dormition of the Mother of God.",
     "messages": {
       "el": "Κοίμηση της Θεοτόκου",
+      "en_CY": "Dormition of the Mother of God",
       "en_US": "Dormition of the Mother of God",
       "ka": "მარიამობა",
       "mk": "Успение на Пресвета Богородица",
@@ -10387,6 +10131,7 @@
       "uk": "Успіння Пресвятої Богородиці"
     },
     "countries": [
+      "CY",
       "GE",
       "GR",
       "MK",
@@ -10760,11 +10505,7 @@
     "new_comment": "",
     "comment": "Easter Monday.",
     "messages": {
-      "ar": {
-        "CA": "عيد الفصح الاثنين",
-        "DZ": "إثنين الفصح",
-        "IQ": "إثنين الفصح"
-      },
+      "ar": "إثنين الفصح",
       "ca": "Dilluns de Pasqua",
       "coa_CC": "Isnin Paskah",
       "cs": "Velikonoční pondělí",
@@ -10836,10 +10577,10 @@
       "nl": {
         "AW": "Tweede paasdag",
         "BE": "Paasmaandag",
-        "BQ": "Tweede Paasdag",
+        "BQ": "Tweede paasdag",
         "CW": "Tweede paasdag",
         "NL": "Tweede paasdag",
-        "SR": "Tweede Paasdag",
+        "SR": "Tweede paasdag",
         "SX": "Tweede paasdag"
       },
       "no": "Andre påskedag",
@@ -10952,7 +10693,8 @@
       "VA",
       "VC",
       "VG",
-      "XETR"
+      "XETR",
+      "XMAD"
     ]
   },
   {
@@ -11055,7 +10797,7 @@
       "mr": "ईस्टर रविवार",
       "nl": {
         "BE": "Pasen",
-        "BQ": "Eerste Paasdag",
+        "BQ": "Eerste paasdag",
         "CW": "Paasdag",
         "NL": "Eerste paasdag",
         "SX": "Eerste paasdag"
@@ -11192,7 +10934,7 @@
     ]
   },
   {
-    "id": "eid_al_adha_1",
+    "id": "eid_al_adha",
     "msgid": "Eid al-Adha",
     "new_comment": "",
     "comment": "Eid al-Adha.",
@@ -11243,6 +10985,7 @@
         "IN": "Id-ul-Zuha (Bakrid)",
         "XNSE": "Bakri Id"
       },
+      "en_KE": "Idd-ul-Azha",
       "en_NG": "Id el Kabir",
       "en_PH": "Eid'l Adha",
       "en_PK": "Eid-ul-Adha",
@@ -11324,7 +11067,10 @@
         "BA": "Курбан Бајрам",
         "XK": "Kurban Bajram, prvi dan"
       },
-      "sw": "Eid El Hajj",
+      "sw": {
+        "KE": "Sikukuu ya Idd-ul-Azha",
+        "TZ": "Eid El Hajj"
+      },
       "ta": "ஈதுல் ஸுஹா (பக்ரீத்)",
       "ta_LK": "ஈதுல் அழ்ஹா",
       "te": "ఈద్-ఉల్-జుహా (బక్రీద్)",
@@ -11370,6 +11116,7 @@
       "IQ",
       "IR",
       "JO",
+      "KE",
       "KG",
       "KW",
       "KZ",
@@ -11409,20 +11156,6 @@
       "XK",
       "XNSE",
       "YE"
-    ]
-  },
-  {
-    "id": "eid_al_adha_2",
-    "msgid": "Eid-al-Adha",
-    "new_comment": "",
-    "comment": "Eid-al-Adha.",
-    "messages": {
-      "en_KE": "Idd-ul-Azha",
-      "en_US": "Eid-al-Adha",
-      "sw": "Sikukuu ya Idd-ul-Azha"
-    },
-    "countries": [
-      "KE"
     ]
   },
   {
@@ -11480,7 +11213,7 @@
     ]
   },
   {
-    "id": "eid_al_fitr_1",
+    "id": "eid_al_fitr",
     "msgid": "Eid al-Fitr",
     "new_comment": "",
     "comment": "Eid al-Fitr.",
@@ -11530,6 +11263,7 @@
         "IN": "Id-ul-Fitr",
         "XNSE": "Id-Ul-Fitr (Ramadan Eid)"
       },
+      "en_KE": "Idd-ul-Fitr",
       "en_MU": "Eid-ul-Fitr",
       "en_NG": "Id el Fitr",
       "en_PH": "Eid'l Fitr",
@@ -11608,7 +11342,10 @@
         "BA": "Рамазански Бајрам",
         "XK": "Fiter Bajram, prvi dan"
       },
-      "sw": "Eid El-Fitri",
+      "sw": {
+        "KE": "Sikukuu ya Idd-ul-Fitr",
+        "TZ": "Eid El-Fitri"
+      },
       "ta": "ஈத் உல்-பித்ர்",
       "ta_LK": "ஈதுல் பித்ர்",
       "te": "ఈద్-ఉల్-ఫితర్",
@@ -11653,6 +11390,7 @@
       "IQ",
       "IR",
       "JO",
+      "KE",
       "KG",
       "KW",
       "LB",
@@ -11692,20 +11430,6 @@
       "XK",
       "XNSE",
       "YE"
-    ]
-  },
-  {
-    "id": "eid_al_fitr_2",
-    "msgid": "Eid-al-Fitr",
-    "new_comment": "",
-    "comment": "Eid-al-Fitr.",
-    "messages": {
-      "en_KE": "Idd-ul-Fitr",
-      "en_US": "Eid-al-Fitr",
-      "sw": "Sikukuu ya Idd-ul-Fitr"
-    },
-    "countries": [
-      "KE"
     ]
   },
   {
@@ -11808,29 +11532,18 @@
     ]
   },
   {
-    "id": "eid_al_ghadeer",
-    "msgid": "Eid al-Ghadeer",
-    "new_comment": "",
-    "comment": "Eid al-Ghadeer.",
-    "messages": {
-      "en_US": "Eid al-Ghadeer",
-      "fa_IR": "عید سعید غدیر خم"
-    },
-    "countries": [
-      "IR"
-    ]
-  },
-  {
     "id": "eid_al_ghadir",
     "msgid": "Eid al-Ghadir",
     "new_comment": "",
     "comment": "Eid al-Ghadir.",
     "messages": {
       "ar": "عيد الغدير",
-      "en_US": "Eid al-Ghadir"
+      "en_US": "Eid al-Ghadir",
+      "fa_IR": "عید سعید غدیر خم"
     },
     "countries": [
-      "IQ"
+      "IQ",
+      "IR"
     ]
   },
   {
@@ -12441,7 +12154,8 @@
     },
     "countries": [
       "EG",
-      "TN"
+      "TN",
+      "YE"
     ]
   },
   {
@@ -12584,6 +12298,7 @@
       "MZ",
       "NA",
       "US",
+      "UY",
       "VE",
       "XTSE"
     ]
@@ -13605,10 +13320,7 @@
       "pt_MO": "Dia da Liberdade",
       "pt_PT": "Dia da Liberdade",
       "th": "วันแห่งเสรีภาพ",
-      "uk": {
-        "BG": "День свободи",
-        "PT": "День Свободи"
-      },
+      "uk": "День свободи",
       "zh_CN": "自由日",
       "zh_MO": "自由日"
     },
@@ -14627,15 +14339,7 @@
       "mr": "गुड फ्रायडे",
       "ms_MY": "Good Friday",
       "mt": "Il-Ġimgħa l-Kbira",
-      "nl": {
-        "AW": "Goede vrijdag",
-        "BE": "Goede Vrijdag",
-        "BQ": "Goede Vrijdag",
-        "CW": "Goede Vrijdag",
-        "NL": "Goede Vrijdag",
-        "SR": "Goede Vrijdag",
-        "SX": "Goede Vrijdag"
-      },
+      "nl": "Goede vrijdag",
       "no": "Langfredag",
       "pa": "ਗੁੱਡ ਫਰਾਈਡੇ",
       "pap_AW": "Bierna Santo",
@@ -14783,6 +14487,7 @@
       "VG",
       "XCME",
       "XETR",
+      "XMAD",
       "XMEX",
       "XNSE",
       "XNYS",
@@ -15558,23 +15263,6 @@
     ]
   },
   {
-    "id": "hijri_new_year",
-    "msgid": "Hijri New Year",
-    "new_comment": "",
-    "comment": "Hijri New Year.",
-    "messages": {
-      "ar": {
-        "PS": "رأس السنة الهجرية",
-        "YE": "عيد رأس السنة الهجرية"
-      },
-      "en_US": "Hijri New Year"
-    },
-    "countries": [
-      "PS",
-      "YE"
-    ]
-  },
-  {
     "id": "himachal_day",
     "msgid": "Himachal Day",
     "new_comment": "",
@@ -16229,24 +15917,14 @@
     "new_comment": "",
     "comment": "Independence Day.",
     "messages": {
-      "ar": {
-        "BD": "عيد الاستقلال",
-        "DJ": "عيد الإستقلال",
-        "DZ": "عيد الاستقلال",
-        "JO": "عيد الإستقلال",
-        "LY": "عيد الاستقلال",
-        "MA": "عيد الإستقلال",
-        "PS": "عيد الإستقلال",
-        "SY": "عيد الاستقلال",
-        "TN": "عيد الإستقلال",
-        "YE": "عيد الجلاء"
-      },
-      "ar_SD": "عيد الإستقلال",
+      "ar": "عيد الاستقلال",
+      "ar_SD": "عيد الاستقلال",
       "bn": "স্বাধীনতা দিবস",
       "bs": "Dan nezavisnosti",
       "cnr": "Dan nezavisnosti",
       "de": "Fest der Unabhängigkeit",
       "dv": "މިނިވަން ދުވަސް",
+      "el": "Εικοστή Πέμπτη Μαρτίου",
       "en_BD": "Independence Day",
       "en_BF": "Independence Day",
       "en_CI": "Independence Day",
@@ -16266,22 +15944,7 @@
       "en_TT": "Independence Day",
       "en_US": "Independence Day",
       "en_VC": "Independence Day",
-      "es": {
-        "AR": "Día de la Independencia",
-        "CL": "Día de la Independencia",
-        "CO": "Día de la Independencia",
-        "CR": "Día de la Independencia",
-        "DO": "Día de Independencia",
-        "GT": "Día de la Independencia",
-        "HN": "Día de la Independencia",
-        "MX": "Día de la Independencia",
-        "NI": "Día de la Independencia",
-        "PE": "Día de la Independencia",
-        "SV": "Día de la Independencia",
-        "UY": "Declaratoria de la Independencia",
-        "VE": "Día de la Independencia",
-        "XMEX": "Día de la Independencia"
-      },
+      "es": "Día de la Independencia",
       "et": "iseseisvuspäev",
       "fi": "Itsenäisyyspäivä",
       "fil": "Araw ng Kalayaan",
@@ -16321,7 +15984,6 @@
       "pt_AO": "Dia da Independência",
       "pt_GW": "Dia da Independência",
       "pt_ST": "Dia da Independência",
-      "ru": "День независимости",
       "rw": "Umunsi w'Ubwigenge",
       "si_LK": "නිදහස් සමරු දිනය",
       "sl": "dan samostojnosti",
@@ -16338,35 +16000,7 @@
         "PH": "วันประกาศเอกราชสาธารณรัฐฟิลิปปินส์",
         "US": "วันประกาศอิสรภาพ"
       },
-      "uk": {
-        "AO": "День незалежності",
-        "AR": "День незалежності",
-        "BA": "День незалежності",
-        "CH": "День незалежності",
-        "CL": "День незалежності",
-        "CO": "День незалежності",
-        "CR": "День незалежності",
-        "DO": "День незалежності",
-        "EE": "День незалежності",
-        "FI": "День незалежності",
-        "GE": "День незалежності",
-        "HN": "День незалежності",
-        "HR": "День незалежності",
-        "KZ": "День незалежності",
-        "ME": "День незалежності",
-        "MG": "День незалежності",
-        "MK": "День незалежності",
-        "MX": "День незалежності",
-        "NA": "День незалежності",
-        "NI": "День незалежності",
-        "PE": "День незалежності",
-        "SI": "День незалежності",
-        "SV": "День незалежності",
-        "UY": "День проголошення незалежності",
-        "UZ": "День незалежності",
-        "VE": "День незалежності",
-        "XMEX": "День незалежності"
-      },
+      "uk": "День незалежності",
       "ur_PK": "یوم آزادی",
       "uz": "Mustaqillik kuni"
     },
@@ -16386,7 +16020,6 @@
       "CO",
       "CR",
       "DJ",
-      "DO",
       "DZ",
       "EE",
       "FI",
@@ -16437,15 +16070,13 @@
       "TN",
       "TT",
       "US",
-      "UY",
       "UZ",
       "VC",
       "VE",
       "XCME",
       "XMEX",
       "XNSE",
-      "XNYS",
-      "YE"
+      "XNYS"
     ]
   },
   {
@@ -16727,11 +16358,14 @@
     "comment": "Independence Declaration Day.",
     "messages": {
       "en_US": "Independence Declaration Day",
+      "es": "Declaratoria de la Independencia",
       "lo": "ວັນປະກາດເອກະລາດ",
-      "th": "วันประกาศเอกราช"
+      "th": "วันประกาศเอกราช",
+      "uk": "День проголошення незалежності"
     },
     "countries": [
-      "LA"
+      "LA",
+      "UY"
     ]
   },
   {
@@ -17071,8 +16705,17 @@
       "kn": "ಅಂತರರಾಷ್ಟ್ರೀಯ ಕಾರ್ಮಿಕ ದಿನ",
       "lo": "ວັນກຳມະກອນສາກົນ",
       "ne": "अन्तर्राष्ट्रिय श्रम दिवस",
-      "sr": "Међународни празник рада",
-      "th": "วันแรงงานสากล",
+      "sq": "Dita Ndërkombëtare e Punës",
+      "sr": {
+        "BA": "Међународни празник рада",
+        "XK": "Međunarodni Dan Rada"
+      },
+      "th": {
+        "ID": "วันแรงงานสากล",
+        "KH": "วันแรงงานสากล",
+        "LA": "วันกรรมกรสากล",
+        "VN": "วันแรงงานสากล"
+      },
       "uk": "Міжнародний день праці",
       "vi": "Ngày Quốc tế Lao động"
     },
@@ -17086,7 +16729,8 @@
       "LA",
       "NE",
       "NP",
-      "VN"
+      "VN",
+      "XK"
     ]
   },
   {
@@ -17164,10 +16808,7 @@
     "new_comment": "",
     "comment": "International Women's Day.",
     "messages": {
-      "ar": {
-        "PS": "يوم المراة العالمي",
-        "UA": "اليوم العالمي للمرأة"
-      },
+      "ar": "يوم المراة العالمي",
       "en_BF": "International Women's Day",
       "en_NR": "International Women's Day",
       "en_SL": "International Women's Day",
@@ -17243,18 +16884,12 @@
       "dv": "ބައިނަލްއަޤްވާމީ މަސައްކަތްތެރިންގެ ދުވަސް",
       "en_SL": "International Worker's Day",
       "en_TL": "World Labour Day",
-      "en_US": {
-        "AO": "International Worker's Day",
-        "MV": "International Worker's Day",
-        "SL": "Labor Day",
-        "TL": "International Worker's Day",
-        "VE": "International Worker's Day"
-      },
+      "en_US": "International Worker's Day",
       "es": "Dia Mundial del Trabajador",
       "pt_AO": "Dia Internacional do Trabalhador",
       "pt_TL": "Dia Mundial do Trabalhador",
       "tet": "Loron Mundiál Serbisu-na'in sira nian",
-      "th": "วันแรงงานสากล",
+      "th": "วันกรรมกรสากล",
       "uk": "Міжнародний день трудящих"
     },
     "countries": [
@@ -17287,11 +16922,7 @@
       "ps_AF": "د کارګرو نړیواله ورځ",
       "pt_MZ": "Dia Internacional dos Trabalhadores",
       "si_LK": "ලොක කම්කරු දිනය",
-      "sq": {
-        "AL": "Dita Ndërkombëtare e Punëtorëve",
-        "XK": "Dita Ndërkombëtare e Punës"
-      },
-      "sr": "Međunarodni Dan Rada",
+      "sq": "Dita Ndërkombëtare e Punëtorëve",
       "sv": "Internationella arbetardagen",
       "sw": "Sikukuu ya Wafanyakazi Ulimwenguni",
       "ta_LK": "சர்வதேச தொழிலாளர்கள் தினம்",
@@ -17313,8 +16944,7 @@
       "LK",
       "LT",
       "MZ",
-      "TZ",
-      "XK"
+      "TZ"
     ]
   },
   {
@@ -17334,7 +16964,7 @@
       },
       "ru_KG": "День международной солидарности трудящихся",
       "tg": "Рӯзи байналхалқии якдилии меҳнаткашон",
-      "th": "วันสมานฉันท์แรงงานสากล",
+      "th": "วันสมานฉันท์กรรมกรสากล",
       "uk": "День міжнародної солідарності трудящих",
       "zh_CN": "国际工人团结日"
     },
@@ -17408,22 +17038,7 @@
     "new_comment": "",
     "comment": "Islamic New Year.",
     "messages": {
-      "ar": {
-        "AE": "رأس السنة الهجرية",
-        "BH": "رأس السنة الهجرية",
-        "DJ": "رأس السنة الهجرية",
-        "DZ": "رأس السنة الهجرية",
-        "EH": "رأس السنة الهجرية",
-        "IQ": "رأس السنة الهجرية",
-        "JO": "رأس السنة الهجرية",
-        "KW": "رأس السنة الهجرية",
-        "LB": "عيد رأس السنة الهجرية",
-        "LY": "عيد رأس السنة الهجرية",
-        "MA": "رأس السنة الهجرية",
-        "OM": "رأس السنة الهجرية",
-        "SY": "رأس السنة الهجرية",
-        "TN": "رأس السنة الهجرية"
-      },
+      "ar": "رأس السنة الهجرية",
       "ar_EG": "رأس السنة الهجرية",
       "ar_SD": "رأس السنة الهجرية",
       "coa_CC": "Tahun Baru Hijriah",
@@ -17439,7 +17054,6 @@
         "DZ": "Awal Moharram",
         "EG": "Fête de l'Hégire",
         "EH": "Premier jour de l'an de l'Hégire",
-        "LB": "Hégire",
         "MA": "Nouvel an musulman"
       },
       "fr_NE": "Jour de l'An musulman",
@@ -17464,16 +17078,31 @@
       "IQ",
       "JO",
       "KW",
-      "LB",
-      "LY",
       "MA",
       "MV",
       "MY",
       "NE",
       "OM",
+      "PS",
       "SD",
       "SY",
       "TN"
+    ]
+  },
+  {
+    "id": "islamic_new_year_day",
+    "msgid": "Islamic New Year Day",
+    "new_comment": "",
+    "comment": "Islamic New Year Day.",
+    "messages": {
+      "ar": "عيد رأس السنة الهجرية",
+      "en_US": "Islamic New Year Day",
+      "fr": "Hégire"
+    },
+    "countries": [
+      "LB",
+      "LY",
+      "YE"
     ]
   },
   {
@@ -17534,20 +17163,7 @@
     ]
   },
   {
-    "id": "isra_and_mi_raj_1",
-    "msgid": "Isra and Mi'raj",
-    "new_comment": "",
-    "comment": "Isra and Mi'raj.",
-    "messages": {
-      "ar": "ذكرى الإسراء والمعراج",
-      "en_US": "Isra and Mi'raj"
-    },
-    "countries": [
-      "LY"
-    ]
-  },
-  {
-    "id": "isra_and_mi_raj_2",
+    "id": "isra_and_mi_raj",
     "msgid": "Isra' and Mi'raj",
     "new_comment": "",
     "comment": "Isra' and Mi'raj.",
@@ -17557,6 +17173,7 @@
         "DJ": "الإسراء والمعراج",
         "JO": "ليلة المعراج",
         "KW": "ليلة المعراج",
+        "LY": "ذكرى الإسراء والمعراج",
         "OM": "الإسراء والمعراج",
         "PS": "ذكرى الإسراء والمعراج",
         "YE": "ذكرى الإسراء والمعراج"
@@ -17578,6 +17195,7 @@
       "IR",
       "JO",
       "KW",
+      "LY",
       "MY",
       "OM",
       "PS",
@@ -18670,6 +18288,7 @@
         "PA": "Día del Trabajo",
         "PE": "Día del Trabajo",
         "SV": "Día del Trabajo",
+        "XMAD": "Día del Trabajo",
         "XMEX": "Día del Trabajo"
       },
       "fil": "Araw ng Paggawa",
@@ -18708,6 +18327,7 @@
       "it": "Festa del lavoro",
       "it_IT": "Festa del Lavoro",
       "kab": "Ass n yixeddamen",
+      "ko": "노동절",
       "ky": "Эмгек майрамы",
       "lb": "Dag vun der Aarbecht",
       "lv": "Darba svētki",
@@ -18791,6 +18411,7 @@
       "JO",
       "KE",
       "KG",
+      "KR",
       "LB",
       "LC",
       "LI",
@@ -18836,6 +18457,7 @@
       "US",
       "XCME",
       "XETR",
+      "XMAD",
       "XMEX",
       "XNYS",
       "XTSE",
@@ -21807,6 +21429,20 @@
     ]
   },
   {
+    "id": "national_banking_holiday",
+    "msgid": "National Banking Holiday",
+    "new_comment": "",
+    "comment": "National Banking Holiday.",
+    "messages": {
+      "en_US": "National Banking Holiday",
+      "gu": "રાષ્ટ્રીય બેંકિંગ રજા",
+      "hi": "राष्ट्रीय बैंकिंग अवकाश"
+    },
+    "countries": [
+      "XNYS"
+    ]
+  },
+  {
     "id": "national_census_day_2010",
     "msgid": "National Census Day 2010",
     "new_comment": "",
@@ -21900,7 +21536,7 @@
         "CH": "Nationalfeiertag",
         "LI": "Staatsfeiertag",
         "LU": "Nationalfeiertag",
-        "PL": "Tag der Arbeit"
+        "PL": "Nationalfeiertag"
       },
       "dv": "ޤައުމީ ދުވަސް",
       "dz": "རྒྱལ་ཡོངས་དུས་ཆེན་གྱི་ངལ་གསོལ།",
@@ -22092,20 +21728,6 @@
     },
     "countries": [
       "ES"
-    ]
-  },
-  {
-    "id": "national_day_of_indigenous_peoples",
-    "msgid": "National Day of Indigenous Peoples",
-    "new_comment": "",
-    "comment": "National Day of Indigenous Peoples.",
-    "messages": {
-      "en_US": "National Day of Indigenous Peoples",
-      "es": "Día Nacional de los Pueblos Indígenas",
-      "uk": "Національний день корінних народів"
-    },
-    "countries": [
-      "CL"
     ]
   },
   {
@@ -22732,20 +22354,30 @@
     "new_comment": "",
     "comment": "National Independence Day.",
     "messages": {
-      "de": "Nationalfeiertag der Unabhängigkeit",
+      "az": "Milli Müstəqillik Günü",
+      "de": "Tag der Nationalen Unabhängigkeit",
       "en_US": "National Independence Day",
       "es": "Día de la Independencia Nacional",
+      "fr": "Fête de l'Indépendance Nationale",
       "fr_HT": "Fête de l'Indépendance Nationale",
       "ht": "Jounen Endepandans Nasyonal",
       "km": "ពិធីបុណ្យឯករាជ្យជាតិ",
       "pt_AO": "Dia da Independência Nacional",
+      "pt_CV": "Dia da Independência Nacional",
+      "pt_MZ": "Dia da Independência Nacional",
       "th": "วันประกาศเอกราชจากฝรั่งเศส",
       "uk": "День національної незалежності"
     },
     "countries": [
       "AO",
+      "AZ",
+      "CV",
+      "DO",
+      "GQ",
       "HT",
-      "KH"
+      "KH",
+      "MZ",
+      "PY"
     ]
   },
   {
@@ -22776,6 +22408,20 @@
     },
     "countries": [
       "PL"
+    ]
+  },
+  {
+    "id": "national_indigenous_peoples_day",
+    "msgid": "National Indigenous Peoples Day",
+    "new_comment": "",
+    "comment": "National Indigenous Peoples Day.",
+    "messages": {
+      "en_US": "National Indigenous Peoples Day",
+      "es": "Día Nacional de los Pueblos Indígenas",
+      "uk": "Національний день корінних народів"
+    },
+    "countries": [
+      "CL"
     ]
   },
   {
@@ -22814,10 +22460,15 @@
     "messages": {
       "az": "Azərbaycan xalqının milli qurtuluş günü",
       "en_US": "National Liberation Day",
-      "uk": "День національного визволення азербайджанського народу"
+      "es": "Día de la Liberación Nacional",
+      "uk": {
+        "AZ": "День національного визволення азербайджанського народу",
+        "CL": "День національного визволення"
+      }
     },
     "countries": [
-      "AZ"
+      "AZ",
+      "CL"
     ]
   },
   {
@@ -23104,17 +22755,24 @@
     "messages": {
       "ar": "عيد الوحدة الوطنية",
       "en_US": "National Unity Day",
-      "es": "Fiesta de la unidad nacional",
+      "es": {
+        "CL": "Día de la Unidad Nacional",
+        "EH": "Fiesta de la unidad nacional"
+      },
       "fr": "Fête de l'unité nationale",
       "it_IT": "Giorno dell'unità nazionale",
       "ka": "ეროვნული ერთიანობის დღე",
+      "ru": "День Национального единства",
+      "tg": "Рӯзи Ваҳдати миллӣ",
       "th": "วันเอกภาพแห่งชาติ",
       "uk": "День національної єдності"
     },
     "countries": [
+      "CL",
       "EH",
       "GE",
-      "IT"
+      "IT",
+      "TJ"
     ]
   },
   {
@@ -23496,8 +23154,8 @@
       "ar": {
         "AE": "رأس السنة الميلادية",
         "BH": "رأس السنة الميلادية",
-        "CA": "يوم السنة الجديدة",
-        "DJ": "يوم السنة الجديدة",
+        "CA": "رأس السنة الميلادية",
+        "DJ": "رأس السنة الميلادية",
         "DZ": "رأس السنة الميلادية",
         "IQ": "رأس السنة الميلادية",
         "JO": "رأس السنة الميلادية",
@@ -23507,7 +23165,7 @@
         "PS": "رأس السنة الميلادي",
         "SY": "عيد رأس السنة الميلادية",
         "TN": "رأس السنة الميلادية",
-        "UA": "السنة الجديدة",
+        "UA": "رأس السنة الميلادية",
         "XTSE": "يوم السنة الجديدة"
       },
       "ar_QA": "رأس السنة الميلادية",
@@ -23927,6 +23585,7 @@
       "XCME",
       "XETR",
       "XK",
+      "XMAD",
       "XMEX",
       "XNSE",
       "XNYS",
@@ -23954,14 +23613,19 @@
       "en_HK": "New Year's Eve",
       "en_MO": "New Year's Eve",
       "en_PH": "Last Day of the Year",
+      "en_SG": "New Year's Eve",
       "en_US": "New Year's Eve",
-      "es": "Fiesta de Fin de Año",
+      "es": {
+        "CU": "Fiesta de Fin de Año",
+        "VE": "Fiesta de Fin de Año",
+        "XMAD": "Nochevieja"
+      },
       "fi": "Uudenvuodenaatto",
       "fil": "Bisperas ng Bagong Taon",
       "fo": "Nýggjársaftan",
       "fr": {
         "CH": "Réveillon du Nouvel An",
-        "LU": "Saint Sylvestre",
+        "LU": "Saint-Sylvestre",
         "XSWX": "Réveillon de la Saint-Sylvestre"
       },
       "gu": "નવા વર્ષની પૂર્વસંધ્યા",
@@ -24019,7 +23683,9 @@
       "VE",
       "XETR",
       "XHKG",
+      "XMAD",
       "XNYS",
+      "XSES",
       "XSWX"
     ]
   },
@@ -24121,6 +23787,32 @@
     },
     "countries": [
       "ME"
+    ]
+  },
+  {
+    "id": "no_cable_settlement",
+    "msgid": "No cable settlement",
+    "new_comment": "",
+    "comment": "No cable settlement.",
+    "messages": {
+      "en_US": "No cable settlement",
+      "es": "Sin liquidación cable"
+    },
+    "countries": [
+      "XBUE"
+    ]
+  },
+  {
+    "id": "no_local_settlement",
+    "msgid": "No local settlement",
+    "new_comment": "",
+    "comment": "No local settlement.",
+    "messages": {
+      "en_US": "No local settlement",
+      "es": "Sin liquidación local"
+    },
+    "countries": [
+      "XBUE"
     ]
   },
   {
@@ -24289,25 +23981,6 @@
     ]
   },
   {
-    "id": "ochi_day",
-    "msgid": "Greek National Day",
-    "new_comment": "",
-    "comment": "Ochi Day.",
-    "messages": {
-      "el": "Ημέρα του Όχι",
-      "en_CY": "Ochi Day",
-      "en_US": {
-        "CY": "Greek National Day",
-        "GR": "Ochi Day"
-      },
-      "uk": "День Охі"
-    },
-    "countries": [
-      "CY",
-      "GR"
-    ]
-  },
-  {
     "id": "october_revolution_day",
     "msgid": "October Revolution Day",
     "new_comment": "",
@@ -24360,6 +24033,22 @@
     },
     "countries": [
       "BG"
+    ]
+  },
+  {
+    "id": "ohi_day",
+    "msgid": "Ohi Day",
+    "new_comment": "",
+    "comment": "Ohi Day.",
+    "messages": {
+      "el": "Ημέρα του Όχι",
+      "en_CY": "Ohi Day",
+      "en_US": "Ohi Day",
+      "uk": "День Охі"
+    },
+    "countries": [
+      "CY",
+      "GR"
     ]
   },
   {
@@ -24753,6 +24442,20 @@
     },
     "countries": [
       "IT"
+    ]
+  },
+  {
+    "id": "our_lady_of_mount_carmel",
+    "msgid": "Our Lady of Mount Carmel",
+    "new_comment": "",
+    "comment": "Our Lady of Mount Carmel.",
+    "messages": {
+      "en_US": "Our Lady of Mount Carmel",
+      "es": "Virgen del Carmen",
+      "uk": "Матір Божа Кармельська"
+    },
+    "countries": [
+      "CL"
     ]
   },
   {
@@ -25497,10 +25200,10 @@
       "mk": "Духовден",
       "nl": {
         "BE": "Pinksteren",
-        "BQ": "Eerste Pinksterdag",
+        "BQ": "Eerste pinksterdag",
         "CW": "Pinksterzondag",
-        "NL": "Eerste Pinksterdag",
-        "SX": "Eerste Pinksterdag"
+        "NL": "Eerste pinksterdag",
+        "SX": "Eerste pinksterdag"
       },
       "no": "Første pinsedag",
       "pap_BQ": "Dia di Pentekòste",
@@ -25624,7 +25327,7 @@
       "mg": "Alatsinain'ny pentekosta",
       "nl": {
         "BE": "Pinkstermaandag",
-        "NL": "Tweede Pinksterdag"
+        "NL": "Tweede pinksterdag"
       },
       "no": "Andre pinsedag",
       "pl": "Drugi dzień Zielonych Świątek",
@@ -26842,7 +26545,7 @@
     ]
   },
   {
-    "id": "public_holiday_1",
+    "id": "public_holiday",
     "msgid": "Public Holiday",
     "new_comment": "",
     "comment": "Public Holiday.",
@@ -26855,47 +26558,38 @@
       "en_MU": "Public Holiday",
       "en_NA": "Public Holiday",
       "en_US": "Public Holiday",
+      "es": "Asueto adicional",
       "fa_IR": "تعطیلی عمومی",
+      "fr": "Jour férié",
+      "fr_MC": "Jour férié",
+      "fr_SN": "Jour férié",
       "it_IT": "Giorno Festivo",
       "ka": "უქმე დღე",
       "sq": "Ditë pushimi",
       "th": "วันหยุดพิเศษ (เพิ่มเติม)",
-      "uk": "Вихідний день"
-    },
-    "countries": [
-      "AL",
-      "BD",
-      "BM",
-      "GE",
-      "GY",
-      "IR",
-      "IT",
-      "LY",
-      "MU",
-      "NA"
-    ]
-  },
-  {
-    "id": "public_holiday_2",
-    "msgid": "Public holiday",
-    "new_comment": "",
-    "comment": "Public holiday.",
-    "messages": {
-      "en_US": "Public holiday",
-      "es": "Asueto adicional",
-      "fr": "Jour férié",
-      "fr_MC": "Jour férié",
-      "fr_SN": "Jour férié",
       "tr": "Genel tati̇l",
       "uk": {
+        "AL": "Вихідний день",
+        "GE": "Вихідний день",
         "MC": "Державне свято",
+        "NA": "Вихідний день",
         "PY": "Додатковий вихідний",
         "TR": "Загальний вихідний"
       }
     },
     "countries": [
+      "AL",
+      "BD",
+      "BM",
       "GA",
+      "GE",
+      "GY",
+      "IR",
+      "IT",
+      "LY",
       "MC",
+      "MU",
+      "NA",
       "PY",
       "SN",
       "TR"
@@ -28669,6 +28363,20 @@
     ]
   },
   {
+    "id": "s_markets_close_at_12_00_p_m_sgt",
+    "msgid": "%s (markets close at 12:00 p.m. SGT)",
+    "new_comment": "",
+    "comment": "%s (markets close at 12:00 p.m. SGT).",
+    "messages": {
+      "en_SG": "%s (markets close at 12:00 p.m. SGT)",
+      "en_US": "%s (markets close at 12:00 p.m. SGT)",
+      "th": "%s (ตลาดปิดเวลา 12:00 น. SGT)"
+    },
+    "countries": [
+      "XSES"
+    ]
+  },
+  {
     "id": "s_markets_close_at_12_00pm",
     "msgid": "%s (markets close at 12:00pm)",
     "new_comment": "",
@@ -28694,6 +28402,19 @@
     },
     "countries": [
       "XNYS"
+    ]
+  },
+  {
+    "id": "s_markets_close_at_14_00_cet",
+    "msgid": "%s (markets close at 14:00 CET)",
+    "new_comment": "",
+    "comment": "%s (markets close at 14:00 CET).",
+    "messages": {
+      "en_US": "%s (markets close at 14:00 CET)",
+      "es": "%s (los mercados cierran a las 14:00 CET)"
+    },
+    "countries": [
+      "XMAD"
     ]
   },
   {
@@ -28761,10 +28482,12 @@
     "comment": "%s (markets close at 3:00pm).",
     "messages": {
       "en_US": "%s (markets close at 3:00pm)",
+      "es": "%s (el mercado cierra a las 15:00)",
       "gu": "%s (બજારો બપોરે 3:00 વાગ્યે બંધ થાય છે)",
       "hi": "%s (बाज़ार दोपहर 3:00 बजे बंद होते हैं)"
     },
     "countries": [
+      "XBUE",
       "XNYS"
     ]
   },
@@ -28947,21 +28670,7 @@
     ]
   },
   {
-    "id": "s_observed_1",
-    "msgid": "%s (observed)",
-    "new_comment": "",
-    "comment": "%s (observed)",
-    "messages": {
-      "en_US": "%s (observed)",
-      "gu": "%s (મનાવવામાં આવે છે)",
-      "hi": "%s (मनाया गया)"
-    },
-    "countries": [
-      "XNYS"
-    ]
-  },
-  {
-    "id": "s_observed_2",
+    "id": "s_observed",
     "msgid": "%s (observed)",
     "new_comment": "",
     "comment": "%s (observed).",
@@ -28996,6 +28705,7 @@
       "en_NF": "%s (observed)",
       "en_NG": "%s (observed)",
       "en_NR": "%s (observed)",
+      "en_NU": "%s (observed)",
       "en_SC": "%s (observed)",
       "en_SG": "%s (observed)",
       "en_SL": "%s (observed)",
@@ -29025,11 +28735,13 @@
         "CX": "%s (observed)",
         "EC": "%s (observed)",
         "EG": "%s (observed)",
+        "FK": "%s (observed)",
         "FM": "%s (observed)",
         "GB": "%s (observed)",
         "GD": "%s (observed)",
         "GI": "%s (observed)",
         "GM": "%s (observed)",
+        "GQ": "%s (observed)",
         "GR": "%s (observed)",
         "GS": "%s (observed)",
         "GY": "%s (observed)",
@@ -29038,6 +28750,7 @@
         "IL": "%s (observed)",
         "KE": "%s (observed)",
         "KG": "%s (observed)",
+        "KY": "%s (observed)",
         "KZ": "%s (observed)",
         "LB": "%s (observed)",
         "LC": "%s (observed)",
@@ -29051,6 +28764,7 @@
         "NF": "%s (observed)",
         "NG": "%s (observed)",
         "NR": "%s (observed)",
+        "NU": "%s (observed)",
         "PA": "%s (observed)",
         "RS": "%s (observed)",
         "RU": "%s (observed)",
@@ -29075,6 +28789,7 @@
         "VG": "%s (observed)",
         "VN": "%s (observed)",
         "XK": "%s (observed)",
+        "XNYS": "%s (observed)",
         "YE": "%s (observed)"
       },
       "en_VC": "%s (observed)",
@@ -29086,6 +28801,7 @@
         "CR": "%s (observado)",
         "CU": "%s (observado)",
         "EC": "%s (observado)",
+        "GQ": "%s (observado)",
         "PA": "%s (puente)"
       },
       "fr": "%s (observé)",
@@ -29093,7 +28809,9 @@
       "fr_MC": "%s (reporté)",
       "fr_NE": "%s (observé)",
       "fr_SN": "%s (observé)",
+      "gu": "%s (મનાવવામાં આવે છે)",
       "he": "%s (נצפה)",
+      "hi": "%s (मनाया गया)",
       "id": "Pegangti %s",
       "kk": "%s (қайта белгіленген демалыс)",
       "ky": "%s (көрүлгөн күнү)",
@@ -29152,11 +28870,13 @@
       "CX",
       "EC",
       "EG",
+      "FK",
       "FM",
       "GB",
       "GD",
       "GI",
       "GM",
+      "GQ",
       "GR",
       "GS",
       "GY",
@@ -29165,6 +28885,7 @@
       "IL",
       "KE",
       "KG",
+      "KY",
       "KZ",
       "LB",
       "LC",
@@ -29178,6 +28899,7 @@
       "NF",
       "NG",
       "NR",
+      "NU",
       "PA",
       "RS",
       "RU",
@@ -29202,36 +28924,30 @@
       "VG",
       "VN",
       "XK",
+      "XNYS",
       "YE"
     ]
   },
   {
-    "id": "s_observed_3",
-    "msgid": "%s (observed)",
-    "new_comment": "",
-    "comment": "%s observed.",
-    "messages": {
-      "en_GB": "%s (observed)",
-      "en_NU": "%s (observed)",
-      "en_US": "%s (observed)",
-      "es": "%s (observado)"
-    },
-    "countries": [
-      "FK",
-      "GQ",
-      "KY",
-      "NU"
-    ]
-  },
-  {
-    "id": "s_observed_estimated_1",
+    "id": "s_observed_estimated",
     "msgid": "%s (observed, estimated)",
     "new_comment": "",
-    "comment": "%s (observed, estimated)",
+    "comment": "%s (observed, estimated).",
     "messages": {
+      "ar": "%s (يوم تعويضي تقديري)",
+      "bn": "%s (পালিত, আনুমানিক)",
+      "en_HK": "%s (observed, estimated)",
+      "en_SG": "%s (observed, estimated)",
       "en_US": "%s (observed, estimated)",
+      "es": "%s (observado, estimado)",
+      "fr": "%s (observé, estimé)",
       "ru": "%s (выходной, приблизительная дата)",
-      "tk": "%s (dynç güni, çak edilýär)"
+      "th": "ชดเชย%s (โดยประมาณ)",
+      "tk": "%s (dynç güni, çak edilýär)",
+      "uk": "%s (вихідний, приблизна дата)",
+      "zh_CN": "%s（补假，推定）",
+      "zh_HK": "%s（補假，推定）",
+      "zh_TW": "%s（補假，推定）"
     },
     "countries": [
       "TM"
@@ -30513,7 +30229,7 @@
     "messages": {
       "ar": "عيد مار مارون",
       "en_US": "Saint Maron's Day",
-      "fr": "Saint Maron"
+      "fr": "Saint-Maron"
     },
     "countries": [
       "LB"
@@ -31021,11 +30737,7 @@
       },
       "en_US": "Saint Stephen's Day",
       "es": "San Esteban",
-      "fr": {
-        "CH": "Saint-Étienne",
-        "FR": "Saint Étienne",
-        "LU": "Saint Etienne"
-      },
+      "fr": "Saint-Étienne",
       "hr": "Sveti Stjepan",
       "it": {
         "CH": "Giorno di Santo Stefano",
@@ -31048,7 +30760,8 @@
       "LI",
       "LU",
       "SM",
-      "VA"
+      "VA",
+      "XMAD"
     ]
   },
   {
@@ -31790,14 +31503,7 @@
       "kl": "Juullip-aappaa",
       "lt": "Šv. Kalėdų antra diena",
       "lv": "Otrie Ziemassvētki",
-      "nl": {
-        "AW": "Tweede kerstdag",
-        "BQ": "Tweede Kerstdag",
-        "CW": "Tweede kerstdag",
-        "NL": "Tweede Kerstdag",
-        "SR": "Tweede Kerstdag",
-        "SX": "Tweede Kerstdag"
-      },
+      "nl": "Tweede kerstdag",
       "no": "Andre juledag",
       "pap_AW": "Di dos dia di Pasco di Nacemento",
       "pap_BQ": "Di dos dia di Pasku",
@@ -32609,13 +32315,7 @@
     "new_comment": "",
     "comment": "Special Bank Holiday.",
     "messages": {
-      "en_US": {
-        "LA": "Special Bank Holiday",
-        "LK": "Special Bank Holiday",
-        "XNYS": "National Banking Holiday"
-      },
-      "gu": "રાષ્ટ્રીય બેંકિંગ રજા",
-      "hi": "राष्ट्रीय बैंकिंग अवकाश",
+      "en_US": "Special Bank Holiday",
       "lo": "ມື້ປິດການໃຫ້ບໍລິການຂອງທະນາຄານຕົວແທນ",
       "si_LK": "විශේෂ බැංකු නිවාඩු දිනය",
       "ta_LK": "விசேட வங்கி விடுமுறை",
@@ -32623,8 +32323,7 @@
     },
     "countries": [
       "LA",
-      "LK",
-      "XNYS"
+      "LK"
     ]
   },
   {
@@ -32655,38 +32354,29 @@
     ]
   },
   {
-    "id": "special_public_holiday_1",
+    "id": "special_public_holiday",
     "msgid": "Special Public Holiday",
     "new_comment": "",
     "comment": "Special Public Holiday.",
     "messages": {
       "en_AI": "Special Public Holiday",
+      "en_AU": "Special Public Holiday",
       "en_MS": "Special Public Holiday",
       "en_US": "Special Public Holiday",
       "km": "ថ្ងៃឈប់សម្រាកសងជំនួស",
       "si_LK": "විශේෂ රජයේ නිවාඩු දිනය",
       "ta_LK": "விசேட பொது விடுமுறை",
-      "th": "วันหยุดชดเชย"
+      "th": {
+        "AU": "วันหยุดพิเศษ",
+        "KH": "วันหยุดชดเชย"
+      }
     },
     "countries": [
       "AI",
+      "AU",
       "KH",
       "LK",
       "MS"
-    ]
-  },
-  {
-    "id": "special_public_holiday_2",
-    "msgid": "Special public holiday",
-    "new_comment": "",
-    "comment": "Special public holiday.",
-    "messages": {
-      "en_AU": "Special public holiday",
-      "en_US": "Special public holiday",
-      "th": "วันหยุดพิเศษ"
-    },
-    "countries": [
-      "AU"
     ]
   },
   {
@@ -33127,7 +32817,9 @@
     "new_comment": "",
     "comment": "Substituted date format.",
     "messages": {
+      "ar": "%d/%m/%Y",
       "az": "%d.%m.%Y",
+      "be": "%d.%m.%Y",
       "bg": "%d.%m.%Y",
       "en_US": "%m/%d/%Y",
       "hu": "%Y. %m. %d.",
@@ -33136,19 +32828,31 @@
       "ky": "%d.%m.%Y",
       "lv": "%d.%m.%Y",
       "my": "%d-%m-%Y",
+      "ru": "%d.%m.%Y",
       "ru_KG": "%d.%m.%Y",
       "th": "%d/%m/%Y",
-      "uk": "%d.%m.%Y"
+      "uk": "%d.%m.%Y",
+      "uz": "%d/%m %Y",
+      "vi": "%d/%m/%Y",
+      "zh_CN": "%Y-%m-%d",
+      "zh_TW": "%Y-%m-%d"
     },
     "countries": [
       "AM",
       "AZ",
       "BG",
+      "BY",
+      "CN",
       "HU",
       "KG",
       "KZ",
       "LV",
-      "MM"
+      "MM",
+      "RU",
+      "TW",
+      "UA",
+      "UZ",
+      "VN"
     ]
   },
   {
@@ -34607,7 +34311,7 @@
     "id": "throne_day",
     "msgid": "Throne Day",
     "new_comment": "",
-    "comment": "Throne day.",
+    "comment": "Throne Day.",
     "messages": {
       "ar": "عيد العرش",
       "en_US": "Throne Day",
@@ -35408,6 +35112,7 @@
     "new_comment": "",
     "comment": "Vesak Day.",
     "messages": {
+      "en_SG": "Vesak Day",
       "en_US": "Vesak Day",
       "id": "Hari Raya Waisak",
       "ms_MY": "Hari Wesak",
@@ -35416,20 +35121,7 @@
     },
     "countries": [
       "ID",
-      "MY"
-    ]
-  },
-  {
-    "id": "vesak_day_type_ignore_arg_type",
-    "msgid": "Vesak Day",
-    "new_comment": "",
-    "comment": "Vesak Day.\ntype: ignore[arg-type]",
-    "messages": {
-      "en_SG": "Vesak Day",
-      "en_US": "Vesak Day",
-      "th": "วันวิสาขบูชา"
-    },
-    "countries": [
+      "MY",
       "SG"
     ]
   },
@@ -36202,11 +35894,11 @@
         "TW": "วันสตรีสากล"
       },
       "uk": {
-        "AZ": "Жіночий день",
-        "DE": "Жіночий день",
-        "MG": "Жіночий день",
+        "AZ": "День жінок",
+        "DE": "День жінок",
+        "MG": "День жінок",
         "MZ": "День жінок Мозамбіку",
-        "UZ": "Жіночий день"
+        "UZ": "День жінок"
       },
       "uz": "Xotin-qizlar kuni",
       "zh_CN": "妇女节",
@@ -36279,7 +35971,7 @@
       "es": "Día de los Trabajadores",
       "it": "Festa dei lavoratori",
       "ko": "근로자의날",
-      "th": "วันแรงงาน",
+      "th": "วันกรรมกร",
       "uk": "День трудящих"
     },
     "countries": [
@@ -36387,6 +36079,19 @@
     ]
   },
   {
+    "id": "year_end_market_holiday",
+    "msgid": "Year-end market holiday",
+    "new_comment": "",
+    "comment": "Year-end market holiday.",
+    "messages": {
+      "en_US": "Year-end market holiday",
+      "es": "Feriado bursátil de fin de año"
+    },
+    "countries": [
+      "XBUE"
+    ]
+  },
+  {
     "id": "yom_ha_atzmaut_independence_day",
     "msgid": "Independence Day",
     "new_comment": "",
@@ -36422,10 +36127,7 @@
     "new_comment": "",
     "comment": "Yom Kippur.",
     "messages": {
-      "ar": {
-        "DZ": "يوم الغفران",
-        "IQ": "يوم الكفارة"
-      },
+      "ar": "عيد الغفران",
       "cnr": "Jom Kipur",
       "en_US": "Yom Kippur",
       "es": "Día del Perdón (Iom Kipur)",
