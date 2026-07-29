@@ -59,7 +59,7 @@ class India(
         * Maharashtra:
             * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
         * Mizoram:
-            * <https://dipr.mizoram.gov.in/post/holidays-to-be-observed-in-government-offices-during-the-year-2026>
+            * <http://mizoram.nic.in/gov/hols.htm>
         * Punjab:
             * <https://web.archive.org/web/20260216022835/https://punjab.gov.in/wp-content/uploads/2025/12/Calender-2026.pdf>
         * Tamil Nadu:
