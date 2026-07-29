@@ -1030,6 +1030,7 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_hola_mohalla(self):
         name = "Hola Mohalla"
+        self.assertNoHolidayName(name)
         dts = (
             "2020-03-10",
             "2021-03-29",
@@ -1039,7 +1040,6 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-03-14",
         )
         self.assertSubdivPbOptionalHolidayName(name, dts)
-        self.assertNoHolidayName(name)
 
     def test_chaitra_navratri(self):
         name = "1st Navratra"
