@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-07-29 02:44+0530\n"
-"Last-Translator: FULL NAME <EMAIL@EXAMPLE.COM>\n"
+"PO-Revision-Date: 2026-07-29 20:25+0530\n"
+"Last-Translator: Harsh Baghel <hk5324519@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ml\n"
 "MIME-Version: 1.0\n"
@@ -352,9 +352,9 @@ msgstr "മധ്യപ്രദേശ് സ്ഥാപനദിനം"
 msgid "Mizoram State Day"
 msgstr "മിസോരം സംസ്ഥാനദിനം"
 
-#. Remna Ni (Peace Accord Day).
-msgid "Remna Ni (Peace Accord Day)"
-msgstr "റെമ്നാ നി (സമാധാന കരാർ ദിനം)"
+#. Peace Accord Day.
+msgid "Remna Ni"
+msgstr "റെമ്നാ നി"
 
 #. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"
