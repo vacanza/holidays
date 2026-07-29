@@ -66,7 +66,7 @@ class Djibouti(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         # Eid al-Fitr Holiday.
         self._add_eid_al_fitr_day_two(tr("Eid al-Fitr deuxième jour"))
 
-        # Arafat Day.
+        # Day of Arafah.
         self._add_arafah_day(tr("Arafat"))
 
         # Eid al-Adha.

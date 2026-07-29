@@ -98,7 +98,7 @@ msgstr "Defender of Ukraine Day"
 msgid "Річниця Великої Жовтневої соціалістичної революції"
 msgstr "Anniversary of the Great October Socialist Revolution"
 
-#. Date format (see strftime() Format Codes)
+#. Substituted date format.
 msgid "%d.%m.%Y"
 msgstr "%m/%d/%Y"
 

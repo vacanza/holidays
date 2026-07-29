@@ -25,7 +25,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         self.assertHolidayName("Nieuwjaarsdag", (f"{year}-01-01" for year in self.full_range))
 
     def test_good_friday(self):
-        name = "Goede Vrijdag"
+        name = "Goede vrijdag"
         self.assertHolidayName(
             name,
             "2020-04-10",
@@ -38,7 +38,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_easter_sunday(self):
-        name = "Eerste Paasdag"
+        name = "Eerste paasdag"
         self.assertHolidayName(
             name,
             "2020-04-12",
@@ -51,7 +51,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
-        name = "Tweede Paasdag"
+        name = "Tweede paasdag"
         self.assertHolidayName(
             name,
             "2020-04-13",
@@ -105,7 +105,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_whit_sunday(self):
-        name = "Eerste Pinksterdag"
+        name = "Eerste pinksterdag"
         self.assertHolidayName(
             name,
             "2020-05-31",
@@ -118,10 +118,10 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_christmas_day(self):
-        self.assertHolidayName("Eerste Kerstdag", (f"{year}-12-25" for year in self.full_range))
+        self.assertHolidayName("Eerste kerstdag", (f"{year}-12-25" for year in self.full_range))
 
     def test_boxing_day(self):
-        self.assertHolidayName("Tweede Kerstdag", (f"{year}-12-26" for year in self.full_range))
+        self.assertHolidayName("Tweede kerstdag", (f"{year}-12-26" for year in self.full_range))
 
     def test_rincon_day(self):
         name = "Rincondag"
@@ -225,21 +225,21 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2023-01-01", "Nieuwjaarsdag"),
-            ("2023-04-07", "Goede Vrijdag"),
-            ("2023-04-09", "Eerste Paasdag"),
-            ("2023-04-10", "Tweede Paasdag"),
+            ("2023-04-07", "Goede vrijdag"),
+            ("2023-04-09", "Eerste paasdag"),
+            ("2023-04-10", "Tweede paasdag"),
             ("2023-04-27", "Koningsdag"),
             ("2023-04-30", "Rincondag"),
             ("2023-05-01", "Dag van de Arbeid"),
             ("2023-05-18", "Hemelvaartsdag"),
-            ("2023-05-28", "Eerste Pinksterdag"),
+            ("2023-05-28", "Eerste pinksterdag"),
             ("2023-07-01", "Emancipatiedag"),
             ("2023-07-31", "Dag na de carnavalsoptocht"),
             ("2023-09-06", "Bonairedag"),
             ("2023-11-16", "Statiadag"),
             ("2023-12-01", "Sabadag"),
-            ("2023-12-25", "Eerste Kerstdag"),
-            ("2023-12-26", "Tweede Kerstdag"),
+            ("2023-12-25", "Eerste kerstdag"),
+            ("2023-12-26", "Tweede kerstdag"),
         )
 
     def test_l10n_en_bq(self):

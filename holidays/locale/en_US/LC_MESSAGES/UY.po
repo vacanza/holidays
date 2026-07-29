@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.30\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-17 14:06+0300\n"
-"PO-Revision-Date: 2023-07-17 14:11+0300\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -60,9 +60,9 @@ msgstr "Humanity Day"
 msgid "Jura de la Constitución"
 msgstr "Constitution Day"
 
-#. Independence Day.
+#. Independence Declaration Day.
 msgid "Declaratoria de la Independencia"
-msgstr "Independence Day"
+msgstr "Independence Declaration Day"
 
 #. Italy Day.
 msgid "Día de Italia"
@@ -76,9 +76,9 @@ msgstr "Open Town Hall"
 msgid "Día de las Playas"
 msgstr "Beaches Day"
 
-#. Day of the Family.
+#. Family Day.
 msgid "Día de la Familia"
-msgstr "Day of the Family"
+msgstr "Family Day"
 
 #. Children's Day.
 msgid "Día de los Niños"

@@ -218,7 +218,7 @@ class UkraineStaticHolidays:
         * [1995](https://web.archive.org/web/20220713111605/https://zakon.rada.gov.ua/laws/show/13/95)
     """
 
-    # Date format (see strftime() Format Codes)
+    # Substituted date format.
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
     substituted_label = tr("Вихідний день (перенесено з %s)")

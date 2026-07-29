@@ -97,7 +97,7 @@ msgstr ""
 msgid "Дзень народнага адзінства"
 msgstr ""
 
-#. Date format (see strftime() Format Codes)
+#. Substituted date format.
 msgid "%d.%m.%Y"
 msgstr ""
 

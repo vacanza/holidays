@@ -83,7 +83,7 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
             # National Holiday.
             self._add_holiday_may_14(tr("Feriado Nacional"))
 
-        # Independence Day.
+        # National Independence Day.
         self._add_holiday_may_15(tr("Día de la Independencia Nacional"))
 
         dates_obs = {
@@ -149,7 +149,7 @@ class ParaguayStaticHolidays:
         * <https://web.archive.org/web/20250917075032/https://portal.ips.gov.py/sistemas/ipsportal/archivos/archivos/1744391513.pdf>
     """
 
-    # Public holiday.
+    # Public Holiday.
     public_holiday = tr("Asueto adicional")
     # Public sector holiday.
     public_sector_holiday = tr("Asueto de la Administración Pública")

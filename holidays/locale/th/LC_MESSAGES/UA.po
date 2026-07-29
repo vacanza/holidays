@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-08 19:40+0300\n"
-"PO-Revision-Date: 2026-06-30 22:18+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-07-28 23:07+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -59,7 +59,7 @@ msgstr "วันแรงงาน"
 
 #. International Workers' Solidarity Day.
 msgid "День міжнародної солідарності трудящих"
-msgstr "วันสมานฉันท์แรงงานสากล"
+msgstr "วันสมานฉันท์กรรมกรสากล"
 
 #. Day of Remembrance and Victory over Nazism in World War II 1939-1945.
 msgid "День памʼяті та перемоги над нацизмом у Другій світовій війні 1939-1945 років"
@@ -97,7 +97,7 @@ msgstr "วันผู้พิทักษ์ยูเครน"
 msgid "Річниця Великої Жовтневої соціалістичної революції"
 msgstr "วันครบรอบการปฏิวัติสังคมนิยมแห่งเดือนตุลาคมอันยิ่งใหญ่"
 
-#. Date format (see strftime() Format Codes)
+#. Substituted date format.
 msgid "%d.%m.%Y"
 msgstr "%d/%m/%Y"
 

@@ -142,8 +142,8 @@ class Guyana(
         )
 
         self._add_observed(
-            # Day after Christmas.
-            self._add_christmas_day_two(tr("Day after Christmas")),
+            # Day After Christmas.
+            self._add_christmas_day_two(tr("Day After Christmas")),
             rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
