@@ -163,7 +163,7 @@ msgstr "Commemoration Day of the Lifting of Martial Law"
 msgid "臺灣聯合國日"
 msgstr "Taiwan United Nations Day"
 
-#. Date format (see strftime() Format Codes).
+#. Substituted date format.
 msgid "%Y-%m-%d"
 msgstr "%m/%d/%Y"
 

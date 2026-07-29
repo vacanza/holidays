@@ -95,9 +95,9 @@ msgstr "Eid al-Fitr (Second Day)"
 msgid "Hari Raya Qurban"
 msgstr "Eid al-Adha"
 
-#. Deepavali.
+#. Diwali.
 msgid "Hari Deepavali"
-msgstr "Deepavali"
+msgstr "Diwali"
 
 #. Thaipusam.
 msgid "Hari Thaipusam"
@@ -135,9 +135,9 @@ msgstr "Birthday of the Sultan of Kelantan"
 msgid "Hari Nuzul Al-Quran"
 msgstr "Nuzul Al-Quran Day"
 
-#. Arafat Day.
+#. Day of Arafah.
 msgid "Hari Arafah"
-msgstr "Arafat Day"
+msgstr "Day of Arafah"
 
 #. New Year's Day.
 msgid "Tahun Baharu"

@@ -95,7 +95,7 @@ msgstr ""
 msgid "Hari Raya Qurban"
 msgstr ""
 
-#. Deepavali.
+#. Diwali.
 msgid "Hari Deepavali"
 msgstr ""
 
@@ -135,7 +135,7 @@ msgstr ""
 msgid "Hari Nuzul Al-Quran"
 msgstr ""
 
-#. Arafat Day.
+#. Day of Arafah.
 msgid "Hari Arafah"
 msgstr ""
 

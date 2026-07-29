@@ -72,7 +72,7 @@ class TestMorocco(CommonCountryTests, TestCase):
         self.assertNoHoliday("1944-01-11")
 
     def test_independence_day(self):
-        self.assertHolidayName("عيد الإستقلال", "1957-11-18")
+        self.assertHolidayName("عيد الاستقلال", "1957-11-18")
         self.assertHolidayName("عيد العرش", "1956-11-18", "1957-11-18")
 
     def test_hijri_based(self):
@@ -111,7 +111,7 @@ class TestMorocco(CommonCountryTests, TestCase):
             ("2023-09-27", "عيد المولد النبوي (تقديري)"),
             ("2023-09-28", "عيد المولد النبوي (تقديري)"),
             ("2023-11-06", "ذكرى المسيرة الخضراء"),
-            ("2023-11-18", "عيد الإستقلال"),
+            ("2023-11-18", "عيد الاستقلال"),
         )
 
     def test_l10n_en_us(self):

@@ -75,7 +75,7 @@ class Kuwait(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
         self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
 
-        # Arafat Day.
+        # Day of Arafah.
         self._add_arafah_day(tr("يوم عرفة"))
 
         # Eid al-Adha.

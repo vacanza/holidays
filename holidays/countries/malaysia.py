@@ -253,7 +253,7 @@ class Malaysia(
 
     def _populate_subdiv_holidays(self):
         if self.subdiv and self.subdiv not in {"13", "15"}:
-            # Deepavali.
+            # Diwali.
             self.dts_observed.add(self._add_diwali(tr("Hari Deepavali")))
 
         super()._populate_subdiv_holidays()
@@ -327,7 +327,7 @@ class Malaysia(
         self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
         if self._year >= 2023:
-            # Arafat Day.
+            # Day of Arafah.
             self.dts_observed.update(self._add_arafah_day(tr("Hari Arafah")))
 
         # Eid al-Adha (Second Day).
@@ -504,7 +504,7 @@ class Malaysia(
         # Nuzul Al-Quran Day.
         self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
-        # Arafat Day.
+        # Day of Arafah.
         self.dts_observed.update(self._add_arafah_day(tr("Hari Arafah")))
 
         self.dts_observed.update(
@@ -588,7 +588,7 @@ class Malaysia(
         self._add_holiday_may_31(name)
 
         if self._year >= 2014:
-            # Deepavali.
+            # Diwali.
             self.dts_observed.add(self._add_diwali(tr("Hari Deepavali")))
 
         # Nuzul Al-Quran Day.
@@ -977,7 +977,7 @@ class MalaysiaStaticHolidays:
         ),
     }
     special_11_public_holidays_observed = {
-        # Arafat Day.
+        # Day of Arafah.
         2007: (JAN, 2, tr("Hari Arafah")),
         2022: (MAY, 4, labor_day),
     }

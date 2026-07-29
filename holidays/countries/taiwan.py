@@ -342,7 +342,7 @@ class TaiwanStaticHolidays:
         * [2026](https://web.archive.org/web/20251220074207/https://www.dgpa.gov.tw/en/information?uid=353&pid=12580)
     """
 
-    # Date format (see strftime() Format Codes).
+    # Substituted date format.
     substituted_date_format = tr("%Y-%m-%d")
 
     # Day off (substituted from %s).

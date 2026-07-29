@@ -183,7 +183,7 @@ class Macau(
         # The Day following Mid-Autumn Festival.
         self._add_mid_autumn_festival_day_two(tr("中秋節翌日"))
 
-        # All Soul's Day.
+        # All Souls' Day.
         self._add_all_souls_day(tr("追思節"))
 
         # Immaculate Conception.
@@ -334,7 +334,7 @@ class Macau(
         # The day following National Day of the People's Republic of China.
         dts_observed.add(self._add_holiday_oct_2(tr("中華人民共和國國慶日翌日")))
 
-        # All Soul's Day.
+        # All Souls' Day.
         dts_observed.add(self._add_all_souls_day(tr("追思節")))
 
         # Immaculate Conception.
