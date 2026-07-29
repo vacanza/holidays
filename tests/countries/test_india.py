@@ -1752,7 +1752,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-06-02", "Telangana Formation Day"),
             ("2018-06-15", "Jumu'atul-Wida"),
             ("2018-06-16", "Eid al-Fitr; Maharana Pratap Jayanti"),
-            ("2018-06-30", "Remna Ni"),
+            ("2018-06-30", "Peace Accord Day"),
             ("2018-07-14", "Rath Yatra"),
             ("2018-08-06", "Bonalu"),
             ("2018-08-15", "Independence Day"),
