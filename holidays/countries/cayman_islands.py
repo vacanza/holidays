@@ -38,7 +38,7 @@ class CaymanIslands(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
     country = "KY"
     default_language = "en_GB"
-    # %s observed.
+    # %s (observed).
     observed_label = tr("%s (observed)")
     # Earliest year of holidays with an accessible online record.
     start_year = 2006

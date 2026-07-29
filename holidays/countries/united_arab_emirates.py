@@ -118,7 +118,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
             # Ramadan 30 not confirmed yet for 2025 onwards.
             self._add_eid_al_fitr_eve(eid_al_fitr_holiday)
 
-        # Arafat Day.
+        # Day of Arafah.
         self._add_arafah_day(tr("وقفة عرفة"))
 
         # Eid al-Adha.

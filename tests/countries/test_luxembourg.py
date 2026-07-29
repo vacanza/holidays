@@ -254,8 +254,8 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-11-01", "Toussaint"),
             ("2022-12-24", "Veille de Noël (après-midi)"),
             ("2022-12-25", "Noël"),
-            ("2022-12-26", "Saint Etienne"),
-            ("2022-12-31", "Saint Sylvestre"),
+            ("2022-12-26", "Saint-Étienne"),
+            ("2022-12-31", "Saint-Sylvestre"),
         )
 
     def test_l10n_uk(self):

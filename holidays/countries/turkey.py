@@ -225,6 +225,6 @@ class TurkeyIslamicHolidays(_CustomIslamicHolidays):
 
 class TurkeyStaticHolidays:
     special_public_holidays = {
-        # Public holiday.
+        # Public Holiday.
         1999: (DEC, 31, tr("Genel tati̇l"))
     }

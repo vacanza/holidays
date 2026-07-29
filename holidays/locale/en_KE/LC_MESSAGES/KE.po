@@ -99,7 +99,7 @@ msgstr ""
 msgid "Boxing Day"
 msgstr ""
 
-#. Eid-al-Fitr.
+#. Eid al-Fitr.
 msgid "Idd-ul-Fitr"
 msgstr ""
 
@@ -107,7 +107,7 @@ msgstr ""
 msgid "Diwali"
 msgstr ""
 
-#. Eid-al-Adha.
+#. Eid al-Adha.
 msgid "Idd-ul-Azha"
 msgstr ""
 

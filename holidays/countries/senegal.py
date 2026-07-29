@@ -176,7 +176,7 @@ class SenegalStaticHolidays:
         * [26th December, 2022 Public holiday](https://web.archive.org/web/20250608135605/https://primature.sn/publications/conseil-des-ministres/conseil-des-ministres-du-22-decembre-2022)
     """
 
-    # Public holiday.
+    # Public Holiday.
     name = tr("Jour férié")
     special_public_holidays = {
         2018: (OCT, 29, name),

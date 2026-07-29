@@ -133,7 +133,7 @@ msgstr ""
 msgid "عید سعید قربان"
 msgstr ""
 
-#. Eid al-Ghadeer.
+#. Eid al-Ghadir.
 msgid "عید سعید غدیر خم"
 msgstr ""
 
