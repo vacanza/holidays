@@ -125,7 +125,7 @@ msgstr "Araw ng Halalan (Walang Trabajo)"
 msgid "Christmas Eve"
 msgstr "Bisperas ng Pasko"
 
-#. All Saints' Day Eve.
+#. All Saints' Eve.
 msgid "All Saints' Day Eve"
 msgstr "Bisperas ng Araw ng mga Santo"
 

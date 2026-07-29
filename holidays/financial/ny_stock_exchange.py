@@ -52,7 +52,7 @@ class NewYorkStockExchange(
     market = "XNYS"
     default_language = "en_US"
     supported_languages = ("en_US", "gu", "hi")
-    # %s (observed)
+    # %s (observed).
     observed_label = tr("%s (observed)")
     start_year = 1863
     supported_categories = (HALF_DAY, PUBLIC)
@@ -333,7 +333,7 @@ class NewYorkStockExchangeStaticHolidays:
     # Catch Up Day.
     name_catch_up_day = tr("Catch Up Day")
 
-    # Special Bank Holiday.
+    # National Banking Holiday.
     name_national_banking_holiday = tr("National Banking Holiday")
 
     # V-J Day. End of World War II.
@@ -700,8 +700,8 @@ class NewYorkStockExchangeStaticHolidays:
         1950: (DEC, 23, tr("Saturday before Christmas Eve")),
         1954: (DEC, 24, name_christmas_eve),
         1956: (DEC, 24, name_christmas_eve),
-        # Day after Christmas.
-        1958: (DEC, 26, tr("Day after Christmas")),
+        # Day After Christmas.
+        1958: (DEC, 26, tr("Day After Christmas")),
         # Day before Decoration Day.
         1961: (MAY, 29, tr("Day before Decoration Day")),
         # Funeral of President John F. Kennedy.

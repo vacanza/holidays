@@ -153,7 +153,7 @@ class BelarusStaticHolidays:
         * [2026](https://web.archive.org/web/20251230174418/https://belarusbank.by/en/financial-institutions/11163)
     """
 
-    # Date format (see strftime() Format Codes)
+    # Substituted date format.
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
     substituted_label = tr("Выходны (перанесены з %s)")

@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-06-17 23:55+0530\n"
-"PO-Revision-Date: 2026-06-30 21:57+0300\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -32,15 +32,15 @@ msgid "Nieuwjaarsdag"
 msgstr "New Year's Day"
 
 #. Good Friday.
-msgid "Goede Vrijdag"
+msgid "Goede vrijdag"
 msgstr "Good Friday"
 
 #. Easter Sunday.
-msgid "Eerste Paasdag"
+msgid "Eerste paasdag"
 msgstr "Easter Sunday"
 
 #. Easter Monday.
-msgid "Tweede Paasdag"
+msgid "Tweede paasdag"
 msgstr "Easter Monday"
 
 #. King's Day.
@@ -60,15 +60,15 @@ msgid "Hemelvaartsdag"
 msgstr "Ascension Day"
 
 #. Pentecost.
-msgid "Eerste Pinksterdag"
+msgid "Eerste pinksterdag"
 msgstr "Pentecost"
 
 #. Christmas Day.
-msgid "Eerste Kerstdag"
+msgid "Eerste kerstdag"
 msgstr "Christmas Day"
 
 #. Second Day of Christmas.
-msgid "Tweede Kerstdag"
+msgid "Tweede kerstdag"
 msgstr "Second Day of Christmas"
 
 #. Rincon Day.

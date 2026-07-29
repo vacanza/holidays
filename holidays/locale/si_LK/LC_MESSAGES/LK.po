@@ -65,7 +65,7 @@ msgstr ""
 msgid "මහ සිවරාත්රි දිනය"
 msgstr ""
 
-#. Deepavali Festival Day.
+#. Diwali.
 msgid "දීපවාලි උත්සව දිනය"
 msgstr ""
 

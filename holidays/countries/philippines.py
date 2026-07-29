@@ -314,7 +314,7 @@ class PhilippinesStaticHolidays:
         2025: (
             (MAY, 12, election_special),
             (JUL, 27, additional_special),
-            # All Saints' Day Eve.
+            # All Saints' Eve.
             (OCT, 31, tr("All Saints' Day Eve")),
             (DEC, 24, christmas_eve),
         ),
