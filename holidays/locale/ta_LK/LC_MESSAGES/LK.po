@@ -65,7 +65,7 @@ msgstr "நத்தார் பண்டிகை"
 msgid "මහ සිවරාත්රි දිනය"
 msgstr "மகா சிவராத்திரி தினம்"
 
-#. Deepavali Festival Day.
+#. Diwali.
 msgid "දීපවාලි උත්සව දිනය"
 msgstr "தீபாவளிப் பண்டிகை தினம்"
 

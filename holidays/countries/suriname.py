@@ -82,10 +82,10 @@ class Suriname(
             self._add_holiday_feb_25(tr("Dag van Bevrijding en Vernieuwing"))
 
         # Good Friday.
-        self._add_good_friday(tr("Goede Vrijdag"))
+        self._add_good_friday(tr("Goede vrijdag"))
 
         # Easter Monday.
-        self._add_easter_monday(tr("Tweede Paasdag"))
+        self._add_easter_monday(tr("Tweede paasdag"))
 
         if self._year <= 1975:
             # Birthday of H.M. the Queen.
@@ -117,10 +117,10 @@ class Suriname(
             )
 
         # Christmas Day.
-        self._add_christmas_day(tr("Eerste Kerstdag"))
+        self._add_christmas_day(tr("Eerste kerstdag"))
 
         # Second Day of Christmas.
-        self._add_christmas_day_two(tr("Tweede Kerstdag"))
+        self._add_christmas_day_two(tr("Tweede kerstdag"))
 
         # Holi.
         self._add_holi(tr("Holi-Phagwa"))

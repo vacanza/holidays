@@ -51,7 +51,7 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         self._add_new_years_day(tr("Nieuwjaarsdag"))
 
         # Good Friday.
-        self._add_good_friday(tr("Goede Vrijdag"))
+        self._add_good_friday(tr("Goede vrijdag"))
 
         # Easter Sunday.
         self._add_easter_sunday(tr("Eerste paasdag"))
@@ -79,16 +79,16 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         self._add_ascension_thursday(tr("Hemelvaartsdag"))
 
         # Pentecost.
-        self._add_pentecost(tr("Eerste Pinksterdag"))
+        self._add_pentecost(tr("Eerste pinksterdag"))
 
         # Pentecost Monday.
-        self._add_pentecost_monday(tr("Tweede Pinksterdag"))
+        self._add_pentecost_monday(tr("Tweede pinksterdag"))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Eerste Kerstdag"))
+        self._add_christmas_day(tr("Eerste kerstdag"))
 
         # Second Day of Christmas.
-        self._add_christmas_day_two(tr("Tweede Kerstdag"))
+        self._add_christmas_day_two(tr("Tweede kerstdag"))
 
     def _populate_optional_holidays(self):
         if self._year >= 1982:
