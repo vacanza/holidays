@@ -18,8 +18,8 @@ from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG,
 from holidays.helpers import _normalize_tuple
 
 ANANT_CHATURDASHI = "ANANT_CHATURDASHI"
-BATHUKAMMA = "BATHUKAMMA"
 BASANT_PANCHAMI = "BASANT_PANCHAMI"
+BATHUKAMMA = "BATHUKAMMA"
 BONALU = "BONALU"
 BUDDHA_PURNIMA = "BUDDHA_PURNIMA"
 CHAITRA_NAVRATRI = "CHAITRA_NAVRATRI"
@@ -42,9 +42,9 @@ KABIR_JAYANTI = "KABIR_JAYANTI"
 KARWA_CHAUTH = "KARWA_CHAUTH"
 MAHA_ASHTAMI = "MAHA_ASHTAMI"
 MAHA_NAVAMI = "MAHA_NAVAMI"
+MAHA_SHIVARATRI = "MAHA_SHIVARATRI"
 MAHARANA_PRATAP_JAYANTI = "MAHARANA_PRATAP_JAYANTI"
 MAHARISHI_VALMIKI_JAYANTI = "MAHARISHI_VALMIKI_JAYANTI"
-MAHA_SHIVARATRI = "MAHA_SHIVARATRI"
 MAHAVIR_JAYANTI = "MAHAVIR_JAYANTI"
 MAKAR_SANKRANTI = "MAKAR_SANKRANTI"
 NARAKA_CHATURDASHI = "NARAKA_CHATURDASHI"
@@ -2225,11 +2225,11 @@ class _HinduLunisolar:
     def janmashtami_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(JANMASHTAMI, year)
 
-    def karwa_chauth_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(KARWA_CHAUTH, year)
-
     def kabir_jayanti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(KABIR_JAYANTI, year)
+
+    def karwa_chauth_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(KARWA_CHAUTH, year)
 
     def maha_ashtami_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHA_ASHTAMI, year)
