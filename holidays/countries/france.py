@@ -191,7 +191,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Established on August 16th, 1892.
         if self._year >= 1892:
             # Saint Stephen's Day.
-            self._add_christmas_day_two(tr("Saint Étienne"))
+            self._add_christmas_day_two(tr("Saint-Étienne"))
 
     # Alsace.
     def _populate_subdiv_6ae_public_holidays(self):
@@ -203,7 +203,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Established on August 16th, 1892.
         if self._year >= 1892:
             # Saint Stephen's Day.
-            self._add_christmas_day_two(tr("Saint Étienne"))
+            self._add_christmas_day_two(tr("Saint-Étienne"))
 
     # Guadeloupe.
     def _populate_subdiv_971_public_holidays(self):

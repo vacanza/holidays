@@ -47,7 +47,7 @@ msgstr "%s (পালিত, আনুমানিক)"
 msgid "عطلة عيد الفطر"
 msgstr "ঈদুল ফিতরের ছুটি"
 
-#. Arafat Day.
+#. Day of Arafah.
 msgid "يوم عرفة"
 msgstr "আরাফাত দিবস"
 

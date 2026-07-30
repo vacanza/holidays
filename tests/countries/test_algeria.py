@@ -211,7 +211,7 @@ class TestAlgeria(CommonCountryTests, TestCase):
         self.assertHebrewHolidayName(name, self.full_range)
 
     def test_yom_kippur(self):
-        name = "يوم الغفران"
+        name = "عيد الغفران"
         self.assertNoHolidayName(name)
         self.assertHebrewHolidayName(
             name,
@@ -281,7 +281,7 @@ class TestAlgeria(CommonCountryTests, TestCase):
             ("2022-08-08", "عاشورة (تقديري)"),
             ("2022-08-15", "عيد انتقال السيدة العذراء"),
             ("2022-09-26", "رأس السنة العبرية"),
-            ("2022-10-05", "يوم الغفران"),
+            ("2022-10-05", "عيد الغفران"),
             ("2022-10-08", "عيد المولد النبوي (تقديري)"),
             ("2022-11-01", "عيد الثورة"),
             ("2022-12-25", "عيد الميلاد"),

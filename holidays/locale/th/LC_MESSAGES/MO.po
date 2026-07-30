@@ -101,7 +101,7 @@ msgstr "วันเสาร์ศักดิ์สิทธิ์"
 msgid "端午節"
 msgstr "วันไหว้บ๊ะจ่าง"
 
-#. All Soul's Day.
+#. All Souls' Day.
 msgid "追思節"
 msgstr "วันภาวนาอุทิศแด่ผู้ล่วงลับ"
 

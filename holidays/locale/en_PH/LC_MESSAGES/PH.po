@@ -125,7 +125,7 @@ msgstr ""
 msgid "Christmas Eve"
 msgstr ""
 
-#. All Saints' Day Eve.
+#. All Saints' Eve.
 msgid "All Saints' Day Eve"
 msgstr ""
 

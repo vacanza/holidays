@@ -93,7 +93,7 @@ class Singapore(
         kwargs.setdefault("observed_since", 1998)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self) -> None:
+    def _populate_public_holidays(self):
         dts_observed = set()
 
         # New Year's Day.
@@ -101,8 +101,8 @@ class Singapore(
 
         # Chinese New Year.
         name = tr("Chinese New Year")
-        dts_observed.add(self._add_chinese_new_years_day(name))  # type: ignore[arg-type]
-        dts_observed.add(self._add_chinese_new_years_day_two(name))  # type: ignore[arg-type]
+        dts_observed.add(self._add_chinese_new_years_day(name))
+        dts_observed.add(self._add_chinese_new_years_day_two(name))
 
         # Eid al-Fitr.
         dts_observed.update(self._add_eid_al_fitr_day(tr("Hari Raya Puasa")))
@@ -127,13 +127,13 @@ class Singapore(
         dts_observed.add(self._add_labor_day(tr("Labour Day")))
 
         # Vesak Day.
-        dts_observed.add(self._add_vesak(tr("Vesak Day")))  # type: ignore[arg-type]
+        dts_observed.add(self._add_vesak(tr("Vesak Day")))
 
         # National Day.
         dts_observed.add(self._add_holiday_aug_9(tr("National Day")))
 
-        # Deepavali.
-        dts_observed.add(self._add_diwali(tr("Deepavali")))  # type: ignore[arg-type]
+        # Diwali.
+        dts_observed.add(self._add_diwali(tr("Deepavali")))
 
         # Christmas Day.
         dts_observed.add(self._add_christmas_day(tr("Christmas Day")))

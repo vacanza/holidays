@@ -98,7 +98,7 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
                 # Add 4 Shawwal.
                 self._add_islamic_observed(self._add_holiday(eid_al_fitr_name, _timedelta(dt, +3)))
 
-        # Arafat Day.
+        # Day of Arafah.
         self._add_arafah_day(tr("يوم عرفة"))
 
         # Eid al-Adha Holiday.

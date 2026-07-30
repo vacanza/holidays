@@ -38,7 +38,7 @@ class Turkmenistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
     estimated_label = tr("%s (çak edilýär)")
     # %s (observed).
     observed_label = tr("%s (dynç güni)")
-    # %s (observed, estimated)
+    # %s (observed, estimated).
     observed_estimated_label = tr("%s (dynç güni, çak edilýär)")
     start_year = 1992
     supported_languages = ("en_US", "ru", "tk")

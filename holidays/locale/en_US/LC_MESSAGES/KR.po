@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-10-26 23:49+0700\n"
-"PO-Revision-Date: 2025-09-07 14:05+0300\n"
+"PO-Revision-Date: 2026-07-27 16:44+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -80,6 +80,10 @@ msgstr "Buddha's Birthday"
 #. Buddha's Birthday.
 msgid "석가탄신일"
 msgstr "Buddha's Birthday"
+
+#. Labor Day.
+msgid "노동절"
+msgstr "Labor Day"
 
 #. Children's Day.
 msgid "어린이날"

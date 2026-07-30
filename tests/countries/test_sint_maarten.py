@@ -25,7 +25,7 @@ class TestSintMaarten(CommonCountryTests, TestCase):
         self.assertHolidayName("Nieuwjaarsdag", (f"{year}-01-01" for year in range(2011, 2050)))
 
     def test_good_friday(self):
-        name = "Goede Vrijdag"
+        name = "Goede vrijdag"
         self.assertHolidayName(
             name,
             "2020-04-10",
@@ -125,7 +125,7 @@ class TestSintMaarten(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2011, 2050))
 
     def test_whit_sunday(self):
-        name = "Eerste Pinksterdag"
+        name = "Eerste pinksterdag"
         self.assertHolidayName(
             name,
             "2020-05-31",
@@ -186,44 +186,44 @@ class TestSintMaarten(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(2015, 2050))
 
     def test_christmas(self):
-        self.assertHolidayName("Eerste Kerstdag", (f"{year}-12-25" for year in range(2011, 2050)))
-        self.assertHolidayName("Tweede Kerstdag", (f"{year}-12-26" for year in range(2011, 2050)))
+        self.assertHolidayName("Eerste kerstdag", (f"{year}-12-25" for year in range(2011, 2050)))
+        self.assertHolidayName("Tweede kerstdag", (f"{year}-12-26" for year in range(2011, 2050)))
 
     def test_2017(self):
         self.assertHolidaysInYear(
             2017,
             ("2017-01-01", "Nieuwjaarsdag"),
-            ("2017-04-14", "Goede Vrijdag"),
+            ("2017-04-14", "Goede vrijdag"),
             ("2017-04-16", "Eerste paasdag"),
             ("2017-04-17", "Tweede paasdag"),
             ("2017-04-27", "Koningsdag"),
             ("2017-05-02", "Carnavalsdag"),
             ("2017-05-01", "Dag van de Arbeid"),
             ("2017-05-25", "Hemelvaartsdag"),
-            ("2017-06-04", "Eerste Pinksterdag"),
+            ("2017-06-04", "Eerste pinksterdag"),
             ("2017-07-01", "Dag van de Bevrijding"),
             ("2017-10-09", "Dag van de Constitutie"),
             ("2017-11-11", "Sint-Maartensdag"),
-            ("2017-12-25", "Eerste Kerstdag"),
-            ("2017-12-26", "Tweede Kerstdag"),
+            ("2017-12-25", "Eerste kerstdag"),
+            ("2017-12-26", "Tweede kerstdag"),
         )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Nieuwjaarsdag"),
-            ("2022-04-15", "Goede Vrijdag"),
+            ("2022-04-15", "Goede vrijdag"),
             ("2022-04-17", "Eerste paasdag"),
             ("2022-04-18", "Tweede paasdag"),
             ("2022-04-27", "Koningsdag"),
             ("2022-04-29", "Carnavalsdag"),
             ("2022-05-01", "Dag van de Arbeid"),
             ("2022-05-26", "Hemelvaartsdag"),
-            ("2022-06-05", "Eerste Pinksterdag"),
+            ("2022-06-05", "Eerste pinksterdag"),
             ("2022-07-01", "Dag van de Bevrijding"),
             ("2022-10-10", "Dag van de Constitutie"),
             ("2022-11-11", "Sint-Maartensdag"),
-            ("2022-12-25", "Eerste Kerstdag"),
-            ("2022-12-26", "Tweede Kerstdag"),
+            ("2022-12-25", "Eerste kerstdag"),
+            ("2022-12-26", "Tweede kerstdag"),
         )
 
     def test_l10n_en_us(self):

@@ -81,6 +81,6 @@ msgstr ""
 msgid "Le jour de Noël"
 msgstr ""
 
-#. Public holiday.
+#. Public Holiday.
 msgid "Jour férié"
 msgstr ""

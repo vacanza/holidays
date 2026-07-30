@@ -130,7 +130,7 @@ class Egypt(
         self._add_eid_al_fitr_day(name)
         self._add_eid_al_fitr_day_two(name)
 
-        # Arafat Day.
+        # Day of Arafah.
         self._add_arafah_day(tr("وقفة عيد الأضحى المبارك"))
 
         # Eid al-Adha.
