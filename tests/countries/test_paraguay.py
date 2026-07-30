@@ -109,6 +109,15 @@ class TestParaguay(CommonCountryTests, TestCase):
             "2025-06-16",
         )
 
+    def test_constitution_oath_day(self):
+        name = "Día de la Jura de la Constitución Nacional"
+        self.assertHolidayName(
+            name,
+            (f"{year}-06-20" for year in range(2026, self.end_year) if year not in {2026}),
+            "2026-06-22",
+        )
+        self.assertNoHolidayName(name, range(self.start_year, 2026))
+
     def test_asuncion_foundations_day(self):
         self.assertHolidayName(
             "Día de la Fundación de Asunción",
