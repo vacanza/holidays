@@ -2059,7 +2059,6 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-05-16", "Sikkim State Day"),
             ("2018-06-02", "Telangana Formation Day"),
             ("2018-06-15", "Jumu'atul-Wida"),
-            ("2018-06-16", "Eid al-Fitr; Maharana Pratap Jayanti"),
             ("2018-06-16", "Eid al-Fitr; Maharana Pratap's Birthday"),
             ("2018-06-17", "Guru Arjun Dev's Martyrdom Day"),
             ("2018-06-27", "Maharaja Ranjit Singh's Death Anniversary"),
