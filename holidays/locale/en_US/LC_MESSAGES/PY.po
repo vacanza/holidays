@@ -64,6 +64,10 @@ msgstr "National Independence Day"
 msgid "Día de la Paz del Chaco"
 msgstr "Chaco Armistice Day"
 
+#. Constitution Oath Day.
+msgid "Día de la Jura de la Constitución Nacional"
+msgstr "Constitution Oath Day"
+
 #. Asuncion Foundation's Day.
 msgid "Día de la Fundación de Asunción"
 msgstr "Asuncion Foundation's Day"

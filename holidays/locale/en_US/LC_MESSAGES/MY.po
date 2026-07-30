@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-04-28 21:03+0300\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"PO-Revision-Date: 2026-07-26 01:26+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -243,6 +243,10 @@ msgstr "Additional holiday"
 msgid "Cuti Piala Malaysia"
 msgstr "Malaysia Cup Holiday"
 
+#. Eid al-Fitr (additional holiday).
+msgid "Hari Raya Puasa (pergantian hari)"
+msgstr "Eid al-Fitr (additional holiday)"
+
 #. Day of Installation of the 15th Yang di-Pertuan Agong.
 msgid "Hari Pertabalan Yang di-Pertuan Agong ke-15"
 msgstr "Day of Installation of the 15th Yang di-Pertuan Agong"
@@ -254,7 +258,3 @@ msgstr "Additional holiday in commemoration of the 2017 SEA Games"
 #. Day of Installation of the 16th Yang di-Pertuan Agong.
 msgid "Hari Pertabalan Yang di-Pertuan Agong ke-16"
 msgstr "Day of Installation of the 16th Yang di-Pertuan Agong"
-
-#. Eid al-Fitr (additional holiday).
-msgid "Hari Raya Puasa (pergantian hari)"
-msgstr "Eid al-Fitr (additional holiday)"
