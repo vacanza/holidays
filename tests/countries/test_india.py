@@ -1204,9 +1204,9 @@ class TestIndia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "MZ":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-06-30" for year in range(1986, self.end_year))
+                    name, holidays, (f"{year}-06-30" for year in range(1987, self.end_year))
                 )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 1986))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1987))
             else:
                 self.assertNoHolidayName(name, holidays)
 

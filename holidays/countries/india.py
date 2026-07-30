@@ -592,7 +592,7 @@ class India(
     def _populate_subdiv_mz_public_holidays(self):
         # Mizoram State Day.
         self._add_holiday_feb_20(tr("Mizoram State Day"))
-        if self._year >= 1986:
+        if self._year >= 1987:
             # Peace Accord Day.
             self._add_holiday_jun_30(tr("Remna Ni"))
 
