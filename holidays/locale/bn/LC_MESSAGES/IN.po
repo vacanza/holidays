@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.101\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-07-25 00:32+0530\n"
+"PO-Revision-Date: 2026-07-30 18:01+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: bn\n"
@@ -368,8 +368,8 @@ msgstr "মহারানা প্রতাপ জয়ন্তী"
 msgid "Mahesh Navami"
 msgstr ""
 
-#. Veerangana Dugravati's Martyrdom Day.
-msgid "Veerangana Dugravati's Shaheedi Diwas"
+#. Veerangana Durgavati's Martyrdom Day.
+msgid "Veerangana Durgavati's Shaheedi Diwas"
 msgstr ""
 
 #. Naag Panchami.
@@ -401,6 +401,7 @@ msgid "Shaheed Veer Narayan Singh's Shaheedi Diwas"
 msgstr ""
 
 #. Dattatreya's Birthday.
+#. Dattareya's Birthday.
 msgid "Dattatreya's Jayanti"
 msgstr ""
 
@@ -556,9 +557,49 @@ msgstr "মহারাষ্ট্র দিবস"
 msgid "Diwali (Bali Pratipada)"
 msgstr ""
 
-#. Madhya Pradesh Foundation Day.
-msgid "Madhya Pradesh Foundation Day"
-msgstr "মধ্যপ্রদেশ প্রতিষ্ঠা দিবস"
+#. Tribal Pride Day.
+msgid "Janjatiya Gaurav Divas"
+msgstr ""
+
+#. Maharishi Guru Gokuldas's Birthday.
+msgid "Maharshi Guru Gokuldas's Jayanti"
+msgstr ""
+
+#. Hemu Kalani's Martyrdom Day.
+msgid "Hemu Kalani's Shaheedi Diwas"
+msgstr ""
+
+#. Lord Meenesh's Birthday.
+msgid "Bhagvan Meenesh's Jayanti"
+msgstr ""
+
+#. Mahatma Jyotiba Phule's Birthday.
+msgid "Mahatma Jyotiba Phule's Jayanti"
+msgstr ""
+
+#. Guru Purnima.
+msgid "Guru Purnima"
+msgstr ""
+
+#. Durgadas Rathore's Birthday.
+msgid "Durgadas Rathore's Jayanti"
+msgstr ""
+
+#. Tulsidas's Birthday.
+msgid "Tulsidas's Jayanti"
+msgstr ""
+
+#. Vishwakarma Puja.
+msgid "Vishwakarma Puja"
+msgstr ""
+
+#. Dol Gyaras.
+msgid "Dol Gyaras"
+msgstr ""
+
+#. International Day of Persons with Disabilities
+msgid "Vishva Divyang Divas"
+msgstr ""
 
 #. Mizoram State Day.
 msgid "Mizoram State Day"
@@ -628,10 +669,6 @@ msgstr ""
 msgid "New Punjab Day"
 msgstr "নতুন পাঞ্জাব দিবস"
 
-#. Mahatma Jyotiba Phule's Birthday.
-msgid "Mahatma Jyotiba Phule's Jayanti"
-msgstr ""
-
 #. Khejarli's Martyrdom Day.
 msgid "Khejarli's Shaheedi Diwas"
 msgstr ""
@@ -678,10 +715,6 @@ msgstr "বোনালু"
 
 #. Harela.
 msgid "Harela"
-msgstr ""
-
-#. Vishwakarma Puja.
-msgid "Vishwakarma Puja"
 msgstr ""
 
 #. Easter Monday.
@@ -747,6 +780,12 @@ msgstr "বিনায়ক চতুর্থী"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "জন্মাষ্টমী (স্মার্ত)"
+
+#~ msgid "Veerangana Dugravati's Shaheedi Diwas"
+#~ msgstr ""
+
+#~ msgid "Madhya Pradesh Foundation Day"
+#~ msgstr "মধ্যপ্রদেশ প্রতিষ্ঠা দিবস"
 
 #~ msgid "Chhattisgarh Foundation Day"
 #~ msgstr "ছত্তিশগড় প্রতিষ্ঠা দিবস"

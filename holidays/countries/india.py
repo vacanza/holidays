@@ -72,6 +72,8 @@ class India(
             * <https://web.archive.org/web/20260329164551/https://kerala.gov.in/showcalendar/2026>
         * Ladakh:
             * <http://web.archive.org/web/20260627104706/https://www.veerayeehr.com/wp-content/uploads/2025/12/Ladakh-state-list-of-holidays-2026.pdf>
+        * Madhya Pradesh:
+            * <https://archive.org/details/madhya-pradesh-government-2026-holidays-notification>
         * Maharashtra:
             * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
         * Punjab:
@@ -502,7 +504,7 @@ class India(
     # Assam.
     def _populate_subdiv_as_public_holidays(self):
         # Magh Bihu.
-        self._add_makar_sankranti(tr("Magh Bihu"))
+        self._add_pongal(tr("Magh Bihu"))
         # Assam Day.
         self._add_holiday_dec_2(tr("Assam Day"))
 
@@ -538,7 +540,7 @@ class India(
         pass
 
     def _populate_subdiv_cg_government_holidays(self):
-        self._populate_public_holidays(self)
+        self._populate_public_holidays()
         # International Day of the World's Indigenous Peoples.
         self._add_holiday_aug_9(tr("International Day of Adivasi Peoples"))
         # Maa Shakambhari's Birthday.
@@ -581,8 +583,8 @@ class India(
         self._add_maharana_pratap_jayanti(tr("Maharana Pratap's Jayanti"))
         # Mahesh Navami.
         self._add_mahesh_navami(tr("Mahesh Navami"))
-        # Veerangana Dugravati's Martyrdom Day.
-        self._add_holiday_jun_24(tr("Veerangana Dugravati's Shaheedi Diwas"))
+        # Veerangana Durgavati's Martyrdom Day.
+        self._add_holiday_jun_24(tr("Veerangana Durgavati's Shaheedi Diwas"))
         # Naag Panchami.
         self._add_naag_panchami(tr("Naag Panchami"))
         # Harchath.
@@ -619,7 +621,7 @@ class India(
         # Ugadi.
         self._add_gudi_padwa(tr("Ugadi"))
         # Cheti Chand.
-        self._add_cheti_chand(tr("Cheti Chand"))
+        self._add_gudi_padwa(tr("Cheti Chand"))
         # Parsi New Year (Shahenshahi).
         self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
         # Raksha Bandhan.
@@ -668,7 +670,7 @@ class India(
         # Makar Sankranti.
         self._add_makar_sankranti(tr("Uttarayan"))
         # Cheti Chand.
-        self._add_cheti_chand(tr("Cheti Chand"))
+        self._add_gudi_padwa(tr("Cheti Chand"))
         # Lord Shri Parshuram's Birthday.
         self._add_parshuram_jayanti(tr("Bhagvan Shri Parshuram's Jayanti"))
         # Raksha Bandhan.
@@ -830,8 +832,83 @@ class India(
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
-        # Madhya Pradesh Foundation Day.
-        self._add_holiday_nov_1(tr("Madhya Pradesh Foundation Day"))
+        # Raksha Bandhan.
+        self._add_raksha_bandhan(tr("Raksha Bandhan"))
+        # Govardhan Puja.
+        self._add_govardhan_puja(tr("Govardhan Puja"))
+        # Veerangana Avantibai's Martyrdom Day.
+        self._add_holiday_mar_20(tr("Veerangana Avantibai's Shaheedi Diwas"))
+
+    def _populate_subdiv_mp_government_holidays(self):
+        self._populate_public_holidays()
+        # Gudi Padwa.
+        self._add_gudi_padwa(tr("Gudi Padwa"))
+        # Cheti Chand.
+        self._add_gudi_padwa(tr("Cheti Chand"))
+        # Lord Shri Parshuram's Birthday.
+        self._add_parshuram_jayanti(tr("Bhagvan Shri Parshuram's Jayanti"))
+        # Raksha Bandhan.
+        self._add_raksha_bandhan(tr("Raksha Bandhan"))
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+        # Maharishi Valmiki's Birthday.
+        self._add_maharishi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
+        # Govardhan Puja.
+        self._add_govardhan_puja(tr("Govardhan Puja"))
+        # Tribal Pride Day.
+        self._add_holiday_nov_15(tr("Janjatiya Gaurav Divas"))
+
+    def _populate_subdiv_mp_optional_holidays(self):
+        # Maharishi Guru Gokuldas's Birthday.
+        self._add_holiday_jan_6(tr("Maharshi Guru Gokuldas's Jayanti"))
+        # Hemu Kalani's Martyrdom Day.
+        self._add_holiday_jan_21(tr("Hemu Kalani's Shaheedi Diwas"))
+        # Lord Meenesh's Birthday.
+        self._add_matsya_jayanti(tr("Bhagvan Meenesh's Jayanti"))
+        # Mahatma Jyotiba Phule's Birt  hday.
+        self._add_holiday_apr_11(tr("Mahatma Jyotiba Phule's Jayanti"))
+        # Shri Vallabhacharya's Birthday.
+        self._add_shri_vallabhacharya_jayanti(tr("Shri Vallabhacharya's Jayanti"))
+        # Akshay Tritiya.
+        self._add_parshuram_jayanti(tr("Akshay Tritiya"))
+        # Adi Shankaracharya's Birthday.
+        self._add_adi_shankaracharya_jayanti(tr("Adi Shankaracharya's Jayanti"))
+        # Mahesh Navami.
+        self._add_mahesh_navami(tr("Mahesh Navami"))
+        # Veerangana Durgavati's Martyrdom Day.
+        self._add_holiday_jun_24(tr("Veerangana Durgavati's Shaheedi Diwas"))
+        # Maharaj Agrasen's Birthday.
+        self._add_sharad_navratri(tr("Maharaj Agrasen's Jayanti"))
+        # Sant Kabir's Birthday.
+        self._add_kabir_jayanti(tr("Sant Kabir's Jayanti"))
+        # Guru Purnima.
+        self._add_guru_purnima(tr("Guru Purnima"))
+        #  Durgadas Rathore's Birthday.
+        self._add_holiday_aug_13(tr("Durgadas Rathore's Jayanti"))
+        # Naag Panchami.
+        self._add_naag_panchami(tr("Naag Panchami"))
+        # Tulsidas's Birthday.
+        self._add_tulsidas_jayanti(tr("Tulsidas's Jayanti"))
+        # Vishwakarma Puja.
+        self._add_vishwakarma_puja(tr("Vishwakarma Puja"))
+        # Dol Gyaras.
+        self._add_parivartini_ekadashi(tr("Dol Gyaras"))
+        # Anant Chaturdashi.
+        self._add_anant_chaturdashi(tr("Anant Chaturdashi"))
+        # Sarva Pitra Moksha Amavasya.
+        self._add_pitra_moksh_amavasya(tr("Sarva Pitra Moksha Amavasya"))
+        # Maharishi Valmiki's Birthday.
+        self._add_maharishi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
+        # Maharaj Ajmodh Dev's Birthday.
+        self._add_maharishi_valmiki_jayanti(tr("Maharaj Ajmodh Dev's Jayanti"))
+        # Sant Guru Tekchand Maharaj Samadhi Utsav.
+        self._add_maharishi_valmiki_jayanti(tr("Sant Guru Tekchand Maharaj Samadhi Utsav"))
+        # International Day of Persons with Disabilities
+        self._add_holiday_dec_3(tr("Vishva Divyang Divas"))
+        # Guru Ghasidas's Birthday.
+        self._add_holiday_dec_18(tr("Guru Ghasidas's Jayanti"))
+        # Dattareya's Birthday.
+        self._add_dattatreya_jayanti(tr("Dattatreya's Jayanti"))
 
     # Mizoram.
     def _populate_subdiv_mz_public_holidays(self):
@@ -920,7 +997,7 @@ class India(
         # Holika Dahan.
         self._add_holika_dahan(tr("Holika Dahan"))
         # Cheti Chand.
-        self._add_cheti_chand(tr("Cheti Chand"))
+        self._add_gudi_padwa(tr("Cheti Chand"))
         # Mahatma Jyotiba Phule's Birthday.
         self._add_holiday_apr_11(tr("Mahatma Jyotiba Phule's Jayanti"))
         # Lord Shri Parshuram's Birthday.
@@ -982,7 +1059,7 @@ class India(
         # Holika Dahan.
         self._add_holika_dahan(tr("Holika Dahan"))
         # Cheti Chand.
-        self._add_cheti_chand(tr("Cheti Chand"))
+        self._add_gudi_padwa(tr("Cheti Chand"))
         # Harela.
         self._add_holiday_jul_16(tr("Harela"))
         # Raksha Bandhan.
@@ -1022,7 +1099,7 @@ class India(
         # Karpuri Thakur's Birthday.
         self._add_holiday_jan_24(tr("Karpuri Thakur's Jayanti"))
         # Cheti Chand.
-        self._add_cheti_chand(tr("Cheti Chand"))
+        self._add_gudi_padwa(tr("Cheti Chand"))
         # Maharishi Kashyap and Maharaj Nishad Raj's Graha Jayanti.
         self._add_holiday_apr_5(tr("Maharshi Kashyap and Maharaj Nishad Raj's Graha Jayanti"))
         # Easter Monday.
@@ -1165,6 +1242,14 @@ class IndiaStaticHolidays:
             (SEP, 19, name_ganesh_chaturthi),
         ),
         2025: (AUG, 15, name_janmashtami_smarta),
+    }
+
+    special_as_public_holidays = {
+        2023: (JAN, 14, name_magh_bihu),
+    }
+
+    special_dh_public_holidays = {
+        2023: (JAN, 14, name_magh_bihu),
     }
 
     special_la_optional_holidays = {
