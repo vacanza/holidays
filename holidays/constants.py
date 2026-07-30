@@ -46,7 +46,7 @@ PUBLIC = "public"
 RESTRICTED_SETTLEMENT = "restricted_settlement"
 SCHOOL = "school"
 UNOFFICIAL = "unofficial"
-WOMEN_OPTIONAL = "women_optional"
+OPTIONAL_WOMEN = "optional_women"
 WORKDAY = "workday"
 
 CATHOLIC = "catholic"

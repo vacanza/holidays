@@ -681,7 +681,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self._assertHinduHolidayHelper(name, dts, category_optional=True)
         # SUBDIVS.
-        self.assertSubdivHpWomenOptionalHolidayName(name, dts)
+        self.assertSubdivHpOptionalWomenHolidayName(name, dts)
         self._assertHinduHolidayHelper(name, dts, subdivs={"HR", "UK"})
 
     def test_parsi_new_year_shahenshahi(self):
@@ -819,7 +819,7 @@ class TestIndia(CommonCountryTests, TestCase):
             name, dts, category_optional=True, hindu_range=range(2012, self.hindu_end_year + 1)
         )
         # SUBDIVS.
-        self.assertSubdivHpWomenOptionalHolidayName("Karwa Chouth", dts)
+        self.assertSubdivHpOptionalWomenHolidayName("Karwa Chouth", dts)
 
     def test_deepavali_south_india(self):
         name = "Deepavali (South India)"
@@ -873,7 +873,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self._assertHinduHolidayHelper(name, dts, category_optional=True)
         # SUBDIVS.
-        self.assertSubdivHpWomenOptionalHolidayName(name, dts)
+        self.assertSubdivHpOptionalWomenHolidayName(name, dts)
 
     def test_chhath_puja(self):
         name = "Pratihar Shashthi or Surya Shashthi (Chhat Puja)"

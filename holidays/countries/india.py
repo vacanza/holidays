@@ -15,7 +15,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import OPTIONAL, PUBLIC, WOMEN_OPTIONAL
+from holidays.constants import OPTIONAL, PUBLIC, OPTIONAL_WOMEN
 from holidays.groups import (
     ChristianHolidays,
     HinduCalendarHolidays,
@@ -184,7 +184,7 @@ class India(
         "Uttar Pradesh": "UP",
         "West Bengal": "WB",
     }
-    supported_categories = (OPTIONAL, PUBLIC, WOMEN_OPTIONAL)
+    supported_categories = (OPTIONAL, PUBLIC, OPTIONAL_WOMEN)
     supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "kn", "ml", "mr", "pa", "ta", "te")
     _deprecated_subdivisions = (
         "DD",  # Daman and Diu.
@@ -645,7 +645,7 @@ class India(
         # Maharishi Valmiki's Birthday.
         self._add_maharishi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
 
-    def _populate_subdiv_hp_women_optional_holidays(self):
+    def _populate_subdiv_hp_optional_women_holidays(self):
         # Hindu holidays.
 
         # Raksha Bandhan.
