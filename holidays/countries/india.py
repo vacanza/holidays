@@ -15,7 +15,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import OPTIONAL, PUBLIC, OPTIONAL_WOMEN
+from holidays.constants import OPTIONAL, OPTIONAL_WOMEN, PUBLIC
 from holidays.groups import (
     ChristianHolidays,
     HinduCalendarHolidays,
@@ -184,7 +184,7 @@ class India(
         "Uttar Pradesh": "UP",
         "West Bengal": "WB",
     }
-    supported_categories = (OPTIONAL, PUBLIC, OPTIONAL_WOMEN)
+    supported_categories = (OPTIONAL, OPTIONAL_WOMEN, PUBLIC)
     supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "kn", "ml", "mr", "pa", "ta", "te")
     _deprecated_subdivisions = (
         "DD",  # Daman and Diu.
