@@ -25,7 +25,7 @@ class TestUganda(CommonCountryTests, TestCase):
 
     def test_special_holidays(self):
         self.assertHolidayName(
-            "General elections",
+            "General Elections",
             "2026-01-15",
             "2026-01-16",
         )

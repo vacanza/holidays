@@ -114,11 +114,11 @@ class UgandaStaticHolidays:
     """Uganda special holidays.
 
     References:
-        * [General elections 2026](https://web.archive.org/web/20260112000421/https://eagle.co.ug/2026/01/10/museveni-declares-jan-15-16-as-public-holidays-for-general-elections/)
+        * [General Elections 2026](https://web.archive.org/web/20260112000421/https://eagle.co.ug/2026/01/10/museveni-declares-jan-15-16-as-public-holidays-for-general-elections/)
     """
 
-    # General elections.
-    general_elections = "General elections"
+    # General Elections.
+    general_elections = "General Elections"
 
     special_public_holidays = {
         2026: (
