@@ -354,7 +354,7 @@ msgstr "মিজোরাম প্রতিষ্ঠা দিবস"
 
 #. Peace Accord Day.
 msgid "Remna Ni"
-msgstr "রেমনা নি"
+msgstr "শান্তি চুক্তি দিবস"
 
 #. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"

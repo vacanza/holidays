@@ -355,7 +355,7 @@ msgstr "મિઝોરમ રાજ્ય દિવસ"
 
 #. Peace Accord Day.
 msgid "Remna Ni"
-msgstr "રેમના ની"
+msgstr "શાંતિ કરાર દિવસ"
 
 #. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"
