@@ -197,9 +197,9 @@ class SriLanka(
         # Maha Sivarathri Day.
         self._add_holiday(tr("මහ සිවරාත්රි දිනය"), maha_sivarathri_dates.get(self._year))
 
-        # Deepavali was a working day in 2003.
+        # Diwali was a working day in 2003.
         if self._year >= 2004:
-            # Deepavali Festival Day.
+            # Diwali.
             self._add_diwali(tr("දීපවාලි උත්සව දිනය"))
 
         # Poya Holidays.
@@ -476,6 +476,6 @@ class SriLankaStaticHolidays:
     }
 
     special_workday_holidays = {
-        # Deepavali Festival Day.
+        # Diwali.
         2003: (OCT, 24, tr("දීපවාලි උත්සව දිනය")),
     }

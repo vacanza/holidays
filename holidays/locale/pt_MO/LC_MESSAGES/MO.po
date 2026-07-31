@@ -101,7 +101,7 @@ msgstr "Sábado Santo"
 msgid "端午節"
 msgstr "Tung Ng (Barco Dragão)"
 
-#. All Soul's Day.
+#. All Souls' Day.
 msgid "追思節"
 msgstr "Dia de Finados"
 

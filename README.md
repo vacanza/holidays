@@ -881,7 +881,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>IN</td>
 <td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (TG, Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
 <td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, pa, ta, te</td>
-<td>OPTIONAL</td>
+<td>OPTIONAL, OPTIONAL_WOMEN</td>
 </tr>
 <tr>
 <td>Indonesia</td>
@@ -2022,6 +2022,13 @@ code when available. The following financial markets are available:
 <td>Johannesburg Stock Exchange (JSE) market holidays</td>
 <td></td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Korea Exchange</td>
+<td>XKRX</td>
+<td>Korea Exchange (KRX) holidays</td>
+<td>en_US, <strong>ko</strong>, th</td>
+<td></td>
 </tr>
 <tr>
 <td>NASDAQ</td>

@@ -216,7 +216,7 @@ class CHN(China):
 
 
 class ChinaStaticHolidays:
-    # Date format (see strftime() Format Codes).
+    # Substituted date format.
     substituted_date_format = tr("%Y-%m-%d")
     # Day off (substituted from %s).
     substituted_label = tr("休息日（由 %s 调休）")

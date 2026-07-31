@@ -112,7 +112,7 @@ class TestSingaporeExchange(CommonFinancialTests, TestCase):
             ("2024-05-22", "Vesak Day"),
             ("2024-06-17", "Eid al-Adha"),
             ("2024-08-09", "National Day"),
-            ("2024-10-31", "Deepavali"),
+            ("2024-10-31", "Diwali"),
             ("2024-12-24", "Christmas Eve (markets close at 12:00 p.m. SGT)"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-31", "New Year's Eve (markets close at 12:00 p.m. SGT)"),

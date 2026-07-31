@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.53\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-28 16:42+0200\n"
-"PO-Revision-Date: 2024-07-08 17:20+0300\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -60,15 +60,15 @@ msgstr "Labor Day"
 msgid "Día de las Glorias Navales"
 msgstr "Navy Day"
 
-#. National Day of Indigenous Peoples.
+#. National Indigenous Peoples Day.
 msgid "Día Nacional de los Pueblos Indígenas"
-msgstr "National Day of Indigenous Peoples"
+msgstr "National Indigenous Peoples Day"
 
 #. Saint Peter and Saint Paul's Day.
 msgid "San Pedro y San Pablo"
 msgstr "Saint Peter and Saint Paul's Day"
 
-#. Day of Virgin of Carmen.
+#. Our Lady of Mount Carmel.
 msgid "Virgen del Carmen"
 msgstr "Our Lady of Mount Carmel"
 
@@ -76,13 +76,13 @@ msgstr "Our Lady of Mount Carmel"
 msgid "Asunción de la Virgen"
 msgstr "Assumption Day"
 
-#. Day of National Liberation.
+#. National Liberation Day.
 msgid "Día de la Liberación Nacional"
-msgstr "Day of National Liberation"
+msgstr "National Liberation Day"
 
-#. Day of National Unity.
+#. National Unity Day.
 msgid "Día de la Unidad Nacional"
-msgstr "Day of National Unity"
+msgstr "National Unity Day"
 
 #. National Holiday.
 msgid "Fiestas Patrias"

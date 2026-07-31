@@ -147,7 +147,7 @@ class Iraq(
             self._add_passover(tr("عيد الفصح"), range(2))
 
             # Yom Kippur.
-            self._add_yom_kippur(tr("يوم الكفارة"))
+            self._add_yom_kippur(tr("عيد الغفران"))
 
             # Sukkot.
             self._add_sukkot(tr("عيد المظلة"), range(2))

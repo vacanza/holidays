@@ -209,7 +209,7 @@ class TestKuwait(CommonCountryTests, TestCase):
             ("2023-04-21", "Eid al-Fitr (estimated)"),
             ("2023-04-22", "Eid al-Fitr Holiday (estimated)"),
             ("2023-04-23", "Eid al-Fitr Holiday (estimated)"),
-            ("2023-06-27", "Arafat Day (estimated)"),
+            ("2023-06-27", "Day of Arafah (estimated)"),
             ("2023-06-28", "Eid al-Adha (estimated)"),
             ("2023-06-29", "Eid al-Adha Holiday (estimated)"),
             ("2023-06-30", "Eid al-Adha Holiday (estimated)"),

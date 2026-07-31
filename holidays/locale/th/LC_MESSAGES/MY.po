@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.88\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-10-01 15:58+0700\n"
-"PO-Revision-Date: 2025-12-16 15:26+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-07-26 01:26+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -95,7 +95,7 @@ msgstr "วันอีฎิ้ลฟิตริวันที่สอง"
 msgid "Hari Raya Qurban"
 msgstr "วันอีดิ้ลอัฎฮา"
 
-#. Deepavali.
+#. Diwali.
 msgid "Hari Deepavali"
 msgstr "วันดีปาวลี"
 
@@ -135,7 +135,7 @@ msgstr "วันคล้ายวันประสูติสุลต่า
 msgid "Hari Nuzul Al-Quran"
 msgstr "วันนูซุลอัลกุรอาน"
 
-#. Arafat Day.
+#. Day of Arafah.
 msgid "Hari Arafah"
 msgstr "วันอารอฟะห์"
 
@@ -243,6 +243,10 @@ msgstr "วันหยุดพิเศษ"
 msgid "Cuti Piala Malaysia"
 msgstr "วันหยุดพิเศษการแข่งขันฟุตบอลมาเลเซียคัพ"
 
+#. Eid al-Fitr (additional holiday).
+msgid "Hari Raya Puasa (pergantian hari)"
+msgstr "วันอีฎิ้ลฟิตริ (เพิ่มเติม)"
+
 #. Day of Installation of the 15th Yang di-Pertuan Agong.
 msgid "Hari Pertabalan Yang di-Pertuan Agong ke-15"
 msgstr "พระราชพิธีสถาปนาสมเด็จพระราชาธิบดีแห่งมาเลเซีย องค์ที่ 15"
@@ -254,7 +258,3 @@ msgstr "วันหยุดเพิ่มเติมเนื่องใน
 #. Day of Installation of the 16th Yang di-Pertuan Agong.
 msgid "Hari Pertabalan Yang di-Pertuan Agong ke-16"
 msgstr "พระราชพิธีสถาปนาสมเด็จพระราชาธิบดีแห่งมาเลเซีย องค์ที่ 16"
-
-#. Eid al-Fitr (additional holiday).
-msgid "Hari Raya Puasa (pergantian hari)"
-msgstr "วันอีฎิ้ลฟิตริ (เพิ่มเติม)"

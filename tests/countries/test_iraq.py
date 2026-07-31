@@ -203,7 +203,7 @@ class TestIraq(CommonCountryTests, TestCase):
         self.assertNoHebrewHolidayName(name, range(2024, self.end_year))
 
     def test_yom_kippur(self):
-        name = "يوم الكفارة"
+        name = "عيد الغفران"
         self.assertNoHolidayName(name)
         self.assertHebrewHolidayName(
             name,

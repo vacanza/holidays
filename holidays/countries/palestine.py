@@ -72,12 +72,12 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         self._add_labor_day(tr("عيد العمال"))
 
         # Independence Day.
-        self._add_holiday_nov_15(tr("عيد الإستقلال"))
+        self._add_holiday_nov_15(tr("عيد الاستقلال"))
 
         # Catholic Christmas Day.
         self._add_christmas_day(tr("عيد الميلاد المجيد الغربي"), GREGORIAN_CALENDAR)
 
-        # Hijri New Year.
+        # Islamic New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
 
         # Prophet's Birthday.
