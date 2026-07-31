@@ -20,100 +20,128 @@ class TestMadagascar(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Madagascar, years=range(1947, 2050))
+        cls.full_range = range(1947, 2050)
 
-    def test_new_years(self):
-        self.assertHoliday(f"{year}-01-01" for year in range(1947, 2050))
+    def test_new_years_day(self):
+        self.assertHolidayName("Taom-baovao", (f"{year}-01-01" for year in self.full_range))
 
     def test_womens_day(self):
-        self.assertHoliday(f"{year}-03-08" for year in range(1947, 2050))
+        self.assertHolidayName("Fetin'ny vehivavy", (f"{year}-03-08" for year in self.full_range))
 
     def test_martyrs_day(self):
-        self.assertHoliday(f"{year}-03-29" for year in range(1947, 2050))
+        self.assertHolidayName("Fetin'ny mahery fo", (f"{year}-03-29" for year in self.full_range))
 
     def test_easter_sunday(self):
-        self.assertHoliday(
-            "2019-04-21",
+        self.assertHolidayName(
+            "Fetin'ny paska",
             "2020-04-12",
             "2021-04-04",
             "2022-04-17",
             "2023-04-09",
+            "2024-03-31",
+            "2025-04-20",
         )
+        self.assertHolidayName("Fetin'ny paska", self.full_range)
 
     def test_easter_monday(self):
-        self.assertHoliday(
-            "2019-04-22",
+        self.assertHolidayName(
+            "Alatsinain'ny paska",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
         )
+        self.assertHolidayName("Alatsinain'ny paska", self.full_range)
 
     def test_labor_day(self):
-        self.assertHoliday(f"{year}-05-01" for year in range(1947, 2050))
+        self.assertHolidayName("Fetin'ny asa", (f"{year}-05-01" for year in self.full_range))
 
     def test_ascension_day(self):
-        self.assertHoliday(
-            "2019-05-30",
+        self.assertHolidayName(
+            "Fiakaran'ny Jesosy kristy tany an-danitra",
             "2020-05-21",
             "2021-05-13",
             "2022-05-26",
             "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
         )
+        self.assertHolidayName("Fiakaran'ny Jesosy kristy tany an-danitra", self.full_range)
 
-    def test_whit_sunday(self):
-        self.assertHoliday(
-            "2019-06-09",
+    def test_pentecost(self):
+        self.assertHolidayName(
+            "Pentekosta",
             "2020-05-31",
             "2021-05-23",
             "2022-06-05",
             "2023-05-28",
+            "2024-05-19",
+            "2025-06-08",
         )
+        self.assertHolidayName("Pentekosta", self.full_range)
 
-    def test_whit_monday(self):
-        self.assertHoliday(
-            "2019-06-10",
+    def test_pentecost_monday(self):
+        self.assertHolidayName(
+            "Alatsinain'ny pentekosta",
             "2020-06-01",
             "2021-05-24",
             "2022-06-06",
             "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
         )
+        self.assertHolidayName("Alatsinain'ny pentekosta", self.full_range)
 
     def test_mothers_day(self):
-        self.assertHoliday(
-            "2019-05-26",
+        self.assertHolidayName(
+            "Fetin'ny reny",
             "2020-06-07",
             "2021-05-30",
             "2022-05-29",
             "2023-06-04",
+            "2024-05-26",
+            "2025-05-25",
         )
+        self.assertHolidayName("Fetin'ny reny", self.full_range)
 
     def test_father_day(self):
-        self.assertHoliday(
-            "2019-06-16",
+        self.assertHolidayName(
+            "Fetin'ny ray",
             "2020-06-21",
             "2021-06-20",
             "2022-06-19",
             "2023-06-18",
+            "2024-06-16",
+            "2025-06-15",
         )
+        self.assertHolidayName("Fetin'ny ray", self.full_range)
 
     def test_independence_day(self):
-        self.assertHoliday(f"{year}-06-26" for year in range(1960, 2050))
-        self.assertNoHoliday(f"{year}-06-26" for year in range(1947, 1960))
-        self.assertNoHolidayName("Fetin'ny fahaleovantena", range(1947, 1960))
+        name = "Fetin'ny fahaleovantena"
+        self.assertHolidayName(name, (f"{year}-06-26" for year in range(1960, 2050)))
+        self.assertNoHolidayName(name, range(1947, 1960))
 
     def test_assumption_day(self):
-        self.assertHoliday(f"{year}-08-15" for year in range(1947, 2050))
+        self.assertHolidayName(
+            "Fiakaran'ny Masina Maria tany an-danitra",
+            (f"{year}-08-15" for year in self.full_range),
+        )
 
     def test_all_saints_day(self):
-        self.assertHoliday(f"{year}-11-01" for year in range(1947, 2050))
+        self.assertHolidayName(
+            "Fetin'ny olo-masina",
+            (f"{year}-11-01" for year in self.full_range),
+        )
 
     def test_republic_day(self):
-        self.assertHoliday(f"{year}-12-11" for year in range(2011, 2050))
-        self.assertNoHoliday(f"{year}-12-11" for year in range(1947, 2011))
-        self.assertNoHolidayName("Fetin'ny Repoblika", range(1947, 2011))
+        name = "Fetin'ny Repoblika"
+        self.assertHolidayName(name, (f"{year}-12-11" for year in range(2011, 2050)))
+        self.assertNoHolidayName(name, range(1947, 2011))
 
     def test_christmas_day(self):
-        self.assertHoliday(f"{year}-12-25" for year in range(1947, 2050))
+        self.assertHolidayName("Fetin'ny noely", (f"{year}-12-25" for year in self.full_range))
 
     def test_2021(self):
         self.assertHolidaysInYear(
