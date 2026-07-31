@@ -266,7 +266,7 @@ msgstr "ਭਾਈ ਦੂਜ"
 
 #. Pratihar Shashthi or Surya Shashthi (Chhath Puja).
 msgid "Pratihar Shashthi or Surya Shashthi (Chhath Puja)"
-msgstr ""
+msgstr "ਪ੍ਰਤਿਹਾਰ ਸ਼ਸ਼ਠੀ ਜਾਂ ਸੂਰਜ ਸ਼ਸ਼ਠੀ (ਛੱਠ ਪੂਜਾ)"
 
 #. Guru Tegh Bahadur's Martyrdom Day.
 msgid "Guru Tegh Bahadur's Shaheedi Diwas"
@@ -322,51 +322,51 @@ msgstr "ਮਹਾਰਾਜਾ ਅਗਰਸੈਨ ਜੀ ਦਾ ਜਨਮ ਦਿ�
 
 #. International Day of the World's Indigenous Peoples.
 msgid "International Day of Adivasi Peoples"
-msgstr ""
+msgstr "ਆਦਿਵਾਸੀ ਲੋਕਾਂ ਦਾ ਅੰਤਰਰਾਸ਼ਟਰੀ ਦਿਵਸ"
 
 #. Maa Shakambhari's Birthday.
 msgid "Maa Shakambhari's Jayanti"
-msgstr ""
+msgstr "ਮਾਂ ਸ਼ਾਕੰਭਰੀ ਜਯੰਤੀ"
 
 #. Cherchera.
 msgid "Cherchera"
-msgstr ""
+msgstr "ਛੇਰਛੇਰਾ"
 
 #. Hareli.
 msgid "Hareli"
-msgstr ""
+msgstr "ਹਰੇਲੀ"
 
 #. Hartalika Teej.
 msgid "Hartalika Teej"
-msgstr ""
+msgstr "ਹਰਤਾਲਿਕਾ ਤੀਜ"
 
 #. Guru Ghasidas's Birthday.
 msgid "Guru Ghasidas's Jayanti"
-msgstr ""
+msgstr "ਗੁਰੂ ਘਾਸੀਦਾਸ ਜਯੰਤੀ"
 
 #. Savitribai Phule's Birthday.
 msgid "Savitribai Phule's Jayanti"
-msgstr ""
+msgstr "ਸਾਵਿਤਰੀਬਾਈ ਫੂਲੇ ਜਯੰਤੀ"
 
 #. Gend Singh's Martyrdom Day.
 msgid "Gend Singh's Shaheedi Diwas"
-msgstr ""
+msgstr "ਗੇਂਦ ਸਿੰਘ ਦਾ ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ"
 
 #. Netaji Subhas Chandra Bose's Birthday.
 msgid "Netaji Subhas Chandra Bose Jayanti"
-msgstr ""
+msgstr "ਨੇਤਾਜੀ ਸੁਭਾਸ਼ ਚੰਦਰ ਬੋਸ ਜਯੰਤੀ"
 
 #. Veerangana Avantibai's Martyrdom Day.
 msgid "Veerangana Avantibai's Shaheedi Diwas"
-msgstr ""
+msgstr "ਵੀਰਾਂਗਨਾ ਅਵੰਤੀਬਾਈ ਦਾ ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ"
 
 #. Shaheed Veer Narayan Singh's Martyrdom Day.
 msgid "Shaheed Veer Narayan Singh's Shaheedi Diwas"
-msgstr ""
+msgstr "ਸ਼ਹੀਦ ਵੀਰ ਨਾਰਾਇਣ ਸਿੰਘ ਦਾ ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ"
 
 #. Shri Vallabhacharya's Birthday.
 msgid "Shri Vallabhacharya's Jayanti"
-msgstr ""
+msgstr "ਸ਼੍ਰੀ ਵੱਲਭਾਚਾਰਯ ਜਯੰਤੀ"
 
 #. Lord Shri Parshuram's Birthday.
 msgid "Bhagvan Shri Parshuram's Jayanti"
@@ -374,7 +374,7 @@ msgstr "ਭਗਵਾਨ ਸ਼੍ਰੀ ਪਰਸ਼ੁਰਾਮ ਜੀ ਦਾ �
 
 #. Adi Shankaracharya's Birthday.
 msgid "Adi Shankaracharya's Jayanti"
-msgstr ""
+msgstr "ਆਦਿ ਸ਼ੰਕਰਾਚਾਰਯ ਜਯੰਤੀ"
 
 #. Maharana Pratap's Birthday.
 msgid "Maharana Pratap's Jayanti"
@@ -382,19 +382,19 @@ msgstr "ਮਹਾਰਾਣਾ ਪ੍ਰਤਾਪ ਜਯੰਤੀ"
 
 #. Mahesh Navami.
 msgid "Mahesh Navami"
-msgstr ""
+msgstr "ਮਹੇਸ਼ ਨਵਮੀ"
 
 #. Veerangana Durgavati's Martyrdom Day.
 msgid "Veerangana Durgavati's Shaheedi Diwas"
-msgstr ""
+msgstr "ਵੀਰਾਂਗਨਾ ਦੁਰਗਾਵਤੀ ਦਾ ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ"
 
 #. Naag Panchami.
 msgid "Naag Panchami"
-msgstr ""
+msgstr "ਨਾਗ ਪੰਚਮੀ"
 
 #. Harchath.
 msgid "Harchath"
-msgstr ""
+msgstr "ਹਰਛੱਠ"
 
 #. Anant Chaturdashi.
 msgid "Anant Chaturdashi"
@@ -402,19 +402,19 @@ msgstr "ਅਨੰਤ ਚਤੁਰਦਸ਼ੀ"
 
 #. Sarva Pitra Moksha Amavasya.
 msgid "Sarva Pitra Moksha Amavasya"
-msgstr ""
+msgstr "ਸਰਵ ਪਿਤਰ ਮੋਕਸ਼ ਅਮਾਵਸਿਆ"
 
 #. Maharaj Ajmodh Dev's Birthday.
 msgid "Maharaj Ajmodh Dev's Jayanti"
-msgstr ""
+msgstr "ਮਹਾਰਾਜ ਅਜਮੋਢ ਦੇਵ ਜਯੰਤੀ"
 
 #. Sant Guru Tekchand Maharaj Samadhi Utsav.
 msgid "Sant Guru Tekchand Maharaj Samadhi Utsav"
-msgstr ""
+msgstr "ਸੰਤ ਗੁਰੂ ਟੇਕਚੰਦ ਮਹਾਰਾਜ ਸਮਾਧੀ ਉਤਸਵ"
 
 #. Dattatreya's Birthday.
 msgid "Dattatreya's Jayanti"
-msgstr ""
+msgstr "ਦੱਤਾਤ੍ਰੇਯ ਜਯੰਤੀ"
 
 #. Parsi New Year (Shahenshahi).
 msgid "Parsi New Year (Shahenshahi)"
@@ -422,7 +422,7 @@ msgstr "ਪਾਰਸੀ ਨਵਾਂ ਸਾਲ (ਸ਼ਾਹਨਸ਼ਾਹੀ)"
 
 #. Feast of St. Francis Xavier.
 msgid "Feast of St. Francis Xavier"
-msgstr ""
+msgstr "ਸੇਂਟ ਫ੍ਰਾਂਸਿਸ ਜ਼ੇਵੀਅਰ ਦਾ ਤਿਉਹਾਰ"
 
 #. Goa Liberation Day.
 msgid "Goa Liberation Day"
@@ -430,35 +430,35 @@ msgstr "ਗੋਆ ਮੁਕਤੀ ਦਿਵਸ"
 
 #. Ganesh Chaturthi.
 msgid "Ganesh Chaturthi"
-msgstr ""
+msgstr "ਗਣੇਸ਼ ਚਤੁਰਥੀ"
 
 #. Ganesh Chaturthi (2nd Day).
 msgid "Ganesh Chaturthi (2nd Day)"
-msgstr ""
+msgstr "ਗਣੇਸ਼ ਚਤੁਰਥੀ (ਦੂਜਾ ਦਿਨ)"
 
 #. Feast of St. Joseph Vaz.
 msgid "Feast of St. Joseph Vaz"
-msgstr ""
+msgstr "ਸੇਂਟ ਜੋਸਫ ਵਾਜ਼ ਦਾ ਤਿਉਹਾਰ"
 
 #. Maundy Thursday.
 msgid "Maundy Thursday"
-msgstr ""
+msgstr "ਮੌਂਡੀ ਵੀਰਵਾਰ"
 
 #. Feast of Sacred Heart of Jesus.
 msgid "Feast of Sacred Heart of Jesus"
-msgstr ""
+msgstr "ਯਿਸੂ ਦੇ ਪਵਿੱਤਰ ਦਿਲ ਦਾ ਤਿਉਹਾਰ"
 
 #. All Souls day.
 msgid "All Souls Day"
-msgstr ""
+msgstr "ਸਾਰੀਆਂ ਰੂਹਾਂ ਦਾ ਦਿਵਸ"
 
 #. Feast of Immaculate Conception of Mary.
 msgid "Feast of Immaculate Conception of Mary"
-msgstr ""
+msgstr "ਮਰਿਯਮ ਦੇ ਨਿਰਮਲ ਗਰਭਧਾਰਣ ਦਾ ਤਿਉਹਾਰ"
 
 #. New Year's Eve.
 msgid "New Year's Eve"
-msgstr ""
+msgstr "ਨਵੇਂ ਸਾਲ ਦੀ ਪੂਰਵ ਸੰਧਿਆ"
 
 #. Gujarat Day.
 msgid "Gujarat Day"
@@ -467,7 +467,7 @@ msgstr "ਗੁਜਰਾਤ ਦਿਵਸ"
 #. Sardar Vallabhbhai Patel's Jayanti.
 #. Sardar Vallabhbhai Patel's Birthday.
 msgid "Sardar Vallabhbhai Patel's Jayanti"
-msgstr ""
+msgstr "ਸਰਦਾਰ ਵੱਲਭਭਾਈ ਪਟੇਲ ਜਯੰਤੀ"
 
 #. Makar Sankranti.
 msgid "Uttarayan"
@@ -571,44 +571,44 @@ msgstr "ਮਹਾਰਾਸ਼ਟਰ ਦਿਵਸ"
 
 #. Diwali (Bali Pratipada).
 msgid "Diwali (Bali Pratipada)"
-msgstr ""
+msgstr "ਦੀਵਾਲੀ (ਬਲੀ ਪ੍ਰਤਿਪਦਾ)"
 
 #. Tribal Pride Day.
 msgid "Janjatiya Gaurav Divas"
-msgstr ""
+msgstr "ਜਨਜਾਤੀਯ ਗੌਰਵ ਦਿਵਸ"
 
 #. Hemu Kalani's Martyrdom Day.
 msgid "Hemu Kalani's Shaheedi Diwas"
-msgstr ""
+msgstr "ਹੇਮੂ ਕਲਾਣੀ ਦਾ ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ"
 
 #. Mahatma Jyotiba Phule's Birt  hday.
 #. Mahatma Jyotiba Phule's Birthday.
 msgid "Mahatma Jyotiba Phule's Jayanti"
-msgstr ""
+msgstr "ਮਹਾਤਮਾ ਜੋਤੀਬਾ ਫੂਲੇ ਜਯੰਤੀ"
 
 #. Durgadas Rathore's Birthday.
 msgid "Durgadas Rathore's Jayanti"
-msgstr ""
+msgstr "ਦੁਰਗਾਦਾਸ ਰਾਠੌੜ ਜਯੰਤੀ"
 
 #. International Day of Persons with Disabilities.
 msgid "Vishva Divyang Divas"
-msgstr ""
+msgstr "ਵਿਸ਼ਵ ਦਿਵਿਆਂਗ ਦਿਵਸ"
 
 #. Maharishi Guru Gokuldas's Birthday.
 msgid "Maharshi Guru Gokuldas's Jayanti"
-msgstr ""
+msgstr "ਮਹਾਰਿਸ਼ੀ ਗੁਰੂ ਗੋਕੁਲਦਾਸ ਜਯੰਤੀ"
 
 #. Lord Meenesh's Birthday.
 msgid "Bhagvan Meenesh's Jayanti"
-msgstr ""
+msgstr "ਭਗਵਾਨ ਮੀਨੇਸ਼ ਜਯੰਤੀ"
 
 #. Guru Purnima.
 msgid "Guru Purnima"
-msgstr ""
+msgstr "ਗੁਰੂ ਪੂਰਨਿਮਾ"
 
 #. Tulsidas's Birthday.
 msgid "Tulsidas's Jayanti"
-msgstr ""
+msgstr "ਤੁਲਸੀਦਾਸ ਜਯੰਤੀ"
 
 #. Vishwakarma Puja.
 msgid "Vishwakarma Puja"
@@ -616,7 +616,7 @@ msgstr "ਵਿਸ਼ਵਕਰਮਾ ਪੂਜਾ"
 
 #. Dol Gyaras.
 msgid "Dol Gyaras"
-msgstr ""
+msgstr "ਡੋਲ ਗਿਆਰਸ"
 
 #. Mizoram State Day.
 msgid "Mizoram State Day"
@@ -688,19 +688,19 @@ msgstr "ਸੰਵਤਸਰੀ ਦਿਵਸ"
 
 #. Khejarli's Martyrdom Day.
 msgid "Khejarli's Shaheedi Diwas"
-msgstr ""
+msgstr "ਖੇਜੜਲੀ ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ"
 
 #. Sharad Navratri.
 msgid "Sharad Navratri"
-msgstr ""
+msgstr "ਸ਼ਾਰਦ ਨਵਰਾਤਰੀ"
 
 #. Durgashtami.
 msgid "Durgashtami"
-msgstr ""
+msgstr "ਦੁਰਗਾਸ਼ਟਮੀ"
 
 #. Gadge Maharaj's Birthday.
 msgid "Gadge Maharaj's Jayanti"
-msgstr ""
+msgstr "ਗਾਡਗੇ ਮਹਾਰਾਜ ਜਯੰਤੀ"
 
 #. Sikkim State Day.
 msgid "Sikkim State Day"
@@ -748,31 +748,31 @@ msgstr "ਚਹਿਲੁਮ"
 
 #. Chitragupt's Birthday.
 msgid "Chitragupt's Jayanti"
-msgstr ""
+msgstr "ਚਿਤਰਗੁਪਤ ਜਯੰਤੀ"
 
 #. Karpuri Thakur's Birthday.
 msgid "Karpuri Thakur's Jayanti"
-msgstr ""
+msgstr "ਕਰਪੂਰੀ ਠਾਕੁਰ ਜਯੰਤੀ"
 
 #. Maharishi Kashyap and Maharaj Nishad Raj's Graha Jayanti.
 msgid "Maharshi Kashyap and Maharaj Nishad Raj's Graha Jayanti"
-msgstr ""
+msgstr "ਮਹਾਰਿਸ਼ੀ ਕਸ਼ਯਪ ਅਤੇ ਮਹਾਰਾਜ ਨਿਸ਼ਾਦ ਰਾਜ ਦੀ ਗ੍ਰਹਿ ਜਯੰਤੀ"
 
 #. Chandrashekhar's Birthday.
 msgid "Chandrashekhar's Jayanti"
-msgstr ""
+msgstr "ਚੰਦਰਸ਼ੇਖਰ ਜਯੰਤੀ"
 
 #. Acharya Narendra Dev's Birthday.
 msgid "Acharya Narendra Dev's Jayanti"
-msgstr ""
+msgstr "ਆਚਾਰਯ ਨਰਿੰਦਰ ਦੇਵ ਜਯੰਤੀ"
 
 #. Veerangana Uda Devi's Martyrdom Day.
 msgid "Veerangana Uda Devi's Shaheedi Diwas"
-msgstr ""
+msgstr "ਵੀਰਾਂਗਨਾ ਊਦਾ ਦੇਵੀ ਦਾ ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ"
 
 #. Chaudhary Charan Singh's Birthday.
 msgid "Chaudhary Charan Singh's Jayanti"
-msgstr ""
+msgstr "ਚੌਧਰੀ ਚਰਨ ਸਿੰਘ ਜਯੰਤੀ"
 
 #. Pohela Boisakh.
 msgid "Pohela Boishakh"
