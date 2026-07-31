@@ -1011,7 +1011,7 @@ class India(
         # Hemu Kalani's Martyrdom Day.
         self._add_holiday_jan_21(tr("Hemu Kalani's Shaheedi Diwas"))
 
-        # Mahatma Jyotiba Phule's Birt  hday.
+        # Mahatma Jyotiba Phule's Birthday.
         self._add_holiday_apr_11(tr("Mahatma Jyotiba Phule's Jayanti"))
 
         # Veerangana Durgavati's Martyrdom Day.

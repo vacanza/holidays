@@ -1154,6 +1154,8 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-03-20" for year in self.full_range)
                 )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_shri_vallabhacharya_jayanti(self):
         name = "Shri Vallabhacharya's Jayanti"
@@ -1360,7 +1362,6 @@ class TestIndia(CommonCountryTests, TestCase):
                     name, holidays, (f"{year}-05-01" for year in self.full_range)
                 )
             else:
-                self.assertNoHolidayName(name, holidays)
                 self.assertNoHolidayName(name, holidays)
 
     def test_kesari_chand_martyrdom_day(self):

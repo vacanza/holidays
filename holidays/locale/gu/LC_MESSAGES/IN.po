@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-07-31 15:10+0530\n"
+"PO-Revision-Date: 2026-07-31 16:17+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: gu\n"
@@ -570,7 +570,6 @@ msgstr "જનજાતીય ગૌરવ દિવસ"
 msgid "Hemu Kalani's Shaheedi Diwas"
 msgstr "હેમુ કલાણી શહીદી દિવસ"
 
-#. Mahatma Jyotiba Phule's Birt  hday.
 #. Mahatma Jyotiba Phule's Birthday.
 msgid "Mahatma Jyotiba Phule's Jayanti"
 msgstr "મહાત્મા જ્યોતિબા ફુલે જયંતિ"
