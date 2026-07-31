@@ -28,18 +28,6 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 "X-Source-Language: en_IN\n"
 
-#. Gujarat Day.
-msgid "Gujarat Day"
-msgstr "गुजरात दिवस"
-
-#. Sir Chottu Ram's Birthday.
-msgid "Sir Chottu Ram's Jayanti"
-msgstr ""
-
-#. Vishwakarma Puja.
-msgid "Vishwakarma Puja"
-msgstr ""
-
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"

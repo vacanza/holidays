@@ -27,26 +27,6 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_IN\n"
 
-#. Gujarat Day.
-msgid "Gujarat Day"
-msgstr "ഗുജറാത്ത് ദിനം"
-
-#. Sir Chottu Ram's Birthday.
-msgid "Sir Chottu Ram's Jayanti"
-msgstr ""
-
-#. Shaheed Udham Singh's Birthday.
-msgid "Shaheed Udham Singh's Jayanti"
-msgstr "ശഹീദ് ഉദം സിംഗ് ജയന്തി"
-
-#. Statehood Day.
-msgid "Statehood Day"
-msgstr "സംസ്ഥാന രൂപീകരണ ദിനം"
-
-#. Vishwakarma Puja.
-msgid "Vishwakarma Puja"
-msgstr ""
-
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"

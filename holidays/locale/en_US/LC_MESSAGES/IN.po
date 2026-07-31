@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-07-31 15:10+0530\n"
+"PO-Revision-Date: 2026-07-31 16:14+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -27,18 +27,6 @@ msgstr ""
 "Generated-By: Lingva 5.0.5\n"
 "X-Generator: Poedit 3.5\n"
 "X-Source-Language: en_IN\n"
-
-#. Gujarat Day.
-msgid "Gujarat Day"
-msgstr "Gujarat Day"
-
-#. Sir Chottu Ram's Birthday.
-msgid "Sir Chottu Ram's Jayanti"
-msgstr "Sir Chottu Ram's Birthday"
-
-#. Vishwakarma Puja.
-msgid "Vishwakarma Puja"
-msgstr "Vishwakarma Puja"
 
 #. %s (estimated).
 #, c-format
