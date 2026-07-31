@@ -51,7 +51,7 @@ class TaiwanStockExchange(Taiwan):
                 rule=SAT_SUN_TO_PREV_FRI + SUN_TO_NEXT_MON,
             )
 
-        # %s (Market opens only for Clearing & Settlement)
+        # %s (Market opens only for Clearing & Settlement).
         settlement_label = tr("%s (僅辦理結算交割)")
 
         # No Trading.
