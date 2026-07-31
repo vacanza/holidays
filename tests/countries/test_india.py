@@ -1288,7 +1288,7 @@ class TestIndia(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_remna_ni_(self):
+    def test_remna_ni(self):
         name = "Remna Ni"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
