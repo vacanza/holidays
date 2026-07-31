@@ -190,7 +190,7 @@ class TestFrance(CommonCountryTests, TestCase):
                     self.assertNoHolidayName(name, holidays)
 
     def test_saint_stephens_day(self):
-        name = "Saint Étienne"
+        name = "Saint-Étienne"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             # Alsace, Moselle - 1892.
@@ -422,7 +422,7 @@ class TestFrance(CommonCountryTests, TestCase):
             ("2022-11-11", "Armistice"),
             ("2022-12-20", "Abolition de l'esclavage"),
             ("2022-12-25", "Noël"),
-            ("2022-12-26", "Saint Étienne"),
+            ("2022-12-26", "Saint-Étienne"),
         )
 
     def test_l10n_en_us(self):

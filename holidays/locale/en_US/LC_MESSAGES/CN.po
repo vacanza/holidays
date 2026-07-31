@@ -91,7 +91,7 @@ msgstr "Children's Day"
 msgid "建军节"
 msgstr "Army Day"
 
-#. Date format (see strftime() Format Codes).
+#. Substituted date format.
 msgid "%Y-%m-%d"
 msgstr "%m/%d/%Y"
 

@@ -18,7 +18,7 @@ on:
 
 env:
   DEFAULT_PYTHON_VERSION: '3.14'
-  DEFAULT_UV_VERSION: '0.11.8'
+  DEFAULT_UV_VERSION: '0.11.24'
   FORCE_COLOR: 1
 
 concurrency:
@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
 
       - name: Install uv
-        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39  # v8.2.0
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990  # v8.3.2
         with:
           python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
           version: ${{ env.DEFAULT_UV_VERSION }}
@@ -43,7 +43,7 @@ jobs:
         run: uv python install "$UV_PYTHON"
 
       - name: Cache pre-commit environments
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae  # v5.0.5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9  # v6.1.0
         with:
           key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
           path: ~/.cache/pre-commit
@@ -63,12 +63,12 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@8aad20d150bbac5944a9f9d289da16a4b0d87c1e  # v4.36.2
+        uses: github/codeql-action/init@99df26d4f13ea111d4ec1a7dddef6063f76b97e9  # v4.37.0
         with:
           languages: python
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@8aad20d150bbac5944a9f9d289da16a4b0d87c1e  # v4.36.2
+        uses: github/codeql-action/analyze@99df26d4f13ea111d4ec1a7dddef6063f76b97e9  # v4.37.0
         with:
           category: '/language:python'
 
@@ -94,7 +94,7 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
 
       - name: Install uv
-        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39  # v8.2.0
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990  # v8.3.2
         with:
           python-version: ${{ matrix.python-version }}
           version: ${{ env.DEFAULT_UV_VERSION }}
@@ -122,7 +122,7 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
 
       - name: Install uv
-        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39  # v8.2.0
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990  # v8.3.2
         with:
           python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
           version: ${{ env.DEFAULT_UV_VERSION }}
@@ -158,7 +158,7 @@ jobs:
           path: holidays-${{ env.VERSION }}-sbom.json
 
   test-build:
-    name: Test build on ${{ matrix.os }}
+    name: Test build ${{ matrix.dist.name }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     needs: build
     strategy:
@@ -167,12 +167,17 @@ jobs:
           - macos-latest
           - ubuntu-latest
           - windows-latest
+        dist:
+          - name: wheel
+            artifact: dist/*.whl
+          - name: sdist
+            artifact: dist/*.tar.gz
     steps:
       - name: Check out repository
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
 
       - name: Install uv
-        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39  # v8.2.0
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990  # v8.3.2
         with:
           python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
           version: ${{ env.DEFAULT_UV_VERSION }}
@@ -190,13 +195,8 @@ jobs:
       - name: Run tests
         shell: bash
         run: |
-          uv sync --frozen --no-default-groups --no-install-project --group tests --link-mode=copy
           rm -rf holidays
-          uv pip install dist/*.whl --link-mode=copy
-          uv run --no-sync pytest --dist loadscope --numprocesses auto tests/countries tests/financial
-          uv pip uninstall holidays
-          uv pip install dist/*.tar.gz --link-mode=copy
-          uv run --no-sync pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          uv run --isolated --no-default-groups --group tests --with ${{ matrix.dist.artifact }} -- pytest --dist loadscope --numprocesses auto tests/countries tests/financial
 
   test-docs:
     name: Test docs build
@@ -207,7 +207,7 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
 
       - name: Install uv
-        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39  # v8.2.0
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990  # v8.3.2
         with:
           python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
           version: ${{ env.DEFAULT_UV_VERSION }}

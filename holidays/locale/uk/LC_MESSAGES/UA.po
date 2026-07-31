@@ -97,7 +97,7 @@ msgstr ""
 msgid "Річниця Великої Жовтневої соціалістичної революції"
 msgstr ""
 
-#. Date format (see strftime() Format Codes)
+#. Substituted date format.
 msgid "%d.%m.%Y"
 msgstr ""
 

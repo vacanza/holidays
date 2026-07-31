@@ -60,7 +60,7 @@ msgstr "День людяності"
 msgid "Jura de la Constitución"
 msgstr "День присяги Конституції"
 
-#. Independence Day.
+#. Independence Declaration Day.
 msgid "Declaratoria de la Independencia"
 msgstr "День проголошення незалежності"
 
@@ -76,7 +76,7 @@ msgstr "День відкритих зборів"
 msgid "Día de las Playas"
 msgstr "День пляжів"
 
-#. Day of the Family.
+#. Family Day.
 msgid "Día de la Familia"
 msgstr "День родини"
 

@@ -64,7 +64,7 @@ msgstr ""
 msgid "ފިޠުރުޢީދުގެ މުނާސަބަތުގައި"
 msgstr ""
 
-#. Arafat Day.
+#. Day of Arafah.
 msgid "ޙައްޖުދުވަސް"
 msgstr ""
 

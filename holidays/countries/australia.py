@@ -905,8 +905,8 @@ class AUS(Australia):
 
 
 class AustraliaStaticHolidays:
-    # Special public holiday.
-    special_public_holiday = tr("Special public holiday")
+    # Special Public Holiday.
+    special_public_holiday = tr("Special Public Holiday")
 
     special_public_holidays = {
         # National Day of Mourning for Queen Elizabeth II.
@@ -914,10 +914,10 @@ class AustraliaStaticHolidays:
     }
 
     special_act_public_holidays = {
-        # Declared public holiday.
-        2020: (APR, 27, tr("Declared public holiday")),
-        # Additional public holiday.
-        2021: (APR, 25, tr("Additional public holiday")),
+        # Declared Public Holiday.
+        2020: (APR, 27, tr("Declared Public Holiday")),
+        # Additional Public Holiday.
+        2021: (APR, 25, tr("Additional Public Holiday")),
     }
 
     special_qld_public_holidays = {

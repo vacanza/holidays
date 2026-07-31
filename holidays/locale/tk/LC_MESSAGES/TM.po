@@ -37,7 +37,7 @@ msgstr ""
 msgid "%s (dynç güni)"
 msgstr ""
 
-#. %s (observed, estimated)
+#. %s (observed, estimated).
 #, c-format
 msgid "%s (dynç güni, çak edilýär)"
 msgstr ""
