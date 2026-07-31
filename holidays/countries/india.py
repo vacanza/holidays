@@ -735,8 +735,8 @@ class India(
         # Gujarat Day.
         self._add_holiday_may_1(tr("Gujarat Day"))
 
-        # Sardar Vallabhbhai Patel Jayanti.
-        self._add_holiday_oct_31(tr("Sardar Vallabhbhai Patel Jayanti"))
+        # Sardar Vallabhbhai Patel's Jayanti.
+        self._add_holiday_oct_31(tr("Sardar Vallabhbhai Patel's Jayanti"))
 
         # Hindu holidays.
 
@@ -1020,7 +1020,7 @@ class India(
         #  Durgadas Rathore's Birthday.
         self._add_holiday_aug_13(tr("Durgadas Rathore's Jayanti"))
 
-        # International Day of Persons with Disabilities
+        # International Day of Persons with Disabilities.
         self._add_holiday_dec_3(tr("Vishva Divyang Divas"))
 
         # Guru Ghasidas's Birthday.
@@ -1082,7 +1082,7 @@ class India(
         # Sant Guru Tekchand Maharaj Samadhi Utsav.
         self._add_maharishi_valmiki_jayanti(tr("Sant Guru Tekchand Maharaj Samadhi Utsav"))
 
-        # Dattareya's Birthday.
+        # Dattatreya's Birthday.
         self._add_dattatreya_jayanti(tr("Dattatreya's Jayanti"))
 
     # Mizoram.
@@ -1288,7 +1288,7 @@ class India(
 
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
-        
+
         # Hindu holidays.
 
         # Anant Chaturdashi.

@@ -17,6 +17,7 @@ from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.helpers import _normalize_tuple
 
+ADI_SHANKARACHARYA_JAYANTI = "ADI_SHANKARACHARYA_JAYANTI"
 ANANT_CHATURDASHI = "ANANT_CHATURDASHI"
 BASANT_PANCHAMI = "BASANT_PANCHAMI"
 BATHUKAMMA = "BATHUKAMMA"
@@ -2845,9 +2846,6 @@ class _HinduLunisolar:
 
     def karwa_chauth_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(KARWA_CHAUTH, year)
-
-    def kabir_jayanti_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(KABIR_JAYANTI, year)
 
     def maha_ashtami_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHA_ASHTAMI, year)
