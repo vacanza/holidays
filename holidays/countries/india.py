@@ -319,11 +319,11 @@ class India(
         # Christmas.
         self._add_christmas_day(tr("Christmas"))
 
-        if self.subdiv == "OR":
-            self._populate_subdiv_od_public_holidays()
-
         if self.subdiv == "DD":
             self._populate_subdiv_dh_public_holidays()
+
+        if self.subdiv == "OR":
+            self._populate_subdiv_od_public_holidays()
 
     def _populate_optional_holidays(self):
 
