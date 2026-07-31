@@ -70,6 +70,8 @@ class India(
             * <https://web.archive.org/web/20260627104706/https://www.veerayeehr.com/wp-content/uploads/2025/12/Ladakh-state-list-of-holidays-2026.pdf>
         * Maharashtra:
             * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
+        * Mizoram:
+            * <https://web.archive.org/web/20260324051214/http://mizoram.nic.in/gov/hols.htm>
         * Punjab:
             * <https://web.archive.org/web/20260216022835/https://punjab.gov.in/wp-content/uploads/2025/12/Calender-2026.pdf>
         * Tamil Nadu:
@@ -769,6 +771,9 @@ class India(
     def _populate_subdiv_mz_public_holidays(self):
         # Mizoram State Day.
         self._add_holiday_feb_20(tr("Mizoram State Day"))
+        if self._year >= 1987:
+            # Peace Accord Day.
+            self._add_holiday_jun_30(tr("Remna Ni"))
 
     # Nagaland.
     def _populate_subdiv_nl_public_holidays(self):
