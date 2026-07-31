@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-07-27 20:49+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-07-31 18:39+0530\n"
+"Last-Translator: Harsh Baghel <hk5324519@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: gu\n"
 "MIME-Version: 1.0\n"
@@ -328,6 +328,10 @@ msgstr "સરદાર વલ્લભભાઈ પટેલ જયંતિ"
 #. Makar Sankranti.
 msgid "Uttarayan"
 msgstr "ઉત્તરાયણ"
+
+#. Gujarati New Year.
+msgid "Bestu Varas"
+msgstr "ગુજરાતી નવું વર્ષ"
 
 #. Parsi New Year (Shahenshahi).
 msgid "Parsi New Year (Shahenshahi)"

@@ -58,6 +58,7 @@ class India(
             * <https://web.archive.org/web/20260705144831/https://chandigarh.gov.in/files/updation2025/home25-17488-3012.pdf>
         * Gujarat:
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
+            * <https://web.archive.org/web/20260731125300/https://www.drikpanchang.com/festivals/gujarati-newyear/gujarati-newyear-date-time.html?year=2026>
         * Haryana:
             * <https://web.archive.org/web/20260704094548/https://haryanacalendar.co.in/wp-content/uploads/2025/12/Haryana-Govt-Official-Notification-2026-PDF.pdf>
         * Himachal Pradesh:
@@ -559,6 +560,9 @@ class India(
 
         # Makar Sankranti.
         self._add_makar_sankranti(tr("Uttarayan"))
+
+        # Gujarati New Year.
+        self._add_govardhan_puja(tr("Bestu Varas"))
 
         # Parsi New Year (Shahenshahi).
         self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
