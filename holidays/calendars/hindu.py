@@ -183,7 +183,7 @@ class _HinduLunisolar:
         2034: (OCT, 11),
         2035: (OCT, 1),
     }
-    # https://web.archive.org/web/20260000000000*/https://www.mpanchang.com/festivals/gujrati-new-year/?year=2026
+    # https://web.archive.org/web/20260731125300/https://www.drikpanchang.com/festivals/gujarati-newyear/gujarati-newyear-date-time.html?year=2026
     BESTU_VARAS_DATES = {
         2001: (NOV, 16),
         2002: (NOV, 5),
@@ -192,9 +192,9 @@ class _HinduLunisolar:
         2005: (NOV, 2),
         2006: (OCT, 23),
         2007: (NOV, 10),
-        2008: (OCT, 30),
-        2009: (OCT, 20),
-        2010: (NOV, 6),
+        2008: (OCT, 29),
+        2009: (OCT, 19),
+        2010: (NOV, 7),
         2011: (OCT, 27),
         2012: (NOV, 14),
         2013: (NOV, 4),
@@ -216,10 +216,10 @@ class _HinduLunisolar:
         2029: (NOV, 6),
         2030: (OCT, 27),
         2031: (NOV, 15),
-        2032: (NOV, 3),
-        2033: (OCT, 23),
-        2034: (NOV, 13),
-        2035: (OCT, 31),
+        2032: (NOV, 4),
+        2033: (OCT, 24),
+        2034: (NOV, 12),
+        2035: (NOV, 1),
     }
     # Dates for Bonalu (Ashada Masam).
     # [2018](https://web.archive.org/web/20250402131537/https://www.telangana.gov.in/Downloads/calendar-2018/)
