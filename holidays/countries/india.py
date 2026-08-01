@@ -558,11 +558,11 @@ class India(
 
         # Hindu holidays.
 
+        # Gujarati New Year.
+        self._add_bestu_varas(tr("Bestu Varas"))
+
         # Makar Sankranti.
         self._add_makar_sankranti(tr("Uttarayan"))
-
-        # Gujarati New Year.
-        self._add_govardhan_puja(tr("Bestu Varas"))
 
         # Parsi New Year (Shahenshahi).
         self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))

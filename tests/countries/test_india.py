@@ -849,7 +849,6 @@ class TestIndia(CommonCountryTests, TestCase):
     def test_govardhan_puja(self):
         name = "Govardhan Puja"
         name_subdiv = "Vishwakarma Day"
-        name_subdiv_gj = "Bestu Varas"
         dts = (
             "2020-11-15",
             "2021-11-05",
@@ -861,7 +860,19 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(name, dts, category_optional=True)
         # SUBDIVS.
         self._assertHinduHolidayHelper(name_subdiv, dts, subdivs={"HR", "PB"})
-        self._assertHinduHolidayHelper(name_subdiv_gj, dts, subdivs={"GJ"})
+
+    def test_bestu_varas(self):
+        name = "Bestu Varas"
+        dts = (
+            "2020-11-16",
+            "2021-11-05",
+            "2022-10-26",
+            "2023-11-14",
+            "2024-11-02",
+            "2025-10-22",
+        )
+        # SUBDIVS.
+        self._assertHinduHolidayHelper(name, dts, subdivs={"GJ"})
 
     def test_bhai_duj(self):
         name = "Bhai Duj"

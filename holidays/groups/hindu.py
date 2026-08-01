@@ -110,6 +110,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.bathukamma_date(self._year)
         )
 
+    def _add_bestu_varas(self, name) -> date | None:
+        """
+        Add Bestu Varas (Gujarati New Year).
+
+        Bestu Varas marks the first day of the Hindu month of Kartik and is
+        celebrated as the Gujarati New Year, the day after Diwali.
+        https://en.wikipedia.org/wiki/Bestu_Varas
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.bestu_varas_date(self._year)
+        )
+
     def _add_bonalu(self, name) -> date | None:
         """
         Add Bonalu.

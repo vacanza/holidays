@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-29 00:37+0530\n"
-"PO-Revision-Date: 2026-07-31 18:39+0530\n"
+"PO-Revision-Date: 2026-08-01 19:30+0530\n"
 "Last-Translator: Harsh Baghel <hk5324519@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: mr\n"
@@ -324,13 +324,13 @@ msgstr "गुजरात दिन"
 msgid "Sardar Vallabhbhai Patel Jayanti"
 msgstr "सरदार वल्लभभाई पटेल जयंती"
 
-#. Makar Sankranti.
-msgid "Uttarayan"
-msgstr "उत्तरायण"
-
 #. Gujarati New Year.
 msgid "Bestu Varas"
 msgstr "गुजराती नववर्ष"
+
+#. Makar Sankranti.
+msgid "Uttarayan"
+msgstr "उत्तरायण"
 
 #. Parsi New Year (Shahenshahi).
 msgid "Parsi New Year (Shahenshahi)"
