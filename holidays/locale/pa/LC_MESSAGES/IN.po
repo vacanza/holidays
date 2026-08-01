@@ -448,6 +448,10 @@ msgstr "ਮੱਧ ਪ੍ਰਦੇਸ਼ ਸਥਾਪਨਾ ਦਿਵਸ"
 msgid "Mizoram State Day"
 msgstr "ਮਿਜ਼ੋਰਮ ਰਾਜ ਦਿਵਸ"
 
+#. Peace Accord Day.
+msgid "Remna Ni"
+msgstr "ਸ਼ਾਂਤੀ ਸਮਝੌਤਾ ਦਿਵਸ"
+
 #. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"
 msgstr "ਨਾਗਾਲੈਂਡ ਰਾਜ ਦਾ ਉਦਘਾਟਨ ਦਿਵਸ"

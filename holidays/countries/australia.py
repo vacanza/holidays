@@ -779,8 +779,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
                 # Rescheduled due to COVID-19.
                 2020: (OCT, 23),
             }
-            # Grand Final Day.
-            name = tr("Grand Final Day")
+            # Friday before the AFL Grand Final.
+            name = tr("Friday before the AFL Grand Final")
             if dt := grand_final_dates.get(self._year):
                 self._add_holiday(name, dt)
             else:

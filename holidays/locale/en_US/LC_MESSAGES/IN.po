@@ -449,6 +449,10 @@ msgstr "Madhya Pradesh Foundation Day"
 msgid "Mizoram State Day"
 msgstr "Mizoram State Day"
 
+#. Peace Accord Day.
+msgid "Remna Ni"
+msgstr "Peace Accord Day"
+
 #. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"
 msgstr "Nagaland State Inauguration Day"

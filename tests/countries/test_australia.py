@@ -1906,7 +1906,7 @@ class TestAustralia(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_grand_final_day(self):
-        name = "Grand Final Day"
+        name = "Friday before the AFL Grand Final"
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
@@ -2040,7 +2040,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             "May Day",
             "Picnic Day",
             "Melbourne Cup Day",
-            "Grand Final Day",
+            "Friday before the AFL Grand Final",
             "Christmas Day",
             "Proclamation Day",
             "Boxing Day",
@@ -2069,7 +2069,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             ("2022-08-01", "Bank Holiday; Picnic Day"),
             ("2022-08-10", "The Royal Queensland Show"),
             ("2022-09-22", "National Day of Mourning for Queen Elizabeth II"),
-            ("2022-09-23", "Grand Final Day"),
+            ("2022-09-23", "Friday before the AFL Grand Final"),
             ("2022-09-26", "Queen's Birthday"),
             ("2022-10-03", "Labour Day; Queen's Birthday"),
             ("2022-11-01", "Melbourne Cup Day"),
@@ -2104,7 +2104,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             ("2022-08-01", "Bank Holiday; Picnic Day"),
             ("2022-08-10", "The Royal Queensland Show"),
             ("2022-09-22", "National Day of Mourning for Queen Elizabeth II"),
-            ("2022-09-23", "Grand Final Day"),
+            ("2022-09-23", "Friday before the AFL Grand Final"),
             ("2022-09-26", "Queen's Birthday"),
             ("2022-10-03", "Labor Day; Queen's Birthday"),
             ("2022-11-01", "Melbourne Cup Day"),

@@ -448,6 +448,10 @@ msgstr "మధ్యప్రదేశ్ అవతరణ దినోత్స�
 msgid "Mizoram State Day"
 msgstr "మిజోరాం రాష్ట్ర దినోత్సవం"
 
+#. Peace Accord Day.
+msgid "Remna Ni"
+msgstr "శాంతి ఒప్పంద దినోత్సవం"
+
 #. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"
 msgstr "నాగాలాండ్ రాష్ట్ర ప్రారంభ దినోత్సవం"
