@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-26 12:14+0530\n"
-"PO-Revision-Date: 2026-07-31 16:17+0530\n"
+"PO-Revision-Date: 2026-07-31 23:38+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: kn\n"
@@ -312,6 +312,10 @@ msgstr "ಮಹಾರಾಜ ಅಗ್ರಸೇನ್ ಜಯಂತಿ"
 msgid "International Day of Adivasi Peoples"
 msgstr "ಆದಿವಾಸಿ ಜನರ ಅಂತರರಾಷ್ಟ್ರೀಯ ದಿನ"
 
+#. Guru Ghasidas's Birthday.
+msgid "Guru Ghasidas's Jayanti"
+msgstr "ಗುರು ಘಾಸಿದಾಸ್ ಜಯಂತಿ"
+
 #. Maa Shakambhari's Birthday.
 msgid "Maa Shakambhari's Jayanti"
 msgstr "ಮಾ ಶಾಕಂಭರಿ ಜಯಂತಿ"
@@ -328,10 +332,6 @@ msgstr "ಹರೇಲಿ"
 msgid "Hartalika Teej"
 msgstr "ಹರತಾಲಿಕಾ ತೀಜ್"
 
-#. Guru Ghasidas's Birthday.
-msgid "Guru Ghasidas's Jayanti"
-msgstr "ಗುರು ಘಾಸಿದಾಸ್ ಜಯಂತಿ"
-
 #. Savitribai Phule's Birthday.
 msgid "Savitribai Phule's Jayanti"
 msgstr "ಸಾವಿತ್ರಿಬಾಯಿ ಫುಲೆ ಜಯಂತಿ"
@@ -347,6 +347,10 @@ msgstr "ನೇತಾಜಿ ಸುಭಾಷ್ ಚಂದ್ರ ಬೋಸ್ ಜ�
 #. Veerangana Avantibai's Martyrdom Day.
 msgid "Veerangana Avantibai's Shaheedi Diwas"
 msgstr "ವೀರಾಂಗನಾ ಅವಂತಿಬಾಯಿ ಶಹೀದಿ ದಿನ"
+
+#. Veerangana Durgavati's Martyrdom Day.
+msgid "Veerangana Durgavati's Shaheedi Diwas"
+msgstr "ವೀರಾಂಗನಾ ದುರ್ಗಾವತಿ ಶಹೀದಿ ದಿನ"
 
 #. Shaheed Veer Narayan Singh's Martyrdom Day.
 msgid "Shaheed Veer Narayan Singh's Shaheedi Diwas"
@@ -371,10 +375,6 @@ msgstr "ಮಹಾರಾಣಾ ಪ್ರತಾಪ್ ಜಯಂತಿ"
 #. Mahesh Navami.
 msgid "Mahesh Navami"
 msgstr "ಮಹೇಶ್ ನವಮಿ"
-
-#. Veerangana Durgavati's Martyrdom Day.
-msgid "Veerangana Durgavati's Shaheedi Diwas"
-msgstr "ವೀರಾಂಗನಾ ದುರ್ಗಾವತಿ ಶಹೀದಿ ದಿನ"
 
 #. Naag Panchami.
 msgid "Naag Panchami"
@@ -408,9 +408,9 @@ msgstr "ದತ್ತಾತ್ರೇಯ ಜಯಂತಿ"
 msgid "Parsi New Year (Shahenshahi)"
 msgstr "ಪಾರ್ಸಿ ಹೊಸ ವರ್ಷ (ಶಹನ್ಶಾಹಿ)"
 
-#. Feast of St. Francis Xavier.
-msgid "Feast of St. Francis Xavier"
-msgstr "ಸೇಂಟ್ ಫ್ರಾನ್ಸಿಸ್ ಝೇವಿಯರ್ ಹಬ್ಬ"
+#. Saint Francis Xavier's Day.
+msgid "# Saint Francis Xavier's Day."
+msgstr ""
 
 #. Goa Liberation Day.
 msgid "Goa Liberation Day"
@@ -424,23 +424,23 @@ msgstr "ಗಣೇಶ ಚತುರ್ಥಿ"
 msgid "Ganesh Chaturthi (2nd Day)"
 msgstr "ಗಣೇಶ ಚತುರ್ಥಿ (2ನೇ ದಿನ)"
 
-#. Feast of St. Joseph Vaz.
-msgid "Feast of St. Joseph Vaz"
-msgstr "ಸೇಂಟ್ ಜೋಸೆಫ್ ವಾಜ್ ಹಬ್ಬ"
+#. Saint Joseph Vaz's Day.
+msgid "Saint Joseph Vaz's Day"
+msgstr ""
 
 #. Maundy Thursday.
 msgid "Maundy Thursday"
 msgstr "ಮಾಂಡಿ ಗುರುವಾರ"
 
-#. Feast of Sacred Heart of Jesus.
+#. Sacred Heart.
 msgid "Feast of Sacred Heart of Jesus"
 msgstr "ಯೇಸುವಿನ ಪವಿತ್ರ ಹೃದಯದ ಹಬ್ಬ"
 
-#. All Souls day.
-msgid "All Souls Day"
+#. All Souls' Day.
+msgid "All Souls' Day"
 msgstr "ಎಲ್ಲಾ ಆತ್ಮಗಳ ದಿನ"
 
-#. Feast of Immaculate Conception of Mary.
+#. Immaculate Conception.
 msgid "Feast of Immaculate Conception of Mary"
 msgstr "ಮರಿಯಳ ನಿರ್ಮಲ ಗರ್ಭಧಾರಣೆಯ ಹಬ್ಬ"
 
@@ -460,6 +460,10 @@ msgstr "ಸರ್ದಾರ್ ವಲ್ಲಭಭಾಯಿ ಪಟೇಲ್ ಜಯ
 #. Makar Sankranti.
 msgid "Uttarayan"
 msgstr "ಉತ್ತರಾಯಣ"
+
+#. Gujarati New Year.
+msgid "Bestu Varas"
+msgstr ""
 
 #. Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day.
 msgid "Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Shaheedi Diwas"
@@ -784,3 +788,12 @@ msgstr "ವಿನಾಯಕ ಚತುರ್ಥಿ"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ಜನ್ಮಾಷ್ಟಮಿ (ಸ್ಮಾರ್ತ)"
+
+#~ msgid "Feast of St. Francis Xavier"
+#~ msgstr "ಸೇಂಟ್ ಫ್ರಾನ್ಸಿಸ್ ಝೇವಿಯರ್ ಹಬ್ಬ"
+
+#~ msgid "Feast of St. Joseph Vaz"
+#~ msgstr "ಸೇಂಟ್ ಜೋಸೆಫ್ ವಾಜ್ ಹಬ್ಬ"
+
+#~ msgid "All Souls Day"
+#~ msgstr ""
