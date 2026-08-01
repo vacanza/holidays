@@ -24,7 +24,7 @@ Your PR description goes here.
 - [ ] Existing code quality improvement (best practice, cleanup, refactoring, optimization)
 - [ ] Documentation update
 - [ ] Test suite update
-- [ ] Development process update (CI/CD, project configuration, internal tooling)
+- [ ] Development process update (CI, release workflows, project configuration, internal tooling)
 - [ ] Dependency update (version deprecation/pin/upgrade)
 - [ ] Bugfix (non-breaking change which fixes an issue)
 - [ ] Breaking change (a code change causing existing functionality to break)

@@ -1,0 +1,30 @@
+name: Publish release
+
+on:
+  release:
+    types:
+      - published
+
+env:
+  FORCE_COLOR: 1
+
+concurrency:
+  cancel-in-progress: false
+  group: ${{ github.repository }}-publish-release-${{ github.event.release.tag_name }}
+
+permissions: {}
+
+jobs:
+  run-publish:
+    name: Run publish
+    if: startsWith(github.event.release.tag_name, 'v')
+    permissions:
+      contents: write
+      id-token: write
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    uses: ./.github/workflows/run-publish.yml
+    with:
+      environment: release
+      ref: ${{ github.event.release.tag_name }}
+      release_tag: ${{ github.event.release.tag_name }}

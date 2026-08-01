@@ -1,4 +1,4 @@
-name: Deploy GitHub Page
+name: Deploy GitHub Pages
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
     if: github.repository == 'vacanza/holidays'
     permissions:
       contents: read
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     steps:
       - name: Check out repository
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
@@ -56,7 +56,7 @@ jobs:
     permissions:
       id-token: write
       pages: write
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

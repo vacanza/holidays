@@ -11,13 +11,13 @@
   - commit the updated `CHANGES.md` and `SECURITY.md` files to `dev` branch with the following
     commit message 'Finalize v\<version\>', e.g. 'Finalize v0.39'
   - push changes to <https://github.com/vacanza/holidays> `dev` branch
-  - make sure the push related CI/CD jobs have been completed successfully
+  - make sure the push related CI jobs have been completed successfully
 - Merge the finalized changes into `main` branch:
   - create a new PR for the recent changes from `dev` to `main` branch using 'v\<version\>'
     as a PR title and the previously generated release notes as a PR description
   - get the PR reviewed by at least one of the code owners
   - merge the PR into `main` branch using 'Merge when ready' button
-  - make sure the PR related CI/CD jobs have been completed successfully
+  - make sure the PR related CI jobs have been completed successfully
   - make sure readthedocs.org documentation build jobs at
     <https://app.readthedocs.org/projects/holidays/builds/> have been completed successfully
 - Create a new release:
@@ -36,7 +36,7 @@
   - preview the release on <https://github.com/vacanza/holidays/releases>
   - after making sure everything looks right click 'Edit' and then 'Publish release'
 - Verify the new release:
-  - make sure the release related CI/CD jobs have been completed successfully
+  - make sure the Publish release workflow has been completed successfully
   - check <https://pypi.org/project/holidays/> package page -- it should have the current
     version and the released date updated
 - Finish the process with the following post-release actions:
@@ -46,4 +46,4 @@
     push it to `dev` branch (this may require running `make package` to pass the tests locally)
   - make sure `dev` branch **is not behind** the `main` branch (there will be a message on top
     of the <https://github.com/vacanza/holidays/tree/dev> page in case it is)
-  - make sure the push related CI/CD jobs have been completed successfully
+  - make sure the push related CI jobs have been completed successfully
