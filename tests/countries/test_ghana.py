@@ -167,6 +167,19 @@ class TestGhana(CommonCountryTests, TestCase):
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
+    def test_shaqq_day(self):
+        name = "Shaqq Day"
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
+            "2026-03-21",
+            "2027-03-10",
+            "2028-02-27",
+            "2029-02-15",
+            "2030-02-05",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, range(2026, self.end_year))
+        self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 2026))
+
     def test_eid_al_adha(self):
         name = "Eid-ul-Adha"
         self.assertIslamicNoEstimatedHolidayName(
