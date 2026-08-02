@@ -18,6 +18,8 @@ jobs:
   verify-release:
     name: Verify release tag
     if: startsWith(github.event.release.tag_name, 'v')
+    outputs:
+      tag_commit: ${{ steps.verify.outputs.tag_commit }}
     permissions:
       contents: read
     runs-on: ubuntu-24.04-arm
@@ -30,6 +32,7 @@ jobs:
           ref: ${{ github.event.release.tag_name }}
 
       - name: Verify tag commit belongs to main
+        id: verify
         env:
           RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
@@ -40,6 +43,7 @@ jobs:
             echo "Release tag ${RELEASE_TAG} (${tag_commit}) is not on main." >&2
             exit 1
           fi
+          echo "tag_commit=${tag_commit}" >> "$GITHUB_OUTPUT"
 
   run-publish:
     name: Run publish
@@ -53,5 +57,5 @@ jobs:
     uses: ./.github/workflows/run-publish.yml
     with:
       environment: release
-      ref: ${{ github.event.release.tag_name }}
+      ref: ${{ needs.verify-release.outputs.tag_commit }}
       release_tag: ${{ github.event.release.tag_name }}
