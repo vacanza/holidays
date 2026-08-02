@@ -136,8 +136,8 @@ class TestMadagascar(CommonCountryTests, TestCase):
 
     def test_republic_day(self):
         name = "Fetin'ny Repoblika"
-        self.assertHolidayName(name, (f"{year}-12-11" for year in range(2011, 2050)))
-        self.assertNoHolidayName(name, range(1947, 2011))
+        self.assertHolidayName(name, (f"{year}-12-11" for year in range(2011, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2011))
 
     def test_christmas_day(self):
         self.assertHolidayName("Fetin'ny noely", (f"{year}-12-25" for year in self.full_range))
