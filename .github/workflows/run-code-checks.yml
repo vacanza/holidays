@@ -40,4 +40,4 @@ jobs:
           path: ~/.cache/pre-commit
 
       - name: Run pre-commit
-        run: uv run --frozen --no-sync pre-commit run --show-diff-on-failure --color=always --all-files
+        run: uv run --frozen --no-sync --no-build pre-commit run --show-diff-on-failure --color=always --all-files
