@@ -120,8 +120,8 @@ class TestMadagascar(CommonCountryTests, TestCase):
 
     def test_independence_day(self):
         name = "Fetin'ny fahaleovantena"
-        self.assertHolidayName(name, (f"{year}-06-26" for year in range(1960, 2050)))
-        self.assertNoHolidayName(name, range(1947, 1960))
+        self.assertHolidayName(name, (f"{year}-06-26" for year in range(1960, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1960))
 
     def test_assumption_day(self):
         self.assertHolidayName(
