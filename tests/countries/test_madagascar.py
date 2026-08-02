@@ -44,8 +44,9 @@ class TestMadagascar(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
+        name = "Alatsinain'ny paska"
         self.assertHolidayName(
-            "Alatsinain'ny paska",
+            name,
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
@@ -53,14 +54,15 @@ class TestMadagascar(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName("Alatsinain'ny paska", self.full_range)
+        self.assertHolidayName(name, self.full_range)
 
     def test_labor_day(self):
         self.assertHolidayName("Fetin'ny asa", (f"{year}-05-01" for year in self.full_range))
 
     def test_ascension_day(self):
+        name = "Fiakaran'ny Jesosy kristy tany an-danitra"
         self.assertHolidayName(
-            "Fiakaran'ny Jesosy kristy tany an-danitra",
+            name,
             "2020-05-21",
             "2021-05-13",
             "2022-05-26",
@@ -68,11 +70,12 @@ class TestMadagascar(CommonCountryTests, TestCase):
             "2024-05-09",
             "2025-05-29",
         )
-        self.assertHolidayName("Fiakaran'ny Jesosy kristy tany an-danitra", self.full_range)
+        self.assertHolidayName(name, self.full_range)
 
     def test_pentecost(self):
+        name = "Pentekosta"
         self.assertHolidayName(
-            "Pentekosta",
+            name,
             "2020-05-31",
             "2021-05-23",
             "2022-06-05",
@@ -80,11 +83,12 @@ class TestMadagascar(CommonCountryTests, TestCase):
             "2024-05-19",
             "2025-06-08",
         )
-        self.assertHolidayName("Pentekosta", self.full_range)
+        self.assertHolidayName(name, self.full_range)
 
     def test_pentecost_monday(self):
+        name = "Alatsinain'ny pentekosta"
         self.assertHolidayName(
-            "Alatsinain'ny pentekosta",
+            name,
             "2020-06-01",
             "2021-05-24",
             "2022-06-06",
@@ -92,11 +96,12 @@ class TestMadagascar(CommonCountryTests, TestCase):
             "2024-05-20",
             "2025-06-09",
         )
-        self.assertHolidayName("Alatsinain'ny pentekosta", self.full_range)
+        self.assertHolidayName(name, self.full_range)
 
     def test_mothers_day(self):
+        name = "Fetin'ny reny"
         self.assertHolidayName(
-            "Fetin'ny reny",
+            name,
             "2020-06-07",
             "2021-05-30",
             "2022-05-29",
@@ -104,11 +109,12 @@ class TestMadagascar(CommonCountryTests, TestCase):
             "2024-05-26",
             "2025-05-25",
         )
-        self.assertHolidayName("Fetin'ny reny", self.full_range)
+        self.assertHolidayName(name, self.full_range)
 
     def test_father_day(self):
+        name = "Fetin'ny ray"
         self.assertHolidayName(
-            "Fetin'ny ray",
+            name,
             "2020-06-21",
             "2021-06-20",
             "2022-06-19",
@@ -116,7 +122,7 @@ class TestMadagascar(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-15",
         )
-        self.assertHolidayName("Fetin'ny ray", self.full_range)
+        self.assertHolidayName(name, self.full_range)
 
     def test_independence_day(self):
         name = "Fetin'ny fahaleovantena"
