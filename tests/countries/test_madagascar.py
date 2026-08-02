@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestMadagascar(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Madagascar, years=range(1947, 2050))
-        cls.full_range = range(1947, 2050)
+        super().setUpClass(Madagascar)
 
     def test_new_years_day(self):
         self.assertHolidayName("Taom-baovao", (f"{year}-01-01" for year in self.full_range))
