@@ -39,7 +39,7 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     default_language = "lv"
     # %s (observed).
     observed_label = tr("%s (brīvdiena)")
-    supported_languages = ("en_US", "lv", "uk")
+    supported_languages = ("en_US", "lv", "ru", "uk")
     # Law of Oct 3, 1990.
     start_year = 1991
 

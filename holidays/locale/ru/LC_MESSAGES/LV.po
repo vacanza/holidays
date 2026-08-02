@@ -1,0 +1,125 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Latvia holidays ru localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.94\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2026-08-02 12:00+0300\n"
+"Last-Translator: aleks-drozy <aleksandrs.drozdovs2005@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Source-Language: lv\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (brīvdiena)"
+msgstr "%s (выходной)"
+
+#. New Year's Day.
+msgid "Jaungada diena"
+msgstr "Новый год"
+
+#. Good Friday.
+msgid "Lielā Piektdiena"
+msgstr "Страстная пятница"
+
+#. Easter Sunday.
+msgid "Pirmās Lieldienas"
+msgstr "Пасха"
+
+#. Easter Monday.
+msgid "Otrās Lieldienas"
+msgstr "Пасхальный понедельник"
+
+#. Labor Day.
+msgid "Darba svētki"
+msgstr "День труда"
+
+#. Constitutional Assembly Convocation Day.
+msgid "Latvijas Republikas Satversmes sapulces sasaukšanas diena"
+msgstr "День созыва Учредительного собрания Латвийской Республики"
+
+#. Restoration of Independence Day.
+msgid "Latvijas Republikas Neatkarības atjaunošanas diena"
+msgstr "День восстановления независимости Латвийской Республики"
+
+#. Proclamation of Declaration of Independence Day.
+msgid "Latvijas Republikas Neatkarības deklarācijas pasludināšanas diena"
+msgstr "День провозглашения Декларации независимости Латвийской Республики"
+
+#. Mother's Day.
+msgid "Mātes diena"
+msgstr "День матери"
+
+#. Pentecost.
+msgid "Vasarsvētki"
+msgstr "Пятидесятница"
+
+#. Midsummer Eve.
+msgid "Līgo diena"
+msgstr "Лиго"
+
+#. Midsummer Day.
+msgid "Jāņu diena"
+msgstr "Янов день"
+
+#. Republic of Latvia Proclamation Day.
+msgid "Latvijas Republikas Proklamēšanas diena"
+msgstr "День провозглашения Латвийской Республики"
+
+#. Christmas Eve.
+msgid "Ziemassvētku vakars"
+msgstr "Рождественский сочельник"
+
+#. Christmas Day.
+msgid "Pirmie Ziemassvētki"
+msgstr "Рождество Христово"
+
+#. Second Day of Christmas.
+msgid "Otrie Ziemassvētki"
+msgstr "Второй день Рождества"
+
+#. New Year's Eve.
+msgid "Vecgada diena"
+msgstr "Канун Нового года"
+
+#. Substituted date format.
+msgid "%d.%m.%Y"
+msgstr "%d.%m.%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Brīvdiena (pārcelta no %s)"
+msgstr "Выходной день (перенесён с %s)"
+
+#. Nationwide Latvian Song and Dance Celebration Final Day.
+msgid "Vispārējo latviešu Dziesmu un deju svētku noslēguma diena"
+msgstr "День закрытия Всеобщего латышского праздника песни и танца"
+
+#. Day of the Pastoral Visit of His Holiness Pope Francis to Latvia.
+msgid "Viņa Svētības pāvesta Franciska pastorālās vizītes Latvijā diena"
+msgstr "День пастырского визита Его Святейшества Папы Франциска в Латвию"
+
+#. Day of the Latvian Ice Hockey Team's Bronze Medal Win at the 2023 IIHF World Championship.
+msgid ""
+"Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules hokeja čempionātā"
+msgstr ""
+"День завоевания сборной Латвии по хоккею бронзовой медали чемпионата мира по хоккею 2023 года"
