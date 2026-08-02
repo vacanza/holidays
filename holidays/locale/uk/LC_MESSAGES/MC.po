@@ -81,6 +81,6 @@ msgstr "Непорочне зачаття Діви Марії"
 msgid "Le jour de Noël"
 msgstr "Різдво Христове"
 
-#. Public holiday.
+#. Public Holiday.
 msgid "Jour férié"
 msgstr "Державне свято"

@@ -176,7 +176,7 @@ class TestGreece(CommonCountryTests, TestCase):
             ("2022-05-02", "Labor Day (observed)"),
             ("2022-06-13", "Pentecost Monday"),
             ("2022-08-15", "Dormition of the Mother of God"),
-            ("2022-10-28", "Ochi Day"),
+            ("2022-10-28", "Ohi Day"),
             ("2022-12-24", "Christmas Eve"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Glorifying Mother of God"),

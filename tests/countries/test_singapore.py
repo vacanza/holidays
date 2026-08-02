@@ -284,8 +284,8 @@ class TestSingapore(CommonCountryTests, TestCase):
             ("2023-06-29", "Eid al-Adha"),
             ("2023-08-09", "National Day"),
             ("2023-09-01", "Polling Day"),
-            ("2023-11-12", "Deepavali"),
-            ("2023-11-13", "Deepavali (observed)"),
+            ("2023-11-12", "Diwali"),
+            ("2023-11-13", "Diwali (observed)"),
             ("2023-12-25", "Christmas Day"),
         )
 

@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-06-18 20:31+0700\n"
-"PO-Revision-Date: 2025-06-18 21:33+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +85,7 @@ msgid "Vendredi saint"
 msgstr "วันศุกร์ประเสริฐ"
 
 #. Saint Stephen's Day.
-msgid "Saint Étienne"
+msgid "Saint-Étienne"
 msgstr "วันสมโภชนักบุญสเตเฟน"
 
 #. Mi-Careme.
