@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.94\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
 "PO-Revision-Date: 2026-08-02 12:00+0300\n"
-"Last-Translator: aleks-drozy <aleksandrs.drozdovs2005@gmail.com>\n"
+"Last-Translator: Aleksandrs Drozdovs <aleksandrs.drozdovs2005@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -108,7 +108,7 @@ msgstr "%d.%m.%Y"
 #. Day off (substituted from %s).
 #, c-format
 msgid "Brīvdiena (pārcelta no %s)"
-msgstr "Выходной день (перенесён с %s)"
+msgstr "Выходной (перенесено с %s)"
 
 #. Nationwide Latvian Song and Dance Celebration Final Day.
 msgid "Vispārējo latviešu Dziesmu un deju svētku noslēguma diena"
