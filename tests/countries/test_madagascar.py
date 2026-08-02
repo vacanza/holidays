@@ -131,8 +131,7 @@ class TestMadagascar(CommonCountryTests, TestCase):
 
     def test_all_saints_day(self):
         self.assertHolidayName(
-            "Fetin'ny olo-masina",
-            (f"{year}-11-01" for year in self.full_range),
+            "Fetin'ny olo-masina", (f"{year}-11-01" for year in self.full_range)
         )
 
     def test_republic_day(self):
