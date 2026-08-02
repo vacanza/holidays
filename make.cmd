@@ -89,25 +89,40 @@ GoTo :Help
     Exit /B
 
 :Sbom
-    Set "WHEEL="
-    For /F "Delims=" %%W in ('Dir /B /O:N dist\holidays-*-py3-none-any.whl 2^>nul') Do Set "WHEEL=dist\%%W"
-    If "!WHEEL!"=="" (
-        Echo No wheel in dist/; run 'make package' first. 1>&2
+    Set /P VERSION=<VERSION
+    Set "WHEEL=dist\holidays-!VERSION!-py3-none-any.whl"
+    If Not Exist "!WHEEL!" (
+        Echo No wheel for version !VERSION! in dist/; run 'make package' first. 1>&2
         Exit /B 1
     )
     Set "TOOLS_ENV=%TEMP%\holidays-sbom-tools-%RANDOM%"
     Set "SBOM_ENV=%TEMP%\holidays-sbom-%RANDOM%"
+    Set "SBOM_ERROR=0"
+
     Set "UV_PROJECT_ENVIRONMENT=!TOOLS_ENV!"
     %UV% sync --frozen --no-default-groups --only-group ci --no-install-project --no-build >nul
+    Set "SBOM_ERROR=!ErrorLevel!"
     Set "UV_PROJECT_ENVIRONMENT="
+    If Not "!SBOM_ERROR!"=="0" Goto :SbomDone
+
     %UV% venv "!SBOM_ENV!" >nul
+    Set "SBOM_ERROR=!ErrorLevel!"
+    If Not "!SBOM_ERROR!"=="0" Goto :SbomDone
+
     %UV% pip install --python "!SBOM_ENV!" "!WHEEL!" >nul
+    Set "SBOM_ERROR=!ErrorLevel!"
+    If Not "!SBOM_ERROR!"=="0" Goto :SbomDone
+
     Set "UV_PROJECT_ENVIRONMENT=!TOOLS_ENV!"
     %UV% run --frozen --no-sync -- cyclonedx-py environment "!SBOM_ENV!"
+    Set "SBOM_ERROR=!ErrorLevel!"
     Set "UV_PROJECT_ENVIRONMENT="
-    RD /S /Q "!TOOLS_ENV!"
-    RD /S /Q "!SBOM_ENV!"
-    Exit /B
+
+:SbomDone
+    Set "UV_PROJECT_ENVIRONMENT="
+    If Exist "!TOOLS_ENV!" RD /S /Q "!TOOLS_ENV!"
+    If Exist "!SBOM_ENV!" RD /S /Q "!SBOM_ENV!"
+    Exit /B !SBOM_ERROR!
 
 :Setup
     where uv >nul 2>&1

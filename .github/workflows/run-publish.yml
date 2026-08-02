@@ -55,7 +55,7 @@ jobs:
         if: inputs.environment == 'pre-release'
         run: |
           version="$(tr -d '[:space:]' < VERSION)"
-          echo "${version}.dev$(date -u +%Y%m%d%H%M%S)" > VERSION
+          echo "${version}.dev$(date -u +%Y%m%d%H%M)${GITHUB_RUN_ID}" > VERSION
 
       - name: Build distribution
         run: make package
@@ -210,5 +210,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_TAG: ${{ inputs.release_tag }}
         run: |
-          gh release upload --repo vacanza/holidays "$RELEASE_TAG" dist/*
-          gh release upload --repo vacanza/holidays "$RELEASE_TAG" holidays-*-sbom.json
+          gh release upload --clobber --repo vacanza/holidays "$RELEASE_TAG" dist/*
+          gh release upload --clobber --repo vacanza/holidays "$RELEASE_TAG" holidays-*-sbom.json

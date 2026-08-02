@@ -67,9 +67,11 @@ release-notes:
 	$(UV_RUN_CMD) scripts/generate_release_notes.py
 
 sbom:
-	@wheel="$$(ls -1 dist/holidays-*-py3-none-any.whl 2>/dev/null | sort -V | tail -n1)"; \
-	if [ -z "$$wheel" ]; then \
-		echo "No wheel in dist/; run 'make package' first." >&2; \
+	@set -e; \
+	version="$$(tr -d '[:space:]' < VERSION)"; \
+	wheel="dist/holidays-$${version}-py3-none-any.whl"; \
+	if [ ! -f "$$wheel" ]; then \
+		echo "No wheel for version $${version} in dist/; run 'make package' first." >&2; \
 		exit 1; \
 	fi; \
 	tools_env="$$(mktemp -d)"; \
