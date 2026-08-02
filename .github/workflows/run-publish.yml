@@ -22,7 +22,6 @@ on:
 
 env:
   DEFAULT_PYTHON_VERSION: '3.14'
-  DEFAULT_UV_VERSION: '0.11.24'
   FORCE_COLOR: 1
 
 permissions: {}
@@ -37,25 +36,26 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
         with:
+          persist-credentials: false
           ref: ${{ inputs.ref }}
 
       - name: Install uv
         uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990  # v8.3.2
         with:
           python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
-          version: ${{ env.DEFAULT_UV_VERSION }}
+          version-file: uv.lock
 
       - name: Install Python
         run: uv python install "$UV_PYTHON"
 
       - name: Install dependencies
-        run: uv sync --frozen --no-default-groups --no-install-project --group build --link-mode=copy
+        run: uv sync --frozen --no-default-groups --no-install-project --group build --link-mode=copy --no-build
 
       - name: Set pre-release version
         if: inputs.environment == 'pre-release'
         run: |
           version="$(tr -d '[:space:]' < VERSION)"
-          echo "${version}.dev$(date -u +%Y%m%d%H%M)" > VERSION
+          echo "${version}.dev$(date -u +%Y%m%d%H%M%S)" > VERSION
 
       - name: Build distribution
         run: make package
@@ -68,11 +68,13 @@ jobs:
 
       - name: Set version
         if: inputs.environment == 'release'
-        run: echo "VERSION=$(echo "${{ inputs.release_tag }}" | sed 's/^v//')" >> "$GITHUB_ENV"
+        env:
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: echo "VERSION=${RELEASE_TAG#v}" >> "$GITHUB_ENV"
 
       - name: Generate SBOM
         if: inputs.environment == 'release'
-        run: make sbom > holidays-${{ env.VERSION }}-sbom.json
+        run: make sbom > "holidays-${VERSION}-sbom.json"
 
       - name: Upload SBOM
         if: inputs.environment == 'release'
@@ -103,13 +105,14 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
         with:
+          persist-credentials: false
           ref: ${{ inputs.ref }}
 
       - name: Install uv
         uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990  # v8.3.2
         with:
           python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
-          version: ${{ env.DEFAULT_UV_VERSION }}
+          version-file: uv.lock
 
       - name: Install Python
         shell: bash
@@ -125,7 +128,7 @@ jobs:
         shell: bash
         run: |
           rm -rf holidays
-          uv run --isolated --no-default-groups --group tests --with ${{ matrix.dist.artifact }} -- pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          uv run --frozen --isolated --no-default-groups --group tests --with ${{ matrix.dist.artifact }} -- pytest --dist loadscope --numprocesses auto tests/countries tests/financial
 
   publish:
     name: Publish generated artifacts
@@ -134,7 +137,6 @@ jobs:
     needs:
       - test-build
     permissions:
-      contents: write
       id-token: write
     runs-on: ubuntu-24.04-arm
     steps:
@@ -148,7 +150,7 @@ jobs:
         uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b  # v1.14.0
 
   sign-artifacts:
-    name: Create SHA1 checksums and Sigstore signatures
+    name: Create SHA256 checksums and Sigstore signatures
     if: inputs.environment == 'release'
     needs:
       - publish
@@ -163,11 +165,11 @@ jobs:
           name: dist
           path: dist
 
-      - name: Compute SHA1 checksums
+      - name: Compute SHA256 checksums
         run: |
           cd dist
           for file in *; do
-            sha1sum "$file" > "$file.sha1"
+            sha256sum "$file" > "$file.sha256"
           done
 
       - name: Sign the files using Sigstore
@@ -206,6 +208,7 @@ jobs:
       - name: Update Github release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
         run: |
-          gh release upload --repo vacanza/holidays ${{ inputs.release_tag }} dist/*
-          gh release upload --repo vacanza/holidays ${{ inputs.release_tag }} holidays-*-sbom.json
+          gh release upload --repo vacanza/holidays "$RELEASE_TAG" dist/*
+          gh release upload --repo vacanza/holidays "$RELEASE_TAG" holidays-*-sbom.json

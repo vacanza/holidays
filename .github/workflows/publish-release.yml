@@ -17,7 +17,9 @@ permissions: {}
 jobs:
   run-publish:
     name: Run publish
-    if: startsWith(github.event.release.tag_name, 'v')
+    if: |
+      startsWith(github.event.release.tag_name, 'v') &&
+      github.event.release.target_commitish == 'main'
     permissions:
       contents: write
       id-token: write

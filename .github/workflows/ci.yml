@@ -31,8 +31,6 @@ jobs:
 
   run-code-ql:
     name: CodeQL
-    needs:
-      - run-code-checks
     permissions:
       contents: read
       security-events: write
@@ -42,7 +40,6 @@ jobs:
     name: Code tests
     needs:
       - run-code-checks
-      - run-code-ql
     permissions:
       contents: read
     secrets:
