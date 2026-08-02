@@ -80,7 +80,7 @@ sbom:
 	UV_PROJECT_ENVIRONMENT="$$tools_env" $(UV) sync --frozen --no-default-groups --only-group ci --no-install-project --no-build >/dev/null; \
 	$(UV) venv "$$sbom_env" >/dev/null; \
 	$(UV) pip install --python "$$sbom_env" "$$wheel" >/dev/null; \
-	UV_PROJECT_ENVIRONMENT="$$tools_env" $(UV) run --frozen --no-sync -- \
+	UV_PROJECT_ENVIRONMENT="$$tools_env" $(UV) run --no-sync -- \
 		cyclonedx-py environment "$$sbom_env"
 
 setup:

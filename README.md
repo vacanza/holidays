@@ -52,14 +52,14 @@ The latest stable version can always be installed or updated via pip:
 pip install --upgrade holidays
 ```
 
-The latest development (dev) version can be installed directly from GitHub:
+The latest pre-release version can always be installed or updated via pip:
 
 ``` shell
-pip install --upgrade https://github.com/vacanza/holidays/tarball/dev
+pip install --upgrade --pre holidays
 ```
 
-All new features are always first pushed to dev branch, then released on main branch upon official
-version upgrades.
+All new features are first pushed to the `dev` branch and published as PyPI pre-releases,
+then released from `main` on official version upgrades.
 
 ## Documentation
 

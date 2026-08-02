@@ -114,7 +114,7 @@ GoTo :Help
     If Not "!SBOM_ERROR!"=="0" Goto :SbomDone
 
     Set "UV_PROJECT_ENVIRONMENT=!TOOLS_ENV!"
-    %UV% run --frozen --no-sync -- cyclonedx-py environment "!SBOM_ENV!"
+    %UV% run --no-sync -- cyclonedx-py environment "!SBOM_ENV!"
     Set "SBOM_ERROR=!ErrorLevel!"
     Set "UV_PROJECT_ENVIRONMENT="
 
