@@ -31,8 +31,9 @@ class TestMadagascar(CommonCountryTests, TestCase):
         self.assertHolidayName("Fetin'ny mahery fo", (f"{year}-03-29" for year in self.full_range))
 
     def test_easter_sunday(self):
+        name = "Fetin'ny paska"
         self.assertHolidayName(
-            "Fetin'ny paska",
+            name,
             "2020-04-12",
             "2021-04-04",
             "2022-04-17",
@@ -40,7 +41,7 @@ class TestMadagascar(CommonCountryTests, TestCase):
             "2024-03-31",
             "2025-04-20",
         )
-        self.assertHolidayName("Fetin'ny paska", self.full_range)
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         self.assertHolidayName(
