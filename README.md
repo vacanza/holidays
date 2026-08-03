@@ -1020,7 +1020,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Latvia</td>
 <td>LV</td>
 <td></td>
-<td>en_US, <strong>lv</strong>, uk</td>
+<td>en_US, <strong>lv</strong>, ru, uk</td>
 <td></td>
 </tr>
 <tr>
