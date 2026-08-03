@@ -44,7 +44,7 @@ class TestTaiwanStockExchange(CommonFinancialTests, TestCase):
         )
 
     def test_clearing_and_settlement(self):
-        name = "無交易 (僅辦理結算交割)"
+        name = "無交易（僅辦理結算交割）"
         self.assertHolidayName(
             name,
             "2021-02-08",
@@ -66,8 +66,8 @@ class TestTaiwanStockExchange(CommonFinancialTests, TestCase):
         self.assertHolidaysInYear(
             2025,
             ("2025-01-01", "中華民國開國紀念日"),
-            ("2025-01-23", "無交易 (僅辦理結算交割)"),
-            ("2025-01-24", "無交易 (僅辦理結算交割)"),
+            ("2025-01-23", "無交易（僅辦理結算交割）"),
+            ("2025-01-24", "無交易（僅辦理結算交割）"),
             ("2025-01-27", "放假日（2025-02-08 補班）"),
             ("2025-01-28", "農曆除夕"),
             ("2025-01-29", "春節"),
@@ -88,8 +88,8 @@ class TestTaiwanStockExchange(CommonFinancialTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2024-01-01", "中華民國開國紀念日"),
-            ("2024-02-06", "無交易 (僅辦理結算交割)"),
-            ("2024-02-07", "無交易 (僅辦理結算交割)"),
+            ("2024-02-06", "無交易（僅辦理結算交割）"),
+            ("2024-02-07", "無交易（僅辦理結算交割）"),
             ("2024-02-08", "放假日（2024-02-17 補班）"),
             ("2024-02-09", "農曆除夕"),
             ("2024-02-12", "春節"),
@@ -148,8 +148,8 @@ class TestTaiwanStockExchange(CommonFinancialTests, TestCase):
         self.assertLocalizedHolidays(
             "zh_CN",
             ("2024-01-01", "中华民国开国纪念日"),
-            ("2024-02-06", "无交易 (仅办理结算交割)"),
-            ("2024-02-07", "无交易 (仅办理结算交割)"),
+            ("2024-02-06", "无交易（仅办理结算交割）"),
+            ("2024-02-07", "无交易（仅办理结算交割）"),
             ("2024-02-08", "休息日（由 2024-02-17 调休）"),
             ("2024-02-09", "农历除夕"),
             ("2024-02-12", "春节"),
