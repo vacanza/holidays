@@ -332,7 +332,7 @@ class TestNiger(CommonCountryTests, TestCase):
             ("2025-04-21", "Easter Monday"),
             ("2025-04-24", "National Concord Day"),
             ("2025-05-01", "International Labor Day"),
-            ("2025-05-29", "Ascension"),
+            ("2025-05-29", "Ascension Day"),
             ("2025-06-07", "Eid al-Adha"),
             ("2025-06-08", "Day after Eid al-Adha"),
             ("2025-06-09", "Day after Eid al-Adha (observed); Pentecost Monday"),

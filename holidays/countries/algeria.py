@@ -155,7 +155,7 @@ class Algeria(
         self._add_rosh_hashanah(tr("رأس السنة العبرية"))
 
         # Yom Kippur.
-        self._add_yom_kippur(tr("يوم الغفران"))
+        self._add_yom_kippur(tr("عيد الغفران"))
 
         # Pesach.
         self._add_passover(tr("عيد الفصح اليهودي"))

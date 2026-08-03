@@ -37,7 +37,7 @@ msgstr "%s (приблизительная дата)"
 msgid "%s (dynç güni)"
 msgstr "%s (выходной)"
 
-#. %s (observed, estimated)
+#. %s (observed, estimated).
 #, c-format
 msgid "%s (dynç güni, çak edilýär)"
 msgstr "%s (выходной, приблизительная дата)"

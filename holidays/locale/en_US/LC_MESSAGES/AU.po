@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.99\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-09-05 12:21+0700\n"
-"PO-Revision-Date: 2026-06-05 16:12+0300\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -147,9 +147,9 @@ msgstr "Eight Hours Day"
 msgid "Easter Tuesday"
 msgstr "Easter Tuesday"
 
-#. Grand Final Day.
-msgid "Grand Final Day"
-msgstr "Grand Final Day"
+#. Friday before the AFL Grand Final.
+msgid "Friday before the AFL Grand Final"
+msgstr "Friday before the AFL Grand Final"
 
 #. Melbourne Cup Day.
 msgid "Melbourne Cup Day"
@@ -163,21 +163,21 @@ msgstr "Western Australia Day"
 msgid "Foundation Day"
 msgstr "Foundation Day"
 
-#. Special public holiday.
-msgid "Special public holiday"
-msgstr "Special public holiday"
+#. Special Public Holiday.
+msgid "Special Public Holiday"
+msgstr "Special Public Holiday"
 
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
 msgstr "National Day of Mourning for Queen Elizabeth II"
 
-#. Declared public holiday.
-msgid "Declared public holiday"
-msgstr "Declared public holiday"
+#. Declared Public Holiday.
+msgid "Declared Public Holiday"
+msgstr "Declared Public Holiday"
 
-#. Additional public holiday.
-msgid "Additional public holiday"
-msgstr "Additional public holiday"
+#. Additional Public Holiday.
+msgid "Additional Public Holiday"
+msgstr "Additional Public Holiday"
 
 #. Queen's Diamond Jubilee.
 msgid "Queen's Diamond Jubilee"
