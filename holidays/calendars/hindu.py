@@ -20,7 +20,6 @@ from holidays.helpers import _normalize_tuple
 ANANT_CHATURDASHI = "ANANT_CHATURDASHI"
 BASANT_PANCHAMI = "BASANT_PANCHAMI"
 BATHUKAMMA = "BATHUKAMMA"
-BESTU_VARAS = "BESTU_VARAS"
 BONALU = "BONALU"
 BUDDHA_PURNIMA = "BUDDHA_PURNIMA"
 CHAITRA_NAVRATRI = "CHAITRA_NAVRATRI"
@@ -62,6 +61,7 @@ SWAMI_DAYANAND_SARASWATI_JAYANTI = "SWAMI_DAYANAND_SARASWATI_JAYANTI"
 TAMU_LOSAR = "TAMU_LOSAR"
 THAIPUSAM = "THAIPUSAM"
 VAISAKHI = "VAISAKHI"
+VIKRAM_SAMVANT_NEW_YEAR = "VIKRAM_SAMVANT_NEW_YEAR"
 VISHU = "VISHU"
 VISHWAKARMA_PUJA = "VISHWAKARMA_PUJA"
 
@@ -182,44 +182,6 @@ class _HinduLunisolar:
         2033: (SEP, 23),
         2034: (OCT, 11),
         2035: (OCT, 1),
-    }
-    # https://web.archive.org/web/20260731125300/https://www.drikpanchang.com/festivals/gujarati-newyear/gujarati-newyear-date-time.html?year=2026
-    BESTU_VARAS_DATES = {
-        2001: (NOV, 16),
-        2002: (NOV, 5),
-        2003: (OCT, 26),
-        2004: (NOV, 13),
-        2005: (NOV, 2),
-        2006: (OCT, 23),
-        2007: (NOV, 10),
-        2008: (OCT, 29),
-        2009: (OCT, 19),
-        2010: (NOV, 7),
-        2011: (OCT, 27),
-        2012: (NOV, 14),
-        2013: (NOV, 4),
-        2014: (OCT, 24),
-        2015: (NOV, 12),
-        2016: (OCT, 31),
-        2017: (OCT, 20),
-        2018: (NOV, 8),
-        2019: (OCT, 28),
-        2020: (NOV, 16),
-        2021: (NOV, 5),
-        2022: (OCT, 26),
-        2023: (NOV, 14),
-        2024: (NOV, 2),
-        2025: (OCT, 22),
-        2026: (NOV, 10),
-        2027: (OCT, 30),
-        2028: (OCT, 18),
-        2029: (NOV, 6),
-        2030: (OCT, 27),
-        2031: (NOV, 15),
-        2032: (NOV, 4),
-        2033: (OCT, 24),
-        2034: (NOV, 12),
-        2035: (NOV, 1),
     }
     # Dates for Bonalu (Ashada Masam).
     # [2018](https://web.archive.org/web/20250402131537/https://www.telangana.gov.in/Downloads/calendar-2018/)
@@ -2109,6 +2071,45 @@ class _HinduLunisolar:
         2035: (APR, 14),
     }
 
+    # https://web.archive.org/web/20260803165701/https://www.drikpanchang.com/festivals/gujarati-newyear/gujarati-newyear-date-time.html?year=2026
+    # https://web.archive.org/web/20260000000000*/https://gad.gujarat.gov.in/personnel/holidays.htm
+    VIKRAM_SAMVANT_NEW_YEAR_DATES = {
+        2001: (NOV, 16),
+        2002: (NOV, 5),
+        2003: (OCT, 26),
+        2004: (NOV, 13),
+        2005: (NOV, 2),
+        2006: (OCT, 23),
+        2007: (NOV, 10),
+        2008: (OCT, 29),
+        2009: (OCT, 19),
+        2010: (NOV, 7),
+        2011: (OCT, 27),
+        2012: (NOV, 14),
+        2013: (NOV, 4),
+        2014: (OCT, 24),
+        2015: (NOV, 12),
+        2016: (OCT, 31),
+        2017: (OCT, 20),
+        2018: (NOV, 8),
+        2019: (OCT, 28),
+        2020: (NOV, 16),
+        2021: (NOV, 5),
+        2022: (OCT, 26),
+        2023: (NOV, 14),
+        2024: (NOV, 2),
+        2025: (OCT, 22),
+        2026: (NOV, 10),
+        2027: (OCT, 30),
+        2028: (OCT, 18),
+        2029: (NOV, 6),
+        2030: (OCT, 27),
+        2031: (NOV, 15),
+        2032: (NOV, 4),
+        2033: (OCT, 24),
+        2034: (NOV, 12),
+        2035: (NOV, 1),
+    }
     # https://web.archive.org/web/20251213154535/http://www.drikpanchang.com/festivals/vishu/vishu-kani-date-time.html
     VISHU_DATES = {
         2001: (APR, 14),
@@ -2208,9 +2209,6 @@ class _HinduLunisolar:
 
     def bathukamma_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BATHUKAMMA, year)
-
-    def bestu_varas_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(BESTU_VARAS, year)
 
     def bonalu_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BONALU, year)
@@ -2334,6 +2332,9 @@ class _HinduLunisolar:
 
     def vaisakhi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VAISAKHI, year)
+
+    def vikram_samvant_new_year_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(VIKRAM_SAMVANT_NEW_YEAR, year)
 
     def vishu_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VISHU, year)

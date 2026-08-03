@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-08-01 19:30+0530\n"
+"PO-Revision-Date: 2026-08-03 23:37+0530\n"
 "Last-Translator: Harsh Baghel <hk5324519@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: bn\n"
@@ -324,10 +324,6 @@ msgstr "গুজরাট দিবস"
 msgid "Sardar Vallabhbhai Patel Jayanti"
 msgstr "সরদার বল্লভভাই প্যাটেল জয়ন্তী"
 
-#. Gujarati New Year.
-msgid "Bestu Varas"
-msgstr "গুজরাটি নববর্ষ"
-
 #. Makar Sankranti.
 msgid "Uttarayan"
 msgstr "উত্তরায়ণ"
@@ -335,6 +331,10 @@ msgstr "উত্তরায়ণ"
 #. Parsi New Year (Shahenshahi).
 msgid "Parsi New Year (Shahenshahi)"
 msgstr "পারসি নববর্ষ (শাহেনশাহী)"
+
+#. Vikram Samvant New Year.
+msgid "Vikram Samvant New Year"
+msgstr "গুজরাটি নববর্ষ"
 
 #. Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day.
 msgid "Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Shaheedi Diwas"
