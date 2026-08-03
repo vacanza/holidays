@@ -123,7 +123,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
                 dts_observed.add(self._add_holiday_jun_26(name))
 
         if self._year <= 2005:
-            # Independence Day.
+            # National Independence Day.
             self._add_holiday_oct_18(tr("Milli Müstəqillik Günü"))
 
         if self._year >= 2021:
@@ -181,7 +181,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
                 # Independence Restoration Day.
                 tr("Müstəqilliyin Bərpası Günü")
                 if self._year >= 2021
-                # Independence Day.
+                # National Independence Day.
                 else tr("Milli Müstəqillik Günü")
             )
 

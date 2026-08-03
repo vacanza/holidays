@@ -60,7 +60,7 @@ msgstr ""
 msgid "Día de las Glorias Navales"
 msgstr ""
 
-#. National Day of Indigenous Peoples.
+#. National Indigenous Peoples Day.
 msgid "Día Nacional de los Pueblos Indígenas"
 msgstr ""
 
@@ -68,7 +68,7 @@ msgstr ""
 msgid "San Pedro y San Pablo"
 msgstr ""
 
-#. Day of Virgin of Carmen.
+#. Our Lady of Mount Carmel.
 msgid "Virgen del Carmen"
 msgstr ""
 
@@ -76,11 +76,11 @@ msgstr ""
 msgid "Asunción de la Virgen"
 msgstr ""
 
-#. Day of National Liberation.
+#. National Liberation Day.
 msgid "Día de la Liberación Nacional"
 msgstr ""
 
-#. Day of National Unity.
+#. National Unity Day.
 msgid "Día de la Unidad Nacional"
 msgstr ""
 

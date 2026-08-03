@@ -45,7 +45,7 @@ class Mozambique(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # International Workers' Day.
         self._add_observed(self._add_labor_day(tr("Dia Internacional dos Trabalhadores")))
 
-        # Independence Day.
+        # National Independence Day.
         self._add_observed(self._add_holiday_jun_25(tr("Dia da Independência Nacional")))
 
         # Victory Day.

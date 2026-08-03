@@ -16,7 +16,7 @@ from holidays.countries.cabo_verde import CaboVerde
 from tests.common import CommonCountryTests
 
 
-class TestCapeVerde(CommonCountryTests, TestCase):
+class TestCaboVerde(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(CaboVerde)
@@ -531,7 +531,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-06-15", "Vatertag"),
             ("2025-06-24", "Tag der Gemeinde Brava"),
             ("2025-07-04", "Tag der Gemeinde Boa Vista"),
-            ("2025-07-05", "Unabhängigkeitstag"),
+            ("2025-07-05", "Tag der Nationalen Unabhängigkeit"),
             ("2025-07-19", "Tag der Gemeinde São Salvador do Mundo"),
             ("2025-07-25", "Tag der Gemeinde Santa Cruz"),
             ("2025-08-02", "Tag der Gemeinde Tarrafal de São Nicolau"),
@@ -576,7 +576,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-06-15", "Father's Day"),
             ("2025-06-24", "Brava Municipality Day"),
             ("2025-07-04", "Boa Vista Municipality Day"),
-            ("2025-07-05", "Independence Day"),
+            ("2025-07-05", "National Independence Day"),
             ("2025-07-19", "São Salvador do Mundo Municipality Day"),
             ("2025-07-25", "Santa Cruz Municipality Day"),
             ("2025-08-02", "Tarrafal de São Nicolau Municipality Day"),

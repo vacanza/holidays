@@ -25,7 +25,7 @@ class TestBelgium(CommonCountryTests, TestCase):
         self.assertHolidayName("Nieuwjaar", (f"{year}-01-01" for year in self.full_range))
 
     def test_good_friday(self):
-        name = "Goede Vrijdag"
+        name = "Goede vrijdag"
         self.assertNoHolidayName(name)
         self.assertBankHolidayName(
             name,
@@ -196,7 +196,7 @@ class TestBelgium(CommonCountryTests, TestCase):
     def test_2022_bank(self):
         self.assertBankHolidaysInYear(
             2022,
-            ("2022-04-15", "Goede Vrijdag"),
+            ("2022-04-15", "Goede vrijdag"),
             ("2022-05-27", "Vrijdag na O. L. H. Hemelvaart"),
             ("2022-12-26", "Banksluitingsdag"),
         )
@@ -204,7 +204,7 @@ class TestBelgium(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Nieuwjaar"),
-            ("2022-04-15", "Goede Vrijdag"),
+            ("2022-04-15", "Goede vrijdag"),
             ("2022-04-17", "Pasen"),
             ("2022-04-18", "Paasmaandag"),
             ("2022-05-01", "Dag van de Arbeid"),

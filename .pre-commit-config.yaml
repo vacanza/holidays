@@ -26,7 +26,7 @@ repos:
           - --py310-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 3b3f7c3f57fe9925356faf5fe6230835138be230  # v0.15.17
+    rev: c59bba8fb259db0fec2bbb77ad8ba51ea7341b56  # v0.15.20
     hooks:
       - id: ruff-check
       - id: ruff-format
@@ -56,7 +56,7 @@ repos:
         exclude: ^(docs)
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: d2823d321df3af8f878f7ee3414dc94d037145b9  # v2.1.0
+    rev: 0cbe8f6e54466b1b48f9d41f44abb4d06c061b5e  # v2.2.0
     hooks:
       - id: mypy
         additional_dependencies:
@@ -64,7 +64,7 @@ repos:
           - types-python-dateutil==2.9.0.20260518
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: ca620e0df5ae9a02b7b81a6e4c954894f043ce42  # v2.24.1
+    rev: 0c8c15d8fe996493035be407c5cf4a288cf6bf8e  # v2.25.1
     hooks:
       - id: pyproject-fmt
 

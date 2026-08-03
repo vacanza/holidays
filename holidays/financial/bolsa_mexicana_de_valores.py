@@ -14,7 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_NONE, SUN_TO_NONE
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NONE
 
 
 class BolsaMexicanaDeValores(
@@ -63,7 +63,7 @@ class BolsaMexicanaDeValores(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, BolsaMexicanaDeValoresStaticHolidays)
-        kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NONE)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
