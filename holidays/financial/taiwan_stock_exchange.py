@@ -10,12 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import _timedelta
 from holidays.constants import PUBLIC
 from holidays.countries.taiwan import Taiwan
-from holidays.observed_holiday_base import SAT_SUN_TO_PREV_FRI, SUN_TO_NEXT_MON
+from holidays.observed_holiday_base import SAT_TO_PREV_WORKDAY, SUN_TO_NEXT_WORKDAY
 
 
 class TaiwanStockExchange(Taiwan):
@@ -48,15 +48,12 @@ class TaiwanStockExchange(Taiwan):
             self._move_holiday(
                 # Labor Day.
                 self._add_labor_day(tr("勞動節")),
-                rule=SAT_SUN_TO_PREV_FRI + SUN_TO_NEXT_MON,
+                rule=SAT_TO_PREV_WORKDAY + SUN_TO_NEXT_WORKDAY,
             )
 
-        # %s (Market opens only for Clearing & Settlement).
-        settlement_label = tr("%s (僅辦理結算交割)")
-
-        # No Trading.
-        name = self._format_holiday_name(settlement_label, tr("無交易"))
-        cny_eve = self._chinese_new_year + timedelta(days=-1)
+        # No Trading (Market opens only for Clearing & Settlement).
+        name = tr("無交易 (僅辦理結算交割)")
+        cny_eve = _timedelta(self._chinese_new_year, -1)
         dt = cny_eve
         for _ in range(2):
             dt = self._get_next_workday(dt, -1)

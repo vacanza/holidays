@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-07-28 16:23+0000\n"
-"PO-Revision-Date: 2026-07-31 14:24+0530\n"
+"PO-Revision-Date: 2026-08-03 10:45+0530\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -31,11 +31,6 @@ msgstr ""
 msgid "勞動節"
 msgstr "Labor Day"
 
-#. %s (Market opens only for Clearing & Settlement).
-#, c-format
-msgid "%s (僅辦理結算交割)"
-msgstr "%s (Market opens only for Clearing & Settlement)"
-
-#. No Trading.
-msgid "無交易"
-msgstr "No Trading"
+#. No Trading (Market opens only for Clearing & Settlement).
+msgid "無交易 (僅辦理結算交割)"
+msgstr "No Trading (Market opens only for Clearing & Settlement)"
