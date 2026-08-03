@@ -26,8 +26,6 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     uses: ./.github/workflows/run-publish.yml
     with:
       environment: pre-release
