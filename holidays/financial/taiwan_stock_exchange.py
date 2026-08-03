@@ -21,7 +21,7 @@ from holidays.observed_holiday_base import SAT_TO_PREV_WORKDAY, SUN_TO_NEXT_WORK
 class TaiwanStockExchange(Taiwan):
     """Taiwan Stock Exchange (TWSE) holidays.
 
-    Refrences:
+    References:
         [2008](https://web.archive.org/web/20080914083538/http://www.twse.com.tw/en/trading/trading_days.php)
         [2009](https://web.archive.org/web/20090414134906/http://www.twse.com.tw/en/trading/trading_days.php)
         [2010](https://web.archive.org/web/20100215175517/http://www.twse.com.tw/en/trading/trading_days.php)
@@ -52,7 +52,7 @@ class TaiwanStockExchange(Taiwan):
             )
 
         # No Trading (Market opens only for Clearing & Settlement).
-        name = tr("無交易 (僅辦理結算交割)")
+        name = tr("無交易（僅辦理結算交割）")
         cny_eve = _timedelta(self._chinese_new_year, -1)
         dt = cny_eve
         for _ in range(2):
