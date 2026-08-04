@@ -733,7 +733,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-08-27",
         )
         self._assertHinduHolidayHelper(name, dts, category_optional=True, skip_years={2012, 2023})
-        name = "Ganesh Chaturthi"
+        name = "Ganesh Chaturthi / Vinayak Chaturthi"
         self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(
             name,
@@ -1209,6 +1209,25 @@ class TestIndia(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
+    def test_ganesh_chaturthi(self):
+        name = "Ganesh Chaturthi / Vinayak Chaturthi"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "MH":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    (
+                        "2024-09-07",
+                        "2025-08-27",
+                        "2026-09-14",
+                        "2027-09-04",
+                        "2028-08-23",
+                    ),
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+    
     def test_maharashtra_day(self):
         name = "Maharashtra Day"
         self.assertNoHolidayName(name)
