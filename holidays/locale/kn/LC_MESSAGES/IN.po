@@ -332,8 +332,8 @@ msgstr "ಉತ್ತರಾಯಣ"
 msgid "Parsi New Year (Shahenshahi)"
 msgstr "ಪಾರ್ಸಿ ಹೊಸ ವರ್ಷ (ಶಹನ್ಶಾಹಿ)"
 
-#. Vikram Samvant New Year.
-msgid "Vikram Samvant New Year"
+#. Vikram Samvat New Year.
+msgid "Vikram Samvat New Year"
 msgstr "ಗುಜರಾತಿ ಹೊಸ ವರ್ಷ"
 
 #. Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day.

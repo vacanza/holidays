@@ -61,7 +61,7 @@ SWAMI_DAYANAND_SARASWATI_JAYANTI = "SWAMI_DAYANAND_SARASWATI_JAYANTI"
 TAMU_LOSAR = "TAMU_LOSAR"
 THAIPUSAM = "THAIPUSAM"
 VAISAKHI = "VAISAKHI"
-VIKRAM_SAMVANT_NEW_YEAR = "VIKRAM_SAMVANT_NEW_YEAR"
+VIKRAM_SAMVAT_NEW_YEAR = "VIKRAM_SAMVAT_NEW_YEAR"
 VISHU = "VISHU"
 VISHWAKARMA_PUJA = "VISHWAKARMA_PUJA"
 
@@ -2073,7 +2073,7 @@ class _HinduLunisolar:
 
     # https://web.archive.org/web/20260803165701/https://www.drikpanchang.com/festivals/gujarati-newyear/gujarati-newyear-date-time.html?year=2026
     # https://web.archive.org/web/20260000000000*/https://gad.gujarat.gov.in/personnel/holidays.htm
-    VIKRAM_SAMVANT_NEW_YEAR_DATES = {
+    VIKRAM_SAMVAT_NEW_YEAR_DATES = {
         2001: (NOV, 16),
         2002: (NOV, 5),
         2003: (OCT, 26),
@@ -2333,8 +2333,8 @@ class _HinduLunisolar:
     def vaisakhi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VAISAKHI, year)
 
-    def vikram_samvant_new_year_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(VIKRAM_SAMVANT_NEW_YEAR, year)
+    def vikram_samvat_new_year_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(VIKRAM_SAMVAT_NEW_YEAR, year)
 
     def vishu_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VISHU, year)

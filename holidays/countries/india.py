@@ -567,8 +567,8 @@ class India(
         # Parsi New Year (Shahenshahi).
         self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
 
-        # Vikram Samvant New Year.
-        self._add_vikram_samvant_new_year(tr("Vikram Samvant New Year"))
+        # Vikram Samvat New Year.
+        self._add_vikram_samvat_new_year(tr("Vikram Samvat New Year"))
 
     # Haryana.
     def _populate_subdiv_hr_public_holidays(self):

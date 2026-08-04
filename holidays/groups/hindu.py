@@ -790,16 +790,16 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         self._add_holiday(name, date(self._year, APR, 14 if isleap(self._year) else 15))
 
-    def _add_vikram_samvant_new_year(self, name) -> date | None:
+    def _add_vikram_samvat_new_year(self, name) -> date | None:
         """
-        Add Vikram Samvant New Year (Gujarati New Year).
+        Add Vikram Samvat New Year (Gujarati New Year).
 
         Vikram Samew Year marks the first day of the Hindu month of Kartik and is
         celebrated as the Gujarati New Year, the day after Diwali.
-        https://en.wikipedia.org/wiki/Vikram_Samvant
+        https://en.wikipedia.org/wiki/Vikram_Samvat
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.vikram_samvant_new_year_date(self._year)
+            name, self._hindu_calendar.vikram_samvat_new_year_date(self._year)
         )
 
     def _add_vishu(self, name) -> date | None:

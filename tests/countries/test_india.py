@@ -861,8 +861,8 @@ class TestIndia(CommonCountryTests, TestCase):
         # SUBDIVS.
         self._assertHinduHolidayHelper(name_subdiv, dts, subdivs={"HR", "PB"})
 
-    def test_vikram_samvant_new_year(self):
-        name = "Vikram Samvant New Year"
+    def test_vikram_samvat_new_year(self):
+        name = "Vikram Samvat New Year"
         dts = (
             "2020-11-16",
             "2021-11-05",
@@ -1842,7 +1842,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ),
             ("2018-11-06", "Deepavali (South India); Naraka Chaturdashi"),
             ("2018-11-07", "Diwali (Deepavali)"),
-            ("2018-11-08", "Govardhan Puja; Vikram Samvant New Year; Vishwakarma Day"),
+            ("2018-11-08", "Govardhan Puja; Vikram Samvat New Year; Vishwakarma Day"),
             ("2018-11-09", "Bhai Duj"),
             (
                 "2018-11-13",
