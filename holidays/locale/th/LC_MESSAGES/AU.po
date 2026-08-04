@@ -147,8 +147,8 @@ msgstr "วันแปดชั่วโมง (วันแรงงาน)"
 msgid "Easter Tuesday"
 msgstr "วันอังคารอีสเตอร์"
 
-#. Grand Final Day.
-msgid "Grand Final Day"
+#. Friday before the AFL Grand Final.
+msgid "Friday before the AFL Grand Final"
 msgstr "วันศุกร์ก่อนวันแข่งฟุตบอลออสเตรเลีย (AFL) รอบสุดท้าย"
 
 #. Melbourne Cup Day.

@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-29 00:37+0530\n"
-"PO-Revision-Date: 2026-07-27 20:49+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-07-29 20:25+0530\n"
+"Last-Translator: Harsh Baghel <hk5324519@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
@@ -443,6 +443,10 @@ msgstr "मध्य प्रदेश स्थापना दिन"
 #. Mizoram State Day.
 msgid "Mizoram State Day"
 msgstr "मिझोराम राज्य दिन"
+
+#. Peace Accord Day.
+msgid "Remna Ni"
+msgstr "शांतता करार दिन"
 
 #. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"
