@@ -44,22 +44,65 @@ specific date is a holiday as fast and flexible as possible.
   </tr>
 </table>
 
-## Install
+## Installation & execution
 
-The latest stable version can always be installed or updated via pip:
+The `holidays` package can be installed and run using either `pip` or `uv`.
 
-``` shell
+### Using pip
+
+#### Installation
+
+Install or update the latest stable version via pip:
+
+```shell
 pip install --upgrade holidays
+
 ```
 
-The latest development (dev) version can be installed directly from GitHub:
+To try out the latest features, install the development version directly from GitHub:
 
-``` shell
+```shell
 pip install --upgrade https://github.com/vacanza/holidays/tarball/dev
+
 ```
 
-All new features are always first pushed to dev branch, then released on main branch upon official
-version upgrades.
+> **Note:** New features are pushed to the `dev` branch first, then merged into `main` for official releases.
+
+#### Quick Run
+
+Generate a calendar file using the built-in CLI utility:
+
+```shell
+python3 -m holidays.generate_ics US
+
+```
+
+### Using uv
+
+If you prefer using [uv](https://docs.astral.sh/uv/), you can run the library instantly without an explicit global installation.
+
+
+#### One-off Execution
+
+Generate a calendar file directly using `uvx`:
+
+```shell
+uvx --from holidays holidays-ics US
+
+```
+
+#### Interactive & Script Usage
+
+To drop into a Python REPL or run a local script with `holidays` available on the fly:
+
+```shell
+# Open an interactive Python shell
+uvx --with holidays python3
+
+# Run a specific script
+uvx --with holidays python3 script.py
+
+```
 
 ## Documentation
 
