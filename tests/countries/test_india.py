@@ -748,18 +748,6 @@ class TestIndia(CommonCountryTests, TestCase):
             "2023-08-20",
         )
 
-    def test_ganesh_chaturthi_mh(self):
-        holidays = India(subdiv="MH")
-
-        self.assertHolidayName(
-            "Ganesh Chaturthi / Vinayak Chaturthi",
-            holidays,
-            "2012-09-19",
-            "2023-09-19",
-            "2024-09-07",
-            "2025-08-27",
-        )
-
     def test_dussehra_saptami(self):
         name = "Dussehra (Saptami)"
         dts = (
@@ -1230,6 +1218,8 @@ class TestIndia(CommonCountryTests, TestCase):
                     name,
                     holidays,
                     (
+                        "2012-09-19",
+                        "2023-09-19",
                         "2024-09-07",
                         "2025-08-27",
                         "2026-09-14",
