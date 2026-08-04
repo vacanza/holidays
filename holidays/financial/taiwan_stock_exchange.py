@@ -39,13 +39,14 @@ class TaiwanStockExchange(Taiwan):
     parent_entity = Taiwan
     supported_categories: tuple[str, ...] = (PUBLIC,)  # type: ignore[assignment]
     start_year = 2008
-    observed_label = "%s"
+    # Adjusted Holiday.
+    observed_label = tr("%s（調整放假）")
 
     def _populate_common_holidays(self):
         super()._populate_common_holidays()
 
         if self._year <= 2025:
-            self._move_holiday(
+            self._add_observed(
                 # Labor Day.
                 self._add_labor_day(tr("勞動節")),
                 rule=SAT_TO_PREV_WORKDAY + SUN_TO_NEXT_WORKDAY,
@@ -53,15 +54,10 @@ class TaiwanStockExchange(Taiwan):
 
         # No Trading (Market opens only for Clearing & Settlement).
         name = tr("無交易（僅辦理結算交割）")
-        cny_eve = _timedelta(self._chinese_new_year, -1)
-        dt = cny_eve
+        dt = _timedelta(self._chinese_new_year, -1)
         for _ in range(2):
             dt = self._get_next_workday(dt, -1)
             self._add_holiday(name, dt)
-
-        for dt in tuple(self.keys()):
-            if self._is_weekend(dt):
-                self.pop(dt)
 
 
 class XTAI(TaiwanStockExchange):

@@ -15,17 +15,22 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-07-30 14:52+0000\n"
-"PO-Revision-Date: 2026-08-03 12:11+0530\n"
-"Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
+"PO-Revision-Date: 2026-08-04 05:56+0000\n"
+"Last-Translator: Paresh Joshi <194076591+pareshjoshij@users.noreply.github.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Source-Language: zh_TW\n"
+
+#. Adjusted Holiday.
+#, c-format
+msgid "%s（調整放假）"
+msgstr ""
 
 #. Labor Day.
 msgid "勞動節"
