@@ -422,7 +422,7 @@ class India(
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
         if self._year not in {2012, 2023} and self.subdiv != "MH":
-            # Ganesh Chaturthi.
+            # Ganesh Chaturthi / Vinayak Chaturthi.
             self._add_ganesh_chaturthi(tr("Ganesh Chaturthi / Vinayak Chaturthi"))
 
         # Dussehra (Saptami).
