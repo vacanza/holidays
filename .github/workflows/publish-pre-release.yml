@@ -10,6 +10,7 @@ on:
 env:
   FORCE_COLOR: 1
 
+# Serialize publishes so calendar-based .devYYYYMMDDHHMMSS versions cannot collide.
 concurrency:
   cancel-in-progress: false
   group: ${{ github.repository }}-publish-pre-release-dev

@@ -52,7 +52,9 @@ jobs:
         if: inputs.environment == 'pre-release'
         run: |
           version="$(tr -d '[:space:]' < VERSION)"
-          echo "${version}.dev$(date -u +%Y%m%d%H%M)${GITHUB_RUN_ID}" > VERSION
+          # Calendar .devN is unique only because publish-pre-release.yml concurrency
+          # serializes runs (cancel-in-progress: false). Keep .devN within u64 for uv.
+          echo "${version}.dev$(date -u +%Y%m%d%H%M%S)" > VERSION
 
       - name: Build distribution
         run: make package
