@@ -1,0 +1,59 @@
+name: Publish release
+
+on:
+  release:
+    types:
+      - published
+
+env:
+  FORCE_COLOR: 1
+
+concurrency:
+  cancel-in-progress: false
+  group: ${{ github.repository }}-publish-release-${{ github.event.release.tag_name }}
+
+permissions: {}
+
+jobs:
+  verify-release:
+    name: Verify release tag
+    if: startsWith(github.event.release.tag_name, 'v')
+    outputs:
+      tag_commit: ${{ steps.verify.outputs.tag_commit }}
+    permissions:
+      contents: read
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.event.release.tag_name }}
+
+      - name: Verify tag commit belongs to main
+        id: verify
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          tag_commit="$(git rev-parse HEAD)"
+          if ! git merge-base --is-ancestor "$tag_commit" origin/main; then
+            echo "Release tag ${RELEASE_TAG} (${tag_commit}) is not on main." >&2
+            exit 1
+          fi
+          echo "tag_commit=${tag_commit}" >> "$GITHUB_OUTPUT"
+
+  run-publish:
+    name: Run publish
+    needs:
+      - verify-release
+    permissions:
+      contents: write
+      id-token: write
+    uses: ./.github/workflows/run-publish.yml
+    with:
+      environment: release
+      ref: ${{ needs.verify-release.outputs.tag_commit }}
+      release_tag: ${{ github.event.release.tag_name }}
