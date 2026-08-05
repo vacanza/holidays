@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-07-28 16:23+0000\n"
-"PO-Revision-Date: 2026-08-04 05:51+0000\n"
+"PO-Revision-Date: 2026-08-05 05:24+0000\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -30,7 +30,12 @@ msgstr ""
 #. Adjusted Holiday.
 #, c-format
 msgid "%s（調整放假）"
-msgstr "%s (วันหยุดชดเชย)"
+msgstr "ชดเชย%s"
+
+#. %s (Adjusted Holiday, estimated).
+#, c-format
+msgid "%s（調整放假，推定）"
+msgstr "ชดเชย%s (โดยประมาณ)"
 
 #. Labor Day.
 msgid "勞動節"
@@ -38,4 +43,4 @@ msgstr "วันแรงงาน"
 
 #. No Trading (Market opens only for Clearing & Settlement).
 msgid "無交易（僅辦理結算交割）"
-msgstr "ไม่มีการซื้อขาย (เปิดตลาดสำหรับการชำระราคาและส่งมอบหลักทรัพย์เท่านั้น)"
+msgstr "ไม่มีการซื้อขาย (เปิดทำการชำระราคาและส่งมอบหลักทรัพย์เท่านั้น)"

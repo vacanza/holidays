@@ -41,6 +41,8 @@ class TaiwanStockExchange(Taiwan):
     start_year = 2008
     # Adjusted Holiday.
     observed_label = tr("%s（調整放假）")
+    # %s (Adjusted Holiday, estimated).
+    observed_estimated_label = tr("%s（調整放假，推定）")
 
     def _populate_common_holidays(self):
         super()._populate_common_holidays()
