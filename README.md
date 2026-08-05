@@ -2085,6 +2085,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Taiwan Stock Exchange</td>
+<td>XTAI</td>
+<td>Taiwan Stock Exchange market holidays</td>
+<td>en_US, th, zh_CN, <strong>zh_TW</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Toronto Stock Exchange</td>
 <td>XTSE</td>
 <td>Toronto Stock Exchange (TSX) market holidays</td>
