@@ -61,6 +61,11 @@ pip install --upgrade --pre holidays
 All new features are first pushed to the `dev` branch and published as PyPI pre-releases,
 then released from `main` on official version upgrades.
 
+On `dev`, the `VERSION` file holds the upcoming stable version (for example `0.103`).
+Pre-release publishes append a UTC timestamp in CI only
+(`0.103.devYYYYMMDDHHMMSS`); that `.dev` form is what appears on PyPI and is not
+committed back to the repository.
+
 ## Documentation
 
 The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io).
