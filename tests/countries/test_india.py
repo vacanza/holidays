@@ -1210,7 +1210,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_ganesh_chaturthi_subdiv_mh(self):
-        name = "Ganesh Chaturthi / Vinayak Chaturthi"
+        name = "Ganesh Chaturthi"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "MH":
@@ -1810,7 +1810,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-30", "Eid-e-Ghadeer (estimated)"),
             ("2018-09-03", "Janmashtami (Vaishnava)"),
             ("2018-09-12", "Saragarhi Day"),
-            ("2018-09-13", "Ganesh Chaturthi / Vinayak Chaturthi"),
+            ("2018-09-13","Ganesh Chaturthi; Ganesh Chaturthi / Vinayak Chaturthi"),
             ("2018-09-14", "Samvatsari Day"),
             ("2018-09-17", "Vishwakarma Puja"),
             ("2018-09-21", "Muharram"),
