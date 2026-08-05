@@ -761,8 +761,9 @@ class India(
         self._add_holiday_may_1(tr("Maharashtra Day"))
         # Parsi New Year (Shahenshahi).
         self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
-        # Ganesh Chaturthi / Vinayak Chaturthi.
-        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi / Vinayak Chaturthi"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
