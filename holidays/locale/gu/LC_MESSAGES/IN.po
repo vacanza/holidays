@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
 "PO-Revision-Date: 2026-08-03 23:37+0530\n"
@@ -333,7 +333,7 @@ msgstr "ઉત્તરાયણ"
 msgid "Parsi New Year (Shahenshahi)"
 msgstr "પારસી નવું વર્ષ (શાહેનશાહી)"
 
-#. Vikram Samvat New Year.
+#. Gujarati New Year.
 msgid "Vikram Samvat New Year"
 msgstr "ગુજરાતી નવું વર્ષ"
 

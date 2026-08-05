@@ -794,8 +794,8 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         Add Vikram Samvat New Year (Gujarati New Year).
 
-        Vikram Samew Year marks the first day of the Hindu month of Kartik and is
-        celebrated as the Gujarati New Year, the day after Diwali.
+        Vikram Samvat New Year marks the first day of the Hindu month of Kartik and is
+        celebrated as the Gujarati New Year.
         https://en.wikipedia.org/wiki/Vikram_Samvat
         """
         return self._add_hindu_calendar_holiday(

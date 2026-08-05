@@ -2071,8 +2071,7 @@ class _HinduLunisolar:
         2035: (APR, 14),
     }
 
-    # https://web.archive.org/web/20260803165701/https://www.drikpanchang.com/festivals/gujarati-newyear/gujarati-newyear-date-time.html?year=2026
-    # https://web.archive.org/web/20260000000000*/https://gad.gujarat.gov.in/personnel/holidays.htm
+    # https://web.archive.org/web/20260731125321/https://www.drikpanchang.com/festivals/gujarati-newyear/gujarati-newyear-date-time.html
     VIKRAM_SAMVAT_NEW_YEAR_DATES = {
         2001: (NOV, 16),
         2002: (NOV, 5),
