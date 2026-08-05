@@ -24,7 +24,7 @@ jobs:
       github.event.workflow_run.event == 'push' &&
       github.event.workflow_run.head_branch == 'dev'
     permissions:
-      contents: read
+      contents: write
       id-token: write
     uses: ./.github/workflows/run-publish.yml
     with:
