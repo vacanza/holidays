@@ -39,7 +39,7 @@ class TaiwanStockExchange(Taiwan):
     parent_entity = Taiwan
     supported_categories: tuple[str, ...] = (PUBLIC,)  # type: ignore[assignment]
     start_year = 2008
-    # Adjusted Holiday.
+    # %s (Adjusted Holiday).
     observed_label = tr("%s（調整放假）")
     # %s (Adjusted Holiday, estimated).
     observed_estimated_label = tr("%s（調整放假，推定）")
