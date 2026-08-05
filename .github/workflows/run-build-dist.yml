@@ -1,10 +1,10 @@
-name: Run publish
+name: Build distribution
 
 on:
   workflow_call:
     inputs:
       environment:
-        description: GitHub environment for the release
+        description: pre-release or release
         required: true
         type: string
       ref:
@@ -12,7 +12,7 @@ on:
         required: true
         type: string
       release_tag:
-        description: GitHub release tag for SBOM naming and release uploads
+        description: GitHub release tag for SBOM naming (release only)
         required: false
         type: string
         default: ''
@@ -128,88 +128,3 @@ jobs:
         run: |
           rm -rf holidays
           uv run --frozen --isolated --no-default-groups --group tests --with ${{ matrix.dist.artifact }} -- pytest --dist loadscope --numprocesses auto tests/countries tests/financial
-
-  publish:
-    name: Publish generated artifacts
-    if: github.repository == 'vacanza/holidays'
-    environment: ${{ inputs.environment }}
-    needs:
-      - test-build
-    permissions:
-      id-token: write
-    # gh-action-pypi-publish ships an amd64-only image.
-    # https://github.com/pypa/gh-action-pypi-publish/issues/356
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Download package artifacts
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c  # v8.0.1
-        with:
-          name: dist
-          path: dist
-
-      - name: Publish package distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b  # v1.14.0
-
-  sign-artifacts:
-    name: Create SHA256 checksums and Sigstore signatures
-    if: inputs.environment == 'release'
-    needs:
-      - publish
-    permissions:
-      contents: read
-      id-token: write
-    runs-on: ubuntu-24.04-arm
-    steps:
-      - name: Download package artifacts
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c  # v8.0.1
-        with:
-          name: dist
-          path: dist
-
-      - name: Compute SHA256 checksums
-        run: |
-          cd dist
-          for file in *; do
-            sha256sum "$file" > "$file.sha256"
-          done
-
-      - name: Sign the files using Sigstore
-        uses: sigstore/gh-action-sigstore-python@5b79a39c381910c090341a2c9b0bf022c8b387e1  # v3.4.0
-        with:
-          inputs: |
-            ./dist/*.tar.gz
-            ./dist/*.whl
-
-      - name: Upload package dist and signatures
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
-        with:
-          name: signed-artifacts
-          path: dist
-
-  update-github-release:
-    name: Update GitHub release with SBOM and signed artifacts
-    if: inputs.environment == 'release'
-    needs:
-      - sign-artifacts
-    permissions:
-      contents: write
-    runs-on: ubuntu-24.04-arm
-    steps:
-      - name: Download SBOM
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c  # v8.0.1
-        with:
-          name: sbom
-
-      - name: Download package dist and signatures
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c  # v8.0.1
-        with:
-          name: signed-artifacts
-          path: dist
-
-      - name: Update Github release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_TAG: ${{ inputs.release_tag }}
-        run: |
-          gh release upload --clobber --repo vacanza/holidays "$RELEASE_TAG" dist/*
-          gh release upload --clobber --repo vacanza/holidays "$RELEASE_TAG" holidays-*-sbom.json
