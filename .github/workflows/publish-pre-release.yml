@@ -40,7 +40,7 @@ jobs:
           WR_BRANCH: ${{ github.event.workflow_run.head_branch }}
           WR_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
           WR_EVENT: ${{ github.event.workflow_run.event }}
-        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b  # v7.1.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3  # v9.0.0
         with:
           script: |
             const branch = process.env.WR_BRANCH
@@ -65,8 +65,18 @@ jobs:
                 execFileSync('git', ['log', '-1', `--format=${fmt}`], {
                   encoding: 'utf8',
                 }).trim()
+              const isBot = (name, email) => {
+                const bots = ['dependabot[bot]', 'github-actions[bot]']
+                return bots.includes(name) || bots.some((bot) => email.includes(`${bot}@`))
+              }
+              const isBotCoAuthor = (message) =>
+                message.split('\n').some((line) => {
+                  const match = line.match(/^Co-authored-by:\s*(.+?)(?:\s*<([^>]+)>)?\s*$/i)
+                  return match && isBot(match[1].trim(), (match[2] || '').trim())
+                })
               const authorEmail = commit('%ae')
               const authorName = commit('%an')
+              const message = commit('%B')
               const parents = commit('%P').split(/\s+/).filter(Boolean)
               const subject = commit('%s')
 
@@ -81,9 +91,12 @@ jobs:
               } else if (/\[skip publish\]/i.test(subject)) {
                 publish = false
                 reason = 'skip: commit subject contains [skip publish]'
-              } else if (authorName.endsWith('[bot]') || authorEmail.includes('[bot]@')) {
+              } else if (isBot(authorName, authorEmail)) {
                 publish = false
                 reason = `skip: bot commit author (${authorName} <${authorEmail}>)`
+              } else if (isBotCoAuthor(message)) {
+                publish = false
+                reason = 'skip: bot co-author'
               }
             }
 
