@@ -421,7 +421,7 @@ class India(
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
-        if self._year not in {2012, 2023} and self.subdiv != "MH":
+        if self._year not in {2012, 2023}:
             # Ganesh Chaturthi / Vinayak Chaturthi.
             self._add_ganesh_chaturthi(tr("Ganesh Chaturthi / Vinayak Chaturthi"))
 
@@ -762,7 +762,7 @@ class India(
         # Parsi New Year (Shahenshahi).
         self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
 
-        # Ganesh Chaturthi.
+        # Ganesh Chaturthi
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
 
     # Madhya Pradesh.
