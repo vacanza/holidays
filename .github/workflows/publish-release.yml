@@ -17,7 +17,9 @@ permissions: {}
 jobs:
   verify-release:
     name: Verify release tag
-    if: startsWith(github.event.release.tag_name, 'v')
+    if: |
+      github.repository == 'vacanza/holidays' &&
+      startsWith(github.event.release.tag_name, 'v')
     outputs:
       tag_commit: ${{ steps.verify.outputs.tag_commit }}
     permissions:
@@ -62,7 +64,6 @@ jobs:
 
   publish:
     name: Publish to PyPI
-    if: github.repository == 'vacanza/holidays'
     needs:
       - build
     environment: release
