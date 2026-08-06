@@ -136,22 +136,18 @@ class AustralianSecuritiesExchange(
             )
 
     def _populate_half_day_holidays(self):
-        # %s (markets close at 14:10 Sydney time).
-        pause_label = tr("%s (markets close at 14:10 Sydney time)")
+        # %s (markets close at 14:10 AEDT).
+        pause_label = tr("%s (markets close at 14:10 AEDT)")
 
         self._move_holiday(
-            self._add_christmas_eve(
-                # Christmas Eve.
-                self._format_holiday_name(pause_label, tr("Christmas Eve"))
-            ),
+            # Christmas Eve.
+            self._add_christmas_eve(self._format_holiday_name(pause_label, tr("Christmas Eve"))),
             rule=SAT_SUN_TO_NONE,
         )
 
         self._move_holiday(
-            self._add_new_years_eve(
-                # New Year's Eve.
-                self._format_holiday_name(pause_label, tr("New Year's Eve"))
-            ),
+            # New Year's Eve.
+            self._add_new_years_eve(self._format_holiday_name(pause_label, tr("New Year's Eve"))),
             rule=SAT_SUN_TO_NONE,
         )
 
