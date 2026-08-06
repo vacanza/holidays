@@ -760,7 +760,7 @@ class India(
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
 
-        # Parsi New Year (Shahenshahi).  
+        # Parsi New Year (Shahenshahi).
         self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
 
         # Ganesh Chaturthi
