@@ -1229,7 +1229,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
-    
+
     def test_maharashtra_day(self):
         name = "Maharashtra Day"
         self.assertNoHolidayName(name)
