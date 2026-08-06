@@ -24,7 +24,9 @@ from holidays.observed_holiday_base import (
 )
 
 
-class AustralianSecuritiesExchange(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class AustralianSecuritiesExchange(
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """Australian Securities Exchange (ASX) holidays.
 
     References:
