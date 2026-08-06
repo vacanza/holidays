@@ -335,7 +335,7 @@ msgstr "પારસી નવું વર્ષ (શાહેનશાહી)"
 
 #. Gujarati New Year.
 msgid "Vikram Samvat New Year"
-msgstr "ગુજરાતી નવું વર્ષ"
+msgstr "વિક્રમ સંવત નૂતન વર્ષ"
 
 #. Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day.
 msgid "Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Shaheedi Diwas"
