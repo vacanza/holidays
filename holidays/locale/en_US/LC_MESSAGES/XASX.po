@@ -1,0 +1,102 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Australian Securities Exchange (ASX) holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.103\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-08-03 15:45+0000\n"
+"PO-Revision-Date: 2026-08-05 15:08+0000\n"
+"Last-Translator: Paresh Joshi <194076591+pareshjoshij@users.noreply.github.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_AU\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "New Year's Day"
+
+#. Australia Day.
+msgid "Australia Day"
+msgstr "Australia Day"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Good Friday"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Easter Monday"
+
+#. Easter Tuesday / Public Holiday.
+msgid "Easter Tuesday / Public Holiday"
+msgstr "Easter Tuesday / Public Holiday"
+
+#. ANZAC Day.
+msgid "ANZAC Day"
+msgstr "ANZAC Day"
+
+#. Queen's Birthday.
+msgid "Queen's Birthday"
+msgstr "Queen's Birthday"
+
+#. King's Birthday.
+msgid "King's Birthday"
+msgstr "King's Birthday"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Christmas Day"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "Boxing Day"
+
+#. %s (No Settlement).
+#, c-format
+msgid "%s (No Settlement)"
+msgstr "%s (No Settlement)"
+
+#. Labour Day.
+msgid "Labour Day"
+msgstr "Labor Day"
+
+#. Bank Holiday
+msgid "Bank Holiday"
+msgstr "Bank Holiday"
+
+#. Melbourne Cup Day.
+msgid "Melbourne Cup Day"
+msgstr "Melbourne Cup Day"
+
+#. %s (markets close at 14:10 Sydney time).
+#, c-format
+msgid "%s (markets close at 14:10 Sydney time)"
+msgstr "%s (markets close at 14:10 Sydney time)"
+
+#. Christmas Eve
+msgid "Christmas Eve"
+msgstr "Christmas Eve"
+
+#. New Year's Eve
+msgid "New Year's Eve"
+msgstr "New Year's Eve"
+
+#. National Day of Mourning for Queen Elizabeth II.
+msgid "National Day of Mourning for Queen Elizabeth II"
+msgstr "National Day of Mourning for Queen Elizabeth II"
