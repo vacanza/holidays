@@ -18,15 +18,86 @@ concurrency:
 permissions: {}
 
 jobs:
+  check:
+    name: Check publish
+    if: github.repository == 'vacanza/holidays'
+    outputs:
+      publish: ${{ steps.decide.outputs.publish }}
+    permissions:
+      contents: read
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      # Decide from workflow_run context and local git commit metadata.
+      - name: Decide whether to publish
+        id: decide
+        env:
+          WR_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          WR_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          WR_EVENT: ${{ github.event.workflow_run.event }}
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b  # v7.1.0
+        with:
+          script: |
+            const branch = process.env.WR_BRANCH
+            const conclusion = process.env.WR_CONCLUSION
+            const event = process.env.WR_EVENT
+
+            let publish = true
+            let reason = 'publish: passed pre-release checks'
+
+            if (conclusion !== 'success') {
+              publish = false
+              reason = `skip: CI conclusion is ${conclusion}`
+            } else if (event !== 'push') {
+              publish = false
+              reason = `skip: CI event is ${event} (want push)`
+            } else if (branch !== 'dev') {
+              publish = false
+              reason = `skip: branch is ${branch} (want dev)`
+            } else {
+              const { execFileSync } = require('child_process')
+              const commit = (fmt) =>
+                execFileSync('git', ['log', '-1', `--format=${fmt}`], {
+                  encoding: 'utf8',
+                }).trim()
+              const authorEmail = commit('%ae')
+              const authorName = commit('%an')
+              const parents = commit('%P').split(/\s+/).filter(Boolean)
+              const subject = commit('%s')
+
+              // Merge commits are mainly main to dev syncs.
+              if (parents.length > 1) {
+                publish = false
+                reason = `skip: merge commit (${subject})`
+              } else if (/^(Initialize|Finalize) v/.test(subject)) {
+                // Usually direct pushes to dev (no PR).
+                publish = false
+                reason = `skip: release chore commit (${subject})`
+              } else if (/\[skip publish\]/i.test(subject)) {
+                publish = false
+                reason = 'skip: commit subject contains [skip publish]'
+              } else if (authorName.endsWith('[bot]') || authorEmail.includes('[bot]@')) {
+                publish = false
+                reason = `skip: bot commit author (${authorName} <${authorEmail}>)`
+              }
+            }
+
+            core.info(reason)
+            core.setOutput('publish', publish ? 'true' : 'false')
+
   # Build/test are reusable; PyPI upload must stay top-level (Trusted Publishing).
   # https://docs.pypi.org/trusted-publishers/troubleshooting/#reusable-workflows-on-github
   # https://github.com/pypa/gh-action-pypi-publish/issues/166
   build:
     name: Build and test
-    if: |
-      github.event.workflow_run.conclusion == 'success' &&
-      github.event.workflow_run.event == 'push' &&
-      github.event.workflow_run.head_branch == 'dev'
+    needs:
+      - check
+    if: needs.check.outputs.publish == 'true'
     permissions:
       contents: read
     uses: ./.github/workflows/run-build-dist.yml
@@ -36,7 +107,6 @@ jobs:
 
   publish:
     name: Publish to PyPI
-    if: github.repository == 'vacanza/holidays'
     needs:
       - build
     environment: pre-release
