@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-08-03 15:45+0000\n"
-"PO-Revision-Date: 2026-08-05 15:08+0000\n"
+"PO-Revision-Date: 2026-08-06 16:32+0000\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -43,21 +43,17 @@ msgstr "วันศุกร์ประเสริฐ"
 msgid "Easter Monday"
 msgstr "วันจันทร์อีสเตอร์"
 
-#. Easter Tuesday / Public Holiday.
-msgid "Easter Tuesday / Public Holiday"
-msgstr "วันอังคารอีสเตอร์ / วันหยุดนักขัตฤกษ์"
-
 #. ANZAC Day.
 msgid "ANZAC Day"
 msgstr "วันแอนแซค"
 
-#. Queen's Birthday.
-msgid "Queen's Birthday"
-msgstr "วันเฉลิมพระชนมพรรษาสมเด็จพระราชินีนาถ"
-
 #. King's Birthday.
 msgid "King's Birthday"
 msgstr "วันเฉลิมพระชนมพรรษาสมเด็จพระราชาธิบดี"
+
+#. Queen's Birthday.
+msgid "Queen's Birthday"
+msgstr "วันเฉลิมพระชนมพรรษาสมเด็จพระราชินีนาถ"
 
 #. Christmas Day.
 msgid "Christmas Day"
@@ -76,7 +72,7 @@ msgstr "%s (ไม่มีการชำระราคา)"
 msgid "Labour Day"
 msgstr "วันแรงงาน"
 
-#. Bank Holiday
+#. Bank Holiday.
 msgid "Bank Holiday"
 msgstr "วันหยุดธนาคาร"
 
@@ -89,13 +85,17 @@ msgstr "วันเมลเบิร์นคัพ"
 msgid "%s (markets close at 14:10 Sydney time)"
 msgstr "%s (ตลาดปิดทำการเวลา 14:10 น. ตามเวลาซิดนีย์)"
 
-#. Christmas Eve
+#. Christmas Eve.
 msgid "Christmas Eve"
 msgstr "วันคริสต์มาสอีฟ"
 
-#. New Year's Eve
+#. New Year's Eve.
 msgid "New Year's Eve"
 msgstr "วันสิ้นปี"
+
+#. Easter Tuesday / Public Holiday.
+msgid "Easter Tuesday / Public Holiday"
+msgstr "วันอังคารอีสเตอร์ / วันหยุดนักขัตฤกษ์"
 
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"

@@ -23,6 +23,7 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
 
     def test_special_holidays(self):
         self.assertHoliday(
+            "2011-04-26",
             "2022-09-22",
         )
 
@@ -91,11 +92,6 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
             "2026-04-06",
         )
         self.assertHolidayName(name, self.full_range)
-
-    def test_easter_tuesday(self):
-        name = "Easter Tuesday / Public Holiday"
-        self.assertHolidayName(name, "2011-04-26")
-        self.assertNoHolidayName(name, range(self.start_year, 2011), range(2012, self.end_year))
 
     def test_anzac_day(self):
         name = "ANZAC Day"

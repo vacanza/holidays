@@ -13,7 +13,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import SEP
+from holidays.calendars.gregorian import APR, SEP
 from holidays.constants import HALF_DAY, PUBLIC, RESTRICTED_SETTLEMENT
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
@@ -29,7 +29,15 @@ class AustralianSecuritiesExchange(
 ):
     """Australian Securities Exchange (ASX) holidays.
 
+    Restricted settlement holidays:
+    Historical Settlement Holidays (Market Open, but No Settlement).
+    Effective January 1, 2017, ASX Settlement stopped observing local NSW
+    and Victoria holidays to align with RITS.
+
     References:
+        * [ASX Holiday Policy Review](https://web.archive.org/web/20260803165918/https://asxonline.com/public/notices/2016/jun/0616.16.06.html)
+
+    Historical data:
         [2003](https://web.archive.org/web/20070716001605/http://www.asx.com.au/about/operational/trading_calendar/asx/2003.htm)
         [2004](https://web.archive.org/web/20071012213615/http://asx.com.au/about/operational/trading_calendar/asx/2004.htm)
         [2009](https://web.archive.org/web/20110707053534/http://asx.com.au:80/about/asx-trading-calendar-2009.htm)
@@ -63,18 +71,11 @@ class AustralianSecuritiesExchange(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        # New Year's Day.
+        self._move_holiday(self._add_new_years_day(tr("New Year's Day")), rule=SAT_SUN_TO_NEXT_MON)
 
-        self._move_holiday(
-            # New Year's Day.
-            self._add_new_years_day(tr("New Year's Day")),
-            rule=SAT_SUN_TO_NEXT_MON,
-        )
-
-        self._move_holiday(
-            # Australia Day.
-            self._add_holiday_jan_26(tr("Australia Day")),
-            rule=SAT_SUN_TO_NEXT_MON,
-        )
+        # Australia Day.
+        self._move_holiday(self._add_holiday_jan_26(tr("Australia Day")), rule=SAT_SUN_TO_NEXT_MON)
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
@@ -82,22 +83,16 @@ class AustralianSecuritiesExchange(
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        if self._year == 2011:
-            # Easter Tuesday / Public Holiday.
-            self._add_easter_tuesday(tr("Easter Tuesday / Public Holiday"))
+        # ANZAC Day.
+        self._move_holiday(self._add_anzac_day(tr("ANZAC Day")), rule=SAT_SUN_TO_NONE)
 
-        self._move_holiday(
-            # ANZAC Day.
-            self._add_anzac_day(tr("ANZAC Day")),
-            rule=SAT_SUN_TO_NONE,
-        )
-
-        if self._year <= 2022:
-            # Queen's Birthday.
-            self._add_holiday_2nd_mon_of_jun(tr("Queen's Birthday"))
-        else:
+        self._add_holiday_2nd_mon_of_jun(
             # King's Birthday.
-            self._add_holiday_2nd_mon_of_jun(tr("King's Birthday"))
+            tr("King's Birthday")
+            if self._year >= 2023
+            # Queen's Birthday.
+            else tr("Queen's Birthday")
+        )
 
         self._move_holiday(
             # Christmas Day.
@@ -112,13 +107,6 @@ class AustralianSecuritiesExchange(
         )
 
     def _populate_restricted_settlement_holidays(self):
-        """Historical Settlement Holidays (Market Open, but No Settlement).
-        Effective January 1, 2017, ASX Settlement stopped observing local NSW
-        and Victoria holidays to align with RITS
-
-        References:
-        [ASX Holiday Policy Review](https://web.archive.org/web/20260803165918/https://asxonline.com/public/notices/2016/jun/0616.16.06.html)
-        """
 
         if self._year >= 2017:
             return
@@ -132,7 +120,7 @@ class AustralianSecuritiesExchange(
         )
 
         self._add_holiday_1st_mon_of_aug(
-            # Bank Holiday
+            # Bank Holiday.
             self._format_holiday_name(no_settlement_label, tr("Bank Holiday"))
         )
 
@@ -153,7 +141,7 @@ class AustralianSecuritiesExchange(
 
         self._move_holiday(
             self._add_christmas_eve(
-                # Christmas Eve
+                # Christmas Eve.
                 self._format_holiday_name(pause_label, tr("Christmas Eve"))
             ),
             rule=SAT_SUN_TO_NONE,
@@ -161,7 +149,7 @@ class AustralianSecuritiesExchange(
 
         self._move_holiday(
             self._add_new_years_eve(
-                # New Year's Eve
+                # New Year's Eve.
                 self._format_holiday_name(pause_label, tr("New Year's Eve"))
             ),
             rule=SAT_SUN_TO_NONE,
@@ -178,6 +166,10 @@ class ASX(AustralianSecuritiesExchange):
 
 class AustralianSecuritiesExchangeStaticHolidays:
     special_public_holidays = {
+        2011: (
+            # Easter Tuesday / Public Holiday.
+            (APR, 26, tr("Easter Tuesday / Public Holiday")),
+        ),
         2022: (
             # National Day of Mourning for Queen Elizabeth II.
             (SEP, 22, tr("National Day of Mourning for Queen Elizabeth II")),

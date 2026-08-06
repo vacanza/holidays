@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-08-03 15:45+0000\n"
-"PO-Revision-Date: 2026-08-05 15:08+0000\n"
+"PO-Revision-Date: 2026-08-06 16:32+0000\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_AU\n"
@@ -43,20 +43,16 @@ msgstr ""
 msgid "Easter Monday"
 msgstr ""
 
-#. Easter Tuesday / Public Holiday.
-msgid "Easter Tuesday / Public Holiday"
-msgstr ""
-
 #. ANZAC Day.
 msgid "ANZAC Day"
 msgstr ""
 
-#. Queen's Birthday.
-msgid "Queen's Birthday"
-msgstr ""
-
 #. King's Birthday.
 msgid "King's Birthday"
+msgstr ""
+
+#. Queen's Birthday.
+msgid "Queen's Birthday"
 msgstr ""
 
 #. Christmas Day.
@@ -76,7 +72,7 @@ msgstr ""
 msgid "Labour Day"
 msgstr ""
 
-#. Bank Holiday
+#. Bank Holiday.
 msgid "Bank Holiday"
 msgstr ""
 
@@ -89,12 +85,16 @@ msgstr ""
 msgid "%s (markets close at 14:10 Sydney time)"
 msgstr ""
 
-#. Christmas Eve
+#. Christmas Eve.
 msgid "Christmas Eve"
 msgstr ""
 
-#. New Year's Eve
+#. New Year's Eve.
 msgid "New Year's Eve"
+msgstr ""
+
+#. Easter Tuesday / Public Holiday.
+msgid "Easter Tuesday / Public Holiday"
 msgstr ""
 
 #. National Day of Mourning for Queen Elizabeth II.
