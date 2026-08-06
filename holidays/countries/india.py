@@ -759,7 +759,7 @@ class India(
 
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
-        # Parsi New Year (Shahenshahi).
+        if self._year not in {2012, 2023} and self.subdiv != "MH":
         self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
 
         # Ganesh Chaturthi
