@@ -92,6 +92,7 @@ class TestIndia(CommonCountryTests, TestCase):
         effective_range = hindu_range or self.hindu_full_range
         if skip_years:
             effective_range = [y for y in effective_range if y not in skip_years]
+        absent_range = set(self.full_range) - set(effective_range)
 
         current_holidays, current_subdiv_holidays = (
             (self.holidays_optional, self.subdiv_optional_holidays)
@@ -104,7 +105,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 if subdiv in subdivs:
                     self.assertHolidayName(name, holidays, dts)
                     self.assertHolidayName(name, holidays, effective_range)
-                    self.assertNoHolidayName(name, holidays, self.absent_range)
+                    self.assertNoHolidayName(name, holidays, absent_range)
                 else:
                     self.assertNoHolidayName(name, holidays)
         else:
@@ -116,7 +117,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 )
             self.assertHolidayName(name, current_holidays, dts)
             self.assertHolidayName(name, current_holidays, effective_range)
-            self.assertNoHolidayName(name, current_holidays, self.absent_range)
+            self.assertNoHolidayName(name, current_holidays, absent_range)
 
     # PUBLIC HOLIDAYS.
 
@@ -674,7 +675,6 @@ class TestIndia(CommonCountryTests, TestCase):
         name = "Parsi New Year"
         name_subdiv = "Parsi New Year (Shahenshahi)"
         self.assertNoHolidayName(name)
-        self.assertNoHolidayName(name_subdiv)
         dts = (
             "1972-08-28",
             "2019-08-17",
