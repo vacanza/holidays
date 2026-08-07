@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.new_zealand import NewZealand
 from holidays.observed_holiday_base import SAT_SUN_TO_PREV_FRI
@@ -46,7 +44,7 @@ class NewZealandExchange(NewZealand):
 
     def _populate_half_day_holidays(self):
         # %s (markets close at 13:00 NZDT).
-        pause_label = tr("%s (markets close at 13:00 NZDT)")
+        pause_label = "%s (markets close at 13:00 NZDT)"
 
         self._move_holiday(
             self._add_christmas_eve(
