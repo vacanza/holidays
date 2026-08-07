@@ -98,7 +98,7 @@ jobs:
     if: needs.check.outputs.publish == 'true'
     permissions:
       contents: read
-    uses: ./.github/workflows/run-build-dist.yml
+    uses: ./.github/workflows/run-build-tests.yml
     with:
       environment: pre-release
       ref: ${{ github.event.workflow_run.head_sha }}
