@@ -29,7 +29,6 @@ class TestIndia(CommonCountryTests, TestCase):
         cls.hindu_end_year = 2035
         cls.hindu_full_range = range(cls.hindu_start_year, cls.hindu_end_year + 1)
         super().setUpClass(India, with_subdiv_categories=True)
-        cls.absent_range = set(cls.full_range) - set(cls.hindu_full_range)
 
     def setUp(self):
         super().setUp()
@@ -52,7 +51,7 @@ class TestIndia(CommonCountryTests, TestCase):
     def test_hindu_calendar_out_of_range_warning(self):
         with warnings.catch_warnings():
             warnings.simplefilter("default", UserWarning)
-            for year in self.absent_range:
+            for year in set(self.full_range) - set(self.hindu_full_range):
                 with self.assertWarns(UserWarning):
                     India(years=year)
 
