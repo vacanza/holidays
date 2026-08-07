@@ -862,7 +862,6 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(name_subdiv, dts, subdivs={"HR", "PB"})
 
     def test_vikram_samvat_new_year(self):
-        name = "Vikram Samvat New Year"
         dts = (
             "2020-11-16",
             "2021-11-05",
@@ -871,8 +870,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-11-02",
             "2025-10-22",
         )
-        # SUBDIVS.
-        self._assertHinduHolidayHelper(name, dts, subdivs={"GJ"})
+        self._assertHinduHolidayHelper("Vikram Samvat New Year", dts, subdivs={"GJ"})
 
     def test_bhai_duj(self):
         name = "Bhai Duj"

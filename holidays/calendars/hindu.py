@@ -183,6 +183,7 @@ class _HinduLunisolar:
         2034: (OCT, 11),
         2035: (OCT, 1),
     }
+
     # Dates for Bonalu (Ashada Masam).
     # [2018](https://web.archive.org/web/20250402131537/https://www.telangana.gov.in/Downloads/calendar-2018/)
     # [2019](https://web.archive.org/web/20250508145651/https://www.telangana.gov.in/Downloads/calendar-2019/)
