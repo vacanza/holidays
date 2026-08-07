@@ -48,17 +48,17 @@ class NewZealandExchange(NewZealand):
         # %s (markets close at 13:00 NZDT).
         pause_label = tr("%s (markets close at 13:00 NZDT)")
 
-        # Business Day Prior to Christmas Day.
         self._move_holiday(
             self._add_christmas_eve(
+                # Business Day Prior to Christmas Day.
                 self._format_holiday_name(pause_label, "Business Day Prior to Christmas Day")
             ),
             rule=SAT_SUN_TO_PREV_FRI,
         )
 
-        # Business Day Prior to New Year's Day.
         self._move_holiday(
             self._add_new_years_eve(
+                # Business Day Prior to New Year's Day.
                 self._format_holiday_name(pause_label, "Business Day Prior to New Year's Day")
             ),
             rule=SAT_SUN_TO_PREV_FRI,
