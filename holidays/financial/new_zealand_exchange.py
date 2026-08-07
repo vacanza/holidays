@@ -43,8 +43,8 @@ class NewZealandExchange(NewZealand):
                 self.pop(dt)
 
     def _populate_half_day_holidays(self):
-        # %s (markets close at 13:00 NZDT).
-        pause_label = "%s (markets close at 13:00 NZDT)"
+        # %s (markets close at 13:30 NZDT).
+        pause_label = "%s (markets close at 13:30 NZDT)"
 
         self._move_holiday(
             self._add_christmas_eve(
