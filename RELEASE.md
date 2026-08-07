@@ -41,9 +41,21 @@
     version and the released date updated
 - Finish the process with the following post-release actions:
   - pull the recent changes from `main` branch into `dev`
-  - bump the Holidays version at `holidays/VERSION` file
+  - bump the Holidays version at the root `VERSION` file
   - create a commit with 'Initialize v\<version\>' message, e.g. 'Initialize v0.40' and
     push it to `dev` branch (this may require running `make package` to pass the tests locally)
   - make sure `dev` branch **is not behind** the `main` branch (there will be a message on top
     of the <https://github.com/vacanza/holidays/tree/dev> page in case it is)
   - make sure the push related CI jobs have been completed successfully
+
+## Pre-release versions
+
+On `dev`, `VERSION` is the **next** stable version (for example `0.103` after `0.102`
+was released). Successful CI on `dev` triggers a pre-release publish that rewrites
+`VERSION` in the ephemeral checkout only to `0.103.devYYYYMMDDHHMMSS`, builds, and
+uploads that artifact to PyPI. The `.dev` suffix is not committed.
+
+Because a local `make package` on `dev` builds the bare `VERSION` string (no `.dev`
+suffix), do not upload those artifacts as a final release; only the tagged release
+workflow should publish non-pre versions. Pre-release publishes are serialized so
+calendar-based `.dev` timestamps do not collide.
