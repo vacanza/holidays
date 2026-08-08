@@ -20,7 +20,11 @@ permissions: {}
 jobs:
   check:
     name: Check publish
-    if: github.repository == 'vacanza/holidays'
+    if: |
+      github.repository == 'vacanza/holidays' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'dev'
     outputs:
       publish: ${{ steps.decide.outputs.publish }}
     permissions:
@@ -33,71 +37,52 @@ jobs:
           persist-credentials: false
           ref: ${{ github.event.workflow_run.head_sha }}
 
-      # Decide from workflow_run context and local git commit metadata.
+      # Decide from local git commit metadata.
       - name: Decide whether to publish
         id: decide
-        env:
-          WR_BRANCH: ${{ github.event.workflow_run.head_branch }}
-          WR_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
-          WR_EVENT: ${{ github.event.workflow_run.event }}
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3  # v9.0.0
         with:
           script: |
-            const branch = process.env.WR_BRANCH
-            const conclusion = process.env.WR_CONCLUSION
-            const event = process.env.WR_EVENT
+            const { execFileSync } = require('child_process')
+            const commit = (fmt) =>
+              execFileSync('git', ['log', '-1', `--format=${fmt}`], {
+                encoding: 'utf8',
+              }).trim()
+            const isBot = (name, email) => {
+              const bots = ['dependabot[bot]', 'github-actions[bot]']
+              return bots.includes(name) || bots.some((bot) => email.includes(`${bot}@`))
+            }
+            const isBotCoAuthor = (message) =>
+              message.split('\n').some((line) => {
+                const match = line.match(/^Co-authored-by:\s*(.+?)(?:\s*<([^>]+)>)?\s*$/i)
+                return match && isBot(match[1].trim(), (match[2] || '').trim())
+              })
+            const authorEmail = commit('%ae')
+            const authorName = commit('%an')
+            const message = commit('%B')
+            const parents = commit('%P').split(/\s+/).filter(Boolean)
+            const subject = commit('%s')
 
             let publish = true
             let reason = 'publish: passed pre-release checks'
 
-            if (conclusion !== 'success') {
+            // Merge commits are mainly main to dev syncs.
+            if (parents.length > 1) {
               publish = false
-              reason = `skip: CI conclusion is ${conclusion}`
-            } else if (event !== 'push') {
+              reason = `skip: merge commit (${subject})`
+            } else if (/^(Initialize|Finalize) v/.test(subject)) {
+              // Usually direct pushes to dev (no PR).
               publish = false
-              reason = `skip: CI event is ${event} (want push)`
-            } else if (branch !== 'dev') {
+              reason = `skip: release chore commit (${subject})`
+            } else if (/\[skip publish\]/i.test(subject)) {
               publish = false
-              reason = `skip: branch is ${branch} (want dev)`
-            } else {
-              const { execFileSync } = require('child_process')
-              const commit = (fmt) =>
-                execFileSync('git', ['log', '-1', `--format=${fmt}`], {
-                  encoding: 'utf8',
-                }).trim()
-              const isBot = (name, email) => {
-                const bots = ['dependabot[bot]', 'github-actions[bot]']
-                return bots.includes(name) || bots.some((bot) => email.includes(`${bot}@`))
-              }
-              const isBotCoAuthor = (message) =>
-                message.split('\n').some((line) => {
-                  const match = line.match(/^Co-authored-by:\s*(.+?)(?:\s*<([^>]+)>)?\s*$/i)
-                  return match && isBot(match[1].trim(), (match[2] || '').trim())
-                })
-              const authorEmail = commit('%ae')
-              const authorName = commit('%an')
-              const message = commit('%B')
-              const parents = commit('%P').split(/\s+/).filter(Boolean)
-              const subject = commit('%s')
-
-              // Merge commits are mainly main to dev syncs.
-              if (parents.length > 1) {
-                publish = false
-                reason = `skip: merge commit (${subject})`
-              } else if (/^(Initialize|Finalize) v/.test(subject)) {
-                // Usually direct pushes to dev (no PR).
-                publish = false
-                reason = `skip: release chore commit (${subject})`
-              } else if (/\[skip publish\]/i.test(subject)) {
-                publish = false
-                reason = 'skip: commit subject contains [skip publish]'
-              } else if (isBot(authorName, authorEmail)) {
-                publish = false
-                reason = `skip: bot commit author (${authorName} <${authorEmail}>)`
-              } else if (isBotCoAuthor(message)) {
-                publish = false
-                reason = 'skip: bot co-author'
-              }
+              reason = 'skip: commit subject contains [skip publish]'
+            } else if (isBot(authorName, authorEmail)) {
+              publish = false
+              reason = `skip: bot commit author (${authorName} <${authorEmail}>)`
+            } else if (isBotCoAuthor(message)) {
+              publish = false
+              reason = 'skip: bot co-author'
             }
 
             core.info(reason)
@@ -113,7 +98,7 @@ jobs:
     if: needs.check.outputs.publish == 'true'
     permissions:
       contents: read
-    uses: ./.github/workflows/run-build-dist.yml
+    uses: ./.github/workflows/run-build-tests.yml
     with:
       environment: pre-release
       ref: ${{ github.event.workflow_run.head_sha }}

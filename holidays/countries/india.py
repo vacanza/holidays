@@ -58,6 +58,7 @@ class India(
             * <https://web.archive.org/web/20260705144831/https://chandigarh.gov.in/files/updation2025/home25-17488-3012.pdf>
         * Gujarat:
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
+            * [Gujarat Holidays 2010-2026](https://archive.org/details/gujarat-holidays)
         * Haryana:
             * <https://web.archive.org/web/20260704094548/https://haryanacalendar.co.in/wp-content/uploads/2025/12/Haryana-Govt-Official-Notification-2026-PDF.pdf>
         * Himachal Pradesh:
@@ -564,6 +565,9 @@ class India(
 
         # Parsi New Year (Shahenshahi).
         self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
+
+        # Gujarati New Year.
+        self._add_vikram_samvat_new_year(tr("Vikram Samvat New Year"))
 
     # Haryana.
     def _populate_subdiv_hr_public_holidays(self):
