@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-28 17:22+0530\n"
-"PO-Revision-Date: 2026-07-29 20:25+0530\n"
+"PO-Revision-Date: 2026-08-03 23:37+0530\n"
 "Last-Translator: Harsh Baghel <hk5324519@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pa\n"
@@ -331,6 +331,10 @@ msgstr "ਉੱਤਰਾਯਣ"
 #. Parsi New Year (Shahenshahi).
 msgid "Parsi New Year (Shahenshahi)"
 msgstr "ਪਾਰਸੀ ਨਵਾਂ ਸਾਲ (ਸ਼ਾਹਨਸ਼ਾਹੀ)"
+
+#. Gujarati New Year.
+msgid "Vikram Samvat New Year"
+msgstr "ਗੁਜਰਾਤੀ ਨਵਾਂ ਸਾਲ"
 
 #. Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day.
 msgid "Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Shaheedi Diwas"
