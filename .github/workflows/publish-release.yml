@@ -56,7 +56,7 @@ jobs:
       - verify-release
     permissions:
       contents: read
-    uses: ./.github/workflows/run-build-dist.yml
+    uses: ./.github/workflows/run-build-tests.yml
     with:
       environment: release
       ref: ${{ needs.verify-release.outputs.tag_commit }}

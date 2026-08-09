@@ -17,8 +17,10 @@ env:
   FORCE_COLOR: 1
 
 concurrency:
-  cancel-in-progress: true
+  # Don't cancel push CI: cancelled runs never conclude success, so pre-release
+  # workflow_run would miss that commit. Still cancel superseded PR/merge_group runs.
   group: ${{ github.repository }}-ci-${{ github.head_ref || github.ref }}
+  cancel-in-progress: ${{ github.event_name != 'push' }}
 
 permissions: {}
 
