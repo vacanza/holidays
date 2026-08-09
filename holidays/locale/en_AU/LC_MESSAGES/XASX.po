@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-08-03 15:45+0000\n"
-"PO-Revision-Date: 2026-08-06 17:12+0000\n"
+"PO-Revision-Date: 2026-08-09 17:33+0000\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_AU\n"
@@ -85,12 +85,20 @@ msgstr ""
 msgid "%s (markets close at 14:10 AEDT)"
 msgstr ""
 
-#. Christmas Eve.
-msgid "Christmas Eve"
+#. Day following New Year's Day.
+msgid "Day following New Year's Day"
 msgstr ""
 
-#. New Year's Eve.
-msgid "New Year's Eve"
+#. Easter Thursday.
+msgid "Easter Thursday"
+msgstr ""
+
+#. Last Business day before Christmas Day.
+msgid "Last Business day before Christmas Day"
+msgstr ""
+
+#. Last Business day of the Year.
+msgid "Last Business day of the Year"
 msgstr ""
 
 #. Easter Tuesday / Public Holiday.

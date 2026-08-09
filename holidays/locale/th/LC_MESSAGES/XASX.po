@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-08-03 15:45+0000\n"
-"PO-Revision-Date: 2026-08-06 17:12+0000\n"
+"PO-Revision-Date: 2026-08-09 17:33+0000\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -85,17 +85,25 @@ msgstr "วันเมลเบิร์นคัพ"
 msgid "%s (markets close at 14:10 AEDT)"
 msgstr "%s (ตลาดปิดทำการเวลา 14:10 น. AEDT)"
 
-#. Christmas Eve.
-msgid "Christmas Eve"
-msgstr "วันคริสต์มาสอีฟ"
+#. Day following New Year's Day.
+msgid "Day following New Year's Day"
+msgstr "วันถัดจากวันขึ้นปีใหม่"
 
-#. New Year's Eve.
-msgid "New Year's Eve"
-msgstr "วันสิ้นปี"
+#. Easter Thursday.
+msgid "Easter Thursday"
+msgstr "วันพฤหัสบดีอีสเตอร์"
+
+#. Last Business day before Christmas Day.
+msgid "Last Business day before Christmas Day"
+msgstr "วันทำการสุดท้ายก่อนวันคริสต์มาส"
+
+#. Last Business day of the Year.
+msgid "Last Business day of the Year"
+msgstr "วันทำการสุดท้ายของปี"
 
 #. Easter Tuesday / Public Holiday.
 msgid "Easter Tuesday / Public Holiday"
-msgstr "วันอังคารอีสเตอร์ / วันหยุดนักขัตฤกษ์"
+msgstr "วันอังคารอีสเตอร์/วันหยุดนักขัตฤกษ์"
 
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"

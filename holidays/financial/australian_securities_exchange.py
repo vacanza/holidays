@@ -13,7 +13,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, SEP
+from holidays.calendars.gregorian import JAN, APR, SEP
 from holidays.constants import HALF_DAY, PUBLIC, RESTRICTED_SETTLEMENT
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
@@ -21,6 +21,8 @@ from holidays.observed_holiday_base import (
     SAT_SUN_TO_NONE,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
+    SAT_SUN_TO_PREV_FRI,
+    SAT_SUN_TO_NEXT_WORKDAY,
 )
 
 
@@ -40,7 +42,12 @@ class AustralianSecuritiesExchange(
     Historical data:
         [2003](https://web.archive.org/web/20070716001605/http://www.asx.com.au/about/operational/trading_calendar/asx/2003.htm)
         [2004](https://web.archive.org/web/20071012213615/http://asx.com.au/about/operational/trading_calendar/asx/2004.htm)
+        [2005](https://web.archive.org/web/20050713084951/http://www.asx.com.au/supervision/operational/trading_calendar/2005.htm)
+        [2006](https://web.archive.org/web/20051130011451/http://www.asx.com.au/supervision/operational/trading_calendar/2006.htm)
+        [2007](https://web.archive.org/web/20070124223351/http://www.asx.com.au/about/operational/trading_calendar/2007.htm)
+        [2008](https://web.archive.org/web/20080922155427/http://www.asx.com.au/about/operational/trading_calendar/asx/2008.htm)
         [2009](https://web.archive.org/web/20110707053534/http://asx.com.au:80/about/asx-trading-calendar-2009.htm)
+        [2010](https://web.archive.org/web/20180106001226/http://www.asx.com.au/about/asx-trading-calendar-2010.htm)
         [2011](https://web.archive.org/web/20110525134520/http://www.asx.com.au/about/asx-trading-calendar-2011.htm)
         [2012](https://web.archive.org/web/20150905233343/http://www.asx.com.au/about/asx-trading-calendar-2012.htm)
         [2013](https://web.archive.org/web/20131007101528/http://www.asx.com.au/about/asx-trading-calendar-2013.htm)
@@ -83,8 +90,11 @@ class AustralianSecuritiesExchange(
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        # ANZAC Day.
-        self._move_holiday(self._add_anzac_day(tr("ANZAC Day")), rule=SAT_SUN_TO_NONE)
+        self._move_holiday(
+            # ANZAC Day.
+            self._add_anzac_day(tr("ANZAC Day")),
+            rule=SAT_SUN_TO_NEXT_WORKDAY if self._year == 2010 else SAT_SUN_TO_NONE,
+        )
 
         self._add_holiday_2nd_mon_of_jun(
             # King's Birthday.
@@ -114,6 +124,16 @@ class AustralianSecuritiesExchange(
         # %s (No Settlement).
         no_settlement_label = tr("%s (No Settlement)")
 
+        if self._year <= 2008:
+            if self._is_weekend(APR, 25):
+                self._move_holiday(
+                    self._add_anzac_day(
+                        # ANZAC Day.
+                        self._format_holiday_name(no_settlement_label, tr("ANZAC Day"))
+                    ),
+                    rule=SAT_SUN_TO_NEXT_MON,
+                )
+
         self._add_holiday_2nd_mon_of_mar(
             # Labour Day.
             self._format_holiday_name(no_settlement_label, tr("Labour Day"))
@@ -129,26 +149,47 @@ class AustralianSecuritiesExchange(
             self._format_holiday_name(no_settlement_label, tr("Labour Day"))
         )
 
-        if self._year >= 2009:
-            self._add_holiday_1st_tue_of_nov(
-                # Melbourne Cup Day.
-                self._format_holiday_name(no_settlement_label, tr("Melbourne Cup Day"))
-            )
+        self._add_holiday_1st_tue_of_nov(
+            # Melbourne Cup Day.
+            self._format_holiday_name(no_settlement_label, tr("Melbourne Cup Day"))
+        )
 
     def _populate_half_day_holidays(self):
         # %s (markets close at 14:10 AEDT).
         pause_label = tr("%s (markets close at 14:10 AEDT)")
 
+        if self._year <= 2006 and not self._is_sunday(JAN, 1):
+            self._move_holiday(
+                self._add_new_years_day_two(
+                    # Day following New Year's Day.
+                    self._format_holiday_name(pause_label, tr("Day following New Year's Day"))
+                ),
+                rule=SAT_SUN_TO_NONE,
+            )
+
+        if self._year <= 2008:
+            self._add_holy_thursday(
+                # Easter Thursday.
+                self._format_holiday_name(pause_label, tr("Easter Thursday"))
+            )
+
         self._move_holiday(
-            # Christmas Eve.
-            self._add_christmas_eve(self._format_holiday_name(pause_label, tr("Christmas Eve"))),
-            rule=SAT_SUN_TO_NONE,
+            self._add_christmas_eve(
+                self._format_holiday_name(
+                    pause_label,
+                    # Last Business day before Christmas Day.
+                    tr("Last Business day before Christmas Day"),
+                )
+            ),
+            rule=SAT_SUN_TO_NONE if self._year >= 2022 else SAT_SUN_TO_PREV_FRI,
         )
 
         self._move_holiday(
-            # New Year's Eve.
-            self._add_new_years_eve(self._format_holiday_name(pause_label, tr("New Year's Eve"))),
-            rule=SAT_SUN_TO_NONE,
+            self._add_new_years_eve(
+                # Last Business day of the Year.
+                self._format_holiday_name(pause_label, tr("Last Business day of the Year"))
+            ),
+            rule=SAT_SUN_TO_NONE if self._year >= 2022 else SAT_SUN_TO_PREV_FRI,
         )
 
 
@@ -162,12 +203,8 @@ class ASX(AustralianSecuritiesExchange):
 
 class AustralianSecuritiesExchangeStaticHolidays:
     special_public_holidays = {
-        2011: (
-            # Easter Tuesday / Public Holiday.
-            (APR, 26, tr("Easter Tuesday / Public Holiday")),
-        ),
-        2022: (
-            # National Day of Mourning for Queen Elizabeth II.
-            (SEP, 22, tr("National Day of Mourning for Queen Elizabeth II")),
-        ),
+        # Easter Tuesday / Public Holiday.
+        2011: (APR, 26, tr("Easter Tuesday / Public Holiday")),
+        # National Day of Mourning for Queen Elizabeth II.
+        2022: (SEP, 22, tr("National Day of Mourning for Queen Elizabeth II")),
     }
