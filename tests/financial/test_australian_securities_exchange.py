@@ -236,7 +236,7 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
             "2025-12-26",
         )
 
-    def last_business_day_before_christmas_day(self):
+    def test_last_business_day_before_christmas_day(self):
         name = "Last Business day before Christmas Day (markets close at 14:10 AEDT)"
         self.assertNoHolidayName(name)
         self.assertHalfDayNonObservedHolidayName(
