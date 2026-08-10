@@ -46,13 +46,13 @@ class NewZealandExchange(NewZealand):
         # Business Day Prior to %s (markets close at 13:30 NZDT).
         pause_label = "Business Day Prior to %s (markets close at 13:30 NZDT)"
 
-        self._move_holiday(
+        self._move_holiday_forced(
             # Christmas Day.
             self._add_christmas_eve(self._format_holiday_name(pause_label, "Christmas Day")),
             rule=SAT_SUN_TO_PREV_FRI,
         )
 
-        self._move_holiday(
+        self._move_holiday_forced(
             # New Year's Day.
             self._add_new_years_eve(self._format_holiday_name(pause_label, "New Year's Day")),
             rule=SAT_SUN_TO_PREV_FRI,
