@@ -24,8 +24,7 @@ from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SUN_TO_NEXT_WORKDAY,
     SAT_SUN_TO_NEXT_WORKDAY,
-    SAT_TO_NONE,
-    SUN_TO_NONE,
+    SAT_SUN_TO_NONE,
 )
 
 
@@ -184,7 +183,7 @@ class Macau(
         # The Day following Mid-Autumn Festival.
         self._add_mid_autumn_festival_day_two(tr("中秋節翌日"))
 
-        # All Soul's Day.
+        # All Souls' Day.
         self._add_all_souls_day(tr("追思節"))
 
         # Immaculate Conception.
@@ -335,7 +334,7 @@ class Macau(
         # The day following National Day of the People's Republic of China.
         dts_observed.add(self._add_holiday_oct_2(tr("中華人民共和國國慶日翌日")))
 
-        # All Soul's Day.
+        # All Souls' Day.
         dts_observed.add(self._add_all_souls_day(tr("追思節")))
 
         # Immaculate Conception.
@@ -358,7 +357,7 @@ class Macau(
             self._move_holiday(
                 # New Year's Eve.
                 self._add_new_years_eve(self._format_holiday_name(begin_time_label, tr("除夕"))),
-                rule=SAT_TO_NONE + SUN_TO_NONE,
+                rule=SAT_SUN_TO_NONE,
             )
 
         if self.observed:

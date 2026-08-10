@@ -77,7 +77,7 @@ class Kosovo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
             self._add_holiday_apr_9(tr("Dita e Kushtetutës së Republikës së Kosovës"))
         )
 
-        # International Workers' Day.
+        # International Labor Day.
         dts_observed.add(self._add_labor_day(tr("Dita Ndërkombëtare e Punës")))
 
         # Europe Day.

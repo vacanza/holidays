@@ -53,7 +53,7 @@ msgstr ""
 msgid "Monite ʻo e Toetuʻu"
 msgstr ""
 
-#. Anzac Day.
+#. ANZAC Day.
 msgid "ʻAho Anzac"
 msgstr ""
 

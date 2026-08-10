@@ -55,11 +55,11 @@ msgstr "Store bededag"
 msgid "Kristi himmalsferðardagur"
 msgstr "Kristi himmelfartsdag"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Hvítusunnudagur"
 msgstr "Første pinsedag"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Annar hvítusunnudagur"
 msgstr "Andre pinsedag"
 

@@ -89,8 +89,8 @@ class IvoryCoast(
         # Ascension Day.
         self._add_ascension_thursday(tr("Jour de l'Ascension"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Lundi de Pentecôte"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Lundi de Pentecôte"))
 
         # Independence Day.
         self._add_observed(self._add_holiday_aug_7(tr("Fête Nationale")))

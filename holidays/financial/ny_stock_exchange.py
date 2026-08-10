@@ -52,7 +52,7 @@ class NewYorkStockExchange(
     market = "XNYS"
     default_language = "en_US"
     supported_languages = ("en_US", "gu", "hi")
-    # %s (observed)
+    # %s (observed).
     observed_label = tr("%s (observed)")
     start_year = 1863
     supported_categories = (HALF_DAY, PUBLIC)
@@ -208,40 +208,49 @@ class NewYorkStockExchange(
             self._populate_ranged_holidays(tr("Closed Saturday"), start, end, 7)
 
     def _populate_half_day_holidays(self):
-        close_1pm_label = self.tr("%s (markets close at 1:00pm)")
-        close_2pm_label = self.tr("%s (markets close at 2:00pm)")
-        close_2_30pm_label = self.tr("%s (markets close at 2:30pm)")
-        close_3pm_label = self.tr("%s (markets close at 3:00pm)")
+        close_1pm_label = tr("%s (markets close at 1:00pm)")
+        close_2pm_label = tr("%s (markets close at 2:00pm)")
+        close_2_30pm_label = tr("%s (markets close at 2:30pm)")
+        close_3pm_label = tr("%s (markets close at 3:00pm)")
 
         # Special holidays.
 
-        name_paperwork_crisis = self.tr("Paperwork Crisis")
+        name_paperwork_crisis = tr("Paperwork Crisis")
         if self._year == 1968:
             self._populate_ranged_holidays(
                 # Back office work load.
-                close_2pm_label % self.tr("Back office work load"),
+                self._format_holiday_name(close_2pm_label, tr("Back office work load")),
                 (JAN, 22),
                 (MAR, 1),
             )
         elif self._year == 1969:
             # THU.
             self._populate_ranged_holidays(
-                close_2pm_label % name_paperwork_crisis, (JAN, 2), (JUL, 3), 7
+                self._format_holiday_name(close_2pm_label, name_paperwork_crisis),
+                (JAN, 2),
+                (JUL, 3),
+                7,
             )
 
             # MON-FRI.
             self._populate_ranged_holidays(
-                close_2_30pm_label % name_paperwork_crisis, (JUL, 7), (SEP, 26)
+                self._format_holiday_name(close_2_30pm_label, name_paperwork_crisis),
+                (JUL, 7),
+                (SEP, 26),
             )
 
             # MON-FRI.
             self._populate_ranged_holidays(
-                close_3pm_label % name_paperwork_crisis, (SEP, 29), (DEC, 31)
+                self._format_holiday_name(close_3pm_label, name_paperwork_crisis),
+                (SEP, 29),
+                (DEC, 31),
             )
         elif self._year == 1970:
             # MON-FRI.
             self._populate_ranged_holidays(
-                close_3pm_label % name_paperwork_crisis, (JAN, 2), (MAY, 1)
+                self._format_holiday_name(close_3pm_label, name_paperwork_crisis),
+                (JAN, 2),
+                (MAY, 1),
             )
 
         # 1990-1992 early closings are covered by special holidays.
@@ -252,17 +261,21 @@ class NewYorkStockExchange(
                 and not self._is_monday(jul_4)
                 and self._year not in {1996, 2002}
             ):
-                # Day before Independence Day.
-                self._add_holiday_jul_3(close_1pm_label % self.tr("Day before Independence Day"))
+                self._add_holiday_jul_3(
+                    # Day before Independence Day.
+                    self._format_holiday_name(close_1pm_label, tr("Day before Independence Day"))
+                )
 
             self._add_holiday_1_day_past_4th_thu_of_nov(
                 # Day after Thanksgiving Day.
-                close_1pm_label % self.tr("Day after Thanksgiving Day")
+                self._format_holiday_name(close_1pm_label, tr("Day after Thanksgiving Day"))
             )
 
             if self._is_weekday(self._christmas_day) and not self._is_monday(self._christmas_day):
-                # Christmas Eve.
-                self._add_christmas_eve(close_1pm_label % self.tr("Christmas Eve"))
+                self._add_christmas_eve(
+                    # Christmas Eve.
+                    self._format_holiday_name(close_1pm_label, tr("Christmas Eve"))
+                )
 
 
 class XNYS(NewYorkStockExchange):
@@ -320,7 +333,7 @@ class NewYorkStockExchangeStaticHolidays:
     # Catch Up Day.
     name_catch_up_day = tr("Catch Up Day")
 
-    # Special Bank Holiday.
+    # National Banking Holiday.
     name_national_banking_holiday = tr("National Banking Holiday")
 
     # V-J Day. End of World War II.
@@ -687,8 +700,8 @@ class NewYorkStockExchangeStaticHolidays:
         1950: (DEC, 23, tr("Saturday before Christmas Eve")),
         1954: (DEC, 24, name_christmas_eve),
         1956: (DEC, 24, name_christmas_eve),
-        # Day after Christmas.
-        1958: (DEC, 26, tr("Day after Christmas")),
+        # Day After Christmas.
+        1958: (DEC, 26, tr("Day After Christmas")),
         # Day before Decoration Day.
         1961: (MAY, 29, tr("Day before Decoration Day")),
         # Funeral of President John F. Kennedy.

@@ -245,7 +245,7 @@ class TestKosovo(CommonCountryTests, TestCase):
             ("2024-04-01", "Catholic Easter (observed)"),
             ("2024-04-09", "Constitution Day"),
             ("2024-04-10", "Eid al-Fitr (estimated)"),
-            ("2024-05-01", "International Workers' Day"),
+            ("2024-05-01", "International Labor Day"),
             ("2024-05-05", "Orthodox Easter"),
             ("2024-05-06", "Orthodox Easter (observed)"),
             ("2024-05-09", "Europe Day"),

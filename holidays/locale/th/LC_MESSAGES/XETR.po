@@ -44,7 +44,7 @@ msgstr "วันจันทร์อีสเตอร์"
 msgid "Erster Mai"
 msgstr "วันแรงงาน"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Pfingstmontag"
 msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
 

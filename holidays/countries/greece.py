@@ -63,8 +63,8 @@ class Greece(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         easter_monday = self._add_easter_monday(tr("Δευτέρα του Πάσχα"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
 
         # Labor Day.
         name = tr("Εργατική Πρωτομαγιά")
@@ -79,7 +79,7 @@ class Greece(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Dormition of the Mother of God.
         self._add_assumption_of_mary_day(tr("Κοίμηση της Θεοτόκου"))
 
-        # Ochi Day.
+        # Ohi Day.
         self._add_holiday_oct_28(tr("Ημέρα του Όχι"))
 
         # Christmas Day.

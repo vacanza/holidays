@@ -286,6 +286,9 @@ COUNTRIES: RegistryDict = {
 }
 
 FINANCIAL: RegistryDict = {
+    "bolsa_mexicana_de_valores": ("BolsaMexicanaDeValores", "XMEX", "BMV"),
+    "bolsas_y_mercados_argentinos": ("BolsasYMercadosArgentinos", "XBUE", "BYMA"),
+    "bolsas_y_mercados_espanoles": ("BolsasYMercadosEspanoles", "XMAD", "BME"),
     "bombay_stock_exchange": ("BombayStockExchange", "XBOM", "BSE"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
     "chicago_mercantile_exchange": ("ChicagoMercantileExchange", "XCME", "CME"),
@@ -294,12 +297,18 @@ FINANCIAL: RegistryDict = {
     "hong_kong_stock_exchange": ("HongKongStockExchange", "XHKG", "HKEX", "SEHK"),
     "ice_futures_europe": ("IceFuturesEurope", "IFEU", "ICEFuturesEurope"),
     "japan_exchange": ("JapanExchange", "XJPX", "JPX", "TSE", "OSE"),
+    "johannesburg_stock_exchange": ("JohannesburgStockExchange", "XJSE", "JSE"),
+    "korea_exchange": ("KoreaExchange", "XKRX", "KRX"),
     "london_stock_exchange": ("LondonStockExchange", "XLON", "LSE"),
     "nasdaq": ("NASDAQ", "XNAS"),
     "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
     "shanghai_stock_exchange": ("ShanghaiStockExchange", "XSHG", "SSE"),
     "shenzhen_stock_exchange": ("ShenzhenStockExchange", "XSHE", "SZSE"),
+    "singapore_exchange": ("SingaporeExchange", "XSES", "SGX"),
+    "six_swiss_exchange": ("SIXSwissExchange", "XSWX", "SIX"),
+    "taiwan_stock_exchange": ("TaiwanStockExchange", "XTAI", "TWSE"),
+    "toronto_stock_exchange": ("TorontoStockExchange", "XTSE", "TSX"),
 }
 
 # A re-entrant lock. Once a thread has acquired a re-entrant lock,

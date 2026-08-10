@@ -20,6 +20,7 @@ from tests.common import CommonCountryTests, SundayHolidays
 class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.full_range = range(1940, 2050)
         super().setUpClass(Norway)
 
     def setUp(self):
@@ -29,56 +30,115 @@ class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
     def test_subdiv_deprecation(self):
         self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
 
-    def test_new_years(self):
-        self.assertHoliday("1901-01-01", "2017-01-01", "2023-01-01")
+    def test_new_years_day(self):
+        self.assertHolidayName("Første nyttårsdag", (f"{year}-01-01" for year in self.full_range))
 
-    def test_easter(self):
-        self.assertHoliday(
-            "2000-04-20",
-            "2000-04-21",
-            "2000-04-23",
-            "2000-04-24",
-            "2010-04-01",
-            "2010-04-02",
-            "2010-04-04",
-            "2010-04-05",
+    def test_maundy_thursday(self):
+        name = "Skjærtorsdag"
+        self.assertHolidayName(
+            name,
+            "2020-04-09",
             "2021-04-01",
-            "2021-04-02",
-            "2021-04-04",
-            "2021-04-05",
+            "2022-04-14",
+            "2023-04-06",
             "2024-03-28",
-            "2024-03-29",
-            "2024-03-31",
-            "2024-04-01",
+            "2025-04-17",
         )
+        self.assertHolidayName(name, self.full_range)
 
-    def test_workers_day(self):
-        self.assertHoliday("1947-05-01", "2017-05-01", "2023-05-01")
-        self.assertNoHoliday("1946-05-01")
-        self.assertNoHolidayName("Arbeidernes dag", Norway(years=1946))
+    def test_good_friday(self):
+        name = "Langfredag"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_easter_sunday(self):
+        name = "Første påskedag"
+        self.assertHolidayName(
+            name,
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
+            "2024-03-31",
+            "2025-04-20",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_easter_monday(self):
+        name = "Andre påskedag"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_labor_day(self):
+        name = "Arbeidernes dag"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1947, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1947))
 
     def test_constitution_day(self):
-        self.assertHoliday("1947-05-17", "2017-05-17", "2023-05-17")
-        self.assertNoHoliday("1946-05-17")
-        self.assertNoHolidayName("Grunnlovsdag", Norway(years=1946))
+        name = "Grunnlovsdag"
+        self.assertHolidayName(name, (f"{year}-05-17" for year in range(1947, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1947))
+
+    def test_ascension_day(self):
+        name = "Kristi himmelfartsdag"
+        self.assertHolidayName(
+            name,
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
+        )
+        self.assertHolidayName(name, self.full_range)
 
     def test_pentecost(self):
-        self.assertHoliday(
-            "2000-06-11",
-            "2000-06-12",
-            "2010-05-23",
-            "2010-05-24",
+        name = "Første pinsedag"
+        self.assertHolidayName(
+            name,
+            "2020-05-31",
+            "2021-05-23",
+            "2022-06-05",
             "2023-05-28",
-            "2023-05-29",
+            "2024-05-19",
+            "2025-06-08",
         )
+        self.assertHolidayName(name, self.full_range)
 
-    def test_christmas(self):
-        self.assertHoliday(
-            "1901-12-25",
-            "1901-12-26",
-            "2016-12-25",
-            "2016-12-26",
+    def test_pentecost_monday(self):
+        name = "Andre pinsedag"
+        self.assertHolidayName(
+            name,
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
         )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Første juledag", (f"{year}-12-25" for year in self.full_range))
+
+    def test_second_day_of_christmas(self):
+        self.assertHolidayName("Andre juledag", (f"{year}-12-26" for year in self.full_range))
 
     def test_sundays(self):
         self.assertSundays(Norway)  # Sundays are considered holidays in Norway.
@@ -147,8 +207,8 @@ class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
             ("2022-05-01", "Labor Day"),
             ("2022-05-17", "Constitution Day"),
             ("2022-05-26", "Ascension Day"),
-            ("2022-06-05", "Whit Sunday"),
-            ("2022-06-06", "Whit Monday"),
+            ("2022-06-05", "Pentecost"),
+            ("2022-06-06", "Pentecost Monday"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Second Day of Christmas"),
         )
@@ -164,8 +224,8 @@ class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
             ("2022-05-01", "День праці"),
             ("2022-05-17", "День Конституції"),
             ("2022-05-26", "Вознесіння Господнє"),
-            ("2022-06-05", "Трійця"),
-            ("2022-06-06", "День Святого Духа"),
+            ("2022-06-05", "Пʼятидесятниця"),
+            ("2022-06-06", "Другий день Пʼятидесятниці"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Другий день Різдва"),
         )

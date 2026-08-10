@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.66\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2025-01-22 18:03+0200\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -52,9 +52,9 @@ msgstr "День спротиву окупантам"
 msgid "praznik dela"
 msgstr "День праці"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "binkoštna nedelja"
-msgstr "Трійця"
+msgstr "Пʼятидесятниця"
 
 #. Statehood Day.
 msgid "dan državnosti"

@@ -79,8 +79,8 @@ class BritishVirginIslands(
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Whit Monday"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Whit Monday"))
 
         # Sovereign's Birthday.
         name = tr("Sovereign's Birthday")

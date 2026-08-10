@@ -128,8 +128,8 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_labor_day(tr("Festa del treball"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Dilluns de Pentecosta"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Dilluns de Pentecosta"))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assumpció"))

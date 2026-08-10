@@ -55,8 +55,8 @@ class GermanyStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
         # Pfingstmontag (Whit Monday) and German Unity Day (Tag der Deutschen Einheit)
         # stop being market holidays from 2022 onwards.
         if self._year <= 2021:
-            # Whit Monday.
-            self._add_whit_monday(tr("Pfingstmontag"))
+            # Pentecost Monday.
+            self._add_pentecost_monday(tr("Pfingstmontag"))
 
             # German Unity Day.
             self._add_holiday_oct_3(tr("Tag der Deutschen Einheit"))

@@ -149,8 +149,8 @@ class SaintHelenaAscensionAndTristanDaCunha(
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Whit Monday"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Whit Monday"))
 
     def _populate_subdiv_ac_government_holidays(self):
         # August Bank Holiday.

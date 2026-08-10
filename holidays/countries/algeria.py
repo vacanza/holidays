@@ -139,8 +139,8 @@ class Algeria(
         # Ascension Day.
         self._add_ascension_thursday(tr("عيد الصعود"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("إثنين العنصرة"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("إثنين العنصرة"))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("عيد انتقال السيدة العذراء"))
@@ -155,7 +155,7 @@ class Algeria(
         self._add_rosh_hashanah(tr("رأس السنة العبرية"))
 
         # Yom Kippur.
-        self._add_yom_kippur(tr("يوم الغفران"))
+        self._add_yom_kippur(tr("عيد الغفران"))
 
         # Pesach.
         self._add_passover(tr("عيد الفصح اليهودي"))

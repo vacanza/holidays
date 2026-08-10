@@ -151,7 +151,7 @@ msgstr "Dia de Castella-la Manxa"
 msgid "Día de Canarias"
 msgstr "Dia de les Canàries"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Día de la Pascua Granada"
 msgstr "Dia de la Pasqua Granada"
 

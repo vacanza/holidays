@@ -67,7 +67,7 @@ class Barbados(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         self._add_observed(self._add_labor_day("May Day"))
 
         # Whit Monday
-        self._add_whit_monday("Whit Monday")
+        self._add_pentecost_monday("Whit Monday")
 
         # Emancipation Day
         name = "Emancipation Day"

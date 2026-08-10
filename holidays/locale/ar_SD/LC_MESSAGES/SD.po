@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-07-12 01:31+0530\n"
-"PO-Revision-Date: 2025-07-12 01:31+0530\n"
-"Last-Translator: Ansh Anand <ansh.a.3112@gmail.com>\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ar_SD\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgid "%s (تقديري)"
 msgstr ""
 
 #. Independence Day.
-msgid "عيد الإستقلال"
+msgid "عيد الاستقلال"
 msgstr ""
 
 #. Coptic Christmas Day.

@@ -95,7 +95,7 @@ msgstr ""
 msgid "Quốc khánh"
 msgstr ""
 
-#. Date format (see strftime() Format Codes).
+#. Substituted date format.
 msgid "%d/%m/%Y"
 msgstr ""
 

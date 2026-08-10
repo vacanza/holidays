@@ -57,7 +57,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "Día de Independencia", (f"{year}-02-27" for year in self.full_range)
+            "Día de la Independencia Nacional", (f"{year}-02-27" for year in self.full_range)
         )
 
     def test_good_friday(self):
@@ -139,7 +139,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
             ("2020-01-06", "Día de los Santos Reyes"),
             ("2020-01-21", "Día de la Altagracia"),
             ("2020-01-26", "Día de Duarte"),
-            ("2020-02-27", "Día de Independencia"),
+            ("2020-02-27", "Día de la Independencia Nacional"),
             ("2020-04-10", "Viernes Santo"),
             ("2020-05-04", "Día del Trabajo"),
             ("2020-06-11", "Corpus Christi"),
@@ -156,7 +156,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
             ("2021-01-04", "Día de los Santos Reyes"),
             ("2021-01-21", "Día de la Altagracia"),
             ("2021-01-25", "Día de Duarte"),
-            ("2021-02-27", "Día de Independencia"),
+            ("2021-02-27", "Día de la Independencia Nacional"),
             ("2021-04-02", "Viernes Santo"),
             ("2021-05-01", "Día del Trabajo"),
             ("2021-06-03", "Corpus Christi"),
@@ -173,7 +173,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
             ("2022-01-10", "Día de los Santos Reyes"),
             ("2022-01-21", "Día de la Altagracia"),
             ("2022-01-24", "Día de Duarte"),
-            ("2022-02-27", "Día de Independencia"),
+            ("2022-02-27", "Día de la Independencia Nacional"),
             ("2022-04-15", "Viernes Santo"),
             ("2022-05-02", "Día del Trabajo"),
             ("2022-06-16", "Corpus Christi"),
@@ -190,7 +190,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
             ("2023-01-09", "Día de los Santos Reyes"),
             ("2023-01-21", "Día de la Altagracia"),
             ("2023-01-30", "Día de Duarte"),
-            ("2023-02-27", "Día de Independencia"),
+            ("2023-02-27", "Día de la Independencia Nacional"),
             ("2023-04-07", "Viernes Santo"),
             ("2023-05-01", "Día del Trabajo"),
             ("2023-06-08", "Corpus Christi"),
@@ -207,7 +207,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
             ("2024-01-06", "Día de los Santos Reyes"),
             ("2024-01-21", "Día de la Altagracia"),
             ("2024-01-29", "Día de Duarte"),
-            ("2024-02-27", "Día de Independencia"),
+            ("2024-02-27", "Día de la Independencia Nacional"),
             ("2024-03-29", "Viernes Santo"),
             ("2024-04-29", "Día del Trabajo"),
             ("2024-05-30", "Corpus Christi"),
@@ -246,7 +246,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
             ("2022-01-10", "Día de los Santos Reyes"),
             ("2022-01-21", "Día de la Altagracia"),
             ("2022-01-24", "Día de Duarte"),
-            ("2022-02-27", "Día de Independencia"),
+            ("2022-02-27", "Día de la Independencia Nacional"),
             ("2022-04-15", "Viernes Santo"),
             ("2022-05-02", "Día del Trabajo"),
             ("2022-06-16", "Corpus Christi"),
@@ -263,7 +263,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
             ("2022-01-10", "Epiphany"),
             ("2022-01-21", "Lady of Altagracia"),
             ("2022-01-24", "Juan Pablo Duarte Day"),
-            ("2022-02-27", "Independence Day"),
+            ("2022-02-27", "National Independence Day"),
             ("2022-04-15", "Good Friday"),
             ("2022-05-02", "Labor Day"),
             ("2022-06-16", "Corpus Christi"),
@@ -280,7 +280,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
             ("2022-01-10", "Богоявлення"),
             ("2022-01-21", "День Богоматері Альтаграсія"),
             ("2022-01-24", "День Дуарте"),
-            ("2022-02-27", "День незалежності"),
+            ("2022-02-27", "День національної незалежності"),
             ("2022-04-15", "Страсна пʼятниця"),
             ("2022-05-02", "День праці"),
             ("2022-06-16", "Свято Тіла і Крові Христових"),

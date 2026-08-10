@@ -44,7 +44,7 @@ class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_holiday_jan_14(tr("عيد الثورة والشباب"))
 
         # Independence Day.
-        self._add_holiday_mar_20(tr("عيد الإستقلال"))
+        self._add_holiday_mar_20(tr("عيد الاستقلال"))
 
         # Martyrs' Day.
         self._add_holiday_apr_9(tr("عيد الشهداء"))
@@ -68,7 +68,7 @@ class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
         self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
 
-        # Arafat Day.
+        # Day of Arafah.
         self._add_arafah_day(tr("يوم عرفة"))
 
         # Eid al-Adha.

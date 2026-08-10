@@ -72,7 +72,7 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_eid_al_fitr_day_two(eid_al_fitr_holiday)
         self._add_eid_al_fitr_day_three(eid_al_fitr_holiday)
 
-        # Arafat Day.
+        # Day of Arafah.
         self._add_arafah_day(tr("ޙައްޖުދުވަސް"))
 
         # Eid al-Adha.

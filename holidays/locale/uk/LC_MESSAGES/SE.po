@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.88\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-08 20:17+0300\n"
-"PO-Revision-Date: 2025-11-25 23:05+0200\n"
+"PO-Revision-Date: 2026-07-01 00:12+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -69,13 +69,13 @@ msgstr "Вознесіння Господнє"
 msgid "Nationaldagen"
 msgstr "Національний день"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pingstdagen"
-msgstr "Трійця"
+msgstr "Пʼятидесятниця"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Annandag pingst"
-msgstr "День Святого Духа"
+msgstr "Другий день Пʼятидесятниці"
 
 #. Midsummer Day.
 msgid "Midsommardagen"
@@ -133,9 +133,9 @@ msgstr "Переддень Вознесіння Господнього"
 msgid "Dag före Midsommarafton"
 msgstr "За два дні до літнього сонцестояння"
 
-#. Day before Whitsun Eve.
+#. Day before Pentecost Eve.
 msgid "Dag före Pingstafton"
-msgstr "За два дні до Трійці"
+msgstr "За два дні до Пʼятидесятниці"
 
 #. Day before Christmas Eve.
 msgid "Dag före Julafton"
@@ -153,6 +153,6 @@ msgstr "Велика субота"
 msgid "Klämdag"
 msgstr "Проміжний вихідний"
 
-#. Whitsun Eve.
+#. Pentecost Eve.
 msgid "Pingstafton"
-msgstr "Переддень Трійці"
+msgstr "Переддень Пʼятидесятниці"

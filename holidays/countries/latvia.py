@@ -39,7 +39,7 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     default_language = "lv"
     # %s (observed).
     observed_label = tr("%s (brīvdiena)")
-    supported_languages = ("en_US", "lv", "uk")
+    supported_languages = ("en_US", "lv", "ru", "uk")
     # Law of Oct 3, 1990.
     start_year = 1991
 
@@ -91,8 +91,8 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
         # Established by Law of Sep 21, 1995.
         if self._year >= 1996:
-            # Whit Sunday.
-            self._add_whit_sunday(tr("Vasarsvētki"))
+            # Pentecost.
+            self._add_pentecost(tr("Vasarsvētki"))
 
         # Midsummer Eve.
         self._add_holiday_jun_23(tr("Līgo diena"))

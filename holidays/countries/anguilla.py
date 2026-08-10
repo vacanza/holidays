@@ -83,8 +83,8 @@ class Anguilla(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         # Labor Day.
         self._add_observed(self._add_labor_day(tr("Labour Day")))
 
-        # Whit Monday.
-        whit_monday = self._add_whit_monday(tr("Whit Monday"))
+        # Pentecost Monday.
+        whit_monday = self._add_pentecost_monday(tr("Whit Monday"))
 
         name = (
             # Queen's Birthday.

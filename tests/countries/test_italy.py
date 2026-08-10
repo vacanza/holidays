@@ -653,7 +653,7 @@ class TestItaly(CommonCountryTests, TestCase):
             ("2025-06-01", "Saint Crescentinus's Day"),
             ("2025-06-02", "Republic Day"),
             ("2025-06-03", "Our Lady of the Letter"),
-            ("2025-06-09", "Whit Monday"),
+            ("2025-06-09", "Pentecost Monday"),
             ("2025-06-10", "Saint Maximus of Aveia's Day"),
             ("2025-06-13", "Saint Anthony of Padua's Day"),
             ("2025-06-17", "Saint Ranieri's Day"),

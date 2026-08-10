@@ -48,11 +48,11 @@ msgstr ""
 msgid "Húsvét Hétfő"
 msgstr ""
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pünkösd"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Pünkösdhétfő"
 msgstr ""
 

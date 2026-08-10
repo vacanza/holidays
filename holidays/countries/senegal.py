@@ -109,8 +109,8 @@ class Senegal(
         # Ascension Day.
         self._add_ascension_thursday(tr("Jeudi de l'Ascension"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Lundi de Pentecôte"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Lundi de Pentecôte"))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assomption"))
@@ -176,7 +176,7 @@ class SenegalStaticHolidays:
         * [26th December, 2022 Public holiday](https://web.archive.org/web/20250608135605/https://primature.sn/publications/conseil-des-ministres/conseil-des-ministres-du-22-decembre-2022)
     """
 
-    # Public holiday.
+    # Public Holiday.
     name = tr("Jour férié")
     special_public_holidays = {
         2018: (OCT, 29, name),

@@ -119,7 +119,7 @@ class RUS(Russia):
 
 
 class RussiaStaticHolidays:
-    # Date format (see strftime() Format Codes).
+    # Substituted date format.
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
     substituted_label = tr("Выходной (перенесено с %s)")

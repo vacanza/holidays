@@ -160,7 +160,7 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
             ("2019-05-01", "Labor Day"),
             ("2019-05-30", "Ascension Day"),
             ("2019-06-04", "Eid al-Fitr"),
-            ("2019-06-10", "Whit Monday"),
+            ("2019-06-10", "Pentecost Monday"),
             ("2019-06-30", "General Prayer Day"),
             ("2019-08-11", "Eid al-Adha"),
             ("2019-08-13", "Independence Day"),

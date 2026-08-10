@@ -219,7 +219,7 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
             ("2025-04-21", "Easter Monday"),
             ("2025-05-01", "National Workers' Day"),
             ("2025-05-21", "National Spiritual Baptist Day"),
-            ("2025-06-09", "Whit Monday"),
+            ("2025-06-09", "Pentecost Monday"),
             ("2025-07-07", "Carnival Monday"),
             ("2025-07-08", "Carnival Tuesday"),
             ("2025-08-01", "Emancipation Day"),

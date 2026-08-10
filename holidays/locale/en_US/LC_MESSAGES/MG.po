@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.28\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-25 17:39+0300\n"
-"PO-Revision-Date: 2023-06-25 17:45+0300\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -56,13 +56,13 @@ msgstr "Labor Day"
 msgid "Fiakaran'ny Jesosy kristy tany an-danitra"
 msgstr "Ascension Day"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pentekosta"
-msgstr "Whit Sunday"
+msgstr "Pentecost"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Alatsinain'ny pentekosta"
-msgstr "Whit Monday"
+msgstr "Pentecost Monday"
 
 #. Mother's Day.
 msgid "Fetin'ny reny"

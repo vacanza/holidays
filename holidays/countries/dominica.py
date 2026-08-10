@@ -73,8 +73,8 @@ class Dominica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         else:
             self._add_observed(self._add_labor_day(labour_day_name))
 
-        # Whit Monday.
-        self._add_whit_monday("Whit Monday")
+        # Pentecost Monday.
+        self._add_pentecost_monday("Whit Monday")
 
         self._add_holiday_1st_mon_of_aug(
             # Emancipation Day.

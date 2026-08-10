@@ -56,11 +56,11 @@ msgstr ""
 msgid "Kristi himmelfartsdag"
 msgstr ""
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pinsedag"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Anden pinsedag"
 msgstr ""
 

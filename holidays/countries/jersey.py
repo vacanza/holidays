@@ -18,8 +18,8 @@ from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_WORKDAY,
     SUN_TO_NEXT_WORKDAY,
-    SAT_TO_NONE,
     SUN_TO_NONE,
+    SAT_SUN_TO_NONE,
 )
 
 
@@ -114,8 +114,8 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Was in-use prior to Spring bank holiday adoption.
 
         if self._year <= 1969:
-            # Whit Monday.
-            self._add_whit_monday("Whit Monday")
+            # Pentecost Monday.
+            self._add_pentecost_monday("Whit Monday")
 
         # Summer Bank Holiday
         # Current Pattern started in 1970. Was previously first Monday of September for Jersey.
@@ -145,7 +145,7 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         self._add_observed(
             # Liberation Day
             self._add_holiday_may_9("Liberation Day"),
-            rule=SAT_TO_NONE + SUN_TO_NONE if self._year <= 2010 else SUN_TO_NONE,
+            rule=SAT_SUN_TO_NONE if self._year <= 2010 else SUN_TO_NONE,
         )
 
 

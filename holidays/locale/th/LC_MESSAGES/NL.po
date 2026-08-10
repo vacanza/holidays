@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.83\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-10-15 13:18+0700\n"
-"PO-Revision-Date: 2025-10-15 15:17+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgid "Nieuwjaarsdag"
 msgstr "วันขึ้นปีใหม่"
 
 #. Good Friday.
-msgid "Goede Vrijdag"
+msgid "Goede vrijdag"
 msgstr "วันศุกร์ประเสริฐ"
 
 #. Easter Sunday.
@@ -60,18 +60,18 @@ msgstr "วันประกาศอิสรภาพ"
 msgid "Hemelvaartsdag"
 msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
 
-#. Whit Sunday.
-msgid "Eerste Pinksterdag"
+#. Pentecost.
+msgid "Eerste pinksterdag"
 msgstr "วันสมโภชพระจิตเจ้า"
 
-#. Whit Monday.
-msgid "Tweede Pinksterdag"
+#. Pentecost Monday.
+msgid "Tweede pinksterdag"
 msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
 
 #. Christmas Day.
-msgid "Eerste Kerstdag"
+msgid "Eerste kerstdag"
 msgstr "วันคริสต์มาสวันแรก"
 
 #. Second Day of Christmas.
-msgid "Tweede Kerstdag"
+msgid "Tweede kerstdag"
 msgstr "วันคริสต์มาสวันที่สอง"

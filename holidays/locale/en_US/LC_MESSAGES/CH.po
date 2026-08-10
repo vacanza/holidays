@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.96\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-10 15:41+0300\n"
-"PO-Revision-Date: 2026-04-21 16:52+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -60,9 +60,9 @@ msgstr "Easter Monday"
 msgid "Tag der Arbeit"
 msgstr "Labor Day"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Pfingstmontag"
-msgstr "Whit Monday"
+msgstr "Pentecost Monday"
 
 #. Corpus Christi.
 msgid "Fronleichnam"
@@ -128,9 +128,9 @@ msgstr "Prayer Monday"
 msgid "Ostersonntag"
 msgstr "Easter Sunday"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pfingstsonntag"
-msgstr "Whit Sunday"
+msgstr "Pentecost"
 
 #. Federal Day of Thanksgiving, Repentance, and Prayer.
 msgid "Eidgenössischer Bettag"

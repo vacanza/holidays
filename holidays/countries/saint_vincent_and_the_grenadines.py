@@ -69,8 +69,8 @@ class SaintVincentAndTheGrenadines(
             # National Spiritual Baptist Day.
             self._add_holiday_may_21(tr("National Spiritual Baptist Day"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Whit Monday"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Whit Monday"))
 
         # Carnival Monday.
         name = tr("Carnival Monday")

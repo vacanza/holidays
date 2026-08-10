@@ -72,8 +72,8 @@ class Grenada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # Labor Day.
         self._add_observed(self._add_labor_day(tr("Labour Day")))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Whit Monday"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Whit Monday"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Corpus Christi"))
