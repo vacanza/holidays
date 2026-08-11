@@ -28,8 +28,7 @@ class TestNewZealandExchange(CommonFinancialTests, TestCase):
     def test_christmas_eve(self):
         name = "Business Day Prior to Christmas Day (markets close at 13:30 NZDT)"
         self.assertNoHolidayName(name)
-        self.assertHalfDayHolidayName(
-            name,
+        dts = (
             "2020-12-24",
             "2021-12-24",
             "2022-12-23",
@@ -38,11 +37,14 @@ class TestNewZealandExchange(CommonFinancialTests, TestCase):
             "2025-12-24",
             "2026-12-24",
         )
-        self.assertNoHalfDayHolidayName(
-            name,
+        self.assertHalfDayHolidayName(name, dts)
+        self.assertHalfDayNonObservedHolidayName(name, dts)
+        no_dts = (
             "2022-12-24",
             "2023-12-24",
         )
+        self.assertNoHalfDayHolidayName(name, no_dts)
+        self.assertNoHalfDayNonObservedHolidayName(name, no_dts)
         self.assertHalfDayHolidayName(name, self.full_range)
 
     def test_new_years_eve(self):
