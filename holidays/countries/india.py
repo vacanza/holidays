@@ -423,20 +423,21 @@ class India(
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
         if self.subdiv != "MH":
-            # Vinayak Chaturthi.
-            name_vinayak_chaturthi = tr("Vinayak Chaturthi")
-            # Ganesh Chaturthi.
-            name_ganesh_chaturthi = tr("Ganesh Chaturthi")
-            match self._year:
-                case 2012:
-                    self._add_holiday_aug_21(name_vinayak_chaturthi)
-                    self._add_holiday_sep_19(name_ganesh_chaturthi)
-                case 2023:
-                    self._add_holiday_aug_20(name_vinayak_chaturthi)
-                    self._add_holiday_sep_19(name_ganesh_chaturthi)
-                case _:
-                    # Ganesh Chaturthi / Vinayak Chaturthi.
-                    self._add_ganesh_chaturthi(tr("Ganesh Chaturthi / Vinayak Chaturthi"))
+            self._add_ganesh_chaturthi(
+                # Ganesh Chaturthi / Vinayak Chaturthi.
+                tr("Ganesh Chaturthi / Vinayak Chaturthi")
+                if self._year not in {2012, 2023}
+                # Ganesh Chaturthi.
+                else tr("Ganesh Chaturthi")
+            )
+
+            dates = {
+                2012: (AUG, 21),
+                2023: (AUG, 20),
+            }
+            if dt := dates.get(self._year):
+                # Vinayak Chaturthi.
+                self._add_holiday(tr("Vinayak Chaturthi"), dt)
 
         # Dussehra (Saptami).
         self._add_maha_saptami(tr("Dussehra (Saptami)"))

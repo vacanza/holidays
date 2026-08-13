@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.103\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-08-13 08:50+0000\n"
+"PO-Revision-Date: 2026-08-13 17:20+0000\n"
 "Last-Translator: Drona Jadhav <dronajadhav07@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: gu\n"
@@ -213,17 +213,17 @@ msgstr "પારસી નવું વર્ષ"
 msgid "Onam"
 msgstr "ઓણમ"
 
-#. Vinayak Chaturthi.
-msgid "Vinayak Chaturthi"
-msgstr "વિનાયક ચતુર્થી"
+#. Ganesh Chaturthi / Vinayak Chaturthi.
+msgid "Ganesh Chaturthi / Vinayak Chaturthi"
+msgstr "ગણેશ ચતુર્થી / વિનાયક ચતુર્થી"
 
 #. Ganesh Chaturthi.
 msgid "Ganesh Chaturthi"
 msgstr "ગણેશ ચતુર્થી"
 
-#. Ganesh Chaturthi / Vinayak Chaturthi.
-msgid "Ganesh Chaturthi / Vinayak Chaturthi"
-msgstr "ગણેશ ચતુર્થી / વિનાયક ચતુર્થી"
+#. Vinayak Chaturthi.
+msgid "Vinayak Chaturthi"
+msgstr "વિનાયક ચતુર્થી"
 
 #. Dussehra (Saptami).
 msgid "Dussehra (Saptami)"
