@@ -205,6 +205,23 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             self._hindu_calendar.dattatreya_jayanti_date(self._year),
         )
 
+    def _add_dev_diwali(self, name) -> date | None:
+        """
+        Add Dev Diwali.
+
+        Dev Diwali, also known as Dev Deepawali, is a Hindu festival
+        celebrated on the full moon day (Purnima) of the Hindu month
+        of Kartika (October/November). It is believed that the gods
+        descend to Earth to celebrate the victory of Lord Shiva over
+        the demon Tripurasura.
+
+        https://en.wikipedia.org/wiki/Dev_Deepavali
+        """
+        return self._add_hindu_calendar_holiday(
+            name,
+            self._hindu_calendar.dev_diwali_date(self._year),
+        )
+
     def _add_diwali(self, name) -> date | None:
         """
         Add Diwali Festival.
@@ -402,6 +419,22 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             self._hindu_calendar.hal_shashthi_date(self._year),
         )
 
+    def _add_hanuman_jayanti(self, name) -> date | None:
+        """
+        Add Hanuman Jayanti.
+
+        Hanuman Jayanti commemorates the birth anniversary of Lord
+        Hanuman, a devoted follower of Lord Rama and a central figure
+        in the Ramayana. It is observed on the full moon day (Purnima)
+        of the Hindu month of Chaitra (March/April).
+
+        https://en.wikipedia.org/wiki/Hanuman_Jayanti
+        """
+        return self._add_hindu_calendar_holiday(
+            name,
+            self._hindu_calendar.hanuman_jayanti_date(self._year),
+        )
+
     def _add_hariyali_amavasya(self, name) -> date | None:
         """
         Add Hariyali Amavasya.
@@ -430,6 +463,22 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.hartalika_teej_date(self._year)
+        )
+
+    def _add_hatkeshwar_jayanti(self, name) -> date | None:
+        """
+        Add Hatkeshwar Jayanti.
+
+        Hatkeshwar Jayanti commemorates the appearance of Lord
+        Hatkeshwar, a form of Lord Shiva who is revered as the
+        presiding deity of the Nagar Brahmin community. It is observed
+        on the fourteenth day (Chaturdashi) of the bright fortnight of
+        the Hindu month of Chaitra (March/April).
+
+        https://en.wikipedia.org/wiki/Hatkeshwar_Temple
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.hanuman_jayanti_date(self._year), days_delta=-1
         )
 
     def _add_hola_mohalla(self, name) -> date | None:
@@ -1030,6 +1079,17 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         April 15, but falls on April 14 in leap years.
         """
         self._add_holiday(name, date(self._year, APR, 14 if isleap(self._year) else 15))
+
+    def _add_vassi_uttarayan(self, name) -> date | None:
+        """
+        Add Vassi Uttarayan.
+
+        Vasi Uttarayan is second day of the International Kite Festival in Gujarat - Uttarayan.
+        https://en.wikipedia.org/wiki/Uttarayana
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.makar_sankranti_date(self._year), days_delta=+1
+        )
 
     def _add_vishu(self, name) -> date | None:
         """

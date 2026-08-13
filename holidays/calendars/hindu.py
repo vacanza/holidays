@@ -26,6 +26,7 @@ BUDDHA_PURNIMA = "BUDDHA_PURNIMA"
 CHAITRA_NAVRATRI = "CHAITRA_NAVRATRI"
 CHHATH_PUJA = "CHHATH_PUJA"
 DATTATREYA_JAYANTI = "DATTATREYA_JAYANTI"
+DEV_DIWALI = "DEV_DIWALI"
 DIWALI = "DIWALI"
 DIWALI_INDIA = "DIWALI_INDIA"
 DUSSEHRA = "DUSSEHRA"
@@ -39,6 +40,7 @@ GURU_PURNIMA = "GURU_PURNIMA"
 GURU_RAVIDAS_JAYANTI = "GURU_RAVIDAS_JAYANTI"
 GYALPO_LOSAR = "GYALPO_LOSAR"
 HAL_SHASHTHI = "HAL_SHASHTHI"
+HANUMAN_JAYANTI = "HANUMAN_JAYANTI"
 HARIYALI_AMAVASYA = "HARIYALI_AMAVASYA"
 HARTALIKA_TEEJ = "HARTALIKA_TEEJ"
 HOLA_MOHOLLA = "HOLA_MOHOLLA"
@@ -412,6 +414,45 @@ class _HinduLunisolar:
         2033: (DEC, 5),
         2034: (DEC, 24),
         2035: (DEC, 14),
+    }
+
+    # https://web.archive.org/web/20260308080928/https://www.drikpanchang.com/diwali/dev-diwali/dev-deepawali-date-time.html
+    DEV_DIWALI_DATES = {
+        2001: (NOV, 30),
+        2002: (NOV, 19),
+        2003: (NOV, 8),
+        2004: (NOV, 26),
+        2005: (NOV, 15),
+        2006: (NOV, 5),
+        2007: (NOV, 24),
+        2008: (NOV, 12),
+        2009: (NOV, 2),
+        2010: (NOV, 21),
+        2011: (NOV, 10),
+        2012: (NOV, 28),
+        2013: (NOV, 17),
+        2014: (NOV, 6),
+        2015: (NOV, 25),
+        2016: (NOV, 14),
+        2017: (NOV, 3),
+        2018: (NOV, 22),
+        2019: (NOV, 12),
+        2020: (NOV, 29),
+        2021: (NOV, 18),
+        2022: (NOV, 7),
+        2023: (NOV, 26),
+        2024: (NOV, 15),
+        2025: (NOV, 5),
+        2026: (NOV, 24),
+        2027: (NOV, 13),
+        2028: (NOV, 1),
+        2029: (NOV, 20),
+        2030: (NOV, 9),
+        2031: (NOV, 28),
+        2032: (NOV, 16),
+        2033: (NOV, 6),
+        2034: (NOV, 25),
+        2035: (NOV, 15),
     }
 
     DIWALI_DATES = {
@@ -1072,6 +1113,45 @@ class _HinduLunisolar:
         2033: (AUG, 16),
         2034: (SEP, 4),
         2035: (AUG, 24),
+    }
+
+    # https://web.archive.org/web/20260305104252/https://www.drikpanchang.com/festivals/hanuman-jayanti/hanuman-jayanti-date-time.html
+    HANUMAN_JAYANTI_DATES = {
+        2001: (APR, 8),
+        2002: (APR, 27),
+        2003: (APR, 16),
+        2004: (APR, 5),
+        2005: (APR, 24),
+        2006: (APR, 13),
+        2007: (APR, 2),
+        2008: (APR, 20),
+        2009: (APR, 9),
+        2010: (MAR, 30),
+        2011: (APR, 18),
+        2012: (APR, 6),
+        2013: (APR, 25),
+        2014: (APR, 15),
+        2015: (APR, 4),
+        2016: (APR, 22),
+        2017: (APR, 11),
+        2018: (MAR, 31),
+        2019: (APR, 19),
+        2020: (APR, 8),
+        2021: (APR, 27),
+        2022: (APR, 16),
+        2023: (APR, 6),
+        2024: (APR, 23),
+        2025: (APR, 12),
+        2026: (APR, 2),
+        2027: (APR, 20),
+        2028: (APR, 9),
+        2029: (APR, 28),
+        2030: (APR, 18),
+        2031: (APR, 7),
+        2032: (APR, 25),
+        2033: (APR, 14),
+        2034: (APR, 3),
+        2035: (APR, 22),
     }
 
     # https://web.archive.org/web/20260720140907/https://www.drikpanchang.com/festivals/sawan/hariyali-amavasya-date-time.html
@@ -2786,6 +2866,9 @@ class _HinduLunisolar:
     def dattatreya_jayanti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(DATTATREYA_JAYANTI, year)
 
+    def dev_diwali_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(DEV_DIWALI, year)
+
     def diwali_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(DIWALI, year)
 
@@ -2824,6 +2907,9 @@ class _HinduLunisolar:
 
     def hal_shashthi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(HAL_SHASHTHI, year)
+
+    def hanuman_jayanti_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(HANUMAN_JAYANTI, year)
 
     def hariyali_amavasya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(HARIYALI_AMAVASYA, year)

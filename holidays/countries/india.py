@@ -755,6 +755,9 @@ class India(
         # Raksha Bandhan.
         self._add_raksha_bandhan(tr("Raksha Bandhan"))
 
+        # Samvatsari Day.
+        self._add_samvatsari_parva(tr("Samvatsari Day"))
+
         # Gujarati New Year.
         # To be added from #3742
 
@@ -763,6 +766,33 @@ class India(
 
         # Parsi New Year (Shahenshahi).
         self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
+
+    def _populate_subdiv_gj_optional_holidays(self):
+        # Hindu holidays.
+
+        # Vassi Uttarayan.
+        self._add_vassi_uttarayan(tr("Vassi Uttarayan"))
+
+        # Hatkeshwar's Birthday.
+        self._add_hatkeshwar_jayanti(tr("Hatkeshwar's Jayanti"))
+
+        # Hanuman's Birthday.
+        self._add_hanuman_jayanti(tr("Hanuman's Jayanti"))
+
+        # Shri Vallabhacharya's Birthday.
+        self._add_shri_vallabhacharya_jayanti(tr("Shri Vallabhacharya's Jayanti"))
+
+        # Adi Shankaracharya's Birthday.
+        self._add_adi_shankaracharya_jayanti(tr("Adi Shankaracharya's Jayanti"))
+
+        # Guru Arjun Dev's Martyrdom Day.
+        self._add_guru_arjun_dev_martyrdom_day(tr("Guru Arjun Dev's Shaheedi Diwas"))
+
+        # Samvatsari Day.
+        self._add_samvatsari_parva(tr("Samvatsari Day"))
+
+        # Dev Diwali
+        self._add_dev_diwali(tr("Dev Diwali"))
 
     # Haryana.
     def _populate_subdiv_hr_public_holidays(self):
