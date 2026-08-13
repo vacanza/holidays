@@ -422,7 +422,19 @@ class India(
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
-        if self._year not in {2012, 2023} and self.subdiv != "MH":
+        if self._year == 2012:
+            # Vinayak Chaturthi.
+            self._add_holiday_aug_21(tr("Vinayak Chaturthi"))
+            if self.subdiv != "MH":
+                # Ganesh Chaturthi.
+                self._add_holiday_sep_19(tr("Ganesh Chaturthi"))
+        elif self._year == 2023:
+            # Vinayak Chaturthi.
+            self._add_holiday_aug_20(tr("Vinayak Chaturthi"))
+            if self.subdiv != "MH":
+                # Ganesh Chaturthi.
+                self._add_holiday_sep_19(tr("Ganesh Chaturthi"))
+        elif self.subdiv != "MH":
             # Ganesh Chaturthi / Vinayak Chaturthi.
             self._add_ganesh_chaturthi(tr("Ganesh Chaturthi / Vinayak Chaturthi"))
 
@@ -767,7 +779,7 @@ class India(
         # Parsi New Year (Shahenshahi).
         self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
 
-        # Ganesh Chaturthi
+        # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
 
     # Madhya Pradesh.
@@ -1073,10 +1085,6 @@ class IndiaStaticHolidays:
         2007: (SEP, 3, name_janmashtami_smarta),
         2008: (AUG, 28, name_janmashtami_smarta),
         2011: (DEC, 31, name_guru_gobind_singh_birthday),
-        2012: (
-            (AUG, 21, name_vinayak_chaturthi),
-            (SEP, 19, name_ganesh_chaturthi),
-        ),
         2013: (
             (FEB, 14, name_shri_panchami),
             (FEB, 15, name_basant_panchami),
@@ -1086,9 +1094,7 @@ class IndiaStaticHolidays:
         2022: (AUG, 18, name_janmashtami_smarta),
         2023: (
             (JAN, 14, name_magh_bihu),
-            (AUG, 20, name_vinayak_chaturthi),
             (SEP, 6, name_janmashtami_smarta),
-            (SEP, 19, name_ganesh_chaturthi),
         ),
         2025: (AUG, 15, name_janmashtami_smarta),
     }
