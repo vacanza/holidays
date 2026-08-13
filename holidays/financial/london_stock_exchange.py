@@ -15,7 +15,7 @@ from gettext import gettext as tr
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.united_kingdom import UnitedKingdom
 from holidays.mixins.child_entity import ChildEntity
-from holidays.observed_holiday_base import SAT_SUN_TO_PREV_FRI, SAT_SUN_TO_NONE
+from holidays.observed_holiday_base import SAT_SUN_TO_PREV_FRI
 
 
 class LondonStockExchange(ChildEntity, UnitedKingdom):
@@ -30,7 +30,7 @@ class LondonStockExchange(ChildEntity, UnitedKingdom):
     References:
         * <https://en.wikipedia.org/wiki/London_Stock_Exchange>
         * <https://en.wikipedia.org/wiki/Bank_holiday>
-        * [LSE business days](https://www.londonstockexchange.com/equities-trading/business-days)
+        * [LSE business days](https://web.archive.org/web/20260617134450/https://www.londonstockexchange.com/equities-trading/business-days)
     """
 
     country = None  # type: ignore[assignment]
@@ -39,6 +39,13 @@ class LondonStockExchange(ChildEntity, UnitedKingdom):
     parent_entity_subdivision_code = "ENG"
     supported_categories = (HALF_DAY, PUBLIC)
     start_year = 2000
+
+    def _populate_public_holidays(self):
+        super()._populate_public_holidays()
+
+        for dt in tuple(self.keys()):
+            if self._is_weekend(dt):
+                self.pop(dt)
 
     def _populate_half_day_holidays(self) -> None:
         # %s (markets close at 12:30pm).
@@ -58,14 +65,6 @@ class LondonStockExchange(ChildEntity, UnitedKingdom):
             ),
             rule=SAT_SUN_TO_PREV_FRI,
         )
-
-    def _populate(self, year: int) -> None:
-        super()._populate(year)
-
-        if self.observed:
-            for dt in tuple(self.keys()):
-                if dt.year == year:
-                    self._move_holiday(dt, rule=SAT_SUN_TO_NONE, show_observed_label=False)
 
 
 class XLON(LondonStockExchange):
