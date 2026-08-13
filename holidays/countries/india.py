@@ -422,18 +422,16 @@ class India(
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
-        if self._year == 2012:
+        if self._year == 2012 and self.subdiv != "MH":
             # Vinayak Chaturthi.
             self._add_holiday_aug_21(tr("Vinayak Chaturthi"))
-            if self.subdiv != "MH":
-                # Ganesh Chaturthi.
-                self._add_holiday_sep_19(tr("Ganesh Chaturthi"))
-        elif self._year == 2023:
+            # Ganesh Chaturthi.
+            self._add_holiday_sep_19(tr("Ganesh Chaturthi"))
+        elif self._year == 2023 and self.subdiv != "MH":
             # Vinayak Chaturthi.
             self._add_holiday_aug_20(tr("Vinayak Chaturthi"))
-            if self.subdiv != "MH":
-                # Ganesh Chaturthi.
-                self._add_holiday_sep_19(tr("Ganesh Chaturthi"))
+            # Ganesh Chaturthi.
+            self._add_holiday_sep_19(tr("Ganesh Chaturthi"))
         elif self.subdiv != "MH":
             # Ganesh Chaturthi / Vinayak Chaturthi.
             self._add_ganesh_chaturthi(tr("Ganesh Chaturthi / Vinayak Chaturthi"))
