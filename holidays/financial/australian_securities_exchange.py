@@ -159,7 +159,7 @@ class AustralianSecuritiesExchange(
         pause_label = tr("%s (markets close early)")
 
         if self._year <= 2006 and self._year != 2003 and not self._is_sunday(JAN, 1):
-            self._move_holiday(
+            self._move_holiday_forced(
                 self._add_new_years_day_two(
                     # Day following New Year's Day.
                     self._format_holiday_name(pause_label, tr("Day following New Year's Day"))
@@ -173,7 +173,7 @@ class AustralianSecuritiesExchange(
                 self._format_holiday_name(pause_label, tr("Easter Thursday"))
             )
 
-        self._move_holiday(
+        self._move_holiday_forced(
             self._add_christmas_eve(
                 self._format_holiday_name(
                     pause_label,
@@ -184,7 +184,7 @@ class AustralianSecuritiesExchange(
             rule=SAT_SUN_TO_NONE if self._year >= 2022 else SAT_SUN_TO_PREV_FRI,
         )
 
-        self._move_holiday(
+        self._move_holiday_forced(
             self._add_new_years_eve(
                 # Last Business day of the Year.
                 self._format_holiday_name(pause_label, tr("Last Business day of the Year"))
