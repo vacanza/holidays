@@ -237,7 +237,7 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
         )
 
     def test_last_business_day_before_christmas_day(self):
-        name = "Last Business day before Christmas Day (markets close at 14:10 AEDT)"
+        name = "Last Business day before Christmas Day (markets close early)"
         self.assertNoHolidayName(name)
         self.assertHalfDayNonObservedHolidayName(
             name, (f"{year}-12-24" for year in self.full_range)
@@ -267,7 +267,7 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
         )
 
     def test_last_business_day_of_the_year(self):
-        name = "Last Business day of the Year (markets close at 14:10 AEDT)"
+        name = "Last Business day of the Year (markets close early)"
         self.assertNoHolidayName(name)
         self.assertHalfDayNonObservedHolidayName(
             name, (f"{year}-12-31" for year in self.full_range)
@@ -298,7 +298,7 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
         )
 
     def test_easter_thursday(self):
-        name = "Easter Thursday (markets close at 14:10 AEDT)"
+        name = "Easter Thursday (markets close early)"
         self.assertHalfDayHolidayName(
             name,
             "2000-04-20",
@@ -309,15 +309,14 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
         self.assertNoHalfDayHolidayName(name, range(2009, self.end_year))
 
     def test_day_following_new_years_day(self):
-        name = "Day following New Year's Day (markets close at 14:10 AEDT)"
+        name = "Day following New Year's Day (markets close early)"
         self.assertHalfDayNonObservedHolidayName(
-            name, (f"{year}-01-02" for year in range(self.start_year, 2006))
+            name, (f"{year}-01-02" for year in (*range(2000, 2003), *range(2004, 2006)))
         )
         self.assertHalfDayHolidayName(
             name,
             "2001-01-02",
             "2002-01-02",
-            "2003-01-02",
             "2004-01-02",
         )
         self.assertNoHalfDayHolidayName(
@@ -343,8 +342,8 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
     def test_half_day_2025(self):
         self.assertHalfDayHolidaysInYear(
             2025,
-            ("2025-12-24", "Last Business day before Christmas Day (markets close at 14:10 AEDT)"),
-            ("2025-12-31", "Last Business day of the Year (markets close at 14:10 AEDT)"),
+            ("2025-12-24", "Last Business day before Christmas Day (markets close early)"),
+            ("2025-12-31", "Last Business day of the Year (markets close early)"),
         )
 
     def test_l10n_default(self):
@@ -355,10 +354,10 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
             ("2024-04-01", "Easter Monday"),
             ("2024-04-25", "ANZAC Day"),
             ("2024-06-10", "King's Birthday"),
-            ("2024-12-24", "Last Business day before Christmas Day (markets close at 14:10 AEDT)"),
+            ("2024-12-24", "Last Business day before Christmas Day (markets close early)"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
-            ("2024-12-31", "Last Business day of the Year (markets close at 14:10 AEDT)"),
+            ("2024-12-31", "Last Business day of the Year (markets close early)"),
         )
 
     def test_l10n_en_us(self):
@@ -370,10 +369,10 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
             ("2024-04-01", "Easter Monday"),
             ("2024-04-25", "ANZAC Day"),
             ("2024-06-10", "King's Birthday"),
-            ("2024-12-24", "Last Business day before Christmas Day (markets close at 14:10 AEDT)"),
+            ("2024-12-24", "Last Business day before Christmas Day (markets close early)"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
-            ("2024-12-31", "Last Business day of the Year (markets close at 14:10 AEDT)"),
+            ("2024-12-31", "Last Business day of the Year (markets close early)"),
         )
 
     def test_l10n_th(self):
@@ -385,8 +384,8 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
             ("2024-04-01", "วันจันทร์อีสเตอร์"),
             ("2024-04-25", "วันแอนแซค"),
             ("2024-06-10", "วันเฉลิมพระชนมพรรษาสมเด็จพระราชาธิบดี"),
-            ("2024-12-24", "วันทำการสุดท้ายก่อนวันคริสต์มาส (ตลาดปิดทำการเวลา 14:10 น. AEDT)"),
+            ("2024-12-24", "วันทำการสุดท้ายก่อนวันคริสต์มาส (ตลาดปิดทำการก่อนเวลา)"),
             ("2024-12-25", "วันคริสต์มาส"),
             ("2024-12-26", "วันเปิดกล่องของขวัญ"),
-            ("2024-12-31", "วันทำการสุดท้ายของปี (ตลาดปิดทำการเวลา 14:10 น. AEDT)"),
+            ("2024-12-31", "วันทำการสุดท้ายของปี (ตลาดปิดทำการก่อนเวลา)"),
         )

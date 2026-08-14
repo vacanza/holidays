@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-08-03 15:45+0000\n"
-"PO-Revision-Date: 2026-08-09 17:33+0000\n"
+"PO-Revision-Date: 2026-08-14 01:20+0000\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -80,10 +80,10 @@ msgstr "วันหยุดธนาคาร"
 msgid "Melbourne Cup Day"
 msgstr "วันเมลเบิร์นคัพ"
 
-#. %s (markets close at 14:10 AEDT).
+#. %s (markets close early)
 #, c-format
-msgid "%s (markets close at 14:10 AEDT)"
-msgstr "%s (ตลาดปิดทำการเวลา 14:10 น. AEDT)"
+msgid "%s (markets close early)"
+msgstr "%s (ตลาดปิดทำการก่อนเวลา)"
 
 #. Day following New Year's Day.
 msgid "Day following New Year's Day"

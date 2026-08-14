@@ -155,10 +155,10 @@ class AustralianSecuritiesExchange(
         )
 
     def _populate_half_day_holidays(self):
-        # %s (markets close at 14:10 AEDT).
-        pause_label = tr("%s (markets close at 14:10 AEDT)")
+        # %s (markets close early)
+        pause_label = tr("%s (markets close early)")
 
-        if self._year <= 2006 and not self._is_sunday(JAN, 1):
+        if self._year <= 2006 and self._year != 2003 and not self._is_sunday(JAN, 1):
             self._move_holiday(
                 self._add_new_years_day_two(
                     # Day following New Year's Day.
