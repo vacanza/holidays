@@ -40,13 +40,12 @@ class LondonStockExchange(ChildEntity, UnitedKingdom):
     supported_categories = (HALF_DAY, PUBLIC)
     start_year = 2000
 
-    def _populate(self, year: int) -> None:
-        super()._populate(year)
+    def _populate_subdiv_holidays(self) -> None:
+        super()._populate_subdiv_holidays()
 
-        if self.observed:
-            for dt in tuple(self.keys()):
-                if dt.year == year:
-                    self._move_holiday(dt, rule=SAT_SUN_TO_NONE, show_observed_label=False)
+        for dt in tuple(self.keys()):
+            if self._is_weekend(dt):
+                self.pop(dt)
 
     def _populate_half_day_holidays(self) -> None:
         # %s (markets close at 12:30pm).
