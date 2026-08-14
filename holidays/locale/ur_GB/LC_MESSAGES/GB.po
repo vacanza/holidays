@@ -47,7 +47,7 @@ msgstr "%s (مشاہدہ شدہ)"
 
 #. Good Friday.
 msgid "Good Friday"
-msgstr "جمعہ مبارک"
+msgstr "گڈ فرائیڈے"
 
 #. May Day.
 msgid "May Day"
