@@ -1,0 +1,142 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+#
+# holidays
+# --------
+# A fast, efficient Python library for generating country, province and state
+# specific sets of holidays on the fly. It aims to make determining whether a
+# specific date is a holiday as fast and flexible as possible.
+#
+# Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+# dr-prodigy [dr.prodigy.github@gmail.com](mailto:dr.prodigy.github@gmail.com) (c) 2017-2023
+# ryanss [ryanssdev@icloud.com](mailto:ryanssdev@icloud.com) (c) 2014-2017
+# Website: https://github.com/vacanza/holidays
+# License: MIT (see LICENSE file)
+#
+# United Kingdom holidays ur_GB localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.103\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-08-14 20:14+0500\n"
+"PO-Revision-Date: 2026-08-14 22:37+0500\n"
+"Last-Translator: shehrozsultani <sultanirajpoot.123@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ur_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_GB\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (مشاہدہ شدہ)"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "جمعہ مبارک"
+
+#. May Day.
+msgid "May Day"
+msgstr "یوم مئی"
+
+#. Spring Bank Holiday.
+msgid "Spring Bank Holiday"
+msgstr "موسم بہار کی بینک تعطیل"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "ایسٹر پیر"
+
+#. Late Summer Bank Holiday.
+msgid "Late Summer Bank Holiday"
+msgstr "موسم گرما کے آخر کی بینک تعطیل"
+
+#. Pentecost Monday.
+msgid "Whit Monday"
+msgstr "وائٹ پیر"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "نئے سال کا دن"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "کرسمس کا دن"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "باکسنگ ڈے"
+
+#. Saint Patrick's Day.
+msgid "Saint Patrick's Day"
+msgstr "سینٹ پیٹرک کا دن"
+
+#. Battle of the Boyne.
+msgid "Battle of the Boyne"
+msgstr "جنگِ بوائن"
+
+#. New Year Holiday.
+msgid "New Year Holiday"
+msgstr "نئے سال کی تعطیل"
+
+#. Summer Bank Holiday.
+msgid "Summer Bank Holiday"
+msgstr "موسم گرما کی بینک تعطیل"
+
+#. Saint Andrew's Day.
+msgid "Saint Andrew's Day"
+msgstr "سینٹ اینڈریو کا دن"
+
+#. Silver Jubilee of Elizabeth II.
+msgid "Silver Jubilee of Elizabeth II"
+msgstr "الزبتھ دوم کی سلور جوبلی"
+
+#. Wedding of Charles and Diana.
+msgid "Wedding of Charles and Diana"
+msgstr "چارلس اور ڈیانا کی شادی"
+
+#. Millennium Celebrations.
+msgid "Millennium Celebrations"
+msgstr "ہزاریہ کی تقریبات"
+
+#. Golden Jubilee of Elizabeth II.
+msgid "Golden Jubilee of Elizabeth II"
+msgstr "الزبتھ دوم کی گولڈن جوبلی"
+
+#. Wedding of William and Catherine.
+msgid "Wedding of William and Catherine"
+msgstr "ولیم اور کیتھرین کی شادی"
+
+#. Diamond Jubilee of Elizabeth II.
+msgid "Diamond Jubilee of Elizabeth II"
+msgstr "الزبتھ دوم کی ڈائمنڈ جوبلی"
+
+#. Platinum Jubilee of Elizabeth II.
+msgid "Platinum Jubilee of Elizabeth II"
+msgstr "الزبتھ دوم کی پلاٹینم جوبلی"
+
+#. State Funeral of Queen Elizabeth II.
+msgid "State Funeral of Queen Elizabeth II"
+msgstr "ملکہ الزبتھ دوم کی سرکاری آخری رسومات"
+
+#. Coronation of Charles III.
+msgid "Coronation of Charles III"
+msgstr "چارلس سوم کی تاج پوشی"
+
+#. Scotland's participation in the FIFA World Cup final.
+msgid "Scotland's participation in the FIFA World Cup final"
+msgstr "فیفا ورلڈ کپ کے فائنل میں اسکاٹ لینڈ کی شرکت"
