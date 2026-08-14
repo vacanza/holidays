@@ -719,29 +719,37 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(name, dts, subdivs={"AN", "KL"})
 
     def test_ganesh_chaturthi(self):
-        name = "Ganesh Chaturthi / Vinayak Chaturthi"
-        dts = (
+        name_common = "Ganesh Chaturthi / Vinayak Chaturthi"
+        name_ganesh = "Ganesh Chaturthi"
+        name_vinayak = "Vinayak Chaturthi"
+        self.assertNoHolidayName(name_ganesh)
+        self.assertNoHolidayName(name_vinayak)
+        dts_common = (
             "2020-08-22",
             "2021-09-10",
             "2022-08-31",
             "2024-09-07",
             "2025-08-27",
         )
-        self._assertHinduHolidayHelper(name, dts, category=OPTIONAL, skip_years={2012, 2023})
-        name = "Ganesh Chaturthi"
-        self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(
-            name,
+        self._assertHinduHolidayHelper(
+            name_common, dts_common, category=OPTIONAL, skip_years={2012, 2023}
+        )
+        dts_ganesh = (
             "2012-09-19",
             "2023-09-19",
         )
-        name = "Vinayak Chaturthi"
-        self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(
-            name,
+        self.assertOptionalHolidayName(name_ganesh, dts_ganesh)
+        dts_vinayak = (
             "2012-08-21",
             "2023-08-20",
         )
+        self.assertOptionalHolidayName(name_vinayak, dts_vinayak)
+        # SUBDIVS.
+        self._assertHinduHolidayHelper(name_ganesh, dts_common + dts_ganesh, subdivs={"MH"})
+        self.assertNoSubdivMhOptionalHolidayName(name_common)
+        self.assertNoSubdivMhOptionalHolidayName(name_vinayak)
+        self.assertNoSubdivMhHoliday(dts_vinayak)
+        self.assertNoSubdivMhOptionalHoliday(dts_vinayak)
 
     def test_dussehra_saptami(self):
         name = "Dussehra (Saptami)"
@@ -1771,7 +1779,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-30", "Eid-e-Ghadeer (estimated)"),
             ("2018-09-03", "Janmashtami (Vaishnava)"),
             ("2018-09-12", "Saragarhi Day"),
-            ("2018-09-13", "Ganesh Chaturthi / Vinayak Chaturthi"),
+            ("2018-09-13", "Ganesh Chaturthi; Ganesh Chaturthi / Vinayak Chaturthi"),
             ("2018-09-14", "Samvatsari Day"),
             ("2018-09-17", "Vishwakarma Puja"),
             ("2018-09-21", "Muharram"),
@@ -1916,7 +1924,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-30", "ঈদ-এ-গাদীর (আনুমানিক)"),
             ("2018-09-03", "জন্মাষ্টমী (বৈষ্ণব)"),
             ("2018-09-12", "সারাগড়ি দিবস"),
-            ("2018-09-13", "গণেশ চতুর্থী / বিনায়ক চতুর্থী"),
+            ("2018-09-13", "গণেশ চতুর্থী; গণেশ চতুর্থী / বিনায়ক চতুর্থী"),
             ("2018-09-14", "সংবৎসরী দিবস"),
             ("2018-09-17", "বিশ্বকর্মা পূজা"),
             ("2018-09-21", "মহরম"),
@@ -2059,7 +2067,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-30", "Eid al-Ghadir (estimated)"),
             ("2018-09-03", "Janmashtami (Vaishnava)"),
             ("2018-09-12", "Saragarhi Day"),
-            ("2018-09-13", "Ganesh Chaturthi / Vinayak Chaturthi"),
+            ("2018-09-13", "Ganesh Chaturthi; Ganesh Chaturthi / Vinayak Chaturthi"),
             ("2018-09-14", "Samvatsari Day"),
             ("2018-09-17", "Vishwakarma Puja"),
             ("2018-09-21", "Ashura"),
@@ -2205,7 +2213,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-30", "ઈદ-એ-ગદીર (અંદાજિત)"),
             ("2018-09-03", "જન્માષ્ટમી (વૈષ્ણવ)"),
             ("2018-09-12", "સારાગઢી દિવસ"),
-            ("2018-09-13", "ગણેશ ચતુર્થી / વિનાયક ચતુર્થી"),
+            ("2018-09-13", "ગણેશ ચતુર્થી; ગણેશ ચતુર્થી / વિનાયક ચતુર્થી"),
             ("2018-09-14", "સંવત્સરી દિવસ"),
             ("2018-09-17", "વિશ્વકર્મા પૂજા"),
             ("2018-09-21", "મોહરમ"),
@@ -2339,7 +2347,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-30", "ईद-ए-ग़दीर (अनुमानित)"),
             ("2018-09-03", "जन्माष्टमी (वैष्णव)"),
             ("2018-09-12", "सारागढ़ी दिवस"),
-            ("2018-09-13", "गणेश चतुर्थी / विनायक चतुर्थी"),
+            ("2018-09-13", "गणेश चतुर्थी; गणेश चतुर्थी / विनायक चतुर्थी"),
             ("2018-09-14", "संवत्सरी दिवस"),
             ("2018-09-17", "विश्वकर्मा पूजा"),
             ("2018-09-21", "मुहर्रम"),
@@ -2473,7 +2481,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-30", "ಈದ್-ಎ-ಘದೀರ್ (ಅಂದಾಜು)"),
             ("2018-09-03", "ಜನ್ಮಾಷ್ಟಮಿ (ವೈಷ್ಣವ)"),
             ("2018-09-12", "ಸಾರಾಗಢಿ ದಿನ"),
-            ("2018-09-13", "ಗಣೇಶ ಚತುರ್ಥಿ / ವಿನಾಯಕ ಚತುರ್ಥಿ"),
+            ("2018-09-13", "ಗಣೇಶ ಚತುರ್ಥಿ; ಗಣೇಶ ಚತುರ್ಥಿ / ವಿನಾಯಕ ಚತುರ್ಥಿ"),
             ("2018-09-14", "ಸಂವತ್ಸರಿ ದಿನ"),
             ("2018-09-17", "ವಿಶ್ವಕರ್ಮ ಪೂಜೆ"),
             ("2018-09-21", "ಮೊಹರಂ ಕಡೆ ದಿನ"),
@@ -2604,7 +2612,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-30", "ഈദ്-എ-ഗദീർ (അനുമാനം)"),
             ("2018-09-03", "ജന്മാഷ്ടമി (വൈഷ്ണവ)"),
             ("2018-09-12", "സാരാഗഢി ദിനം"),
-            ("2018-09-13", "ഗണേശ ചതുർത്ഥി / വിനായക ചതുർത്ഥി"),
+            ("2018-09-13", "ഗണേശ ചതുർത്ഥി; ഗണേശ ചതുർത്ഥി / വിനായക ചതുർത്ഥി"),
             ("2018-09-14", "സംവത്സരി ദിനം"),
             ("2018-09-17", "വിശ്വകർമ പൂജ"),
             ("2018-09-21", "മുഹറം"),
@@ -2738,7 +2746,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-30", "ईद-ए-गदीर (अंदाजे)"),
             ("2018-09-03", "गोकुळाष्टमी (वैष्णव)"),
             ("2018-09-12", "सारागढी दिन"),
-            ("2018-09-13", "गणेश चतुर्थी / विनायक चतुर्थी"),
+            ("2018-09-13", "गणेश चतुर्थी; गणेश चतुर्थी / विनायक चतुर्थी"),
             ("2018-09-14", "संवत्सरी दिन"),
             ("2018-09-17", "विश्वकर्मा पूजा"),
             ("2018-09-21", "मोहरम"),
@@ -2871,7 +2879,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-30", "ਈਦ-ਏ-ਗਦੀਰ (ਅਨੁਮਾਨਿਤ)"),
             ("2018-09-03", "ਜਨਮਾਸ਼ਟਮੀ (ਵੈਸ਼ਨਵ)"),
             ("2018-09-12", "ਸਾਰਾਗੜ੍ਹੀ ਦਿਵਸ"),
-            ("2018-09-13", "ਗਣੇਸ਼ ਚਤੁਰਥੀ / ਵਿਨਾਇਕ ਚਤੁਰਥੀ"),
+            ("2018-09-13", "ਗਣੇਸ਼ ਚਤੁਰਥੀ / ਵਿਨਾਇਕ ਚਤੁਰਥੀ; ਵਿਨਾਇਕ ਚਤੁਰਥੀ"),
             ("2018-09-14", "ਸੰਵਤਸਰੀ ਦਿਵਸ"),
             ("2018-09-17", "ਵਿਸ਼ਵਕਰਮਾ ਪੂਜਾ"),
             ("2018-09-21", "ਮੁਹੱਰਮ"),
@@ -3007,7 +3015,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-30", "ஈத்-எ-கதீர் (மதிப்பிடப்பட்டது)"),
             ("2018-09-03", "ஜனமாஷ்டமி (வைஷ்ணவ)"),
             ("2018-09-12", "சாராகர்ஹி தினம்"),
-            ("2018-09-13", "விநாயகர் சதுர்த்தி / விநாயக சதுர்த்தி"),
+            ("2018-09-13", "கணேஷ் சதுர்த்தி; விநாயகர் சதுர்த்தி / விநாயக சதுர்த்தி"),
             ("2018-09-14", "சம்வத்சரி தினம்"),
             ("2018-09-17", "விஸ்வகர்மா பூஜை"),
             ("2018-09-21", "முஹர்ரம்"),
@@ -3140,7 +3148,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-30", "ఈద్-ఎ-గదీర్ (అంచనా)"),
             ("2018-09-03", "జన్మాష్టమి (వైష్ణవ)"),
             ("2018-09-12", "సారాగఢి దినం"),
-            ("2018-09-13", "గణేశ చవితి / వినాయక చవితి"),
+            ("2018-09-13", "గణేశ చవితి; గణేశ చవితి / వినాయక చవితి"),
             ("2018-09-14", "సంవత్సరి దినం"),
             ("2018-09-17", "విశ్వకర్మ పూజ"),
             ("2018-09-21", "మొహర్రం"),

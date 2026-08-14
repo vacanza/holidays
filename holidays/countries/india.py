@@ -422,9 +422,22 @@ class India(
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
-        if self._year not in {2012, 2023}:
-            # Ganesh Chaturthi / Vinayak Chaturthi.
-            self._add_ganesh_chaturthi(tr("Ganesh Chaturthi / Vinayak Chaturthi"))
+        if self.subdiv != "MH":
+            self._add_ganesh_chaturthi(
+                # Ganesh Chaturthi / Vinayak Chaturthi.
+                tr("Ganesh Chaturthi / Vinayak Chaturthi")
+                if self._year not in {2012, 2023}
+                # Ganesh Chaturthi.
+                else tr("Ganesh Chaturthi")
+            )
+
+            dates = {
+                2012: (AUG, 21),
+                2023: (AUG, 20),
+            }
+            if dt := dates.get(self._year):
+                # Vinayak Chaturthi.
+                self._add_holiday(tr("Vinayak Chaturthi"), dt)
 
         # Dussehra (Saptami).
         self._add_maha_saptami(tr("Dussehra (Saptami)"))
@@ -763,8 +776,12 @@ class India(
 
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
+
         # Parsi New Year (Shahenshahi).
         self._add_parsi_new_year(tr("Parsi New Year (Shahenshahi)"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
@@ -1040,12 +1057,6 @@ class IndiaStaticHolidays:
     # Shri Panchami.
     name_shri_panchami = tr("Shri Panchami")
 
-    # Ganesh Chaturthi.
-    name_ganesh_chaturthi = tr("Ganesh Chaturthi")
-
-    # Vinayak Chaturthi.
-    name_vinayak_chaturthi = tr("Vinayak Chaturthi")
-
     # Guru Tegh Bahadur's Martyrdom Day.
     name_guru_tegh_bahadur_martyrdom_day = tr("Guru Tegh Bahadur's Shaheedi Diwas")
 
@@ -1069,10 +1080,6 @@ class IndiaStaticHolidays:
         2007: (SEP, 3, name_janmashtami_smarta),
         2008: (AUG, 28, name_janmashtami_smarta),
         2011: (DEC, 31, name_guru_gobind_singh_birthday),
-        2012: (
-            (AUG, 21, name_vinayak_chaturthi),
-            (SEP, 19, name_ganesh_chaturthi),
-        ),
         2013: (
             (FEB, 14, name_shri_panchami),
             (FEB, 15, name_basant_panchami),
@@ -1082,9 +1089,7 @@ class IndiaStaticHolidays:
         2022: (AUG, 18, name_janmashtami_smarta),
         2023: (
             (JAN, 14, name_magh_bihu),
-            (AUG, 20, name_vinayak_chaturthi),
             (SEP, 6, name_janmashtami_smarta),
-            (SEP, 19, name_ganesh_chaturthi),
         ),
         2025: (AUG, 15, name_janmashtami_smarta),
     }
