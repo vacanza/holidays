@@ -15,7 +15,7 @@ from gettext import gettext as tr
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.united_kingdom import UnitedKingdom
 from holidays.mixins.child_entity import ChildEntity
-from holidays.observed_holiday_base import SAT_SUN_TO_PREV_FRI, SAT_SUN_TO_NONE
+from holidays.observed_holiday_base import SAT_SUN_TO_PREV_FRI
 
 
 class LondonStockExchange(ChildEntity, UnitedKingdom):
