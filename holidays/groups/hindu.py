@@ -1134,6 +1134,20 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.vishwakarma_puja_date(self._year)
         )
 
+    def _add_wangala_festival(self, name) -> date | None:
+        """
+        Add Wangala Festival.
+
+        Wangala is a harvest festival celebrated by the Garo people
+        of Meghalaya. It is also known as the Hundred Drums Festival
+        and marks the end of the agricultural year.
+
+        The holiday is observed on the second Friday of November.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.wangala_festival_date(self._year)
+        )
+
     def _add_parsi_new_year(self, name: str) -> None:
         """
         Add Parsi New Year (Shahenshahi).

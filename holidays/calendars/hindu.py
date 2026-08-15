@@ -80,6 +80,7 @@ VAISAKHI = "VAISAKHI"
 VARALAKHSMI_VRATAM = "VARALAKHSMI_VRATAM"
 VISHU = "VISHU"
 VISHWAKARMA_PUJA = "VISHWAKARMA_PUJA"
+WANGALA_FESTIVAL = "WANGALA_FESTIVAL"
 
 
 class _HinduLunisolar:
@@ -2866,6 +2867,46 @@ class _HinduLunisolar:
         2035: (SEP, 17),
     }
 
+    # https://web.archive.org/web/20251222111433/https://cag.gov.in/ag/meghalaya/en/page-ag-meghalaya-holidays-list
+    # https://web.archive.org/web/20260521103408/https://meghalaya.gov.in/holiday
+    WANGALA_FESTIVAL_DATES = {
+        2001: (NOV, 9),
+        2002: (NOV, 8),
+        2003: (NOV, 14),
+        2004: (NOV, 12),
+        2005: (NOV, 11),
+        2006: (NOV, 10),
+        2007: (NOV, 9),
+        2008: (NOV, 14),
+        2009: (NOV, 13),
+        2010: (NOV, 12),
+        2011: (NOV, 11),
+        2012: (NOV, 9),
+        2013: (NOV, 8),
+        2014: (NOV, 14),
+        2015: (NOV, 13),
+        2016: (NOV, 11),
+        2017: (NOV, 10),
+        2018: (NOV, 9),
+        2019: (NOV, 8),
+        2020: (NOV, 13),
+        2021: (NOV, 12),
+        2022: (NOV, 11),
+        2023: (NOV, 10),
+        2024: (NOV, 8),
+        2025: (NOV, 7),
+        2026: (NOV, 13),
+        2027: (NOV, 12),
+        2028: (NOV, 10),
+        2029: (NOV, 9),
+        2030: (NOV, 8),
+        2031: (NOV, 14),
+        2032: (NOV, 12),
+        2033: (NOV, 11),
+        2034: (NOV, 10),
+        2035: (NOV, 9),
+    }
+
     def _get_holiday(self, holiday: str, year: int) -> tuple[date | None, bool]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
@@ -3067,6 +3108,9 @@ class _HinduLunisolar:
 
     def vishwakarma_puja_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VISHWAKARMA_PUJA, year)
+
+    def wangala_festival_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(WANGALA_FESTIVAL, year)
 
 
 class _CustomHinduHolidays(_CustomCalendar, _HinduLunisolar):

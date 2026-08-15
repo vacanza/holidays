@@ -78,6 +78,8 @@ class India(
             * <https://archive.org/details/madhya-pradesh-government-2026-holidays-notification>
         * Maharashtra:
             * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
+        * Meghalaya:
+            * <https://web.archive.org/web/20260815172406/https://meghalaya.gov.in/sites/default/files/holiday_files/GAA_78_2025_23.pdf>
         * Punjab:
             * <https://web.archive.org/web/20260216022835/https://punjab.gov.in/wp-content/uploads/2025/12/Calender-2026.pdf>
         * Rajasthan:
@@ -1040,6 +1042,43 @@ class India(
 
         # Diwali (Bali Pratipada).
         self._add_govardhan_puja(tr("Diwali (Bali Pratipada)"))
+
+    # Meghalaya.
+    def _populate_subdiv_ml_public_holidays(self):
+        pass
+
+    def _populate_subdiv_ml_government_holidays(self):
+        self._populate_public_holidays()
+
+        # U Tirot Sing's Death Anniversary.
+        self._add_holiday_jul_17(tr("U Tirot Sing's Death Anniversary"))
+
+        # Seng Kut Snem.
+        self._add_holiday_nov_23(tr("Seng Kut Snem"))
+
+        # Pa Togan Nengminja Sangma's Death Anniversary.
+        self._add_holiday_dec_12(tr("Pa Togan Nengminja Sangma's Death Anniversary"))
+
+        # U Soso Thama's Death Anniversary.
+        self._add_holiday_dec_18(tr("U Soso Thama's Death Anniversary"))
+
+        # Christmas Festival.
+        name = "Christmas Festival"
+        self._add_holiday_dec_24(name)
+        self._add_holiday_dec_26(name)
+        self._add_holiday_dec_27(name)
+
+        # U Kiang Nongbah Death Anniversary.
+        self._add_holiday_dec_30(tr("U Kiang Nongbah Death Anniversary"))
+
+        # Hindu Holidays.
+
+        # Wangala Festival.
+        self._add_wangala_festival(tr("Wangala Festival"))
+
+    def _populate_subdiv_ml_optional_holidays(self):
+        # All Souls' Day.
+        self._add_all_souls_day(tr("All Souls' Day"))
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
