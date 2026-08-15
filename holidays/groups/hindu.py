@@ -1080,6 +1080,21 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         self._add_holiday(name, date(self._year, APR, 14 if isleap(self._year) else 15))
 
+    def _add_varalakshmi_vratam(self, name) -> date | None:
+        """
+        Add Varalakshmi Vratam.
+
+        Varalakshmi Vratam is a Hindu festival dedicated to Goddess
+        Lakshmi. It is observed on the Friday preceding the full moon
+        day (Purnima) of the Hindu month of Shravana (July/August).
+
+        https://en.wikipedia.org/wiki/Varalakshmi_Vratam
+        """
+        return self._add_hindu_calendar_holiday(
+            name,
+            self._hindu_calendar.varalakshmi_vratam_date(self._year),
+        )
+
     def _add_vassi_uttarayan(self, name) -> date | None:
         """
         Add Vassi Uttarayan.

@@ -77,6 +77,7 @@ TAMU_LOSAR = "TAMU_LOSAR"
 THAIPUSAM = "THAIPUSAM"
 TULSIDAS_JAYANTI = "TULSIDAS_JAYANTI"
 VAISAKHI = "VAISAKHI"
+VARALAKHSMI_VRATAM = "VARALAKHSMI_VRATAM"
 VISHU = "VISHU"
 VISHWAKARMA_PUJA = "VISHWAKARMA_PUJA"
 
@@ -2748,6 +2749,45 @@ class _HinduLunisolar:
         2035: (APR, 14),
     }
 
+    # https://web.archive.org/web/20260218051114/https://www.drikpanchang.com/festivals/varalakshmi-vratam/varalakshmi-vratam-date-time.html
+    VARALAKSHMI_VRATAM_DATES = {
+        2001: (AUG, 3),
+        2002: (AUG, 16),
+        2003: (AUG, 8),
+        2004: (AUG, 27),
+        2005: (AUG, 19),
+        2006: (AUG, 4),
+        2007: (AUG, 24),
+        2008: (AUG, 15),
+        2009: (JUL, 31),
+        2010: (AUG, 20),
+        2011: (AUG, 12),
+        2012: (JUL, 27),
+        2013: (AUG, 16),
+        2014: (AUG, 8),
+        2015: (AUG, 28),
+        2016: (AUG, 12),
+        2017: (AUG, 4),
+        2018: (AUG, 24),
+        2019: (AUG, 9),
+        2020: (JUL, 31),
+        2021: (AUG, 20),
+        2022: (AUG, 12),
+        2023: (AUG, 25),
+        2024: (AUG, 16),
+        2025: (AUG, 8),
+        2026: (AUG, 28),
+        2027: (AUG, 13),
+        2028: (AUG, 4),
+        2029: (AUG, 24),
+        2030: (AUG, 9),
+        2031: (AUG, 1),
+        2032: (AUG, 20),
+        2033: (AUG, 5),
+        2034: (AUG, 25),
+        2035: (AUG, 17),
+    }
+
     # https://web.archive.org/web/20251213154535/http://www.drikpanchang.com/festivals/vishu/vishu-kani-date-time.html
     VISHU_DATES = {
         2001: (APR, 14),
@@ -3018,6 +3058,9 @@ class _HinduLunisolar:
 
     def vaisakhi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VAISAKHI, year)
+
+    def varalakshmi_vratam_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(VARALAKHSMI_VRATAM, year)
 
     def vishu_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VISHU, year)

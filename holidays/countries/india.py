@@ -54,6 +54,8 @@ class India(
         * <https://web.archive.org/web/20260620202127/https://www.allahabadhighcourt.in/Calendar>
         * Andaman and Nicobar Islands:
             * <https://web.archive.org/web/20251214133200/https://andamannicobar.gov.in/admin-pannel/othersdoc/1-29-Holiday%20List%202026%20Gazette.pdf>
+        * Andhra Pradesh:
+            * <https://web.archive.org/web/20260608074309/https://www.veerayeehr.com/wp-content/uploads/2025/12/Andhra-Pradesh-Holiday-List-2026.pdf>
         * Chandigarh:
             * <https://web.archive.org/web/20260705144831/https://chandigarh.gov.in/files/updation2025/home25-17488-3012.pdf>
         * Dadra and Nagar Haveli and Daman and Diu:
@@ -499,10 +501,48 @@ class India(
 
     # Andhra Pradesh.
     def _populate_subdiv_ap_public_holidays(self):
-        # Andhra Pradesh Foundation Day.
-        self._add_holiday_nov_1(tr("Andhra Pradesh Foundation Day"))
+        pass
+
+    def _populate_subdiv_ap_government_holidays(self):
+        self._populate_public_holidays()
+
+        # Babu Jagjivan Ram's Birthday.
+        self._add_holiday_apr_5(tr("Babu Jagjivan Ram's Jayanti"))
+
+        # Hindu holidays.
+
+        # Bhogi.
+        self._add_lohri(tr("Bhogi"))
+
+        # Makar Sankranti.
+        self._add_makar_sankranti(tr("Makar Sankranti"))
+
+        # Kanuma
+        self._add_vassi_uttarayan(tr("Kanuma"))
+
         # Ugadi.
         self._add_gudi_padwa(tr("Ugadi"))
+
+        # Varalakshmi Vratam.
+        self._add_varalakshmi_vratam(tr("Varalakshmi Vratam"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+
+        # Durgashtami.
+        self._add_maha_ashtami(tr("Durgashtami"))
+
+    def _populate_subdiv_ap_optional_holidays(self):
+        # Boxing Day.
+        self._add_holiday_dec_26(tr("Boxing Day"))
+
+        # Islamic holidays.
+
+        # Isra' and Mi'raj.
+        self._add_isra_and_miraj_day(tr("Shab-I-Miraj"))
+
+        # Eid al-Ghadir.
+        self._add_eid_al_ghadir_day(tr("Eid-e-Ghadeer"))
 
     # Assam.
     def _populate_subdiv_as_public_holidays(self):

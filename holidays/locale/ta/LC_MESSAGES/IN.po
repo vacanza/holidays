@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.99\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-07-31 23:38+0530\n"
+"PO-Revision-Date: 2026-08-15 23:11+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ta\n"
@@ -276,9 +276,41 @@ msgstr "கிறிஸ்துமஸ் ஈவ்"
 msgid "Easter Sunday"
 msgstr "ஈஸ்டர் ஞாயிறு"
 
-#. Andhra Pradesh Foundation Day.
-msgid "Andhra Pradesh Foundation Day"
-msgstr "ஆந்திரப் பிரதேச நாள்"
+#. Babu Jagjivan Ram's Birthday.
+msgid "Babu Jagjivan Ram's Jayanti"
+msgstr ""
+
+#. Bhogi.
+msgid "Bhogi"
+msgstr ""
+
+#. Kanuma
+msgid "Kanuma"
+msgstr ""
+
+#. Varalakshmi Vratam.
+msgid "Varalakshmi Vratam"
+msgstr ""
+
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr "விநாயகர் சதுர்த்தி"
+
+#. Durgashtami.
+msgid "Durgashtami"
+msgstr "துர்காஷ்டமி"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr ""
+
+#. Isra' and Mi'raj.
+msgid "Shab-I-Miraj"
+msgstr "ஷப்-எ-மெராஜ்"
+
+#. Eid al-Ghadir.
+msgid "Eid-e-Ghadeer"
+msgstr "ஈத்-எ-கதீர்"
 
 #. Assam Day.
 msgid "Assam Day"
@@ -416,10 +448,6 @@ msgstr ""
 msgid "Goa Liberation Day"
 msgstr "கோவா விடுதலை நாள்"
 
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
-msgstr "விநாயகர் சதுர்த்தி"
-
 #. Ganesh Chaturthi (2nd Day).
 msgid "Ganesh Chaturthi (2nd Day)"
 msgstr "விநாயகர் சதுர்த்தி (2ஆம் நாள்)"
@@ -461,8 +489,24 @@ msgstr "சர்தார் வல்லபாய் படேல் ஜெய
 msgid "Uttarayan"
 msgstr "உத்தராயண் நாள்"
 
-#. Gujarati New Year.
-msgid "Bestu Varas"
+#. Samvatsari Day.
+msgid "Samvatsari Day"
+msgstr "சம்வத்சரி தினம்"
+
+#. Vassi Uttarayan.
+msgid "Vassi Uttarayan"
+msgstr ""
+
+#. Hatkeshwar's Birthday.
+msgid "Hatkeshwar's Jayanti"
+msgstr ""
+
+#. Hanuman's Birthday.
+msgid "Hanuman's Jayanti"
+msgstr ""
+
+#. Dev Diwali
+msgid "Dev Diwali"
 msgstr ""
 
 #. Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day.
@@ -529,10 +573,6 @@ msgstr "வைசாகி"
 msgid "Mahanavami"
 msgstr "மகா நவமி"
 
-#. Isra' and Mi'raj.
-msgid "Shab-I-Miraj"
-msgstr "ஷப்-எ-மெராஜ்"
-
 #. Nowruz.
 msgid "Nauroz"
 msgstr "நவ்ரோஸ்"
@@ -548,10 +588,6 @@ msgstr "கர்நாடக ராஜ்யோற்சவம்"
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"
 msgstr "கேரள நாள்"
-
-#. Eid al-Ghadir.
-msgid "Eid-e-Ghadeer"
-msgstr "ஈத்-எ-கதீர்"
 
 #. Chhatrapati Shivaji Maharaj Jayanti.
 msgid "Chhatrapati Shivaji Maharaj Jayanti"
@@ -673,10 +709,6 @@ msgstr "சத்குரு ராம் சிங் ஜெயந்தி"
 msgid "Hola Mohalla"
 msgstr "ஹோலா மொஹல்லா"
 
-#. Samvatsari Day.
-msgid "Samvatsari Day"
-msgstr "சம்வத்சரி தினம்"
-
 #. Khejarli's Martyrdom Day.
 msgid "Khejarli's Shaheedi Diwas"
 msgstr "கேஜர்லி ஷஹீதி தினம்"
@@ -684,10 +716,6 @@ msgstr "கேஜர்லி ஷஹீதி தினம்"
 #. Sharad Navratri.
 msgid "Sharad Navratri"
 msgstr "சாரத நவராத்திரி"
-
-#. Durgashtami.
-msgid "Durgashtami"
-msgstr "துர்காஷ்டமி"
 
 #. Gadge Maharaj's Birthday.
 msgid "Gadge Maharaj's Jayanti"
@@ -788,6 +816,12 @@ msgstr "விநாயக சதுர்த்தி"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ஜனமாஷ்டமி (ஸ்மார்த்த)"
+
+#~ msgid "Andhra Pradesh Foundation Day"
+#~ msgstr "ஆந்திரப் பிரதேச நாள்"
+
+#~ msgid "Bestu Varas"
+#~ msgstr ""
 
 #~ msgid "Feast of St. Francis Xavier"
 #~ msgstr "புனித பிரான்சிஸ் சேவியர் திருவிழா"
