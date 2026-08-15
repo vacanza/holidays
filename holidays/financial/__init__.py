@@ -30,4 +30,5 @@ from holidays.financial.ny_stock_exchange import NewYorkStockExchange, XNYS, NYS
 from holidays.financial.shanghai_stock_exchange import ShanghaiStockExchange, XSHG, SSE
 from holidays.financial.shenzhen_stock_exchange import ShenzhenStockExchange, XSHE, SZSE
 from holidays.financial.six_swiss_exchange import SIXSwissExchange, XSWX, SIX
+from holidays.financial.tel_aviv_stock_exchange import TelAvivStockExchange, XTAE, TASE
 from holidays.financial.toronto_stock_exchange import TorontoStockExchange, XTSE, TSX

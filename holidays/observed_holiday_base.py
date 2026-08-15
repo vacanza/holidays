@@ -76,6 +76,7 @@ SAT_TO_NEXT_WORKDAY = ObservedRule({SAT: +7})
 SAT_TO_NONE = ObservedRule({SAT: None})
 
 SUN_TO_PREV_SAT = ObservedRule({SUN: -1})
+SUN_TO_PREV_FRI = ObservedRule({SUN: -2})
 SUN_TO_NEXT_MON = ObservedRule({SUN: +1})
 SUN_TO_NEXT_TUE = ObservedRule({SUN: +2})
 SUN_TO_NEXT_WED = ObservedRule({SUN: +3})
