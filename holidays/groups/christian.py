@@ -424,6 +424,17 @@ class ChristianHolidays:
         """
         return self._add_holiday_jun_13(name)
 
+    def _add_saint_francis_xavier_day(self, name) -> date:
+        """
+        Add Feast of St. Francis Xavier (December 3rd).
+
+        St. Francis Xavier was a Spanish Catholic missionary and co-founder of
+        the Society of Jesus; his feast day is observed on December 3rd, the
+        traditionally accepted date of his death.
+        https://en.wikipedia.org/wiki/Francis_Xavier
+        """
+        return self._add_holiday_dec_3(name)
+
     def _add_saint_georges_day(self, name) -> date:
         """
         Add Saint George's Day (April 23th).

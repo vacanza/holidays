@@ -56,6 +56,8 @@ class India(
             * <https://web.archive.org/web/20251214133200/https://andamannicobar.gov.in/admin-pannel/othersdoc/1-29-Holiday%20List%202026%20Gazette.pdf>
         * Chandigarh:
             * <https://web.archive.org/web/20260705144831/https://chandigarh.gov.in/files/updation2025/home25-17488-3012.pdf>
+        * Goa:
+            * <https://www.india.gov.in/calendar/goa>
         * Gujarat:
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
             * [Gujarat Holidays 2010-2026](https://archive.org/details/gujarat-holidays)
@@ -547,6 +549,8 @@ class India(
 
     # Goa.
     def _populate_subdiv_ga_public_holidays(self):
+        # Feast of St. Francis Xavier.
+        self._add_saint_francis_xavier_day(tr("Feast of St. Francis Xavier"))
         # Goa Liberation Day.
         self._add_holiday_dec_19(tr("Goa Liberation Day"))
 

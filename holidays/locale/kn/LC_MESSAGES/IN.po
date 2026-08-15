@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.103\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-26 12:14+0530\n"
-"PO-Revision-Date: 2026-08-03 23:37+0530\n"
+"PO-Revision-Date: 2026-08-15 16:11+0530\n"
 "Last-Translator: Harsh Baghel <hk5324519@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: kn\n"
@@ -311,6 +311,10 @@ msgstr "ಮಹಾರಾಜ ಅಗ್ರಸೇನ್ ಜಯಂತಿ"
 #. Chhattisgarh Foundation Day.
 msgid "Chhattisgarh Foundation Day"
 msgstr "ಛತ್ತೀಸ್‌ಗಢ ಸ್ಥಾಪನಾ ದಿನ"
+
+#. Feast of St. Francis Xavier.
+msgid "Feast of St. Francis Xavier"
+msgstr "ಸೇಂಟ್ ಫ್ರಾನ್ಸಿಸ್ ಕ್ಸೇವಿಯರ್ ಹಬ್ಬ"
 
 #. Goa Liberation Day.
 msgid "Goa Liberation Day"
