@@ -443,7 +443,7 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
         )
     def test_l10n_ur_gb(self):
         self.assertLocalizedHolidays(
-            "ur_GB",
+            "ur_PK",
             ("2024-01-01", "نئے سال کا دن"),
             ("2024-01-02", "نئے سال کی تعطیل"),
             ("2024-03-17", "سینٹ پیٹرک کا دن"),
