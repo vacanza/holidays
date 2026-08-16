@@ -23,7 +23,7 @@
 # Website: https://github.com/vacanza/holidays
 # License: MIT (see LICENSE file)
 #
-# United Kingdom holidays ur_GB localization.
+# United Kingdom holidays ur_PK localization.
 #
 msgid ""
 msgstr ""
@@ -33,7 +33,7 @@ msgstr ""
 "PO-Revision-Date: 2026-08-14 22:37+0500\n"
 "Last-Translator: shehrozsultani <sultanirajpoot.123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: ur_GB\n"
+"Language: ur_PK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

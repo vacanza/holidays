@@ -1816,7 +1816,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>United Kingdom</td>
 <td>GB</td>
 <td>Subdivisions: ENG (England), NIR (Northern Ireland), SCT (Scotland), WLS (Wales)</td>
-<td><strong>en_GB</strong>, en_US, th, ur_GB</td>
+<td><strong>en_GB</strong>, en_US, th, ur_PK</td>
 <td></td>
 </tr>
 <tr>
