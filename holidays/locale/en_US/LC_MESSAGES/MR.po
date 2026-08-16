@@ -10,15 +10,15 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Mauritania holidays.
+# Mauritania holidays en_US localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-06-29 16:42+0530\n"
-"PO-Revision-Date: 2026-07-03 12:27+0530\n"
-"Last-Translator: TaniaRocks <taniakhatun9a@gmail.com>\n"
+"PO-Revision-Date: 2026-08-16 16:57+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -48,6 +48,14 @@ msgstr "Africa Day"
 msgid "عيد الاستقلال"
 msgstr "Independence Day"
 
+#. Islamic New Year.
+msgid "رأس السنة الهجرية"
+msgstr "Islamic New Year"
+
+#. Prophet's Birthday.
+msgid "المولد النبوي الشريف"
+msgstr "Prophet's Birthday"
+
 #. Eid al-Fitr.
 msgid "عيد الفطر"
 msgstr "Eid al-Fitr"
@@ -55,11 +63,3 @@ msgstr "Eid al-Fitr"
 #. Eid al-Adha.
 msgid "عيد الأضحى"
 msgstr "Eid al-Adha"
-
-#. Islamic New Year.
-msgid "رأس السنة الهجرية"
-msgstr "Islamic New Year"
-
-#. The Prophet's Birthday.
-msgid "المولد النبوي الشريف"
-msgstr "The Prophet's Birthday"

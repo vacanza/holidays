@@ -29,7 +29,7 @@ class Mauritania(HolidayBase, InternationalHolidays, IslamicHolidays):
     default_language = "ar"
     # %s (estimated).
     estimated_label = tr("%s (تقديري)")
-    supported_languages = ("ar", "en_MR", "en_US")
+    supported_languages = ("ar", "en_US")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
@@ -53,25 +53,27 @@ class Mauritania(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Africa Day.
         self._add_africa_day(tr("يوم أفريقيا"))
 
-        # Independence Day.
         if self._year >= 1960:
+            # Independence Day.
             self._add_holiday_nov_28(tr("عيد الاستقلال"))
 
-        # Eid al-Fitr.
-        eid_al_fitr = tr("عيد الفطر")
-        self._add_eid_al_fitr_day(eid_al_fitr)
-        self._add_eid_al_fitr_day_two(eid_al_fitr)
-
-        # Eid al-Adha.
-        eid_al_adha = tr("عيد الأضحى")
-        self._add_eid_al_adha_day(eid_al_adha)
-        self._add_eid_al_adha_day_two(eid_al_adha)
+        # Islamic holidays.
 
         # Islamic New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
 
-        # The Prophet's Birthday.
+        # Prophet's Birthday.
         self._add_mawlid_day(tr("المولد النبوي الشريف"))
+
+        # Eid al-Fitr.
+        name = tr("عيد الفطر")
+        self._add_eid_al_fitr_day(name)
+        self._add_eid_al_fitr_day_two(name)
+
+        # Eid al-Adha.
+        name = tr("عيد الأضحى")
+        self._add_eid_al_adha_day(name)
+        self._add_eid_al_adha_day_two(name)
 
 
 class MR(Mauritania):

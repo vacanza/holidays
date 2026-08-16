@@ -19,23 +19,23 @@ from tests.common import CommonCountryTests
 class TestMauritania(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Mauritania, years=range(1950, 2050))
+        super().setUpClass(Mauritania)
 
     def test_new_years_day(self):
         self.assertHolidayName(
-            "رأس السنة الميلادية", (f"{year}-01-01" for year in range(1950, 2050))
+            "رأس السنة الميلادية", (f"{year}-01-01" for year in self.full_range)
         )
 
     def test_labor_day(self):
-        self.assertHolidayName("عيد العمال", (f"{year}-05-01" for year in range(1950, 2050)))
+        self.assertHolidayName("عيد العمال", (f"{year}-05-01" for year in self.full_range))
 
     def test_africa_day(self):
-        self.assertHolidayName("يوم أفريقيا", (f"{year}-05-25" for year in range(1950, 2050)))
+        self.assertHolidayName("يوم أفريقيا", (f"{year}-05-25" for year in self.full_range))
 
     def test_independence_day(self):
         name = "عيد الاستقلال"
-        self.assertHolidayName(name, (f"{year}-11-28" for year in range(1960, 2050)))
-        self.assertNoHolidayName(name, range(1950, 1960))
+        self.assertHolidayName(name, (f"{year}-11-28" for year in range(1960, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1960))
 
     def test_2023(self):
         self.assertHolidaysInYear(
@@ -77,21 +77,6 @@ class TestMauritania(CommonCountryTests, TestCase):
             ("2024-06-16", "Eid al-Adha (estimated)"),
             ("2024-06-17", "Eid al-Adha (estimated)"),
             ("2024-07-07", "Islamic New Year (estimated)"),
-            ("2024-09-15", "The Prophet's Birthday (estimated)"),
-            ("2024-11-28", "Independence Day"),
-        )
-
-    def test_l10n_en_mr(self):
-        self.assertLocalizedHolidays(
-            "en_MR",
-            ("2024-01-01", "New Year's Day"),
-            ("2024-04-10", "Eid al-Fitr (estimated)"),
-            ("2024-04-11", "Eid al-Fitr (estimated)"),
-            ("2024-05-01", "Labor Day"),
-            ("2024-05-25", "Africa Day"),
-            ("2024-06-16", "Eid al-Adha (estimated)"),
-            ("2024-06-17", "Eid al-Adha (estimated)"),
-            ("2024-07-07", "Muharram/Islamic New Year (estimated)"),
-            ("2024-09-15", "Prophet Muhammad's Birthday (estimated)"),
+            ("2024-09-15", "Prophet's Birthday (estimated)"),
             ("2024-11-28", "Independence Day"),
         )
