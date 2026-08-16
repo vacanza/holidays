@@ -277,7 +277,7 @@ class TestLibya(CommonCountryTests, TestCase):
             ("2025-06-06", "Eid al-Adha"),
             ("2025-06-07", "Eid al-Adha"),
             ("2025-06-08", "Eid al-Adha"),
-            ("2025-06-26", "Islamic New Year"),
+            ("2025-06-26", "Islamic New Year Day"),
             ("2025-08-14", "National Environmental Sanitation Day"),
             ("2025-09-04", "Prophet's Birthday (estimated)"),
             ("2025-09-16", "Martyrs' Day"),

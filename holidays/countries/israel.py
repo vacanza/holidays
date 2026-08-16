@@ -129,7 +129,7 @@ class Israel(ObservedHolidayBase, HebrewCalendarHolidays):
 
         self._add_observed(
             _timedelta(self._hebrew_calendar.purim_date(self._year), -1),
-            # Ta`anit Ester (Fast of Esther).
+            # Ta'anit Ester (Fast of Esther).
             tr("תענית אסתר"),
             SAT_TO_PREV_THU,
         )
@@ -141,7 +141,7 @@ class Israel(ObservedHolidayBase, HebrewCalendarHolidays):
         self._add_passover(tr("חול המועד פסח"), range(1, 6))
 
         # Lag Ba'omer (Lag BaOmer).
-        self._add_lag_baomer(tr('ל"ג בעומר'))
+        self._add_lag_baomer(tr("ל״ג בעומר"))
 
 
 class IL(Israel):

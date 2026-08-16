@@ -193,7 +193,7 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             ("2018-06-15", "Eid al-Fitr"),
             ("2018-06-16", "Eid al-Fitr Holiday"),
             ("2018-06-17", "Eid al-Fitr Holiday"),
-            ("2018-08-21", "Arafat Day"),
+            ("2018-08-21", "Day of Arafah"),
             ("2018-08-22", "Eid al-Adha"),
             ("2018-08-23", "Eid al-Adha Holiday"),
             ("2018-08-24", "Eid al-Adha Holiday"),

@@ -59,7 +59,7 @@ msgstr "Fête du travail"
 msgid "Dia Mundial da Criança"
 msgstr "Journée mondiale de l'enfance"
 
-#. Independence Day.
+#. National Independence Day.
 msgid "Dia da Independência Nacional"
 msgstr "Fête de l'Indépendance Nationale"
 

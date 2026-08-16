@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.101\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-06 17:56+0000\n"
-"PO-Revision-Date: 2026-06-15 17:00+0000\n"
+"PO-Revision-Date: 2026-07-07 11:15+0530\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -103,11 +103,11 @@ msgstr "पूर्व राष्ट्रपति रोनाल्ड र
 
 #. National Day of Mourning for former President Gerald R. Ford.
 msgid "National Day of Mourning for former President Gerald R. Ford"
-msgstr "पूर्व राष्ट्रपति गेराल्ड आर. फोर्ड के लिए राष्ट्रीय शोक दिवस"
+msgstr "पूर्व राष्ट्रपति जेराल्ड आर. फोर्ड के लिए राष्ट्रीय शोक दिवस"
 
 #. National Day of Mourning for former President George H. W. Bush.
 msgid "National Day of Mourning for former President George H. W. Bush"
-msgstr "पूर्व राष्ट्रपति जॉर्ज एच. डब्ल्यू. बुश के लिए राष्ट्रीय शोक दिवस"
+msgstr "पूर्व राष्ट्रपति जॉर्ज एच. डब्लू. बुश के लिए राष्ट्रीय शोक दिवस"
 
 #. National Day of Mourning for former President Jimmy Carter.
 msgid "National Day of Mourning for former President Jimmy Carter"

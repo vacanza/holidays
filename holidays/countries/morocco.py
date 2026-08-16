@@ -58,7 +58,7 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Labor Day.
         self._add_labor_day(tr("عيد العمال"))
 
-        # Throne day.
+        # Throne Day.
         name = tr("عيد العرش")
         if self._year >= 2001:
             self._add_holiday_jul_30(name)
@@ -86,7 +86,7 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         if self._year >= 1957:
             # Independence Day.
-            self._add_holiday_nov_18(tr("عيد الإستقلال"))
+            self._add_holiday_nov_18(tr("عيد الاستقلال"))
 
         # Eid al-Fitr.
         name = tr("عيد الفطر")

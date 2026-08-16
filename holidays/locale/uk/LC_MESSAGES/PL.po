@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-14 20:19+0200\n"
-"PO-Revision-Date: 2026-06-30 21:57+0300\n"
+"PO-Revision-Date: 2026-07-02 22:22+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -66,7 +66,7 @@ msgstr "Вознесіння Господнє"
 
 #. Pentecost.
 msgid "Zielone Świątki"
-msgstr "День Святої Трійці"
+msgstr "Пʼятидесятниця"
 
 #. Pentecost Monday.
 msgid "Drugi dzień Zielonych Świątek"

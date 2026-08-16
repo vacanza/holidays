@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.99\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-03 06:52+0000\n"
-"PO-Revision-Date: 2026-06-04 11:21+0000\n"
-"Last-Translator: Paresh Joshi <194076591+pareshjoshij@users.noreply.github.com>\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: gu\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_US\n"
 
-#. %s (observed)
+#. %s (observed).
 #, c-format
 msgid "%s (observed)"
 msgstr "%s (મનાવવામાં આવે છે)"
@@ -70,7 +70,7 @@ msgstr "સ્વતંત્રતા દિવસ"
 
 #. Labor Day.
 msgid "Labor Day"
-msgstr "મજૂર દિવસ"
+msgstr "શ્રમ દિવસ"
 
 #. Columbus Day.
 msgid "Columbus Day"
@@ -180,7 +180,7 @@ msgstr "હીટલેસ ડે (ગરમી વગરનો દિવસ)"
 msgid "Catch Up Day"
 msgstr "કેચ અપ ડે (બાકી કામ પૂરું કરવાનો દિવસ)"
 
-#. Special Bank Holiday.
+#. National Banking Holiday.
 msgid "National Banking Holiday"
 msgstr "રાષ્ટ્રીય બેંકિંગ રજા"
 
@@ -194,7 +194,7 @@ msgstr "વર્લ્ડ ટ્રેડ સેન્ટર પરના હ�
 
 #. Hurricane Sandy.
 msgid "Hurricane Sandy"
-msgstr "વાવાઝોડું સેન્ડી"
+msgstr "હરિકેન સેન્ડી"
 
 #. Liberty Day.
 msgid "Liberty Day"
@@ -234,7 +234,7 @@ msgstr "સ્વતંત્રતા દિવસ પછીનો દિવસ
 
 #. Saturday before Labor Day.
 msgid "Saturday before Labor Day"
-msgstr "લેબર ડે પહેલાંનો શનિવાર"
+msgstr "શ્રમ દિવસ પહેલાંનો શનિવાર"
 
 #. Saturday after Columbus Day.
 msgid "Saturday after Columbus Day"
@@ -436,8 +436,8 @@ msgstr "હવામાનની ગંભીર પરિસ્થિતિઓ"
 msgid "Saturday before Christmas Eve"
 msgstr "નાતાલની આગલી રાત પહેલાંનો શનિવાર"
 
-#. Day after Christmas.
-msgid "Day after Christmas"
+#. Day After Christmas.
+msgid "Day After Christmas"
 msgstr "નાતાલ પછીનો દિવસ"
 
 #. Day before Decoration Day.

@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.72\n"
+"Project-Id-Version: Holidays 0.101\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-10 14:10+0300\n"
-"PO-Revision-Date: 2025-04-28 22:27+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-07-08 22:59+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr ""
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
-msgstr "%s (Observé)"
+msgstr "%s (observé)"
 
 #. New Year's Day.
 msgid "New Year's Day"
@@ -107,7 +107,7 @@ msgstr "Journée Terry Fox"
 
 #. Civic Holiday.
 msgid "Civic Holiday"
-msgstr "Premier lundi d'août"
+msgstr "Congé civique"
 
 #. New Brunswick Day.
 msgid "New Brunswick Day"

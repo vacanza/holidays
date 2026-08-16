@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.93\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-12 12:00+0000\n"
-"PO-Revision-Date: 2026-03-12 12:00+0000\n"
-"Last-Translator: Blend Halilaj <blendhalilaj94@gmail.com>\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -65,9 +65,9 @@ msgstr "Orthodox Easter"
 msgid "Dita e Kushtetutës së Republikës së Kosovës"
 msgstr "Constitution Day"
 
-#. International Workers' Day.
+#. International Labor Day.
 msgid "Dita Ndërkombëtare e Punës"
-msgstr "International Workers' Day"
+msgstr "International Labor Day"
 
 #. Europe Day.
 msgid "Dita e Evropës"

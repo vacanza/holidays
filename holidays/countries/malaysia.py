@@ -78,6 +78,7 @@ class Malaysia(
         * <https://web.archive.org/web/20250123115300/https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8>
         * <https://web.archive.org/web/20240228225038/https://www.nst.com.my/news/nation/2024/02/1014012/melaka-cm-suggests-declaring-feb-20-federal-public-holiday-mark>
         * <https://web.archive.org/web/20251216120554/https://www.kabinet.gov.my/storage/2025/08/HKA-2026.pdf>
+        * [Additional public holiday for Hari Raya Aidilfitri 2026 (20 Mar 2026)](https://web.archive.org/web/20260413140838/https://www.malaymail.com/news/malaysia/2026/03/15/anwar-announces-extra-public-holiday-for-hari-raya-either-march-20-or-23-depending-on-moon-sighting/212709)
 
     Subdivisions Holidays References:
         * Sabah:
@@ -252,7 +253,7 @@ class Malaysia(
 
     def _populate_subdiv_holidays(self):
         if self.subdiv and self.subdiv not in {"13", "15"}:
-            # Deepavali.
+            # Diwali.
             self.dts_observed.add(self._add_diwali(tr("Hari Deepavali")))
 
         super()._populate_subdiv_holidays()
@@ -326,7 +327,7 @@ class Malaysia(
         self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
         if self._year >= 2023:
-            # Arafat Day.
+            # Day of Arafah.
             self.dts_observed.update(self._add_arafah_day(tr("Hari Arafah")))
 
         # Eid al-Adha (Second Day).
@@ -503,7 +504,7 @@ class Malaysia(
         # Nuzul Al-Quran Day.
         self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
-        # Arafat Day.
+        # Day of Arafah.
         self.dts_observed.update(self._add_arafah_day(tr("Hari Arafah")))
 
         self.dts_observed.update(
@@ -587,7 +588,7 @@ class Malaysia(
         self._add_holiday_may_31(name)
 
         if self._year >= 2014:
-            # Deepavali.
+            # Diwali.
             self.dts_observed.add(self._add_diwali(tr("Hari Deepavali")))
 
         # Nuzul Al-Quran Day.
@@ -845,6 +846,9 @@ class MalaysiaStaticHolidays:
     # Malaysia Cup Holiday.
     malaysia_cup_holiday = tr("Cuti Piala Malaysia")
 
+    # Eid al-Fitr (additional holiday).
+    eid_al_fitr_additional_holiday = tr("Hari Raya Puasa (pergantian hari)")
+
     special_public_holidays = {
         1999: (NOV, 29, general_election_additional_holiday),
         2017: (
@@ -861,9 +865,9 @@ class MalaysiaStaticHolidays:
             (NOV, 19, general_election_additional_holiday),
             (NOV, 28, additional_holiday),
         ),
-        # Eid al-Fitr (additional holiday).
-        2023: (APR, 21, tr("Hari Raya Puasa (pergantian hari)")),
+        2023: (APR, 21, eid_al_fitr_additional_holiday),
         2025: (SEP, 15, additional_holiday),
+        2026: (MAR, 20, eid_al_fitr_additional_holiday),
     }
 
     special_01_public_holidays = {
@@ -973,7 +977,7 @@ class MalaysiaStaticHolidays:
         ),
     }
     special_11_public_holidays_observed = {
-        # Arafat Day.
+        # Day of Arafah.
         2007: (JAN, 2, tr("Hari Arafah")),
         2022: (MAY, 4, labor_day),
     }

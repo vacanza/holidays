@@ -159,7 +159,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays, StaticHolidays
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("عید سعید قربان"))
 
-        # Eid al-Ghadeer.
+        # Eid al-Ghadir.
         self._add_eid_al_ghadir_day(tr("عید سعید غدیر خم"))
 
 

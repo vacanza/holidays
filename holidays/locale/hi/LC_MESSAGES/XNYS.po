@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.99\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-03 06:52+0000\n"
-"PO-Revision-Date: 2026-06-04 11:21+0000\n"
-"Last-Translator: Paresh Joshi <194076591+pareshjoshij@users.noreply.github.com>\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_US\n"
 
-#. %s (observed)
+#. %s (observed).
 #, c-format
 msgid "%s (observed)"
 msgstr "%s (मनाया गया)"
@@ -70,7 +70,7 @@ msgstr "स्वतंत्रता दिवस"
 
 #. Labor Day.
 msgid "Labor Day"
-msgstr "मज़दूर दिवस"
+msgstr "श्रम दिवस"
 
 #. Columbus Day.
 msgid "Columbus Day"
@@ -90,7 +90,7 @@ msgstr "थैंक्सगिविंग डे"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "क्रिसमस का दिन"
+msgstr "क्रिसमस दिवस"
 
 #. Pending outbreak of World War I.
 msgid "Pending outbreak of World War I"
@@ -130,7 +130,7 @@ msgstr "बैक ऑफिस काम का बोझ"
 
 #. Day before Independence Day.
 msgid "Day before Independence Day"
-msgstr "स्वतंत्रता दिवस से एक दिन पहले"
+msgstr "स्वतंत्रता दिवस से पहले का दिन"
 
 #. Day after Thanksgiving Day.
 msgid "Day after Thanksgiving Day"
@@ -180,7 +180,7 @@ msgstr "ऊष्मारहित दिन"
 msgid "Catch Up Day"
 msgstr "लंबित कार्य पूरा करने का दिन"
 
-#. Special Bank Holiday.
+#. National Banking Holiday.
 msgid "National Banking Holiday"
 msgstr "राष्ट्रीय बैंकिंग अवकाश"
 
@@ -194,7 +194,7 @@ msgstr "वर्ल्ड ट्रेड सेंटर पर हमलो�
 
 #. Hurricane Sandy.
 msgid "Hurricane Sandy"
-msgstr "तूफान सैंडी"
+msgstr "हरिकेन सैंडी"
 
 #. Liberty Day.
 msgid "Liberty Day"
@@ -234,7 +234,7 @@ msgstr "स्वतंत्रता दिवस के बाद का द�
 
 #. Saturday before Labor Day.
 msgid "Saturday before Labor Day"
-msgstr "मज़दूर दिवस से पहले का शनिवार"
+msgstr "श्रम दिवस से पहले का शनिवार"
 
 #. Saturday after Columbus Day.
 msgid "Saturday after Columbus Day"
@@ -436,8 +436,8 @@ msgstr "गंभीर मौसम की स्थिति"
 msgid "Saturday before Christmas Eve"
 msgstr "क्रिसमस की पूर्व संध्या से पहले का शनिवार"
 
-#. Day after Christmas.
-msgid "Day after Christmas"
+#. Day After Christmas.
+msgid "Day After Christmas"
 msgstr "क्रिसमस के बाद का दिन"
 
 #. Day before Decoration Day.
