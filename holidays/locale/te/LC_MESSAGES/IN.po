@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-07-29 20:25+0530\n"
-"Last-Translator: Harsh Baghel <hk5324519@gmail.com>\n"
+"PO-Revision-Date: 2026-08-13 17:20+0000\n"
+"Last-Translator: Drona Jadhav <dronajadhav07@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: te\n"
 "MIME-Version: 1.0\n"
@@ -216,6 +216,14 @@ msgstr "ఓణం"
 msgid "Ganesh Chaturthi / Vinayak Chaturthi"
 msgstr "గణేశ చవితి / వినాయక చవితి"
 
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr "గణేశ చవితి"
+
+#. Vinayak Chaturthi.
+msgid "Vinayak Chaturthi"
+msgstr "గణేశ చవితి"
+
 #. Dussehra (Saptami).
 msgid "Dussehra (Saptami)"
 msgstr "దసరా (సప్తమి)"
@@ -331,6 +339,10 @@ msgstr "ఉత్తరాయణం"
 #. Parsi New Year (Shahenshahi).
 msgid "Parsi New Year (Shahenshahi)"
 msgstr "పార్సీ నూతన సంవత్సరం (షహన్‌షాహీ)"
+
+#. Gujarati New Year.
+msgid "Vikram Samvat New Year"
+msgstr "గుజరాతీ నూతన సంవత్సరం"
 
 #. Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day.
 msgid "Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Shaheedi Diwas"
@@ -587,14 +599,6 @@ msgstr "వసంత పంచమి"
 #. Shri Panchami.
 msgid "Shri Panchami"
 msgstr "శ్రీ పంచమి"
-
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
-msgstr "గణేశ చవితి"
-
-#. Vinayak Chaturthi.
-msgid "Vinayak Chaturthi"
-msgstr "గణేశ చవితి"
 
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"

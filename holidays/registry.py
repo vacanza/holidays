@@ -301,11 +301,13 @@ FINANCIAL: RegistryDict = {
     "korea_exchange": ("KoreaExchange", "XKRX", "KRX"),
     "nasdaq": ("NASDAQ", "XNAS"),
     "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),
+    "new_zealand_exchange": ("NewZealandExchange", "XNZE", "NZX"),
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
     "shanghai_stock_exchange": ("ShanghaiStockExchange", "XSHG", "SSE"),
     "shenzhen_stock_exchange": ("ShenzhenStockExchange", "XSHE", "SZSE"),
     "singapore_exchange": ("SingaporeExchange", "XSES", "SGX"),
     "six_swiss_exchange": ("SIXSwissExchange", "XSWX", "SIX"),
+    "taiwan_stock_exchange": ("TaiwanStockExchange", "XTAI", "TWSE"),
     "toronto_stock_exchange": ("TorontoStockExchange", "XTSE", "TSX"),
 }
 
