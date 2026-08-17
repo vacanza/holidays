@@ -4,13 +4,23 @@ on:
   release:
     types:
       - published
+  workflow_dispatch:
+    inputs:
+      skip_pypi:
+        description: Skip PyPI upload (use when the package is already published)
+        type: boolean
+        default: true
+      tag:
+        description: Release tag to sign and attach artifacts to (e.g. v0.103)
+        required: true
+        type: string
 
 env:
   FORCE_COLOR: 1
 
 concurrency:
   cancel-in-progress: false
-  group: ${{ github.repository }}-publish-release-${{ github.event.release.tag_name }}
+  group: ${{ github.repository }}-publish-release-${{ github.event.release.tag_name || inputs.tag }}
 
 permissions: {}
 
@@ -19,7 +29,7 @@ jobs:
     name: Verify release tag
     if: |
       github.repository == 'vacanza/holidays' &&
-      startsWith(github.event.release.tag_name, 'v')
+      startsWith(github.event.release.tag_name || inputs.tag, 'v')
     outputs:
       tag_commit: ${{ steps.verify.outputs.tag_commit }}
     permissions:
@@ -31,12 +41,12 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-          ref: ${{ github.event.release.tag_name }}
+          ref: ${{ github.event.release.tag_name || inputs.tag }}
 
       - name: Verify tag commit belongs to main
         id: verify
         env:
-          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
         run: |
           set -euo pipefail
           git fetch --no-tags origin main
@@ -60,10 +70,11 @@ jobs:
     with:
       environment: release
       ref: ${{ needs.verify-release.outputs.tag_commit }}
-      release_tag: ${{ github.event.release.tag_name }}
+      release_tag: ${{ github.event.release.tag_name || inputs.tag }}
 
   publish:
     name: Publish to PyPI
+    if: github.event_name == 'release' || inputs.skip_pypi != 'true'
     needs:
       - build
     environment: release
@@ -85,7 +96,12 @@ jobs:
   sign-artifacts:
     name: Create SHA256 checksums and Sigstore signatures
     needs:
+      - build
       - publish
+    if: |
+      always() &&
+      needs.build.result == 'success' &&
+      (needs.publish.result == 'success' || needs.publish.result == 'skipped')
     permissions:
       contents: write
       id-token: write
@@ -121,6 +137,9 @@ jobs:
     name: Update GitHub release with SBOM and signed artifacts
     needs:
       - sign-artifacts
+    if: |
+      always() &&
+      needs.sign-artifacts.result == 'success'
     permissions:
       contents: write
     runs-on: ubuntu-24.04-arm
@@ -139,7 +158,7 @@ jobs:
       - name: Update Github release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
         run: |
           gh release upload --clobber --repo vacanza/holidays "$RELEASE_TAG" dist/*
           gh release upload --clobber --repo vacanza/holidays "$RELEASE_TAG" holidays-*-sbom.json
