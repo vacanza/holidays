@@ -74,7 +74,7 @@ jobs:
 
   publish:
     name: Publish to PyPI
-    if: github.event_name == 'release' || inputs.skip_pypi != 'true'
+    if: github.event_name == 'release' || (inputs.skip_pypi != true && inputs.skip_pypi != 'true')
     needs:
       - build
     environment: release
