@@ -743,9 +743,13 @@ class HolidayBase(dict[date, str]):
     @cached_property
     def _normalized_subdiv(self):
         return (
-            self.subdivisions_aliases.get(self.subdiv, self.subdiv)
-            .translate(str.maketrans({"-": "_", " ": "_"}))
-            .lower()
+            (
+                self.subdivisions_aliases.get(self.subdiv, self.subdiv).translate(
+                    str.maketrans({"-": "_", " ": "_"})
+                )
+            )
+            if self.subdiv
+            else None
         )
 
     @property
@@ -979,14 +983,14 @@ class HolidayBase(dict[date, str]):
         for category in self._sorted_categories:
             if asch_method := getattr(
                 self,
-                f"_populate_subdiv_{self._normalized_subdiv}_{category.lower()}_holidays",
+                f"_populate_subdiv_{self._normalized_subdiv.lower()}_{category.lower()}_holidays",
                 None,
             ):
                 asch_method()
 
         if self.has_special_holidays:
             self._add_special_holidays(
-                f"special_{self._normalized_subdiv}_{category.lower()}_holidays"
+                f"special_{self._normalized_subdiv.lower()}_{category.lower()}_holidays"
                 for category in self._sorted_categories
             )
 
