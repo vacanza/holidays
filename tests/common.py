@@ -720,8 +720,8 @@ class CommonTests(TestCase):
         for alias, subdiv in self.test_class.subdivisions_aliases.items():
             for category in self.test_class.supported_categories:
                 self.assertEqual(
-                    self.test_class(subdiv=alias, categories=category, years=2025).keys(),
-                    self.test_class(subdiv=subdiv, categories=category, years=2025).keys(),
+                    self.test_class(subdiv=alias, categories=category, years=2025).items(),
+                    self.test_class(subdiv=subdiv, categories=category, years=2025).items(),
                     f"Holidays of alias `{alias}` and subdivision `{subdiv}` do not match.",
                 )
 

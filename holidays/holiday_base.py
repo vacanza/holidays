@@ -748,7 +748,7 @@ class HolidayBase(dict[date, str]):
                     str.maketrans({"-": "_", " ": "_"})
                 )
             )
-            if self.subdiv
+            if self.subdiv is not None
             else None
         )
 
