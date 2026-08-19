@@ -29,7 +29,7 @@ from holidays.groups import EasternCalendarHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase
 from holidays.registry import COUNTRIES, FINANCIAL
 
-PYTHON_LATEST_SUPPORTED_VERSION = "3.15"
+PYTHON_LATEST_SUPPORTED_VERSION = "3.14"
 PYTHON_VERSION = f"{sys.version_info.major}.{sys.version_info.minor}"
 
 
