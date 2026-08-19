@@ -441,6 +441,7 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
             ("2024-12-25", "วันคริสต์มาส"),
             ("2024-12-26", "วันเปิดกล่องของขวัญ"),
         )
+
     def test_l10n_ur_pk(self):
         self.assertLocalizedHolidays(
             "ur_PK",
