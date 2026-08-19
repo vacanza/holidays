@@ -136,35 +136,35 @@ class BGD(Bangladesh):
 
 
 class BangladeshIslamicHolidays(_CustomIslamicHolidays):
-    # https://www.timeanddate.com/holidays/bangladesh/ashura
+    # https://web.archive.org/web/20260217084631/https://www.timeanddate.com/holidays/bangladesh/ashura
     ASHURA_DATES_CONFIRMED_YEARS = (2022, 2026)
 
-    # https://www.timeanddate.com/holidays/bangladesh/eid-ul-adha-holiday-1
+    # https://web.archive.org/web/20260312222435/https://www.timeanddate.com/holidays/bangladesh/eid-ul-adha-holiday-1
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2022, 2026)
 
-    # https://www.timeanddate.com/holidays/bangladesh/eid-ul-fitr
+    # https://web.archive.org/web/20260306105427/https://www.timeanddate.com/holidays/bangladesh/eid-ul-fitr
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2022, 2026)
     EID_AL_FITR_DATES = {
         2024: (APR, 10),
     }
 
-    # https://www.timeanddate.com/holidays/bangladesh/jumatul-bidah
+    # https://web.archive.org/web/20260211032830/https://www.timeanddate.com/holidays/bangladesh/jumatul-bidah
     JUMUATUL_WIDA_DATES_CONFIRMED_YEARS = (2022, 2026)
     JUMUATUL_WIDA_DATES = {
         2023: (APR, 21),
         2026: (MAR, 20),
     }
 
-    # https://www.timeanddate.com/holidays/bangladesh/shab-e-qadr
+    # https://web.archive.org/web/20260212150035/https://www.timeanddate.com/holidays/bangladesh/shab-e-qadr
     LAYLAT_AL_QADR_DATES_CONFIRMED_YEARS = (2022, 2026)
 
-    # https://www.timeanddate.com/holidays/bangladesh/eid-e-milad-un-nabi
+    # https://web.archive.org/web/20260311051126/https://www.timeanddate.com/holidays/bangladesh/eid-e-milad-un-nabi
     MAWLID_DATES_CONFIRMED_YEARS = (2022, 2026)
     MAWLID_DATES = {
         2025: (SEP, 6),
     }
 
-    # https://www.timeanddate.com/holidays/bangladesh/shab-e-barat
+    # https://web.archive.org/web/20251206185532/https://www.timeanddate.com/holidays/bangladesh/shab-e-barat
     IMAM_MAHDI_BIRTHDAY_DATES_CONFIRMED_YEARS = (2022, 2026)
 
 

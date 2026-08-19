@@ -101,7 +101,7 @@ class ICalExporter:
 
     def _fold_line(self, line: str) -> str:
         """Fold long lines according to
-        [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
+        [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545).
 
         Content lines SHOULD NOT exceed 75 octets. If a line is too long,
         it must be split into multiple lines, with each continuation line
@@ -229,7 +229,7 @@ class ICalExporter:
     def save_ics(self, file_path: str | Path) -> None:
         """Export the calendar data to a `.ics` file.
 
-        While [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545) does not explicitly
+        While [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545) does not explicitly
         restrict filenames for `.ics` files, it is still advisable to follow general filesystem
         conventions and avoid problematic characters.
 
