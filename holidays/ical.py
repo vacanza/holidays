@@ -229,9 +229,9 @@ class ICalExporter:
     def save_ics(self, file_path: str | Path) -> None:
         """Export the calendar data to a `.ics` file.
 
-        While [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545) does not explicitly
-        restrict filenames for `.ics` files, it is still advisable to follow general filesystem
-        conventions and avoid problematic characters.
+        While [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545)
+        does not explicitly restrict filenames for `.ics` files, it is still advisable to follow
+        general filesystem conventions and avoid problematic characters.
 
         Args:
             file_path:
