@@ -60,33 +60,6 @@ TASUA = "TASUA"
 
 
 class _IslamicLunar:
-    ali_al_rida_death_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    ali_birthday_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    ali_death_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    arbaeen_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    ashura_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    eid_al_adha_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    eid_al_fitr_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    eid_al_ghadir_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    fatima_death_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    grand_magal_of_touba_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    hari_hol_johor_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    hasan_al_askari_death_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    hijri_new_year_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    imam_mahdi_birthday_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    isra_and_miraj_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    jumuatul_wida_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    laylat_al_qadr_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    maldives_embraced_islam_day_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    mawlid_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    nuzul_al_quran_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    prophet_death_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    quamee_dhuvas_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    ramadan_beginning_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    sadiq_birthday_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    sadiq_death_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-    tasua_dates: tuple[int, int] | tuple[tuple[int, int], ...]
-
     ALI_AL_RIDA_DEATH_DATES = {
         1924: (SEP, 28),
         1925: (SEP, 18),
@@ -1024,9 +997,6 @@ class _IslamicLunar:
         2076: (NOV, 7),
         2077: (OCT, 27),
     }
-
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
 
     EID_AL_FITR_DATES = {
         1925: (APR, 24),
@@ -4346,14 +4316,6 @@ class _IslamicMabimsLunar(_CustomCalendar, _IslamicLunar):
         * <https://accuhijri.github.io/>
     """
 
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1925, 2052)
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (1925, 2052)
-    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (1925, 2052)
-    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (1925, 2052)
-    MAWLID_DATES_CONFIRMED_YEARS = (1925, 2052)
-    NUZUL_AL_QURAN_DATES_CONFIRMED_YEARS = (1925, 2052)
-    RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (1925, 2052)
-
     EID_AL_ADHA_DATES = {
         1924: (JUL, 13),
         1925: (JUL, 2),
@@ -5277,4 +5239,3 @@ class _IslamicMabimsLunar(_CustomCalendar, _IslamicLunar):
         2051: (MAY, 12),
         2052: (MAY, 1),
     }
-

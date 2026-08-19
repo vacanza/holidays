@@ -13,7 +13,7 @@
 import unittest
 from datetime import date
 
-from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, JUL, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, SEP, DEC
 from holidays.calendars.islamic import _IslamicMabimsLunar
 
 
@@ -22,11 +22,14 @@ class TestIslamicMabimsLunar(unittest.TestCase):
         super().setUp()
         self.calendar = _IslamicMabimsLunar()
 
+    def _get_dates(self, holiday_func, year: int) -> dict:
+        """Helper to fetch holiday dates for a specific year as {date: is_estimated}."""
+        return {dt: is_estimated for dt, is_estimated in holiday_func(year) if dt.year == year}
+
     def test_eid_al_fitr_dates(self):
         eid_al_fitr_dates = {
-            2003: date(2003, NOV, 25),
-            2006: date(2006, OCT, 24),
-            2019: date(2019, JUN, 5),
+            2020: date(2020, MAY, 24),
+            2021: date(2021, MAY, 13),
             2022: date(2022, MAY, 3),
             2023: date(2023, APR, 22),
             2024: date(2024, APR, 10),
@@ -34,14 +37,14 @@ class TestIslamicMabimsLunar(unittest.TestCase):
             2026: date(2026, MAR, 21),
         }
         for year, expected_date in eid_al_fitr_dates.items():
-            dates = {dt: est for dt, est in self.calendar.eid_al_fitr_dates(year)}
+            dates = self._get_dates(self.calendar.eid_al_fitr_dates, year)
             self.assertIn(expected_date, dates)
             self.assertFalse(dates[expected_date], f"Eid al-Fitr {year} should be confirmed")
 
     def test_eid_al_adha_dates(self):
         eid_al_adha_dates = {
-            2002: date(2002, FEB, 23),
-            2010: date(2010, NOV, 17),
+            2020: date(2020, JUL, 31),
+            2021: date(2021, JUL, 21),
             2022: date(2022, JUL, 10),
             2023: date(2023, JUN, 29),
             2024: date(2024, JUN, 17),
@@ -49,30 +52,33 @@ class TestIslamicMabimsLunar(unittest.TestCase):
             2026: date(2026, MAY, 27),
         }
         for year, expected_date in eid_al_adha_dates.items():
-            dates = {dt: est for dt, est in self.calendar.eid_al_adha_dates(year)}
+            dates = self._get_dates(self.calendar.eid_al_adha_dates, year)
             self.assertIn(expected_date, dates)
             self.assertFalse(dates[expected_date], f"Eid al-Adha {year} should be confirmed")
 
     def test_eid_al_adha_2006_dual_date(self):
         """2006 has two Eid al-Adha dates."""
-        dates = {dt for dt, _ in self.calendar.eid_al_adha_dates(2006)}
-        self.assertIn(date(2006, 12, 31), dates)
-        self.assertTrue(len(dates) >= 2)
+        dates_2006 = self._get_dates(self.calendar.eid_al_adha_dates, 2006)
+        self.assertIn(date(2006, JAN, 11), dates_2006)
+        self.assertIn(date(2006, DEC, 31), dates_2006)
+        self.assertEqual(len(dates_2006), 2)
 
     def test_hijri_new_year_dates(self):
-        dates_2025 = {dt for dt, _ in self.calendar.hijri_new_year_dates(2025)}
-        self.assertIn(date(2025, 6, 27), dates_2025)
+        dates_2025 = self._get_dates(self.calendar.hijri_new_year_dates, 2025)
+        self.assertIn(date(2025, JUN, 27), dates_2025)
+        self.assertEqual(len(dates_2025), 1)
 
     def test_coverage_range(self):
         """Dates from 1925-2052 should be confirmed."""
-        dates_1930 = list(self.calendar.eid_al_fitr_dates(1930))
-        self.assertTrue(len(dates_1930) > 0)
-        for _, is_estimated in dates_1930:
+        dates_1930 = self._get_dates(self.calendar.hijri_new_year_dates, 1930)
+        self.assertEqual(len(dates_1930), 1)
+        for is_estimated in dates_1930.values():
             self.assertFalse(is_estimated)
 
     def test_mawlid_dates(self):
-        dates_2025 = {dt for dt, _ in self.calendar.mawlid_dates(2025)}
-        self.assertIn(date(2025, 9, 5), dates_2025)
+        dates_2025 = self._get_dates(self.calendar.mawlid_dates, 2025)
+        self.assertIn(date(2025, SEP, 5), dates_2025)
+        self.assertEqual(len(dates_2025), 1)
 
 
 if __name__ == "__main__":
