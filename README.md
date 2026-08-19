@@ -920,7 +920,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Isle of Man</td>
 <td>IM</td>
 <td></td>
-<td><strong>en_GB</strong>, en_US, th</td>
+<td><strong>en_GB</strong>, en_US, th, <strong>ur_PK</strong></td>
 <td></td>
 </tr>
 <tr>
