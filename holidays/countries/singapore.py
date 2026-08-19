@@ -15,10 +15,10 @@ from gettext import gettext as tr
 from holidays.calendars import (
     _CustomBuddhistHolidays,
     _CustomChineseHolidays,
-    _CustomIslamicHolidays,
+    _CustomIslamicMabimsHolidays,
     _CustomHinduHolidays,
 )
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.groups import (
     BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
@@ -227,35 +227,14 @@ class SingaporeHinduHolidays(_CustomHinduHolidays):
     }
 
 
-class SingaporeIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2027)
-    EID_AL_ADHA_DATES = {
-        2001: (MAR, 6),
-        2002: (FEB, 23),
-        2003: (FEB, 12),
-        2010: (NOV, 17),
-        2014: (OCT, 5),
-        2015: (SEP, 24),
-        2016: (SEP, 12),
-        2018: (AUG, 22),
-        2022: (JUL, 10),
-        2023: (JUN, 29),
-        2024: (JUN, 17),
-        2025: (JUN, 7),
-        2026: (MAY, 27),
-        2027: (MAY, 17),
-    }
+class SingaporeIslamicHolidays(_CustomIslamicMabimsHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2077)
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2027)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2077)
     EID_AL_FITR_DATES = {
-        2002: (DEC, 6),
-        2006: (OCT, 24),
-        2019: (JUN, 5),
+        2005: (NOV, 3),
+        2011: (AUG, 30),
         2022: (MAY, 3),
-        2023: (APR, 22),
-        2025: (MAR, 31),
-        2026: (MAR, 21),
-        2027: (MAR, 10),
     }
 
 

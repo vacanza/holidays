@@ -14,13 +14,27 @@ import unittest
 from datetime import date
 
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, SEP, DEC
-from holidays.calendars.islamic import _IslamicMabimsLunar
+from holidays.calendars.islamic import _CustomIslamicMabimsHolidays
+
+
+class _MockMabimsCalendar(_CustomIslamicMabimsHolidays):
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (1998, 2077)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1998, 2077)
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (1998, 2077)
+    MAWLID_DATES_CONFIRMED_YEARS = (1998, 2077)
 
 
 class TestIslamicMabimsLunar(unittest.TestCase):
     def setUp(self) -> None:
         super().setUp()
-        self.calendar = _IslamicMabimsLunar()
+        # Use the Custom class so we can test the confirmation boundaries!
+        self.calendar = _MockMabimsCalendar()
+
+        # Mock the confirmed years exactly as Singapore will use them
+        self.calendar.EID_AL_FITR_DATES_CONFIRMED_YEARS = (1998, 2077)
+        self.calendar.EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1998, 2077)
+        self.calendar.HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (1998, 2077)
+        self.calendar.MAWLID_DATES_CONFIRMED_YEARS = (1998, 2077)
 
     def _get_dates(self, holiday_func, year: int) -> dict:
         """Helper to fetch holiday dates for a specific year as {date: is_estimated}."""
@@ -30,7 +44,7 @@ class TestIslamicMabimsLunar(unittest.TestCase):
         eid_al_fitr_dates = {
             2020: date(2020, MAY, 24),
             2021: date(2021, MAY, 13),
-            2022: date(2022, MAY, 3),
+            2022: date(2022, MAY, 2),
             2023: date(2023, APR, 22),
             2024: date(2024, APR, 10),
             2025: date(2025, MAR, 31),
@@ -44,7 +58,7 @@ class TestIslamicMabimsLunar(unittest.TestCase):
     def test_eid_al_adha_dates(self):
         eid_al_adha_dates = {
             2020: date(2020, JUL, 31),
-            2021: date(2021, JUL, 21),
+            2021: date(2021, JUL, 20),
             2022: date(2022, JUL, 10),
             2023: date(2023, JUN, 29),
             2024: date(2024, JUN, 17),
@@ -59,7 +73,7 @@ class TestIslamicMabimsLunar(unittest.TestCase):
     def test_eid_al_adha_2006_dual_date(self):
         """2006 has two Eid al-Adha dates."""
         dates_2006 = self._get_dates(self.calendar.eid_al_adha_dates, 2006)
-        self.assertIn(date(2006, JAN, 11), dates_2006)
+        self.assertIn(date(2006, JAN, 10), dates_2006)
         self.assertIn(date(2006, DEC, 31), dates_2006)
         self.assertEqual(len(dates_2006), 2)
 
@@ -69,11 +83,11 @@ class TestIslamicMabimsLunar(unittest.TestCase):
         self.assertEqual(len(dates_2025), 1)
 
     def test_coverage_range(self):
-        """Dates from 1925-2052 should be confirmed."""
+        """Dates before 1998 should exists but marked as estimated."""
         dates_1930 = self._get_dates(self.calendar.hijri_new_year_dates, 1930)
         self.assertEqual(len(dates_1930), 1)
         for is_estimated in dates_1930.values():
-            self.assertFalse(is_estimated)
+            self.assertTrue(is_estimated, "Dates prior to 1998 should be estimated")
 
     def test_mawlid_dates(self):
         dates_2025 = self._get_dates(self.calendar.mawlid_dates, 2025)

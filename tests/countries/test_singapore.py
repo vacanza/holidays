@@ -21,39 +21,235 @@ class TestSingapore(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Singapore)
 
-    def test_common(self):
-        self.assertNonObservedHolidayName("New Year's Day", "2022-01-01")
-
-    def test_singapore(self):
+    def test_special_holidays(self):
         self.assertHoliday(
-            # <= 1968 holidays
-            "1968-04-13",
-            "1968-04-15",
-            "1968-12-26",
-            # latest polling day
-            "2015-09-11",
-            # Year with lunar leap month
+            "2001-11-03",
+            "2006-05-06",
+            "2011-05-07",
             "2015-08-07",
-            # holidays estimated using lunar calendar
-            "2050-06-04",  # Vesak Day
-            "2050-11-13",  # Deepavali
+            "2015-09-11",
+            "2020-07-10",
+            "2023-09-01",
+            "2025-05-03",
         )
 
-    def test_hijri_holidays(self):
-        self.assertHoliday(
-            # <= 1968 holidays
+    def test_new_years_day(self):
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        obs_dts = (
+            "2006-01-02",
+            "2012-01-02",
+            "2017-01-02",
+            "2023-01-02",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_chinese_new_year(self):
+        name = "Chinese New Year"
+        self.assertHolidayName(
+            name,
+            "2020-01-25",
+            "2020-01-26",
+            "2021-02-12",
+            "2021-02-13",
+            "2022-02-01",
+            "2022-02-02",
+            "2023-01-22",
+            "2023-01-23",
+            "2024-02-10",
+            "2024-02-11",
+            "2025-01-29",
+            "2025-01-30",
+        )
+        obs_dts = (
+            "2017-01-30",
+            "2020-01-27",
+            "2023-01-24",
+            "2024-02-12",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_eid_al_fitr(self):
+        name = "Hari Raya Puasa"
+        self.assertHolidayName(
+            name,
+            "2020-05-24",
+            "2021-05-13",
+            "2022-05-03",
+            "2023-04-22",
+            "2024-04-10",
+            "2025-03-31",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        obs_dts = (
+            "2009-09-21",
+            "2012-08-20",
+            "2017-06-26",
+            "2020-05-25",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+        name_day2 = f"Second Day of {name}"
+        self.assertIslamicNoEstimatedHolidayName(
+            name_day2,
+            "1963-02-26",
+            "1964-02-16",
+            "1965-02-04",
+            "1966-01-24",
+            "1967-01-13",
             "1968-01-02",
-            # > 2022
-            "2050-06-20",  # Hari Raya Puasa
-            "2050-08-28",  # Hari Raya Haji
-            # twice in a Gregorian calendar year
-            "2006-01-10",
-            "2006-12-31",
-            # special rare case (Hari Raya Haji from 2006)
-            "2007-01-02",
+            "1968-12-22",
         )
+        self.assertIslamicNoEstimatedHolidayName(name_day2, range(self.start_year, 1969))
+        self.assertNoIslamicNoEstimatedHolidayName(name_day2, range(1969, self.end_year))
 
-    # Source: https://www.mom.gov.sg/employment-practices/public-holidays
+    def test_eid_al_adha(self):
+        name = "Hari Raya Haji"
+        self.assertHolidayName(
+            name,
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-10",
+            "2023-06-29",
+            "2024-06-17",
+            "2025-06-07",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        obs_dts = (
+            "2007-01-02",
+            "2011-11-07",
+            "2014-10-06",
+            "2019-08-12",
+            "2022-07-11",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_good_friday(self):
+        name = "Good Friday"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_holy_saturday(self):
+        name = "Holy Saturday"
+        self.assertHolidayName(
+            name,
+            "1963-04-13",
+            "1964-03-28",
+            "1965-04-17",
+            "1966-04-09",
+            "1967-03-25",
+            "1968-04-13",
+        )
+        self.assertHolidayName(name, range(self.start_year, 1969))
+        self.assertNoHolidayName(name, range(1969, self.end_year))
+
+    def test_easter_monday(self):
+        name = "Easter Monday"
+        self.assertHolidayName(
+            name,
+            "1963-04-15",
+            "1964-03-30",
+            "1965-04-19",
+            "1966-04-11",
+            "1967-03-27",
+            "1968-04-15",
+        )
+        self.assertHolidayName(name, range(self.start_year, 1969))
+        self.assertNoHolidayName(name, range(1969, self.end_year))
+
+    def test_labor_day(self):
+        name = "Labour Day"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
+        obs_dts = (
+            "2005-05-02",
+            "2011-05-02",
+            "2016-05-02",
+            "2022-05-02",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_vesak_day(self):
+        name = "Vesak Day"
+        self.assertHolidayName(
+            name,
+            "2020-05-07",
+            "2021-05-26",
+            "2022-05-15",
+            "2023-06-02",
+            "2024-05-22",
+            "2025-05-12",
+        )
+        obs_dts = (
+            "2005-05-23",
+            "2019-05-20",
+            "2022-05-16",
+            "2026-06-01",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_national_day(self):
+        name = "National Day"
+        self.assertHolidayName(name, (f"{year}-08-09" for year in self.full_range))
+        obs_dts = (
+            "2009-08-10",
+            "2015-08-10",
+            "2020-08-10",
+            "2026-08-10",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_diwali(self):
+        name = "Deepavali"
+        self.assertHolidayName(
+            name,
+            "2020-11-14",
+            "2021-11-04",
+            "2022-10-24",
+            "2023-11-12",
+            "2024-10-31",
+            "2025-10-20",
+        )
+        obs_dts = (
+            "2009-11-16",
+            "2019-10-28",
+            "2023-11-13",
+            "2026-11-09",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_christmas_day(self):
+        name = "Christmas Day"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
+        obs_dts = (
+            "2005-12-26",
+            "2011-12-26",
+            "2016-12-26",
+            "2022-12-26",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_boxing_day(self):
+        name = "Boxing Day"
+        self.assertHolidayName(name, (f"{year}-12-26" for year in range(self.start_year, 1969)))
+        self.assertNoHolidayName(range(1969, self.end_year))
+
     def test_2018(self):
         self.assertHolidaysInYear(
             2018,
@@ -145,26 +341,6 @@ class TestSingapore(CommonCountryTests, TestCase):
             ("2022-12-26", "Christmas Day (observed)"),
         )
 
-    def test_2023(self):
-        self.assertHolidaysInYear(
-            2023,
-            ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "New Year's Day (observed)"),
-            ("2023-01-22", "Chinese New Year"),
-            ("2023-01-23", "Chinese New Year"),
-            ("2023-01-24", "Chinese New Year (observed)"),
-            ("2023-04-07", "Good Friday"),
-            ("2023-04-22", "Hari Raya Puasa"),
-            ("2023-05-01", "Labour Day"),
-            ("2023-06-02", "Vesak Day"),
-            ("2023-06-29", "Hari Raya Haji"),
-            ("2023-08-09", "National Day"),
-            ("2023-09-01", "Polling Day"),
-            ("2023-11-12", "Deepavali"),
-            ("2023-11-13", "Deepavali (observed)"),
-            ("2023-12-25", "Christmas Day"),
-        )
-
     def test_2024(self):
         self.assertHolidaysInYear(
             2024,
@@ -233,21 +409,6 @@ class TestSingapore(CommonCountryTests, TestCase):
             ("2027-08-09", "National Day"),
             ("2027-10-28", "Deepavali"),
             ("2027-12-25", "Christmas Day"),
-        )
-
-    def test_non_observed(self):
-        self.assertNoNonObservedHoliday("2023-01-02")
-
-    def test_special_holidays(self):
-        self.assertHoliday(
-            "2001-11-03",
-            "2006-05-06",
-            "2011-05-07",
-            "2015-08-07",
-            "2015-09-11",
-            "2020-07-10",
-            "2023-09-01",
-            "2025-05-03",
         )
 
     def test_l10n_default(self):
