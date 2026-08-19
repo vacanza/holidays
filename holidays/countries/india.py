@@ -263,7 +263,7 @@ class India(
             # Maha Shivaratri.
             self._add_maha_shivaratri(tr("Maha Shivaratri"))
 
-        if self._year not in self.holi_optional_years:
+        if self._year not in self.holi_optional_years and self.subdiv != "MH":
             # Holi.
             self._add_holi(tr("Holi"))
 
