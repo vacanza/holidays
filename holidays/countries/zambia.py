@@ -137,7 +137,7 @@ class ZambiaStaticHolidays:
        * [The Public Holidays (Declaration) Notice, 2019](https://web.archive.org/web/20260619041859/https://media.zambialii.org/media/legislation/41889/source_file/296795324217f09a/zm-act-si-2019-71-publication-document.pdf)
        * [The Public Holidays (Declaration) Notice, 2021](https://web.archive.org/web/20260618090004/https://media.zambialii.org/media/legislation/20656/source_file/0a71ea33a669b4c7/zm-act-si-2021-69-publication-document.pdf)
        * [The Public Holidays (Declaration) (No. 2) Notice, 2021](https://web.archive.org/web/20260618090354/https://media.zambialii.org/media/legislation/20849/source_file/208ddaf910039a7b/zm-act-si-2021-71-publication-document.pdf)
-       * [The Public Holidays (Declaration) (No. 4) Notice, 2021](https://media.zambialii.org/media/legislation/20635/source_file/a028171d09918fdf/zm-act-si-2021-73-publication-document.pdf)
+       * [The Public Holidays (Declaration) (No. 4) Notice, 2021](https://web.archive.org/web/20260618085534/https://media.zambialii.org/media/legislation/20635/source_file/a028171d09918fdf/zm-act-si-2021-73-publication-document.pdf)
        * [The Public Holidays (Declaration) Notice, 2022](https://web.archive.org/web/20260618090121/https://media.zambialii.org/media/legislation/20676/source_file/01907c24e7d34f3e/zm-act-si-2022-20-publication-document.pdf)
     """
 
