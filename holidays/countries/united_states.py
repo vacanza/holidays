@@ -323,7 +323,7 @@ class UnitedStates(
         """
         self._observed_rule = (
             SAT_TO_PREV_FRI + SUN_TO_NEXT_MON
-            if self._year >= 1966 and self.subdiv != "MA"
+            if self._year >= 1966 and self._normalized_subdiv != "MA"
             else SUN_TO_NEXT_MON
         )
 
@@ -435,7 +435,7 @@ class UnitedStates(
 
     def _populate_subdiv_holidays(self):
         if PUBLIC in self.categories:
-            if self._year >= 1986 and self.subdiv not in {
+            if self._year >= 1986 and self._normalized_subdiv not in {
                 "AK",
                 "AL",
                 "AR",
@@ -448,7 +448,7 @@ class UnitedStates(
                 # Martin Luther King Jr. Day.
                 self._add_holiday_3rd_mon_of_jan(tr("Martin Luther King Jr. Day"))
 
-            if self._year >= 1879 and self.subdiv not in {
+            if self._year >= 1879 and self._normalized_subdiv not in {
                 "AK",
                 "AL",
                 "AR",
@@ -463,7 +463,7 @@ class UnitedStates(
                 # Washington's Birthday.
                 name = tr("Washington's Birthday")
                 if self._year >= 1971:
-                    if self.subdiv not in {
+                    if self._normalized_subdiv not in {
                         "AZ",
                         "CA",
                         "CO",
@@ -493,7 +493,7 @@ class UnitedStates(
 
             if self._year >= 1937 and (
                 self.subdiv is None
-                or self.subdiv
+                or self._normalized_subdiv
                 in {
                     "AS",
                     "AZ",
@@ -521,7 +521,7 @@ class UnitedStates(
                 else:
                     self._add_columbus_day(name)
 
-            if self._year >= 1938 and self.subdiv != "PR":
+            if self._year >= 1938 and self._normalized_subdiv != "PR":
                 name = (
                     # Veterans Day.
                     tr("Veterans Day")
@@ -1572,7 +1572,7 @@ class UnitedStates(
     def _populate_government_holidays(self):
         # Added by 16 Stat. 168, effectdive date June 28th, 1870.
         # New Year's Day check for 1871 is included.
-        if self._year >= 1870 and self.subdiv != "PR":
+        if self._year >= 1870 and self._normalized_subdiv != "PR":
             # Federal holidays in the United States.
             self._populate_common(include_federal=True)
 
@@ -1636,7 +1636,7 @@ class UnitedStates(
 
         # Continental US non-Public dates
 
-        if self.subdiv not in {"AS", "GU", "MP", "PR", "UM", "VI"}:
+        if self._normalized_subdiv not in {"AS", "GU", "MP", "PR", "UM", "VI"}:
             # Groundhog Day
             # First observed on Feb 2 in 1886 in Continental US + Hawaii.
 
