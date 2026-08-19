@@ -89,11 +89,8 @@ class AustralianSecuritiesExchange(
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        self._move_holiday(
-            # ANZAC Day.
-            self._add_anzac_day(tr("ANZAC Day")),
-            rule=SAT_SUN_TO_NONE,
-        )
+        # ANZAC Day.
+        self._move_holiday(self._add_anzac_day(tr("ANZAC Day")), rule=SAT_SUN_TO_NONE)
 
         self._add_holiday_2nd_mon_of_jun(
             # King's Birthday.
@@ -120,10 +117,8 @@ class AustralianSecuritiesExchange(
         pause_label = tr("%s (markets close early)")
 
         if self._year <= 2008:
-            self._add_holy_thursday(
-                # Easter Thursday.
-                self._format_holiday_name(pause_label, tr("Easter Thursday"))
-            )
+            # Easter Thursday.
+            self._add_holy_thursday(self._format_holiday_name(pause_label, tr("Easter Thursday")))
 
         self._move_holiday_forced(
             self._add_christmas_eve(
@@ -145,7 +140,6 @@ class AustralianSecuritiesExchange(
         )
 
     def _populate_restricted_settlement_holidays(self):
-
         if self._year >= 2017:
             return
 

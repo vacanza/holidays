@@ -70,7 +70,7 @@ msgstr "%s (ตลาดปิดทำการก่อนเวลา)"
 
 #. Easter Thursday.
 msgid "Easter Thursday"
-msgstr "วันพฤหัสบดีอีสเตอร์"
+msgstr "วันพฤหัสบดีศักดิ์สิทธิ์"
 
 #. Last Business Day before Christmas Day.
 msgid "Last Business Day before Christmas Day"
@@ -99,7 +99,7 @@ msgstr "วันเมลเบิร์นคัพ"
 
 #. Day following New Year's Day.
 msgid "Day following New Year's Day"
-msgstr "วันถัดจากวันขึ้นปีใหม่"
+msgstr "วันหลังวันขึ้นปีใหม่"
 
 #. Easter Tuesday / Public Holiday.
 msgid "Easter Tuesday / Public Holiday"
