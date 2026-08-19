@@ -1,0 +1,145 @@
+name: Publish release
+
+on:
+  release:
+    types:
+      - published
+
+env:
+  FORCE_COLOR: 1
+
+concurrency:
+  cancel-in-progress: false
+  group: ${{ github.repository }}-publish-release-${{ github.event.release.tag_name }}
+
+permissions: {}
+
+jobs:
+  verify-release:
+    name: Verify release tag
+    if: |
+      github.repository == 'vacanza/holidays' &&
+      startsWith(github.event.release.tag_name, 'v')
+    outputs:
+      tag_commit: ${{ steps.verify.outputs.tag_commit }}
+    permissions:
+      contents: read
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.event.release.tag_name }}
+
+      - name: Verify tag commit belongs to main
+        id: verify
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          tag_commit="$(git rev-parse HEAD)"
+          if ! git merge-base --is-ancestor "$tag_commit" origin/main; then
+            echo "Release tag ${RELEASE_TAG} (${tag_commit}) is not on main." >&2
+            exit 1
+          fi
+          echo "tag_commit=${tag_commit}" >> "$GITHUB_OUTPUT"
+
+  # Build/test are reusable; PyPI upload must stay top-level (Trusted Publishing).
+  # https://docs.pypi.org/trusted-publishers/troubleshooting/#reusable-workflows-on-github
+  # https://github.com/pypa/gh-action-pypi-publish/issues/166
+  build:
+    name: Build and test
+    needs:
+      - verify-release
+    permissions:
+      contents: read
+    uses: ./.github/workflows/run-build-tests.yml
+    with:
+      environment: release
+      ref: ${{ needs.verify-release.outputs.tag_commit }}
+      release_tag: ${{ github.event.release.tag_name }}
+
+  publish:
+    name: Publish to PyPI
+    needs:
+      - build
+    environment: release
+    permissions:
+      id-token: write
+    # gh-action-pypi-publish ships an amd64-only image.
+    # https://github.com/pypa/gh-action-pypi-publish/issues/356
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Download package artifacts
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c  # v8.0.1
+        with:
+          name: dist
+          path: dist
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@ba38be9e461d3875417946c167d0b5f3d385a247  # v1.14.1
+
+  sign-artifacts:
+    name: Create SHA256 checksums and Sigstore signatures
+    needs:
+      - publish
+    permissions:
+      contents: write
+      id-token: write
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Download package artifacts
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c  # v8.0.1
+        with:
+          name: dist
+          path: dist
+
+      - name: Compute SHA256 checksums
+        run: |
+          cd dist
+          for file in *; do
+            sha256sum "$file" > "$file.sha256"
+          done
+
+      - name: Sign the files using Sigstore
+        uses: sigstore/gh-action-sigstore-python@5b79a39c381910c090341a2c9b0bf022c8b387e1  # v3.4.0
+        with:
+          inputs: |
+            ./dist/*.tar.gz
+            ./dist/*.whl
+
+      - name: Upload package dist and signatures
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+        with:
+          name: signed-artifacts
+          path: dist
+
+  update-github-release:
+    name: Update GitHub release with SBOM and signed artifacts
+    needs:
+      - sign-artifacts
+    permissions:
+      contents: write
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Download SBOM
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c  # v8.0.1
+        with:
+          name: sbom
+
+      - name: Download package dist and signatures
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c  # v8.0.1
+        with:
+          name: signed-artifacts
+          path: dist
+
+      - name: Update Github release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          gh release upload --clobber --repo vacanza/holidays "$RELEASE_TAG" dist/*
+          gh release upload --clobber --repo vacanza/holidays "$RELEASE_TAG" holidays-*-sbom.json

@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-28 17:22+0530\n"
-"PO-Revision-Date: 2026-07-27 20:49+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-08-13 17:20+0000\n"
+"Last-Translator: Drona Jadhav <dronajadhav07@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
@@ -216,6 +216,14 @@ msgstr "ਓਨਮ"
 msgid "Ganesh Chaturthi / Vinayak Chaturthi"
 msgstr "ਗਣੇਸ਼ ਚਤੁਰਥੀ / ਵਿਨਾਇਕ ਚਤੁਰਥੀ"
 
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr "ਵਿਨਾਇਕ ਚਤੁਰਥੀ"
+
+#. Vinayak Chaturthi.
+msgid "Vinayak Chaturthi"
+msgstr "ਵਿਨਾਇਕ ਚਤੁਰਥੀ"
+
 #. Dussehra (Saptami).
 msgid "Dussehra (Saptami)"
 msgstr "ਦੁਸਹਿਰਾ (ਸਪਤਮੀ)"
@@ -332,6 +340,10 @@ msgstr "ਉੱਤਰਾਯਣ"
 msgid "Parsi New Year (Shahenshahi)"
 msgstr "ਪਾਰਸੀ ਨਵਾਂ ਸਾਲ (ਸ਼ਾਹਨਸ਼ਾਹੀ)"
 
+#. Gujarati New Year.
+msgid "Vikram Samvat New Year"
+msgstr "ਗੁਜਰਾਤੀ ਨਵਾਂ ਸਾਲ"
+
 #. Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day.
 msgid "Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Shaheedi Diwas"
 msgstr "ਸ਼ਹੀਦ-ਏ-ਆਜ਼ਮ ਭਗਤ ਸਿੰਘ, ਸੁਖਦੇਵ ਅਤੇ ਰਾਜਗੁਰੂ ਦਾ ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ"
@@ -443,6 +455,10 @@ msgstr "ਮੱਧ ਪ੍ਰਦੇਸ਼ ਸਥਾਪਨਾ ਦਿਵਸ"
 #. Mizoram State Day.
 msgid "Mizoram State Day"
 msgstr "ਮਿਜ਼ੋਰਮ ਰਾਜ ਦਿਵਸ"
+
+#. Peace Accord Day.
+msgid "Remna Ni"
+msgstr "ਸ਼ਾਂਤੀ ਸਮਝੌਤਾ ਦਿਵਸ"
 
 #. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"
@@ -583,14 +599,6 @@ msgstr "ਬਸੰਤ ਪੰਚਮੀ"
 #. Shri Panchami.
 msgid "Shri Panchami"
 msgstr "ਸ੍ਰੀ ਪੰਚਮੀ"
-
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
-msgstr "ਵਿਨਾਇਕ ਚਤੁਰਥੀ"
-
-#. Vinayak Chaturthi.
-msgid "Vinayak Chaturthi"
-msgstr "ਵਿਨਾਇਕ ਚਤੁਰਥੀ"
 
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"

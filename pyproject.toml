@@ -65,6 +65,12 @@ docs = [
 build = [
   "polib>=1.2,<2",
 ]
+ci = [
+  "cyclonedx-bom>=7.3,<8",
+  "pre-commit>=4.5,<5",
+  "pre-commit-uv>=4.3,<5",
+  "uv==0.11.31",
+]
 tests = [
   "coverage>=7.12,<8",
   "numpy>=2,<2.3; python_version<'3.11'",
