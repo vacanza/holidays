@@ -1,3 +1,16 @@
+## Version 0.103
+
+Released August 17, 2026
+
+- Refactor CI/CD (#3747 by @arkid15r)
+- Add New Zealand Exchange (NZX) holidays (#3757 by @pareshjoshij, @KJhellico)
+- Add Taiwan Stock Exchange (TWSE) holidays (#3740 by @pareshjoshij, @KJhellico)
+- Update India holidays: add Ganesh Chaturthi as public holiday (MH) (#3750 by @Drona-jadhav7)
+- Update India holidays: add Gujarati New Year holiday (GJ) (#3742 by @CodeWithHarsh143)
+- Update India tests (#3754 by @KJhellico, @arkid15r)
+- Update Israel holidays: standardize Thai l10n (#3755 by @PPsyrius)
+- Update NSE/BSE holidays: change Holi 2026 date (#3694 by @uttam12331, @KJhellico)
+
 ## Version 0.102
 
 Released August 3, 2026

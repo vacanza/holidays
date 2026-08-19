@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-08-04 00:20+0530\n"
-"Last-Translator: Harsh Baghel <hk5324519@gmail.com>\n"
+"PO-Revision-Date: 2026-08-13 17:20+0000\n"
+"Last-Translator: Drona Jadhav <dronajadhav07@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
 "MIME-Version: 1.0\n"
@@ -215,6 +215,14 @@ msgstr ""
 
 #. Ganesh Chaturthi / Vinayak Chaturthi.
 msgid "Ganesh Chaturthi / Vinayak Chaturthi"
+msgstr ""
+
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr ""
+
+#. Vinayak Chaturthi.
+msgid "Vinayak Chaturthi"
 msgstr ""
 
 #. Dussehra (Saptami).
@@ -591,14 +599,6 @@ msgstr ""
 
 #. Shri Panchami.
 msgid "Shri Panchami"
-msgstr ""
-
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
-msgstr ""
-
-#. Vinayak Chaturthi.
-msgid "Vinayak Chaturthi"
 msgstr ""
 
 #. Janmashtami (Smarta).
