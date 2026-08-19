@@ -1,3 +1,96 @@
+## Version 0.103
+
+Released August 17, 2026
+
+- Refactor CI/CD (#3747 by @arkid15r)
+- Add New Zealand Exchange (NZX) holidays (#3757 by @pareshjoshij, @KJhellico)
+- Add Taiwan Stock Exchange (TWSE) holidays (#3740 by @pareshjoshij, @KJhellico)
+- Update India holidays: add Ganesh Chaturthi as public holiday (MH) (#3750 by @Drona-jadhav7)
+- Update India holidays: add Gujarati New Year holiday (GJ) (#3742 by @CodeWithHarsh143)
+- Update India tests (#3754 by @KJhellico, @arkid15r)
+- Update Israel holidays: standardize Thai l10n (#3755 by @PPsyrius)
+- Update NSE/BSE holidays: change Holi 2026 date (#3694 by @uttam12331, @KJhellico)
+
+## Version 0.102
+
+Released August 3, 2026
+
+- Refactor XNYS holidays: update format labels handling (#3724 by @KJhellico)
+- Add Bolsas y Mercados Argentinos (BYMA) holidays (#3715 by @SebastianFelgueras, @KJhellico)
+- Add Bolsas y Mercados Españoles (BME) holidays (#3710 by @pareshjoshij)
+- Add Johannesburg Stock Exchange (JSE) holidays (#3714 by @pareshjoshij, @arkid15r, @KJhellico)
+- Add Korea Exchange (KRX) holidays (#3725 by @pareshjoshij)
+- Add Singapore Exchange (SGX) holidays (#3719 by @pareshjoshij)
+- Update Latvia holidays: add ru localization (#3748 by @aleks-drozy)
+- Update Australia holidays: rename Grand Final Day holiday (VIC) (#3741 by @piyush-003)
+- Update CI/CD workflow: optimize build testing (#3717 by @KJhellico)
+- Update Ghana holidays (#3746 by @KJhellico)
+- Update India holidays: add Remna Ni (Peace Accord Day) for MZ (#3730 by @CodeWithHarsh143, @arkid15r)
+- Update India holidays: subdiv holidays improvement (North region) (#3666 by @ankushhKapoor, @arkid15r, @KJhellico)
+- Update Israel holidays: fix Lag Ba'omer name in Hebrew (#3723 by @KJhellico)
+- Update Malaysia holidays: add 2026 additional Hari Raya Aidilfitri public holiday (#3699 by @uttam12331, @KJhellico)
+- Update Paraguay holidays: add new Constitution Oath Day holiday (#3702 by @uttam12331, @KJhellico)
+- Update South Korea holidays: update Constitution Day and Labor Day (#3728 by @KJhellico)
+- Update Uganda holidays: add 2026 general elections public holidays (#3701 by @uttam12331, @KJhellico)
+- Update l10n: Thai l10n standardisation for "Workers' Day" (#3729 by @PPsyrius)
+- Update l10n: general unification (#3720 by @KJhellico)
+- Migrate Madagascar tests to new test case standards (#3744 by @VaishnaviBardapure, @KJhellico)
+
+## Version 0.101
+
+Released July 20, 2026
+
+- Add SIX Swiss Exchange (SIX) holidays (#3692 by @pareshjoshij)
+- Add Toronto Stock Exchange (TSX) holidays (#3680 by @pareshjoshij, @KJhellico)
+- Update Canada holidays: add observed rule for National Day for Truth and Reconciliation in BC (#3695 by @uttam12331)
+- Update Canada holidays: update Ontario (ON) holidays (#3689 by @KJhellico)
+- Update Kazakhstan holidays: 2026 constitutional law changes (#3690 by @stetat)
+- Update Monaco holidays (#3678 by @KJhellico)
+- Update PR template (#3707 by @KJhellico)
+- Update `HolidayBase::get_closest_holiday` method (#3651 by @gaoflow, @KJhellico)
+- Update iCalendar generation tool: add output filename template support (#3679 by @KJhellico)
+- Update l10n: synchronize Hindi and Gujarati translations (#3681 by @pareshjoshij)
+
+## Version 0.100
+
+Released July 6, 2026
+
+- Refactor Zambia holidays and tests (#3635 by @PPsyrius)
+- Add Chicago Mercantile Exchange (XCME) holidays (#3617 by @pareshjoshij, @arkid15r, @KJhellico)
+- Add Bolsa Mexicana de Valores (BMV) holidays (#3639 by @pareshjoshij)
+- Change standard name of "Whit Sunday" holiday to "Pentecost" (#3657 by @KJhellico)
+- Update India holidays: national holidays significant improvement (#3578 by @ankushhKapoor)
+- Update Saudi Arabia holidays (#3624 by @pareshjoshij)
+- Update Singapore holidays: add 2027 public holidays (#3632 by @PPsyrius)
+- Update calendar download page (#3626 by @pareshjoshij)
+- Update documentation: enhance iCalendar export examples (#3641 by @davidhedlund, @KJhellico)
+- Update iCalendar generation tool (#3640 by @KJhellico)
+- Update some holidays Ukrainian translations (#3667 by @KJhellico)
+- Migrate Malawi tests to new test case standards (#3633 by @VaishnaviBardapure)
+- Migrate Mexico tests to new test case standards (#3648 by @VaishnaviBardapure, @KJhellico)
+- Migrate Norway tests to new test case standards (#3671 by @eeshsaxena)
+- Migrate Zimbabwe tests to new test case standards (#3653 by @eeshsaxena)
+
+## Version 0.99
+
+Released June 15, 2026
+
+- Refactor Australia holidays and tests (#3623 by @KJhellico)
+- Refactor holiday names translation (#3606 by @KJhellico)
+- Fix documentation tests (#3612 by @KJhellico)
+- Update .py files formatting (#3622 by @KJhellico)
+- Update Algeria holidays: add Kabyle language support (#3507 by @shaonahamed0, @mhamedmok404, @PPsyrius)
+- Update Bangladesh holidays, improve Islamic calendar (#3599 by @KJhellico)
+- Update Colombia holidays: add new Jul 9 holiday (#3607 by @healarconr, @arkid15r)
+- Update Indonesia holidays: add 2026 special holidays (#3604 by @KJhellico)
+- Update Maldives holidays: add l10n support (#3605 by @aadesh-shrivastava)
+- Update United States holidays: fix special holiday names with format labels (#3618 by @KJhellico)
+- Update XNYS holidays: add l10n support (#3600 by @pareshjoshij)
+- Update assets generation and processing (#3598 by @KJhellico)
+- Update pre-commit config (#3619 by @KJhellico, @arkid15r)
+- Add CLI tool for generating iCalendar (.ics) files (#3593 by @KJhellico, @Ebed-Iberico)
+- Migrate Mozambique tests to new test case standards (#3621 by @VaishnaviBardapure)
+
 ## Version 0.98
 
 Released June 1, 2026

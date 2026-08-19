@@ -79,7 +79,7 @@ msgstr "วันอีดิ้ลอัฎฮา"
 msgid "Hari kedua Paskah"
 msgstr "วันจันทร์อีสเตอร์"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Hari kedua Pentakosta"
 msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
 
@@ -136,7 +136,7 @@ msgid "Kebangkitan Yesus Kristus"
 msgstr "วันอาทิตย์อีสเตอร์"
 
 #. General Election Day.
-msgid "Hari Pemilihan Unum"
+msgid "Hari Pemilihan Umum"
 msgstr "วันเลือกตั้งทั่วไป"
 
 #. Presidential Election Day.

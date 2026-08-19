@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.78\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2025-07-24 16:35+0300\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
@@ -48,7 +48,7 @@ msgstr "Jour de l'Europe"
 msgid "Christi Himmelfaart"
 msgstr "Ascension"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Péngschtméindeg"
 msgstr "Lundi de Pentecôte"
 
@@ -70,7 +70,7 @@ msgstr "Noël"
 
 #. Saint Stephen's Day.
 msgid "Stiefesdag"
-msgstr "Saint Etienne"
+msgstr "Saint-Étienne"
 
 #. Good Friday.
 msgid "Karfreideg"
@@ -82,4 +82,4 @@ msgstr "Veille de Noël (après-midi)"
 
 #. New Year's Eve.
 msgid "Silvester"
-msgstr "Saint Sylvestre"
+msgstr "Saint-Sylvestre"

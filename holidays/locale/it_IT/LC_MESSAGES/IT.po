@@ -204,7 +204,7 @@ msgstr ""
 msgid "San Ruggero"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Lunedì di Pentecoste"
 msgstr ""
 

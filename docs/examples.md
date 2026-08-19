@@ -593,3 +593,152 @@ Generate `.ics` files with categories, language, and subdivisions.
 
 For advanced features and customization of the exported `.ics` output, consider using
 the [icalendar](https://github.com/collective/icalendar) package.
+
+## holidays-ics Tool
+
+For user convenience, the library includes `holidays-ics` tool for generating iCalendar (.ics)
+files from holiday calendars provided by the library. It supports country, subdivision,
+and financial market calendars, holiday category filtering, localized holiday names,
+year selection, custom output paths, and output filename templates.
+
+The tool can be run either as an installed command:
+
+```shell
+holidays-ics CODE [OPTIONS]
+```
+
+or as a Python module:
+
+```shell
+python -m holidays.generate_ics CODE [OPTIONS]
+```
+
+If you do not have Python installed, you can run the tool directly with `uv`:
+
+```shell
+uvx --from holidays holidays-ics CODE [OPTIONS]
+```
+
+This downloads and runs the latest version of the tool automatically, without requiring
+a Python installation or any manual setup of `holidays` package.
+
+For installation instructions, see `uv` [documentation](https://docs.astral.sh/uv/getting-started/installation/).
+
+By default, the generated calendar contains holidays for the current year and is written
+to a file whose name is derived from the selected options and year range.
+The `--years` option accepts a single year (2025), a year range (2025-2027), or a
+relative range (+10), which selects the current year through the current year plus 10.
+
+### Output filename templates
+
+Instead of specifying an explicit output path with `--output`, you can use
+`--output-template` to generate output filenames dynamically.
+
+Supported placeholders:
+
+| Placeholder    | Description                                                      |
+|----------------|------------------------------------------------------------------|
+| `{code}`       | Country or financial market code                                 |
+| `{subdiv}`     | Subdivision code, or `ALL` if not specified                      |
+| `{language}`   | Requested language, or `DEFAULT` if not specified                |
+| `{categories}` | Holiday categories joined with `_`, or `PUBLIC` if not specified |
+| `{start_year}` | First year                                                       |
+| `{end_year}`   | Last year                                                        |
+| `{today}`      | Current date in `YYYYMMDD` format                                |
+
+To include literal `{` or `}` characters, write them as `{{` and `}}`.
+
+### Examples
+
+Calendar for the current year:
+
+```shell
+holidays-ics US
+```
+
+Save calendar to a custom file:
+
+```shell
+holidays-ics US --output test.ics
+```
+
+Calendar for specific year:
+
+```shell
+holidays-ics US --years 2035
+```
+
+Calendar for the current and next 10 years:
+
+```shell
+holidays-ics US --years +10
+```
+
+Calendar for the current year and the previous 5 years:
+
+```shell
+holidays-ics US --years -5
+```
+
+Calendar containing unofficial holidays only:
+
+```shell
+holidays-ics US --categories unofficial
+```
+
+Calendar containing public and optional holidays:
+
+```shell
+holidays-ics CA --categories public,optional
+```
+
+Switzerland calendar in German:
+
+```shell
+holidays-ics CH --language de
+```
+
+Canton of Zurich calendar:
+
+```shell
+holidays-ics CH --subdiv ZH
+```
+
+Financial market holiday calendar:
+
+```shell
+holidays-ics XNYS
+```
+
+Spanning the next 10 years, unofficial holidays, saved to a custom file:
+
+```shell
+holidays-ics US --years +10 --categories unofficial --output-template "HOLIDAYS_{code}_{start_year}_{end_year}_{categories}.ics"
+```
+
+Calendar for Switzerland, specific to the Canton of Zurich, localized in German, and saved to a custom file:
+
+```shell
+holidays-ics CH --subdiv ZH --language de --output-template "{code}_{subdiv}_{language}_{today}.ics"
+```
+
+The tool can also display the supported subdivisions, categories, and languages for a selected
+country or market without generating an `.ics` file.
+
+List the supported subdivisions:
+
+```shell
+holidays-ics CH --list-subdivisions
+```
+
+List the supported holiday categories:
+
+```shell
+holidays-ics US --list-categories
+```
+
+List the supported languages:
+
+```shell
+holidays-ics CA --list-languages
+```

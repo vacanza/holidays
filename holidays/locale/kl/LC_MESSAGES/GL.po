@@ -56,11 +56,11 @@ msgstr ""
 msgid "Qilaliarfik"
 msgstr ""
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Piinsip ullua"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Piinsip-aappaa"
 msgstr ""
 

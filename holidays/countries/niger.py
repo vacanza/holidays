@@ -146,8 +146,8 @@ class Niger(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         # Ascension Day.
         self._add_ascension_thursday(tr("Ascension"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Lundi de Pentecôte"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Lundi de Pentecôte"))
 
         # Assumption Day.
         self._add_observed(self._add_assumption_of_mary_day(tr("Assomption")))

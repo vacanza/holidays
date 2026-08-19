@@ -13,12 +13,19 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, FRI, SAT
-from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.calendars.gregorian import JAN, MAR, APR, AUG, SEP, FRI, SAT
+from holidays.groups import (
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+)
 from holidays.holiday_base import HolidayBase
 
 
-class Bangladesh(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Bangladesh(
+    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+):
     """Bangladesh holidays.
 
     References:
@@ -26,6 +33,10 @@ class Bangladesh(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Bangladesh>
         * <https://web.archive.org/web/20260427032339/https://cgbdsydney.gov.bd/about-us/holidays/>
         * <https://web.archive.org/web/20251118113843/https://publicholidays.com.bd/>
+        * [2024 Aug 15 cancellation](https://web.archive.org/web/20260509172057/https://mopa.gov.bd/pages/public-holiday/১৫-আগস্ট-এর-সাধারণ-ছুটি-বাতিল-d058d4-694139b3a31054345f0e63ec)
+        * [2025](https://web.archive.org/web/20260509170842/https://mopa.gov.bd/pages/public-holiday/২০২৫-খ্রিষ্টাব্দের-ছুটির-তালিকার-প্রজ্ঞাপন-db46da-694139b2a31054345f0e63a5)
+        * [2025 Prophet's Birthday](https://web.archive.org/web/20260509171151/https://mopa.gov.bd/pages/public-holiday/পবিত্র-ঈদ-ই-মিলাদুন্নবী-সা-উপলক্ষ্যে-সাধারণ-ছুটির-নির্ধারিত-2540c3-694139b2a31054345f0e6348)
+        * [2026](https://web.archive.org/web/20260509164251/https://mopa.gov.bd/pages/public-holiday/২০২৬-খ্রিষ্টাব্দের-ছুটির-তালিকার-প্রজ্ঞাপন-2c48e0-694139b2a31054345f0e6346)
     """
 
     country = "BD"
@@ -42,12 +53,19 @@ class Bangladesh(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
             islamic_show_estimated:
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
+
+        In Bangladesh, the dates of the Islamic calendar usually fall a day later than
+        the corresponding dates in the Umm al-Qura calendar.
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self, cls=BangladeshIslamicHolidays, show_estimated=islamic_show_estimated
+            self,
+            cls=BangladeshIslamicHolidays,
+            show_estimated=islamic_show_estimated,
+            calendar_delta_days=+1,
         )
+        StaticHolidays.__init__(self, cls=BangladeshStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -119,68 +137,53 @@ class BGD(Bangladesh):
 
 class BangladeshIslamicHolidays(_CustomIslamicHolidays):
     # https://www.timeanddate.com/holidays/bangladesh/ashura
-    ASHURA_DATES_CONFIRMED_YEARS = (2022, 2025)
-    ASHURA_DATES = {
-        2022: (AUG, 9),
-        2023: (JUL, 29),
-        2024: (JUL, 17),
-        2025: (JUL, 6),
-    }
+    ASHURA_DATES_CONFIRMED_YEARS = (2022, 2026)
 
     # https://www.timeanddate.com/holidays/bangladesh/eid-ul-adha-holiday-1
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2022, 2025)
-    EID_AL_ADHA_DATES = {
-        2022: (JUL, 10),
-        2023: (JUN, 29),
-        2024: (JUN, 17),
-        2025: (JUN, 7),
-    }
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2022, 2026)
 
     # https://www.timeanddate.com/holidays/bangladesh/eid-ul-fitr
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2022, 2026)
     EID_AL_FITR_DATES = {
-        2022: (MAY, 3),
-        2023: (APR, 22),
         2024: (APR, 10),
-        2025: (MAR, 31),
-        2026: (MAR, 21),
     }
 
     # https://www.timeanddate.com/holidays/bangladesh/jumatul-bidah
     JUMUATUL_WIDA_DATES_CONFIRMED_YEARS = (2022, 2026)
     JUMUATUL_WIDA_DATES = {
-        2022: (APR, 29),
         2023: (APR, 21),
-        2024: (APR, 5),
-        2025: (MAR, 28),
         2026: (MAR, 20),
     }
 
     # https://www.timeanddate.com/holidays/bangladesh/shab-e-qadr
     LAYLAT_AL_QADR_DATES_CONFIRMED_YEARS = (2022, 2026)
-    LAYLAT_AL_QADR_DATES = {
-        2022: (APR, 29),
-        2023: (APR, 19),
-        2024: (APR, 7),
-        2025: (MAR, 28),
-        2026: (MAR, 17),
-    }
 
     # https://www.timeanddate.com/holidays/bangladesh/eid-e-milad-un-nabi
-    MAWLID_DATES_CONFIRMED_YEARS = (2022, 2025)
+    MAWLID_DATES_CONFIRMED_YEARS = (2022, 2026)
     MAWLID_DATES = {
-        2022: (OCT, 9),
-        2023: (SEP, 28),
-        2024: (SEP, 16),
         2025: (SEP, 6),
     }
 
     # https://www.timeanddate.com/holidays/bangladesh/shab-e-barat
     IMAM_MAHDI_BIRTHDAY_DATES_CONFIRMED_YEARS = (2022, 2026)
-    IMAM_MAHDI_BIRTHDAY_DATES = {
-        2022: (MAR, 19),
-        2023: (MAR, 8),
-        2024: (FEB, 26),
-        2025: (FEB, 15),
-        2026: (FEB, 3),
+
+
+class BangladeshStaticHolidays:
+    """Bangladesh special holidays.
+
+    References:
+        * [2024 Jan 7 Election Day](https://web.archive.org/web/20260509181553/https://mopa.gov.bd/pages/public-holiday/দ্বাদশ-জাতীয়-সংসদ-নির্বাচন-উপলক্ষ্যে-০৭-জানুয়ারি-২০২৪-তারিখ-331623-694139b3a31054345f0e63e8)
+        * [2024 Aug 5-7 holidays](https://web.archive.org/web/20260509180928/https://mopa.gov.bd/pages/public-holiday/০৫-আগস্ট-২০২৪-০৬-আগস্ট-২০২৪-ও-০৭-আগস্ট-২০২৪-তারিখ-নির্বাহী-আদেশে-58d844-694139b3a31054345f0e6400)
+    """
+
+    # Public Holiday.
+    public_holiday_name = tr("সাধারণ ছুটি")
+
+    special_public_holidays = {
+        2024: (
+            (JAN, 7, public_holiday_name),
+            (AUG, 5, public_holiday_name),
+            (AUG, 6, public_holiday_name),
+            (AUG, 7, public_holiday_name),
+        ),
     }

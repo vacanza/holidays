@@ -60,11 +60,11 @@ class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("Auffahrt"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Pfingstsonntag"))
+        # Pentecost.
+        self._add_pentecost(tr("Pfingstsonntag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))

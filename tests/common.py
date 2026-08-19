@@ -613,10 +613,7 @@ class TestCase:
         for subdiv in instance.subdivisions:
             instance.update(
                 self.test_class(
-                    subdiv=subdiv,
-                    years=instance.years,
-                    language=language,
-                    categories=categories,
+                    subdiv=subdiv, years=instance.years, language=language, categories=categories
                 )
             )
 

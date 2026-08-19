@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.97\n"
+"Project-Id-Version: Holidays 0.99\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-05-14 02:09+0400\n"
-"PO-Revision-Date: 2026-05-14 14:57+0400\n"
-"Last-Translator: Shaon Ahamed <shaonahmed8788@gmail.com>\n"
+"PO-Revision-Date: 2026-06-02 23:09+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_BD\n"
 "MIME-Version: 1.0\n"
@@ -95,3 +95,7 @@ msgstr "Eid-ul-Fitr"
 #. Eid al-Adha.
 msgid "ঈদুল আজহা"
 msgstr "Eid-ul-Adha"
+
+#. Public Holiday.
+msgid "সাধারণ ছুটি"
+msgstr "Public Holiday"

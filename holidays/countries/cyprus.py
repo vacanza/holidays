@@ -65,17 +65,17 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_labor_day(tr("Πρωτομαγιά"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
 
-        # Assumption Day.
+        # Dormition of the Mother of God.
         self._add_assumption_of_mary_day(tr("Κοίμηση της Θεοτόκου"))
 
         if self._year >= 1979:
             # Cyprus Independence Day.
             self._add_holiday_oct_1(tr("Ημέρα της Κυπριακής Ανεξαρτησίας"))
 
-        # Ochi Day.
+        # Ohi Day.
         self._add_holiday_oct_28(tr("Ημέρα του Όχι"))
 
         # Christmas Day.

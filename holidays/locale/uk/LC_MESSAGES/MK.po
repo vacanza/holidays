@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.74\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-05-18 15:46+0300\n"
-"PO-Revision-Date: 2025-05-18 15:53+0300\n"
+"PO-Revision-Date: 2026-06-30 23:20+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -125,7 +125,7 @@ msgstr "Успіння Пресвятої Богородиці"
 
 #. Pentecost.
 msgid "Духовден"
-msgstr "Трійця"
+msgstr "Пʼятидесятниця"
 
 #. International Romani Day.
 msgid "Меѓународен ден на Ромите"

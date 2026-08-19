@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.99\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-01 15:30-0800\n"
-"PO-Revision-Date: 2023-05-03 18:38-0700\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"PO-Revision-Date: 2026-06-05 08:50-0500\n"
+"Last-Translator: Hernán Alarcón <hernaneduardoalarcon@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -72,6 +72,10 @@ msgstr "Свято Найсвятішого Серця Ісуса"
 #. Saint Peter and Saint Paul's Day.
 msgid "San Pedro y San Pablo"
 msgstr "День Святих Петра і Павла"
+
+#. Day of Our Lady of the Rosary of Chiquinquirá.
+msgid "Día de Nuestra Señora del Rosario de Chiquinquirá"
+msgstr "День Богоматері Розарію з Чікінкіри"
 
 #. Independence Day.
 msgid "Día de la Independencia"

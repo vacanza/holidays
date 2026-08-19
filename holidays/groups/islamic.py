@@ -100,7 +100,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_ashura_eve(self, name) -> set[date]:
         """
-        Add Ashura Eve (Day before the 10th day of 1st month).
+        Add Ashura Eve (9th day of 1st month).
 
         Ashura is a day of commemoration in Islam. It occurs annually on the
         10th of Muharram, the first month of the Islamic calendar.
@@ -112,7 +112,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_eid_al_adha_day(self, name) -> set[date]:
         """
-        Add Eid al-Adha Day (10th day of the 12th month of Islamic calendar).
+        Add Eid al-Adha Day (10th day of 12th month).
 
         Feast of the Sacrifice. It honours the willingness of Ibrahim
         (Abraham) to sacrifice his son Ismail (Ishmael) as an act of obedience
@@ -125,7 +125,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_eid_al_adha_day_two(self, name) -> set[date]:
         """
-        Add Eid al-Adha Day Two.
+        Add Eid al-Adha Day Two (11th day of 12th month).
 
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
@@ -135,7 +135,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_eid_al_adha_day_three(self, name) -> set[date]:
         """
-        Add Eid al-Adha Day Three.
+        Add Eid al-Adha Day Three (12th day of 12th month).
 
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
@@ -145,7 +145,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_eid_al_adha_day_four(self, name) -> set[date]:
         """
-        Add Eid al-Adha Day Four.
+        Add Eid al-Adha Day Four (13th day of 12th month).
 
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
@@ -155,7 +155,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_eid_al_fitr_day(self, name) -> set[date]:
         """
-        Add Eid al-Fitr Day (1st day of 10th month of Islamic calendar).
+        Add Eid al-Fitr Day (1st day of 10th month).
 
         Holiday of Breaking the Fast. The religious holiday is celebrated
         by Muslims worldwide because it marks the end of the month-long
@@ -168,7 +168,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_eid_al_fitr_day_two(self, name) -> set[date]:
         """
-        Add Eid al-Fitr Day Two.
+        Add Eid al-Fitr Day Two (2nd day of 10th month).
 
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
@@ -178,7 +178,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_eid_al_fitr_day_three(self, name) -> set[date]:
         """
-        Add Eid al-Fitr Day Three.
+        Add Eid al-Fitr Day Three (3rd day of 10th month).
 
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
@@ -188,7 +188,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_eid_al_fitr_day_four(self, name) -> set[date]:
         """
-        Add Eid al-Fitr Day Four.
+        Add Eid al-Fitr Day Four (4th day of 10th month).
 
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
@@ -198,7 +198,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_eid_al_fitr_eve(self, name) -> set[date]:
         """
-        Add Eid al-Fitr Eve (last day of 9th month of Islamic calendar).
+        Add Eid al-Fitr Eve (last day of 9th month).
 
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
@@ -228,7 +228,10 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_grand_magal_of_touba(self, name) -> set[date]:
         """
-        Annual religious pilgrimage of Senegalese Mouride brotherhood.
+        Add Grand Magal of Touba Day (18th day of 2nd month).
+
+        The Grand Magal of Touba is the annual religious pilgrimage
+        of Senegalese Mouride Brotherhood.
 
         https://en.wikipedia.org/wiki/Grand_Magal_of_Touba
         """
@@ -238,7 +241,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_hari_hol_johor(self, name) -> set[date]:
         """
-        Hari Hol Johor.
+        Add Hari Hol of Johor Day (6th day of 2nd month).
 
         https://web.archive.org/web/20241202170507/https://publicholidays.com.my/hari-hol-almarhum-sultan-iskandar/
         """
@@ -258,7 +261,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_holiday_29_ramadan(self, name) -> set[date]:
         """
-        Add 29th Ramadan holiday.
+        Add 29th Ramadan holiday (29th day of 9th month).
 
         https://web.archive.org/web/20250323065556/https://decree.om/2022/rd20220088/
         """
@@ -294,7 +297,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_islamic_new_year_day(self, name) -> set[date]:
         """
-        Add Islamic New Year Day (last day of Dhu al-Hijjah).
+        Add Islamic New Year Day (1st day of 1st month).
 
         The Islamic New Year, also called the Hijri New Year, is the day that
         marks the beginning of a new lunar Hijri year, and is the day on which
@@ -319,7 +322,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_jumuatul_wida(self, name) -> set[date]:
         """
-        Add Jumuatul-Wida Day.
+        Add Jumuatul-Wida Day (last Friday of 9th month).
 
         https://en.wikipedia.org/wiki/Jumu'atul-Wida
         """
@@ -329,7 +332,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_laylat_al_qadr_day(self, name) -> set[date]:
         """
-        Add Laylat Al-Qadr.
+        Add Laylat al-Qadr Day (27th day of 9th month).
 
         https://en.wikipedia.org/wiki/Laylat_al-Qadr
         """
@@ -361,7 +364,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_mawlid_day_two(self, name) -> set[date]:
         """
-        Add Mawlid Day Two.
+        Add Mawlid Day Two (13th day of 3rd month).
 
         Mawlid is the observance of the birthday of the Islamic prophet
         Muhammad.
@@ -373,7 +376,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_mid_shaban_day(self, name) -> set[date]:
         """
-        Add Mid-Sha'ban Day.
+        Add Mid-Sha'ban Day (15th day of 8th month).
 
         https://en.wikipedia.org/wiki/Mid-Sha'ban
         """
@@ -383,7 +386,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_nuzul_al_quran_day(self, name) -> set[date]:
         """
-        Add Nuzul Al Quran (17th day of 9th month).
+        Add Nuzul Al Quran Day (17th day of 9th month).
 
         Nuzul Al Quran is a Muslim festival to remember the day when Prophet
         Muhammad received his first revelation of Islam's sacred book,
@@ -396,7 +399,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_prophet_baptism_day(self, name) -> set[date]:
         """
-        Add Prophet's Baptism.
+        Add Prophet's Baptism Day (19th day of the 3rd month).
 
         Celebrated one week after the Prophet Mohammed's Birthday, this
         marks the traditional Islamic birth rites that take place seven
@@ -423,7 +426,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_quamee_dhuvas_day(self, name) -> set[date]:
         """
-        Add Quamee Dhuvas (1st day of 3rd month).
+        Add Quamee Dhuvas Day (1st day of 3rd month).
 
         https://en.wikipedia.org/wiki/Qaumee_Dhuvas_(Maldives_National_Day)
         """
@@ -465,7 +468,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_tasua_day(self, name) -> set[date]:
         """
-        Add Tasua day (9th day of 1st month).
+        Add Tasua Day (9th day of 1st month).
 
         https://en.wikipedia.org/wiki/Tasua
         """

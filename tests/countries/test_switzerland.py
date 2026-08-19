@@ -74,9 +74,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
         }
 
         self.assertEqual(
-            all_h,
-            y_2018,
-            f"missing: {all_h - y_2018 or 'no'}, extra: {y_2018 - all_h or 'no'}",
+            all_h, y_2018, f"missing: {all_h - y_2018 or 'no'}, extra: {y_2018 - all_h or 'no'}"
         )
 
     def test_new_years_day(self):
@@ -850,8 +848,8 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-05-01", "Labor Day"),
             ("2023-05-17", "Day before Ascension Day"),
             ("2023-05-18", "Ascension Day"),
-            ("2023-05-28", "Whit Sunday"),
-            ("2023-05-29", "Whit Monday"),
+            ("2023-05-28", "Pentecost"),
+            ("2023-05-29", "Pentecost Monday"),
             ("2023-06-08", "Corpus Christi"),
             ("2023-06-23", "Independence Day"),
             ("2023-06-29", "Saints Peter and Paul"),
@@ -1018,8 +1016,8 @@ class TestSwitzerland(CommonCountryTests, TestCase):
             ("2023-05-01", "День праці"),
             ("2023-05-17", "Переддень Вознесіння Господнього"),
             ("2023-05-18", "Вознесіння Господнє"),
-            ("2023-05-28", "Трійця"),
-            ("2023-05-29", "День Святого Духа"),
+            ("2023-05-28", "Пʼятидесятниця"),
+            ("2023-05-29", "Другий день Пʼятидесятниці"),
             ("2023-06-08", "Свято Тіла і Крові Христових"),
             ("2023-06-23", "День незалежності"),
             ("2023-06-29", "День Святих Петра і Павла"),

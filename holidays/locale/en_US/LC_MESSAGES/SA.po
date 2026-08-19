@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-08-04 20:02+0300\n"
-"PO-Revision-Date: 2025-06-26 17:55+0300\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -47,9 +47,9 @@ msgstr "%s (observed, estimated)"
 msgid "عطلة عيد الفطر"
 msgstr "Eid al-Fitr Holiday"
 
-#. Arafat Day.
+#. Day of Arafah.
 msgid "يوم عرفة"
-msgstr "Arafat Day"
+msgstr "Day of Arafah"
 
 #. Eid al-Adha Holiday.
 msgid "عطلة عيد الأضحى"
@@ -63,6 +63,14 @@ msgstr "Founding Day Holiday"
 msgid "اليوم الوطني"
 msgstr "National Day Holiday"
 
-#. Celebrate the country's win against Argentina in the World Cup.
-msgid "يوم وطني"
-msgstr "A National Day"
+#. King Abdullah's Return from Medical Treatment Abroad.
+msgid "عطلة رسمية بمناسبة عودة الملك عبد الله"
+msgstr "King Abdullah's Return from Medical Treatment Abroad"
+
+#. Day of Mourning for King Abdullah.
+msgid "يوم حداد على الملك عبد الله"
+msgstr "Day of Mourning for King Abdullah"
+
+#. Holiday for the National Team's Victory in the World Cup.
+msgid "عطلة فوز المنتخب في كأس العالم"
+msgstr "Holiday for the National Team's Victory in the World Cup"

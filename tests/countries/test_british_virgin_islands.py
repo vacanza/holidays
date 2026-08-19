@@ -317,7 +317,7 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-06-03", "Platinum Jubilee of Elizabeth II"),
-            ("2022-06-06", "Whit Monday"),
+            ("2022-06-06", "Pentecost Monday"),
             ("2022-06-10", "Sovereign's Birthday"),
             ("2022-07-04", "Virgin Islands Day"),
             ("2022-08-01", "Emancipation Monday"),

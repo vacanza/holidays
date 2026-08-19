@@ -543,8 +543,8 @@ class Spain(
 
         # Add when Labor Day or Christmas Day falls on Sunday.
         if self._is_sunday(MAY, 1):
-            # Whit Monday.
-            self._add_whit_monday(tr("Día de la Pascua Granada"))
+            # Pentecost Monday.
+            self._add_pentecost_monday(tr("Día de la Pascua Granada"))
 
         # Saint John the Baptist.
         self._add_observed(self._add_saint_johns_day(tr("San Juan")), rule=SUN_TO_NONE)

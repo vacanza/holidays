@@ -95,7 +95,7 @@ msgstr "วันแรงงานสากล"
 msgid "Quốc khánh"
 msgstr "วันชาติเวียตนาม"
 
-#. Date format (see strftime() Format Codes).
+#. Substituted date format.
 msgid "%d/%m/%Y"
 msgstr "%d/%m/%Y"
 

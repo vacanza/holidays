@@ -60,11 +60,11 @@ msgstr ""
 msgid "Uppstigningardagur"
 msgstr ""
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Hvítasunnudagur"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Annar í hvítasunnu"
 msgstr ""
 

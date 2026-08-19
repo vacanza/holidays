@@ -150,8 +150,8 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # Ascension Day.
         self._add_ascension_thursday(tr("Christi Himmelfahrt"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # German Unity Day.
         self._add_holiday_oct_3(tr("Tag der Deutschen Einheit"))
@@ -199,8 +199,8 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # Easter Sunday.
         self._add_easter_sunday(tr("Ostersonntag"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Pfingstsonntag"))
+        # Pentecost.
+        self._add_pentecost(tr("Pfingstsonntag"))
 
         # Reformation Day.
         self._add_holiday_oct_31(tr("Reformationstag"))

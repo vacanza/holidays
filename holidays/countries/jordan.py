@@ -58,7 +58,7 @@ class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         self._add_labor_day(tr("عيد العمال"))
 
         # Independence Day.
-        self._add_holiday_may_25(tr("عيد الإستقلال"))
+        self._add_holiday_may_25(tr("عيد الاستقلال"))
 
         # Christmas Day.
         self._add_christmas_day(tr("عيد الميلاد المجيد"))
@@ -79,7 +79,7 @@ class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         self._add_eid_al_fitr_day_two(name)
         self._add_eid_al_fitr_day_three(name)
 
-        # Arafat Day.
+        # Day of Arafah.
         self._add_arafah_day(tr("يوم عرفة"))
 
         # Eid al-Adha.

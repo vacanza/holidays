@@ -56,7 +56,7 @@ msgstr "Första maj"
 msgid "Helatorstai"
 msgstr "Kristi himmelsfärdsdag"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Helluntaipäivä"
 msgstr "Pingst"
 

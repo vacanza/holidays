@@ -48,7 +48,7 @@ msgstr ""
 msgid "Christi Himmelfaart"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Péngschtméindeg"
 msgstr ""
 

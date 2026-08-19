@@ -21,6 +21,15 @@ class TestBangladesh(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Bangladesh)
 
+    def test_special_holidays(self):
+        self.assertHolidayName(
+            "সাধারণ ছুটি",
+            "2024-01-07",
+            "2024-08-05",
+            "2024-08-06",
+            "2024-08-07",
+        )
+
     def test_martyrs_day_and_international_mother_language_day(self):
         self.assertHolidayName(
             "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস", (f"{year}-02-21" for year in self.full_range)
@@ -86,6 +95,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
             "2023-03-08",
             "2024-02-26",
             "2025-02-15",
+            "2026-02-04",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -97,6 +107,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
             "2023-04-19",
             "2024-04-07",
             "2025-03-28",
+            "2026-03-17",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -127,12 +138,14 @@ class TestBangladesh(CommonCountryTests, TestCase):
             "2025-03-31",
             "2025-04-01",
             "2025-04-02",
+            "2026-03-21",
+            "2026-03-22",
+            "2026-03-23",
         )
         exception_years = {1968, 2000, 2033}
         self.assertIslamicNoEstimatedHolidayNameCount(
             name, 3, (year for year in self.full_range if year not in exception_years)
         )
-
         self.assertIslamicNoEstimatedHolidayNameCount(name, 6, exception_years)
 
     def test_eid_al_adha(self):
@@ -151,19 +164,19 @@ class TestBangladesh(CommonCountryTests, TestCase):
             "2025-06-07",
             "2025-06-08",
             "2025-06-09",
+            "2026-05-28",
+            "2026-05-29",
+            "2026-05-30",
         )
-        exception_years = {1974, 2006, 2007, 2039}
+        exception_years = {1974, 2007, 2039}
         self.assertIslamicNoEstimatedHolidayNameCount(
             name, 3, (year for year in self.full_range if year not in exception_years)
         )
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 4, 2006)
-
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 5, 2007)
-
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, 1974, 2039)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, exception_years)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
+            ("2024-01-07", "সাধারণ ছুটি"),
             ("2024-02-21", "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস"),
             ("2024-02-26", "শবে বরাত"),
             ("2024-03-17", "জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান এর জন্মদিবস"),
@@ -179,6 +192,9 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2024-06-18", "ঈদুল আজহা"),
             ("2024-06-19", "ঈদুল আজহা"),
             ("2024-07-17", "আশুরা"),
+            ("2024-08-05", "সাধারণ ছুটি"),
+            ("2024-08-06", "সাধারণ ছুটি"),
+            ("2024-08-07", "সাধারণ ছুটি"),
             ("2024-08-15", "জাতীয় শোক দিবস"),
             ("2024-09-16", "ঈদে মিলাদুন্নবী"),
             ("2024-12-16", "বিজয় দিবস"),
@@ -188,6 +204,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
     def test_l10n_ar(self):
         self.assertLocalizedHolidays(
             "ar",
+            ("2024-01-07", "عطلة رسمية"),
             ("2024-02-21", "يوم الشهداء واليوم الدولي للغة الأم"),
             ("2024-02-26", "ليلة النصف من شعبان"),
             ("2024-03-17", "عيد ميلاد الشيخ مجيب الرحمن"),
@@ -203,6 +220,9 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2024-06-18", "عيد الأضحى"),
             ("2024-06-19", "عيد الأضحى"),
             ("2024-07-17", "عاشوراء"),
+            ("2024-08-05", "عطلة رسمية"),
+            ("2024-08-06", "عطلة رسمية"),
+            ("2024-08-07", "عطلة رسمية"),
             ("2024-08-15", "اليوم الوطني للحداد"),
             ("2024-09-16", "المولد النبوي الشريف"),
             ("2024-12-16", "عيد النصر"),
@@ -212,6 +232,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
     def test_l10n_en_bd(self):
         self.assertLocalizedHolidays(
             "en_BD",
+            ("2024-01-07", "Public Holiday"),
             ("2024-02-21", "Shaheed Day and International Mother Language Day"),
             ("2024-02-26", "Shab-e-Barat"),
             ("2024-03-17", "Father of the Nation Bangabandhu Sheikh Mujibur Rahman's Birthday"),
@@ -227,6 +248,9 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2024-06-18", "Eid-ul-Adha"),
             ("2024-06-19", "Eid-ul-Adha"),
             ("2024-07-17", "Ashura"),
+            ("2024-08-05", "Public Holiday"),
+            ("2024-08-06", "Public Holiday"),
+            ("2024-08-07", "Public Holiday"),
             ("2024-08-15", "National Mourning Day"),
             ("2024-09-16", "Eid-e-Miladunnabi"),
             ("2024-12-16", "Victory Day"),
@@ -236,6 +260,7 @@ class TestBangladesh(CommonCountryTests, TestCase):
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
+            ("2024-01-07", "Public Holiday"),
             ("2024-02-21", "Martyrs' Day and International Mother Language Day"),
             ("2024-02-26", "Mid-Sha'ban"),
             ("2024-03-17", "Sheikh Mujibur Rahman's Birthday"),
@@ -251,6 +276,9 @@ class TestBangladesh(CommonCountryTests, TestCase):
             ("2024-06-18", "Eid al-Adha"),
             ("2024-06-19", "Eid al-Adha"),
             ("2024-07-17", "Ashura"),
+            ("2024-08-05", "Public Holiday"),
+            ("2024-08-06", "Public Holiday"),
+            ("2024-08-07", "Public Holiday"),
             ("2024-08-15", "National Mourning Day"),
             ("2024-09-16", "Prophet's Birthday"),
             ("2024-12-16", "Victory Day"),

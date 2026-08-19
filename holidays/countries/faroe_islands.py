@@ -62,11 +62,11 @@ class FaroeIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("Kristi himmalsferðardagur"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Hvítusunnudagur"))
+        # Pentecost.
+        self._add_pentecost(tr("Hvítusunnudagur"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Annar hvítusunnudagur"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Annar hvítusunnudagur"))
 
         # Saint Olaf's Day.
         self._add_holiday_jul_29(tr("Ólavsøkudagur"))

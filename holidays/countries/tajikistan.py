@@ -81,7 +81,7 @@ class Tajikistan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # Established by Law #628 from May 22, 1998.
         if self._year >= 1998:
-            # Day of National Unity.
+            # National Unity Day.
             self._add_holiday_jun_27(tr("Рӯзи Ваҳдати миллӣ"))
 
         # Independence Day.

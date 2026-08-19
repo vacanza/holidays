@@ -75,8 +75,8 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             # Easter Sunday (Pascha).
             dts_observed.add(self._add_easter_sunday(tr("Великдень (Пасха)")))
 
-            # Holy Trinity Day.
-            dts_observed.add(self._add_whit_sunday(tr("Трійця")))
+            # Pentecost.
+            dts_observed.add(self._add_pentecost(tr("Трійця")))
 
             name = (
                 # Labor Day.
@@ -218,7 +218,7 @@ class UkraineStaticHolidays:
         * [1995](https://web.archive.org/web/20220713111605/https://zakon.rada.gov.ua/laws/show/13/95)
     """
 
-    # Date format (see strftime() Format Codes)
+    # Substituted date format.
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
     substituted_label = tr("Вихідний день (перенесено з %s)")

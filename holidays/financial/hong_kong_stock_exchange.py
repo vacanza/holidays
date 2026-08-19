@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.calendars.gregorian import SAT, SUN
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.hongkong import HongKong
@@ -44,16 +46,18 @@ class HongKongStockExchange(HongKong):
 
     def _populate_half_day_holidays(self):
         # %s (Half-Day Trading Day).
-        half_day_label = self.tr("%s（半日交易日）")
+        half_day_label = tr("%s（半日交易日）")
 
-        # Chinese New Year's Eve.
-        self._add_chinese_new_years_eve(half_day_label % self.tr("農曆年初一的前一日"))
+        self._add_chinese_new_years_eve(
+            # Chinese New Year's Eve.
+            self._format_holiday_name(half_day_label, tr("農曆年初一的前一日"))
+        )
 
         # Christmas Eve.
-        self._add_christmas_eve(half_day_label % self.tr("平安夜"))
+        self._add_christmas_eve(self._format_holiday_name(half_day_label, tr("平安夜")))
 
         # New Year's Eve.
-        self._add_new_years_eve(half_day_label % self.tr("新年前夕"))
+        self._add_new_years_eve(self._format_holiday_name(half_day_label, tr("新年前夕")))
 
 
 class XHKG(HongKongStockExchange):

@@ -46,12 +46,12 @@ class Singapore(
     References:
         * [Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_Singapore)
         * [Holidays Act 1998](https://web.archive.org/web/20250405061431/https://sso.agc.gov.sg/Act/HA1998)
-        * [Ministry of Manpower](https://web.archive.org/web/20250616105633/https://mom.gov.sg/employment-practices/public-holidays)
+        * [Ministry of Manpower](https://web.archive.org/web/20260618052239/https://mom.gov.sg/employment-practices/public-holidays)
 
     Limitations:
         * Prior to 1969: holidays are estimated.
         * Prior to 2000: holidays may not be accurate.
-        * 2024 and later: the following four moving date holidays (whose exact
+        * 2028 and later: the following four moving date holidays (whose exact
             date is announced yearly) are estimated, and so denoted:
             * Hari Raya Puasa
             * Hari Raya Haji
@@ -93,7 +93,7 @@ class Singapore(
         kwargs.setdefault("observed_since", 1998)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self) -> None:
+    def _populate_public_holidays(self):
         dts_observed = set()
 
         # New Year's Day.
@@ -101,8 +101,8 @@ class Singapore(
 
         # Chinese New Year.
         name = tr("Chinese New Year")
-        dts_observed.add(self._add_chinese_new_years_day(name))  # type: ignore[arg-type]
-        dts_observed.add(self._add_chinese_new_years_day_two(name))  # type: ignore[arg-type]
+        dts_observed.add(self._add_chinese_new_years_day(name))
+        dts_observed.add(self._add_chinese_new_years_day_two(name))
 
         # Eid al-Fitr.
         dts_observed.update(self._add_eid_al_fitr_day(tr("Hari Raya Puasa")))
@@ -127,13 +127,13 @@ class Singapore(
         dts_observed.add(self._add_labor_day(tr("Labour Day")))
 
         # Vesak Day.
-        dts_observed.add(self._add_vesak(tr("Vesak Day")))  # type: ignore[arg-type]
+        dts_observed.add(self._add_vesak(tr("Vesak Day")))
 
         # National Day.
         dts_observed.add(self._add_holiday_aug_9(tr("National Day")))
 
-        # Deepavali.
-        dts_observed.add(self._add_diwali(tr("Deepavali")))  # type: ignore[arg-type]
+        # Diwali.
+        dts_observed.add(self._add_diwali(tr("Deepavali")))
 
         # Christmas Day.
         dts_observed.add(self._add_christmas_day(tr("Christmas Day")))
@@ -182,11 +182,12 @@ class SingaporeBuddhistHolidays(_CustomBuddhistHolidays):
         2024: (MAY, 22),
         2025: (MAY, 12),
         2026: (MAY, 31),
+        2027: (MAY, 20),
     }
 
 
 class SingaporeChineseHolidays(_CustomChineseHolidays):
-    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2026)
+    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2027)
     LUNAR_NEW_YEAR_DATES = {
         2006: (JAN, 30),
         2007: (FEB, 19),
@@ -222,11 +223,12 @@ class SingaporeHinduHolidays(_CustomHinduHolidays):
         2024: (OCT, 31),
         2025: (OCT, 20),
         2026: (NOV, 8),
+        2027: (OCT, 28),
     }
 
 
 class SingaporeIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2027)
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),
@@ -240,9 +242,11 @@ class SingaporeIslamicHolidays(_CustomIslamicHolidays):
         2023: (JUN, 29),
         2024: (JUN, 17),
         2025: (JUN, 7),
+        2026: (MAY, 27),
+        2027: (MAY, 17),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2027)
     EID_AL_FITR_DATES = {
         2002: (DEC, 6),
         2006: (OCT, 24),
@@ -251,6 +255,7 @@ class SingaporeIslamicHolidays(_CustomIslamicHolidays):
         2023: (APR, 22),
         2025: (MAR, 31),
         2026: (MAR, 21),
+        2027: (MAR, 10),
     }
 
 
