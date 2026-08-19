@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-11-15 20:42+0200\n"
-"PO-Revision-Date: 2023-11-15 20:55+0200\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -53,7 +53,7 @@ msgstr "День національної скорботи"
 
 #. Women's Day.
 msgid "Qadınlar günü"
-msgstr "Жіночий день"
+msgstr "День жінок"
 
 #. Spring Festival.
 msgid "Novruz bayramı"
@@ -79,7 +79,7 @@ msgstr "День національного визволення азербай�
 msgid "Azərbaycan Respublikasının Silahlı Qüvvələri günü"
 msgstr "День Збройних Сил"
 
-#. Independence Day.
+#. National Independence Day.
 msgid "Milli Müstəqillik Günü"
 msgstr "День національної незалежності"
 

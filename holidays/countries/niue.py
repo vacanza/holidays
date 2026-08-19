@@ -37,7 +37,7 @@ class Niue(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Static
 
     country = "NU"
     default_language = "en_NU"
-    # %s observed.
+    # %s (observed).
     observed_label = tr("%s (observed)")
     # Public Holidays Ordinance 1961.
     start_year = 1962

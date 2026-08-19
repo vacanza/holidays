@@ -27,6 +27,8 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         * [Ley 1.601/2000](https://web.archive.org/web/20250427173847/https://www.bacn.gov.py/leyes-paraguayas/1677/ley-n-1601--modifica-el-articulo-1-de-la-ley-no-71595-que-amplia-la-ley-n-0890-por-la-cual-se-determinan-los-feriados-de-la-republica)
         * [Ley 1.723/2001](https://web.archive.org/web/20250427173914/https://www.bacn.gov.py/leyes-paraguayas/634/ley-n-1723--autoriza-al-poder-ejecutivo-a-trasladar-los-feriados-nacionales-al-dia-lunes)
         * [Ley 4.531/2011](https://web.archive.org/web/20250420210317/https://www.bacn.gov.py/leyes-paraguayas/3831/ley-n-4531-restablece-el-dia-14-de-mayo-de-cada-ano-como-feriado-nacional)
+        * [Ley 7.544/2025](https://web.archive.org/web/20260725180630/https://www.bacn.gov.py/leyes-paraguayas/12908/ley-n-75442025--que-determina-los-feriados-nacionales-de-la-repblica-del-paraguay-se-establecen-los-feriados-mviles-y-se-faculta-al-poder-ejecutivo-a-instituir-otros-feriados-en-situaciones-especiales)
+        * [Decreto 6215/2026](https://web.archive.org/web/20260725180052/https://irunvillamayor.com.py/wp-content/uploads/2026/06/DECRETO6215.pdf)
         * <https://es.wikipedia.org/wiki/Anexo:Días_festivos_en_Paraguay>
         * <https://web.archive.org/web/20131212214628/https://www.abc.com.py/nacionales/feriados-de-2013-se-trasladaran-al-dia-lunes-494705.html>
         * <https://web.archive.org/web/20241207131557/https://www.ultimahora.com/establecen-traslados-feriados-el-2017-n1042098>
@@ -83,7 +85,7 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
             # National Holiday.
             self._add_holiday_may_14(tr("Feriado Nacional"))
 
-        # Independence Day.
+        # National Independence Day.
         self._add_holiday_may_15(tr("Día de la Independencia Nacional"))
 
         dates_obs = {
@@ -96,6 +98,18 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         }
         # Chaco Armistice Day.
         self._add_holiday(tr("Día de la Paz del Chaco"), dates_obs.get(self._year, (JUN, 12)))
+
+        # Ley 7.544/2025.
+        if self._year >= 2026:
+            dates_obs = {
+                # Decreto 6215/2026.
+                2026: (JUN, 22),
+            }
+            self._add_holiday(
+                # Constitution Oath Day.
+                tr("Día de la Jura de la Constitución Nacional"),
+                dates_obs.get(self._year, (JUN, 20)),
+            )
 
         # Asuncion Foundation's Day.
         name = tr("Día de la Fundación de Asunción")
@@ -149,7 +163,7 @@ class ParaguayStaticHolidays:
         * <https://web.archive.org/web/20250917075032/https://portal.ips.gov.py/sistemas/ipsportal/archivos/archivos/1744391513.pdf>
     """
 
-    # Public holiday.
+    # Public Holiday.
     public_holiday = tr("Asueto adicional")
     # Public sector holiday.
     public_sector_holiday = tr("Asueto de la Administración Pública")

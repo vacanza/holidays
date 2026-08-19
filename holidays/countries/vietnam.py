@@ -165,7 +165,7 @@ class VietnamStaticHolidays:
         * [2024](https://web.archive.org/web/20241002165957/https://thuvienphapluat.vn/cong-van/EN/Lao-dong-Tien-luong/Official-Dispatch-2450-VPCP-KGVX-2024-swap-of-working-days-during-the-Reunification-Day/606458/tieng-anh.aspx)
     """
 
-    # Date format (see strftime() Format Codes).
+    # Substituted date format.
     substituted_date_format = tr("%d/%m/%Y")
     # Day off (substituted from %s).
     substituted_label = tr("Ngày nghỉ (thay cho ngày %s)")

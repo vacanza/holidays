@@ -69,7 +69,7 @@ msgstr ""
 msgid "Κοίμηση της Θεοτόκου"
 msgstr ""
 
-#. Ochi Day.
+#. Ohi Day.
 msgid "Ημέρα του Όχι"
 msgstr ""
 

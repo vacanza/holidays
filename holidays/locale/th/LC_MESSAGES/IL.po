@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-01 20:46+0700\n"
-"PO-Revision-Date: 2025-06-26 17:55+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-08-07 17:07+0600\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "วันสุคคต"
 
 #. Simchat Torah / Shemini Atzeret.
 msgid "שמחת תורה/שמיני עצרת"
-msgstr "วันซิมหัต โทราห์ / วันเชมินี อัตเซเรต"
+msgstr "วันซิมหัต โทราห์/วันเชมินี อัตเซเรต"
 
 #. Pesach (Passover).
 msgid "פסח"
@@ -97,10 +97,10 @@ msgstr "วันทิชอา เบอัฟ"
 msgid "חנוכה"
 msgstr "เทศกาลฮานุกกะห์"
 
-#. Ta`anit Ester (Fast of Esther).
+#. Ta'anit Ester (Fast of Esther).
 msgid "תענית אסתר"
 msgstr "วันทาอานิต เอสเธอร์"
 
 #. Lag Ba'omer (Lag BaOmer).
-msgid "ל\"ג בעומר"
+msgid "ל״ג בעומר"
 msgstr "วันแล็ก บาโอเมอร์"

@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.99\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-04 01:19+0000\n"
-"PO-Revision-Date: 2026-06-04 11:21+0000\n"
-"Last-Translator: Paresh Joshi <194076591+pareshjoshij@users.noreply.github.com>\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_US\n"
 
-#. %s (observed)
+#. %s (observed).
 #, c-format
 msgid "%s (observed)"
 msgstr ""
@@ -180,7 +180,7 @@ msgstr ""
 msgid "Catch Up Day"
 msgstr ""
 
-#. Special Bank Holiday.
+#. National Banking Holiday.
 msgid "National Banking Holiday"
 msgstr ""
 
@@ -436,8 +436,8 @@ msgstr ""
 msgid "Saturday before Christmas Eve"
 msgstr ""
 
-#. Day after Christmas.
-msgid "Day after Christmas"
+#. Day After Christmas.
+msgid "Day After Christmas"
 msgstr ""
 
 #. Day before Decoration Day.
