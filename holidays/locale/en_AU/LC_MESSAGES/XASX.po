@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.103\n"
+"Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-08-03 15:45+0000\n"
-"PO-Revision-Date: 2026-08-14 01:20+0000\n"
+"PO-Revision-Date: 2026-08-19 11:38+0530\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_AU\n"
@@ -63,6 +63,23 @@ msgstr ""
 msgid "Boxing Day"
 msgstr ""
 
+#. %s (markets close early).
+#, c-format
+msgid "%s (markets close early)"
+msgstr ""
+
+#. Easter Thursday.
+msgid "Easter Thursday"
+msgstr ""
+
+#. Last Business Day before Christmas Day.
+msgid "Last Business Day before Christmas Day"
+msgstr ""
+
+#. Last Business Day of the Year.
+msgid "Last Business Day of the Year"
+msgstr ""
+
 #. %s (No Settlement).
 #, c-format
 msgid "%s (No Settlement)"
@@ -80,25 +97,8 @@ msgstr ""
 msgid "Melbourne Cup Day"
 msgstr ""
 
-#. %s (markets close early)
-#, c-format
-msgid "%s (markets close early)"
-msgstr ""
-
 #. Day following New Year's Day.
 msgid "Day following New Year's Day"
-msgstr ""
-
-#. Easter Thursday.
-msgid "Easter Thursday"
-msgstr ""
-
-#. Last Business day before Christmas Day.
-msgid "Last Business day before Christmas Day"
-msgstr ""
-
-#. Last Business day of the Year.
-msgid "Last Business day of the Year"
 msgstr ""
 
 #. Easter Tuesday / Public Holiday.

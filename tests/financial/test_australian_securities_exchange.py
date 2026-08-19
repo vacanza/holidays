@@ -23,6 +23,9 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
 
     def test_special_holidays(self):
         self.assertHoliday(
+            "2004-01-02",
+            "2004-04-26",
+            "2010-04-26",
             "2011-04-26",
             "2022-09-22",
         )
@@ -98,15 +101,12 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
         self.assertNonObservedHolidayName(name, (f"{year}-04-25" for year in self.full_range))
         self.assertHolidayName(
             name,
-            "2010-04-26",
-            "2019-04-25",
             "2022-04-25",
             "2023-04-25",
             "2024-04-25",
             "2025-04-25",
         )
         self.assertNoHoliday(
-            "2010-04-25",
             "2020-04-25",
             "2021-04-25",
             "2026-04-25",
@@ -134,21 +134,102 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
         self.assertNoHolidayName(name_queen, range(2023, self.end_year))
         self.assertNoHolidayName(name_king, range(self.start_year, 2023))
 
-    def test_anzac_day_(self):
-        name = "ANZAC Day (No Settlement)"
-        self.assertNoRestrictedSettlementHolidayName(
+    def test_christmas_day(self):
+        name = "Christmas Day"
+        self.assertNonObservedHolidayName(name, (f"{year}-12-25" for year in self.full_range))
+        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(
             name,
-            "2000-04-25",
-            "2001-04-25",
-            "2002-04-25",
-            "2003-04-25",
-            "2005-04-25",
-            "2006-04-25",
-            "2007-04-25",
-            "2008-04-25",
+            "2020-12-25",
+            "2021-12-27",
+            "2022-12-27",
+            "2023-12-25",
+            "2024-12-25",
+            "2025-12-25",
         )
-        self.assertNoRestrictedSettlementHolidayName(name, range(2009, self.end_year))
-        self.assertRestrictedSettlementHolidayName(name, "2004-04-26")
+
+    def test_boxing_day(self):
+        name = "Boxing Day"
+        self.assertNonObservedHolidayName(name, (f"{year}-12-26" for year in self.full_range))
+        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(
+            name,
+            "2020-12-28",
+            "2021-12-28",
+            "2023-12-26",
+            "2024-12-26",
+            "2025-12-26",
+        )
+
+    def test_easter_thursday(self):
+        name = "Easter Thursday (markets close early)"
+        self.assertHalfDayHolidayName(
+            name,
+            "2000-04-20",
+            "2004-04-08",
+            "2008-03-20",
+        )
+        self.assertHalfDayHolidayName(name, range(self.start_year, 2009))
+        self.assertNoHalfDayHolidayName(name, range(2009, self.end_year))
+
+    def test_last_business_day_before_christmas_day(self):
+        name = "Last Business Day before Christmas Day (markets close early)"
+        self.assertNoHolidayName(name)
+        dts = (
+            "2000-12-22",
+            "2006-12-22",
+            "2016-12-23",
+            "2017-12-22",
+            "2020-12-24",
+            "2021-12-24",
+            "2024-12-24",
+            "2025-12-24",
+            "2026-12-24",
+        )
+        self.assertHalfDayHolidayName(name, dts)
+        self.assertHalfDayNonObservedHolidayName(name, dts)
+        no_dts = (
+            "2000-12-24",
+            "2005-12-24",
+            "2006-12-24",
+            "2011-12-24",
+            "2016-12-24",
+            "2017-12-24",
+            "2022-12-24",
+            "2023-12-24",
+        )
+        self.assertNoHalfDayHolidayName(name, no_dts)
+        self.assertNoHalfDayNonObservedHolidayName(name, no_dts)
+
+    def test_last_business_day_of_the_year(self):
+        name = "Last Business Day of the Year (markets close early)"
+        self.assertNoHolidayName(name)
+        dts = (
+            "2000-12-29",
+            "2005-12-30",
+            "2006-12-29",
+            "2011-12-30",
+            "2016-12-30",
+            "2017-12-29",
+            "2020-12-31",
+            "2021-12-31",
+            "2024-12-31",
+            "2025-12-31",
+            "2026-12-31",
+        )
+        self.assertHalfDayHolidayName(name, dts)
+        self.assertHalfDayNonObservedHolidayName(name, dts)
+        no_dts = (
+            "2000-12-31",
+            "2005-12-31",
+            "2011-12-31",
+            "2016-12-31",
+            "2017-12-31",
+            "2022-12-31",
+            "2023-12-31",
+        )
+        self.assertNoHalfDayHolidayName(name, no_dts)
+        self.assertNoHalfDayNonObservedHolidayName(name, no_dts)
 
     def test_labour_day_(self):
         name = "Labour Day (No Settlement)"
@@ -209,110 +290,6 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
         self.assertNoRestrictedSettlementHolidayName(name, range(2017, self.end_year))
         self.assertRestrictedSettlementHolidayName(name, range(self.start_year, 2017))
 
-    def test_christmas_day(self):
-        name = "Christmas Day"
-        self.assertNonObservedHolidayName(name, (f"{year}-12-25" for year in self.full_range))
-        self.assertHolidayName(name, self.full_range)
-        self.assertHolidayName(
-            name,
-            "2020-12-25",
-            "2021-12-27",
-            "2022-12-27",
-            "2023-12-25",
-            "2024-12-25",
-            "2025-12-25",
-        )
-
-    def test_boxing_day(self):
-        name = "Boxing Day"
-        self.assertNonObservedHolidayName(name, (f"{year}-12-26" for year in self.full_range))
-        self.assertHolidayName(name, self.full_range)
-        self.assertHolidayName(
-            name,
-            "2020-12-28",
-            "2021-12-28",
-            "2023-12-26",
-            "2024-12-26",
-            "2025-12-26",
-        )
-
-    def test_last_business_day_before_christmas_day(self):
-        name = "Last Business day before Christmas Day (markets close early)"
-        self.assertNoHolidayName(name)
-        dts = (
-            "2000-12-22",
-            "2006-12-22",
-            "2016-12-23",
-            "2017-12-22",
-            "2020-12-24",
-            "2021-12-24",
-            "2024-12-24",
-            "2025-12-24",
-            "2026-12-24",
-        )
-        self.assertHalfDayHolidayName(name, dts)
-        self.assertHalfDayNonObservedHolidayName(name, dts)
-        no_dts = (
-            "2000-12-24",
-            "2005-12-24",
-            "2006-12-24",
-            "2011-12-24",
-            "2016-12-24",
-            "2017-12-24",
-            "2022-12-24",
-            "2023-12-24",
-        )
-        self.assertNoHalfDayHolidayName(name, no_dts)
-        self.assertNoHalfDayNonObservedHolidayName(name, no_dts)
-
-    def test_last_business_day_of_the_year(self):
-        name = "Last Business day of the Year (markets close early)"
-        self.assertNoHolidayName(name)
-        dts = (
-            "2000-12-29",
-            "2005-12-30",
-            "2006-12-29",
-            "2011-12-30",
-            "2016-12-30",
-            "2017-12-29",
-            "2020-12-31",
-            "2021-12-31",
-            "2024-12-31",
-            "2025-12-31",
-            "2026-12-31",
-        )
-        self.assertHalfDayHolidayName(name, dts)
-        self.assertHalfDayNonObservedHolidayName(name, dts)
-        no_dts = (
-            "2000-12-31",
-            "2005-12-31",
-            "2011-12-31",
-            "2016-12-31",
-            "2017-12-31",
-            "2022-12-31",
-            "2023-12-31",
-        )
-        self.assertNoHalfDayHolidayName(name, no_dts)
-        self.assertNoHalfDayNonObservedHolidayName(name, no_dts)
-
-    def test_day_following_new_years_day(self):
-        name = "Day following New Year's Day (markets close early)"
-        dts = (
-            "2001-01-02",
-            "2002-01-02",
-            "2004-01-02",
-        )
-        self.assertHalfDayHolidayName(name, dts)
-        self.assertHalfDayNonObservedHolidayName(name, dts)
-        no_dts = (
-            "2000-01-02",
-            "2003-01-02",
-            "2005-01-02",
-            "2006-01-02",
-        )
-        self.assertNoHalfDayHolidayName(name, no_dts)
-        self.assertNoHalfDayNonObservedHolidayName(name, no_dts)
-
     def test_2025(self):
         self.assertHolidaysInYear(
             2025,
@@ -329,8 +306,8 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
     def test_half_day_2025(self):
         self.assertHalfDayHolidaysInYear(
             2025,
-            ("2025-12-24", "Last Business day before Christmas Day (markets close early)"),
-            ("2025-12-31", "Last Business day of the Year (markets close early)"),
+            ("2025-12-24", "Last Business Day before Christmas Day (markets close early)"),
+            ("2025-12-31", "Last Business Day of the Year (markets close early)"),
         )
 
     def test_l10n_default(self):
@@ -341,10 +318,10 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
             ("2024-04-01", "Easter Monday"),
             ("2024-04-25", "ANZAC Day"),
             ("2024-06-10", "King's Birthday"),
-            ("2024-12-24", "Last Business day before Christmas Day (markets close early)"),
+            ("2024-12-24", "Last Business Day before Christmas Day (markets close early)"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
-            ("2024-12-31", "Last Business day of the Year (markets close early)"),
+            ("2024-12-31", "Last Business Day of the Year (markets close early)"),
         )
 
     def test_l10n_en_us(self):
@@ -356,10 +333,10 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
             ("2024-04-01", "Easter Monday"),
             ("2024-04-25", "ANZAC Day"),
             ("2024-06-10", "King's Birthday"),
-            ("2024-12-24", "Last Business day before Christmas Day (markets close early)"),
+            ("2024-12-24", "Last Business Day before Christmas Day (markets close early)"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
-            ("2024-12-31", "Last Business day of the Year (markets close early)"),
+            ("2024-12-31", "Last Business Day of the Year (markets close early)"),
         )
 
     def test_l10n_th(self):

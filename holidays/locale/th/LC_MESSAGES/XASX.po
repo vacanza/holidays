@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.103\n"
+"Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-08-03 15:45+0000\n"
-"PO-Revision-Date: 2026-08-14 01:20+0000\n"
+"PO-Revision-Date: 2026-08-19 11:38+0530\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -63,6 +63,23 @@ msgstr "วันคริสต์มาส"
 msgid "Boxing Day"
 msgstr "วันเปิดกล่องของขวัญ"
 
+#. %s (markets close early).
+#, c-format
+msgid "%s (markets close early)"
+msgstr "%s (ตลาดปิดทำการก่อนเวลา)"
+
+#. Easter Thursday.
+msgid "Easter Thursday"
+msgstr "วันพฤหัสบดีอีสเตอร์"
+
+#. Last Business Day before Christmas Day.
+msgid "Last Business Day before Christmas Day"
+msgstr "วันทำการสุดท้ายก่อนวันคริสต์มาส"
+
+#. Last Business Day of the Year.
+msgid "Last Business Day of the Year"
+msgstr "วันทำการสุดท้ายของปี"
+
 #. %s (No Settlement).
 #, c-format
 msgid "%s (No Settlement)"
@@ -80,26 +97,9 @@ msgstr "วันหยุดธนาคาร"
 msgid "Melbourne Cup Day"
 msgstr "วันเมลเบิร์นคัพ"
 
-#. %s (markets close early)
-#, c-format
-msgid "%s (markets close early)"
-msgstr "%s (ตลาดปิดทำการก่อนเวลา)"
-
 #. Day following New Year's Day.
 msgid "Day following New Year's Day"
 msgstr "วันถัดจากวันขึ้นปีใหม่"
-
-#. Easter Thursday.
-msgid "Easter Thursday"
-msgstr "วันพฤหัสบดีอีสเตอร์"
-
-#. Last Business day before Christmas Day.
-msgid "Last Business day before Christmas Day"
-msgstr "วันทำการสุดท้ายก่อนวันคริสต์มาส"
-
-#. Last Business day of the Year.
-msgid "Last Business day of the Year"
-msgstr "วันทำการสุดท้ายของปี"
 
 #. Easter Tuesday / Public Holiday.
 msgid "Easter Tuesday / Public Holiday"
