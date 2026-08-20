@@ -1144,7 +1144,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Mauritania</td>
 <td>MR</td>
 <td></td>
-<td></td>
+<td><strong>ar</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -2034,6 +2034,13 @@ code when available. The following financial markets are available:
 <td>Korea Exchange (KRX) holidays</td>
 <td>en_US, <strong>ko</strong>, th</td>
 <td></td>
+</tr>
+<tr>
+<td>London Stock Exchange</td>
+<td>XLON</td>
+<td>London Stock Exchange (LSE) market holidays</td>
+<td><strong>en_GB</strong>, en_US, th</td>
+<td>HALF_DAY</td>
 </tr>
 <tr>
 <td>NASDAQ</td>
