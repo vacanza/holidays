@@ -53,11 +53,11 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("O. L. H. Hemelvaart"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Pinksteren"))
+        # Pentecost.
+        self._add_pentecost(tr("Pinksteren"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pinkstermaandag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pinkstermaandag"))
 
         # National Day.
         self._add_holiday_jul_21(tr("Nationale feestdag"))
@@ -76,7 +76,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_bank_holidays(self):
         # Good Friday.
-        self._add_good_friday(tr("Goede Vrijdag"))
+        self._add_good_friday(tr("Goede vrijdag"))
 
         # Friday after Ascension Day.
         self._add_holiday_40_days_past_easter(tr("Vrijdag na O. L. H. Hemelvaart"))

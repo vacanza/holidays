@@ -52,8 +52,8 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("Christi Himmelfaart"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Péngschtméindeg"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Péngschtméindeg"))
 
         # National Day.
         self._add_holiday_jun_23(tr("Nationalfeierdag"))

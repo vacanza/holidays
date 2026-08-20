@@ -196,7 +196,7 @@ class TestSenegal(CommonCountryTests, TestCase):
             ("2024-04-10", "Eid al-Fitr"),
             ("2024-05-01", "Labor Day"),
             ("2024-05-09", "Ascension Day"),
-            ("2024-05-20", "Whit Monday"),
+            ("2024-05-20", "Pentecost Monday"),
             ("2024-06-17", "Eid al-Adha"),
             ("2024-07-17", "Ashura"),
             ("2024-08-15", "Assumption Day"),

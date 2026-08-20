@@ -158,12 +158,12 @@ class TestDjibouti(CommonCountryTests, TestCase):
     def test_l10n_ar(self):
         self.assertLocalizedHolidays(
             "ar",
-            ("2022-01-01", "يوم السنة الجديدة"),
+            ("2022-01-01", "رأس السنة الميلادية"),
             ("2022-02-28", "الإسراء والمعراج (تقديري)"),
             ("2022-05-01", "عيد العمال"),
             ("2022-05-02", "عيد الفطر (تقديري)"),
             ("2022-05-03", "عطلة عيد الفطر (تقديري)"),
-            ("2022-06-27", "عيد الإستقلال"),
+            ("2022-06-27", "عيد الاستقلال"),
             ("2022-06-28", "عطلة عيد الاستقلال"),
             ("2022-07-08", "يوم عرفة (تقديري)"),
             ("2022-07-09", "عيد الأضحى (تقديري)"),
@@ -183,7 +183,7 @@ class TestDjibouti(CommonCountryTests, TestCase):
             ("2022-05-03", "Eid al-Fitr Holiday (estimated)"),
             ("2022-06-27", "Independence Day"),
             ("2022-06-28", "Independence Day Holiday"),
-            ("2022-07-08", "Arafat Day (estimated)"),
+            ("2022-07-08", "Day of Arafah (estimated)"),
             ("2022-07-09", "Eid al-Adha (estimated)"),
             ("2022-07-10", "Eid al-Adha Holiday (estimated)"),
             ("2022-07-30", "Islamic New Year (estimated)"),

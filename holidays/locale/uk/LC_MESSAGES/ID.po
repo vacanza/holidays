@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.60\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-23 14:09+0300\n"
-"PO-Revision-Date: 2024-10-30 16:45+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -79,9 +79,9 @@ msgstr "Курбан-байрам"
 msgid "Hari kedua Paskah"
 msgstr "Великодній понеділок"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Hari kedua Pentakosta"
-msgstr "День Святого Духа"
+msgstr "Другий день Пʼятидесятниці"
 
 #. Nuzul Al Quran.
 msgid "Nuzululqur'an"

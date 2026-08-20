@@ -13,6 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC
+from holidays.constants import PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -100,11 +101,11 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             # Late Summer Bank Holiday.
             self._add_holiday_last_mon_of_aug(tr("Late Summer Bank Holiday"))
         else:
-            # Whit Monday.
-            self._add_whit_monday(tr("Whit Monday"))
+            # Pentecost Monday.
+            self._add_pentecost_monday(tr("Whit Monday"))
 
     def _populate_subdiv_holidays(self):
-        if self.subdiv != "SCT":
+        if PUBLIC in self.categories and self._normalized_subdiv != "SCT":
             if self._year >= 1975:
                 # New Year's Day.
                 self._add_observed(self._add_new_years_day(tr("New Year's Day")))

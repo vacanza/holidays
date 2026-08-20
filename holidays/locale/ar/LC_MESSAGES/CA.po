@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-05-20 18:16-0700\n"
-"PO-Revision-Date: 2026-03-24 01:15+0100\n"
-"Last-Translator: Mustapha Nkhili <mustaphankhili22@gmail.com>\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "%s (يوم تعويضي)"
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr "يوم السنة الجديدة"
+msgstr "رأس السنة الميلادية"
 
 #. Good Friday.
 msgid "Good Friday"
@@ -87,7 +87,7 @@ msgstr "يوم العائلة"
 
 #. Easter Monday.
 msgid "Easter Monday"
-msgstr "عيد الفصح الاثنين"
+msgstr "إثنين الفصح"
 
 #. Heritage Day.
 msgid "Heritage Day"

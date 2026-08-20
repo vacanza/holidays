@@ -59,12 +59,12 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             # Easter Monday.
             self._add_easter_monday(tr("Húsvét Hétfő"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Pünkösd"))
+        # Pentecost.
+        self._add_pentecost(tr("Pünkösd"))
 
         if self._year <= 1952 or self._year >= 1992:
-            # Whit Monday.
-            self._add_whit_monday(tr("Pünkösdhétfő"))
+            # Pentecost Monday.
+            self._add_pentecost_monday(tr("Pünkösdhétfő"))
 
         if self._year >= 1946:
             # Labor Day.

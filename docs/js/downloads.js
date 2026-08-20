@@ -163,14 +163,14 @@ function holidayDownloads() {
             const events = eventsList
                 .flat()
                 .filter(event => {
-                    const year = new Date(event.date || event.start).getFullYear();
+                    const year = Number(event.date.slice(0, 4));
                     return year >= this.startYear && year <= this.endYear;
                 })
-                .sort((a, b) => new Date(a.date || a.start || 0) - new Date(b.date || b.start || 0));
+                .sort((a, b) => a.date.localeCompare(b.date));
 
             const grouped = {};
             for (const event of events) {
-                const year = new Date(event.date || event.start).getFullYear();
+                const year = Number(event.date.slice(0, 4));
 
                 if (!grouped[year]) {
                     grouped[year] = [];
@@ -193,18 +193,15 @@ function holidayDownloads() {
 
             const results = await Promise.all(fetches);
 
-            // Extract dynamic header or fallback to default
-            const dynamicHeader = results.find(text => text)?.match(/^BEGIN:VCALENDAR[\s\S]*?(?=BEGIN:VEVENT)/i)?.[0].trim()
-                || "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nCALSCALE:GREGORIAN";
+            const dynamicHeader = results
+                .find(text => text)
+                .match(/^[\s\S]*?CALSCALE:GREGORIAN/m)[0];
 
             // Combine events from all fetched files
             const combinedEvents = results
                 .flatMap(text => text.match(/BEGIN:VEVENT[\s\S]*?END:VEVENT/gi) || [])
                 .filter(eventText => {
-                    const match =
-                        eventText.match(/^DTSTART;VALUE=DATE:(\d{4})/m) ||
-                        eventText.match(/^DTSTART:(\d{4})/m);
-
+                    const match = eventText.match(/^DTSTART;VALUE=DATE:(\d{4})/m);
                     if (!match) return false;
 
                     const year = Number(match[1]);

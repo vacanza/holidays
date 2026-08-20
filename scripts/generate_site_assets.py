@@ -176,6 +176,7 @@ LANGUAGES = {
     "fr_BI": "French (Burundi)",
     "fr_BJ": "French (Benin)",
     "fr_HT": "French (Haiti)",
+    "fr_MC": "French (Monaco)",
     "fr_NE": "French (Niger)",
     "fr_SN": "French (Senegal)",
     # --- Italian Locales ---

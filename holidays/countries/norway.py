@@ -122,11 +122,11 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("Kristi himmelfartsdag"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Første pinsedag"))
+        # Pentecost.
+        self._add_pentecost(tr("Første pinsedag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Andre pinsedag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Andre pinsedag"))
 
         # According to https://no.wikipedia.org/wiki/Første_juledag,
         # these dates are only valid from year > 1700

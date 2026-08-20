@@ -495,23 +495,22 @@ class ChristianHolidays:
         """
         return self._add_holiday_jun_29(name)
 
-    def _add_whit_monday(self, name) -> date:
+    def _add_pentecost_monday(self, name) -> date:
         """
-        Add Whit Monday (50 days after Easter Sunday).
+        Add Pentecost Monday (50 days after Easter Sunday).
 
-        Whit Monday or Pentecost Monday, also known as Monday of the
+        Pentecost Monday (Whit Monday), also known as Monday of the
         Holy Spirit, is the holiday celebrated the day after Pentecost.
-        https://en.wikipedia.org/wiki/Pentecost
         https://en.wikipedia.org/wiki/Whit_Monday
         """
         return self._add_holiday(name, _timedelta(self._easter_sunday, +50))
 
-    def _add_whit_sunday(self, name, calendar=None) -> date:
+    def _add_pentecost(self, name, calendar=None) -> date:
         """
-        Add Whit Sunday (49 days after Easter Sunday).
+        Add Pentecost (49 days after Easter Sunday).
 
-        Whit Sunday, also called Pentecost, is a holiday which commemorates
-        the descent of the Holy Spirit upon the Apostles and other followers
+        Pentecost (also called Whit Sunday, Whitsunday or Whitsun) is a holiday which
+        commemorates the descent of the Holy Spirit upon the Apostles and other followers
         of Jesus Christ while they were in Jerusalem celebrating the
         Feast of Weeks.
         https://en.wikipedia.org/wiki/Pentecost

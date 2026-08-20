@@ -191,8 +191,8 @@ class TestArgs(unittest.TestCase):
 
     def test_subdivisions_aliases(self):
         subdivisions_aliases = {
-            "subdiv_1": ("S1", "S_1"),
-            "subdiv_2": ("S2", "S_2"),
+            "Subdiv_1": ("S1", "S_1"),
+            "Subdiv_2": ("S2", "S_2"),
             "3": ("S3", "S_3"),
         }
         for subdiv, aliases in subdivisions_aliases.items():
@@ -1476,6 +1476,34 @@ class TestClosestHoliday(unittest.TestCase):
             us_calendar.get_closest_holiday(date(2024, 2, 1), direction="backward"),
             (date(2024, 1, 15), "Martin Luther King Jr. Day"),
         )
+
+    def test_get_closest_holiday_updates_years(self):
+        us = US(years=2024)
+        self.assertEqual(us.years, {2024})
+
+        us.get_closest_holiday(date(2024, 12, 31), "forward")
+        self.assertIn(2025, us.years)
+
+        us_2 = US(years=2024)
+        self.assertEqual(us_2.years, {2024})
+
+        us_2.get_closest_holiday(date(2024, 1, 1), "backward")
+        self.assertIn(2023, us_2.years)
+
+    def test_get_closest_holiday_expand_false_keeps_state(self):
+        us = US(years=2024, expand=False)
+        keys_before = set(us.keys())
+
+        self.assertIsNone(us.get_closest_holiday(date(2024, 12, 31), "forward"))
+        self.assertEqual(us.years, {2024})
+        self.assertEqual(set(us.keys()), keys_before)
+
+        self.assertEqual(
+            us.get_closest_holiday(date(2024, 12, 31), "backward"),
+            (date(2024, 12, 25), "Christmas Day"),
+        )
+        self.assertEqual(us.years, {2024})
+        self.assertEqual(set(us.keys()), keys_before)
 
     def test_get_closest_holiday_invalid_direction(self):
         self.assertRaises(

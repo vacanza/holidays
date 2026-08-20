@@ -280,9 +280,7 @@ class TestTuvalu(CommonCountryTests, TestCase):
         for subdiv in Tuvalu.subdivisions:
             holidays_found.update(
                 Tuvalu(
-                    subdiv=subdiv,
-                    observed=False,
-                    years=(1990, 2007, 2012, 2015, 2023),
+                    subdiv=subdiv, observed=False, years=(1990, 2007, 2012, 2015, 2023)
                 ).values()
             )
         all_holidays = {

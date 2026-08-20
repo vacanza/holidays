@@ -123,12 +123,12 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
             # National Day.
             self._add_holiday_jun_6(tr("Nationaldagen"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Pingstdagen"))
+        # Pentecost.
+        self._add_pentecost(tr("Pingstdagen"))
 
         if self._year <= 2004:
-            # Whit Monday.
-            self._add_whit_monday(tr("Annandag pingst"))
+            # Pentecost Monday.
+            self._add_pentecost_monday(tr("Annandag pingst"))
 
         # Midsummer Day.
         self._add_holiday_1st_sat_from_jun_20(tr("Midsommardagen"))
@@ -196,7 +196,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         )
 
         self._add_holiday_47_days_past_easter(
-            # Day before Whitsun Eve.
+            # Day before Pentecost Eve.
             self._format_holiday_name(self.begin_time_label, tr("Dag före Pingstafton"))
         )
 
@@ -222,7 +222,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Squeeze day.
         self._add_holiday_40_days_past_easter(tr("Klämdag"))
 
-        # Whitsun Eve.
+        # Pentecost Eve.
         self._add_holiday_48_days_past_easter(tr("Pingstafton"))
 
 

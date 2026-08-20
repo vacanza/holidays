@@ -187,7 +187,7 @@ class TestCongo(CommonCountryTests, TestCase):
             ("2024-04-01", "Easter Monday"),
             ("2024-05-01", "Labor Day"),
             ("2024-05-09", "Ascension Day"),
-            ("2024-05-20", "Whit Monday"),
+            ("2024-05-20", "Pentecost Monday"),
             ("2024-06-10", "Reconciliation Day"),
             ("2024-08-15", "National Day"),
             ("2024-11-01", "All Saints' Day"),

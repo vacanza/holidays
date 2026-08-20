@@ -743,16 +743,13 @@ class HolidayBase(dict[date, str]):
     @cached_property
     def _normalized_subdiv(self):
         return (
-            self.subdivisions_aliases.get(self.subdiv, self.subdiv)
-            .translate(
-                str.maketrans(
-                    {
-                        "-": "_",
-                        " ": "_",
-                    }
+            (
+                self.subdivisions_aliases.get(self.subdiv, self.subdiv).translate(
+                    str.maketrans({"-": "_", " ": "_"})
                 )
             )
-            .lower()
+            if self.subdiv is not None
+            else None
         )
 
     @property
@@ -862,13 +859,16 @@ class HolidayBase(dict[date, str]):
             for data in _normalize_tuple(getattr(self, mapping_name, {}).get(self._year, ())):
                 if len(data) == 3:  # Special holidays.
                     month, day, name = data
-                    self._add_holiday(
-                        self.tr(self.observed_label) % self.tr(name)
-                        if observed
-                        else self.tr(name),
-                        month,
-                        day,
-                    )
+                    if isinstance(name, tuple):  # Composite label (fmt, inner).
+                        fmt, inner = name
+                        translated_name = self.tr(fmt) % self.tr(inner)
+                    else:
+                        translated_name = (
+                            self.tr(self.observed_label) % self.tr(name)
+                            if observed
+                            else self.tr(name)
+                        )
+                    self._add_holiday(translated_name, month, day)
                 else:  # Substituted holidays.
                     to_month, to_day, from_month, from_day, *optional = data
                     from_date = date(optional[0] if optional else self._year, from_month, from_day)
@@ -983,14 +983,14 @@ class HolidayBase(dict[date, str]):
         for category in self._sorted_categories:
             if asch_method := getattr(
                 self,
-                f"_populate_subdiv_{self._normalized_subdiv}_{category.lower()}_holidays",
+                f"_populate_subdiv_{self._normalized_subdiv.lower()}_{category.lower()}_holidays",
                 None,
             ):
                 asch_method()
 
         if self.has_special_holidays:
             self._add_special_holidays(
-                f"special_{self._normalized_subdiv}_{category.lower()}_holidays"
+                f"special_{self._normalized_subdiv.lower()}_{category.lower()}_holidays"
                 for category in self._sorted_categories
             )
 
@@ -1140,10 +1140,13 @@ class HolidayBase(dict[date, str]):
             raise AttributeError(f"Unknown direction: {direction}")
 
         dt = self.__keytransform__(target_date or datetime.now().date())
-        if direction == "forward" and (next_year := dt.year + 1) not in self.years:
-            self._populate(next_year)
-        elif direction == "backward" and (previous_year := dt.year - 1) not in self.years:
-            self._populate(previous_year)
+        if self.expand:
+            if direction == "forward" and (next_year := dt.year + 1) not in self.years:
+                self.years.add(next_year)
+                self._populate(next_year)
+            elif direction == "backward" and (previous_year := dt.year - 1) not in self.years:
+                self.years.add(previous_year)
+                self._populate(previous_year)
 
         sorted_dates = sorted(self.keys())
         position = (

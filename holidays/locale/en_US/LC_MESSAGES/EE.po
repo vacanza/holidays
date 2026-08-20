@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.86\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2025-11-27 18:21+0200\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -44,9 +44,9 @@ msgstr "Good Friday"
 msgid "ülestõusmispühade 1. püha"
 msgstr "Easter Sunday"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "nelipühade 1. püha"
-msgstr "Whit Sunday"
+msgstr "Pentecost"
 
 #. May Day.
 msgid "kevadpüha"

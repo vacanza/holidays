@@ -23,7 +23,11 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
         super().setUpClass(SaudiArabia, years=years, years_non_observed=years)
 
     def test_special_holidays(self):
-        self.assertHoliday("2022-11-23")
+        self.assertHoliday(
+            "2011-02-26",
+            "2015-01-25",
+            "2022-11-23",
+        )
 
     def test_eid_al_fitr(self):
         name = "عطلة عيد الفطر"
@@ -193,7 +197,7 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             ("2022-07-13", "عطلة عيد الأضحى (يوم تعويضي)"),
             ("2022-09-22", "اليوم الوطني (يوم تعويضي)"),
             ("2022-09-23", "اليوم الوطني"),
-            ("2022-11-23", "يوم وطني"),
+            ("2022-11-23", "عطلة فوز المنتخب في كأس العالم"),
         )
 
     def test_l10n_default(self):
@@ -243,7 +247,7 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             ("2023-04-24", "Eid al-Fitr Holiday"),
             ("2023-04-25", "Eid al-Fitr Holiday (observed)"),
             ("2023-04-26", "Eid al-Fitr Holiday (observed)"),
-            ("2023-06-27", "Arafat Day"),
+            ("2023-06-27", "Day of Arafah"),
             ("2023-06-28", "Eid al-Adha Holiday"),
             ("2023-06-29", "Eid al-Adha Holiday"),
             ("2023-06-30", "Eid al-Adha Holiday"),

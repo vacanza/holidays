@@ -52,7 +52,7 @@ msgstr ""
 msgid "praznik dela"
 msgstr ""
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "binkoštna nedelja"
 msgstr ""
 

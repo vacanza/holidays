@@ -44,7 +44,7 @@ msgstr ""
 msgid "ülestõusmispühade 1. püha"
 msgstr ""
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "nelipühade 1. püha"
 msgstr ""
 

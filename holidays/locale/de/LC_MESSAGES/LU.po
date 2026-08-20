@@ -48,7 +48,7 @@ msgstr "Europatag"
 msgid "Christi Himmelfaart"
 msgstr "Christi Himmelfahrt"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Péngschtméindeg"
 msgstr "Pfingstmontag"
 
