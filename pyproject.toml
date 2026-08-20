@@ -30,6 +30,7 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: 3.15",
   "Programming Language :: Python :: Implementation :: CPython",
   "Topic :: File Formats :: JSON",
   "Topic :: Office/Business :: Financial :: Accounting",
@@ -76,7 +77,8 @@ tests = [
   "coverage>=7.12,<8",
   "numpy>=2,<2.3; python_version<'3.11'",
   "numpy>=2.3,<2.5; python_version=='3.11'",
-  "numpy>=2.5,<3; python_version>='3.12'",
+  "numpy>=2.5,<3; python_version>='3.12' and python_version<'3.15'",
+  "numpy>=2.5.2,<3; python_version>='3.15'",
   "polib>=1.2,<2",
   "pygments>=2.20,<3",
   "pytest>=9.0.1,<10",
@@ -124,6 +126,9 @@ multi_line_output = 3
 no_inline_sort = true
 known_first_party = [ "holidays", "tests" ]
 skip = [ "docs" ]
+
+[tool.pyproject-fmt]
+max_supported_python = "3.15"
 
 [tool.mypy]
 overrides = [
