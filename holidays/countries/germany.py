@@ -174,7 +174,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             return None
 
         normalized_subdiv = self._normalized_subdiv
-        subdiv = "BY" if normalized_subdiv in {"augsburg", "byp"} else normalized_subdiv.upper()
+        subdiv = "BY" if normalized_subdiv in {"Augsburg", "BYP"} else normalized_subdiv.upper()
         school_holiday_names = self._get_school_holiday_names()
         for (
             start_year_offset,

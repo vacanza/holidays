@@ -422,7 +422,7 @@ class India(
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
-        if self.subdiv != "MH":
+        if self._normalized_subdiv != "MH":
             self._add_ganesh_chaturthi(
                 # Ganesh Chaturthi / Vinayak Chaturthi.
                 tr("Ganesh Chaturthi / Vinayak Chaturthi")

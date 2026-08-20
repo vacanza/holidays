@@ -190,8 +190,8 @@ class Malaysia(
 
     def _get_weekend(self, dt: date) -> set[int]:
         if (
-            self.subdiv == "01" and (dt.year <= 1994 or 2014 <= dt.year <= 2024)
-        ) or self.subdiv in {"02", "03", "11"}:
+            self._normalized_subdiv == "01" and (dt.year <= 1994 or 2014 <= dt.year <= 2024)
+        ) or self._normalized_subdiv in {"02", "03", "11"}:
             return {FRI, SAT}
         else:
             return {SAT, SUN}
@@ -252,17 +252,17 @@ class Malaysia(
         self.dts_observed.update(self._add_eid_al_adha_day(tr("Hari Raya Qurban")))
 
     def _populate_subdiv_holidays(self):
-        if self.subdiv and self.subdiv not in {"13", "15"}:
+        if self.subdiv and self._normalized_subdiv not in {"13", "15"}:
             # Diwali.
             self.dts_observed.add(self._add_diwali(tr("Hari Deepavali")))
 
         super()._populate_subdiv_holidays()
 
         if (
-            self.subdiv == "01" and (self._year <= 1994 or 2014 <= self._year <= 2024)
-        ) or self.subdiv == "02":
+            self._normalized_subdiv == "01" and (self._year <= 1994 or 2014 <= self._year <= 2024)
+        ) or self._normalized_subdiv == "02":
             self._observed_rule = FRI_TO_NEXT_WORKDAY
-        elif self.subdiv in {"03", "11"}:
+        elif self._normalized_subdiv in {"03", "11"}:
             self._observed_rule = SAT_TO_NEXT_WORKDAY
         else:
             self._observed_rule = SUN_TO_NEXT_WORKDAY
