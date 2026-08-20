@@ -127,3 +127,8 @@ msgstr "چارلس سوم کی تاج پوشی"
 #. Scotland's participation in the FIFA World Cup final.
 msgid "Scotland's participation in the FIFA World Cup final"
 msgstr "فیفا ورلڈ کپ کے فائنل میں اسکاٹ لینڈ کی شرکت"
+
+#: holidays/financial/xlon.py
+msgid "London Stock Exchange"
+msgstr "لندن سٹاک ایکسچینج"
+
