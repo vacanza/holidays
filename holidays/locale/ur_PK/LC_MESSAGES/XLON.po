@@ -30,5 +30,8 @@ msgid "New Year's Eve"
 msgstr "نئے سال کی شام"
 
 #: holidays/financial/xlon.py
+#. %s (markets close at 12:30pm).
+#, c-format
 msgid "%s (markets close at 12:30pm)"
 msgstr "%s (مارکیٹیں دوپہر 12:30 بجے بند ہوتی ہیں)"
+
