@@ -27,14 +27,7 @@ class _MockMabimsCalendar(_CustomIslamicMabimsHolidays):
 class TestIslamicMabimsLunar(unittest.TestCase):
     def setUp(self) -> None:
         super().setUp()
-        # Use the Custom class so we can test the confirmation boundaries!
         self.calendar = _MockMabimsCalendar()
-
-        # Mock the confirmed years exactly as Singapore will use them
-        self.calendar.EID_AL_FITR_DATES_CONFIRMED_YEARS = (1998, 2077)
-        self.calendar.EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1998, 2077)
-        self.calendar.HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (1998, 2077)
-        self.calendar.MAWLID_DATES_CONFIRMED_YEARS = (1998, 2077)
 
     def _get_dates(self, holiday_func, year: int) -> dict:
         """Helper to fetch holiday dates for a specific year as {date: is_estimated}."""

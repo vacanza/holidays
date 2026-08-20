@@ -228,9 +228,9 @@ class SingaporeHinduHolidays(_CustomHinduHolidays):
 
 
 class SingaporeIslamicHolidays(_CustomIslamicMabimsHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2077)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2027)
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2077)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2027)
     EID_AL_FITR_DATES = {
         2005: (NOV, 3),
         2011: (AUG, 30),

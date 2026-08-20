@@ -248,7 +248,7 @@ class TestSingapore(CommonCountryTests, TestCase):
     def test_boxing_day(self):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(self.start_year, 1969)))
-        self.assertNoHolidayName(range(1969, self.end_year))
+        self.assertNoHolidayName(name, range(1969, self.end_year))
 
     def test_2018(self):
         self.assertHolidaysInYear(
