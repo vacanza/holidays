@@ -312,7 +312,6 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
             name,
             "2020-10-10",
             "2023-10-07",
-            range(self.start_year, self.end_year),
         )
 
     def test_friday_before_holiday(self):

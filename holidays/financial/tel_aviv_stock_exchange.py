@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import _timedelta, FRI, SAT, SUN, JAN, MAR, OCT, NOV
@@ -31,20 +32,20 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
     """Tel Aviv Stock Exchange (TASE) holidays.
 
     References:
-        [2013](https://web.archive.org/web/20251117170334/https://content.tase.co.il/media/pqrowxtp/file_0010_vacation_schedule_2013_eng.pdf)
-        [2014](https://web.archive.org/web/20251117170321/https://content.tase.co.il/media/1yrj4yn5/file_0010_vacation_schedule_2014_eng.pdf)
-        [2015](https://web.archive.org/web/20251117170319/https://content.tase.co.il/media/dp0kghj1/file_0010_vacation_schedule_2015_eng.pdf)
-        [2016](https://web.archive.org/web/20251117170511/https://content.tase.co.il/media/p2gm0s3f/file_0010_vacation_schedule_2016_eng.pdf)
-        [2017](https://web.archive.org/web/20251117170325/https://content.tase.co.il/media/ax5jgq31/file_0010_vacation_schedule_2017_eng.pdf)
-        [2018](https://web.archive.org/web/20251117170332/https://content.tase.co.il/media/fz0nyrzy/file_0010_vacation_schedule_2018_eng.pdf)
-        [2019](https://web.archive.org/web/20251117170336/https://content.tase.co.il/media/n2hl3q50/file_0010_vacation_schedule_2019_eng.pdf)
-        [2020](https://web.archive.org/web/20251117170318/https://content.tase.co.il/media/hk4pgzy4/file_0010_vacation_schedule_2020_eng.pdf)
-        [2021](https://web.archive.org/web/20251117170340/https://content.tase.co.il/media/hh2ilipi/file_0010_vacation_schedule_2021_eng.pdf)
-        [2022](https://web.archive.org/web/20251117170332/https://content.tase.co.il/media/vyolzrvu/file_0010_vacation_schedule_2022_eng.pdf)
-        [2023](https://web.archive.org/web/20260813161147/https://content.tase.co.il/media/iqcijli2/file_0010_vacation_schedule_2023_eng.pdf)
-        [2024](https://web.archive.org/web/20251117170328/https://content.tase.co.il/media/33xjyi00/file_0010_vacation_schedule_2024_eng.pdf)
-        [2025](https://web.archive.org/web/20260813161220/https://content.tase.co.il/media/ob4blknd/file_0010_vacation_schedule_2025_eng.pdf)
-        [2026](https://web.archive.org/web/20260418172343/https://www.tase.co.il/en/content/knowledge_center/trading_vacation_schedule/)
+        * [2013](https://web.archive.org/web/20251117170334/https://content.tase.co.il/media/pqrowxtp/file_0010_vacation_schedule_2013_eng.pdf)
+        * [2014](https://web.archive.org/web/20251117170321/https://content.tase.co.il/media/1yrj4yn5/file_0010_vacation_schedule_2014_eng.pdf)
+        * [2015](https://web.archive.org/web/20251117170319/https://content.tase.co.il/media/dp0kghj1/file_0010_vacation_schedule_2015_eng.pdf)
+        * [2016](https://web.archive.org/web/20251117170511/https://content.tase.co.il/media/p2gm0s3f/file_0010_vacation_schedule_2016_eng.pdf)
+        * [2017](https://web.archive.org/web/20251117170325/https://content.tase.co.il/media/ax5jgq31/file_0010_vacation_schedule_2017_eng.pdf)
+        * [2018](https://web.archive.org/web/20251117170332/https://content.tase.co.il/media/fz0nyrzy/file_0010_vacation_schedule_2018_eng.pdf)
+        * [2019](https://web.archive.org/web/20251117170336/https://content.tase.co.il/media/n2hl3q50/file_0010_vacation_schedule_2019_eng.pdf)
+        * [2020](https://web.archive.org/web/20251117170318/https://content.tase.co.il/media/hk4pgzy4/file_0010_vacation_schedule_2020_eng.pdf)
+        * [2021](https://web.archive.org/web/20251117170340/https://content.tase.co.il/media/hh2ilipi/file_0010_vacation_schedule_2021_eng.pdf)
+        * [2022](https://web.archive.org/web/20251117170332/https://content.tase.co.il/media/vyolzrvu/file_0010_vacation_schedule_2022_eng.pdf)
+        * [2023](https://web.archive.org/web/20260813161147/https://content.tase.co.il/media/iqcijli2/file_0010_vacation_schedule_2023_eng.pdf)
+        * [2024](https://web.archive.org/web/20251117170328/https://content.tase.co.il/media/33xjyi00/file_0010_vacation_schedule_2024_eng.pdf)
+        * [2025](https://web.archive.org/web/20260813161220/https://content.tase.co.il/media/ob4blknd/file_0010_vacation_schedule_2025_eng.pdf)
+        * [2026](https://web.archive.org/web/20260418172343/https://www.tase.co.il/en/content/knowledge_center/trading_vacation_schedule/)
     """
 
     market = "XTAE"
@@ -61,7 +62,7 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
 
     def _get_weekend(self, dt) -> set[int]:
         # TASE shifted to a Saturday/Sunday weekend in 2026
-        return {SAT, SUN} if dt.year >= 2026 else {FRI, SAT}
+        return {SAT, SUN} if dt >= date(2026, JAN, 5) else {FRI, SAT}
 
     def _add_observed(self, dt, name, rule):
         is_observed, _ = super()._add_observed(dt, name, rule=rule)
