@@ -294,8 +294,9 @@ class _ThaiLunisolar:
                 f"Unknown calendar name: {calendar}. Use `KHMER_CALENDAR` or `THAI_CALENDAR`."
             )
 
+    @staticmethod
     @cache
-    def _get_start_date(self, year: int) -> date | None:
+    def _get_start_date(year: int) -> date | None:
         """Calculate the start date of that particular Thai Lunar Calendar Year.
 
         This usually falls in November or December of the previous Gregorian
@@ -321,8 +322,9 @@ class _ThaiLunisolar:
 
         return _timedelta(_ThaiLunisolar.START_DATE, delta_days)
 
+    @staticmethod
     @cache
-    def buddhist_sabbath_dates(self, year: int) -> set[date]:
+    def buddhist_sabbath_dates(year: int) -> set[date]:
         """Return all Buddhist Sabbath (Uposatha) days in a given Gregorian year.
 
         This function works independently of the calendar system in use,
@@ -336,7 +338,7 @@ class _ThaiLunisolar:
             A set of `date` objects representing all Buddhist Sabbath days in the specified
             Gregorian year. Returns an empty set if the year is outside the supported range.
         """
-        start_date = self._get_start_date(year)
+        start_date = _ThaiLunisolar._get_start_date(year)
         if not start_date:
             return set()
 
@@ -346,8 +348,6 @@ class _ThaiLunisolar:
             months.insert(7, 30)
         elif year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
             months[6] += 1
-        # Includes first two months of the next Thai lunar year to ensure all Buddhist Sabbaths
-        # in the Gregorian year are captured.
         months.extend([29, 30])
 
         buddhist_sabbaths: set[date] = set()
@@ -355,7 +355,6 @@ class _ThaiLunisolar:
         for month_days in months:
             if day_cursor.year > year:
                 break
-            # Buddhist Sabbaths: 8 Waxing, 15 Waxing, 8 Waning, 14/15 Waning.
             for offset in (7, 14, 22, month_days - 1):
                 buddhist_sabbath = _timedelta(day_cursor, offset)
                 if buddhist_sabbath.year == year:

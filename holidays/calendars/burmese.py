@@ -122,19 +122,20 @@ class _BurmeseLunisolar:
 
         return date(y, m, d)
 
+    @staticmethod
     @cache
-    def _get_start_date(self, year: int) -> date | None:
-        if year < self.START_YEAR or year > self.END_YEAR:
+    def _get_start_date(year: int) -> date | None:
+        if year < _BurmeseLunisolar.START_YEAR or year > _BurmeseLunisolar.END_YEAR:
             return None
 
-        delta_days = 354 * (year - self.START_YEAR)
-        for iter_year in range(self.START_YEAR, year):
-            if iter_year in self.LITTLE_WATAT_YEARS_GREGORIAN:
+        delta_days = 354 * (year - _BurmeseLunisolar.START_YEAR)
+        for iter_year in range(_BurmeseLunisolar.START_YEAR, year):
+            if iter_year in _BurmeseLunisolar.LITTLE_WATAT_YEARS_GREGORIAN:
                 delta_days += 30
-            elif iter_year in self.BIG_WATAT_YEARS_GREGORIAN:
+            elif iter_year in _BurmeseLunisolar.BIG_WATAT_YEARS_GREGORIAN:
                 delta_days += 31
 
-        return _timedelta(self.START_DATE, delta_days)
+        return _timedelta(_BurmeseLunisolar.START_DATE, delta_days)
 
     def thingyan_dates(self, year: int) -> tuple[date | None, date | None]:
         """Calculate key dates of Thingyan (Myanmar New Year festival) - Akya day
