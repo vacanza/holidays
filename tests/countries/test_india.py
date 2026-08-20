@@ -194,18 +194,6 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self._assertHinduHolidayHelper(name, dts, skip_years=skip_years)
 
-        # SUBDIVS.
-        self.assertHolidayName(
-            name,
-            self.subdiv_holidays["MH"],
-            "2026-03-03",
-        )
-        self.assertNoHolidayName(
-            name,
-            self.subdiv_holidays["MH"],
-            "2026-03-04",
-        )
-
         # OPTIONAL.
         dts = (
             "2002-03-29",
@@ -214,6 +202,10 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(
             name, dts, category=OPTIONAL, skip_years=set(self.hindu_full_range) - skip_years
         )
+
+        # SUBDIVS.
+        self.assertSubdivMhHolidayName(name, "2026-03-03")
+        self.assertNoSubdivMhHolidayName(name, "2026-03-04")
 
     def test_ram_navami(self):
         name = "Ram Navami"
