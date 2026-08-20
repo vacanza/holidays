@@ -15,8 +15,8 @@ from gettext import gettext as tr
 from holidays.calendars import (
     _CustomBuddhistHolidays,
     _CustomChineseHolidays,
-    _CustomIslamicMabimsHolidays,
     _CustomHinduHolidays,
+    _CustomIslamicMabimsHolidays,
 )
 from holidays.calendars.gregorian import JAN, FEB, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.groups import (
