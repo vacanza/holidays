@@ -80,6 +80,8 @@ class India(
             * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
         * Meghalaya:
             * <https://web.archive.org/web/20260815172406/https://meghalaya.gov.in/sites/default/files/holiday_files/GAA_78_2025_23.pdf>
+        * Nagaland:
+            * <https://web.archive.org/web/20260412133333/https://cag.gov.in/uploads/media/Holiday-list-2026-069099b1b46e314-06360641.pdf>
         * Punjab:
             * <https://web.archive.org/web/20260216022835/https://punjab.gov.in/wp-content/uploads/2025/12/Calender-2026.pdf>
         * Rajasthan:
@@ -1207,8 +1209,10 @@ class India(
 
     # Nagaland.
     def _populate_subdiv_nl_public_holidays(self):
-        # Nagaland State Inauguration Day.
-        self._add_holiday_dec_1(tr("Nagaland State Inauguration Day"))
+        pass
+
+    def _populate_subdiv_nl_optional_holidays(self):
+        pass
 
     # Orissa / Odisha.
     def _populate_subdiv_od_public_holidays(self):
