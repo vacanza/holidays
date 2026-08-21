@@ -34,4 +34,3 @@ msgstr "نئے سال کی شام"
 #, c-format
 msgid "%s (markets close at 12:30pm)"
 msgstr "%s (مارکیٹیں دوپہر 12:30 بجے بند ہوتی ہیں)"
-
