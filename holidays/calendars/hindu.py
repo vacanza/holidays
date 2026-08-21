@@ -48,6 +48,8 @@ HOLI = "HOLI"
 JANMASHTAMI = "JANMASHTAMI"
 KABIR_JAYANTI = "KABIR_JAYANTI"
 KARWA_CHAUTH = "KARWA_CHAUTH"
+KER_PUJA = "KER_PUJA"
+KHARCHI_PUJA = "KHARCHI_PUJA"
 MAHA_ASHTAMI = "MAHA_ASHTAMI"
 MAHA_NAVAMI = "MAHA_NAVAMI"
 MAHA_SHIVARATRI = "MAHA_SHIVARATRI"
@@ -1429,6 +1431,82 @@ class _HinduLunisolar:
         2033: (OCT, 11),
         2034: (OCT, 30),
         2035: (OCT, 20),
+    }
+
+    KER_PUJA_DATES = {
+        2001: (JUL, 12),
+        2002: (AUG, 1),
+        2003: (JUL, 22),
+        2004: (JUL, 10),
+        2005: (JUL, 28),
+        2006: (JUL, 18),
+        2007: (AUG, 7),
+        2008: (JUL, 26),
+        2009: (JUL, 14),
+        2010: (AUG, 3),
+        2011: (JUL, 23),
+        2012: (JUL, 11),
+        2013: (JUL, 30),
+        2014: (JUL, 19),
+        2015: (AUG, 8),
+        2016: (JUL, 26),
+        2017: (JUL, 18),
+        2018: (AUG, 4),
+        2019: (JUL, 24),
+        2020: (JUL, 14),
+        2021: (JUL, 31),
+        2022: (JUL, 21),
+        2023: (JUL, 11),
+        2024: (AUG, 3),
+        2025: (JUL, 19),
+        2026: (AUG, 4),
+        2027: (JUL, 28),
+        2028: (JUL, 25),
+        2029: (JUL, 28),
+        2030: (JUL, 17),
+        2031: (AUG, 5),
+        2032: (JUL, 24),
+        2033: (JUL, 13),
+        2034: (AUG, 1),
+        2035: (JUL, 21),
+    }
+
+    KHARCHI_PUJA_DATES = {
+        2001: (JUN, 28),
+        2002: (JUL, 18),
+        2003: (JUL, 7),
+        2004: (JUN, 25),
+        2005: (JUL, 14),
+        2006: (JUL, 3),
+        2007: (JUL, 23),
+        2008: (JUL, 11),
+        2009: (JUN, 30),
+        2010: (JUL, 19),
+        2011: (JUL, 8),
+        2012: (JUN, 27),
+        2013: (JUL, 16),
+        2014: (JUL, 5),
+        2015: (JUL, 24),
+        2016: (JUL, 12),
+        2017: (JUL, 2),
+        2018: (JUL, 21),
+        2019: (JUL, 10),
+        2020: (JUN, 28),
+        2021: (JUL, 17),
+        2022: (JUL, 7),
+        2023: (JUN, 26),
+        2024: (JUL, 14),
+        2025: (JUL, 3),
+        2026: (JUL, 22),
+        2027: (JUL, 11),
+        2028: (JUN, 30),
+        2029: (JUL, 19),
+        2030: (JUL, 8),
+        2031: (JUN, 28),
+        2032: (JUL, 16),
+        2033: (JUL, 5),
+        2034: (JUL, 24),
+        2035: (JUL, 13),
     }
 
     # https://web.archive.org/web/20250113213218/https://www.timeanddate.com/holidays/india/maha-ashtami
@@ -3012,6 +3090,12 @@ class _HinduLunisolar:
 
     def karwa_chauth_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(KARWA_CHAUTH, year)
+
+    def ker_puja_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(KER_PUJA, year)
+
+    def kharchi_puja_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(KHARCHI_PUJA, year)
 
     def maha_ashtami_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHA_ASHTAMI, year)

@@ -92,6 +92,8 @@ class India(
         * Telangana:
             * <https://web.archive.org/web/20260224050455/https://transport.telangana.gov.in/html/registration-districtcodes.html>
             * <https://web.archive.org/web/20250219131214/https://www.thehindu.com/news/national/telangana/cm-firm-on-having-states-identity-as-tg-not-ts/article68187923.ece>
+        * Tripura:
+            * <https://web.archive.org/web/20260821101146/https://hrengage.ai/holiday-list/tripura/2026>
         * Uttar Pradesh:
             * <https://web.archive.org/web/20260714175419/https://ascent-hr.com/wp-content/uploads/2025/12/UP-Holiday-List-2026.pdf>
         * Uttarakhand:
@@ -1388,6 +1390,34 @@ class India(
         self._add_bonalu(tr("Bonalu"))
         # Ugadi.
         self._add_gudi_padwa(tr("Ugadi"))
+
+    # Tripura.
+    def _populate_subdiv_tr_public_holidays(self):
+        # Netaji Subhas Chandra Bose's Birthday.
+        self._add_holiday_jan_23(tr("Netaji Subhas Chandra Bose's Jayanti"))
+
+        # Maharaja Bir Bikram Kishore Manikya Bahadur's Birthday.
+        self._add_holiday_aug_19(tr("Maharaja Bir Bikram Kishore Manikya Bahadur's Jayanti"))
+
+        # Hindu holidays.
+
+        # Bengali's New Year.
+        self.add_pohela_boishakh(tr("Pohela Boishakh"))
+
+        # Garia Puja.
+        self._add_garia_puja(tr("Garia Puja"))
+
+        # Kharchi Puja.
+        self._add_kharchi_puja(tr("Kharchi Puja"))
+
+        # Ker Puja.
+        self._add_ker_puja(tr("Ker Puja"))
+
+        # Mahasaptami.
+        self._add_maha_saptami(tr("Mahasaptami"))
+
+        # Mahashtami.
+        self._add_maha_ashtami(tr("Mahashtami"))
 
     # Uttarakhand.
     def _populate_subdiv_uk_public_holidays(self):

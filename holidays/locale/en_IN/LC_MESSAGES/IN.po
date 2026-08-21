@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-08-16 01:05+0530\n"
+"PO-Revision-Date: 2026-08-21 16:19+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
@@ -674,10 +674,6 @@ msgstr ""
 msgid "Mizoram State Day"
 msgstr ""
 
-#. Nagaland State Inauguration Day.
-msgid "Nagaland State Inauguration Day"
-msgstr ""
-
 #. Odisha Day.
 msgid "Odisha Day (Utkala Dibasa)"
 msgstr ""
@@ -774,6 +770,39 @@ msgstr ""
 msgid "Bonalu"
 msgstr ""
 
+#. Netaji Subhas Chandra Bose's Birthday.
+msgid "Netaji Subhas Chandra Bose's Jayanti"
+msgstr ""
+
+#. Maharaja Bir Bikram Kishore Manikya Bahadur's Birthday.
+msgid "Maharaja Bir Bikram Kishore Manikya Bahadur's Jayanti"
+msgstr ""
+
+#. Bengali's New Year.
+#. Pohela Boisakh.
+msgid "Pohela Boishakh"
+msgstr ""
+
+#. Garia Puja.
+msgid "Garia Puja"
+msgstr ""
+
+#. Kharchi Puja.
+msgid "Kharchi Puja"
+msgstr ""
+
+#. Ker Puja.
+msgid "Ker Puja"
+msgstr ""
+
+#. Mahasaptami.
+msgid "Mahasaptami"
+msgstr ""
+
+#. Mahashtami.
+msgid "Mahashtami"
+msgstr ""
+
 #. Harela.
 msgid "Harela"
 msgstr ""
@@ -818,10 +847,6 @@ msgstr ""
 msgid "Chaudhary Charan Singh's Jayanti"
 msgstr ""
 
-#. Pohela Boisakh.
-msgid "Pohela Boishakh"
-msgstr ""
-
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr ""
@@ -841,6 +866,9 @@ msgstr ""
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr ""
+
+#~ msgid "Nagaland State Inauguration Day"
+#~ msgstr ""
 
 #~ msgid "Andhra Pradesh Foundation Day"
 #~ msgstr ""
