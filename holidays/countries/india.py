@@ -84,6 +84,8 @@ class India(
             * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
         * Meghalaya:
             * <https://web.archive.org/web/20260815172406/https://meghalaya.gov.in/sites/default/files/holiday_files/GAA_78_2025_23.pdf>
+        * Mizoram:
+            * <https://web.archive.org/web/20260822104707/https://only30sec.com/wp-content/uploads/2025/11/Mizoram-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Nagaland:
             * <https://web.archive.org/web/20260412133333/https://cag.gov.in/uploads/media/Holiday-list-2026-069099b1b46e314-06360641.pdf>
         * Punjab:
@@ -1099,43 +1101,6 @@ class India(
         # Diwali (Bali Pratipada).
         self._add_govardhan_puja(tr("Diwali (Bali Pratipada)"))
 
-    # Meghalaya.
-    def _populate_subdiv_ml_public_holidays(self):
-        pass
-
-    def _populate_subdiv_ml_government_holidays(self):
-        self._populate_public_holidays()
-
-        # U Tirot Sing's Death Anniversary.
-        self._add_holiday_jul_17(tr("U Tirot Sing's Death Anniversary"))
-
-        # Seng Kut Snem.
-        self._add_holiday_nov_23(tr("Seng Kut Snem"))
-
-        # Pa Togan Nengminja Sangma's Death Anniversary.
-        self._add_holiday_dec_12(tr("Pa Togan Nengminja Sangma's Death Anniversary"))
-
-        # U Soso Thama's Death Anniversary.
-        self._add_holiday_dec_18(tr("U Soso Thama's Death Anniversary"))
-
-        # Christmas Festival.
-        name = "Christmas Festival"
-        self._add_holiday_dec_24(name)
-        self._add_holiday_dec_26(name)
-        self._add_holiday_dec_27(name)
-
-        # U Kiang Nongbah Death Anniversary.
-        self._add_holiday_dec_30(tr("U Kiang Nongbah Death Anniversary"))
-
-        # Hindu Holidays.
-
-        # Wangala Festival.
-        self._add_wangala_festival(tr("Wangala Festival"))
-
-    def _populate_subdiv_ml_optional_holidays(self):
-        # All Souls' Day.
-        self._add_all_souls_day(tr("All Souls' Day"))
-
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
         # Veerangana Avantibai's Martyrdom Day.
@@ -1256,10 +1221,72 @@ class India(
         # Dattatreya's Birthday.
         self._add_dattatreya_jayanti(tr("Dattatreya's Jayanti"))
 
+    # Meghalaya.
+    def _populate_subdiv_ml_public_holidays(self):
+        pass
+
+    def _populate_subdiv_ml_government_holidays(self):
+        self._populate_public_holidays()
+
+        # U Tirot Sing's Death Anniversary.
+        self._add_holiday_jul_17(tr("U Tirot Sing's Death Anniversary"))
+
+        # Seng Kut Snem.
+        self._add_holiday_nov_23(tr("Seng Kut Snem"))
+
+        # Pa Togan Nengminja Sangma's Death Anniversary.
+        self._add_holiday_dec_12(tr("Pa Togan Nengminja Sangma's Death Anniversary"))
+
+        # U Soso Thama's Death Anniversary.
+        self._add_holiday_dec_18(tr("U Soso Thama's Death Anniversary"))
+
+        # Christmas Festival.
+        name = "Christmas Festival"
+        self._add_holiday_dec_24(name)
+        self._add_holiday_dec_26(name)
+        self._add_holiday_dec_27(name)
+
+        # U Kiang Nongbah Death Anniversary.
+        self._add_holiday_dec_30(tr("U Kiang Nongbah Death Anniversary"))
+
+        # Hindu Holidays.
+
+        # Wangala Festival.
+        self._add_wangala_festival(tr("Wangala Festival"))
+
+    def _populate_subdiv_ml_optional_holidays(self):
+        # All Souls' Day.
+        self._add_all_souls_day(tr("All Souls' Day"))
+
     # Mizoram.
     def _populate_subdiv_mz_public_holidays(self):
-        # Mizoram State Day.
-        self._add_holiday_feb_20(tr("Mizoram State Day"))
+        # New Year Celebration.
+        self._add_new_years_day_two(tr("New Year Celebration"))
+
+        # Missionary Day.
+        self._add_holiday_jan_11(tr("Missionary Day"))
+
+        # Young Mizo Association's Day.
+        self._add_holiday_jun_15(tr("Young Mizo Association's Day"))
+
+        # Remna Ni.
+        self._add_holiday_jun_30(tr("Remna Ni"))
+
+        # Mizo Hmeichhe Insuihkhawm Pawl's Day.
+        self._add_holiday_jul_6(tr("Mizo Hmeichhe Insuihkhawm Pawl's Day"))
+
+        # Christmas Eve.
+        self._add_christmas_eve(tr("Christmas Eve"))
+
+        # Christmas Celebration.
+        self._add_christmas_day_two(tr("Christmas Celebration"))
+
+        # New Year's Eve.
+        self._add_new_years_eve(tr("New Year's Eve"))
+
+    def _populate_subdiv_mz_optional_holidays(self):
+        # Christmas Celebration (Day 4).
+        self._add_christmas_day_four(tr("Christmas Celebration (Day 4)"))
 
     # Nagaland.
     def _populate_subdiv_nl_public_holidays(self):

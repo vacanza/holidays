@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-28 17:22+0530\n"
-"PO-Revision-Date: 2026-08-22 16:09+0530\n"
+"PO-Revision-Date: 2026-08-22 16:25+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pa\n"
@@ -621,30 +621,6 @@ msgstr "ਮਹਾਰਾਸ਼ਟਰ ਦਿਵਸ"
 msgid "Diwali (Bali Pratipada)"
 msgstr "ਦੀਵਾਲੀ (ਬਲੀ ਪ੍ਰਤਿਪਦਾ)"
 
-#. U Tirot Sing's Death Anniversary.
-msgid "U Tirot Sing's Death Anniversary"
-msgstr ""
-
-#. Seng Kut Snem.
-msgid "Seng Kut Snem"
-msgstr ""
-
-#. Pa Togan Nengminja Sangma's Death Anniversary.
-msgid "Pa Togan Nengminja Sangma's Death Anniversary"
-msgstr ""
-
-#. U Soso Thama's Death Anniversary.
-msgid "U Soso Thama's Death Anniversary"
-msgstr ""
-
-#. U Kiang Nongbah Death Anniversary.
-msgid "U Kiang Nongbah Death Anniversary"
-msgstr ""
-
-#. Wangala Festival.
-msgid "Wangala Festival"
-msgstr ""
-
 #. Tribal Pride Day.
 msgid "Janjatiya Gaurav Divas"
 msgstr "ਜਨਜਾਤੀਯ ਗੌਰਵ ਦਿਵਸ"
@@ -685,9 +661,57 @@ msgstr "ਤੁਲਸੀਦਾਸ ਜਯੰਤੀ"
 msgid "Dol Gyaras"
 msgstr "ਡੋਲ ਗਿਆਰਸ"
 
-#. Mizoram State Day.
-msgid "Mizoram State Day"
-msgstr "ਮਿਜ਼ੋਰਮ ਰਾਜ ਦਿਵਸ"
+#. U Tirot Sing's Death Anniversary.
+msgid "U Tirot Sing's Death Anniversary"
+msgstr ""
+
+#. Seng Kut Snem.
+msgid "Seng Kut Snem"
+msgstr ""
+
+#. Pa Togan Nengminja Sangma's Death Anniversary.
+msgid "Pa Togan Nengminja Sangma's Death Anniversary"
+msgstr ""
+
+#. U Soso Thama's Death Anniversary.
+msgid "U Soso Thama's Death Anniversary"
+msgstr ""
+
+#. U Kiang Nongbah Death Anniversary.
+msgid "U Kiang Nongbah Death Anniversary"
+msgstr ""
+
+#. Wangala Festival.
+msgid "Wangala Festival"
+msgstr ""
+
+#. New Year Celebration.
+msgid "New Year Celebration"
+msgstr ""
+
+#. Missionary Day.
+msgid "Missionary Day"
+msgstr ""
+
+#. Young Mizo Association's Day.
+msgid "Young Mizo Association's Day"
+msgstr ""
+
+#. Remna Ni.
+msgid "Remna Ni"
+msgstr ""
+
+#. Mizo Hmeichhe Insuihkhawm Pawl's Day.
+msgid "Mizo Hmeichhe Insuihkhawm Pawl's Day"
+msgstr ""
+
+#. Christmas Celebration.
+msgid "Christmas Celebration"
+msgstr ""
+
+#. Christmas Celebration (Day 4).
+msgid "Christmas Celebration (Day 4)"
+msgstr ""
 
 #. Odisha Day.
 msgid "Odisha Day (Utkala Dibasa)"
@@ -873,6 +897,9 @@ msgstr "ਵਿਨਾਇਕ ਚਤੁਰਥੀ"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ਜਨਮਾਸ਼ਟਮੀ (ਸਮਾਰਤ)"
+
+#~ msgid "Mizoram State Day"
+#~ msgstr "ਮਿਜ਼ੋਰਮ ਰਾਜ ਦਿਵਸ"
 
 #~ msgid "Karnataka Rajyotsava"
 #~ msgstr "ਕਰਨਾਟਕ ਰਾਜਯੋਤਸਵ"
