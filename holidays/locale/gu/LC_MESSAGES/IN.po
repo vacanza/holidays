@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-08-22 15:49+0530\n"
+"PO-Revision-Date: 2026-08-22 16:03+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: gu\n"
@@ -582,9 +582,17 @@ msgstr "નવરોઝ"
 msgid "Jharkhand Formation Day"
 msgstr "ઝારખંડ સ્થાપના દિવસ"
 
-#. Karnataka Rajyotsav.
-msgid "Karnataka Rajyotsava"
-msgstr "કર્ણાટક રાજ્યોત્સવ"
+#. May Day.
+msgid "May Day"
+msgstr ""
+
+#. Holy Saturday.
+msgid "Holy Saturday"
+msgstr ""
+
+#. Vishwakarma Puja.
+msgid "Vishwakarma Puja"
+msgstr "વિશ્વકર્મા પૂજા"
 
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"
@@ -661,10 +669,6 @@ msgstr "ગુરુ પૂર્ણિમા"
 #. Tulsidas's Birthday.
 msgid "Tulsidas's Jayanti"
 msgstr "તુલસીદાસ જયંતિ"
-
-#. Vishwakarma Puja.
-msgid "Vishwakarma Puja"
-msgstr "વિશ્વકર્મા પૂજા"
 
 #. Dol Gyaras.
 msgid "Dol Gyaras"
@@ -862,6 +866,9 @@ msgstr "વિનાયક ચતુર્થી"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "જન્માષ્ટમી (સ્માર્ત)"
+
+#~ msgid "Karnataka Rajyotsava"
+#~ msgstr "કર્ણાટક રાજ્યોત્સવ"
 
 #~ msgid "Telangana Formation Day"
 #~ msgstr "તેલંગાણા સ્થાપના દિવસ"

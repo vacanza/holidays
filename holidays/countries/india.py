@@ -70,6 +70,8 @@ class India(
             * <https://web.archive.org/web/20260627103337/https://www.comply360.in/labor-law-library/wp-content/uploads/2025/12/Notification-regarding-list-of-Holidays-for-the-Year-2026-in-Himachal-Pradesh-1.pdf>
         * Jammu and Kashmir:
             * https://web.archive.org/web/20260616165510/https://jkeducation.co.in/wp-content/uploads/2025/12/showOrder-4.pdf>
+        * Karnataka:
+            * <https://web.archive.org/web/20260822102104/https://only30sec.com/wp-content/uploads/2025/11/Karnataka-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Kerala:
             * <https://web.archive.org/web/20260329164551/https://kerala.gov.in/showcalendar/2026>
         * Ladakh:
@@ -977,10 +979,37 @@ class India(
 
     # Karnataka.
     def _populate_subdiv_ka_public_holidays(self):
-        # Karnataka Rajyotsav.
-        self._add_holiday_nov_1(tr("Karnataka Rajyotsava"))
+        # May Day.
+        self._add_holiday_may_1(tr("May Day"))
+
+        # Hindu holidays.
+
+        # Makar Sankranti.
+        self._add_makar_sankranti(tr("Makar Sankranti"))
+
         # Ugadi.
         self._add_gudi_padwa(tr("Ugadi"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+
+    def _populate_subdiv_ka_optional_holidays(self):
+        # Holy Saturday.
+        self._add_holy_saturday(tr("Holy Saturday"))
+
+        # Hindu holidays.
+
+        # Adi Shankaracharya's Birthday.
+        self._add_adi_shankaracharya_jayanti(tr("Adi Shankaracharya's Jayanti"))
+
+        # Varalakshmi Vratam.
+        self._add_varalakshmi_vratam(tr("Varalakshmi Vratam"))
+
+        # Vishwakarma Puja.
+        self._add_vishwakarma_puja(tr("Vishwakarma Puja"))
+
+        # Anant Chaturdashi.
+        self._add_anant_chaturdashi(tr("Anant Chaturdashi"))
 
     # Kerala.
     def _populate_subdiv_kl_public_holidays(self):
