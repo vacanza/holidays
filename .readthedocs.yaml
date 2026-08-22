@@ -7,14 +7,15 @@ build:
   tools:
     # https://docs.readthedocs.com/platform/stable/config-file/v2.html#build-tools-python
     python: '3.14'
+  jobs:
+    install:
+      - uv sync --frozen --no-dev --group docs
 
 python:
-   install:
-      # https://docs.readthedocs.com/platform/stable/config-file/v2.html#uv
-      - method: uv
-        command: sync
-        groups:
-           - docs
+  install:
+    # https://docs.readthedocs.com/platform/stable/config-file/v2.html#uv
+    - method: uv
+      command: sync
 
 mkdocs:
   configuration: .properdocs.yml
