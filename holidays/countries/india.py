@@ -56,6 +56,8 @@ class India(
             * <https://web.archive.org/web/20251214133200/https://andamannicobar.gov.in/admin-pannel/othersdoc/1-29-Holiday%20List%202026%20Gazette.pdf>
         * Andhra Pradesh:
             * <https://web.archive.org/web/20260608074309/https://www.veerayeehr.com/wp-content/uploads/2025/12/Andhra-Pradesh-Holiday-List-2026.pdf>
+        * Arunachal Pradesh:
+            * <https://web.archive.org/web/20260822103542/https://only30sec.com/wp-content/uploads/2026/01/Arunachal-Pradesh-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Chandigarh:
             * <https://web.archive.org/web/20260705144831/https://chandigarh.gov.in/files/updation2025/home25-17488-3012.pdf>
         * Dadra and Nagar Haveli and Daman and Diu:
@@ -552,6 +554,26 @@ class India(
 
         # Eid al-Ghadir.
         self._add_eid_al_ghadir_day(tr("Eid-e-Ghadeer"))
+
+    # Arunachal Pradesh.
+    def _populate_subdiv_ar_public_holidays(self):
+        # Statehood Day.
+        self._add_holiday_feb_20(tr("Statehood Day"))
+
+        # Indigenous Faith Day.
+        self._add_holiday_dec_1(tr("Indigenous Faith Day"))
+
+        # Hindu holidays.
+
+        # Bahag Bihu.
+        self._add_vaisakhadi(tr("Bahag Bihu"))
+
+        # Mahashtami.
+        self._add_maha_ashtami(tr("Mahashtami"))
+
+    def _populate_subdiv_ar_optional_holidays(self):
+        #  Lingri Niki Sii Donyi Polo Yullo.
+        self._add_holiday_dec_26(tr("Lingri Niki Sii Donyi Polo Yullo"))
 
     # Assam.
     def _populate_subdiv_as_public_holidays(self):

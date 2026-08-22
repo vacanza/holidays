@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-08-22 16:03+0530\n"
+"PO-Revision-Date: 2026-08-22 16:09+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: bn\n"
@@ -312,6 +312,22 @@ msgstr "শব-ই-মেরাজ"
 msgid "Eid-e-Ghadeer"
 msgstr "ঈদ-এ-গাদীর"
 
+#. Statehood Day.
+msgid "Statehood Day"
+msgstr "রাজ্য প্রতিষ্ঠা দিবস"
+
+#. Indigenous Faith Day.
+msgid "Indigenous Faith Day"
+msgstr ""
+
+#. Mahashtami.
+msgid "Mahashtami"
+msgstr ""
+
+#. Lingri Niki Sii Donyi Polo Yullo.
+msgid "Lingri Niki Sii Donyi Polo Yullo"
+msgstr ""
+
 #. Assam Day.
 msgid "Assam Day"
 msgstr "অসম দিবস"
@@ -540,10 +556,6 @@ msgstr "অক্ষয় তৃতীয়া"
 #. Shaheed Udham Singh's Birthday.
 msgid "Shaheed Udham Singh's Jayanti"
 msgstr "শহীদ উধম সিংয়ের জন্মজয়ন্তী"
-
-#. Statehood Day.
-msgid "Statehood Day"
-msgstr "রাজ্য প্রতিষ্ঠা দিবস"
 
 #. Himachal Day.
 msgid "Himachal Day"
@@ -796,10 +808,6 @@ msgstr ""
 
 #. Mahasaptami.
 msgid "Mahasaptami"
-msgstr ""
-
-#. Mahashtami.
-msgid "Mahashtami"
 msgstr ""
 
 #. Harela.
