@@ -572,7 +572,7 @@ msgstr "ವಿಶ್ವಕರ್ಮ ಪೂಜೆ"
 msgid "Veer Kesari Chand's Shaheedi Diwas"
 msgstr "ವೀರ ಕೇಸರಿ ಚಂದ್ ಶಹೀದಿ ದಿನ"
 
-#. Arbaaen.
+#. Arbaeen.
 msgid "Chehlum"
 msgstr "ಚೆಹ್ಲುಮ್"
 

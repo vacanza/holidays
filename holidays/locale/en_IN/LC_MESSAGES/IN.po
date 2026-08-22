@@ -573,7 +573,7 @@ msgstr ""
 msgid "Veer Kesari Chand's Shaheedi Diwas"
 msgstr ""
 
-#. Arbaaen.
+#. Arbaeen.
 msgid "Chehlum"
 msgstr ""
 
