@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-28 17:22+0530\n"
-"PO-Revision-Date: 2026-08-22 16:25+0530\n"
+"PO-Revision-Date: 2026-08-22 17:12+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pa\n"
@@ -609,18 +609,6 @@ msgstr "ਵਿਸ਼ਵਕਰਮਾ ਪੂਜਾ"
 msgid "Kerala Foundation Day"
 msgstr "ਕੇਰਲ ਸਥਾਪਨਾ ਦਿਵਸ"
 
-#. Chhatrapati Shivaji Maharaj Jayanti.
-msgid "Chhatrapati Shivaji Maharaj Jayanti"
-msgstr "ਛਤਰਪਤੀ ਸ਼ਿਵਾਜੀ ਮਹਾਰਾਜ ਜਯੰਤੀ"
-
-#. Maharashtra Day.
-msgid "Maharashtra Day"
-msgstr "ਮਹਾਰਾਸ਼ਟਰ ਦਿਵਸ"
-
-#. Diwali (Bali Pratipada).
-msgid "Diwali (Bali Pratipada)"
-msgstr "ਦੀਵਾਲੀ (ਬਲੀ ਪ੍ਰਤਿਪਦਾ)"
-
 #. Tribal Pride Day.
 msgid "Janjatiya Gaurav Divas"
 msgstr "ਜਨਜਾਤੀਯ ਗੌਰਵ ਦਿਵਸ"
@@ -661,6 +649,50 @@ msgstr "ਤੁਲਸੀਦਾਸ ਜਯੰਤੀ"
 msgid "Dol Gyaras"
 msgstr "ਡੋਲ ਗਿਆਰਸ"
 
+#. Chhatrapati Shivaji Maharaj Jayanti.
+msgid "Chhatrapati Shivaji Maharaj Jayanti"
+msgstr "ਛਤਰਪਤੀ ਸ਼ਿਵਾਜੀ ਮਹਾਰਾਜ ਜਯੰਤੀ"
+
+#. Maharashtra Day.
+msgid "Maharashtra Day"
+msgstr "ਮਹਾਰਾਸ਼ਟਰ ਦਿਵਸ"
+
+#. Diwali (Bali Pratipada).
+msgid "Diwali (Bali Pratipada)"
+msgstr "ਦੀਵਾਲੀ (ਬਲੀ ਪ੍ਰਤਿਪਦਾ)"
+
+#. Maharaja Gambhir Singh's Death Anniversary.
+msgid "Maharaja Gambhir Singh's Death Anniversary"
+msgstr ""
+
+#. Lui Ngai Ni.
+msgid "Lui Ngai Ni"
+msgstr ""
+
+#. Khongjom Day.
+msgid "Khongjom Day"
+msgstr ""
+
+#. Patriot's Day.
+msgid "Patriot's Day"
+msgstr ""
+
+#. Kut.
+msgid "Kut"
+msgstr ""
+
+#. Mera Chaoren Houba.
+msgid "Mera Chaoren Houba"
+msgstr ""
+
+#. Players' Day.
+msgid "Players' Day"
+msgstr ""
+
+#. Post Christmas.
+msgid "Post Christmas"
+msgstr ""
+
 #. U Tirot Sing's Death Anniversary.
 msgid "U Tirot Sing's Death Anniversary"
 msgstr ""
@@ -685,8 +717,8 @@ msgstr ""
 msgid "Wangala Festival"
 msgstr ""
 
-#. New Year Celebration.
-msgid "New Year Celebration"
+#. Post New Year.
+msgid "Post New Year"
 msgstr ""
 
 #. Missionary Day.
@@ -705,12 +737,12 @@ msgstr ""
 msgid "Mizo Hmeichhe Insuihkhawm Pawl's Day"
 msgstr ""
 
-#. Christmas Celebration.
-msgid "Christmas Celebration"
+#. Zomi Namni.
+msgid "Zomi Namni"
 msgstr ""
 
-#. Christmas Celebration (Day 4).
-msgid "Christmas Celebration (Day 4)"
+#. Post Christmas (Day 4).
+msgid "Post Christmas (Day 4)"
 msgstr ""
 
 #. Odisha Day.
@@ -897,6 +929,15 @@ msgstr "ਵਿਨਾਇਕ ਚਤੁਰਥੀ"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ਜਨਮਾਸ਼ਟਮੀ (ਸਮਾਰਤ)"
+
+#~ msgid "New Year Celebration"
+#~ msgstr ""
+
+#~ msgid "Christmas Celebration"
+#~ msgstr ""
+
+#~ msgid "Christmas Celebration (Day 4)"
+#~ msgstr ""
 
 #~ msgid "Mizoram State Day"
 #~ msgstr "ਮਿਜ਼ੋਰਮ ਰਾਜ ਦਿਵਸ"
