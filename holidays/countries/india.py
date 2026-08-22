@@ -83,7 +83,7 @@ class India(
         * Maharashtra:
             * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
         * Manipur:
-            * <>
+            * <https://web.archive.org/web/20260822114331/https://www.scribd.com/document/985577686/Manipur-Holiday-List-2026>
         * Meghalaya:
             * <https://web.archive.org/web/20260815172406/https://meghalaya.gov.in/sites/default/files/holiday_files/GAA_78_2025_23.pdf>
         * Mizoram:
