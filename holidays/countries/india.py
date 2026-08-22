@@ -92,6 +92,7 @@ class India(
         * Telangana:
             * <https://web.archive.org/web/20260224050455/https://transport.telangana.gov.in/html/registration-districtcodes.html>
             * <https://web.archive.org/web/20250219131214/https://www.thehindu.com/news/national/telangana/cm-firm-on-having-states-identity-as-tg-not-ts/article68187923.ece>
+            * <https://web.archive.org/web/20260822101015/https://only30sec.com/wp-content/uploads/2025/12/Telangana-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Tripura:
             * <https://web.archive.org/web/20260821101146/https://hrengage.ai/holiday-list/tripura/2026>
         * Uttar Pradesh:
@@ -1382,14 +1383,44 @@ class India(
 
     # Telangana.
     def _populate_subdiv_ts_public_holidays(self):
-        # Telangana Formation Day.
-        self._add_holiday_jun_2(tr("Telangana Formation Day"))
-        # Bathukamma Festival.
-        self._add_bathukamma(tr("Bathukamma Festival"))
+        pass
+
+    def _populate_subdiv_ts_government_holidays(self):
+        self._populate_public_holidays()
+
+        # Babu Jagjivan Ram's Birthday.
+        self._add_holiday_apr_5(tr("Babu Jagjivan Ram's Jayanti"))
+
+        # Boxing Day.
+        self._add_holiday_dec_26(tr("Boxing Day"))
+
+        # Hindu holidays.
+
         # Bonalu.
         self._add_bonalu(tr("Bonalu"))
-        # Ugadi.
-        self._add_gudi_padwa(tr("Ugadi"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+
+        # Bathukamma.
+        self._add_bathukamma(tr("Bathukamma"))
+
+    def _populate_subdiv_ts_optional_holidays(self):
+        # Hindu holidays.
+
+        # Kanuma
+        self._add_vassi_uttarayan(tr("Kanuma"))
+
+        # Varalakshmi Vratam.
+        self._add_varalakshmi_vratam(tr("Varalakshmi Vratam"))
+
+        # Islamic holidays.
+
+        # Isra' and Mi'raj.
+        self._add_isra_and_miraj_day(tr("Shab-I-Miraj"))
+
+        # Eid al-Ghadir.
+        self._add_eid_al_ghadir_day(tr("Eid-e-Ghadeer"))
 
     # Tripura.
     def _populate_subdiv_tr_public_holidays(self):

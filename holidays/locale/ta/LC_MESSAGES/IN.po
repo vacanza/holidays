@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-08-21 16:19+0530\n"
+"PO-Revision-Date: 2026-08-22 15:49+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ta\n"
@@ -757,17 +757,13 @@ msgstr "உழவர் திருநாள்"
 msgid "Puthandu (Tamil New Year)"
 msgstr "புத்தாண்டு (தமிழ் புத்தாண்டு)"
 
-#. Telangana Formation Day.
-msgid "Telangana Formation Day"
-msgstr "தெலுங்கானா உருவாக்க நாள்"
-
-#. Bathukamma Festival.
-msgid "Bathukamma Festival"
-msgstr "பதுக்கம்மா திருவிழா"
-
 #. Bonalu.
 msgid "Bonalu"
 msgstr "போனாலு"
+
+#. Bathukamma.
+msgid "Bathukamma"
+msgstr ""
 
 #. Netaji Subhas Chandra Bose's Birthday.
 msgid "Netaji Subhas Chandra Bose's Jayanti"
@@ -865,6 +861,12 @@ msgstr "விநாயக சதுர்த்தி"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ஜனமாஷ்டமி (ஸ்மார்த்த)"
+
+#~ msgid "Telangana Formation Day"
+#~ msgstr "தெலுங்கானா உருவாக்க நாள்"
+
+#~ msgid "Bathukamma Festival"
+#~ msgstr "பதுக்கம்மா திருவிழா"
 
 #~ msgid "Nagaland State Inauguration Day"
 #~ msgstr "நாகலாந்து மாநில தொடக்க நாள்"
