@@ -191,8 +191,8 @@ class TestArgs(unittest.TestCase):
 
     def test_subdivisions_aliases(self):
         subdivisions_aliases = {
-            "subdiv_1": ("S1", "S_1"),
-            "subdiv_2": ("S2", "S_2"),
+            "Subdiv_1": ("S1", "S_1"),
+            "Subdiv_2": ("S2", "S_2"),
             "3": ("S3", "S_3"),
         }
         for subdiv, aliases in subdivisions_aliases.items():

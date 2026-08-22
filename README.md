@@ -13,9 +13,9 @@ specific date is a holiday as fast and flexible as possible.
     </td>
   </tr>
   <tr>
-    <td>CI/CD</td>
+    <td>CI</td>
     <td>
-      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41B5BE&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41B5BE&style=flat&label=documentation" alt="Documentation build status"></a>&nbsp;<a href="https://security.snyk.io/package/pip/holidays/"><img alt="Open World Holidays Package Health Score" src="https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fsecurity.snyk.io%2Fpackage%2Fpip%2Fholidays%2F&search=(class%3D%22score-number%22.*%3F%3E)(%5Cd%7B1%2C3%7D%2F%5Cd%7B1%2C3%7D)&replace=%242&style=flat&label=snyk&color=41B5BE"></a>
+      <a href="https://github.com/vacanza/holidays/actions/workflows/ci.yml?query=branch%3Adev+event%3Apush"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci.yml?branch=dev&event=push&color=41B5BE&style=flat" alt="CI status (dev)"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41B5BE&style=flat&label=documentation" alt="Documentation build status"></a>&nbsp;<a href="https://security.snyk.io/package/pip/holidays/"><img alt="Open World Holidays Package Health Score" src="https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fsecurity.snyk.io%2Fpackage%2Fpip%2Fholidays%2F&search=(class%3D%22score-number%22.*%3F%3E)(%5Cd%7B1%2C3%7D%2F%5Cd%7B1%2C3%7D)&replace=%242&style=flat&label=snyk&color=41B5BE"></a>
     </td>
   </tr>
   <tr>
@@ -52,14 +52,19 @@ The latest stable version can always be installed or updated via pip:
 pip install --upgrade holidays
 ```
 
-The latest development (dev) version can be installed directly from GitHub:
+The latest pre-release version can always be installed or updated via pip:
 
 ``` shell
-pip install --upgrade https://github.com/vacanza/holidays/tarball/dev
+pip install --upgrade --pre holidays
 ```
 
-All new features are always first pushed to dev branch, then released on main branch upon official
-version upgrades.
+All new features are first pushed to the `dev` branch and published as PyPI pre-releases,
+then released from `main` on official version upgrades.
+
+On `dev`, the `VERSION` file holds the upcoming stable version (for example `0.103`).
+Pre-release publishes append a UTC timestamp in CI only
+(`0.103.devYYYYMMDDHHMMSS`); that `.dev` form is what appears on PyPI and is not
+committed back to the repository.
 
 ## Documentation
 
@@ -881,7 +886,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>IN</td>
 <td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (TG, Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
 <td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, pa, ta, te</td>
-<td>OPTIONAL</td>
+<td>OPTIONAL, OPTIONAL_WOMEN</td>
 </tr>
 <tr>
 <td>Indonesia</td>
@@ -1020,7 +1025,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Latvia</td>
 <td>LV</td>
 <td></td>
-<td>en_US, <strong>lv</strong>, uk</td>
+<td>en_US, <strong>lv</strong>, ru, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -1139,7 +1144,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Mauritania</td>
 <td>MR</td>
 <td></td>
-<td></td>
+<td><strong>ar</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -2024,6 +2029,20 @@ code when available. The following financial markets are available:
 <td>HALF_DAY</td>
 </tr>
 <tr>
+<td>Korea Exchange</td>
+<td>XKRX</td>
+<td>Korea Exchange (KRX) holidays</td>
+<td>en_US, <strong>ko</strong>, th</td>
+<td></td>
+</tr>
+<tr>
+<td>London Stock Exchange</td>
+<td>XLON</td>
+<td>London Stock Exchange (LSE) market holidays</td>
+<td><strong>en_GB</strong>, en_US, th</td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>NASDAQ</td>
 <td>XNAS</td>
 <td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
@@ -2042,6 +2061,13 @@ code when available. The following financial markets are available:
 <td>XNYS</td>
 <td>NYSE market holidays</td>
 <td><strong>en_US</strong>, gu, hi</td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
+<td>New Zealand Exchange</td>
+<td>XNZE</td>
+<td>New Zealand Exchange (NZX) market holidays</td>
+<td></td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2070,6 +2096,13 @@ code when available. The following financial markets are available:
 <td>XSWX</td>
 <td>SIX Swiss Exchange market holidays</td>
 <td><strong>de</strong>, en_US, fr, it, th, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Taiwan Stock Exchange</td>
+<td>XTAI</td>
+<td>Taiwan Stock Exchange market holidays</td>
+<td>en_US, th, zh_CN, <strong>zh_TW</strong></td>
 <td></td>
 </tr>
 <tr>
