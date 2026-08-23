@@ -9,40 +9,33 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
-# Urdu translations for holidays library (XLON).
-# Copyright (C) 2026 Holidays Team
-# This file is distributed under the same license as the holidays library.
-# Shehroz Sultani <sultanirajpoot.123@gmail.com>, 2026.
+#
+# London Stock Exchange (LSE) holidays ur_PK localization.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
-"Report-Msgid-Bugs-To: info@vacanza.dev\n"
-"POT-Creation-Date: 2026-08-14 20:14+0500\n"
-"PO-Revision-Date: 2026-08-20 12:00+0500\n"
-"Last-Translator: Shehroz Sultani <sultanirajpoot.123@gmail.com>\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2022-05-07 11:43+0500\n"
+"PO-Revision-Date: 2026-08-23 16:59+0500\n"
+"Last-Translator: shehrozsultani <sultanirajpoot.123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ur_PK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Lingua 5.3.6\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_GB\n"
 
-#: holidays/financial/xlon.py
-msgid "London Stock Exchange"
-msgstr "لندن سٹاک ایکسچینج"
-
-#: holidays/financial/xlon.py
-msgid "Christmas Eve"
-msgstr "کرسمس کی شام"
-
-#: holidays/financial/xlon.py
-msgid "New Year's Eve"
-msgstr "نئے سال کی شام"
-
-#: holidays/financial/xlon.py
 #. %s (markets close at 12:30pm).
 #, c-format
 msgid "%s (markets close at 12:30pm)"
 msgstr "%s (مارکیٹیں دوپہر 12:30 بجے بند ہوتی ہیں)"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "کرسمس کی شام"
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr "نئے سال کی شام"
