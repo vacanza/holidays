@@ -1987,6 +1987,13 @@ code when available. The following financial markets are available:
 <td>HALF_DAY</td>
 </tr>
 <tr>
+<td>Euronext</td>
+<td>XAMS (Amsterdam), XBRU (Brussels), XDUB (Dublin), XLIS (Lisbon), XMIL (Milan), XOSL (Oslo), XPAR (Paris)</td>
+<td>Euronext Stock Exchanges market holidays</td>
+<td><strong>en_US</strong>, fr, it, nl, no, pt_PT</td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>European Central Bank</td>
 <td>XECB</td>
 <td>Trans-European Automated Real-time Gross Settlement (TARGET2)</td>

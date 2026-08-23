@@ -292,6 +292,7 @@ FINANCIAL: RegistryDict = {
     "bombay_stock_exchange": ("BombayStockExchange", "XBOM", "BSE"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
     "chicago_mercantile_exchange": ("ChicagoMercantileExchange", "XCME", "CME"),
+    "euronext": ("Euronext", "Euronext", "XAMS", "XBRU", "XDUB", "XLIS", "XMIL", "XOSL", "XPAR"),
     "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),
     "germany_exchange": ("GermanyStockExchange", "XETR", "XFRA"),
     "hong_kong_stock_exchange": ("HongKongStockExchange", "XHKG", "HKEX", "SEHK"),
