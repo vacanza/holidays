@@ -572,7 +572,7 @@ msgstr "ਵਿਸ਼ਵਕਰਮਾ ਪੂਜਾ"
 msgid "Veer Kesari Chand's Shaheedi Diwas"
 msgstr "ਵੀਰ ਕੇਸਰੀ ਚੰਦ ਦਾ ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ"
 
-#. Arbaaen.
+#. Arbaeen.
 msgid "Chehlum"
 msgstr "ਚਹਿਲੁਮ"
 
