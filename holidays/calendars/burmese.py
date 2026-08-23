@@ -122,6 +122,8 @@ class _BurmeseLunisolar:
 
         return date(y, m, d)
 
+    # @staticmethod so functools.cache keys only on `year`. As an instance method,
+    # `self` would be part of the key, which retains instances and grows the cache unboundedly.
     @staticmethod
     @cache
     def _get_start_date(year: int) -> date | None:

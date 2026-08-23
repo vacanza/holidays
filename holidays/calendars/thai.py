@@ -294,6 +294,8 @@ class _ThaiLunisolar:
                 f"Unknown calendar name: {calendar}. Use `KHMER_CALENDAR` or `THAI_CALENDAR`."
             )
 
+    # @staticmethod so functools.cache keys only on `year`. As an instance method,
+    # `self` would be part of the key, which retains instances and grows the cache unboundedly.
     @staticmethod
     @cache
     def _get_start_date(year: int) -> date | None:
@@ -322,6 +324,8 @@ class _ThaiLunisolar:
 
         return _timedelta(_ThaiLunisolar.START_DATE, delta_days)
 
+    # @staticmethod so functools.cache keys only on `year`. As an instance method,
+    # `self` would be part of the key, which retains instances and grows the cache unboundedly.
     @staticmethod
     @cache
     def buddhist_sabbath_dates(year: int) -> set[date]:
@@ -348,6 +352,8 @@ class _ThaiLunisolar:
             months.insert(7, 30)
         elif year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
             months[6] += 1
+        # Includes first two months of the next Thai lunar year to ensure all Buddhist Sabbaths
+        # in the Gregorian year are captured.
         months.extend([29, 30])
 
         buddhist_sabbaths: set[date] = set()
