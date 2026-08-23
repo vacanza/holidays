@@ -783,6 +783,9 @@ class India(
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
 
+        # Diwali (Balipratipada).
+        self._add_govardhan_puja(tr("Diwali (Balipratipada)"))
+
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
         # Madhya Pradesh Foundation Day.

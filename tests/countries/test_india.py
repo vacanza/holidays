@@ -754,6 +754,21 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertNoSubdivMhHoliday(dts_vinayak)
         self.assertNoSubdivMhOptionalHoliday(dts_vinayak)
 
+    def test_bali_pratipada(self):
+        name = "Diwali (Balipratipada)"
+        dts = (
+            "2018-11-08",
+            "2019-10-28",
+            "2020-11-15",
+            "2021-11-05",
+            "2022-10-25",
+            "2023-11-13",
+            "2024-11-02",
+            "2025-10-22",
+            "2026-11-10",
+        )
+        self.assertHolidayName(name, self.subdiv_holidays["MH"], dts)
+
     def test_dussehra_saptami(self):
         name = "Dussehra (Saptami)"
         dts = (
