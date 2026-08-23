@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-08-24 00:17+0530\n"
+"PO-Revision-Date: 2026-08-24 00:23+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
@@ -942,36 +942,3 @@ msgstr ""
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr ""
-
-#~ msgid "Assam Day"
-#~ msgstr ""
-
-#~ msgid "New Year Celebration"
-#~ msgstr ""
-
-#~ msgid "Christmas Celebration"
-#~ msgstr ""
-
-#~ msgid "Christmas Celebration (Day 4)"
-#~ msgstr ""
-
-#~ msgid "Mizoram State Day"
-#~ msgstr ""
-
-#~ msgid "Karnataka Rajyotsava"
-#~ msgstr ""
-
-#~ msgid "Telangana Formation Day"
-#~ msgstr ""
-
-#~ msgid "Bathukamma Festival"
-#~ msgstr ""
-
-#~ msgid "Nagaland State Inauguration Day"
-#~ msgstr ""
-
-#~ msgid "Andhra Pradesh Foundation Day"
-#~ msgstr ""
-
-#~ msgid "Bestu Varas"
-#~ msgstr ""

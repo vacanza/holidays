@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-28 17:22+0530\n"
-"PO-Revision-Date: 2026-08-24 00:17+0530\n"
+"PO-Revision-Date: 2026-08-24 00:23+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pa\n"
@@ -278,19 +278,19 @@ msgstr "ਈਸਟਰ ਐਤਵਾਰ"
 
 #. Babu Jagjivan Ram's Birthday.
 msgid "Babu Jagjivan Ram's Jayanti"
-msgstr ""
+msgstr "ਬਾਬੂ ਜਗਜੀਵਨ ਰਾਮ ਜਯੰਤੀ"
 
 #. Bhogi.
 msgid "Bhogi"
-msgstr ""
+msgstr "ਭੋਗੀ"
 
 #. Kanuma
 msgid "Kanuma"
-msgstr ""
+msgstr "ਕਨੁਮਾ"
 
 #. Varalakshmi Vratam.
 msgid "Varalakshmi Vratam"
-msgstr ""
+msgstr "ਵਰਲਕਸ਼ਮੀ ਵਰਤ"
 
 #. Ganesh Chaturthi.
 msgid "Ganesh Chaturthi"
@@ -302,7 +302,7 @@ msgstr "ਦੁਰਗਾਸ਼ਟਮੀ"
 
 #. Boxing Day.
 msgid "Boxing Day"
-msgstr ""
+msgstr "ਬਾਕਸਿੰਗ ਡੇ"
 
 #. Isra' and Mi'raj.
 msgid "Shab-I-Miraj"
@@ -318,15 +318,15 @@ msgstr "ਰਾਜ ਸਥਾਪਨਾ ਦਿਵਸ"
 
 #. Indigenous Faith Day.
 msgid "Indigenous Faith Day"
-msgstr ""
+msgstr "ਮੂਲਵਾਸੀ ਧਰਮ ਦਿਵਸ"
 
 #. Mahashtami.
 msgid "Mahashtami"
-msgstr ""
+msgstr "ਮਹਾਸ਼ਟਮੀ"
 
 #. Lingri Niki Sii Donyi Polo Yullo.
 msgid "Lingri Niki Sii Donyi Polo Yullo"
-msgstr ""
+msgstr "ਲਿੰਗਰੀ ਨਿਕੀ ਸੀ ਦੋਨੀ ਪੋਲੋ ਯੁੱਲੋ"
 
 #. Netaji Subhas Chandra Bose's Birthday.
 msgid "Netaji Subhas Chandra Bose Jayanti"
@@ -334,31 +334,31 @@ msgstr "ਨੇਤਾਜੀ ਸੁਭਾਸ਼ ਚੰਦਰ ਬੋਸ ਜਯੰ�
 
 #. May Day.
 msgid "May Day"
-msgstr ""
+msgstr "ਮਈ ਦਿਵਸ"
 
 #. Silpi Divas.
 msgid "Silpi Divas"
-msgstr ""
+msgstr "ਸ਼ਿਲਪੀ ਦਿਵਸ"
 
 #. Gurudev Kalicharan Brahma's Birthday.
 msgid "Gurudev Kalicharan Brahma's Jayanti"
-msgstr ""
+msgstr "ਗੁਰਦੇਵ ਕਾਲੀਚਰਨ ਬ੍ਰਹਮਾ ਜਯੰਤੀ"
 
 #. Bishnu Prasad Rabha's Death Anniversary.
 msgid "Bishnu Prasad Rabha's Death Anniversary"
-msgstr ""
+msgstr "ਬਿਸ਼ਨੂ ਪ੍ਰਸਾਦ ਰਾਭਾ ਦੀ ਬਰਸੀ"
 
 #. Kut.
 msgid "Kut"
-msgstr ""
+msgstr "ਕੁਟ"
 
 #. Martyrs' Day.
 msgid "Shaheedi Divas"
-msgstr ""
+msgstr "ਸ਼ਹੀਦੀ ਦਿਵਸ"
 
 #. Wangala Festival.
 msgid "Wangala Festival"
-msgstr ""
+msgstr "ਵਾਂਗਲਾ ਤਿਉਹਾਰ"
 
 #. Chhath Puja.
 msgid "Chhath Puja"
@@ -494,7 +494,7 @@ msgstr "ਗਣੇਸ਼ ਚਤੁਰਥੀ (ਦੂਜਾ ਦਿਨ)"
 
 #. Saint Joseph Vaz's Day.
 msgid "Saint Joseph Vaz's Day"
-msgstr ""
+msgstr "ਸੰਤ ਜੋਸਫ਼ ਵਾਜ਼ ਦਿਵਸ"
 
 #. Maundy Thursday.
 msgid "Maundy Thursday"
@@ -535,19 +535,19 @@ msgstr "ਸੰਵਤਸਰੀ ਦਿਵਸ"
 
 #. Vassi Uttarayan.
 msgid "Vassi Uttarayan"
-msgstr ""
+msgstr "ਵਾਸੀ ਉੱਤਰਾਯਣ"
 
 #. Hatkeshwar's Birthday.
 msgid "Hatkeshwar's Jayanti"
-msgstr ""
+msgstr "ਹਾਟਕੇਸ਼ਵਰ ਜਯੰਤੀ"
 
 #. Hanuman's Birthday.
 msgid "Hanuman's Jayanti"
-msgstr ""
+msgstr "ਹਨੂਮਾਨ ਜਯੰਤੀ"
 
 #. Dev Diwali
 msgid "Dev Diwali"
-msgstr ""
+msgstr "ਦੇਵ ਦੀਵਾਲੀ"
 
 #. Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day.
 msgid "Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Shaheedi Diwas"
@@ -619,7 +619,7 @@ msgstr "ਝਾਰਖੰਡ ਗਠਨ ਦਿਵਸ"
 
 #. Holy Saturday.
 msgid "Holy Saturday"
-msgstr ""
+msgstr "ਪਵਿੱਤਰ ਸ਼ਨੀਚਰਵਾਰ"
 
 #. Vishwakarma Puja.
 msgid "Vishwakarma Puja"
@@ -683,79 +683,79 @@ msgstr "ਦੀਵਾਲੀ (ਬਲੀ ਪ੍ਰਤਿਪਦਾ)"
 
 #. Maharaja Gambhir Singh's Death Anniversary.
 msgid "Maharaja Gambhir Singh's Death Anniversary"
-msgstr ""
+msgstr "ਮਹਾਰਾਜਾ ਗੰਭੀਰ ਸਿੰਘ ਦੀ ਬਰਸੀ"
 
 #. Lui Ngai Ni.
 msgid "Lui Ngai Ni"
-msgstr ""
+msgstr "ਲੁਈ ਨਗਾਈ ਨੀ"
 
 #. Khongjom Day.
 msgid "Khongjom Day"
-msgstr ""
+msgstr "ਖੋਂਗਜੋਮ ਦਿਵਸ"
 
 #. Patriot's Day.
 msgid "Patriot's Day"
-msgstr ""
+msgstr "ਦੇਸ਼ਭਗਤ ਦਿਵਸ"
 
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
-msgstr ""
+msgstr "ਮੇਰਾ ਚਾਓਰੇਨ ਹੌਬਾ"
 
 #. Players' Day.
 msgid "Players' Day"
-msgstr ""
+msgstr "ਖਿਡਾਰੀ ਦਿਵਸ"
 
 #. Post Christmas.
 msgid "Post Christmas"
-msgstr ""
+msgstr "ਕ੍ਰਿਸਮਸ ਤੋਂ ਬਾਅਦ ਦਾ ਦਿਨ"
 
 #. U Tirot Sing's Death Anniversary.
 msgid "U Tirot Sing's Death Anniversary"
-msgstr ""
+msgstr "ਯੂ ਤਿਰੋਤ ਸਿੰਘ ਦੀ ਬਰਸੀ"
 
 #. Seng Kut Snem.
 msgid "Seng Kut Snem"
-msgstr ""
+msgstr "ਸੇਂਗ ਕੁਟ ਸਨੇਮ"
 
 #. Pa Togan Nengminja Sangma's Death Anniversary.
 msgid "Pa Togan Nengminja Sangma's Death Anniversary"
-msgstr ""
+msgstr "ਪਾ ਟੋਗਨ ਨੇਂਗਮਿੰਜਾ ਸੰਗਮਾ ਦੀ ਬਰਸੀ"
 
 #. U Soso Thama's Death Anniversary.
 msgid "U Soso Thama's Death Anniversary"
-msgstr ""
+msgstr "ਯੂ ਸੋਸੋ ਥਾਮਾ ਦੀ ਬਰਸੀ"
 
 #. U Kiang Nongbah Death Anniversary.
 msgid "U Kiang Nongbah Death Anniversary"
-msgstr ""
+msgstr "ਯੂ ਕਿਆਂਗ ਨੋਂਗਬਾਹ ਦੀ ਬਰਸੀ"
 
 #. Post New Year.
 msgid "Post New Year"
-msgstr ""
+msgstr "ਨਵੇਂ ਸਾਲ ਤੋਂ ਬਾਅਦ ਦਾ ਦਿਨ"
 
 #. Missionary Day.
 msgid "Missionary Day"
-msgstr ""
+msgstr "ਮਿਸ਼ਨਰੀ ਦਿਵਸ"
 
 #. Young Mizo Association's Day.
 msgid "Young Mizo Association's Day"
-msgstr ""
+msgstr "ਯੰਗ ਮਿਜ਼ੋ ਐਸੋਸੀਏਸ਼ਨ ਦਿਵਸ"
 
 #. Remna Ni.
 msgid "Remna Ni"
-msgstr ""
+msgstr "ਰੇਮਨਾ ਨੀ"
 
 #. Mizo Hmeichhe Insuihkhawm Pawl's Day.
 msgid "Mizo Hmeichhe Insuihkhawm Pawl's Day"
-msgstr ""
+msgstr "ਮਿਜ਼ੋ ਹਮੇਇਚ੍ਹੇ ਇਨਸੁਇਹਖਾਮ ਪੌਲ ਦਿਵਸ"
 
 #. Zomi Namni.
 msgid "Zomi Namni"
-msgstr ""
+msgstr "ਜ਼ੋਮੀ ਨਾਮਨੀ"
 
 #. Post Christmas (Day 4).
 msgid "Post Christmas (Day 4)"
-msgstr ""
+msgstr "ਕ੍ਰਿਸਮਸ ਤੋਂ ਬਾਅਦ ਦਾ ਦਿਨ (ਚੌਥਾ ਦਿਨ)"
 
 #. Odisha Day.
 msgid "Odisha Day (Utkala Dibasa)"
@@ -847,15 +847,15 @@ msgstr "ਬੋਨਾਲੂ"
 
 #. Bathukamma.
 msgid "Bathukamma"
-msgstr ""
+msgstr "ਬਥੁਕੰਮਾ"
 
 #. Netaji Subhas Chandra Bose's Birthday.
 msgid "Netaji Subhas Chandra Bose's Jayanti"
-msgstr ""
+msgstr "ਨੇਤਾਜੀ ਸੁਭਾਸ਼ ਚੰਦਰ ਬੋਸ ਜਯੰਤੀ"
 
 #. Maharaja Bir Bikram Kishore Manikya Bahadur's Birthday.
 msgid "Maharaja Bir Bikram Kishore Manikya Bahadur's Jayanti"
-msgstr ""
+msgstr "ਮਹਾਰਾਜਾ ਬੀਰ ਬਿਕਰਮ ਕਿਸ਼ੋਰ ਮਾਣਿਕਿਆ ਬਹਾਦੁਰ ਜਯੰਤੀ"
 
 #. Bengali's New Year.
 #. Pohela Boisakh.
@@ -864,19 +864,19 @@ msgstr "ਪੋਹੇਲਾ ਬੋਸ਼ਾਖ"
 
 #. Garia Puja.
 msgid "Garia Puja"
-msgstr ""
+msgstr "ਗੜੀਆ ਪੂਜਾ"
 
 #. Kharchi Puja.
 msgid "Kharchi Puja"
-msgstr ""
+msgstr "ਖਾਰਚੀ ਪੂਜਾ"
 
 #. Ker Puja.
 msgid "Ker Puja"
-msgstr ""
+msgstr "ਕੇਰ ਪੂਜਾ"
 
 #. Mahasaptami.
 msgid "Mahasaptami"
-msgstr ""
+msgstr "ਮਹਾਸਪਤਮੀ"
 
 #. Harela.
 msgid "Harela"
@@ -941,45 +941,3 @@ msgstr "ਵਿਨਾਇਕ ਚਤੁਰਥੀ"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ਜਨਮਾਸ਼ਟਮੀ (ਸਮਾਰਤ)"
-
-#~ msgid "Assam Day"
-#~ msgstr "ਅਸਾਮ ਦਿਵਸ"
-
-#~ msgid "New Year Celebration"
-#~ msgstr ""
-
-#~ msgid "Christmas Celebration"
-#~ msgstr ""
-
-#~ msgid "Christmas Celebration (Day 4)"
-#~ msgstr ""
-
-#~ msgid "Mizoram State Day"
-#~ msgstr "ਮਿਜ਼ੋਰਮ ਰਾਜ ਦਿਵਸ"
-
-#~ msgid "Karnataka Rajyotsava"
-#~ msgstr "ਕਰਨਾਟਕ ਰਾਜਯੋਤਸਵ"
-
-#~ msgid "Telangana Formation Day"
-#~ msgstr "ਤੇਲੰਗਾਨਾ ਗਠਨ ਦਿਵਸ"
-
-#~ msgid "Bathukamma Festival"
-#~ msgstr "ਬਾਥੁਕੰਮਾ ਤਿਉਹਾਰ"
-
-#~ msgid "Nagaland State Inauguration Day"
-#~ msgstr "ਨਾਗਾਲੈਂਡ ਰਾਜ ਦਾ ਉਦਘਾਟਨ ਦਿਵਸ"
-
-#~ msgid "Andhra Pradesh Foundation Day"
-#~ msgstr "ਆਂਧਰਾ ਪ੍ਰਦੇਸ਼ ਸਥਾਪਨਾ ਦਿਵਸ"
-
-#~ msgid "Bestu Varas"
-#~ msgstr ""
-
-#~ msgid "Feast of St. Francis Xavier"
-#~ msgstr "ਸੇਂਟ ਫ੍ਰਾਂਸਿਸ ਜ਼ੇਵੀਅਰ ਦਾ ਤਿਉਹਾਰ"
-
-#~ msgid "Feast of St. Joseph Vaz"
-#~ msgstr "ਸੇਂਟ ਜੋਸਫ ਵਾਜ਼ ਦਾ ਤਿਉਹਾਰ"
-
-#~ msgid "All Souls Day"
-#~ msgstr ""
