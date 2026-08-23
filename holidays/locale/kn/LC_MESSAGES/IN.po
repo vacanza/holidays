@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-26 12:14+0530\n"
-"PO-Revision-Date: 2026-08-22 17:12+0530\n"
+"PO-Revision-Date: 2026-08-24 00:17+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: kn\n"
@@ -328,9 +328,37 @@ msgstr ""
 msgid "Lingri Niki Sii Donyi Polo Yullo"
 msgstr ""
 
-#. Assam Day.
-msgid "Assam Day"
-msgstr "ಅಸ್ಸಾಂ ದಿನೋತ್ಸವ"
+#. Netaji Subhas Chandra Bose's Birthday.
+msgid "Netaji Subhas Chandra Bose Jayanti"
+msgstr "ನೇತಾಜಿ ಸುಭಾಷ್ ಚಂದ್ರ ಬೋಸ್ ಜಯಂತಿ"
+
+#. May Day.
+msgid "May Day"
+msgstr ""
+
+#. Silpi Divas.
+msgid "Silpi Divas"
+msgstr ""
+
+#. Gurudev Kalicharan Brahma's Birthday.
+msgid "Gurudev Kalicharan Brahma's Jayanti"
+msgstr ""
+
+#. Bishnu Prasad Rabha's Death Anniversary.
+msgid "Bishnu Prasad Rabha's Death Anniversary"
+msgstr ""
+
+#. Kut.
+msgid "Kut"
+msgstr ""
+
+#. Martyrs' Day.
+msgid "Shaheedi Divas"
+msgstr ""
+
+#. Wangala Festival.
+msgid "Wangala Festival"
+msgstr ""
 
 #. Chhath Puja.
 msgid "Chhath Puja"
@@ -387,10 +415,6 @@ msgstr "ಸಾವಿತ್ರಿಬಾಯಿ ಫುಲೆ ಜಯಂತಿ"
 #. Gend Singh's Martyrdom Day.
 msgid "Gend Singh's Shaheedi Diwas"
 msgstr "ಗೆಂದ್ ಸಿಂಗ್ ಶಹೀದಿ ದಿನ"
-
-#. Netaji Subhas Chandra Bose's Birthday.
-msgid "Netaji Subhas Chandra Bose Jayanti"
-msgstr "ನೇತಾಜಿ ಸುಭಾಷ್ ಚಂದ್ರ ಬೋಸ್ ಜಯಂತಿ"
 
 #. Veerangana Avantibai's Martyrdom Day.
 msgid "Veerangana Avantibai's Shaheedi Diwas"
@@ -593,10 +617,6 @@ msgstr "ನೌರೋಜ್"
 msgid "Jharkhand Formation Day"
 msgstr "ಜಾರ್ಖಂಡ್ ಸ್ಥಾಪನಾ ದಿನ"
 
-#. May Day.
-msgid "May Day"
-msgstr ""
-
 #. Holy Saturday.
 msgid "Holy Saturday"
 msgstr ""
@@ -677,10 +697,6 @@ msgstr ""
 msgid "Patriot's Day"
 msgstr ""
 
-#. Kut.
-msgid "Kut"
-msgstr ""
-
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
 msgstr ""
@@ -711,10 +727,6 @@ msgstr ""
 
 #. U Kiang Nongbah Death Anniversary.
 msgid "U Kiang Nongbah Death Anniversary"
-msgstr ""
-
-#. Wangala Festival.
-msgid "Wangala Festival"
 msgstr ""
 
 #. Post New Year.
@@ -929,6 +941,9 @@ msgstr "ವಿನಾಯಕ ಚತುರ್ಥಿ"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ಜನ್ಮಾಷ್ಟಮಿ (ಸ್ಮಾರ್ತ)"
+
+#~ msgid "Assam Day"
+#~ msgstr "ಅಸ್ಸಾಂ ದಿನೋತ್ಸವ"
 
 #~ msgid "New Year Celebration"
 #~ msgstr ""

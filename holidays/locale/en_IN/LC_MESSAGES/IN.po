@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-08-22 17:12+0530\n"
+"PO-Revision-Date: 2026-08-24 00:17+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
@@ -329,8 +329,36 @@ msgstr ""
 msgid "Lingri Niki Sii Donyi Polo Yullo"
 msgstr ""
 
-#. Assam Day.
-msgid "Assam Day"
+#. Netaji Subhas Chandra Bose's Birthday.
+msgid "Netaji Subhas Chandra Bose Jayanti"
+msgstr ""
+
+#. May Day.
+msgid "May Day"
+msgstr ""
+
+#. Silpi Divas.
+msgid "Silpi Divas"
+msgstr ""
+
+#. Gurudev Kalicharan Brahma's Birthday.
+msgid "Gurudev Kalicharan Brahma's Jayanti"
+msgstr ""
+
+#. Bishnu Prasad Rabha's Death Anniversary.
+msgid "Bishnu Prasad Rabha's Death Anniversary"
+msgstr ""
+
+#. Kut.
+msgid "Kut"
+msgstr ""
+
+#. Martyrs' Day.
+msgid "Shaheedi Divas"
+msgstr ""
+
+#. Wangala Festival.
+msgid "Wangala Festival"
 msgstr ""
 
 #. Chhath Puja.
@@ -387,10 +415,6 @@ msgstr ""
 
 #. Gend Singh's Martyrdom Day.
 msgid "Gend Singh's Shaheedi Diwas"
-msgstr ""
-
-#. Netaji Subhas Chandra Bose's Birthday.
-msgid "Netaji Subhas Chandra Bose Jayanti"
 msgstr ""
 
 #. Veerangana Avantibai's Martyrdom Day.
@@ -594,10 +618,6 @@ msgstr ""
 msgid "Jharkhand Formation Day"
 msgstr ""
 
-#. May Day.
-msgid "May Day"
-msgstr ""
-
 #. Holy Saturday.
 msgid "Holy Saturday"
 msgstr ""
@@ -678,10 +698,6 @@ msgstr ""
 msgid "Patriot's Day"
 msgstr ""
 
-#. Kut.
-msgid "Kut"
-msgstr ""
-
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
 msgstr ""
@@ -712,10 +728,6 @@ msgstr ""
 
 #. U Kiang Nongbah Death Anniversary.
 msgid "U Kiang Nongbah Death Anniversary"
-msgstr ""
-
-#. Wangala Festival.
-msgid "Wangala Festival"
 msgstr ""
 
 #. Post New Year.
@@ -930,6 +942,9 @@ msgstr ""
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr ""
+
+#~ msgid "Assam Day"
+#~ msgstr ""
 
 #~ msgid "New Year Celebration"
 #~ msgstr ""

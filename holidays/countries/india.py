@@ -58,6 +58,8 @@ class India(
             * <https://web.archive.org/web/20260608074309/https://www.veerayeehr.com/wp-content/uploads/2025/12/Andhra-Pradesh-Holiday-List-2026.pdf>
         * Arunachal Pradesh:
             * <https://web.archive.org/web/20260822103542/https://only30sec.com/wp-content/uploads/2026/01/Arunachal-Pradesh-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
+        * Assam:
+            * <https://web.archive.org/web/20260822104103/https://only30sec.com/wp-content/uploads/2025/11/Assam-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Chandigarh:
             * <https://web.archive.org/web/20260705144831/https://chandigarh.gov.in/files/updation2025/home25-17488-3012.pdf>
         * Dadra and Nagar Haveli and Daman and Diu:
@@ -581,10 +583,40 @@ class India(
 
     # Assam.
     def _populate_subdiv_as_public_holidays(self):
+        # Netaji Subhas Chandra Bose's Birthday.
+        self._add_holiday_jan_23(tr("Netaji Subhas Chandra Bose Jayanti"))
+
+        # May Day.
+        self._add_labor_day(tr("May Day"))
+
+        # Hindu holidays.
+
         # Magh Bihu.
         self._add_pongal(tr("Magh Bihu"))
-        # Assam Day.
-        self._add_holiday_dec_2(tr("Assam Day"))
+
+        # Bahag Bihu.
+        self._add_vaisakhadi(tr("Bahag Bihu"))
+
+    def _populate_subdiv_as_optional_holidays(self):
+        # Silpi Divas.
+        self._add_holiday_jan_17(tr("Silpi Divas"))
+
+        # Gurudev Kalicharan Brahma's Birthday.
+        self._add_holiday_apr_18(tr("Gurudev Kalicharan Brahma's Jayanti"))
+
+        # Bishnu Prasad Rabha's Death Anniversary.
+        self._add_holiday_jun_20(tr("Bishnu Prasad Rabha's Death Anniversary"))
+
+        # Kut.
+        self._add_holiday_nov_1(tr("Kut"))
+
+        # Martyrs' Day.
+        self._add_holiday_dec_10(tr("Shaheedi Divas"))
+
+        # Hindu holidays.
+
+        # Wangala Festival.
+        self._add_wangala_festival(tr("Wangala Festival"))
 
     # Bihar.
     def _populate_subdiv_br_public_holidays(self):
@@ -1341,9 +1373,6 @@ class India(
 
     # Nagaland.
     def _populate_subdiv_nl_public_holidays(self):
-        pass
-
-    def _populate_subdiv_nl_optional_holidays(self):
         pass
 
     # Orissa / Odisha.
