@@ -974,7 +974,7 @@ class India(
 
         # Islamic holidays.
 
-        # Arbaaen.
+        # Arbaeen.
         self._add_arbaeen_day(tr("Chehlum"))
 
         # Christian holidays.
