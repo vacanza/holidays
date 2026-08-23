@@ -2100,14 +2100,15 @@
     ]
   },
   {
-    "id": "arbaaen",
-    "msgid": "Arbaaen",
+    "id": "arbaeen",
+    "msgid": "Arbaeen",
     "new_comment": "",
-    "comment": "Arbaaen.",
+    "comment": "Arbaeen.",
     "messages": {
       "bn": "চেহলুম",
       "en_IN": "Chehlum",
-      "en_US": "Arbaaen",
+      "en_US": "Arbaeen",
+      "fa_IR": "اربعین حسینی",
       "gu": "ચેહલુમ",
       "hi": "चेहल्लुम",
       "kn": "ಚೆಹ್ಲುಮ್",
@@ -2118,19 +2119,7 @@
       "te": "చెహ్లుం"
     },
     "countries": [
-      "IN"
-    ]
-  },
-  {
-    "id": "arbaeen",
-    "msgid": "Arbaeen",
-    "new_comment": "",
-    "comment": "Arbaeen.",
-    "messages": {
-      "en_US": "Arbaeen",
-      "fa_IR": "اربعین حسینی"
-    },
-    "countries": [
+      "IN",
       "IR"
     ]
   },
