@@ -201,6 +201,9 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(
             name, dts, category=OPTIONAL, skip_years=set(self.hindu_full_range) - skip_years
         )
+        # SUBDIVS.
+        self.assertSubdivMhHolidayName(name, "2026-03-03")
+        self.assertNoSubdivMhHolidayName(name, "2026-03-04")
 
     def test_ram_navami(self):
         name = "Ram Navami"
