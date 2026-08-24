@@ -294,11 +294,11 @@ msgstr "ईस्टर रविवार"
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
-msgstr ""
+msgstr "आंध्र प्रदेश स्थापना दिन"
 
 #. Assam Day.
 msgid "Assam Day"
-msgstr ""
+msgstr "आसाम दिन"
 
 #. Chhath Puja.
 msgid "Chhath Puja"
@@ -479,7 +479,7 @@ msgstr "संवत्सरी दिन"
 
 #. Gujarati New Year.
 msgid "Vikram Samvat New Year"
-msgstr ""
+msgstr "विक्रम संवत नववर्ष"
 
 #. Vassi Uttarayan.
 msgid "Vassi Uttarayan"
@@ -575,7 +575,7 @@ msgstr "झारखंड स्थापना दिन"
 
 #. Karnataka Rajyotsav.
 msgid "Karnataka Rajyotsava"
-msgstr ""
+msgstr "कर्नाटक राज्योत्सव"
 
 #. Kerala Foundation Day.
 msgid "Kerala Foundation Day"
@@ -643,7 +643,7 @@ msgstr "डोल ग्यारस"
 
 #. Mizoram State Day.
 msgid "Mizoram State Day"
-msgstr ""
+msgstr "मिझोराम राज्य दिन"
 
 #. Peace Accord Day.
 msgid "Remna Ni"
@@ -651,7 +651,7 @@ msgstr "रेमना नी"
 
 #. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"
-msgstr ""
+msgstr "नागालँड राज्य उद्घाटन दिन"
 
 #. Odisha Day.
 msgid "Odisha Day (Utkala Dibasa)"
@@ -743,11 +743,11 @@ msgstr "पुथंडू (तमिळ नववर्ष)"
 
 #. Telangana Formation Day.
 msgid "Telangana Formation Day"
-msgstr ""
+msgstr "तेलंगणा स्थापना दिन"
 
 #. Bathukamma Festival.
 msgid "Bathukamma Festival"
-msgstr ""
+msgstr "बथुकम्मा उत्सव"
 
 #. Bonalu.
 msgid "Bonalu"
