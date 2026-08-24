@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.103\n"
+"Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-07-31 23:38+0530\n"
+"PO-Revision-Date: 2026-08-25 00:23+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ml\n"
@@ -26,6 +26,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_IN\n"
+
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr "ഗണേശ ചതുർത്ഥി"
+
+#. Vinayak Chaturthi.
+msgid "Vinayak Chaturthi"
+msgstr "ഗണേശ ചതുർത്ഥി"
 
 #. %s (estimated).
 #, c-format
@@ -424,10 +432,6 @@ msgstr ""
 msgid "Goa Liberation Day"
 msgstr "ഗോവ മോചനദിനം"
 
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
-msgstr "ഗണേശ ചതുർത്ഥി"
-
 #. Ganesh Chaturthi (2nd Day).
 msgid "Ganesh Chaturthi (2nd Day)"
 msgstr "ഗണേശ ചതുർത്ഥി (രണ്ടാം ദിവസം)"
@@ -469,8 +473,28 @@ msgstr "സർദാർ വല്ലഭ്ഭായി പട്ടേൽ ജയ
 msgid "Uttarayan"
 msgstr "ഉത്തരായൻ"
 
+#. Samvatsari Day.
+msgid "Samvatsari Day"
+msgstr "സംവത്സരി ദിനം"
+
 #. Gujarati New Year.
-msgid "Bestu Varas"
+msgid "Vikram Samvat New Year"
+msgstr ""
+
+#. Vassi Uttarayan.
+msgid "Vassi Uttarayan"
+msgstr ""
+
+#. Hatkeshwar's Birthday.
+msgid "Hatkeshwar's Jayanti"
+msgstr ""
+
+#. Hanuman's Birthday.
+msgid "Hanuman's Jayanti"
+msgstr ""
+
+#. Dev Diwali
+msgid "Dev Diwali"
 msgstr ""
 
 #. Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day.
@@ -685,10 +709,6 @@ msgstr "സത്‌ഗുരു റാം സിംഗ് ജയന്തി"
 msgid "Hola Mohalla"
 msgstr "ഹോലാ മൊഹല്ലാ"
 
-#. Samvatsari Day.
-msgid "Samvatsari Day"
-msgstr "സംവത്സരി ദിനം"
-
 #. Khejarli's Martyrdom Day.
 msgid "Khejarli's Shaheedi Diwas"
 msgstr "ഖേജർലിയുടെ ശഹീദ് ദിനം"
@@ -745,6 +765,7 @@ msgstr "വീർ കേസരി ചന്ദിന്റെ ശഹീദ് �
 msgid "Easter Monday"
 msgstr "ഈസ്റ്റർ തിങ്കളാഴ്ച"
 
+#. Arbaeen.
 #. Arbaaen.
 msgid "Chehlum"
 msgstr "ചെഹ്ലും"
@@ -793,19 +814,6 @@ msgstr "വസന്ത പഞ്ചമി"
 msgid "Shri Panchami"
 msgstr "ശ്രീ പഞ്ചമി"
 
-#. Vinayak Chaturthi.
-msgid "Vinayak Chaturthi"
-msgstr "ഗണേശ ചതുർത്ഥി"
-
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ജന്മാഷ്ടമി (സ്മാർത്ത)"
-
-#~ msgid "Feast of St. Francis Xavier"
-#~ msgstr "സെന്റ് ഫ്രാൻസിസ് സേവ്യറിന്റെ തിരുനാൾ"
-
-#~ msgid "Feast of St. Joseph Vaz"
-#~ msgstr "സെന്റ് ജോസഫ് വാസിന്റെ തിരുനാൾ"
-
-#~ msgid "All Souls Day"
-#~ msgstr ""

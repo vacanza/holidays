@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.103\n"
+"Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-28 17:22+0530\n"
-"PO-Revision-Date: 2026-07-31 23:38+0530\n"
+"PO-Revision-Date: 2026-08-25 00:23+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pa\n"
@@ -26,6 +26,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_IN\n"
+
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr "ਵਿਨਾਇਕ ਚਤੁਰਥੀ"
+
+#. Vinayak Chaturthi.
+msgid "Vinayak Chaturthi"
+msgstr "ਵਿਨਾਇਕ ਚਤੁਰਥੀ"
 
 #. %s (estimated).
 #, c-format
@@ -218,7 +226,7 @@ msgstr "ਗਣੇਸ਼ ਚਤੁਰਥੀ / ਵਿਨਾਇਕ ਚਤੁਰਥ�
 
 #. Ganesh Chaturthi.
 msgid "Ganesh Chaturthi"
-msgstr "ਵਿਨਾਇਕ ਚਤੁਰਥੀ"
+msgstr "ਗਣੇਸ਼ ਚਤੁਰਥੀ"
 
 #. Vinayak Chaturthi.
 msgid "Vinayak Chaturthi"
@@ -424,10 +432,6 @@ msgstr ""
 msgid "Goa Liberation Day"
 msgstr "ਗੋਆ ਮੁਕਤੀ ਦਿਵਸ"
 
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
-msgstr "ਗਣੇਸ਼ ਚਤੁਰਥੀ"
-
 #. Ganesh Chaturthi (2nd Day).
 msgid "Ganesh Chaturthi (2nd Day)"
 msgstr "ਗਣੇਸ਼ ਚਤੁਰਥੀ (ਦੂਜਾ ਦਿਨ)"
@@ -469,8 +473,28 @@ msgstr "ਸਰਦਾਰ ਵੱਲਭਭਾਈ ਪਟੇਲ ਜਯੰਤੀ"
 msgid "Uttarayan"
 msgstr "ਉੱਤਰਾਯਣ"
 
+#. Samvatsari Day.
+msgid "Samvatsari Day"
+msgstr "ਸੰਵਤਸਰੀ ਦਿਵਸ"
+
 #. Gujarati New Year.
-msgid "Bestu Varas"
+msgid "Vikram Samvat New Year"
+msgstr ""
+
+#. Vassi Uttarayan.
+msgid "Vassi Uttarayan"
+msgstr ""
+
+#. Hatkeshwar's Birthday.
+msgid "Hatkeshwar's Jayanti"
+msgstr ""
+
+#. Hanuman's Birthday.
+msgid "Hanuman's Jayanti"
+msgstr ""
+
+#. Dev Diwali
+msgid "Dev Diwali"
 msgstr ""
 
 #. Shaheed-e-Azam Bhagat Singh, Sukhdev and Rajguru's Martyrdom Day.
@@ -685,10 +709,6 @@ msgstr "ਸਤਿਗੁਰੂ ਰਾਮ ਸਿੰਘ ਜੀ ਦਾ ਜਨਮ ਦ
 msgid "Hola Mohalla"
 msgstr "ਹੋਲਾ ਮੁਹੱਲਾ"
 
-#. Samvatsari Day.
-msgid "Samvatsari Day"
-msgstr "ਸੰਵਤਸਰੀ ਦਿਵਸ"
-
 #. Khejarli's Martyrdom Day.
 msgid "Khejarli's Shaheedi Diwas"
 msgstr "ਖੇਜੜਲੀ ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ"
@@ -745,6 +765,7 @@ msgstr "ਵੀਰ ਕੇਸਰੀ ਚੰਦ ਦਾ ਸ਼ਹੀਦੀ ਦਿਹ�
 msgid "Easter Monday"
 msgstr "ਈਸਟਰ ਸੋਮਵਾਰ"
 
+#. Arbaeen.
 #. Arbaaen.
 msgid "Chehlum"
 msgstr "ਚਹਿਲੁਮ"
@@ -793,19 +814,6 @@ msgstr "ਬਸੰਤ ਪੰਚਮੀ"
 msgid "Shri Panchami"
 msgstr "ਸ੍ਰੀ ਪੰਚਮੀ"
 
-#. Vinayak Chaturthi.
-msgid "Vinayak Chaturthi"
-msgstr "ਵਿਨਾਇਕ ਚਤੁਰਥੀ"
-
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ਜਨਮਾਸ਼ਟਮੀ (ਸਮਾਰਤ)"
-
-#~ msgid "Feast of St. Francis Xavier"
-#~ msgstr "ਸੇਂਟ ਫ੍ਰਾਂਸਿਸ ਜ਼ੇਵੀਅਰ ਦਾ ਤਿਉਹਾਰ"
-
-#~ msgid "Feast of St. Joseph Vaz"
-#~ msgstr "ਸੇਂਟ ਜੋਸਫ ਵਾਜ਼ ਦਾ ਤਿਉਹਾਰ"
-
-#~ msgid "All Souls Day"
-#~ msgstr ""
