@@ -228,8 +228,8 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
             ("2025-08-03", "Armed Forces Day"),
             ("2025-08-04", "Armed Forces Day (observed)"),
             ("2025-08-15", "Constitution Day"),
-            ("2025-10-12", "Independence Day"),
-            ("2025-10-13", "Independence Day (observed)"),
+            ("2025-10-12", "National Independence Day"),
+            ("2025-10-13", "National Independence Day (observed)"),
             ("2025-12-08", "Immaculate Conception"),
             ("2025-12-25", "Christmas Day"),
         )

@@ -48,7 +48,7 @@ class TestSuriname(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2015, 2031))
 
     def test_good_friday(self):
-        name = "Goede Vrijdag"
+        name = "Goede vrijdag"
         self.assertHolidayName(
             name,
             "2021-04-02",
@@ -60,7 +60,7 @@ class TestSuriname(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(1972, 2050))
 
     def test_easter_monday(self):
-        name = "Tweede Paasdag"
+        name = "Tweede paasdag"
         self.assertHolidayName(
             name,
             "2021-04-05",
@@ -124,10 +124,10 @@ class TestSuriname(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name_new, range(1972, 2008))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Eerste Kerstdag", (f"{year}-12-25" for year in range(1972, 2050)))
+        self.assertHolidayName("Eerste kerstdag", (f"{year}-12-25" for year in range(1972, 2050)))
 
     def test_second_day_of_christmas(self):
-        self.assertHolidayName("Tweede Kerstdag", (f"{year}-12-26" for year in range(1972, 2050)))
+        self.assertHolidayName("Tweede kerstdag", (f"{year}-12-26" for year in range(1972, 2050)))
 
     def test_eid_al_fitr(self):
         name = "Ied-Ul-Fitre"
@@ -176,8 +176,8 @@ class TestSuriname(CommonCountryTests, TestCase):
             ("2024-01-01", "Nieuwjaarsdag"),
             ("2024-02-10", "Chinees Nieuwjaar"),
             ("2024-03-25", "Holi-Phagwa"),
-            ("2024-03-29", "Goede Vrijdag"),
-            ("2024-04-01", "Tweede Paasdag"),
+            ("2024-03-29", "Goede vrijdag"),
+            ("2024-04-01", "Tweede paasdag"),
             ("2024-04-10", "Ied-Ul-Fitre"),
             ("2024-05-01", "Dag van de Arbeid"),
             ("2024-06-16", "Ied-Ul-Adha"),
@@ -186,8 +186,8 @@ class TestSuriname(CommonCountryTests, TestCase):
             ("2024-10-10", "Dag der Marrons"),
             ("2024-10-31", "Divali"),
             ("2024-11-25", "Onafhankelijkheidsdag"),
-            ("2024-12-25", "Eerste Kerstdag"),
-            ("2024-12-26", "Tweede Kerstdag"),
+            ("2024-12-25", "Eerste kerstdag"),
+            ("2024-12-26", "Tweede kerstdag"),
         )
 
     def test_l10n_default(self):
@@ -196,8 +196,8 @@ class TestSuriname(CommonCountryTests, TestCase):
             ("2025-01-29", "Chinees Nieuwjaar"),
             ("2025-03-14", "Holi-Phagwa"),
             ("2025-03-31", "Ied-Ul-Fitre"),
-            ("2025-04-18", "Goede Vrijdag"),
-            ("2025-04-21", "Tweede Paasdag"),
+            ("2025-04-18", "Goede vrijdag"),
+            ("2025-04-21", "Tweede paasdag"),
             ("2025-05-01", "Dag van de Arbeid"),
             ("2025-06-07", "Ied-Ul-Adha"),
             ("2025-07-01", "Dag der Vrijheden"),
@@ -205,8 +205,8 @@ class TestSuriname(CommonCountryTests, TestCase):
             ("2025-10-10", "Dag der Marrons"),
             ("2025-10-20", "Divali"),
             ("2025-11-25", "Onafhankelijkheidsdag"),
-            ("2025-12-25", "Eerste Kerstdag"),
-            ("2025-12-26", "Tweede Kerstdag"),
+            ("2025-12-25", "Eerste kerstdag"),
+            ("2025-12-26", "Tweede kerstdag"),
         )
 
     def test_l10n_en_us(self):

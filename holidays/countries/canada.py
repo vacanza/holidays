@@ -38,8 +38,8 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             * [MB National Day for Truth and Reconciliation](https://web.archive.org/web/20240714223654/https://web2.gov.mb.ca/bills/43-1/b004e.php)
         * <https://web.archive.org/web/20260214144101/https://www2.gnb.ca/content/gnb/en/departments/elg/local_government/content/governance/content/days_of_rest_act.html>
         * Ontario:
-            * [Employment Standards Act, 2000](https://www.ontario.ca/laws/statute/00e41)
-            * [Proclamation of Oct 12, 2007](https://www.ontario.ca/document/ontario-gazette-volume-140-issue-43-october-27-2007)
+            * [Employment Standards Act, 2000](https://web.archive.org/web/20260814113906/https://www.ontario.ca/laws/statute/00e41)
+            * [Proclamation of Oct 12, 2007](https://web.archive.org/web/20250906045854/https://www.ontario.ca/document/ontario-gazette-volume-140-issue-43-october-27-2007)
             * [Guide to the Employment Standards Act](https://web.archive.org/web/20250405170509/https://www.ontario.ca/document/your-guide-employment-standards-act-0/public-holidays)
         * <https://archive.org/details/nunavut-day-designated-as-a-general-holiday-start-date>
         * <https://web.archive.org/web/20250122122256/https://www.warmuseum.ca/firstworldwar/history/after-the-war/remembrance/remembrance-day/>
@@ -259,8 +259,10 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             self._add_holiday_1st_mon_of_aug(tr("British Columbia Day"))
 
         if self._year >= 2023:
-            # National Day for Truth and Reconciliation.
-            self._add_holiday_sep_30(tr("National Day for Truth and Reconciliation"))
+            self._add_observed(
+                # National Day for Truth and Reconciliation.
+                self._add_holiday_sep_30(tr("National Day for Truth and Reconciliation"))
+            )
 
         self._add_thanksgiving_day()
 

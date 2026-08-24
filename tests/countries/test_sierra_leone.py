@@ -261,7 +261,7 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             ("2025-04-21", "Easter Monday"),
             ("2025-04-27", "Independence Day"),
             ("2025-04-28", "Independence Day (observed)"),
-            ("2025-05-01", "Labor Day"),
+            ("2025-05-01", "International Worker's Day"),
             ("2025-06-06", "Eid al-Adha (estimated)"),
             ("2025-09-04", "Prophet's Birthday (estimated)"),
             ("2025-12-25", "Christmas Day"),

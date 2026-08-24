@@ -53,7 +53,7 @@ msgstr "International Workers' Solidarity Day"
 msgid "Рӯзи Ғалаба дар Ҷанги Бузурги Ватанӣ"
 msgstr "Victory Day"
 
-#. Day of National Unity.
+#. National Unity Day.
 msgid "Рӯзи Ваҳдати миллӣ"
 msgstr "National Unity Day"
 

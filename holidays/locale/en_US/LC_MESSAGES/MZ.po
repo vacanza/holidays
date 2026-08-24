@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-21 19:22+0300\n"
-"PO-Revision-Date: 2023-07-21 19:26+0300\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -49,9 +49,9 @@ msgstr "Women's Day"
 msgid "Dia Internacional dos Trabalhadores"
 msgstr "International Workers' Day"
 
-#. Independence Day.
+#. National Independence Day.
 msgid "Dia da Independência Nacional"
-msgstr "Independence Day"
+msgstr "National Independence Day"
 
 #. Victory Day.
 msgid "Dia da Vitória"

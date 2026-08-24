@@ -529,7 +529,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             "1950-12-23",  # Saturday before Christmas Eve.
             "1954-12-24",  # Christmas Eve.
             "1956-12-24",  # Christmas Eve.
-            "1958-12-26",  # Day after Christmas.
+            "1958-12-26",  # Day After Christmas.
             "1961-05-29",  # Day before Decoration Day.
             "1963-11-25",  # Funeral of President John F. Kennedy.
             "1965-12-24",  # Christmas Eve.

@@ -29,6 +29,7 @@ from polib import POFile, pofile
 
 sys.path.insert(0, str(Path.cwd()))  # Make holidays visible.
 from holidays import __version__ as package_version
+from holidays.holiday_base import HolidayBase
 from holidays.registry import COUNTRIES, FINANCIAL
 
 WRAP_WIDTH = 99
@@ -250,9 +251,13 @@ class POGenerator:
                 class_name, entity_code = entity_mapping[mod_name][0:2]
                 mod = importlib.import_module(f"holidays.{entity_type}.{mod_name}")
 
-                entity_cls = None
+                entity_cls: type[HolidayBase] | None = None
                 for cls_name, cls in inspect.getmembers(mod, inspect.isclass):
-                    if cls_name == class_name and cls.default_language is not None:
+                    if (
+                        cls_name == class_name
+                        and issubclass(cls, HolidayBase)
+                        and cls.default_language is not None
+                    ):
                         entity_cls = cls
                         break
 

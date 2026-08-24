@@ -115,6 +115,7 @@ SAT_SUN_TO_NEXT_TUE = ObservedRule({SAT: +3, SUN: +2})
 SAT_SUN_TO_NEXT_WED = ObservedRule({SAT: +4, SUN: +3})
 SAT_SUN_TO_NEXT_MON_TUE = ObservedRule({SAT: +2, SUN: +2})
 SAT_SUN_TO_NEXT_WORKDAY = ObservedRule({SAT: +7, SUN: +7})
+SAT_SUN_TO_NONE = ObservedRule({SAT: None, SUN: None})
 
 
 class ObservedHolidayBase(HolidayBase):
@@ -416,7 +417,10 @@ class ObservedHolidayBase(HolidayBase):
             return None
 
         self._add_special_holidays(
-            (f"special_{category}_holidays_observed" for category in self._sorted_categories),
+            (
+                f"special_{category.lower()}_holidays_observed"
+                for category in self._sorted_categories
+            ),
             observed=True,
         )
 
@@ -429,7 +433,7 @@ class ObservedHolidayBase(HolidayBase):
 
         self._add_special_holidays(
             (
-                f"special_{self._normalized_subdiv}_{category}_holidays_observed"
+                f"special_{self._normalized_subdiv.lower()}_{category.lower()}_holidays_observed"
                 for category in self._sorted_categories
             ),
             observed=True,

@@ -218,8 +218,8 @@ class TestGabon(CommonCountryTests, TestCase):
             ("2024-08-17", "Independence Day Holiday"),
             ("2024-08-30", "Liberation Day"),
             ("2024-11-01", "All Saints' Day"),
-            ("2024-11-14", "Public holiday"),
-            ("2024-11-15", "Public holiday"),
-            ("2024-11-16", "Public holiday"),
+            ("2024-11-14", "Public Holiday"),
+            ("2024-11-15", "Public Holiday"),
+            ("2024-11-16", "Public Holiday"),
             ("2024-12-25", "Christmas Day"),
         )

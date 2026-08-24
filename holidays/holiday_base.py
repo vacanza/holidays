@@ -743,9 +743,13 @@ class HolidayBase(dict[date, str]):
     @cached_property
     def _normalized_subdiv(self):
         return (
-            self.subdivisions_aliases.get(self.subdiv, self.subdiv)
-            .translate(str.maketrans({"-": "_", " ": "_"}))
-            .lower()
+            (
+                self.subdivisions_aliases.get(self.subdiv, self.subdiv).translate(
+                    str.maketrans({"-": "_", " ": "_"})
+                )
+            )
+            if self.subdiv is not None
+            else None
         )
 
     @property
@@ -979,14 +983,14 @@ class HolidayBase(dict[date, str]):
         for category in self._sorted_categories:
             if asch_method := getattr(
                 self,
-                f"_populate_subdiv_{self._normalized_subdiv}_{category.lower()}_holidays",
+                f"_populate_subdiv_{self._normalized_subdiv.lower()}_{category.lower()}_holidays",
                 None,
             ):
                 asch_method()
 
         if self.has_special_holidays:
             self._add_special_holidays(
-                f"special_{self._normalized_subdiv}_{category.lower()}_holidays"
+                f"special_{self._normalized_subdiv.lower()}_{category.lower()}_holidays"
                 for category in self._sorted_categories
             )
 
@@ -1136,10 +1140,13 @@ class HolidayBase(dict[date, str]):
             raise AttributeError(f"Unknown direction: {direction}")
 
         dt = self.__keytransform__(target_date or datetime.now().date())
-        if direction == "forward" and (next_year := dt.year + 1) not in self.years:
-            self._populate(next_year)
-        elif direction == "backward" and (previous_year := dt.year - 1) not in self.years:
-            self._populate(previous_year)
+        if self.expand:
+            if direction == "forward" and (next_year := dt.year + 1) not in self.years:
+                self.years.add(next_year)
+                self._populate(next_year)
+            elif direction == "backward" and (previous_year := dt.year - 1) not in self.years:
+                self.years.add(previous_year)
+                self._populate(previous_year)
 
         sorted_dates = sorted(self.keys())
         position = (

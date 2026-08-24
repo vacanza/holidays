@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-08 19:40+0300\n"
-"PO-Revision-Date: 2026-06-30 22:18+0300\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ar\n"
@@ -35,7 +35,7 @@ msgstr "%s (يوم تعويضي)"
 
 #. New Year's Day.
 msgid "Новий рік"
-msgstr "السنة الجديدة"
+msgstr "رأس السنة الميلادية"
 
 #. Christmas Day.
 msgid "Різдво Христове"
@@ -43,7 +43,7 @@ msgstr "عيد الميلاد"
 
 #. International Women's Day.
 msgid "Міжнародний жіночий день"
-msgstr "اليوم العالمي للمرأة"
+msgstr "يوم المراة العالمي"
 
 #. Easter Sunday (Pascha).
 msgid "Великдень (Пасха)"
@@ -97,7 +97,7 @@ msgstr "يوم المدافع عن أوكرانيا"
 msgid "Річниця Великої Жовтневої соціалістичної революції"
 msgstr "ذكرى ثورة أكتوبر الاشتراكية العظمى"
 
-#. Date format (see strftime() Format Codes)
+#. Substituted date format.
 msgid "%d.%m.%Y"
 msgstr "%d/%m/%Y"
 

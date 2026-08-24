@@ -53,7 +53,7 @@ msgstr "วันอีฎิ้ลฟิตริ"
 msgid "عطلة عيد الفطر"
 msgstr "เทศกาลอีฎิ้ลฟิตริ"
 
-#. Arafat Day.
+#. Day of Arafah.
 msgid "وقفة عرفة"
 msgstr "วันอารอฟะห์"
 
