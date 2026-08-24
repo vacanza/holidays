@@ -189,13 +189,17 @@ class AustralianSecuritiesExchangeStaticHolidays:
     name_day_following_new_years_day = tr("Day following New Year's Day")
 
     special_public_holidays = {
-        2004: (
-            (JAN, 2, (pause_label, name_day_following_new_years_day)),
-            (APR, 26, (no_settlement_label, name_anzac_day)),
-        ),
         2010: (APR, 26, name_anzac_day),
         # Easter Tuesday / Public Holiday.
         2011: (APR, 26, tr("Easter Tuesday / Public Holiday")),
         # National Day of Mourning for Queen Elizabeth II.
         2022: (SEP, 22, tr("National Day of Mourning for Queen Elizabeth II")),
+    }
+
+    special_half_day_holidays = {
+        2004: (JAN, 2, (pause_label, name_day_following_new_years_day)),
+    }
+
+    special_restricted_settlement_holidays = {
+        2004: (APR, 26, (no_settlement_label, name_anzac_day)),
     }

@@ -23,12 +23,14 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
 
     def test_special_holidays(self):
         self.assertHoliday(
-            "2004-01-02",
-            "2004-04-26",
             "2010-04-26",
             "2011-04-26",
             "2022-09-22",
         )
+        self.assertHalfDayHolidayName(
+            "Day following New Year's Day (markets close early)", "2004-01-02"
+        )
+        self.assertRestrictedSettlementHolidayName("ANZAC Day (No Settlement)", "2004-04-26")
 
     def test_new_years_day(self):
         name = "New Year's Day"
