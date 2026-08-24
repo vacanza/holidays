@@ -30,7 +30,7 @@ msgstr ""
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
-msgstr "%s (مشاہدہ شدہ)"
+msgstr "%s (منایا گیا)"
 
 #. Good Friday.
 msgid "Good Friday"
