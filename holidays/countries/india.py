@@ -68,6 +68,7 @@ class India(
             * <https://web.archive.org/web/20260718194348/https://goaprintingpress.gov.in/downloads/2526/2526-28-SII-OG.pdf>
         * Gujarat:
             * <https://web.archive.org/web/20260122052040/https://images-gujarati.indianexpress.com/2025/11/gujarat-government-Year-2026-holiday-list.pdf>
+            * [Gujarat Holidays 2010-2026](https://archive.org/details/gujarat-holidays)
         * Haryana:
             * <https://web.archive.org/web/20260704094548/https://haryanacalendar.co.in/wp-content/uploads/2025/12/Haryana-Govt-Official-Notification-2026-PDF.pdf>
         * Himachal Pradesh:
@@ -90,6 +91,7 @@ class India(
             * <https://web.archive.org/web/20260815172406/https://meghalaya.gov.in/sites/default/files/holiday_files/GAA_78_2025_23.pdf>
         * Mizoram:
             * <https://web.archive.org/web/20260822104707/https://only30sec.com/wp-content/uploads/2025/11/Mizoram-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
+            * <https://web.archive.org/web/20260324051214/http://mizoram.nic.in/gov/hols.htm>
         * Nagaland:
             * <https://web.archive.org/web/20260412133333/https://cag.gov.in/uploads/media/Holiday-list-2026-069099b1b46e314-06360641.pdf>
         * Punjab:
@@ -289,7 +291,7 @@ class India(
             # Maha Shivaratri.
             self._add_maha_shivaratri(tr("Maha Shivaratri"))
 
-        if self._year not in self.holi_optional_years:
+        if self._year not in self.holi_optional_years and self._normalized_subdiv != "MH":
             # Holi.
             self._add_holi(tr("Holi"))
 
@@ -451,9 +453,22 @@ class India(
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
-        if self._year not in {2012, 2023}:
-            # Ganesh Chaturthi / Vinayak Chaturthi.
-            self._add_ganesh_chaturthi(tr("Ganesh Chaturthi / Vinayak Chaturthi"))
+        if self._normalized_subdiv != "MH":
+            self._add_ganesh_chaturthi(
+                # Ganesh Chaturthi / Vinayak Chaturthi.
+                tr("Ganesh Chaturthi / Vinayak Chaturthi")
+                if self._year not in {2012, 2023}
+                # Ganesh Chaturthi.
+                else tr("Ganesh Chaturthi")
+            )
+
+            dates = {
+                2012: (AUG, 21),
+                2023: (AUG, 20),
+            }
+            if dt := dates.get(self._year):
+                # Vinayak Chaturthi.
+                self._add_holiday(tr("Vinayak Chaturthi"), dt)
 
         # Dussehra (Saptami).
         self._add_maha_saptami(tr("Dussehra (Saptami)"))
@@ -866,7 +881,7 @@ class India(
         self._add_samvatsari_parva(tr("Samvatsari Day"))
 
         # Gujarati New Year.
-        # To be added from #3742
+        self._add_vikram_samvat_new_year(tr("Vikram Samvat New Year"))
 
         # Bhai Duj.
         self._add_bhai_dooj(tr("Bhai Duj"))
@@ -1349,8 +1364,9 @@ class India(
         # Young Mizo Association's Day.
         self._add_holiday_jun_15(tr("Young Mizo Association's Day"))
 
-        # Remna Ni.
-        self._add_holiday_jun_30(tr("Remna Ni"))
+        if self._year >= 1987:
+            # Peace Accord Day.
+            self._add_holiday_jun_30(tr("Remna Ni"))
 
         # Mizo Hmeichhe Insuihkhawm Pawl's Day.
         self._add_holiday_jul_6(tr("Mizo Hmeichhe Insuihkhawm Pawl's Day"))
@@ -1651,7 +1667,7 @@ class India(
 
         # Islamic holidays.
 
-        # Arbaaen.
+        # Arbaeen.
         self._add_arbaeen_day(tr("Chehlum"))
 
     # Uttar Pradesh.
@@ -1765,12 +1781,6 @@ class IndiaStaticHolidays:
     # Shri Panchami.
     name_shri_panchami = tr("Shri Panchami")
 
-    # Ganesh Chaturthi.
-    name_ganesh_chaturthi = tr("Ganesh Chaturthi")
-
-    # Vinayak Chaturthi.
-    name_vinayak_chaturthi = tr("Vinayak Chaturthi")
-
     # Guru Tegh Bahadur's Martyrdom Day.
     name_guru_tegh_bahadur_martyrdom_day = tr("Guru Tegh Bahadur's Shaheedi Diwas")
 
@@ -1794,10 +1804,6 @@ class IndiaStaticHolidays:
         2007: (SEP, 3, name_janmashtami_smarta),
         2008: (AUG, 28, name_janmashtami_smarta),
         2011: (DEC, 31, name_guru_gobind_singh_birthday),
-        2012: (
-            (AUG, 21, name_vinayak_chaturthi),
-            (SEP, 19, name_ganesh_chaturthi),
-        ),
         2013: (
             (FEB, 14, name_shri_panchami),
             (FEB, 15, name_basant_panchami),
@@ -1807,9 +1813,7 @@ class IndiaStaticHolidays:
         2022: (AUG, 18, name_janmashtami_smarta),
         2023: (
             (JAN, 14, name_magh_bihu),
-            (AUG, 20, name_vinayak_chaturthi),
             (SEP, 6, name_janmashtami_smarta),
-            (SEP, 19, name_ganesh_chaturthi),
         ),
         2025: (AUG, 15, name_janmashtami_smarta),
     }

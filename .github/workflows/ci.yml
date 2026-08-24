@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  merge_group:
+  pull_request:
+    branches:
+      - dev
+      - main
+      - v1
+  push:
+    branches:
+      - dev
+      - v1
+  workflow_dispatch:
+
+env:
+  FORCE_COLOR: 1
+
+concurrency:
+  # Don't cancel push CI: cancelled runs never conclude success, so pre-release
+  # workflow_run would miss that commit. Still cancel superseded PR/merge_group runs.
+  group: ${{ github.repository }}-ci-${{ github.head_ref || github.ref }}
+  cancel-in-progress: ${{ github.event_name != 'push' }}
+
+permissions: {}
+
+jobs:
+  run-code-checks:
+    name: Code checks
+    permissions:
+      contents: read
+    uses: ./.github/workflows/run-code-checks.yml
+
+  run-code-ql:
+    name: CodeQL
+    permissions:
+      contents: read
+      security-events: write
+    uses: ./.github/workflows/run-code-ql.yml
+
+  run-code-tests:
+    name: Code tests
+    needs:
+      - run-code-checks
+    permissions:
+      contents: read
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    uses: ./.github/workflows/run-code-tests.yml

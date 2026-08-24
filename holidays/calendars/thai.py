@@ -294,8 +294,11 @@ class _ThaiLunisolar:
                 f"Unknown calendar name: {calendar}. Use `KHMER_CALENDAR` or `THAI_CALENDAR`."
             )
 
+    # @staticmethod so functools.cache keys only on `year`. As an instance method,
+    # `self` would be part of the key, which retains instances and grows the cache unboundedly.
+    @staticmethod
     @cache
-    def _get_start_date(self, year: int) -> date | None:
+    def _get_start_date(year: int) -> date | None:
         """Calculate the start date of that particular Thai Lunar Calendar Year.
 
         This usually falls in November or December of the previous Gregorian
@@ -321,8 +324,11 @@ class _ThaiLunisolar:
 
         return _timedelta(_ThaiLunisolar.START_DATE, delta_days)
 
+    # @staticmethod so functools.cache keys only on `year`. As an instance method,
+    # `self` would be part of the key, which retains instances and grows the cache unboundedly.
+    @staticmethod
     @cache
-    def buddhist_sabbath_dates(self, year: int) -> set[date]:
+    def buddhist_sabbath_dates(year: int) -> set[date]:
         """Return all Buddhist Sabbath (Uposatha) days in a given Gregorian year.
 
         This function works independently of the calendar system in use,
@@ -336,7 +342,7 @@ class _ThaiLunisolar:
             A set of `date` objects representing all Buddhist Sabbath days in the specified
             Gregorian year. Returns an empty set if the year is outside the supported range.
         """
-        start_date = self._get_start_date(year)
+        start_date = _ThaiLunisolar._get_start_date(year)
         if not start_date:
             return set()
 
@@ -355,7 +361,6 @@ class _ThaiLunisolar:
         for month_days in months:
             if day_cursor.year > year:
                 break
-            # Buddhist Sabbaths: 8 Waxing, 15 Waxing, 8 Waning, 14/15 Waning.
             for offset in (7, 14, 22, month_days - 1):
                 buddhist_sabbath = _timedelta(day_cursor, offset)
                 if buddhist_sabbath.year == year:

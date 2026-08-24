@@ -154,6 +154,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2023-03-07",
             "2024-03-25",
             "2025-03-14",
+            "2026-03-03",
         )
         self.assertNonObservedHolidayName(name, range(self.start_year, 2036))
         self.assertNoHoliday(

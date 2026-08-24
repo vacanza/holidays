@@ -147,9 +147,9 @@ msgstr "Eight Hours Day"
 msgid "Easter Tuesday"
 msgstr "Easter Tuesday"
 
-#. Grand Final Day.
-msgid "Grand Final Day"
-msgstr "Grand Final Day"
+#. Friday before the AFL Grand Final.
+msgid "Friday before the AFL Grand Final"
+msgstr "Friday before the AFL Grand Final"
 
 #. Melbourne Cup Day.
 msgid "Melbourne Cup Day"

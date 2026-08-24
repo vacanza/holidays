@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
 "PO-Revision-Date: 2026-08-24 00:23+0530\n"
@@ -215,6 +215,14 @@ msgstr "ഓണം"
 #. Ganesh Chaturthi / Vinayak Chaturthi.
 msgid "Ganesh Chaturthi / Vinayak Chaturthi"
 msgstr "ഗണേശ ചതുർത്ഥി / വിനായക ചതുർത്ഥി"
+
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr "ഗണേശ ചതുർത്ഥി"
+
+#. Vinayak Chaturthi.
+msgid "Vinayak Chaturthi"
+msgstr "ഗണേശ ചതുർത്ഥി"
 
 #. Dussehra (Saptami).
 msgid "Dussehra (Saptami)"
