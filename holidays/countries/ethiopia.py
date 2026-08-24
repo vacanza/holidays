@@ -78,7 +78,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         # Ethiopian Patriots' Victory Day.
         self._add_holiday_may_5(tr("የአርበኞች (የድል) ቀን በዓል"))
 
-        if self._year >= 1992:
+        if self._year >= 1992 and self._year <= 2024:
             # Downfall of the Dergue Regime Day.
             self._add_holiday_may_28(tr("ደርግ የወደቀበት ቀን"))
 
