@@ -290,7 +290,8 @@ class TestIcalExporter(TestCase):
 
         self.assertEqual(output.count("SUMMARY:AAA\r\n"), 1)
         self.assertEqual(output.count("SUMMARY:ZZZ\r\n"), 1)
-        self.assertIn("DTSTART;VALUE=DATE:20240101\r\nDURATION:P2D\r\n", output)
+        self.assertIn("SUMMARY:AAA\r\nDTSTART;VALUE=DATE:20240101\r\nDURATION:P2D\r\n", output)
+        self.assertIn("SUMMARY:ZZZ\r\nDTSTART;VALUE=DATE:20240101\r\nDURATION:P1D\r\n", output)
 
     def test_generate_from_combined_holidays_list(self):
         # All 3 "New Year's Day" should be merged into 1 single instance.
