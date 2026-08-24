@@ -198,41 +198,27 @@ class ICalExporter:
             "CALSCALE:GREGORIAN",
         ]
 
-        sorted_dates = sorted(self.holidays.keys())
         # Merged continuous holiday with the same name and use `DURATION` instead.
-        date_set = set(sorted_dates)
-        n = len(sorted_dates)
-        i = 0
-        while i < n:
-            dt = sorted_dates[i]
-            # Only look at an existing key: probing an absent date would populate
-            # it on an expandable HolidayBase and mutate `self` mid-render.
-            prev_date = _timedelta(dt, -1)
-            prev_names = (
-                self.holidays.get_list(prev_date)
-                if prev_date in date_set and prev_date.year == dt.year
-                else []
-            )
-
+        holiday_sequences: dict[str, list[date]] = {}
+        for dt in sorted(self.holidays.keys()):
             for name in self.holidays.get_list(dt):
-                # A name continuing yesterday's same-year run was already emitted
-                # with its DURATION when the run started; re-emitting it here
-                # would duplicate the event.
-                if name in prev_names:
-                    continue
+                holiday_sequences.setdefault(name, []).append(dt)
 
-                days = 1
-                while (
-                    i + days < n
-                    and sorted_dates[i + days] == (end_date := _timedelta(sorted_dates[i], days))
-                    and end_date.year == dt.year
-                    and name in self.holidays.get_list(sorted_dates[i + days])
-                ):
+        events: list[tuple[date, str, int]] = []
+        for name, dates in holiday_sequences.items():
+            start_date = dates[0]
+            days = 1
+            for next_date in dates[1:]:
+                if next_date == _timedelta(start_date, days) and next_date.year == start_date.year:
                     days += 1
+                else:
+                    events.append((start_date, name, days))
+                    start_date = next_date
+                    days = 1
+            events.append((start_date, name, days))
 
-                lines.extend(self._generate_event(dt, name, days))
-
-            i += 1
+        for event in sorted(events):
+            lines.extend(self._generate_event(*event))
 
         lines.append("END:VCALENDAR")
         lines.append("")
