@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.103\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
 "PO-Revision-Date: 2026-07-31 23:38+0530\n"
@@ -215,6 +215,14 @@ msgstr "ஓணம்"
 #. Ganesh Chaturthi / Vinayak Chaturthi.
 msgid "Ganesh Chaturthi / Vinayak Chaturthi"
 msgstr "விநாயகர் சதுர்த்தி / விநாயக சதுர்த்தி"
+
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr "கணேஷ் சதுர்த்தி"
+
+#. Vinayak Chaturthi.
+msgid "Vinayak Chaturthi"
+msgstr "விநாயக சதுர்த்தி"
 
 #. Dussehra (Saptami).
 msgid "Dussehra (Saptami)"
@@ -612,6 +620,10 @@ msgstr "டோல் கியாரஸ்"
 #. Mizoram State Day.
 msgid "Mizoram State Day"
 msgstr "மிசோரம் மாநில நாள்"
+
+#. Peace Accord Day.
+msgid "Remna Ni"
+msgstr "அமைதி ஒப்பந்த நாள்"
 
 #. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"

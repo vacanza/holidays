@@ -1091,6 +1091,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.makar_sankranti_date(self._year), days_delta=+1
         )
 
+    def _add_vikram_samvat_new_year(self, name) -> date | None:
+        """
+        Add Vikram Samvat New Year (Gujarati New Year).
+
+        Vikram Samvat New Year marks the first day of the Hindu month of Kartik and is
+        celebrated as the Gujarati New Year.
+        https://en.wikipedia.org/wiki/Vikram_Samvat
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.vikram_samvat_new_year_date(self._year)
+        )
+
     def _add_vishu(self, name) -> date | None:
         """
         Add Vishu.
@@ -1127,8 +1139,8 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         observe leap years, causing a 1-day backward drift every 4 years relative
         to the Gregorian calendar.
         In 1972 (Y.Z. 1341), the holiday fell on August 28.
-        https://zanc.org/zcal/zcal.html
-        https://www.calendarr.com/india/parsi-new-year-history-and-celebration/
+        https://web.archive.org/web/20260109060525/https://www.zanc.org/zcal/zcal.html
+        https://web.archive.org/web/20260416112034/https://www.calendarr.com/india/parsi-new-year-history-and-celebration/
         """
         leaps = (self._year - 1972) // 4
         dt = _timedelta(date(self._year, AUG, 28), -leaps)
