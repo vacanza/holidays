@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-08-25 19:54+0530\n"
+"PO-Revision-Date: 2026-08-25 21:23+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: bn\n"
@@ -26,10 +26,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_IN\n"
-
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
-msgstr "গণেশ চতুর্থী"
 
 #. Vinayak Chaturthi.
 msgid "Vinayak Chaturthi"
