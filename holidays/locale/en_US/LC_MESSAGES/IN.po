@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-08-25 00:23+0530\n"
+"PO-Revision-Date: 2026-08-25 19:54+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -426,8 +426,8 @@ msgid "Parsi New Year (Shahenshahi)"
 msgstr "Parsi New Year (Shahenshahi)"
 
 #. Saint Francis Xavier's Day.
-msgid "# Saint Francis Xavier's Day."
-msgstr "Saint Francis Xavier's Day."
+msgid "Saint Francis Xavier's Day"
+msgstr "Saint Francis Xavier's Day"
 
 #. Goa Liberation Day.
 msgid "Goa Liberation Day"

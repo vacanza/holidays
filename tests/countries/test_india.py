@@ -803,7 +803,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-10-11",
             "2025-09-30",
         )
-        self._assertHinduHolidayHelper(name, dts, category_optional=True)
+        self._assertHinduHolidayHelper(name, dts, category=OPTIONAL)
         # SUBDIVS.
         self._assertHinduHolidayHelper(name_rj, dts, subdivs={"RJ"})
 
@@ -1103,7 +1103,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertSubdivCgGovernmentHolidayName(name_cherchera, dts)
 
     def test_feast_of_st_joseph_vaz(self):
-        name = "Feast of St. Joseph Vaz"
+        name = "Saint Joseph Vaz's Day"
         self.assertNoHolidayName(name)
         self.assertSubdivGaOptionalHolidayName(name, (f"{year}-01-16" for year in self.full_range))
 
@@ -1349,7 +1349,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertSubdivMpOptionalHolidayName(name, dts)
 
     def test_parshuram_jayanti(self):
-        name = "Parshuram Jayanti"
+        name = "Bhagvan Shri Parshuram's Jayanti"
         name_akshay_tritiya = "Akshay Tritiya"
         dts = (
             "2020-04-25",
@@ -1455,7 +1455,15 @@ class TestIndia(CommonCountryTests, TestCase):
     def test_feast_sacred_heart(self):
         name = "Feast of Sacred Heart of Jesus"
         self.assertNoHolidayName(name)
-        self.assertSubdivGaOptionalHolidayName(name, (f"{year}-06-12" for year in self.full_range))
+        self.assertSubdivGaOptionalHolidayName(
+            name,
+            "2020-06-19",
+            "2021-06-11",
+            "2022-06-24",
+            "2023-06-16",
+            "2024-06-07",
+            "2025-06-27",
+        )
 
     def test_veerangana_durgavati_shaheedi_diwas(self):
         name = "Veerangana Durgavati's Shaheedi Diwas"
@@ -1794,7 +1802,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_all_souls_day(self):
-        name = "All Souls Day"
+        name = "All Souls' Day"
         self.assertNoHolidayName(name)
         self.assertSubdivGaOptionalHolidayName(name, (f"{year}-11-02" for year in self.full_range))
 
@@ -1855,7 +1863,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_feast_of_st_francois_xavier(self):
-        name = "Feast of St. Francis Xavier"
+        name = "Saint Francis Xavier's Day"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "GA":

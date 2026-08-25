@@ -714,7 +714,7 @@ class India(
     # Goa.
     def _populate_subdiv_ga_public_holidays(self):
         # Saint Francis Xavier's Day.
-        self._add_holiday_dec_3(tr("# Saint Francis Xavier's Day."))
+        self._add_holiday_dec_3(tr("Saint Francis Xavier's Day"))
 
         # Goa Liberation Day.
         self._add_holiday_dec_19(tr("Goa Liberation Day"))
