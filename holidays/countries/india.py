@@ -1337,9 +1337,9 @@ class India(
 
         # Christmas Festival.
         name = "Christmas Festival"
-        self._add_holiday_dec_24(name)
-        self._add_holiday_dec_26(name)
-        self._add_holiday_dec_27(name)
+        self._add_christmas_eve(name)
+        self._add_christmas_day_two(name)
+        self._add_christmas_day_three(name)
 
         # U Kiang Nongbah Death Anniversary.
         self._add_holiday_dec_30(tr("U Kiang Nongbah Death Anniversary"))
