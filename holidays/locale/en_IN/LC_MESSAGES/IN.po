@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.103\n"
+"Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-08-24 00:23+0530\n"
+"PO-Revision-Date: 2026-08-26 00:42+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
@@ -27,6 +27,14 @@ msgstr ""
 "Generated-By: Lingva 5.0.5\n"
 "X-Generator: Poedit 3.5\n"
 "X-Source-Language: en_IN\n"
+
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr ""
+
+#. Vinayak Chaturthi.
+msgid "Vinayak Chaturthi"
+msgstr ""
 
 #. %s (estimated).
 #, c-format
@@ -301,10 +309,6 @@ msgstr ""
 msgid "Varalakshmi Vratam"
 msgstr ""
 
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
-msgstr ""
-
 #. Durgashtami.
 msgid "Durgashtami"
 msgstr ""
@@ -369,12 +373,37 @@ msgstr ""
 msgid "Wangala Festival"
 msgstr ""
 
+#. Mahasaptami.
+msgid "Mahasaptami"
+msgstr ""
+
 #. Chhath Puja.
 msgid "Chhath Puja"
 msgstr ""
 
-#. Bihar Day.
-msgid "Bihar Day"
+#. Arbaeen.
+#. Arbaaen.
+msgid "Chehlum"
+msgstr ""
+
+#. Karpuri Thakur's Birthday.
+msgid "Karpuri Thakur's Jayanti"
+msgstr ""
+
+#. Rajendra Prasad's Birthday.
+msgid "Rajendra Prasad's Jayanti"
+msgstr ""
+
+#. Hartalika Teej.
+msgid "Hartalika Teej"
+msgstr ""
+
+#. Vishwakarma Puja.
+msgid "Vishwakarma Puja"
+msgstr ""
+
+#. Anant Chaturdashi.
+msgid "Anant Chaturdashi"
 msgstr ""
 
 #. Jor Mela Fatehgarh Sahib.
@@ -411,10 +440,6 @@ msgstr ""
 
 #. Hareli.
 msgid "Hareli"
-msgstr ""
-
-#. Hartalika Teej.
-msgid "Hartalika Teej"
 msgstr ""
 
 #. Savitribai Phule's Birthday.
@@ -463,10 +488,6 @@ msgstr ""
 
 #. Harchath.
 msgid "Harchath"
-msgstr ""
-
-#. Anant Chaturdashi.
-msgid "Anant Chaturdashi"
 msgstr ""
 
 #. Sarva Pitra Moksha Amavasya.
@@ -540,6 +561,10 @@ msgstr ""
 
 #. Samvatsari Day.
 msgid "Samvatsari Day"
+msgstr ""
+
+#. Gujarati New Year.
+msgid "Vikram Samvat New Year"
 msgstr ""
 
 #. Vassi Uttarayan.
@@ -628,10 +653,6 @@ msgstr ""
 
 #. Holy Saturday.
 msgid "Holy Saturday"
-msgstr ""
-
-#. Vishwakarma Puja.
-msgid "Vishwakarma Puja"
 msgstr ""
 
 #. Kerala Foundation Day.
@@ -750,7 +771,7 @@ msgstr ""
 msgid "Young Mizo Association's Day"
 msgstr ""
 
-#. Remna Ni.
+#. Peace Accord Day.
 msgid "Remna Ni"
 msgstr ""
 
@@ -883,10 +904,6 @@ msgstr ""
 msgid "Ker Puja"
 msgstr ""
 
-#. Mahasaptami.
-msgid "Mahasaptami"
-msgstr ""
-
 #. Harela.
 msgid "Harela"
 msgstr ""
@@ -899,16 +916,8 @@ msgstr ""
 msgid "Easter Monday"
 msgstr ""
 
-#. Arbaaen.
-msgid "Chehlum"
-msgstr ""
-
 #. Chitragupt's Birthday.
 msgid "Chitragupt's Jayanti"
-msgstr ""
-
-#. Karpuri Thakur's Birthday.
-msgid "Karpuri Thakur's Jayanti"
 msgstr ""
 
 #. Maharishi Kashyap and Maharaj Nishad Raj's Graha Jayanti.
@@ -943,10 +952,9 @@ msgstr ""
 msgid "Shri Panchami"
 msgstr ""
 
-#. Vinayak Chaturthi.
-msgid "Vinayak Chaturthi"
-msgstr ""
-
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr ""
+
+#~ msgid "Bihar Day"
+#~ msgstr ""
