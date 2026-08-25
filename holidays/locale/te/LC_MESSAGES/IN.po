@@ -27,18 +27,6 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_IN\n"
 
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
-msgstr "గణేశ చవితి"
-
-#. Vinayak Chaturthi.
-msgid "Vinayak Chaturthi"
-msgstr "గణేశ చవితి"
-
-#. Peace Accord Day.
-msgid "Remna Ni"
-msgstr "శాంతి ఒప్పంద దినోత్సవం"
-
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"

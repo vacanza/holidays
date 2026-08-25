@@ -27,14 +27,6 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_IN\n"
 
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
-msgstr "ਵਿਨਾਇਕ ਚਤੁਰਥੀ"
-
-#. Vinayak Chaturthi.
-msgid "Vinayak Chaturthi"
-msgstr "ਵਿਨਾਇਕ ਚਤੁਰਥੀ"
-
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
