@@ -60,6 +60,8 @@ class India(
             * <https://web.archive.org/web/20260822103542/https://only30sec.com/wp-content/uploads/2026/01/Arunachal-Pradesh-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Assam:
             * <https://web.archive.org/web/20260822104103/https://only30sec.com/wp-content/uploads/2025/11/Assam-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
+        * Bihar:
+            * <https://web.archive.org/web/20260825183642/https://only30sec.com/wp-content/uploads/2025/11/Bihar-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Chandigarh:
             * <https://web.archive.org/web/20260705144831/https://chandigarh.gov.in/files/updation2025/home25-17488-3012.pdf>
         * Dadra and Nagar Haveli and Daman and Diu:
@@ -635,10 +637,39 @@ class India(
 
     # Bihar.
     def _populate_subdiv_br_public_holidays(self):
+        pass
+
+    def _populate_subdiv_br_government_holidays(self):
+        # Hindu holidays.
+
+        # Mahasaptami.
+        self._add_maha_saptami(tr("Mahasaptami"))
+
         # Chhath Puja.
         self._add_chhath_puja(tr("Chhath Puja"))
-        # Bihar Day.
-        self._add_holiday_mar_22(tr("Bihar Day"))
+
+        # Islamic holidays.
+
+        # Arbaeen.
+        self._add_arbaeen_day(tr("Chehlum"))
+
+    def _populate_subdiv_br_optional_holidays(self):
+        # Karpuri Thakur's Birthday.
+        self._add_holiday_jan_24(tr("Karpuri Thakur's Jayanti"))
+
+        # Rajendra Prasad's Birthday.
+        self._add_holiday_dec_3(tr("Rajendra Prasad's Jayanti"))
+
+        # Hindu holidays.
+
+        # Hartalika Teej.
+        self._add_hartalika_teej(tr("Hartalika Teej"))
+
+        # Vishwakarma Puja.
+        self._add_vishwakarma_puja(tr("Vishwakarma Puja"))
+
+        # Anant Chaturdashi.
+        self._add_anant_chaturdashi(tr("Anant Chaturdashi"))
 
     # Chandigarh.
     def _populate_subdiv_ch_public_holidays(self):
