@@ -572,6 +572,21 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.kabir_jayanti_date(self._year)
         )
 
+    def _add_kali_puja(self, name) -> date | None:
+        """
+        Add Kali Puja.
+
+        Kali Puja is a Hindu festival dedicated to Goddess Kali.
+        It is observed on the new moon day (Amavasya) of the Hindu
+        month of Kartika (October/November).
+
+        https://en.wikipedia.org/wiki/Kali_Puja
+        """
+        return self._add_hindu_calendar_holiday(
+            name,
+            self._hindu_calendar.kali_puja_date(self._year),
+        )
+
     def _add_karwa_chauth(self, name) -> date | None:
         """
         Add Karwa Chauth.

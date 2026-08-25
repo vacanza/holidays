@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-08-26 00:42+0530\n"
+"PO-Revision-Date: 2026-08-26 00:52+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ml\n"
@@ -887,7 +887,6 @@ msgid "Maharaja Bir Bikram Kishore Manikya Bahadur's Jayanti"
 msgstr "മഹാരാജ ബീർ ബിക്രം കിഷോർ മണിക്യ ബഹാദൂർ ജയന്തി"
 
 #. Bengali's New Year.
-#. Pohela Boisakh.
 msgid "Pohela Boishakh"
 msgstr "പൊഹേലാ ബൈശാഖ്"
 
@@ -939,9 +938,21 @@ msgstr "വീരാംഗന ഊദാ ദേവിയുടെ ശഹീദ്
 msgid "Chaudhary Charan Singh's Jayanti"
 msgstr "ചൗധരി ചരൺ സിംഗ് ജയന്തി"
 
-#. Rabindra Jayanti.
-msgid "Rabindra Jayanti"
-msgstr "രബീന്ദ്ര ജയന്തി"
+#. Swami Vivekananda's Birthday.
+msgid "Swami Vivekananda's Jayanti"
+msgstr ""
+
+#. Birsa Munda's Birthday.
+msgid "Birsa Munda's Jayanti"
+msgstr ""
+
+#. Mahalaya.
+msgid "Mahalaya"
+msgstr ""
+
+#. Kali Puja.
+msgid "Kali Puja"
+msgstr ""
 
 #. Basant Panchami.
 msgid "Basant Panchami"
@@ -954,6 +965,9 @@ msgstr "ശ്രീ പഞ്ചമി"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ജന്മാഷ്ടമി (സ്മാർത്ത)"
+
+#~ msgid "Rabindra Jayanti"
+#~ msgstr "രബീന്ദ്ര ജയന്തി"
 
 #~ msgid "Bihar Day"
 #~ msgstr "ബിഹാർ ദിനം"

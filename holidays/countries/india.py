@@ -113,6 +113,8 @@ class India(
             * <https://web.archive.org/web/20260714175419/https://ascent-hr.com/wp-content/uploads/2025/12/UP-Holiday-List-2026.pdf>
         * Uttarakhand:
             * <https://web.archive.org/web/20260704120047/https://spiderimg.amarujala.com/assets/applications/2025/12/24/holidays-list-2026_694beebe1007a.pdf>
+        * West Bengal:
+            * <https://web.archive.org/web/20260825190250/https://only30sec.com/wp-content/uploads/2025/12/West-Bengal-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
     """
 
     country = "IN"
@@ -1746,10 +1748,43 @@ class India(
 
     # West Bengal.
     def _populate_subdiv_wb_public_holidays(self):
-        # Pohela Boisakh.
-        self._add_holiday_apr_15(tr("Pohela Boishakh"))
-        # Rabindra Jayanti.
-        self._add_holiday_may_9(tr("Rabindra Jayanti"))
+        # Swami Vivekananda's Birthday.
+        self._add_holiday_jan_12(tr("Swami Vivekananda's Jayanti"))
+
+        # Netaji Subhas Chandra Bose's Birthday.
+        self._add_holiday_jan_23(tr("Netaji Subhas Chandra Bose's Jayanti"))
+
+        # May Day.
+        self._add_labor_day(tr("May Day"))
+
+        # Birsa Munda's Birthday.
+        self._add_holiday_nov_15(tr("Birsa Munda's Jayanti"))
+
+        # Hindu holidays.
+
+        # Bengali's New Year.
+        self.add_pohela_boishakh(tr("Pohela Boishakh"))
+
+        # Mahalaya.
+        self._add_pitra_moksh_amavasya(tr("Mahalaya"))
+
+        # Mahasaptami.
+        self._add_maha_saptami(tr("Mahasaptami"))
+
+        # Mahashtami.
+        self._add_maha_ashtami(tr("Mahashtami"))
+
+        # Mahanavami.
+        self._add_maha_navami(tr("Mahanavami"))
+
+        # Kali Puja.
+        self._add_kali_puja(tr("Kali Puja"))
+
+        # Bhai Duj.
+        self._add_bhai_dooj(tr("Bhai Duj"))
+
+        # Chhath Puja.
+        self._add_chhath_puja(tr("Chhath Puja"))
 
 
 class IN(India):

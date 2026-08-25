@@ -47,6 +47,7 @@ HOLA_MOHOLLA = "HOLA_MOHOLLA"
 HOLI = "HOLI"
 JANMASHTAMI = "JANMASHTAMI"
 KABIR_JAYANTI = "KABIR_JAYANTI"
+KALI_PUJA = "KALI_PUJA"
 KARWA_CHAUTH = "KARWA_CHAUTH"
 KER_PUJA = "KER_PUJA"
 KHARCHI_PUJA = "KHARCHI_PUJA"
@@ -1393,6 +1394,45 @@ class _HinduLunisolar:
         2033: (JUN, 12),
         2034: (JUN, 2),
         2035: (JUN, 20),
+    }
+
+    # https://web.archive.org/web/20250911083610/https://www.drikpanchang.com/diwali/kali-puja/bengal-kalipuja-date-time.html
+    KALI_PUJA_DATES = {
+        2001: (NOV, 14),
+        2002: (NOV, 4),
+        2003: (OCT, 24),
+        2004: (NOV, 11),
+        2005: (NOV, 1),
+        2006: (OCT, 21),
+        2007: (NOV, 9),
+        2008: (OCT, 28),
+        2009: (OCT, 17),
+        2010: (NOV, 5),
+        2011: (OCT, 26),
+        2012: (NOV, 13),
+        2013: (NOV, 2),
+        2014: (OCT, 23),
+        2015: (NOV, 10),
+        2016: (OCT, 29),
+        2017: (OCT, 19),
+        2018: (NOV, 6),
+        2019: (OCT, 27),
+        2020: (NOV, 14),
+        2021: (NOV, 4),
+        2022: (OCT, 24),
+        2023: (NOV, 12),
+        2024: (OCT, 31),
+        2025: (OCT, 20),
+        2026: (NOV, 8),
+        2027: (OCT, 28),
+        2028: (OCT, 17),
+        2029: (NOV, 5),
+        2030: (OCT, 26),
+        2031: (NOV, 14),
+        2032: (NOV, 2),
+        2033: (OCT, 22),
+        2034: (NOV, 10),
+        2035: (OCT, 30),
     }
 
     # https://web.archive.org/web/20260123230237/https://www.timeanddate.com/holidays/india/karaka-chaturthi
@@ -3166,6 +3206,9 @@ class _HinduLunisolar:
 
     def kabir_jayanti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(KABIR_JAYANTI, year)
+
+    def kali_puja_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(KALI_PUJA, year)
 
     def karwa_chauth_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(KARWA_CHAUTH, year)
