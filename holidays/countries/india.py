@@ -263,7 +263,7 @@ class India(
             # Maha Shivaratri.
             self._add_maha_shivaratri(tr("Maha Shivaratri"))
 
-        if self._year not in self.holi_optional_years:
+        if self._year not in self.holi_optional_years and self._normalized_subdiv != "MH":
             # Holi.
             self._add_holi(tr("Holi"))
 
@@ -422,7 +422,7 @@ class India(
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
-        if self.subdiv != "MH":
+        if self._normalized_subdiv != "MH":
             self._add_ganesh_chaturthi(
                 # Ganesh Chaturthi / Vinayak Chaturthi.
                 tr("Ganesh Chaturthi / Vinayak Chaturthi")
@@ -974,7 +974,7 @@ class India(
 
         # Islamic holidays.
 
-        # Arbaaen.
+        # Arbaeen.
         self._add_arbaeen_day(tr("Chehlum"))
 
         # Christian holidays.

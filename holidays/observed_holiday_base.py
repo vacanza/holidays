@@ -418,7 +418,10 @@ class ObservedHolidayBase(HolidayBase):
             return None
 
         self._add_special_holidays(
-            (f"special_{category}_holidays_observed" for category in self._sorted_categories),
+            (
+                f"special_{category.lower()}_holidays_observed"
+                for category in self._sorted_categories
+            ),
             observed=True,
         )
 
@@ -431,7 +434,7 @@ class ObservedHolidayBase(HolidayBase):
 
         self._add_special_holidays(
             (
-                f"special_{self._normalized_subdiv}_{category}_holidays_observed"
+                f"special_{self._normalized_subdiv.lower()}_{category.lower()}_holidays_observed"
                 for category in self._sorted_categories
             ),
             observed=True,
