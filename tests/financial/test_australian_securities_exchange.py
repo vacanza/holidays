@@ -294,8 +294,7 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
             "2015-11-03",
             "2016-11-01",
         )
-        self.assertNoRestrictedSettlementHolidayName(
-            name,
+        self.assertNoRestrictedSettlementHoliday(
             "2017-11-07",
             "2020-11-03",
         )
