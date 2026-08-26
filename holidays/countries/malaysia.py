@@ -19,7 +19,7 @@ from holidays.calendars import (
     _CustomBuddhistHolidays,
     _CustomChineseHolidays,
     _CustomHinduHolidays,
-    _CustomIslamicHolidays,
+    _CustomIslamicMabimsHolidays,
 )
 from holidays.calendars.gregorian import (
     JAN,
@@ -190,8 +190,8 @@ class Malaysia(
 
     def _get_weekend(self, dt: date) -> set[int]:
         if (
-            self.subdiv == "01" and (dt.year <= 1994 or 2014 <= dt.year <= 2024)
-        ) or self.subdiv in {"02", "03", "11"}:
+            self._normalized_subdiv == "01" and (dt.year <= 1994 or 2014 <= dt.year <= 2024)
+        ) or self._normalized_subdiv in {"02", "03", "11"}:
             return {FRI, SAT}
         else:
             return {SAT, SUN}
@@ -252,17 +252,17 @@ class Malaysia(
         self.dts_observed.update(self._add_eid_al_adha_day(tr("Hari Raya Qurban")))
 
     def _populate_subdiv_holidays(self):
-        if self.subdiv and self.subdiv not in {"13", "15"}:
+        if self.subdiv and self._normalized_subdiv not in {"13", "15"}:
             # Diwali.
             self.dts_observed.add(self._add_diwali(tr("Hari Deepavali")))
 
         super()._populate_subdiv_holidays()
 
         if (
-            self.subdiv == "01" and (self._year <= 1994 or 2014 <= self._year <= 2024)
-        ) or self.subdiv == "02":
+            self._normalized_subdiv == "01" and (self._year <= 1994 or 2014 <= self._year <= 2024)
+        ) or self._normalized_subdiv == "02":
             self._observed_rule = FRI_TO_NEXT_WORKDAY
-        elif self.subdiv in {"03", "11"}:
+        elif self._normalized_subdiv in {"03", "11"}:
             self._observed_rule = SAT_TO_NEXT_WORKDAY
         else:
             self._observed_rule = SUN_TO_NEXT_WORKDAY
@@ -703,38 +703,20 @@ class MalaysiaHinduHolidays(_CustomHinduHolidays):
     }
 
 
-class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
+class MalaysiaIslamicHolidays(_CustomIslamicMabimsHolidays):
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_ADHA_DATES = {
-        2001: (MAR, 6),
-        2002: (FEB, 23),
-        2003: (FEB, 12),
         2004: (FEB, 2),
         2008: (DEC, 9),
         2009: (NOV, 28),
-        2010: (NOV, 17),
         2011: (NOV, 7),
-        2014: (OCT, 5),
-        2015: (SEP, 24),
-        2016: (SEP, 12),
-        2018: (AUG, 22),
-        2022: (JUL, 10),
-        2023: (JUN, 29),
-        2024: (JUN, 17),
-        2025: (JUN, 7),
     }
 
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_FITR_DATES = {
         2001: (DEC, 17),
-        2002: (DEC, 6),
         2003: (NOV, 26),
-        2006: (OCT, 24),
-        2011: (AUG, 31),
-        2019: (JUN, 5),
-        2023: (APR, 22),
-        2025: (MAR, 31),
-        2026: (MAR, 21),
+        2005: (NOV, 3),
     }
 
     HARI_HOL_JOHOR_DATES_CONFIRMED_YEARS = (2011, 2026)
@@ -756,77 +738,44 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
     HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2026)
     HIJRI_NEW_YEAR_DATES = {
         2003: (MAR, 5),
-        2004: (FEB, 22),
         2010: (DEC, 8),
-        2011: (NOV, 27),
-        2013: (NOV, 5),
         2017: (SEP, 22),
-        2019: (SEP, 1),
-        2021: (AUG, 10),
-        2025: (JUN, 27),
         2026: (JUN, 17),
     }
 
     ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (2001, 2026)
     ISRA_AND_MIRAJ_DATES = {
-        2001: (OCT, 15),
         2006: (AUG, 22),
-        2007: (AUG, 11),
         2008: (JUL, 31),
-        2014: (MAY, 27),
-        2016: (MAY, 5),
-        2018: (APR, 14),
-        2022: (MAR, 1),
-        2026: (JAN, 17),
+        2010: (JUL, 9),
     }
 
     MAWLID_DATES_CONFIRMED_YEARS = (2001, 2026)
     MAWLID_DATES = {
-        2003: (MAY, 14),
-        2004: (MAY, 2),
-        2006: (APR, 11),
-        2011: (FEB, 16),
-        2012: (FEB, 5),
-        2014: (JAN, 14),
-        2015: ((JAN, 3), (DEC, 24)),
-        2016: (DEC, 12),
-        2017: (DEC, 1),
+        2002: (MAY, 24),
+        2009: (MAR, 9),
+        2010: (FEB, 26),
         2021: (OCT, 19),
         2022: (OCT, 10),
-        2023: (SEP, 28),
-        2024: (SEP, 16),
-        2025: (SEP, 5),
     }
 
     NUZUL_AL_QURAN_DATES_CONFIRMED_YEARS = (2001, 2026)
     NUZUL_AL_QURAN_DATES = {
-        2001: (DEC, 3),
-        2003: (NOV, 12),
         2004: (NOV, 1),
-        2005: (OCT, 21),
         2008: (SEP, 18),
-        2014: (JUL, 15),
-        2018: (JUN, 2),
-        2022: (APR, 19),
-        2024: (MAR, 28),
-        2025: (MAR, 18),
-        2026: (MAR, 7),
+        2010: (AUG, 27),
+        2012: (AUG, 5),
+        2013: (JUL, 25),
     }
 
     RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2001, 2026)
     RAMADAN_BEGINNING_DATES = {
-        2001: (NOV, 17),
-        2003: (OCT, 27),
         2004: (OCT, 16),
-        2005: (OCT, 5),
         2008: (SEP, 2),
-        2014: (JUN, 29),
+        2010: (AUG, 11),
+        2012: (JUL, 20),
+        2013: (JUL, 9),
         2016: (JUN, 7),
-        2018: (MAY, 17),
-        2022: (APR, 3),
-        2024: (MAR, 12),
-        2025: (MAR, 2),
-        2026: (FEB, 19),
     }
 
 

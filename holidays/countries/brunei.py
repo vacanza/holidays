@@ -13,13 +13,11 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars import _CustomIslamicMabimsHolidays
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
     MAR,
-    APR,
-    MAY,
     JUN,
     JUL,
     AUG,
@@ -219,118 +217,52 @@ class BRN(Brunei):
     pass
 
 
-class BruneiIslamicHolidays(_CustomIslamicHolidays):
+class BruneiIslamicHolidays(_CustomIslamicMabimsHolidays):
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1998, 2026)
     EID_AL_ADHA_DATES = {
-        1999: (MAR, 28),
         2000: (MAR, 17),
-        2001: (MAR, 6),
-        2002: (FEB, 23),
-        2003: (FEB, 12),
         2004: (FEB, 2),
         2006: (JAN, 11),
         2007: ((JAN, 1), (DEC, 20)),
-        2014: (OCT, 5),
-        2015: (SEP, 24),
-        2016: (SEP, 12),
-        2018: (AUG, 22),
-        2023: (JUN, 29),
-        2024: (JUN, 17),
-        2025: (JUN, 7),
+        2010: (NOV, 16),
+        2022: (JUL, 9),
     }
 
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (1998, 2026)
     EID_AL_FITR_DATES = {
-        1998: (JAN, 30),
-        1999: (JAN, 19),
-        2002: (DEC, 6),
-        2005: (NOV, 4),
-        2006: (OCT, 24),
-        2019: (JUN, 5),
-        2023: (APR, 22),
-        2025: (MAR, 31),
-        2026: (MAR, 21),
+        2011: (AUG, 30),
     }
 
     HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (1998, 2026)
     HIJRI_NEW_YEAR_DATES = {
-        1998: (APR, 28),
-        2004: (FEB, 22),
-        2011: (NOV, 27),
-        2013: (NOV, 5),
         2017: (SEP, 22),
-        2019: (SEP, 1),
-        2021: (AUG, 10),
-        2025: (JUN, 27),
         2026: (JUN, 17),
     }
 
     ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (1998, 2026)
     ISRA_AND_MIRAJ_DATES = {
-        1998: (NOV, 17),
-        1999: (NOV, 6),
-        2000: (OCT, 25),
-        2001: (OCT, 15),
-        2007: (AUG, 11),
-        2010: (JUL, 10),
-        2014: (MAY, 27),
-        2016: (MAY, 5),
-        2018: (APR, 14),
-        2026: (JAN, 17),
+        2022: (FEB, 28),
     }
 
     MAWLID_DATES_CONFIRMED_YEARS = (1998, 2026)
     MAWLID_DATES = {
-        2000: (JUN, 15),
-        2002: (MAY, 25),
-        2003: (MAY, 14),
-        2004: (MAY, 2),
-        2006: (APR, 11),
-        2012: (FEB, 5),
-        2014: (JAN, 14),
-        2015: ((JAN, 3), (DEC, 24)),
-        2016: (DEC, 12),
-        2017: (DEC, 1),
-        2021: (OCT, 19),
-        2023: (SEP, 28),
-        2024: (SEP, 16),
-        2025: (SEP, 5),
+        1998: (JUL, 6),
+        2009: (MAR, 9),
+        2010: (FEB, 26),
+        2011: (FEB, 15),
     }
 
     NUZUL_AL_QURAN_DATES_CONFIRMED_YEARS = (1998, 2026)
     NUZUL_AL_QURAN_DATES = {
-        1998: (JAN, 16),
-        1999: ((JAN, 5), (DEC, 25)),
-        2001: (DEC, 3),
-        2003: (NOV, 12),
         2004: (NOV, 1),
-        2005: (OCT, 21),
         2008: (SEP, 18),
-        2012: (AUG, 6),
-        2013: (JUL, 26),
-        2014: (JUL, 15),
-        2018: (JUN, 2),
-        2022: (APR, 19),
-        2024: (MAR, 28),
-        2025: (MAR, 18),
-        2026: (MAR, 7),
+        2010: (AUG, 27),
     }
 
     RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (1998, 2026)
     RAMADAN_BEGINNING_DATES = {
-        1998: (DEC, 20),
-        2001: (NOV, 17),
-        2003: (OCT, 27),
         2004: (OCT, 16),
-        2005: (OCT, 5),
-        2012: (JUL, 21),
-        2013: (JUL, 10),
-        2014: (JUN, 29),
-        2018: (MAY, 17),
-        2022: (APR, 3),
-        2024: (MAR, 12),
-        2025: (MAR, 2),
-        2026: (FEB, 19),
+        2010: (AUG, 11),
     }
 
 
