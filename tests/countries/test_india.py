@@ -2493,7 +2493,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-02", "Easter Monday"),
             (
                 "2018-04-05",
-                "Maharishi Kashyap and Maharaj Nishad Raj's Graha Jayanti",
+                "Maharishi Kashyap and Maharaj Nishad Raj's Graha Birthday",
             ),
             ("2018-04-08", "Guru Nabha Dass's Birthday"),
             ("2018-04-11", "Mahatma Jyotiba Phule's Birthday"),
@@ -2599,7 +2599,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-10-27",
                 "Karaka Chaturthi (Karwa Chouth); Karwa Chouth",
             ),
-            ("2018-10-30", "Arbaaen (estimated)"),
+            ("2018-10-30", "Arbaeen (estimated)"),
             (
                 "2018-10-31",
                 "Acharya Narendra Dev's Birthday; Sardar Vallabhbhai Patel's Birthday",

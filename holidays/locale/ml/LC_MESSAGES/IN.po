@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-08-25 19:54+0530\n"
+"PO-Revision-Date: 2026-08-27 02:07+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ml\n"
@@ -758,7 +758,6 @@ msgid "Easter Monday"
 msgstr "ഈസ്റ്റർ തിങ്കളാഴ്ച"
 
 #. Arbaeen.
-#. Arbaaen.
 msgid "Chehlum"
 msgstr "ചെഹ്ലും"
 
@@ -770,7 +769,7 @@ msgstr "ചിത്രഗുപ്ത ജയന്തി"
 msgid "Karpuri Thakur's Jayanti"
 msgstr "കർപൂരി ഠാക്കൂർ ജയന്തി"
 
-#. Maharishi Kashyap and Maharaj Nishad Raj's Graha Jayanti.
+#. Maharishi Kashyap and Maharaj Nishad Raj's Graha Birthday.
 msgid "Maharshi Kashyap and Maharaj Nishad Raj's Graha Jayanti"
 msgstr "മഹർഷി കശ്യപിന്റെയും മഹാരാജ് നിഷാദ് രാജിന്റെയും ഗ്രഹ ജയന്തി"
 
