@@ -1391,7 +1391,7 @@ class India(
         # Karpuri Thakur's Birthday.
         self._add_holiday_jan_24(tr("Karpuri Thakur's Jayanti"))
 
-        # Maharishi Kashyap and Maharaj Nishad Raj's Graha's Birthday.
+        # Maharishi Kashyap and Maharaj Nishad Raj's Graha Birthday.
         self._add_holiday_apr_5(tr("Maharshi Kashyap and Maharaj Nishad Raj's Graha Jayanti"))
 
         # Chandrashekhar's Birthday.
