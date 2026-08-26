@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-08-03 15:45+0000\n"
-"PO-Revision-Date: 2026-08-19 11:38+0530\n"
+"PO-Revision-Date: 2026-08-26 08:43+0000\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -85,7 +85,7 @@ msgstr "Last Business Day of the Year"
 msgid "%s (No Settlement)"
 msgstr "%s (No Settlement)"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr "Labor Day"
 
@@ -97,10 +97,6 @@ msgstr "Bank Holiday"
 msgid "Melbourne Cup Day"
 msgstr "Melbourne Cup Day"
 
-#. Day following New Year's Day.
-msgid "Day following New Year's Day"
-msgstr "Day following New Year's Day"
-
 #. Easter Tuesday / Public Holiday.
 msgid "Easter Tuesday / Public Holiday"
 msgstr "Easter Tuesday / Public Holiday"
@@ -108,3 +104,7 @@ msgstr "Easter Tuesday / Public Holiday"
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
 msgstr "National Day of Mourning for Queen Elizabeth II"
+
+#. Day following New Year's Day.
+msgid "Day following New Year's Day"
+msgstr "Day following New Year's Day"

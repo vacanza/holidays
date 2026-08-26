@@ -27,10 +27,8 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
             "2011-04-26",
             "2022-09-22",
         )
-        self.assertHalfDayHolidayName(
-            "Day following New Year's Day (markets close early)", "2004-01-02"
-        )
-        self.assertRestrictedSettlementHolidayName("ANZAC Day (No Settlement)", "2004-04-26")
+        self.assertHalfDayHoliday("2004-01-02")
+        self.assertRestrictedSettlementHoliday("2004-04-26")
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -112,7 +110,6 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
             "2020-04-25",
             "2021-04-25",
             "2026-04-25",
-            "2027-04-25",
         )
 
     def test_sovereigns_birthday(self):
@@ -148,6 +145,11 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
             "2023-12-25",
             "2024-12-25",
             "2025-12-25",
+            "2026-12-25",
+        )
+        self.assertNoHoliday(
+            "2021-12-25",
+            "2022-12-25",
         )
 
     def test_boxing_day(self):
@@ -158,17 +160,27 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
             name,
             "2020-12-28",
             "2021-12-28",
+            "2022-12-26",
             "2023-12-26",
             "2024-12-26",
             "2025-12-26",
+            "2026-12-28",
+        )
+        self.assertNoHoliday(
+            "2020-12-26",
+            "2021-12-26",
+            "2026-12-26",
         )
 
     def test_easter_thursday(self):
         name = "Easter Thursday (markets close early)"
+        self.assertNoHolidayName(name)
         self.assertHalfDayHolidayName(
             name,
-            "2000-04-20",
             "2004-04-08",
+            "2005-03-24",
+            "2006-04-13",
+            "2007-04-05",
             "2008-03-20",
         )
         self.assertHalfDayHolidayName(name, range(self.start_year, 2009))
@@ -178,8 +190,6 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
         name = "Last Business Day before Christmas Day (markets close early)"
         self.assertNoHolidayName(name)
         dts = (
-            "2000-12-22",
-            "2006-12-22",
             "2016-12-23",
             "2017-12-22",
             "2020-12-24",
@@ -189,28 +199,24 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
             "2026-12-24",
         )
         self.assertHalfDayHolidayName(name, dts)
+        self.assertHalfDayHolidayName(name, range(self.start_year, 2022))
         self.assertHalfDayNonObservedHolidayName(name, dts)
+        self.assertHalfDayNonObservedHolidayName(name, range(self.start_year, 2022))
         no_dts = (
-            "2000-12-24",
-            "2005-12-24",
-            "2006-12-24",
-            "2011-12-24",
             "2016-12-24",
             "2017-12-24",
             "2022-12-24",
             "2023-12-24",
         )
         self.assertNoHalfDayHolidayName(name, no_dts)
+        self.assertNoHalfDayHolidayName(name, 2022, 2023)
         self.assertNoHalfDayNonObservedHolidayName(name, no_dts)
+        self.assertNoHalfDayNonObservedHolidayName(name, 2022, 2023)
 
     def test_last_business_day_of_the_year(self):
         name = "Last Business Day of the Year (markets close early)"
         self.assertNoHolidayName(name)
         dts = (
-            "2000-12-29",
-            "2005-12-30",
-            "2006-12-29",
-            "2011-12-30",
             "2016-12-30",
             "2017-12-29",
             "2020-12-31",
@@ -220,34 +226,37 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
             "2026-12-31",
         )
         self.assertHalfDayHolidayName(name, dts)
+        self.assertHalfDayHolidayName(name, range(self.start_year, 2022))
         self.assertHalfDayNonObservedHolidayName(name, dts)
+        self.assertHalfDayNonObservedHolidayName(name, range(self.start_year, 2022))
         no_dts = (
-            "2000-12-31",
-            "2005-12-31",
-            "2011-12-31",
             "2016-12-31",
             "2017-12-31",
             "2022-12-31",
             "2023-12-31",
         )
         self.assertNoHalfDayHolidayName(name, no_dts)
+        self.assertNoHalfDayHolidayName(name, 2022, 2023)
         self.assertNoHalfDayNonObservedHolidayName(name, no_dts)
+        self.assertNoHalfDayNonObservedHolidayName(name, 2022, 2023)
 
-    def test_labour_day_(self):
+    def test_labor_day_(self):
         name = "Labour Day (No Settlement)"
+        self.assertNoHolidayName(name)
         self.assertRestrictedSettlementHolidayName(
             name,
-            "2005-03-14",
-            "2005-10-03",
-            "2010-03-08",
-            "2010-10-04",
+            "2012-03-12",
+            "2012-10-01",
+            "2013-03-11",
+            "2013-10-07",
+            "2014-03-10",
+            "2014-10-06",
             "2015-03-09",
             "2015-10-05",
             "2016-03-14",
             "2016-10-03",
         )
-        self.assertNoRestrictedSettlementHolidayName(
-            name,
+        self.assertNoRestrictedSettlementHoliday(
             "2017-03-13",
             "2017-10-02",
             "2020-03-09",
@@ -261,13 +270,13 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertRestrictedSettlementHolidayName(
             name,
-            "2005-08-01",
-            "2010-08-02",
+            "2012-08-06",
+            "2013-08-05",
+            "2014-08-04",
             "2015-08-03",
             "2016-08-01",
         )
-        self.assertNoRestrictedSettlementHolidayName(
-            name,
+        self.assertNoRestrictedSettlementHoliday(
             "2017-08-07",
             "2020-08-03",
         )
@@ -276,11 +285,12 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
 
     def test_melbourne_cup_day(self):
         name = "Melbourne Cup Day (No Settlement)"
+        self.assertNoHolidayName(name)
         self.assertRestrictedSettlementHolidayName(
             name,
-            "2005-11-01",
-            "2009-11-03",
-            "2010-11-02",
+            "2012-11-06",
+            "2013-11-05",
+            "2014-11-04",
             "2015-11-03",
             "2016-11-01",
         )
@@ -314,44 +324,53 @@ class TestAustralianSecuritiesExchange(CommonFinancialTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2024-01-01", "New Year's Day"),
-            ("2024-01-26", "Australia Day"),
-            ("2024-03-29", "Good Friday"),
-            ("2024-04-01", "Easter Monday"),
-            ("2024-04-25", "ANZAC Day"),
-            ("2024-06-10", "King's Birthday"),
-            ("2024-12-24", "Last Business Day before Christmas Day (markets close early)"),
-            ("2024-12-25", "Christmas Day"),
-            ("2024-12-26", "Boxing Day"),
-            ("2024-12-31", "Last Business Day of the Year (markets close early)"),
+            ("2015-01-01", "New Year's Day"),
+            ("2015-01-26", "Australia Day"),
+            ("2015-03-09", "Labour Day (No Settlement)"),
+            ("2015-04-03", "Good Friday"),
+            ("2015-04-06", "Easter Monday"),
+            ("2015-06-08", "Queen's Birthday"),
+            ("2015-08-03", "Bank Holiday (No Settlement)"),
+            ("2015-10-05", "Labour Day (No Settlement)"),
+            ("2015-11-03", "Melbourne Cup Day (No Settlement)"),
+            ("2015-12-24", "Last Business Day before Christmas Day (markets close early)"),
+            ("2015-12-25", "Christmas Day"),
+            ("2015-12-28", "Boxing Day"),
+            ("2015-12-31", "Last Business Day of the Year (markets close early)"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2024-01-01", "New Year's Day"),
-            ("2024-01-26", "Australia Day"),
-            ("2024-03-29", "Good Friday"),
-            ("2024-04-01", "Easter Monday"),
-            ("2024-04-25", "ANZAC Day"),
-            ("2024-06-10", "King's Birthday"),
-            ("2024-12-24", "Last Business Day before Christmas Day (markets close early)"),
-            ("2024-12-25", "Christmas Day"),
-            ("2024-12-26", "Boxing Day"),
-            ("2024-12-31", "Last Business Day of the Year (markets close early)"),
+            ("2015-01-01", "New Year's Day"),
+            ("2015-01-26", "Australia Day"),
+            ("2015-03-09", "Labor Day (No Settlement)"),
+            ("2015-04-03", "Good Friday"),
+            ("2015-04-06", "Easter Monday"),
+            ("2015-06-08", "Queen's Birthday"),
+            ("2015-08-03", "Bank Holiday (No Settlement)"),
+            ("2015-10-05", "Labor Day (No Settlement)"),
+            ("2015-11-03", "Melbourne Cup Day (No Settlement)"),
+            ("2015-12-24", "Last Business Day before Christmas Day (markets close early)"),
+            ("2015-12-25", "Christmas Day"),
+            ("2015-12-28", "Boxing Day"),
+            ("2015-12-31", "Last Business Day of the Year (markets close early)"),
         )
 
     def test_l10n_th(self):
         self.assertLocalizedHolidays(
             "th",
-            ("2024-01-01", "วันขึ้นปีใหม่"),
-            ("2024-01-26", "วันชาติออสเตรเลีย"),
-            ("2024-03-29", "วันศุกร์ประเสริฐ"),
-            ("2024-04-01", "วันจันทร์อีสเตอร์"),
-            ("2024-04-25", "วันแอนแซค"),
-            ("2024-06-10", "วันเฉลิมพระชนมพรรษาสมเด็จพระราชาธิบดี"),
-            ("2024-12-24", "วันทำการสุดท้ายก่อนวันคริสต์มาส (ตลาดปิดทำการก่อนเวลา)"),
-            ("2024-12-25", "วันคริสต์มาส"),
-            ("2024-12-26", "วันเปิดกล่องของขวัญ"),
-            ("2024-12-31", "วันทำการสุดท้ายของปี (ตลาดปิดทำการก่อนเวลา)"),
+            ("2015-01-01", "วันขึ้นปีใหม่"),
+            ("2015-01-26", "วันชาติออสเตรเลีย"),
+            ("2015-03-09", "วันแรงงาน (ไม่มีการชำระราคา)"),
+            ("2015-04-03", "วันศุกร์ประเสริฐ"),
+            ("2015-04-06", "วันจันทร์อีสเตอร์"),
+            ("2015-06-08", "วันเฉลิมพระชนมพรรษาสมเด็จพระราชินีนาถ"),
+            ("2015-08-03", "วันหยุดธนาคาร (ไม่มีการชำระราคา)"),
+            ("2015-10-05", "วันแรงงาน (ไม่มีการชำระราคา)"),
+            ("2015-11-03", "วันเมลเบิร์นคัพ (ไม่มีการชำระราคา)"),
+            ("2015-12-24", "วันทำการสุดท้ายก่อนวันคริสต์มาส (ตลาดปิดทำการก่อนเวลา)"),
+            ("2015-12-25", "วันคริสต์มาส"),
+            ("2015-12-28", "วันเปิดกล่องของขวัญ"),
+            ("2015-12-31", "วันทำการสุดท้ายของปี (ตลาดปิดทำการก่อนเวลา)"),
         )

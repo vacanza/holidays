@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-08-03 15:45+0000\n"
-"PO-Revision-Date: 2026-08-19 11:38+0530\n"
+"PO-Revision-Date: 2026-08-26 08:49+0000\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -85,7 +85,7 @@ msgstr "วันทำการสุดท้ายของปี"
 msgid "%s (No Settlement)"
 msgstr "%s (ไม่มีการชำระราคา)"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr "วันแรงงาน"
 
@@ -97,10 +97,6 @@ msgstr "วันหยุดธนาคาร"
 msgid "Melbourne Cup Day"
 msgstr "วันเมลเบิร์นคัพ"
 
-#. Day following New Year's Day.
-msgid "Day following New Year's Day"
-msgstr "วันหลังวันขึ้นปีใหม่"
-
 #. Easter Tuesday / Public Holiday.
 msgid "Easter Tuesday / Public Holiday"
 msgstr "วันอังคารอีสเตอร์/วันหยุดนักขัตฤกษ์"
@@ -108,3 +104,7 @@ msgstr "วันอังคารอีสเตอร์/วันหยุ�
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
 msgstr "วันไว้ทุกข์แห่งชาติแด่สมเด็จพระราชินีนาถเอลิซาเบธที่ 2"
+
+#. Day following New Year's Day.
+msgid "Day following New Year's Day"
+msgstr "วันหลังวันขึ้นปีใหม่"

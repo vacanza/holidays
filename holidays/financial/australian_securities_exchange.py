@@ -62,6 +62,7 @@ class AustralianSecuritiesExchange(
         * [2023](https://web.archive.org/web/20230713033224/https://www2.asx.com.au/markets/market-resources/trading-hours-calendar/cash-market-trading-hours/trading-calendar)
         * [2024](https://web.archive.org/web/20240824000246/https://www2.asx.com.au/markets/market-resources/trading-hours-calendar/cash-market-trading-hours/trading-calendar)
         * [2025](https://web.archive.org/web/20251006114320/https://www2.asx.com.au/markets/market-resources/trading-hours-calendar/cash-market-trading-hours/trading-calendar)
+        * [2026](https://web.archive.org/web/20260421234335/https://www.asx.com.au/markets/market-resources/trading-hours-calendar/cash-market-trading-hours/trading-calendar)
     """
 
     market = "XASX"
@@ -147,7 +148,7 @@ class AustralianSecuritiesExchange(
         no_settlement_label = tr("%s (No Settlement)")
 
         self._add_holiday_2nd_mon_of_mar(
-            # Labour Day.
+            # Labor Day.
             self._format_holiday_name(no_settlement_label, tr("Labour Day"))
         )
 
@@ -157,7 +158,7 @@ class AustralianSecuritiesExchange(
         )
 
         self._add_holiday_1st_mon_of_oct(
-            # Labour Day.
+            # Labor Day.
             self._format_holiday_name(no_settlement_label, tr("Labour Day"))
         )
 
@@ -185,9 +186,6 @@ class AustralianSecuritiesExchangeStaticHolidays:
     # ANZAC Day.
     name_anzac_day = tr("ANZAC Day")
 
-    # Day following New Year's Day.
-    name_day_following_new_years_day = tr("Day following New Year's Day")
-
     special_public_holidays = {
         2010: (APR, 26, name_anzac_day),
         # Easter Tuesday / Public Holiday.
@@ -197,7 +195,8 @@ class AustralianSecuritiesExchangeStaticHolidays:
     }
 
     special_half_day_holidays = {
-        2004: (JAN, 2, (pause_label, name_day_following_new_years_day)),
+        # Day following New Year's Day.
+        2004: (JAN, 2, (pause_label, tr("Day following New Year's Day"))),
     }
 
     special_restricted_settlement_holidays = {
