@@ -96,6 +96,9 @@ class India(
             * <https://web.archive.org/web/20260324051214/http://mizoram.nic.in/gov/hols.htm>
         * Nagaland:
             * <https://web.archive.org/web/20260412133333/https://cag.gov.in/uploads/media/Holiday-list-2026-069099b1b46e314-06360641.pdf>
+        * Odisha:
+            * <https://web.archive.org/web/20260826132225/https://only30sec.com/wp-content/uploads/2025/11/Odisha-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
+            * <https://archive.org/details/odisha-government-optional-holidays-list-2026>
         * Punjab:
             * <https://web.archive.org/web/20260216022835/https://punjab.gov.in/wp-content/uploads/2025/12/Calender-2026.pdf>
         * Rajasthan:
@@ -1426,10 +1429,38 @@ class India(
 
     # Orissa / Odisha.
     def _populate_subdiv_od_public_holidays(self):
-        # Odisha Day.
-        self._add_holiday_apr_1(tr("Odisha Day (Utkala Dibasa)"))
-        # Maha Vishuva Sankranti.
-        self._add_holiday_apr_15(tr("Maha Vishuva Sankranti / Pana Sankranti"))
+        pass
+
+    def populate_subdiv_od_government_holidays(self):
+        # Netaji Subhas Chandra Bose's Birthday.
+        self._add_holiday_jan_23(tr("Netaji Subhas Chandra Bose Jayanti"))
+
+        # Dola Purnima.
+        self._add_holika_dahan(tr("Dola Purnima"))
+
+        # Utkal Divas.
+        self._add_holiday_apr_1(tr("Utkal Divas"))
+
+        # Maha Visua Sankranti.
+        self._add_vaisakhi(tr("Maha Visua Sankranti"))
+
+        # Rath Yatra.
+        self._add_rath_yatra(tr("Rath Yatra"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+
+        # Mahalaya.
+        self._add_pitra_moksh_amavasya(tr("Mahalaya"))
+
+        # Mahasaptami.
+        self._add_maha_saptami(tr("Mahasaptami"))
+
+        # Mahashtami.
+        self._add_maha_ashtami(tr("Mahashtami"))
+
+        # Mahanavami.
+        self._add_maha_navami(tr("Mahanavami"))
 
     # Puducherry.
     def _populate_subdiv_py_public_holidays(self):

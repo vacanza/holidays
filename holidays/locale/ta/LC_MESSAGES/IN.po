@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-08-26 00:52+0530\n"
+"PO-Revision-Date: 2026-08-26 20:24+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ta\n"
@@ -786,13 +786,21 @@ msgstr "சோமி நாம்னி"
 msgid "Post Christmas (Day 4)"
 msgstr "கிறிஸ்துமஸுக்குப் பிந்தைய நாள் (4ஆம் நாள்)"
 
-#. Odisha Day.
-msgid "Odisha Day (Utkala Dibasa)"
-msgstr "ஒடிசா நாள் (உத்கல திவசம்)"
+#. Dola Purnima.
+msgid "Dola Purnima"
+msgstr ""
 
-#. Maha Vishuva Sankranti.
-msgid "Maha Vishuva Sankranti / Pana Sankranti"
-msgstr "மகா விஷுவ சங்கராந்தி / பானா சங்கராந்தி"
+#. Utkal Divas.
+msgid "Utkal Divas"
+msgstr ""
+
+#. Maha Visua Sankranti.
+msgid "Maha Visua Sankranti"
+msgstr ""
+
+#. Mahalaya.
+msgid "Mahalaya"
+msgstr ""
 
 #. Puducherry De Jure Transfer Day.
 msgid "Puducherry De Jure Transfer Day"
@@ -946,10 +954,6 @@ msgstr ""
 msgid "Birsa Munda's Jayanti"
 msgstr ""
 
-#. Mahalaya.
-msgid "Mahalaya"
-msgstr ""
-
 #. Kali Puja.
 msgid "Kali Puja"
 msgstr ""
@@ -965,6 +969,12 @@ msgstr "ஸ்ரீ பஞ்சமி"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ஜனமாஷ்டமி (ஸ்மார்த்த)"
+
+#~ msgid "Odisha Day (Utkala Dibasa)"
+#~ msgstr "ஒடிசா நாள் (உத்கல திவசம்)"
+
+#~ msgid "Maha Vishuva Sankranti / Pana Sankranti"
+#~ msgstr "மகா விஷுவ சங்கராந்தி / பானா சங்கராந்தி"
 
 #~ msgid "Rabindra Jayanti"
 #~ msgstr "ரபீந்திர ஜெயந்தி"
