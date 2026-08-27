@@ -78,8 +78,8 @@ class TestEthiopia(CommonCountryTests, TestCase):
 
     def test_downfall_of_the_dergue_regime_day(self):
         name = "ደርግ የወደቀበት ቀን"
-        self.assertHolidayName(name, (f"{year}-05-28" for year in range(1992, self.end_year)))
-        self.assertNoHolidayName(name, range(self.start_year, 1992))
+        self.assertHolidayName(name, (f"{year}-05-28" for year in range(1992, 2025)))
+        self.assertNoHolidayName(name, range(self.start_year, 1992), range(2025, self.end_year))
 
     def test_ethiopian_new_year(self):
         self.assertHolidayName(
