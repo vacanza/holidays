@@ -83,6 +83,7 @@ class India(
             * <https://web.archive.org/web/20260822102104/https://only30sec.com/wp-content/uploads/2025/11/Karnataka-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Kerala:
             * <https://web.archive.org/web/20260329164551/https://kerala.gov.in/showcalendar/2026>
+            * <https://web.archive.org/web/20260827190400/https://only30sec.com/wp-content/uploads/2025/11/Kerala-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Ladakh:
             * <https://web.archive.org/web/20260627104706/https://www.veerayeehr.com/wp-content/uploads/2025/12/Ladakh-state-list-of-holidays-2026.pdf>
         * Madhya Pradesh:
@@ -1155,10 +1156,46 @@ class India(
 
     # Kerala.
     def _populate_subdiv_kl_public_holidays(self):
+        # Mannam's Birthday.
+        self._add_holiday_jan_2(tr("Mannam's Jayanti"))
+
+        # Maundy Thursday.
+        self._add_holy_thursday(tr("Maundy Thursday"))
+
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Easter Sunday"))
+
+        # May Day.
+        self._add_labor_day(tr("May Day"))
+
+        # Sree Narayana Guru's Death Anniversary.
+        self._add_holiday_sep_21(tr("Sree Narayana Guru's Death Anniversary"))
+
+        # Hindu holidays.
+
+        # Vishu.
+        self._add_vishu(tr("Vishu"))
+
         # Onam.
         self._add_onam(tr("Onam"))
-        # Kerala Foundation Day.
-        self._add_holiday_nov_1(tr("Kerala Foundation Day"))
+
+        # Onam (Day 2).
+        self._add_onam_day_two(tr("Onam (Day 2)"))
+
+        # Onam (Day 3).
+        self._add_onam_day_three(tr("Onam (Day 3)"))
+
+        # Onam (Day 4).
+        self._add_onam_day_four(tr("Onam (Day 4)"))
+
+        # Mahanavami.
+        self._add_maha_navami(tr("Mahanavami"))
+
+    def _populate_subdiv_kl_optional_holidays(self):
+        # Hindu holidays.
+
+        # Vishwakarma Puja.
+        self._add_vishwakarma_puja(tr("Vishwakarma Puja"))
 
     # Ladakh.
     def _populate_subdiv_la_public_holidays(self):

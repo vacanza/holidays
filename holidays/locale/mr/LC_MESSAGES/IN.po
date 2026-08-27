@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-29 00:37+0530\n"
-"PO-Revision-Date: 2026-08-28 00:32+0530\n"
+"PO-Revision-Date: 2026-08-28 00:55+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: mr\n"
@@ -658,9 +658,25 @@ msgstr ""
 msgid "Holy Saturday"
 msgstr "पवित्र शनिवार"
 
-#. Kerala Foundation Day.
-msgid "Kerala Foundation Day"
-msgstr "केरळ स्थापना दिन"
+#. Mannam's Birthday.
+msgid "Mannam's Jayanti"
+msgstr ""
+
+#. Sree Narayana Guru's Death Anniversary.
+msgid "Sree Narayana Guru's Death Anniversary"
+msgstr ""
+
+#. Onam (Day 2).
+msgid "Onam (Day 2)"
+msgstr ""
+
+#. Onam (Day 3).
+msgid "Onam (Day 3)"
+msgstr ""
+
+#. Onam (Day 4).
+msgid "Onam (Day 4)"
+msgstr ""
 
 #. Tribal Pride Day.
 msgid "Janjatiya Gaurav Divas"
@@ -1013,6 +1029,9 @@ msgstr "श्री पंचमी"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "गोकुळाष्टमी (स्मार्त)"
+
+#~ msgid "Kerala Foundation Day"
+#~ msgstr "केरळ स्थापना दिन"
 
 #~ msgid "Jharkhand Formation Day"
 #~ msgstr "झारखंड स्थापना दिन"
