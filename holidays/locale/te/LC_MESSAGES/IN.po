@@ -218,11 +218,11 @@ msgstr "గణేశ చవితి / వినాయక చవితి"
 
 #. Ganesh Chaturthi.
 msgid "Ganesh Chaturthi"
-msgstr "వినాయక చవితి"
+msgstr "గణేశ చవితి"
 
 #. Vinayak Chaturthi.
 msgid "Vinayak Chaturthi"
-msgstr "గణేశ చవితి"
+msgstr "వినాయక చవితి"
 
 #. Dussehra (Saptami).
 msgid "Dussehra (Saptami)"

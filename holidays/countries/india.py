@@ -56,6 +56,8 @@ class India(
             * <https://web.archive.org/web/20251214133200/https://andamannicobar.gov.in/admin-pannel/othersdoc/1-29-Holiday%20List%202026%20Gazette.pdf>
         * Chandigarh:
             * <https://web.archive.org/web/20260705144831/https://chandigarh.gov.in/files/updation2025/home25-17488-3012.pdf>
+        * Chhattisgarh:
+            * <https://archive.org/embed/chhattisgrah-official-holidays-list-2026>
         * Dadra and Nagar Haveli and Daman and Diu:
             * <https://web.archive.org/web/20251224204021/https://cdnbbsr.s3waas.gov.in/s371e09b16e21f7b6919bbfc43f6a5b2f0/uploads/2025/12/202512241352239707.pdf>
         * Goa:
