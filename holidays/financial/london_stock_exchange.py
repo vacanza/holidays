@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.united_kingdom import UnitedKingdom
+from holidays.helpers import tr
 from holidays.mixins.child_entity import ChildEntity
 from holidays.observed_holiday_base import SAT_SUN_TO_PREV_FRI
 

@@ -11,10 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars.gregorian import SEP, THU, FRI, SAT
 from holidays.groups import InternationalHolidays, IslamicHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 

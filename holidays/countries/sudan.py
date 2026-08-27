@@ -11,12 +11,12 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, MAY, JUL, AUG, SEP, FRI, SAT
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, IslamicHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 

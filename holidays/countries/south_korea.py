@@ -13,7 +13,6 @@
 from __future__ import annotations
 
 import warnings
-from gettext import gettext as tr
 from typing import TYPE_CHECKING
 
 from holidays.calendars.chinese import KOREAN_CALENDAR
@@ -39,6 +38,7 @@ from holidays.groups import (
     InternationalHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_WORKDAY,

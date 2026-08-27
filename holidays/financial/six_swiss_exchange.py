@@ -11,10 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.constants import PUBLIC
 from holidays.countries.switzerland import Switzerland
+from holidays.helpers import tr
 from holidays.mixins.child_entity import ChildEntity
 
 
