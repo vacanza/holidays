@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-08-26 20:24+0530\n"
+"PO-Revision-Date: 2026-08-28 00:17+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ml\n"
@@ -646,9 +646,13 @@ msgstr "മഹാനവമി"
 msgid "Nauroz"
 msgstr "നൗറോസ്"
 
-#. Jharkhand Formation Day.
-msgid "Jharkhand Formation Day"
-msgstr "ഝാർഖണ്ഡ് രൂപീകരണദിനം"
+#. Karma Puja.
+msgid "Karma Puja"
+msgstr ""
+
+#. Labor Day.
+msgid "Majdoor Diwas"
+msgstr ""
 
 #. Holy Saturday.
 msgid "Holy Saturday"
@@ -969,6 +973,9 @@ msgstr "ശ്രീ പഞ്ചമി"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ജന്മാഷ്ടമി (സ്മാർത്ത)"
+
+#~ msgid "Jharkhand Formation Day"
+#~ msgstr "ഝാർഖണ്ഡ് രൂപീകരണദിനം"
 
 #~ msgid "Odisha Day (Utkala Dibasa)"
 #~ msgstr "ഉത്കൽ ദിവസ്"

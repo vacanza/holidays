@@ -77,6 +77,8 @@ class India(
             * <https://web.archive.org/web/20260627103337/https://www.comply360.in/labor-law-library/wp-content/uploads/2025/12/Notification-regarding-list-of-Holidays-for-the-Year-2026-in-Himachal-Pradesh-1.pdf>
         * Jammu and Kashmir:
             * https://web.archive.org/web/20260616165510/https://jkeducation.co.in/wp-content/uploads/2025/12/showOrder-4.pdf>
+        * Jharkhand:
+            * <https://web.archive.org/web/20260826145700/https://jharkhandcalendar.co.in/wp-content/uploads/2025/12/jaharkand-calendar-2026.pdf>
         * Karnataka:
             * <https://web.archive.org/web/20260822102104/https://only30sec.com/wp-content/uploads/2025/11/Karnataka-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Kerala:
@@ -1081,10 +1083,39 @@ class India(
 
     # Jharkhand.
     def _populate_subdiv_jh_public_holidays(self):
+        # Hindu holidays.
+
+        # Karma Puja.
+        self._add_parivartini_ekadashi(tr("Karma Puja"))
+
         # Chhath Puja.
         self._add_chhath_puja(tr("Chhath Puja"))
-        # Jharkhand Formation Day.
-        self._add_holiday_nov_15(tr("Jharkhand Formation Day"))
+
+    def _populate_subdiv_jh_government_holidays(self):
+        self._populate_public_holidays()
+
+        # Netaji Subhas Chandra Bose's Birthday.
+        self._add_holiday_jan_23(tr("Netaji Subhas Chandra Bose Jayanti"))
+
+        # Labor Day.
+        self._add_labor_day(tr("Majdoor Diwas"))
+
+        # Hindu holidays.
+
+        # Makar Sankranti.
+        self._add_makar_sankranti(tr("Makar Sankranti"))
+
+        # Rath Yatra.
+        self._add_rath_yatra(tr("Rath Yatra"))
+
+        # Vishwakarma Puja.
+        self._add_vishwakarma_puja(tr("Vishwakarma Puja"))
+
+        # Govardhan Puja.
+        self._add_govardhan_puja(tr("Govardhan Puja"))
+
+        # Bhai Duj.
+        self._add_bhai_dooj(tr("Bhai Duj"))
 
     # Karnataka.
     def _populate_subdiv_ka_public_holidays(self):
