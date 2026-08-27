@@ -86,6 +86,8 @@ class India(
             * <https://web.archive.org/web/20260827190400/https://only30sec.com/wp-content/uploads/2025/11/Kerala-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Ladakh:
             * <https://web.archive.org/web/20260627104706/https://www.veerayeehr.com/wp-content/uploads/2025/12/Ladakh-state-list-of-holidays-2026.pdf>
+        * Lakshadweep:
+            * <https://web.archive.org/save/https://only30sec.com/wp-content/uploads/2025/12/Lakshadweep-UT-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Madhya Pradesh:
             * <https://archive.org/details/madhya-pradesh-government-2026-holidays-notification>
         * Maharashtra:
@@ -1226,6 +1228,25 @@ class India(
 
         # Eid al-Ghadir.
         self._add_eid_al_ghadir_day(tr("Eid-e-Ghadeer"))
+
+    # Lakshadweep.
+    def _populate_subdiv_ld_public_holidays(self):
+        # Hindu holidays.
+
+        # Makar Sankranti.
+        self._add_makar_sankranti(tr("Makar Sankranti"))
+
+        # Onam.
+        self._add_onam(tr("Onam"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+
+    def _populate_subdiv_ld_optional_holidays(self):
+        # Islamic holidays.
+
+        # Isra' and Mi'raj.
+        self._add_isra_and_miraj_day(tr("Shab-I-Miraj"))
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
