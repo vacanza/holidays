@@ -545,8 +545,16 @@ class India(
 
     # Andaman and Nicobar Islands.
     def _populate_subdiv_an_public_holidays(self):
+        # Hindu holidays.
+
         # Onam.
         self._add_onam(tr("Onam"))
+
+    def _populate_subdiv_an_optional_holidays(self):
+        self._add_holiday_dec_30(
+            # First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose.
+            tr("First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose")
+        )
 
     # Andhra Pradesh.
     def _populate_subdiv_ap_public_holidays(self):
