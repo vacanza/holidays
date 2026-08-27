@@ -1945,6 +1945,13 @@ code when available. The following financial markets are available:
 </thead>
 <tbody>
 <tr>
+<td>Australian Securities Exchange</td>
+<td>XASX</td>
+<td>Australian Securities Exchange (ASX) holidays</td>
+<td><strong>en_AU</strong>, en_US, th</td>
+<td>HALF_DAY, RESTRICTED_SETTLEMENT</td>
+</tr>
+<tr>
 <td>Bolsa Mexicana de Valores</td>
 <td>XMEX</td>
 <td>Bolsa Mexicana de Valores (BMV) holidays</td>
