@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-08-28 00:56+0530\n"
+"PO-Revision-Date: 2026-08-28 01:37+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: gu\n"
@@ -302,6 +302,7 @@ msgid "Bhogi"
 msgstr "ભોગી"
 
 #. Kanuma
+#. Kanuma.
 msgid "Kanuma"
 msgstr "కానుమా"
 
@@ -831,6 +832,18 @@ msgstr "પુડુચેરી ડી જ્યુર ટ્રાન્સફ
 msgid "Puducherry Liberation Day"
 msgstr "પુડુચેરી મુક્તિ દિવસ"
 
+#. Vishu (Day 2).
+msgid "Vishu (Day 2)"
+msgstr ""
+
+#. Puthandu (Tamil New Year).
+msgid "Puthandu (Tamil New Year)"
+msgstr "પુથંડુ (તમિલ નવું વર્ષ)"
+
+#. Ayudha Puja.
+msgid "Ayudha Puja"
+msgstr ""
+
 #. Guru Nabha Dass's Birthday.
 msgid "Guru Nabha Dass's Jayanti"
 msgstr "ગુરુ નાભા દાસ જયંતિ"
@@ -934,14 +947,6 @@ msgstr "તિરુવલ્લુવર દિવસ / મટ્ટુ પો�
 #. Uzhavar Thirunal.
 msgid "Uzhavar Thirunal"
 msgstr "ઉઝાવર થિરુનલ"
-
-#. Puthandu.
-msgid "Puthandu (Tamil New Year)"
-msgstr "પુથંડુ (તમિલ નવું વર્ષ)"
-
-#. Ayudha Puja.
-msgid "Ayudha Puja"
-msgstr ""
 
 #. Bonalu.
 msgid "Bonalu"

@@ -1213,6 +1213,14 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.vishu_date(self._year))
 
+    def _add_vishu_day_two(self, name) -> date | None:
+        """
+        Add Vishu (Day 2) which comes after the main Vishu day.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.vishu_date(self._year), days_delta=+1
+        )
+
     def _add_vishwakarma_puja(self, name) -> date | None:
         """
         Add Vishwakarma Puja.

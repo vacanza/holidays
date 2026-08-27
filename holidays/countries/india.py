@@ -102,6 +102,8 @@ class India(
         * Odisha:
             * <https://web.archive.org/web/20260826132225/https://only30sec.com/wp-content/uploads/2025/11/Odisha-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
             * <https://archive.org/details/odisha-government-optional-holidays-list-2026>
+        * Puducherry:
+            * <https://only30sec.com/wp-content/uploads/2025/11/Puducherry-UT-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Punjab:
             * <https://web.archive.org/web/20260216022835/https://punjab.gov.in/wp-content/uploads/2025/12/Calender-2026.pdf>
         * Rajasthan:
@@ -1535,10 +1537,54 @@ class India(
 
     # Puducherry.
     def _populate_subdiv_py_public_holidays(self):
+        # May Day.
+
         # Puducherry De Jure Transfer Day.
         self._add_holiday_aug_16(tr("Puducherry De Jure Transfer Day"))
+
         # Puducherry Liberation Day.
         self._add_holiday_nov_1(tr("Puducherry Liberation Day"))
+
+        # Hindu holidays.
+
+        # Pongal.
+        self._add_pongal(tr("Pongal"))
+
+        # Vishu.
+        self._add_vishu(tr("Vishu"))
+
+        # Vishu (Day 2).
+        self._add_vishu_day_two(tr("Vishu (Day 2)"))
+
+        # Onam.
+        self._add_onam(tr("Onam"))
+
+        # Onam (Day 2).
+        self._add_onam_day_two(tr("Onam (Day 2)"))
+
+        # Puthandu (Tamil New Year).
+        self._add_vaisakhi(tr("Puthandu (Tamil New Year)"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+
+        # Ayudha Puja.
+        self._add_maha_navami(tr("Ayudha Puja"))
+
+    def _populate_subdiv_py_optional_holidays(self):
+        # Saint Joseph Vaz's Day.
+        self._add_holiday_jan_16(tr("Saint Joseph Vaz's Day"))
+
+        # All Souls' Day.
+        self._add_all_souls_day(tr("All Souls' Day"))
+
+        # Immaculate Conception.
+        self._add_immaculate_conception_day(tr("Feast of Immaculate Conception of Mary"))
+
+        # Hindu holidays.
+
+        # Kanuma.
+        self._add_vassi_uttarayan(tr("Kanuma"))
 
     # Punjab.
     def _populate_subdiv_pb_public_holidays(self):
@@ -1744,8 +1790,8 @@ class India(
         # Uzhavar Thirunal.
         self._add_uzhavar_thirunal(tr("Uzhavar Thirunal"))
 
-        # Puthandu.
-        self._add_vaisakhadi(tr("Puthandu (Tamil New Year)"))
+        # Puthandu (Tamil New Year).
+        self._add_vaisakhi(tr("Puthandu (Tamil New Year)"))
 
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
