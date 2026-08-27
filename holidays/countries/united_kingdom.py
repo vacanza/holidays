@@ -54,7 +54,7 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         "Scotland": "SCT",
         "Wales": "WLS",
     }
-    supported_languages = ("en_GB", "en_US", "th")
+    supported_languages = ("en_GB", "en_US", "th", "ur_PK")
     # Bank Holidays Act 1871.
     start_year = 1872
     _deprecated_subdivisions = ("UK",)
