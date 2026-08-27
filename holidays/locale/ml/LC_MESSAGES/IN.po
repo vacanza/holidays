@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-08-28 00:55+0530\n"
+"PO-Revision-Date: 2026-08-28 00:56+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ml\n"
@@ -937,6 +937,10 @@ msgstr "ഉഴവർ തിരുനാൾ"
 #. Puthandu.
 msgid "Puthandu (Tamil New Year)"
 msgstr "പുത്താണ്ട് (തമിഴ് പുതുവർഷം)"
+
+#. Ayudha Puja.
+msgid "Ayudha Puja"
+msgstr ""
 
 #. Bonalu.
 msgid "Bonalu"

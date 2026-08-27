@@ -111,6 +111,7 @@ class India(
         * Tamil Nadu:
             * [Tamil Monthly Calendar](https://web.archive.org/web/20231228103352/https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
             * [Tamil Calendar](https://web.archive.org/web/20250429125140/https://www.prokerala.com/general/calendar/tamilcalendar.php)
+            * <https://web.archive.org/web/20260827191227/https://only30sec.com/wp-content/uploads/2025/11/Tamil-Nadu-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Telangana:
             * <https://web.archive.org/web/20260224050455/https://transport.telangana.gov.in/html/registration-districtcodes.html>
             * <https://web.archive.org/web/20250219131214/https://www.thehindu.com/news/national/telangana/cm-firm-on-having-states-identity-as-tg-not-ts/article68187923.ece>
@@ -1729,14 +1730,28 @@ class India(
 
     # Tamil Nadu.
     def _populate_subdiv_tn_public_holidays(self):
+        # May Day.
+        self._add_labor_day(tr("May Day"))
+
+        # Hindu holidays.
+
         # Pongal.
         self._add_pongal(tr("Pongal"))
+
         # Thiruvalluvar Day / Mattu Pongal.
         self._add_thiruvalluvar_day(tr("Thiruvalluvar Day / Mattu Pongal"))
+
         # Uzhavar Thirunal.
         self._add_uzhavar_thirunal(tr("Uzhavar Thirunal"))
+
         # Puthandu.
-        self._add_holiday_apr_14(tr("Puthandu (Tamil New Year)"))
+        self._add_vaisakhadi(tr("Puthandu (Tamil New Year)"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+
+        # Ayudha Puja.
+        self._add_maha_navami(tr("Ayudha Puja"))
 
     # Telangana.
     def _populate_subdiv_ts_public_holidays(self):
