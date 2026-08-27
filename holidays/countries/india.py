@@ -105,6 +105,8 @@ class India(
             * <https://web.archive.org/web/20260216022835/https://punjab.gov.in/wp-content/uploads/2025/12/Calender-2026.pdf>
         * Rajasthan:
             * <https://web.archive.org/web/20260718191708/https://rajasthancalendar.co.in/wp-content/uploads/2025/12/Rajasthan-Govt-Calendar-2026.pdf>
+        * Sikkim:
+            * <https://web.archive.org/web/20260827185054/https://only30sec.com/wp-content/uploads/2025/11/Sikkim-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Tamil Nadu:
             * [Tamil Monthly Calendar](https://web.archive.org/web/20231228103352/https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
             * [Tamil Calendar](https://web.archive.org/web/20250429125140/https://www.prokerala.com/general/calendar/tamilcalendar.php)
@@ -1636,8 +1638,57 @@ class India(
 
     # Sikkim.
     def _populate_subdiv_sk_public_holidays(self):
+        self._add_holiday_feb_26(
+            # Akhil Sikkim Khas Chettri Bahun Kalyan Sangh's Foundation Day
+            tr("Akhil Sikkim Khas Chettri Bahun Kalyan Sangh's Foundation Day")
+        )
+
         # Sikkim State Day.
         self._add_holiday_may_16(tr("Sikkim State Day"))
+
+        # Bhanu's Birthday.
+        self._add_holiday_jul_13(tr("Bhanu's Jayanti"))
+
+        # Nepali Bhasa Manyata Day.
+        self._add_holiday_aug_20(tr("Nepali Bhasa Manyata Diwas"))
+
+        #  Late Nar Bahadur Bhandari's Birthday.
+        self._add_holiday_oct_5(tr("Late Nar Bahadur Bhandari's Jayanti"))
+
+        # Hindu holidays.
+
+        # Makar Sankranti.
+        self._add_makar_sankranti(tr("Makar Sankranti"))
+
+        # Sonam Lochhar.
+        self._add_sonam_losar(tr("Sonam Lochhar"))
+
+        # Hartalika Teej.
+        self._add_hartalika_teej(tr("Hartalika Teej"))
+
+        # Tamu Lochhar.
+        self._add_tamu_losar(tr("Tamu Lochhar"))
+
+    def _populate_subdiv_sk_optional_holidays(self):
+        # May Day.
+        self._add_labor_day(tr("May Day"))
+
+        # Late Tenzing Norgay Sherpa's Birthday.
+        self._add_holiday_may_29(tr("Late Tenzing Norgay Sherpa's Jayanti"))
+
+        # The Dalai Lama's Birthday.
+        self._add_holiday_jul_6(tr("The Dalai Lama's Jayanti"))
+
+        # Drivers' Day.
+        self._add_holiday_jul_27(tr("Sarathi Diwas"))
+
+        # Satya Sai Baba of Puttaparthi's Birthday.
+        self._add_holiday_nov_23(tr("Satya Sai Baba of Puttaparthi's Jayanti"))
+
+        # Hindu holidays.
+
+        # Chhath Puja.
+        self._add_chhath_puja(tr("Chhath Puja"))
 
     # Tamil Nadu.
     def _populate_subdiv_tn_public_holidays(self):

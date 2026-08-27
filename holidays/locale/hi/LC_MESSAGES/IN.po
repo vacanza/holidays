@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-08-28 00:17+0530\n"
+"PO-Revision-Date: 2026-08-28 00:32+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -867,9 +867,49 @@ msgstr "शारदीय नवरात्रि"
 msgid "Gadge Maharaj's Jayanti"
 msgstr "गाडगे महाराज जयंती"
 
+#. Akhil Sikkim Khas Chettri Bahun Kalyan Sangh's Foundation Day
+msgid "Akhil Sikkim Khas Chettri Bahun Kalyan Sangh's Foundation Day"
+msgstr ""
+
 #. Sikkim State Day.
 msgid "Sikkim State Day"
 msgstr "सिक्किम राज्य दिवस"
+
+#. Bhanu's Birthday.
+msgid "Bhanu's Jayanti"
+msgstr ""
+
+#. Nepali Bhasa Manyata Day.
+msgid "Nepali Bhasa Manyata Diwas"
+msgstr ""
+
+#. Late Nar Bahadur Bhandari's Birthday.
+msgid "Late Nar Bahadur Bhandari's Jayanti"
+msgstr ""
+
+#. Sonam Lochhar.
+msgid "Sonam Lochhar"
+msgstr ""
+
+#. Tamu Lochhar.
+msgid "Tamu Lochhar"
+msgstr ""
+
+#. Late Tenzing Norgay Sherpa's Birthday.
+msgid "Late Tenzing Norgay Sherpa's Jayanti"
+msgstr ""
+
+#. The Dalai Lama's Birthday.
+msgid "The Dalai Lama's Jayanti"
+msgstr ""
+
+#. Drivers' Day.
+msgid "Sarathi Diwas"
+msgstr ""
+
+#. Satya Sai Baba of Puttaparthi's Birthday.
+msgid "Satya Sai Baba of Puttaparthi's Jayanti"
+msgstr ""
 
 #. Thiruvalluvar Day / Mattu Pongal.
 msgid "Thiruvalluvar Day / Mattu Pongal"
