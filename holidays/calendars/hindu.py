@@ -88,7 +88,7 @@ WANGALA_FESTIVAL = "WANGALA_FESTIVAL"
 
 
 class _HinduLunisolar:
-    # https://web.archive.org/save/https://www.drikpanchang.com/hindu-saints/shankaracharya/adi-shankaracharya-jayanti.html
+    # https://web.archive.org/web/20260828052707/https://www.drikpanchang.com/hindu-saints/shankaracharya/adi-shankaracharya-jayanti.html
     ADI_SHANKARACHARYA_JAYANTI_DATES = {
         2001: (APR, 28),
         2002: (MAY, 16),
