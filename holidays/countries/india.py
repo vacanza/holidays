@@ -663,6 +663,8 @@ class India(
         pass
 
     def _populate_subdiv_br_government_holidays(self):
+        self._populate_public_holidays()
+
         # Hindu holidays.
 
         # Mahasaptami.
@@ -1533,7 +1535,9 @@ class India(
     def _populate_subdiv_od_public_holidays(self):
         pass
 
-    def populate_subdiv_od_government_holidays(self):
+    def _populate_subdiv_od_government_holidays(self):
+        self._populate_public_holidays()
+
         # Netaji Subhas Chandra Bose's Birthday.
         self._add_holiday_jan_23(tr("Netaji Subhas Chandra Bose Jayanti"))
 
@@ -1567,6 +1571,7 @@ class India(
     # Puducherry.
     def _populate_subdiv_py_public_holidays(self):
         # May Day.
+        self._add_labor_day(tr("May Day"))
 
         # Puducherry De Jure Transfer Day.
         self._add_holiday_aug_16(tr("Puducherry De Jure Transfer Day"))
@@ -1880,7 +1885,7 @@ class India(
         # Hindu holidays.
 
         # Bengali's New Year.
-        self.add_pohela_boishakh(tr("Pohela Boishakh"))
+        self._add_pohela_boishakh(tr("Pohela Boishakh"))
 
         # Garia Puja.
         self._add_garia_puja(tr("Garia Puja"))
@@ -2003,7 +2008,7 @@ class India(
         # Hindu holidays.
 
         # Bengali's New Year.
-        self.add_pohela_boishakh(tr("Pohela Boishakh"))
+        self._add_pohela_boishakh(tr("Pohela Boishakh"))
 
         # Mahalaya.
         self._add_pitra_moksh_amavasya(tr("Mahalaya"))

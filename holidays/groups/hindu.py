@@ -271,10 +271,8 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
 
     def _add_ganesh_chaturthi_day_two(self, name) -> date | None:
         """
-        Add Ganesh Chaturthi.
+        Add Ganesh Chaturthi (2nd Day), celebrated the day after Ganesh Chaturthi.
 
-        Ganesh Chaturthi is a Hindu festival celebrating the birth of Lord Ganesha.
-        It falls on the fourth day of the Hindu month of Bhadrapada (August/September).
         https://en.wikipedia.org/wiki/Ganesh_Chaturthi
         """
         return self._add_hindu_calendar_holiday(
@@ -912,7 +910,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             self._hindu_calendar.pitra_moksh_amavasya_date(self._year),
         )
 
-    def add_pohela_boishakh(self, name) -> date | None:
+    def _add_pohela_boishakh(self, name) -> date | None:
         "Add Pohela Boishakh, the Bengali New Year."
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.vaisakhi_date(self._year), days_delta=+1

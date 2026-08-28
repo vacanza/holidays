@@ -299,7 +299,7 @@ msgstr "ಭೋಗಿ"
 #. Kanuma
 #. Kanuma.
 msgid "Kanuma"
-msgstr "కనుమ"
+msgstr "ಕನುಮ"
 
 #. Varalakshmi Vratam.
 msgid "Varalakshmi Vratam"

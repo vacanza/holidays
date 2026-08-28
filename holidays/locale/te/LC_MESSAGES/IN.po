@@ -665,15 +665,15 @@ msgstr "శ్రీ నారాయణ గురు వర్ధంతి"
 
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
-msgstr "ఓనం (2వ రోజు)"
+msgstr "ఓణం (2వ రోజు)"
 
 #. Onam (Day 3).
 msgid "Onam (Day 3)"
-msgstr "ఓనం (3వ రోజు)"
+msgstr "ఓణం (3వ రోజు)"
 
 #. Onam (Day 4).
 msgid "Onam (Day 4)"
-msgstr "ఓనం (4వ రోజు)"
+msgstr "ఓణం (4వ రోజు)"
 
 #. Tribal Pride Day.
 msgid "Janjatiya Gaurav Divas"
