@@ -1,14 +1,14 @@
-#  holidays
-#  --------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
+# holidays
+# --------
+# A fast, efficient Python library for generating country, province and state
+# specific sets of holidays on the fly. It aims to make determining whether a
+# specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
-#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/holidays
-#  License: MIT (see LICENSE file)
+# Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+# dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+# ryanss <ryanssdev@icloud.com> (c) 2014-2017
+# Website: https://github.com/vacanza/holidays
+# License: MIT (see LICENSE file)
 #
 # Egypt holidays.
 #
@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.78\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2025-06-26 17:55+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-08-28 19:30+0200\n"
+"Last-Translator: Mohamed <your-email@example.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ar_EG\n"
 "MIME-Version: 1.0\n"
@@ -26,83 +26,83 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.5\n"
-"X-Source-Language: ar_EG\n"
+"X-Source-Language: en\n"
 
 #. %s (estimated).
 #, c-format
-msgid "%s (تقديري)"
-msgstr ""
+msgid "%s (estimated)"
+msgstr "%s (تقديري)"
 
 #. %s (observed).
 #, c-format
-msgid "%s (يوم تعويضي)"
-msgstr ""
+msgid "%s (observed)"
+msgstr "%s (يوم تعويضي)"
 
 #. %s (observed, estimated).
 #, c-format
-msgid "%s (يوم تعويضي تقديري)"
-msgstr ""
+msgid "%s (observed, estimated)"
+msgstr "%s (يوم تعويضي تقديري)"
 
 #. Coptic Christmas Day.
-msgid "عيد الميلاد المجيد"
-msgstr ""
+msgid "Coptic Christmas Day"
+msgstr "عيد الميلاد المجيد"
 
 #. January 25th Revolution and National Police Day.
-msgid "ثورة ٢٥ يناير وعيد الشرطة"
-msgstr ""
+msgid "January 25th Revolution and National Police Day"
+msgstr "ثورة ٢٥ يناير وعيد الشرطة"
 
 #. National Police Day.
-msgid "عيد الشرطة"
-msgstr ""
+msgid "National Police Day"
+msgstr "عيد الشرطة"
 
 #. Sinai Liberation Day.
-msgid "عيد تحرير سيناء"
-msgstr ""
+msgid "Sinai Liberation Day"
+msgstr "عيد تحرير سيناء"
 
 #. Spring Festival.
-msgid "عيد شم النسيم"
-msgstr ""
+msgid "Spring Festival"
+msgstr "عيد شم النسيم"
 
 #. Labor Day.
-msgid "عيد العمال"
-msgstr ""
+msgid "Labor Day"
+msgstr "عيد العمال"
 
 #. June 30 Revolution Day.
-msgid "عيد ثورة ٣٠ يونيو"
-msgstr ""
+msgid "June 30 Revolution Day"
+msgstr "عيد ثورة ٣٠ يونيو"
 
 #. July 23 Revolution Day.
-msgid "عيد ثورة ٢٣ يوليو"
-msgstr ""
+msgid "July 23 Revolution Day"
+msgstr "عيد ثورة ٢٣ يوليو"
 
 #. Armed Forces Day.
-msgid "عيد القوات المسلحة"
-msgstr ""
+msgid "Armed Forces Day"
+msgstr "عيد القوات المسلحة"
 
 #. Islamic New Year.
-msgid "رأس السنة الهجرية"
-msgstr ""
+msgid "Islamic New Year"
+msgstr "رأس السنة الهجرية"
 
 #. Prophet's Birthday.
-msgid "المولد النبوي الشريف"
-msgstr ""
+msgid "Prophet's Birthday"
+msgstr "المولد النبوي الشريف"
 
 #. Eid al-Fitr.
-msgid "عيد الفطر المبارك"
-msgstr ""
+msgid "Eid al-Fitr"
+msgstr "عيد الفطر المبارك"
 
 #. Arafat Day.
-msgid "وقفة عيد الأضحى المبارك"
-msgstr ""
+msgid "Arafat Day"
+msgstr "وقفة عيد الأضحى المبارك"
 
 #. Eid al-Adha.
-msgid "عيد الأضحى المبارك"
-msgstr ""
+msgid "Eid al-Adha"
+msgstr "عيد الأضحى المبارك"
 
 #. Taba Liberation Day.
-msgid "عيد تحرير طابا"
-msgstr ""
+msgid "Taba Liberation Day"
+msgstr "عيد تحرير طابا"
 
 #. Evacuation Day.
-msgid "عيد الجلاء"
-msgstr ""
+msgid "Evacuation Day"
+msgstr "عيد الجلاء"
