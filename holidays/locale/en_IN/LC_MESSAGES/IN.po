@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-08-28 01:46+0530\n"
+"PO-Revision-Date: 2026-08-28 08:17+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
@@ -27,14 +27,6 @@ msgstr ""
 "Generated-By: Lingva 5.0.5\n"
 "X-Generator: Poedit 3.5\n"
 "X-Source-Language: en_IN\n"
-
-#. Ganesh Chaturthi.
-msgid "Ganesh Chaturthi"
-msgstr ""
-
-#. Vinayak Chaturthi.
-msgid "Vinayak Chaturthi"
-msgstr ""
 
 #. %s (estimated).
 #, c-format
@@ -1043,21 +1035,3 @@ msgstr ""
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr ""
-
-#~ msgid "Kerala Foundation Day"
-#~ msgstr ""
-
-#~ msgid "Jharkhand Formation Day"
-#~ msgstr ""
-
-#~ msgid "Odisha Day (Utkala Dibasa)"
-#~ msgstr ""
-
-#~ msgid "Maha Vishuva Sankranti / Pana Sankranti"
-#~ msgstr ""
-
-#~ msgid "Rabindra Jayanti"
-#~ msgstr ""
-
-#~ msgid "Bihar Day"
-#~ msgstr ""
