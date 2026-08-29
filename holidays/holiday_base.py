@@ -578,6 +578,12 @@ class HolidayBase(dict[date, str]):
             if diff_days < 0 <= step or diff_days >= 0 > step:
                 step = -step
 
+            if self.expand:
+                for year in range(min(start.year, stop.year), max(start.year, stop.year) + 1):
+                    if year not in self.years:
+                        self.years.add(year)
+                        self._populate(year)
+
             if step > 0:
                 days = [
                     day for day in self if start <= day < stop and (day - start).days % step == 0
