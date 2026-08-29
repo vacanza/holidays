@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-29 00:37+0530\n"
-"PO-Revision-Date: 2026-08-29 23:31+0530\n"
+"PO-Revision-Date: 2026-08-29 23:49+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: mr\n"
@@ -36,6 +36,10 @@ msgstr "%s (अंदाजे)"
 msgid "Republic Day"
 msgstr "प्रजासत्ताक दिन"
 
+#. Good Friday.
+msgid "Good Friday"
+msgstr "गुड फ्रायडे"
+
 #. Dr. B. R. Ambedkar's Birthday.
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr "डॉ. बाबासाहेब आंबेडकर जयंती"
@@ -47,6 +51,10 @@ msgstr "स्वातंत्र्य दिन"
 #. Mahatma Gandhi's Birthday.
 msgid "Mahatma Gandhi's Jayanti"
 msgstr "महात्मा गांधी जयंती"
+
+#. Christmas.
+msgid "Christmas"
+msgstr "ख्रिसमस"
 
 #. Maha Shivaratri.
 msgid "Maha Shivaratri"
@@ -100,17 +108,17 @@ msgstr "रमझान ईद (ईद-उल-फितर)"
 msgid "Id-ul-Zuha (Bakrid)"
 msgstr "ईद-उल-जुहा (बकरीद)"
 
-#. Good Friday.
-msgid "Good Friday"
-msgstr "गुड फ्रायडे"
-
-#. Christmas.
-msgid "Christmas"
-msgstr "ख्रिसमस"
-
 #. New Year's Day.
 msgid "New Year's Day"
 msgstr "नवीन वर्षाचा दिवस"
+
+#. Easter Sunday.
+msgid "Easter Sunday"
+msgstr "ईस्टर रविवार"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "ख्रिसमसच्या पूर्व संध्याकाळ"
 
 #. Guru Gobind Singh's Birthday.
 msgid "Guru Gobind Singh's Jayanti"
@@ -275,14 +283,6 @@ msgstr "हजरत अली यांचा वाढदिवस"
 #. Jumu'atul-Wida.
 msgid "Jamat-Ul-Vida"
 msgstr "जमात-उल-विदा"
-
-#. Christmas Eve.
-msgid "Christmas Eve"
-msgstr "ख्रिसमसच्या पूर्व संध्याकाळ"
-
-#. Easter Sunday.
-msgid "Easter Sunday"
-msgstr "ईस्टर रविवार"
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
