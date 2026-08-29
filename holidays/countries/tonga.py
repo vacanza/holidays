@@ -12,11 +12,11 @@
 
 from __future__ import annotations
 
-from gettext import gettext as tr
 from typing import TYPE_CHECKING
 
 from holidays.calendars.gregorian import SEP, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     ALL_TO_NEAREST_MON_LATAM,

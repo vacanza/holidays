@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars.gregorian import (
     MAR,
@@ -22,6 +21,7 @@ from holidays.calendars.gregorian import (
 )
 from holidays.constants import BANK, DE_FACTO, OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 

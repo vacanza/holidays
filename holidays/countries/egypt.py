@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, APR, MAY, JUL, AUG, SEP, MON, TUE, WED, FRI, SAT, SUN
 from holidays.calendars.julian import JULIAN_CALENDAR
@@ -22,6 +20,7 @@ from holidays.groups import (
     InternationalHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, ObservedRule
 
 EG_OBSERVED_RULE = ObservedRule({MON: +3, TUE: +2, WED: +1, SUN: +4})

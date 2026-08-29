@@ -10,11 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import MAR, APR, MON, THU, _timedelta, _get_nth_weekday_of_month
 from holidays.constants import DE_FACTO, HALF_DAY, OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_ONLY,

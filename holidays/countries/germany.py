@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars.germany_school import (
     ASCENSION_WHIT_BREAK,
@@ -25,6 +24,7 @@ from holidays.calendars.germany_school import (
 from holidays.calendars.gregorian import JAN, MAY, JUN, OCT, DEC
 from holidays.constants import CATHOLIC, PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
