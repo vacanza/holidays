@@ -557,6 +557,38 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_guru_purnima(self, year: int) -> date | None:
+        """
+        Guru Purnima = Ashadha Purnima.
+        Tithi = 15 (Purnima) of Shukla Paksha in Ashadha month - sun in sidereal Gemini (sign 2).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        In Adhika Masa (leap month) years, two Purnimas can occur while
+        the sun is in sidereal Gemini. The last one belongs to Ashadha proper.
+
+        Purnima detection:
+        - Present at sunrise -> return that day (first occurrence)
+        - Skipped between days (14 -> 16) -> return current day
+        """
+        # Find last Ashadha Amavasya
+        ashada_ama = self._get_amavasya(date(year, 6, 1), zodiac_sign=2, last=True)
+
+        if not ashada_ama:
+            return None
+
+        # Find Purnima (tithi 15) at sunrise, or skipped case (14 -> 16)
+        for delta in range(12, 18):
+            dt = ashada_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            if t == 15:
+                return dt
+            if t == 16 and t_prev == 14:
+                return dt
+
+        return None
+
     def get_hanuman_jayanti(self, year: int) -> date | None:
         """
         Hanuman Jayanti = Chaitra Purnima.
@@ -927,7 +959,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("CHHATH_PUJA", _lunisolar.get_chhath_puja),
     # ("DIWALI_INDIA", _lunisolar.get_diwali),
     # ("DUSSEHRA", _lunisolar.get_dussehra),
-    ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
+    # ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
     # ("HOLI", _lunisolar.get_holi),
     # ("JANMASHTAMI", _lunisolar.get_janmashtami),
     # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
@@ -936,6 +968,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
     # ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
     # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
+    ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
     # ("RAM_NAVAMI", _lunisolar.get_ram_navami),
     # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
 )
