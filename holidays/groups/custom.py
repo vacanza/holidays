@@ -23,7 +23,7 @@ class StaticHolidays:
     """
 
     def __init__(self, cls) -> None:
-        for attribute_name in cls.__dict__.keys():
+        for attribute_name in cls.__dict__:
             # Special holidays.
             if attribute_name.startswith("special_") and (
                 value := getattr(cls, attribute_name, None)

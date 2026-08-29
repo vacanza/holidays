@@ -464,7 +464,7 @@ class TestCase:
         holidays, dates = self._parse_arguments(args, instance_name=instance_name)
         self._verify_type(holidays)
 
-        filtered_holidays = {dt.strftime("%Y-%m-%d") for dt in holidays.keys() if dt.year == year}
+        filtered_holidays = {dt.strftime("%Y-%m-%d") for dt in holidays if dt.year == year}
 
         # Check one by one for descriptive error messages.
         for dt in dates:

@@ -108,6 +108,7 @@ lint.select = [
   "RUF022", # Unsorted `__all__`
   "RUF100", # Unused `#noqa` directive
   "S",      # flake8-bandit
+  "SIM",    # flake8-simplify
   "T",      # flake8-debugger & flake8-print
   "TC",     # flake8-type-checking
   "UP",     # pyupgrade
