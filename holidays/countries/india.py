@@ -753,10 +753,7 @@ class India(
 
     # Gujarat.
     def _populate_subdiv_gj_public_holidays(self):
-        # Gujarat Day.
-        self._add_holiday_may_1(tr("Gujarat Day"))
-
-        # Sardar Vallabhbhai Patel's Jayanti.
+        # Sardar Vallabhbhai Patel's Birthday.
         self._add_holiday_oct_31(tr("Sardar Vallabhbhai Patel's Jayanti"))
 
         # Hindu holidays.
@@ -986,8 +983,8 @@ class India(
 
     # Maharashtra.
     def _populate_subdiv_mh_public_holidays(self):
-        # Chhatrapati Shivaji Maharaj Jayanti.
-        self._add_holiday_feb_19(tr("Chhatrapati Shivaji Maharaj Jayanti"))
+        # Chhatrapati Shivaji Maharaj's Birthday.
+        self._add_holiday_feb_19(tr("Chhatrapati Shivaji Maharaj's Jayanti"))
 
         # Maharashtra Day.
         self._add_holiday_may_1(tr("Maharashtra Day"))
@@ -1354,11 +1351,11 @@ class India(
             self._add_holiday_nov_24(tr("Guru Tegh Bahadur's Shaheedi Diwas"))
 
     def _populate_subdiv_uk_optional_holidays(self):
-        # Veer Kesari Chand's Martyrdom Day.
-        self._add_holiday_may_3(tr("Veer Kesari Chand's Shaheedi Diwas"))
-
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
+
+        # Veer Kesari Chand's Martyrdom Day.
+        self._add_holiday_may_3(tr("Veer Kesari Chand's Shaheedi Diwas"))
 
         # Hindu holidays.
 
@@ -1396,6 +1393,9 @@ class India(
         # Maharishi Kashyap and Maharaj Nishad Raj's Graha Birthday.
         self._add_holiday_apr_5(tr("Maharshi Kashyap and Maharaj Nishad Raj's Graha Jayanti"))
 
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
+
         # Chandrashekhar's Birthday.
         self._add_holiday_apr_17(tr("Chandrashekhar's Jayanti"))
 
@@ -1415,9 +1415,6 @@ class India(
 
         # Cheti Chand.
         self._add_gudi_padwa(tr("Cheti Chand"))
-
-        # Easter Monday.
-        self._add_easter_monday(tr("Easter Monday"))
 
         # Lord Shri Parshuram's Birthday.
         self._add_parshuram_jayanti(tr("Bhagvan Shri Parshuram's Jayanti"))

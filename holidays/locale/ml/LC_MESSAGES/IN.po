@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-08-27 02:07+0530\n"
+"PO-Revision-Date: 2026-08-29 23:31+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ml\n"
@@ -452,11 +452,6 @@ msgstr "പരിശുദ്ധ മറിയത്തിന്റെ അമല�
 msgid "New Year's Eve"
 msgstr "പുതുവത്സരത്തലേന്ന്"
 
-#. Gujarat Day.
-msgid "Gujarat Day"
-msgstr "ഗുജറാത്ത് ദിനം"
-
-#. Sardar Vallabhbhai Patel's Jayanti.
 #. Sardar Vallabhbhai Patel's Birthday.
 msgid "Sardar Vallabhbhai Patel's Jayanti"
 msgstr "സർദാർ വല്ലഭ്ഭായി പട്ടേൽ ജയന്തി"
@@ -471,7 +466,7 @@ msgstr "സംവത്സരി ദിനം"
 
 #. Gujarati New Year.
 msgid "Vikram Samvat New Year"
-msgstr "വിക്രമ സംവത് പുതുവർഷം"
+msgstr "ഗുജറാത്തി പുതുവർഷം"
 
 #. Vassi Uttarayan.
 msgid "Vassi Uttarayan"
@@ -577,8 +572,8 @@ msgstr "കേരളപ്പിറവി"
 msgid "Eid-e-Ghadeer"
 msgstr "ഈദ്-എ-ഗദീർ"
 
-#. Chhatrapati Shivaji Maharaj Jayanti.
-msgid "Chhatrapati Shivaji Maharaj Jayanti"
+#. Chhatrapati Shivaji Maharaj's Birthday.
+msgid "Chhatrapati Shivaji Maharaj's Jayanti"
 msgstr "ചത്രപതി ശിവാജി മഹാരാജ ജയന്തി"
 
 #. Maharashtra Day.
@@ -749,13 +744,13 @@ msgstr "ബോനാലു"
 msgid "Harela"
 msgstr "ഹരേല"
 
-#. Veer Kesari Chand's Martyrdom Day.
-msgid "Veer Kesari Chand's Shaheedi Diwas"
-msgstr "വീർ കേസരി ചന്ദിന്റെ ശഹീദ് ദിനം"
-
 #. Easter Monday.
 msgid "Easter Monday"
 msgstr "ഈസ്റ്റർ തിങ്കളാഴ്ച"
+
+#. Veer Kesari Chand's Martyrdom Day.
+msgid "Veer Kesari Chand's Shaheedi Diwas"
+msgstr "വീർ കേസരി ചന്ദിന്റെ ശഹീദ് ദിനം"
 
 #. Arbaeen.
 msgid "Chehlum"
