@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import SCHOOL
 from holidays.countries.belgium import Belgium
 from tests.common import CommonCountryTests
 
@@ -299,3 +300,48 @@ class TestBelgium(CommonCountryTests, TestCase):
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Банківський вихідний"),
         )
+
+    def test_vlg_summer_holidays(self):
+        name = "Zomervakantie"
+
+        self.assertHolidayName(
+            name,
+            Belgium(subdiv="VLG", categories=SCHOOL),
+            "2025-07-05",
+            "2024-07-06",
+            "2023-07-01",
+            "2022-08-07",
+            "2021-08-18",
+        )
+
+    def test_wbr_summer_holidays(self):
+        name = "Zomervakantie"
+
+        self.assertHolidayName(
+            name,
+            Belgium(subdiv="WBR", categories=SCHOOL),
+            "2025-08-11",
+            "2024-07-06",
+            "2023-07-26",
+            "2022-08-07",
+            "2021-08-18",
+        )
+
+    def test_ger_summer_holidays(self):
+        name = "Zomervakantie"
+
+        self.assertHolidayName(
+            name,
+            Belgium(subdiv="GER", categories=SCHOOL),
+            "2025-07-07",
+            "2024-08-30",
+            "2023-07-20",
+            "2022-07-10",
+            "2022-07-14",
+            "2021-08-04",
+        )
+
+    def test_school_not_in_public(self):
+
+        self.assertNoHoliday("2024-07-06")
+        self.assertNoHoliday("2024-05-02")

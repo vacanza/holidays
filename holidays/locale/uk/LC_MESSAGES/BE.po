@@ -87,3 +87,39 @@ msgstr "Пʼятниця після Вознесіння Господнього"
 #. Bank Holiday.
 msgid "Banksluitingsdag"
 msgstr "Банківський вихідний"
+
+#. Christmas Holidays.
+msgid "Kerstvakantie"
+msgstr "Різдвяні канікули"
+
+#. Carnival Holidays.
+msgid "Krokusvakantie"
+msgstr "Карнавальні канікули"
+
+#. Easter Holidays.
+msgid "Paasvakantie"
+msgstr "Великодні канікули"
+
+#. Summer Holidays.
+msgid "Zomervakantie"
+msgstr "Літні канікули"
+
+#. Autumn Holidays.
+msgid "Herfstvakantie"
+msgstr "Осінні канікули"
+
+#. French Community Day.
+msgid "Feestdag van de Franse Gemeenschap"
+msgstr "День Французької спільноти"
+
+#. German-speaking Community Day.
+msgid "Feestdag van de Duitstalige Gemeenschap"
+msgstr "День Німецькомовної спільноти"
+
+#. Christmas Eve.
+msgid "Heiligavond"
+msgstr "Святвечір"
+
+#. Spring Holidays.
+msgid "Lentevakantie"
+msgstr "Весняні канікули"

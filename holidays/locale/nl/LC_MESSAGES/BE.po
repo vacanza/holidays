@@ -87,3 +87,39 @@ msgstr ""
 #. Bank Holiday.
 msgid "Banksluitingsdag"
 msgstr ""
+
+#. Christmas Holidays.
+msgid "Kerstvakantie"
+msgstr ""
+
+#. Carnival Holidays.
+msgid "Krokusvakantie"
+msgstr ""
+
+#. Easter Holidays.
+msgid "Paasvakantie"
+msgstr ""
+
+#. Summer Holidays.
+msgid "Zomervakantie"
+msgstr ""
+
+#. Autumn Holidays.
+msgid "Herfstvakantie"
+msgstr ""
+
+#. French Community Day.
+msgid "Feestdag van de Franse Gemeenschap"
+msgstr ""
+
+#. German-speaking Community Day.
+msgid "Feestdag van de Duitstalige Gemeenschap"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Heiligavond"
+msgstr ""
+
+#. Spring Holidays.
+msgid "Lentevakantie"
+msgstr ""
