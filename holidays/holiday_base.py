@@ -578,11 +578,15 @@ class HolidayBase(dict[date, str]):
             if diff_days < 0 <= step or diff_days >= 0 > step:
                 step = -step
 
-            return [
-                day
-                for delta_days in range(0, diff_days, step)
-                if (day := _timedelta(start, delta_days)) in self
-            ]
+            if step > 0:
+                days = [
+                    day for day in self if start <= day < stop and (day - start).days % step == 0
+                ]
+            else:
+                days = [
+                    day for day in self if stop < day <= start and (day - start).days % step == 0
+                ]
+            return sorted(days, reverse=step < 0)
 
         return dict.__getitem__(self, self.__keytransform__(key))
 
