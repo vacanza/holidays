@@ -37,8 +37,8 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         * <https://web.archive.org/web/20250515072453/https://yle.fi/a/20-152398>
         * <https://en.wikipedia.org/wiki/Independence_Day_(Finland)>
         * <https://en.wikipedia.org/wiki/Åland's_Autonomy_Day>
-        * <https://web.archive.org/web/20250509184304/https://wiki.aineetonkulttuuriperinto.fi/wiki/Workers’_Labour_Day_on_May_1>
-    """
+        * <https://web.archive.org/web/20250509184304/https://wiki.aineetonkulttuuriperinto.fi/wiki/Workers'_Labour_Day_on_May_1>  # noqa: RUF002
+    """  # noqa: E501
 
     country = "FI"
     default_language = "fi"
