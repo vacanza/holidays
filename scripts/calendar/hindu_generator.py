@@ -618,6 +618,35 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_hariyali_amavasya(self, year: int) -> date | None:
+        """
+        Hariyali Amavasya = Shravan Amavasya.
+        Tithi = 30 (Amavasya) in Shravan month - sun in sidereal Cancer (sign 3).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        Amavasya detection:
+        - Present at sunrise -> return that day
+        - Skipped between days (29 -> 1) -> return current day
+        """
+        # Find Shravan Amavasya
+        shravan_ama = self._get_amavasya(date(year, 7, 1), zodiac_sign=3)
+
+        if not shravan_ama:
+            return None
+
+        # Find Amavasya (tithi 30) at sunrise, or skipped case (29 -> 1)
+        for delta in range(-1, 3):
+            dt = shravan_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            if t == 30:
+                return dt
+            if t == 1 and t_prev == 29:
+                return dt
+
+        return None
+
     def get_holi(self, year: int) -> date | None:
         """
         Holi = Phalgun Purnima (Rangwali Holi, day after Holika Dahan).
@@ -960,6 +989,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("DIWALI_INDIA", _lunisolar.get_diwali),
     # ("DUSSEHRA", _lunisolar.get_dussehra),
     # ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
+    ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
     # ("HOLI", _lunisolar.get_holi),
     # ("JANMASHTAMI", _lunisolar.get_janmashtami),
     # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
@@ -968,7 +998,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
     # ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
     # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
-    ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
+    # ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
     # ("RAM_NAVAMI", _lunisolar.get_ram_navami),
     # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
 )
