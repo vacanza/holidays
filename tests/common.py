@@ -356,7 +356,7 @@ class TestCase:
     def setUp(self):
         super().setUp()
 
-        if getattr(self.test_class, "default_language") is not None:
+        if self.test_class.default_language is not None:
             self.set_language(self.test_class.default_language)
 
     def set_language(self, language):
