@@ -557,6 +557,35 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_hanuman_jayanti(self, year: int) -> date | None:
+        """
+        Hanuman Jayanti = Chaitra Purnima.
+        Tithi = 15 (Purnima) of Shukla Paksha in Chaitra month - sun in sidereal Pisces (sign 11).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        Purnima detection:
+        - Present at sunrise -> return that day (first occurrence)
+        - Skipped between days (14 -> 16) -> return current day
+        """
+        # Find Chaitra Amavasya
+        chaitra_ama = self._get_amavasya(date(year, 3, 1), zodiac_sign=11)
+
+        if not chaitra_ama:
+            return None
+
+        # Find Purnima (tithi 15) at sunrise, or skipped case (14 -> 16)
+        for delta in range(12, 18):
+            dt = chaitra_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            if t == 15:
+                return dt
+            if t == 16 and t_prev == 14:
+                return dt
+
+        return None
+
     def get_holi(self, year: int) -> date | None:
         """
         Holi = Phalgun Purnima (Rangwali Holi, day after Holika Dahan).
@@ -892,12 +921,13 @@ _lunisolar = _Lunisolar()
 _solar = _Solar()
 
 HINDU_LUNISOLAR_HOLIDAYS = (
-    ("ANANT_CHATURDASHI", _lunisolar.get_anant_chaturdashi),
+    # ("ANANT_CHATURDASHI", _lunisolar.get_anant_chaturdashi),
     # ("BASANT_PANCHAMI", _lunisolar.get_basant_panchami),
     # ("CHAITRA_NAVRATRI", _lunisolar.get_chaitra_navratri),
     # ("CHHATH_PUJA", _lunisolar.get_chhath_puja),
     # ("DIWALI_INDIA", _lunisolar.get_diwali),
     # ("DUSSEHRA", _lunisolar.get_dussehra),
+    ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
     # ("HOLI", _lunisolar.get_holi),
     # ("JANMASHTAMI", _lunisolar.get_janmashtami),
     # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
