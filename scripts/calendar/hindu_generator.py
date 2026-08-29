@@ -253,6 +253,55 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_chaitra_navratri(self, year: int) -> date | None:
+        """
+        Chaitra Navratri begins on Chaitra Shukla Pratipada.
+        Tithi = 1 (Pratipada) of Shukla Paksha in Chaitra month - preceding
+        the sidereal transition of the sun from Pisces (sign 11) to Aries (sign 0).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        In Adhika Masa (leap month) years, two Pratipadas can occur before
+        the sun enters Aries. The last Pratipada before Mesha Sankranti belongs
+        to Chaitra proper.
+
+        Pratipada detection (sunrise tithi):
+        - Present at sunrise (tithi 1) -> return the first occurrence
+        - Skipped between sunrises (30 -> 2) -> return current day
+        """
+        # Find Mesha Sankranti (sun enters sidereal Aries)
+        mesha_sankranti = None
+
+        for delta in range(20):
+            dt = date(year, 4, 1) + timedelta(days=delta)
+            sign = self._sidereal_solar_zodiac_sign(self._sunset(dt))
+            sign_prev = self._sidereal_solar_zodiac_sign(self._sunset(dt - timedelta(days=1)))
+
+            if sign == 0 and sign_prev == 11:
+                mesha_sankranti = dt
+                break
+
+        if not mesha_sankranti:
+            return None
+
+        candidate = None
+
+        # Find the last Pratipada before Mesha Sankranti
+        for delta in range(45):
+            dt = mesha_sankranti - timedelta(days=44 - delta)
+
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            # First sunrise with Pratipada active
+            if t == 1 and t_prev != 1:
+                candidate = dt
+
+            # Pratipada skipped entirely between sunrises
+            elif t == 2 and t_prev == 30:
+                candidate = dt
+
+        return candidate
+
     def get_chhath_puja(self, year: int) -> date | None:
         """
         Chhath Puja = Kartik Shukla Shashthi.
@@ -810,23 +859,26 @@ _lunisolar = _Lunisolar()
 _solar = _Solar()
 
 HINDU_LUNISOLAR_HOLIDAYS = (
-    ("BASANT_PANCHAMI", _lunisolar.get_basant_panchami),
-    ("CHHATH_PUJA", _lunisolar.get_chhath_puja),
-    ("DIWALI_INDIA", _lunisolar.get_diwali),
-    ("DUSSEHRA", _lunisolar.get_dussehra),
-    ("HOLI", _lunisolar.get_holi),
-    ("JANMASHTAMI", _lunisolar.get_janmashtami),
-    ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
-    ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
-    ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
-    ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
-    ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
-    ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
-    ("RAM_NAVAMI", _lunisolar.get_ram_navami),
-    ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
+    # ("BASANT_PANCHAMI", _lunisolar.get_basant_panchami),
+    ("CHAITRA_NAVRATRI", _lunisolar.get_chaitra_navratri),
+    # ("CHHATH_PUJA", _lunisolar.get_chhath_puja),
+    # ("DIWALI_INDIA", _lunisolar.get_diwali),
+    # ("DUSSEHRA", _lunisolar.get_dussehra),
+    # ("HOLI", _lunisolar.get_holi),
+    # ("JANMASHTAMI", _lunisolar.get_janmashtami),
+    # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
+    # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
+    # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
+    # ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
+    # ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
+    # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
+    # ("RAM_NAVAMI", _lunisolar.get_ram_navami),
+    # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
 )
 
-HINDU_SOLAR_HOLIDAYS = (("MAKAR_SANKRANTI", _solar.get_makar_sankranti),)
+HINDU_SOLAR_HOLIDAYS = (
+    # ("MAKAR_SANKRANTI", _solar.get_makar_sankranti),
+)
 
 
 def generate_data() -> None:
