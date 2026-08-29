@@ -9,6 +9,7 @@ __pycache__
 .tox
 .venv
 .vscode/
+*.bsp
 *.code-workspace
 *.csv
 *.DS_Store

@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
-from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
@@ -24,6 +23,7 @@ from holidays.groups import (
     PersianCalendarHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -241,6 +241,9 @@ class India(
             # Republic Day.
             self._add_holiday_jan_26(tr("Republic Day"))
 
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
+
         # Dr. B. R. Ambedkar's Birthday.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
 
@@ -249,6 +252,9 @@ class India(
 
         # Mahatma Gandhi's Birthday.
         self._add_holiday_oct_2(tr("Mahatma Gandhi's Jayanti"))
+
+        # Christmas.
+        self._add_christmas_day(tr("Christmas"))
 
         # Hindu Holidays.
 
@@ -263,7 +269,7 @@ class India(
             # Maha Shivaratri.
             self._add_maha_shivaratri(tr("Maha Shivaratri"))
 
-        if self._year not in self.holi_optional_years:
+        if self._year not in self.holi_optional_years and self._normalized_subdiv != "MH":
             # Holi.
             self._add_holi(tr("Holi"))
 
@@ -304,14 +310,6 @@ class India(
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Id-ul-Zuha (Bakrid)"))
 
-        # Christian holidays.
-
-        # Good Friday.
-        self._add_good_friday(tr("Good Friday"))
-
-        # Christmas.
-        self._add_christmas_day(tr("Christmas"))
-
         if self.subdiv == "OR":
             self._populate_subdiv_od_public_holidays()
 
@@ -319,6 +317,14 @@ class India(
 
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
+
+        if self._year >= 2007:
+            # Easter Sunday.
+            self._add_easter_sunday(tr("Easter Sunday"))
+
+        if self._year >= 2003:
+            # Christmas Eve.
+            self._add_christmas_eve(tr("Christmas Eve"))
 
         # Hindu holidays.
 
@@ -484,16 +490,6 @@ class India(
 
         # Jumu'atul-Wida.
         self._add_jumuatul_wida(tr("Jamat-Ul-Vida"))
-
-        # Christian holidays.
-
-        if self._year >= 2003:
-            # Christmas Eve.
-            self._add_christmas_eve(tr("Christmas Eve"))
-
-        if self._year >= 2007:
-            # Easter Sunday.
-            self._add_easter_sunday(tr("Easter Sunday"))
 
     # Andaman and Nicobar Islands.
     def _populate_subdiv_an_public_holidays(self):
@@ -974,7 +970,7 @@ class India(
 
         # Islamic holidays.
 
-        # Arbaaen.
+        # Arbaeen.
         self._add_arbaeen_day(tr("Chehlum"))
 
         # Christian holidays.

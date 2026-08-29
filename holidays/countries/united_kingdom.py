@@ -10,11 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC
 from holidays.constants import PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_TO_NEXT_TUE,
@@ -54,7 +53,7 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         "Scotland": "SCT",
         "Wales": "WLS",
     }
-    supported_languages = ("en_GB", "en_US", "th")
+    supported_languages = ("en_GB", "en_US", "th", "ur_PK")
     # Bank Holidays Act 1871.
     start_year = 1872
     _deprecated_subdivisions = ("UK",)

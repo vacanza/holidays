@@ -10,13 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.ethiopian import ETHIOPIAN_CALENDAR, is_ethiopian_leap_year
 from holidays.calendars.gregorian import AUG, SEP, NOV
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -78,7 +77,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         # Ethiopian Patriots' Victory Day.
         self._add_holiday_may_5(tr("የአርበኞች (የድል) ቀን በዓል"))
 
-        if self._year >= 1992:
+        if 1992 <= self._year <= 2024:
             # Downfall of the Dergue Regime Day.
             self._add_holiday_may_28(tr("ደርግ የወደቀበት ቀን"))
 

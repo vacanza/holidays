@@ -472,16 +472,17 @@ class TestIndonesia(CommonCountryTests, TestCase):
     def test_nuzul_al_quran(self):
         name = "Nuzululqur'an"
         self.assertHoliday(
-            "1953-05-30",
+            "1953-05-31",
             "1954-05-20",
             "1955-05-10",
-            "1956-04-28",
-            "1957-04-17",
-            "1958-04-06",
+            "1956-04-29",
+            "1957-04-18",
+            "1958-04-07",
             "1959-03-27",
             "1960-03-15",
-            "1961-03-04",
-            "1962-02-21",
+            "1961-03-05",
+            "1962-02-22",
+            "1963-02-12",
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(1953, 1964))
         self.assertNoIslamicNoEstimatedHolidayName(

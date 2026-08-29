@@ -573,7 +573,7 @@ msgstr "વિશ્વકર્મા પૂજા"
 msgid "Veer Kesari Chand's Shaheedi Diwas"
 msgstr "વીર કેસરી ચંદનો શહીદી દિવસ"
 
-#. Arbaaen.
+#. Arbaeen.
 msgid "Chehlum"
 msgstr "ચેહલુમ"
 

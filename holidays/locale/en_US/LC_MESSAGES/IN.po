@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.103\n"
+"Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-08-13 17:20+0000\n"
-"Last-Translator: Drona Jadhav <dronajadhav07@gmail.com>\n"
+"PO-Revision-Date: 2026-08-22 15:36+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -573,9 +573,9 @@ msgstr "Vishwakarma Puja"
 msgid "Veer Kesari Chand's Shaheedi Diwas"
 msgstr "Veer Kesari Chand's Martyrdom Day"
 
-#. Arbaaen.
+#. Arbaeen.
 msgid "Chehlum"
-msgstr "Arbaaen"
+msgstr "Arbaeen"
 
 #. Easter Monday.
 msgid "Easter Monday"

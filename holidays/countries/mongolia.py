@@ -10,11 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import MAY, SEP, _get_nth_week_of_month, _timedelta
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import InternationalHolidays, MongolianCalendarHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
