@@ -219,6 +219,39 @@ class _Lunisolar(_Astronomy):
     # Purnima -> use MOON's sidereal sign -> determines lunar month
     #            (moon is in the nakshatra the month is named after)
 
+    def get_anant_chaturdashi(self, year: int) -> date | None:
+        """
+        Anant Chaturdashi = Bhadrapada Shukla Chaturdashi.
+        Tithi=14 (Chaturdashi) of Shukla Paksha in Bhadrapada month-sun in sidereal Leo (sign 4).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        Chaturdashi detection:
+        - Present at sunrise -> track last occurrence
+        - Skipped between days (13 -> 15) -> return current day
+        - Ended (14 -> 15+) -> return last recorded day
+        """
+        # Find Bhadrapada Amavasya
+        bhadrapada_ama = self._get_amavasya(date(year, 8, 1), zodiac_sign=4, last=True)
+
+        if not bhadrapada_ama:
+            return None
+
+        # Find last Chaturdashi (tithi 14) at sunrise, or skipped case (13 -> 15)
+        last_chaturdashi = None
+        for delta in range(12, 17):
+            dt = bhadrapada_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            if t == 14:
+                last_chaturdashi = dt
+            elif t == 15 and t_prev == 13:
+                return dt
+            elif last_chaturdashi:
+                break
+
+        return last_chaturdashi
+
     def get_basant_panchami(self, year: int) -> date | None:
         """
         Basant Panchami (Saraswati Puja) = Magh Shukla Panchami.
@@ -859,8 +892,9 @@ _lunisolar = _Lunisolar()
 _solar = _Solar()
 
 HINDU_LUNISOLAR_HOLIDAYS = (
+    ("ANANT_CHATURDASHI", _lunisolar.get_anant_chaturdashi),
     # ("BASANT_PANCHAMI", _lunisolar.get_basant_panchami),
-    ("CHAITRA_NAVRATRI", _lunisolar.get_chaitra_navratri),
+    # ("CHAITRA_NAVRATRI", _lunisolar.get_chaitra_navratri),
     # ("CHHATH_PUJA", _lunisolar.get_chhath_puja),
     # ("DIWALI_INDIA", _lunisolar.get_diwali),
     # ("DUSSEHRA", _lunisolar.get_dussehra),
