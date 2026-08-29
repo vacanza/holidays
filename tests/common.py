@@ -553,7 +553,7 @@ class TestCase:
         self.assertEqual(
             len(filtered_holidays),
             len(expected_holidays),
-            {(dt, name) for dt, name in filtered_holidays.items()}.difference(
+            set(filtered_holidays.items()).difference(
                 (dt, name) for dt, name in expected_holidays
             ),
         )

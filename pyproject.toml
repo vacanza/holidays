@@ -94,6 +94,7 @@ dynamic.version = { file = "VERSION" }
 target-version = "py310"
 line-length = 99
 lint.select = [
+  "C4",     # flake8-comprehensions
   "E4",     # pycodestyle - Import
   "E5",     # pycodestyle - Line length
   "E7",     # pycodestyle - Statement
