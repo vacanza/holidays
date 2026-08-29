@@ -10,12 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import JAN, APR, JUL
 from holidays.calendars.thai import KHMER_CALENDAR
 from holidays.constants import BANK, PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import InternationalHolidays, ThaiCalendarHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 

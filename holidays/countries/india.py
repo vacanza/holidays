@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
-from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
@@ -24,6 +23,7 @@ from holidays.groups import (
     PersianCalendarHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 

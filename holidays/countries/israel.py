@@ -10,11 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import _timedelta, FRI, SAT
 from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
 from holidays.groups import HebrewCalendarHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_TO_NEXT_TUE,
