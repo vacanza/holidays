@@ -103,11 +103,12 @@ lint.select = [
   "F",      # Pyflakes
   "FBT",    # flake8-boolean-trap
   "N",      # pep8-naming
-  "PERF",	# perflint
+  "PERF",   # perflint
   "PLE",    # Pylint - Error
   "RUF001", # Ambiguous Unicode character in a string literal
   "RUF002", # Ambiguous Unicode character in a docstring
   "RUF003", # Ambiguous Unicode character in a comment
+  "RUF022", # Unsorted `__all__`
   "RUF100", # Unused `#noqa` directive
   "S",      # flake8-bandit
   "T",      # flake8-debugger & flake8-print
