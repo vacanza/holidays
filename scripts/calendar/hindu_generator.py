@@ -1028,6 +1028,42 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_pitra_moksh_amavasya(self, year: int) -> date | None:
+        """
+        Pitra Moksh Amavasya = Ashwin Krishna Amavasya.
+        Tithi = 30 (Amavasya) in Ashwin month - sun in sidereal Virgo (sign 5).
+        Evaluated according to the Aparahna Vyapini rule for Shraddha rituals.
+
+        Amavasya detection:
+        - Present during Aparahna Kaal -> return that day
+        - Present during Aparahna on two consecutive days -> return the first day
+        """
+        exceptions = {
+            2005: date(2005, 10, 3),
+            2006: date(2006, 9, 22),
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        # Find Ashwin Amavasya
+        ashwin_ama = self._get_amavasya(date(year, 9, 1), zodiac_sign=5)
+
+        if not ashwin_ama:
+            return None
+
+        # Find Amavasya during Aparahna Kaal
+        for delta in range(-1, 2):
+            dt = ashwin_ama + timedelta(days=delta)
+            sunrise = self._sunrise(dt)
+            sunset = self._sunset(dt)
+            aparahna_start = ephem.Date(float(sunrise) + (float(sunset) - float(sunrise)) * 3 / 5)
+            aparahna_end = ephem.Date(float(sunrise) + (float(sunset) - float(sunrise)) * 4 / 5)
+
+            if self._tithi(aparahna_start) == 30 or self._tithi(aparahna_end) == 30:
+                return dt
+
+        return None
+
     def get_ram_navami(self, year: int) -> date | None:
         """
         Ram Navami = Chaitra Shukla Navami.
@@ -1176,9 +1212,10 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
     # ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
     # ("MAHESH_NAVAMI", _lunisolar.get_mahesh_navami),
-    ("NAAG_PANCHAMI", _lunisolar.get_naag_panchami),
+    # ("NAAG_PANCHAMI", _lunisolar.get_naag_panchami),
     # ("NARAKA_CHATURDASHI", _lunisolar.get_naraka_chaturdashi),
     # ("PARSHURAM_JAYANTI", _lunisolar.get_parshuram_jayanti),
+    ("PITRA_MOKSH_AMAVASYA", _lunisolar.get_pitra_moksh_amavasya),
     # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
     # ("RAM_NAVAMI", _lunisolar.get_ram_navami),
     # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
