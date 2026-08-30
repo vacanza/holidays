@@ -911,6 +911,56 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_parshuram_jayanti(self, year: int) -> date | None:
+        """
+        Parshuram Jayanti = Vaishakha Shukla Tritiya.
+        Tithi = 3 (Tritiya) of Shukla Paksha in Vaishakha month - sun in sidereal Aries (sign 0).
+        Evaluated according to the sunset rule.
+
+        Tritiya detection:
+        - Present at sunset -> return that day
+        - Begins after sunset -> return next day
+        - Ends before sunset after being present during the day -> return current day
+        - Skipped between sunsets (2 -> 4) -> return current day
+        """
+        exceptions = {
+            2012: date(2012, 4, 24),
+            2015: date(2015, 4, 20),
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        # Find Vaishakha Amavasya
+        vaishakha_ama = self._get_amavasya(date(year, 4, 1), zodiac_sign=0)
+
+        if not vaishakha_ama:
+            return None
+
+        # Find Tritiya (tithi 3) using the sunset observance rule
+        for delta in range(1, 6):
+            dt = vaishakha_ama + timedelta(days=delta)
+            t = self._tithi(self._sunset(dt))
+            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
+            t_next = self._tithi(self._sunset(dt + timedelta(days=1)))
+
+            # Tritiya active at sunset
+            if t == 3:
+                return dt
+
+            # Tritiya begins after sunset and is active at the following sunset
+            if t == 2 and t_next == 3:
+                return dt + timedelta(days=1)
+
+            # Tritiya ends before sunset after spanning the previous sunset
+            if t == 4 and t_prev == 3:
+                return dt - timedelta(days=1)
+
+            # Tritiya skipped entirely between sunsets
+            if t == 4 and t_prev == 2:
+                return dt
+
+        return None
+
     def get_ram_navami(self, year: int) -> date | None:
         """
         Ram Navami = Chaitra Shukla Navami.
@@ -1058,7 +1108,8 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
     # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
     # ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
-    ("MAHESH_NAVAMI", _lunisolar.get_mahesh_navami),
+    # ("MAHESH_NAVAMI", _lunisolar.get_mahesh_navami),
+    ("PARSHURAM_JAYANTI", _lunisolar.get_parshuram_jayanti),
     # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
     # ("RAM_NAVAMI", _lunisolar.get_ram_navami),
     # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
