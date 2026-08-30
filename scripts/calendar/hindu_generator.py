@@ -852,6 +852,36 @@ class _Lunisolar(_Astronomy):
 
         return phalgun_chaturdashi
 
+    def get_maharishi_valmiki_jayanti(self, year: int) -> date | None:
+        """
+        Maharishi Valmiki Jayanti = Ashwin Purnima.
+        Tithi = 15 (Purnima) of Shukla Paksha in Ashwin month - sun in
+        sidereal Virgo (sign 5).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        Purnima detection:
+        - Present at sunrise -> return that day
+        - Skipped between days (14 -> 16) -> return current day
+        """
+        # Find Ashwin Amavasya
+        ashwin_ama = self._get_amavasya(date(year, 9, 1), zodiac_sign=5)
+
+        if not ashwin_ama:
+            return None
+
+        # Find Purnima (tithi 15) at sunrise, or skipped case (14 -> 16)
+        for delta in range(12, 17):
+            dt = ashwin_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            if t == 15:
+                return dt
+            if t == 16 and t_prev == 14:
+                return dt
+
+        return None
+
     def get_ram_navami(self, year: int) -> date | None:
         """
         Ram Navami = Chaitra Shukla Navami.
@@ -988,17 +1018,18 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("CHHATH_PUJA", _lunisolar.get_chhath_puja),
     # ("DIWALI_INDIA", _lunisolar.get_diwali),
     # ("DUSSEHRA", _lunisolar.get_dussehra),
-    # ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
-    ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
-    # ("HOLI", _lunisolar.get_holi),
-    # ("JANMASHTAMI", _lunisolar.get_janmashtami),
-    # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
-    # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
-    # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
     # ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
     # ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
     # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
     # ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
+    # ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
+    # ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
+    # ("HOLI", _lunisolar.get_holi),
+    # ("JANMASHTAMI", _lunisolar.get_janmashtami),
+    # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
+    # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
+    ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
+    # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
     # ("RAM_NAVAMI", _lunisolar.get_ram_navami),
     # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
 )
