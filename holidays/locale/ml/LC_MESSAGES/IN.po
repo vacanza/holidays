@@ -36,6 +36,10 @@ msgstr "%s (അനുമാനം)"
 msgid "Republic Day"
 msgstr "റിപ്പബ്ലിക് ദിനം"
 
+#. Good Friday.
+msgid "Good Friday"
+msgstr "ദുഃഖവെള്ളി"
+
 #. Dr. B. R. Ambedkar's Birthday.
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr "ഡോ. ബി. ആർ. അംബേദ്കർ ജയന്തി"
@@ -47,6 +51,10 @@ msgstr "സ്വാതന്ത്ര്യദിനം"
 #. Mahatma Gandhi's Birthday.
 msgid "Mahatma Gandhi's Jayanti"
 msgstr "മഹാത്മാ ഗാന്ധി ജയന്തി"
+
+#. Christmas.
+msgid "Christmas"
+msgstr "ക്രിസ്തുമസ്"
 
 #. Maha Shivaratri.
 msgid "Maha Shivaratri"
@@ -100,17 +108,17 @@ msgstr "ഈദ്-ഉൽ-ഫിത്തർ"
 msgid "Id-ul-Zuha (Bakrid)"
 msgstr "ഈദുൽ സുഹ (ബക്രീദ്)"
 
-#. Good Friday.
-msgid "Good Friday"
-msgstr "ദുഃഖവെള്ളി"
-
-#. Christmas.
-msgid "Christmas"
-msgstr "ക്രിസ്തുമസ്"
-
 #. New Year's Day.
 msgid "New Year's Day"
 msgstr "പുതുവത്സര ദിനം"
+
+#. Easter Sunday.
+msgid "Easter Sunday"
+msgstr "ഈസ്റ്റർ"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "ക്രിസ്മസ് തലേന്ന്"
 
 #. Guru Gobind Singh's Birthday.
 msgid "Guru Gobind Singh's Jayanti"
@@ -275,14 +283,6 @@ msgstr "ഹസ്രത്ത് അലിയുടെ ജന്മദിനം"
 #. Jumu'atul-Wida.
 msgid "Jamat-Ul-Vida"
 msgstr "ജമാഅത്ത്-ഉൽ-വിദ"
-
-#. Christmas Eve.
-msgid "Christmas Eve"
-msgstr "ക്രിസ്മസ് തലേന്ന്"
-
-#. Easter Sunday.
-msgid "Easter Sunday"
-msgstr "ഈസ്റ്റർ"
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
