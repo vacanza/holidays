@@ -911,6 +911,35 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_naag_panchami(self, year: int) -> date | None:
+        """
+        Naag Panchami = Shravan Shukla Panchami.
+        Tithi = 5 (Panchami) of Shukla Paksha in Shravan month - sun in sidereal Cancer (sign 3).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        Panchami detection:
+        - Present at sunrise -> return that day (first occurrence)
+        - Skipped between days (4 -> 6) -> return current day
+        """
+        # Find Shravan Amavasya
+        shravan_ama = self._get_amavasya(date(year, 7, 1), zodiac_sign=3, last=True)
+
+        if not shravan_ama:
+            return None
+
+        # Find Panchami (tithi 5) at sunrise, or skipped case (4 -> 6)
+        for delta in range(4, 8):
+            dt = shravan_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            if t == 5:
+                return dt
+            if t == 6 and t_prev == 4:
+                return dt
+
+        return None
+
     def get_naraka_chaturdashi(self, year: int) -> date | None:
         """
         Naraka Chaturdashi = Kartik Krishna Chaturdashi.
@@ -1147,7 +1176,8 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
     # ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
     # ("MAHESH_NAVAMI", _lunisolar.get_mahesh_navami),
-    ("NARAKA_CHATURDASHI", _lunisolar.get_naraka_chaturdashi),
+    ("NAAG_PANCHAMI", _lunisolar.get_naag_panchami),
+    # ("NARAKA_CHATURDASHI", _lunisolar.get_naraka_chaturdashi),
     # ("PARSHURAM_JAYANTI", _lunisolar.get_parshuram_jayanti),
     # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
     # ("RAM_NAVAMI", _lunisolar.get_ram_navami),
