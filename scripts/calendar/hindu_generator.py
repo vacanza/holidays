@@ -911,6 +911,44 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_naraka_chaturdashi(self, year: int) -> date | None:
+        """
+        Naraka Chaturdashi = Kartik Krishna Chaturdashi.
+        Tithi = 29 (Chaturdashi) of Krishna Paksha preceding Kartik Amavasya.
+        Evaluated at Arunodaya (96 minutes before sunrise).
+
+        Chaturdashi detection:
+        - Present at Arunodaya -> return that day
+        - Skipped between Arunodayas (28 -> 30) -> return current day
+        """
+        exceptions = {
+            2031: date(2031, 11, 13),
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        # Find Kartik Amavasya (Diwali)
+        diwali = self.get_diwali(year)
+
+        if not diwali:
+            return None
+
+        # Find Chaturdashi (tithi 29) at Arunodaya, or skipped case (28 -> 30)
+        for delta in range(5, -1, -1):
+            dt = diwali - timedelta(days=delta)
+            arunodaya = ephem.Date(float(self._sunrise(dt)) - 96 / 1440)
+            t = self._tithi(arunodaya)
+
+            arunodaya_prev = ephem.Date(float(self._sunrise(dt - timedelta(days=1))) - 96 / 1440)
+            t_prev = self._tithi(arunodaya_prev)
+
+            if t == 29:
+                return dt
+            if t == 30 and t_prev == 28:
+                return dt
+
+        return None
+
     def get_parshuram_jayanti(self, year: int) -> date | None:
         """
         Parshuram Jayanti = Vaishakha Shukla Tritiya.
@@ -1109,7 +1147,8 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
     # ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
     # ("MAHESH_NAVAMI", _lunisolar.get_mahesh_navami),
-    ("PARSHURAM_JAYANTI", _lunisolar.get_parshuram_jayanti),
+    ("NARAKA_CHATURDASHI", _lunisolar.get_naraka_chaturdashi),
+    # ("PARSHURAM_JAYANTI", _lunisolar.get_parshuram_jayanti),
     # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
     # ("RAM_NAVAMI", _lunisolar.get_ram_navami),
     # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
