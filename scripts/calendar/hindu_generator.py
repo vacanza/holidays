@@ -882,6 +882,35 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_mahesh_navami(self, year: int) -> date | None:
+        """
+        Mahesh Navami = Jyeshtha Shukla Navami.
+        Tithi = 9 (Navami) of Shukla Paksha in Jyeshtha month - sun in sidereal Taurus (sign 1).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        Navami detection:
+        - Present at sunrise -> return that day (first occurrence)
+        - Skipped between days (8 -> 10) -> return current day
+        """
+        # Find Jyeshtha Amavasya
+        jyeshtha_ama = self._get_amavasya(date(year, 5, 1), zodiac_sign=1, last=True)
+
+        if not jyeshtha_ama:
+            return None
+
+        # Find Navami (tithi 9) at sunrise, or skipped case (8 -> 10)
+        for delta in range(8, 12):
+            dt = jyeshtha_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            if t == 9:
+                return dt
+            if t == 10 and t_prev == 8:
+                return dt
+
+        return None
+
     def get_ram_navami(self, year: int) -> date | None:
         """
         Ram Navami = Chaitra Shukla Navami.
@@ -1028,7 +1057,8 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("JANMASHTAMI", _lunisolar.get_janmashtami),
     # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
     # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
-    ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
+    # ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
+    ("MAHESH_NAVAMI", _lunisolar.get_mahesh_navami),
     # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
     # ("RAM_NAVAMI", _lunisolar.get_ram_navami),
     # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
