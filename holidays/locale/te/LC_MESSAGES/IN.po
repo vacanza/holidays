@@ -586,7 +586,7 @@ msgstr "దీపావళి (బలి పాడ్యమి)"
 
 #. Tribal Pride Day.
 msgid "Janjatiya Gaurav Divas"
-msgstr "జనజాతీయ గౌరవ్ దివస్"
+msgstr "ఆదివాసీ గౌరవ దినోత్సవం"
 
 #. Hemu Kalani's Martyrdom Day.
 msgid "Hemu Kalani's Shaheedi Diwas"

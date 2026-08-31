@@ -586,7 +586,7 @@ msgstr "தீபாவளி (பலி பிரதிபதா)"
 
 #. Tribal Pride Day.
 msgid "Janjatiya Gaurav Divas"
-msgstr "ஜன்ஜாதிய கௌரவ் திவஸ்"
+msgstr "பழங்குடியினர் பெருமை நாள்"
 
 #. Hemu Kalani's Martyrdom Day.
 msgid "Hemu Kalani's Shaheedi Diwas"
