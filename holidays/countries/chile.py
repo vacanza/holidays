@@ -10,11 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import APR, JUN, SEP, DEC
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_ONLY,
@@ -243,7 +242,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         if 1957 <= self._year <= 1975:
             self._add_holiday_jun_30(name)
 
-        if 1956 <= self._year and self._year != 1997:
+        if self._year >= 1956 and self._year != 1997:
             self._add_holiday_dec_31(name)
 
     @property

@@ -10,12 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import JAN, MAR, JUN, JUL, SEP, NOV, DEC
 from holidays.constants import HALF_DAY, PUBLIC, RESTRICTED_SETTLEMENT
 from holidays.countries.argentina import Argentina
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     TUE_WED_TO_PREV_MON,

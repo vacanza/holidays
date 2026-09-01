@@ -36,6 +36,10 @@ msgstr "%s (అంచనా)"
 msgid "Republic Day"
 msgstr "గణతంత్ర దినోత్సవం"
 
+#. Good Friday.
+msgid "Good Friday"
+msgstr "గుడ్ ఫ్రైడే"
+
 #. Dr. B. R. Ambedkar's Birthday.
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr "డా. బి.ఆర్. అంబేద్కర్ జయంతి"
@@ -47,6 +51,10 @@ msgstr "స్వాతంత్ర దినోత్సవం"
 #. Mahatma Gandhi's Birthday.
 msgid "Mahatma Gandhi's Jayanti"
 msgstr "మహాత్మా గాంధీ జయంతి"
+
+#. Christmas.
+msgid "Christmas"
+msgstr "క్రిస్మస్"
 
 #. Maha Shivaratri.
 msgid "Maha Shivaratri"
@@ -100,17 +108,17 @@ msgstr "ఈద్-ఉల్-ఫితర్"
 msgid "Id-ul-Zuha (Bakrid)"
 msgstr "ఈద్-ఉల్-జుహా (బక్రీద్)"
 
-#. Good Friday.
-msgid "Good Friday"
-msgstr "గుడ్ ఫ్రైడే"
-
-#. Christmas.
-msgid "Christmas"
-msgstr "క్రిస్మస్"
-
 #. New Year's Day.
 msgid "New Year's Day"
 msgstr "కొత్త సంవత్సరం రోజు"
+
+#. Easter Sunday.
+msgid "Easter Sunday"
+msgstr "ఈస్టర్ ఆదివారం"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "క్రిస్మస్ ఈవ్"
 
 #. Guru Gobind Singh's Birthday.
 msgid "Guru Gobind Singh's Jayanti"
@@ -275,14 +283,6 @@ msgstr "హజ్రత్ అలీ జన్మదినం"
 #. Jumu'atul-Wida.
 msgid "Jamat-Ul-Vida"
 msgstr "జమాత్-ఉల్-విదా"
-
-#. Christmas Eve.
-msgid "Christmas Eve"
-msgstr "క్రిస్మస్ ఈవ్"
-
-#. Easter Sunday.
-msgid "Easter Sunday"
-msgstr "ఈస్టర్ ఆదివారం"
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
