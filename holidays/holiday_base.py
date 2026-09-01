@@ -12,6 +12,7 @@
 
 __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
+import contextlib
 import copy
 import warnings
 from bisect import bisect_left, bisect_right
@@ -631,10 +632,8 @@ class HolidayBase(dict[date, str]):
         elif isinstance(key, str):
             # key possibly contains a date in YYYY-MM-DD or YYYYMMDD format.
             if len(key) in {8, 10}:
-                try:
+                with contextlib.suppress(ValueError):
                     dt = date.fromisoformat(key)
-                except ValueError:
-                    pass
             if dt is None:
                 try:
                     dt = parse(key).date()
