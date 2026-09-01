@@ -213,7 +213,7 @@ class HongKong(
                 oct_1,
                 name=name,
                 rule=WORKDAY_TO_NEXT_WORKDAY + SAT_SUN_TO_NEXT_WORKDAY
-                if oct_1 in (mid_autumn_date, dt_double_ninth)
+                if oct_1 in {mid_autumn_date, dt_double_ninth}
                 else SUN_TO_NEXT_WORKDAY,
             )
 
@@ -312,7 +312,7 @@ class HongKong(
             dt = date(self._year, OCT, 1)
             # The day following National Day.
             name = tr("國慶日翌日")
-            if self._is_sunday(dt) or dt in (mid_autumn_date, dt_double_ninth):
+            if self._is_sunday(dt) or dt in {mid_autumn_date, dt_double_ninth}:
                 self._add_holiday(name, self._get_next_workday(dt))
             else:
                 # National Day.
