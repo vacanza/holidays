@@ -1005,6 +1005,42 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_mahavir_jayanti(self, year: int) -> date | None:
+        """
+        Mahavir Jayanti = Chaitra Shukla Trayodashi.
+        Tithi = 13 (Trayodashi) of Chaitra month - sun in sidereal Pisces (sign 11).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        Trayodashi detection (sunrise tithi):
+        - Present at sunrise -> return that day
+        - Skipped between days (12 -> 14) -> return previous day
+        """
+        exceptions = {
+            2027: date(2027, 4, 18),
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        # Find Chaitra Amavasya
+        chaitra_ama = self._get_amavasya(date(year, 3, 1), zodiac_sign=11)
+
+        if not chaitra_ama:
+            return None
+
+        # Find Trayodashi (tithi 13) at sunrise, or skipped case (12 -> 14)
+        for delta in range(11, 16):
+            dt = chaitra_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            if t == 13:
+                return dt
+
+            if t == 14 and t_prev == 12:
+                return dt - timedelta(days=1)
+
+        return None
+
     def get_mahesh_navami(self, year: int) -> date | None:
         """
         Mahesh Navami = Jyeshtha Shukla Navami.
@@ -1400,7 +1436,8 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
     # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
     # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
-    ("MAHARANA_PRATAP_JAYANTI", _lunisolar.get_maharana_pratap_jayanti),
+    # ("MAHARANA_PRATAP_JAYANTI", _lunisolar.get_maharana_pratap_jayanti),
+    ("MAHAVIR_JAYANTI", _lunisolar.get_mahavir_jayanti),
     # ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
     # ("MAHESH_NAVAMI", _lunisolar.get_mahesh_navami),
     # ("MATSYA_JAYANTI", _lunisolar.get_matsya_jayanti),
