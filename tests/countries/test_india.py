@@ -587,7 +587,6 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(name_chaitra_sukladi, dts, subdivs={"DH"})
         self._assertHinduHolidayHelper(name_cheti_chand, dts, subdivs={"DH", "GJ", "RJ", "UK"})
         self.assertSubdivMpGovernmentHolidayName(name_cheti_chand, dts)
-        self.assertSubdivUpOptionalHolidayName(name_cheti_chand, dts)
         self._assertHinduHolidayHelper(name_gudi_padwa, dts, subdivs={"DH", "GA", "MH"})
         self.assertSubdivMpGovernmentHolidayName(name_gudi_padwa, dts)
         self._assertHinduHolidayHelper(name_ugadi, dts, subdivs={"AP", "DH", "KA", "TS"})

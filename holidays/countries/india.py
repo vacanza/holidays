@@ -324,6 +324,7 @@ class India(
 
         if self.subdiv == "OR":
             self._populate_subdiv_od_public_holidays()
+
         if self.subdiv == "DD":
             self._populate_subdiv_dh_public_holidays()
 
@@ -1407,9 +1408,6 @@ class India(
         self._add_holiday_dec_23(tr("Chaudhary Charan Singh's Jayanti"))
 
         # Hindu holidays.
-
-        # Cheti Chand.
-        self._add_gudi_padwa(tr("Cheti Chand"))
 
         # Lord Shri Parshuram's Birthday.
         self._add_parshuram_jayanti(tr("Bhagvan Shri Parshuram's Jayanti"))
