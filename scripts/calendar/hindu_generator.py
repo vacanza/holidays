@@ -773,6 +773,44 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_kabir_jayanti(self, year: int) -> date | None:
+        """
+        Kabir Jayanti = Jyeshtha Purnima.
+        Tithi = 15 (Purnima) of Jyeshtha month - sun in sidereal Taurus (sign 1).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        In Adhika Masa (leap month) years, two consecutive Jyeshtha lunar
+        months can occur. The second Purnima belongs to Jyeshtha proper.
+
+        Purnima detection (sunrise tithi):
+        - Present at sunrise -> return that day
+        - Skipped between days (14 -> 16) -> return current day
+        """
+        # Find Jyeshtha Amavasya
+        jyeshtha_ama = self._get_amavasya(date(year, 5, 1), zodiac_sign=1)
+
+        if not jyeshtha_ama:
+            return None
+
+        # Check for another Jyeshtha Amavasya in Adhika Masa
+        next_jyeshtha_ama = self._get_amavasya(jyeshtha_ama + timedelta(days=1), zodiac_sign=1)
+
+        if next_jyeshtha_ama and next_jyeshtha_ama - jyeshtha_ama <= timedelta(days=31):
+            jyeshtha_ama = next_jyeshtha_ama
+
+        # Find Purnima (tithi 15) at sunrise, or skipped case (14 -> 16)
+        for delta in range(12, 18):
+            dt = jyeshtha_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            if t == 15:
+                return dt
+            if t == 16 and t_prev == 14:
+                return dt
+
+        return None
+
     def get_maha_ashtami(self, year: int) -> date | None:
         """
         Maha Ashtami = Ashwin Shukla Ashtami.
@@ -1303,7 +1341,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("BASANT_PANCHAMI", _lunisolar.get_basant_panchami),
     # ("CHAITRA_NAVRATRI", _lunisolar.get_chaitra_navratri),
     # ("CHHATH_PUJA", _lunisolar.get_chhath_puja),
-    ("DATTATREYA_JAYANTI", _lunisolar.get_dattatreya_jayanti),
+    # ("DATTATREYA_JAYANTI", _lunisolar.get_dattatreya_jayanti),
     # ("DIWALI_INDIA", _lunisolar.get_diwali),
     # ("DUSSEHRA", _lunisolar.get_dussehra),
     # ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
@@ -1314,6 +1352,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
     # ("HOLI", _lunisolar.get_holi),
     # ("JANMASHTAMI", _lunisolar.get_janmashtami),
+    ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
     # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
     # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
     # ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
