@@ -629,6 +629,36 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_guru_ravidas_jayanti(self, year: int) -> date | None:
+        """
+        Guru Ravidas Jayanti = Magha Purnima.
+        Tithi = 15 (Purnima) of Magha month - sun in sidereal Capricorn (sign 9).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        Purnima detection (sunrise tithi):
+        - Present at sunrise -> return that day
+        - Skipped between days (14 -> 16) -> return previous day
+        """
+        # Find Magha Amavasya.
+        magha_ama = self._get_amavasya(date(year, 1, 1), zodiac_sign=9)
+
+        if not magha_ama:
+            return None
+
+        # Find Purnima (tithi 15) at sunrise, or skipped case (14 -> 16).
+        for delta in range(12, 18):
+            dt = magha_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            if t == 15:
+                return dt
+
+            if t == 16 and t_prev == 14:
+                return dt - timedelta(days=1)
+
+        return None
+
     def get_hanuman_jayanti(self, year: int) -> date | None:
         """
         Hanuman Jayanti = Chaitra Purnima.
@@ -1429,6 +1459,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
     # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
     # ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
+    ("GURU_RAVIDAS_JAYANTI", _lunisolar.get_guru_ravidas_jayanti),
     # ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
     # ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
     # ("HOLI", _lunisolar.get_holi),
@@ -1437,7 +1468,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
     # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
     # ("MAHARANA_PRATAP_JAYANTI", _lunisolar.get_maharana_pratap_jayanti),
-    ("MAHAVIR_JAYANTI", _lunisolar.get_mahavir_jayanti),
+    # ("MAHAVIR_JAYANTI", _lunisolar.get_mahavir_jayanti),
     # ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
     # ("MAHESH_NAVAMI", _lunisolar.get_mahesh_navami),
     # ("MATSYA_JAYANTI", _lunisolar.get_matsya_jayanti),
