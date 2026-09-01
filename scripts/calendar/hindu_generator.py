@@ -930,6 +930,51 @@ class _Lunisolar(_Astronomy):
 
         return phalgun_chaturdashi
 
+    def get_maharana_pratap_jayanti(self, year: int) -> date | None:
+        """
+        Maharana Pratap Jayanti = Jyeshtha Shukla Tritiya.
+        Tithi = 3 (Tritiya) of Jyeshtha month - sun in sidereal Taurus (sign 1).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        In Adhika Masa (leap month) years, two consecutive Jyeshtha lunar
+        months can occur. The second Tritiya belongs to Jyeshtha proper.
+
+        Tritiya detection (sunrise tithi):
+        - Present at sunrise -> return that day
+        - Skipped between days (2 -> 4) -> return current day
+        """
+        exceptions = {
+            2015: date(2015, 5, 20),
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        # Find Jyeshtha Amavasya
+        jyeshtha_ama = self._get_amavasya(date(year, 5, 1), zodiac_sign=1)
+
+        if not jyeshtha_ama:
+            return None
+
+        # Check for another Jyeshtha Amavasya in Adhika Masa
+        next_jyeshtha_ama = self._get_amavasya(jyeshtha_ama + timedelta(days=1), zodiac_sign=1)
+
+        if next_jyeshtha_ama and next_jyeshtha_ama - jyeshtha_ama <= timedelta(days=31):
+            jyeshtha_ama = next_jyeshtha_ama
+
+        # Find Tritiya (tithi 3) at sunrise, or skipped case (2 -> 4)
+        for delta in range(1, 5):
+            dt = jyeshtha_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            if t == 3:
+                return dt
+
+            if t == 4 and t_prev == 2:
+                return dt
+
+        return None
+
     def get_maharishi_valmiki_jayanti(self, year: int) -> date | None:
         """
         Maharishi Valmiki Jayanti = Ashwin Purnima.
@@ -1352,9 +1397,10 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
     # ("HOLI", _lunisolar.get_holi),
     # ("JANMASHTAMI", _lunisolar.get_janmashtami),
-    ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
+    # ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
     # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
     # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
+    ("MAHARANA_PRATAP_JAYANTI", _lunisolar.get_maharana_pratap_jayanti),
     # ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
     # ("MAHESH_NAVAMI", _lunisolar.get_mahesh_navami),
     # ("MATSYA_JAYANTI", _lunisolar.get_matsya_jayanti),
