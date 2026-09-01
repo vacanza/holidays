@@ -1182,6 +1182,28 @@ class TestStandardMethods(unittest.TestCase):
         self.assertRaises(ValueError, lambda: self.hb["2014-01-01":"2014-01-02":0])
         self.assertRaises(ValueError, lambda: self.hb["2014-01-01" : "2014-01-02" : td(hours=12)])
 
+        hb_1 = CountryStub1(years=(2013, 2015), expand=False)
+        self.assertListEqual(
+            hb_1["2013-12-24":"2015-01-02"],
+            [
+                date(2013, 12, 25),
+                date(2015, 1, 1),
+            ],
+        )
+        hb_2 = CountryStub1(years=(2013, 2015))
+        self.assertListEqual(
+            hb_2["2013-12-24":"2015-01-02"],
+            [
+                date(2013, 12, 25),
+                date(2014, 1, 1),
+                date(2014, 6, 19),
+                date(2014, 7, 4),
+                date(2014, 11, 27),
+                date(2014, 12, 25),
+                date(2015, 1, 1),
+            ],
+        )
+
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + CountryStub1())
 
