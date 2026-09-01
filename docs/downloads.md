@@ -23,43 +23,146 @@ hide:
       </select>
     </div>
 
-    <div class="control-group">
-      <label for="selected-entity" x-text="type === 'countries' ? 'Country / Region' : 'Market'"></label>
-      <select id="selected-entity" class="control-input" x-model="selectedEntity" @change="updateOptions()">
-        <option value="" disabled>Select...</option>
-        <template x-for="(data, code) in currentManifest" :key="code">
-          <option :value="code" x-text="data.name"></option>
-        </template>
-      </select>
+    <div class="calendar-selector">
+        <label class="selector-label">Countries / Regions</label>
+    
+        <div class="multi-select" x-data="{ open: false }" @click.outside="open = false">
+            <button
+                type="button"
+                class="multi-select-trigger"
+                @click="open = !open"
+            >
+                <span
+                    x-show="selectedEntities.length === 0"
+                    class="multi-select-placeholder"
+                >
+                    Select countries or regions...
+                </span>
+    
+                <span
+                    x-show="selectedEntities.length > 0"
+                    class="selected-count"
+                    x-text="`${selectedEntities.length} selected`"
+                ></span>
+    
+                <span class="multi-select-arrow">▾</span>
+            </button>
+    
+            <div
+                x-show="open"
+                x-transition
+                class="multi-select-dropdown"
+            >
+                <div class="multi-select-search">
+                    <input
+                        type="text"
+                        x-model="entitySearch"
+                        placeholder="Search countries or regions..."
+                        @click.stop
+                    >
+                </div>
+    
+                <div class="multi-select-actions">
+                    <button
+                        type="button"
+                        @click="selectAllVisibleEntities()"
+                    >
+                        Select all
+                    </button>
+    
+                    <button
+                        type="button"
+                        @click="clearEntitySelection()"
+                    >
+                        Clear
+                    </button>
+                </div>
+    
+                <div class="multi-select-options">
+                    <template
+                        x-for="(data, code) in filteredManifest"
+                        :key="code"
+                    >
+                        <label class="multi-select-option">
+                            <input
+                                type="checkbox"
+                                :value="code"
+                                :checked="selectedEntities.includes(code)"
+                                @change="toggleEntity(code)"
+                            >
+    
+                            <span x-text="data.name || code"></span>
+                        </label>
+                    </template>
+    
+                    <div
+                        x-show="Object.keys(filteredManifest).length === 0"
+                        class="multi-select-empty"
+                    >
+                        No countries or regions found.
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Selected country chips -->
+        <div
+            x-show="selectedEntities.length > 0"
+            class="selected-chips"
+        >
+            <template
+                x-for="entity in selectedEntities"
+                :key="entity"
+            >
+                <span class="selected-chip">
+                    <span
+                        x-text="currentManifest[entity]?.name || entity"
+                    ></span>
+    
+                    <button
+                        type="button"
+                        @click="toggleEntity(entity)"
+                        aria-label="Remove"
+                    >
+                        ×
+                    </button>
+                </span>
+            </template>
+        </div>
     </div>
 
-    <div class="control-group" x-show="hasSubdivisions">
-      <label for="selected-subdiv">Subdivision / State</label>
-      <select id="selected-subdiv" class="control-input" x-model="selectedSubdiv" @change="updatePreview()">
-        <option value="ALL">Entire Country</option>
-        <template x-for="sub in availableSubdivisions" :key="sub.code">
-          <option :value="sub.code" x-text="sub.name"></option>
-        </template>
-      </select>
+    <div class="calendar-selector">
+        <label class="selector-label">Categories</label>
+    
+        <div class="category-options">
+            <template
+                x-for="category in availableMultiCategories"
+                :key="category"
+            >
+                <label class="category-option">
+                    <input
+                        type="checkbox"
+                        :value="category"
+                        :checked="selectedCategories.includes(category)"
+                        @change="toggleCategory(category)"
+                    >
+    
+                    <span x-text="formatLabel(category)"></span>
+                </label>
+            </template>
+        </div>
     </div>
 
-    <div class="year-range-grid" style="grid-template-columns: 1fr 1fr; gap: 12px;">
-      <div class="control-group" style="margin-bottom: 0;">
-        <label for="selected-lang">Language</label>
-        <select id="selected-lang" class="control-input" x-model="selectedLang" @change="updatePreview()" :title="availableLanguages.find(l => l.code === selectedLang)?.name">
-          <template x-for="lang in availableLanguages" :key="lang.code">
-            <option :value="lang.code" x-text="lang.name" :title="lang.name"></option>
-          </template>
-        </select>
-      </div>
-      
-      <div class="control-group" style="margin-bottom: 0;">
-        <label for="selected-category">Category</label>
-        <select id="selected-category" class="control-input" x-model="selectedCategory" @change="updatePreview()" :title="formatLabel(selectedCategory)">
-          <template x-for="cat in selectableCategories" :key="cat">
-            <option :value="cat" x-text="formatLabel(cat)" :title="formatLabel(cat)"></option>
-          </template>
-        </select>
+    <div class="control-group" x-show="selectedEntities.length > 0">
+      <label for="selected-lang">Language</label>
+      <select id="selected-lang" class="control-input" x-model="selectedLang" @change="listCalendars()">
+        <option value="default">Default language for each calendar</option>
+        <template x-for="lang in availableLanguages" :key="lang.code">
+          <option :value="lang.code" x-text="lang.name"></option>
+        </template>
+      </select>
+      <div class="selection-hint">
+        Default uses each selected country's/market's default language.
       </div>
     </div>
 
@@ -85,11 +188,20 @@ hide:
       </div>
     </div>
 
-    <button class="btn-download" @click="downloadICS()" :disabled="isGenerating || !selectedEntity || previewYears.length === 0">
-      <span x-text="isGenerating ? 'Processing...' : 'Download .ics File'"></span>
-    </button>
-    <div style="text-align: center; margin-top: 8px; font-size: 0.8rem; opacity: 0.7;">
-      <span x-text="filename"></span>
+    <div class="calendar-actions">
+      <button
+          type="button"
+          class="list-calendars-button"
+          @click="listCalendars()"
+          :disabled="selectedEntities.length === 0 || selectedCategories.length === 0"
+      >
+          List calendars
+      </button>
+    </div>
+
+    <div class="selection-hint" x-show="selectedEntities.length > 0">
+      <span x-text="selectedEntities.length"></span> region(s) ×
+      <span x-text="selectedCategories.length"></span> categor<span x-text="selectedCategories.length === 1 ? 'y' : 'ies'"></span>
     </div>
 
     <div style="text-align: center; margin-top: 10px; font-size: 0.8rem;">
@@ -97,36 +209,114 @@ hide:
       <a href="../examples/#holidays-ics-tool" target="_blank" rel="noopener">holidays-ics</a>
       tool instead.
     </div>
-
   </div>
 
-  <div class="portal-preview" x-show="!isLoading" style="display: none;">
-    <div x-show="!selectedEntity" class="empty-state">Select a region to start.</div>
-    <div x-show="selectedEntity && previewYears.length === 0" class="empty-state">No data available for this selection.</div>
+    <div class="portal-preview" x-show="!isLoading" style="display: none;">
 
-    <div class="table-scroll-area" x-show="previewYears.length > 0">
-      <table class="preview-table">
-        <thead>
-          <tr>
-            <th style="width: 120px;">Date</th>
-            <th>Holiday Name</th>
-          </tr>
-        </thead>
-        <template x-for="yearData in previewYears" :key="yearData.year">
-          <tbody>
-            <tr>
-              <td colspan="2" class="year-divider" x-text="yearData.year"></td>
-            </tr>
-            <template x-for="(event, index) in yearData.events" :key="index">
-              <tr>
-                <td x-text="event.date"></td>
-                <td x-text="event.name"></td>
-              </tr>
-            </template>
-          </tbody>
-        </template>
-      </table>
+      <div
+      x-show="showCalendarList"
+      class="calendar-results"
+      >
+      <div class="calendar-results-header">
+          <div>
+              <h3>Available calendars</h3>
+  
+              <p>
+                  <span x-text="selectedEntities.length"></span>
+                  countries/regions ·
+                  <span x-text="selectedCategories.length"></span>
+                  categories ·
+                  ICS/JSON downloads cover
+                  <span
+                      x-text="startYear === endYear ? startYear : `${startYear}-${endYear}`"
+                  ></span>
+              </p>
+          </div>
+      </div>
+
+    <div class="calendar-table-wrapper">
+        <table class="calendar-table">
+            <thead>
+                <tr>
+                    <th>Region</th>
+
+                    <template
+                        x-for="category in selectedCategories"
+                        :key="category"
+                    >
+                        <th x-text="formatLabel(category)"></th>
+                    </template>
+                </tr>
+            </thead>
+
+            <tbody>
+                <template
+                    x-for="row in calendarRows"
+                    :key="row.entity"
+                >
+                    <tr>
+                        <td>
+                            <strong x-text="row.name"></strong>
+
+                            <small
+                                x-text="row.languageName"
+                            ></small>
+                        </td>
+
+                        <template
+                            x-for="calendar in row.calendars"
+                            :key="calendar.category"
+                        >
+                            <td>
+                                <template x-if="calendar.available">
+                                    <div class="calendar-links">
+                                        <button
+                                            type="button"
+                                            @click="downloadCalendar(row.entity, calendar.category, 'ics')"
+                                            :disabled="calendar.icsDownloading"
+                                        >
+                                            <span x-text="calendar.icsDownloading ? '...' : 'ICS'"></span>
+                                        </button>
+
+                                        <span>·</span>
+
+                                        <button
+                                            type="button"
+                                            @click="downloadCalendar(row.entity, calendar.category, 'json')"
+                                            :disabled="calendar.jsonDownloading"
+                                        >
+                                            <span x-text="calendar.jsonDownloading ? '...' : 'JSON'"></span>
+                                        </button>
+
+                                        <span>·</span>
+
+                                        <a
+                                            :href="calendar.webcal"
+                                        >
+                                            Webcal
+                                        </a>
+
+                                        <div
+                                            x-show="calendar.error"
+                                            class="calendar-error"
+                                        >
+                                            Download failed, try again.
+                                        </div>
+                                    </div>
+                                </template>
+
+                                <template x-if="!calendar.available">
+                                    <span class="calendar-unavailable">
+                                        -
+                                    </span>
+                                </template>
+                            </td>
+                        </template>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-
+    </div>
 </div>
