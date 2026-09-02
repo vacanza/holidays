@@ -498,6 +498,12 @@
     vertical-align: top;
 }
 
+.calendar-table td:first-child {
+    min-width: 110px;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
 .calendar-table tr:nth-child(even) {
     background-color: var(--portal-zebra);
 }
