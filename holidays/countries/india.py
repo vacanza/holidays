@@ -796,7 +796,7 @@ class India(
         # Guru Arjun Dev's Martyrdom Day.
         self._add_guru_arjun_dev_martyrdom_day(tr("Guru Arjun Dev's Shaheedi Diwas"))
 
-        # Dev Diwali
+        # Dev Diwali.
         self._add_dev_diwali(tr("Dev Diwali"))
 
     # Haryana.

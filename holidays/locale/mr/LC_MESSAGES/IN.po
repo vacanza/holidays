@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-29 00:37+0530\n"
-"PO-Revision-Date: 2026-08-29 23:49+0530\n"
+"PO-Revision-Date: 2026-09-02 22:43+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: mr\n"
@@ -480,7 +480,7 @@ msgstr "हाटकेश्वर जयंती"
 msgid "Hanuman's Jayanti"
 msgstr "हनुमान जयंती"
 
-#. Dev Diwali
+#. Dev Diwali.
 msgid "Dev Diwali"
 msgstr "देव दिवाळी"
 

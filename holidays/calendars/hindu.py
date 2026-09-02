@@ -2332,7 +2332,7 @@ class _HinduLunisolar:
         2035: (OCT, 2),
     }
 
-    # https://web.archive.org/web/20260720141028/https://www.drikpanchang.com/festivals/teej/hartalika-teej-date-time.html
+    # https://web.archive.org/web/20260720140950/https://www.drikpanchang.com/hindu-saints/vallabhacharya/shri-vallabhacharya-jayanti.html
     SHRI_VALLABHACHARYA_JAYANTI_DATES = {
         2001: (APR, 19),
         2002: (MAY, 7),
