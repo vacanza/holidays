@@ -489,6 +489,8 @@
     padding: 10px 14px;
     background: var(--portal-header-bg);
     border-bottom: 2px solid var(--portal-border);
+    overflow-wrap: normal;
+    word-break: normal;
 }
 
 .calendar-table td {
@@ -496,12 +498,18 @@
     border-bottom: 1px solid var(--portal-border);
     color: var(--portal-fg);
     vertical-align: top;
+    overflow-wrap: normal;
+    word-break: normal;
+    white-space: normal;
 }
 
 .calendar-table td:first-child {
     min-width: 110px;
-    overflow-wrap: normal;
-    word-break: normal;
+}
+
+.calendar-table th:not(:first-child),
+.calendar-table td:not(:first-child) {
+    min-width: 165px;
 }
 
 .calendar-table tr:nth-child(even) {
@@ -513,6 +521,10 @@
     margin-top: 2px;
     font-weight: normal;
     color: var(--md-default-fg-color--light);
+}
+
+.calendar-links {
+    white-space: nowrap;
 }
 
 .calendar-links a,
