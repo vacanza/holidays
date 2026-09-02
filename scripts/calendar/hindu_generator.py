@@ -355,12 +355,9 @@ class _Lunisolar(_Astronomy):
             t = self._tithi(self._sunrise(dt))
             t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
-            # First sunrise with Pratipada active
-            if t == 1 and t_prev != 1:
-                candidate = dt
-
-            # Pratipada skipped entirely between sunrises
-            elif t == 2 and t_prev == 30:
+            # First sunrise with Pratipada active (t == 1)
+            # or Pratipada skipped (t == 2 and t_prev == 30) -> candidate
+            if (t == 1 and t_prev != 1) or (t == 2 and t_prev == 30):
                 candidate = dt
 
         return candidate
@@ -413,7 +410,7 @@ class _Lunisolar(_Astronomy):
         exceptions = {
             2001: date(2001, 12, 29),
             2015: date(2015, 12, 24),
-            2034: date(2015, 12, 24),
+            2034: date(2034, 12, 24),
         }
         if year in exceptions:
             return exceptions[year]
@@ -550,11 +547,8 @@ class _Lunisolar(_Astronomy):
                 last_pratipada = dt
 
             # Amavasya at sunrise but Pratipada at sunset -> this night is Govardhan Puja
-            elif t_sr == 30 and t_ss == 1:
-                return dt
-
-            # Pratipada skipped between sunrises (30->2)
-            elif t_sr == 2 and t_prev == 30:
+            # or Pratipada skipped between sunrises (30->2)
+            elif (t_sr == 30 and t_ss == 1) or (t_sr == 2 and t_prev == 30):
                 return dt
 
             # Pratipada ended
