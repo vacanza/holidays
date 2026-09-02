@@ -1381,6 +1381,62 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_shakambhari_purnima(self, year: int) -> date | tuple[date, ...] | None:
+        """
+        Shakambhari Purnima = Pausha Shukla Purnima.
+        Tithi = 15 (Purnima) of Pausha month - sun in sidereal Sagittarius
+        (sign 8). Evaluated at sunrise (Udaya tithi rule).
+
+        Purnima detection (sunrise tithi):
+        - Present at sunrise -> include first day
+        - Skipped between days (14 -> 16) -> include previous day
+
+        Pausha Amavasya can coincide with the transition from sidereal
+        Scorpio (sign 7) to Sagittarius (sign 8). In such boundary cases,
+        the Amavasya may be detected under sign 7 at sunset.
+        """
+        dates = []
+
+        # Check the Pausha lunar cycles on both sides of the Gregorian year.
+        for anchor_year in (year - 1, year):
+            start = date(anchor_year, 12, 1)
+
+            # Find Pausha Amavasya.
+            pausha_ama = self._get_amavasya(start, zodiac_sign=8)
+
+            # Handle Amavasya occurring at the Scorpio -> Sagittarius boundary.
+            if not pausha_ama:
+                pausha_ama = self._get_amavasya(start, zodiac_sign=7)
+
+            if not pausha_ama:
+                continue
+
+            # Find Purnima (tithi 15) at sunrise, or skipped case (14 -> 16).
+            for delta in range(12, 18):
+                dt = pausha_ama + timedelta(days=delta)
+                t = self._tithi(self._sunrise(dt))
+                t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+                festival_date = None
+
+                if t == 15 and t_prev != 15:
+                    festival_date = dt
+
+                elif t == 16 and t_prev == 14:
+                    festival_date = dt - timedelta(days=1)
+
+                if festival_date and festival_date.year == year and festival_date not in dates:
+                    dates.append(festival_date)
+
+                if festival_date:
+                    break
+
+        if not dates:
+            return None
+
+        dates.sort()
+
+        return dates[0] if len(dates) == 1 else tuple(dates)
+
     def get_sharad_navratri(self, year: int) -> date | None:
         """
         Sharad Navratri = Ashwin Shukla Pratipada.
@@ -1540,8 +1596,9 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
     # ("RAM_NAVAMI", _lunisolar.get_ram_navami),
     # ("RATH_YATRA", _lunisolar.get_rath_yatra),
+    ("SHAKAMBHARI_PURNIMA", _lunisolar.get_shakambhari_purnima),
     # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
-    ("TULSIDAS_JAYANTI", _lunisolar.get_tulsidas_jayanti),
+    # ("TULSIDAS_JAYANTI", _lunisolar.get_tulsidas_jayanti),
 )
 
 HINDU_SOLAR_HOLIDAYS = (
@@ -1558,13 +1615,14 @@ def generate_data() -> None:
     )
 
     for cal_name, class_name, holidays in calendars:
-        dates: dict[str, dict[int, date]] = defaultdict(dict)
+        dates: dict[str, dict[int, date | list[date]]] = defaultdict(dict)
 
         for hol_name, hol_func in holidays:
             for year in years:
                 dt = hol_func(year)
+
                 if dt:
-                    dates[hol_name][year] = dt
+                    dates[hol_name][year] = list(dt) if isinstance(dt, tuple) else dt
 
         CalendarGenerator(cal_name, class_name).generate(dates)
 
