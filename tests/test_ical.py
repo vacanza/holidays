@@ -281,17 +281,35 @@ class TestIcalExporter(TestCase):
 
     def test_multiname_shared_start_different_run_lengths(self):
         # A 2-day run (AAA, Jan 1-2) shares its start date with a single-day
-        # holiday (ZZZ, Jan 1). Every name must appear exactly once.
+        # holiday (CCC, Jan 1). Every name must appear exactly once.
         hol = MockHolidays()
         hol[date(2024, 1, 1)] = "AAA"
         hol[date(2024, 1, 2)] = "AAA"
-        hol[date(2024, 1, 1)] = "ZZZ"
+        hol[date(2024, 1, 1)] = "CCC"
         output = ICalExporter(hol).generate()
 
         self.assertEqual(output.count("SUMMARY:AAA\r\n"), 1)
-        self.assertEqual(output.count("SUMMARY:ZZZ\r\n"), 1)
+        self.assertEqual(output.count("SUMMARY:CCC\r\n"), 1)
         self.assertIn("SUMMARY:AAA\r\nDTSTART;VALUE=DATE:20240101\r\nDURATION:P2D\r\n", output)
-        self.assertIn("SUMMARY:ZZZ\r\nDTSTART;VALUE=DATE:20240101\r\nDURATION:P1D\r\n", output)
+        self.assertIn("SUMMARY:CCC\r\nDTSTART;VALUE=DATE:20240101\r\nDURATION:P1D\r\n", output)
+
+    def test_multiname_shared_date_drops_continuing_holiday(self):
+        # AAA (1-day, Jan 1), BBB (2-day, Jan 1-2), CCC (1-day, Jan 2 only).
+        # The merge loop advanced the date index by only the last name's run
+        # length, over-advancing past Jan 2 and dropping CCC entirely.
+        hol = MockHolidays()
+        hol[date(2024, 1, 1)] = "AAA"
+        hol[date(2024, 1, 1)] = "BBB"
+        hol[date(2024, 1, 2)] = "BBB"
+        hol[date(2024, 1, 2)] = "CCC"
+        output = ICalExporter(hol).generate()
+
+        self.assertEqual(output.count("SUMMARY:AAA\r\n"), 1)
+        self.assertEqual(output.count("SUMMARY:BBB\r\n"), 1)
+        self.assertEqual(output.count("SUMMARY:CCC\r\n"), 1)
+        self.assertIn("SUMMARY:AAA\r\nDTSTART;VALUE=DATE:20240101\r\nDURATION:P1D\r\n", output)
+        self.assertIn("SUMMARY:BBB\r\nDTSTART;VALUE=DATE:20240101\r\nDURATION:P2D\r\n", output)
+        self.assertIn("SUMMARY:CCC\r\nDTSTART;VALUE=DATE:20240102\r\nDURATION:P1D\r\n", output)
 
     def test_generate_from_combined_holidays_list(self):
         # All 3 "New Year's Day" should be merged into 1 single instance.
