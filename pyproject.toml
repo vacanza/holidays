@@ -93,7 +93,27 @@ dynamic.version = { file = "VERSION" }
 [tool.ruff]
 target-version = "py310"
 line-length = 99
-lint.select = [ "E4", "E5", "E7", "E9", "F", "FBT", "N", "PLE", "S", "T", "TC", "UP", "W" ]
+lint.select = [
+  "B009",   # flake8-bugbear - Do not call `getattr(x, 'attr')`
+  "C4",     # flake8-comprehensions
+  "E",      # pycodestyle - Error
+  "F",      # Pyflakes
+  "FBT",    # flake8-boolean-trap
+  "N",      # pep8-naming
+  "PERF",   # perflint
+  "PLE",    # Pylint - Error
+  "RUF001", # Ambiguous Unicode character in a string literal
+  "RUF002", # Ambiguous Unicode character in a docstring
+  "RUF003", # Ambiguous Unicode character in a comment
+  "RUF022", # Unsorted `__all__`
+  "RUF100", # Unused `#noqa` directive
+  "S",      # flake8-bandit
+  "SIM",    # flake8-simplify
+  "T",      # flake8-debugger & flake8-print
+  "TC",     # flake8-type-checking
+  "UP",     # pyupgrade
+  "W",      # pycodestyle - Warning
+]
 lint.per-file-ignores."holidays/__init__.py" = [ "F403" ]
 lint.per-file-ignores."holidays/calendars/__init__.py" = [ "F401" ]
 lint.per-file-ignores."holidays/constants.py" = [ "F401" ]
@@ -114,9 +134,45 @@ lint.per-file-ignores."scripts/generate_snapshots.py" = [ "T201" ]
 lint.per-file-ignores."scripts/l10n/generate_mo_files.py" = [ "T201" ]
 lint.per-file-ignores."scripts/l10n/generate_po_files.py" = [ "T201" ]
 lint.per-file-ignores."scripts/l10n/l10n_helper.py" = [ "T201" ]
-lint.per-file-ignores."scripts/normalize_text.py" = [ "T201" ]
+lint.per-file-ignores."scripts/normalize_text.py" = [ "RUF001", "T201" ]
 lint.per-file-ignores."tests/common.py" = [ "N802" ]
 lint.per-file-ignores."tests/test_holiday_base.py" = [ "S301" ]
+lint.per-file-ignores."tests/test_ical.py" = [ "RUF001" ]
+lint.allowed-confusables = [
+  # Arabic, Armenian, Bengali, CJK, Cyrillic, Tongan, Turkish Script.
+  "ʻ",  # Modifier Letter Turned Comma (U+02BB)
+  "՝",  # Armenian Comma (U+055D)
+  "（", # Fullwidth Left Parenthesis (U+FF08)
+  "）", # Fullwidth Right Parenthesis (U+FF09)
+  "，", # Fullwidth Comma (U+FF0C)
+  "০", # Bengali Digit Zero (U+09E6)
+  "৭", # Bengali Digit Seven (U+09ED)
+  "а",  # Cyrillic Small Letter A (U+0430)
+  "б",  # Cyrillic Small Letter Be (U+0431)
+  "е",  # Cyrillic Small Letter Ie (U+0435)
+  "г",  # Cyrillic Small Letter Ghe (U+0433)
+  "ه",  # Arabic Letter Heh (U+0647)
+  "ı",  # Latin Small Letter Dotless I (U+0131)
+  "і",  # Cyrillic Small Letter Byelorussian-Ukrainian I (U+0456)
+  "І",  # Cyrillic Capital Letter Byelorussian-Ukrainian I (U+0406)
+  "К",  # Cyrillic Capital Letter Ka (U+041A)
+  "х",  # Cyrillic Small Letter Ha (U+0445)
+  "Х",  # Cyrillic Capital Letter Ha (U+0425)
+  "М",  # Cyrillic Capital Letter Em (U+041C)
+  "Н",  # Cyrillic Capital Letter En (U+041D)
+  "о",  # Cyrillic Small Letter O (U+043E)
+  "О",  # Cyrillic Capital Letter O (U+041E)
+  "р",  # Cyrillic Small Letter Er (U+0440)
+  "Р",  # Cyrillic Capital Letter Er (U+0420)
+  "с",  # Cyrillic Small Letter Es (U+0441)
+  "С",  # Cyrillic Capital Letter Es (U+0421)
+  "Т",  # Cyrillic Capital Letter Te (U+0422)
+  "у",  # Cyrillic Small Letter U (U+0443)
+  "У",  # Cyrillic Capital Letter U (U+0423)
+  "В",  # Cyrillic Capital Letter Ve (U+0412)
+  "З",  # Cyrillic Capital Letter Ze (U+0417)
+  "ا",  # Arabic Letter Alef (U+0627)
+]
 lint.flake8-errmsg.max-string-length = 99
 lint.pyupgrade.keep-runtime-typing = true
 
