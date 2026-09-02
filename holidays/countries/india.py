@@ -322,11 +322,11 @@ class India(
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Id-ul-Zuha (Bakrid)"))
 
-        if self.subdiv == "OR":
-            self._populate_subdiv_od_public_holidays()
-
         if self.subdiv == "DD":
             self._populate_subdiv_dh_public_holidays()
+
+        if self.subdiv == "OR":
+            self._populate_subdiv_od_public_holidays()
 
     def _populate_optional_holidays(self):
 
@@ -649,9 +649,6 @@ class India(
 
         # Sarva Pitra Moksha Amavasya.
         self._add_pitra_moksh_amavasya(tr("Sarva Pitra Moksha Amavasya"))
-
-        # Maharishi Valmiki's Birthday.
-        self._add_maharshi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
 
         # Maharaj Ajmodh Dev's Birthday.
         self._add_maharshi_valmiki_jayanti(tr("Maharaj Ajmodh Dev's Jayanti"))
@@ -1116,9 +1113,6 @@ class India(
 
         # Sarva Pitra Moksha Amavasya.
         self._add_pitra_moksh_amavasya(tr("Sarva Pitra Moksha Amavasya"))
-
-        # Maharishi Valmiki's Birthday.
-        self._add_maharshi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
 
         # Maharaj Ajmodh Dev's Birthday.
         self._add_maharshi_valmiki_jayanti(tr("Maharaj Ajmodh Dev's Jayanti"))
