@@ -155,8 +155,10 @@ class TestReadme(TestCase):
             supported_categories = row[4]
             if supported_categories:
                 categories = [PUBLIC]
-                for supported_category in supported_categories.split(","):
-                    categories.append(supported_category.strip().lower())
+                categories.extend(
+                    supported_category.strip().lower()
+                    for supported_category in supported_categories.split(",")
+                )
                 country_supported_categories[country_code] = sorted(categories)
 
         # Check the data.
@@ -282,8 +284,10 @@ class TestReadme(TestCase):
             supported_categories = row[4]
             if supported_categories:
                 categories = [PUBLIC]
-                for supported_category in supported_categories.split(","):
-                    categories.append(supported_category.strip().lower())
+                categories.extend(
+                    supported_category.strip().lower()
+                    for supported_category in supported_categories.split(",")
+                )
                 market_supported_categories[market_code] = sorted(categories)
 
         # Check the data.

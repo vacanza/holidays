@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.singapore import Singapore
+from holidays.helpers import tr
 
 
 class SingaporeExchange(Singapore):

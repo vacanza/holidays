@@ -26,7 +26,7 @@ class TestCanada(CommonCountryTests, TestCase):
         name_observed = f"{name} (observed)"
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         self.assertGovernmentHolidayName(name, (f"{year}-01-01" for year in self.full_range))
-        for _, holidays in self.subdiv_holidays.items():
+        for holidays in self.subdiv_holidays.values():
             self.assertHolidayName(name, holidays, (f"{year}-01-01" for year in self.full_range))
 
         obs_dts = (
@@ -63,7 +63,7 @@ class TestCanada(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
         self.assertGovernmentHolidayName(name, dts)
         self.assertGovernmentHolidayName(name, self.full_range)
-        for _, holidays in self.subdiv_holidays.items():
+        for holidays in self.subdiv_holidays.values():
             self.assertHolidayName(name, holidays, dts)
             self.assertHolidayName(name, holidays, self.full_range)
 
@@ -130,7 +130,7 @@ class TestCanada(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dts)
         self.assertGovernmentHolidayName(name, dts)
-        for _, holidays in self.subdiv_holidays.items():
+        for holidays in self.subdiv_holidays.values():
             self.assertHolidayName(name, holidays, dts)
             self.assertHolidayName(name, holidays, range(1894, self.end_year))
             self.assertNoHolidayName(name, holidays, range(self.start_year, 1894))
@@ -139,7 +139,7 @@ class TestCanada(CommonCountryTests, TestCase):
         name = "Christmas Day"
         name_observed = f"{name} (observed)"
         self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
-        for _, holidays in self.subdiv_holidays.items():
+        for holidays in self.subdiv_holidays.values():
             self.assertHolidayName(name, holidays, (f"{year}-12-25" for year in self.full_range))
 
         obs_dts_sat = (
