@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.103\n"
+"Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-07-22 14:20+0000\n"
-"PO-Revision-Date: 2026-08-15 20:02+0000\n"
+"PO-Revision-Date: 2026-09-03 04:44+0000\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: he\n"
@@ -103,9 +103,8 @@ msgstr ""
 msgid "שמחת תורה/שמיני עצרת"
 msgstr ""
 
-#. %s (Friday before holiday).
-#, c-format
-msgid "%s (שישי לפני חג)"
+#. Friday before a Sunday holiday.
+msgid "שישי לפני חג"
 msgstr ""
 
 #. %s (Half trading day).

@@ -13,8 +13,8 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import _timedelta, FRI, SAT, SUN, JAN, MAR, OCT, NOV
-from holidays.constants import PUBLIC, HALF_DAY
+from holidays.calendars.gregorian import JAN, MAR, OCT, NOV, FRI, SAT, SUN, _timedelta
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import HebrewCalendarHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -51,7 +51,7 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
     market = "XTAE"
     default_language = "he"
     observed_label = "%s"
-    supported_categories = (PUBLIC, HALF_DAY)
+    supported_categories = (HALF_DAY, PUBLIC)
     supported_languages = ("en_US", "he")
     start_year = 2013
 
@@ -143,8 +143,6 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
         # Simchat Torah / Shemini Atzeret.
         self._add_sukkot(tr("שמחת תורה/שמיני עצרת"), +7)
 
-        # %s (Friday before holiday).
-        bridge_label = tr("%s (שישי לפני חג)")
         for dt, name in tuple(self.items()):
             if dt.year != self._year:
                 continue
@@ -158,7 +156,8 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
                 else:
                     fri_dt = _timedelta(dt, -2)
                     if fri_dt not in self:
-                        self._add_holiday(self._format_holiday_name(bridge_label, name), fri_dt)
+                        # Friday before a Sunday holiday.
+                        self._add_holiday(tr("שישי לפני חג"), fri_dt)
 
     def _populate_half_day_holidays(self):
         # %s (Half trading day).

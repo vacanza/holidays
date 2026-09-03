@@ -56,10 +56,10 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
         self.assertNoHolidayName(name, range(self.start_year, 2022), range(2024, self.end_year))
 
     def test_passover(self):
-        eve_name = "ערב פסח"
         name = "פסח"
-        eve_7th_name = "ערב שביעי של פסח"
-        name_7th = "שביעי של פסח"
+        eve_name = f"ערב {name}"
+        name_7th = f"שביעי של {name}"
+        eve_7th_name = f"ערב {name_7th}"
         self.assertHolidayName(
             eve_name,
             "2019-04-19",
@@ -200,8 +200,8 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
         self.assertNoHolidayName(name, non_obs_dts)
 
     def test_rosh_hashanah(self):
-        eve_name = "ערב ראש השנה"
         name = "ראש השנה"
+        eve_name = f"ערב {name}"
         self.assertHolidayName(
             eve_name,
             "2020-09-18",
@@ -242,8 +242,8 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_yom_kippur(self):
-        eve_name = "ערב יום כיפור"
         name = "יום כיפור"
+        eve_name = f"ערב {name}"
         self.assertHolidayName(
             eve_name,
             "2020-09-27",
@@ -265,8 +265,8 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
         self.assertNoHolidayName(name, "2024-10-12")
 
     def test_sukkot(self):
-        eve_name = "ערב סוכות"
         name = "סוכות"
+        eve_name = f"ערב {name}"
         self.assertHolidayName(
             eve_name,
             "2019-10-13",
@@ -315,10 +315,8 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
         )
 
     def test_friday_before_holiday(self):
-        yk_eve_bridge_name = "ערב יום כיפור (שישי לפני חג)"
-        passover_bridge_name = "פסח (שישי לפני חג)"
-        self.assertHolidayName(yk_eve_bridge_name, "2026-09-18")
-        self.assertNoHolidayName(passover_bridge_name, "2021-03-26")
+        self.assertHolidayName("שישי לפני חג", "2026-09-18")
+        self.assertNoHolidayName("שישי לפני חג", "2021-03-26")
 
     def test_chol_hamoed(self):
         passover_name = "חול המועד פסח (חצי יום מסחר)"
