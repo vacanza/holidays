@@ -1,0 +1,97 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Euronext Stock Exchanges holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.104\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-08-22 13:25+0000\n"
+"PO-Revision-Date: 2026-08-23 15:45+0000\n"
+"Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_US\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr ""
+
+#. St. Stephen's Day.
+msgid "Stephen's Day"
+msgstr ""
+
+#. Labour Day.
+msgid "Labour Day"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr ""
+
+#. %s (Half Day Trading).
+#, c-format
+msgid "%s (Half Day Trading)"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr ""
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr ""
+
+#. May Bank Holiday.
+msgid "May Bank Holiday"
+msgstr ""
+
+#. Assumption of Mary.
+msgid "Assumption of Mary"
+msgstr ""
+
+#. Constitution Day.
+msgid "Constitution Day"
+msgstr ""
+
+#. Maundy Thursday.
+msgid "Maundy Thursday"
+msgstr ""
+
+#. Ascension Day.
+msgid "Ascension Day"
+msgstr ""
+
+#. Whit Monday.
+msgid "Whit Monday"
+msgstr ""
+
+#. Wednesday before Maundy Thursday.
+msgid "Wednesday before Maundy Thursday"
+msgstr ""

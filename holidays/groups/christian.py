@@ -372,6 +372,17 @@ class ChristianHolidays:
         """
         return self._add_holiday(name, _timedelta(self.__get_easter_sunday(calendar), -3))
 
+    def _add_holy_wednesday(self, name, calendar=None) -> date:
+        """
+        Add Holy Wednesday (4 days before Easter Sunday).
+
+        Holy Wednesday (also known as Spy Wednesday) is the Wednesday of
+        Holy Week, the week before Easter, commemorating the betrayal of
+        Jesus by Judas Iscariot.
+        https://en.wikipedia.org/wiki/Holy_Wednesday
+        """
+        return self._add_holiday(name, _timedelta(self.__get_easter_sunday(calendar), -4))
+
     def _add_immaculate_conception_day(self, name) -> date:
         """
         Add Immaculate Conception Day (December 8th).
