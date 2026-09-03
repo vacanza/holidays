@@ -2106,11 +2106,19 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<tr>
 <td>Taiwan Stock Exchange</td>
 <td>XTAI</td>
 <td>Taiwan Stock Exchange market holidays</td>
 <td>en_US, th, zh_CN, <strong>zh_TW</strong></td>
 <td></td>
+</tr>
+<tr>
+<td>Tel Aviv Stock Exchange</td>
+<td>XTAE</td>
+<td>Tel Aviv Stock Exchange (TASE) market holidays</td>
+<td>en_US, <strong>he</strong></td>
+<td>HALF_DAY</td>
 </tr>
 <tr>
 <td>Toronto Stock Exchange</td>
