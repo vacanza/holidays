@@ -898,6 +898,51 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_karwa_chauth(self, year: int) -> date | None:
+        """
+        Karwa Chauth = Kartik Krishna Chaturthi.
+        Tithi = 19 (Chaturthi) of Krishna Paksha in Kartik month.
+        Evaluated at moonrise (evening/moonrise tithi rule).
+
+        Chaturthi detection (moonrise tithi):
+        - Present at moonrise -> return that day
+        - Skipped between moonrises (18 -> 20) -> return current day
+        """
+        exceptions = {
+            2002: date(2002, 10, 24),
+            2003: date(2003, 10, 13),
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        # Find Kartik Amavasya
+        diwali = self.get_diwali(year)
+
+        if not diwali:
+            return None
+
+        # Find Krishna Chaturthi immediately before Kartik Amavasya.
+        for delta in range(8, 15):
+            dt = diwali - timedelta(days=delta)
+
+            self._set_observer_date(dt)
+            moonrise = self._observer.next_rising(self._moon)
+
+            t = self._tithi(moonrise)
+
+            self._set_observer_date(dt - timedelta(days=1))
+            moonrise_prev = self._observer.next_rising(self._moon)
+
+            t_prev = self._tithi(moonrise_prev)
+
+            if t == 19:
+                return dt
+
+            if t == 20 and t_prev == 18:
+                return dt
+
+        return None
+
     def get_maha_ashtami(self, year: int) -> date | None:
         """
         Maha Ashtami = Ashwin Shukla Ashtami.
@@ -1718,6 +1763,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("HOLI", _lunisolar.get_holi),
     # ("JANMASHTAMI", _lunisolar.get_janmashtami),
     # ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
+    ("KARWA_CHAUTH", _lunisolar.get_karwa_chauth),
     # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
     # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
     # ("MAHARANA_PRATAP_JAYANTI", _lunisolar.get_maharana_pratap_jayanti),
@@ -1736,7 +1782,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
     # ("TULSIDAS_JAYANTI", _lunisolar.get_tulsidas_jayanti),
     # ("VARALAKSHMI_VRATAM", _lunisolar.get_varalakshmi_vratam),
-    ("VIKRAM_SAMVAT_NEW_YEAR", _lunisolar.get_vikram_samvat_new_year),
+    # ("VIKRAM_SAMVAT_NEW_YEAR", _lunisolar.get_vikram_samvat_new_year),
 )
 
 HINDU_SOLAR_HOLIDAYS = (
