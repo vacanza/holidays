@@ -1739,6 +1739,25 @@ class _Solar(_Astronomy):
 
         return None
 
+    def get_vishu(self, year: int) -> date | None:
+        """
+        Vishu = Mesha Sankranti.
+        Sun enters sidereal Aries (Mesha rashi).
+        Evaluated at sunrise.
+
+        Sankranti detection:
+        - First sunrise with Sun in Mesha -> return that day
+        """
+        for delta in range(20):
+            dt = date(year, 4, 5) + timedelta(days=delta)
+            sign = self._sidereal_solar_zodiac_sign(self._sunrise(dt))
+            sign_prev = self._sidereal_solar_zodiac_sign(self._sunrise(dt - timedelta(days=1)))
+
+            if sign == 0 and sign_prev == 11:
+                return dt
+
+        return None
+
 
 _lunisolar = _Lunisolar()
 _solar = _Solar()
@@ -1763,7 +1782,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("HOLI", _lunisolar.get_holi),
     # ("JANMASHTAMI", _lunisolar.get_janmashtami),
     # ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
-    ("KARWA_CHAUTH", _lunisolar.get_karwa_chauth),
+    # ("KARWA_CHAUTH", _lunisolar.get_karwa_chauth),
     # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
     # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
     # ("MAHARANA_PRATAP_JAYANTI", _lunisolar.get_maharana_pratap_jayanti),
@@ -1788,6 +1807,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
 HINDU_SOLAR_HOLIDAYS = (
     # ("MAKAR_SANKRANTI", _solar.get_makar_sankranti),
     # ("VISHWAKARMA_PUJA", _solar.get_vishwakarma_puja),
+    ("VISHU", _solar.get_vishu),
 )
 
 
