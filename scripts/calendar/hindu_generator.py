@@ -286,6 +286,27 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_bonalu(self, year: int) -> date | None:
+        """
+        Bonalu = Telangana Ashadh Masam festival.
+        The ending date is the Monday following the final Sunday
+        of Ashadh Masam.
+        """
+        # Find the Amavasya ending Ashadh Masam.
+        ashad_ama = self._get_amavasya(date(year, 7, 1), zodiac_sign=3)
+
+        if not ashad_ama:
+            return None
+
+        # Find the final Sunday before Ashadh Amavasya.
+        dt = ashad_ama - timedelta(days=1)
+
+        while dt.weekday() != 6:
+            dt -= timedelta(days=1)
+
+        # Bonalu ending date is the following Monday.
+        return dt + timedelta(days=1)
+
     def get_buddha_purnima(self, year: int) -> date | None:
         """
         Buddha Purnima = Vaishakha Shukla Purnima.
@@ -656,18 +677,18 @@ class _Lunisolar(_Astronomy):
 
     def get_guru_purnima(self, year: int) -> date | None:
         """
-        Guru Purnima = Ashadha Purnima.
-        Tithi = 15 (Purnima) of Shukla Paksha in Ashadha month - sun in sidereal Gemini (sign 2).
+        Guru Purnima = Ashadh Purnima.
+        Tithi = 15 (Purnima) of Shukla Paksha in Ashadh month - sun in sidereal Gemini (sign 2).
         Evaluated at sunrise (Udaya tithi rule).
 
         In Adhika Masa (leap month) years, two Purnimas can occur while
-        the sun is in sidereal Gemini. The last one belongs to Ashadha proper.
+        the sun is in sidereal Gemini. The last one belongs to Ashadh proper.
 
         Purnima detection:
         - Present at sunrise -> return that day (first occurrence)
         - Skipped between days (14 -> 16) -> return current day
         """
-        # Find last Ashadha Amavasya
+        # Find last Ashadh Amavasya
         ashada_ama = self._get_amavasya(date(year, 6, 1), zodiac_sign=2, last=True)
 
         if not ashada_ama:
@@ -1432,23 +1453,23 @@ class _Lunisolar(_Astronomy):
 
     def get_rath_yatra(self, year: int) -> date | None:
         """
-        Rath Yatra = Ashadha Shukla Dwitiya.
-        Tithi = 2 (Dwitiya) of Shukla Paksha in Ashadha month - sun in sidereal Gemini (sign 2).
+        Rath Yatra = Ashadh Shukla Dwitiya.
+        Tithi = 2 (Dwitiya) of Shukla Paksha in Ashadh month - sun in sidereal Gemini (sign 2).
         Evaluated at sunrise (Udaya tithi rule).
 
         Dwitiya detection:
         - Present at sunrise -> return that day (first occurrence)
         - Skipped between days (1 -> 3) -> return current day
         """
-        # Find Ashadha Amavasya
-        ashadha_ama = self._get_amavasya(date(year, 6, 1), zodiac_sign=2, last=True)
+        # Find Ashadh Amavasya
+        ashadh_ama = self._get_amavasya(date(year, 6, 1), zodiac_sign=2, last=True)
 
-        if not ashadha_ama:
+        if not ashadh_ama:
             return None
 
         # Find Dwitiya (tithi 2) at sunrise, or skipped case (1 -> 3)
         for delta in range(1, 5):
-            dt = ashadha_ama + timedelta(days=delta)
+            dt = ashadh_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
             t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
@@ -1765,6 +1786,7 @@ _solar = _Solar()
 HINDU_LUNISOLAR_HOLIDAYS = (
     # ("ANANT_CHATURDASHI", _lunisolar.get_anant_chaturdashi),
     # ("BASANT_PANCHAMI", _lunisolar.get_basant_panchami),
+    ("BONALU", _lunisolar.get_bonalu),
     # ("BUDDHA_PURNIMA", _lunisolar.get_buddha_purnima),
     # ("CHAITRA_NAVRATRI", _lunisolar.get_chaitra_navratri),
     # ("CHHATH_PUJA", _lunisolar.get_chhath_puja),
@@ -1807,7 +1829,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
 HINDU_SOLAR_HOLIDAYS = (
     # ("MAKAR_SANKRANTI", _solar.get_makar_sankranti),
     # ("VISHWAKARMA_PUJA", _solar.get_vishwakarma_puja),
-    ("VISHU", _solar.get_vishu),
+    # ("VISHU", _solar.get_vishu),
 )
 
 
