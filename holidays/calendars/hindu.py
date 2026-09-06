@@ -79,7 +79,7 @@ TAMU_LOSAR = "TAMU_LOSAR"
 THAIPUSAM = "THAIPUSAM"
 TULSIDAS_JAYANTI = "TULSIDAS_JAYANTI"
 VAISAKHI = "VAISAKHI"
-VARALAKHSMI_VRATAM = "VARALAKHSMI_VRATAM"
+VARALAKSHMI_VRATAM = "VARALAKSHMI_VRATAM"
 VIKRAM_SAMVAT_NEW_YEAR = "VIKRAM_SAMVAT_NEW_YEAR"
 VISHU = "VISHU"
 VISHWAKARMA_PUJA = "VISHWAKARMA_PUJA"
@@ -3264,7 +3264,7 @@ class _HinduLunisolar:
         return self._get_holiday(VAISAKHI, year)
 
     def varalakshmi_vratam_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(VARALAKHSMI_VRATAM, year)
+        return self._get_holiday(VARALAKSHMI_VRATAM, year)
 
     def vikram_samvat_new_year_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VIKRAM_SAMVAT_NEW_YEAR, year)

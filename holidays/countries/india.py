@@ -343,9 +343,6 @@ class India(
         if self.subdiv == "DD":
             self._populate_subdiv_dh_public_holidays()
 
-        if self.subdiv == "DD":
-            self._populate_subdiv_dh_public_holidays()
-
         if self.subdiv == "OR":
             self._populate_subdiv_od_public_holidays()
 
@@ -550,7 +547,7 @@ class India(
         # Makar Sankranti.
         self._add_makar_sankranti(tr("Makar Sankranti"))
 
-        # Kanuma
+        # Kanuma.
         self._add_vassi_uttarayan(tr("Kanuma"))
 
         # Ugadi.
@@ -567,7 +564,7 @@ class India(
 
     def _populate_subdiv_ap_optional_holidays(self):
         # Boxing Day.
-        self._add_holiday_dec_26(tr("Boxing Day"))
+        self._add_christmas_day_two(tr("Boxing Day"))
 
         # Islamic holidays.
 
@@ -594,7 +591,7 @@ class India(
         self._add_maha_ashtami(tr("Mahashtami"))
 
     def _populate_subdiv_ar_optional_holidays(self):
-        #  Lingri Niki Sii Donyi Polo Yullo.
+        # Lingri Niki Sii Donyi Polo Yullo.
         self._add_holiday_dec_26(tr("Lingri Niki Sii Donyi Polo Yullo"))
 
     # Assam.
@@ -1162,7 +1159,7 @@ class India(
         # Veerangana Durgavati's Martyrdom Day.
         self._add_holiday_jun_24(tr("Veerangana Durgavati's Shaheedi Diwas"))
 
-        #  Durgadas Rathore's Birthday.
+        # Durgadas Rathore's Birthday.
         self._add_holiday_aug_13(tr("Durgadas Rathore's Jayanti"))
 
         # International Day of Persons with Disabilities.
@@ -1272,8 +1269,9 @@ class India(
         # Maharaja Gambhir Singh's Death Anniversary.
         self._add_holiday_jan_9(tr("Maharaja Gambhir Singh's Death Anniversary"))
 
-        # Lui Ngai Ni.
-        self._add_holiday_feb_15(tr("Lui Ngai Ni"))
+        if self._year >= 1988:
+            # Lui Ngai Ni.
+            self._add_holiday_feb_15(tr("Lui Ngai Ni"))
 
         # Khongjom Day.
         self._add_holiday_apr_23(tr("Khongjom Day"))
@@ -1564,7 +1562,7 @@ class India(
         self._add_holiday_apr_5(tr("Babu Jagjivan Ram's Jayanti"))
 
         # Boxing Day.
-        self._add_holiday_dec_26(tr("Boxing Day"))
+        self._add_christmas_day_two(tr("Boxing Day"))
 
         # Hindu holidays.
 
@@ -1580,7 +1578,7 @@ class India(
     def _populate_subdiv_ts_optional_holidays(self):
         # Hindu holidays.
 
-        # Kanuma
+        # Kanuma.
         self._add_vassi_uttarayan(tr("Kanuma"))
 
         # Varalakshmi Vratam.
@@ -1654,9 +1652,6 @@ class India(
 
         # Veer Kesari Chand's Martyrdom Day.
         self._add_holiday_may_3(tr("Veer Kesari Chand's Shaheedi Diwas"))
-
-        # Easter Monday.
-        self._add_easter_monday(tr("Easter Monday"))
 
         # Hindu holidays.
 

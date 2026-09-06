@@ -874,7 +874,15 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         )
 
     def add_pohela_boishakh(self, name) -> date | None:
-        "Add Pohela Boishakh, the Bengali New Year."
+        """
+        Add Pohela Boishakh.
+
+        Pohela Boishakh, also known as Bengali New Year, marks the
+        beginning of the Bengali calendar and is celebrated with
+        cultural events, processions, and traditional festivities.
+
+        https://en.wikipedia.org/wiki/Pohela_Boishakh
+        """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.vaisakhi_date(self._year), days_delta=+1
         )
