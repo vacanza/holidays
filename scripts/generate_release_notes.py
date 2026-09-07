@@ -14,6 +14,7 @@
 #  License: MIT (see LICENSE file)
 
 import argparse
+import contextlib
 import re
 import sys
 from datetime import datetime, timezone
@@ -223,11 +224,9 @@ class ReleaseNotesGenerator:
                     messages.append("(keeping PR author as a sole contributor)")
                 print(" ".join(messages))
 
-            try:
-                self.add_pull_request(self.remote_repo.get_pull(pull_request_number))
             # 3rd party contributions to forks.
-            except UnknownObjectException:
-                pass
+            with contextlib.suppress(UnknownObjectException):
+                self.add_pull_request(self.remote_repo.get_pull(pull_request_number))
 
     def print_release_notes(self):
         """Print generated release notes."""

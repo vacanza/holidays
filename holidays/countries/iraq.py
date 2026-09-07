@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, MAR, JUN, JUL, AUG, SEP, OCT, NOV, DEC, FRI, SAT
 from holidays.constants import CHRISTIAN, HEBREW, PUBLIC, SABIAN, YAZIDI
@@ -22,6 +20,7 @@ from holidays.groups import (
     IslamicHolidays,
     MandaeanHolidays,
 )
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 

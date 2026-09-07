@@ -150,14 +150,13 @@ class POGenerator:
             return
 
         desc_line = None
-        if docstring:
-            if display_name := docstring.split("\n", maxsplit=1)[0].removesuffix(" holidays."):
-                lang_tag = (
-                    f" {current_language} localization"
-                    if current_language != default_language
-                    else ""
-                )
-                desc_line = f"# {display_name} holidays{lang_tag}."
+        if docstring and (
+            display_name := docstring.split("\n", maxsplit=1)[0].removesuffix(" holidays.")
+        ):
+            lang_tag = (
+                f" {current_language} localization" if current_language != default_language else ""
+            )
+            desc_line = f"# {display_name} holidays{lang_tag}."
 
         parts = []
         if cls._license_header:

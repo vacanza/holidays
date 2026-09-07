@@ -47,3 +47,8 @@ def _normalize_tuple(value):
         An object put into a tuple otherwise, e.g., ((JAN, 10),).
     """
     return value if not value or isinstance(value[0], tuple) else (value,)
+
+
+def tr(message: str) -> str:
+    """Mark a string for translation while returning it unchanged at runtime."""
+    return message

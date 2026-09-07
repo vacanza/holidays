@@ -286,6 +286,7 @@ COUNTRIES: RegistryDict = {
 }
 
 FINANCIAL: RegistryDict = {
+    "australian_securities_exchange": ("AustralianSecuritiesExchange", "XASX", "ASX"),
     "bolsa_mexicana_de_valores": ("BolsaMexicanaDeValores", "XMEX", "BMV"),
     "bolsas_y_mercados_argentinos": ("BolsasYMercadosArgentinos", "XBUE", "BYMA"),
     "bolsas_y_mercados_espanoles": ("BolsasYMercadosEspanoles", "XMAD", "BME"),
@@ -299,6 +300,7 @@ FINANCIAL: RegistryDict = {
     "japan_exchange": ("JapanExchange", "XJPX", "JPX", "TSE", "OSE"),
     "johannesburg_stock_exchange": ("JohannesburgStockExchange", "XJSE", "JSE"),
     "korea_exchange": ("KoreaExchange", "XKRX", "KRX"),
+    "london_stock_exchange": ("LondonStockExchange", "XLON", "LSE"),
     "nasdaq": ("NASDAQ", "XNAS"),
     "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),
     "new_zealand_exchange": ("NewZealandExchange", "XNZE", "NZX"),

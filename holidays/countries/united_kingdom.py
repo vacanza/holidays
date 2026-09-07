@@ -10,10 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC
+from holidays.constants import PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_TO_NEXT_TUE,
@@ -53,7 +53,7 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         "Scotland": "SCT",
         "Wales": "WLS",
     }
-    supported_languages = ("en_GB", "en_US", "th")
+    supported_languages = ("en_GB", "en_US", "th", "ur_PK")
     # Bank Holidays Act 1871.
     start_year = 1872
     _deprecated_subdivisions = ("UK",)
@@ -104,7 +104,7 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             self._add_pentecost_monday(tr("Whit Monday"))
 
     def _populate_subdiv_holidays(self):
-        if self.subdiv != "SCT":
+        if PUBLIC in self.categories and self._normalized_subdiv != "SCT":
             if self._year >= 1975:
                 # New Year's Day.
                 self._add_observed(self._add_new_years_day(tr("New Year's Day")))

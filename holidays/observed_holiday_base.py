@@ -313,7 +313,7 @@ class ObservedHolidayBase(HolidayBase):
                 observed_estimated_label = None
                 if estimated_label_text and estimated_label_text in holiday_name:
                     holiday_name = holiday_name.replace(f"({estimated_label_text})", "").strip()
-                    observed_estimated_label = self.tr(getattr(self, "observed_estimated_label"))
+                    observed_estimated_label = self.tr(self.observed_estimated_label)
 
                 super()._add_holiday(
                     (observed_estimated_label or observed_label) % holiday_name, dt_observed
@@ -417,7 +417,10 @@ class ObservedHolidayBase(HolidayBase):
             return None
 
         self._add_special_holidays(
-            (f"special_{category}_holidays_observed" for category in self._sorted_categories),
+            (
+                f"special_{category.lower()}_holidays_observed"
+                for category in self._sorted_categories
+            ),
             observed=True,
         )
 
@@ -430,7 +433,7 @@ class ObservedHolidayBase(HolidayBase):
 
         self._add_special_holidays(
             (
-                f"special_{self._normalized_subdiv}_{category}_holidays_observed"
+                f"special_{self._normalized_subdiv.lower()}_{category.lower()}_holidays_observed"
                 for category in self._sorted_categories
             ),
             observed=True,

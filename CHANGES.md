@@ -1,3 +1,30 @@
+## Version 0.104
+
+Released September 7, 2026
+
+- Refactor United States tests (#3790 by @KJhellico)
+- Refactor `HolidayBase::__getitem__` method (#3795 by @KJhellico)
+- Refactor l10n implementation (#3791 by @KJhellico)
+- Add Australian Securities Exchange (ASX) holidays (#3753 by @pareshjoshij, @KJhellico)
+- Add London Stock Exchange (LSE) holidays (#3654 by @eeshsaxena, @PPsyrius)
+- Fix unbounded `functools.cache` retention in Burmese and Thai calendars (#3777 by @wu-zhao-min, @arkid15r)
+- Improve Islamic holidays calculations among ASEAN countries (with MABIMS crescent visibility criteria) (#3603 by @akshiDhi, @KJhellico, @PPsyrius)
+- Update Ethiopia holidays: restrict May 28 holiday to 1992-2024 (#3783 by @SamAsEnd, @PPsyrius)
+- Update India holidays: fix 2026 Holi date in Maharashtra (#3773 by @Drona-jadhav7)
+- Update India holidays: fix Arbaeen holiday name (#3779 by @KJhellico)
+- Update India holidays: fix holidays structure (#3794 by @ankushhKapoor, @KJhellico)
+- Update India holidays: subdiv holidays improvement (Central and West region) (#3709 by @ankushhKapoor)
+- Update Iran holidays: add 2026 exact dates (#3797 by @KJhellico)
+- Update Mauritania holidays: add l10n support (#3660 by @TaniaRocks, @KJhellico)
+- Update United Kingdom holidays: add Urdu language support (#3765 by @shehrozsultani)
+- Update documentation build settings (#3780 by @KJhellico)
+- Update iCal exporter: fix dropping or duplicating events (#3704 by @chuenchen309, @arkid15r, @KJhellico)
+- Update l10n test: fix duplicated entries check (#3785 by @KJhellico)
+- Update ruff configuration (#3796 by @PPsyrius)
+- Update subdivision aliases handling (#3770 by @KJhellico)
+- Add Python 3.15 (beta) to CI/CD (#3771 by @PPsyrius)
+- Reference maintenance: archive links (#3772 by @PPsyrius)
+
 ## Version 0.103
 
 Released August 17, 2026

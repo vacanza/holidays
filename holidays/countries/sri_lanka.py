@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
     JAN,
@@ -37,6 +35,7 @@ from holidays.groups import (
     SinhalaCalendarHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 

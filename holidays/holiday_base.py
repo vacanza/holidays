@@ -12,6 +12,7 @@
 
 __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
+import contextlib
 import copy
 import warnings
 from bisect import bisect_left, bisect_right
@@ -578,11 +579,21 @@ class HolidayBase(dict[date, str]):
             if diff_days < 0 <= step or diff_days >= 0 > step:
                 step = -step
 
-            return [
-                day
-                for delta_days in range(0, diff_days, step)
-                if (day := _timedelta(start, delta_days)) in self
-            ]
+            if self.expand:
+                for year in range(min(start.year, stop.year), max(start.year, stop.year) + 1):
+                    if year not in self.years:
+                        self.years.add(year)
+                        self._populate(year)
+
+            if step > 0:
+                days = [
+                    day for day in self if start <= day < stop and (day - start).days % step == 0
+                ]
+            else:
+                days = [
+                    day for day in self if stop < day <= start and (day - start).days % step == 0
+                ]
+            return sorted(days, reverse=step < 0)
 
         return dict.__getitem__(self, self.__keytransform__(key))
 
@@ -621,10 +632,8 @@ class HolidayBase(dict[date, str]):
         elif isinstance(key, str):
             # key possibly contains a date in YYYY-MM-DD or YYYYMMDD format.
             if len(key) in {8, 10}:
-                try:
+                with contextlib.suppress(ValueError):
                     dt = date.fromisoformat(key)
-                except ValueError:
-                    pass
             if dt is None:
                 try:
                     dt = parse(key).date()
@@ -743,9 +752,13 @@ class HolidayBase(dict[date, str]):
     @cached_property
     def _normalized_subdiv(self):
         return (
-            self.subdivisions_aliases.get(self.subdiv, self.subdiv)
-            .translate(str.maketrans({"-": "_", " ": "_"}))
-            .lower()
+            (
+                self.subdivisions_aliases.get(self.subdiv, self.subdiv).translate(
+                    str.maketrans({"-": "_", " ": "_"})
+                )
+            )
+            if self.subdiv is not None
+            else None
         )
 
     @property
@@ -979,14 +992,14 @@ class HolidayBase(dict[date, str]):
         for category in self._sorted_categories:
             if asch_method := getattr(
                 self,
-                f"_populate_subdiv_{self._normalized_subdiv}_{category.lower()}_holidays",
+                f"_populate_subdiv_{self._normalized_subdiv.lower()}_{category.lower()}_holidays",
                 None,
             ):
                 asch_method()
 
         if self.has_special_holidays:
             self._add_special_holidays(
-                f"special_{self._normalized_subdiv}_{category.lower()}_holidays"
+                f"special_{self._normalized_subdiv.lower()}_{category.lower()}_holidays"
                 for category in self._sorted_categories
             )
 

@@ -82,10 +82,9 @@ def gfm_to_mkdocs(text: str) -> str:
         i += 1
 
         title = ""
-        if i < len(lines):
-            if match := re.match(r"^>\s*\*\*(.+?)\*\*", lines[i]):
-                title = f' "{match.group(1)}"'
-                i += 1
+        if i < len(lines) and (match := re.match(r"^>\s*\*\*(.+?)\*\*", lines[i])):
+            title = f' "{match.group(1)}"'
+            i += 1
 
         note_body = []
         while i < len(lines):

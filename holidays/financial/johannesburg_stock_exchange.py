@@ -39,7 +39,6 @@ class JohannesburgStockExchange(SouthAfrica):
     def _populate_public_holidays(self):
         super()._populate_public_holidays()
 
-        # Copy keys so weekend entries can be popped without mutating during iteration.
         for dt in tuple(self.keys()):
             if self._is_weekend(dt):
                 self.pop(dt)

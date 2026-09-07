@@ -10,11 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import SAT, SUN
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.hongkong import HongKong
+from holidays.helpers import tr
 
 
 class HongKongStockExchange(HongKong):

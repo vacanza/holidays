@@ -173,7 +173,7 @@ class TestListLocalizedEntities(unittest.TestCase):
         for path in locale_dir.rglob("*.mo"):
             entity_to_languages[path.stem].append(path.parts[-3])
 
-        for entity_code in supported_entities.keys():
+        for entity_code in supported_entities:
             actual_languages = sorted(entity_to_languages.get(entity_code, []))
             expected_languages = localized_entities.get(entity_code, [])
 

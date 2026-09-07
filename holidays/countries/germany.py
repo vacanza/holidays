@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars.germany_school import (
     ASCENSION_WHIT_BREAK,
@@ -25,6 +24,7 @@ from holidays.calendars.germany_school import (
 from holidays.calendars.gregorian import JAN, MAY, JUN, OCT, DEC
 from holidays.constants import CATHOLIC, PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -174,7 +174,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             return None
 
         normalized_subdiv = self._normalized_subdiv
-        subdiv = "BY" if normalized_subdiv in {"augsburg", "byp"} else normalized_subdiv.upper()
+        subdiv = "BY" if normalized_subdiv in {"Augsburg", "BYP"} else normalized_subdiv.upper()
         school_holiday_names = self._get_school_holiday_names()
         for (
             start_year_offset,

@@ -125,10 +125,10 @@ class SnapshotGenerator:
         work_items: list[tuple[str, str | None, tuple[str, ...], range, Path]] = []
         for country_code in country_list:
             country = country_holidays(country_code)
-            for subdiv in (None, *country.subdivisions):
-                work_items.append(
-                    (country_code, subdiv, country.supported_categories, self.years, snapshot_path)
-                )
+            work_items.extend(
+                (country_code, subdiv, country.supported_categories, self.years, snapshot_path)
+                for subdiv in (None, *country.subdivisions)
+            )
         with ProcessPoolExecutor() as executor:
             list(executor.map(SnapshotGenerator._country_subdiv_snapshot_worker, work_items))
 

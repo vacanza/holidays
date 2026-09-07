@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars.gregorian import (
     JAN,
@@ -32,6 +31,7 @@ from holidays.calendars.gregorian import (
 )
 from holidays.constants import ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import InternationalHolidays, StaticHolidays, ThaiCalendarHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_TO_NEXT_MON,

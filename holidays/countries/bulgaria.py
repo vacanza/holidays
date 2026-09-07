@@ -12,13 +12,13 @@
 
 from __future__ import annotations
 
-from gettext import gettext as tr
 from typing import TYPE_CHECKING
 
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, SEP, DEC
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.constants import HALF_DAY, PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 if TYPE_CHECKING:
