@@ -42,7 +42,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             * [Proclamation of Oct 12, 2007](https://web.archive.org/web/20250906045854/https://www.ontario.ca/document/ontario-gazette-volume-140-issue-43-october-27-2007)
             * [Guide to the Employment Standards Act](https://web.archive.org/web/20250405170509/https://www.ontario.ca/document/your-guide-employment-standards-act-0/public-holidays)
         * Quebec:
-            * [National Holiday Act, N-1.1 s. 60](https://www.legisquebec.gouv.qc.ca/fr/document/lc/N-1.1?langCont=en#se:60)
+            * [National Holiday Act, N-1.1 s. 60](https://web.archive.org/web/20260312101221/https://www.legisquebec.gouv.qc.ca/fr/document/lc/N-1.1?langcont=en#se:60)
         * <https://archive.org/details/nunavut-day-designated-as-a-general-holiday-start-date>
         * <https://web.archive.org/web/20250122122256/https://www.warmuseum.ca/firstworldwar/history/after-the-war/remembrance/remembrance-day/>
         * <https://web.archive.org/web/20250428153936/https://www.thecanadianencyclopedia.ca/en/article/thanksgiving-day>
@@ -170,8 +170,6 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-        # Quebec N-1.1 s. 60 does not list Boxing Day.
-        # https://www.legisquebec.gouv.qc.ca/fr/document/lc/N-1.1?langCont=en#se:60
         if self._normalized_subdiv != "QC":
             self._add_observed(
                 # Boxing Day.
