@@ -129,11 +129,7 @@ TRAILING_APPENDED_RANGE_FOOTNOTE_RE = re.compile(
 )
 BROKEN_DAY_MONTH_SEPARATOR_RE = re.compile(r"(?<!\.\d)(?<!\.\d\d)(?<=\d)-(?=\d{1,2}\.)")
 DOUBLE_DOT_RANGE_RE = re.compile(r"\.\s*\.\s*-\s*")
-SHARED_MONTH_SPACED_RE = re.compile(r"(?<!\d\.)\b(\d{1,2})\.\s*/\s*(\d{1,2})\.(\d{1,2})\.")
-SHARED_MONTH_COMPACT_RE = re.compile(r"(?<!\d\.)\b(\d{1,2})\./(\d{1,2})\.(\d{1,2})\.")
-MULTIPLE_DOTS_RE = re.compile(r"\.{2,}")
-MULTIPLE_SLASHES_RE = re.compile(r"/{2,}")
-ONLY_DASHES_RE = re.compile(r"-+")
+SHARED_MONTH_RE = re.compile(r"(?<!\d\.)\b(\d{1,2})\.\s*/\s*(\d{1,2})\.(\d{1,2})\.")
 
 HEADER_PATH = ROOT_DIR / "docs" / "file_header.txt"
 
@@ -294,9 +290,7 @@ def _repair_pdf_artifacts(cell: str) -> str:
 
 def _expand_shared_month_notation(cell: str) -> str:
     """Expand forms like `20./21.06.` into explicit month-qualified dates."""
-
-    cell = SHARED_MONTH_SPACED_RE.sub(r"\1.\3/\2.\3", cell)
-    return SHARED_MONTH_COMPACT_RE.sub(r"\1.\3/\2.\3", cell)
+    return SHARED_MONTH_RE.sub(r"\1.\3/\2.\3", cell)
 
 
 def _collapse_cell_formatting(cell: str) -> str:
@@ -305,10 +299,10 @@ def _collapse_cell_formatting(cell: str) -> str:
     cell = re.sub(r"\s*/\s*", "/", cell)
     cell = re.sub(r"\s*-\s*", "-", cell)
     cell = cell.replace("./", "/")
-    cell = MULTIPLE_DOTS_RE.sub(".", cell)
-    cell = MULTIPLE_SLASHES_RE.sub("/", cell)
+    cell = re.compile(r"\.{2,}").sub(".", cell)
+    cell = re.compile(r"/{2,}").sub("/", cell)
     cell = re.sub(r"\s+", " ", cell).strip(" ./")
-    if ONLY_DASHES_RE.fullmatch(cell):
+    if re.compile(r"-+").fullmatch(cell):
         return "--"
     return cell
 
