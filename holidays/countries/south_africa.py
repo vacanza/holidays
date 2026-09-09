@@ -193,6 +193,7 @@ class SouthAfricaStaticHolidays:
         2022: (DEC, 27, presidential_decree_holiday),
         2023: (DEC, 15, presidential_decree_holiday),
         2024: (MAY, 29, national_and_provincial_elections),
+        2026: (NOV, 4, local_elections),
     }
     special_public_holidays_observed = {
         # https://web.archive.org/web/20120328122217/http://www.info.gov.za/speeches/1999/991028409p1002.htm
