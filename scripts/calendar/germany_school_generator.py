@@ -192,8 +192,9 @@ def _extract_start_year(label: str, href: str) -> int | None:
 
 def _fetch_url(url: str) -> bytes:
     parsed = urlparse(url)
-    if parsed.hostname != ALLOWED_KMK_HOST:
+    if parsed.scheme not in {"http", "https"} or parsed.hostname != ALLOWED_KMK_HOST:
         raise ValueError(f"Unsupported KMK URL: {url}")
+    url = parsed._replace(scheme="https").geturl()
     with urlopen(url, timeout=URL_TIMEOUT_SECONDS) as response:  # noqa: S310
         return response.read()
 
