@@ -4,21 +4,23 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# flake8: noqa: F403
+from typing import TYPE_CHECKING
 
 from holidays.constants import *
 from holidays.holiday_base import *
 from holidays.registry import EntityLoader
 from holidays.utils import *
+from holidays.version import __version__  # noqa: F401
 
-__version__ = "0.49"
-
+if TYPE_CHECKING:  # Re-export for static analysis. Runtime names come from EntityLoader below.
+    from holidays.countries import *
+    from holidays.financial import *
 
 EntityLoader.load("countries", globals())
 EntityLoader.load("financial", globals())

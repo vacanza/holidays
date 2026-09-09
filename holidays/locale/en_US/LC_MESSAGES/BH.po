@@ -4,32 +4,33 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Bahrain holidays en_US localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.29\n"
+"Project-Id-Version: Holidays 0.79\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2023-09-12 16:02+0100\n"
-"Last-Translator: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"PO-Revision-Date: 2025-08-07 18:13+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
+"X-Source-Language: ar\n"
 
 #. %s (estimated).
 #, c-format
-msgid "(تقدير) %s"
+msgid "%s (تقديري)"
 msgstr "%s (estimated)"
 
 #. New Year's Day.
@@ -40,38 +41,26 @@ msgstr "New Year's Day"
 msgid "عيد العمال"
 msgstr "Labor Day"
 
-#. Eid Al Fitr.
-msgid "عيد الفطر"
-msgstr "Eid al-Fitr"
-
-#. Eid Al Fitr Holiday.
-msgid "عطلة عيد الفطر"
-msgstr "Eid al-Fitr Holiday"
-
-#. Eid Al Adha.
-msgid "عيد الأضحى"
-msgstr "Eid al-Adha"
-
-#. Eid Al Adha Holiday.
-msgid "عطلة عيد الأضحى"
-msgstr "Eid al-Adha Holiday"
+#. National Day.
+msgid "العيد الوطني"
+msgstr "National Day"
 
 #. Islamic New Year.
 msgid "رأس السنة الهجرية"
 msgstr "Islamic New Year"
 
 #. Ashura.
-msgid "عاشورة"
+msgid "عاشوراء"
 msgstr "Ashura"
 
-#. Ashura Eve.
-msgid "ليلة عاشورة"
-msgstr "Ashura Eve"
-
 #. Prophet's Birthday.
-msgid "عيد المولد النبوي"
+msgid "المولد النبوي الشريف"
 msgstr "Prophet's Birthday"
 
-#. National Day.
-msgid "اليوم الوطني"
-msgstr "National Day"
+#. Eid al-Fitr.
+msgid "عيد الفطر"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "عيد الأضحى"
+msgstr "Eid al-Adha"

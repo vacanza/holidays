@@ -4,17 +4,20 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional, Tuple
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, NOV
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, NOV, DEC
+
+CHINESE_CALENDAR = "CHINESE_CALENDAR"
+KOREAN_CALENDAR = "KOREAN_CALENDAR"
+VIETNAMESE_CALENDAR = "VIETNAMESE_CALENDAR"
 
 BUDDHA_BIRTHDAY = "BUDDHA_BIRTHDAY"
 DOUBLE_NINTH = "DOUBLE_NINTH"
@@ -150,7 +153,7 @@ class _ChineseLunisolar:
         2022: (MAY, 8),
         2023: (MAY, 26),
         2024: (MAY, 15),
-        2025: (MAY, 4),
+        2025: (MAY, 5),
         2026: (MAY, 24),
         2027: (MAY, 13),
         2028: (MAY, 2),
@@ -225,6 +228,7 @@ class _ChineseLunisolar:
         2097: (MAY, 19),
         2098: (MAY, 8),
         2099: (MAY, 27),
+        2100: (MAY, 16),
     }
 
     DOUBLE_NINTH_DATES = {
@@ -427,6 +431,7 @@ class _ChineseLunisolar:
         2097: (OCT, 13),
         2098: (OCT, 3),
         2099: (OCT, 22),
+        2100: (OCT, 12),
     }
 
     DRAGON_BOAT_DATES = {
@@ -629,6 +634,7 @@ class _ChineseLunisolar:
         2097: (JUN, 14),
         2098: (JUN, 4),
         2099: (JUN, 23),
+        2100: (JUN, 12),
     }
 
     HUNG_KINGS_DATES = {
@@ -831,6 +837,7 @@ class _ChineseLunisolar:
         2097: (APR, 21),
         2098: (APR, 11),
         2099: (APR, 29),
+        2100: (APR, 19),
     }
 
     LUNAR_NEW_YEAR_DATES = {
@@ -849,7 +856,7 @@ class _ChineseLunisolar:
         1913: (FEB, 6),
         1914: (JAN, 26),
         1915: (FEB, 14),
-        1916: (FEB, 3),
+        1916: (FEB, 4),
         1917: (JAN, 23),
         1918: (FEB, 11),
         1919: (FEB, 1),
@@ -1033,6 +1040,7 @@ class _ChineseLunisolar:
         2097: (FEB, 12),
         2098: (FEB, 1),
         2099: (JAN, 21),
+        2100: (FEB, 9),
     }
 
     MID_AUTUMN_DATES = {
@@ -1224,7 +1232,7 @@ class _ChineseLunisolar:
         2086: (SEP, 22),
         2087: (SEP, 11),
         2088: (SEP, 29),
-        2089: (SEP, 19),
+        2089: (SEP, 18),
         2090: (SEP, 8),
         2091: (SEP, 27),
         2092: (SEP, 16),
@@ -1235,31 +1243,196 @@ class _ChineseLunisolar:
         2097: (SEP, 20),
         2098: (SEP, 9),
         2099: (SEP, 29),
+        2100: (SEP, 18),
     }
 
-    def _get_holiday(self, holiday: str, year: int) -> Tuple[Optional[date], bool]:
+    KOREAN_CALENDAR_BUDDHA_BIRTHDAY_DATES = {
+        1905: (MAY, 12),
+        1908: (MAY, 8),
+        1931: (MAY, 25),
+        1968: (MAY, 5),
+        2001: (MAY, 1),
+        2012: (MAY, 28),
+        2023: (MAY, 27),
+    }
+
+    KOREAN_CALENDAR_LUNAR_NEW_YEAR_DATES = {
+        1944: (JAN, 26),
+        1954: (FEB, 4),
+        1958: (FEB, 19),
+        1966: (JAN, 22),
+        1988: (FEB, 18),
+        1997: (FEB, 8),
+        2027: (FEB, 7),
+        2028: (JAN, 27),
+        2061: (JAN, 22),
+        2089: (FEB, 11),
+        2092: (FEB, 8),
+    }
+
+    KOREAN_CALENDAR_MID_AUTUMN_DATES = {
+        1909: (SEP, 29),
+        1942: (SEP, 25),
+        2040: (SEP, 21),
+        2089: (SEP, 19),
+        2096: (OCT, 1),
+        2098: (SEP, 10),
+    }
+
+    VIETNAMESE_CALENDAR_HUNG_KINGS_DATES = {
+        1916: (APR, 11),
+        1917: (APR, 1),
+        1939: (APR, 28),
+        1975: (APR, 20),
+        2009: (APR, 4),
+        2037: (APR, 24),
+        2038: (APR, 13),
+        2085: (APR, 3),
+        2086: (APR, 22),
+        2095: (APR, 13),
+        2100: (APR, 18),
+    }
+
+    VIETNAMESE_CALENDAR_LUNAR_NEW_YEAR_DATES = {
+        1903: (JAN, 28),
+        1916: (FEB, 3),
+        1935: (FEB, 3),
+        1965: (FEB, 1),
+        1968: (JAN, 29),
+        1969: (FEB, 16),
+        1985: (JAN, 21),
+        2007: (FEB, 17),
+        2030: (FEB, 2),
+        2053: (FEB, 18),
+    }
+
+    QINGMING_THRESHOLDS: dict[str, dict[str, dict[int, int]]] = {
+        # UTC+7.
+        VIETNAMESE_CALENDAR: {
+            "apr_4": {0: 1972, 1: 2005, 2: 2038, 3: 2067},
+            "apr_6": {2: 1906, 3: 1935},
+        },
+        # UTC+8.
+        CHINESE_CALENDAR: {
+            "apr_4": {0: 1976, 1: 2009, 2: 2042, 3: 2075},
+            "apr_6": {2: 1910, 3: 1943},
+        },
+        # UTC+9.
+        KOREAN_CALENDAR: {
+            "apr_4": {0: 1984, 1: 2017, 2: 2046, 3: 2079},
+            "apr_6": {2: 1914, 3: 1947},
+        },
+    }
+
+    WINTER_SOLSTICE_THRESHOLDS: dict[str, dict[str, dict[int, int]]] = {
+        # UTC+7.
+        VIETNAMESE_CALENDAR: {
+            "dec_21": {0: 1980, 1: 2017, 2: 2050, 3: 2083},
+            "dec_23": {2: 1910, 3: 1943},
+        },
+        # UTC+8.
+        CHINESE_CALENDAR: {
+            "dec_21": {0: 1988, 1: 2021, 2: 2058, 3: 2091},
+            "dec_23": {2: 1914, 3: 1947},
+        },
+        # UTC+9.
+        KOREAN_CALENDAR: {
+            "dec_21": {0: 1992, 1: 2029, 2: 2062, 3: 2099},
+            "dec_23": {2: 1918, 3: 1955},
+        },
+    }
+
+    def __init__(self, calendar: str = CHINESE_CALENDAR) -> None:
+        self.__verify_calendar(calendar)
+        self.__calendar = calendar
+
+    @staticmethod
+    def __verify_calendar(calendar):
+        """Verify calendar type."""
+
+        supported_calendars = {CHINESE_CALENDAR, KOREAN_CALENDAR, VIETNAMESE_CALENDAR}
+        if calendar not in supported_calendars:
+            raise ValueError(
+                f"Unknown calendar name: {calendar}. "
+                f"Supported calendars: {', '.join(sorted(supported_calendars))}"
+            )
+
+    def _get_holiday(self, holiday: str, year: int, calendar=None) -> tuple[date | None, bool]:
+        calendar = calendar or self.__calendar
+        self.__verify_calendar(calendar)
+        confirmed_dates = getattr(
+            self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {}
+        )
+        confirmed_years = getattr(
+            self, f"{holiday}_DATES_CONFIRMED_YEARS_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", (0, 0)
+        )
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
-        exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
-        dt = exact_dates.get(year, estimated_dates.get(year, ()))
-        return date(year, *dt) if dt else None, year not in exact_dates
+        custom_calendar_dates = getattr(self, f"{calendar}_{holiday}_DATES", {})
+        dt = confirmed_dates.get(
+            year, custom_calendar_dates.get(year, estimated_dates.get(year, ()))
+        )
+        is_confirmed = year in confirmed_dates or (
+            confirmed_years[0] <= year <= confirmed_years[1]
+        )
+        return date(year, *dt) if dt else None, not is_confirmed
 
-    def buddha_birthday_date(self, year: int) -> Tuple[Optional[date], bool]:
-        return self._get_holiday(BUDDHA_BIRTHDAY, year)
+    def buddha_birthday_date(self, year: int, calendar=None) -> tuple[date | None, bool]:
+        return self._get_holiday(BUDDHA_BIRTHDAY, year, calendar)
 
-    def double_ninth_date(self, year: int) -> Tuple[Optional[date], bool]:
+    def double_ninth_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(DOUBLE_NINTH, year)
 
-    def dragon_boat_date(self, year: int) -> Tuple[Optional[date], bool]:
+    def dragon_boat_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(DRAGON_BOAT, year)
 
-    def hung_kings_date(self, year: int) -> Tuple[Optional[date], bool]:
-        return self._get_holiday(HUNG_KINGS, year)
+    def hung_kings_date(self, year: int, calendar=None) -> tuple[date | None, bool]:
+        return self._get_holiday(HUNG_KINGS, year, calendar)
 
-    def lunar_new_year_date(self, year: int) -> Tuple[Optional[date], bool]:
-        return self._get_holiday(LUNAR_NEW_YEAR, year)
+    def lunar_new_year_date(self, year: int, calendar=None) -> tuple[date | None, bool]:
+        return self._get_holiday(LUNAR_NEW_YEAR, year, calendar)
 
-    def mid_autumn_date(self, year: int) -> Tuple[Optional[date], bool]:
-        return self._get_holiday(MID_AUTUMN, year)
+    def mid_autumn_date(self, year: int, calendar=None) -> tuple[date | None, bool]:
+        return self._get_holiday(MID_AUTUMN, year, calendar)
+
+    def qingming_date(self, year: int, calendar=None) -> tuple[date, bool]:
+        """Return Qingming Festival (5th solar term of the Chinese lunisolar calendar) date.
+
+        !!! note "Note"
+            This approximation is reliable for 1901-2099 years.
+        """
+        calendar = calendar or self.__calendar
+        self.__verify_calendar(calendar)
+
+        thresholds = self.QINGMING_THRESHOLDS[calendar]
+        year_mod = year % 4
+        if year >= thresholds["apr_4"][year_mod]:
+            day = 4
+        elif year <= thresholds["apr_6"].get(year_mod, 0):
+            day = 6
+        else:
+            day = 5
+
+        return date(year, APR, day), not (1901 <= year <= 2099)
+
+    def winter_solstice_date(self, year: int, calendar=None) -> tuple[date, bool]:
+        """Return Winter Solstice (22nd solar term in Chinese Lunisolar calendar) date.
+
+        !!! note "Note"
+            This approximation is reliable for 1901-2099 years.
+        """
+        calendar = calendar or self.__calendar
+        self.__verify_calendar(calendar)
+
+        thresholds = self.WINTER_SOLSTICE_THRESHOLDS[calendar]
+        year_mod = year % 4
+        if year >= thresholds["dec_21"][year_mod]:
+            day = 21
+        elif year <= thresholds["dec_23"].get(year_mod, 0):
+            day = 23
+        else:
+            day = 22
+
+        return date(year, DEC, day), not (1901 <= year <= 2099)
 
 
 class _CustomChineseHolidays(_CustomCalendar, _ChineseLunisolar):

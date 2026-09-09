@@ -4,32 +4,33 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Morocco holidays en_US localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.29\n"
+"Project-Id-Version: Holidays 0.102\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2023-07-11 03:44+0100\n"
-"Last-Translator: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
+"X-Source-Language: ar\n"
 
 #. %s (estimated).
 #, c-format
-msgid "(تقدير) %s"
+msgid "%s (تقديري)"
 msgstr "%s (estimated)"
 
 #. New Year's Day.
@@ -48,7 +49,7 @@ msgstr "Amazigh New Year"
 msgid "عيد العمال"
 msgstr "Labor Day"
 
-#. Throne day.
+#. Throne Day.
 msgid "عيد العرش"
 msgstr "Throne Day"
 
@@ -69,7 +70,7 @@ msgid "ذكرى المسيرة الخضراء"
 msgstr "Green March"
 
 #. Independence Day.
-msgid "عيد الإستقلال"
+msgid "عيد الاستقلال"
 msgstr "Independence Day"
 
 #. Eid al-Fitr.

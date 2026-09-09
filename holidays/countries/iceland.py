@@ -4,26 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
 class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Iceland
-    https://www.officeholidays.com/countries/iceland/index.php
+    """Iceland holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Iceland>
+        * <https://web.archive.org/web/20240805200641/https://www.althingi.is/lagas/nuna/1971088.html>
     """
 
     country = "IS"
     default_language = "is"
+    supported_categories = (HALF_DAY, PUBLIC)
     supported_languages = ("en_US", "is", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -56,20 +59,18 @@ class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("Uppstigningardagur"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Hvítasunnudagur"))
+        # Pentecost.
+        self._add_pentecost(tr("Hvítasunnudagur"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Annar í hvítasunnu"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Annar í hvítasunnu"))
 
         # National Day.
         self._add_holiday_jun_17(tr("Þjóðhátíðardagurinn"))
 
-        # Commerce Day.
-        self._add_holiday_1st_mon_of_aug(tr("Frídagur verslunarmanna"))
-
-        # Christmas Eve.
-        self._add_christmas_eve(tr("Aðfangadagur"))
+        if self._year >= 1983:
+            # Commerce Day.
+            self._add_holiday_1st_mon_of_aug(tr("Frídagur verslunarmanna"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Jóladagur"))
@@ -77,8 +78,15 @@ class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Second Day of Christmas.
         self._add_christmas_day_two(tr("Annar í jólum"))
 
+    def _populate_half_day_holidays(self):
+        # %s (from 1pm).
+        begin_time_label = tr("%s (frá kl. 13.00)")
+
+        # Christmas Eve.
+        self._add_christmas_eve(self._format_holiday_name(begin_time_label, tr("Aðfangadagur")))
+
         # New Year's Eve.
-        self._add_new_years_eve(tr("Gamlársdagur"))
+        self._add_new_years_eve(self._format_holiday_name(begin_time_label, tr("Gamlársdagur")))
 
 
 class IS(Iceland):

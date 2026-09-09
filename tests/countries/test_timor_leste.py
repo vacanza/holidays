@@ -4,35 +4,25 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT, PUBLIC, WORKDAY
-from holidays.countries.timor_leste import TimorLeste, TL, TLS
+from holidays.countries.timor_leste import TimorLeste
 from tests.common import CommonCountryTests
 
 
 class TestTimorLeste(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(TimorLeste, years=range(2006, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(TimorLeste, TL, TLS)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(TimorLeste(years=2005))
-        self.assertNoHolidays(TimorLeste(years=2005, categories=GOVERNMENT))
-        self.assertNoHolidays(TimorLeste(years=2005, categories=WORKDAY))
+        super().setUpClass(TimorLeste)
 
     def test_special_government_holidays(self):
-        self.assertHoliday(
-            TimorLeste(categories=GOVERNMENT),
+        self.assertGovernmentHoliday(
             "2010-11-03",
             "2010-12-24",
             "2010-12-31",
@@ -121,18 +111,224 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             "2022-04-18",
             "2022-04-19",
             "2022-04-20",
+            "2022-08-29",
+            "2022-09-06",
             "2022-10-31",
             "2022-12-09",
             "2022-12-26",
             "2023-01-02",
             "2023-01-23",
             "2023-02-22",
+            "2023-04-06",
+            "2023-04-10",
+            "2023-04-20",
+            "2023-04-21",
+            "2023-05-19",
+            "2023-05-22",
+            "2023-10-27",
+            "2023-11-13",
+            "2023-12-26",
+            "2024-01-02",
             "2024-02-14",
+            "2024-03-28",
+            "2024-08-28",
+            "2024-08-29",
+            "2024-09-09",
+            "2024-09-10",
+            "2024-09-11",
+            "2024-10-31",
+            "2024-11-29",
+            "2024-12-24",
+            "2025-01-02",
+            "2025-01-29",
         )
 
+    def test_new_years_day(self):
+        self.assertHolidayName("Dia de Ano Novo", (f"{year}-01-01" for year in self.full_range))
+
+    def test_veterans_day(self):
+        name = "Dia dos Veteranos"
+        self.assertHolidayName(name, (f"{year}-03-03" for year in range(2017, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2017))
+
+    def test_good_friday(self):
+        name = "Sexta-Feira Santa"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_international_workers_day(self):
+        self.assertHolidayName(
+            "Dia Mundial do Trabalhador", (f"{year}-05-01" for year in self.full_range)
+        )
+
+    def test_restoration_of_independence_day(self):
+        self.assertHolidayName(
+            "Dia da Restauração da Independência", (f"{year}-05-20" for year in self.full_range)
+        )
+
+    def test_corpus_domini(self):
+        name = "Festa do Corpo de Deus"
+        self.assertHolidayName(
+            name,
+            "2020-06-11",
+            "2021-06-03",
+            "2022-06-16",
+            "2023-06-08",
+            "2024-05-30",
+            "2025-06-19",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_popular_consultation_day(self):
+        self.assertHolidayName(
+            "Dia da Consulta Popular", (f"{year}-08-30" for year in self.full_range)
+        )
+
+    def test_all_saints_day(self):
+        self.assertHolidayName(
+            "Dia de Todos os Santos", (f"{year}-11-01" for year in self.full_range)
+        )
+
+    def test_all_souls_day(self):
+        self.assertHolidayName(
+            "Dia de Todos os Fiéis Defuntos", (f"{year}-11-02" for year in self.full_range)
+        )
+
+    def test_national_womens_day(self):
+        name = "Dia Nacional da Mulher"
+        self.assertHolidayName(name, (f"{year}-11-03" for year in range(2023, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2023))
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-11-03" for year in range(self.start_year, 2023))
+        )
+        self.assertNoWorkdayHolidayName(name, range(2023, self.end_year))
+
+    def test_national_youth_day(self):
+        self.assertHolidayName(
+            "Dia Nacional da Juventude", (f"{year}-11-12" for year in self.full_range)
+        )
+
+    def test_proclamation_of_independence_day(self):
+        self.assertHolidayName(
+            "Dia da Proclamação da Independência", (f"{year}-11-28" for year in self.full_range)
+        )
+
+    def test_memorial_day(self):
+        name = "Dia da Memória"
+        self.assertHolidayName(name, (f"{year}-12-07" for year in range(2017, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2017))
+
+    def test_day_of_our_lady_of_immaculate_conception_and_timor_leste_patroness(self):
+        self.assertHolidayName(
+            "Dia de Nossa Senhora da Imaculada Conceição, padroeira de Timor-Leste",
+            (f"{year}-12-08" for year in self.full_range),
+        )
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Dia de Natal", (f"{year}-12-25" for year in self.full_range))
+
+    def test_national_heroes_day(self):
+        self.assertHolidayName(
+            "Dia dos Heróis Nacionais",
+            (f"{year}-12-07" for year in range(self.start_year, 2017)),
+            (f"{year}-12-31" for year in range(2017, self.end_year)),
+        )
+
+    def test_eid_al_fitr(self):
+        name = "Idul Fitri"
+        self.assertHolidayName(
+            name,
+            "2020-05-24",
+            "2021-05-13",
+            "2022-05-02",
+            "2023-04-22",
+            "2024-04-10",
+            "2025-03-31",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_eid_al_adha(self):
+        name = "Idul Adha"
+        self.assertHolidayName(
+            name,
+            "2020-07-31",
+            "2021-07-19",
+            "2022-07-09",
+            "2023-06-29",
+            "2024-06-17",
+            "2025-06-06",
+        )
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_ash_wednesday(self):
+        name = "Quarta-Feira de Cinzas"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name,
+            "2020-02-26",
+            "2021-02-17",
+            "2022-03-02",
+            "2023-02-22",
+            "2024-02-14",
+            "2025-03-05",
+        )
+        self.assertWorkdayHolidayName(name, self.full_range)
+
+    def test_maundy_thursday(self):
+        name = "Quinta-Feira Santa"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name,
+            "2020-04-09",
+            "2021-04-01",
+            "2022-04-14",
+            "2023-04-06",
+            "2024-03-28",
+            "2025-04-17",
+        )
+        self.assertWorkdayHolidayName(name, self.full_range)
+
+    def test_the_day_of_ascension_of_jesus_christ_into_heaven(self):
+        name = "Dia da Ascensão de Jesus Cristo ao Céu"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name,
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
+        )
+        self.assertWorkdayHolidayName(name, self.full_range)
+
+    def test_international_childrens_day(self):
+        name = "Dia Mundial da Criança"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-06-01" for year in self.full_range))
+
+    def test_day_of_the_armed_forces_for_the_national_liberation_of_timor_leste_falintil(self):
+        name = "Dia das Forças Armadas de Libertação Nacional de Timor-Leste (FALINTIL)"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-08-20" for year in self.full_range))
+
+    def test_international_human_rights_day(self):
+        name = "Dia Mundial dos Direitos Humanos"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(name, (f"{year}-12-10" for year in self.full_range))
+
     def test_2011_public(self):
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2011),
+        # https://timor-leste.gov.tl/?p=4442&lang=en&lang=en
+        self.assertHolidaysInYear(
+            2011,
             ("2011-01-01", "Dia de Ano Novo"),
             ("2011-04-22", "Sexta-Feira Santa"),
             ("2011-05-01", "Dia Mundial do Trabalhador"),
@@ -154,8 +350,9 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2012_public(self):
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2012),
+        # https://timor-leste.gov.tl/?p=6269&lang=en
+        self.assertHolidaysInYear(
+            2012,
             ("2012-01-01", "Dia de Ano Novo"),
             ("2012-04-06", "Sexta-Feira Santa"),
             ("2012-05-01", "Dia Mundial do Trabalhador"),
@@ -177,8 +374,9 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2013_public(self):
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2013),
+        # https://timor-leste.gov.tl/?p=7627&lang=en&lang=en
+        self.assertHolidaysInYear(
+            2013,
             ("2013-01-01", "Dia de Ano Novo"),
             ("2013-03-29", "Sexta-Feira Santa"),
             ("2013-05-01", "Dia Mundial do Trabalhador"),
@@ -200,8 +398,9 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2014_public(self):
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2014),
+        # https://timor-leste.gov.tl/?p=9653&lang=en&lang=en
+        self.assertHolidaysInYear(
+            2014,
             ("2014-01-01", "Dia de Ano Novo"),
             ("2014-04-18", "Sexta-Feira Santa"),
             ("2014-05-01", "Dia Mundial do Trabalhador"),
@@ -223,8 +422,9 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2015_public(self):
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2015),
+        # https://timor-leste.gov.tl/?p=11331&lang=en&lang=en
+        self.assertHolidaysInYear(
+            2015,
             ("2015-01-01", "Dia de Ano Novo"),
             ("2015-04-03", "Sexta-Feira Santa"),
             ("2015-05-01", "Dia Mundial do Trabalhador"),
@@ -246,8 +446,9 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2016_public(self):
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2016),
+        # https://timor-leste.gov.tl/?p=14419&lang=en&lang=en
+        self.assertHolidaysInYear(
+            2016,
             ("2016-01-01", "Dia de Ano Novo"),
             ("2016-03-25", "Sexta-Feira Santa"),
             ("2016-05-01", "Dia Mundial do Trabalhador"),
@@ -269,8 +470,9 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2017_public(self):
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2017),
+        # https://timor-leste.gov.tl/?p=17138&lang=en&lang=en
+        self.assertHolidaysInYear(
+            2017,
             ("2017-01-01", "Dia de Ano Novo"),
             ("2017-03-03", "Dia dos Veteranos"),
             ("2017-04-14", "Sexta-Feira Santa"),
@@ -294,8 +496,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2018_public(self):
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2018),
+        self.assertHolidaysInYear(
+            2018,
             ("2018-01-01", "Dia de Ano Novo"),
             ("2018-03-03", "Dia dos Veteranos"),
             ("2018-03-30", "Sexta-Feira Santa"),
@@ -319,8 +521,9 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2019_public(self):
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2019),
+        # https://timor-leste.gov.tl/?p=21146&lang=en&lang=en
+        self.assertHolidaysInYear(
+            2019,
             ("2019-01-01", "Dia de Ano Novo"),
             ("2019-03-03", "Dia dos Veteranos"),
             ("2019-04-19", "Sexta-Feira Santa"),
@@ -344,8 +547,9 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2020_public(self):
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2020),
+        # https://timor-leste.gov.tl/?p=23415&lang=en&lang=en
+        self.assertHolidaysInYear(
+            2020,
             ("2020-01-01", "Dia de Ano Novo"),
             ("2020-03-03", "Dia dos Veteranos"),
             ("2020-04-10", "Sexta-Feira Santa"),
@@ -369,8 +573,9 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2021_public(self):
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2021),
+        # https://timor-leste.gov.tl/?p=26494&lang=en&lang=en
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "Dia de Ano Novo"),
             ("2021-03-03", "Dia dos Veteranos"),
             ("2021-04-02", "Sexta-Feira Santa"),
@@ -394,8 +599,9 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2022_public(self):
-        self.assertHolidays(
-            TimorLeste(categories=PUBLIC, years=2022),
+        # https://timor-leste.gov.tl/?p=30266&lang=en
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Dia de Ano Novo"),
             ("2022-03-03", "Dia dos Veteranos"),
             ("2022-04-15", "Sexta-Feira Santa"),
@@ -418,9 +624,90 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             ("2022-12-31", "Dia dos Heróis Nacionais"),
         )
 
+    def test_2023_public(self):
+        # https://timor-leste.gov.tl/?p=31750&lang=en&lang=en
+        self.assertHolidaysInYear(
+            2023,
+            ("2023-01-01", "Dia de Ano Novo"),
+            ("2023-03-03", "Dia dos Veteranos"),
+            ("2023-04-07", "Sexta-Feira Santa"),
+            ("2023-04-22", "Idul Fitri"),
+            ("2023-05-01", "Dia Mundial do Trabalhador"),
+            ("2023-05-20", "Dia da Restauração da Independência"),
+            ("2023-06-08", "Festa do Corpo de Deus"),
+            ("2023-06-29", "Idul Adha"),
+            ("2023-08-30", "Dia da Consulta Popular"),
+            ("2023-11-01", "Dia de Todos os Santos"),
+            ("2023-11-02", "Dia de Todos os Fiéis Defuntos"),
+            ("2023-11-03", "Dia Nacional da Mulher"),
+            ("2023-11-12", "Dia Nacional da Juventude"),
+            ("2023-11-28", "Dia da Proclamação da Independência"),
+            ("2023-12-07", "Dia da Memória"),
+            (
+                "2023-12-08",
+                "Dia de Nossa Senhora da Imaculada Conceição, padroeira de Timor-Leste",
+            ),
+            ("2023-12-25", "Dia de Natal"),
+            ("2023-12-31", "Dia dos Heróis Nacionais"),
+        )
+
+    def test_2024_public(self):
+        # https://timor-leste.gov.tl/?p=35833&lang=en&lang=en
+        self.assertHolidaysInYear(
+            2024,
+            ("2024-01-01", "Dia de Ano Novo"),
+            ("2024-03-03", "Dia dos Veteranos"),
+            ("2024-03-29", "Sexta-Feira Santa"),
+            ("2024-04-10", "Idul Fitri"),
+            ("2024-05-01", "Dia Mundial do Trabalhador"),
+            ("2024-05-20", "Dia da Restauração da Independência"),
+            ("2024-05-30", "Festa do Corpo de Deus"),
+            ("2024-06-17", "Idul Adha"),
+            ("2024-08-30", "Dia da Consulta Popular"),
+            ("2024-11-01", "Dia de Todos os Santos"),
+            ("2024-11-02", "Dia de Todos os Fiéis Defuntos"),
+            ("2024-11-03", "Dia Nacional da Mulher"),
+            ("2024-11-12", "Dia Nacional da Juventude"),
+            ("2024-11-28", "Dia da Proclamação da Independência"),
+            ("2024-12-07", "Dia da Memória"),
+            (
+                "2024-12-08",
+                "Dia de Nossa Senhora da Imaculada Conceição, padroeira de Timor-Leste",
+            ),
+            ("2024-12-25", "Dia de Natal"),
+            ("2024-12-31", "Dia dos Heróis Nacionais"),
+        )
+
+    def test_2025_public(self):
+        # https://timor-leste.gov.tl/?p=41492&lang=en
+        self.assertHolidaysInYear(
+            2025,
+            ("2025-01-01", "Dia de Ano Novo"),
+            ("2025-03-03", "Dia dos Veteranos"),
+            ("2025-03-31", "Idul Fitri"),
+            ("2025-04-18", "Sexta-Feira Santa"),
+            ("2025-05-01", "Dia Mundial do Trabalhador"),
+            ("2025-05-20", "Dia da Restauração da Independência"),
+            ("2025-06-06", "Idul Adha"),
+            ("2025-06-19", "Festa do Corpo de Deus"),
+            ("2025-08-30", "Dia da Consulta Popular"),
+            ("2025-11-01", "Dia de Todos os Santos"),
+            ("2025-11-02", "Dia de Todos os Fiéis Defuntos"),
+            ("2025-11-03", "Dia Nacional da Mulher"),
+            ("2025-11-12", "Dia Nacional da Juventude"),
+            ("2025-11-28", "Dia da Proclamação da Independência"),
+            ("2025-12-07", "Dia da Memória"),
+            (
+                "2025-12-08",
+                "Dia de Nossa Senhora da Imaculada Conceição, padroeira de Timor-Leste",
+            ),
+            ("2025-12-25", "Dia de Natal"),
+            ("2025-12-31", "Dia dos Heróis Nacionais"),
+        )
+
     def test_2022_workday(self):
-        self.assertHolidays(
-            TimorLeste(categories=WORKDAY, years=2022),
+        self.assertWorkdayHolidaysInYear(
+            2022,
             ("2022-03-02", "Quarta-Feira de Cinzas"),
             ("2022-04-14", "Quinta-Feira Santa"),
             ("2022-05-26", "Dia da Ascensão de Jesus Cristo ao Céu"),
@@ -434,8 +721,8 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2023_workday(self):
-        self.assertHolidays(
-            TimorLeste(categories=WORKDAY, years=2023),
+        self.assertWorkdayHolidaysInYear(
+            2023,
             ("2023-02-22", "Quarta-Feira de Cinzas"),
             ("2023-04-06", "Quinta-Feira Santa"),
             ("2023-05-18", "Dia da Ascensão de Jesus Cristo ao Céu"),
@@ -454,12 +741,17 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             ("2023-01-23", "Feriados Nacionais (Especiais)"),
             ("2023-02-22", "Feriados Nacionais (Especiais); Quarta-Feira de Cinzas"),
             ("2023-03-03", "Dia dos Veteranos"),
-            ("2023-04-06", "Quinta-Feira Santa"),
+            ("2023-04-06", "Feriados Nacionais (Especiais); Quinta-Feira Santa"),
             ("2023-04-07", "Sexta-Feira Santa"),
+            ("2023-04-10", "Feriados Nacionais (Especiais)"),
+            ("2023-04-20", "Feriados Nacionais (Especiais)"),
+            ("2023-04-21", "Feriados Nacionais (Especiais)"),
             ("2023-04-22", "Idul Fitri"),
             ("2023-05-01", "Dia Mundial do Trabalhador"),
             ("2023-05-18", "Dia da Ascensão de Jesus Cristo ao Céu"),
+            ("2023-05-19", "Dia de Eleições Parlamentares"),
             ("2023-05-20", "Dia da Restauração da Independência"),
+            ("2023-05-22", "Dia de Eleições Parlamentares"),
             ("2023-06-01", "Dia Mundial da Criança"),
             ("2023-06-08", "Festa do Corpo de Deus"),
             ("2023-06-29", "Idul Adha"),
@@ -468,10 +760,12 @@ class TestTimorLeste(CommonCountryTests, TestCase):
                 "Dia das Forças Armadas de Libertação Nacional de Timor-Leste (FALINTIL)",
             ),
             ("2023-08-30", "Dia da Consulta Popular"),
+            ("2023-10-27", "Dia de eleições locais"),
             ("2023-11-01", "Dia de Todos os Santos"),
             ("2023-11-02", "Dia de Todos os Fiéis Defuntos"),
             ("2023-11-03", "Dia Nacional da Mulher"),
             ("2023-11-12", "Dia Nacional da Juventude"),
+            ("2023-11-13", "Dia de eleições locais"),
             ("2023-11-28", "Dia da Proclamação da Independência"),
             ("2023-12-07", "Dia da Memória"),
             (
@@ -480,7 +774,50 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             ),
             ("2023-12-10", "Dia Mundial dos Direitos Humanos"),
             ("2023-12-25", "Dia de Natal"),
+            ("2023-12-26", "Feriados Nacionais (Especiais)"),
             ("2023-12-31", "Dia dos Heróis Nacionais"),
+        )
+
+    def test_l10n_en_tl(self):
+        self.assertLocalizedHolidays(
+            "en_TL",
+            ("2023-01-01", "New Year's Day"),
+            ("2023-01-02", "National Holidays (Special)"),
+            ("2023-01-23", "National Holidays (Special)"),
+            ("2023-02-22", "Ash Wednesday; National Holidays (Special)"),
+            ("2023-03-03", "Veterans Day"),
+            ("2023-04-06", "Holy Thursday; National Holidays (Special)"),
+            ("2023-04-07", "Holy Friday"),
+            ("2023-04-10", "National Holidays (Special)"),
+            ("2023-04-20", "National Holidays (Special)"),
+            ("2023-04-21", "National Holidays (Special)"),
+            ("2023-04-22", "Idul Fitri"),
+            ("2023-05-01", "World Labour Day"),
+            ("2023-05-18", "The Day of Ascension of Jesus Christ into Heaven"),
+            ("2023-05-19", "Parliamentary Election Day"),
+            ("2023-05-20", "Restoration of Independence Day"),
+            ("2023-05-22", "Parliamentary Election Day"),
+            ("2023-06-01", "World Children's Day"),
+            ("2023-06-08", "Corpus Christi"),
+            ("2023-06-29", "Idul Adha"),
+            (
+                "2023-08-20",
+                "Day of the Armed Forces for the National Liberation of Timor-Leste (FALINTIL)",
+            ),
+            ("2023-08-30", "Popular Consultation Day"),
+            ("2023-10-27", "Local Election Day"),
+            ("2023-11-01", "All Saints Day"),
+            ("2023-11-02", "All Souls Day"),
+            ("2023-11-03", "National Women's Day"),
+            ("2023-11-12", "National Youth Day"),
+            ("2023-11-13", "Local Election Day"),
+            ("2023-11-28", "Proclamation of Independence Day"),
+            ("2023-12-07", "Memorial Day"),
+            ("2023-12-08", "Day of Our Lady of Immaculate Conception and Timor-Leste Patroness"),
+            ("2023-12-10", "World Human Rights Day"),
+            ("2023-12-25", "Christmas Day"),
+            ("2023-12-26", "National Holidays (Special)"),
+            ("2023-12-31", "National Heroes Day"),
         )
 
     def test_l10n_en_us(self):
@@ -491,29 +828,37 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             ("2023-01-23", "National Holidays (Special)"),
             ("2023-02-22", "Ash Wednesday; National Holidays (Special)"),
             ("2023-03-03", "Veteran's Day"),
-            ("2023-04-06", "Holy Thursday"),
-            ("2023-04-07", "Holy Friday"),
-            ("2023-04-22", "Idul Fitri"),
-            ("2023-05-01", "World Labor Day"),
+            ("2023-04-06", "Maundy Thursday; National Holidays (Special)"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-04-10", "National Holidays (Special)"),
+            ("2023-04-20", "National Holidays (Special)"),
+            ("2023-04-21", "National Holidays (Special)"),
+            ("2023-04-22", "Eid al-Fitr"),
+            ("2023-05-01", "International Worker's Day"),
             ("2023-05-18", "The Day of Ascension of Jesus Christ into Heaven"),
+            ("2023-05-19", "Parliamentary Election Day"),
             ("2023-05-20", "Restoration of Independence Day"),
-            ("2023-06-01", "World Children's Day"),
+            ("2023-05-22", "Parliamentary Election Day"),
+            ("2023-06-01", "International Children's Day"),
             ("2023-06-08", "Corpus Christi"),
-            ("2023-06-29", "Idul Adha"),
+            ("2023-06-29", "Eid al-Adha"),
             (
                 "2023-08-20",
                 "Day of the Armed Forces for the National Liberation of Timor-Leste (FALINTIL)",
             ),
             ("2023-08-30", "Popular Consultation Day"),
+            ("2023-10-27", "Local Election Day"),
             ("2023-11-01", "All Saints' Day"),
             ("2023-11-02", "All Souls' Day"),
             ("2023-11-03", "National Women's Day"),
             ("2023-11-12", "National Youth Day"),
+            ("2023-11-13", "Local Election Day"),
             ("2023-11-28", "Proclamation of Independence Day"),
             ("2023-12-07", "Memorial Day"),
             ("2023-12-08", "Day of Our Lady of Immaculate Conception and Timor-Leste Patroness"),
-            ("2023-12-10", "World Human Rights Day"),
+            ("2023-12-10", "International Human Rights Day"),
             ("2023-12-25", "Christmas Day"),
+            ("2023-12-26", "National Holidays (Special)"),
             ("2023-12-31", "National Heroes Day"),
         )
 
@@ -525,25 +870,72 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             ("2023-01-23", "Feriadu Nasional (Espesial)"),
             ("2023-02-22", "Feriadu Nasional (Espesial); Kuarta-Feira Sinzas"),
             ("2023-03-03", "Loron Veteranu sira nian"),
-            ("2023-04-06", "Quinta-Feira Santa"),
+            ("2023-04-06", "Feriadu Nasional (Espesial); Quinta-Feira Santa"),
             ("2023-04-07", "Sesta-Feira Santa"),
+            ("2023-04-10", "Feriadu Nasional (Espesial)"),
+            ("2023-04-20", "Feriadu Nasional (Espesial)"),
+            ("2023-04-21", "Feriadu Nasional (Espesial)"),
             ("2023-04-22", "Idul-Fitri"),
             ("2023-05-01", "Loron Mundiál Serbisu-na'in sira nian"),
             ("2023-05-18", "Loron Ascensão do Senhor Jesus Cristo hi'it An ba Lalehan nian"),
+            ("2023-05-19", "Loron Eleisaun Parlamentár nian"),
             ("2023-05-20", "Loron Restaurasaun Independénsia nian"),
+            ("2023-05-22", "Loron Eleisaun Parlamentár nian"),
             ("2023-06-01", "Loron Mundial ba Labarik"),
             ("2023-06-08", "Festa Korpu de Deus"),
             ("2023-06-29", "Idul Adha"),
             ("2023-08-20", "Loron Forsa Armada Libertasaun Nasionál Timor-Leste (FALINTIL) nian"),
             ("2023-08-30", "Loron Konsulta Populár nian"),
+            ("2023-10-27", "Loron eleisaun lokál nian"),
             ("2023-11-01", "Loron Santu sira Hotu nian"),
             ("2023-11-02", "Loron Matebian sira nian"),
             ("2023-11-03", "Loron Nasionál Feto"),
             ("2023-11-12", "Loron Nasionál Foin-Sa'e sira nian"),
+            ("2023-11-13", "Loron eleisaun lokál nian"),
             ("2023-11-28", "Loron Proklamasaun Independénsia nian"),
             ("2023-12-07", "Loron Memória nian"),
             ("2023-12-08", "Loron Nossa Senhora da Imaculada Conceição, mahein Timor-Leste nian"),
             ("2023-12-10", "Loron Mundiál Direitu Umanu"),
             ("2023-12-25", "Loron Natál"),
+            ("2023-12-26", "Feriadu Nasional (Espesial)"),
             ("2023-12-31", "Loron Eroi Nasionál sira nian"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2023-01-01", "วันขึ้นปีใหม่"),
+            ("2023-01-02", "วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-01-23", "วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-02-22", "วันพุธรับเถ้า; วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-03-03", "วันทหารผ่านศึก"),
+            ("2023-04-06", "วันพฤหัสศักดิ์สิทธิ์; วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-04-07", "วันศุกร์ประเสริฐ"),
+            ("2023-04-10", "วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-04-20", "วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-04-21", "วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-04-22", "วันอีฎิ้ลฟิตริ"),
+            ("2023-05-01", "วันกรรมกรสากล"),
+            ("2023-05-18", "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"),
+            ("2023-05-19", "วันเลือกตั้งสมาชิกรัฐสภา"),
+            ("2023-05-20", "วันรำลึกการกอบกู้เอกราชติมอร์-เลสเต"),
+            ("2023-05-22", "วันเลือกตั้งสมาชิกรัฐสภา"),
+            ("2023-06-01", "วันเด็กสากล"),
+            ("2023-06-08", "วันสมโภชพระคริสตวรกาย"),
+            ("2023-06-29", "วันอีดิ้ลอัฎฮา"),
+            ("2023-08-20", "วันกองกำลังปลดปล่อยแห่งชาติติมอร์-เลสเต (FALINTIL)"),
+            ("2023-08-30", "วันรำลึกการลงประชามติเอกราช"),
+            ("2023-10-27", "วันเลือกตั้งท้องถิ่น"),
+            ("2023-11-01", "วันสมโภชนักบุญทั้งหลาย"),
+            ("2023-11-02", "วันภาวนาอุทิศแด่ผู้ล่วงลับ"),
+            ("2023-11-03", "วันสตรีแห่งชาติ"),
+            ("2023-11-12", "วันเยาวชนแห่งชาติ"),
+            ("2023-11-13", "วันเลือกตั้งท้องถิ่น"),
+            ("2023-11-28", "วันประกาศเอกราชติมอร์-เลสเต"),
+            ("2023-12-07", "วันรำลึกวีรชน"),
+            ("2023-12-08", "วันสมโภชแม่พระผู้ปฏิสนธินิรมลและแม่พระองค์อุปถัมภ์แห่งติมอร์-เลสเต"),
+            ("2023-12-10", "วันสิทธิมนุษยชนสากล"),
+            ("2023-12-25", "วันคริสต์มาส"),
+            ("2023-12-26", "วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-12-31", "วันวีรบุรุษแห่งชาติ"),
         )

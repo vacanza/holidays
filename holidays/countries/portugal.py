@@ -4,67 +4,85 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
-from gettext import gettext as tr
 
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
 class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    A subclass of :py:class:`HolidayBase` representing public holidays
-    in Portugal.
+    """Portugal holidays.
 
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Portugal
-        - `Labour Day <https://www.e-konomista.pt/dia-do-trabalhador/>`_
-        - Portugal Day - Decreto 17.171
-        - Restoration of Independence Day - Gazeta de Lisboa, 8 de Dezembro
-          de 1823 (n.º 290), pp. 1789 e 1790
-        - Azores
-            - https://files.dre.pt/1s/1980/08/19200/23052305.pdf
-        - Madeira
-            - https://files.dre.pt/1s/1979/11/25900/28782878.pdf
-            - https://files.dre.pt/1s/1989/02/02800/04360436.pdf
-            - https://files.dre.pt/1s/2002/11/258a00/71837183.pdf
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Portugal>
+        * [Labour Day](https://web.archive.org/web/20240502184140/https://www.e-konomista.pt/dia-do-trabalhador/)
+        * Portugal Day - Decreto 17.171
+        * Restoration of Independence Day - Gazeta de Lisboa, 8 de Dezembro
+            de 1823 (n.º 290), pp. 1789 e 1790
+        * Azores:
+            * <https://web.archive.org/web/20240811191206/https://files.dre.pt/1s/1980/08/19200/23052305.pdf>
+        * Madeira:
+            * <https://web.archive.org/web/20230729205620/https://files.dre.pt/1s/1979/11/25900/28782878.pdf>
+            * <https://web.archive.org/web/20230730094358/https://files.dre.pt/1s/1989/02/02800/04360436.pdf>
+            * <https://web.archive.org/web/20230729210821/https://files.dre.pt/1s/2002/11/258a00/71837183.pdf>
     """
 
     country = "PT"
     default_language = "pt_PT"
     supported_categories = (OPTIONAL, PUBLIC)
-
-    # https://en.wikipedia.org/wiki/ISO_3166-2:PT
+    start_year = 1801
     subdivisions = (
-        "01",
-        "02",
-        "03",
-        "04",
-        "05",
-        "06",
-        "07",
-        "08",
-        "09",
-        "10",
-        "11",
-        "12",
-        "13",
-        "14",
-        "15",
-        "16",
-        "17",
-        "18",
-        "20",
-        "30",
+        "01",  # Aveiro.
+        "02",  # Beja.
+        "03",  # Braga.
+        "04",  # Bragança.
+        "05",  # Castelo Branco.
+        "06",  # Coimbra.
+        "07",  # Évora.
+        "08",  # Faro.
+        "09",  # Guarda.
+        "10",  # Leiria.
+        "11",  # Lisboa.
+        "12",  # Portalegre.
+        "13",  # Porto.
+        "14",  # Santarém.
+        "15",  # Setúbal.
+        "16",  # Viana do Castelo.
+        "17",  # Vila Real.
+        "18",  # Viseu.
+        "20",  # Região Autónoma dos Açores.
+        "30",  # Região Autónoma da Madeira.
     )
-    _deprecated_subdivisions = ("Ext",)
+    subdivisions_aliases = {
+        "Aveiro": "01",
+        "Beja": "02",
+        "Braga": "03",
+        "Bragança": "04",
+        "Castelo Branco": "05",
+        "Coimbra": "06",
+        "Évora": "07",
+        "Faro": "08",
+        "Guarda": "09",
+        "Leiria": "10",
+        "Lisboa": "11",
+        "Portalegre": "12",
+        "Porto": "13",
+        "Santarém": "14",
+        "Setúbal": "15",
+        "Viana do Castelo": "16",
+        "Vila Real": "17",
+        "Viseu": "18",
+        "Região Autónoma dos Açores": "20",
+        "Região Autónoma da Madeira": "30",
+    }
     supported_languages = ("en_US", "pt_PT", "uk")
+    _deprecated_subdivisions = ("Ext",)
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
@@ -84,7 +102,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Sunday.
         self._add_easter_sunday(tr("Páscoa"))
 
-        # Revoked holidays in 2013–2015.
+        # Revoked holidays in 2013-2015.
         if self._year <= 2012 or self._year >= 2016:
             # Corpus Christi.
             self._add_corpus_christi_day(tr("Corpo de Deus"))
@@ -110,15 +128,14 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1911:
             if 1933 <= self._year <= 1973:
                 # Day of Camões, Portugal, and the Portuguese Race.
-                self._add_holiday_jun_10(tr("Dia de Camões, de Portugal e da Raça"))
+                name = tr("Dia de Camões, de Portugal e da Raça")
             elif self._year >= 1978:
-                self._add_holiday_jun_10(
-                    # Day of Portugal, Camões, and the Portuguese Communities.
-                    tr("Dia de Portugal, de Camões e das Comunidades Portuguesas")
-                )
+                # Day of Portugal, Camões, and the Portuguese Communities.
+                name = tr("Dia de Portugal, de Camões e das Comunidades Portuguesas")
             else:
                 # Portugal Day.
-                self._add_holiday_jun_10(tr("Dia de Portugal"))
+                name = tr("Dia de Portugal")
+            self._add_holiday_jun_10(name)
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assunção de Nossa Senhora"))
@@ -147,8 +164,8 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Carnival.
         self._add_carnival_tuesday(tr("Carnaval"))
 
-        # St. Anthony's Day.
-        self._add_holiday_jun_13(tr("Dia de Santo António"))
+        # Saint Anthony's Day.
+        self._add_saint_anthonys_day(tr("Dia de Santo António"))
 
         # Christmas Eve.
         self._add_christmas_eve(tr("Véspera de Natal"))
@@ -167,7 +184,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._populate_optional_holidays()
 
     def _populate_subdiv_01_public_holidays(self):
-        # St. Joanna's Day.
+        # Saint Joanna's Day.
         self._add_holiday_may_12(tr("Dia de Santa Joana"))
 
     def _populate_subdiv_02_public_holidays(self):
@@ -175,7 +192,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_ascension_thursday(tr("Quinta-feira da Ascensão"))
 
     def _populate_subdiv_03_public_holidays(self):
-        # St. John's Day.
+        # Saint John's Day.
         self._add_saint_johns_day(tr("Dia de São João"))
 
     def _populate_subdiv_04_public_holidays(self):
@@ -187,11 +204,11 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_16_days_past_easter(tr("Dia de Nossa Senhora de Mércoles"))
 
     def _populate_subdiv_06_public_holidays(self):
-        # St. Elizabeth's Day.
+        # Saint Elizabeth's Day.
         self._add_holiday_jul_4(tr("Dia de Santa Isabel"))
 
     def _populate_subdiv_07_public_holidays(self):
-        # St. Peter's Day.
+        # Saint Peter's Day.
         self._add_saints_peter_and_paul_day(tr("Dia de São Pedro"))
 
     def _populate_subdiv_08_public_holidays(self):
@@ -207,17 +224,19 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_may_22(tr("Dia do Município de Leiria"))
 
     def _populate_subdiv_11_public_holidays(self):
-        self._add_holiday_jun_13(tr("Dia de Santo António"))
+        # Saint Anthony's Day.
+        self._add_saint_anthonys_day(tr("Dia de Santo António"))
 
     def _populate_subdiv_12_public_holidays(self):
         # Municipal Holiday of Portalegre.
         self._add_holiday_may_23(tr("Dia do Município de Portalegre"))
 
     def _populate_subdiv_13_public_holidays(self):
+        # Saint John's Day.
         self._add_saint_johns_day(tr("Dia de São João"))
 
     def _populate_subdiv_14_public_holidays(self):
-        # St. Joseph's Day.
+        # Saint Joseph's Day.
         self._add_saint_josephs_day(tr("Dia de São José"))
 
     def _populate_subdiv_15_public_holidays(self):
@@ -229,16 +248,17 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_aug_20(tr("Dia de Nossa Senhora da Agonia"))
 
     def _populate_subdiv_17_public_holidays(self):
-        self._add_holiday_jun_13(tr("Dia de Santo António"))
+        # Saint Anthony's Day.
+        self._add_saint_anthonys_day(tr("Dia de Santo António"))
 
     def _populate_subdiv_18_public_holidays(self):
-        # St. Matthew's Day.
+        # Saint Matthew's Day.
         self._add_holiday_sep_21(tr("Dia de São Mateus"))
 
     def _populate_subdiv_20_public_holidays(self):
         if self._year >= 1981:
             # Day of the Autonomous Region of the Azores.
-            self._add_whit_monday(tr("Dia da Região Autónoma dos Açores"))
+            self._add_pentecost_monday(tr("Dia da Região Autónoma dos Açores"))
 
     def _populate_subdiv_30_public_holidays(self):
         if self._year >= 1979:

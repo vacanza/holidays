@@ -4,33 +4,34 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Canada holidays fr localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.32\n"
+"Project-Id-Version: Holidays 0.101\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-10 14:10+0300\n"
-"PO-Revision-Date: 2023-08-26 18:23+0300\n"
+"PO-Revision-Date: 2026-07-08 22:59+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.6\n"
+"X-Source-Language: en_CA\n"
 
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
-msgstr "%s (Observé)"
+msgstr "%s (observé)"
 
 #. New Year's Day.
 msgid "New Year's Day"
@@ -40,9 +41,9 @@ msgstr "Jour de l'an"
 msgid "Good Friday"
 msgstr "Vendredi saint"
 
-#. Easter Monday.
-msgid "Easter Monday"
-msgstr "Lundi de Pâques"
+#. Canada Day.
+msgid "Canada Day"
+msgstr "Fête du Canada"
 
 #. Dominion Day.
 msgid "Dominion Day"
@@ -56,49 +57,45 @@ msgstr "Fête du Travail"
 msgid "Christmas Day"
 msgstr "Jour de Noël"
 
-#. Boxing Day.
-msgid "Boxing Day"
-msgstr "Boxing Day"
-
-#. Family Day.
-msgid "Family Day"
-msgstr "Fête de la famille"
-
-#. Thanksgiving Day.
-msgid "Thanksgiving Day"
-msgstr "Action de grâce"
-
-#. Funeral of Queen Elizabeth II.
-msgid "Funeral of Her Majesty the Queen Elizabeth II"
-msgstr "Funéraire de sa majesté la reine Elizabeth II"
-
-#. Memorial Day.
-msgid "Memorial Day"
-msgstr "Jour de mémorial"
-
-#. Canada Day.
-msgid "Canada Day"
-msgstr "Fête du Canada"
-
-#. Victoria Day.
-msgid "Victoria Day"
-msgstr "Fête de la Reine"
-
-#. Heritage Day.
-msgid "Heritage Day"
-msgstr "Fête du Patrimoine"
+#. National Day for Truth and Reconciliation.
+msgid "National Day for Truth and Reconciliation"
+msgstr "Journée nationale de la vérité et de la réconciliation"
 
 #. Remembrance Day.
 msgid "Remembrance Day"
 msgstr "Jour du Souvenir"
 
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "Boxing Day"
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr "Action de grâce"
+
+#. Armistice Day.
+msgid "Armistice Day"
+msgstr "Jour de l'Armistice"
+
+#. Victoria Day.
+msgid "Victoria Day"
+msgstr "Fête de la Reine"
+
+#. Family Day.
+msgid "Family Day"
+msgstr "Fête de la famille"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Lundi de Pâques"
+
+#. Heritage Day.
+msgid "Heritage Day"
+msgstr "Fête du Patrimoine"
+
 #. British Columbia Day.
 msgid "British Columbia Day"
 msgstr "Jour de la Colombie Britannique"
-
-#. National Day for Truth and Reconciliation.
-msgid "National Day for Truth and Reconciliation"
-msgstr "Journée nationale de la vérité et de la réconciliation"
 
 #. Louis Riel Day.
 msgid "Louis Riel Day"
@@ -110,23 +107,35 @@ msgstr "Journée Terry Fox"
 
 #. Civic Holiday.
 msgid "Civic Holiday"
-msgstr "Premier lundi d'août"
+msgstr "Congé civique"
 
 #. New Brunswick Day.
 msgid "New Brunswick Day"
 msgstr "Jour du Nouveau Brunswick"
 
-#. St. Patrick's Day.
-msgid "St. Patrick's Day"
+#. Memorial Day.
+msgid "Memorial Day"
+msgstr "Jour de mémorial"
+
+#. Saint Patrick's Day.
+msgid "Saint Patrick's Day"
 msgstr "Fête de la Saint-Patrick"
 
-#. St. George's Day.
-msgid "St. George's Day"
+#. Saint George's Day.
+msgid "Saint George's Day"
 msgstr "Fête de la Saint-Georges"
 
 #. Discovery Day.
 msgid "Discovery Day"
 msgstr "Jour de la Découverte"
+
+#. Orangemen's Day.
+msgid "Orangemen's Day"
+msgstr "Journée des Orangistes"
+
+#. Natal Day.
+msgid "Natal Day"
+msgstr "Jour de la Fondation"
 
 #. National Aboriginal Day.
 msgid "National Aboriginal Day"
@@ -144,18 +153,14 @@ msgstr "Fête des Insulaires"
 msgid "National Patriots' Day"
 msgstr "Journée nationale des patriotes"
 
-#. St. Jean Baptiste Day.
-msgid "St. Jean Baptiste Day"
+#. Saint John the Baptist Day.
+msgid "Saint Jean Baptiste Day"
 msgstr "Fête nationale du Québec"
 
 #. Saskatchewan Day.
 msgid "Saskatchewan Day"
 msgstr "Jour du Saskatchewan"
 
-#. Orangemen's Day.
-msgid "Orangemen's Day"
-msgstr "Journée des Orangistes"
-
-#. Natal Day.
-msgid "Natal Day"
-msgstr "Jour de la Fondation"
+#. Funeral of Queen Elizabeth II.
+msgid "Funeral of Her Majesty the Queen Elizabeth II"
+msgstr "Funéraire de sa majesté la reine Elizabeth II"

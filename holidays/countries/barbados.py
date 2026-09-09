@@ -4,10 +4,10 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import JAN, JUL
@@ -21,18 +21,22 @@ from holidays.observed_holiday_base import (
 
 
 class Barbados(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Barbados
-    https://www.timeanddate.com/holidays/barbados/
-    [Public Holidays Act Cap.352] http://barbadosparliament-laws.com/en/showdoc/cs/352
-    https://labour.gov.bb/pdf/Library/Other%20Docs/Public%20Holidays%20for%20the%20Year%202018.pdf
-    https://labour.gov.bb/wp-content/uploads/2020/04/Public-Holidays-for-the-Year-2021.pdf
-    https://gisbarbados.gov.bb/download/public-holidays-for-2022/
-    https://gisbarbados.gov.bb/download/public-holidays-for-2023/
+    """Barbados holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Barbados>
+        * <https://web.archive.org/web/20250415140739/https://www.timeanddate.com/holidays/barbados>
+        * [Public Holidays Act Cap.352](https://web.archive.org/web/20250427133553/https://barbadosparliament-laws.com/en/showdoc/cs/352)
+        * <https://web.archive.org/web/20240629135051/https://labour.gov.bb/pdf/Library/Other%20Docs/Public%20Holidays%20for%20the%20Year%202018.pdf>
+        * <https://web.archive.org/web/20240630134528/https://labour.gov.bb/wp-content/uploads/2020/04/Public-Holidays-for-the-Year-2021.pdf>
+        * <https://web.archive.org/web/20241104070357/https://gisbarbados.gov.bb/download/public-holidays-for-2022/>
+        * <https://web.archive.org/web/20230803161905/https://gisbarbados.gov.bb/download/public-holidays-for-2023/>
     """
 
     country = "BB"
     observed_label = "%s (observed)"
+    # Public Holidays Act Cap.352, 1968-12-30
+    start_year = 1969
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -42,10 +46,6 @@ class Barbados(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Public Holidays Act Cap.352, 1968-12-30
-        if self._year <= 1968:
-            return None
-
         # New Year's Day
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
@@ -67,7 +67,7 @@ class Barbados(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         self._add_observed(self._add_labor_day("May Day"))
 
         # Whit Monday
-        self._add_whit_monday("Whit Monday")
+        self._add_pentecost_monday("Whit Monday")
 
         # Emancipation Day
         name = "Emancipation Day"
@@ -102,6 +102,6 @@ class BarbadosStaticHolidays:
             (JAN, 5, "Public Holiday"),
         ),
         # One off 50th Anniversary of CARICOM Holiday.
-        # See https://tinyurl.com/brbhol
+        # See https://web.archive.org/web/20240805050828/https://gisbarbados.gov.bb/blog/one-off-bank-holiday-for-caricoms-50th-anniversary-celebrations/
         2023: (JUL, 31, "50th Anniversary of CARICOM Holiday"),
     }

@@ -4,10 +4,10 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
@@ -15,13 +15,16 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON,
 
 
 class Zimbabwe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Zimbabwe
-    https://en.wikipedia.org/wiki/Robert_Gabriel_Mugabe_National_Youth_Day
+    """Zimbabwe holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Zimbabwe>
+        * <https://en.wikipedia.org/wiki/Robert_Gabriel_Mugabe_National_Youth_Day>
     """
 
     country = "ZW"
     observed_label = "%s (observed)"
+    start_year = 1988
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -30,9 +33,6 @@ class Zimbabwe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1987:
-            return None
-
         # New Year's Day.
         self._add_observed(self._add_new_years_day("New Year's Day"))
 

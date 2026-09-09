@@ -4,69 +4,81 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
-from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, DEC
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
 class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticHolidays):
-    """
+    """China holidays.
+
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_China
-        - `Festivals and Public Holidays <https://zh.wikipedia.org/wiki/中华人民共和国节日与公众假期>`_
-        - `2024 <https://www.gov.cn/zhengce/content/202310/content_6911527.htm>`_
-        - `2023 <https://www.gov.cn/gongbao/content/2023/content_5736714.htm>`_
-        - `2022 <https://www.gov.cn/gongbao/content/2021/content_5651728.htm>`_
-        - `2021 <https://www.gov.cn/gongbao/content/2020/content_5567750.htm>`_
-        - `2020 Extensions <https://www.gov.cn/zhengce/zhengceku/2020-01/27/content_5472352.htm>`_
-        - `2020 <https://www.gov.cn/gongbao/content/2019/content_5459138.htm>`_
-        - `2019 <https://www.gov.cn/gongbao/content/2018/content_5350046.htm>`_
-        - `2018 <https://www.gov.cn/gongbao/content/2017/content_5248221.htm>`_
-        - `2017 <https://www.gov.cn/gongbao/content/2016/content_5148793.htm>`_
-        - `2016 <https://www.gov.cn/gongbao/content/2016/content_2979719.htm>`_
-        - `2015 <https://www.gov.cn/gongbao/content/2015/content_2799019.htm>`_
-        - `2014 <https://www.gov.cn/gongbao/content/2014/content_2561299.htm>`_
-        - `2013 <https://www.gov.cn/gongbao/content/2012/content_2292057.htm>`_
-        - `2012 <https://www.gov.cn/gongbao/content/2011/content_2020918.htm>`_
-        - `2011 <https://www.gov.cn/gongbao/content/2010/content_1765282.htm>`_
-        - `2010 <https://www.gov.cn/gongbao/content/2009/content_1487011.htm>`_
-        - `2009 <https://www.gov.cn/gongbao/content/2008/content_1175823.htm>`_
-        - `2008 <https://www.gov.cn/gongbao/content/2008/content_859870.htm>`_
-        - `2007 <https://www.gov.cn/gongbao/content/2007/content_503397.htm>`_
-        - `2006 <https://zh.wikisource.org/wiki/国务院办公厅关于2006年部分节假日安排的通知>`_
-        - `2005 <https://zh.wikisource.org/wiki/国务院办公厅关于2005年部分节假日安排的通知>`_
-        - `2004 <https://zh.wikisource.org/wiki/国务院办公厅关于2004年部分节假日安排的通知>`_
-        - `2003 <https://zh.wikisource.org/wiki/国务院办公厅关于2003年部分节假日休息安排的通知>`_
-        - `2002 <https://zh.wikisource.org/wiki/国务院办公厅关于2002年部分节假日休息安排的通知>`_
-        - `2001 <https://zh.wikisource.org/wiki/国务院办公厅关于2001年春节、“五一”、“十一”放假安排的通知>`_
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_China>
+        * [Festivals and Public Holidays](https://zh.wikipedia.org/wiki/中华人民共和国节日与公众假期)
+        * [2001](https://web.archive.org/web/20180123032517/https://zh.wikisource.org/wiki/国务院办公厅关于2001年春节、“五一”、“十一”放假安排的通知)
+        * [2002](https://web.archive.org/web/20180122201149/https://zh.wikisource.org/wiki/国务院办公厅关于2002年部分节假日休息安排的通知)
+        * [2003](https://web.archive.org/web/20210302090553/https://zh.wikisource.org/wiki/国务院办公厅关于2003年部分节假日休息安排的通知)
+        * [2004](https://web.archive.org/web/20210212183857/https://zh.wikisource.org/wiki/国务院办公厅关于2004年部分节假日安排的通知)
+        * [2005](https://web.archive.org/web/20210212184000/https://zh.wikisource.org/wiki/国务院办公厅关于2005年部分节假日安排的通知)
+        * [2006](https://web.archive.org/web/20221130214247/https://zh.wikisource.org/wiki/国务院办公厅关于2006年部分节假日安排的通知)
+        * [2007](https://web.archive.org/web/20230727050141/https://www.gov.cn/gongbao/content/2007/content_503397.htm)
+        * [2007 changes (Order #513)](https://web.archive.org/web/20080124135116/https://www.gov.cn/gongbao/content/2008/content_859863.htm)
+        * [2008](https://web.archive.org/web/20240610103541/https://www.gov.cn/gongbao/content/2008/content_859870.htm)
+        * [2009](https://web.archive.org/web/20230726083438/https://www.gov.cn/gongbao/content/2008/content_1175823.htm)
+        * [2010](https://web.archive.org/web/20101210083603/https://www.gov.cn/gongbao/content/2009/content_1487011.htm)
+        * [2011](https://web.archive.org/web/20240812070712/https://www.gov.cn/gongbao/content/2010/content_1765282.htm)
+        * [2012](https://web.archive.org/web/20250420220922/https://www.gov.cn/gongbao/content/2011/content_2020918.htm)
+        * [2013](https://web.archive.org/web/20240229121946/https://www.gov.cn/gongbao/content/2012/content_2292057.htm)
+        * [2013 changes (Order #644)](https://web.archive.org/web/20140114092108/https://www.gov.cn/gongbao/content/2014/content_2561284.htm)
+        * [2014](https://web.archive.org/web/20250426080722/https://www.gov.cn/gongbao/content/2014/content_2561299.htm)
+        * [2015](https://web.archive.org/web/20250427025304/https://www.gov.cn/gongbao/content/2015/content_2799019.htm)
+        * [2016](https://web.archive.org/web/20231205013233/https://www.gov.cn/gongbao/content/2016/content_2979719.htm)
+        * [2017](https://web.archive.org/web/20231205013333/https://www.gov.cn/gongbao/content/2016/content_5148793.htm)
+        * [2018](https://web.archive.org/web/20231205013402/https://www.gov.cn/gongbao/content/2017/content_5248221.htm)
+        * [2019](https://web.archive.org/web/20241202235023/https://www.gov.cn/gongbao/content/2018/content_5350046.htm)
+        * [2019 Extensions](https://web.archive.org/web/20250901174347/https://www.gov.cn/gongbao/content/2019/content_5380356.htm)
+        * [2020](https://web.archive.org/web/20241222150612/https://www.gov.cn/gongbao/content/2019/content_5459138.htm)
+        * [2020 Extensions](https://web.archive.org/web/20200311092254/https://www.gov.cn/gongbao/content/2020/content_5477297.htm)
+        * [2021](https://web.archive.org/web/20250424075325/https://www.gov.cn/gongbao/content/2020/content_5567750.htm)
+        * [2022](https://web.archive.org/web/20250413071341/https://www.gov.cn/gongbao/content/2021/content_5651728.htm)
+        * [2023](https://web.archive.org/web/20250414125053/https://www.gov.cn/gongbao/content/2023/content_5736714.htm)
+        * [2024](https://web.archive.org/web/20231111053456/https://www.gov.cn/gongbao/2023/issue_10806/202311/content_6913823.html)
+        * [2024 changes (Order #795)](https://web.archive.org/web/20241130063225/https://www.gov.cn/gongbao/2024/issue_11726/202411/content_6989774.html)
+        * [2025](https://web.archive.org/web/20241130063235/https://www.gov.cn/gongbao/2024/issue_11726/202411/content_6989767.html)
+        * [2026](https://web.archive.org/web/20251125134126/https://www.gov.cn/gongbao/2025/issue_12406/202511/content_7048922.html)
 
     Checked With:
-        - https://www.officeholidays.com/countries/china/2023
-        - https://www.china-briefing.com/news/china-public-holiday-2023-schedule/
-        - https://www.timeanddate.com/calendar/?year=2023&country=41
-        - `2001-2010 <https://m.wannianli.tianqi.com/fangjiaanpai/2001.html>`_
+        * <https://web.archive.org/web/20250213085558/https://www.officeholidays.com/countries/china/2023>
+        * <https://web.archive.org/web/20250210121944/https://www.china-briefing.com/news/china-public-holiday-2023-schedule/>
+        * <https://web.archive.org/web/20250218010025/https://www.timeanddate.com/calendar/?year=2023&country=41>
+        * [2001-2010](https://web.archive.org/web/20250429074341/https://m.wannianli.tianqi.com/fangjiaanpai/2001.html)
 
     Limitations:
-        - Only checked with the official General Office of the State Council Notice from 2001
-          onwards.
-        - Due to its complexity, need yearly checks 3-weeks before year's end each year.
+        * Only checked with the official General Office of the State Council Notice from 2001
+            onwards.
+        * Due to its complexity, need yearly checks 3-weeks before year's end each year.
     """
 
     country = "CN"
+    # %s (estimated).
+    estimated_label = tr("%s（推定）")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s（补假，推定）")
     # %s (observed).
-    observed_label = tr("%s（观察日）")
+    observed_label = tr("%s（补假）")
     supported_categories = (PUBLIC, HALF_DAY)
     default_language = "zh_CN"
     supported_languages = ("en_US", "th", "zh_CN", "zh_TW")
+    # Proclamation of the People's Republic of China on Oct 1, 1949.
+    start_year = 1950
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
@@ -77,10 +89,6 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Proclamation of the People's Republic of China on Oct 1, 1949.
-        if self._year <= 1949:
-            return None
-
         dts_observed = set()
 
         # 元旦 (simp.) / 新年 (trad.)
@@ -95,29 +103,34 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
         # Status: In-Use (Statutory).
         # Day 1-3 of Chinese New Year in 1949, 1999, 2007, and 2013 revision.
         # 2007 revision introduced New Year's Eve (农历除夕) instead of
-        # New Year's 3rd day; 2013 revision returned it back.
+        # New Year's 3rd day; 2013 revision returned it back;
+        # 2024 revision returned also New Year's Eve.
 
         # Spring Festival Golden Weekend
-        # Checked with Official Notice from 2001-2023.
+        # Checked with Official Notice from 2001-2025.
         # Consecutive Holidays are available from 2000 (1999 rev.).
 
         # Chinese New Year (Spring Festival).
         chinese_new_year = tr("春节")
+        # Chinese New Year's Eve.
+        chinese_new_years_eve = tr("农历除夕")
         dts_observed.add(self._add_chinese_new_years_day(chinese_new_year))
         dts_observed.add(self._add_chinese_new_years_day_two(chinese_new_year))
         if 2008 <= self._year <= 2013:
-            # Chinese New Year's Eve.
-            dts_observed.add(self._add_chinese_new_years_eve(tr("农历除夕")))
+            dts_observed.add(self._add_chinese_new_years_eve(chinese_new_years_eve))
         else:
             dts_observed.add(self._add_chinese_new_years_day_three(chinese_new_year))
+        if self._year >= 2025:
+            dts_observed.add(self._add_chinese_new_years_eve(chinese_new_years_eve))
 
         # 劳动节
         # Status: In-Use (Statutory).
         # May 1 in 1949, 1999, 2007, and 2013 revision.
         # Additional Holidays (May 2-3) are available from 2000 (1999 rev.) - 2007 (2007 rev.).
+        # May 2 returned in 2024 revision.
 
         # Labor Day Golden Weekend
-        # Checked with Official Notice from 2001-2023.
+        # Checked with Official Notice from 2001-2025.
         # Consecutive Holidays are available from 2002, with exception of ????-????.
 
         # Labor Day.
@@ -126,6 +139,8 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
         if 2000 <= self._year <= 2007:
             dts_observed.add(self._add_labor_day_two(labor_day))
             dts_observed.add(self._add_labor_day_three(labor_day))
+        elif self._year >= 2025:
+            dts_observed.add(self._add_labor_day_two(labor_day))
 
         # 国庆节
         # Status: In-Use (Statutory).
@@ -177,9 +192,6 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
 
     def _populate_half_day_holidays(self):
         # No in lieus are given for this category.
-        # Proclamation of the People's Republic of China on Oct 1, 1949.
-        if self._year <= 1949:
-            return None
 
         # International Women's Day.
         self._add_womens_day(tr("国际妇女节"))
@@ -203,10 +215,10 @@ class CHN(China):
 
 
 class ChinaStaticHolidays:
-    # Date format (see strftime() Format Codes).
+    # Substituted date format.
     substituted_date_format = tr("%Y-%m-%d")
     # Day off (substituted from %s).
-    substituted_label = tr("休息日（%s日起取代）")
+    substituted_label = tr("休息日（由 %s 调休）")
 
     # Chinese New Year (Spring Festival).
     chinese_new_year = tr("春节")
@@ -220,7 +232,7 @@ class ChinaStaticHolidays:
     # Mid-Autumn Festival.
     mid_autumn_festival = tr("中秋节")
 
-    # 70th Anniversary of the Victory of the Chinese People’s War of Resistance against
+    # 70th Anniversary of the Victory of the Chinese People's War of Resistance against
     # Japanese Aggression and the World Anti-Fascist War.
     victory_70_anniversary = tr("中国人民抗日战争暨世界反法西斯战争胜利70周年纪念日")
 
@@ -384,6 +396,8 @@ class ChinaStaticHolidays:
         2019: (
             (FEB, 4, FEB, 2),  # Spring Festival
             (FEB, 8, FEB, 3),  # Spring Festival
+            (MAY, 2, APR, 28),  # Labor Day
+            (MAY, 3, MAY, 5),  # Labor Day
             (OCT, 4, SEP, 29),  # National Day
             (OCT, 7, OCT, 12),  # National Day
         ),
@@ -435,6 +449,21 @@ class ChinaStaticHolidays:
             (SEP, 16, SEP, 14),  # Mid-Autumn Festival
             (OCT, 4, SEP, 29),  # National Day
             (OCT, 7, OCT, 12),  # National Day
+        ),
+        2025: (
+            (FEB, 3, JAN, 26),  # Spring Festival
+            (FEB, 4, FEB, 8),  # Spring Festival
+            (MAY, 5, APR, 27),  # Labor Day
+            (OCT, 7, SEP, 28),  # National Day
+            (OCT, 8, OCT, 11),  # National Day
+        ),
+        2026: (
+            (JAN, 2, JAN, 4),  # New Year's Day
+            (FEB, 20, FEB, 14),  # Spring Festival
+            (FEB, 23, FEB, 28),  # Spring Festival
+            (MAY, 5, MAY, 9),  # Labor Day
+            (OCT, 6, SEP, 20),  # National Day
+            (OCT, 7, OCT, 10),  # National Day
         ),
     }
 

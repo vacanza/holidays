@@ -4,27 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Cyprus holidays.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.41\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-15 11:50-0800\n"
 "PO-Revision-Date: 2023-02-16 08:50-0800\n"
 "Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
+"X-Source-Language: el\n"
 
 #. New Year's Day.
 msgid "Πρωτοχρονιά"
@@ -62,11 +64,11 @@ msgstr ""
 msgid "Πρωτομαγιά"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Δευτέρα του Αγίου Πνεύματος"
 msgstr ""
 
-#. Assumption Day.
+#. Dormition of the Mother of God.
 msgid "Κοίμηση της Θεοτόκου"
 msgstr ""
 
@@ -74,12 +76,8 @@ msgstr ""
 msgid "Ημέρα της Κυπριακής Ανεξαρτησίας"
 msgstr ""
 
-#. Ochi Day.
+#. Ohi Day.
 msgid "Ημέρα του Όχι"
-msgstr ""
-
-#. Christmas Eve.
-msgid "Παραμονή Χριστουγέννων"
 msgstr ""
 
 #. Christmas Day.
@@ -96,4 +94,8 @@ msgstr ""
 
 #. Holy Saturday.
 msgid "Μεγάλο Σάββατο"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Παραμονή Χριστουγέννων"
 msgstr ""

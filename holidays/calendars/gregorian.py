@@ -4,10 +4,10 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
@@ -19,7 +19,7 @@ WEEKEND = (SAT, SUN)
 
 JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC = range(1, 13)
 
-DAYS = set(str(d) for d in range(1, 32))
+DAYS = {str(d) for d in range(1, 32)}
 MONTHS = {
     m: i
     for i, m in enumerate(
@@ -59,6 +59,41 @@ def _get_nth_weekday_from(n: int, weekday: int, from_dt: date) -> date:
             else (n + 1) * 7 - (from_dt.weekday() - weekday) % 7
         ),
     )
+
+
+def _get_nth_week_of_month(n: int, month: int, year: int) -> date:
+    """
+    Return the Monday at the start of week ``n`` for ``month`` in ``year``.
+
+    Weeks span Monday through Sunday. If ``n`` is greater than ``0``, then week ``1``
+    contains day ``1`` of ``month``. That Monday may fall in the preceding calendar
+    month; each higher ``n`` advances one week chronologically.
+
+    If ``n`` is negative, numbering runs backward from the end of the month: ``-1`` means
+    the Monday whose Sunday is the latest Sunday that still falls in ``month`` (the Monday
+    may itself fall in the preceding month); ``-2`` is one week earlier, etc.
+
+    Raises ``ValueError`` when no such ``n`` appears in ``month``.
+    """
+    original_n, original_month, original_year = n, month, year
+    if n < 0:
+        month += 1
+        if month > 12:
+            month = 1
+            year += 1
+        n += 1
+
+    start_date = date(year, month, 1)
+    dt = _timedelta(start_date, -start_date.weekday() + (n - 1) * 7)
+
+    # Reject out-of-range n when the week's Sunday is not in the requested year+month.
+    week_end = _timedelta(dt, +6)
+    if (week_end.year, week_end.month) != (original_year, original_month):
+        raise ValueError(
+            f"Month {original_month} of {original_year} does not have week {original_n}"
+        )
+
+    return dt
 
 
 def _get_nth_weekday_of_month(n: int, weekday: int, month: int, year: int) -> date:

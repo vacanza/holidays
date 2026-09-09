@@ -4,28 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Georgia holidays.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.30\n"
+"Project-Id-Version: Holidays 0.80\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-18 17:31+0300\n"
-"PO-Revision-Date: 2023-07-18 17:57+0300\n"
+"PO-Revision-Date: 2025-08-28 01:04+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.4\n"
+"X-Source-Language: ka\n"
 
 #. New Year's Day.
 msgid "ახალი წელი"
@@ -47,6 +48,10 @@ msgstr ""
 msgid "ქალთა საერთაშორისო დღე"
 msgstr ""
 
+#. National Unity Day.
+msgid "ეროვნული ერთიანობის დღე"
+msgstr ""
+
 #. Good Friday.
 msgid "წითელი პარასკევი"
 msgstr ""
@@ -63,16 +68,16 @@ msgstr ""
 msgid "შავი ორშაბათი"
 msgstr ""
 
-#. National Unity Day.
-msgid "ეროვნული ერთიანობის დღე"
-msgstr ""
-
 #. Day of Victory over Fascism.
 msgid "ფაშიზმზე გამარჯვების დღე"
 msgstr ""
 
 #. Saint Andrew's Day.
 msgid "წმინდა ანდრია პირველწოდებულის დღე"
+msgstr ""
+
+#. Day of Family Sanctity and Respect for Parents.
+msgid "ოჯახის სიწმინდისა და მშობლების პატივისცემის დღე"
 msgstr ""
 
 #. Independence Day.
@@ -89,4 +94,8 @@ msgstr ""
 
 #. Saint George's Day.
 msgid "გიორგობა"
+msgstr ""
+
+#. Public Holiday.
+msgid "უქმე დღე"
 msgstr ""

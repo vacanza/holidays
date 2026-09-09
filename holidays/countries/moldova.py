@@ -4,29 +4,31 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
-from gettext import gettext as tr
 
 from holidays.calendars.gregorian import GREGORIAN_CALENDAR
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
 class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Moldova
-    https://www.legis.md/cautare/getResults?doc_id=133686
+    """Moldova holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Moldova>
+        * <https://archive.org/details/httpswww.legis.mdcautaregetresultsdoc_id133686langro>
     """
 
     country = "MD"
     default_language = "ro"
     supported_languages = ("en_US", "ro", "uk")
+    start_year = 1991
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
@@ -34,9 +36,6 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1990:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Anul Nou"))
 
@@ -64,15 +63,16 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
         # International Workers' Solidarity Day.
         self._add_labor_day(tr("Ziua internaţională a solidarităţii oamenilor muncii"))
 
-        may_9 = self._add_world_war_two_victory_day(
+        self._add_world_war_two_victory_day(
             # Victory Day and Commemoration of the heroes fallen for
             # Independence of Fatherland.
-            tr("Ziua Victoriei și a comemorării eroilor căzuţi pentru Independenţa Patriei")
+            tr("Ziua Victoriei și a comemorării eroilor căzuţi pentru Independenţa Patriei"),
+            is_western=False,
         )
 
         if self._year >= 2017:
             # Europe Day.
-            self._add_holiday(tr("Ziua Europei"), may_9)
+            self._add_europe_day(tr("Ziua Europei"))
 
         if self._year >= 2016:
             # International Children's Day.

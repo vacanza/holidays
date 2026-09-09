@@ -1,2 +1,0 @@
-# Package runtime requirements.
-python-dateutil

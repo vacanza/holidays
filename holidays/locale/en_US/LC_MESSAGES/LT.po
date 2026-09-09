@@ -4,28 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Lithuania holidays en_US localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.28\n"
+"Project-Id-Version: Holidays 0.28\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
 "PO-Revision-Date: 2024-01-07 16:02+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: lt\n"
 
 #. New Year's Day.
 msgid "Naujųjų metų diena"
@@ -51,14 +52,20 @@ msgstr "Easter Monday"
 msgid "Tarptautinė darbo diena"
 msgstr "International Workers' Day"
 
+#. Mother's Day.
+msgid "Motinos diena"
+msgstr "Mother's Day"
+
+#. Father's Day.
+msgid "Tėvo diena"
+msgstr "Father's Day"
+
 #. Day of Dew and Saint John.
 msgid "Rasos ir Joninių diena"
 msgstr "Day of Dew and Saint John"
 
 #. Statehood Day.
-msgid ""
-"Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės "
-"diena"
+msgid "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės diena"
 msgstr "Statehood Day"
 
 #. Assumption Day.
@@ -84,11 +91,3 @@ msgstr "Christmas Day"
 #. Second Day of Christmas.
 msgid "Šv. Kalėdų antra diena"
 msgstr "Second Day of Christmas"
-
-#. Mother's Day.
-msgid "Motinos diena"
-msgstr "Mother's Day"
-
-#. Father's Day.
-msgid "Tėvo diena"
-msgstr "Father's Day"

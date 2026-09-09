@@ -1,0 +1,108 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Senegal holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.102\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2025-06-04 11:37+0500\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.6\n"
+"X-Source-Language: fr_SN\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimé)"
+msgstr "%s (estimated)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observé)"
+msgstr "%s (observed)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observé, estimé)"
+msgstr "%s (observed, estimated)"
+
+#. Ashura.
+msgid "Tamxarit"
+msgstr "Ashura"
+
+#. Grand Magal of Touba.
+msgid "Grand Magal de Touba"
+msgstr "Grand Magal of Touba"
+
+#. Prophet's Birthday.
+msgid "Journée du Maouloud"
+msgstr "Prophet's Birthday"
+
+#. Eid al-Fitr.
+msgid "Journée de la Korité"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Journée de la Tabaski"
+msgstr "Eid al-Adha"
+
+#. New Year's Day.
+msgid "Jour de l'an"
+msgstr "New Year's Day"
+
+#. Senegambia Confederation Day.
+msgid "Fête de la Confédération de la Sénégambie"
+msgstr "Senegambia Confederation Day"
+
+#. Independence Day.
+msgid "Fête de l'Indépendance"
+msgstr "Independence Day"
+
+#. Easter Monday.
+msgid "Lundi de Pâques"
+msgstr "Easter Monday"
+
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr "Labor Day"
+
+#. Ascension Day.
+msgid "Jeudi de l'Ascension"
+msgstr "Ascension Day"
+
+#. Pentecost Monday.
+msgid "Lundi de Pentecôte"
+msgstr "Pentecost Monday"
+
+#. Assumption Day.
+msgid "Assomption"
+msgstr "Assumption Day"
+
+#. All Saints' Day.
+msgid "Toussaint"
+msgstr "All Saints' Day"
+
+#. Christmas Day.
+msgid "Noël"
+msgstr "Christmas Day"
+
+#. Public Holiday.
+msgid "Jour férié"
+msgstr "Public Holiday"

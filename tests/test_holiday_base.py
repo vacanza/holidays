@@ -4,10 +4,10 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 import pickle
@@ -17,6 +17,7 @@ from datetime import timedelta as td
 
 from holidays.calendars.gregorian import JAN, FEB, OCT, DEC, MON, TUE, SAT, SUN
 from holidays.constants import HOLIDAY_NAME_DELIMITER, OPTIONAL, PUBLIC, SCHOOL
+from holidays.countries import UA, US
 from holidays.groups.christian import ChristianHolidays
 from holidays.groups.custom import StaticHolidays
 from holidays.holiday_base import HolidayBase
@@ -32,21 +33,24 @@ class EntityStubStaticHolidays:
             (JAN, 7, JAN, 12),
             (JAN, 8, JAN, 13, 1991),
         ),
-        2024: (FEB, 19, FEB, 24),
+        2024: (
+            (FEB, 19, FEB, 24),
+            (OCT, 7, OCT, 12),
+        ),
     }
     substituted_date_format = "%d/%m/%Y"
     substituted_label = "From %s"
 
 
 class EntityStub(HolidayBase):
-    def _add_observed(self, dt: date, before: bool = True, after: bool = True) -> None:
+    def _add_observed(self, dt: date, *, before: bool = True, after: bool = True) -> None:
         if not self.observed:
             return None
 
         if self._is_saturday(dt) and before:
-            self._add_holiday("%s (observed)" % self[dt], dt + td(days=-1))
+            self._add_holiday(f"{self[dt]} (observed)", dt + td(days=-1))
         elif self._is_sunday(dt) and after:
-            self._add_holiday("%s (observed)" % self[dt], dt + td(days=+1))
+            self._add_holiday(f"{self[dt]} (observed)", dt + td(days=+1))
 
     def _populate(self, year: int) -> None:
         super()._populate(year)
@@ -54,7 +58,7 @@ class EntityStub(HolidayBase):
         name = "New Year's Day"
         self._add_observed(self._add_holiday_jan_1(name), before=False)
         if self.observed and self._is_friday(DEC, 31):
-            self._add_holiday_dec_31("%s (observed)" % name)
+            self._add_holiday_dec_31(f"{name} (observed)")
 
         self._add_observed(self._add_holiday_jun_19("Juneteenth National Independence Day"))
         self._add_observed(self._add_holiday_jul_4("Independence Day"))
@@ -74,6 +78,8 @@ class CountryStub1(EntityStub, StaticHolidays):
         "S_3": "3",
     }
     supported_categories = (PUBLIC, SCHOOL)
+    start_year = 1000
+    end_year = 3400
 
     def __init__(self, *args, **kwargs) -> None:
         StaticHolidays.__init__(self, cls=EntityStubStaticHolidays)
@@ -127,6 +133,7 @@ class CountryStub6(EntityStub, StaticHolidays):
     def _populate_public_holidays(self) -> None:
         self._add_holiday_may_1("Labor Day")
         self._add_holiday_may_2("Labor Day Two")
+        self._add_holiday_oct_12("Columbus Day")
 
 
 class MarketStub1(EntityStub):
@@ -184,8 +191,8 @@ class TestArgs(unittest.TestCase):
 
     def test_subdivisions_aliases(self):
         subdivisions_aliases = {
-            "subdiv_1": ("S1", "S_1"),
-            "subdiv_2": ("S2", "S_2"),
+            "Subdiv_1": ("S1", "S_1"),
+            "Subdiv_2": ("S2", "S_2"),
             "3": ("S3", "S_3"),
         }
         for subdiv, aliases in subdivisions_aliases.items():
@@ -217,7 +224,9 @@ class TestArgs(unittest.TestCase):
             HolidayBase(years=range(2010, 2016)).years, {2010, 2011, 2012, 2013, 2014, 2015}
         )
         self.assertSetEqual(HolidayBase(years=(2013, 2015, 2015)).years, {2013, 2015})
+        self.assertSetEqual(HolidayBase(years=(2013.0, 2015.0, 2015.0)).years, {2013, 2015})
         self.assertSetEqual(HolidayBase(years=2015).years, {2015})
+        self.assertSetEqual(HolidayBase(years=2015.0).years, {2015})
 
 
 class TestCategories(unittest.TestCase):
@@ -542,6 +551,36 @@ class TestHelperMethods(unittest.TestCase):
         ):
             self.assertRaises(TypeError, lambda: self.hb._add_holiday(*args))
 
+    def test_add_multiday_holiday(self):
+        self.hb._populate(2024)
+
+        name = "Multi-day Holiday"
+        self.hb._add_multiday_holiday(self.hb._add_holiday(name, (JAN, 1)), 5)
+        self.assertIn("2024-01-01", self.hb)
+        self.assertIn("2024-01-02", self.hb)
+        self.assertIn("2024-01-03", self.hb)
+        self.assertIn("2024-01-04", self.hb)
+        self.assertIn("2024-01-05", self.hb)
+        self.assertIn("2024-01-06", self.hb)
+        self.assertEqual(len(self.hb.get_named(name)), 6)
+
+        name_2 = "Multi-day Holiday 2"
+        self.hb._add_multiday_holiday(self.hb._add_holiday(name, (DEC, 25)), 6, name=name_2)
+        self.assertIn("2024-12-25", self.hb)
+        self.assertIn("2024-12-26", self.hb)
+        self.assertIn("2024-12-27", self.hb)
+        self.assertIn("2024-12-28", self.hb)
+        self.assertIn("2024-12-29", self.hb)
+        self.assertIn("2024-12-30", self.hb)
+        self.assertIn("2024-12-31", self.hb)
+        # DEC, 25 itself is name instead of name_2.
+        self.assertEqual(len(self.hb.get_named(name_2)), 6)
+
+    def test_add_multiday_holiday_invalid_args(self):
+        self.hb._populate(2024)
+        with self.assertRaises(ValueError):
+            self.hb._add_multiday_holiday(date(2024, DEC, 1), 3)
+
     def test_is_leap_year(self):
         self.hb._populate(1999)
         self.assertFalse(self.hb._is_leap_year())
@@ -562,23 +601,31 @@ class TestHelperMethods(unittest.TestCase):
         self.hb.weekend = {MON, TUE}
         for dt in dts:
             self.assertTrue(self.hb._is_weekend(dt))
+            self.assertFalse(self.hb._is_weekday(dt))
 
         self.hb.weekend = {}
         for dt in dts:
             self.assertFalse(self.hb._is_weekend(dt))
+            self.assertTrue(self.hb._is_weekday(dt))
 
         self.hb.weekend = {SAT, SUN}
         for dt in (date(2022, 10, 1), date(2022, 10, 2)):
             self.assertTrue(self.hb._is_weekend(dt))
+            self.assertFalse(self.hb._is_weekday(dt))
         for dt in ((OCT, 1), (OCT, 2)):
             self.assertTrue(self.hb._is_weekend(dt))
             self.assertTrue(self.hb._is_weekend(*dt))
+            self.assertFalse(self.hb._is_weekday(dt))
+            self.assertFalse(self.hb._is_weekday(*dt))
 
         for dt in (date(2022, 10, 3), date(2022, 10, 4)):
             self.assertFalse(self.hb._is_weekend(dt))
+            self.assertTrue(self.hb._is_weekday(dt))
         for dt in ((OCT, 3), (OCT, 4)):
             self.assertFalse(self.hb._is_weekend(dt))
             self.assertFalse(self.hb._is_weekend(*dt))
+            self.assertTrue(self.hb._is_weekday(dt))
+            self.assertTrue(self.hb._is_weekday(*dt))
 
 
 class TestHolidaySum(unittest.TestCase):
@@ -588,7 +635,7 @@ class TestHolidaySum(unittest.TestCase):
         self.hb_3 = CountryStub3()
         self.hb_combined = self.hb_1 + self.hb_2 + self.hb_3
 
-    def assertAdded(self):
+    def assertAdded(self):  # noqa: N802
         self.assertNotIn("2014-03-01", self.hb_1)
         self.assertNotIn("2014-05-01", self.hb_1)
         self.assertNotIn("2014-05-02", self.hb_1)
@@ -689,6 +736,29 @@ class TestInheritance(unittest.TestCase):
         self.assertIn("2014-07-13", hb)
         self.assertNotIn("2020-07-13", self.hb)
         self.assertIn("2020-07-13", hb)
+
+
+class TestIsWeekend(unittest.TestCase):
+    def setUp(self):
+        self.hb = CountryStub1()
+
+    def test_is_weekend(self):
+        self.hb._populate(2022)
+
+        self.hb.weekend = {MON, TUE}
+        for dt in (date(2022, 10, 3), date(2022, 10, 4), "2022-10-03", "2022-10-04"):
+            self.assertTrue(self.hb.is_weekend(dt))
+
+        self.hb.weekend = set()
+        for dt in (date(2022, 10, 3), date(2022, 10, 4), "2022-10-03", "2022-10-04"):
+            self.assertFalse(self.hb.is_weekend(dt))
+
+        self.hb.weekend = {SAT, SUN}
+        for dt in (date(2022, 10, 1), date(2022, 10, 2), "2022-10-01", "2022-10-02"):
+            self.assertTrue(self.hb.is_weekend(dt))
+
+        for dt in (date(2022, 10, 3), date(2022, 10, 4), "2022-10-03", "2022-10-04"):
+            self.assertFalse(self.hb.is_weekend(dt))
 
 
 class TestKeyTransforms(unittest.TestCase):
@@ -834,6 +904,82 @@ class TestPopNamed(unittest.TestCase):
             self.assertNotIn(dt, self.hb)
         self.assertRaises(KeyError, lambda: self.hb.pop_named("New Year"))
 
+    def test_contains(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("Day", lookup="contains")
+        self.assertEqual(len(removed_dates), 6)
+        self.assertNotIn("2022-01-01", self.hb)
+        self.assertNotIn("2022-06-19", self.hb)
+        self.assertNotIn("2022-06-20", self.hb)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertNotIn("2022-12-25", self.hb)
+        self.assertNotIn("2022-12-26", self.hb)
+
+    def test_icontains(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("day", lookup="icontains")
+        self.assertEqual(len(removed_dates), 6)
+        self.assertNotIn("2022-01-01", self.hb)
+        self.assertNotIn("2022-06-19", self.hb)
+        self.assertNotIn("2022-06-20", self.hb)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertNotIn("2022-12-25", self.hb)
+        self.assertNotIn("2022-12-26", self.hb)
+
+    def test_exact(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("Independence Day", lookup="exact")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertIn("2022-06-19", self.hb)
+        self.assertIn("2022-06-20", self.hb)
+
+        hb = CountryStub1(years=2025)
+        hb["2024-02-02"] = "Big Groundhog Day; Groundhog Day"
+        removed_dates = hb.pop_named("Groundhog Day", lookup="exact")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertEqual(hb["2024-02-02"], "Big Groundhog Day")
+
+    def test_iexact(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("independence day", lookup="iexact")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertIn("2022-06-19", self.hb)
+        self.assertIn("2022-06-20", self.hb)
+
+        hb = CountryStub1(years=2025)
+        hb["2024-02-02"] = "Big Groundhog Day; Groundhog Day"
+        removed_dates = hb.pop_named("Groundhog day", lookup="iexact")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertEqual(hb["2024-02-02"], "Big Groundhog Day")
+
+    def test_startswith(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("Independence", lookup="startswith")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertIn("2022-06-19", self.hb)
+        self.assertIn("2022-06-20", self.hb)
+
+        removed_dates = self.hb.pop_named("Christmas", lookup="startswith")
+        self.assertEqual(len(removed_dates), 2)
+        self.assertNotIn("2022-12-25", self.hb)
+        self.assertNotIn("2022-12-26", self.hb)
+
+    def test_istartswith(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("independence", lookup="istartswith")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertIn("2022-06-19", self.hb)
+        self.assertIn("2022-06-20", self.hb)
+
+        removed_dates = self.hb.pop_named("christmas", lookup="istartswith")
+        self.assertEqual(len(removed_dates), 2)
+        self.assertNotIn("2022-12-25", self.hb)
+        self.assertNotIn("2022-12-26", self.hb)
+
 
 class TestRepr(unittest.TestCase):
     def test_base(self):
@@ -845,9 +991,32 @@ class TestRepr(unittest.TestCase):
             repr(CountryStub1(subdiv="Subdiv 1")),
             "holidays.country_holidays('CS1', subdiv='Subdiv 1')",
         )
+        self.assertEqual(
+            repr(CountryStub1(language="de")), "holidays.country_holidays('CS1', language='de')"
+        )
+        self.assertEqual(
+            repr(CountryStub1(categories=SCHOOL)),
+            "holidays.country_holidays('CS1', categories=['school'])",
+        )
+        self.assertEqual(
+            repr(CountryStub1(categories=(PUBLIC, SCHOOL))),
+            "holidays.country_holidays('CS1', categories=['public', 'school'])",
+        )
+        self.assertEqual(
+            repr(CountryStub1(language="de", subdiv="Subdiv 1")),
+            "holidays.country_holidays('CS1', language='de', subdiv='Subdiv 1')",
+        )
+        self.assertEqual(
+            repr(CountryStub1(categories=(PUBLIC, SCHOOL), language="de", subdiv="Subdiv 1")),
+            "holidays.country_holidays('CS1', categories=['public', 'school'], "
+            "language='de', subdiv='Subdiv 1')",
+        )
 
     def test_market(self):
         self.assertEqual(repr(MarketStub1()), "holidays.financial_holidays('MS1')")
+        self.assertEqual(
+            repr(MarketStub1(language="de")), "holidays.financial_holidays('MS1', language='de')"
+        )
 
 
 class TestSerialization(unittest.TestCase):
@@ -861,6 +1030,16 @@ class TestSerialization(unittest.TestCase):
         loaded_holidays = pickle.loads(pickle.dumps(self.hb))
         self.assertEqual(loaded_holidays, self.hb)
         self.assertIn(dt, self.hb)
+
+    def test_pickle_localized_entity(self):
+        for lang in ("uk", "en_US", None):
+            ua = UA(language=lang)
+            dt = "2021-01-01"
+            self.assertIn(dt, self.hb)
+
+            loaded_ua = pickle.loads(pickle.dumps(ua))
+            self.assertEqual(loaded_ua, ua)
+            self.assertIn(dt, loaded_ua)
 
 
 class TestSpecialHolidays(unittest.TestCase):
@@ -987,8 +1166,7 @@ class TestStandardMethods(unittest.TestCase):
         )
         self.assertListEqual(self.hb["2014-01-01":"2013-12-24":3], [date(2014, 1, 1)])
         self.assertListEqual(
-            self.hb["2014-01-01":"2013-12-24":7],
-            [date(2014, 1, 1), date(2013, 12, 25)],
+            self.hb["2014-01-01":"2013-12-24":7], [date(2014, 1, 1), date(2013, 12, 25)]
         )
         self.assertListEqual(self.hb["2013-12-31":"2014-01-02":-3], [])
         self.assertListEqual(self.hb["2014-01-01" : "2013-12-24" : td(days=3)], [date(2014, 1, 1)])
@@ -1002,6 +1180,29 @@ class TestStandardMethods(unittest.TestCase):
         self.assertRaises(ValueError, lambda: self.hb[:"2014-01-01"])
         self.assertRaises(TypeError, lambda: self.hb["2014-01-01":"2014-01-02":""])
         self.assertRaises(ValueError, lambda: self.hb["2014-01-01":"2014-01-02":0])
+        self.assertRaises(ValueError, lambda: self.hb["2014-01-01" : "2014-01-02" : td(hours=12)])
+
+        hb_1 = CountryStub1(years=(2013, 2015), expand=False)
+        self.assertListEqual(
+            hb_1["2013-12-24":"2015-01-02"],
+            [
+                date(2013, 12, 25),
+                date(2015, 1, 1),
+            ],
+        )
+        hb_2 = CountryStub1(years=(2013, 2015))
+        self.assertListEqual(
+            hb_2["2013-12-24":"2015-01-02"],
+            [
+                date(2013, 12, 25),
+                date(2014, 1, 1),
+                date(2014, 6, 19),
+                date(2014, 7, 4),
+                date(2014, 11, 27),
+                date(2014, 12, 25),
+                date(2015, 1, 1),
+            ],
+        )
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + CountryStub1())
@@ -1012,6 +1213,10 @@ class TestStandardMethods(unittest.TestCase):
         self.assertGreater(len(self.hb), 0)
         self.assertIn("2014-01-03", self.hb)
         self.assertEqual(self.hb["2014-01-03"], "Custom Holiday")
+
+        self.hb["2014-01-04"] = "Custom Holiday"
+        self.hb["2014-01-04"] = "Custom Holiday; Another Custom Holiday"
+        self.assertEqual(self.hb["2014-01-04"], "Another Custom Holiday; Custom Holiday")
 
     def test_update(self):
         self.hb.update(
@@ -1111,7 +1316,7 @@ class TestSubstitutedHolidays(unittest.TestCase):
         for cls in (EmptySubstitutedHolidays, NoSubstitutedHolidays):
             hb = self.CountryStub(cls=cls)
             self.assertFalse(hb.has_special_holidays)
-            self.assertTrue(hb.has_substituted_holidays)
+            self.assertFalse(hb.has_substituted_holidays)
 
             hb._populate(1991)
             self.assertNotIn("1991-01-07", hb)
@@ -1134,51 +1339,195 @@ class TestWorkdays(unittest.TestCase):
     def setUp(self):
         self.hb = CountryStub6(years=2024)
 
-    def test_is_workday(self):
-        self.assertTrue(self.hb.is_workday("2024-02-12"))
-        self.assertFalse(self.hb.is_workday("2024-02-17"))
-        self.assertFalse(self.hb.is_workday("2024-02-19"))
-        self.assertTrue(self.hb.is_workday("2024-02-24"))
+    def test_is_working_day(self):
+        self.assertTrue(self.hb.is_working_day("2024-02-12"))
+        self.assertFalse(self.hb.is_working_day("2024-02-17"))
+        self.assertFalse(self.hb.is_working_day("2024-02-19"))
+        self.assertTrue(self.hb.is_working_day("2024-02-24"))
 
-        self.assertTrue(self.hb.is_workday("2024-04-30"))
-        self.assertFalse(self.hb.is_workday("2024-05-01"))
-        self.assertFalse(self.hb.is_workday("2024-05-02"))
-        self.assertTrue(self.hb.is_workday("2024-05-03"))
+        self.assertTrue(self.hb.is_working_day("2024-04-30"))
+        self.assertFalse(self.hb.is_working_day("2024-05-01"))
+        self.assertFalse(self.hb.is_working_day("2024-05-02"))
+        self.assertTrue(self.hb.is_working_day("2024-05-03"))
 
-    def test_get_nth_workday(self):
-        self.assertEqual(self.hb.get_nth_workday("2024-01-04", 0), date(2024, 1, 4))
-        self.assertEqual(self.hb.get_nth_workday("2024-01-04", +1), date(2024, 1, 5))
-        self.assertEqual(self.hb.get_nth_workday("2024-01-04", +3), date(2024, 1, 9))
-        self.assertEqual(self.hb.get_nth_workday("2024-01-06", +1), date(2024, 1, 8))
-        self.assertEqual(self.hb.get_nth_workday("2024-01-26", -10), date(2024, 1, 12))
-        self.assertEqual(self.hb.get_nth_workday("2024-01-21", -1), date(2024, 1, 19))
+        self.assertFalse(self.hb.is_working_day("2024-10-07"))  # substituted from Oct 12 (SAT).
+        self.assertFalse(self.hb.is_working_day("2024-10-12"))  # Columbus Day holiday.
 
-        self.assertEqual(self.hb.get_nth_workday("2024-02-15", +4), date(2024, 2, 22))
-        self.assertEqual(self.hb.get_nth_workday("2024-02-15", +5), date(2024, 2, 23))
-        self.assertEqual(self.hb.get_nth_workday("2024-02-15", +6), date(2024, 2, 24))
-        self.assertEqual(self.hb.get_nth_workday("2024-02-15", +7), date(2024, 2, 26))
-        self.assertEqual(self.hb.get_nth_workday("2024-02-26", -7), date(2024, 2, 15))
-        self.assertEqual(self.hb.get_nth_workday("2024-02-25", -7), date(2024, 2, 15))
+    def test_get_nth_working_day(self):
+        self.assertEqual(self.hb.get_nth_working_day("2024-01-04", 0), date(2024, 1, 4))
+        self.assertEqual(self.hb.get_nth_working_day("2024-01-04", +1), date(2024, 1, 5))
+        self.assertEqual(self.hb.get_nth_working_day("2024-01-04", +3), date(2024, 1, 9))
+        self.assertEqual(self.hb.get_nth_working_day("2024-01-06", +1), date(2024, 1, 8))
+        self.assertEqual(self.hb.get_nth_working_day("2024-01-26", -10), date(2024, 1, 12))
+        self.assertEqual(self.hb.get_nth_working_day("2024-01-21", -1), date(2024, 1, 19))
 
-        self.assertEqual(self.hb.get_nth_workday("2024-04-29", +1), date(2024, 4, 30))
-        self.assertEqual(self.hb.get_nth_workday("2024-04-29", +2), date(2024, 5, 3))
-        self.assertEqual(self.hb.get_nth_workday("2024-04-29", +3), date(2024, 5, 6))
-        self.assertEqual(self.hb.get_nth_workday("2024-04-29", +4), date(2024, 5, 7))
-        self.assertEqual(self.hb.get_nth_workday("2024-05-10", -10), date(2024, 4, 24))
-        self.assertEqual(self.hb.get_nth_workday("2024-05-10", -7), date(2024, 4, 29))
-        self.assertEqual(self.hb.get_nth_workday("2024-05-10", -5), date(2024, 5, 3))
+        self.assertEqual(self.hb.get_nth_working_day("2024-02-15", +4), date(2024, 2, 22))
+        self.assertEqual(self.hb.get_nth_working_day("2024-02-15", +5), date(2024, 2, 23))
+        self.assertEqual(self.hb.get_nth_working_day("2024-02-15", +6), date(2024, 2, 24))
+        self.assertEqual(self.hb.get_nth_working_day("2024-02-15", +7), date(2024, 2, 26))
+        self.assertEqual(self.hb.get_nth_working_day("2024-02-26", -7), date(2024, 2, 15))
+        self.assertEqual(self.hb.get_nth_working_day("2024-02-25", -7), date(2024, 2, 15))
 
-    def test_get_workdays_number(self):
-        self.assertEqual(self.hb.get_workdays_number("2024-01-03", "2024-01-23"), 14)
-        self.assertEqual(self.hb.get_workdays_number("2024-01-23", "2024-01-03"), 14)
-        self.assertEqual(self.hb.get_workdays_number("2024-01-06", "2024-01-07"), 0)
-        self.assertEqual(self.hb.get_workdays_number("2024-01-16", "2024-01-16"), 0)
+        self.assertEqual(self.hb.get_nth_working_day("2024-04-29", +1), date(2024, 4, 30))
+        self.assertEqual(self.hb.get_nth_working_day("2024-04-29", +2), date(2024, 5, 3))
+        self.assertEqual(self.hb.get_nth_working_day("2024-04-29", +3), date(2024, 5, 6))
+        self.assertEqual(self.hb.get_nth_working_day("2024-04-29", +4), date(2024, 5, 7))
+        self.assertEqual(self.hb.get_nth_working_day("2024-05-10", -10), date(2024, 4, 24))
+        self.assertEqual(self.hb.get_nth_working_day("2024-05-10", -7), date(2024, 4, 29))
+        self.assertEqual(self.hb.get_nth_working_day("2024-05-10", -5), date(2024, 5, 3))
 
-        self.assertEqual(self.hb.get_workdays_number("2024-02-08", "2024-02-15"), 5)
-        self.assertEqual(self.hb.get_workdays_number("2024-02-15", "2024-02-22"), 4)
-        self.assertEqual(self.hb.get_workdays_number("2024-02-22", "2024-02-29"), 6)
+        self.assertEqual(self.hb.get_nth_working_day("2024-07-27", 0), date(2024, 7, 29))
+        self.assertEqual(self.hb.get_nth_working_day("2024-07-27", 1), date(2024, 7, 29))
+        self.assertEqual(self.hb.get_nth_working_day("2024-07-29", 0), date(2024, 7, 29))
 
-        self.assertEqual(self.hb.get_workdays_number("2024-04-29", "2024-05-03"), 2)
-        self.assertEqual(self.hb.get_workdays_number("2024-04-29", "2024-05-04"), 2)
-        self.assertEqual(self.hb.get_workdays_number("2024-04-29", "2024-05-05"), 2)
-        self.assertEqual(self.hb.get_workdays_number("2024-04-29", "2024-05-06"), 3)
+    def test_get_working_days_count(self):
+        self.assertEqual(self.hb.get_working_days_count("2024-01-03", "2024-01-23"), 15)
+        self.assertEqual(self.hb.get_working_days_count("2024-01-23", "2024-01-03"), 15)
+        self.assertEqual(self.hb.get_working_days_count("2024-01-06", "2024-01-07"), 0)
+        self.assertEqual(self.hb.get_working_days_count("2024-01-16", "2024-01-16"), 1)
+
+        self.assertEqual(self.hb.get_working_days_count("2024-02-08", "2024-02-15"), 6)
+        self.assertEqual(self.hb.get_working_days_count("2024-02-15", "2024-02-22"), 5)
+        self.assertEqual(self.hb.get_working_days_count("2024-02-22", "2024-02-29"), 7)
+
+        self.assertEqual(self.hb.get_working_days_count("2024-04-29", "2024-05-03"), 3)
+        self.assertEqual(self.hb.get_working_days_count("2024-04-29", "2024-05-04"), 3)
+        self.assertEqual(self.hb.get_working_days_count("2024-04-29", "2024-05-05"), 3)
+        self.assertEqual(self.hb.get_working_days_count("2024-04-29", "2024-05-06"), 4)
+
+
+class TestClosestHoliday(unittest.TestCase):
+    def setUp(self):
+        self.current_year = datetime.now().year
+        self.next_year = self.current_year + 1
+        self.previous_year = self.current_year - 1
+        self.hb = CountryStub3(years=self.current_year)
+        self.next_labor_day_year = (
+            self.current_year
+            if datetime.now().date() <= self.hb.get_named("Custom May 1st Holiday")[0]
+            else self.next_year
+        )
+        self.previous_labor_day_year = (
+            self.current_year
+            if datetime.now().date() >= self.hb.get_named("Custom May 2nd Holiday")[0]
+            else self.previous_year
+        )
+
+    def test_get_closest_holiday_forward(self):
+        self.assertEqual(
+            self.hb.get_closest_holiday(f"{self.current_year}-01-01"),
+            (date(self.current_year, 5, 1), "Custom May 1st Holiday"),
+        )
+        self.assertEqual(
+            self.hb.get_closest_holiday(f"{self.current_year}-04-30"),
+            (date(self.current_year, 5, 1), "Custom May 1st Holiday"),
+        )
+        self.assertEqual(
+            self.hb.get_closest_holiday(f"{self.current_year}-05-01"),
+            (date(self.current_year, 5, 2), "Custom May 2nd Holiday"),
+        )
+        self.assertEqual(
+            self.hb.get_closest_holiday(f"{self.current_year}-05-02"),
+            (date(self.next_year, 5, 1), "Custom May 1st Holiday"),
+        )
+        self.assertEqual(
+            self.hb.get_closest_holiday(f"{self.next_year}-01-01"),
+            (date(self.next_year, 5, 1), "Custom May 1st Holiday"),
+        )
+
+        self.assertIn(
+            self.hb.get_closest_holiday(),
+            [
+                (date(self.next_labor_day_year, 5, 1), "Custom May 1st Holiday"),
+                (date(self.next_labor_day_year, 5, 2), "Custom May 2nd Holiday"),
+            ],
+        )
+
+    def test_get_closest_holiday_backward(self):
+        self.assertEqual(
+            self.hb.get_closest_holiday(f"{self.current_year}-12-31", direction="backward"),
+            (date(self.current_year, 5, 2), "Custom May 2nd Holiday"),
+        )
+        self.assertEqual(
+            self.hb.get_closest_holiday(f"{self.current_year}-05-02", direction="backward"),
+            (date(self.current_year, 5, 1), "Custom May 1st Holiday"),
+        )
+        self.assertEqual(
+            self.hb.get_closest_holiday(f"{self.current_year}-04-30", direction="backward"),
+            (date(self.previous_year, 5, 2), "Custom May 2nd Holiday"),
+        )
+        self.assertEqual(
+            self.hb.get_closest_holiday(f"{self.previous_year}-12-31", direction="backward"),
+            (date(self.previous_year, 5, 2), "Custom May 2nd Holiday"),
+        )
+
+        self.assertIn(
+            self.hb.get_closest_holiday(direction="backward"),
+            [
+                (date(self.previous_labor_day_year, 5, 2), "Custom May 2nd Holiday"),
+                (date(self.current_year, 5, 1), "Custom May 1st Holiday"),
+            ],
+        )
+
+    def test_get_closest_holiday_corner_cases(self):
+        us = US()
+        # check for date before start of calendar
+        self.assertIsNone(us.get_closest_holiday("1777-01-01", direction="backward"))
+
+        # check for date after end of calendar
+        self.assertIsNone(us.get_closest_holiday("2100-12-31"))
+
+    def test_get_closest_holiday_after_empty_year(self):
+        ua = UA(years=2025)
+        # check for date if a year has no holidays
+        ua._add_holiday_jan_1("Custom holiday")
+        self.assertEqual(
+            ua.get_closest_holiday("2022-03-08"), (date(2025, 1, 1), "Custom holiday")
+        )
+
+    def test_get_closest_holiday_unsorted_calendars(self):
+        us_calendar = US(years=2024)
+
+        self.assertEqual(
+            us_calendar.get_closest_holiday(date(2024, 2, 1)),
+            (date(2024, 2, 19), "Washington's Birthday"),
+        )
+
+        # check for date before start of calendar
+        self.assertEqual(
+            us_calendar.get_closest_holiday(date(2024, 2, 1), direction="backward"),
+            (date(2024, 1, 15), "Martin Luther King Jr. Day"),
+        )
+
+    def test_get_closest_holiday_updates_years(self):
+        us = US(years=2024)
+        self.assertEqual(us.years, {2024})
+
+        us.get_closest_holiday(date(2024, 12, 31), "forward")
+        self.assertIn(2025, us.years)
+
+        us_2 = US(years=2024)
+        self.assertEqual(us_2.years, {2024})
+
+        us_2.get_closest_holiday(date(2024, 1, 1), "backward")
+        self.assertIn(2023, us_2.years)
+
+    def test_get_closest_holiday_expand_false_keeps_state(self):
+        us = US(years=2024, expand=False)
+        keys_before = set(us.keys())
+
+        self.assertIsNone(us.get_closest_holiday(date(2024, 12, 31), "forward"))
+        self.assertEqual(us.years, {2024})
+        self.assertEqual(set(us.keys()), keys_before)
+
+        self.assertEqual(
+            us.get_closest_holiday(date(2024, 12, 31), "backward"),
+            (date(2024, 12, 25), "Christmas Day"),
+        )
+        self.assertEqual(us.years, {2024})
+        self.assertEqual(set(us.keys()), keys_before)
+
+    def test_get_closest_holiday_invalid_direction(self):
+        self.assertRaises(
+            AttributeError, lambda: HolidayBase().get_closest_holiday(direction="invalid")
+        )

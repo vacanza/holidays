@@ -4,33 +4,27 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
-from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, MAR, MAY, SEP, OCT, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    https://www.psb.gov.sc/public-holidays
-    https://www.cbs.sc/PublicHolidays.html
+class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+    """Seychelles holidays.
 
-    [Act 19 of 1976, 1994 Amendment]
-        Oldest Seychelles Holidays Law available online in full.
-        https://seylii.org/akn/sc/act/1976/19/eng@2012-06-30
-    [Act 11 of 2014]
-        Holidays names changed.
-        https://seylii.org/akn/sc/act/2014/11/eng@2014-08-04
-    [Act 3 of 2017]
-        Added Easter Monday, repealing Liberation Day.
-        https://seylii.org/akn/sc/act/2017/3/eng@2017-04-12
+    References:
+        * <https://web.archive.org/web/20240312030952/https://www.psb.gov.sc/public-holidays>
+        * <https://web.archive.org/web/20250413193316/https://www.cbs.sc/PublicHolidays.html>
+        * [Act 19 of 1976, 1994 Amendment (Oldest Seychelles Holidays Law available online in full)](https://web.archive.org/web/20250414175740/https://seylii.org/akn/sc/act/1976/19/eng@2012-06-30)
+        * [Act 11 of 2014 (Holidays names changed)](https://web.archive.org/web/20240908070851/https://seylii.org/akn/sc/act/2014/11/eng@2014-08-04)
+        * [Act 3 of 2017 (Added Easter Monday, repealing Liberation Day)](https://web.archive.org/web/20240920163119/https://seylii.org/akn/sc/act/2017/3/eng@2017-04-12)
 
     Where any public holiday, except Sunday, falls on a Sunday the next following day,
     not being itself a public holiday, shall be a public holiday.
@@ -41,6 +35,8 @@ class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     # %s (observed).
     observed_label = tr("%s (observed)")
     supported_languages = ("en_SC", "en_US")
+    # Earliest source is the 1994 amendment of Seychelles Public Holidays Act.
+    start_year = 1994
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -50,10 +46,6 @@ class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Earliest source is the 1994 amendment of Seychelles Public Holidays Act.
-        if self._year <= 1993:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
 
@@ -70,10 +62,10 @@ class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Easter Monday.
             self._add_easter_monday(tr("Easter Monday"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_observed(self._add_labor_day(tr("Labour Day")))
 
-        # The Fete Dieu.
+        # Corpus Christi.
         self._add_corpus_christi_day(tr("The Fete Dieu"))
 
         if self._year <= 2016:
@@ -103,11 +95,11 @@ class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Assumption Day.
         self._add_observed(self._add_assumption_of_mary_day(tr("Assumption Day")))
 
-        # All Saints Day.
+        # All Saints' Day.
         self._add_observed(self._add_all_saints_day(tr("All Saints Day")))
 
         self._add_observed(
-            # The Feast of the Immaculate Conception.
+            # Immaculate Conception.
             self._add_immaculate_conception_day(tr("The Feast of the Immaculate Conception"))
         )
 
@@ -124,18 +116,19 @@ class SYC(Seychelles):
 
 
 class SeychellesStaticHolidays:
-    """
-    Sources:
-     - https://seylii.org/akn/sc/act/si/2015/58/eng@2015-12-01
-     - https://seylii.org/akn/sc/act/si/2015/59/eng@2015-12-11
-     - https://seylii.org/akn/sc/act/si/2016/58/eng@2016-09-06
-     - https://seylii.org/akn/sc/act/si/2019/10/eng@2019-03-05
-     - https://seylii.org/akn/sc/act/si/2019/61/eng@2019-10-18
-     - https://seylii.org/akn/sc/act/si/2020/134/eng@2020-09-17
-     - https://seylii.org/akn/sc/act/si/2020/154/eng@2020-10-26
-     - https://www.statehouse.gov.sc/news/1765/public-holiday-october-1
-     - https://www.egov.sc/PressRoom/DisplayPressRelease.aspx?PRLID=196
-     - https://www.nation.sc/archive/216478/saturday-may-12-2007-public-holiday
+    """Seychelles special holidays.
+
+    References:
+        * <https://web.archive.org/web/20250413193400/https://seylii.org/akn/sc/act/si/2015/58/eng@2015-12-01>
+        * <https://web.archive.org/web/20240908071355/https://seylii.org/akn/sc/act/si/2015/59/eng@2015-12-11>
+        * <https://web.archive.org/web/20250413193424/https://seylii.org/akn/sc/act/si/2016/58/eng@2016-09-06>
+        * <https://web.archive.org/web/20250413193436/https://seylii.org/akn/sc/act/si/2019/10/eng@2019-03-05>
+        * <https://web.archive.org/web/20250413193450/https://seylii.org/akn/sc/act/si/2019/61/eng@2019-10-18>
+        * <https://web.archive.org/web/20250413193558/https://seylii.org/akn/sc/act/si/2020/134/eng@2020-09-17>
+        * <https://web.archive.org/web/20250413193519/https://seylii.org/akn/sc/act/si/2020/154/eng@2020-10-26>
+        * <https://web.archive.org/web/20250413193534/https://www.statehouse.gov.sc/news/1765/public-holiday-october-1>
+        * <https://web.archive.org/web/20250413193643/https://www.egov.sc/PressRoom/DisplayPressRelease.aspx?PRLID=196>
+        * <https://web.archive.org/web/20250413193559/https://www.nation.sc/archive/216478/saturday-may-12-2007-public-holiday>
 
     All Election Dates usually proceed from the Outer Islands first, then the Inner Islands, and
     the main capital, Mahé, on the last day. The current implementation only uses the last day,

@@ -4,28 +4,26 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from unittest import TestCase
 
-from holidays.countries.peru import Peru, PE, PER
+from holidays.countries.peru import Peru
 from tests.common import CommonCountryTests
 
 
 class TestPeru(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Peru)
-
-    def test_country_aliases(self):
-        self.assertAliases(Peru, PE, PER)
+        super().setUpClass(Peru, years=range(1950, 2050))
 
     def test_2019(self):
-        self.assertHolidayDates(
+        self.assertHolidayDatesInYear(
+            2019,
             "2019-01-01",
             "2019-04-18",
             "2019-04-19",
@@ -42,7 +40,8 @@ class TestPeru(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidayDates(
+        self.assertHolidayDatesInYear(
+            2022,
             "2022-01-01",
             "2022-04-14",
             "2022-04-15",
@@ -59,6 +58,16 @@ class TestPeru(CommonCountryTests, TestCase):
             "2022-12-09",
             "2022-12-25",
         )
+
+    def test_battle_of_arica_and_flag_day(self):
+        name = "Batalla de Arica y Día de la Bandera"
+        self.assertHolidayName(name, (f"{year}-06-07" for year in range(2024, 2050)))
+        self.assertNoHolidayName(name, range(1950, 2024))
+
+    def test_peruvian_air_force_day(self):
+        name = "Día de la Fuerza Aérea del Perú"
+        self.assertHolidayName(name, (f"{year}-07-23" for year in range(2023, 2050)))
+        self.assertNoHolidayName(name, range(1950, 2023))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -87,14 +96,14 @@ class TestPeru(CommonCountryTests, TestCase):
             ("2022-04-15", "Good Friday"),
             ("2022-04-17", "Easter Sunday"),
             ("2022-05-01", "Labor Day"),
-            ("2022-06-29", "Saint Peter and Saint Paul"),
+            ("2022-06-29", "Saint Peter and Saint Paul's Day"),
             ("2022-07-28", "Independence Day"),
             ("2022-07-29", "Great Military Parade Day"),
             ("2022-08-06", "Battle of Junín Day"),
             ("2022-08-30", "Rose of Lima Day"),
             ("2022-10-08", "Battle of Angamos Day"),
             ("2022-11-01", "All Saints' Day"),
-            ("2022-12-08", "Immaculate Conception Day"),
+            ("2022-12-08", "Immaculate Conception"),
             ("2022-12-09", "Battle of Ayacucho Day"),
             ("2022-12-25", "Christmas Day"),
         )

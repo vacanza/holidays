@@ -4,38 +4,43 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
-from gettext import gettext as tr
 
 from holidays.calendars.gregorian import FRI, SAT
 from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
-class Djibouti(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
+class Djibouti(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+    """Djibouti holidays."""
+
     country = "DJ"
     default_language = "fr"
     # %s (estimated).
     estimated_label = tr("%s (estimé)")
     supported_languages = ("ar", "en_US", "fr")
     weekend = {FRI, SAT}
+    # On 27 June 1977, Djibouti gained independence from France.
+    start_year = 1978
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
+        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # On 27 June 1977, Djibouti gained independence from France.
-        if self._year <= 1977:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Nouvel an"))
 
@@ -51,7 +56,7 @@ class Djibouti(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHol
         # Christmas Day.
         self._add_christmas_day(tr("Noël"))
 
-        # Isra and Miraj.
+        # Isra' and Mi'raj.
         self._add_isra_and_miraj_day(tr("Al Isra et Al Mirague"))
 
         # Eid al-Fitr.
@@ -60,7 +65,7 @@ class Djibouti(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHol
         # Eid al-Fitr Holiday.
         self._add_eid_al_fitr_day_two(tr("Eid al-Fitr deuxième jour"))
 
-        # Arafat Day.
+        # Day of Arafah.
         self._add_arafah_day(tr("Arafat"))
 
         # Eid al-Adha.

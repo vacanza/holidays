@@ -4,131 +4,163 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from unittest import TestCase
 
 from holidays.constants import WORKDAY
-from holidays.countries.slovakia import Slovakia, SK, SVK
+from holidays.countries.slovakia import Slovakia
 from tests.common import CommonCountryTests
 
 
 class TestSlovakia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Slovakia, years=range(1993, 2050))
-
-    def test_country_aliases(self):
-        self.assertAliases(Slovakia, SK, SVK)
+        super().setUpClass(Slovakia)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Slovakia(years=1992))
+        super().test_no_holidays()
+
+        self.assertNoHolidays(Slovakia(categories=WORKDAY, years=range(self.start_year, 2021)))
 
     def test_special_holidays(self):
         self.assertHoliday(
             "2018-10-30",
         )
 
-    def test_new_years_day(self):
+    def test_day_of_the_establishment_of_the_slovak_republic(self):
         self.assertHolidayName(
-            "Deň vzniku Slovenskej republiky", (f"{year}-01-01" for year in range(1993, 2050))
+            "Deň vzniku Slovenskej republiky", (f"{year}-01-01" for year in self.full_range)
         )
 
     def test_epiphany(self):
         self.assertHolidayName(
             "Zjavenie Pána (Traja králi a vianočný sviatok pravoslávnych kresťanov)",
-            (f"{year}-01-06" for year in range(1993, 2050)),
+            (f"{year}-01-06" for year in self.full_range),
         )
 
     def test_good_friday(self):
+        name = "Veľký piatok"
         self.assertHolidayName(
-            "Veľký piatok",
-            "2019-04-19",
+            name,
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
+        name = "Veľkonočný pondelok"
         self.assertHolidayName(
-            "Veľkonočný pondelok",
-            "2019-04-22",
+            name,
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
         )
+        self.assertHolidayName(name, self.full_range)
 
     def test_labor_day(self):
-        self.assertHolidayName("Sviatok práce", (f"{year}-05-01" for year in range(1993, 2050)))
+        self.assertHolidayName("Sviatok práce", (f"{year}-05-01" for year in self.full_range))
 
-    def test_day_of_victory_over_fascizm(self):
+    def test_day_of_victory_over_fascism(self):
         name = "Deň víťazstva nad fašizmom"
-        self.assertHolidayName(name, (f"{year}-05-08" for year in range(1997, 2050)))
-        self.assertNoHoliday(f"{year}-05-08" for year in range(1993, 1997))
-        self.assertNoHolidayName(name, range(1993, 1997))
-
-    def test_cyril_and_methodius_day(self):
         self.assertHolidayName(
-            "Sviatok svätého Cyrila a svätého Metoda",
-            (f"{year}-07-05" for year in range(1993, 2050)),
+            name, (f"{year}-05-08" for year in (*range(1997, 2026), *range(2027, self.end_year)))
+        )
+        self.assertNoHolidayName(name, range(self.start_year, 1997), 2026)
+        self.assertWorkdayHolidayName(name, "2026-05-08")
+        self.assertNoWorkdayHolidayName(
+            name, range(self.start_year, 2026), range(2027, self.end_year)
         )
 
-    def test_slovak_national_uprising(self):
+    def test_saints_cyril_and_methodius_day(self):
+        self.assertHolidayName(
+            "Sviatok svätého Cyrila a svätého Metoda",
+            (f"{year}-07-05" for year in self.full_range),
+        )
+
+    def test_slovak_national_uprising_anniversary(self):
         self.assertHolidayName(
             "Výročie Slovenského národného povstania",
-            (f"{year}-08-29" for year in range(1993, 2050)),
+            (f"{year}-08-29" for year in self.full_range),
         )
 
     def test_constitution_day(self):
-        self.assertHolidayName(
-            "Deň Ústavy Slovenskej republiky", (f"{year}-09-01" for year in range(1993, 2050))
+        name = "Deň Ústavy Slovenskej republiky"
+        # PUBLIC.
+        self.assertHolidayName(name, (f"{year}-09-01" for year in range(self.start_year, 2024)))
+        self.assertNoHolidayName(name, range(2024, self.end_year))
+        # WORKDAY.
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-09-01" for year in range(2024, self.end_year))
         )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 2024))
 
     def test_day_of_our_lady_of_the_seven_sorrows(self):
+        name = "Sedembolestná Panna Mária"
         self.assertHolidayName(
-            "Sedembolestná Panna Mária", (f"{year}-09-15" for year in range(1993, 2050))
+            name,
+            (
+                f"{year}-09-15"
+                for year in (*range(self.start_year, 2026), *range(2027, self.end_year))
+            ),
         )
+        self.assertNoHolidayName(name, 2026)
+        self.assertWorkdayHolidayName(name, "2026-09-15")
+        self.assertNoWorkdayHolidayName(
+            name, range(self.start_year, 2026), range(2027, self.end_year)
+        )
+
+    def test_day_of_the_establishment_of_the_czech_slovak_state(self):
+        name = "Deň vzniku samostatného česko-slovenského štátu"
+        self.assertNoHolidayName(name)
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-10-28" for year in range(2021, self.end_year))
+        )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 2021))
 
     def test_all_saints_day(self):
         self.assertHolidayName(
-            "Sviatok Všetkých svätých", (f"{year}-11-01" for year in range(1993, 2050))
+            "Sviatok Všetkých svätých", (f"{year}-11-01" for year in self.full_range)
         )
 
-    def test_day_of_freedom_and_democracy(self):
+    def test_struggle_for_freedom_and_democracy_day(self):
         name = "Deň boja za slobodu a demokraciu"
-        self.assertHolidayName(name, (f"{year}-11-17" for year in range(2001, 2050)))
-        self.assertNoHoliday(f"{year}-11-17" for year in range(1993, 2001))
-        self.assertNoHolidayName(name, range(1993, 2001))
+        # PUBLIC.
+        self.assertHolidayName(name, (f"{year}-11-17" for year in range(2001, 2025)))
+        self.assertNoHolidayName(name, range(self.start_year, 2001), range(2025, self.end_year))
+        # WORKDAY.
+        self.assertWorkdayHolidayName(
+            name, (f"{year}-11-17" for year in range(2025, self.end_year))
+        )
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 2025))
 
     def test_christmas_eve(self):
-        self.assertHolidayName("Štedrý deň", (f"{year}-12-24" for year in range(1993, 2050)))
+        self.assertHolidayName("Štedrý deň", (f"{year}-12-24" for year in self.full_range))
 
     def test_christmas_day(self):
         self.assertHolidayName(
-            "Prvý sviatok vianočný", (f"{year}-12-25" for year in range(1993, 2050))
+            "Prvý sviatok vianočný", (f"{year}-12-25" for year in self.full_range)
         )
 
-    def test_stephens_day(self):
+    def test_second_day_of_christmas(self):
         self.assertHolidayName(
-            "Druhý sviatok vianočný", (f"{year}-12-26" for year in range(1993, 2050))
+            "Druhý sviatok vianočný", (f"{year}-12-26" for year in self.full_range)
         )
 
-    def test_establishment_state_day(self):
-        name = "Deň vzniku samostatného česko-slovenského štátu"
-        holidays = Slovakia(categories=WORKDAY, years=range(1993, 2050))
-        self.assertHolidayName(name, holidays, (f"{year}-10-28" for year in range(2021, 2050)))
-        self.assertNoHoliday(holidays, (f"{year}-10-28" for year in range(1993, 2021)))
-        self.assertNoHolidayName(name, holidays, range(1993, 2021))
-
-    def test_2021(self):
-        self.assertHolidays(
-            Slovakia(years=2021),
+    def test_2021_public(self):
+        self.assertHolidaysInYear(
+            2021,
             ("2021-01-01", "Deň vzniku Slovenskej republiky"),
             (
                 "2021-01-06",
@@ -149,9 +181,9 @@ class TestSlovakia(CommonCountryTests, TestCase):
             ("2021-12-26", "Druhý sviatok vianočný"),
         )
 
-    def test_workday_2021(self):
-        self.assertHolidays(
-            Slovakia(categories=WORKDAY, years=2021),
+    def test_2021_workday(self):
+        self.assertWorkdayHolidaysInYear(
+            2021,
             ("2021-10-28", "Deň vzniku samostatného česko-slovenského štátu"),
         )
 
@@ -187,7 +219,7 @@ class TestSlovakia(CommonCountryTests, TestCase):
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labor Day"),
             ("2022-05-08", "Day of Victory over Fascism"),
-            ("2022-07-05", "St. Cyril and Methodius Day"),
+            ("2022-07-05", "Saints Cyril and Methodius Day"),
             ("2022-08-29", "Slovak National Uprising Anniversary"),
             ("2022-09-01", "Constitution Day"),
             ("2022-09-15", "Day of Our Lady of the Seven Sorrows"),

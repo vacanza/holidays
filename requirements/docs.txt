@@ -1,5 +1,0 @@
-# pip requirements for building docs.
-# Must include package `install_requires` entries.
-python-dateutil
-sphinx
-sphinx_rtd_theme

@@ -4,15 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
-from typing import Tuple
 
 from holidays.calendars.gregorian import (
     FEB,
@@ -29,32 +27,61 @@ from holidays.calendars.gregorian import (
 )
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import InternationalHolidays, StaticHolidays
-from holidays.helpers import _normalize_tuple
-from holidays.holiday_base import HolidayBase
+from holidays.helpers import tr
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORKDAY
 
 
-class Japan(HolidayBase, InternationalHolidays, StaticHolidays):
-    """
+class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
+    """Japan holidays.
+
     References:
-
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Japan
-    - https://www.boj.or.jp/en/about/outline/holi.htm
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Japan>
+        * <https://web.archive.org/web/20240913161809/https://www.boj.or.jp/en/about/outline/holi.htm>
     """
 
     country = "JP"
     default_language = "ja"
-    supported_categories = (BANK, PUBLIC)
+    supported_categories: tuple[str, ...] = (BANK, PUBLIC)
     supported_languages = ("en_US", "ja", "th")
+    start_year = 1949
+    end_year = 2099
 
     def __init__(self, *args, **kwargs) -> None:
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=JapanStaticHolidays)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self):
-        if self._year < 1949 or self._year > 2099:
-            raise NotImplementedError
+    def _is_observed(self, dt: date) -> bool:
+        return dt >= date(1973, APR, 12)
 
+    def _populate_observed(self, dts: set[date]) -> None:
+        # When a national holiday falls on Sunday, next working day
+        # shall become a public holiday (振替休日) - substitute holiday.
+        for dt in sorted(dts):
+            # Substitute Holiday.
+            self._add_observed(dt, name=tr("振替休日"), show_observed_label=False)
+
+        # A weekday between national holidays becomes a holiday too (国民の休日) -
+        # national holiday.
+        # In 1986-2006 it was only May 4 (between Constitution Day and Children's Day).
+        # Since 2006, it may be only the day between Respect for the Aged Day and
+        # Autumnal Equinox Day (in September).
+        if self._year <= 1985:
+            return None
+        if self._year <= 2006:
+            may_4 = (MAY, 4)
+            if not self._is_monday(may_4) and not self._is_sunday(may_4):
+                # National Holiday.
+                self._add_holiday(tr("国民の休日"), may_4)
+        else:
+            for dt in dts:
+                if dt.month == SEP and _timedelta(dt, +2) in dts:
+                    # National Holiday.
+                    self._add_holiday(tr("国民の休日"), _timedelta(dt, +1))
+                    break
+
+    def _populate_public_holidays(self):
         dts_observed = set()
 
         # New Year's Day.
@@ -72,30 +99,38 @@ class Japan(HolidayBase, InternationalHolidays, StaticHolidays):
             # Foundation Day.
             dts_observed.add(self._add_holiday_feb_11(tr("建国記念の日")))
 
-        if self._year >= 2020:
+        if self._year != 2019:
             # Emperor's Birthday.
-            dts_observed.add(self._add_holiday_feb_23(tr("天皇誕生日")))
+            name = tr("天皇誕生日")
+            if self._year >= 2020:
+                # Reiwa Emperor's Birthday.
+                dt = self._add_holiday_feb_23(name)
+            elif self._year >= 1989:
+                # Heisei Emperor's Birthday.
+                dt = self._add_holiday_dec_23(name)
+            else:
+                # Showa Emperor's Birthday.
+                dt = self._add_holiday_apr_29(name)
+            dts_observed.add(dt)
 
         # Vernal Equinox Day.
         dts_observed.add(self._add_holiday(tr("春分の日"), self._vernal_equinox_date))
 
-        # Showa Emperor's Birthday, Greenery Day or Showa Day.
-        if self._year <= 1988:
-            name = tr("天皇誕生日")
-        elif self._year <= 2006:
-            # Greenery Day.
-            name = tr("みどりの日")
-        else:
+        if self._year >= 2007:
             # Showa Day.
-            name = tr("昭和の日")
-        dts_observed.add(self._add_holiday_apr_29(name))
+            dts_observed.add(self._add_holiday_apr_29(tr("昭和の日")))
 
         # Constitution Day.
         dts_observed.add(self._add_holiday_may_3(tr("憲法記念日")))
 
-        # Greenery Day.
-        if self._year >= 2007:
-            dts_observed.add(self._add_holiday_may_4(tr("みどりの日")))
+        if self._year >= 1989:
+            # Greenery Day.
+            name = tr("みどりの日")
+            dts_observed.add(
+                self._add_holiday_may_4(name)
+                if self._year >= 2007
+                else self._add_holiday_apr_29(name)
+            )
 
         # Children's Day.
         dts_observed.add(self._add_holiday_may_5(tr("こどもの日")))
@@ -110,11 +145,9 @@ class Japan(HolidayBase, InternationalHolidays, StaticHolidays):
                     2020: (JUL, 23),
                     2021: (JUL, 22),
                 }
-                dts_observed.add(
-                    self._add_holiday(name, dates[self._year])
-                    if self._year in dates
-                    else self._add_holiday_3rd_mon_of_jul(name)
-                )
+                dts_observed.add(self._add_holiday(name, dt)) if (
+                    dt := dates.get(self._year)
+                ) else dts_observed.add(self._add_holiday_3rd_mon_of_jul(name))
 
         if self._year >= 2016:
             dates = {
@@ -123,11 +156,7 @@ class Japan(HolidayBase, InternationalHolidays, StaticHolidays):
             }
             # Mountain Day.
             name = tr("山の日")
-            dts_observed.add(
-                self._add_holiday(name, dates[self._year])
-                if self._year in dates
-                else self._add_holiday_aug_11(name)
-            )
+            dts_observed.add(self._add_holiday(name, dates.get(self._year, (AUG, 11))))
 
         if self._year >= 1966:
             # Respect for the Aged Day.
@@ -155,9 +184,9 @@ class Japan(HolidayBase, InternationalHolidays, StaticHolidays):
                     2020: (JUL, 24),
                     2021: (JUL, 23),
                 }
-                dts_observed.add(
-                    self._add_holiday(name, dates[self._year])
-                ) if self._year in dates else self._add_holiday_2nd_mon_of_oct(name)
+                dts_observed.add(self._add_holiday(name, dt)) if (
+                    dt := dates.get(self._year)
+                ) else dts_observed.add(self._add_holiday_2nd_mon_of_oct(name))
             else:
                 dts_observed.add(self._add_holiday_oct_10(name))
 
@@ -167,50 +196,19 @@ class Japan(HolidayBase, InternationalHolidays, StaticHolidays):
         # Labor Thanksgiving Day.
         dts_observed.add(self._add_holiday_nov_23(tr("勤労感謝の日")))
 
-        # Regarding the Emperor of Heisei.
-        if 1989 <= self._year <= 2018:
-            dts_observed.add(self._add_holiday_dec_23(tr("天皇誕生日")))
-
         if self.observed:
-            for month, day, _ in _normalize_tuple(
-                self.special_public_holidays.get(self._year, ())
-            ):
-                dts_observed.add(date(self._year, month, day))
-
-            # When a national holiday falls on Sunday, next working day
-            # shall become a public holiday (振替休日) - substitute holidays.
-            for dt in dts_observed.copy():
-                if not self._is_sunday(dt):
-                    continue
-                dt_observed = _timedelta(dt, +1)
-                while dt_observed in dts_observed:
-                    dt_observed = _timedelta(dt_observed, +1)
-                # Substitute Holiday.
-                dts_observed.add(self._add_holiday(tr("振替休日"), dt_observed))
-
-            # A weekday between national holidays becomes
-            # a holiday too (国民の休日) - citizens' holidays.
-            for dt in dts_observed:
-                if _timedelta(dt, +2) not in dts_observed:
-                    continue
-                dt_observed = _timedelta(dt, +1)
-                if self._is_sunday(dt_observed) or dt_observed in dts_observed:
-                    continue
-                # National Holiday.
-                self._add_holiday(tr("国民の休日"), dt_observed)
+            self._populate_observed(dts_observed)
 
     def _populate_bank_holidays(self):
-        if self._year < 1949 or self._year > 2099:
-            raise NotImplementedError
-
         # Bank Holiday.
         name = tr("銀行休業日")
+        self._add_new_years_day(name)
         self._add_new_years_day_two(name)
         self._add_new_years_day_three(name)
         self._add_new_years_eve(name)
 
     @property
-    def _vernal_equinox_date(self) -> Tuple[int, int]:
+    def _vernal_equinox_date(self) -> tuple[int, int]:
         day = 20
         if (
             (self._year % 4 == 0 and self._year <= 1956)
@@ -224,7 +222,7 @@ class Japan(HolidayBase, InternationalHolidays, StaticHolidays):
         return MAR, day
 
     @property
-    def _autumnal_equinox_date(self) -> Tuple[int, int]:
+    def _autumnal_equinox_date(self) -> tuple[int, int]:
         day = 23
         if self._year % 4 == 3 and self._year <= 1979:
             day = 24
@@ -246,6 +244,8 @@ class JPN(Japan):
 
 
 class JapanStaticHolidays:
+    national_holiday = tr("国民の休日")
+
     special_public_holidays = {
         1959: (APR, 10, tr("結婚の儀")),  # The Crown Prince marriage ceremony.
         1989: (FEB, 24, tr("大喪の礼")),  # State Funeral of Emperor Shōwa.
@@ -254,5 +254,12 @@ class JapanStaticHolidays:
         2019: (
             (MAY, 1, tr("天皇の即位の日")),  # Enthronement day.
             (OCT, 22, tr("即位礼正殿の儀が行われる日")),  # Enthronement ceremony.
+        ),
+    }
+
+    special_public_holidays_observed = {
+        2019: (
+            (APR, 30, national_holiday),
+            (MAY, 2, national_holiday),
         ),
     }

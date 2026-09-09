@@ -4,32 +4,41 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Laos holidays th localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.39\n"
+"Project-Id-Version: Holidays 0.102\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-09-11 15:10+0700\n"
-"PO-Revision-Date: 2023-11-16 20:48+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"PO-Revision-Date: 2026-07-28 23:07+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: lo\n"
 
 #. %s (in lieu).
 #, c-format
 msgid "ພັກຊົດເຊີຍ%s"
 msgstr "ชดเชย%s"
+
+#. Establishment Day of the BOL.
+msgid "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"
+msgstr "วันก่อตั้งธนาคารแห่ง สปป. ลาว"
+
+#. Lao Year-End Bank Holiday.
+msgid "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"
+msgstr "วันหยุดสิ้นปีของสถาบันการเงิน"
 
 #. New Year's Day.
 msgid "ວັນປີໃໝ່ສາກົນ"
@@ -45,35 +54,15 @@ msgstr "วันปีใหม่ลาว"
 
 #. International Labor Day.
 msgid "ວັນກຳມະກອນສາກົນ"
-msgstr "วันแรงงานสากล"
+msgstr "วันกรรมกรสากล"
 
-#. International Children Day.
+#. International Children's Day.
 msgid "ວັນເດັກສາກົນ"
 msgstr "วันเด็กสากล"
 
 #. Lao National Day.
 msgid "ວັນຊາດ"
 msgstr "วันชาติ สปป. ลาว"
-
-#. Boun That Luang Festival.
-msgid "ວັນບຸນທາດຫລວງ"
-msgstr "วันงานพระธาตุหลวง"
-
-#. Special Bank Holiday.
-msgid "ມື້ປິດການໃຫ້ບໍລິການຂອງທະນາຄານຕົວແທນ"
-msgstr "วันหยุดทำการพิเศษของสถาบันการเงิน"
-
-#. Lao New Year's Day (Special).
-msgid "ພັກບຸນປີໃໝ່ລາວ"
-msgstr "ชดเชยวันปีใหม่ลาว"
-
-#. Establishment Day of the BOL.
-msgid "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"
-msgstr "วันก่อตั้งธนาคารแห่ง สปป. ลาว"
-
-#. Lao Year-End Bank Holiday.
-msgid "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"
-msgstr "วันหยุดสิ้นปีของสถาบันการเงิน"
 
 #. Makha Bousa Festival.
 msgid "ວັນບຸນມາຂະບູຊາ"
@@ -102,6 +91,10 @@ msgstr "วันออกพรรษา"
 #. Boun Suang Heua (Vientiane Boat Racing Festival).
 msgid "ວັນບຸນຊ່ວງເຮືອ ນະຄອນຫຼວງວຽງຈັນ"
 msgstr "วันงานบุญแข่งเรือ นครหลวงเวียงจันทน์"
+
+#. Boun That Luang Festival.
+msgid "ວັນບຸນທາດຫລວງ"
+msgstr "วันงานพระธาตุหลวง"
 
 #. National Teacher Day.
 msgid "ວັນຄູແຫ່ງຊາດ"
@@ -151,10 +144,18 @@ msgstr "วันรัฐธรรมนูญแห่งชาติ"
 msgid "ວັນຍຶດອຳນາດທົ່ວປະເທດ"
 msgstr "วันยึดอำนาจทั่วประเทศ"
 
-#. Indepedence Declaration Day.
+#. Independence Declaration Day.
 msgid "ວັນປະກາດເອກະລາດ"
 msgstr "วันประกาศเอกราช"
 
 #. President Kaysone Phomvihane's Birthday.
 msgid "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ໄກສອນ ພົມວິຫານ"
 msgstr "วันคล้ายวันเกิดท่านประธานไกสอน พมวิหาน"
+
+#. Special Bank Holiday.
+msgid "ມື້ປິດການໃຫ້ບໍລິການຂອງທະນາຄານຕົວແທນ"
+msgstr "วันหยุดทำการพิเศษของสถาบันการเงิน"
+
+#. Lao New Year's Day (Special).
+msgid "ພັກບຸນປີໃໝ່ລາວ"
+msgstr "ชดเชยวันปีใหม่ลาว"

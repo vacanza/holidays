@@ -4,28 +4,39 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # South Korea holidays en_US localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.37\n"
+"Project-Id-Version: Holidays 0.102\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-10-26 23:49+0700\n"
-"PO-Revision-Date: 2023-10-26 23:53+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
-"Language-Team: Python Holidays localization team\n"
+"PO-Revision-Date: 2026-07-27 16:44+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: ko\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (추정)"
+msgstr "%s (estimated)"
+
+#. Alternative holiday for %s (estimated).
+#, c-format
+msgid "%s 대체 휴일 (추정)"
+msgstr "Alternative holiday for %s (estimated)"
 
 #. Alternative holiday for %s.
 #, c-format
@@ -69,6 +80,10 @@ msgstr "Buddha's Birthday"
 #. Buddha's Birthday.
 msgid "석가탄신일"
 msgstr "Buddha's Birthday"
+
+#. Labor Day.
+msgid "노동절"
+msgstr "Labor Day"
 
 #. Children's Day.
 msgid "어린이날"
@@ -136,7 +151,7 @@ msgstr "Presidential Inauguration Day"
 
 #. National Conference for Unification Election Day.
 msgid "통일주체국민회의 선거일"
-msgstr "National Conference for Unification Election Day."
+msgstr "National Conference for Unification Election Day"
 
 #. Yushin Constitution Referendum Day.
 msgid "유신헌법 국민투표일"
@@ -165,6 +180,10 @@ msgstr "Anniversary of the 1st National Assembly Election"
 #. Baekbeom Kim Ku's Funeral Ceremony.
 msgid "백범 김구 선생 국민장 영결식"
 msgstr "Baekbeom Kim Ku's Funeral Ceremony"
+
+#. Joint Memorial Service for Fallen Soldiers.
+msgid "전몰군인 합동위령제"
+msgstr "Joint Memorial Service for Fallen Soldiers"
 
 #. Vice Presidential Election.
 msgid "부통령 선거일"
@@ -213,7 +232,3 @@ msgstr "1988 Seoul Olympics Opening Ceremony"
 #. 2002 FIFA World Cup National Team Semi-Finals Celebrations.
 msgid "2002년 한일 월드컵 대표팀 4강 진출"
 msgstr "2002 FIFA World Cup National Team Semi-Finals Celebrations"
-
-#. Joint Memorial Service for Fallen Soldiers.
-msgid "전몰군인 합동위령제"
-msgstr "Joint Memorial Service for Fallen Soldiers"

@@ -4,68 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Uzbekistan holidays uk localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.102\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-12-31 21:12+0200\n"
-"PO-Revision-Date: 2024-01-02 12:46+0200\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays Localization Team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
-
-#. New Year's Day.
-msgid "Yangi yil"
-msgstr "Новий рік"
-
-#. Women's Day.
-msgid "Xotin-qizlar kuni"
-msgstr "Жіночий день"
-
-#. Nowruz.
-msgid "Navro‘z bayrami"
-msgstr "Свято Новруз"
-
-#. Day of Memory and Honor.
-msgid "Xotira va qadrlash kuni"
-msgstr "День памʼяті і шани"
-
-#. Victory Day.
-msgid "G‘alaba kuni"
-msgstr "День Перемоги"
-
-#. Independence Day.
-msgid "Mustaqillik kuni"
-msgstr "День Незалежності"
-
-#. Teachers and Instructors Day.
-msgid "O‘qituvchi va murabbiylar kuni"
-msgstr "День Вчителя і Наставника"
-
-#. Constitution Day.
-msgid "O‘zbekiston Respublikasi Konstitutsiyasi kuni"
-msgstr "День Конституції Республіки Узбекистан"
-
-#. Eid al-Fitr.
-msgid "Ro‘za hayit"
-msgstr "Рамазан-байрам"
-
-#. Eid al-Adha.
-msgid "Qurbon hayit"
-msgstr "Курбан-байрам"
+"X-Generator: Poedit 3.9\n"
+"X-Source-Language: uz\n"
 
 #. %s (estimated).
 #, c-format
@@ -74,23 +35,63 @@ msgstr "%s (приблизна дата)"
 
 #. %s (observed).
 #, c-format
-msgid "%s (ko‘chirilgan)"
+msgid "%s (koʻchirilgan)"
 msgstr "%s (вихідний)"
 
-#. Date format (see strftime() Format Codes)
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (koʻchirilgan, taxminiy)"
+msgstr "%s (вихідний, приблизна дата)"
+
+#. New Year's Day.
+msgid "Yangi yil"
+msgstr "Новий рік"
+
+#. Women's Day.
+msgid "Xotin-qizlar kuni"
+msgstr "День жінок"
+
+#. Nowruz.
+msgid "Navroʻz bayrami"
+msgstr "Свято Новруз"
+
+#. Day of Memory and Honor.
+msgid "Xotira va qadrlash kuni"
+msgstr "День памʼяті і шани"
+
+#. Victory Day.
+msgid "Gʻalaba kuni"
+msgstr "День Перемоги"
+
+#. Independence Day.
+msgid "Mustaqillik kuni"
+msgstr "День незалежності"
+
+#. Teachers and Instructors Day.
+msgid "Oʻqituvchi va murabbiylar kuni"
+msgstr "День вчителя і наставника"
+
+#. Constitution Day.
+msgid "Oʻzbekiston Respublikasi Konstitutsiyasi kuni"
+msgstr "День Конституції Республіки Узбекистан"
+
+#. Eid al-Fitr.
+msgid "Roʻza hayit"
+msgstr "Рамазан-байрам"
+
+#. Eid al-Adha.
+msgid "Qurbon hayit"
+msgstr "Курбан-байрам"
+
+#. Substituted date format.
 msgid "%d/%m %Y"
 msgstr "%d.%m.%Y"
 
 #. Day off (substituted from %s).
 #, c-format
-msgid "Dam olish kuni (%s dan ko‘chirilgan)"
+msgid "Dam olish kuni (%s dan koʻchirilgan)"
 msgstr "Вихідний день (перенесено з %s)"
 
 #. Additional day off by Presidential decree.
-msgid "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"
+msgid "Prezidentining farmoni bilan qoʻshimcha dam olish kuni"
 msgstr "Додатковий вихідний згідно указу Президента"
-
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (ko‘chirilgan, taxminiy)"
-msgstr "%s (вихідний, приблизна дата)"

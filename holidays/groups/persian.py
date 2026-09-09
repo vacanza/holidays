@@ -4,14 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.gregorian import _timedelta
 from holidays.calendars.persian import _Persian
@@ -25,7 +24,7 @@ class PersianCalendarHolidays:
     def __init__(self) -> None:
         self._persian_calendar = _Persian()
 
-    def _add_death_of_khomeini_day(self, name: str) -> Optional[date]:
+    def _add_death_of_khomeini_day(self, name: str) -> date | None:
         """
         Add Death of Ruhollah Khomeini Day (14th day of the 3rd month).
 
@@ -36,7 +35,18 @@ class PersianCalendarHolidays:
             name, self._persian_calendar.persian_to_gregorian(self._year, 3, 14)
         )
 
-    def _add_islamic_republic_day(self, name: str) -> Optional[date]:
+    def _add_islamic_emirat_victory_day(self, name: str) -> date | None:
+        """
+        Add Islamic Emirate Victory Day (24th day of the 5th month).
+
+        Anniversary of the Taliban forces arrival in Kabul.
+        https://en.wikipedia.org/wiki/Fall_of_Kabul_(2021)
+        """
+        return self._add_persian_calendar_holiday(
+            name, self._persian_calendar.persian_to_gregorian(self._year, 5, 24)
+        )
+
+    def _add_islamic_republic_day(self, name: str) -> date | None:
         """
         Add Islamic Republic Day (12th day of the 1st month).
 
@@ -48,7 +58,7 @@ class PersianCalendarHolidays:
             name, self._persian_calendar.persian_to_gregorian(self._year, 1, 12)
         )
 
-    def _add_islamic_revolution_day(self, name: str) -> Optional[date]:
+    def _add_islamic_revolution_day(self, name: str) -> date | None:
         """
         Add Islamic Revolution Day (22nd day of the 11th month).
 
@@ -61,7 +71,7 @@ class PersianCalendarHolidays:
             name, self._persian_calendar.persian_to_gregorian(self._year - 1, 11, 22)
         )
 
-    def _add_khordad_uprising_day(self, name: str) -> Optional[date]:
+    def _add_khordad_uprising_day(self, name: str) -> date | None:
         """
         Add 15 Khordad uprising Day (15th day of the 3rd month).
 
@@ -74,7 +84,19 @@ class PersianCalendarHolidays:
             name, self._persian_calendar.persian_to_gregorian(self._year, 3, 15)
         )
 
-    def _add_natures_day(self, name: str) -> Optional[date]:
+    def _add_last_day_of_year(self, name: str) -> date | None:
+        """
+        If previous year is a leap year, its 12th month (Esfand) has 30 days,
+        and this 30th day is a holiday.
+        """
+        if self._persian_calendar.is_leap_year(self._year - 1):
+            return self._add_persian_calendar_holiday(
+                name, self._persian_calendar.new_year_date(self._year), days_delta=-1
+            )
+        else:
+            return None
+
+    def _add_natures_day(self, name: str) -> date | None:
         """
         Add Nature's Day, or Sizdah Bedar (13th day of the 1st month).
 
@@ -85,7 +107,7 @@ class PersianCalendarHolidays:
             name, self._persian_calendar.persian_to_gregorian(self._year, 1, 13)
         )
 
-    def _add_nowruz_day(self, name: str) -> Optional[date]:
+    def _add_nowruz_day(self, name: str) -> date | None:
         """
         Add Nowruz Day (1st day of the 1st month).
 
@@ -97,7 +119,7 @@ class PersianCalendarHolidays:
             name, self._persian_calendar.new_year_date(self._year)
         )
 
-    def _add_nowruz_day_two(self, name: str) -> Optional[date]:
+    def _add_nowruz_day_two(self, name: str) -> date | None:
         """
         Add Nowruz Day Two.
         """
@@ -105,7 +127,7 @@ class PersianCalendarHolidays:
             name, self._persian_calendar.new_year_date(self._year), days_delta=+1
         )
 
-    def _add_nowruz_day_three(self, name: str) -> Optional[date]:
+    def _add_nowruz_day_three(self, name: str) -> date | None:
         """
         Add Nowruz Day Three.
         """
@@ -113,7 +135,7 @@ class PersianCalendarHolidays:
             name, self._persian_calendar.new_year_date(self._year), days_delta=+2
         )
 
-    def _add_nowruz_day_four(self, name: str) -> Optional[date]:
+    def _add_nowruz_day_four(self, name: str) -> date | None:
         """
         Add Nowruz Day Four.
         """
@@ -121,7 +143,7 @@ class PersianCalendarHolidays:
             name, self._persian_calendar.new_year_date(self._year), days_delta=+3
         )
 
-    def _add_oil_nationalization_day(self, name: str) -> Optional[date]:
+    def _add_oil_nationalization_day(self, name: str) -> date | None:
         """
         Add Iranian Oil Industry Nationalization Day (29th day of the 12th month).
 
@@ -134,8 +156,8 @@ class PersianCalendarHolidays:
         )
 
     def _add_persian_calendar_holiday(
-        self, name: str, dt: Optional[date], days_delta: int = 0
-    ) -> Optional[date]:
+        self, name: str, dt: date | None, days_delta: int = 0
+    ) -> date | None:
         """
         Add Persian calendar holiday.
         """

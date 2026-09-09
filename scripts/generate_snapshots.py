@@ -1,27 +1,34 @@
 #!/usr/bin/env python3
 
+
 #  holidays
 #  --------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 import argparse
 import json
+import shutil
 import sys
 import warnings
+from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
+from time import perf_counter
 
-sys.path.append(f"{Path.cwd()}")  # Make holidays visible.
-
-import holidays  # noqa: E402
-from holidays import list_supported_countries, list_supported_financial  # noqa: E402
+sys.path.insert(0, str(Path.cwd()))  # Make holidays visible.
+from holidays import (
+    country_holidays,
+    financial_holidays,
+    list_supported_countries,
+    list_supported_financial,
+)
 
 
 class SnapshotGenerator:
@@ -31,88 +38,122 @@ class SnapshotGenerator:
 
     def __init__(self) -> None:
         arg_parser = argparse.ArgumentParser()
-        arg_parser.add_argument(
+        entities_group = arg_parser.add_mutually_exclusive_group()
+        entities_group.add_argument(
             "-c",
             "--country",
             action="extend",
             nargs="+",
             default=[],
             help="Country codes to use for snapshot generation",
-            required=False,
             type=str,
         )
-        arg_parser.add_argument(
+        entities_group.add_argument(
             "-m",
             "--market",
             action="extend",
             nargs="+",
             default=[],
             help="Market codes to use for snapshot generation",
-            required=False,
             type=str,
         )
         self.args = arg_parser.parse_args()
 
     @staticmethod
-    def save(snapshot, file_path):
-        with open(file_path, "w") as output:
-            output.write(
-                json.dumps({str(dt): name for dt, name in sorted(snapshot.items())}, indent=4)
-            )
-            output.write("\n")  # Get along with pre-commit.
+    def prepare_snapshot_directory(snapshot_path: Path) -> None:
+        """Prepare a directory for snapshots."""
+        shutil.rmtree(snapshot_path, ignore_errors=True)
+        snapshot_path.mkdir(parents=True, exist_ok=True)
 
-    def generate_country_snapshots(self):
+    @staticmethod
+    def save(snapshot: dict, file_path: Path) -> None:
+        """Save snapshot to a JSON file."""
+        file_path.write_text(
+            json.dumps(
+                {str(dt): name for dt, name in sorted(snapshot.items())},
+                ensure_ascii=False,
+                indent=4,
+            )
+            + "\n",  # Get along with pre-commit.
+            encoding="utf-8",
+            newline="\n",
+        )
+
+    @staticmethod
+    def _country_subdiv_snapshot_worker(
+        args: tuple[str, str | None, tuple[str, ...], range, Path],
+    ) -> None:
+        """Worker for generating country holiday snapshots."""
+        warnings.simplefilter("ignore")
+        country_code, subdiv, supported_categories, years, snapshot_path = args
+        filename = f"{country_code}_{(subdiv or 'COMMON').replace(' ', '_').upper()}.json"
+        file_path = snapshot_path / filename
+        snapshot = country_holidays(
+            country_code,
+            subdiv=subdiv,
+            years=years,
+            categories=supported_categories,
+            language="en_US",
+        )
+        SnapshotGenerator.save(snapshot, file_path)
+
+    @staticmethod
+    def _financial_snapshot_worker(args: tuple[str, tuple[str, ...], range, Path]) -> None:
+        """Worker for generating financial market holiday snapshots."""
+        warnings.simplefilter("ignore")
+        market_code, supported_categories, years, snapshot_path = args
+        file_path = snapshot_path / f"{market_code}.json"
+        snapshot = financial_holidays(
+            market_code, years=years, categories=supported_categories, language="en_US"
+        )
+        SnapshotGenerator.save(snapshot, file_path)
+
+    def generate_country_snapshots(self) -> None:
         """Generates country snapshots."""
-        if len(self.args.market) > 0:
+        if self.args.market:
             return None
 
-        country_list = self.args.country
-        supported_countries = list_supported_countries()
-        if country_list:
-            unknown_countries = set(country_list).difference(supported_countries.keys())
-            if len(unknown_countries) > 0:
-                raise ValueError(f"Countries {', '.join(unknown_countries)} not available")
-        else:
-            country_list = supported_countries
+        supported_countries = list_supported_countries(include_aliases=False)
+        country_list = self.args.country or list(supported_countries.keys())
+        if unknown_countries := set(country_list).difference(supported_countries.keys()):
+            raise ValueError(f"Countries {', '.join(unknown_countries)} not available")
 
+        snapshot_path = Path("snapshots/countries")
+        if not self.args.country:
+            self.prepare_snapshot_directory(snapshot_path)
+
+        work_items: list[tuple[str, str | None, tuple[str, ...], range, Path]] = []
         for country_code in country_list:
-            country = getattr(holidays, country_code)
+            country = country_holidays(country_code)
+            work_items.extend(
+                (country_code, subdiv, country.supported_categories, self.years, snapshot_path)
+                for subdiv in (None, *country.subdivisions)
+            )
+        with ProcessPoolExecutor() as executor:
+            list(executor.map(SnapshotGenerator._country_subdiv_snapshot_worker, work_items))
 
-            for subdiv in (None,) + country.subdivisions:
-                self.save(
-                    holidays.country_holidays(
-                        country_code,
-                        subdiv=subdiv,
-                        years=self.years,
-                        categories=country.supported_categories,
-                        language="en_US",
-                    ),
-                    f"snapshots/countries/{country_code}_{subdiv or 'COMMON'}.json",
-                )
-
-    def generate_financial_snapshots(self):
+    def generate_financial_snapshots(self) -> None:
         """Generates financial snapshots."""
-        if len(self.args.country) > 0:
+        if self.args.country:
             return None
 
-        market_list = self.args.market
-        supported_markets = list_supported_financial()
-        if market_list:
-            unknown_markets = set(market_list).difference(supported_markets.keys())
-            if len(unknown_markets) > 0:
-                raise ValueError(f"Markets {', '.join(unknown_markets)} not available")
-        else:
-            market_list = supported_markets
+        supported_markets = list_supported_financial(include_aliases=False)
+        market_list = self.args.market or list(supported_markets.keys())
+        if unknown_markets := set(market_list).difference(supported_markets.keys()):
+            raise ValueError(f"Markets {', '.join(unknown_markets)} not available")
 
+        snapshot_path = Path("snapshots/financial")
+        if not self.args.market:
+            self.prepare_snapshot_directory(snapshot_path)
+
+        work_items: list[tuple[str, tuple[str, ...], range, Path]] = []
         for market_code in market_list:
-            self.save(
-                holidays.country_holidays(
-                    market_code,
-                    years=self.years,
-                    language="en_US",
-                ),
-                f"snapshots/financial/{market_code}.json",
+            market = financial_holidays(market_code)
+            work_items.append(
+                (market_code, market.supported_categories, self.years, snapshot_path)
             )
+        with ProcessPoolExecutor() as executor:
+            list(executor.map(SnapshotGenerator._financial_snapshot_worker, work_items))
 
     def run(self):
         """Runs snapshot files generation process."""
@@ -121,5 +162,7 @@ class SnapshotGenerator:
 
 
 if __name__ == "__main__":
-    warnings.simplefilter("ignore")
+    total_time_start = perf_counter()
     SnapshotGenerator().run()
+    total_time_end = perf_counter()
+    print(f"[TIMER] Total snapshot runtime: {total_time_end - total_time_start:.2f} seconds")

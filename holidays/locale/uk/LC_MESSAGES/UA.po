@@ -4,37 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Ukraine holidays.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.37\n"
+"Project-Id-Version: Holidays 0.100\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-08 19:40+0300\n"
-"PO-Revision-Date: 2023-11-10 15:35+0200\n"
+"PO-Revision-Date: 2026-06-30 22:18+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
-
-#. Date format (see strftime() Format Codes)
-msgid "%d.%m.%Y"
-msgstr ""
-
-#. Day off (substituted from %s).
-#, c-format
-msgid "Вихідний день (перенесено з %s)"
-msgstr ""
+"X-Generator: Poedit 3.4.2\n"
+"X-Source-Language: uk\n"
 
 #. %s (observed).
 #, c-format
@@ -45,8 +37,8 @@ msgstr ""
 msgid "Новий рік"
 msgstr ""
 
-#. Christmas Day (Julian calendar).
-msgid "Різдво Христове (за юліанським календарем)"
+#. Christmas Day.
+msgid "Різдво Христове"
 msgstr ""
 
 #. International Women's Day.
@@ -57,7 +49,7 @@ msgstr ""
 msgid "Великдень (Пасха)"
 msgstr ""
 
-#. Holy Trinity Day.
+#. Pentecost.
 msgid "Трійця"
 msgstr ""
 
@@ -69,16 +61,24 @@ msgstr ""
 msgid "День міжнародної солідарності трудящих"
 msgstr ""
 
+#. Day of Remembrance and Victory over Nazism in World War II 1939-1945.
+msgid "День памʼяті та перемоги над нацизмом у Другій світовій війні 1939-1945 років"
+msgstr ""
+
 #. Day of Victory over Nazism in World War II (Victory Day).
 msgid "День перемоги над нацизмом у Другій світовій війні (День перемоги)"
 msgstr ""
 
 #. Victory Day.
-msgid "День перемоги"
+msgid "День Перемоги"
 msgstr ""
 
 #. Day of the Constitution of Ukraine.
 msgid "День Конституції України"
+msgstr ""
+
+#. Ukrainian Statehood Day.
+msgid "День Української Державності"
 msgstr ""
 
 #. Independence Day.
@@ -97,8 +97,13 @@ msgstr ""
 msgid "Річниця Великої Жовтневої соціалістичної революції"
 msgstr ""
 
-#. Christmas Day (Gregorian calendar).
-msgid "Різдво Христове (за григоріанським календарем)"
+#. Substituted date format.
+msgid "%d.%m.%Y"
+msgstr ""
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Вихідний день (перенесено з %s)"
 msgstr ""
 
 #. Presidential decree holiday.

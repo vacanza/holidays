@@ -4,18 +4,17 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
-from typing import Tuple
 
 from holidays.calendars.gregorian import AUG, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     TUE_TO_PREV_MON,
@@ -25,20 +24,21 @@ from holidays.observed_holiday_base import (
 
 
 class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
+    """Angola holidays.
+
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Angola
-        - http://www.siac.gv.ao/downloads/181029-Lei-Feriados.pdf
-        - `Decree #5/75 <https://www.lexlink.eu/FileGet.aspx?FileId=3023486>`_
-        - [Decree #92/80] https://www.lexlink.eu/FileGet.aspx?FileId=3023473
-        - [Decree #7/92] https://www.lexlink.eu/FileGet.aspx?FileId=3023485
-        - [Law #16/96] https://www.lexlink.eu/FileGet.aspx?FileId=3037036
-        - [Law #1/01] https://www.lexlink.eu/FileGet.aspx?FileId=3029035
-        - [Law #7/03] https://www.lexlink.eu/FileGet.aspx?FileId=3002131
-        - [Law #10/11] https://equadros.gov.ao/documents/40468/0/lei_10_11-1+%281%29.pdf
-        - [Law #11/18] https://equadros.gov.ao/documents/40468/0/Lei_no_11-18+%281%29.pdf
-        - https://www.officeholidays.com/countries/angola/
-        - https://www.timeanddate.com/holidays/angola/
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Angola>
+        * <https://web.archive.org/web/20240617085329/https://www.siac.gv.ao/downloads/181029-Lei-Feriados.pdf>
+        * [Decree #5/75](https://web.archive.org/web/20230719141732/https://www.lexlink.eu/FileGet.aspx?FileId=3023486)
+        * [Decree #92/80](https://web.archive.org/web/20250427180154/https://www.lexlink.eu/FileGet.aspx?FileId=3023473)
+        * [Decree #7/92](https://web.archive.org/web/20230719141946/https://www.lexlink.eu/FileGet.aspx?FileId=3023485)
+        * [Law #16/96](https://web.archive.org/web/20230719141332/https://www.lexlink.eu/FileGet.aspx?FileId=3037036)
+        * [Law #1/01](https://web.archive.org/web/20230719142311/https://www.lexlink.eu/FileGet.aspx?FileId=3029035)
+        * [Law #7/03](https://web.archive.org/web/20230719142347/https://www.lexlink.eu/FileGet.aspx?FileId=3002131)
+        * [Law #10/11](https://web.archive.org/web/20250427180133/https://equadros.gov.ao/documents/40468/0/lei_10_11-1+(1).pdf)
+        * [Law #11/18](https://web.archive.org/web/20250427175641/https://equadros.gov.ao/documents/40468/0/Lei_no_11-18+(1).pdf)
+        * <https://web.archive.org/web/20250211025045/https://www.officeholidays.com/countries/angola>
+        * <https://web.archive.org/web/20250323005924/https://www.timeanddate.com/holidays/angola/>
     """
 
     country = "AO"
@@ -46,6 +46,8 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     supported_languages = ("en_US", "pt_AO", "uk")
     # %s (observed).
     observed_label = tr("%s (ponte)")
+    # Decree #5/75.
+    start_year = 1975
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -59,7 +61,7 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # it rolls over to the following Monday.
         return dt >= date(1996, SEP, 27)
 
-    def _add_observed(self, dt: date, **kwargs) -> Tuple[bool, date]:
+    def _add_observed(self, dt: date, **kwargs) -> tuple[bool, date | None]:
         # As per Law # #11/18, from 2018/9/10, when public holiday falls on Tuesday or Thursday,
         # the Monday or Friday is also a holiday.
         kwargs.setdefault(
@@ -68,12 +70,8 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         return super()._add_observed(dt, **kwargs)
 
     def _populate_public_holidays(self):
-        # Decree #5/75.
-        if self._year <= 1974:
-            return None
-
         # New Year's Day.
-        name = self.tr("Dia do Ano Novo")
+        name = tr("Dia do Ano Novo")
         dt = self._add_new_years_day(name)
         if self._year <= 2011 or self._year >= 2018:
             self._add_observed(dt)
@@ -86,14 +84,15 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
                 self._add_holiday_jan_4(tr("Dia dos Mártires da Repressão Colonial"))
             )
 
-        name = (
-            # Beginning of the Armed Struggle for National Liberation Day.
-            tr("Dia do Início da Luta Armada de Libertação Nacional")
-            if self._year >= 2012
-            # Beginning of the Armed Struggle Day.
-            else tr("Dia do Início da Luta Armada")
+        self._add_observed(
+            self._add_holiday_feb_4(
+                # Beginning of the Armed Struggle for National Liberation Day.
+                tr("Dia do Início da Luta Armada de Libertação Nacional")
+                if self._year >= 2012
+                # Beginning of the Armed Struggle Day.
+                else tr("Dia do Início da Luta Armada")
+            )
         )
-        self._add_observed(self._add_holiday_feb_4(name))
 
         # Law #16/96.
         if self._year >= 1997:
@@ -105,17 +104,13 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
         # Law #11/18.
         if self._year >= 2019:
-            self._add_observed(
-                # Southern Africa Liberation Day.
-                self._add_holiday_mar_23(tr("Dia da Libertação da África Austral"))
-            )
+            # Southern Africa Liberation Day.
+            self._add_observed(self._add_holiday_mar_23(tr("Dia da Libertação da África Austral")))
 
         # Law #7/03.
         if self._year >= 2003:
-            self._add_observed(
-                # Peace and National Reconciliation Day.
-                self._add_holiday_apr_4(tr("Dia da Paz e Reconciliação Nacional"))
-            )
+            # Peace and National Reconciliation Day.
+            self._add_observed(self._add_holiday_apr_4(tr("Dia da Paz e Reconciliação Nacional")))
 
         # Law #16/96.
         if self._year >= 1997:
@@ -147,21 +142,22 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         if self._year <= 2010 or self._year >= 2018:
             self._add_observed(dt)
 
-        name = (
-            # National Independence Day.
-            tr("Dia da Independência Nacional")
-            if self._year >= 1996
-            # Independence Day.
-            else tr("Dia da Independência")
+        self._add_observed(
+            self._add_holiday_nov_11(
+                # National Independence Day.
+                tr("Dia da Independência Nacional")
+                if self._year >= 1996
+                # Independence Day.
+                else tr("Dia da Independência")
+            )
         )
-        self._add_observed(self._add_holiday_nov_11(name))
 
         # Decree # 7/92.
         if self._year <= 1991:
             # Date of Founding of MPLA - Labor Party.
             self._add_holiday_dec_10(tr("Data da Fundacao do MPLA - Partido do Trabalho"))
 
-        name = (
+        dt = self._add_christmas_day(
             # Christmas and Family Day.
             tr("Dia de Natal e da Família")
             if self._year >= 2011
@@ -171,7 +167,6 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
                 else tr("Dia da Família")  # Family Day.
             )
         )
-        dt = self._add_christmas_day(name)
         if self._year <= 2010 or self._year >= 2018:
             self._add_observed(dt)
 

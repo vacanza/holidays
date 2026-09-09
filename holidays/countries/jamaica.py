@@ -4,10 +4,10 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
@@ -20,9 +20,11 @@ from holidays.observed_holiday_base import (
 
 
 class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica
-    https://www.mlss.gov.jm/wp-content/uploads/2017/11/The-Holidays-Public-General-Act.pdf
+    """Jamaica holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica>
+        * <https://web.archive.org/web/20241110125301/https://www.mlss.gov.jm/wp-content/uploads/2017/11/The-Holidays-Public-General-Act.pdf>
     """
 
     country = "JM"

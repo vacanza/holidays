@@ -4,10 +4,10 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 import warnings
@@ -18,13 +18,16 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON,
 
 
 class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    https://swazilii.org/sz/legislation/act/1938/71
-    https://www.officeholidays.com/countries/swaziland
+    """Eswatini holidays.
+
+    References:
+        * <https://web.archive.org/web/20171109031840/http://www.swazilii.org:80/sz/legislation/act/1938/71>
+        * <https://web.archive.org/web/20250413193851/https://www.officeholidays.com/countries/swaziland>
     """
 
     country = "SZ"
     observed_label = "%s (observed)"
+    start_year = 1939
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -35,10 +38,6 @@ class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Observed since 1939
-        if self._year <= 1938:
-            return None
-
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
         self._add_good_friday("Good Friday")
@@ -73,7 +72,9 @@ class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
 
 class Swaziland(Eswatini):
     def __init__(self, *args, **kwargs) -> None:
-        warnings.warn("Swaziland is deprecated, use Eswatini instead.", DeprecationWarning)
+        warnings.warn(
+            "Swaziland is deprecated, use Eswatini instead.", DeprecationWarning, stacklevel=3
+        )
 
         super().__init__(*args, **kwargs)
 
@@ -88,7 +89,7 @@ class SZW(Eswatini):
 
 class EswatiniStaticHolidays:
     special_public_holidays = {
-        # https://mg.co.za/article/1999-12-09-swaziland-declares-bank-holidays/
+        # https://web.archive.org/web/20250413193906/https://mg.co.za/article/1999-12-09-swaziland-declares-bank-holidays/
         1999: (DEC, 31, "Y2K changeover"),
         2000: (JAN, 3, "Y2K changeover"),
     }

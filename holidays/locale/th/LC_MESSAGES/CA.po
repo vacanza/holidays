@@ -4,93 +4,42 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Canada holidays th localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.32\n"
+"Project-Id-Version: Holidays 0.72\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-24 17:37+0700\n"
-"PO-Revision-Date: 2023-08-26 18:27+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"PO-Revision-Date: 2025-04-28 22:27+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
-
-#. New Year's Day.
-msgid "New Year's Day"
-msgstr "วันขึ้นปีใหม่"
+"X-Generator: Poedit 3.6\n"
+"X-Source-Language: en_CA\n"
 
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
 msgstr "ชดเชย%s"
 
-#. Family Day.
-msgid "Family Day"
-msgstr "วันครอบครัว"
-
-#. Louis Riel Day.
-msgid "Louis Riel Day"
-msgstr "วันหลุยส์เรียล (แมนิโทบา)"
-
-#. Islander Day.
-msgid "Islander Day"
-msgstr "วันชาวเกาะ (พรินซ์เอดเวิร์ดไอแลนด์)"
-
-#. Heritage Day.
-msgid "Heritage Day"
-msgstr "วันมรดก"
-
-#. St. Patrick's Day.
-msgid "St. Patrick's Day"
-msgstr "วันเซนต์แพทริก (นิวฟันด์แลนด์และแลบราดอร์)"
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "วันขึ้นปีใหม่"
 
 #. Good Friday.
 msgid "Good Friday"
 msgstr "วันศุกร์ประเสริฐ"
-
-#. Easter Monday.
-msgid "Easter Monday"
-msgstr "วันจันทร์อีสเตอร์"
-
-#. St. George's Day.
-msgid "St. George's Day"
-msgstr "วันเซนต์จอร์จ (นิวฟันด์แลนด์และแลบราดอร์)"
-
-#. Victoria Day.
-msgid "Victoria Day"
-msgstr "วันวิคตอเรีย"
-
-#. National Patriots' Day.
-msgid "National Patriots' Day"
-msgstr "วันรำลึกกลุ่มแปตรีออต (ควิเบก)"
-
-#. National Aboriginal Day.
-msgid "National Aboriginal Day"
-msgstr "วันชนพื้นเมือง (นอร์ทเวสต์เทร์ริทอรีส์)"
-
-#. St. Jean Baptiste Day.
-msgid "St. Jean Baptiste Day"
-msgstr "วันแซงต์-ฌ็อง-บาติสต์ (ควิเบก)"
-
-#. Discovery Day.
-msgid "Discovery Day"
-msgstr "วันแห่งการค้นภพ"
-
-#. Memorial Day.
-msgid "Memorial Day"
-msgstr "วันรำลึก (นิวฟันด์แลนด์และแลบราดอร์)"
 
 #. Canada Day.
 msgid "Canada Day"
@@ -100,57 +49,85 @@ msgstr "วันชาติแคนาดา"
 msgid "Dominion Day"
 msgstr "วันราชอาณาจักรเครือจักรภพ"
 
-#. Nunavut Day.
-msgid "Nunavut Day"
-msgstr "วันนูนาวุต"
-
-#. Civic Holiday.
-msgid "Civic Holiday"
-msgstr "วันหยุดราชการ"
-
-#. British Columbia Day.
-msgid "British Columbia Day"
-msgstr "วันบริติชโคลัมเบีย"
-
-#. New Brunswick Day.
-msgid "New Brunswick Day"
-msgstr "วันนิวบรันสวิก"
-
-#. Saskatchewan Day.
-msgid "Saskatchewan Day"
-msgstr "วันซัสแคตเชวัน"
-
 #. Labor Day.
 msgid "Labour Day"
 msgstr "วันแรงงาน"
-
-#. Funeral of Queen Elizabeth II.
-msgid "Funeral of Her Majesty the Queen Elizabeth II"
-msgstr "พระราชพิธีพระบรมศพของสมเด็จพระราชินีนาถเอลิซาเบธที่ 2"
-
-#. National Day for Truth and Reconciliation.
-msgid "National Day for Truth and Reconciliation"
-msgstr "วันชาติแห่งความจริงและการปรองดอง"
-
-#. Thanksgiving Day.
-msgid "Thanksgiving Day"
-msgstr "วันขอบคุณพระเจ้า"
-
-#. Remembrance Day.
-msgid "Remembrance Day"
-msgstr "วันรำลึก"
 
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr "วันคริสต์มาส"
 
+#. National Day for Truth and Reconciliation.
+msgid "National Day for Truth and Reconciliation"
+msgstr "วันชาติแห่งความจริงและการปรองดอง"
+
+#. Remembrance Day.
+msgid "Remembrance Day"
+msgstr "วันรำลึก"
+
 #. Boxing Day.
 msgid "Boxing Day"
 msgstr "วันเปิดกล่องของขวัญ"
 
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr "วันขอบคุณพระเจ้า"
+
+#. Armistice Day.
+msgid "Armistice Day"
+msgstr "วันสงบศึก"
+
+#. Victoria Day.
+msgid "Victoria Day"
+msgstr "วันวิคตอเรีย"
+
+#. Family Day.
+msgid "Family Day"
+msgstr "วันครอบครัว"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "วันจันทร์อีสเตอร์"
+
+#. Heritage Day.
+msgid "Heritage Day"
+msgstr "วันมรดก"
+
+#. British Columbia Day.
+msgid "British Columbia Day"
+msgstr "วันบริติชโคลัมเบีย"
+
+#. Louis Riel Day.
+msgid "Louis Riel Day"
+msgstr "วันหลุยส์เรียล (แมนิโทบา)"
+
 #. Terry Fox Day.
 msgid "Terry Fox Day"
 msgstr "วันเทร์รี ฟอกซ์"
+
+#. Civic Holiday.
+msgid "Civic Holiday"
+msgstr "วันหยุดราชการ"
+
+#. New Brunswick Day.
+msgid "New Brunswick Day"
+msgstr "วันนิวบรันสวิก"
+
+#. Memorial Day.
+msgid "Memorial Day"
+msgstr "วันรำลึก (นิวฟันด์แลนด์และแลบราดอร์)"
+
+#. Saint Patrick's Day.
+msgid "Saint Patrick's Day"
+msgstr "วันเซนต์แพทริก (นิวฟันด์แลนด์และแลบราดอร์)"
+
+#. Saint George's Day.
+msgid "Saint George's Day"
+msgstr "วันเซนต์จอร์จ (นิวฟันด์แลนด์และแลบราดอร์)"
+
+#. Discovery Day.
+msgid "Discovery Day"
+msgstr "วันค้นพบ"
 
 #. Orangemen's Day.
 msgid "Orangemen's Day"
@@ -159,3 +136,31 @@ msgstr "วันออเรนจ์เมนส์"
 #. Natal Day.
 msgid "Natal Day"
 msgstr "วันสถาปนา"
+
+#. National Aboriginal Day.
+msgid "National Aboriginal Day"
+msgstr "วันชนพื้นเมือง (นอร์ทเวสต์เทร์ริทอรีส์)"
+
+#. Nunavut Day.
+msgid "Nunavut Day"
+msgstr "วันนูนาวุต"
+
+#. Islander Day.
+msgid "Islander Day"
+msgstr "วันชาวเกาะ (พรินซ์เอดเวิร์ดไอแลนด์)"
+
+#. National Patriots' Day.
+msgid "National Patriots' Day"
+msgstr "วันรำลึกกลุ่มแปตรีออต (ควิเบก)"
+
+#. Saint John the Baptist Day.
+msgid "Saint Jean Baptiste Day"
+msgstr "วันแซงต์-ฌ็อง-บาติสต์ (ควิเบก)"
+
+#. Saskatchewan Day.
+msgid "Saskatchewan Day"
+msgstr "วันซัสแคตเชวัน"
+
+#. Funeral of Queen Elizabeth II.
+msgid "Funeral of Her Majesty the Queen Elizabeth II"
+msgstr "พระราชพิธีพระบรมศพของสมเด็จพระราชินีนาถเอลิซาเบธที่ 2"

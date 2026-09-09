@@ -4,36 +4,37 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Chile holidays uk localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.44\n"
+"Project-Id-Version: Holidays 0.66\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-28 16:42+0200\n"
-"PO-Revision-Date: 2024-03-01 15:02+0200\n"
+"PO-Revision-Date: 2025-02-02 19:32+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.4\n"
-
-#. National Holiday.
-msgid "Feriado nacional"
-msgstr "Національне свято"
+"X-Generator: Poedit 3.4.2\n"
+"X-Source-Language: es\n"
 
 #. New Year's Day.
 msgid "Año Nuevo"
 msgstr "Новий рік"
+
+#. National Holiday.
+msgid "Feriado nacional"
+msgstr "Національне свято"
 
 #. Good Friday.
 msgid "Viernes Santo"
@@ -59,15 +60,15 @@ msgstr "День праці"
 msgid "Día de las Glorias Navales"
 msgstr "День військово-морської слави"
 
-#. National Day of Indigenous Peoples.
+#. National Indigenous Peoples Day.
 msgid "Día Nacional de los Pueblos Indígenas"
 msgstr "Національний день корінних народів"
 
-#. Saint Peter and Saint Paul.
+#. Saint Peter and Saint Paul's Day.
 msgid "San Pedro y San Pablo"
 msgstr "День Святих Петра і Павла"
 
-#. Day of Virgin of Carmen.
+#. Our Lady of Mount Carmel.
 msgid "Virgen del Carmen"
 msgstr "Матір Божа Кармельська"
 
@@ -75,11 +76,11 @@ msgstr "Матір Божа Кармельська"
 msgid "Asunción de la Virgen"
 msgstr "Внебовзяття Пресвятої Діви Марії"
 
-#. Day of National Liberation.
+#. National Liberation Day.
 msgid "Día de la Liberación Nacional"
 msgstr "День національного визволення"
 
-#. Day of National Unity.
+#. National Unity Day.
 msgid "Día de la Unidad Nacional"
 msgstr "День національної єдності"
 
@@ -89,7 +90,7 @@ msgstr "Національне свято"
 
 #. Independence Day.
 msgid "Día de la Independencia"
-msgstr "День Незалежності"
+msgstr "День незалежності"
 
 #. Army Day.
 msgid "Día de las Glorias del Ejército"
@@ -130,3 +131,11 @@ msgstr "Штурм і захоплення Морро-де-Аріка"
 #. Nativity of Bernardo O'Higgins (Chillán and Chillán Viejo communes)
 msgid "Nacimiento del Prócer de la Independencia (Chillán y Chillán Viejo)"
 msgstr "Річниця Бернардо ОʼГіґґінса (свято комун Чіллан і Чіллан Вʼєхо)"
+
+#. Bank Holiday.
+msgid "Feriado bancario"
+msgstr "Банківський вихідний"
+
+#. National Population and Housing Census.
+msgid "Censo Nacional de Población y Vivienda"
+msgstr "Національний перепис населення та житла"

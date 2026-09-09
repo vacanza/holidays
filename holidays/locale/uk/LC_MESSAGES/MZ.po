@@ -4,28 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Mozambique holidays uk localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.66\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-21 19:22+0300\n"
-"PO-Revision-Date: 2023-07-21 19:30+0300\n"
+"PO-Revision-Date: 2025-02-02 19:32+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
+"X-Source-Language: pt_MZ\n"
 
 #. %s (observed).
 #, c-format
@@ -48,13 +49,13 @@ msgstr "День жінок Мозамбіку"
 msgid "Dia Internacional dos Trabalhadores"
 msgstr "Міжнародний день трудящих"
 
-#. Independence Day.
+#. National Independence Day.
 msgid "Dia da Independência Nacional"
 msgstr "День національної незалежності"
 
 #. Victory Day.
 msgid "Dia da Vitória"
-msgstr "День перемоги"
+msgstr "День Перемоги"
 
 #. Armed Forces Day.
 msgid "Dia das Forças Armadas de Libertação Nacional"

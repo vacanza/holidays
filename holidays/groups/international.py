@@ -4,15 +4,17 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
 
-from holidays.calendars.gregorian import JAN
+from holidays.calendars.ethiopian import is_ethiopian_leap_year
+from holidays.calendars.gregorian import JAN, SEP, _timedelta
+from holidays.calendars.julian import julian_calendar_drift
 
 
 class InternationalHolidays:
@@ -65,15 +67,16 @@ class InternationalHolidays:
         supports another internationally adopted variant, November 20th.
         https://en.wikipedia.org/wiki/Children's_Day
         """
-        if variation == "JUN":
-            return self._add_holiday_jun_1(name)
-        elif variation == "NOV":
-            return self._add_holiday_nov_20(name)
-        else:
-            raise ValueError(
-                f"Unknown variation name: {variation}. "
-                "This entry currently supports `JUN` and `NOV` variation only."
-            )
+        match variation:
+            case "JUN":
+                return self._add_holiday_jun_1(name)
+            case "NOV":
+                return self._add_holiday_nov_20(name)
+            case _:
+                raise ValueError(
+                    f"Unknown variation name: {variation}. "
+                    "This entry currently supports `JUN` and `NOV` variation only."
+                )
 
     def _add_columbus_day(self, name):
         """
@@ -85,6 +88,31 @@ class InternationalHolidays:
         """
         return self._add_holiday_oct_12(name)
 
+    def _add_ethiopian_new_year(self, name) -> date:
+        """
+        Add Ethiopian New Year.
+
+        Ethiopian New Year, also known as Enkutatash, is a public holiday celebrated
+        on Meskerem 1 in the Ethiopian calendar, marking the start of the year in
+        Ethiopia and Eritrea.
+        https://en.wikipedia.org/wiki/Enkutatash
+        """
+        dt = _timedelta(date(self._year, SEP, 11), julian_calendar_drift(self._year))
+        return self._add_holiday(
+            name, _timedelta(dt, +1) if is_ethiopian_leap_year(self._year) else dt
+        )
+
+    def _add_europe_day(self, name):
+        """
+        Add Europe Day (May 9th)
+
+        Europe Day is a day celebrating "peace and unity in Europe"
+        celebrated on 5 May by the Council of Europe
+        and on 9 May by the European Union.
+        https://en.wikipedia.org/wiki/Europe_Day
+        """
+        return self._add_holiday_may_9(name)
+
     def _add_labor_day(self, name):
         """
         Add International Workers' Day (May 1st)
@@ -92,7 +120,7 @@ class InternationalHolidays:
         International Workers' Day, also known as Labour Day, is a celebration
         of labourers and the working classes that is promoted by the
         international labour movement.
-        https://en.wikipedia.org/wiki/International_Workers%27_Day
+        https://en.wikipedia.org/wiki/International_Workers'_Day
         """
         return self._add_holiday_may_1(name)
 
@@ -100,7 +128,7 @@ class InternationalHolidays:
         """
         Add International Workers' Day Two (May 2nd)
 
-        https://en.wikipedia.org/wiki/International_Workers%27_Day
+        https://en.wikipedia.org/wiki/International_Workers'_Day
         """
         return self._add_holiday_may_2(name)
 
@@ -108,7 +136,7 @@ class InternationalHolidays:
         """
         Add International Workers' Day Three (May 3rd)
 
-        https://en.wikipedia.org/wiki/International_Workers%27_Day
+        https://en.wikipedia.org/wiki/International_Workers'_Day
         """
         return self._add_holiday_may_3(name)
 
@@ -118,7 +146,7 @@ class InternationalHolidays:
 
         New Year's Day is a festival observed in most of the world on
         1 January, the first day of the year in the modern Gregorian calendar.
-        https://en.wikipedia.org/wiki/New_Year%27s_Day
+        https://en.wikipedia.org/wiki/New_Year's_Day
         """
         return self._add_holiday_jan_1(name)
 
@@ -128,7 +156,7 @@ class InternationalHolidays:
 
         New Year's Day is a festival observed in most of the world on
         1 January, the first day of the year in the modern Gregorian calendar.
-        https://en.wikipedia.org/wiki/New_Year%27s_Day
+        https://en.wikipedia.org/wiki/New_Year's_Day
         """
         return self._add_holiday_jan_2(name)
 
@@ -138,19 +166,9 @@ class InternationalHolidays:
 
         New Year's Day is a festival observed in most of the world on
         1 January, the first day of the year in the modern Gregorian calendar.
-        https://en.wikipedia.org/wiki/New_Year%27s_Day
+        https://en.wikipedia.org/wiki/New_Year's_Day
         """
         return self._add_holiday_jan_3(name)
-
-    def _add_new_years_day_four(self, name) -> date:
-        """
-        Add New Year's Day Four (January 4th).
-
-        New Year's Day is a festival observed in most of the world on
-        1 January, the first day of the year in the modern Gregorian calendar.
-        https://en.wikipedia.org/wiki/New_Year%27s_Day
-        """
-        return self._add_holiday_jan_4(name)
 
     def _add_remembrance_day(self, name):
         """
@@ -169,7 +187,7 @@ class InternationalHolidays:
         In the Gregorian calendar, New Year's Eve, also known as Old Year's
         Day or Saint Sylvester's Day in many countries, is the evening or the
         entire day of the last day of the year, on 31 December.
-        https://en.wikipedia.org/wiki/New_Year%27s_Eve
+        https://en.wikipedia.org/wiki/New_Year's_Eve
         """
         return self._add_holiday_dec_31(name)
 
@@ -181,19 +199,22 @@ class InternationalHolidays:
         point in the women's rights movement, bringing attention to issues
         such as gender equality, reproductive rights, and violence and abuse
         against women.
-        https://en.wikipedia.org/wiki/International_Women%27s_Day
+        https://en.wikipedia.org/wiki/International_Women's_Day
         """
         return self._add_holiday_mar_8(name)
 
-    def _add_world_war_two_victory_day(self, name):
+    def _add_world_war_two_victory_day(self, name, *, is_western=True):
         """
-        Add Victory Day (May 9th)
+        Add Day of Victory in World War II in Europe (May 8).
+        https://en.wikipedia.org/wiki/Victory_in_Europe_Day
 
-        Victory Day is a holiday that commemorates the victory over Nazi
-        Germany in 1945.
+        Some Eastern European countries celebrate Victory Day on May 9.
         https://en.wikipedia.org/wiki/Victory_Day_(9_May)
         """
-        return self._add_holiday_may_9(name)
+        if is_western:
+            return self._add_holiday_may_8(name)
+        else:
+            return self._add_holiday_may_9(name)
 
     def _add_united_nations_day(self, name):
         """

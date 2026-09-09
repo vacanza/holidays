@@ -1,0 +1,101 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Bhutan holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.95\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-03-25 21:20+0530\n"
+"PO-Revision-Date: 2026-03-25 21:20+0530\n"
+"Last-Translator: Devika Shukla <devikashukla80@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Source-Language: dz\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (ཚོད་དཔག་གི།)"
+msgstr "%s (estimated)"
+
+#. Birth Anniversary of His Majesty the King.
+msgid "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"
+msgstr "Birth Anniversary of His Majesty the King"
+
+#. Birth Anniversary of the 3rd Druk Gyalpo.
+msgid "མི་དབང་འབྲུག་རྒྱལ་གསུམ་པའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"
+msgstr "Birth Anniversary of the 3rd Druk Gyalpo"
+
+#. Coronation of His Majesty the King.
+msgid "མི་དབང་མངའ་བདག་རིན་པོ་ཆེའི་གསེར་ཁྲི་མངའ་གསོལ་གྱི་དུས་ཆེན་ངལ་གསོལ།"
+msgstr "Coronation of His Majesty the King"
+
+#. Birth Anniversary of the 4th Druk Gyalpo - Constitution Day.
+msgid "མི་དབང་འབྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོལ།"
+msgstr "Birth Anniversary of the 4th Druk Gyalpo - Constitution Day"
+
+#. National Day.
+msgid "རྒྱལ་ཡོངས་དུས་ཆེན་གྱི་ངལ་གསོལ།"
+msgstr "National Day"
+
+#. Winter Solstice.
+msgid "དགུན་ཉི་ལྡོག་གི་ངལ་གསོལ།"
+msgstr "Winter Solstice"
+
+#. Traditional Day of Offering.
+msgid "སྔར་སྲོལ་འབུལ་བའི་ལོ་གསར་གྱི་ངལ་གསོལ།"
+msgstr "Traditional Day of Offering"
+
+#. Losar.
+msgid "གནམ་ལོ་གསར་ཚེས་ཀྱིས་དུས་སྟོན་ངལ་གསོལ།"
+msgstr "Losar"
+
+#. Death Anniversary of Zhabdrung.
+msgid "མཐུ་ཆེན་ཆོས་ཀྱི་རྒྱལ་པོའི་དུས་ཆེན་ངལ་གསོལ།"
+msgstr "Death Anniversary of Zhabdrung"
+
+#. Lord Buddha's Parinirvana.
+msgid "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་དུས་ཆེན་ལྔ་འཛོམས་ངལ་གསོལ།"
+msgstr "Lord Buddha's Parinirvana"
+
+#. Birth Anniversary of Guru Rinpoche.
+msgid "ཨོ་རྒྱན་གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས་སྐར་དུས་ཆེན་ངལ་གསོ།"
+msgstr "Birth Anniversary of Guru Rinpoche"
+
+#. First Sermon of Lord Buddha.
+msgid "སྟོན་པ་མཆོག་ཝ་ར་ན་སིར་བདེན་བཞིའི་ཆོས་འཁོར་བསྐོར་བའི་དུས་ཆེན་ངལ་གསོ།"
+msgstr "First Sermon of Lord Buddha"
+
+#. Blessed Rainy Day.
+msgid "རྒྱལ་ཡོངས་ཁྲུས་བབས་ངལ་གསོ།"
+msgstr "Blessed Rainy Day"
+
+#. Dassain.
+msgid "ལྷོ་མཚམས་ད་སའིན་ངལ་གསོ།"
+msgstr "Dassain"
+
+#. Descending Day of Lord Buddha.
+msgid "རྒྱལ་བ་ལྷ་ལས་བབས་པའི་དུས་ཆེན་ངལ་གསོ།"
+msgstr "Descending Day of Lord Buddha"
+
+#. Thimphu Drubchoe.
+msgid "ཐིམ་རྫོང་ལྷ་མོའི་དངོས་འཆམ་མཇལ་རྒྱུའི་ངལ་གསོ།"
+msgstr "Thimphu Drubchoe"
+
+#. Thimphu Tshechu.
+msgid "ཐིམ་ཕུ་ཚེས་བཅུའི་ངལ་གསོ།"
+msgstr "Thimphu Tshechu"

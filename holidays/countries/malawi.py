@@ -4,10 +4,10 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
@@ -19,13 +19,16 @@ from holidays.observed_holiday_base import (
 
 
 class Malawi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    https://www.officeholidays.com/countries/malawi
-    https://www.timeanddate.com/holidays/malawi/
+    """Malawi holidays.
+
+    References:
+        * <https://web.archive.org/web/20250414071022/https://www.officeholidays.com/countries/malawi>
+        * <https://web.archive.org/web/20250213080059/https://www.timeanddate.com/holidays/malawi/>
     """
 
     country = "MW"
     observed_label = "%s (observed)"
+    start_year = 2000
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -34,10 +37,6 @@ class Malawi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Observed since 2000
-        if self._year <= 1999:
-            return None
-
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
         self._add_observed(self._add_holiday_jan_15("John Chilembwe Day"))

@@ -4,10 +4,10 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
@@ -20,16 +20,19 @@ from holidays.observed_holiday_base import (
 
 
 class Belize(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
+    """Belize holidays.
+
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Belize
-      - http://www.belizelaw.org/web/lawadmin/PDF%20files/cap289.pdf
-      - https://www.pressoffice.gov.bz/public-and-bank-holidays-2022-updated/
-      - https://www.pressoffice.gov.bz/government-of-belize-establishes-new-public-and-bank-holidays/  # noqa: E501
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Belize>
+        * <https://web.archive.org/web/20250427131247/https://www.belizelaw.org/web/lawadmin/PDF%20files/cap289.pdf>
+        * <https://web.archive.org/web/20250421081044/https://www.pressoffice.gov.bz/public-and-bank-holidays-2022-updated>
+        * <https://web.archive.org/web/20250318103939/https://www.pressoffice.gov.bz/government-of-belize-establishes-new-public-and-bank-holidays/>
     """
 
     country = "BZ"
     observed_label = "%s (observed)"
+    # Belize was granted independence on 21.09.1981.
+    start_year = 1982
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -42,10 +45,6 @@ class Belize(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Belize was granted independence on 21.09.1981.
-        if self._year <= 1981:
-            return None
-
         # New Year's Day.
         self._move_holiday(self._add_new_years_day("New Year's Day"))
 

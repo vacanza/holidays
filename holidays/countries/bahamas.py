@@ -4,10 +4,10 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import SEP, DEC
@@ -23,22 +23,26 @@ from holidays.observed_holiday_base import (
 
 
 class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
+    """Bahamas holidays.
+
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_the_Bahamas
-      - https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/1938/1938-0015/PublicHolidaysAct_1.pdf  # noqa: E501
-      - https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2013/2013-0040/MajorityRulePublicHolidayAct2013_1.pdf  # noqa: E501
-      - https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2013/2013-0009/RandolFawkesLabourDayAct2013_1.pdf  # noqa: E501
-      - http://www.tribune242.com/news/2013/oct/12/national-heroes-day-formally-established/
-      - https://eleutheranews.com/?p=3594
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Bahamas>
+        * <https://web.archive.org/web/20250421024112/http://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/1938/1938-0015/PublicHolidaysAct_1.pdf>
+        * <https://archive.org/details/majority-rule-public-holiday-act-2013>
+        * <https://archive.org/details/randol-fawkes-labour-day-act-2013>
+        * <https://web.archive.org/web/20210922210604/http://www.tribune242.com/news/2013/oct/12/national-heroes-day-formally-established/>
+        * <https://web.archive.org/web/20190905051207/http://eleutheranews.com/?p=3594>
+
     Checked With:
-      - https://www.bahamashclondon.net/consular-information/public-holidays/
-      - https://bisxbahamas.com/wp-content/uploads/2020/12/Trading-Calendar-2021.pdf
-      - https://publicholidays.la/the-bahamas/2022-dates/  # Official source no longer accessible
+        * <https://web.archive.org/web/20250218064125/https://www.bahamashclondon.net/consular-information/public-holidays/>
+        * <https://web.archive.org/web/20250427182357/https://bisxbahamas.com/wp-content/uploads/2020/12/Trading-Calendar-2021.pdf>
+        * <https://web.archive.org/web/20231210053149/https://publicholidays.la/the-bahamas/2022-dates/>
     """
 
     country = "BS"
     observed_label = "%s (observed)"
+    # Gained Independence on Jul 10, 1973.
+    start_year = 1974
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -48,10 +52,6 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Gained Independence on Jul 10, 1973.
-        if self._year <= 1973:
-            return None
-
         # New Year's Day.
         # Pre-2012 Observance:
         # - If TUE, New Year's Day (observed) prev MON.
@@ -75,8 +75,8 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
 
-        # Whit Monday.
-        self._add_whit_monday("Whit Monday")
+        # Pentecost Monday.
+        self._add_pentecost_monday("Whit Monday")
 
         # Randol Fawkes Labour Day.
         # This was simply known as "Labour Day" prior to Randol Fawkes Labour Day Act 2013.
@@ -127,7 +127,7 @@ class BHS(Bahamas):
 
 class BahamasStaticHolidays:
     special_public_holidays = {
-        # https://www.bahamas.gov.bs/wps/portal/public/gov/government/notices/national%20holiday%2019th%20september/  # noqa: E501
+        # https://web.archive.org/web/20250122110613/https://www.bahamas.gov.bs/wps/portal/public/gov/government/notices/national%20holiday%2019th%20september/
         2022: (SEP, 19, "State Funeral of Queen Elizabeth II"),
     }
 

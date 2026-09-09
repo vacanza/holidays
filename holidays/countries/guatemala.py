@@ -4,32 +4,30 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars.gregorian import OCT
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, ALL_TO_NEAREST_MON_LATAM
 
 
 class Guatemala(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
+    """Guatemala holidays.
+
     References:
-    - http://www.bvnsa.com.gt/bvnsa/calendario_dias_festivos.php
-    - https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf
+        * <https://web.archive.org/web/20240419130706/http://www.bvnsa.com.gt/bvnsa/calendario_dias_festivos.php>
+        * <https://web.archive.org/web/20250426043930/https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf>
 
     Moving holidays:
-        law 19-2018 start 18 oct 2018
-        https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf
-
-        EXPEDIENTE 5536-2018 (CC) start 17 abr 2020
-        https://leyes.infile.com/index.php?id=181&id_publicacion=81051
+        * [Decree 19-2018 start 18 oct 2018](https://web.archive.org/web/20250426043930/https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf)
+        * [Case 5536-2018 (CC) start 17 abr 2020](https://web.archive.org/web/20240625093244/https://leyes.infile.com/index.php?id=182&id_publicacion=81055)
     """
 
     country = "GT"
@@ -56,7 +54,7 @@ class Guatemala(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Viernes Santo"))
 
         # Holy Saturday.
-        self._add_holy_saturday(tr("Sabado Santo"))
+        self._add_holy_saturday(tr("Sábado Santo"))
 
         # Labor Day.
         dt = self._add_labor_day(tr("Día del Trabajo"))

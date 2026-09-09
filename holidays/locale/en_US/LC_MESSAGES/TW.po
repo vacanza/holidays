@@ -4,33 +4,48 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Taiwan holidays en_US localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.43\n"
+"Project-Id-Version: Holidays 0.86\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-11-24 16:16+0700\n"
-"PO-Revision-Date: 2024-02-07 19:37+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"PO-Revision-Date: 2025-11-19 18:24+0800\n"
+"Last-Translator: Peter Chen <petercpg@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.8\n"
+"X-Source-Language: zh_TW\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s（推定）"
+msgstr "%s (estimated)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s（補假，推定）"
+msgstr "%s (observed, estimated)"
 
 #. %s (observed).
 #, c-format
-msgid "%s（慶祝）"
+msgid "%s（補假）"
 msgstr "%s (observed)"
+
+#. Children's Day.
+msgid "兒童節"
+msgstr "Children's Day"
 
 #. Founding Day of the Republic of China.
 msgid "中華民國開國紀念日"
@@ -48,13 +63,13 @@ msgstr "Chinese New Year"
 msgid "和平紀念日"
 msgstr "Peace Memorial Day"
 
-#. Children's Day.
-msgid "兒童節"
-msgstr "Children's Day"
+#. Tomb-Sweeping Day.
+msgid "民族掃墓節"
+msgstr "Tomb-Sweeping Day"
 
-#. Tomb Sweeping Day.
-msgid "清明節"
-msgstr "Tomb Sweeping Day"
+#. Labor Day.
+msgid "勞動節"
+msgstr "Labor Day"
 
 #. Dragon Boat Festival.
 msgid "端午節"
@@ -64,15 +79,95 @@ msgstr "Dragon Boat Festival"
 msgid "中秋節"
 msgstr "Mid-Autumn Festival"
 
+#. Confucius' Birthday.
+msgid "孔子誕辰紀念日"
+msgstr "Confucius' Birthday"
+
 #. National Day.
-msgid "中華民國國慶日"
+msgid "國慶日"
 msgstr "National Day"
 
-#. Date format (see strftime() Format Codes).
+#. Taiwan Restoration and Guningtou Victory Memorial Day.
+msgid "臺灣光復暨金門古寧頭大捷紀念日"
+msgstr "Taiwan Restoration and Guningtou Victory Memorial Day"
+
+#. Constitution Day.
+msgid "行憲紀念日"
+msgstr "Constitution Day"
+
+#. Taiwan Retrocession Day.
+msgid "臺灣光復節"
+msgstr "Taiwan Retrocession Day"
+
+#. Late President Chiang Kai-shek's Birthday.
+msgid "先總統　蔣公誕辰紀念日"
+msgstr "Late President Chiang Kai-shek's Birthday"
+
+#. Dr. Sun Yat-sen's Birthday.
+msgid "國父誕辰紀念日"
+msgstr "Dr. Sun Yat-sen's Birthday"
+
+#. Revolutionary Martyrs Memorial Day.
+msgid "革命先烈紀念日"
+msgstr "Revolutionary Martyrs Memorial Day"
+
+#. Armed Forces Day.
+msgid "軍人節"
+msgstr "Armed Forces Day"
+
+#. Dr. Sun Yat-sen's Memorial Day.
+msgid "國父逝世紀念日"
+msgstr "Dr. Sun Yat-sen's Memorial Day"
+
+#. Arbor Day.
+msgid "植樹節"
+msgstr "Arbor Day"
+
+#. Youth Day.
+msgid "青年節"
+msgstr "Youth Day"
+
+#. Teacher's Day.
+msgid "教師節"
+msgstr "Teacher's Day"
+
+#. Chinese Cultural Renaissance Day.
+msgid "中華文化復興節"
+msgstr "Chinese Cultural Renaissance Day"
+
+#. Women's Day.
+msgid "婦女節"
+msgstr "Women's Day"
+
+#. Late President Chiang Kai-shek's Memorial Day.
+msgid "先總統蔣公逝世紀念日"
+msgstr "Late President Chiang Kai-shek's Memorial Day"
+
+#. The Buddha's Birthday.
+msgid "佛陀誕辰紀念日"
+msgstr "The Buddha's Birthday"
+
+#. Taoism Day.
+msgid "道教節"
+msgstr "Taoism Day"
+
+#. Anti-Aggression Day.
+msgid "反侵略日"
+msgstr "Anti-Aggression Day"
+
+#. Commemoration Day of the Lifting of Martial Law.
+msgid "解嚴紀念日"
+msgstr "Commemoration Day of the Lifting of Martial Law"
+
+#. Taiwan United Nations Day.
+msgid "臺灣聯合國日"
+msgstr "Taiwan United Nations Day"
+
+#. Substituted date format.
 msgid "%Y-%m-%d"
 msgstr "%m/%d/%Y"
 
 #. Day off (substituted from %s).
 #, c-format
-msgid "休息日（%s日起取代）"
+msgid "放假日（%s 補班）"
 msgstr "Day off (substituted from %s)"

@@ -4,25 +4,24 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
-from gettext import gettext as tr
 
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
 class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    Liechtenstein holidays.
+    """Liechtenstein holidays.
+
     References:
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Liechtenstein
-    - https://www.llb.li/en/contact/bank-holidays
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Liechtenstein>
+        * <https://web.archive.org/web/20250122013118/https://llb.li/en/contact/bank-holidays>
     """
 
     country = "LI"
@@ -60,11 +59,11 @@ class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("Auffahrt"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Pfingstsonntag"))
+        # Pentecost.
+        self._add_pentecost(tr("Pfingstsonntag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
@@ -84,7 +83,7 @@ class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Weihnachten"))
 
-        # St. Stephen's Day.
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_bank_holidays(self):

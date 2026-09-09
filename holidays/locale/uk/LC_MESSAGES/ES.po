@@ -4,28 +4,39 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Spain holidays uk localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.40\n"
+"Project-Id-Version: Holidays 0.100\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-12-26 19:23+0200\n"
-"PO-Revision-Date: 2023-12-26 19:58+0200\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.8\n"
+"X-Source-Language: es\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimado)"
+msgstr "%s (приблизна дата)"
+
+#. Monday following %s (estimated).
+#, c-format
+msgid "Lunes siguiente a %s (estimado)"
+msgstr "Понеділок після %s (приблизна дата)"
 
 #. Monday following %s.
 #, c-format
@@ -33,7 +44,7 @@ msgid "Lunes siguiente a %s"
 msgstr "Понеділок після %s"
 
 #. New Year's Day.
-msgid "Año nuevo"
+msgid "Año Nuevo"
 msgstr "Новий рік"
 
 #. Epiphany.
@@ -73,18 +84,18 @@ msgid "Natividad del Señor"
 msgstr "Різдво Христове"
 
 #. Andalusia Day.
-msgid "Día de Andalucia"
+msgid "Día de Andalucía"
 msgstr "День Андалусії"
 
 #. Maundy Thursday.
 msgid "Jueves Santo"
 msgstr "Великий четвер"
 
-#. St. George's Day.
+#. Saint George's Day.
 msgid "Día de San Jorge"
 msgstr "День Святого Георгія"
 
-#. Asturia Day.
+#. Asturias Day.
 msgid "Día de Asturias"
 msgstr "День Астурії"
 
@@ -92,7 +103,7 @@ msgstr "День Астурії"
 msgid "Lunes de Pascua"
 msgstr "Великодній понеділок"
 
-#. St. James' Day.
+#. Saint James' Day.
 msgid "Santiago Apóstol"
 msgstr "День Святого Якова"
 
@@ -100,13 +111,17 @@ msgstr "День Святого Якова"
 msgid "Día de las Instituciones de Cantabria"
 msgstr "День Інституцій Кантабрії"
 
-#. Our Lady of the Bien Aparecida.
+#. Our Lady of Bien Aparecida.
 msgid "La Bien Aparecida"
-msgstr "День Богоматері Обʼявлення"
+msgstr "День Пресвятої Богородиці Обʼявленої"
+
+#. Saint Anthony's Day.
+msgid "San Antonio"
+msgstr "День Святого Антонія"
 
 #. Santa Maria of Africa.
 msgid "Nuestra Señora de África"
-msgstr "День Богоматері Африканської"
+msgstr "День Пресвятої Богородиці Африканської"
 
 #. Ceuta Day.
 msgid "Día de Ceuta"
@@ -116,7 +131,7 @@ msgstr "День Сеути"
 msgid "Fiesta del Sacrificio-Eidul Adha"
 msgstr "Курбан-байрам"
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "San José"
 msgstr "День Святого Йосипа"
 
@@ -136,11 +151,11 @@ msgstr "День Кастилії-Ла-Манча"
 msgid "Día de Canarias"
 msgstr "День Канарських островів"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Día de la Pascua Granada"
-msgstr "День Святого Духа"
+msgstr "Другий день Пʼятидесятниці"
 
-#. St. John the Baptist.
+#. Saint John the Baptist.
 msgid "San Juan"
 msgstr "День Івана Хрестителя"
 
@@ -148,7 +163,7 @@ msgstr "День Івана Хрестителя"
 msgid "Fiesta Nacional de Cataluña"
 msgstr "Національний день Каталонії"
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "San Esteban"
 msgstr "День Святого Стефана"
 
@@ -184,6 +199,14 @@ msgstr "День Мадрида"
 msgid "Estatuto de Autonomía de la Ciudad de Melilla"
 msgstr "День Статуту автономії міста Мелілья"
 
+#. Day of Our Lady of Victory.
+msgid "Día de Nuestra Señora la Virgen de la Victoria"
+msgstr "День Пресвятої Богородиці Перемоги"
+
+#. Melilla Day.
+msgid "Día de Melilla"
+msgstr "День Мелільї"
+
 #. Eid al-Fitr.
 msgid "Fiesta del Eid Fitr"
 msgstr "Рамазан-байрам"
@@ -191,6 +214,10 @@ msgstr "Рамазан-байрам"
 #. Eid al-Adha.
 msgid "Fiesta del Sacrificio-Aid Al Adha"
 msgstr "Курбан-байрам"
+
+#. Saint Francis Xavier's Day.
+msgid "San Francisco Javier"
+msgstr "День Святого Франциска Ксаверія"
 
 #. País Vasco Day.
 msgid "Día del País Vasco"
@@ -204,11 +231,11 @@ msgstr "День Ріохи"
 msgid "Día de la Comunidad Valenciana"
 msgstr "День Валенсії"
 
-#. Day following St. Joseph's Day.
+#. Day following Saint Joseph's Day.
 msgid "Día siguiente a San José"
 msgstr "День наступний за Днем Святого Йосипа"
 
-#. St. Joseph's Day Transfer.
+#. Saint Joseph's Day Transfer.
 msgid "Traslado de San José"
 msgstr "Перенесений День Святого Йосипа"
 

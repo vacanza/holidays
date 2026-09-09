@@ -4,28 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Azerbaijan holidays.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.41\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-11-15 20:42+0200\n"
 "PO-Revision-Date: 2023-11-15 20:47+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: az\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: az\n"
 
 #. %s (estimated).
 #, c-format
@@ -35,6 +36,11 @@ msgstr ""
 #. %s (observed).
 #, c-format
 msgid "%s (müşahidə olunur)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (müşahidə olunur, təxmini)"
 msgstr ""
 
 #. New Year's Day.
@@ -73,7 +79,7 @@ msgstr ""
 msgid "Azərbaycan Respublikasının Silahlı Qüvvələri günü"
 msgstr ""
 
-#. Independence Day.
+#. National Independence Day.
 msgid "Milli Müstəqillik Günü"
 msgstr ""
 
@@ -113,14 +119,6 @@ msgstr ""
 msgid "Milli Dirçəliş Günü"
 msgstr ""
 
-#. Presidential elections.
-msgid "Prezidenti seçkiləri"
-msgstr ""
-
-#. Municipal elections.
-msgid "Bələdiyyə seçkiləri"
-msgstr ""
-
 #. Substituted date format.
 msgid "%d.%m.%Y"
 msgstr ""
@@ -130,7 +128,10 @@ msgstr ""
 msgid "İstirahət günü (%s ilə əvəz edilmişdir)"
 msgstr ""
 
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (müşahidə olunur, təxmini)"
+#. Presidential elections.
+msgid "Prezidenti seçkiləri"
+msgstr ""
+
+#. Municipal elections.
+msgid "Bələdiyyə seçkiləri"
 msgstr ""

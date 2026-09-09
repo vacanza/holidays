@@ -4,19 +4,19 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     WORKDAY_TO_NEXT_WORKDAY,
@@ -25,9 +25,14 @@ from holidays.observed_holiday_base import (
 
 
 class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
-    # [1] https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan
-    # [2] https://az.wikipedia.org/wiki/Az%C9%99rbaycan%C4%B1n_d%C3%B6vl%C9%99t_bayramlar%C4%B1_v%C9%99_x%C3%BCsusi_g%C3%BCnl%C9%99ri  # noqa: E501
-    # [3] https://www.sosial.gov.az/en/prod-calendar
+    """Azerbaijan holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan>
+        * <https://az.wikipedia.org/wiki/Azərbaycanın_dövlət_bayramları_və_xüsusi_günləri>
+        * <https://web.archive.org/web/20221007162312/https://sosial.gov.az/en/prod-calendar>
+        * <https://web.archive.org/web/20251211151027/https://sosial.gov.az/az/faydali/istehsalat-teqvimi>
+    """
 
     country = "AZ"
     default_language = "az"
@@ -39,19 +44,25 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
     observed_estimated_label = tr("%s (müşahidə olunur, təxmini)")
     supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("az", "en_US", "uk")
+    start_year = 1990
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, AzerbaijanIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=AzerbaijanIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, AzerbaijanStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         kwargs.setdefault("observed_since", 2006)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1989:
-            return None
-
         dts_observed = set()
         dts_non_observed = set()
         dts_bairami = set()
@@ -78,8 +89,13 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
             dts_observed.add(self._add_holiday_mar_23(name))
             dts_observed.add(self._add_holiday_mar_24(name))
 
-        # Victory over Fascism Day.
-        dts_observed.add(self._add_world_war_two_victory_day(tr("Faşizm üzərində qələbə günü")))
+        dts_observed.add(
+            self._add_world_war_two_victory_day(
+                # Victory over Fascism Day.
+                tr("Faşizm üzərində qələbə günü"),
+                is_western=False,
+            )
+        )
 
         if self._year >= 1992:
             dts_observed.add(
@@ -107,7 +123,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
                 dts_observed.add(self._add_holiday_jun_26(name))
 
         if self._year <= 2005:
-            # Independence Day.
+            # National Independence Day.
             self._add_holiday_oct_18(tr("Milli Müstəqillik Günü"))
 
         if self._year >= 2021:
@@ -143,17 +159,17 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
         # 5. If interweekly rest days and holidays that are not considered working days overlap,
         # that rest day is immediately transferred to the next working day.
         if self.observed and self._year >= 2006:
-            self._populate_observed(dts_observed.union(dts_bairami))
+            self._populate_observed(dts_observed.union(dts_bairami), multiple=True)
 
-            bayrami_names = {self.tr("Ramazan bayrami"), self.tr("Qurban bayrami")}
+            bayrami_names = (self.tr("Qurban bayrami"), self.tr("Ramazan bayrami"))
             # 6. If the holidays of Qurban and Ramadan coincide with another holiday
             # that is not considered a working day, the next working day is considered a rest day.
             for dt_observed in sorted(dts_bairami.difference(dts_non_observed)):
                 if len(dt_holidays := self.get_list(dt_observed)) == 1:
                     continue
-                for name in dt_holidays:
-                    if name in bayrami_names:
-                        self._add_observed(dt_observed, name, WORKDAY_TO_NEXT_WORKDAY)
+                for holiday_name in dt_holidays:
+                    if any(bayrami_name in holiday_name for bayrami_name in bayrami_names):
+                        self._add_observed(dt_observed, holiday_name, rule=WORKDAY_TO_NEXT_WORKDAY)
 
     def _populate_workday_holidays(self):
         if self._year >= 2021:
@@ -165,7 +181,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
                 # Independence Restoration Day.
                 tr("Müstəqilliyin Bərpası Günü")
                 if self._year >= 2021
-                # Independence Day.
+                # National Independence Day.
                 else tr("Milli Müstəqillik Günü")
             )
 
@@ -187,64 +203,60 @@ class AZE(Azerbaijan):
 
 
 class AzerbaijanIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2002, 2026)
     EID_AL_ADHA_DATES = {
         2002: (FEB, 21),
-        2003: (FEB, 11),
-        2004: (FEB, 1),
         2005: (JAN, 22),
-        2006: ((JAN, 10), (DEC, 31)),
-        2007: (DEC, 20),
-        2008: (DEC, 8),
-        2009: (NOV, 27),
-        2010: (NOV, 16),
-        2011: (NOV, 6),
         2012: (OCT, 25),
-        2013: (OCT, 15),
-        2014: (OCT, 4),
         2015: (SEP, 24),
         2016: (SEP, 12),
-        2017: (SEP, 1),
         2018: (AUG, 22),
         2019: (AUG, 12),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
     }
 
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2002, 2026)
     EID_AL_FITR_DATES = {
         2002: (DEC, 4),
-        2003: (NOV, 25),
-        2004: (NOV, 14),
-        2005: (NOV, 3),
-        2006: (OCT, 23),
         2007: (OCT, 12),
         2008: (SEP, 30),
-        2009: (SEP, 20),
         2010: (SEP, 9),
-        2011: (AUG, 30),
-        2012: (AUG, 19),
-        2013: (AUG, 8),
-        2014: (JUL, 28),
-        2015: (JUL, 17),
-        2016: (JUL, 6),
         2017: (JUN, 26),
-        2018: (JUN, 15),
         2019: (JUN, 5),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 21),
-        2024: (APR, 10),
     }
 
 
 class AzerbaijanStaticHolidays:
+    """Azerbaijan special holidays.
+
+    Substituted holidays references:
+        * <https://web.archive.org/web/20240616014651/https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin-dayisdirilmasi-haqqinda-5423>
+        * <https://web.archive.org/web/20250427175631/https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin--dayisdirilmasi-haqqinda-5982>
+        * <https://web.archive.org/web/20250427175637/https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin-dayisdirilmasi-haqqinda-6488>
+        * <https://web.archive.org/web/20240814143858/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7047>
+        * <https://web.archive.org/web/20250427175636/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7466>
+        * <https://web.archive.org/web/20240814142341/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7576>
+        * <https://web.archive.org/web/20250215005539/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7843>
+        * <https://web.archive.org/web/20241015224204/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8332>
+        * <https://web.archive.org/web/20250410132503/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8449>
+        * <https://web.archive.org/web/20250216200846/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8623>
+        * <https://web.archive.org/web/20250711211545/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8864>
+
+    Special holidays references:
+        * <https://web.archive.org/web/20250421013220/https://www.msk.gov.az/en/elections/pages/municipal-elections/belediyye-29-01-2025>
+    """
+
     eid_al_adha = tr("Qurban bayrami")
+
     # Substituted date format.
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
     substituted_label = tr("İstirahət günü (%s ilə əvəz edilmişdir)")
+
+    # Presidential elections.
+    presidential_elections = tr("Prezidenti seçkiləri")
+
+    # Municipal elections.
+    municipal_elections = tr("Bələdiyyə seçkiləri")
 
     special_public_holidays = {
         2011: (AUG, 29, AUG, 27),
@@ -256,15 +268,13 @@ class AzerbaijanStaticHolidays:
             (JAN, 3, DEC, 28, 2013),
             (JAN, 6, DEC, 29, 2013),
         ),
-        # Presidential elections.
-        2018: (APR, 11, tr("Prezidenti seçkiləri")),
-        # Municipal elections.
-        2019: (DEC, 27, tr("Bələdiyyə seçkiləri")),
+        2018: (APR, 11, presidential_elections),
+        2019: (DEC, 27, municipal_elections),
         2020: (
-            (MAR, 27, MAR, 29),
-            (MAY, 27, MAY, 30),
             (JAN, 3, DEC, 28, 2019),
             (JAN, 6, DEC, 29, 2019),
+            (MAR, 27, MAR, 29),
+            (MAY, 27, MAY, 30),
         ),
         2021: (
             (MAY, 11, MAY, 8),
@@ -279,6 +289,22 @@ class AzerbaijanStaticHolidays:
             (JUN, 27, JUN, 24),
             (JUN, 30, JUN, 25),
             (NOV, 10, NOV, 4),
+        ),
+        2024: (
+            (JAN, 4, DEC, 30, 2023),
+            (JAN, 5, JAN, 7),
+            (FEB, 7, presidential_elections),
+            (APR, 12, APR, 6),
+            (NOV, 12, NOV, 16),
+            (NOV, 13, NOV, 23),
+            (DEC, 30, DEC, 28),
+        ),
+        2025: (
+            (JAN, 3, DEC, 29, 2024),
+            (JAN, 29, municipal_elections),
+            (MAR, 27, MAR, 10),
+            (MAR, 28, APR, 1),
+            (JUN, 27, JUN, 21),
         ),
     }
 

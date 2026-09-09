@@ -4,28 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Peru holidays en_US localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.42\n"
+"Project-Id-Version: Holidays 0.42\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-21 15:18+0200\n"
 "PO-Revision-Date: 2024-01-23 20:56+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: es\n"
 
 #. New Year's Day.
 msgid "Año Nuevo"
@@ -47,9 +48,17 @@ msgstr "Easter Sunday"
 msgid "Día del Trabajo"
 msgstr "Labor Day"
 
-#. Saint Peter and Saint Paul.
+#. Battle of Arica and Flag Day.
+msgid "Batalla de Arica y Día de la Bandera"
+msgstr "Battle of Arica and Flag Day"
+
+#. Saint Peter and Saint Paul's Day.
 msgid "San Pedro y San Pablo"
-msgstr "Saint Peter and Saint Paul"
+msgstr "Saint Peter and Saint Paul's Day"
+
+#. Peruvian Air Force Day.
+msgid "Día de la Fuerza Aérea del Perú"
+msgstr "Peruvian Air Force Day"
 
 #. Independence Day.
 msgid "Día de la Independencia"
@@ -77,7 +86,7 @@ msgstr "All Saints' Day"
 
 #. Immaculate Conception.
 msgid "Inmaculada Concepción"
-msgstr "Immaculate Conception Day"
+msgstr "Immaculate Conception"
 
 #. Battle of Ayacucho.
 msgid "Batalla de Ayacucho"

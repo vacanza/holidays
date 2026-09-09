@@ -4,24 +4,26 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class Mozambique(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+    """Mozambique holidays."""
+
     country = "MZ"
     default_language = "pt_MZ"
     # %s (observed).
     observed_label = tr("%s (ponte)")
     supported_languages = ("en_US", "pt_MZ", "uk")
+    start_year = 1975
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -30,9 +32,6 @@ class Mozambique(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1974:
-            return None
-
         # International Fraternalism Day.
         self._add_observed(self._add_new_years_day(tr("Dia da Fraternidade universal")))
 
@@ -45,7 +44,7 @@ class Mozambique(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # International Workers' Day.
         self._add_observed(self._add_labor_day(tr("Dia Internacional dos Trabalhadores")))
 
-        # Independence Day.
+        # National Independence Day.
         self._add_observed(self._add_holiday_jun_25(tr("Dia da Independência Nacional")))
 
         # Victory Day.

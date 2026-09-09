@@ -1,0 +1,110 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Australian Securities Exchange (ASX) holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.104\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-08-03 15:45+0000\n"
+"PO-Revision-Date: 2026-08-26 08:49+0000\n"
+"Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_AU\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "วันขึ้นปีใหม่"
+
+#. Australia Day.
+msgid "Australia Day"
+msgstr "วันชาติออสเตรเลีย"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "วันจันทร์อีสเตอร์"
+
+#. ANZAC Day.
+msgid "ANZAC Day"
+msgstr "วันแอนแซค"
+
+#. King's Birthday.
+msgid "King's Birthday"
+msgstr "วันเฉลิมพระชนมพรรษาสมเด็จพระราชาธิบดี"
+
+#. Queen's Birthday.
+msgid "Queen's Birthday"
+msgstr "วันเฉลิมพระชนมพรรษาสมเด็จพระราชินีนาถ"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "วันคริสต์มาส"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "วันเปิดกล่องของขวัญ"
+
+#. %s (markets close early).
+#, c-format
+msgid "%s (markets close early)"
+msgstr "%s (ตลาดปิดทำการก่อนเวลา)"
+
+#. Easter Thursday.
+msgid "Easter Thursday"
+msgstr "วันพฤหัสบดีศักดิ์สิทธิ์"
+
+#. Last Business Day before Christmas Day.
+msgid "Last Business Day before Christmas Day"
+msgstr "วันทำการสุดท้ายก่อนวันคริสต์มาส"
+
+#. Last Business Day of the Year.
+msgid "Last Business Day of the Year"
+msgstr "วันทำการสุดท้ายของปี"
+
+#. %s (No Settlement).
+#, c-format
+msgid "%s (No Settlement)"
+msgstr "%s (ไม่มีการชำระราคา)"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "วันแรงงาน"
+
+#. Bank Holiday.
+msgid "Bank Holiday"
+msgstr "วันหยุดธนาคาร"
+
+#. Melbourne Cup Day.
+msgid "Melbourne Cup Day"
+msgstr "วันเมลเบิร์นคัพ"
+
+#. Easter Tuesday / Public Holiday.
+msgid "Easter Tuesday / Public Holiday"
+msgstr "วันอังคารอีสเตอร์/วันหยุดนักขัตฤกษ์"
+
+#. National Day of Mourning for Queen Elizabeth II.
+msgid "National Day of Mourning for Queen Elizabeth II"
+msgstr "วันไว้ทุกข์แห่งชาติแด่สมเด็จพระราชินีนาถเอลิซาเบธที่ 2"
+
+#. Day following New Year's Day.
+msgid "Day following New Year's Day"
+msgstr "วันหลังวันขึ้นปีใหม่"

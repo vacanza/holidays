@@ -4,28 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Portugal holidays en_US localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.20\n"
+"Project-Id-Version: Holidays 0.56\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-07 19:38+0700\n"
-"PO-Revision-Date: 2023-12-30 19:28+0200\n"
+"PO-Revision-Date: 2024-08-31 18:20+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: pt_PT\n"
 
 #. New Year's Day.
 msgid "Ano Novo"
@@ -91,6 +92,10 @@ msgstr "Christmas Day"
 msgid "Carnaval"
 msgstr "Carnival"
 
+#. Saint Anthony's Day.
+msgid "Dia de Santo António"
+msgstr "Saint Anthony's Day"
+
 #. Christmas Eve.
 msgid "Véspera de Natal"
 msgstr "Christmas Eve"
@@ -103,21 +108,17 @@ msgstr "Second Day of Christmas"
 msgid "Véspera de Ano Novo"
 msgstr "New Year's Eve"
 
-#. St. Anthony's Day.
-msgid "Dia de Santo António"
-msgstr "St. Anthony's Day"
-
-#. St. Joanna's Day.
+#. Saint Joanna's Day.
 msgid "Dia de Santa Joana"
-msgstr "St. Joanna's Day"
+msgstr "Saint Joanna's Day"
 
 #. Ascension Day.
 msgid "Quinta-feira da Ascensão"
 msgstr "Ascension Day"
 
-#. St. John's Day.
+#. Saint John's Day.
 msgid "Dia de São João"
-msgstr "St. John's Day"
+msgstr "Saint John's Day"
 
 #. Feast of Our Lady of Graces.
 msgid "Dia de Nossa Senhora das Graças"
@@ -127,13 +128,13 @@ msgstr "Feast of Our Lady of Graces"
 msgid "Dia de Nossa Senhora de Mércoles"
 msgstr "Feast of Our Lady of Mércoles"
 
-#. St. Elizabeth's Day.
+#. Saint Elizabeth's Day.
 msgid "Dia de Santa Isabel"
-msgstr "St. Elizabeth's Day"
+msgstr "Saint Elizabeth's Day"
 
-#. St. Peter's Day.
+#. Saint Peter's Day.
 msgid "Dia de São Pedro"
-msgstr "St. Peter's Day"
+msgstr "Saint Peter's Day"
 
 #. Municipal Holiday of Faro.
 msgid "Dia do Município de Faro"
@@ -151,9 +152,9 @@ msgstr "Municipal Holiday of Leiria"
 msgid "Dia do Município de Portalegre"
 msgstr "Municipal Holiday of Portalegre"
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "Dia de São José"
-msgstr "St. Joseph's Day"
+msgstr "Saint Joseph's Day"
 
 #. Bocage Day.
 msgid "Dia de Bocage"
@@ -163,21 +164,21 @@ msgstr "Bocage Day"
 msgid "Dia de Nossa Senhora da Agonia"
 msgstr "Feast of Our Lady of Sorrows"
 
-#. St. Matthew's Day.
+#. Saint Matthew's Day.
 msgid "Dia de São Mateus"
-msgstr "St. Matthew's Day"
+msgstr "Saint Matthew's Day"
 
 #. Day of the Autonomous Region of the Azores.
 msgid "Dia da Região Autónoma dos Açores"
 msgstr "Day of the Autonomous Region of the Azores"
 
-#. Day of the Autonomous Region of Madeira.
-msgid "Dia da Região Autónoma da Madeira"
-msgstr "Day of the Autonomous Region of Madeira"
-
 #. Day of the Autonomous Region of Madeira and the Madeiran Communities.
 msgid "Dia da Região Autónoma da Madeira e das Comunidades Madeirenses"
 msgstr "Day of the Autonomous Region of Madeira and the Madeiran Communities"
+
+#. Day of the Autonomous Region of Madeira.
+msgid "Dia da Região Autónoma da Madeira"
+msgstr "Day of the Autonomous Region of Madeira"
 
 #. 1st Octave.
 msgid "Primeira Oitava"

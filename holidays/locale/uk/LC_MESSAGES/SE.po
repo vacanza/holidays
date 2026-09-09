@@ -4,28 +4,34 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Sweden holidays uk localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.23\n"
+"Project-Id-Version: Holidays 0.100\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-08 20:17+0300\n"
-"PO-Revision-Date: 2023-04-08 20:27+0300\n"
+"PO-Revision-Date: 2026-07-01 00:12+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
+"X-Source-Language: sv\n"
+
+#. %s (from 2pm).
+#, c-format
+msgid "%s (från kl. 14.00)"
+msgstr "%s (з 14:00)"
 
 #. New Year's Day.
 msgid "Nyårsdagen"
@@ -36,7 +42,7 @@ msgid "Trettondedag jul"
 msgstr "Богоявлення"
 
 #. Feast of the Annunciation.
-msgid "Jungfru Marie bebådelsedag"
+msgid "Marie bebådelsedag"
 msgstr "Благовіщення"
 
 #. Good Friday.
@@ -59,21 +65,17 @@ msgstr "Перше травня"
 msgid "Kristi himmelsfärdsdag"
 msgstr "Вознесіння Господнє"
 
-#. National Day of Sweden.
-msgid "Sveriges nationaldag"
-msgstr "Національний день Швеції"
+#. National Day.
+msgid "Nationaldagen"
+msgstr "Національний день"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pingstdagen"
-msgstr "Трійця"
+msgstr "Пʼятидесятниця"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Annandag pingst"
-msgstr "День Святого Духа"
-
-#. Midsummer Eve.
-msgid "Midsommarafton"
-msgstr "Переддень літнього сонцестояння"
+msgstr "Другий день Пʼятидесятниці"
 
 #. Midsummer Day.
 msgid "Midsommardagen"
@@ -83,10 +85,6 @@ msgstr "День літнього сонцестояння"
 msgid "Alla helgons dag"
 msgstr "День усіх святих"
 
-#. Christmas Eve.
-msgid "Julafton"
-msgstr "Святий вечір"
-
 #. Christmas Day.
 msgid "Juldagen"
 msgstr "Різдво Христове"
@@ -95,10 +93,66 @@ msgstr "Різдво Христове"
 msgid "Annandag jul"
 msgstr "Другий день Різдва"
 
+#. Sunday.
+msgid "Söndag"
+msgstr "Неділя"
+
+#. Midsummer Eve.
+msgid "Midsommarafton"
+msgstr "Переддень літнього сонцестояння"
+
+#. Christmas Eve.
+msgid "Julafton"
+msgstr "Святий вечір"
+
 #. New Year's Eve.
 msgid "Nyårsafton"
 msgstr "Переддень Нового року"
 
-#. Sunday.
-msgid "Söndag"
-msgstr "Неділя"
+#. Twelfth Night.
+msgid "Trettondagsafton"
+msgstr "Дванадцята ніч"
+
+#. Maundy Thursday.
+msgid "Skärtorsdagen"
+msgstr "Великий четвер"
+
+#. Walpurgis Night.
+msgid "Valborgsmässoafton"
+msgstr "Вальпургієва ніч"
+
+#. All Saints' Eve.
+msgid "Allahelgonsafton"
+msgstr "Переддень Дня усіх святих"
+
+#. Day before Ascension Day.
+msgid "Dag före Kristi himmelsfärdsdag"
+msgstr "Переддень Вознесіння Господнього"
+
+#. Day before Midsummer Eve.
+msgid "Dag före Midsommarafton"
+msgstr "За два дні до літнього сонцестояння"
+
+#. Day before Pentecost Eve.
+msgid "Dag före Pingstafton"
+msgstr "За два дні до Пʼятидесятниці"
+
+#. Day before Christmas Eve.
+msgid "Dag före Julafton"
+msgstr "День перед Святим вечором"
+
+#. Day before New Year's Eve.
+msgid "Dag före Nyårsafton"
+msgstr "За два дні до Нового року"
+
+#. Holy Saturday.
+msgid "Påskafton"
+msgstr "Велика субота"
+
+#. Squeeze day.
+msgid "Klämdag"
+msgstr "Проміжний вихідний"
+
+#. Pentecost Eve.
+msgid "Pingstafton"
+msgstr "Переддень Пʼятидесятниці"

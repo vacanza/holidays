@@ -4,15 +4,15 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from unittest import TestCase
 
-from holidays.countries.morocco import Morocco, MA, MOR
+from holidays.countries.morocco import Morocco
 from tests.common import CommonCountryTests
 
 
@@ -21,11 +21,9 @@ class TestMorocco(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Morocco)
 
-    def test_country_aliases(self):
-        self.assertAliases(Morocco, MA, MOR)
-
     def test_2019(self):
-        self.assertHolidayDates(
+        self.assertHolidayDatesInYear(
+            2019,
             "2019-01-01",
             "2019-01-11",
             "2019-05-01",
@@ -45,7 +43,8 @@ class TestMorocco(CommonCountryTests, TestCase):
         )
 
     def test_1999(self):
-        self.assertHolidayDates(
+        self.assertHolidayDatesInYear(
+            1999,
             "1999-01-01",
             "1999-01-11",
             "1999-01-18",
@@ -73,7 +72,7 @@ class TestMorocco(CommonCountryTests, TestCase):
         self.assertNoHoliday("1944-01-11")
 
     def test_independence_day(self):
-        self.assertHolidayName("عيد الإستقلال", "1957-11-18")
+        self.assertHolidayName("عيد الاستقلال", "1957-11-18")
         self.assertHolidayName("عيد العرش", "1956-11-18", "1957-11-18")
 
     def test_hijri_based(self):
@@ -99,20 +98,20 @@ class TestMorocco(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             ("2023-01-01", "رأس السنة الميلادية"),
             ("2023-01-11", "ذكرى تقديم وثيقة الاستقلال"),
-            ("2023-04-21", "(تقدير) عيد الفطر"),
-            ("2023-04-22", "(تقدير) عيد الفطر"),
+            ("2023-04-21", "عيد الفطر (تقديري)"),
+            ("2023-04-22", "عيد الفطر (تقديري)"),
             ("2023-05-01", "عيد العمال"),
-            ("2023-06-28", "(تقدير) عيد الأضحى"),
-            ("2023-06-29", "(تقدير) عيد الأضحى"),
-            ("2023-07-19", "(تقدير) رأس السنة الهجرية"),
+            ("2023-06-28", "عيد الأضحى (تقديري)"),
+            ("2023-06-29", "عيد الأضحى (تقديري)"),
+            ("2023-07-19", "رأس السنة الهجرية (تقديري)"),
             ("2023-07-30", "عيد العرش"),
             ("2023-08-14", "ذكرى استرجاع إقليم وادي الذهب"),
             ("2023-08-20", "ذكرى ثورة الملك و الشعب"),
             ("2023-08-21", "عيد الشباب"),
-            ("2023-09-27", "(تقدير) عيد المولد النبوي"),
-            ("2023-09-28", "(تقدير) عيد المولد النبوي"),
+            ("2023-09-27", "عيد المولد النبوي (تقديري)"),
+            ("2023-09-28", "عيد المولد النبوي (تقديري)"),
             ("2023-11-06", "ذكرى المسيرة الخضراء"),
-            ("2023-11-18", "عيد الإستقلال"),
+            ("2023-11-18", "عيد الاستقلال"),
         )
 
     def test_l10n_en_us(self):

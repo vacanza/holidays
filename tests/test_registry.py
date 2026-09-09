@@ -4,10 +4,10 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 import importlib
@@ -48,14 +48,14 @@ class TestEntityLoader(TestCase):
 
                 loader_entities.add(loader_cls.__name__)
 
-        countries_entities = set(
+        countries_entities = {
             entity[0] for entity in inspect.getmembers(countries, inspect.isclass)
-        )
+        }
         self.assertEqual(
             countries_entities,
             loader_entities,
-            "Registry entities and countries entities don't match: %s"
-            % countries_entities.difference(loader_entities),
+            "Registry entities and countries entities don't match: "
+            f"{countries_entities.difference(loader_entities)}",
         )
 
     def test_country_str(self):
@@ -89,14 +89,14 @@ class TestEntityLoader(TestCase):
 
                 loader_entities.add(loader_cls.__name__)
 
-        financial_entities = set(
+        financial_entities = {
             entity[0] for entity in inspect.getmembers(financial, inspect.isclass)
-        )
+        }
         self.assertEqual(
             financial_entities,
             loader_entities,
-            "Registry entities and financial entities don't match: %s"
-            % financial_entities.difference(loader_entities),
+            "Registry entities and financial entities don't match: "
+            f"{financial_entities.difference(loader_entities)}",
         )
 
     def test_financial_str(self):
@@ -107,6 +107,42 @@ class TestEntityLoader(TestCase):
             "For inheritance please use the "
             "'holidays.financial.ny_stock_exchange.NYSE' class directly.",
         )
+
+    def test_get_country_codes(self):
+        country_codes = set(registry.EntityLoader.get_country_codes(include_aliases=False))
+        for entity_classes in registry.COUNTRIES.values():
+            self.assertNotIn(entity_classes[0], country_codes)
+            self.assertIn(entity_classes[1], country_codes)
+            for code in entity_classes[2:]:
+                self.assertNotIn(code, country_codes)
+
+    def test_get_country_codes_aliases(self):
+        country_codes = set(registry.EntityLoader.get_country_codes(include_aliases=True))
+        for entity_classes in registry.COUNTRIES.values():
+            self.assertNotIn(entity_classes[0], country_codes)
+            for code in entity_classes[1:]:
+                if code.isupper():
+                    self.assertIn(code, country_codes)
+                else:
+                    self.assertNotIn(code, country_codes)
+
+    def test_get_financial_codes(self):
+        financial_codes = set(registry.EntityLoader.get_financial_codes(include_aliases=False))
+        for entity_classes in registry.FINANCIAL.values():
+            self.assertNotIn(entity_classes[0], financial_codes)
+            self.assertIn(entity_classes[1], financial_codes)
+            for code in entity_classes[2:]:
+                self.assertNotIn(code, financial_codes)
+
+    def test_get_financial_codes_aliases(self):
+        financial_codes = set(registry.EntityLoader.get_financial_codes(include_aliases=True))
+        for entity_classes in registry.FINANCIAL.values():
+            self.assertNotIn(entity_classes[0], financial_codes)
+            for code in entity_classes[1:]:
+                if code.isupper():
+                    self.assertIn(code, financial_codes)
+                else:
+                    self.assertNotIn(code, financial_codes)
 
     def test_inheritance(self):
         def create_instance(parent):

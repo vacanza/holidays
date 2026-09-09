@@ -4,10 +4,10 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 
@@ -27,13 +27,13 @@ def _normalize_arguments(cls, value):
     if value is None:
         return set()
 
-    if isinstance(value, cls):
-        return {value}
+    if isinstance(value, str):
+        return {cls(value)}
 
     try:
-        return {v if isinstance(v, cls) else cls(v) for v in value}
+        return {cls(v) for v in value}
     except TypeError:  # non-iterable
-        return {value if isinstance(value, cls) else cls(value)}
+        return {cls(value)}
 
 
 def _normalize_tuple(value):
@@ -47,3 +47,8 @@ def _normalize_tuple(value):
         An object put into a tuple otherwise, e.g., ((JAN, 10),).
     """
     return value if not value or isinstance(value[0], tuple) else (value,)
+
+
+def tr(message: str) -> str:
+    """Mark a string for translation while returning it unchanged at runtime."""
+    return message

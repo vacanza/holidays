@@ -4,36 +4,40 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.groups import IslamicHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
 class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
-    """
-    Morocco holidays.
+    """Morocco holidays.
 
-    Primary sources:
-    - https://fr.wikipedia.org/wiki/F%C3%AAtes_et_jours_f%C3%A9ri%C3%A9s_au_Maroc
-    - https://www.mmsp.gov.ma/fr/pratiques.aspx?id=38
+    References:
+        * <https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_au_Maroc>
+        * <https://web.archive.org/web/20230303001626/http://www.mmsp.gov.ma/fr/pratiques.aspx?id=38>
     """
 
     country = "MA"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("(تقدير) %s")
+    estimated_label = tr("%s (تقديري)")
     supported_languages = ("ar", "en_US", "fr")
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
+        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -45,7 +49,7 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
             self._add_holiday_jan_11(tr("ذكرى تقديم وثيقة الاستقلال"))
 
         # In May 2023, Morocco recognized Berber New Year as official holiday.
-        # http://www.diplomatie.ma/en/statement-royal-office-12
+        # https://web.archive.org/web/20230515114330/https://www.diplomatie.ma/en/statement-royal-office-12
         if self._year >= 2024:
             # Amazigh New Year.
             self._add_holiday_jan_13(tr("رأس السنة الأمازيغية"))
@@ -53,7 +57,7 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Labor Day.
         self._add_labor_day(tr("عيد العمال"))
 
-        # Throne day.
+        # Throne Day.
         name = tr("عيد العرش")
         if self._year >= 2001:
             self._add_holiday_jul_30(name)
@@ -81,7 +85,7 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         if self._year >= 1957:
             # Independence Day.
-            self._add_holiday_nov_18(tr("عيد الإستقلال"))
+            self._add_holiday_nov_18(tr("عيد الاستقلال"))
 
         # Eid al-Fitr.
         name = tr("عيد الفطر")

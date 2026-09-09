@@ -4,10 +4,10 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import JUL, OCT
@@ -16,14 +16,18 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON,
 
 
 class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Vanuatu
-    https://www.timeanddate.com/holidays/vanuatu/
-    https://www.gov.vu/index.php/events/holidays
+    """Vanuatu holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Vanuatu>
+        * <https://web.archive.org/web/20250419100625/https://www.timeanddate.com/holidays/vanuatu>
+        * <https://web.archive.org/web/20250419062251/https://gov.vu/index.php/events/holidays>
     """
 
     country = "VU"
     observed_label = "%s (observed)"
+    # On 30 July 1980, Vanuatu gained independence from Britain and France.
+    start_year = 1981
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -33,10 +37,6 @@ class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # On 30 July 1980, Vanuatu gained independence from Britain and France.
-        if self._year <= 1980:
-            return None
-
         # New Years Day.
         self._add_observed(self._add_new_years_day("New Year's Day"))
 

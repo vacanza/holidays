@@ -4,28 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Costa Rica holidays.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.41\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-22 22:55+0200\n"
 "PO-Revision-Date: 2023-05-03 18:39-0700\n"
 "Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.3\n"
+"X-Source-Language: es\n"
 
 #. %s (observed).
 #, c-format
@@ -56,16 +57,8 @@ msgstr ""
 msgid "Anexión del Partido de Nicoya a Costa Rica"
 msgstr ""
 
-#. Feast of Our Lady of the Angels.
-msgid "Fiesta de Nuestra Señora de los Ángeles"
-msgstr ""
-
 #. Mother's Day.
 msgid "Día de la Madre"
-msgstr ""
-
-#. Day of the Black Person and Afro-Costa Rican Culture.
-msgid "Día de la Persona Negra y la Cultura Afrocostarricense"
 msgstr ""
 
 #. Independence Day.
@@ -76,10 +69,18 @@ msgstr ""
 msgid "Día de las Culturas"
 msgstr ""
 
-#. Army Abolition Day.
-msgid "Día de la Abolición del Ejército"
-msgstr ""
-
 #. Christmas Day.
 msgid "Navidad"
+msgstr ""
+
+#. Feast of Our Lady of the Angels.
+msgid "Fiesta de Nuestra Señora de los Ángeles"
+msgstr ""
+
+#. Day of the Black Person and Afro-Costa Rican Culture.
+msgid "Día de la Persona Negra y la Cultura Afrocostarricense"
+msgstr ""
+
+#. Army Abolition Day.
+msgid "Día de la Abolición del Ejército"
 msgstr ""

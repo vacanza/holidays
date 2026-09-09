@@ -1,0 +1,109 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Suriname holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.102\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2025-04-12 02:54+0530\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Source-Language: nl\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (geschat)"
+msgstr "%s (estimated)"
+
+#. New Year's Day.
+msgid "Nieuwjaarsdag"
+msgstr "New Year's Day"
+
+#. Day of Liberation and Renewal.
+msgid "Dag van Bevrijding en Vernieuwing"
+msgstr "Day of Liberation and Renewal"
+
+#. Good Friday.
+msgid "Goede vrijdag"
+msgstr "Good Friday"
+
+#. Easter Monday.
+msgid "Tweede paasdag"
+msgstr "Easter Monday"
+
+#. Birthday of H.M. the Queen.
+msgid "Verjaardag van H.M. de Koningin"
+msgstr "Birthday of H.M. the Queen"
+
+#. Labor Day.
+msgid "Dag van de Arbeid"
+msgstr "Labor Day"
+
+#. Day of Freedoms.
+msgid "Dag der Vrijheden"
+msgstr "Day of Freedoms"
+
+#. Day of Freedoms.
+msgid "Keti Koti Dey"
+msgstr "Day of Freedoms"
+
+#. Indigenous People Day.
+msgid "Dag der Inheemsen"
+msgstr "Indigenous People Day"
+
+#. Day of the Maroons.
+msgid "Dag der Marrons"
+msgstr "Day of the Maroons"
+
+#. Independence Day.
+msgid "Onafhankelijkheidsdag"
+msgstr "Independence Day"
+
+#. Republic Day.
+msgid "Dag van de Republiek"
+msgstr "Republic Day"
+
+#. Christmas Day.
+msgid "Eerste kerstdag"
+msgstr "Christmas Day"
+
+#. Second Day of Christmas.
+msgid "Tweede kerstdag"
+msgstr "Second Day of Christmas"
+
+#. Holi.
+msgid "Holi-Phagwa"
+msgstr "Holi"
+
+#. Diwali.
+msgid "Divali"
+msgstr "Diwali"
+
+#. Eid al-Fitr.
+msgid "Ied-Ul-Fitre"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Ied-Ul-Adha"
+msgstr "Eid al-Adha"
+
+#. Chinese New Year.
+msgid "Chinees Nieuwjaar"
+msgstr "Chinese New Year"

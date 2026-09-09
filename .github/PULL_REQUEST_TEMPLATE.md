@@ -1,5 +1,5 @@
 <!--
-  Thanks for contributing to python-holidays!
+  Thanks for contributing to holidays!
 -->
 
 ## Proposed change
@@ -21,11 +21,14 @@ Your PR description goes here.
 
 - [ ] New country/market holidays support (thank you!)
 - [ ] Supported country/market holidays update (calendar discrepancy fix, localization)
-- [ ] Existing code/documentation/test/process quality improvement (best practice, cleanup, refactoring, optimization)
-- [ ] Dependency update (version deprecation/upgrade)
+- [ ] Existing code quality improvement (best practice, cleanup, refactoring, optimization)
+- [ ] Documentation update
+- [ ] Test suite update
+- [ ] Development process update (CI, release workflows, project configuration, internal tooling)
+- [ ] Dependency update (version deprecation/pin/upgrade)
 - [ ] Bugfix (non-breaking change which fixes an issue)
 - [ ] Breaking change (a code change causing existing functionality to break)
-- [ ] New feature (new python-holidays functionality in general)
+- [ ] New feature (new `holidays` functionality in general)
 
 ## Checklist
 
@@ -33,13 +36,9 @@ Your PR description goes here.
   Put an `x` in the boxes that apply. You can change them after PR is created.
 -->
 
-- [ ] I've followed the [contributing guidelines][contributing-guidelines]
-- [ ] I've run `make pre-commit`, it didn't generate any changes
-- [ ] I've run `make test`, all tests passed locally
+- [ ] I've read and followed the [contributing guidelines](https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.md).
+- [ ] I've run `make check` locally; all checks and tests passed.
 
 <!--
   Thanks again for your contribution!
 -->
-
-[contributing-guidelines]: https://github.com/vacanza/python-holidays/blob/dev/CONTRIBUTING.rst
-[docs]: https://github.com/vacanza/python-holidays/tree/dev/docs/source

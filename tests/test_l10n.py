@@ -4,15 +4,16 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 import os
 import re
 import unittest
+from collections import Counter
 from pathlib import Path
 from unittest import mock
 
@@ -35,23 +36,43 @@ class TestLocalization(unittest.TestCase):
         self.assertEqual(pl_xx["2022-01-01"], "Nowy Rok")
 
     def test_localization(self):
-        tests_dir = Path(__file__).parent
-        locale_dir = tests_dir.parent / "holidays" / "locale"
+        locale_dir = Path(__file__).parents[1] / "holidays" / "locale"
+        placeholder_re = re.compile(r"%[a-zA-Z]")
+        mandatory_fields = {
+            "Project-Id-Version",
+            "Report-Msgid-Bugs-To",
+            "POT-Creation-Date",
+            "PO-Revision-Date",
+            "Last-Translator",
+            "Language-Team",
+            "Language",
+            "MIME-Version",
+            "Content-Type",
+            "Content-Transfer-Encoding",
+            "X-Source-Language",
+        }
 
-        for po_path in sorted(Path(locale_dir).rglob("*.po")):
+        for po_path in sorted(locale_dir.rglob("*.po")):
             try:
                 po_file = create_po_file(po_path, check_for_duplicates=True)
-            except ValueError as e:
+            except Exception as e:
                 # Make sure no duplicated entries added.
-                match = re.match(r"Entry (.*) already exists", str(e))
-                self.assertEqual(
-                    0,
-                    len(match.groups()),
-                    f"Entry `{match.group(1)}` already exists in {po_path}. "
-                    "Please remove the duplicate.",
-                )
+                if match := re.match(r"Entry (.*) already exists", str(e.__context__)):
+                    self.assertEqual(
+                        0,
+                        len(match.groups()),
+                        f"Entry `{match.group(1)}` already exists in {po_path}. "
+                        "Please remove the duplicate.",
+                    )
+                else:
+                    raise e
 
-                raise e
+            missing_fields = mandatory_fields - set(po_file.metadata)
+            self.assertFalse(
+                missing_fields,
+                f"{po_path} metadata does not contain mandatory fields: "
+                f"{', '.join(sorted(missing_fields))}",
+            )
 
             # Collect `<country_code>` part from
             # holidays/locale/<locale>/LC_MESSAGES/<country_code>.po.
@@ -59,6 +80,22 @@ class TestLocalization(unittest.TestCase):
             # Collect `<locale>` part from
             # holidays/locale/<locale>/LC_MESSAGES/<country_code>.po.
             language = po_path.parts[-3]
+
+            # Make sure no obsolete entries left.
+            obsolete_entries = po_file.obsolete_entries()
+            self.assertFalse(
+                obsolete_entries,
+                f"The {entity_code} {language} localization contains obsolete entries: "
+                f"{', '.join(oe.msgid for oe in obsolete_entries)}",
+            )
+
+            # Make sure no entries without l10n comment.
+            for entry in po_file:
+                self.assertTrue(
+                    entry.comment,
+                    f"The {entity_code} {language} localization contains missing comment "
+                    f"in line {entry.linenum}: msgid `{entry.msgid}`",
+                )
 
             entity = getattr(holidays, entity_code)
 
@@ -74,10 +111,11 @@ class TestLocalization(unittest.TestCase):
                 f"The {entity_code} {language} localization is incomplete ({coverage}% < 100%)",
             )
 
-            # Make sure no obsolete entries left.
-            obsolete_entries = po_file.obsolete_entries()
-            self.assertFalse(
-                obsolete_entries,
-                f"The {entity_code} {language} localization contains obsolete entries: "
-                f"{', '.join((oe.msgid for oe in obsolete_entries))}",
-            )
+            for entry in po_file:
+                self.assertEqual(
+                    Counter(placeholder_re.findall(entry.msgid)),
+                    Counter(placeholder_re.findall(entry.msgstr)),
+                    f"The {entity_code} {language} localization contains placeholders "
+                    f"mismatch in line {entry.linenum}: msgid `{entry.msgid}`, "
+                    f"msgstr `{entry.msgstr}`.",
+                )

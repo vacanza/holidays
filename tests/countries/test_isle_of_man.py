@@ -4,29 +4,26 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from unittest import TestCase
 
-from holidays.countries.isle_of_man import IsleOfMan, IM, IMN
+from holidays.countries.isle_of_man import IsleOfMan
 from tests.common import CommonCountryTests
 
 
-class TestIM(CommonCountryTests, TestCase):
+class TestIsleOfMan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(IsleOfMan, years=range(1970, 2070))
-
-    def test_country_aliases(self):
-        self.assertAliases(IsleOfMan, IM, IMN)
+        super().setUpClass(IsleOfMan)
 
     def test_1970(self):
-        self.assertHolidays(
-            IsleOfMan(years=1970),
+        self.assertHolidaysInYear(
+            1970,
             ("1970-03-27", "Good Friday"),
             ("1970-03-30", "Easter Monday"),
             ("1970-05-18", "Whit Monday"),
@@ -38,8 +35,8 @@ class TestIM(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            IsleOfMan(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (observed)"),
             ("2022-04-15", "Good Friday"),
@@ -55,24 +52,93 @@ class TestIM(CommonCountryTests, TestCase):
             ("2022-12-27", "Christmas Day (observed)"),
         )
 
-    def test_tynwald_day(self):
-        name = "Tynwald Day"
-        self.assertHoliday(f"{year}-07-05" for year in range(1970, 1992))
+    def test_tt_bank_holiday(self):
+        name = "TT Bank Holiday"
         self.assertHolidayName(
             name,
-            "1992-07-06",
-            "2019-07-05",
-            "2020-07-06",
-            "2021-07-05",
-            "2022-07-05",
-            "2023-07-05",
-            "2024-07-05",
-            "2025-07-07",
-            "2026-07-06",
+            "2020-06-05",
+            "2021-06-04",
+            "2022-06-03",
+            "2023-06-02",
+            "2024-06-07",
+            "2025-06-06",
         )
-        self.assertNoHoliday(
-            "1992-07-05",
-            "2020-07-05",
-            "2025-07-05",
-            "2026-07-05",
+        self.assertHolidayName(name, self.full_range)
+
+    def test_tynwald_day(self):
+        name = "Tynwald Day"
+        self.assertNonObservedHolidayName(name, (f"{year}-07-05" for year in self.full_range))
+        obs_dts = (
+            "1992-07-06",
+            "1997-07-07",
+            "1998-07-06",
+            "2003-07-07",
+            "2008-07-07",
+            "2009-07-06",
+            "2014-07-07",
+            "2015-07-06",
+            "2020-07-06",
+            "2025-07-07",
+        )
+        self.assertHolidayName(name, obs_dts)
+        self.assertNoNonObservedHolidayName(name, obs_dts)
+
+    def test_l10n_default(self):
+        # https://www.gov.im/categories/home-and-neighbourhood/bank-holidays/
+        self.assertLocalizedHolidays(
+            ("2024-01-01", "New Year's Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-05-06", "May Day"),
+            ("2024-05-27", "Spring Bank Holiday"),
+            ("2024-06-07", "TT Bank Holiday"),
+            ("2024-07-05", "Tynwald Day"),
+            ("2024-08-26", "Late Summer Bank Holiday"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2024-01-01", "New Year's Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-05-06", "May Day"),
+            ("2024-05-27", "Spring Bank Holiday"),
+            ("2024-06-07", "TT Bank Holiday"),
+            ("2024-07-05", "Tynwald Day"),
+            ("2024-08-26", "Late Summer Bank Holiday"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2024-01-01", "วันขึ้นปีใหม่"),
+            ("2024-03-29", "วันศุกร์ประเสริฐ"),
+            ("2024-04-01", "วันจันทร์อีสเตอร์"),
+            ("2024-05-06", "วันเมย์เดย์"),
+            ("2024-05-27", "วันหยุดฤดูใบไม้ผลิของธนาคาร"),
+            ("2024-06-07", "วันแข่งไอร์ออฟแมน ทีที"),
+            ("2024-07-05", "วันไทน์วอลด์"),
+            ("2024-08-26", "วันหยุดช่วงปลายฤดูร้อนของธนาคาร"),
+            ("2024-12-25", "วันคริสต์มาส"),
+            ("2024-12-26", "วันเปิดกล่องของขวัญ"),
+        )
+
+    def test_l10n_ur_pk(self):
+        self.assertLocalizedHolidays(
+            "ur_PK",
+            ("2024-01-01", "نئے سال کا دن"),
+            ("2024-03-29", "گڈ فرائیڈے"),
+            ("2024-04-01", "ایسٹر پیر"),
+            ("2024-05-06", "یوم مئی"),
+            ("2024-05-27", "موسم بہار کی بینک تعطیل"),
+            ("2024-06-07", "ٹی ٹی بینک کی تعطیل"),
+            ("2024-07-05", "ٹائن والڈ ڈے"),
+            ("2024-08-26", "موسم گرما کے آخر کی بینک تعطیل"),
+            ("2024-12-25", "کرسمس کا دن"),
+            ("2024-12-26", "باکسنگ ڈے"),
         )

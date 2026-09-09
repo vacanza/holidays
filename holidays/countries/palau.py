@@ -4,10 +4,10 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import SEP, NOV
@@ -16,13 +16,14 @@ from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHoli
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
 
 
-class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
+class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+    """Palau holidays.
+
     References:
-    - http://www.paclii.org/pw/legis/consol_act/gpt1262/  # Chapter 7, Holidays.
-    - https://www.palaugov.pw/wp-content/uploads/2017/11/RPPL-No.-10-15-re.-Family-Day-Holiday.pdf
-    - https://www.facebook.com/PalauPresident/posts/195883107230463 # EO336 Memorial Day repealed
-    - https://www.taiwanembassy.org/pal_en/post/792.html # Earliest source for President's Day
+        * [Chapter 7, Holidays](https://web.archive.org/web/20250130144425/http://www.paclii.org/pw/legis/consol_act/gpt1262/)
+        * <https://web.archive.org/web/20240627055859/https://www.palaugov.pw/wp-content/uploads/2017/11/RPPL-No.-10-15-re.-Family-Day-Holiday.pdf>
+        * [EO336 Memorial Day repealed](https://web.archive.org/web/20250429131246/https://www.facebook.com/plugins/post.php?href=https://www.facebook.com/PalauPresident/posts/195883107230463)
+        * [Earliest source for President's Day](https://web.archive.org/web/20250429075658/https://www.taiwanembassy.org/pal_en/post/792.html)
 
     If any of the holidays enumerated in section 701 of this chapter falls on Sunday, the
     following Monday shall be observed as a holiday. If any of the holidays enumerated in
@@ -37,6 +38,11 @@ class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     country = "PW"
     supported_categories = (ARMED_FORCES, HALF_DAY, PUBLIC)
     observed_label = "%s (observed)"
+    # Republic of Palau Public Law No. 2-15.
+    # The legislation was first adopted by the 2nd Olbiil Era Kelulau (1984-1988),
+    # but since we cannot find any info on its actual adoption date, we may as
+    # well use the formation date of the country as the placeholder cut-off date.
+    start_year = 1981
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -46,13 +52,6 @@ class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Republic of Palau Public Law No. 2-15.
-        # The legislation was first adopted by the 2nd Olbiil Era Kelulau (1984-1988),
-        # but since we cannot find any info on its actual adoption date, we may as
-        # well use the formation date of the country as the placeholder cut-off date.
-        if self._year <= 1980:
-            return None
-
         # Fixed Date Public Holidays.
 
         # New Year's Day.
@@ -107,11 +106,12 @@ class PLW(Palau):
 
 
 class PalauStaticHolidays:
-    """
-    Sources:
-     - https://www.facebook.com/photo?fbid=1774513196034105&set=a.175933635892077
-     - https://www.facebook.com/photo/?fbid=1794692910682800&set=a.175933635892077
-     - https://www.facebook.com/photo/?fbid=1408133829338712&set=a.175933635892077
+    """Palau special holidays.
+
+    References:
+        * <https://web.archive.org/web/20250608202645/https://www.facebook.com/photo?fbid=1774513196034105&set=a.175933635892077>
+        * <https://web.archive.org/web/20250608202650/https://www.facebook.com/photo/?fbid=1794692910682800&set=a.175933635892077>
+        * <https://web.archive.org/web/20250608202639/https://www.facebook.com/photo/?fbid=1408133829338712&set=a.175933635892077>
     """
 
     special_armed_forces_holidays = {

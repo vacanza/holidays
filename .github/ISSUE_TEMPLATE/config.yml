@@ -1,0 +1,6 @@
+blank_issues_enabled: true
+
+contact_links:
+  - name: General question
+    url: https://github.com/vacanza/holidays/discussions/new?category=q-a
+    about: Ask a question

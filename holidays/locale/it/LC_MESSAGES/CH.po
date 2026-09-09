@@ -4,30 +4,32 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Switzerland holidays it localization.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.42\n"
+"Project-Id-Version: Holidays 0.96\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-10 15:41+0300\n"
-"PO-Revision-Date: 2024-01-21 14:48+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"PO-Revision-Date: 2026-04-21 16:52+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.9\n"
+"X-Source-Language: de\n"
 
 #. New Year's Day.
-msgid "Neujahrestag"
+msgid "Neujahrstag"
 msgstr "Capodanno"
 
 #. Ascension Day.
@@ -42,6 +44,10 @@ msgstr "Festa nazionale"
 msgid "Weihnachten"
 msgstr "Natale"
 
+#. Saint Berchtold's Day.
+msgid "Berchtoldstag"
+msgstr "Giorno di Bertoldo"
+
 #. Good Friday.
 msgid "Karfreitag"
 msgstr "Venerdì Santo"
@@ -50,17 +56,13 @@ msgstr "Venerdì Santo"
 msgid "Ostermontag"
 msgstr "Lunedì dell'Angelo"
 
-#. Whit Monday.
+#. Labor Day.
+msgid "Tag der Arbeit"
+msgstr "Festa del lavoro"
+
+#. Pentecost Monday.
 msgid "Pfingstmontag"
 msgstr "Lunedì di Pentecoste"
-
-#. St. Stephen's Day.
-msgid "Stephanstag"
-msgstr "Giorno di Santo Stefano"
-
-#. Berchtold's Day.
-msgid "Berchtoldstag"
-msgstr "Giorno di Bertoldo"
 
 #. Corpus Christi.
 msgid "Fronleichnam"
@@ -78,17 +80,17 @@ msgstr "Ognissanti"
 msgid "Mariä Empfängnis"
 msgstr "Immacolata Concezione"
 
-#. Labor Day.
-msgid "Tag der Arbeit"
-msgstr "Festa del lavoro"
+#. Saint Stephen's Day.
+msgid "Stephanstag"
+msgstr "Giorno di Santo Stefano"
 
 #. Genevan Fast.
 msgid "Genfer Bettag"
-msgstr "Jeûne genevois"
+msgstr "Digiuno ginevrino"
 
 #. Restoration Day.
 msgid "Wiederherstellung der Republik"
-msgstr "Restauration genevoise"
+msgstr "Restaurazione della Repubblica"
 
 #. Battle of Naefels Victory Day.
 msgid "Näfelser Fahrt"
@@ -102,13 +104,13 @@ msgstr "Festa dell'Indipendenza"
 msgid "Jahrestag der Ausrufung der Republik"
 msgstr "Giorno della Repubblica"
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "Josefstag"
 msgstr "San Giuseppe"
 
-#. St. Nicholas of Flüe.
+#. Saint Nicholas of Flüe.
 msgid "Bruder Klaus"
-msgstr "Nicolao della Flüe"
+msgstr "San Nicolao della Flue"
 
 #. Epiphany.
 msgid "Heilige Drei Könige"
@@ -120,4 +122,48 @@ msgstr "Santi Pietro e Paolo"
 
 #. Prayer Monday.
 msgid "Bettagsmontag"
-msgstr "Digiuno Ginevrino"
+msgstr "Lunedì del digiuno federale"
+
+#. Easter Sunday.
+msgid "Ostersonntag"
+msgstr "Pasqua"
+
+#. Pentecost.
+msgid "Pfingstsonntag"
+msgstr "Domenica di Pentecoste"
+
+#. Federal Day of Thanksgiving, Repentance, and Prayer.
+msgid "Eidgenössischer Bettag"
+msgstr "Digiuno federale"
+
+#. Knabenschiessen.
+msgid "Knabenschiessen"
+msgstr "Knabenschiessen"
+
+#. Day before Good Friday.
+msgid "Vortag vor Karfreitag"
+msgstr "Vigilia del Venerdì Santo"
+
+#. Sechseläuten.
+msgid "Sechseläuten"
+msgstr "Sechseläuten"
+
+#. Christmas Eve.
+msgid "Heiligabend"
+msgstr "Vigilia di Natale"
+
+#. New Year's Eve.
+msgid "Vortag vor Neujahr"
+msgstr "Vigilia di Capodanno"
+
+#. Day before Ascension Day.
+msgid "Vortag vor Auffahrt"
+msgstr "Vigilia dell'Ascensione di Gesù"
+
+#. Bridge Holiday for Ascension Day.
+msgid "Brückentag nach Auffahrt"
+msgstr "Giorno ponte dopo l'Ascensione di Gesù"
+
+#. Bridge Holiday.
+msgid "Brückentag"
+msgstr "Giorno ponte"

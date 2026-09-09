@@ -1,8 +1,0 @@
-# Test requirements.
-coverage
-importlib-metadata
-numpy
-polib
-pytest
-pytest-cov
-pytest-xdist

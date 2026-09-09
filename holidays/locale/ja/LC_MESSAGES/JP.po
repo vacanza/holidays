@@ -4,47 +4,36 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Japan holidays.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.30\n"
+"Project-Id-Version: Holidays 0.82\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-23 15:45+0300\n"
-"PO-Revision-Date: 2023-07-23 15:47+0300\n"
+"PO-Revision-Date: 2025-09-17 10:42+0700\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.7\n"
+"X-Source-Language: ja\n"
 
-#. The Crown Prince marriage ceremony.
-msgid "結婚の儀"
+#. Substitute Holiday.
+msgid "振替休日"
 msgstr ""
 
-#. State Funeral of Emperor Shōwa.
-msgid "大喪の礼"
-msgstr ""
-
-#. Enthronement ceremony.
-msgid "即位礼正殿の儀"
-msgstr ""
-
-#. Enthronement day.
-msgid "天皇の即位の日"
-msgstr ""
-
-#. Enthronement ceremony.
-msgid "即位礼正殿の儀が行われる日"
+#. National Holiday.
+msgid "国民の休日"
 msgstr ""
 
 #. New Year's Day.
@@ -67,16 +56,16 @@ msgstr ""
 msgid "春分の日"
 msgstr ""
 
-#. Greenery Day.
-msgid "みどりの日"
-msgstr ""
-
 #. Showa Day.
 msgid "昭和の日"
 msgstr ""
 
 #. Constitution Day.
 msgid "憲法記念日"
+msgstr ""
+
+#. Greenery Day.
+msgid "みどりの日"
 msgstr ""
 
 #. Children's Day.
@@ -99,12 +88,12 @@ msgstr ""
 msgid "秋分の日"
 msgstr ""
 
-#. Physical Education Day.
-msgid "体育の日"
-msgstr ""
-
 #. Sports Day.
 msgid "スポーツの日"
+msgstr ""
+
+#. Physical Education Day.
+msgid "体育の日"
 msgstr ""
 
 #. Culture Day.
@@ -115,14 +104,26 @@ msgstr ""
 msgid "勤労感謝の日"
 msgstr ""
 
-#. Substitute Holiday.
-msgid "振替休日"
-msgstr ""
-
-#. National Holiday.
-msgid "国民の休日"
-msgstr ""
-
 #. Bank Holiday.
 msgid "銀行休業日"
+msgstr ""
+
+#. The Crown Prince marriage ceremony.
+msgid "結婚の儀"
+msgstr ""
+
+#. State Funeral of Emperor Shōwa.
+msgid "大喪の礼"
+msgstr ""
+
+#. Enthronement ceremony.
+msgid "即位礼正殿の儀"
+msgstr ""
+
+#. Enthronement day.
+msgid "天皇の即位の日"
+msgstr ""
+
+#. Enthronement ceremony.
+msgid "即位礼正殿の儀が行われる日"
 msgstr ""

@@ -4,41 +4,49 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from gettext import gettext as tr
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 from holidays.calendars.gregorian import MAR
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     TUE_WED_TO_PREV_MON,
     THU_FRI_TO_NEXT_MON,
 )
 
+if TYPE_CHECKING:
+    from datetime import date
+
 
 class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
+    """Uruguay holidays.
+
     References:
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay
-    - [Law #6997] https://www.impo.com.uy/diariooficial/1919/10/25/2
-    - [Decree Law #9000] https://www.impo.com.uy/bases/decretos-ley/9000-1933
-    - [Decree Law #14977] https://www.impo.com.uy/bases/decretos-ley/14977-1979
-    - [Decree Law #15535] https://www.impo.com.uy/bases/decretos-ley/15535-1984
-    - [Law #16805] http://www.parlamento.gub.uy/leyes/AccesoTextoLey.asp?Ley=16805
-    - [Law #17414] http://www.parlamento.gub.uy/leyes/AccesoTextoLey.asp?Ley=17414
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay>
+        * [Law #6997](https://web.archive.org/web/20250419214344/http://www.impo.com.uy/diariooficial/1919/10/25/2)
+        * [Decree Law #9000](https://web.archive.org/web/20231029150729/https://www.impo.com.uy/bases/decretos-ley/9000-1933)
+        * [Decree Law #14977](https://web.archive.org/web/20231013033006/https://www.impo.com.uy/bases/decretos-ley/14977-1979)
+        * [Decree Law #15535](https://web.archive.org/web/20210519002815/https://www.impo.com.uy/bases/decretos-ley/15535-1984/)
+        * [Law #16805](https://web.archive.org/web/20241121064154/https://parlamento.gub.uy/documentosyleyes/leyes/ley/16805)
+        * [Law #17414](https://web.archive.org/web/20241121064131/https://parlamento.gub.uy/documentosyleyes/leyes/ley/17414)
     """
 
     country = "UY"
     default_language = "es"
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("en_US", "es", "uk")
+    # Law # 6997.
+    start_year = 1920
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -52,10 +60,6 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         return 1980 <= self._year <= 1983 or self._year >= 1997
 
     def _populate_public_holidays(self):
-        # Law # 6997.
-        if self._year <= 1919:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 
@@ -63,7 +67,7 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             # Cry of Asencio.
             self._add_holiday_feb_28(tr("Grito de Asencio"))
 
-        # International Workers' Day.
+        # Workers' Day.
         dt = self._add_labor_day(tr("Día de los Trabajadores"))
         if self._year <= 1983:
             self._move_holiday(dt)
@@ -84,7 +88,7 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # Constitution Day.
         self._add_holiday_jul_18(tr("Jura de la Constitución"))
 
-        # Independence Day.
+        # Independence Declaration Day.
         self._add_holiday_aug_25(tr("Declaratoria de la Independencia"))
 
         if self._year <= 1932:
@@ -98,15 +102,12 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             # Beaches Day.
             self._add_holiday_dec_8(tr("Día de las Playas"))
 
-        # Day of the Family.
+        # Family Day.
         self._add_christmas_day(tr("Día de la Familia"))
 
     def _populate_bank_holidays(self):
         # These holidays are generally observed by schools, public sector offices, banks,
         # and a few private companies.
-
-        if self._year <= 1919:
-            return None
 
         # Children's Day.
         self._add_holiday_jan_6(tr("Día de los Niños"))
@@ -139,14 +140,15 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
                 self._move_holiday(dt)
 
         if self._year <= 1932 or self._year >= 1937:
-            name = (
-                # Cultural Diversity Day.
-                tr("Día de la Diversidad Cultural")
-                if self._year >= 2014
-                # Columbus Day.
-                else tr("Día de la Raza")
+            self._move_holiday(
+                self._add_columbus_day(
+                    # Cultural Diversity Day.
+                    tr("Día de la Diversidad Cultural")
+                    if self._year >= 2014
+                    # Columbus Day.
+                    else tr("Día de la Raza")
+                )
             )
-            self._move_holiday(self._add_columbus_day(name))
 
         if self._year <= 1932 or self._year >= 1938:
             # All Souls' Day.

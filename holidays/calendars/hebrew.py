@@ -4,14 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional
 
 from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 
@@ -1598,7 +1597,36 @@ class _HebrewLunisolar:
         2100: (OCT, 13),
     }
 
-    @staticmethod
-    def _get_holiday(holiday: str, year: int) -> Optional[date]:
-        dt = getattr(_HebrewLunisolar, f"{holiday}_DATES", {}).get(year, ())
+    def _get_holiday(self, holiday: str, year: int) -> date | None:
+        dt = getattr(self, f"{holiday}_DATES", {}).get(year, ())
         return date(year, *dt) if dt else None
+
+    def hanukkah_date(self, year: int) -> set[date]:
+        return {dt for y in (year - 1, year) if (dt := self._get_holiday(HANUKKAH, y)) is not None}
+
+    def israel_independence_date(self, year: int) -> date | None:
+        return self._get_holiday(INDEPENDENCE_DAY, year)
+
+    def lag_baomer_date(self, year: int) -> date | None:
+        return self._get_holiday(LAG_BAOMER, year)
+
+    def passover_date(self, year: int) -> date | None:
+        return self._get_holiday(PASSOVER, year)
+
+    def purim_date(self, year: int) -> date | None:
+        return self._get_holiday(PURIM, year)
+
+    def rosh_hashanah_date(self, year: int) -> date | None:
+        return self._get_holiday(ROSH_HASHANAH, year)
+
+    def shavuot_date(self, year: int) -> date | None:
+        return self._get_holiday(SHAVUOT, year)
+
+    def sukkot_date(self, year: int) -> date | None:
+        return self._get_holiday(SUKKOT, year)
+
+    def tisha_bav_date(self, year: int) -> date | None:
+        return self._get_holiday(TISHA_BAV, year)
+
+    def yom_kippur_date(self, year: int) -> date | None:
+        return self._get_holiday(YOM_KIPPUR, year)

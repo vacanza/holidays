@@ -4,36 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Paraguay holidays en_US localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.102\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-05 12:33+0200\n"
-"PO-Revision-Date: 2024-01-05 12:44+0200\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.4\n"
-
-#. Public holiday.
-msgid "Asueto adicionale"
-msgstr "Public holiday"
-
-#. Public sector holiday.
-msgid "Asueto de la Administración Pública"
-msgstr "Public sector holiday"
+"X-Generator: Poedit 3.7\n"
+"X-Source-Language: es\n"
 
 #. New Year's Day.
 msgid "Año Nuevo"
@@ -55,17 +48,25 @@ msgstr "Good Friday"
 msgid "Domingo de Resurrección"
 msgstr "Easter Sunday"
 
-#. Labor Day.
-msgid "Día del Trabajador"
-msgstr "Labor Day"
+#. Workers' Day.
+msgid "Día de los Trabajadores"
+msgstr "Workers' Day"
 
-#. Independence Day.
+#. National Holiday.
+msgid "Feriado Nacional"
+msgstr "National Holiday"
+
+#. National Independence Day.
 msgid "Día de la Independencia Nacional"
-msgstr "Independence Day"
+msgstr "National Independence Day"
 
 #. Chaco Armistice Day.
 msgid "Día de la Paz del Chaco"
 msgstr "Chaco Armistice Day"
+
+#. Constitution Oath Day.
+msgid "Día de la Jura de la Constitución Nacional"
+msgstr "Constitution Oath Day"
 
 #. Asuncion Foundation's Day.
 msgid "Día de la Fundación de Asunción"
@@ -80,5 +81,13 @@ msgid "Día de la Virgen de Caacupé"
 msgstr "Caacupe Virgin Day"
 
 #. Christmas Day.
-msgid "Navidad"
+msgid "Día de la Navidad"
 msgstr "Christmas Day"
+
+#. Public Holiday.
+msgid "Asueto adicional"
+msgstr "Public Holiday"
+
+#. Public sector holiday.
+msgid "Asueto de la Administración Pública"
+msgstr "Public sector holiday"

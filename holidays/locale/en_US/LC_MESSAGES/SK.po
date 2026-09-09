@@ -4,33 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Slovakia holidays en_US localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.25\n"
+"Project-Id-Version: Holidays 0.56\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-05-10 17:13+0300\n"
-"PO-Revision-Date: 2023-11-10 15:17+0100\n"
+"PO-Revision-Date: 2024-08-31 18:20+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
-
-#. 100th anniversary of the adoption of the Declaration of the Slovak Nation.
-msgid "100. výročie prijatia Deklarácie slovenského národa"
-msgstr ""
-"100th anniversary of the adoption of the Declaration of the Slovak Nation"
+"X-Source-Language: sk\n"
 
 #. Day of the Establishment of the Slovak Republic.
 msgid "Deň vzniku Slovenskej republiky"
@@ -56,9 +52,9 @@ msgstr "Labor Day"
 msgid "Deň víťazstva nad fašizmom"
 msgstr "Day of Victory over Fascism"
 
-#. St. Cyril and Methodius Day.
+#. Saints Cyril and Methodius Day.
 msgid "Sviatok svätého Cyrila a svätého Metoda"
-msgstr "St. Cyril and Methodius Day"
+msgstr "Saints Cyril and Methodius Day"
 
 #. Slovak National Uprising Anniversary.
 msgid "Výročie Slovenského národného povstania"
@@ -71,10 +67,6 @@ msgstr "Constitution Day"
 #. Day of Our Lady of the Seven Sorrows.
 msgid "Sedembolestná Panna Mária"
 msgstr "Day of Our Lady of the Seven Sorrows"
-
-#. Day of the Establishment of the Independent Czech-Slovak State.
-msgid "Deň vzniku samostatného česko-slovenského štátu"
-msgstr "Day of the Establishment of the Independent Czech-Slovak State"
 
 #. All Saints' Day.
 msgid "Sviatok Všetkých svätých"
@@ -95,3 +87,11 @@ msgstr "Christmas Day"
 #. Second Day of Christmas.
 msgid "Druhý sviatok vianočný"
 msgstr "Second Day of Christmas"
+
+#. Day of the Establishment of the Independent Czech-Slovak State.
+msgid "Deň vzniku samostatného česko-slovenského štátu"
+msgstr "Day of the Establishment of the Independent Czech-Slovak State"
+
+#. 100th anniversary of the adoption of the Declaration of the Slovak Nation.
+msgid "100. výročie prijatia Deklarácie slovenského národa"
+msgstr "100th anniversary of the adoption of the Declaration of the Slovak Nation"

@@ -4,28 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Seychelles holidays.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.45\n"
+"Project-Id-Version: Holidays 0.45\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-03-01 11:00+0700\n"
 "PO-Revision-Date: 2024-03-05 16:34+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: en_SC\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4.2\n"
+"X-Source-Language: en_SC\n"
 
 #. %s (observed).
 #, c-format
@@ -52,11 +53,11 @@ msgstr ""
 msgid "Easter Monday"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr ""
 
-#. The Fete Dieu.
+#. Corpus Christi.
 msgid "The Fete Dieu"
 msgstr ""
 
@@ -84,11 +85,11 @@ msgstr ""
 msgid "Assumption Day"
 msgstr ""
 
-#. All Saints Day.
+#. All Saints' Day.
 msgid "All Saints Day"
 msgstr ""
 
-#. The Feast of the Immaculate Conception.
+#. Immaculate Conception.
 msgid "The Feast of the Immaculate Conception"
 msgstr ""
 

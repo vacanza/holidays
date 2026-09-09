@@ -4,15 +4,15 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from unittest import TestCase
 
-from holidays.countries.malta import Malta, MT, MLT
+from holidays.countries.malta import Malta
 from tests.common import CommonCountryTests
 
 
@@ -21,15 +21,9 @@ class TestMalta(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Malta)
 
-    def test_country_aliases(self):
-        self.assertAliases(Malta, MT, MLT)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Malta(years=1979))
-
     def test_1980(self):
-        self.assertHolidays(
-            Malta(years=1980),
+        self.assertHolidaysInYear(
+            1980,
             ("1980-01-01", "L-Ewwel tas-Sena"),
             ("1980-03-31", "Jum il-Ħelsien"),
             ("1980-04-04", "Il-Ġimgħa l-Kbira"),
@@ -40,8 +34,8 @@ class TestMalta(CommonCountryTests, TestCase):
         )
 
     def test_1987(self):
-        self.assertHolidays(
-            Malta(years=1987),
+        self.assertHolidaysInYear(
+            1987,
             ("1987-01-01", "L-Ewwel tas-Sena"),
             ("1987-02-10", "Il-Festa tan-Nawfraġju ta' San Pawl"),
             ("1987-03-19", "Il-Festa ta' San Ġużepp"),
@@ -57,8 +51,8 @@ class TestMalta(CommonCountryTests, TestCase):
         )
 
     def test_1989(self):
-        self.assertHolidays(
-            Malta(years=1989),
+        self.assertHolidaysInYear(
+            1989,
             ("1989-01-01", "L-Ewwel tas-Sena"),
             ("1989-02-10", "Il-Festa tan-Nawfraġju ta' San Pawl"),
             ("1989-03-19", "Il-Festa ta' San Ġużepp"),
@@ -76,8 +70,8 @@ class TestMalta(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Malta(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "L-Ewwel tas-Sena"),
             ("2022-02-10", "Il-Festa tan-Nawfraġju ta' San Pawl"),
             ("2022-03-19", "Il-Festa ta' San Ġużepp"),
@@ -116,13 +110,13 @@ class TestMalta(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2023-01-01", "New Year's Day"),
-            ("2023-02-10", "Feast of St. Paul's Shipwreck"),
-            ("2023-03-19", "Feast of St. Joseph"),
+            ("2023-02-10", "Feast of Saint Paul's Shipwreck"),
+            ("2023-03-19", "Feast of Saint Joseph"),
             ("2023-03-31", "Freedom Day"),
             ("2023-04-07", "Good Friday"),
             ("2023-05-01", "Worker's Day"),
             ("2023-06-07", "Sette Giugno"),
-            ("2023-06-29", "Feast of St. Peter and St. Paul"),
+            ("2023-06-29", "Feast of Saint Peter and Saint Paul"),
             ("2023-08-15", "Feast of the Assumption"),
             ("2023-09-08", "Feast of Our Lady of Victories"),
             ("2023-09-21", "Independence Day"),

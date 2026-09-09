@@ -4,15 +4,14 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.groups import InternationalHolidays, IslamicHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -22,12 +21,18 @@ class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):
     country = "TN"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("(تقدير) %s")
+    estimated_label = tr("%s (تقديري)")
     supported_languages = ("ar", "en_US")
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
+        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -38,7 +43,7 @@ class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_holiday_jan_14(tr("عيد الثورة والشباب"))
 
         # Independence Day.
-        self._add_holiday_mar_20(tr("عيد الإستقلال"))
+        self._add_holiday_mar_20(tr("عيد الاستقلال"))
 
         # Martyrs' Day.
         self._add_holiday_apr_9(tr("عيد الشهداء"))
@@ -62,7 +67,7 @@ class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
         self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
 
-        # Arafat Day.
+        # Day of Arafah.
         self._add_arafah_day(tr("يوم عرفة"))
 
         # Eid al-Adha.

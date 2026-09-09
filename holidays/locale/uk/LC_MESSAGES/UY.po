@@ -4,32 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Uruguay holidays uk localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.30\n"
+"Project-Id-Version: Holidays 0.30\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-17 14:06+0300\n"
 "PO-Revision-Date: 2023-07-17 14:20+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
-
-#. Presidential Inauguration Day.
-msgid "Inauguración del Presidente de la República"
-msgstr "Інавгурація Президента Республіки"
+"X-Source-Language: es\n"
 
 #. New Year's Day.
 msgid "Año Nuevo"
@@ -39,7 +36,7 @@ msgstr "Новий рік"
 msgid "Grito de Asencio"
 msgstr "День заклику Асенціо"
 
-#. International Workers' Day.
+#. Workers' Day.
 msgid "Día de los Trabajadores"
 msgstr "День трудящих"
 
@@ -63,7 +60,7 @@ msgstr "День людяності"
 msgid "Jura de la Constitución"
 msgstr "День присяги Конституції"
 
-#. Independence Day.
+#. Independence Declaration Day.
 msgid "Declaratoria de la Independencia"
 msgstr "День проголошення незалежності"
 
@@ -79,7 +76,7 @@ msgstr "День відкритих зборів"
 msgid "Día de las Playas"
 msgstr "День пляжів"
 
-#. Day of the Family.
+#. Family Day.
 msgid "Día de la Familia"
 msgstr "День родини"
 
@@ -91,13 +88,13 @@ msgstr "День дітей"
 msgid "Carnaval"
 msgstr "Карнавал"
 
-#. Tourism Week.
-msgid "Semana de Turismo"
-msgstr "Тиждень туризму"
-
 #. Landing of the 33 Patriots.
 msgid "Desembarco de los 33 Orientales"
 msgstr "День висадки 33 патріотів"
+
+#. Tourism Week.
+msgid "Semana de Turismo"
+msgstr "Тиждень туризму"
 
 #. Battle of Las Piedras.
 msgid "Batalla de Las Piedras"
@@ -118,3 +115,7 @@ msgstr "День Колумба"
 #. All Souls' Day.
 msgid "Día de los Difuntos"
 msgstr "День усіх померлих"
+
+#. Presidential Inauguration Day.
+msgid "Inauguración del Presidente de la República"
+msgstr "Інавгурація Президента Республіки"

@@ -4,25 +4,26 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
-from gettext import gettext as tr
 
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
 class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Belgium
-    https://www.belgium.be/nl/over_belgie/land/belgie_in_een_notendop/feestdagen
-    https://nl.wikipedia.org/wiki/Feestdagen_in_Belgi%C3%AB
-    https://www.nbb.be/en/about-national-bank/national-bank-belgium/public-holidays
+    """Belgium holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Belgium>
+        * <https://web.archive.org/web/20250331001402/https://www.belgium.be/nl/over_belgie/land/belgie_in_een_notendop/feestdagen>
+        * <https://nl.wikipedia.org/wiki/Feestdagen_in_België>
+        * <https://web.archive.org/web/20240816004739/https://www.nbb.be/en/about-national-bank/national-bank-belgium/public-holidays>
     """
 
     country = "BE"
@@ -51,11 +52,11 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("O. L. H. Hemelvaart"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Pinksteren"))
+        # Pentecost.
+        self._add_pentecost(tr("Pinksteren"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pinkstermaandag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pinkstermaandag"))
 
         # National Day.
         self._add_holiday_jul_21(tr("Nationale feestdag"))
@@ -74,7 +75,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_bank_holidays(self):
         # Good Friday.
-        self._add_good_friday(tr("Goede Vrijdag"))
+        self._add_good_friday(tr("Goede vrijdag"))
 
         # Friday after Ascension Day.
         self._add_holiday_40_days_past_easter(tr("Vrijdag na O. L. H. Hemelvaart"))

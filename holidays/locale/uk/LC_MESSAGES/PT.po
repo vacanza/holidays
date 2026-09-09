@@ -4,28 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Portugal holidays uk localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.102\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-07 19:38+0700\n"
-"PO-Revision-Date: 2023-12-30 19:46+0200\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: pt_PT\n"
 
 #. New Year's Day.
 msgid "Ano Novo"
@@ -57,7 +58,7 @@ msgstr "День відновлення незалежності"
 
 #. Freedom Day.
 msgid "Dia da Liberdade"
-msgstr "День Свободи"
+msgstr "День свободи"
 
 #. Labor Day.
 msgid "Dia do Trabalhador"
@@ -91,6 +92,10 @@ msgstr "Різдво Христове"
 msgid "Carnaval"
 msgstr "Карнавал"
 
+#. Saint Anthony's Day.
+msgid "Dia de Santo António"
+msgstr "День Святого Антонія"
+
 #. Christmas Eve.
 msgid "Véspera de Natal"
 msgstr "Святий вечір"
@@ -103,11 +108,7 @@ msgstr "Другий день Різдва"
 msgid "Véspera de Ano Novo"
 msgstr "Переддень Нового року"
 
-#. St. Anthony's Day.
-msgid "Dia de Santo António"
-msgstr "День Святого Антонія"
-
-#. St. Joanna's Day.
+#. Saint Joanna's Day.
 msgid "Dia de Santa Joana"
 msgstr "День Святої Йоанни"
 
@@ -115,7 +116,7 @@ msgstr "День Святої Йоанни"
 msgid "Quinta-feira da Ascensão"
 msgstr "Вознесіння Господнє"
 
-#. St. John's Day.
+#. Saint John's Day.
 msgid "Dia de São João"
 msgstr "День Святого Івана"
 
@@ -127,11 +128,11 @@ msgstr "День Богоматері Милосердя"
 msgid "Dia de Nossa Senhora de Mércoles"
 msgstr "День Богоматері Меркольської"
 
-#. St. Elizabeth's Day.
+#. Saint Elizabeth's Day.
 msgid "Dia de Santa Isabel"
 msgstr "День Святої Єлизавети"
 
-#. St. Peter's Day.
+#. Saint Peter's Day.
 msgid "Dia de São Pedro"
 msgstr "День Святого Петра"
 
@@ -151,7 +152,7 @@ msgstr "День муніципалітету Лейрія"
 msgid "Dia do Município de Portalegre"
 msgstr "День муніципалітету Порталегре"
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "Dia de São José"
 msgstr "День Святого Йосипа"
 
@@ -163,7 +164,7 @@ msgstr "День Бокажі"
 msgid "Dia de Nossa Senhora da Agonia"
 msgstr "День Богоматері Страждання"
 
-#. St. Matthew's Day.
+#. Saint Matthew's Day.
 msgid "Dia de São Mateus"
 msgstr "День Святого Матвія"
 
@@ -171,13 +172,13 @@ msgstr "День Святого Матвія"
 msgid "Dia da Região Autónoma dos Açores"
 msgstr "День автономного регіону Азорських островів"
 
-#. Day of the Autonomous Region of Madeira.
-msgid "Dia da Região Autónoma da Madeira"
-msgstr "День автономного регіону Мадейра"
-
 #. Day of the Autonomous Region of Madeira and the Madeiran Communities.
 msgid "Dia da Região Autónoma da Madeira e das Comunidades Madeirenses"
 msgstr "День автономного регіону Мадейра та мадейрських громад"
+
+#. Day of the Autonomous Region of Madeira.
+msgid "Dia da Região Autónoma da Madeira"
+msgstr "День автономного регіону Мадейра"
 
 #. 1st Octave.
 msgid "Primeira Oitava"

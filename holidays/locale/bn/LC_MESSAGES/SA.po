@@ -1,0 +1,76 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Saudi Arabia holidays bn localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.100\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-04-03 13:41+0400\n"
+"PO-Revision-Date: 2026-06-15 17:43+0000\n"
+"Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: bn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.5\n"
+"X-Source-Language: ar\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (تقديري)"
+msgstr "%s (আনুমানিক)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (يوم تعويضي)"
+msgstr "%s (পালিত)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (يوم تعويضي تقديري)"
+msgstr "%s (পালিত, আনুমানিক)"
+
+#. Eid al-Fitr Holiday.
+msgid "عطلة عيد الفطر"
+msgstr "ঈদুল ফিতরের ছুটি"
+
+#. Day of Arafah.
+msgid "يوم عرفة"
+msgstr "আরাফাত দিবস"
+
+#. Eid al-Adha Holiday.
+msgid "عطلة عيد الأضحى"
+msgstr "ঈদুল আযহার ছুটি"
+
+#. Founding Day.
+msgid "يوم التأسيسي"
+msgstr "প্রতিষ্ঠা দিবস"
+
+#. National Day.
+msgid "اليوم الوطني"
+msgstr "জাতীয় দিবস"
+
+#. King Abdullah's Return from Medical Treatment Abroad.
+msgid "عطلة رسمية بمناسبة عودة الملك عبد الله"
+msgstr "রাজা আবদুল্লাহর প্রত্যাবর্তন উপলক্ষে সরকারি ছুটি"
+
+#. Day of Mourning for King Abdullah.
+msgid "يوم حداد على الملك عبد الله"
+msgstr "রাজা আবদুল্লাহর জন্য শোক দিবস"
+
+#. Holiday for the National Team's Victory in the World Cup.
+msgid "عطلة فوز المنتخب في كأس العالم"
+msgstr "বিশ্বকাপে জাতীয় দলের জয়ের ছুটি"

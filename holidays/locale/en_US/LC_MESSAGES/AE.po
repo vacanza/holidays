@@ -4,32 +4,33 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # United Arab Emirates holidays en_US localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.42\n"
+"Project-Id-Version: Holidays 0.102\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2024-01-25 15:04+0200\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.5\n"
+"X-Source-Language: ar\n"
 
 #. %s (estimated).
 #, c-format
-msgid "(تقدير) %s"
+msgid "%s (تقديري)"
 msgstr "%s (estimated)"
 
 #. New Year's Day.
@@ -52,9 +53,9 @@ msgstr "Eid al-Fitr"
 msgid "عطلة عيد الفطر"
 msgstr "Eid al-Fitr Holiday"
 
-#. Arafat Day.
+#. Day of Arafah.
 msgid "وقفة عرفة"
-msgstr "Arafat Day"
+msgstr "Day of Arafah"
 
 #. Eid al-Adha.
 msgid "عيد الأضحى"
@@ -75,3 +76,11 @@ msgstr "Isra' and Mi'raj"
 #. Prophet's Birthday.
 msgid "عيد المولد النبوي"
 msgstr "Prophet's Birthday"
+
+#. Death of Sheikh Khalifa bin Zayed Al Nahyan.
+msgid "وفاة الشيخ خليفة بن زايد آل نهيان"
+msgstr "Death of Sheikh Khalifa bin Zayed Al Nahyan"
+
+#. Pope Francis' Visit Day.
+msgid "يوم زيارة البابا فرنسيس"
+msgstr "Pope Francis' Visit Day"

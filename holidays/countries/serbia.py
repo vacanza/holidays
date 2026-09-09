@@ -4,31 +4,31 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
-from gettext import gettext as tr
 
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
 class Serbia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    Serbia holidays.
+    """Serbia holidays.
 
     References:
-     - https://en.wikipedia.org/wiki/Public_holidays_in_Serbia
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Serbia>
     """
 
     country = "RS"
     default_language = "sr"
     # %s (observed).
     observed_label = tr("%s (слободан дан)")
+    # Independence Restored on June 5th, 2006.
+    start_year = 2007
     supported_languages = ("en_US", "sr")
 
     def __init__(self, *args, **kwargs):
@@ -65,10 +65,13 @@ class Serbia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Good Friday.
         self._add_good_friday(tr("Велики петак"))
+
         # Holy Saturday.
         self._add_holy_saturday(tr("Велика субота"))
+
         # Easter Sunday.
         self._add_easter_sunday(tr("Васкрс"))
+
         # Easter Monday.
         self._add_easter_monday(tr("Други дан Васкрса"))
 

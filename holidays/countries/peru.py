@@ -4,25 +4,25 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
 class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    Peru holidays.
+    """Peru holidays.
 
     References:
-    - https://www.gob.pe/feriados
-    - https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú
+        * <https://web.archive.org/web/20250414165243/https://www.gob.pe/feriados/>
+        * <https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú>
+        * [Ley N° 31788](https://web.archive.org/web/20250716164223/https://img.lpderecho.pe/wp-content/uploads/2023/06/Ley-31788-LPDerecho.pdf)
+        * [Ley N° 31822](https://web.archive.org/web/20250716164455/https://img.lpderecho.pe/wp-content/uploads/2023/07/Ley-31822-LPDerecho.pdf)
     """
 
     country = "PE"
@@ -50,8 +50,18 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_labor_day(tr("Día del Trabajo"))
 
-        # Saint Peter and Saint Paul.
+        # Added via Ley N° 31788 on June 15th, 2023.
+        if self._year >= 2024:
+            # Battle of Arica and Flag Day.
+            self._add_holiday_jun_7(tr("Batalla de Arica y Día de la Bandera"))
+
+        # Saint Peter and Saint Paul's Day.
         self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo"))
+
+        # Added via Ley N° 31822 on July 8th, 2023.
+        if self._year >= 2023:
+            # Peruvian Air Force Day.
+            self._add_holiday_jul_23(tr("Día de la Fuerza Aérea del Perú"))
 
         # Independence Day.
         self._add_holiday_jul_28(tr("Día de la Independencia"))

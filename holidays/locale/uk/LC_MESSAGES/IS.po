@@ -4,28 +4,29 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Iceland holidays uk localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.23\n"
+"Project-Id-Version: Holidays 0.100\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-09 14:31+0300\n"
-"PO-Revision-Date: 2023-04-09 14:32+0300\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
+"X-Source-Language: is\n"
 
 #. New Year's Day.
 msgid "Nýársdagur"
@@ -59,13 +60,13 @@ msgstr "День праці"
 msgid "Uppstigningardagur"
 msgstr "Вознесіння Господнє"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Hvítasunnudagur"
-msgstr "Трійця"
+msgstr "Пʼятидесятниця"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Annar í hvítasunnu"
-msgstr "День Святого Духа"
+msgstr "Другий день Пʼятидесятниці"
 
 #. National Day.
 msgid "Þjóðhátíðardagurinn"
@@ -75,10 +76,6 @@ msgstr "Національне свято"
 msgid "Frídagur verslunarmanna"
 msgstr "День торгівлі"
 
-#. Christmas Eve.
-msgid "Aðfangadagur"
-msgstr "Святий вечір"
-
 #. Christmas Day.
 msgid "Jóladagur"
 msgstr "Різдво Христове"
@@ -86,6 +83,15 @@ msgstr "Різдво Христове"
 #. Second Day of Christmas.
 msgid "Annar í jólum"
 msgstr "Другий день Різдва"
+
+#. %s (from 1pm).
+#, c-format
+msgid "%s (frá kl. 13.00)"
+msgstr "%s (з 13:00)"
+
+#. Christmas Eve.
+msgid "Aðfangadagur"
+msgstr "Святий вечір"
 
 #. New Year's Eve.
 msgid "Gamlársdagur"

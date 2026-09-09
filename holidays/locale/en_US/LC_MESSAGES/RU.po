@@ -4,28 +4,34 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Russia holidays en_US localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.29\n"
+"Project-Id-Version: Holidays 0.92\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-15 08:13-0800\n"
-"PO-Revision-Date: 2023-07-13 15:58+0300\n"
+"PO-Revision-Date: 2026-02-20 21:01+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.4\n"
+"X-Source-Language: ru\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (выходной)"
+msgstr "%s (observed)"
 
 #. New Year's Day.
 msgid "Новый год"
@@ -41,7 +47,7 @@ msgstr "Christmas Day"
 
 #. Defender of the Fatherland Day.
 msgid "День защитника Отечества"
-msgstr "Fatherland Defender's Day"
+msgstr "Defender of the Fatherland Day"
 
 #. International Women's Day.
 msgid "Международный женский день"
@@ -63,13 +69,9 @@ msgstr "Victory Day"
 msgid "День России"
 msgstr "Russia Day"
 
-#. Day of the Adoption of the Declaration of Sovereignty of the Russian
-#. Federation.
-msgid ""
-"День принятия Декларации о государственном суверенитете Российской Федерации"
-msgstr ""
-"Day of the Adoption of the Declaration of Sovereignty of the Russian "
-"Federation"
+#. Day of the Adoption of the Declaration of Sovereignty of the Russian Federation.
+msgid "День принятия Декларации о государственном суверенитете Российской Федерации"
+msgstr "Day of the Adoption of the Declaration of Sovereignty of the Russian Federation"
 
 #. Unity Day.
 msgid "День народного единства"
@@ -82,3 +84,16 @@ msgstr "Day of consent and reconciliation"
 #. Anniversary of the Great October Socialist Revolution.
 msgid "Годовщина Великой Октябрьской социалистической революции"
 msgstr "Anniversary of the Great October Socialist Revolution"
+
+#. Constitution Day.
+msgid "День Конституции Российской Федерации"
+msgstr "Constitution Day"
+
+#. Substituted date format.
+msgid "%d.%m.%Y"
+msgstr "%m/%d/%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Выходной (перенесено с %s)"
+msgstr "Day off (substituted from %s)"
