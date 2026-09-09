@@ -296,15 +296,13 @@ def _expand_shared_month_notation(cell: str) -> str:
 def _collapse_cell_formatting(cell: str) -> str:
     """Collapse duplicate delimiters and normalize empty placeholders."""
 
-    cell = re.sub(r"\s*/\s*", "/", cell)
-    cell = re.sub(r"\s*-\s*", "-", cell)
+    cell = "/".join(part.strip() for part in cell.split("/"))
+    cell = "-".join(part.strip() for part in cell.split("-"))
     cell = cell.replace("./", "/")
-    cell = re.compile(r"\.{2,}").sub(".", cell)
-    cell = re.compile(r"/{2,}").sub("/", cell)
-    cell = re.sub(r"\s+", " ", cell).strip(" ./")
-    if re.compile(r"-+").fullmatch(cell):
-        return "--"
-    return cell
+    cell = re.sub(r"\.{2,}", ".", cell)
+    cell = re.sub(r"/{2,}", "/", cell)
+    cell = " ".join(cell.split()).strip(" ./")
+    return "--" if cell and set(cell) == {"-"} else cell
 
 
 def _normalize_cell(cell: str) -> str:
