@@ -321,10 +321,10 @@ def _parse_header_cell(cell: str) -> tuple[str, str]:
         raise ValueError("Header cell is empty.")
     raw_label = re.sub(r"(?:\s*\d+\)|[*¹²³⁴⁵⁶⁷⁸⁹])+$", "", parts[0]).strip()
     label = COLUMN_KEY_ALIASES.get(raw_label, raw_label)
-    if label != "Land" and label not in HOLIDAY_IDS:
-        raise ValueError(f"Unsupported KMK header column: {raw_label!r}.")
     if label == "Land":
         return label, ""
+    if label not in HOLIDAY_IDS:
+        raise ValueError(f"Unsupported KMK header column: {raw_label!r}.")
     year_label = parts[1] if len(parts) > 1 else ""
     return label, year_label
 
@@ -542,8 +542,8 @@ def render_python_module(
     lines.extend(
         f'    "{name}",' for name in sorted((*HOLIDAY_IDS.values(), "GERMANY_SCHOOL_HOLIDAYS"))
     )
-    lines.append(")")
-    return "\n".join(lines) + "\n"
+    lines.extend([")", ""])
+    return "\n".join(lines)
 
 
 def _parse_args() -> argparse.Namespace:
