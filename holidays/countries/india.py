@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
+from datetime import date
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
@@ -411,9 +412,6 @@ class India(
         # Meshadi (Tamil New Year's Day).
         self._add_holiday_apr_14(tr("Meshadi (Tamil New Year's Day)"))
 
-        # Bahag Bihu.
-        self._add_vaisakhadi(tr("Bahag Bihu"))
-
         # Vaisakhadi.
         self._add_vaisakhadi(tr("Vaisakhadi"))
 
@@ -522,6 +520,13 @@ class India(
     def _populate_subdiv_as_public_holidays(self):
         # Magh Bihu.
         self._add_pongal(tr("Magh Bihu"))
+
+        # Bahag Bihu.
+        name = tr("Bahag Bihu")
+        self._add_holiday(name, date(self._year, APR, 14))
+        self._add_holiday(name, date(self._year, APR, 15))
+        self._add_holiday(name, date(self._year, APR, 16))
+
         # Assam Day.
         self._add_holiday_dec_2(tr("Assam Day"))
 

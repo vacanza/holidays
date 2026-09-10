@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-09-02 22:43+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-09-09 07:30+0000\n"
+"Last-Translator: Drona Jadhav <dronajadhav07@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
@@ -184,10 +184,6 @@ msgstr "উগাদি"
 msgid "Meshadi (Tamil New Year's Day)"
 msgstr "মেশাদি (তামিল নববর্ষের দিন)"
 
-#. Bahag Bihu.
-msgid "Bahag Bihu"
-msgstr "বহাগ বিহু"
-
 #. Vaisakhadi.
 msgid "Vaisakhadi"
 msgstr "বৈশাখাদি"
@@ -287,6 +283,10 @@ msgstr "জামাত-উল-ভিদা"
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
 msgstr "অন্ধ্রপ্রদেশ প্রতিষ্ঠা দিবস"
+
+#. Bahag Bihu.
+msgid "Bahag Bihu"
+msgstr "বহাগ বিহু"
 
 #. Assam Day.
 msgid "Assam Day"
