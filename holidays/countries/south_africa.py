@@ -25,7 +25,7 @@ class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
         * <https://en.wikipedia.org/wiki/Public_holidays_in_South_Africa>
         * <https://web.archive.org/web/20240715110800/https://www.gov.za/speeches/president-cyril-ramaphosa-progress-economic-recovery-30-oct-2023-0000>
         * <https://web.archive.org/web/20250427184315/https://www.gov.za/documents/notices/public-holidays-act-declaration-29-may-2024-public-holiday-23-feb-2024>
-        * <https://web.archive.org/web/20260909144236/https://www.elections.org.za/content/About-Us/News/Electoral-Commission-welcomes-announcement-of-4-November-2026-as-Local-Government-Elections-date>
+        * <https://web.archive.org/web/20260909121120/https://www.gov.za/documents/notices/public-holidays-act-declaration-fourth-day-november-2026-public-holiday>
     """
 
     country = "ZA"
