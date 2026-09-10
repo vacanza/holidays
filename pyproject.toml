@@ -204,8 +204,8 @@ ini_options.filterwarnings = [
 ]
 
 [tool.coverage]
-run.branch = true
 run.omit = [ "scripts/*", "tests/*" ]
+run.branch = true
 report.exclude_also = [
   "^if TYPE_CHECKING:",
 ]
