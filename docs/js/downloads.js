@@ -23,6 +23,7 @@ function holidayDownloads() {
     // Preview state
     showPreview: false,
     previewData: [],
+    previewRows: [],
 
     // Year Range
     startYear: currentYear,
@@ -31,30 +32,23 @@ function holidayDownloads() {
 
     // Initialize
     async init() {
-      console.log('Initializing holiday downloads...');
-
       try {
-        // Try local first
         try {
           const localResponse = await fetch('ics/index.json');
           if (!localResponse.ok) throw new Error('Local missing');
           this.manifest = await localResponse.json();
           this.fetchMode = 'local';
-          console.log('Loaded from local');
         } catch (e) {
-          console.log('Local not found, trying remote...');
           const remoteResponse = await fetch(this.remoteBaseUrl + 'ics/index.json');
           if (!remoteResponse.ok) throw new Error('Remote failed');
           this.manifest = await remoteResponse.json();
           this.fetchMode = 'remote';
-          console.log('Loaded from remote');
         }
       } catch (e) {
         console.error('Failed to load data', e);
         this.manifest = { countries: {}, financial: {} };
       } finally {
         this.isLoading = false;
-        console.log('Loading complete');
       }
     },
 
@@ -132,6 +126,10 @@ function holidayDownloads() {
         .sort((a, b) => a.name.localeCompare(b.name));
     },
 
+    get regionCount() {
+      return this.previewRows.filter(row => row.type === 'region').length;
+    },
+
     _getLanguage(entity) {
       const data = this.currentManifest[entity] || {};
       const languages = data.languages || {};
@@ -168,29 +166,20 @@ function holidayDownloads() {
         this.selectedEntities = [...this.selectedEntities, code];
       }
       this._syncCategories();
-      this.showCalendarList = false;
-      this.showPreview = false;
-      this.calendarRows = [];
-      this.previewData = [];
+      this._resetResults();
     },
 
     selectAllVisibleEntities() {
       const visibleCodes = Object.keys(this.filteredManifest);
       this.selectedEntities = [...new Set([...this.selectedEntities, ...visibleCodes])];
       this._syncCategories();
-      this.showCalendarList = false;
-      this.showPreview = false;
-      this.calendarRows = [];
-      this.previewData = [];
+      this._resetResults();
     },
 
     clearEntitySelection() {
       this.selectedEntities = [];
       this.selectedCategories = ['public'];
-      this.calendarRows = [];
-      this.previewData = [];
-      this.showCalendarList = false;
-      this.showPreview = false;
+      this._resetResults();
     },
 
     _syncCategories() {
@@ -203,6 +192,14 @@ function holidayDownloads() {
       }
     },
 
+    _resetResults() {
+      this.calendarRows = [];
+      this.previewData = [];
+      this.previewRows = [];
+      this.showCalendarList = false;
+      this.showPreview = false;
+    },
+
     // Category Selection
     toggleCategory(category) {
       if (this.selectedCategories.includes(category)) {
@@ -210,18 +207,12 @@ function holidayDownloads() {
       } else {
         this.selectedCategories = [...this.selectedCategories, category];
       }
-      this.showCalendarList = false;
-      this.showPreview = false;
-      this.calendarRows = [];
-      this.previewData = [];
+      this._resetResults();
     },
 
     selectAllCategories() {
       this.selectedCategories = [...this.availableMultiCategories];
-      this.showCalendarList = false;
-      this.showPreview = false;
-      this.calendarRows = [];
-      this.previewData = [];
+      this._resetResults();
     },
 
     // Year-scoped downloads
@@ -318,32 +309,74 @@ function holidayDownloads() {
       URL.revokeObjectURL(url);
     },
 
+    // Build a flat array of rows for the preview table.
+    // Each row is one of: { type: 'region' }, { type: 'year' }, or { type: 'holiday' }.
+    // This is required because Alpine.js's <template x-for> must have a single root element.
+    _buildPreviewRows(events) {
+      const grouped = {};
+
+      events.forEach(event => {
+        const region = event._entity || 'Unknown';
+        const year = String(event.date).slice(0, 4);
+
+        if (!grouped[region]) grouped[region] = {};
+        if (!grouped[region][year]) grouped[region][year] = [];
+        grouped[region][year].push(event);
+      });
+
+      const rows = [];
+
+      Object.keys(grouped).sort().forEach(region => {
+        rows.push({ type: 'region', label: region });
+
+        Object.keys(grouped[region])
+          .sort((a, b) => a.localeCompare(b))   // ascending years
+          .forEach(year => {
+            rows.push({ type: 'year', label: year });
+
+            // Ensure holidays within each year are also sorted by date ascending
+            grouped[region][year]
+              .slice()
+              .sort((a, b) => a.date.localeCompare(b.date))
+              .forEach(event => {
+                rows.push({
+                  type: 'holiday',
+                  date: event.date,
+                  name: event.name
+                });
+              });
+          });
+      });
+
+      return rows;
+    },
+
     // Load Preview Data
     async loadPreview() {
       if (this.selectedEntities.length === 0 || this.selectedCategories.length === 0) {
         this.previewData = [];
+        this.previewRows = [];
         this.showPreview = false;
         return;
       }
 
-      // Only show preview if one or more entities selected
-      // For multiple entities, show combined preview
       const allEvents = [];
 
       for (const entity of this.selectedEntities) {
         try {
-          const category = this.selectedCategories[0]; // Use first selected category
+          const category = this.selectedCategories[0];
           const path = this._getRelativePath(entity, category, 'json');
           const response = await this._fetchFile(path);
 
           if (response.ok) {
             const events = await response.json();
             const filtered = this._filterEventsByYearRange(events, this.startYear, this.endYear);
-            // Add entity name to each event for context
             const entityName = this.currentManifest[entity]?.name || entity;
+
             filtered.forEach(event => {
               event._entity = entityName;
             });
+
             allEvents.push(...filtered);
           }
         } catch (e) {
@@ -351,28 +384,22 @@ function holidayDownloads() {
         }
       }
 
-      // Sort by date
       allEvents.sort((a, b) => a.date.localeCompare(b.date));
 
-      // Limit preview to first 100 events for performance
-      this.previewData = allEvents.slice(0, 100);
-      this.showPreview = this.previewData.length > 0;
+      this.previewData = allEvents.slice(0, 200);
+      this.previewRows = this._buildPreviewRows(this.previewData);
+      this.showPreview = this.previewRows.length > 0;
     },
 
     // Calendar Table
     async listCalendars() {
       if (!this.selectedEntities.length || !this.selectedCategories.length) {
-        this.calendarRows = [];
-        this.showCalendarList = false;
-        this.showPreview = false;
-        this.previewData = [];
+        this._resetResults();
         return;
       }
 
-      // Load preview data
       await this.loadPreview();
 
-      // Build calendar rows
       this.calendarRows = this.selectedEntities.map(entity => {
         const data = this.currentManifest[entity] || {};
         const language = this._getLanguage(entity);
@@ -406,10 +433,7 @@ function holidayDownloads() {
       this.selectedCategories = ['public'];
       this.selectedLang = 'default';
       this.entitySearch = '';
-      this.calendarRows = [];
-      this.previewData = [];
-      this.showCalendarList = false;
-      this.showPreview = false;
+      this._resetResults();
     },
 
     setRange(range) {
@@ -424,10 +448,7 @@ function holidayDownloads() {
 
     validateYears() {
       if (this.startYear > this.endYear) this.endYear = this.startYear;
-      this.showCalendarList = false;
-      this.showPreview = false;
-      this.calendarRows = [];
-      this.previewData = [];
+      this._resetResults();
     }
   };
 }

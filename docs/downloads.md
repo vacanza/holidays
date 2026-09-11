@@ -8,32 +8,16 @@ hide:
 <link rel="stylesheet" href="../css/downloads.css">
 
 <style>
-  /* Quick fix for Alpine.js initialization */
   [x-cloak] { display: none !important; }
-  
-  /* Ensure the wrapper is visible */
-  .portal-wrapper {
-    display: grid !important;
-    grid-template-columns: 300px minmax(0, 1fr) !important;
-    gap: 24px !important;
-    margin-top: 20px !important;
-    width: 100% !important;
-  }
-  
-  @media (max-width: 768px) {
-    .portal-wrapper {
-      grid-template-columns: 1fr !important;
-    }
-  }
 </style>
 
 # Download Holiday Calendars
 
 <div class="portal-wrapper" x-data="holidayDownloads()" x-init="init()" x-cloak>
-  
+
   <!-- Sidebar -->
   <div class="portal-sidebar" x-show="!isLoading" x-cloak>
-    
+
     <div class="control-group">
       <label for="calendar-type">Calendar Type</label>
       <select id="calendar-type" class="control-input" x-model="type" @change="updateType()">
@@ -41,10 +25,10 @@ hide:
         <option value="financial">Financial Markets</option>
       </select>
     </div>
-    
+
     <div class="calendar-selector">
       <label class="selector-label">Countries / Regions</label>
-      
+
       <div class="multi-select" x-data="{ open: false }" @click.outside="open = false">
         <button type="button" class="multi-select-trigger" @click="open = !open">
           <span x-show="selectedEntities.length === 0" class="multi-select-placeholder">
@@ -53,17 +37,17 @@ hide:
           <span x-show="selectedEntities.length > 0" class="selected-count" x-text="`${selectedEntities.length} selected`"></span>
           <span class="multi-select-arrow">▾</span>
         </button>
-        
+
         <div x-show="open" x-transition class="multi-select-dropdown" x-cloak>
           <div class="multi-select-search">
             <input type="text" x-model="entitySearch" placeholder="Search countries or regions..." @click.stop>
           </div>
-          
+
           <div class="multi-select-actions">
             <button type="button" @click="selectAllVisibleEntities()">Select all</button>
             <button type="button" @click="clearEntitySelection()">Clear</button>
           </div>
-          
+
           <div class="multi-select-options">
             <template x-for="(data, code) in filteredManifest" :key="code">
               <label class="multi-select-option">
@@ -77,7 +61,7 @@ hide:
           </div>
         </div>
       </div>
-      
+
       <!-- Selected country chips -->
       <div x-show="selectedEntities.length > 0" class="selected-chips" x-cloak>
         <template x-for="entity in selectedEntities" :key="entity">
@@ -88,7 +72,7 @@ hide:
         </template>
       </div>
     </div>
-    
+
     <div class="calendar-selector">
       <label class="selector-label">Categories</label>
       <div class="category-options">
@@ -100,7 +84,7 @@ hide:
         </template>
       </div>
     </div>
-    
+
     <div class="control-group" x-show="selectedEntities.length > 0" x-cloak>
       <label for="selected-lang">Language</label>
       <select id="selected-lang" class="control-input" x-model="selectedLang" @change="listCalendars()">
@@ -113,7 +97,7 @@ hide:
         Default uses each selected country's/market's default language.
       </div>
     </div>
-    
+
     <div class="control-group" style="margin-top: 20px;">
       <label for="start-year">Year Range</label>
       <div class="year-range-grid">
@@ -135,38 +119,38 @@ hide:
         <button class="chip-btn" @click="setRange('all')">All Years</button>
       </div>
     </div>
-    
+
     <div class="calendar-actions">
       <button type="button" class="list-calendars-button" @click="listCalendars()" :disabled="selectedEntities.length === 0 || selectedCategories.length === 0">
         List calendars
       </button>
     </div>
-    
+
     <div class="selection-hint" x-show="selectedEntities.length > 0" x-cloak>
       <span x-text="selectedEntities.length"></span> region(s) ×
       <span x-text="selectedCategories.length"></span> categor<span x-text="selectedCategories.length === 1 ? 'y' : 'ies'"></span>
     </div>
-    
+
     <div style="text-align: center; margin-top: 10px; font-size: 0.8rem;">
       Need data outside the 2015-2035 range?<br>Use our
       <a href="../examples/#holidays-ics-tool" target="_blank" rel="noopener">holidays-ics</a>
       tool instead.
     </div>
   </div>
-  
+
   <!-- Main Content Area -->
   <div class="portal-preview" x-show="!isLoading" x-cloak>
-    
+
     <!-- Loading State -->
     <div x-show="isLoading" class="loading-state">
       <p>Loading calendars...</p>
     </div>
-    
+
     <!-- Preview Table -->
-    <div x-show="showPreview && previewData.length > 0" class="calendar-preview-section" x-cloak>
+    <div x-show="showPreview && previewRows.length > 0" class="calendar-preview-section" x-cloak>
       <div class="preview-header">
         <h3>Holiday Preview</h3>
-        <span class="preview-count" x-text="`${previewData.length} holidays`"></span>
+        <span class="preview-count" x-text="`${previewData.length} holidays across ${regionCount} region${regionCount === 1 ? '' : 's'}`"></span>
       </div>
       <div class="table-scroll-area">
         <table class="preview-table">
@@ -177,17 +161,25 @@ hide:
             </tr>
           </thead>
           <tbody>
-            <template x-for="event in previewData" :key="event.date + event.name">
-              <tr>
-                <td x-text="event.date"></td>
-                <td x-text="event.name"></td>
+            <template x-for="(row, index) in previewRows" :key="index">
+              <tr :class="{
+                    'region-divider': row.type === 'region',
+                    'year-divider': row.type === 'year'
+                  }">
+                <td
+                  x-show="row.type === 'region' || row.type === 'year'"
+                  colspan="2"
+                  x-text="row.label"
+                ></td>
+                <td x-show="row.type === 'holiday'" x-text="row.date"></td>
+                <td x-show="row.type === 'holiday'" x-text="row.name"></td>
               </tr>
             </template>
           </tbody>
         </table>
       </div>
     </div>
-    
+
     <!-- Calendar Download Links -->
     <div x-show="showCalendarList" class="calendar-results" x-cloak>
       <div class="calendar-results-header">
@@ -201,7 +193,7 @@ hide:
           </p>
         </div>
       </div>
-      
+
       <div class="calendar-table-wrapper">
         <table class="calendar-table">
           <thead>
@@ -246,11 +238,11 @@ hide:
         </table>
       </div>
     </div>
-    
+
     <!-- Empty State -->
     <div x-show="!isLoading && !showPreview && !showCalendarList" class="empty-state" x-cloak>
       <p>Select one or more countries/regions, categories, and click "List calendars" to see available downloads.</p>
     </div>
-    
+
   </div>
 </div>

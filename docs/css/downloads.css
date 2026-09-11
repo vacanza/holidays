@@ -7,6 +7,8 @@
   --portal-primary-hover: #2c974b;
   --portal-header-bg: #f6f8fa;
   --portal-zebra: #fafbfc;
+  --md-default-fg-color--light: #57606a;
+  --md-default-fg-color--lighter: #8b949e;
 }
 
 /* Global Resets and Layout Overrides */
@@ -59,7 +61,7 @@
   font-weight: 600;
   margin-bottom: 8px;
   font-size: 0.9rem;
-  color: var(--md-default-fg-color--light, #57606a);
+  color: var(--md-default-fg-color--light);
 }
 
 .control-input {
@@ -89,7 +91,7 @@
 }
 
 .year-separator {
-  color: var(--md-default-fg-color--light, #57606a);
+  color: var(--md-default-fg-color--light);
   font-weight: bold;
 }
 
@@ -108,7 +110,7 @@
   border-radius: 12px;
   background: transparent;
   cursor: pointer;
-  color: var(--md-default-fg-color--light, #57606a);
+  color: var(--md-default-fg-color--light);
   transition: all 0.2s;
 }
 
@@ -155,6 +157,7 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
+  table-layout: fixed;
 }
 
 .preview-table th {
@@ -170,19 +173,26 @@
   box-sizing: border-box;
 }
 
+/* Fixed width for the date column so dates never wrap */
+.preview-table th:first-child,
+.preview-table td:first-child {
+  width: 140px;
+}
+
+/* Holiday name column takes the remaining space and can wrap */
+.preview-table th:last-child,
+.preview-table td:last-child {
+  width: auto;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
 .preview-table td {
   padding: 10px 16px;
   border-bottom: 1px solid var(--portal-border);
   color: var(--portal-fg);
   white-space: normal;
   word-wrap: break-word;
-}
-
-.preview-table td:first-child {
-  color: #57606a;
-  font-weight: 500;
-  white-space: nowrap;
-  width: 140px;
 }
 
 .preview-table td a {
@@ -194,24 +204,45 @@
   background-color: var(--portal-zebra);
 }
 
-.year-divider {
-  background-color: var(--portal-header-bg);
+/* Region Divider */
+.region-divider td {
+  background-color: var(--portal-primary) !important;
+  color: white !important;
   font-weight: 800;
-  color: var(--portal-fg);
+  padding: 12px 16px !important;
+  border: none !important;
   text-align: center;
-  padding: 12px 10px;
   position: sticky;
   top: 48px;
+  z-index: 6;
+}
+
+/* Year Divider */
+.year-divider td {
+  background-color: #e8f0fe !important;
+  color: var(--portal-fg) !important;
+  font-weight: 700;
+  padding: 8px 16px !important;
+  border: none !important;
+  font-size: 0.85rem;
+  text-align: center;
+  position: sticky;
+  top: 72px;
   z-index: 5;
-  border: none;
-  box-shadow: inset 0 -2px 0 var(--portal-border);
+}
+
+/* Ensure header stays above everything */
+.preview-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 /* Empty State */
 .empty-state {
   padding: 40px;
   text-align: center;
-  color: var(--md-default-fg-color--lighter, #8b949e);
+  color: var(--md-default-fg-color--lighter);
   font-style: italic;
   flex: 1;
   display: flex;
@@ -248,7 +279,7 @@
   font-weight: 600;
   margin-bottom: 8px;
   font-size: 0.9rem;
-  color: var(--md-default-fg-color--light, #57606a);
+  color: var(--md-default-fg-color--light);
 }
 
 .multi-select {
@@ -271,7 +302,7 @@
 }
 
 .multi-select-placeholder {
-  color: var(--md-default-fg-color--light, #57606a);
+  color: var(--md-default-fg-color--light);
 }
 
 .selected-count {
@@ -280,7 +311,7 @@
 
 .multi-select-arrow {
   margin-left: 8px;
-  color: var(--md-default-fg-color--light, #57606a);
+  color: var(--md-default-fg-color--light);
   flex-shrink: 0;
 }
 
@@ -366,7 +397,7 @@
 .multi-select-empty {
   padding: 16px 8px;
   text-align: center;
-  color: var(--md-default-fg-color--lighter, #8b949e);
+  color: var(--md-default-fg-color--lighter);
   font-style: italic;
   font-size: 0.85rem;
 }
@@ -394,7 +425,7 @@
   border: none;
   background: transparent;
   cursor: pointer;
-  color: var(--md-default-fg-color--light, #57606a);
+  color: var(--md-default-fg-color--light);
   font-size: 1rem;
   line-height: 1;
   padding: 2px;
@@ -472,7 +503,7 @@
 .calendar-results-header p {
   margin: 0;
   font-size: 0.85rem;
-  color: var(--md-default-fg-color--light, #57606a);
+  color: var(--md-default-fg-color--light);
 }
 
 .calendar-table-wrapper {
@@ -508,7 +539,7 @@
   display: block;
   margin-top: 2px;
   font-weight: normal;
-  color: var(--md-default-fg-color--light, #57606a);
+  color: var(--md-default-fg-color--light);
 }
 
 .calendar-links a,
@@ -528,13 +559,13 @@
 }
 
 .calendar-links button:disabled {
-  color: var(--md-default-fg-color--lighter, #8b949e);
+  color: var(--md-default-fg-color--lighter);
   cursor: wait;
   text-decoration: none;
 }
 
 .calendar-links span {
-  color: var(--md-default-fg-color--lighter, #8b949e);
+  color: var(--md-default-fg-color--lighter);
   margin: 0 2px;
 }
 
@@ -545,7 +576,7 @@
 }
 
 .calendar-unavailable {
-  color: var(--md-default-fg-color--lighter, #8b949e);
+  color: var(--md-default-fg-color--lighter);
 }
 
 /* Multi-selection calendar list */
@@ -557,7 +588,7 @@
   margin-bottom: 8px;
   flex-wrap: wrap;
   font-size: 0.8rem;
-  color: var(--md-default-fg-color--light, #57606a);
+  color: var(--md-default-fg-color--light);
 }
 
 .entity-list,
@@ -594,7 +625,7 @@
 .selection-hint {
   margin-top: 6px;
   font-size: 0.75rem;
-  color: var(--md-default-fg-color--light, #57606a);
+  color: var(--md-default-fg-color--light);
 }
 
 .calendar-list-table {
@@ -608,7 +639,7 @@
 .calendar-language {
   margin-top: 3px;
   font-size: 0.75rem;
-  color: var(--md-default-fg-color--light, #57606a);
+  color: var(--md-default-fg-color--light);
   font-weight: normal;
 }
 
@@ -632,33 +663,31 @@
 
 .preview-count {
   font-size: 0.85rem;
-  color: var(--md-default-fg-color--light, #57606a);
+  color: var(--md-default-fg-color--light);
   background: var(--portal-header-bg);
   padding: 4px 12px;
   border-radius: 12px;
 }
 
 .calendar-preview-section .table-scroll-area {
-  max-height: 400px;
+  max-height: 500px;
   min-height: 200px;
   border: 1px solid var(--portal-border);
   border-radius: 6px;
 }
 
+/* Force the date column to never wrap in the preview section */
 .calendar-preview-section .preview-table td:first-child {
-  width: 120px;
+  width: 140px;
+  min-width: 140px;
   white-space: nowrap;
-}
-
-.calendar-preview-section .preview-table td:last-child {
-  width: auto;
 }
 
 /* Loading State */
 .loading-state {
   padding: 40px;
   text-align: center;
-  color: var(--md-default-fg-color--lighter, #8b949e);
+  color: var(--md-default-fg-color--lighter);
   font-style: italic;
   flex: 1;
   display: flex;
@@ -669,4 +698,33 @@
 /* Alpine.js Cloak */
 [x-cloak] {
   display: none !important;
+}
+
+/* Small screens adjustments */
+@media (max-width: 600px) {
+  .calendar-preview-section .preview-table td:first-child {
+    width: 100px;
+    min-width: 100px;
+    font-size: 0.8rem;
+  }
+
+  .preview-table td {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  .region-divider td {
+    font-size: 0.9rem;
+    padding: 8px 10px !important;
+  }
+
+  .year-divider td {
+    font-size: 0.75rem;
+    padding: 6px 10px !important;
+  }
+
+  .calendar-preview-section .table-scroll-area {
+    max-height: 400px;
+    min-height: 150px;
+  }
 }
