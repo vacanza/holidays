@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-04-28 21:03+0300\n"
-"PO-Revision-Date: 2026-07-26 01:26+0300\n"
+"PO-Revision-Date: 2026-09-08 23:06+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -99,6 +99,18 @@ msgstr "Eid al-Adha"
 msgid "Hari Deepavali"
 msgstr "Diwali"
 
+#. New Year's Day.
+msgid "Tahun Baharu"
+msgstr "New Year's Day"
+
+#. Federal Territory Day.
+msgid "Hari Wilayah Persekutuan"
+msgstr "Federal Territory Day"
+
+#. Nuzul Al-Quran Day.
+msgid "Hari Nuzul Al-Quran"
+msgstr "Nuzul Al-Quran Day"
+
 #. Thaipusam.
 msgid "Hari Thaipusam"
 msgstr "Thaipusam"
@@ -131,17 +143,9 @@ msgstr "Eid al-Adha (Second Day)"
 msgid "Hari Keputeraan Sultan Kelantan"
 msgstr "Birthday of the Sultan of Kelantan"
 
-#. Nuzul Al-Quran Day.
-msgid "Hari Nuzul Al-Quran"
-msgstr "Nuzul Al-Quran Day"
-
 #. Day of Arafah.
 msgid "Hari Arafah"
 msgstr "Day of Arafah"
-
-#. New Year's Day.
-msgid "Tahun Baharu"
-msgstr "New Year's Day"
 
 #. Declaration of Independence Day.
 msgid "Hari Pengisytiharan Tarikh Kemerdekaan"
@@ -226,10 +230,6 @@ msgstr "Birthday of the Governor of Sarawak"
 #. Sarawak Independence Day.
 msgid "Hari Kemerdekaan Sarawak"
 msgstr "Sarawak Independence Day"
-
-#. Federal Territory Day.
-msgid "Hari Wilayah Persekutuan"
-msgstr "Federal Territory Day"
 
 #. General election additional holiday.
 msgid "Cuti Peristiwa (pilihan raya umum)"
