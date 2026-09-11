@@ -617,6 +617,7 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_bahag_bihu(self):
         name = "Bahag Bihu"
+        self.assertNoHolidayName(name)
         holidays = India(subdiv="AS", years=2026)
         self.assertHolidayName(
             name,
