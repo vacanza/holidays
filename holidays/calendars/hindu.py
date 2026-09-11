@@ -48,6 +48,8 @@ HOLI = "HOLI"
 JANMASHTAMI = "JANMASHTAMI"
 KABIR_JAYANTI = "KABIR_JAYANTI"
 KARWA_CHAUTH = "KARWA_CHAUTH"
+KER_PUJA = "KER_PUJA"
+KHARCHI_PUJA = "KHARCHI_PUJA"
 MAHA_ASHTAMI = "MAHA_ASHTAMI"
 MAHA_NAVAMI = "MAHA_NAVAMI"
 MAHA_SHIVARATRI = "MAHA_SHIVARATRI"
@@ -77,9 +79,11 @@ TAMU_LOSAR = "TAMU_LOSAR"
 THAIPUSAM = "THAIPUSAM"
 TULSIDAS_JAYANTI = "TULSIDAS_JAYANTI"
 VAISAKHI = "VAISAKHI"
+VARALAKSHMI_VRATAM = "VARALAKSHMI_VRATAM"
 VIKRAM_SAMVAT_NEW_YEAR = "VIKRAM_SAMVAT_NEW_YEAR"
 VISHU = "VISHU"
 VISHWAKARMA_PUJA = "VISHWAKARMA_PUJA"
+WANGALA_FESTIVAL = "WANGALA_FESTIVAL"
 
 
 class _HinduLunisolar:
@@ -1430,6 +1434,82 @@ class _HinduLunisolar:
         2035: (OCT, 20),
     }
 
+    KER_PUJA_DATES = {
+        2001: (JUL, 12),
+        2002: (AUG, 1),
+        2003: (JUL, 22),
+        2004: (JUL, 10),
+        2005: (JUL, 28),
+        2006: (JUL, 18),
+        2007: (AUG, 7),
+        2008: (JUL, 26),
+        2009: (JUL, 14),
+        2010: (AUG, 3),
+        2011: (JUL, 23),
+        2012: (JUL, 11),
+        2013: (JUL, 30),
+        2014: (JUL, 19),
+        2015: (AUG, 8),
+        2016: (JUL, 26),
+        2017: (JUL, 18),
+        2018: (AUG, 4),
+        2019: (JUL, 24),
+        2020: (JUL, 14),
+        2021: (JUL, 31),
+        2022: (JUL, 21),
+        2023: (JUL, 11),
+        2024: (AUG, 3),
+        2025: (JUL, 19),
+        2026: (AUG, 4),
+        2027: (JUL, 28),
+        2028: (JUL, 25),
+        2029: (JUL, 28),
+        2030: (JUL, 17),
+        2031: (AUG, 5),
+        2032: (JUL, 24),
+        2033: (JUL, 13),
+        2034: (AUG, 1),
+        2035: (JUL, 21),
+    }
+
+    KHARCHI_PUJA_DATES = {
+        2001: (JUN, 28),
+        2002: (JUL, 18),
+        2003: (JUL, 7),
+        2004: (JUN, 25),
+        2005: (JUL, 14),
+        2006: (JUL, 3),
+        2007: (JUL, 23),
+        2008: (JUL, 11),
+        2009: (JUN, 30),
+        2010: (JUL, 19),
+        2011: (JUL, 8),
+        2012: (JUN, 27),
+        2013: (JUL, 16),
+        2014: (JUL, 5),
+        2015: (JUL, 24),
+        2016: (JUL, 12),
+        2017: (JUL, 2),
+        2018: (JUL, 21),
+        2019: (JUL, 10),
+        2020: (JUN, 28),
+        2021: (JUL, 17),
+        2022: (JUL, 7),
+        2023: (JUN, 26),
+        2024: (JUL, 14),
+        2025: (JUL, 3),
+        2026: (JUL, 22),
+        2027: (JUL, 11),
+        2028: (JUN, 30),
+        2029: (JUL, 19),
+        2030: (JUL, 8),
+        2031: (JUN, 28),
+        2032: (JUL, 16),
+        2033: (JUL, 5),
+        2034: (JUL, 24),
+        2035: (JUL, 13),
+    }
+
     # https://web.archive.org/web/20250113213218/https://www.timeanddate.com/holidays/india/maha-ashtami
     MAHA_ASHTAMI_DATES = {
         2001: (OCT, 24),
@@ -2749,6 +2829,84 @@ class _HinduLunisolar:
         2035: (APR, 14),
     }
 
+    # https://web.archive.org/web/20260218051114/https://www.drikpanchang.com/festivals/varalakshmi-vratam/varalakshmi-vratam-date-time.html
+    VARALAKSHMI_VRATAM_DATES = {
+        2001: (AUG, 3),
+        2002: (AUG, 16),
+        2003: (AUG, 8),
+        2004: (AUG, 27),
+        2005: (AUG, 19),
+        2006: (AUG, 4),
+        2007: (AUG, 24),
+        2008: (AUG, 15),
+        2009: (JUL, 31),
+        2010: (AUG, 20),
+        2011: (AUG, 12),
+        2012: (JUL, 27),
+        2013: (AUG, 16),
+        2014: (AUG, 8),
+        2015: (AUG, 28),
+        2016: (AUG, 12),
+        2017: (AUG, 4),
+        2018: (AUG, 24),
+        2019: (AUG, 9),
+        2020: (JUL, 31),
+        2021: (AUG, 20),
+        2022: (AUG, 12),
+        2023: (AUG, 25),
+        2024: (AUG, 16),
+        2025: (AUG, 8),
+        2026: (AUG, 28),
+        2027: (AUG, 13),
+        2028: (AUG, 4),
+        2029: (AUG, 24),
+        2030: (AUG, 9),
+        2031: (AUG, 1),
+        2032: (AUG, 20),
+        2033: (AUG, 5),
+        2034: (AUG, 25),
+        2035: (AUG, 17),
+    }
+
+    # https://web.archive.org/web/20260218051114/https://www.drikpanchang.com/festivals/varalakshmi-vratam/varalakshmi-vratam-date-time.html
+    VARALAKSHMI_VRATAM_DATES = {
+        2001: (AUG, 3),
+        2002: (AUG, 16),
+        2003: (AUG, 8),
+        2004: (AUG, 27),
+        2005: (AUG, 19),
+        2006: (AUG, 4),
+        2007: (AUG, 24),
+        2008: (AUG, 15),
+        2009: (JUL, 31),
+        2010: (AUG, 20),
+        2011: (AUG, 12),
+        2012: (JUL, 27),
+        2013: (AUG, 16),
+        2014: (AUG, 8),
+        2015: (AUG, 28),
+        2016: (AUG, 12),
+        2017: (AUG, 4),
+        2018: (AUG, 24),
+        2019: (AUG, 9),
+        2020: (JUL, 31),
+        2021: (AUG, 20),
+        2022: (AUG, 12),
+        2023: (AUG, 25),
+        2024: (AUG, 16),
+        2025: (AUG, 8),
+        2026: (AUG, 28),
+        2027: (AUG, 13),
+        2028: (AUG, 4),
+        2029: (AUG, 24),
+        2030: (AUG, 9),
+        2031: (AUG, 1),
+        2032: (AUG, 20),
+        2033: (AUG, 5),
+        2034: (AUG, 25),
+        2035: (AUG, 17),
+    }
+
     # https://web.archive.org/web/20260731125321/https://www.drikpanchang.com/festivals/gujarati-newyear/gujarati-newyear-date-time.html
     VIKRAM_SAMVAT_NEW_YEAR_DATES = {
         2001: (NOV, 16),
@@ -2787,6 +2945,7 @@ class _HinduLunisolar:
         2034: (NOV, 12),
         2035: (NOV, 1),
     }
+
     # https://web.archive.org/web/20251213154535/http://www.drikpanchang.com/festivals/vishu/vishu-kani-date-time.html
     VISHU_DATES = {
         2001: (APR, 14),
@@ -2863,6 +3022,46 @@ class _HinduLunisolar:
         2033: (SEP, 17),
         2034: (SEP, 17),
         2035: (SEP, 17),
+    }
+
+    # https://web.archive.org/web/20251222111433/https://cag.gov.in/ag/meghalaya/en/page-ag-meghalaya-holidays-list
+    # https://web.archive.org/web/20260521103408/https://meghalaya.gov.in/holiday
+    WANGALA_FESTIVAL_DATES = {
+        2001: (NOV, 9),
+        2002: (NOV, 8),
+        2003: (NOV, 14),
+        2004: (NOV, 12),
+        2005: (NOV, 11),
+        2006: (NOV, 10),
+        2007: (NOV, 9),
+        2008: (NOV, 14),
+        2009: (NOV, 13),
+        2010: (NOV, 12),
+        2011: (NOV, 11),
+        2012: (NOV, 9),
+        2013: (NOV, 8),
+        2014: (NOV, 14),
+        2015: (NOV, 13),
+        2016: (NOV, 11),
+        2017: (NOV, 10),
+        2018: (NOV, 9),
+        2019: (NOV, 8),
+        2020: (NOV, 13),
+        2021: (NOV, 12),
+        2022: (NOV, 11),
+        2023: (NOV, 10),
+        2024: (NOV, 8),
+        2025: (NOV, 7),
+        2026: (NOV, 13),
+        2027: (NOV, 12),
+        2028: (NOV, 10),
+        2029: (NOV, 9),
+        2030: (NOV, 8),
+        2031: (NOV, 14),
+        2032: (NOV, 12),
+        2033: (NOV, 11),
+        2034: (NOV, 10),
+        2035: (NOV, 9),
     }
 
     def _get_holiday(self, holiday: str, year: int) -> tuple[date | None, bool]:
@@ -2971,6 +3170,12 @@ class _HinduLunisolar:
     def karwa_chauth_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(KARWA_CHAUTH, year)
 
+    def ker_puja_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(KER_PUJA, year)
+
+    def kharchi_puja_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(KHARCHI_PUJA, year)
+
     def maha_ashtami_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MAHA_ASHTAMI, year)
 
@@ -3058,6 +3263,9 @@ class _HinduLunisolar:
     def vaisakhi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VAISAKHI, year)
 
+    def varalakshmi_vratam_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(VARALAKSHMI_VRATAM, year)
+
     def vikram_samvat_new_year_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VIKRAM_SAMVAT_NEW_YEAR, year)
 
@@ -3066,6 +3274,9 @@ class _HinduLunisolar:
 
     def vishwakarma_puja_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VISHWAKARMA_PUJA, year)
+
+    def wangala_festival_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(WANGALA_FESTIVAL, year)
 
 
 class _CustomHinduHolidays(_CustomCalendar, _HinduLunisolar):
