@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-10-30 02:45+0700\n"
-"PO-Revision-Date: 2025-09-09 23:23+0300\n"
+"PO-Revision-Date: 2026-09-11 20:44+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -121,6 +121,10 @@ msgstr "วันหยุดพิเศษ (เพิ่มเติม)"
 msgid "Elections special (non-working) day"
 msgstr "วันหยุดพิเศษ (เลือกตั้ง)"
 
+#. All Souls' Day.
+msgid "All Souls' Day"
+msgstr "วันภาวนาอุทิศแด่ผู้ล่วงลับ"
+
 #. Christmas Eve.
 msgid "Christmas Eve"
 msgstr "วันคริสต์มาสอีฟ"
@@ -128,7 +132,3 @@ msgstr "วันคริสต์มาสอีฟ"
 #. All Saints' Eve.
 msgid "All Saints' Day Eve"
 msgstr "วันก่อนวันสมโภชนักบุญทั้งหลาย"
-
-#. All Souls' Day.
-msgid "All Souls' Day"
-msgstr "วันภาวนาอุทิศแด่ผู้ล่วงลับ"

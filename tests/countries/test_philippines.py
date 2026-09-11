@@ -70,6 +70,8 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2025-12-24",
             "2026-11-02",
             "2026-12-24",
+            "2027-11-02",
+            "2027-12-24",
         )
 
     def test_new_years_day(self):
@@ -93,6 +95,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2024-02-10",
             "2025-01-29",
             "2026-02-17",
+            "2027-02-06",
         )
         self.assertHolidayName(name, range(2012, 2023), range(2024, self.end_year))
         self.assertNoHolidayName(name, range(self.start_year, 2012), 2023)
@@ -221,6 +224,9 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2022-08-29",
             "2023-08-28",
             "2024-08-26",
+            "2025-08-25",
+            "2026-08-31",
+            "2027-08-30",
         )
         self.assertHolidayName(name, self.full_range)
 
@@ -230,14 +236,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
     def test_bonifacio_day(self):
         self.assertHolidayName(
             "Bonifacio Day",
-            (
-                f"{year}-11-30"
-                for year in (
-                    *range(self.start_year, 2008),
-                    *range(2011, 2023),
-                    *range(2024, self.end_year),
-                )
-            ),
+            (f"{year}-11-30" for year in set(self.full_range) - {2008, 2009, 2010, 2023}),
             "2008-12-01",
             "2009-11-30",
             "2010-11-29",

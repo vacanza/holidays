@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-10-30 02:45+0700\n"
-"PO-Revision-Date: 2025-09-09 23:22+0300\n"
+"PO-Revision-Date: 2026-09-11 20:44+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fil\n"
@@ -121,6 +121,10 @@ msgstr "Karagdagang Espesyal na Araw (Walang Trabajo)"
 msgid "Elections special (non-working) day"
 msgstr "Araw ng Halalan (Walang Trabajo)"
 
+#. All Souls' Day.
+msgid "All Souls' Day"
+msgstr "Araw ng mga Kaluluwa"
+
 #. Christmas Eve.
 msgid "Christmas Eve"
 msgstr "Bisperas ng Pasko"
@@ -128,7 +132,3 @@ msgstr "Bisperas ng Pasko"
 #. All Saints' Eve.
 msgid "All Saints' Day Eve"
 msgstr "Bisperas ng Araw ng mga Santo"
-
-#. All Souls' Day.
-msgid "All Souls' Day"
-msgstr "Araw ng mga Kaluluwa"
