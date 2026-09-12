@@ -18,7 +18,7 @@ from datetime import date
 from pathlib import Path
 from unittest import TestCase, mock
 
-from pytest import mark
+import pytest
 
 import holidays
 from holidays.calendars.gregorian import FRI, SAT
@@ -144,7 +144,7 @@ class TestAllInSameYear(TestCase):
                 )
             )
 
-    @mark.skipif(
+    @pytest.mark.skipif(
         PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
         reason="Run once on the latest Python version only",
     )
@@ -152,7 +152,7 @@ class TestAllInSameYear(TestCase):
     def test_all_countries(self, _unused_mock):
         self._check_holidays_years(country_holidays, list_supported_countries())
 
-    @mark.skipif(
+    @pytest.mark.skipif(
         PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
         reason="Run once on the latest Python version only",
     )
