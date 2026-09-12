@@ -411,9 +411,6 @@ class India(
         # Meshadi (Tamil New Year's Day).
         self._add_holiday_apr_14(tr("Meshadi (Tamil New Year's Day)"))
 
-        # Bahag Bihu.
-        self._add_vaisakhadi(tr("Bahag Bihu"))
-
         # Vaisakhadi.
         self._add_vaisakhadi(tr("Vaisakhadi"))
 
@@ -522,6 +519,13 @@ class India(
     def _populate_subdiv_as_public_holidays(self):
         # Magh Bihu.
         self._add_pongal(tr("Magh Bihu"))
+
+        # Bahag Bihu.
+        name = tr("Bahag Bihu")
+        self._add_holiday(name, APR, 14)
+        self._add_holiday(name, APR, 15)
+        self._add_holiday(name, APR, 16)
+
         # Assam Day.
         self._add_holiday_dec_2(tr("Assam Day"))
 
