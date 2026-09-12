@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-28 17:22+0530\n"
-"PO-Revision-Date: 2026-09-09 07:30+0000\n"
+"PO-Revision-Date: 2026-09-12 17:15+0000\n"
 "Last-Translator: Drona Jadhav <dronajadhav07@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pa\n"
@@ -283,10 +283,6 @@ msgstr "ਜਮਾਤ-ਉਲ-ਵਿਦਾ"
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
 msgstr "ਆਂਧਰਾ ਪ੍ਰਦੇਸ਼ ਸਥਾਪਨਾ ਦਿਵਸ"
-
-#. Bahag Bihu.
-msgid "Bahag Bihu"
-msgstr "ਬਹਾਗ ਬਿਹੂ"
 
 #. Assam Day.
 msgid "Assam Day"
@@ -799,6 +795,10 @@ msgstr "ਬਸੰਤ ਪੰਚਮੀ"
 #. Shri Panchami.
 msgid "Shri Panchami"
 msgstr "ਸ੍ਰੀ ਪੰਚਮੀ"
+
+#. Bahag Bihu.
+msgid "Bahag Bihu"
+msgstr "ਬਹਾਗ ਬਿਹੂ"
 
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"

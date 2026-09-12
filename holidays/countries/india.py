@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
-from datetime import date
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
@@ -523,9 +522,9 @@ class India(
 
         # Bahag Bihu.
         name = tr("Bahag Bihu")
-        self._add_holiday(name, date(self._year, APR, 14))
-        self._add_holiday(name, date(self._year, APR, 15))
-        self._add_holiday(name, date(self._year, APR, 16))
+        self._add_holiday(name, APR, 14)
+        self._add_holiday(name, APR, 15)
+        self._add_holiday(name, APR, 16)
 
         # Assam Day.
         self._add_holiday_dec_2(tr("Assam Day"))
