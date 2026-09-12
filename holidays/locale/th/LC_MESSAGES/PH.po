@@ -119,7 +119,7 @@ msgstr "วันฉลองแม่พระบังเกิด"
 
 #. Sheikh Karim'ul Makhdum Day.
 msgid "Sheikh Karim'ul Makhdum Day"
-msgstr "วันเชคคาริมุล มักดุม"
+msgstr "วันชีคคาริมุล มักดุม"
 
 #. Additional special (non-working) day.
 msgid "Additional special (non-working) day"
