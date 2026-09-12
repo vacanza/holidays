@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-10-30 02:45+0700\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"PO-Revision-Date: 2026-09-12 15:15+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -113,6 +113,14 @@ msgstr "Eid al-Adha"
 msgid "Founding Anniversary of Iglesia ni Cristo"
 msgstr "Founding Anniversary of Iglesia ni Cristo"
 
+#. Nativity Of Mary.
+msgid "Feast of the Nativity of the Blessed Virgin Mary"
+msgstr "Nativity Of Mary"
+
+#. Sheikh Karim'ul Makhdum Day.
+msgid "Sheikh Karim'ul Makhdum Day"
+msgstr "Sheikh Karim'ul Makhdum Day"
+
 #. Additional special (non-working) day.
 msgid "Additional special (non-working) day"
 msgstr "Additional special (non-working) day"
@@ -121,6 +129,10 @@ msgstr "Additional special (non-working) day"
 msgid "Elections special (non-working) day"
 msgstr "Elections special (non-working) day"
 
+#. All Souls' Day.
+msgid "All Souls' Day"
+msgstr "All Souls' Day"
+
 #. Christmas Eve.
 msgid "Christmas Eve"
 msgstr "Christmas Eve"
@@ -128,7 +140,3 @@ msgstr "Christmas Eve"
 #. All Saints' Eve.
 msgid "All Saints' Day Eve"
 msgstr "All Saints' Eve"
-
-#. All Souls' Day.
-msgid "All Souls' Day"
-msgstr "All Souls' Day"
