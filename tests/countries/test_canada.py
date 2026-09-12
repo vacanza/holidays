@@ -413,6 +413,8 @@ class TestCanada(CommonCountryTests, TestCase):
                 (f"{year}-12-26" for year in self.full_range),
             )
 
+        self.assertNoSubdivQcOptionalHolidayName(name)
+
     def test_family_day(self):
         start_years = {
             "AB": 1990,

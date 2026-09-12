@@ -72,7 +72,7 @@ ci = [
   "cyclonedx-bom>=7.3,<8",
   "pre-commit>=4.5,<5",
   "pre-commit-uv>=4.3,<5",
-  "uv==0.12.2",
+  "uv==0.12.5",
 ]
 tests = [
   "coverage>=7.12,<8",
@@ -205,8 +205,8 @@ ini_options.filterwarnings = [
 ]
 
 [tool.coverage]
-run.branch = true
 run.omit = [ "scripts/*", "tests/*" ]
+run.branch = true
 report.exclude_also = [
   "^if TYPE_CHECKING:",
 ]
