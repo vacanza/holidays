@@ -1748,9 +1748,8 @@ class _Solar(_Astronomy):
         for delta in range(6):
             dt = date(year, 1, 12) + timedelta(days=delta)
             sign = self._sidereal_solar_zodiac_sign(self._sunset(dt))
-            sign_prev = self._sidereal_solar_zodiac_sign(self._sunset(dt - timedelta(days=1)))
 
-            if sign == 9 and sign_prev != 9:
+            if sign == 9:
                 return dt
 
         return None
@@ -1770,9 +1769,8 @@ class _Solar(_Astronomy):
         for delta in range(6):
             dt = date(year, 9, 14) + timedelta(days=delta)
             sign = self._sidereal_solar_zodiac_sign(self._sunset(dt))
-            sign_prev = self._sidereal_solar_zodiac_sign(self._sunset(dt - timedelta(days=1)))
 
-            if sign == 5 and sign_prev != 5:
+            if sign == 5:
                 return dt
 
         return None
@@ -1789,9 +1787,8 @@ class _Solar(_Astronomy):
         for delta in range(20):
             dt = date(year, 4, 5) + timedelta(days=delta)
             sign = self._sidereal_solar_zodiac_sign(self._sunrise(dt))
-            sign_prev = self._sidereal_solar_zodiac_sign(self._sunrise(dt - timedelta(days=1)))
 
-            if sign == 0 and sign_prev == 11:
+            if sign == 0:
                 return dt
 
         return None
