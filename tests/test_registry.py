@@ -15,7 +15,7 @@ import inspect
 import warnings
 from unittest import TestCase
 
-import pytest
+from pytest import mark
 
 import holidays
 from holidays import countries, financial, registry
@@ -23,7 +23,7 @@ from tests.common import PYTHON_LATEST_SUPPORTED_VERSION, PYTHON_VERSION
 
 
 class TestEntityLoader(TestCase):
-    @pytest.mark.skipif(
+    @mark.skipif(
         PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
         reason="Run once on the latest Python version only",
     )
@@ -66,7 +66,7 @@ class TestEntityLoader(TestCase):
             "'holidays.countries.united_states.US' class directly.",
         )
 
-    @pytest.mark.skipif(
+    @mark.skipif(
         PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
         reason="Run once on the latest Python version only",
     )

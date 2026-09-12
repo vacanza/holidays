@@ -10,12 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
+from unittest import TestCase
 
 from holidays.calendars.ethiopian import is_ethiopian_leap_year
 
 
-class TestEthiopianCalendar(unittest.TestCase):
+class TestEthiopianCalendar(TestCase):
     def test_is_ethiopian_leap_year(self):
         known_ethiopian_leap_years = {
             # Known Cases.
