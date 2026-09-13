@@ -1140,12 +1140,10 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         self._add_holiday(name, date(self._year, APR, 14 if isleap(self._year) else 15))
 
-    def _add_vaisakhadi_day_two(self, name: str) -> None:
-        """
-        Add Vaisakhadi.
+        Add the day after Vaisakhadi.
 
-        Vaisakhadi marks the beginning of the solar month of Vaisakha
-        in the Punjabi solar calendar. It is usually observed on
+        The day after Vaisakhadi falls on April 15 in leap years
+        and April 16 otherwise.
         April 15, but falls on April 14 in leap years.
         """
         self._add_holiday(name, date(self._year, APR, 15 if isleap(self._year) else 16))
