@@ -1122,12 +1122,13 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.vaisakhi_date(self._year)
         )
 
-    def _add_prev_vaisakhadi(self, name: str) -> None:
+    def _add_vaisakhadi_eve(self, name: str) -> None:
         """
         Add the day before Vaisakhadi.
 
         The day before Vaisakhadi falls on April 13 in leap years
         and April 14 otherwise.
+        """
         self._add_holiday(name, date(self._year, APR, 13 if isleap(self._year) else 14))
 
     def _add_vaisakhadi(self, name: str) -> None:
@@ -1140,6 +1141,8 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         self._add_holiday(name, date(self._year, APR, 14 if isleap(self._year) else 15))
 
+    def _add_vaisakhadi_day_two(self, name: str) -> None:
+        """
         Add the day after Vaisakhadi.
 
         The day after Vaisakhadi falls on April 15 in leap years

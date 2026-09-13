@@ -550,9 +550,8 @@ class India(
         # Kanuma.
         self._add_vassi_uttarayan(tr("Kanuma"))
 
-        if self._year == 2026:
-            # Maha Shivaratri.
-            self._add_maha_shivaratri(tr("Maha Shivaratri"))
+        # Maha Shivaratri.
+        self._add_maha_shivaratri(tr("Maha Shivaratri"))
 
         # Ugadi.
         self._add_gudi_padwa(tr("Ugadi"))
@@ -613,7 +612,7 @@ class India(
 
         # Bahag Bihu.
         name = tr("Bahag Bihu")
-        self._add_prev_vaisakhadi(name)
+        self._add_vaisakhadi_eve(name)
         self._add_vaisakhadi(name)
         self._add_vaisakhadi_day_two(name)
 

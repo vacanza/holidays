@@ -180,6 +180,8 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(
             name, dts, category=OPTIONAL, skip_years=set(self.hindu_full_range) - skip_years
         )
+        # SUBDIVS.
+        self.assertSubdivApGovernmentHolidayName(name, dts)
 
     def test_holi(self):
         name = "Holi"
@@ -640,11 +642,15 @@ class TestIndia(CommonCountryTests, TestCase):
                     name_bahag_bihu,
                     holidays,
                     (f"{year}-04-13" for year in self.full_range if isleap(year)),
-                    (f"{year}-04-14" for year in self.full_range if isleap(year)),
-                    (f"{year}-04-15" for year in self.full_range if isleap(year)),
-                    (f"{year}-04-14" for year in self.full_range if not isleap(year)),
+                    (f"{year}-04-14" for year in self.full_range),
+                    (f"{year}-04-15" for year in self.full_range),
                     (f"{year}-04-16" for year in self.full_range if not isleap(year)),
-                    (f"{year}-04-16" for year in self.full_range if not isleap(year)),
+                )
+                self.assertNoHolidayName(
+                    name_bahag_bihu,
+                    holidays,
+                    (f"{year}-04-13" for year in self.full_range if not isleap(year)),
+                    (f"{year}-04-16" for year in self.full_range if isleap(year)),
                 )
             else:
                 self.assertNoHolidayName(name_bahag_bihu, holidays)
@@ -1289,6 +1295,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertSubdivMnGovernmentHolidayName(
             name, (f"{year}-02-15" for year in range(1988, self.end_year))
         )
+        self.assertNoSubdivMnGovernmentHolidayName(name, range(self.start_year, 1988))
 
     def test_zomi_namni(self):
         name = "Zomi Namni"
@@ -2233,6 +2240,7 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_wangala_festival(self):
         name = "Wangala Festival"
+        self.assertNoHolidayName(name)
         dts = (
             "2020-11-13",
             "2021-11-12",
@@ -2241,8 +2249,10 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-11-08",
             "2025-11-07",
         )
-        self._assertHinduHolidayHelper(name, dts, category=OPTIONAL, subdivs={"AS"})
+        self.assertSubdivAsOptionalHolidayName(name, dts)
+        self.assertSubdivAsOptionalHolidayName(name, self.full_range)
         self.assertSubdivMlGovernmentHolidayName(name, dts)
+        self.assertSubdivMlGovernmentHolidayName(name, self.full_range)
 
     def test_shaheed_veer_narayan_singh_jayanti(self):
         name = "Shaheed Veer Narayan Singh's Shaheedi Diwas"
@@ -2433,8 +2443,8 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-12", "Shri Vallabhacharya's Jayanti"),
             (
                 "2018-04-14",
-                "Bahag Bihu; Baisakhi; Dr. B. R. Ambedkar's Jayanti; ",
-                "Meshadi (Tamil New Year's Day); Puthandu (Tamil New Year); ",
+                "Bahag Bihu; Baisakhi; Dr. B. R. Ambedkar's Jayanti; "
+                "Meshadi (Tamil New Year's Day); Puthandu (Tamil New Year); "
                 "Shab-I-Miraj (estimated); Vaisakhi; Vishu",
             ),
             (
@@ -2830,8 +2840,8 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-12", "Shri Vallabhacharya's Birthday"),
             (
                 "2018-04-14",
-                "Bahag Bihu; Baisakhi; Dr. B. R. Ambedkar's Birthday; ",
-                "Meshadi (Tamil New Year's Day); Puthandu (Tamil New Year); ",
+                "Bahag Bihu; Baisakhi; Dr. B. R. Ambedkar's Birthday; "
+                "Meshadi (Tamil New Year's Day); Puthandu (Tamil New Year); "
                 "Shab-I-Miraj (estimated); Vaisakhi; Vishu",
             ),
             (
