@@ -153,7 +153,7 @@ msgstr "%s (बाजार दुपारी 12:30 वाजता बंद �
 #. %s (markets close at 12:30pm).
 #, c-format
 msgid "%s (markets close at 12:30pm)"
-msgstr "%s (बाजार दुपारी 12:00 वाजता बंद होतात)"
+msgstr "%s (बाजार दुपारी 12:30 वाजता बंद होतात)"
 
 #. %s (markets close at 3:30pm).
 #, c-format
