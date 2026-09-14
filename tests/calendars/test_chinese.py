@@ -10,12 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
+from unittest import TestCase
 
 from holidays.calendars.chinese import _ChineseLunisolar, KOREAN_CALENDAR, VIETNAMESE_CALENDAR
 
 
-class TestChineseLunisolarCalendar(unittest.TestCase):
+class TestChineseLunisolarCalendar(TestCase):
     def setUp(self) -> None:
         super().setUp()
         self.calendar = _ChineseLunisolar()

@@ -10,14 +10,13 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 import warnings
 from collections import defaultdict
 from collections.abc import Callable
 from concurrent.futures import ProcessPoolExecutor
 from datetime import date
 from pathlib import Path
-from unittest import mock
+from unittest import TestCase, mock
 
 import pytest
 
@@ -37,7 +36,7 @@ from holidays.utils import (
 from tests.common import PYTHON_LATEST_SUPPORTED_VERSION, PYTHON_VERSION
 
 
-class TestCountryHolidays(unittest.TestCase):
+class TestCountryHolidays(TestCase):
     def setUp(self):
         self.holidays = country_holidays("US")
 
@@ -74,7 +73,7 @@ class TestCountryHolidays(unittest.TestCase):
         self.assertIn("CountryHoliday is deprecated", str(ctx.warning))
 
 
-class TestFinancialHolidays(unittest.TestCase):
+class TestFinancialHolidays(TestCase):
     def setUp(self):
         self.holidays = financial_holidays("XNYS")
 
@@ -102,7 +101,7 @@ class TestFinancialHolidays(unittest.TestCase):
             financial_holidays("XNYS", subdiv="XXXX")
 
 
-class TestAllInSameYear(unittest.TestCase):
+class TestAllInSameYear(TestCase):
     """Ensure only holidays in the year(s) requested are returned."""
 
     years = set(range(1950, 2051))
@@ -162,7 +161,7 @@ class TestAllInSameYear(unittest.TestCase):
         self._check_holidays_years(financial_holidays, list_supported_financial())
 
 
-class TestListLocalizedEntities(unittest.TestCase):
+class TestListLocalizedEntities(TestCase):
     def assertLocalizedEntities(self, localized_entities, supported_entities):  # noqa: N802
         tests_dir = Path(__file__).parent
         locale_dir = tests_dir.parent / "holidays" / "locale"
@@ -211,7 +210,7 @@ class TestListLocalizedEntities(unittest.TestCase):
         )
 
 
-class TestListSupportedEntities(unittest.TestCase):
+class TestListSupportedEntities(TestCase):
     def test_list_supported_countries(self):
         supported_countries = list_supported_countries(include_aliases=False)
 
@@ -293,7 +292,7 @@ class CountryStub5(HolidayBase):
             self._add_holiday_dec_31("Custom December 31st Holiday")
 
 
-class TestListLongBreaks(unittest.TestCase):
+class TestListLongBreaks(TestCase):
     def assertLongBreaksEqual(  # noqa: N802
         self, instance, expected, *, minimum_break_length=3, require_weekend_overlap=True
     ):

@@ -53,6 +53,7 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
             "2019-05-08",  # Election Day 2019
             "2021-11-01",  # Election Day 2019
             "2024-05-29",  # Election Day 2024
+            "2026-11-04",  # Election Day 2026
         )
         obs_dts = (
             # special holiday

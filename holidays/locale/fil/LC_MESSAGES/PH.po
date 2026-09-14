@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-10-30 02:45+0700\n"
-"PO-Revision-Date: 2025-09-09 23:22+0300\n"
+"PO-Revision-Date: 2026-09-12 15:15+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fil\n"
@@ -113,6 +113,14 @@ msgstr "Eid al-Adha"
 msgid "Founding Anniversary of Iglesia ni Cristo"
 msgstr "Anibersaryo ng Pagkatatag ng Iglesia ni Cristo"
 
+#. Nativity Of Mary.
+msgid "Feast of the Nativity of the Blessed Virgin Mary"
+msgstr "Kapistahan ng Kapanganakan ng Mahal na Birheng Maria"
+
+#. Sheikh Karim'ul Makhdum Day.
+msgid "Sheikh Karim'ul Makhdum Day"
+msgstr "Araw ni Sheikh Karim'ul Makhdum"
+
 #. Additional special (non-working) day.
 msgid "Additional special (non-working) day"
 msgstr "Karagdagang Espesyal na Araw (Walang Trabajo)"
@@ -121,6 +129,10 @@ msgstr "Karagdagang Espesyal na Araw (Walang Trabajo)"
 msgid "Elections special (non-working) day"
 msgstr "Araw ng Halalan (Walang Trabajo)"
 
+#. All Souls' Day.
+msgid "All Souls' Day"
+msgstr "Araw ng mga Kaluluwa"
+
 #. Christmas Eve.
 msgid "Christmas Eve"
 msgstr "Bisperas ng Pasko"
@@ -128,7 +140,3 @@ msgstr "Bisperas ng Pasko"
 #. All Saints' Eve.
 msgid "All Saints' Day Eve"
 msgstr "Bisperas ng Araw ng mga Santo"
-
-#. All Souls' Day.
-msgid "All Souls' Day"
-msgstr "Araw ng mga Kaluluwa"
