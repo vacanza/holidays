@@ -1147,7 +1147,6 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
 
         The day after Vaisakhadi falls on April 15 in leap years
         and April 16 otherwise.
-        April 15, but falls on April 14 in leap years.
         """
         self._add_holiday(name, date(self._year, APR, 15 if isleap(self._year) else 16))
 
