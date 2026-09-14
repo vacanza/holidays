@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-09-05 12:21+0700\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-09-14 11:26+1000\n"
+"Last-Translator: Gordon Heydon <gordon@heydon.com.au>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -58,6 +58,22 @@ msgstr "Australia Day"
 #. Anniversary Day.
 msgid "Anniversary Day"
 msgstr "Anniversary Day"
+
+#. Term 1 School Holidays.
+msgid "Term 1 school holidays"
+msgstr "Term 1 school holidays"
+
+#. Term 2 School Holidays.
+msgid "Term 2 school holidays"
+msgstr "Term 2 school holidays"
+
+#. Term 3 School Holidays.
+msgid "Term 3 school holidays"
+msgstr "Term 3 school holidays"
+
+#. Summer School Holidays.
+msgid "Summer school holidays"
+msgstr "Summer school holidays"
 
 #. Good Friday.
 msgid "Good Friday"
