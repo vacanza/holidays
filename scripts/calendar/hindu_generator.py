@@ -821,6 +821,46 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_hartalika_teej(self, year: int) -> date | None:
+        """
+        Hartalika Teej = Bhadrapada Shukla Tritiya.
+        Tithi = 3 (Tritiya) of Bhadrapada month - sun in sidereal Leo (sign 4).
+        Evaluated at sunrise (Pratahkala / Udaya tithi rule).
+
+        Tritiya detection:
+        - Tritiya active at sunrise -> return that day
+        - Tritiya skipped between sunrises (2 -> 4) -> return previous day
+        """
+        exceptions = {
+            2006: date(2006, 9, 27),
+            2029: date(2029, 9, 11),
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        # Find last Bhadrapada Amavasya
+        bhadrapada_ama = self._get_amavasya(date(year, 8, 1), zodiac_sign=4, last=True)
+
+        if not bhadrapada_ama:
+            return None
+
+        # Find Tritiya at sunrise
+        for delta in range(3, 7):
+            dt = bhadrapada_ama + timedelta(days=delta)
+
+            t_sr = self._tithi(self._sunrise(dt))
+            t_sr_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            # Tritiya active at sunrise
+            if t_sr == 3:
+                return dt
+
+            # Tritiya skipped completely between two sunrises (2 -> 4)
+            if t_sr == 4 and t_sr_prev == 2:
+                return dt - timedelta(days=1)
+
+        return None
+
     def get_holi(self, year: int) -> date | None:
         """
         Holi = Phalgun Purnima (Rangwali Holi, day after Holika Dahan).
@@ -1911,6 +1951,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("GURU_RAVIDAS_JAYANTI", _lunisolar.get_guru_ravidas_jayanti),
     # ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
     # ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
+    ("HARTALIKA_TEEJ", _lunisolar.get_hartalika_teej),
     # ("HOLI", _lunisolar.get_holi),
     # ("JANMASHTAMI", _lunisolar.get_janmashtami),
     # ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
@@ -1924,7 +1965,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("MATSYA_JAYANTI", _lunisolar.get_matsya_jayanti),
     # ("NAAG_PANCHAMI", _lunisolar.get_naag_panchami),
     # ("NARAKA_CHATURDASHI", _lunisolar.get_naraka_chaturdashi),
-    ("PARIVARTINI_EKADASHI", _lunisolar.get_parivartini_ekadashi),
+    # ("PARIVARTINI_EKADASHI", _lunisolar.get_parivartini_ekadashi),
     # ("PARSHURAM_JAYANTI", _lunisolar.get_parshuram_jayanti),
     # ("PITRA_MOKSH_AMAVASYA", _lunisolar.get_pitra_moksh_amavasya),
     # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
