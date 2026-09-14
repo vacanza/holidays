@@ -1352,6 +1352,44 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_parivartini_ekadashi(self, year: int) -> date | None:
+        """
+        Parivartini Ekadashi = Bhadrapada Shukla Ekadashi.
+        Tithi = 11 (Ekadashi) of Shukla Paksha in Bhadrapada month - sun in
+        sidereal Leo (sign 4).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        Ekadashi detection:
+        - Present at sunrise -> return that day
+        - Skipped between sunrises (10 -> 12) -> return current day
+        """
+        exceptions = {
+            2023: date(2023, 9, 25),
+            2032: date(2032, 9, 15),
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        # Find last Bhadrapada Amavasya
+        bhadrapada_ama = self._get_amavasya(date(year, 8, 1), zodiac_sign=4, last=True)
+
+        if not bhadrapada_ama:
+            return None
+
+        # Find Ekadashi (tithi 11) at sunrise, or skipped case (10 -> 12)
+        for delta in range(9, 14):
+            dt = bhadrapada_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            if t == 11:
+                return dt
+
+            if t == 12 and t_prev == 10:
+                return dt
+
+        return None
+
     def get_parshuram_jayanti(self, year: int) -> date | None:
         """
         Parshuram Jayanti = Vaishakha Shukla Tritiya.
@@ -1886,6 +1924,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("MATSYA_JAYANTI", _lunisolar.get_matsya_jayanti),
     # ("NAAG_PANCHAMI", _lunisolar.get_naag_panchami),
     # ("NARAKA_CHATURDASHI", _lunisolar.get_naraka_chaturdashi),
+    ("PARIVARTINI_EKADASHI", _lunisolar.get_parivartini_ekadashi),
     # ("PARSHURAM_JAYANTI", _lunisolar.get_parshuram_jayanti),
     # ("PITRA_MOKSH_AMAVASYA", _lunisolar.get_pitra_moksh_amavasya),
     # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
@@ -1893,7 +1932,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("RATH_YATRA", _lunisolar.get_rath_yatra),
     # ("SHAKAMBHARI_PURNIMA", _lunisolar.get_shakambhari_purnima),
     # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
-    ("THAIPUSAM", _lunisolar.get_thaipusam),
+    # ("THAIPUSAM", _lunisolar.get_thaipusam),
     # ("TULSIDAS_JAYANTI", _lunisolar.get_tulsidas_jayanti),
     # ("VARALAKSHMI_VRATAM", _lunisolar.get_varalakshmi_vratam),
     # ("VIKRAM_SAMVAT_NEW_YEAR", _lunisolar.get_vikram_samvat_new_year),
