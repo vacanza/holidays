@@ -16,10 +16,10 @@ from datetime import date
 
 from holidays.calendars.australia_school import (
     AUSTRALIA_SCHOOL_HOLIDAYS,
+    SUMMER_HOLIDAYS,
     TERM_1_HOLIDAYS,
     TERM_2_HOLIDAYS,
     TERM_3_HOLIDAYS,
-    SUMMER_HOLIDAYS,
 )
 from holidays.calendars.gregorian import JAN, APR, JUN, AUG, SEP, OCT, DEC
 from holidays.constants import BANK, HALF_DAY, PUBLIC, SCHOOL
@@ -149,13 +149,13 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
     @staticmethod
     def _get_school_holiday_names() -> dict[int, str]:
         return {
-            # Term 1 School Holidays.
+            # Term 1 school holidays.
             TERM_1_HOLIDAYS: tr("Term 1 school holidays"),
-            # Term 2 School Holidays.
+            # Term 2 school holidays.
             TERM_2_HOLIDAYS: tr("Term 2 school holidays"),
-            # Term 3 School Holidays.
+            # Term 3 school holidays.
             TERM_3_HOLIDAYS: tr("Term 3 school holidays"),
-            # Summer School Holidays.
+            # Summer school holidays.
             SUMMER_HOLIDAYS: tr("Summer school holidays"),
         }
 

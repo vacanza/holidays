@@ -2068,19 +2068,9 @@ class TestAustralia(CommonCountryTests, TestCase):
         for year, year_data in AUSTRALIA_SCHOOL_HOLIDAYS.items():
             self.assertLessEqual(set(year_data), set(Australia.subdivisions), year)
 
-    def test_school_holidays_vic(self):
-        # Term 1 2026 runs 28 January to 2 April, so the days either side of it
-        # are holidays and the days inside it are not.
-        self.assertSubdivVicSchoolHolidayName("Summer school holidays", "2026-01-27")
-        self.assertSubdivVicSchoolHolidayName("Term 1 school holidays", "2026-04-03")
-        self.assertSubdivVicSchoolHolidayName("Term 2 school holidays", "2026-06-27")
-        self.assertSubdivVicSchoolHolidayName("Term 3 school holidays", "2026-09-19")
-        self.assertSubdivVicSchoolHolidayName("Summer school holidays", "2026-12-19")
-
     def test_school_terms_are_not_holidays(self):
         # The first and last day of each Victorian term in 2026.
-        vic = Australia(subdiv="VIC", years=2026, categories=SCHOOL)
-        for term_day in (
+        self.assertNoSubdivVicSchoolHoliday(
             "2026-01-28",
             "2026-04-02",
             "2026-04-20",
@@ -2089,8 +2079,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             "2026-09-18",
             "2026-10-05",
             "2026-12-18",
-        ):
-            self.assertNoHoliday(vic, term_day)
+        )
 
     def test_school_holidays_run_across_new_year(self):
         # The summer break belongs to both years it touches.
@@ -2112,17 +2101,19 @@ class TestAustralia(CommonCountryTests, TestCase):
         # Eastern students return on 28 January 2027; Western would still be on
         # holiday until 3 February.
         self.assertSubdivNswSchoolHolidayName("Summer school holidays", "2027-01-27")
-        nsw = Australia(subdiv="NSW", years=2027, categories=SCHOOL)
-        self.assertNoHoliday(nsw, "2027-01-28", "2027-02-03")
+        self.assertNoSubdivNswSchoolHoliday("2027-01-28", "2027-02-03")
 
     def test_school_holidays_qld_2029_summer(self):
         # Queensland publishes the start of the 2029 summer break but not its
         # end, which awaits the Minister. The approved part still counts.
-        self.assertSubdivQldSchoolHolidayName("Summer school holidays", "2029-12-08")
-        self.assertSubdivQldSchoolHolidayName("Summer school holidays", "2029-12-10")
-        self.assertSubdivQldSchoolHolidayName("Summer school holidays", "2029-12-31")
+        self.assertSubdivQldSchoolHolidayName(
+            "Summer school holidays",
+            "2029-12-08",
+            "2029-12-10",
+            "2029-12-31",
+        )
         # Term 4 2029 ends on 7 December, so that is still a school day.
-        self.assertNoHoliday(Australia(subdiv="QLD", years=2029, categories=SCHOOL), "2029-12-07")
+        self.assertNoSubdivQldSchoolHoliday("2029-12-07")
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

@@ -39,26 +39,21 @@ The public holidays at a term boundary are likewise excluded from its periods,
 but they are covered by the PUBLIC category.
 
 Sources:
-    * [ACT](https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving)
-    * [NSW](https://education.nsw.gov.au/schooling/calendars/future-and-past-nsw-term-and-vacation-dates)
-    * [NT](https://nt.gov.au/learning/primary-and-secondary-students/school-term-dates-in-nt)
-    * [QLD](https://education.qld.gov.au/about-us/calendar/future-dates)
-    * [SA](https://www.education.sa.gov.au/parents-and-families/term-dates-south-australian-state-schools)
-    * [TAS](https://www.decyp.tas.gov.au/learning/term-dates/)
-    * [VIC](https://www.vic.gov.au/school-term-dates-and-holidays-victoria)
-    * [WA](https://www.education.wa.edu.au/future-term-dates)
+    * [ACT](https://web.archive.org/web/20260909031430/https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving)
+    * [NSW](https://web.archive.org/web/20260726052159/https://education.nsw.gov.au/schooling/calendars/future-and-past-nsw-term-and-vacation-dates)
+    * [NT](https://web.archive.org/web/20260906145204/https://nt.gov.au/learning/primary-and-secondary-students/school-term-dates-in-nt)
+    * [QLD](https://web.archive.org/web/20260312112035/https://education.qld.gov.au/about-us/calendar/future-dates)
+    * [SA](https://web.archive.org/web/20251222001032/https://www.education.sa.gov.au/parents-and-families/term-dates-south-australian-state-schools)
+    * [TAS](https://web.archive.org/web/20260610091723/https://www.decyp.tas.gov.au/learning/term-dates/)
+    * [VIC](https://web.archive.org/web/20260913195820/https://www.vic.gov.au/school-term-dates-and-holidays-victoria)
+    * [WA](https://web.archive.org/web/20260911103607/https://www.education.wa.edu.au/future-term-dates)
 
 Coverage stops where each jurisdiction stops publishing approved dates, so it is
 uneven: the Northern Territory reaches 2032, the ACT and Tasmania only 2027.
 Western Australia's 2030 onwards are marked preliminary and are left out.
 """
 
-(
-    TERM_1_HOLIDAYS,
-    TERM_2_HOLIDAYS,
-    TERM_3_HOLIDAYS,
-    SUMMER_HOLIDAYS,
-) = range(4)
+(SUMMER_HOLIDAYS, TERM_1_HOLIDAYS, TERM_2_HOLIDAYS, TERM_3_HOLIDAYS) = range(4)
 
 AUSTRALIA_SCHOOL_HOLIDAYS = {
     2026: {

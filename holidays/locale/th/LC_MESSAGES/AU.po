@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-09-05 12:21+0700\n"
-"PO-Revision-Date: 2026-09-14 11:26+1000\n"
+"PO-Revision-Date: 2026-09-14 23:46+1000\n"
 "Last-Translator: Gordon Heydon <gordon@heydon.com.au>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -59,19 +59,19 @@ msgstr "วันชาติออสเตรเลีย"
 msgid "Anniversary Day"
 msgstr "วันครบรอบการก่อตั้งอาณานิคม"
 
-#. Term 1 School Holidays.
+#. Term 1 school holidays.
 msgid "Term 1 school holidays"
 msgstr "วันหยุดภาคเรียนที่ 1"
 
-#. Term 2 School Holidays.
+#. Term 2 school holidays.
 msgid "Term 2 school holidays"
 msgstr "วันหยุดภาคเรียนที่ 2"
 
-#. Term 3 School Holidays.
+#. Term 3 school holidays.
 msgid "Term 3 school holidays"
 msgstr "วันหยุดภาคเรียนที่ 3"
 
-#. Summer School Holidays.
+#. Summer school holidays.
 msgid "Summer school holidays"
 msgstr "วันหยุดภาคฤดูร้อน"
 
