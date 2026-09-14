@@ -15,7 +15,7 @@
 Each state and territory publishes its own school calendar; there is no national
 one. Six publish term dates only, so their holidays are the gaps between terms.
 New South Wales and Queensland publish the holiday periods themselves and those
-are used verbatim — deriving Queensland's from its term dates reproduces its
+are used verbatim - deriving Queensland's from its term dates reproduces its
 published holidays exactly, which is the check that the derivation is sound.
 
 Dates are student dates wherever a jurisdiction distinguishes them from staff

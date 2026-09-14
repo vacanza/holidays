@@ -13,6 +13,7 @@
 from __future__ import annotations
 
 from datetime import date
+
 from holidays.calendars.australia_school import (
     AUSTRALIA_SCHOOL_HOLIDAYS,
     TERM_1_HOLIDAYS,
