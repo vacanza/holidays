@@ -96,6 +96,15 @@ class _Astronomy:
         self._set_observer_date(dt)
         return self._observer.next_setting(self._sun)
 
+    def _nakshatra(self, ed: ephem.Date) -> int:
+        """Return the nakshatra (1-27) of the Moon at the given date.
+
+        Nakshatras are determined from the Moon's sidereal longitude.
+        Each nakshatra spans 13°20'.
+        """
+        moon_lon = (self._tropical_lon(self._moon, ed) - self._lahiri_ayanamsa(ed)) % 360
+        return int(moon_lon // (360 / 27)) + 1
+
     def _sidereal_solar_zodiac_sign(self, ed: ephem.Date) -> int:
         """Return the sidereal zodiac sign index (0 = Aries … 11 = Pisces) of the
         Sun at the given date."""
@@ -1594,6 +1603,54 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_thaipusam(self, year: int) -> date | None:
+        """
+        Thaipusam = Thai Poosam.
+        The festival falls in the Tamil solar month Thai, when the Moon
+        is in Pushya (Poosam) Nakshatra.
+
+        Thai corresponds to the Sun's sidereal Makara (Capricorn) sign.
+        Pushya is Nakshatra 8.
+
+        The Hindu calendar day is governed by sunrise. Therefore, the
+        festival is assigned to the civil day on which Pushya occurs
+        during the sunrise-to-next-sunrise day.
+
+        Pushya detection:
+        - Present at sunrise -> return that day.
+        - Starts after sunrise but before the next sunrise -> return that day.
+        - If Pushya starts after sunset and continues through the next
+          sunrise, the next calendar day is selected.
+        """
+        for delta in range(45):
+            dt = date(year, 1, 10) + timedelta(days=delta)
+
+            sunrise = self._sunrise(dt)
+            sunset = self._sunset(dt)
+            next_sunrise = self._sunrise(dt + timedelta(days=1))
+
+            # Thai = Sun in sidereal Makara (Capricorn).
+            if self._sidereal_solar_zodiac_sign(sunrise) != 9:
+                continue
+
+            sunrise_nakshatra = self._nakshatra(sunrise)
+            sunset_nakshatra = self._nakshatra(sunset)
+            next_sunrise_nakshatra = self._nakshatra(next_sunrise)
+
+            # Pushya / Poosam = 8th Nakshatra.
+            if sunrise_nakshatra == 8:
+                return dt
+
+            # Pushya begins after sunrise but before sunset.
+            if sunset_nakshatra == 8:
+                return dt
+
+            # Pushya begins after sunset and is active at the next sunrise.
+            if next_sunrise_nakshatra == 8:
+                return dt + timedelta(days=1)
+
+        return None
+
     def get_tulsidas_jayanti(self, year: int) -> date | None:
         """
         Tulsidas Jayanti = Shravan Shukla Saptami.
@@ -1798,53 +1855,54 @@ _lunisolar = _Lunisolar()
 _solar = _Solar()
 
 HINDU_LUNISOLAR_HOLIDAYS = (
-    ("ANANT_CHATURDASHI", _lunisolar.get_anant_chaturdashi),
-    ("BASANT_PANCHAMI", _lunisolar.get_basant_panchami),
-    ("BATHUKAMMA", _lunisolar.get_bathukamma),
-    ("BONALU", _lunisolar.get_bonalu),
-    ("BUDDHA_PURNIMA", _lunisolar.get_buddha_purnima),
-    ("CHAITRA_NAVRATRI", _lunisolar.get_chaitra_navratri),
-    ("CHHATH_PUJA", _lunisolar.get_chhath_puja),
-    ("DATTATREYA_JAYANTI", _lunisolar.get_dattatreya_jayanti),
-    ("DEV_DIWALI", _lunisolar.get_dev_diwali),
-    ("DIWALI_INDIA", _lunisolar.get_diwali),
-    ("DUSSEHRA", _lunisolar.get_dussehra),
-    ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
-    ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
-    ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
-    ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
-    ("GURU_RAVIDAS_JAYANTI", _lunisolar.get_guru_ravidas_jayanti),
-    ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
-    ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
-    ("HOLI", _lunisolar.get_holi),
-    ("JANMASHTAMI", _lunisolar.get_janmashtami),
-    ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
-    ("KARWA_CHAUTH", _lunisolar.get_karwa_chauth),
-    ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
-    ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
-    ("MAHARANA_PRATAP_JAYANTI", _lunisolar.get_maharana_pratap_jayanti),
-    ("MAHAVIR_JAYANTI", _lunisolar.get_mahavir_jayanti),
-    ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
-    ("MAHESH_NAVAMI", _lunisolar.get_mahesh_navami),
-    ("MATSYA_JAYANTI", _lunisolar.get_matsya_jayanti),
-    ("NAAG_PANCHAMI", _lunisolar.get_naag_panchami),
-    ("NARAKA_CHATURDASHI", _lunisolar.get_naraka_chaturdashi),
-    ("PARSHURAM_JAYANTI", _lunisolar.get_parshuram_jayanti),
-    ("PITRA_MOKSH_AMAVASYA", _lunisolar.get_pitra_moksh_amavasya),
-    ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
-    ("RAM_NAVAMI", _lunisolar.get_ram_navami),
-    ("RATH_YATRA", _lunisolar.get_rath_yatra),
-    ("SHAKAMBHARI_PURNIMA", _lunisolar.get_shakambhari_purnima),
-    ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
-    ("TULSIDAS_JAYANTI", _lunisolar.get_tulsidas_jayanti),
-    ("VARALAKSHMI_VRATAM", _lunisolar.get_varalakshmi_vratam),
-    ("VIKRAM_SAMVAT_NEW_YEAR", _lunisolar.get_vikram_samvat_new_year),
+    # ("ANANT_CHATURDASHI", _lunisolar.get_anant_chaturdashi),
+    # ("BASANT_PANCHAMI", _lunisolar.get_basant_panchami),
+    # ("BATHUKAMMA", _lunisolar.get_bathukamma),
+    # ("BONALU", _lunisolar.get_bonalu),
+    # ("BUDDHA_PURNIMA", _lunisolar.get_buddha_purnima),
+    # ("CHAITRA_NAVRATRI", _lunisolar.get_chaitra_navratri),
+    # ("CHHATH_PUJA", _lunisolar.get_chhath_puja),
+    # ("DATTATREYA_JAYANTI", _lunisolar.get_dattatreya_jayanti),
+    # ("DEV_DIWALI", _lunisolar.get_dev_diwali),
+    # ("DIWALI_INDIA", _lunisolar.get_diwali),
+    # ("DUSSEHRA", _lunisolar.get_dussehra),
+    # ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
+    # ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
+    # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
+    # ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
+    # ("GURU_RAVIDAS_JAYANTI", _lunisolar.get_guru_ravidas_jayanti),
+    # ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
+    # ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
+    # ("HOLI", _lunisolar.get_holi),
+    # ("JANMASHTAMI", _lunisolar.get_janmashtami),
+    # ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
+    # ("KARWA_CHAUTH", _lunisolar.get_karwa_chauth),
+    # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
+    # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
+    # ("MAHARANA_PRATAP_JAYANTI", _lunisolar.get_maharana_pratap_jayanti),
+    # ("MAHAVIR_JAYANTI", _lunisolar.get_mahavir_jayanti),
+    # ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
+    # ("MAHESH_NAVAMI", _lunisolar.get_mahesh_navami),
+    # ("MATSYA_JAYANTI", _lunisolar.get_matsya_jayanti),
+    # ("NAAG_PANCHAMI", _lunisolar.get_naag_panchami),
+    # ("NARAKA_CHATURDASHI", _lunisolar.get_naraka_chaturdashi),
+    # ("PARSHURAM_JAYANTI", _lunisolar.get_parshuram_jayanti),
+    # ("PITRA_MOKSH_AMAVASYA", _lunisolar.get_pitra_moksh_amavasya),
+    # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
+    # ("RAM_NAVAMI", _lunisolar.get_ram_navami),
+    # ("RATH_YATRA", _lunisolar.get_rath_yatra),
+    # ("SHAKAMBHARI_PURNIMA", _lunisolar.get_shakambhari_purnima),
+    # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
+    ("THAIPUSAM", _lunisolar.get_thaipusam),
+    # ("TULSIDAS_JAYANTI", _lunisolar.get_tulsidas_jayanti),
+    # ("VARALAKSHMI_VRATAM", _lunisolar.get_varalakshmi_vratam),
+    # ("VIKRAM_SAMVAT_NEW_YEAR", _lunisolar.get_vikram_samvat_new_year),
 )
 
 HINDU_SOLAR_HOLIDAYS = (
-    ("MAKAR_SANKRANTI", _solar.get_makar_sankranti),
-    ("VISHWAKARMA_PUJA", _solar.get_vishwakarma_puja),
-    ("VISHU", _solar.get_vishu),
+    # ("MAKAR_SANKRANTI", _solar.get_makar_sankranti),
+    # ("VISHWAKARMA_PUJA", _solar.get_vishwakarma_puja),
+    # ("VISHU", _solar.get_vishu),
 )
 
 
