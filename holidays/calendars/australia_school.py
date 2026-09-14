@@ -26,11 +26,17 @@ inside the term.
 Ranges that run past 31 December appear under both years, since a year's
 holidays are read from its own entry and clipped to it.
 
-One caveat on New South Wales: its published holiday periods stop short of the
-school development days that open each term, because the department counts those
-inside the term even though students do not attend. Those days are therefore not
-school holidays here either. The public holidays at a term boundary are likewise
-excluded from its periods, but they are covered by the PUBLIC category.
+Two caveats on New South Wales. It runs two sets of term dates: Western Division
+schools, in the far west of the state, start Term 1 about a week later than the
+rest and their summer break runs on accordingly. Subdivisions here are states, so
+one of the two has to stand for NSW, and these are the Eastern Division dates,
+which cover the great majority of schools.
+
+Its published holiday periods also stop short of the school development days that
+open each term, because the department counts those inside the term even though
+students do not attend. Those days are therefore not school holidays here either.
+The public holidays at a term boundary are likewise excluded from its periods,
+but they are covered by the PUBLIC category.
 
 Sources:
     * [ACT](https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving)

@@ -2107,6 +2107,14 @@ class TestAustralia(CommonCountryTests, TestCase):
         # Each state sets its own calendar; there is no national one.
         self.assertFalse(Australia(years=2026, categories=SCHOOL))
 
+    def test_school_holidays_nsw_uses_the_eastern_division(self):
+        # NSW runs two sets of term dates and only one can stand for the state.
+        # Eastern students return on 28 January 2027; Western would still be on
+        # holiday until 3 February.
+        self.assertSubdivNswSchoolHolidayName("Summer school holidays", "2027-01-27")
+        nsw = Australia(subdiv="NSW", years=2027, categories=SCHOOL)
+        self.assertNoHoliday(nsw, "2027-01-28", "2027-02-03")
+
     def test_school_holidays_qld_2029_summer(self):
         # Queensland publishes the start of the 2029 summer break but not its
         # end, which awaits the Minister. The approved part still counts.
