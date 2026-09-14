@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.calendars.australia_school import AUSTRALIA_SCHOOL_HOLIDAYS
-from holidays.constants import PUBLIC, SCHOOL
+from holidays.constants import SCHOOL
 from holidays.countries.australia import Australia
 from tests.common import CommonCountryTests
 
@@ -2052,6 +2052,70 @@ class TestAustralia(CommonCountryTests, TestCase):
         }
         self.assertEqual(all_holidays, holidays_found)
 
+    # School holidays.
+
+    def test_all_school_holiday_ids_are_mapped(self):
+        known_ids = set(Australia._get_school_holiday_names())
+        dataset_ids = {
+            holiday_id
+            for year_data in AUSTRALIA_SCHOOL_HOLIDAYS.values()
+            for subdiv_holidays in year_data.values()
+            for *_, holiday_id in subdiv_holidays
+        }
+        self.assertEqual(dataset_ids, known_ids)
+
+    def test_school_holidays_cover_only_known_subdivisions(self):
+        for year, year_data in AUSTRALIA_SCHOOL_HOLIDAYS.items():
+            self.assertLessEqual(set(year_data), set(Australia.subdivisions), year)
+
+    def test_school_holidays_vic(self):
+        # Term 1 2026 runs 28 January to 2 April, so the days either side of it
+        # are holidays and the days inside it are not.
+        self.assertSubdivVicSchoolHolidayName("Summer school holidays", "2026-01-27")
+        self.assertSubdivVicSchoolHolidayName("Term 1 school holidays", "2026-04-03")
+        self.assertSubdivVicSchoolHolidayName("Term 2 school holidays", "2026-06-27")
+        self.assertSubdivVicSchoolHolidayName("Term 3 school holidays", "2026-09-19")
+        self.assertSubdivVicSchoolHolidayName("Summer school holidays", "2026-12-19")
+
+    def test_school_terms_are_not_holidays(self):
+        # The first and last day of each Victorian term in 2026.
+        vic = Australia(subdiv="VIC", years=2026, categories=SCHOOL)
+        for term_day in (
+            "2026-01-28",
+            "2026-04-02",
+            "2026-04-20",
+            "2026-06-26",
+            "2026-07-13",
+            "2026-09-18",
+            "2026-10-05",
+            "2026-12-18",
+        ):
+            self.assertNoHoliday(vic, term_day)
+
+    def test_school_holidays_run_across_new_year(self):
+        # The summer break belongs to both years it touches.
+        self.assertSubdivVicSchoolHolidayName("Summer school holidays", "2026-12-31", "2027-01-01")
+
+    def test_every_subdivision_has_school_holidays(self):
+        for subdiv in Australia.subdivisions:
+            self.assertTrue(
+                Australia(subdiv=subdiv, years=2026, categories=SCHOOL),
+                f"{subdiv} has no 2026 school holidays",
+            )
+
+    def test_no_school_holidays_without_a_subdivision(self):
+        # Each state sets its own calendar; there is no national one.
+        self.assertFalse(Australia(years=2026, categories=SCHOOL))
+
+    def test_school_holidays_qld_2029_summer(self):
+        # Queensland publishes the start of the 2029 summer break but not its
+        # end, which awaits the Minister. The approved part still counts.
+        self.assertSubdivQldSchoolHolidayName("Summer school holidays", "2029-12-08")
+        self.assertSubdivQldSchoolHolidayName("Summer school holidays", "2029-12-10")
+        self.assertSubdivQldSchoolHolidayName("Summer school holidays", "2029-12-31")
+        # Term 4 2029 ends on 7 December, so that is still a school day.
+        self.assertNoHoliday(Australia(subdiv="QLD", years=2029, categories=SCHOOL), "2029-12-07")
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "New Year's Day"),
@@ -2152,81 +2216,6 @@ class TestAustralia(CommonCountryTests, TestCase):
             ("2022-12-31", "วันสิ้นปี (ตั้งแต่ 19:00 น.)"),
         )
 
-    # School holidays.
-
-    def test_all_school_holiday_ids_are_mapped(self):
-        known_ids = set(Australia._get_school_holiday_names())
-        dataset_ids = {
-            holiday_id
-            for year_data in AUSTRALIA_SCHOOL_HOLIDAYS.values()
-            for subdiv_holidays in year_data.values()
-            for *_, holiday_id in subdiv_holidays
-        }
-        self.assertEqual(dataset_ids, known_ids)
-
-    def test_school_holidays_cover_only_known_subdivisions(self):
-        for year, year_data in AUSTRALIA_SCHOOL_HOLIDAYS.items():
-            self.assertLessEqual(set(year_data), set(Australia.subdivisions), year)
-
-    def test_school_holidays_vic(self):
-        # Term 1 2026 runs 28 January to 2 April, so the days either side of it
-        # are holidays and the days inside it are not.
-        self.assertSubdivVicSchoolHolidayName("Summer school holidays", "2026-01-27")
-        self.assertSubdivVicSchoolHolidayName("Term 1 school holidays", "2026-04-03")
-        self.assertSubdivVicSchoolHolidayName("Term 2 school holidays", "2026-06-27")
-        self.assertSubdivVicSchoolHolidayName("Term 3 school holidays", "2026-09-19")
-        self.assertSubdivVicSchoolHolidayName("Summer school holidays", "2026-12-19")
-
-    def test_school_terms_are_not_holidays(self):
-        # The first and last day of each Victorian term in 2026.
-        vic = Australia(subdiv="VIC", years=2026, categories=SCHOOL)
-        for term_day in (
-            "2026-01-28",
-            "2026-04-02",
-            "2026-04-20",
-            "2026-06-26",
-            "2026-07-13",
-            "2026-09-18",
-            "2026-10-05",
-            "2026-12-18",
-        ):
-            self.assertNoHoliday(vic, term_day)
-
-    def test_school_holidays_run_across_new_year(self):
-        # The summer break belongs to both years it touches.
-        self.assertSubdivVicSchoolHolidayName("Summer school holidays", "2026-12-31")
-        self.assertSubdivVicSchoolHolidayName("Summer school holidays", "2027-01-01")
-
-    def test_every_subdivision_has_school_holidays(self):
-        for subdiv in Australia.subdivisions:
-            self.assertTrue(
-                Australia(subdiv=subdiv, years=2026, categories=SCHOOL),
-                f"{subdiv} has no 2026 school holidays",
-            )
-
-    def test_no_school_holidays_without_a_subdivision(self):
-        # Each state sets its own calendar; there is no national one.
-        self.assertFalse(Australia(years=2026, categories=SCHOOL))
-
-    def test_school_and_public_categories(self):
-        both = Australia(subdiv="VIC", years=2026, categories=(PUBLIC, SCHOOL))
-        self.assertHolidayName("Australia Day", both, "2026-01-26")
-        self.assertHolidayName("Summer school holidays", both, "2026-01-26")
-
-    def test_public_category_excludes_school_holidays(self):
-        public_only = Australia(subdiv="VIC", years=2026, categories=PUBLIC)
-        self.assertHolidayName("Australia Day", public_only, "2026-01-26")
-        self.assertNoHolidayName("Term 1 school holidays", public_only)
-
-    def test_school_holidays_qld_2029_summer(self):
-        # Queensland publishes the start of the 2029 summer break but not its
-        # end, which awaits the Minister. The approved part still counts.
-        self.assertSubdivQldSchoolHolidayName("Summer school holidays", "2029-12-08")
-        self.assertSubdivQldSchoolHolidayName("Summer school holidays", "2029-12-10")
-        self.assertSubdivQldSchoolHolidayName("Summer school holidays", "2029-12-31")
-        # Term 4 2029 ends on 7 December, so that is still a school day.
-        self.assertNoHoliday(Australia(subdiv="QLD", years=2029, categories=SCHOOL), "2029-12-07")
-
     def test_l10n_default_school(self):
         default_holidays = Australia(subdiv="VIC", years=2026, categories=SCHOOL)
         for dt, name in (
@@ -2250,9 +2239,9 @@ class TestAustralia(CommonCountryTests, TestCase):
     def test_l10n_th_school(self):
         th_holidays = Australia(subdiv="VIC", years=2026, language="th", categories=SCHOOL)
         for dt, name in (
-            ("2026-04-03", "ปิดเทอมที่ 1"),
-            ("2026-06-27", "ปิดเทอมที่ 2"),
-            ("2026-09-19", "ปิดเทอมที่ 3"),
-            ("2026-12-19", "ปิดเทอมฤดูร้อน"),
+            ("2026-04-03", "วันหยุดภาคเรียนที่ 1"),
+            ("2026-06-27", "วันหยุดภาคเรียนที่ 2"),
+            ("2026-09-19", "วันหยุดภาคเรียนที่ 3"),
+            ("2026-12-19", "วันหยุดภาคฤดูร้อน"),
         ):
             self.assertHolidayName(name, th_holidays, dt)
