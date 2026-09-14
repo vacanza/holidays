@@ -2217,3 +2217,42 @@ class TestAustralia(CommonCountryTests, TestCase):
         public_only = Australia(subdiv="VIC", years=2026, categories=PUBLIC)
         self.assertHolidayName("Australia Day", public_only, "2026-01-26")
         self.assertNoHolidayName("Term 1 school holidays", public_only)
+
+    def test_school_holidays_qld_2029_summer(self):
+        # Queensland publishes the start of the 2029 summer break but not its
+        # end, which awaits the Minister. The approved part still counts.
+        self.assertSubdivQldSchoolHolidayName("Summer school holidays", "2029-12-08")
+        self.assertSubdivQldSchoolHolidayName("Summer school holidays", "2029-12-10")
+        self.assertSubdivQldSchoolHolidayName("Summer school holidays", "2029-12-31")
+        # Term 4 2029 ends on 7 December, so that is still a school day.
+        self.assertNoHoliday(Australia(subdiv="QLD", years=2029, categories=SCHOOL), "2029-12-07")
+
+    def test_l10n_default_school(self):
+        default_holidays = Australia(subdiv="VIC", years=2026, categories=SCHOOL)
+        for dt, name in (
+            ("2026-04-03", "Term 1 school holidays"),
+            ("2026-06-27", "Term 2 school holidays"),
+            ("2026-09-19", "Term 3 school holidays"),
+            ("2026-12-19", "Summer school holidays"),
+        ):
+            self.assertHolidayName(name, default_holidays, dt)
+
+    def test_l10n_en_us_school(self):
+        en_us_holidays = Australia(subdiv="VIC", years=2026, language="en_US", categories=SCHOOL)
+        for dt, name in (
+            ("2026-04-03", "Term 1 school holidays"),
+            ("2026-06-27", "Term 2 school holidays"),
+            ("2026-09-19", "Term 3 school holidays"),
+            ("2026-12-19", "Summer school holidays"),
+        ):
+            self.assertHolidayName(name, en_us_holidays, dt)
+
+    def test_l10n_th_school(self):
+        th_holidays = Australia(subdiv="VIC", years=2026, language="th", categories=SCHOOL)
+        for dt, name in (
+            ("2026-04-03", "ปิดเทอมที่ 1"),
+            ("2026-06-27", "ปิดเทอมที่ 2"),
+            ("2026-09-19", "ปิดเทอมที่ 3"),
+            ("2026-12-19", "ปิดเทอมฤดูร้อน"),
+        ):
+            self.assertHolidayName(name, th_holidays, dt)

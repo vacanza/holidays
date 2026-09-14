@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-"""Auto-generated Germany school holidays dataset from official KMK sources."""
-
 """Australian school holidays dataset, transcribed from official sources.
 
 Each state and territory publishes its own school calendar; there is no national
@@ -237,6 +235,7 @@ AUSTRALIA_SCHOOL_HOLIDAYS = {
             (0, 3, 30, 0, 4, 15, TERM_1_HOLIDAYS),
             (0, 6, 23, 0, 7, 8, TERM_2_HOLIDAYS),
             (0, 9, 15, 0, 10, 1, TERM_3_HOLIDAYS),
+            (0, 12, 8, 0, 12, 31, SUMMER_HOLIDAYS),
         ),
         "SA": (
             (-1, 12, 16, 0, 1, 28, SUMMER_HOLIDAYS),

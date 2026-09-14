@@ -61,19 +61,19 @@ msgstr "วันครบรอบการก่อตั้งอาณาน
 
 #. Term 1 School Holidays.
 msgid "Term 1 school holidays"
-msgstr ""
+msgstr "ปิดเทอมที่ 1"
 
 #. Term 2 School Holidays.
 msgid "Term 2 school holidays"
-msgstr ""
+msgstr "ปิดเทอมที่ 2"
 
 #. Term 3 School Holidays.
 msgid "Term 3 school holidays"
-msgstr ""
+msgstr "ปิดเทอมที่ 3"
 
 #. Summer School Holidays.
 msgid "Summer school holidays"
-msgstr ""
+msgstr "ปิดเทอมฤดูร้อน"
 
 #. Good Friday.
 msgid "Good Friday"
