@@ -10,8 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
+from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, SEP, DEC
 from holidays.calendars.islamic import _CustomIslamicMabimsHolidays
@@ -24,7 +24,7 @@ class _MockMabimsCalendar(_CustomIslamicMabimsHolidays):
     MAWLID_DATES_CONFIRMED_YEARS = (1998, 2077)
 
 
-class TestIslamicMabimsLunar(unittest.TestCase):
+class TestIslamicMabimsLunar(TestCase):
     def setUp(self) -> None:
         super().setUp()
         self.calendar = _MockMabimsCalendar()
@@ -86,7 +86,3 @@ class TestIslamicMabimsLunar(unittest.TestCase):
         dates_2025 = self._get_dates(self.calendar.mawlid_dates, 2025)
         self.assertIn(date(2025, SEP, 5), dates_2025)
         self.assertEqual(len(dates_2025), 1)
-
-
-if __name__ == "__main__":
-    unittest.main()
