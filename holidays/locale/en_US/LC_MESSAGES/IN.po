@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.105\n"
+"Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-09-15 12:22+0530\n"
+"PO-Revision-Date: 2026-09-16 00:18+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -824,6 +824,10 @@ msgstr "Satguru Ram Singh's Birthday"
 #. Hola Mohalla.
 msgid "Hola Mohalla"
 msgstr "Hola Mohalla"
+
+#. Nirjala Ekadashi.
+msgid "Nirjala Ekadashi"
+msgstr "Nirjala Ekadashi"
 
 #. Khejarli's Martyrdom Day.
 msgid "Khejarli's Shaheedi Diwas"

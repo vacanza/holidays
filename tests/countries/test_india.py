@@ -481,7 +481,6 @@ class TestIndia(CommonCountryTests, TestCase):
         dts = (
             "2021-01-14",
             "2022-01-14",
-            "2023-01-14",
             "2024-01-15",
             "2025-01-14",
         )
@@ -492,15 +491,12 @@ class TestIndia(CommonCountryTests, TestCase):
             hindu_range=range(2021, self.hindu_end_year + 1),
         )
         # SUBDIVS.
-        # self._assertHinduHolidayHelper(name_magh_bihu, dts, subdivs={"DH"})
-        dts = (
-            "2021-01-14",
-            "2022-01-14",
-            "2023-01-16",
-            "2024-01-15",
-            "2025-01-14",
-        )
-        self._assertHinduHolidayHelper(name_magh_bihu, dts, subdivs={"AS"})
+        self._assertHinduHolidayHelper(name_magh_bihu, dts, subdivs={"AS", "DH"})
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AS":
+                self.assertHolidayName(name_magh_bihu, holidays, "2023-01-16")
+            if subdiv == "DH":
+                self.assertHolidayName(name_magh_bihu, holidays, "2023-01-14")
 
     def test_basant_panchami(self):
         name = "Basant Panchami / Shri Panchami"
@@ -1667,6 +1663,17 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(
             "Mahesh Navami", dts, category=OPTIONAL, subdivs={"CG", "MP"}
         )
+
+    def test_nirjala_ekadashi(self):
+        dts = (
+            "2020-06-02",
+            "2021-06-21",
+            "2022-06-11",
+            "2023-05-30",
+            "2024-06-18",
+            "2025-06-07",
+        )
+        self._assertHinduHolidayHelper("Nirjala Ekadashi", dts, category=OPTIONAL, subdivs={"PB"})
 
     def test_kabir_jayanti(self):
         name = "Sant Kabir's Jayanti"

@@ -1494,6 +1494,9 @@ class India(
         # Hola Mohalla.
         self._add_hola_mohalla(tr("Hola Mohalla"))
 
+        # Nirjala Ekadashi.
+        self._add_nirjala_ekadashi(tr("Nirjala Ekadashi"))
+
         # Samvatsari Day.
         self._add_samvatsari_parva(tr("Samvatsari Day"))
 

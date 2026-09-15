@@ -519,6 +519,19 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.holi_date(self._year), days_delta=-1
         )
 
+    def _add_nirjala_ekadashi(self, name) -> date | None:
+        """
+        Add Nirjala Ekadashi.
+
+        Nirjala Ekadashi is a Hindu fasting day dedicated to Lord Vishnu.
+        It falls on the 11th day (Ekadashi) of the bright fortnight of the
+        Hindu month of Jyeshtha (May/June).
+        https://en.wikipedia.org/wiki/Nirjala_Ekadashi
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.nirjala_ekadashi_date(self._year)
+        )
+
     def _add_holi(self, name) -> date | None:
         """
         Add Holi Festival.
