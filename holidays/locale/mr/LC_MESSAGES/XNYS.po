@@ -558,7 +558,7 @@ msgstr "राष्ट्राध्यक्ष रेगन यांच्�
 
 #. Con Edison power failure in lower Manhattan (markets close at 3:28pm).
 msgid "Con Edison power failure in lower Manhattan (markets close at 3:28pm)"
-msgstr "लोअर मॅनहॅटनमध्ये कॉन एडिसनचा वीजपुरवठा खंडित (बाजार दुपारी ३:२८ वाजता बंद होतील)"
+msgstr "लोअर मॅनहॅटनमध्ये कॉन एडिसनचा वीजपुरवठा खंडित (बाजार दुपारी 3:28 वाजता बंद होतील)"
 
 #. New Year's Eve.
 msgid "New Year's Eve"
