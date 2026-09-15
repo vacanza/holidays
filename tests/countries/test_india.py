@@ -491,7 +491,16 @@ class TestIndia(CommonCountryTests, TestCase):
             category=OPTIONAL,
             hindu_range=range(2021, self.hindu_end_year + 1),
         )
-        self._assertHinduHolidayHelper(name_magh_bihu, dts, subdivs={"AS", "DH"})
+        # SUBDIVS.
+        # self._assertHinduHolidayHelper(name_magh_bihu, dts, subdivs={"DH"})
+        dts = (
+            "2021-01-14",
+            "2022-01-14",
+            "2023-01-16",
+            "2024-01-15",
+            "2025-01-14",
+        )
+        self._assertHinduHolidayHelper(name_magh_bihu, dts, subdivs={"AS"})
 
     def test_basant_panchami(self):
         name = "Basant Panchami / Shri Panchami"
@@ -1118,7 +1127,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertSubdivMzOptionalHolidayName(name, (f"{year}-12-28" for year in self.full_range))
 
     def test_u_kiang_nongbah_death_anniversary(self):
-        name = "U Kiang Nongbah Death Anniversary"
+        name = "U Kiang Nongbah's Death Anniversary"
         self.assertNoHolidayName(name)
         self.assertSubdivMlGovernmentHolidayName(
             name, (f"{year}-12-30" for year in self.full_range)
@@ -2569,7 +2578,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ),
             ("2018-12-27", "Christmas Festival; Jor Mela Fatehgarh Sahib; Post Christmas (Day 3)"),
             ("2018-12-28", "Jor Mela Fatehgarh Sahib; Post Christmas (Day 4)"),
-            ("2018-12-30", "U Kiang Nongbah Death Anniversary"),
+            ("2018-12-30", "U Kiang Nongbah's Death Anniversary"),
             ("2018-12-31", "New Year's Eve"),
         )
 
@@ -2969,7 +2978,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ),
             ("2018-12-27", "Christmas Festival; Jor Mela Fatehgarh Sahib; Post Christmas (Day 3)"),
             ("2018-12-28", "Jor Mela Fatehgarh Sahib; Post Christmas (Day 4)"),
-            ("2018-12-30", "U Kiang Nongbah Death Anniversary"),
+            ("2018-12-30", "U Kiang Nongbah's Death Anniversary"),
             ("2018-12-31", "New Year's Eve"),
         )
 

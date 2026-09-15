@@ -1177,8 +1177,8 @@ class India(
         self._add_christmas_day_two(name)
         self._add_christmas_day_three(name)
 
-        # U Kiang Nongbah Death Anniversary.
-        self._add_holiday_dec_30(tr("U Kiang Nongbah Death Anniversary"))
+        # U Kiang Nongbah's Death Anniversary.
+        self._add_holiday_dec_30(tr("U Kiang Nongbah's Death Anniversary"))
 
         # Hindu Holidays.
 
@@ -1351,9 +1351,6 @@ class India(
         # Sarva Pitra Moksha Amavasya.
         self._add_pitra_moksh_amavasya(tr("Sarva Pitra Moksha Amavasya"))
 
-        # Maharishi Valmiki's Birthday.
-        self._add_maharshi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
-
         # Maharaj Ajmodh Dev's Birthday.
         self._add_maharshi_valmiki_jayanti(tr("Maharaj Ajmodh Dev's Jayanti"))
 
@@ -1398,7 +1395,7 @@ class India(
         self._add_christmas_day_three(tr("Post Christmas (Day 3)"))
 
         # Post Christmas (Day 4).
-        self._add_christmas_day_four(tr("Post Christmas (Day 4)"))
+        self._add_holiday_dec_28(tr("Post Christmas (Day 4)"))
 
     # Nagaland.
     def _populate_subdiv_nl_public_holidays(self):
@@ -1855,7 +1852,7 @@ class IndiaStaticHolidays:
     }
 
     special_as_public_holidays = {
-        2023: (JAN, 14, name_magh_bihu),
+        2023: (JAN, 16, name_magh_bihu),
     }
 
     special_dh_public_holidays = {

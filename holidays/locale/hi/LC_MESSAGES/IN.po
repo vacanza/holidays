@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.104\n"
+"Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-09-13 13:03+0530\n"
+"PO-Revision-Date: 2026-09-15 12:22+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -665,8 +665,8 @@ msgstr "यू सोसो थामा की पुण्यतिथि"
 msgid "Christmas Festival"
 msgstr "क्रिसमस पर्व"
 
-#. U Kiang Nongbah Death Anniversary.
-msgid "U Kiang Nongbah Death Anniversary"
+#. U Kiang Nongbah's Death Anniversary.
+msgid "U Kiang Nongbah's Death Anniversary"
 msgstr "यू कियांग नोंगबह की पुण्यतिथि"
 
 #. Maharaja Gambhir Singh's Death Anniversary.
