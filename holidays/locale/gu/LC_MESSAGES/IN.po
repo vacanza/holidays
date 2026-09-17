@@ -763,7 +763,7 @@ msgstr "ઝોમી નામની"
 
 #. Post Christmas (Day 3).
 msgid "Post Christmas (Day 3)"
-msgstr "ક્રિસમસ પછીનો દિવસ (દિવસ 3)"
+msgstr "ક્રિસમસ પછીનો દિવસ (ત્રીજો દિવસ)"
 
 #. Post Christmas (Day 4).
 msgid "Post Christmas (Day 4)"

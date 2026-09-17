@@ -766,7 +766,7 @@ msgstr "বড়দিনের পরের দিন (তৃতীয় দ�
 
 #. Post Christmas (Day 4).
 msgid "Post Christmas (Day 4)"
-msgstr "বড়দিন-পরবর্তী দিন (৪র্থ দিন)"
+msgstr "বড়দিন-পরবর্তী দিন (চতুর্থ দিন)"
 
 #. Odisha Day.
 msgid "Odisha Day (Utkala Dibasa)"

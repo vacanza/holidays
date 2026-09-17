@@ -762,7 +762,7 @@ msgstr "जोमी नामनी"
 
 #. Post Christmas (Day 3).
 msgid "Post Christmas (Day 3)"
-msgstr "ख्रिसमसनंतरचा दिवस (दिवस 3)"
+msgstr "ख्रिसमसनंतरचा दिवस (तिसरा दिवस)"
 
 #. Post Christmas (Day 4).
 msgid "Post Christmas (Day 4)"

@@ -762,11 +762,11 @@ msgstr "சோமி நாம்னி"
 
 #. Post Christmas (Day 3).
 msgid "Post Christmas (Day 3)"
-msgstr "கிறிஸ்துமஸுக்குப் பிந்தைய நாள் (நாள் 3)"
+msgstr "கிறிஸ்துமஸுக்குப் பிந்தைய நாள் (மூன்றாம் நாள்)"
 
 #. Post Christmas (Day 4).
 msgid "Post Christmas (Day 4)"
-msgstr "கிறிஸ்துமஸுக்குப் பிந்தைய நாள் (4ஆம் நாள்)"
+msgstr "கிறிஸ்துமஸுக்குப் பிந்தைய நாள் (நான்காம் நாள்)"
 
 #. Odisha Day.
 msgid "Odisha Day (Utkala Dibasa)"
