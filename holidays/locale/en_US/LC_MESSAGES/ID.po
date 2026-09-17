@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-23 14:09+0300\n"
-"PO-Revision-Date: 2026-06-30 21:57+0300\n"
+"PO-Revision-Date: 2026-09-17 21:27+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -194,3 +194,7 @@ msgstr "New Year's Joint Holiday"
 #. Independence Day Joint Holiday.
 msgid "Cuti Bersama Hari Kemerdekaan Republik Indonesia"
 msgstr "Independence Day Joint Holiday"
+
+#. Good Friday Joint Holiday.
+msgid "Cuti Bersama Wafat Yesus Kristus"
+msgstr "Good Friday Joint Holiday"
