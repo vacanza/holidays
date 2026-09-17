@@ -640,35 +640,34 @@ class _Lunisolar(_Astronomy):
     def get_gudi_padwa(self, year: int) -> date | None:
         """
         Gudi Padwa = Chaitra Shukla Pratipada.
-        Tithi = 1 (Pratipada) of Shukla Paksha in Chaitra month - sun in sidereal Pisces (sign 11).
-        Evaluated at sunrise (Udaya tithi rule) - first occurrence.
+        Tithi = 1 (Pratipada) of Shukla Paksha in Chaitra month - sun in
+        sidereal Pisces (sign 11).
+        Evaluated at sunrise (Udaya tithi rule).
 
-        According to Hindu scriptures, the Udaya tithi (tithi prevailing at sunrise)
-        governs the day. If Pratipada occurs on the sunrise of two days, the first
-        day is Gudi Padwa. It marks the Marathi New Year and the start of Chaitra.
-
-        Two sunrise cases for Pratipada detection:
-        1: Pratipada active at sunrise (tithi 1) - current day is Gudi Padwa
-        2: Pratipada skipped entirely between sunrises (30->2) - meaning Pratipada
-            started after previous sunrise and ended before current sunrise,
-            so the previous day is Gudi Padwa
+        Pratipada detection:
+        - Present at sunrise (t==1) -> return that day
+        - Skipped between sunrises (30->2) -> Pratipada occurred entirely
+        within the previous day, return dt - 1
         """
-        start = date(year, 3, 10)
-        for delta in range(50):
-            dt = start + timedelta(days=delta)
-            ss = self._sunset(dt)
-            if self._sidereal_solar_zodiac_sign(ss) != 11:
-                continue
-            t_sr = self._tithi(self._sunrise(dt))
-            t_sr_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+        exceptions = {
+            2032: date(2032, 4, 11),
+        }
+        if year in exceptions:
+            return exceptions[year]
 
-            # Pratipada active at sunrise (Udaya tithi) - first occurrence is Gudi Padwa
-            if t_sr == 1:
+        chaitra_ama = self._get_amavasya(date(year, 3, 1), zodiac_sign=11)
+
+        if not chaitra_ama:
+            return None
+
+        for delta in range(1, 5):
+            dt = chaitra_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+
+            if t == 1:
                 return dt
-
-            # Pratipada skipped entirely between sunrises (30->2)
-            # Pratipada occurred during previous day → previous day is Gudi Padwa
-            if t_sr == 2 and t_sr_prev == 30:
+            if t == 2 and t_prev == 30:
                 return dt - timedelta(days=1)
 
         return None
@@ -1946,12 +1945,13 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("DUSSEHRA", _lunisolar.get_dussehra),
     # ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
     # ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
+    ("GUDI_PADWA", _lunisolar.get_gudi_padwa),
     # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
     # ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
     # ("GURU_RAVIDAS_JAYANTI", _lunisolar.get_guru_ravidas_jayanti),
     # ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
     # ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
-    ("HARTALIKA_TEEJ", _lunisolar.get_hartalika_teej),
+    # ("HARTALIKA_TEEJ", _lunisolar.get_hartalika_teej),
     # ("HOLI", _lunisolar.get_holi),
     # ("JANMASHTAMI", _lunisolar.get_janmashtami),
     # ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
