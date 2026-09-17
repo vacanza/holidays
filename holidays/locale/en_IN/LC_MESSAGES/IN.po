@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-09-16 00:18+0530\n"
+"PO-Revision-Date: 2026-09-17 22:00+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
@@ -865,31 +865,6 @@ msgstr ""
 msgid "Bathukamma"
 msgstr ""
 
-#. Maharaja Bir Bikram Kishore Manikya Bahadur's Birthday.
-msgid "Maharaja Bir Bikram Kishore Manikya Bahadur's Jayanti"
-msgstr ""
-
-#. Bengali's New Year.
-#. Pohela Boisakh.
-msgid "Pohela Boishakh"
-msgstr ""
-
-#. Garia Puja.
-msgid "Garia Puja"
-msgstr ""
-
-#. Kharchi Puja.
-msgid "Kharchi Puja"
-msgstr ""
-
-#. Ker Puja.
-msgid "Ker Puja"
-msgstr ""
-
-#. Mahasaptami.
-msgid "Mahasaptami"
-msgstr ""
-
 #. Harela.
 msgid "Harela"
 msgstr ""
@@ -934,6 +909,10 @@ msgstr ""
 msgid "Chaudhary Charan Singh's Jayanti"
 msgstr ""
 
+#. Pohela Boisakh.
+msgid "Pohela Boishakh"
+msgstr ""
+
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr ""
@@ -949,3 +928,18 @@ msgstr ""
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr ""
+
+#~ msgid "Maharaja Bir Bikram Kishore Manikya Bahadur's Jayanti"
+#~ msgstr ""
+
+#~ msgid "Garia Puja"
+#~ msgstr ""
+
+#~ msgid "Kharchi Puja"
+#~ msgstr ""
+
+#~ msgid "Ker Puja"
+#~ msgstr ""
+
+#~ msgid "Mahasaptami"
+#~ msgstr ""

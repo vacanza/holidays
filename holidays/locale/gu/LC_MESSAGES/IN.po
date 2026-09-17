@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-09-16 00:18+0530\n"
+"PO-Revision-Date: 2026-09-17 22:00+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: gu\n"
@@ -865,31 +865,6 @@ msgstr "બોનાલુ"
 msgid "Bathukamma"
 msgstr "બતુકમ્મા"
 
-#. Maharaja Bir Bikram Kishore Manikya Bahadur's Birthday.
-msgid "Maharaja Bir Bikram Kishore Manikya Bahadur's Jayanti"
-msgstr "મહારાજા બીર વિક્રમ કિશોર માણિક્ય બહાદુર જયંતિ"
-
-#. Bengali's New Year.
-#. Pohela Boisakh.
-msgid "Pohela Boishakh"
-msgstr "પોહેલા બોઈશાખ"
-
-#. Garia Puja.
-msgid "Garia Puja"
-msgstr "ગડિયા પૂજા"
-
-#. Kharchi Puja.
-msgid "Kharchi Puja"
-msgstr "ખારચી પૂજા"
-
-#. Ker Puja.
-msgid "Ker Puja"
-msgstr "કેર પૂજા"
-
-#. Mahasaptami.
-msgid "Mahasaptami"
-msgstr "મહાસપ્તમી"
-
 #. Harela.
 msgid "Harela"
 msgstr "હરેલા"
@@ -933,6 +908,10 @@ msgstr "વીરાંગના ઊદા દેવી શહીદી દિ�
 #. Chaudhary Charan Singh's Birthday.
 msgid "Chaudhary Charan Singh's Jayanti"
 msgstr "ચૌધરી ચરણ સિંહ જયંતિ"
+
+#. Pohela Boisakh.
+msgid "Pohela Boishakh"
+msgstr "પોહેલા બોઈશાખ"
 
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
