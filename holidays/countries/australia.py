@@ -12,10 +12,17 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from datetime import date
 
+from holidays.calendars.australia_school import (
+    AUSTRALIA_SCHOOL_HOLIDAYS,
+    SUMMER_HOLIDAYS,
+    TERM_1_HOLIDAYS,
+    TERM_2_HOLIDAYS,
+    TERM_3_HOLIDAYS,
+)
 from holidays.calendars.gregorian import JAN, APR, JUN, AUG, SEP, OCT, DEC
-from holidays.constants import BANK, HALF_DAY, PUBLIC
+from holidays.constants import BANK, HALF_DAY, PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.helpers import tr
 from holidays.observed_holiday_base import (
@@ -29,9 +36,6 @@ from holidays.observed_holiday_base import (
     SAT_SUN_TO_NEXT_MON_TUE,
     ALL_TO_NEXT_MON,
 )
-
-if TYPE_CHECKING:
-    from datetime import date
 
 
 class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
@@ -94,7 +98,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         "Victoria": "VIC",
         "Western Australia": "WA",
     }
-    supported_categories = (BANK, HALF_DAY, PUBLIC)
+    supported_categories = (BANK, HALF_DAY, PUBLIC, SCHOOL)
     supported_languages = ("en_AU", "en_US", "th")
 
     # %s (from 6pm).
@@ -141,6 +145,47 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         show_observed_label: bool = True,
     ) -> tuple[bool, date | None]:
         return super()._move_holiday(dt, rule=rule, show_observed_label=False)
+
+    @staticmethod
+    def _get_school_holiday_names() -> dict[int, str]:
+        return {
+            # Term 1 school holidays.
+            TERM_1_HOLIDAYS: tr("Term 1 school holidays"),
+            # Term 2 school holidays.
+            TERM_2_HOLIDAYS: tr("Term 2 school holidays"),
+            # Term 3 school holidays.
+            TERM_3_HOLIDAYS: tr("Term 3 school holidays"),
+            # Summer school holidays.
+            SUMMER_HOLIDAYS: tr("Summer school holidays"),
+        }
+
+    def _populate_school_holidays(self):
+        # Each state and territory sets its own school calendar, so there is
+        # nothing to add for the country as a whole.
+        if self.subdiv is None:
+            return None
+
+        school_holiday_names = self._get_school_holiday_names()
+        for (
+            start_year_offset,
+            start_month,
+            start_day,
+            end_year_offset,
+            end_month,
+            end_day,
+            holiday_id,
+        ) in AUSTRALIA_SCHOOL_HOLIDAYS.get(self._year, {}).get(self._normalized_subdiv, ()):
+            name = school_holiday_names[holiday_id]
+            start_date = date(self._year + start_year_offset, start_month, start_day)
+            end_date = date(self._year + end_year_offset, end_month, end_day)
+            # A break either side of new year belongs to both years, so only the
+            # part falling inside this one is added.
+            active_start = max(start_date, date(self._year, JAN, 1))
+            active_end = min(end_date, date(self._year, DEC, 31))
+            self._add_holiday(name, active_start)
+            # No school break is a single day, so the remaining span is never
+            # empty in practice; passing nought would add nothing in any case.
+            self._add_multiday_holiday(active_start, (active_end - active_start).days, name=name)
 
     def _populate_public_holidays(self):
         # Good Friday.
