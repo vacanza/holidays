@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.105\n"
+"Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-09-17 22:00+0530\n"
+"PO-Revision-Date: 2026-09-16 00:18+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -751,7 +751,7 @@ msgstr "Young Mizo Association's Day"
 
 #. Peace Accord Day.
 msgid "Remna Ni"
-msgstr "Remna Ni"
+msgstr "Peace Accord Day"
 
 #. Mizo Hmeichhe Insuihkhawm Pawl's Day.
 msgid "Mizo Hmeichhe Insuihkhawm Pawl's Day"
@@ -865,6 +865,31 @@ msgstr "Bonalu"
 msgid "Bathukamma"
 msgstr "Bathukamma"
 
+#. Maharaja Bir Bikram Kishore Manikya Bahadur's Birthday.
+msgid "Maharaja Bir Bikram Kishore Manikya Bahadur's Jayanti"
+msgstr "Maharaja Bir Bikram Kishore Manikya Bahadur's Birthday"
+
+#. Bengali's New Year.
+#. Pohela Boisakh.
+msgid "Pohela Boishakh"
+msgstr "Pohela Boishakh"
+
+#. Garia Puja.
+msgid "Garia Puja"
+msgstr "Garia Puja"
+
+#. Kharchi Puja.
+msgid "Kharchi Puja"
+msgstr "Kharchi Puja"
+
+#. Ker Puja.
+msgid "Ker Puja"
+msgstr "Ker Puja"
+
+#. Mahasaptami.
+msgid "Mahasaptami"
+msgstr "Mahasaptami"
+
 #. Harela.
 msgid "Harela"
 msgstr "Harela"
@@ -909,10 +934,6 @@ msgstr "Veerangana Uda Devi's Martyrdom Day"
 msgid "Chaudhary Charan Singh's Jayanti"
 msgstr "Chaudhary Charan Singh's Birthday"
 
-#. Pohela Boisakh.
-msgid "Pohela Boishakh"
-msgstr "Pohela Boishakh"
-
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "Rabindra Jayanti"
@@ -928,18 +949,3 @@ msgstr "Shri Panchami"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "Janmashtami (Smarta)"
-
-#~ msgid "Maharaja Bir Bikram Kishore Manikya Bahadur's Jayanti"
-#~ msgstr "Maharaja Bir Bikram Kishore Manikya Bahadur's Birthday"
-
-#~ msgid "Garia Puja"
-#~ msgstr "Garia Puja"
-
-#~ msgid "Kharchi Puja"
-#~ msgstr "Kharchi Puja"
-
-#~ msgid "Ker Puja"
-#~ msgstr "Ker Puja"
-
-#~ msgid "Mahasaptami"
-#~ msgstr "Mahasaptami"

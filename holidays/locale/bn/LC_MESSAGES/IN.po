@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.105\n"
+"Project-Id-Version: Holidays 0.104\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-09-17 22:00+0530\n"
+"PO-Revision-Date: 2026-09-16 00:18+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: bn\n"
@@ -864,6 +864,31 @@ msgstr "বোনালু"
 msgid "Bathukamma"
 msgstr "বতুকাম্মা"
 
+#. Maharaja Bir Bikram Kishore Manikya Bahadur's Birthday.
+msgid "Maharaja Bir Bikram Kishore Manikya Bahadur's Jayanti"
+msgstr "মহারাজা বীর বিক্রম কিশোর মানিক্য বাহাদুর জয়ন্তী"
+
+#. Bengali's New Year.
+#. Pohela Boisakh.
+msgid "Pohela Boishakh"
+msgstr "পহেলা বৈশাখ"
+
+#. Garia Puja.
+msgid "Garia Puja"
+msgstr "গড়িয়া পূজা"
+
+#. Kharchi Puja.
+msgid "Kharchi Puja"
+msgstr "খারচি পূজা"
+
+#. Ker Puja.
+msgid "Ker Puja"
+msgstr "কের পূজা"
+
+#. Mahasaptami.
+msgid "Mahasaptami"
+msgstr "মহাসপ্তমী"
+
 #. Harela.
 msgid "Harela"
 msgstr "হরেলা"
@@ -908,10 +933,6 @@ msgstr "বীরাঙ্গনা ঊদা দেবীর শহীদ দ�
 msgid "Chaudhary Charan Singh's Jayanti"
 msgstr "চৌধুরী চরণ সিং জয়ন্তী"
 
-#. Pohela Boisakh.
-msgid "Pohela Boishakh"
-msgstr "পহেলা বৈশাখ"
-
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "রবীন্দ্র জয়ন্তী"
@@ -927,18 +948,3 @@ msgstr "শ্রী পঞ্চমী"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "জন্মাষ্টমী (স্মার্ত)"
-
-#~ msgid "Maharaja Bir Bikram Kishore Manikya Bahadur's Jayanti"
-#~ msgstr "মহারাজা বীর বিক্রম কিশোর মানিক্য বাহাদুর জয়ন্তী"
-
-#~ msgid "Garia Puja"
-#~ msgstr "গড়িয়া পূজা"
-
-#~ msgid "Kharchi Puja"
-#~ msgstr "খারচি পূজা"
-
-#~ msgid "Ker Puja"
-#~ msgstr "কের পূজা"
-
-#~ msgid "Mahasaptami"
-#~ msgstr "মহাসপ্তমী"

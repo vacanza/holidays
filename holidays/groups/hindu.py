@@ -281,6 +281,16 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.ganesh_chaturthi_date(self._year), days_delta=+1
         )
 
+    def _add_garia_puja(self, name: str) -> None:
+        """
+        Add Garia Puja.
+
+        Garia Puja falls on the 7th day of the Hindu solar month of Vaisakha
+        (Boishakh 7). It is usually observed on April 21, but falls on
+        April 20 in leap years.
+        """
+        self._add_holiday(name, date(self._year, APR, 20 if isleap(self._year) else 21))
+
     def _add_gau_krida(self, name) -> date | None:
         """
         Add Gau Krida.
@@ -589,6 +599,34 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.karwa_chauth_date(self._year)
+        )
+
+    def _add_ker_puja(self, name) -> date | None:
+        """
+        Add Ker Puja.
+
+        Ker Puja is a traditional festival of Tripura associated with
+        the worship of the deity Ker and is observed a few weeks after
+        Kharchi Puja.
+
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.ker_puja_date(self._year)
+        )
+
+    def _add_kharchi_puja(self, name) -> date | None:
+        """
+        Add Kharchi Puja.
+
+        Kharchi Puja is a Hindu festival celebrated in Tripura in
+        honor of the fourteen deities of the Tripuri tradition. It is
+        observed on the eighth day (Ashtami) of the bright fortnight
+        of the Hindu month of Ashadha (June/July).
+
+        https://en.wikipedia.org/wiki/Kharchi_Puja
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.kharchi_puja_date(self._year)
         )
 
     def _add_lohri(self, name) -> date | None:
