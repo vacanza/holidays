@@ -1497,6 +1497,7 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_pohela_boishakh(self):
         name = "Pohela Boishakh"
+        self.assertNoHolidayName(name)
         dts = (
             "2020-04-14",
             "2021-04-15",
@@ -1505,13 +1506,16 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-04-14",
             "2025-04-14",
         )
-        self.assertNoHolidayName(name)
-        self.assertSubdivTrHolidayName(name, dts)
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "WB":
+            if subdiv == "TR":
+                self.assertHolidayName(name, holidays, dts)
+                self.assertHolidayName(name, holidays, self.hindu_full_range)
+            elif subdiv == "WB":
                 self.assertHolidayName(
                     name, holidays, (f"{year}-04-15" for year in self.full_range)
                 )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_gurudev_kalicharan_brahma_jayanti(self):
         name = "Gurudev Kalicharan Brahma's Jayanti"
