@@ -1505,7 +1505,8 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-04-14",
             "2025-04-14",
         )
-        self._assertHinduHolidayHelper(name, dts, subdivs={"TR"})
+        self.assertNoHolidayName(name)
+        self.assertSubdivTrHolidayName(name, dts)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "WB":
                 self.assertHolidayName(
