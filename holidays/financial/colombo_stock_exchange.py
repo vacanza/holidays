@@ -10,14 +10,17 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
+
 from holidays.countries.sri_lanka import SriLanka
-from holidays.groups import StaticHolidays
 
 
-class ColomboStockExchange(SriLanka, StaticHolidays):
+class ColomboStockExchange(SriLanka):
     """Colombo Stock Exchange (CSE) holiday calendar."""
 
+    country = None  # type: ignore[assignment]
     market = "XCOL"
+    parent_entity = SriLanka
     supported_categories = ("public", "half_day")  # type: ignore[assignment]
 
     # References:
@@ -31,7 +34,7 @@ class ColomboStockExchange(SriLanka, StaticHolidays):
     # 2019- https://cdn.cse.lk/cmt/upload_cse_announcements/9501540465936_.pdf
     # 2018- https://stockmarket-holidays.com/colombo-stock-exchange-holidays/133/
     def __init__(self, *args, **kwargs):
-        self.static_holidays = {
+        self.special_public_holidays = {
             # 2026 Ad-Hoc Closures
             "2026-01-01": "CSE Customary Holiday",
             # 2025 Ad-Hoc Closures
@@ -70,7 +73,10 @@ class ColomboStockExchange(SriLanka, StaticHolidays):
             "2018-04-30": "Vesak Holiday",
         }
 
-        self.static_half_days = {
+        self.special_half_day_holidays = {
+            # 2026 Half-Days
+            "2026-04-30": "Additional half holiday in lieu of Day Following Vesak "
+            "Full Moon Poya Day falling on Saturday",
             # 2024 Half-Days
             "2024-04-10": "Additional half holiday in lieu of Sinhala "
             "& Tamil New Year Day falling on Saturday",
@@ -97,18 +103,8 @@ class ColomboStockExchange(SriLanka, StaticHolidays):
     def _populate_public_holidays(self):
         super()._populate_public_holidays()
 
-        for dt_str, name in self.static_holidays.items():
-            year, month, day = (int(x) for x in dt_str.split("-"))
-
-            if year == self._year:
-                self._add_holiday(name, month, day)
-
-    def _populate_half_day_holidays(self):
-        for dt_str, name in self.static_half_days.items():
-            year, month, day = (int(x) for x in dt_str.split("-"))
-
-            if year == self._year:
-                self._add_holiday(name, month, day)
+        if self._year == 2018:
+            self.pop(date(2018, 4, 13), None)
 
 
 class XCOL(ColomboStockExchange):
