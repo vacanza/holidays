@@ -35,7 +35,42 @@ class TestColomboStockExchange(unittest.TestCase):
             self.assertIn(name, self.holidays.get(dt_str))
 
     def test_half_days(self):
-        for dt_str, name in self.holidays_half_day.static_half_days.items():
+        expected_half_days = (
+            ("2018-04-13", "Day prior to Sinhala & Tamil New Year day"),
+            (
+                "2019-04-12",
+                "Special Bank Half-holiday on account of Day prior "
+                "to Sinhala & Tamil New Year Day falling on a Saturday",
+            ),
+            (
+                "2021-04-30",
+                "Additional half-holiday on account of the May Day falling on a Saturday",
+            ),
+            (
+                "2021-12-24",
+                "Additional half-holiday on account of the Christmas Day falling on a Saturday",
+            ),
+            (
+                "2023-02-03",
+                "Additional half holiday in lieu of the Independence Day falling on Saturday",
+            ),
+            (
+                "2023-05-04",
+                "Additional half holiday in lieu of Day Following Vesak "
+                "Full Moon Poya Day falling on Saturday",
+            ),
+            (
+                "2024-04-10",
+                "Additional half holiday in lieu of Sinhala "
+                "& Tamil New Year Day falling on Saturday",
+            ),
+            (
+                "2026-04-30",
+                "Additional half holiday in lieu of Day Following Vesak "
+                "Full Moon Poya Day falling on Saturday",
+            ),
+        )
+        for dt_str, name in expected_half_days:
             year, month, day = (int(x) for x in dt_str.split("-"))
             self.assertIn(date(year, month, day), self.holidays_half_day)
             self.assertIn(name, self.holidays_half_day.get(dt_str))

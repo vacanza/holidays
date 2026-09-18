@@ -1998,7 +1998,7 @@ code when available. The following financial markets are available:
 <td>XCOL</td>
 <td>Colombo Stock Exchange holiday calendar</td>
 <td>en_US, <strong>si_LK</strong>, ta_LK</td>
-<td>half_day</td>
+<td>HALF_DAY</td>
 </tr>
 <tr>
 <td>European Central Bank</td>
