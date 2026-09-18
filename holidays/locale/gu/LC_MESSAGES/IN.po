@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-09-16 00:18+0530\n"
+"PO-Revision-Date: 2026-09-18 11:13+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: gu\n"
@@ -493,8 +493,8 @@ msgstr "સેન્ટ ફ્રાન્સિસ ઝેવિયરની ત
 msgid "Goa Liberation Day"
 msgstr "ગોવા મુક્તિ દિવસ"
 
-#. Ganesh Chaturthi (2nd Day).
-msgid "Ganesh Chaturthi (2nd Day)"
+#. Ganesh Chaturthi (Day 2).
+msgid "Ganesh Chaturthi (Day 2)"
 msgstr "ગણેશ ચતુર્થી (બીજો દિવસ)"
 
 #. Saint Joseph Vaz's Day.

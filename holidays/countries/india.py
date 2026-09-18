@@ -841,8 +841,8 @@ class India(
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
 
-        # Ganesh Chaturthi (2nd Day).
-        self._add_ganesh_chaturthi_day_two(tr("Ganesh Chaturthi (2nd Day)"))
+        # Ganesh Chaturthi (Day 2).
+        self._add_ganesh_chaturthi_day_two(tr("Ganesh Chaturthi (Day 2)"))
 
     def _populate_subdiv_ga_optional_holidays(self):
         # Saint Joseph Vaz's Day.

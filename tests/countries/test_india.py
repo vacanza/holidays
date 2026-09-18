@@ -816,7 +816,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-09-08",
             "2025-08-28",
         )
-        self._assertHinduHolidayHelper("Ganesh Chaturthi (2nd Day)", dts, subdivs={"GA"})
+        self._assertHinduHolidayHelper("Ganesh Chaturthi (Day 2)", dts, subdivs={"GA"})
 
     def test_dussehra_saptami(self):
         name = "Dussehra (Saptami)"
@@ -2501,7 +2501,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-09-11", "Khejarli's Shaheedi Diwas"),
             ("2018-09-12", "Hartalika Teej; Saragarhi Day"),
             ("2018-09-13", "Ganesh Chaturthi; Ganesh Chaturthi / Vinayak Chaturthi"),
-            ("2018-09-14", "Ganesh Chaturthi (2nd Day); Samvatsari Day"),
+            ("2018-09-14", "Ganesh Chaturthi (Day 2); Samvatsari Day"),
             ("2018-09-17", "Vishwakarma Puja"),
             ("2018-09-20", "Dol Gyaras"),
             ("2018-09-21", "Muharram"),
@@ -2898,7 +2898,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-09-11", "Khejarli's Martyrdom Day"),
             ("2018-09-12", "Hartalika Teej; Saragarhi Day"),
             ("2018-09-13", "Ganesh Chaturthi; Ganesh Chaturthi / Vinayak Chaturthi"),
-            ("2018-09-14", "Ganesh Chaturthi (2nd Day); Samvatsari Day"),
+            ("2018-09-14", "Ganesh Chaturthi (Day 2); Samvatsari Day"),
             ("2018-09-17", "Vishwakarma Puja"),
             ("2018-09-20", "Dol Gyaras"),
             ("2018-09-21", "Ashura"),
@@ -3519,7 +3519,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-09-11", "ಖೇಜರ್ಲಿ ಶಹೀದಿ ದಿನ"),
             ("2018-09-12", "ಸಾರಾಗಢಿ ದಿನ; ಹರತಾಲಿಕಾ ತೀಜ್"),
             ("2018-09-13", "ಗಣೇಶ ಚತುರ್ಥಿ; ಗಣೇಶ ಚತುರ್ಥಿ / ವಿನಾಯಕ ಚತುರ್ಥಿ"),
-            ("2018-09-14", "ಗಣೇಶ ಚತುರ್ಥಿ (2ನೇ ದಿನ); ಸಂವತ್ಸರಿ ದಿನ"),
+            ("2018-09-14", "ಗಣೇಶ ಚತುರ್ಥಿ (ಎರಡನೇ ದಿನ); ಸಂವತ್ಸರಿ ದಿನ"),
             ("2018-09-17", "ವಿಶ್ವಕರ್ಮ ಪೂಜೆ"),
             ("2018-09-20", "ಡೋಲ್ ಗ್ಯಾರಸ್"),
             ("2018-09-21", "ಮೊಹರಂ ಕಡೆ ದಿನ"),
@@ -4328,7 +4328,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-09-11", "கேஜர்லி ஷஹீதி தினம்"),
             ("2018-09-12", "சாராகர்ஹி தினம்; ஹர்தாலிகா தீஜ்"),
             ("2018-09-13", "விநாயகர் சதுர்த்தி; விநாயகர் சதுர்த்தி / விநாயக சதுர்த்தி"),
-            ("2018-09-14", "சம்வத்சரி தினம்; விநாயகர் சதுர்த்தி (2ஆம் நாள்)"),
+            ("2018-09-14", "சம்வத்சரி தினம்; விநாயகர் சதுர்த்தி (இரண்டாம் நாள்)"),
             ("2018-09-17", "விஸ்வகர்மா பூஜை"),
             ("2018-09-20", "டோல் கியாரஸ்"),
             ("2018-09-21", "முஹர்ரம்"),
@@ -4489,7 +4489,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-09-11", "ఖేజర్లీ షహీది దినం"),
             ("2018-09-12", "సారాగఢి దినం; హరతాలిక తీజ్"),
             ("2018-09-13", "గణేశ చవితి; గణేశ చవితి / వినాయక చవితి"),
-            ("2018-09-14", "వినాయక చవితి (2వ రోజు); సంవత్సరి దినం"),
+            ("2018-09-14", "వినాయక చవితి (రెండవ రోజు); సంవత్సరి దినం"),
             ("2018-09-17", "విశ్వకర్మ పూజ"),
             ("2018-09-20", "డోల్ గ్యారస్"),
             ("2018-09-21", "మొహర్రం"),
