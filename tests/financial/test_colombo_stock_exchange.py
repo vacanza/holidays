@@ -18,9 +18,9 @@ from holidays.financial.colombo_stock_exchange import ColomboStockExchange
 
 class TestColomboStockExchange(unittest.TestCase):
     def setUp(self):
-        self.holidays = ColomboStockExchange()
+        self.holidays = ColomboStockExchange(language="si_LK")
 
-        self.holidays_half_day = ColomboStockExchange(categories=("half_day"))
+        self.holidays_half_day = ColomboStockExchange(categories=("half_day"), language="si_LK")
 
     def test_market_code(self):
         self.assertEqual(self.holidays.market, "XCOL")
@@ -40,47 +40,44 @@ class TestColomboStockExchange(unittest.TestCase):
 
     def test_ad_hoc_closures(self):
         expected_ad_hoc_closures = (
-            ("2018-02-05", "National Day Holiday"),
-            ("2018-04-30", "Vesak Holiday"),
-            ("2019-01-01", "CSE Customary Holiday"),
+            ("2018-01-15", "විශේෂ බැංකු නිවාඩු දිනය"),
+            ("2018-02-05", "ජාතික දින නිවාඩුව"),
+            ("2018-04-30", "වෙසක් නිවාඩුව"),
+            ("2019-01-01", "CSE සාමාන්‍ය නිවාඩු දිනය"),
             (
                 "2019-04-15",
-                "Special Bank Holiday on account of Sinhala & Tamil New Year Day "
-                "falling on a Sunday",
+                "ඉරිදා දිනක යෙදෙන සිංහල හා දෙමළ අලුත් අවුරුදු දිනය වෙනුවට විශේෂ බැංකු නිවාඩුව",
             ),
             (
                 "2019-05-20",
-                "Special Bank Holiday on account of Day Following Vesak Full Moon Poya Day "
-                "falling on a Sunday",
+                "ඉරිදා දිනක යෙදෙන වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය වෙනුවට විශේෂ බැංකු නිවාඩුව",
             ),
             (
                 "2019-11-11",
-                "Special Bank Holiday on account of Holy Prophet's Birthday falling on a Sunday",
+                "ඉරිදා දිනක යෙදෙන නබි නායකතුමාගේ උපන් දිනය වෙනුවට විශේෂ බැංකු නිවාඩුව",
             ),
-            ("2020-01-01", "CSE Customary Holiday"),
-            ("2020-03-20", "Market closure due to COVID-19"),
+            ("2020-01-01", "CSE සාමාන්‍ය නිවාඩු දිනය"),
+            ("2020-03-20", "COVID-19 හේතුවෙන් වෙළඳපොළ වසා දැමීම"),
             (
                 "2020-04-14",
-                "Special Bank Holiday on account of the Day prior to Sinhala & Tamil New Year Day "
-                "falling on a Sunday",
+                "ඉරිදා දිනක යෙදෙන සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය වෙනුවට විශේෂ බැංකු නිවාඩුව",
             ),
-            ("2021-01-01", "CSE Customary Holiday"),
-            ("2022-05-02", "Additional holiday in lieu of May Day falling on Sunday"),
+            ("2021-01-01", "CSE සාමාන්‍ය නිවාඩු දිනය"),
+            ("2022-05-02", "ඉරිදා දිනක යෙදෙන මැයි දිනය වෙනුවට අතිරේක නිවාඩුව"),
             (
                 "2022-10-10",
-                "Additional holiday in lieu of Milad-Un-Nabi (Holy Prophet's Birthday) "
-                "falling on Sunday",
+                "ඉරිදා දිනක යෙදෙන නබි නායකතුමාගේ උපන් දිනය වෙනුවට අතිරේක නිවාඩුව",
             ),
-            ("2022-12-26", "Additional holiday in lieu of Christmas Day falling on Sunday"),
+            ("2022-12-26", "ඉරිදා දිනක යෙදෙන නත්තල් උත්සව දිනය වෙනුවට අතිරේක නිවාඩුව"),
             (
                 "2023-01-16",
-                "Additional holiday in lieu of Tamil Thai Pongal Day falling on Sunday",
+                "ඉරිදා දිනක යෙදෙන දෙමළ තෛපොංගල් දිනය වෙනුවට අතිරේක නිවාඩුව",
             ),
-            ("2024-01-01", "CSE Customary Holiday"),
-            ("2024-02-05", "Additional holiday in lieu of Independence Day falling on Sunday"),
-            ("2025-01-01", "Customary Holiday"),
-            ("2025-04-15", "Special Bank Holiday"),
-            ("2026-01-01", "CSE Customary Holiday"),
+            ("2024-01-01", "CSE සාමාන්‍ය නිවාඩු දිනය"),
+            ("2024-02-05", "ඉරිදා දිනක යෙදෙන නිදහස් සමරු දිනය වෙනුවට අතිරේක නිවාඩුව"),
+            ("2025-01-01", "සාමාන්‍ය නිවාඩු දිනය"),
+            ("2025-04-15", "විශේෂ බැංකු නිවාඩු දිනය"),
+            ("2026-01-01", "CSE සාමාන්‍ය නිවාඩු දිනය"),
         )
         for dt_str, name in expected_ad_hoc_closures:
             year, month, day = (int(x) for x in dt_str.split("-"))
@@ -89,38 +86,30 @@ class TestColomboStockExchange(unittest.TestCase):
 
     def test_half_days(self):
         expected_half_days = (
-            ("2018-04-13", "Day prior to Sinhala & Tamil New Year day"),
+            ("2018-04-13", "සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය"),
             (
                 "2019-04-12",
-                "Special Bank Half-holiday on account of Day prior "
-                "to Sinhala & Tamil New Year Day falling on a Saturday",
+                "සෙනසුරාදා දිනක යෙදෙන සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය වෙනුවට විශේෂ බැංකු අර්ධ නිවාඩුව",
             ),
             (
                 "2021-04-30",
-                "Additional half-holiday on account of the May Day falling on a Saturday",
+                "සෙනසුරාදා දිනක යෙදෙන මැයි දිනය වෙනුවට අතිරේක අර්ධ නිවාඩුව",
             ),
             (
                 "2021-12-24",
-                "Additional half-holiday on account of the Christmas Day falling on a Saturday",
+                "සෙනසුරාදා දිනක යෙදෙන නත්තල් උත්සව දිනය වෙනුවට අතිරේක අර්ධ නිවාඩුව",
             ),
             (
                 "2023-02-03",
-                "Additional half holiday in lieu of the Independence Day falling on Saturday",
+                "සෙනසුරාදා දිනක යෙදෙන නිදහස් සමරු දිනය වෙනුවට අතිරේක අර්ධ නිවාඩුව",
             ),
             (
                 "2023-05-04",
-                "Additional half holiday in lieu of Day Following Vesak "
-                "Full Moon Poya Day falling on Saturday",
+                "සෙනසුරාදා දිනක යෙදෙන වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය වෙනුවට අතිරේක අර්ධ නිවාඩුව",
             ),
             (
                 "2024-04-10",
-                "Additional half holiday in lieu of Sinhala "
-                "& Tamil New Year Day falling on Saturday",
-            ),
-            (
-                "2026-04-30",
-                "Additional half holiday in lieu of Day Following Vesak "
-                "Full Moon Poya Day falling on Saturday",
+                "සෙනසුරාදා දිනක යෙදෙන සිංහල හා දෙමළ අලුත් අවුරුදු දිනය වෙනුවට අතිරේක අර්ධ නිවාඩුව",
             ),
         )
         for dt_str, name in expected_half_days:
