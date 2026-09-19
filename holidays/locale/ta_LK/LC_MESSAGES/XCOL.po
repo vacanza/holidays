@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-09-16 15:16+0530\n"
-"PO-Revision-Date: 2026-09-18 15:18+0530\n"
+"PO-Revision-Date: 2026-09-19 13:25+0530\n"
 "Last-Translator: LimbusBot <krishivshukla@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ta_LK\n"
@@ -27,104 +27,99 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: si_LK\n"
 
+#. Special Bank Holiday.
+msgid "විශේෂ බැංකු නිවාඩු දිනය"
+msgstr "Special Bank Holiday"
+
 #. National Day Holiday.
-msgid "National Day Holiday"
-msgstr "National Day Holiday"
+msgid "ජාතික දින නිවාඩුව"
+msgstr "தேசிய தின விடுமுறை"
 
 #. Vesak Holiday.
-msgid "Vesak Holiday"
+msgid "වෙසක් නිවාඩුව"
 msgstr "Vesak Holiday"
 
 #. CSE Customary Holiday.
-msgid "CSE Customary Holiday"
+msgid "CSE සාමාන්‍ය නිවාඩු දිනය"
 msgstr "CSE Customary Holiday"
 
 #. Special Bank Holiday on account of Sinhala & Tamil New Year Day falling on a Sunday.
-msgid "Special Bank Holiday on account of Sinhala & Tamil New Year Day falling on a Sunday"
+msgid "ඉරිදා දිනක යෙදෙන සිංහල හා දෙමළ අලුත් අවුරුදු දිනය වෙනුවට විශේෂ බැංකු නිවාඩුව"
 msgstr "Special Bank Holiday on account of Sinhala & Tamil New Year Day falling on a Sunday"
 
 #. Special Bank Holiday on account of Day Following Vesak Full Moon Poya Day falling on a Sunday.
-msgid ""
-"Special Bank Holiday on account of Day Following Vesak Full Moon Poya Day falling on a Sunday"
+msgid "ඉරිදා දිනක යෙදෙන වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය වෙනුවට විශේෂ බැංකු නිවාඩුව"
 msgstr ""
 "Special Bank Holiday on account of Day Following Vesak Full Moon Poya Day falling on a Sunday"
 
 #. Special Bank Holiday on account of Holy Prophet's Birthday falling on a Sunday.
-msgid "Special Bank Holiday on account of Holy Prophet's Birthday falling on a Sunday"
+msgid "ඉරිදා දිනක යෙදෙන නබි නායකතුමාගේ උපන් දිනය වෙනුවට විශේෂ බැංකු නිවාඩුව"
 msgstr "Special Bank Holiday on account of Holy Prophet's Birthday falling on a Sunday"
 
 #. Market closure due to COVID-19.
-msgid "Market closure due to COVID-19"
+msgid "COVID-19 හේතුවෙන් වෙළඳපොළ වසා දැමීම"
 msgstr "Market closure due to COVID-19"
 
 #. Special Bank Holiday on account of the Day prior to Sinhala & Tamil New Year Day falling on a
 #. Sunday.
-msgid ""
-"Special Bank Holiday on account of the Day prior to Sinhala & Tamil New Year Day falling on a "
-"Sunday"
+msgid "ඉරිදා දිනක යෙදෙන සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය වෙනුවට විශේෂ බැංකු නිවාඩුව"
 msgstr ""
 "Special Bank Holiday on account of the Day prior to Sinhala & Tamil New Year Day falling on a "
 "Sunday"
 
 #. Additional holiday in lieu of May Day falling on Sunday.
-msgid "Additional holiday in lieu of May Day falling on Sunday"
+msgid "ඉරිදා දිනක යෙදෙන මැයි දිනය වෙනුවට අතිරේක නිවාඩුව"
 msgstr "Additional holiday in lieu of May Day falling on Sunday"
 
 #. Additional holiday in lieu of Milad-Un-Nabi (Holy Prophet's Birthday) falling on Sunday.
-msgid "Additional holiday in lieu of Milad-Un-Nabi (Holy Prophet's Birthday) falling on Sunday"
+msgid "ඉරිදා දිනක යෙදෙන නබි නායකතුමාගේ උපන් දිනය වෙනුවට අතිරේක නිවාඩුව"
 msgstr "Additional holiday in lieu of Milad-Un-Nabi (Holy Prophet's Birthday) falling on Sunday"
 
 #. Additional holiday in lieu of Christmas Day falling on Sunday.
-msgid "Additional holiday in lieu of Christmas Day falling on Sunday"
+msgid "ඉරිදා දිනක යෙදෙන නත්තල් උත්සව දිනය වෙනුවට අතිරේක නිවාඩුව"
 msgstr "Additional holiday in lieu of Christmas Day falling on Sunday"
 
 #. Additional holiday in lieu of Tamil Thai Pongal Day falling on Sunday.
-msgid "Additional holiday in lieu of Tamil Thai Pongal Day falling on Sunday"
+msgid "ඉරිදා දිනක යෙදෙන දෙමළ තෛපොංගල් දිනය වෙනුවට අතිරේක නිවාඩුව"
 msgstr "Additional holiday in lieu of Tamil Thai Pongal Day falling on Sunday"
 
 #. Additional holiday in lieu of Independence Day falling on Sunday.
-msgid "Additional holiday in lieu of Independence Day falling on Sunday"
+msgid "ඉරිදා දිනක යෙදෙන නිදහස් සමරු දිනය වෙනුවට අතිරේක නිවාඩුව"
 msgstr "Additional holiday in lieu of Independence Day falling on Sunday"
 
 #. Customary Holiday.
-msgid "Customary Holiday"
+msgid "සාමාන්‍ය නිවාඩු දිනය"
 msgstr "Customary Holiday"
 
-#. Special Bank Holiday.
-msgid "Special Bank Holiday"
-msgstr "Special Bank Holiday"
-
 #. Day prior to Sinhala & Tamil New Year day.
-msgid "Day prior to Sinhala & Tamil New Year day"
+msgid "සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය"
 msgstr "Day prior to Sinhala & Tamil New Year day"
 
 #. Special Bank Half-holiday on account of Day prior to Sinhala & Tamil New Year Day falling on a
 #. Saturday.
 msgid ""
-"Special Bank Half-holiday on account of Day prior to Sinhala & Tamil New Year Day falling on a "
-"Saturday"
+"සෙනසුරාදා දිනක යෙදෙන සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය වෙනුවට විශේෂ බැංකු අර්ධ නිවාඩුව"
 msgstr ""
 "Special Bank Half-holiday on account of Day prior to Sinhala & Tamil New Year Day falling on a "
 "Saturday"
 
 #. Additional half-holiday on account of the May Day falling on a Saturday.
-msgid "Additional half-holiday on account of the May Day falling on a Saturday"
+msgid "සෙනසුරාදා දිනක යෙදෙන මැයි දිනය වෙනුවට අතිරේක අර්ධ නිවාඩුව"
 msgstr "Additional half-holiday on account of the May Day falling on a Saturday"
 
 #. Additional half-holiday on account of the Christmas Day falling on a Saturday.
-msgid "Additional half-holiday on account of the Christmas Day falling on a Saturday"
+msgid "සෙනසුරාදා දිනක යෙදෙන නත්තල් උත්සව දිනය වෙනුවට අතිරේක අර්ධ නිවාඩුව"
 msgstr "Additional half-holiday on account of the Christmas Day falling on a Saturday"
 
 #. Additional half holiday in lieu of the Independence Day falling on Saturday.
-msgid "Additional half holiday in lieu of the Independence Day falling on Saturday"
+msgid "සෙනසුරාදා දිනක යෙදෙන නිදහස් සමරු දිනය වෙනුවට අතිරේක අර්ධ නිවාඩුව"
 msgstr "Additional half holiday in lieu of the Independence Day falling on Saturday"
 
 #. Additional half holiday in lieu of Day Following Vesak Full Moon Poya Day falling on Saturday.
-msgid ""
-"Additional half holiday in lieu of Day Following Vesak Full Moon Poya Day falling on Saturday"
+msgid "සෙනසුරාදා දිනක යෙදෙන වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය වෙනුවට අතිරේක අර්ධ නිවාඩුව"
 msgstr ""
 "Additional half holiday in lieu of Day Following Vesak Full Moon Poya Day falling on Saturday"
 
 #. Additional half holiday in lieu of Sinhala & Tamil New Year Day falling on Saturday.
-msgid "Additional half holiday in lieu of Sinhala & Tamil New Year Day falling on Saturday"
+msgid "සෙනසුරාදා දිනක යෙදෙන සිංහල හා දෙමළ අලුත් අවුරුදු දිනය වෙනුවට අතිරේක අර්ධ නිවාඩුව"
 msgstr "Additional half holiday in lieu of Sinhala & Tamil New Year Day falling on Saturday"
