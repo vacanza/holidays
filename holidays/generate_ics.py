@@ -68,7 +68,7 @@ class IcsGenerator:
             "--output-template",
             help=(
                 "Output filename template. Available placeholders: {code}, {subdiv}, "
-                "{language}, {categories}, {start_year}, {end_year}, {today}. "
+                "{language}, {categories}, {start_year}, {end_year}, {all}, {today}. "
                 "Use '{{' and '}}' for literal '{' and '}'"
             ),
         )
