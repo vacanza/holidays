@@ -273,7 +273,9 @@ class IcsGenerator:
                 "end_year": end_year,
                 "today": datetime.now(timezone.utc).strftime("%Y%m%d"),
             }
-            values["all"] = self.get_default_output_template().format(**values).removesuffix(".ics")
+            values["all"] = (
+                self.get_default_output_template().format(**values).removesuffix(".ics")
+            )
             self.validate_output_template(set(values))
             template = self.args.output_template or self.get_default_output_template()
             output_path = template.format(**values)
