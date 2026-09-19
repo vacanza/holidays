@@ -713,6 +713,7 @@ holidays-ics XNYS
 Spanning the next 10 years, unofficial holidays, saved to a custom file:
 
 ```shell
+holidays-ics US --years +10 --categories unofficial --output-template "HOLIDAYS_{code}_{start_year}_{end_year}_{categories}.ics"
 holidays-ics US --years +10 --categories unofficial --output-template "HOLIDAYS_{all}.ics"
 ```
 

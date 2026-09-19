@@ -483,12 +483,14 @@ class TestGenerateIcs(TestCase):
                 "US",
                 "--years",
                 "2025",
+                "--subdiv",
+                "CA",
                 "--output-template",
                 "PREFIX_{all}_SUFFIX.ics",
             ):
                 IcsGenerator().run()
 
-            self.assertTrue((temp_dir / "PREFIX_US_2025_SUFFIX.ics").exists())
+            self.assertTrue((temp_dir / "PREFIX_US_CA_2025_SUFFIX.ics").exists())
 
     @patch("holidays.generate_ics.datetime", MockDatetime)
     def test_output_template_today(self):
