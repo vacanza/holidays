@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-09-16 15:16+0530\n"
-"PO-Revision-Date: 2026-09-19 13:20+0530\n"
+"PO-Revision-Date: 2026-09-19 13:50+0530\n"
 "Last-Translator: LimbusBot <krishivshukla@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -71,13 +71,13 @@ msgstr ""
 msgid "ඉරිදා දිනක යෙදෙන මැයි දිනය වෙනුවට අතිරේක නිවාඩුව"
 msgstr "Additional holiday in lieu of May Day falling on Sunday"
 
-#. Additional holiday in lieu of Milad-Un-Nabi (Holy Prophet's Birthday) falling on Sunday.
-msgid "ඉරිදා දිනක යෙදෙන නබි නායකතුමාගේ උපන් දිනය වෙනුවට අතිරේක නිවාඩුව"
-msgstr "Additional holiday in lieu of Milad-Un-Nabi (Holy Prophet's Birthday) falling on Sunday"
-
 #. Additional holiday in lieu of Christmas Day falling on Sunday.
 msgid "ඉරිදා දිනක යෙදෙන නත්තල් උත්සව දිනය වෙනුවට අතිරේක නිවාඩුව"
 msgstr "Additional holiday in lieu of Christmas Day falling on Sunday"
+
+#. Additional holiday in lieu of Milad-Un-Nabi (Holy Prophet's Birthday) falling on Sunday.
+msgid "ඉරිදා දිනක යෙදෙන නබි නායකතුමාගේ උපන් දිනය වෙනුවට අතිරේක නිවාඩුව"
+msgstr "Additional holiday in lieu of Milad-Un-Nabi (Holy Prophet's Birthday) falling on Sunday"
 
 #. Additional holiday in lieu of Tamil Thai Pongal Day falling on Sunday.
 msgid "ඉරිදා දිනක යෙදෙන දෙමළ තෛපොංගල් දිනය වෙනුවට අතිරේක නිවාඩුව"

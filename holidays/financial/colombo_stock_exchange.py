@@ -76,13 +76,6 @@ class ColomboStockExchangeStaticHolidays:
             (JAN, 1, tr("CSE සාමාන්‍ය නිවාඩු දිනය")),
             # Additional holiday in lieu of May Day falling on Sunday.
             (MAY, 2, tr("ඉරිදා දිනක යෙදෙන මැයි දිනය වෙනුවට අතිරේක නිවාඩුව")),
-            (
-                OCT,
-                19,
-                # Additional holiday in lieu of Milad-Un-Nabi (Holy Prophet's Birthday)
-                # falling on Sunday.
-                tr("ඉරිදා දිනක යෙදෙන නබි නායකතුමාගේ උපන් දිනය වෙනුවට අතිරේක නිවාඩුව"),
-            ),
             # Additional holiday in lieu of Christmas Day falling on Sunday.
             (DEC, 26, tr("ඉරිදා දිනක යෙදෙන නත්තල් උත්සව දිනය වෙනුවට අතිරේක නිවාඩුව")),
         ),
@@ -200,15 +193,18 @@ class ColomboStockExchange(SriLanka):
             for year in self.years:
                 self._populate(year)
 
+    def _populate(self, year):
+        super()._populate(year)
+
+        for dt in tuple(self.keys()):
+            if dt.year == year and self._is_weekend(dt):
+                self.pop(dt)
+
     def _populate_public_holidays(self):
         super()._populate_public_holidays()
 
         if self._year == 2018:
             self.pop(date(2018, 4, 13), None)
-
-        for dt in tuple(self.keys()):
-            if self._is_weekend(dt):
-                self.pop(dt)
 
 
 class XCOL(ColomboStockExchange):

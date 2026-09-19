@@ -37,6 +37,8 @@ class TestColomboStockExchange(unittest.TestCase):
 
     def test_base_srilanka_holidays(self):
         self.assertIn(date(2020, 2, 4), self.holidays)
+        self.assertNotIn("2021-05-02", self.holidays)
+        self.assertNotIn("2021-12-26", self.holidays)
 
     def test_ad_hoc_closures(self):
         expected_ad_hoc_closures = (
