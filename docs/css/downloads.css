@@ -1,11 +1,11 @@
 /* Theme Variables with hardcoded fallbacks */
 :root {
-  --portal-bg: #ffffff;
-  --portal-fg: #24292e;
-  --portal-border: #e1e4e8;
+  --portal-bg: var(--md-default-bg-color, #ffffff);
+  --portal-fg: var(--md-default-fg-color, #24292e);
+  --portal-border: var(--md-default-fg-color--lightest, #e1e4e8);
   --portal-primary: #2ea44f;
   --portal-primary-hover: #2c974b;
-  --portal-header-bg: #f6f8fa;
+  --portal-header-bg: var(--md-code-bg-color, #f6f8fa);
   --portal-zebra: #fafbfc;
   --md-default-fg-color--light: #57606a;
   --md-default-fg-color--lighter: #8b949e;
@@ -64,6 +64,7 @@
   color: var(--md-default-fg-color--light);
 }
 
+/* Base control styling — used by native <select> and text inputs */
 .control-input {
   width: 100%;
   padding: 10px;
@@ -72,9 +73,20 @@
   background: var(--portal-bg);
   color: var(--portal-fg);
   font-size: 0.95rem;
+  font-family: inherit;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.control-input:hover {
+  border-color: var(--portal-primary);
+}
+
+.control-input:focus {
+  outline: none;
+  border-color: var(--portal-primary);
 }
 
 .lang-cat-grid {
@@ -151,11 +163,13 @@
   max-height: 70vh;
   scrollbar-width: thin;
   width: 100%;
+  position: relative;
 }
 
 .preview-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: 0.9rem;
   table-layout: fixed;
 }
@@ -167,19 +181,17 @@
   box-shadow: inset 0 -2px 0 var(--portal-border);
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 4;
   white-space: nowrap;
   height: 48px;
   box-sizing: border-box;
 }
 
-/* Fixed width for the date column so dates never wrap */
 .preview-table th:first-child,
 .preview-table td:first-child {
   width: 140px;
 }
 
-/* Holiday name column takes the remaining space and can wrap */
 .preview-table th:last-child,
 .preview-table td:last-child {
   width: auto;
@@ -193,6 +205,7 @@
   color: var(--portal-fg);
   white-space: normal;
   word-wrap: break-word;
+  background-color: var(--portal-bg);
 }
 
 .preview-table td a {
@@ -200,11 +213,11 @@
   text-decoration: none;
 }
 
-.preview-table tr:nth-child(even) {
+.preview-table tr:nth-child(even) td {
   background-color: var(--portal-zebra);
 }
 
-/* Region Divider */
+/* Region Divider — sticky under the table header */
 .region-divider td {
   background-color: var(--portal-primary) !important;
   color: white !important;
@@ -214,10 +227,10 @@
   text-align: center;
   position: sticky;
   top: 48px;
-  z-index: 6;
+  z-index: 3;
 }
 
-/* Year Divider */
+/* Year Divider — sticky under the region divider */
 .year-divider td {
   background-color: #e8f0fe !important;
   color: var(--portal-fg) !important;
@@ -227,18 +240,10 @@
   font-size: 0.85rem;
   text-align: center;
   position: sticky;
-  top: 72px;
-  z-index: 5;
+  top: 84px;
+  z-index: 2;
 }
 
-/* Ensure header stays above everything */
-.preview-table thead th {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-/* Empty State */
 .empty-state {
   padding: 40px;
   text-align: center;
@@ -250,7 +255,6 @@
   justify-content: center;
 }
 
-/* Desktop Responsive Settings */
 @media (min-width: 768px) {
   .portal-wrapper {
     grid-template-columns: 300px minmax(0, 1fr);
@@ -271,7 +275,7 @@
 
 /* Multi-select country/region picker */
 .calendar-selector {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .selector-label {
@@ -284,35 +288,82 @@
 
 .multi-select {
   position: relative;
+  display: block;
 }
 
+/* The trigger matches .control-input exactly */
 .multi-select-trigger {
   width: 100%;
   padding: 10px;
+  padding-right: 30px;
   border: 1px solid var(--portal-border);
   border-radius: 6px;
   background: var(--portal-bg);
   color: var(--portal-fg);
   font-size: 0.95rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  font-family: inherit;
   cursor: pointer;
   text-align: left;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+  line-height: 1.5;
+  transition: border-color 0.2s;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  height: 36px;
+  box-sizing: border-box;
+}
+
+.multi-select-trigger:hover {
+  border-color: var(--portal-primary);
+}
+
+.multi-select-trigger:focus {
+  outline: none;
+  border-color: var(--portal-primary);
+}
+
+.multi-select-arrow {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--md-default-fg-color--light);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.multi-select-arrow svg {
+  display: block;
+  width: 16px;
+  height: 16px;
 }
 
 .multi-select-placeholder {
   color: var(--md-default-fg-color--light);
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  display: inline-block;
 }
 
 .selected-count {
-  font-weight: 600;
-}
-
-.multi-select-arrow {
-  margin-left: 8px;
-  color: var(--md-default-fg-color--light);
-  flex-shrink: 0;
+  color: var(--portal-fg);
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  display: inline-block;
 }
 
 .multi-select-dropdown {
@@ -345,6 +396,13 @@
   background: var(--portal-bg);
   color: var(--portal-fg);
   font-size: 0.9rem;
+  height: 36px;
+  box-sizing: border-box;
+}
+
+.multi-select-search input:focus {
+  outline: none;
+  border-color: var(--portal-primary);
 }
 
 .multi-select-actions {
@@ -579,7 +637,6 @@
   color: var(--md-default-fg-color--lighter);
 }
 
-/* Multi-selection calendar list */
 .selection-summary {
   display: flex;
   align-items: center;
@@ -676,14 +733,12 @@
   border-radius: 6px;
 }
 
-/* Force the date column to never wrap in the preview section */
 .calendar-preview-section .preview-table td:first-child {
   width: 140px;
   min-width: 140px;
   white-space: nowrap;
 }
 
-/* Loading State */
 .loading-state {
   padding: 40px;
   text-align: center;
@@ -695,12 +750,10 @@
   justify-content: center;
 }
 
-/* Alpine.js Cloak */
 [x-cloak] {
   display: none !important;
 }
 
-/* Small screens adjustments */
 @media (max-width: 600px) {
   .calendar-preview-section .preview-table td:first-child {
     width: 100px;

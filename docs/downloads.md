@@ -35,7 +35,13 @@ hide:
             Select countries or regions...
           </span>
           <span x-show="selectedEntities.length > 0" class="selected-count" x-text="`${selectedEntities.length} selected`"></span>
-          <span class="multi-select-arrow">▾</span>
+          <span class="multi-select-arrow" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </span>
         </button>
 
         <div x-show="open" x-transition class="multi-select-dropdown" x-cloak>

@@ -166,14 +166,14 @@ function holidayDownloads() {
         this.selectedEntities = [...this.selectedEntities, code];
       }
       this._syncCategories();
-      this._resetResults();
+      this._refreshOrReset();
     },
 
     selectAllVisibleEntities() {
       const visibleCodes = Object.keys(this.filteredManifest);
       this.selectedEntities = [...new Set([...this.selectedEntities, ...visibleCodes])];
       this._syncCategories();
-      this._resetResults();
+      this._refreshOrReset();
     },
 
     clearEntitySelection() {
@@ -200,6 +200,17 @@ function holidayDownloads() {
       this.showPreview = false;
     },
 
+    // If the preview is already showing, refresh it; otherwise just clear.
+    _refreshOrReset() {
+      if ((this.showCalendarList || this.showPreview) &&
+          this.selectedEntities.length > 0 &&
+          this.selectedCategories.length > 0) {
+        this.listCalendars();
+      } else {
+        this._resetResults();
+      }
+    },
+
     // Category Selection
     toggleCategory(category) {
       if (this.selectedCategories.includes(category)) {
@@ -207,12 +218,12 @@ function holidayDownloads() {
       } else {
         this.selectedCategories = [...this.selectedCategories, category];
       }
-      this._resetResults();
+      this._refreshOrReset();
     },
 
     selectAllCategories() {
       this.selectedCategories = [...this.availableMultiCategories];
-      this._resetResults();
+      this._refreshOrReset();
     },
 
     // Year-scoped downloads
@@ -311,7 +322,7 @@ function holidayDownloads() {
 
     // Build a flat array of rows for the preview table.
     // Each row is one of: { type: 'region' }, { type: 'year' }, or { type: 'holiday' }.
-    // This is required because Alpine.js's <template x-for> must have a single root element.
+    // Required because Alpine.js <template x-for> must have a single root element.
     _buildPreviewRows(events) {
       const grouped = {};
 
@@ -334,7 +345,6 @@ function holidayDownloads() {
           .forEach(year => {
             rows.push({ type: 'year', label: year });
 
-            // Ensure holidays within each year are also sorted by date ascending
             grouped[region][year]
               .slice()
               .sort((a, b) => a.date.localeCompare(b.date))
@@ -351,7 +361,7 @@ function holidayDownloads() {
       return rows;
     },
 
-    // Load Preview Data
+    // Load Preview Data — fetches ALL selected categories for ALL selected entities.
     async loadPreview() {
       if (this.selectedEntities.length === 0 || this.selectedCategories.length === 0) {
         this.previewData = [];
@@ -363,30 +373,45 @@ function holidayDownloads() {
       const allEvents = [];
 
       for (const entity of this.selectedEntities) {
-        try {
-          const category = this.selectedCategories[0];
-          const path = this._getRelativePath(entity, category, 'json');
-          const response = await this._fetchFile(path);
+        const entityName = this.currentManifest[entity]?.name || entity;
 
-          if (response.ok) {
+        for (const category of this.selectedCategories) {
+          try {
+            const path = this._getRelativePath(entity, category, 'json');
+            const response = await this._fetchFile(path);
+
+            if (!response.ok) continue;
+
             const events = await response.json();
             const filtered = this._filterEventsByYearRange(events, this.startYear, this.endYear);
-            const entityName = this.currentManifest[entity]?.name || entity;
 
             filtered.forEach(event => {
               event._entity = entityName;
+              event._category = category;
             });
 
             allEvents.push(...filtered);
+          } catch (e) {
+            console.warn(`Could not load preview for ${entity}/${category}`, e);
           }
-        } catch (e) {
-          console.warn(`Could not load preview for ${entity}`, e);
         }
       }
 
-      allEvents.sort((a, b) => a.date.localeCompare(b.date));
+      // Deduplicate events that appear in multiple categories
+      // (e.g. a holiday tagged as both public and government).
+      const seen = new Set();
+      const deduped = [];
+      for (const event of allEvents) {
+        const key = `${event._entity}|${event.date}|${event.name}`;
+        if (!seen.has(key)) {
+          seen.add(key);
+          deduped.push(event);
+        }
+      }
 
-      this.previewData = allEvents.slice(0, 200);
+      deduped.sort((a, b) => a.date.localeCompare(b.date));
+
+      this.previewData = deduped.slice(0, 200);
       this.previewRows = this._buildPreviewRows(this.previewData);
       this.showPreview = this.previewRows.length > 0;
     },
