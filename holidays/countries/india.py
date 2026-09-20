@@ -1751,8 +1751,9 @@ class India(
 
     # West Bengal.
     def _populate_subdiv_wb_public_holidays(self):
-        # Pohela Boisakh.
+        # Bengali's New Year.
         self._add_holiday_apr_15(tr("Pohela Boishakh"))
+
         # Rabindra Jayanti.
         self._add_holiday_may_9(tr("Rabindra Jayanti"))
 
