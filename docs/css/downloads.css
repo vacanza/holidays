@@ -64,7 +64,7 @@
   color: var(--md-default-fg-color--light);
 }
 
-/* Base control styling — used by native <select> and text inputs */
+/* Base control styling - used by native <select> and text inputs */
 .control-input {
   width: 100%;
   padding: 10px;
@@ -217,7 +217,7 @@
   background-color: var(--portal-zebra);
 }
 
-/* Region Divider — sticky under the table header */
+/* Region Divider - sticky under the table header */
 .region-divider td {
   background-color: var(--portal-primary) !important;
   color: white !important;
@@ -230,7 +230,7 @@
   z-index: 3;
 }
 
-/* Year Divider — sticky under the region divider */
+/* Year Divider - sticky under the region divider */
 .year-divider td {
   background-color: #e8f0fe !important;
   color: var(--portal-fg) !important;

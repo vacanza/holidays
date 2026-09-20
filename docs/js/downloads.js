@@ -361,7 +361,7 @@ function holidayDownloads() {
       return rows;
     },
 
-    // Load Preview Data — fetches ALL selected categories for ALL selected entities.
+    // Load Preview Data - fetches ALL selected categories for ALL selected entities.
     async loadPreview() {
       if (this.selectedEntities.length === 0 || this.selectedCategories.length === 0) {
         this.previewData = [];
