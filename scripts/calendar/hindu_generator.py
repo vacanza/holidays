@@ -860,6 +860,36 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_hola_moholla(self, year: int) -> date | None:
+        """
+        Hola Moholla = Phalguna/Chaitra Krishna Pratipada (tithi 16).
+        Uses Holi as anchor.
+
+        Detection:
+        - t==15 at sunrise (first day of Purnima, t_prev==14) and
+        Pratipada already active at Aparahna → same day as Holi
+        - t==16 at sunrise → today
+        - t==17 at sunrise, t_prev==15 → Pratipada skipped → today
+        """
+        holi = self.get_holi(year)
+        if holi is None:
+            return None
+
+        for delta in range(0, 3):
+            dt = holi + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
+            t_apar = self._tithi(self._aparahna(dt))
+
+            if t == 15 and t_prev == 14 and t_apar == 16:
+                return dt
+            if t == 16:
+                return dt
+            if t == 17 and t_prev == 15:
+                return dt
+
+        return None
+
     def get_holi(self, year: int) -> date | None:
         """
         Holi = Phalgun Purnima (Rangwali Holi, day after Holika Dahan).
@@ -1945,13 +1975,14 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("DUSSEHRA", _lunisolar.get_dussehra),
     # ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
     # ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
-    ("GUDI_PADWA", _lunisolar.get_gudi_padwa),
+    # ("GUDI_PADWA", _lunisolar.get_gudi_padwa),
     # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
     # ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
     # ("GURU_RAVIDAS_JAYANTI", _lunisolar.get_guru_ravidas_jayanti),
     # ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
     # ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
     # ("HARTALIKA_TEEJ", _lunisolar.get_hartalika_teej),
+    ("HOLA_MOHOLLA", _lunisolar.get_hola_moholla),
     # ("HOLI", _lunisolar.get_holi),
     # ("JANMASHTAMI", _lunisolar.get_janmashtami),
     # ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
