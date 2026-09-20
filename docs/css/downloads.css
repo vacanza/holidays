@@ -49,6 +49,7 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
+  max-width: 100%;
 }
 
 /* Form Controls and Grid Layouts */
@@ -543,6 +544,9 @@
 /* Calendar results table */
 .calendar-results {
   padding: 20px;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .calendar-results-header {
@@ -567,12 +571,15 @@
 .calendar-table-wrapper {
   overflow-x: auto;
   width: 100%;
+  max-width: 100%;
+  overscroll-behavior-x: contain;
 }
 
 .calendar-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
+  min-width: 320px;
 }
 
 .calendar-table th {
@@ -580,6 +587,7 @@
   padding: 10px 14px;
   background: var(--portal-header-bg);
   border-bottom: 2px solid var(--portal-border);
+  white-space: nowrap;
 }
 
 .calendar-table td {
@@ -587,6 +595,14 @@
   border-bottom: 1px solid var(--portal-border);
   color: var(--portal-fg);
   vertical-align: top;
+  white-space: nowrap;
+}
+
+/* Allow the first column (region name + language) to wrap
+   if the name is very long, but keep link columns on one line. */
+.calendar-table td:first-child {
+  white-space: normal;
+  min-width: 140px;
 }
 
 .calendar-table tr:nth-child(even) {
@@ -600,6 +616,15 @@
   color: var(--md-default-fg-color--light);
 }
 
+/* Keep ICS · JSON · Webcal on a single line */
+.calendar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
 .calendar-links a,
 .calendar-links button {
   color: var(--portal-primary);
@@ -609,6 +634,7 @@
   padding: 0;
   font: inherit;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .calendar-links a:hover,
@@ -625,12 +651,14 @@
 .calendar-links span {
   color: var(--md-default-fg-color--lighter);
   margin: 0 2px;
+  flex-shrink: 0;
 }
 
 .calendar-error {
   margin-top: 4px;
   font-size: 0.75rem;
   color: #cf222e;
+  white-space: normal;
 }
 
 .calendar-unavailable {
@@ -704,6 +732,8 @@
 .calendar-preview-section {
   padding: 20px;
   border-bottom: 1px solid var(--portal-border);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .preview-header {
