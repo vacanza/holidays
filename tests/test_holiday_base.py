@@ -133,9 +133,9 @@ class CountryStub6(EntityStub, StaticHolidays):
     country = "CS6"
 
     def __init__(self, *args, **kwargs):
-        static_holidays_classes = kwargs.pop("static_holidays_classes", ())
-        for cls in (EntityStubStaticHolidays, *static_holidays_classes):
-            StaticHolidays.__init__(self, cls=cls)
+        StaticHolidays.__init__(
+            self, (EntityStubStaticHolidays, *kwargs.pop("static_holidays_classes", ()))
+        )
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self) -> None:
@@ -1086,12 +1086,17 @@ class TestSpecialHolidaysMultiple(TestCase):
         CountryStub7()
         self.assertEqual(EntityStubStaticHolidays.special_public_holidays, original)
 
-    def test_special_holidays_no_duplicates(self):
-        CountryStub7()
+    def test_special_holidays_merge(self):
         hb = CountryStub7()
-        # EntityStubStaticHolidays[2024] has 2 special entries,
-        # EntityInheritedStaticHolidays[2024] adds 1 more special entry.
-        self.assertEqual(len(hb.special_public_holidays[2024]), 3)
+        # Parent 2024 has 2 substituted entries; child adds Autumn Special Holiday.
+        self.assertEqual(
+            hb.special_public_holidays[2024],
+            (
+                (FEB, 19, FEB, 24),
+                (OCT, 7, OCT, 12),
+                (OCT, 1, "Autumn Special Holiday"),
+            ),
+        )
 
 
 class TestStandardMethods(TestCase):
