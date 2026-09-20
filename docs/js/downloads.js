@@ -126,6 +126,65 @@ function holidayDownloads() {
         .sort((a, b) => a.name.localeCompare(b.name));
     },
 
+    // Subdivisions - only relevant when exactly one country is selected.
+    // The manifest can expose these in several shapes; we handle all known
+    // variants and always ensure an "Entire Country" (ALL) option is present.
+    get availableSubdivisions() {
+      if (this.selectedEntities.length !== 1) return [];
+      const entity = this.selectedEntities[0];
+      const data = this.currentManifest[entity] || {};
+      const manifest = this.currentManifest;
+
+      let subs = [];
+
+      // Variant 1: nested map { "ALL": "...", "AU-NSW": "New South Wales" }
+      if (data.subdivisions && !Array.isArray(data.subdivisions)) {
+        subs = Object.entries(data.subdivisions).map(([code, name]) => ({
+          code,
+          name: typeof name === 'string' ? name : (name?.name || code)
+        }));
+      }
+      // Variant 2: nested array [ { code, name }, ... ]
+      else if (Array.isArray(data.subdivisions)) {
+        subs = data.subdivisions.map(sub => ({
+          code: sub.code || sub.id || sub.value,
+          name: sub.name || sub.label || sub.code
+        }));
+      }
+      // Variant 3: sibling top-level entries with a `parent` field
+      else {
+        const siblings = Object.entries(manifest).filter(([code, entry]) => {
+          if (code === entity) return false;
+          const parent = entry?.parent || entry?.country || entry?.parent_code;
+          return parent === entity;
+        });
+        subs = siblings
+          .sort(([a], [b]) => a.localeCompare(b))
+          .map(([code, entry]) => ({
+            code,
+            name: entry?.name || entry?.subdivision_name || code
+          }));
+      }
+
+      // Always ensure "Entire Country" (ALL) is present.
+      if (!subs.some(sub => sub.code === 'ALL')) {
+        subs.unshift({ code: 'ALL', name: 'Entire Country' });
+      }
+
+      // Keep ALL first, sort the rest alphabetically by name.
+      const allOption = subs.find(sub => sub.code === 'ALL');
+      const rest = subs
+        .filter(sub => sub.code !== 'ALL')
+        .sort((a, b) => a.name.localeCompare(b.name));
+
+      return [allOption, ...rest];
+    },
+
+    get showSubdivisionPicker() {
+      return this.selectedEntities.length === 1 &&
+             this.availableSubdivisions.length > 1;
+    },
+
     get regionCount() {
       return this.previewRows.filter(row => row.type === 'region').length;
     },
@@ -149,9 +208,15 @@ function holidayDownloads() {
       return this.fetchMode === 'remote' ? this.remoteBaseUrl + path : path;
     },
 
+    // Relative path - uses the selected subdivision when this entity is
+    // the currently-selected single country, otherwise falls back to ALL.
     _getRelativePath(entity, category, ext) {
       const language = this._getLanguage(entity);
-      return this._getPath(entity, 'ALL', language, category, ext);
+      const subdiv =
+        this.selectedEntities.length === 1 && this.selectedEntities[0] === entity
+          ? this.selectedSubdiv
+          : 'ALL';
+      return this._getPath(entity, subdiv, language, category, ext);
     },
 
     _getWebcalUrl(entity, category) {
@@ -165,6 +230,7 @@ function holidayDownloads() {
       } else {
         this.selectedEntities = [...this.selectedEntities, code];
       }
+      this.selectedSubdiv = 'ALL';
       this._syncCategories();
       this._refreshOrReset();
     },
@@ -172,6 +238,7 @@ function holidayDownloads() {
     selectAllVisibleEntities() {
       const visibleCodes = Object.keys(this.filteredManifest);
       this.selectedEntities = [...new Set([...this.selectedEntities, ...visibleCodes])];
+      this.selectedSubdiv = 'ALL';
       this._syncCategories();
       this._refreshOrReset();
     },
@@ -179,6 +246,7 @@ function holidayDownloads() {
     clearEntitySelection() {
       this.selectedEntities = [];
       this.selectedCategories = ['public'];
+      this.selectedSubdiv = 'ALL';
       this._resetResults();
     },
 
@@ -263,8 +331,16 @@ function holidayDownloads() {
     _getDownloadFilename(entity, category, format) {
       const data = this.currentManifest[entity] || {};
       const name = (data.name || entity).replace(/\s+/g, '-');
-      const yearLabel = this.startYear === this.endYear ? `${this.startYear}` : `${this.startYear}-${this.endYear}`;
-      return `${name}-${category}-${yearLabel}.${format}`;
+      const subdiv =
+        this.selectedEntities.length === 1 &&
+        this.selectedEntities[0] === entity &&
+        this.selectedSubdiv !== 'ALL'
+          ? `-${this.selectedSubdiv}`
+          : '';
+      const yearLabel = this.startYear === this.endYear
+        ? `${this.startYear}`
+        : `${this.startYear}-${this.endYear}`;
+      return `${name}${subdiv}-${category}-${yearLabel}.${format}`;
     },
 
     _filterEventsByYearRange(events, startYear, endYear) {
@@ -320,9 +396,8 @@ function holidayDownloads() {
       URL.revokeObjectURL(url);
     },
 
-    // Build a flat array of rows for the preview table.
-    // Each row is one of: { type: 'region' }, { type: 'year' }, or { type: 'holiday' }.
-    // Required because Alpine.js <template x-for> must have a single root element.
+    // Build flat rows for the preview table. Each row is one of:
+    // { type: 'region' }, { type: 'year' }, or { type: 'holiday' }.
     _buildPreviewRows(events) {
       const grouped = {};
 
@@ -341,7 +416,7 @@ function holidayDownloads() {
         rows.push({ type: 'region', label: region });
 
         Object.keys(grouped[region])
-          .sort((a, b) => a.localeCompare(b))   // ascending years
+          .sort((a, b) => a.localeCompare(b))
           .forEach(year => {
             rows.push({ type: 'year', label: year });
 
@@ -373,7 +448,18 @@ function holidayDownloads() {
       const allEvents = [];
 
       for (const entity of this.selectedEntities) {
-        const entityName = this.currentManifest[entity]?.name || entity;
+        const data = this.currentManifest[entity] || {};
+        const baseName = data.name || entity;
+
+        // Include subdivision name in the region label when one is selected.
+        const subdivLabel =
+          this.selectedEntities.length === 1 &&
+          this.selectedSubdiv !== 'ALL' &&
+          data.subdivisions &&
+          data.subdivisions[this.selectedSubdiv]
+            ? ` - ${data.subdivisions[this.selectedSubdiv]}`
+            : '';
+        const entityName = baseName + subdivLabel;
 
         for (const category of this.selectedCategories) {
           try {
@@ -397,8 +483,7 @@ function holidayDownloads() {
         }
       }
 
-      // Deduplicate events that appear in multiple categories
-      // (e.g. a holiday tagged as both public and government).
+      // Deduplicate events that appear in multiple categories.
       const seen = new Set();
       const deduped = [];
       for (const event of allEvents) {
@@ -430,9 +515,18 @@ function holidayDownloads() {
         const language = this._getLanguage(entity);
         const supportedCategories = data.categories || ['public'];
 
+        // Append subdivision to the display name when applicable.
+        const subdivLabel =
+          this.selectedEntities.length === 1 &&
+          this.selectedSubdiv !== 'ALL' &&
+          data.subdivisions &&
+          data.subdivisions[this.selectedSubdiv]
+            ? ` - ${data.subdivisions[this.selectedSubdiv]}`
+            : '';
+
         return {
           entity,
-          name: data.name || entity,
+          name: (data.name || entity) + subdivLabel,
           language,
           languageName: this._getLanguageName(entity, language),
           calendars: this.selectedCategories.map(category => {
@@ -456,6 +550,7 @@ function holidayDownloads() {
     updateType() {
       this.selectedEntities = [];
       this.selectedCategories = ['public'];
+      this.selectedSubdiv = 'ALL';
       this.selectedLang = 'default';
       this.entitySearch = '';
       this._resetResults();

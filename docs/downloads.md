@@ -27,7 +27,7 @@ hide:
     </div>
 
     <div class="calendar-selector">
-      <label class="selector-label">Countries / Regions</label>
+      <label class="selector-label">Country / Region</label>
 
       <div class="multi-select" x-data="{ open: false }" @click.outside="open = false">
         <button type="button" class="multi-select-trigger" @click="open = !open">
@@ -77,6 +77,21 @@ hide:
           </span>
         </template>
       </div>
+    </div>
+
+    <!-- Subdivision / State - only shown for a single selected country -->
+    <div class="control-group" x-show="showSubdivisionPicker" x-cloak>
+      <label for="subdivision">Subdivision / State</label>
+      <select
+        id="subdivision"
+        class="control-input"
+        x-model="selectedSubdiv"
+        @change="listCalendars()"
+      >
+        <template x-for="sub in availableSubdivisions" :key="sub.code">
+          <option :value="sub.code" x-text="sub.name"></option>
+        </template>
+      </select>
     </div>
 
     <div class="calendar-selector">
