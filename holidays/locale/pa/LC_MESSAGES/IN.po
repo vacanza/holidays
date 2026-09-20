@@ -868,7 +868,7 @@ msgstr "ਬਥੁਕੰਮਾ"
 msgid "Maharaja Bir Bikram Kishore Manikya Bahadur's Jayanti"
 msgstr "ਮਹਾਰਾਜਾ ਬੀਰ ਬਿਕਰਮ ਕਿਸ਼ੋਰ ਮਾਣਿਕਿਆ ਬਹਾਦੁਰ ਜਯੰਤੀ"
 
-#. Bengali's New Year.
+#. Bengali New Year.
 msgid "Pohela Boishakh"
 msgstr "ਪੋਹੇਲਾ ਬੋਸ਼ਾਖ"
 

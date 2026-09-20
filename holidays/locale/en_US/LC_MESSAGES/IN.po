@@ -869,9 +869,9 @@ msgstr "Bathukamma"
 msgid "Maharaja Bir Bikram Kishore Manikya Bahadur's Jayanti"
 msgstr "Maharaja Bir Bikram Kishore Manikya Bahadur's Birthday"
 
-#. Bengali's New Year.
+#. Bengali New Year.
 msgid "Pohela Boishakh"
-msgstr "Bengali's New Year"
+msgstr "Bengali New Year"
 
 #. Garia Puja.
 msgid "Garia Puja"

@@ -2850,7 +2850,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ),
             (
                 "2018-04-15",
-                "Bahag Bihu; Bengali's New Year; Himachal Day; "
+                "Bahag Bihu; Bengali New Year; Himachal Day; "
                 "Maha Vishuva Sankranti / Pana Sankranti; Vaisakhadi",
             ),
             ("2018-04-16", "Bahag Bihu"),

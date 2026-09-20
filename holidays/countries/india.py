@@ -1622,7 +1622,7 @@ class India(
 
         # Hindu holidays.
 
-        # Bengali's New Year.
+        # Bengali New Year.
         self.add_pohela_boishakh(tr("Pohela Boishakh"))
 
         # Garia Puja.
@@ -1751,7 +1751,7 @@ class India(
 
     # West Bengal.
     def _populate_subdiv_wb_public_holidays(self):
-        # Bengali's New Year.
+        # Bengali New Year.
         self._add_holiday_apr_15(tr("Pohela Boishakh"))
 
         # Rabindra Jayanti.
