@@ -71,14 +71,13 @@ ci = [
   "cyclonedx-bom>=7.3,<8",
   "pre-commit>=4.5,<5",
   "pre-commit-uv>=4.3,<5",
-  "uv==0.12.3",
+  "uv==0.12.6",
 ]
 tests = [
   "coverage>=7.12,<8",
   "numpy>=2,<2.3; python_version<'3.11'",
   "numpy>=2.3,<2.5; python_version=='3.11'",
-  "numpy>=2.5,<3; python_version>='3.12' and python_version<'3.15'",
-  "numpy>=2.5.2,<3; python_version>='3.15'",
+  "numpy>=2.5,<3; python_version>='3.12'",
   "polib>=1.2,<2",
   "pygments>=2.20,<3",
   "pytest>=9.0.1,<10",
@@ -204,8 +203,8 @@ ini_options.filterwarnings = [
 ]
 
 [tool.coverage]
-run.branch = true
 run.omit = [ "scripts/*", "tests/*" ]
+run.branch = true
 report.exclude_also = [
   "^if TYPE_CHECKING:",
 ]

@@ -12,17 +12,16 @@
 
 import os
 import re
-import unittest
 from collections import Counter
 from pathlib import Path
-from unittest import mock
+from unittest import TestCase, mock
 
 from polib import pofile as create_po_file
 
 import holidays
 
 
-class TestLocalization(unittest.TestCase):
+class TestLocalization(TestCase):
     @mock.patch.dict(os.environ, {"LANGUAGE": "en_US"})
     def test_language_unavailable_en_us(self):
         self.assertEqual(os.environ["LANGUAGE"], "en_US")
