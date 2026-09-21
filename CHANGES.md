@@ -1,3 +1,18 @@
+## Version 0.105
+
+Released September 21, 2026
+
+- Refactor German School Holidays generator (#3808 by @PPsyrius)
+- Refactor imports in tests (#3819 by @KJhellico)
+- Update Australia holidays: add school holidays support (#3821 by @gheydon)
+- Update Canada holidays: remove Boxing Day from optional holidays in QC (#3807 by @arbazkhan971)
+- Update India holidays: subdiv holidays improvement (East, North-East & South regions - I) (#3784 by @ankushhKapoor, @KJhellico)
+- Update Indonesia holidays: add 2027 special holidays (#3828 by @KJhellico)
+- Update Malaysia holidays (#3814 by @KJhellico)
+- Update Philippines holidays: add 2027 holidays (#3817 by @KJhellico)
+- Update South Africa holidays: add Nov 4, 2026 holiday (#3809 by @lispwarez)
+- Add support for special holidays inheritance from parent entity (#3830 by @KJhellico, @arkid15r)
+  
 ## Version 0.104
 
 Released September 7, 2026
