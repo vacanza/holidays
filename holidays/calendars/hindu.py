@@ -62,6 +62,7 @@ MAKAR_SANKRANTI = "MAKAR_SANKRANTI"
 MATSYA_JAYANTI = "MATSYA_JAYANTI"
 NAAG_PANCHAMI = "NAAG_PANCHAMI"
 NARAKA_CHATURDASHI = "NARAKA_CHATURDASHI"
+NIRJALA_EKADASHI = "NIRJALA_EKADASHI"
 ONAM = "ONAM"
 PARSHURAM_JAYANTI = "PARSHURAM_JAYANTI"
 PARIVARTINI_EKADASHI = "PARIVARTINI_EKADASHI"
@@ -80,7 +81,7 @@ TAMU_LOSAR = "TAMU_LOSAR"
 THAIPUSAM = "THAIPUSAM"
 TULSIDAS_JAYANTI = "TULSIDAS_JAYANTI"
 VAISAKHI = "VAISAKHI"
-VARALAKHSMI_VRATAM = "VARALAKHSMI_VRATAM"
+VARALAKSHMI_VRATAM = "VARALAKSHMI_VRATAM"
 VIKRAM_SAMVAT_NEW_YEAR = "VIKRAM_SAMVAT_NEW_YEAR"
 VISHU = "VISHU"
 VISHWAKARMA_PUJA = "VISHWAKARMA_PUJA"
@@ -88,7 +89,7 @@ WANGALA_FESTIVAL = "WANGALA_FESTIVAL"
 
 
 class _HinduLunisolar:
-    # https://web.archive.org/web/20260828052707/https://www.drikpanchang.com/hindu-saints/shankaracharya/adi-shankaracharya-jayanti.html
+    # https://web.archive.org/save/https://www.drikpanchang.com/hindu-saints/shankaracharya/adi-shankaracharya-jayanti.html
     ADI_SHANKARACHARYA_JAYANTI_DATES = {
         2001: (APR, 28),
         2002: (MAY, 16),
@@ -2452,7 +2453,7 @@ class _HinduLunisolar:
         2035: (OCT, 2),
     }
 
-    # https://web.archive.org/web/20260720141028/https://www.drikpanchang.com/festivals/teej/hartalika-teej-date-time.html
+    # https://web.archive.org/web/20260720140950/https://www.drikpanchang.com/hindu-saints/vallabhacharya/shri-vallabhacharya-jayanti.html
     SHRI_VALLABHACHARYA_JAYANTI_DATES = {
         2001: (APR, 19),
         2002: (MAY, 7),
@@ -2870,7 +2871,7 @@ class _HinduLunisolar:
     }
 
     # https://web.archive.org/web/20260218051114/https://www.drikpanchang.com/festivals/varalakshmi-vratam/varalakshmi-vratam-date-time.html
-    VARALAKHSMI_VRATAM_DATES = {
+    VARALAKSHMI_VRATAM_DATES = {
         2001: (AUG, 3),
         2002: (AUG, 16),
         2003: (AUG, 8),
@@ -3213,6 +3214,9 @@ class _HinduLunisolar:
     def naraka_chaturdashi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(NARAKA_CHATURDASHI, year)
 
+    def nirjala_ekadashi_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(NIRJALA_EKADASHI, year)
+
     def onam_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(ONAM, year)
 
@@ -3268,7 +3272,7 @@ class _HinduLunisolar:
         return self._get_holiday(VAISAKHI, year)
 
     def varalakshmi_vratam_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(VARALAKHSMI_VRATAM, year)
+        return self._get_holiday(VARALAKSHMI_VRATAM, year)
 
     def vikram_samvat_new_year_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VIKRAM_SAMVAT_NEW_YEAR, year)

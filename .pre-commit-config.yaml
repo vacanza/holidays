@@ -26,7 +26,7 @@ repos:
           - --py310-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 39d9ac5938dadb73df0564a45f163e25ff9fa6e2  # v0.16.1
+    rev: aab412d509121cb5f7533134b7e67f9fab59c682  # v0.16.4
     hooks:
       - id: ruff-check
       - id: ruff-format
@@ -50,21 +50,21 @@ repos:
           - docs/file_header.txt
 
   - repo: https://github.com/pycqa/isort
-    rev: a333737ed43df02b18e6c95477ea1b285b3de15a  # 8.0.1
+    rev: 727d119442a3cc9c4184e45e14c74759b811cdb8  # 9.0.0
     hooks:
       - id: isort
         exclude: ^(docs)
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: 41e691678310dfd3833f7ab4e180ddb014310356  # v2.3.0
+    rev: 7ff8d35ae36a7d2b968f2f90b4c723e292e594ee  # v2.3.1
     hooks:
       - id: mypy
         additional_dependencies:
           - types-polib==1.2.0.20260518
-          - types-python-dateutil==2.9.0.20260716
+          - types-python-dateutil==2.9.0.20260807
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: b82a24a520c5d496cb7b23b4e9b63537c280f51b  # v2.27.0
+    rev: cc0b0f8d4107cfe80d6571644e639b05aee29128  # v2.28.1
     hooks:
       - id: pyproject-fmt
 

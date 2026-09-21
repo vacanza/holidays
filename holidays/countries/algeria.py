@@ -12,7 +12,6 @@
 
 from __future__ import annotations
 
-from gettext import gettext as tr
 from typing import TYPE_CHECKING
 
 from holidays.calendars.gregorian import THU, FRI, SAT, SUN
@@ -23,6 +22,7 @@ from holidays.groups import (
     InternationalHolidays,
     IslamicHolidays,
 )
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 if TYPE_CHECKING:

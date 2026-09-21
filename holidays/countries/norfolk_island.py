@@ -11,10 +11,9 @@
 #  License: MIT (see LICENSE file)
 
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_MON,

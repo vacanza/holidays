@@ -12,7 +12,6 @@
 
 from __future__ import annotations
 
-from gettext import gettext as tr
 from typing import TYPE_CHECKING
 
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
@@ -24,6 +23,7 @@ from holidays.groups import (
     InternationalHolidays,
     IslamicHolidays,
 )
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SUN_TO_NEXT_WORKDAY,

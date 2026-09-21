@@ -12,7 +12,6 @@
 
 from __future__ import annotations
 
-from gettext import gettext as tr
 from typing import TYPE_CHECKING
 
 from holidays.calendars.chinese import VIETNAMESE_CALENDAR
@@ -33,6 +32,7 @@ from holidays.calendars.gregorian import (
     _timedelta,
 )
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     ObservedRule,

@@ -10,13 +10,13 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
+from unittest import TestCase
 
 from holidays.calendars.burmese import _BurmeseLunisolar
 
 
-class TestBurmeseCalendar(unittest.TestCase):
+class TestBurmeseCalendar(TestCase):
     def setUp(self):
         super().setUp()
         self.calendar = _BurmeseLunisolar()

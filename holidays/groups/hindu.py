@@ -271,8 +271,10 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
 
     def _add_ganesh_chaturthi_day_two(self, name) -> date | None:
         """
-        Add Ganesh Chaturthi (2nd Day), celebrated the day after Ganesh Chaturthi.
+        Add Ganesh Chaturthi.
 
+        Ganesh Chaturthi is a Hindu festival celebrating the birth of Lord Ganesha.
+        It falls on the fourth day of the Hindu month of Bhadrapada (August/September).
         https://en.wikipedia.org/wiki/Ganesh_Chaturthi
         """
         return self._add_hindu_calendar_holiday(
@@ -515,6 +517,19 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.holi_date(self._year), days_delta=-1
+        )
+
+    def _add_nirjala_ekadashi(self, name) -> date | None:
+        """
+        Add Nirjala Ekadashi.
+
+        Nirjala Ekadashi is a Hindu fasting day dedicated to Lord Vishnu.
+        It falls on the 11th day (Ekadashi) of the bright fortnight of the
+        Hindu month of Jyeshtha (May/June).
+        https://en.wikipedia.org/wiki/Nirjala_Ekadashi
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.nirjala_ekadashi_date(self._year)
         )
 
     def _add_holi(self, name) -> date | None:
@@ -910,8 +925,16 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             self._hindu_calendar.pitra_moksh_amavasya_date(self._year),
         )
 
-    def _add_pohela_boishakh(self, name) -> date | None:
-        "Add Pohela Boishakh, the Bengali New Year."
+    def add_pohela_boishakh(self, name) -> date | None:
+        """
+        Add Pohela Boishakh.
+
+        Pohela Boishakh, also known as Bengali New Year, marks the
+        beginning of the Bengali calendar and is celebrated with
+        cultural events, processions, and traditional festivities.
+
+        https://en.wikipedia.org/wiki/Pohela_Boishakh
+        """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.vaisakhi_date(self._year), days_delta=+1
         )
@@ -1151,6 +1174,15 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.vaisakhi_date(self._year)
         )
 
+    def _add_vaisakhadi_eve(self, name: str) -> None:
+        """
+        Add the day before Vaisakhadi.
+
+        The day before Vaisakhadi falls on April 13 in leap years
+        and April 14 otherwise.
+        """
+        self._add_holiday(name, date(self._year, APR, 13 if isleap(self._year) else 14))
+
     def _add_vaisakhadi(self, name: str) -> None:
         """
         Add Vaisakhadi.
@@ -1160,6 +1192,15 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         April 15, but falls on April 14 in leap years.
         """
         self._add_holiday(name, date(self._year, APR, 14 if isleap(self._year) else 15))
+
+    def _add_vaisakhadi_day_two(self, name: str) -> None:
+        """
+        Add the day after Vaisakhadi.
+
+        The day after Vaisakhadi falls on April 15 in leap years
+        and April 16 otherwise.
+        """
+        self._add_holiday(name, date(self._year, APR, 15 if isleap(self._year) else 16))
 
     def _add_varalakshmi_vratam(self, name) -> date | None:
         """

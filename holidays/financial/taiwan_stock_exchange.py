@@ -10,11 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import _timedelta
 from holidays.constants import PUBLIC
 from holidays.countries.taiwan import Taiwan
+from holidays.helpers import tr
 from holidays.observed_holiday_base import SAT_TO_PREV_WORKDAY, SUN_TO_NEXT_WORKDAY
 
 

@@ -264,9 +264,8 @@ class TestGenerateIcs(TestCase):
             ("--list-languages", ["Supported languages for CS1:", "en_US, es"]),
         ):
             with self.subTest(arg=arg):
-                with self.argv("CS1", arg):
-                    with self.stdout() as context:
-                        IcsGenerator().run()
+                with self.argv("CS1", arg), self.stdout() as context:
+                    IcsGenerator().run()
                 self.assertEqual(context.getvalue().splitlines(), expected)
 
     def test_generate_country_calendar(self):
@@ -495,22 +494,26 @@ class TestGenerateIcs(TestCase):
 
     def test_output_template_unknown_placeholder(self):
         for template in ("{foo}", "{code!r}", "{code:>10}"):
-            with self.subTest(template=template):
-                with self.argv("US", "--output-template", template):
-                    with self.assertRaises(SystemExit) as context:
-                        IcsGenerator().run()
+            with (
+                self.subTest(template=template),
+                self.argv("US", "--output-template", template),
+                self.assertRaises(SystemExit) as context,
+            ):
+                IcsGenerator().run()
 
-                self.assertEqual(
-                    str(context.exception),
-                    f"Unknown placeholder '{template}' in output template. "
-                    "Supported placeholders: {categories}, {code}, {end_year}, {language}, "
-                    "{start_year}, {subdiv}, {today}",
-                )
+            self.assertEqual(
+                str(context.exception),
+                f"Unknown placeholder '{template}' in output template. "
+                "Supported placeholders: {categories}, {code}, {end_year}, {language}, "
+                "{start_year}, {subdiv}, {today}",
+            )
 
     def test_output_template_without_placeholders(self):
-        with self.argv("US", "--output-template", "calendar.ics"):
-            with self.assertRaises(SystemExit) as context:
-                IcsGenerator().run()
+        with (
+            self.argv("US", "--output-template", "calendar.ics"),
+            self.assertRaises(SystemExit) as context,
+        ):
+            IcsGenerator().run()
 
         self.assertEqual(
             str(context.exception), "Output template must contain at least one placeholder"
@@ -518,17 +521,21 @@ class TestGenerateIcs(TestCase):
 
     def test_output_template_invalid(self):
         for template in ("{", "}", "{code:{bad}}", "{code:{", "code}"):
-            with self.subTest(template=template):
-                with self.argv("US", "--output-template", template):
-                    with self.assertRaises(SystemExit) as context:
-                        IcsGenerator().run()
+            with (
+                self.subTest(template=template),
+                self.argv("US", "--output-template", template),
+                self.assertRaises(SystemExit) as context,
+            ):
+                IcsGenerator().run()
 
-                self.assertEqual(str(context.exception), "Invalid output template")
+            self.assertEqual(str(context.exception), "Invalid output template")
 
     def test_generate_calendar_error(self):
-        with patch("holidays.ical.ICalExporter.save_ics", side_effect=ValueError("unknown error")):
-            with self.argv("US"):
-                with self.assertRaises(SystemExit) as context:
-                    IcsGenerator().run()
+        with (
+            patch("holidays.ical.ICalExporter.save_ics", side_effect=ValueError("unknown error")),
+            self.argv("US"),
+            self.assertRaises(SystemExit) as context,
+        ):
+            IcsGenerator().run()
 
         self.assertEqual(str(context.exception), "Failed to generate calendar: unknown error")

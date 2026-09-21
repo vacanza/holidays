@@ -11,11 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import JAN, APR, SEP
 from holidays.constants import HALF_DAY, PUBLIC, RESTRICTED_SETTLEMENT
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NONE,

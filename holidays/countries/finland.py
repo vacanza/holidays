@@ -10,11 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import _timedelta
 from holidays.constants import PUBLIC, UNOFFICIAL, WORKDAY
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -39,7 +38,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         * <https://en.wikipedia.org/wiki/Independence_Day_(Finland)>
         * <https://en.wikipedia.org/wiki/Åland's_Autonomy_Day>
         * <https://web.archive.org/web/20250509184304/https://wiki.aineetonkulttuuriperinto.fi/wiki/Workers’_Labour_Day_on_May_1>
-    """
+    """  # noqa: RUF002
 
     country = "FI"
     default_language = "fi"

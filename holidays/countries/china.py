@@ -10,11 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, DEC
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
@@ -75,7 +74,7 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
     observed_estimated_label = tr("%s（补假，推定）")
     # %s (observed).
     observed_label = tr("%s（补假）")
-    supported_categories = (PUBLIC, HALF_DAY)
+    supported_categories: tuple[str, ...] = (PUBLIC, HALF_DAY)
     default_language = "zh_CN"
     supported_languages = ("en_US", "th", "zh_CN", "zh_TW")
     # Proclamation of the People's Republic of China on Oct 1, 1949.
@@ -84,7 +83,9 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, cls=ChinaStaticHolidays)
+        StaticHolidays.__init__(
+            self, (ChinaStaticHolidays, *kwargs.pop("static_holidays_classes", ()))
+        )
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         kwargs.setdefault("observed_since", 2000)
         super().__init__(*args, **kwargs)

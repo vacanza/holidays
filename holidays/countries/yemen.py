@@ -11,12 +11,12 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import AUG, THU, FRI, SAT, _timedelta
 from holidays.constants import PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import InternationalHolidays, IslamicHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, FRI_TO_NEXT_WORKDAY
 
 

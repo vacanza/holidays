@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
     JAN,
@@ -29,6 +27,7 @@ from holidays.calendars.gregorian import (
     FRI,
 )
 from holidays.groups import IslamicHolidays, PersianCalendarHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -172,16 +171,17 @@ class IRN(Iran):
 
 
 class IranIslamicHolidays(_CustomIslamicHolidays):
-    ALI_AL_RIDA_DEATH_DATES_CONFIRMED_YEARS = (2001, 2025)
+    ALI_AL_RIDA_DEATH_DATES_CONFIRMED_YEARS = (2001, 2026)
     ALI_AL_RIDA_DEATH_DATES = {
         2005: (APR, 9),
         2008: (MAR, 8),
         2013: (JAN, 12),
         2018: (NOV, 8),
         2020: (OCT, 17),
+        2026: (AUG, 13),
     }
 
-    ALI_BIRTHDAY_DATES_CONFIRMED_YEARS = (2001, 2025)
+    ALI_BIRTHDAY_DATES_CONFIRMED_YEARS = (2001, 2026)
     ALI_BIRTHDAY_DATES = {
         2003: (SEP, 10),
         2008: (JUL, 16),
@@ -194,7 +194,7 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
         2024: (JAN, 25),
     }
 
-    ALI_DEATH_DATES_CONFIRMED_YEARS = (2001, 2025)
+    ALI_DEATH_DATES_CONFIRMED_YEARS = (2001, 2026)
     ALI_DEATH_DATES = {
         2007: (OCT, 3),
         2009: (SEP, 11),
@@ -204,7 +204,7 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
         2023: (APR, 12),
     }
 
-    ARBAEEN_DATES_CONFIRMED_YEARS = (2001, 2025)
+    ARBAEEN_DATES_CONFIRMED_YEARS = (2001, 2026)
     ARBAEEN_DATES = {
         2001: (MAY, 14),
         2002: (MAY, 3),
@@ -219,7 +219,7 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
         2025: (AUG, 14),
     }
 
-    ASHURA_DATES_CONFIRMED_YEARS = (2001, 2025)
+    ASHURA_DATES_CONFIRMED_YEARS = (2001, 2026)
     ASHURA_DATES = {
         2006: (FEB, 9),
         2008: (JAN, 19),
@@ -229,9 +229,10 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
         2022: (AUG, 8),
         2023: (JUL, 28),
         2024: (JUL, 16),
+        2026: (JUN, 25),
     }
 
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_ADHA_DATES = {
         2005: (JAN, 21),
         2006: ((JAN, 11), (DEC, 31)),
@@ -239,9 +240,10 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
         2017: (SEP, 1),
         2020: (JUL, 31),
         2025: (JUN, 6),
+        2026: (MAY, 27),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_FITR_DATES = {
         2001: (DEC, 16),
         2004: (NOV, 14),
@@ -257,7 +259,7 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
         2024: (APR, 10),
     }
 
-    EID_AL_GHADIR_DATES_CONFIRMED_YEARS = (2001, 2025)
+    EID_AL_GHADIR_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_GHADIR_DATES = {
         2005: (JAN, 29),
         2007: ((JAN, 8), (DEC, 29)),
@@ -265,9 +267,10 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
         2017: (SEP, 9),
         2020: (AUG, 8),
         2025: (JUN, 14),
+        2026: (JUN, 4),
     }
 
-    FATIMA_DEATH_DATES_CONFIRMED_YEARS = (2001, 2025)
+    FATIMA_DEATH_DATES_CONFIRMED_YEARS = (2001, 2026)
     FATIMA_DEATH_DATES = {
         2002: (AUG, 12),
         2006: (JUN, 29),
@@ -278,18 +281,20 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
         2017: (MAR, 2),
         2022: ((JAN, 6), (DEC, 27)),
         2025: (NOV, 24),
+        2026: (NOV, 13),
     }
 
-    HASAN_AL_ASKARI_DEATH_DATES_CONFIRMED_YEARS = (2001, 2025)
+    HASAN_AL_ASKARI_DEATH_DATES_CONFIRMED_YEARS = (2001, 2026)
     HASAN_AL_ASKARI_DEATH_DATES = {
         2005: (APR, 17),
         2008: (MAR, 16),
         2013: (JAN, 20),
         2018: (NOV, 16),
         2020: (OCT, 25),
+        2026: (AUG, 21),
     }
 
-    IMAM_MAHDI_BIRTHDAY_DATES_CONFIRMED_YEARS = (2001, 2025)
+    IMAM_MAHDI_BIRTHDAY_DATES_CONFIRMED_YEARS = (2001, 2026)
     IMAM_MAHDI_BIRTHDAY_DATES = {
         2004: (OCT, 1),
         2010: (JUL, 27),
@@ -302,7 +307,7 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
         2025: (FEB, 14),
     }
 
-    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (2001, 2025)
+    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (2001, 2026)
     ISRA_AND_MIRAJ_DATES = {
         2003: (SEP, 24),
         2008: (JUL, 30),
@@ -315,7 +320,7 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
         2024: (FEB, 8),
     }
 
-    PROPHET_DEATH_DATES_CONFIRMED_YEARS = (2001, 2025)
+    PROPHET_DEATH_DATES_CONFIRMED_YEARS = (2001, 2026)
     PROPHET_DEATH_DATES = {
         2001: (MAY, 22),
         2002: (MAY, 11),
@@ -330,16 +335,17 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
         2025: (AUG, 22),
     }
 
-    SADIQ_BIRTHDAY_DATES_CONFIRMED_YEARS = (2001, 2025)
+    SADIQ_BIRTHDAY_DATES_CONFIRMED_YEARS = (2001, 2026)
     SADIQ_BIRTHDAY_DATES = {
         2005: (APR, 26),
         2008: (MAR, 25),
         2013: (JAN, 29),
         2018: (NOV, 25),
         2020: (NOV, 3),
+        2026: (AUG, 30),
     }
 
-    SADIQ_DEATH_DATES_CONFIRMED_YEARS = (2001, 2025)
+    SADIQ_DEATH_DATES_CONFIRMED_YEARS = (2001, 2026)
     SADIQ_DEATH_DATES = {
         2001: (JAN, 20),
         2002: ((JAN, 9), (DEC, 30)),
@@ -356,7 +362,7 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
         2024: (MAY, 4),
     }
 
-    TASUA_DATES_CONFIRMED_YEARS = (2001, 2025)
+    TASUA_DATES_CONFIRMED_YEARS = (2001, 2026)
     TASUA_DATES = {
         2006: (FEB, 8),
         2008: (JAN, 18),
@@ -366,6 +372,7 @@ class IranIslamicHolidays(_CustomIslamicHolidays):
         2022: (AUG, 7),
         2023: (JUL, 27),
         2024: (JUL, 15),
+        2026: (JUN, 24),
     }
 
 
