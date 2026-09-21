@@ -1561,8 +1561,10 @@ class TestAustralia(CommonCountryTests, TestCase):
         self.assertSubdivActHolidayName(name, range(1930, self.end_year))
         self.assertNoSubdivActHolidayName(name, range(self.start_year, 1930))
         self.assertSubdivNswHolidayName(name, self.full_range)
-        self.assertSubdivSaHolidayName(name, range(1883, self.end_year))
-        self.assertNoSubdivSaHolidayName(name, range(self.start_year, 1883))
+        self.assertSubdivSaHolidayName(name, "1992-10-05", "1993-10-04")
+        self.assertSubdivSaHolidayName(name, range(1992, self.end_year))
+        self.assertNoSubdivSaHolidayName(name, "1991-10-07", "1991-10-14")
+        self.assertNoSubdivSaHolidayName(name, range(self.start_year, 1992))
 
         dts = (
             "2011-05-02",
