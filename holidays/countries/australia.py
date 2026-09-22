@@ -64,15 +64,12 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             * [SA Public Holidays Act 2023](https://web.archive.org/web/20250429092113/https://www.legislation.sa.gov.au/lz?path=/C/A/Public%20Holidays%20Act%202023)
             * [SA 2007-2021](https://web.archive.org/web/20240610084716/https://www.safework.sa.gov.au/__data/assets/pdf_file/0007/235474/Public-Holidays-since-2007.pdf)
             * [SA 2023-2024](https://web.archive.org/web/20250404084235/https://www.safework.sa.gov.au/resources/public-holidays)
-            * [SA Holidays (Labour Day) Amendment Act 1991](https://www.austlii.edu.au/cgi-bin/viewdoc/au/legis/sa/num_act/hdaa36o1991322/)
-            * [SA Eight Hours Day history](https://web.archive.org/web/20260611032928/https://centreofdemocracy.sa.gov.au/collection/achieving-the-8-hour-day-2/)
         * TAS:
             * [TAS Statutory Holidays Act 2000](https://web.archive.org/web/20250423095807/https://www.legislation.tas.gov.au/view/html/inforce/current/act-2000-096)
         * VIC:
             * [VIC Public Holidays Act 1993](https://web.archive.org/web/20250212090816/https://www.legislation.vic.gov.au/in-force/acts/public-holidays-act-1993/027)
             * [VIC Minister appointment](https://web.archive.org/web/20240328142238/https://www.gazette.vic.gov.au/gazette/Gazettes2015/GG2015S229.pdf)
             * [VIC 2018-2024](https://web.archive.org/web/20250422235530/https://business.vic.gov.au/business-information/public-holidays)
-            * [VIC Eight Hours Day history](https://web.archive.org/web/20180807003825/http://vhd.heritagecouncil.vic.gov.au/places/13841)
         * WA:
             * [WA Public and Bank Holidays Act 1972](https://web.archive.org/web/20241106220940/https://www.legislation.wa.gov.au/legislation/statutes.nsf/law_a639.html)
             * [WA 2019-2023](https://web.archive.org/web/20240805123535/https://www.commerce.wa.gov.au/labour-relations/previous-years-public-holiday-dates)
@@ -312,14 +309,17 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # Family & Community Day.
             self._add_holiday(tr("Family & Community Day"), fc_dates[self._year])
 
-        # Labor Day.
-        # Eight Hours Day added by the Bank Holidays Ordinance 1930 (Cwlth Gazette No. 80,
-        # 11 Sep 1930) without a fixed date; the Bank Holidays Ordinance 1936 fixed it to the
-        # 1st Monday in October, the date already observed for Eight Hours Day in NSW.
+        # Established as Eight Hours Day by ACT Bank Holidays Ordinance 1930,
+        # renamed Labour Day by ACT Holidays Ordinance 1958.
 
-        if self._year >= 1930:
-            # Labor Day.
-            self._add_holiday_1st_mon_of_oct(tr("Labour Day"))
+        if self._year >= 1931:
+            self._add_holiday_1st_mon_of_oct(
+                # Labour Day.
+                tr("Labour Day")
+                if self._year >= 1958
+                # Eight Hours Day.
+                else tr("Eight Hours Day")
+            )
 
         # Boxing Day.
         # 1958-1991: SUN - to MON, MON - to TUE.
@@ -563,10 +563,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # Easter Sunday.
             self._add_easter_sunday(tr("Easter Sunday"))
 
-        # Labor Day.
-        # "The first day of May" (moved to the following Monday) is a statutory holiday since
-        # the Bank Holidays Act 1904 (commenced 1 Jan 1905), named Labour Day by the Holidays
-        # Act 1912.
+        # Established by QLD Bank Holidays Act 1904.
 
         if self._year >= 1905:
             # Labor Day.
@@ -693,15 +690,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
         # Labor Day.
-        # Eight Hours Day holiday granted by the SA Government in 1882 and first observed
-        # on 19 Sep 1883; until the 1920s it was appointed each year on varying days
-        # (Mon 3 Sep 1900, Wed 14 Oct 1914, Wed 13 Oct 1920), later the 2nd Monday in October.
-        # Moved to the 1st Monday in October by the Holidays (Labour Day) Amendment Act 1991
-        # (in operation 31 Oct 1991); the earlier dates are not generated.
-
-        if self._year >= 1992:
-            # Labor Day.
-            self._add_holiday_1st_mon_of_oct(tr("Labour Day"))
+        self._add_holiday_1st_mon_of_oct(tr("Labour Day"))
 
         # Proclamation Day.
         # 1984-1992: SAT, SUN - move to MON.
@@ -826,11 +815,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
                 self._move_holiday(dt)
 
         # Labor Day.
-        # Eight Hours Day public holiday granted in 1879.
-
-        if self._year >= 1879:
-            # Labor Day.
-            self._add_holiday_2nd_mon_of_mar(tr("Labour Day"))
+        self._add_holiday_2nd_mon_of_mar(tr("Labour Day"))
 
         if self._year >= 2003:
             # Easter Saturday.

@@ -1558,13 +1558,10 @@ class TestAustralia(CommonCountryTests, TestCase):
         self.assertSubdivActHolidayName(name, dts)
         self.assertSubdivNswHolidayName(name, dts)
         self.assertSubdivSaHolidayName(name, dts)
-        self.assertSubdivActHolidayName(name, range(1930, self.end_year))
-        self.assertNoSubdivActHolidayName(name, range(self.start_year, 1930))
+        self.assertSubdivActHolidayName(name, range(1958, self.end_year))
+        self.assertNoSubdivActHolidayName(name, range(self.start_year, 1958))
         self.assertSubdivNswHolidayName(name, self.full_range)
-        self.assertSubdivSaHolidayName(name, "1992-10-05", "1993-10-04")
-        self.assertSubdivSaHolidayName(name, range(1992, self.end_year))
-        self.assertNoSubdivSaHolidayName(name, "1991-10-07", "1991-10-14")
-        self.assertNoSubdivSaHolidayName(name, range(self.start_year, 1992))
+        self.assertSubdivSaHolidayName(name, self.full_range)
 
         dts = (
             "2011-05-02",
@@ -1592,8 +1589,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             "2025-03-10",
         )
         self.assertSubdivVicHolidayName(name, dts)
-        self.assertSubdivVicHolidayName(name, range(1879, self.end_year))
-        self.assertNoSubdivVicHolidayName(name, range(self.start_year, 1879))
+        self.assertSubdivVicHolidayName(name, self.full_range)
 
         dts = (
             "2020-03-02",
@@ -1878,7 +1874,13 @@ class TestAustralia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "TAS":
+            if subdiv == "ACT":
+                self.assertHolidayName(name, holidays, "1931-10-05", "1957-10-07")
+                self.assertHolidayName(name, holidays, range(1931, 1958))
+                self.assertNoHolidayName(
+                    name, holidays, range(self.start_year, 1931), range(1958, self.end_year)
+                )
+            elif subdiv == "TAS":
                 self.assertHolidayName(
                     name,
                     holidays,
