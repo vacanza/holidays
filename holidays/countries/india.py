@@ -2027,7 +2027,7 @@ class India(
 
         # Hindu holidays.
 
-        # Bengali's New Year.
+        # Bengali New Year.
         self._add_pohela_boishakh(tr("Pohela Boishakh"))
 
         # Mahalaya.

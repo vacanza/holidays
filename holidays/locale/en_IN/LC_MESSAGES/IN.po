@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-09-18 11:13+0530\n"
+"PO-Revision-Date: 2026-09-21 19:42+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
@@ -285,6 +285,10 @@ msgstr ""
 msgid "Jamat-Ul-Vida"
 msgstr ""
 
+#. First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose.
+msgid "First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose"
+msgstr ""
+
 #. Babu Jagjivan Ram's Birthday.
 msgid "Babu Jagjivan Ram's Jayanti"
 msgstr ""
@@ -365,12 +369,15 @@ msgstr ""
 msgid "Wangala Festival"
 msgstr ""
 
+#. Mahasaptami.
+msgid "Mahasaptami"
+msgstr ""
+
 #. Chhath Puja.
 msgid "Chhath Puja"
 msgstr ""
 
 #. Arbaeen.
-#. Arbaaen.
 msgid "Chehlum"
 msgstr ""
 
@@ -430,10 +437,6 @@ msgstr ""
 msgid "Hareli"
 msgstr ""
 
-#. Hartalika Teej.
-msgid "Hartalika Teej"
-msgstr ""
-
 #. Savitribai Phule's Birthday.
 msgid "Savitribai Phule's Jayanti"
 msgstr ""
@@ -480,10 +483,6 @@ msgstr ""
 
 #. Harchath.
 msgid "Harchath"
-msgstr ""
-
-#. Anant Chaturdashi.
-msgid "Anant Chaturdashi"
 msgstr ""
 
 #. Sarva Pitra Moksha Amavasya.
@@ -642,6 +641,10 @@ msgstr ""
 msgid "Karma Puja"
 msgstr ""
 
+#. Netaji Subhas Chandra Bose's Birthday.
+msgid "Netaji Subhas Chandra Bose Jayanti"
+msgstr ""
+
 #. Labor Day.
 msgid "Majdoor Diwas"
 msgstr ""
@@ -668,46 +671,6 @@ msgstr ""
 
 #. Onam (Day 4).
 msgid "Onam (Day 4)"
-msgstr ""
-
-#. Tribal Pride Day.
-msgid "Janjatiya Gaurav Divas"
-msgstr ""
-
-#. Hemu Kalani's Martyrdom Day.
-msgid "Hemu Kalani's Shaheedi Diwas"
-msgstr ""
-
-#. Mahatma Jyotiba Phule's Birthday.
-msgid "Mahatma Jyotiba Phule's Jayanti"
-msgstr ""
-
-#. Durgadas Rathore's Birthday.
-msgid "Durgadas Rathore's Jayanti"
-msgstr ""
-
-#. International Day of Persons with Disabilities.
-msgid "Vishva Divyang Divas"
-msgstr ""
-
-#. Maharishi Guru Gokuldas's Birthday.
-msgid "Maharshi Guru Gokuldas's Jayanti"
-msgstr ""
-
-#. Lord Meenesh's Birthday.
-msgid "Bhagvan Meenesh's Jayanti"
-msgstr ""
-
-#. Holy Saturday.
-msgid "Holy Saturday"
-msgstr ""
-
-#. Vishwakarma Puja.
-msgid "Vishwakarma Puja"
-msgstr ""
-
-#. Tulsidas's Birthday.
-msgid "Tulsidas's Jayanti"
 msgstr ""
 
 #. Chhatrapati Shivaji Maharaj's Birthday.
@@ -846,6 +809,14 @@ msgstr ""
 msgid "Post Christmas (Day 4)"
 msgstr ""
 
+#. Dola Purnima.
+msgid "Dola Purnima"
+msgstr ""
+
+#. Utkal Divas.
+msgid "Utkal Divas"
+msgstr ""
+
 #. Maha Visua Sankranti.
 msgid "Maha Visua Sankranti"
 msgstr ""
@@ -930,6 +901,10 @@ msgstr ""
 msgid "Gadge Maharaj's Jayanti"
 msgstr ""
 
+#. Akhil Sikkim Khas Chettri Bahun Kalyan Sangh's Foundation Day
+msgid "Akhil Sikkim Khas Chettri Bahun Kalyan Sangh's Foundation Day"
+msgstr ""
+
 #. Sikkim State Day.
 msgid "Sikkim State Day"
 msgstr ""
@@ -978,10 +953,6 @@ msgstr ""
 msgid "Uzhavar Thirunal"
 msgstr ""
 
-#. Puthandu.
-msgid "Puthandu (Tamil New Year)"
-msgstr ""
-
 #. Bonalu.
 msgid "Bonalu"
 msgstr ""
@@ -1010,10 +981,6 @@ msgstr ""
 msgid "Ker Puja"
 msgstr ""
 
-#. Mahasaptami.
-msgid "Mahasaptami"
-msgstr ""
-
 #. Harela.
 msgid "Harela"
 msgstr ""
@@ -1026,16 +993,8 @@ msgstr ""
 msgid "Veer Kesari Chand's Shaheedi Diwas"
 msgstr ""
 
-#. Arbaeen.
-msgid "Chehlum"
-msgstr ""
-
 #. Chitragupt's Birthday.
 msgid "Chitragupt's Jayanti"
-msgstr ""
-
-#. Karpuri Thakur's Birthday.
-msgid "Karpuri Thakur's Jayanti"
 msgstr ""
 
 #. Maharishi Kashyap and Maharaj Nishad Raj's Graha Birthday.
@@ -1056,6 +1015,14 @@ msgstr ""
 
 #. Chaudhary Charan Singh's Birthday.
 msgid "Chaudhary Charan Singh's Jayanti"
+msgstr ""
+
+#. Swami Vivekananda's Birthday.
+msgid "Swami Vivekananda's Jayanti"
+msgstr ""
+
+#. Birsa Munda's Birthday.
+msgid "Birsa Munda's Jayanti"
 msgstr ""
 
 #. Kali Puja.
