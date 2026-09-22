@@ -51,14 +51,22 @@ class Spain(
 
     Subdivisions Holidays References:
         * Ceuta:
-            * [2018](https://web.archive.org/web/20251029132255/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2018)
-            * [2019](https://web.archive.org/web/20210506145356/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2019)
-            * [2020](https://web.archive.org/web/20210413221634/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2020)
-            * [2021](https://web.archive.org/web/20251029131434/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2021)
-            * [2022](https://web.archive.org/web/20250115161923/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2022)
-            * [2023](https://web.archive.org/web/20241211133010/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2023)
-            * [2024](https://web.archive.org/web/20240419004114/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2024)
-            * [2025](https://web.archive.org/web/20250315132943/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2025)
+            * Official Calendars:
+                * [2018](https://web.archive.org/web/20251029132255/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2018)
+                * [2019](https://web.archive.org/web/20210506145356/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2019)
+                * [2020](https://web.archive.org/web/20210413221634/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2020)
+                * [2021](https://web.archive.org/web/20251029131434/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2021)
+                * [2022](https://web.archive.org/web/20250115161923/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2022)
+                * [2023](https://web.archive.org/web/20241211133010/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2023)
+                * [2024](https://web.archive.org/web/20240419004114/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2024)
+                * [2025](https://web.archive.org/web/20250315132943/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2025)
+            * Legal Sources:
+                * [2021](https://web.archive.org/web/20250612211950/https://www.ceuta.es/ceuta/component/jdownloads/finish/1833-agosto/20373-bocce-6019-21-08-2020?Itemid=534)
+                * [2022](https://web.archive.org/web/20260109153033/https://www.ceuta.es/ceuta/component/jdownloads/finish/1863-noviembre/21043-bocce-6150-23-11-2021?Itemid=534)
+                * [2023](https://www.ceuta.es/ceuta/component/jdownloads/finish/1888-octubre/21474-bocce-6245-21-10-2022?Itemid=534)
+                * [2024](https://web.archive.org/web/20260120033847/https://www.ceuta.es/ceuta/component/jdownloads/finish/1920-octubre/22049-bocce-6349-20-10-2023?Itemid=534)
+                * [2025](https://www.ceuta.es/ceuta/component/jdownloads/finish/1944-octubre/22646-bocce-6455-25-10-2024?Itemid=534)
+                * [2026](https://web.archive.org/web/20251103164851/https://www.ceuta.es/ceuta/component/jdownloads/finish/1960-septiembre/22934-bocce-6551-26-09-2025?Itemid=534)
         * Melilla:
             * [2017](https://web.archive.org/web/20251029145828/https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=23611&nivel=1400&tipo=2)
             * [2018](https://web.archive.org/web/20251029144310/https://www.melilla.es/melillaPortal/contenedor.jsp?seccion=s_fact_d4_v1.jsp&contenido=25713&nivel=1400&tipo=2)
@@ -409,6 +417,13 @@ class Spain(
         if self._year <= 2016:
             # Christmas Day.
             self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
+
+        # Eid al-Fitr.
+        name = tr("Fiesta de Culminación del Ramadán-Eidul Fitr")
+        if self._year == 2023:
+            self._add_eid_al_fitr_day_two(name)
+        elif self._year >= 2022:
+            self._add_eid_al_fitr_day(name)
 
         # Eid al-Adha.
         name = tr("Fiesta del Sacrificio-Eidul Adha")
