@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-28 17:22+0530\n"
-"PO-Revision-Date: 2026-09-21 19:42+0530\n"
+"PO-Revision-Date: 2026-09-23 00:43+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pa\n"
@@ -656,8 +656,8 @@ msgstr "ਪਵਿੱਤਰ ਸ਼ਨੀਚਰਵਾਰ"
 msgid "Mannam's Jayanti"
 msgstr "ਮੰਨਮ ਜਯੰਤੀ"
 
-#. Sree Narayana Guru's Death Anniversary.
-msgid "Sree Narayana Guru's Death Anniversary"
+#. Shri Narayana Guru's Death Anniversary.
+msgid "Shri Narayana Guru's Death Anniversary"
 msgstr "ਸ੍ਰੀ ਨਾਰਾਇਣ ਗੁਰੂ ਦੀ ਬਰਸੀ"
 
 #. Onam (Day 2).

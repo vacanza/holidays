@@ -925,7 +925,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             self._hindu_calendar.pitra_moksh_amavasya_date(self._year),
         )
 
-    def add_pohela_boishakh(self, name) -> date | None:
+    def _add_pohela_boishakh(self, name) -> date | None:
         """
         Add Pohela Boishakh.
 

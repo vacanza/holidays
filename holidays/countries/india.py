@@ -1185,8 +1185,8 @@ class India(
         # May Day.
         self._add_labor_day(tr("May Day"))
 
-        # Sree Narayana Guru's Death Anniversary.
-        self._add_holiday_sep_21(tr("Sree Narayana Guru's Death Anniversary"))
+        # Shri Narayana Guru's Death Anniversary.
+        self._add_holiday_sep_21(tr("Shri Narayana Guru's Death Anniversary"))
 
         # Hindu holidays.
 
@@ -1240,6 +1240,25 @@ class India(
 
         # Eid al-Ghadir.
         self._add_eid_al_ghadir_day(tr("Eid-e-Ghadeer"))
+
+    # Lakshadweep.
+    def _populate_subdiv_ld_public_holidays(self):
+        # Hindu holidays.
+
+        # Makar Sankranti.
+        self._add_makar_sankranti(tr("Makar Sankranti"))
+
+        # Onam.
+        self._add_onam(tr("Onam"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+
+    def _populate_subdiv_ld_optional_holidays(self):
+        # Islamic holidays.
+
+        # Isra' and Mi'raj.
+        self._add_isra_and_miraj_day(tr("Shab-I-Miraj"))
 
     # Maharashtra.
     def _populate_subdiv_mh_public_holidays(self):
@@ -1882,7 +1901,7 @@ class India(
         # Hindu holidays.
 
         # Bengali New Year.
-        self.add_pohela_boishakh(tr("Pohela Boishakh"))
+        self._add_pohela_boishakh(tr("Pohela Boishakh"))
 
         # Garia Puja.
         self._add_garia_puja(tr("Garia Puja"))
