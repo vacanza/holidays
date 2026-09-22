@@ -119,9 +119,14 @@ msgstr "วันแห่งการปรองดอง"
 msgid "Family & Community Day"
 msgstr "วันครอบครัวและชุมชน"
 
+#. Labour Day.
 #. Labor Day.
 msgid "Labour Day"
 msgstr "วันแรงงาน"
+
+#. Eight Hours Day.
+msgid "Eight Hours Day"
+msgstr "วันแปดชั่วโมง (วันแรงงาน)"
 
 #. Bank Holiday.
 msgid "Bank Holiday"
@@ -154,10 +159,6 @@ msgstr "วันแอดิเลดคัพ"
 #. Proclamation Day.
 msgid "Proclamation Day"
 msgstr "วันสถาปนา"
-
-#. Eight Hours Day.
-msgid "Eight Hours Day"
-msgstr "วันแปดชั่วโมง (วันแรงงาน)"
 
 #. Easter Tuesday.
 msgid "Easter Tuesday"

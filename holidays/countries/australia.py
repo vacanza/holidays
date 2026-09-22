@@ -309,9 +309,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # Family & Community Day.
             self._add_holiday(tr("Family & Community Day"), fc_dates[self._year])
 
-        # Established as Eight Hours Day by ACT Bank Holidays Ordinance 1930,
-        # renamed Labour Day by ACT Holidays Ordinance 1958.
-
+        # Established as Eight Hours Day by ACT Bank Holidays Ordinance 1930, date fixed to
+        # the 1st Monday in October by Ordinance 1936, renamed Labour Day by Ordinance 1958.
         if self._year >= 1931:
             self._add_holiday_1st_mon_of_oct(
                 # Labour Day.
@@ -564,7 +563,6 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             self._add_easter_sunday(tr("Easter Sunday"))
 
         # Established by QLD Bank Holidays Act 1904.
-
         if self._year >= 1905:
             # Labor Day.
             name = tr("Labour Day")

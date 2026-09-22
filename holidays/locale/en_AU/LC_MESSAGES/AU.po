@@ -119,8 +119,13 @@ msgstr ""
 msgid "Family & Community Day"
 msgstr ""
 
+#. Labour Day.
 #. Labor Day.
 msgid "Labour Day"
+msgstr ""
+
+#. Eight Hours Day.
+msgid "Eight Hours Day"
 msgstr ""
 
 #. Bank Holiday.
@@ -153,10 +158,6 @@ msgstr ""
 
 #. Proclamation Day.
 msgid "Proclamation Day"
-msgstr ""
-
-#. Eight Hours Day.
-msgid "Eight Hours Day"
 msgstr ""
 
 #. Easter Tuesday.

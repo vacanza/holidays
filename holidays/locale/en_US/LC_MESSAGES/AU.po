@@ -119,9 +119,14 @@ msgstr "Reconciliation Day"
 msgid "Family & Community Day"
 msgstr "Family & Community Day"
 
+#. Labour Day.
 #. Labor Day.
 msgid "Labour Day"
 msgstr "Labor Day"
+
+#. Eight Hours Day.
+msgid "Eight Hours Day"
+msgstr "Eight Hours Day"
 
 #. Bank Holiday.
 msgid "Bank Holiday"
@@ -154,10 +159,6 @@ msgstr "Adelaide Cup Day"
 #. Proclamation Day.
 msgid "Proclamation Day"
 msgstr "Proclamation Day"
-
-#. Eight Hours Day.
-msgid "Eight Hours Day"
-msgstr "Eight Hours Day"
 
 #. Easter Tuesday.
 msgid "Easter Tuesday"
