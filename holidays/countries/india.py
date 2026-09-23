@@ -1115,7 +1115,7 @@ class India(
         self._populate_public_holidays()
 
         # Netaji Subhas Chandra Bose's Birthday.
-        self._add_holiday_jan_23(tr("Netaji Subhas Chandra Bose Jayanti"))
+        self._add_holiday_jan_23(tr("Netaji Subhas Chandra Bose's Jayanti"))
 
         # Labor Day.
         self._add_labor_day(tr("Majdoor Diwas"))
@@ -1549,7 +1549,7 @@ class India(
         self._populate_public_holidays()
 
         # Netaji Subhas Chandra Bose's Birthday.
-        self._add_holiday_jan_23(tr("Netaji Subhas Chandra Bose Jayanti"))
+        self._add_holiday_jan_23(tr("Netaji Subhas Chandra Bose's Jayanti"))
 
         # Dola Purnima.
         self._add_holika_dahan(tr("Dola Purnima"))

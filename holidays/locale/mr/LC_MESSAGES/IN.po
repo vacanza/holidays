@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-29 00:37+0530\n"
-"PO-Revision-Date: 2026-09-23 00:43+0530\n"
+"PO-Revision-Date: 2026-09-23 15:34+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: mr\n"
@@ -639,10 +639,6 @@ msgstr "नौरोज"
 #. Karma Puja.
 msgid "Karma Puja"
 msgstr "करमा पूजा"
-
-#. Netaji Subhas Chandra Bose's Birthday.
-msgid "Netaji Subhas Chandra Bose Jayanti"
-msgstr "नेताजी सुभाषचंद्र बोस जयंती"
 
 #. Labor Day.
 msgid "Majdoor Diwas"
