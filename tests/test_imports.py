@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import importlib
 from unittest import TestCase
 
 import holidays
@@ -38,3 +39,18 @@ class TestHolidaysImports(TestCase):
             "list_supported_financial",
         ):
             self.assertImport(name)
+
+    def test_version(self):
+        self.assertImport("__version__")
+
+        # `holidays.version` is loaded on demand.
+        version = importlib.import_module("holidays.version")
+        delattr(holidays, "version")
+        try:
+            self.assertEqual(holidays.version, version)
+            self.assertEqual(holidays.__version__, version.__version__)
+        finally:
+            holidays.version = version
+
+        with self.assertRaises(AttributeError):
+            holidays.NonExistentName
