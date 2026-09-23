@@ -674,7 +674,7 @@ class TestIndia(CommonCountryTests, TestCase):
         # SUBDIVS.
         self._assertHinduHolidayHelper(name, dts, subdivs={"HR", "PB"})
         self._assertHinduHolidayHelper("Baisakhi", dts, subdivs={"JK"})
-        self._assertHinduHolidayHelper("Puthandu (Tamil New Year)", dts, subdivs={"PY"})
+        self._assertHinduHolidayHelper("Puthandu (Tamil New Year)", dts, subdivs={"PY", "TN"})
         self.assertSubdivOdGovernmentHolidayName(name_maha_visua_sankranti, dts)
         self.assertSubdivLaOptionalHolidayName(name, dts)
         self.assertNoHolidayName(name_maha_visua_sankranti)
@@ -860,7 +860,7 @@ class TestIndia(CommonCountryTests, TestCase):
         # SUBDIVS.
         self._assertHinduHolidayHelper(name_common, dts_common, subdivs={"DH"})
         self._assertHinduHolidayHelper(
-            name_ganesh, dts_common, subdivs={"GA", "KA", "LD", "MH", "PY"}
+            name_ganesh, dts_common, subdivs={"GA", "KA", "LD", "MH", "PY", "TN"}
         )
         self.assertNoSubdivMhOptionalHolidayName(name_common)
         self.assertNoSubdivMhOptionalHolidayName(name_vinayak)
@@ -932,7 +932,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(name, dts, category=OPTIONAL, skip_years={2002})
         # SUBDIVS.
         self._assertHinduHolidayHelper(name_mahavanami, dts, subdivs={"JK", "KL"})
-        self._assertHinduHolidayHelper("Ayudha Puja", dts, subdivs={"PY"})
+        self._assertHinduHolidayHelper("Ayudha Puja", dts, subdivs={"PY", "TN"})
         self.assertSubdivOdGovernmentHolidayName(name_mahavanami, dts)
 
     def test_maharshi_valmiki_jayanti(self):
@@ -1696,7 +1696,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertNoHolidayName(name_maharashtra)
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv in {"AS", "KA", "KL", "PY"}:
+            if subdiv in {"AS", "KA", "KL", "PY", "TN"}:
                 self.assertHolidayName(
                     name, holidays, (f"{year}-05-01" for year in self.full_range)
                 )
