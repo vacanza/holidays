@@ -10,20 +10,49 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.groups.balinese_saka import BalineseSakaCalendarHolidays
-from holidays.groups.buddhist import BuddhistCalendarHolidays
-from holidays.groups.burmese import BurmeseCalendarHolidays
-from holidays.groups.chinese import ChineseCalendarHolidays
-from holidays.groups.christian import ChristianHolidays
-from holidays.groups.custom import StaticHolidays
-from holidays.groups.eastern import EasternCalendarHolidays
-from holidays.groups.hebrew import HebrewCalendarHolidays
-from holidays.groups.hindu import HinduCalendarHolidays
-from holidays.groups.international import InternationalHolidays
-from holidays.groups.islamic import IslamicHolidays
-from holidays.groups.mandaean import MandaeanHolidays
-from holidays.groups.mongolian import MongolianCalendarHolidays
-from holidays.groups.persian import PersianCalendarHolidays
-from holidays.groups.sinhala import SinhalaCalendarHolidays
-from holidays.groups.thai import ThaiCalendarHolidays
-from holidays.groups.tibetan import TibetanCalendarHolidays
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:  # Static analysis only. Runtime names are loaded lazily below.
+    from holidays.groups.balinese_saka import BalineseSakaCalendarHolidays
+    from holidays.groups.buddhist import BuddhistCalendarHolidays
+    from holidays.groups.burmese import BurmeseCalendarHolidays
+    from holidays.groups.chinese import ChineseCalendarHolidays
+    from holidays.groups.christian import ChristianHolidays
+    from holidays.groups.custom import StaticHolidays
+    from holidays.groups.eastern import EasternCalendarHolidays
+    from holidays.groups.hebrew import HebrewCalendarHolidays
+    from holidays.groups.hindu import HinduCalendarHolidays
+    from holidays.groups.international import InternationalHolidays
+    from holidays.groups.islamic import IslamicHolidays
+    from holidays.groups.mandaean import MandaeanHolidays
+    from holidays.groups.mongolian import MongolianCalendarHolidays
+    from holidays.groups.persian import PersianCalendarHolidays
+    from holidays.groups.sinhala import SinhalaCalendarHolidays
+    from holidays.groups.thai import ThaiCalendarHolidays
+    from holidays.groups.tibetan import TibetanCalendarHolidays
+else:
+    from holidays.helpers import _load_lazily
+
+    _load_lazily(
+        globals(),
+        {
+            "balinese_saka": ("BalineseSakaCalendarHolidays",),
+            "buddhist": ("BuddhistCalendarHolidays",),
+            "burmese": ("BurmeseCalendarHolidays",),
+            "chinese": ("ChineseCalendarHolidays",),
+            "christian": ("ChristianHolidays",),
+            "custom": ("StaticHolidays",),
+            "eastern": ("EasternCalendarHolidays",),
+            "hebrew": ("HebrewCalendarHolidays",),
+            "hindu": ("HinduCalendarHolidays",),
+            "international": ("InternationalHolidays",),
+            "islamic": ("IslamicHolidays",),
+            "mandaean": ("MandaeanHolidays",),
+            "mongolian": ("MongolianCalendarHolidays",),
+            "persian": ("PersianCalendarHolidays",),
+            "sinhala": ("SinhalaCalendarHolidays",),
+            "thai": ("ThaiCalendarHolidays",),
+            "tibetan": ("TibetanCalendarHolidays",),
+        },
+    )
+    del _load_lazily

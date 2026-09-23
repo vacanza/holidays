@@ -15,7 +15,7 @@ import inspect
 import subprocess
 import sys
 import warnings
-from unittest import TestCase
+from unittest import TestCase, mock
 
 import pytest
 
@@ -190,59 +190,57 @@ class TestEntityLoader(TestCase):
                 package.NonExistentEntity
 
     def test_lazy_package_imports_hold_import_lock(self):
-        class TrackingLock:
-            def __init__(self, lock):
-                self.lock = lock
-                self.entered = 0
+        original_import_module = importlib.import_module
+        lock_owned = []
 
-            def __enter__(self):
-                self.entered += 1
-                return self.lock.__enter__()
+        def import_module(name, package=None):
+            if name.startswith(("holidays.countries.", "holidays.financial.")):
+                lock_owned.append(registry.IMPORT_LOCK._is_owned())
+            return original_import_module(name, package)
 
-            def __exit__(self, *args):
-                return self.lock.__exit__(*args)
-
-        tracking_lock = TrackingLock(registry.IMPORT_LOCK)
-        original_lock = registry.IMPORT_LOCK
-        registry.IMPORT_LOCK = tracking_lock
-        try:
-            for package, container in (
-                (countries, registry.COUNTRIES),
-                (financial, registry.FINANCIAL),
-            ):
-                module_name, entities = next(iter(container.items()))
-                module = importlib.import_module(f"{package.__name__}.{module_name}")
-
-                # Module-name access (e.g. holidays.countries.canada).
-                delattr(package, module_name)
-                entered = tracking_lock.entered
-                try:
+        for package, container in (
+            (countries, registry.COUNTRIES),
+            (financial, registry.FINANCIAL),
+        ):
+            module_name, entities = next(iter(container.items()))
+            module = original_import_module(f"{package.__name__}.{module_name}")
+            entity = entities[0]
+            cached_entity = vars(package).pop(entity, None)
+            delattr(package, module_name)
+            lock_owned.clear()
+            try:
+                with mock.patch("importlib.import_module", side_effect=import_module):
+                    # Module-name access (e.g. holidays.countries.canada).
                     self.assertEqual(getattr(package, module_name), module)
-                finally:
-                    setattr(package, module_name, module)
-                self.assertEqual(tracking_lock.entered, entered + 1)
-
-                # Entity access (e.g. holidays.countries.Canada).
-                entity = entities[0]
-                cached = vars(package).pop(entity, None)
-                entered = tracking_lock.entered
-                try:
+                    # Entity access (e.g. holidays.countries.Canada).
                     self.assertEqual(getattr(package, entity), getattr(module, entity))
-                finally:
-                    if cached is not None:
-                        setattr(package, entity, cached)
-                self.assertEqual(tracking_lock.entered, entered + 1)
-        finally:
-            registry.IMPORT_LOCK = original_lock
+            finally:
+                setattr(package, module_name, module)
+                if cached_entity is not None:
+                    setattr(package, entity, cached_entity)
+            self.assertEqual(lock_owned, [True, True])
 
     def test_lazy_package_loading(self):
         code = (
             "import sys, holidays; holidays.country_holidays('CA', subdiv='QC'); "
             "holidays.financial_holidays('XNYS'); "
-            "print(sorted(m for m in sys.modules "
-            "if m.startswith(('holidays.countries.', 'holidays.financial.'))))"
+            "print(sorted(m for m in sys.modules if m.startswith(('holidays.calendars.', "
+            "'holidays.countries.', 'holidays.financial.', 'holidays.groups.', "
+            "'importlib.metadata'))))"
         )
         self.assertEqual(
             subprocess.check_output([sys.executable, "-c", code], text=True).strip(),  # noqa: S603
-            "['holidays.countries.canada', 'holidays.financial.ny_stock_exchange']",
+            str(
+                [
+                    "holidays.calendars.ethiopian",
+                    "holidays.calendars.gregorian",
+                    "holidays.calendars.julian",
+                    "holidays.calendars.julian_revised",
+                    "holidays.countries.canada",
+                    "holidays.financial.ny_stock_exchange",
+                    "holidays.groups.christian",
+                    "holidays.groups.custom",
+                    "holidays.groups.international",
+                ]
+            ),
         )

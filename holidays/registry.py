@@ -15,6 +15,7 @@ from collections.abc import Iterable
 from threading import RLock
 from typing import Any
 
+from holidays.helpers import _load_lazily
 from holidays.holiday_base import HolidayBase
 
 RegistryDict = dict[str, tuple[str, ...]]
@@ -424,31 +425,5 @@ class EntityLoader:
 
     @staticmethod
     def load_package(prefix: str, scope: dict) -> None:
-        """Set up lazy (PEP 562) loading of country or financial package entities.
-
-        An entity module is imported on first access only, so loading a single
-        country or market doesn't import all of them.
-        """
-        entity_mapping = COUNTRIES if prefix == "countries" else FINANCIAL
-        package = f"holidays.{prefix}"
-        entity_modules = {
-            entity: module for module, entities in entity_mapping.items() for entity in entities
-        }
-
-        def getattr_(name: str) -> Any:
-            if name in entity_mapping:
-                with IMPORT_LOCK:
-                    return importlib.import_module(f"{package}.{name}")
-            if name not in entity_modules:
-                raise AttributeError(f"module {package!r} has no attribute {name!r}")
-            with IMPORT_LOCK:
-                module = importlib.import_module(f"{package}.{entity_modules[name]}")
-            scope[name] = getattr(module, name)
-            return scope[name]
-
-        def dir_() -> list[str]:
-            return sorted({*scope, *scope["__all__"]})
-
-        scope["__all__"] = [*entity_mapping, *entity_modules]
-        scope["__dir__"] = dir_
-        scope["__getattr__"] = getattr_
+        """Set up lazy loading of country or financial package entities."""
+        _load_lazily(scope, COUNTRIES if prefix == "countries" else FINANCIAL, IMPORT_LOCK)

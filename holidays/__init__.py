@@ -16,11 +16,22 @@ from holidays.constants import *
 from holidays.holiday_base import *
 from holidays.registry import EntityLoader
 from holidays.utils import *
-from holidays.version import __version__  # noqa: F401
 
 if TYPE_CHECKING:  # Re-export for static analysis. Runtime names come from EntityLoader below.
     from holidays.countries import *
     from holidays.financial import *
+    from holidays.version import __version__  # noqa: F401
+else:
+
+    def __getattr__(name: str):
+        # `holidays.version` uses slow to import `importlib.metadata`: load it on demand.
+        if name in {"__version__", "version"}:
+            from importlib import import_module
+
+            version = import_module("holidays.version")
+            return version.__version__ if name == "__version__" else version
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+
 
 EntityLoader.load("countries", globals())
 EntityLoader.load("financial", globals())
