@@ -25,9 +25,6 @@ class TestWarsawStockExchange(CommonFinancialTests, TestCase):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
 
-    def test_no_holidays(self):
-        self.assertNoHolidays(WarsawStockExchange(years=self.start_year - 1))
-
     def test_special_holidays(self):
         self.assertHolidayName("Dzień bez sesji", "2013-04-16", "2018-01-02")
 
@@ -48,15 +45,23 @@ class TestWarsawStockExchange(CommonFinancialTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_christmas_eve(self):
+        name = "Wigilia Bożego Narodzenia"
+        years_absent = {2011, 2016, 2017, 2022, 2023, 2028, 2033, 2034, 2039, 2044, 2045}
+        self.assertNoHolidayName(name, years_absent)
         self.assertHolidayName(
-            "Wigilia Bożego Narodzenia", (f"{year}-12-24" for year in self.full_range)
+            name, (f"{year}-12-24" for year in self.full_range if year not in years_absent)
         )
 
     def test_new_years_eve(self):
-        self.assertHolidayName("Sylwester", (f"{year}-12-31" for year in self.full_range))
+        name = "Sylwester"
+        years_absent = {2011, 2016, 2017, 2022, 2023, 2028, 2033, 2034, 2039, 2044, 2045}
+        self.assertNoHolidayName(name, years_absent)
+        self.assertHolidayName(
+            name, (f"{year}-12-31" for year in self.full_range if year not in years_absent)
+        )
 
-    def test_non_session_weekdays(self):
-        # Weekday closures in the yearly resolutions of the GPW Management Board.
+    def test_non_session_days(self):
+        # Closures in the yearly resolutions of the GPW Management Board.
         for year, dates in (
             (
                 2023,
@@ -139,26 +144,19 @@ class TestWarsawStockExchange(CommonFinancialTests, TestCase):
                 ),
             ),
         ):
-            weekdays = [
-                str(dt) for dt in sorted(WarsawStockExchange(years=year)) if dt.weekday() < 5
-            ]
-            self.assertEqual(list(dates), weekdays, year)
+            self.assertHolidayDatesInYear(year, dates)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2018-01-01", "Nowy Rok"),
             ("2018-01-02", "Dzień bez sesji"),
-            ("2018-01-06", "Święto Trzech Króli"),
             ("2018-03-30", "Wielki Piątek"),
-            ("2018-04-01", "Niedziela Wielkanocna"),
             ("2018-04-02", "Poniedziałek Wielkanocny"),
             ("2018-05-01", "Święto Państwowe"),
             ("2018-05-03", "Święto Narodowe Trzeciego Maja"),
-            ("2018-05-20", "Zielone Świątki"),
             ("2018-05-31", "Dzień Bożego Ciała"),
             ("2018-08-15", "Wniebowzięcie Najświętszej Marii Panny"),
             ("2018-11-01", "Uroczystość Wszystkich Świętych"),
-            ("2018-11-11", "Narodowe Święto Niepodległości"),
             ("2018-11-12", "Narodowe Święto Niepodległości - 100-lecie"),
             ("2018-12-24", "Wigilia Bożego Narodzenia"),
             ("2018-12-25", "Boże Narodzenie (pierwszy dzień)"),
@@ -171,17 +169,13 @@ class TestWarsawStockExchange(CommonFinancialTests, TestCase):
             "en_US",
             ("2018-01-01", "New Year's Day"),
             ("2018-01-02", "Non-trading day"),
-            ("2018-01-06", "Epiphany"),
             ("2018-03-30", "Good Friday"),
-            ("2018-04-01", "Easter Sunday"),
             ("2018-04-02", "Easter Monday"),
             ("2018-05-01", "National Day"),
             ("2018-05-03", "National Day of the Third of May"),
-            ("2018-05-20", "Pentecost"),
             ("2018-05-31", "Corpus Christi"),
             ("2018-08-15", "Assumption Day"),
             ("2018-11-01", "All Saints' Day"),
-            ("2018-11-11", "National Independence Day"),
             ("2018-11-12", "National Independence Day - 100th anniversary"),
             ("2018-12-24", "Christmas Eve"),
             ("2018-12-25", "Christmas Day"),

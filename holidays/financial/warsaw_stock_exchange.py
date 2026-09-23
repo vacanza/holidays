@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import APR, JAN
-from holidays.constants import PUBLIC
 from holidays.countries.poland import Poland
 from holidays.helpers import tr
 
@@ -36,7 +35,6 @@ class WarsawStockExchange(Poland):
     country = None  # type: ignore[assignment]
     market = "XWAR"
     parent_entity = Poland
-    supported_categories = (PUBLIC,)
     supported_languages = ("en_US", "pl")  # type: ignore[assignment]
     start_year = 2011
 
@@ -44,6 +42,12 @@ class WarsawStockExchange(Poland):
         super().__init__(
             *args, static_holidays_classes=(WarsawStockExchangeStaticHolidays,), **kwargs
         )
+
+    def _add_holiday(self, name, *args):
+        if self._is_weekend(*args):
+            return None
+
+        return super()._add_holiday(name, *args)
 
     def _populate_public_holidays(self):
         super()._populate_public_holidays()
