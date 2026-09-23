@@ -658,15 +658,15 @@ msgstr "ਸ੍ਰੀ ਨਾਰਾਇਣ ਗੁਰੂ ਦੀ ਬਰਸੀ"
 
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
-msgstr "ਓਣਮ (ਦਿਨ 2)"
+msgstr "ਓਣਮ (ਦੂਜਾ ਦਿਨ)"
 
 #. Onam (Day 3).
 msgid "Onam (Day 3)"
-msgstr "ਓਣਮ (ਦਿਨ 3)"
+msgstr "ਓਣਮ (ਤੀਜਾ ਦਿਨ)"
 
 #. Onam (Day 4).
 msgid "Onam (Day 4)"
-msgstr "ਓਣਮ (ਦਿਨ 4)"
+msgstr "ਓਣਮ (ਚੌਥਾ ਦਿਨ)"
 
 #. Chhatrapati Shivaji Maharaj's Birthday.
 msgid "Chhatrapati Shivaji Maharaj's Jayanti"

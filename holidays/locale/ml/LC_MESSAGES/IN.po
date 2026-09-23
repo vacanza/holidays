@@ -494,7 +494,7 @@ msgstr "മഹാരാജ് അജ്മോഢ് ദേവ് ജയന്ത
 
 #. Sant Guru Tekchand Maharaj Samadhi Utsav.
 msgid "Sant Guru Tekchand Maharaj Samadhi Utsav"
-msgstr "സന്ത് ഗുരു ടെക്‌ചന്ദ് മഹാരാജ് സമാധി ഉത്സവം"
+msgstr "സന്ത് ഗുരു ടെക്ചന്ദ് മഹാരാജ് സമാധി ഉത്സവം"
 
 #. Dattatreya's Birthday.
 msgid "Dattatreya's Jayanti"
@@ -874,7 +874,7 @@ msgstr "സാരാഗഢി ദിനം"
 
 #. Satguru Ram Singh's Birthday.
 msgid "Satguru Ram Singh's Jayanti"
-msgstr "സത്‌ഗുരു റാം സിംഗ് ജയന്തി"
+msgstr "സത്ഗുരു റാം സിംഗ് ജയന്തി"
 
 #. Hola Mohalla.
 msgid "Hola Mohalla"

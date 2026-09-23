@@ -54,7 +54,7 @@ msgstr "ಮಹಾತ್ಮ ಗಾಂಧಿ ಜಯಂತಿ"
 
 #. Christmas.
 msgid "Christmas"
-msgstr "ಕ್ರಿಸ್‌ಮಸ್"
+msgstr "ಕ್ರಿಸ್ಮಸ್"
 
 #. Maha Shivaratri.
 msgid "Maha Shivaratri"
@@ -430,7 +430,7 @@ msgstr "ಮಾ ಶಾಕಂಭರಿ ಜಯಂತಿ"
 
 #. Cherchera.
 msgid "Cherchera"
-msgstr "ಛೇರ್‌ಛೇರಾ"
+msgstr "ಛೇರ್ಛೇರಾ"
 
 #. Hareli.
 msgid "Hareli"
@@ -482,7 +482,7 @@ msgstr "ನಾಗ ಪಂಚಮಿ"
 
 #. Harchath.
 msgid "Harchath"
-msgstr "ಹರ್‌ಛಠ್"
+msgstr "ಹರ್ಛಠ್"
 
 #. Sarva Pitra Moksha Amavasya.
 msgid "Sarva Pitra Moksha Amavasya"
@@ -494,7 +494,7 @@ msgstr "ಮಹಾರಾಜ ಅಜ್ಮೋಢ್ ದೇವ್ ಜಯಂತಿ"
 
 #. Sant Guru Tekchand Maharaj Samadhi Utsav.
 msgid "Sant Guru Tekchand Maharaj Samadhi Utsav"
-msgstr "ಸಂತ ಗುರು ಟೇಕ್‌ಚಂದ್ ಮಹಾರಾಜ್ ಸಮಾಧಿ ಉತ್ಸವ"
+msgstr "ಸಂತ ಗುರು ಟೇಕ್ಚಂದ್ ಮಹಾರಾಜ್ ಸಮಾಧಿ ಉತ್ಸವ"
 
 #. Dattatreya's Birthday.
 msgid "Dattatreya's Jayanti"
@@ -658,7 +658,7 @@ msgstr "ಶ್ರೀ ನಾರಾಯಣ ಗುರುಗಳ ಪುಣ್ಯತಿ
 
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
-msgstr "ಓಣಂ (2ನೇ ದಿನ)"
+msgstr "ಓಣಂ (ಎರಡನೇ ದಿನ)"
 
 #. Onam (Day 3).
 msgid "Onam (Day 3)"
@@ -690,7 +690,7 @@ msgstr "ಸೆಂಗ್ ಕುಟ್ ಸ್ನೆಮ್"
 
 #. Pa Togan Nengminja Sangma's Death Anniversary.
 msgid "Pa Togan Nengminja Sangma's Death Anniversary"
-msgstr "ಪಾ ಟೋಗನ್ ನೆಂಗ್‌ಮಿಂಜಾ ಸಂಗ್ಮಾ ಅವರ ಪುಣ್ಯತಿಥಿ"
+msgstr "ಪಾ ಟೋಗನ್ ನೆಂಗ್ಮಿಂಜಾ ಸಂಗ್ಮಾ ಅವರ ಪುಣ್ಯತಿಥಿ"
 
 #. U Soso Thama's Death Anniversary.
 msgid "U Soso Thama's Death Anniversary"
@@ -702,7 +702,7 @@ msgstr "ಕ್ರಿಸ್ಮಸ್ ಹಬ್ಬ"
 
 #. U Kiang Nongbah's Death Anniversary.
 msgid "U Kiang Nongbah's Death Anniversary"
-msgstr "ಯು ಕಿಯಾಂಗ್ ನಾಂಗ್‌ಬಾಹ್ ಅವರ ಪುಣ್ಯತಿಥಿ"
+msgstr "ಯು ಕಿಯಾಂಗ್ ನಾಂಗ್ಬಾಹ್ ಅವರ ಪುಣ್ಯತಿಥಿ"
 
 #. Maharaja Gambhir Singh's Death Anniversary.
 msgid "Maharaja Gambhir Singh's Death Anniversary"
@@ -790,7 +790,7 @@ msgstr "ರೆಮ್ನಾ ನಿ"
 
 #. Mizo Hmeichhe Insuihkhawm Pawl's Day.
 msgid "Mizo Hmeichhe Insuihkhawm Pawl's Day"
-msgstr "ಮಿಜೋ ಹ್ಮೇಇಚ್ಹೆ ಇನ್ಸುಇಹ್‌ಖಾಮ್ ಪಾವಲ್ ದಿನ"
+msgstr "ಮಿಜೋ ಹ್ಮೇಇಚ್ಹೆ ಇನ್ಸುಇಹ್ಖಾಮ್ ಪಾವಲ್ ದಿನ"
 
 #. Zomi Namni.
 msgid "Zomi Namni"

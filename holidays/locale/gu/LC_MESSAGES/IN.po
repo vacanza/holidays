@@ -659,7 +659,7 @@ msgstr "શ્રી નારાયણ ગુરુની પુણ્યતિ
 
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
-msgstr "ઓણમ (દિવસ 2)"
+msgstr "ઓણમ (બીજો દિવસ)"
 
 #. Onam (Day 3).
 msgid "Onam (Day 3)"

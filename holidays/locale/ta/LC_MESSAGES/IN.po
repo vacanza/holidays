@@ -658,7 +658,7 @@ msgstr "ஸ்ரீ நாராயண குருவின் நினைவ
 
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
-msgstr "ஓணம் (நாள் 2)"
+msgstr "ஓணம் (இரண்டாம் நாள்)"
 
 #. Onam (Day 3).
 msgid "Onam (Day 3)"

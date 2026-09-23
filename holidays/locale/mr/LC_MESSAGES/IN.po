@@ -658,7 +658,7 @@ msgstr "श्री नारायण गुरु पुण्यतिथी
 
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
-msgstr "ओणम (दिवस 2)"
+msgstr "ओणम (दूसरा दिवस)"
 
 #. Onam (Day 3).
 msgid "Onam (Day 3)"
