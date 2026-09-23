@@ -313,7 +313,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # the 1st Monday in October by Ordinance 1936, renamed Labour Day by Ordinance 1958.
         if self._year >= 1931:
             self._add_holiday_1st_mon_of_oct(
-                # Labour Day.
+                # Labor Day.
                 tr("Labour Day")
                 if self._year >= 1958
                 # Eight Hours Day.

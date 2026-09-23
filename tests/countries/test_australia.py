@@ -1875,7 +1875,16 @@ class TestAustralia(CommonCountryTests, TestCase):
 
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "ACT":
-                self.assertHolidayName(name, holidays, "1931-10-05", "1957-10-07")
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "1931-10-05",
+                    "1953-10-05",
+                    "1954-10-04",
+                    "1955-10-03",
+                    "1956-10-01",
+                    "1957-10-07",
+                )
                 self.assertHolidayName(name, holidays, range(1931, 1958))
                 self.assertNoHolidayName(
                     name, holidays, range(self.start_year, 1931), range(1958, self.end_year)
