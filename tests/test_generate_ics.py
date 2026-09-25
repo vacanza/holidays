@@ -477,6 +477,21 @@ class TestGenerateIcs(TestCase):
 
             self.assertTrue((temp_dir / "US_ALL_DEFAULT_PUBLIC.ics").exists())
 
+    def test_output_template_all(self):
+        with self.temp_cwd() as temp_dir:
+            with self.argv(
+                "US",
+                "--years",
+                "2025",
+                "--subdiv",
+                "CA",
+                "--output-template",
+                "PREFIX_{all}_SUFFIX.ics",
+            ):
+                IcsGenerator().run()
+
+            self.assertTrue((temp_dir / "PREFIX_US_CA_2025_SUFFIX.ics").exists())
+
     @patch("holidays.generate_ics.datetime", MockDatetime)
     def test_output_template_today(self):
         with self.temp_cwd() as temp_dir:
@@ -504,7 +519,7 @@ class TestGenerateIcs(TestCase):
             self.assertEqual(
                 str(context.exception),
                 f"Unknown placeholder '{template}' in output template. "
-                "Supported placeholders: {categories}, {code}, {end_year}, {language}, "
+                "Supported placeholders: {all}, {categories}, {code}, {end_year}, {language}, "
                 "{start_year}, {subdiv}, {today}",
             )
 
