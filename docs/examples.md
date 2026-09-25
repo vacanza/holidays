@@ -644,6 +644,7 @@ Supported placeholders:
 | `{categories}` | Holiday categories joined with `_`, or `PUBLIC` if not specified |
 | `{start_year}` | First year                                                       |
 | `{end_year}`   | Last year                                                        |
+| `{all}`        | Default output filename without the `.ics` extension                                                      |
 | `{today}`      | Current date in `YYYYMMDD` format                                |
 
 To include literal `{` or `}` characters, write them as `{{` and `}}`.
@@ -713,7 +714,7 @@ holidays-ics XNYS
 Spanning the next 10 years, unofficial holidays, saved to a custom file:
 
 ```shell
-holidays-ics US --years +10 --categories unofficial --output-template "HOLIDAYS_{code}_{start_year}_{end_year}_{categories}.ics"
+holidays-ics US --years +10 --categories unofficial --output-template "HOLIDAYS_{code}_{categories}_{start_year}_{end_year}.ics"
 holidays-ics US --years +10 --categories unofficial --output-template "HOLIDAYS_{all}.ics"
 ```
 
