@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import importlib
 from unittest import TestCase
 
 import holidays
@@ -38,3 +39,35 @@ class TestHolidaysImports(TestCase):
             "list_supported_financial",
         ):
             self.assertImport(name)
+
+    def test_version(self):
+        self.assertImport("__version__")
+
+        # `holidays.version` is loaded on demand.
+        version = importlib.import_module("holidays.version")
+        delattr(holidays, "version")
+        try:
+            self.assertEqual(holidays.version, version)
+            self.assertEqual(holidays.__version__, version.__version__)
+        finally:
+            holidays.version = version
+
+        with self.assertRaises(AttributeError):
+            holidays.NonExistentName
+
+    def test_version_discoverable(self):
+        # The lazy `version` and `__version__` are listed like any other name.
+        self.assertIn("__version__", dir(holidays))
+        self.assertIn("version", dir(holidays))
+        self.assertIn("version", holidays.__all__)
+        self.assertNotIn("__version__", holidays.__all__)
+
+        # `import *` exports every public name, as it did before `version` was lazy.
+        namespace = {}
+        exec("from holidays import *", namespace)  # noqa: S102
+        namespace.pop("__builtins__")
+        self.assertEqual(
+            set(namespace), {name for name in dir(holidays) if not name.startswith("_")}
+        )
+        self.assertIs(namespace["version"], importlib.import_module("holidays.version"))
+        self.assertIs(namespace["Canada"], holidays.Canada)

@@ -15,6 +15,7 @@ from collections.abc import Iterable
 from threading import RLock
 from typing import Any
 
+from holidays.helpers import _load_lazily
 from holidays.holiday_base import HolidayBase
 
 RegistryDict = dict[str, tuple[str, ...]]
@@ -421,3 +422,8 @@ class EntityLoader:
                     for entity in entities
                 }
             )
+
+    @staticmethod
+    def load_package(prefix: str, scope: dict) -> None:
+        """Set up lazy loading of country or financial package entities."""
+        _load_lazily(scope, COUNTRIES if prefix == "countries" else FINANCIAL, IMPORT_LOCK)
