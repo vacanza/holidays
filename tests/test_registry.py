@@ -15,12 +15,13 @@ import inspect
 import subprocess
 import sys
 import warnings
+from pathlib import Path
 from unittest import TestCase, mock
 
 import pytest
 
 import holidays
-from holidays import countries, financial, registry
+from holidays import calendars, countries, financial, groups, registry
 from tests.common import PYTHON_LATEST_SUPPORTED_VERSION, PYTHON_VERSION
 
 
@@ -220,10 +221,29 @@ class TestEntityLoader(TestCase):
                     setattr(package, entity, cached_entity)
             self.assertEqual(lock_owned, [True, True])
 
+    def test_lazy_calendars_and_groups_namespaces(self):
+        for package, not_imported_submodules in (
+            # The school calendars are imported by their countries only.
+            (calendars, {"australia_school", "germany_school"}),
+            (groups, set()),
+        ):
+            exported = set(package.__all__)
+            public_names = {name for name in dir(package) if not name.startswith("_")}
+            # Other public names are only the submodules that were imported directly.
+            self.assertLessEqual(exported, public_names)
+            self.assertLessEqual(public_names - exported, not_imported_submodules)
+            self.assertNotIn("TYPE_CHECKING", dir(package))
+            self.assertNotIn("_load_lazily", dir(package))
+            submodules = {path.stem for path in Path(package.__path__[0]).glob("[!_]*.py")}
+            self.assertEqual(exported & submodules, submodules - not_imported_submodules)
+            for name in package.__all__:
+                self.assertIsNotNone(getattr(package, name))
+
     def test_lazy_package_loading(self):
         code = (
             "import sys, holidays; holidays.country_holidays('CA', subdiv='QC'); "
             "holidays.financial_holidays('XNYS'); "
+            "dir(holidays); holidays.__all__; dir(holidays.calendars); dir(holidays.groups); "
             "print(sorted(m for m in sys.modules if m.startswith(('holidays.calendars.', "
             "'holidays.countries.', 'holidays.financial.', 'holidays.groups.', "
             "'importlib.metadata'))))"

@@ -55,4 +55,4 @@ else:
             "tibetan": ("TibetanCalendarHolidays",),
         },
     )
-    del _load_lazily
+    del TYPE_CHECKING, _load_lazily

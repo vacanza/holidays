@@ -54,3 +54,20 @@ class TestHolidaysImports(TestCase):
 
         with self.assertRaises(AttributeError):
             holidays.NonExistentName
+
+    def test_version_discoverable(self):
+        # The lazy `version` and `__version__` are listed like any other name.
+        self.assertIn("__version__", dir(holidays))
+        self.assertIn("version", dir(holidays))
+        self.assertIn("version", holidays.__all__)
+        self.assertNotIn("__version__", holidays.__all__)
+
+        # `import *` exports every public name, as it did before `version` was lazy.
+        namespace = {}
+        exec("from holidays import *", namespace)  # noqa: S102
+        namespace.pop("__builtins__")
+        self.assertEqual(
+            set(namespace), {name for name in dir(holidays) if not name.startswith("_")}
+        )
+        self.assertIs(namespace["version"], importlib.import_module("holidays.version"))
+        self.assertIs(namespace["Canada"], holidays.Canada)

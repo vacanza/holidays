@@ -45,6 +45,7 @@ else:
             "burmese": ("_BurmeseLunisolar",),
             "chinese": ("_ChineseLunisolar", "_CustomChineseHolidays"),
             "custom": ("_CustomCalendar",),
+            "ethiopian": (),
             "gregorian": ("GREGORIAN_CALENDAR",),
             "hebrew": ("_HebrewLunisolar",),
             "hindu": ("_CustomHinduHolidays", "_HinduLunisolar"),
@@ -56,6 +57,7 @@ else:
             ),
             "julian": ("JULIAN_CALENDAR",),
             "julian_revised": ("JULIAN_REVISED_CALENDAR",),
+            "mandaean": (),
             "mongolian": ("_CustomMongolianHolidays", "_MongolianLunisolar"),
             "persian": ("_Persian",),
             "sinhala": ("_SinhalaLunar", "_CustomSinhalaHolidays"),
@@ -63,4 +65,4 @@ else:
             "tibetan": ("_TibetanLunisolar", "_CustomTibetanHolidays"),
         },
     )
-    del _load_lazily
+    del TYPE_CHECKING, _load_lazily
