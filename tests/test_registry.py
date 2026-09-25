@@ -12,6 +12,8 @@
 
 import importlib
 import inspect
+import subprocess
+import sys
 import warnings
 from unittest import TestCase
 
@@ -162,3 +164,85 @@ class TestEntityLoader(TestCase):
             holidays.countries.USA,
         ):
             self.assertIsInstance(create_instance(cls), holidays.countries.UnitedStates)
+
+    def test_lazy_package_attributes(self):
+        for package, container in (
+            (countries, registry.COUNTRIES),
+            (financial, registry.FINANCIAL),
+        ):
+            module_name, entities = next(iter(container.items()))
+            module = importlib.import_module(f"{package.__name__}.{module_name}")
+
+            # Entity modules are resolved on attribute access too.
+            delattr(package, module_name)
+            try:
+                self.assertEqual(getattr(package, module_name), module)
+            finally:
+                setattr(package, module_name, module)
+
+            for entity in entities:
+                self.assertEqual(getattr(package, entity), getattr(module, entity))
+                self.assertIn(entity, package.__all__)
+                self.assertIn(entity, dir(package))
+            self.assertIn(module_name, package.__all__)
+
+            with self.assertRaises(AttributeError):
+                package.NonExistentEntity
+
+    def test_lazy_package_imports_hold_import_lock(self):
+        class TrackingLock:
+            def __init__(self, lock):
+                self.lock = lock
+                self.entered = 0
+
+            def __enter__(self):
+                self.entered += 1
+                return self.lock.__enter__()
+
+            def __exit__(self, *args):
+                return self.lock.__exit__(*args)
+
+        tracking_lock = TrackingLock(registry.IMPORT_LOCK)
+        original_lock = registry.IMPORT_LOCK
+        registry.IMPORT_LOCK = tracking_lock
+        try:
+            for package, container in (
+                (countries, registry.COUNTRIES),
+                (financial, registry.FINANCIAL),
+            ):
+                module_name, entities = next(iter(container.items()))
+                module = importlib.import_module(f"{package.__name__}.{module_name}")
+
+                # Module-name access (e.g. holidays.countries.canada).
+                delattr(package, module_name)
+                entered = tracking_lock.entered
+                try:
+                    self.assertEqual(getattr(package, module_name), module)
+                finally:
+                    setattr(package, module_name, module)
+                self.assertEqual(tracking_lock.entered, entered + 1)
+
+                # Entity access (e.g. holidays.countries.Canada).
+                entity = entities[0]
+                cached = vars(package).pop(entity, None)
+                entered = tracking_lock.entered
+                try:
+                    self.assertEqual(getattr(package, entity), getattr(module, entity))
+                finally:
+                    if cached is not None:
+                        setattr(package, entity, cached)
+                self.assertEqual(tracking_lock.entered, entered + 1)
+        finally:
+            registry.IMPORT_LOCK = original_lock
+
+    def test_lazy_package_loading(self):
+        code = (
+            "import sys, holidays; holidays.country_holidays('CA', subdiv='QC'); "
+            "holidays.financial_holidays('XNYS'); "
+            "print(sorted(m for m in sys.modules "
+            "if m.startswith(('holidays.countries.', 'holidays.financial.'))))"
+        )
+        self.assertEqual(
+            subprocess.check_output([sys.executable, "-c", code], text=True).strip(),  # noqa: S603
+            "['holidays.countries.canada', 'holidays.financial.ny_stock_exchange']",
+        )
