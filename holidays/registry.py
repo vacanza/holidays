@@ -437,7 +437,8 @@ class EntityLoader:
 
         def getattr_(name: str) -> Any:
             if name in entity_mapping:
-                return importlib.import_module(f"{package}.{name}")
+                with IMPORT_LOCK:
+                    return importlib.import_module(f"{package}.{name}")
             if name not in entity_modules:
                 raise AttributeError(f"module {package!r} has no attribute {name!r}")
             with IMPORT_LOCK:
