@@ -2119,6 +2119,13 @@ code when available. The following financial markets are available:
 <td>ar, <strong>en_CA</strong>, en_US, fr, th</td>
 <td>HALF_DAY</td>
 </tr>
+<tr>
+<td>Warsaw Stock Exchange</td>
+<td>XWAR</td>
+<td>Warsaw Stock Exchange (GPW) market holidays</td>
+<td>en_US, <strong>pl</strong></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 

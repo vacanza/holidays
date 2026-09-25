@@ -33,7 +33,9 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, PolandStaticHolidays)
+        StaticHolidays.__init__(
+            self, (PolandStaticHolidays, *kwargs.pop("static_holidays_classes", ()))
+        )
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
