@@ -12,6 +12,7 @@
 
 import importlib
 import inspect
+import os
 import subprocess
 import sys
 import warnings
@@ -204,10 +205,12 @@ class TestEntityLoader(TestCase):
             (financial, registry.FINANCIAL),
         ):
             module_name, entities = next(iter(container.items()))
-            module = original_import_module(f"{package.__name__}.{module_name}")
             entity = entities[0]
-            cached_entity = vars(package).pop(entity, None)
-            delattr(package, module_name)
+            # Restore the package namespace as it was, whether the names were cached or not.
+            cached = {name: vars(package).get(name) for name in (module_name, entity)}
+            module = original_import_module(f"{package.__name__}.{module_name}")
+            vars(package).pop(module_name, None)
+            vars(package).pop(entity, None)
             lock_owned.clear()
             try:
                 with mock.patch("importlib.import_module", side_effect=import_module):
@@ -216,9 +219,11 @@ class TestEntityLoader(TestCase):
                     # Entity access (e.g. holidays.countries.Canada).
                     self.assertEqual(getattr(package, entity), getattr(module, entity))
             finally:
-                setattr(package, module_name, module)
-                if cached_entity is not None:
-                    setattr(package, entity, cached_entity)
+                for name, value in cached.items():
+                    if value is None:
+                        vars(package).pop(name, None)
+                    else:
+                        setattr(package, name, value)
             self.assertEqual(lock_owned, [True, True])
 
     def test_lazy_calendars_and_groups_namespaces(self):
@@ -249,7 +254,7 @@ class TestEntityLoader(TestCase):
             "'importlib.metadata'))))"
         )
         self.assertEqual(
-            subprocess.check_output([sys.executable, "-c", code], text=True).strip(),  # noqa: S603
+            run_holidays_code(code),
             str(
                 [
                     "holidays.calendars.ethiopian",
@@ -264,3 +269,15 @@ class TestEntityLoader(TestCase):
                 ]
             ),
         )
+
+
+def run_holidays_code(code: str) -> str:
+    """Run `code` in a new interpreter that imports the holidays package under test."""
+    root = str(Path(holidays.__file__).resolve().parent.parent)
+    env = {
+        **os.environ,
+        "PYTHONPATH": os.pathsep.join(filter(None, (root, os.environ.get("PYTHONPATH")))),
+    }
+    return subprocess.check_output(  # noqa: S603
+        [sys.executable, "-c", code], cwd=root, env=env, text=True
+    ).strip()
