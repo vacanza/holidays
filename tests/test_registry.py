@@ -244,6 +244,42 @@ class TestEntityLoader(TestCase):
             for name in package.__all__:
                 self.assertIsNotNone(getattr(package, name))
 
+    def test_lazy_imports_do_not_deadlock(self):
+        # Thread B imports a country module directly, which then imports calendars and groups
+        # names lazily. Thread A loads the same country through `EntityLoader`, which holds
+        # `IMPORT_LOCK` while it waits for B's module import lock. B must not need that lock.
+        code = """
+import importlib, sys, threading, time
+import holidays
+
+importing = threading.Event()
+
+class Finder:
+    def find_spec(self, name, path=None, target=None):
+        if name == "holidays.countries.albania" and threading.current_thread().name == "B":
+            importing.set()
+            time.sleep(0.5)
+
+sys.meta_path.insert(0, Finder())
+
+def load_entity():
+    importing.wait()
+    holidays.country_holidays("AL")
+
+threads = (
+    threading.Thread(target=load_entity, name="A", daemon=True),
+    threading.Thread(
+        target=importlib.import_module, args=("holidays.countries.albania",), name="B", daemon=True
+    ),
+)
+for thread in threads:
+    thread.start()
+for thread in threads:
+    thread.join(10)
+print("deadlock" if any(thread.is_alive() for thread in threads) else "ok")
+"""
+        self.assertEqual(run_holidays_code(code), "ok")
+
     def test_lazy_package_loading(self):
         code = (
             "import sys, holidays; holidays.country_holidays('CA', subdiv='QC'); "
