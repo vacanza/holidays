@@ -84,31 +84,31 @@ import holidays
 
 us_holidays = holidays.US()  # this is a dict-like object
 # the below is the same, but takes a string:
-us_holidays = holidays.country_holidays('US')  # this is a dict-like object
+us_holidays = holidays.country_holidays("US")  # this is a dict-like object
 
 nyse_holidays = holidays.NYSE()  # this is a dict-like object
 # the below is the same, but takes a string:
-nyse_holidays = holidays.financial_holidays('NYSE')  # this is a dict-like object
+nyse_holidays = holidays.financial_holidays("NYSE")  # this is a dict-like object
 
 date(2015, 1, 1) in us_holidays  # True
 date(2015, 1, 2) in us_holidays  # False
-us_holidays.get('2014-01-01')  # "New Year's Day"
+us_holidays.get("2014-01-01")  # "New Year's Day"
 ```
 
 The [`HolidayBase`](https://github.com/vacanza/holidays/blob/main/holidays/holiday_base.py) dict-like class will also recognize date strings and Unix timestamps:
 
 ``` python
-'2014-01-01' in us_holidays  # True
-'1/1/2014' in us_holidays    # True
-1388597445 in us_holidays    # True
+"2014-01-01" in us_holidays  # True
+"1/1/2014" in us_holidays  # True
+1388597445 in us_holidays  # True
 ```
 
 Some holidays may be only present in parts of a country:
 
 ``` python
-us_pr_holidays = holidays.country_holidays('US', subdiv='PR')
-'2018-01-06' in us_holidays     # False
-'2018-01-06' in us_pr_holidays  # True
+us_pr_holidays = holidays.country_holidays("US", subdiv="PR")
+"2018-01-06" in us_holidays  # False
+"2018-01-06" in us_pr_holidays  # True
 ```
 
 Please see the [holidays documentation](https://holidays.readthedocs.io/) for additional examples

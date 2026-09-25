@@ -71,7 +71,7 @@ ci = [
   "cyclonedx-bom>=7.3,<8",
   "pre-commit>=4.5,<5",
   "pre-commit-uv>=4.3,<5",
-  "uv==0.12.6",
+  "uv==0.12.9",
 ]
 tests = [
   "coverage>=7.12,<8",
@@ -144,8 +144,8 @@ lint.allowed-confusables = [
   "（", # Fullwidth Left Parenthesis (U+FF08)
   "）", # Fullwidth Right Parenthesis (U+FF09)
   "，", # Fullwidth Comma (U+FF0C)
-  "০", # Bengali Digit Zero (U+09E6)
-  "৭", # Bengali Digit Seven (U+09ED)
+  "০",  # Bengali Digit Zero (U+09E6)
+  "৭",  # Bengali Digit Seven (U+09ED)
   "а",  # Cyrillic Small Letter A (U+0430)
   "б",  # Cyrillic Small Letter Be (U+0431)
   "е",  # Cyrillic Small Letter Ie (U+0435)

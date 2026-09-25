@@ -1558,7 +1558,8 @@ class TestAustralia(CommonCountryTests, TestCase):
         self.assertSubdivActHolidayName(name, dts)
         self.assertSubdivNswHolidayName(name, dts)
         self.assertSubdivSaHolidayName(name, dts)
-        self.assertSubdivActHolidayName(name, self.full_range)
+        self.assertSubdivActHolidayName(name, range(1958, self.end_year))
+        self.assertNoSubdivActHolidayName(name, range(self.start_year, 1958))
         self.assertSubdivNswHolidayName(name, self.full_range)
         self.assertSubdivSaHolidayName(name, self.full_range)
 
@@ -1576,7 +1577,8 @@ class TestAustralia(CommonCountryTests, TestCase):
             "2025-05-05",
         )
         self.assertSubdivQldHolidayName(name, dts)
-        self.assertSubdivQldHolidayName(name, self.full_range)
+        self.assertSubdivQldHolidayName(name, range(1905, self.end_year))
+        self.assertNoSubdivQldHolidayName(name, range(self.start_year, 1905))
 
         dts = (
             "2020-03-09",
@@ -1872,7 +1874,22 @@ class TestAustralia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "TAS":
+            if subdiv == "ACT":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "1931-10-05",
+                    "1953-10-05",
+                    "1954-10-04",
+                    "1955-10-03",
+                    "1956-10-01",
+                    "1957-10-07",
+                )
+                self.assertHolidayName(name, holidays, range(1931, 1958))
+                self.assertNoHolidayName(
+                    name, holidays, range(self.start_year, 1931), range(1958, self.end_year)
+                )
+            elif subdiv == "TAS":
                 self.assertHolidayName(
                     name,
                     holidays,
