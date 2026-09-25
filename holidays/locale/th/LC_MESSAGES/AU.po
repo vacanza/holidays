@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.105\n"
+"Project-Id-Version: Holidays 0.106\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-09-05 12:21+0700\n"
-"PO-Revision-Date: 2026-09-14 23:46+1000\n"
-"Last-Translator: Gordon Heydon <gordon@heydon.com.au>\n"
+"PO-Revision-Date: 2026-09-23 16:58+0500\n"
+"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -123,6 +123,10 @@ msgstr "วันครอบครัวและชุมชน"
 msgid "Labour Day"
 msgstr "วันแรงงาน"
 
+#. Eight Hours Day.
+msgid "Eight Hours Day"
+msgstr "วันแปดชั่วโมง (วันแรงงาน)"
+
 #. Bank Holiday.
 msgid "Bank Holiday"
 msgstr "วันหยุดธนาคาร"
@@ -154,10 +158,6 @@ msgstr "วันแอดิเลดคัพ"
 #. Proclamation Day.
 msgid "Proclamation Day"
 msgstr "วันสถาปนา"
-
-#. Eight Hours Day.
-msgid "Eight Hours Day"
-msgstr "วันแปดชั่วโมง (วันแรงงาน)"
 
 #. Easter Tuesday.
 msgid "Easter Tuesday"

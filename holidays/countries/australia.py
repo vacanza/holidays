@@ -43,6 +43,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
     References:
         * ACT:
+            * [ACT Bank Holidays Ordinance 1930](https://www.legislation.act.gov.au/DownloadFile/ord/1930-17/19300911-49003/PDF/1930-17.PDF)
+            * [ACT Bank Holidays Ordinance 1936](https://www.legislation.act.gov.au/DownloadFile/ord/1936-18/19360514-47650/PDF/1936-18.PDF)
             * [ACT Holidays Act 1958](https://web.archive.org/web/20250322061953/https://www.legislation.act.gov.au/a/1958-19/)
             * [ACT 2013-2023](https://web.archive.org/web/20240401072340/https://www.cmtedd.act.gov.au/archived-content/holidays/previous-years)
             * [ACT 2026-2029](https://web.archive.org/web/20260323230558/https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving)
@@ -53,6 +55,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         * NT:
             * [NT Public Holidays Act 1981](https://web.archive.org/web/20250315072128/https://legislation.nt.gov.au/api/sitecore/Act/PDF?id=12145)
         * QLD:
+            * [QLD Bank Holidays Act 1904](https://www.legislation.qld.gov.au/view/pdf/asmade/act-1904-008)
+            * [QLD Holidays Act 1912](https://www.legislation.qld.gov.au/view/pdf/asmade/act-1912-017)
             * [QLD Holidays Act 1983](https://web.archive.org/web/20250404230918/https://www.legislation.qld.gov.au/view/html/inforce/current/act-1983-018)
             * [QLD 2013-2028](https://web.archive.org/web/20150703042947/http://www.qld.gov.au/recreation/travel/holidays/public/)
         * SA:
@@ -305,8 +309,16 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # Family & Community Day.
             self._add_holiday(tr("Family & Community Day"), fc_dates[self._year])
 
-        # Labor Day.
-        self._add_holiday_1st_mon_of_oct(tr("Labour Day"))
+        # Established as Eight Hours Day by ACT Bank Holidays Ordinance 1930, date fixed to
+        # the 1st Monday in October by Ordinance 1936, renamed Labour Day by Ordinance 1958.
+        if self._year >= 1931:
+            self._add_holiday_1st_mon_of_oct(
+                # Labor Day.
+                tr("Labour Day")
+                if self._year >= 1958
+                # Eight Hours Day.
+                else tr("Eight Hours Day")
+            )
 
         # Boxing Day.
         # 1958-1991: SUN - to MON, MON - to TUE.
@@ -550,12 +562,14 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # Easter Sunday.
             self._add_easter_sunday(tr("Easter Sunday"))
 
-        # Labor Day.
-        name = tr("Labour Day")
-        if 2013 <= self._year <= 2015:
-            self._add_holiday_1st_mon_of_oct(name)
-        else:
-            self._add_holiday_1st_mon_of_may(name)
+        # Established by QLD Bank Holidays Act 1904.
+        if self._year >= 1905:
+            # Labor Day.
+            name = tr("Labour Day")
+            if 2013 <= self._year <= 2015:
+                self._add_holiday_1st_mon_of_oct(name)
+            else:
+                self._add_holiday_1st_mon_of_may(name)
 
         # Sovereign's Birthday.
         if self._year >= 1936:
