@@ -644,7 +644,7 @@ Supported placeholders:
 | `{categories}` | Holiday categories joined with `_`, or `PUBLIC` if not specified |
 | `{start_year}` | First year                                                       |
 | `{end_year}`   | Last year                                                        |
-| `{all}`        | Default output filename without the `.ics` extension                                                      |
+| `{all}`        | Default output filename without the `.ics` extension             |
 | `{today}`      | Current date in `YYYYMMDD` format                                |
 
 To include literal `{` or `}` characters, write them as `{{` and `}}`.
@@ -714,14 +714,19 @@ holidays-ics XNYS
 Spanning the next 10 years, unofficial holidays, saved to a custom file:
 
 ```shell
-holidays-ics US --years +10 --categories unofficial --output-template "HOLIDAYS_{code}_{categories}_{start_year}_{end_year}.ics"
-holidays-ics US --years +10 --categories unofficial --output-template "HOLIDAYS_{all}.ics"
+holidays-ics US --years +10 --categories unofficial --output-template "HOLIDAYS_{code}_{start_year}_{end_year}_{categories}.ics"
 ```
 
 Calendar for Switzerland, specific to the Canton of Zurich, localized in German, and saved to a custom file:
 
 ```shell
 holidays-ics CH --subdiv ZH --language de --output-template "{code}_{subdiv}_{language}_{today}.ics"
+```
+
+Use the default file name as part of a custom file name:
+
+```shell
+holidays-ics US --years 2021-2030 --subdiv TX --output-template "HOLIDAYS_{all}.ics"
 ```
 
 The tool can also display the supported subdivisions, categories, and languages for a selected
