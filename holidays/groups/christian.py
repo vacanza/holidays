@@ -250,6 +250,15 @@ class ChristianHolidays:
         """
         return self._add_holiday(name, _timedelta(self.__get_christmas_day(calendar), +2))
 
+    def _add_christmas_day_four(self, name, calendar=None) -> date:
+        """
+        Add Christmas Day 4.
+
+        A holiday celebrated 3 days after Christmas Day (in some countries).
+        https://en.wikipedia.org/wiki/Christmas
+        """
+        return self._add_holiday(name, _timedelta(self.__get_christmas_day(calendar), +3))
+
     def _add_christmas_eve(self, name, calendar=None) -> date:
         """
         Add Christmas Eve.

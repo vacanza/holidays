@@ -60,6 +60,8 @@ class India(
             * <https://web.archive.org/web/20260822103542/https://only30sec.com/wp-content/uploads/2026/01/Arunachal-Pradesh-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Assam:
             * <https://web.archive.org/web/20260822104103/https://only30sec.com/wp-content/uploads/2025/11/Assam-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
+        * Bihar:
+            * <https://web.archive.org/web/20260825183642/https://only30sec.com/wp-content/uploads/2025/11/Bihar-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Chandigarh:
             * <https://web.archive.org/web/20260705144831/https://chandigarh.gov.in/files/updation2025/home25-17488-3012.pdf>
         * Chhattisgarh:
@@ -76,13 +78,18 @@ class India(
         * Himachal Pradesh:
             * <https://web.archive.org/web/20260627103337/https://www.comply360.in/labor-law-library/wp-content/uploads/2025/12/Notification-regarding-list-of-Holidays-for-the-Year-2026-in-Himachal-Pradesh-1.pdf>
         * Jammu and Kashmir:
-            * <https://web.archive.org/web/20260616165510/https://jkeducation.co.in/wp-content/uploads/2025/12/showOrder-4.pdf>
+            * https://web.archive.org/web/20260616165510/https://jkeducation.co.in/wp-content/uploads/2025/12/showOrder-4.pdf>
+        * Jharkhand:
+            * <https://web.archive.org/web/20260826145700/https://jharkhandcalendar.co.in/wp-content/uploads/2025/12/jaharkand-calendar-2026.pdf>
         * Karnataka:
             * <https://web.archive.org/web/20260822102104/https://only30sec.com/wp-content/uploads/2025/11/Karnataka-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Kerala:
             * <https://web.archive.org/web/20260329164551/https://kerala.gov.in/showcalendar/2026>
+            * <https://web.archive.org/web/20260827190400/https://only30sec.com/wp-content/uploads/2025/11/Kerala-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Ladakh:
             * <https://web.archive.org/web/20260627104706/https://www.veerayeehr.com/wp-content/uploads/2025/12/Ladakh-state-list-of-holidays-2026.pdf>
+        * Lakshadweep:
+            * <https://web.archive.org/save/https://only30sec.com/wp-content/uploads/2025/12/Lakshadweep-UT-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Madhya Pradesh:
             * <https://archive.org/details/madhya-pradesh-government-2026-holidays-notification>
         * Maharashtra:
@@ -96,13 +103,21 @@ class India(
             * <https://web.archive.org/web/20260324051214/http://mizoram.nic.in/gov/hols.htm>
         * Nagaland:
             * <https://web.archive.org/web/20260412133333/https://cag.gov.in/uploads/media/Holiday-list-2026-069099b1b46e314-06360641.pdf>
+        * Odisha:
+            * <https://web.archive.org/web/20260826132225/https://only30sec.com/wp-content/uploads/2025/11/Odisha-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
+            * <https://archive.org/details/odisha-government-optional-holidays-list-2026>
+        * Puducherry:
+            * <https://only30sec.com/wp-content/uploads/2025/11/Puducherry-UT-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Punjab:
             * <https://web.archive.org/web/20260216022835/https://punjab.gov.in/wp-content/uploads/2025/12/Calender-2026.pdf>
         * Rajasthan:
             * <https://web.archive.org/web/20260718191708/https://rajasthancalendar.co.in/wp-content/uploads/2025/12/Rajasthan-Govt-Calendar-2026.pdf>
+        * Sikkim:
+            * <https://web.archive.org/web/20260827185054/https://only30sec.com/wp-content/uploads/2025/11/Sikkim-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Tamil Nadu:
             * [Tamil Monthly Calendar](https://web.archive.org/web/20231228103352/https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
             * [Tamil Calendar](https://web.archive.org/web/20250429125140/https://www.prokerala.com/general/calendar/tamilcalendar.php)
+            * <https://web.archive.org/web/20260827191227/https://only30sec.com/wp-content/uploads/2025/11/Tamil-Nadu-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Telangana:
             * <https://web.archive.org/web/20260224050455/https://transport.telangana.gov.in/html/registration-districtcodes.html>
             * <https://web.archive.org/web/20250219131214/https://www.thehindu.com/news/national/telangana/cm-firm-on-having-states-identity-as-tg-not-ts/article68187923.ece>
@@ -113,6 +128,8 @@ class India(
             * <https://web.archive.org/web/20260714175419/https://ascent-hr.com/wp-content/uploads/2025/12/UP-Holiday-List-2026.pdf>
         * Uttarakhand:
             * <https://web.archive.org/web/20260704120047/https://spiderimg.amarujala.com/assets/applications/2025/12/24/holidays-list-2026_694beebe1007a.pdf>
+        * West Bengal:
+            * <https://web.archive.org/web/20260825190250/https://only30sec.com/wp-content/uploads/2025/12/West-Bengal-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
     """
 
     country = "IN"
@@ -526,8 +543,16 @@ class India(
 
     # Andaman and Nicobar Islands.
     def _populate_subdiv_an_public_holidays(self):
+        # Hindu holidays.
+
         # Onam.
         self._add_onam(tr("Onam"))
+
+    def _populate_subdiv_an_optional_holidays(self):
+        self._add_holiday_dec_30(
+            # First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose.
+            tr("First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose")
+        )
 
     # Andhra Pradesh.
     def _populate_subdiv_ap_public_holidays(self):
@@ -646,10 +671,41 @@ class India(
 
     # Bihar.
     def _populate_subdiv_br_public_holidays(self):
+        pass
+
+    def _populate_subdiv_br_government_holidays(self):
+        self._populate_public_holidays()
+
+        # Hindu holidays.
+
+        # Mahasaptami.
+        self._add_maha_saptami(tr("Mahasaptami"))
+
         # Chhath Puja.
         self._add_chhath_puja(tr("Chhath Puja"))
-        # Bihar Day.
-        self._add_holiday_mar_22(tr("Bihar Day"))
+
+        # Islamic holidays.
+
+        # Arbaeen.
+        self._add_arbaeen_day(tr("Chehlum"))
+
+    def _populate_subdiv_br_optional_holidays(self):
+        # Karpuri Thakur's Birthday.
+        self._add_holiday_jan_24(tr("Karpuri Thakur's Jayanti"))
+
+        # Rajendra Prasad's Birthday.
+        self._add_holiday_dec_3(tr("Rajendra Prasad's Jayanti"))
+
+        # Hindu holidays.
+
+        # Hartalika Teej.
+        self._add_hartalika_teej(tr("Hartalika Teej"))
+
+        # Vishwakarma Puja.
+        self._add_vishwakarma_puja(tr("Vishwakarma Puja"))
+
+        # Anant Chaturdashi.
+        self._add_anant_chaturdashi(tr("Anant Chaturdashi"))
 
     # Chandigarh.
     def _populate_subdiv_ch_public_holidays(self):
@@ -1047,10 +1103,39 @@ class India(
 
     # Jharkhand.
     def _populate_subdiv_jh_public_holidays(self):
+        # Hindu holidays.
+
+        # Karma Puja.
+        self._add_parivartini_ekadashi(tr("Karma Puja"))
+
         # Chhath Puja.
         self._add_chhath_puja(tr("Chhath Puja"))
-        # Jharkhand Formation Day.
-        self._add_holiday_nov_15(tr("Jharkhand Formation Day"))
+
+    def _populate_subdiv_jh_government_holidays(self):
+        self._populate_public_holidays()
+
+        # Netaji Subhas Chandra Bose's Birthday.
+        self._add_holiday_jan_23(tr("Netaji Subhas Chandra Bose's Jayanti"))
+
+        # Labor Day.
+        self._add_labor_day(tr("Majdoor Diwas"))
+
+        # Hindu holidays.
+
+        # Makar Sankranti.
+        self._add_makar_sankranti(tr("Makar Sankranti"))
+
+        # Rath Yatra.
+        self._add_rath_yatra(tr("Rath Yatra"))
+
+        # Vishwakarma Puja.
+        self._add_vishwakarma_puja(tr("Vishwakarma Puja"))
+
+        # Govardhan Puja.
+        self._add_govardhan_puja(tr("Govardhan Puja"))
+
+        # Bhai Duj.
+        self._add_bhai_dooj(tr("Bhai Duj"))
 
     # Karnataka.
     def _populate_subdiv_ka_public_holidays(self):
@@ -1088,10 +1173,46 @@ class India(
 
     # Kerala.
     def _populate_subdiv_kl_public_holidays(self):
+        # Mannam's Birthday.
+        self._add_holiday_jan_2(tr("Mannam's Jayanti"))
+
+        # Maundy Thursday.
+        self._add_holy_thursday(tr("Maundy Thursday"))
+
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Easter Sunday"))
+
+        # May Day.
+        self._add_labor_day(tr("May Day"))
+
+        # Shri Narayana Guru's Death Anniversary.
+        self._add_holiday_sep_21(tr("Shri Narayana Guru's Death Anniversary"))
+
+        # Hindu holidays.
+
+        # Vishu.
+        self._add_vishu(tr("Vishu"))
+
         # Onam.
         self._add_onam(tr("Onam"))
-        # Kerala Foundation Day.
-        self._add_holiday_nov_1(tr("Kerala Foundation Day"))
+
+        # Onam (Day 2).
+        self._add_onam_day_two(tr("Onam (Day 2)"))
+
+        # Onam (Day 3).
+        self._add_onam_day_three(tr("Onam (Day 3)"))
+
+        # Onam (Day 4).
+        self._add_onam_day_four(tr("Onam (Day 4)"))
+
+        # Mahanavami.
+        self._add_maha_navami(tr("Mahanavami"))
+
+    def _populate_subdiv_kl_optional_holidays(self):
+        # Hindu holidays.
+
+        # Vishwakarma Puja.
+        self._add_vishwakarma_puja(tr("Vishwakarma Puja"))
 
     # Ladakh.
     def _populate_subdiv_la_public_holidays(self):
@@ -1119,6 +1240,25 @@ class India(
 
         # Eid al-Ghadir.
         self._add_eid_al_ghadir_day(tr("Eid-e-Ghadeer"))
+
+    # Lakshadweep.
+    def _populate_subdiv_ld_public_holidays(self):
+        # Hindu holidays.
+
+        # Makar Sankranti.
+        self._add_makar_sankranti(tr("Makar Sankranti"))
+
+        # Onam.
+        self._add_onam(tr("Onam"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+
+    def _populate_subdiv_ld_optional_holidays(self):
+        # Islamic holidays.
+
+        # Isra' and Mi'raj.
+        self._add_isra_and_miraj_day(tr("Shab-I-Miraj"))
 
     # Maharashtra.
     def _populate_subdiv_mh_public_holidays(self):
@@ -1403,17 +1543,92 @@ class India(
 
     # Orissa / Odisha.
     def _populate_subdiv_od_public_holidays(self):
-        # Odisha Day.
-        self._add_holiday_apr_1(tr("Odisha Day (Utkala Dibasa)"))
-        # Maha Vishuva Sankranti.
-        self._add_holiday_apr_15(tr("Maha Vishuva Sankranti / Pana Sankranti"))
+        pass
+
+    def _populate_subdiv_od_government_holidays(self):
+        self._populate_public_holidays()
+
+        # Netaji Subhas Chandra Bose's Birthday.
+        self._add_holiday_jan_23(tr("Netaji Subhas Chandra Bose's Jayanti"))
+
+        # Dola Purnima.
+        self._add_holika_dahan(tr("Dola Purnima"))
+
+        # Utkal Divas.
+        self._add_holiday_apr_1(tr("Utkal Divas"))
+
+        # Maha Visua Sankranti.
+        self._add_vaisakhi(tr("Maha Visua Sankranti"))
+
+        # Rath Yatra.
+        self._add_rath_yatra(tr("Rath Yatra"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+
+        # Mahalaya.
+        self._add_pitra_moksh_amavasya(tr("Mahalaya"))
+
+        # Mahasaptami.
+        self._add_maha_saptami(tr("Mahasaptami"))
+
+        # Mahashtami.
+        self._add_maha_ashtami(tr("Mahashtami"))
+
+        # Mahanavami.
+        self._add_maha_navami(tr("Mahanavami"))
 
     # Puducherry.
     def _populate_subdiv_py_public_holidays(self):
+        # May Day.
+        self._add_labor_day(tr("May Day"))
+
         # Puducherry De Jure Transfer Day.
         self._add_holiday_aug_16(tr("Puducherry De Jure Transfer Day"))
+
         # Puducherry Liberation Day.
         self._add_holiday_nov_1(tr("Puducherry Liberation Day"))
+
+        # Hindu holidays.
+
+        # Pongal.
+        self._add_pongal(tr("Pongal"))
+
+        # Vishu.
+        self._add_vishu(tr("Vishu"))
+
+        # Vishu (Day 2).
+        self._add_vishu_day_two(tr("Vishu (Day 2)"))
+
+        # Onam.
+        self._add_onam(tr("Onam"))
+
+        # Onam (Day 2).
+        self._add_onam_day_two(tr("Onam (Day 2)"))
+
+        # Puthandu (Tamil New Year).
+        self._add_vaisakhi(tr("Puthandu (Tamil New Year)"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+
+        # Ayudha Puja.
+        self._add_maha_navami(tr("Ayudha Puja"))
+
+    def _populate_subdiv_py_optional_holidays(self):
+        # Saint Joseph Vaz's Day.
+        self._add_holiday_jan_16(tr("Saint Joseph Vaz's Day"))
+
+        # All Souls' Day.
+        self._add_all_souls_day(tr("All Souls' Day"))
+
+        # Immaculate Conception.
+        self._add_immaculate_conception_day(tr("Feast of Immaculate Conception of Mary"))
+
+        # Hindu holidays.
+
+        # Kanuma.
+        self._add_vassi_uttarayan(tr("Kanuma"))
 
     # Punjab.
     def _populate_subdiv_pb_public_holidays(self):
@@ -1557,19 +1772,82 @@ class India(
 
     # Sikkim.
     def _populate_subdiv_sk_public_holidays(self):
+        self._add_holiday_feb_26(
+            # Akhil Sikkim Khas Chettri Bahun Kalyan Sangh's Foundation Day
+            tr("Akhil Sikkim Khas Chettri Bahun Kalyan Sangh's Foundation Day")
+        )
+
         # Sikkim State Day.
         self._add_holiday_may_16(tr("Sikkim State Day"))
 
+        # Bhanu's Birthday.
+        self._add_holiday_jul_13(tr("Bhanu's Jayanti"))
+
+        # Nepali Bhasa Manyata Day.
+        self._add_holiday_aug_20(tr("Nepali Bhasa Manyata Diwas"))
+
+        #  Late Nar Bahadur Bhandari's Birthday.
+        self._add_holiday_oct_5(tr("Late Nar Bahadur Bhandari's Jayanti"))
+
+        # Hindu holidays.
+
+        # Makar Sankranti.
+        self._add_makar_sankranti(tr("Makar Sankranti"))
+
+        # Sonam Lochhar.
+        self._add_sonam_losar(tr("Sonam Lochhar"))
+
+        # Hartalika Teej.
+        self._add_hartalika_teej(tr("Hartalika Teej"))
+
+        # Tamu Lochhar.
+        self._add_tamu_losar(tr("Tamu Lochhar"))
+
+    def _populate_subdiv_sk_optional_holidays(self):
+        # May Day.
+        self._add_labor_day(tr("May Day"))
+
+        # Late Tenzing Norgay Sherpa's Birthday.
+        self._add_holiday_may_29(tr("Late Tenzing Norgay Sherpa's Jayanti"))
+
+        # The Dalai Lama's Birthday.
+        self._add_holiday_jul_6(tr("The Dalai Lama's Jayanti"))
+
+        # Drivers' Day.
+        self._add_holiday_jul_27(tr("Sarathi Diwas"))
+
+        # Satya Sai Baba of Puttaparthi's Birthday.
+        self._add_holiday_nov_23(tr("Satya Sai Baba of Puttaparthi's Jayanti"))
+
+        # Hindu holidays.
+
+        # Chhath Puja.
+        self._add_chhath_puja(tr("Chhath Puja"))
+
     # Tamil Nadu.
     def _populate_subdiv_tn_public_holidays(self):
+        # May Day.
+        self._add_labor_day(tr("May Day"))
+
+        # Hindu holidays.
+
         # Pongal.
         self._add_pongal(tr("Pongal"))
+
         # Thiruvalluvar Day / Mattu Pongal.
         self._add_thiruvalluvar_day(tr("Thiruvalluvar Day / Mattu Pongal"))
+
         # Uzhavar Thirunal.
         self._add_uzhavar_thirunal(tr("Uzhavar Thirunal"))
-        # Puthandu.
-        self._add_holiday_apr_14(tr("Puthandu (Tamil New Year)"))
+
+        # Puthandu (Tamil New Year).
+        self._add_vaisakhi(tr("Puthandu (Tamil New Year)"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+
+        # Ayudha Puja.
+        self._add_maha_navami(tr("Ayudha Puja"))
 
     # Telangana.
     def _populate_subdiv_ts_public_holidays(self):
@@ -1623,7 +1901,7 @@ class India(
         # Hindu holidays.
 
         # Bengali New Year.
-        self.add_pohela_boishakh(tr("Pohela Boishakh"))
+        self._add_pohela_boishakh(tr("Pohela Boishakh"))
 
         # Garia Puja.
         self._add_garia_puja(tr("Garia Puja"))
@@ -1672,6 +1950,9 @@ class India(
 
         # Veer Kesari Chand's Martyrdom Day.
         self._add_holiday_may_3(tr("Veer Kesari Chand's Shaheedi Diwas"))
+
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
 
         # Hindu holidays.
 
@@ -1751,11 +2032,43 @@ class India(
 
     # West Bengal.
     def _populate_subdiv_wb_public_holidays(self):
-        # Bengali New Year.
-        self._add_holiday_apr_15(tr("Pohela Boishakh"))
+        # Swami Vivekananda's Birthday.
+        self._add_holiday_jan_12(tr("Swami Vivekananda's Jayanti"))
 
-        # Rabindra Jayanti.
-        self._add_holiday_may_9(tr("Rabindra Jayanti"))
+        # Netaji Subhas Chandra Bose's Birthday.
+        self._add_holiday_jan_23(tr("Netaji Subhas Chandra Bose's Jayanti"))
+
+        # May Day.
+        self._add_labor_day(tr("May Day"))
+
+        # Birsa Munda's Birthday.
+        self._add_holiday_nov_15(tr("Birsa Munda's Jayanti"))
+
+        # Hindu holidays.
+
+        # Bengali New Year.
+        self._add_pohela_boishakh(tr("Pohela Boishakh"))
+
+        # Mahalaya.
+        self._add_pitra_moksh_amavasya(tr("Mahalaya"))
+
+        # Mahasaptami.
+        self._add_maha_saptami(tr("Mahasaptami"))
+
+        # Mahashtami.
+        self._add_maha_ashtami(tr("Mahashtami"))
+
+        # Mahanavami.
+        self._add_maha_navami(tr("Mahanavami"))
+
+        # Kali Puja.
+        self._add_kali_puja(tr("Kali Puja"))
+
+        # Bhai Duj.
+        self._add_bhai_dooj(tr("Bhai Duj"))
+
+        # Chhath Puja.
+        self._add_chhath_puja(tr("Chhath Puja"))
 
 
 class IN(India):

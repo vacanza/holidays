@@ -585,6 +585,21 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.kabir_jayanti_date(self._year)
         )
 
+    def _add_kali_puja(self, name) -> date | None:
+        """
+        Add Kali Puja.
+
+        Kali Puja is a Hindu festival dedicated to Goddess Kali.
+        It is observed on the new moon day (Amavasya) of the Hindu
+        month of Kartika (October/November).
+
+        https://en.wikipedia.org/wiki/Kali_Puja
+        """
+        return self._add_hindu_calendar_holiday(
+            name,
+            self._hindu_calendar.kali_puja_date(self._year),
+        )
+
     def _add_karwa_chauth(self, name) -> date | None:
         """
         Add Karwa Chauth.
@@ -814,6 +829,30 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.onam_date(self._year))
 
+    def _add_onam_day_two(self, name) -> date | None:
+        """
+        Add Onam Day Two which is celebrated the day after Onam.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.onam_date(self._year), days_delta=+1
+        )
+
+    def _add_onam_day_three(self, name) -> date | None:
+        """
+        Add Onam Day Three which is celebrated 02 days after Onam.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.onam_date(self._year), days_delta=+2
+        )
+
+    def _add_onam_day_four(self, name) -> date | None:
+        """
+        Add Onam Day Four which is celebrated 03 days after Onam.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.onam_date(self._year), days_delta=+3
+        )
+
     def _add_papankusha_ekadashi(self, name) -> date | None:
         """
         Add Papankusha Ekadashi.
@@ -886,7 +925,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             self._hindu_calendar.pitra_moksh_amavasya_date(self._year),
         )
 
-    def add_pohela_boishakh(self, name) -> date | None:
+    def _add_pohela_boishakh(self, name) -> date | None:
         """
         Add Pohela Boishakh.
 
@@ -1213,6 +1252,14 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.vishu_date(self._year))
 
+    def _add_vishu_day_two(self, name) -> date | None:
+        """
+        Add Vishu (Day 2) which comes after the main Vishu day.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.vishu_date(self._year), days_delta=+1
+        )
+
     def _add_vishwakarma_puja(self, name) -> date | None:
         """
         Add Vishwakarma Puja.
@@ -1227,6 +1274,20 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.vishwakarma_puja_date(self._year)
+        )
+
+    def _add_wangala_festival(self, name) -> date | None:
+        """
+        Add Wangala Festival.
+
+        Wangala is a harvest festival celebrated by the Garo people
+        of Meghalaya. It is also known as the Hundred Drums Festival
+        and marks the end of the agricultural year.
+
+        The holiday is observed on the second Friday of November.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.wangala_festival_date(self._year)
         )
 
     def _add_parsi_new_year(self, name: str) -> None:
