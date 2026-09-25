@@ -30,7 +30,13 @@ else:
 
             version = import_module("holidays.version")
             return version.__version__ if name == "__version__" else version
+        if name == "__all__":
+            # No static `__all__`: `import *` exports the public names, and `version` too.
+            return sorted({*(attr for attr in globals() if not attr.startswith("_")), "version"})
         raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+
+    def __dir__() -> list[str]:
+        return sorted({*globals(), "__version__", "version"})
 
 
 EntityLoader.load("countries", globals())
