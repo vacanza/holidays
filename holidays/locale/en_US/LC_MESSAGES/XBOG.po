@@ -1,0 +1,41 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Bolsa de Valores de Colombia (BVC) holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.106\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-09-26 02:11-0500\n"
+"PO-Revision-Date: 2026-09-26 02:12-0500\n"
+"Last-Translator: Juan Sebastián Ruiz Akle <juansebastianruizakle@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: es\n"
+
+#. Year-end market holiday.
+msgid "Día no bursátil de fin de año"
+msgstr "Year-end market holiday"
+
+#. %s (markets close at 1:00pm).
+#, c-format
+msgid "%s (el mercado cierra a las 13:00)"
+msgstr "%s (markets close at 1:00pm)"
+
+#. Christmas Eve.
+msgid "Nochebuena"
+msgstr "Christmas Eve"
