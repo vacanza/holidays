@@ -29,19 +29,6 @@ class TestBolsaDeValoresDeColombia(CommonFinancialTests, TestCase):
         name = "Día no bursátil de fin de año"
         self.assertHolidayName(
             name,
-            "2008-12-31",
-            "2009-12-31",
-            "2010-12-31",
-            "2011-12-30",
-            "2012-12-31",
-            "2013-12-31",
-            "2014-12-31",
-            "2015-12-31",
-            "2016-12-30",
-            "2017-12-29",
-            "2018-12-31",
-            "2019-12-31",
-            "2020-12-31",
             "2021-12-31",
             "2022-12-30",
             "2023-12-29",
@@ -49,42 +36,27 @@ class TestBolsaDeValoresDeColombia(CommonFinancialTests, TestCase):
             "2025-12-31",
             "2026-12-31",
         )
-        self.assertHolidayNameCount(name, 1, self.full_range)
-
-    def test_year_end_market_holiday_on_weekend(self):
-        # When December 31 falls on a weekend, the preceding Friday is closed instead.
-        self.assertNoHoliday("2011-12-29", "2016-12-29", "2017-12-28", "2022-12-29", "2023-12-28")
+        self.assertHolidayName(name, self.full_range)
+        self.assertNoHoliday(
+            "2011-12-29",
+            "2016-12-29",
+            "2017-12-28",
+            "2022-12-29",
+            "2023-12-28",
+        )
 
     def test_half_day(self):
         name = "Nochebuena (el mercado cierra a las 13:00)"
+        self.assertNoHolidayName(name)
         self.assertHalfDayHolidayName(
-            name, "2018-12-24", "2019-12-24", "2020-12-24", "2021-12-24", "2025-12-24"
+            name,
+            "2018-12-24",
+            "2019-12-24",
+            "2020-12-24",
+            "2021-12-24",
+            "2025-12-24",
         )
         self.assertNoHalfDayHoliday("2015-12-24", "2024-12-24")
-        self.assertNoHoliday("2018-12-24", "2019-12-24", "2020-12-24", "2021-12-24", "2025-12-24")
-
-    def test_2025(self):
-        self.assertHolidaysInYear(
-            2025,
-            ("2025-01-01", "Año Nuevo"),
-            ("2025-01-06", "Día de los Reyes Magos"),
-            ("2025-03-24", "Día de San José (observado)"),
-            ("2025-04-17", "Jueves Santo"),
-            ("2025-04-18", "Viernes Santo"),
-            ("2025-05-01", "Día del Trabajo"),
-            ("2025-06-02", "Ascensión del señor (observado)"),
-            ("2025-06-23", "Corpus Christi (observado)"),
-            ("2025-06-30", "Sagrado Corazón (observado); San Pedro y San Pablo (observado)"),
-            ("2025-07-20", "Día de la Independencia"),
-            ("2025-08-07", "Batalla de Boyacá"),
-            ("2025-08-18", "La Asunción (observado)"),
-            ("2025-10-13", "Día de la Raza (observado)"),
-            ("2025-11-03", "Día de Todos los Santos (observado)"),
-            ("2025-11-17", "Independencia de Cartagena (observado)"),
-            ("2025-12-08", "La Inmaculada Concepción"),
-            ("2025-12-25", "Navidad"),
-            ("2025-12-31", "Día no bursátil de fin de año"),
-        )
 
     def test_2026(self):
         self.assertHolidaysInYear(

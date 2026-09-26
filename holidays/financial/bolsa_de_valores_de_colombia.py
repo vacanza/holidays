@@ -59,9 +59,11 @@ class BolsaDeValoresDeColombia(Colombia, StaticHolidays):
     def _populate_public_holidays(self):
         super()._populate_public_holidays()
 
-        # Year-end market holiday.
-        name = tr("Día no bursátil de fin de año")
-        self._add_holiday(name, self._get_next_workday(self._next_year_new_years_day, -1))
+        self._add_holiday(
+            # Year-end market holiday.
+            tr("Día no bursátil de fin de año"),
+            self._get_next_workday(self._next_year_new_years_day, -1),
+        )
 
 
 class XBOG(BolsaDeValoresDeColombia):
