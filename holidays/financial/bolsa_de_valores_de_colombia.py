@@ -75,11 +75,12 @@ class BVC(BolsaDeValoresDeColombia):
 class BolsaDeValoresDeColombiaStaticHolidays:
     """Bolsa de Valores de Colombia (BVC) special holidays.
 
-    On some years the equity spot market and the Mercado Global Colombiano (MGC)
-    close at 1:00 p.m. on December 24, aligned with the New York Stock Exchange.
-    BVC announces it every year, so only the years with a source are listed.
+    When December 24 is a trading day, the equity spot market and the Mercado Global
+    Colombiano (MGC) close at 1:00 p.m., aligned with the New York Stock Exchange.
+    Only the years with a source are listed.
 
     References:
+        * [2018](https://web.archive.org/web/20260926080617/http://gyhinvestments.com/images/boyaca/CircularUnicaBVCactualizada20180521Circular005Normativo015.pdf)
         * [2019](https://web.archive.org/web/20241112170153/https://www.larepublica.co/finanzas/bolsa-de-valores-de-colombia-revelo-horarios-para-este-24-y-31-de-diciembre-2942461)
         * [2020](https://web.archive.org/web/20210124190358/https://bvc.com.co/pps/tibco/portalbvc/Home/Mercados/dianobursatil?action=dummy)
         * [2021](https://web.archive.org/web/20220125080217/https://www.bvc.com.co/pps/tibco/portalbvc/Home/Mercados/dianobursatil)
@@ -93,6 +94,7 @@ class BolsaDeValoresDeColombiaStaticHolidays:
     christmas_eve = tr("Nochebuena")
 
     special_half_day_holidays = {
+        2018: (DEC, 24, (early_close_label, christmas_eve)),
         2019: (DEC, 24, (early_close_label, christmas_eve)),
         2020: (DEC, 24, (early_close_label, christmas_eve)),
         2021: (DEC, 24, (early_close_label, christmas_eve)),

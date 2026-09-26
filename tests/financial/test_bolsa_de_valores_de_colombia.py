@@ -57,9 +57,11 @@ class TestBolsaDeValoresDeColombia(CommonFinancialTests, TestCase):
 
     def test_half_day(self):
         name = "Nochebuena (el mercado cierra a las 13:00)"
-        self.assertHalfDayHolidayName(name, "2019-12-24", "2020-12-24", "2021-12-24", "2025-12-24")
-        self.assertNoHalfDayHoliday("2018-12-24", "2024-12-24")
-        self.assertNoHoliday("2019-12-24", "2020-12-24", "2021-12-24", "2025-12-24")
+        self.assertHalfDayHolidayName(
+            name, "2018-12-24", "2019-12-24", "2020-12-24", "2021-12-24", "2025-12-24"
+        )
+        self.assertNoHalfDayHoliday("2015-12-24", "2024-12-24")
+        self.assertNoHoliday("2018-12-24", "2019-12-24", "2020-12-24", "2021-12-24", "2025-12-24")
 
     def test_2025(self):
         self.assertHolidaysInYear(
