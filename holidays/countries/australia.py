@@ -72,6 +72,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             * [VIC Minister appointment](https://web.archive.org/web/20240328142238/https://www.gazette.vic.gov.au/gazette/Gazettes2015/GG2015S229.pdf)
             * [VIC 2018-2024](https://web.archive.org/web/20250422235530/https://business.vic.gov.au/business-information/public-holidays)
         * WA:
+            * [WA Bank Holidays Amendment Act 1899](https://www.legislation.wa.gov.au/legislation/statutes.nsf/RedirectURL?OpenAgent&query=mrdoc_14258.pdf)
             * [WA Bank Holidays Amendment Act 1921](https://www.legislation.wa.gov.au/legislation/statutes.nsf/RedirectURL?OpenAgent&query=mrdoc_13231.pdf)
             * [WA Bank Holidays Act Amendment Act 1948](https://www.legislation.wa.gov.au/legislation/statutes.nsf/RedirectURL?OpenAgent&query=mrdoc_11806.pdf)
             * [WA Public and Bank Holidays Act 1972](https://web.archive.org/web/20241106220940/https://www.legislation.wa.gov.au/legislation/statutes.nsf/law_a639.html)
@@ -904,7 +905,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Established as the 1st day of May by WA Bank Holidays Amendment Act 1921, moved to
         # the 1st day of March by WA Bank Holidays Act Amendment Act 1948, and observed on the
-        # following Monday when that day is not a Monday.
+        # following Monday when that day is not a Monday (section 5 of WA Bank Holidays
+        # Amendment Act 1899).
         if self._year >= 1922:
             # Labor Day.
             name = tr("Labour Day")
