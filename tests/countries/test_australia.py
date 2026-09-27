@@ -1912,7 +1912,7 @@ class TestAustralia(CommonCountryTests, TestCase):
                 )
                 self.assertHolidayName(name, holidays, range(1945, self.end_year))
                 self.assertNoHolidayName(name, holidays, range(self.start_year, 1945))
-                self.assertNoHolidayName(name, holidays, "1945-03-12", "2000-03-13")
+                self.assertNoHolidayName(name, holidays, "2000-03-13", "2001-03-05")
             else:
                 self.assertNoHolidayName(name, holidays)
 

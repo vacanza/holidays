@@ -72,9 +72,9 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             * [VIC Minister appointment](https://web.archive.org/web/20240328142238/https://www.gazette.vic.gov.au/gazette/Gazettes2015/GG2015S229.pdf)
             * [VIC 2018-2024](https://web.archive.org/web/20250422235530/https://business.vic.gov.au/business-information/public-holidays)
         * WA:
-            * [WA Bank Holidays Amendment Act 1899](https://www.legislation.wa.gov.au/legislation/statutes.nsf/RedirectURL?OpenAgent&query=mrdoc_14258.pdf)
-            * [WA Bank Holidays Amendment Act 1921](https://www.legislation.wa.gov.au/legislation/statutes.nsf/RedirectURL?OpenAgent&query=mrdoc_13231.pdf)
-            * [WA Bank Holidays Act Amendment Act 1948](https://www.legislation.wa.gov.au/legislation/statutes.nsf/RedirectURL?OpenAgent&query=mrdoc_11806.pdf)
+            * [WA Bank Holidays Amendment Act 1899](https://web.archive.org/web/20241104022630/https://www.legislation.wa.gov.au/legislation/prod/filestore.nsf/FileURL/mrdoc_14258.pdf/$FILE/Bank%20Holidays%20Amendment%20Act%201899%20-%20%5B00-00-00%5D.pdf)
+            * [WA Bank Holidays Amendment Act 1921](https://web.archive.org/web/20241103185610/https://www.legislation.wa.gov.au/legislation/prod/filestore.nsf/FileURL/mrdoc_13231.pdf/$FILE/Bank%20Holidays%20Amendment%20Act%201921%20-%20%5B00-00-00%5D.pdf)
+            * [WA Bank Holidays Act Amendment Act 1948](https://web.archive.org/web/20241104061936/https://www.legislation.wa.gov.au/legislation/prod/filestore.nsf/FileURL/mrdoc_11806.pdf/$FILE/Bank%20Holidays%20Act%20Amendment%20Act%201948%20-%20%5B00-00-00%5D.pdf)
             * [WA Public and Bank Holidays Act 1972](https://web.archive.org/web/20241106220940/https://www.legislation.wa.gov.au/legislation/statutes.nsf/law_a639.html)
             * [WA 2019-2023](https://web.archive.org/web/20240805123535/https://www.commerce.wa.gov.au/labour-relations/previous-years-public-holiday-dates)
     """
@@ -758,8 +758,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             if self._year >= 2001:
                 self._move_holiday(dt)
 
-        # Established as the 1st Monday in March by TAS Bank Holidays Act 1944, moved to
-        # the 2nd Monday in March by TAS Statutory Holidays Act 2000.
+        # Established as the 1st Monday in March by TAS Bank Holidays Act 1944.
+        # Moved to the 2nd Monday in March by TAS Statutory Holidays Act 2000.
         if self._year >= 1945:
             # Eight Hours Day.
             name = tr("Eight Hours Day")
@@ -903,10 +903,9 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             elif self._year >= 1973:
                 self._move_holiday(dt, rule=ALL_TO_NEXT_MON)
 
-        # Established as the 1st day of May by WA Bank Holidays Amendment Act 1921, moved to
-        # the 1st day of March by WA Bank Holidays Act Amendment Act 1948, and observed on the
-        # following Monday when that day is not a Monday (section 5 of WA Bank Holidays
-        # Amendment Act 1899).
+        # Established as the 1st day of May by WA Bank Holidays Amendment Act 1921.
+        # Moved to the 1st day of March by WA Bank Holidays Act Amendment Act 1948.
+        # (Observed on the following Monday by WA Bank Holidays Amendment Act 1899).
         if self._year >= 1922:
             # Labor Day.
             name = tr("Labour Day")
