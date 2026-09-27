@@ -1952,6 +1952,13 @@ code when available. The following financial markets are available:
 <td>HALF_DAY, RESTRICTED_SETTLEMENT</td>
 </tr>
 <tr>
+<td>Bolsa de Valores de Colombia</td>
+<td>XBOG</td>
+<td>Bolsa de Valores de Colombia (BVC) holidays</td>
+<td>en_US, <strong>es</strong></td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>Bolsa Mexicana de Valores</td>
 <td>XMEX</td>
 <td>Bolsa Mexicana de Valores (BMV) holidays</td>

@@ -15,6 +15,7 @@ from holidays.financial.australian_securities_exchange import (
     XASX,
     ASX,
 )
+from holidays.financial.bolsa_de_valores_de_colombia import BolsaDeValoresDeColombia, XBOG, BVC
 from holidays.financial.bolsa_mexicana_de_valores import BolsaMexicanaDeValores, XMEX, BMV
 from holidays.financial.bolsas_y_mercados_argentinos import BolsasYMercadosArgentinos, XBUE, BYMA
 from holidays.financial.bolsas_y_mercados_espanoles import BolsasYMercadosEspanoles, XMAD, BME

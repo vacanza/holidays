@@ -287,6 +287,7 @@ COUNTRIES: RegistryDict = {
 
 FINANCIAL: RegistryDict = {
     "australian_securities_exchange": ("AustralianSecuritiesExchange", "XASX", "ASX"),
+    "bolsa_de_valores_de_colombia": ("BolsaDeValoresDeColombia", "XBOG", "BVC"),
     "bolsa_mexicana_de_valores": ("BolsaMexicanaDeValores", "XMEX", "BMV"),
     "bolsas_y_mercados_argentinos": ("BolsasYMercadosArgentinos", "XBUE", "BYMA"),
     "bolsas_y_mercados_espanoles": ("BolsasYMercadosEspanoles", "XMAD", "BME"),
