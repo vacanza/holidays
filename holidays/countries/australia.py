@@ -757,10 +757,15 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             if self._year >= 2001:
                 self._move_holiday(dt)
 
-        # Established by TAS Bank Holidays Act 1944.
+        # Established as the 1st Monday in March by TAS Bank Holidays Act 1944, moved to
+        # the 2nd Monday in March by TAS Statutory Holidays Act 2000.
         if self._year >= 1945:
             # Eight Hours Day.
-            self._add_holiday_2nd_mon_of_mar(tr("Eight Hours Day"))
+            name = tr("Eight Hours Day")
+            if self._year >= 2001:
+                self._add_holiday_2nd_mon_of_mar(name)
+            else:
+                self._add_holiday_1st_mon_of_mar(name)
 
         if self._year <= 2010:
             # Easter Tuesday.
