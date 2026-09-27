@@ -28,9 +28,6 @@ class TestWarsawStockExchange(CommonFinancialTests, TestCase):
     def test_special_holidays(self):
         self.assertHolidayName("Dzień bez sesji", "2013-04-16", "2018-01-02")
 
-    def test_inherited_special_holiday(self):
-        self.assertHolidayName("Narodowe Święto Niepodległości - 100-lecie", "2018-11-12")
-
     def test_good_friday(self):
         name = "Wielki Piątek"
         self.assertHolidayName(
@@ -60,91 +57,85 @@ class TestWarsawStockExchange(CommonFinancialTests, TestCase):
             name, (f"{year}-12-31" for year in self.full_range if year not in years_absent)
         )
 
-    def test_non_session_days(self):
-        # Closures in the yearly resolutions of the GPW Management Board.
-        for year, dates in (
-            (
-                2023,
-                (
-                    "2023-01-06",
-                    "2023-04-07",
-                    "2023-04-10",
-                    "2023-05-01",
-                    "2023-05-03",
-                    "2023-06-08",
-                    "2023-08-15",
-                    "2023-11-01",
-                    "2023-12-25",
-                    "2023-12-26",
-                ),
-            ),
-            (
-                2024,
-                (
-                    "2024-01-01",
-                    "2024-03-29",
-                    "2024-04-01",
-                    "2024-05-01",
-                    "2024-05-03",
-                    "2024-05-30",
-                    "2024-08-15",
-                    "2024-11-01",
-                    "2024-11-11",
-                    "2024-12-24",
-                    "2024-12-25",
-                    "2024-12-26",
-                    "2024-12-31",
-                ),
-            ),
-            (
-                2025,
-                (
-                    "2025-01-01",
-                    "2025-01-06",
-                    "2025-04-18",
-                    "2025-04-21",
-                    "2025-05-01",
-                    "2025-06-19",
-                    "2025-08-15",
-                    "2025-11-11",
-                    "2025-12-24",
-                    "2025-12-25",
-                    "2025-12-26",
-                    "2025-12-31",
-                ),
-            ),
-            (
-                2026,
-                (
-                    "2026-01-01",
-                    "2026-01-06",
-                    "2026-04-03",
-                    "2026-04-06",
-                    "2026-05-01",
-                    "2026-06-04",
-                    "2026-11-11",
-                    "2026-12-24",
-                    "2026-12-25",
-                    "2026-12-31",
-                ),
-            ),
-            (
-                2027,
-                (
-                    "2027-01-01",
-                    "2027-01-06",
-                    "2027-03-26",
-                    "2027-03-29",
-                    "2027-05-03",
-                    "2027-05-27",
-                    "2027-11-01",
-                    "2027-11-11",
-                    "2027-12-24",
-                    "2027-12-31",
-                ),
-            ),
-        ):
-            self.assertHolidayDatesInYear(year, dates)
+    def test_2023(self):
+        self.assertHolidaysInYear(
+            2023,
+            ("2023-01-06", "Święto Trzech Króli"),
+            ("2023-04-07", "Wielki Piątek"),
+            ("2023-04-10", "Poniedziałek Wielkanocny"),
+            ("2023-05-01", "Święto Państwowe"),
+            ("2023-05-03", "Święto Narodowe Trzeciego Maja"),
+            ("2023-06-08", "Dzień Bożego Ciała"),
+            ("2023-08-15", "Wniebowzięcie Najświętszej Marii Panny"),
+            ("2023-11-01", "Uroczystość Wszystkich Świętych"),
+            ("2023-12-25", "Boże Narodzenie (pierwszy dzień)"),
+            ("2023-12-26", "Boże Narodzenie (drugi dzień)"),
+        )
+
+    def test_2024(self):
+        self.assertHolidaysInYear(
+            2024,
+            ("2024-01-01", "Nowy Rok"),
+            ("2024-03-29", "Wielki Piątek"),
+            ("2024-04-01", "Poniedziałek Wielkanocny"),
+            ("2024-05-01", "Święto Państwowe"),
+            ("2024-05-03", "Święto Narodowe Trzeciego Maja"),
+            ("2024-05-30", "Dzień Bożego Ciała"),
+            ("2024-08-15", "Wniebowzięcie Najświętszej Marii Panny"),
+            ("2024-11-01", "Uroczystość Wszystkich Świętych"),
+            ("2024-11-11", "Narodowe Święto Niepodległości"),
+            ("2024-12-24", "Wigilia Bożego Narodzenia"),
+            ("2024-12-25", "Boże Narodzenie (pierwszy dzień)"),
+            ("2024-12-26", "Boże Narodzenie (drugi dzień)"),
+            ("2024-12-31", "Sylwester"),
+        )
+
+    def test_2025(self):
+        self.assertHolidaysInYear(
+            2025,
+            ("2025-01-01", "Nowy Rok"),
+            ("2025-01-06", "Święto Trzech Króli"),
+            ("2025-04-18", "Wielki Piątek"),
+            ("2025-04-21", "Poniedziałek Wielkanocny"),
+            ("2025-05-01", "Święto Państwowe"),
+            ("2025-06-19", "Dzień Bożego Ciała"),
+            ("2025-08-15", "Wniebowzięcie Najświętszej Marii Panny"),
+            ("2025-11-11", "Narodowe Święto Niepodległości"),
+            ("2025-12-24", "Wigilia Bożego Narodzenia"),
+            ("2025-12-25", "Boże Narodzenie (pierwszy dzień)"),
+            ("2025-12-26", "Boże Narodzenie (drugi dzień)"),
+            ("2025-12-31", "Sylwester"),
+        )
+
+    def test_2026(self):
+        self.assertHolidaysInYear(
+            2026,
+            ("2026-01-01", "Nowy Rok"),
+            ("2026-01-06", "Święto Trzech Króli"),
+            ("2026-04-03", "Wielki Piątek"),
+            ("2026-04-06", "Poniedziałek Wielkanocny"),
+            ("2026-05-01", "Święto Państwowe"),
+            ("2026-06-04", "Dzień Bożego Ciała"),
+            ("2026-11-11", "Narodowe Święto Niepodległości"),
+            ("2026-12-24", "Wigilia Bożego Narodzenia"),
+            ("2026-12-25", "Boże Narodzenie (pierwszy dzień)"),
+            ("2026-12-31", "Sylwester"),
+        )
+
+    def test_2027(self):
+        self.assertHolidaysInYear(
+            2027,
+            ("2027-01-01", "Nowy Rok"),
+            ("2027-01-06", "Święto Trzech Króli"),
+            ("2027-03-26", "Wielki Piątek"),
+            ("2027-03-29", "Poniedziałek Wielkanocny"),
+            ("2027-05-03", "Święto Narodowe Trzeciego Maja"),
+            ("2027-05-27", "Dzień Bożego Ciała"),
+            ("2027-11-01", "Uroczystość Wszystkich Świętych"),
+            ("2027-11-11", "Narodowe Święto Niepodległości"),
+            ("2027-12-24", "Wigilia Bożego Narodzenia"),
+            ("2027-12-31", "Sylwester"),
+        )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

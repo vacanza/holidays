@@ -24,12 +24,12 @@ class WarsawStockExchange(Poland):
     calendar starts in 2011.
 
     References:
-        * [2023](https://www.gpw.pl/pub/GPW/uchwaly/2022/509_2022.pdf)
-        * [2024](https://www.gpw.pl/pub/GPW/uchwaly/2023/571_2023_DNI_BEZ_SESJI_2024_UCHW.pdf)
-        * [2025](https://www.gpw.pl/pub/GPW/uchwaly/2024/701_2024.pdf)
-        * [2026](https://www.gpw.pl/pub/GPW/uchwaly/2025/753_2025.pdf)
-        * [2027](https://www.gpw.pl/pub/GPW/uchwaly/2025/754_2025.pdf)
-        * [1991-2011](https://www.gpw.pl/pub/files/PDF/rocznik2012/363-369_GPW102_Rocznik2012_Kalendarium_GPW_1991-2011.pdf)
+        * [2023](https://web.archive.org/web/20260923163454/https://www.gpw.pl/pub/GPW/uchwaly/2022/509_2022.pdf)
+        * [2024](https://web.archive.org/web/20260923163518/https://www.gpw.pl/pub/GPW/uchwaly/2023/571_2023_DNI_BEZ_SESJI_2024_UCHW.pdf)
+        * [2025](https://web.archive.org/web/20251013085808/https://www.gpw.pl/pub/GPW/uchwaly/2024/701_2024.pdf)
+        * [2026](https://web.archive.org/web/20260407085228/https://www.gpw.pl/pub/GPW/uchwaly/2025/753_2025.pdf)
+        * [2027](https://web.archive.org/web/20260923163602/https://www.gpw.pl/pub/GPW/uchwaly/2025/754_2025.pdf)
+        * [1991-2011](https://web.archive.org/web/20260923163753/https://www.gpw.pl/pub/files/PDF/rocznik2012/363-369_GPW102_Rocznik2012_Kalendarium_GPW_1991-2011.pdf)
     """
 
     country = None  # type: ignore[assignment]
