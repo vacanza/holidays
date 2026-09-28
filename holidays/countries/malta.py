@@ -34,11 +34,13 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
     start_year = 1980
 
     def __init__(self, *args, **kwargs):
+        """Initialize Malta's Christian and international holiday groups."""
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        """Add Malta's public holidays for the selected year."""
         # L-Ewwel tas-Sena
         # Status: In-Use.
 
