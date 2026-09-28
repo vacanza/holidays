@@ -272,11 +272,15 @@ class TestSpain(CommonCountryTests, TestCase):
         )
 
     def test_islamic(self):
-        self.assertNoHolidayName(
-            "Fiesta del Sacrificio-Eidul Adha", Spain(subdiv="CE", years=2009)
+        self.assertNoSubdivCeHolidayName(
+            "Fiesta de Culminación del Ramadán-Eidul Fitr", range(self.start_year, 2022)
         )
-        self.assertNoHolidayName(
-            "Fiesta del Sacrificio-Aid Al Adha", Spain(subdiv="ML", years=2009)
+        self.assertNoSubdivCeHolidayName(
+            "Fiesta del Sacrificio-Eidul Adha", range(self.start_year, 2010)
+        )
+        self.assertNoSubdivMlHolidayName("Fiesta del Eid Fitr", range(self.start_year, 2022))
+        self.assertNoSubdivMlHolidayName(
+            "Fiesta del Sacrificio-Aid Al Adha", range(self.start_year, 2010)
         )
 
     def test_variable_holidays_2008(self):
@@ -1028,7 +1032,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (APR, 18): {"CT", "IB", "NC", "PV", "RI", "VC"},
             (APR, 23): {"AR", "CL"},
             (MAY, 2): {"AN", "AR", "AS", "CL", "EX", "MC", "MD"},
-            (MAY, 3): {"ML"},
+            (MAY, 3): {"CE", "ML"},
             (MAY, 17): {"GA"},
             (MAY, 30): {"CN"},
             (MAY, 31): {"CM"},
@@ -1097,6 +1101,7 @@ class TestSpain(CommonCountryTests, TestCase):
             },
             (APR, 10): {"CT", "IB", "NC", "PV", "RI", "VC"},
             (APR, 21): {"ML"},
+            (APR, 22): {"CE"},
             (APR, 24): {"AR"},
             (MAY, 2): {"MD"},
             (MAY, 17): {"GA"},
@@ -1145,6 +1150,7 @@ class TestSpain(CommonCountryTests, TestCase):
                 "RI",
             },
             (APR, 1): {"CB", "CT", "IB", "NC", "PV", "RI", "VC"},
+            (APR, 10): {"CE", "ML"},
             (APR, 23): {"AR", "CL"},
             (MAY, 2): {"MD"},
             (MAY, 17): {"GA"},
@@ -1171,7 +1177,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (FEB, 28): {"AN"},
             (MAR, 1): {"IB"},
             (MAR, 19): {"MC", "VC"},
-            (MAR, 31): {"ML"},
+            (MAR, 31): {"CE", "ML"},
             (APR, 17): {
                 "AN",
                 "AR",
@@ -1221,7 +1227,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (FEB, 28): {"AN"},
             (MAR, 2): {"IB"},
             (MAR, 19): {"GA", "MC", "NC", "PV", "VC"},
-            (MAR, 20): {"ML"},
+            (MAR, 20): {"CE", "ML"},
             (APR, 2): {
                 "AN",
                 "AR",
@@ -1279,6 +1285,7 @@ class TestSpain(CommonCountryTests, TestCase):
             ("2023-04-07", "Viernes Santo"),
             ("2023-04-10", "Lunes de Pascua"),
             ("2023-04-21", "Fiesta del Eid Fitr"),
+            ("2023-04-22", "Fiesta de Culminación del Ramadán-Eidul Fitr"),
             ("2023-04-24", "Lunes siguiente a Día de San Jorge"),
             ("2023-05-01", "Fiesta del Trabajo"),
             ("2023-05-02", "Fiesta de la Comunidad de Madrid"),
@@ -1326,6 +1333,7 @@ class TestSpain(CommonCountryTests, TestCase):
             ("2023-04-07", "Divendres Sant"),
             ("2023-04-10", "Dilluns de Pasqua"),
             ("2023-04-21", "Festa de l'Eid Fitr"),
+            ("2023-04-22", "Festa de Culminació del Ramadà-Eidul Fitr"),
             ("2023-04-24", "Dilluns següent a Dia de Sant Jordi"),
             ("2023-05-01", "Festa del Treball"),
             ("2023-05-02", "Festa de la Comunitat de Madrid"),
@@ -1372,6 +1380,7 @@ class TestSpain(CommonCountryTests, TestCase):
             ("2023-04-07", "Good Friday"),
             ("2023-04-10", "Easter Monday"),
             ("2023-04-21", "Eid al-Fitr"),
+            ("2023-04-22", "Eid al-Fitr"),
             ("2023-04-24", "Monday following Saint George's Day"),
             ("2023-05-01", "Labor Day"),
             ("2023-05-02", "Madrid Day"),
@@ -1415,6 +1424,7 @@ class TestSpain(CommonCountryTests, TestCase):
             ("2023-04-07", "วันศุกร์ประเสริฐ"),
             ("2023-04-10", "วันจันทร์อีสเตอร์"),
             ("2023-04-21", "วันอีฎิ้ลฟิตริ"),
+            ("2023-04-22", "วันอีฎิ้ลฟิตริ"),
             ("2023-04-24", "วันจันทร์หลังวันสมโภชนักบุญจอร์จ"),
             ("2023-05-01", "วันแรงงาน"),
             ("2023-05-02", "วันมาดริด"),
@@ -1458,6 +1468,7 @@ class TestSpain(CommonCountryTests, TestCase):
             ("2023-04-07", "Страсна пʼятниця"),
             ("2023-04-10", "Великодній понеділок"),
             ("2023-04-21", "Рамазан-байрам"),
+            ("2023-04-22", "Рамазан-байрам"),
             ("2023-04-24", "Понеділок після День Святого Георгія"),
             ("2023-05-01", "День праці"),
             ("2023-05-02", "День Мадрида"),
