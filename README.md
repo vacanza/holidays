@@ -1123,7 +1123,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Malta</td>
 <td>MT</td>
 <td></td>
-<td>en_US, <strong>mt</strong></td>
+<td>ar, en_US, <strong>mt</strong></td>
 <td></td>
 </tr>
 <tr>
